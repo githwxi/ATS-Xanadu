@@ -32,14 +32,5 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-datatype
-cblist =
-| cblist_nil of ()
-| {n:int}
-  cblist_cons of
-  (int(n), arrayref(uchar, n), cblist)
-//
-(* ****** ****** *)
 
-(* end of [cblist.sats] *)
+(* end of [xats_dynexp0.sats] *)
