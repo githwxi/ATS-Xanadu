@@ -40,6 +40,13 @@ cblist =
   cblist_cons of
   (int(n), arrayref(uchar, n), cblist)
 //
+datavtype
+cblist_vt =
+| cblist_vt_nil of ()
+| {n:int}
+  cblist_vt_cons of
+  (int(n), arrayptr(uchar, n), cblist_vt)
+//
 (* ****** ****** *)
 
 (* end of [cblist.sats] *)
