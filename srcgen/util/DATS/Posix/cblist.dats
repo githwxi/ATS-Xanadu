@@ -32,6 +32,11 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
 #staload "./../../SATS/cblist.sats"
 #staload "./../../SATS/Posix/cblist.sats"
@@ -53,6 +58,31 @@ in
 //
 end // end of [fpath_get_cblist]
 
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+fpath_get_cblist_vt(path) = let
+//
+val
+opt =
+fileref_open_opt(path, file_mode_r)
+//
+in
+  case+ opt of
+  | ~None_vt() => None_vt(*void*)
+  | ~Some_vt(filp) => fileref_get_cblist_vt(filp)
+//
+end // end of [fpath_get_cblist_vt]
+
+(* ****** ****** *)
+//
+implement
+fileref_get_cblist(inp) =
+(
+  $UN.castvwtp0(fileref_get_cblist_vt(inp))
+)
+//
 (* ****** ****** *)
 
 (* end of [Posix_cblist.sats] *)
