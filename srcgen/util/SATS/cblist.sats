@@ -49,4 +49,8 @@ cblist_vt =
 //
 (* ****** ****** *)
 
+fun cblist_vt_free(cbs: cblist_vt): void
+
+(* ****** ****** *)
+
 (* end of [cblist.sats] *)

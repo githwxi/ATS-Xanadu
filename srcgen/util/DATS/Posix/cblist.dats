@@ -45,16 +45,20 @@ UN = "prelude/SATS/unsafe.sats"
 
 implement
 {}(*tmp*)
-fpath_get_cblist(path) = let
+fpath_get_cblist
+  (path, bsz) = let
 //
 val
 opt =
-fileref_open_opt(path, file_mode_r)
+fileref_open_opt
+(path, file_mode_r)
 //
 in
   case+ opt of
-  | ~None_vt() => None_vt(*void*)
-  | ~Some_vt(filp) => fileref_get_cblist(filp)
+  | ~None_vt() =>
+     None_vt(*void*)
+  | ~Some_vt(inp) =>
+     fileref_get_cblist(inp, bsz)
 //
 end // end of [fpath_get_cblist]
 
@@ -62,7 +66,8 @@ end // end of [fpath_get_cblist]
 
 implement
 {}(*tmp*)
-fpath_get_cblist_vt(path) = let
+fpath_get_cblist_vt
+  (path, bsz) = let
 //
 val
 opt =
@@ -70,19 +75,34 @@ fileref_open_opt(path, file_mode_r)
 //
 in
   case+ opt of
-  | ~None_vt() => None_vt(*void*)
-  | ~Some_vt(filp) => fileref_get_cblist_vt(filp)
+  | ~None_vt() =>
+     None_vt(*void*)
+  | ~Some_vt(inp) =>
+     fileref_get_cblist_vt(inp, bsz)
 //
 end // end of [fpath_get_cblist_vt]
 
 (* ****** ****** *)
 //
 implement
-fileref_get_cblist(inp) =
+fileref_get_cblist(inp, bsz) =
 (
-  $UN.castvwtp0(fileref_get_cblist_vt(inp))
+  $UN.castvwtp0
+    (fileref_get_cblist_vt(inp, bsz))
+  // $UN.castvwtp0
 )
 //
 (* ****** ****** *)
 
-(* end of [Posix_cblist.sats] *)
+implement
+cblist_vt_free(cbs) =
+(
+case+ cbs of
+| ~cblist_vt_nil() => ()
+| ~cblist_vt_cons(n, A, cbs) =>
+   (arrayptr_free(A); cblist_vt_free(cbs))
+)
+
+(* ****** ****** *)
+
+(* end of [Posix_cblist.dats] *)
