@@ -38,16 +38,20 @@
 (* ****** ****** *)
 //
 fun{}
-fpath_get_cblist(inp: string): Option_vt(cblist)
+fpath_get_cblist
+  (inp: string, bsz: Size): Option_vt(cblist)
 fun{}
-fpath_get_cblist_vt(inp: string): Option_vt(cblist_vt)
+fpath_get_cblist_vt
+  (inp: string, bsz: Size): Option_vt(cblist_vt)
 //
 (* ****** ****** *)
 //
 fun//{}
-fileref_get_cblist(inp: FILEref): Option_vt(cblist)
+fileref_get_cblist
+  (inp: FILEref, bsz: Size): Option_vt(cblist)
 fun//{}
-fileref_get_cblist_vt(inp: FILEref): Option_vt(cblist_vt)
+fileref_get_cblist_vt
+  (inp: FILEref, bsz: Size): Option_vt(cblist_vt)
 //
 (* ****** ****** *)
 
