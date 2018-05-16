@@ -38,14 +38,19 @@ cblist =
 | cblist_nil of ()
 | {n:int}
   cblist_cons of
-  (int(n), arrayref(uchar, n), cblist)
+  (size_t(n), arrayref(uchar, n), cblist)
 //
 datavtype
 cblist_vt =
 | cblist_vt_nil of ()
 | {n:int}
   cblist_vt_cons of
-  (int(n), arrayptr(uchar, n), cblist_vt)
+  (size_t(n), arrayptr(uchar, n), cblist_vt)
+//
+(* ****** ****** *)
+//
+castfn
+clist_vt2t(cbs: cblist_vt): cblist
 //
 (* ****** ****** *)
 
