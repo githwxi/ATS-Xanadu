@@ -38,6 +38,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "libats/libc/SATS/stdio.sats"
+
+(* ****** ****** *)
+
 #staload "./../../SATS/cblist.sats"
 #staload "./../../SATS/Posix/cblist.sats"
 
@@ -102,6 +106,52 @@ case+ cbs of
 | ~cblist_vt_cons(n, A, cbs) =>
    (arrayptr_free(A); cblist_vt_free(cbs))
 )
+
+(* ****** ****** *)
+
+implement
+fileref_get_cblist_vt
+  (inp, bsz) = let
+//
+fun
+loop
+(res: &ptr? >> cblist_vt): void =
+(
+if
+fileref_is_eof(inp)
+then
+(
+  res := cblist_vt_nil()
+)
+else
+{
+//
+  val buf =
+  arrayptr_make_uninitized<uchar>(bsz)
+  val bufp = arrayptr2ptr(buf)
+  val nread =
+  $extfcall(Size, "fread", bufp, 1, bsz, inp)
+//
+  val ((*void*)) =
+  res :=
+  cblist_vt_cons(nread, $UN.castvwtp0(buf), _)
+  val+cblist_vt_cons(_, _, res2) = res
+  val ((*void*)) =
+    if:
+    (
+      res2: cblist_vt
+    ) =>
+      (nread > 0)
+      then loop(res2) else (res2 := cblist_vt_nil())
+    // end of [if]
+  prval ((*folded*)) = fold@(res)
+//
+} // else
+) (* end of [if] *)
+//
+in
+  let var res: ptr in loop(res); Some_vt(res) end
+end // end of [fileref_get_cblist_vt]
 
 (* ****** ****** *)
 
