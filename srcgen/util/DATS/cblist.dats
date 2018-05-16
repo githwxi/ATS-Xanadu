@@ -33,48 +33,60 @@
 //
 (* ****** ****** *)
 //
-datatype
-cblist =
-| cblist_nil of ()
-| {n:int}
-  cblist_cons of
-  (size_t(n), arrayref(uchar, n), cblist)
-//
-datavtype
-cblist_vt =
-| cblist_vt_nil of ()
-| {n:int}
-  cblist_vt_cons of
-  (size_t(n), arrayptr(uchar, n), cblist_vt)
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-//
-castfn
-clist_vt2t(cbs: cblist_vt): cblist
-//
+
+#staload "./../SATS/cblist.sats"
+
 (* ****** ****** *)
+
+implement
+cblist_length
+  (cbs) = loop(cbs, 0) where
+{
 //
 fun
-cblist_length(cbs: cblist): intGte(0)
+loop
+(cbs: cblist, res: Nat): Nat =
+(
+case+ cbs of
+| cblist_nil() => res
+| cblist_cons(_, _, cbs) => loop(cbs, res+1)
+)
+//
+} (* end of [cblist_length] *)
+
+(* ****** ****** *)
+//
+implement
+cblist_vt_length
+  (cbs) =
+  cblist_length($UN.castvwtp1{cblist}(cbs))
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+cblist_foreach
+  (cbs) = loop(cbs) where
+{
+//
 fun
-cblist_vt_length(cbs: !cblist_vt): intGte(0)
+loop
+(cbs: cblist): void =
+(
+case+ cbs of
+| cblist_nil() => ()
+| cblist_cons(n, cs, cbs) =>
+  (
+    cblist_foreach$fwork<>(n, cs); loop(cbs)
+  )
+)
 //
-overload length with cblist_length
-overload length with cblist_vt_length
-//
+} (* end of [cblist_foreach] *)
+
 (* ****** ****** *)
 
-fun cblist_vt_free(cbs: cblist_vt): void
-
-(* ****** ****** *)
-
-fun{}
-cblist_foreach(cbs: cblist): void
-fun{}
-cblist_foreach$fwork{n:int}(size_t(n), arrayref(uchar, n)): void
-//
-overload foreach with cblist_foreach
-//
-(* ****** ****** *)
-
-(* end of [cblist.sats] *)
+(* end of [cblist.dats] *)
