@@ -33,34 +33,9 @@
 //
 (* ****** ****** *)
 
-%{#
-#include "CATS/location.cats"
-%} // end of [%{#]
+abstbox filepath_type
+typedef filepath = filepath_type
 
 (* ****** ****** *)
 
-abstbox location_type
-typedef loc_t = location_type
-typedef location = location_type
-
-(* ****** ****** *)
-//
-(*
-HX: atstflat = atst@ype
-*)
-abstflat
-position_t0ype =
-$extype"xats_position_struct"
-  typedef pos_t = position_t0ype
-  typedef position = position_t0ype
-//
-(* ****** ****** *)
-//
-#staload
-FIL = "./filepath.sats"
-  typedef fil_t = $FIL.filepath
-  typedef filepath = $FIL.filepath
-//
-(* ****** ****** *)
-
-(* end of [xats_location.sats] *)
+(* end of [xats_filepath.sats] *)

@@ -32,35 +32,46 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-%{#
-#include "CATS/location.cats"
-%} // end of [%{#]
-
-(* ****** ****** *)
-
-abstbox location_type
-typedef loc_t = location_type
-typedef location = location_type
-
-(* ****** ****** *)
 //
-(*
-HX: atstflat = atst@ype
-*)
-abstflat
-position_t0ype =
-$extype"xats_position_struct"
-  typedef pos_t = position_t0ype
-  typedef position = position_t0ype
+abstbox symbol_tbox // boxed
 //
-(* ****** ****** *)
-//
-#staload
-FIL = "./filepath.sats"
-  typedef fil_t = $FIL.filepath
-  typedef filepath = $FIL.filepath
+typedef symbol = symbol_tbox
+typedef symbolist = List0(symbol)
+typedef symbolopt = Option(symbol)
 //
 (* ****** ****** *)
 
-(* end of [xats_location.sats] *)
+val symbol_nil : symbol // SYMBOL("")
+
+(* ****** ****** *)
+//
+val symbol_ADD : symbol // SYMBOL("+")
+val symbol_SUB : symbol // SYMBOL("-")
+val symbol_MUL : symbol // SYMBOL("*")
+val symbol_DIV : symbol // SYMBOL("/")
+//
+(* ****** ****** *)
+//
+val symbol_LT : symbol // SYMBOL("<")
+val symbol_GT : symbol // SYMBOL(">")
+val symbol_LTEQ : symbol // SYMBOL("<=")
+val symbol_GTEQ : symbol // SYMBOL(">=")
+//
+(* ****** ****** *)
+//
+fun
+symbol_make(name: string): symbol
+//
+(* ****** ****** *)
+//
+fun
+symbol_get_name(symbol):<> string
+fun
+symbol_get_stamp(x: symbol):<> uint
+//
+overload .name with symbol_get_name
+overload .stamp with symbol_get_stamp
+//
+(* ****** ****** *)
+
+(* end of [xats_symbol.sats] *)
