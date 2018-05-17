@@ -123,8 +123,7 @@ then
 (
   res := cblist_vt_nil()
 )
-else
-{
+else let
 //
   val buf =
   arrayptr_make_uninitized<uchar>(bsz)
@@ -132,21 +131,25 @@ else
   val nread =
   $extfcall(Size, "fread", bufp, 1, bsz, inp)
 //
-  val ((*void*)) =
-  res :=
-  cblist_vt_cons(nread, $UN.castvwtp0(buf), _)
-  val+cblist_vt_cons(_, _, res2) = res
-  val ((*void*)) =
-    if:
-    (
-      res2: cblist_vt
-    ) =>
-      (nread > 0)
-      then loop(res2) else (res2 := cblist_vt_nil())
-    // end of [if]
-  prval ((*folded*)) = fold@(res)
-//
-} // else
+in
+  if
+  (nread > 0)
+  then let
+    val ((*void*)) =
+    res :=
+    cblist_vt_cons
+    (nread, $UN.castvwtp0(buf), _)
+    val+cblist_vt_cons(_, _, res2) = res
+    val ((*void*)) = loop(res2)
+    prval ((*folded*)) = fold@(res)
+  in
+    // nothing
+  end // end of [then]
+  else let
+    val () =
+    arrayptr_free(buf) in res := cblist_vt_nil()
+  end // end of [else]
+end // else
 ) (* end of [if] *)
 //
 in
