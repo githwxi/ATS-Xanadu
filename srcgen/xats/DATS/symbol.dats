@@ -42,6 +42,17 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+extern
+fun
+symbol_insert(symbol): void
+extern
+fun
+symbol_search
+( key: string
+, res: &symbol? >> opt(symbol, b)): #[b:bool] bool(b)
+
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
@@ -65,36 +76,28 @@ end // end of [theStamp_getinc]
 
 (* ****** ****** *)
 
-extern
-fun
-symbol_insert(symbol): void
-extern
-fun
-symbol_search
-(name: string, res: &symbol? >> _): bool
-
-(* ****** ****** *)
-
 in (* in-of-local *)
 
 implement
 symbol_make(name) = let
 //
-var res: symbol
+var res: symbol?
 val ans = symbol_search(name, res)
 //
 in
 //
 case+ ans of
-| true => res
-| false => sym where
-  {
+| true =>
+  opt_unsome_get(res)
+| false => let
     val stm =
     theStamp_getinc()
     val sym =
     $rec{name=name,stamp=stm}
-    val ((*void*)) = symbol_insert(sym)
-  } (* end of [false] *)
+    prval ((*void*)) = opt_unnone(res)
+  in
+    let val () = symbol_insert(sym) in sym end
+  end (* end of [false] *)
 //
 end // end of [symbol_make]
 
@@ -106,6 +109,69 @@ implement
 symbol_get_stamp(x) = x.stamp
 
 (* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+#staload "libats/SATS/hashtbl_chain.sats"
+//
+#staload _(*anon*) = "libats/DATS/qlist.dats"
+//
+#staload _(*anon*) = "libats/DATS/hashfun.dats"
+#staload _(*anon*) = "libats/DATS/linmap_list.dats"
+#staload _(*anon*) = "libats/DATS/hashtbl_chain.dats"
+//
+typedef key = string
+typedef itm = symbol
+vtypedef hashtbl = hashtbl(key, itm)
+//
+val
+theCap = 1024
+val
+theHashtbl = 
+hashtbl_make_nil(i2sz(theCap))
+val
+theHashtbl = $UN.castvwtp0{ptr}(theHashtbl)
+//
+in (* in of local *)
+
+implement
+symbol_insert
+  (sym) = let
+//
+val key = sym.name()
+//
+val tbl =
+  $UN.castvwtp0{hashtbl}(theHashtbl)
+//
+var res: itm
+val ans =
+  hashtbl_insert<key,itm>(tbl, key, sym, res)
+//
+prval ((*void*)) = opt_clear(res)
+prval ((*void*)) = $UN.cast2void(tbl)
+//
+in
+  // nothing
+end // end of [symbol_insert]
+
+(* ****** ****** *)
+
+implement
+symbol_search
+  (name, res) = let
+//
+val tbl =
+  $UN.castvwtp0{hashtbl}(theHashtbl)
+val ans =
+  hashtbl_search<key,itm>(tbl, name, res)
+//
+in
+  let prval ((*void*)) = $UN.cast2void(tbl) in ans end  
+end // end of [symbol_search]
 
 end // end of [local]
 
