@@ -59,6 +59,13 @@ val symbol_GTEQ : symbol // SYMBOL(">=")
 //
 (* ****** ****** *)
 //
+val symbol_EQ : symbol // SYMBOL("=")
+val symbol_EQEQ : symbol // SYMBOL("==")
+val symbol_LTGT : symbol // SYMBOL("<>")
+val symbol_BANGEQ : symbol // SYMBOL("!=")
+//
+(* ****** ****** *)
+//
 fun
 symbol_make(name: string): symbol
 //

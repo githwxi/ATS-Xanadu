@@ -207,4 +207,26 @@ symbol_DIV = symbol_make("/")
 
 (* ****** ****** *)
 
+implement
+symbol_LT = symbol_make("<")
+implement
+symbol_GT = symbol_make(">")
+implement
+symbol_LTEQ = symbol_make("<=")
+implement
+symbol_GTEQ = symbol_make(">=")
+
+(* ****** ****** *)
+
+implement
+symbol_EQ = symbol_make("=")
+implement
+symbol_EQEQ = symbol_make("==")
+implement
+symbol_LTGT = symbol_make("<>")
+implement
+symbol_BANGEQ = symbol_make("!=")
+
+(* ****** ****** *)
+
 (* end of [xats_symbol.dats] *)
