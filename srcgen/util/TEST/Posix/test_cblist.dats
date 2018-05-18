@@ -32,6 +32,12 @@ in
 end // end of [local]
 
 (* ****** ****** *)
+//
+val () =
+println!
+("Hello from [test_cblist]!")
+//
+(* ****** ****** *)
 
 val opt =
 fpath_get_cblist
