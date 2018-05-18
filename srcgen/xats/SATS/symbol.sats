@@ -73,5 +73,18 @@ overload .name with symbol_get_name
 overload .stamp with symbol_get_stamp
 //
 (* ****** ****** *)
+//
+fun
+print_symbol : (symbol) -> void
+fun
+prerr_symbol : (symbol) -> void
+fun
+fprint_symbol : (FILEref, symbol) -> void
+//
+overload print with print_symbol
+overload prerr with prerr_symbol
+overload fprint with fprint_symbol
+//
+(* ****** ****** *)
 
 (* end of [xats_symbol.sats] *)

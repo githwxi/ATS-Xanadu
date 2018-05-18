@@ -176,5 +176,35 @@ end // end of [symbol_search]
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+print_symbol
+  (x) = fprint_symbol(stdout_ref, x)
+implement
+prerr_symbol
+  (x) = fprint_symbol(stderr_ref, x)
+//
+implement
+fprint_symbol
+  (out, x) =
+  fprint!(out, x.name(), "(", x.stamp(), ")")
+//
+(* ****** ****** *)
+
+implement
+symbol_nil = symbol_make("")
+
+(* ****** ****** *)
+
+implement
+symbol_ADD = symbol_make("+")
+implement
+symbol_SUB = symbol_make("-")
+implement
+symbol_MUL = symbol_make("*")
+implement
+symbol_DIV = symbol_make("/")
+
+(* ****** ****** *)
 
 (* end of [xats_symbol.dats] *)
