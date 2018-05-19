@@ -33,29 +33,20 @@
 //
 (* ****** ****** *)
 
-abstbox filepath_type
-typedef filepath = filepath_type
-
-(* ****** ****** *)
-//
-fun eq_filepath_filepath
-  (x1: filepath, x2: filepath):<> bool
-fun neq_filepath_filepath
-  (x1: filepath, x2: filepath):<> bool
-//
-fun compare_filepath_filepath
-  (x1: filepath, x2: filepath):<> Sgn
-//
-overload = with eq_filepath_filepath
-overload != with neq_filepath_filepath
-overload compare with compare_filepath_filepath
-//
-(* ****** ****** *)
-
-fun print_filepath_full(fil: filepath): void
-fun prerr_filepath_full(fil: filepath): void
-fun fprint_filepath_full(out: FILEref, fil: filepath): void
+#staload
+UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-(* end of [xats_filepath.sats] *)
+#staload "./../SATS/filepath.sats"
+
+(* ****** ****** *)
+//
+implement
+eq_filepath_filepath(x, y) = (compare(x, y) = 0)
+implement
+neq_filepath_filepath(x, y) = (compare(x, y) != 0)
+//
+(* ****** ****** *)
+
+(* end of [xats_filepath.dats] *)
