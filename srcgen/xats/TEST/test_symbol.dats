@@ -10,8 +10,7 @@
 //
 (* ****** ****** *)
 //
-#staload
-"./../SATS/symbol.sats"
+#staload "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
 

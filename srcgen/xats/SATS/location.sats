@@ -62,5 +62,31 @@ FIL = "./filepath.sats"
   typedef filepath = $FIL.filepath
 //
 (* ****** ****** *)
+//
+fun
+position_get_ntot : position -> int
+fun
+position_get_nrow : position -> int
+fun
+position_get_ncol : position -> int
+//
+overload .ntot with position_get_ntot
+overload .nrow with position_get_nrow
+overload .ncol with position_get_ncol
+//
+(* ****** ****** *)
+//
+fun
+print_position(pos: position): void
+fun
+prerr_position(pos: position): void
+fun
+fprint_position(out: FILEref, pos: position): void
+//
+overload print with print_position
+overload prerr with prerr_position
+overload fprint with fprint_position
+//
+(* ****** ****** *)
 
 (* end of [xats_location.sats] *)

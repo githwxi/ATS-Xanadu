@@ -33,35 +33,73 @@
 //
 (* ****** ****** *)
 
-abstbox filepath_type
-typedef filepath = filepath_type
+#staload
+UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-fun theDirSep_get(): char
-fun theCurDir_get(): string
-fun theParDir_get(): string
-
-(* ****** ****** *)
-//
-fun eq_filepath_filepath
-  (x1: filepath, x2: filepath):<> bool
-fun neq_filepath_filepath
-  (x1: filepath, x2: filepath):<> bool
-//
-fun compare_filepath_filepath
-  (x1: filepath, x2: filepath):<> Sgn
-//
-overload = with eq_filepath_filepath
-overload != with neq_filepath_filepath
-overload compare with compare_filepath_filepath
-//
-(* ****** ****** *)
-
-fun print_filepath_full(fil: filepath): void
-fun prerr_filepath_full(fil: filepath): void
-fun fprint_filepath_full(out: FILEref, fil: filepath): void
+#staload "./../SATS/location.sats"
 
 (* ****** ****** *)
 
-(* end of [xats_filepath.sats] *)
+local
+
+(* ****** ****** *)
+
+absimpl
+position_t0ype =
+$extype_struct
+"pats_position_struct" of
+{
+  ntot= int, nrow= int, ncol= int
+} // end of [position_t0ype]
+
+(* ****** ****** *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement position_get_ntot(pos) = pos.ntot
+implement position_get_nrow(pos) = pos.nrow
+implement position_get_ncol(pos) = pos.ncol
+
+(* ****** ****** *)
+//
+implement
+print_position
+  (pos) = fprint_position(stdout_ref, pos)
+implement
+prerr_position
+  (pos) = fprint_position(stderr_ref, pos)
+//
+(* ****** ****** *)
+
+implement
+fprint_position
+  (out, pos) = let
+//
+val ntot = pos.ntot
+val nrow = pos.nrow
+val ncol = pos.ncol
+//
+in
+//
+$extfcall
+(
+  void
+,
+  "fprintf"
+,
+  out, "%li(line=%i, offs=%i)", @(ntot+1, nrow+1, ncol+1)
+) (* end of [val] *)
+//
+end // end of [fprint_position]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+(* end of [xats_location.dats] *)
