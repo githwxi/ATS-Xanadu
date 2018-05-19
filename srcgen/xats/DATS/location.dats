@@ -91,7 +91,7 @@ $extfcall
 ,
   "fprintf"
 ,
-  out, "%li(line=%i, offs=%i)", @(ntot+1, nrow+1, ncol+1)
+  out, "%i(line=%i, offs=%i)", ntot+1, nrow+1, ncol+1
 ) (* end of [val] *)
 //
 end // end of [fprint_position]
