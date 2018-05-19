@@ -33,61 +33,50 @@
 //
 (* ****** ****** *)
 
-#staload "./location.sats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
-//
-datatype
-tnode =
-//
-  | T_EOF of ()
-  | T_ERR of ()
-//
-  | T_COMMENT_line of () // line comment
-  | T_COMMENT_rest of () // rest-of-file
-  | T_COMMENT_block of () // block comment
-//
-abstbox token_tbox
-//
-(*
-typedef
-token =
+
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/location.sats"
+
+(* ****** ****** *)
+
+local
+
+absimpl
+token_tbox = $rec{
+token_loc= loc_t, token_node= tnode
+} (* token_tbox *)
+
+in (* in-of-local *)
+
+implement
+{}(*tmp*)
+token_make(loc, node) =
 $rec{
-  token_loc= loc_t, token_node= tnode
-} (* end of [token] *)
-*)
-//
-typedef token = token_tbox
-typedef tokenopt = Option(token)
-vtypedef tokenopt_vt = Option_vt(token)
-//
-(* ****** ****** *)
+  token_loc= loc, token_node= node
+} (* end of [token_make] *)
 
-fun{}
-token_make
-(loc: loc_t, node: tnode): token
-// end of [token_make]
+implement
+{}(*tmp*)
+token_get_loc(tok) = tok.token_loc
+implement
+{}(*tmp*)
+token_get_node(tok) = tok.token_node
 
-fun{}
-token_get_loc(token): loc_t
-fun{}
-token_get_node(token): tnode
-overload .loc with token_get_loc
-overload .node with token_get_node
+end // end of [local]
 
 (* ****** ****** *)
 //
-fun
-print_token : (token) -> void
-fun
-prerr_token : (token) -> void
-fun
-fprint_token : (FILEref, token) -> void
-//
-overload print with print_token
-overload prerr with prerr_token
-overload fprint with fprint_token
+implement
+print_token
+  (tok) = fprint_token(stdout_ref, tok)
+implement
+prerr_token
+  (tok) = fprint_token(stderr_ref, tok)
 //
 (* ****** ****** *)
 
-(* end of [xats_lexing.sats] *)
+(* end of [xats_lexing_token.dats] *)
