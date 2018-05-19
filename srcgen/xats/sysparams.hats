@@ -32,36 +32,13 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-abstbox filepath_type
-typedef filepath = filepath_type
-
-(* ****** ****** *)
-
-fun theDirSep_get(): char
-fun theCurDir_get(): string
-fun theParDir_get(): string
-
+//
+#define SYSTEM_IS_UNIX_LIKE 1
+//
 (* ****** ****** *)
 //
-fun eq_filepath_filepath
-  (x1: filepath, x2: filepath):<> bool
-fun neq_filepath_filepath
-  (x1: filepath, x2: filepath):<> bool
-//
-fun compare_filepath_filepath
-  (x1: filepath, x2: filepath):<> Sgn
-//
-overload = with eq_filepath_filepath
-overload != with neq_filepath_filepath
-overload compare with compare_filepath_filepath
+#define SYSTEM_IS_WINDOWS_LIKE 0
 //
 (* ****** ****** *)
 
-fun print_filepath_full(fil: filepath): void
-fun prerr_filepath_full(fil: filepath): void
-fun fprint_filepath_full(out: FILEref, fil: filepath): void
-
-(* ****** ****** *)
-
-(* end of [xats_filepath.sats] *)
+(* end of [sysparams.hats] *)

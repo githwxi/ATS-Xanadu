@@ -41,11 +41,36 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/filepath.sats"
 
 (* ****** ****** *)
+
+local
+//
+#include
+"./../sysparams.hats"
+//
+#if SYSTEM_IS_UNIX_LIKE #then
+//
+val theDirSep: char = '/'
+val theCurDir: string = "./"
+val theParDir: string = "../"
+//
+#endif
+
+in (* in of [local] *)
+
+implement theDirSep_get() = theDirSep
+implement theCurDir_get() = theCurDir
+implement theParDir_get() = theParDir
+
+end // end of [local]
+
+(* ****** ****** *)
 //
 implement
-eq_filepath_filepath(x, y) = (compare(x, y) = 0)
+eq_filepath_filepath
+  (x, y) = (compare(x, y) = 0)
 implement
-neq_filepath_filepath(x, y) = (compare(x, y) != 0)
+neq_filepath_filepath
+  (x, y) = (compare(x, y) != 0)
 //
 (* ****** ****** *)
 
