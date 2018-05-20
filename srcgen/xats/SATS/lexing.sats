@@ -43,9 +43,34 @@ tnode =
   | T_EOF of ()
   | T_ERR of ()
 //
+  | T_IDENT_alp of string // alnum
+  | T_IDENT_sym of string // symbol
+//
+  | T_INT of (string)
+  | T_INT of (int(*base*), string(*rep*), uint(*suffix*))
+//
+  | T_CHAR of (int) // ascii
+  | T_STRING of (string) // utf-8 // for text
+//
+  | T_FLOAT of (string(*rep*))
+  | T_FLOAT of (int(*base*), string(*rep*), uint(*suffix*))
+//
+  | {n:int}
+    T_CDATA of (arrayref(char, n), size_t(n)) // binaries
+//
+  | T_COMMA of () // ,
+  | T_SEMICOLON of () // ;
+//
+  | T_LPAREN of () // (
+  | T_RPAREN of () // )
+  | T_LBRACE of () // {
+  | T_RBRACE of () // }
+  | T_LBRACKET of () // [
+  | T_RBRACKET of () // ]
+//
   | T_COMMENT_line of () // line comment
   | T_COMMENT_rest of () // rest-of-file
-  | T_COMMENT_block of () // block comment
+  | T_COMMENT_block of () // (embeddable) block comment
 //
 abstbox token_tbox
 //
@@ -88,6 +113,10 @@ overload print with print_token
 overload prerr with prerr_token
 overload fprint with fprint_token
 //
+(* ****** ****** *)
+
+fun tnode_is_comment(tnode): bool
+
 (* ****** ****** *)
 
 (* end of [xats_lexing.sats] *)
