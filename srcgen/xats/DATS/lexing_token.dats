@@ -145,4 +145,43 @@ tnode_is_comment
 
 (* ****** ****** *)
 
+local
+//
+#staload
+"libats/SATS/hashtbl_linprb.sats"
+//
+typedef key = string and itm = tnode
+vtypedef hashtbl = hashtbl(key, itm)
+//
+val
+theCap = 229
+val
+theHashtbl = 
+hashtbl_make_nil(i2sz(theCap))
+val
+theHashtbl = $UN.castvwtp0{ptr}(theHashtbl)
+//
+in (* in-of-local *)
+
+implement
+tnode_search(name) = let
+//
+  var res: itm?
+//
+  val tbl =
+  $UN.castvwtp0{hashtbl}(theHashtbl)
+  val ans =
+  hashtbl_search<key,itm>(tbl, name, res)
+  prval ((*void*)) = $UN.cast2void(tbl)
+//
+in
+  if (ans)
+  then opt_unsome_get(res)
+  else let prval () = opt_unnone(res) in T_ERR() end
+end // end of [tnode_search]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_lexing_token.dats] *)
