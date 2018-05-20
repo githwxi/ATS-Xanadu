@@ -1,0 +1,14 @@
+######
+#
+# For some stats
+#
+######
+
+WCL=wc -l
+
+######
+
+srclines: ; $(WCL) \
+SATS/*.sats DATS/*.dats CATS/*.cats
+
+###### end of [Makefile_stat] ######

@@ -170,7 +170,7 @@ val ans =
   hashtbl_search<key,itm>(tbl, name, res)
 //
 in
-  let prval ((*void*)) = $UN.cast2void(tbl) in ans end  
+  let prval ((*void*)) = $UN.cast2void(tbl) in ans end
 end // end of [symbol_search]
 
 end // end of [local]

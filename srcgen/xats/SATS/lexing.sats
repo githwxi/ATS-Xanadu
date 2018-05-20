@@ -118,5 +118,13 @@ overload fprint with fprint_token
 fun tnode_is_comment(tnode): bool
 
 (* ****** ****** *)
+//
+// HX:
+// Check if a name refers to a special token;
+// if the return is not T_NONE, then it does
+//
+fun tnode_search(name: string): tnode
+//
+(* ****** ****** *)
 
 (* end of [xats_lexing.sats] *)
