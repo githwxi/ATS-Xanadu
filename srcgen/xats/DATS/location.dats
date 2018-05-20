@@ -102,4 +102,32 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+location_type =
+'{
+//
+  filepath=
+  filepath // filepath
+//
+, beg_ntot= int // beginning char position
+, beg_nrow= int
+, beg_ncol= int
+, end_ntot= int // finishing char position
+, end_nrow= int
+, end_ncol= int
+//
+(*
+, locpragma= locpragma
+*)
+//
+} (* end of [location_type] *)
+
+in (* in-of-local *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_location.dats] *)

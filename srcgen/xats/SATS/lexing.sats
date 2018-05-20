@@ -43,6 +43,9 @@ tnode =
   | T_EOF of ()
   | T_ERR of ()
 //
+  | T_AT of ()
+  | T_BANG of ()
+//
   | T_IDENT_alp of string // alnum
   | T_IDENT_sym of string // symbol
 //
@@ -121,7 +124,7 @@ fun tnode_is_comment(tnode): bool
 //
 // HX:
 // Check if a name refers to a special token;
-// if the return is not T_NONE, then it does
+// if the return is not T_EOF(), then it does
 //
 fun tnode_search(name: string): tnode
 //

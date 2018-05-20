@@ -41,9 +41,22 @@ test_location
 test_location: \
 test_location_dats
 test_location_dats: \
-test_location.dats; $(PATSCC) -I./.. $< -o $@
+test_location.dats; \
+$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
 regress:: test_location_dats; ./test_location_dats
 cleanall:: ; $(RMF) test_location_dats
+
+######
+
+all:: \
+test_lexing_token
+test_lexing_token: \
+test_lexing_token_dats
+test_lexing_token_dats: \
+test_lexing_token.dats; \
+$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
+regress:: test_lexing_token_dats; ./test_lexing_token_dats
+cleanall:: ; $(RMF) test_lexing_token_dats
 
 ######
 
