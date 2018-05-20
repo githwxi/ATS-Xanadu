@@ -147,7 +147,7 @@ val key = sym.name()
 val tbl =
   $UN.castvwtp0{hashtbl}(theHashtbl)
 //
-var res: itm
+var res: itm?
 val ans =
   hashtbl_insert<key,itm>(tbl, key, sym, res)
 //

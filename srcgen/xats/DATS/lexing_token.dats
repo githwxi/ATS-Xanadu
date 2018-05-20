@@ -88,6 +88,9 @@ case+ tok.node() of
 | T_EOF() => fprint(out, "EOF")
 | T_ERR() => fprint(out, "ERR")
 //
+| T_AT() => fprint(out, "AT")
+| T_BANG() => fprint(out, "BANG")
+//
 | T_IDENT_alp(x) =>
   fprint!(out, "IDENT_alp(", x, ")")
 | T_IDENT_sym(x) =>
@@ -144,11 +147,23 @@ tnode_is_comment
 )
 
 (* ****** ****** *)
+//
+extern
+fun
+tnode_insert
+(name: string, node: tnode): void
+//
+(* ****** ****** *)
 
 local
 //
 #staload
 "libats/SATS/hashtbl_linprb.sats"
+//
+#staload
+_(*anon*) = "libats/DATS/hashfun.dats"
+#staload
+_(*anon*) = "libats/DATS/hashtbl_linprb.dats"
 //
 typedef key = string and itm = tnode
 vtypedef hashtbl = hashtbl(key, itm)
@@ -157,7 +172,7 @@ val
 theCap = 229
 val
 theHashtbl = 
-hashtbl_make_nil(i2sz(theCap))
+hashtbl_make_nil<key,itm>(i2sz(theCap))
 val
 theHashtbl = $UN.castvwtp0{ptr}(theHashtbl)
 //
@@ -166,21 +181,51 @@ in (* in-of-local *)
 implement
 tnode_search(name) = let
 //
-  var res: itm?
+var res: itm?
 //
-  val tbl =
-  $UN.castvwtp0{hashtbl}(theHashtbl)
-  val ans =
-  hashtbl_search<key,itm>(tbl, name, res)
-  prval ((*void*)) = $UN.cast2void(tbl)
+val tbl =
+$UN.castvwtp0{hashtbl}(theHashtbl)
+val ans =
+hashtbl_search<key,itm>(tbl, name, res)
+prval ((*void*)) = $UN.cast2void(tbl)
 //
 in
   if (ans)
   then opt_unsome_get(res)
-  else let prval () = opt_unnone(res) in T_ERR() end
+  else let
+    prval () = opt_unnone(res) in T_EOF()
+  end // end of [else]
 end // end of [tnode_search]
 
+(* ****** ****** *)
+
+implement
+tnode_insert
+(name, node) = let
+//
+var res: itm?
+val tbl =
+$UN.castvwtp0{hashtbl}(theHashtbl)
+val ans =
+hashtbl_insert<key,itm>(tbl, name, node, res)
+//
+val ((*void*)) = assertloc(ans = false)
+//
+prval ((*void*)) = opt_clear(res)
+prval ((*void*)) = $UN.cast2void(tbl)
+//
+in
+  // nothing
+end // end of [tnode_insert]
+
 end // end of [local]
+
+(* ****** ****** *)
+
+(*
+val () = tnode_insert("@", T_AT)
+val () = tnode_insert("!", T_BANG)
+*)
 
 (* ****** ****** *)
 
