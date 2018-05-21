@@ -33,6 +33,10 @@
 //
 (* ****** ****** *)
 
+#staload SYM = "./symbol.sats"
+
+(* ****** ****** *)
+
 abstbox filepath_type
 typedef filepath = filepath_type
 
@@ -50,7 +54,7 @@ fun neq_filepath_filepath
   (x1: filepath, x2: filepath):<> bool
 //
 fun compare_filepath_filepath
-  (x1: filepath, x2: filepath):<> Sgn
+  (x1: filepath, x2: filepath):<> (Sgn)
 //
 overload = with eq_filepath_filepath
 overload != with neq_filepath_filepath
@@ -62,6 +66,14 @@ fun print_filepath_full(fil: filepath): void
 fun prerr_filepath_full(fil: filepath): void
 fun fprint_filepath_full(out: FILEref, fil: filepath): void
 
+(* ****** ****** *)
+//
+fun
+filepath_get_full
+  (fp: filepath):<> $SYM.symbol
+//
+overload .full with filepath_get_full
+//
 (* ****** ****** *)
 
 (* end of [xats_filepath.sats] *)
