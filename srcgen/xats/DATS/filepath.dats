@@ -37,9 +37,37 @@
 UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
+//
+#staload
+SYM = "./../SATS/symbol.sats"
+  typedef symbol = $SYM.symbol
+//
+(* ****** ****** *)
 
 #staload "./../SATS/filepath.sats"
 
+(* ****** ****** *)
+
+local
+
+absimpl
+filepath_type = $rec
+{
+  filepath_kind= int
+, filepath_givename= string
+, filepath_partpath= string
+, filepath_fullpath= symbol
+} (* end of [filepath_type] *)
+
+in (* nothing *) end // end-of-local
+
+(* ****** ****** *)
+//
+implement
+filepath_get_full(fp) =
+  fp.filepath_fullpath
+  where { absreimpl filepath_type }
+//
 (* ****** ****** *)
 
 local
@@ -72,6 +100,22 @@ implement
 neq_filepath_filepath
   (x, y) = (compare(x, y) != 0)
 //
+(* ****** ****** *)
+
+implement
+compare_filepath_filepath
+  (x1, x2) = let
+//
+val f1 =
+$SYM.symbol_get_name(x1.full())
+//
+val f2 =
+$SYM.symbol_get_name(x2.full())
+//
+in
+  compare_string_string(f1, f2)
+end // end of [compare_filepath_filepath]
+
 (* ****** ****** *)
 
 (* end of [xats_filepath.dats] *)

@@ -222,10 +222,8 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(*
 val () = tnode_insert("@", T_AT)
 val () = tnode_insert("!", T_BANG)
-*)
 
 (* ****** ****** *)
 
