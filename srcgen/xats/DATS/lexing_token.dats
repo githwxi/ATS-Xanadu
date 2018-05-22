@@ -222,6 +222,19 @@ end // end of [local]
 
 (* ****** ****** *)
 
+(*
+extern val T_DOT : tnode
+*)
+extern val T_QMARK : tnode
+extern val T_PERCENT : tnode
+(*
+implement T_DOT = T_IDENT_alp "."
+*)
+implement T_QMARK = T_IDENT_alp "?"
+implement T_PERCENT = T_IDENT_alp "%"
+
+(* ****** ****** *)
+
 val () = tnode_insert("@", T_AT)
 val () = tnode_insert("!", T_BANG)
 

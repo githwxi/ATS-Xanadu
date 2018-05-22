@@ -47,12 +47,12 @@ local
 (* ****** ****** *)
 
 absimpl
-position_t0ype =
+position_tflat =
 $extype_struct
 "pats_position_struct" of
 {
   ntot= int, nrow= int, ncol= int
-} // end of [position_t0ype]
+} // end of [position_tflat]
 
 (* ****** ****** *)
 

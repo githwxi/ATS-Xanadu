@@ -32,9 +32,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./location.sats"
-
+//
+#staload LOC = "./location.sats"
+  typedef loc_t = $LOC.location
+//
 (* ****** ****** *)
 //
 datatype

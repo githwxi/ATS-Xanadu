@@ -32,61 +32,13 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-%{#
-#include "CATS/location.cats"
-%} // end of [%{#]
-
-(* ****** ****** *)
-
-abstbox location_type
-typedef loc_t = location_type
-typedef location = location_type
-
-(* ****** ****** *)
 //
-(*
-HX: atstflat = atst@ype
-*)
 abstflat
-position_tflat =
-$extype"xats_position_struct"
-  typedef pos_t = position_tflat
-  typedef position = position_tflat
+lexbuf_tflat =
+$extype"xats_lexbuf_struct"
 //
-(* ****** ****** *)
-//
-#staload
-FIL = "./filepath.sats"
-  typedef fil_t = $FIL.filepath
-  typedef filepath = $FIL.filepath
-//
-(* ****** ****** *)
-//
-fun
-position_get_ntot : position -> int
-fun
-position_get_nrow : position -> int
-fun
-position_get_ncol : position -> int
-//
-overload .ntot with position_get_ntot
-overload .nrow with position_get_nrow
-overload .ncol with position_get_ncol
-//
-(* ****** ****** *)
-//
-fun
-print_position(pos: position): void
-fun
-prerr_position(pos: position): void
-fun
-fprint_position(out: FILEref, pos: position): void
-//
-overload print with print_position
-overload prerr with prerr_position
-overload fprint with fprint_position
+  typedef lexbuf = lexbuf_tflat
 //
 (* ****** ****** *)
 
-(* end of [xats_location.sats] *)
+(* end of [xats_lexbuf.sats] *)
