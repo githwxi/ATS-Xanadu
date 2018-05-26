@@ -33,12 +33,25 @@
 //
 (* ****** ****** *)
 //
+#staload
+"./../../util/SATS/cblist.sats"
+//
+(* ****** ****** *)
+//
 abstflat
 lexbuf_tflat =
 $extype"xats_lexbuf_struct"
 //
   typedef lexbuf = lexbuf_tflat
 //
+(* ****** ****** *)
+
+fun
+lexbuf_initize_cblist
+(
+  buf: &lexbuf? >> lexbuf, inp: cblist
+) : void // end of [lexbuf_initize_charlst_vt]
+
 (* ****** ****** *)
 
 (* end of [xats_lexbuf.sats] *)
