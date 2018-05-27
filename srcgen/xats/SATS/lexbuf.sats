@@ -57,7 +57,7 @@ $extype"xats_lexbuf_struct"
 fun
 lexbuf_initize_cblist
 (
-  buf: &lexbuf? >> lexbuf, inp: cblist
+  buf: &lexbuf? >> lexbuf, cbs: cblist
 ) : void // end of [lexbuf_initize_cblist]
 
 (* ****** ****** *)
