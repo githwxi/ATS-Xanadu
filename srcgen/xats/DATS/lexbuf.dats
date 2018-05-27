@@ -37,11 +37,28 @@
 UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
-
+//
 #staload "./../SATS/lexbuf.sats"
-
+//
 (* ****** ****** *)
-
+//
+typedef
+lexbuf_int_int
+(m: int, n:int) =
+$extype_struct
+"xats_lexbuf_struct" of
+{
+  ntot= int
+, nrow= int
+, ncol= int
+, nspc= int
+, cbuf= string
+, cptr0= ptr, cptr1= ptr
+, cptr0= arrayref(uchar,0), cbtail= cblist
+} (* end of [lexbuf] *)
+//
+typedef lexbuf0 = lexbuf_int_int(0, 0)?
+//
 (* ****** ****** *)
 
 (* end of [xats_lexbuf.dats] *)

@@ -32,9 +32,17 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+%{#
+#include "CATS/lexbuf.cats"
+%} // end of [%{#]
+
+(* ****** ****** *)
 //
-#staload
+#staload CBS =
 "./../../util/SATS/cblist.sats"
+//
+typedef cblist = $CBS.cblist
 //
 (* ****** ****** *)
 //
@@ -50,7 +58,7 @@ fun
 lexbuf_initize_cblist
 (
   buf: &lexbuf? >> lexbuf, inp: cblist
-) : void // end of [lexbuf_initize_charlst_vt]
+) : void // end of [lexbuf_initize_cblist]
 
 (* ****** ****** *)
 
