@@ -65,6 +65,11 @@ val symbol_LTGT : symbol // SYMBOL("<>")
 val symbol_BANGEQ : symbol // SYMBOL("!=")
 //
 (* ****** ****** *)
+
+val symbol__STDIN__ : symbol // SYMBOL("__STDIN__")
+val symbol__STRING__ : symbol // SYMBOL("__STRING__")
+
+(* ****** ****** *)
 //
 fun
 symbol_make(name: string): symbol

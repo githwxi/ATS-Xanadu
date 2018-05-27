@@ -118,4 +118,38 @@ end // end of [compare_filepath_filepath]
 
 (* ****** ****** *)
 
+local
+
+absreimpl filepath_type
+
+in (* in-of-local *)
+
+implement
+the_filepath_dummy = $rec{
+  filepath_kind= 0
+, filepath_givename= ""
+, filepath_partname= ""
+, filepath_fullname= $SYM.symbol_nil
+} // end of [the_filepath_dummy]
+
+implement
+the_filepath_stdin = $rec{
+  filepath_kind= 0
+, filepath_givename= "__STDIN__"
+, filepath_partname= "__STDIN__"
+, filepath_fullname= $SYM.symbol__STDIN__
+} // end of [the_filepath_stdin]
+
+implement
+the_filepath_string = $rec{
+  filepath_kind= 0
+, filepath_givename= "__STRING__"
+, filepath_partname= "__STRING__"
+, filepath_fullname= $SYM.symbol__STRING__
+} // end of [the_filepath_string]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_filepath.dats] *)
