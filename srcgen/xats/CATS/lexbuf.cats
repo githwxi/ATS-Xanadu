@@ -61,6 +61,8 @@ typedef struct {
 //
   atstype_int nspc ; // leading space
 //
+  atstype_void cbuf ; // prefix
+//
   atstype_void cptr0 ; // start
   atstype_void cptr1 ; // finish
   atstype_void cbhead ; // 1st cblock

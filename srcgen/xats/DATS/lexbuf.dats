@@ -42,9 +42,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-typedef
-lexbuf_int_int
-(m: int, n:int) =
+assume
+lexbuf_tflat =
 $extype_struct
 "xats_lexbuf_struct" of
 {
@@ -52,13 +51,35 @@ $extype_struct
 , nrow= int
 , ncol= int
 , nspc= int
-, cbuf= string
+, cbuf= stropt
 , cptr0= ptr, cptr1= ptr
-, cptr0= arrayref(uchar,0), cbtail= cblist
+, cbhead= arrayref(uchar,0), cbtail= cblist
 } (* end of [lexbuf] *)
 //
-typedef lexbuf0 = lexbuf_int_int(0, 0)?
+(* ****** ****** *)
+
+implement
+lexbuf_initize_cblist
+  (buf, cbs) = let
 //
+val () = buf.ntot := 0
+val () = buf.nrow := 0
+val () = buf.ncol := 0
+//
+val () = buf.nspc := 0
+//
+val () = buf.cbuf := stropt_none()
+//
+val () = buf.cptr0 := the_null_ptr
+val () = buf.cptr1 := the_null_ptr
+//
+val () = buf.cbtail := cbs//char-block-list
+val () = buf.cbhead := $UN.cast(the_null_ptr)
+//
+in
+  // nothing
+end // end of [lexbuf_initize_cblist]
+
 (* ****** ****** *)
 
 (* end of [xats_lexbuf.dats] *)
