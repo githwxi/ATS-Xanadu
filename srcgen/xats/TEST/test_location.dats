@@ -16,6 +16,8 @@
 
 local
 //
+#include "./../DATS/symbol.dats"
+#include "./../DATS/filepath.dats"
 #include "./../DATS/location.dats"
 //
 in
