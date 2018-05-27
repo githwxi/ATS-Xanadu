@@ -77,6 +77,19 @@ overload .ncol with position_get_ncol
 (* ****** ****** *)
 //
 fun
+position_set_ntot : (position, int) -> void
+fun
+position_set_nrow : (position, int) -> void
+fun
+position_set_ncol : (position, int) -> void
+//
+overload .ntot with position_set_ntot
+overload .nrow with position_set_nrow
+overload .ncol with position_set_ncol
+//
+(* ****** ****** *)
+//
+fun
 print_position(pos: position): void
 fun
 prerr_position(pos: position): void
