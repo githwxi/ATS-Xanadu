@@ -75,5 +75,10 @@ filepath_get_full
 overload .full with filepath_get_full
 //
 (* ****** ****** *)
+//
+fun
+filepath_get_current((*void*)): filepath
+//
+(* ****** ****** *)
 
 (* end of [xats_filepath.sats] *)

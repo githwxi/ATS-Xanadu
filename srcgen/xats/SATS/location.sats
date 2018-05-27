@@ -101,5 +101,14 @@ overload prerr with prerr_position
 overload fprint with fprint_position
 //
 (* ****** ****** *)
+//
+fun
+location_make_pos_pos
+  (bpos: pos_t, cpos: pos_t): loc_t
+fun
+location_make_fil_pos_pos
+  (fil: fil_t, bpos: pos_t, cpos: pos_t): loc_t
+//
+(* ****** ****** *)
 
 (* end of [xats_location.sats] *)
