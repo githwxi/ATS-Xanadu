@@ -88,6 +88,13 @@ end // end of [lexbuf_initize_cblist]
 (* ****** ****** *)
 
 implement
+lexbuf_get_ntot(buf) = buf.ntot
+implement
+lexbuf_get_nspc(buf) = buf.nspc
+
+(* ****** ****** *)
+
+implement
 lexbuf_get_position
   (buf, pos) =
 (
@@ -111,6 +118,19 @@ lexbuf_set_position
   buf.nrow := pos.nrow();
   buf.ncol := pos.ncol();
 )
+
+(* ****** ****** *)
+
+implement
+lexbufpos_get_location
+  (buf, cpos) = let
+  var bpos: position
+  val ((*void*)) =
+    lexbuf_get_position(buf, bpos)
+  // end of [val]
+in
+  $LOC.location_make_pos_pos(bpos, cpos)
+end // end of [lexbufpos_get_location]
 
 (* ****** ****** *)
 

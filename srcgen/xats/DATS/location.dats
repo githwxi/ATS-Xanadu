@@ -109,7 +109,7 @@ local
 
 absimpl
 location_type =
-'{
+$rec{
 //
   filepath=
   filepath // filepath
@@ -128,6 +128,42 @@ location_type =
 } (* end of [location_type] *)
 
 in (* in-of-local *)
+
+implement
+location_make_pos_pos
+  (bpos, cpos) = $rec
+{
+  filepath= fil
+//
+, beg_ntot=bpos.ntot()
+, beg_nrow=bpos.nrow()
+, beg_ncol=bpos.ncol()
+//
+, end_ntot=cpos.ntot()
+, end_nrow=cpos.nrow()
+, end_ncol=cpos.ncol()
+//
+} where
+{
+  val fil =
+  $FIL.filepath_get_current()
+} (* location_make_pos_pos *)
+
+implement
+location_make_fil_pos_pos
+  (fil, bpos, cpos) = $rec
+{
+  filepath= fil
+//
+, beg_ntot=bpos.ntot()
+, beg_nrow=bpos.nrow()
+, beg_ncol=bpos.ncol()
+//
+, end_ntot=cpos.ntot()
+, end_nrow=cpos.nrow()
+, end_ncol=cpos.ncol()
+//
+} (* location_make_fil_pos_pos *)
 
 end // end of [local]
 

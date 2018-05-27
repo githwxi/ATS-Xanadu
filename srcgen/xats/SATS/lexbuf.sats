@@ -71,6 +71,16 @@ lexbuf_initize_cblist
 (* ****** ****** *)
 //
 fun
+lexbuf_get_ntot(buf: &lexbuf): int
+fun
+lexbuf_get_nspc(buf: &lexbuf): int
+//
+overload .nspc with lexbuf_get_ntot
+overload .nspc with lexbuf_get_nspc
+//
+(* ****** ****** *)
+//
+fun
 lexbuf_get_position
 (
   buf: &lexbuf, pos: &pos_t? >> pos_t
@@ -78,6 +88,12 @@ lexbuf_get_position
 //
 fun lexbuf_set_position
   (buf: &lexbuf >> lexbuf, pos: &pos_t): void
+//
+(* ****** ****** *)
+//
+fun
+lexbufpos_get_location
+  (buf: &lexbuf, pos: &pos_t): loc_t
 //
 (* ****** ****** *)
 
