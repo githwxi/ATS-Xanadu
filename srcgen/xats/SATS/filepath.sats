@@ -81,4 +81,10 @@ filepath_get_current((*void*)): filepath
 //
 (* ****** ****** *)
 
+val the_filepath_dummy : filepath
+val the_filepath_stdin : filepath
+val the_filepath_string : filepath // text
+
+(* ****** ****** *)
+
 (* end of [xats_filepath.sats] *)
