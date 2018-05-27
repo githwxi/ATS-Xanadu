@@ -157,11 +157,18 @@ local
 val
 the_filepath =
 ref<filepath>(the_filepath_dummy)
+val
+the_filepaths =
+ref<List0_vt(filepath)>(list_vt_nil())
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+//
 implement
-filepath_get_current((*void*)) = the_filepath[]
+filepath_get_current() = the_filepath[]
+//
+(* ****** ****** *)
 
 end // end of [local]
 

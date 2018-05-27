@@ -38,9 +38,9 @@
 
 /* ****** ****** */
 
+/*
 typedef
-lexbuf_int_int
-  (m: int, n:int) =
+lexbuf_tflat =
 $extype_struct
 "xats_lexbuf_struct" of
 {
@@ -52,6 +52,7 @@ $extype_struct
 , cptr0= ptr, cptr1= ptr
 , cblist= cblist
 } (* end of [lexbuf] *)
+*/
 
 typedef struct {
 //
@@ -61,13 +62,13 @@ typedef struct {
 //
   atstype_int nspc ; // leading space
 //
-  atstype_void cbuf ; // prefix
+  atstype_ptr cbuf ; // prefix
 //
-  atstype_void begp ; // start
-  atstype_void endp ; // finish
-  atstype_void curp ; // current
-  atstype_void cbhead ; // 1st cblock
-  atstype_void cbtail ; // rest of cblocks
+  atstype_ptr begp ; // start
+  atstype_ptr endp ; // finish
+  atstype_ptr curp ; // current
+  atstype_ptr cbhead ; // 1st cblock
+  atstype_ptr cbtail ; // rest of cblocks
 //
 } xats_lexbuf_struct ;
 

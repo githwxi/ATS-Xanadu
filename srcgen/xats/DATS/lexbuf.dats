@@ -32,11 +32,11 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
 #staload
 UN =
 "prelude/SATS/unsafe.sats"
-
+//
 (* ****** ****** *)
 //
 #staload
@@ -198,7 +198,7 @@ end // end of [else]
 {
   val bp = buf.begp
   val cp = buf.curp
-  val sz = $UN.cast{Size}(ptr0_diff(bp, cp))
+  val sz = $UN.cast{Size}(ptr0_diff<char>(bp, cp))
 }
 //
 end // end of [lexbuf_get_fullseg]
@@ -253,7 +253,7 @@ end // end of [else]
 {
   val bp = buf.begp
   val ep = buf.endp
-  val sz = $UN.cast{Size}(ptr0_diff(bp, ep))
+  val sz = $UN.cast{Size}(ptr0_diff<char>(bp, ep))
   val cbf = buf.cbuf
 } (* end of [cbf_update] *)
 
@@ -299,7 +299,9 @@ then let
   val () =
   buf.curp := ptr_succ<uchar>(cp)
 in
-  let val uc = uchar2int0(uc) in pos_update(pos, uc); uc end
+  let
+    val uc = uchar2int0(uc) in pos_update(pos, uc); uc
+  end
 end // end of [then]
 else let
   val cbs = buf.cbtail
@@ -335,7 +337,7 @@ in
     ) where
     {
       val bp = ptrcast(A0)
-      val ep = ptr_add<uchar>(bp, sz)
+      val ep = ptr_add<char>(bp, sz)
       val A0 = $UN.cast(A0)
     } (* end of [cblist_cons] *)
 end // end of [else]

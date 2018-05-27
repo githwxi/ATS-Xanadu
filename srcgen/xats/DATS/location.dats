@@ -70,6 +70,18 @@ position_get_ncol(pos) = pos.ncol
 (* ****** ****** *)
 //
 implement
+position_set_ntot
+  (pos, ntot) = (pos.ntot := ntot)
+implement
+position_set_nrow
+  (pos, nrow) = (pos.nrow := nrow)
+implement
+position_set_ncol
+  (pos, ncol) = (pos.ncol := ncol)
+//
+(* ****** ****** *)
+//
+implement
 print_position
   (pos) = fprint_position(stdout_ref, pos)
 implement
