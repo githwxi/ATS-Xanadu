@@ -49,7 +49,7 @@ local
 absimpl
 position_tflat =
 $extype_struct
-"pats_position_struct" of
+"xats_position_struct" of
 {
   ntot= int, nrow= int, ncol= int
 } // end of [position_tflat]

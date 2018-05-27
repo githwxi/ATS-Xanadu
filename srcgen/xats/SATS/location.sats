@@ -64,11 +64,11 @@ FIL = "./filepath.sats"
 (* ****** ****** *)
 //
 fun
-position_get_ntot : position -> int
+position_get_ntot : (&pos_t) -> int
 fun
-position_get_nrow : position -> int
+position_get_nrow : (&pos_t) -> int
 fun
-position_get_ncol : position -> int
+position_get_ncol : (&pos_t) -> int
 //
 overload .ntot with position_get_ntot
 overload .nrow with position_get_nrow
@@ -77,11 +77,14 @@ overload .ncol with position_get_ncol
 (* ****** ****** *)
 //
 fun
-position_set_ntot : (position, int) -> void
+position_set_ntot
+  (pos: &pos_t >> _, ntot: int): void
 fun
-position_set_nrow : (position, int) -> void
+position_set_nrow
+  (pos: &pos_t >> _, nrow: int): void
 fun
-position_set_ncol : (position, int) -> void
+position_set_ncol
+  (pos: &pos_t >> _, ncol: int): void
 //
 overload .ntot with position_set_ntot
 overload .nrow with position_set_nrow
@@ -104,10 +107,10 @@ overload fprint with fprint_position
 //
 fun
 location_make_pos_pos
-  (bpos: pos_t, cpos: pos_t): loc_t
+  (bpos: &pos_t, cpos: &pos_t): loc_t
 fun
 location_make_fil_pos_pos
-  (fil: fil_t, bpos: pos_t, cpos: pos_t): loc_t
+  (fil: fil_t, bpos: &pos_t, cpos: &pos_t): loc_t
 //
 (* ****** ****** *)
 

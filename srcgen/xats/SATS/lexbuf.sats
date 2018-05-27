@@ -83,17 +83,23 @@ overload .nspc with lexbuf_get_nspc
 fun
 lexbuf_get_position
 (
-  buf: &lexbuf, pos: &pos_t? >> pos_t
+  buf: &lexbuf, pos: &pos_t? >> _
 ) : void // end-of-fun
 //
 fun lexbuf_set_position
-  (buf: &lexbuf >> lexbuf, pos: &pos_t): void
+  (buf: &lexbuf >> _, pos: &pos_t): void
 //
 (* ****** ****** *)
 //
 fun
 lexbufpos_get_location
   (buf: &lexbuf, pos: &pos_t): loc_t
+//
+(* ****** ****** *)
+//
+fun
+lexbufpos_getinc_char
+  (buf: &lexbuf >> _, pos: &pos_t >> _): int
 //
 (* ****** ****** *)
 
