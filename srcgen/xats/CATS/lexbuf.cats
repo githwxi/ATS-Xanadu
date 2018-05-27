@@ -63,8 +63,9 @@ typedef struct {
 //
   atstype_void cbuf ; // prefix
 //
-  atstype_void cptr0 ; // start
-  atstype_void cptr1 ; // finish
+  atstype_void begp ; // start
+  atstype_void endp ; // finish
+  atstype_void curp ; // current
   atstype_void cbhead ; // 1st cblock
   atstype_void cbtail ; // rest of cblocks
 //

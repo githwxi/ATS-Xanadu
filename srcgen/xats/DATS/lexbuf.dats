@@ -34,7 +34,8 @@
 (* ****** ****** *)
 
 #staload
-UN = "prelude/SATS/unsafe.sats"
+UN =
+"prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
@@ -47,7 +48,12 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-assume
+#staload
+"./../../util/SATS/cblist.sats"
+//
+(* ****** ****** *)
+//
+absimpl
 lexbuf_tflat =
 $extype_struct
 "xats_lexbuf_struct" of
@@ -57,10 +63,14 @@ $extype_struct
 , ncol= int
 , nspc= int
 , cbuf= stropt
-, cptr0= ptr, cptr1= ptr
+, begp= ptr, endp= ptr, curp= ptr
 , cbhead= arrayref(uchar,0), cbtail= cblist
 } (* end of [lexbuf] *)
 //
+(* ****** ****** *)
+
+#define NULL the_null_ptr
+
 (* ****** ****** *)
 
 implement
@@ -75,8 +85,9 @@ val () = buf.nspc := 0
 //
 val () = buf.cbuf := stropt_none()
 //
-val () = buf.cptr0 := the_null_ptr
-val () = buf.cptr1 := the_null_ptr
+val () = buf.begp := NULL
+val () = buf.endp := NULL
+val () = buf.curp := NULL
 //
 val () = buf.cbtail := cbs//char-block-list
 val () = buf.cbhead := $UN.cast(the_null_ptr)
@@ -131,6 +142,142 @@ lexbufpos_get_location
 in
   $LOC.location_make_pos_pos(bpos, cpos)
 end // end of [lexbufpos_get_location]
+
+(* ****** ****** *)
+
+local
+
+#define EOF %(~1)
+#define CNUL '\000'
+
+fun
+cbf_update
+(buf: &lexbuf >> _): void =
+(
+if
+stropt_is_none(cbf)
+then let
+  val A0 =
+  arrayptr_make_uninitized<char>(sz+1)
+//
+  val p0 = ptrcast(A0)
+  val () =
+  $extfcall(void, "memcpy", p0, bp, sz)
+in
+  $UN.ptr0_set_at<char>(p0, sz, CNUL);
+  buf.cbuf := stropt_some($UN.castvwtp0(A0))
+end // end of [then]
+else let
+//
+  val cs =
+  stropt_unsome(cbf)
+  val n0 = length(cs)
+//
+  val A0 =
+  arrayptr_make_uninitized<char>(n0+sz+1)
+//
+  val p0 = ptrcast(A0)
+  val p1 = ptr_add<char>(p0, n0)
+  val () =
+    $extfcall(void, "memcpy", p0, cs, n0)
+  // end of [val]
+  val () =
+    $extfcall(void, "memcpy", p1, bp, sz)
+  // end of [val]
+//
+in
+  $UN.ptr0_set_at<char>(p1, sz, CNUL);
+  buf.cbuf := stropt_some($UN.castvwtp0(A0))
+end // end of [else]
+) where
+{
+  val bp = buf.begp
+  val ep = buf.endp
+  val sz = $UN.cast{Size}(ptr0_diff(bp, ep))
+  val cbf = buf.cbuf
+} (* end of [cbf_update] *)
+
+fun
+pos_update
+(pos: &pos_t >> _, uc: int): void =
+(
+if
+(uc > 0)
+then
+(
+pos.ntot(pos.ntot());
+if
+(uc != '\n')
+then
+(
+  pos.ncol(pos.ncol()+1)
+) (* end of [then] *)
+else
+(
+  pos.nrow(pos.nrow()+1); pos.ncol(0);
+) (* end of [else] *)
+)
+// end of [if]
+)
+
+in (* in-of-local *)
+
+implement
+lexbufpos_getinc_char
+  (buf, pos) = let
+//
+val cp = buf.curp
+val ep = buf.endp
+//
+in
+//
+if
+(cp < ep)
+then let
+  val uc =
+  $UN.ptr0_get<uchar>(cp)
+  val () =
+  buf.curp := ptr_succ<uchar>(cp)
+in
+  let val uc = uchar2int0(uc) in pos_update(pos, uc); uc end
+end // end of [then]
+else let
+  val cbs = buf.cbtail
+in
+  case+ cbs of
+  | cblist_nil() =>
+    (
+      buf.begp := bp;
+      buf.endp := ep;
+      buf.curp := bp;
+      buf.cbhead := A0;
+      buf.cbtail := cbs; EOF
+    ) where
+    {
+      val bp = NULL
+      and ep = NULL
+      val A0 = $UN.cast(NULL)
+    }
+  | cblist_cons
+      (sz, A0, cbs) =>
+    (
+      buf.begp := bp;
+      buf.endp := ep;
+      buf.curp := bp;
+      buf.cbhead := A0;
+      buf.cbtail := cbs;
+      lexbufpos_getinc_char(buf, pos)
+    ) where
+    {
+      val bp = ptrcast(A0)
+      val ep = ptr_add<uchar>(bp, sz)
+      val A0 = $UN.cast(A0)
+    } (* end of [cblist_cons] *)
+end // end of [else]
+//
+end // end of [lexbufpos_getinc_char]
+
+end // end of [local]
 
 (* ****** ****** *)
 
