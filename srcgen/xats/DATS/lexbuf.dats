@@ -106,7 +106,7 @@ lexbuf_get_nspc(buf) = buf.nspc
 (* ****** ****** *)
 
 implement
-lexbuf_get_position
+lexbuf_get_pos
   (buf, pos) =
 (
   pos.ntot(buf.ntot);
@@ -122,7 +122,7 @@ lexbuf_get_position
 }
 
 implement
-lexbuf_set_position
+lexbuf_set_pos
   (buf, pos) =
 (
   buf.ntot := pos.ntot();
@@ -133,15 +133,75 @@ lexbuf_set_position
 (* ****** ****** *)
 
 implement
-lexbufpos_get_location
+lexbufpos_get_loc
   (buf, cpos) = let
   var bpos: position
   val ((*void*)) =
-    lexbuf_get_position(buf, bpos)
+    lexbuf_get_pos(buf, bpos)
   // end of [val]
 in
   $LOC.location_make_pos_pos(bpos, cpos)
-end // end of [lexbufpos_get_location]
+end // end of [lexbufpos_get_loc]
+
+(* ****** ****** *)
+
+implement
+lexbuf_get_fullseg
+  (buf) = let
+//
+#define CNUL '\000'
+//
+val
+cbf = buf.cbuf
+val ((*void*)) =
+buf.cbuf := stropt_none()
+//
+in
+//
+(
+if
+stropt_is_none(cbf)
+then let
+  val A0 =
+  arrayptr_make_uninitized<char>(sz+1)
+//
+  val p0 = ptrcast(A0)
+  val () =
+  $extfcall(void, "memcpy", p0, bp, sz)
+in
+  $UN.castvwtp0(A0) where {
+    val () = $UN.ptr0_set_at<char>(p0, sz, CNUL)
+  }
+end // end of [then]
+else let
+  val cs = stropt_unsome(cbf)
+  val n0 = length(cs)
+//
+  val A0 =
+  arrayptr_make_uninitized<char>(n0+sz+1)
+//
+  val p0 = ptrcast(A0)
+  val p1 = ptr_add<char>(p0, n0)
+  val () =
+    $extfcall(void, "memcpy", p0, cs, n0)
+  // end of [val]
+  val () =
+    $extfcall(void, "memcpy", p1, bp, sz)
+  // end of [val]
+//
+in
+  $UN.castvwtp0(A0) where {
+    val () = $UN.ptr0_set_at<char>(p0, sz, CNUL)
+  }
+end // end of [else]
+) where
+{
+  val bp = buf.begp
+  val cp = buf.curp
+  val sz = $UN.cast{Size}(ptr0_diff(bp, cp))
+}
+//
+end // end of [lexbuf_get_fullseg]
 
 (* ****** ****** *)
 
@@ -261,12 +321,17 @@ in
   | cblist_cons
       (sz, A0, cbs) =>
     (
+//
+      cbf_update(buf);
+//
       buf.begp := bp;
       buf.endp := ep;
       buf.curp := bp;
       buf.cbhead := A0;
       buf.cbtail := cbs;
+//
       lexbufpos_getinc_char(buf, pos)
+//
     ) where
     {
       val bp = ptrcast(A0)

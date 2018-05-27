@@ -81,19 +81,25 @@ overload .nspc with lexbuf_get_nspc
 (* ****** ****** *)
 //
 fun
-lexbuf_get_position
+lexbuf_get_pos
 (
   buf: &lexbuf, pos: &pos_t? >> _
 ) : void // end-of-fun
 //
-fun lexbuf_set_position
+fun lexbuf_set_pos
   (buf: &lexbuf >> _, pos: &pos_t): void
 //
 (* ****** ****** *)
 //
 fun
-lexbufpos_get_location
+lexbufpos_get_loc
   (buf: &lexbuf, pos: &pos_t): loc_t
+//
+(* ****** ****** *)
+//
+fun
+lexbuf_get_fullseg
+  (buf: &lexbuf >> _): string
 //
 (* ****** ****** *)
 //
