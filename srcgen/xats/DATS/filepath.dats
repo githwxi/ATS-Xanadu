@@ -128,25 +128,40 @@ implement
 the_filepath_dummy = $rec{
   filepath_kind= 0
 , filepath_givename= ""
-, filepath_partname= ""
-, filepath_fullname= $SYM.symbol_nil
+, filepath_partpath= ""
+, filepath_fullpath= $SYM.symbol_nil
 } // end of [the_filepath_dummy]
 
 implement
 the_filepath_stdin = $rec{
   filepath_kind= 0
 , filepath_givename= "__STDIN__"
-, filepath_partname= "__STDIN__"
-, filepath_fullname= $SYM.symbol__STDIN__
+, filepath_partpath= "__STDIN__"
+, filepath_fullpath= $SYM.symbol__STDIN__
 } // end of [the_filepath_stdin]
 
 implement
 the_filepath_string = $rec{
   filepath_kind= 0
 , filepath_givename= "__STRING__"
-, filepath_partname= "__STRING__"
-, filepath_fullname= $SYM.symbol__STRING__
+, filepath_partpath= "__STRING__"
+, filepath_fullpath= $SYM.symbol__STRING__
 } // end of [the_filepath_string]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+the_filepath =
+ref<filepath>(the_filepath_dummy)
+
+in (* in-of-local *)
+
+implement
+filepath_get_current((*void*)) = the_filepath[]
 
 end // end of [local]
 

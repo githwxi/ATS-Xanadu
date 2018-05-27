@@ -229,4 +229,11 @@ symbol_BANGEQ = symbol_make("!=")
 
 (* ****** ****** *)
 
+implement
+symbol__STDIN__ = symbol_make("__STDIN__")
+implement
+symbol__STRING__ = symbol_make("__STRING__")
+
+(* ****** ****** *)
+
 (* end of [xats_symbol.dats] *)
