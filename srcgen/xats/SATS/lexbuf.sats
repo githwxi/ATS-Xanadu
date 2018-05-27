@@ -46,6 +46,14 @@ typedef cblist = $CBS.cblist
 //
 (* ****** ****** *)
 //
+#staload LOC = "./location.sats"
+//
+typedef pos_t = $LOC.pos_t
+typedef loc_t = $LOC.loc_t
+typedef location = $LOC.location
+//
+(* ****** ****** *)
+//
 abstflat
 lexbuf_tflat =
 $extype"xats_lexbuf_struct"
@@ -60,6 +68,17 @@ lexbuf_initize_cblist
   buf: &lexbuf? >> lexbuf, cbs: cblist
 ) : void // end of [lexbuf_initize_cblist]
 
+(* ****** ****** *)
+//
+fun
+lexbuf_get_position
+(
+  buf: &lexbuf, pos: &pos_t? >> pos_t
+) : void // end-of-fun
+//
+fun lexbuf_set_position
+  (buf: &lexbuf >> lexbuf, pos: &pos_t): void
+//
 (* ****** ****** *)
 
 (* end of [xats_lexbuf.sats] *)

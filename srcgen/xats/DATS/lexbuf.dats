@@ -38,6 +38,11 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
+#staload
+"./../SATS/location.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/lexbuf.sats"
 //
 (* ****** ****** *)
@@ -79,6 +84,33 @@ val () = buf.cbhead := $UN.cast(the_null_ptr)
 in
   // nothing
 end // end of [lexbuf_initize_cblist]
+
+(* ****** ****** *)
+
+implement
+lexbuf_get_position
+  (buf, pos) =
+(
+  pos.ntot(buf.ntot);
+  pos.nrow(buf.nrow);
+  pos.ncol(buf.ncol);
+) where
+{
+  prval () = _initize_(pos) where
+  {
+    extern
+    praxi _initize_(&pos_t? >> pos_t): void
+  }
+}
+
+implement
+lexbuf_set_position
+  (buf, pos) =
+(
+  buf.ntot := pos.ntot();
+  buf.nrow := pos.nrow();
+  buf.ncol := pos.ncol();
+)
 
 (* ****** ****** *)
 

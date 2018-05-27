@@ -60,9 +60,12 @@ in (* in-of-local *)
 
 (* ****** ****** *)
 
-implement position_get_ntot(pos) = pos.ntot
-implement position_get_nrow(pos) = pos.nrow
-implement position_get_ncol(pos) = pos.ncol
+implement
+position_get_ntot(pos) = pos.ntot
+implement
+position_get_nrow(pos) = pos.nrow
+implement
+position_get_ncol(pos) = pos.ncol
 
 (* ****** ****** *)
 //
