@@ -86,6 +86,9 @@ val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
 val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
 val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
 val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
+//
+val (_) = println!("The first seg: ", lexbuf_get_fullseg(buf))
+//
 val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
 val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
 val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
@@ -97,7 +100,7 @@ val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
 val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
 val (_) = println!(int2char0(lexbufpos_getinc_char(buf, pos)))
 //
-val (_) = println!("The first line: ", lexbuf_get_fullseg(buf))
+val (_) = println!("The second seg: ", lexbuf_get_fullseg(buf))
 //
 end // end of [local]
 
