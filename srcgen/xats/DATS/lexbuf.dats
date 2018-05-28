@@ -203,6 +203,7 @@ end // end of [else]
 {
   val bp = buf.begp
   val cp = buf.curp
+  val () = buf.begp := cp
   val sz = $UN.cast{Size}(ptr0_diff<char>(cp, bp))
 }
 //
