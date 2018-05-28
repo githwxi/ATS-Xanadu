@@ -113,6 +113,12 @@ overload fprint with fprint_position
 (* ****** ****** *)
 //
 fun
+position_incby_char
+  (pos: &pos_t >> _, uc: int): void
+//
+(* ****** ****** *)
+//
+fun
 location_make_pos_pos
   (bpos: &pos_t, cpos: &pos_t): loc_t
 fun

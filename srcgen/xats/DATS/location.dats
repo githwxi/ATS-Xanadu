@@ -128,6 +128,31 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+position_incby_char
+  (pos, uc) =
+(
+if
+(uc > 0)
+then
+(
+pos.ntot(pos.ntot());
+if
+(uc != '\n')
+then
+(
+  pos.ncol(pos.ncol()+1)
+) (* end of [then] *)
+else
+(
+pos.nrow(pos.nrow()+1); pos.ncol(0);
+) (* end of [else] *)
+)
+// end of [if]
+) (* end of [position_incby_char] *)
+
+(* ****** ****** *)
+
 local
 
 absimpl

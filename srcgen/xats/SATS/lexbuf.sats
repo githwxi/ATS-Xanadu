@@ -93,20 +93,26 @@ fun lexbuf_set_pos
 (* ****** ****** *)
 //
 fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
-//
-(* ****** ****** *)
-//
-fun
 lexbuf_get_fullseg
   (buf: &lexbuf >> _): string
 //
 (* ****** ****** *)
 //
+// HX-2018-05-27:
+// [lexbuf_get_char] does peeking only
+// [lexbufpos_getinc_char] is like fgetc
+//
 fun
-lexbufpos_getinc_char
-  (buf: &lexbuf >> _, pos: &pos_t >> _): int
+lexbuf_get_char(buf: &lexbuf): int
+//
+fun
+lexbuf_getinc_char(buf: &lexbuf >> _): int
+//
+(* ****** ****** *)
+//
+fun
+lexbufpos_get_loc
+  (buf: &lexbuf, pos: &pos_t): loc_t
 //
 (* ****** ****** *)
 
