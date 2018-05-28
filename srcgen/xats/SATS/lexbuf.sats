@@ -50,6 +50,7 @@ typedef cblist = $CBS.cblist
 //
 typedef pos_t = $LOC.pos_t
 typedef loc_t = $LOC.loc_t
+typedef position = $LOC.position
 typedef location = $LOC.location
 //
 (* ****** ****** *)

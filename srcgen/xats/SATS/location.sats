@@ -64,6 +64,13 @@ FIL = "./filepath.sats"
 (* ****** ****** *)
 //
 fun
+position_initize
+( pos: &pos_t? >> _
+, ntot: int, nrow: int, ncol: int): void
+//
+(* ****** ****** *)
+//
+fun
 position_get_ntot : (&pos_t) -> int
 fun
 position_get_nrow : (&pos_t) -> int

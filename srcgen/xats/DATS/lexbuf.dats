@@ -174,8 +174,13 @@ in
   }
 end // end of [then]
 else let
-  val cs = stropt_unsome(cbf)
+  val cs =
+  stropt_unsome(cbf)
   val n0 = length(cs)
+//
+(*
+  val () = println!("cs = ", cs)
+*)
 //
   val A0 =
   arrayptr_make_uninitized<char>(n0+sz+1)
@@ -191,14 +196,14 @@ else let
 //
 in
   $UN.castvwtp0(A0) where {
-    val () = $UN.ptr0_set_at<char>(p0, sz, CNUL)
+    val () = $UN.ptr0_set_at<char>(p1, sz, CNUL)
   }
 end // end of [else]
 ) where
 {
   val bp = buf.begp
   val cp = buf.curp
-  val sz = $UN.cast{Size}(ptr0_diff<char>(bp, cp))
+  val sz = $UN.cast{Size}(ptr0_diff<char>(cp, bp))
 }
 //
 end // end of [lexbuf_get_fullseg]
@@ -233,6 +238,10 @@ else let
   stropt_unsome(cbf)
   val n0 = length(cs)
 //
+(*
+  val () = println!("cs = ", cs)
+*)
+//
   val A0 =
   arrayptr_make_uninitized<char>(n0+sz+1)
 //
@@ -253,7 +262,7 @@ end // end of [else]
 {
   val bp = buf.begp
   val ep = buf.endp
-  val sz = $UN.cast{Size}(ptr0_diff<char>(bp, ep))
+  val sz = $UN.cast{Size}(ptr0_diff<char>(ep, bp))
   val cbf = buf.cbuf
 } (* end of [cbf_update] *)
 

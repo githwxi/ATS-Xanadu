@@ -59,6 +59,17 @@ $extype_struct
 in (* in-of-local *)
 
 (* ****** ****** *)
+//
+implement
+position_initize
+(pos, ntot, nrow, ncol) =
+{
+  val () = pos.ntot := ntot
+  val () = pos.nrow := nrow
+  val () = pos.ncol := ncol
+}
+//
+(* ****** ****** *)
 
 implement
 position_get_ntot(pos) = pos.ntot
