@@ -133,19 +133,6 @@ lexbuf_set_pos
 (* ****** ****** *)
 
 implement
-lexbufpos_get_loc
-  (buf, cpos) = let
-  var bpos: position
-  val ((*void*)) =
-    lexbuf_get_pos(buf, bpos)
-  // end of [val]
-in
-  $LOC.location_make_pos_pos(bpos, cpos)
-end // end of [lexbufpos_get_loc]
-
-(* ****** ****** *)
-
-implement
 lexbuf_get_fullseg
   (buf) = let
 //
@@ -267,34 +254,43 @@ end // end of [else]
   val cbf = buf.cbuf
 } (* end of [cbf_update] *)
 
-fun
-pos_update
-(pos: &pos_t >> _, uc: int): void =
-(
-if
-(uc > 0)
-then
-(
-pos.ntot(pos.ntot());
-if
-(uc != '\n')
-then
-(
-  pos.ncol(pos.ncol()+1)
-) (* end of [then] *)
-else
-(
-  pos.nrow(pos.nrow()+1); pos.ncol(0);
-) (* end of [else] *)
-)
-// end of [if]
-)
-
 in (* in-of-local *)
 
 implement
-lexbufpos_getinc_char
-  (buf, pos) = let
+lexbuf_get_char
+  (buf) = let
+//
+val cp = buf.curp
+val ep = buf.endp
+//
+in
+//
+if
+(cp < ep)
+then let
+  val uc =
+  $UN.ptr0_get<uchar>(cp)
+in
+  let val uc = uchar2int0(uc) in uc end
+end // end of [then]
+else let
+  val cbs = buf.cbtail
+in
+//
+  case+ cbs of
+  | cblist_nil() => EOF
+  | cblist_cons(sz, A0, cbs) => let
+      val uc =
+      $UN.ptr0_get<uchar>(ptrcast(A0)) in uchar2int0(uc)
+    end // end of [cblist_cons]
+end // end of [else]
+//
+end // end of [lexbuf_get_char]
+
+
+implement
+lexbuf_getinc_char
+  (buf) = let
 //
 val cp = buf.curp
 val ep = buf.endp
@@ -309,9 +305,7 @@ then let
   val () =
   buf.curp := ptr_succ<uchar>(cp)
 in
-  let
-    val uc = uchar2int0(uc) in pos_update(pos, uc); uc
-  end
+  let val uc = uchar2int0(uc) in uc end
 end // end of [then]
 else let
   val cbs = buf.cbtail
@@ -342,7 +336,7 @@ in
       buf.cbhead := A0;
       buf.cbtail := cbs;
 //
-      lexbufpos_getinc_char(buf, pos)
+      lexbuf_getinc_char(buf)
 //
     ) where
     {
@@ -352,10 +346,24 @@ in
     } (* end of [cblist_cons] *)
 end // end of [else]
 //
-end // end of [lexbufpos_getinc_char]
+end // end of [lexbuf_getinc_char]
 
 end // end of [local]
 
 (* ****** ****** *)
+
+implement
+lexbufpos_get_loc
+  (buf, cpos) = let
+  var bpos: position
+  val ((*void*)) =
+    lexbuf_get_pos(buf, bpos)
+  // end of [val]
+in
+  $LOC.location_make_pos_pos(bpos, cpos)
+end // end of [lexbufpos_get_loc]
+
+(* ****** ****** *)
+
 
 (* end of [xats_lexbuf.dats] *)
