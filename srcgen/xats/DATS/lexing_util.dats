@@ -58,10 +58,14 @@ fun
 isSYMBOLIC(c: char): bool
 
 (* ****** ****** *)
-
+//
 implement
-isBLANK(c) = isspace(c)
-
+isBLANK(c) =
+if
+(c = ' ')
+then true
+else (if (c = '\t') then true else false)
+//
 (* ****** ****** *)
 
 implement
@@ -102,6 +106,44 @@ end // end of [SYMBOLIC_test]
 
 (* ****** ****** *)
 
+local
+
+fun
+lexing_isBLANK
+( buf
+: &lexbuf >> _, c0: char
+) : tnode =
+  loop(buf) where
+{
+//
+fun
+loop
+(buf: &lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+//
+val c0 = int2char0(i0)
+//
+in
+//
+if
+isBLANK(c0)
+then loop(buf)
+else let
+  val () = lexbuf_unget(buf)
+in
+  T_BLANK(lexbuf_get_fullseg(buf))
+end // end of [else]
+//
+end // end of [loop]
+//
+} (* end of [lexing_isBLANK] *)
+
+in (* in-of-local *)
+
 implement
 lexing_tnode(buf) = let
 //
@@ -115,20 +157,27 @@ val c0 = int2char0(i0)
 in
 //
 ifcase
-(*
+//
 | isBLANK(c0) =>
   lexing_isBLANK(buf, c0)
-*)
+//
 (*
 | isIDENTFST(c0) =>
   lexing_isIDENTFST(buf, c0)
 *)
 | _(* else *) =>
   (
-    if i0 >= 0 then T_SPECHAR(i0) else T_EOF()
-  )
+    if
+    (i0 >= 0)
+    then T_SPECHAR(i0) else T_EOF()
+  ) where
+  {
+    val ((*void*)) = lexbuf_get_none(buf)
+  }
 //
 end // end of [lexing_token]
+
+end // end of [local]
 
 (* ****** ****** *)
 

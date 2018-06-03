@@ -47,8 +47,12 @@ tnode =
   | T_EOF of ()
   | T_ERR of ()
 //
+  | T_EOL of () // end-of-line
+//
   | T_AT of ()
   | T_BANG of ()
+//
+  | T_BLANK of (string) // blank
 //
   | T_IDENT_alp of string // alnum
   | T_IDENT_sym of string // symbol

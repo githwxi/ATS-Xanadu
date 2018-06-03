@@ -87,8 +87,13 @@ case+ tnd of
 | T_EOF() => fprint(out, "EOF")
 | T_ERR() => fprint(out, "ERR")
 //
+| T_EOL() => fprint(out, "EOL")
+//
 | T_AT() => fprint(out, "AT")
 | T_BANG() => fprint(out, "BANG")
+//
+| T_BLANK(x) =>
+  fprint!(out, "BLANK(", x, ")")
 //
 | T_IDENT_alp(x) =>
   fprint!(out, "IDENT_alp(", x, ")")
