@@ -57,13 +57,13 @@ tnode =
   | T_IDENT_alp of string // alnum
   | T_IDENT_sym of string // symbol
 //
-  | T_INT of (string)
+  | T_INT of (int(*base*), string)
   | T_INT of (int(*base*), string(*rep*), uint(*suffix*))
 //
   | T_CHAR of (int) // ascii
   | T_STRING of (string) // utf-8 // for text
 //
-  | T_FLOAT of (string(*rep*))
+  | T_FLOAT of (int(*base*), string(*rep*))
   | T_FLOAT of (int(*base*), string(*rep*), uint(*suffix*))
 //
   | {n:int}

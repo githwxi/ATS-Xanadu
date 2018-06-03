@@ -49,6 +49,13 @@ isBLANK(c: char): bool
 //
 extern
 fun
+isDIGIT(c: char): bool
+extern
+fun
+isXDIGIT(c: char): bool
+//
+extern
+fun
 isIDENTFST(c: char): bool
 extern
 fun
@@ -66,6 +73,13 @@ if
 then true
 else (if (c = '\t') then true else false)
 //
+(* ****** ****** *)
+
+implement
+isDIGIT(c) = isdigit(c)
+implement
+isXDIGIT(c) = isxdigit(c)
+
 (* ****** ****** *)
 
 implement
@@ -141,6 +155,138 @@ end // end of [else]
 end // end of [loop]
 //
 } (* end of [lexing_isBLANK] *)
+
+(* ****** ****** *)
+
+#define OCT 8
+#define DEC 10
+#define HEX 16
+
+(* ****** ****** *)
+
+fun
+lexing_isDIGIT
+( buf
+: &lexbuf >> _, c0: char
+) : tnode =
+(
+//
+ifcase
+| c0 = '0' => loop0(buf)
+| _(* else *) => loop1(buf)
+//
+) where
+{
+//
+fun
+loop0
+(buf: &lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+//
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+| c0 = 'x' => loop0x(buf)
+| c0 = 'X' => loop0X(buf)
+| _(* else *) =>
+  (
+    if
+    isDIGIT(c0)
+    then loop0d(buf)
+    else let
+      val () = lexbuf_unget(buf)
+    in
+      T_INT(DEC, lexbuf_get_fullseg(buf))
+    end // end of [else]
+  )
+//
+end // end of [loop0]
+
+and
+loop0d
+(buf: &lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+//
+val c0 = int2char0(i0)
+//
+in
+//
+if
+isDIGIT(c0)
+then loop0d(buf)
+else let
+  val () = lexbuf_unget(buf)
+in
+  T_INT(OCT, lexbuf_get_fullseg(buf))
+end // end of [else]
+//
+end // end of [loop0d]
+
+and
+loop0x
+(buf: &lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+//
+val c0 = int2char0(i0)
+//
+in
+//
+if
+isXDIGIT(c0)
+then loop0x(buf)
+else let
+  val () = lexbuf_unget(buf)
+in
+  T_INT(HEX, lexbuf_get_fullseg(buf))
+end // end of [else]
+//
+end // end of [loop0x]
+
+and
+loop0X
+(buf: &lexbuf >> _): tnode = loop0x(buf)
+
+(* ****** ****** *)
+
+fun
+loop1
+(buf: &lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+//
+val c0 = int2char0(i0)
+//
+in
+//
+if
+isDIGIT(c0)
+then loop1(buf)
+else let
+  val () = lexbuf_unget(buf)
+in
+  T_INT(DEC, lexbuf_get_fullseg(buf))
+end // end of [else]
+//
+end // end of [loop1]
+//
+} (* end of [lexing_isDIGIT] *)
 
 (* ****** ****** *)
 
@@ -232,6 +378,9 @@ ifcase
 //
 | isBLANK(c0) =>
   lexing_isBLANK(buf, c0)
+//
+| isDIGIT(c0) =>
+  lexing_isDIGIT(buf, c0)
 //
 | isIDENTFST(c0) =>
   lexing_isIDENTFST(buf, c0)

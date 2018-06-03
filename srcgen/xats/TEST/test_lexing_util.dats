@@ -71,7 +71,9 @@ local
 in
 //
 val
-BSZ = i2sz(16)
+BSZ = i2sz(020)
+val
+BSZ = i2sz(0x10)
 val-
 ~Some_vt(cbs) =
 fpath_get_cblist
