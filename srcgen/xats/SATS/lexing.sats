@@ -36,6 +36,9 @@
 #staload LOC = "./location.sats"
   typedef loc_t = $LOC.location
 //
+#staload LEXBUF = "./lexbuf.sats"
+  typedef lexbuf = $LEXBUF.lexbuf
+//
 (* ****** ****** *)
 //
 datatype
@@ -72,6 +75,8 @@ tnode =
   | T_LBRACKET of () // [
   | T_RBRACKET of () // ]
 //
+  | T_SPECHAR of (int) // special char
+//
   | T_COMMENT_line of () // line comment
   | T_COMMENT_rest of () // rest-of-file
   | T_COMMENT_block of () // (embeddable) block comment
@@ -107,6 +112,19 @@ overload .node with token_get_node
 (* ****** ****** *)
 //
 fun
+print_tnode : (tnode) -> void
+fun
+prerr_tnode : (tnode) -> void
+fun
+fprint_tnode : (FILEref, tnode) -> void
+//
+overload print with print_tnode
+overload prerr with prerr_tnode
+overload fprint with fprint_tnode
+//
+(* ****** ****** *)
+//
+fun
 print_token : (token) -> void
 fun
 prerr_token : (token) -> void
@@ -128,6 +146,10 @@ fun tnode_is_comment(tnode): bool
 // if the return is not T_EOF(), then it does
 //
 fun tnode_search(name: string): tnode
+//
+(* ****** ****** *)
+//
+fun lexing_tnode(lxbf: &lexbuf >> _): tnode
 //
 (* ****** ****** *)
 

@@ -72,6 +72,18 @@ cleanall:: ; $(RMF) test_lexing_token_dats
 
 ######
 
+all:: \
+test_lexing_util
+test_lexing_util: \
+test_lexing_util_dats
+test_lexing_util_dats: \
+test_lexing_util.dats; \
+$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
+regress:: test_lexing_util_dats; ./test_lexing_util_dats
+cleanall:: ; $(RMF) test_lexing_util_dats
+
+######
+
 testall:: all
 testall:: regress
 testall:: cleanall

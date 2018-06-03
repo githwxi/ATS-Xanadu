@@ -99,14 +99,13 @@ lexbuf_get_fullseg
 (* ****** ****** *)
 //
 // HX-2018-05-27:
-// [lexbuf_get_char] does peeking only
-// [lexbufpos_getinc_char] is like fgetc
+// [lexbuf_getc] is like getc
+// [lexbuf_ungetc] is like ungetc
 //
 fun
-lexbuf_get_char(buf: &lexbuf): int
-//
+lexbuf_getc(buf: &lexbuf): int
 fun
-lexbuf_getinc_char(buf: &lexbuf >> _): int
+lexbuf_unget(buf: &lexbuf): void
 //
 (* ****** ****** *)
 //

@@ -48,6 +48,9 @@ $extype_struct
 , base_nrow= int
 , base_ncol= int
 , nspc= int
+(*
+, char= int
+*)
 , cbuf= string
 , cptr0= ptr, cptr1= ptr
 , cblist= cblist
@@ -62,6 +65,9 @@ typedef struct {
 //
   atstype_int nspc ; // leading space
 //
+/*
+  atstype_int char ; // ungetc
+*/
   atstype_ptr cbuf ; // prefix
 //
   atstype_ptr begp ; // start
