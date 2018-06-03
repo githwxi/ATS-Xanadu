@@ -100,8 +100,8 @@ case+ tnd of
 | T_IDENT_sym(x) =>
   fprint!(out, "IDENT_sym(", x, ")")
 //
-| T_INT(rep) =>
-  fprint!(out, "INT(", rep, ")")
+| T_INT(base, rep) =>
+  fprint!(out, "INT(", base, ", ", rep, ")")
 | T_INT(base, rep, _(*sfx*)) =>
   fprint!(out, "INT(", base, ", ", rep, ")")
 //
@@ -114,8 +114,8 @@ case+ tnd of
 | T_STRING(str) =>
   fprint!(out, "STRING(", str, ")")
 //
-| T_FLOAT(rep) =>
-  fprint!(out, "FLOAT(", rep, ")")
+| T_FLOAT(base, rep) =>
+  fprint!(out, "FLOAT(", base, ", ", rep, ")")
 | T_FLOAT(base, rep, _(*sfx*)) =>
   fprint!(out, "FLOAT(", base, ", ", rep, ")")
 //
