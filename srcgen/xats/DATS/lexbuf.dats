@@ -109,28 +109,11 @@ lexbuf_get_nspc(buf) = buf.nspc
 (* ****** ****** *)
 
 implement
-lexbuf_get_pos
-  (buf, pos) =
+lexbuf_get_none
+  (buf) =
 (
-  pos.ntot(buf.ntot);
-  pos.nrow(buf.nrow);
-  pos.ncol(buf.ncol);
-) where
-{
-  prval () = _initize_(pos) where
-  {
-    extern
-    praxi _initize_(&pos_t? >> pos_t): void
-  }
-}
-
-implement
-lexbuf_set_pos
-  (buf, pos) =
-(
-  buf.ntot := pos.ntot();
-  buf.nrow := pos.nrow();
-  buf.ncol := pos.ncol();
+  buf.begp := buf.curp;
+  buf.cbuf := stropt_none()
 )
 
 (* ****** ****** *)
@@ -338,6 +321,33 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+lexbuf_get_pos
+  (buf, pos) =
+(
+  pos.ntot(buf.ntot);
+  pos.nrow(buf.nrow);
+  pos.ncol(buf.ncol);
+) where
+{
+  prval () = _initize_(pos) where
+  {
+    extern
+    praxi _initize_(&pos_t? >> pos_t): void
+  }
+} (* end of [lexbuf_get_pos] *)
+
+implement
+lexbuf_set_pos
+  (buf, pos) =
+(
+  buf.ntot := pos.ntot();
+  buf.nrow := pos.nrow();
+  buf.ncol := pos.ncol();
+)
+
+(* ****** ****** *)
+
+implement
 lexbufpos_get_loc
   (buf, cpos) = let
   var bpos: position
@@ -349,6 +359,5 @@ in
 end // end of [lexbufpos_get_loc]
 
 (* ****** ****** *)
-
 
 (* end of [xats_lexbuf.dats] *)
