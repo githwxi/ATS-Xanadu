@@ -142,6 +142,78 @@ end // end of [loop]
 //
 } (* end of [lexing_isBLANK] *)
 
+(* ****** ****** *)
+
+fun
+lexing_isIDENTFST
+( buf
+: &lexbuf >> _, c0: char
+) : tnode =
+  loop(buf) where
+{
+//
+fun
+loop
+(buf: &lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+//
+val c0 = int2char0(i0)
+//
+in
+//
+if
+isIDENTRST(c0)
+then loop(buf)
+else let
+  val () = lexbuf_unget(buf)
+in
+  T_IDENT_alp(lexbuf_get_fullseg(buf))
+end // end of [else]
+//
+end // end of [loop]
+//
+} (* end of [lexing_isIDENTFST] *)
+
+(* ****** ****** *)
+
+fun
+lexing_isSYMBOLIC
+( buf
+: &lexbuf >> _, c0: char
+) : tnode =
+  loop(buf) where
+{
+//
+fun
+loop
+(buf: &lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+//
+val c0 = int2char0(i0)
+//
+in
+//
+if
+isSYMBOLIC(c0)
+then loop(buf)
+else let
+  val () = lexbuf_unget(buf)
+in
+  T_IDENT_sym(lexbuf_get_fullseg(buf))
+end // end of [else]
+//
+end // end of [loop]
+//
+} (* end of [lexing_isSYMBOLIC] *)
+
 in (* in-of-local *)
 
 implement
@@ -161,10 +233,12 @@ ifcase
 | isBLANK(c0) =>
   lexing_isBLANK(buf, c0)
 //
-(*
 | isIDENTFST(c0) =>
   lexing_isIDENTFST(buf, c0)
-*)
+//
+| isSYMBOLIC(c0) =>
+  lexing_isSYMBOLIC(buf, c0)
+//
 | _(* else *) =>
   (
     if
