@@ -33,7 +33,7 @@ println!
 //
 (* ****** ****** *)
 
-implement main0() = ((*void*))
+implement main0((*void*)) = ((*void*))
 
 (* ****** ****** *)
 

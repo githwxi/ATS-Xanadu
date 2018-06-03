@@ -71,19 +71,18 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-print_token
-  (tok) = fprint_token(stdout_ref, tok)
+print_tnode
+  (tok) = fprint_tnode(stdout_ref, tok)
 implement
-prerr_token
-  (tok) = fprint_token(stderr_ref, tok)
+prerr_tnode
+  (tok) = fprint_tnode(stderr_ref, tok)
 //
 (* ****** ****** *)
-
+//
 implement
-fprint_token
-  (out, tok) =
+fprint_tnode(out, tnd) =
 (
-case+ tok.node() of
+case+ tnd of
 //
 | T_EOF() => fprint(out, "EOF")
 | T_ERR() => fprint(out, "ERR")
@@ -127,12 +126,27 @@ case+ tok.node() of
 | T_LBRACKET() => fprint(out, "LBRACKET")
 | T_RBRACKET() => fprint(out, "RBRACKET")
 //
+| T_SPECHAR(c) => fprint!(out, "SPECHAR(", c, ")")
+//
 | T_COMMENT_line() => fprint(out, "T_COMMENT_line")
 | T_COMMENT_rest() => fprint(out, "T_COMMENT_rest")
 | T_COMMENT_block() => fprint(out, "T_COMMENT_block")
 //
-) (* end of [fprint_token] *)
-
+) (* end of [fprint_tnode] *)
+//
+(* ****** ****** *)
+//
+implement
+print_token
+  (tok) = fprint_token(stdout_ref, tok)
+implement
+prerr_token
+  (tok) = fprint_token(stderr_ref, tok)
+//
+implement
+fprint_token
+  (out, tok) = fprint_tnode(out, tok.node())
+//
 (* ****** ****** *)
 
 implement

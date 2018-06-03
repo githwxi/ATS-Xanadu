@@ -38,6 +38,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/lexbuf.sats"
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
@@ -79,7 +80,7 @@ isIDENTRST(c) =
   | isalnum(c) => true
   | ( c = '_' ) => true
   | ( c = '$' ) => true
-  | ( c = '\'' ) => true // HX: following the ML tradition
+  | ( c = '\'' ) => true // HX: ML tradition
   | _ (*rest-of-char*) => false
 ) (* end of [isIDENTRST] *)
 
@@ -98,6 +99,36 @@ symbolic = "%&+-./:=@~`^|*!?<>#$"
 in
   $extfcall(ptr, "strchr", SYMBOLIC, c) > the_null_ptr
 end // end of [SYMBOLIC_test]
+
+(* ****** ****** *)
+
+implement
+lexing_tnode(buf) = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+//
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+(*
+| isBLANK(c0) =>
+  lexing_isBLANK(buf, c0)
+*)
+(*
+| isIDENTFST(c0) =>
+  lexing_isIDENTFST(buf, c0)
+*)
+| _(* else *) =>
+  (
+    if i0 >= 0 then T_SPECHAR(i0) else T_EOF()
+  )
+//
+end // end of [lexing_token]
 
 (* ****** ****** *)
 

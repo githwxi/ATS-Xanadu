@@ -65,7 +65,7 @@ local
 in
 //
 val
-BSZ = i2sz(3)
+BSZ = i2sz(2)
 val-
 ~Some_vt(cbs) =
 fpath_get_cblist("./test_lexbuf.dats", BSZ)
@@ -77,28 +77,35 @@ val (_) = position_initize(pos, 0, 0, 0)
 //
 val (_) = lexbuf_initize_cblist(buf, cbs)
 //
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
+val uc0 = lexbuf_getc(buf)
+val (_) = lexbuf_unget(buf)
+val uc1 = lexbuf_getc(buf)
+val (_) = lexbuf_unget(buf)
+val (_) = println!("uc0 = ", int2char0(uc0))
+val (_) = println!("uc1 = ", int2char0(uc1))
+//
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
 //
 val (_) = println!("The first seg: ", lexbuf_get_fullseg(buf))
 //
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
-val (_) = println!(int2char0(lexbuf_getinc_char(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
+val (_) = println!(int2char0(lexbuf_getc(buf)))
 //
 val (_) = println!("The second seg: ", lexbuf_get_fullseg(buf))
 //
@@ -106,7 +113,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
-implement main0() = ((*void*))
+implement main0((*void*)) = ((*void*))
 
 (* ****** ****** *)
 

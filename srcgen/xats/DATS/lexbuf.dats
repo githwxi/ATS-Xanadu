@@ -62,6 +62,9 @@ $extype_struct
 , nrow= int
 , ncol= int
 , nspc= int
+/*
+, char= int // ungetc
+*/
 , cbuf= stropt
 , begp= ptr, endp= ptr, curp= ptr
 , cbhead= arrayref(uchar,0), cbtail= cblist
@@ -257,39 +260,7 @@ end // end of [else]
 in (* in-of-local *)
 
 implement
-lexbuf_get_char
-  (buf) = let
-//
-val cp = buf.curp
-val ep = buf.endp
-//
-in
-//
-if
-(cp < ep)
-then let
-  val uc =
-  $UN.ptr0_get<uchar>(cp)
-in
-  let val uc = uchar2int0(uc) in uc end
-end // end of [then]
-else let
-  val cbs = buf.cbtail
-in
-//
-  case+ cbs of
-  | cblist_nil() => EOF
-  | cblist_cons(sz, A0, cbs) => let
-      val uc =
-      $UN.ptr0_get<uchar>(ptrcast(A0)) in uchar2int0(uc)
-    end // end of [cblist_cons]
-end // end of [else]
-//
-end // end of [lexbuf_get_char]
-
-
-implement
-lexbuf_getinc_char
+lexbuf_getc
   (buf) = let
 //
 val cp = buf.curp
@@ -336,7 +307,7 @@ in
       buf.cbhead := A0;
       buf.cbtail := cbs;
 //
-      lexbuf_getinc_char(buf)
+      lexbuf_getc(buf)
 //
     ) where
     {
@@ -346,7 +317,21 @@ in
     } (* end of [cblist_cons] *)
 end // end of [else]
 //
-end // end of [lexbuf_getinc_char]
+end // end of [lexbuf_getc]
+
+implement
+lexbuf_unget
+  (buf) = let
+//
+val bp = buf.begp
+val cp = buf.curp
+//
+in
+  if cp > bp
+    then buf.curp := ptr_pred<char>(cp)
+    else ((*void*))
+  // end of [if]
+end // end of [lexbuf_unget]
 
 end // end of [local]
 
