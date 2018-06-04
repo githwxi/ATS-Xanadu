@@ -265,19 +265,8 @@ else let
   val cbs = buf.cbtail
 in
   case+ cbs of
-  | cblist_nil() =>
-    (
-      buf.begp := bp;
-      buf.endp := ep;
-      buf.curp := bp;
-      buf.cbhead := A0;
-      buf.cbtail := cbs; EOF
-    ) where
-    {
-      val bp = NULL
-      and ep = NULL
-      val A0 = $UN.cast(NULL)
-    }
+  | cblist_nil
+      ((*void*)) => EOF
   | cblist_cons
       (sz, A0, cbs) =>
     (
