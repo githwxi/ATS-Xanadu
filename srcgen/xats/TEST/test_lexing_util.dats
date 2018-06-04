@@ -80,7 +80,7 @@ in
 val
 BSZ = i2sz(020)
 val
-BSZ = i2sz(0x10)
+BSZ = i2sz(0x100)
 val-
 ~Some_vt(cbs) =
 fpath_get_cblist
@@ -115,3 +115,9 @@ implement main0((*void*)) = ((*void*))
 (* ****** ****** *)
 
 (* end of [test_lexing_util.dats] *)
+
+////
+
+'What?
+'\000'
+"This unclosed string is ill-formed!!!

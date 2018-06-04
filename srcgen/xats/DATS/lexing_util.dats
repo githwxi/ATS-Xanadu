@@ -45,6 +45,9 @@ UN = "prelude/SATS/unsafe.sats"
 //
 extern
 fun
+isEOL(c: char): bool
+extern
+fun
 isBLANK(c: char): bool
 //
 extern
@@ -70,6 +73,9 @@ extern
 fun isDQUOTE(c: char): bool
 //
 (* ****** ****** *)
+//
+implement
+isEOL(c) = (c = '\n')
 //
 implement
 isBLANK(c) =
@@ -133,6 +139,19 @@ isDQUOTE(c) = (c = '\"')
 (* ****** ****** *)
 
 local
+
+fun
+lexing_isEOL
+( buf
+: &lexbuf >> _, c0: char
+) : tnode = let
+  val () =
+  lexbuf_get_none(buf)
+in
+  T_EOL() // HX: newline token
+end (* end of [lexing_isEOL] *)
+
+(* ****** ****** *)
 
 fun
 lexing_isBLANK
@@ -524,6 +543,10 @@ val i0 =
 )
 val c0 = int2char0(i0)
 //
+(*
+val () = println! ("i0 = ", i0)
+*)
+//
 in
 //
 ifcase
@@ -561,6 +584,9 @@ val c0 = int2char0(i0)
 in
 //
 ifcase
+//
+| isEOL(c0) =>
+  lexing_isEOL(buf, c0)
 //
 | isBLANK(c0) =>
   lexing_isBLANK(buf, c0)
