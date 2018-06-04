@@ -63,7 +63,12 @@ isIDENTRST(c: char): bool
 extern
 fun
 isSYMBOLIC(c: char): bool
-
+//
+extern
+fun isSQUOTE(c: char): bool
+extern
+fun isDQUOTE(c: char): bool
+//
 (* ****** ****** *)
 //
 implement
@@ -94,12 +99,12 @@ isIDENTFST(c) =
 implement
 isIDENTRST(c) =
 (
-  ifcase
-  | isalnum(c) => true
-  | ( c = '_' ) => true
-  | ( c = '$' ) => true
-  | ( c = '\'' ) => true // HX: ML tradition
-  | _ (*rest-of-char*) => false
+ifcase
+| isalnum(c) => true
+| ( c = '_' ) => true
+| ( c = '$' ) => true
+| ( c = '\'' ) => true // HX: ML tradition
+| _ (*rest-of-char*) => false
 ) (* end of [isIDENTRST] *)
 
 (* ****** ****** *)
@@ -120,6 +125,13 @@ end // end of [SYMBOLIC_test]
 
 (* ****** ****** *)
 
+implement
+isSQUOTE(c) = (c = '\'')
+implement
+isDQUOTE(c) = (c = '\"')
+
+(* ****** ****** *)
+
 local
 
 fun
@@ -132,13 +144,13 @@ lexing_isBLANK
 //
 fun
 loop
-(buf: &lexbuf >> _): tnode = let
+(buf:
+&lexbuf >> _): tnode = let
 //
 val i0 = 
 (
   lexbuf_getc(buf)
 )
-//
 val c0 = int2char0(i0)
 //
 in
@@ -180,13 +192,13 @@ ifcase
 //
 fun
 loop0
-(buf: &lexbuf >> _): tnode = let
+(buf:
+&lexbuf >> _): tnode = let
 //
 val i0 = 
 (
   lexbuf_getc(buf)
 )
-//
 val c0 = int2char0(i0)
 //
 in
@@ -202,7 +214,7 @@ ifcase
     else let
       val () = lexbuf_unget(buf)
     in
-      T_INT(DEC, lexbuf_get_fullseg(buf))
+      T_INT(lexbuf_get_fullseg(buf))
     end // end of [else]
   )
 //
@@ -210,13 +222,13 @@ end // end of [loop0]
 
 and
 loop0d
-(buf: &lexbuf >> _): tnode = let
+(buf:
+&lexbuf >> _): tnode = let
 //
 val i0 = 
 (
   lexbuf_getc(buf)
 )
-//
 val c0 = int2char0(i0)
 //
 in
@@ -227,20 +239,20 @@ then loop0d(buf)
 else let
   val () = lexbuf_unget(buf)
 in
-  T_INT(OCT, lexbuf_get_fullseg(buf))
+T_INT(OCT, lexbuf_get_fullseg(buf))
 end // end of [else]
 //
 end // end of [loop0d]
 
 and
 loop0x
-(buf: &lexbuf >> _): tnode = let
+(buf:
+&lexbuf >> _): tnode = let
 //
 val i0 = 
 (
   lexbuf_getc(buf)
 )
-//
 val c0 = int2char0(i0)
 //
 in
@@ -251,26 +263,27 @@ then loop0x(buf)
 else let
   val () = lexbuf_unget(buf)
 in
-  T_INT(HEX, lexbuf_get_fullseg(buf))
+T_INT(HEX, lexbuf_get_fullseg(buf))
 end // end of [else]
 //
 end // end of [loop0x]
 
 and
 loop0X
-(buf: &lexbuf >> _): tnode = loop0x(buf)
+(buf:
+&lexbuf >> _): tnode = loop0x(buf)
 
 (* ****** ****** *)
 
 fun
 loop1
-(buf: &lexbuf >> _): tnode = let
+(buf:
+&lexbuf >> _): tnode = let
 //
 val i0 = 
 (
   lexbuf_getc(buf)
 )
-//
 val c0 = int2char0(i0)
 //
 in
@@ -281,7 +294,7 @@ then loop1(buf)
 else let
   val () = lexbuf_unget(buf)
 in
-  T_INT(DEC, lexbuf_get_fullseg(buf))
+  T_INT(lexbuf_get_fullseg(buf))
 end // end of [else]
 //
 end // end of [loop1]
@@ -300,13 +313,13 @@ lexing_isIDENTFST
 //
 fun
 loop
-(buf: &lexbuf >> _): tnode = let
+(buf:
+&lexbuf >> _): tnode = let
 //
 val i0 = 
 (
   lexbuf_getc(buf)
 )
-//
 val c0 = int2char0(i0)
 //
 in
@@ -336,13 +349,13 @@ lexing_isSYMBOLIC
 //
 fun
 loop
-(buf: &lexbuf >> _): tnode = let
+(buf:
+&lexbuf >> _): tnode = let
 //
 val i0 = 
 (
   lexbuf_getc(buf)
 )
-//
 val c0 = int2char0(i0)
 //
 in
@@ -360,6 +373,180 @@ end // end of [loop]
 //
 } (* end of [lexing_isSYMBOLIC] *)
 
+(* ****** ****** *)
+
+fun
+lexing_isSQUOTE
+( buf
+: &lexbuf >> _, c0: char
+) : tnode =
+  loop(buf) where
+{
+//
+fun
+loop
+(buf:
+&lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+| c0 = '\\' => loop1(buf)
+| c0 = '\'' => loop2(buf)
+| _(* else *) => loop3(buf)
+//
+end // end of [loop]
+//
+and
+loop1
+(buf:
+&lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+| isdigit(c0) => loop11(buf)
+| isprint(c0) => loop12(buf)
+| _ (* else *) => loop12(buf)
+//
+end // end of [loop1]
+//
+and
+loop2
+(buf:
+&lexbuf >> _): tnode =
+T_CHAR_nil
+(lexbuf_get_fullseg(buf))
+//
+and
+loop3
+(buf:
+&lexbuf >> _): tnode = let
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+| isSQUOTE(c0) =>
+  T_CHAR_char(lexbuf_get_fullseg(buf))
+| _ (* else *) => let
+    val () = lexbuf_unget(buf)
+  in
+    T_CHAR_char(lexbuf_get_fullseg(buf))
+  end // end of [non-closing-SQUOTE]
+//
+end // end of [loop3]
+//
+and
+loop11
+(buf:
+&lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+| isdigit(c0) => loop11(buf)
+| isSQUOTE(c0) =>
+  T_CHAR_slash(lexbuf_get_fullseg(buf))
+| _ (* else *) => let
+    val () = lexbuf_unget(buf)
+  in
+    T_CHAR_slash(lexbuf_get_fullseg(buf))
+  end // end of [non-closing-SQUOTE]
+//
+end // end of [loop11]
+//
+and
+loop12
+(buf:
+&lexbuf >> _): tnode = let
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+| isSQUOTE(c0) =>
+  T_CHAR_slash(lexbuf_get_fullseg(buf))
+| _ (* else *) => let
+    val () = lexbuf_unget(buf)
+  in
+    T_CHAR_slash(lexbuf_get_fullseg(buf))
+  end // end of [non-closing-SQUOTE]
+//
+end // end of [loop12]
+//
+} (* end of [lexing_isSQUOTE] *)
+
+(* ****** ****** *)
+
+fun
+lexing_isDQUOTE
+( buf
+: &lexbuf >> _, c0: char
+) : tnode =
+  loop(buf) where
+{
+//
+fun
+loop
+(buf:
+&lexbuf >> _): tnode = let
+//
+val i0 = 
+(
+  lexbuf_getc(buf)
+)
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+| c0 = '\"' =>
+  T_STRING
+  (lexbuf_get_fullseg(buf))
+| c0 = '\\' =>
+  loop(buf) where
+  {
+  val i0 = lexbuf_getc(buf)
+  } (* end of [......] *)
+| _(* else *) =>
+  if
+  (i0 >= 0)
+  then loop(buf)
+  else T_STRING(lexbuf_get_fullseg(buf))
+//
+end // end of [loop]
+//
+} (* end of [lexing_isDQUOTE] *)
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -369,7 +556,6 @@ val i0 =
 (
   lexbuf_getc(buf)
 )
-//
 val c0 = int2char0(i0)
 //
 in
@@ -387,6 +573,15 @@ ifcase
 //
 | isSYMBOLIC(c0) =>
   lexing_isSYMBOLIC(buf, c0)
+//
+| isSQUOTE(c0) =>
+  (
+    lexing_isSQUOTE(buf, c0)
+  )
+| isDQUOTE(c0) =>
+  (
+    lexing_isDQUOTE(buf, c0)
+  )
 //
 | _(* else *) =>
   (

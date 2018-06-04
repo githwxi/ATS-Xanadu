@@ -14,6 +14,13 @@
 //
 (* ****** ****** *)
 
+val a = 'a'
+val A = 'A'
+val EOL = '\n'
+val NUL = '\000'
+
+(* ****** ****** *)
+
 local
 //
 #include "./../DATS/symbol.dats"
