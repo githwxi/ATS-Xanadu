@@ -1,0 +1,31 @@
+(* ****** ****** *)
+
+#include"hello.dats"
+
+val xyz = #@(abcde)
+val xyz = $@(abcde)
+
+(* ****** ****** *)
+
+stacst l0: addr
+stadef T = int\@(l0+1)
+
+(* ****** ****** *)
+
+val x = $X.123 + $X$Y.456
+
+val y = foldleft(xs, 0, $0 + $1)
+
+(* ****** ****** *)
+
+val x = 3.1416 + 1.01234e-12 + 0x0.0123456789abcdefp+a1 + 0x.999999)
+
+(* ****** ****** *)
+
+// /*
+/* end of [test_syntax.text] */
+// */
+
+(*
+(* end of [test_syntax.text] *)
+*)
