@@ -57,6 +57,9 @@ tnode =
   | T_IDENT_alp of string // alnum
   | T_IDENT_sym of string // symbol
 //
+  | T_IDENT_srp of string // #alnum
+  | T_IDENT_dlr of string // $alnum
+//
   | T_INT of (string) // base=10
   | T_INT of (int(*base*), string)
   | T_INT of (int(*base*), string(*rep*), uint(*suffix*))
@@ -75,21 +78,28 @@ tnode =
   | {n:int}
     T_CDATA of (arrayref(char, n), size_t(n)) // binaries
 //
+(*
   | T_COMMA of () // ,
   | T_SEMICOLON of () // ;
+*)
 //
+(*
   | T_LPAREN of () // (
   | T_RPAREN of () // )
   | T_LBRACE of () // {
   | T_RBRACE of () // }
   | T_LBRACKET of () // [
   | T_RBRACKET of () // ]
+*)
 //
   | T_SPECHAR of (int) // special char
 //
-  | T_COMMENT_line of () // line comment
-  | T_COMMENT_rest of () // rest-of-file
-  | T_COMMENT_block of () // (embeddable) block comment
+  | T_COMMENT_line of
+    (string(*init*), string) // line comment
+  | T_COMMENT_rest of
+    (string(*init*), string) // rest comment
+  | T_COMMENT_cblock of (int(*level*), string) // comment of c-style
+  | T_COMMENT_mlblock of (int(*level*), string) // comment of ml-style
 //
 abstbox token_tbox
 //

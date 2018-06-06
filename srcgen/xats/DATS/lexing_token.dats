@@ -100,6 +100,11 @@ case+ tnd of
 | T_IDENT_sym(x) =>
   fprint!(out, "IDENT_sym(", x, ")")
 //
+| T_IDENT_srp(x) =>
+  fprint!(out, "IDENT_srp(", x, ")")
+| T_IDENT_dlr(x) =>
+  fprint!(out, "IDENT_dlr(", x, ")")
+//
 | T_INT(rep) =>
   fprint!(out, "INT(", rep, ")")
 | T_INT(base, rep) =>
@@ -132,21 +137,35 @@ case+ tnd of
 //
 | T_CDATA(cdata, asz) => fprint!(out, "CDATA(...)")
 //
+(*
 | T_COMMA() => fprint(out, "COMMA")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
+*)
 //
+(*
 | T_LPAREN() => fprint(out, "LPAREN")
 | T_RPAREN() => fprint(out, "RPAREN")
 | T_LBRACE() => fprint(out, "LBRACE")
 | T_RBRACE() => fprint(out, "RBRACE")
 | T_LBRACKET() => fprint(out, "LBRACKET")
 | T_RBRACKET() => fprint(out, "RBRACKET")
+*)
 //
-| T_SPECHAR(c) => fprint!(out, "SPECHAR(", c, ")")
+| T_SPECHAR(c) =>
+  fprint!(out, "SPECHAR(", int2char0(c), ")")
 //
-| T_COMMENT_line() => fprint(out, "T_COMMENT_line")
-| T_COMMENT_rest() => fprint(out, "T_COMMENT_rest")
-| T_COMMENT_block() => fprint(out, "T_COMMENT_block")
+| T_COMMENT_line
+    (init, content) =>
+    fprint!(out, "T_COMMENT_line(", init, "; ", "...)")
+| T_COMMENT_rest
+    (init, content) =>
+    fprint!(out, "T_COMMENT_rest(", init, "; ", "...)")
+| T_COMMENT_cblock
+    (level, content) =>
+    fprint!(out, "T_COMMENT_cblock(", level, "; ", "...)")
+| T_COMMENT_mlblock
+    (level, content) =>
+    fprint!(out, "T_COMMENT_mlblock(", level, "; ", "...)")
 //
 ) (* end of [fprint_tnode] *)
 //
@@ -170,9 +189,10 @@ tnode_is_comment
   (node) =
 (
   case+ node of
-  | T_COMMENT_line() => true
-  | T_COMMENT_rest() => true
-  | T_COMMENT_block() => true
+  | T_COMMENT_line _ => true
+  | T_COMMENT_rest _ => true
+  | T_COMMENT_cblock _ => true
+  | T_COMMENT_mlblock _ => true
   | _ (* non-T_COMMENT_... *) => false
 )
 

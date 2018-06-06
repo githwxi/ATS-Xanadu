@@ -28,8 +28,8 @@ local
 #include "./../DATS/location.dats"
 //
 #include "./../DATS/lexbuf.dats"
-#include "./../DATS/lexing_util.dats"
 #include "./../DATS/lexing_token.dats"
+#include "./../DATS/lexing_util0.dats"
 //
 in
   // nothing
@@ -52,7 +52,7 @@ end // end of [local]
 //
 val () =
 println!
-("Hello from [test_lexing_util]!")
+("Hello from [test_lexing_util0]!")
 //
 (* ****** ****** *)
 
@@ -66,7 +66,7 @@ local
 "./../SATS/location.sats"
 //
 #staload
-"./../DATS/lexing_util.dats"
+"./../DATS/lexing_util0.dats"
 //
 #staload
 "./../../util/SATS/cblist.sats"
@@ -84,7 +84,7 @@ BSZ = i2sz(0x100)
 val-
 ~Some_vt(cbs) =
 fpath_get_cblist
-("./test_lexing_util.dats", BSZ)
+("./test_syntax.text", BSZ)
 //
 var buf: lexbuf
 var pos: position
@@ -114,10 +114,17 @@ implement main0((*void*)) = ((*void*))
 
 (* ****** ****** *)
 
-(* end of [test_lexing_util.dats] *)
+(* end of [test_lexing_util0.dats] *)
+
+/**
+ Is this one special?
+ */
 
 ////
 
+The rest is treated as comment:
+
 'What?
 '\000'
-"This unclosed string is ill-formed!!!
+"This unclosed string is ill-formed!!!"
+
