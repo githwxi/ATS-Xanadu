@@ -1372,4 +1372,88 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+fpath_tokenize
+  (fpath) = let
+//
+val
+opt =
+fileref_open_opt
+  (fpath, file_mode_r)
+//
+in
+  case+ opt of
+  | ~None_vt() =>
+    (
+      None_vt()
+    )
+  | ~Some_vt(inp) =>
+    (
+      Some_vt(fileref_tokenize(inp))
+    )
+end // end of [fpath_tokenize]
+
+(* ****** ****** *)
+
+local
+
+#staload
+"./../../util/SATS/cblist.sats"
+#staload
+"./../../util/SATS/Posix/cblist.sats"
+#staload _ =
+"./../../util/DATS/Posix/cblist.dats"
+
+in (* in-of-local *)
+
+implement
+fileref_tokenize
+  (inp) = let
+//
+val BSZ = i2sz(4096)
+//
+fun
+loop
+(buf:
+&lexbuf >> _
+,res:
+ tnodelst_vt): tnodelst_vt = let
+//
+  val tnd = lexing_tnode(buf)
+//
+in
+  case+ tnd of
+  | T_EOF() => res
+  | _(*non-EOF*) =>
+    ( loop
+      (buf, list_vt_cons(tnd, res))
+    )
+end // end of [loop]
+//
+var buf: lexbuf
+//
+val-
+~Some_vt(cbs) =
+(
+fileref_get_cblist_vt(inp, BSZ)
+)
+//
+local
+val cbs = $UN.castvwtp1(cbs)
+val (_) = lexbuf_initize_cblist(buf, cbs)
+in
+val tnds = loop(buf, list_vt_nil(*void*))
+//
+end // end of [local]
+//
+in
+let
+val () = cblist_vt_free(cbs) in list_vt_reverse(tnds)
+end
+end // end of [fileref_tokenize]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_lexing_util0.dats] *)

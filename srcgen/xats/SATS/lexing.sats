@@ -115,6 +115,9 @@ $rec{
 } (* end of [token] *)
 *)
 //
+typedef tnodelst = List0(tnode)
+vtypedef tnodelst_vt = List0_vt(tnode)
+//
 typedef token = token_tbox
 typedef tokenopt = Option(token)
 vtypedef tokenopt_vt = Option_vt(token)
@@ -187,7 +190,17 @@ fun tnode_search(name: string): tnode
 //
 (* ****** ****** *)
 //
-fun lexing_tnode(lxbf: &lexbuf >> _): tnode
+fun
+lexing_tnode(lxbf: &lexbuf >> _): tnode
+//
+(* ****** ****** *)
+//
+fun
+fpath_tokenize
+  (fpath: string): Option_vt(tnodelst_vt)
+//
+fun
+fileref_tokenize(inp: FILEref): tnodelst_vt
 //
 (* ****** ****** *)
 
