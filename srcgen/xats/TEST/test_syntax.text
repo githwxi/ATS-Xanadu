@@ -62,3 +62,16 @@ val x = 3.1416 + 1.01234e-12 + 0x0.0123456789abcdefp+a1 + 0x.999999)
 (*
 (* end of [test_syntax.text] *)
 *)
+
+
+/**
+ Is this one special?
+ */
+
+////
+
+The rest is treated as comment:
+
+'What?
+'\000'
+"This unclosed string is ill-formed!!!"
