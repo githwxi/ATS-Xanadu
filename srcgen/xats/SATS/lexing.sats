@@ -64,19 +64,23 @@ tnode =
   | T_INT of (int(*base*), string)
   | T_INT of (int(*base*), string(*rep*), uint(*suffix*))
 //
-  | T_CHAR of (int) // ascii
-  | T_CHAR_nil of (string) // ''
-  | T_CHAR_char of (string) // '?'
-  | T_CHAR_slash of (string) // '\...'
-//
-  | T_STRING of (string) // utf-8 // for text
-//
   | T_FLOAT of (string(*rep*)) // base=10
   | T_FLOAT of (int(*base*), string(*rep*))
   | T_FLOAT of (int(*base*), string(*rep*), uint(*suffix*))
 //
+(*
+  | T_CHAR of (int) // ascii
+*)
+  | T_CHAR_nil of (string) // ''
+  | T_CHAR_char of (string) // '?'
+  | T_CHAR_slash of (string) // '\...'
+//
+  | T_STRING_quote of (string) // utf-8 // for text
+//
+(*
   | {n:int}
     T_CDATA of (arrayref(char, n), size_t(n)) // binaries
+*)
 //
 (*
   | T_COMMA of () // ,
@@ -156,14 +160,28 @@ overload prerr with prerr_token
 overload fprint with fprint_token
 //
 (* ****** ****** *)
+//
+fun
+print2_tnode : (tnode) -> void
+fun
+prerr2_tnode : (tnode) -> void
+fun
+fprint2_tnode : (FILEref, tnode) -> void
+//
+overload print2 with print2_tnode
+overload prerr2 with prerr2_tnode
+overload fprint2 with fprint2_tnode
+//
+(* ****** ****** *)
 
 fun tnode_is_comment(tnode): bool
 
 (* ****** ****** *)
 //
 // HX:
-// Check if a name refers to a special token;
-// if the return is not T_EOF(), then it does
+// Check if a given name refers to a
+// special token; if the return is not
+// T_EOF(), then it does!
 //
 fun tnode_search(name: string): tnode
 //

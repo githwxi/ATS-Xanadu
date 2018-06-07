@@ -147,15 +147,15 @@ ifcase
 implement
 isSYMBOLIC(c) = let
 //
-(*
 val
-SYMBOLIC = "%&+-./:=@~`^|*!?<>"
+SYMBOLIC = "%&+-./:=@~`^|*!?<>#"
 //
-*)
+(*
 //
 val
 SYMBOLIC = "%&+-./:=@~`^|*!?<>#$"
 //
+*)
 in
   $extfcall(ptr, "strchr", SYMBOLIC, c) > the_null_ptr
 end // end of [SYMBOLIC_test]
@@ -1063,7 +1063,7 @@ in
 //
 ifcase
 | c0 = '\"' =>
-  T_STRING
+  T_STRING_quote
   (lexbuf_get_fullseg(buf))
 | c0 = '\\' =>
   loop(buf) where
@@ -1074,7 +1074,8 @@ ifcase
   if
   (i0 >= 0)
   then loop(buf)
-  else T_STRING(lexbuf_get_fullseg(buf))
+  else
+  T_STRING_quote(lexbuf_get_fullseg(buf))
 //
 end // end of [loop]
 //

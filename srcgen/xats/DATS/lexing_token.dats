@@ -72,10 +72,12 @@ end // end of [local]
 //
 implement
 print_tnode
-  (tok) = fprint_tnode(stdout_ref, tok)
+  (tok) =
+  fprint_tnode(stdout_ref, tok)
 implement
 prerr_tnode
-  (tok) = fprint_tnode(stderr_ref, tok)
+  (tok) =
+  fprint_tnode(stderr_ref, tok)
 //
 (* ****** ****** *)
 //
@@ -112,22 +114,6 @@ case+ tnd of
 | T_INT(base, rep, _(*sfx*)) =>
   fprint!(out, "INT(", base, ", ", rep, ")")
 //
-| T_CHAR(chr) =>
-  let
-    val chr = int2char0(chr)
-  in
-    fprint!(out, "CHAR(", chr, ")")
-  end
-| T_CHAR_nil(rep) =>
-  fprint!(out, "CHAR_nil(", rep, ")")
-| T_CHAR_char(rep) =>
-  fprint!(out, "CHAR_char(", rep, ")")
-| T_CHAR_slash(rep) =>
-  fprint!(out, "CHAR_slash(", rep, ")")
-//
-| T_STRING(str) =>
-  fprint!(out, "STRING(", str, ")")
-//
 | T_FLOAT(rep) =>
   fprint!(out, "FLOAT(", rep, ")")
 | T_FLOAT(base, rep) =>
@@ -135,7 +121,27 @@ case+ tnd of
 | T_FLOAT(base, rep, _(*sfx*)) =>
   fprint!(out, "FLOAT(", base, ", ", rep, ")")
 //
+(*
+| T_CHAR(chr) =>
+  let
+    val chr = int2char0(chr)
+  in
+    fprint!(out, "CHAR(", chr, ")")
+  end
+*)
+| T_CHAR_nil(rep) =>
+  fprint!(out, "CHAR_nil(", rep, ")")
+| T_CHAR_char(rep) =>
+  fprint!(out, "CHAR_char(", rep, ")")
+| T_CHAR_slash(rep) =>
+  fprint!(out, "CHAR_slash(", rep, ")")
+//
+| T_STRING_quote(str) =>
+  fprint!(out, "STRING_quote(", str, ")")
+//
+(*
 | T_CDATA(cdata, asz) => fprint!(out, "CDATA(...)")
+*)
 //
 (*
 | T_COMMA() => fprint(out, "COMMA")
@@ -173,14 +179,109 @@ case+ tnd of
 //
 implement
 print_token
-  (tok) = fprint_token(stdout_ref, tok)
+  (tok) =
+  fprint_token(stdout_ref, tok)
 implement
 prerr_token
-  (tok) = fprint_token(stderr_ref, tok)
+  (tok) =
+  fprint_token(stderr_ref, tok)
 //
 implement
 fprint_token
-  (out, tok) = fprint_tnode(out, tok.node())
+  (out, tok) =
+  fprint_tnode(out, tok.node())
+//
+(* ****** ****** *)
+//
+implement
+print2_tnode
+  (tok) =
+  fprint2_tnode(stdout_ref, tok)
+implement
+prerr2_tnode
+  (tok) =
+  fprint2_tnode(stderr_ref, tok)
+//
+(* ****** ****** *)
+
+//
+implement
+fprint2_tnode(out, tnd) =
+(
+case+ tnd of
+//
+| T_EOF() => ()
+| T_ERR() =>
+  fprint(out, "*ERROR*")
+//
+| T_EOL() => fprint(out, "\n")
+//
+| T_AT() => fprint(out, "@")
+| T_BANG() => fprint(out, "!")
+//
+| T_BLANK(x) => fprint(out, x)
+//
+| T_IDENT_alp(x) => fprint(out, x)
+| T_IDENT_sym(x) => fprint(out, x)
+//
+| T_IDENT_srp(x) => fprint(out, x)
+| T_IDENT_dlr(x) => fprint(out, x)
+//
+| T_INT(rep) => fprint(out, rep)
+| T_INT(base, rep) => fprint(out, rep)
+| T_INT(base, rep, _(*sfx*)) => fprint(out, rep)
+//
+| T_FLOAT(rep) => fprint(out, rep)
+| T_FLOAT(base, rep) => fprint(out, rep)
+| T_FLOAT(base, rep, _(*sfx*)) => fprint(out, rep)
+//
+(*
+| T_CHAR(chr) =>
+  let
+    val chr = int2char0(chr)
+  in
+    fprint!(out, "CHAR(", chr, ")")
+  end
+*)
+| T_CHAR_nil(rep) => fprint(out, rep)
+| T_CHAR_char(rep) => fprint(out, rep)
+| T_CHAR_slash(rep) => fprint(out, rep)
+//
+| T_STRING_quote(str) => fprint(out, str)
+//
+(*
+| T_CDATA(cdata, asz) => fprint!(out, "CDATA(...)")
+*)
+//
+(*
+| T_COMMA() => fprint(out, ",")
+| T_SEMICOLON() => fprint(out, ";")
+*)
+//
+(*
+| T_LPAREN() => fprint(out, "(")
+| T_RPAREN() => fprint(out, ")")
+| T_LBRACE() => fprint(out, "{")
+| T_RBRACE() => fprint(out, "}")
+| T_LBRACKET() => fprint(out, "[")
+| T_RBRACKET() => fprint(out, "]")
+*)
+//
+| T_SPECHAR(c) =>
+  fprint(out, c) where{val c=int2char0(c)}
+//
+| T_COMMENT_line
+    (init, content) =>
+    fprint!(out, init, content)
+| T_COMMENT_rest
+    (init, content) =>
+    fprint!(out, init, content)
+| T_COMMENT_cblock
+    (level, content) => fprint(out, content)
+| T_COMMENT_mlblock
+    (level, content) => fprint(out, content)
+//
+) (* end of [fprint2_tnode] *)
 //
 (* ****** ****** *)
 
