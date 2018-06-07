@@ -7,6 +7,8 @@
 //
 #include
 "share/atspre_staload.hats"
+#include
+"share/atspre_staload_libats_ML.hats"
 //
 (* ****** ****** *)
 //
@@ -93,18 +95,28 @@ val (_) = position_initize(pos, 0, 0, 0)
 //
 val (_) = lexbuf_initize_cblist(buf, cbs)
 //
-val (_) = loop(buf) where
+val res =
+ref<list0(tnode)>(nil0())
+//
+val (_) =
+loop(buf) where
 {
-  fun
-  loop
-  (buf: &lexbuf >> _): void = let
-    val tnd = lexing_tnode(buf)
-    val (_) = println!("tnd = ", tnd)
-  in
-    case+ tnd of
-    | T_EOF() => () | _ (*non-EOF*) => loop(buf)
-  end
+fun
+loop
+(buf:
+&lexbuf >> _): void = let
+  val tnd = lexing_tnode(buf)
+  val (_) = println!("tnd = ", tnd)
+  val (_) = res[] := cons0(tnd, res[])
+in
+  case+ tnd of
+  | T_EOF() => () | _ (*non-EOF*) => loop(buf)
+end // end of [loop]
 }
+//
+val () =
+list0_rforeach
+(res[], lam(x) => fprint2_tnode(stdout_ref, x))
 //
 end // end of [local]
 

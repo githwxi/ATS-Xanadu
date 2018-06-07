@@ -1,6 +1,26 @@
 (* ****** ****** *)
 
-#include"hello.dats"
+val x = `(x+y)` \+ Hello
+val res =
+#foldleft<...>(xs) where
+{
+  implement
+  #foldleft$init<int>() = 0
+  implement
+  #foldleft$fopr<int><int>(res, x) = res + x
+}
+val res =
+let
+  implement
+  #foldleft$init<int>() = 0
+  implement
+  #foldleft$fopr<int><int>(res, x) = res + x
+in
+  #foldleft<...>(xs)
+end // end of [let]
+
+#include
+%(DIR+"hello.dats")
 
 val xyz = #@(abcde)
 val xyz = $@(abcde)
@@ -14,7 +34,20 @@ stadef T = int\@(l0+1)
 
 val x = $X.123 + $X$Y.456
 
-val y = foldleft(xs, 0, $0 + $1)
+val sum = foldleft(xs, 0, lam($0+$1))
+val sum = foldright(xs, lam($0+$1), 0)
+
+val sum = foldright<...>(xs, lam($0+$1), 0)
+
+fun
+foo{i:int}[i,j](x: int(i)): bool(i > 0)
+
+`(f(,(x), ,(y))
+
+list(@[1, 2, 3, 4, 5])
+$array{int}(1, 3, 5, 7, 9)
+$list_t{int}(1, 3, 5, 7, 9)
+$list_vt{int}(1, 3, 5, 7, 9)
 
 (* ****** ****** *)
 
