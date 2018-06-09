@@ -33,6 +33,8 @@
 //
 (* ****** ****** *)
 //
+#staload SYM = "./symbol.sats"
+  typedef kword = $SYM.symbol
 #staload LOC = "./location.sats"
   typedef loc_t = $LOC.location
 //
@@ -49,8 +51,10 @@ tnode =
 //
   | T_EOL of () // end-of-line
 //
+(*
   | T_AT of ()
   | T_BANG of ()
+*)
 //
   | T_BLANK of (string) // blank
 //
@@ -182,9 +186,18 @@ fun tnode_is_comment(tnode): bool
 (* ****** ****** *)
 //
 // HX:
-// Check if a given name refers to a
-// special token; if the return is not
-// T_EOF(), then it does!
+// Check if a given name refers to
+// a keyword; if the return is not
+// SYMBOL_nil(), then it does!
+//
+fun kword_search(name: string): kword
+//
+(* ****** ****** *)
+//
+// HX:
+// Check if a given name refers to
+// a special token; if the return is
+// not T_EOF(), then it does!
 //
 fun tnode_search(name: string): tnode
 //

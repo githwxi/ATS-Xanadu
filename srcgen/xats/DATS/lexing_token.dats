@@ -91,8 +91,10 @@ case+ tnd of
 //
 | T_EOL() => fprint(out, "EOL")
 //
+(*
 | T_AT() => fprint(out, "AT")
 | T_BANG() => fprint(out, "BANG")
+*)
 //
 | T_BLANK(x) =>
   fprint!(out, "BLANK(", x, ")")
@@ -216,8 +218,10 @@ case+ tnd of
 //
 | T_EOL() => fprint(out, "\n")
 //
+(*
 | T_AT() => fprint(out, "@")
 | T_BANG() => fprint(out, "!")
+*)
 //
 | T_BLANK(x) => fprint(out, x)
 //
@@ -375,19 +379,21 @@ end // end of [local]
 
 (*
 extern val T_DOT : tnode
-*)
 extern val T_QMARK : tnode
 extern val T_PERCENT : tnode
+*)
 (*
 implement T_DOT = T_IDENT_alp "."
-*)
 implement T_QMARK = T_IDENT_alp "?"
 implement T_PERCENT = T_IDENT_alp "%"
+*)
 
 (* ****** ****** *)
 
+(*
 val () = tnode_insert("@", T_AT)
 val () = tnode_insert("!", T_BANG)
+*)
 
 (* ****** ****** *)
 

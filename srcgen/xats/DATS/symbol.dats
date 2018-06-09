@@ -113,6 +113,26 @@ symbol_get_stamp(x) = x.stamp
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+eq_symbol_symbol(x, y) =
+  (x.stamp() = y.stamp())
+implement
+neq_symbol_symbol(x, y) =
+  (x.stamp() != y.stamp())
+//
+implement
+compare_symbol_symbol(x, y) =
+  compare(x.stamp(), y.stamp())
+//
+(* ****** ****** *)
+//
+implement
+symbol_is_nil(x) = (x = symbol_nil)
+implement
+symbol_isnot_nil(x) = (x != symbol_nil)
+//
+(* ****** ****** *)
 
 local
 //

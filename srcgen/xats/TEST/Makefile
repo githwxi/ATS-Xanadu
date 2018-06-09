@@ -61,6 +61,18 @@ cleanall:: ; $(RMF) test_lexbuf_dats
 ######
 
 all:: \
+test_lexing_kword
+test_lexing_kword: \
+test_lexing_kword_dats
+test_lexing_kword_dats: \
+test_lexing_kword.dats; \
+$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
+regress:: test_lexing_kword_dats; ./test_lexing_kword_dats
+cleanall:: ; $(RMF) test_lexing_kword_dats
+
+######
+
+all:: \
 test_lexing_token
 test_lexing_token: \
 test_lexing_token_dats

@@ -1435,7 +1435,7 @@ var buf: lexbuf
 val-
 ~Some_vt(cbs) =
 (
-fileref_get_cblist_vt(inp, BSZ)
+  fileref_get_cblist_vt(inp, BSZ)
 )
 //
 local

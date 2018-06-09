@@ -32,6 +32,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+#staload "./basics.sats"
+
+(* ****** ****** *)
 //
 abstbox symbol_tbox // boxed
 //
@@ -96,6 +100,25 @@ fprint_symbol : (FILEref, symbol) -> void
 overload print with print_symbol
 overload prerr with prerr_symbol
 overload fprint with fprint_symbol
+//
+(* ****** ****** *)
+//
+fun symbol_is_nil : (symbol) -> bool
+fun symbol_isnot_nil : (symbol) -> bool
+//
+fun eq_symbol_symbol: eq_type(symbol)
+fun neq_symbol_symbol: neq_type(symbol)
+//
+fun
+compare_symbol_symbol: compare_type(symbol)
+//
+overload = with eq_symbol_symbol
+overload != with neq_symbol_symbol
+//
+overload iseqz with symbol_is_nil
+overload isneqz with symbol_isnot_nil
+//
+overload compare with compare_symbol_symbol
 //
 (* ****** ****** *)
 
