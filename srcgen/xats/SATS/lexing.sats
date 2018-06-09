@@ -51,11 +51,6 @@ tnode =
 //
   | T_EOL of () // end-of-line
 //
-(*
-  | T_AT of ()
-  | T_BANG of ()
-*)
-//
   | T_BLANK of (string) // blank
 //
   | T_IDENT_alp of string // alnum
@@ -87,17 +82,20 @@ tnode =
 *)
 //
 (*
+//
+  | T_AT of ()
+  | T_BANG of ()
+//
   | T_COMMA of () // ,
   | T_SEMICOLON of () // ;
-*)
 //
-(*
   | T_LPAREN of () // (
   | T_RPAREN of () // )
   | T_LBRACE of () // {
   | T_RBRACE of () // }
   | T_LBRACKET of () // [
   | T_RBRACKET of () // ]
+//
 *)
 //
   | T_SPECHAR of (int) // special char
@@ -209,11 +207,17 @@ lexing_tnode(lxbf: &lexbuf >> _): tnode
 (* ****** ****** *)
 //
 fun
+string_tokenize
+  (text: string): Option_vt(tnodelst_vt)
+//
+(* ****** ****** *)
+//
+fun
 fpath_tokenize
   (fpath: string): Option_vt(tnodelst_vt)
 //
 fun
-fileref_tokenize(inp: FILEref): tnodelst_vt
+fileref_tokenize(inpfil: FILEref): tnodelst_vt
 //
 (* ****** ****** *)
 

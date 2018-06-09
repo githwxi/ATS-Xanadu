@@ -35,9 +35,23 @@ println!
 val () = println!(kword_search("fn"))
 val () = println!(kword_search("fn0"))
 val () = println!(kword_search("fn1"))
-val () = println!(kword_search("fn?"))
+val () = println!(kword_search("fun"))
+val () = println!(kword_search("fnx"))
+val () = println!("fn? = ", kword_search("fn?"))
+//
+val () = println!(kword_search("prfn"))
+val () = println!(kword_search("prfn0"))
+val () = println!(kword_search("prfn1"))
+val () = println!(kword_search("prfun"))
+val () = println!("prfn? = ", kword_search("prfn?"))
 //
 val () = println!(kword_search("with"))
+//
+val () = println!(kword_search("$raise"))
+//
+val () = println!(kword_search("$delay"))
+val () = println!(kword_search("$delay_t"))
+val () = println!(kword_search("$delay_vt"))
 //
 (* ****** ****** *)
 

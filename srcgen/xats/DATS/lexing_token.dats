@@ -91,11 +91,6 @@ case+ tnd of
 //
 | T_EOL() => fprint(out, "EOL")
 //
-(*
-| T_AT() => fprint(out, "AT")
-| T_BANG() => fprint(out, "BANG")
-*)
-//
 | T_BLANK(x) =>
   fprint!(out, "BLANK(", x, ")")
 //
@@ -146,11 +141,12 @@ case+ tnd of
 *)
 //
 (*
+| T_AT() => fprint(out, "AT")
+| T_BANG() => fprint(out, "BANG")
+//
 | T_COMMA() => fprint(out, "COMMA")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
-*)
 //
-(*
 | T_LPAREN() => fprint(out, "LPAREN")
 | T_RPAREN() => fprint(out, "RPAREN")
 | T_LBRACE() => fprint(out, "LBRACE")
@@ -218,11 +214,6 @@ case+ tnd of
 //
 | T_EOL() => fprint(out, "\n")
 //
-(*
-| T_AT() => fprint(out, "@")
-| T_BANG() => fprint(out, "!")
-*)
-//
 | T_BLANK(x) => fprint(out, x)
 //
 | T_IDENT_alp(x) => fprint(out, x)
@@ -258,11 +249,12 @@ case+ tnd of
 *)
 //
 (*
+| T_AT() => fprint(out, "@")
+| T_BANG() => fprint(out, "!")
+//
 | T_COMMA() => fprint(out, ",")
 | T_SEMICOLON() => fprint(out, ";")
-*)
 //
-(*
 | T_LPAREN() => fprint(out, "(")
 | T_RPAREN() => fprint(out, ")")
 | T_LBRACE() => fprint(out, "{")

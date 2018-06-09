@@ -146,7 +146,10 @@ val () = myins("abstflat")
 val () = myins("absvtbox")
 val () = myins("absvtflat")
 //
+val () = myins("dataprop")
+val () = myins("dataview")
 val () = myins("datatype")
+val () = myins("datavtype")
 //
 val () = myins("fn")
 val () = myins("fn0")
@@ -158,6 +161,9 @@ val () = myins("prfn")
 val () = myins("prfn0")
 val () = myins("prfn1")
 val () = myins("prfun")
+//
+val () = myins("lam")
+val () = myins("fix")
 //
 val () = myins("if")
 val () = myins("sif")
@@ -180,6 +186,23 @@ val () = myins("withtype")
 val () = myins("withprop")
 val () = myins("withview")
 val () = myins("withvtype")
+//
+val () = myins("$tup")
+val () = myins("$tup_t")
+val () = myins("$tup_vt")
+val () = myins("$rec")
+val () = myins("$rec_t")
+val () = myins("$rec_vt")
+//
+val () = myins("$list")
+val () = myins("$list_t")
+val () = myins("$list_vt")
+//
+val () = myins("$raise")
+//
+val () = myins("$delay")
+val () = myins("$delay_t")
+val () = myins("$delay_vt")
 //
 val () = myins("#if")
 val () = myins("#ifdef")

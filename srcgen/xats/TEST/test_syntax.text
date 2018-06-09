@@ -32,12 +32,21 @@ stadef T = int\@(l0+1)
 
 (* ****** ****** *)
 
+#staload XY = #MIX(X, Y)
+
+(* ****** ****** *)
+//
 val x = $X.123 + $X$Y.456
-
+//
+val len = foldleft(xs, 0, lam($0+1))
 val sum = foldleft(xs, 0, lam($0+$1))
+//
+val len = foldright(xs, lam($0+1), 0)
 val sum = foldright(xs, lam($0+$1), 0)
-
+//
 val sum = foldright<...>(xs, lam($0+$1), 0)
+//
+(* ****** ****** *)
 
 fun
 foo{i:int}[i,j](x: int(i)): bool(i > 0)
