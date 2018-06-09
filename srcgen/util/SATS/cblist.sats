@@ -55,6 +55,12 @@ clist_vt2t(cbs: cblist_vt): cblist
 (* ****** ****** *)
 //
 fun
+string2cblist
+  {n:pos}(text: string(n)): cblist
+//
+(* ****** ****** *)
+//
+fun
 cblist_length(cbs: cblist): intGte(0)
 fun
 cblist_vt_length(cbs: !cblist_vt): intGte(0)
