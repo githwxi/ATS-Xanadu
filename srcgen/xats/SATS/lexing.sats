@@ -36,6 +36,7 @@
 #staload SYM = "./symbol.sats"
   typedef kword = $SYM.symbol
 #staload LOC = "./location.sats"
+  typedef pos_t = $LOC.position
   typedef loc_t = $LOC.location
 //
 #staload LEXBUF = "./lexbuf.sats"
@@ -125,19 +126,20 @@ typedef tokenopt = Option(token)
 vtypedef tokenopt_vt = Option_vt(token)
 //
 (* ****** ****** *)
-
+//
 fun{}
 token_make
 (loc: loc_t, node: tnode): token
 // end of [token_make]
-
+//
 fun{}
-token_get_loc(token): loc_t
+token_get_loc(tok: token): loc_t
 fun{}
-token_get_node(token): tnode
+token_get_node(tok: token): tnode
+//
 overload .loc with token_get_loc
 overload .node with token_get_node
-
+//
 (* ****** ****** *)
 //
 fun
@@ -203,6 +205,12 @@ fun tnode_search(name: string): tnode
 //
 fun
 lexing_tnode(lxbf: &lexbuf >> _): tnode
+//
+(* ****** ****** *)
+//
+fun
+lexing_locatize
+(pos: &pos_t >> _, node: tnode): token
 //
 (* ****** ****** *)
 //

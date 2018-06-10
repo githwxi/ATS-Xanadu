@@ -11,6 +11,10 @@
 "share/atspre_staload_libats_ML.hats"
 //
 (* ****** ****** *)
+
+#dynload "./test_libxats.dats"
+
+(* ****** ****** *)
 //
 #staload "./../SATS/lexing.sats"
 //
@@ -20,22 +24,6 @@ val a = 'a'
 val A = 'A'
 val EOL = '\n'
 val NUL = '\000'
-
-(* ****** ****** *)
-
-local
-//
-#include "./../DATS/symbol.dats"
-#include "./../DATS/filepath.dats"
-#include "./../DATS/location.dats"
-//
-#include "./../DATS/lexbuf.dats"
-#include "./../DATS/lexing_token.dats"
-#include "./../DATS/lexing_util0.dats"
-//
-in
-  // nothing
-end // end of [local]
 
 (* ****** ****** *)
 

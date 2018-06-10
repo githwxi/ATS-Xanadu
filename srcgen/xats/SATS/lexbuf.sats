@@ -66,18 +66,17 @@ $extype"xats_lexbuf_struct"
 fun
 lexbuf_initize_cblist
 (
-  buf: &lexbuf? >> lexbuf, cbs: cblist
+  buf: &lexbuf? >> _, cbs: cblist
 ) : void // end of [lexbuf_initize_cblist]
 
 (* ****** ****** *)
 //
+(*
 fun
 lexbuf_get_ntot(buf: &lexbuf): int
 fun
 lexbuf_get_nspc(buf: &lexbuf): int
-//
-overload .nspc with lexbuf_get_ntot
-overload .nspc with lexbuf_get_nspc
+*)
 //
 (* ****** ****** *)
 //
@@ -92,31 +91,39 @@ lexbuf_get_fullseg
 //
 // HX-2018-05-27:
 // [lexbuf_getc] is like getc
-// [lexbuf_ungetc] is like ungetc
+// [lexbuf_unget] can be safely
+// applied only once at a given
+// position!
 //
 fun
-lexbuf_getc(buf: &lexbuf): int
+lexbuf_getc(buf: &lexbuf >> _): int
 fun
-lexbuf_unget(buf: &lexbuf): void
+lexbuf_unget(buf: &lexbuf >> _): void
 //
 (* ****** ****** *)
 //
+(*
 fun
 lexbuf_get_pos
 (
   buf: &lexbuf, pos: &pos_t? >> _
 ) : void // end-of-fun
+*)
 //
+(*
 fun
 lexbuf_set_pos
 (buf: &lexbuf >> _, pos: &pos_t): void
+*)
 //
 (* ****** ****** *)
+(*
 //
 fun
 lexbufpos_get_loc
   (buf: &lexbuf, pos: &pos_t): loc_t
 //
+*)
 (* ****** ****** *)
 
 (* end of [xats_lexbuf.sats] *)

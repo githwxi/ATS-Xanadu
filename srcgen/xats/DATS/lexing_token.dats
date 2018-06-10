@@ -388,5 +388,89 @@ val () = tnode_insert("!", T_BANG)
 *)
 
 (* ****** ****** *)
+//
+implement
+lexing_locatize
+  (pos0, node) = let
+//
+#define
+locmake
+location_make_pos_pos
+//
+#define
+posinc1 position_incby_1
+#define
+posinceol position_incby_eol
+#define
+posincneol position_incby_neol
+#define
+posinctext position_incby_text
+//
+var pos1: pos_t
+val ((*void*)) =
+position_copyfrom(pos1, pos0)
+//
+in
+//
+(
+case+ node of
+//
+| T_EOF() => ()
+| T_ERR() => ()
+//
+| T_EOL() => posinceol(pos1)
+//
+| T_BLANK(bs) => posincneol(pos1, bs)
+//
+| T_SPECHAR(c) => posinc1(pos1)
+//
+| T_IDENT_alp(id) => posincneol(pos1, id)
+| T_IDENT_sym(id) => posincneol(pos1, id)
+//
+| T_IDENT_dlr(id) => posincneol(pos1, id)
+| T_IDENT_srp(id) => posincneol(pos1, id)
+//
+| T_INT(rep) => posincneol(pos1, rep)
+| T_INT(_, rep) => posincneol(pos1, rep)
+| T_INT(_, rep, _) => posincneol(pos1, rep)
+//
+| T_FLOAT(rep) => posincneol(pos1, rep)
+| T_FLOAT(_, rep) => posincneol(pos1, rep)
+| T_FLOAT(_, rep, _) => posincneol(pos1, rep)
+//
+| T_CHAR_nil(rep) => posincneol(pos1, rep)
+| T_CHAR_char(rep) => posincneol(pos1, rep)
+| T_CHAR_slash(rep) => posincneol(pos1, rep)
+//
+| T_STRING_quote(rep) => posinctext(pos1, rep)
+//
+| T_COMMENT_line
+    (init, content) =>
+  (
+    posincneol(pos1, init); // initiative
+    posincneol(pos1, content) // comment body
+  )
+| T_COMMENT_rest
+    (init, content) =>
+  (
+    posincneol(pos1, init); // initiative
+    posinctext(pos1, content) // comment body
+  )
+| T_COMMENT_cblock
+    (level, content) => posinctext(pos1, content)
+| T_COMMENT_mlblock
+    (level, content) => posinctext(pos1, content)
+//
+) ; (* end of [case] *)
+let
+  val
+  loc01 = locmake(pos0, pos1)
+in
+  position_copyfrom(pos0, pos1); token_make(loc01, node)
+end // end of [let]
+//
+end // end of [lexing_locatize]
+
+(* ****** ****** *)
 
 (* end of [xats_lexing_token.dats] *)

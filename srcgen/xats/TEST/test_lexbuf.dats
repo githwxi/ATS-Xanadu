@@ -9,26 +9,13 @@
 "share/atspre_staload.hats"
 //
 (* ****** ****** *)
+
+#dynload "./test_libxats.dats"
+
+(* ****** ****** *)
 //
 #staload "./../SATS/lexbuf.sats"
 //
-(* ****** ****** *)
-
-local
-//
-#include
-"./../DATS/symbol.dats"
-#include
-"./../DATS/location.dats"
-#include
-"./../DATS/filepath.dats"
-//
-#include "./../DATS/lexbuf.dats"
-//
-in
-  // nothing
-end // end of [local]
-
 (* ****** ****** *)
 
 local
@@ -54,6 +41,8 @@ local
 //
 #staload
 "./../SATS/location.sats"
+#staload
+_ = "./../DATS/location.dats"
 //
 #staload
 "./../../util/SATS/cblist.sats"

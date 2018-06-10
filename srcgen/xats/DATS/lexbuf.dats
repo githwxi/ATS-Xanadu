@@ -58,10 +58,12 @@ lexbuf_tflat =
 $extype_struct
 "xats_lexbuf_struct" of
 {
+/*
   ntot= int
 , nrow= int
 , ncol= int
 , nspc= int
+*/
 /*
 , char= int // ungetc
 */
@@ -80,11 +82,12 @@ implement
 lexbuf_initize_cblist
   (buf, cbs) = let
 //
+(*
 val () = buf.ntot := 0
 val () = buf.nrow := 0
 val () = buf.ncol := 0
-//
 val () = buf.nspc := 0
+*)
 //
 val () = buf.cbuf := stropt_none()
 //
@@ -101,10 +104,12 @@ end // end of [lexbuf_initize_cblist]
 
 (* ****** ****** *)
 
+(*
 implement
 lexbuf_get_ntot(buf) = buf.ntot
 implement
 lexbuf_get_nspc(buf) = buf.nspc
+*)
 
 (* ****** ****** *)
 
@@ -309,6 +314,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
+(*
 implement
 lexbuf_get_pos
   (buf, pos) =
@@ -324,7 +330,9 @@ lexbuf_get_pos
     praxi _initize_(&pos_t? >> pos_t): void
   }
 } (* end of [lexbuf_get_pos] *)
+*)
 
+(*
 implement
 lexbuf_set_pos
   (buf, pos) =
@@ -333,9 +341,10 @@ lexbuf_set_pos
   buf.nrow := pos.nrow();
   buf.ncol := pos.ncol();
 )
+*)
 
 (* ****** ****** *)
-
+(*
 implement
 lexbufpos_get_loc
   (buf, cpos) = let
@@ -346,7 +355,7 @@ lexbufpos_get_loc
 in
   $LOC.location_make_pos_pos(bpos, cpos)
 end // end of [lexbufpos_get_loc]
-
+*)
 (* ****** ****** *)
 
 (* end of [xats_lexbuf.dats] *)
