@@ -63,18 +63,22 @@ FIL = "./filepath.sats"
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 position_initize
-( pos: &pos_t? >> _
+( pos0: &pos_t? >> _
 , ntot: int, nrow: int, ncol: int): void
+//
+fun{}
+position_copyfrom
+  (pos0: &pos_t? >> _, pos1: &pos_t): void
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 position_get_ntot : (&pos_t) -> int
-fun
+fun{}
 position_get_nrow : (&pos_t) -> int
-fun
+fun{}
 position_get_ncol : (&pos_t) -> int
 //
 overload .ntot with position_get_ntot
@@ -83,13 +87,13 @@ overload .ncol with position_get_ncol
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 position_set_ntot
   (pos: &pos_t >> _, ntot: int): void
-fun
+fun{}
 position_set_nrow
   (pos: &pos_t >> _, nrow: int): void
-fun
+fun{}
 position_set_ncol
   (pos: &pos_t >> _, ncol: int): void
 //
@@ -113,8 +117,23 @@ overload fprint with fprint_position
 (* ****** ****** *)
 //
 fun
+position_incby_1
+  (pos: &pos_t >> _): void
+//
+fun
+position_incby_eol
+  (pos: &pos_t >> _): void
+//
+fun
 position_incby_char
   (pos: &pos_t >> _, uc: int): void
+//
+fun
+position_incby_text
+  (pos: &pos_t >> _, cs: string): void
+fun
+position_incby_neol
+  (pos: &pos_t >> _, cs: string): void
 //
 (* ****** ****** *)
 //

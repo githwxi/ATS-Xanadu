@@ -61,32 +61,50 @@ in (* in-of-local *)
 (* ****** ****** *)
 //
 implement
+{}(*tmp*)
 position_initize
-(pos, ntot, nrow, ncol) =
+( pos0
+, ntot, nrow, ncol) =
 {
-  val () = pos.ntot := ntot
-  val () = pos.nrow := nrow
-  val () = pos.ncol := ncol
+  val () = pos0.ntot := ntot
+  val () = pos0.nrow := nrow
+  val () = pos0.ncol := ncol
+}
+//
+implement
+{}(*tmp*)
+position_copyfrom
+  (pos0, pos1) =
+{
+  val () = pos0.ntot := pos1.ntot()
+  val () = pos0.nrow := pos1.nrow()
+  val () = pos0.ncol := pos1.ncol()
 }
 //
 (* ****** ****** *)
 
 implement
+{}(*tmp*)
 position_get_ntot(pos) = pos.ntot
 implement
+{}(*tmp*)
 position_get_nrow(pos) = pos.nrow
 implement
+{}(*tmp*)
 position_get_ncol(pos) = pos.ncol
 
 (* ****** ****** *)
 //
 implement
+{}(*tmp*)
 position_set_ntot
   (pos, ntot) = (pos.ntot := ntot)
 implement
+{}(*tmp*)
 position_set_nrow
   (pos, nrow) = (pos.nrow := nrow)
 implement
+{}(*tmp*)
 position_set_ncol
   (pos, ncol) = (pos.ncol := ncol)
 //
@@ -127,7 +145,23 @@ end // end of [fprint_position]
 end // end of [local]
 
 (* ****** ****** *)
-
+//
+implement
+position_incby_1
+  (pos) =
+(
+pos.ntot(pos.ntot()+1);
+pos.ncol(pos.ncol()+1);
+) (* end of [else] *)
+//
+implement
+position_incby_eol
+  (pos) =
+(
+pos.ntot(pos.ntot()+1);
+pos.nrow(pos.nrow()+1); pos.ncol(0);
+) (* end of [else] *)
+//
 implement
 position_incby_char
   (pos, uc) =
@@ -136,7 +170,7 @@ if
 (uc > 0)
 then
 (
-pos.ntot(pos.ntot());
+pos.ntot(pos.ntot()+1);
 if
 (uc != '\n')
 then
@@ -150,7 +184,58 @@ pos.nrow(pos.nrow()+1); pos.ncol(0);
 )
 // end of [if]
 ) (* end of [position_incby_char] *)
-
+//
+implement
+position_incby_text
+  (pos, cs) = let
+//
+fun
+loop
+( pos
+: &pos_t >> _
+, p0: ptr
+, nt: int
+, nr: int, nc: int): void =
+(
+if
+isneqz(c0)
+then
+(
+if
+(c0 != '\n')
+then
+loop(pos, p1, nt+1, nr, nc+1)
+else
+loop(pos, p1, nt+1, nr+1, 0(*nc*))
+)
+else
+(
+  pos.ntot(nt);
+  pos.nrow(nr); pos.ncol(nc);
+)
+) where
+{
+  val p1 = ptr_succ<char>(p0)
+  val c0 = $UN.ptr0_get<char>(p0)
+}
+//
+in
+//
+loop
+( pos
+, string2ptr(cs)
+, pos.ntot(), pos.nrow(), pos.ncol())
+//
+end // end of [position_incby_text]
+//
+implement
+position_incby_neol
+  (pos, cs) = let
+  val n0 = length(cs)
+in
+  pos.ntot(pos.ntot()+sz2i(n0))
+end // end of [position_incby_neol]
+//
 (* ****** ****** *)
 
 local

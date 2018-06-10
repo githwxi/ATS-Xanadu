@@ -53,8 +53,9 @@ test_lexbuf
 test_lexbuf: \
 test_lexbuf_dats
 test_lexbuf_dats: \
-test_lexbuf.dats; \
-$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
+test_lexbuf.dats \
+test_libxats.dats; \
+$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $^ -o $@
 regress:: test_lexbuf_dats; ./test_lexbuf_dats
 cleanall:: ; $(RMF) test_lexbuf_dats
 
@@ -89,8 +90,8 @@ test_lexing_util0
 test_lexing_util0: \
 test_lexing_util0_dats
 test_lexing_util0_dats: \
-test_lexing_util0.dats; \
-$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
+test_lexing_util0.dats test_libxats.dats; \
+$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $^ -o $@
 regress:: test_lexing_util0_dats; ./test_lexing_util0_dats
 cleanall:: ; $(RMF) test_lexing_util0_dats
 

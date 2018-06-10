@@ -32,27 +32,9 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#staload SYM = "./symbol.sats"
-  typedef kword = $SYM.symbol
-#staload LOC = "./location.sats"
-  typedef loc_t = $LOC.location
-//
-(* ****** ****** *)
-//
-#staload LEXING = "./lexing.sats"
-//
-(* ****** ****** *)
-//
-abstflat
-tokbuf_tflat =
-$extype"xats_tokbuf_struct"
-//
-  typedef tokbuf = tokbuf_tflat
-//
-(* ****** ****** *)
 
+#staload "./../SATS/parsing.sats"
 
 (* ****** ****** *)
 
-(* end of [xats_parsing.sats] *)
+(* end of [xats_parsing_tokbuf.dats] *)
