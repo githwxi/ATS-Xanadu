@@ -82,11 +82,23 @@ tnode =
     T_CDATA of (arrayref(char, n), size_t(n)) // binaries
 *)
 //
+  | T_SPECHAR of (int) // special char
+//
+  | T_COMMENT_line of
+    (string(*init*), string) // line comment
+  | T_COMMENT_rest of
+    (string(*init*), string) // rest comment
+  | T_COMMENT_cblock of (int(*level*), string) // comment of c-style
+  | T_COMMENT_mlblock of (int(*level*), string) // comment of ml-style
+//
 (*
 //
   | T_AT of ()
   | T_BANG of ()
 //
+*)
+//
+  | T_DOT of () // .
   | T_COMMA of () // ,
   | T_SEMICOLON of () // ;
 //
@@ -97,18 +109,7 @@ tnode =
   | T_LBRACKET of () // [
   | T_RBRACKET of () // ]
 //
-*)
-//
-  | T_SPECHAR of (int) // special char
-//
-  | T_COMMENT_line of
-    (string(*init*), string) // line comment
-  | T_COMMENT_rest of
-    (string(*init*), string) // rest comment
-  | T_COMMENT_cblock of (int(*level*), string) // comment of c-style
-  | T_COMMENT_mlblock of (int(*level*), string) // comment of ml-style
-//
-abstbox token_tbox
+abstbox token_tbox = $tup()
 //
 (*
 typedef
@@ -122,6 +123,10 @@ typedef tnodelst = List0(tnode)
 vtypedef tnodelst_vt = List0_vt(tnode)
 //
 typedef token = token_tbox
+//
+typedef tokenlst = List0(token)
+vtypedef tokenlst_vt = List0_vt(token)
+//
 typedef tokenopt = Option(token)
 vtypedef tokenopt_vt = Option_vt(token)
 //
@@ -180,8 +185,14 @@ overload prerr2 with prerr2_tnode
 overload fprint2 with fprint2_tnode
 //
 (* ****** ****** *)
+//
+fun
+char2tnode(c0: int): tnode
+//
+(* ****** ****** *)
 
-fun tnode_is_comment(tnode): bool
+fun
+tnode_is_comment(tnode): bool
 
 (* ****** ****** *)
 //
@@ -190,7 +201,8 @@ fun tnode_is_comment(tnode): bool
 // a keyword; if the return is not
 // SYMBOL_nil(), then it does!
 //
-fun kword_search(name: string): kword
+fun
+kword_search(name: string): kword
 //
 (* ****** ****** *)
 //
@@ -199,7 +211,8 @@ fun kword_search(name: string): kword
 // a special token; if the return is
 // not T_EOF(), then it does!
 //
-fun tnode_search(name: string): tnode
+fun
+tnode_search(name: string): tnode
 //
 (* ****** ****** *)
 //
@@ -209,23 +222,26 @@ lexing_tnode(lxbf: &lexbuf >> _): tnode
 (* ****** ****** *)
 //
 fun
-lexing_locatize
+lexing_locatize_node
 (pos: &pos_t >> _, node: tnode): token
+fun
+lexing_locatize_nodelst
+(pos: &pos_t >> _, nodes: tnodelst): tokenlst_vt
 //
 (* ****** ****** *)
 //
 fun
 string_tokenize
-  (text: string): Option_vt(tnodelst_vt)
+  (text: string): Option_vt(tokenlst_vt)
 //
 (* ****** ****** *)
 //
 fun
 fpath_tokenize
-  (fpath: string): Option_vt(tnodelst_vt)
+  (fpath: string): Option_vt(tokenlst_vt)
 //
 fun
-fileref_tokenize(inpfil: FILEref): tnodelst_vt
+fileref_tokenize(inpfil: FILEref): tokenlst_vt
 //
 (* ****** ****** *)
 

@@ -140,21 +140,6 @@ case+ tnd of
 | T_CDATA(cdata, asz) => fprint!(out, "CDATA(...)")
 *)
 //
-(*
-| T_AT() => fprint(out, "AT")
-| T_BANG() => fprint(out, "BANG")
-//
-| T_COMMA() => fprint(out, "COMMA")
-| T_SEMICOLON() => fprint(out, "SEMICOLON")
-//
-| T_LPAREN() => fprint(out, "LPAREN")
-| T_RPAREN() => fprint(out, "RPAREN")
-| T_LBRACE() => fprint(out, "LBRACE")
-| T_RBRACE() => fprint(out, "RBRACE")
-| T_LBRACKET() => fprint(out, "LBRACKET")
-| T_RBRACKET() => fprint(out, "RBRACKET")
-*)
-//
 | T_SPECHAR(c) =>
   fprint!(out, "SPECHAR(", int2char0(c), ")")
 //
@@ -170,6 +155,17 @@ case+ tnd of
 | T_COMMENT_mlblock
     (level, content) =>
     fprint!(out, "T_COMMENT_mlblock(", level, "; ", "...)")
+//
+| T_DOT() => fprint(out, "DOT")
+| T_COMMA() => fprint(out, "COMMA")
+| T_SEMICOLON() => fprint(out, "SEMICOLON")
+//
+| T_LPAREN() => fprint(out, "LPAREN")
+| T_RPAREN() => fprint(out, "RPAREN")
+| T_LBRACE() => fprint(out, "LBRACE")
+| T_RBRACE() => fprint(out, "RBRACE")
+| T_LBRACKET() => fprint(out, "LBRACKET")
+| T_RBRACKET() => fprint(out, "RBRACKET")
 //
 ) (* end of [fprint_tnode] *)
 //
@@ -187,7 +183,12 @@ prerr_token
 implement
 fprint_token
   (out, tok) =
-  fprint_tnode(out, tok.node())
+(
+(*
+  fprint(out, tok.node())
+*)
+  fprintln!(out, tok.loc(), ": ", tok.node())
+)
 //
 (* ****** ****** *)
 //
@@ -248,21 +249,6 @@ case+ tnd of
 | T_CDATA(cdata, asz) => fprint!(out, "CDATA(...)")
 *)
 //
-(*
-| T_AT() => fprint(out, "@")
-| T_BANG() => fprint(out, "!")
-//
-| T_COMMA() => fprint(out, ",")
-| T_SEMICOLON() => fprint(out, ";")
-//
-| T_LPAREN() => fprint(out, "(")
-| T_RPAREN() => fprint(out, ")")
-| T_LBRACE() => fprint(out, "{")
-| T_RBRACE() => fprint(out, "}")
-| T_LBRACKET() => fprint(out, "[")
-| T_RBRACKET() => fprint(out, "]")
-*)
-//
 | T_SPECHAR(c) =>
   fprint(out, c) where{val c=int2char0(c)}
 //
@@ -277,8 +263,61 @@ case+ tnd of
 | T_COMMENT_mlblock
     (level, content) => fprint(out, content)
 //
+(*
+| T_AT() => fprint(out, "@")
+| T_BANG() => fprint(out, "!")
+*)
+//
+| T_DOT() => fprint(out, ".")
+| T_COMMA() => fprint(out, ",")
+| T_SEMICOLON() => fprint(out, ";")
+//
+| T_LPAREN() => fprint(out, "(")
+| T_RPAREN() => fprint(out, ")")
+| T_LBRACE() => fprint(out, "{")
+| T_RBRACE() => fprint(out, "}")
+| T_LBRACKET() => fprint(out, "[")
+| T_RBRACKET() => fprint(out, "]")
+//
 ) (* end of [fprint2_tnode] *)
 //
+(* ****** ****** *)
+
+local
+//
+#define c2i char2int1
+//
+val
+theAsz =
+i2sz(128)
+val
+theMap =
+arrayref_make_elt<tnode>
+  (theAsz, T_ERR())
+//
+val () = theMap[c2i(',')] := T_COMMA()
+val () = theMap[c2i(';')] := T_SEMICOLON()
+//
+val () = theMap[c2i('\(')] := T_LPAREN()
+val () = theMap[c2i('\)')] := T_RPAREN()
+//
+in (* in-of-local *)
+
+implement
+char2tnode(i0) = let
+//
+typedef AszLt = intBtw(0, 128)
+//
+in
+//
+if
+(i0 < 128)
+then theMap[$UN.cast{AszLt}(i0)] else T_ERR()
+//
+end // end of [char2tnode]
+
+end // end of [local]
+
 (* ****** ****** *)
 
 implement
@@ -390,7 +429,7 @@ val () = tnode_insert("!", T_BANG)
 (* ****** ****** *)
 //
 implement
-lexing_locatize
+lexing_locatize_node
   (pos0, node) = let
 //
 #define
@@ -405,6 +444,21 @@ posinceol position_incby_eol
 posincneol position_incby_neol
 #define
 posinctext position_incby_text
+//
+fun
+tnode_trans
+(node0: tnode): tnode =
+(
+case+ node0 of
+| T_SPECHAR(c) => let
+    val
+    node1 = char2tnode(c)
+  in
+    case+ node1 of
+    | T_ERR() => node0 | _(*else*) => node1
+  end // end of [T_SPECHAR]
+| _ (* else *) => node0
+)
 //
 var pos1: pos_t
 val ((*void*)) =
@@ -461,15 +515,48 @@ case+ node of
 | T_COMMENT_mlblock
     (level, content) => posinctext(pos1, content)
 //
+| _ (* else *) => ()
+//
 ) ; (* end of [case] *)
+(
 let
+  val
+  node = tnode_trans(node)
   val
   loc01 = locmake(pos0, pos1)
 in
   position_copyfrom(pos0, pos1); token_make(loc01, node)
 end // end of [let]
+)
 //
-end // end of [lexing_locatize]
+end // end of [lexing_locatize_node]
+
+(* ****** ****** *)
+
+implement
+lexing_locatize_nodelst
+  (pos, nodes) = let
+//
+fun
+loop
+( pos: &pos_t >> _
+, nodes: tnodelst
+, tokens: tokenlst_vt): tokenlst_vt =
+(
+case+ nodes of
+| list_nil() =>
+  list_vt_reverse(tokens)
+| list_cons(node, nodes) => let
+    val token =
+    lexing_locatize_node(pos, node)
+  in
+    loop(pos, nodes, list_vt_cons(token, tokens))
+  end // end of [list_cons]
+)
+//
+in
+  loop(pos, nodes, list_vt_nil(*void*))
+end // end of [lexing_locatize_tnodelst]
 
 (* ****** ****** *)
 
