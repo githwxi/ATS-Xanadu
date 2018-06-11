@@ -233,7 +233,8 @@ position_incby_neol
   (pos, cs) = let
   val n0 = length(cs)
 in
-  pos.ntot(pos.ntot()+sz2i(n0))
+  pos.ntot(pos.ntot()+sz2i(n0));
+  pos.ncol(pos.ncol()+sz2i(n0));
 end // end of [position_incby_neol]
 //
 (* ****** ****** *)
@@ -299,6 +300,51 @@ location_make_fil_pos_pos
 } (* location_make_fil_pos_pos *)
 
 end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+print_location
+  (loc) = fprint_location(stdout_ref, loc)
+implement
+prerr_location
+  (loc) = fprint_location(stderr_ref, loc)
+//
+(* ****** ****** *)
+
+local
+
+absreimpl
+location_type
+
+in (* in-of-local *)
+
+implement
+fprint_locrange
+  (out, loc) = () where {
+//
+val () =
+fprint!
+( out
+, loc.beg_ntot+1, "(line=", loc.beg_nrow+1, ", offs=", loc.beg_ncol+1, ")"
+)
+//
+val () = fprint_string (out, " -- ")
+//
+val () =
+fprint!
+( out
+, loc.end_ntot+1, "(line=", loc.end_nrow+1, ", offs=", loc.end_ncol+1, ")"
+)
+//
+} (* end of [fprint_locrange] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+fprint_location(out, loc) = fprint_locrange(out, loc)
 
 (* ****** ****** *)
 

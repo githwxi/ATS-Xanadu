@@ -1198,11 +1198,13 @@ val c0 = int2char0(i0)
 //
 in
   if
-
   isEOL(c0)
-  then
-  T_COMMENT_line
-  (sym, lexbuf_get_fullseg(buf))
+  then let
+    val () = lexbuf_unget(buf)
+  in
+    T_COMMENT_line
+    (sym, lexbuf_get_fullseg(buf))
+  end // end of [then]
   else
   (
     if
@@ -1211,7 +1213,7 @@ in
     else
     T_COMMENT_line
     (sym, lexbuf_get_fullseg(buf))
-  )
+  ) (* end of [else] *)
 end // end of [loop0]
 //
 } (* end of [lexing_COMMENT_line] *)
@@ -1447,9 +1449,23 @@ val tnds = loop(buf, list_vt_nil(*void*))
 end // end of [local]
 //
 in
-let
-val () = cblist_vt_free(cbs) in list_vt_reverse(tnds)
-end
+//
+toks where
+{
+//
+var pos0: pos_t
+//
+val () = cblist_vt_free(cbs)
+val tnds = list_vt_reverse(tnds)
+//
+val ((*void*)) =
+  $LOC.position_initize(pos0, 0, 0, 0)
+val toks =
+  lexing_locatize_nodelst(pos0, $UN.list_vt2t(tnds))
+//
+val ((*freed*)) = list_vt_free(tnds)
+//
+} (* end of [where] *)
 end // end of [fileref_tokenize]
 
 end // end of [local]

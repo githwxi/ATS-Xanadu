@@ -145,5 +145,20 @@ location_make_fil_pos_pos
   (fil: fil_t, bpos: &pos_t, cpos: &pos_t): loc_t
 //
 (* ****** ****** *)
+//
+fun
+print_location(loc: location): void
+fun
+prerr_location(loc: location): void
+fun
+fprint_locrange(out: FILEref, loc: location): void
+fun
+fprint_location(out: FILEref, loc: location): void
+//
+overload print with print_location
+overload prerr with prerr_location
+overload fprint with fprint_location
+//
+(* ****** ****** *)
 
 (* end of [xats_location.sats] *)

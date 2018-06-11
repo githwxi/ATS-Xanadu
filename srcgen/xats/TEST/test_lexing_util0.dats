@@ -61,15 +61,15 @@ local
 in
 //
 val-
-~Some_vt(tnds) =
+~Some_vt(toks) =
 (
   fpath_tokenize("./test_syntax.text")
 )
 //
 val ((*void*)) =
-list0_foreach<tnode>
-( g0ofg1(list_vt2t(tnds))
-, lam(tnd) => fprint2_tnode(stdout_ref, tnd))
+list0_foreach<token>
+( g0ofg1(list_vt2t(toks))
+, lam(tok) => fprint_token(stdout_ref, tok))
 //
 end // end of [local]
 
