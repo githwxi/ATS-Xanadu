@@ -62,7 +62,6 @@ $extype_struct
   ntot= int
 , nrow= int
 , ncol= int
-, nspc= int
 */
 /*
 , char= int // ungetc
