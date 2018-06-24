@@ -73,7 +73,7 @@ filepath_get_full(fp) =
 local
 //
 #include
-"./../sysparams.hats"
+"./../sysparam.hats"
 //
 #if SYSTEM_IS_UNIX_LIKE #then
 //

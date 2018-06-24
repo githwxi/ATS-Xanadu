@@ -67,12 +67,12 @@ abstbox i0dnt_tbox = ptr
 //
 datatype
 i0nt_node =
-  | I0NTnone of ()
+  | I0NTnone of token
   | I0NTsome of token
 //
 datatype
 i0dnt_node =
-  | I0DNTnone of ()
+  | I0DNTnone of token
   | I0DNTsome of token
 //
 (* ****** ****** *)
@@ -87,8 +87,6 @@ typedef i0dnt = $rec
 } (* end of [i0dnt] *)
 *)
 //
-(* ****** ****** *)
-//
 typedef i0nt = i0nt_tbox
 //
 fun
@@ -100,6 +98,9 @@ i0nt_get_node
 //
 overload .loc with i0nt_get_loc
 overload .node with i0nt_get_node
+//
+fun i0nt_none : token -> i0nt
+fun i0nt_some : token -> i0nt
 //
 fun print_i0nt : (i0nt) -> void
 fun prerr_i0nt : (i0nt) -> void
@@ -124,6 +125,11 @@ i0dnt_get_node
 //
 overload .loc with i0dnt_get_loc
 overload .node with i0dnt_get_node
+//
+fun i0dnt_none : token -> i0dnt
+fun i0dnt_some : token -> i0dnt
+//
+(* ****** ****** *)
 //
 fun print_i0dnt : i0dnt -> void
 fun prerr_i0dnt : i0dnt -> void

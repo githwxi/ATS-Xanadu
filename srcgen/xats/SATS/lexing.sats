@@ -60,13 +60,13 @@ tnode =
   | T_IDENT_srp of string // #alnum
   | T_IDENT_dlr of string // $alnum
 //
-  | T_INT of (string) // base=10
-  | T_INT of (int(*base*), string)
-  | T_INT of (int(*base*), string(*rep*), uint(*suffix*))
+  | T_INT1 of (string) // base=10
+  | T_INT2 of (int(*base*), string)
+  | T_INT3 of (int(*base*), string(*rep*), uint(*suffix*))
 //
-  | T_FLOAT of (string(*rep*)) // base=10
-  | T_FLOAT of (int(*base*), string(*rep*))
-  | T_FLOAT of (int(*base*), string(*rep*), uint(*suffix*))
+  | T_FLOAT1 of (string(*rep*)) // base=10
+  | T_FLOAT2 of (int(*base*), string(*rep*))
+  | T_FLOAT3 of (int(*base*), string(*rep*), uint(*suffix*))
 //
 (*
   | T_CHAR of (int) // ascii
