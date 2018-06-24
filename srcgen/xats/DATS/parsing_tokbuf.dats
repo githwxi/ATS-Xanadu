@@ -55,7 +55,29 @@ $extype_struct
 (* ****** ****** *)
 
 implement
-tokbuf_get_token
+tokbuf_getok0
+  (buf) = let
+//
+  val p0 = buf.curp
+//
+in
+  $UN.ptr0_get<token>(p0)
+end // end of [tokbuf_getok0]
+
+implement
+tokbuf_incby1
+  (buf) = let
+//
+  val p0 = buf.curp
+//
+in
+  buf.curp := ptr0_succ<token>(p0)
+end // end of [tokbuf_incby1]
+
+(* ****** ****** *)
+
+implement
+tokbuf_getok1
   (buf) = let
 //
   val p0 = buf.curp
@@ -64,15 +86,17 @@ tokbuf_get_token
   $UN.ptr0_get<token>(p0)
 //
 in
-  case+
-  tok.node() of
-  | T_EOF() => tok
-  | _ (* non-EOF *) => tok where
-    {
-      val () =
-      buf.curp := ptr0_succ<token>(p0)
-    }
-end // end of [tokbuf_get_token]
+//
+case+
+tok.node() of
+| T_EOF() => tok
+| _ (* non-EOF *) => tok where
+  {
+    val () =
+    buf.curp := ptr0_succ<token>(p0)
+  }
+//
+end // end of [tokbuf_getok1]
 
 (* ****** ****** *)
 

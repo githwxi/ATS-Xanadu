@@ -73,7 +73,14 @@ absvtbox tokbuf_mark = ptr
 (* ****** ****** *)
 //
 fun
-tokbuf_get_token
+tokbuf_incby1
+  (buf: &tokbuf >> _): void
+//
+fun
+tokbuf_getok0
+  (buf: &tokbuf >> _): token
+fun
+tokbuf_getok1
   (buf: &tokbuf >> _): token
 //
 fun
