@@ -43,24 +43,43 @@ UN =
 //
 (* ****** ****** *)
 
-assume
-i0nt_tbox = $rec
-{
-  i0nt_loc= loc_t, i0nt_node= i0nt_node
-}
-assume
-i0dnt_tbox = $rec
-{
-  i0dnt_loc= loc_t, i0dnt_node= i0dnt_node
-}
+absimpl
+i0nt_tbox = $rec{
+  i0nt_loc= loc_t
+, i0nt_node= i0nt_node
+} (* end of [absimpl] *)
+absimpl
+i0dnt_tbox = $rec{
+  i0dnt_loc= loc_t
+, i0dnt_node= i0dnt_node
+} (* end of [absimpl] *)
 
 (* ****** ****** *)
 
-assume
-s0rtq_tbox = $rec
-{
-  s0rtq_loc= loc_t, s0rtq_node= s0rtq_node
-}
+implement
+i0nt_get_loc(x) = x.i0nt_loc
+implement
+i0nt_get_node(x) = x.i0nt_node
+
+implement
+i0dnt_get_loc(x) = x.i0dnt_loc
+implement
+i0dnt_get_node(x) = x.i0dnt_node
+
+(* ****** ****** *)
+
+absimpl
+s0rtq_tbox = $rec{
+  s0rtq_loc= loc_t
+, s0rtq_node= s0rtq_node
+} (* end of [absimpl] *)
+
+(* ****** ****** *)
+
+implement
+s0rtq_get_loc(x) = x.s0rtq_loc
+implement
+s0rtq_get_node(x) = x.s0rtq_node
 
 (* ****** ****** *)
 

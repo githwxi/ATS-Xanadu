@@ -70,4 +70,17 @@ case+ x0.node() of
 
 (* ****** ****** *)
 
+implement
+fprint_s0rtq
+  (out, x0) =
+(
+case+ x0.node() of
+| S0RTQnone() =>
+  fprint!(out, "S0RTQnone(", ")")
+| S0RTQsymdot(tok) =>
+  fprint!(out, "S0RTQsymdot(", tok, ")")
+)
+
+(* ****** ****** *)
+
 (* end of [xats_staexp0_print.dats] *)
