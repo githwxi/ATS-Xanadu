@@ -32,8 +32,65 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#staload
+UN =
+"prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
 #staload "./../SATS/parsing.sats"
+
+(* ****** ****** *)
+//
+absimpl
+tokbuf_tflat =
+$extype_struct
+"xats_tokbuf_struct" of
+{
+  begp= ptr, endp= ptr, curp= ptr
+} (* end of [tokbuf] *)
+//
+(* ****** ****** *)
+
+implement
+tokbuf_get_token
+  (buf) = let
+//
+  val p0 = buf.curp
+//
+  val tok =
+  $UN.ptr0_get<token>(p0)
+//
+in
+  case+
+  tok.node() of
+  | T_EOF() => tok
+  | _ (* non-EOF *) => tok where
+    {
+      val () =
+      buf.curp := ptr0_succ<token>(p0)
+    }
+end // end of [tokbuf_get_token]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+tokbuf_mark = ptr
+
+in (* in-of-local *)
+
+implement
+tokbuf_get_mark(buf) = buf.curp
+implement
+tokbuf_set_mark(buf, mk0) = buf.curp := mk0
+implement
+tokbuf_clear_mark(buf, mk0) = () // discard
+
+end // end of [local]
 
 (* ****** ****** *)
 
