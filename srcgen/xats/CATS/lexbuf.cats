@@ -47,13 +47,16 @@ $extype_struct
   base_ntot= int
 , base_nrow= int
 , base_ncol= int
-, nspc= int
 (*
 , char= int
 *)
 , cbuf= string
-, cptr0= ptr, cptr1= ptr
-, cblist= cblist
+//
+, begp= ptr
+, endp= ptr, curp= ptr
+//
+, cbhead= cblist, cbtail= cblist
+//
 } (* end of [lexbuf] *)
 */
 
@@ -62,8 +65,6 @@ typedef struct {
   atstype_int ntot ; // char number
   atstype_int nrow ; // line number
   atstype_int ncol ; // line offset
-//
-  atstype_int nspc ; // leading space
 //
 /*
   atstype_int char ; // ungetc
