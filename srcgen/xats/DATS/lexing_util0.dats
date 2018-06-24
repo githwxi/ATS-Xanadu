@@ -441,16 +441,16 @@ lexing_isSYMBOLIC
 
 extern
 fun
-lexing_COMMENT_rest
-( buf
-: &lexbuf >> _, sym: string
-) : tnode // lexing_COMMENT_rest
-extern
-fun
 lexing_COMMENT_line
 ( buf
 : &lexbuf >> _, sym: string
 ) : tnode // lexing_COMMENT_line
+extern
+fun
+lexing_COMMENT_rest
+( buf
+: &lexbuf >> _, sym: string
+) : tnode // lexing_COMMENT_rest
 
 (* ****** ****** *)
 
@@ -1171,7 +1171,7 @@ in
   (i0 >= 0)
   then loop0(buf)
   else
-  T_COMMENT_line
+  T_COMMENT_rest
   (sym, lexbuf_get_fullseg(buf))
 end // end of [loop0]
 //

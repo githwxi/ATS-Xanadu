@@ -34,75 +34,13 @@
 (* ****** ****** *)
 //
 #staload
-SYM = "./symbol.sats"
-typedef kword = $SYM.symbol
-#staload
-LOC = "./location.sats"
-typedef loc_t = $LOC.location
+UN =
+"prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload
-LEXING = "./lexing.sats"
-//
-  typedef tnode = $LEXING.tnode
-  typedef token = $LEXING.token
-//
-(* ****** ****** *)
-//
-#staload
-STAEXP0 = "./staexp0.sats"
-//
-  typedef s0rtq = $STAEXP0.s0rtq
-//
-(* ****** ****** *)
-//
-abstflat
-tokbuf_tflat =
-$extype"xats_tokbuf_struct"
-//
-  typedef tokbuf = tokbuf_tflat
-//
-(* ****** ****** *)
-//
-typedef
-parser(res:t@ype) =
-(&tokbuf >> _, &int >> _) -> res
+#staload "./../SATS/basics.sats"
 //
 (* ****** ****** *)
 
-fun p_i0nt: parser(i0nt)
-fun p_i0dnt: parser(i0dnt)
-
-(* ****** ****** *)
-//
-(*
-s0rtq ::=
-(IDENT_dlr DOT)?
-*)
-fun p_s0rtq: parser(s0rtq)
-//
-(* ****** ****** *)
-
-datavtype
-synent1
-(a1:vtype) = SYNENT1 of (a1)
-datavtype
-synent2
-(a1:vtype, a2:vtype) = SYNENT2 of (a1, a2)
-datavtype
-synent3
-(a1:vtype, a2:vtype, a3: vtype) = SYNENT3 of (a1, a2, a3)
-
-(* ****** ****** *)
-//
-fun{}
-synent_null: {a:type}() -> a
-fun{}
-synent_is_null: {a:type}(a) -> bool
-fun{}
-synent_isnot_null: {a:type}(a) -> bool
-//
-(* ****** ****** *)
-
-(* end of [xats_parsing.sats] *)
+(* end of [xats_basics.dats] *)
