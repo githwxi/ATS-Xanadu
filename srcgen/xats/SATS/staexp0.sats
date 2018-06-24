@@ -60,7 +60,18 @@ typedef tkstropt = Option(tkstr)
 //
 (* ****** ****** *)
 //
+abstbox i0nt_tbox
 abstbox i0dnt_tbox
+//
+(* ****** ****** *)
+//
+typedef i0nt = i0nt_tbox
+//
+fun print_i0nt : (i0nt) -> void
+fun prerr_i0nt : (i0nt) -> void
+fun fprint_i0nt : fprint_type(i0nt)
+//
+(* ****** ****** *)
 //
 (*
 typedef i0dnt = $rec
