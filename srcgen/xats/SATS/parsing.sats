@@ -155,8 +155,8 @@ fun
 pstar_sep_fun
   {a:type}
 (
-  buf: &tokbuf >> _
-, sep: (tnode) -> bool, fp: parser(a)
+  buf: &tokbuf >> _, err: &int >> _
+, fsep: (tnode) -> bool, fpar: parser(a)
 ) : List0_vt(a) // end of [pstar_sep_fun]
 
 (* ****** ****** *)

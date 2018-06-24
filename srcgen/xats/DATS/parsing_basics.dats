@@ -32,7 +32,14 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#staload
+UN =
+"prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
 #staload "./../SATS/parsing.sats"
 
 (* ****** ****** *)
@@ -46,6 +53,55 @@ synent_is_null(x) = iseqz($UN.cast{ptr}(x))
 implement
 {}(*tmp*)
 synent_isnot_null(x) = isneqz($UN.cast{ptr}(x))
+
+(* ****** ****** *)
+
+(*
+fun
+pstar_sep_fun
+  {a:type}
+(
+  buf: &tokbuf >> _, err: &int >> _
+, fsep: (tnode) -> bool, fpar: parser(a)
+) : List0_vt(a) // end of [pstar_sep_fun]
+*)
+implement
+pstar_sep_fun
+  {a}
+( buf, err
+, fsep, fpar) = let
+//
+fun
+loop
+( buf:
+ &tokbuf >> _
+, err: &int >> _
+, res: &ptr? >> List0_vt(a)
+) : void = let
+  val sep = buf.get0()
+in
+  if
+  fsep(sep.node())
+  then let
+    val () = buf.incby1()
+    val x0 = fpar(buf, err)
+    val () =
+    (
+      res :=
+      list_vt_cons{a}{0}(x0, _)
+    )
+    val+list_vt_cons(_, res1) = res
+    val () = loop(buf, err, res1)
+    prval ((*folded*)) = fold@(res)
+  in
+    // nothing
+  end // end of [then]
+  else (res := list_vt_nil(*void*))
+end // end of [loop]
+//
+in
+  let var res: ptr in loop(buf, err, res); res end
+end // end of [pstar_sep_fun]
 
 (* ****** ****** *)
 

@@ -39,6 +39,7 @@ UN =
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/lexing.sats"
 #staload "./../SATS/staexp0.sats"
 //
 (* ****** ****** *)
@@ -56,6 +57,28 @@ i0dnt_tbox = $rec{
 
 (* ****** ****** *)
 
+fun
+i0nt_make
+(
+loc0: loc_t
+,
+node: i0nt_node
+) : i0nt = $rec{
+  i0nt_loc= loc0, i0nt_node= node
+} (* end of [i0nt_make] *)
+
+fun
+i0dnt_make
+(
+loc0: loc_t
+,
+node: i0dnt_node
+) : i0dnt = $rec{
+  i0dnt_loc= loc0, i0dnt_node= node
+} (* end of [i0dnt_make] *)
+
+(* ****** ****** *)
+
 implement
 i0nt_get_loc(x) = x.i0nt_loc
 implement
@@ -65,6 +88,24 @@ implement
 i0dnt_get_loc(x) = x.i0dnt_loc
 implement
 i0dnt_get_node(x) = x.i0dnt_node
+
+(* ****** ****** *)
+
+implement
+i0nt_some(tok) =
+i0nt_make(tok.loc(), I0NTsome(tok))
+implement
+i0nt_none(tok) =
+i0nt_make(tok.loc(), I0NTnone(tok))
+
+(* ****** ****** *)
+
+implement
+i0dnt_some(tok) =
+i0dnt_make(tok.loc(), I0DNTsome(tok))
+implement
+i0dnt_none(tok) =
+i0dnt_make(tok.loc(), I0DNTnone(tok))
 
 (* ****** ****** *)
 
