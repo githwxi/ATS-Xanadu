@@ -53,6 +53,9 @@ LEXING = "./lexing.sats"
 #staload
 STAEXP0 = "./staexp0.sats"
 //
+  typedef i0nt = $STAEXP0.i0nt
+  typedef i0dnt = $STAEXP0.i0dnt
+//
   typedef s0rtq = $STAEXP0.s0rtq
 //
 (* ****** ****** *)
@@ -64,6 +67,33 @@ $extype"xats_tokbuf_struct"
   typedef tokbuf = tokbuf_tflat
 //
 (* ****** ****** *)
+
+absvtbox tokbuf_mark = ptr
+
+(* ****** ****** *)
+//
+fun
+tokbuf_get_token
+  (buf: &tokbuf >> _): token
+//
+fun
+tokbuf_get_mark
+  (buf: &tokbuf >> _): tokbuf_mark
+fun
+tokbuf_set_mark
+  (buf: &tokbuf >> _, mk0: tokbuf_mark): void
+//
+fun
+tokbuf_clear_mark
+  (buf: &tokbuf >> _, mk0: tokbuf_mark): void
+//
+(* ****** ****** *)
+//
+(*
+typedef
+parser(res:t@ype) =
+(&tokbuf >> _) -> res
+*)
 //
 typedef
 parser(res:t@ype) =
@@ -89,10 +119,13 @@ synent1
 (a1:vtype) = SYNENT1 of (a1)
 datavtype
 synent2
-(a1:vtype, a2:vtype) = SYNENT2 of (a1, a2)
+( a1:vtype
+, a2:vtype) = SYNENT2 of (a1, a2)
 datavtype
 synent3
-(a1:vtype, a2:vtype, a3: vtype) = SYNENT3 of (a1, a2, a3)
+( a1:vtype
+, a2:vtype
+, a3: vtype) = SYNENT3 of (a1, a2, a3)
 
 (* ****** ****** *)
 //
@@ -103,6 +136,16 @@ synent_is_null: {a:type}(a) -> bool
 fun{}
 synent_isnot_null: {a:type}(a) -> bool
 //
+(* ****** ****** *)
+
+fun
+pstar_sep_fun
+  {a:type}
+(
+  buf: &tokbuf >> _
+, sep: (tnode) -> bool, fp: parser(a)
+) : List0_vt(a) // end of [pstar_sep_fun]
+
 (* ****** ****** *)
 
 (* end of [xats_parsing.sats] *)
