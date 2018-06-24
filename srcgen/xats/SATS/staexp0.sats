@@ -141,9 +141,9 @@ typedef s0rtq = s0rtq_tbox
 datatype
 s0rtq_node =
   | S0RTQnone
-  | S0RTQsymdot of symbol (* fileid *)
+  | S0RTQsymdot of token (* fileid *)
 /*
-  | S0RTQfiledot of string (* filename *)
+  | S0RTQfiledot of token (* filename *)
 */
 // end of [s0rtq_node]
 //
