@@ -53,17 +53,19 @@ $extype_struct
 } (* end of [tokbuf] *)
 //
 (* ****** ****** *)
-
+//
 implement
 tokbuf_getok0
-  (buf) = let
+  (buf) =
+(
+$UN.ptr0_get<token>(buf.curp)
+)
 //
-  val p0 = buf.curp
-//
-in
-  $UN.ptr0_get<token>(p0)
-end // end of [tokbuf_getok0]
-
+(*
+HX-2018-06-24:
+This function is only safe
+if the current token is not EOF
+*)
 implement
 tokbuf_incby1
   (buf) = let
@@ -73,7 +75,7 @@ tokbuf_incby1
 in
   buf.curp := ptr0_succ<token>(p0)
 end // end of [tokbuf_incby1]
-
+//
 (* ****** ****** *)
 
 implement

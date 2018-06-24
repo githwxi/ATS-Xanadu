@@ -33,13 +33,38 @@
 //
 (* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/staexp0.sats"
 #staload "./../SATS/parsing.sats"
 
 (* ****** ****** *)
 
 implement
-p_i0nt(buf) =
-
+p_i0nt(buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_INT1 _ =>
+    i0nt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | T_INT2 _ =>
+    i0nt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | T_INT3 _ =>
+    i0nt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | _ (* non-INT *) =>
+    (err := err + 1; i0nt_none(tok))
+end // end of [p_i0nt]
 
 (* ****** ****** *)
 

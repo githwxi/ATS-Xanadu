@@ -41,4 +41,4 @@
 //
 (* ****** ****** *)
 
-(* end of [sysparams.hats] *)
+(* end of [sysparam.hats] *)
