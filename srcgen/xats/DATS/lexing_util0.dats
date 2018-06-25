@@ -602,7 +602,7 @@ ifcase
     else let
       val () = lexbuf_unget(buf)
     in
-      T_INT(lexbuf_get_fullseg(buf))
+      T_INT1(lexbuf_get_fullseg(buf))
     end // end of [else]
   )
 //
@@ -631,10 +631,10 @@ in
   if
   (k0 = 0)
   then
-  T_INT
+  T_INT2
   (OCT, lexbuf_get_fullseg(buf))
   else
-  T_FLOAT
+  T_FLOAT2
   (DEC, lexbuf_get_fullseg(buf))
 end // end of [else]
 //
@@ -663,10 +663,10 @@ in
   if
   (k0 = 0)
   then
-  T_INT
+  T_INT2
   (HEX, lexbuf_get_fullseg(buf))
   else
-  T_FLOAT
+  T_FLOAT2
   (HEX, lexbuf_get_fullseg(buf))
 end // end of [else]
 //
@@ -702,9 +702,9 @@ in
   if
   (k0 = 0)
   then
-  T_INT(lexbuf_get_fullseg(buf))
+  T_INT1(lexbuf_get_fullseg(buf))
   else
-  T_FLOAT(lexbuf_get_fullseg(buf))
+  T_FLOAT1(lexbuf_get_fullseg(buf))
 end // end of [else]
 //
 end // end of [loop1]

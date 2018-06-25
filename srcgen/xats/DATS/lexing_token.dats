@@ -104,18 +104,18 @@ case+ tnd of
 | T_IDENT_dlr(x) =>
   fprint!(out, "IDENT_dlr(", x, ")")
 //
-| T_INT(rep) =>
+| T_INT1(rep) =>
   fprint!(out, "INT(", rep, ")")
-| T_INT(base, rep) =>
+| T_INT2(base, rep) =>
   fprint!(out, "INT(", base, ", ", rep, ")")
-| T_INT(base, rep, _(*sfx*)) =>
+| T_INT3(base, rep, _(*sfx*)) =>
   fprint!(out, "INT(", base, ", ", rep, ")")
 //
-| T_FLOAT(rep) =>
+| T_FLOAT1(rep) =>
   fprint!(out, "FLOAT(", rep, ")")
-| T_FLOAT(base, rep) =>
+| T_FLOAT2(base, rep) =>
   fprint!(out, "FLOAT(", base, ", ", rep, ")")
-| T_FLOAT(base, rep, _(*sfx*)) =>
+| T_FLOAT3(base, rep, _(*sfx*)) =>
   fprint!(out, "FLOAT(", base, ", ", rep, ")")
 //
 (*
@@ -223,13 +223,13 @@ case+ tnd of
 | T_IDENT_srp(x) => fprint(out, x)
 | T_IDENT_dlr(x) => fprint(out, x)
 //
-| T_INT(rep) => fprint(out, rep)
-| T_INT(base, rep) => fprint(out, rep)
-| T_INT(base, rep, _(*sfx*)) => fprint(out, rep)
+| T_INT1(rep) => fprint(out, rep)
+| T_INT2(base, rep) => fprint(out, rep)
+| T_INT3(base, rep, _(*sfx*)) => fprint(out, rep)
 //
-| T_FLOAT(rep) => fprint(out, rep)
-| T_FLOAT(base, rep) => fprint(out, rep)
-| T_FLOAT(base, rep, _(*sfx*)) => fprint(out, rep)
+| T_FLOAT1(rep) => fprint(out, rep)
+| T_FLOAT2(base, rep) => fprint(out, rep)
+| T_FLOAT3(base, rep, _(*sfx*)) => fprint(out, rep)
 //
 (*
 | T_CHAR(chr) =>
@@ -318,6 +318,24 @@ end // end of [char2tnode]
 
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+tnode_is_COMMA
+  (node) =
+(
+  case+ node of
+  | T_COMMA() => true | _ => false
+)
+//
+implement
+tnode_is_SEMICOLON
+  (node) =
+(
+  case+ node of
+  | T_SEMICOLON() => true | _ => false
+)
+//
 (* ****** ****** *)
 
 implement
@@ -484,13 +502,13 @@ case+ node of
 | T_IDENT_dlr(id) => posincneol(pos1, id)
 | T_IDENT_srp(id) => posincneol(pos1, id)
 //
-| T_INT(rep) => posincneol(pos1, rep)
-| T_INT(_, rep) => posincneol(pos1, rep)
-| T_INT(_, rep, _) => posincneol(pos1, rep)
+| T_INT1(rep) => posincneol(pos1, rep)
+| T_INT2(_, rep) => posincneol(pos1, rep)
+| T_INT3(_, rep, _) => posincneol(pos1, rep)
 //
-| T_FLOAT(rep) => posincneol(pos1, rep)
-| T_FLOAT(_, rep) => posincneol(pos1, rep)
-| T_FLOAT(_, rep, _) => posincneol(pos1, rep)
+| T_FLOAT1(rep) => posincneol(pos1, rep)
+| T_FLOAT2(_, rep) => posincneol(pos1, rep)
+| T_FLOAT3(_, rep, _) => posincneol(pos1, rep)
 //
 | T_CHAR_nil(rep) => posincneol(pos1, rep)
 | T_CHAR_char(rep) => posincneol(pos1, rep)

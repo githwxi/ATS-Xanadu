@@ -104,5 +104,19 @@ in
 end // end of [pstar_sep_fun]
 
 (* ****** ****** *)
+//
+implement
+pstar_COMMA_fun
+  {a}
+(
+  buf, err, fpar
+) = (
+//
+pstar_sep_fun
+(buf, err, fpar, tnode_is_COMMA)
+//
+) (* end of [pstar_COMMA_fun] *)
+//
+(* ****** ****** *)
 
 (* end of [xats_parsing_basics.dats] *)

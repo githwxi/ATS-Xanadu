@@ -192,7 +192,13 @@ char2tnode(c0: int): tnode
 (* ****** ****** *)
 
 fun
-tnode_is_comment(tnode): bool
+tnode_is_COMMA : tnode -> bool
+fun
+tnode_is_SEMICOLON : tnode -> bool
+
+(* ****** ****** *)
+
+fun tnode_is_comment(tnode): bool
 
 (* ****** ****** *)
 //
