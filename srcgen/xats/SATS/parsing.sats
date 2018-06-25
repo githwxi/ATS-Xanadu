@@ -150,7 +150,7 @@ fun{}
 synent_isnot_null: {a:type}(a) -> bool
 //
 (* ****** ****** *)
-
+//
 fun
 pstar_sep_fun
   {a:type}
@@ -158,7 +158,14 @@ pstar_sep_fun
   buf: &tokbuf >> _, err: &int >> _
 , fsep: (tnode) -> bool, fpar: parser(a)
 ) : List0_vt(a) // end of [pstar_sep_fun]
-
+//
+fun
+pstar_COMMA_fun
+  {a:type}
+(
+  buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
+) : List0_vt(a) // end of [pstar_COMMA_fun]
+//
 (* ****** ****** *)
 
 (* end of [xats_parsing.sats] *)
