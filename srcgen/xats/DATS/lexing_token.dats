@@ -167,6 +167,35 @@ case+ tnd of
 | T_LBRACKET() => fprint(out, "LBRACKET")
 | T_RBRACKET() => fprint(out, "RBRACKET")
 //
+| T_AS() => fprint(out, "AS")
+| T_OF() => fprint(out, "OF")
+//
+| T_IN() => fprint(out, "IN")
+| T_END() => fprint(out, "END")
+//
+| T_LET() => fprint(out, "LET")
+| T_WHERE() => fprint(out, "WHERE")
+//
+| T_IF() => fprint(out, "IF")
+| T_SIF() => fprint(out, "SIF")
+| T_THEN() => fprint(out, "THEN")
+| T_ELSE() => fprint(out, "ELSE")
+//
+| T_LAM(knd) =>
+  fprint!(out, "LAM(", knd, ")")
+| T_FIX(knd) =>
+  fprint!(out, "FIX(", knd, ")")
+//
+| T_LOCAL() => fprint(out, "LOCAL")
+//
+| T_ABSTYPE(sort) =>
+  fprint!(out, "ABSTYPE(", sort, ")")
+//
+| T_DATASORT() =>
+  fprint(out, "DATASORT")
+| T_DATATYPE(sort) =>
+  fprint!(out, "DATATYPE(", sort, ")")
+//
 ) (* end of [fprint_tnode] *)
 //
 (* ****** ****** *)
@@ -279,6 +308,34 @@ case+ tnd of
 | T_LBRACKET() => fprint(out, "[")
 | T_RBRACKET() => fprint(out, "]")
 //
+| T_AS() => fprint(out, "as")
+| T_OF() => fprint(out, "of")
+| T_IN() => fprint(out, "in")
+| T_END() => fprint(out, "end")
+//
+| T_LET() => fprint(out, "let")
+| T_WHERE() => fprint(out, "where")
+//
+| T_LAM(knd) =>
+  fprint!(out, "lam(", knd, ")")
+| T_FIX(knd) =>
+  fprint!(out, "fix(", knd, ")")
+//
+| T_IF() => fprint(out, "if")
+| T_SIF() => fprint(out, "sif")
+| T_THEN() => fprint(out, "then")
+| T_ELSE() => fprint(out, "else")
+//
+| T_LOCAL() => fprint(out, "local")
+//
+| T_ABSTYPE(knd) =>
+  fprint!(out, "datatype(", knd, ")")
+//
+| T_DATASORT() =>
+  fprint!(out, "datasort")
+| T_DATATYPE(knd) =>
+  fprint!(out, "datatype(", knd, ")")
+//
 ) (* end of [fprint2_tnode] *)
 //
 (* ****** ****** *)
@@ -350,13 +407,6 @@ tnode_is_comment
   | _ (* non-T_COMMENT_... *) => false
 )
 
-(* ****** ****** *)
-//
-extern
-fun
-tnode_insert
-(name: string, node: tnode): void
-//
 (* ****** ****** *)
 
 local

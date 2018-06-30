@@ -97,6 +97,18 @@ cleanall:: ; $(RMF) test_lexing_util0_dats
 
 ######
 
+all:: \
+test_xats_main
+test_xats_main: \
+test_xats_main_dats
+test_xats_main_dats: \
+test_xats_main.dats; \
+$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
+regress:: test_xats_main_dats; ./test_xats_main_dats
+cleanall:: ; $(RMF) test_xats_main_dats
+
+######
+
 testall:: all
 testall:: regress
 testall:: cleanall

@@ -18,6 +18,11 @@
 local
 //
 #include "./../DATS/symbol.dats"
+#include "./../DATS/filepath.dats"
+#include "./../DATS/location.dats"
+//
+#include "./../DATS/lexing_token.dats"
+//
 #include "./../DATS/lexing_kword.dats"
 //
 in
@@ -32,26 +37,33 @@ println!
 //
 (* ****** ****** *)
 //
-val () = println!(kword_search("fn"))
-val () = println!(kword_search("fn0"))
-val () = println!(kword_search("fn1"))
-val () = println!(kword_search("fun"))
-val () = println!(kword_search("fnx"))
-val () = println!("fn? = ", kword_search("fn?"))
+val () = println!(tnode_search("fn"))
+val () = println!(tnode_search("fn0"))
+val () = println!(tnode_search("fn1"))
+val () = println!(tnode_search("fun"))
+val () = println!(tnode_search("fnx"))
+val () = println!("fn? = ", tnode_search("fn?"))
 //
-val () = println!(kword_search("prfn"))
-val () = println!(kword_search("prfn0"))
-val () = println!(kword_search("prfn1"))
-val () = println!(kword_search("prfun"))
-val () = println!("prfn? = ", kword_search("prfn?"))
+val () = println!(tnode_search("prfn"))
+val () = println!(tnode_search("prfn0"))
+val () = println!(tnode_search("prfn1"))
+val () = println!(tnode_search("prfun"))
+val () = println!("prfn? = ", tnode_search("prfn?"))
 //
-val () = println!(kword_search("with"))
+val () = println!(tnode_search("with"))
 //
-val () = println!(kword_search("$raise"))
+val () = println!(tnode_search("$raise"))
 //
-val () = println!(kword_search("$delay"))
-val () = println!(kword_search("$delay_t"))
-val () = println!(kword_search("$delay_vt"))
+val () = println!(tnode_search("$delay"))
+val () = println!(tnode_search("$delay_t"))
+val () = println!(tnode_search("$delay_vt"))
+//
+val () = println!(tnode_search("datasort"))
+//
+val () = println!(tnode_search("dataprop"))
+val () = println!(tnode_search("dataview"))
+val () = println!(tnode_search("datatype"))
+val () = println!(tnode_search("datavtype"))
 //
 (* ****** ****** *)
 
@@ -59,4 +71,4 @@ implement main0((*void*)) = ((*void*))
 
 (* ****** ****** *)
 
-(* end of [test_lexing_kword.dats] *)
+(* end of [test_lexing_tnode.dats] *)

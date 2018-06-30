@@ -32,6 +32,12 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+%{#
+#include "CATS/parsing.cats"
+%} // end of [%{#]
+
+(* ****** ****** *)
 //
 #staload
 SYM = "./symbol.sats"
@@ -47,6 +53,7 @@ LEXING = "./lexing.sats"
 //
   typedef tnode = $LEXING.tnode
   typedef token = $LEXING.token
+  typedef tokenlst = List0(token)
 //
 (* ****** ****** *)
 //
@@ -91,14 +98,20 @@ overload .incby1 with tokbuf_incby1
 //
 fun
 tokbuf_get_mark
-  (buf: &tokbuf >> _): tokbuf_mark
+(buf: &tokbuf >> _): tokbuf_mark
 fun
 tokbuf_set_mark
-  (buf: &tokbuf >> _, mk0: tokbuf_mark): void
+(buf: &tokbuf >> _, mk0: tokbuf_mark): void
 //
 fun
 tokbuf_clear_mark
-  (buf: &tokbuf >> _, mk0: tokbuf_mark): void
+(buf: &tokbuf >> _, mk0: tokbuf_mark): void
+//
+(* ****** ****** *)
+//
+fun
+tokbuf_initize_list
+  (buf: &tokbuf? >> _, toks: tokenlst): void
 //
 (* ****** ****** *)
 //
@@ -152,10 +165,21 @@ synent_isnot_null: {a:type}(a) -> bool
 (* ****** ****** *)
 //
 fun
+pstar_fun
+  {a:type}
+(
+  buf: &tokbuf >> _
+, err: &int >> int, fpar: parser(a)
+) : List0_vt(a) // end of [pstar_fun]
+//
+(* ****** ****** *)
+//
+fun
 pstar_sep_fun
   {a:type}
 (
-  buf: &tokbuf >> _, err: &int >> _
+  buf: &tokbuf >> _
+, err: &int >> int
 , fsep: (tnode) -> bool, fpar: parser(a)
 ) : List0_vt(a) // end of [pstar_sep_fun]
 //

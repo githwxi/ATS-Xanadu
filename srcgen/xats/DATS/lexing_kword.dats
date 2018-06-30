@@ -32,124 +32,102 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload
-UN = "prelude/SATS/unsafe.sats"
-
-(* ****** ****** *)
-
-#staload "./../SATS/symbol.sats"
-#staload "./../SATS/lexing.sats"
-
-(* ****** ****** *)
-//
-extern
-fun
-kword_insert
-(name: string, kwd: kword): void
-//
-(* ****** ****** *)
-
-local
 //
 #staload
-"libats/SATS/hashtbl_linprb.sats"
+UN =
+"prelude/SATS/unsafe.sats"
 //
-#staload
-_(*anon*) = "libats/DATS/hashfun.dats"
-#staload
-_(*anon*) = "libats/DATS/hashtbl_linprb.dats"
-//
-typedef key = string and itm = kword
-vtypedef hashtbl = hashtbl(key, itm)
-//
-val
-theCap = 229
-val
-theHashtbl = 
-hashtbl_make_nil<key,itm>(i2sz(theCap))
-val
-theHashtbl = $UN.castvwtp0{ptr}(theHashtbl)
-//
-in (* in-of-local *)
-
-implement
-kword_search(name) = let
-//
-var res: itm?
-//
-val tbl =
-$UN.castvwtp0{hashtbl}(theHashtbl)
-val ans =
-hashtbl_search<key,itm>(tbl, name, res)
-prval ((*void*)) = $UN.cast2void(tbl)
-//
-in
-  if (ans)
-  then opt_unsome_get(res)
-  else let
-    prval () = opt_unnone(res) in symbol_nil
-  end // end of [else]
-end // end of [kword_search]
-
 (* ****** ****** *)
-
-implement
-kword_insert
-(name, node) = let
 //
-var res: itm?
-val tbl =
-$UN.castvwtp0{hashtbl}(theHashtbl)
-val ans =
-hashtbl_insert<key,itm>(tbl, name, node, res)
+#staload"./../SATS/basics.sats"
+#staload"./../SATS/symbol.sats"
+#staload"./../SATS/lexing.sats"
 //
-val ((*void*)) = assertloc(ans = false)
+(* ****** ****** *)
 //
-prval ((*void*)) = opt_clear(res)
-prval ((*void*)) = $UN.cast2void(tbl)
+macdef
+T_ABSPROP_ = T_ABSTYPE(PROPSORT)
+macdef
+T_ABSVIEW_ = T_ABSTYPE(VIEWSORT)
 //
-in
-  // nothing
-end // end of [kword_insert]
-
-end // end of [local]
-
+macdef
+T_ABSTYPE_ = T_ABSTYPE(TYPESORT)
+macdef
+T_ABSTBOX_ = T_ABSTYPE(TBOXSORT)
+macdef
+T_ABSTFLAT_ = T_ABSTYPE(TFLATSORT)
+//
+macdef
+T_ABSVTYPE_ = T_ABSTYPE(VTYPESORT)
+macdef
+T_ABSVTBOX_ = T_ABSTYPE(VTBOXSORT)
+macdef
+T_ABSVTFLAT_ = T_ABSTYPE(VTFLATSORT)
+//
+(* ****** ****** *)
+//
+macdef
+T_DATAPROP_ = T_DATATYPE(PROPSORT)
+macdef
+T_DATAVIEW_ = T_DATATYPE(VIEWSORT)
+//
+macdef
+T_DATATYPE_ = T_DATATYPE(TYPESORT)
+macdef
+T_DATAVTYPE_ = T_DATATYPE(VTYPESORT)
+//
 (* ****** ****** *)
 
 val () =
-kword_initize() where
+kword_initize
+  ((*void*)) where
 {
 //
-fun
-myins
-(kwd: string): void =
-{
-val () =
-kword_insert
-(kwd, symbol_make(kwd))
-}
+macdef
+myins = tnode_insert
 //
 fun
 kword_initize(): void =
 {
 //
-val () = myins("as")
-val () = myins("of")
+val () = myins("as", T_AS)
 //
-val () = myins("abstype")
-val () = myins("absvtype")
+val () = myins("of", T_OF)
 //
-val () = myins("abstbox")
-val () = myins("abstflat")
+val () = myins("in", T_IN)
 //
-val () = myins("absvtbox")
-val () = myins("absvtflat")
+val () = myins("end", T_END)
 //
-val () = myins("dataprop")
-val () = myins("dataview")
-val () = myins("datatype")
-val () = myins("datavtype")
+val () = myins("let", T_LET)
+val () = myins("where", T_WHERE)
+//
+val () = myins("lam", T_LAM(0))
+val () = myins("fix", T_FIX(0))
+//
+val () = myins("if", T_IF)
+val () = myins("sif", T_IF)
+val () = myins("then", T_THEN)
+val () = myins("else", T_ELSE)
+//
+val () = myins("absprop", T_ABSPROP_)
+val () = myins("absview", T_ABSVIEW_)
+//
+val () = myins("abstype", T_ABSTYPE_)
+val () = myins("abstbox", T_ABSTBOX_)
+val () = myins("abstflat", T_ABSTFLAT_)
+//
+val () = myins("absvtype", T_ABSVTYPE_)
+val () = myins("absvtbox", T_ABSVTBOX_)
+val () = myins("absvtFLAT", T_ABSVTFLAT_)
+//
+val () = myins("datasort", T_DATASORT)
+//
+val () = myins("dataprop", T_DATAPROP_)
+val () = myins("dataview", T_DATAVIEW_)
+val () = myins("datatype", T_DATATYPE_)
+val () = myins("datavtype", T_DATAVTYPE_)
+//
+(*
 //
 val () = myins("fn")
 val () = myins("fn0")
@@ -214,6 +192,8 @@ val () = myins("#include")
 //
 val () = myins("#staload")
 val () = myins("#dynload")
+//
+*)
 //
 } (* end of [kword_initize] *)
 //

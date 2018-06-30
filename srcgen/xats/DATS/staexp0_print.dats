@@ -49,8 +49,8 @@ fprint_i0nt
   (out, x0) =
 (
 case+ x0.node() of
-| I0NTnone() =>
-  fprint!(out, "I0NTnone(", ")")
+| I0NTnone(tok) =>
+  fprint!(out, "I0NTnone(", tok, ")")
 | I0NTsome(tok) =>
   fprint!(out, "I0NTsome(", tok, ")")
 )
@@ -62,8 +62,8 @@ fprint_i0dnt
   (out, x0) =
 (
 case+ x0.node() of
-| I0DNTnone() =>
-  fprint!(out, "I0DNTnone(", ")")
+| I0DNTnone(tok) =>
+  fprint!(out, "I0DNTnone(", tok, ")")
 | I0DNTsome(tok) =>
   fprint!(out, "I0DNTsome(", tok, ")")
 )
