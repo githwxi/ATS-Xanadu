@@ -33,6 +33,18 @@
 //
 (* ****** ****** *)
 //
+#define PROPSORT 0
+#define VIEWSORT 0
+//
+#define TYPESORT 0
+#define TBOXSORT 0
+#define TFLATSORT 0
+#define VTYPESORT 0
+#define VTBOXSORT 0
+#define VTFLATSORT 0
+//
+(* ****** ****** *)
+//
 typedef
 eq_type(a:t0ype) = (a, a) -> bool
 typedef

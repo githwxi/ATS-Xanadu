@@ -34,7 +34,7 @@
 (* ****** ****** *)
 //
 #staload SYM = "./symbol.sats"
-  typedef kword = $SYM.symbol
+//
 #staload LOC = "./location.sats"
   typedef pos_t = $LOC.position
   typedef loc_t = $LOC.location
@@ -109,7 +109,31 @@ tnode =
   | T_LBRACKET of () // [
   | T_RBRACKET of () // ]
 //
-abstbox token_tbox = $tup()
+  | T_AS of () // 'as'
+  | T_OF of () // 'of'
+  | T_IN of () // 'in'
+//
+  | T_END of () // 'end'
+//
+  | T_LET of () // 'end'
+  | T_WHERE of () // 'where'
+//
+  | T_IF of () // 'if'
+  | T_SIF of () // 'sif'
+  | T_THEN of () // 'then'
+  | T_ELSE of () // 'else'
+//
+  | T_LAM of int // 'lam=lam1' and 'lam@=lam0'
+  | T_FIX of int // 'fix=lam1' and 'fix@=fix0'
+//
+  | T_LOCAL of () // 'local'
+//
+  | T_ABSTYPE of int(*kind*)
+//
+  | T_DATASORT of ()
+  | T_DATATYPE of int(*kind*)
+//
+abstbox token_tbox = $tup((*void*))
 //
 (*
 typedef
@@ -204,21 +228,19 @@ fun tnode_is_comment(tnode): bool
 //
 // HX:
 // Check if a given name refers to
-// a keyword; if the return is not
-// SYMBOL_nil(), then it does!
-//
-fun
-kword_search(name: string): kword
-//
-(* ****** ****** *)
-//
-// HX:
-// Check if a given name refers to
 // a special token; if the return is
 // not T_EOF(), then it does!
 //
 fun
 tnode_search(name: string): tnode
+//
+// HX:
+// For the sake of initialization:
+//
+fun
+tnode_insert
+  (name: string, node: tnode): void
+//
 //
 (* ****** ****** *)
 //
@@ -226,6 +248,9 @@ fun
 lexing_tnode(lxbf: &lexbuf >> _): tnode
 //
 (* ****** ****** *)
+//
+// HX:
+// Attaching location info to tnode
 //
 fun
 lexing_locatize_node

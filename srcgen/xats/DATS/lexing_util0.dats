@@ -68,6 +68,10 @@ isXDIGIT(c: char): bool
 //
 extern
 fun
+isALNUM_(c: char): bool
+//
+extern
+fun
 isIDENTFST(c: char): bool
 extern
 fun
@@ -120,6 +124,12 @@ isDIGIT(c) = isdigit(c)
 implement
 isXDIGIT(c) = isxdigit(c)
 
+(* ****** ****** *)
+//
+implement
+isALNUM_(c) =
+  isalnum(c) || (c = '_')
+//
 (* ****** ****** *)
 
 implement
@@ -809,7 +819,7 @@ val c1 = int2char0(i1)
 in
 //
 if
-isALNUM(c1)
+isALNUM_(c1)
 then loop(buf, k+1)
 else
 (
@@ -854,7 +864,7 @@ val c1 = int2char0(i1)
 in
 //
 if
-isALNUM(c1)
+isALNUM_(c1)
 then loop(buf, k+1)
 else
 (

@@ -53,12 +53,37 @@ $extype_struct
 } (* end of [tokbuf] *)
 //
 (* ****** ****** *)
+
+implement
+tokbuf_initize_list
+  (buf, xs) = let
+//
+val n0 =
+length(xs)
+//
+val A0 =
+arrayptr_make_list<token>
+  (n0, xs)
+//
+val p0 =
+  $UN.castvwtp0{ptr}( A0 )
+//
+in
+//
+buf.begp := p0;
+buf.curp := p0;
+buf.endp :=
+ptr0_add_gint<token>(p0, n0);
+//
+end // end of [tokbuf_make_list]
+
+(* ****** ****** *)
 //
 implement
 tokbuf_getok0
   (buf) =
 (
-$UN.ptr0_get<token>(buf.curp)
+  $UN.ptr0_get<token>(buf.curp)
 )
 //
 (*

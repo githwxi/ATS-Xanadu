@@ -55,6 +55,60 @@ implement
 synent_isnot_null(x) = isneqz($UN.cast{ptr}(x))
 
 (* ****** ****** *)
+//
+(*
+fun
+pstar_fun
+  {a:type}
+(
+  buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
+) : List0_vt(a) // end of [pstar_fun]
+*)
+//
+implement
+pstar_fun
+  {a}
+(
+  buf, err, fpar
+) = let
+//
+val e0 = err
+//
+fun
+loop
+( buf:
+ &tokbuf >> _
+, err: &int >> _
+, res: &ptr? >> List0_vt(a)
+) : void = let
+  val x0 = fpar(buf, err)
+in
+  if
+  (err = e0)
+  then let
+    val () =
+    (
+      res :=
+      list_vt_cons{a}{0}(x0, _)
+    )
+    val+list_vt_cons(_, res1) = res
+    val () = loop(buf, err, res1)
+    prval ((*folded*)) = fold@(res)
+  in
+    // nothing
+  end // end of [then]
+  else let
+    val () = err := e0
+  in
+    res := list_vt_nil((*void*))
+  end // end of [else]
+end // end of [loop]
+//
+in
+  let var res: ptr in loop(buf, err, res); res end
+end // end of [pstar_fun]
+//
+(* ****** ****** *)
 
 (*
 fun
@@ -113,7 +167,7 @@ pstar_COMMA_fun
 ) = (
 //
 pstar_sep_fun
-(buf, err, fpar, tnode_is_COMMA)
+(buf, err, tnode_is_COMMA, fpar)
 //
 ) (* end of [pstar_COMMA_fun] *)
 //
