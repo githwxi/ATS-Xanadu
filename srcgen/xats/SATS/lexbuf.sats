@@ -98,7 +98,8 @@ lexbuf_get_fullseg
 fun
 lexbuf_getc(buf: &lexbuf >> _): int
 fun
-lexbuf_unget(buf: &lexbuf >> _): void
+lexbuf_unget
+  (buf: &lexbuf >> _, i0: int): void
 //
 (* ****** ****** *)
 //

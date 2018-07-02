@@ -297,7 +297,12 @@ end // end of [lexbuf_getc]
 
 implement
 lexbuf_unget
-  (buf) = let
+  (buf, i0) =
+(
+if
+(
+i0 >= 0
+) then let
 //
 val bp = buf.begp
 val cp = buf.curp
@@ -307,7 +312,8 @@ in
     then buf.curp := ptr_pred<char>(cp)
     else ((*void*))
   // end of [if]
-end // end of [lexbuf_unget]
+end // end of [let]
+) (* end of [lexbuf_unget] *)
 
 end // end of [local]
 

@@ -67,9 +67,9 @@ val (_) = position_initize(pos, 0, 0, 0)
 val (_) = lexbuf_initize_cblist(buf, cbs)
 //
 val uc0 = lexbuf_getc(buf)
-val (_) = lexbuf_unget(buf)
+val (_) = lexbuf_unget(buf, uc0)
 val uc1 = lexbuf_getc(buf)
-val (_) = lexbuf_unget(buf)
+val (_) = lexbuf_unget(buf, uc1)
 val (_) = println!("uc0 = ", int2char0(uc0))
 val (_) = println!("uc1 = ", int2char0(uc1))
 //

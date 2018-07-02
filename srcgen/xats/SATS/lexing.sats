@@ -263,7 +263,7 @@ lexing_locatize_nodelst
 //
 fun
 string_tokenize
-  (text: string): Option_vt(tokenlst_vt)
+  {n:pos}(inptxt: string(n)): tokenlst_vt
 //
 (* ****** ****** *)
 //

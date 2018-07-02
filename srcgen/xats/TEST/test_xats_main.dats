@@ -7,6 +7,8 @@
 //
 #include
 "share/atspre_staload.hats"
+#include
+"share/atspre_staload_libats_ML.hats"
 //
 (* ****** ****** *)
 
@@ -74,6 +76,28 @@ println!
 //
 } (* end of [main0] *)
 
+(* ****** ****** *)
+
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
+
+val-
+toks =
+(
+string_tokenize
+("foo(x + 1 - 2 * 3 / 4) + bar")
+)
+//
+val
+toks =
+list_vt2t(toks)
+//
+val ((*void*)) =
+list0_foreach<token>
+( g0ofg1(toks)
+, lam(tok) => fprint_token(stdout_ref, tok))
+//
 (* ****** ****** *)
 
 (* end of [test_xats_main.dats] *)
