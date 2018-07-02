@@ -243,13 +243,18 @@ val i0 =
 val c0 = int2char0(i0)
 //
 in
+//
 if
 isDIGIT(c0)
-then loop(buf, k+1)
+then
+(
+loop(buf, k+1)
+)
 else
 let
-  val () = lexbuf_unget(buf) in k
+  val () = lexbuf_unget(buf, i0) in k
 end // end of [else]
+//
 end // end of [loop]
 //
 } (* end of [testing_digits] *)
@@ -267,12 +272,14 @@ val c0 = int2char0(i0)
 in
 //
 ifcase
-| c0 = '+' => 1+testing_digits(buf)
-| c0 = '-' => 1+testing_digits(buf)
+| c0 = '+' =>
+  1+testing_digits(buf)
+| c0 = '-' =>
+  1+testing_digits(buf)
 | isDIGIT(c0) => 1+testing_digits(buf)
 | _(* else *) =>
   let
-  val () = lexbuf_unget(buf) in (0)
+    val () = lexbuf_unget(buf, i0) in 0
   end // end of [else]
 //
 end // end of [testing_sign_digits]
@@ -297,13 +304,18 @@ val i0 =
 val c0 = int2char0(i0)
 //
 in
+//
 if
 isXDIGIT(c0)
-then loop(buf, k+1)
+then
+(
+loop(buf, k+1)
+) // end of [then]
 else
 let
-  val () = lexbuf_unget(buf) in k
+  val () = lexbuf_unget(buf, i0) in k
 end // end of [else]
+//
 end // end of [loop]
 //
 } (* end of [testing_xdigits] *)
@@ -314,28 +326,31 @@ extern
 fun
 testing_floatsfx
 (buf:
-&lexbuf >> _, c0: char): int
+&lexbuf >> _, i0: int): int
 //
 extern
 fun
 testing_floatsfx_hex
 (buf:
-&lexbuf >> _, c0: char): int
+&lexbuf >> _, i0: int): int
 //
 (* ****** ****** *)
 
 implement
 testing_floatsfx
-  (buf, c0) =
-(
+  (buf, i0) = let
+//
+val c0 = int2char0(i0)
+//
+in
 ifcase
 | c0 = '.' =>
   loop0(buf, 1)
 | _(* else *) =>
   let
-    val () = lexbuf_unget(buf) in 0
+    val () = lexbuf_unget(buf, i0) in 0
   end // end of [else]
-) where
+end where
 {
 //
 fun
@@ -353,14 +368,18 @@ in
 if
 isDIGIT(c0)
 then loop0(buf, k+1)
-else loop1(buf, c0, k)
+else loop1(buf, i0, k)
 end // end of [loop0]
 //
 and
 loop1
 (buf:
-&lexbuf >> _, c0: char, k: int): int =
-(
+&lexbuf >> _
+, i0: int, k: int): int =
+let
+  val c0 = int2char0(i0)
+in
+//
 ifcase
 | c0 = 'e' =>
   (
@@ -372,24 +391,30 @@ ifcase
   )
 | _(* else *) => // exponent-less
   let
-    val () = lexbuf_unget(buf) in k
+    val () = lexbuf_unget(buf, i0) in k
   end // end of [else]
-)
+//
+end // end of [let]
 //
 } (* testing_floatsfx *)
 
 implement
 testing_floatsfx_hex
-  (buf, c0) =
-(
+  (buf, i0) = let
+//
+val c0 = int2char0(i0)
+//
+in
+//
 ifcase
 | c0 = '.' =>
   loop0(buf, 1)
 | _(* else *) =>
   let
-    val () = lexbuf_unget(buf) in 0
+    val () = lexbuf_unget(buf, i0) in 0
   end // end of [else]
-) where
+//
+end where
 {
 //
 fun
@@ -407,14 +432,19 @@ in
 if
 isXDIGIT(c0)
 then loop0(buf, k+1)
-else loop1(buf, c0, k)
+else loop1(buf, i0, k)
 end // end of [loop0]
 //
 and
 loop1
 (buf:
-&lexbuf >> _, c0: char, k: int): int =
-(
+&lexbuf >> _
+, i0: int, k: int): int = let
+//
+val c0 = int2char0(i0)
+//
+in
+//
 ifcase
 | c0 = 'p' =>
   (
@@ -426,9 +456,10 @@ ifcase
   )
 | _(* else *) => // exponent-less
   let
-    val () = lexbuf_unget(buf) in k
+    val () = lexbuf_unget(buf, i0) in k
   end // end of [else]
-)
+//
+end // end of [let]
 //
 } (* testing_floatsfx_hex *)
 
@@ -521,7 +552,7 @@ if
 isBLANK(c0)
 then loop(buf)
 else let
-  val () = lexbuf_unget(buf)
+  val () = lexbuf_unget(buf, i0)
 in
   T_BLANK(lexbuf_get_fullseg(buf))
 end // end of [else]
@@ -565,7 +596,7 @@ ifcase
   end // end-of-SLASH
 | _(* else *) => let
     val () =
-    lexbuf_unget(buf)
+    lexbuf_unget(buf, i0)
   in
     lexing_isSYMBOLIC(buf, i0)
   end (* end of [......] *)
@@ -608,9 +639,12 @@ ifcase
   (
     if
     isDIGIT(c0)
-    then loop0d(buf)
+    then
+    (
+      loop0d(buf)
+    ) // end of [then]
     else let
-      val () = lexbuf_unget(buf)
+      val () = lexbuf_unget(buf, i0)
     in
       T_INT1(lexbuf_get_fullseg(buf))
     end // end of [else]
@@ -636,7 +670,7 @@ isDIGIT(c0)
 then loop0d(buf)
 else let
   val k0 =
-  testing_floatsfx(buf, c0)
+  testing_floatsfx(buf, i0)
 in
   if
   (k0 = 0)
@@ -668,7 +702,7 @@ isXDIGIT(c0)
 then loop0x(buf)
 else let
   val k0 =
-  testing_floatsfx_hex(buf, c0)
+  testing_floatsfx_hex(buf, i0)
 in
   if
   (k0 = 0)
@@ -707,7 +741,7 @@ isDIGIT(c0)
 then loop1(buf)
 else let
   val k0 =
-  testing_floatsfx(buf, c0)
+  testing_floatsfx(buf, i0)
 in
   if
   (k0 = 0)
@@ -745,14 +779,22 @@ val i0 =
   lexbuf_getc(buf)
 )
 val c0 = int2char0(i0)
+(*
+val () =
+println!
+("lexing_isIDENTFST: c0 = ", c0)
+*)
 //
 in
 //
 if
 isIDENTRST(c0)
-then loop(buf)
+then
+(
+loop(buf)
+) // end of [then]
 else let
-  val () = lexbuf_unget(buf)
+  val () = lexbuf_unget(buf, i0)
 in
   T_IDENT_alp(lexbuf_get_fullseg(buf))
 end // end of [else]
@@ -784,9 +826,12 @@ in
 //
 if
 isSYMBOLIC(c0)
-then loop(buf)
+then
+(
+loop(buf)
+) // end of [then]
 else let
-  val () = lexbuf_unget(buf)
+  val () = lexbuf_unget(buf, i0)
 in
   T_IDENT_sym(lexbuf_get_fullseg(buf))
 end // end of [else]
@@ -826,13 +871,13 @@ else
 if
 (k > 0)
 then let
-  val () = lexbuf_unget(buf)
+  val () = lexbuf_unget(buf, i0)
 in
   T_IDENT_srp(lexbuf_get_fullseg(buf))
 end // end of [then]
 else let
   val () =
-  lexbuf_unget(buf) in lexing_isSYMBOLIC(buf, i0)
+  lexbuf_unget(buf, i0) in lexing_isSYMBOLIC(buf, i0)
 end // end of [else]
 )
 //
@@ -871,13 +916,13 @@ else
 if
 (k > 0)
 then let
-  val () = lexbuf_unget(buf)
+  val () = lexbuf_unget(buf, i0)
 in
   T_IDENT_dlr(lexbuf_get_fullseg(buf))
 end // end of [then]
 else let
   val () =
-  lexbuf_unget(buf) in lexing_isSYMBOLIC(buf, i0)
+  lexbuf_unget(buf, i0) in lexing_isSYMBOLIC(buf, i0)
 end // end of [else]
 )
 end // end of [loop]
@@ -908,7 +953,9 @@ ifcase
 | _(* else *) =>
   T_SPECHAR(i0) where
   {
-    val () = lexbuf_unget(buf)
+    val () =
+      lexbuf_unget(buf, i0)
+    // end of [val]
     val () = lexbuf_get_none(buf)
   } (* end of [......] *)
 //
@@ -987,7 +1034,7 @@ ifcase
 | isSQUOTE(c0) =>
   T_CHAR_char(lexbuf_get_fullseg(buf))
 | _ (* else *) => let
-    val () = lexbuf_unget(buf)
+    val () = lexbuf_unget(buf, i0)
   in
     T_CHAR_char(lexbuf_get_fullseg(buf))
   end // end of [non-closing-SQUOTE]
@@ -1012,7 +1059,7 @@ ifcase
 | isSQUOTE(c0) =>
   T_CHAR_slash(lexbuf_get_fullseg(buf))
 | _ (* else *) => let
-    val () = lexbuf_unget(buf)
+    val () = lexbuf_unget(buf, i0)
   in
     T_CHAR_slash(lexbuf_get_fullseg(buf))
   end // end of [non-closing-SQUOTE]
@@ -1035,7 +1082,7 @@ ifcase
 | isSQUOTE(c0) =>
   T_CHAR_slash(lexbuf_get_fullseg(buf))
 | _ (* else *) => let
-    val () = lexbuf_unget(buf)
+    val () = lexbuf_unget(buf, i0)
   in
     T_CHAR_slash(lexbuf_get_fullseg(buf))
   end // end of [non-closing-SQUOTE]
@@ -1103,6 +1150,11 @@ val i0 =
   lexbuf_getc(buf)
 )
 val c0 = int2char0(i0)
+// (*
+val () =
+println!
+("lexing_tnode: c0 = ", c0)
+// *)
 //
 in
 //
@@ -1210,7 +1262,7 @@ in
   if
   isEOL(c0)
   then let
-    val () = lexbuf_unget(buf)
+    val () = lexbuf_unget(buf, i0)
   in
     T_COMMENT_line
     (sym, lexbuf_get_fullseg(buf))
@@ -1419,10 +1471,64 @@ local
 in (* in-of-local *)
 
 implement
+string_tokenize
+  (inp) = let
+//
+fun
+loop
+(buf:
+&lexbuf >> _
+,res:
+ tnodelst_vt): tnodelst_vt = let
+//
+  val tnd = lexing_tnode(buf)
+// (*
+  val (_) =
+  println!
+  ("string_tokenize: loop: tnd = ", tnd)
+// *)
+//
+in
+  case+ tnd of
+  | T_EOF() => res
+  | _(*non-EOF*) =>
+    ( loop
+      (buf, list_vt_cons(tnd, res))
+    )
+end // end of [loop]
+//
+var buf: lexbuf
+//
+val cbs = string2cblist(inp)
+val (_) = lexbuf_initize_cblist(buf, cbs)
+val tnds = loop(buf, list_vt_nil(*void*))
+//
+in
+//
+toks where
+{
+//
+var pos0: pos_t
+//
+val tnds = list_vt_reverse(tnds)
+//
+val ((*void*)) =
+  $LOC.position_initize(pos0, 0, 0, 0)
+val toks =
+  lexing_locatize_nodelst(pos0, $UN.list_vt2t(tnds))
+//
+val ((*freed*)) = list_vt_free(tnds)
+//
+} (* end of [where] *)
+end // end of [string_tokenize]
+
+(* ****** ****** *)
+
+implement
 fileref_tokenize
   (inp) = let
 //
-val BSZ = i2sz(4096)
+val BSZ = i2sz(8012)
 //
 fun
 loop

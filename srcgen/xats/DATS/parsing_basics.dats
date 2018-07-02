@@ -61,7 +61,8 @@ fun
 pstar_fun
   {a:type}
 (
-  buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
+  buf: &tokbuf >> _
+, err: &int >> _, fpar: parser(a)
 ) : List0_vt(a) // end of [pstar_fun]
 *)
 //
