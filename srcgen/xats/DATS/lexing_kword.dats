@@ -190,10 +190,10 @@ val () = myins("#define")
 //
 val () = myins("#include")
 //
-val () = myins("#staload")
-val () = myins("#dynload")
-//
 *)
+//
+val () = myins("#staload", T_SRP_STALOAD)
+val () = myins("#dynload", T_SRP_DYNLOAD)
 //
 } (* end of [kword_initize] *)
 //

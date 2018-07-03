@@ -133,6 +133,9 @@ tnode =
   | T_DATASORT of ()
   | T_DATATYPE of int(*kind*)
 //
+  | T_SRP_STALOAD of ()
+  | T_SRP_DYNLOAD of ()
+//
 abstbox token_tbox = $tup((*void*))
 //
 (*

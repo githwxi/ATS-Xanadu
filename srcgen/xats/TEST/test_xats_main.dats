@@ -81,22 +81,20 @@ println!
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
-
+//
 val-
 toks =
 (
 string_tokenize
-("foo(x + 1 - 2 * 3 / 4) + bar")
+("foo(x + 1 - 2 * 3 / 4) + _b'ar'")
 )
 //
 val
-toks =
-list_vt2t(toks)
+toks = list_vt2t(toks)
 //
 val ((*void*)) =
 list0_foreach<token>
-( g0ofg1(toks)
-, lam(tok) => fprint_token(stdout_ref, tok))
+(g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
 //
 (* ****** ****** *)
 

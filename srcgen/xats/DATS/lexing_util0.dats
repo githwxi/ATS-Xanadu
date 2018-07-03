@@ -1031,8 +1031,11 @@ val c0 = int2char0(i0)
 in
 //
 ifcase
+//
 | isSQUOTE(c0) =>
-  T_CHAR_char(lexbuf_get_fullseg(buf))
+  T_CHAR_char
+  (lexbuf_get_fullseg(buf))
+//
 | _ (* else *) => let
     val () = lexbuf_unget(buf, i0)
   in
@@ -1055,9 +1058,13 @@ val c0 = int2char0(i0)
 in
 //
 ifcase
+//
 | isdigit(c0) => loop11(buf)
+//
 | isSQUOTE(c0) =>
-  T_CHAR_slash(lexbuf_get_fullseg(buf))
+  T_CHAR_slash
+  (lexbuf_get_fullseg(buf))
+//
 | _ (* else *) => let
     val () = lexbuf_unget(buf, i0)
   in
@@ -1080,7 +1087,8 @@ in
 //
 ifcase
 | isSQUOTE(c0) =>
-  T_CHAR_slash(lexbuf_get_fullseg(buf))
+  T_CHAR_slash
+  (lexbuf_get_fullseg(buf))
 | _ (* else *) => let
     val () = lexbuf_unget(buf, i0)
   in

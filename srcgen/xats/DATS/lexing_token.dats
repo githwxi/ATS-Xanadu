@@ -196,6 +196,9 @@ case+ tnd of
 | T_DATATYPE(sort) =>
   fprint!(out, "DATATYPE(", sort, ")")
 //
+| T_SRP_STALOAD() => fprint(out, "#STALOAD")
+| T_SRP_DYNLOAD() => fprint(out, "#DYNLOAD")
+//
 ) (* end of [fprint_tnode] *)
 //
 (* ****** ****** *)
@@ -335,6 +338,9 @@ case+ tnd of
   fprint!(out, "datasort")
 | T_DATATYPE(knd) =>
   fprint!(out, "datatype(", knd, ")")
+//
+| T_SRP_STALOAD() => fprint(out, "#staload")
+| T_SRP_DYNLOAD() => fprint(out, "#dynload")
 //
 ) (* end of [fprint2_tnode] *)
 //
