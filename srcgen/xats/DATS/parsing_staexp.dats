@@ -121,4 +121,43 @@ end // end of [p_s0tid]
 
 (* ****** ****** *)
 
+implement
+p_s0qua(buf, err) = let
+  val mark =
+  tokbuf_get_mark(buf)
+  val tok0 = buf.get1()
+in
+//
+case+
+tok0.node() of
+| T_IDENT_dlr _ =>
+  (
+  case+
+  tok1.node() of
+  | T_DOT() =>
+    (
+    s0qua_symdot(tok0, tok1)
+    ) where
+    {
+      val () = buf.clear_mark(mark)
+    }
+  | _ (*non-DOT*) =>
+    let
+    val () =
+    buf.set_mark(mark) in s0qua_none(tok0)
+    end
+  ) where
+  {
+    val tok1 = tokbuf_getok1(buf)
+  }
+| _ (*non-IDENT_dlr*) =>
+  let
+    val () =
+    buf.set_mark(mark) in s0qua_none(tok0)
+  end // end of [non-IDENT_dlr]
+//
+end // end of [p_s0qua]
+
+(* ****** ****** *)
+
 (* end of [xats_parsing_staexp.dats] *)

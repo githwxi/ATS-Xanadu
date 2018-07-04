@@ -39,6 +39,9 @@ UN =
 //
 (* ****** ****** *)
 //
+#staload
+"./../SATS/location.sats"
+//
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/staexp0.sats"
 //
@@ -131,6 +134,27 @@ implement
 s0qua_get_loc(x) = x.s0qua_loc
 implement
 s0qua_get_node(x) = x.s0qua_node
+
+fun
+s0qua_make_node
+( loc: loc_t
+, node: s0qua_node): s0qua =
+$rec{
+  s0qua_loc= loc, s0qua_node= node
+} (* end of [s0qua_make_node] *)
+
+implement
+s0qua_none(tok) =
+s0qua_make_node
+(
+  leftmost(tok.loc()), S0QUAnone(tok)
+)
+implement
+s0qua_symdot(tok0, tok1) =
+s0qua_make_node
+(
+  tok0.loc() + tok1.loc(), S0QUAsymdot(tok0, tok1)
+)
 
 end // end of [local]
 

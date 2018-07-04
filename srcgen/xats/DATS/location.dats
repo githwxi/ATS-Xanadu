@@ -299,7 +299,109 @@ location_make_fil_pos_pos
 //
 } (* location_make_fil_pos_pos *)
 
+implement
+location_filepath(loc) = loc.filepath
+implement
+location_beg_ntot(loc) = loc.beg_ntot
+implement
+location_beg_nrow(loc) = loc.beg_nrow
+implement
+location_beg_ncol(loc) = loc.beg_ncol
+implement
+location_end_ntot(loc) = loc.end_ntot
+implement
+location_end_nrow(loc) = loc.end_nrow
+implement
+location_end_ncol(loc) = loc.end_ncol
+
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+location_combine
+  (loc1, loc2) = let
+//
+  val fil1 = loc1.filepath()
+  val fil2 = loc2.filepath()
+//
+local
+  val ntot1 = loc1.beg_ntot()
+  val nrow1 = loc1.beg_nrow()
+  val ncol1 = loc1.beg_ncol()
+  val ntot2 = loc2.beg_ntot()
+  val nrow2 = loc2.beg_nrow()
+  val ncol2 = loc2.beg_ncol()
+in
+  var bpos0: pos_t
+  val ((*void*)) =
+  position_initize
+  ( bpos0
+  , min(ntot1, ntot2)
+  , min(nrow1, nrow2), min(ncol1, ncol2))
+  // end of [val]
+end // end of [local]
+//
+local
+  val ntot1 = loc1.end_ntot()
+  val nrow1 = loc1.end_nrow()
+  val ncol1 = loc1.end_ncol()
+  val ntot2 = loc2.end_ntot()
+  val nrow2 = loc2.end_nrow()
+  val ncol2 = loc2.end_ncol()
+in
+  var cpos0: pos_t
+  val ((*void*)) =
+  position_initize
+  ( cpos0
+  , max(ntot1, ntot2)
+  , max(nrow1, nrow2), max(ncol1, ncol2))
+  // end of [val]
+end // end of [local]
+//
+in
+  location_make_fil_pos_pos(fil1, bpos0, cpos0)
+end // end of [location_combine]
+
+(* ****** ****** *)
+
+implement
+location_leftmost
+  (loc) = let
+//
+  val fil = loc.filepath()
+//
+  val ntot = loc.beg_ntot()
+  val nrow = loc.beg_nrow()
+  val ncol = loc.beg_ncol()
+//
+  var pos0: pos_t
+  val ((*void*)) =
+  position_initize
+    (pos0, ntot, nrow, ncol)
+  // end of [val]
+in
+  location_make_fil_pos_pos(fil, pos0, pos0)
+end // end of [location_leftmost]
+
+implement
+location_rightmost
+  (loc) = let
+//
+  val fil = loc.filepath()
+//
+  val ntot = loc.end_ntot()
+  val nrow = loc.end_nrow()
+  val ncol = loc.end_ncol()
+//
+  var pos0: pos_t
+  val ((*void*)) =
+  position_initize
+    (pos0, ntot, nrow, ncol)
+  // end of [val]
+in
+  location_make_fil_pos_pos(fil, pos0, pos0)
+end // end of [location_rightmost]
 
 (* ****** ****** *)
 //

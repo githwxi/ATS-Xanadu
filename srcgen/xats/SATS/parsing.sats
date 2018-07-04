@@ -63,7 +63,7 @@ STAEXP0 = "./staexp0.sats"
   typedef i0nt = $STAEXP0.i0nt
   typedef i0dnt = $STAEXP0.i0dnt
 //
-  typedef s0rtq = $STAEXP0.s0rtq
+  typedef s0qua = $STAEXP0.s0qua
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
 //
@@ -119,6 +119,10 @@ fun
 tokbuf_clear_mark
 (buf: &tokbuf >> _, mk0: tokbuf_mark): void
 //
+overload .get_mark with tokbuf_get_mark
+overload .set_mark with tokbuf_set_mark
+overload .clear_mark with tokbuf_clear_mark
+//
 (* ****** ****** *)
 //
 fun
@@ -151,10 +155,10 @@ fun p_d0eid: parser(d0eid)
 (* ****** ****** *)
 //
 (*
-s0rtq ::=
+s0qua ::=
 (IDENT_dlr DOT)?
 *)
-fun p_s0rtq: parser(s0rtq)
+fun p_s0qua: parser(s0qua)
 //
 (* ****** ****** *)
 
@@ -210,6 +214,23 @@ pstar_COMMA_fun
   buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
 ) : List0_vt(a) // end of [pstar_COMMA_fun]
 //
+(* ****** ****** *)
+
+fun
+pent2_fun_fun
+  {a1,a2:type}
+(
+  buf: &tokbuf >> _, err: &int >> _
+, fpar1: parser(a1), fpar2: parser(a2)
+) : synent2(a1, a2) // pent2_fun_fun
+fun
+pent3_fun_fun_fun
+  {a1,a2,a3:type}
+(
+  buf: &tokbuf >> _, err: &int >> _
+, fpar1: parser(a1), fpar2: parser(a2), fpar3: parser(a3)
+) : synent3(a1, a2, a3) // pent3_fun_fun_fun
+
 (* ****** ****** *)
 
 (* end of [xats_parsing.sats] *)
