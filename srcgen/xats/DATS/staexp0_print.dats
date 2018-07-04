@@ -75,10 +75,10 @@ fprint_s0qua
   (out, x0) =
 (
 case+ x0.node() of
-| S0QUAnone() =>
-  fprint!(out, "S0QUAnone(", ")")
-| S0QUAsymdot(tok) =>
-  fprint!(out, "S0QUAsymdot(", tok, ")")
+| S0QUAnone(tok) =>
+  fprint!(out, "S0QUAnone(", tok, ")")
+| S0QUAsymdot(tok0, tok1) =>
+  fprint!(out, "S0QUAsymdot(", tok0, ", ", tok1, ")")
 )
 
 (* ****** ****** *)

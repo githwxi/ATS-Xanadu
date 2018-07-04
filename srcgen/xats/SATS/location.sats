@@ -138,11 +138,56 @@ position_incby_neol
 (* ****** ****** *)
 //
 fun
+location_filepath
+  (loc: loc_t): fil_t
+//
+overload
+.filepath with location_filepath
+//
+fun
+location_beg_ntot(loc: loc_t): int
+fun
+location_beg_nrow(loc: loc_t): int
+fun
+location_beg_ncol(loc: loc_t): int
+//
+fun
+location_end_ntot(loc: loc_t): int
+fun
+location_end_nrow(loc: loc_t): int
+fun
+location_end_ncol(loc: loc_t): int
+//
+overload .beg_ntot with location_beg_ntot
+overload .beg_nrow with location_beg_nrow
+overload .beg_ncol with location_beg_ncol
+overload .end_ntot with location_end_ntot
+overload .end_nrow with location_end_nrow
+overload .end_ncol with location_end_ncol
+//
+(* ****** ****** *)
+//
+fun
 location_make_pos_pos
   (bpos: &pos_t, cpos: &pos_t): loc_t
 fun
 location_make_fil_pos_pos
   (fil: fil_t, bpos: &pos_t, cpos: &pos_t): loc_t
+//
+(* ****** ****** *)
+//
+fun
+location_combine
+  (loc1: loc_t, loc2: loc_t): loc_t
+//
+fun
+location_leftmost(loc: loc_t): loc_t
+fun
+location_rightmost(loc: loc_t): loc_t
+//
+overload + with location_combine
+overload leftmost with location_leftmost
+overload rightmost with location_rightmost
 //
 (* ****** ****** *)
 //

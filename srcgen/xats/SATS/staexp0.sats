@@ -151,10 +151,12 @@ typedef s0qua = s0qua_tbox
 //
 datatype
 s0qua_node =
-| S0QUAnone of ()
-| S0QUAsymdot of token // fileid
+//
+| S0QUAnone of (token)
+//
+| S0QUAsymdot of (token, token) // symid
 /*
-| S0QUAfiledot of token // filename
+| S0QUAfiledot of (token, token) // fileid
 */
 // end of [s0qua_node]
 //
@@ -186,9 +188,9 @@ overload fprint with fprint_s0qua
 (* ****** ****** *)
 
 fun
-s0qua_none(loc: loc_t): s0qua
+s0qua_none(tok0: token): s0qua
 fun
-s0qua_symdot(ent1: i0dnt, tok2: token): s0qua
+s0qua_symdot(tok0: token, tok1: token): s0qua
 
 (* ****** ****** *)
 
