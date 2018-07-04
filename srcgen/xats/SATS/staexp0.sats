@@ -197,10 +197,12 @@ typedef sort0 = sort0_tbox
 
 datatype
 sort0_node =
-  | SORT0qid of (s0qua, s0tid) // qualified
-  | SORT0app of (sort0 (*fun*), sort0 (*arg*)) // HX: unsupported
-  | SORT0list of sort0lst (* for temporary use *)
-  | SORT0type of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
+| SORT0qid of (s0qua, s0tid) // qualified
+| SORT0app of (sort0 (*fun*), sort0 (*arg*)) // HX: unsupported
+| SORT0list of sort0lst (* for temporary use *)
+(*
+| SORT0type of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
+*)
 // end of [sort0_node]
 
 where sort0lst = List0(sort0)
@@ -214,6 +216,14 @@ sort0_get_node(sort0): sort0_node
 //
 overload .loc with sort0_get_loc
 overload .node with sort0_get_node
+//
+fun print_sort0 : (sort0) -> void
+fun prerr_sort0 : (sort0) -> void
+fun fprint_sort0 : fprint_type(sort0)
+//
+overload print with print_sort0
+overload prerr with prerr_sort0
+overload fprint with fprint_sort0
 //
 fun
 sort0_make_node

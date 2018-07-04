@@ -71,15 +71,42 @@ case+ x0.node() of
 (* ****** ****** *)
 
 implement
-fprint_s0rtq
+fprint_s0qua
   (out, x0) =
 (
 case+ x0.node() of
-| S0RTQnone() =>
-  fprint!(out, "S0RTQnone(", ")")
-| S0RTQsymdot(tok) =>
-  fprint!(out, "S0RTQsymdot(", tok, ")")
+| S0QUAnone() =>
+  fprint!(out, "S0QUAnone(", ")")
+| S0QUAsymdot(tok) =>
+  fprint!(out, "S0QUAsymdot(", tok, ")")
 )
+
+(* ****** ****** *)
+
+local
+
+implement
+fprint_val<sort0> = fprint_sort0
+
+in (* in-of-local *)
+
+implement
+fprint_sort0
+  (out, x0) =
+(
+case+ x0.node() of
+| SORT0qid(q, id) =>
+  fprint!
+  (out, "SORT0qid(", q, ", ", id, ")")
+| SORT0app(f, xs) =>
+  fprint!
+  (out, "SORT0app(", f, ", ", xs, ")")
+| SORT0list(s0ts) =>
+  fprint!(out, "SORT0list(", s0ts, ")")
+//
+) (* end of [fprint_sort0] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
