@@ -130,7 +130,7 @@ end // end of [tokbuf_getok1]
 local
 
 absimpl
-tokbuf_mark = ptr
+tokbuf_mark_vtbox = ptr
 
 in (* in-of-local *)
 

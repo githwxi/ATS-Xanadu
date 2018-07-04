@@ -44,6 +44,7 @@ UN =
 
 (* ****** ****** *)
 
+(*
 implement
 {}(*tmp*)
 synent_null() = $UN.cast(the_null_ptr)
@@ -53,6 +54,7 @@ synent_is_null(x) = iseqz($UN.cast{ptr}(x))
 implement
 {}(*tmp*)
 synent_isnot_null(x) = isneqz($UN.cast{ptr}(x))
+*)
 
 (* ****** ****** *)
 //

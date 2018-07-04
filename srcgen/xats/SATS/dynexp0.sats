@@ -33,4 +33,9 @@
 //
 (* ****** ****** *)
 
+abstype d0eid_tbox = ptr
+typedef d0eid = d0eid_tbox
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp0.sats] *)

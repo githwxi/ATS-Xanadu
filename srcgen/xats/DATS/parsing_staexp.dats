@@ -92,4 +92,33 @@ end // end of [p_i0dnt]
 
 (* ****** ****** *)
 
+implement
+p_s0tid(buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_IDENT_alp _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | T_IDENT_sym _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | T_BACKSLASH() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | _ (* non-IDENT *) =>
+    (err := err + 1; i0dnt_none(tok))
+end // end of [p_s0tid]
+
+(* ****** ****** *)
+
 (* end of [xats_parsing_staexp.dats] *)
