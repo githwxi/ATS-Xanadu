@@ -66,6 +66,7 @@ STAEXP0 = "./staexp0.sats"
   typedef s0qua = $STAEXP0.s0qua
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
+  typedef sort0 = $STAEXP0.sort0
 //
 (* ****** ****** *)
 
@@ -159,6 +160,13 @@ s0qua ::=
 (IDENT_dlr DOT)?
 *)
 fun p_s0qua: parser(s0qua)
+//
+(* ****** ****** *)
+//
+(*
+sort0 ::= {atmsort0}+
+*)
+fun p_sort0 : parser(sort0)
 //
 (* ****** ****** *)
 

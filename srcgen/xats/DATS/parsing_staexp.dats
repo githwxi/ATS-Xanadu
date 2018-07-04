@@ -159,5 +159,43 @@ tok0.node() of
 end // end of [p_s0qua]
 
 (* ****** ****** *)
+//
+extern
+fun
+p_atmsort0 : parser(sort0)
+//
+implement
+p_atmsort0
+  (buf, err) = let
+//
+val e0 = err
+val tok0 = buf.get0()
+//
+in
+//
+case+
+tok0.node() of
+| T_IDENT_alp _ => let
+    val () = buf.incby1()
+  in
+    sort0_make_node
+    (tok0.loc(), SORT0id(i0dnt_some(tok0)))
+  end // end of [T_IDENT_alp]
+| T_IDENT_sym _ => let
+    val () = buf.incby1()
+  in
+    sort0_make_node
+    (tok0.loc(), SORT0id(i0dnt_some(tok0)))
+  end // end of [T_IDENT_sym]
+//
+| _ (* error *) => let
+    val () = err := e0 + 1
+  in
+    sort0_make_node(tok0.loc(), SORT0none(tok0))
+  end // end of [error]
+//
+end // end of [p_atmsort0]
+//
+(* ****** ****** *)
 
 (* end of [xats_parsing_staexp.dats] *)
