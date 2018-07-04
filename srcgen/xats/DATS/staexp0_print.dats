@@ -95,6 +95,8 @@ fprint_sort0
   (out, x0) =
 (
 case+ x0.node() of
+| SORT0id(id) =>
+  fprint!(out, "SORT0id(", id, ")")
 | SORT0qid(q, id) =>
   fprint!
   (out, "SORT0qid(", q, ", ", id, ")")
