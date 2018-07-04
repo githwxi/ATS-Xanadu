@@ -64,6 +64,15 @@ STAEXP0 = "./staexp0.sats"
   typedef i0dnt = $STAEXP0.i0dnt
 //
   typedef s0rtq = $STAEXP0.s0rtq
+  typedef s0tid = $STAEXP0.s0tid
+  typedef s0eid = $STAEXP0.s0eid
+//
+(* ****** ****** *)
+
+#staload
+DYNEXP0 = "./dynexp0.sats"
+//
+  typedef d0eid = $DYNEXP0.d0eid
 //
 (* ****** ****** *)
 //
@@ -74,9 +83,12 @@ $extype"xats_tokbuf_struct"
   typedef tokbuf = tokbuf_tflat
 //
 (* ****** ****** *)
-
-absvtbox tokbuf_mark = ptr
-
+//
+absvtbox
+tokbuf_mark_vtbox = (ptr)
+vtypedef
+tokbuf_mark = tokbuf_mark_vtbox
+//
 (* ****** ****** *)
 //
 fun
@@ -132,6 +144,12 @@ fun p_i0dnt: parser(i0dnt)
 
 (* ****** ****** *)
 //
+fun p_s0tid: parser(s0tid)
+fun p_s0eid: parser(s0eid)
+fun p_d0eid: parser(d0eid)
+//
+(* ****** ****** *)
+//
 (*
 s0rtq ::=
 (IDENT_dlr DOT)?
@@ -155,12 +173,14 @@ synent3
 
 (* ****** ****** *)
 //
+(*
 fun{}
 synent_null: {a:type}() -> a
 fun{}
 synent_is_null: {a:type}(a) -> bool
 fun{}
 synent_isnot_null: {a:type}(a) -> bool
+*)
 //
 (* ****** ****** *)
 //

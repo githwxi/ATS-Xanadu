@@ -86,7 +86,7 @@ val-
 toks =
 (
 string_tokenize
-("foo(x + 1 - 2 * 3 / 4) + _b'ar'")
+("foo(x + 1 - 2 * 3 / 4) + _b'ar' + -> + x\\+y // what???")
 )
 //
 val

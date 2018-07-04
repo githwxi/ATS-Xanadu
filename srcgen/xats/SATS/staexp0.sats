@@ -140,51 +140,85 @@ overload prerr with prerr_i0dnt
 overload fprint with fprint_i0dnt
 //
 (* ****** ****** *)
+
+typedef s0tid = i0dnt
+typedef s0eid = i0dnt
+
+(* ****** ****** *)
 //
-abstbox s0rtq_tbox = ptr
-typedef s0rtq = s0rtq_tbox
+abstbox s0qua_tbox = ptr
+typedef s0qua = s0qua_tbox
 //
 datatype
-s0rtq_node =
-  | S0RTQnone
-  | S0RTQsymdot of token (* fileid *)
+s0qua_node =
+| S0QUAnone of ()
+| S0QUAsymdot of token // fileid
 /*
-  | S0RTQfiledot of token (* filename *)
+| S0QUAfiledot of token // filename
 */
-// end of [s0rtq_node]
+// end of [s0qua_node]
 //
 (*
-typedef s0rtq = $rec
+typedef
+s0qua = $rec
 {
-  s0rtq_loc= loc_t, s0rtq_node= s0rtq_node
-} (* end of [s0rtq] *)
+  s0qua_loc= loc_t
+, s0qua_node= s0qua_node
+} (* end of [s0qua] *)
 *)
 //
 fun
-s0rtq_get_loc
-  : (s0rtq) -> loc_t
+s0qua_get_loc(s0qua): loc_t
 fun
-s0rtq_get_node
-  : (s0rtq) -> s0rtq_node
+s0qua_get_node(s0qua): s0qua_node
 //
-overload .loc with s0rtq_get_loc
-overload .node with s0rtq_get_node
+overload .loc with s0qua_get_loc
+overload .node with s0qua_get_node
 //
-fun print_s0rtq : s0rtq -> void
-fun prerr_s0rtq : s0rtq -> void
-fun fprint_s0rtq : fprint_type(s0rtq)
+fun print_s0qua : s0qua -> void
+fun prerr_s0qua : s0qua -> void
+fun fprint_s0qua : fprint_type(s0qua)
 //
-overload print with print_s0rtq
-overload prerr with prerr_s0rtq
-overload fprint with fprint_s0rtq
+overload print with print_s0qua
+overload prerr with prerr_s0qua
+overload fprint with fprint_s0qua
 //
 (* ****** ****** *)
 
 fun
-s0rtq_none(loc: loc_t): s0rtq
+s0qua_none(loc: loc_t): s0qua
 fun
-s0rtq_symdot(ent1: i0dnt, tok2: token): s0rtq
+s0qua_symdot(ent1: i0dnt, tok2: token): s0qua
 
+(* ****** ****** *)
+
+abstbox sort0_tbox = ptr
+typedef sort0 = sort0_tbox
+
+datatype
+sort0_node =
+  | SORT0qid of (s0qua, s0tid) // qualified
+  | SORT0app of (sort0 (*fun*), sort0 (*arg*)) // HX: unsupported
+  | SORT0list of sort0lst (* for temporary use *)
+  | SORT0type of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
+// end of [sort0_node]
+
+where sort0lst = List0(sort0)
+
+(* ****** ****** *)
+//
+fun
+sort0_get_loc(sort0): loc_t
+fun
+sort0_get_node(sort0): sort0_node
+//
+overload .loc with sort0_get_loc
+overload .node with sort0_get_node
+//
+fun
+sort0_make_node
+(loc: loc_t, node: sort0_node): sort0
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp0.sats] *)

@@ -160,6 +160,8 @@ case+ tnd of
 | T_COMMA() => fprint(out, "COMMA")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
 //
+| T_BACKSLASH() => fprint(out, "BACKSLASH")
+//
 | T_LPAREN() => fprint(out, "LPAREN")
 | T_RPAREN() => fprint(out, "RPAREN")
 | T_LBRACE() => fprint(out, "LBRACE")
@@ -304,6 +306,8 @@ case+ tnd of
 | T_COMMA() => fprint(out, ",")
 | T_SEMICOLON() => fprint(out, ";")
 //
+| T_BACKSLASH() => fprint(out, "\\")
+//
 | T_LPAREN() => fprint(out, "(")
 | T_RPAREN() => fprint(out, ")")
 | T_LBRACE() => fprint(out, "{")
@@ -363,6 +367,8 @@ val () = theMap[c2i(';')] := T_SEMICOLON()
 //
 val () = theMap[c2i('\(')] := T_LPAREN()
 val () = theMap[c2i('\)')] := T_RPAREN()
+//
+val () = theMap[c2i('\\')] := T_BACKSLASH()
 //
 in (* in-of-local *)
 

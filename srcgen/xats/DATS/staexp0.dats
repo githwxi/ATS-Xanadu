@@ -44,6 +44,8 @@ UN =
 //
 (* ****** ****** *)
 
+local
+
 absimpl
 i0nt_tbox = $rec{
   i0nt_loc= loc_t
@@ -54,6 +56,8 @@ i0dnt_tbox = $rec{
   i0dnt_loc= loc_t
 , i0dnt_node= i0dnt_node
 } (* end of [absimpl] *)
+
+in (* in-of-local *)
 
 (* ****** ****** *)
 
@@ -109,18 +113,52 @@ i0dnt_make(tok.loc(), I0DNTnone(tok))
 
 (* ****** ****** *)
 
-absimpl
-s0rtq_tbox = $rec{
-  s0rtq_loc= loc_t
-, s0rtq_node= s0rtq_node
-} (* end of [absimpl] *)
+end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+s0qua_tbox = $rec{
+  s0qua_loc= loc_t
+, s0qua_node= s0qua_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
 implement
-s0rtq_get_loc(x) = x.s0rtq_loc
+s0qua_get_loc(x) = x.s0qua_loc
 implement
-s0rtq_get_node(x) = x.s0rtq_node
+s0qua_get_node(x) = x.s0qua_node
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+sort0_tbox = $rec{
+  sort0_loc= loc_t
+, sort0_node= sort0_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+sort0_get_loc(x) = x.sort0_loc
+implement
+sort0_get_node(x) = x.sort0_node
+
+implement
+sort0_make_node
+(loc, node) = $rec
+{
+  sort0_loc= loc, sort0_node= node
+} (* end of [sort0_make_node] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 

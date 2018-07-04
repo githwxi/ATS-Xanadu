@@ -102,6 +102,8 @@ tnode =
   | T_COMMA of () // ,
   | T_SEMICOLON of () // ;
 //
+  | T_BACKSLASH of ()
+//
   | T_LPAREN of () // (
   | T_RPAREN of () // )
   | T_LBRACE of () // {
