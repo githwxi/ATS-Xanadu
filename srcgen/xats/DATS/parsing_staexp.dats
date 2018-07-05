@@ -33,6 +33,11 @@
 //
 (* ****** ****** *)
 
+#staload
+"./../SATS/location.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/parsing.sats"
@@ -40,7 +45,8 @@
 (* ****** ****** *)
 
 implement
-p_i0nt(buf, err) = let
+p_i0nt(buf, err) =
+let
 //
   val tok = buf.get0()
 //
@@ -69,7 +75,8 @@ end // end of [p_i0nt]
 (* ****** ****** *)
 
 implement
-p_i0dnt(buf, err) = let
+p_i0dnt(buf, err) =
+let
 //
   val tok = buf.get0()
 //
@@ -93,7 +100,8 @@ end // end of [p_i0dnt]
 (* ****** ****** *)
 
 implement
-p_s0tid(buf, err) = let
+p_s0tid(buf, err) =
+let
 //
   val tok = buf.get0()
 //
@@ -122,7 +130,8 @@ end // end of [p_s0tid]
 (* ****** ****** *)
 
 implement
-p_s0qua(buf, err) = let
+p_s0qua(buf, err) =
+let
   val mark =
   tokbuf_get_mark(buf)
   val tok0 = buf.get1()
@@ -163,7 +172,48 @@ end // end of [p_s0qua]
 extern
 fun
 p_atmsort0 : parser(sort0)
+extern
+fun
+p_atmsort0seq : parser(sort0lst)
+extern
+fun
+p_sort0seq_COMMA : parser(sort0lst)
 //
+(* ****** ****** *)
+
+implement
+p_sort0(buf, err) =
+let
+  val s0ts0 =
+  p_atmsort0seq(buf, err)
+in
+//
+case+ s0ts0 of
+| list_nil
+    ((*void*)) => let
+    val tok = buf.get0()
+  in
+    sort0_make_node
+    (tok.loc(), SORT0none(tok))
+  end // end of [list_nil]
+| list_cons
+    (s0t0, s0ts1) =>
+  (
+    case+ s0ts1 of
+    | list_nil() => s0t0
+    | list_cons _ => let
+        val s0t1 = list_last(s0ts1)
+      in
+        sort0_make_node
+        (s0t0.loc()+s0t1.loc(), SORT0app(s0ts0))
+      end // end of [list_cons]
+    // end of [case+]
+  )
+//
+end // end of [p_sort0]
+
+(* ****** ****** *)
+
 implement
 p_atmsort0
   (buf, err) = let
@@ -175,6 +225,7 @@ in
 //
 case+
 tok0.node() of
+//
 | T_IDENT_alp _ => let
     val () = buf.incby1()
   in
@@ -188,6 +239,18 @@ tok0.node() of
     (tok0.loc(), SORT0id(i0dnt_some(tok0)))
   end // end of [T_IDENT_sym]
 //
+| T_LPAREN() => let
+    val () = buf.incby1()
+    val s0ts =
+      p_sort0seq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok0
+    val tend = p_RPAREN(buf, err)
+  in
+    sort0_make_node
+    (tbeg.loc()+tend.loc(), SORT0list(tbeg, s0ts, tend))
+  end // end of [T_LPAREN]
+//
 | _ (* error *) => let
     val () = err := e0 + 1
   in
@@ -196,6 +259,30 @@ tok0.node() of
 //
 end // end of [p_atmsort0]
 //
+(* ****** ****** *)
+
+implement
+p_atmsort0seq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{sort0}(buf, err, p_atmsort0))
+//
+) (* end of [p_atmsort0seq] *)
+
+(* ****** ****** *)
+
+implement
+p_sort0seq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun{sort0}(buf, err, p_sort0))
+//
+) (* end of [p_sort0seq_COMMA] *)
+
 (* ****** ****** *)
 
 (* end of [xats_parsing_staexp.dats] *)

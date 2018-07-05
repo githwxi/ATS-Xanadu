@@ -57,6 +57,54 @@ synent_isnot_null(x) = isneqz($UN.cast{ptr}(x))
 *)
 
 (* ****** ****** *)
+
+implement
+p_RPAREN
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_RPAREN() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-RPAREN *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_RPAREN]
+
+(* ****** ****** *)
+
+implement
+p_RBRACE
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_RBRACE() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-RBRACE *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_RBRACE]
+
+(* ****** ****** *)
+
+implement
+p_RBRACKET
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_RBRACKET() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-RBRACKET *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_RBRACKET]
+
+(* ****** ****** *)
 //
 (*
 fun

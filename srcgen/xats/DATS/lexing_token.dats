@@ -218,10 +218,10 @@ implement
 fprint_token
   (out, tok) =
 (
-(*
   fprint(out, tok.node())
+(*
+  fprint!(out, tok.loc(), ": ", tok.node())
 *)
-  fprintln!(out, tok.loc(), ": ", tok.node())
 )
 //
 (* ****** ****** *)
@@ -406,7 +406,16 @@ tnode_is_SEMICOLON
 )
 //
 (* ****** ****** *)
-
+//
+implement
+tnode_is_blank
+  (node) =
+(
+  case+ node of
+  | T_EOL _ => true
+  | T_BLANK _ => true
+  | _ (* non-T_BLANK_... *) => false
+)
 implement
 tnode_is_comment
   (node) =
@@ -418,7 +427,7 @@ tnode_is_comment
   | T_COMMENT_mlblock _ => true
   | _ (* non-T_COMMENT_... *) => false
 )
-
+//
 (* ****** ****** *)
 
 local

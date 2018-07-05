@@ -144,6 +144,15 @@ parser(res:t@ype) =
 //
 (* ****** ****** *)
 
+fun
+p_RPAREN: parser(token)
+fun
+p_RBRACE: parser(token)
+fun
+p_RBRACKET: parser(token)
+
+(* ****** ****** *)
+
 fun p_i0nt: parser(i0nt)
 fun p_i0dnt: parser(i0dnt)
 
