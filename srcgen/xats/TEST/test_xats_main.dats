@@ -55,7 +55,9 @@ local
 #include"./../DATS/parsing_tokbuf.dats"
 //
 #include"./../DATS/parsing_basics.dats"
+//
 #include"./../DATS/parsing_staexp.dats"
+//
 #include"./../DATS/parsing_dynexp.dats"
 //
 (* ****** ****** *)
@@ -77,16 +79,21 @@ println!
 } (* end of [main0] *)
 
 (* ****** ****** *)
-
+//
 #staload "./../SATS/lexing.sats"
-
+//
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
+//
+#staload "./../SATS/parsing.sats"
+//
 (* ****** ****** *)
 //
 val-
 toks =
 (
 string_tokenize
-("foo(x + 1 - 2 * 3 / 4) + _b'ar' + -> + x\\+y // what???")
+("f a b c")
 )
 //
 val
@@ -96,6 +103,20 @@ val ((*void*)) =
 list0_foreach<token>
 (g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
 //
+val s0t0 = let
+//
+var err: int
+var buf: tokbuf
+val ((*void*)) = (err := 0)
+val ((*void*)) =
+tokbuf_initize_list(buf, toks)
+//
+in
+  p_sort0(buf, err)
+end // end of [val]
+
+val () = println! ("s0t0 = ", s0t0)
+
 (* ****** ****** *)
 
 (* end of [test_xats_main.dats] *)

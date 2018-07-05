@@ -45,6 +45,13 @@ UN =
 (* ****** ****** *)
 
 implement
+print_i0nt(x0) =
+fprint_i0nt(stdout_ref, x0)
+implement
+prerr_i0nt(x0) =
+fprint_i0nt(stderr_ref, x0)
+
+implement
 fprint_i0nt
   (out, x0) =
 (
@@ -56,6 +63,13 @@ case+ x0.node() of
 )
 
 (* ****** ****** *)
+
+implement
+print_i0dnt(x0) =
+fprint_i0dnt(stdout_ref, x0)
+implement
+prerr_i0dnt(x0) =
+fprint_i0dnt(stderr_ref, x0)
 
 implement
 fprint_i0dnt
@@ -71,6 +85,13 @@ case+ x0.node() of
 (* ****** ****** *)
 
 implement
+print_s0qua(x0) =
+fprint_s0qua(stdout_ref, x0)
+implement
+prerr_s0qua(x0) =
+fprint_s0qua(stderr_ref, x0)
+
+implement
 fprint_s0qua
   (out, x0) =
 (
@@ -82,6 +103,13 @@ case+ x0.node() of
 )
 
 (* ****** ****** *)
+
+implement
+print_sort0(x0) =
+fprint_sort0(stdout_ref, x0)
+implement
+prerr_sort0(x0) =
+fprint_sort0(stderr_ref, x0)
 
 local
 
@@ -95,16 +123,23 @@ fprint_sort0
   (out, x0) =
 (
 case+ x0.node() of
+//
 | SORT0id(id) =>
   fprint!(out, "SORT0id(", id, ")")
+//
 | SORT0qid(q, id) =>
   fprint!
   (out, "SORT0qid(", q, ", ", id, ")")
-| SORT0app(f, xs) =>
+//
+| SORT0app(s0ts) =>
+  fprint!(out, "SORT0app(", s0ts, ")")
+//
+| SORT0list(t0, s0ts, t1) =>
   fprint!
-  (out, "SORT0app(", f, ", ", xs, ")")
-| SORT0list(s0ts) =>
-  fprint!(out, "SORT0list(", s0ts, ")")
+  (out, "SORT0list(", t0, ", ", s0ts, ", ", t1, ")")
+//
+| SORT0none(token) =>
+  fprint!(out, "SORT0none(", token, ")")
 //
 ) (* end of [fprint_sort0] *)
 

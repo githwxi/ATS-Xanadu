@@ -227,6 +227,7 @@ tnode_is_SEMICOLON : tnode -> bool
 
 (* ****** ****** *)
 
+fun tnode_is_blank(tnode): bool
 fun tnode_is_comment(tnode): bool
 
 (* ****** ****** *)
