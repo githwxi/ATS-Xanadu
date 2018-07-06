@@ -201,11 +201,12 @@ datatype
 sort0_node =
 //
 | SORT0id of (s0tid)
-| SORT0qid of (s0qua, s0tid)
 //
 | SORT0app of (sort0lst) // HX: unsupported
 //
 | SORT0list of (token, sort0lst, token) (* for temporary use *)
+//
+| SORT0qual of (token, sort0) // HX: qualified
 (*
 | SORT0type of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
 *)

@@ -74,6 +74,7 @@ end // end of [p_i0nt]
 
 (* ****** ****** *)
 
+(*
 implement
 p_i0dnt(buf, err) =
 let
@@ -96,8 +97,21 @@ in
   | _ (* non-IDENT *) =>
     (err := err + 1; i0dnt_none(tok))
 end // end of [p_i0dnt]
+*)
 
 (* ****** ****** *)
+
+implement
+t_s0tid(tok) =
+(
+case+
+tok.node() of
+| T_IDENT_alp _ => true
+| T_IDENT_sym _ => true
+| T_AT() => true // "@"
+| T_BACKSLASH() => true
+| _ (* non-IDENT *) => false
+) (* end of [t_s0tid] *)
 
 implement
 p_s0tid(buf, err) =
@@ -118,6 +132,14 @@ in
     {
       val () = buf.incby1()
     }
+  | T_AT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc()
+      val tnd = T_IDENT_sym("@")
+      val tok = token_make_node(loc, tnd)
+    }
   | T_BACKSLASH() =>
     i0dnt_some(tok) where
     {
@@ -129,6 +151,7 @@ end // end of [p_s0tid]
 
 (* ****** ****** *)
 
+(*
 implement
 p_s0qua(buf, err) =
 let
@@ -166,6 +189,7 @@ tok0.node() of
   end // end of [non-IDENT_dlr]
 //
 end // end of [p_s0qua]
+*)
 
 (* ****** ****** *)
 //
@@ -207,8 +231,7 @@ case+ s0ts0 of
         sort0_make_node
         (s0t0.loc()+s0t1.loc(), SORT0app(s0ts0))
       end // end of [list_cons]
-    // end of [case+]
-  )
+  ) (* end of [list_cons] *)
 //
 end // end of [p_sort0]
 
@@ -221,23 +244,26 @@ p_atmsort0
 val e0 = err
 val tok0 = buf.get0()
 //
+(*
+val () =
+println!
+("p_atmsort0: e0 = ", e0)
+*)
+val () =
+println!
+("p_atmsort0: tok0 = ", tok0)
+//
 in
 //
 case+
 tok0.node() of
 //
-| T_IDENT_alp _ => let
-    val () = buf.incby1()
+| _ when t_s0tid(tok0) =>
+  let
+    val id = p_s0tid(buf, err)
   in
-    sort0_make_node
-    (tok0.loc(), SORT0id(i0dnt_some(tok0)))
-  end // end of [T_IDENT_alp]
-| T_IDENT_sym _ => let
-    val () = buf.incby1()
-  in
-    sort0_make_node
-    (tok0.loc(), SORT0id(i0dnt_some(tok0)))
-  end // end of [T_IDENT_sym]
+    sort0_make_node(id.loc(), SORT0id(id))
+  end // end of [t_s0tid]
 //
 | T_LPAREN() => let
     val () = buf.incby1()
@@ -248,11 +274,24 @@ tok0.node() of
     val tend = p_RPAREN(buf, err)
   in
     sort0_make_node
-    (tbeg.loc()+tend.loc(), SORT0list(tbeg, s0ts, tend))
+    ( tbeg.loc()+tend.loc()
+    , SORT0list(tbeg, s0ts, tend))
   end // end of [T_LPAREN]
 //
+| T_IDENT_qual _ => let
+    val () = buf.incby1()
+    val s0t0 = p_atmsort0(buf, err)
+  in
+    sort0_make_node
+    (loc_res, s0t_res) where
+    {
+      val loc_res = tok0.loc()+s0t0.loc()
+      val s0t_res = SORT0qual(tok0, s0t0)
+    }
+  end // end of [T_IDENT_qua]
+//
 | _ (* error *) => let
-    val () = err := e0 + 1
+    val () = (err := e0 + 1)
   in
     sort0_make_node(tok0.loc(), SORT0none(tok0))
   end // end of [error]
@@ -282,6 +321,28 @@ list_vt2t
 (pstar_COMMA_fun{sort0}(buf, err, p_sort0))
 //
 ) (* end of [p_sort0seq_COMMA] *)
+
+(* ****** ****** *)
+
+implement
+t_s0eid(tok) =
+(
+case+
+tok.node() of
+//
+| T_IDENT_alp _ => true
+| T_IDENT_sym _ => true
+//
+| T_AT() => true // "@"
+| T_BACKSLASH() => true
+//
+| T_LT() => true // "<"
+| T_GT() => true // ">"
+| T_LTEQ() => true // "<="
+| T_GTEQ() => true // ">="
+//
+| _ (* non-IDENT *) => false
+) (* end of [t_s0eid] *)
 
 (* ****** ****** *)
 

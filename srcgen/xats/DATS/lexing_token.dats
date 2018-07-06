@@ -38,6 +38,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/basics.sats"
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/location.sats"
 
@@ -53,17 +54,18 @@ token_loc= loc_t, token_node= tnode
 in (* in-of-local *)
 
 implement
-{}(*tmp*)
-token_make(loc, node) =
-$rec{
+//{}//tmp
+token_make_node
+  (loc, node) = $rec
+{
   token_loc= loc, token_node= node
 } (* end of [token_make] *)
 
 implement
-{}(*tmp*)
+//{}//tmp
 token_get_loc(tok) = tok.token_loc
 implement
-{}(*tmp*)
+//{}//tmp
 token_get_node(tok) = tok.token_node
 
 end // end of [local]
@@ -103,6 +105,9 @@ case+ tnd of
   fprint!(out, "IDENT_srp(", x, ")")
 | T_IDENT_dlr(x) =>
   fprint!(out, "IDENT_dlr(", x, ")")
+//
+| T_IDENT_qual(x) =>
+  fprint!(out, "IDENT_qual(", x, ")")
 //
 | T_INT1(rep) =>
   fprint!(out, "INT(", rep, ")")
@@ -156,7 +161,9 @@ case+ tnd of
     (level, content) =>
     fprint!(out, "T_COMMENT_mlblock(", level, "; ", "...)")
 //
+| T_AT() => fprint(out, "AT")
 | T_DOT() => fprint(out, "DOT")
+//
 | T_COMMA() => fprint(out, "COMMA")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
 //
@@ -168,6 +175,10 @@ case+ tnd of
 | T_RBRACE() => fprint(out, "RBRACE")
 | T_LBRACKET() => fprint(out, "LBRACKET")
 | T_RBRACKET() => fprint(out, "RBRACKET")
+//
+| T_ATLPAREN() => fprint(out, "ATLPAREN")
+| T_ATLBRACE() => fprint(out, "ATLBRACE")
+| T_ATLBRACKET() => fprint(out, "ATLBRACKET")
 //
 | T_AS() => fprint(out, "AS")
 | T_OF() => fprint(out, "OF")
@@ -197,6 +208,8 @@ case+ tnd of
   fprint(out, "DATASORT")
 | T_DATATYPE(sort) =>
   fprint!(out, "DATATYPE(", sort, ")")
+//
+| T_SRP_INCLUDE() => fprint(out, "#INCLUDE")
 //
 | T_SRP_STALOAD() => fprint(out, "#STALOAD")
 | T_SRP_DYNLOAD() => fprint(out, "#DYNLOAD")
@@ -257,6 +270,8 @@ case+ tnd of
 | T_IDENT_srp(x) => fprint(out, x)
 | T_IDENT_dlr(x) => fprint(out, x)
 //
+| T_IDENT_qual(x) => fprint(out, x)
+//
 | T_INT1(rep) => fprint(out, rep)
 | T_INT2(base, rep) => fprint(out, rep)
 | T_INT3(base, rep, _(*sfx*)) => fprint(out, rep)
@@ -302,7 +317,9 @@ case+ tnd of
 | T_BANG() => fprint(out, "!")
 *)
 //
+| T_AT() => fprint(out, "@")
 | T_DOT() => fprint(out, ".")
+//
 | T_COMMA() => fprint(out, ",")
 | T_SEMICOLON() => fprint(out, ";")
 //
@@ -314,6 +331,10 @@ case+ tnd of
 | T_RBRACE() => fprint(out, "}")
 | T_LBRACKET() => fprint(out, "[")
 | T_RBRACKET() => fprint(out, "]")
+//
+| T_ATLPAREN() => fprint(out, "@(")
+| T_ATLBRACE() => fprint(out, "@{")
+| T_ATLBRACKET() => fprint(out, "@[")
 //
 | T_AS() => fprint(out, "as")
 | T_OF() => fprint(out, "of")
@@ -343,6 +364,8 @@ case+ tnd of
 | T_DATATYPE(knd) =>
   fprint!(out, "datatype(", knd, ")")
 //
+| T_SRP_INCLUDE() => fprint(out, "#include")
+//
 | T_SRP_STALOAD() => fprint(out, "#staload")
 | T_SRP_DYNLOAD() => fprint(out, "#dynload")
 //
@@ -360,7 +383,7 @@ i2sz(128)
 val
 theMap =
 arrayref_make_elt<tnode>
-  (theAsz, T_ERR())
+  (theAsz, T_EOF())
 //
 val () = theMap[c2i(',')] := T_COMMA()
 val () = theMap[c2i(';')] := T_SEMICOLON()
@@ -381,7 +404,7 @@ in
 //
 if
 (i0 < 128)
-then theMap[$UN.cast{AszLt}(i0)] else T_ERR()
+then theMap[$UN.cast{AszLt}(i0)] else T_EOF()
 //
 end // end of [char2tnode]
 
@@ -411,21 +434,30 @@ implement
 tnode_is_blank
   (node) =
 (
-  case+ node of
-  | T_EOL _ => true
-  | T_BLANK _ => true
-  | _ (* non-T_BLANK_... *) => false
+case+ node of
+| T_EOL _ => true
+| T_BLANK _ => true
+| _ (* non-T_BLANK_... *) => false
 )
 implement
 tnode_is_comment
   (node) =
 (
-  case+ node of
-  | T_COMMENT_line _ => true
-  | T_COMMENT_rest _ => true
-  | T_COMMENT_cblock _ => true
-  | T_COMMENT_mlblock _ => true
-  | _ (* non-T_COMMENT_... *) => false
+case+ node of
+| T_COMMENT_line _ => true
+| T_COMMENT_rest _ => true
+| T_COMMENT_cblock _ => true
+| T_COMMENT_mlblock _ => true
+| _ (* non-T_COMMENT_... *) => false
+)
+//
+implement
+tnode_is_skipped
+  (node) =
+(
+if
+tnode_is_blank(node)
+then true else tnode_is_comment(node)
 )
 //
 (* ****** ****** *)
@@ -544,9 +576,26 @@ case+ node0 of
     node1 = char2tnode(c)
   in
     case+ node1 of
-    | T_ERR() => node0 | _(*else*) => node1
+    | T_EOF() => node0 | _(*else*) => node1
   end // end of [T_SPECHAR]
-| _ (* else *) => node0
+//
+| T_IDENT_alp(id) => let
+    val
+    node1 = tnode_search(id)
+  in
+    case+ node1 of
+    | T_EOF() => node0 | _(*else*) => node1
+  end // end of [T_IDENT_alp]
+| T_IDENT_sym(id) => let
+    val
+    node1 = tnode_search(id)
+  in
+    case+ node1 of
+    | T_EOF() => node0 | _(*else*) => node1
+  end // end of [T_IDENT_sym]
+//
+| _ (* rest-of-tnode *) => node0
+//
 )
 //
 var pos1: pos_t
@@ -614,7 +663,10 @@ let
   val
   loc01 = locmake(pos0, pos1)
 in
-  position_copyfrom(pos0, pos1); token_make(loc01, node)
+  position_copyfrom
+  (
+    pos0, pos1
+  ) ; token_make_node(loc01, node)
 end // end of [let]
 )
 //
@@ -646,6 +698,115 @@ case+ nodes of
 in
   loop(pos, nodes, list_vt_nil(*void*))
 end // end of [lexing_locatize_tnodelst]
+
+(* ****** ****** *)
+
+implement
+lexing_preprocess_tokenlst
+  (toks) = let
+//
+fnx
+loop0
+( xs0: tokenlst_vt
+, res: tokenlst_vt): tokenlst_vt =
+(
+case+ xs0 of
+| ~list_vt_nil() => res
+| ~list_vt_cons(x0, xs1) =>
+   (loop1(x0, xs1, res))
+)
+and
+loop1
+( x0: token
+, xs1: tokenlst_vt
+, res: tokenlst_vt): tokenlst_vt =
+(
+case+ xs1 of
+| ~list_vt_nil() =>
+   list_vt_cons(x0, res)
+| ~list_vt_cons(x1, xs2) =>
+   (loop2(x0, x1, xs2, res))
+)
+and
+loop2
+( x0: token
+, x1: token
+, xs2: tokenlst_vt
+, res: tokenlst_vt): tokenlst_vt =
+(
+case+ x0.node() of
+//
+| T_EOL() =>
+  loop1(x1, xs2, res)
+| T_BLANK _ =>
+  loop1(x1, xs2, res)
+//
+| T_COMMENT_line _ =>
+  loop1(x1, xs2, res)
+| T_COMMENT_rest _ =>
+  loop1(x1, xs2, res)
+| T_COMMENT_cblock _ =>
+  loop1(x1, xs2, res)
+| T_COMMENT_mlblock _ =>
+  loop1(x1, xs2, res)
+//
+| T_IDENT_dlr(id) =>
+  (
+    case+ x1.node() of
+    | T_DOT() => let
+        val loc =
+        x0.loc()+x1.loc()
+        val x01 =
+        token_make_node
+        (loc, T_IDENT_qual(id+"."))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_DOT]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+  )
+//
+| T_AT() =>
+  (
+    case+ x1.node() of
+    | T_LPAREN() => let
+        val loc = 
+        x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_ATLPAREN())
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_LPAREN]
+    | T_LBRACE() => let
+        val loc = 
+        x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_ATLBRACE())
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_LBRACE]
+    | T_LBRACKET() => let
+        val loc = 
+        x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_ATLBRACKET())
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_LBRACKET]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+  )
+//
+| _ (* rest-of-tnode *) =>
+    loop1(x1, xs2, list_vt_cons(x0, res))
+//
+)
+//
+in
+//
+list_vt_reverse<token>(loop0(toks, list_vt_nil()))
+//
+end // end of [lexing_preprocess_tokenlst]
 
 (* ****** ****** *)
 

@@ -90,6 +90,9 @@ fun
 kword_initize(): void =
 {
 //
+val () = myins("@", T_AT)
+val () = myins(".", T_DOT)
+//
 val () = myins("as", T_AS)
 //
 val () = myins("of", T_OF)
@@ -188,9 +191,9 @@ val () = myins("#ifundef")
 //
 val () = myins("#define")
 //
-val () = myins("#include")
-//
 *)
+//
+val () = myins("#include", T_SRP_INCLUDE)
 //
 val () = myins("#staload", T_SRP_STALOAD)
 val () = myins("#dynload", T_SRP_DYNLOAD)

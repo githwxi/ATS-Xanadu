@@ -52,9 +52,17 @@ UN = "prelude/SATS/unsafe.sats"
 extern
 fun
 isEOL(c: char): bool
+//
 extern
 fun
 isBLANK(c: char): bool
+//
+extern
+fun
+isDOT(c: char): bool
+extern
+fun
+isCOLON(c: char): bool
 //
 extern
 fun
@@ -116,19 +124,28 @@ then true
 else (if (c = '\t') then true else false)
 //
 (* ****** ****** *)
-
+//
+implement
+isDOT(c) = (c = '.')
+implement
+isCOLON(c) = (c = ':')
+//
+(* ****** ****** *)
+//
 implement
 isALNUM(c) = isalnum(c)
 implement
 isDIGIT(c) = isdigit(c)
 implement
 isXDIGIT(c) = isxdigit(c)
-
+//
 (* ****** ****** *)
 //
 implement
 isALNUM_(c) =
+(
   isalnum(c) || (c = '_')
+)
 //
 (* ****** ****** *)
 
@@ -910,13 +927,17 @@ in
 //
 if
 isALNUM_(c1)
-then loop(buf, k+1)
+then
+(
+loop(buf, k+1)
+) (* end of [then] *)
 else
 (
 if
 (k > 0)
 then let
-  val () = lexbuf_unget(buf, i0)
+  val () =
+  lexbuf_unget(buf, i0)
 in
   T_IDENT_dlr(lexbuf_get_fullseg(buf))
 end // end of [then]
@@ -924,7 +945,8 @@ else let
   val () =
   lexbuf_unget(buf, i0) in lexing_isSYMBOLIC(buf, i0)
 end // end of [else]
-)
+) (* end of [else] *)
+//
 end // end of [loop]
 //
 } (* end of [lexing_isDOLLAR] *)
@@ -1498,7 +1520,10 @@ loop
 //
 in
   case+ tnd of
-  | T_EOF() => res
+  | T_EOF() =>
+    (
+      list_vt_cons(tnd, res)
+    )
   | _(*non-EOF*) =>
     ( loop
       (buf, list_vt_cons(tnd, res))
@@ -1549,7 +1574,10 @@ loop
 //
 in
   case+ tnd of
-  | T_EOF() => res
+  | T_EOF() =>
+    (
+      list_vt_cons(tnd, res)
+    )
   | _(*non-EOF*) =>
     ( loop
       (buf, list_vt_cons(tnd, res))

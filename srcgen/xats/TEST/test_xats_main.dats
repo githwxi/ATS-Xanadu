@@ -30,6 +30,9 @@ local
 (* ****** ****** *)
 //
 #include
+"./../DATS/basics.dats"
+//
+#include
 "./../DATS/symbol.dats"
 #include
 "./../DATS/location.dats"
@@ -93,12 +96,19 @@ val-
 toks =
 (
 string_tokenize
-("f a b c")
+("\
+...\n\
+$X.@ a b c ($A.d, $A.e)\n\
+prop type t0ype view viewtype viewt0ype")
 )
 //
 val
-toks = list_vt2t(toks)
+toks =
+lexing_preprocess_tokenlst(toks)
 //
+val
+toks =
+list_vt2t(toks)
 val ((*void*)) =
 list0_foreach<token>
 (g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))

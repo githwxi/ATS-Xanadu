@@ -127,16 +127,16 @@ case+ x0.node() of
 | SORT0id(id) =>
   fprint!(out, "SORT0id(", id, ")")
 //
-| SORT0qid(q, id) =>
-  fprint!
-  (out, "SORT0qid(", q, ", ", id, ")")
-//
 | SORT0app(s0ts) =>
   fprint!(out, "SORT0app(", s0ts, ")")
 //
 | SORT0list(t0, s0ts, t1) =>
   fprint!
   (out, "SORT0list(", t0, ", ", s0ts, ", ", t1, ")")
+//
+| SORT0qual(q, s0t) =>
+  fprint!
+  (out, "SORT0qid(", q, ", ", s0t, ")")
 //
 | SORT0none(token) =>
   fprint!(out, "SORT0none(", token, ")")
