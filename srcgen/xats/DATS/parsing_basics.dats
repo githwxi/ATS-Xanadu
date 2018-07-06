@@ -142,7 +142,8 @@ in
       res :=
       list_vt_cons{a}{0}(x0, _)
     )
-    val+list_vt_cons(_, res1) = res
+    val+
+    list_vt_cons(_, res1) = res
     val () = loop(buf, err, res1)
     prval ((*folded*)) = fold@(res)
   in
@@ -204,8 +205,21 @@ in
   else (res := list_vt_nil(*void*))
 end // end of [loop]
 //
+val e0 = err
+val x0 = fpar(buf, err)
+//
 in
-  let var res: ptr in loop(buf, err, res); res end
+  if
+  (err = e0)
+  then let
+    var res: ptr
+  in
+    loop(buf, err, res);
+    list_vt_cons(x0, res)
+  end // end of [then]
+  else let
+    val () = (err := e0) in list_vt_nil(*void*)
+  end // end of [else]
 end // end of [pstar_sep_fun]
 
 (* ****** ****** *)

@@ -158,6 +158,10 @@ fun p_i0dnt: parser(i0dnt)
 
 (* ****** ****** *)
 //
+fun t_s0tid(token): bool
+fun t_s0eid(token): bool
+fun t_d0eid(token): bool
+//
 fun p_s0tid: parser(s0tid)
 fun p_s0eid: parser(s0eid)
 fun p_d0eid: parser(d0eid)
@@ -165,10 +169,12 @@ fun p_d0eid: parser(d0eid)
 (* ****** ****** *)
 //
 (*
+(*
 s0qua ::=
 (IDENT_dlr DOT)?
 *)
 fun p_s0qua: parser(s0qua)
+*)
 //
 (* ****** ****** *)
 //

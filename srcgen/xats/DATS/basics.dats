@@ -43,4 +43,27 @@ UN =
 //
 (* ****** ****** *)
 
+local
+//
+#staload
+"prelude/SATS/string.sats"
+#staload
+"prelude/DATS/string.dats"
+//
+in (* in-of-local *)
+
+implement
+xats_string_append
+  (xs, ys) = let
+  val xs = g1ofg0(xs)
+  and ys = g1ofg0(ys)
+in
+  $effmask_all
+  (strptr2string(string_append<>(xs, ys)))
+end // end of [xats_string_append]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_basics.dats] *)

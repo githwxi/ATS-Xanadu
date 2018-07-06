@@ -54,5 +54,13 @@ typedef
 compare_type(a:t0ype) = (a, a) -> int
 //
 (* ****** ****** *)
+//
+fun
+xats_string_append
+  : (string, string) -<fun> string
+//
+overload + with xats_string_append of 100
+//
+(* ****** ****** *)
 
 (* end of [xats_basics.sats] *)

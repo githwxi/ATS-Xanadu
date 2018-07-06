@@ -60,6 +60,8 @@ tnode =
   | T_IDENT_srp of string // #alnum
   | T_IDENT_dlr of string // $alnum
 //
+  | T_IDENT_qual of string // $alnum.
+//
   | T_INT1 of (string) // base=10
   | T_INT2 of (int(*base*), string)
   | T_INT3 of (int(*base*), string(*rep*), uint(*suffix*))
@@ -98,7 +100,14 @@ tnode =
 //
 *)
 //
+  | T_AT of () // @
   | T_DOT of () // .
+//
+  | T_LT of () // <
+  | T_GT of () // >
+  | T_LTEQ of () // <=
+  | T_GTEQ of () // >=
+//
   | T_COMMA of () // ,
   | T_SEMICOLON of () // ;
 //
@@ -110,6 +119,10 @@ tnode =
   | T_RBRACE of () // }
   | T_LBRACKET of () // [
   | T_RBRACKET of () // ]
+//
+  | T_ATLPAREN of () // @(
+  | T_ATLBRACE of () // @{
+  | T_ATLBRACKET of () // @[
 //
   | T_AS of () // 'as'
   | T_OF of () // 'of'
@@ -135,8 +148,10 @@ tnode =
   | T_DATASORT of ()
   | T_DATATYPE of int(*kind*)
 //
-  | T_SRP_STALOAD of ()
-  | T_SRP_DYNLOAD of ()
+  | T_SRP_INCLUDE of () // #include
+//
+  | T_SRP_STALOAD of () // #staload
+  | T_SRP_DYNLOAD of () // #dynload
 //
 abstbox token_tbox = $tup((*void*))
 //
@@ -161,14 +176,14 @@ vtypedef tokenopt_vt = Option_vt(token)
 //
 (* ****** ****** *)
 //
-fun{}
-token_make
+fun//{}
+token_make_node
 (loc: loc_t, node: tnode): token
-// end of [token_make]
+// end of [token_make_node]
 //
-fun{}
+fun//{}
 token_get_loc(tok: token): loc_t
-fun{}
+fun//{}
 token_get_node(tok: token): tnode
 //
 overload .loc with token_get_loc
@@ -229,6 +244,7 @@ tnode_is_SEMICOLON : tnode -> bool
 
 fun tnode_is_blank(tnode): bool
 fun tnode_is_comment(tnode): bool
+fun tnode_is_skipped(tnode): bool
 
 (* ****** ****** *)
 //
@@ -264,6 +280,12 @@ lexing_locatize_node
 fun
 lexing_locatize_nodelst
 (pos: &pos_t >> _, nodes: tnodelst): tokenlst_vt
+//
+(* ****** ****** *)
+//
+fun
+lexing_preprocess_tokenlst
+  (tokens: tokenlst_vt): tokenlst_vt
 //
 (* ****** ****** *)
 //
