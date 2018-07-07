@@ -200,17 +200,17 @@ typedef sort0 = sort0_tbox
 datatype
 sort0_node =
 //
-| SORT0id of (s0tid)
+| S0Tid of (s0tid)
 //
-| SORT0app of (sort0lst) // HX: unsupported
+| S0Tapp of (sort0lst) // HX: unsupported
 //
-| SORT0list of (token, sort0lst, token) (* for temporary use *)
+| S0Tlist of (token, sort0lst, token) (* for temporary use *)
 //
-| SORT0qual of (token, sort0) // HX: qualified
+| S0Tqual of (token, sort0) // HX: qualified
 (*
-| SORT0type of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
+| S0Ttype of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
 *)
-| SORT0none of (token)
+| S0Tnone of (token)
 // end of [sort0_node]
 
 where sort0lst = List0(sort0)
@@ -236,6 +236,39 @@ overload fprint with fprint_sort0
 fun
 sort0_make_node
 (loc: loc_t, node: sort0_node): sort0
+//
+(* ****** ****** *)
+
+abstbox s0exp_tbox = ptr
+typedef s0exp = s0exp_tbox
+
+datatype
+s0exp_node =
+| S0Eid of (s0eid)
+
+where s0explst = List0(s0exp)
+
+(* ****** ****** *)
+//
+fun
+s0exp_get_loc(s0exp): loc_t
+fun
+s0exp_get_node(s0exp): s0exp_node
+//
+overload .loc with s0exp_get_loc
+overload .node with s0exp_get_node
+//
+fun print_s0exp : (s0exp) -> void
+fun prerr_s0exp : (s0exp) -> void
+fun fprint_s0exp : fprint_type(s0exp)
+//
+overload print with print_s0exp
+overload prerr with prerr_s0exp
+overload fprint with fprint_s0exp
+//
+fun
+s0exp_make_node
+(loc: loc_t, node: s0exp_node): s0exp
 //
 (* ****** ****** *)
 
