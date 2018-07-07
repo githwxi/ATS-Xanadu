@@ -50,6 +50,7 @@ datatype
 d0exp_node =
 //
 | D0Eid of d0eid
+| D0Equal of d0exp // qualified
 // end of [d0exp_node]
 
 (* ****** ****** *)
