@@ -97,8 +97,7 @@ toks =
 (
 string_tokenize
 ("\
-...\n\
-$X.@ a b c ($A.d, $A.e)\n\
+foo $X.@ b c ($A.d, bar($A.e, $A.f))\n\
 prop type t0ype view viewtype viewt0ype")
 )
 //

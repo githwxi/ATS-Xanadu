@@ -63,7 +63,6 @@ STAEXP0 = "./staexp0.sats"
   typedef i0nt = $STAEXP0.i0nt
   typedef i0dnt = $STAEXP0.i0dnt
 //
-  typedef s0qua = $STAEXP0.s0qua
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
   typedef sort0 = $STAEXP0.sort0

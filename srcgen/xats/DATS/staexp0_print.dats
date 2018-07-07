@@ -84,13 +84,13 @@ case+ x0.node() of
 
 (* ****** ****** *)
 
+(*
 implement
 print_s0qua(x0) =
 fprint_s0qua(stdout_ref, x0)
 implement
 prerr_s0qua(x0) =
 fprint_s0qua(stderr_ref, x0)
-
 implement
 fprint_s0qua
   (out, x0) =
@@ -101,6 +101,7 @@ case+ x0.node() of
 | S0QUAsymdot(tok0, tok1) =>
   fprint!(out, "S0QUAsymdot(", tok0, ", ", tok1, ")")
 )
+*)
 
 (* ****** ****** *)
 
