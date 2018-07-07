@@ -218,7 +218,7 @@ case+ s0ts0 of
     val tok = buf.get0()
   in
     sort0_make_node
-    (tok.loc(), SORT0none(tok))
+    (tok.loc(), S0Tnone(tok))
   end // end of [list_nil]
 | list_cons
     (s0t0, s0ts1) =>
@@ -229,7 +229,7 @@ case+ s0ts0 of
         val s0t1 = list_last(s0ts1)
       in
         sort0_make_node
-        (s0t0.loc()+s0t1.loc(), SORT0app(s0ts0))
+        (s0t0.loc()+s0t1.loc(), S0Tapp(s0ts0))
       end // end of [list_cons]
   ) (* end of [list_cons] *)
 //
@@ -262,7 +262,7 @@ tok0.node() of
   let
     val id = p_s0tid(buf, err)
   in
-    sort0_make_node(id.loc(), SORT0id(id))
+    sort0_make_node(id.loc(), S0Tid(id))
   end // end of [t_s0tid]
 //
 | T_LPAREN() => let
@@ -274,8 +274,11 @@ tok0.node() of
     val tend = p_RPAREN(buf, err)
   in
     sort0_make_node
-    ( tbeg.loc()+tend.loc()
-    , SORT0list(tbeg, s0ts, tend))
+    ( loc_res
+    , S0Tlist(tbeg, s0ts, tend)) where
+    {
+      val loc_res = tbeg.loc()+tend.loc()
+    }
   end // end of [T_LPAREN]
 //
 | T_IDENT_qual _ => let
@@ -283,17 +286,16 @@ tok0.node() of
     val s0t0 = p_atmsort0(buf, err)
   in
     sort0_make_node
-    (loc_res, s0t_res) where
+    (loc_res, S0Tqual(tok0, s0t0)) where
     {
       val loc_res = tok0.loc()+s0t0.loc()
-      val s0t_res = SORT0qual(tok0, s0t0)
     }
-  end // end of [T_IDENT_qua]
+  end // end of [T_IDENT_qual]
 //
 | _ (* error *) => let
     val () = (err := e0 + 1)
   in
-    sort0_make_node(tok0.loc(), SORT0none(tok0))
+    sort0_make_node(tok0.loc(), S0Tnone(tok0))
   end // end of [error]
 //
 end // end of [p_atmsort0]

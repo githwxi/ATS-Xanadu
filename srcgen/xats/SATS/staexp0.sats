@@ -65,6 +65,11 @@ abstbox i0dnt_tbox = ptr
 //
 (* ****** ****** *)
 //
+typedef s0tid = i0dnt_tbox
+typedef s0eid = i0dnt_tbox
+//
+(* ****** ****** *)
+//
 datatype
 i0nt_node =
   | I0NTnone of token
@@ -141,59 +146,6 @@ overload fprint with fprint_i0dnt
 //
 (* ****** ****** *)
 
-typedef s0tid = i0dnt
-typedef s0eid = i0dnt
-
-(* ****** ****** *)
-//
-abstbox s0qua_tbox = ptr
-typedef s0qua = s0qua_tbox
-//
-datatype
-s0qua_node =
-//
-| S0QUAnone of (token)
-//
-| S0QUAsymdot of (token, token) // symid
-/*
-| S0QUAfiledot of (token, token) // fileid
-*/
-// end of [s0qua_node]
-//
-(*
-typedef
-s0qua = $rec
-{
-  s0qua_loc= loc_t
-, s0qua_node= s0qua_node
-} (* end of [s0qua] *)
-*)
-//
-fun
-s0qua_get_loc(s0qua): loc_t
-fun
-s0qua_get_node(s0qua): s0qua_node
-//
-overload .loc with s0qua_get_loc
-overload .node with s0qua_get_node
-//
-fun print_s0qua : s0qua -> void
-fun prerr_s0qua : s0qua -> void
-fun fprint_s0qua : fprint_type(s0qua)
-//
-overload print with print_s0qua
-overload prerr with prerr_s0qua
-overload fprint with fprint_s0qua
-//
-(* ****** ****** *)
-
-fun
-s0qua_none(tok0: token): s0qua
-fun
-s0qua_symdot(tok0: token, tok1: token): s0qua
-
-(* ****** ****** *)
-
 abstbox sort0_tbox = ptr
 typedef sort0 = sort0_tbox
 
@@ -241,12 +193,14 @@ sort0_make_node
 
 abstbox s0exp_tbox = ptr
 typedef s0exp = s0exp_tbox
+typedef s0explst = List0(s0exp)
+typedef s0expopt = Option(s0exp)
 
 datatype
 s0exp_node =
+//
 | S0Eid of (s0eid)
-
-where s0explst = List0(s0exp)
+// end of [s0exp_node]
 
 (* ****** ****** *)
 //

@@ -40,10 +40,39 @@ UN =
 (* ****** ****** *)
 //
 #staload "./../SATS/lexing.sats"
+//
 #staload "./../SATS/staexp0.sats"
+//
 #staload "./../SATS/dynexp0.sats"
 //
 (* ****** ****** *)
+
+implement
+print_d0exp(x0) =
+fprint_d0exp(stdout_ref, x0)
+implement
+prerr_d0exp(x0) =
+fprint_d0exp(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<d0exp> = fprint_d0exp
+
+in (* in-of-local *)
+
+implement
+fprint_d0exp
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| D0Eid(id) =>
+  fprint!(out, "D0Eid(", id, ")")
+//
+) (* end of [fprint_d0exp] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 

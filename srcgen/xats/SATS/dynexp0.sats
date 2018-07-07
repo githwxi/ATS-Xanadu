@@ -33,9 +33,47 @@
 //
 (* ****** ****** *)
 
-abstype d0eid_tbox = ptr
-typedef d0eid = d0eid_tbox
+#staload "./staexp0.sats"
 
+(* ****** ****** *)
+
+typedef d0eid = i0dnt_tbox
+
+(* ****** ****** *)
+
+abstype d0exp_tbox = ptr
+typedef d0exp = d0exp_tbox
+typedef d0explst = List0(d0exp)
+typedef d0expopt = Option(d0exp)
+
+datatype
+d0exp_node =
+//
+| D0Eid of d0eid
+// end of [d0exp_node]
+
+(* ****** ****** *)
+//
+fun
+d0exp_get_loc(d0exp): loc_t
+fun
+d0exp_get_node(d0exp): d0exp_node
+//
+overload .loc with d0exp_get_loc
+overload .node with d0exp_get_node
+//
+fun print_d0exp : (d0exp) -> void
+fun prerr_d0exp : (d0exp) -> void
+fun fprint_d0exp : fprint_type(d0exp)
+//
+overload print with print_d0exp
+overload prerr with prerr_d0exp
+overload fprint with fprint_d0exp
+//
+fun
+d0exp_make_node
+(loc: loc_t, node: d0exp_node): d0exp
+//
 (* ****** ****** *)
 
 (* end of [xats_dynexp0.sats] *)

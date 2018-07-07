@@ -164,6 +164,11 @@ case+ tnd of
 | T_AT() => fprint(out, "AT")
 | T_DOT() => fprint(out, "DOT")
 //
+| T_LT() => fprint(out, "LT")
+| T_GT() => fprint(out, "GT")
+| T_LTEQ() => fprint(out, "LTEQ")
+| T_GTEQ() => fprint(out, "GTEQ")
+//
 | T_COMMA() => fprint(out, "COMMA")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
 //
@@ -312,13 +317,13 @@ case+ tnd of
 | T_COMMENT_mlblock
     (level, content) => fprint(out, content)
 //
-(*
-| T_AT() => fprint(out, "@")
-| T_BANG() => fprint(out, "!")
-*)
-//
 | T_AT() => fprint(out, "@")
 | T_DOT() => fprint(out, ".")
+//
+| T_LT() => fprint(out, "<")
+| T_GT() => fprint(out, ">")
+| T_LTEQ() => fprint(out, "<=")
+| T_GTEQ() => fprint(out, ">=")
 //
 | T_COMMA() => fprint(out, ",")
 | T_SEMICOLON() => fprint(out, ";")

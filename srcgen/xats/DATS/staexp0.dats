@@ -123,46 +123,6 @@ end // end of [local]
 local
 
 absimpl
-s0qua_tbox = $rec{
-  s0qua_loc= loc_t
-, s0qua_node= s0qua_node
-} (* end of [absimpl] *)
-
-in (* in-of-local *)
-
-implement
-s0qua_get_loc(x) = x.s0qua_loc
-implement
-s0qua_get_node(x) = x.s0qua_node
-
-fun
-s0qua_make_node
-( loc: loc_t
-, node: s0qua_node): s0qua =
-$rec{
-  s0qua_loc= loc, s0qua_node= node
-} (* end of [s0qua_make_node] *)
-
-implement
-s0qua_none(tok) =
-s0qua_make_node
-(
-  leftmost(tok.loc()), S0QUAnone(tok)
-)
-implement
-s0qua_symdot(tok0, tok1) =
-s0qua_make_node
-(
-  tok0.loc() + tok1.loc(), S0QUAsymdot(tok0, tok1)
-)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
 sort0_tbox = $rec{
   sort0_loc= loc_t
 , sort0_node= sort0_node
@@ -181,6 +141,32 @@ sort0_make_node
 {
   sort0_loc= loc, sort0_node= node
 } (* end of [sort0_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+s0exp_tbox = $rec{
+  s0exp_loc= loc_t
+, s0exp_node= s0exp_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+s0exp_get_loc(x) = x.s0exp_loc
+implement
+s0exp_get_node(x) = x.s0exp_node
+
+implement
+s0exp_make_node
+(loc, node) = $rec
+{
+  s0exp_loc= loc, s0exp_node= node
+} (* end of [s0exp_make_node] *)
 
 end // end of [local]
 
