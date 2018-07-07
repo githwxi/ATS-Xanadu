@@ -124,24 +124,53 @@ fprint_sort0
 (
 case+ x0.node() of
 //
-| SORT0id(id) =>
-  fprint!(out, "SORT0id(", id, ")")
+| S0Tid(id) =>
+  fprint!(out, "S0Tid(", id, ")")
 //
-| SORT0app(s0ts) =>
-  fprint!(out, "SORT0app(", s0ts, ")")
+| S0Tapp(s0ts) =>
+  fprint!(out, "S0Tapp(", s0ts, ")")
 //
-| SORT0list(t0, s0ts, t1) =>
+| S0Tlist(t0, s0ts, t1) =>
   fprint!
-  (out, "SORT0list(", t0, ", ", s0ts, ", ", t1, ")")
+  (out, "S0Tlist(", t0, ", ", s0ts, ", ", t1, ")")
 //
-| SORT0qual(q, s0t) =>
+| S0Tqual(q, s0t) =>
   fprint!
-  (out, "SORT0qid(", q, ", ", s0t, ")")
+  (out, "S0Tqid(", q, ", ", s0t, ")")
 //
-| SORT0none(token) =>
-  fprint!(out, "SORT0none(", token, ")")
+| S0Tnone(token) =>
+  fprint!(out, "S0Tnone(", token, ")")
 //
 ) (* end of [fprint_sort0] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_s0exp(x0) =
+fprint_s0exp(stdout_ref, x0)
+implement
+prerr_s0exp(x0) =
+fprint_s0exp(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<s0exp> = fprint_s0exp
+
+in (* in-of-local *)
+
+implement
+fprint_s0exp
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| S0Eid(id) =>
+  fprint!(out, "S0Eid(", id, ")")
+//
+) (* end of [fprint_s0exp] *)
 
 end // end of [local]
 
