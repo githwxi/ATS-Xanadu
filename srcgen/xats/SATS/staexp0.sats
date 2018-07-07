@@ -200,6 +200,8 @@ datatype
 s0exp_node =
 //
 | S0Eid of (s0eid)
+//
+| S0Equal of s0exp // qualified
 // end of [s0exp_node]
 
 (* ****** ****** *)
