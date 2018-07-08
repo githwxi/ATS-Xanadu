@@ -45,31 +45,47 @@
 (* ****** ****** *)
 
 implement
-p_i0nt(buf, err) =
-let
-//
-  val tok = buf.get0()
-//
-in
+t_i0nt(tok) =
+(
   case+
   tok.node() of
-  | T_INT1 _ =>
-    i0nt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | T_INT2 _ =>
-    i0nt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | T_INT3 _ =>
-    i0nt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | _ (* non-INT *) =>
-    (err := err + 1; i0nt_none(tok))
+  | T_INT1 _ => true
+  | T_INT2 _ => true
+  | T_INT3 _ => true
+  | _ (* non-INT *) => false
+)
+
+implement
+t_c0har(tok) =
+(
+  case+
+  tok.node() of
+  | T_CHAR_nil _ => true
+  | T_CHAR_char _ => true
+  | T_CHAR_slash _ => true
+  | _ (* non-CHAR *) => false
+) (* end of [p_c0har] *)
+
+(* ****** ****** *)
+
+implement
+p_i0nt(buf, err) = let
+  val tok = buf.get0()
+in
+//
+if t_i0nt(tok) then
+  (buf.incby1(); i0nt_some(tok)) else i0nt_none(tok)
+//
+end // end of [p_i0nt]
+
+implement
+p_c0har(buf, err) = let
+  val tok = buf.get0()
+in
+//
+if t_c0har(tok) then
+  (buf.incby1(); c0har_some(tok)) else c0har_none(tok)
+//
 end // end of [p_i0nt]
 
 (* ****** ****** *)
@@ -117,7 +133,7 @@ implement
 p_s0tid(buf, err) =
 let
 //
-  val tok = buf.get0()
+val tok = buf.get0()
 //
 in
   case+
@@ -136,8 +152,8 @@ in
     i0dnt_some(tok) where
     {
       val () = buf.incby1()
-      val loc = tok.loc()
-      val tnd = T_IDENT_sym("@")
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "@" )
       val tok = token_make_node(loc, tnd)
     }
   | T_BACKSLASH() =>
@@ -192,6 +208,21 @@ end // end of [p_s0qua]
 *)
 
 (* ****** ****** *)
+//
+(*
+atmsort0::
+//
+  | s0tid
+  | qualid atmsort0
+  | ( sort0seq_COMMA )
+//
+atmsort0seq::
+  | {atmsort0}+
+//
+sort0seq_COMMA::
+  | sort0, ... , sort0
+//
+*)
 //
 extern
 fun
@@ -248,10 +279,10 @@ val tok0 = buf.get0()
 val () =
 println!
 ("p_atmsort0: e0 = ", e0)
-*)
 val () =
 println!
 ("p_atmsort0: tok0 = ", tok0)
+*)
 //
 in
 //
@@ -296,7 +327,7 @@ tok0.node() of
     val () = (err := e0 + 1)
   in
     sort0_make_node(tok0.loc(), S0Tnone(tok0))
-  end // end of [error]
+  end // HX: indicating a parsing error
 //
 end // end of [p_atmsort0]
 //
@@ -342,9 +373,175 @@ tok.node() of
 | T_GT() => true // ">"
 | T_LTEQ() => true // "<="
 | T_GTEQ() => true // ">="
+(*
+| T_LTGT() => true // "<>"
+*)
 //
 | _ (* non-IDENT *) => false
 ) (* end of [t_s0eid] *)
+
+implement
+p_s0eid(buf, err) =
+let
+//
+val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_IDENT_alp _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | T_IDENT_sym _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | T_AT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "@" )
+      val tok = token_make_node(loc, tnd)
+    }
+  | T_BACKSLASH() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+//
+  | T_LT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "<" )
+      val tok = token_make_node(loc, tnd)
+    }
+  | T_GT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( ">" )
+      val tok = token_make_node(loc, tnd)
+    }
+  | T_LTEQ() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "<=" )
+      val tok = token_make_node(loc, tnd)
+    }
+  | T_GTEQ() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( ">=" )
+      val tok = token_make_node(loc, tnd)
+    }
+//
+  | _ (* non-IDENT *) =>
+    (err := err + 1; i0dnt_none(tok))
+end // end of [p_s0eid]
+
+(* ****** ****** *)
+
+(*
+atms0exp ::
+//
+  | i0nt
+  | c0har
+//
+  | s0eid
+  | qualid atm0exp
+  | ( s0expseq_COMMA )
+  | ( s0expseq_COMMA | s0expseq_COMMA )
+//
+*)
+extern
+fun
+p_atms0exp : parser(s0exp)
+extern
+fun
+p_apps0exp : parser(s0exp)
+//
+extern
+fun
+p_atms0expseq : parser(s0explst)
+extern
+fun
+p_s0expseq_COMMA : parser(s0explst)
+//
+(* ****** ****** *)
+
+implement
+p_atms0exp
+(buf, err) = let
+//
+val e0 = err
+val tok0 = buf.get0()
+//
+in
+//
+case+
+tok0.node() of
+//
+| _ when t_i0nt(tok0) =>
+  let
+    val i0 = p_i0nt(buf, err)
+  in
+    s0exp_make_node(i0.loc(), S0Eint(i0))
+  end // end of [t_i0nt]
+| _ when t_c0har(tok0) =>
+  let
+    val c0 = p_c0har(buf, err)
+  in
+    s0exp_make_node(c0.loc(), S0Echar(c0))
+  end // end of [t_c0har]
+//
+| _ when t_s0eid(tok0) =>
+  let
+    val id = p_s0eid(buf, err)
+  in
+    s0exp_make_node(id.loc(), S0Eid(id))
+  end // end of [t_s0eid]
+//
+| T_IDENT_qual _ => let
+    val () = buf.incby1()
+    val s0e0 = p_atms0exp(buf, err)
+  in
+    s0exp_make_node
+    (loc_res, S0Equal(tok0, s0e0)) where
+    {
+      val loc_res = tok0.loc()+s0e0.loc()
+    }
+  end // end of [T_IDENT_qual]
+//
+| _ (* error *) => let
+    val () = (err := e0 + 1)
+  in
+    s0exp_make_node(tok0.loc(), S0Enone(tok0))
+  end // HX: indicating a parsing error
+//
+end // end of [p_atms0exp]
+
+(* ****** ****** *)
+
+implement
+p_atms0expseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{s0exp}(buf, err, p_atms0exp))
+//
+) (* end of [p_atms0expseq] *)
 
 (* ****** ****** *)
 

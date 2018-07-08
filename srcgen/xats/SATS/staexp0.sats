@@ -61,6 +61,8 @@ typedef tkstropt = Option(tkstr)
 (* ****** ****** *)
 //
 abstbox i0nt_tbox = ptr
+abstbox c0har_tbox = ptr
+//
 abstbox i0dnt_tbox = ptr
 //
 (* ****** ****** *)
@@ -74,6 +76,12 @@ datatype
 i0nt_node =
   | I0NTnone of token
   | I0NTsome of token
+datatype
+c0har_node =
+  | C0HARnone of token
+  | C0HARsome of token
+//
+(* ****** ****** *)
 //
 datatype
 i0dnt_node =
@@ -85,12 +93,18 @@ i0dnt_node =
 typedef i0nt = $rec
 {
   i0nt_loc= loc_t, i0nt_node= symbol
-} (* end of [i0dnt] *)
+} (* end of [i0nt] *)
+typedef c0har = $rec
+{
+  c0har_loc= loc_t, c0har_node= symbol
+} (* end of [c0har] *)
+//
 typedef i0dnt = $rec
 {
   i0dnt_loc= loc_t, i0dnt_node= symbol
 } (* end of [i0dnt] *)
 *)
+(* ****** ****** *)
 //
 typedef i0nt = i0nt_tbox
 //
@@ -114,6 +128,31 @@ fun fprint_i0nt : fprint_type(i0nt)
 overload print with print_i0nt
 overload prerr with prerr_i0nt
 overload fprint with fprint_i0nt
+//
+(* ****** ****** *)
+//
+typedef c0har = c0har_tbox
+//
+fun
+c0har_get_loc
+  : (c0har) -> loc_t
+fun
+c0har_get_node
+  : (c0har) -> c0har_node
+//
+overload .loc with c0har_get_loc
+overload .node with c0har_get_node
+//
+fun c0har_none : token -> c0har
+fun c0har_some : token -> c0har
+//
+fun print_c0har : (c0har) -> void
+fun prerr_c0har : (c0har) -> void
+fun fprint_c0har : fprint_type(c0har)
+//
+overload print with print_c0har
+overload prerr with prerr_c0har
+overload fprint with fprint_c0har
 //
 (* ****** ****** *)
 //
@@ -199,9 +238,20 @@ typedef s0expopt = Option(s0exp)
 datatype
 s0exp_node =
 //
-| S0Eid of (s0eid)
+| S0Eid of s0eid
 //
-| S0Equal of s0exp // qualified
+| S0Eint of i0nt
+| S0Echar of c0har
+(*
+| S0Efloat of f0loat
+| S0Estring of s0tring
+*)
+//
+| S0Equal of (token, s0exp) // qualified
+//
+| S0Eanno of (s0exp, sort0) // sort-ascribed staexps
+//
+| S0Enone of (token) // HX-2018-07-08: indicating error 
 // end of [s0exp_node]
 
 (* ****** ****** *)

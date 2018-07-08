@@ -55,6 +55,11 @@ local
 //
 (* ****** ****** *)
 //
+#include"./../DATS/dynexp0.dats"
+#include"./../DATS/dynexp0_print.dats"
+//
+(* ****** ****** *)
+//
 #include"./../DATS/parsing_tokbuf.dats"
 //
 #include"./../DATS/parsing_basics.dats"

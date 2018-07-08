@@ -65,6 +65,26 @@ case+ x0.node() of
 (* ****** ****** *)
 
 implement
+print_c0har(x0) =
+fprint_c0har(stdout_ref, x0)
+implement
+prerr_c0har(x0) =
+fprint_c0har(stderr_ref, x0)
+
+implement
+fprint_c0har
+  (out, x0) =
+(
+case+ x0.node() of
+| C0HARnone(tok) =>
+  fprint!(out, "C0HARnone(", tok, ")")
+| C0HARsome(tok) =>
+  fprint!(out, "C0HARsome(", tok, ")")
+)
+
+(* ****** ****** *)
+
+implement
 print_i0dnt(x0) =
 fprint_i0dnt(stdout_ref, x0)
 implement
@@ -140,7 +160,9 @@ case+ x0.node() of
   (out, "S0Tqid(", q, ", ", s0t, ")")
 //
 | S0Tnone(token) =>
-  fprint!(out, "S0Tnone(", token, ")")
+  (
+    fprint!(out, "S0Tnone(", token, ")")
+  )
 //
 ) (* end of [fprint_sort0] *)
 
@@ -168,8 +190,26 @@ fprint_s0exp
 (
 case+ x0.node() of
 //
+| S0Eint(i0) =>
+  fprint!(out, "S0Eint(", i0, ")")
+| S0Echar(c0) =>
+  fprint!(out, "S0Echar(", c0, ")")
+//
 | S0Eid(id) =>
   fprint!(out, "S0Eid(", id, ")")
+//
+| S0Equal(tok, s0e) =>
+  fprint!
+  (out, "S0Equal(", tok, ", ", s0e, ")")
+//
+| S0Eanno(s0e, s0t) =>
+  fprint!
+  (out, "S0Eanno(", s0e, ", ", s0t, ")")
+//
+| S0Enone(token) =>
+  (
+    fprint!(out, "S0Enone(", token, ")")
+  ) // end of [S0Enone]
 //
 ) (* end of [fprint_s0exp] *)
 

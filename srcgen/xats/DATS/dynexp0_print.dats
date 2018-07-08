@@ -69,6 +69,8 @@ case+ x0.node() of
 //
 | D0Eid(id) =>
   fprint!(out, "D0Eid(", id, ")")
+| D0Equal(d0e) =>
+  fprint!(out, "D0Equal(", d0e, ")")
 //
 ) (* end of [fprint_d0exp] *)
 
