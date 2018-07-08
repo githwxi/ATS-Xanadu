@@ -61,6 +61,8 @@ LEXING = "./lexing.sats"
 STAEXP0 = "./staexp0.sats"
 //
   typedef i0nt = $STAEXP0.i0nt
+  typedef c0har = $STAEXP0.c0har
+//
   typedef i0dnt = $STAEXP0.i0dnt
 //
   typedef s0tid = $STAEXP0.s0tid
@@ -152,8 +154,15 @@ fun
 p_RBRACKET: parser(token)
 
 (* ****** ****** *)
-
+//
+fun t_i0nt(token): bool
+fun t_c0har(token): bool
+//
 fun p_i0nt: parser(i0nt)
+fun p_c0har: parser(c0har)
+//
+(* ****** ****** *)
+
 fun p_i0dnt: parser(i0dnt)
 
 (* ****** ****** *)

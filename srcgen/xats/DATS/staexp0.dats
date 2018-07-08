@@ -55,6 +55,12 @@ i0nt_tbox = $rec{
 , i0nt_node= i0nt_node
 } (* end of [absimpl] *)
 absimpl
+c0har_tbox = $rec{
+  c0har_loc= loc_t
+, c0har_node= c0har_node
+} (* end of [absimpl] *)
+//
+absimpl
 i0dnt_tbox = $rec{
   i0dnt_loc= loc_t
 , i0dnt_node= i0dnt_node
@@ -65,24 +71,36 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 fun
-i0nt_make
+i0nt_make_node
 (
 loc0: loc_t
 ,
 node: i0nt_node
 ) : i0nt = $rec{
   i0nt_loc= loc0, i0nt_node= node
-} (* end of [i0nt_make] *)
+} (* end of [i0nt_make_node] *)
 
 fun
-i0dnt_make
+c0har_make_node
+(
+loc0: loc_t
+,
+node: c0har_node
+) : c0har = $rec{
+  c0har_loc= loc0, c0har_node= node
+} (* end of [c0har_make_node] *)
+
+(* ****** ****** *)
+
+fun
+i0dnt_make_node
 (
 loc0: loc_t
 ,
 node: i0dnt_node
 ) : i0dnt = $rec{
   i0dnt_loc= loc0, i0dnt_node= node
-} (* end of [i0dnt_make] *)
+} (* end of [i0dnt_make_node] *)
 
 (* ****** ****** *)
 
@@ -92,6 +110,13 @@ implement
 i0nt_get_node(x) = x.i0nt_node
 
 implement
+c0har_get_loc(x) = x.c0har_loc
+implement
+c0har_get_node(x) = x.c0har_node
+
+(* ****** ****** *)
+
+implement
 i0dnt_get_loc(x) = x.i0dnt_loc
 implement
 i0dnt_get_node(x) = x.i0dnt_node
@@ -99,20 +124,29 @@ i0dnt_get_node(x) = x.i0dnt_node
 (* ****** ****** *)
 
 implement
-i0nt_some(tok) =
-i0nt_make(tok.loc(), I0NTsome(tok))
-implement
 i0nt_none(tok) =
-i0nt_make(tok.loc(), I0NTnone(tok))
+i0nt_make_node(tok.loc(), I0NTnone(tok))
+implement
+i0nt_some(tok) =
+i0nt_make_node(tok.loc(), I0NTsome(tok))
+
+(* ****** ****** *)
+
+implement
+c0har_none(tok) =
+c0har_make_node(tok.loc(), C0HARnone(tok))
+implement
+c0har_some(tok) =
+c0har_make_node(tok.loc(), C0HARsome(tok))
 
 (* ****** ****** *)
 
 implement
 i0dnt_some(tok) =
-i0dnt_make(tok.loc(), I0DNTsome(tok))
+i0dnt_make_node(tok.loc(), I0DNTsome(tok))
 implement
 i0dnt_none(tok) =
-i0dnt_make(tok.loc(), I0DNTnone(tok))
+i0dnt_make_node(tok.loc(), I0DNTnone(tok))
 
 (* ****** ****** *)
 
