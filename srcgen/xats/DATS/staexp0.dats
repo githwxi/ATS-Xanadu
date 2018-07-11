@@ -183,12 +183,54 @@ end // end of [local]
 local
 
 absimpl
+l0abl_tbox = $rec{
+//
+  l0abl_loc= loc_t
+,
+  l0abl_lab= label
+//
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+l0abl_make
+  (loc, lab) = $rec{
+  l0abl_loc= loc, l0abl_lab= lab
+} (* end of [l0abl_make] *)
+
+implement
+l0abl_get_loc(l0) = l0.l0abl_loc
+implement
+l0abl_get_lab(l0) = l0.l0abl_lab
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+print_l0abl
+  (l0) = fprint_l0abl(stdout_ref, l0)
+implement
+prerr_l0abl
+  (l0) = fprint_l0abl(stderr_ref, l0)
+implement
+fprint_l0abl
+  (out, l0) = $LAB.fprint_label(out, l0.lab())
+//
+(* ****** ****** *)
+
+local
+
+absimpl
 s0exp_tbox = $rec{
   s0exp_loc= loc_t
 , s0exp_node= s0exp_node
 } (* end of [absimpl] *)
 
 in (* in-of-local *)
+
+(* ****** ****** *)
 
 implement
 s0exp_get_loc(x) = x.s0exp_loc
@@ -202,8 +244,24 @@ s0exp_make_node
   s0exp_loc= loc, s0exp_node= node
 } (* end of [s0exp_make_node] *)
 
+(* ****** ****** *)
+
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+s0exp_RPAREN_loc(x0) =
+(
+case+ x0 of
+| s0exp_RPAREN_cons0
+    (tok) => tok.loc()
+  // s0exp_RPAREN_cons0
+| s0exp_RPAREN_cons1
+    (tok1, s0es, tok2) => tok1.loc() + tok2.loc()
+  // s0exp_RPAREN_cons1
+)  
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp0.dats] *)

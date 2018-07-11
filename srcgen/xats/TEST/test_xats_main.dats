@@ -113,9 +113,11 @@ lexing_preprocess_tokenlst(toks)
 val
 toks =
 list_vt2t(toks)
+(*
 val ((*void*)) =
 list0_foreach<token>
 (g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
+*)
 //
 val s0t0 = let
 //
@@ -130,6 +132,45 @@ in
 end // end of [val]
 
 val () = println! ("s0t0 = ", s0t0)
+
+(* ****** ****** *)
+//
+val-
+toks =
+(
+string_tokenize
+("\
+// f@(x + 1, y, z | what)
+@[int][n+100]
+")
+)
+//
+val
+toks =
+lexing_preprocess_tokenlst(toks)
+//
+val
+toks =
+list_vt2t(toks)
+(*
+val ((*void*)) =
+list0_foreach<token>
+(g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
+*)
+//
+val s0e0 = let
+//
+var err: int
+var buf: tokbuf
+val ((*void*)) = (err := 0)
+val ((*void*)) =
+tokbuf_initize_list(buf, toks)
+//
+in
+  p_s0exp(buf, err)
+end // end of [val]
+
+val () = println! ("s0e0 = ", s0e0)
 
 (* ****** ****** *)
 

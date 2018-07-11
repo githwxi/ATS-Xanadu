@@ -198,6 +198,14 @@ case+ x0.node() of
 | S0Eid(id) =>
   fprint!(out, "S0Eid(", id, ")")
 //
+| S0Eapp(s0es) =>
+  fprint!(out, "S0Eapp(", s0es, ")")
+//
+| S0Elist2
+  (tbeg, s0es, tend) =>
+  fprint!
+  (out, "S0Elist2(", tbeg, ", ", s0es, ", ", tend)
+//
 | S0Equal(tok, s0e) =>
   fprint!
   (out, "S0Equal(", tok, ", ", s0e, ")")
@@ -212,6 +220,37 @@ case+ x0.node() of
   ) // end of [S0Enone]
 //
 ) (* end of [fprint_s0exp] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_s0exp_RPAREN(x0) =
+fprint_s0exp_RPAREN(stdout_ref, x0)
+implement
+prerr_s0exp_RPAREN(x0) =
+fprint_s0exp_RPAREN(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<s0exp> = fprint_s0exp
+
+in (* in-of-local *)
+
+implement
+fprint_s0exp_RPAREN
+  (out, x0) =
+(
+case+ x0 of
+| s0exp_RPAREN_cons0(tok) =>
+  fprint!
+  (out, "s0exp_RPAREN_cons0(", tok, ")")
+| s0exp_RPAREN_cons1(tok1, s0es, tok2) =>
+  fprint!
+  (out, "s0exp_RPAREN_cons1(", tok1, ", ", s0es, ", ", tok2, ")")
+) (* end of [fprint_s0exp_RPAREN] *)
 
 end // end of [local]
 

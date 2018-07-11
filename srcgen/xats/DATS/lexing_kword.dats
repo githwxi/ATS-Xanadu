@@ -90,7 +90,11 @@ fun
 kword_initize(): void =
 {
 //
+(*
 val () = myins("@", T_AT)
+*)
+//
+val () = myins("|", T_BAR)
 val () = myins(".", T_DOT)
 //
 val () = myins("as", T_AS)
