@@ -100,7 +100,11 @@ tnode =
 //
 *)
 //
+(*
   | T_AT of () // @
+*)
+//
+  | T_BAR of () // |
   | T_DOT of () // .
 //
   | T_LT of () // <
@@ -120,9 +124,11 @@ tnode =
   | T_LBRACKET of () // [
   | T_RBRACKET of () // ]
 //
+(*
   | T_ATLPAREN of () // @(
   | T_ATLBRACE of () // @{
   | T_ATLBRACKET of () // @[
+*)
 //
   | T_AS of () // 'as'
   | T_OF of () // 'of'

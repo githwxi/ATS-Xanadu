@@ -37,67 +37,6 @@ cleanall:: ; $(RMF) test_filepath_dats
 ######
 
 all:: \
-test_location
-test_location: \
-test_location_dats
-test_location_dats: \
-test_location.dats; \
-$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
-regress:: test_location_dats; ./test_location_dats
-cleanall:: ; $(RMF) test_location_dats
-
-######
-
-all:: \
-test_lexbuf
-test_lexbuf: \
-test_lexbuf_dats
-test_lexbuf_dats: \
-test_lexbuf.dats \
-test_libxats.dats; \
-$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $^ -o $@
-regress:: test_lexbuf_dats; ./test_lexbuf_dats
-cleanall:: ; $(RMF) test_lexbuf_dats
-
-######
-
-all:: \
-test_lexing_kword
-test_lexing_kword: \
-test_lexing_kword_dats
-test_lexing_kword_dats: \
-test_lexing_kword.dats; \
-$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
-regress:: test_lexing_kword_dats; ./test_lexing_kword_dats
-cleanall:: ; $(RMF) test_lexing_kword_dats
-
-######
-
-all:: \
-test_lexing_token
-test_lexing_token: \
-test_lexing_token_dats
-test_lexing_token_dats: \
-test_lexing_token.dats; \
-$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
-regress:: test_lexing_token_dats; ./test_lexing_token_dats
-cleanall:: ; $(RMF) test_lexing_token_dats
-
-######
-
-all:: \
-test_lexing_util0
-test_lexing_util0: \
-test_lexing_util0_dats
-test_lexing_util0_dats: \
-test_lexing_util0.dats test_libxats.dats; \
-$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $^ -o $@
-regress:: test_lexing_util0_dats; ./test_lexing_util0_dats
-cleanall:: ; $(RMF) test_lexing_util0_dats
-
-######
-
-all:: \
 test_xats_main
 test_xats_main: \
 test_xats_main_dats

@@ -124,8 +124,9 @@ case+
 tok.node() of
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
-| T_AT() => true // "@"
+//
 | T_BACKSLASH() => true
+//
 | _ (* non-IDENT *) => false
 ) (* end of [t_s0tid] *)
 
@@ -138,6 +139,7 @@ val tok = buf.get0()
 in
   case+
   tok.node() of
+//
   | T_IDENT_alp _ =>
     i0dnt_some(tok) where
     {
@@ -148,6 +150,8 @@ in
     {
       val () = buf.incby1()
     }
+//
+(*
   | T_AT() =>
     i0dnt_some(tok) where
     {
@@ -156,13 +160,17 @@ in
       val tnd = T_IDENT_sym( "@" )
       val tok = token_make_node(loc, tnd)
     }
+*)
+//
   | T_BACKSLASH() =>
     i0dnt_some(tok) where
     {
       val () = buf.incby1()
     }
+//
   | _ (* non-IDENT *) =>
     (err := err + 1; i0dnt_none(tok))
+//
 end // end of [p_s0tid]
 
 (* ****** ****** *)
@@ -366,7 +374,6 @@ tok.node() of
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
 //
-| T_AT() => true // "@"
 | T_BACKSLASH() => true
 //
 | T_LT() => true // "<"
@@ -399,6 +406,7 @@ in
     {
       val () = buf.incby1()
     }
+(*
   | T_AT() =>
     i0dnt_some(tok) where
     {
@@ -407,6 +415,8 @@ in
       val tnd = T_IDENT_sym( "@" )
       val tok = token_make_node(loc, tnd)
     }
+*)
+//
   | T_BACKSLASH() =>
     i0dnt_some(tok) where
     {
@@ -478,6 +488,47 @@ extern
 fun
 p_s0expseq_COMMA : parser(s0explst)
 //
+(*
+s0exp_PAREN::
+  | RPAREN
+  | BAR s0expseq_COMMA RPAREN
+*)
+extern
+fun
+p_s0exp_RPAREN : parser(s0exp_RPAREN)
+//
+(* ****** ****** *)
+
+implement
+p_s0exp(buf, err) =
+let
+  val s0es0 =
+  p_atms0expseq(buf, err)
+in
+//
+case+ s0es0 of
+| list_nil
+    ((*void*)) => let
+    val tok = buf.get0()
+  in
+    s0exp_make_node
+    (tok.loc(), S0Enone(tok))
+  end // end of [list_nil]
+| list_cons
+    (s0e0, s0es1) =>
+  (
+    case+ s0es1 of
+    | list_nil() => s0e0
+    | list_cons _ => let
+        val s0e1 = list_last(s0es1)
+      in
+        s0exp_make_node
+        (s0e0.loc()+s0e1.loc(), S0Eapp(s0es0))
+      end // end of [list_cons]
+  ) (* end of [list_cons] *)
+//
+end // end of [p_s0exp]
+
 (* ****** ****** *)
 
 implement
@@ -512,6 +563,22 @@ tok0.node() of
     s0exp_make_node(id.loc(), S0Eid(id))
   end // end of [t_s0eid]
 //
+| T_LPAREN() => let
+    val () = buf.incby1()
+    val s0es =
+      p_s0expseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok0
+    val tend = p_s0exp_RPAREN(buf, err)
+  in
+    s0exp_make_node
+    ( loc_res
+    , S0Elist2(tbeg, s0es, tend)) where
+    {
+      val loc_res = tbeg.loc()+s0exp_RPAREN_loc(tend)
+    }
+  end // end of [T_LPAREN]
+//
 | T_IDENT_qual _ => let
     val () = buf.incby1()
     val s0e0 = p_atms0exp(buf, err)
@@ -542,6 +609,47 @@ list_vt2t
 (pstar_fun{s0exp}(buf, err, p_atms0exp))
 //
 ) (* end of [p_atms0expseq] *)
+
+(* ****** ****** *)
+
+implement
+p_s0expseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun{s0exp}(buf, err, p_s0exp))
+//
+) (* end of [p_s0expseq_COMMA] *)
+
+(* ****** ****** *)
+
+implement
+p_s0exp_RPAREN
+  (buf, err) = let
+  val e0 = err
+  val tok1 = buf.get1()
+  val tnd1 = tok1.node()
+in
+//
+case+ tnd1 of
+| T_BAR() => let
+    val s0es =
+      p_s0expseq_COMMA(buf, err)
+    val tok2 = p_RPAREN(buf, err)
+  in
+    s0exp_RPAREN_cons1(tok1, s0es, tok2)
+  end // end of [T_BAR]
+| _ (* non-BAR *) =>
+  (
+    case+ tnd1 of
+    | T_RPAREN() =>
+      s0exp_RPAREN_cons0(tok1)
+    | _(*non-RPAREN*) =>
+      (err := e0 + 1; s0exp_RPAREN_cons0(tok1))
+  )
+//
+end // end of [p_s0exp_RPAREN]
 
 (* ****** ****** *)
 

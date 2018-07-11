@@ -161,7 +161,7 @@ case+ tnd of
     (level, content) =>
     fprint!(out, "T_COMMENT_mlblock(", level, "; ", "...)")
 //
-| T_AT() => fprint(out, "AT")
+| T_BAR() => fprint(out, "BAR")
 | T_DOT() => fprint(out, "DOT")
 //
 | T_LT() => fprint(out, "LT")
@@ -181,9 +181,11 @@ case+ tnd of
 | T_LBRACKET() => fprint(out, "LBRACKET")
 | T_RBRACKET() => fprint(out, "RBRACKET")
 //
+(*
 | T_ATLPAREN() => fprint(out, "ATLPAREN")
 | T_ATLBRACE() => fprint(out, "ATLBRACE")
 | T_ATLBRACKET() => fprint(out, "ATLBRACKET")
+*)
 //
 | T_AS() => fprint(out, "AS")
 | T_OF() => fprint(out, "OF")
@@ -317,7 +319,7 @@ case+ tnd of
 | T_COMMENT_mlblock
     (level, content) => fprint(out, content)
 //
-| T_AT() => fprint(out, "@")
+| T_BAR() => fprint(out, "|")
 | T_DOT() => fprint(out, ".")
 //
 | T_LT() => fprint(out, "<")
@@ -337,9 +339,11 @@ case+ tnd of
 | T_LBRACKET() => fprint(out, "[")
 | T_RBRACKET() => fprint(out, "]")
 //
+(*
 | T_ATLPAREN() => fprint(out, "@(")
 | T_ATLBRACE() => fprint(out, "@{")
 | T_ATLBRACKET() => fprint(out, "@[")
+*)
 //
 | T_AS() => fprint(out, "as")
 | T_OF() => fprint(out, "of")
@@ -769,38 +773,7 @@ case+ x0.node() of
       end // end of [T_DOT]
     | _ (* rest-of-tnode *) =>
         loop1(x1, xs2, list_vt_cons(x0, res))
-  )
-//
-| T_AT() =>
-  (
-    case+ x1.node() of
-    | T_LPAREN() => let
-        val loc = 
-        x0.loc()+x1.loc()
-        val x01 =
-        token_make_node(loc, T_ATLPAREN())
-      in
-        loop0(xs2, list_vt_cons(x01, res))
-      end // end of [T_LPAREN]
-    | T_LBRACE() => let
-        val loc = 
-        x0.loc()+x1.loc()
-        val x01 =
-        token_make_node(loc, T_ATLBRACE())
-      in
-        loop0(xs2, list_vt_cons(x01, res))
-      end // end of [T_LBRACE]
-    | T_LBRACKET() => let
-        val loc = 
-        x0.loc()+x1.loc()
-        val x01 =
-        token_make_node(loc, T_ATLBRACKET())
-      in
-        loop0(xs2, list_vt_cons(x01, res))
-      end // end of [T_LBRACKET]
-    | _ (* rest-of-tnode *) =>
-        loop1(x1, xs2, list_vt_cons(x0, res))
-  )
+  ) (* end of [T_IDENT_dlr] *)
 //
 | _ (* rest-of-tnode *) =>
     loop1(x1, xs2, list_vt_cons(x0, res))

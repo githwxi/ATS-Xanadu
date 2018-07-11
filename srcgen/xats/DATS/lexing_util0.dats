@@ -1180,11 +1180,13 @@ val i0 =
   lexbuf_getc(buf)
 )
 val c0 = int2char0(i0)
-// (*
+//
+(*
 val () =
 println!
 ("lexing_tnode: c0 = ", c0)
-// *)
+*)
+//
 //
 in
 //
@@ -1512,11 +1514,11 @@ loop
  tnodelst_vt): tnodelst_vt = let
 //
   val tnd = lexing_tnode(buf)
-// (*
+(*
   val (_) =
   println!
   ("string_tokenize: loop: tnd = ", tnd)
-// *)
+*)
 //
 in
   case+ tnd of
