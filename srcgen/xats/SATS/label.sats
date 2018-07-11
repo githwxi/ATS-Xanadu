@@ -32,10 +32,17 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+#staload
+SYM = "./symbol.sats"
+
+(* ****** ****** *)
 //
 abstbox label_tbox
 //
 typedef label = label_tbox
+//
+typedef symbol = $SYM.symbol
 //
 (* ****** ****** *)
 //
@@ -53,6 +60,7 @@ overload fprint with fprint_label
 (* ****** ****** *)
 //
 fun label_make_int(i0: int): label
+fun label_make_sym(i0: symbol): label
 fun label_make_name(s0: string): label
 //
 (* ****** ****** *)

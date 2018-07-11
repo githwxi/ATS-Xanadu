@@ -13,6 +13,8 @@
 local
 //
 #include
+"./../DATS/label.dats"
+#include
 "./../DATS/symbol.dats"
 #include
 "./../DATS/location.dats"

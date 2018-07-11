@@ -34,13 +34,14 @@
 (* ****** ****** *)
 
 #staload "./../SATS/label.sats"
+#staload "./../SATS/symbol.sats"
 
 (* ****** ****** *)
 //
 datatype
 label =
 | LABint of int // digits
-| LABstr of string // alnums
+| LABsym of symbol // alnums
 //
 (* ****** ****** *)
 
@@ -68,14 +69,16 @@ fprint_label(out, l0) =
 case+ l0 of
 | LABint(i0) =>
   fprint!(out, "LABint(", i0, ")")
-| LABstr(s0) =>
-  fprint!(out, "LABstr(", s0, ")")
+| LABsym(s0) =>
+  fprint!(out, "LABsym(", s0, ")")
 )
 
 implement
 label_make_int(i0) = LABint(i0)
 implement
-label_make_name(s0) = LABstr(s0)
+label_make_sym(s0) = LABsym(s0)
+implement
+label_make_name(s0) = LABsym(symbol_make(s0))
 
 end // end of [local]
 
