@@ -64,6 +64,7 @@ STAEXP0 = "./staexp0.sats"
   typedef c0har = $STAEXP0.c0har
 //
   typedef i0dnt = $STAEXP0.i0dnt
+  typedef l0abl = $STAEXP0.l0abl
 //
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
@@ -164,6 +165,10 @@ fun p_c0har: parser(c0har)
 (* ****** ****** *)
 
 fun p_i0dnt: parser(i0dnt)
+
+(* ****** ****** *)
+
+fun p_l0abl: parser(l0abl)
 
 (* ****** ****** *)
 //
