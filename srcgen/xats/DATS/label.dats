@@ -36,13 +36,48 @@
 #staload "./../SATS/label.sats"
 
 (* ****** ****** *)
+//
+datatype
+label =
+| LABint of int // digits
+| LABstr of string // alnums
+//
+(* ****** ****** *)
 
+//
 implement
 print_label(l0) =
-fprint_label(stdout_ref, l0)
+  fprint_label(stdout_ref, l0)
+//
 implement
 prerr_label(l0) =
-fprint_label(stderr_ref, l0)
+  fprint_label(stderr_ref, l0)
+//
+(* ****** ****** *)
+
+local
+
+absimpl
+label_tbox = label
+
+in (* in-of-local *)
+
+implement
+fprint_label(out, l0) =
+(
+case+ l0 of
+| LABint(i0) =>
+  fprint!(out, "LABint(", i0, ")")
+| LABstr(s0) =>
+  fprint!(out, "LABstr(", s0, ")")
+)
+
+implement
+label_make_int(i0) = LABint(i0)
+implement
+label_make_name(s0) = LABstr(s0)
+
+end // end of [local]
 
 (* ****** ****** *)
 

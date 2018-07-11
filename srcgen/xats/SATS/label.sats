@@ -51,5 +51,10 @@ overload prerr with prerr_label
 overload fprint with fprint_label
 //
 (* ****** ****** *)
+//
+fun label_make_int(i0: int): label
+fun label_make_name(s0: string): label
+//
+(* ****** ****** *)
 
 (* end of [xats_label.sats] *)
