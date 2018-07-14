@@ -502,6 +502,7 @@ p_s0exp_RPAREN : parser(s0exp_RPAREN)
 implement
 p_s0exp(buf, err) =
 let
+  val e0 = err
   val s0es0 =
   p_atms0expseq(buf, err)
 in
@@ -511,8 +512,8 @@ case+ s0es0 of
     ((*void*)) => let
     val tok = buf.get0()
   in
-    s0exp_make_node
-    (tok.loc(), S0Enone(tok))
+    err := e0 + 1;
+    s0exp_make_node(tok.loc(), S0Enone(tok))
   end // end of [list_nil]
 | list_cons
     (s0e0, s0es1) =>
