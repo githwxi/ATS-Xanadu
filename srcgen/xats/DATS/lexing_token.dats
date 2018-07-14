@@ -400,6 +400,12 @@ val () = theMap[c2i(';')] := T_SEMICOLON()
 val () = theMap[c2i('\(')] := T_LPAREN()
 val () = theMap[c2i('\)')] := T_RPAREN()
 //
+val () = theMap[c2i('\{')] := T_LBRACE()
+val () = theMap[c2i('\}')] := T_RBRACE()
+//
+val () = theMap[c2i('\[')] := T_LBRACKET()
+val () = theMap[c2i('\]')] := T_RBRACKET()
+//
 val () = theMap[c2i('\\')] := T_BACKSLASH()
 //
 in (* in-of-local *)
