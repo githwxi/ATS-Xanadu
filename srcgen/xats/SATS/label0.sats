@@ -65,4 +65,4 @@ fun label_make_name(s0: string): label
 //
 (* ****** ****** *)
 
-(* end of [xats_label.sats] *)
+(* end of [xats_label0.sats] *)

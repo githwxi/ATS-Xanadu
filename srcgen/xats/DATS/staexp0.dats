@@ -40,6 +40,8 @@ UN =
 (* ****** ****** *)
 //
 #staload
+"./../SATS/label0.sats"
+#staload
 "./../SATS/location.sats"
 //
 #staload "./../SATS/lexing.sats"

@@ -33,18 +33,10 @@
 //
 (* ****** ****** *)
 
-#staload "./../SATS/label.sats"
+#staload "./../SATS/label0.sats"
 #staload "./../SATS/symbol.sats"
 
 (* ****** ****** *)
-//
-datatype
-label =
-| LABint of int // digits
-| LABsym of symbol // alnums
-//
-(* ****** ****** *)
-
 //
 implement
 print_label(l0) =
@@ -57,14 +49,20 @@ prerr_label(l0) =
 (* ****** ****** *)
 
 local
-
+//
+datatype
+label =
+| LABint of int // digits
+| LABsym of symbol // alnums
+//
 absimpl
 label_tbox = label
-
+//
 in (* in-of-local *)
 
 implement
-fprint_label(out, l0) =
+fprint_label
+  (out, l0) =
 (
 case+ l0 of
 | LABint(i0) =>
@@ -84,4 +82,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_label.dats] *)
+(* end of [xats_label0.dats] *)

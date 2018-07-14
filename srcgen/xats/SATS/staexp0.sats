@@ -34,7 +34,7 @@
 (* ****** ****** *)
 //
 #staload
-LAB = "./label.sats"
+LAB = "./label0.sats"
 #staload
 LOC = "./location.sats"
 //
@@ -252,6 +252,10 @@ fun print_l0abl : print_type(l0abl)
 fun prerr_l0abl : prerr_type(l0abl)
 fun fprint_l0abl : fprint_type(l0abl)
 //
+overload print with print_l0abl
+overload prerr with prerr_l0abl
+overload fprint with fprint_l0abl
+//
 (* ****** ****** *)
 //
 datatype
@@ -261,6 +265,17 @@ sl0abeled
 datatype
 dl0abeled
   (a:type) = DL0ABELED of (l0abl, a)
+//
+(* ****** ****** *)
+//
+fun
+{a:type}
+fprint_sl0abeled
+  (out: FILEref, x0: sl0abeled(a)): void
+fun
+{a:type}
+fprint_dl0abeled
+  (out: FILEref, x0: dl0abeled(a)): void
 //
 (* ****** ****** *)
 //
@@ -351,6 +366,22 @@ fprint_s0exp_RPAREN : fprint_type(s0exp_RPAREN)
 overload print with print_s0exp_RPAREN
 overload prerr with prerr_s0exp_RPAREN
 overload fprint with fprint_s0exp_RPAREN
+//
+(* ****** ****** *)
+//
+fun
+s0exp_RBRACE_loc(x0: s0exp_RBRACE): loc_t
+//
+fun
+print_s0exp_RBRACE : (s0exp_RBRACE) -> void
+fun
+prerr_s0exp_RBRACE : (s0exp_RBRACE) -> void
+fun
+fprint_s0exp_RBRACE : fprint_type(s0exp_RBRACE)
+//
+overload print with print_s0exp_RBRACE
+overload prerr with prerr_s0exp_RBRACE
+overload fprint with fprint_s0exp_RBRACE
 //
 (* ****** ****** *)
 

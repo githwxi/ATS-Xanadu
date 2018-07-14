@@ -573,11 +573,26 @@ tok0.node() of
   in
     s0exp_make_node
     ( loc_res
-    , S0Elist2(tbeg, s0es, tend)) where
+    , S0Eparen(tbeg, s0es, tend)) where
     {
-      val loc_res = tbeg.loc()+s0exp_RPAREN_loc(tend)
+      val loc_res =
+        tbeg.loc()+s0exp_RPAREN_loc(tend)
+      // end of [val]
     }
   end // end of [T_LPAREN]
+//
+| T_LBRACKET() => let
+    val () = buf.incby1()
+    val s0es =
+      p_s0expseq_COMMA(buf, err)
+    val tbeg = tok0
+    val tend = p_RBRACKET(buf, err)
+    val loc_res = tbeg.loc()+tend.loc()
+  in
+    s0exp_make_node
+      (loc_res, S0Ebrack(tbeg, s0es, tend))
+    // end of [s0exp_make_node]
+  end // end of [T_LBRACKET]
 //
 | T_IDENT_qual _ => let
     val () = buf.incby1()

@@ -34,6 +34,9 @@ local
 //
 #include
 "./../DATS/symbol.dats"
+//
+#include
+"./../DATS/label0.dats"
 #include
 "./../DATS/location.dats"
 #include
@@ -102,7 +105,7 @@ toks =
 (
 string_tokenize
 ("\
-foo $X.@ b c ($A.d, bar($A.e, $A.f))\n\
+foo $X.a b c ($A.d, bar($A.e, $A.f))\n\
 prop type t0ype view viewtype viewt0ype")
 )
 //
@@ -140,8 +143,8 @@ toks =
 (
 string_tokenize
 ("\
+[int][n+100]\n\
 // f@(x + 1, y, z | what)
-@[int][n+100]
 ")
 )
 //

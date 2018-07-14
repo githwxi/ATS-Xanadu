@@ -45,6 +45,29 @@ UN =
 (* ****** ****** *)
 
 implement
+fprint_val<i0nt> = fprint_i0nt
+implement
+fprint_val<c0har> = fprint_c0har
+
+implement
+fprint_val<i0dnt> = fprint_i0dnt
+
+implement
+fprint_val<sort0> = fprint_sort0
+
+implement
+fprint_val<s0exp> = fprint_s0exp
+
+implement
+(a)//tmp
+fprint_val<sl0abeled(a)> = fprint_sl0abeled<a>
+implement
+(a)//tmp
+fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
+
+(* ****** ****** *)
+
+implement
 print_i0nt(x0) =
 fprint_i0nt(stdout_ref, x0)
 implement
@@ -171,6 +194,32 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+{a}(*tmp*)
+fprint_sl0abeled
+  (out, x0) = let
+//
+val+SL0ABELED(l0, x1) = x0
+//
+in
+  fprint!(out, "SL0ABELED(", l0, ", ");
+  fprint_val<a>(out, x1); fprint!(out, ")")
+end // end of [fprint_sl0abeled]
+
+implement
+{a}(*tmp*)
+fprint_dl0abeled
+  (out, x0) = let
+//
+val+DL0ABELED(l0, x1) = x0
+//
+in
+  fprint!(out, "DL0ABELED(", l0, ", ");
+  fprint_val<a>(out, x1); fprint!(out, ")")
+end // end of [fprint_dl0abeled]
+
+(* ****** ****** *)
+
+implement
 print_s0exp(x0) =
 fprint_s0exp(stdout_ref, x0)
 implement
@@ -201,10 +250,19 @@ case+ x0.node() of
 | S0Eapp(s0es) =>
   fprint!(out, "S0Eapp(", s0es, ")")
 //
-| S0Elist2
+| S0Ebrack
   (tbeg, s0es, tend) =>
   fprint!
-  (out, "S0Elist2(", tbeg, ", ", s0es, ", ", tend)
+  (out, "S0Ebrack(", tbeg, ", ", s0es, ", ", tend, ")")
+//
+| S0Eparen
+  (tbeg, s0es, tend) =>
+  fprint!
+  (out, "S0Eparen(", tbeg, ", ", s0es, ", ", tend, ")")
+| S0Ebrace
+  (tbeg, s0es, tend) =>
+  fprint!
+  (out, "S0Ebrace(", tbeg, ", ", s0es, ", ", tend, ")")
 //
 | S0Equal(tok, s0e) =>
   fprint!
@@ -251,6 +309,37 @@ case+ x0 of
   fprint!
   (out, "s0exp_RPAREN_cons1(", tok1, ", ", s0es, ", ", tok2, ")")
 ) (* end of [fprint_s0exp_RPAREN] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_s0exp_RBRACE(x0) =
+fprint_s0exp_RBRACE(stdout_ref, x0)
+implement
+prerr_s0exp_RBRACE(x0) =
+fprint_s0exp_RBRACE(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<s0exp> = fprint_s0exp
+
+in (* in-of-local *)
+
+implement
+fprint_s0exp_RBRACE
+  (out, x0) =
+(
+case+ x0 of
+| s0exp_RBRACE_cons0(tok) =>
+  fprint!
+  (out, "s0exp_RBRACE_cons0(", tok, ")")
+| s0exp_RBRACE_cons1(tok1, s0es, tok2) =>
+  fprint!
+  (out, "s0exp_RBRACE_cons1(", tok1, ", ", s0es, ", ", tok2, ")")
+) (* end of [fprint_s0exp_RBRACE] *)
 
 end // end of [local]
 
