@@ -317,6 +317,18 @@ case+ x0 of
   // s0exp_RPAREN_cons1
 )  
 //
+implement
+labs0exp_RBRACE_loc(x0) =
+(
+case+ x0 of
+| labs0exp_RBRACE_cons0
+    (tok) => tok.loc()
+  // labs0exp_RBRACE_cons0
+| labs0exp_RBRACE_cons1
+    (tok1, ls0es, tok2) => tok1.loc() + tok2.loc()
+  // labs0exp_RBRACE_cons1
+)  
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp0.dats] *)

@@ -264,6 +264,7 @@ fun
 l0abl_make_name(tok: token): l0abl
 fun
 l0abl_make_none(tok: token): l0abl
+//
 fun
 l0abl_make_node
 (loc: loc_t, node: l0abl_node): l0abl
@@ -272,11 +273,13 @@ l0abl_make_node
 //
 datatype
 sl0abeled
-  (a:type) = SL0ABELED of (l0abl, a)
+  (a:type) =
+  SL0ABELED of (l0abl, token, a)
 //
 datatype
 dl0abeled
-  (a:type) = DL0ABELED of (l0abl, a)
+  (a:type) =
+  DL0ABELED of (l0abl, token, a)
 //
 (* ****** ****** *)
 //
@@ -322,7 +325,7 @@ s0exp_node =
 | S0Eparen of
     (token, s0explst, s0exp_RPAREN)
 | S0Ebrace of
-    (token, labs0explst, s0exp_RBRACE)
+    (token, labs0explst, labs0exp_RBRACE)
 //
 | S0Equal of (token, s0exp) // qualified
 //
@@ -337,9 +340,9 @@ s0exp_RPAREN =
 | s0exp_RPAREN_cons1 of (token, s0explst, token)
 //
 and
-s0exp_RBRACE =
-| s0exp_RBRACE_cons0 of token
-| s0exp_RBRACE_cons1 of (token, labs0explst, token)
+labs0exp_RBRACE =
+| labs0exp_RBRACE_cons0 of token
+| labs0exp_RBRACE_cons1 of (token, labs0explst, token)
 //
 (* ****** ****** *)
 //
@@ -366,14 +369,14 @@ s0exp_make_node
 (* ****** ****** *)
 //
 fun
-s0exp_RPAREN_loc(x0: s0exp_RPAREN): loc_t
+s0exp_RPAREN_loc(s0exp_RPAREN): loc_t
 //
 fun
-print_s0exp_RPAREN : (s0exp_RPAREN) -> void
+print_s0exp_RPAREN: print_type(s0exp_RPAREN)
 fun
-prerr_s0exp_RPAREN : (s0exp_RPAREN) -> void
+prerr_s0exp_RPAREN: print_type(s0exp_RPAREN)
 fun
-fprint_s0exp_RPAREN : fprint_type(s0exp_RPAREN)
+fprint_s0exp_RPAREN: fprint_type(s0exp_RPAREN)
 //
 overload print with print_s0exp_RPAREN
 overload prerr with prerr_s0exp_RPAREN
@@ -382,18 +385,18 @@ overload fprint with fprint_s0exp_RPAREN
 (* ****** ****** *)
 //
 fun
-s0exp_RBRACE_loc(x0: s0exp_RBRACE): loc_t
+labs0exp_RBRACE_loc(labs0exp_RBRACE): loc_t
 //
 fun
-print_s0exp_RBRACE : (s0exp_RBRACE) -> void
+print_labs0exp_RBRACE: print_type(labs0exp_RBRACE)
 fun
-prerr_s0exp_RBRACE : (s0exp_RBRACE) -> void
+prerr_labs0exp_RBRACE: prerr_type(labs0exp_RBRACE)
 fun
-fprint_s0exp_RBRACE : fprint_type(s0exp_RBRACE)
+fprint_labs0exp_RBRACE: fprint_type(labs0exp_RBRACE)
 //
-overload print with print_s0exp_RBRACE
-overload prerr with prerr_s0exp_RBRACE
-overload fprint with fprint_s0exp_RBRACE
+overload print with print_labs0exp_RBRACE
+overload prerr with prerr_labs0exp_RBRACE
+overload fprint with fprint_labs0exp_RBRACE
 //
 (* ****** ****** *)
 

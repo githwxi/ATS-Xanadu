@@ -510,18 +510,28 @@ p_apps0exp : parser(s0exp)
 extern
 fun
 p_atms0expseq : parser(s0explst)
+//
 extern
 fun
 p_s0expseq_COMMA : parser(s0explst)
+extern
+fun
+p_labs0expseq_COMMA : parser(labs0explst)
 //
 (*
 s0exp_PAREN::
   | RPAREN
   | BAR s0expseq_COMMA RPAREN
+labs0exp_PAREN::
+  | RPAREN
+  | BAR labs0expseq_COMMA RBRACE
 *)
 extern
 fun
 p_s0exp_RPAREN : parser(s0exp_RPAREN)
+extern
+fun
+p_labs0exp_RBRACE : parser(labs0exp_RBRACE)
 //
 (* ****** ****** *)
 
@@ -555,6 +565,32 @@ case+ s0es0 of
   ) (* end of [list_cons] *)
 //
 end // end of [p_s0exp]
+
+(* ****** ****** *)
+
+implement
+p_labs0exp
+  (buf, err) = let
+//
+val l0 =
+(
+  p_l0abl(buf, err)
+)
+val tok = p_EQ(buf, err)
+val s0e = p_s0exp(buf, err)
+//
+(*
+val ((*void*)) =
+println! ("p_labs0exp: l0 = ", l0)
+val ((*void*)) =
+println! ("p_labs0exp: tok = ", tok)
+val ((*void*)) =
+println! ("p_labs0exp: s0e = ", s0e)
+*)
+//
+in
+  SL0ABELED(l0, tok, s0e)
+end // end of [p_labs0exp]
 
 (* ****** ****** *)
 
@@ -607,6 +643,23 @@ tok0.node() of
       // end of [val]
     }
   end // end of [T_LPAREN]
+| T_LBRACE() => let
+    val () = buf.incby1()
+    val ls0es =
+      p_labs0expseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok0
+    val tend = p_labs0exp_RBRACE(buf, err)
+  in
+    s0exp_make_node
+    ( loc_res
+    , S0Ebrace(tbeg, ls0es, tend)) where
+    {
+      val loc_res =
+        tbeg.loc()+labs0exp_RBRACE_loc(tend)
+      // end of [val]
+    }
+  end // end of [T_LBRACE]
 //
 | T_LBRACKET() => let
     val () = buf.incby1()
@@ -664,6 +717,16 @@ list_vt2t
 //
 ) (* end of [p_s0expseq_COMMA] *)
 
+implement
+p_labs0expseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun{labs0exp}(buf, err, p_labs0exp))
+//
+) (* end of [p_s0expseq_COMMA] *)
+
 (* ****** ****** *)
 
 implement
@@ -692,6 +755,33 @@ case+ tnd1 of
   )
 //
 end // end of [p_s0exp_RPAREN]
+
+implement
+p_labs0exp_RBRACE
+  (buf, err) = let
+  val e0 = err
+  val tok1 = buf.get1()
+  val tnd1 = tok1.node()
+in
+//
+case+ tnd1 of
+| T_BAR() => let
+    val ls0es =
+    p_labs0expseq_COMMA(buf, err)
+    val tok2 = p_RPAREN(buf, err)
+  in
+    labs0exp_RBRACE_cons1(tok1, ls0es, tok2)
+  end // end of [T_BAR]
+| _ (* non-BAR *) =>
+  (
+    case+ tnd1 of
+    | T_RBRACE() =>
+      labs0exp_RBRACE_cons0(tok1)
+    | _(*non-RPAREN*) =>
+      (err := e0 + 1; labs0exp_RBRACE_cons0(tok1))
+  )
+//
+end // end of [p_labs0exp_RBRACE]
 
 (* ****** ****** *)
 

@@ -115,6 +115,7 @@ tnode =
   | T_GTEQ of () // >=
 //
   | T_COMMA of () // ,
+  | T_COLON of () // :
   | T_SEMICOLON of () // ;
 //
   | T_BACKSLASH of ()
@@ -245,6 +246,8 @@ char2tnode(c0: int): tnode
 
 fun
 tnode_is_COMMA : tnode -> bool
+fun
+tnode_is_COLON : tnode -> bool
 fun
 tnode_is_SEMICOLON : tnode -> bool
 
