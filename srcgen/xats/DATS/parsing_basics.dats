@@ -75,6 +75,22 @@ end // end of [p_EQ]
 (* ****** ****** *)
 
 implement
+p_COLON
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_COLON() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-COLON *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_COLON]
+
+(* ****** ****** *)
+
+implement
 p_RPAREN
   (buf, err) = let
   val e0 = err

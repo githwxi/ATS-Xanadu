@@ -94,6 +94,8 @@ kword_initize(): void =
 val () = myins("@", T_AT)
 *)
 //
+val () = myins("=", T_EQ)
+//
 val () = myins("|", T_BAR)
 val () = myins(".", T_DOT)
 //

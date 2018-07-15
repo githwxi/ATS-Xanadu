@@ -172,6 +172,7 @@ case+ tnd of
 | T_GTEQ() => fprint(out, "GTEQ")
 //
 | T_COMMA() => fprint(out, "COMMA")
+| T_COLON() => fprint(out, "COLON")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
 //
 | T_BACKSLASH() => fprint(out, "BACKSLASH")
@@ -332,6 +333,7 @@ case+ tnd of
 | T_GTEQ() => fprint(out, ">=")
 //
 | T_COMMA() => fprint(out, ",")
+| T_COLON() => fprint(out, ":")
 | T_SEMICOLON() => fprint(out, ";")
 //
 | T_BACKSLASH() => fprint(out, "\\")
@@ -398,7 +400,9 @@ theMap =
 arrayref_make_elt<tnode>
   (theAsz, T_EOF())
 //
+(*
 val () = theMap[c2i('=')] := T_EQ()
+*)
 //
 val () = theMap[c2i(',')] := T_COMMA()
 val () = theMap[c2i(';')] := T_SEMICOLON()
@@ -439,6 +443,14 @@ tnode_is_COMMA
 (
   case+ node of
   | T_COMMA() => true | _ => false
+)
+//
+implement
+tnode_is_COLON
+  (node) =
+(
+  case+ node of
+  | T_COLON() => true | _ => false
 )
 //
 implement

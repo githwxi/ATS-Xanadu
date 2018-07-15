@@ -198,10 +198,11 @@ implement
 fprint_sl0abeled
   (out, x0) = let
 //
-val+SL0ABELED(l0, x1) = x0
+val+SL0ABELED(l0, t0, x1) = x0
 //
 in
-  fprint!(out, "SL0ABELED(", l0, ", ");
+  fprint!(out, "SL0ABELED(");
+  fprint!(out, l0, ", ", t0, ", ");
   fprint_val<a>(out, x1); fprint!(out, ")")
 end // end of [fprint_sl0abeled]
 
@@ -210,10 +211,11 @@ implement
 fprint_dl0abeled
   (out, x0) = let
 //
-val+DL0ABELED(l0, x1) = x0
+val+DL0ABELED(l0, t0, x1) = x0
 //
 in
-  fprint!(out, "DL0ABELED(", l0, ", ");
+  fprint!(out, "SL0ABELED(");
+  fprint!(out, l0, ", ", t0, ", ");
   fprint_val<a>(out, x1); fprint!(out, ")")
 end // end of [fprint_dl0abeled]
 
@@ -315,11 +317,11 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-print_s0exp_RBRACE(x0) =
-fprint_s0exp_RBRACE(stdout_ref, x0)
+print_labs0exp_RBRACE(x0) =
+fprint_labs0exp_RBRACE(stdout_ref, x0)
 implement
-prerr_s0exp_RBRACE(x0) =
-fprint_s0exp_RBRACE(stderr_ref, x0)
+prerr_labs0exp_RBRACE(x0) =
+fprint_labs0exp_RBRACE(stderr_ref, x0)
 
 local
 
@@ -329,17 +331,17 @@ fprint_val<s0exp> = fprint_s0exp
 in (* in-of-local *)
 
 implement
-fprint_s0exp_RBRACE
+fprint_labs0exp_RBRACE
   (out, x0) =
 (
 case+ x0 of
-| s0exp_RBRACE_cons0(tok) =>
+| labs0exp_RBRACE_cons0(tok) =>
   fprint!
-  (out, "s0exp_RBRACE_cons0(", tok, ")")
-| s0exp_RBRACE_cons1(tok1, s0es, tok2) =>
+  (out, "labs0exp_RBRACE_cons0(", tok, ")")
+| labs0exp_RBRACE_cons1(tok1, ls0es, tok2) =>
   fprint!
-  (out, "s0exp_RBRACE_cons1(", tok1, ", ", s0es, ", ", tok2, ")")
-) (* end of [fprint_s0exp_RBRACE] *)
+  (out, "labs0exp_RBRACE_cons1(", tok1, ", ", ls0es, ", ", tok2, ")")
+) (* end of [fprint_labs0exp_RBRACE] *)
 
 end // end of [local]
 

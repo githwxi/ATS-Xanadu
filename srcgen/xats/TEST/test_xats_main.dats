@@ -143,7 +143,8 @@ toks =
 (
 string_tokenize
 ("\
-[int][n+100]\n\
+@{a=f(x), b=g(y), 3=h(z)}
+// @[int][n+100]\n\
 // f@(x + 1, y, z | what)
 ")
 )

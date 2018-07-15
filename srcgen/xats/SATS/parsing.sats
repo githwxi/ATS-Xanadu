@@ -150,6 +150,8 @@ parser(res:t@ype) =
 
 fun
 p_EQ: parser(token)
+fun
+p_COLON: parser(token)
 
 (* ****** ****** *)
 
