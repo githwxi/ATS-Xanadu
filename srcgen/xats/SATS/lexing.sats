@@ -107,6 +107,8 @@ tnode =
   | T_BAR of () // |
   | T_DOT of () // .
 //
+  | T_EQ of () // =
+//
   | T_LT of () // <
   | T_GT of () // >
   | T_LTEQ of () // <=

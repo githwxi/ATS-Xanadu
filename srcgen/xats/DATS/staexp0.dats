@@ -189,24 +189,69 @@ l0abl_tbox = $rec{
 //
   l0abl_loc= loc_t
 ,
-  l0abl_lab= label
+  l0abl_node= l0abl_node
 //
 } (* end of [absimpl] *)
 
 in (* in-of-local *)
 
 implement
-l0abl_make
-  (loc, lab) = $rec{
-  l0abl_loc= loc, l0abl_lab= lab
-} (* end of [l0abl_make] *)
-
-implement
 l0abl_get_loc(l0) = l0.l0abl_loc
 implement
-l0abl_get_lab(l0) = l0.l0abl_lab
+l0abl_get_node(l0) = l0.l0abl_node
+
+implement
+l0abl_make_node
+  (loc, node) = $rec{
+  l0abl_loc= loc, l0abl_node= node
+} (* end of [l0abl_make] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+l0abl_make_int1
+  (tok) = let
+//
+val-
+T_INT1(rep) = tok.node()
+//
+val i0 = g0string2int(rep)
+val lab = label_make_int(i0)
+//
+in
+//
+l0abl_make_node
+  (tok.loc(), L0ABsome(lab))
+//
+end // end of [l0abl_make_int1]
+
+implement
+l0abl_make_name
+  (tok) = let
+//
+val-
+T_IDENT_alp(s0) = tok.node()
+//
+val lab = label_make_name(s0)
+//
+in
+//
+l0abl_make_node
+  (tok.loc(), L0ABsome(lab))
+//
+end // end of [l0abl_make_name]
+
+implement
+l0abl_make_none
+  (tok) =
+(
+//
+l0abl_make_node
+  (tok.loc(), L0ABnone(tok))
+//
+) (* end of [l0abl_make_none] *)
 
 (* ****** ****** *)
 //
@@ -218,7 +263,15 @@ prerr_l0abl
   (l0) = fprint_l0abl(stderr_ref, l0)
 implement
 fprint_l0abl
-  (out, l0) = $LAB.fprint_label(out, l0.lab())
+  (out, l0) =
+(
+case+
+l0.node() of
+| L0ABsome(lab) =>
+  fprint!(out, "L0ABsome(", lab, ")")
+| L0ABnone(tok) =>
+  fprint!(out, "L0ABnone(", tok, ")")
+)
 //
 (* ****** ****** *)
 

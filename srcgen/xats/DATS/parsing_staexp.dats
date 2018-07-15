@@ -118,6 +118,32 @@ end // end of [p_i0dnt]
 (* ****** ****** *)
 
 implement
+p_l0abl(buf, err) =
+let
+//
+  val e0 = err
+  val tok = buf.get0()
+//
+in
+//
+  case+
+  tok.node() of
+  | T_INT1(rep) =>
+    (
+      buf.incby1(); l0abl_make_int1(tok)
+    )
+  | T_IDENT_alp(name) =>
+    (
+      buf.incby1(); l0abl_make_name(tok)
+    )
+  | _ (* non-INT-IDENT *) =>
+    ( err := e0 + 1; l0abl_make_none(tok))
+//
+end // end of [p_l0abl]
+
+(* ****** ****** *)
+
+implement
 t_s0tid(tok) =
 (
 case+

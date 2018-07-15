@@ -164,6 +164,8 @@ case+ tnd of
 | T_BAR() => fprint(out, "BAR")
 | T_DOT() => fprint(out, "DOT")
 //
+| T_EQ() => fprint(out, "EQ")
+//
 | T_LT() => fprint(out, "LT")
 | T_GT() => fprint(out, "GT")
 | T_LTEQ() => fprint(out, "LTEQ")
@@ -322,6 +324,8 @@ case+ tnd of
 | T_BAR() => fprint(out, "|")
 | T_DOT() => fprint(out, ".")
 //
+| T_EQ() => fprint(out, "=")
+//
 | T_LT() => fprint(out, "<")
 | T_GT() => fprint(out, ">")
 | T_LTEQ() => fprint(out, "<=")
@@ -393,6 +397,8 @@ val
 theMap =
 arrayref_make_elt<tnode>
   (theAsz, T_EOF())
+//
+val () = theMap[c2i('=')] := T_EQ()
 //
 val () = theMap[c2i(',')] := T_COMMA()
 val () = theMap[c2i(';')] := T_SEMICOLON()
