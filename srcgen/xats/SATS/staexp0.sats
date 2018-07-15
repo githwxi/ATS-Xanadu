@@ -236,17 +236,19 @@ sort0_make_node
 abstbox l0abl_tbox = ptr
 typedef l0abl = l0abl_tbox
 //
-fun
-l0abl_make
-(loc: loc_t, l0: label): l0abl
+//
+datatype
+l0abl_node =
+  | L0ABsome of label // valid
+  | L0ABnone of (token) // invalid
 //
 fun
-l0abl_get_loc (x0: l0abl): loc_t
+l0abl_get_loc(l0abl): loc_t
 fun
-l0abl_get_lab (x0: l0abl): label
+l0abl_get_node(l0abl): l0abl_node
 //
 overload .loc with l0abl_get_loc
-overload .lab with l0abl_get_lab
+overload .node with l0abl_get_node
 //
 fun print_l0abl : print_type(l0abl)
 fun prerr_l0abl : prerr_type(l0abl)
@@ -255,6 +257,16 @@ fun fprint_l0abl : fprint_type(l0abl)
 overload print with print_l0abl
 overload prerr with prerr_l0abl
 overload fprint with fprint_l0abl
+//
+fun
+l0abl_make_int1(tok: token): l0abl
+fun
+l0abl_make_name(tok: token): l0abl
+fun
+l0abl_make_none(tok: token): l0abl
+fun
+l0abl_make_node
+(loc: loc_t, node: l0abl_node): l0abl
 //
 (* ****** ****** *)
 //

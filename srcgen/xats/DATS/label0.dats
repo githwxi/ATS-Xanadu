@@ -72,6 +72,9 @@ case+ l0 of
 )
 
 implement
+label_nil = LABsym(symbol_nil)
+
+implement
 label_make_int(i0) = LABint(i0)
 implement
 label_make_sym(s0) = LABsym(s0)

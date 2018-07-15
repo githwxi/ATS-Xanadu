@@ -70,6 +70,7 @@ STAEXP0 = "./staexp0.sats"
   typedef s0eid = $STAEXP0.s0eid
   typedef sort0 = $STAEXP0.sort0
   typedef s0exp = $STAEXP0.s0exp
+  typedef labs0exp = $STAEXP0.labs0exp
 //
 (* ****** ****** *)
 
@@ -148,6 +149,11 @@ parser(res:t@ype) =
 (* ****** ****** *)
 
 fun
+p_EQ: parser(token)
+
+(* ****** ****** *)
+
+fun
 p_RPAREN: parser(token)
 fun
 p_RBRACE: parser(token)
@@ -203,6 +209,11 @@ fun p_sort0 : parser(sort0)
 s0exp ::= {atms0exp}+
 *)
 fun p_s0exp : parser(s0exp)
+//
+(*
+labs0exp ::= l0abl EQ s0exp
+*)
+fun p_labs0exp : parser(labs0exp)
 //
 (* ****** ****** *)
 

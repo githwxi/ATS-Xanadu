@@ -59,6 +59,8 @@ overload fprint with fprint_label
 //
 (* ****** ****** *)
 //
+val label_nil : label
+//
 fun label_make_int(i0: int): label
 fun label_make_sym(i0: symbol): label
 fun label_make_name(s0: string): label
