@@ -488,6 +488,15 @@ end // end of [p_s0eid]
 
 (* ****** ****** *)
 
+extern
+fun
+p_s0arg : parser(s0arg)
+extern
+fun
+p_s0marg : parser(s0marg)
+
+(* ****** ****** *)
+
 (*
 atms0exp ::
 //

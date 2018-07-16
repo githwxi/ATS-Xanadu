@@ -159,32 +159,6 @@ end // end of [local]
 local
 
 absimpl
-sort0_tbox = $rec{
-  sort0_loc= loc_t
-, sort0_node= sort0_node
-} (* end of [absimpl] *)
-
-in (* in-of-local *)
-
-implement
-sort0_get_loc(x) = x.sort0_loc
-implement
-sort0_get_node(x) = x.sort0_node
-
-implement
-sort0_make_node
-(loc, node) = $rec
-{
-  sort0_loc= loc, sort0_node= node
-} (* end of [sort0_make_node] *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
 l0abl_tbox = $rec{
 //
   l0abl_loc= loc_t
@@ -254,25 +228,83 @@ l0abl_make_node
 ) (* end of [l0abl_make_none] *)
 
 (* ****** ****** *)
-//
+
+local
+
+absimpl
+sort0_tbox = $rec{
+  sort0_loc= loc_t
+, sort0_node= sort0_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
 implement
-print_l0abl
-  (l0) = fprint_l0abl(stdout_ref, l0)
+sort0_get_loc(x) = x.sort0_loc
 implement
-prerr_l0abl
-  (l0) = fprint_l0abl(stderr_ref, l0)
+sort0_get_node(x) = x.sort0_node
+
 implement
-fprint_l0abl
-  (out, l0) =
-(
-case+
-l0.node() of
-| L0ABsome(lab) =>
-  fprint!(out, "L0ABsome(", lab, ")")
-| L0ABnone(tok) =>
-  fprint!(out, "L0ABnone(", tok, ")")
-)
-//
+sort0_make_node
+(loc, node) = $rec
+{
+  sort0_loc= loc, sort0_node= node
+} (* end of [sort0_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+s0arg_tbox = $rec{
+  s0arg_loc= loc_t
+, s0arg_node= s0arg_node
+}
+
+in (* in-of-local *)
+
+implement
+s0arg_get_loc(x) = x.s0arg_loc
+implement
+s0arg_get_node(x) = x.s0arg_node
+
+implement
+s0arg_make_node
+(loc, node) = $rec
+{
+  s0arg_loc= loc, s0arg_node= node
+} (* end of [s0arg_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+s0marg_tbox = $rec{
+  s0marg_loc= loc_t
+, s0marg_node= s0marg_node
+}
+
+in (* in-of-local *)
+
+implement
+s0marg_get_loc(x) = x.s0marg_loc
+implement
+s0marg_get_node(x) = x.s0marg_node
+
+implement
+s0marg_make_node
+(loc, node) = $rec
+{
+  s0marg_loc= loc, s0marg_node= node
+} (* end of [s0marg_make_node] *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 local

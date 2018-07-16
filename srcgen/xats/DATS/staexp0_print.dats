@@ -39,6 +39,7 @@ UN =
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/staexp0.sats"
 //
@@ -53,7 +54,13 @@ implement
 fprint_val<i0dnt> = fprint_i0dnt
 
 implement
+fprint_val<l0abl> = fprint_l0abl
+
+implement
 fprint_val<sort0> = fprint_sort0
+
+implement
+fprint_val<s0arg> = fprint_s0arg
 
 implement
 fprint_val<s0exp> = fprint_s0exp
@@ -147,6 +154,26 @@ case+ x0.node() of
 *)
 
 (* ****** ****** *)
+//
+implement
+print_l0abl
+  (l0) = fprint_l0abl(stdout_ref, l0)
+implement
+prerr_l0abl
+  (l0) = fprint_l0abl(stderr_ref, l0)
+implement
+fprint_l0abl
+  (out, l0) =
+(
+case+
+l0.node() of
+| L0ABsome(lab) =>
+  fprint!(out, "L0ABsome(", lab, ")")
+| L0ABnone(tok) =>
+  fprint!(out, "L0ABnone(", tok, ")")
+)
+//
+(* ****** ****** *)
 
 implement
 print_sort0(x0) =
@@ -190,6 +217,27 @@ case+ x0.node() of
 ) (* end of [fprint_sort0] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_s0arg(x0) =
+fprint_s0arg(stdout_ref, x0)
+implement
+prerr_s0arg(x0) =
+fprint_s0arg(stderr_ref, x0)
+
+implement
+fprint_s0arg
+  (out, x0) =
+(
+case+
+x0.node() of
+| S0ARGnone(tok) =>
+  fprint!(out, "S0ARGnone(", tok, ")")
+| S0ARGsome(id, opt) =>
+  fprint!(out, "S0ARGsome(", id, ", ", opt, ")")
+) (* fprint_s0arg *)
 
 (* ****** ****** *)
 

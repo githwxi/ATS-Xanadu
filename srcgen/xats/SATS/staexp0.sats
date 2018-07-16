@@ -188,54 +188,9 @@ overload fprint with fprint_i0dnt
 //
 (* ****** ****** *)
 
-abstbox sort0_tbox = ptr
-typedef sort0 = sort0_tbox
-
-datatype
-sort0_node =
-//
-| S0Tid of (s0tid)
-//
-| S0Tapp of (sort0lst) // HX: unsupported
-//
-| S0Tlist of (token, sort0lst, token) (* for temporary use *)
-//
-| S0Tqual of (token, sort0) // HX: qualified
-(*
-| S0Ttype of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
-*)
-| S0Tnone of (token)
-// end of [sort0_node]
-
-where sort0lst = List0(sort0)
-
-(* ****** ****** *)
-//
-fun
-sort0_get_loc(sort0): loc_t
-fun
-sort0_get_node(sort0): sort0_node
-//
-overload .loc with sort0_get_loc
-overload .node with sort0_get_node
-//
-fun print_sort0 : print_type(sort0)
-fun prerr_sort0 : prerr_type(sort0)
-fun fprint_sort0 : fprint_type(sort0)
-//
-overload print with print_sort0
-overload prerr with prerr_sort0
-overload fprint with fprint_sort0
-//
-fun
-sort0_make_node
-(loc: loc_t, node: sort0_node): sort0
-//
-(* ****** ****** *)
 //
 abstbox l0abl_tbox = ptr
 typedef l0abl = l0abl_tbox
-//
 //
 datatype
 l0abl_node =
@@ -291,6 +246,113 @@ fun
 {a:type}
 fprint_dl0abeled
   (out: FILEref, x0: dl0abeled(a)): void
+//
+(* ****** ****** *)
+//
+abstbox sort0_tbox = ptr
+typedef sort0 = sort0_tbox
+typedef sort0lst = List0(sort0)
+typedef sort0opt = Option(sort0)
+//
+datatype
+sort0_node =
+//
+| S0Tid of (s0tid)
+//
+| S0Tapp of (sort0lst) // HX: unsupported
+//
+| S0Tlist of (token, sort0lst, token) (* for temporary use *)
+//
+| S0Tqual of (token, sort0) // HX: qualified
+(*
+| S0Ttype of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
+*)
+| S0Tnone of (token)
+// end of [sort0_node]
+
+(* ****** ****** *)
+//
+fun
+sort0_get_loc(sort0): loc_t
+fun
+sort0_get_node(sort0): sort0_node
+//
+overload .loc with sort0_get_loc
+overload .node with sort0_get_node
+//
+fun print_sort0 : print_type(sort0)
+fun prerr_sort0 : prerr_type(sort0)
+fun fprint_sort0 : fprint_type(sort0)
+//
+overload print with print_sort0
+overload prerr with prerr_sort0
+overload fprint with fprint_sort0
+//
+fun
+sort0_make_node
+(loc: loc_t, node: sort0_node): sort0
+//
+(* ****** ****** *)
+//
+abstbox s0arg_tbox = ptr
+typedef s0arg = s0arg_tbox
+typedef s0arglst = List0(s0arg)
+//
+datatype
+s0arg_node =
+  | S0ARGnone of token
+  | S0ARGsome of (s0eid, sort0opt)
+//
+fun
+s0arg_get_loc(s0arg): loc_t
+fun
+s0arg_get_node(s0arg): s0arg_node
+//
+overload .loc with s0arg_get_loc
+overload .node with s0arg_get_node
+//
+fun print_s0arg : print_type(s0arg)
+fun prerr_s0arg : prerr_type(s0arg)
+fun fprint_s0arg : fprint_type(s0arg)
+//
+overload print with print_s0arg
+overload prerr with prerr_s0arg
+overload fprint with fprint_s0arg
+//
+fun
+s0arg_make_node
+(loc: loc_t, node: s0arg_node): s0arg
+//
+(* ****** ****** *)
+//
+abstbox s0marg_tbox = ptr
+typedef s0marg = s0marg_tbox
+typedef s0marglst = List0(s0marg)
+//
+datatype
+s0marg_node =
+  | S0MARGnone of token
+  | S0MARGsome of (s0eid, s0marglst)
+//
+fun
+s0marg_get_loc(s0marg): loc_t
+fun
+s0marg_get_node(s0marg): s0marg_node
+//
+overload .loc with s0marg_get_loc
+overload .node with s0marg_get_node
+//
+fun print_s0marg : print_type(s0marg)
+fun prerr_s0marg : prerr_type(s0marg)
+fun fprint_s0marg : fprint_type(s0marg)
+//
+overload print with print_s0marg
+overload prerr with prerr_s0marg
+overload fprint with fprint_s0marg
+//
+fun
+s0marg_make_node
+(loc: loc_t, node: s0marg_node): s0marg
 //
 (* ****** ****** *)
 //
