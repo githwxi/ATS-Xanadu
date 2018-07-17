@@ -488,12 +488,68 @@ end // end of [p_s0eid]
 
 (* ****** ****** *)
 
+(*
+s0arg ::
+  | s0eid [COLON sort0]
+*)
 extern
 fun
 p_s0arg : parser(s0arg)
 extern
 fun
 p_s0marg : parser(s0marg)
+
+(* ****** ****** *)
+
+implement
+p_s0arg
+  (buf, err) = let
+//
+val e0 = err
+val id = p_s0eid(buf, err)
+//
+in
+//
+if
+(
+err = e0
+)
+then let
+val
+tok = buf.get0()
+in
+//
+case+
+tok.node() of
+| T_COLON() => let
+    val () = buf.incby1()
+    val
+    s0t = p_sort0(buf, err)
+    val
+    loc = id.loc() + s0t.loc()
+  in
+    s0arg_make_node
+    ( loc
+    , S0ARGsome(id, Some(s0t))
+    )
+  end // end of [T_COLON]
+| _ (*non-COLON*) =>
+  (
+    s0arg_make_node
+    ( id.loc()
+    , S0ARGsome(id, None(*void*)))
+  ) (* end of [non-COLON] *)
+//
+end // end of [then]
+else
+(
+//
+s0arg_make_node
+  (id.loc(), S0ARGsome(id, None()))
+//
+) (* end of [else] *)
+//
+end // end of [p_s0arg]
 
 (* ****** ****** *)
 
