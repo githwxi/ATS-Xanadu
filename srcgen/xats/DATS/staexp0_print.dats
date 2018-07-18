@@ -61,6 +61,8 @@ fprint_val<sort0> = fprint_sort0
 
 implement
 fprint_val<s0arg> = fprint_s0arg
+implement
+fprint_val<s0marg> = fprint_s0marg
 
 implement
 fprint_val<s0exp> = fprint_s0exp
@@ -242,6 +244,32 @@ x0.node() of
 (* ****** ****** *)
 
 implement
+print_s0marg(x0) =
+fprint_s0marg(stdout_ref, x0)
+implement
+prerr_s0marg(x0) =
+fprint_s0marg(stderr_ref, x0)
+
+implement
+fprint_s0marg
+  (out, x0) =
+(
+case+
+x0.node() of
+| S0MARGnone(tok) =>
+  fprint!(out, "S0MARGnone(", tok, ")")
+(*
+| S0MARGsing(s0a) =>
+  fprint!(out, "S0MARGsing(", s0a, ")")
+*)
+| S0MARGlist(tbeg, s0as, tend) =>
+  fprint!
+  (out, "S0MARGlist(", tbeg, ", ", s0as, ", ", tend, ")")
+) (* fprint_s0arg *)
+
+(* ****** ****** *)
+
+implement
 {a}(*tmp*)
 fprint_sl0abeled
   (out, x0) = let
@@ -314,18 +342,18 @@ case+ x0.node() of
   fprint!
   (out, "S0Ebrace(", tbeg, ", ", s0es, ", ", tend, ")")
 //
-| S0Equal(tok, s0e) =>
+| S0Elam
+  (tlam, s0mas, opt, teqgt, s0e0) =>
   fprint!
-  (out, "S0Equal(", tok, ", ", s0e, ")")
+  (out, "S0Elam(", tlam, "(", s0mas, ")", ", ", opt, ", ", teqgt, ", ", s0e0, ")")
 //
 | S0Eanno(s0e, s0t) =>
-  fprint!
-  (out, "S0Eanno(", s0e, ", ", s0t, ")")
+  fprint!(out, "S0Eanno(", s0e, ", ", s0t, ")")
 //
-| S0Enone(token) =>
-  (
-    fprint!(out, "S0Enone(", token, ")")
-  ) // end of [S0Enone]
+| S0Equal(tok, s0e) =>
+  fprint!(out, "S0Equal(", tok, ", ", s0e, ")")
+//
+| S0Enone(token) => fprint!(out, "S0Enone(", token, ")")
 //
 ) (* end of [fprint_s0exp] *)
 

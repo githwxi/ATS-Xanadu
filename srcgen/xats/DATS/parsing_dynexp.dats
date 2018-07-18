@@ -33,10 +33,36 @@
 //
 (* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 #staload "./../SATS/parsing.sats"
 
 (* ****** ****** *)
 
+implement
+p_i0dnt
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| tnd
+  when
+  t_s0eid(tnd) =>
+    p_s0eid(buf, err)
+| tnd
+  when
+  t_d0eid(tnd) =>
+    p_d0eid(buf, err)
+| _ (* non-i0dnt *) =>
+    (err := e0 + 1; i0dnt_none(tok))
+//
+end // end of [p_i0dnt]
 
 (* ****** ****** *)
 

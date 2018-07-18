@@ -33,6 +33,15 @@
 //
 (* ****** ****** *)
 //
+#define INFIX 0
+#define INFIXL 1
+#define INFIXR 2
+//
+#define PREFIX 3
+#define POSTFIX 4
+//
+(* ****** ****** *)
+//
 #define PROPSORT 0
 #define VIEWSORT 0
 //

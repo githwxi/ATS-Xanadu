@@ -73,4 +73,30 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+d0ecl_tbox = $rec{
+  d0ecl_loc= loc_t
+, d0ecl_node= d0ecl_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d0ecl_get_loc(x) = x.d0ecl_loc
+implement
+d0ecl_get_node(x) = x.d0ecl_node
+
+implement
+d0ecl_make_node
+(loc, node) = $rec
+{
+  d0ecl_loc= loc, d0ecl_node= node
+} (* end of [d0ecl_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp0.dats] *)
