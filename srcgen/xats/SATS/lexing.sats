@@ -111,8 +111,12 @@ tnode =
 //
   | T_LT of () // <
   | T_GT of () // >
+(*
   | T_LTEQ of () // <=
   | T_GTEQ of () // >=
+*)
+//
+  | T_EQGT of () // =>
 //
   | T_COMMA of () // ,
   | T_COLON of () // :
@@ -156,6 +160,9 @@ tnode =
 //
   | T_DATASORT of ()
   | T_DATATYPE of int(*kind*)
+//
+  | T_SRP_NONFIX of ()
+  | T_SRP_FIXITY of int(*kind*)
 //
   | T_SRP_INCLUDE of () // #include
 //

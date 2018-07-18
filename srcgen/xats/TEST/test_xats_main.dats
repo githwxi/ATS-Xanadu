@@ -143,9 +143,10 @@ toks =
 (
 string_tokenize
 ("\
-@{a=f(x), b=g(y), 3=h(z)}
+(lam(x: int, y)(z: bool): int => x + y)(1, 2)(false)
 // @[int][n+100]\n\
 // f@(x + 1, y, z | what)
+// @{a=f(x), b=g(y), 3=h(z)}
 ")
 )
 //

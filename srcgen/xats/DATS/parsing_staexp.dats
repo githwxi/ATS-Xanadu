@@ -144,10 +144,9 @@ end // end of [p_l0abl]
 (* ****** ****** *)
 
 implement
-t_s0tid(tok) =
+t_s0tid(tnd) =
 (
-case+
-tok.node() of
+case+ tnd of
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
 //
@@ -260,21 +259,25 @@ sort0seq_COMMA::
 //
 extern
 fun
-p_atmsort0 : parser(sort0)
+p_atmsort0: parser(sort0)
 extern
 fun
-p_atmsort0seq : parser(sort0lst)
+p_atmsort0seq: parser(sort0lst)
 extern
 fun
-p_sort0seq_COMMA : parser(sort0lst)
+p_sort0seq_COMMA: parser(sort0lst)
 //
 (* ****** ****** *)
 
 implement
 p_sort0(buf, err) =
 let
+//
+  val e0 = err
+//
   val s0ts0 =
   p_atmsort0seq(buf, err)
+//
 in
 //
 case+ s0ts0 of
@@ -282,8 +285,8 @@ case+ s0ts0 of
     ((*void*)) => let
     val tok = buf.get0()
   in
-    sort0_make_node
-    (tok.loc(), S0Tnone(tok))
+    err := e0 + 1;
+    sort0_make_node(tok.loc(), S0Tnone(tok))
   end // end of [list_nil]
 | list_cons
     (s0t0, s0ts1) =>
@@ -323,10 +326,11 @@ in
 case+
 tok0.node() of
 //
-| _ when t_s0tid(tok0) =>
+| tnd when t_s0tid(tnd) =>
   let
     val id = p_s0tid(buf, err)
   in
+    err := e0;
     sort0_make_node(id.loc(), S0Tid(id))
   end // end of [t_s0tid]
 //
@@ -338,6 +342,7 @@ tok0.node() of
     val tbeg = tok0
     val tend = p_RPAREN(buf, err)
   in
+    err := e0;
     sort0_make_node
     ( loc_res
     , S0Tlist(tbeg, s0ts, tend)) where
@@ -350,6 +355,7 @@ tok0.node() of
     val () = buf.incby1()
     val s0t0 = p_atmsort0(buf, err)
   in
+    err := e0;
     sort0_make_node
     (loc_res, S0Tqual(tok0, s0t0)) where
     {
@@ -392,10 +398,9 @@ list_vt2t
 (* ****** ****** *)
 
 implement
-t_s0eid(tok) =
+t_s0eid(tnd) =
 (
-case+
-tok.node() of
+case+ tnd of
 //
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
@@ -404,10 +409,16 @@ tok.node() of
 //
 | T_LT() => true // "<"
 | T_GT() => true // ">"
+(*
 | T_LTEQ() => true // "<="
 | T_GTEQ() => true // ">="
+*)
 (*
 | T_LTGT() => true // "<>"
+*)
+//
+(*
+| T_EQGT() => true // "=>"
 *)
 //
 | _ (* non-IDENT *) => false
@@ -465,6 +476,7 @@ in
       val tnd = T_IDENT_sym( ">" )
       val tok = token_make_node(loc, tnd)
     }
+(*
   | T_LTEQ() =>
     i0dnt_some(tok) where
     {
@@ -481,6 +493,18 @@ in
       val tnd = T_IDENT_sym( ">=" )
       val tok = token_make_node(loc, tnd)
     }
+*)
+//
+(*
+  | T_EQGT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "=>" )
+      val tok = token_make_node(loc, tnd)
+    }
+*)
 //
   | _ (* non-IDENT *) =>
     (err := err + 1; i0dnt_none(tok))
@@ -494,10 +518,10 @@ s0arg ::
 *)
 extern
 fun
-p_s0arg : parser(s0arg)
+p_s0arg: parser(s0arg)
 extern
 fun
-p_s0marg : parser(s0marg)
+p_s0argseq_COMMA: parser(s0arglst)
 
 (* ****** ****** *)
 
@@ -528,6 +552,7 @@ tok.node() of
     val
     loc = id.loc() + s0t.loc()
   in
+    err := e0;
     s0arg_make_node
     ( loc
     , S0ARGsome(id, Some(s0t))
@@ -553,6 +578,180 @@ end // end of [p_s0arg]
 
 (* ****** ****** *)
 
+implement
+p_s0argseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun{s0arg}(buf, err, p_s0arg))
+//
+) (* end of [p_s0argseq_COMMA] *)
+
+(* ****** ****** *)
+
+(*
+s0marg ::
+  | s0eid [COLON atmsort0]
+  | LPAREN s0argseq_COMMA RPAREN
+*)
+extern
+fun
+p_s0marg: parser(s0marg)
+extern
+fun
+p_s0margseq: parser(s0marglst)
+
+(* ****** ****** *)
+//
+(*
+fun
+s0arg_make_s0eid
+  (id: s0eid): s0arg =
+(
+  s0arg_make_node
+  (id.loc(), S0ARGsome(id, None()))
+)
+fun
+s0marg_make_s0eid
+  (id: s0eid): s0marg = let
+  val s0a = s0arg_make_s0eid(id)
+in
+  s0marg_make_node(s0a.loc(), S0MARGsing(s0a))
+end // end of [s0marg_make_s0eid]
+*)
+//
+(* ****** ****** *)
+
+implement
+p_s0marg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_LPAREN() => let
+    val () = buf.incby1()
+    val s0as =
+      p_s0argseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_RPAREN(buf, err)
+(*
+    val () =
+    println! ("p_s0marg: s0as = ", s0as)
+*)
+  in
+    err := e0;
+    s0marg_make_node
+    ( loc_res
+    , S0MARGlist(tbeg, s0as, tend)
+    ) where
+    {
+      val
+      loc_res = tbeg.loc() + tend.loc()
+    } // s0marg_make_node
+  end // end of [T_LPAREN]
+| _ (*non-LPAREN*) =>
+  let
+    val () = (err := e0 + 1)
+  in
+    s0marg_make_node(tok.loc(), S0MARGnone(tok))
+  end // end of [non-LPAREN]
+(*
+  let
+    val id = p_s0eid(buf, err)
+  in
+    if
+    (err = e0)
+    then let
+      val tok = buf.get0()
+    in
+      case+
+      tok.node() of
+      | T_COLON() => let
+          val () = buf.incby1()
+          val
+          s0t = p_atmsort0(buf, err)
+          val
+          s0a =
+          s0arg_make_node
+          ( loc_res
+          , S0ARGsome(id, Some(s0t))
+          ) where
+          {
+            val
+            loc_res = id.loc() + s0t.loc()
+          }
+        in
+          s0marg_make_node
+            (s0a.loc(), S0MARGsing(s0a))
+          // s0marg_make_node
+        end // end of [T_COLON]
+      | _ (*non-COLON*) => s0marg_make_s0eid(id)
+    end // end of [then]
+    else s0marg_make_s0eid(id)
+  end // end of [non-LPAREN]
+*)
+//
+end // end of [p_s0marg]
+
+(* ****** ****** *)
+
+implement
+p_s0margseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{s0marg}(buf, err, p_s0marg))
+//
+) (* end of [p_s0margseq] *)
+
+(* ****** ****** *)
+//
+extern
+fun
+popt_sort0_anno
+  : parser(sort0opt)
+//
+(* ****** ****** *)
+
+implement
+popt_sort0_anno
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+(*
+val ((*void*)) =
+println!
+("popt_sort0_anno: tok = ", tok)
+*)
+//
+in
+//
+case+
+tok.node() of
+| T_COLON() => let
+    val () = buf.incby1()
+    val s0t = p_sort0(buf, err)
+  in
+    let
+      val () = err := e0 in Some(s0t)
+    end
+  end // end of [T_COLON]
+| _(*non-COLON*) => None(*void*)
+//
+end // end of [popt_sort0_anno]
+
+(* ****** ****** *)
+
 (*
 atms0exp ::
 //
@@ -568,9 +767,6 @@ atms0exp ::
 extern
 fun
 p_atms0exp : parser(s0exp)
-extern
-fun
-p_apps0exp : parser(s0exp)
 //
 extern
 fun
@@ -637,6 +833,8 @@ implement
 p_labs0exp
   (buf, err) = let
 //
+val e0 = err
+//
 val l0 =
 (
   p_l0abl(buf, err)
@@ -654,7 +852,7 @@ println! ("p_labs0exp: s0e = ", s0e)
 *)
 //
 in
-  SL0ABELED(l0, tok, s0e)
+  err := e0; SL0ABELED(l0, tok, s0e)
 end // end of [p_labs0exp]
 
 (* ****** ****** *)
@@ -675,19 +873,22 @@ tok0.node() of
   let
     val i0 = p_i0nt(buf, err)
   in
+    err := e0;
     s0exp_make_node(i0.loc(), S0Eint(i0))
   end // end of [t_i0nt]
 | _ when t_c0har(tok0) =>
   let
     val c0 = p_c0har(buf, err)
   in
+    err := e0;
     s0exp_make_node(c0.loc(), S0Echar(c0))
   end // end of [t_c0har]
 //
-| _ when t_s0eid(tok0) =>
+| tnd when t_s0eid(tnd) =>
   let
     val id = p_s0eid(buf, err)
   in
+    err := e0;
     s0exp_make_node(id.loc(), S0Eid(id))
   end // end of [t_s0eid]
 //
@@ -699,6 +900,7 @@ tok0.node() of
     val tbeg = tok0
     val tend = p_s0exp_RPAREN(buf, err)
   in
+    err := e0;
     s0exp_make_node
     ( loc_res
     , S0Eparen(tbeg, s0es, tend)) where
@@ -716,6 +918,7 @@ tok0.node() of
     val tbeg = tok0
     val tend = p_labs0exp_RBRACE(buf, err)
   in
+    err := e0;
     s0exp_make_node
     ( loc_res
     , S0Ebrace(tbeg, ls0es, tend)) where
@@ -734,15 +937,50 @@ tok0.node() of
     val tend = p_RBRACKET(buf, err)
     val loc_res = tbeg.loc()+tend.loc()
   in
+    err := e0;
     s0exp_make_node
       (loc_res, S0Ebrack(tbeg, s0es, tend))
     // end of [s0exp_make_node]
   end // end of [T_LBRACKET]
 //
+| T_LAM(k0) => let
+    val () = buf.incby1()
+    val s0mas =
+      p_s0margseq(buf, err)
+    // end of [val]
+    val anno =
+      popt_sort0_anno(buf, err)
+    // end of [val]
+    val tok1 = p_EQGT(buf, err)
+    val s0e0 = p_s0exp(buf, err)
+    val loc_res = tok0.loc() + s0e0.loc()
+//
+    val () =
+      println! ("p_s0exp: err = ", err)
+    val () =
+      println! ("p_s0exp: tok0 = ", tok0)
+    val () =
+      println! ("p_s0exp: s0mas = ", s0mas)
+    val () =
+      println! ("p_s0exp: anno = ", anno)
+    val () =
+      println! ("p_s0exp: tok1 = ", tok1)
+    val () =
+      println! ("p_s0exp: s0e0 = ", s0e0)
+//
+  in
+    err := e0;
+    s0exp_make_node
+    ( loc_res
+    , S0Elam(tok0, s0mas, anno, tok1, s0e0)
+    )
+  end // end of [T_LAM]
+//
 | T_IDENT_qual _ => let
     val () = buf.incby1()
     val s0e0 = p_atms0exp(buf, err)
   in
+    err := e0;
     s0exp_make_node
     (loc_res, S0Equal(tok0, s0e0)) where
     {
@@ -808,13 +1046,14 @@ case+ tnd1 of
       p_s0expseq_COMMA(buf, err)
     val tok2 = p_RPAREN(buf, err)
   in
+    err := e0;
     s0exp_RPAREN_cons1(tok1, s0es, tok2)
   end // end of [T_BAR]
 | _ (* non-BAR *) =>
   (
     case+ tnd1 of
     | T_RPAREN() =>
-      s0exp_RPAREN_cons0(tok1)
+      (err := e0; s0exp_RPAREN_cons0(tok1))
     | _(*non-RPAREN*) =>
       (err := e0 + 1; s0exp_RPAREN_cons0(tok1))
   )
@@ -835,13 +1074,14 @@ case+ tnd1 of
     p_labs0expseq_COMMA(buf, err)
     val tok2 = p_RPAREN(buf, err)
   in
+    err := e0;
     labs0exp_RBRACE_cons1(tok1, ls0es, tok2)
   end // end of [T_BAR]
 | _ (* non-BAR *) =>
   (
     case+ tnd1 of
     | T_RBRACE() =>
-      labs0exp_RBRACE_cons0(tok1)
+      (err := e0; labs0exp_RBRACE_cons0(tok1))
     | _(*non-RPAREN*) =>
       (err := e0 + 1; labs0exp_RBRACE_cons0(tok1))
   )

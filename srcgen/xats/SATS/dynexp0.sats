@@ -77,4 +77,46 @@ d0exp_make_node
 //
 (* ****** ****** *)
 
+abstype d0ecl_tbox = ptr
+typedef d0ecl = d0ecl_tbox
+typedef d0eclist = List0(d0ecl)
+typedef d0eclopt = Option(d0ecl)
+
+(* ****** ****** *)
+
+datatype
+d0ecl_node =
+//
+(*
+| D0Cfixity of
+  (f0xty, i0dntlst) // prefix, infix, postfix
+*)
+| D0Cnonfix of (i0dntlst) // absolving fixity status
+//
+// end of [d0ecl_node]
+
+(* ****** ****** *)
+//
+fun
+d0ecl_get_loc(d0ecl): loc_t
+fun
+d0ecl_get_node(d0ecl): d0ecl_node
+//
+overload .loc with d0ecl_get_loc
+overload .node with d0ecl_get_node
+//
+fun print_d0ecl : (d0ecl) -> void
+fun prerr_d0ecl : (d0ecl) -> void
+fun fprint_d0ecl : fprint_type(d0ecl)
+//
+overload print with print_d0ecl
+overload prerr with prerr_d0ecl
+overload fprint with fprint_d0ecl
+//
+fun
+d0ecl_make_node
+(loc: loc_t, node: d0ecl_node): d0ecl
+//
+(* ****** ****** *)
+
 (* end of [xats_dynexp0.sats] *)

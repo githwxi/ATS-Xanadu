@@ -70,6 +70,8 @@ abstbox i0dnt_tbox = ptr
 //
 (* ****** ****** *)
 //
+typedef i0dnt = i0dnt_tbox
+//
 typedef s0tid = i0dnt_tbox
 typedef s0eid = i0dnt_tbox
 //
@@ -332,7 +334,10 @@ typedef s0marglst = List0(s0marg)
 datatype
 s0marg_node =
   | S0MARGnone of token
-  | S0MARGsome of (s0eid, s0marglst)
+(*
+  | S0MARGsing of (s0arg)
+*)
+  | S0MARGlist of (token, s0arglst, token)
 //
 fun
 s0marg_get_loc(s0marg): loc_t
@@ -389,9 +394,12 @@ s0exp_node =
 | S0Ebrace of
     (token, labs0explst, labs0exp_RBRACE)
 //
-| S0Equal of (token, s0exp) // qualified
+| S0Elam of
+  (token, s0marglst, sort0opt, token, s0exp)
 //
-| S0Eanno of (s0exp, sort0) // sort-ascribed staexps
+| S0Eanno of (s0exp, sort0) // sort annotation
+//
+| S0Equal of (token, s0exp) // qualified staexp
 //
 | S0Enone of (token) // HX-2018-07-08: indicating error 
 // end of [s0exp_node]

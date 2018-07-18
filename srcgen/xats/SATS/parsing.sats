@@ -78,6 +78,8 @@ STAEXP0 = "./staexp0.sats"
 DYNEXP0 = "./dynexp0.sats"
 //
   typedef d0eid = $DYNEXP0.d0eid
+  typedef d0ecl = $DYNEXP0.d0ecl
+  typedef d0eclist = List0(d0ecl)
 //
 (* ****** ****** *)
 //
@@ -151,6 +153,8 @@ parser(res:t@ype) =
 fun
 p_EQ: parser(token)
 fun
+p_EQGT: parser(token)
+fun
 p_COLON: parser(token)
 
 (* ****** ****** *)
@@ -180,9 +184,9 @@ fun p_l0abl: parser(l0abl)
 
 (* ****** ****** *)
 //
-fun t_s0tid(token): bool
-fun t_s0eid(token): bool
-fun t_d0eid(token): bool
+fun t_s0tid(tnode): bool
+fun t_s0eid(tnode): bool
+fun t_d0eid(tnode): bool
 //
 fun p_s0tid: parser(s0tid)
 fun p_s0eid: parser(s0eid)
@@ -217,6 +221,11 @@ labs0exp ::= l0abl EQ s0exp
 *)
 fun p_labs0exp : parser(labs0exp)
 //
+(* ****** ****** *)
+
+fun p_d0ecl : parser(d0ecl)
+fun p_d0eclseq : parser(d0eclist)
+
 (* ****** ****** *)
 
 datavtype

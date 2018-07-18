@@ -77,6 +77,20 @@ macdef
 T_DATAVTYPE_ = T_DATATYPE(VTYPESORT)
 //
 (* ****** ****** *)
+//
+macdef
+T_INFIX_ = T_SRP_FIXITY(INFIX)
+macdef
+T_INFIXL_ = T_SRP_FIXITY(INFIXL)
+macdef
+T_INFIXR_ = T_SRP_FIXITY(INFIXR)
+//
+macdef
+T_PREFIX_ = T_SRP_FIXITY(PREFIX)
+macdef
+T_POSTFIX_ = T_SRP_FIXITY(POSTFIX)
+//
+(* ****** ****** *)
 
 val () =
 kword_initize
@@ -95,9 +109,12 @@ val () = myins("@", T_AT)
 *)
 //
 val () = myins("=", T_EQ)
+val () = myins(":", T_COLON)
 //
 val () = myins("|", T_BAR)
 val () = myins(".", T_DOT)
+//
+val () = myins("=>", T_EQGT)
 //
 val () = myins("as", T_AS)
 //
@@ -117,6 +134,8 @@ val () = myins("if", T_IF)
 val () = myins("sif", T_IF)
 val () = myins("then", T_THEN)
 val () = myins("else", T_ELSE)
+//
+val () = myins("local", T_LOCAL)
 //
 val () = myins("absprop", T_ABSPROP_)
 val () = myins("absview", T_ABSVIEW_)
@@ -191,6 +210,9 @@ val () = myins("$delay")
 val () = myins("$delay_t")
 val () = myins("$delay_vt")
 //
+*)
+(*
+//
 val () = myins("#if")
 val () = myins("#ifdef")
 val () = myins("#ifundef")
@@ -198,6 +220,14 @@ val () = myins("#ifundef")
 val () = myins("#define")
 //
 *)
+//
+val () = myins("#infix", T_INFIX_)
+val () = myins("#infixl", T_INFIXL_)
+val () = myins("#infixr", T_INFIXR_)
+val () = myins("#prefix", T_PREFIX_)
+val () = myins("#postfix", T_POSTFIX_)
+//
+val () = myins("#nonfix", T_SRP_NONFIX)
 //
 val () = myins("#include", T_SRP_INCLUDE)
 //

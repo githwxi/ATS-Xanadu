@@ -168,8 +168,12 @@ case+ tnd of
 //
 | T_LT() => fprint(out, "LT")
 | T_GT() => fprint(out, "GT")
+(*
 | T_LTEQ() => fprint(out, "LTEQ")
 | T_GTEQ() => fprint(out, "GTEQ")
+*)
+//
+| T_EQGT() => fprint(out, "EQGT")
 //
 | T_COMMA() => fprint(out, "COMMA")
 | T_COLON() => fprint(out, "COLON")
@@ -211,13 +215,18 @@ case+ tnd of
 //
 | T_LOCAL() => fprint(out, "LOCAL")
 //
-| T_ABSTYPE(sort) =>
-  fprint!(out, "ABSTYPE(", sort, ")")
+| T_ABSTYPE(srt) =>
+  fprint!(out, "ABSTYPE(", srt, ")")
 //
 | T_DATASORT() =>
   fprint(out, "DATASORT")
-| T_DATATYPE(sort) =>
-  fprint!(out, "DATATYPE(", sort, ")")
+| T_DATATYPE(srt) =>
+  fprint!(out, "DATATYPE(", srt, ")")
+//
+| T_SRP_NONFIX() =>
+  fprint!(out, "#NONFIX")
+| T_SRP_FIXITY(knd) =>
+  fprint!(out, "#FIXIXTY(", knd, ")")
 //
 | T_SRP_INCLUDE() => fprint(out, "#INCLUDE")
 //
@@ -329,8 +338,12 @@ case+ tnd of
 //
 | T_LT() => fprint(out, "<")
 | T_GT() => fprint(out, ">")
+(*
 | T_LTEQ() => fprint(out, "<=")
 | T_GTEQ() => fprint(out, ">=")
+*)
+//
+| T_EQGT() => fprint(out, "=>")
 //
 | T_COMMA() => fprint(out, ",")
 | T_COLON() => fprint(out, ":")
@@ -378,6 +391,11 @@ case+ tnd of
   fprint!(out, "datasort")
 | T_DATATYPE(knd) =>
   fprint!(out, "datatype(", knd, ")")
+//
+| T_SRP_NONFIX() =>
+  fprint!(out, "#nonfix")
+| T_SRP_FIXITY(knd) =>
+  fprint!(out, "#fixity(", knd, ")")
 //
 | T_SRP_INCLUDE() => fprint(out, "#include")
 //
