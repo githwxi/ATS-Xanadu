@@ -87,11 +87,13 @@ typedef d0eclopt = Option(d0ecl)
 datatype
 d0ecl_node =
 //
+| D0Cnone of token // HX: error indication
+//
 (*
 | D0Cfixity of
-  (f0xty, i0dntlst) // prefix, infix, postfix
+  (f0xty, i0dntlst) // HX: prefix, infix, postfix
 *)
-| D0Cnonfix of (i0dntlst) // absolving fixity status
+| D0Cnonfix of (i0dntlst) // HX: absolving fixity status
 //
 // end of [d0ecl_node]
 
