@@ -99,6 +99,17 @@ println!
 #staload "./../SATS/parsing.sats"
 //
 (* ****** ****** *)
+
+implement
+fprint_val<sort0> = fprint_sort0
+implement
+fprint_val<s0exp> = fprint_s0exp
+implement
+fprint_val<d0exp> = fprint_d0exp
+implement
+fprint_val<d0ecl> = fprint_d0ecl
+
+(* ****** ****** *)
 //
 val-
 toks =
@@ -176,6 +187,44 @@ in
 end // end of [val]
 
 val () = println! ("s0e0 = ", s0e0)
+
+(* ****** ****** *)
+//
+val-
+toks =
+(
+string_tokenize
+("\
+#nonfix print fprint forall
+")
+)
+//
+val
+toks =
+lexing_preprocess_tokenlst(toks)
+//
+val
+toks =
+list_vt2t(toks)
+(*
+val ((*void*)) =
+list0_foreach<token>
+(g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
+*)
+//
+val d0c0 = let
+//
+var err: int
+var buf: tokbuf
+val ((*void*)) = (err := 0)
+val ((*void*)) =
+tokbuf_initize_list(buf, toks)
+//
+in
+  p_d0ecl(buf, err)
+end // end of [val]
+
+val () = println! ("d0c0 = ", d0c0)
 
 (* ****** ****** *)
 

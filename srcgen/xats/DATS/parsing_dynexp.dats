@@ -197,7 +197,7 @@ p_d0eclseq
 list_vt2t
 (pstar_fun{d0ecl}(buf, err, p_d0ecl))
 //
-) (* end of [p_i0dntseq] *)
+) (* end of [p_d0eclseq] *)
 
 (* ****** ****** *)
 

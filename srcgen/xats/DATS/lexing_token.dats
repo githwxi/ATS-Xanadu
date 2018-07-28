@@ -645,6 +645,21 @@ case+ node0 of
     | T_EOF() => node0 | _(*else*) => node1
   end // end of [T_IDENT_sym]
 //
+| T_IDENT_dlr(id) => let
+    val
+    node1 = tnode_search(id)
+  in
+    case+ node1 of
+    | T_EOF() => node0 | _(*else*) => node1
+  end // end of [T_IDENT_dlr]
+| T_IDENT_srp(id) => let
+    val
+    node1 = tnode_search(id)
+  in
+    case+ node1 of
+    | T_EOF() => node0 | _(*else*) => node1
+  end // end of [T_IDENT_srp]
+//
 | _ (* rest-of-tnode *) => node0
 //
 )
