@@ -46,12 +46,15 @@ UN =
 #staload "./../SATS/dynexp0.sats"
 //
 (* ****** ****** *)
-
+//
+implement
+fprint_val<token> = fprint_token
+//
 implement
 fprint_val<d0exp> = fprint_d0exp
 implement
 fprint_val<d0ecl> = fprint_d0ecl
-
+//
 (* ****** ****** *)
 
 implement
@@ -111,11 +114,33 @@ case+ x0.node() of
 | D0Cnonfix(tok, ids) =>
   fprint!(out, "D0Cnonfix(", tok, ", ", ids, ")")
 | D0Cfixity(tok, opt, ids) =>
-  fprint!(out, "D0Cfixity(", tok, ", ", "...", ", ", ids, ")")
+  fprint!(out, "D0Cfixity(", tok, ", ", opt, ", ", ids, ")")
 //
 ) (* end of [fprint_d0ecl] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_precopt(x0) =
+fprint_precopt(stdout_ref, x0)
+implement
+prerr_precopt(x0) =
+fprint_precopt(stderr_ref, x0)
+
+implement
+fprint_precopt
+  (out, x0) =
+(
+case+ x0 of
+| PRECOPTnil() =>
+  fprint(out, "PRECOPTnil()")
+| PRECOPTsing(tok) =>
+  fprint!(out, "PRECOPTsing(", tok, ")")
+| PRECOPTlist(t0, ts, t1) =>
+  fprint!(out, "PRECOPTlist(", t0, "; ", ts, "; ", t1)
+) (* end of [fprint_precopt] *)
 
 (* ****** ****** *)
 
