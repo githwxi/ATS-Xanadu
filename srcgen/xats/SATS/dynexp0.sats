@@ -93,9 +93,18 @@ d0ecl_node =
 | D0Cfixity of
   (f0xty, i0dntlst) // HX: prefix, infix, postfix
 *)
-| D0Cnonfix of (i0dntlst) // HX: absolving fixity status
+| D0Cnonfix of (token, i0dntlst) // HX: absolving fixity status
+//
+| D0Cfixity of (token, precopt, i0dntlst) // HX: attaching fixity status
 //
 // end of [d0ecl_node]
+
+(* ****** ****** *)
+
+and precopt =
+| PRECOPTnil of ()
+| PRECOPTsing of (token)
+| PRECOPTlist of (token, tokenlst, token)
 
 (* ****** ****** *)
 //

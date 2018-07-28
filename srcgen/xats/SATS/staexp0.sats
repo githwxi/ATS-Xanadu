@@ -45,6 +45,7 @@ staload LEX = "./lexing.sats"
 staload SYM = "./symbol.sats"
 //
 typedef token = $LEX.token
+typedef tokenlst = $LEX.tokenlst
 typedef tokenopt = $LEX.tokenopt
 //
 typedef symbol = $SYM.symbol

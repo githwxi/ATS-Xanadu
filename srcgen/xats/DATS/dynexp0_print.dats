@@ -108,8 +108,10 @@ case+ x0.node() of
 | D0Cnone(tok) =>
   fprint!(out, "D0Cnone(", tok, ")")
 //
-| D0Cnonfix(ids) =>
-  fprint!(out, "D0Cnonfix(", ids, ")")
+| D0Cnonfix(tok, ids) =>
+  fprint!(out, "D0Cnonfix(", tok, ", ", ids, ")")
+| D0Cfixity(tok, opt, ids) =>
+  fprint!(out, "D0Cfixity(", tok, ", ", "...", ", ", ids, ")")
 //
 ) (* end of [fprint_d0ecl] *)
 
