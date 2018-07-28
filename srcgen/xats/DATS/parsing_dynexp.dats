@@ -44,6 +44,57 @@
 #staload "./../SATS/parsing.sats"
 
 (* ****** ****** *)
+//
+extern
+fun
+p_idint: parser(token)
+extern
+fun
+p_idintseq: parser(tokenlst)
+//
+implement
+p_idint
+  (buf, err) = let
+//
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| T_IDENT_alp _ =>
+  (buf.incby1(); tok)
+| T_IDENT_sym _ =>
+  (buf.incby1(); tok)
+| T_LT() => tok where
+  {
+    val () = buf.incby1()
+    val loc = tok.loc((*void*))
+    val tnd = T_IDENT_sym( "<" )
+    val tok = token_make_node(loc, tnd)
+  }
+| T_GT() => tok where
+  {
+    val () = buf.incby1()
+    val loc = tok.loc((*void*))
+    val tnd = T_IDENT_sym( ">" )
+    val tok = token_make_node(loc, tnd)
+  }
+| _ (* non-IDENT *) =>
+  (err := err + 1; tok)
+//
+end // end of [p_idint]
+implement
+p_idintseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{token}(buf, err, p_idint))
+//
+) (* end of [p_idintseq] *)
+//
+(* ****** ****** *)
 
 implement
 t_d0eid(tnd) =
@@ -153,6 +204,43 @@ list_vt2t
 //
 (* ****** ****** *)
 
+local
+
+extern
+fun
+p_precopt: parser(precopt)
+
+implement
+p_precopt
+  (buf, err) = let
+//
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| T_INT1 _ =>
+  PRECOPTsing(tok) where
+  {
+    val () = buf.incby1()
+  }
+| T_LPAREN() => let
+    val () = buf.incby1()
+    val toks =
+      p_idintseq(buf, err)
+    // end of [val]
+    val tok2 = p_RPAREN(buf, err)
+  in
+    PRECOPTlist(tok, toks, tok2)
+  end
+//
+| _(*non-INT1-LPAREN*) => PRECOPTnil()
+//
+end // end of [p_precopt]
+
+in (* in-of-local *)
+
 implement
 p_d0ecl
   (buf, err) = let
@@ -178,14 +266,32 @@ case+ tnd of
         end // end of [list_cons]
     ) : loc_t // end of [val]
   in
-    d0ecl_make_node(loc, D0Cnonfix(ids))
+    d0ecl_make_node(loc, D0Cnonfix(tok, ids))
   end // end of [NONFIX]
+
+| T_SRP_FIXITY(knd) => let
+    val () = buf.incby1()
+    val opt = p_precopt(buf, err)
+    val ids = p_i0dntseq(buf, err)
+    val loc =
+    (
+      case+ ids of
+      | list_nil() => loc
+      | list_cons _ => let
+          val id1 = list_last(ids) in loc + id1.loc()
+        end // end of [list_cons]
+    ) : loc_t // end of [val]
+  in
+    d0ecl_make_node(loc, D0Cfixity(tok, opt, ids))
+  end // end of [FIXITY(knd)]
 | _ (* errorcase *) =>
   let
     val () = (err := e0 + 1) in d0ecl_make_node(loc, D0Cnone(tok))
   end // end of [let]
 //
 end // end of [p_d0ecl]
+
+end // end of [local]
 
 (* ****** ****** *)
 

@@ -195,6 +195,11 @@ toks =
 (
 string_tokenize
 ("\
+#infixl + -
+#infixl && ||
+#infixr -> =>
+#prefix 10 ! !!
+#postfix (&&+10) ++ --
 #nonfix print fprint forall
 ")
 )
