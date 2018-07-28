@@ -187,6 +187,17 @@ case+ tnd of
 //
 end // end of [p_d0ecl]
 
+(* ****** ****** *)
+
+implement
+p_d0eclseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{d0ecl}(buf, err, p_d0ecl))
+//
+) (* end of [p_i0dntseq] *)
 
 (* ****** ****** *)
 
