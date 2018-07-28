@@ -48,6 +48,13 @@ UN =
 (* ****** ****** *)
 
 implement
+fprint_val<d0exp> = fprint_d0exp
+implement
+fprint_val<d0ecl> = fprint_d0ecl
+
+(* ****** ****** *)
+
+implement
 print_d0exp(x0) =
 fprint_d0exp(stdout_ref, x0)
 implement
@@ -73,6 +80,38 @@ case+ x0.node() of
   fprint!(out, "D0Equal(", d0e, ")")
 //
 ) (* end of [fprint_d0exp] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_d0ecl(x0) =
+fprint_d0ecl(stdout_ref, x0)
+implement
+prerr_d0ecl(x0) =
+fprint_d0ecl(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<d0ecl> = fprint_d0ecl
+
+in (* in-of-local *)
+
+implement
+fprint_d0ecl
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| D0Cnone(tok) =>
+  fprint!(out, "D0Cnone(", tok, ")")
+//
+| D0Cnonfix(ids) =>
+  fprint!(out, "D0Cnonfix(", ids, ")")
+//
+) (* end of [fprint_d0ecl] *)
 
 end // end of [local]
 
