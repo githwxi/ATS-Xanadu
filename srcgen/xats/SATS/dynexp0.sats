@@ -129,5 +129,15 @@ d0ecl_make_node
 (loc: loc_t, node: d0ecl_node): d0ecl
 //
 (* ****** ****** *)
+//
+fun print_precopt : (precopt) -> void
+fun prerr_precopt : (precopt) -> void
+fun fprint_precopt : fprint_type(precopt)
+//
+overload print with print_precopt
+overload prerr with prerr_precopt
+overload fprint with fprint_precopt
+//
+(* ****** ****** *)
 
 (* end of [xats_dynexp0.sats] *)

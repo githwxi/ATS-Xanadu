@@ -195,12 +195,14 @@ toks =
 (
 string_tokenize
 ("\
-#infixl + -
+#infix * /
 #infixl && ||
-#infixr -> =>
+#infixl (0) & |
+#infixr -> ->> =>>
 #prefix 10 ! !!
 #postfix (&&+10) ++ --
 #nonfix print fprint forall
+abstype foo(x: type+) = tup(int, int)
 ")
 )
 //
@@ -217,7 +219,7 @@ list0_foreach<token>
 (g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
 *)
 //
-val d0c0 = let
+val d0cs = let
 //
 var err: int
 var buf: tokbuf
@@ -226,10 +228,10 @@ val ((*void*)) =
 tokbuf_initize_list(buf, toks)
 //
 in
-  p_d0ecl(buf, err)
+  p_d0eclseq(buf, err)
 end // end of [val]
 
-val () = println! ("d0c0 = ", d0c0)
+val () = println! ("d0cs = ", d0cs)
 
 (* ****** ****** *)
 

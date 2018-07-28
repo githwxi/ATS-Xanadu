@@ -62,6 +62,8 @@ val tnd = tok.node()
 in
 //
 case+ tnd of
+| T_INT1 _ =>
+  (buf.incby1(); tok)
 | T_IDENT_alp _ =>
   (buf.incby1(); tok)
 | T_IDENT_sym _ =>
