@@ -233,7 +233,31 @@ fun
 p_atmd0expseq : parser(d0explst)
 //
 (* ****** ****** *)
+
+local
+
+static
+fun
+p_napps: parser(d0exp)
+implement
+p_napps(buf, err) = let
 //
+  val e0 = err
+  val tok = buf.get0()
+  val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| _ (* error *) =>
+  ( err := e0 + 1;
+    d0exp_make_node(tok.loc(), D0Enone(tok))
+  ) (* end-of-error *)
+//
+end // end of [p_napps]
+
+in (* in-of-local *)
+
 implement
 p_d0exp(buf, err) =
 let
@@ -244,12 +268,8 @@ in
 //
 case+ d0es0 of
 | list_nil
-    ((*void*)) => let
-    val tok = buf.get0()
-  in
-    err := e0 + 1;
-    d0exp_make_node(tok.loc(), D0Enone(tok))
-  end // end of [list_nil]
+    ((*void*)) => p_napps(buf, err)
+  // end of [list_nil]
 | list_cons
     (d0e0, d0es1) =>
   (
@@ -263,9 +283,10 @@ case+ d0es0 of
       end // end of [list_cons]
   ) (* end of [list_cons] *)
 //
-end
-// end of [p_d0exp]
-//
+end // end of [p_d0exp]
+
+end // end of [local]
+
 (* ****** ****** *)
 
 implement
@@ -296,26 +317,39 @@ end // end of [p_labd0exp]
 
 (* ****** ****** *)
 
+
+implement
+p_d0expseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{d0exp}(buf, err, p_d0exp))
+//
+) (* end of [p_d0expseq] *)
+
+(* ****** ****** *)
+
 implement
 p_atmd0exp
 (buf, err) = let
 //
 val e0 = err
-val tok0 = buf.get0()
+val tok = buf.get0()
+val tnd = tok.node()
 //
 in
 //
-case+
-tok0.node() of
+case+ tnd of
 //
-| _ when t_i0nt(tok0) =>
+| _ when t_i0nt(tnd) =>
   let
     val i0 = p_i0nt(buf, err)
   in
     err := e0;
     d0exp_make_node(i0.loc(), D0Eint(i0))
   end // end of [t_i0nt]
-| _ when t_c0har(tok0) =>
+| _ when t_c0har(tnd) =>
   let
     val c0 = p_c0har(buf, err)
   in
@@ -323,18 +357,33 @@ tok0.node() of
     d0exp_make_node(c0.loc(), D0Echar(c0))
   end // end of [t_c0har]
 //
-| tnd when t_d0eid(tnd) =>
+| _ when t_d0eid(tnd) =>
   let
     val id = p_d0eid(buf, err)
   in
     err := e0;
-    d0exp_make_node(id.loc(), D0Eid(id))
+    d0exp_make_node(id.loc(), D0Eid( id ))
   end // end of [t_d0eid]
+//
+| T_LET() => let
+    val () = buf.incby1()
+    val d0cs =
+      p_d0eclseq(buf, err)
+    val tok1 = p_IN(buf, err)
+    val d0es =
+      p_d0expseq(buf, err)
+    val tok2 = p_ENDLET(buf, err)
+    val loc_res = tok.loc() + tok2.loc()
+  in
+    err := e0;
+    d0exp_make_node
+    (loc_res, D0Elet(tok, d0cs, tok1, d0es, tok2))
+  end // end of [T_LET]
 //
 | _ (* error *) => let
     val () = (err := e0 + 1)
   in
-    d0exp_make_node(tok0.loc(), D0Enone(tok0))
+    d0exp_make_node(tok.loc(), D0Enone(tok))
   end // HX: indicating a parsing error
 //
 end // end of [p_atmd0exp]
@@ -355,10 +404,10 @@ list_vt2t
 
 local
 
-extern
+static
 fun
-p_precopt: parser(precopt)
-
+p_precopt
+ : parser(precopt)
 implement
 p_precopt
   (buf, err) = let

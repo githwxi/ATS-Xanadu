@@ -200,7 +200,7 @@ let
   #nonfix x y z
 in
   // nothing
-end // end-of-let
+endlet // end-of-let
 ")
 )
 //

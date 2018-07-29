@@ -82,7 +82,7 @@ d0exp_node =
 | D0Eapps of d0explst
 //
 | D0Elet of
-  (token, d0eclist, token, d0exp, token)
+  (token, d0eclist, token, d0explst, token)
 | D0Ewhere of
   (d0exp, token, tokenopt, d0eclist, token)
 //

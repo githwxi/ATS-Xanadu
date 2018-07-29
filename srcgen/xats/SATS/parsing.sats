@@ -170,9 +170,22 @@ fun
 p_RBRACKET: parser(token)
 
 (* ****** ****** *)
+
+fun
+p_IN: parser(token)
+fun
+p_END: parser(token)
+fun
+p_ENDLET: parser(token)
+fun
+p_ENDWHERE: parser(token)
+fun
+p_ENDLOCAL: parser(token)
+
+(* ****** ****** *)
 //
-fun t_i0nt(token): bool
-fun t_c0har(token): bool
+fun t_i0nt(tnode): bool
+fun t_c0har(tnode): bool
 //
 fun p_i0nt: parser(i0nt)
 fun p_c0har: parser(c0har)

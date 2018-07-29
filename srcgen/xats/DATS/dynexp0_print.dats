@@ -110,7 +110,9 @@ case+ x0.node() of
 | D0Eapps(d0es) =>
   fprint!(out, "D0Eapps(", d0es, ")")
 //
-| D0Elet _ => fprint!(out, "D0Elet(...)")
+| D0Elet(tok0, d0cs, tok1, d0es, tok2) =>
+  fprint!
+  (out, "D0Elet(", tok0, "; ", d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
 | D0Ewhere _ => fprint!(out, "D0Ewhere(...)")
 //
 | D0Enone(token) => fprint!(out, "D0Enone(", token, ")")
