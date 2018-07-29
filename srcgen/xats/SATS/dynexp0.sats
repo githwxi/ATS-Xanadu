@@ -41,16 +41,48 @@ typedef d0eid = i0dnt_tbox
 
 (* ****** ****** *)
 
+abstype d0ecl_tbox = ptr
+typedef d0ecl = d0ecl_tbox
+typedef d0eclist = List0(d0ecl)
+typedef d0eclopt = Option(d0ecl)
+
+(* ****** ****** *)
+//
+datatype
+dl0abeled
+  (a:type) =
+  DL0ABELED of (l0abl, token, a)
+//
+fun
+{a:type}
+fprint_dl0abeled
+  (out: FILEref, x0: dl0abeled(a)): void
+//
+(* ****** ****** *)
+
 abstype d0exp_tbox = ptr
 typedef d0exp = d0exp_tbox
 typedef d0explst = List0(d0exp)
 typedef d0expopt = Option(d0exp)
+typedef labd0exp = dl0abeled(d0exp)
+typedef labd0explst = List0(labd0exp)
+
+(* ****** ****** *)
 
 datatype
 d0exp_node =
 //
 | D0Eid of d0eid
 | D0Equal of d0exp // qualified
+//
+| D0Eapps of d0explst
+//
+| D0Elet of
+  (token, d0eclist, token, d0exp, token)
+| D0Ewhere of
+  (d0exp, token, tokenopt, d0eclist, token)
+//
+| D0Enone of (token) // HX-2018-07-08: indicating error 
 // end of [d0exp_node]
 
 (* ****** ****** *)
@@ -77,17 +109,13 @@ d0exp_make_node
 //
 (* ****** ****** *)
 
-abstype d0ecl_tbox = ptr
-typedef d0ecl = d0ecl_tbox
-typedef d0eclist = List0(d0ecl)
-typedef d0eclopt = Option(d0ecl)
-
-(* ****** ****** *)
-
 datatype
 d0ecl_node =
 //
 | D0Cnone of token // HX: error indication
+//
+| D0Clocal of
+  (token, d0eclist, token, d0eclist, token)
 //
 (*
 | D0Cfixity of
@@ -104,7 +132,8 @@ d0ecl_node =
 and precopt =
 | PRECOPTnil of ()
 | PRECOPTsing of (token)
-| PRECOPTlist of (token, tokenlst, token)
+| PRECOPTlist of
+  (token(*lparen*), tokenlst, token(*rparen*))
 
 (* ****** ****** *)
 //

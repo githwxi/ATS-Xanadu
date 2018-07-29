@@ -55,12 +55,16 @@ T_ABSTYPE_ = T_ABSTYPE(TYPESORT)
 macdef
 T_ABSTBOX_ = T_ABSTYPE(TBOXSORT)
 macdef
+T_ABSTFLT_ = T_ABSTYPE(TFLATSORT)
+macdef
 T_ABSTFLAT_ = T_ABSTYPE(TFLATSORT)
 //
 macdef
 T_ABSVTYPE_ = T_ABSTYPE(VTYPESORT)
 macdef
 T_ABSVTBOX_ = T_ABSTYPE(VTBOXSORT)
+macdef
+T_ABSVTFLT_ = T_ABSTYPE(VTFLATSORT)
 macdef
 T_ABSVTFLAT_ = T_ABSTYPE(VTFLATSORT)
 //
@@ -126,6 +130,11 @@ val () = myins("end", T_END)
 //
 val () = myins("let", T_LET)
 val () = myins("where", T_WHERE)
+val () = myins("local", T_LOCAL)
+//
+val () = myins("endlet", T_ENDLET)
+val () = myins("endwhere", T_ENDWHERE)
+val () = myins("endlocal", T_ENDLOCAL)
 //
 val () = myins("lam", T_LAM(0))
 val () = myins("fix", T_FIX(0))
@@ -135,18 +144,18 @@ val () = myins("sif", T_IF)
 val () = myins("then", T_THEN)
 val () = myins("else", T_ELSE)
 //
-val () = myins("local", T_LOCAL)
-//
 val () = myins("absprop", T_ABSPROP_)
 val () = myins("absview", T_ABSVIEW_)
 //
 val () = myins("abstype", T_ABSTYPE_)
 val () = myins("abstbox", T_ABSTBOX_)
+val () = myins("abstflt", T_ABSTFLT_)
 val () = myins("abstflat", T_ABSTFLAT_)
 //
 val () = myins("absvtype", T_ABSVTYPE_)
 val () = myins("absvtbox", T_ABSVTBOX_)
-val () = myins("absvtFLAT", T_ABSVTFLAT_)
+val () = myins("absvtflt", T_ABSVTFLT_)
+val () = myins("absvtflat", T_ABSVTFLAT_)
 //
 val () = myins("datasort", T_DATASORT)
 //

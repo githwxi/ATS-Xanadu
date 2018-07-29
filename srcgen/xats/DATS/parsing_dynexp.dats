@@ -205,6 +205,108 @@ list_vt2t
 ) (* end of [p_i0dntseq] *)
 //
 (* ****** ****** *)
+(*
+atmd0exp ::
+//
+  | i0nt
+  | c0har
+//
+  | d0eid
+  | qualid atm0exp
+//
+  | { d0eclseq }
+  | LET d0eclseq IN d0expseq END
+//
+  | ( d0expseq_COMMA )
+  | ( d0expseq_COMMA | d0expseq_COMMA )
+//
+  | { labd0expseq_COMMA }
+  | { labd0expseq_COMMA | labd0expseq_COMMA }
+//
+*)
+extern
+fun
+p_atmd0exp : parser(d0exp)
+//
+extern
+fun
+p_atmd0expseq : parser(d0explst)
+//
+(* ****** ****** *)
+//
+implement
+p_d0exp(buf, err) =
+let
+  val e0 = err
+  val d0es0 =
+  p_atmd0expseq(buf, err)
+in
+//
+case+ d0es0 of
+| list_nil
+    ((*void*)) => let
+    val tok = buf.get0()
+  in
+    err := e0 + 1;
+    d0exp_make_node(tok.loc(), D0Enone(tok))
+  end // end of [list_nil]
+| list_cons
+    (d0e0, d0es1) =>
+  (
+    case+ d0es1 of
+    | list_nil() => d0e0
+    | list_cons _ => let
+        val d0e1 = list_last(d0es1)
+      in
+        d0exp_make_node
+        (d0e0.loc()+d0e1.loc(), D0Eapps(d0es0))
+      end // end of [list_cons]
+  ) (* end of [list_cons] *)
+//
+end
+// end of [p_d0exp]
+//
+(* ****** ****** *)
+
+implement
+p_labd0exp
+  (buf, err) = let
+//
+val e0 = err
+//
+val l0 =
+(
+  p_l0abl(buf, err)
+)
+val tok = p_EQ(buf, err)
+val d0e = p_d0exp(buf, err)
+//
+(*
+val ((*void*)) =
+println! ("p_labd0exp: l0 = ", l0)
+val ((*void*)) =
+println! ("p_labd0exp: tok = ", tok)
+val ((*void*)) =
+println! ("p_labd0exp: d0e = ", d0e)
+*)
+//
+in
+  err := e0; DL0ABELED(l0, tok, d0e)
+end // end of [p_labd0exp]
+
+(* ****** ****** *)
+
+implement
+p_atmd0expseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{d0exp}(buf, err, p_atmd0exp))
+//
+) (* end of [p_atmd0expseq] *)
+
+(* ****** ****** *)
 
 local
 

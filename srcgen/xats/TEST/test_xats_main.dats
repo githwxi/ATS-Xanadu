@@ -189,6 +189,49 @@ end // end of [val]
 val () = println! ("s0e0 = ", s0e0)
 
 (* ****** ****** *)
+
+//
+val-
+toks =
+(
+string_tokenize
+("\
+let
+  #nonfix x y z
+in
+  // nothing
+end // end-of-let
+")
+)
+//
+val
+toks =
+lexing_preprocess_tokenlst(toks)
+//
+val
+toks =
+list_vt2t(toks)
+(*
+val ((*void*)) =
+list0_foreach<token>
+(g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
+*)
+//
+val d0e0 = let
+//
+var err: int
+var buf: tokbuf
+val ((*void*)) = (err := 0)
+val ((*void*)) =
+tokbuf_initize_list(buf, toks)
+//
+in
+  p_d0exp(buf, err)
+end // end of [val]
+
+val () = println! ("d0e0 = ", d0e0)
+
+(* ****** ****** *)
 //
 val-
 toks =
