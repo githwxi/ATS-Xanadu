@@ -73,6 +73,10 @@ datatype
 d0exp_node =
 //
 | D0Eid of d0eid
+//
+| D0Eint of i0nt
+| D0Echar of c0har
+//
 | D0Equal of d0exp // qualified
 //
 | D0Eapps of d0explst
