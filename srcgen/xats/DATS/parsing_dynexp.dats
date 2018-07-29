@@ -297,6 +297,51 @@ end // end of [p_labd0exp]
 (* ****** ****** *)
 
 implement
+p_atmd0exp
+(buf, err) = let
+//
+val e0 = err
+val tok0 = buf.get0()
+//
+in
+//
+case+
+tok0.node() of
+//
+| _ when t_i0nt(tok0) =>
+  let
+    val i0 = p_i0nt(buf, err)
+  in
+    err := e0;
+    d0exp_make_node(i0.loc(), D0Eint(i0))
+  end // end of [t_i0nt]
+| _ when t_c0har(tok0) =>
+  let
+    val c0 = p_c0har(buf, err)
+  in
+    err := e0;
+    d0exp_make_node(c0.loc(), D0Echar(c0))
+  end // end of [t_c0har]
+//
+| tnd when t_d0eid(tnd) =>
+  let
+    val id = p_d0eid(buf, err)
+  in
+    err := e0;
+    d0exp_make_node(id.loc(), D0Eid(id))
+  end // end of [t_d0eid]
+//
+| _ (* error *) => let
+    val () = (err := e0 + 1)
+  in
+    d0exp_make_node(tok0.loc(), D0Enone(tok0))
+  end // HX: indicating a parsing error
+//
+end // end of [p_atmd0exp]
+
+(* ****** ****** *)
+
+implement
 p_atmd0expseq
   (buf, err) =
 (

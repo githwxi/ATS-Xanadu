@@ -96,8 +96,14 @@ fprint_d0exp
 (
 case+ x0.node() of
 //
+| D0Eint(i0) =>
+  fprint!(out, "D0Eint(", i0, ")")
+| D0Echar(c0) =>
+  fprint!(out, "D0Echar(", c0, ")")
+//
 | D0Eid(id) =>
   fprint!(out, "D0Eid(", id, ")")
+//
 | D0Equal(d0e) =>
   fprint!(out, "D0Equal(", d0e, ")")
 //
