@@ -153,6 +153,81 @@ in
 end // end of [p_RBRACKET]
 
 (* ****** ****** *)
+
+implement
+p_IN(buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_IN() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-IN *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_IN]
+
+(* ****** ****** *)
+
+implement
+p_END(buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_END() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-END *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_END]
+
+implement
+p_ENDLET(buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_END() =>
+    let val () = buf.incby1() in tok end
+  | T_ENDLET() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-END *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_ENDLET]
+
+implement
+p_ENDWHERE(buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_END() =>
+    let val () = buf.incby1() in tok end
+  | T_ENDWHERE() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-END *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_ENDWHERE]
+
+implement
+p_ENDLOCAL(buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_END() =>
+    let val () = buf.incby1() in tok end
+  | T_ENDLOCAL() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-END *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_ENDLOCAL]
+
+(* ****** ****** *)
 //
 (*
 fun
