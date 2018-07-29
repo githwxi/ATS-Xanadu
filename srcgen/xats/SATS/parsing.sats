@@ -78,8 +78,11 @@ STAEXP0 = "./staexp0.sats"
 DYNEXP0 = "./dynexp0.sats"
 //
   typedef d0eid = $DYNEXP0.d0eid
+  typedef d0exp = $DYNEXP0.d0exp
   typedef d0ecl = $DYNEXP0.d0ecl
+  typedef d0explst = List0(d0exp)
   typedef d0eclist = List0(d0ecl)
+  typedef labd0exp = $DYNEXP0.labd0exp
 //
 (* ****** ****** *)
 //
@@ -220,6 +223,17 @@ fun p_s0exp : parser(s0exp)
 labs0exp ::= l0abl EQ s0exp
 *)
 fun p_labs0exp : parser(labs0exp)
+//
+(* ****** ****** *)
+//
+fun p_d0exp : parser(d0exp)
+//
+(*
+labd0exp ::= l0abl EQ d0exp
+*)
+fun p_labd0exp : parser(labd0exp)
+//
+fun p_d0expseq : parser(d0explst)
 //
 (* ****** ****** *)
 

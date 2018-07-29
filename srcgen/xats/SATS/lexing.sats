@@ -145,6 +145,11 @@ tnode =
 //
   | T_LET of () // 'end'
   | T_WHERE of () // 'where'
+  | T_LOCAL of () // 'local'
+//
+  | T_ENDLET of () // 'endlet'
+  | T_ENDWHERE of () // 'endwhere'
+  | T_ENDLOCAL of () // 'endlocal'
 //
   | T_IF of () // 'if'
   | T_SIF of () // 'sif'
@@ -153,8 +158,6 @@ tnode =
 //
   | T_LAM of int // 'lam=lam1' and 'lam@=lam0'
   | T_FIX of int // 'fix=lam1' and 'fix@=fix0'
-//
-  | T_LOCAL of () // 'local'
 //
   | T_ABSTYPE of int(*kind*)
 //

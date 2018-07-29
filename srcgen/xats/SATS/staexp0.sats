@@ -234,21 +234,10 @@ sl0abeled
   (a:type) =
   SL0ABELED of (l0abl, token, a)
 //
-datatype
-dl0abeled
-  (a:type) =
-  DL0ABELED of (l0abl, token, a)
-//
-(* ****** ****** *)
-//
 fun
 {a:type}
 fprint_sl0abeled
   (out: FILEref, x0: sl0abeled(a)): void
-fun
-{a:type}
-fprint_dl0abeled
-  (out: FILEref, x0: dl0abeled(a)): void
 //
 (* ****** ****** *)
 //
@@ -385,7 +374,7 @@ s0exp_node =
 | S0Estring of s0tring
 *)
 //
-| S0Eapp of s0explst
+| S0Eapps of s0explst
 //
 | S0Ebrack of
     (token, s0explst, token)

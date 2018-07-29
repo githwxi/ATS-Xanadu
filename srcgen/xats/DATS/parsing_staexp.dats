@@ -760,8 +760,12 @@ atms0exp ::
 //
   | s0eid
   | qualid atm0exp
+//
   | ( s0expseq_COMMA )
   | ( s0expseq_COMMA | s0expseq_COMMA )
+//
+  | { labs0expseq_COMMA }
+  | { labs0expseq_COMMA | labs0expseq_COMMA }
 //
 *)
 extern
@@ -821,7 +825,7 @@ case+ s0es0 of
         val s0e1 = list_last(s0es1)
       in
         s0exp_make_node
-        (s0e0.loc()+s0e1.loc(), S0Eapp(s0es0))
+        (s0e0.loc()+s0e1.loc(), S0Eapps(s0es0))
       end // end of [list_cons]
   ) (* end of [list_cons] *)
 //

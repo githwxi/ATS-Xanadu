@@ -202,6 +202,11 @@ case+ tnd of
 //
 | T_LET() => fprint(out, "LET")
 | T_WHERE() => fprint(out, "WHERE")
+| T_LOCAL() => fprint(out, "LOCAL")
+//
+| T_ENDLET() => fprint(out, "ENDLET")
+| T_ENDWHERE() => fprint(out, "ENDWHERE")
+| T_ENDLOCAL() => fprint(out, "ENDLOCAL")
 //
 | T_IF() => fprint(out, "IF")
 | T_SIF() => fprint(out, "SIF")
@@ -212,8 +217,6 @@ case+ tnd of
   fprint!(out, "LAM(", knd, ")")
 | T_FIX(knd) =>
   fprint!(out, "FIX(", knd, ")")
-//
-| T_LOCAL() => fprint(out, "LOCAL")
 //
 | T_ABSTYPE(srt) =>
   fprint!(out, "ABSTYPE(", srt, ")")
@@ -371,6 +374,11 @@ case+ tnd of
 //
 | T_LET() => fprint(out, "let")
 | T_WHERE() => fprint(out, "where")
+| T_LOCAL() => fprint(out, "local")
+//
+| T_ENDLET() => fprint(out, "endlet")
+| T_ENDWHERE() => fprint(out, "endwhere")
+| T_ENDLOCAL() => fprint(out, "endlocal")
 //
 | T_LAM(knd) =>
   fprint!(out, "lam(", knd, ")")
@@ -381,8 +389,6 @@ case+ tnd of
 | T_SIF() => fprint(out, "sif")
 | T_THEN() => fprint(out, "then")
 | T_ELSE() => fprint(out, "else")
-//
-| T_LOCAL() => fprint(out, "local")
 //
 | T_ABSTYPE(knd) =>
   fprint!(out, "datatype(", knd, ")")

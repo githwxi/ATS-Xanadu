@@ -55,6 +55,25 @@ fprint_val<d0exp> = fprint_d0exp
 implement
 fprint_val<d0ecl> = fprint_d0ecl
 //
+implement
+(a)//tmp
+fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
+//
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+fprint_dl0abeled
+  (out, x0) = let
+//
+val+DL0ABELED(l0, t0, x1) = x0
+//
+in
+  fprint!(out, "SL0ABELED(");
+  fprint!(out, l0, ", ", t0, ", ");
+  fprint_val<a>(out, x1); fprint!(out, ")")
+end // end of [fprint_dl0abeled]
+
 (* ****** ****** *)
 
 implement
@@ -81,6 +100,14 @@ case+ x0.node() of
   fprint!(out, "D0Eid(", id, ")")
 | D0Equal(d0e) =>
   fprint!(out, "D0Equal(", d0e, ")")
+//
+| D0Eapps(d0es) =>
+  fprint!(out, "D0Eapps(", d0es, ")")
+//
+| D0Elet _ => fprint!(out, "D0Elet(...)")
+| D0Ewhere _ => fprint!(out, "D0Ewhere(...)")
+//
+| D0Enone(token) => fprint!(out, "D0Enone(", token, ")")
 //
 ) (* end of [fprint_d0exp] *)
 
@@ -111,10 +138,17 @@ case+ x0.node() of
 | D0Cnone(tok) =>
   fprint!(out, "D0Cnone(", tok, ")")
 //
+| D0Clocal
+  (tok0, d0cs0, tok1, d0cs1, tok2) =>
+  fprint!
+  ( out, "D0Clocal("
+  , tok0, "; ", d0cs0, "; "
+  , tok1, "; ", d0cs1, "; ", tok2, ")")
+//
 | D0Cnonfix(tok, ids) =>
-  fprint!(out, "D0Cnonfix(", tok, ", ", ids, ")")
+  fprint!(out, "D0Cnonfix(", tok, "; ", ids, ")")
 | D0Cfixity(tok, opt, ids) =>
-  fprint!(out, "D0Cfixity(", tok, ", ", opt, ", ", ids, ")")
+  fprint!(out, "D0Cfixity(", tok, "; ", opt, "; ", ids, ")")
 //
 ) (* end of [fprint_d0ecl] *)
 

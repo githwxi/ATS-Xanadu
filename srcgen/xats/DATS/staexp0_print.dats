@@ -70,9 +70,6 @@ fprint_val<s0exp> = fprint_s0exp
 implement
 (a)//tmp
 fprint_val<sl0abeled(a)> = fprint_sl0abeled<a>
-implement
-(a)//tmp
-fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
 
 (* ****** ****** *)
 
@@ -282,19 +279,6 @@ in
   fprint_val<a>(out, x1); fprint!(out, ")")
 end // end of [fprint_sl0abeled]
 
-implement
-{a}(*tmp*)
-fprint_dl0abeled
-  (out, x0) = let
-//
-val+DL0ABELED(l0, t0, x1) = x0
-//
-in
-  fprint!(out, "SL0ABELED(");
-  fprint!(out, l0, ", ", t0, ", ");
-  fprint_val<a>(out, x1); fprint!(out, ")")
-end // end of [fprint_dl0abeled]
-
 (* ****** ****** *)
 
 implement
@@ -325,8 +309,8 @@ case+ x0.node() of
 | S0Eid(id) =>
   fprint!(out, "S0Eid(", id, ")")
 //
-| S0Eapp(s0es) =>
-  fprint!(out, "S0Eapp(", s0es, ")")
+| S0Eapps(s0es) =>
+  fprint!(out, "S0Eapps(", s0es, ")")
 //
 | S0Ebrack
   (tbeg, s0es, tend) =>
