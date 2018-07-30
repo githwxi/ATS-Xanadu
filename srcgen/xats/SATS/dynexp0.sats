@@ -123,11 +123,15 @@ d0ecl_node =
 | D0Clocal of
   (token, d0eclist, token, d0eclist, token)
 //
+(*
+| D0Csrtdef of (token, s0tid, s0rtdef)
+*)
+//
 | D0Cstadef of
   ( token
   , s0eid, s0marglst, sort0opt, token, s0exp)
 //
-| D0Cabstype of (token, s0eid, s0marglst, abstdef)
+| D0Cabstype of (token, s0eid, t0marglst, abstdef)
 //
 (*
 | D0Cfixity of

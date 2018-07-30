@@ -1,5 +1,9 @@
 (* ****** ****** *)
 
+abstype(tbox+, view-)
+
+(* ****** ****** *)
+
 typedef xyz = $extype"abcde"
 
 (* ****** ****** *)
