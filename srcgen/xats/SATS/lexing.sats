@@ -141,6 +141,7 @@ tnode =
   | T_OF of () // 'of'
   | T_IN of () // 'in'
 //
+  | T_AND of () // 'and'
   | T_END of () // 'end'
 //
   | T_LET of () // 'end'
@@ -158,6 +159,8 @@ tnode =
 //
   | T_LAM of int // 'lam=lam1' and 'lam@=lam0'
   | T_FIX of int // 'fix=lam1' and 'fix@=fix0'
+//
+  | T_STADEF of int(*kind*)
 //
   | T_ABSTYPE of int(*kind*)
 //

@@ -53,6 +53,7 @@ typedef symbolist = $SYM.symbolist
 typedef symbolopt = $SYM.symbolopt
 //
 (* ****** ****** *)
+(*
 //
 typedef tkint = token // int
 typedef tkchr = token // char
@@ -60,16 +61,26 @@ typedef tkflt = token // float
 typedef tkstr = token // string
 //
 typedef tkintopt = Option(tkint)
+typedef tkchropt = Option(tkchr)
+typedef tkfltopt = Option(tkflt)
 typedef tkstropt = Option(tkstr)
 //
+*)
 (* ****** ****** *)
 //
-abstbox i0nt_tbox = ptr
-abstbox c0har_tbox = ptr
+abstbox t0int_tbox = ptr
+abstbox t0chr_tbox = ptr
+abstbox t0flt_tbox = ptr
+abstbox t0str_tbox = ptr
 //
 abstbox i0dnt_tbox = ptr
 //
 (* ****** ****** *)
+//
+typedef t0int = t0int_tbox
+typedef t0chr = t0chr_tbox
+typedef t0flt = t0flt_tbox
+typedef t0str = t0str_tbox
 //
 typedef i0dnt = i0dnt_tbox
 //
@@ -79,13 +90,21 @@ typedef s0eid = i0dnt_tbox
 (* ****** ****** *)
 //
 datatype
-i0nt_node =
-  | I0NTnone of token
-  | I0NTsome of token
+t0int_node =
+  | T0INTnone of token
+  | T0INTsome of token
 datatype
-c0har_node =
-  | C0HARnone of token
-  | C0HARsome of token
+t0chr_node =
+  | T0CHRnone of token
+  | T0CHRsome of token
+datatype
+t0flt_node =
+  | T0FLTnone of token
+  | T0FLTsome of token
+datatype
+t0str_node =
+  | T0STRnone of token
+  | T0STRsome of token
 //
 (* ****** ****** *)
 //
@@ -96,14 +115,22 @@ i0dnt_node =
 //
 (* ****** ****** *)
 (*
-typedef i0nt = $rec
+typedef t0int = $rec
 {
-  i0nt_loc= loc_t, i0nt_node= symbol
-} (* end of [i0nt] *)
-typedef c0har = $rec
+  t0int_loc= loc_t, t0int_node= symbol
+} (* end of [t0int] *)
+typedef t0chr = $rec
 {
-  c0har_loc= loc_t, c0har_node= symbol
-} (* end of [c0har] *)
+  t0chr_loc= loc_t, t0chr_node= symbol
+} (* end of [t0chr] *)
+typedef t0flt = $rec
+{
+  t0flt_loc= loc_t, t0flt_node= symbol
+} (* end of [t0flt] *)
+typedef t0str = $rec
+{
+  t0str_loc= loc_t, t0str_node= symbol
+} (* end of [t0str] *)
 //
 typedef i0dnt = $rec
 {
@@ -112,53 +139,87 @@ typedef i0dnt = $rec
 *)
 (* ****** ****** *)
 //
-typedef i0nt = i0nt_tbox
-//
 fun
-i0nt_get_loc
-  : (i0nt) -> loc_t
+t0int_get_loc : (t0int) -> loc_t
 fun
-i0nt_get_node
-  : (i0nt) -> i0nt_node
+t0int_get_node : (t0int) -> t0int_node
 //
-overload .loc with i0nt_get_loc
-overload .node with i0nt_get_node
+overload .loc with t0int_get_loc
+overload .node with t0int_get_node
 //
-fun i0nt_none : token -> i0nt
-fun i0nt_some : token -> i0nt
+fun t0int_none : token -> t0int
+fun t0int_some : token -> t0int
 //
-fun print_i0nt : print_type(i0nt)
-fun prerr_i0nt : prerr_type(i0nt)
-fun fprint_i0nt : fprint_type(i0nt)
+fun print_t0int : print_type(t0int)
+fun prerr_t0int : prerr_type(t0int)
+fun fprint_t0int : fprint_type(t0int)
 //
-overload print with print_i0nt
-overload prerr with prerr_i0nt
-overload fprint with fprint_i0nt
+overload print with print_t0int
+overload prerr with prerr_t0int
+overload fprint with fprint_t0int
 //
 (* ****** ****** *)
 //
-typedef c0har = c0har_tbox
+fun
+t0chr_get_loc: (t0chr) -> loc_t
+fun
+t0chr_get_node: (t0chr) -> t0chr_node
+//
+overload .loc with t0chr_get_loc
+overload .node with t0chr_get_node
+//
+fun t0chr_none : token -> t0chr
+fun t0chr_some : token -> t0chr
+//
+fun print_t0chr : print_type(t0chr)
+fun prerr_t0chr : prerr_type(t0chr)
+fun fprint_t0chr : fprint_type(t0chr)
+//
+overload print with print_t0chr
+overload prerr with prerr_t0chr
+overload fprint with fprint_t0chr
+//
+(* ****** ****** *)
 //
 fun
-c0har_get_loc
-  : (c0har) -> loc_t
+t0flt_get_loc: (t0flt) -> loc_t
 fun
-c0har_get_node
-  : (c0har) -> c0har_node
+t0flt_get_node: (t0flt) -> t0flt_node
 //
-overload .loc with c0har_get_loc
-overload .node with c0har_get_node
+overload .loc with t0flt_get_loc
+overload .node with t0flt_get_node
 //
-fun c0har_none : token -> c0har
-fun c0har_some : token -> c0har
+fun t0flt_none : token -> t0flt
+fun t0flt_some : token -> t0flt
 //
-fun print_c0har : print_type(c0har)
-fun prerr_c0har : prerr_type(c0har)
-fun fprint_c0har : fprint_type(c0har)
+fun print_t0flt : print_type(t0flt)
+fun prerr_t0flt : prerr_type(t0flt)
+fun fprint_t0flt : fprint_type(t0flt)
 //
-overload print with print_c0har
-overload prerr with prerr_c0har
-overload fprint with fprint_c0har
+overload print with print_t0flt
+overload prerr with prerr_t0flt
+overload fprint with fprint_t0flt
+//
+(* ****** ****** *)
+//
+fun
+t0str_get_loc: (t0str) -> loc_t
+fun
+t0str_get_node: (t0str) -> t0str_node
+//
+overload .loc with t0str_get_loc
+overload .node with t0str_get_node
+//
+fun t0str_none : token -> t0str
+fun t0str_some : token -> t0str
+//
+fun print_t0str : print_type(t0str)
+fun prerr_t0str : prerr_type(t0str)
+fun fprint_t0str : fprint_type(t0str)
+//
+overload print with print_t0str
+overload prerr with prerr_t0str
+overload fprint with fprint_t0str
 //
 (* ****** ****** *)
 //
@@ -324,9 +385,7 @@ typedef s0marglst = List0(s0marg)
 datatype
 s0marg_node =
   | S0MARGnone of token
-(*
-  | S0MARGsing of (s0arg)
-*)
+  | S0MARGsing of (s0eid)
   | S0MARGlist of (token, s0arglst, token)
 //
 fun
@@ -365,14 +424,12 @@ typedef labs0explst = List0(labs0exp)
 datatype
 s0exp_node =
 //
-| S0Eid of s0eid
+| S0Eid of (s0eid)
 //
-| S0Eint of i0nt
-| S0Echar of c0har
-(*
-| S0Efloat of f0loat
-| S0Estring of s0tring
-*)
+| S0Eint of (t0int)
+| S0Echr of (t0chr)
+| S0Eflt of (t0flt)
+| S0Estr of (t0str)
 //
 | S0Eapps of s0explst
 //

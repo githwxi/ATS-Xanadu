@@ -74,8 +74,10 @@ d0exp_node =
 //
 | D0Eid of d0eid
 //
-| D0Eint of i0nt
-| D0Echar of c0har
+| D0Eint of t0int
+| D0Echr of t0chr
+| D0Eflt of t0flt
+| D0Estr of t0str
 //
 | D0Equal of d0exp // qualified
 //
@@ -121,6 +123,12 @@ d0ecl_node =
 | D0Clocal of
   (token, d0eclist, token, d0eclist, token)
 //
+| D0Cstadef of
+  ( token
+  , s0eid, s0marglst, sort0opt, token, s0exp)
+//
+| D0Cabstype of (token, s0eid, s0marglst, abstdef)
+//
 (*
 | D0Cfixity of
   (f0xty, i0dntlst) // HX: prefix, infix, postfix
@@ -135,9 +143,16 @@ d0ecl_node =
 
 and precopt =
 | PRECOPTnil of ()
-| PRECOPTsing of (token)
+| PRECOPTsing of (token) // token is int
 | PRECOPTlist of
   (token(*lparen*), tokenlst, token(*rparen*))
+
+(* ****** ****** *)
+
+and abstdef =
+  | ABSTDEFnil of () // unspecified
+  | ABSTDEFlteq of (token, s0exp)
+  | ABSTDEFeqeq of (token, s0exp)
 
 (* ****** ****** *)
 //
@@ -163,13 +178,29 @@ d0ecl_make_node
 //
 (* ****** ****** *)
 //
-fun print_precopt : (precopt) -> void
-fun prerr_precopt : (precopt) -> void
-fun fprint_precopt : fprint_type(precopt)
+fun
+print_precopt : (precopt) -> void
+fun
+prerr_precopt : (precopt) -> void
+fun
+fprint_precopt : fprint_type(precopt)
 //
 overload print with print_precopt
 overload prerr with prerr_precopt
 overload fprint with fprint_precopt
+//
+(* ****** ****** *)
+//
+fun
+print_abstdef : (abstdef) -> void
+fun
+prerr_abstdef : (abstdef) -> void
+fun
+fprint_abstdef : fprint_type(abstdef)
+//
+overload print with print_abstdef
+overload prerr with prerr_abstdef
+overload fprint with fprint_abstdef
 //
 (* ****** ****** *)
 

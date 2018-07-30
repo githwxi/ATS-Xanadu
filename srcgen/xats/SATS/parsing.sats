@@ -60,8 +60,10 @@ LEXING = "./lexing.sats"
 #staload
 STAEXP0 = "./staexp0.sats"
 //
-  typedef i0nt = $STAEXP0.i0nt
-  typedef c0har = $STAEXP0.c0har
+  typedef t0int = $STAEXP0.t0int
+  typedef t0chr = $STAEXP0.t0chr
+  typedef t0flt = $STAEXP0.t0flt
+  typedef t0str = $STAEXP0.t0str
 //
   typedef i0dnt = $STAEXP0.i0dnt
   typedef l0abl = $STAEXP0.l0abl
@@ -184,11 +186,15 @@ p_ENDLOCAL: parser(token)
 
 (* ****** ****** *)
 //
-fun t_i0nt(tnode): bool
-fun t_c0har(tnode): bool
+fun t_t0int(tnode): bool
+fun t_t0chr(tnode): bool
+fun t_t0flt(tnode): bool
+fun t_t0str(tnode): bool
 //
-fun p_i0nt: parser(i0nt)
-fun p_c0har: parser(c0har)
+fun p_t0int: parser(t0int)
+fun p_t0chr: parser(t0chr)
+fun p_t0flt: parser(t0flt)
+fun p_t0str: parser(t0str)
 //
 (* ****** ****** *)
 
@@ -239,6 +245,28 @@ fun p_labs0exp : parser(labs0exp)
 //
 (* ****** ****** *)
 //
+(*
+s0marg ::
+| s0eid
+| LPAREN s0argseq_COMMA RPAREN
+*)
+//
+typedef
+s0marg = $STAEXP0.s0marg
+typedef
+s0marglst = $STAEXP0.s0marglst
+fun
+p_s0marg: parser(s0marg)
+fun
+p_s0margseq: parser(s0marglst)
+//
+typedef
+sort0opt = $STAEXP0.sort0opt
+fun
+popt_sort0_anno: parser(sort0opt)
+//
+(* ****** ****** *)
+//
 fun p_d0exp : parser(d0exp)
 //
 (*
@@ -248,6 +276,14 @@ fun p_labd0exp : parser(labd0exp)
 //
 fun p_d0expseq : parser(d0explst)
 //
+(* ****** ****** *)
+
+(*
+fun t_stadef(tnode): bool
+fun t_abstype(tnode): bool
+fun t_datatype(tnode): bool
+*)
+
 (* ****** ****** *)
 
 fun p_d0ecl : parser(d0ecl)

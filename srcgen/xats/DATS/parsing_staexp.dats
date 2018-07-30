@@ -45,48 +45,88 @@
 (* ****** ****** *)
 
 implement
-t_i0nt(tnd) =
+t_t0int(tnd) =
 (
   case+ tnd of
   | T_INT1 _ => true
   | T_INT2 _ => true
   | T_INT3 _ => true
   | _ (* non-INT *) => false
-) (* end of [t_i0nt] *)
+) (* end of [t_t0int] *)
 
 implement
-t_c0har(tnd) =
+t_t0chr(tnd) =
 (
   case+ tnd of
   | T_CHAR_nil _ => true
   | T_CHAR_char _ => true
   | T_CHAR_slash _ => true
   | _ (* non-CHAR *) => false
-) (* end of [t_c0har] *)
+) (* end of [t_t0chr] *)
+
+implement
+t_t0flt(tnd) =
+(
+  case+ tnd of
+  | T_FLOAT1 _ => true
+  | T_FLOAT2 _ => true
+  | T_FLOAT3 _ => true
+  | _ (* non-FLOAT *) => false
+) (* end of [t_t0flt] *)
+
+implement
+t_t0str(tnd) =
+(
+  case+ tnd of
+  | T_STRING_quote _ => true
+  | _ (* non-STRING *) => false
+) (* end of [t_t0str] *)
 
 (* ****** ****** *)
 
 implement
-p_i0nt(buf, err) = let
+p_t0int(buf, err) = let
   val tok = buf.get0()
   val tnd = tok.node()
 in
 //
-if t_i0nt(tnd) then
-  (buf.incby1(); i0nt_some(tok)) else i0nt_none(tok)
+if t_t0int(tnd) then
+  (buf.incby1(); t0int_some(tok)) else t0int_none(tok)
 //
-end // end of [p_i0nt]
+end // end of [p_t0int]
 
 implement
-p_c0har(buf, err) = let
+p_t0chr(buf, err) = let
   val tok = buf.get0()
   val tnd = tok.node()
 in
 //
-if t_c0har(tnd) then
-  (buf.incby1(); c0har_some(tok)) else c0har_none(tok)
+if t_t0chr(tnd) then
+  (buf.incby1(); t0chr_some(tok)) else t0chr_none(tok)
 //
-end // end of [p_i0nt]
+end // end of [p_t0chr]
+
+implement
+p_t0flt(buf, err) = let
+  val tok = buf.get0()
+  val tnd = tok.node()
+in
+//
+if t_t0flt(tnd) then
+  (buf.incby1(); t0flt_some(tok)) else t0flt_none(tok)
+//
+end // end of [p_t0flt]
+
+implement
+p_t0str(buf, err) = let
+  val tok = buf.get0()
+  val tnd = tok.node()
+in
+//
+if t_t0str(tnd) then
+  (buf.incby1(); t0str_some(tok)) else t0str_none(tok)
+//
+end // end of [p_t0str]
 
 (* ****** ****** *)
 
@@ -405,10 +445,14 @@ case+ tnd of
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
 //
+| T_IDENT_dlr _ => true
+//
 | T_BACKSLASH() => true
 //
+(*
 | T_LT() => true // "<"
 | T_GT() => true // ">"
+*)
 (*
 | T_LTEQ() => true // "<="
 | T_GTEQ() => true // ">="
@@ -429,10 +473,11 @@ p_s0eid(buf, err) =
 let
 //
 val tok = buf.get0()
+val tnd = tok.node()
 //
 in
-  case+
-  tok.node() of
+  case+ tnd of
+//
   | T_IDENT_alp _ =>
     i0dnt_some(tok) where
     {
@@ -443,6 +488,13 @@ in
     {
       val () = buf.incby1()
     }
+//
+  | T_IDENT_dlr _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+//
 (*
   | T_AT() =>
     i0dnt_some(tok) where
@@ -476,6 +528,7 @@ in
       val tnd = T_IDENT_sym( ">" )
       val tok = token_make_node(loc, tnd)
     }
+//
 (*
   | T_LTEQ() =>
     i0dnt_some(tok) where
@@ -512,6 +565,15 @@ end // end of [p_s0eid]
 
 (* ****** ****** *)
 
+extern
+fun
+t_s0aid(tnode): bool
+extern
+fun
+p_s0aid: parser(s0eid)
+
+(* ****** ****** *)
+
 (*
 s0arg ::
   | s0eid [COLON sort0]
@@ -524,13 +586,43 @@ fun
 p_s0argseq_COMMA: parser(s0arglst)
 
 (* ****** ****** *)
+//
+implement
+t_s0aid(tnd) =
+(
+case+ tnd of
+| T_IDENT_alp _ => true
+| _(*non-IDENT-alp*) => false
+)
+//
+implement
+p_s0aid
+  (buf, err) = let
+//
+  val tok = buf.get0()
+  val tnd = tok.node()
+//
+in
+//
+  case+ tnd of
+  | T_IDENT_alp _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | _ (*non-IDENT-alp*) =>
+      (err := err + 1; i0dnt_none(tok))
+//
+end // end of [p_s0aid]
+//
+(* ****** ****** *)
 
 implement
 p_s0arg
   (buf, err) = let
 //
 val e0 = err
-val id = p_s0eid(buf, err)
+val id = p_s0aid(buf, err)
 //
 in
 //
@@ -589,20 +681,6 @@ list_vt2t
 ) (* end of [p_s0argseq_COMMA] *)
 
 (* ****** ****** *)
-
-(*
-s0marg ::
-  | s0eid [COLON atmsort0]
-  | LPAREN s0argseq_COMMA RPAREN
-*)
-extern
-fun
-p_s0marg: parser(s0marg)
-extern
-fun
-p_s0margseq: parser(s0marglst)
-
-(* ****** ****** *)
 //
 (*
 fun
@@ -629,11 +707,11 @@ p_s0marg
 //
 val e0 = err
 val tok = buf.get0()
+val tnd = tok.node()
 //
 in
 //
-case+
-tok.node() of
+case+ tnd of
 | T_LPAREN() => let
     val () = buf.incby1()
     val s0as =
@@ -656,12 +734,22 @@ tok.node() of
       loc_res = tbeg.loc() + tend.loc()
     } // s0marg_make_node
   end // end of [T_LPAREN]
+//
+| _ when
+    t_s0aid(tnd) => let
+    val id = p_s0aid(buf, err)
+  in
+    err := e0;
+    s0marg_make_node(id.loc(), S0MARGsing(id))
+  end
+//
 | _ (*non-LPAREN*) =>
   let
     val () = (err := e0 + 1)
   in
     s0marg_make_node(tok.loc(), S0MARGnone(tok))
   end // end of [non-LPAREN]
+//
 (*
   let
     val id = p_s0eid(buf, err)
@@ -713,13 +801,6 @@ list_vt2t
 ) (* end of [p_s0margseq] *)
 
 (* ****** ****** *)
-//
-extern
-fun
-popt_sort0_anno
-  : parser(sort0opt)
-//
-(* ****** ****** *)
 
 implement
 popt_sort0_anno
@@ -755,8 +836,13 @@ end // end of [popt_sort0_anno]
 (*
 atms0exp ::
 //
-  | i0nt
-  | c0har
+  | t0int
+  | t0chr
+  | t0flt
+  | t0str
+//
+  | f0loat
+  | s0tring
 //
   | s0eid
   | qualid atm0exp
@@ -816,6 +902,7 @@ in
 //
 case+ tnd of
 | T_LAM(k0) => let
+//
     val () = buf.incby1()
     val s0mas =
       p_s0margseq(buf, err)
@@ -827,6 +914,7 @@ case+ tnd of
     val s0e0 = p_s0exp(buf, err)
     val loc_res = tok.loc() + s0e0.loc()
 //
+(*
     val () =
       println! ("p_s0exp: err = ", err)
     val () =
@@ -839,6 +927,7 @@ case+ tnd of
       println! ("p_s0exp: tok1 = ", tok1)
     val () =
       println! ("p_s0exp: s0e0 = ", s0e0)
+*)
 //
   in
     err := e0;
@@ -927,21 +1016,6 @@ in
 //
 case+ tnd of
 //
-| _ when t_i0nt(tnd) =>
-  let
-    val i0 = p_i0nt(buf, err)
-  in
-    err := e0;
-    s0exp_make_node(i0.loc(), S0Eint(i0))
-  end // end of [t_i0nt]
-| _ when t_c0har(tnd) =>
-  let
-    val c0 = p_c0har(buf, err)
-  in
-    err := e0;
-    s0exp_make_node(c0.loc(), S0Echar(c0))
-  end // end of [t_c0har]
-//
 | tnd when t_s0eid(tnd) =>
   let
     val id = p_s0eid(buf, err)
@@ -949,6 +1023,35 @@ case+ tnd of
     err := e0;
     s0exp_make_node(id.loc(), S0Eid(id))
   end // end of [t_s0eid]
+//
+| _ when t_t0int(tnd) =>
+  let
+    val i0 = p_t0int(buf, err)
+  in
+    err := e0;
+    s0exp_make_node(i0.loc(), S0Eint(i0))
+  end // end of [t_t0int]
+| _ when t_t0chr(tnd) =>
+  let
+    val c0 = p_t0chr(buf, err)
+  in
+    err := e0;
+    s0exp_make_node(c0.loc(), S0Echr(c0))
+  end // end of [t_t0chr]
+| _ when t_t0flt(tnd) =>
+  let
+    val c0 = p_t0flt(buf, err)
+  in
+    err := e0;
+    s0exp_make_node(c0.loc(), S0Eflt(c0))
+  end // end of [t_t0flt]
+| _ when t_t0str(tnd) =>
+  let
+    val c0 = p_t0str(buf, err)
+  in
+    err := e0;
+    s0exp_make_node(c0.loc(), S0Estr(c0))
+  end // end of [t_t0str]
 //
 | T_LPAREN() => let
     val () = buf.incby1()
@@ -1112,6 +1215,32 @@ case+ tnd1 of
   )
 //
 end // end of [p_labs0exp_RBRACE]
+
+(* ****** ****** *)
+
+(*
+implement
+t_stadef(tnd) =
+(
+case+ tnd of
+| T_STADEF(knd) => true
+| _ (* non-stadef *) => false
+)
+implement
+t_abstype(tnd) =
+(
+case+ tnd of
+| T_ABSTYPE(knd) => true
+| _ (* non-abstype *) => false
+)
+implement
+t_datatype(tnd) =
+(
+case+ tnd of
+| T_DATATYPE(knd) => true
+| _ (* non-datatype *) => false
+)
+*)
 
 (* ****** ****** *)
 

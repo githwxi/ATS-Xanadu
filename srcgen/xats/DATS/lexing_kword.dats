@@ -46,6 +46,15 @@ UN =
 (* ****** ****** *)
 //
 macdef
+T_PROPDEF_ = T_STADEF(PROPSORT)
+macdef
+T_VIEWDEF_ = T_STADEF(VIEWSORT)
+macdef
+T_TYPEDEF_ = T_STADEF(TYPESORT)
+macdef
+T_VTYPEDEF_ = T_STADEF(VTYPESORT)
+//
+macdef
 T_ABSPROP_ = T_ABSTYPE(PROPSORT)
 macdef
 T_ABSVIEW_ = T_ABSTYPE(VIEWSORT)
@@ -118,6 +127,9 @@ val () = myins(":", T_COLON)
 val () = myins("|", T_BAR)
 val () = myins(".", T_DOT)
 //
+val () = myins("<", T_LT)
+val () = myins(">", T_GT)
+//
 val () = myins("=>", T_EQGT)
 //
 val () = myins("as", T_AS)
@@ -125,6 +137,8 @@ val () = myins("as", T_AS)
 val () = myins("of", T_OF)
 //
 val () = myins("in", T_IN)
+//
+val () = myins("and", T_AND)
 //
 val () = myins("end", T_END)
 //
@@ -143,6 +157,11 @@ val () = myins("if", T_IF)
 val () = myins("sif", T_IF)
 val () = myins("then", T_THEN)
 val () = myins("else", T_ELSE)
+//
+val () = myins("propdef", T_PROPDEF_)
+val () = myins("viewdef", T_VIEWDEF_)
+val () = myins("typedef", T_TYPEDEF_)
+val () = myins("vtypedef", T_VTYPEDEF_)
 //
 val () = myins("absprop", T_ABSPROP_)
 val () = myins("absview", T_ABSVIEW_)
@@ -190,10 +209,6 @@ val () = myins("ifcase")
 //
 val () = myins("macdef")
 val () = myins("macrodef")
-//
-val () = myins("sexpdef")
-val () = myins("typedef")
-val () = myins("vtypedef")
 //
 val () = myins("with")
 //

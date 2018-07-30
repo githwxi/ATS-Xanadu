@@ -52,14 +52,24 @@ UN =
 local
 
 absimpl
-i0nt_tbox = $rec{
-  i0nt_loc= loc_t
-, i0nt_node= i0nt_node
+t0int_tbox = $rec{
+  t0int_loc= loc_t
+, t0int_node= t0int_node
 } (* end of [absimpl] *)
 absimpl
-c0har_tbox = $rec{
-  c0har_loc= loc_t
-, c0har_node= c0har_node
+t0chr_tbox = $rec{
+  t0chr_loc= loc_t
+, t0chr_node= t0chr_node
+} (* end of [absimpl] *)
+absimpl
+t0flt_tbox = $rec{
+  t0flt_loc= loc_t
+, t0flt_node= t0flt_node
+} (* end of [absimpl] *)
+absimpl
+t0str_tbox = $rec{
+  t0str_loc= loc_t
+, t0str_node= t0str_node
 } (* end of [absimpl] *)
 //
 absimpl
@@ -73,24 +83,44 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 fun
-i0nt_make_node
+t0int_make_node
 (
 loc0: loc_t
 ,
-node: i0nt_node
-) : i0nt = $rec{
-  i0nt_loc= loc0, i0nt_node= node
-} (* end of [i0nt_make_node] *)
+node: t0int_node
+) : t0int = $rec{
+  t0int_loc= loc0, t0int_node= node
+} (* end of [t0int_make_node] *)
 
 fun
-c0har_make_node
+t0chr_make_node
 (
 loc0: loc_t
 ,
-node: c0har_node
-) : c0har = $rec{
-  c0har_loc= loc0, c0har_node= node
-} (* end of [c0har_make_node] *)
+node: t0chr_node
+) : t0chr = $rec{
+  t0chr_loc= loc0, t0chr_node= node
+} (* end of [t0chr_make_node] *)
+
+fun
+t0flt_make_node
+(
+loc0: loc_t
+,
+node: t0flt_node
+) : t0flt = $rec{
+  t0flt_loc= loc0, t0flt_node= node
+} (* end of [t0flt_make_node] *)
+
+fun
+t0str_make_node
+(
+loc0: loc_t
+,
+node: t0str_node
+) : t0str = $rec{
+  t0str_loc= loc0, t0str_node= node
+} (* end of [t0str_make_node] *)
 
 (* ****** ****** *)
 
@@ -107,14 +137,24 @@ node: i0dnt_node
 (* ****** ****** *)
 
 implement
-i0nt_get_loc(x) = x.i0nt_loc
+t0int_get_loc(x) = x.t0int_loc
 implement
-i0nt_get_node(x) = x.i0nt_node
+t0int_get_node(x) = x.t0int_node
 
 implement
-c0har_get_loc(x) = x.c0har_loc
+t0chr_get_loc(x) = x.t0chr_loc
 implement
-c0har_get_node(x) = x.c0har_node
+t0chr_get_node(x) = x.t0chr_node
+
+implement
+t0flt_get_loc(x) = x.t0flt_loc
+implement
+t0flt_get_node(x) = x.t0flt_node
+
+implement
+t0str_get_loc(x) = x.t0str_loc
+implement
+t0str_get_node(x) = x.t0str_node
 
 (* ****** ****** *)
 
@@ -126,20 +166,32 @@ i0dnt_get_node(x) = x.i0dnt_node
 (* ****** ****** *)
 
 implement
-i0nt_none(tok) =
-i0nt_make_node(tok.loc(), I0NTnone(tok))
+t0int_none(tok) =
+t0int_make_node(tok.loc(), T0INTnone(tok))
 implement
-i0nt_some(tok) =
-i0nt_make_node(tok.loc(), I0NTsome(tok))
-
-(* ****** ****** *)
+t0int_some(tok) =
+t0int_make_node(tok.loc(), T0INTsome(tok))
 
 implement
-c0har_none(tok) =
-c0har_make_node(tok.loc(), C0HARnone(tok))
+t0chr_none(tok) =
+t0chr_make_node(tok.loc(), T0CHRnone(tok))
 implement
-c0har_some(tok) =
-c0har_make_node(tok.loc(), C0HARsome(tok))
+t0chr_some(tok) =
+t0chr_make_node(tok.loc(), T0CHRsome(tok))
+
+implement
+t0flt_none(tok) =
+t0flt_make_node(tok.loc(), T0FLTnone(tok))
+implement
+t0flt_some(tok) =
+t0flt_make_node(tok.loc(), T0FLTsome(tok))
+
+implement
+t0str_none(tok) =
+t0str_make_node(tok.loc(), T0STRnone(tok))
+implement
+t0str_some(tok) =
+t0str_make_node(tok.loc(), T0STRsome(tok))
 
 (* ****** ****** *)
 

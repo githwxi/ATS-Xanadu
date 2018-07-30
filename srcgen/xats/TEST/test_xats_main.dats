@@ -154,7 +154,9 @@ toks =
 (
 string_tokenize
 ("\
-(lam(x: int, y)(z: bool): int => x + y)(1, 2)(false)
+$extype\"abcde\"
+// lam@ x y z : int => x + y + z
+// (lam(x: int, y)(z: bool): int => x + y)(1, 2)(false)
 // @[int][n+100]\n\
 // f@(x + 1, y, z | what)
 // @{a=f(x), b=g(y), 3=h(z)}
@@ -238,14 +240,18 @@ toks =
 (
 string_tokenize
 ("\
-#infix * /
+#infix < >
+#infixl + -
 #infixl && ||
-#infixl (0) & |
+// #infixl (0) & |
 #infixr -> ->> =>>
 #prefix 10 ! !!
-#postfix (&&+10) ++ --
+// #postfix (&& + 10) ++ --
 #nonfix print fprint forall
-abstype foo(x: type+) = tup(int, int)
+typedef foo(x: type+) = tup(int, int)
+abstype foo(x: type+) == lam y => tup(int, int)
+abstype foo(x: type+) <= lam y => tup(int, int)
+#nonfix print fprint forall
 ")
 )
 //
