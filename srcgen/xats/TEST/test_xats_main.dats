@@ -249,7 +249,7 @@ string_tokenize
 // #postfix (&& + 10) ++ --
 #nonfix print fprint forall
 typedef foo(x: type+) = tup(int, int)
-abstype foo(x: type+) == lam y => tup(int, int)
+abstype foo(type+) == lam y => tup(int, int)
 abstype foo(x: type+) <= lam y => tup(int, int)
 #nonfix print fprint forall
 ")

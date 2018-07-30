@@ -44,7 +44,10 @@ UN =
 #staload "./../SATS/staexp0.sats"
 //
 (* ****** ****** *)
-
+//
+implement
+fprint_val<token> = fprint_token
+//
 implement
 fprint_val<t0int> = fprint_t0int
 implement
@@ -53,12 +56,14 @@ implement
 fprint_val<t0flt> = fprint_t0flt
 implement
 fprint_val<t0str> = fprint_t0str
-
+//
 implement
 fprint_val<i0dnt> = fprint_i0dnt
-
+//
 implement
 fprint_val<l0abl> = fprint_l0abl
+//
+(* ****** ****** *)
 
 implement
 fprint_val<sort0> = fprint_sort0
@@ -67,6 +72,11 @@ implement
 fprint_val<s0arg> = fprint_s0arg
 implement
 fprint_val<s0marg> = fprint_s0marg
+
+implement
+fprint_val<t0arg> = fprint_t0arg
+implement
+fprint_val<t0marg> = fprint_t0marg
 
 implement
 fprint_val<s0exp> = fprint_s0exp
@@ -304,7 +314,48 @@ x0.node() of
 | S0MARGlist(tbeg, s0as, tend) =>
   fprint!
   (out, "S0MARGlist(", tbeg, ", ", s0as, ", ", tend, ")")
-) (* fprint_s0arg *)
+) (* fprint_s0marg *)
+
+(* ****** ****** *)
+
+implement
+print_t0arg(x0) =
+fprint_t0arg(stdout_ref, x0)
+implement
+prerr_t0arg(x0) =
+fprint_t0arg(stderr_ref, x0)
+
+implement
+fprint_t0arg
+  (out, x0) =
+(
+case+
+x0.node() of
+| T0ARGsome(s0t, opt) =>
+  fprint!(out, "T0ARGsome(", s0t, ", ", opt, ")")
+) (* fprint_t0arg *)
+
+(* ****** ****** *)
+
+implement
+print_t0marg(x0) =
+fprint_t0marg(stdout_ref, x0)
+implement
+prerr_t0marg(x0) =
+fprint_t0marg(stderr_ref, x0)
+
+implement
+fprint_t0marg
+  (out, x0) =
+(
+case+
+x0.node() of
+| T0MARGnone(tok) =>
+  fprint!(out, "T0MARGnone(", tok, ")")
+| T0MARGlist(tbeg, t0as, tend) =>
+  fprint!
+  (out, "T0MARGlist(", tbeg, ", ", t0as, ", ", tend, ")")
+) (* fprint_t0marg *)
 
 (* ****** ****** *)
 
