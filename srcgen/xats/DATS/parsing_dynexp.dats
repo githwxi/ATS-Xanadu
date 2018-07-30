@@ -208,10 +208,13 @@ list_vt2t
 (*
 atmd0exp ::
 //
-  | i0nt
-  | c0har
-//
   | d0eid
+//
+  | t0int // int
+  | t0chr // char
+  | t0flt // float
+  | t0str // string
+//
   | qualid atm0exp
 //
   | { d0eclseq }
@@ -342,28 +345,42 @@ in
 //
 case+ tnd of
 //
-| _ when t_i0nt(tnd) =>
-  let
-    val i0 = p_i0nt(buf, err)
-  in
-    err := e0;
-    d0exp_make_node(i0.loc(), D0Eint(i0))
-  end // end of [t_i0nt]
-| _ when t_c0har(tnd) =>
-  let
-    val c0 = p_c0har(buf, err)
-  in
-    err := e0;
-    d0exp_make_node(c0.loc(), D0Echar(c0))
-  end // end of [t_c0har]
-//
 | _ when t_d0eid(tnd) =>
   let
     val id = p_d0eid(buf, err)
   in
     err := e0;
-    d0exp_make_node(id.loc(), D0Eid( id ))
+    d0exp_make_node(id.loc(), D0Eid(id))
   end // end of [t_d0eid]
+//
+| _ when t_t0int(tnd) =>
+  let
+    val i0 = p_t0int(buf, err)
+  in
+    err := e0;
+    d0exp_make_node(i0.loc(), D0Eint(i0))
+  end // end of [t_t0int]
+| _ when t_t0chr(tnd) =>
+  let
+    val c0 = p_t0chr(buf, err)
+  in
+    err := e0;
+    d0exp_make_node(c0.loc(), D0Echr(c0))
+  end // end of [t_t0chr]
+| _ when t_t0flt(tnd) =>
+  let
+    val c0 = p_t0flt(buf, err)
+  in
+    err := e0;
+    d0exp_make_node(c0.loc(), D0Eflt(c0))
+  end // end of [t_t0flt]
+| _ when t_t0str(tnd) =>
+  let
+    val c0 = p_t0str(buf, err)
+  in
+    err := e0;
+    d0exp_make_node(c0.loc(), D0Estr(c0))
+  end // end of [t_t0str]
 //
 | T_LET() => let
     val () = buf.incby1()
@@ -402,6 +419,15 @@ list_vt2t
 
 (* ****** ****** *)
 
+(*
+stadef::
+| si0de s0margseq colons0rtopt EQ s0exp
+abstype::
+| si0de s0margseq colons0rtopt [EQ/EQEQ s0exp]
+*)
+
+(* ****** ****** *)
+
 local
 
 static
@@ -437,6 +463,37 @@ case+ tnd of
 //
 end // end of [p_precopt]
 
+static
+fun
+p_abstdef
+ : parser(abstdef)
+implement
+p_abstdef
+  (buf, err) = let
+//
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| T_IDENT_sym("<=") => let
+    val () = buf.incby1()
+  in
+    ABSTDEFlteq
+    (tok, p_s0exp(buf, err))
+  end
+| T_IDENT_sym("==") => let
+    val () = buf.incby1()
+  in
+    ABSTDEFeqeq
+    (tok, p_s0exp(buf, err))    
+  end
+| _(*non-eq-eqeq*) => ABSTDEFnil()
+//
+end // end of [p_abstdef]
+
+
 in (* in-of-local *)
 
 implement
@@ -452,36 +509,95 @@ val tnd = tok.node()
 in
 //
 case+ tnd of
+//
+| T_STADEF(k0) => let
+  //
+    val () = buf.incby1()
+    val tid =
+      p_s0eid(buf, err)
+    val s0mas =
+      p_s0margseq(buf, err)
+    // end of [val]
+    val anno =
+      popt_sort0_anno(buf, err)
+    // end of [val]
+    val tok1 = p_EQ(buf, err)
+    val s0e0 = p_s0exp(buf, err)
+    val loc_res = loc + s0e0.loc()
+  in
+    err := e0;
+    d0ecl_make_node
+    ( loc_res
+    , D0Cstadef
+      (tok, tid, s0mas, anno, tok1, s0e0)
+    ) (* d0ecl_make_node *)
+  end
+//
+| T_ABSTYPE(k0) => let
+    val () = buf.incby1()
+    val tid =
+      p_s0eid(buf, err)
+    val s0mas =
+      p_s0margseq(buf, err)
+    // end of [val]
+    val tdef0 = p_abstdef(buf, err)
+    val loc_res =
+    (
+    case+ tdef0 of
+    | ABSTDEFnil() =>
+      (
+      case+ s0mas of
+      | list_nil() => loc+tid.loc()
+      | list_cons _ => let
+        val s0ma =
+        list_last(s0mas) in loc+s0ma.loc()
+        end // end of [list_cons]
+      ) (* ABSTDEFnil *)
+    | ABSTDEFlteq(_, s0e) => loc+s0e.loc()
+    | ABSTDEFeqeq(_, s0e) => loc+s0e.loc()
+    ) : loc_t // end of [val]
+  in
+    err := e0;
+    d0ecl_make_node
+    ( loc_res
+    , D0Cabstype(tok, tid, s0mas, tdef0))
+  end
+//
 | T_SRP_NONFIX() => let
     val () = buf.incby1()
     val ids = p_i0dntseq(buf, err)
-    val loc =
+    val loc_res =
     (
       case+ ids of
       | list_nil() => loc
-      | list_cons _ => let
-          val id1 = list_last(ids) in loc + id1.loc()
+      | list_cons _ =>
+        let
+        val id1 = list_last(ids) in loc+id1.loc()
         end // end of [list_cons]
     ) : loc_t // end of [val]
   in
-    d0ecl_make_node(loc, D0Cnonfix(tok, ids))
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cnonfix(tok, ids))
   end // end of [NONFIX]
-
+//
 | T_SRP_FIXITY(knd) => let
     val () = buf.incby1()
     val opt = p_precopt(buf, err)
     val ids = p_i0dntseq(buf, err)
-    val loc =
+    val loc_res =
     (
       case+ ids of
       | list_nil() => loc
-      | list_cons _ => let
-          val id1 = list_last(ids) in loc + id1.loc()
+      | list_cons _ =>
+        let
+        val id1 = list_last(ids) in loc + id1.loc()
         end // end of [list_cons]
     ) : loc_t // end of [val]
   in
-    d0ecl_make_node(loc, D0Cfixity(tok, opt, ids))
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cfixity(tok, opt, ids))
   end // end of [FIXITY(knd)]
+//
 | _ (* errorcase *) =>
   let
     val () = (err := e0 + 1) in d0ecl_make_node(loc, D0Cnone(tok))

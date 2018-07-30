@@ -96,13 +96,17 @@ fprint_d0exp
 (
 case+ x0.node() of
 //
-| D0Eint(i0) =>
-  fprint!(out, "D0Eint(", i0, ")")
-| D0Echar(c0) =>
-  fprint!(out, "D0Echar(", c0, ")")
-//
 | D0Eid(id) =>
   fprint!(out, "D0Eid(", id, ")")
+//
+| D0Eint(i0) =>
+  fprint!(out, "D0Eint(", i0, ")")
+| D0Echr(c0) =>
+  fprint!(out, "D0Echr(", c0, ")")
+| D0Eflt(f0) =>
+  fprint!(out, "D0Eflt(", f0, ")")
+| D0Estr(s0) =>
+  fprint!(out, "D0Estr(", s0, ")")
 //
 | D0Equal(d0e) =>
   fprint!(out, "D0Equal(", d0e, ")")
@@ -153,6 +157,14 @@ case+ x0.node() of
   , tok0, "; ", d0cs0, "; "
   , tok1, "; ", d0cs1, "; ", tok2, ")")
 //
+| D0Cstadef _ =>
+  fprint!(out, "D0Cstadef(", "...", ")")
+//
+| D0Cabstype(tok, tid, s0mas, tdef) =>
+  fprint!
+  ( out, "D0Cabstype("
+  , tok, "; ", tid, "; ", s0mas, "; ", tdef, ")")
+//
 | D0Cnonfix(tok, ids) =>
   fprint!(out, "D0Cnonfix(", tok, "; ", ids, ")")
 | D0Cfixity(tok, opt, ids) =>
@@ -183,6 +195,28 @@ case+ x0 of
 | PRECOPTlist(t0, ts, t1) =>
   fprint!(out, "PRECOPTlist(", t0, "; ", ts, "; ", t1)
 ) (* end of [fprint_precopt] *)
+
+(* ****** ****** *)
+
+implement
+print_abstdef(x0) =
+fprint_abstdef(stdout_ref, x0)
+implement
+prerr_abstdef(x0) =
+fprint_abstdef(stderr_ref, x0)
+
+implement
+fprint_abstdef
+  (out, x0) =
+(
+case+ x0 of
+| ABSTDEFnil() =>
+  fprint(out, "ABSTDEFnil()")
+| ABSTDEFlteq(tok, s0e) =>
+  fprint!(out, "ABSTDEFlteq(", tok, "; ", s0e, ")")
+| ABSTDEFeqeq(tok, s0e) =>
+  fprint!(out, "ABSTDEFeqeq(", tok, "; ", s0e, ")")
+) (* end of [fprint_abstdef] *)
 
 (* ****** ****** *)
 

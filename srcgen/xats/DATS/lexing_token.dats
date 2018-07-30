@@ -198,6 +198,8 @@ case+ tnd of
 | T_OF() => fprint(out, "OF")
 //
 | T_IN() => fprint(out, "IN")
+//
+| T_AND() => fprint(out, "AND")
 | T_END() => fprint(out, "END")
 //
 | T_LET() => fprint(out, "LET")
@@ -217,6 +219,9 @@ case+ tnd of
   fprint!(out, "LAM(", knd, ")")
 | T_FIX(knd) =>
   fprint!(out, "FIX(", knd, ")")
+//
+| T_STADEF(srt) =>
+  fprint!(out, "STADEF(", srt, ")")
 //
 | T_ABSTYPE(srt) =>
   fprint!(out, "ABSTYPE(", srt, ")")
@@ -370,6 +375,8 @@ case+ tnd of
 | T_AS() => fprint(out, "as")
 | T_OF() => fprint(out, "of")
 | T_IN() => fprint(out, "in")
+//
+| T_AND() => fprint(out, "and")
 | T_END() => fprint(out, "end")
 //
 | T_LET() => fprint(out, "let")
@@ -390,8 +397,11 @@ case+ tnd of
 | T_THEN() => fprint(out, "then")
 | T_ELSE() => fprint(out, "else")
 //
+| T_STADEF(knd) =>
+  fprint!(out, "stadef(", knd, ")")
+//
 | T_ABSTYPE(knd) =>
-  fprint!(out, "datatype(", knd, ")")
+  fprint!(out, "abstype(", knd, ")")
 //
 | T_DATASORT() =>
   fprint!(out, "datasort")
@@ -821,6 +831,37 @@ case+ x0.node() of
   loop1(x1, xs2, res)
 | T_COMMENT_mlblock _ =>
   loop1(x1, xs2, res)
+//
+| T_LAM(k0) =>
+  (
+    case+ x1.node() of
+    | T_IDENT_sym("@") => let
+        val loc =
+        x0.loc()+x1.loc()
+        val x01 =
+        token_make_node
+        (loc, T_LAM(k0+1))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_AT]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+  )
+| T_FIX(k0) =>
+  (
+    case+ x1.node() of
+    | T_IDENT_sym("@") => let
+        val loc =
+        x0.loc()+x1.loc()
+        val x01 =
+        token_make_node
+        (loc, T_FIX(k0+1))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_AT]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+  )
 //
 | T_IDENT_dlr(id) =>
   (
