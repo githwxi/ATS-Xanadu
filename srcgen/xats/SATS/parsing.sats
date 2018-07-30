@@ -261,6 +261,15 @@ fun
 p_s0margseq: parser(s0marglst)
 //
 typedef
+t0marg = $STAEXP0.t0marg
+typedef
+t0marglst = $STAEXP0.t0marglst
+fun
+p_t0marg: parser(t0marg)
+fun
+p_t0margseq: parser(t0marglst)
+//
+typedef
 sort0opt = $STAEXP0.sort0opt
 fun
 popt_sort0_anno: parser(sort0opt)

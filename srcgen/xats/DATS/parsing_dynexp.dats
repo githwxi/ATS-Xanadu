@@ -537,8 +537,8 @@ case+ tnd of
     val () = buf.incby1()
     val tid =
       p_s0eid(buf, err)
-    val s0mas =
-      p_s0margseq(buf, err)
+    val t0mas =
+      p_t0margseq(buf, err)
     // end of [val]
     val tdef0 = p_abstdef(buf, err)
     val loc_res =
@@ -546,11 +546,11 @@ case+ tnd of
     case+ tdef0 of
     | ABSTDEFnil() =>
       (
-      case+ s0mas of
+      case+ t0mas of
       | list_nil() => loc+tid.loc()
       | list_cons _ => let
-        val s0ma =
-        list_last(s0mas) in loc+s0ma.loc()
+        val t0ma =
+        list_last(t0mas) in loc+t0ma.loc()
         end // end of [list_cons]
       ) (* ABSTDEFnil *)
     | ABSTDEFlteq(_, s0e) => loc+s0e.loc()
@@ -560,7 +560,7 @@ case+ tnd of
     err := e0;
     d0ecl_make_node
     ( loc_res
-    , D0Cabstype(tok, tid, s0mas, tdef0))
+    , D0Cabstype(tok, tid, t0mas, tdef0))
   end
 //
 | T_SRP_NONFIX() => let

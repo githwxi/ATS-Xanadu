@@ -564,28 +564,13 @@ in
 end // end of [p_s0eid]
 
 (* ****** ****** *)
-
+//
 extern
 fun
 t_s0aid(tnode): bool
 extern
 fun
 p_s0aid: parser(s0eid)
-
-(* ****** ****** *)
-
-(*
-s0arg ::
-  | s0eid [COLON sort0]
-*)
-extern
-fun
-p_s0arg: parser(s0arg)
-extern
-fun
-p_s0argseq_COMMA: parser(s0arglst)
-
-(* ****** ****** *)
 //
 implement
 t_s0aid(tnd) =
@@ -614,6 +599,19 @@ in
       (err := err + 1; i0dnt_none(tok))
 //
 end // end of [p_s0aid]
+//
+(* ****** ****** *)
+//
+(*
+s0arg ::
+  | s0aid [COLON sort0]
+*)
+extern
+fun
+p_s0arg: parser(s0arg)
+extern
+fun
+p_s0argseq_COMMA: parser(s0arglst)
 //
 (* ****** ****** *)
 
@@ -681,25 +679,6 @@ list_vt2t
 ) (* end of [p_s0argseq_COMMA] *)
 
 (* ****** ****** *)
-//
-(*
-fun
-s0arg_make_s0eid
-  (id: s0eid): s0arg =
-(
-  s0arg_make_node
-  (id.loc(), S0ARGsome(id, None()))
-)
-fun
-s0marg_make_s0eid
-  (id: s0eid): s0marg = let
-  val s0a = s0arg_make_s0eid(id)
-in
-  s0marg_make_node(s0a.loc(), S0MARGsing(s0a))
-end // end of [s0marg_make_s0eid]
-*)
-//
-(* ****** ****** *)
 
 implement
 p_s0marg
@@ -712,6 +691,7 @@ val tnd = tok.node()
 in
 //
 case+ tnd of
+//
 | T_LPAREN() => let
     val () = buf.incby1()
     val s0as =
@@ -789,7 +769,7 @@ case+ tnd of
 end // end of [p_s0marg]
 
 (* ****** ****** *)
-
+//
 implement
 p_s0margseq
   (buf, err) =
@@ -799,7 +779,132 @@ list_vt2t
 (pstar_fun{s0marg}(buf, err, p_s0marg))
 //
 ) (* end of [p_s0margseq] *)
+//
+(* ****** ****** *)
+//
+(*
+t0arg ::
+  | [s0aid COLON] sort0
+*)
+extern
+fun
+p_t0arg: parser(t0arg)
+extern
+fun
+p_t0argseq_COMMA: parser(t0arglst)
+//
+(* ****** ****** *)
 
+implement
+p_t0arg
+  (buf, err) = let
+//
+val e0 = err
+//
+val mark =
+  buf.get_mark()
+//
+val tok0 = buf.get1()
+val tok1 = buf.get0()
+//
+in
+//
+case+
+tok1.node() of
+| T_COLON() => let
+    val () =
+    buf.clear_mark(mark)
+    val () = buf.incby1()
+    val s0t = p_sort0(buf, err)
+    val loc_res = tok0.loc() + s0t.loc()
+  in
+    err := e0;
+    t0arg_make_node
+    (loc_res, T0ARGsome(s0t, Some(tok0)))
+  end // end of [COLON]
+| _(*non-COLON*) => let
+    val () =
+      buf.set_mark(mark)
+    // end of [val]
+    val s0t = p_sort0(buf, err)
+  in
+    err := e0;
+    t0arg_make_node
+    (s0t.loc(), T0ARGsome(s0t, None(*void*)))
+  end // end of [non-COLON]
+//
+end // end of [p_t0arg]
+
+(* ****** ****** *)
+//
+implement
+p_t0argseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun{t0arg}(buf, err, p_t0arg))
+//
+) (* end of [p_t0argseq_COMMA] *)
+//
+(* ****** ****** *)
+
+implement
+p_t0marg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+//
+| T_LPAREN() => let
+    val () = buf.incby1()
+    val t0as =
+      p_t0argseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_RPAREN(buf, err)
+(*
+    val () =
+    println! ("p_t0marg: t0as = ", t0as)
+*)
+  in
+    err := e0;
+    t0marg_make_node
+    ( loc_res
+    , T0MARGlist(tbeg, t0as, tend)
+    ) where
+    {
+      val
+      loc_res = tbeg.loc() + tend.loc()
+    } // t0marg_make_node
+  end // end of [T_LPAREN]
+//
+| _ (*non-LPAREN*) =>
+  let
+    val () = (err := e0 + 1)
+  in
+    t0marg_make_node(tok.loc(), T0MARGnone(tok))
+  end // end of [non-LPAREN]
+//
+end // end of [p_t0marg]
+
+(* ****** ****** *)
+//
+implement
+p_t0margseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{t0marg}(buf, err, p_t0marg))
+//
+) (* end of [p_t0margseq] *)
+//
 (* ****** ****** *)
 
 implement
@@ -815,7 +920,7 @@ println!
 ("popt_sort0_anno: tok = ", tok)
 *)
 //
-in
+in (* in-of-let *)
 //
 case+
 tok.node() of
@@ -901,6 +1006,7 @@ p_napps(buf, err) = let
 in
 //
 case+ tnd of
+//
 | T_LAM(k0) => let
 //
     val () = buf.incby1()
@@ -1016,7 +1122,7 @@ in
 //
 case+ tnd of
 //
-| tnd when t_s0eid(tnd) =>
+| _ when t_s0eid(tnd) =>
   let
     val id = p_s0eid(buf, err)
   in
