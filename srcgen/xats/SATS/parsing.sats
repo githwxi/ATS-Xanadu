@@ -54,6 +54,7 @@ LEXING = "./lexing.sats"
   typedef tnode = $LEXING.tnode
   typedef token = $LEXING.token
   typedef tokenlst = List0(token)
+  typedef tokenopt = Option(token)
 //
 (* ****** ****** *)
 //
@@ -70,8 +71,16 @@ STAEXP0 = "./staexp0.sats"
 //
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
+//
   typedef sort0 = $STAEXP0.sort0
   typedef s0exp = $STAEXP0.s0exp
+//
+  typedef s0arg = $STAEXP0.s0arg
+//
+  typedef d0tsort = $STAEXP0.d0tsort
+  typedef s0rtdef = $STAEXP0.s0rtdef
+  typedef d0tsortlst = $STAEXP0.d0tsortlst
+//
   typedef labs0exp = $STAEXP0.labs0exp
 //
 (* ****** ****** *)
@@ -84,6 +93,7 @@ DYNEXP0 = "./dynexp0.sats"
   typedef d0ecl = $DYNEXP0.d0ecl
   typedef d0explst = List0(d0exp)
   typedef d0eclist = List0(d0ecl)
+//
   typedef labd0exp = $DYNEXP0.labd0exp
 //
 (* ****** ****** *)
@@ -158,6 +168,8 @@ parser(res:t@ype) =
 fun
 p_EQ: parser(token)
 fun
+p_BAR: parser(token)
+fun
 p_EQGT: parser(token)
 fun
 p_COLON: parser(token)
@@ -183,6 +195,11 @@ fun
 p_ENDWHERE: parser(token)
 fun
 p_ENDLOCAL: parser(token)
+
+(* ****** ****** *)
+
+fun
+popt_BAR: parser(tokenopt)
 
 (* ****** ****** *)
 //
@@ -234,6 +251,33 @@ fun p_sort0 : parser(sort0)
 (* ****** ****** *)
 //
 (*
+d0tsort ::=
+| s0tid EQ s0rtconseq_BAR
+*)
+fun p_d0tsort: parser(d0tsort)
+fun p_d0tsortseq_AND: parser(d0tsortlst)
+//
+(* ****** ****** *)
+//
+(*
+s0arg ::
+| s0aid [COLON sort0]
+*)
+fun
+p_s0arg: parser(s0arg)
+//
+(* ****** ****** *)
+//
+(*
+s0rtdef ::=
+| sort0
+| LBRACE s0arg BAR s0expseq_SEMICOLON RBRACE
+*)
+fun p_s0rtdef: parser(s0rtdef)
+//
+(* ****** ****** *)
+//
+(*
 s0exp ::= {atms0exp}+
 *)
 fun p_s0exp : parser(s0exp)
@@ -246,7 +290,7 @@ fun p_labs0exp : parser(labs0exp)
 (* ****** ****** *)
 //
 (*
-s0marg ::
+s0marg ::=
 | s0eid
 | LPAREN s0argseq_COMMA RPAREN
 *)
@@ -346,17 +390,31 @@ pstar_sep_fun
 ) : List0_vt(a) // end of [pstar_sep_fun]
 //
 fun
+pstar_AND_fun
+  {a:type}
+(
+  buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
+) : List0_vt(a) // end of [pstar_AND_fun]
+fun
 pstar_BAR_fun
   {a:type}
 (
   buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
 ) : List0_vt(a) // end of [pstar_BAR_fun]
+//
 fun
 pstar_COMMA_fun
   {a:type}
 (
   buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
 ) : List0_vt(a) // end of [pstar_COMMA_fun]
+//
+fun
+pstar_SEMICOLON_fun
+  {a:type}
+(
+  buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
+) : List0_vt(a) // end of [pstar_SEMICOLON_fun]
 //
 (* ****** ****** *)
 

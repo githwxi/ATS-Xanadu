@@ -160,11 +160,13 @@ tnode =
   | T_LAM of int // 'lam=lam1' and 'lam@=lam0'
   | T_FIX of int // 'fix=lam1' and 'fix@=fix0'
 //
-  | T_STADEF of int(*kind*)
+  | T_SORTDEF of ()
+  | T_SEXPDEF of int(*kind*)
 //
   | T_ABSTYPE of int(*kind*)
 //
   | T_DATASORT of ()
+//
   | T_DATATYPE of int(*kind*)
 //
   | T_SRP_NONFIX of ()
@@ -256,6 +258,11 @@ fun
 char2tnode(c0: int): tnode
 //
 (* ****** ****** *)
+
+fun
+tnode_is_AND : tnode -> bool
+fun
+tnode_is_BAR : tnode -> bool
 
 fun
 tnode_is_COMMA : tnode -> bool

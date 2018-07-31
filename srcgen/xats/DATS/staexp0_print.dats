@@ -69,6 +69,10 @@ implement
 fprint_val<sort0> = fprint_sort0
 implement
 fprint_val<s0rtcon> = fprint_s0rtcon
+implement
+fprint_val<d0tsort> = fprint_d0tsort
+
+(* ****** ****** *)
 
 implement
 fprint_val<s0arg> = fprint_s0arg
@@ -80,8 +84,12 @@ fprint_val<t0arg> = fprint_t0arg
 implement
 fprint_val<t0marg> = fprint_t0marg
 
+(* ****** ****** *)
+
 implement
 fprint_val<s0exp> = fprint_s0exp
+
+(* ****** ****** *)
 
 implement
 (a)//tmp
@@ -253,21 +261,20 @@ case+ x0.node() of
 | S0Tid(id) =>
   fprint!(out, "S0Tid(", id, ")")
 //
-| S0Tapp(s0ts) =>
-  fprint!(out, "S0Tapp(", s0ts, ")")
+| S0Tapps(s0ts) =>
+  fprint!(out, "S0Tapps(", s0ts, ")")
 //
 | S0Tlist(t0, s0ts, t1) =>
   fprint!
-  (out, "S0Tlist(", t0, ", ", s0ts, ", ", t1, ")")
+  (out, "S0Tlist(", t0, "; ", s0ts, "; ", t1, ")")
 //
-| S0Tqual(q, s0t) =>
+| S0Tqual(q0, s0t) =>
   fprint!
-  (out, "S0Tqid(", q, ", ", s0t, ")")
+  (out, "S0Tqid(", q0, ", ", s0t, ")")
 //
-| S0Tnone(token) =>
-  (
-    fprint!(out, "S0Tnone(", token, ")")
-  )
+| S0Tnone(tok) =>
+    fprint!(out, "S0Tnone(", tok, ")")
+  // end of [S0Tnone]
 //
 ) (* end of [fprint_sort0] *)
 
@@ -294,6 +301,23 @@ case+ x0.node() of
 (* ****** ****** *)
 
 implement
+print_d0tsort(x0) =
+fprint_d0tsort(stdout_ref, x0)
+implement
+prerr_d0tsort(x0) =
+fprint_d0tsort(stderr_ref, x0)
+implement
+fprint_d0tsort
+  (out, x0) =
+(
+case+ x0.node() of
+| D0TSORT(tid, tok, s0cs) =>
+  fprint!(out, "D0TSORT(", tid, "; ", tok, "; ", s0cs)
+) (* end of [fprint_d0tsort] *)
+
+(* ****** ****** *)
+
+implement
 print_s0arg(x0) =
 fprint_s0arg(stdout_ref, x0)
 implement
@@ -311,6 +335,27 @@ x0.node() of
 | S0ARGsome(id, opt) =>
   fprint!(out, "S0ARGsome(", id, ", ", opt, ")")
 ) (* fprint_s0arg *)
+
+(* ****** ****** *)
+
+implement
+print_s0rtdef(x0) =
+fprint_s0rtdef(stdout_ref, x0)
+implement
+prerr_s0rtdef(x0) =
+fprint_s0rtdef(stderr_ref, x0)
+implement
+fprint_s0rtdef
+  (out, x0) =
+(
+case+ x0.node() of
+| S0RTDEFsort(s0t) =>
+  fprint!(out, "S0RTDEFsort(", s0t, ")")
+| S0RTDEFsubset(tbeg, s0a0, tbar, s0es, tend) =>
+  fprint!
+  ( out, "S0RTDEFsubset("
+  , tbeg, "; ", s0a0, "; ", tbar, "; ", s0es, "; ", tend, ")")
+) (* end of [fprint_s0rtdef] *)
 
 (* ****** ****** *)
 
@@ -333,7 +378,7 @@ x0.node() of
   fprint!(out, "S0MARGsing(", tid, ")")
 | S0MARGlist(tbeg, s0as, tend) =>
   fprint!
-  (out, "S0MARGlist(", tbeg, ", ", s0as, ", ", tend, ")")
+  (out, "S0MARGlist(", tbeg, "; ", s0as, "; ", tend, ")")
 ) (* fprint_s0marg *)
 
 (* ****** ****** *)

@@ -369,25 +369,34 @@ p_sort0seq_COMMA: parser(sort0lst)
 //
 (* ****** ****** *)
 
+local
+
+static
+fun
+p_napps: parser(sort0)
 implement
-p_sort0(buf, err) =
-let
-//
+p_napps(buf, err) = let
   val e0 = err
+  val tok = buf.get0()
+in
+  err := e0 + 1;
+  sort0_make_node(tok.loc(), S0Tnone(tok))
+end // end of [p_napps]
+
+in (* in-of-local *)
+
+implement
+p_sort0
+  (buf, err) = let
 //
-  val s0ts0 =
-  p_atmsort0seq(buf, err)
+val s0ts0 =
+p_atmsort0seq(buf, err)
 //
 in
 //
 case+ s0ts0 of
 | list_nil
-    ((*void*)) => let
-    val tok = buf.get0()
-  in
-    err := e0 + 1;
-    sort0_make_node(tok.loc(), S0Tnone(tok))
-  end // end of [list_nil]
+    ((*void*)) => p_napps(buf, err)
 | list_cons
     (s0t0, s0ts1) =>
   (
@@ -397,11 +406,13 @@ case+ s0ts0 of
         val s0t1 = list_last(s0ts1)
       in
         sort0_make_node
-        (s0t0.loc()+s0t1.loc(), S0Tapp(s0ts0))
+        (s0t0.loc()+s0t1.loc(), S0Tapps(s0ts0))
       end // end of [list_cons]
   ) (* end of [list_cons] *)
 //
 end // end of [p_sort0]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -553,6 +564,101 @@ list_vt2t
 ) (* end of [p_s0rtconseq_BAR] *)
 
 (* ****** ****** *)
+
+implement
+p_d0tsort
+  (buf, err) = let
+//
+val e0 = err
+//
+val tid =
+  p_s0tid(buf, err)
+//
+val tok = p_EQ(buf, err)
+val opt = popt_BAR(buf, err)
+val s0cs =
+  p_s0rtconseq_BAR(buf, err)
+//
+val loc_res =
+(
+case+ s0cs of
+| list_nil() =>
+  (
+  case+ opt of
+  | None() => tid.loc() + tok.loc()
+  | Some(tok) => tid.loc() + tok.loc()
+  ) (* end of [list_nil] *)
+| list_cons _ => let
+    val s0c =
+    list_last(s0cs) in tid.loc() + s0c.loc()
+  end // end of [list_cons]
+) : loc_t // end of [val]
+//
+in
+//
+  err := e0;
+  d0tsort_make_node
+  (loc_res, D0TSORT(tid, tok, s0cs))
+//
+end // end of [p_d0tsort]
+
+(* ****** ****** *)
+
+implement
+p_d0tsortseq_AND
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_AND_fun{d0tsort}(buf, err, p_d0tsort))
+//
+) (* end of [p_d0tsortseq_AND] *)
+
+(* ****** ****** *)
+
+extern
+fun
+p_s0expseq_SEMICOLON: parser(s0explst)
+
+(* ****** ****** *)
+
+implement
+p_s0rtdef
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| T_LBRACE() => let
+    val () = buf.incby1()
+    val tbeg = tok
+    val s0a0 =
+      p_s0arg(buf, err)
+    val tok1 = p_BAR(buf, err)
+    val s0es = p_s0expseq_SEMICOLON(buf, err)
+    val tend = p_RBRACE(buf, err)
+  in
+    err := e0;
+    s0rtdef_make_node
+    ( tbeg.loc()+tend.loc()
+    , S0RTDEFsubset(tbeg, s0a0, tok1, s0es, tend)
+    )
+  end // end of [LBRACE]
+| _(* non-LBRACE *) =>
+  let
+    val s0t = p_sort0(buf, err)
+  in
+    err := e0;
+    s0rtdef_make_node(s0t.loc(), S0RTDEFsort(s0t))
+  end // end of [non-LBRACE]
+//
+end // end of [p_s0rtdef]
+
+(* ****** ****** *)
 //
 extern
 fun
@@ -591,13 +697,6 @@ end // end of [p_s0aid]
 //
 (* ****** ****** *)
 //
-(*
-s0arg ::
-  | s0aid [COLON sort0]
-*)
-extern
-fun
-p_s0arg: parser(s0arg)
 extern
 fun
 p_s0argseq_COMMA: parser(s0arglst)
@@ -1252,6 +1351,18 @@ list_vt2t
 (pstar_COMMA_fun{labs0exp}(buf, err, p_labs0exp))
 //
 ) (* end of [p_s0expseq_COMMA] *)
+
+(* ****** ****** *)
+
+implement
+p_s0expseq_SEMICOLON
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_SEMICOLON_fun{s0exp}(buf, err, p_s0exp))
+//
+) (* end of [p_s0expseq_SEMICOLON] *)
 
 (* ****** ****** *)
 

@@ -240,6 +240,21 @@ toks =
 (
 string_tokenize
 ("\
+//
+sortdef
+int = char
+sortdef
+nat = {a:int | a >= 0}
+//
+datasort
+ilist =
+| ilist_nil of ()
+| ilist_cons of (int, ilist)
+and
+ilist2 =
+| ilist2_nil of ()
+| ilist2_cons of (int, ilist)
+//
 #infix < >
 #infixl + -
 #infixl && ||

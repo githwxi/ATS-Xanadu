@@ -118,20 +118,29 @@ d0exp_make_node
 datatype
 d0ecl_node =
 //
-| D0Cnone of token // HX: error indication
+| D0Cnone of token // HX: error
 //
 | D0Clocal of
-  (token, d0eclist, token, d0eclist, token)
+  ( token
+  , d0eclist, token, d0eclist, token)
+//
+| D0Csortdef of
+  (token, s0tid, token, s0rtdef)
+//
+| D0Csexpdef of
+  ( token
+  , s0eid
+  , s0marglst, sort0opt, token, s0exp)
+//
+| D0Cabstype of
+    (token, s0eid, t0marglst, abstdef)
+  // D0Cabstype
+//
+| D0Cdatasort of (token(*datasort*), d0tsortlst)
 //
 (*
-| D0Csrtdef of (token, s0tid, s0rtdef)
+| D0Cdatatype of (token, d0atypelst, d0eclist(*where*))
 *)
-//
-| D0Cstadef of
-  ( token
-  , s0eid, s0marglst, sort0opt, token, s0exp)
-//
-| D0Cabstype of (token, s0eid, t0marglst, abstdef)
 //
 (*
 | D0Cfixity of
@@ -149,14 +158,14 @@ and precopt =
 | PRECOPTnil of ()
 | PRECOPTsing of (token) // token is int
 | PRECOPTlist of
-  (token(*lparen*), tokenlst, token(*rparen*))
+  (token(*'('*), tokenlst, token(*')'*))
 
 (* ****** ****** *)
 
 and abstdef =
   | ABSTDEFnil of () // unspecified
-  | ABSTDEFlteq of (token, s0exp)
-  | ABSTDEFeqeq of (token, s0exp)
+  | ABSTDEFlteq of (token(*"<="*), s0exp)
+  | ABSTDEFeqeq of (token(*"=="*), s0exp)
 
 (* ****** ****** *)
 //

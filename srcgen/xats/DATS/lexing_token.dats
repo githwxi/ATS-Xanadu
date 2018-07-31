@@ -220,8 +220,11 @@ case+ tnd of
 | T_FIX(knd) =>
   fprint!(out, "FIX(", knd, ")")
 //
-| T_STADEF(srt) =>
-  fprint!(out, "STADEF(", srt, ")")
+| T_SORTDEF() =>
+  fprint!(out, "SORTDEF()")
+//
+| T_SEXPDEF(srt) =>
+  fprint!(out, "SEXPDEF(", srt, ")")
 //
 | T_ABSTYPE(srt) =>
   fprint!(out, "ABSTYPE(", srt, ")")
@@ -397,8 +400,11 @@ case+ tnd of
 | T_THEN() => fprint(out, "then")
 | T_ELSE() => fprint(out, "else")
 //
-| T_STADEF(knd) =>
-  fprint!(out, "stadef(", knd, ")")
+| T_SORTDEF() =>
+  fprint!(out, "sortdef")
+//
+| T_SEXPDEF(knd) =>
+  fprint!(out, "sexpdef(", knd, ")")
 //
 | T_ABSTYPE(knd) =>
   fprint!(out, "abstype(", knd, ")")
@@ -470,6 +476,21 @@ end // end of [char2tnode]
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+tnode_is_AND
+  (node) =
+(
+  case+ node of
+  | T_AND() => true | _ => false
+)
+implement
+tnode_is_BAR
+  (node) =
+(
+  case+ node of
+  | T_BAR() => true | _ => false
+)
 //
 implement
 tnode_is_COMMA

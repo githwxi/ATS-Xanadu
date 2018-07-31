@@ -75,6 +75,22 @@ end // end of [p_EQ]
 (* ****** ****** *)
 
 implement
+p_BAR
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_BAR() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-BAR *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_BAR]
+
+(* ****** ****** *)
+
+implement
 p_EQGT
   (buf, err) = let
   val e0 = err
@@ -228,6 +244,25 @@ in
 end // end of [p_ENDLOCAL]
 
 (* ****** ****** *)
+
+implement
+popt_BAR
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_BAR() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_BAR *)
+  | _ (* non-BAR *) => None(*void*)
+end // end of [popt_BAR]
+
+(* ****** ****** *)
 //
 (*
 fun
@@ -348,6 +383,18 @@ end // end of [pstar_sep_fun]
 (* ****** ****** *)
 //
 implement
+pstar_AND_fun
+  {a}
+(
+  buf, err, fpar
+) = (
+//
+pstar_sep_fun
+(buf, err, tnode_is_AND, fpar)
+//
+) (* end of [pstar_AND_fun] *)
+//
+implement
 pstar_BAR_fun
   {a}
 (
@@ -372,6 +419,20 @@ pstar_sep_fun
 (buf, err, tnode_is_COMMA, fpar)
 //
 ) (* end of [pstar_COMMA_fun] *)
+//
+(* ****** ****** *)
+//
+implement
+pstar_SEMICOLON_fun
+  {a}
+(
+  buf, err, fpar
+) = (
+//
+pstar_sep_fun
+(buf, err, tnode_is_SEMICOLON, fpar)
+//
+) (* end of [pstar_SEMICOLON_fun] *)
 //
 (* ****** ****** *)
 
