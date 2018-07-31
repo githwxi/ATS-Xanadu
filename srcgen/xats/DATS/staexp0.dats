@@ -336,6 +336,58 @@ end // end of [local]
 local
 
 absimpl
+d0tsort_tbox = $rec{
+  d0tsort_loc= loc_t
+, d0tsort_node= d0tsort_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d0tsort_get_loc(x) = x.d0tsort_loc
+implement
+d0tsort_get_node(x) = x.d0tsort_node
+
+implement
+d0tsort_make_node
+(loc, node) = $rec
+{
+  d0tsort_loc= loc, d0tsort_node= node
+} (* end of [d0tsort_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+s0rtdef_tbox = $rec{
+  s0rtdef_loc= loc_t
+, s0rtdef_node= s0rtdef_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+s0rtdef_get_loc(x) = x.s0rtdef_loc
+implement
+s0rtdef_get_node(x) = x.s0rtdef_node
+
+implement
+s0rtdef_make_node
+(loc, node) = $rec
+{
+  s0rtdef_loc= loc, s0rtdef_node= node
+} (* end of [s0rtdef_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s0arg_tbox = $rec{
   s0arg_loc= loc_t
 , s0arg_node= s0arg_node

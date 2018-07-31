@@ -510,10 +510,28 @@ in
 //
 case+ tnd of
 //
-| T_STADEF(k0) => let
-  //
+| T_SORTDEF() => let
+//
     val () = buf.incby1()
+//
     val tid =
+      p_s0tid(buf, err)
+    val tok1 = p_EQ(buf, err)
+    val def2 = p_s0rtdef(buf, err)
+    val loc_res = loc+def2.loc()
+  in
+    err := e0;
+    d0ecl_make_node
+    ( loc_res
+    , D0Csortdef(tok, tid, tok1, def2)
+    ) (* d0ecl_make_node *)
+  end
+//
+| T_SEXPDEF(k0) => let
+//
+    val () = buf.incby1()
+//
+    val sid =
       p_s0eid(buf, err)
     val s0mas =
       p_s0margseq(buf, err)
@@ -528,14 +546,16 @@ case+ tnd of
     err := e0;
     d0ecl_make_node
     ( loc_res
-    , D0Cstadef
-      (tok, tid, s0mas, anno, tok1, s0e0)
+    , D0Csexpdef
+      (tok, sid, s0mas, anno, tok1, s0e0)
     ) (* d0ecl_make_node *)
   end
 //
 | T_ABSTYPE(k0) => let
+//
     val () = buf.incby1()
-    val tid =
+//
+    val sid =
       p_s0eid(buf, err)
     val t0mas =
       p_t0margseq(buf, err)
@@ -547,7 +567,7 @@ case+ tnd of
     | ABSTDEFnil() =>
       (
       case+ t0mas of
-      | list_nil() => loc+tid.loc()
+      | list_nil() => loc+sid.loc()
       | list_cons _ => let
         val t0ma =
         list_last(t0mas) in loc+t0ma.loc()
@@ -560,12 +580,40 @@ case+ tnd of
     err := e0;
     d0ecl_make_node
     ( loc_res
-    , D0Cabstype(tok, tid, t0mas, tdef0))
+    , D0Cabstype(tok, sid, t0mas, tdef0))
+  end
+//
+| T_DATASORT() => let
+//
+    val () = buf.incby1()
+//
+    val d0cs =
+      p_d0tsortseq_AND(buf, err)
+    // end of [val]
+    val loc_res =
+    (
+      case+ d0cs of
+      | list_nil() => loc
+      | list_cons _ =>
+        let
+        val d0c =
+        list_last(d0cs) in loc+d0c.loc()
+        end
+    ) : loc_t // end of [val]
+  in
+    err := e0;
+    d0ecl_make_node
+      ( loc_res, D0Cdatasort(tok, d0cs) )
+    // d0ecl_make_node
   end
 //
 | T_SRP_NONFIX() => let
+//
     val () = buf.incby1()
-    val ids = p_i0dntseq(buf, err)
+//
+    val ids =
+      p_i0dntseq(buf, err)
+    // end of [val]
     val loc_res =
     (
       case+ ids of
@@ -581,9 +629,14 @@ case+ tnd of
   end // end of [NONFIX]
 //
 | T_SRP_FIXITY(knd) => let
+//
     val () = buf.incby1()
-    val opt = p_precopt(buf, err)
-    val ids = p_i0dntseq(buf, err)
+//
+    val opt =
+      p_precopt(buf, err)
+    val ids =
+      p_i0dntseq(buf, err)
+//
     val loc_res =
     (
       case+ ids of

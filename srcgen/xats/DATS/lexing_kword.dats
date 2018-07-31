@@ -46,13 +46,13 @@ UN =
 (* ****** ****** *)
 //
 macdef
-T_PROPDEF_ = T_STADEF(PROPSORT)
+T_PROPDEF_ = T_SEXPDEF(PROPSORT)
 macdef
-T_VIEWDEF_ = T_STADEF(VIEWSORT)
+T_VIEWDEF_ = T_SEXPDEF(VIEWSORT)
 macdef
-T_TYPEDEF_ = T_STADEF(TYPESORT)
+T_TYPEDEF_ = T_SEXPDEF(TYPESORT)
 macdef
-T_VTYPEDEF_ = T_STADEF(VTYPESORT)
+T_VTYPEDEF_ = T_SEXPDEF(VTYPESORT)
 //
 macdef
 T_ABSPROP_ = T_ABSTYPE(PROPSORT)
@@ -157,6 +157,8 @@ val () = myins("if", T_IF)
 val () = myins("sif", T_IF)
 val () = myins("then", T_THEN)
 val () = myins("else", T_ELSE)
+//
+val () = myins("sortdef", T_SORTDEF)
 //
 val () = myins("propdef", T_PROPDEF_)
 val () = myins("viewdef", T_VIEWDEF_)

@@ -151,19 +151,27 @@ case+ x0.node() of
   fprint!(out, "D0Cnone(", tok, ")")
 //
 | D0Clocal
-  (tok0, d0cs0, tok1, d0cs1, tok2) =>
+  (tok, d0cs0, tok1, d0cs1, tok2) =>
   fprint!
   ( out, "D0Clocal("
-  , tok0, "; ", d0cs0, "; "
+  , tok, "; ", d0cs0, "; "
   , tok1, "; ", d0cs1, "; ", tok2, ")")
 //
-| D0Cstadef _ =>
-  fprint!(out, "D0Cstadef(", "...", ")")
+| D0Csortdef
+  (tok, tid, tok1, def2) =>
+  fprint!
+  ( out, "D0Csortdef("
+  , tok, "; ", tid, "; ", tok1, "; ", def2)
+| D0Csexpdef _ =>
+  fprint!(out, "D0Csexpdef(", "...", ")")
 //
-| D0Cabstype(tok, tid, s0mas, tdef) =>
+| D0Cabstype(tok, sid, s0mas, tdef) =>
   fprint!
   ( out, "D0Cabstype("
-  , tok, "; ", tid, "; ", s0mas, "; ", tdef, ")")
+  , tok, "; ", sid, "; ", s0mas, "; ", tdef, ")")
+//
+| D0Cdatasort(tok, d0cs) =>
+  fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")
 //
 | D0Cnonfix(tok, ids) =>
   fprint!(out, "D0Cnonfix(", tok, "; ", ids, ")")

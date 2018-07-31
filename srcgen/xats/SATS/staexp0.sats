@@ -307,16 +307,26 @@ fprint_sl0abeled
 (* ****** ****** *)
 //
 abstbox sort0_tbox = ptr
+abstbox s0exp_tbox = ptr
+//
+(* ****** ****** *)
+//
 typedef sort0 = sort0_tbox
 typedef sort0lst = List0(sort0)
 typedef sort0opt = Option(sort0)
+//
+typedef s0exp = s0exp_tbox
+typedef s0explst = List0(s0exp)
+typedef s0expopt = Option(s0exp)
+//
+(* ****** ****** *)
 //
 datatype
 sort0_node =
 //
 | S0Tid of (s0tid)
 //
-| S0Tapp of (sort0lst) // HX: unsupported
+| S0Tapps of (sort0lst) // HX: unsupported
 //
 | S0Tlist of (token, sort0lst, token) (* for temporary use *)
 //
@@ -384,6 +394,46 @@ s0rtcon_make_node
 //
 (* ****** ****** *)
 //
+abstbox
+d0tsort_tbox = ptr
+typedef
+d0tsort = d0tsort_tbox
+typedef
+d0tsortlst = List0(d0tsort)
+//
+datatype
+d0tsort_node =
+| D0TSORT of
+    (s0tid, token, s0rtconlst)
+  // D0TSORT
+//
+fun
+d0tsort_get_loc
+  (x0: d0tsort): loc_t
+fun
+d0tsort_get_node
+  (x0: d0tsort): d0tsort_node
+//
+overload .loc with d0tsort_get_loc
+overload .node with d0tsort_get_node
+//
+fun
+print_d0tsort: print_type(d0tsort)
+fun
+prerr_d0tsort: prerr_type(d0tsort)
+fun
+fprint_d0tsort: fprint_type(d0tsort)
+//
+overload print with print_d0tsort
+overload prerr with prerr_d0tsort
+overload fprint with fprint_d0tsort
+//
+fun
+d0tsort_make_node
+(loc: loc_t, node: d0tsort_node): d0tsort
+//
+(* ****** ****** *)
+//
 abstbox s0arg_tbox = ptr
 typedef s0arg = s0arg_tbox
 typedef s0arglst = List0(s0arg)
@@ -412,6 +462,39 @@ overload fprint with fprint_s0arg
 fun
 s0arg_make_node
 (loc: loc_t, node: s0arg_node): s0arg
+//
+(* ****** ****** *)
+//
+abstbox
+s0rtdef_tbox = ptr
+typedef
+s0rtdef = s0rtdef_tbox
+//
+datatype
+s0rtdef_node =
+| S0RTDEFsort of sort0
+| S0RTDEFsubset of
+  (token, s0arg, token, s0explst, token)
+//
+fun
+s0rtdef_get_loc(s0rtdef): loc_t
+fun
+s0rtdef_get_node(s0rtdef): s0rtdef_node
+//
+overload .loc with s0rtdef_get_loc
+overload .node with s0rtdef_get_node
+//
+fun print_s0rtdef : print_type(s0rtdef)
+fun prerr_s0rtdef : prerr_type(s0rtdef)
+fun fprint_s0rtdef : fprint_type(s0rtdef)
+//
+overload print with print_s0rtdef
+overload prerr with prerr_s0rtdef
+overload fprint with fprint_s0rtdef
+//
+fun
+s0rtdef_make_node
+(loc: loc_t, node: s0rtdef_node): s0rtdef
 //
 (* ****** ****** *)
 //
@@ -510,12 +593,6 @@ t0marg_make_node
 (loc: loc_t, node: t0marg_node): t0marg
 //
 (* ****** ****** *)
-//
-abstbox s0exp_tbox = ptr
-//
-typedef s0exp = s0exp_tbox
-typedef s0explst = List0(s0exp)
-typedef s0expopt = Option(s0exp)
 //
 typedef labs0exp = sl0abeled(s0exp)
 typedef labs0explst = List0(labs0exp)
