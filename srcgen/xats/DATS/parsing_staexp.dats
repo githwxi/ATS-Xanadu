@@ -240,45 +240,105 @@ end // end of [p_s0tid]
 
 (* ****** ****** *)
 
-(*
 implement
-p_s0qua(buf, err) =
-let
-  val mark =
-  tokbuf_get_mark(buf)
-  val tok0 = buf.get1()
-in
+t_s0eid(tnd) =
+(
+case+ tnd of
 //
-case+
-tok0.node() of
-| T_IDENT_dlr _ =>
-  (
-  case+
-  tok1.node() of
-  | T_DOT() =>
-    (
-    s0qua_symdot(tok0, tok1)
-    ) where
-    {
-      val () = buf.clear_mark(mark)
-    }
-  | _ (*non-DOT*) =>
-    let
-    val () =
-    buf.set_mark(mark) in s0qua_none(tok0)
-    end
-  ) where
-  {
-    val tok1 = tokbuf_getok1(buf)
-  }
-| _ (*non-IDENT_dlr*) =>
-  let
-    val () =
-    buf.set_mark(mark) in s0qua_none(tok0)
-  end // end of [non-IDENT_dlr]
+| T_IDENT_alp _ => true
+| T_IDENT_sym _ => true
 //
-end // end of [p_s0qua]
+| T_IDENT_dlr _ => true
+//
+| T_BACKSLASH() => true
+//
+(*
+| T_LT() => true // "<"
+| T_GT() => true // ">"
 *)
+//
+(*
+| T_EQGT() => true // "=>"
+*)
+//
+| _ (* non-IDENT *) => false
+) (* end of [t_s0eid] *)
+
+implement
+p_s0eid(buf, err) =
+let
+//
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+  case+ tnd of
+//
+  | T_IDENT_alp _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | T_IDENT_sym _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+//
+  | T_IDENT_dlr _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+//
+(*
+  | T_AT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "@" )
+      val tok = token_make_node(loc, tnd)
+    }
+*)
+//
+  | T_BACKSLASH() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+//
+  | T_LT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "<" )
+      val tok = token_make_node(loc, tnd)
+    }
+  | T_GT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( ">" )
+      val tok = token_make_node(loc, tnd)
+    }
+//
+(*
+  | T_EQGT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "=>" )
+      val tok = token_make_node(loc, tnd)
+    }
+*)
+//
+  | _ (* non-IDENT *) =>
+    (err := err + 1; i0dnt_none(tok))
+end // end of [p_s0eid]
 
 (* ****** ****** *)
 //
@@ -436,132 +496,61 @@ list_vt2t
 ) (* end of [p_sort0seq_COMMA] *)
 
 (* ****** ****** *)
-
+//
+(*
+s0rtcon::
+| s0eid [OF sort0]
+*)
+extern
+fun
+p_s0rtcon: parser(s0rtcon)
+extern
+fun
+p_s0rtconseq_BAR: parser(s0rtconlst)
+//
 implement
-t_s0eid(tnd) =
-(
-case+ tnd of
+p_s0rtcon
+  (buf, err) = let
 //
-| T_IDENT_alp _ => true
-| T_IDENT_sym _ => true
+val e0 = err
 //
-| T_IDENT_dlr _ => true
-//
-| T_BACKSLASH() => true
-//
-(*
-| T_LT() => true // "<"
-| T_GT() => true // ">"
-*)
-(*
-| T_LTEQ() => true // "<="
-| T_GTEQ() => true // ">="
-*)
-(*
-| T_LTGT() => true // "<>"
-*)
-//
-(*
-| T_EQGT() => true // "=>"
-*)
-//
-| _ (* non-IDENT *) => false
-) (* end of [t_s0eid] *)
-
-implement
-p_s0eid(buf, err) =
-let
+val id =
+  p_s0eid(buf, err)
 //
 val tok = buf.get0()
 val tnd = tok.node()
 //
 in
-  case+ tnd of
 //
-  | T_IDENT_alp _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | T_IDENT_sym _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
+case+ tnd of
+| T_OF() => let
+    val () = buf.incby1()
+    val s0t = p_sort0(buf, err)
+    val loc_res = id.loc()+s0t.loc()
+  in
+    err := e0;
+    s0rtcon_make_node
+    (loc_res, S0RTCON(id, Some(s0t)))
+  end // end of [T_OF]
+| _ (* non-OF *) =>
+  ( err := e0;
+    s0rtcon_make_node
+    (id.loc(), S0RTCON(id, None(*void*)))
+  )
 //
-  | T_IDENT_dlr _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
+end // end of [p_s0rtcon]
 //
-(*
-  | T_AT() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "@" )
-      val tok = token_make_node(loc, tnd)
-    }
-*)
+(* ****** ****** *)
+
+implement
+p_s0rtconseq_BAR
+  (buf, err) =
+(
 //
-  | T_BACKSLASH() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
+list_vt2t
+(pstar_BAR_fun{s0rtcon}(buf, err, p_s0rtcon))
 //
-  | T_LT() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "<" )
-      val tok = token_make_node(loc, tnd)
-    }
-  | T_GT() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( ">" )
-      val tok = token_make_node(loc, tnd)
-    }
-//
-(*
-  | T_LTEQ() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "<=" )
-      val tok = token_make_node(loc, tnd)
-    }
-  | T_GTEQ() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( ">=" )
-      val tok = token_make_node(loc, tnd)
-    }
-*)
-//
-(*
-  | T_EQGT() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "=>" )
-      val tok = token_make_node(loc, tnd)
-    }
-*)
-//
-  | _ (* non-IDENT *) =>
-    (err := err + 1; i0dnt_none(tok))
-end // end of [p_s0eid]
+) (* end of [p_s0rtconseq_BAR] *)
 
 (* ****** ****** *)
 //

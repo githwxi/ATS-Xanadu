@@ -346,6 +346,12 @@ pstar_sep_fun
 ) : List0_vt(a) // end of [pstar_sep_fun]
 //
 fun
+pstar_BAR_fun
+  {a:type}
+(
+  buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
+) : List0_vt(a) // end of [pstar_BAR_fun]
+fun
 pstar_COMMA_fun
   {a:type}
 (

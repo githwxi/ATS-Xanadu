@@ -67,6 +67,8 @@ fprint_val<l0abl> = fprint_l0abl
 
 implement
 fprint_val<sort0> = fprint_sort0
+implement
+fprint_val<s0rtcon> = fprint_s0rtcon
 
 implement
 fprint_val<s0arg> = fprint_s0arg
@@ -270,6 +272,24 @@ case+ x0.node() of
 ) (* end of [fprint_sort0] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_s0rtcon(x0) =
+fprint_s0rtcon(stdout_ref, x0)
+implement
+prerr_s0rtcon(x0) =
+fprint_s0rtcon(stderr_ref, x0)
+
+implement
+fprint_s0rtcon
+  (out, x0) =
+(
+case+ x0.node() of
+| S0RTCON(id, opt) =>
+  fprint!(out, "S0RTCON(", id, ", ", opt, ")")
+) (* end of [fprint_s0rtcon] *)
 
 (* ****** ****** *)
 

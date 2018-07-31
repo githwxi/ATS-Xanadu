@@ -310,6 +310,32 @@ end // end of [local]
 local
 
 absimpl
+s0rtcon_tbox = $rec{
+  s0rtcon_loc= loc_t
+, s0rtcon_node= s0rtcon_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+s0rtcon_get_loc(x) = x.s0rtcon_loc
+implement
+s0rtcon_get_node(x) = x.s0rtcon_node
+
+implement
+s0rtcon_make_node
+(loc, node) = $rec
+{
+  s0rtcon_loc= loc, s0rtcon_node= node
+} (* end of [s0rtcon_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s0arg_tbox = $rec{
   s0arg_loc= loc_t
 , s0arg_node= s0arg_node
