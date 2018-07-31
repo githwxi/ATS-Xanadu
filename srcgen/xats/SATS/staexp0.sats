@@ -351,6 +351,39 @@ sort0_make_node
 //
 (* ****** ****** *)
 //
+abstbox
+s0rtcon_tbox = ptr
+typedef
+s0rtcon = s0rtcon_tbox
+typedef
+s0rtconlst = List0(s0rtcon)
+//
+datatype
+s0rtcon_node =
+| S0RTCON of (s0eid, sort0opt) 
+//
+fun
+s0rtcon_get_loc(s0rtcon): loc_t
+fun
+s0rtcon_get_node(s0rtcon): s0rtcon_node
+//
+overload .loc with s0rtcon_get_loc
+overload .node with s0rtcon_get_node
+//
+fun print_s0rtcon : print_type(s0rtcon)
+fun prerr_s0rtcon : prerr_type(s0rtcon)
+fun fprint_s0rtcon : fprint_type(s0rtcon)
+//
+overload print with print_s0rtcon
+overload prerr with prerr_s0rtcon
+overload fprint with fprint_s0rtcon
+//
+fun
+s0rtcon_make_node
+(loc: loc_t, node: s0rtcon_node): s0rtcon
+//
+(* ****** ****** *)
+//
 abstbox s0arg_tbox = ptr
 typedef s0arg = s0arg_tbox
 typedef s0arglst = List0(s0arg)

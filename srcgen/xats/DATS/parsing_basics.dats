@@ -348,6 +348,20 @@ end // end of [pstar_sep_fun]
 (* ****** ****** *)
 //
 implement
+pstar_BAR_fun
+  {a}
+(
+  buf, err, fpar
+) = (
+//
+pstar_sep_fun
+(buf, err, tnode_is_BAR, fpar)
+//
+) (* end of [pstar_BAR_fun] *)
+//
+(* ****** ****** *)
+//
+implement
 pstar_COMMA_fun
   {a}
 (
