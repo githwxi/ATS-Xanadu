@@ -464,6 +464,12 @@ case+ x0.node() of
 | S0Eid(id) =>
   fprint!(out, "S0Eid(", id, ")")
 //
+| S0Eop1(opid) =>
+  fprint!(out, "S0Eop1(", opid, ")")
+| S0Eop2(tbeg, opid, tend) =>
+  fprint!
+  (out, "S0Eop2(", tbeg, "; ", opid, "; ", tend, ")")
+//
 | S0Eint(i0) =>
   fprint!(out, "S0Eint(", i0, ")")
 | S0Echr(c0) =>

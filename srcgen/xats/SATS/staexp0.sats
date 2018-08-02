@@ -635,6 +635,9 @@ s0exp_node =
 //
 | S0Eid of (s0eid)
 //
+| S0Eop1 of (token) // op_symid
+| S0Eop2 of (token, s0eid, token) // op(...)
+//
 | S0Eint of (t0int)
 | S0Echr of (t0chr)
 | S0Eflt of (t0flt)
