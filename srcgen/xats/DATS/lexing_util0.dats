@@ -613,7 +613,7 @@ ifcase
   end // end-of-SLASH
 | _(* else *) => let
     val () =
-    lexbuf_unget(buf, i0)
+    lexbuf_unget(buf, i1)
   in
     lexing_isSYMBOLIC(buf, i0)
   end (* end of [......] *)
@@ -888,13 +888,13 @@ else
 if
 (k > 0)
 then let
-  val () = lexbuf_unget(buf, i0)
+  val () = lexbuf_unget(buf, i1)
 in
   T_IDENT_srp(lexbuf_get_fullseg(buf))
 end // end of [then]
 else let
   val () =
-  lexbuf_unget(buf, i0) in lexing_isSYMBOLIC(buf, i0)
+  lexbuf_unget(buf, i1) in lexing_isSYMBOLIC(buf, i0)
 end // end of [else]
 )
 //
@@ -935,15 +935,24 @@ else
 (
 if
 (k > 0)
-then let
-  val () =
-  lexbuf_unget(buf, i0)
-in
-  T_IDENT_dlr(lexbuf_get_fullseg(buf))
-end // end of [then]
+then
+(
+if
+(c1 = '.')
+then
+(
+T_IDENT_qual(lexbuf_get_fullseg(buf))
+) // end of [then]
 else let
   val () =
-  lexbuf_unget(buf, i0) in lexing_isSYMBOLIC(buf, i0)
+  lexbuf_unget(buf, i1)
+in
+  T_IDENT_dlr(lexbuf_get_fullseg(buf))
+end // end of [else]
+)
+else let
+  val () =
+  lexbuf_unget(buf, i1) in lexing_isSYMBOLIC(buf, i0)
 end // end of [else]
 ) (* end of [else] *)
 //
@@ -976,7 +985,7 @@ ifcase
   T_SPECHAR(i0) where
   {
     val () =
-      lexbuf_unget(buf, i0)
+      lexbuf_unget(buf, i1)
     // end of [val]
     val () = lexbuf_get_none(buf)
   } (* end of [......] *)

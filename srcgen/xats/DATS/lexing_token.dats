@@ -204,7 +204,15 @@ case+ tnd of
 *)
 //
 | T_AS() => fprint(out, "AS")
+//
 | T_OF() => fprint(out, "OF")
+//
+| T_OP() => fprint(out, "OP")
+//
+| T_OP_par() =>
+  fprint(out, "OP_par()")
+| T_OP_sym(id) =>
+  fprint!(out, "OP_sym(", id, ")")
 //
 | T_IN() => fprint(out, "IN")
 //
@@ -396,7 +404,14 @@ case+ tnd of
 *)
 //
 | T_AS() => fprint(out, "as")
+//
 | T_OF() => fprint(out, "of")
+//
+| T_OP() => fprint(out, "op")
+//
+| T_OP_par() => fprint(out, "op(")
+| T_OP_sym(id) => fprint!(out, "op", id)
+//
 | T_IN() => fprint(out, "in")
 //
 | T_AND() => fprint(out, "and")
@@ -904,6 +919,27 @@ case+ x0.node() of
 //
   )
 //
+| T_OP() =>
+  (
+    case+ x1.node() of
+    | T_LPAREN() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_OP_par())
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_LPAREN]
+    | T_IDENT_sym(id) => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_OP_sym(id))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_IDENT_sym]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+  )
+//
 | T_DLR() =>
   (
     case+ x1.node() of
@@ -967,6 +1003,7 @@ case+ x0.node() of
         loop1(x1, xs2, list_vt_cons(x0, res))
   )
 //
+(*
 | T_IDENT_dlr(id) =>
   (
     case+ x1.node() of
@@ -982,6 +1019,7 @@ case+ x0.node() of
     | _ (* rest-of-tnode *) =>
         loop1(x1, xs2, list_vt_cons(x0, res))
   ) (* end of [T_IDENT_dlr] *)
+*)
 //
 | _ (* rest-of-tnode *) =>
     loop1(x1, xs2, list_vt_cons(x0, res))

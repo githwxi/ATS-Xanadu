@@ -132,7 +132,8 @@ list_vt2t(toks)
 (*
 val ((*void*)) =
 list0_foreach<token>
-(g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
+( g0ofg1(toks)
+, lam(tok) => fprint_token(stdout_ref, tok))
 *)
 //
 val s0e0 = let
@@ -156,25 +157,26 @@ val opt =
 fileref_open_opt
 ("./test_staexp.text", file_mode_r)
 val-~Some_vt(inp) = opt
-val-
-toks = fileref_tokenize(inp)
+val
+toks =
+fileref_tokenize(inp)
 val
 toks =
 lexing_preprocess_tokenlst(toks)
-val
-toks = list_vt2t(toks)
-(*
+//
+val toks = list_vt2t(toks)
+//
 val ((*void*)) =
 list0_foreach<token>
-(g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
-*)
+(g0ofg1(toks), lam(tok) => println!(tok))
+//
 val d0cs = let
 //
 var err: int
 var buf: tokbuf
 val ((*void*)) = (err := 0)
 val ((*void*)) =
-tokbuf_initize_list(buf, toks)
+  tokbuf_initize_list(buf, toks)
 //
 in
   p_d0eclseq(buf, err)

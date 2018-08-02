@@ -223,6 +223,8 @@ case+ tnd of
 //
 | T_IDENT_dlr _ => true
 //
+| T_AT() => true // "@"
+//
 | T_LT() => true // "<"
 | T_GT() => true // ">"
 //
@@ -262,7 +264,6 @@ in
       val () = buf.incby1()
     }
 //
-(*
   | T_AT() =>
     i0dnt_some(tok) where
     {
@@ -271,7 +272,6 @@ in
       val tnd = T_IDENT_sym( "@" )
       val tok = token_make_node(loc, tnd)
     }
-*)
 //
   | T_LT() =>
     i0dnt_some(tok) where
@@ -1362,6 +1362,27 @@ case+ tnd of
     // end of [s0exp_make_node]
   end // end of [T_LBRACKET]
 *)
+//
+| T_OP_sym _ => let
+    val () = buf.incby1()
+  in
+(*
+    err := e0;
+*)
+    s0exp_make_node
+    (tok.loc(), S0Eop1(tok))
+  end
+| T_OP_par _ => let
+    val () = buf.incby1()
+    val opid = p_s0eid(buf, err)
+    val tbeg = tok
+    val tend = p_RPAREN(buf, err)
+    val loc_res = tbeg.loc()+tend.loc()
+  in
+    err := e0;
+    s0exp_make_node
+    (loc_res, S0Eop2(tbeg, opid, tend))
+  end
 //
 | T_IDENT_qual _ => let
     val () = buf.incby1()

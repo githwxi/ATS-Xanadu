@@ -139,6 +139,7 @@ val () = myins("-<", T_MSLT)
 val () = myins("as", T_AS)
 //
 val () = myins("of", T_OF)
+val () = myins("op", T_OP)
 //
 val () = myins("in", T_IN)
 //

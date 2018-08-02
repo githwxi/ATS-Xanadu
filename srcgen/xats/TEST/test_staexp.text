@@ -1,19 +1,32 @@
 (* ****** ****** *)
 
+sexpdef
+xy: int = op+(x, y)
+sexpdef
+xy: int = op(add)(x, y)
+
+(* ****** ****** *)
+
 #infix x
-#infixr ->
+#infixr -> =>>
 #infixl + - * /
-#prefix !
-#postfix !!
+#infixl & && ||
+#prefix ~ ! !!
+#postfix ~ !! !!!
 
 #nonfix foo bar
+
+(* ****** ****** *)
+
+typedef + = $A.+
+typedef @ = $A.@
 
 (* ****** ****** *)
 
 typedef int2 = @(int, int)
 typedef int2 = $(int, int)
 typedef int2 = @{x=int, y=int}
-typedef int2 = ${x=int, y=int}
+typedef int2 = ${x=$A.int, y=$B.int}
 
 (* ****** ****** *)
 
@@ -35,7 +48,7 @@ arrayptr
 (a:vtype+, n:int) <= ptr
 
 (* ****** ****** *)
-
+//
 datasort
 ilist =
   | ilist_nil
@@ -44,7 +57,7 @@ and
 ilist2 =
   | ilist2_nil
   | ilist2_cons of (int, int, ilist2)
-
+//
 (* ****** ****** *)
 
 vtypedef
@@ -61,7 +74,7 @@ fint2 =
 (* ****** ****** *)
 
 typedef int x y =
-(lam (u, v): type => int(x+y))(0)(1)
+(lam(u:int, v:bool): type => int(x+y))(0, false)
 
 (* ****** ****** *)
 
@@ -72,10 +85,10 @@ sexpdef foo = int * int
 in (* in-of-local *)
 
 sortdef pos = {a: int | a > 0}
-sortdef neg = {a: int | a > 0}
+sortdef neg = {a: int | a < 0}
 sortdef nat = {a: int | a >= 0}
 
-end // end of [local]
+endlocal // end of [local]
 
 (* ****** ****** *)
 

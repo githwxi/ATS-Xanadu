@@ -142,7 +142,13 @@ tnode =
 *)
 //
   | T_AS of () // 'as'
+//
   | T_OF of () // 'of'
+//
+  | T_OP of () // 'op'
+  | T_OP_par of () // 'op('
+  | T_OP_sym of (string) // 'opid'
+//
   | T_IN of () // 'in'
 //
   | T_AND of () // 'and'

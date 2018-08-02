@@ -95,6 +95,13 @@ val sum = foldright<...>(xs, lam($0+$1), 0)
 //
 (* ****** ****** *)
 
+case x of
+| pat =>
+  if x then y else z
+| op(+)(3, 4)
+
+(* ****** ****** *)
+
 fun
 foo{i:int}[i,j](x: int(i)): bool(i > 0)
 
