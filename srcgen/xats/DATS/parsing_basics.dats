@@ -123,6 +123,19 @@ end // end of [p_COLON]
 (* ****** ****** *)
 
 implement
+p_LPAREN
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_LPAREN() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-RLAREN *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_LPAREN]
+implement
 p_RPAREN
   (buf, err) = let
   val e0 = err
@@ -138,6 +151,19 @@ end // end of [p_RPAREN]
 
 (* ****** ****** *)
 
+implement
+p_LBRACE
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_LBRACE() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-RLRACE *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_LBRACE]
 implement
 p_RBRACE
   (buf, err) = let
@@ -155,18 +181,31 @@ end // end of [p_RBRACE]
 (* ****** ****** *)
 
 implement
-p_RBRACKET
+p_LBRACK
   (buf, err) = let
   val e0 = err
   val tok = buf.get0()
 in
   case+
   tok.node() of
-  | T_RBRACKET() =>
+  | T_LBRACK() =>
     let val () = buf.incby1() in tok end
-  | _ (* non-RBRACKET *) =>
+  | _ (* non-LBRACK *) =>
     let val ( ) = (err := e0 + 1) in tok end
-end // end of [p_RBRACKET]
+end // end of [p_LBRACK]
+implement
+p_RBRACK
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_RBRACK() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-RBRACK *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_RBRACK]
 
 (* ****** ****** *)
 
@@ -421,6 +460,18 @@ pstar_sep_fun
 ) (* end of [pstar_COMMA_fun] *)
 //
 (* ****** ****** *)
+//
+implement
+pstar_BARSEMI_fun
+  {a}
+(
+  buf, err, fpar
+) = (
+//
+pstar_sep_fun
+(buf, err, tnode_is_BARSEMI, fpar)
+//
+) (* end of [pstar_BARSEMI_fun] *)
 //
 implement
 pstar_SEMICOLON_fun

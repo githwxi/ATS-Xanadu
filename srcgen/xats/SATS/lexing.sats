@@ -93,15 +93,9 @@ tnode =
   | T_COMMENT_cblock of (int(*level*), string) // comment of c-style
   | T_COMMENT_mlblock of (int(*level*), string) // comment of ml-style
 //
-(*
-//
   | T_AT of ()
-  | T_BANG of ()
-//
-*)
-//
 (*
-  | T_AT of () // @
+  | T_BANG of ()
 *)
 //
   | T_BAR of () // |
@@ -111,30 +105,40 @@ tnode =
 //
   | T_LT of () // <
   | T_GT of () // >
-(*
-  | T_LTEQ of () // <=
-  | T_GTEQ of () // >=
-*)
+//
+  | T_DLR of () // $
+  | T_SRP of () // #
 //
   | T_EQGT of () // =>
+  | T_MSLT of () // -<
+//
+  | T_COLON of () // :
 //
   | T_COMMA of () // ,
-  | T_COLON of () // :
   | T_SEMICOLON of () // ;
 //
-  | T_BACKSLASH of ()
+  | T_BACKSLASH of () // \
 //
   | T_LPAREN of () // (
   | T_RPAREN of () // )
   | T_LBRACE of () // {
   | T_RBRACE of () // }
-  | T_LBRACKET of () // [
-  | T_RBRACKET of () // ]
+//
+  | T_EXISTS of int
+  | T_LBRACK of () // [
+  | T_RBRACK of () // ]
+//
+  | T_TUPLE of (int) // @(/$(
+                     // @tup/$tup
+                     // @tup_t/$tup_t
+                     // @tup_vt/$tup_vt
+  | T_RECORD of (int) // @{/${
+                      // @rec/$rec
+                      // @rec_t/$rec_t
+                      // @rec_vt/$rec_vt
 //
 (*
-  | T_ATLPAREN of () // @(
-  | T_ATLBRACE of () // @{
-  | T_ATLBRACKET of () // @[
+  | T_STRUCT of (int) // @struct/$struct
 *)
 //
   | T_AS of () // 'as'
@@ -268,6 +272,9 @@ fun
 tnode_is_COMMA : tnode -> bool
 fun
 tnode_is_COLON : tnode -> bool
+
+fun
+tnode_is_BARSEMI : tnode -> bool
 fun
 tnode_is_SEMICOLON : tnode -> bool
 

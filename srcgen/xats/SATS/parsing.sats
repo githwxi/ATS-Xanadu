@@ -77,11 +77,15 @@ STAEXP0 = "./staexp0.sats"
 //
   typedef s0arg = $STAEXP0.s0arg
 //
+  typedef s0qua = $STAEXP0.s0qua
+//
   typedef d0tsort = $STAEXP0.d0tsort
   typedef s0rtdef = $STAEXP0.s0rtdef
-  typedef d0tsortlst = $STAEXP0.d0tsortlst
 //
   typedef labs0exp = $STAEXP0.labs0exp
+//
+  typedef s0qualst = $STAEXP0.s0qualst
+  typedef d0tsortlst = $STAEXP0.d0tsortlst
 //
 (* ****** ****** *)
 
@@ -177,11 +181,17 @@ p_COLON: parser(token)
 (* ****** ****** *)
 
 fun
+p_LPAREN: parser(token)
+fun
 p_RPAREN: parser(token)
+fun
+p_LBRACE: parser(token)
 fun
 p_RBRACE: parser(token)
 fun
-p_RBRACKET: parser(token)
+p_LBRACK: parser(token)
+fun
+p_RBRACK: parser(token)
 
 (* ****** ****** *)
 
@@ -230,16 +240,6 @@ fun t_d0eid(tnode): bool
 fun p_s0tid: parser(s0tid)
 fun p_s0eid: parser(s0eid)
 fun p_d0eid: parser(d0eid)
-//
-(* ****** ****** *)
-//
-(*
-(*
-s0qua ::=
-(IDENT_dlr DOT)?
-*)
-fun p_s0qua: parser(s0qua)
-*)
 //
 (* ****** ****** *)
 //
@@ -320,6 +320,13 @@ popt_sort0_anno: parser(sort0opt)
 //
 (* ****** ****** *)
 //
+fun
+p_s0qua: parser(s0qua)
+fun
+p_s0quaseq_BARSEMI: parser(s0qualst)
+//
+(* ****** ****** *)
+//
 fun p_d0exp : parser(d0exp)
 //
 (*
@@ -329,14 +336,6 @@ fun p_labd0exp : parser(labd0exp)
 //
 fun p_d0expseq : parser(d0explst)
 //
-(* ****** ****** *)
-
-(*
-fun t_stadef(tnode): bool
-fun t_abstype(tnode): bool
-fun t_datatype(tnode): bool
-*)
-
 (* ****** ****** *)
 
 fun p_d0ecl : parser(d0ecl)
@@ -409,6 +408,12 @@ pstar_COMMA_fun
   buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
 ) : List0_vt(a) // end of [pstar_COMMA_fun]
 //
+fun
+pstar_BARSEMI_fun
+  {a:type}
+(
+  buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
+) : List0_vt(a) // end of [pstar_BARSEMI_fun]
 fun
 pstar_SEMICOLON_fun
   {a:type}

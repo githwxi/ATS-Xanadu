@@ -130,33 +130,6 @@ end // end of [p_t0str]
 
 (* ****** ****** *)
 
-(*
-implement
-p_i0dnt(buf, err) =
-let
-//
-  val tok = buf.get0()
-//
-in
-  case+
-  tok.node() of
-  | T_IDENT_alp _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | T_IDENT_sym _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | _ (* non-IDENT *) =>
-    (err := err + 1; i0dnt_none(tok))
-end // end of [p_i0dnt]
-*)
-
-(* ****** ****** *)
-
 implement
 p_l0abl(buf, err) =
 let
@@ -250,16 +223,14 @@ case+ tnd of
 //
 | T_IDENT_dlr _ => true
 //
-| T_BACKSLASH() => true
-//
-(*
 | T_LT() => true // "<"
 | T_GT() => true // ">"
-*)
 //
 (*
 | T_EQGT() => true // "=>"
 *)
+//
+| T_BACKSLASH() => true
 //
 | _ (* non-IDENT *) => false
 ) (* end of [t_s0eid] *)
@@ -302,12 +273,6 @@ in
     }
 *)
 //
-  | T_BACKSLASH() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-//
   | T_LT() =>
     i0dnt_some(tok) where
     {
@@ -323,6 +288,12 @@ in
       val loc = tok.loc((*void*))
       val tnd = T_IDENT_sym( ">" )
       val tok = token_make_node(loc, tnd)
+    }
+//
+  | T_BACKSLASH() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
     }
 //
 (*
@@ -699,6 +670,22 @@ end // end of [p_s0aid]
 //
 extern
 fun
+p_s0aidseq_COMMA: parser(i0dntlst)
+//
+implement
+p_s0aidseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun{s0eid}(buf, err, p_s0aid))
+//
+) (* end of [p_s0aidseq_COMMA] *)
+//
+(* ****** ****** *)
+//
+extern
+fun
 p_s0argseq_COMMA: parser(s0arglst)
 //
 (* ****** ****** *)
@@ -820,7 +807,7 @@ case+ tnd of
 //
 (*
   let
-    val id = p_s0eid(buf, err)
+    val id = p_s0aid(buf, err)
   in
     if
     (err = e0)
@@ -1043,8 +1030,11 @@ atms0exp ::
   | ( s0expseq_COMMA )
   | ( s0expseq_COMMA | s0expseq_COMMA )
 //
-  | { labs0expseq_COMMA }
-  | { labs0expseq_COMMA | labs0expseq_COMMA }
+  | TUPLE( s0expseq_COMMA )
+  | TUPLE( s0expseq_COMMA | s0expseq_COMMA )
+//
+  | RECORD{ labs0expseq_COMMA }
+  | RECORD{ labs0expseq_COMMA | labs0expseq_COMMA }
 //
 *)
 extern
@@ -1063,10 +1053,10 @@ fun
 p_labs0expseq_COMMA : parser(labs0explst)
 //
 (*
-s0exp_PAREN::
+s0exp_RPAREN ::=
   | RPAREN
   | BAR s0expseq_COMMA RPAREN
-labs0exp_PAREN::
+labs0exp_RBRACE ::=
   | RPAREN
   | BAR labs0expseq_COMMA RBRACE
 *)
@@ -1265,8 +1255,80 @@ case+ tnd of
       // end of [val]
     }
   end // end of [T_LPAREN]
+//
 | T_LBRACE() => let
     val () = buf.incby1()
+    val s0qs =
+      p_s0quaseq_BARSEMI(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACE(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    s0exp_make_node
+    (loc_res, S0Eforall(tbeg, s0qs, tend))
+  end // end of [T_LBRACE]
+| T_LBRACK() => let
+    val () = buf.incby1()
+    val s0qs =
+      p_s0quaseq_BARSEMI(buf, err)
+    val tnd = T_EXISTS(0)
+    val loc = tok.loc((*void*))
+    val tbeg =
+      token_make_node(loc, tnd)
+    val tend = p_RBRACK(buf, err)
+    val loc_res = loc + tend.loc()
+  in
+    err := e0;
+    s0exp_make_node
+    (loc_res, S0Eexists(tbeg, s0qs, tend))
+  end // end of [T_LBRACK]
+| T_EXISTS(k0) => let
+    val () = buf.incby1()
+    val s0qs =
+      p_s0quaseq_BARSEMI(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACK(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    s0exp_make_node
+    (loc_res, S0Eexists(tbeg, s0qs, tend))
+  end // end of [T_EXISTS]
+//
+| T_TUPLE(k0) => let
+    val () = buf.incby1()
+    val topt =
+    ( if
+      (k0 <= 1)
+      then None()
+      else Some(p_LPAREN(buf, err))
+    ) : tokenopt // end of [val]
+    val s0es =
+      p_s0expseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_s0exp_RPAREN(buf, err)
+  in
+    err := e0;
+    s0exp_make_node
+    ( loc_res
+    , S0Etuple
+      (tbeg, topt, s0es, tend)) where
+    {
+      val loc_res =
+        tbeg.loc()+s0exp_RPAREN_loc(tend)
+      // end of [val]
+    }
+  end // end of [T_TUPLE]
+| T_RECORD(k0) => let
+    val () = buf.incby1()
+    val topt =
+    ( if
+      (k0 <= 1)
+      then None()
+      else Some(p_LBRACE(buf, err))
+    ) : tokenopt // end of [val]
     val ls0es =
       p_labs0expseq_COMMA(buf, err)
     // end of [val]
@@ -1276,14 +1338,16 @@ case+ tnd of
     err := e0;
     s0exp_make_node
     ( loc_res
-    , S0Ebrace(tbeg, ls0es, tend)) where
+    , S0Erecord
+      (tbeg, topt, ls0es, tend)) where
     {
       val loc_res =
         tbeg.loc()+labs0exp_RBRACE_loc(tend)
       // end of [val]
     }
-  end // end of [T_LBRACE]
+  end // end of [T_RECORD]
 //
+(*
 | T_LBRACKET() => let
     val () = buf.incby1()
     val s0es =
@@ -1297,6 +1361,7 @@ case+ tnd of
       (loc_res, S0Ebrack(tbeg, s0es, tend))
     // end of [s0exp_make_node]
   end // end of [T_LBRACKET]
+*)
 //
 | T_IDENT_qual _ => let
     val () = buf.incby1()
@@ -1370,12 +1435,13 @@ implement
 p_s0exp_RPAREN
   (buf, err) = let
   val e0 = err
-  val tok1 = buf.get1()
+  val tok1 = buf.get0()
   val tnd1 = tok1.node()
 in
 //
 case+ tnd1 of
 | T_BAR() => let
+    val () = buf.incby1()
     val s0es =
       p_s0expseq_COMMA(buf, err)
     val tok2 = p_RPAREN(buf, err)
@@ -1386,10 +1452,15 @@ case+ tnd1 of
 | _ (* non-BAR *) =>
   (
     case+ tnd1 of
-    | T_RPAREN() =>
-      (err := e0; s0exp_RPAREN_cons0(tok1))
+    | T_RPAREN() => let
+        val () = buf.incby1()
+      in
+        err := e0; s0exp_RPAREN_cons0(tok1)
+      end // end of [RPAREN]
     | _(*non-RPAREN*) =>
-      (err := e0 + 1; s0exp_RPAREN_cons0(tok1))
+      (
+        err := e0 + 1; s0exp_RPAREN_cons0(tok1)
+      ) (* end of [non-RPAREN *)
   )
 //
 end // end of [p_s0exp_RPAREN]
@@ -1398,15 +1469,16 @@ implement
 p_labs0exp_RBRACE
   (buf, err) = let
   val e0 = err
-  val tok1 = buf.get1()
+  val tok1 = buf.get0()
   val tnd1 = tok1.node()
 in
 //
 case+ tnd1 of
 | T_BAR() => let
+    val () = buf.incby1()
     val ls0es =
     p_labs0expseq_COMMA(buf, err)
-    val tok2 = p_RPAREN(buf, err)
+    val tok2 = p_RBRACE(buf, err)
   in
     err := e0;
     labs0exp_RBRACE_cons1(tok1, ls0es, tok2)
@@ -1414,39 +1486,112 @@ case+ tnd1 of
 | _ (* non-BAR *) =>
   (
     case+ tnd1 of
-    | T_RBRACE() =>
-      (err := e0; labs0exp_RBRACE_cons0(tok1))
+    | T_RBRACE() => let
+        val () = buf.incby1()
+      in
+        err := e0; labs0exp_RBRACE_cons0(tok1)
+      end // end of [RBRACE]
     | _(*non-RPAREN*) =>
-      (err := e0 + 1; labs0exp_RBRACE_cons0(tok1))
+      (
+        err := e0 + 1; labs0exp_RBRACE_cons0(tok1)
+      ) (* end of [non-RPAREN] *)
   )
 //
 end // end of [p_labs0exp_RBRACE]
 
 (* ****** ****** *)
 
-(*
 implement
-t_stadef(tnd) =
-(
+p_s0qua
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
 case+ tnd of
-| T_STADEF(knd) => true
-| _ (* non-stadef *) => false
-)
+| _ when
+    t_s0aid(tnd) => let
+    val id0 = p_s0aid(buf, err)
+    val tok1 = buf.get0()
+    val tnd1 = tok1.node()
+  in
+    case+ tnd1 of
+//
+    | T_COLON() => let
+        val ids = list_sing(id0)
+        val tok2 = p_COLON(buf, err)
+        val s0t0 = p_sort0(buf, err)
+        val loc_res = id0.loc() + s0t0.loc()
+      in
+        err := e0;
+        s0qua_make_node
+        (loc_res, S0QUAvars(ids, tok2, s0t0))
+      end // end of [T_COLON]
+//
+    | T_COMMA() => let
+        val () = buf.incby1()
+        val ids =
+          p_s0aidseq_COMMA(buf, err)
+        // end of [val]
+        val ids = list_cons(id0, ids)
+        val tok2 = p_COLON(buf, err)
+        val s0t0 = p_sort0(buf, err)
+        val loc_res = id0.loc() + s0t0.loc()
+      in
+        err := e0;
+        s0qua_make_node
+        (loc_res, S0QUAvars(ids, tok2, s0t0))
+      end // end of [T_COMMA]
+//
+    | _ (*atms0expseq*) => let
+        val s0es =
+          p_atms0expseq(buf, err)
+        // end of [val]
+        val loc1 =
+        (
+          case+ s0es of
+          | list_nil() => id0.loc()
+          | list_cons _ =>
+            let
+              val s0e =
+              list_last(s0es) in id0.loc()+s0e.loc()
+            end // end of [list_cons]
+        ) : loc_t // end of [val]
+        val s0e0 =
+        s0exp_make_node(id0.loc(), S0Eid(id0))
+        val s0e1 =
+        s0exp_make_node
+          (loc1, S0Eapps(list_cons(s0e0, s0es)))
+        // end of [val]
+      in
+        err := e0;
+        s0qua_make_node(s0e1.loc(), S0QUAprop(s0e1))
+      end // end of [atms0expseq]
+  end // end of [S0Eid]
+//
+| _ (*non-S0Eid*) => let
+    val s0e = p_s0exp(buf, err)
+  in
+    err := e0;
+    s0qua_make_node(s0e.loc(), S0QUAprop(s0e))
+  end // end of [non-S0Eid]
+//
+end // end of [p_s0qua]
+
+(* ****** ****** *)
+
 implement
-t_abstype(tnd) =
+p_s0quaseq_BARSEMI
+  (buf, err) =
 (
-case+ tnd of
-| T_ABSTYPE(knd) => true
-| _ (* non-abstype *) => false
-)
-implement
-t_datatype(tnd) =
-(
-case+ tnd of
-| T_DATATYPE(knd) => true
-| _ (* non-datatype *) => false
-)
-*)
+//
+list_vt2t
+(pstar_BARSEMI_fun{s0qua}(buf, err, p_s0qua))
+//
+) (* end of [p_s0quaseq_BARSEMI] *)
 
 (* ****** ****** *)
 

@@ -232,7 +232,7 @@ overload fprint with fprint_t0str
 (* ****** ****** *)
 //
 typedef i0dnt = i0dnt_tbox
-typedef i0dntlst = List(i0dnt)
+typedef i0dntlst = List0(i0dnt)
 typedef i0dntopt = Option(i0dnt)
 //
 fun
@@ -594,6 +594,37 @@ t0marg_make_node
 //
 (* ****** ****** *)
 //
+abstbox s0qua_tbox = ptr
+typedef s0qua = s0qua_tbox
+typedef s0qualst = List0(s0qua)
+//
+datatype
+s0qua_node =
+| S0QUAprop of s0exp
+| S0QUAvars of (i0dntlst, token, sort0)
+//
+fun
+s0qua_get_loc(s0qua): loc_t
+fun
+s0qua_get_node(s0qua): s0qua_node
+//
+overload .loc with s0qua_get_loc
+overload .node with s0qua_get_node
+//
+fun print_s0qua : print_type(s0qua)
+fun prerr_s0qua : prerr_type(s0qua)
+fun fprint_s0qua : fprint_type(s0qua)
+//
+overload print with print_s0qua
+overload prerr with prerr_s0qua
+overload fprint with fprint_s0qua
+//
+fun
+s0qua_make_node
+(loc: loc_t, node: s0qua_node): s0qua
+//
+(* ****** ****** *)
+//
 typedef labs0exp = sl0abeled(s0exp)
 typedef labs0explst = List0(labs0exp)
 //
@@ -611,13 +642,18 @@ s0exp_node =
 //
 | S0Eapps of s0explst
 //
-| S0Ebrack of
-    (token, s0explst, token)
-//
 | S0Eparen of
     (token, s0explst, s0exp_RPAREN)
-| S0Ebrace of
-    (token, labs0explst, labs0exp_RBRACE)
+//
+| S0Etuple of
+    (token, tokenopt, s0explst, s0exp_RPAREN)
+| S0Erecord of
+    (token, tokenopt, labs0explst, labs0exp_RBRACE)
+//
+| S0Eforall of
+  (token, s0qualst, token) // universal
+| S0Eexists of
+  (token, s0qualst, token) // existential
 //
 | S0Elam of
   (token, s0marglst, sort0opt, token, s0exp)

@@ -108,8 +108,8 @@ case+ tnd of
 //
 | T_BACKSLASH() => true
 //
-| T_LT() => true // "<"
-| T_GT() => true // ">"
+| T_LT((*void*)) => true // "<"
+| T_GT((*void*)) => true // ">"
 //
 | _ (* non-IDENT *) => false
 //
@@ -650,6 +650,22 @@ case+ tnd of
     err := e0;
     d0ecl_make_node(loc_res, D0Cfixity(tok, opt, ids))
   end // end of [FIXITY(knd)]
+//
+| T_LOCAL() => let
+    val () = buf.incby1()
+    val tbeg = tok
+    val head =
+      p_d0eclseq(buf, err)
+    val tmid = p_IN(buf, err)
+    val body =
+      p_d0eclseq(buf, err)
+    val tend = p_ENDLOCAL(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    d0ecl_make_node
+    (loc_res, D0Clocal(tbeg, head, tmid, body, tend))
+  end // end of [T_LOCAL]
 //
 | _ (* errorcase *) =>
   let
