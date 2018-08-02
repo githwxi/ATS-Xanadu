@@ -161,6 +161,8 @@ case+ tnd of
     (level, content) =>
     fprint!(out, "T_COMMENT_mlblock(", level, "; ", "...)")
 //
+| T_AT() => fprint(out, "AT")
+//
 | T_BAR() => fprint(out, "BAR")
 | T_DOT() => fprint(out, "DOT")
 //
@@ -168,15 +170,16 @@ case+ tnd of
 //
 | T_LT() => fprint(out, "LT")
 | T_GT() => fprint(out, "GT")
-(*
-| T_LTEQ() => fprint(out, "LTEQ")
-| T_GTEQ() => fprint(out, "GTEQ")
-*)
+//
+| T_DLR() => fprint(out, "DLR")
+| T_SRP() => fprint(out, "SRP")
 //
 | T_EQGT() => fprint(out, "EQGT")
+| T_MSLT() => fprint(out, "MSLT")
+//
+| T_COLON() => fprint(out, "COLON")
 //
 | T_COMMA() => fprint(out, "COMMA")
-| T_COLON() => fprint(out, "COLON")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
 //
 | T_BACKSLASH() => fprint(out, "BACKSLASH")
@@ -185,13 +188,19 @@ case+ tnd of
 | T_RPAREN() => fprint(out, "RPAREN")
 | T_LBRACE() => fprint(out, "LBRACE")
 | T_RBRACE() => fprint(out, "RBRACE")
-| T_LBRACKET() => fprint(out, "LBRACKET")
-| T_RBRACKET() => fprint(out, "RBRACKET")
 //
+| T_LBRACK() => fprint(out, "LBRACK")
+| T_RBRACK() => fprint(out, "RBRACK")
+//
+| T_EXISTS(knd) =>
+  fprint!(out, "EXISTS(", knd, ")")
+//
+| T_TUPLE(knd) =>
+  fprint!(out, "TUPLE(", knd, ")")
+| T_RECORD(knd) =>
+  fprint!(out, "RECORD(", knd, ")")
 (*
-| T_ATLPAREN() => fprint(out, "ATLPAREN")
-| T_ATLBRACE() => fprint(out, "ATLBRACE")
-| T_ATLBRACKET() => fprint(out, "ATLBRACKET")
+| T_STRUCT() => fprint(out, "STRUCT")
 *)
 //
 | T_AS() => fprint(out, "AS")
@@ -342,6 +351,8 @@ case+ tnd of
 | T_COMMENT_mlblock
     (level, content) => fprint(out, content)
 //
+| T_AT() => fprint(out, "@")
+//
 | T_BAR() => fprint(out, "|")
 | T_DOT() => fprint(out, ".")
 //
@@ -349,15 +360,16 @@ case+ tnd of
 //
 | T_LT() => fprint(out, "<")
 | T_GT() => fprint(out, ">")
-(*
-| T_LTEQ() => fprint(out, "<=")
-| T_GTEQ() => fprint(out, ">=")
-*)
+//
+| T_DLR() => fprint(out, "$")
+| T_SRP() => fprint(out, "#")
 //
 | T_EQGT() => fprint(out, "=>")
+| T_MSLT() => fprint(out, "-<")
+//
+| T_COLON() => fprint(out, ":")
 //
 | T_COMMA() => fprint(out, ",")
-| T_COLON() => fprint(out, ":")
 | T_SEMICOLON() => fprint(out, ";")
 //
 | T_BACKSLASH() => fprint(out, "\\")
@@ -366,13 +378,21 @@ case+ tnd of
 | T_RPAREN() => fprint(out, ")")
 | T_LBRACE() => fprint(out, "{")
 | T_RBRACE() => fprint(out, "}")
-| T_LBRACKET() => fprint(out, "[")
-| T_RBRACKET() => fprint(out, "]")
+//
+| T_LBRACK() => fprint(out, "[")
+| T_RBRACK() => fprint(out, "]")
+//
+| T_EXISTS(knd) =>
+  fprint!(out, "exists(", knd, ")")
+//
+| T_TUPLE(knd) =>
+  fprint!(out, "tuple(", knd, ")")
+| T_RECORD(knd) =>
+  fprint!(out, "record(", knd, ")")
 //
 (*
-| T_ATLPAREN() => fprint(out, "@(")
-| T_ATLBRACE() => fprint(out, "@{")
-| T_ATLBRACKET() => fprint(out, "@[")
+| T_STRUCT(knd) =>
+  fprint!(out, "struct(", knd, ")")
 *)
 //
 | T_AS() => fprint(out, "as")
@@ -453,8 +473,8 @@ val () = theMap[c2i('\)')] := T_RPAREN()
 val () = theMap[c2i('\{')] := T_LBRACE()
 val () = theMap[c2i('\}')] := T_RBRACE()
 //
-val () = theMap[c2i('\[')] := T_LBRACKET()
-val () = theMap[c2i('\]')] := T_RBRACKET()
+val () = theMap[c2i('\[')] := T_LBRACK()
+val () = theMap[c2i('\]')] := T_RBRACK()
 //
 val () = theMap[c2i('\\')] := T_BACKSLASH()
 //
@@ -508,6 +528,14 @@ tnode_is_COLON
   | T_COLON() => true | _ => false
 )
 //
+implement
+tnode_is_BARSEMI
+  (node) =
+(
+  case+ node of
+  | T_BAR() => true
+  | T_SEMICOLON() => true | _ => false
+)
 implement
 tnode_is_SEMICOLON
   (node) =
@@ -853,15 +881,72 @@ case+ x0.node() of
 | T_COMMENT_mlblock _ =>
   loop1(x1, xs2, res)
 //
+| T_AT() =>
+  (
+    case+ x1.node() of
+    | T_LPAREN() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_TUPLE(0))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of ["("]
+    | T_LBRACE() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_RECORD(0))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of ["{"]
+//
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+//
+  )
+//
+| T_DLR() =>
+  (
+    case+ x1.node() of
+    | T_LPAREN() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_TUPLE(1))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of ["("]
+    | T_LBRACE() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_RECORD(1))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of ["{"]
+//
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+//
+  )
+| T_SRP() =>
+  (
+    case+ x1.node() of
+    | T_LBRACK() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_EXISTS(1))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of ["("]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+  )
+//
 | T_LAM(k0) =>
   (
     case+ x1.node() of
-    | T_IDENT_sym("@") => let
-        val loc =
-        x0.loc()+x1.loc()
+    | T_AT() => let
+        val loc = x0.loc()+x1.loc()
         val x01 =
-        token_make_node
-        (loc, T_LAM(k0+1))
+        token_make_node(loc, T_LAM(k0+1))
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of [T_AT]
@@ -871,12 +956,10 @@ case+ x0.node() of
 | T_FIX(k0) =>
   (
     case+ x1.node() of
-    | T_IDENT_sym("@") => let
-        val loc =
-        x0.loc()+x1.loc()
+    | T_AT() => let
+        val loc = x0.loc()+x1.loc()
         val x01 =
-        token_make_node
-        (loc, T_FIX(k0+1))
+        token_make_node(loc, T_FIX(k0+1))
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of [T_AT]

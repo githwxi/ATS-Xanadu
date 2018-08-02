@@ -87,6 +87,9 @@ fprint_val<t0marg> = fprint_t0marg
 (* ****** ****** *)
 
 implement
+fprint_val<s0qua> = fprint_s0qua
+
+implement
 fprint_val<s0exp> = fprint_s0exp
 
 (* ****** ****** *)
@@ -194,27 +197,6 @@ case+ x0.node() of
 | I0DNTsome(tok) =>
   fprint!(out, "I0DNTsome(", tok, ")")
 )
-
-(* ****** ****** *)
-
-(*
-implement
-print_s0qua(x0) =
-fprint_s0qua(stdout_ref, x0)
-implement
-prerr_s0qua(x0) =
-fprint_s0qua(stderr_ref, x0)
-implement
-fprint_s0qua
-  (out, x0) =
-(
-case+ x0.node() of
-| S0QUAnone(tok) =>
-  fprint!(out, "S0QUAnone(", tok, ")")
-| S0QUAsymdot(tok0, tok1) =>
-  fprint!(out, "S0QUAsymdot(", tok0, ", ", tok1, ")")
-)
-*)
 
 (* ****** ****** *)
 //
@@ -440,6 +422,26 @@ end // end of [fprint_sl0abeled]
 (* ****** ****** *)
 
 implement
+print_s0qua(x0) =
+fprint_s0qua(stdout_ref, x0)
+implement
+prerr_s0qua(x0) =
+fprint_s0qua(stderr_ref, x0)
+
+implement
+fprint_s0qua
+  (out, x0) =
+(
+case+ x0.node() of
+| S0QUAprop(s0e) =>
+  fprint!(out, "S0QUAprop(", s0e, ")")
+| S0QUAvars(ids, tok, s0t) =>
+  fprint!(out, "S0QUAvars(", ids, "; ", tok, "; ", s0t, ")")
+)
+
+(* ****** ****** *)
+
+implement
 print_s0exp(x0) =
 fprint_s0exp(stdout_ref, x0)
 implement
@@ -474,19 +476,26 @@ case+ x0.node() of
 | S0Eapps(s0es) =>
   fprint!(out, "S0Eapps(", s0es, ")")
 //
-| S0Ebrack
-  (tbeg, s0es, tend) =>
-  fprint!
-  (out, "S0Ebrack(", tbeg, ", ", s0es, ", ", tend, ")")
-//
 | S0Eparen
   (tbeg, s0es, tend) =>
   fprint!
-  (out, "S0Eparen(", tbeg, ", ", s0es, ", ", tend, ")")
-| S0Ebrace
-  (tbeg, s0es, tend) =>
+  (out, "S0Eparen(", tbeg, "; ", s0es, "; ", tend, ")")
+//
+| S0Eforall(tbeg, s0qs, tend) =>
   fprint!
-  (out, "S0Ebrace(", tbeg, ", ", s0es, ", ", tend, ")")
+  (out, "S0Eforall(", tbeg, "; ", s0qs, "; ", tend, ")")
+| S0Eexists(tbeg, s0qs, tend) =>
+  fprint!
+  (out, "S0Eexists(", tbeg, "; ", s0qs, "; ", tend, ")")
+//
+| S0Etuple
+  (tbeg, topt, s0es, tend) =>
+  fprint!
+  (out, "S0Etuple(", tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
+| S0Erecord
+  (tbeg, topt, s0es, tend) =>
+  fprint!
+  (out, "S0Erecord(", tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
 //
 | S0Elam
   (tlam, s0mas, opt, teqgt, s0e0) =>

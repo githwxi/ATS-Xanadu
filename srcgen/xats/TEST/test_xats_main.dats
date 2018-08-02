@@ -110,56 +110,15 @@ implement
 fprint_val<d0ecl> = fprint_d0ecl
 
 (* ****** ****** *)
-//
-val-
-toks =
-(
-string_tokenize
-("\
-foo $X.a b c ($A.d, bar($A.e, $A.f))\n\
-prop type t0ype view viewtype viewt0ype")
-)
-//
-val
-toks =
-lexing_preprocess_tokenlst(toks)
-//
-val
-toks =
-list_vt2t(toks)
 (*
-val ((*void*)) =
-list0_foreach<token>
-(g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
-*)
-//
-val s0t0 = let
-//
-var err: int
-var buf: tokbuf
-val ((*void*)) = (err := 0)
-val ((*void*)) =
-tokbuf_initize_list(buf, toks)
-//
-in
-  p_sort0(buf, err)
-end // end of [val]
-
-val () = println! ("s0t0 = ", s0t0)
-
-(* ****** ****** *)
 //
 val-
 toks =
 (
 string_tokenize
 ("\
-$extype\"abcde\"
-// lam@ x y z : int => x + y + z
-// (lam(x: int, y)(z: bool): int => x + y)(1, 2)(false)
-// @[int][n+100]\n\
-// f@(x + 1, y, z | what)
-// @{a=f(x), b=g(y), 3=h(z)}
+//
+//
 ")
 )
 //
@@ -187,102 +146,28 @@ tokbuf_initize_list(buf, toks)
 in
   p_s0exp(buf, err)
 end // end of [val]
-
+//
 val () = println! ("s0e0 = ", s0e0)
-
+//
+*)
 (* ****** ****** *)
 
-//
+val opt =
+fileref_open_opt
+("./test_staexp.text", file_mode_r)
+val-~Some_vt(inp) = opt
 val-
-toks =
-(
-string_tokenize
-("\
-let
-  #nonfix x y z
-in
-  // nothing
-endlet // end-of-let
-")
-)
-//
+toks = fileref_tokenize(inp)
 val
 toks =
 lexing_preprocess_tokenlst(toks)
-//
 val
-toks =
-list_vt2t(toks)
+toks = list_vt2t(toks)
 (*
 val ((*void*)) =
 list0_foreach<token>
 (g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
 *)
-//
-val d0e0 = let
-//
-var err: int
-var buf: tokbuf
-val ((*void*)) = (err := 0)
-val ((*void*)) =
-tokbuf_initize_list(buf, toks)
-//
-in
-  p_d0exp(buf, err)
-end // end of [val]
-
-val () = println! ("d0e0 = ", d0e0)
-
-(* ****** ****** *)
-//
-val-
-toks =
-(
-string_tokenize
-("\
-//
-sortdef
-int = char
-sortdef
-nat = {a:int | a >= 0}
-//
-datasort
-ilist =
-| ilist_nil of ()
-| ilist_cons of (int, ilist)
-and
-ilist2 =
-| ilist2_nil of ()
-| ilist2_cons of (int, ilist)
-//
-#infix < >
-#infixl + -
-#infixl && ||
-// #infixl (0) & |
-#infixr -> ->> =>>
-#prefix 10 ! !!
-// #postfix (&& + 10) ++ --
-#nonfix print fprint forall
-typedef foo(x: type+) = tup(int, int)
-abstype foo(type+) == lam y => tup(int, int)
-abstype foo(x: type+) <= lam y => tup(int, int)
-#nonfix print fprint forall
-")
-)
-//
-val
-toks =
-lexing_preprocess_tokenlst(toks)
-//
-val
-toks =
-list_vt2t(toks)
-(*
-val ((*void*)) =
-list0_foreach<token>
-(g0ofg1(toks), lam(tok) => fprint_token(stdout_ref, tok))
-*)
-//
 val d0cs = let
 //
 var err: int

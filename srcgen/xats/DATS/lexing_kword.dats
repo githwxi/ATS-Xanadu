@@ -46,6 +46,8 @@ UN =
 (* ****** ****** *)
 //
 macdef
+T_SEXPDEF_ = T_SEXPDEF(0)
+macdef
 T_PROPDEF_ = T_SEXPDEF(PROPSORT)
 macdef
 T_VIEWDEF_ = T_SEXPDEF(VIEWSORT)
@@ -117,20 +119,22 @@ fun
 kword_initize(): void =
 {
 //
-(*
 val () = myins("@", T_AT)
-*)
-//
-val () = myins("=", T_EQ)
-val () = myins(":", T_COLON)
 //
 val () = myins("|", T_BAR)
 val () = myins(".", T_DOT)
 //
+val () = myins("$", T_DLR)
+val () = myins("#", T_SRP)
+//
+val () = myins(":", T_COLON)
+//
+val () = myins("=", T_EQ)
 val () = myins("<", T_LT)
 val () = myins(">", T_GT)
 //
 val () = myins("=>", T_EQGT)
+val () = myins("-<", T_MSLT)
 //
 val () = myins("as", T_AS)
 //
@@ -160,6 +164,7 @@ val () = myins("else", T_ELSE)
 //
 val () = myins("sortdef", T_SORTDEF)
 //
+val () = myins("sexpdef", T_SEXPDEF_)
 val () = myins("propdef", T_PROPDEF_)
 val () = myins("viewdef", T_VIEWDEF_)
 val () = myins("typedef", T_TYPEDEF_)

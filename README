@@ -11,4 +11,19 @@ HX-2018-04-07: Let us get started!!!
 
 (* ###### ###### ###### ###### ###### *)
 
+HX-2018-08-01:
+
+What is ATS3?
+
+There are many aspects in terms of what
+ATS3 is.
+
+1. Static debugging:
+   Dependent types, Linear Types
+
+2. Dynamic semantics:
+   C + templates (of style of C++)
+
+3. Extensive support for meta-programming
+
 ############ end of [README] ############

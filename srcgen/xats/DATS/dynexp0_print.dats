@@ -161,9 +161,14 @@ case+ x0.node() of
   (tok, tid, tok1, def2) =>
   fprint!
   ( out, "D0Csortdef("
-  , tok, "; ", tid, "; ", tok1, "; ", def2)
-| D0Csexpdef _ =>
-  fprint!(out, "D0Csexpdef(", "...", ")")
+  , tok, "; ", tid, "; ", tok1, "; ", def2, ")")
+| D0Csexpdef
+  (tok, sid, arg, opt, tok1, tdef) =>
+  fprint!
+  ( out
+  , "D0Csexpdef("
+  , tok, "; ", sid, "; "
+  , arg, "; ", opt, "; ", tok1, "; ", tdef, ")")
 //
 | D0Cabstype(tok, sid, s0mas, tdef) =>
   fprint!
