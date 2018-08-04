@@ -7,6 +7,17 @@ xy: int = op(add)(x, y)
 
 (* ****** ****** *)
 
+sexpdef
+xyz: char = foo('a')
+sexpdef
+xyz: string = foo("a")
+sexpdef
+xyz: float = foo(1E-3f)
+sexpdef
+xyz: float = foo(0x1.abcdeP-3)
+
+(* ****** ****** *)
+
 #infix x
 #infixr -> =>>
 #infixl + - * /

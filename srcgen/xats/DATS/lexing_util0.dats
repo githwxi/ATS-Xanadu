@@ -363,6 +363,10 @@ in
 ifcase
 | c0 = '.' =>
   loop0(buf, 1)
+| c0 = 'e' =>
+  loop1(buf, i0, 0)
+| c0 = 'E' =>
+  loop1(buf, i0, 0)
 | _(* else *) =>
   let
     val () = lexbuf_unget(buf, i0) in 0
@@ -400,11 +404,11 @@ in
 ifcase
 | c0 = 'e' =>
   (
-    k + testing_sign_digits(buf)
+    k+1+testing_sign_digits(buf)
   )
 | c0 = 'E' =>
   (
-    k + testing_sign_digits(buf)
+    k+1+testing_sign_digits(buf)
   )
 | _(* else *) => // exponent-less
   let
@@ -426,6 +430,10 @@ in
 ifcase
 | c0 = '.' =>
   loop0(buf, 1)
+| c0 = 'p' =>
+  loop1(buf, i0, 0)
+| c0 = 'P' =>
+  loop1(buf, i0, 0)
 | _(* else *) =>
   let
     val () = lexbuf_unget(buf, i0) in 0
@@ -465,11 +473,11 @@ in
 ifcase
 | c0 = 'p' =>
   (
-    k + testing_sign_digits(buf)
+    k+1+testing_sign_digits(buf)
   )
 | c0 = 'P' =>
   (
-    k + testing_sign_digits(buf)
+    k+1+testing_sign_digits(buf)
   )
 | _(* else *) => // exponent-less
   let
