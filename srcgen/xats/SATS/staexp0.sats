@@ -38,19 +38,19 @@ LAB = "./label0.sats"
 #staload
 LOC = "./location.sats"
 //
-typedef label = $LAB.label
-typedef loc_t = $LOC.location
+  typedef label = $LAB.label
+  typedef loc_t = $LOC.location
 //
-staload LEX = "./lexing.sats"
-staload SYM = "./symbol.sats"
+#staload LEX = "./lexing.sats"
+#staload SYM = "./symbol.sats"
 //
-typedef token = $LEX.token
-typedef tokenlst = $LEX.tokenlst
-typedef tokenopt = $LEX.tokenopt
+  typedef token = $LEX.token
+  typedef tokenlst = $LEX.tokenlst
+  typedef tokenopt = $LEX.tokenopt
 //
-typedef symbol = $SYM.symbol
-typedef symbolist = $SYM.symbolist
-typedef symbolopt = $SYM.symbolopt
+  typedef symbol = $SYM.symbol
+  typedef symbolist = $SYM.symbolist
+  typedef symbolopt = $SYM.symbolopt
 //
 (* ****** ****** *)
 (*
