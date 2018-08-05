@@ -92,6 +92,7 @@ typedef i0dnt = i0dnt_tbox
 //
 typedef s0tid = i0dnt_tbox
 typedef s0eid = i0dnt_tbox
+typedef d0eid = i0dnt_tbox
 //
 typedef l0abl = l0abl_tbox
 //
@@ -732,6 +733,15 @@ overload print with print_labs0exp_RBRACE
 overload prerr with prerr_labs0exp_RBRACE
 overload fprint with fprint_labs0exp_RBRACE
 //
+(* ****** ****** *)
+
+abstbox
+d0atype_tbox = ptr
+typedef
+d0atype = d0atype_tbox
+typedef
+d0atypelst = List0(d0atype)
+
 (* ****** ****** *)
 
 (* end of [xats_staexp0.sats] *)

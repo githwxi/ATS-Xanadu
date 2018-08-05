@@ -239,6 +239,7 @@ fun t_d0eid(tnode): bool
 //
 fun p_s0tid: parser(s0tid)
 fun p_s0eid: parser(s0eid)
+//
 fun p_d0eid: parser(d0eid)
 //
 (* ****** ****** *)
@@ -324,6 +325,18 @@ fun
 p_s0qua: parser(s0qua)
 fun
 p_s0quaseq_BARSEMI: parser(s0qualst)
+//
+(* ****** ****** *)
+//
+(*
+d0atype ::=
+| s0eid s0marg EQ d0atconseq_BAR
+*)
+//
+fun p_d0atype: parser(d0atype)
+fun p_d0atypeseq_AND: parser(d0atypelst)
+//
+fun p_WHERE_sexpdefseq: parser(d0eclist)
 //
 (* ****** ****** *)
 //
