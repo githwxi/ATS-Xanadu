@@ -302,6 +302,25 @@ in
 end // end of [popt_BAR]
 
 (* ****** ****** *)
+
+implement
+popt_LBRACE
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_LBRACE() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_LBRACE *)
+  | _ (* non-LBRACE *) => None(*void*)
+end // end of [popt_LBRACE]
+
+(* ****** ****** *)
 //
 (*
 fun

@@ -181,6 +181,10 @@ case+ x0.node() of
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")
 //
+| D0Cdatatype(tok, d0cs, wopt) =>
+  fprint!
+  (out, "D0Cdatatype(", tok, "; ", d0cs, "; ", wopt, ")")
+//
 | D0Cnonfix(tok, ids) =>
   fprint!(out, "D0Cnonfix(", tok, "; ", ids, ")")
 | D0Cfixity(tok, opt, ids) =>
@@ -233,6 +237,28 @@ case+ x0 of
 | ABSTDEFeqeq(tok, s0e) =>
   fprint!(out, "ABSTDEFeqeq(", tok, "; ", s0e, ")")
 ) (* end of [fprint_abstdef] *)
+
+(* ****** ****** *)
+
+implement
+print_wd0eclseq(x0) =
+fprint_wd0eclseq(stdout_ref, x0)
+implement
+prerr_wd0eclseq(x0) =
+fprint_wd0eclseq(stderr_ref, x0)
+
+implement
+fprint_wd0eclseq
+  (out, x0) =
+(
+case+ x0 of
+| WD0CSnone() =>
+  fprint(out, "WD0CSnone()")
+| WD0CSsome(tbeg, topt, d0cs, tend) =>
+  fprint!
+  ( out, "WD0CSsome("
+  , tbeg, "; ", topt, "; ", d0cs, "; ", tend, ")")
+) (* end of [fprint_wd0eclseq] *)
 
 (* ****** ****** *)
 

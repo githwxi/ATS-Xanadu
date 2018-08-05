@@ -216,6 +216,8 @@ p_ENDLOCAL: parser(token)
 
 fun
 popt_BAR: parser(tokenopt)
+fun
+popt_LBRACE: parser(tokenopt)
 
 (* ****** ****** *)
 //

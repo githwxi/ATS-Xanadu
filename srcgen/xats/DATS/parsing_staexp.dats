@@ -1682,6 +1682,8 @@ p_d0atcon
 in
   case+ tnd0 of
   | T_OF() => let
+      val () =
+        buf.incby1()
       val sarg =
         p_s0exp(buf, err)
       // end of [val]
