@@ -138,9 +138,7 @@ d0ecl_node =
 //
 | D0Cdatasort of (token(*datasort*), d0tsortlst)
 //
-(*
-| D0Cdatatype of (token, d0atypelst, d0eclist(*where*))
-*)
+| D0Cdatatype of (token(*datatype*), d0atypelst, wd0eclseq)
 //
 (*
 | D0Cfixity of
@@ -166,6 +164,12 @@ and abstdef =
   | ABSTDEFnil of () // unspecified
   | ABSTDEFlteq of (token(*"<="*), s0exp)
   | ABSTDEFeqeq of (token(*"=="*), s0exp)
+
+(* ****** ****** *)
+
+and wd0eclseq =
+  | WD0CSnone of ()
+  | WD0CSsome of (token, tokenopt, d0eclist, token)
 
 (* ****** ****** *)
 //
@@ -214,6 +218,19 @@ fprint_abstdef : fprint_type(abstdef)
 overload print with print_abstdef
 overload prerr with prerr_abstdef
 overload fprint with fprint_abstdef
+//
+(* ****** ****** *)
+//
+fun
+print_wd0eclseq : (wd0eclseq) -> void
+fun
+prerr_wd0eclseq : (wd0eclseq) -> void
+fun
+fprint_wd0eclseq : fprint_type(wd0eclseq)
+//
+overload print with print_wd0eclseq
+overload prerr with prerr_wd0eclseq
+overload fprint with fprint_wd0eclseq
 //
 (* ****** ****** *)
 

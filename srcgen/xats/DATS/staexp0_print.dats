@@ -97,6 +97,13 @@ fprint_val<s0exp> = fprint_s0exp
 (* ****** ****** *)
 
 implement
+fprint_val<d0atype> = fprint_d0atype
+implement
+fprint_val<d0atcon> = fprint_d0atcon
+
+(* ****** ****** *)
+
+implement
 (a)//tmp
 fprint_val<sl0abeled(a)> = fprint_sl0abeled<a>
 
@@ -574,6 +581,44 @@ case+ x0 of
 ) (* end of [fprint_s0exp_RPAREN] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_d0atype(x0) =
+fprint_d0atype(stdout_ref, x0)
+implement
+prerr_d0atype(x0) =
+fprint_d0atype(stderr_ref, x0)
+implement
+fprint_d0atype
+  (out, x0) =
+(
+case+ x0.node() of
+| D0ATYPE(tid, argopt, teq, d0cs) =>
+  fprint!
+  ( out, "D0ATYPE("
+  , tid, "; ", argopt, "; ", teq, "; ", d0cs)
+) (* end of [fprint_d0atype] *)
+
+(* ****** ****** *)
+
+implement
+print_d0atcon(x0) =
+fprint_d0atcon(stdout_ref, x0)
+implement
+prerr_d0atcon(x0) =
+fprint_d0atcon(stderr_ref, x0)
+implement
+fprint_d0atcon
+  (out, x0) =
+(
+case+ x0.node() of
+| D0ATCON(s0us, dcon, s0is, argopt) =>
+  fprint!
+  ( out, "D0ATCON("
+  , s0us, "; ", dcon, "; ", s0is, "; ", argopt)
+) (* end of [fprint_d0atype] *)
 
 (* ****** ****** *)
 

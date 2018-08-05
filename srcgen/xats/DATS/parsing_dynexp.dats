@@ -607,6 +607,58 @@ case+ tnd of
     // d0ecl_make_node
   end
 //
+| T_DATATYPE(k0) => let
+    val () = buf.incby1()
+    val d0cs =
+      p_d0atypeseq_AND(buf, err)
+    val tok1 = buf.get0()
+    val wopt =
+    (
+    case+
+    tok1.node() of
+    | T_WHERE() => let
+        val () = buf.incby1()
+        val topt =
+        popt_LBRACE(buf, err)
+        val wdcs =
+          p_d0eclseq(buf, err)
+        val tok2 = buf.get0()
+        val ((*void*)) =
+        (
+        case+
+        tok2.node() of
+        | T_END() => buf.incby1()
+        | T_RBRACE() => buf.incby1()
+        | T_ENDWHERE() => buf.incby1()
+        | _(*non-closing*) => (err := err+1)
+        ) : void // end of [val]
+      in
+        WD0CSsome(tok1, topt, wdcs, tok2)
+      end // end of [T_WHERE]
+    | _(*non-WHERE*) => WD0CSnone(*void*)
+    ) : wd0eclseq // end of [val]
+    val loc_res =
+    (
+      case+ wopt of
+      | WD0CSnone() =>
+        (
+        case+ d0cs of
+        | list_nil() => loc
+        | list_cons _ =>
+          let
+          val d0c =
+          list_last(d0cs) in loc+d0c.loc()
+          end
+        )
+      | WD0CSsome(_, _, _, tok) => loc+tok.loc()
+    ) : loc_t // end of [val]
+  in
+    err := e0;
+    d0ecl_make_node
+      ( loc_res, D0Cdatatype(tok, d0cs, wopt) )
+    // d0ecl_make_node
+  end
+//
 | T_SRP_NONFIX() => let
 //
     val () = buf.incby1()
