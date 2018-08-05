@@ -626,9 +626,34 @@ s0qua_make_node
 //
 (* ****** ****** *)
 //
-abstbox s0mqua_tbox = ptr
-typedef s0mqua = s0mqua_tbox
-typedef s0mqualst = List0(s0mqua)
+abstbox s0uni_tbox = ptr
+typedef s0uni = s0uni_tbox
+typedef s0unilst = List0(s0uni)
+//
+datatype
+s0uni_node =
+| S0UNInone of (token)
+| S0UNIsome of (token, s0qualst, token)
+//
+fun
+s0uni_get_loc(s0uni): loc_t
+fun
+s0uni_get_node(s0uni): s0uni_node
+//
+overload .loc with s0uni_get_loc
+overload .node with s0uni_get_node
+//
+fun print_s0uni : print_type(s0uni)
+fun prerr_s0uni : prerr_type(s0uni)
+fun fprint_s0uni : fprint_type(s0uni)
+//
+overload print with print_s0uni
+overload prerr with prerr_s0uni
+overload fprint with fprint_s0uni
+//
+fun
+s0uni_make_node
+(loc: loc_t, node: s0uni_node): s0uni
 //
 (* ****** ****** *)
 //
@@ -751,8 +776,7 @@ d0atconlst = List0(d0atcon)
 datatype
 d0atcon_node =
 | D0ATCON of
-  ( s0mqualst
-  , d0eid, s0expopt, s0expopt) 
+  (s0unilst, d0eid, s0exp, s0expopt) 
 //
 fun
 d0atcon_get_loc(d0atcon): loc_t
@@ -761,6 +785,18 @@ d0atcon_get_node(d0atcon): d0atcon_node
 //
 overload .loc with d0atcon_get_loc
 overload .node with d0atcon_get_node
+//
+fun print_d0atcon : print_type(d0atcon)
+fun prerr_d0atcon : prerr_type(d0atcon)
+fun fprint_d0atcon : fprint_type(d0atcon)
+//
+overload print with print_d0atcon
+overload prerr with prerr_d0atcon
+overload fprint with fprint_d0atcon
+//
+fun
+d0atcon_make_node
+(loc: loc_t, node: d0atcon_node): d0atcon
 //
 (* ****** ****** *)
 //
@@ -786,6 +822,18 @@ d0atype_get_node
 //
 overload .loc with d0atype_get_loc
 overload .node with d0atype_get_node
+//
+fun print_d0atype : print_type(d0atype)
+fun prerr_d0atype : prerr_type(d0atype)
+fun fprint_d0atype : fprint_type(d0atype)
+//
+overload print with print_d0atype
+overload prerr with prerr_d0atype
+overload fprint with fprint_d0atype
+//
+fun
+d0atype_make_node
+(loc: loc_t, node: d0atype_node): d0atype
 //
 (* ****** ****** *)
 

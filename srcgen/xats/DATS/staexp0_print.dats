@@ -88,6 +88,8 @@ fprint_val<t0marg> = fprint_t0marg
 
 implement
 fprint_val<s0qua> = fprint_s0qua
+implement
+fprint_val<s0uni> = fprint_s0uni
 
 implement
 fprint_val<s0exp> = fprint_s0exp
@@ -436,7 +438,29 @@ case+ x0.node() of
 | S0QUAprop(s0e) =>
   fprint!(out, "S0QUAprop(", s0e, ")")
 | S0QUAvars(ids, tok, s0t) =>
-  fprint!(out, "S0QUAvars(", ids, "; ", tok, "; ", s0t, ")")
+  fprint!
+  (out, "S0QUAvars(", ids, "; ", tok, "; ", s0t, ")")
+)
+
+(* ****** ****** *)
+
+implement
+print_s0uni(x0) =
+fprint_s0uni(stdout_ref, x0)
+implement
+prerr_s0uni(x0) =
+fprint_s0uni(stderr_ref, x0)
+
+implement
+fprint_s0uni
+  (out, x0) =
+(
+case+ x0.node() of
+| S0UNInone(tok) =>
+  fprint!(out, "S0UNInone(", tok, ")")
+| S0UNIsome(tbeg, s0qs, tend) =>
+  fprint!
+  (out, "S0UNIsome(", tbeg, "; ", s0qs, "; ", tend, ")")
 )
 
 (* ****** ****** *)
