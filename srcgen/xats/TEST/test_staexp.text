@@ -120,11 +120,10 @@ mylist2(a:type+, int) =
   mylist2_cons(a, n+1) of (a, mylist2_(a, n))
 //
 where
-// {
   sortdef nat = {a: int | a >= 0}
   typedef mylist_(a, n) = mylist(a, n)
   typedef mylist2_(a, n) = mylist2(a, n)
-}
+endwhere
 //
 (* ****** ****** *)
 
