@@ -364,6 +364,7 @@ fun p_d0expseq : parser(d0explst)
 
 fun p_d0ecl : parser(d0ecl)
 fun p_d0eclseq : parser(d0eclist)
+fun p_d0eclseq_top : parser(d0eclist)
 
 (* ****** ****** *)
 

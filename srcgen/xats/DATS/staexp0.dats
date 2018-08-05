@@ -605,4 +605,56 @@ case+ x0 of
 //
 (* ****** ****** *)
 
+local
+
+absimpl
+d0atcon_tbox = $rec{
+  d0atcon_loc= loc_t
+, d0atcon_node= d0atcon_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d0atcon_get_loc(x) = x.d0atcon_loc
+implement
+d0atcon_get_node(x) = x.d0atcon_node
+
+implement
+d0atcon_make_node
+(loc, node) = $rec
+{
+  d0atcon_loc= loc, d0atcon_node= node
+} (* end of [d0atcon_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d0atype_tbox = $rec{
+  d0atype_loc= loc_t
+, d0atype_node= d0atype_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d0atype_get_loc(x) = x.d0atype_loc
+implement
+d0atype_get_node(x) = x.d0atype_node
+
+implement
+d0atype_make_node
+(loc, node) = $rec
+{
+  d0atype_loc= loc, d0atype_node= node
+} (* end of [d0atype_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_staexp0.dats] *)

@@ -150,6 +150,9 @@ case+ x0.node() of
 | D0Cnone(tok) =>
   fprint!(out, "D0Cnone(", tok, ")")
 //
+| D0Ctkerr(tok) =>
+  fprint!(out, "D0Ctkerr(", tok, ")")
+//
 | D0Clocal
   (tok, d0cs0, tok1, d0cs1, tok2) =>
   fprint!

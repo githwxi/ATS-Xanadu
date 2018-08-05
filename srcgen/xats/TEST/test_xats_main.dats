@@ -179,7 +179,7 @@ val ((*void*)) =
   tokbuf_initize_list(buf, toks)
 //
 in
-  p_d0eclseq(buf, err)
+  p_d0eclseq_top(buf, err)
 end // end of [val]
 
 val () = println! ("d0cs = ", d0cs)

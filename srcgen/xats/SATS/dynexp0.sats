@@ -36,12 +36,14 @@
 #staload "./staexp0.sats"
 
 (* ****** ****** *)
-
+//
 abstype d0ecl_tbox = ptr
 typedef d0ecl = d0ecl_tbox
 typedef d0eclist = List0(d0ecl)
 typedef d0eclopt = Option(d0ecl)
-
+//
+vtypedef d0eclist_vt = List0_vt(d0ecl)
+//
 (* ****** ****** *)
 //
 datatype
@@ -114,7 +116,9 @@ d0exp_make_node
 datatype
 d0ecl_node =
 //
-| D0Cnone of token // HX: error
+| D0Cnone of token
+//
+| D0Ctkerr of token // HX: error
 //
 | D0Clocal of
   ( token
