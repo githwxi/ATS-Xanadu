@@ -690,4 +690,82 @@ list_vt2t
 
 (* ****** ****** *)
 
+implement
+p_d0eclseq_top
+  (buf, err) = let
+//
+fnx
+loop1
+( buf: &tokbuf >> _
+, err: &int >> _
+, res: d0eclist_vt): d0eclist_vt =
+let
+  val d0c = p_d0ecl(buf, err)
+in
+  case+
+  d0c.node() of
+  | D0Cnone(tok) =>
+    (
+      case+
+      tok.node() of
+      | T_EOF() => res
+      | _(*non-EOF*) => let
+          val loc = tok.loc()
+          val n0r = loc.beg_nrow()
+        in
+          loop2(buf, err, n0r, res)
+        end
+    )
+  | _ (*non-none*) =>
+    loop1(buf, err, list_vt_cons(d0c, res))
+end // end of [loop]
+//
+and
+loop2
+( buf: &tokbuf >> _
+, err: &int >> _, n0r: int
+, res: d0eclist_vt): d0eclist_vt =
+let
+  val tok =
+  tokbuf_getok0(buf)
+  val tnd = tok.node()
+in
+//
+case+ tnd of
+| T_EOF() => res
+| _(*non-EOF*) => let
+    val loc = tok.loc()
+    val n1r = loc.beg_nrow()
+(*
+    val (_) = println! ("n0r = ", n0r)
+    val (_) = println! ("n1r = ", n1r)
+*)
+  in
+//
+  if
+  (n1r <= n0r)
+  then let
+    val () = buf.incby1()
+    val () = err := err + 1
+    val d0c =
+      d0ecl_make_node(loc, D0Ctkerr(tok))
+    // end of [val]
+  in
+    loop2(buf, err, n0r, list_vt_cons(d0c, res))
+  end // end of [then]
+  else loop1(buf, err, res) // end of [else]
+//
+  end // end of [let]
+//
+end // end of [loop2]
+//
+in
+//
+list_vt2t
+(list_vt_reverse(loop1(buf, err, list_vt_nil)))
+//
+end // end of [p_d0eclseq_top]
+
+(* ****** ****** *)
+
 (* end of [xats_parsing_dynexp.dats] *)
