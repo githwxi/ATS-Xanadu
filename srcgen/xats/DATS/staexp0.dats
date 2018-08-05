@@ -522,6 +522,36 @@ end // end of [local]
 local
 
 absimpl
+s0uni_tbox = $rec{
+  s0uni_loc= loc_t
+, s0uni_node= s0uni_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+s0uni_get_loc(x) = x.s0uni_loc
+implement
+s0uni_get_node(x) = x.s0uni_node
+
+implement
+s0uni_make_node
+(loc, node) = $rec
+{
+  s0uni_loc= loc, s0uni_node= node
+} (* end of [s0uni_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s0exp_tbox = $rec{
   s0exp_loc= loc_t
 , s0exp_node= s0exp_node

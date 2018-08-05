@@ -71,6 +71,7 @@ STAEXP0 = "./staexp0.sats"
 //
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
+  typedef d0eid = $STAEXP0.d0eid
 //
   typedef sort0 = $STAEXP0.sort0
   typedef s0exp = $STAEXP0.s0exp
@@ -78,21 +79,26 @@ STAEXP0 = "./staexp0.sats"
   typedef s0arg = $STAEXP0.s0arg
 //
   typedef s0qua = $STAEXP0.s0qua
+  typedef s0uni = $STAEXP0.s0uni
 //
   typedef d0tsort = $STAEXP0.d0tsort
   typedef s0rtdef = $STAEXP0.s0rtdef
 //
+  typedef d0atype = $STAEXP0.d0atype
+//
   typedef labs0exp = $STAEXP0.labs0exp
 //
   typedef s0qualst = $STAEXP0.s0qualst
+  typedef s0unilst = $STAEXP0.s0unilst
   typedef d0tsortlst = $STAEXP0.d0tsortlst
+  typedef d0atypelst = $STAEXP0.d0atypelst
+//
 //
 (* ****** ****** *)
 
 #staload
 DYNEXP0 = "./dynexp0.sats"
 //
-  typedef d0eid = $DYNEXP0.d0eid
   typedef d0exp = $DYNEXP0.d0exp
   typedef d0ecl = $DYNEXP0.d0ecl
   typedef d0explst = List0(d0exp)
@@ -326,6 +332,11 @@ p_s0qua: parser(s0qua)
 fun
 p_s0quaseq_BARSEMI: parser(s0qualst)
 //
+(* ****** ****** *)
+
+fun p_s0uni: parser(s0uni)
+fun p_s0uniseq: parser(s0unilst)
+
 (* ****** ****** *)
 //
 (*
