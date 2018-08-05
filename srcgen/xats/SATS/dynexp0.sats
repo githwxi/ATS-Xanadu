@@ -37,10 +37,6 @@
 
 (* ****** ****** *)
 
-typedef d0eid = i0dnt_tbox
-
-(* ****** ****** *)
-
 abstype d0ecl_tbox = ptr
 typedef d0ecl = d0ecl_tbox
 typedef d0eclist = List0(d0ecl)
