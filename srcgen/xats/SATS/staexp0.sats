@@ -626,6 +626,12 @@ s0qua_make_node
 //
 (* ****** ****** *)
 //
+abstbox s0mqua_tbox = ptr
+typedef s0mqua = s0mqua_tbox
+typedef s0mqualst = List0(s0mqua)
+//
+(* ****** ****** *)
+//
 typedef labs0exp = sl0abeled(s0exp)
 typedef labs0explst = List0(labs0exp)
 //
@@ -734,14 +740,53 @@ overload prerr with prerr_labs0exp_RBRACE
 overload fprint with fprint_labs0exp_RBRACE
 //
 (* ****** ****** *)
-
+//
+abstbox
+d0atcon_tbox = ptr
+typedef
+d0atcon = d0atcon_tbox
+typedef
+d0atconlst = List0(d0atcon)
+//
+datatype
+d0atcon_node =
+| D0ATCON of
+  ( s0mqualst
+  , d0eid, s0expopt, s0expopt) 
+//
+fun
+d0atcon_get_loc(d0atcon): loc_t
+fun
+d0atcon_get_node(d0atcon): d0atcon_node
+//
+overload .loc with d0atcon_get_loc
+overload .node with d0atcon_get_node
+//
+(* ****** ****** *)
+//
 abstbox
 d0atype_tbox = ptr
 typedef
 d0atype = d0atype_tbox
 typedef
 d0atypelst = List0(d0atype)
-
+//
+datatype
+d0atype_node =
+| D0ATYPE of
+    (d0eid, t0marglst, token, d0atconlst)
+  // D0ATYPE
+//
+fun
+d0atype_get_loc
+  (x0: d0atype): loc_t
+fun
+d0atype_get_node
+  (x0: d0atype): d0atype_node
+//
+overload .loc with d0atype_get_loc
+overload .node with d0atype_get_node
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp0.sats] *)
