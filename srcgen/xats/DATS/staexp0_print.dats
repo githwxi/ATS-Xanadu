@@ -303,7 +303,8 @@ fprint_d0tsort
 (
 case+ x0.node() of
 | D0TSORT(tid, tok, s0cs) =>
-  fprint!(out, "D0TSORT(", tid, "; ", tok, "; ", s0cs)
+  fprint!
+  (out, "D0TSORT(", tid, "; ", tok, "; ", s0cs, ")")
 ) (* end of [fprint_d0tsort] *)
 
 (* ****** ****** *)
@@ -598,7 +599,7 @@ case+ x0.node() of
 | D0ATYPE(tid, argopt, teq, d0cs) =>
   fprint!
   ( out, "D0ATYPE("
-  , tid, "; ", argopt, "; ", teq, "; ", d0cs)
+  , tid, "; ", argopt, "; ", teq, "; ", d0cs, ")")
 ) (* end of [fprint_d0atype] *)
 
 (* ****** ****** *)
@@ -617,7 +618,7 @@ case+ x0.node() of
 | D0ATCON(s0us, dcon, s0is, argopt) =>
   fprint!
   ( out, "D0ATCON("
-  , s0us, "; ", dcon, "; ", s0is, "; ", argopt)
+  , s0us, "; ", dcon, "; ", s0is, "; ", argopt, ")")
 ) (* end of [fprint_d0atype] *)
 
 (* ****** ****** *)
