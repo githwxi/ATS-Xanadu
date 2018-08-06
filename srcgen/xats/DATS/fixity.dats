@@ -32,90 +32,77 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#staload
-LOC = "./location.sats"
-//
-  typedef loc_t = $LOC.loc_t
-//
+
+#staload "./../SATS/fixity.sats"
+
 (* ****** ****** *)
 //
-datatype
-assoc =
-ASSOCnon | ASSOClft | ASSOCrgt
+implement
+print_assoc(x0) =
+fprint_assoc(stdout_ref, x0)
+implement
+prerr_assoc(x0) =
+fprint_assoc(stderr_ref, x0)
 //
-fun
-print_assoc(assoc): void
-fun
-prerr_assoc(assoc): void
-fun
-fprint_assoc: fprint_type(assoc)
-//
-overload print with print_assoc
-overload prerr with prerr_assoc
-overload fprint with fprint_assoc
-//
-(* ****** ****** *)
-//
-// HX: precedence value
-//
-abstflat prcdv_tflat = int
-//
-  typedef prcdv = prcdv_tflat
+implement
+fprint_assoc(out, x0) =
+(
+  case+ x0 of
+  | ASSOCnon() => fprint!(out, "ASSOCnon")
+  | ASSOClft() => fprint!(out, "ASSOClft")
+  | ASSOCrgt() => fprint!(out, "ASSOCrgt")
+) // end of [fprint_assoc]
 //
 (* ****** ****** *)
-//
-fun
-prcdv2int: prcdv -> int
-and
-int2prcdv: int -> prcdv
-//
-fun
-print_prcdv(prcdv): void
-fun
-prerr_prcdv(prcdv): void
-fun
-fprint_prcdv: fprint_type(prcdv)
-//
-overload print with print_prcdv
-overload prerr with prerr_prcdv
-overload fprint with fprint_prcdv
-//
+
+local
+
+absimpl
+prcdv_tflat = int
+
+#define
+MINPRCDV ~1000000000 // this is low enough
+#define
+MAXPRCDV  1000000000 // this is high enough
+
+in (* in-of-local *)
+
+implement
+int2prcdv(x) =
+(
+ifcase
+| x <= MINPRCDV => MINPRCDV
+| x >= MAXPRCDV => MAXPRCDV | _ (*else*) => x
+)
+implement
+prcdv2int(x) = x
+
+implement app_prcdv = 70
+
+implement
+backslash_prcdv =
+succ(prcdv2int(app_prcdv))
+implement
+infixtemp_prcdv = 0 // for temporary infix status
+
+implement exists_prcdv = 0
+implement forall_prcdv = 0
+
+implement
+the_neginf_prcdv = MINPRCDV
+implement
+the_posinf_prcdv = MAXPRCDV
+
+end // end of [local]
+
 (* ****** ****** *)
 //
-fun
-add_prcdv_int(prcdv, int): prcdv
-and
-sub_prcdv_int(prcdv, int): prcdv
-//
-overload + with add_prcdv_int
-overload - with sub_prcdv_int
-//
-fun
-compare_prcdv_prcdv: (prcdv, prcdv) -> int
-//
-overload compare with compare_prcdv_prcdv
-//
-(* ****** ****** *)
-//
-val
-the_neginf_prcdv: prcdv // lowest precedence value
-and
-the_posinf_prcdv: prcdv // highest precedence value
-//
-(* ****** ****** *)
-//
-val app_prcdv : prcdv
-//
-val select_prcdv : prcdv
-//
-val exists_prcdv : prcdv
-and forall_prcdv : prcdv
-//
-(* ****** ****** *)
-//
-val backslash_prcdv : prcdv
-val infixtemp_prcdv : prcdv // for temp infix status
+implement
+print_prcdv(x0) = fprint(stdout_ref, x0)
+implement
+prerr_prcdv(x0) = fprint(stderr_ref, x0)
+implement
+fprint_prcdv(out, x0) = fprint(out, prcdv2int(x0))
 //
 (* ****** ****** *)
 
