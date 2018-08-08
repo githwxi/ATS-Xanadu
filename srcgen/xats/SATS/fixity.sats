@@ -118,5 +118,46 @@ val backslash_prcdv : prcdv
 val infixtemp_prcdv : prcdv // for temp infix status
 //
 (* ****** ****** *)
+//
+datatype
+fixty =
+| FIXTYnon
+| FIXTYpre of prcdv
+| FIXTYpos of prcdv
+| FIXTYinf of (prcdv, assoc)
+| FIXTYpreinf of (prcdv, prcdv, assoc)
+(*
+| FIXTYposinf of (prcdv, prcdv, assoc)
+*)
+// end of [fixty]
+//
+(* ****** ****** *)
+//
+fun
+print_fixty (fixty): void
+fun
+prerr_fixty (fixty): void
+fun
+fprint_fixty: fprint_type(fixty)
+//
+overload print with print_fixty
+overload prerr with prerr_fixty
+overload fprint with fprint_fixty
+//
+(* ****** ****** *)
+//
+datatype
+fxitm(a:type) =
+| FXITMatm(a) of a
+| FXITMopr(a) of (loc_t, fxopr(a))
+//
+and
+fxopr(a:type) = 
+| FXOPRinf(a) of
+  (prcdv, assoc, (a, a) -<cloref1> fxitm(a))
+| FXOPRpre(a) of (prcdv, a -<cloref1> fxitm(a))
+| FXOPRpos(a) of (prcdv, a -<cloref1> fxitm(a))
+//
+(* ****** ****** *)
 
 (* end of [xats_fixity.sats] *)

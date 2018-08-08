@@ -98,11 +98,40 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-print_prcdv(x0) = fprint(stdout_ref, x0)
+print_prcdv(x0) =
+fprint(stdout_ref, x0)
 implement
-prerr_prcdv(x0) = fprint(stderr_ref, x0)
+prerr_prcdv(x0) =
+fprint(stderr_ref, x0)
 implement
 fprint_prcdv(out, x0) = fprint(out, prcdv2int(x0))
+//
+(* ****** ****** *)
+//
+implement
+print_fixty(x0) =
+fprint_fixty(stdout_ref, x0)
+implement
+prerr_fixty(x0) =
+fprint_fixty(stderr_ref, x0)
+//
+implement
+fprint_fixty
+  (out, x0) =
+(
+  case+ x0 of
+  | FIXTYnon() => begin
+    fprint!(out, "FIXTYnon()")
+    end // end of [FIXTYnon]
+  | FIXTYpre(p) =>
+    fprint!(out, "FIXTYpre(", p)
+  | FIXTYpos(p) =>
+    fprint!(out, "FIXTYpos(", p)
+  | FIXTYinf(p, a) =>
+    fprint!(out, "FIXTYinf(", p, ", ", a)
+  | FIXTYpreinf(p1, p2, a) =>
+    fprint!(out, "FIXTYpreinf(", p1, ", ", p2, ", ", a)
+) (* end of [fprint_fixty] *)
 //
 (* ****** ****** *)
 
