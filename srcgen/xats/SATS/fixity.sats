@@ -105,6 +105,7 @@ the_posinf_prcdv: prcdv // highest precedence value
 //
 (* ****** ****** *)
 //
+val app_assoc : assoc
 val app_prcdv : prcdv
 //
 val select_prcdv : prcdv
@@ -125,18 +126,20 @@ fixty =
 | FIXTYpre of prcdv
 | FIXTYpos of prcdv
 | FIXTYinf of (prcdv, assoc)
+//
 | FIXTYpreinf of (prcdv, prcdv, assoc)
 (*
 | FIXTYposinf of (prcdv, prcdv, assoc)
 *)
+//
 // end of [fixty]
 //
 (* ****** ****** *)
 //
 fun
-print_fixty (fixty): void
+print_fixty(fixty): void
 fun
-prerr_fixty (fixty): void
+prerr_fixty(fixty): void
 fun
 fprint_fixty: fprint_type(fixty)
 //
@@ -146,17 +149,60 @@ overload fprint with fprint_fixty
 //
 (* ****** ****** *)
 //
+fun
+fixty_prcdv(fixty): prcdv
+fun
+fixty_assoc(fixty): assoc
+//
+(* ****** ****** *)
+//
 datatype
 fxitm(a:type) =
-| FXITMatm(a) of a
-| FXITMopr(a) of (loc_t, fxopr(a))
+| FXITMatm(a) of (a)
+| FXITMopr(a) of (a, fixty)
 //
-and
-fxopr(a:type) = 
-| FXOPRinf(a) of
-  (prcdv, assoc, (a, a) -<cloref1> fxitm(a))
-| FXOPRpre(a) of (prcdv, a -<cloref1> fxitm(a))
-| FXOPRpos(a) of (prcdv, a -<cloref1> fxitm(a))
+(* ****** ****** *)
+//
+vtypedef
+fxitmlst(a:type) = List0(fxitm(a))
+//
+(* ****** ****** *)
+//
+fun
+{a:type}
+fxitm_make(x0: a): fxitm(a)
+//
+fun
+{a:type}
+fxopr_make_app(y0: fxitm(a)): fxitm(a)
+//
+(* ****** ****** *)
+//
+fun
+fxopr_prcdv{a:type}(fxitm(a)): prcdv
+fun
+fxopr_assoc{a:type}(fxitm(a)): assoc
+//
+(* ****** ****** *)
+//
+fun
+{a:type}
+fxitmlst_resolve
+  (loc0: loc_t, xs: fxitmlst(a)): (a)
+//
+(* ****** ****** *)
+//
+fun
+{a:type}
+fxitm_infix
+(f0: a, x1: a, x2: a): fxitm(a) // f0(x1,x2)
+//
+fun
+{a:type}
+fxitm_prefix(f0: a, x1: a): fxitm(a) // f0(x1)
+fun
+{a:type}
+fxitm_postfix(x0: a, f1: a): fxitm(a) // f1(x0)
 //
 (* ****** ****** *)
 
