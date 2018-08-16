@@ -327,15 +327,18 @@ sort0_node =
 //
 | S0Tid of (s0tid)
 //
-| S0Tapps of (sort0lst) // HX: unsupported
+| S0Tapps of
+  (sort0lst) // HX: unsupported
 //
-| S0Tlist of (token, sort0lst, token) (* for temporary use *)
+| S0Tlist of
+  (token, sort0lst, token) (*temporary*)
 //
 | S0Tqual of (token, sort0) // HX: qualified
 (*
-| S0Ttype of int (* prop/view/type/t0ype/viewtype/viewt0ype *)
+| S0Ttype of int(*kind*)
+  (* prop/view/type/t0ype/viewtype/viewt0ype *)
 *)
-| S0Tnone of (token)
+| S0Tnone of (token) // HX: (usually) indication of error
 // end of [sort0_node]
 
 (* ****** ****** *)
