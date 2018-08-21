@@ -28,77 +28,51 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: Auguest, 2018
+// Start Time: August, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
 #staload
-LAB = "./label0.sats"
-#staload
-LOC = "./location.sats"
-//
-typedef label = $LAB.label
-typedef loc_t = $LOC.location
-//
-#staload
-LEX = "./lexing.sats"
-typedef token = $LEX.token
-//
-#staload
-SYM = "./symbol.sats"
-typedef symbol = $SYM.symbol
+UN =
+"prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-abstbox sort1_tbox = ptr
-abstbox s1exp_tbox = ptr
+#staload
+"./../SATS/label0.sats"
+#staload
+"./../SATS/location.sats"
 //
-(* ****** ****** *)
-//
-typedef sort1 = sort1_tbox
-typedef sort1lst = List0(sort1)
-typedef sort1opt = Option(sort1)
-//
-typedef s1exp = s1exp_tbox
-typedef s1explst = List0(s1exp)
-typedef s1expopt = Option(s1exp)
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/staexp1.sats"
 //
 (* ****** ****** *)
 
-datatype
-sort1_node =
-  | S1Tid of (symbol)
-  | S1Ttype of int(*kind*)
-    (*prop/view/type/t0ype/viewtype/viewt0ype*)
-  | S1Tapps of (sort1, sort1lst)
-  | S1Tlist of sort1lst // temporary
-  | S1Tqual of (token, sort1)
-  | S1Terror of ((*error indication*))
-// end of [s1rt_node]
+local
 
-(* ****** ****** *)
-//
-fun
-sort1_get_loc(sort1): loc_t
-fun
-sort1_get_node(sort1): sort1_node
-//
-overload .loc with sort1_get_loc
-overload .node with sort1_get_node
-//
-fun print_sort1 : print_type(sort1)
-fun prerr_sort1 : prerr_type(sort1)
-fun fprint_sort1 : fprint_type(sort1)
-//
-overload print with print_sort1
-overload prerr with prerr_sort1
-overload fprint with fprint_sort1
-//
-fun
+absimpl
+sort1_tbox = $rec{
+  sort1_loc= loc_t
+, sort1_node= sort1_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+sort1_get_loc(x) = x.sort1_loc
+implement
+sort1_get_node(x) = x.sort1_node
+
+implement
 sort1_make_node
-(loc: loc_t, node: sort1_node): sort1
-//
+(loc, node) = $rec
+{
+  sort1_loc= loc, sort1_node= node
+} (* end of [sort1_make_node] *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
-(* end of [xats_staexp1.sats] *)
+(* end of [xats_staexp1.dats] *)
