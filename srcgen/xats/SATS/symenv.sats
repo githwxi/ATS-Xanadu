@@ -64,13 +64,13 @@ symenv_make_nil
 fun
 symenv_search
 {itm:type} // HX: search all
-(env: &symenv(itm), k0: sym_t):<> Option_vt(itm)
+(env: &symenv(itm), k0: sym_t): Option_vt(itm)
 // end of [symenv_search]
 
 fun
 symenv_insert
   {itm:type} // HX: insert first
-  (env: &symenv(itm), k0: sym_t, x0: itm): (void)
+  (env: &symenv(itm), k0: sym_t, x0: itm): void
 // end of [symenv_insert]
 
 (* ****** ****** *)
