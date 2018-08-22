@@ -35,7 +35,44 @@
 //
 #staload
 SYM = "./symbol.sats"
+typedef sym_t = $SYM.sym_t
 //
+#staload
+MAP = "./symmap.sats"
+vtypedef
+symmap(itm:type) = $MAP.symmap(itm)
+//
+(* ****** ****** *)
+
+absvt0ype
+symenv_vt0ype(itm:type)
+vtypedef
+symenv(itm:type) = symenv_vt0ype(itm)
+
+(* ****** ****** *)
+
+fun
+symenv_make_nil
+  {itm:type}
+(
+// nothing
+) : [l:addr] (symenv(itm) @ l | ptr(l))
+// end of [symenv_make_nil]
+
+(* ****** ****** *)
+
+fun
+symenv_search
+{itm:type} // HX: search all
+(env: &symenv(itm), k0: sym_t):<> Option_vt(itm)
+// end of [symenv_search]
+
+fun
+symenv_insert
+  {itm:type} // HX: insert first
+  (env: &symenv(itm), k0: sym_t, x0: itm): (void)
+// end of [symenv_insert]
+
 (* ****** ****** *)
 
 (* end of [xats_symenv.sats] *)
