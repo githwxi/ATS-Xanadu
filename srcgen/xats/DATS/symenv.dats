@@ -164,4 +164,45 @@ symenv_insert
 
 (* ****** ****** *)
 
+implement
+symenv_pop
+  (env) = map0 where
+{
+  val map0 = env.map0
+  val-
+ ~list_vt_cons
+    (map1, maps) = env.maps
+  // end of [val]
+  val ((*void*)) = env.map0 := map1
+  val ((*void*)) = env.maps := maps
+} (* end of [symenv_pop] *)
+
+implement
+symenv_push
+  (env, map0) = () where
+{
+//
+val map1 = env.map0
+val maps = env.maps
+//
+val ((*void*)) =
+  (env.map0 := map0)
+val ((*void*)) =
+  (env.maps := list_vt_cons(map1, maps))
+//
+} (* end of [symenv_push] *)
+
+(* ****** ****** *)
+//
+implement
+symenv_pop_free
+  (env) =
+  $MAP.symmap_free(symenv_pop(env))
+implement
+symenv_push_nil
+  (env) =
+  symenv_push(env, $MAP.symmap_make_nil())
+//
+(* ****** ****** *)
+
 (* end of [xats_symenv.dats] *)

@@ -74,5 +74,23 @@ symenv_insert
 // end of [symenv_insert]
 
 (* ****** ****** *)
+//
+fun
+symenv_pop{itm:type}
+  (env: &symenv(itm) >> _): symmap(itm)
+fun
+symenv_push{itm:type}
+  (env: &symenv(itm) >> _, map: symmap(itm)): void
+//
+(* ****** ****** *)
+//
+fun
+symenv_pop_free
+  {itm:type}(env: &symenv(itm) >> _): void
+fun
+symenv_push_nil
+  {itm:type}(env: &symenv(itm) >> _): void
+//
+(* ****** ****** *)
 
 (* end of [xats_symenv.sats] *)
