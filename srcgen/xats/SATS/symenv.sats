@@ -69,18 +69,20 @@ symenv_search
 
 fun
 symenv_insert
-  {itm:type} // HX: insert first
-  (env: &symenv(itm), k0: sym_t, x0: itm): void
+{itm:type} // HX: insert first
+(env: &symenv(itm), k0: sym_t, x0: itm): void
 // end of [symenv_insert]
 
 (* ****** ****** *)
 //
 fun
-symenv_pop{itm:type}
-  (env: &symenv(itm) >> _): symmap(itm)
+symenv_pop
+{itm:type}
+(env: &symenv(itm) >> _): symmap(itm)
 fun
-symenv_push{itm:type}
-  (env: &symenv(itm) >> _, map: symmap(itm)): void
+symenv_push
+{itm:type}
+(env: &symenv(itm) >> _, map: symmap(itm)): void
 //
 (* ****** ****** *)
 //
