@@ -32,43 +32,78 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#staload
+SYM = "./../SATS/symbol.sats"
+//
+(* ****** ****** *)
 
-#staload "./../SATS/error.sats"
+#staload "./../SATS/symmap.sats"
+
+(* ****** ****** *)
+
+typedef key = uint
 
 (* ****** ****** *)
 
 local
-//
-extern
-fun
-segfault
-(
-// argless
-) : int =
-  "ext#xats_error_segfault"
-//
+
+#staload
+"libats/SATS/linmap_avltree.sats"
+
+absimpl
+symmap_vtype(itm:type) = map(key, itm)
+
+implement
+equal_key_key<key>(k0, k1) = (k0 = k1)
+implement
+compare_key_key<key>(k0, k1) = compare(k0, k1)
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
+(* ****** ****** *)
+//
 implement
-abort() = let
-(*
-  val _ = segfault()
-*)
-in
-  $raise FatalErrorExn((*void*))
-end // end of [abort]
-
+symmap_make_nil
+  {itm}() =
+  linmap_make_nil<>{key,itm}()
+//
 implement
-abort_interr() = let
-(*
-  val _ = segfault()
-*)
-in
-  $raise FatalErrorExn_interr((*void*))
-end // end of [abort]
+symmap_free{itm}
+  (map) = linmap_free<key,itm>(map)
+//
+(* ****** ****** *)
+//
+implement
+symmap_search
+{itm}(kxs, k0) =
+(
+linmap_search_opt<key,itm>
+  (kxs, stamp) where
+{
+  val stamp = $SYM.symbol_get_stamp(k0)
+}
+)
+//
+implement
+symmap_insert
+{itm}(kxs, k0, x0) = () where
+{
+  val-
+ ~None_vt((*void*)) =
+  linmap_insert_opt<key,itm>
+    (kxs, stamp, x0) where
+  {
+    val stamp = $SYM.symbol_get_stamp(k0)
+  }
+}
+//
+(* ****** ****** *)
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_error.dats] *)
+(* end of [xats_symmap.dats] *)
