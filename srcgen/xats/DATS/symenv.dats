@@ -43,6 +43,10 @@ vtypedef
 symmap(itm:type) = $MAP.symmap(itm)
 //
 (* ****** ****** *)
+
+#staload "./../SATS/symenv.sats"
+
+(* ****** ****** *)
 //
 vtypedef
 symmaplst
@@ -94,6 +98,37 @@ case+ ms of
   end (* end of [list_vt_cons] *)
 ) (* end of [symmaplst_search] *)
 //
+(* ****** ****** *)
+
+absimpl
+symenv_vt0ype
+  (itm:type) = @{
+  map0= symmap(itm)
+, maps= symmaplst(itm)
+, saved= List0_vt(@(symmap(itm), symmaplst(itm)))
+, pervasive= symmap(itm)
+} // end of [symenv_v0type]
+
+(* ****** ****** *)
+
+implement
+symenv_make_nil
+  {itm}((*void*)) =
+  (pfat | p0) where
+{
+  vtypedef env_t = symenv(itm)
+  val map0 = $MAP.symmap_make_nil()
+  val (pfat, pfgc | p0) = ptr_alloc<env_t>()
+//
+  val () = p0->map0 := map0
+  val () = p0->maps := list_vt_nil()
+  val () = p0->saved := list_vt_nil()
+  val () = p0->pervasive := $MAP.symmap_make_nil()
+//
+  prval() = mfree_gc_v_elim(pfgc)
+//
+} (* end of [symenv_make_nil] *)
+
 (* ****** ****** *)
 
 (* end of [xats_symenv.dats] *)
