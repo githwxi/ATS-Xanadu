@@ -56,6 +56,9 @@ symmaplst
 vtypedef
 symmaplst
 (itm:type) = [n:int] symmaplst(itm, n)
+vtypedef
+symmaplst0
+(itm:type) = [n:nat] symmaplst(itm, n)
 //
 (* ****** ****** *)
 //
@@ -104,7 +107,7 @@ absimpl
 symenv_vt0ype
   (itm:type) = @{
   map0= symmap(itm)
-, maps= symmaplst(itm)
+, maps= symmaplst0(itm)
 , saved= List0_vt(@(symmap(itm), symmaplst(itm)))
 , pervasive= symmap(itm)
 } // end of [symenv_v0type]
@@ -128,6 +131,36 @@ symenv_make_nil
   prval() = mfree_gc_v_elim(pfgc)
 //
 } (* end of [symenv_make_nil] *)
+
+(* ****** ****** *)
+
+implement
+symenv_search
+{itm}(env, k0) = let
+//
+  val ans =
+  $MAP.symmap_search(env.map0, k0)
+//
+in
+  case+ ans of
+  | ~None_vt() =>
+    (
+      symmaplst_search(env.maps, k0)
+    )
+  | @Some_vt _ =>
+    (
+      ans where { prval () = fold@(ans) }
+    )
+end // end of [symenv_search]
+
+(* ****** ****** *)
+
+implement
+symenv_insert
+{itm}(env, k0, x0) =
+(
+  $MAP.symmap_insert{itm}(env.map0, k0, x0)
+) (* end of [symenv_insert] *)
 
 (* ****** ****** *)
 
