@@ -34,71 +34,42 @@
 (* ****** ****** *)
 //
 #staload
-LAB = "./label0.sats"
-#staload
-LOC = "./location.sats"
-//
-typedef label = $LAB.label
-typedef loc_t = $LOC.location
-//
-#staload
-LEX = "./lexing.sats"
-typedef token = $LEX.token
-//
-#staload
 SYM = "./symbol.sats"
-typedef symbol = $SYM.symbol
+//
+typedef sym_t = $SYM.sym_t
 //
 (* ****** ****** *)
 //
-abstbox sort1_tbox = ptr
-abstbox s1exp_tbox = ptr
+absvtype
+symmap_vtype(itm:type) = ptr
+vtypedef
+symmap(itm:type) = symmap_vtype(itm)
 //
-(* ****** ****** *)
-//
-typedef sort1 = sort1_tbox
-typedef sort1lst = List0(sort1)
-typedef sort1opt = Option(sort1)
-//
-typedef s1exp = s1exp_tbox
-typedef s1explst = List0(s1exp)
-typedef s1expopt = Option(s1exp)
-//
-(* ****** ****** *)
-
-datatype
-sort1_node =
-  | S1Tid of token
-  | S1Ttype of int(*kind*)
-    (*prop/view/type/t0ype/viewtype/viewt0ype*)
-  | S1Tapps of (sort1, sort1lst)
-  | S1Tlist of sort1lst // temporary
-  | S1Tqual of (token, sort1)
-  | S1Terror of ((*error indication*))
-// end of [s1rt_node]
-
 (* ****** ****** *)
 //
 fun
-sort1_get_loc(sort1): loc_t
-fun
-sort1_get_node(sort1): sort1_node
+symmap_make_nil
+  {itm:type}(): symmap(itm)
 //
-overload .loc with sort1_get_loc
-overload .node with sort1_get_node
-//
-fun print_sort1 : print_type(sort1)
-fun prerr_sort1 : prerr_type(sort1)
-fun fprint_sort1 : fprint_type(sort1)
-//
-overload print with print_sort1
-overload prerr with prerr_sort1
-overload fprint with fprint_sort1
-//
-fun
-sort1_make_node
-(loc: loc_t, node: sort1_node): sort1
+fun symmap_free
+  {itm:type}(map: symmap(itm)): void
 //
 (* ****** ****** *)
 
-(* end of [xats_staexp1.sats] *)
+fun
+symmap_search
+  {itm:type}
+(
+  kxs: !symmap(itm), k0: sym_t
+) : Option_vt(itm) // end-of-fun
+
+fun
+symmap_insert
+  {itm:type}
+(
+  kxs: &symmap(itm), k0: sym_t, x0: itm
+) : void // end of [symmap_insert]
+
+(* ****** ****** *)
+
+(* end of [xats_symmap.sats] *)

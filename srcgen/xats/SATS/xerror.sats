@@ -60,4 +60,4 @@ fun abort_interr{a:vt0ype}():<!exn> (a)
 //
 (* ****** ****** *)
 
-(* end of [xats_error.sats] *)
+(* end of [xats_xerror.sats] *)

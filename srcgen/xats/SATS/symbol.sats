@@ -39,7 +39,10 @@
 //
 abstbox symbol_tbox // boxed
 //
+typedef sym_t = symbol_tbox
+//
 typedef symbol = symbol_tbox
+//
 typedef symbolist = List0(symbol)
 typedef symbolopt = Option(symbol)
 //

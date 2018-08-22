@@ -34,71 +34,70 @@
 (* ****** ****** *)
 //
 #staload
-LAB = "./label0.sats"
-#staload
-LOC = "./location.sats"
-//
-typedef label = $LAB.label
-typedef loc_t = $LOC.location
-//
-#staload
-LEX = "./lexing.sats"
-typedef token = $LEX.token
-//
-#staload
-SYM = "./symbol.sats"
-typedef symbol = $SYM.symbol
+UN =
+"prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-abstbox sort1_tbox = ptr
-abstbox s1exp_tbox = ptr
+#staload "./../SATS/label0.sats"
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/staexp1.sats"
 //
 (* ****** ****** *)
 //
-typedef sort1 = sort1_tbox
-typedef sort1lst = List0(sort1)
-typedef sort1opt = Option(sort1)
-//
-typedef s1exp = s1exp_tbox
-typedef s1explst = List0(s1exp)
-typedef s1expopt = Option(s1exp)
+implement
+fprint_val<token> = fprint_token
 //
 (* ****** ****** *)
 
-datatype
-sort1_node =
-  | S1Tid of token
-  | S1Ttype of int(*kind*)
-    (*prop/view/type/t0ype/viewtype/viewt0ype*)
-  | S1Tapps of (sort1, sort1lst)
-  | S1Tlist of sort1lst // temporary
-  | S1Tqual of (token, sort1)
-  | S1Terror of ((*error indication*))
-// end of [s1rt_node]
+implement
+fprint_val<sort1> = fprint_sort1
 
 (* ****** ****** *)
+
+implement
+print_sort1(x0) =
+fprint_sort1(stdout_ref, x0)
+implement
+prerr_sort1(x0) =
+fprint_sort1(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<sort1> = fprint_sort1
+
+in (* in-of-local *)
+
+implement
+fprint_sort1
+  (out, x0) =
+(
+case+ x0.node() of
 //
-fun
-sort1_get_loc(sort1): loc_t
-fun
-sort1_get_node(sort1): sort1_node
+| S1Tid(id) =>
+  fprint!(out, "S1Tid(", id, ")")
 //
-overload .loc with sort1_get_loc
-overload .node with sort1_get_node
+| S1Ttype(knd) =>
+  fprint!(out, "S1Ttype", knd, ")")
 //
-fun print_sort1 : print_type(sort1)
-fun prerr_sort1 : prerr_type(sort1)
-fun fprint_sort1 : fprint_type(sort1)
+| S1Tapps(s1t0, s1ts) =>
+  fprint!
+  (out, "S1Tapps(", s1t0, "; ", s1ts, ")")
 //
-overload print with print_sort1
-overload prerr with prerr_sort1
-overload fprint with fprint_sort1
+| S1Tlist(s1ts) =>
+  fprint!(out, "S1Tlist(", s1ts, ")")
 //
-fun
-sort1_make_node
-(loc: loc_t, node: sort1_node): sort1
+| S1Tqual(tok0, s1t1) =>
+  fprint!
+  (out, "S1Tqual(", tok0, "; ", s1t1, ")")
 //
+| S1Terror((*void*)) => fprint!(out, "S1Terror(", ")")
+//
+) (* end of [fprint_sort1] *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
-(* end of [xats_staexp1.sats] *)
+(* end of [xats_staexp1_print.dats] *)
