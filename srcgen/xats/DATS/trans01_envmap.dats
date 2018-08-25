@@ -41,41 +41,57 @@ FIX = "./../SATS/fixity.sats"
 #staload
 ENV = "./../SATS/symenv.sats"
 //
-#staload "./../SATS/staexp0.sats"
-#staload "./../SATS/dynexp0.sats"
-//
 #staload "./../SATS/trans01.sats"
+
+(* ****** ****** *)
+//
+vtypedef
+fixty = $FIX.fixty
+vtypedef
+symenv(itm:type) = $ENV.symenv(itm)
 //
 (* ****** ****** *)
 
 local
 
-static
-fun
-aux_fixity : d0ecl -> d1ecl
+vtypedef
+fixtyenv = symenv(fixty)
+
+val
+[l0:addr]
+(pf | p0) =
+$ENV.symenv_make_nil()
+val r0 =
+ref_make_viewptr(pf | p0)
+val
+(pf0 | p0) = ref_get_viewptr(r0)
 
 in (* in-of-local *)
 
 implement
-d0ecl_trans(d0c0) = let
-//
-val
-loc0 = d0c0.loc()
-val () =
-println!
-("d0ecl_trans: d0c0 = ", d0c0)
-//
-in
-//
-case-
-d0c0.node() of
-| D0Cfixity _ => aux_fixity(d0c0)
-//
-end // end of [d0ecl_trans]
+the_fixtyenv_search
+  (k0) =
+(
+  $effmask_ref
+  ($ENV.symenv_search(!p0, k0))
+) where
+{
+  prval vbox(pf) = pf0
+} (* end of [the_fxtyenv_search] *)
 
+implement
+the_fixtyenv_insert
+  (k0, x0) =
+(
+  $effmask_ref
+  ($ENV.symenv_insert(!p0, k0, x0))
+) where
+{
+  prval vbox(pf) = pf0
+} (* end of [the_fxtyenv_insert] *)
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_trans01_dynexp.dats] *)
+(* end of [xats_trans01_envmap.dats] *)

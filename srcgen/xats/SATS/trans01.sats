@@ -46,12 +46,33 @@ fixtyopt_vt = Option_vt(fixty)
 //
 (* ****** ****** *)
 //
+#staload S0E = "./staexp0.sats"
+#staload D0E = "./dynexp0.sats"
+#staload S1E = "./staexp1.sats"
+#staload D1E = "./dynexp1.sats"
+//
+(* ****** ****** *)
+//
 fun
 the_fixtyenv_search
   (key: sym_t): fixtyopt_vt
 fun
 the_fixtyenv_insert
   (key: sym_t, itm: fixty): void
+//
+(* ****** ****** *)
+//
+typedef s0exp = $S0E.s0exp
+typedef d0exp = $D0E.d0exp
+typedef d0ecl = $D0E.d0ecl
+//
+typedef s1exp = $S1E.s1exp
+typedef d1exp = $D1E.d1exp
+typedef d1ecl = $D1E.d1ecl
+//
+fun s0exp_trans: s0exp -> s1exp
+fun d0exp_trans: d0exp -> d1exp
+fun d0ecl_trans: d0ecl -> d1ecl
 //
 (* ****** ****** *)
 
