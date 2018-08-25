@@ -32,66 +32,25 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#staload
-SYM = "./../SATS/symbol.sats"
-#staload
-FIX = "./../SATS/fixity.sats"
-//
-#staload
-ENV = "./../SATS/symenv.sats"
-//
-#staload "./../SATS/trans01.sats"
+
+#staload "./staexp1.sats"
 
 (* ****** ****** *)
 //
-vtypedef
-fixty = $FIX.fixty
-vtypedef
-symenv(itm:type) = $ENV.symenv(itm)
+abstype d1ecl_tbox = ptr
+typedef d1ecl = d1ecl_tbox
+typedef d1eclist = List0(d1ecl)
+typedef d1eclopt = Option(d1ecl)
+//
+vtypedef d1eclist_vt = List0_vt(d1ecl)
 //
 (* ****** ****** *)
 
-local
-
-vtypedef
-fixtyenv = symenv(fixty)
-
-val
-[l0:addr]
-(pf | p0) =
-$ENV.symenv_make_nil()
-val r0 =
-ref_make_viewptr(pf | p0)
-val
-(pf0 | p0) = ref_get_viewptr(r0)
-
-in (* in-of-local *)
-
-implement
-the_fixtyenv_search
-  (k0) =
-(
-  $effmask_ref
-  ($ENV.symenv_search(!p0, k0))
-) where
-{
-  prval vbox(pf) = pf0
-} (* end of [the_fxtyenv_search] *)
-
-implement
-the_fixtyenv_insert
-  (k0, x0) =
-(
-  $effmask_ref
-  ($ENV.symenv_insert(!p0, k0, x0))
-) where
-{
-  prval vbox(pf) = pf0
-} (* end of [the_fxtyenv_insert] *)
-
-end // end of [local]
+abstype d1exp_tbox = ptr
+typedef d1exp = d1exp_tbox
+typedef d1explst = List0(d1exp)
+typedef d1expopt = Option(d1exp)
 
 (* ****** ****** *)
 
-(* end of [xats_trans01_env.dats] *)
+(* end of [xats_dynexp1.sats] *)
