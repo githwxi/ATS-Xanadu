@@ -50,8 +50,43 @@ ENV = "./../SATS/symenv.sats"
 //
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
+//
 #staload "./../SATS/trans01.sats"
 //
+(* ****** ****** *)
+
+implement
+s0explst_trans
+  (s0es) =
+list_vt2t(s1es) where
+{
+  val
+  s1es =
+  list_map<s0exp><s1exp>
+    (s0es) where
+  {
+    implement
+    list_map$fopr<s0exp><s1exp> = s0exp_trans
+  }
+} (* end of [s0explst_trans] *)
+
+(* ****** ****** *)
+
+implement
+d0explst_trans
+  (d0es) =
+list_vt2t(d1es) where
+{
+  val
+  d1es =
+  list_map<d0exp><d1exp>
+    (d0es) where
+  {
+    implement
+    list_map$fopr<d0exp><d1exp> = d0exp_trans
+  }
+} (* end of [d0explst_trans] *)
+
 (* ****** ****** *)
 
 local
@@ -65,13 +100,16 @@ fun
 aux_fixity
 (d0c0: d0ecl): d1ecl = let
 //
+val loc0 = d0c0.loc()
+//
 val-
 D0Cfixity
 ( tok0
 , opt1
 , i0ds) = d0c0.node()
 //
-val-T_SRP_FIXITY(knd) = tok0.node()
+val-
+T_SRP_FIXITY(knd) = tok0.node()
 //
 val pval = aux_precopt(opt1)
 //
@@ -120,7 +158,7 @@ in
   let
     val () = loop(i0ds)
   in
-    d1ecl_make_node(d0c0.loc(), D1Cfixity(d0c0))
+    d1ecl_make_node(loc0, D1Cfixity(d0c0))
   end
 end // end of [d0ecl_fixity_tr]
 
@@ -143,6 +181,22 @@ d0c0.node() of
 //
 end // end of [d0ecl_trans]
 
+(* ****** ****** *)
+
+implement
+d0eclist_trans
+  (d0cs) =
+list_vt2t(d1cs) where
+{
+  val
+  d1cs =
+  list_map<d0ecl><d1ecl>
+    (d0cs) where
+  {
+    implement
+    list_map$fopr<d0ecl><d1ecl> = d0ecl_trans
+  }
+} (* end of [d0eclist_trans] *)
 
 end // end of [local]
 

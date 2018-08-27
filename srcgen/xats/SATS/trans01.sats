@@ -65,14 +65,24 @@ the_fixtyenv_insert
 typedef s0exp = $S0E.s0exp
 typedef d0exp = $D0E.d0exp
 typedef d0ecl = $D0E.d0ecl
+typedef s0explst = $S0E.s0explst
+typedef d0explst = $D0E.d0explst
+typedef d0eclist = $D0E.d0eclist
 //
 typedef s1exp = $S1E.s1exp
 typedef d1exp = $D1E.d1exp
 typedef d1ecl = $D1E.d1ecl
+typedef s1explst = $S1E.s1explst
+typedef d1explst = $D1E.d1explst
+typedef d1eclist = $D1E.d1eclist
 //
 fun s0exp_trans: s0exp -> s1exp
 fun d0exp_trans: d0exp -> d1exp
 fun d0ecl_trans: d0ecl -> d1ecl
+//
+fun s0explst_trans: s0explst -> s1explst
+fun d0explst_trans: d0explst -> d1explst
+fun d0eclist_trans: d0eclist -> d1eclist
 //
 (* ****** ****** *)
 
