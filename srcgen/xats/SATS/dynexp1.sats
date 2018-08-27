@@ -33,6 +33,11 @@
 //
 (* ****** ****** *)
 
+#staload "./staexp0.sats"
+#staload "./dynexp0.sats"
+
+(* ****** ****** *)
+
 #staload "./staexp1.sats"
 
 (* ****** ****** *)
@@ -51,6 +56,19 @@ typedef d1exp = d1exp_tbox
 typedef d1explst = List0(d1exp)
 typedef d1expopt = Option(d1exp)
 
+(* ****** ****** *)
+//
+datatype
+d1ecl_node =
+//
+| D1Cfixity of (d0ecl)
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_make_node
+(loc: loc_t, node: d1ecl_node): d1ecl
+//
 (* ****** ****** *)
 
 (* end of [xats_dynexp1.sats] *)
