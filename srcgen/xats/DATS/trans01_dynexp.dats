@@ -56,21 +56,16 @@ ENV = "./../SATS/symenv.sats"
 (* ****** ****** *)
 
 implement
-s0explst_trans
-  (s0es) =
-list_vt2t(s1es) where
-{
-  val
-  s1es =
-  list_map<s0exp><s1exp>
-    (s0es) where
-  {
-    implement
-    list_map$fopr<s0exp><s1exp> = s0exp_trans
-  }
-} (* end of [s0explst_trans] *)
-
-(* ****** ****** *)
+d0exp_trans
+  (d0e0) = let
+//
+val () =
+println!
+("d0exp_trans: d0e0 = ", d0e0)
+//
+in
+  exit_errmsg(1, "d0exp_trans"){d1exp}
+end (* end of [d0exp_trans] *)
 
 implement
 d0explst_trans
@@ -91,10 +86,14 @@ list_vt2t(d1es) where
 
 local
 
-static
 fun
 aux_precopt
-(opt: precopt): prcdv
+(opt: precopt): prcdv =
+(
+case+ opt of
+| _ => int2prcdv(0)
+)
+
 
 fun
 aux_fixity

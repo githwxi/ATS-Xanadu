@@ -34,78 +34,16 @@
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
-//
-(* ****** ****** *)
-
-#staload "./../SATS/symmap.sats"
-
-(* ****** ****** *)
-
-typedef key = uint
-
-(* ****** ****** *)
-
-local
-//
-#staload
-"libats/SATS/linmap_avltree.sats"
-#staload _ =
-"libats/DATS/linmap_avltree.dats"
-//
-absimpl
-symmap_vtype(itm:type) = map(key, itm)
-//
-implement
-equal_key_key<key>(k0, k1) = (k0 = k1)
-implement
-compare_key_key<key>(k0, k1) = compare(k0, k1)
-//
-(* ****** ****** *)
-
-in (* in-of-local *)
-
-(* ****** ****** *)
-//
-implement
-symmap_make_nil
-  {itm}() =
-  linmap_make_nil<>{key,itm}()
-//
-implement
-symmap_free{itm}
-  (map) = linmap_free<key,itm>(map)
+UN =
+"prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-implement
-symmap_search
-{itm}(kxs, k0) =
-(
-linmap_search_opt<key,itm>
-  (kxs, stamp) where
-{
-  val stamp = $SYM.symbol_get_stamp(k0)
-}
-)
-//
-implement
-symmap_insert
-{itm}(kxs, k0, x0) = () where
-{
-  val-
- ~None_vt((*void*)) =
-  linmap_insert_opt<key,itm>
-    (kxs, stamp, x0) where
-  {
-    val stamp = $SYM.symbol_get_stamp(k0)
-  }
-}
+#staload "./../SATS/label0.sats"
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
 //
 (* ****** ****** *)
 
-end // end of [local]
-
-(* ****** ****** *)
-
-(* end of [xats_symmap.dats] *)
+(* end of [xats_dynexp1_print.dats] *)

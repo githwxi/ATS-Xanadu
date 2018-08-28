@@ -28,94 +28,75 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: July, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./staexp0.sats"
-#staload "./dynexp0.sats"
-
-(* ****** ****** *)
-
-#staload "./staexp1.sats"
-
-(* ****** ****** *)
 //
-abstype d1ecl_tbox = ptr
-typedef d1ecl = d1ecl_tbox
-typedef d1eclist = List0(d1ecl)
-typedef d1eclopt = Option(d1ecl)
-//
-vtypedef d1eclist_vt = List0_vt(d1ecl)
-//
-(* ****** ****** *)
-
-abstype d1exp_tbox = ptr
-typedef d1exp = d1exp_tbox
-typedef d1explst = List0(d1exp)
-typedef d1expopt = Option(d1exp)
-
-(* ****** ****** *)
-//
-datatype
-d1exp_node =
-//
-| D1Eid of d1eid
-//
-where d1eid = d0eid
+#staload
+UN =
+"prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-fun
-d1exp_get_loc(d1exp): loc_t
-fun
-d1exp_get_node(d1exp): d1exp_node
+#staload "./../SATS/lexing.sats"
 //
-overload .loc with d1exp_get_loc
-overload .node with d1exp_get_node
+#staload "./../SATS/staexp1.sats"
 //
-fun print_d1exp : (d1exp) -> void
-fun prerr_d1exp : (d1exp) -> void
-fun fprint_d1exp : fprint_type(d1exp)
+#staload "./../SATS/dynexp1.sats"
 //
-overload print with print_d1exp
-overload prerr with prerr_d1exp
-overload fprint with fprint_d1exp
-//
-fun
+(* ****** ****** *)
+
+local
+
+absimpl
+d1exp_tbox = $rec{
+  d1exp_loc= loc_t
+, d1exp_node= d1exp_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d1exp_get_loc(x) = x.d1exp_loc
+implement
+d1exp_get_node(x) = x.d1exp_node
+
+implement
 d1exp_make_node
-(loc: loc_t, node: d1exp_node): d1exp
-//
-(* ****** ****** *)
-//
-datatype
-d1ecl_node =
-//
-| D1Cfixity of (d0ecl)
-//
-(* ****** ****** *)
-//
-fun
-d1ecl_get_loc(d1ecl): loc_t
-fun
-d1ecl_get_node(d1ecl): d1ecl_node
-//
-overload .loc with d1ecl_get_loc
-overload .node with d1ecl_get_node
-//
-fun print_d1ecl : (d1ecl) -> void
-fun prerr_d1ecl : (d1ecl) -> void
-fun fprint_d1ecl : fprint_type(d1ecl)
-//
-overload print with print_d1ecl
-overload prerr with prerr_d1ecl
-overload fprint with fprint_d1ecl
-//
-fun
-d1ecl_make_node
-(loc: loc_t, node: d1ecl_node): d1ecl
-//
+(loc, node) = $rec
+{
+  d1exp_loc= loc, d1exp_node= node
+} (* end of [d1exp_make_node] *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
-(* end of [xats_dynexp1.sats] *)
+local
+
+absimpl
+d1ecl_tbox = $rec{
+  d1ecl_loc= loc_t
+, d1ecl_node= d1ecl_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d1ecl_get_loc(x) = x.d1ecl_loc
+implement
+d1ecl_get_node(x) = x.d1ecl_node
+
+implement
+d1ecl_make_node
+(loc, node) = $rec
+{
+  d1ecl_loc= loc, d1ecl_node= node
+} (* end of [d1ecl_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+(* end of [xats_dynexp1.dats] *)

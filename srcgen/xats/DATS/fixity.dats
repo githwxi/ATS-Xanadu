@@ -34,7 +34,7 @@
 (* ****** ****** *)
 
 #staload
-ERR = "./../SATS/error.sats"
+ERR = "./../SATS/xerror.sats"
 
 (* ****** ****** *)
 
