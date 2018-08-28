@@ -34,6 +34,10 @@ local
 //
 #include
 "./../DATS/symbol.dats"
+#include
+"./../DATS/symmap.dats"
+#include
+"./../DATS/symenv.dats"
 //
 #include
 "./../DATS/label0.dats"
@@ -54,11 +58,8 @@ local
 (* ****** ****** *)
 //
 #include"./../DATS/staexp0.dats"
-#include"./../DATS/staexp0_print.dats"
-//
-(* ****** ****** *)
-//
 #include"./../DATS/dynexp0.dats"
+#include"./../DATS/staexp0_print.dats"
 #include"./../DATS/dynexp0_print.dats"
 //
 (* ****** ****** *)
@@ -71,6 +72,21 @@ local
 //
 #include"./../DATS/parsing_dynexp.dats"
 //
+(* ****** ****** *)
+//
+#include"./../DATS/staexp1.dats"
+#include"./../DATS/dynexp1.dats"
+#include"./../DATS/staexp1_print.dats"
+#include"./../DATS/dynexp1_print.dats"
+//
+(* ****** ****** *)
+
+#include "./../DATS/fixity.dats"
+
+#include"./../DATS/trans01_envmap.dats"
+#include"./../DATS/trans01_staexp.dats"
+#include"./../DATS/trans01_dynexp.dats"
+
 (* ****** ****** *)
 //
 in
@@ -98,6 +114,13 @@ println!
 //
 #staload "./../SATS/parsing.sats"
 //
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+//
+(* ****** ****** *)
+
+#staload "./../SATS/trans01.sats"
+
 (* ****** ****** *)
 
 implement
@@ -168,7 +191,8 @@ val toks = list_vt2t(toks)
 //
 val ((*void*)) =
 list0_foreach<token>
-(g0ofg1(toks), lam(tok) => println!(tok))
+( g0ofg1(toks)
+, lam(tok) => println!(tok))
 //
 val d0cs = let
 //
@@ -183,6 +207,10 @@ in
 end // end of [val]
 
 val () = println! ("d0cs = ", d0cs)
+
+(* ****** ****** *)
+
+val d1cs = d0eclist_trans(d0cs)
 
 (* ****** ****** *)
 

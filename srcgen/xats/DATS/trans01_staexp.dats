@@ -41,9 +41,37 @@ FIX = "./../SATS/fixity.sats"
 #staload
 ENV = "./../SATS/symenv.sats"
 //
+#staload "./../SATS/staexp0.sats"
 #staload "./../SATS/trans01.sats"
 
 (* ****** ****** *)
+
+implement
+s0exp_trans
+  (s0e0) = let
+//
+val () =
+println!
+("s0exp_trans: s0e0 = ", s0e0)
+//
+in
+  exit_errmsg(1, "s0exp_trans"){s1exp}
+end (* end of [s0exp_trans] *)
+
+implement
+s0explst_trans
+  (s0es) =
+list_vt2t(s1es) where
+{
+  val
+  s1es =
+  list_map<s0exp><s1exp>
+    (s0es) where
+  {
+    implement
+    list_map$fopr<s0exp><s1exp> = s0exp_trans
+  }
+} (* end of [s0explst_trans] *)
 
 (* ****** ****** *)
 

@@ -36,15 +36,19 @@ all::
 
 ######
 
+SATS=\
+./../SATS/xerror.sats
+
 all:: \
 test_xats_main
 test_xats_main: \
 test_xats_main_dats
 test_xats_main_dats: \
 test_xats_main.dats; \
-$(PATSCC) -DATS_MEMALLOC_LIBC -I./.. $< -o $@
-regress:: test_xats_main_dats; ./test_xats_main_dats
-cleanall:: ; $(RMF) test_xats_main_dats
+$(PATSCC) \
+-DATS_MEMALLOC_LIBC \
+-I./.. -o $@ $(SATS) $<
+regress:: ; ./test_xats_main_dats
 
 ######
 
@@ -58,7 +62,11 @@ RMF=rm -f
 
 ######
 
-cleanall:: ; $(RMF) test_*_dats.c
+clean:: ; $(RMF) *_sats.c
+clean:: ; $(RMF) *_dats.c
+
+cleanall:: clean
+cleanall:: ; $(RMF) test_xats_main_dats
 
 ######
 
