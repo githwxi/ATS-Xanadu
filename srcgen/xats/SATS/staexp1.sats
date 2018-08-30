@@ -74,7 +74,7 @@ sort1_node =
   | S1Tapps of (sort1, sort1lst)
   | S1Tlist of sort1lst // temporary
   | S1Tqual of (token, sort1)
-  | S1Terror of ((*error indication*))
+  | S1Txerr of ((*error indication*))
 // end of [s1rt_node]
 
 (* ****** ****** *)

@@ -93,13 +93,39 @@ implement
 symmap_insert
 {itm}(kxs, k0, x0) = () where
 {
-  val-
- ~None_vt((*void*)) =
+  val opt =
   linmap_insert_opt<key,itm>
     (kxs, stamp, x0) where
   {
-    val stamp = $SYM.symbol_get_stamp(k0)
+    val
+    stamp = $SYM.symbol_get_stamp(k0)
   }
+  val ((*void*)) = option_vt_free(opt)
+}
+//
+implement
+symmap_insert2
+{itm}(kxs, k0, x0, mix) = () where
+{
+  local
+    val
+    stamp = $SYM.symbol_get_stamp(k0)
+  in
+  val opt =
+  linmap_search_opt<key,itm>(kxs, stamp)
+  val ((*void*)) =
+  option_vt_free
+  (
+    linmap_insert_opt<key,itm>(kxs, stamp, x01)
+  ) where
+  {
+    val x01 =
+    (
+    case+ opt of
+    | ~None_vt() => x0 | ~Some_vt(x1) => mix(x0, x1)
+    ) : itm // end of [val]
+  }
+  end // end of [local]
 }
 //
 (* ****** ****** *)

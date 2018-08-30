@@ -63,12 +63,23 @@ symmap_search
   kxs: !symmap(itm), k0: sym_t
 ) : Option_vt(itm) // end-of-fun
 
+(* ****** ****** *)
+
 fun
 symmap_insert
   {itm:type}
 (
   kxs: &symmap(itm), k0: sym_t, x0: itm
 ) : void // end of [symmap_insert]
+
+(* ****** ****** *)
+
+fun
+symmap_insert2
+  {itm:type}
+( kxs: &symmap(itm)
+, key: sym_t, itm: itm, mix: (itm, itm) -> itm
+) : void // end of [symmap_insert2]
 
 (* ****** ****** *)
 

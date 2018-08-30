@@ -165,6 +165,15 @@ symenv_insert
 (* ****** ****** *)
 
 implement
+symenv_insert2
+{itm}(env, k0, x0, mix) =
+(
+  $MAP.symmap_insert2{itm}(env.map0, k0, x0, mix)
+) (* end of [symenv_insert2] *)
+
+(* ****** ****** *)
+
+implement
 symenv_pop
   (env) = map0 where
 {
