@@ -73,6 +73,13 @@ symenv_insert
 (env: &symenv(itm), k0: sym_t, x0: itm): void
 // end of [symenv_insert]
 
+fun
+symenv_insert2
+{itm:type} // HX: insert first
+( env: &symenv(itm)
+, key: sym_t, itm: itm, mix: (itm, itm) -> itm): void
+// end of [symenv_insert2]
+
 (* ****** ****** *)
 //
 fun

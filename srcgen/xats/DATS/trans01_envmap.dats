@@ -46,16 +46,13 @@ ENV = "./../SATS/symenv.sats"
 (* ****** ****** *)
 //
 vtypedef
-fixty = $FIX.fixty
-vtypedef
 symenv(itm:type) = $ENV.symenv(itm)
 //
 (* ****** ****** *)
 
 local
 
-vtypedef
-fixtyenv = symenv(fixty)
+#staload $FIX
 
 val
 [l0:addr]
@@ -81,14 +78,35 @@ the_fixtyenv_search
 
 implement
 the_fixtyenv_insert
-  (k0, x0) =
-(
-  $effmask_ref
-  ($ENV.symenv_insert(!p0, k0, x0))
-) where
-{
-  prval vbox(pf) = pf0
-} (* end of [the_fxtyenv_insert] *)
+  (k0, x0) = let
+//
+prval vbox(pf) = pf0  
+//
+  fun
+  mix
+  (x0: fixty, x1: fixty): fixty =
+  (
+  case+ x0 of
+  | FIXTYpre(p0) =>
+    ( case+ x1 of
+    | FIXTYinf
+      (p1, a1) =>
+      FIXTYpreinf(p0, p1, a1) | _ => x0
+    ) (* end of [FIXTYinf] *)
+  | FIXTYinf(p0, a0) =>
+    ( case+ x1 of
+    | FIXTYpre(p1) =>
+      FIXTYpreinf(p1, p0, a0) | _ => x0
+    ) (* end of [FIXTYinf] *)
+  | _ (* non-FIXTYpre-FIXTYinf *) => x0
+  )
+//
+in
+//
+$effmask_ref
+($ENV.symenv_insert2(!p0, k0, x0, mix))
+//
+end (* end of [the_fxtyenv_insert] *)
 
 end // end of [local]
 

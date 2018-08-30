@@ -1,5 +1,21 @@
 (* ****** ****** *)
 
+#infix -
+#prefix -
+
+#infix x
+#infixr -> =>>
+#infixl + - * /
+#infixl & && ||
+#prefix ~ ! !!
+#postfix ~ !! !!!
+
+#nonfix foo bar
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
+
 sexpdef
 xy: int = op+(x, y)
 sexpdef
@@ -15,17 +31,6 @@ sexpdef
 xyz: float = foo(1E-3f)
 sexpdef
 xyz: float = foo(0x1.abcdeP-3)
-
-(* ****** ****** *)
-
-#infix x
-#infixr -> =>>
-#infixl + - * /
-#infixl & && ||
-#prefix ~ ! !!
-#postfix ~ !! !!!
-
-#nonfix foo bar
 
 (* ****** ****** *)
 

@@ -41,8 +41,91 @@ FIX = "./../SATS/fixity.sats"
 #staload
 ENV = "./../SATS/symenv.sats"
 //
+(* ****** ****** *)
+
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/trans01.sats"
+
+(* ****** ****** *)
+
+stadef fxitm = $FIX.fxitm
+macdef FXITMatm(x) = $FIX.FXITMatm(,(x))
+macdef FXITMopr(x, a) = $FIX.FXITMatm(,(x), ,(a))
+
+(* ****** ****** *)
+
+local
+
+typedef
+s1titm = fxitm(sort1)
+typedef
+s1titmlst = List0(s1titm)
+
+fun
+auxitm
+(s0t0: sort0): s1titm =
+let
+//
+val
+loc0 = s0t0.loc()
+val () =
+println!
+("sort0_trans: auxitm: s0t0 = ", s0t0)
+//
+in
+//
+case+
+s0t0.node() of
+| S0Tid(tid) =>
+  FXITMatm(s1t0) where
+  {
+    val-
+    I0DNTsome(tok) = tid.node()
+    val s1t0 = sort1_make_node(loc0, S1Tid(tok))
+  }
+//
+end // end of [auxitm]
+
+in (* in-of-local *)
+
+implement
+sort0_trans
+  (s0t0) = let
+//
+val
+loc0 = s0t0.loc()
+//
+val () =
+println!
+("sort0_trans: s0t0 = ", s0t0)
+//
+in
+//
+case+
+auxitm(s0t0) of
+| $FIX.FXITMatm(s1t0) => s1t0
+| $FIX.FXITMopr(s1t0, fxty) =>
+  sort1_make_node(loc0, S1Txerr())
+//
+end (* end of [sort0_trans] *)
+
+end // end of [local]
+
+implement
+sort0lst_trans
+  (s0ts) =
+list_vt2t(s1ts) where
+{
+  val
+  s1ts =
+  list_map<sort0><sort1>
+    (s0ts) where
+  {
+    implement
+    list_map$fopr<sort0><sort1> = sort0_trans
+  }
+} (* end of [sort0lst_trans] *)
 
 (* ****** ****** *)
 
