@@ -69,8 +69,13 @@ typedef s1expopt = Option(s1exp)
 datatype
 sort1_node =
   | S1Tid of token
+//
+  | S1Tapp of () // application
+  | S1Tinf of sort1 // backslash
+//
   | S1Ttype of int(*kind*)
     (*prop/view/type/t0ype/viewtype/viewt0ype*)
+//
   | S1Tapps of (sort1, sort1lst)
   | S1Tlist of sort1lst // temporary
   | S1Tqual of (token, sort1)
@@ -104,6 +109,10 @@ sort1_make_node
 datatype
 s1exp_node =
   | S1Eid of token
+//
+  | S1Eapp of () // application
+  | S1Einf of s1exp // backslash
+//
   | S1Eapps of (s1exp, s1explst)
   | S1Elist of s1explst // temporary
   | S1Equal of (token, s1exp)

@@ -135,6 +135,10 @@ fixty =
 // end of [fixty]
 //
 (* ****** ****** *)
+
+val app_fixty : fixty
+
+(* ****** ****** *)
 //
 fun
 print_fixty(fixty): void
@@ -195,7 +199,7 @@ fxitmlst_resolve
 fun
 {a:type}
 fxitm_infix
-(f0: a, x1: a, x2: a): fxitm(a) // f0(x1,x2)
+(x0: a, f1: a, x2: a): fxitm(a) // f0(x1,x2)
 //
 fun
 {a:type}

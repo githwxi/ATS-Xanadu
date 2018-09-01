@@ -57,7 +57,7 @@ overload + with $LOC.location_combine
 
 stadef fxitm = $FIX.fxitm
 macdef FXITMatm(x) = $FIX.FXITMatm(,(x))
-macdef FXITMopr(x, a) = $FIX.FXITMatm(,(x), ,(a))
+macdef FXITMopr(x, a) = $FIX.FXITMopr(,(x), ,(a))
 
 (* ****** ****** *)
 
@@ -79,8 +79,25 @@ fxitmlst_resolve_sort1
 , itms: s1titmlst): sort1 =
 (
 $FIX.fxitmlst_resolve<sort1>(loc0, itms)
-)  where
+) where
 {
+//
+implement
+$FIX.fxitm_infix<sort1>
+(
+x0, f1, x2
+) = let
+  val loc =
+  x0.loc() + x2.loc()
+in
+FXITMatm
+(
+sort1_make_node
+( loc
+, S1Tapps(f1, list_pair(x0, x2))
+)
+)
+end // end of [$FIX.fxitm_infix]
 //
 implement
 $FIX.fxitm_prefix<sort1>
@@ -88,14 +105,12 @@ $FIX.fxitm_prefix<sort1>
   val loc =
   f0.loc() + x1.loc()
 in
-//
 FXITMatm
 (
   sort1_make_node
   (loc, S1Tapps(f0, list_sing(x1)))
 )
-//
-end // end of [fxitm_prefix]
+end // end of [$FIX.fxitm_prefix]
 //
 implement
 $FIX.fxitm_postfix<sort1>
@@ -103,14 +118,29 @@ $FIX.fxitm_postfix<sort1>
   val loc =
   x0.loc() + f1.loc()
 in
-//
 FXITMatm
 (
   sort1_make_node
   (loc, S1Tapps(f1, list_sing(x0)))
 )
+end // end of [$FIX.fxitm_postfix]
 //
-end // end of [fxitm_postfix]
+implement
+$FIX.fxopr_make_app<sort1>
+  (itm) = let
+//
+val loc =
+(case+ itm of
+ | $FIX.FXITMatm(x0) => x0.loc()
+ | $FIX.FXITMopr(x0, _) => x0.loc()
+) : loc_t // end of [val]
+//
+val s1t =
+sort1_make_node(loc, S1Tapp(*void*))
+//
+in
+  $FIX.FXITMopr(s1t, $FIX.app_fixty)
+end // end of [$FIX.fxopr_make_app]
 //
 } // end of [fxitmlst_resolve_sort1]
 
@@ -122,8 +152,25 @@ fxitmlst_resolve_s1exp
 , itms: s1eitmlst): s1exp =
 (
 $FIX.fxitmlst_resolve<s1exp>(loc0, itms)
-)  where
+) where
 {
+//
+implement
+$FIX.fxitm_infix<s1exp>
+(
+x0, f1, x2
+) = let
+  val loc =
+  x0.loc() + x2.loc()
+in
+FXITMatm
+(
+s1exp_make_node
+( loc
+, S1Eapps(f1, list_pair(x0, x2))
+)
+)
+end // end of [fxitm_infix]
 //
 implement
 $FIX.fxitm_prefix<s1exp>
@@ -131,13 +178,11 @@ $FIX.fxitm_prefix<s1exp>
   val loc =
   f0.loc() + x1.loc()
 in
-//
 FXITMatm
 (
   s1exp_make_node
   (loc, S1Eapps(f0, list_sing(x1)))
 )
-//
 end // end of [fxitm_prefix]
 //
 implement
@@ -146,14 +191,29 @@ $FIX.fxitm_postfix<s1exp>
   val loc =
   x0.loc() + f1.loc()
 in
-//
 FXITMatm
 (
   s1exp_make_node
   (loc, S1Eapps(f1, list_sing(x0)))
 )
-//
 end // end of [fxitm_postfix]
+//
+implement
+$FIX.fxopr_make_app<s1exp>
+  (itm) = let
+//
+val loc =
+(case+ itm of
+ | $FIX.FXITMatm(x0) => x0.loc()
+ | $FIX.FXITMopr(x0, _) => x0.loc()
+) : loc_t // end of [val]
+//
+val s1e =
+s1exp_make_node(loc, S1Eapp(*void*))
+//
+in
+  $FIX.FXITMopr(s1e, $FIX.app_fixty)
+end // end of [$FIX.fxopr_make_app]
 //
 } // end of [fxitmlst_resolve_s1exp]
 
