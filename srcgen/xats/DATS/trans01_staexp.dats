@@ -55,12 +55,45 @@ macdef FXITMopr(x, a) = $FIX.FXITMatm(,(x), ,(a))
 
 (* ****** ****** *)
 
-local
-
 typedef
 s1titm = fxitm(sort1)
 typedef
 s1titmlst = List0(s1titm)
+
+typedef
+s1eitm = fxitm(s1exp)
+typedef
+s1eitmlst = List0(s1eitm)
+
+(* ****** ****** *)
+
+fun
+fxitmlst_resolve_sort1
+( loc0: loc_t
+, itms: s1titmlst): sort1 =
+(
+$FIX.fxitmlst_resolve<sort1>(loc0, itms)
+)  where
+{
+
+} // end of [fxitmlst_resolve_sort1]
+
+(* ****** ****** *)
+
+fun
+fxitmlst_resolve_s1exp
+( loc0: loc_t
+, itms: s1eitmlst): s1exp =
+(
+$FIX.fxitmlst_resolve<s1exp>(loc0, itms)
+)  where
+{
+
+} // end of [fxitmlst_resolve_s1exp]
+
+(* ****** ****** *)
+
+local
 
 fun
 auxitm
@@ -82,10 +115,57 @@ s0t0.node() of
   {
     val-
     I0DNTsome(tok) = tid.node()
-    val s1t0 = sort1_make_node(loc0, S1Tid(tok))
+    val s1t0 =
+    sort1_make_node(loc0, S1Tid(tok))
+  }
+| S0Tapps(s0ts) =>
+  FXITMatm(s1t0) where
+  {
+    val s1t0 =
+    fxitmlst_resolve_sort1(loc0, auxitmlst(s0ts))
+  }
+//
+| S0Tlist
+  (_, s0ts, _) =>
+  FXITMatm(s1t0) where
+  {
+    val s1ts = sort0lst_trans(s0ts)
+    val s1t0 = sort1_make_node(loc0, S1Tlist(s1ts))
+  }
+//
+| S0Tqual
+  (tok, s0t) =>
+  FXITMatm(s1t0) where
+  {
+    val s1t = sort0_trans(s0t)
+    val s1t0 =
+    sort1_make_node(loc0, S1Tqual(tok, s1t))
+  }
+//
+| S0Tnone(tok) =>
+  FXITMatm(s1t0) where
+  {
+    val s1t0 = sort1_make_node(loc0, S1Txerr())
   }
 //
 end // end of [auxitm]
+
+and
+auxitmlst
+(
+xs: sort0lst
+) : s1titmlst =
+list_vt2t(ys) where
+{
+  val
+  ys =
+  list_map<sort0><s1titm>
+    (xs) where
+  {
+    implement
+    list_map$fopr<sort0><s1titm> = auxitm
+  }
+} (* end of [auxitmlst] *)
 
 in (* in-of-local *)
 

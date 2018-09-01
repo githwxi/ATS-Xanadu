@@ -92,7 +92,7 @@ case+ x0.node() of
   fprint!
   (out, "S1Tqual(", tok0, "; ", s1t1, ")")
 //
-| S1Terror((*void*)) => fprint!(out, "S1Terror(", ")")
+| S1Txerr((*void*)) => fprint!(out, "S1Txerr(", ")")
 //
 ) (* end of [fprint_sort1] *)
 
