@@ -90,6 +90,10 @@ app_prcdv = 70
 implement
 app_assoc = ASSOClft()
 //
+implement
+app_fixty =
+FIXTYinf(app_prcdv, app_assoc)
+//
 (* ****** ****** *)
 
 implement
@@ -374,11 +378,11 @@ resolve_app
 (
   case+ ys of
   | y1 :: nil() => let
-      val y1 =
+      val app =
         fxopr_make_app<a>(y1)
       // end of [val]
     in
-      process(xs, y0 :: y1 :: ys)
+      process(xs, y0 :: app :: ys)
     end
   | y1 :: FXITMopr(_, fx1) :: _ => let
       val p1 = fixty_prcdv(fx1)
@@ -386,11 +390,11 @@ resolve_app
     in
       ifcase
       | sgn > 0 => let
-          val y1 =
+          val app =
             fxopr_make_app<a>(y1)
           // end of [val]
         in
-          process(xs, y0 :: y1 :: ys)
+          process(xs, y0 :: app :: ys)
         end
       | sgn < 0 =>
         yreduce (y0 :: xs, ys)
@@ -403,11 +407,11 @@ resolve_app
            | ASSOCnon() =>
              yreduce(y0 :: xs, ys)
            | ASSOCrgt() => let
-               val y1 =
+               val app =
                  fxopr_make_app<a>(y1)
                // end of [val]
              in
-               process(xs, y0 :: y1 :: ys)
+               process(xs, y0 :: app :: ys)
              end
          end // end of [_]
     end // end of [_ :: ITERMopr :: _]
