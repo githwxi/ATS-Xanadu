@@ -75,4 +75,30 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+s1exp_tbox = $rec{
+  s1exp_loc= loc_t
+, s1exp_node= s1exp_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+s1exp_get_loc(x) = x.s1exp_loc
+implement
+s1exp_get_node(x) = x.s1exp_node
+
+implement
+s1exp_make_node
+(loc, node) = $rec
+{
+  s1exp_loc= loc, s1exp_node= node
+} (* end of [s1exp_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_staexp1.dats] *)
