@@ -235,11 +235,13 @@ local
 
 fun
 auxitm
-(s0t0: sort0): s1titm =
-let
+( s0t0
+: sort0)
+: s1titm = let
 //
 val
 loc0 = s0t0.loc()
+//
 val () =
 println!
 ("sort0_trans: auxitm: s0t0 = ", s0t0)
@@ -283,20 +285,21 @@ s0t0.node() of
 | S0Tnone(tok) =>
   FXITMatm(s1t0) where
   {
-    val s1t0 = sort1_make_node(loc0, S1Txerr())
+    val s1t0 =
+      sort1_make_node(loc0, S1Txerr((*void*)))
+    // end of [val]
   }
 //
 end // end of [auxitm]
 
 and
 auxitmlst
-(
-xs: sort0lst
-) : s1titmlst =
+( xs
+: sort0lst)
+: s1titmlst =
 list_vt2t(ys) where
 {
-  val
-  ys =
+  val ys =
   list_map<sort0><s1titm>
     (xs) where
   {
@@ -335,14 +338,14 @@ sort0lst_trans
   (s0ts) =
 list_vt2t(s1ts) where
 {
-  val
-  s1ts =
-  list_map<sort0><sort1>
-    (s0ts) where
-  {
-    implement
-    list_map$fopr<sort0><sort1> = sort0_trans
-  }
+val
+s1ts =
+list_map<sort0><sort1>
+  (s0ts) where
+{
+  implement
+  list_map$fopr<sort0><sort1> = sort0_trans
+}
 } (* end of [sort0lst_trans] *)
 
 (* ****** ****** *)
@@ -364,14 +367,14 @@ s0explst_trans
   (s0es) =
 list_vt2t(s1es) where
 {
-  val
-  s1es =
-  list_map<s0exp><s1exp>
-    (s0es) where
-  {
-    implement
-    list_map$fopr<s0exp><s1exp> = s0exp_trans
-  }
+val
+s1es =
+list_map<s0exp><s1exp>
+  (s0es) where
+{
+  implement
+  list_map$fopr<s0exp><s1exp> = s0exp_trans
+}
 } (* end of [s0explst_trans] *)
 
 (* ****** ****** *)
