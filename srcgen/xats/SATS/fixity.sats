@@ -173,19 +173,27 @@ fxitmlst(a:type) = List0(fxitm(a))
 (* ****** ****** *)
 //
 fun
-{a:type}
-fxitm_make(x0: a): fxitm(a)
-//
+fxopr_prcdv{a:type}(fxitm(a)): prcdv
 fun
-{a:type}
-fxopr_make_app(y0: fxitm(a)): fxitm(a)
+fxopr_assoc{a:type}(fxitm(a)): assoc
 //
 (* ****** ****** *)
 //
 fun
-fxopr_prcdv{a:type}(fxitm(a)): prcdv
+{a:type}
+fxitm_get_loc: fxitm(a) -> loc_t
+//
+(* ****** ****** *)
+//
+(*
 fun
-fxopr_assoc{a:type}(fxitm(a)): assoc
+{a:type}
+fxitm_make(x0: a): fxitm(a)
+*)
+//
+fun
+{a:type}
+fxopr_make_app(y0: fxitm(a)): fxitm(a)
 //
 (* ****** ****** *)
 //

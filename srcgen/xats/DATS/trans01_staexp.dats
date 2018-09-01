@@ -126,14 +126,20 @@ FXITMatm
 end // end of [$FIX.fxitm_postfix]
 //
 implement
+$FIX.fxitm_get_loc<sort1>
+  (itm) =
+(
+case+ itm of
+| $FIX.FXITMatm(x0) => x0.loc()
+| $FIX.FXITMopr(x0, _) => x0.loc()
+) (* end of [$FIX.fxitm_get_loc] *)
+//
+implement
 $FIX.fxopr_make_app<sort1>
   (itm) = let
 //
 val loc =
-(case+ itm of
- | $FIX.FXITMatm(x0) => x0.loc()
- | $FIX.FXITMopr(x0, _) => x0.loc()
-) : loc_t // end of [val]
+$FIX.fxitm_get_loc<sort1>(itm)
 //
 val s1t =
 sort1_make_node(loc, S1Tapp(*void*))
@@ -199,14 +205,20 @@ FXITMatm
 end // end of [fxitm_postfix]
 //
 implement
+$FIX.fxitm_get_loc<s1exp>
+  (itm) =
+(
+case+ itm of
+| $FIX.FXITMatm(x0) => x0.loc()
+| $FIX.FXITMopr(x0, _) => x0.loc()
+) (* end of [$FIX.fxitm_get_loc] *)
+//
+implement
 $FIX.fxopr_make_app<s1exp>
   (itm) = let
 //
 val loc =
-(case+ itm of
- | $FIX.FXITMatm(x0) => x0.loc()
- | $FIX.FXITMopr(x0, _) => x0.loc()
-) : loc_t // end of [val]
+$FIX.fxitm_get_loc<s1exp>(itm)
 //
 val s1e =
 s1exp_make_node(loc, S1Eapp(*void*))
@@ -289,7 +301,7 @@ list_vt2t(ys) where
     (xs) where
   {
     implement
-    list_map$fopr<sort0><s1titm> = auxitm
+    list_map$fopr<sort0><s1titm>(x) = auxitm(x)
   }
 } (* end of [auxitmlst] *)
 

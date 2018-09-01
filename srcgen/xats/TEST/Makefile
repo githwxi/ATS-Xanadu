@@ -37,7 +37,7 @@ all::
 ######
 
 SATS=\
-./../SATS/xerror.sats
+./../SATS/xerror.sats \
 
 all:: \
 test_xats_main

@@ -119,6 +119,13 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
+compare_prcdv_prcdv
+  (x0, x1) =
+  compare(prcdv2int(x0), prcdv2int(x1))
+//
+(* ****** ****** *)
+//
+implement
 print_prcdv(x0) =
 fprint(stdout_ref, x0)
 implement
@@ -249,9 +256,9 @@ fxitmlst_resolve
 typedef itm = fxitm(a)
 typedef itmlst = fxitmlst(a)
 //
-//
-extern
-fun getloc : fxitm(a) -> loc_t
+fun
+getloc
+(itm: fxitm(a)) = fxitm_get_loc<a>(itm)
 //
 fun
 auxerr_opr
