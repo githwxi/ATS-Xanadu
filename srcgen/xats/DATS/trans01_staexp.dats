@@ -43,6 +43,12 @@ ENV = "./../SATS/symenv.sats"
 //
 (* ****** ****** *)
 
+#staload
+LOC = "./../SATS/location.sats"
+overload + with $LOC.location_combine
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/trans01.sats"
@@ -75,7 +81,37 @@ fxitmlst_resolve_sort1
 $FIX.fxitmlst_resolve<sort1>(loc0, itms)
 )  where
 {
-
+//
+implement
+$FIX.fxitm_prefix<sort1>
+  (f0, x1) = let
+  val loc =
+  f0.loc() + x1.loc()
+in
+//
+FXITMatm
+(
+  sort1_make_node
+  (loc, S1Tapps(f0, list_sing(x1)))
+)
+//
+end // end of [fxitm_prefix]
+//
+implement
+$FIX.fxitm_postfix<sort1>
+  (x0, f1) = let
+  val loc =
+  x0.loc() + f1.loc()
+in
+//
+FXITMatm
+(
+  sort1_make_node
+  (loc, S1Tapps(f1, list_sing(x0)))
+)
+//
+end // end of [fxitm_postfix]
+//
 } // end of [fxitmlst_resolve_sort1]
 
 (* ****** ****** *)
@@ -88,7 +124,37 @@ fxitmlst_resolve_s1exp
 $FIX.fxitmlst_resolve<s1exp>(loc0, itms)
 )  where
 {
-
+//
+implement
+$FIX.fxitm_prefix<s1exp>
+  (f0, x1) = let
+  val loc =
+  f0.loc() + x1.loc()
+in
+//
+FXITMatm
+(
+  s1exp_make_node
+  (loc, S1Eapps(f0, list_sing(x1)))
+)
+//
+end // end of [fxitm_prefix]
+//
+implement
+$FIX.fxitm_postfix<s1exp>
+  (x0, f1) = let
+  val loc =
+  x0.loc() + f1.loc()
+in
+//
+FXITMatm
+(
+  s1exp_make_node
+  (loc, S1Eapps(f1, list_sing(x0)))
+)
+//
+end // end of [fxitm_postfix]
+//
 } // end of [fxitmlst_resolve_s1exp]
 
 (* ****** ****** *)

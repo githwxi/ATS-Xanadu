@@ -75,7 +75,7 @@ sort1_node =
   | S1Tlist of sort1lst // temporary
   | S1Tqual of (token, sort1)
   | S1Txerr of ((*error indication*))
-// end of [s1rt_node]
+// end of [sort1_node]
 
 (* ****** ****** *)
 //
@@ -98,6 +98,39 @@ overload fprint with fprint_sort1
 fun
 sort1_make_node
 (loc: loc_t, node: sort1_node): sort1
+//
+(* ****** ****** *)
+
+datatype
+s1exp_node =
+  | S1Eid of token
+  | S1Eapps of (s1exp, s1explst)
+  | S1Elist of s1explst // temporary
+  | S1Equal of (token, s1exp)
+  | S1Exerr of ((*error indication*))
+// end of [s1exp_node]
+
+(* ****** ****** *)
+//
+fun
+s1exp_get_loc(s1exp): loc_t
+fun
+s1exp_get_node(s1exp): s1exp_node
+//
+overload .loc with s1exp_get_loc
+overload .node with s1exp_get_node
+//
+fun print_s1exp : print_type(s1exp)
+fun prerr_s1exp : prerr_type(s1exp)
+fun fprint_s1exp : fprint_type(s1exp)
+//
+overload print with print_s1exp
+overload prerr with prerr_s1exp
+overload fprint with fprint_s1exp
+//
+fun
+s1exp_make_node
+(loc: loc_t, node: s1exp_node): s1exp
 //
 (* ****** ****** *)
 
