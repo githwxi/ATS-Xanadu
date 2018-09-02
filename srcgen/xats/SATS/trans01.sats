@@ -71,15 +71,23 @@ typedef s0marg = $S0E.s0marg
 typedef s0arglst = $S0E.s0arglst
 typedef s0marglst = $S0E.s0marglst
 //
+typedef s0qua = $S0E.s0qua
+typedef s0qualst = $S0E.s0qualst
+//
 typedef s0exp = $S0E.s0exp
-typedef d0exp = $D0E.d0exp
-typedef d0ecl = $D0E.d0ecl
 typedef s0expopt = $S0E.s0expopt
 typedef s0explst = $S0E.s0explst
+//
+(* ****** ****** *)
+//
+typedef d0exp = $D0E.d0exp
+typedef d0ecl = $D0E.d0ecl
 typedef d0expopt = $D0E.d0expopt
 typedef d0explst = $D0E.d0explst
 typedef d0eclopt = $D0E.d0eclopt
 typedef d0eclist = $D0E.d0eclist
+//
+(* ****** ****** *)
 //
 typedef sort1 = $S1E.sort1
 typedef sort1opt = $S1E.sort1opt
@@ -90,31 +98,51 @@ typedef s1marg = $S1E.s1marg
 typedef s1arglst = $S1E.s1arglst
 typedef s1marglst = $S1E.s1marglst
 //
+typedef s1qua = $S1E.s1qua
+typedef s1qualst = $S1E.s1qualst
+//
 typedef s1exp = $S1E.s1exp
-typedef d1exp = $D1E.d1exp
-typedef d1ecl = $D1E.d1ecl
 typedef s1expopt = $S1E.s1expopt
 typedef s1explst = $S1E.s1explst
+//
+(* ****** ****** *)
+//
+typedef d1exp = $D1E.d1exp
 typedef d1expopt = $D1E.d1expopt
 typedef d1explst = $D1E.d1explst
+//
+typedef d1ecl = $D1E.d1ecl
 typedef d1eclopt = $D1E.d1eclopt
 typedef d1eclist = $D1E.d1eclist
 //
 (* ****** ****** *)
 //
-fun sort0_trans: sort0 -> sort1
-fun sort0opt_trans: sort0opt -> sort1opt
-fun sort0lst_trans: sort0lst -> sort1lst
+fun
+sort0_trans: sort0 -> sort1
+fun
+sort0opt_trans: sort0opt -> sort1opt
+fun
+sort0lst_trans: sort0lst -> sort1lst
 //
-fun s0arg_trans: s0arg -> s1arg
-fun s0marg_trans: s0marg -> s1marg
-fun s0arglst_trans: s0arglst -> s1arglst
-fun s0marglst_trans: s0marglst -> s1marglst
+fun
+s0arg_trans: s0arg -> s1arg
+fun
+s0marg_trans: s0marg -> s1marg
+fun
+s0arglst_trans: s0arglst -> s1arglst
+fun
+s0marglst_trans: s0marglst -> s1marglst
+//
+fun s0qua_trans: s0qua -> s1qua
+fun s0qualst_trans: s0qualst -> s1qualst
 //
 fun s0exp_trans: s0exp -> s1exp
+fun s0explst_trans: s0explst -> s1explst
+//
+(* ****** ****** *)
+//
 fun d0exp_trans: d0exp -> d1exp
 fun d0ecl_trans: d0ecl -> d1ecl
-fun s0explst_trans: s0explst -> s1explst
 fun d0explst_trans: d0explst -> d1explst
 fun d0eclist_trans: d0eclist -> d1eclist
 //

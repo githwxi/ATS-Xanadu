@@ -682,6 +682,7 @@ s0exp_node =
 //
 | S0Eparen of
     (token, s0explst, s0exp_RPAREN)
+  // end of [S0Eparen]
 //
 | S0Etuple of
     (token, tokenopt, s0explst, s0exp_RPAREN)

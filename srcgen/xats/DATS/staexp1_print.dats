@@ -63,6 +63,11 @@ fprint_val<s1marg> = fprint_s1marg
 (* ****** ****** *)
 
 implement
+fprint_val<s1qua> = fprint_s1qua
+
+(* ****** ****** *)
+
+implement
 fprint_val<s1exp> = fprint_s1exp
 
 (* ****** ****** *)
@@ -173,6 +178,26 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+print_s1qua(x0) =
+fprint_s1qua(stdout_ref, x0)
+implement
+prerr_s1qua(x0) =
+fprint_s1qua(stderr_ref, x0)
+
+implement
+fprint_s1qua
+  (out, x0) =
+(
+case+ x0.node() of
+| S1QUAprop(s1e) =>
+  fprint!(out, "S1QUAprop(", s1e, ")")
+| S1QUAvars(ids, s1t) =>
+  fprint!(out, "S1QUAvars(", ids, "; ", s1t, ")")
+)
+
+(* ****** ****** *)
+
+implement
 print_s1rtdef(x0) =
 fprint_s1rtdef(stdout_ref, x0)
 implement
@@ -235,6 +260,11 @@ case+ x0.node() of
   fprint!
   ( out
   , "S1Elist(", s1es1, "; ", s1es2, ")")
+//
+| S1Eforall(s1qs) =>
+  fprint!(out, "S1Eforall(", s1qs, ")")
+| S1Eexists(k0, s1qs) =>
+  fprint!(out, "S1Eexists(", k0, "; ", s1qs, ")")
 //
 | S1Equal(tok, s1e) =>
   fprint!

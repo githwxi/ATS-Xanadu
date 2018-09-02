@@ -500,6 +500,73 @@ list_map<s0marg><s1marg>(s0mas)
 local
 
 fun
+auxids
+( ids
+: i0dntlst)
+: tokenlst =
+(
+case+ ids of
+| list_nil() =>
+  list_nil()
+| list_cons(id, ids) => let
+    val-
+    I0DNTsome(tok) = id.node()
+  in
+    list_cons(tok, auxids(ids))
+  end
+)
+
+in (* in-of-local *)
+
+implement
+s0qua_trans
+  (s0q0) = let
+//
+val
+loc0 = s0q0.loc()
+//
+val
+s1q0_node =
+(
+case+
+s0q0.node() of
+| S0QUAprop(s0e) =>
+  S1QUAprop(s0exp_trans(s0e))
+| S0QUAvars
+  (ids, _, s0t) =>
+  S1QUAvars(ids, s1t) where
+  {
+    val ids = auxids(ids)
+    val s1t = sort0_trans(s0t)
+  }
+) : s1qua_node // end of [val]
+//
+in
+  s1qua_make_node(loc0, s1q0_node)
+end // end of [s0qua_trans]
+
+end // end of [local]
+
+implement
+s0qualst_trans
+  (s0qs) =
+list_vt2t(s1es) where
+{
+val
+s1es =
+list_map<s0qua><s1qua>
+  (s0qs) where
+{
+  implement
+  list_map$fopr<s0qua><s1qua> = s0qua_trans
+}
+} (* end of [s0qualst_trans] *)
+
+(* ****** ****** *)
+
+local
+
+fun
 auxsid
 ( sid
 : s0eid)
@@ -580,6 +647,16 @@ s0e0.node() of
   }
 //
 | S0Eparen _ => auxparen(s0e0)
+//
+| S0Eforall
+    (_, s0qs, _) => let
+    val s1qs =
+    s0qualst_trans(s0qs)
+    val s1e0 =
+    s1exp_make_node(loc0, S1Eforall(s1qs))
+  in
+    FXITMopr(s1e0, $FIX.forall_fixty)
+  end
 //
 end // end of [auxitm]
 

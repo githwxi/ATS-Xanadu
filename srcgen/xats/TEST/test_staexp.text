@@ -1,6 +1,7 @@
 (* ****** ****** *)
 
-#infix x
+#infix <=
+#infix >=
 
 #prefix + -
 
@@ -15,14 +16,20 @@
 (* ****** ****** *)
 
 sortdef
+nat = {a: int | a >= 0}
+
+(* ****** ****** *)
+
+sortdef
 foo = bar0( bar1 + ! !! !!! )
+
+(* ****** ****** *)
 
 sexpdef
 foo = bar0( 1 + 2 + 3 + -4 + -5)
 
-(* ****** ****** *)
-////
-sortdef nat = {a: int | a >= 0}
+sexpdef
+int2int = {n:int} int(n) -> int(n)
 
 (* ****** ****** *)
 ////
