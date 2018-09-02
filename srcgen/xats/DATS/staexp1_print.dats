@@ -228,8 +228,13 @@ case+ x0.node() of
   fprint!
   ( out
   , "S1Eapps(", s1e0, "; ", s1es, ")")
+//
 | S1Elist(s1es) =>
   fprint!(out, "S1Elist(", s1es, ")")
+| S1Elist(s1es1, s1es2) =>
+  fprint!
+  ( out
+  , "S1Elist(", s1es1, "; ", s1es2, ")")
 //
 | S1Equal(tok, s1e) =>
   fprint!

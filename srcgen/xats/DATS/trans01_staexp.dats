@@ -567,14 +567,19 @@ in
 //
 case-
 s0e0.node() of
+//
 | S0Eid(sid) => auxsid(sid)
+//
 | S0Eint(int) => auxint(int)
+//
 | S0Eapps(s0es) =>
   FXITMatm(s1e0) where
   {
     val s1e0 =
     fxitmlst_resolve_s1exp(loc0, auxitmlst(s0es))
   }
+//
+| S0Eparen _ => auxparen(s0e0)
 //
 end // end of [auxitm]
 
@@ -593,6 +598,38 @@ list_vt2t(ys) where
     list_map$fopr<s0exp><s1eitm>(x) = auxitm(x)
   }
 } (* end of [auxitmlst] *)
+
+and
+auxparen
+( s0e0
+: s0exp): s1eitm = let
+//
+val-
+S0Eparen
+( _
+, s0es1, rparen) = s0e0.node()
+//
+val
+s1e0_node =
+(
+case+ rparen of
+| s0exp_RPAREN_cons0(_) =>
+  S1Elist(s1es1) where
+  {
+    val s1es1 = s0explst_trans(s0es1)
+  }
+| s0exp_RPAREN_cons1(_, s0es2, _) =>
+  S1Elist(s1es1, s1es2) where
+  {
+    val s1es1 = s0explst_trans(s0es1)
+    val s1es2 = s0explst_trans(s0es2)
+  }
+) : s1exp_node // end of [val]
+//
+in
+  FXITMatm
+  (s1exp_make_node(s0e0.loc(), s1e0_node))
+end // end of [auxparen]
 
 in (* in-of-local *)
 

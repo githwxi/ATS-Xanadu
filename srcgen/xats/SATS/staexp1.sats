@@ -216,7 +216,10 @@ s1exp_node =
   | S1Einf of s1exp // backslash
 //
   | S1Eapps of (s1exp, s1explst)
+//
   | S1Elist of s1explst // temporary
+  | S1Elist of (s1explst, s1explst) // temporary
+//
   | S1Equal of (token, s1exp)
   | S1Enone of ((*error indication*))
 // end of [s1exp_node]
