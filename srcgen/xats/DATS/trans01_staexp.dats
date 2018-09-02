@@ -334,6 +334,15 @@ end (* end of [sort0_trans] *)
 end // end of [local]
 
 implement
+sort0opt_trans
+  (opt0) =
+(
+case+ opt0 of
+| None() => None()
+| Some(s0t0) => Some(sort0_trans(s0t0))
+)
+
+implement
 sort0lst_trans
   (s0ts) =
 list_vt2t(s1ts) where
@@ -347,6 +356,34 @@ list_map<sort0><sort1>
   list_map$fopr<sort0><sort1> = sort0_trans
 }
 } (* end of [sort0lst_trans] *)
+
+(* ****** ****** *)
+
+implement
+s0arg_trans
+  (s0a0) = let
+//
+val loc0 = s0a0.loc()
+//
+val () =
+println!
+("s0arg_trans: s0a0 = ", s0a0)
+//
+in
+//
+case+
+s0a0.node() of
+| S0ARGnone(tok) =>
+  s1arg_make_node(loc0, S1ARGnone(tok))
+| S0ARGsome(sid, opt) => let
+    val-
+    I0DNTsome(tok) = sid.node()
+  in
+    s1arg_make_node
+    (loc0, S1ARGsome(tok, sort0opt_trans(opt)))
+  end // end of [S0ARGsome]
+//
+end // end of [s0arg_trans]
 
 (* ****** ****** *)
 
