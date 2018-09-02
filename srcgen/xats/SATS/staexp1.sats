@@ -68,7 +68,10 @@ typedef s1expopt = Option(s1exp)
 
 datatype
 sort1_node =
+//
   | S1Tid of token
+//
+// HX-2018-08: operators
 //
   | S1Tapp of () // application
   | S1Tinf of sort1 // backslash
@@ -105,10 +108,47 @@ sort1_make_node
 (loc: loc_t, node: sort1_node): sort1
 //
 (* ****** ****** *)
+//
+abstbox s1arg_tbox = ptr
+typedef s1arg = s1arg_tbox
+typedef s1arglst = List0(s1arg)
+//
+datatype
+s1arg_node =
+//
+(*
+  | S1ARGnone of token
+*)
+  | S1ARGsome of (token, sort1opt)
+//
+fun
+s1arg_get_loc(s1arg): loc_t
+fun
+s1arg_get_node(s1arg): s1arg_node
+//
+overload .loc with s1arg_get_loc
+overload .node with s1arg_get_node
+//
+fun print_s1arg : print_type(s1arg)
+fun prerr_s1arg : prerr_type(s1arg)
+fun fprint_s1arg : fprint_type(s1arg)
+//
+overload print with print_s1arg
+overload prerr with prerr_s1arg
+overload fprint with fprint_s1arg
+//
+fun
+s1arg_make_node
+(loc: loc_t, node: s1arg_node): s1arg
+//
+(* ****** ****** *)
 
 datatype
 s1exp_node =
+//
   | S1Eid of token
+//
+// HX-2018-08: operators:
 //
   | S1Eapp of () // application
   | S1Einf of s1exp // backslash
