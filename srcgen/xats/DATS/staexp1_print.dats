@@ -56,6 +56,11 @@ fprint_val<sort1> = fprint_sort1
 (* ****** ****** *)
 
 implement
+fprint_val<s1exp> = fprint_s1exp
+
+(* ****** ****** *)
+
+implement
 print_sort1(x0) =
 fprint_sort1(stdout_ref, x0)
 implement
@@ -100,6 +105,95 @@ case+ x0.node() of
 | S1Txerr((*void*)) => fprint!(out, "S1Txerr(", ")")
 //
 ) (* end of [fprint_sort1] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_s1arg(x0) =
+fprint_s1arg(stdout_ref, x0)
+implement
+prerr_s1arg(x0) =
+fprint_s1arg(stderr_ref, x0)
+
+implement
+fprint_s1arg
+  (out, x0) =
+(
+case+
+x0.node() of
+| S1ARGnone(tok) =>
+  fprint!(out, "S1ARGnone(", tok, ")")
+| S1ARGsome(sid, opt) =>
+  fprint!(out, "S1ARGsome(", sid, ", ", opt, ")")
+) (* fprint_s1arg *)
+
+(* ****** ****** *)
+
+implement
+print_s1rtdef(x0) =
+fprint_s1rtdef(stdout_ref, x0)
+implement
+prerr_s1rtdef(x0) =
+fprint_s1rtdef(stderr_ref, x0)
+implement
+fprint_s1rtdef
+  (out, x0) =
+(
+case+ x0.node() of
+| S1RTDEFsort(s1t) =>
+  fprint!(out, "S1RTDEFsort(", s1t, ")")
+| S1RTDEFsubset(s1a0, s1es) =>
+  fprint!
+  ( out, "S1RTDEFsubset(", s1a0, "; ", s1es, ")")
+) (* end of [fprint_s1rtdef] *)
+
+(* ****** ****** *)
+
+implement
+print_s1exp(x0) =
+fprint_s1exp(stdout_ref, x0)
+implement
+prerr_s1exp(x0) =
+fprint_s1exp(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<s1exp> = fprint_s1exp
+
+in (* in-of-local *)
+
+implement
+fprint_s1exp
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| S1Eid(tok) =>
+  fprint!(out, "S1Eid(", tok, ")")
+//
+| S1Eapp() =>
+  fprint!(out, "S1Eapp()")
+| S1Einf(s1e) =>
+  fprint!(out, "S1Einf(", s1e, ")")
+//
+| S1Eapps
+  (s1e0, s1es) =>
+  fprint!
+  ( out
+  , "S1Eapps(", s1e0, "; ", s1es, ")")
+| S1Elist(s1es) =>
+  fprint!(out, "S1Elist(", s1es, ")")
+//
+| S1Equal(tok, s1e) =>
+  fprint!
+  (out, "S1Equal(", tok, "; ", s1e, ")")
+//
+| S1Exerr() => fprint!(out, "S1Exerr()")
+//
+) (* fprint_s0exp *)
 
 end // end of [local]
 

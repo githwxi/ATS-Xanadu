@@ -249,8 +249,8 @@ fprint_sort0
 (
 case+ x0.node() of
 //
-| S0Tid(id) =>
-  fprint!(out, "S0Tid(", id, ")")
+| S0Tid(tid) =>
+  fprint!(out, "S0Tid(", tid, ")")
 //
 | S0Tapps(s0ts) =>
   fprint!(out, "S0Tapps(", s0ts, ")")
@@ -285,8 +285,8 @@ fprint_s0rtcon
   (out, x0) =
 (
 case+ x0.node() of
-| S0RTCON(id, opt) =>
-  fprint!(out, "S0RTCON(", id, ", ", opt, ")")
+| S0RTCON(sid, opt) =>
+  fprint!(out, "S0RTCON(", sid, ", ", opt, ")")
 ) (* end of [fprint_s0rtcon] *)
 
 (* ****** ****** *)
@@ -324,8 +324,8 @@ case+
 x0.node() of
 | S0ARGnone(tok) =>
   fprint!(out, "S0ARGnone(", tok, ")")
-| S0ARGsome(id, opt) =>
-  fprint!(out, "S0ARGsome(", id, ", ", opt, ")")
+| S0ARGsome(sid, opt) =>
+  fprint!(out, "S0ARGsome(", sid, ", ", opt, ")")
 ) (* fprint_s0arg *)
 
 (* ****** ****** *)
@@ -493,8 +493,8 @@ fprint_s0exp
 (
 case+ x0.node() of
 //
-| S0Eid(id) =>
-  fprint!(out, "S0Eid(", id, ")")
+| S0Eid(sid) =>
+  fprint!(out, "S0Eid(", sid, ")")
 //
 | S0Eop1(opid) =>
   fprint!(out, "S0Eop1(", opid, ")")
