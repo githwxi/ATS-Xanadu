@@ -67,6 +67,7 @@ typedef sort0opt = $S0E.sort0opt
 typedef sort0lst = $S0E.sort0lst
 //
 typedef s0arg = $S0E.s0arg
+typedef s0marg = $S0E.s0marg
 //
 typedef s0exp = $S0E.s0exp
 typedef d0exp = $D0E.d0exp
@@ -83,6 +84,7 @@ typedef sort1opt = $S1E.sort1opt
 typedef sort1lst = $S1E.sort1lst
 //
 typedef s1arg = $S1E.s1arg
+typedef s1marg = $S1E.s1marg
 //
 typedef s1exp = $S1E.s1exp
 typedef d1exp = $D1E.d1exp
@@ -97,6 +99,7 @@ typedef d1eclist = $D1E.d1eclist
 fun sort0_trans: sort0 -> sort1
 //
 fun s0arg_trans: s0arg -> s1arg
+fun s0marg_trans: s0marg -> s1marg
 //
 fun s0exp_trans: s0exp -> s1exp
 fun d0exp_trans: d0exp -> d1exp

@@ -56,6 +56,11 @@ fprint_val<sort1> = fprint_sort1
 (* ****** ****** *)
 
 implement
+fprint_val<s1arg> = fprint_s1arg
+
+(* ****** ****** *)
+
+implement
 fprint_val<s1exp> = fprint_s1exp
 
 (* ****** ****** *)
@@ -102,7 +107,7 @@ case+ x0.node() of
   fprint!
   (out, "S1Tqual(", tok0, "; ", s1t1, ")")
 //
-| S1Txerr((*void*)) => fprint!(out, "S1Txerr(", ")")
+| S1Tnone((*void*)) => fprint!(out, "S1Tnone(", ")")
 //
 ) (* end of [fprint_sort1] *)
 
@@ -123,11 +128,45 @@ fprint_s1arg
 (
 case+
 x0.node() of
+(*
 | S1ARGnone(tok) =>
   fprint!(out, "S1ARGnone(", tok, ")")
+*)
 | S1ARGsome(sid, opt) =>
   fprint!(out, "S1ARGsome(", sid, ", ", opt, ")")
 ) (* fprint_s1arg *)
+
+(* ****** ****** *)
+
+implement
+print_s1marg(x0) =
+fprint_s1marg(stdout_ref, x0)
+implement
+prerr_s1marg(x0) =
+fprint_s1marg(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<s1arg> = fprint_s1arg
+
+in (* in-of-local *)
+
+implement
+fprint_s1marg
+  (out, x0) =
+(
+case+
+x0.node() of
+(*
+| S1MARGnone _ => ...
+| S1MARGsing _ => ...
+*)
+| S1MARGlist(s1as) =>
+  fprint!(out, "S1MARGlist(", s1as, ")")
+) (* fprint_s1marg *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -174,6 +213,9 @@ case+ x0.node() of
 | S1Eid(tok) =>
   fprint!(out, "S1Eid(", tok, ")")
 //
+| S1Eint(tok) =>
+  fprint!(out, "S1Eint(", tok, ")")
+//
 | S1Eapp() =>
   fprint!(out, "S1Eapp()")
 | S1Einf(s1e) =>
@@ -191,7 +233,7 @@ case+ x0.node() of
   fprint!
   (out, "S1Equal(", tok, "; ", s1e, ")")
 //
-| S1Exerr() => fprint!(out, "S1Exerr()")
+| S1Enone((*void*)) => fprint!(out, "S1Enone(", ")")
 //
 ) (* fprint_s0exp *)
 

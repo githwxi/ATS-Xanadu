@@ -65,6 +65,10 @@ implement
 sort1_get_node(x) = x.sort1_node
 
 implement
+sort1_none
+(loc) =
+sort1_make_node(loc, S1Tnone())
+implement
 sort1_make_node
 (loc, node) = $rec
 {
@@ -130,6 +134,32 @@ end // end of [local]
 local
 
 absimpl
+s1marg_tbox = $rec{
+  s1marg_loc= loc_t
+, s1marg_node= s1marg_node
+}
+
+in (* in-of-local *)
+
+implement
+s1marg_get_loc(x) = x.s1marg_loc
+implement
+s1marg_get_node(x) = x.s1marg_node
+
+implement
+s1marg_make_node
+(loc, node) = $rec
+{
+  s1marg_loc= loc, s1marg_node= node
+} (* end of [s1marg_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s1exp_tbox = $rec{
   s1exp_loc= loc_t
 , s1exp_node= s1exp_node
@@ -142,6 +172,10 @@ s1exp_get_loc(x) = x.s1exp_loc
 implement
 s1exp_get_node(x) = x.s1exp_node
 
+implement
+s1exp_none
+(loc) =
+s1exp_make_node(loc, S1Enone())
 implement
 s1exp_make_node
 (loc, node) = $rec

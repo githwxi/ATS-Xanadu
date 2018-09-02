@@ -257,15 +257,22 @@ typedef itm = fxitm(a)
 typedef itmlst = fxitmlst(a)
 //
 fun
-getloc
+itmloc
 (itm: fxitm(a)) = fxitm_get_loc<a>(itm)
 //
 fun
 auxerr_opr
   (y0: itm): a = let
-  val () = prerr (getloc(y0))
+  val () = prerr (itmloc(y0))
   val () = prerr (": error(1)")
-  val () = prerr ": operator fixity cannot be resolved."
+//
+(*
+  val () =
+  prerr ": operator fixity cannot be resolved."
+*)
+  val () =
+  prerr ": auxerr_opr: operator fixity cannot be resolved."
+//
   val () = prerr_newline((*void*))
 in
   $raise($ERR.XATSOPT_FIXITY_EXN(*void*))
@@ -275,7 +282,14 @@ fun auxerr_red
   (ys: itmlst): a = let
   val () = prerr (loc0)
   val () = prerr (": error(1)")
-  val () = prerr ": operator fixity cannot be resolved."
+//
+(*
+  val () =
+  prerr ": operator fixity cannot be resolved."
+*)
+  val () =
+  prerr ": auxerr_red: operator fixity cannot be resolved."
+//
   val () = prerr_newline((*void*))
 in
   $raise($ERR.XATSOPT_FIXITY_EXN(*void*))
@@ -285,9 +299,16 @@ fun
 auxerr_app
   (y0: itm): a = let
   val-FXITMatm atm = y0
-  val () = prerr (getloc(y0))
+  val () = prerr (itmloc(y0))
   val () = prerr (": error(1)")
-  val () = prerr ": application fixity cannot be resolved."
+//
+(*
+  val () =
+  prerr ": application fixity cannot be resolved."
+*)
+  val () =
+  prerr ": auxerr_app: application fixity cannot be resolved."
+//
   val () = prerr_newline((*void*))
 in
   $raise($ERR.XATSOPT_FIXITY_EXN(*void*))
@@ -311,7 +332,7 @@ yreduce
 case+ ys of
 //
 | nil() =>
-  auxerr_red(ys)
+  auxerr_red(ys) // HX-2018-09: deadcode?
 //
 | cons(y0, ys1) =>
   (
@@ -335,10 +356,20 @@ case+ ys of
                 val
                 t2_f1_t0 = fxitm_infix<a>(t2, f1, t0)
               }
-            | _ (* error *) => auxerr_red(ys)
+            | _ (* missing-left-arg *) => 
+              resolve(t2_f1_t0, xs, ys2) where
+              {
+                val
+                l1 =
+                fxopr_get_loc<a>(f1)
+                val
+                t2 = fxatm_none<a>(l1)
+                val
+                t2_f1_t0 = fxitm_infix<a>(t2, f1, t0)
+              }
             // end of [case]
           )
-        | _ (*non-pre-inf*) => auxerr_red(ys)
+        | _ (*non-pre-inf*) => auxerr_red(ys) // deadcode?
       )
     | FXITMopr(f0, fx) =>
       (
@@ -348,11 +379,20 @@ case+ ys of
             | FXITMatm(t1) :: ys2 =>
               resolve(f0_t1, xs, ys2) where
               {
-                val f0_t1 = fxitm_postfix<a>(t1, f0)
+                val
+                f0_t1 = fxitm_postfix<a>(t1, f0)
               }
             | _ (* error *) => auxerr_red(ys)
           )
-        | _ (*non-FIXTYpos*) => auxerr_red(ys)
+        | _ (*non-FIXTYpos*) => let
+            val
+            l0 =
+            fxopr_get_loc<a>(f0)
+            val
+            t0 = fxatm_none<a>(l0)
+          in
+            yreduce(xs, FXITMatm(t0) :: ys)
+          end // end of [non-FIXTYpos]
       )
   )
 ) (* end of [yreduce] *)
@@ -440,6 +480,8 @@ case+ fx of
 | FIXTYpos _ =>
   (
     case+ ys of
+    | nil() =>
+      yreduce(xs, y0 :: ys)
     | _ :: nil() =>
       yreduce(xs, y0 :: ys)
     | _ :: FXITMopr(_, fx1) :: _ =>
@@ -460,8 +502,26 @@ case+ fx of
 | FIXTYinf _ =>
   (
     case+ ys of
+//
+    | nil() =>
+      (
+        process(xs, y0 :: ys)
+      ) where
+      {
+        val
+        l0 =
+        fxitm_get_loc<a>(y0)
+        val
+        t0 = fxatm_none<a>(l0)
+        val
+        ys = FXITMatm(t0) :: ys
+      }
+//
     | _ :: nil() =>
-      process(xs, y0 :: ys)
+      (
+        process(xs, y0 :: ys)
+      )
+//
     | _ :: FXITMopr(_, fx1) :: _ =>
       let
         val
@@ -482,7 +542,9 @@ case+ fx of
             | ASSOCrgt() => process(xs, y0 :: ys)
           end
       end
-    | _ (* error *) => auxerr_opr(y0)
+//
+    | _ (* error *) => auxerr_opr(y0) // HX-2018-09: deadcode?
+//
   )
 //
 | FIXTYpreinf(p0, p1, a1) =>
@@ -511,7 +573,7 @@ case+ fx of
       end
   )
 //
-| FIXTYnon((*void*)) => auxerr_opr(y0)
+| FIXTYnon() => auxerr_opr(y0) // HX-2018-09: deadcode?
 //
 ) (* end of [resolve_opr] *)
 //
