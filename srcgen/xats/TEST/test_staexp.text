@@ -26,10 +26,12 @@ foo = bar0( bar1 + ! !! !!! )
 (* ****** ****** *)
 
 sexpdef
-foo = bar0( 1 + 2 + 3 + -4 + -5)
+foo =
+bar0( 1 + 2 + 3 + -4 + -5)
 
 sexpdef
-int2int = {n:int} int(n) -> int(n)
+int2int =
+{n:int} int(n) -> [n:int] int(n)
 
 (* ****** ****** *)
 ////
