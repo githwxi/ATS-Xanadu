@@ -1,9 +1,9 @@
 (* ****** ****** *)
 
-#infix -
+#infix x
+
 #prefix -
 
-#infix x
 #infixr -> =>>
 #infixl + - * /
 #infixl & && ||
@@ -14,7 +14,8 @@
 
 (* ****** ****** *)
 
-sortdef foo = bar0(bar1 + bar2)
+sortdef
+foo = bar0(-bar1 + bar2 * bar3)
 
 (* ****** ****** *)
 ////

@@ -49,6 +49,10 @@ overload + with $LOC.location_combine
 
 (* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/trans01.sats"
@@ -234,6 +238,41 @@ end // end of [$FIX.fxopr_make_app]
 local
 
 fun
+auxtid
+( tid
+: s0tid)
+: s1titm = let
+//
+val loc = tid.loc()
+val-
+I0DNTsome
+  (tok) = tid.node()
+//
+val sym =
+(
+case-
+tok.node() of
+| T_IDENT_alp(nam) =>
+  $SYM.symbol_make(nam)
+| T_IDENT_sym(nam) =>
+  $SYM.symbol_make(nam)
+) : sym_t // end of [val]
+//
+val opt =
+the_fixtyenv_search(sym)
+//
+val s1t0 =
+sort1_make_node(loc, S1Tid(tok))
+//
+in
+//
+case+ opt of
+| ~None_vt() => FXITMatm(s1t0)
+| ~Some_vt(fxty) => FXITMopr(s1t0, fxty)
+//
+end // end of [auxtid]
+
+fun
 auxitm
 ( s0t0
 : sort0)
@@ -250,14 +289,7 @@ in
 //
 case+
 s0t0.node() of
-| S0Tid(tid) =>
-  FXITMatm(s1t0) where
-  {
-    val-
-    I0DNTsome(tok) = tid.node()
-    val s1t0 =
-    sort1_make_node(loc0, S1Tid(tok))
-  }
+| S0Tid(tid) => auxtid(tid)
 | S0Tapps(s0ts) =>
   FXITMatm(s1t0) where
   {
