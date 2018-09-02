@@ -95,7 +95,11 @@ d1ecl_node =
 | D1Cfixity of (d0ecl)
 | D1Cnonfix of (d0ecl)
 //
-| D1Csortdef of (token, s1rtdef)
+| D1Csortdef of
+  (token(*stid*), s1rtdef)
+//
+| D1Csexpdef of
+  (token(*seid*), s1marglst, sort1opt, s1exp)
 //
 (* ****** ****** *)
 //

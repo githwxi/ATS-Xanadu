@@ -434,24 +434,6 @@ s0a0.node() of
 end // end of [s0arg_trans]
 
 (* ****** ****** *)
-//
-extern
-fun
-s0arglst_trans:
-s0arglst -> s1arglst
-implement
-s0arglst_trans
-  (s0as) =
-list_vt2t
-(
-list_map<s0arg><s1arg>(s0as)
-) where
-{
-  implement
-  list_map$fopr<s0arg><s1arg> = s0arg_trans
-}
-//
-(* ****** ****** *)
 
 implement
 s0marg_trans
@@ -489,6 +471,91 @@ s0ma.node() of
 end // end of [s0marg_trans]
 
 (* ****** ****** *)
+//
+implement
+s0arglst_trans
+  (s0as) =
+list_vt2t
+(
+list_map<s0arg><s1arg>(s0as)
+) where
+{
+  implement
+  list_map$fopr<s0arg><s1arg> = s0arg_trans
+}
+implement
+s0marglst_trans
+  (s0mas) =
+list_vt2t
+(
+list_map<s0marg><s1marg>(s0mas)
+) where
+{
+  implement
+  list_map$fopr<s0marg><s1marg> = s0marg_trans
+}
+//
+(* ****** ****** *)
+
+local
+
+fun
+auxsid
+( sid
+: s0eid)
+: s1eitm = let
+//
+val loc = sid.loc()
+val-
+I0DNTsome
+  (tok) = sid.node()
+//
+val sym =
+(
+case-
+tok.node() of
+| T_IDENT_alp(nam) =>
+  $SYM.symbol_make(nam)
+| T_IDENT_sym(nam) =>
+  $SYM.symbol_make(nam)
+) : sym_t // end of [val]
+//
+val opt =
+the_fixtyenv_search(sym)
+//
+val s1e0 =
+s1exp_make_node(loc, S1Eid(tok))
+//
+in
+//
+case+ opt of
+| ~None_vt() => FXITMatm(s1e0)
+| ~Some_vt(fxty) => FXITMopr(s1e0, fxty)
+//
+end // end of [auxsid]
+
+fun
+auxitm
+( s0e0
+: s0exp)
+: s1eitm = let
+//
+val
+loc0 = s0e0.loc()
+//
+val () =
+println!
+("s0exp_trans: auxitm: s0e0 = ", s0e0)
+//
+in
+//
+case-
+s0e0.node() of
+| S0Eid(sid) => auxsid(sid)
+//
+end // end of [auxitm]
+
+in (* in-of-local *)
 
 implement
 s0exp_trans
@@ -499,8 +566,15 @@ println!
 ("s0exp_trans: s0e0 = ", s0e0)
 //
 in
-  exit_errmsg(1, "s0exp_trans"){s1exp}
+//
+case+
+auxitm(s0e0) of
+| $FIX.FXITMatm(s1e0) => s1e0
+| $FIX.FXITMopr(s1e0, fxty) => s1e0
+//
 end (* end of [s0exp_trans] *)
+
+end // end of [local]
 
 implement
 s0explst_trans
