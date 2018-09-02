@@ -82,7 +82,7 @@ sort1_node =
   | S1Tapps of (sort1, sort1lst)
   | S1Tlist of sort1lst // temporary
   | S1Tqual of (token, sort1)
-  | S1Txerr of ((*error indication*))
+  | S1Tnone of ((*error indication*))
 // end of [sort1_node]
 
 (* ****** ****** *)
@@ -104,6 +104,8 @@ overload prerr with prerr_sort1
 overload fprint with fprint_sort1
 //
 fun
+sort1_none(loc: loc_t): sort1
+fun
 sort1_make_node
 (loc: loc_t, node: sort1_node): sort1
 //
@@ -116,8 +118,7 @@ typedef s1arglst = List0(s1arg)
 datatype
 s1arg_node =
 //
-  | S1ARGnone of token
-  | S1ARGsome of (token, sort1opt)
+| S1ARGsome of (token, sort1opt)
 //
 fun
 s1arg_get_loc(s1arg): loc_t
@@ -138,6 +139,35 @@ overload fprint with fprint_s1arg
 fun
 s1arg_make_node
 (loc: loc_t, node: s1arg_node): s1arg
+//
+(* ****** ****** *)
+//
+abstbox s1marg_tbox = ptr
+typedef s1marg = s1marg_tbox
+typedef s1marglst = List0(s1marg)
+//
+datatype
+s1marg_node = S1MARGlist of (s1arglst)
+//
+fun
+s1marg_get_loc(s1marg): loc_t
+fun
+s1marg_get_node(s1marg): s1marg_node
+//
+overload .loc with s1marg_get_loc
+overload .node with s1marg_get_node
+//
+fun print_s1marg : print_type(s1marg)
+fun prerr_s1marg : prerr_type(s1marg)
+fun fprint_s1marg : fprint_type(s1marg)
+//
+overload print with print_s1marg
+overload prerr with prerr_s1marg
+overload fprint with fprint_s1marg
+//
+fun
+s1marg_make_node
+(loc: loc_t, node: s1marg_node): s1marg
 //
 (* ****** ****** *)
 //
@@ -178,6 +208,8 @@ s1exp_node =
 //
   | S1Eid of token
 //
+  | S1Eint of token
+//
 // HX-2018-08: operators:
 //
   | S1Eapp of () // application
@@ -186,7 +218,7 @@ s1exp_node =
   | S1Eapps of (s1exp, s1explst)
   | S1Elist of s1explst // temporary
   | S1Equal of (token, s1exp)
-  | S1Exerr of ((*error indication*))
+  | S1Enone of ((*error indication*))
 // end of [s1exp_node]
 
 (* ****** ****** *)
@@ -207,6 +239,8 @@ overload print with print_s1exp
 overload prerr with prerr_s1exp
 overload fprint with fprint_s1exp
 //
+fun
+s1exp_none(loc: loc_t): s1exp
 fun
 s1exp_make_node
 (loc: loc_t, node: s1exp_node): s1exp

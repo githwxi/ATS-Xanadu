@@ -181,6 +181,13 @@ fxopr_assoc{a:type}(fxitm(a)): assoc
 //
 fun
 {a:type}
+fxatm_none: loc_t -> (a)
+fun
+{a:type}
+fxopr_get_loc: (a) -> loc_t
+//
+fun
+{a:type}
 fxitm_get_loc: fxitm(a) -> loc_t
 //
 (* ****** ****** *)

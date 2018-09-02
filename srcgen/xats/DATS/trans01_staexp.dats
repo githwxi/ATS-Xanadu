@@ -130,6 +130,14 @@ FXITMatm
 end // end of [$FIX.fxitm_postfix]
 //
 implement
+$FIX.fxatm_none<sort1>
+  (loc) =
+  sort1_none(loc)
+implement
+$FIX.fxopr_get_loc<sort1>
+  (opr) = opr.loc()
+//
+implement
 $FIX.fxitm_get_loc<sort1>
   (itm) =
 (
@@ -207,6 +215,14 @@ FXITMatm
   (loc, S1Eapps(f1, list_sing(x0)))
 )
 end // end of [fxitm_postfix]
+//
+implement
+$FIX.fxatm_none<s1exp>
+  (loc) =
+  s1exp_none(loc)
+implement
+$FIX.fxopr_get_loc<s1exp>
+  (opr) = opr.loc()
 //
 implement
 $FIX.fxitm_get_loc<s1exp>
@@ -318,7 +334,7 @@ s0t0.node() of
   FXITMatm(s1t0) where
   {
     val s1t0 =
-      sort1_make_node(loc0, S1Txerr((*void*)))
+      sort1_make_node(loc0, S1Tnone((*void*)))
     // end of [val]
   }
 //
@@ -358,8 +374,7 @@ in
 case+
 auxitm(s0t0) of
 | $FIX.FXITMatm(s1t0) => s1t0
-| $FIX.FXITMopr(s1t0, fxty) =>
-  sort1_make_node(loc0, S1Txerr())
+| $FIX.FXITMopr(s1t0, fxty) => s1t0
 //
 end (* end of [sort0_trans] *)
 
@@ -403,10 +418,11 @@ println!
 //
 in
 //
-case+
+case-
 s0a0.node() of
-| S0ARGnone(tok) =>
-  s1arg_make_node(loc0, S1ARGnone(tok))
+(*
+| S0ARGnone(tok) => ...
+*)
 | S0ARGsome(sid, opt) => let
     val-
     I0DNTsome(tok) = sid.node()
@@ -416,6 +432,61 @@ s0a0.node() of
   end // end of [S0ARGsome]
 //
 end // end of [s0arg_trans]
+
+(* ****** ****** *)
+//
+extern
+fun
+s0arglst_trans:
+s0arglst -> s1arglst
+implement
+s0arglst_trans
+  (s0as) =
+list_vt2t
+(
+list_map<s0arg><s1arg>(s0as)
+) where
+{
+  implement
+  list_map$fopr<s0arg><s1arg> = s0arg_trans
+}
+//
+(* ****** ****** *)
+
+implement
+s0marg_trans
+  (s0ma) = let
+//
+val loc0 = s0ma.loc()
+//
+val () =
+println!
+("s0marg_trans: s0ma = ", s0ma)
+//
+in
+//
+case-
+s0ma.node() of
+(*
+| S0ARGnone(tok) => ...
+*)
+| S0MARGsing(sid) => let
+    val-
+    I0DNTsome(tok) = sid.node()
+    val s1a =
+    s1arg_make_node
+    (tok.loc(), S1ARGsome(tok, None))
+  in
+    s1marg_make_node
+    (loc0, S1MARGlist(list_sing(s1a)))
+  end // end of [S0MARGsing]
+| S0MARGlist(_, s0as, _) => let
+    val s1as = s0arglst_trans(s0as)
+  in
+    s1marg_make_node(loc0, S1MARGlist(s1as))
+  end // end of [S0MARGlist]
+//
+end // end of [s0marg_trans]
 
 (* ****** ****** *)
 
