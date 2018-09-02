@@ -535,6 +535,22 @@ case+ opt of
 end // end of [auxsid]
 
 fun
+auxint
+( int
+: t0int)
+: s1eitm = let
+//
+val loc = int.loc()
+//
+val-
+T0INTsome(tok) = int.node()
+//
+in
+  FXITMatm
+  (s1exp_make_node(loc, S1Eint(tok)))
+end // end of [auxint]
+
+fun
 auxitm
 ( s0e0
 : s0exp)
@@ -552,8 +568,31 @@ in
 case-
 s0e0.node() of
 | S0Eid(sid) => auxsid(sid)
+| S0Eint(int) => auxint(int)
+| S0Eapps(s0es) =>
+  FXITMatm(s1e0) where
+  {
+    val s1e0 =
+    fxitmlst_resolve_s1exp(loc0, auxitmlst(s0es))
+  }
 //
 end // end of [auxitm]
+
+and
+auxitmlst
+( xs
+: s0explst)
+: s1eitmlst =
+list_vt2t(ys) where
+{
+  val ys =
+  list_map<s0exp><s1eitm>
+    (xs) where
+  {
+    implement
+    list_map$fopr<s0exp><s1eitm>(x) = auxitm(x)
+  }
+} (* end of [auxitmlst] *)
 
 in (* in-of-local *)
 
