@@ -95,12 +95,19 @@ app_fixty =
 FIXTYinf(app_prcdv, app_assoc)
 //
 (* ****** ****** *)
-
-implement
-exists_prcdv = (0)
+//
 implement
 forall_prcdv = (0)
-
+implement
+exists_prcdv = (0)
+//
+implement
+forall_fixty =
+FIXTYpre(forall_prcdv)
+implement
+exists_fixty =
+FIXTYpre(exists_prcdv)
+//
 (* ****** ****** *)
 
 implement

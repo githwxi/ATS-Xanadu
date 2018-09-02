@@ -160,6 +160,36 @@ end // end of [local]
 local
 
 absimpl
+s1qua_tbox = $rec{
+  s1qua_loc= loc_t
+, s1qua_node= s1qua_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+s1qua_get_loc(x) = x.s1qua_loc
+implement
+s1qua_get_node(x) = x.s1qua_node
+
+implement
+s1qua_make_node
+(loc, node) = $rec
+{
+  s1qua_loc= loc, s1qua_node= node
+} (* end of [s1qua_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s1exp_tbox = $rec{
   s1exp_loc= loc_t
 , s1exp_node= s1exp_node

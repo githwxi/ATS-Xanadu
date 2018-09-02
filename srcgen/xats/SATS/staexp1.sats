@@ -42,12 +42,13 @@ typedef label = $LAB.label
 typedef loc_t = $LOC.location
 //
 #staload
-LEX = "./lexing.sats"
-typedef token = $LEX.token
+SYM = "./symbol.sats"
+typedef sym_t = $SYM.sym_t
 //
 #staload
-SYM = "./symbol.sats"
-typedef symbol = $SYM.symbol
+LEX = "./lexing.sats"
+typedef token = $LEX.token
+typedef tokenlst = $LEX.tokenlst
 //
 (* ****** ****** *)
 //
@@ -171,6 +172,37 @@ s1marg_make_node
 //
 (* ****** ****** *)
 //
+abstbox s1qua_tbox = ptr
+typedef s1qua = s1qua_tbox
+typedef s1qualst = List0(s1qua)
+//
+datatype
+s1qua_node =
+| S1QUAprop of s1exp
+| S1QUAvars of (tokenlst, sort1)
+//
+fun
+s1qua_get_loc(s1qua): loc_t
+fun
+s1qua_get_node(s1qua): s1qua_node
+//
+overload .loc with s1qua_get_loc
+overload .node with s1qua_get_node
+//
+fun print_s1qua : print_type(s1qua)
+fun prerr_s1qua : prerr_type(s1qua)
+fun fprint_s1qua : fprint_type(s1qua)
+//
+overload print with print_s1qua
+overload prerr with prerr_s1qua
+overload fprint with fprint_s1qua
+//
+fun
+s1qua_make_node
+(loc: loc_t, node: s1qua_node): s1qua
+//
+(* ****** ****** *)
+//
 abstbox
 s1rtdef_tbox = ptr
 typedef
@@ -219,6 +251,9 @@ s1exp_node =
 //
   | S1Elist of s1explst // temporary
   | S1Elist of (s1explst, s1explst) // temporary
+//
+  | S1Eforall of (s1qualst)
+  | S1Eexists of (int(*#*), s1qualst)
 //
   | S1Equal of (token, s1exp)
   | S1Enone of ((*error indication*))

@@ -137,6 +137,8 @@ fixty =
 (* ****** ****** *)
 
 val app_fixty : fixty
+val forall_fixty : fixty
+val exists_fixty : fixty
 
 (* ****** ****** *)
 //
