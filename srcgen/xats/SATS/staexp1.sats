@@ -140,6 +140,38 @@ s1arg_make_node
 (loc: loc_t, node: s1arg_node): s1arg
 //
 (* ****** ****** *)
+//
+abstbox
+s1rtdef_tbox = ptr
+typedef
+s1rtdef = s1rtdef_tbox
+//
+datatype
+s1rtdef_node =
+| S1RTDEFsort of sort1
+| S1RTDEFsubset of (s1arg, s1explst)
+//
+fun
+s1rtdef_get_loc(s1rtdef): loc_t
+fun
+s1rtdef_get_node(s1rtdef): s1rtdef_node
+//
+overload .loc with s1rtdef_get_loc
+overload .node with s1rtdef_get_node
+//
+fun print_s1rtdef : print_type(s1rtdef)
+fun prerr_s1rtdef : prerr_type(s1rtdef)
+fun fprint_s1rtdef : fprint_type(s1rtdef)
+//
+overload print with print_s1rtdef
+overload prerr with prerr_s1rtdef
+overload fprint with fprint_s1rtdef
+//
+fun
+s1rtdef_make_node
+(loc: loc_t, node: s1rtdef_node): s1rtdef
+//
+(* ****** ****** *)
 
 datatype
 s1exp_node =

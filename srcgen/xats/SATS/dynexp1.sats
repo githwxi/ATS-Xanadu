@@ -95,6 +95,8 @@ d1ecl_node =
 | D1Cfixity of (d0ecl)
 | D1Cnonfix of (d0ecl)
 //
+| D1Csortdef of (token, s1rtdef)
+//
 (* ****** ****** *)
 //
 fun

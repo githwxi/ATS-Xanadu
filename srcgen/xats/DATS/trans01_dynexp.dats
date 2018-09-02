@@ -217,6 +217,42 @@ end // end of [aux_nonfix]
 
 (* ****** ****** *)
 
+fun
+aux_sortdef
+(d0c0: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Csortdef
+(_, tid, _, def0) = d0c0.node()
+//
+val def1 =
+(
+case+
+def0.node() of
+| S0RTDEFsort(s0t) =>
+  s1rtdef_make_node
+  ( def0.loc()
+  , S1RTDEFsort(sort0_trans(s0t)))
+| S0RTDEFsubset
+  (_, s0a, _, s0es, _) => let
+    val s1a = s0arg_trans(s0a)
+    val s1es = s0explst_trans(s0es)
+  in
+    s1rtdef_make_node
+    (def0.loc(), S1RTDEFsubset(s1a, s1es))
+  end // end of [S0RTDEFsubset]
+) : s1rtdef // end of [val]
+//
+val-I0DNTsome(tok) = tid.node((*void*))
+//
+in
+  d1ecl_make_node(loc0, D1Csortdef(tok, def1))
+end // end of [aux_sortdef]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 (* ****** ****** *)
@@ -237,6 +273,8 @@ d0c0.node() of
 //
 | D0Cfixity _ => aux_fixity(d0c0)
 | D0Cnonfix _ => aux_nonfix(d0c0)
+//
+| D0Csortdef _ => aux_sortdef(d0c0)
 //
 end // end of [d0ecl_trans]
 
