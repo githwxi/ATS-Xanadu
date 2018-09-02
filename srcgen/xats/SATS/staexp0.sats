@@ -697,9 +697,13 @@ s0exp_node =
 | S0Elam of
   (token, s0marglst, sort0opt, token, s0exp)
 //
-| S0Eanno of (s0exp, sort0) // sort annotation
+| S0Eanno of
+    (s0exp, sort0) // sort annotation
+  // end of [S0Eanno]
 //
-| S0Equal of (token, s0exp) // qualified staexp
+| S0Equal of
+    (token, s0exp) // qualified staexp
+  // end of [S0Equal]
 //
 | S0Enone of (token) // HX-2018-07-08: indicating error 
 // end of [s0exp_node]
@@ -732,6 +736,9 @@ overload print with print_s0exp
 overload prerr with prerr_s0exp
 overload fprint with fprint_s0exp
 //
+fun
+s0exp_anno_opt
+(s0exp, sort0opt): s0exp
 fun
 s0exp_make_node
 (loc: loc_t, node: s0exp_node): s0exp

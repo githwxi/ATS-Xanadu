@@ -101,7 +101,9 @@ case+ opt of
   in
     int2prcdv(g0string2int(rep))
   end // end of [PRECOPTsing]
+//
 | PRECOPTlist(_, toks, _) => int2prcdv(0) // FIXME!!!
+//
 ) (* end of [aux_precopt] *)
 
 (* ****** ****** *)

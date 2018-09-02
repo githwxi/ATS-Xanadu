@@ -1132,8 +1132,8 @@ in (* in-of-local *)
 implement
 p_s0exp(buf, err) = let
 //
-  val e0 = err
-  val s0es0 =
+val e0 = err
+val s0es0 =
   p_atms0expseq(buf, err)
 //
 in
@@ -1142,17 +1142,21 @@ case+ s0es0 of
 | list_nil
     ((*void*)) => p_napps(buf, err)
 | list_cons
-    (s0e0, s0es1) =>
-  (
+    (s0e0, s0es1) => let
+    val opt =
+    popt_sort0_anno(buf, err)
+  in
     case+ s0es1 of
-    | list_nil() => s0e0
+    | list_nil() =>
+      s0exp_anno_opt(s0e0, opt)
     | list_cons _ => let
         val s0e1 = list_last(s0es1)
+        val loc01 = s0e0.loc()+s0e1.loc()
       in
-        s0exp_make_node
-        (s0e0.loc()+s0e1.loc(), S0Eapps(s0es0))
+        s0exp_anno_opt
+        (s0exp_make_node(loc01, S0Eapps(s0es0)), opt)
       end // end of [list_cons]
-  ) (* end of [list_cons] *)
+  end (* end of [list_cons] *)
 //
 end // end of [p_s0exp]
 

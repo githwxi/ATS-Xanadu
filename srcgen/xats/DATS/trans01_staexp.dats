@@ -660,14 +660,22 @@ s0e0.node() of
 | S0Eexists
     (tok, s0qs, _) => let
     val-
-    T_EXISTS(knd) = tok.node()
+    T_EXISTS(k0) = tok.node()
     val s1qs =
     s0qualst_trans(s0qs)
     val s1e0 =
-    s1exp_make_node(loc0, S1Eexists(knd, s1qs))
+    s1exp_make_node(loc0, S1Eexists(k0, s1qs))
   in
     FXITMopr(s1e0, $FIX.exists_fixty)
   end
+//
+| S0Eanno(s0e, s0t) => let
+    val s1e = s0exp_trans(s0e)
+    val s1t = sort0_trans(s0t)
+  in
+    FXITMatm
+    (s1exp_make_node(loc0, S1Eanno(s1e, s1t)))
+  end // end of [S0Eanno]
 //
 end // end of [auxitm]
 
