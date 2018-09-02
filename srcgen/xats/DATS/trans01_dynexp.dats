@@ -260,6 +260,45 @@ end // end of [aux_sortdef]
 
 (* ****** ****** *)
 
+fun
+aux_sexpdef
+(d0c0: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Csexpdef
+( _
+, seid
+, arg0
+, opt0, _, def0) = d0c0.node()
+//
+val def1 = s0exp_trans(def0)
+val opt1 = sort0opt_trans(opt0)
+val arg1 = s0marglst_trans(arg0)
+val-I0DNTsome(tok) = seid.node((*void*))
+//
+val () =
+println!
+("d0ecl_trans: aux_sexpdef: tok = ", tok)
+val () =
+println!
+("d0ecl_trans: aux_sexpdef: arg1 = ", arg1)
+val () =
+println!
+("d0ecl_trans: aux_sexpdef: opt1 = ", opt1)
+val () =
+println!
+("d0ecl_trans: aux_sexpdef: def1 = ", def1)
+//
+in
+  d1ecl_make_node
+    (loc0, D1Csexpdef(tok, arg1, opt1, def1))
+  // d1ecl_make_node
+end // end of [aux_sexpdef]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 (* ****** ****** *)
@@ -282,6 +321,8 @@ d0c0.node() of
 | D0Cnonfix _ => aux_nonfix(d0c0)
 //
 | D0Csortdef _ => aux_sortdef(d0c0)
+//
+| D0Csexpdef _ => aux_sexpdef(d0c0)
 //
 end // end of [d0ecl_trans]
 

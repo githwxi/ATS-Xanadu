@@ -480,10 +480,10 @@ case+ fx of
 | FIXTYpos _ =>
   (
     case+ ys of
-    | nil() =>
-      yreduce(xs, y0 :: ys)
     | _ :: nil() =>
-      yreduce(xs, y0 :: ys)
+      (
+        yreduce(xs, y0 :: ys)
+      )
     | _ :: FXITMopr(_, fx1) :: _ =>
       let
         val
@@ -496,7 +496,7 @@ case+ fx of
         | sgn < 0 => yreduce(y0 :: xs, ys)
         | _ (*else*) => yreduce(y0 :: xs, ys)
       end
-    | _ (* error *) => auxerr_opr(y0)
+    | _ (* error *) => yreduce(y0 :: xs, ys)
   )
 //
 | FIXTYinf _ =>

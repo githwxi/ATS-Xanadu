@@ -57,6 +57,8 @@ fprint_val<sort1> = fprint_sort1
 
 implement
 fprint_val<s1arg> = fprint_s1arg
+implement
+fprint_val<s1marg> = fprint_s1marg
 
 (* ****** ****** *)
 
