@@ -78,6 +78,32 @@ end // end of [local]
 local
 
 absimpl
+s1arg_tbox = $rec{
+  s1arg_loc= loc_t
+, s1arg_node= s1arg_node
+}
+
+in (* in-of-local *)
+
+implement
+s1arg_get_loc(x) = x.s1arg_loc
+implement
+s1arg_get_node(x) = x.s1arg_node
+
+implement
+s1arg_make_node
+(loc, node) = $rec
+{
+  s1arg_loc= loc, s1arg_node= node
+} (* end of [s1arg_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s1exp_tbox = $rec{
   s1exp_loc= loc_t
 , s1exp_node= s1exp_node
