@@ -657,6 +657,17 @@ s0e0.node() of
   in
     FXITMopr(s1e0, $FIX.forall_fixty)
   end
+| S0Eexists
+    (tok, s0qs, _) => let
+    val-
+    T_EXISTS(knd) = tok.node()
+    val s1qs =
+    s0qualst_trans(s0qs)
+    val s1e0 =
+    s1exp_make_node(loc0, S1Eexists(knd, s1qs))
+  in
+    FXITMopr(s1e0, $FIX.exists_fixty)
+  end
 //
 end // end of [auxitm]
 
