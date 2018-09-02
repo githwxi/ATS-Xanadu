@@ -567,6 +567,19 @@ implement
 s0exp_get_node(x) = x.s0exp_node
 
 implement
+s0exp_anno_opt
+(s0e, opt) =
+(
+case+ opt of
+| None() => s0e
+| Some(s0t) => let
+    val
+    loc = s0e.loc()+s0t.loc()
+  in
+    s0exp_make_node(loc, S0Eanno(s0e, s0t))
+  end
+)
+implement
 s0exp_make_node
 (loc, node) = $rec
 {

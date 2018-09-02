@@ -255,6 +255,8 @@ s1exp_node =
   | S1Eforall of (s1qualst)
   | S1Eexists of (int(*#*), s1qualst)
 //
+  | S1Eanno of (s1exp, sort1)
+//
   | S1Equal of (token, s1exp)
   | S1Enone of ((*error indication*))
 // end of [s1exp_node]
