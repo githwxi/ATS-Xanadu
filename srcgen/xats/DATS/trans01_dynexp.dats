@@ -247,6 +247,13 @@ def0.node() of
 //
 val-I0DNTsome(tok) = tid.node((*void*))
 //
+val () =
+println!
+("d0ecl_trans: aux_sortdef: tok = ", tok)
+val () =
+println!
+("d0ecl_trans: aux_sortdef: def1 = ", def1)
+//
 in
   d1ecl_make_node(loc0, D1Csortdef(tok, def1))
 end // end of [aux_sortdef]

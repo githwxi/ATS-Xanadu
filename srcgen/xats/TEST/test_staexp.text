@@ -14,7 +14,7 @@
 
 (* ****** ****** *)
 
-sortdef foo = bar0 bar1
+sortdef foo = bar0(bar1 + bar2)
 
 (* ****** ****** *)
 ////
