@@ -63,31 +63,46 @@ the_fixtyenv_insert
 (* ****** ****** *)
 //
 typedef sort0 = $S0E.sort0
+typedef sort0opt = $S0E.sort0opt
 typedef sort0lst = $S0E.sort0lst
+//
+typedef s0arg = $S0E.s0arg
 //
 typedef s0exp = $S0E.s0exp
 typedef d0exp = $D0E.d0exp
 typedef d0ecl = $D0E.d0ecl
+typedef s0expopt = $S0E.s0expopt
 typedef s0explst = $S0E.s0explst
+typedef d0expopt = $D0E.d0expopt
 typedef d0explst = $D0E.d0explst
+typedef d0eclopt = $D0E.d0eclopt
 typedef d0eclist = $D0E.d0eclist
 //
 typedef sort1 = $S1E.sort1
+typedef sort1opt = $S1E.sort1opt
 typedef sort1lst = $S1E.sort1lst
+//
+typedef s1arg = $S1E.s1arg
 //
 typedef s1exp = $S1E.s1exp
 typedef d1exp = $D1E.d1exp
 typedef d1ecl = $D1E.d1ecl
+typedef s1expopt = $S1E.s1expopt
 typedef s1explst = $S1E.s1explst
+typedef d1expopt = $D1E.d1expopt
 typedef d1explst = $D1E.d1explst
+typedef d1eclopt = $D1E.d1eclopt
 typedef d1eclist = $D1E.d1eclist
 //
 fun sort0_trans: sort0 -> sort1
+//
+fun s0arg_trans: s0arg -> s1arg
 //
 fun s0exp_trans: s0exp -> s1exp
 fun d0exp_trans: d0exp -> d1exp
 fun d0ecl_trans: d0ecl -> d1ecl
 //
+fun sort0opt_trans: sort0opt -> sort1opt
 fun sort0lst_trans: sort0lst -> sort1lst
 //
 fun s0explst_trans: s0explst -> s1explst

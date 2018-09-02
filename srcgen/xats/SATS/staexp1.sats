@@ -116,9 +116,7 @@ typedef s1arglst = List0(s1arg)
 datatype
 s1arg_node =
 //
-(*
   | S1ARGnone of token
-*)
   | S1ARGsome of (token, sort1opt)
 //
 fun
