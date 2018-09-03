@@ -129,7 +129,7 @@ d0ecl_node =
   , s0marglst, sort0opt, token, s0exp)
 //
 | D0Cabstype of
-    (token, s0eid, t0marglst, abstdef)
+    (token, s0eid, t0marglst, abstdf0)
   // D0Cabstype
 //
 | D0Cdatasort of (token(*datasort*), d0tsortlst)
@@ -148,7 +148,8 @@ d0ecl_node =
 
 (* ****** ****** *)
 
-and precopt =
+and
+precopt =
 | PRECOPTnil of ()
 | PRECOPTsing of (token) // token is int
 | PRECOPTlist of
@@ -156,16 +157,18 @@ and precopt =
 
 (* ****** ****** *)
 
-and abstdef =
-  | ABSTDEFnil of () // unspecified
-  | ABSTDEFlteq of (token(*"<="*), s0exp)
-  | ABSTDEFeqeq of (token(*"=="*), s0exp)
+and
+abstdf0 =
+| ABSTDF0nil of () // unspecified
+| ABSTDF0lteq of (token(*"<="*), s0exp)
+| ABSTDF0eqeq of (token(*"=="*), s0exp)
 
 (* ****** ****** *)
 
-and wd0eclseq =
-  | WD0CSnone of ()
-  | WD0CSsome of (token, tokenopt, d0eclist, token)
+and
+wd0eclseq =
+| WD0CSnone of ()
+| WD0CSsome of (token, tokenopt, d0eclist, token)
 
 (* ****** ****** *)
 //
@@ -205,15 +208,15 @@ overload fprint with fprint_precopt
 (* ****** ****** *)
 //
 fun
-print_abstdef : (abstdef) -> void
+print_abstdf0 : (abstdf0) -> void
 fun
-prerr_abstdef : (abstdef) -> void
+prerr_abstdf0 : (abstdf0) -> void
 fun
-fprint_abstdef : fprint_type(abstdef)
+fprint_abstdf0 : fprint_type(abstdf0)
 //
-overload print with print_abstdef
-overload prerr with prerr_abstdef
-overload fprint with fprint_abstdef
+overload print with print_abstdf0
+overload prerr with prerr_abstdf0
+overload fprint with fprint_abstdf0
 //
 (* ****** ****** *)
 //

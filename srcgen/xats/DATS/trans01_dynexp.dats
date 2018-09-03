@@ -221,7 +221,8 @@ end // end of [aux_nonfix]
 
 fun
 aux_sortdef
-(d0c0: d0ecl): d1ecl = let
+( d0c0
+: d0ecl): d1ecl = let
 //
 val loc0 = d0c0.loc()
 //
@@ -264,7 +265,8 @@ end // end of [aux_sortdef]
 
 fun
 aux_sexpdef
-(d0c0: d0ecl): d1ecl = let
+( d0c0
+: d0ecl): d1ecl = let
 //
 val loc0 = d0c0.loc()
 //
@@ -301,12 +303,51 @@ end // end of [aux_sexpdef]
 
 (* ****** ****** *)
 
+fun
+aux_abstype
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cabstype
+( _
+, seid, arg0, def0) = d0c0.node()
+//
+val def1 = aux_abstdef(def0)
+val arg1 = trans01_tmarglst(arg0)
+val-I0DNTsome(tok) = seid.node((*void*))
+//
+in
+  d1ecl_make_node
+    (loc0, D1Cabstype(tok, arg1, def1))
+  // d1ecl_make_node
+end // end of [aux_abstype]
+
+and
+aux_abstdef
+( def0
+: abstdf0): abstdf1 =
+(
+  case+ def0 of
+  | ABSTDF0nil() =>
+    ABSTDF1nil()
+  | ABSTDF0lteq(tok, s0e) =>
+    ABSTDF1lteq(trans01_sexp(s0e))
+  | ABSTDF0eqeq(tok, s0e) =>
+    ABSTDF1eqeq(trans01_sexp(s0e))
+) (* end of [aux_abstdef] *)
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 (* ****** ****** *)
 
 implement
-trans01_decl(d0c0) = let
+trans01_decl
+  (d0c0) = let
 //
 val
 loc0 = d0c0.loc()
@@ -326,6 +367,8 @@ d0c0.node() of
 | D0Csortdef _ => aux_sortdef(d0c0)
 //
 | D0Csexpdef _ => aux_sexpdef(d0c0)
+//
+| D0Cabstype _ => aux_abstype(d0c0)
 //
 | D0Clocal
   (_, d0cs1, _, d0cs2, _) =>

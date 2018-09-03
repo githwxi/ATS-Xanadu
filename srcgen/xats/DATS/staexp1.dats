@@ -160,6 +160,58 @@ end // end of [local]
 local
 
 absimpl
+t1arg_tbox = $rec{
+  t1arg_loc= loc_t
+, t1arg_node= t1arg_node
+}
+
+in (* in-of-local *)
+
+implement
+t1arg_get_loc(x) = x.t1arg_loc
+implement
+t1arg_get_node(x) = x.t1arg_node
+
+implement
+t1arg_make_node
+(loc, node) = $rec
+{
+  t1arg_loc= loc, t1arg_node= node
+} (* end of [t1arg_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+t1marg_tbox = $rec{
+  t1marg_loc= loc_t
+, t1marg_node= t1marg_node
+}
+
+in (* in-of-local *)
+
+implement
+t1marg_get_loc(x) = x.t1marg_loc
+implement
+t1marg_get_node(x) = x.t1marg_node
+
+implement
+t1marg_make_node
+(loc, node) = $rec
+{
+  t1marg_loc= loc, t1marg_node= node
+} (* end of [t1marg_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s1qua_tbox = $rec{
   s1qua_loc= loc_t
 , s1qua_node= s1qua_node
