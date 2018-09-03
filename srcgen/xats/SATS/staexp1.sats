@@ -79,8 +79,7 @@ sort1_node =
 //
 // HX-2018-08: operators
 //
-  | S1Tapp of () // application
-  | S1Tinf of sort1 // backslash
+  | S1Tapp of () // apply
 //
   | S1Ttype of int(*kind*)
     (*prop/view/type/t0ype/viewtype/viewt0ype*)
@@ -258,7 +257,8 @@ s1exp_node =
 //
 // HX-2018-08: operators:
 //
-| S1Eapp of () // application
+| S1Eapp of () // apply
+| S1Einf of () // backslash
 | S1Eopr of s1exp // backslash
 //
 | S1Eapps of

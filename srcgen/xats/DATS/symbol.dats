@@ -250,6 +250,11 @@ symbol_BANGEQ = symbol_make("!=")
 (* ****** ****** *)
 
 implement
+symbol_BACKSLASH = symbol_make("\\")
+
+(* ****** ****** *)
+
+implement
 symbol__STDIN__ = symbol_make("__STDIN__")
 implement
 symbol__STRING__ = symbol_make("__STRING__")

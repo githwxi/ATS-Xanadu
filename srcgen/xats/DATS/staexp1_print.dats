@@ -97,8 +97,6 @@ case+ x0.node() of
 //
 | S1Tapp() =>
   fprint!(out, "S1Tapp()")
-| S1Tinf(s1t) =>
-  fprint!(out, "S1Tinf(", s1t, ")")
 //
 | S1Ttype(knd) =>
   fprint!(out, "S1Ttype", knd, ")")
@@ -245,6 +243,8 @@ case+ x0.node() of
 //
 | S1Eapp() =>
   fprint!(out, "S1Eapp()")
+| S1Einf() =>
+  fprint!(out, "S1Einf()")
 | S1Eopr(s1e) =>
   fprint!(out, "S1Eopr(", s1e, ")")
 //
