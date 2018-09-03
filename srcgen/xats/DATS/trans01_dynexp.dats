@@ -358,8 +358,7 @@ list_map<d0tsort><d1tsort>
   (d0ts) where
 {
   implement
-  list_map$fopr<d0tsort><d1tsort>
-    (d0t) = aux_d0tsort(d0t)
+  list_map$fopr<d0tsort><d1tsort>(x) = aux_d0tsort(x)
 } (* end of [val] *)
 //
 val d1ts = list_vt2t{d1tsort}(d1ts)
@@ -379,37 +378,70 @@ d0t0.node() of
   (tid, _, s0cs) => let
     val-
     I0DNTsome(tok) = tid.node()
-    val
-    s1cs =
-    list_map<s0rtcon><s1rtcon>
-      (s0cs) where
-    {
-      implement
-      list_map$fopr<s0rtcon><s1rtcon>(s0c) =
-        aux_s0rtcon(s0c)
-    }
-    val s1cs = list_vt2t{s1rtcon}(s1cs)
+    val s1cs = trans01_srtconlst(s0cs)
   in
     d1tsort_make_node(d0t0.loc(), D1TSORT(tok, s1cs))
   end
 )
 
-and
-aux_s0rtcon
-( s0c0
-: s0rtcon): s1rtcon =
+(* ****** ****** *)
+
+fun
+aux_datatype
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cdatatype
+  ( _, d0ts, wd0cs) = d0c0.node()
+//
+val
+d1ts =
+list_map<d0atype><d1atype>
+  (d0ts) where
+{
+  implement
+  list_map$fopr<d0atype><d1atype>(x) = aux_d0atype(x)
+}
+val d1ts = list_vt2t(d1ts)
+//
+val
+wd1cs =
 (
+case+ wd0cs of
+| WD0CSnone() => WD1CSnone()
+| WD0CSsome(_, _, d0cs, _) =>
+  WD1CSsome(trans01_declist(d0cs))
+) : wd1eclseq // end of [val]
+//
+in
+  d1ecl_make_node(loc0, D1Cdatatype(d1ts, wd1cs))
+end // end of [aux_datatype]
+
+and
+aux_d0atype
+( d0t0
+: d0atype): d1atype = let
+//
+val loc0 = d0t0.loc()
+//
+in
+//
 case+
-s0c0.node() of
-| S0RTCON(sid, opt) => let
+d0t0.node() of
+| D0ATYPE
+  (deid, arg0, _, d0cs) => let
     val-
-    I0DNTsome(tok) = sid.node()
+    I0DNTsome(tok) = deid.node()
+    val arg1 = trans01_tmarglst(arg0)
+    val d1cs = trans01_datconlst(d0cs)
   in
-    s1rtcon_make_node
-      (s0c0.loc(), S1RTCON(tok, trans01_sortopt(opt)))
-    // s1rtcon_make_node
-  end // end of [S0RTCON]
-)
+    d1atype_make_node(loc0, D1ATYPE(tok, arg1, d1cs))
+  end // end of [D0ATYPE]
+//
+end // end of [aux_d0atype]
 
 (* ****** ****** *)
 
@@ -443,6 +475,8 @@ d0c0.node() of
 | D0Cabstype _ => aux_abstype(d0c0)
 //
 | D0Cdatasort _ => aux_datasort(d0c0)
+//
+| D0Cdatatype _ => aux_datatype(d0c0)
 //
 | D0Clocal
   (_, d0cs1, _, d0cs2, _) =>

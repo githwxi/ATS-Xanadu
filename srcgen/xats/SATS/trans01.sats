@@ -83,6 +83,9 @@ typedef t0marglst = $S0E.t0marglst
 typedef s0qua = $S0E.s0qua
 typedef s0qualst = $S0E.s0qualst
 //
+typedef s0uni = $S0E.s0uni
+typedef s0unilst = $S0E.s0unilst
+//
 typedef s0exp = $S0E.s0exp
 typedef s0expopt = $S0E.s0expopt
 typedef s0explst = $S0E.s0explst
@@ -120,6 +123,9 @@ typedef t1marglst = $S1E.t1marglst
 //
 typedef s1qua = $S1E.s1qua
 typedef s1qualst = $S1E.s1qualst
+//
+typedef s1uni = $S1E.s1uni
+typedef s1unilst = $S1E.s1unilst
 //
 typedef s1exp = $S1E.s1exp
 typedef s1expopt = $S1E.s1expopt
@@ -206,9 +212,23 @@ overload trans01 with trans01_squalst
 (* ****** ****** *)
 //
 fun
+trans01_suni: s0uni -> s1uni
+fun
+trans01_sunilst: s0unilst -> s1unilst
+//
+(*
+overload trans01 with trans01_suni
+overload trans01 with trans01_sunilst
+*)
+//
+(* ****** ****** *)
+//
+fun
 trans01_sexp: s0exp -> s1exp
 fun
 trans01_lsexp: labs0exp -> labs1exp
+fun
+trans01_sexpopt: s0expopt -> s1expopt
 fun
 trans01_sexplst: s0explst -> s1explst
 fun
@@ -217,6 +237,7 @@ trans01_lsexplst: labs0explst -> labs1explst
 (*
 overload trans01 with trans01_sexp
 overload trans01 with trans01_lsexp
+overload trans01 with trans01_sexpopt
 overload trans01 with trans01_sexplst
 overload trans01 with trans01_lsexplst
 *)
@@ -244,6 +265,30 @@ trans01_declist: d0eclist -> d1eclist
 overload trans01 with trans01_decl
 overload trans01 with trans01_declist
 *)
+//
+(* ****** ****** *)
+//
+typedef s0rtcon = $S0E.s0rtcon
+typedef s1rtcon = $S1E.s1rtcon
+typedef s0rtconlst = $S0E.s0rtconlst
+typedef s1rtconlst = $S1E.s1rtconlst
+//
+fun
+trans01_srtcon: s0rtcon -> s1rtcon
+fun
+trans01_srtconlst: s0rtconlst -> s1rtconlst
+//
+(* ****** ****** *)
+//
+typedef d0atcon = $S0E.d0atcon
+typedef d1atcon = $S1E.d1atcon
+typedef d0atconlst = $S0E.d0atconlst
+typedef d1atconlst = $S1E.d1atconlst
+//
+fun
+trans01_datcon: d0atcon -> d1atcon
+fun
+trans01_datconlst: d0atconlst -> d1atconlst
 //
 (* ****** ****** *)
 

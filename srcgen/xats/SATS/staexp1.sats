@@ -377,8 +377,7 @@ typedef s1unilst = List0(s1uni)
 //
 datatype
 s1uni_node =
-| S1UNInone of (token)
-| S1UNIsome of (token, s1qualst, token)
+  | S1UNIsome of (s1qualst)
 //
 fun
 s1uni_get_loc(s1uni): loc_t
@@ -514,6 +513,43 @@ overload fprint with fprint_d1atcon
 fun
 d1atcon_make_node
 (loc: loc_t, node: d1atcon_node): d1atcon
+//
+(* ****** ****** *)
+//
+abstbox
+d1atype_tbox = ptr
+typedef
+d1atype = d1atype_tbox
+typedef
+d1atypelst = List0(d1atype)
+//
+datatype
+d1atype_node =
+| D1ATYPE of
+    (token, t1marglst, d1atconlst)
+  // D1ATYPE
+//
+fun
+d1atype_get_loc
+  (x0: d1atype): loc_t
+fun
+d1atype_get_node
+  (x0: d1atype): d1atype_node
+//
+overload .loc with d1atype_get_loc
+overload .node with d1atype_get_node
+//
+fun print_d1atype : print_type(d1atype)
+fun prerr_d1atype : prerr_type(d1atype)
+fun fprint_d1atype : fprint_type(d1atype)
+//
+overload print with print_d1atype
+overload prerr with prerr_d1atype
+overload fprint with fprint_d1atype
+//
+fun
+d1atype_make_node
+(loc: loc_t, node: d1atype_node): d1atype
 //
 (* ****** ****** *)
 

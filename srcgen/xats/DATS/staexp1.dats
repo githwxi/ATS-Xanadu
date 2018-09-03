@@ -344,6 +344,38 @@ end // end of [local]
 local
 
 absimpl
+s1uni_tbox = $rec{
+  s1uni_loc= loc_t
+, s1uni_node= s1uni_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+s1uni_get_loc(x) = x.s1uni_loc
+implement
+s1uni_get_node(x) = x.s1uni_node
+
+(* ****** ****** *)
+
+implement
+s1uni_make_node
+(loc, node) = $rec
+{
+  s1uni_loc= loc, s1uni_node= node
+} (* end of [s1uni_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s1exp_tbox = $rec{
   s1exp_loc= loc_t
 , s1exp_node= s1exp_node
@@ -368,6 +400,70 @@ s1exp_make_node
 {
   s1exp_loc= loc, s1exp_node= node
 } (* end of [s1exp_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d1atcon_tbox = $rec{
+  d1atcon_loc= loc_t
+, d1atcon_node= d1atcon_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d1atcon_get_loc(x) = x.d1atcon_loc
+implement
+d1atcon_get_node(x) = x.d1atcon_node
+
+(* ****** ****** *)
+
+implement
+d1atcon_make_node
+(loc, node) = $rec
+{
+  d1atcon_loc= loc, d1atcon_node= node
+} (* end of [d1atcon_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d1atype_tbox = $rec{
+  d1atype_loc= loc_t
+, d1atype_node= d1atype_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d1atype_get_loc(x) = x.d1atype_loc
+implement
+d1atype_get_node(x) = x.d1atype_node
+
+(* ****** ****** *)
+
+implement
+d1atype_make_node
+(loc, node) = $rec
+{
+  d1atype_loc= loc, d1atype_node= node
+} (* end of [d1atype_make_node] *)
 
 (* ****** ****** *)
 
