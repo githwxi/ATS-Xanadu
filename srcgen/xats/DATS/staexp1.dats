@@ -82,6 +82,58 @@ end // end of [local]
 local
 
 absimpl
+s1rtcon_tbox = $rec{
+  s1rtcon_loc= loc_t
+, s1rtcon_node= s1rtcon_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+s1rtcon_get_loc(x) = x.s1rtcon_loc
+implement
+s1rtcon_get_node(x) = x.s1rtcon_node
+
+implement
+s1rtcon_make_node
+(loc, node) = $rec
+{
+  s1rtcon_loc= loc, s1rtcon_node= node
+} (* end of [s1rtcon_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d1tsort_tbox = $rec{
+  d1tsort_loc= loc_t
+, d1tsort_node= d1tsort_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d1tsort_get_loc(x) = x.d1tsort_loc
+implement
+d1tsort_get_node(x) = x.d1tsort_node
+
+implement
+d1tsort_make_node
+(loc, node) = $rec
+{
+  d1tsort_loc= loc, d1tsort_node= node
+} (* end of [d1tsort_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 s1rtdef_tbox = $rec{
   s1rtdef_loc= loc_t
 , s1rtdef_node= s1rtdef_node

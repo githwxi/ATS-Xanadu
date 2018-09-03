@@ -117,6 +117,77 @@ sort1_make_node
 //
 (* ****** ****** *)
 //
+abstbox
+s1rtcon_tbox = ptr
+typedef
+s1rtcon = s1rtcon_tbox
+typedef
+s1rtconlst = List0(s1rtcon)
+//
+datatype
+s1rtcon_node =
+| S1RTCON of (token, sort1opt) 
+//
+fun
+s1rtcon_get_loc(s1rtcon): loc_t
+fun
+s1rtcon_get_node(s1rtcon): s1rtcon_node
+//
+overload .loc with s1rtcon_get_loc
+overload .node with s1rtcon_get_node
+//
+fun print_s1rtcon : print_type(s1rtcon)
+fun prerr_s1rtcon : prerr_type(s1rtcon)
+fun fprint_s1rtcon : fprint_type(s1rtcon)
+//
+overload print with print_s1rtcon
+overload prerr with prerr_s1rtcon
+overload fprint with fprint_s1rtcon
+//
+fun
+s1rtcon_make_node
+(loc: loc_t, node: s1rtcon_node): s1rtcon
+//
+(* ****** ****** *)
+//
+abstbox
+d1tsort_tbox = ptr
+typedef
+d1tsort = d1tsort_tbox
+typedef
+d1tsortlst = List0(d1tsort)
+//
+datatype
+d1tsort_node =
+| D1TSORT of (token, s1rtconlst)
+//
+fun
+d1tsort_get_loc
+  (x0: d1tsort): loc_t
+fun
+d1tsort_get_node
+  (x0: d1tsort): d1tsort_node
+//
+overload .loc with d1tsort_get_loc
+overload .node with d1tsort_get_node
+//
+fun
+print_d1tsort: print_type(d1tsort)
+fun
+prerr_d1tsort: prerr_type(d1tsort)
+fun
+fprint_d1tsort: fprint_type(d1tsort)
+//
+overload print with print_d1tsort
+overload prerr with prerr_d1tsort
+overload fprint with fprint_d1tsort
+//
+fun
+d1tsort_make_node
+(loc: loc_t, node: d1tsort_node): d1tsort
+//
+(* ****** ****** *)
+//
 abstbox s1arg_tbox = ptr
 typedef s1arg = s1arg_tbox
 typedef s1arglst = List0(s1arg)

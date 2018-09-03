@@ -119,7 +119,7 @@ abstype
 foo(a)(b) == list(a, b) // illegal
 //
 (* ****** ****** *)
-////
+//
 datasort
 ilist =
   | ilist_nil
@@ -162,7 +162,7 @@ sortdef nat = {a: int | a >= 0}
 endlocal // end of [local]
 
 (* ****** ****** *)
-//
+////
 datatype
 mylist(a:type+, int) =
 | mylist_nil(a, 0) of ()

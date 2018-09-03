@@ -103,6 +103,8 @@ d1ecl_node =
     (token(*id*), t1marglst, abstdf1)
   // D1Cabstype
 //
+| D1Cdatasort of (d1tsortlst)
+//
 | D1Clocal of (d1eclist, d1eclist)
 //
 | D1Cfixity of (d0ecl) // updating fixity env
