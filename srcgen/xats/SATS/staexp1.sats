@@ -254,6 +254,9 @@ s1exp_node =
 | S1Eid of token
 //
 | S1Eint of token
+| S1Echr of token
+| S1Eflt of token
+| S1Estr of token
 //
 // HX-2018-08: operators:
 //
