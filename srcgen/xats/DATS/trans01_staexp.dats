@@ -530,6 +530,83 @@ list_map<s0marg><s1marg>(s0mas)
 //
 (* ****** ****** *)
 
+implement
+trans01_targ
+  (t0a0) = let
+//
+val
+loc0 = t0a0.loc()
+val
+t1a0_node =
+(
+case+
+t0a0.node() of
+| T0ARGsome
+  (s0t, opt) =>
+  T1ARGsome(s1t, opt) where
+  {
+    val s1t = trans01_sort(s0t)
+  }
+) : t1arg_node // end-of-val
+//
+in
+  t1arg_make_node(loc0, t1a0_node)
+end // end of [trans01_targ]
+
+implement
+trans01_tmarg
+  (t0ma) = let
+//
+val
+loc0 = t0ma.loc()
+val
+t1ma_node =
+(
+case+
+t0ma.node() of
+| T0MARGnone
+  (tok) =>
+  T1MARGnone(tok)
+| T0MARGlist
+  (_, t0as, _) =>
+  T1MARGlist(t1as) where
+  {
+    val
+    t1as = trans01_targlst(t0as)
+  }
+) : t1marg_node // end-of-val
+//
+in
+  t1marg_make_node(loc0, t1ma_node)
+end // end of [trans01_tmarg]
+
+(* ****** ****** *)
+
+implement
+trans01_targlst
+  (t0as) =
+list_vt2t
+(
+list_map<t0arg><t1arg>(t0as)
+) where
+{
+  implement
+  list_map$fopr<t0arg><t1arg> = trans01_targ
+}
+implement
+trans01_tmarglst
+  (t0mas) =
+list_vt2t
+(
+list_map<t0marg><t1marg>(t0mas)
+) where
+{
+  implement
+  list_map$fopr<t0marg><t1marg> = trans01_tmarg
+}
+
+(* ****** ****** *)
+
 local
 
 fun

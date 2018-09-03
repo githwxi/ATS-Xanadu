@@ -573,8 +573,9 @@ typedef t0marglst = List0(t0marg)
 //
 datatype
 t0marg_node =
-  | T0MARGnone of token
-  | T0MARGlist of (token, t0arglst, token)
+| T0MARGnone of token(*sort*)
+| T0MARGlist of
+  (token(*'('*), t0arglst, token(*')'*))
 //
 fun
 t0marg_get_loc(t0marg): loc_t

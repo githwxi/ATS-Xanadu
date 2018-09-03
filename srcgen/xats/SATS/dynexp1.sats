@@ -93,15 +93,26 @@ datatype
 d1ecl_node =
 //
 | D1Csortdef of
-  (token(*stid*), s1rtdef)
+  (token(*id*), s1rtdef)
 //
 | D1Csexpdef of
-  (token(*seid*), s1marglst, sort1opt, s1exp)
+  ( token // id
+  , s1marglst, sort1opt, s1exp)
+//
+| D1Cabstype of
+    (token(*id*), t1marglst, abstdf1)
+  // D1Cabstype
 //
 | D1Clocal of (d1eclist, d1eclist)
 //
 | D1Cfixity of (d0ecl) // updating fixity env
 | D1Cnonfix of (d0ecl) // updating fixity env
+//
+and
+abstdf1 =
+  | ABSTDF1nil of () // unspecified
+  | ABSTDF1lteq of s1exp // erasure
+  | ABSTDF1eqeq of s1exp // definition
 //
 (* ****** ****** *)
 //

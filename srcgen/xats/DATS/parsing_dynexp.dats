@@ -465,10 +465,10 @@ end // end of [p_precopt]
 
 static
 fun
-p_abstdef
- : parser(abstdef)
+p_abstdf0
+ : parser(abstdf0)
 implement
-p_abstdef
+p_abstdf0
   (buf, err) = let
 //
 val tok = buf.get0()
@@ -480,18 +480,18 @@ case+ tnd of
 | T_IDENT_sym("<=") => let
     val () = buf.incby1()
   in
-    ABSTDEFlteq
+    ABSTDF0lteq
     (tok, p_s0exp(buf, err))
   end
 | T_IDENT_sym("==") => let
     val () = buf.incby1()
   in
-    ABSTDEFeqeq
+    ABSTDF0eqeq
     (tok, p_s0exp(buf, err))    
   end
-| _(*non-eq-eqeq*) => ABSTDEFnil()
+| _(*non-eq-eqeq*) => ABSTDF0nil()
 //
-end // end of [p_abstdef]
+end // end of [p_abstdf0]
 
 
 in (* in-of-local *)
@@ -560,11 +560,11 @@ case+ tnd of
     val t0mas =
       p_t0margseq(buf, err)
     // end of [val]
-    val tdef0 = p_abstdef(buf, err)
+    val tdef0 = p_abstdf0(buf, err)
     val loc_res =
     (
     case+ tdef0 of
-    | ABSTDEFnil() =>
+    | ABSTDF0nil() =>
       (
       case+ t0mas of
       | list_nil() => loc+sid.loc()
@@ -572,9 +572,9 @@ case+ tnd of
         val t0ma =
         list_last(t0mas) in loc+t0ma.loc()
         end // end of [list_cons]
-      ) (* ABSTDEFnil *)
-    | ABSTDEFlteq(_, s0e) => loc+s0e.loc()
-    | ABSTDEFeqeq(_, s0e) => loc+s0e.loc()
+      ) (* ABSTDF0nil *)
+    | ABSTDF0lteq(_, s0e) => loc+s0e.loc()
+    | ABSTDF0eqeq(_, s0e) => loc+s0e.loc()
     ) : loc_t // end of [val]
   in
     err := e0;

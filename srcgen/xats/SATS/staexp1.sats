@@ -238,6 +238,37 @@ t1arg_make_node
 //
 (* ****** ****** *)
 //
+abstbox t1marg_tbox = ptr
+typedef t1marg = t1marg_tbox
+typedef t1marglst = List0(t1marg)
+//
+datatype
+t1marg_node =
+| T1MARGnone of token(*sort*)
+| T1MARGlist of t1arglst(*arglst*)
+//
+fun
+t1marg_get_loc(t1marg): loc_t
+fun
+t1marg_get_node(t1marg): t1marg_node
+//
+overload .loc with t1marg_get_loc
+overload .node with t1marg_get_node
+//
+fun print_t1marg : print_type(t1marg)
+fun prerr_t1marg : prerr_type(t1marg)
+fun fprint_t1marg : fprint_type(t1marg)
+//
+overload print with print_t1marg
+overload prerr with prerr_t1marg
+overload fprint with fprint_t1marg
+//
+fun
+t1marg_make_node
+(loc: loc_t, node: t1marg_node): t1marg
+//
+(* ****** ****** *)
+//
 abstbox s1qua_tbox = ptr
 typedef s1qua = s1qua_tbox
 typedef s1qualst = List0(s1qua)

@@ -219,24 +219,24 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
-print_abstdef(x0) =
-fprint_abstdef(stdout_ref, x0)
+print_abstdf0(x0) =
+fprint_abstdf0(stdout_ref, x0)
 implement
-prerr_abstdef(x0) =
-fprint_abstdef(stderr_ref, x0)
+prerr_abstdf0(x0) =
+fprint_abstdf0(stderr_ref, x0)
 
 implement
-fprint_abstdef
+fprint_abstdf0
   (out, x0) =
 (
 case+ x0 of
-| ABSTDEFnil() =>
-  fprint(out, "ABSTDEFnil()")
-| ABSTDEFlteq(tok, s0e) =>
-  fprint!(out, "ABSTDEFlteq(", tok, "; ", s0e, ")")
-| ABSTDEFeqeq(tok, s0e) =>
-  fprint!(out, "ABSTDEFeqeq(", tok, "; ", s0e, ")")
-) (* end of [fprint_abstdef] *)
+| ABSTDF0nil() =>
+  fprint(out, "ABSTDF0nil()")
+| ABSTDF0lteq(tok, s0e) =>
+  fprint!(out, "ABSTDF0lteq(", tok, "; ", s0e, ")")
+| ABSTDF0eqeq(tok, s0e) =>
+  fprint!(out, "ABSTDF0eqeq(", tok, "; ", s0e, ")")
+) (* end of [fprint_abstdf0] *)
 
 (* ****** ****** *)
 

@@ -76,7 +76,9 @@ typedef s0arglst = $S0E.s0arglst
 typedef s0marglst = $S0E.s0marglst
 //
 typedef t0arg = $S0E.t0arg
+typedef t0marg = $S0E.t0marg
 typedef t0arglst = $S0E.t0arglst
+typedef t0marglst = $S0E.t0marglst
 //
 typedef s0qua = $S0E.s0qua
 typedef s0qualst = $S0E.s0qualst
@@ -112,7 +114,9 @@ typedef s1arglst = $S1E.s1arglst
 typedef s1marglst = $S1E.s1marglst
 //
 typedef t1arg = $S1E.t1arg
+typedef t1marg = $S1E.t1marg
 typedef t1arglst = $S1E.t1arglst
+typedef t1marglst = $S1E.t1marglst
 //
 typedef s1qua = $S1E.s1qua
 typedef s1qualst = $S1E.s1qualst
@@ -172,32 +176,74 @@ overload trans01 with trans01_smarglst
 (* ****** ****** *)
 //
 fun
-t0arg_trans: t0arg -> t1arg
+trans01_targ: t0arg -> t1arg
 fun
-t0arglst_trans: t0arglst -> t1arglst
+trans01_tmarg: t0marg -> t1marg
+fun
+trans01_targlst: t0arglst -> t1arglst
+fun
+trans01_tmarglst: t0marglst -> t1marglst
+//
+(*
+overload trans01 with trans01_targ
+overload trans01 with trans01_tmarg
+overload trans01 with trans01_targlst
+overload trans01 with trans01_tmarglst
+*)
 //
 (* ****** ****** *)
 //
-fun trans01_squa: s0qua -> s1qua
-fun trans01_squalst: s0qualst -> s1qualst
+fun
+trans01_squa: s0qua -> s1qua
+fun
+trans01_squalst: s0qualst -> s1qualst
+//
+(*
+overload trans01 with trans01_squa
+overload trans01 with trans01_squalst
+*)
 //
 (* ****** ****** *)
 //
-fun trans01_sexp: s0exp -> s1exp
-fun trans01_sexplst: s0explst -> s1explst
+fun
+trans01_sexp: s0exp -> s1exp
+fun
+trans01_lsexp: labs0exp -> labs1exp
+fun
+trans01_sexplst: s0explst -> s1explst
+fun
+trans01_lsexplst: labs0explst -> labs1explst
 //
-fun trans01_lsexp: labs0exp -> labs1exp
-fun trans01_lsexplst: labs0explst -> labs1explst
+(*
+overload trans01 with trans01_sexp
+overload trans01 with trans01_lsexp
+overload trans01 with trans01_sexplst
+overload trans01 with trans01_lsexplst
+*)
 //
 (* ****** ****** *)
 //
-fun trans01_dexp: d0exp -> d1exp
-fun trans01_dexplst: d0explst -> d1explst
+fun
+trans01_dexp: d0exp -> d1exp
+fun
+trans01_dexplst: d0explst -> d1explst
+//
+(*
+overload trans01 with trans01_dexp
+overload trans01 with trans01_dexplst
+*)
 //
 (* ****** ****** *)
 //
-fun trans01_decl: d0ecl -> d1ecl
-fun trans01_declist: d0eclist -> d1eclist
+fun
+trans01_decl: d0ecl -> d1ecl
+fun
+trans01_declist: d0eclist -> d1eclist
+//
+(*
+overload trans01 with trans01_decl
+overload trans01 with trans01_declist
+*)
 //
 (* ****** ****** *)
 
