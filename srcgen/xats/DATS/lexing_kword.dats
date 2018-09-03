@@ -92,6 +92,22 @@ macdef
 T_DATAVTYPE_ = T_DATATYPE(VTYPESORT)
 //
 (* ****** ****** *)
+
+macdef
+T_TUPLE2_ = T_TUPLE(2)
+macdef
+T_TUPLE3_ = T_TUPLE(3)
+macdef
+T_TUPLE4_ = T_TUPLE(4)
+
+macdef
+T_RECORD2_ = T_RECORD(2)
+macdef
+T_RECORD3_ = T_RECORD(3)
+macdef
+T_RECORD4_ = T_RECORD(4)
+
+(* ****** ****** *)
 //
 macdef
 T_INFIX_ = T_SRP_FIXITY(INFIX)
@@ -225,12 +241,17 @@ val () = myins("withprop")
 val () = myins("withview")
 val () = myins("withvtype")
 //
-val () = myins("$tup")
-val () = myins("$tup_t")
-val () = myins("$tup_vt")
-val () = myins("$rec")
-val () = myins("$rec_t")
-val () = myins("$rec_vt")
+*)
+//
+val () = myins("$tup"   , T_TUPLE2_)
+val () = myins("$tup_t" , T_TUPLE3_)
+val () = myins("$tup_vt", T_TUPLE4_)
+//
+val () = myins("$rec"   , T_RECORD2_)
+val () = myins("$rec_t" , T_RECORD3_)
+val () = myins("$rec_vt", T_RECORD4_)
+//
+(*
 //
 val () = myins("$list")
 val () = myins("$list_t")

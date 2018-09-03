@@ -37,7 +37,20 @@ bar0(1 + 2 + 3 + -4 + -5)
 
 sexpdef
 int2int =
-{n:int} int(n) -> [n:nat] int(n:int)
+{ n:int
+} int(n) -> [n:nat] int(n:int)
+
+typedef int2 = @(int, int)
+typedef int2 = $(int, int)
+typedef int2 = $tup(int, int)
+typedef int2 = $tup_t(int, int)
+typedef int2 = $tup_vt(int, int)
+typedef point2 = @{x=int | y=int}
+
+(* ****** ****** *)
+
+sexpdef
+list0_type_int = lam(a:type, n:int) => list(a, n)
 
 (* ****** ****** *)
 ////
