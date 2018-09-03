@@ -52,6 +52,10 @@ fixtyopt_vt = Option_vt(fixty)
 #staload D1E = "./dynexp1.sats"
 //
 (* ****** ****** *)
+
+symintr trans01
+
+(* ****** ****** *)
 //
 fun
 the_fixtyenv_search
@@ -70,6 +74,9 @@ typedef s0arg = $S0E.s0arg
 typedef s0marg = $S0E.s0marg
 typedef s0arglst = $S0E.s0arglst
 typedef s0marglst = $S0E.s0marglst
+//
+typedef t0arg = $S0E.t0arg
+typedef t0arglst = $S0E.t0arglst
 //
 typedef s0qua = $S0E.s0qua
 typedef s0qualst = $S0E.s0qualst
@@ -104,6 +111,9 @@ typedef s1marg = $S1E.s1marg
 typedef s1arglst = $S1E.s1arglst
 typedef s1marglst = $S1E.s1marglst
 //
+typedef t1arg = $S1E.t1arg
+typedef t1arglst = $S1E.t1arglst
+//
 typedef s1qua = $S1E.s1qua
 typedef s1qualst = $S1E.s1qualst
 //
@@ -129,35 +139,65 @@ typedef d1eclist = $D1E.d1eclist
 (* ****** ****** *)
 //
 fun
-sort0_trans: sort0 -> sort1
+trans01_sort: sort0 -> sort1 
 fun
-sort0opt_trans: sort0opt -> sort1opt
+trans01_sortopt: sort0opt -> sort1opt
 fun
-sort0lst_trans: sort0lst -> sort1lst
+trans01_sortlst: sort0lst -> sort1lst
 //
-fun
-s0arg_trans: s0arg -> s1arg
-fun
-s0marg_trans: s0marg -> s1marg
-fun
-s0arglst_trans: s0arglst -> s1arglst
-fun
-s0marglst_trans: s0marglst -> s1marglst
-//
-fun s0qua_trans: s0qua -> s1qua
-fun s0qualst_trans: s0qualst -> s1qualst
-//
-fun s0exp_trans: s0exp -> s1exp
-fun s0explst_trans: s0explst -> s1explst
-//
-fun labs0explst_trans: labs0explst -> labs1explst
+(*
+overload trans01 with trans01_sort
+overload trans01 with trans01_sortopt
+overload trans01 with trans01_sortlst
+*)
 //
 (* ****** ****** *)
 //
-fun d0exp_trans: d0exp -> d1exp
-fun d0ecl_trans: d0ecl -> d1ecl
-fun d0explst_trans: d0explst -> d1explst
-fun d0eclist_trans: d0eclist -> d1eclist
+fun
+trans01_sarg: s0arg -> s1arg
+fun
+trans01_smarg: s0marg -> s1marg
+fun
+trans01_sarglst: s0arglst -> s1arglst
+fun
+trans01_smarglst: s0marglst -> s1marglst
+//
+(*
+overload trans01 with trans01_sarg
+overload trans01 with trans01_smarg
+overload trans01 with trans01_sarglst
+overload trans01 with trans01_smarglst
+*)
+//
+(* ****** ****** *)
+//
+fun
+t0arg_trans: t0arg -> t1arg
+fun
+t0arglst_trans: t0arglst -> t1arglst
+//
+(* ****** ****** *)
+//
+fun trans01_squa: s0qua -> s1qua
+fun trans01_squalst: s0qualst -> s1qualst
+//
+(* ****** ****** *)
+//
+fun trans01_sexp: s0exp -> s1exp
+fun trans01_sexplst: s0explst -> s1explst
+//
+fun trans01_lsexp: labs0exp -> labs1exp
+fun trans01_lsexplst: labs0explst -> labs1explst
+//
+(* ****** ****** *)
+//
+fun trans01_dexp: d0exp -> d1exp
+fun trans01_dexplst: d0explst -> d1explst
+//
+(* ****** ****** *)
+//
+fun trans01_decl: d0ecl -> d1ecl
+fun trans01_declist: d0eclist -> d1eclist
 //
 (* ****** ****** *)
 

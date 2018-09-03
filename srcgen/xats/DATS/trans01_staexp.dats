@@ -329,7 +329,7 @@ loc0 = s0t0.loc()
 //
 val () =
 println!
-("sort0_trans: auxitm: s0t0 = ", s0t0)
+("trans01_sort: auxitm: s0t0 = ", s0t0)
 //
 in
 //
@@ -347,15 +347,18 @@ s0t0.node() of
   (_, s0ts, _) =>
   FXITMatm(s1t0) where
   {
-    val s1ts = sort0lst_trans(s0ts)
-    val s1t0 = sort1_make_node(loc0, S1Tlist(s1ts))
+    val s1ts =
+    trans01_sortlst(s0ts)
+    val s1t0 =
+    sort1_make_node(loc0, S1Tlist(s1ts))
   }
 //
 | S0Tqual
   (tok, s0t) =>
   FXITMatm(s1t0) where
   {
-    val s1t = sort0_trans(s0t)
+    val s1t =
+    trans01_sort(s0t)
     val s1t0 =
     sort1_make_node(loc0, S1Tqual(tok, s1t))
   }
@@ -389,7 +392,7 @@ list_vt2t(ys) where
 in (* in-of-local *)
 
 implement
-sort0_trans
+trans01_sort
   (s0t0) = let
 //
 val
@@ -397,7 +400,7 @@ loc0 = s0t0.loc()
 //
 val () =
 println!
-("sort0_trans: s0t0 = ", s0t0)
+("trans01_sort: s0t0 = ", s0t0)
 //
 in
 //
@@ -406,21 +409,21 @@ auxitm(s0t0) of
 | $FIX.FXITMatm(s1t0) => s1t0
 | $FIX.FXITMopr(s1t0, fxty) => s1t0
 //
-end (* end of [sort0_trans] *)
+end (* end of [trans01_sort] *)
 
 end // end of [local]
 
 implement
-sort0opt_trans
+trans01_sortopt
   (opt0) =
 (
 case+ opt0 of
 | None() => None()
-| Some(s0t0) => Some(sort0_trans(s0t0))
+| Some(s0t0) => Some(trans01_sort(s0t0))
 )
 
 implement
-sort0lst_trans
+trans01_sortlst
   (s0ts) =
 list_vt2t(s1ts) where
 {
@@ -430,21 +433,21 @@ list_map<sort0><sort1>
   (s0ts) where
 {
   implement
-  list_map$fopr<sort0><sort1> = sort0_trans
+  list_map$fopr<sort0><sort1> = trans01_sort
 }
-} (* end of [sort0lst_trans] *)
+} (* end of [trans01_sortlst] *)
 
 (* ****** ****** *)
 
 implement
-s0arg_trans
+trans01_sarg
   (s0a0) = let
 //
 val loc0 = s0a0.loc()
 //
 val () =
 println!
-("s0arg_trans: s0a0 = ", s0a0)
+("trans01_sarg: s0a0 = ", s0a0)
 //
 in
 //
@@ -458,22 +461,22 @@ s0a0.node() of
     I0DNTsome(tok) = sid.node()
   in
     s1arg_make_node
-    (loc0, S1ARGsome(tok, sort0opt_trans(opt)))
+    (loc0, S1ARGsome(tok, trans01_sortopt(opt)))
   end // end of [S0ARGsome]
 //
-end // end of [s0arg_trans]
+end // end of [trans01_sarg]
 
 (* ****** ****** *)
 
 implement
-s0marg_trans
+trans01_smarg
   (s0ma) = let
 //
 val loc0 = s0ma.loc()
 //
 val () =
 println!
-("s0marg_trans: s0ma = ", s0ma)
+("trans01_smarg: s0ma = ", s0ma)
 //
 in
 //
@@ -493,17 +496,17 @@ s0ma.node() of
     (loc0, S1MARGlist(list_sing(s1a)))
   end // end of [S0MARGsing]
 | S0MARGlist(_, s0as, _) => let
-    val s1as = s0arglst_trans(s0as)
+    val s1as = trans01_sarglst(s0as)
   in
     s1marg_make_node(loc0, S1MARGlist(s1as))
   end // end of [S0MARGlist]
 //
-end // end of [s0marg_trans]
+end // end of [trans01_smarg]
 
 (* ****** ****** *)
 //
 implement
-s0arglst_trans
+trans01_sarglst
   (s0as) =
 list_vt2t
 (
@@ -511,10 +514,10 @@ list_map<s0arg><s1arg>(s0as)
 ) where
 {
   implement
-  list_map$fopr<s0arg><s1arg> = s0arg_trans
+  list_map$fopr<s0arg><s1arg> = trans01_sarg
 }
 implement
-s0marglst_trans
+trans01_smarglst
   (s0mas) =
 list_vt2t
 (
@@ -522,7 +525,7 @@ list_map<s0marg><s1marg>(s0mas)
 ) where
 {
   implement
-  list_map$fopr<s0marg><s1marg> = s0marg_trans
+  list_map$fopr<s0marg><s1marg> = trans01_smarg
 }
 //
 (* ****** ****** *)
@@ -549,7 +552,7 @@ case+ ids of
 in (* in-of-local *)
 
 implement
-s0qua_trans
+trans01_squa
   (s0q0) = let
 //
 val
@@ -561,24 +564,24 @@ s1q0_node =
 case+
 s0q0.node() of
 | S0QUAprop(s0e) =>
-  S1QUAprop(s0exp_trans(s0e))
+  S1QUAprop(trans01_sexp(s0e))
 | S0QUAvars
   (ids, _, s0t) =>
   S1QUAvars(ids, s1t) where
   {
     val ids = auxids(ids)
-    val s1t = sort0_trans(s0t)
+    val s1t = trans01_sort(s0t)
   }
 ) : s1qua_node // end of [val]
 //
 in
   s1qua_make_node(loc0, s1q0_node)
-end // end of [s0qua_trans]
+end // end of [trans01_squa]
 
 end // end of [local]
 
 implement
-s0qualst_trans
+trans01_squalst
   (s0qs) =
 list_vt2t(s1es) where
 {
@@ -588,9 +591,9 @@ list_map<s0qua><s1qua>
   (s0qs) where
 {
   implement
-  list_map$fopr<s0qua><s1qua> = s0qua_trans
+  list_map$fopr<s0qua><s1qua> = trans01_squa
 }
-} (* end of [s0qualst_trans] *)
+} (* end of [trans01_squalst] *)
 
 (* ****** ****** *)
 
@@ -730,11 +733,11 @@ loc0 = s0e0.loc()
 (*
 val () =
 println!
-("s0exp_trans: auxitm: loc0 = ", loc0)
+("trans01_sexp: auxitm: loc0 = ", loc0)
 *)
 val () =
 println!
-("s0exp_trans: auxitm: s0e0 = ", s0e0)
+("trans01_sexp: auxitm: s0e0 = ", s0e0)
 //
 in
 //
@@ -786,7 +789,7 @@ s0e0.node() of
 | S0Eforall
     (_, s0qs, _) => let
     val s1qs =
-    s0qualst_trans(s0qs)
+    trans01_squalst(s0qs)
     val s1e0 =
     s1exp_make_node(loc0, S1Eforall(s1qs))
   in
@@ -797,7 +800,7 @@ s0e0.node() of
     val-
     T_EXISTS(k0) = tok.node()
     val s1qs =
-    s0qualst_trans(s0qs)
+    trans01_squalst(s0qs)
     val s1e0 =
     s1exp_make_node(loc0, S1Eexists(k0, s1qs))
   in
@@ -806,17 +809,17 @@ s0e0.node() of
 //
 | S0Elam
   (_, arg, res, _, s0e) => let
-    val s1e = s0exp_trans(s0e)
-    val res = sort0opt_trans(res)
-    val arg = s0marglst_trans(arg)
+    val s1e = trans01_sexp(s0e)
+    val res = trans01_sortopt(res)
+    val arg = trans01_smarglst(arg)
   in
     FXITMatm
     (s1exp_make_node(loc0, S1Elam(arg, res, s1e)))
   end // end of [S0Elam]
 //
 | S0Eanno(s0e, s0t) => let
-    val s1e = s0exp_trans(s0e)
-    val s1t = sort0_trans(s0t)
+    val s1e = trans01_sexp(s0e)
+    val s1t = trans01_sort(s0t)
   in
     FXITMatm
     (s1exp_make_node(loc0, S1Eanno(s1e, s1t)))
@@ -825,7 +828,7 @@ s0e0.node() of
 | S0Equal(tok, s0e) =>
   FXITMatm(s1e0) where
   {
-    val s1e = s0exp_trans(s0e)
+    val s1e = trans01_sexp(s0e)
     val s1e0 =
     s1exp_make_node(loc0, S1Equal(tok, s1e))
   } (* end of [S0Equal] *)
@@ -871,13 +874,13 @@ case+ rparen of
 | s0exp_RPAREN_cons0(_) =>
   S1Elist(s1es1) where
   {
-    val s1es1 = s0explst_trans(s0es1)
+    val s1es1 = trans01_sexplst(s0es1)
   }
 | s0exp_RPAREN_cons1(_, s0es2, _) =>
   S1Elist(s1es1, s1es2) where
   {
-    val s1es1 = s0explst_trans(s0es1)
-    val s1es2 = s0explst_trans(s0es2)
+    val s1es1 = trans01_sexplst(s0es1)
+    val s1es2 = trans01_sexplst(s0es2)
   }
 ) : s1exp_node // end of [val]
 //
@@ -907,14 +910,14 @@ case+ rparen of
   (_) =>
   S1Etuple(k0, s1es1) where
   {
-    val s1es1 = s0explst_trans(s0es1)
+    val s1es1 = trans01_sexplst(s0es1)
   }
 | s0exp_RPAREN_cons1
   (_, s0es2, _) =>
   S1Etuple(k0, s1es1, s1es2) where
   {
-    val s1es1 = s0explst_trans(s0es1)
-    val s1es2 = s0explst_trans(s0es2)
+    val s1es1 = trans01_sexplst(s0es1)
+    val s1es2 = trans01_sexplst(s0es2)
   }
 ) : s1exp_node // end of [val]
 //
@@ -946,14 +949,14 @@ case+ rparen of
   (_) =>
   S1Erecord(k0, ls1es1) where
   {
-    val ls1es1 = labs0explst_trans(ls0es1)
+    val ls1es1 = trans01_lsexplst(ls0es1)
   }
 | labs0exp_RBRACE_cons1
   (_, ls0es2, _) =>
   S1Erecord(k0, ls1es1, ls1es2) where
   {
-    val ls1es1 = labs0explst_trans(ls0es1)
-    val ls1es2 = labs0explst_trans(ls0es2)
+    val ls1es1 = trans01_lsexplst(ls0es1)
+    val ls1es2 = trans01_lsexplst(ls0es2)
   }
 ) : s1exp_node // end of [val]
 //
@@ -965,12 +968,12 @@ end // end of [auxtuple]
 in (* in-of-local *)
 
 implement
-s0exp_trans
+trans01_sexp
   (s0e0) = let
 //
 val () =
 println!
-("s0exp_trans: s0e0 = ", s0e0)
+("trans01_sexp: s0e0 = ", s0e0)
 //
 in
 //
@@ -979,12 +982,12 @@ auxitm(s0e0) of
 | $FIX.FXITMatm(s1e0) => s1e0
 | $FIX.FXITMopr(s1e0, fxty) => s1e0
 //
-end (* end of [s0exp_trans] *)
+end (* end of [trans01_sexp] *)
 
 end // end of [local]
 
 implement
-s0explst_trans
+trans01_sexplst
   (s0es) =
 list_vt2t(s1es) where
 {
@@ -994,12 +997,23 @@ list_map<s0exp><s1exp>
   (s0es) where
 {
   implement
-  list_map$fopr<s0exp><s1exp> = s0exp_trans
+  list_map$fopr<s0exp><s1exp> = trans01_sexp
 }
-} (* end of [s0explst_trans] *)
+} (* end of [trans01_sexplst] *)
 
 implement
-labs0explst_trans
+trans01_lsexp
+  (ls0e) = let
+//
+  val
+  SL0ABELED(l0, tok, s0e) = ls0e
+//
+in
+  SL0ABELED(l0, tok, trans01_sexp(s0e))
+end // end of [trans01_lsexp]
+
+implement
+trans01_lsexplst
   (ls0es) =
 list_vt2t(ls1es) where
 {
@@ -1009,14 +1023,9 @@ list_map<labs0exp><labs1exp>
   (ls0es) where
 {
   implement
-  list_map$fopr<labs0exp><labs1exp>
-    (ls0e) = let
-    val SL0ABELED(l0, tok, s0e) = ls0e
-  in
-    SL0ABELED(l0, tok, s0exp_trans(s0e))
-  end // end of [list_map$fopr]
+  list_map$fopr<labs0exp><labs1exp> = trans01_lsexp
 }
-} (* end of [labs0explst_trans] *)
+} (* end of [trans01_lsexplst] *)
 
 (* ****** ****** *)
 

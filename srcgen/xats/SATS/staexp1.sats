@@ -48,6 +48,7 @@ typedef sym_t = $SYM.sym_t
 #staload
 LEX = "./lexing.sats"
 typedef token = $LEX.token
+typedef tokenopt = $LEX.tokenopt
 typedef tokenlst = $LEX.tokenlst
 //
 (* ****** ****** *)
@@ -122,7 +123,6 @@ typedef s1arglst = List0(s1arg)
 //
 datatype
 s1arg_node =
-//
 | S1ARGsome of (token, sort1opt)
 //
 fun
@@ -205,6 +205,36 @@ overload fprint with fprint_s1marg
 fun
 s1marg_make_node
 (loc: loc_t, node: s1marg_node): s1marg
+//
+(* ****** ****** *)
+//
+abstbox t1arg_tbox = ptr
+typedef t1arg = t1arg_tbox
+typedef t1arglst = List0(t1arg)
+//
+datatype
+t1arg_node =
+| T1ARGsome of (sort1, tokenopt)
+//
+fun
+t1arg_get_loc(t1arg): loc_t
+fun
+t1arg_get_node(t1arg): t1arg_node
+//
+overload .loc with t1arg_get_loc
+overload .node with t1arg_get_node
+//
+fun print_t1arg : print_type(t1arg)
+fun prerr_t1arg : prerr_type(t1arg)
+fun fprint_t1arg : fprint_type(t1arg)
+//
+overload print with print_t1arg
+overload prerr with prerr_t1arg
+overload fprint with fprint_t1arg
+//
+fun
+t1arg_make_node
+(loc: loc_t, node: t1arg_node): t1arg
 //
 (* ****** ****** *)
 //

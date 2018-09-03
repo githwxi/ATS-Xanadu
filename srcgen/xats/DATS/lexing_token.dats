@@ -698,7 +698,7 @@ posincneol position_incby_neol
 posinctext position_incby_text
 //
 fun
-tnode_trans
+trans_tnode
 (node0: tnode): tnode =
 (
 case+ node0 of
@@ -807,7 +807,7 @@ case+ node of
 (
 let
   val
-  node = tnode_trans(node)
+  node = trans_tnode(node)
   val
   loc01 = locmake(pos0, pos1)
 in

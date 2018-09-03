@@ -153,13 +153,6 @@ case+ x0.node() of
 | D0Ctkerr(tok) =>
   fprint!(out, "D0Ctkerr(", tok, ")")
 //
-| D0Clocal
-  (tok, d0cs0, tok1, d0cs1, tok2) =>
-  fprint!
-  ( out, "D0Clocal("
-  , tok, "; ", d0cs0, "; "
-  , tok1, "; ", d0cs1, "; ", tok2, ")")
-//
 | D0Csortdef
   (tok, tid, tok1, def2) =>
   fprint!
@@ -184,6 +177,13 @@ case+ x0.node() of
 | D0Cdatatype(tok, d0cs, wopt) =>
   fprint!
   (out, "D0Cdatatype(", tok, "; ", d0cs, "; ", wopt, ")")
+//
+| D0Clocal
+  (tok, d0cs0, tok1, d0cs1, tok2) =>
+  fprint!
+  ( out, "D0Clocal("
+  , tok, "; ", d0cs0, "; "
+  , tok1, "; ", d0cs1, "; ", tok2, ")")
 //
 | D0Cnonfix(tok, ids) =>
   fprint!(out, "D0Cnonfix(", tok, "; ", ids, ")")

@@ -206,11 +206,15 @@ in
   p_d0eclseq_top(buf, err)
 end // end of [val]
 
-val () = println! ("d0cs = ", d0cs)
+(* ****** ****** *)
+
+val () =
+println!
+("test_xats_main: d0cs = ", d0cs)
 
 (* ****** ****** *)
 
-val d1cs = d0eclist_trans(d0cs)
+val d1cs = trans01_declist(d0cs)
 
 (* ****** ****** *)
 
