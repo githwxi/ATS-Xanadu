@@ -172,7 +172,8 @@ abstdf0 =
 and
 wd0eclseq =
 | WD0CSnone of ()
-| WD0CSsome of (token, tokenopt, d0eclist, token)
+| WD0CSsome of
+  (token(*where*), tokenopt, d0eclist, token)
 
 (* ****** ****** *)
 //

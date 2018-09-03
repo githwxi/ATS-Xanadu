@@ -667,10 +667,43 @@ s1es =
 list_map<s0qua><s1qua>
   (s0qs) where
 {
-  implement
-  list_map$fopr<s0qua><s1qua> = trans01_squa
+implement
+list_map$fopr<s0qua><s1qua> = trans01_squa
 }
 } (* end of [trans01_squalst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_suni
+  (s0u0) = let
+//
+val
+loc0 = s0u0.loc()
+val-
+S0UNIsome
+(_, s0qs, _) = s0u0.node()
+val
+s1qs = trans01_squalst(s0qs)
+//
+in
+  s1uni_make_node(loc0, S1UNIsome(s1qs))
+end // end of [trans01_suni]
+
+implement
+trans01_sunilst
+  (s0qs) =
+list_vt2t(s1es) where
+{
+val
+s1es =
+list_map<s0uni><s1uni>
+  (s0qs) where
+{
+implement
+list_map$fopr<s0uni><s1uni> = trans01_suni
+}
+} (* end of [trans01_sunilst] *)
 
 (* ****** ****** *)
 
@@ -1064,6 +1097,15 @@ end (* end of [trans01_sexp] *)
 end // end of [local]
 
 implement
+trans01_sexpopt
+  (opt) =
+(
+case+ opt of
+| None() => None()
+| Some(s0e) => Some(trans01_sexp(s0e))
+) (* end of [trans01_sexpopt] *)
+
+implement
 trans01_sexplst
   (s0es) =
 list_vt2t(s1es) where
@@ -1103,6 +1145,87 @@ list_map<labs0exp><labs1exp>
   list_map$fopr<labs0exp><labs1exp> = trans01_lsexp
 }
 } (* end of [trans01_lsexplst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_srtcon
+  (s0c0) = let
+//
+val loc0 = s0c0.loc()
+//
+in
+//
+case+
+s0c0.node() of
+| S0RTCON(sid, opt) => let
+    val-
+    I0DNTsome(tok) = sid.node()
+  in
+    s1rtcon_make_node
+      (s0c0.loc(), S1RTCON(tok, trans01_sortopt(opt)))
+    // s1rtcon_make_node
+  end // end of [S0RTCON]
+//
+end (* end of [trans01_srtcon] *)
+
+implement
+trans01_srtconlst
+  (s0cs) =
+list_vt2t(ls1es) where
+{
+val
+ls1es =
+list_map<s0rtcon><s1rtcon>
+  (s0cs) where
+{
+  implement
+  list_map$fopr<s0rtcon><s1rtcon> = trans01_srtcon
+}
+} (* end of [trans01_srtconlst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_datcon
+  (d0c0) = let
+//
+val
+loc0 = d0c0.loc()
+//
+in
+//
+case+
+d0c0.node() of
+| D0ATCON
+  ( s0us
+  , deid, s0e, opt) => let
+    val
+    s1us = trans01_sunilst(s0us)
+    val s1e = trans01_sexp(s0e)
+    val opt = trans01_sexpopt(opt)
+    val-I0DNTsome(tok) = deid.node()
+  in
+    d1atcon_make_node
+    (loc0, D1ATCON(s1us, tok, s1e, opt))
+  end // end of [D0ATCON]
+//
+end // end of [trans01_datcon]
+
+implement
+trans01_datconlst
+  (d0cs) =
+list_vt2t(ls1es) where
+{
+val
+ls1es =
+list_map<d0atcon><d1atcon>
+  (d0cs) where
+{
+  implement
+  list_map$fopr<d0atcon><d1atcon> = trans01_datcon
+}
+} (* end of [trans01_datconlst] *)
 
 (* ****** ****** *)
 

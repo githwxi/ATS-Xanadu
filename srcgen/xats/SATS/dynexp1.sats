@@ -105,7 +105,11 @@ d1ecl_node =
 //
 | D1Cdatasort of (d1tsortlst)
 //
-| D1Clocal of (d1eclist, d1eclist)
+| D1Cdatatype of (d1atypelst, wd1eclseq)
+//
+| D1Clocal of
+    (d1eclist(*head*), d1eclist(*body*))
+  // end of [D1Clocal]
 //
 | D1Cfixity of (d0ecl) // updating fixity env
 | D1Cnonfix of (d0ecl) // updating fixity env
@@ -115,6 +119,10 @@ abstdf1 =
   | ABSTDF1nil of () // unspecified
   | ABSTDF1lteq of s1exp // erasure
   | ABSTDF1eqeq of s1exp // definition
+//
+and
+wd1eclseq =
+  | WD1CSnone of () | WD1CSsome of (d1eclist)
 //
 (* ****** ****** *)
 //
