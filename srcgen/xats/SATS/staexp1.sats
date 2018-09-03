@@ -370,6 +370,37 @@ s1qua_make_node
 (loc: loc_t, node: s1qua_node): s1qua
 //
 (* ****** ****** *)
+//
+abstbox s1uni_tbox = ptr
+typedef s1uni = s1uni_tbox
+typedef s1unilst = List0(s1uni)
+//
+datatype
+s1uni_node =
+| S1UNInone of (token)
+| S1UNIsome of (token, s1qualst, token)
+//
+fun
+s1uni_get_loc(s1uni): loc_t
+fun
+s1uni_get_node(s1uni): s1uni_node
+//
+overload .loc with s1uni_get_loc
+overload .node with s1uni_get_node
+//
+fun print_s1uni : print_type(s1uni)
+fun prerr_s1uni : prerr_type(s1uni)
+fun fprint_s1uni : fprint_type(s1uni)
+//
+overload print with print_s1uni
+overload prerr with prerr_s1uni
+overload fprint with fprint_s1uni
+//
+fun
+s1uni_make_node
+(loc: loc_t, node: s1uni_node): s1uni
+//
+(* ****** ****** *)
 
 stadef sl0abeled = $S0E.sl0abeled
 
@@ -449,6 +480,40 @@ s1exp_none(loc: loc_t): s1exp
 fun
 s1exp_make_node
 (loc: loc_t, node: s1exp_node): s1exp
+//
+(* ****** ****** *)
+//
+abstbox
+d1atcon_tbox = ptr
+typedef
+d1atcon = d1atcon_tbox
+typedef
+d1atconlst = List0(d1atcon)
+//
+datatype
+d1atcon_node =
+| D1ATCON of
+  (s1unilst, token, s1exp, s1expopt) 
+//
+fun
+d1atcon_get_loc(d1atcon): loc_t
+fun
+d1atcon_get_node(d1atcon): d1atcon_node
+//
+overload .loc with d1atcon_get_loc
+overload .node with d1atcon_get_node
+//
+fun print_d1atcon : print_type(d1atcon)
+fun prerr_d1atcon : prerr_type(d1atcon)
+fun fprint_d1atcon : fprint_type(d1atcon)
+//
+overload print with print_d1atcon
+overload prerr with prerr_d1atcon
+overload fprint with fprint_d1atcon
+//
+fun
+d1atcon_make_node
+(loc: loc_t, node: d1atcon_node): d1atcon
 //
 (* ****** ****** *)
 
