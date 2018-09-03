@@ -245,8 +245,8 @@ case+ x0.node() of
 //
 | S1Eapp() =>
   fprint!(out, "S1Eapp()")
-| S1Einf(s1e) =>
-  fprint!(out, "S1Einf(", s1e, ")")
+| S1Eopr(s1e) =>
+  fprint!(out, "S1Eopr(", s1e, ")")
 //
 | S1Eapps
   (s1e0, s1es) =>
@@ -261,10 +261,29 @@ case+ x0.node() of
   ( out
   , "S1Elist(", s1es1, "; ", s1es2, ")")
 //
+| S1Etuple(k0, s1es) =>
+  fprint!(out, "S1Etuple(", k0, "; ", s1es, ")")
+| S1Etuple(k0, s1es1, s1es2) =>
+  fprint!
+  ( out
+  , "S1Etuple(", k0, "; ", s1es1, "; ", s1es2, ")")
+//
+| S1Erecord(k0, ls1es) =>
+  fprint!(out, "S1Erecord(", k0, "; ", ls1es, ")")
+| S1Erecord(k0, ls1es1, ls1es2) =>
+  fprint!
+  ( out
+  , "S1Erecord(", k0, "; ", ls1es1, "; ", ls1es2, ")")
+//
 | S1Eforall(s1qs) =>
   fprint!(out, "S1Eforall(", s1qs, ")")
 | S1Eexists(k0, s1qs) =>
   fprint!(out, "S1Eexists(", k0, "; ", s1qs, ")")
+//
+| S1Elam(arg, res, s1e) =>
+  fprint!
+  ( out
+  , "S1Elam(", arg, "; ", res, "; ", s1e, ")")
 //
 | S1Eanno(s1e, s1t) =>
   fprint!(out, "S1Eanno(", s1e, "; ", s1t, ")")

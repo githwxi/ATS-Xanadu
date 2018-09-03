@@ -648,6 +648,10 @@ s0e0.node() of
 //
 | S0Eparen _ => auxparen(s0e0)
 //
+| S0Etuple _ => auxtuple(s0e0)
+//
+| S0Erecord _ => auxrecord(s0e0)
+//
 | S0Eforall
     (_, s0qs, _) => let
     val s1qs =
@@ -668,6 +672,16 @@ s0e0.node() of
   in
     FXITMopr(s1e0, $FIX.exists_fixty)
   end
+//
+| S0Elam
+  (_, arg, res, _, s0e) => let
+    val s1e = s0exp_trans(s0e)
+    val res = sort0opt_trans(res)
+    val arg = s0marglst_trans(arg)
+  in
+    FXITMatm
+    (s1exp_make_node(loc0, S1Elam(arg, res, s1e)))
+  end // end of [S0Elam]
 //
 | S0Eanno(s0e, s0t) => let
     val s1e = s0exp_trans(s0e)
@@ -727,6 +741,82 @@ in
   (s1exp_make_node(s0e0.loc(), s1e0_node))
 end // end of [auxparen]
 
+and
+auxtuple
+( s0e0
+: s0exp): s1eitm = let
+//
+val-
+S0Etuple
+( tok, _
+, s0es1, rparen) = s0e0.node()
+//
+val-
+T_TUPLE(k0) = tok.node()
+//
+val
+s1e0_node =
+(
+case+ rparen of
+| s0exp_RPAREN_cons0
+  (_) =>
+  S1Etuple(k0, s1es1) where
+  {
+    val s1es1 = s0explst_trans(s0es1)
+  }
+| s0exp_RPAREN_cons1
+  (_, s0es2, _) =>
+  S1Etuple(k0, s1es1, s1es2) where
+  {
+    val s1es1 = s0explst_trans(s0es1)
+    val s1es2 = s0explst_trans(s0es2)
+  }
+) : s1exp_node // end of [val]
+//
+in
+  FXITMatm
+  (s1exp_make_node(s0e0.loc(), s1e0_node))
+end // end of [auxtuple]
+
+(* ****** ****** *)
+
+and
+auxrecord
+( s0e0
+: s0exp): s1eitm = let
+//
+val-
+S0Erecord
+( tok, _
+, ls0es1, rparen) = s0e0.node()
+//
+val-
+T_RECORD(k0) = tok.node()
+//
+val
+s1e0_node =
+(
+case+ rparen of
+| labs0exp_RBRACE_cons0
+  (_) =>
+  S1Erecord(k0, ls1es1) where
+  {
+    val ls1es1 = labs0explst_trans(ls0es1)
+  }
+| labs0exp_RBRACE_cons1
+  (_, ls0es2, _) =>
+  S1Erecord(k0, ls1es1, ls1es2) where
+  {
+    val ls1es1 = labs0explst_trans(ls0es1)
+    val ls1es2 = labs0explst_trans(ls0es2)
+  }
+) : s1exp_node // end of [val]
+//
+in
+  FXITMatm
+  (s1exp_make_node(s0e0.loc(), s1e0_node))
+end // end of [auxtuple]
+
 in (* in-of-local *)
 
 implement
@@ -762,6 +852,26 @@ list_map<s0exp><s1exp>
   list_map$fopr<s0exp><s1exp> = s0exp_trans
 }
 } (* end of [s0explst_trans] *)
+
+implement
+labs0explst_trans
+  (ls0es) =
+list_vt2t(ls1es) where
+{
+val
+ls1es =
+list_map<labs0exp><labs1exp>
+  (ls0es) where
+{
+  implement
+  list_map$fopr<labs0exp><labs1exp>
+    (ls0e) = let
+    val SL0ABELED(l0, tok, s0e) = ls0e
+  in
+    SL0ABELED(l0, tok, s0exp_trans(s0e))
+  end // end of [list_map$fopr]
+}
+} (* end of [labs0explst_trans] *)
 
 (* ****** ****** *)
 

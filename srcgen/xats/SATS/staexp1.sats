@@ -51,6 +51,11 @@ typedef token = $LEX.token
 typedef tokenlst = $LEX.tokenlst
 //
 (* ****** ****** *)
+
+#staload
+S0E = "./staexp0.sats"
+
+(* ****** ****** *)
 //
 abstbox sort1_tbox = ptr
 abstbox s1exp_tbox = ptr
@@ -143,6 +148,38 @@ s1arg_make_node
 //
 (* ****** ****** *)
 //
+abstbox
+s1rtdef_tbox = ptr
+typedef
+s1rtdef = s1rtdef_tbox
+//
+datatype
+s1rtdef_node =
+| S1RTDEFsort of sort1
+| S1RTDEFsubset of (s1arg, s1explst)
+//
+fun
+s1rtdef_get_loc(s1rtdef): loc_t
+fun
+s1rtdef_get_node(s1rtdef): s1rtdef_node
+//
+overload .loc with s1rtdef_get_loc
+overload .node with s1rtdef_get_node
+//
+fun print_s1rtdef : print_type(s1rtdef)
+fun prerr_s1rtdef : prerr_type(s1rtdef)
+fun fprint_s1rtdef : fprint_type(s1rtdef)
+//
+overload print with print_s1rtdef
+overload prerr with prerr_s1rtdef
+overload fprint with fprint_s1rtdef
+//
+fun
+s1rtdef_make_node
+(loc: loc_t, node: s1rtdef_node): s1rtdef
+//
+(* ****** ****** *)
+//
 abstbox s1marg_tbox = ptr
 typedef s1marg = s1marg_tbox
 typedef s1marglst = List0(s1marg)
@@ -202,63 +239,56 @@ s1qua_make_node
 (loc: loc_t, node: s1qua_node): s1qua
 //
 (* ****** ****** *)
-//
-abstbox
-s1rtdef_tbox = ptr
-typedef
-s1rtdef = s1rtdef_tbox
-//
-datatype
-s1rtdef_node =
-| S1RTDEFsort of sort1
-| S1RTDEFsubset of (s1arg, s1explst)
-//
-fun
-s1rtdef_get_loc(s1rtdef): loc_t
-fun
-s1rtdef_get_node(s1rtdef): s1rtdef_node
-//
-overload .loc with s1rtdef_get_loc
-overload .node with s1rtdef_get_node
-//
-fun print_s1rtdef : print_type(s1rtdef)
-fun prerr_s1rtdef : prerr_type(s1rtdef)
-fun fprint_s1rtdef : fprint_type(s1rtdef)
-//
-overload print with print_s1rtdef
-overload prerr with prerr_s1rtdef
-overload fprint with fprint_s1rtdef
-//
-fun
-s1rtdef_make_node
-(loc: loc_t, node: s1rtdef_node): s1rtdef
-//
+
+stadef sl0abeled = $S0E.sl0abeled
+
+(* ****** ****** *)
+
+typedef labs1exp = sl0abeled(s1exp)
+typedef labs1explst = List0(labs1exp)
+
 (* ****** ****** *)
 
 datatype
 s1exp_node =
 //
-  | S1Eid of token
+| S1Eid of token
 //
-  | S1Eint of token
+| S1Eint of token
 //
 // HX-2018-08: operators:
 //
-  | S1Eapp of () // application
-  | S1Einf of s1exp // backslash
+| S1Eapp of () // application
+| S1Eopr of s1exp // backslash
 //
-  | S1Eapps of (s1exp, s1explst)
+| S1Eapps of
+  (s1exp, s1explst)
 //
-  | S1Elist of s1explst // temporary
-  | S1Elist of (s1explst, s1explst) // temporary
+| S1Elist of s1explst // temp.
+| S1Elist of
+  (s1explst, s1explst) // temp.
 //
-  | S1Eforall of (s1qualst)
-  | S1Eexists of (int(*#*), s1qualst)
+| S1Etuple of
+  (int, s1explst)
+| S1Etuple of
+  (int, s1explst, s1explst)
 //
-  | S1Eanno of (s1exp, sort1)
+| S1Erecord of
+  (int, labs1explst)
+| S1Erecord of
+  (int, labs1explst, labs1explst)
 //
-  | S1Equal of (token, s1exp)
-  | S1Enone of ((*error indication*))
+| S1Eforall of (s1qualst)
+| S1Eexists of (int(*#*), s1qualst)
+//
+| S1Elam of
+  (s1marglst(*arg*), sort1opt(*res*), s1exp)
+//
+| S1Eanno of (s1exp, sort1)
+//
+| S1Equal of (token(*mod*), s1exp)
+//
+| S1Enone of ((*error indication*))
 // end of [s1exp_node]
 
 (* ****** ****** *)

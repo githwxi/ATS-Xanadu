@@ -78,12 +78,18 @@ typedef s0exp = $S0E.s0exp
 typedef s0expopt = $S0E.s0expopt
 typedef s0explst = $S0E.s0explst
 //
+typedef labs0exp = $S0E.labs0exp
+typedef labs0explst = $S0E.labs0explst
+//
 (* ****** ****** *)
 //
 typedef d0exp = $D0E.d0exp
-typedef d0ecl = $D0E.d0ecl
 typedef d0expopt = $D0E.d0expopt
 typedef d0explst = $D0E.d0explst
+//
+(* ****** ****** *)
+//
+typedef d0ecl = $D0E.d0ecl
 typedef d0eclopt = $D0E.d0eclopt
 typedef d0eclist = $D0E.d0eclist
 //
@@ -105,11 +111,16 @@ typedef s1exp = $S1E.s1exp
 typedef s1expopt = $S1E.s1expopt
 typedef s1explst = $S1E.s1explst
 //
+typedef labs1exp = $S1E.labs1exp
+typedef labs1explst = $S1E.labs1explst
+//
 (* ****** ****** *)
 //
 typedef d1exp = $D1E.d1exp
 typedef d1expopt = $D1E.d1expopt
 typedef d1explst = $D1E.d1explst
+//
+(* ****** ****** *)
 //
 typedef d1ecl = $D1E.d1ecl
 typedef d1eclopt = $D1E.d1eclopt
@@ -138,6 +149,8 @@ fun s0qualst_trans: s0qualst -> s1qualst
 //
 fun s0exp_trans: s0exp -> s1exp
 fun s0explst_trans: s0explst -> s1explst
+//
+fun labs0explst_trans: labs0explst -> labs1explst
 //
 (* ****** ****** *)
 //
