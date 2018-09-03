@@ -50,7 +50,18 @@ typedef point2 = @{x=int | y=int}
 (* ****** ****** *)
 
 sexpdef
-list0_type_int = lam(a:type, n:int) => list(a, n)
+list0_int_1 =
+(lam(a:type)(n:int) => list(a, n))(int)(1)
+
+(* ****** ****** *)
+
+sexpdef A_int = $A.int
+
+(* ****** ****** *)
+
+sexpdef add_1_1 = op+(1, 1)
+sexpdef add_1_1 = op(+)(1, 1)
+sexpdef add_1_1 = 1 \op+ 1
 
 (* ****** ****** *)
 ////

@@ -93,14 +93,17 @@ x0, f1, x2
 ) = let
   val loc =
   x0.loc() + x2.loc()
+  val s1t_node =
+  (
+    case+
+    f1.node() of
+    | S1Tapp() =>
+      S1Tapps(x0, list_sing(x2))
+    | _(*non-S1Tapp*) =>
+      S1Tapps(f1, list_pair(x0, x2))
+  ) : sort1_node // end of [val]
 in
-FXITMatm
-(
-sort1_make_node
-( loc
-, S1Tapps(f1, list_pair(x0, x2))
-)
-)
+  FXITMatm(sort1_make_node(loc, s1t_node))
 end // end of [$FIX.fxitm_infix]
 //
 implement
@@ -109,11 +112,13 @@ $FIX.fxitm_prefix<sort1>
   val loc =
   f0.loc() + x1.loc()
 in
-FXITMatm
-(
-  sort1_make_node
-  (loc, S1Tapps(f0, list_sing(x1)))
-)
+  FXITMatm
+  (
+  sort1_make_node(loc, s1t_node)
+  ) where
+  {
+    val s1t_node = S1Tapps(f0, list_sing(x1))
+  }
 end // end of [$FIX.fxitm_prefix]
 //
 implement
@@ -122,11 +127,13 @@ $FIX.fxitm_postfix<sort1>
   val loc =
   x0.loc() + f1.loc()
 in
-FXITMatm
-(
-  sort1_make_node
-  (loc, S1Tapps(f1, list_sing(x0)))
-)
+  FXITMatm
+  (
+  sort1_make_node(loc, s1t_node)
+  ) where
+  {
+    val s1t_node = S1Tapps(f1, list_sing(x0))
+  }
 end // end of [$FIX.fxitm_postfix]
 //
 implement
@@ -180,28 +187,47 @@ x0, f1, x2
 ) = let
   val loc =
   x0.loc() + x2.loc()
+  val s1e_node =
+  (
+    case+
+    f1.node() of
+    | S1Eapp() =>
+      S1Eapps(x0, list_sing(x2))
+    | _(*non-S1Eapp*) =>
+      S1Eapps(f1, list_pair(x0, x2))
+  ) : s1exp_node // end of [val]
 in
-FXITMatm
-(
-s1exp_make_node
-( loc
-, S1Eapps(f1, list_pair(x0, x2))
-)
-)
-end // end of [fxitm_infix]
+  FXITMatm(s1exp_make_node(loc, s1e_node))
+end // end of [$FIX.fxitm_infix]
 //
 implement
 $FIX.fxitm_prefix<s1exp>
   (f0, x1) = let
-  val loc =
-  f0.loc() + x1.loc()
 in
-FXITMatm
-(
-  s1exp_make_node
-  (loc, S1Eapps(f0, list_sing(x1)))
-)
-end // end of [fxitm_prefix]
+//
+case+
+f0.node() of
+| S1Einf() => let
+    val s1e =
+    s1exp_make_node
+    (x1.loc(), S1Eopr(x1))
+  in
+    FXITMopr(s1e, $FIX.infixtemp_fixty)
+  end // end of [S1Einf]
+| _(*non-S1Einf*) => let
+   val loc =
+   f0.loc() + x1.loc()
+  in
+    FXITMatm
+    (
+    s1exp_make_node(loc, s1t_node)
+    ) where
+    {
+      val s1t_node = S1Eapps(f0, list_sing(x1))
+    }
+  end // end of [non-S1Einf]
+//
+end // end of [$FIX.fxitm_prefix]
 //
 implement
 $FIX.fxitm_postfix<s1exp>
@@ -209,12 +235,11 @@ $FIX.fxitm_postfix<s1exp>
   val loc =
   x0.loc() + f1.loc()
 in
-FXITMatm
-(
-  s1exp_make_node
-  (loc, S1Eapps(f1, list_sing(x0)))
-)
-end // end of [fxitm_postfix]
+  FXITMatm
+  (
+  s1exp_make_node(loc, S1Eapps(f1, list_sing(x0)))
+  )
+end // end of [$FIX.fxitm_postfix]
 //
 implement
 $FIX.fxatm_none<s1exp>
@@ -577,29 +602,50 @@ val-
 I0DNTsome
   (tok) = sid.node()
 //
-val sym =
-(
-case-
-tok.node() of
-| T_IDENT_alp(nam) =>
-  $SYM.symbol_make(nam)
-| T_IDENT_sym(nam) =>
-  $SYM.symbol_make(nam)
-) : sym_t // end of [val]
+val tnd = tok.node()
 //
+in
+  case- tnd of
+//
+  | T_IDENT_alp(nam) => auxsid_IDENT(tok, nam)
+  | T_IDENT_sym(nam) => auxsid_IDENT(tok, nam)
+//
+  | T_BACKSLASH((*void*)) => auxsid_BACKSLASH(tok)
+//
+end // end of [auxsid]
+
+and
+auxsid_IDENT
+( tok: token
+, nam: string): s1eitm = let
+//
+val loc = tok.loc()
+//
+val sym =
+$SYM.symbol_make(nam)
 val opt =
 the_fixtyenv_search(sym)
-//
 val s1e0 =
 s1exp_make_node(loc, S1Eid(tok))
 //
 in
+  case+ opt of
+  | ~None_vt() => FXITMatm(s1e0)
+  | ~Some_vt(fxty) => FXITMopr(s1e0, fxty)
+end // end of [auxsid_IDENT]
+
+and
+auxsid_BACKSLASH
+  (tok:token): s1eitm = let
 //
-case+ opt of
-| ~None_vt() => FXITMatm(s1e0)
-| ~Some_vt(fxty) => FXITMopr(s1e0, fxty)
+val loc = tok.loc()
 //
-end // end of [auxsid]
+val s1e0 =
+  s1exp_make_node(loc, S1Einf())
+//
+in
+  FXITMopr(s1e0, $FIX.backslash_fixty)
+end // end of [auxsid_BACKSLASH]
 
 fun
 auxint
@@ -638,6 +684,28 @@ s0e0.node() of
 | S0Eid(sid) => auxsid(sid)
 //
 | S0Eint(int) => auxint(int)
+//
+| S0Eop1(tok) =>
+  FXITMatm(s1e0) where
+  {
+    val loc = tok.loc()
+    val s1e =
+    s1exp_make_node(loc, S1Eid(tok))
+    val s1e0 =
+    s1exp_make_node(loc0, S1Eopr(s1e))
+  }
+| S0Eop2(_, sid, _) =>
+  FXITMatm(s1e0) where
+  {
+    val-
+    I0DNTsome
+      (tok) = sid.node()
+    val loc = tok.loc()
+    val s1e =
+    s1exp_make_node(loc, S1Eid(tok))
+    val s1e0 =
+    s1exp_make_node(loc0, S1Eopr(s1e))
+  }
 //
 | S0Eapps(s0es) =>
   FXITMatm(s1e0) where
@@ -690,6 +758,20 @@ s0e0.node() of
     FXITMatm
     (s1exp_make_node(loc0, S1Eanno(s1e, s1t)))
   end // end of [S0Eanno]
+//
+| S0Equal(tok, s0e) =>
+  FXITMatm(s1e0) where
+  {
+    val s1e = s0exp_trans(s0e)
+    val s1e0 =
+    s1exp_make_node(loc0, S1Equal(tok, s1e))
+  } (* end of [S0Equal] *)
+//
+| S0Enone(_(*tok*)) =>
+  FXITMatm(s1e0) where
+  {
+    val s1e0 = s1exp_make_node(loc0, S1Enone())
+  } (* end of [S0Enone] *)
 //
 end // end of [auxitm]
 

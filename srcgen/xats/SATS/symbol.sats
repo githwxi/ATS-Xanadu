@@ -73,6 +73,10 @@ val symbol_BANGEQ : symbol // SYMBOL("!=")
 //
 (* ****** ****** *)
 
+val symbol_BACKSLASH : symbol
+
+(* ****** ****** *)
+
 val symbol__STDIN__ : symbol // SYMBOL("__STDIN__")
 val symbol__STRING__ : symbol // SYMBOL("__STRING__")
 

@@ -116,6 +116,19 @@ succ(prcdv2int(app_prcdv))
 implement
 infixtemp_prcdv = 0 // for temporary infix status
 
+(* ****** ****** *)
+
+implement
+backslash_fixty =
+FIXTYpre
+(backslash_prcdv)
+implement
+infixtemp_fixty =
+FIXTYinf
+(infixtemp_prcdv, ASSOCnon)
+
+(* ****** ****** *)
+
 implement
 the_neginf_prcdv = MINPRCDV
 implement
@@ -265,7 +278,9 @@ typedef itmlst = fxitmlst(a)
 //
 fun
 itmloc
-(itm: fxitm(a)) = fxitm_get_loc<a>(itm)
+( itm
+: fxitm(a)): loc_t =
+  fxitm_get_loc<a>(itm)
 //
 fun
 auxerr_opr
@@ -273,29 +288,30 @@ auxerr_opr
   val () = prerr (itmloc(y0))
   val () = prerr (": error(1)")
 //
-(*
   val () =
   prerr ": operator fixity cannot be resolved."
-*)
+(*
   val () =
   prerr ": auxerr_opr: operator fixity cannot be resolved."
+*)
 //
   val () = prerr_newline((*void*))
 in
   $raise($ERR.XATSOPT_FIXITY_EXN(*void*))
 end // end of [auxerr_opr]
 //
-fun auxerr_red
+fun
+auxerr_red
   (ys: itmlst): a = let
   val () = prerr (loc0)
   val () = prerr (": error(1)")
 //
-(*
   val () =
   prerr ": operator fixity cannot be resolved."
-*)
+(*
   val () =
   prerr ": auxerr_red: operator fixity cannot be resolved."
+*)
 //
   val () = prerr_newline((*void*))
 in
@@ -309,12 +325,12 @@ auxerr_app
   val () = prerr (itmloc(y0))
   val () = prerr (": error(1)")
 //
-(*
   val () =
   prerr ": application fixity cannot be resolved."
-*)
+(*
   val () =
   prerr ": auxerr_app: application fixity cannot be resolved."
+*)
 //
   val () = prerr_newline((*void*))
 in
