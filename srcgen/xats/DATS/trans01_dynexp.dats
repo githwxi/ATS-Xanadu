@@ -56,19 +56,19 @@ ENV = "./../SATS/symenv.sats"
 (* ****** ****** *)
 
 implement
-d0exp_trans
+trans01_dexp
   (d0e0) = let
 //
 val () =
 println!
-("d0exp_trans: d0e0 = ", d0e0)
+("trans01_dexp: d0e0 = ", d0e0)
 //
 in
-  exit_errmsg(1, "d0exp_trans"){d1exp}
-end (* end of [d0exp_trans] *)
+  exit_errmsg(1, "trans01_dexp"){d1exp}
+end (* end of [trans01_dexp] *)
 
 implement
-d0explst_trans
+trans01_dexplst
   (d0es) =
 list_vt2t(d1es) where
 {
@@ -78,9 +78,9 @@ list_vt2t(d1es) where
     (d0es) where
   {
     implement
-    list_map$fopr<d0exp><d1exp> = d0exp_trans
+    list_map$fopr<d0exp><d1exp> = trans01_dexp
   }
-} (* end of [d0explst_trans] *)
+} (* end of [trans01_dexplst] *)
 
 (* ****** ****** *)
 
@@ -236,11 +236,11 @@ def0.node() of
 | S0RTDEFsort(s0t) =>
   s1rtdef_make_node
   ( def0.loc()
-  , S1RTDEFsort(sort0_trans(s0t)))
+  , S1RTDEFsort(trans01_sort(s0t)))
 | S0RTDEFsubset
   (_, s0a, _, s0es, _) => let
-    val s1a = s0arg_trans(s0a)
-    val s1es = s0explst_trans(s0es)
+    val s1a = trans01_sarg(s0a)
+    val s1es = trans01_sexplst(s0es)
   in
     s1rtdef_make_node
     (def0.loc(), S1RTDEFsubset(s1a, s1es))
@@ -251,10 +251,10 @@ val-I0DNTsome(tok) = tid.node((*void*))
 //
 val () =
 println!
-("d0ecl_trans: aux_sortdef: tok = ", tok)
+("trans01_decl: aux_sortdef: tok = ", tok)
 val () =
 println!
-("d0ecl_trans: aux_sortdef: def1 = ", def1)
+("trans01_decl: aux_sortdef: def1 = ", def1)
 //
 in
   d1ecl_make_node(loc0, D1Csortdef(tok, def1))
@@ -275,23 +275,23 @@ D0Csexpdef
 , arg0
 , opt0, _, def0) = d0c0.node()
 //
-val def1 = s0exp_trans(def0)
-val opt1 = sort0opt_trans(opt0)
-val arg1 = s0marglst_trans(arg0)
+val def1 = trans01_sexp(def0)
+val opt1 = trans01_sortopt(opt0)
+val arg1 = trans01_smarglst(arg0)
 val-I0DNTsome(tok) = seid.node((*void*))
 //
 val () =
 println!
-("d0ecl_trans: aux_sexpdef: tok = ", tok)
+("trans01_decl: aux_sexpdef: tok = ", tok)
 val () =
 println!
-("d0ecl_trans: aux_sexpdef: arg1 = ", arg1)
+("trans01_decl: aux_sexpdef: arg1 = ", arg1)
 val () =
 println!
-("d0ecl_trans: aux_sexpdef: opt1 = ", opt1)
+("trans01_decl: aux_sexpdef: opt1 = ", opt1)
 val () =
 println!
-("d0ecl_trans: aux_sexpdef: def1 = ", def1)
+("trans01_decl: aux_sexpdef: def1 = ", def1)
 //
 in
   d1ecl_make_node
@@ -306,13 +306,14 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-d0ecl_trans(d0c0) = let
+trans01_decl(d0c0) = let
 //
 val
 loc0 = d0c0.loc()
+//
 val () =
 println!
-("d0ecl_trans: d0c0 = ", d0c0)
+("trans01_decl: d0c0 = ", d0c0)
 //
 in
 //
@@ -326,12 +327,21 @@ d0c0.node() of
 //
 | D0Csexpdef _ => aux_sexpdef(d0c0)
 //
-end // end of [d0ecl_trans]
+| D0Clocal
+  (_, d0cs1, _, d0cs2, _) =>
+  let
+    val d1cs1 = trans01_declist(d0cs1)
+    val d1cs2 = trans01_declist(d0cs2)
+  in
+    d1ecl_make_node(loc0, D1Clocal(d1cs1, d1cs2))
+  end // end of [D0Clocal]
+//
+end // end of [trans01_decl]
 
 (* ****** ****** *)
 
 implement
-d0eclist_trans
+trans01_declist
   (d0cs) =
 list_vt2t(d1cs) where
 {
@@ -341,9 +351,9 @@ list_vt2t(d1cs) where
     (d0cs) where
   {
     implement
-    list_map$fopr<d0ecl><d1ecl> = d0ecl_trans
+    list_map$fopr<d0ecl><d1ecl> = trans01_decl
   }
-} (* end of [d0eclist_trans] *)
+} (* end of [trans01_declist] *)
 
 end // end of [local]
 

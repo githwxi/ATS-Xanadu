@@ -83,11 +83,9 @@ sexpdef
 xyz: float = foo(0x1.abcdeP-3)
 
 (* ****** ****** *)
-////
+
 typedef + = $A.+
 typedef @ = $A.@
-////
-(* ****** ****** *)
 
 (* ****** ****** *)
 

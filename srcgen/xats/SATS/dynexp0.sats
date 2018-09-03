@@ -120,10 +120,6 @@ d0ecl_node =
 //
 | D0Ctkerr of token // HX: error
 //
-| D0Clocal of
-  ( token
-  , d0eclist, token, d0eclist, token)
-//
 | D0Csortdef of
   (token, s0tid, token, s0rtdef)
 //
@@ -140,10 +136,10 @@ d0ecl_node =
 //
 | D0Cdatatype of (token(*datatype*), d0atypelst, wd0eclseq)
 //
-(*
-| D0Cfixity of
-  (f0xty, i0dntlst) // HX: prefix, infix, postfix
-*)
+| D0Clocal of
+  ( token
+  , d0eclist, token, d0eclist, token)
+//
 | D0Cnonfix of (token, i0dntlst) // HX: absolving fixity status
 //
 | D0Cfixity of (token, precopt, i0dntlst) // HX: attaching fixity status
