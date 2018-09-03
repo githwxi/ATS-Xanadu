@@ -41,8 +41,10 @@ UN =
 //
 #staload "./../SATS/lexing.sats"
 //
-#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 //
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 //
 (* ****** ****** *)
@@ -57,10 +59,14 @@ d1exp_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 d1exp_get_loc(x) = x.d1exp_loc
 implement
 d1exp_get_node(x) = x.d1exp_node
+
+(* ****** ****** *)
 
 implement
 d1exp_make_node
@@ -68,6 +74,8 @@ d1exp_make_node
 {
   d1exp_loc= loc, d1exp_node= node
 } (* end of [d1exp_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -83,17 +91,34 @@ d1ecl_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 d1ecl_get_loc(x) = x.d1ecl_loc
 implement
 d1ecl_get_node(x) = x.d1ecl_node
 
+(* ****** ****** *)
+
+implement
+d1ecl_none
+(d0c) =
+d1ecl_make_node
+( loc
+, D1Cnone(d0c)
+) where
+{
+  val loc = d0c.loc()
+}
+//
 implement
 d1ecl_make_node
 (loc, node) = $rec
 {
   d1ecl_loc= loc, d1ecl_node= node
 } (* end of [d1ecl_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
