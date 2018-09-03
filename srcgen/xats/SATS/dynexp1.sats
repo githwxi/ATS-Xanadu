@@ -92,6 +92,8 @@ d1exp_make_node
 datatype
 d1ecl_node =
 //
+| D1Cnone of (d0ecl)
+//
 | D1Csortdef of
   (token(*id*), s1rtdef)
 //
@@ -111,8 +113,10 @@ d1ecl_node =
     (d1eclist(*head*), d1eclist(*body*))
   // end of [D1Clocal]
 //
+(*
 | D1Cfixity of (d0ecl) // updating fixity env
 | D1Cnonfix of (d0ecl) // updating fixity env
+*)
 //
 and
 abstdf1 =
@@ -142,6 +146,8 @@ overload print with print_d1ecl
 overload prerr with prerr_d1ecl
 overload fprint with fprint_d1ecl
 //
+fun
+d1ecl_none(d0c: d0ecl): d1ecl
 fun
 d1ecl_make_node
 (loc: loc_t, node: d1ecl_node): d1ecl

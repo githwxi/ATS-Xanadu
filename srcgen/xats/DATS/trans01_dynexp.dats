@@ -170,7 +170,7 @@ in
   let
     val () = loop(i0ds)
   in
-    d1ecl_make_node(loc0, D1Cfixity(d0c0))
+    d1ecl_make_node(loc0, D1Cnone(d0c0))
   end
 end // end of [aux_fixity]
 
@@ -213,7 +213,7 @@ in
   let
     val () = loop(i0ds)
   in
-    d1ecl_make_node(loc0, D1Cnonfix(d0c0))
+    d1ecl_make_node(loc0, D1Cnone(d0c0))
   end
 end // end of [aux_nonfix]
 
@@ -464,6 +464,8 @@ in
 //
 case-
 d0c0.node() of
+//
+| D0Cnone _ => d1ecl_none(d0c0)
 //
 | D0Cfixity _ => aux_fixity(d0c0)
 | D0Cnonfix _ => aux_nonfix(d0c0)
