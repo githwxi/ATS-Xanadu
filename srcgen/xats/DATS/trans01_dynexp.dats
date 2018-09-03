@@ -341,6 +341,78 @@ aux_abstdef
 
 (* ****** ****** *)
 
+fun
+aux_datasort
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cdatasort
+  ( _, d0ts) = d0c0.node()
+//
+val
+d1ts =
+list_map<d0tsort><d1tsort>
+  (d0ts) where
+{
+  implement
+  list_map$fopr<d0tsort><d1tsort>
+    (d0t) = aux_d0tsort(d0t)
+} (* end of [val] *)
+//
+val d1ts = list_vt2t{d1tsort}(d1ts)
+//
+in
+  d1ecl_make_node(loc0, D1Cdatasort(d1ts))
+end // end of [aux_datasort]
+
+and
+aux_d0tsort
+( d0t0
+: d0tsort): d1tsort =
+(
+case+
+d0t0.node() of
+| D0TSORT
+  (tid, _, s0cs) => let
+    val-
+    I0DNTsome(tok) = tid.node()
+    val
+    s1cs =
+    list_map<s0rtcon><s1rtcon>
+      (s0cs) where
+    {
+      implement
+      list_map$fopr<s0rtcon><s1rtcon>(s0c) =
+        aux_s0rtcon(s0c)
+    }
+    val s1cs = list_vt2t{s1rtcon}(s1cs)
+  in
+    d1tsort_make_node(d0t0.loc(), D1TSORT(tok, s1cs))
+  end
+)
+
+and
+aux_s0rtcon
+( s0c0
+: s0rtcon): s1rtcon =
+(
+case+
+s0c0.node() of
+| S0RTCON(sid, opt) => let
+    val-
+    I0DNTsome(tok) = sid.node()
+  in
+    s1rtcon_make_node
+      (s0c0.loc(), S1RTCON(tok, trans01_sortopt(opt)))
+    // s1rtcon_make_node
+  end // end of [S0RTCON]
+)
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 (* ****** ****** *)
@@ -369,6 +441,8 @@ d0c0.node() of
 | D0Csexpdef _ => aux_sexpdef(d0c0)
 //
 | D0Cabstype _ => aux_abstype(d0c0)
+//
+| D0Cdatasort _ => aux_datasort(d0c0)
 //
 | D0Clocal
   (_, d0cs1, _, d0cs2, _) =>

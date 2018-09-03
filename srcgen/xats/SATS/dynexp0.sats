@@ -132,9 +132,13 @@ d0ecl_node =
     (token, s0eid, t0marglst, abstdf0)
   // D0Cabstype
 //
-| D0Cdatasort of (token(*datasort*), d0tsortlst)
+| D0Cdatasort of
+    (token(*datasort*), d0tsortlst)
+  // D0Cdatasort
 //
-| D0Cdatatype of (token(*datatype*), d0atypelst, wd0eclseq)
+| D0Cdatatype of
+    (token(*datatype*), d0atypelst, wd0eclseq)
+  // D0Cdatatype
 //
 | D0Clocal of
   ( token
