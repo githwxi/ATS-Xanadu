@@ -240,6 +240,12 @@ case+ x0.node() of
 //
 | S1Eint(tok) =>
   fprint!(out, "S1Eint(", tok, ")")
+| S1Echr(tok) =>
+  fprint!(out, "S1Echr(", tok, ")")
+| S1Eflt(tok) =>
+  fprint!(out, "S1Eflt(", tok, ")")
+| S1Estr(tok) =>
+  fprint!(out, "S1Estr(", tok, ")")
 //
 | S1Eapp() =>
   fprint!(out, "S1Eapp()")

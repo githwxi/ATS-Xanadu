@@ -768,6 +768,8 @@ case+ node of
 | T_IDENT_dlr(id) => posincneol(pos1, id)
 | T_IDENT_srp(id) => posincneol(pos1, id)
 //
+| T_IDENT_qual(id) => posincneol(pos1, id)
+//
 | T_INT1(rep) => posincneol(pos1, rep)
 | T_INT2(_, rep) => posincneol(pos1, rep)
 | T_INT3(_, rep, _) => posincneol(pos1, rep)

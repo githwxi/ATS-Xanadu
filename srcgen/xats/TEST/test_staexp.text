@@ -23,7 +23,6 @@ nat = {a:int | a >= 0}
 
 sortdef
 foo =
-
 bar0( bar1 + ! !! !!! )
 
 (* ****** ****** *)
@@ -46,6 +45,9 @@ typedef int2 = $tup(int, int)
 typedef int2 = $tup_t(int, int)
 typedef int2 = $tup_vt(int, int)
 typedef point2 = @{x=int | y=int}
+typedef point2 = $rec{x=int | y=int}
+typedef point2 = $rec_t{x=int | y=int}
+typedef point2 = $rec_vt{x=int | y=int}
 
 (* ****** ****** *)
 
@@ -59,18 +61,15 @@ sexpdef A_int = $A.int
 
 (* ****** ****** *)
 
-sexpdef add_1_1 = op+(1, 1)
-sexpdef add_1_1 = op(+)(1, 1)
-sexpdef add_1_1 = 1 \op+ 1
+sexpdef one:int = 1
+sexpdef one:char = '1'
+sexpdef one:float = 1.0
+sexpdef one:string = "1"
 
 (* ****** ****** *)
-////
-(* ****** ****** *)
 
-sexpdef
-xy: int = op+(x, y)
-sexpdef
-xy: int = op(add)(x, y)
+sexpdef xy: int = op+(x, y)
+sexpdef xy: int = op(add)(x, y)
 
 (* ****** ****** *)
 
@@ -84,9 +83,11 @@ sexpdef
 xyz: float = foo(0x1.abcdeP-3)
 
 (* ****** ****** *)
-
+////
 typedef + = $A.+
 typedef @ = $A.@
+////
+(* ****** ****** *)
 
 (* ****** ****** *)
 

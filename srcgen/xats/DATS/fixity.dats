@@ -358,20 +358,21 @@ case+ ys of
   auxerr_red(ys) // HX-2018-09: deadcode?
 //
 | cons(y0, ys1) =>
-  (
-    case+ y0 of
+  ( case+ y0 of
     | FXITMatm(t0) =>
       (
         case+ ys1 of
         | nil() => t0
-        | FXITMopr(f1, FIXTYpre _) :: ys2 =>
+        | FXITMopr
+          (f1, FIXTYpre _) :: ys2 =>
           (
             resolve(f1_t0, xs, ys2) where
             {
               val f1_t0 = fxitm_prefix<a>(f1, t0)
             }
           )
-        | FXITMopr(f1, FIXTYinf(_, _)) :: ys2 =>
+        | FXITMopr
+          (f1, FIXTYinf(_, _)) :: ys2 =>
           ( case+ ys2 of
             | FXITMatm(t2) :: ys3 =>
               resolve(t2_f1_t0, xs, ys3) where
@@ -395,8 +396,7 @@ case+ ys of
         | _ (*non-pre-inf*) => auxerr_red(ys) // deadcode?
       )
     | FXITMopr(f0, fx) =>
-      (
-        case+ fx of
+      ( case+ fx of
         | FIXTYpos _ =>
           ( case+ ys1 of
             | FXITMatm(t1) :: ys2 =>
@@ -416,7 +416,7 @@ case+ ys of
           in
             yreduce(xs, FXITMatm(t0) :: ys)
           end // end of [non-FIXTYpos]
-      )
+      ) (* end of [FXITMopr] *)
   )
 ) (* end of [yreduce] *)
 //
@@ -426,18 +426,14 @@ resolve
 , xs: itmlst
 , ys: itmlst): a =
 (
-  case+ y0 of
-  | FXITMatm _ =>
-    (
-      case+ ys of
-      | FXITMatm _ :: _ =>
-        resolve_app(y0, xs, ys)
-      | _(*non-atm*) =>
-        (
-          process(xs, y0 :: ys)
-        )
-    ) (* end of [FXITMatm] *)
-  | FXITMopr(_, fx) => resolve_opr(fx, y0, xs, ys)
+case+ y0 of
+| FXITMatm _ =>
+  ( case+ ys of
+    | FXITMatm _ :: _ =>
+      resolve_app(y0, xs, ys)
+    | _(*non-FXITMatm*) => process(xs, y0 :: ys)
+  ) (* end of [FXITMatm] *)
+| FXITMopr(_, fx) => resolve_opr(fx, y0, xs, ys)
 ) (* end of [resolve] *)
 //
 and
@@ -446,46 +442,59 @@ resolve_app
 , xs: itmlst
 , ys: itmlst): a =
 (
-  case+ ys of
-  | y1 :: nil() => let
-      val app =
-        fxopr_make_app<a>(y1)
-      // end of [val]
-    in
-      process(xs, y0 :: app :: ys)
-    end
-  | y1 :: FXITMopr(_, fx1) :: _ => let
-      val p1 = fixty_prcdv(fx1)
-      val sgn = compare(app_prcdv, p1)
-    in
-      ifcase
-      | sgn > 0 => let
-          val app =
-            fxopr_make_app<a>(y1)
-          // end of [val]
-        in
-          process(xs, y0 :: app :: ys)
-        end
-      | sgn < 0 =>
-        yreduce (y0 :: xs, ys)
-      | _ (*0*) => let
-           val asc1 = fixty_assoc(fx1)
-         in
-           case+ asc1 of
-           | ASSOClft() =>
-             yreduce(y0 :: xs, ys)
-           | ASSOCnon() =>
-             yreduce(y0 :: xs, ys)
-           | ASSOCrgt() => let
-               val app =
-                 fxopr_make_app<a>(y1)
-               // end of [val]
-             in
-               process(xs, y0 :: app :: ys)
-             end
-         end // end of [_]
-    end // end of [_ :: ITERMopr :: _]
-  | _ (* error *) => auxerr_app(y0) // HX: [y0] is FXITMatm
+case+ ys of
+//
+| y1 :: nil() => let
+    val app =
+      fxopr_make_app<a>(y1)
+    // end of [val]
+  in
+    process(xs, y0 :: app :: ys)
+  end
+//
+| y1 :: FXITMopr(_, fx1) :: _ =>
+  let
+    val p1 = fixty_prcdv(fx1)
+    val sgn = compare(app_prcdv, p1)
+  in
+    ifcase
+    | sgn < 0 =>
+      (
+        yreduce(y0 :: xs, ys)
+      )
+    | sgn > 0 => let
+        val app =
+          fxopr_make_app<a>(y1)
+        // end of [val]
+      in
+        process(xs, y0 :: app :: ys)
+      end
+    | _ (*0*) => let
+        val asc =
+          fixty_assoc(fx1)
+        // end of [val]
+      in
+        case+ asc of
+        | ASSOClft() =>
+          (
+            yreduce(y0 :: xs, ys)
+          )
+        | ASSOCnon() =>
+          (
+            yreduce(y0 :: xs, ys)
+          )
+        | ASSOCrgt() => let
+            val app =
+              fxopr_make_app<a>(y1)
+            // end of [val]
+          in
+            process(xs, y0 :: app :: ys)
+          end
+      end // end of [_]
+  end // end of [_ :: ITERMopr :: _]
+//
+| _ (*error*) => auxerr_app(y0) // HX: [y0] is FXITMatm
+//
 ) (* end of [resolve_app] *)
 //
 and
@@ -498,7 +507,9 @@ resolve_opr
 case+ fx of
 //
 | FIXTYpre _ =>
-  process(xs, y0 :: ys)
+  (
+    process(xs, y0 :: ys)
+  )
 //
 | FIXTYpos _ =>
   (
@@ -515,8 +526,8 @@ case+ fx of
         (fixty_prcdv(fx), fixty_prcdv(fx1))
       in
         ifcase
-        | sgn > 0 => yreduce(xs, y0 :: ys)
         | sgn < 0 => yreduce(y0 :: xs, ys)
+        | sgn > 0 => yreduce(xs, y0 :: ys)
         | _ (*else*) => yreduce(y0 :: xs, ys)
       end
     | _ (* error *) => yreduce(y0 :: xs, ys)
@@ -553,8 +564,8 @@ case+ fx of
         (fixty_prcdv(fx), fixty_prcdv(fx1))
       in
         ifcase
-        | sgn > 0 => process(xs, y0 :: ys)
         | sgn < 0 => yreduce(y0 :: xs, ys)
+        | sgn > 0 => process(xs, y0 :: ys)
         | _ (*else*) =>
           let
             val asc1 = fixty_assoc(fx1)
@@ -566,13 +577,13 @@ case+ fx of
           end
       end
 //
-    | _ (* error *) => auxerr_opr(y0) // HX-2018-09: deadcode?
+    | _ (*error*) => auxerr_opr(y0) // HX: deadcode?
 //
   )
 //
-| FIXTYpreinf(p0, p1, a1) =>
-  (
-    case+ ys of
+| FIXTYpreinf
+  (p0, p1, a1) =>
+  ( case+ ys of
     | nil() =>
       let
         val fx = FIXTYpre(p0)
@@ -580,23 +591,23 @@ case+ fx of
       in
         resolve_opr(fx, FXITMopr(i0, fx), xs, ys)
       end
-    | cons(FXITMopr _, _) =>
+    | FXITMopr _ :: _ =>
       let
         val fx = FIXTYpre(p0)
         val-FXITMopr(i0, _(*fx*)) = y0
       in
         resolve_opr(fx, FXITMopr(i0, fx), xs, ys)
       end
-    | _ (* infix operator *) =>
+    | _(* infix-opr *) =>
       let
         val fx = FIXTYinf(p1, a1)
         val-FXITMopr(i0, _(*fx*)) = y0
       in
         resolve_opr(fx, FXITMopr(i0, fx), xs, ys)
       end
-  )
+  ) (* end of [FIXTYpreinf] *)
 //
-| FIXTYnon() => auxerr_opr(y0) // HX-2018-09: deadcode?
+| FIXTYnon((*void*)) => auxerr_opr(y0) // HX: deadcode?
 //
 ) (* end of [resolve_opr] *)
 //

@@ -308,8 +308,13 @@ sort1_make_node(loc, S1Tid(tok))
 in
 //
 case+ opt of
-| ~None_vt() => FXITMatm(s1t0)
-| ~Some_vt(fxty) => FXITMopr(s1t0, fxty)
+| ~None_vt() =>
+   FXITMatm(s1t0)
+| ~Some_vt(fxty) =>
+  (case+ fxty of
+   | $FIX.FIXTYnon() => FXITMatm(s1t0)
+   | _(*non-FIXTYnon*) => FXITMopr(s1t0, fxty)
+  ) (* end of [Some_vt] *)
 //
 end // end of [auxtid]
 
@@ -629,9 +634,14 @@ val s1e0 =
 s1exp_make_node(loc, S1Eid(tok))
 //
 in
-  case+ opt of
-  | ~None_vt() => FXITMatm(s1e0)
-  | ~Some_vt(fxty) => FXITMopr(s1e0, fxty)
+case+ opt of
+| ~None_vt() =>
+   FXITMatm(s1e0)
+| ~Some_vt(fxty) =>
+  (case+ fxty of
+   | $FIX.FIXTYnon() => FXITMatm(s1e0)
+   | _(*non-FIXTYnon*) => FXITMopr(s1e0, fxty)
+  ) (* end of [Some_vt] *)
 end // end of [auxsid_IDENT]
 
 and
@@ -662,6 +672,51 @@ in
   FXITMatm
   (s1exp_make_node(loc, S1Eint(tok)))
 end // end of [auxint]
+and
+auxchr
+( chr
+: t0chr)
+: s1eitm = let
+//
+val loc = chr.loc()
+//
+val-
+T0CHRsome(tok) = chr.node()
+//
+in
+  FXITMatm
+  (s1exp_make_node(loc, S1Echr(tok)))
+end // end of [auxchr]
+and
+auxflt
+( flt
+: t0flt)
+: s1eitm = let
+//
+val loc = flt.loc()
+//
+val-
+T0FLTsome(tok) = flt.node()
+//
+in
+  FXITMatm
+  (s1exp_make_node(loc, S1Eflt(tok)))
+end // end of [auxflt]
+and
+auxstr
+( str
+: t0str)
+: s1eitm = let
+//
+val loc = str.loc()
+//
+val-
+T0STRsome(tok) = str.node()
+//
+in
+  FXITMatm
+  (s1exp_make_node(loc, S1Estr(tok)))
+end // end of [auxstr]
 
 fun
 auxitm
@@ -672,6 +727,11 @@ auxitm
 val
 loc0 = s0e0.loc()
 //
+(*
+val () =
+println!
+("s0exp_trans: auxitm: loc0 = ", loc0)
+*)
 val () =
 println!
 ("s0exp_trans: auxitm: s0e0 = ", s0e0)
@@ -684,6 +744,9 @@ s0e0.node() of
 | S0Eid(sid) => auxsid(sid)
 //
 | S0Eint(int) => auxint(int)
+| S0Echr(chr) => auxchr(chr)
+| S0Eflt(flt) => auxflt(flt)
+| S0Estr(str) => auxstr(str)
 //
 | S0Eop1(tok) =>
   FXITMatm(s1e0) where
