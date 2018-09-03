@@ -59,10 +59,14 @@ sort1_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 sort1_get_loc(x) = x.sort1_loc
 implement
 sort1_get_node(x) = x.sort1_node
+
+(* ****** ****** *)
 
 implement
 sort1_none
@@ -74,6 +78,8 @@ sort1_make_node
 {
   sort1_loc= loc, sort1_node= node
 } (* end of [sort1_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -89,10 +95,14 @@ s1rtcon_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s1rtcon_get_loc(x) = x.s1rtcon_loc
 implement
 s1rtcon_get_node(x) = x.s1rtcon_node
+
+(* ****** ****** *)
 
 implement
 s1rtcon_make_node
@@ -100,6 +110,8 @@ s1rtcon_make_node
 {
   s1rtcon_loc= loc, s1rtcon_node= node
 } (* end of [s1rtcon_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -115,10 +127,14 @@ d1tsort_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 d1tsort_get_loc(x) = x.d1tsort_loc
 implement
 d1tsort_get_node(x) = x.d1tsort_node
+
+(* ****** ****** *)
 
 implement
 d1tsort_make_node
@@ -126,6 +142,8 @@ d1tsort_make_node
 {
   d1tsort_loc= loc, d1tsort_node= node
 } (* end of [d1tsort_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -141,10 +159,14 @@ s1rtdef_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s1rtdef_get_loc(x) = x.s1rtdef_loc
 implement
 s1rtdef_get_node(x) = x.s1rtdef_node
+
+(* ****** ****** *)
 
 implement
 s1rtdef_make_node
@@ -152,6 +174,8 @@ s1rtdef_make_node
 {
   s1rtdef_loc= loc, s1rtdef_node= node
 } (* end of [s1rtdef_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -167,10 +191,14 @@ s1arg_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s1arg_get_loc(x) = x.s1arg_loc
 implement
 s1arg_get_node(x) = x.s1arg_node
+
+(* ****** ****** *)
 
 implement
 s1arg_make_node
@@ -178,6 +206,8 @@ s1arg_make_node
 {
   s1arg_loc= loc, s1arg_node= node
 } (* end of [s1arg_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -193,10 +223,14 @@ s1marg_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s1marg_get_loc(x) = x.s1marg_loc
 implement
 s1marg_get_node(x) = x.s1marg_node
+
+(* ****** ****** *)
 
 implement
 s1marg_make_node
@@ -204,6 +238,8 @@ s1marg_make_node
 {
   s1marg_loc= loc, s1marg_node= node
 } (* end of [s1marg_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -219,10 +255,14 @@ t1arg_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 t1arg_get_loc(x) = x.t1arg_loc
 implement
 t1arg_get_node(x) = x.t1arg_node
+
+(* ****** ****** *)
 
 implement
 t1arg_make_node
@@ -230,6 +270,8 @@ t1arg_make_node
 {
   t1arg_loc= loc, t1arg_node= node
 } (* end of [t1arg_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -245,10 +287,14 @@ t1marg_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 t1marg_get_loc(x) = x.t1marg_loc
 implement
 t1marg_get_node(x) = x.t1marg_node
+
+(* ****** ****** *)
 
 implement
 t1marg_make_node
@@ -256,6 +302,8 @@ t1marg_make_node
 {
   t1marg_loc= loc, t1marg_node= node
 } (* end of [t1marg_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -277,6 +325,8 @@ implement
 s1qua_get_loc(x) = x.s1qua_loc
 implement
 s1qua_get_node(x) = x.s1qua_node
+
+(* ****** ****** *)
 
 implement
 s1qua_make_node
@@ -301,6 +351,8 @@ s1exp_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s1exp_get_loc(x) = x.s1exp_loc
 implement
@@ -316,6 +368,8 @@ s1exp_make_node
 {
   s1exp_loc= loc, s1exp_node= node
 } (* end of [s1exp_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
