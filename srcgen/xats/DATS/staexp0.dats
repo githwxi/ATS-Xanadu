@@ -221,16 +221,22 @@ l0abl_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 l0abl_get_loc(l0) = l0.l0abl_loc
 implement
 l0abl_get_node(l0) = l0.l0abl_node
+
+(* ****** ****** *)
 
 implement
 l0abl_make_node
   (loc, node) = $rec{
   l0abl_loc= loc, l0abl_node= node
 } (* end of [l0abl_make] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -291,10 +297,14 @@ sort0_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 sort0_get_loc(x) = x.sort0_loc
 implement
 sort0_get_node(x) = x.sort0_node
+
+(* ****** ****** *)
 
 implement
 sort0_make_node
@@ -302,6 +312,8 @@ sort0_make_node
 {
   sort0_loc= loc, sort0_node= node
 } (* end of [sort0_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -317,10 +329,14 @@ s0rtcon_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s0rtcon_get_loc(x) = x.s0rtcon_loc
 implement
 s0rtcon_get_node(x) = x.s0rtcon_node
+
+(* ****** ****** *)
 
 implement
 s0rtcon_make_node
@@ -328,6 +344,8 @@ s0rtcon_make_node
 {
   s0rtcon_loc= loc, s0rtcon_node= node
 } (* end of [s0rtcon_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -343,10 +361,14 @@ d0tsort_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 d0tsort_get_loc(x) = x.d0tsort_loc
 implement
 d0tsort_get_node(x) = x.d0tsort_node
+
+(* ****** ****** *)
 
 implement
 d0tsort_make_node
@@ -354,6 +376,8 @@ d0tsort_make_node
 {
   d0tsort_loc= loc, d0tsort_node= node
 } (* end of [d0tsort_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -369,10 +393,14 @@ s0rtdef_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s0rtdef_get_loc(x) = x.s0rtdef_loc
 implement
 s0rtdef_get_node(x) = x.s0rtdef_node
+
+(* ****** ****** *)
 
 implement
 s0rtdef_make_node
@@ -380,6 +408,8 @@ s0rtdef_make_node
 {
   s0rtdef_loc= loc, s0rtdef_node= node
 } (* end of [s0rtdef_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -395,10 +425,14 @@ s0arg_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s0arg_get_loc(x) = x.s0arg_loc
 implement
 s0arg_get_node(x) = x.s0arg_node
+
+(* ****** ****** *)
 
 implement
 s0arg_make_node
@@ -406,6 +440,8 @@ s0arg_make_node
 {
   s0arg_loc= loc, s0arg_node= node
 } (* end of [s0arg_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -421,10 +457,14 @@ s0marg_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 s0marg_get_loc(x) = x.s0marg_loc
 implement
 s0marg_get_node(x) = x.s0marg_node
+
+(* ****** ****** *)
 
 implement
 s0marg_make_node
@@ -432,6 +472,8 @@ s0marg_make_node
 {
   s0marg_loc= loc, s0marg_node= node
 } (* end of [s0marg_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -447,10 +489,14 @@ t0arg_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 t0arg_get_loc(x) = x.t0arg_loc
 implement
 t0arg_get_node(x) = x.t0arg_node
+
+(* ****** ****** *)
 
 implement
 t0arg_make_node
@@ -458,6 +504,8 @@ t0arg_make_node
 {
   t0arg_loc= loc, t0arg_node= node
 } (* end of [t0arg_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -473,10 +521,14 @@ t0marg_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 t0marg_get_loc(x) = x.t0marg_loc
 implement
 t0marg_get_node(x) = x.t0marg_node
+
+(* ****** ****** *)
 
 implement
 t0marg_make_node
@@ -484,6 +536,8 @@ t0marg_make_node
 {
   t0marg_loc= loc, t0marg_node= node
 } (* end of [t0marg_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -505,6 +559,8 @@ implement
 s0qua_get_loc(x) = x.s0qua_loc
 implement
 s0qua_get_node(x) = x.s0qua_node
+
+(* ****** ****** *)
 
 implement
 s0qua_make_node
@@ -536,6 +592,8 @@ s0uni_get_loc(x) = x.s0uni_loc
 implement
 s0uni_get_node(x) = x.s0uni_node
 
+(* ****** ****** *)
+
 implement
 s0uni_make_node
 (loc, node) = $rec
@@ -566,6 +624,8 @@ s0exp_get_loc(x) = x.s0exp_loc
 implement
 s0exp_get_node(x) = x.s0exp_node
 
+(* ****** ****** *)
+
 implement
 s0exp_anno_opt
 (s0e, opt) =
@@ -576,9 +636,12 @@ case+ opt of
     val
     loc = s0e.loc()+s0t.loc()
   in
-    s0exp_make_node(loc, S0Eanno(s0e, s0t))
-  end
-)
+    s0exp_make_node
+      (loc, S0Eanno(s0e, s0t))
+    // s0exp_make_node
+  end (* end of [Some] *)
+) (* end of [s0exp_anno_opt] *)
+
 implement
 s0exp_make_node
 (loc, node) = $rec
@@ -628,10 +691,14 @@ d0atcon_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 d0atcon_get_loc(x) = x.d0atcon_loc
 implement
 d0atcon_get_node(x) = x.d0atcon_node
+
+(* ****** ****** *)
 
 implement
 d0atcon_make_node
@@ -639,6 +706,8 @@ d0atcon_make_node
 {
   d0atcon_loc= loc, d0atcon_node= node
 } (* end of [d0atcon_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -654,10 +723,14 @@ d0atype_tbox = $rec{
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 d0atype_get_loc(x) = x.d0atype_loc
 implement
 d0atype_get_node(x) = x.d0atype_node
+
+(* ****** ****** *)
 
 implement
 d0atype_make_node
@@ -665,6 +738,8 @@ d0atype_make_node
 {
   d0atype_loc= loc, d0atype_node= node
 } (* end of [d0atype_make_node] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
