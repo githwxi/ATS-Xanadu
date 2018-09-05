@@ -28,47 +28,19 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
+// Start Time: September, 2018
+// Authoremail: gmhwxiATgmailDOTcom
+//
+(* ****** ****** *)
+//
+// Author: Hongwei Xi
 // Start Time: August, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-#staload "./../SATS/xerror.sats"
+#staload "./../SATS/staexp0.sats"
 
 (* ****** ****** *)
 
-local
-//
-extern
-fun
-segfault
-(
-// argless
-) : int =
-  "ext#xats_error_segfault"
-//
-in (* in-of-local *)
-
-implement
-abort() = let
-(*
-  val _ = segfault()
-*)
-in
-  $raise FatalErrorExn((*void*))
-end // end of [abort]
-
-implement
-abort_interr() = let
-(*
-  val _ = segfault()
-*)
-in
-  $raise FatalErrorExn_interr((*void*))
-end // end of [abort]
-
-end // end of [local]
-
-(* ****** ****** *)
-
-(* end of [xats_xerror.dats] *)
+(* end of [xats_synread_staexp.dats] *)

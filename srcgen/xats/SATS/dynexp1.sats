@@ -153,5 +153,31 @@ d1ecl_make_node
 (loc: loc_t, node: d1ecl_node): d1ecl
 //
 (* ****** ****** *)
+//
+fun
+print_abstdf1 : (abstdf1) -> void
+fun
+prerr_abstdf1 : (abstdf1) -> void
+fun
+fprint_abstdf1 : fprint_type(abstdf1)
+//
+overload print with print_abstdf1
+overload prerr with prerr_abstdf1
+overload fprint with fprint_abstdf1
+//
+(* ****** ****** *)
+//
+fun
+print_wd1eclseq : (wd1eclseq) -> void
+fun
+prerr_wd1eclseq : (wd1eclseq) -> void
+fun
+fprint_wd1eclseq : fprint_type(wd1eclseq)
+//
+overload print with print_wd1eclseq
+overload prerr with prerr_wd1eclseq
+overload fprint with fprint_wd1eclseq
+//
+(* ****** ****** *)
 
 (* end of [xats_dynexp1.sats] *)

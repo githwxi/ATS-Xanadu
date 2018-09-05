@@ -68,6 +68,15 @@ in
 end (* end of [trans01_dexp] *)
 
 implement
+trans01_dexpopt
+  (opt) =
+(
+case+ opt of
+| None() => None()
+| Some(d0e) => Some(trans01_dexp(d0e))
+) (* end of [trans01_dexpopt] *)
+
+implement
 trans01_dexplst
   (d0es) =
 list_vt2t(d1es) where
@@ -251,11 +260,11 @@ def0.node() of
 val-I0DNTsome(tok) = tid.node((*void*))
 //
 val () =
-println!
-("trans01_decl: aux_sortdef: tok = ", tok)
+println!("trans01_decl: ")
 val () =
-println!
-("trans01_decl: aux_sortdef: def1 = ", def1)
+println!("aux_sortdef: tok = ", tok)
+val () =
+println!("aux_sortdef: def1 = ", def1)
 //
 in
   d1ecl_make_node(loc0, D1Csortdef(tok, def1))
@@ -283,17 +292,15 @@ val arg1 = trans01_smarglst(arg0)
 val-I0DNTsome(tok) = seid.node((*void*))
 //
 val () =
-println!
-("trans01_decl: aux_sexpdef: tok = ", tok)
+println!("trans01_decl")
 val () =
-println!
-("trans01_decl: aux_sexpdef: arg1 = ", arg1)
+println!("aux_sexpdef: tok = ", tok)
 val () =
-println!
-("trans01_decl: aux_sexpdef: opt1 = ", opt1)
+println!("aux_sexpdef: arg1 = ", arg1)
 val () =
-println!
-("trans01_decl: aux_sexpdef: def1 = ", def1)
+println!("aux_sexpdef: opt1 = ", opt1)
+val () =
+println!("aux_sexpdef: def1 = ", def1)
 //
 in
   d1ecl_make_node
@@ -318,6 +325,15 @@ D0Cabstype
 val def1 = aux_abstdef(def0)
 val arg1 = trans01_tmarglst(arg0)
 val-I0DNTsome(tok) = seid.node((*void*))
+//
+val () =
+println!("trans01_d0ecl: ")
+val () =
+println!("aux_abstype: tok = ", tok)
+val () =
+println!("aux_abstype: arg1 = ", arg1)
+val () =
+println!("aux_abstype: def1 = ", def1)
 //
 in
   d1ecl_make_node

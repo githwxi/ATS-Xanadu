@@ -573,7 +573,7 @@ typedef t0marglst = List0(t0marg)
 //
 datatype
 t0marg_node =
-| T0MARGnone of token(*sort*)
+| T0MARGnone of token(*error*)
 | T0MARGlist of
   (token(*'('*), t0arglst, token(*')'*))
 //

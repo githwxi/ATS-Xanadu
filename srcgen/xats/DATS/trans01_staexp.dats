@@ -559,25 +559,20 @@ trans01_tmarg
 //
 val
 loc0 = t0ma.loc()
-val
-t1ma_node =
-(
-case+
-t0ma.node() of
-| T0MARGnone
-  (tok) =>
-  T1MARGnone(tok)
-| T0MARGlist
-  (_, t0as, _) =>
-  T1MARGlist(t1as) where
-  {
-    val
-    t1as = trans01_targlst(t0as)
-  }
-) : t1marg_node // end-of-val
 //
 in
-  t1marg_make_node(loc0, t1ma_node)
+//
+case-
+t0ma.node() of
+(*
+| T0MARGnone(tok) => ...
+*)
+| T0MARGlist(_, t0as, _) => let
+    val t1as = trans01_targlst(t0as)
+  in
+    t1marg_make_node(loc0, T1MARGlist(t1as))
+  end // end of [T0MARGlist]
+//
 end // end of [trans01_tmarg]
 
 (* ****** ****** *)
@@ -1119,6 +1114,8 @@ list_map<s0exp><s1exp>
   list_map$fopr<s0exp><s1exp> = trans01_sexp
 }
 } (* end of [trans01_sexplst] *)
+
+(* ****** ****** *)
 
 implement
 trans01_lsexp
