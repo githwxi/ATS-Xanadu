@@ -247,6 +247,8 @@ overload trans01 with trans01_lsexplst
 fun
 trans01_dexp: d0exp -> d1exp
 fun
+trans01_dexpopt: d0expopt -> d1expopt
+fun
 trans01_dexplst: d0explst -> d1explst
 //
 (*

@@ -101,8 +101,8 @@ vtypedef int12 = ${x=int | y=int, z=int}
 
 (* ****** ****** *)
 
-absview array_v(a:vtype+)
-absprop array_p(a:vtype+)
+absview array_v(vtype+)
+absprop array_p(vtype+)
 
 (* ****** ****** *)
 
@@ -116,7 +116,9 @@ arrayptr
 (* ****** ****** *)
 //
 abstype
-foo(a)(b) == list(a, b) // illegal
+foo
+(a:type)
+(b:type) == list(a, b) // illegal
 //
 (* ****** ****** *)
 //

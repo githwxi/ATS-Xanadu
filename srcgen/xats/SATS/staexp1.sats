@@ -285,6 +285,9 @@ typedef t1arglst = List0(t1arg)
 //
 datatype
 t1arg_node =
+(*
+| T1ARGnone of ()
+*)
 | T1ARGsome of (sort1, tokenopt)
 //
 fun
@@ -315,7 +318,9 @@ typedef t1marglst = List0(t1marg)
 //
 datatype
 t1marg_node =
-| T1MARGnone of token(*sort*)
+(*
+| T1MARGnone of token(*error*)
+*)
 | T1MARGlist of t1arglst(*arglst*)
 //
 fun

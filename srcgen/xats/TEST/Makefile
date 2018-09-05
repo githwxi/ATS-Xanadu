@@ -36,9 +36,6 @@ all::
 
 ######
 
-SATS=\
-./../SATS/xerror.sats \
-
 all:: \
 test_xats_main
 test_xats_main: \
@@ -49,6 +46,11 @@ $(PATSCC) \
 -DATS_MEMALLOC_LIBC \
 -I./.. -o $@ $(SATS) $<
 regress:: ; ./test_xats_main_dats
+
+######
+
+SATS=\
+./../SATS/xerrory.sats \
 
 ######
 

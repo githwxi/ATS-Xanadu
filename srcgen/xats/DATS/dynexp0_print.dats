@@ -166,10 +166,10 @@ case+ x0.node() of
   , tok, "; ", sid, "; "
   , arg, "; ", opt, "; ", tok1, "; ", tdef, ")")
 //
-| D0Cabstype(tok, sid, s0mas, tdef) =>
+| D0Cabstype(tok, sid, arg0, tdef) =>
   fprint!
   ( out, "D0Cabstype("
-  , tok, "; ", sid, "; ", s0mas, "; ", tdef, ")")
+  , tok, "; ", sid, "; ", arg0, "; ", tdef, ")")
 //
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")

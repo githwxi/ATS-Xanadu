@@ -63,6 +63,13 @@ fprint_val<s1marg> = fprint_s1marg
 (* ****** ****** *)
 
 implement
+fprint_val<t1arg> = fprint_t1arg
+implement
+fprint_val<t1marg> = fprint_t1marg
+
+(* ****** ****** *)
+
+implement
 fprint_val<s1qua> = fprint_s1qua
 
 (* ****** ****** *)
@@ -134,11 +141,11 @@ fprint_s1arg
 case+
 x0.node() of
 (*
-| S1ARGnone(tok) =>
-  fprint!(out, "S1ARGnone(", tok, ")")
+| S1ARGnone() =>
+  fprint!(out, "S1ARGnone()")
 *)
-| S1ARGsome(sid, opt) =>
-  fprint!(out, "S1ARGsome(", sid, ", ", opt, ")")
+| S1ARGsome(tok, opt) =>
+  fprint!(out, "S1ARGsome(", tok, ", ", opt, ")")
 ) (* fprint_s1arg *)
 
 (* ****** ****** *)
@@ -170,6 +177,60 @@ x0.node() of
 | S1MARGlist(s1as) =>
   fprint!(out, "S1MARGlist(", s1as, ")")
 ) (* fprint_s1marg *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_t1arg(x0) =
+fprint_t1arg(stdout_ref, x0)
+implement
+prerr_t1arg(x0) =
+fprint_t1arg(stderr_ref, x0)
+
+implement
+fprint_t1arg
+  (out, x0) =
+(
+case+
+x0.node() of
+(*
+| T1ARGnone() =>
+  fprint!(out, "T1ARGnone()")
+*)
+| T1ARGsome(tok, opt) =>
+  fprint!(out, "T1ARGsome(", tok, ", ", opt, ")")
+) (* fprint_t1arg *)
+
+(* ****** ****** *)
+
+implement
+print_t1marg(x0) =
+fprint_t1marg(stdout_ref, x0)
+implement
+prerr_t1marg(x0) =
+fprint_t1marg(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<t1arg> = fprint_t1arg
+
+in (* in-of-local *)
+
+implement
+fprint_t1marg
+  (out, x0) =
+(
+case+
+x0.node() of
+(*
+| T1MARGnone _ => ...
+*)
+| T1MARGlist(t1as) =>
+  fprint!(out, "T1MARGlist(", t1as, ")")
+) (* fprint_t1marg *)
 
 end // end of [local]
 
