@@ -54,6 +54,47 @@
 //
 (* ****** ****** *)
 //
+datatype
+valkind =
+| VLKval // val
+//
+| VLKvalp // val+
+| VLKvaln // val-
+(*
+| VLKmcval // mcval: for model-checking
+*)
+| VLKprval // prval: for theorem-proving
+// end of [valkind]
+//
+fun
+fprint_valkind:fprint_type(valkind)
+overload fprint with fprint_valkind
+//
+(* ****** ****** *)
+
+datatype
+funkind =
+//
+| FNKfn0 // nonrec fun
+| FNKfnx // tailrec fun
+| FNKfn1 // recursive fun
+| FNKfun // recursive fun
+//
+| FNKprfn0 // nonrec proof fun
+| FNKprfn1 // recursive proof fun
+| FNKprfun // recursive proof fun
+//
+| FNKpraxi // proof axiom
+//
+| FNKcastfn // casting fun
+// end of [funkind]
+//
+fun
+fprint_funkind:fprint_type(funkind)
+overload fprint with fprint_funkind
+//
+(* ****** ****** *)
+//
 typedef
 eq_type(a:t0ype) = (a, a) -> bool
 typedef

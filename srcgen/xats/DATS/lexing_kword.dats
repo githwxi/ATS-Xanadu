@@ -46,6 +46,33 @@ UN =
 (* ****** ****** *)
 //
 macdef
+T_FN_ = T_FUN(FNKfn0)
+macdef
+T_FN0_ = T_FUN(FNKfn0)
+macdef
+T_FNX_ = T_FUN(FNKfnx)
+macdef
+T_FN1_ = T_FUN(FNKfn1)
+macdef
+T_FUN_ = T_FUN(FNKfn1)
+//
+macdef
+T_PRFN_ = T_FUN(FNKprfn0)
+macdef
+T_PRFN0_ = T_FUN(FNKprfn0)
+macdef
+T_PRFN1_ = T_FUN(FNKprfn1)
+macdef
+T_PRFUN_ = T_FUN(FNKprfn1)
+macdef
+T_PRAXI_ = T_FUN(FNKpraxi)
+//
+macdef
+T_CASTFN_ = T_FUN(FNKcastfn)
+//
+(* ****** ****** *)
+//
+macdef
 T_SEXPDEF_ = T_SEXPDEF(0)
 macdef
 T_PROPDEF_ = T_SEXPDEF(PROPSORT)
@@ -178,6 +205,12 @@ val () = myins("if", T_IF)
 val () = myins("sif", T_IF)
 val () = myins("then", T_THEN)
 val () = myins("else", T_ELSE)
+//
+val () = myins("fn", T_FN_)
+val () = myins("fn0", T_FN0_)
+val () = myins("fnx", T_FNX_)
+val () = myins("fn1", T_FN1_)
+val () = myins("fun", T_FUN_)
 //
 val () = myins("sortdef", T_SORTDEF)
 //
