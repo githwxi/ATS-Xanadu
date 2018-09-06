@@ -188,4 +188,8 @@ typedef foo = bar2 * bar2
 
 (* ****** ****** *)
 
+fun foo(x: int): int = #mac"C$foo"
+
+(* ****** ****** *)
+
 (* end of [test_staexp.text] *)

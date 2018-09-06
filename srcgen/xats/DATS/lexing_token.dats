@@ -237,6 +237,9 @@ case+ tnd of
 | T_FIX(knd) =>
   fprint!(out, "FIX(", knd, ")")
 //
+| T_FUN(fnk) =>
+  fprint!(out, "FUN(", fnk, ")")
+//
 | T_SORTDEF() =>
   fprint!(out, "SORTDEF()")
 //
@@ -425,15 +428,18 @@ case+ tnd of
 | T_ENDWHERE() => fprint(out, "endwhere")
 | T_ENDLOCAL() => fprint(out, "endlocal")
 //
+| T_IF() => fprint(out, "if")
+| T_SIF() => fprint(out, "sif")
+| T_THEN() => fprint(out, "then")
+| T_ELSE() => fprint(out, "else")
+//
 | T_LAM(knd) =>
   fprint!(out, "lam(", knd, ")")
 | T_FIX(knd) =>
   fprint!(out, "fix(", knd, ")")
 //
-| T_IF() => fprint(out, "if")
-| T_SIF() => fprint(out, "sif")
-| T_THEN() => fprint(out, "then")
-| T_ELSE() => fprint(out, "else")
+| T_FUN(fnk) =>
+  fprint!(out, "FUN(", fnk, ")")
 //
 | T_SORTDEF() =>
   fprint!(out, "sortdef")

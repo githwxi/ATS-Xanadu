@@ -34,13 +34,54 @@
 (* ****** ****** *)
 //
 #staload
+"./../SATS/basics.sats"
+//
+(* ****** ****** *)
+//
+#staload
 UN =
 "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+
+implement
+fprint_valkind
+  (out, vlk) =
+(
 //
-#staload "./../SATS/basics.sats"
+case+ vlk of
+| VLKval() => fprint(out, "VLKval")
+| VLKvalp() => fprint(out, "VLKvalp")
+| VLKvaln() => fprint(out, "VLKvaln")
+(*
+| VLKmcval() => fprint(out, "VLKprval")
+*)
+| VLKprval() => fprint(out, "VLKprval")
 //
+) (* end of [fprint_valkind] *)
+
+(* ****** ****** *)
+
+implement
+fprint_funkind
+  (out, fnk) =
+(
+//
+case+ fnk of
+| FNKfn0() => fprint(out, "FNKfn0")
+| FNKfnx() => fprint(out, "FNKfnx")
+| FNKfn1() => fprint(out, "FNKfn1")
+| FNKfun() => fprint(out, "FNKfun")
+//
+| FNKprfn0() => fprint(out, "FNKprfn0")
+| FNKprfn1() => fprint(out, "FNKprfn1")
+| FNKprfun() => fprint(out, "FNKprfun")
+| FNKpraxi() => fprint(out, "FNKpraxi")
+//
+| FNKcastfn() => fprint(out, "FNKcastfn")
+//
+) (* end of [fprint_funkind] *)
+
 (* ****** ****** *)
 
 local
