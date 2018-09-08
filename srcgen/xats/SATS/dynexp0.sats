@@ -66,6 +66,71 @@ typedef labd0exp = dl0abeled(d0exp)
 typedef labd0explst = List0(labd0exp)
 
 (* ****** ****** *)
+//
+abstbox a0typ_tbox = ptr
+typedef a0typ = a0typ_tbox
+typedef a0typlst = List0(a0typ)
+typedef a0typopt = Option(a0typ)
+typedef a0typlstopt = Option(a0typlst)
+//
+datatype
+a0typ_node =
+  | A0TYPnone of token
+  | A0TYPsome of (d0eid, s0expopt)
+//
+fun
+a0typ_get_loc(a0typ): loc_t
+fun
+a0typ_get_node(a0typ): a0typ_node
+//
+overload .loc with a0typ_get_loc
+overload .node with a0typ_get_node
+//
+fun print_a0typ : print_type(a0typ)
+fun prerr_a0typ : prerr_type(a0typ)
+fun fprint_a0typ : fprint_type(a0typ)
+//
+overload print with print_a0typ
+overload prerr with prerr_a0typ
+overload fprint with fprint_a0typ
+//
+fun
+a0typ_make_node
+(loc: loc_t, node: a0typ_node): a0typ
+//
+(* ****** ****** *)
+//
+abstbox d0arg_tbox = ptr
+typedef d0arg = d0arg_tbox
+typedef d0arglst = List0(d0arg)
+//
+datatype
+d0arg_node =
+| D0Anone of token
+| D0Asome_sta of s0qualst
+| D0Asome_dyn of (a0typlst, a0typlstopt)
+//
+fun
+d0arg_get_loc(d0arg): loc_t
+fun
+d0arg_get_node(d0arg): d0arg_node
+//
+overload .loc with d0arg_get_loc
+overload .node with d0arg_get_node
+//
+fun print_d0arg : print_type(d0arg)
+fun prerr_d0arg : prerr_type(d0arg)
+fun fprint_d0arg : fprint_type(d0arg)
+//
+overload print with print_d0arg
+overload prerr with prerr_d0arg
+overload fprint with fprint_d0arg
+//
+fun
+d0arg_make_node
+(loc: loc_t, node: d0arg_node): d0arg
+//
+(* ****** ****** *)
 
 datatype
 d0exp_node =

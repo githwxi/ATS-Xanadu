@@ -53,6 +53,24 @@
 #define VTFLATSORT 0
 //
 (* ****** ****** *)
+
+datatype
+dctkind =
+| DCKfun of ()
+| DCKval of ()
+| DCKpraxi of ()
+| DCKprfun of ()
+| DCKprval of ()
+| DCKcastfn of ()
+// end of [dcstkind]
+
+(* ****** ****** *)
+//
+fun
+fprint_dctkind:fprint_type(dctkind)
+overload fprint with fprint_dctkind
+//
+(* ****** ****** *)
 //
 datatype
 valkind =
