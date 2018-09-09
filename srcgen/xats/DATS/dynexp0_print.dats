@@ -50,15 +50,66 @@ UN =
 implement
 fprint_val<token> = fprint_token
 //
+(* ****** ****** *)
+//
+implement
+fprint_val<s0exp> = fprint_s0exp
+implement
+fprint_val<s0qua> = fprint_s0qua
+//
+(* ****** ****** *)
+//
 implement
 fprint_val<d0exp> = fprint_d0exp
+//
+implement
+fprint_val<a0typ> = fprint_a0typ
+implement
+fprint_val<d0arg> = fprint_d0arg
+//
+(* ****** ****** *)
+//
 implement
 fprint_val<d0ecl> = fprint_d0ecl
+//
+(* ****** ****** *)
 //
 implement
 (a)//tmp
 fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
 //
+(* ****** ****** *)
+
+implement
+fprint_a0typ
+  (out, x0) =
+(
+//
+case+ x0.node() of
+| A0TYPnone(tok) =>
+  fprint!(out, "A0TYPnone(", tok, ")")
+| A0TYPsome(id, opt) =>
+  fprint!(out, "A0TYPsome(", id, "; ", opt, ")")
+//
+) (* end of [fprint_a0typ] *)
+
+(* ****** ****** *)
+
+implement
+fprint_d0arg
+  (out, x0) =
+(
+//
+case+ x0.node() of
+| D0ARGnone(tok) =>
+  fprint!(out, "D0ARGnone(", tok, ")")
+| D0ARGsome_sta(s0qs) =>
+  fprint!(out, "D0ARGsome_sta(", s0qs, ")")
+| D0ARGsome_dyn(arg0, opt1) =>
+  fprint!(out, "D0ARGsome_dyn(", arg0, "; ", opt1, ")")
+//
+) (* end of [fprint_d0arg] *)
+
 (* ****** ****** *)
 
 implement
