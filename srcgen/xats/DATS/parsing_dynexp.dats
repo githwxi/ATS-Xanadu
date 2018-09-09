@@ -99,6 +99,48 @@ list_vt2t
 (* ****** ****** *)
 
 implement
+t_d0pid(tnd) =
+(
+case+ tnd of
+| T_IDENT_alp _ => true
+| T_IDENT_sym _ => true
+| T_BACKSLASH() => true
+| _ (* non-IDENT *) => false
+)
+
+implement
+p_d0pid(buf, err) =
+let
+//
+val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_IDENT_alp _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | T_IDENT_sym _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+//
+  | T_BACKSLASH() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+//
+  | _ (* non-IDENT *) =>
+    (err := err + 1; i0dnt_none(tok))
+end // end of [p_d0pid]
+
+(* ****** ****** *)
+
+implement
 t_d0eid(tnd) =
 (
 case+ tnd of
@@ -320,7 +362,9 @@ end // end of [p_labd0exp]
 
 (* ****** ****** *)
 
-
+extern
+fun
+p_d0expseq: parser(d0explst)
 implement
 p_d0expseq
   (buf, err) =

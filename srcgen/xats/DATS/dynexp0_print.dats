@@ -94,6 +94,20 @@ case+ x0.node() of
 ) (* end of [fprint_a0typ] *)
 
 (* ****** ****** *)
+//
+fun
+fprint_a0typlstopt
+( out: FILEref
+, opt: a0typlstopt): void =
+(
+case+ opt of
+| None() => fprint!(out, "None()")
+| Some(a0ts) => fprint!(out, "Some(", a0ts, ")")
+)
+//
+overload fprint with fprint_a0typlstopt of 100
+//
+(* ****** ****** *)
 
 implement
 fprint_d0arg
