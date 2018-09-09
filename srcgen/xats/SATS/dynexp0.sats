@@ -112,6 +112,10 @@ tq0arg_node =
   | TQ0ARGsome of
     (token(*'<'*), q0arglst, token(*'>'*))
 //
+fun
+tq0arg_make_node
+(loc: loc_t, node: tq0arg_node): tq0arg
+//
 (* ****** ****** *)
 //
 abstbox a0typ_tbox = ptr
