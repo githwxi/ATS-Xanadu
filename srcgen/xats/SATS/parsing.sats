@@ -181,6 +181,8 @@ parser(res:t@ype) =
 fun
 p_EQ: parser(token)
 fun
+p_GT: parser(token)
+fun
 p_BAR: parser(token)
 fun
 p_EQGT: parser(token)

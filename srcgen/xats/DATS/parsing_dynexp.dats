@@ -287,10 +287,10 @@ tok.node() of
 | _(* non-LT *) =>
   (
     err := e0 + 1;
-    tq0arg_make_node(tok.loc(), TQ0ARGnone())
+    tq0arg_make_node(tok.loc(), TQ0ARGnone(tok))
   )
 //
-end // end of [p_q0marg]
+end // end of [p_tq0arg]
 //
 (* ****** ****** *)
 (*
