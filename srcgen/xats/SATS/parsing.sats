@@ -71,6 +71,7 @@ STAEXP0 = "./staexp0.sats"
 //
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
+  typedef d0pid = $STAEXP0.d0pid
   typedef d0eid = $STAEXP0.d0eid
 //
   typedef sort0 = $STAEXP0.sort0
@@ -100,11 +101,13 @@ STAEXP0 = "./staexp0.sats"
 DYNEXP0 = "./dynexp0.sats"
 //
   typedef d0exp = $DYNEXP0.d0exp
-  typedef d0ecl = $DYNEXP0.d0ecl
-  typedef d0explst = List0(d0exp)
-  typedef d0eclist = List0(d0ecl)
+//
+  typedef d0arg = $DYNEXP0.d0arg
 //
   typedef labd0exp = $DYNEXP0.labd0exp
+//
+  typedef d0ecl = $DYNEXP0.d0ecl
+  typedef d0eclist = List0(d0ecl)
 //
 (* ****** ****** *)
 //
@@ -248,6 +251,7 @@ fun t_d0eid(tnode): bool
 fun p_s0tid: parser(s0tid)
 fun p_s0eid: parser(s0eid)
 //
+fun p_d0pid: parser(d0pid)
 fun p_d0eid: parser(d0eid)
 //
 (* ****** ****** *)
@@ -364,8 +368,6 @@ fun p_d0exp : parser(d0exp)
 labd0exp ::= l0abl EQ d0exp
 *)
 fun p_labd0exp : parser(labd0exp)
-//
-fun p_d0expseq : parser(d0explst)
 //
 (* ****** ****** *)
 

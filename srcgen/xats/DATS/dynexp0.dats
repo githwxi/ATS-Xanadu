@@ -50,6 +50,70 @@ UN =
 local
 
 absimpl
+a0typ_tbox = $rec{
+  a0typ_loc= loc_t
+, a0typ_node= a0typ_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+a0typ_get_loc(x) = x.a0typ_loc
+implement
+a0typ_get_node(x) = x.a0typ_node
+
+(* ****** ****** *)
+
+implement
+a0typ_make_node
+(loc, node) = $rec
+{
+  a0typ_loc= loc, a0typ_node= node
+} (* end of [a0typ_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d0arg_tbox = $rec{
+  d0arg_loc= loc_t
+, d0arg_node= d0arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d0arg_get_loc(x) = x.d0arg_loc
+implement
+d0arg_get_node(x) = x.d0arg_node
+
+(* ****** ****** *)
+
+implement
+d0arg_make_node
+(loc, node) = $rec
+{
+  d0arg_loc= loc, d0arg_node= node
+} (* end of [d0arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d0exp_tbox = $rec{
   d0exp_loc= loc_t
 , d0exp_node= d0exp_node

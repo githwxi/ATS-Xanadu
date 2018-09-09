@@ -106,9 +106,9 @@ typedef d0arglst = List0(d0arg)
 //
 datatype
 d0arg_node =
-| D0Anone of token
-| D0Asome_sta of s0qualst
-| D0Asome_dyn of (a0typlst, a0typlstopt)
+| D0ARGnone of token
+| D0ARGsome_sta of s0qualst
+| D0ARGsome_dyn of (a0typlst, a0typlstopt)
 //
 fun
 d0arg_get_loc(d0arg): loc_t

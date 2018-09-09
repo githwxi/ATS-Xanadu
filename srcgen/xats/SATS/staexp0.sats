@@ -92,6 +92,8 @@ typedef i0dnt = i0dnt_tbox
 //
 typedef s0tid = i0dnt_tbox
 typedef s0eid = i0dnt_tbox
+//
+typedef d0pid = i0dnt_tbox
 typedef d0eid = i0dnt_tbox
 //
 typedef l0abl = l0abl_tbox
