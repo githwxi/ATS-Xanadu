@@ -67,6 +67,53 @@ typedef labd0explst = List0(labd0exp)
 
 (* ****** ****** *)
 //
+abstbox q0arg_tbox = ptr
+//
+typedef q0arg = q0arg_tbox
+typedef q0arglst = List0(q0arg)
+//
+datatype
+q0arg_node =
+(*
+  | Q0ARGnone of token
+*)
+  | Q0ARGsome of (s0exp, tokenopt)
+//
+fun
+q0arg_get_loc(q0arg): loc_t
+fun
+q0arg_get_node(q0arg): q0arg_node
+//
+overload .loc with q0arg_get_loc
+overload .node with q0arg_get_node
+//
+fun print_q0arg : print_type(q0arg)
+fun prerr_q0arg : prerr_type(q0arg)
+fun fprint_q0arg : fprint_type(q0arg)
+//
+overload print with print_q0arg
+overload prerr with prerr_q0arg
+overload fprint with fprint_q0arg
+//
+fun
+q0arg_make_node
+(loc: loc_t, node: q0arg_node): q0arg
+//
+(* ****** ****** *)
+//
+abstbox tq0arg_tbox = ptr
+//
+typedef tq0arg = tq0arg_tbox
+typedef tq0arglst = List0(tq0arg)
+//
+datatype
+tq0arg_node =
+  | TQ0ARGnone of token
+  | TQ0ARGsome of
+    (token(*'<'*), q0arglst, token(*'>'*))
+//
+(* ****** ****** *)
+//
 abstbox a0typ_tbox = ptr
 typedef a0typ = a0typ_tbox
 typedef a0typlst = List0(a0typ)
@@ -75,8 +122,10 @@ typedef a0typlstopt = Option(a0typlst)
 //
 datatype
 a0typ_node =
+(*
   | A0TYPnone of token
-  | A0TYPsome of (d0eid, s0expopt)
+*)
+  | A0TYPsome of (s0exp, tokenopt)
 //
 fun
 a0typ_get_loc(a0typ): loc_t
@@ -107,8 +156,10 @@ typedef d0arglst = List0(d0arg)
 datatype
 d0arg_node =
 | D0ARGnone of token
-| D0ARGsome_sta of s0qualst
-| D0ARGsome_dyn of (a0typlst, a0typlstopt)
+| D0ARGsome_sta of
+  (token, s0qualst, token)
+| D0ARGsome_dyn of
+  (token, a0typlst, a0typlstopt, token)
 //
 fun
 d0arg_get_loc(d0arg): loc_t
@@ -177,6 +228,26 @@ d0exp_make_node
 (loc: loc_t, node: d0exp_node): d0exp
 //
 (* ****** ****** *)
+//
+datatype
+d0cstdec =
+D0CSTDEC of @{
+  loc= loc_t
+, nam= token
+, arg= d0arglst
+, res= s0expopt
+, def= d0cstdf0
+}
+and
+d0cstdf0 =
+| D0CSTDF0none
+| D0CSTDF0some of
+  (token(*EQ*), d0exp)
+//
+typedef
+d0cstdeclst = List0(d0cstdec)
+//
+(* ****** ****** *)
 
 datatype
 d0ecl_node =
@@ -204,6 +275,9 @@ d0ecl_node =
 | D0Cdatatype of
     (token(*datatype*), d0atypelst, wd0eclseq)
   // D0Cdatatype
+//
+| D0Cdynconst of
+    (token(* dctkind *), q0arglst, d0cstdeclst)
 //
 | D0Clocal of
   ( token

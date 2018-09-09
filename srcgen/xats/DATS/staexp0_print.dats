@@ -67,23 +67,28 @@ fprint_val<l0abl> = fprint_l0abl
 
 implement
 fprint_val<sort0> = fprint_sort0
-implement
-fprint_val<s0rtcon> = fprint_s0rtcon
-implement
-fprint_val<d0tsort> = fprint_d0tsort
 
 (* ****** ****** *)
 
 implement
+fprint_val<s0rtcon> = fprint_s0rtcon
+implement
+fprint_val<d0tsort> = fprint_d0tsort
+implement
+fprint_val<s0rtdef> = fprint_s0rtdef
+
+(* ****** ****** *)
+//
+implement
 fprint_val<s0arg> = fprint_s0arg
 implement
 fprint_val<s0marg> = fprint_s0marg
-
+//
 implement
 fprint_val<t0arg> = fprint_t0arg
 implement
 fprint_val<t0marg> = fprint_t0marg
-
+//
 (* ****** ****** *)
 
 implement
@@ -310,27 +315,6 @@ case+ x0.node() of
 (* ****** ****** *)
 
 implement
-print_s0arg(x0) =
-fprint_s0arg(stdout_ref, x0)
-implement
-prerr_s0arg(x0) =
-fprint_s0arg(stderr_ref, x0)
-
-implement
-fprint_s0arg
-  (out, x0) =
-(
-case+
-x0.node() of
-| S0ARGnone(tok) =>
-  fprint!(out, "S0ARGnone(", tok, ")")
-| S0ARGsome(sid, opt) =>
-  fprint!(out, "S0ARGsome(", sid, ", ", opt, ")")
-) (* fprint_s0arg *)
-
-(* ****** ****** *)
-
-implement
 print_s0rtdef(x0) =
 fprint_s0rtdef(stdout_ref, x0)
 implement
@@ -352,11 +336,32 @@ case+ x0.node() of
 (* ****** ****** *)
 
 implement
+print_s0arg(x0) =
+fprint_s0arg(stdout_ref, x0)
+implement
+prerr_s0arg(x0) =
+fprint_s0arg(stderr_ref, x0)
+
+implement
 print_s0marg(x0) =
 fprint_s0marg(stdout_ref, x0)
 implement
 prerr_s0marg(x0) =
 fprint_s0marg(stderr_ref, x0)
+
+implement
+fprint_s0arg
+  (out, x0) =
+(
+case+
+x0.node() of
+| S0ARGnone(tok) =>
+  fprint!(out, "S0ARGnone(", tok, ")")
+| S0ARGsome(sid, opt) =>
+  fprint!
+  (out
+  , "S0ARGsome(", sid, ", ", opt, ")")
+) (* fprint_s0arg *)
 
 implement
 fprint_s0marg
@@ -365,9 +370,11 @@ fprint_s0marg
 case+
 x0.node() of
 | S0MARGnone(tok) =>
-  fprint!(out, "S0MARGnone(", tok, ")")
+  fprint!
+  (out, "S0MARGnone(", tok, ")")
 | S0MARGsing(tid) =>
-  fprint!(out, "S0MARGsing(", tid, ")")
+  fprint!
+  (out, "S0MARGsing(", tid, ")")
 | S0MARGlist(tbeg, s0as, tend) =>
   fprint!
   (out, "S0MARGlist(", tbeg, "; ", s0as, "; ", tend, ")")
@@ -383,23 +390,23 @@ prerr_t0arg(x0) =
 fprint_t0arg(stderr_ref, x0)
 
 implement
+print_t0marg(x0) =
+fprint_t0marg(stdout_ref, x0)
+implement
+prerr_t0marg(x0) =
+fprint_t0marg(stderr_ref, x0)
+
+implement
 fprint_t0arg
   (out, x0) =
 (
 case+
 x0.node() of
 | T0ARGsome(s0t, opt) =>
-  fprint!(out, "T0ARGsome(", s0t, ", ", opt, ")")
+  fprint!
+  (out
+  , "T0ARGsome(", s0t, ", ", opt, ")")
 ) (* fprint_t0arg *)
-
-(* ****** ****** *)
-
-implement
-print_t0marg(x0) =
-fprint_t0marg(stdout_ref, x0)
-implement
-prerr_t0marg(x0) =
-fprint_t0marg(stderr_ref, x0)
 
 implement
 fprint_t0marg
@@ -413,21 +420,6 @@ x0.node() of
   fprint!
   (out, "T0MARGlist(", tbeg, ", ", t0as, ", ", tend, ")")
 ) (* fprint_t0marg *)
-
-(* ****** ****** *)
-
-implement
-{a}(*tmp*)
-fprint_sl0abeled
-  (out, x0) = let
-//
-val+SL0ABELED(l0, t0, x1) = x0
-//
-in
-  fprint!(out, "SL0ABELED(");
-  fprint!(out, l0, ", ", t0, ", ");
-  fprint_val<a>(out, x1); fprint!(out, ")")
-end // end of [fprint_sl0abeled]
 
 (* ****** ****** *)
 
@@ -470,6 +462,21 @@ case+ x0.node() of
   fprint!
   (out, "S0UNIsome(", tbeg, "; ", s0qs, "; ", tend, ")")
 )
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+fprint_sl0abeled
+  (out, x0) = let
+//
+val+SL0ABELED(l0, t0, x1) = x0
+//
+in
+  fprint!(out, "SL0ABELED(");
+  fprint!(out, l0, ", ", t0, ", ");
+  fprint_val<a>(out, x1); fprint!(out, ")")
+end // end of [fprint_sl0abeled]
 
 (* ****** ****** *)
 

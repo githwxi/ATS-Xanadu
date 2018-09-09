@@ -247,6 +247,206 @@ list_vt2t
 ) (* end of [p_i0dntseq] *)
 //
 (* ****** ****** *)
+//
+extern
+fun
+p_q0arg: parser(q0arg)
+extern
+fun
+p_q0argseq_SEMICOLON: parser(q0arglst)
+//
+(* ****** ****** *)
+//
+extern
+fun
+p_tq0arg: parser(tq0arg)
+//
+implement
+p_tq0arg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_LT() => let
+    val () = buf.incby1()
+    val q0as =
+      p_q0argseq_SEMICOLON(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_GT(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    tq0arg_make_node
+    (loc_res, TQ0ARGsome(tbeg, q0as, tend))
+  end
+| _(* non-LT *) =>
+  (
+    err := e0 + 1;
+    tq0arg_make_node(tok.loc(), TQ0ARGnone())
+  )
+//
+end // end of [p_q0marg]
+//
+(* ****** ****** *)
+(*
+//
+a0typ ::=
+  | token
+  | d0pid COLON s0exp
+//
+*)
+extern
+fun
+p_a0typ: parser(a0typ)
+extern
+fun
+p_a0typseq_COMMA: parser(a0typlst)
+extern
+fun
+p_a0typseqopt_COMMA: parser(a0typlstopt)
+//
+(* ****** ****** *)
+//
+implement
+p_a0typ
+  (buf, err) = let
+//
+val e0 = err
+//
+val mark =
+  buf.get_mark()
+//
+val tok0 = buf.get1()
+val tok1 = buf.get0()
+//
+in
+//
+case+
+tok1.node() of
+| T_COLON() => let
+    val () =
+    buf.clear_mark(mark)
+    val () = buf.incby1()
+    val s0e = p_s0exp(buf, err)
+    val loc_res = tok0.loc() + s0e.loc()
+  in
+    err := e0;
+    a0typ_make_node
+    (loc_res, A0TYPsome(s0e, Some(tok0)))
+  end // end of [COLON]
+| _(*non-COLON*) => let
+    val () =
+      buf.set_mark(mark)
+    // end of [val]
+    val s0e = p_s0exp(buf, err)
+  in
+    err := e0;
+    a0typ_make_node
+    (s0e.loc(), A0TYPsome(s0e, None(*void*)))
+  end // end of [non-COLON]
+//
+end // end of [p_a0typ]
+
+(* ****** ****** *)
+//
+implement
+p_a0typseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun
+ {a0typ}(buf, err, p_a0typ))
+//
+)
+implement
+p_a0typseqopt_COMMA
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in (* in-of-let *)
+//
+case+
+tok.node() of
+| T_BAR() => let
+    val () = buf.incby1()
+  in
+    Some(p_a0typseq_COMMA(buf, err))
+  end // end of [T_BAR]
+| _(* non-BAR *) => None(*void*)
+//
+end // end of [p_a0typseqopt]
+//
+(* ****** ****** *)
+
+implement
+p_d0arg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_LPAREN() => let
+    val () = buf.incby1()
+    val arg0 =
+      p_a0typseq_COMMA(buf, err)
+    val opt1 =
+      p_a0typseqopt_COMMA(buf, err)
+    val tbeg = tok
+    val tend = p_RPAREN(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := 0;
+    d0arg_make_node
+    ( loc_res
+    , D0ARGsome_dyn(tbeg, arg0, opt1, tend))
+  end
+| T_LBRACE() => let
+    val () = buf.incby1()
+    val s0qs =
+      p_s0quaseq_BARSEMI(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACE(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    d0arg_make_node
+    (loc_res, D0ARGsome_sta(tbeg, s0qs, tend))
+  end // end of [T_LBRACE]
+| _ (* error *) =>
+  (
+    err := e0 + 1;
+    d0arg_make_node(tok.loc(), D0ARGnone(tok))
+  )
+//
+end // end of [p_d0arg]
+
+(* ****** ****** *)
+
+extern
+fun
+p_d0argseq: parser(d0arglst)
+implement
+p_d0argseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{d0arg}(buf, err, p_d0arg))
+//
+) (* end of [p_d0argseq] *)
+
+(* ****** ****** *)
 (*
 atmd0exp ::
 //
