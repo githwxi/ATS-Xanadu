@@ -86,14 +86,18 @@ fprint_a0typ
 (
 //
 case+ x0.node() of
+(*
 | A0TYPnone(tok) =>
   fprint!(out, "A0TYPnone(", tok, ")")
+*)
 | A0TYPsome(id, opt) =>
   fprint!(out, "A0TYPsome(", id, "; ", opt, ")")
 //
 ) (* end of [fprint_a0typ] *)
 
 (* ****** ****** *)
+
+local
 //
 fun
 fprint_a0typlstopt
@@ -107,7 +111,7 @@ case+ opt of
 //
 overload fprint with fprint_a0typlstopt of 100
 //
-(* ****** ****** *)
+in (* in-of-local *)
 
 implement
 fprint_d0arg
@@ -117,12 +121,22 @@ fprint_d0arg
 case+ x0.node() of
 | D0ARGnone(tok) =>
   fprint!(out, "D0ARGnone(", tok, ")")
-| D0ARGsome_sta(s0qs) =>
-  fprint!(out, "D0ARGsome_sta(", s0qs, ")")
-| D0ARGsome_dyn(arg0, opt1) =>
-  fprint!(out, "D0ARGsome_dyn(", arg0, "; ", opt1, ")")
+| D0ARGsome_sta
+  (tbeg, s0qs, tend) =>
+  fprint!
+  ( out
+  , "D0ARGsome_sta("
+  , tbeg, "; ", s0qs, "; ", tend, ")")
+| D0ARGsome_dyn
+  (tbeg, arg0, opt1, tend) =>
+  fprint!
+  ( out
+  , "D0ARGsome_dyn("
+  , tbeg, "; ", arg0, "; ", opt1, "; ", tend, ")")
 //
 ) (* end of [fprint_d0arg] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -242,6 +256,9 @@ case+ x0.node() of
 | D0Cdatatype(tok, d0cs, wopt) =>
   fprint!
   (out, "D0Cdatatype(", tok, "; ", d0cs, "; ", wopt, ")")
+//
+| D0Cdynconst _ =>
+  fprint!(out, "D0Cdyncons(...)")
 //
 | D0Clocal
   (tok, d0cs0, tok1, d0cs1, tok2) =>

@@ -188,7 +188,16 @@ typedef foo = bar2 * bar2
 
 (* ****** ****** *)
 
+fun
+<a
+,b:t@ype>
+<a:t@ype
+;b:t@ype>
+foo(x: int) = #mac"C$foo"
 fun foo(x: int): int = #mac"C$foo"
+
+fun foo int : int
+fun foo double double : double
 
 (* ****** ****** *)
 

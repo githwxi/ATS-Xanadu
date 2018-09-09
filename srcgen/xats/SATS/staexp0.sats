@@ -312,6 +312,12 @@ fprint_sl0abeled
 abstbox sort0_tbox = ptr
 abstbox s0exp_tbox = ptr
 //
+abstbox s0arg_tbox = ptr
+abstbox s0marg_tbox = ptr
+//
+abstbox t0arg_tbox = ptr
+abstbox t0marg_tbox = ptr
+//
 (* ****** ****** *)
 //
 typedef sort0 = sort0_tbox
@@ -321,6 +327,16 @@ typedef sort0opt = Option(sort0)
 typedef s0exp = s0exp_tbox
 typedef s0explst = List0(s0exp)
 typedef s0expopt = Option(s0exp)
+//
+typedef s0arg = s0arg_tbox
+typedef s0marg = s0marg_tbox
+typedef s0arglst = List0(s0arg)
+typedef s0marglst = List0(s0marg)
+//
+typedef t0arg = t0arg_tbox
+typedef t0marg = t0marg_tbox
+typedef t0arglst = List0(t0arg)
+typedef t0marglst = List0(t0marg)
 //
 (* ****** ****** *)
 //
@@ -440,37 +456,6 @@ d0tsort_make_node
 //
 (* ****** ****** *)
 //
-abstbox s0arg_tbox = ptr
-typedef s0arg = s0arg_tbox
-typedef s0arglst = List0(s0arg)
-//
-datatype
-s0arg_node =
-  | S0ARGnone of token
-  | S0ARGsome of (s0eid, sort0opt)
-//
-fun
-s0arg_get_loc(s0arg): loc_t
-fun
-s0arg_get_node(s0arg): s0arg_node
-//
-overload .loc with s0arg_get_loc
-overload .node with s0arg_get_node
-//
-fun print_s0arg : print_type(s0arg)
-fun prerr_s0arg : prerr_type(s0arg)
-fun fprint_s0arg : fprint_type(s0arg)
-//
-overload print with print_s0arg
-overload prerr with prerr_s0arg
-overload fprint with fprint_s0arg
-//
-fun
-s0arg_make_node
-(loc: loc_t, node: s0arg_node): s0arg
-//
-(* ****** ****** *)
-//
 abstbox
 s0rtdef_tbox = ptr
 typedef
@@ -504,15 +489,40 @@ s0rtdef_make_node
 //
 (* ****** ****** *)
 //
-abstbox s0marg_tbox = ptr
-typedef s0marg = s0marg_tbox
-typedef s0marglst = List0(s0marg)
+datatype
+s0arg_node =
+  | S0ARGnone of token
+  | S0ARGsome of (s0eid, sort0opt)
 //
 datatype
 s0marg_node =
   | S0MARGnone of token
   | S0MARGsing of (s0eid)
   | S0MARGlist of (token, s0arglst, token)
+//
+(* ****** ****** *)
+//
+fun
+s0arg_get_loc(s0arg): loc_t
+fun
+s0arg_get_node(s0arg): s0arg_node
+//
+overload .loc with s0arg_get_loc
+overload .node with s0arg_get_node
+//
+fun print_s0arg : print_type(s0arg)
+fun prerr_s0arg : prerr_type(s0arg)
+fun fprint_s0arg : fprint_type(s0arg)
+//
+overload print with print_s0arg
+overload prerr with prerr_s0arg
+overload fprint with fprint_s0arg
+//
+fun
+s0arg_make_node
+(loc: loc_t, node: s0arg_node): s0arg
+//
+(* ****** ****** *)
 //
 fun
 s0marg_get_loc(s0marg): loc_t
@@ -536,16 +546,20 @@ s0marg_make_node
 //
 (* ****** ****** *)
 //
-abstbox t0arg_tbox = ptr
-typedef t0arg = t0arg_tbox
-typedef t0arglst = List0(t0arg)
-//
 datatype
 t0arg_node =
 (*
   | T0ARGnone of token
 *)
   | T0ARGsome of (sort0, tokenopt)
+//
+datatype
+t0marg_node =
+| T0MARGnone of token(*error*)
+| T0MARGlist of
+  (token(*'('*), t0arglst, token(*')'*))
+//
+(* ****** ****** *)
 //
 fun
 t0arg_get_loc(t0arg): loc_t
@@ -568,16 +582,6 @@ t0arg_make_node
 (loc: loc_t, node: t0arg_node): t0arg
 //
 (* ****** ****** *)
-//
-abstbox t0marg_tbox = ptr
-typedef t0marg = t0marg_tbox
-typedef t0marglst = List0(t0marg)
-//
-datatype
-t0marg_node =
-| T0MARGnone of token(*error*)
-| T0MARGlist of
-  (token(*'('*), t0arglst, token(*')'*))
 //
 fun
 t0marg_get_loc(t0marg): loc_t

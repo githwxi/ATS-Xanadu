@@ -561,7 +561,7 @@ case+ s0cs of
   ) (* end of [list_nil] *)
 | list_cons _ => let
     val s0c =
-    list_last(s0cs) in tid.loc() + s0c.loc()
+    list_last(s0cs) in tid.loc()+s0c.loc()
   end // end of [list_cons]
 ) : loc_t // end of [val]
 //
@@ -579,11 +579,15 @@ implement
 p_d0tsortseq_AND
   (buf, err) =
 (
+list_vt2t(d0ts)
+) where
+{
+val d0ts =
+  pstar_AND_fun
+    {d0tsort}(buf, err, p_d0tsort)
+  // pstar_AND_fun
 //
-list_vt2t
-(pstar_AND_fun{d0tsort}(buf, err, p_d0tsort))
-//
-) (* end of [p_d0tsortseq_AND] *)
+} (* end of [p_d0tsortseq_AND] *)
 
 (* ****** ****** *)
 
@@ -1438,7 +1442,8 @@ p_labs0expseq_COMMA
 (
 //
 list_vt2t
-(pstar_COMMA_fun{labs0exp}(buf, err, p_labs0exp))
+(pstar_COMMA_fun
+ {labs0exp}(buf, err, p_labs0exp))
 //
 ) (* end of [p_s0expseq_COMMA] *)
 
@@ -1578,11 +1583,16 @@ case+ tnd of
         val loc1 =
         (
           case+ s0es of
-          | list_nil() => id0.loc()
+          | list_nil() =>
+            (
+              id0.loc()
+            )
           | list_cons _ =>
             let
               val s0e =
-              list_last(s0es) in id0.loc()+s0e.loc()
+              list_last(s0es)
+            in
+              id0.loc() + s0e.loc()
             end // end of [list_cons]
         ) : loc_t // end of [val]
         val s0e0 =
@@ -1600,6 +1610,8 @@ case+ tnd of
 | _ (*non-S0Eid*) => let
     val s0e = p_s0exp(buf, err)
   in
+    // HX-2018-09-09:
+    // for improving error message reporting?
     err := e0;
     s0qua_make_node(s0e.loc(), S0QUAprop(s0e))
   end // end of [non-S0Eid]
@@ -1657,6 +1669,132 @@ list_vt2t
 (pstar_fun{s0uni}(buf, err, p_s0uni))
 //
 ) (* end of [p_d0eclseq] *)
+
+(* ****** ****** *)
+
+
+implement
+popt_s0exp_anno
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+(*
+val ((*void*)) =
+println!
+("popt_s0exp_anno: tok = ", tok)
+*)
+//
+in (* in-of-let *)
+//
+case+
+tok.node() of
+| T_COLON() => let
+    val () = buf.incby1()
+    val s0e = p_s0exp(buf, err)
+  in
+    let
+      val () = err := e0 in Some(s0e)
+    end
+  end // end of [T_COLON]
+| _(*non-COLON*) => None(*void*)
+//
+end // end of [popt_s0exp_anno]
+
+(* ****** ****** *)
+
+implement
+p_apps0exp_NEQ
+  (buf, err) = let
+//
+fun
+auxneq
+( buf: &tokbuf >> _
+, err: &int >> _): s0exp = let
+//
+  val e0 = err
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_EQ() => let
+      val () = (err := e0 + 1)
+    in
+      s0exp_make_node
+        (tok.loc(), S0Enone(tok))
+      // end of [s0exp_make_node]
+    end // end of [T_EQ]
+  | _(*non-EQ*) => p_atms0exp(buf, err)
+end // end of [auxneq]
+//
+val s0e0 =
+  auxneq(buf, err)
+val s0es = 
+  list_vt2t
+  (pstar_fun{s0exp}(buf, err, auxneq))
+val loc_res =
+(
+case+ s0es of
+| list_nil() => s0e0.loc()
+| list_cons _ => let
+    val s0e1 =
+    list_last(s0es) in s0e0.loc()+s0e1.loc()
+  end // end of [list_cons]
+) : loc_t // end of [val]
+//
+in
+  s0exp_make_node
+    (loc_res, S0Eapps(list_cons(s0e0, s0es)))
+  // end of [s0exp_make_node]
+end // end of [p_apps0exp_NEQ]
+
+implement
+p_apps0exp_NGT
+  (buf, err) = let
+//
+fun
+auxngt
+( buf: &tokbuf >> _
+, err: &int >> _): s0exp = let
+//
+  val e0 = err
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_GT() => let
+      val () = (err := e0 + 1)
+    in
+      s0exp_make_node
+        (tok.loc(), S0Enone(tok))
+      // end of [s0exp_make_node]
+    end // end of [T_GT]
+  | _(*non-GT*) => p_atms0exp(buf, err)
+end // end of [auxngt]
+//
+val s0e0 =
+  auxngt(buf, err)
+val s0es = 
+  list_vt2t
+  (pstar_fun{s0exp}(buf, err, auxngt))
+val loc_res =
+(
+case+ s0es of
+| list_nil() => s0e0.loc()
+| list_cons _ => let
+    val s0e1 =
+    list_last(s0es) in s0e0.loc()+s0e1.loc()
+  end // end of [list_cons]
+) : loc_t // end of [val]
+//
+in
+  s0exp_make_node
+    (loc_res, S0Eapps(list_cons(s0e0, s0es)))
+  // end of [s0exp_make_node]
+end // end of [p_apps0exp_NGT]
 
 (* ****** ****** *)
 //

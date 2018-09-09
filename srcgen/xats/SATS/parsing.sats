@@ -345,6 +345,20 @@ fun p_s0uni: parser(s0uni)
 fun p_s0uniseq: parser(s0unilst)
 
 (* ****** ****** *)
+
+typedef
+s0expopt = $STAEXP0.s0expopt
+fun
+popt_s0exp_anno: parser(s0expopt)
+
+(* ****** ****** *)
+//
+fun // EQ excluded
+p_apps0exp_NEQ: parser(s0exp)
+and // GT excluded
+p_apps0exp_NGT: parser(s0exp)
+//
+(* ****** ****** *)
 //
 (*
 d0atype ::=
