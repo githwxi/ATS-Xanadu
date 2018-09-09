@@ -246,6 +246,7 @@ fun p_l0abl: parser(l0abl)
 //
 fun t_s0tid(tnode): bool
 fun t_s0eid(tnode): bool
+fun t_d0pid(tnode): bool
 fun t_d0eid(tnode): bool
 //
 fun p_s0tid: parser(s0tid)
