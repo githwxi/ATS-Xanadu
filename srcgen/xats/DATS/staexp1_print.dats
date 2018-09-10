@@ -310,10 +310,13 @@ case+ x0.node() of
 //
 | S1Eapp() =>
   fprint!(out, "S1Eapp()")
-| S1Einf() =>
-  fprint!(out, "S1Einf()")
-| S1Eopr(s1e) =>
-  fprint!(out, "S1Eopr(", s1e, ")")
+| S1Eimp() =>
+  fprint!(out, "S1Eimp()")
+//
+| S1Ebs0() =>
+  fprint!(out, "S1Ebs0()")
+| S1Ebs1(s1e) =>
+  fprint!(out, "S1Ebs1(", s1e, ")")
 //
 | S1Eapps
   (s1e0, s1es) =>

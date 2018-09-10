@@ -114,9 +114,17 @@ tnode =
   | T_SRP of () // #
 //
   | T_EQGT of () // =>
+//
+  | T_LTGT of () // <>
+//
   | T_MSLT of () // -<
+(*
+  | T_MSGT of () // ->
+  | T_MSLTGT of () // -<>
+*)
 //
   | T_COLON of () // :
+  | T_COLONLT of () // :<
 //
   | T_COMMA of () // ,
   | T_SEMICOLON of () // ;
@@ -177,6 +185,8 @@ tnode =
   | T_FUN of (funkind)
     // fn0, fnx, fn1, fun,
     // prfn0, prfn1, prfun, praxi, castfn
+  | T_VAL of (valkind)
+    // val, val+, val-, prval
 //
   | T_SORTDEF of ()
   | T_SEXPDEF of int(*kind*)

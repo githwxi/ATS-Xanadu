@@ -225,6 +225,16 @@ tok.node() of
   when
   t_d0eid(tnd) =>
     p_d0eid(buf, err)
+(*
+| T_MSGT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "->" )
+      val tok = token_make_node(loc, tnd)
+    }
+*)
 | _ (* non-i0dnt *) =>
     (err := e0 + 1; i0dnt_none(tok))
 //
@@ -257,9 +267,63 @@ p_q0argseq_SEMICOLON: parser(q0arglst)
 //
 (* ****** ****** *)
 //
+//
+implement
+p_q0arg
+  (buf, err) = let
+//
+val e0 = err
+val ids = auxids(buf, err)
+val tok = p_COLON(buf, err)
+val s0t = p_appsort0_NGT(buf, err)
+//
+val loc0 =
+(
+case+ ids of
+| list_nil() => tok.loc()
+| list_cons _ =>
+  let
+    val
+    id0 = list_last(ids) in id0.loc()
+  end // end of [list_cons]
+) : loc_t // end of [val]
+val loc_res = loc0 + s0t.loc()
+//
+in
+  err := e0;
+  q0arg_make_node
+    (loc_res, Q0ARGsome(ids, tok, s0t))
+  // q0arg_make_node
+end where
+{
+  fun
+  auxids
+  ( buf: &tokbuf >> _
+  , err: &int >> _): i0dntlst =
+  list_vt2t
+  (pstar_COMMA_fun{s0eid}(buf, err, p_s0aid))
+} (* end of [p_q0arg] *)
+
+(* ****** ****** *)
+//
+implement
+p_q0argseq_SEMICOLON
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_SEMICOLON_fun{q0arg}(buf, err, p_q0arg))
+//
+) (* end of [p_q0argseq_SEMICOLON] *)
+//
+(* ****** ****** *)
+//
 extern
 fun
 p_tq0arg: parser(tq0arg)
+extern
+fun
+p_tq0argseq: parser(tq0arglst)
 //
 implement
 p_tq0arg
@@ -267,6 +331,9 @@ p_tq0arg
 //
 val e0 = err
 val tok = buf.get0()
+//
+val () =
+println! ("p_tq0arg: tok = ", tok)
 //
 in
 //
@@ -281,16 +348,36 @@ tok.node() of
     val tend = p_GT(buf, err)
     val loc_res = tbeg.loc() + tend.loc()
   in
+    err := e0;
     tq0arg_make_node
     (loc_res, TQ0ARGsome(tbeg, q0as, tend))
   end
-| _(* non-LT *) =>
-  (
-    err := e0 + 1;
+| T_LTGT() => let
+    val () = buf.incby1()
+    val q0as = list_nil(*void*)
+    val tbeg = tok
+    val tend = tok
+    val loc_res = tok.loc()
+  in
+    tq0arg_make_node
+    (loc_res, TQ0ARGsome(tbeg, q0as, tend))
+  end
+| _(* non-LT/GT *) =>
+  ( err := e0 + 1;
     tq0arg_make_node(tok.loc(), TQ0ARGnone(tok))
-  )
+  ) (* end of [non-LT] *)
 //
 end // end of [p_tq0arg]
+//
+implement
+p_tq0argseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{tq0arg}(buf, err, p_tq0arg))
+//
+) (* end of [p_tq0argseq] *)
 //
 (* ****** ****** *)
 (*
@@ -440,10 +527,8 @@ implement
 p_d0argseq
   (buf, err) =
 (
-//
-list_vt2t
-(pstar_fun{d0arg}(buf, err, p_d0arg))
-//
+  list_vt2t
+  (pstar_fun{d0arg}(buf, err, p_d0arg))
 ) (* end of [p_d0argseq] *)
 
 (* ****** ****** *)
@@ -676,6 +761,19 @@ local
 
 static
 fun
+t_dctkind
+ : tnode -> bool
+implement
+t_dctkind
+  (tnd) =
+(
+case+ tnd of
+| T_FUN _ => true
+| T_VAL _ => true | _ => false
+)
+
+static
+fun
 p_precopt
  : parser(precopt)
 implement
@@ -737,6 +835,120 @@ case+ tnd of
 //
 end // end of [p_abstdf0]
 
+(* ****** ****** *)
+//
+static
+fun
+p_d0cstdec
+ : parser(d0cstdec)
+and
+p_d0cstdecseq_AND
+ : parser(d0cstdeclst)
+and
+p_effs0expopt
+ : parser(effs0expopt)
+and
+p_teqd0expopt
+ : parser(teqd0expopt)
+//
+implement
+p_d0cstdec
+  (buf, err) = let
+//
+val
+nam = p_d0pid(buf, err)
+val
+arg = p_d0argseq(buf, err)
+val
+res = p_effs0expopt(buf, err)
+val
+def = p_teqd0expopt(buf, err)
+//
+val
+loc = nam.loc()
+val
+loc =
+(
+case+ def of
+| TEQD0EXPnone() =>
+  (
+  case+ res of
+  | EFFS0EXPnone() =>
+    (case+ arg of
+     | list_nil() => loc
+     | list_cons
+       (tqa, _) => loc+tqa.loc()
+    )
+  | EFFS0EXPsome
+      (sfe, s0e) => loc+s0e.loc()
+    // EFFS0EXPsome
+  )
+| TEQD0EXPsome(_, d0e) => loc+d0e.loc()
+) : loc_t // end of [val]
+//
+in
+  D0CSTDEC(@{loc=loc,nam=nam,arg=arg,res=res,def=def})
+end // end of [p_d0cstdec]
+
+(* ****** ****** *)
+
+implement
+p_effs0expopt
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_COLON() => let
+    val () = buf.incby1()
+    val s0e =
+      p_apps0exp_NEQ(buf, err)
+    // end of [val]
+  in
+    EFFS0EXPsome(S0EFFnone(tok), s0e)
+  end // end of [T_COLON]
+| _(*non-COLON/LT*) => EFFS0EXPnone()
+//
+end // end of [p_effs0expopt]
+
+implement
+p_teqd0expopt
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_EQ() =>
+  TEQD0EXPsome
+    (tok, d0e) where
+  {
+    val () = buf.incby1()
+    val d0e = p_d0exp(buf, err)
+  }
+| _(*non-EQ*) => TEQD0EXPnone(*void*)
+//
+end // end of [p_teqd0expopt]
+
+(* ****** ****** *)
+//
+implement
+p_d0cstdecseq_AND
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_AND_fun
+ {d0cstdec}(buf, err, p_d0cstdec))
+//
+) (* end of [p_d0cstdecseq_AND] *)
+//
+(* ****** ****** *)
 
 in (* in-of-local *)
 
@@ -900,6 +1112,32 @@ case+ tnd of
     err := e0;
     d0ecl_make_node
       ( loc_res, D0Cdatatype(tok, d0cs, wopt) )
+    // d0ecl_make_node
+  end
+//
+| tnd when
+  t_dctkind(tnd) => let
+    val () = buf.incby1()
+    val tqas =
+      p_tq0argseq(buf, err)
+    val d0cs =
+      p_d0cstdecseq_AND(buf, err)
+    val loc_res =
+    (
+      case+ d0cs of
+      | list_nil() =>
+        (case+ tqas of
+         | list_nil() => loc
+         | list_cons
+             (tqa, _) => loc + tqa.loc()
+           // list_cons
+        )
+      | list_cons(d0c, _) => loc+d0c.loc()
+    ) : loc_t // end of [val]
+  in
+    err := e0;
+    d0ecl_make_node
+      ( loc_res, D0Cdynconst(tok, tqas, d0cs) )
     // d0ecl_make_node
   end
 //

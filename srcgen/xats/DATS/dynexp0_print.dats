@@ -63,9 +63,15 @@ implement
 fprint_val<d0exp> = fprint_d0exp
 //
 implement
+fprint_val<q0arg> = fprint_q0arg
+//
+implement
 fprint_val<a0typ> = fprint_a0typ
 implement
 fprint_val<d0arg> = fprint_d0arg
+//
+implement
+fprint_val<tq0arg> = fprint_tq0arg
 //
 (* ****** ****** *)
 //
@@ -81,6 +87,25 @@ fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
 (* ****** ****** *)
 
 implement
+fprint_q0arg
+  (out, x0) =
+(
+//
+case+ x0.node() of
+(*
+| Q0ARGnone(tok) =>
+  fprint!(out, "Q0ARGnone(", tok, ")")
+*)
+| Q0ARGsome(ids, tok, s0t) =>
+  fprint!
+  ( out
+  , "Q0ARGsome(", ids, "; ", tok, "; ", s0t, ")")
+//
+) (* end of [fprint_q0arg] *)
+
+(* ****** ****** *)
+
+implement
 fprint_a0typ
   (out, x0) =
 (
@@ -90,8 +115,8 @@ case+ x0.node() of
 | A0TYPnone(tok) =>
   fprint!(out, "A0TYPnone(", tok, ")")
 *)
-| A0TYPsome(id, opt) =>
-  fprint!(out, "A0TYPsome(", id, "; ", opt, ")")
+| A0TYPsome(s0e, opt) =>
+  fprint!(out, "A0TYPsome(", s0e, "; ", opt, ")")
 //
 ) (* end of [fprint_a0typ] *)
 
@@ -137,6 +162,23 @@ case+ x0.node() of
 ) (* end of [fprint_d0arg] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+fprint_tq0arg
+  (out, x0) =
+(
+//
+case+ x0.node() of
+| TQ0ARGnone(tok) =>
+  fprint!(out, "TQ0ARGnone(", tok, ")")
+| TQ0ARGsome(tbeg, q0as, tend) =>
+  fprint!
+  ( out
+  , "TQ0ARGsome(", tbeg, "; ", q0as, "; ", tend, ")")
+//
+) (* end of [fprint_tq0arg] *)
 
 (* ****** ****** *)
 
@@ -255,10 +297,14 @@ case+ x0.node() of
 //
 | D0Cdatatype(tok, d0cs, wopt) =>
   fprint!
-  (out, "D0Cdatatype(", tok, "; ", d0cs, "; ", wopt, ")")
+  ( out
+  , "D0Cdatatype(", tok, "; ", d0cs, "; ", wopt, ")")
 //
-| D0Cdynconst _ =>
-  fprint!(out, "D0Cdyncons(...)")
+| D0Cdynconst
+  (tok, tqas, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cdynconst(", tok, "; ", tqas, "; ", "...", ")")
 //
 | D0Clocal
   (tok, d0cs0, tok1, d0cs1, tok2) =>
