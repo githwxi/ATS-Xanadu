@@ -17,6 +17,11 @@
 (* ****** ****** *)
 
 sortdef
+fint = int -> int
+
+(* ****** ****** *)
+
+sortdef
 nat = {a:int | a >= 0}
 
 (* ****** ****** *)
@@ -189,15 +194,9 @@ typedef foo = bar2 * bar2
 (* ****** ****** *)
 
 fun
-<a
-,b:t@ype>
-<a:t@ype
-;b:t@ype>
-foo(x: int) = #mac"C$foo"
-fun foo(x: int): int = #mac"C$foo"
-
-fun foo int : int
-fun foo double double : double
+<a,b:type>
+<a,b,c:t0ype>
+foo(x: int): int = ext"C$foo"
 
 (* ****** ****** *)
 

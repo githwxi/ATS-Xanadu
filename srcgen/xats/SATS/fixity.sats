@@ -108,6 +108,9 @@ the_posinf_prcdv: prcdv // highest precedence value
 val app_assoc : assoc
 val app_prcdv : prcdv
 //
+val imp_assoc : assoc
+val imp_prcdv : prcdv
+//
 val select_prcdv : prcdv
 //
 val exists_prcdv : prcdv
@@ -137,6 +140,8 @@ fixty =
 (* ****** ****** *)
 //
 val app_fixty : fixty
+//
+val imp_fixty : fixty
 //
 val forall_fixty : fixty
 val exists_fixty : fixty

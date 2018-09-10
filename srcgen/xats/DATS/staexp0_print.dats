@@ -521,6 +521,11 @@ case+ x0.node() of
 | S0Eapps(s0es) =>
   fprint!(out, "S0Eapps(", s0es, ")")
 //
+| S0Eimp(tbeg, s0es, tend) =>
+  fprint!
+  ( out
+  , "S0Eimp(", tbeg, "; ", s0es, "; ", tend, ")")
+//
 | S0Eparen
   (tbeg, s0es, tend) =>
   fprint!

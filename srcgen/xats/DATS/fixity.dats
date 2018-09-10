@@ -88,11 +88,19 @@ prcdv2int(x) = x
 implement
 app_prcdv = 70
 implement
+imp_prcdv = 10
+//
+implement
 app_assoc = ASSOClft()
+implement
+imp_assoc = ASSOCrgt()
 //
 implement
 app_fixty =
 FIXTYinf(app_prcdv, app_assoc)
+implement
+imp_fixty =
+FIXTYinf(imp_prcdv, imp_assoc)
 //
 (* ****** ****** *)
 //

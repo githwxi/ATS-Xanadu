@@ -198,6 +198,15 @@ in
       val tnd = T_IDENT_sym( "@" )
       val tok = token_make_node(loc, tnd)
     }
+//
+  | T_MSGT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "->" )
+      val tok = token_make_node(loc, tnd)
+    }
 *)
 //
   | T_BACKSLASH() =>
@@ -207,10 +216,40 @@ in
     }
 //
   | _ (* non-IDENT *) =>
-    (err := err + 1; i0dnt_none(tok))
+      (err := err + 1; i0dnt_none(tok))
 //
 end // end of [p_s0tid]
 
+(* ****** ****** *)
+//
+implement
+t_s0aid(tnd) =
+(
+case+ tnd of
+| T_IDENT_alp _ => true
+| _(*non-IDENT-alp*) => false
+)
+//
+implement
+p_s0aid
+  (buf, err) = let
+//
+  val tok = buf.get0()
+  val tnd = tok.node()
+//
+in
+//
+  case+ tnd of
+  | T_IDENT_alp _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+  | _ (*non-IDENT-alp*) =>
+      (err := err + 1; i0dnt_none(tok))
+//
+end // end of [p_s0aid]
+//
 (* ****** ****** *)
 
 implement
@@ -227,6 +266,8 @@ case+ tnd of
 //
 | T_LT() => true // "<"
 | T_GT() => true // ">"
+//
+| T_LTGT() => true // "<>"
 //
 (*
 | T_EQGT() => true // "=>"
@@ -408,7 +449,8 @@ in
 case+
 tok0.node() of
 //
-| tnd when t_s0tid(tnd) =>
+| tnd when
+  t_s0tid(tnd) =>
   let
     val id = p_s0tid(buf, err)
   in
@@ -633,59 +675,6 @@ case+ tnd of
 //
 end // end of [p_s0rtdef]
 
-(* ****** ****** *)
-//
-extern
-fun
-t_s0aid(tnode): bool
-extern
-fun
-p_s0aid: parser(s0eid)
-//
-implement
-t_s0aid(tnd) =
-(
-case+ tnd of
-| T_IDENT_alp _ => true
-| _(*non-IDENT-alp*) => false
-)
-//
-implement
-p_s0aid
-  (buf, err) = let
-//
-  val tok = buf.get0()
-  val tnd = tok.node()
-//
-in
-//
-  case+ tnd of
-  | T_IDENT_alp _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | _ (*non-IDENT-alp*) =>
-      (err := err + 1; i0dnt_none(tok))
-//
-end // end of [p_s0aid]
-//
-(* ****** ****** *)
-//
-extern
-fun
-p_s0aidseq_COMMA: parser(i0dntlst)
-//
-implement
-p_s0aidseq_COMMA
-  (buf, err) =
-(
-//
-list_vt2t
-(pstar_COMMA_fun{s0eid}(buf, err, p_s0aid))
-//
-) (* end of [p_s0aidseq_COMMA] *)
-//
 (* ****** ****** *)
 //
 extern
@@ -1245,6 +1234,39 @@ case+ tnd of
     s0exp_make_node(c0.loc(), S0Estr(c0))
   end // end of [t_t0str]
 //
+| T_MSLT() => let
+    val () = buf.incby1()
+    val s0es =
+    list_vt2t
+    (
+      pstar_COMMA_fun
+      {s0exp}(buf, err, p_apps0exp_NGT)
+    )
+    val tbeg = tok
+    val tend = p_GT(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    s0exp_make_node
+      (loc_res, S0Eimp(tbeg, s0es, tend))
+    // s0exp_make_node
+  end // end of [T_MSLT]
+//
+(*
+| T_MSGT() => let
+    val () = buf.incby1()
+  in
+    err := e0;    
+    s0exp_make_node(tok.loc(), S0Eimp(*void*))
+  end // end of [T_MSGT]
+| T_MSLTGT() => let
+    val () = buf.incby1()
+  in
+    err := e0;    
+    s0exp_make_node(tok.loc(), S0Eimp(*void*))
+  end // end of [T_MSLTGT]
+*)
+//
 | T_LPAREN() => let
     val () = buf.incby1()
     val s0es =
@@ -1563,9 +1585,7 @@ case+ tnd of
 //
     | T_COMMA() => let
         val () = buf.incby1()
-        val ids =
-          p_s0aidseq_COMMA(buf, err)
-        // end of [val]
+        val ids = auxids(buf, err)
         val ids = list_cons(id0, ids)
         val tok2 = p_COLON(buf, err)
         val s0t0 = p_sort0(buf, err)
@@ -1616,7 +1636,14 @@ case+ tnd of
     s0qua_make_node(s0e.loc(), S0QUAprop(s0e))
   end // end of [non-S0Eid]
 //
-end // end of [p_s0qua]
+end where
+{
+  fun
+  auxids
+  ( buf: &tokbuf >> _
+  , err: &int >> _): i0dntlst =
+  list_vt2t(pstar_COMMA_fun{s0eid}(buf, err, p_s0aid))
+} (* end of [p_s0qua] *)
 
 (* ****** ****** *)
 
@@ -1749,6 +1776,54 @@ in
     (loc_res, S0Eapps(list_cons(s0e0, s0es)))
   // end of [s0exp_make_node]
 end // end of [p_apps0exp_NEQ]
+
+(* ****** ****** *)
+
+implement
+p_appsort0_NGT
+  (buf, err) = let
+//
+fun
+auxngt
+( buf: &tokbuf >> _
+, err: &int >> _): sort0 = let
+//
+  val e0 = err
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_GT() => let
+      val () = (err := e0 + 1)
+    in
+      sort0_make_node
+        (tok.loc(), S0Tnone(tok))
+      // end of [sort0_make_node]
+    end // end of [T_GT]
+  | _(*non-GT*) => p_atmsort0(buf, err)
+end // end of [auxngt]
+//
+val s0t0 =
+  auxngt(buf, err)
+val s0ts = 
+  list_vt2t
+  (pstar_fun{sort0}(buf, err, auxngt))
+val loc_res =
+(
+case+ s0ts of
+| list_nil() => s0t0.loc()
+| list_cons _ => let
+    val s0t1 =
+    list_last(s0ts) in s0t0.loc()+s0t1.loc()
+  end // end of [list_cons]
+) : loc_t // end of [val]
+//
+in
+  sort0_make_node
+    (loc_res, S0Tapps(list_cons(s0t0, s0ts)))
+  // end of [sort0_make_node]
+end // end of [p_appsort0_NGT]
 
 implement
 p_apps0exp_NGT

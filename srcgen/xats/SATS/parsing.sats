@@ -247,15 +247,20 @@ fun p_l0abl: parser(l0abl)
 (* ****** ****** *)
 //
 fun t_s0tid(tnode): bool
+fun t_s0aid(tnode): bool
 fun t_s0eid(tnode): bool
+//
+fun p_s0tid: parser(s0tid) // srt id
+fun p_s0aid: parser(s0eid) // arg id
+fun p_s0eid: parser(s0eid) // exp id
+//
+(* ****** ****** *)
+//
 fun t_d0pid(tnode): bool
 fun t_d0eid(tnode): bool
 //
-fun p_s0tid: parser(s0tid)
-fun p_s0eid: parser(s0eid)
-//
-fun p_d0pid: parser(d0pid)
-fun p_d0eid: parser(d0eid)
+fun p_d0pid: parser(d0pid) // pat id
+fun p_d0eid: parser(d0eid) // exp id
 //
 (* ****** ****** *)
 //
@@ -357,7 +362,11 @@ popt_s0exp_anno: parser(s0expopt)
 //
 fun // EQ excluded
 p_apps0exp_NEQ: parser(s0exp)
-and // GT excluded
+//
+fun // GT excluded
+p_appsort0_NGT: parser(sort0)
+//
+fun // GT excluded
 p_apps0exp_NGT: parser(s0exp)
 //
 (* ****** ****** *)

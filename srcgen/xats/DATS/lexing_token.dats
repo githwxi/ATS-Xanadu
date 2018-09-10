@@ -175,9 +175,16 @@ case+ tnd of
 | T_SRP() => fprint(out, "SRP")
 //
 | T_EQGT() => fprint(out, "EQGT")
+| T_LTGT() => fprint(out, "LTGT")
+//
 | T_MSLT() => fprint(out, "MSLT")
+(*
+| T_MSGT() => fprint(out, "MSGT")
+| T_MSLTGT() => fprint(out, "MSLTGT")
+*)
 //
 | T_COLON() => fprint(out, "COLON")
+| T_COLONLT() => fprint(out, "COLONLT")
 //
 | T_COMMA() => fprint(out, "COMMA")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
@@ -239,6 +246,8 @@ case+ tnd of
 //
 | T_FUN(fnk) =>
   fprint!(out, "FUN(", fnk, ")")
+| T_VAL(vlk) =>
+  fprint!(out, "VAL(", vlk, ")")
 //
 | T_SORTDEF() =>
   fprint!(out, "SORTDEF()")
@@ -376,9 +385,16 @@ case+ tnd of
 | T_SRP() => fprint(out, "#")
 //
 | T_EQGT() => fprint(out, "=>")
+| T_LTGT() => fprint(out, "<>")
+//
 | T_MSLT() => fprint(out, "-<")
+(*
+| T_MSGT() => fprint(out, "->")
+| T_MSLTGT() => fprint(out, "-<>")
+*)
 //
 | T_COLON() => fprint(out, ":")
+| T_COLONLT() => fprint(out, ":<")
 //
 | T_COMMA() => fprint(out, ",")
 | T_SEMICOLON() => fprint(out, ";")
@@ -440,6 +456,8 @@ case+ tnd of
 //
 | T_FUN(fnk) =>
   fprint!(out, "FUN(", fnk, ")")
+| T_VAL(vlk) =>
+  fprint!(out, "VAL(", vlk, ")")
 //
 | T_SORTDEF() =>
   fprint!(out, "sortdef")
@@ -1007,6 +1025,20 @@ case+ x0.node() of
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of [T_AT]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+  )
+//
+| T_COLON() =>
+  (
+    case+ x1.node() of
+    | T_LT() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_COLONLT())
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_LT]
     | _ (* rest-of-tnode *) =>
         loop1(x1, xs2, list_vt_cons(x0, res))
   )

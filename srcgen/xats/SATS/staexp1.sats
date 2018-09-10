@@ -428,8 +428,11 @@ s1exp_node =
 // HX-2018-08: operators:
 //
 | S1Eapp of () // apply
-| S1Einf of () // backslash
-| S1Eopr of s1exp // backslash
+//
+| S1Eimp of () // imply
+//
+| S1Ebs0 of () // backslash
+| S1Ebs1 of s1exp // backslash
 //
 | S1Eapps of
   (s1exp, s1explst)

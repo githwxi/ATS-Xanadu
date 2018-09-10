@@ -50,6 +50,70 @@ UN =
 local
 
 absimpl
+q0arg_tbox = $rec{
+  q0arg_loc= loc_t
+, q0arg_node= q0arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+q0arg_get_loc(x) = x.q0arg_loc
+implement
+q0arg_get_node(x) = x.q0arg_node
+
+(* ****** ****** *)
+
+implement
+q0arg_make_node
+(loc, node) = $rec
+{
+  q0arg_loc= loc, q0arg_node= node
+} (* end of [q0arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+tq0arg_tbox = $rec{
+  tq0arg_loc= loc_t
+, tq0arg_node= tq0arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+tq0arg_get_loc(x) = x.tq0arg_loc
+implement
+tq0arg_get_node(x) = x.tq0arg_node
+
+(* ****** ****** *)
+
+implement
+tq0arg_make_node
+(loc, node) = $rec
+{
+  tq0arg_loc= loc, tq0arg_node= node
+} (* end of [tq0arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 a0typ_tbox = $rec{
   a0typ_loc= loc_t
 , a0typ_node= a0typ_node
@@ -160,6 +224,15 @@ d0ecl_make_node
 } (* end of [d0ecl_make_node] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+d0cstdec_get_loc
+  (x0) =
+let
+  val+D0CSTDEC(rcd) = x0 in rcd.loc
+end // end of [d0cstdec_get_loc]
 
 (* ****** ****** *)
 

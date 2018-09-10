@@ -687,6 +687,10 @@ s0exp_node =
 //
 | S0Eapps of s0explst
 //
+| S0Eimp of
+    (token, s0explst, token)
+  // end of [S0Eimp]
+//
 | S0Eparen of
     (token, s0explst, s0exp_RPAREN)
   // end of [S0Eparen]

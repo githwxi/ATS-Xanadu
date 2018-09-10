@@ -75,9 +75,10 @@ typedef q0arglst = List0(q0arg)
 datatype
 q0arg_node =
 (*
-  | Q0ARGnone of token
+| Q0ARGnone of token
 *)
-  | Q0ARGsome of (s0exp, tokenopt)
+| Q0ARGsome of
+  (i0dntlst, token(*':'*), sort0)
 //
 fun
 q0arg_get_loc(q0arg): loc_t
@@ -111,6 +112,22 @@ tq0arg_node =
   | TQ0ARGnone of token
   | TQ0ARGsome of
     (token(*'<'*), q0arglst, token(*'>'*))
+//
+fun
+tq0arg_get_loc(tq0arg): loc_t
+fun
+tq0arg_get_node(tq0arg): tq0arg_node
+//
+overload .loc with tq0arg_get_loc
+overload .node with tq0arg_get_node
+//
+fun print_tq0arg : print_type(tq0arg)
+fun prerr_tq0arg : prerr_type(tq0arg)
+fun fprint_tq0arg : fprint_type(tq0arg)
+//
+overload print with print_tq0arg
+overload prerr with prerr_tq0arg
+overload fprint with fprint_tq0arg
 //
 fun
 tq0arg_make_node
@@ -234,22 +251,42 @@ d0exp_make_node
 (* ****** ****** *)
 //
 datatype
+s0eff =
+| S0EFFnone of
+  (token(*:*))
+| S0EFFsome of
+  (token(*:<*), s0explst, token)
+//
+(* ****** ****** *)
+
+datatype
 d0cstdec =
 D0CSTDEC of @{
   loc= loc_t
-, nam= token
+, nam= d0pid
 , arg= d0arglst
-, res= s0expopt
-, def= d0cstdf0
+, res= effs0expopt
+, def= teqd0expopt
 }
 and
-d0cstdf0 =
-| D0CSTDF0none
-| D0CSTDF0some of
+effs0expopt =
+| EFFS0EXPnone of
+  ((*void*))
+| EFFS0EXPsome of
+  (s0eff, s0exp)
+and
+teqd0expopt =
+| TEQD0EXPnone of
+  ((*void*))
+| TEQD0EXPsome of
   (token(*EQ*), d0exp)
 //
 typedef
 d0cstdeclst = List0(d0cstdec)
+//
+fun
+d0cstdec_get_loc(d0cstdec): loc_t
+overload .loc with d0cstdec_get_loc
 //
 (* ****** ****** *)
 
@@ -281,7 +318,7 @@ d0ecl_node =
   // D0Cdatatype
 //
 | D0Cdynconst of
-    (token(* dctkind *), q0arglst, d0cstdeclst)
+    (token(* dctkind *), tq0arglst, d0cstdeclst)
 //
 | D0Clocal of
   ( token
