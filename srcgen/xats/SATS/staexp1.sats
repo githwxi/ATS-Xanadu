@@ -496,6 +496,17 @@ s1eff =
 | S1EFFnone of () // HX: default
 | S1EFFsome of (s1explst) // HX: annotated
 //
+fun
+print_s1eff: print_type(s1eff)
+fun
+prerr_s1eff: prerr_type(s1eff)
+fun
+fprint_s1eff: fprint_type(s1eff)
+//
+overload print with print_s1eff
+overload prerr with prerr_s1eff
+overload fprint with fprint_s1eff
+//
 (* ****** ****** *)
 //
 abstbox

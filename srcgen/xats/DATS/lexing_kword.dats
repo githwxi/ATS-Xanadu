@@ -170,8 +170,6 @@ val () = myins(".", T_DOT)
 val () = myins("$", T_DLR)
 val () = myins("#", T_SRP)
 //
-val () = myins(":", T_COLON)
-//
 val () = myins("=", T_EQ)
 val () = myins("<", T_LT)
 val () = myins(">", T_GT)
@@ -179,12 +177,16 @@ val () = myins(">", T_GT)
 val () = myins("=>", T_EQGT)
 //
 val () = myins("<>", T_LTGT)
+val () = myins("><", T_GTLT)
 //
 val () = myins("-<", T_MSLT)
 (*
 val () = myins("->", T_MSGT)
 val () = myins("-<>", T_MSLTGT)
 *)
+//
+val () = myins(":", T_COLON)
+val () = myins(":<", T_COLONLT)
 //
 val () = myins("as", T_AS)
 //

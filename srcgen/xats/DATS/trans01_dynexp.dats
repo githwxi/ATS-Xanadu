@@ -365,6 +365,15 @@ res = aux_effs0expopt(rcd.res)
 val
 def = aux_teqd0expopt(rcd.def)
 //
+val () =
+println!("trans01_dcstdec: nam = ", nam)
+val () =
+println!("trans01_dcstdec: arg = ", arg)
+val () =
+println!("trans01_dcstdec: res = ", res)
+val () =
+println!("trans01_dcstdec: def = ", def)
+//
 in
   D1CSTDEC
   (@{loc=loc,nam=tok,arg=arg,res=res,def=def})

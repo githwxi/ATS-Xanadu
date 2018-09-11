@@ -202,9 +202,7 @@ d1arg_make_node
 datatype
 d1exp_node =
 //
-| D1Eid of d1eid
-//
-where d1eid = d0eid
+| D1Eid of token
 //
 (* ****** ****** *)
 //
@@ -258,6 +256,41 @@ d1cstdeclst = List0(d1cstdec)
 fun
 d1cstdec_get_loc(d1cstdec): loc_t
 overload .loc with d1cstdec_get_loc
+//
+(* ****** ****** *)
+//
+fun
+print_d1cstdec: print_type(d1cstdec)
+fun
+prerr_d1cstdec: prerr_type(d1cstdec)
+fun
+fprint_d1cstdec: fprint_type(d1cstdec)
+//
+overload print with print_d1cstdec
+overload prerr with prerr_d1cstdec
+overload fprint with fprint_d1cstdec
+//
+fun
+print_effs1expopt: print_type(effs1expopt)
+fun
+prerr_effs1expopt: prerr_type(effs1expopt)
+fun
+fprint_effs1expopt: fprint_type(effs1expopt)
+//
+overload print with print_effs1expopt
+overload prerr with prerr_effs1expopt
+overload fprint with fprint_effs1expopt
+//
+fun
+print_teqd1expopt: print_type(teqd1expopt)
+fun
+prerr_teqd1expopt: prerr_type(teqd1expopt)
+fun
+fprint_teqd1expopt: fprint_type(teqd1expopt)
+//
+overload print with print_teqd1expopt
+overload prerr with prerr_teqd1expopt
+overload fprint with fprint_teqd1expopt
 //
 (* ****** ****** *)
 //

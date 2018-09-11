@@ -116,6 +116,7 @@ tnode =
   | T_EQGT of () // =>
 //
   | T_LTGT of () // <>
+  | T_GTLT of () // ><
 //
   | T_MSLT of () // -<
 (*
