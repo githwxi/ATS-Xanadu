@@ -52,6 +52,134 @@ UN =
 local
 
 absimpl
+q1arg_tbox = $rec{
+  q1arg_loc= loc_t
+, q1arg_node= q1arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+q1arg_get_loc(x) = x.q1arg_loc
+implement
+q1arg_get_node(x) = x.q1arg_node
+
+(* ****** ****** *)
+
+implement
+q1arg_make_node
+(loc, node) = $rec
+{
+  q1arg_loc= loc, q1arg_node= node
+} (* end of [q1arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+tq1arg_tbox = $rec{
+  tq1arg_loc= loc_t
+, tq1arg_node= tq1arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+tq1arg_get_loc(x) = x.tq1arg_loc
+implement
+tq1arg_get_node(x) = x.tq1arg_node
+
+(* ****** ****** *)
+
+implement
+tq1arg_make_node
+(loc, node) = $rec
+{
+  tq1arg_loc= loc, tq1arg_node= node
+} (* end of [tq1arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+a1typ_tbox = $rec{
+  a1typ_loc= loc_t
+, a1typ_node= a1typ_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+a1typ_get_loc(x) = x.a1typ_loc
+implement
+a1typ_get_node(x) = x.a1typ_node
+
+(* ****** ****** *)
+
+implement
+a1typ_make_node
+(loc, node) = $rec
+{
+  a1typ_loc= loc, a1typ_node= node
+} (* end of [a1typ_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d1arg_tbox = $rec{
+  d1arg_loc= loc_t
+, d1arg_node= d1arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d1arg_get_loc(x) = x.d1arg_loc
+implement
+d1arg_get_node(x) = x.d1arg_node
+
+(* ****** ****** *)
+
+implement
+d1arg_make_node
+(loc, node) = $rec
+{
+  d1arg_loc= loc, d1arg_node= node
+} (* end of [d1arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d1exp_tbox = $rec{
   d1exp_loc= loc_t
 , d1exp_node= d1exp_node
