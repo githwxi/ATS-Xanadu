@@ -788,6 +788,15 @@ overload fprint with fprint_labs0exp_RBRACE
 //
 (* ****** ****** *)
 //
+datatype
+s0eff =
+| S0EFFnone of
+  (token(*:*)) // HX: default
+| S0EFFsome of
+  (token(*:<*), s0explst, token) // HX: annotated
+//
+(* ****** ****** *)
+//
 abstbox
 d0atcon_tbox = ptr
 typedef

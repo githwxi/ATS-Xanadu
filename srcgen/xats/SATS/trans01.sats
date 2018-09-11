@@ -87,6 +87,7 @@ typedef s0uni = $S0E.s0uni
 typedef s0unilst = $S0E.s0unilst
 //
 typedef s0exp = $S0E.s0exp
+typedef s0eff = $S0E.s0eff
 typedef s0expopt = $S0E.s0expopt
 typedef s0explst = $S0E.s0explst
 //
@@ -128,6 +129,7 @@ typedef s1uni = $S1E.s1uni
 typedef s1unilst = $S1E.s1unilst
 //
 typedef s1exp = $S1E.s1exp
+typedef s1eff = $S1E.s1eff
 typedef s1expopt = $S1E.s1expopt
 typedef s1explst = $S1E.s1explst
 //
@@ -241,6 +243,11 @@ overload trans01 with trans01_sexpopt
 overload trans01 with trans01_sexplst
 overload trans01 with trans01_lsexplst
 *)
+//
+(* ****** ****** *)
+//
+fun
+trans01_seff: s0eff -> s1eff
 //
 (* ****** ****** *)
 //

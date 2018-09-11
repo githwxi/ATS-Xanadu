@@ -249,15 +249,6 @@ d0exp_make_node
 (loc: loc_t, node: d0exp_node): d0exp
 //
 (* ****** ****** *)
-//
-datatype
-s0eff =
-| S0EFFnone of
-  (token(*:*))
-| S0EFFsome of
-  (token(*:<*), s0explst, token)
-//
-(* ****** ****** *)
 
 datatype
 d0cstdec =

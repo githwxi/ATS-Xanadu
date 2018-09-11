@@ -83,13 +83,34 @@ fprint_d1ecl
   (out, x0) =
 (
 case+ x0.node() of
+//
 | D1Cnone(d0c) =>
   fprint!(out, "D1Cnone(", d0c, ")")
-| D1Cabstype
-  (tok, arg, def) =>
+//
+| D1Csortdef
+  (knd, tok, def) =>
   fprint!
-  ( out
-  , "D1Cabstype(", tok, "; ", arg, "; ", def, ")")
+  ( out, "D1Csortdef("
+  , knd, "; ", tok, "; ", def, ")")
+//
+| D1Csexpdef
+  ( knd, tok
+  , arg, res, def) =>
+  fprint!
+  ( out, "D1Csexpdef("
+  , knd, "; ", tok, "; ", arg, "; ", res, "; ", def, ")")
+//
+| D1Cabstype
+  (knd, tok, arg, def) =>
+  fprint!
+  ( out, "D1Cabstype("
+  , knd, "; ", tok, "; ", arg, "; ", def, ")")
+//
+| D1Cdatasort
+  ( knd, tok, d1tsrts ) =>
+  fprint!
+  (out, "D1Cdatasort(", knd, "; ", tok, "; ", d1tsrts, ")")
+//
 | _(*rest-of-d1ecl*) =>
   fprint!(out, "fprint_d1ecl: not-yet-implemented")
 //

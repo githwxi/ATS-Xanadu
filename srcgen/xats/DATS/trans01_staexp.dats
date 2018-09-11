@@ -882,6 +882,19 @@ s0e0.node() of
     s1exp_make_node(loc0, S1Ebs1(s1e))
   }
 //
+| S0Eimp
+  (_, s0es, _) => let
+    val s1es =
+    trans01_sexplst(s0es)
+  in
+    FXITMopr
+    (s1e0, $FIX.imp_fixty) where
+    {
+      val s1e0 =
+      s1exp_make_node(loc0, S1Eimp(s1es))
+    }
+  end // end of [S0Eimp]
+//
 | S0Eapps(s0es) =>
   FXITMatm(s1e0) where
   {
@@ -1147,6 +1160,19 @@ list_map<labs0exp><labs1exp>
 }
 } (* end of [trans01_lsexplst] *)
 
+(* ****** ****** *)
+//
+implement
+trans01_seff
+  (s0ef) =
+(
+case+ s0ef of
+| S0EFFnone _ =>
+  S1EFFnone(*void*)
+| S0EFFsome(_, s0es, _) =>
+  S1EFFsome(trans01_sexplst(s0es))
+) (* end of [trans01_seff] *)
+//
 (* ****** ****** *)
 
 implement

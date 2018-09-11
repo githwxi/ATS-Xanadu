@@ -54,6 +54,120 @@ ENV = "./../SATS/symenv.sats"
 #staload "./../SATS/trans01.sats"
 //
 (* ****** ****** *)
+//
+extern
+fun
+trans01_qarg: q0arg -> q1arg
+and
+trans01_qarglst: q0arglst -> q1arglst
+//
+extern
+fun
+trans01_tqarg: tq0arg -> tq1arg
+and
+trans01_tqarglst: tq0arglst -> tq1arglst
+//
+(* ****** ****** *)
+//
+extern
+fun
+trans01_darg: d0arg -> d1arg
+and
+trans01_darglst: d0arglst -> d1arglst
+//
+(* ****** ****** *)
+
+implement
+trans01_qarg
+  (q0a0) = let
+//
+val
+loc0 = q0a0.loc()
+//
+fun
+auxids
+( ids
+: i0dntlst): tokenlst =
+(
+case+ ids of
+| list_nil() =>
+  list_nil()
+| list_cons(id, ids) =>
+  let
+    val-
+    I0DNTsome(tok) = id.node()
+  in
+    list_cons(tok, auxids(ids))
+  end // end of [list_cons]
+)
+//
+in
+//
+case+
+q0a0.node() of
+| Q0ARGsome
+  (ids, _, s0t) => let
+    val ids = auxids(ids)
+    val s1t = trans01_sort(s0t)
+  in
+    q1arg_make_node(loc0, Q1ARGsome(ids, s1t))
+  end // end of [Q0ARGsome]
+//
+end // end of [trans01_qarg]
+
+implement
+trans01_qarglst
+  (q0as) =
+list_vt2t(q1as) where
+{
+  val
+  q1as =
+  list_map<q0arg><q1arg>
+    (q0as) where
+  {
+    implement
+    list_map$fopr<q0arg><q1arg> = trans01_qarg
+  }
+} (* end of [trans01_qarglst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_tqarg
+  (tq0a) = let
+//
+val
+loc0 = tq0a.loc()
+//
+in
+//
+case-
+tq0a.node() of
+| TQ0ARGsome
+  (_, q0as, _) => let
+    val q1as = trans01_qarglst(q0as)
+  in
+    tq1arg_make_node(loc0, TQ1ARGsome(q1as))
+  end // end of [TQ0ARGsome]
+//
+end // end of [trans01_tqarg]
+
+implement
+trans01_tqarglst
+  (tq0as) =
+list_vt2t(tq1as) where
+{
+  val
+  tq1as =
+  list_map<tq0arg><tq1arg>
+    (tq0as) where
+  {
+    implement
+    list_map$fopr<tq0arg><tq1arg> = trans01_tqarg
+  }
+} (* end of [trans01_tqarglst] *)
+
+(* ****** ****** *)
 
 implement
 trans01_dexp
@@ -90,6 +204,60 @@ list_vt2t(d1es) where
     list_map$fopr<d0exp><d1exp> = trans01_dexp
   }
 } (* end of [trans01_dexplst] *)
+
+(* ****** ****** *)
+
+extern
+fun
+trans01_dcstdec: d0cstdec -> d1cstdec
+and
+trans01_dcstdeclst: d0cstdeclst -> d1cstdeclst
+
+(* ****** ****** *)
+
+local
+
+in (* in-of-local *)
+
+implement
+trans01_dcstdec
+  (d0c0) = let
+//
+val
+D0CSTDEC(rcd) = d0c0
+//
+val
+loc = rcd.loc
+val-
+I0DNTsome(tok) = rcd.nam
+val
+arg = trans01_darglst(rcd.arg)
+val
+res = aux_effs0expopt(rcd.res)
+val
+def = aux_teqd0expopt(rcd.def)
+//
+in
+  D1CSTDEC
+  (@{loc=loc,nam=tok,arg=arg,res=res,def=def})
+end // end of [trans01_dcstdec]
+
+end // end of [local]
+
+implement
+trans01_dcstdeclst
+  (d0cs) =
+list_vt2t(d1cs) where
+{
+  val
+  d1cs =
+  list_map<d0cstdec><d1cstdec>
+    (d0cs) where
+  {
+    implement
+    list_map$fopr<d0cstdec><d1cstdec> = trans01_dcstdec
+  }
+} (* end of [trans01_dcstdeclst] *)
 
 (* ****** ****** *)
 
@@ -237,7 +405,7 @@ val loc0 = d0c0.loc()
 //
 val-
 D0Csortdef
-(_, tid, _, def0) = d0c0.node()
+(knd, tid, _, def0) = d0c0.node()
 //
 val def1 =
 (
@@ -267,7 +435,7 @@ val () =
 println!("aux_sortdef: def1 = ", def1)
 //
 in
-  d1ecl_make_node(loc0, D1Csortdef(tok, def1))
+  d1ecl_make_node(loc0, D1Csortdef(knd, tok, def1))
 end // end of [aux_sortdef]
 
 (* ****** ****** *)
@@ -281,7 +449,7 @@ val loc0 = d0c0.loc()
 //
 val-
 D0Csexpdef
-( _
+( knd
 , seid
 , arg0
 , opt0, _, def0) = d0c0.node()
@@ -304,7 +472,7 @@ println!("aux_sexpdef: def1 = ", def1)
 //
 in
   d1ecl_make_node
-    (loc0, D1Csexpdef(tok, arg1, opt1, def1))
+    (loc0, D1Csexpdef(knd, tok, arg1, opt1, def1))
   // d1ecl_make_node
 end // end of [aux_sexpdef]
 
@@ -319,7 +487,7 @@ val loc0 = d0c0.loc()
 //
 val-
 D0Cabstype
-( _
+( knd
 , seid, arg0, def0) = d0c0.node()
 //
 val def1 = aux_abstdef(def0)
@@ -337,7 +505,7 @@ println!("aux_abstype: def1 = ", def1)
 //
 in
   d1ecl_make_node
-    (loc0, D1Cabstype(tok, arg1, def1))
+    (loc0, D1Cabstype(knd, tok, arg1, def1))
   // d1ecl_make_node
 end // end of [aux_abstype]
 
@@ -366,7 +534,7 @@ val loc0 = d0c0.loc()
 //
 val-
 D0Cdatasort
-  ( _, d0ts) = d0c0.node()
+(knd, d0ts) = d0c0.node()
 //
 val
 d1ts =
@@ -380,7 +548,7 @@ list_map<d0tsort><d1tsort>
 val d1ts = list_vt2t{d1tsort}(d1ts)
 //
 in
-  d1ecl_make_node(loc0, D1Cdatasort(d1ts))
+  d1ecl_make_node(loc0, D1Cdatasort(knd, d1ts))
 end // end of [aux_datasort]
 
 and
@@ -411,7 +579,7 @@ val loc0 = d0c0.loc()
 //
 val-
 D0Cdatatype
-  ( _, d0ts, wd0cs) = d0c0.node()
+  (knd, d0ts, wd0cs) = d0c0.node()
 //
 val
 d1ts =
@@ -433,7 +601,7 @@ case+ wd0cs of
 ) : wd1eclseq // end of [val]
 //
 in
-  d1ecl_make_node(loc0, D1Cdatatype(d1ts, wd1cs))
+  d1ecl_make_node(loc0, D1Cdatatype(knd, d1ts, wd1cs))
 end // end of [aux_datatype]
 
 and
@@ -458,6 +626,28 @@ d0t0.node() of
   end // end of [D0ATYPE]
 //
 end // end of [aux_d0atype]
+
+(* ****** ****** *)
+
+fun
+aux_dynconst
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cdynconst
+(knd, tqas, d0cs) = d0c0.node()
+//
+val tqas = trans01_tqarglst(tqas)
+val d1cs = trans01_dcstdeclst(d0cs)
+//
+in
+  d1ecl_make_node
+    (loc0, D1Cdynconst(knd, tqas, d1cs))
+  // d1ecl_make_node
+end // end of [aux_dynconst]
 
 (* ****** ****** *)
 
@@ -495,6 +685,8 @@ d0c0.node() of
 | D0Cdatasort _ => aux_datasort(d0c0)
 //
 | D0Cdatatype _ => aux_datatype(d0c0)
+//
+| D0Cdynconst _ => aux_dynconst(d0c0)
 //
 | D0Clocal
   (_, d0cs1, _, d0cs2, _) =>
