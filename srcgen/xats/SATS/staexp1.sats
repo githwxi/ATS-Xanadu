@@ -429,13 +429,14 @@ s1exp_node =
 //
 | S1Eapp of () // apply
 //
-| S1Eimp of () // imply
-//
 | S1Ebs0 of () // backslash
 | S1Ebs1 of s1exp // backslash
 //
+| S1Eimp of
+  (s1explst) // imply
+//
 | S1Eapps of
-  (s1exp, s1explst)
+  (s1exp, s1explst) // apply
 //
 | S1Elist of s1explst // temp.
 | S1Elist of
@@ -487,6 +488,13 @@ s1exp_none(loc: loc_t): s1exp
 fun
 s1exp_make_node
 (loc: loc_t, node: s1exp_node): s1exp
+//
+(* ****** ****** *)
+//
+datatype
+s1eff =
+| S1EFFnone of () // HX: default
+| S1EFFsome of (s1explst) // HX: annotated
 //
 (* ****** ****** *)
 //

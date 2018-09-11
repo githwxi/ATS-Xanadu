@@ -310,26 +310,24 @@ case+ x0.node() of
 //
 | S1Eapp() =>
   fprint!(out, "S1Eapp()")
-| S1Eimp() =>
-  fprint!(out, "S1Eimp()")
 //
 | S1Ebs0() =>
   fprint!(out, "S1Ebs0()")
 | S1Ebs1(s1e) =>
   fprint!(out, "S1Ebs1(", s1e, ")")
 //
-| S1Eapps
-  (s1e0, s1es) =>
+| S1Eimp(s1es) =>
+  fprint!(out, "S1Eimp(", s1es, ")")
+//
+| S1Eapps(s1e0, s1es) =>
   fprint!
-  ( out
-  , "S1Eapps(", s1e0, "; ", s1es, ")")
+  (out, "S1Eapps(", s1e0, "; ", s1es, ")")
 //
 | S1Elist(s1es) =>
   fprint!(out, "S1Elist(", s1es, ")")
 | S1Elist(s1es1, s1es2) =>
   fprint!
-  ( out
-  , "S1Elist(", s1es1, "; ", s1es2, ")")
+  (out, "S1Elist(", s1es1, "; ", s1es2, ")")
 //
 | S1Etuple(k0, s1es) =>
   fprint!(out, "S1Etuple(", k0, "; ", s1es, ")")

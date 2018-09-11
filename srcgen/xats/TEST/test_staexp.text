@@ -41,7 +41,7 @@ bar0(1 + 2 + 3 + -4 + -5)
 
 sexpdef
 int2int =
-{ n:int
+{ n:int | n >= 0
 } int(n) -> [n:nat] int(n:int)
 
 typedef int2 = @(int, int)
@@ -189,14 +189,14 @@ endwhere
 //
 (* ****** ****** *)
 
-typedef foo = bar2 * bar2
+typedef foo = bar2 -<1,ntm,!wrt> bar2
 
 (* ****** ****** *)
 
 fun
 <a,b:type>
 <a,b,c:t0ype>
-foo(x: int): int = ext"C$foo"
+foo(x: int): int = #ext"C$foo"
 
 (* ****** ****** *)
 
