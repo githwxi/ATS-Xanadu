@@ -175,7 +175,9 @@ case+ tnd of
 | T_SRP() => fprint(out, "SRP")
 //
 | T_EQGT() => fprint(out, "EQGT")
+//
 | T_LTGT() => fprint(out, "LTGT")
+| T_GTLT() => fprint(out, "GTLT")
 //
 | T_MSLT() => fprint(out, "MSLT")
 (*
@@ -385,7 +387,9 @@ case+ tnd of
 | T_SRP() => fprint(out, "#")
 //
 | T_EQGT() => fprint(out, "=>")
+//
 | T_LTGT() => fprint(out, "<>")
+| T_GTLT() => fprint(out, "><")
 //
 | T_MSLT() => fprint(out, "-<")
 (*
@@ -1029,6 +1033,19 @@ case+ x0.node() of
         loop1(x1, xs2, list_vt_cons(x0, res))
   )
 //
+| T_GTLT() => let
+    val loc = x0.loc()
+    val x00 = 
+    token_make_node(loc, T_GT())
+    val x01 = 
+    token_make_node(loc, T_LT())
+  in
+    loop1
+    ( x1, xs2
+    , list_vt_cons(x01, list_vt_cons(x00, res)))
+  end // end of [T_GTLT]
+//
+(*
 | T_COLON() =>
   (
     case+ x1.node() of
@@ -1042,6 +1059,7 @@ case+ x0.node() of
     | _ (* rest-of-tnode *) =>
         loop1(x1, xs2, list_vt_cons(x0, res))
   )
+*)
 //
 (*
 | T_IDENT_dlr(id) =>

@@ -907,12 +907,32 @@ case+
 tok.node() of
 | T_COLON() => let
     val () = buf.incby1()
-    val s0e =
+    val s0e_res =
       p_apps0exp_NEQ(buf, err)
     // end of [val]
   in
-    EFFS0EXPsome(S0EFFnone(tok), s0e)
+    EFFS0EXPsome
+      (S0EFFnone(tok), s0e_res)
   end // end of [T_COLON]
+| T_COLONLT() => let
+    val () = buf.incby1()
+    val s0es =
+    list_vt2t
+    (
+      pstar_COMMA_fun
+      {s0exp}(buf, err, p_apps0exp_NGT)
+    )
+    val tbeg = tok
+    val tend = p_GT(buf, err)
+    val s0e_res =
+      p_apps0exp_NEQ(buf, err)
+    // end of [val]
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    EFFS0EXPsome
+      (S0EFFsome(tbeg, s0es, tend), s0e_res)
+    // EFFS0EXPsome
+  end // end of [T_COLONLT]
 | _(*non-COLON/LT*) => EFFS0EXPnone()
 //
 end // end of [p_effs0expopt]

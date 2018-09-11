@@ -413,4 +413,23 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+print_s1eff(x0) =
+fprint_s1eff(stdout_ref, x0)
+implement
+prerr_s1eff(x0) =
+fprint_s1eff(stderr_ref, x0)
+implement
+fprint_s1eff
+  (out, x0) =
+(
+case+ x0 of
+| S1EFFnone() =>
+  fprint!(out, "S1EFFnone(", ")")
+| S1EFFsome(s1es) =>
+  fprint!(out, "S1EFFsome(", s1es, ")")
+)
+
+(* ****** ****** *)
+
 (* end of [xats_staexp1_print.dats] *)

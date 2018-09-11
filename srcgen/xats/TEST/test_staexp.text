@@ -201,6 +201,9 @@ foo(x: int): int
 fun
 <a,b:int>
 foo(x: int(a)): int(b)
+fun
+<a,b:int><c:int>
+foo2(x1: int(a) | x2: int(b)):<ntm> int(c)
 
 (* ****** ****** *)
 
