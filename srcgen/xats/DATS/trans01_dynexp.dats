@@ -71,6 +71,12 @@ trans01_tqarglst: tq0arglst -> tq1arglst
 //
 extern
 fun
+trans01_atyp: a0typ -> a1typ
+and
+trans01_atyplst: a0typlst -> a1typlst
+//
+extern
+fun
 trans01_darg: d0arg -> d1arg
 and
 trans01_darglst: d0arglst -> d1arglst
@@ -217,6 +223,34 @@ trans01_dcstdeclst: d0cstdeclst -> d1cstdeclst
 
 local
 
+fun
+aux_effs0expopt
+( opt
+: effs0expopt): effs1expopt =
+(
+case+ opt of
+| EFFS0EXPnone() =>
+  EFFS1EXPnone()
+| EFFS0EXPsome(s0f, s0e) =>
+  EFFS1EXPsome(s1f, s1e) where
+  {
+    val s1f = trans01_seff(s0f)
+    val s1e = trans01_sexp(s0e)
+  }
+)
+
+fun
+aux_teqd0expopt
+( opt
+: teqd0expopt): teqd1expopt =
+(
+case+ opt of
+| TEQD0EXPnone() =>
+  TEQD1EXPnone()
+| TEQD0EXPsome(tok, d0e) =>
+  TEQD1EXPsome(tok, trans01_dexp(d0e))
+)
+
 in (* in-of-local *)
 
 implement
@@ -228,8 +262,10 @@ D0CSTDEC(rcd) = d0c0
 //
 val
 loc = rcd.loc
+val
+nam = rcd.nam
 val-
-I0DNTsome(tok) = rcd.nam
+I0DNTsome(tok) = nam.node()
 val
 arg = trans01_darglst(rcd.arg)
 val

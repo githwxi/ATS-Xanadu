@@ -55,6 +55,9 @@ fprint_val<token> = fprint_token
 //
 implement
 fprint_val<d1exp> = fprint_d1exp
+//
+(* ****** ****** *)
+//
 implement
 fprint_val<d1ecl> = fprint_d1ecl
 //
@@ -75,6 +78,8 @@ local
 
 implement
 fprint_val<d1ecl> = fprint_d1ecl
+implement
+fprint_val<d1tsort> = fprint_d1tsort
 
 in (* in-of-local *)
 
@@ -107,9 +112,9 @@ case+ x0.node() of
   , knd, "; ", tok, "; ", arg, "; ", def, ")")
 //
 | D1Cdatasort
-  ( knd, tok, d1tsrts ) =>
+  ( knd, d1tsrts ) =>
   fprint!
-  (out, "D1Cdatasort(", knd, "; ", tok, "; ", d1tsrts, ")")
+  (out, "D1Cdatasort(", knd, "; ", d1tsrts, ")")
 //
 | _(*rest-of-d1ecl*) =>
   fprint!(out, "fprint_d1ecl: not-yet-implemented")
