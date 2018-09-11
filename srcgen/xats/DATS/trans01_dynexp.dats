@@ -176,6 +176,98 @@ list_vt2t(tq1as) where
 (* ****** ****** *)
 
 implement
+trans01_atyp
+  (a0t0) = let
+//
+val
+loc0 = a0t0.loc()
+//
+in
+//
+case+
+a0t0.node() of
+| A0TYPsome(s0e, opt) =>
+  a1typ_make_node
+  ( loc0
+  , A1TYPsome(trans01_sexp(s0e), opt))
+//
+end // end of [trans01_atyp]
+
+implement
+trans01_atyplst
+  (a0ts) =
+list_vt2t(d1as) where
+{
+  val
+  d1as =
+  list_map<a0typ><a1typ>
+    (a0ts) where
+  {
+    implement
+    list_map$fopr<a0typ><a1typ> = trans01_atyp
+  }
+} (* end of [trans01_atyplst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_darg
+  (d0a0) = let
+//
+val
+loc0 = d0a0.loc()
+//
+in
+//
+case-
+d0a0.node() of
+| D0ARGsome_sta
+  (_, s0qs, _) => let
+    val s1qs = trans01_squalst(s0qs)
+  in
+    d1arg_make_node(loc0, D1ARGsome_sta(s1qs))
+  end // end of [D0ARGsome_sta]
+| D0ARGsome_dyn
+  (_, arg0, opt1, _) => let
+    val arg0 = trans01_atyplst(arg0)
+    val opt1 =
+    (
+    case+ opt1 of
+    | None() => None()
+    | Some(a0ts) => Some(trans01_atyplst(a0ts))
+    ) : a1typlstopt // end of [val]
+  in
+    d1arg_make_node(loc0, D1ARGsome_dyn(arg0, opt1))
+  end // end of [D0ARGsome_dyn]
+//
+end // end of [trans01_darg]
+
+datatype
+d0arg_node =
+| D0ARGnone of token
+| D0ARGsome_sta of
+  (token, s0qualst, token)
+| D0ARGsome_dyn of
+  (token, a0typlst, a0typlstopt, token)
+
+implement
+trans01_darglst
+  (d0as) =
+list_vt2t(d1as) where
+{
+  val
+  d1as =
+  list_map<d0arg><d1arg>
+    (d0as) where
+  {
+    implement
+    list_map$fopr<d0arg><d1arg> = trans01_darg
+  }
+} (* end of [trans01_darglst] *)
+
+(* ****** ****** *)
+
+implement
 trans01_dexp
   (d0e0) = let
 //

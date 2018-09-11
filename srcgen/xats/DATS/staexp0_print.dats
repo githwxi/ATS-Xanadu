@@ -604,6 +604,30 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+print_s0eff(x0) =
+fprint_s0eff(stdout_ref, x0)
+implement
+prerr_s0eff(x0) =
+fprint_s0eff(stderr_ref, x0)
+implement
+fprint_s0eff
+  (out, x0) =
+(
+case+ x0 of
+| S0EFFnone(tok) =>
+  fprint!
+  (out, "S0EFFnone(", tok, ")")
+| S0EFFsome
+  (tbeg, s0es, tend) =>
+  fprint!
+  ( out
+  , "S0EFFsome("
+  , tbeg, "; ", s0es, "; ", tend, ")")
+)
+
+(* ****** ****** *)
+
+implement
 print_d0atype(x0) =
 fprint_d0atype(stdout_ref, x0)
 implement

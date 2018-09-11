@@ -426,7 +426,7 @@ d0tsortlst = List0(d0tsort)
 datatype
 d0tsort_node =
 | D0TSORT of
-    (s0tid, token, s0rtconlst)
+  (s0tid, token(*EQ*), s0rtconlst)
   // D0TSORT
 //
 fun
@@ -794,6 +794,17 @@ s0eff =
   (token(*:*)) // HX: default
 | S0EFFsome of
   (token(*:<*), s0explst, token) // HX: annotated
+//
+fun
+print_s0eff: print_type(s0eff)
+fun
+prerr_s0eff: prerr_type(s0eff)
+fun
+fprint_s0eff: fprint_type(s0eff)
+//
+overload print with print_s0eff
+overload prerr with prerr_s0eff
+overload fprint with fprint_s0eff
 //
 (* ****** ****** *)
 //
