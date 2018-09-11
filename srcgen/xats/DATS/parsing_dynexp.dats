@@ -855,6 +855,8 @@ implement
 p_d0cstdec
   (buf, err) = let
 //
+val e0 = err
+//
 val
 nam = p_d0pid(buf, err)
 val
@@ -887,6 +889,7 @@ case+ def of
 ) : loc_t // end of [val]
 //
 in
+  err := e0;
   D0CSTDEC(@{loc=loc,nam=nam,arg=arg,res=res,def=def})
 end // end of [p_d0cstdec]
 

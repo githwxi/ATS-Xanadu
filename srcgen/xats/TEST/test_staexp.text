@@ -194,9 +194,13 @@ typedef foo = bar2 -<1,ntm,!wrt> bar2
 (* ****** ****** *)
 
 fun
-<a,b:type>
-<a,b,c:t0ype>
-foo(x: int): int = #ext"C$foo"
+foo(x: int): int
+
+(* ****** ****** *)
+
+fun
+<a,b:int>
+foo(x: int(a)): int(b)
 
 (* ****** ****** *)
 

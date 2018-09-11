@@ -56,6 +56,15 @@ fprint_val<sort1> = fprint_sort1
 (* ****** ****** *)
 
 implement
+fprint_val<s1rtcon> = fprint_s1rtcon
+implement
+fprint_val<d1tsort> = fprint_d1tsort
+implement
+fprint_val<s1rtdef> = fprint_s1rtdef
+
+(* ****** ****** *)
+
+implement
 fprint_val<s1arg> = fprint_s1arg
 implement
 fprint_val<s1marg> = fprint_s1marg
@@ -124,6 +133,62 @@ case+ x0.node() of
 ) (* end of [fprint_sort1] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_s1rtcon(x0) =
+fprint_s1rtcon(stdout_ref, x0)
+implement
+prerr_s1rtcon(x0) =
+fprint_s1rtcon(stderr_ref, x0)
+
+implement
+fprint_s1rtcon
+  (out, x0) =
+(
+case+ x0.node() of
+| S1RTCON(sid, opt) =>
+  fprint!(out, "S1RTCON(", sid, ", ", opt, ")")
+) (* end of [fprint_s1rtcon] *)
+
+(* ****** ****** *)
+
+implement
+print_d1tsort(x0) =
+fprint_d1tsort(stdout_ref, x0)
+implement
+prerr_d1tsort(x0) =
+fprint_d1tsort(stderr_ref, x0)
+implement
+fprint_d1tsort
+  (out, x0) =
+(
+case+ x0.node() of
+| D1TSORT(tid, s1cs) =>
+  fprint!
+  (out, "D1TSORT(", tid, "; ", s1cs, ")")
+) (* end of [fprint_d1tsort] *)
+
+(* ****** ****** *)
+
+implement
+print_s1rtdef(x0) =
+fprint_s1rtdef(stdout_ref, x0)
+implement
+prerr_s1rtdef(x0) =
+fprint_s1rtdef(stderr_ref, x0)
+implement
+fprint_s1rtdef
+  (out, x0) =
+(
+case+ x0.node() of
+| S1RTDEFsort(s1t) =>
+  fprint!(out, "S1RTDEFsort(", s1t, ")")
+| S1RTDEFsubset(s1a0, s1es) =>
+  fprint!
+  ( out, "S1RTDEFsubset(", s1a0, "; ", s1es, ")")
+) (* end of [fprint_s1rtdef] *)
 
 (* ****** ****** *)
 
@@ -253,26 +318,6 @@ case+ x0.node() of
 | S1QUAvars(ids, s1t) =>
   fprint!(out, "S1QUAvars(", ids, "; ", s1t, ")")
 )
-
-(* ****** ****** *)
-
-implement
-print_s1rtdef(x0) =
-fprint_s1rtdef(stdout_ref, x0)
-implement
-prerr_s1rtdef(x0) =
-fprint_s1rtdef(stderr_ref, x0)
-implement
-fprint_s1rtdef
-  (out, x0) =
-(
-case+ x0.node() of
-| S1RTDEFsort(s1t) =>
-  fprint!(out, "S1RTDEFsort(", s1t, ")")
-| S1RTDEFsubset(s1a0, s1es) =>
-  fprint!
-  ( out, "S1RTDEFsubset(", s1a0, "; ", s1es, ")")
-) (* end of [fprint_s1rtdef] *)
 
 (* ****** ****** *)
 

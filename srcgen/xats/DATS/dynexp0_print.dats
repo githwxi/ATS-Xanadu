@@ -249,6 +249,71 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+print_d0cstdec(x0) =
+fprint_d0cstdec(stdout_ref, x0)
+implement
+prerr_d0cstdec(x0) =
+fprint_d0cstdec(stderr_ref, x0)
+
+implement
+fprint_d0cstdec
+  (out, x0) = let
+//
+val+D0CSTDEC(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "D0CSTDEC@{"
+  , ", nam=", rcd.nam, ", arg=", rcd.arg
+  , ", res=", rcd.res, ", def=", rcd.def, "}")
+end // end of [fprint_d0cstdec]
+
+(* ****** ****** *)
+
+implement
+print_effs0expopt(x0) =
+fprint_effs0expopt(stdout_ref, x0)
+implement
+prerr_effs0expopt(x0) =
+fprint_effs0expopt(stderr_ref, x0)
+implement
+fprint_effs0expopt
+  (out, x0) =
+(
+case+ x0 of
+| EFFS0EXPnone() =>
+  fprint!(out, "EFFS0EXPnone(", ")")
+| EFFS0EXPsome(s0f, s0e) =>
+  fprint!
+  ( out
+  , "EFFS0EXPsome(", s0f, "; ", s0e, ")")
+)
+
+(* ****** ****** *)
+
+implement
+print_teqd0expopt(x0) =
+fprint_teqd0expopt(stdout_ref, x0)
+implement
+prerr_teqd0expopt(x0) =
+fprint_teqd0expopt(stderr_ref, x0)
+implement
+fprint_teqd0expopt
+  (out, x0) =
+(
+case+ x0 of
+| TEQD0EXPnone() =>
+  fprint!
+  (out, "TEQD0EXPnone(", ")")
+| TEQD0EXPsome(tok, d0e) =>
+  fprint!
+  (out, "TEQD0EXPsome(", tok, "; ", d0e, ")")
+)
+
+(* ****** ****** *)
+
+implement
 print_d0ecl(x0) =
 fprint_d0ecl(stdout_ref, x0)
 implement
@@ -259,6 +324,8 @@ local
 
 implement
 fprint_val<d0ecl> = fprint_d0ecl
+implement
+fprint_val<d0cstdec> = fprint_d0cstdec
 
 in (* in-of-local *)
 
@@ -304,7 +371,7 @@ case+ x0.node() of
   (tok, tqas, d0cs) =>
   fprint!
   ( out
-  , "D0Cdynconst(", tok, "; ", tqas, "; ", "...", ")")
+  , "D0Cdynconst(", tok, "; ", tqas, "; ", d0cs, ")")
 //
 | D0Clocal
   (tok, d0cs0, tok1, d0cs1, tok2) =>

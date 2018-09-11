@@ -78,8 +78,6 @@ local
 
 implement
 fprint_val<d1ecl> = fprint_d1ecl
-implement
-fprint_val<d1tsort> = fprint_d1tsort
 
 in (* in-of-local *)
 

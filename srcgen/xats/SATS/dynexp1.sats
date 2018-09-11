@@ -140,7 +140,7 @@ a1typ_node =
 (*
   | A1TYPnone of token
 *)
-  | A1TYPsome of (s0exp, tokenopt)
+  | A1TYPsome of (s1exp, tokenopt)
 //
 fun
 a1typ_get_loc(a1typ): loc_t
@@ -173,10 +173,9 @@ d1arg_node =
 (*
 | D1ARGnone of token
 *)
-| D1ARGsome_sta of
-  (token, s1qualst, token)
+| D1ARGsome_sta of (s1qualst)
 | D1ARGsome_dyn of
-  (token, a1typlst, a1typlstopt, token)
+  (a1typlst(*arg0*), a1typlstopt(*opt1*))
 //
 fun
 d1arg_get_loc(d1arg): loc_t

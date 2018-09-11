@@ -279,6 +279,39 @@ fun
 d0cstdec_get_loc(d0cstdec): loc_t
 overload .loc with d0cstdec_get_loc
 //
+fun
+print_d0cstdec: print_type(d0cstdec)
+fun
+prerr_d0cstdec: prerr_type(d0cstdec)
+fun
+fprint_d0cstdec: fprint_type(d0cstdec)
+//
+overload print with print_d0cstdec
+overload prerr with prerr_d0cstdec
+overload fprint with fprint_d0cstdec
+//
+fun
+print_effs0expopt: print_type(effs0expopt)
+fun
+prerr_effs0expopt: prerr_type(effs0expopt)
+fun
+fprint_effs0expopt: fprint_type(effs0expopt)
+//
+overload print with print_effs0expopt
+overload prerr with prerr_effs0expopt
+overload fprint with fprint_effs0expopt
+//
+fun
+print_teqd0expopt: print_type(teqd0expopt)
+fun
+prerr_teqd0expopt: prerr_type(teqd0expopt)
+fun
+fprint_teqd0expopt: fprint_type(teqd0expopt)
+//
+overload print with print_teqd0expopt
+overload prerr with prerr_teqd0expopt
+overload fprint with fprint_teqd0expopt
+//
 (* ****** ****** *)
 
 datatype
