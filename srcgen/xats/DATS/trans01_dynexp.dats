@@ -574,6 +574,14 @@ d0e0.node() of
     fxitmlst_resolve_d1exp(loc0, d1es)
   }
 //
+| D0Eparen _ => auxparen(d0e0)
+//
+| D0Enone(_(*tok*)) =>
+  FXITMatm(d1e0) where
+  {
+    val d1e0 = d1exp_make_node(loc0, D1Enone())
+  } (* end of [D0Enone] *)
+//
 end // end of [auxitm]
 
 and
@@ -591,6 +599,40 @@ list_vt2t(ys) where
     list_map$fopr<d0exp><d1eitm>(x) = auxitm(x)
   }
 } (* end of [auxitmlst] *)
+
+(* ****** ****** *)
+
+and
+auxparen
+( d0e0
+: d0exp): d1eitm = let
+//
+val-
+D0Eparen
+( _
+, d0es1, rparen) = d0e0.node()
+//
+val
+d1e0_node =
+(
+case+ rparen of
+| d0exp_RPAREN_cons0(_) =>
+  D1Elist(d1es1) where
+  {
+    val d1es1 = trans01_dexplst(d0es1)
+  }
+| d0exp_RPAREN_cons1(_, d0es2, _) =>
+  D1Elist(d1es1, d1es2) where
+  {
+    val d1es1 = trans01_dexplst(d0es1)
+    val d1es2 = trans01_dexplst(d0es2)
+  }
+) : d1exp_node // end of [val]
+//
+in
+  FXITMatm
+  (d1exp_make_node(d0e0.loc(), d1e0_node))
+end // end of [auxparen]
 
 (* ****** ****** *)
 

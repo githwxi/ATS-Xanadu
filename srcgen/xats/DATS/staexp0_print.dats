@@ -604,6 +604,37 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+print_labs0exp_RBRACE(x0) =
+fprint_labs0exp_RBRACE(stdout_ref, x0)
+implement
+prerr_labs0exp_RBRACE(x0) =
+fprint_labs0exp_RBRACE(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<s0exp> = fprint_s0exp
+
+in (* in-of-local *)
+
+implement
+fprint_labs0exp_RBRACE
+  (out, x0) =
+(
+case+ x0 of
+| labs0exp_RBRACE_cons0(tok) =>
+  fprint!
+  (out, "labs0exp_RBRACE_cons0(", tok, ")")
+| labs0exp_RBRACE_cons1(tok1, ls0es, tok2) =>
+  fprint!
+  (out, "labs0exp_RBRACE_cons1(", tok1, ", ", ls0es, ", ", tok2, ")")
+) (* end of [fprint_labs0exp_RBRACE] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
 print_s0eff(x0) =
 fprint_s0eff(stdout_ref, x0)
 implement
@@ -662,37 +693,6 @@ case+ x0.node() of
   ( out, "D0ATCON("
   , s0us, "; ", dcon, "; ", s0is, "; ", argopt, ")")
 ) (* end of [fprint_d0atype] *)
-
-(* ****** ****** *)
-
-implement
-print_labs0exp_RBRACE(x0) =
-fprint_labs0exp_RBRACE(stdout_ref, x0)
-implement
-prerr_labs0exp_RBRACE(x0) =
-fprint_labs0exp_RBRACE(stderr_ref, x0)
-
-local
-
-implement
-fprint_val<s0exp> = fprint_s0exp
-
-in (* in-of-local *)
-
-implement
-fprint_labs0exp_RBRACE
-  (out, x0) =
-(
-case+ x0 of
-| labs0exp_RBRACE_cons0(tok) =>
-  fprint!
-  (out, "labs0exp_RBRACE_cons0(", tok, ")")
-| labs0exp_RBRACE_cons1(tok1, ls0es, tok2) =>
-  fprint!
-  (out, "labs0exp_RBRACE_cons1(", tok1, ", ", ls0es, ", ", tok2, ")")
-) (* end of [fprint_labs0exp_RBRACE] *)
-
-end // end of [local]
 
 (* ****** ****** *)
 

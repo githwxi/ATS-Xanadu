@@ -791,6 +791,99 @@ list_vt2t
 
 (* ****** ****** *)
 
+implement
+p_d0expseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun{d0exp}(buf, err, p_d0exp))
+//
+) (* end of [p_d0expseq_COMMA] *)
+
+implement
+p_labd0expseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun
+ {labd0exp}(buf, err, p_labd0exp))
+//
+) (* end of [p_labd0expseq_COMMA] *)
+
+(* ****** ****** *)
+
+implement
+p_d0exp_RPAREN
+  (buf, err) = let
+  val e0 = err
+  val tok1 = buf.get0()
+  val tnd1 = tok1.node()
+in
+//
+case+ tnd1 of
+| T_BAR() => let
+    val () = buf.incby1()
+    val d0es =
+      p_d0expseq_COMMA(buf, err)
+    val tok2 = p_RPAREN(buf, err)
+  in
+    err := e0;
+    d0exp_RPAREN_cons1(tok1, d0es, tok2)
+  end // end of [T_BAR]
+| _ (* non-BAR *) =>
+  (
+    case+ tnd1 of
+    | T_RPAREN() => let
+        val () = buf.incby1()
+      in
+        err := e0; d0exp_RPAREN_cons0(tok1)
+      end // end of [RPAREN]
+    | _(*non-RPAREN*) =>
+      (
+        err := e0 + 1; d0exp_RPAREN_cons0(tok1)
+      ) (* end of [non-RPAREN *)
+  )
+//
+end // end of [p_d0exp_RPAREN]
+
+implement
+p_labd0exp_RBRACE
+  (buf, err) = let
+  val e0 = err
+  val tok1 = buf.get0()
+  val tnd1 = tok1.node()
+in
+//
+case+ tnd1 of
+| T_BAR() => let
+    val () = buf.incby1()
+    val ld0es =
+    p_labd0expseq_COMMA(buf, err)
+    val tok2 = p_RBRACE(buf, err)
+  in
+    err := e0;
+    labd0exp_RBRACE_cons1(tok1, ld0es, tok2)
+  end // end of [T_BAR]
+| _ (* non-BAR *) =>
+  (
+    case+ tnd1 of
+    | T_RBRACE() => let
+        val () = buf.incby1()
+      in
+        err := e0; labd0exp_RBRACE_cons0(tok1)
+      end // end of [RBRACE]
+    | _(*non-RPAREN*) =>
+      (
+        err := e0 + 1; labd0exp_RBRACE_cons0(tok1)
+      ) (* end of [non-RPAREN] *)
+  )
+//
+end // end of [p_labd0exp_RBRACE]
+
+(* ****** ****** *)
+
 (*
 stadef::
 | si0de s0margseq colons0rtopt EQ s0exp

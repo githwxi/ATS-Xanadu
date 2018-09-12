@@ -39,6 +39,13 @@ UN =
 //
 (* ****** ****** *)
 //
+#staload
+"./../SATS/label0.sats"
+#staload
+"./../SATS/location.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/staexp0.sats"
@@ -199,6 +206,34 @@ d0exp_make_node
 
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+d0exp_RPAREN_loc(x0) =
+(
+case+ x0 of
+| d0exp_RPAREN_cons0
+    (tok) => tok.loc()
+  // d0exp_RPAREN_cons0
+| d0exp_RPAREN_cons1
+    (tok1, d0es, tok2) => tok1.loc() + tok2.loc()
+  // d0exp_RPAREN_cons1
+)  
+//
+(* ****** ****** *)
+//
+implement
+labd0exp_RBRACE_loc(x0) =
+(
+case+ x0 of
+| labd0exp_RBRACE_cons0
+    (tok) => tok.loc()
+  // labd0exp_RBRACE_cons0
+| labd0exp_RBRACE_cons1
+    (tok1, ld0es, tok2) => tok1.loc() + tok2.loc()
+  // labd0exp_RBRACE_cons1
+)  
+//
 (* ****** ****** *)
 
 local

@@ -216,6 +216,10 @@ d1exp_node =
 //
 | D1Eapps of (d1exp, d1explst)
 //
+| D1Elist of d1explst // temp.
+| D1Elist of
+  (d1explst, d1explst) // temp.
+//
 | D1Enone of ((*error-indication*))
 // end of [d1exp_node]
 //
