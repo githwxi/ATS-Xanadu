@@ -462,7 +462,7 @@ s1exp_node =
 //
 | S1Equal of (token(*mod*), s1exp)
 //
-| S1Enone of ((*error indication*))
+| S1Enone of ((*error-indication*))
 // end of [s1exp_node]
 
 (* ****** ****** *)

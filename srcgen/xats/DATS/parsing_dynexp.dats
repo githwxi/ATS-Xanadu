@@ -564,6 +564,28 @@ extern
 fun
 p_atmd0expseq : parser(d0explst)
 //
+extern
+fun
+p_d0expseq_COMMA : parser(d0explst)
+extern
+fun
+p_labd0expseq_COMMA : parser(labd0explst)
+//
+(*
+d0exp_RPAREN ::=
+  | RPAREN
+  | BAR d0expseq_COMMA RPAREN
+labd0exp_RBRACE ::=
+  | RPAREN
+  | BAR labd0expseq_COMMA RBRACE
+*)
+extern
+fun
+p_d0exp_RPAREN : parser(d0exp_RPAREN)
+extern
+fun
+p_labd0exp_RBRACE : parser(labd0exp_RBRACE)
+//
 (* ****** ****** *)
 
 local
@@ -712,6 +734,25 @@ case+ tnd of
     err := e0;
     d0exp_make_node(c0.loc(), D0Estr(c0))
   end // end of [t_t0str]
+//
+| T_LPAREN() => let
+    val () = buf.incby1()
+    val d0es =
+      p_d0expseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_d0exp_RPAREN(buf, err)
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Eparen(tbeg, d0es, tend)) where
+    {
+      val loc_res =
+        tbeg.loc()+d0exp_RPAREN_loc(tend)
+      // end of [val]
+    }
+  end // end of [T_LPAREN]
 //
 | T_LET() => let
     val () = buf.incby1()

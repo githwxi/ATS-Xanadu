@@ -204,6 +204,21 @@ d1exp_node =
 //
 | D1Eid of token
 //
+| D1Eint of token
+| D1Echr of token
+| D1Eflt of token
+| D1Estr of token
+//
+| D1Eapp of () // apply
+//
+| D1Ebs0 of () // backslash
+| D1Ebs1 of d1exp // backslash
+//
+| D1Eapps of (d1exp, d1explst)
+//
+| D1Enone of ((*error-indication*))
+// end of [d1exp_node]
+//
 (* ****** ****** *)
 //
 fun
@@ -222,6 +237,8 @@ overload print with print_d1exp
 overload prerr with prerr_d1exp
 overload fprint with fprint_d1exp
 //
+fun
+d1exp_none(loc: loc_t): d1exp
 fun
 d1exp_make_node
 (loc: loc_t, node: d1exp_node): d1exp

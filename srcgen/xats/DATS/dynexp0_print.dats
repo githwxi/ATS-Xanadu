@@ -235,6 +235,23 @@ case+ x0.node() of
 | D0Eapps(d0es) =>
   fprint!(out, "D0Eapps(", d0es, ")")
 //
+| D0Eparen
+  (tbeg, d0es, tend) =>
+  fprint!
+  ( out
+  , "D0Eparen(", tbeg, "; ", d0es, "; ", tend, ")")
+//
+| D0Etuple
+  (tbeg, topt, d0es, tend) =>
+  fprint!
+  ( out
+  , "D0Etuple(", tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
+| D0Erecord
+  (tbeg, topt, d0es, tend) =>
+  fprint!
+  ( out
+  , "D0Erecord(", tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
+//
 | D0Elet(tok0, d0cs, tok1, d0es, tok2) =>
   fprint!
   (out, "D0Elet(", tok0, "; ", d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")

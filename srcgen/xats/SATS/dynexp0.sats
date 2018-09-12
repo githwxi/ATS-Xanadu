@@ -218,6 +218,15 @@ d0exp_node =
 //
 | D0Eapps of d0explst
 //
+| D0Eparen of
+    (token, d0explst, d0exp_RPAREN)
+  // end of [D0Eparen]
+//
+| D0Etuple of
+    (token, tokenopt, d0explst, s0exp_RPAREN)
+| D0Erecord of
+    (token, tokenopt, labd0explst, labd0exp_RBRACE)
+//
 | D0Elet of
   (token, d0eclist, token, d0explst, token)
 | D0Ewhere of
@@ -226,6 +235,16 @@ d0exp_node =
 | D0Enone of (token) // HX-2018-07-08: indicating error 
 // end of [d0exp_node]
 
+and
+d0exp_RPAREN =
+| d0exp_RPAREN_cons0 of token
+| d0exp_RPAREN_cons1 of (token, d0explst, token)
+//
+and
+labd0exp_RBRACE =
+| labd0exp_RBRACE_cons0 of token
+| labd0exp_RBRACE_cons1 of (token, labd0explst, token)
+//
 (* ****** ****** *)
 //
 fun
@@ -247,6 +266,38 @@ overload fprint with fprint_d0exp
 fun
 d0exp_make_node
 (loc: loc_t, node: d0exp_node): d0exp
+//
+(* ****** ****** *)
+//
+fun
+d0exp_RPAREN_loc(d0exp_RPAREN): loc_t
+//
+fun
+print_d0exp_RPAREN: print_type(d0exp_RPAREN)
+fun
+prerr_d0exp_RPAREN: print_type(d0exp_RPAREN)
+fun
+fprint_d0exp_RPAREN: fprint_type(d0exp_RPAREN)
+//
+overload print with print_d0exp_RPAREN
+overload prerr with prerr_d0exp_RPAREN
+overload fprint with fprint_d0exp_RPAREN
+//
+(* ****** ****** *)
+//
+fun
+labd0exp_RBRACE_loc(labd0exp_RBRACE): loc_t
+//
+fun
+print_labd0exp_RBRACE: print_type(labd0exp_RBRACE)
+fun
+prerr_labd0exp_RBRACE: prerr_type(labd0exp_RBRACE)
+fun
+fprint_labd0exp_RBRACE: fprint_type(labd0exp_RBRACE)
+//
+overload print with print_labd0exp_RBRACE
+overload prerr with prerr_labd0exp_RBRACE
+overload fprint with fprint_labd0exp_RBRACE
 //
 (* ****** ****** *)
 

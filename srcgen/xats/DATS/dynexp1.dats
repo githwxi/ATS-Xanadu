@@ -197,6 +197,10 @@ d1exp_get_node(x) = x.d1exp_node
 (* ****** ****** *)
 
 implement
+d1exp_none
+(loc) =
+d1exp_make_node(loc, D1Enone())
+implement
 d1exp_make_node
 (loc, node) = $rec
 {

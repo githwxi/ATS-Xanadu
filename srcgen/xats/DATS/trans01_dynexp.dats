@@ -35,13 +35,22 @@
 //
 #staload
 SYM="./../SATS/symbol.sats"
+#staload
+FIX="./../SATS/fixity.sats"
 //
 #staload
 ENV = "./../SATS/symenv.sats"
 //
-#staload "./../SATS/basics.sats"
+(* ****** ****** *)
+
+#staload
+LOC = "./../SATS/location.sats"
+overload + with $LOC.location_combine
+overload print with $LOC.print_location
+
+(* ****** ****** *)
 //
-#staload "./../SATS/fixity.sats"
+#staload "./../SATS/basics.sats"
 //
 #staload "./../SATS/lexing.sats"
 //
@@ -55,19 +64,150 @@ ENV = "./../SATS/symenv.sats"
 //
 (* ****** ****** *)
 //
+stadef
+prcdv = $FIX.prcdv
+macdef
+int2prcdv = $FIX.int2prcdv
+//
+(* ****** ****** *)
+//
+macdef
+ASSOCnon = $FIX.ASSOCnon()
+macdef
+ASSOClft = $FIX.ASSOClft()
+macdef
+ASSOCrgt = $FIX.ASSOCrgt()
+//
+(* ****** ****** *)
+
+stadef
+fxitm = $FIX.fxitm
+//
+typedef
+d1eitm = fxitm(d1exp)
+typedef
+d1eitmlst = List0(d1eitm)
+//
+macdef
+FXITMatm
+(x) = $FIX.FXITMatm(,(x))
+macdef
+FXITMopr
+(x, a) = $FIX.FXITMopr(,(x), ,(a))
+//
+(* ****** ****** *)
+
+fun
+fxitmlst_resolve_d1exp
+( loc0: loc_t
+, itms: d1eitmlst): d1exp =
+(
+$FIX.fxitmlst_resolve<d1exp>(loc0, itms)
+) where
+{
+//
+implement
+$FIX.fxitm_infix<d1exp>
+(
+x0, f1, x2
+) = let
+  val loc =
+  x0.loc() + x2.loc()
+  val d1e_node =
+  (
+    case+
+    f1.node() of
+    | D1Eapp() =>
+      D1Eapps(x0, list_sing(x2))
+    | _(*non-D1Eapp*) =>
+      D1Eapps(f1, list_pair(x0, x2))
+  ) : d1exp_node // end of [val]
+in
+  FXITMatm(d1exp_make_node(loc, d1e_node))
+end // end of [$FIX.fxitm_infix]
+//
+implement
+$FIX.fxitm_prefix<d1exp>
+  (f0, x1) = let
+in
+//
+case+
+f0.node() of
+| D1Ebs0() => let
+    val d1e =
+    d1exp_make_node
+    (x1.loc(), D1Ebs1(x1))
+  in
+    FXITMopr(d1e, $FIX.infixtemp_fixty)
+  end // end of [D1Ebs0]
+| _(*non-D1Ebs0*) => let
+   val loc =
+   f0.loc() + x1.loc()
+  in
+    FXITMatm
+    (
+      d1exp_make_node(loc, d1e_node)
+    ) where
+    {
+      val
+      d1e_node = D1Eapps(f0, list_sing(x1))
+    }
+  end // end of [non-D1Ebs0]
+//
+end // end of [$FIX.fxitm_prefix]
+//
+implement
+$FIX.fxitm_postfix<d1exp>
+  (x0, f1) = let
+  val loc =
+  x0.loc() + f1.loc()
+in
+  FXITMatm
+  (
+  d1exp_make_node(loc, D1Eapps(f1, list_sing(x0)))
+  )
+end // end of [$FIX.fxitm_postfix]
+//
+implement
+$FIX.fxatm_none<d1exp>
+  (loc) =
+  d1exp_none(loc)
+implement
+$FIX.fxopr_get_loc<d1exp>
+  (opr) = opr.loc()
+//
+implement
+$FIX.fxitm_get_loc<d1exp>
+  (itm) =
+(
+case+ itm of
+| $FIX.FXITMatm(x0) => x0.loc()
+| $FIX.FXITMopr(x0, _) => x0.loc()
+) (* end of [$FIX.fxitm_get_loc] *)
+//
+implement
+$FIX.fxopr_make_app<d1exp>
+  (itm) = let
+//
+val loc =
+$FIX.fxitm_get_loc<d1exp>(itm)
+//
+val d1e =
+d1exp_make_node(loc, D1Eapp(*void*))
+//
+in
+  $FIX.FXITMopr(d1e, $FIX.app_fixty)
+end // end of [$FIX.fxopr_make_app]
+//
+} // end of [fxitmlst_resolve_d1exp]
+
+(* ****** ****** *)
+//
 extern
 fun
 trans01_qarg: q0arg -> q1arg
 and
 trans01_qarglst: q0arglst -> q1arglst
-//
-extern
-fun
-trans01_tqarg: tq0arg -> tq1arg
-and
-trans01_tqarglst: tq0arglst -> tq1arglst
-//
-(* ****** ****** *)
 //
 extern
 fun
@@ -80,6 +220,12 @@ fun
 trans01_darg: d0arg -> d1arg
 and
 trans01_darglst: d0arglst -> d1arglst
+//
+extern
+fun
+trans01_tqarg: tq0arg -> tq1arg
+and
+trans01_tqarglst: tq0arglst -> tq1arglst
 //
 (* ****** ****** *)
 
@@ -267,17 +413,209 @@ list_vt2t(d1as) where
 
 (* ****** ****** *)
 
+local
+
+fun
+auxid0
+( id0
+: d0eid)
+: d1eitm = let
+//
+val loc = id0.loc()
+val-
+I0DNTsome
+  (tok) = id0.node()
+//
+val tnd = tok.node()
+//
+in
+  case- tnd of
+//
+  | T_IDENT_alp(nam) => auxid0_IDENT(tok, nam)
+  | T_IDENT_sym(nam) => auxid0_IDENT(tok, nam)
+//
+  | T_BACKSLASH((*void*)) => auxid0_BACKSLASH(tok)
+//
+end // end of [auxid0]
+
+and
+auxid0_IDENT
+( tok: token
+, nam: string): d1eitm = let
+//
+val loc = tok.loc()
+//
+val sym =
+$SYM.symbol_make(nam)
+val opt =
+the_fixtyenv_search(sym)
+val d1e0 =
+d1exp_make_node(loc, D1Eid(tok))
+//
+in
+case+ opt of
+| ~None_vt() =>
+   FXITMatm(d1e0)
+| ~Some_vt(fxty) =>
+  (case+ fxty of
+   | $FIX.FIXTYnon() => FXITMatm(d1e0)
+   | _(*non-FIXTYnon*) => FXITMopr(d1e0, fxty)
+  ) (* end of [Some_vt] *)
+end // end of [auxid0_IDENT]
+
+and
+auxid0_BACKSLASH
+  (tok:token): d1eitm = let
+//
+val loc = tok.loc()
+//
+val d1e0 =
+  d1exp_make_node(loc, D1Ebs0())
+//
+in
+  FXITMopr(d1e0, $FIX.backslash_fixty)
+end // end of [auxid0_BACKSLASH]
+
+fun
+auxint
+( int
+: t0int)
+: d1eitm = let
+//
+val loc = int.loc()
+//
+val-
+T0INTsome(tok) = int.node()
+//
+in
+  FXITMatm
+  (d1exp_make_node(loc, D1Eint(tok)))
+end // end of [auxint]
+and
+auxchr
+( chr
+: t0chr)
+: d1eitm = let
+//
+val loc = chr.loc()
+//
+val-
+T0CHRsome(tok) = chr.node()
+//
+in
+  FXITMatm
+  (d1exp_make_node(loc, D1Echr(tok)))
+end // end of [auxchr]
+and
+auxflt
+( flt
+: t0flt)
+: d1eitm = let
+//
+val loc = flt.loc()
+//
+val-
+T0FLTsome(tok) = flt.node()
+//
+in
+  FXITMatm
+  (d1exp_make_node(loc, D1Eflt(tok)))
+end // end of [auxflt]
+and
+auxstr
+( str
+: t0str)
+: d1eitm = let
+//
+val loc = str.loc()
+//
+val-
+T0STRsome(tok) = str.node()
+//
+in
+  FXITMatm
+  (d1exp_make_node(loc, D1Estr(tok)))
+end // end of [auxstr]
+
+fun
+auxitm
+( d0e0
+: d0exp)
+: d1eitm = let
+//
+val
+loc0 = d0e0.loc()
+//
+val () =
+println!("trans01_dexp:")
+val () =
+println!("auxitm: loc0 = ", loc0)
+val () =
+println!("auxitm: d0e0 = ", d0e0)
+//
+in
+//
+case-
+d0e0.node() of
+//
+| D0Eid(id0) =>
+  (
+    auxid0(id0)
+  )
+//
+| D0Estr(str) => auxstr(str)
+//
+| D0Eapps(d0es) =>
+  FXITMatm(d1e0) where
+  {
+    val d1es =
+    auxitmlst(d0es)
+    val d1e0 =
+    fxitmlst_resolve_d1exp(loc0, d1es)
+  }
+//
+end // end of [auxitm]
+
+and
+auxitmlst
+( xs
+: d0explst)
+: d1eitmlst =
+list_vt2t(ys) where
+{
+  val ys =
+  list_map<d0exp><d1eitm>
+    (xs) where
+  {
+    implement
+    list_map$fopr<d0exp><d1eitm>(x) = auxitm(x)
+  }
+} (* end of [auxitmlst] *)
+
+(* ****** ****** *)
+
+in (* in-of-local *)
+
 implement
 trans01_dexp
   (d0e0) = let
 //
+(*
 val () =
 println!
 ("trans01_dexp: d0e0 = ", d0e0)
+*)
 //
 in
-  exit_errmsg(1, "trans01_dexp"){d1exp}
+//
+case+
+auxitm(d0e0) of
+| $FIX.FXITMatm(d1e0) => d1e0
+| $FIX.FXITMopr(d1e0, fxty) => d1e0
+//
 end (* end of [trans01_dexp] *)
+
+end // end of [local]
 
 implement
 trans01_dexpopt
@@ -444,16 +782,18 @@ val pval = aux_precopt(opt1)
 val fxty =
 (
 ifcase
-| knd=INFIX =>
-  FIXTYinf(pval, ASSOCnon())
-| knd=INFIXL =>
-  FIXTYinf(pval, ASSOClft())
-| knd=INFIXR =>
-  FIXTYinf(pval, ASSOCrgt())
-| knd=PREFIX => FIXTYpre(pval)
-| knd=POSTFIX => FIXTYpos(pval)
 //
-| _(*deadcode*) => FIXTYnon(*void*)
+| knd=INFIX =>
+  $FIX.FIXTYinf(pval, ASSOCnon)
+| knd=INFIXL =>
+  $FIX.FIXTYinf(pval, ASSOClft)
+| knd=INFIXR =>
+  $FIX.FIXTYinf(pval, ASSOCrgt)
+//
+| knd=PREFIX => $FIX.FIXTYpre(pval)
+| knd=POSTFIX => $FIX.FIXTYpos(pval)
+//
+| _(*deadcode*) => $FIX.FIXTYnon((*void*))
 //
 ) : fixty // end of [val]
 //
@@ -520,7 +860,7 @@ case+ xs of
     loop(xs) where
     {
       val () =
-      the_fixtyenv_insert(sym, FIXTYnon)
+      the_fixtyenv_insert(sym, $FIX.FIXTYnon)
     }
   end
 ) (* end of [loop] *)
@@ -843,6 +1183,12 @@ d0c0.node() of
   in
     d1ecl_make_node(loc0, D1Clocal(d1cs1, d1cs2))
   end // end of [D0Clocal]
+//
+| _ (*rest-of-d0ecl*) =>
+  (
+    println! ("trans01_decl: d0c0 = ", d0c0); exit(1)
+  )
+    
 //
 end // end of [trans01_decl]
 

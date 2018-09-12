@@ -179,8 +179,37 @@ fprint_d1exp
 case+
 x0.node() of
 | D1Eid(tok) =>
-  fprint!(out, "D1Eid(", tok, ")")
-)
+  fprint!
+  (out, "D1Eid(", tok, ")")
+//
+| D1Eint(tok) =>
+  fprint!
+  (out, "D1Eint(", tok, ")")
+| D1Echr(tok) =>
+  fprint!
+  (out, "D1Echr(", tok, ")")
+| D1Eflt(tok) =>
+  fprint!
+  (out, "D1Eflt(", tok, ")")
+| D1Estr(tok) =>
+  fprint!
+  (out, "D1Estr(", tok, ")")
+//
+| D1Eapp() =>
+  fprint!(out, "D1Eapp(", ")")
+//
+| D1Ebs0() =>
+  fprint!(out, "D1Ebs0()")
+| D1Ebs1(d1e) =>
+  fprint!(out, "D1Ebs1(", d1e, ")")
+//
+| D1Eapps(d1e0, d1es) =>
+  fprint!
+  (out, "D1Eapps(", d1e0, "; ", d1es, ")")
+//
+| D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
+//
+) (* fprint_d1exp *)
 
 end // end of [local]
 
