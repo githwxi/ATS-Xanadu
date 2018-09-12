@@ -327,9 +327,14 @@ auxitm
 val
 loc0 = s0t0.loc()
 //
+(*
 val () =
-println!
-("trans01_sort: auxitm: s0t0 = ", s0t0)
+println!("trans01_sort:")
+val () =
+println!("auxitm: loc0 = ", loc0)
+val () =
+println!("auxitm: s0t0 = ", s0t0)
+*)
 //
 in
 //
@@ -402,9 +407,11 @@ trans01_sort
 val
 loc0 = s0t0.loc()
 //
+(*
 val () =
 println!
 ("trans01_sort: s0t0 = ", s0t0)
+*)
 //
 in
 //
@@ -449,9 +456,11 @@ trans01_sarg
 //
 val loc0 = s0a0.loc()
 //
+(*
 val () =
 println!
 ("trans01_sarg: s0a0 = ", s0a0)
+*)
 //
 in
 //
@@ -478,9 +487,11 @@ trans01_smarg
 //
 val loc0 = s0ma.loc()
 //
+(*
 val () =
 println!
 ("trans01_smarg: s0ma = ", s0ma)
+*)
 //
 in
 //
@@ -841,12 +852,12 @@ loc0 = s0e0.loc()
 //
 (*
 val () =
-println!
-("trans01_sexp: auxitm: loc0 = ", loc0)
-*)
+println!("trans01_sexp:)
 val () =
-println!
-("trans01_sexp: auxitm: s0e0 = ", s0e0)
+println!("auxitm: loc0 = ", loc0)
+val () =
+println!("auxitm: s0e0 = ", s0e0)
+*)
 //
 in
 //
@@ -1093,9 +1104,11 @@ implement
 trans01_sexp
   (s0e0) = let
 //
+(*
 val () =
 println!
 ("trans01_sexp: s0e0 = ", s0e0)
+*)
 //
 in
 //
