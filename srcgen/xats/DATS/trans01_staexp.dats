@@ -46,9 +46,11 @@ ENV = "./../SATS/symenv.sats"
 #staload
 LOC = "./../SATS/location.sats"
 overload + with $LOC.location_combine
+overload print with $LOC.print_location
 
 (* ****** ****** *)
 
+#staload "./../SATS/basics.sats"
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
@@ -60,8 +62,6 @@ overload + with $LOC.location_combine
 (* ****** ****** *)
 
 stadef fxitm = $FIX.fxitm
-macdef FXITMatm(x) = $FIX.FXITMatm(,(x))
-macdef FXITMopr(x, a) = $FIX.FXITMopr(,(x), ,(a))
 
 (* ****** ****** *)
 
@@ -74,6 +74,15 @@ typedef
 s1eitm = fxitm(s1exp)
 typedef
 s1eitmlst = List0(s1eitm)
+
+(* ****** ****** *)
+
+macdef
+FXITMatm
+(x) = $FIX.FXITMatm(,(x))
+macdef
+FXITMopr
+(x, a) = $FIX.FXITMopr(,(x), ,(a))
 
 (* ****** ****** *)
 
@@ -213,19 +222,20 @@ f0.node() of
     (x1.loc(), S1Ebs1(x1))
   in
     FXITMopr(s1e, $FIX.infixtemp_fixty)
-  end // end of [S1Einf]
-| _(*non-S1Einf*) => let
+  end // end of [S1Ebs0]
+| _(*non-S1Ebs0*) => let
    val loc =
    f0.loc() + x1.loc()
   in
     FXITMatm
     (
-    s1exp_make_node(loc, s1t_node)
+      s1exp_make_node(loc, s1e_node)
     ) where
     {
-      val s1t_node = S1Eapps(f0, list_sing(x1))
+      val
+      s1e_node = S1Eapps(f0, list_sing(x1))
     }
-  end // end of [non-S1Einf]
+  end // end of [non-S1Ebs0]
 //
 end // end of [$FIX.fxitm_prefix]
 //
@@ -852,7 +862,7 @@ loc0 = s0e0.loc()
 //
 (*
 val () =
-println!("trans01_sexp:)
+println!("trans01_sexp:")
 val () =
 println!("auxitm: loc0 = ", loc0)
 val () =
@@ -909,8 +919,10 @@ s0e0.node() of
 | S0Eapps(s0es) =>
   FXITMatm(s1e0) where
   {
+    val s1es =
+    auxitmlst(s0es)
     val s1e0 =
-    fxitmlst_resolve_s1exp(loc0, auxitmlst(s0es))
+    fxitmlst_resolve_s1exp(loc0, s1es)
   }
 //
 | S0Eparen _ => auxparen(s0e0)
@@ -947,7 +959,12 @@ s0e0.node() of
     val arg = trans01_smarglst(arg)
   in
     FXITMatm
-    (s1exp_make_node(loc0, S1Elam(arg, res, s1e)))
+    (
+    s1exp_make_node(loc0, s1e0)
+    ) where
+    {
+      val s1e0 = S1Elam(arg, res, s1e)
+    }
   end // end of [S0Elam]
 //
 | S0Eanno(s0e, s0t) => let
