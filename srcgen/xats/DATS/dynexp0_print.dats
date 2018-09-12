@@ -239,27 +239,94 @@ case+ x0.node() of
   (tbeg, d0es, tend) =>
   fprint!
   ( out
-  , "D0Eparen(", tbeg, "; ", d0es, "; ", tend, ")")
+  , "D0Eparen("
+  , tbeg, "; ", d0es, "; ", tend, ")")
 //
 | D0Etuple
   (tbeg, topt, d0es, tend) =>
   fprint!
   ( out
-  , "D0Etuple(", tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
+  , "D0Etuple("
+  , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
 | D0Erecord
   (tbeg, topt, d0es, tend) =>
   fprint!
   ( out
-  , "D0Erecord(", tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
+  , "D0Erecord("
+  , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
 //
 | D0Elet(tok0, d0cs, tok1, d0es, tok2) =>
   fprint!
-  (out, "D0Elet(", tok0, "; ", d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
+  ( out
+  , "D0Elet("
+  , tok0, "; ", d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
 | D0Ewhere _ => fprint!(out, "D0Ewhere(...)")
 //
 | D0Enone(token) => fprint!(out, "D0Enone(", token, ")")
 //
 ) (* end of [fprint_d0exp] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_d0exp_RPAREN(x0) =
+fprint_d0exp_RPAREN(stdout_ref, x0)
+implement
+prerr_d0exp_RPAREN(x0) =
+fprint_d0exp_RPAREN(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<d0exp> = fprint_d0exp
+
+in (* in-of-local *)
+
+implement
+fprint_d0exp_RPAREN
+  (out, x0) =
+(
+case+ x0 of
+| d0exp_RPAREN_cons0(tok) =>
+  fprint!
+  (out, "d0exp_RPAREN_cons0(", tok, ")")
+| d0exp_RPAREN_cons1(tok1, d0es, tok2) =>
+  fprint!
+  (out, "d0exp_RPAREN_cons1(", tok1, ", ", d0es, ", ", tok2, ")")
+) (* end of [fprint_d0exp_RPAREN] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_labd0exp_RBRACE(x0) =
+fprint_labd0exp_RBRACE(stdout_ref, x0)
+implement
+prerr_labd0exp_RBRACE(x0) =
+fprint_labd0exp_RBRACE(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<d0exp> = fprint_d0exp
+
+in (* in-of-local *)
+
+implement
+fprint_labd0exp_RBRACE
+  (out, x0) =
+(
+case+ x0 of
+| labd0exp_RBRACE_cons0(tok) =>
+  fprint!
+  (out, "labd0exp_RBRACE_cons0(", tok, ")")
+| labd0exp_RBRACE_cons1(tok1, ld0es, tok2) =>
+  fprint!
+  (out, "labd0exp_RBRACE_cons1(", tok1, ", ", ld0es, ", ", tok2, ")")
+) (* end of [fprint_labd0exp_RBRACE] *)
 
 end // end of [local]
 

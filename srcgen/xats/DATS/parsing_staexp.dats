@@ -1467,7 +1467,7 @@ list_vt2t
 (pstar_COMMA_fun
  {labs0exp}(buf, err, p_labs0exp))
 //
-) (* end of [p_s0expseq_COMMA] *)
+) (* end of [p_labs0expseq_COMMA] *)
 
 (* ****** ****** *)
 

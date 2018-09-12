@@ -207,6 +207,12 @@ x0.node() of
   fprint!
   (out, "D1Eapps(", d1e0, "; ", d1es, ")")
 //
+| D1Elist(d1es) =>
+  fprint!(out, "D1Elist(", d1es, ")")
+| D1Elist(d1es1, d1es2) =>
+  fprint!
+  (out, "D1Elist(", d1es1, "; ", d1es2, ")")
+//
 | D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
 //
 ) (* fprint_d1exp *)
