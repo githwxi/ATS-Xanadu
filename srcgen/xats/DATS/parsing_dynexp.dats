@@ -332,8 +332,10 @@ p_tq0arg
 val e0 = err
 val tok = buf.get0()
 //
+(*
 val () =
 println! ("p_tq0arg: tok = ", tok)
+*)
 //
 in
 //

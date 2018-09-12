@@ -189,7 +189,7 @@ endwhere
 //
 (* ****** ****** *)
 
-typedef foo = bar2 -<1,ntm,!wrt> bar2
+typedef foo = bar2 -<0,ntm,!wrt> bar2
 
 (* ****** ****** *)
 
@@ -200,10 +200,10 @@ foo(x: int): int
 
 fun
 <a,b:int>
-foo(x: int(a)): int(b)
+foo(int(a)): int(b)
 fun
 <a,b:int><c:int>
-foo2(x1: int(a) | x2: int(b)):<ntm> int(c)
+foo2(x1: int(a) | x2: int(b)):<0,!ntm,!wrt> int(c)
 
 (* ****** ****** *)
 

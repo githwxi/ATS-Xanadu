@@ -365,6 +365,7 @@ res = aux_effs0expopt(rcd.res)
 val
 def = aux_teqd0expopt(rcd.def)
 //
+(*
 val () =
 println!("trans01_dcstdec: nam = ", nam)
 val () =
@@ -373,6 +374,7 @@ val () =
 println!("trans01_dcstdec: res = ", res)
 val () =
 println!("trans01_dcstdec: def = ", def)
+*)
 //
 in
   D1CSTDEC
@@ -564,12 +566,14 @@ def0.node() of
 //
 val-I0DNTsome(tok) = tid.node((*void*))
 //
+(*
 val () =
 println!("trans01_decl: ")
 val () =
 println!("aux_sortdef: tok = ", tok)
 val () =
 println!("aux_sortdef: def1 = ", def1)
+*)
 //
 in
   d1ecl_make_node(loc0, D1Csortdef(knd, tok, def1))
@@ -596,8 +600,9 @@ val opt1 = trans01_sortopt(opt0)
 val arg1 = trans01_smarglst(arg0)
 val-I0DNTsome(tok) = seid.node((*void*))
 //
+(*
 val () =
-println!("trans01_decl")
+println!("trans01_decl:")
 val () =
 println!("aux_sexpdef: tok = ", tok)
 val () =
@@ -606,6 +611,7 @@ val () =
 println!("aux_sexpdef: opt1 = ", opt1)
 val () =
 println!("aux_sexpdef: def1 = ", def1)
+*)
 //
 in
   d1ecl_make_node
@@ -631,6 +637,7 @@ val def1 = aux_abstdef(def0)
 val arg1 = trans01_tmarglst(arg0)
 val-I0DNTsome(tok) = seid.node((*void*))
 //
+(*
 val () =
 println!("trans01_d0ecl: ")
 val () =
@@ -639,6 +646,7 @@ val () =
 println!("aux_abstype: arg1 = ", arg1)
 val () =
 println!("aux_abstype: def1 = ", def1)
+*)
 //
 in
   d1ecl_make_node
@@ -799,9 +807,11 @@ trans01_decl
 val
 loc0 = d0c0.loc()
 //
+(*
 val () =
 println!
 ("trans01_decl: d0c0 = ", d0c0)
+*)
 //
 in
 //
