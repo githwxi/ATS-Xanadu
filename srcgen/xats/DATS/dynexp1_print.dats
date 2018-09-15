@@ -292,6 +292,11 @@ case+ x0.node() of
   ( out, "D1Csortdef("
   , knd, "; ", tok, "; ", def, ")")
 //
+| D1Cdatasort
+  ( knd, d1tsrts ) =>
+  fprint!
+  (out, "D1Cdatasort(", knd, "; ", d1tsrts, ")")
+//
 | D1Csexpdef
   ( knd, tok
   , arg, res, def) =>
@@ -305,11 +310,13 @@ case+ x0.node() of
   ( out, "D1Cabstype("
   , knd, "; ", tok, "; ", arg, "; ", def, ")")
 //
-| D1Cdatasort
-  ( knd, d1tsrts ) =>
+| D1Cdatatype
+  (knd, d1typs, wopt) =>
   fprint!
-  (out, "D1Cdatasort(", knd, "; ", d1tsrts, ")")
+  (out, "D1Cdatatype(", knd, "; ", d1typs, "; ", wopt, ")")
 //
+| D1Cinclude(knd, d1e) =>
+  fprint!(out, "D1Cinclude(", knd, "; ", d1e, ")")
 //
 | _(*rest-of-d1ecl*) =>
   fprint!(out, "fprint_d1ecl: not-yet-implemented")

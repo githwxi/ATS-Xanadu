@@ -148,6 +148,11 @@ case+ tnd of
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
 //
+| T_IDENT_dlr _ => true
+(*
+| T_IDENT_srp _ => true
+*)
+//
 | T_BACKSLASH() => true
 //
 | T_LT((*void*)) => true // "<"
@@ -176,6 +181,19 @@ in
     {
       val () = buf.incby1()
     }
+//
+  | T_IDENT_dlr _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+(*
+  | T_IDENT_srp _ =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+*)
 //
   | T_BACKSLASH() =>
     i0dnt_some(tok) where
@@ -562,7 +580,17 @@ p_atmd0exp : parser(d0exp)
 //
 extern
 fun
+p_appd0exp : parser(d0exp)
+//
+extern
+fun
 p_atmd0expseq : parser(d0explst)
+//
+(* ****** ****** *)
+//
+extern
+fun
+p_d0expseq: parser(d0explst)
 //
 extern
 fun
@@ -570,6 +598,8 @@ p_d0expseq_COMMA : parser(d0explst)
 extern
 fun
 p_labd0expseq_COMMA : parser(labd0explst)
+//
+(* ****** ****** *)
 //
 (*
 d0exp_RPAREN ::=
@@ -671,9 +701,6 @@ end // end of [p_labd0exp]
 
 (* ****** ****** *)
 
-extern
-fun
-p_d0expseq: parser(d0explst)
 implement
 p_d0expseq
   (buf, err) =
@@ -776,6 +803,32 @@ case+ tnd of
   end // HX: indicating a parsing error
 //
 end // end of [p_atmd0exp]
+
+(* ****** ****** *)
+
+implement
+p_appd0exp
+  (buf, err) = let
+//
+val
+d0e0 = p_atmd0exp(buf, err)
+val
+d0es = p_atmd0expseq(buf, err)
+//
+in
+//
+case+ d0es of
+| list_nil() => d0e0
+| list_cons _ => let
+    val d0e1 = list_last(d0es)
+    val loc0 = d0e0.loc() + d0e1.loc()
+  in
+    d0exp_make_node
+      (loc0, D0Eapps(list_cons(d0e0, d0es)))
+    // d0exp_make_node
+  end // end of [list_cons]
+//
+end // end of [p_appd0exp]
 
 (* ****** ****** *)
 
@@ -1125,6 +1178,22 @@ in
 //
 case+ tnd of
 //
+| T_LOCAL() => let
+    val () = buf.incby1()
+    val tbeg = tok
+    val head =
+      p_d0eclseq(buf, err)
+    val tmid = p_IN(buf, err)
+    val body =
+      p_d0eclseq(buf, err)
+    val tend = p_ENDLOCAL(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    d0ecl_make_node
+    (loc_res, D0Clocal(tbeg, head, tmid, body, tend))
+  end // end of [T_LOCAL]
+//
 | T_SORTDEF() => let
 //
     val () = buf.incby1()
@@ -1300,7 +1369,20 @@ case+ tnd of
     // d0ecl_make_node
   end
 //
-| T_SRP_NONFIX() => let
+| T_SRP_INCLUDE() => let
+//
+    val () = buf.incby1()
+//
+    val d0e =
+      p_appd0exp(buf, err)
+    // end of [val]
+    val loc_res = loc+d0e.loc()
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cinclude(tok, d0e))
+  end // end of [#INCLUDE(...)]
+//
+| T_SRP_NONFIX () => let
 //
     val () = buf.incby1()
 //
@@ -1343,22 +1425,6 @@ case+ tnd of
     err := e0;
     d0ecl_make_node(loc_res, D0Cfixity(tok, opt, ids))
   end // end of [FIXITY(knd)]
-//
-| T_LOCAL() => let
-    val () = buf.incby1()
-    val tbeg = tok
-    val head =
-      p_d0eclseq(buf, err)
-    val tmid = p_IN(buf, err)
-    val body =
-      p_d0eclseq(buf, err)
-    val tend = p_ENDLOCAL(buf, err)
-    val loc_res = tbeg.loc() + tend.loc()
-  in
-    err := e0;
-    d0ecl_make_node
-    (loc_res, D0Clocal(tbeg, head, tmid, body, tend))
-  end // end of [T_LOCAL]
 //
 | _ (* errorcase *) =>
   let

@@ -180,14 +180,19 @@ tnode =
   | T_THEN of () // 'then'
   | T_ELSE of () // 'else'
 //
-  | T_LAM of int // 'lam=lam1' and 'lam@=lam0'
-  | T_FIX of int // 'fix=lam1' and 'fix@=fix0'
+  | T_LAM of int
+    // 'lam=lam1' and 'lam@=lam0'
+  | T_FIX of int
+    // 'fix=lam1' and 'fix@=fix0'
 //
   | T_FUN of (funkind)
     // fn0, fnx, fn1, fun,
     // prfn0, prfn1, prfun, praxi, castfn
   | T_VAL of (valkind)
     // val, val+, val-, prval
+//
+  | T_STATIC of () // locally declared
+  | T_EXTERN of () // globally declared
 //
   | T_SORTDEF of ()
   | T_SEXPDEF of int(*kind*)

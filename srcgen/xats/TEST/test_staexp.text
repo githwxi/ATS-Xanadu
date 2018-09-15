@@ -198,13 +198,27 @@ foo(x: int): int
 
 (* ****** ****** *)
 
+#include "/tmp/abcde.sats"
+
 fun
 <a,b:int>
-foo(int(a)): int(b) = ext("C$foo")
+foo(int(a)): int(b) = $macro"C$foo"
+fun
+<a,b:int>
+foo(int(a)): int(b) = $extern"C$foo"
 fun
 <a,b:int><c:int>
 foo2(x1: int(a) | x2: int(b)):<0,!ntm,!wrt> int(c)
 
+(* ****** ****** *)
+//
+// extern
+//
+fun
+foo1(int, int): bool
+and
+foo2(int, int): bool
+//
 (* ****** ****** *)
 
 (* end of [test_staexp.text] *)

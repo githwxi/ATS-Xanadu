@@ -439,7 +439,8 @@ case+ x0.node() of
   fprint!(out, "S0QUAprop(", s0e, ")")
 | S0QUAvars(ids, tok, s0t) =>
   fprint!
-  (out, "S0QUAvars(", ids, "; ", tok, "; ", s0t, ")")
+  ( out
+  , "S0QUAvars(", ids, "; ", tok, "; ", s0t, ")")
 )
 
 (* ****** ****** *)
@@ -460,7 +461,8 @@ case+ x0.node() of
   fprint!(out, "S0UNInone(", tok, ")")
 | S0UNIsome(tbeg, s0qs, tend) =>
   fprint!
-  (out, "S0UNIsome(", tbeg, "; ", s0qs, "; ", tend, ")")
+  ( out
+  , "S0UNIsome(", tbeg, "; ", s0qs, "; ", tend, ")")
 )
 
 (* ****** ****** *)
@@ -692,7 +694,7 @@ case+ x0.node() of
   fprint!
   ( out, "D0ATCON("
   , s0us, "; ", dcon, "; ", s0is, "; ", argopt, ")")
-) (* end of [fprint_d0atype] *)
+) (* end of [fprint_d0atcon] *)
 
 (* ****** ****** *)
 
