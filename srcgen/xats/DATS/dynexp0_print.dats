@@ -515,9 +515,11 @@ case+ x0 of
 | ABSTDF0nil() =>
   fprint(out, "ABSTDF0nil()")
 | ABSTDF0lteq(tok, s0e) =>
-  fprint!(out, "ABSTDF0lteq(", tok, "; ", s0e, ")")
+  fprint!
+  (out, "ABSTDF0lteq(", tok, "; ", s0e, ")")
 | ABSTDF0eqeq(tok, s0e) =>
-  fprint!(out, "ABSTDF0eqeq(", tok, "; ", s0e, ")")
+  fprint!
+  (out, "ABSTDF0eqeq(", tok, "; ", s0e, ")")
 ) (* end of [fprint_abstdf0] *)
 
 (* ****** ****** *)
