@@ -547,24 +547,26 @@ case+ x0.node() of
   (tbeg, topt, s0es, tend) =>
   fprint!
   ( out
-  , "S0Etuple(", tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
+  , "S0Etuple("
+  , tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
 | S0Erecord
   (tbeg, topt, s0es, tend) =>
   fprint!
   ( out
-  , "S0Erecord(", tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
+  , "S0Erecord("
+  , tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
 //
 | S0Elam
   (tlam, s0mas, opt, teqgt, s0e0) =>
   fprint!
-  ( out
-  , "S0Elam(", tlam, "(", s0mas, ")", ", ", opt, ", ", teqgt, ", ", s0e0, ")")
+  ( out, "S0Elam("
+  , tlam, ";", s0mas, ";", opt, "; ", teqgt, "; ", s0e0, ")")
 //
 | S0Eanno(s0e, s0t) =>
   fprint!(out, "S0Eanno(", s0e, "; ", s0t, ")")
 //
 | S0Equal(tok, s0e) =>
-  fprint!(out, "S0Equal(", tok, ", ", s0e, ")")
+  fprint!(out, "S0Equal(", tok, "; ", s0e, ")")
 //
 | S0Enone(token) => fprint!(out, "S0Enone(", token, ")")
 //
