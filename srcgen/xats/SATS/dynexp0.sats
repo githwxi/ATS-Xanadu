@@ -399,9 +399,13 @@ d0ecl_node =
   ( token
   , d0eclist, token, d0eclist, token)
 //
-| D0Cnonfix of (token, i0dntlst) // HX: absolving fixity status
+| D0Cnonfix of
+  (token, i0dntlst) // HX: absolving fixity status
 //
-| D0Cfixity of (token, precopt, i0dntlst) // HX: attaching fixity status
+| D0Cfixity of
+  (token, precopt, i0dntlst) // HX: attaching fixity status
+//
+| D0Cinclude of (token, d0exp) // HX: for file inclusion
 //
 // end of [d0ecl_node]
 

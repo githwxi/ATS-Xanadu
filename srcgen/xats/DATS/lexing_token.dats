@@ -242,17 +242,28 @@ case+ tnd of
 | T_ELSE() => fprint(out, "ELSE")
 //
 | T_LAM(knd) =>
-  fprint!(out, "LAM(", knd, ")")
+  (
+    fprint!(out, "LAM(", knd, ")")
+  )
 | T_FIX(knd) =>
-  fprint!(out, "FIX(", knd, ")")
+  (
+    fprint!(out, "FIX(", knd, ")")
+  )
 //
 | T_FUN(fnk) =>
-  fprint!(out, "FUN(", fnk, ")")
+  (
+    fprint!(out, "FUN(", fnk, ")")
+  )
 | T_VAL(vlk) =>
-  fprint!(out, "VAL(", vlk, ")")
+  (
+    fprint!(out, "VAL(", vlk, ")")
+  )
+//
+| T_STATIC() => fprint(out, "STATIC")
+| T_EXTERN() => fprint(out, "EXTERN")
 //
 | T_SORTDEF() =>
-  fprint!(out, "SORTDEF()")
+  fprint!(out, "SORTDEF(", ")")
 //
 | T_SEXPDEF(srt) =>
   fprint!(out, "SEXPDEF(", srt, ")")
@@ -454,17 +465,24 @@ case+ tnd of
 | T_ELSE() => fprint(out, "else")
 //
 | T_LAM(knd) =>
-  fprint!(out, "lam(", knd, ")")
+    fprint!(out, "lam(", knd, ")")
+  // T_LAM
 | T_FIX(knd) =>
-  fprint!(out, "fix(", knd, ")")
+    fprint!(out, "fix(", knd, ")")
+  // T_FIX
 //
 | T_FUN(fnk) =>
-  fprint!(out, "FUN(", fnk, ")")
+    fprint!(out, "FUN(", fnk, ")")
+  // T_FUN
 | T_VAL(vlk) =>
-  fprint!(out, "VAL(", vlk, ")")
+    fprint!(out, "VAL(", vlk, ")")
+  // T_VAL
+//
+| T_STATIC() => fprint!(out, "static")
+| T_EXTERN() => fprint!(out, "extern")
 //
 | T_SORTDEF() =>
-  fprint!(out, "sortdef")
+  fprint!(out, "sortdef(", ")")
 //
 | T_SEXPDEF(knd) =>
   fprint!(out, "sexpdef(", knd, ")")

@@ -221,6 +221,9 @@ val () = myins("fnx", T_FNX_)
 val () = myins("fn1", T_FN1_)
 val () = myins("fun", T_FUN_)
 //
+val () = myins("static", T_STATIC)
+val () = myins("extern", T_EXTERN)
+//
 val () = myins("sortdef", T_SORTDEF)
 //
 val () = myins("sexpdef", T_SEXPDEF_)

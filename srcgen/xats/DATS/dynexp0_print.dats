@@ -469,6 +469,9 @@ case+ x0.node() of
 | D0Cfixity(tok, opt, ids) =>
   fprint!(out, "D0Cfixity(", tok, "; ", opt, "; ", ids, ")")
 //
+| D0Cinclude(tok, d0e) =>
+  fprint!(out, "D0Cinclude(", tok, "; ", d0e, ")")
+//
 ) (* end of [fprint_d0ecl] *)
 
 end // end of [local]

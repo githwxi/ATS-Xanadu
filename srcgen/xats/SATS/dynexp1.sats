@@ -356,6 +356,8 @@ d1ecl_node =
 | D1Cnonfix of (d0ecl) // updating fixity env
 *)
 //
+| D1Cinclude of (token, d1exp) // file inclusion
+//
 and
 abstdf1 =
   | ABSTDF1nil of () // unspecified

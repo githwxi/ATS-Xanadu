@@ -77,14 +77,21 @@ implement
 fprint_val<t1marg> = fprint_t1marg
 
 (* ****** ****** *)
-
+//
 implement
 fprint_val<s1qua> = fprint_s1qua
-
+implement
+fprint_val<s1uni> = fprint_s1uni
+//
+implement
+fprint_val<s1exp> = fprint_s1exp
+//
 (* ****** ****** *)
 
 implement
-fprint_val<s1exp> = fprint_s1exp
+fprint_val<d1atype> = fprint_d1atype
+implement
+fprint_val<d1atcon> = fprint_d1atcon
 
 (* ****** ****** *)
 
@@ -322,6 +329,24 @@ case+ x0.node() of
 (* ****** ****** *)
 
 implement
+print_s1uni(x0) =
+fprint_s1uni(stdout_ref, x0)
+implement
+prerr_s1uni(x0) =
+fprint_s1uni(stderr_ref, x0)
+
+implement
+fprint_s1uni
+  (out, x0) =
+(
+case+ x0.node() of
+| S1UNIsome(s1qs) =>
+  fprint!(out, "S1UNIsome(", s1qs, ")")
+)
+
+(* ****** ****** *)
+
+implement
 print_s1exp(x0) =
 fprint_s1exp(stdout_ref, x0)
 implement
@@ -434,6 +459,44 @@ case+ x0 of
 | S1EFFsome(s1es) =>
   fprint!(out, "S1EFFsome(", s1es, ")")
 )
+
+(* ****** ****** *)
+
+implement
+print_d1atype(x0) =
+fprint_d1atype(stdout_ref, x0)
+implement
+prerr_d1atype(x0) =
+fprint_d1atype(stderr_ref, x0)
+implement
+fprint_d1atype
+  (out, x0) =
+(
+case+ x0.node() of
+| D1ATYPE(tok, t1mas, d1cs) =>
+  fprint!
+  ( out
+  , "D1ATYPE(", tok, "; ", t1mas, "; ", d1cs, ")")
+) (* end of [fprint_d1atype] *)
+
+(* ****** ****** *)
+
+implement
+print_d1atcon(x0) =
+fprint_d1atcon(stdout_ref, x0)
+implement
+prerr_d1atcon(x0) =
+fprint_d1atcon(stderr_ref, x0)
+implement
+fprint_d1atcon
+  (out, x0) =
+(
+case+ x0.node() of
+| D1ATCON(s1us, tok, s1is, argopt) =>
+  fprint!
+  ( out
+  , "D1ATCON(", s1us, "; ", tok, "; ", s1is, "; ", argopt, ")")
+) (* end of [fprint_d1atcon] *)
 
 (* ****** ****** *)
 

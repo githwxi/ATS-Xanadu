@@ -434,6 +434,11 @@ in
   | T_IDENT_alp(nam) => auxid0_IDENT(tok, nam)
   | T_IDENT_sym(nam) => auxid0_IDENT(tok, nam)
 //
+  | T_IDENT_dlr(nam) => auxid0_IDENT(tok, nam)
+(*
+  | T_IDENT_srp(nam) => auxid0_IDENT(tok, nam)
+*)
+//
   | T_BACKSLASH((*void*)) => auxid0_BACKSLASH(tok)
 //
 end // end of [auxid0]
@@ -918,6 +923,25 @@ end // end of [aux_nonfix]
 (* ****** ****** *)
 
 fun
+aux_include
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cinclude
+(tok, d0e) = d0c0.node()
+//
+val d1e = trans01_dexp(d0e)
+//
+in
+  d1ecl_make_node(loc0, D1Cinclude(tok, d1e))
+end // end of [aux_include]
+
+(* ****** ****** *)
+
+fun
 aux_sortdef
 ( d0c0
 : d0ecl): d1ecl = let
@@ -1204,6 +1228,8 @@ d0c0.node() of
 //
 | D0Cfixity _ => aux_fixity(d0c0)
 | D0Cnonfix _ => aux_nonfix(d0c0)
+//
+| D0Cinclude _ => aux_include(d0c0)
 //
 | D0Csortdef _ => aux_sortdef(d0c0)
 //
