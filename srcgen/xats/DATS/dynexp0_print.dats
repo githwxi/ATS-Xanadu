@@ -215,7 +215,7 @@ fprint_d0pat(stderr_ref, x0)
 local
 
 implement
-fprint_val<d0exp> = fprint_d0exp
+fprint_val<d0pat> = fprint_d0pat
 
 in (* in-of-local *)
 
@@ -227,6 +227,15 @@ case+ x0.node() of
 //
 | D0Pid(id) =>
   fprint!(out, "D0Pid(", id, ")")
+//
+| D0Pint(i0) =>
+  fprint!(out, "D0Pint(", i0, ")")
+| D0Pchr(c0) =>
+  fprint!(out, "D0Pchr(", c0, ")")
+| D0Pflt(f0) =>
+  fprint!(out, "D0Pflt(", f0, ")")
+| D0Pstr(s0) =>
+  fprint!(out, "D0Pstr(", s0, ")")
 //
 | D0Pqual(tok, d0p) =>
   fprint!
@@ -245,6 +254,68 @@ case+ x0.node() of
 | D0Pnone(token) => fprint!(out, "D0Pnone(", token, ")")
 //
 ) (* end of [fprint_d0pat] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_d0pat_RPAREN(x0) =
+fprint_d0pat_RPAREN(stdout_ref, x0)
+implement
+prerr_d0pat_RPAREN(x0) =
+fprint_d0pat_RPAREN(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<d0pat> = fprint_d0pat
+
+in (* in-of-local *)
+
+implement
+fprint_d0pat_RPAREN
+  (out, x0) =
+(
+case+ x0 of
+| d0pat_RPAREN_cons0(tok) =>
+  fprint!
+  (out, "d0pat_RPAREN_cons0(", tok, ")")
+| d0pat_RPAREN_cons1(tok1, d0ps, tok2) =>
+  fprint!
+  (out, "d0pat_RPAREN_cons1(", tok1, ", ", d0ps, ", ", tok2, ")")
+) (* end of [fprint_d0pat_RPAREN] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_labd0pat_RBRACE(x0) =
+fprint_labd0pat_RBRACE(stdout_ref, x0)
+implement
+prerr_labd0pat_RBRACE(x0) =
+fprint_labd0pat_RBRACE(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<d0pat> = fprint_d0pat
+
+in (* in-of-local *)
+
+implement
+fprint_labd0pat_RBRACE
+  (out, x0) =
+(
+case+ x0 of
+| labd0pat_RBRACE_cons0(tok) =>
+  fprint!
+  (out, "labd0pat_RBRACE_cons0(", tok, ")")
+| labd0pat_RBRACE_cons1(tok1, ld0ps, tok2) =>
+  fprint!
+  (out, "labd0pat_RBRACE_cons1(", tok1, ", ", ld0ps, ", ", tok2, ")")
+) (* end of [fprint_labd0pat_RBRACE] *)
 
 end // end of [local]
 

@@ -207,6 +207,20 @@ d0pat_make_node
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+d0pat_RPAREN_loc(x0) =
+(
+case+ x0 of
+| d0pat_RPAREN_cons0
+    (tok) => tok.loc()
+  // d0pat_RPAREN_cons0
+| d0pat_RPAREN_cons1
+    (tok1, d0ps, tok2) => tok1.loc() + tok2.loc()
+  // d0pat_RPAREN_cons1
+)  
+//
+(* ****** ****** *)
 
 local
 
