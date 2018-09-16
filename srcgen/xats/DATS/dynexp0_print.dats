@@ -144,15 +144,21 @@ fprint_d0arg
 (
 //
 case+ x0.node() of
+//
 | D0ARGnone(tok) =>
   fprint!(out, "D0ARGnone(", tok, ")")
+//
 | D0ARGsome_sta
   (tbeg, s0qs, tend) =>
   fprint!
   ( out
   , "D0ARGsome_sta("
   , tbeg, "; ", s0qs, "; ", tend, ")")
-| D0ARGsome_dyn
+//
+| D0ARGsome_dyn1
+  (tok) =>
+  fprint!(out, "D0ARGsome_dyn1(", tok, ")")
+| D0ARGsome_dyn2
   (tbeg, arg0, opt1, tend) =>
   fprint!
   ( out
@@ -425,6 +431,22 @@ case+ x0.node() of
 | D0Ctkerr(tok) =>
   fprint!(out, "D0Ctkerr(", tok, ")")
 //
+| D0Cnonfix(tok, ids) =>
+  fprint!
+  (out, "D0Cnonfix(", tok, "; ", ids, ")")
+| D0Cfixity(tok, opt, ids) =>
+  fprint!
+  ( out
+  , "D0Cfixity(", tok, "; ", opt, "; ", ids, ")")
+//
+| D0Cinclude(tok, d0e) =>
+  fprint!
+  (out, "D0Cinclude(", tok, "; ", d0e, ")")
+//
+| D0Cstaload(tok, d0e) =>
+  fprint!
+  (out, "D0Cstaload(", tok, "; ", d0e, ")")
+//
 | D0Csortdef
   (tok, tid, tok1, def2) =>
   fprint!
@@ -461,16 +483,7 @@ case+ x0.node() of
   (tok, d0cs0, tok1, d0cs1, tok2) =>
   fprint!
   ( out, "D0Clocal("
-  , tok, "; ", d0cs0, "; "
-  , tok1, "; ", d0cs1, "; ", tok2, ")")
-//
-| D0Cnonfix(tok, ids) =>
-  fprint!(out, "D0Cnonfix(", tok, "; ", ids, ")")
-| D0Cfixity(tok, opt, ids) =>
-  fprint!(out, "D0Cfixity(", tok, "; ", opt, "; ", ids, ")")
-//
-| D0Cinclude(tok, d0e) =>
-  fprint!(out, "D0Cinclude(", tok, "; ", d0e, ")")
+  , tok, "; ", d0cs0, "; ", tok1, "; ", d0cs1, "; ", tok2, ")")
 //
 ) (* end of [fprint_d0ecl] *)
 

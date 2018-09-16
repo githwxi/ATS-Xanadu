@@ -367,24 +367,39 @@ in
 //
 case-
 d0a0.node() of
+//
 | D0ARGsome_sta
   (_, s0qs, _) => let
-    val s1qs = trans01_squalst(s0qs)
+    val
+    s1qs =
+    trans01_squalst(s0qs)
   in
     d1arg_make_node(loc0, D1ARGsome_sta(s1qs))
   end // end of [D0ARGsome_sta]
-| D0ARGsome_dyn
+//
+| D0ARGsome_dyn1
+  (sid) => let
+    val-
+    I0DNTsome(tok) = sid.node()
+  in
+    d1arg_make_node(loc0, D1ARGsome_dyn1(tok))
+  end // end of [D0ARGsome_dyn1]
+| D0ARGsome_dyn2
   (_, arg0, opt1, _) => let
-    val arg0 = trans01_atyplst(arg0)
+//
+    val arg0 =
+    trans01_atyplst(arg0)
+//
     val opt1 =
     (
     case+ opt1 of
     | None() => None()
     | Some(a0ts) => Some(trans01_atyplst(a0ts))
     ) : a1typlstopt // end of [val]
+//
   in
-    d1arg_make_node(loc0, D1ARGsome_dyn(arg0, opt1))
-  end // end of [D0ARGsome_dyn]
+    d1arg_make_node(loc0, D1ARGsome_dyn2(arg0, opt1))
+  end // end of [D0ARGsome_dyn2]
 //
 end // end of [trans01_darg]
 
@@ -942,6 +957,25 @@ end // end of [aux_include]
 (* ****** ****** *)
 
 fun
+aux_staload
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cstaload
+(tok, d0e) = d0c0.node()
+//
+val d1e = trans01_dexp(d0e)
+//
+in
+  d1ecl_make_node(loc0, D1Cstaload(tok, d1e))
+end // end of [aux_staload]
+
+(* ****** ****** *)
+
+fun
 aux_sortdef
 ( d0c0
 : d0ecl): d1ecl = let
@@ -1151,6 +1185,13 @@ case+ wd0cs of
   WD1CSsome(trans01_declist(d0cs))
 ) : wd1eclseq // end of [val]
 //
+val () =
+println!("trans01_decl:")
+val () =
+println!("aux_datatype: d1ts = ", d1ts)
+val () =
+println!("aux_datatype: wd1cs = ", wd1cs)
+//
 in
   d1ecl_make_node(loc0, D1Cdatatype(knd, d1ts, wd1cs))
 end // end of [aux_datatype]
@@ -1230,6 +1271,8 @@ d0c0.node() of
 | D0Cnonfix _ => aux_nonfix(d0c0)
 //
 | D0Cinclude _ => aux_include(d0c0)
+//
+| D0Cstaload _ => aux_staload(d0c0)
 //
 | D0Csortdef _ => aux_sortdef(d0c0)
 //

@@ -197,28 +197,62 @@ fun
 foo(x: int): int
 
 (* ****** ****** *)
-
+//
 #include "/tmp/abcde.sats"
-
+#staload "/tmp/abcde.sats"
+//
 fun
 <a,b:int>
-foo(int(a)): int(b) = $macro"C$foo"
+foo(int(a)): int(b) = $macro"C_foo"
 fun
 <a,b:int>
-foo(int(a)): int(b) = $extern"C$foo"
+foo(int(a)): int(b) = $extern"C_foo"
+//
 fun
 <a,b:int><c:int>
 foo2(x1: int(a) | x2: int(b)):<0,!ntm,!wrt> int(c)
-
+//
 (* ****** ****** *)
 //
 // extern
 //
 fun
-foo1(int, int): bool
+bar1(int, int): bool = $mac("bar1")
 and
-foo2(int, int): bool
+bar2(x:[a:int]int(a), int): bool = $mac("bar2")
 //
+(* ****** ****** *)
+
+val fact : int -> int
+////
+fun fact int : int
+prfun fact2 int (int, int) : bool
+////
+fun
+prf
+fact(x) = fact(x)
+
+////
+(* ****** ****** *)
+
+val
+rec
+fact =
+lam(x) => if x >= 1 then x * fact(x-1) else 0
+
+val
+prf
+fact = fact
+
+(*
+@tailrec
+implement
+foo(x) = bar(x)
+@tailrec
+implement
+bar(x) = foo(x)
+*)
+
 (* ****** ****** *)
 
 (* end of [test_staexp.text] *)

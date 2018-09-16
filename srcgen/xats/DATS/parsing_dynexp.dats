@@ -498,11 +498,12 @@ p_d0arg
 //
 val e0 = err
 val tok = buf.get0()
+val tnd = tok.node()
 //
 in
 //
-case+
-tok.node() of
+case+ tnd of
+//
 | T_LPAREN() => let
     val () = buf.incby1()
     val arg0 =
@@ -516,8 +517,9 @@ tok.node() of
     err := 0;
     d0arg_make_node
     ( loc_res
-    , D0ARGsome_dyn(tbeg, arg0, opt1, tend))
+    , D0ARGsome_dyn2(tbeg, arg0, opt1, tend))
   end
+//
 | T_LBRACE() => let
     val () = buf.incby1()
     val s0qs =
@@ -530,6 +532,18 @@ tok.node() of
     d0arg_make_node
     (loc_res, D0ARGsome_sta(tbeg, s0qs, tend))
   end // end of [T_LBRACE]
+//
+| _ when
+    t_s0eid(tnd) => let
+    val sid =
+      p_s0eid(buf, err)
+    // end of [val]
+    val loc = sid.loc()
+  in
+    err := e0;
+    d0arg_make_node(loc, D0ARGsome_dyn1(sid))
+  end
+//
 | _ (* error *) =>
   (
     err := e0 + 1;
@@ -1381,6 +1395,19 @@ case+ tnd of
     err := e0;
     d0ecl_make_node(loc_res, D0Cinclude(tok, d0e))
   end // end of [#INCLUDE(...)]
+//
+| T_SRP_STALOAD() => let
+//
+    val () = buf.incby1()
+//
+    val d0e =
+      p_appd0exp(buf, err)
+    // end of [val]
+    val loc_res = loc+d0e.loc()
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cstaload(tok, d0e))
+  end // end of [#STALOAD(...)]
 //
 | T_SRP_NONFIX () => let
 //
