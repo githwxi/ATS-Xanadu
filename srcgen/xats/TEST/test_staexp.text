@@ -231,28 +231,4 @@ prfun fact2 int (int, int) : bool
 
 (* ****** ****** *)
 
-(*
-fun
-prf
-fact(x) = fact(x)
-val prf fact = fact
-val
-rec
-fact =
-lam(x) => if x >= 1 then x * fact(x-1) else 0
-*)
-
-(* ****** ****** *)
-
-(*
-@tailrec
-implement
-foo(x) = bar(x)
-@tailrec
-implement
-bar(x) = foo(x)
-*)
-
-(* ****** ****** *)
-
 (* end of [test_staexp.text] *)

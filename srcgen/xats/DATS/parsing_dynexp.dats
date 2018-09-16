@@ -1117,7 +1117,7 @@ case+ tnd of
 | T_LET() => let
     val () = buf.incby1()
     val d0cs =
-      p_d0eclseq(buf, err)
+    p_d0eclseq_dyn(buf, err)
     val tok1 = p_IN(buf, err)
     val d0es =
       p_d0expseq(buf, err)
@@ -1385,6 +1385,10 @@ and
 p_teqd0expopt
  : parser(teqd0expopt)
 //
+static
+fun
+p_dynconst : parser(d0ecl)
+//
 implement
 p_d0cstdec
   (buf, err) = let
@@ -1507,11 +1511,52 @@ list_vt2t
 //
 (* ****** ****** *)
 
+extern
+fun
+ptok_dynconst
+( tok: token
+, buf: &tokbuf >> _
+, err: &int >> _): d0ecl
+implement
+ptok_dynconst
+(
+tok, buf, err
+) = let
+  val e0 = err
+  val () =
+    buf.incby1()
+  // end of [val]
+  val loc = tok.loc()
+  val tqas =
+    p_tq0argseq(buf, err)
+  val d0cs =
+    p_d0cstdecseq_AND(buf, err)
+  val loc_res =
+  (
+    case+ d0cs of
+    | list_nil() =>
+      (case+ tqas of
+       | list_nil() => loc
+       | list_cons
+           (tqa, _) => loc + tqa.loc()
+         // list_cons
+      )
+    | list_cons(d0c, _) => loc+d0c.loc()
+  ) : loc_t // end of [val]
+in
+  err := e0;
+  d0ecl_make_node
+    ( loc_res, D0Cdynconst(tok, tqas, d0cs) )
+  // d0ecl_make_node
+end // end of [ptok_dynconst]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
-p_d0ecl
-  (buf, err) = let
+fp_d0ecl
+(f0, buf, err) = let
 //
 val e0 = err
 val tok = buf.get0()
@@ -1527,10 +1572,10 @@ case+ tnd of
     val () = buf.incby1()
     val tbeg = tok
     val head =
-      p_d0eclseq(buf, err)
+    fp_d0eclseq(f0, buf, err)
     val tmid = p_IN(buf, err)
     val body =
-      p_d0eclseq(buf, err)
+    fp_d0eclseq(f0, buf, err)
     val tend = p_ENDLOCAL(buf, err)
     val loc_res = tbeg.loc() + tend.loc()
   in
@@ -1650,7 +1695,7 @@ case+ tnd of
         val topt =
         popt_LBRACE(buf, err)
         val wdcs =
-          p_d0eclseq(buf, err)
+        p_d0eclseq_sta(buf, err)
         val tok2 = buf.get0()
         val ((*void*)) =
         (
@@ -1689,30 +1734,10 @@ case+ tnd of
   end
 //
 | tnd when
-  t_dctkind(tnd) => let
-    val () = buf.incby1()
-    val tqas =
-      p_tq0argseq(buf, err)
-    val d0cs =
-      p_d0cstdecseq_AND(buf, err)
-    val loc_res =
-    (
-      case+ d0cs of
-      | list_nil() =>
-        (case+ tqas of
-         | list_nil() => loc
-         | list_cons
-             (tqa, _) => loc + tqa.loc()
-           // list_cons
-        )
-      | list_cons(d0c, _) => loc+d0c.loc()
-    ) : loc_t // end of [val]
-  in
-    err := e0;
-    d0ecl_make_node
-      ( loc_res, D0Cdynconst(tok, tqas, d0cs) )
-    // d0ecl_make_node
-  end
+  t_dctkind(tnd) =>
+  (
+    ptok_dynconst(tok, buf, err)
+  )
 //
 | T_SRP_INCLUDE() => let
 //
@@ -1786,38 +1811,78 @@ case+ tnd of
 //
 | _ (* errorcase *) =>
   let
-    val () = (err := e0 + 1) in d0ecl_make_node(loc, D0Cnone(tok))
+    val () =
+    (err := e0 + 1) in d0ecl_make_node(loc, D0Cnone(tok))
   end // end of [let]
 //
-end // end of [p_d0ecl]
+end // end of [fp_d0ecl]
 
 end // end of [local]
 
 (* ****** ****** *)
 
 implement
-p_d0eclseq
-  (buf, err) =
-(
+fp_d0eclseq
+(f0, buf, err) = let
 //
-list_vt2t
-(pstar_fun{d0ecl}(buf, err, p_d0ecl))
+val e0 = err
 //
-) (* end of [p_d0eclseq] *)
+fun
+loop
+( buf:
+ &tokbuf >> _
+, err: &int >> _
+, res: &ptr? >> List0_vt(d0ecl)
+) : void = let
+  val x0 = fp_d0ecl(f0, buf, err)
+in
+  if
+  (err = e0)
+  then let
+    val () =
+    (
+    res :=
+    list_vt_cons{d0ecl}{0}(x0, _)
+    )
+    val+
+    list_vt_cons(_, res1) = res
+    val () = loop(buf, err, res1)
+    prval ((*folded*)) = fold@(res)
+  in
+    // nothing
+  end // end of [then]
+  else let
+    val () = err := e0
+  in
+    res := list_vt_nil((*void*))
+  end // end of [else]
+end // end of [loop]
+//
+in
+  let
+    var res: ptr
+  in
+    loop(buf, err, res); list_vt2t{d0ecl}(res)
+  end
+end // (* end of [fp_d0eclseq] *)
 
 (* ****** ****** *)
 
 implement
-p_d0eclseq_top
-  (buf, err) = let
+fptop_d0eclseq
+(f0, buf, err) = let
 //
 fnx
 loop1
-( buf: &tokbuf >> _
-, err: &int >> _
-, res: d0eclist_vt): d0eclist_vt =
+( buf
+: &tokbuf >> _
+, err
+: &int >> int
+, res
+: List0_vt(d0ecl)
+) : List0_vt(d0ecl) =
 let
-  val d0c = p_d0ecl(buf, err)
+  val d0c = fp_d0ecl(f0, buf, err)
 in
   case+
   d0c.node() of
@@ -1881,7 +1946,32 @@ in
 list_vt2t
 (list_vt_reverse(loop1(buf, err, list_vt_nil)))
 //
-end // end of [p_d0eclseq_top]
+end // end of [fp_d0eclseq_top]
+
+(* ****** ****** *)
+
+local
+
+#define STATIC 0
+#define DYNAMIC 1
+
+in
+//
+implement
+p_d0eclseq_sta(buf, err) = 
+  fp_d0eclseq(STATIC, buf, err)
+implement
+p_d0eclseq_dyn(buf, err) = 
+  fp_d0eclseq(DYNAMIC, buf, err)
+//
+implement
+ptop_d0eclseq_sta(buf, err) = 
+  fptop_d0eclseq(STATIC, buf, err)
+implement
+ptop_d0eclseq_dyn(buf, err) = 
+  fptop_d0eclseq(DYNAMIC, buf, err)
+//
+end // end of [local]
 
 (* ****** ****** *)
 

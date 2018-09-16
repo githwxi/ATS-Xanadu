@@ -203,7 +203,10 @@ val ((*void*)) =
   tokbuf_initize_list(buf, toks)
 //
 in
-  p_d0eclseq_top(buf, err)
+let
+  val d0cs =
+  ptop_d0eclseq_sta(buf, err) in d0cs
+end
 end // end of [val]
 
 (* ****** ****** *)

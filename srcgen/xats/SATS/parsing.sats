@@ -406,10 +406,24 @@ fun p_labd0exp : parser(labd0exp)
 //
 (* ****** ****** *)
 
-fun p_d0ecl : parser(d0ecl)
-fun p_d0eclseq : parser(d0eclist)
-fun p_d0eclseq_top : parser(d0eclist)
+typedef
+fparser(a:type) =
+( int(*flag*)
+, (*buf*)&tokbuf >> _
+, (*err*)&int >> int) -> a
 
+fun fp_d0ecl : fparser(d0ecl)
+fun fp_d0eclseq : fparser(d0eclist)
+fun fptop_d0eclseq : fparser(d0eclist)
+
+(* ****** ****** *)
+//
+fun p_d0eclseq_sta : parser(d0eclist)
+fun p_d0eclseq_dyn : parser(d0eclist)
+//
+fun ptop_d0eclseq_sta : parser(d0eclist)
+fun ptop_d0eclseq_dyn : parser(d0eclist)
+//
 (* ****** ****** *)
 
 datavtype

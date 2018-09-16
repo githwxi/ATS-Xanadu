@@ -224,14 +224,15 @@ d0pat_node =
 | D0Pflt of t0flt
 | D0Pstr of t0str
 //
-| D0Pqual of
-  (token, d0pat) // qualified
-//
 | D0Papps of d0patlst
 //
 | D0Pparen of
     (token, d0patlst, d0pat_RPAREN)
   // end of [D0Pparen]
+//
+| D0Panno of (d0pat, s0exp)
+//
+| D0Pqual of (token, d0pat) // qualified
 //
 | D0Pnone of (token) // HX-2018-09-15: indicating error 
 // end of [d0pat_node]
@@ -312,9 +313,6 @@ d0exp_node =
 | D0Eflt of t0flt
 | D0Estr of t0str
 //
-| D0Equal of
-  (token, d0exp) // qualified
-//
 | D0Eapps of d0explst
 //
 | D0Eparen of
@@ -330,6 +328,10 @@ d0exp_node =
   (token, d0eclist, token, d0explst, token)
 | D0Ewhere of
   (d0exp, token, tokenopt, d0eclist, token)
+//
+| D0Eanno of (d0exp, s0exp)
+//
+| D0Equal of (token, d0exp) // qualified
 //
 | D0Enone of (token) // HX-2018-07-08: indicating error 
 // end of [d0exp_node]

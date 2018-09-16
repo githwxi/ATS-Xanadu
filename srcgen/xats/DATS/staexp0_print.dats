@@ -562,10 +562,12 @@ case+ x0.node() of
   ( out, "S0Elam("
   , tlam, ";", s0mas, ";", opt, "; ", teqgt, "; ", s0e0, ")")
 //
-| S0Eanno(s0e, s0t) =>
-  fprint!(out, "S0Eanno(", s0e, "; ", s0t, ")")
+| S0Eanno
+  (s0e, ann) =>
+  fprint!(out, "S0Eanno(", s0e, "; ", ann, ")")
 //
-| S0Equal(tok, s0e) =>
+| S0Equal
+  (tok, s0e) =>
   fprint!(out, "S0Equal(", tok, "; ", s0e, ")")
 //
 | S0Enone(token) => fprint!(out, "S0Enone(", token, ")")
