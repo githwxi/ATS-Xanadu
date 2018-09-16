@@ -219,6 +219,11 @@ d0pat_node =
 //
 | D0Pid of d0pid
 //
+| D0Pint of t0int
+| D0Pchr of t0chr
+| D0Pflt of t0flt
+| D0Pstr of t0str
+//
 | D0Pqual of
   (token, d0pat) // qualified
 //

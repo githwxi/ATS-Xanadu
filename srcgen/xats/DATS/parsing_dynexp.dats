@@ -577,15 +577,14 @@ atmd0pat::
   | t0str // string
 //
 *)
-(* ****** ****** *)
-
+//
 extern
 fun
 p_atmd0pat : parser(d0pat)
 extern
 fun
 p_atmd0patseq : parser(d0patlst)
-
+//
 (* ****** ****** *)
 //
 extern
@@ -594,6 +593,23 @@ p_d0patseq_COMMA: parser(d0patlst)
 extern
 fun
 p_labd0patseq_COMMA: parser(labd0patlst)
+//
+(* ****** ****** *)
+//
+(*
+d0pat_RPAREN ::=
+  | RPAREN
+  | BAR d0patseq_COMMA RPAREN
+labd0pat_RBRACE ::=
+  | RPAREN
+  | BAR labd0patseq_COMMA RBRACE
+*)
+extern
+fun
+p_d0pat_RPAREN : parser(d0pat_RPAREN)
+extern
+fun
+p_labd0pat_RBRACE : parser(labd0pat_RBRACE)
 //
 (* ****** ****** *)
 
@@ -646,9 +662,139 @@ case+ d0ps0 of
       end // end of [list_cons]
   ) (* end of [list_cons] *)
 //
-end // end of [p_d0pat]
+end // end of [let] // end of [p_d0pat]
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+p_labd0pat
+  (buf, err) = let
+//
+val e0 = err
+//
+val l0 =
+(
+  p_l0abl(buf, err)
+)
+val tok = p_EQ(buf, err)
+val d0p = p_d0pat(buf, err)
+//
+(*
+val ((*void*)) =
+println! ("p_labd0pat: l0 = ", l0)
+val ((*void*)) =
+println! ("p_labd0pat: tok = ", tok)
+val ((*void*)) =
+println! ("p_labd0pat: d0p = ", d0p)
+*)
+//
+in
+  err := e0; DL0ABELED(l0, tok, d0p)
+end // end of [p_labd0pat]
+
+(* ****** ****** *)
+
+implement
+p_atmd0pat
+(buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+//
+| _ when t_d0pid(tnd) =>
+  let
+    val id = p_d0pid(buf, err)
+  in
+    err := e0;
+    d0pat_make_node(id.loc(), D0Pid(id))
+  end // end of [t_d0pid]
+//
+| _ when t_t0int(tnd) =>
+  let
+    val i0 = p_t0int(buf, err)
+  in
+    err := e0;
+    d0pat_make_node(i0.loc(), D0Pint(i0))
+  end // end of [t_t0int]
+| _ when t_t0chr(tnd) =>
+  let
+    val c0 = p_t0chr(buf, err)
+  in
+    err := e0;
+    d0pat_make_node(c0.loc(), D0Pchr(c0))
+  end // end of [t_t0chr]
+| _ when t_t0flt(tnd) =>
+  let
+    val c0 = p_t0flt(buf, err)
+  in
+    err := e0;
+    d0pat_make_node(c0.loc(), D0Pflt(c0))
+  end // end of [t_t0flt]
+| _ when t_t0str(tnd) =>
+  let
+    val c0 = p_t0str(buf, err)
+  in
+    err := e0;
+    d0pat_make_node(c0.loc(), D0Pstr(c0))
+  end // end of [t_t0str]
+//
+| T_LPAREN() => let
+    val () = buf.incby1()
+    val d0ps =
+      p_d0patseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_d0pat_RPAREN(buf, err)
+  in
+    err := e0;
+    d0pat_make_node
+    ( loc_res
+    , D0Pparen(tbeg, d0ps, tend)) where
+    {
+      val loc_res =
+        tbeg.loc()+d0pat_RPAREN_loc(tend)
+      // end of [val]
+    }
+  end // end of [T_LPAREN]
+//
+| T_IDENT_qual _ => let
+    val () = buf.incby1()
+    val d0p0 = p_atmd0pat(buf, err)
+  in
+    err := e0;
+    d0pat_make_node
+    (loc_res, D0Pqual(tok, d0p0)) where
+    {
+      val loc_res = tok.loc()+d0p0.loc()
+    }
+  end // end of [T_IDENT_qual]
+//
+| _ (* error *) => let
+    val () = (err := e0 + 1)
+  in
+    d0pat_make_node(tok.loc(), D0Pnone(tok))
+  end // HX: indicating a parsing error
+//
+end // end of [p_atmd0pat]
+
+(* ****** ****** *)
+
+implement
+p_atmd0patseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{d0pat}(buf, err, p_atmd0pat))
+//
+) (* end of [p_atmd0patseq] *)
 
 (* ****** ****** *)
 //
@@ -670,6 +816,75 @@ p_labd0patseq_COMMA
 //
 (* ****** ****** *)
 
+implement
+p_d0pat_RPAREN
+  (buf, err) = let
+  val e0 = err
+  val tok1 = buf.get0()
+  val tnd1 = tok1.node()
+in
+//
+case+ tnd1 of
+| T_BAR() => let
+    val () = buf.incby1()
+    val d0ps =
+      p_d0patseq_COMMA(buf, err)
+    val tok2 = p_RPAREN(buf, err)
+  in
+    err := e0;
+    d0pat_RPAREN_cons1(tok1, d0ps, tok2)
+  end // end of [T_BAR]
+| _ (* non-BAR *) =>
+  (
+    case+ tnd1 of
+    | T_RPAREN() => let
+        val () = buf.incby1()
+      in
+        err := e0; d0pat_RPAREN_cons0(tok1)
+      end // end of [RPAREN]
+    | _(*non-RPAREN*) =>
+      (
+        err := e0 + 1; d0pat_RPAREN_cons0(tok1)
+      ) (* end of [non-RPAREN *)
+  )
+//
+end // end of [p_d0pat_RPAREN]
+
+implement
+p_labd0pat_RBRACE
+  (buf, err) = let
+  val e0 = err
+  val tok1 = buf.get0()
+  val tnd1 = tok1.node()
+in
+//
+case+ tnd1 of
+| T_BAR() => let
+    val () = buf.incby1()
+    val ld0ps =
+    p_labd0patseq_COMMA(buf, err)
+    val tok2 = p_RBRACE(buf, err)
+  in
+    err := e0;
+    labd0pat_RBRACE_cons1(tok1, ld0ps, tok2)
+  end // end of [T_BAR]
+| _ (* non-BAR *) =>
+  (
+    case+ tnd1 of
+    | T_RBRACE() => let
+        val () = buf.incby1()
+      in
+        err := e0; labd0pat_RBRACE_cons0(tok1)
+      end // end of [RBRACE]
+    | _(*non-RPAREN*) =>
+      (
+        err := e0 + 1; labd0pat_RBRACE_cons0(tok1)
+      ) (* end of [non-RPAREN] *)
+  )
+//
+end // end of [p_labd0pat_RBRACE]
+
+(* ****** ****** *)
 (*
 atmd0exp ::
 //
