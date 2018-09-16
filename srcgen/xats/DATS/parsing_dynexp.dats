@@ -566,6 +566,109 @@ p_d0argseq
 ) (* end of [p_d0argseq] *)
 
 (* ****** ****** *)
+(*
+atmd0pat::
+//
+  | d0pid
+//
+  | t0int // int
+  | t0chr // char
+  | t0flt // float
+  | t0str // string
+//
+*)
+(* ****** ****** *)
+
+extern
+fun
+p_atmd0pat : parser(d0pat)
+extern
+fun
+p_atmd0patseq : parser(d0patlst)
+
+(* ****** ****** *)
+//
+extern
+fun
+p_d0patseq_COMMA: parser(d0patlst)
+extern
+fun
+p_labd0patseq_COMMA: parser(labd0patlst)
+//
+(* ****** ****** *)
+
+local
+
+static
+fun
+p_napps: parser(d0pat)
+implement
+p_napps(buf, err) = let
+//
+  val e0 = err
+  val tok = buf.get0()
+  val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| _ (* error *) =>
+  ( err := e0 + 1;
+    d0pat_make_node(tok.loc(), D0Pnone(tok))
+  ) (* end-of-error *)
+//
+end // end of [p_napps]
+
+in (* in-of-local *)
+
+implement
+p_d0pat(buf, err) =
+let
+  val e0 = err
+  val d0ps0 =
+  p_atmd0patseq(buf, err)
+in
+//
+case+ d0ps0 of
+| list_nil
+    ((*void*)) => p_napps(buf, err)
+  // end of [list_nil]
+| list_cons
+    (d0p0, d0ps1) =>
+  (
+    case+ d0ps1 of
+    | list_nil() => d0p0
+    | list_cons _ => let
+        val d0p1 = list_last(d0ps1)
+      in
+        d0pat_make_node
+        (d0p0.loc()+d0p1.loc(), D0Papps(d0ps0))
+      end // end of [list_cons]
+  ) (* end of [list_cons] *)
+//
+end // end of [p_d0pat]
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+p_d0patseq_COMMA
+  (buf, err) =
+(
+  list_vt2t
+  (pstar_COMMA_fun{d0pat}(buf, err, p_d0pat))
+) (* end of [p_d0patseq_COMMA] *)
+
+implement
+p_labd0patseq_COMMA
+  (buf, err) =
+(
+  list_vt2t
+  (pstar_COMMA_fun{labd0pat}(buf, err, p_labd0pat))
+) (* end of [p_labd0patseq_COMMA] *)
+//
+(* ****** ****** *)
 
 (*
 atmd0exp ::
@@ -810,6 +913,18 @@ case+ tnd of
     d0exp_make_node
     (loc_res, D0Elet(tok, d0cs, tok1, d0es, tok2))
   end // end of [T_LET]
+//
+| T_IDENT_qual _ => let
+    val () = buf.incby1()
+    val d0e0 = p_atmd0exp(buf, err)
+  in
+    err := e0;
+    d0exp_make_node
+    (loc_res, D0Equal(tok, d0e0)) where
+    {
+      val loc_res = tok.loc()+d0e0.loc()
+    }
+  end // end of [T_IDENT_qual]
 //
 | _ (* error *) => let
     val () = (err := e0 + 1)
