@@ -386,6 +386,10 @@ fun p_WHERE_sexpdefseq: parser(d0eclist)
 fun p_d0arg : parser(d0arg)
 
 (* ****** ****** *)
+
+fun p_d0pat : parser(d0pat)
+
+(* ****** ****** *)
 //
 fun p_d0exp : parser(d0exp)
 //
