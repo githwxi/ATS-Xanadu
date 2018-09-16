@@ -185,6 +185,32 @@ end // end of [local]
 local
 
 absimpl
+d0pat_tbox = $rec{
+  d0pat_loc= loc_t
+, d0pat_node= d0pat_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d0pat_get_loc(x) = x.d0pat_loc
+implement
+d0pat_get_node(x) = x.d0pat_node
+
+implement
+d0pat_make_node
+(loc, node) = $rec
+{
+  d0pat_loc= loc, d0pat_node= node
+} (* end of [d0pat_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d0exp_tbox = $rec{
   d0exp_loc= loc_t
 , d0exp_node= d0exp_node

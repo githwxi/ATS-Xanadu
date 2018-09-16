@@ -224,25 +224,25 @@ bar2(x:[a:int]int(a), int): bool = $mac("bar2")
 (* ****** ****** *)
 
 val fact : int -> int
-////
-fun fact int : int
+
+fun fact (n: int) : int
 prfun fact2 int (int, int) : bool
-////
+
+
+(* ****** ****** *)
+
+(*
 fun
 prf
 fact(x) = fact(x)
-
-////
-(* ****** ****** *)
-
+val prf fact = fact
 val
 rec
 fact =
 lam(x) => if x >= 1 then x * fact(x-1) else 0
+*)
 
-val
-prf
-fact = fact
+(* ****** ****** *)
 
 (*
 @tailrec

@@ -58,6 +58,13 @@ fprint_dl0abeled
 //
 (* ****** ****** *)
 
+abstype d0pat_tbox = ptr
+typedef d0pat = d0pat_tbox
+typedef d0patlst = List0(d0pat)
+typedef d0patopt = Option(d0pat)
+
+(* ****** ****** *)
+
 abstype d0exp_tbox = ptr
 typedef d0exp = d0exp_tbox
 typedef d0explst = List0(d0exp)
@@ -202,6 +209,37 @@ overload fprint with fprint_d0arg
 fun
 d0arg_make_node
 (loc: loc_t, node: d0arg_node): d0arg
+//
+(* ****** ****** *)
+
+datatype
+d0pat_node =
+//
+D0Pid of d0pid
+//
+// end of [d0pat_node]
+
+(* ****** ****** *)
+//
+fun
+d0pat_get_loc(d0pat): loc_t
+fun
+d0pat_get_node(d0pat): d0pat_node
+//
+overload .loc with d0pat_get_loc
+overload .node with d0pat_get_node
+//
+fun print_d0pat : (d0pat) -> void
+fun prerr_d0pat : (d0pat) -> void
+fun fprint_d0pat : fprint_type(d0pat)
+//
+overload print with print_d0pat
+overload prerr with prerr_d0pat
+overload fprint with fprint_d0pat
+//
+fun
+d0pat_make_node
+(loc: loc_t, node: d0pat_node): d0pat
 //
 (* ****** ****** *)
 
