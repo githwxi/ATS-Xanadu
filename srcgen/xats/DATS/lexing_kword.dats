@@ -73,6 +73,19 @@ T_CASTFN_ = T_FUN(FNKcastfn)
 (* ****** ****** *)
 //
 macdef
+T_VAL_ = T_VAL(VLKval)
+//
+macdef
+T_VALP_ = T_VAL(VLKvalp)
+macdef
+T_VALN_ = T_VAL(VLKvaln)
+//
+macdef
+T_PRVAL_ = T_VAL(VLKprval)
+//
+(* ****** ****** *)
+//
+macdef
 T_SEXPDEF_ = T_SEXPDEF(0)
 macdef
 T_PROPDEF_ = T_SEXPDEF(PROPSORT)
@@ -199,6 +212,20 @@ val () = myins("and", T_AND)
 //
 val () = myins("end", T_END)
 //
+val () = myins("if", T_IF)
+val () = myins("sif", T_IF)
+val () = myins("then", T_THEN)
+val () = myins("else", T_ELSE)
+//
+(*
+val () = myins("case", T_CASE_)
+val () = myins("scase", T_SCASE)
+val () = myins("ifcase", T_IFCASE)
+*)
+//
+val () = myins("lam", T_LAM(0))
+val () = myins("fix", T_FIX(0))
+//
 val () = myins("let", T_LET)
 val () = myins("where", T_WHERE)
 val () = myins("local", T_LOCAL)
@@ -207,19 +234,19 @@ val () = myins("endlet", T_ENDLET)
 val () = myins("endwhere", T_ENDWHERE)
 val () = myins("endlocal", T_ENDLOCAL)
 //
-val () = myins("lam", T_LAM(0))
-val () = myins("fix", T_FIX(0))
-//
-val () = myins("if", T_IF)
-val () = myins("sif", T_IF)
-val () = myins("then", T_THEN)
-val () = myins("else", T_ELSE)
-//
 val () = myins("fn", T_FN_)
 val () = myins("fn0", T_FN0_)
 val () = myins("fnx", T_FNX_)
 val () = myins("fn1", T_FN1_)
 val () = myins("fun", T_FUN_)
+//
+val () = myins("prfn", T_PRFN_)
+val () = myins("prfn0", T_PRFN0_)
+val () = myins("prfn1", T_PRFN1_)
+val () = myins("prfun", T_PRFUN_)
+//
+val () = myins("val", T_VAL_)
+val () = myins("prval", T_PRVAL_)
 //
 val () = myins("static", T_STATIC)
 val () = myins("extern", T_EXTERN)
@@ -253,28 +280,6 @@ val () = myins("datatype", T_DATATYPE_)
 val () = myins("datavtype", T_DATAVTYPE_)
 //
 (*
-//
-val () = myins("fn")
-val () = myins("fn0")
-val () = myins("fn1")
-val () = myins("fun")
-val () = myins("fnx")
-//
-val () = myins("prfn")
-val () = myins("prfn0")
-val () = myins("prfn1")
-val () = myins("prfun")
-//
-val () = myins("lam")
-val () = myins("fix")
-//
-val () = myins("if")
-val () = myins("sif")
-val () = myins("then")
-val () = myins("else")
-val () = myins("case")
-val () = myins("scase")
-val () = myins("ifcase")
 //
 val () = myins("macdef")
 val () = myins("macrodef")

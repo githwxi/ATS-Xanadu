@@ -179,7 +179,8 @@ d0arg_node =
 | D0ARGnone of token
 | D0ARGsome_sta of
   (token, s0qualst, token)
-| D0ARGsome_dyn of
+| D0ARGsome_dyn1 of s0eid
+| D0ARGsome_dyn2 of
   (token, a0typlst, a0typlstopt, token)
 //
 fun
@@ -372,6 +373,22 @@ d0ecl_node =
 //
 | D0Ctkerr of token // HX: error
 //
+| D0Cnonfix of
+  (token, i0dntlst)
+  // HX: absolving fixity status
+//
+| D0Cfixity of
+  (token, precopt, i0dntlst)
+  // HX: attaching fixity status
+//
+| D0Cinclude of
+    (token(*INCLUDE*), d0exp)
+  // HX: for file inclusion
+//
+| D0Cstaload of
+    (token(*STALOAD*), d0exp)
+  // HX: for static loading
+//
 | D0Csortdef of
   (token, s0tid, token, s0rtdef)
 //
@@ -393,19 +410,11 @@ d0ecl_node =
   // D0Cdatatype
 //
 | D0Cdynconst of
-    (token(* dctkind *), tq0arglst, d0cstdeclst)
+    (token(*dyncstkind*), tq0arglst, d0cstdeclst)
 //
 | D0Clocal of
-  ( token
-  , d0eclist, token, d0eclist, token)
-//
-| D0Cnonfix of
-  (token, i0dntlst) // HX: absolving fixity status
-//
-| D0Cfixity of
-  (token, precopt, i0dntlst) // HX: attaching fixity status
-//
-| D0Cinclude of (token, d0exp) // HX: for file inclusion
+    ( token(*LOCAL*)
+    , d0eclist, token(*IN*), d0eclist, token(*END*))
 //
 // end of [d0ecl_node]
 

@@ -173,8 +173,12 @@ d1arg_node =
 (*
 | D1ARGnone of token
 *)
+//
 | D1ARGsome_sta of (s1qualst)
-| D1ARGsome_dyn of
+  // D1ARGsome_sta
+//
+| D1ARGsome_dyn1 of token // s0eid
+| D1ARGsome_dyn2 of
   (a1typlst(*arg0*), a1typlstopt(*opt1*))
 //
 fun
@@ -320,6 +324,18 @@ d1ecl_node =
 //
 | D1Cnone of (d0ecl)
 //
+(*
+| D1Cfixity of (d0ecl)
+  // updating fixity env
+| D1Cnonfix of (d0ecl)
+  // updating fixity env
+*)
+//
+| D1Cinclude of
+  (token, d1exp) // file inclusion
+| D1Cstaload of
+  (token, d1exp) // file staloading
+//
 | D1Csortdef of
   ( token(*kind*)
   , token(*s0tid*), s1rtdef)
@@ -338,25 +354,16 @@ d1ecl_node =
     (token(*datasort*), d1tsortlst)
   // D1Cdatasort
 //
-// dataprop/dataview
-// datatype/datavtype
+// dataprop/dataview // proofs
+// datatype/datavtype // programs
 //
 | D1Cdatatype of
-  ( token(*datatype*), d1atypelst, wd1eclseq)
+  (token(*datatype*), d1atypelst, wd1eclseq)
 //
 | D1Cdynconst of
-  ( token(* dctkind *), tq1arglst, d1cstdeclst)
+  (token(*dyncstkind*), tq1arglst, d1cstdeclst)
 //
-| D1Clocal of
-    (d1eclist(*head*), d1eclist(*body*))
-  // end of [D1Clocal]
-//
-(*
-| D1Cfixity of (d0ecl) // updating fixity env
-| D1Cnonfix of (d0ecl) // updating fixity env
-*)
-//
-| D1Cinclude of (token, d1exp) // file inclusion
+| D1Clocal of (d1eclist(*head*), d1eclist(*body*))
 //
 and
 abstdf1 =

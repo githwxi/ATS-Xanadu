@@ -129,12 +129,17 @@ fprint_d1arg
 (
 //
 case+ x0.node() of
+//
 | D1ARGsome_sta(s1qs) =>
   fprint!
   (out, "D1ARGsome_sta(", s1qs, ")")
-| D1ARGsome_dyn(arg0, opt1) =>
+//
+| D1ARGsome_dyn1(tok) =>
   fprint!
-  (out, "D1ARGsome_dyn(", arg0, "; ", opt1, ")")
+  (out, "D1ARGsome_dyn1(", tok, ")")
+| D1ARGsome_dyn2(arg0, opt1) =>
+  fprint!
+  (out, "D1ARGsome_dyn2(", arg0, "; ", opt1, ")")
 //
 ) (* end of [fprint_d1arg] *)
 
@@ -286,16 +291,19 @@ case+ x0.node() of
 | D1Cnone(d0c) =>
   fprint!(out, "D1Cnone(", d0c, ")")
 //
+| D1Cinclude(knd, d1e) =>
+  fprint!
+  (out, "D1Cinclude(", knd, "; ", d1e, ")")
+//
+| D1Cstaload(knd, d1e) =>
+  fprint!
+  (out, "D1Cstaload(", knd, "; ", d1e, ")")
+//
 | D1Csortdef
   (knd, tok, def) =>
   fprint!
-  ( out, "D1Csortdef("
-  , knd, "; ", tok, "; ", def, ")")
-//
-| D1Cdatasort
-  ( knd, d1tsrts ) =>
-  fprint!
-  (out, "D1Cdatasort(", knd, "; ", d1tsrts, ")")
+  ( out
+  , "D1Csortdef(", knd, "; ", tok, "; ", def, ")")
 //
 | D1Csexpdef
   ( knd, tok
@@ -310,13 +318,22 @@ case+ x0.node() of
   ( out, "D1Cabstype("
   , knd, "; ", tok, "; ", arg, "; ", def, ")")
 //
+| D1Cdatasort
+  ( knd, d1tsts ) =>
+  fprint!
+  (out, "D1Cdatasort(", knd, "; ", d1tsts, ")")
+//
 | D1Cdatatype
   (knd, d1typs, wopt) =>
   fprint!
-  (out, "D1Cdatatype(", knd, "; ", d1typs, "; ", wopt, ")")
+  ( out
+  , "D1Cdatatype(", knd, "; ", d1typs, "; ", wopt, ")")
 //
-| D1Cinclude(knd, d1e) =>
-  fprint!(out, "D1Cinclude(", knd, "; ", d1e, ")")
+| D1Clocal
+  (d1cs_head, d1cs_body) =>
+  fprint!
+  ( out
+  , "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
 //
 | _(*rest-of-d1ecl*) =>
   fprint!(out, "fprint_d1ecl: not-yet-implemented")
