@@ -228,6 +228,22 @@ case+ x0.node() of
 | D0Pid(id) =>
   fprint!(out, "D0Pid(", id, ")")
 //
+| D0Pqual(tok, d0p) =>
+  fprint!
+  (out, "D0Pqual(", tok, "; ", d0p, ")")
+//
+| D0Papps(d0ps) =>
+  fprint!(out, "D0Papps(", d0ps, ")")
+//
+| D0Pparen
+  (tbeg, d0ps, tend) =>
+  fprint!
+  ( out
+  , "D0Pparen("
+  , tbeg, "; ", d0ps, "; ", tend, ")")
+//
+| D0Pnone(token) => fprint!(out, "D0Pnone(", token, ")")
+//
 ) (* end of [fprint_d0pat] *)
 
 end // end of [local]
@@ -266,8 +282,9 @@ case+ x0.node() of
 | D0Estr(s0) =>
   fprint!(out, "D0Estr(", s0, ")")
 //
-| D0Equal(d0e) =>
-  fprint!(out, "D0Equal(", d0e, ")")
+| D0Equal(tok, d0e) =>
+  fprint!
+  (out, "D0Equal(", tok, "; ", d0e, ")")
 //
 | D0Eapps(d0es) =>
   fprint!(out, "D0Eapps(", d0es, ")")

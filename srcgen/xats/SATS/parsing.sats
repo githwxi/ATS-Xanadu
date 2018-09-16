@@ -100,10 +100,12 @@ STAEXP0 = "./staexp0.sats"
 #staload
 DYNEXP0 = "./dynexp0.sats"
 //
+  typedef d0pat = $DYNEXP0.d0pat
   typedef d0exp = $DYNEXP0.d0exp
 //
   typedef d0arg = $DYNEXP0.d0arg
 //
+  typedef labd0pat = $DYNEXP0.labd0pat
   typedef labd0exp = $DYNEXP0.labd0exp
 //
   typedef d0ecl = $DYNEXP0.d0ecl
@@ -386,9 +388,13 @@ fun p_WHERE_sexpdefseq: parser(d0eclist)
 fun p_d0arg : parser(d0arg)
 
 (* ****** ****** *)
-
+//
 fun p_d0pat : parser(d0pat)
-
+(*
+labd0pat ::= l0abl EQ d0pat
+*)
+fun p_labd0pat : parser(labd0pat)
+//
 (* ****** ****** *)
 //
 fun p_d0exp : parser(d0exp)

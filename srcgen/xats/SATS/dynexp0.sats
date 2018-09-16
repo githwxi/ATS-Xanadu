@@ -62,6 +62,8 @@ abstype d0pat_tbox = ptr
 typedef d0pat = d0pat_tbox
 typedef d0patlst = List0(d0pat)
 typedef d0patopt = Option(d0pat)
+typedef labd0pat = dl0abeled(d0pat)
+typedef labd0patlst = List0(labd0pat)
 
 (* ****** ****** *)
 
@@ -215,10 +217,30 @@ d0arg_make_node
 datatype
 d0pat_node =
 //
-D0Pid of d0pid
+| D0Pid of d0pid
 //
+| D0Pqual of
+  (token, d0pat) // qualified
+//
+| D0Papps of d0patlst
+//
+| D0Pparen of
+    (token, d0patlst, d0pat_RPAREN)
+  // end of [D0Pparen]
+//
+| D0Pnone of (token) // HX-2018-09-15: indicating error 
 // end of [d0pat_node]
 
+and
+d0pat_RPAREN =
+| d0pat_RPAREN_cons0 of token
+| d0pat_RPAREN_cons1 of (token, d0patlst, token)
+//
+and
+labd0pat_RBRACE =
+| labd0pat_RBRACE_cons0 of token
+| labd0pat_RBRACE_cons1 of (token, labd0patlst, token)
+//
 (* ****** ****** *)
 //
 fun
@@ -242,6 +264,38 @@ d0pat_make_node
 (loc: loc_t, node: d0pat_node): d0pat
 //
 (* ****** ****** *)
+//
+fun
+d0pat_RPAREN_loc(d0pat_RPAREN): loc_t
+//
+fun
+print_d0pat_RPAREN: print_type(d0pat_RPAREN)
+fun
+prerr_d0pat_RPAREN: print_type(d0pat_RPAREN)
+fun
+fprint_d0pat_RPAREN: fprint_type(d0pat_RPAREN)
+//
+overload print with print_d0pat_RPAREN
+overload prerr with prerr_d0pat_RPAREN
+overload fprint with fprint_d0pat_RPAREN
+//
+(* ****** ****** *)
+//
+fun
+labd0pat_RBRACE_loc(labd0pat_RBRACE): loc_t
+//
+fun
+print_labd0pat_RBRACE: print_type(labd0pat_RBRACE)
+fun
+prerr_labd0pat_RBRACE: prerr_type(labd0pat_RBRACE)
+fun
+fprint_labd0pat_RBRACE: fprint_type(labd0pat_RBRACE)
+//
+overload print with print_labd0pat_RBRACE
+overload prerr with prerr_labd0pat_RBRACE
+overload fprint with fprint_labd0pat_RBRACE
+//
+(* ****** ****** *)
 
 datatype
 d0exp_node =
@@ -253,7 +307,8 @@ d0exp_node =
 | D0Eflt of t0flt
 | D0Estr of t0str
 //
-| D0Equal of d0exp // qualified
+| D0Equal of
+  (token, d0exp) // qualified
 //
 | D0Eapps of d0explst
 //
