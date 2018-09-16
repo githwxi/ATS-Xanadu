@@ -237,10 +237,6 @@ case+ x0.node() of
 | D0Pstr(s0) =>
   fprint!(out, "D0Pstr(", s0, ")")
 //
-| D0Pqual(tok, d0p) =>
-  fprint!
-  (out, "D0Pqual(", tok, "; ", d0p, ")")
-//
 | D0Papps(d0ps) =>
   fprint!(out, "D0Papps(", d0ps, ")")
 //
@@ -251,7 +247,15 @@ case+ x0.node() of
   , "D0Pparen("
   , tbeg, "; ", d0ps, "; ", tend, ")")
 //
-| D0Pnone(token) => fprint!(out, "D0Pnone(", token, ")")
+| D0Panno
+  (d0p, ann) =>
+  fprint!(out, "D0Panno(", d0p, "; ", ann, ")")
+//
+| D0Pqual
+  (tok, d0p) =>
+  fprint!(out, "D0Pqual(", tok, "; ", d0p, ")")
+//
+| D0Pnone(tok) => fprint!(out, "D0Pnone(", tok, ")")
 //
 ) (* end of [fprint_d0pat] *)
 
@@ -353,10 +357,6 @@ case+ x0.node() of
 | D0Estr(s0) =>
   fprint!(out, "D0Estr(", s0, ")")
 //
-| D0Equal(tok, d0e) =>
-  fprint!
-  (out, "D0Equal(", tok, "; ", d0e, ")")
-//
 | D0Eapps(d0es) =>
   fprint!(out, "D0Eapps(", d0es, ")")
 //
@@ -380,14 +380,23 @@ case+ x0.node() of
   , "D0Erecord("
   , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
 //
-| D0Elet(tok0, d0cs, tok1, d0es, tok2) =>
+| D0Elet
+  (tok0, d0cs, tok1, d0es, tok2) =>
   fprint!
   ( out
   , "D0Elet("
   , tok0, "; ", d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
 | D0Ewhere _ => fprint!(out, "D0Ewhere(...)")
 //
-| D0Enone(token) => fprint!(out, "D0Enone(", token, ")")
+| D0Eanno
+  (d0e, ann) =>
+  fprint!(out, "D0Eanno(", d0e, "; ", ann, ")")
+//
+| D0Equal
+  (tok, d0e) =>
+  fprint!(out, "D0Equal(", tok, "; ", d0e, ")")
+//
+| D0Enone(tok) => fprint!(out, "D0Enone(", tok, ")")
 //
 ) (* end of [fprint_d0exp] *)
 
