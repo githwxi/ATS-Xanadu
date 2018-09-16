@@ -60,6 +60,8 @@ fprint_val<s0qua> = fprint_s0qua
 (* ****** ****** *)
 //
 implement
+fprint_val<d0pat> = fprint_d0pat
+implement
 fprint_val<d0exp> = fprint_d0exp
 //
 implement
@@ -200,6 +202,35 @@ in
   fprint!(out, l0, ", ", t0, ", ");
   fprint_val<a>(out, x1); fprint!(out, ")")
 end // end of [fprint_dl0abeled]
+
+(* ****** ****** *)
+
+implement
+print_d0pat(x0) =
+fprint_d0pat(stdout_ref, x0)
+implement
+prerr_d0pat(x0) =
+fprint_d0pat(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<d0exp> = fprint_d0exp
+
+in (* in-of-local *)
+
+implement
+fprint_d0pat
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| D0Pid(id) =>
+  fprint!(out, "D0Pid(", id, ")")
+//
+) (* end of [fprint_d0pat] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
