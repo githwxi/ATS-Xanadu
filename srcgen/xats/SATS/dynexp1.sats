@@ -331,6 +331,11 @@ d1ecl_node =
   // updating fixity env
 *)
 //
+| D1Cstatic of
+  (token, d1ecl) // locally
+| D1Cextern of
+  (token, d1ecl) // globally
+//
 | D1Cinclude of
   (token, d1exp) // file inclusion
 | D1Cstaload of

@@ -89,6 +89,7 @@ STAEXP0 = "./staexp0.sats"
 //
   typedef labs0exp = $STAEXP0.labs0exp
 //
+  typedef s0explst = $STAEXP0.s0explst
   typedef s0qualst = $STAEXP0.s0qualst
   typedef s0unilst = $STAEXP0.s0unilst
   typedef d0tsortlst = $STAEXP0.d0tsortlst
@@ -104,6 +105,7 @@ DYNEXP0 = "./dynexp0.sats"
   typedef d0exp = $DYNEXP0.d0exp
 //
   typedef d0arg = $DYNEXP0.d0arg
+  typedef f0arg = $DYNEXP0.f0arg
 //
   typedef labd0pat = $DYNEXP0.labd0pat
   typedef labd0exp = $DYNEXP0.labd0exp
@@ -190,6 +192,8 @@ fun
 p_EQGT: parser(token)
 fun
 p_COLON: parser(token)
+fun
+p_GTDOT: parser(token)
 
 (* ****** ****** *)
 
@@ -310,6 +314,9 @@ labs0exp ::= l0abl EQ s0exp
 *)
 fun p_labs0exp : parser(labs0exp)
 //
+fun
+p_s0expseq_COMMA : parser(s0explst)
+//
 (* ****** ****** *)
 //
 (*
@@ -396,6 +403,10 @@ labd0pat ::= l0abl EQ d0pat
 fun p_labd0pat : parser(labd0pat)
 //
 (* ****** ****** *)
+
+fun p_f0arg : parser(f0arg)
+
+(* ****** ****** *)
 //
 fun p_d0exp : parser(d0exp)
 //
@@ -417,6 +428,9 @@ fun fp_d0eclseq : fparser(d0eclist)
 fun fptop_d0eclseq : fparser(d0eclist)
 
 (* ****** ****** *)
+//
+fun p_d0ecl_sta : parser(d0ecl)
+fun p_d0ecl_dyn : parser(d0ecl)
 //
 fun p_d0eclseq_sta : parser(d0eclist)
 fun p_d0eclseq_dyn : parser(d0eclist)

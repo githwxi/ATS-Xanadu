@@ -104,6 +104,7 @@ tnode =
 //
   | T_BAR of () // |
   | T_DOT of () // .
+  | T_COLON of () // :
 //
   | T_EQ of () // =
 //
@@ -124,7 +125,9 @@ tnode =
   | T_MSLTGT of () // -<>
 *)
 //
-  | T_COLON of () // :
+  | T_DOTLT of () // .<
+  | T_GTDOT of () //  >.
+//
   | T_COLONLT of () // :<
 //
   | T_COMMA of () // ,
@@ -191,9 +194,6 @@ tnode =
   | T_VAL of (valkind)
     // val, val+, val-, prval
 //
-  | T_STATIC of () // locally declared
-  | T_EXTERN of () // globally declared
-//
   | T_SORTDEF of ()
   | T_SEXPDEF of int(*kind*)
 //
@@ -205,6 +205,11 @@ tnode =
 //
   | T_SRP_NONFIX of ()
   | T_SRP_FIXITY of int(*kind*)
+//
+// #static
+  | T_SRP_STATIC of () // locally
+// #extern
+  | T_SRP_EXTERN of () // globally
 //
   | T_SRP_INCLUDE of () // #include
 //

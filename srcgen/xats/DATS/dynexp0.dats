@@ -185,6 +185,38 @@ end // end of [local]
 local
 
 absimpl
+f0arg_tbox = $rec{
+  f0arg_loc= loc_t
+, f0arg_node= f0arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+f0arg_get_loc(x) = x.f0arg_loc
+implement
+f0arg_get_node(x) = x.f0arg_node
+
+(* ****** ****** *)
+
+implement
+f0arg_make_node
+(loc, node) = $rec
+{
+  f0arg_loc= loc, f0arg_node= node
+} (* end of [f0arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d0pat_tbox = $rec{
   d0pat_loc= loc_t
 , d0pat_node= d0pat_node
@@ -197,6 +229,23 @@ d0pat_get_loc(x) = x.d0pat_loc
 implement
 d0pat_get_node(x) = x.d0pat_node
 
+(* ****** ****** *)
+
+implement
+d0pat_anno_opt
+(d0p, opt) =
+(
+case+ opt of
+| None() => d0p
+| Some(s0t) => let
+    val
+    loc = d0p.loc()+s0t.loc()
+  in
+    d0pat_make_node
+      (loc, D0Panno(d0p, s0t))
+    // d0pat_make_node
+  end (* end of [Some] *)
+) (* end of [d0pat_anno_opt] *)
 implement
 d0pat_make_node
 (loc, node) = $rec
@@ -237,6 +286,23 @@ d0exp_get_loc(x) = x.d0exp_loc
 implement
 d0exp_get_node(x) = x.d0exp_node
 
+(* ****** ****** *)
+
+implement
+d0exp_anno_opt
+(d0e, opt) =
+(
+case+ opt of
+| None() => d0e
+| Some(s0t) => let
+    val
+    loc = d0e.loc()+s0t.loc()
+  in
+    d0exp_make_node
+      (loc, D0Eanno(d0e, s0t))
+    // d0exp_make_node
+  end (* end of [Some] *)
+) (* end of [d0exp_anno_opt] *)
 implement
 d0exp_make_node
 (loc, node) = $rec

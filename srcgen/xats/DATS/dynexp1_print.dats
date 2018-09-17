@@ -291,6 +291,14 @@ case+ x0.node() of
 | D1Cnone(d0c) =>
   fprint!(out, "D1Cnone(", d0c, ")")
 //
+| D1Cstatic(knd, d1c) =>
+  fprint!
+  (out, "D1Cstatic(", knd, "; ", d1c, ")")
+//
+| D1Cextern(knd, d1c) =>
+  fprint!
+  (out, "D1Cextern(", knd, "; ", d1c, ")")
+//
 | D1Cinclude(knd, d1e) =>
   fprint!
   (out, "D1Cinclude(", knd, "; ", d1e, ")")

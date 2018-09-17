@@ -938,6 +938,41 @@ end // end of [aux_nonfix]
 (* ****** ****** *)
 
 fun
+aux_static
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cstatic
+(tok, d0c) = d0c0.node()
+//
+val d1c = trans01_decl(d0c)
+//
+in
+  d1ecl_make_node(loc0, D1Cstatic(tok, d1c))
+end // end of [aux_static]
+fun
+aux_extern
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cextern
+(tok, d0c) = d0c0.node()
+//
+val d1c = trans01_decl(d0c)
+//
+in
+  d1ecl_make_node(loc0, D1Cextern(tok, d1c))
+end // end of [aux_extern]
+
+(* ****** ****** *)
+
+fun
 aux_include
 ( d0c0
 : d0ecl): d1ecl = let
@@ -1269,6 +1304,9 @@ d0c0.node() of
 //
 | D0Cfixity _ => aux_fixity(d0c0)
 | D0Cnonfix _ => aux_nonfix(d0c0)
+//
+| D0Cstatic _ => aux_static(d0c0)
+| D0Cextern _ => aux_extern(d0c0)
 //
 | D0Cinclude _ => aux_include(d0c0)
 //
