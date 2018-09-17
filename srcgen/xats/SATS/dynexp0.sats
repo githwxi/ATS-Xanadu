@@ -266,6 +266,9 @@ overload prerr with prerr_d0pat
 overload fprint with fprint_d0pat
 //
 fun
+d0pat_anno_opt
+(d0p: d0pat, opt: s0expopt): d0pat
+fun
 d0pat_make_node
 (loc: loc_t, node: d0pat_node): d0pat
 //
@@ -300,6 +303,39 @@ fprint_labd0pat_RBRACE: fprint_type(labd0pat_RBRACE)
 overload print with print_labd0pat_RBRACE
 overload prerr with prerr_labd0pat_RBRACE
 overload fprint with fprint_labd0pat_RBRACE
+//
+(* ****** ****** *)
+//
+abstbox f0arg_tbox = ptr
+typedef f0arg = f0arg_tbox
+typedef f0arglst = List0(f0arg)
+//
+datatype
+f0arg_node =
+| F0ARGnone of (token)
+| F0ARGsome_dyn of (d0pat)
+| F0ARGsome_sta of (token, s0qualst, token)
+| F0ARGsome_met of (token, s0explst, token)
+//
+fun
+f0arg_get_loc(f0arg): loc_t
+fun
+f0arg_get_node(f0arg): f0arg_node
+//
+overload .loc with f0arg_get_loc
+overload .node with f0arg_get_node
+//
+fun print_f0arg : print_type(f0arg)
+fun prerr_f0arg : prerr_type(f0arg)
+fun fprint_f0arg : fprint_type(f0arg)
+//
+overload print with print_f0arg
+overload prerr with prerr_f0arg
+overload fprint with fprint_f0arg
+//
+fun
+f0arg_make_node
+(loc: loc_t, node: f0arg_node): f0arg
 //
 (* ****** ****** *)
 
@@ -364,6 +400,9 @@ overload print with print_d0exp
 overload prerr with prerr_d0exp
 overload fprint with fprint_d0exp
 //
+fun
+d0exp_anno_opt
+(d0e: d0exp, opt: s0expopt): d0exp
 fun
 d0exp_make_node
 (loc: loc_t, node: d0exp_node): d0exp
@@ -467,27 +506,70 @@ overload fprint with fprint_teqd0expopt
 (* ****** ****** *)
 
 datatype
+v0aldecl =
+V0ALDECL of @{
+  loc= loc_t
+, pat= d0pat
+, teq= token
+, def= d0exp
+, wtp= wths0expopt
+}
+
+and
+wths0expopt =
+| WTHS0EXPnone of ()
+| WTHS0EXPsome of (token, s0exp)
+
+typedef v0aldeclist = List0(v0aldecl)
+
+(* ****** ****** *)
+
+datatype
 d0ecl_node =
-//
+(*
+indicating error
+*)
 | D0Cnone of token
+(*
+for skipping error
+*)
+| D0Ctkerr of token // error
 //
-| D0Ctkerr of token // HX: error
+// HX: delete fixity
 //
 | D0Cnonfix of
   (token, i0dntlst)
-  // HX: absolving fixity status
+//
+// HX: attach fixity
 //
 | D0Cfixity of
   (token, precopt, i0dntlst)
-  // HX: attaching fixity status
+//
+// HX: locally defined
+//
+| D0Cstatic of
+    (token(*STATIC*), d0ecl)
+//
+// HX: globally defined
+//
+| D0Cextern of
+    (token(*EXTERN*), d0ecl)
+  // end of [D0Cextern]
 //
 | D0Cinclude of
     (token(*INCLUDE*), d0exp)
   // HX: for file inclusion
 //
+// HX: for static loading
+//
 | D0Cstaload of
     (token(*STALOAD*), d0exp)
-  // HX: for static loading
+  // end of [D0Cstaload]
+(*
+| D0Cdynload of
+    (token(*STALOAD*), d0exp)
+  // end of [D0Cdynload]
+*)
 //
 | D0Csortdef of
   (token, s0tid, token, s0rtdef)
@@ -500,6 +582,9 @@ d0ecl_node =
 | D0Cabstype of
     (token, s0eid, t0marglst, abstdf0)
   // D0Cabstype
+//
+| D0Cvaldecl of
+    (token, tokenopt(*rec*), v0aldeclist)
 //
 | D0Cdatasort of
     (token(*datasort*), d0tsortlst)

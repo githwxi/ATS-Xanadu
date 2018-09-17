@@ -73,6 +73,9 @@ implement
 fprint_val<d0arg> = fprint_d0arg
 //
 implement
+fprint_val<f0arg> = fprint_f0arg
+//
+implement
 fprint_val<tq0arg> = fprint_tq0arg
 //
 (* ****** ****** *)
@@ -174,11 +177,36 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+fprint_f0arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+| F0ARGnone(tok) =>
+  fprintln!(out, "F0ARGnone(", tok, ")")
+| F0ARGsome_dyn(d0p) =>
+  fprintln!(out, "F0ARGsome_dyn(", d0p, ")")
+| F0ARGsome_sta(tbeg, s0qs, tend) =>
+  fprintln!
+  ( out
+  , "F0ARGsome_sta(", tbeg, "; ", s0qs, "; ", tend, ")")
+| F0ARGsome_met(tbeg, s0es, tend) =>
+  fprintln!
+  ( out
+  , "F0ARGsome_met(", tbeg, "; ", s0es, "; ", tend, ")")
+//
+) (* end of [fprint_f0arg] *)
+
+(* ****** ****** *)
+
+implement
 fprint_tq0arg
   (out, x0) =
 (
 //
-case+ x0.node() of
+case+
+x0.node() of
 | TQ0ARGnone(tok) =>
   fprint!(out, "TQ0ARGnone(", tok, ")")
 | TQ0ARGsome(tbeg, q0as, tend) =>
@@ -566,6 +594,13 @@ case+ x0.node() of
   fprint!
   ( out
   , "D0Cfixity(", tok, "; ", opt, "; ", ids, ")")
+//
+| D0Cstatic(tok, d0c) =>
+  fprint!
+  (out, "D0Cstatic(", tok, "; ", d0c, ")")
+| D0Cextern(tok, d0c) =>
+  fprint!
+  (out, "D0Cextern(", tok, "; ", d0c, ")")
 //
 | D0Cinclude(tok, d0e) =>
   fprint!

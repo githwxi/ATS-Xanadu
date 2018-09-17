@@ -1038,9 +1038,11 @@ extern
 fun
 p_atms0expseq : parser(s0explst)
 //
+(*
 extern
 fun
 p_s0expseq_COMMA : parser(s0explst)
+*)
 extern
 fun
 p_labs0expseq_COMMA : parser(labs0explst)

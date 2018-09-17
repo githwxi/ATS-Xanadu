@@ -223,9 +223,12 @@ bar2(x:[a:int]int(a), int): bool = $mac("bar2")
 //
 (* ****** ****** *)
 
+#static
 val fact : int -> int
 
+#extern
 fun fact (n: int) : int
+#extern
 prfun fact2 int (int, int) : bool
 
 

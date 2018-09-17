@@ -165,6 +165,7 @@ case+ tnd of
 //
 | T_BAR() => fprint(out, "BAR")
 | T_DOT() => fprint(out, "DOT")
+| T_COLON() => fprint(out, "COLON")
 //
 | T_EQ() => fprint(out, "EQ")
 //
@@ -185,7 +186,9 @@ case+ tnd of
 | T_MSLTGT() => fprint(out, "MSLTGT")
 *)
 //
-| T_COLON() => fprint(out, "COLON")
+| T_DOTLT() => fprint(out, "DOTLT")
+| T_GTDOT() => fprint(out, "GTDOT")
+//
 | T_COLONLT() => fprint(out, "COLONLT")
 //
 | T_COMMA() => fprint(out, "COMMA")
@@ -259,9 +262,6 @@ case+ tnd of
     fprint!(out, "VAL(", vlk, ")")
   )
 //
-| T_STATIC() => fprint(out, "STATIC")
-| T_EXTERN() => fprint(out, "EXTERN")
-//
 | T_SORTDEF() =>
   fprint!(out, "SORTDEF(", ")")
 //
@@ -280,6 +280,9 @@ case+ tnd of
   fprint!(out, "#NONFIX")
 | T_SRP_FIXITY(knd) =>
   fprint!(out, "#FIXIXTY(", knd, ")")
+//
+| T_SRP_STATIC() => fprint(out, "#STATIC")
+| T_SRP_EXTERN() => fprint(out, "#EXTERN")
 //
 | T_SRP_INCLUDE() => fprint(out, "#INCLUDE")
 //
@@ -388,6 +391,7 @@ case+ tnd of
 //
 | T_BAR() => fprint(out, "|")
 | T_DOT() => fprint(out, ".")
+| T_COLON() => fprint(out, ":")
 //
 | T_EQ() => fprint(out, "=")
 //
@@ -408,7 +412,9 @@ case+ tnd of
 | T_MSLTGT() => fprint(out, "-<>")
 *)
 //
-| T_COLON() => fprint(out, ":")
+| T_DOTLT() => fprint(out, ".<")
+| T_GTDOT() => fprint(out, ">.")
+//
 | T_COLONLT() => fprint(out, ":<")
 //
 | T_COMMA() => fprint(out, ",")
@@ -478,9 +484,6 @@ case+ tnd of
     fprint!(out, "VAL(", vlk, ")")
   // T_VAL
 //
-| T_STATIC() => fprint!(out, "static")
-| T_EXTERN() => fprint!(out, "extern")
-//
 | T_SORTDEF() =>
   fprint!(out, "sortdef(", ")")
 //
@@ -499,6 +502,9 @@ case+ tnd of
   fprint!(out, "#nonfix")
 | T_SRP_FIXITY(knd) =>
   fprint!(out, "#fixity(", knd, ")")
+//
+| T_SRP_STATIC() => fprint!(out, "#static")
+| T_SRP_EXTERN() => fprint!(out, "#extern")
 //
 | T_SRP_INCLUDE() => fprint(out, "#include")
 //
@@ -1064,19 +1070,17 @@ case+ x0.node() of
   end // end of [T_GTLT]
 //
 (*
-| T_COLON() =>
-  (
-    case+ x1.node() of
-    | T_LT() => let
-        val loc = x0.loc()+x1.loc()
-        val x01 =
-        token_make_node(loc, T_COLONLT())
-      in
-        loop0(xs2, list_vt_cons(x01, res))
-      end // end of [T_LT]
-    | _ (* rest-of-tnode *) =>
-        loop1(x1, xs2, list_vt_cons(x0, res))
-  )
+| T_DOTLTGTDOT() => let
+    val loc = x0.loc()
+    val x00 = 
+    token_make_node(loc, T_DOTLT())
+    val x01 = 
+    token_make_node(loc, T_GTDOT())
+  in
+    loop1
+    ( x1, xs2
+    , list_vt_cons(x01, list_vt_cons(x00, res)))
+  end // end of [T_GTLT]
 *)
 //
 (*

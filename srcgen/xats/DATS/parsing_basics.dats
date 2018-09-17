@@ -139,6 +139,22 @@ end // end of [p_COLON]
 (* ****** ****** *)
 
 implement
+p_GTDOT
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_GTDOT() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-GTDOT *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_GTDOT]
+
+(* ****** ****** *)
+
+implement
 p_LPAREN
   (buf, err) = let
   val e0 = err

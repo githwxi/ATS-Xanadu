@@ -179,6 +179,7 @@ val () = myins("@", T_AT)
 //
 val () = myins("|", T_BAR)
 val () = myins(".", T_DOT)
+val () = myins(":", T_COLON)
 //
 val () = myins("$", T_DLR)
 val () = myins("#", T_SRP)
@@ -198,7 +199,9 @@ val () = myins("->", T_MSGT)
 val () = myins("-<>", T_MSLTGT)
 *)
 //
-val () = myins(":", T_COLON)
+val () = myins(".<", T_DOTLT)
+val () = myins(">.", T_GTDOT)
+//
 val () = myins(":<", T_COLONLT)
 //
 val () = myins("as", T_AS)
@@ -247,9 +250,6 @@ val () = myins("prfun", T_PRFUN_)
 //
 val () = myins("val", T_VAL_)
 val () = myins("prval", T_PRVAL_)
-//
-val () = myins("static", T_STATIC)
-val () = myins("extern", T_EXTERN)
 //
 val () = myins("sortdef", T_SORTDEF)
 //
@@ -331,6 +331,9 @@ val () = myins("#prefix", T_PREFIX_)
 val () = myins("#postfix", T_POSTFIX_)
 //
 val () = myins("#nonfix", T_SRP_NONFIX)
+//
+val () = myins("#static", T_SRP_STATIC)
+val () = myins("#extern", T_SRP_EXTERN)
 //
 val () = myins("#include", T_SRP_INCLUDE)
 //

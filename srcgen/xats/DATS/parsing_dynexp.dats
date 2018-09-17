@@ -650,17 +650,21 @@ case+ d0ps0 of
     ((*void*)) => p_napps(buf, err)
   // end of [list_nil]
 | list_cons
-    (d0p0, d0ps1) =>
-  (
+    (d0p0, d0ps1) => let
+    val opt =
+    popt_s0exp_anno(buf, err)
+  in
     case+ d0ps1 of
-    | list_nil() => d0p0
+    | list_nil() =>
+      d0pat_anno_opt(d0p0, opt)
     | list_cons _ => let
         val d0p1 = list_last(d0ps1)
+        val loc01 = d0p0.loc()+d0p1.loc()
       in
-        d0pat_make_node
-        (d0p0.loc()+d0p1.loc(), D0Papps(d0ps0))
+        d0pat_anno_opt
+        (d0pat_make_node(loc01, D0Papps(d0ps0)), opt)
       end // end of [list_cons]
-  ) (* end of [list_cons] *)
+  end (* end of [list_cons] *)
 //
 end // end of [let] // end of [p_d0pat]
 
@@ -883,6 +887,55 @@ case+ tnd1 of
   )
 //
 end // end of [p_labd0pat_RBRACE]
+
+(* ****** ****** *)
+
+implement
+p_f0arg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+//
+| T_DOTLT() => let
+    val () = buf.incby1()
+    val s0es =
+    p_s0expseq_COMMA(buf, err)
+    val tbeg = tok
+    val tend = p_GTDOT(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    f0arg_make_node
+    (loc_res, F0ARGsome_met(tbeg, s0es, tend))
+  end // end of [T_DOTLT]
+//
+| T_LBRACE() => let
+    val () = buf.incby1()
+    val s0qs =
+    p_s0quaseq_BARSEMI(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACE(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    f0arg_make_node
+    (loc_res, F0ARGsome_sta(tbeg, s0qs, tend))
+  end // end of [T_LBRACE]
+//
+| _(*non-sta-met*) =>
+  let
+    val d0p = p_atmd0pat(buf, err)
+  in
+    f0arg_make_node(d0p.loc(), F0ARGsome_dyn(d0p))
+  end
+//
+end // end of [p_f0arg]
 
 (* ****** ****** *)
 (*
@@ -1739,10 +1792,30 @@ case+ tnd of
     ptok_dynconst(tok, buf, err)
   )
 //
+| T_SRP_STATIC() => let
+    val () =
+      buf.incby1()
+    val d0c =
+      p_d0ecl_sta(buf, err)
+    val loc_res = loc+d0c.loc()
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cstatic(tok, d0c))
+  end // end of [T_SRP_STATIC]
+//
+| T_SRP_EXTERN() => let
+    val () =
+      buf.incby1()
+    val d0c =
+      p_d0ecl_sta(buf, err)
+    val loc_res = loc+d0c.loc()
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cextern(tok, d0c))
+  end // end of [T_SRP_EXTERN]
+//
 | T_SRP_INCLUDE() => let
-//
     val () = buf.incby1()
-//
     val d0e =
       p_appd0exp(buf, err)
     // end of [val]
@@ -1956,6 +2029,13 @@ local
 #define DYNAMIC 1
 
 in
+//
+implement
+p_d0ecl_sta(buf, err) = 
+  fp_d0ecl(STATIC, buf, err)
+implement
+p_d0ecl_dyn(buf, err) = 
+  fp_d0ecl(DYNAMIC, buf, err)
 //
 implement
 p_d0eclseq_sta(buf, err) = 
