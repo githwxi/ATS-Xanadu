@@ -213,6 +213,49 @@ d1arg_make_node
 (* ****** ****** *)
 //
 datatype
+d1pat_node =
+//
+| D1Pid of token
+//
+| D1Pint of token
+| D1Pchr of token
+| D1Pflt of token
+| D1Pstr of token
+//
+| D1Papps of (d1pat, d1patlst)
+//
+| D1Plist of d1patlst // temp.
+//
+| D1Pnone of ((*error-indication*))
+// end of [d1pat_node]
+//
+(* ****** ****** *)
+//
+fun
+d1pat_get_loc(d1pat): loc_t
+fun
+d1pat_get_node(d1pat): d1pat_node
+//
+overload .loc with d1pat_get_loc
+overload .node with d1pat_get_node
+//
+fun print_d1pat : (d1pat) -> void
+fun prerr_d1pat : (d1pat) -> void
+fun fprint_d1pat : fprint_type(d1pat)
+//
+overload print with print_d1pat
+overload prerr with prerr_d1pat
+overload fprint with fprint_d1pat
+//
+fun
+d1pat_none(loc: loc_t): d1pat
+fun
+d1pat_make_node
+(loc: loc_t, node: d1pat_node): d1pat
+//
+(* ****** ****** *)
+//
+datatype
 d1exp_node =
 //
 | D1Eid of token
