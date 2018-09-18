@@ -495,25 +495,29 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-print_d0cstdec(x0) =
-fprint_d0cstdec(stdout_ref, x0)
+print_declmodopt(x0) =
+fprint_declmodopt(stdout_ref, x0)
 implement
-prerr_d0cstdec(x0) =
-fprint_d0cstdec(stderr_ref, x0)
-
+prerr_declmodopt(x0) =
+fprint_declmodopt(stderr_ref, x0)
 implement
-fprint_d0cstdec
-  (out, x0) = let
+fprint_declmodopt
+  (out, x0) =
+(
+case+ x0 of
 //
-val+D0CSTDEC(rcd) = x0
-//
-in
+| DECLMODnone() =>
   fprint!
-  ( out
-  , "D0CSTDEC@{"
-  , ", nam=", rcd.nam, ", arg=", rcd.arg
-  , ", res=", rcd.res, ", def=", rcd.def, "}")
-end // end of [fprint_d0cstdec]
+  (out, "DECLMODnone(", ")")
+//
+| DECLMODsing(tok, id0) =>
+  fprint!
+  (out, "DECLMODsing(", tok, "; ", id0, ")")
+| DECLMODlist(tok, tbeg, ids, tend) =>
+  fprint!
+  ( out, "DECLMODlist("
+  , tok, "; ", tbeg, "; ", ids, "; ", tend, ")")
+)
 
 (* ****** ****** *)
 
@@ -560,6 +564,73 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
+print_wths0expopt(x0) =
+fprint_wths0expopt(stdout_ref, x0)
+implement
+prerr_wths0expopt(x0) =
+fprint_wths0expopt(stderr_ref, x0)
+implement
+fprint_wths0expopt
+  (out, x0) =
+(
+case+ x0 of
+| WTHS0EXPnone() =>
+  fprint!
+  (out, "WTHS0EXPnone(", ")")
+| WTHS0EXPsome(tok, d0e) =>
+  fprint!
+  (out, "WTHS0EXPsome(", tok, "; ", d0e, ")")
+)
+
+(* ****** ****** *)
+
+implement
+print_d0cstdec(x0) =
+fprint_d0cstdec(stdout_ref, x0)
+implement
+prerr_d0cstdec(x0) =
+fprint_d0cstdec(stderr_ref, x0)
+
+implement
+fprint_d0cstdec
+  (out, x0) = let
+//
+val+D0CSTDEC(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "D0CSTDEC@{"
+  , ", nam=", rcd.nam, ", arg=", rcd.arg
+  , ", res=", rcd.res, ", def=", rcd.def, "}")
+end // end of [fprint_d0cstdec]
+
+(* ****** ****** *)
+
+implement
+print_v0aldecl(x0) =
+fprint_v0aldecl(stdout_ref, x0)
+implement
+prerr_v0aldecl(x0) =
+fprint_v0aldecl(stderr_ref, x0)
+
+implement
+fprint_v0aldecl
+  (out, x0) = let
+//
+val+V0ALDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "V0ALDECL@{"
+  , ", nam=", rcd.pat
+  , ", def=", rcd.def, ", res=", rcd.wtp, "}")
+end // end of [fprint_v0aldecl]
+
+(* ****** ****** *)
+
+implement
 print_d0ecl(x0) =
 fprint_d0ecl(stdout_ref, x0)
 implement
@@ -572,6 +643,8 @@ implement
 fprint_val<d0ecl> = fprint_d0ecl
 implement
 fprint_val<d0cstdec> = fprint_d0cstdec
+implement
+fprint_val<v0aldecl> = fprint_v0aldecl
 
 in (* in-of-local *)
 
@@ -616,17 +689,24 @@ case+ x0.node() of
   ( out, "D0Csortdef("
   , tok, "; ", tid, "; ", tok1, "; ", def2, ")")
 | D0Csexpdef
-  (tok, sid, arg, opt, tok1, tdef) =>
+  ( tok, sid
+  , arg, opt, tok1, tdef) =>
   fprint!
   ( out
   , "D0Csexpdef("
   , tok, "; ", sid, "; "
   , arg, "; ", opt, "; ", tok1, "; ", tdef, ")")
 //
-| D0Cabstype(tok, sid, arg0, tdef) =>
+| D0Cabstype
+  (tok, sid, arg0, tdef) =>
   fprint!
   ( out, "D0Cabstype("
   , tok, "; ", sid, "; ", arg0, "; ", tdef, ")")
+//
+| D0Cvaldecl
+  (tok, mods, d0cs) =>
+  fprint!
+  (out, "D0Cvaldecl(", tok, "; ", mods, "; ", d0cs)
 //
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")

@@ -46,6 +46,15 @@
 
 (* ****** ****** *)
 //
+abstype d1pat_tbox = ptr
+typedef d1pat = d1pat_tbox
+typedef d1patlst = List0(d1pat)
+typedef d1patopt = Option(d1pat)
+typedef labd1pat = dl0abeled(d1pat)
+typedef labd1patlst = List0(labd1pat)
+//
+(* ****** ****** *)
+//
 abstype d1ecl_tbox = ptr
 typedef d1ecl = d1ecl_tbox
 typedef d1eclist = List0(d1ecl)
@@ -254,6 +263,62 @@ d1exp_make_node
 (* ****** ****** *)
 //
 datatype
+effs1expopt =
+| EFFS1EXPnone of ((*void*))
+| EFFS1EXPsome of (s1eff, s1exp)
+datatype
+teqd1expopt =
+| TEQD1EXPnone of ((*void*))
+| TEQD1EXPsome of (token(*EQ*), d1exp)
+datatype
+wths1expopt =
+| WTHS1EXPnone of ((*void*))
+| WTHS1EXPsome of (token(*WITHTYPE*), s1exp)
+//
+(* ****** ****** *)
+//
+fun
+print_effs1expopt:
+print_type(effs1expopt)
+fun
+prerr_effs1expopt:
+prerr_type(effs1expopt)
+fun
+fprint_effs1expopt: fprint_type(effs1expopt)
+//
+overload print with print_effs1expopt
+overload prerr with prerr_effs1expopt
+overload fprint with fprint_effs1expopt
+//
+fun
+print_teqd1expopt:
+print_type(teqd1expopt)
+fun
+prerr_teqd1expopt:
+prerr_type(teqd1expopt)
+fun
+fprint_teqd1expopt: fprint_type(teqd1expopt)
+//
+overload print with print_teqd1expopt
+overload prerr with prerr_teqd1expopt
+overload fprint with fprint_teqd1expopt
+//
+fun
+print_wths1expopt:
+print_type(wths1expopt)
+fun
+prerr_wths1expopt:
+prerr_type(wths1expopt)
+fun
+fprint_wths1expopt: fprint_type(wths1expopt)
+//
+overload print with print_wths1expopt
+overload prerr with prerr_wths1expopt
+overload fprint with fprint_wths1expopt
+//
+(* ****** ****** *)
+//
+datatype
 d1cstdec =
 D1CSTDEC of @{
   loc= loc_t
@@ -262,18 +327,6 @@ D1CSTDEC of @{
 , res= effs1expopt
 , def= teqd1expopt
 }
-and
-effs1expopt =
-| EFFS1EXPnone of
-  ((*void*))
-| EFFS1EXPsome of
-  (s1eff, s1exp)
-and
-teqd1expopt =
-| TEQD1EXPnone of
-  ((*void*))
-| TEQD1EXPsome of
-  (token(*EQ*), d1exp)
 //
 typedef
 d1cstdeclst = List0(d1cstdec)
@@ -295,27 +348,34 @@ overload print with print_d1cstdec
 overload prerr with prerr_d1cstdec
 overload fprint with fprint_d1cstdec
 //
-fun
-print_effs1expopt: print_type(effs1expopt)
-fun
-prerr_effs1expopt: prerr_type(effs1expopt)
-fun
-fprint_effs1expopt: fprint_type(effs1expopt)
+(* ****** ****** *)
 //
-overload print with print_effs1expopt
-overload prerr with prerr_effs1expopt
-overload fprint with fprint_effs1expopt
+datatype
+v1aldecl =
+V1ALDECL of @{
+  loc= loc_t
+, pat= d1pat
+, teq= token
+, def= d1exp
+, wtp= wths1expopt
+}
+//
+typedef v1aldeclist = List0(v1aldecl)
 //
 fun
-print_teqd1expopt: print_type(teqd1expopt)
-fun
-prerr_teqd1expopt: prerr_type(teqd1expopt)
-fun
-fprint_teqd1expopt: fprint_type(teqd1expopt)
+v1aldecl_get_loc(v1aldecl): loc_t
+overload .loc with v1aldecl_get_loc
 //
-overload print with print_teqd1expopt
-overload prerr with prerr_teqd1expopt
-overload fprint with fprint_teqd1expopt
+fun
+print_v1aldecl: print_type(v1aldecl)
+fun
+prerr_v1aldecl: prerr_type(v1aldecl)
+fun
+fprint_v1aldecl: fprint_type(v1aldecl)
+//
+overload print with print_v1aldecl
+overload prerr with prerr_v1aldecl
+overload fprint with fprint_v1aldecl
 //
 (* ****** ****** *)
 //
@@ -354,6 +414,10 @@ d1ecl_node =
   ( token(*kind*)
   , token(*s0eid*), t1marglst, abstdf1)
   // D1Cabstype
+//
+| D1Cvaldecl of
+  ( token(*valkind*)
+  , declmodopt(*rec/prf/...*), v1aldeclist)
 //
 | D1Cdatasort of
     (token(*datasort*), d1tsortlst)

@@ -276,6 +276,9 @@ case+ tnd of
 | T_DATATYPE(srt) =>
   fprint!(out, "DATATYPE(", srt, ")")
 //
+| T_WITHTYPE(srt) =>
+  fprint!(out, "WITHTYPE(", srt, ")")
+//
 | T_SRP_NONFIX() =>
   fprint!(out, "#NONFIX")
 | T_SRP_FIXITY(knd) =>
@@ -497,6 +500,9 @@ case+ tnd of
   fprint!(out, "datasort")
 | T_DATATYPE(knd) =>
   fprint!(out, "datatype(", knd, ")")
+//
+| T_WITHTYPE(knd) =>
+  fprint!(out, "withtype(", knd, ")")
 //
 | T_SRP_NONFIX() =>
   fprint!(out, "#nonfix")
@@ -1042,6 +1048,7 @@ case+ x0.node() of
       end // end of [T_AT]
     | _ (* rest-of-tnode *) =>
         loop1(x1, xs2, list_vt_cons(x0, res))
+      // end of [rest-of-tnode]
   )
 | T_FIX(k0) =>
   (
@@ -1055,9 +1062,32 @@ case+ x0.node() of
       end // end of [T_AT]
     | _ (* rest-of-tnode *) =>
         loop1(x1, xs2, list_vt_cons(x0, res))
+      // end of [rest-of-tnode]
   )
 //
-| T_GTLT() => let
+| T_VAL(VLKval) =>
+  (
+    case+ x1.node() of
+    | T_IDENT_sym("+") => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_VAL(VLKvalp))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_IDENT_sym(+)]
+    | T_IDENT_sym("-") => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_VAL(VLKvaln))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_IDENT_sym(-)]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+      // end of [rest-of-tnode]
+  )
+//
+| T_GTLT((*void*)) => let
     val loc = x0.loc()
     val x00 = 
     token_make_node(loc, T_GT())

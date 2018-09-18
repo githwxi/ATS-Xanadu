@@ -180,6 +180,7 @@ tnode =
 //
   | T_IF of () // 'if'
   | T_SIF of () // 'sif'
+//
   | T_THEN of () // 'then'
   | T_ELSE of () // 'else'
 //
@@ -202,6 +203,8 @@ tnode =
   | T_DATASORT of ()
 //
   | T_DATATYPE of int(*kind*)
+//
+  | T_WITHTYPE of int(*kind*)
 //
   | T_SRP_NONFIX of ()
   | T_SRP_FIXITY of int(*kind*)

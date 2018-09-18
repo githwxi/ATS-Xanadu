@@ -132,6 +132,17 @@ macdef
 T_DATAVTYPE_ = T_DATATYPE(VTYPESORT)
 //
 (* ****** ****** *)
+//
+macdef
+T_WITHPROP_ = T_WITHTYPE(PROPSORT)
+macdef
+T_WITHVIEW_ = T_WITHTYPE(VIEWSORT)
+macdef
+T_WITHTYPE_ = T_WITHTYPE(TYPESORT)
+macdef
+T_WITHVTYPE_ = T_WITHTYPE(VTYPESORT)
+//
+(* ****** ****** *)
 
 macdef
 T_TUPLE2_ = T_TUPLE(2)
@@ -284,14 +295,18 @@ val () = myins("datavtype", T_DATAVTYPE_)
 val () = myins("macdef")
 val () = myins("macrodef")
 //
+*)
+//
+(*
+//
 val () = myins("with")
 //
-val () = myins("withtype")
-val () = myins("withprop")
-val () = myins("withview")
-val () = myins("withvtype")
-//
 *)
+//
+val () = myins("withtype", T_WITHTYPE_)
+val () = myins("withprop", T_WITHPROP_)
+val () = myins("withview", T_WITHVIEW_)
+val () = myins("withvtype", T_WITHVTYPE_)
 //
 val () = myins("$tup"   , T_TUPLE2_)
 val () = myins("$tup_t" , T_TUPLE3_)
