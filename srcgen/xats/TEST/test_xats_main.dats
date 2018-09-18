@@ -176,9 +176,14 @@ val () = println! ("s0e0 = ", s0e0)
 *)
 (* ****** ****** *)
 
+(*
 val opt =
 fileref_open_opt
 ("./test_staexp.text", file_mode_r)
+*)
+val opt =
+fileref_open_opt
+("./test_dynexp.text", file_mode_r)
 val-~Some_vt(inp) = opt
 val
 toks =
@@ -205,7 +210,7 @@ val ((*void*)) =
 in
 let
   val d0cs =
-  ptop_d0eclseq_sta(buf, err) in d0cs
+  ptop_d0eclseq_dyn(buf, err) in d0cs
 end
 end // end of [val]
 

@@ -377,4 +377,13 @@ end // end of [d0cstdec_get_loc]
 
 (* ****** ****** *)
 
+implement
+v0aldecl_get_loc
+  (x0) =
+let
+  val+V0ALDECL(rcd) = x0 in rcd.loc
+end // end of [v0aldecl_get_loc]
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp0.dats] *)

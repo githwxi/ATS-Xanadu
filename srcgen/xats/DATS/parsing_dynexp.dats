@@ -195,10 +195,13 @@ in
     }
 *)
 //
-  | T_BACKSLASH() =>
+  | T_AT() =>
     i0dnt_some(tok) where
     {
       val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "@" )
+      val tok = token_make_node(loc, tnd)
     }
 //
   | T_LT() =>
@@ -216,6 +219,12 @@ in
       val loc = tok.loc((*void*))
       val tnd = T_IDENT_sym( ">" )
       val tok = token_make_node(loc, tnd)
+    }
+//
+  | T_BACKSLASH() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
     }
 //
   | _ (* non-IDENT *) =>
@@ -263,6 +272,9 @@ end // end of [p_i0dnt]
 extern
 fun
 p_i0dntseq: parser(i0dntlst)
+extern
+fun
+p_i0dntseq_COMMA: parser(i0dntlst)
 //
 implement
 p_i0dntseq
@@ -273,6 +285,15 @@ list_vt2t
 (pstar_fun{i0dnt}(buf, err, p_i0dnt))
 //
 ) (* end of [p_i0dntseq] *)
+implement
+p_i0dntseq_COMMA
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_COMMA_fun{i0dnt}(buf, err, p_i0dnt))
+//
+) (* end of [p_i0dntseq_COMMA] *)
 //
 (* ****** ****** *)
 //
@@ -1344,8 +1365,6 @@ abstype::
 
 (* ****** ****** *)
 
-local
-
 static
 fun
 t_dctkind
@@ -1426,63 +1445,66 @@ end // end of [p_abstdf0]
 //
 static
 fun
-p_d0cstdec
- : parser(d0cstdec)
-and
-p_d0cstdecseq_AND
- : parser(d0cstdeclst)
-and
-p_effs0expopt
- : parser(effs0expopt)
-and
-p_teqd0expopt
- : parser(teqd0expopt)
+p_declmodopt: parser(declmodopt)
+//
+(* ****** ****** *)
 //
 static
 fun
-p_dynconst : parser(d0ecl)
+p_effs0expopt: parser(effs0expopt)
+static
+fun
+p_teqd0expopt: parser(teqd0expopt)
+static
+fun
+p_wths0expopt: parser(wths0expopt)
 //
+(* ****** ****** *)
+
 implement
-p_d0cstdec
+p_declmodopt
   (buf, err) = let
 //
 val e0 = err
 //
-val
-nam = p_d0pid(buf, err)
-val
-arg = p_d0argseq(buf, err)
-val
-res = p_effs0expopt(buf, err)
-val
-def = p_teqd0expopt(buf, err)
-//
-val
-loc = nam.loc()
-val
-loc =
-(
-case+ def of
-| TEQD0EXPnone() =>
-  (
-  case+ res of
-  | EFFS0EXPnone() =>
-    (case+ arg of
-     | list_nil() => loc
-     | list_cons
-       (tqa, _) => loc+tqa.loc()
-    )
-  | EFFS0EXPsome
-      (sfe, s0e) => loc+s0e.loc()
-    // EFFS0EXPsome
-  )
-| TEQD0EXPsome(_, d0e) => loc+d0e.loc()
-) : loc_t // end of [val]
+val tok0 = buf.get0()
 //
 in
-  err := e0;
-  D0CSTDEC(@{loc=loc,nam=nam,arg=arg,res=res,def=def})
-end // end of [p_d0cstdec]
+//
+case+
+tok0.node() of
+//
+| T_COLON() => let
+    val () = buf.incby1()
+    val tok1 = buf.get0()
+  in
+    case+
+    tok1.node() of
+    | T_LPAREN() => let
+        val () = buf.incby1()
+//
+        val ids =
+          p_i0dntseq_COMMA(buf, err)
+        // end of [val]
+//
+        val tbeg = tok1
+        val tend = p_RPAREN(buf, err)
+//
+      in
+        DECLMODlist(tok0, tbeg, ids, tend)
+      end // end of [T_LPAREN]
+//
+    | _(*non-LPAREN*) => let
+        val id0 =
+          p_i0dnt(buf, err) in DECLMODsing(tok0, id0)
+        // end of [val]
+      end // end of [non-LPAREN]
+//
+  end // end of [T_COLON]
+//
+| _ (* non-COLON *) => DECLMODnone(*void*)
+//
+end // end of [p_declmodopt]
 
 (* ****** ****** *)
 
@@ -1528,6 +1550,8 @@ tok.node() of
 //
 end // end of [p_effs0expopt]
 
+(* ****** ****** *)
+
 implement
 p_teqd0expopt
   (buf, err) = let
@@ -1548,6 +1572,90 @@ tok.node() of
 | _(*non-EQ*) => TEQD0EXPnone(*void*)
 //
 end // end of [p_teqd0expopt]
+
+(* ****** ****** *)
+
+implement
+p_wths0expopt
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_WITHTYPE _ =>
+  WTHS0EXPsome
+    (tok, s0e) where
+  {
+    val () = buf.incby1()
+    val s0e = p_s0exp(buf, err)
+  }
+| _(*non-WITH*) => WTHS0EXPnone(*void*)
+//
+end // end of [p_wths0expopt]
+
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+//
+static
+fun
+p_d0cstdec
+ : parser(d0cstdec)
+and
+p_d0cstdecseq_AND
+ : parser(d0cstdeclst)
+//
+static
+fun
+p_dynconst : parser(d0ecl)
+//
+implement
+p_d0cstdec
+  (buf, err) = let
+//
+val e0 = err
+//
+val
+nam = p_d0pid(buf, err)
+val
+arg = p_d0argseq(buf, err)
+val
+res = p_effs0expopt(buf, err)
+val
+def = p_teqd0expopt(buf, err)
+//
+val
+loc = nam.loc()
+val
+loc =
+(
+case+ def of
+| TEQD0EXPnone() =>
+  (
+  case+ res of
+  | EFFS0EXPnone() =>
+    (case+ arg of
+     | list_nil() => loc
+     | list_cons
+       (tqa, _) => loc+tqa.loc()
+    )
+  | EFFS0EXPsome
+      (sfe, s0e) => loc+s0e.loc()
+    // EFFS0EXPsome
+  )
+| TEQD0EXPsome(_, d0e) => loc+d0e.loc()
+) : loc_t // end of [val]
+//
+in
+  err := e0;
+  D0CSTDEC
+  (@{loc=loc,nam=nam,arg=arg,res=res,def=def})
+end // end of [p_d0cstdec]
 
 (* ****** ****** *)
 //
@@ -1602,6 +1710,98 @@ in
     ( loc_res, D0Cdynconst(tok, tqas, d0cs) )
   // d0ecl_make_node
 end // end of [ptok_dynconst]
+
+(* ****** ****** *)
+//
+static
+fun
+p_v0aldecl
+ : parser(v0aldecl)
+and
+p_v0aldeclseq_AND
+ : parser(v0aldeclist)
+//
+(* ****** ****** *)
+
+implement
+p_v0aldecl
+  (buf, err) = let
+//
+val e0 = err
+//
+val
+d0p = p_d0pat(buf, err)
+//
+val teq = p_EQ(buf, err)
+//
+val d0e = p_d0exp(buf, err)
+//
+val
+wopt = p_wths0expopt(buf, err)
+//
+val loc0 = d0p.loc()
+//
+val loc1 =
+(
+case+ wopt of
+| WTHS0EXPnone() => loc0+d0e.loc()
+| WTHS0EXPsome(_, s0e) => loc0+s0e.loc()
+) : loc_t // end-of-val
+//
+in
+  err := e0;
+  V0ALDECL
+  (@{loc=loc1,pat=d0p,teq=teq,def=d0e,wtp=wopt})
+end // end of [p_v0aldecl]
+
+(* ****** ****** *)
+//
+implement
+p_v0aldeclseq_AND
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_AND_fun
+ {v0aldecl}(buf, err, p_v0aldecl))
+//
+) (* end of [p_v0aldeclseq_AND] *)
+//
+(* ****** ****** *)
+
+extern
+fun
+ptok_valdecl
+( tok: token
+, buf: &tokbuf >> _
+, err: &int >> _): d0ecl
+implement
+ptok_valdecl
+(
+tok, buf, err
+) = let
+  val e0 = err
+  val () =
+    buf.incby1()
+  // end of [val]
+  val loc = tok.loc()
+  val mopt =
+    p_declmodopt(buf, err)
+  val d0cs =
+    p_v0aldeclseq_AND(buf, err)
+  val loc_res =
+  (
+    case+ d0cs of
+    | list_nil() => loc
+    | list_cons(d0c, _) => loc+d0c.loc()
+      // list_cons
+  ) : loc_t // end of [val]
+in
+  err := e0;
+  d0ecl_make_node
+    ( loc_res, D0Cvaldecl(tok, mopt, d0cs) )
+  // d0ecl_make_node
+end // end of [ptok_valdecl]
 
 (* ****** ****** *)
 
@@ -1785,6 +1985,11 @@ case+ tnd of
       ( loc_res, D0Cdatatype(tok, d0cs, wopt) )
     // d0ecl_make_node
   end
+//
+| T_VAL _ =>
+  (
+    ptok_valdecl(tok, buf, err)
+  )
 //
 | tnd when
   t_dctkind(tnd) =>

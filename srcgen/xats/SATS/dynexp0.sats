@@ -410,12 +410,15 @@ d0exp_make_node
 (* ****** ****** *)
 //
 fun
-d0exp_RPAREN_loc(d0exp_RPAREN): loc_t
+d0exp_RPAREN_loc
+(x0: d0exp_RPAREN): loc_t
 //
 fun
-print_d0exp_RPAREN: print_type(d0exp_RPAREN)
+print_d0exp_RPAREN:
+  print_type(d0exp_RPAREN)
 fun
-prerr_d0exp_RPAREN: print_type(d0exp_RPAREN)
+prerr_d0exp_RPAREN:
+  print_type(d0exp_RPAREN)
 fun
 fprint_d0exp_RPAREN: fprint_type(d0exp_RPAREN)
 //
@@ -426,12 +429,15 @@ overload fprint with fprint_d0exp_RPAREN
 (* ****** ****** *)
 //
 fun
-labd0exp_RBRACE_loc(labd0exp_RBRACE): loc_t
+labd0exp_RBRACE_loc
+(x0: labd0exp_RBRACE): loc_t
 //
 fun
-print_labd0exp_RBRACE: print_type(labd0exp_RBRACE)
+print_labd0exp_RBRACE:
+  print_type(labd0exp_RBRACE)
 fun
-prerr_labd0exp_RBRACE: prerr_type(labd0exp_RBRACE)
+prerr_labd0exp_RBRACE:
+  prerr_type(labd0exp_RBRACE)
 fun
 fprint_labd0exp_RBRACE: fprint_type(labd0exp_RBRACE)
 //
@@ -440,7 +446,87 @@ overload prerr with prerr_labd0exp_RBRACE
 overload fprint with fprint_labd0exp_RBRACE
 //
 (* ****** ****** *)
-
+//
+datatype
+declmodopt =
+| DECLMODnone of
+    ((*void*))
+  // end of [DECLMODnone]
+| DECLMODsing of
+    (token(*COLON*), i0dnt)
+  // end of [DECLMODsing]
+| DECLMODlist of
+    (token(*COLON*), token, i0dntlst(*ids*), token)
+  // end of [DECLMODlist]
+//
+fun
+print_declmodopt: print_type(declmodopt)
+fun
+prerr_declmodopt: prerr_type(declmodopt)
+fun
+fprint_declmodopt: fprint_type(declmodopt)
+//
+overload print with print_declmodopt
+overload prerr with prerr_declmodopt
+overload fprint with fprint_declmodopt
+//
+(* ****** ****** *)
+//
+datatype
+effs0expopt =
+| EFFS0EXPnone of ((*void*))
+| EFFS0EXPsome of (s0eff, s0exp)
+datatype
+teqd0expopt =
+| TEQD0EXPnone of ((*void*))
+| TEQD0EXPsome of (token(*EQ*), d0exp)
+datatype
+wths0expopt =
+| WTHS0EXPnone of ((*void*))
+| WTHS0EXPsome of (token(*WITHTYPE*), s0exp)
+//
+(* ****** ****** *)
+fun
+print_effs0expopt:
+print_type(effs0expopt)
+fun
+prerr_effs0expopt:
+prerr_type(effs0expopt)
+fun
+fprint_effs0expopt: fprint_type(effs0expopt)
+//
+overload print with print_effs0expopt
+overload prerr with prerr_effs0expopt
+overload fprint with fprint_effs0expopt
+//
+fun
+print_teqd0expopt:
+print_type(teqd0expopt)
+fun
+prerr_teqd0expopt:
+prerr_type(teqd0expopt)
+fun
+fprint_teqd0expopt: fprint_type(teqd0expopt)
+//
+overload print with print_teqd0expopt
+overload prerr with prerr_teqd0expopt
+overload fprint with fprint_teqd0expopt
+//
+fun
+print_wths0expopt:
+print_type(wths0expopt)
+fun
+prerr_wths0expopt:
+prerr_type(wths0expopt)
+fun
+fprint_wths0expopt: fprint_type(wths0expopt)
+//
+overload print with print_wths0expopt
+overload prerr with prerr_wths0expopt
+overload fprint with fprint_wths0expopt
+//
+(* ****** ****** *)
+//
 datatype
 d0cstdec =
 D0CSTDEC of @{
@@ -450,18 +536,6 @@ D0CSTDEC of @{
 , res= effs0expopt
 , def= teqd0expopt
 }
-and
-effs0expopt =
-| EFFS0EXPnone of
-  ((*void*))
-| EFFS0EXPsome of
-  (s0eff, s0exp)
-and
-teqd0expopt =
-| TEQD0EXPnone of
-  ((*void*))
-| TEQD0EXPsome of
-  (token(*EQ*), d0exp)
 //
 typedef
 d0cstdeclst = List0(d0cstdec)
@@ -481,30 +555,8 @@ overload print with print_d0cstdec
 overload prerr with prerr_d0cstdec
 overload fprint with fprint_d0cstdec
 //
-fun
-print_effs0expopt: print_type(effs0expopt)
-fun
-prerr_effs0expopt: prerr_type(effs0expopt)
-fun
-fprint_effs0expopt: fprint_type(effs0expopt)
-//
-overload print with print_effs0expopt
-overload prerr with prerr_effs0expopt
-overload fprint with fprint_effs0expopt
-//
-fun
-print_teqd0expopt: print_type(teqd0expopt)
-fun
-prerr_teqd0expopt: prerr_type(teqd0expopt)
-fun
-fprint_teqd0expopt: fprint_type(teqd0expopt)
-//
-overload print with print_teqd0expopt
-overload prerr with prerr_teqd0expopt
-overload fprint with fprint_teqd0expopt
-//
 (* ****** ****** *)
-
+//
 datatype
 v0aldecl =
 V0ALDECL of @{
@@ -514,14 +566,24 @@ V0ALDECL of @{
 , def= d0exp
 , wtp= wths0expopt
 }
-
-and
-wths0expopt =
-| WTHS0EXPnone of ()
-| WTHS0EXPsome of (token, s0exp)
-
+//
 typedef v0aldeclist = List0(v0aldecl)
-
+//
+fun
+v0aldecl_get_loc(v0aldecl): loc_t
+overload .loc with v0aldecl_get_loc
+//
+fun
+print_v0aldecl: print_type(v0aldecl)
+fun
+prerr_v0aldecl: prerr_type(v0aldecl)
+fun
+fprint_v0aldecl: fprint_type(v0aldecl)
+//
+overload print with print_v0aldecl
+overload prerr with prerr_v0aldecl
+overload fprint with fprint_v0aldecl
+//
 (* ****** ****** *)
 
 datatype
@@ -584,7 +646,8 @@ for skipping error
   // D0Cabstype
 //
 | D0Cvaldecl of
-    (token, tokenopt(*rec*), v0aldeclist)
+  ( token(*valkind*)
+  , declmodopt(*rec/prf/...*), v0aldeclist)
 //
 | D0Cdatasort of
     (token(*datasort*), d0tsortlst)
