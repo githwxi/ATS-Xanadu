@@ -60,12 +60,14 @@ sort1_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-sort1_get_loc(x) = x.sort1_loc
+sort1_get_loc
+  (x0) = x0.sort1_loc
 implement
-sort1_get_node(x) = x.sort1_node
-
+sort1_get_node
+  (x0) = x0.sort1_node
+//
 (* ****** ****** *)
 
 implement
@@ -96,12 +98,14 @@ s1rtcon_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-s1rtcon_get_loc(x) = x.s1rtcon_loc
+s1rtcon_get_loc
+  (x0) = x0.s1rtcon_loc
 implement
-s1rtcon_get_node(x) = x.s1rtcon_node
-
+s1rtcon_get_node
+  (x0) = x0.s1rtcon_node
+//
 (* ****** ****** *)
 
 implement
@@ -128,12 +132,14 @@ d1tsort_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-d1tsort_get_loc(x) = x.d1tsort_loc
+d1tsort_get_loc
+  (x0) = x0.d1tsort_loc
 implement
-d1tsort_get_node(x) = x.d1tsort_node
-
+d1tsort_get_node
+  (x0) = x0.d1tsort_node
+//
 (* ****** ****** *)
 
 implement
@@ -160,12 +166,14 @@ s1rtdef_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-s1rtdef_get_loc(x) = x.s1rtdef_loc
+s1rtdef_get_loc
+  (x0) = x0.s1rtdef_loc
 implement
-s1rtdef_get_node(x) = x.s1rtdef_node
-
+s1rtdef_get_node
+  (x0) = x0.s1rtdef_node
+//
 (* ****** ****** *)
 
 implement
@@ -192,12 +200,14 @@ s1arg_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-s1arg_get_loc(x) = x.s1arg_loc
+s1arg_get_loc
+  (x0) = x0.s1arg_loc
 implement
-s1arg_get_node(x) = x.s1arg_node
-
+s1arg_get_node
+  (x0) = x0.s1arg_node
+//
 (* ****** ****** *)
 
 implement
@@ -224,12 +234,14 @@ s1marg_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-s1marg_get_loc(x) = x.s1marg_loc
+s1marg_get_loc
+  (x0) = x0.s1marg_loc
 implement
-s1marg_get_node(x) = x.s1marg_node
-
+s1marg_get_node
+  (x0) = x0.s1marg_node
+//
 (* ****** ****** *)
 
 implement
@@ -256,12 +268,14 @@ t1arg_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-t1arg_get_loc(x) = x.t1arg_loc
+t1arg_get_loc
+  (x0) = x0.t1arg_loc
 implement
-t1arg_get_node(x) = x.t1arg_node
-
+t1arg_get_node
+  (x0) = x0.t1arg_node
+//
 (* ****** ****** *)
 
 implement
@@ -288,12 +302,14 @@ t1marg_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-t1marg_get_loc(x) = x.t1marg_loc
+t1marg_get_loc
+  (x0) = x0.t1marg_loc
 implement
-t1marg_get_node(x) = x.t1marg_node
-
+t1marg_get_node
+  (x0) = x0.t1marg_node
+//
 (* ****** ****** *)
 
 implement
@@ -320,12 +336,14 @@ s1qua_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-s1qua_get_loc(x) = x.s1qua_loc
+s1qua_get_loc
+  (x0) = x0.s1qua_loc
 implement
-s1qua_get_node(x) = x.s1qua_node
-
+s1qua_get_node
+  (x0) = x0.s1qua_node
+//
 (* ****** ****** *)
 
 implement
@@ -352,12 +370,14 @@ s1uni_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-s1uni_get_loc(x) = x.s1uni_loc
+s1uni_get_loc
+  (x0) = x0.s1uni_loc
 implement
-s1uni_get_node(x) = x.s1uni_node
-
+s1uni_get_node
+  (x0) = x0.s1uni_node
+//
 (* ****** ****** *)
 
 implement
@@ -384,12 +404,14 @@ s1exp_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-s1exp_get_loc(x) = x.s1exp_loc
+s1exp_get_loc
+  (x0) = x0.s1exp_loc
 implement
-s1exp_get_node(x) = x.s1exp_node
-
+s1exp_get_node
+  (x0) = x0.s1exp_node
+//
 implement
 s1exp_none
 (loc) =
@@ -400,7 +422,7 @@ s1exp_make_node
 {
   s1exp_loc= loc, s1exp_node= node
 } (* end of [s1exp_make_node] *)
-
+//
 (* ****** ****** *)
 
 end // end of [local]
@@ -418,12 +440,14 @@ d1atcon_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-d1atcon_get_loc(x) = x.d1atcon_loc
+d1atcon_get_loc
+  (x0) = x0.d1atcon_loc
 implement
-d1atcon_get_node(x) = x.d1atcon_node
-
+d1atcon_get_node
+  (x0) = x0.d1atcon_node
+//
 (* ****** ****** *)
 
 implement
@@ -450,12 +474,14 @@ d1atype_tbox = $rec{
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
-d1atype_get_loc(x) = x.d1atype_loc
+d1atype_get_loc
+  (x0) = x0.d1atype_loc
 implement
-d1atype_get_node(x) = x.d1atype_node
-
+d1atype_get_node
+  (x0) = x0.d1atype_node
+//
 (* ****** ****** *)
 
 implement

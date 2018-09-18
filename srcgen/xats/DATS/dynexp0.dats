@@ -67,9 +67,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-q0arg_get_loc(x) = x.q0arg_loc
+q0arg_get_loc(x0) = x0.q0arg_loc
 implement
-q0arg_get_node(x) = x.q0arg_node
+q0arg_get_node(x0) = x0.q0arg_node
 
 (* ****** ****** *)
 
@@ -99,9 +99,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-tq0arg_get_loc(x) = x.tq0arg_loc
+tq0arg_get_loc(x0) = x0.tq0arg_loc
 implement
-tq0arg_get_node(x) = x.tq0arg_node
+tq0arg_get_node(x0) = x0.tq0arg_node
 
 (* ****** ****** *)
 
@@ -131,9 +131,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-a0typ_get_loc(x) = x.a0typ_loc
+a0typ_get_loc(x0) = x0.a0typ_loc
 implement
-a0typ_get_node(x) = x.a0typ_node
+a0typ_get_node(x0) = x0.a0typ_node
 
 (* ****** ****** *)
 
@@ -163,9 +163,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-d0arg_get_loc(x) = x.d0arg_loc
+d0arg_get_loc(x0) = x0.d0arg_loc
 implement
-d0arg_get_node(x) = x.d0arg_node
+d0arg_get_node(x0) = x0.d0arg_node
 
 (* ****** ****** *)
 
@@ -195,9 +195,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-f0arg_get_loc(x) = x.f0arg_loc
+f0arg_get_loc(x0) = x0.f0arg_loc
 implement
-f0arg_get_node(x) = x.f0arg_node
+f0arg_get_node(x0) = x0.f0arg_node
 
 (* ****** ****** *)
 
@@ -225,9 +225,9 @@ d0pat_tbox = $rec{
 in (* in-of-local *)
 
 implement
-d0pat_get_loc(x) = x.d0pat_loc
+d0pat_get_loc(x0) = x0.d0pat_loc
 implement
-d0pat_get_node(x) = x.d0pat_node
+d0pat_get_node(x0) = x0.d0pat_node
 
 (* ****** ****** *)
 
@@ -282,9 +282,9 @@ d0exp_tbox = $rec{
 in (* in-of-local *)
 
 implement
-d0exp_get_loc(x) = x.d0exp_loc
+d0exp_get_loc(x0) = x0.d0exp_loc
 implement
-d0exp_get_node(x) = x.d0exp_node
+d0exp_get_node(x0) = x0.d0exp_node
 
 (* ****** ****** *)
 
@@ -353,9 +353,9 @@ d0ecl_tbox = $rec{
 in (* in-of-local *)
 
 implement
-d0ecl_get_loc(x) = x.d0ecl_loc
+d0ecl_get_loc(x0) = x0.d0ecl_loc
 implement
-d0ecl_get_node(x) = x.d0ecl_node
+d0ecl_get_node(x0) = x0.d0ecl_node
 
 implement
 d0ecl_make_node

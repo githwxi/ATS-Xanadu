@@ -96,6 +96,12 @@ typedef labs0explst = $S0E.labs0explst
 //
 (* ****** ****** *)
 //
+typedef d0pat = $D0E.d0pat
+typedef d0patopt = $D0E.d0patopt
+typedef d0patlst = $D0E.d0patlst
+//
+(* ****** ****** *)
+//
 typedef d0exp = $D0E.d0exp
 typedef d0expopt = $D0E.d0expopt
 typedef d0explst = $D0E.d0explst
@@ -135,6 +141,12 @@ typedef s1explst = $S1E.s1explst
 //
 typedef labs1exp = $S1E.labs1exp
 typedef labs1explst = $S1E.labs1explst
+//
+(* ****** ****** *)
+//
+typedef d1pat = $D1E.d1pat
+typedef d1patopt = $D1E.d1patopt
+typedef d1patlst = $D1E.d1patlst
 //
 (* ****** ****** *)
 //
@@ -248,6 +260,18 @@ overload trans01 with trans01_lsexplst
 //
 fun
 trans01_seff: s0eff -> s1eff
+//
+(* ****** ****** *)
+//
+fun
+trans01_dpat: d0pat -> d1pat
+fun
+trans01_dpatlst: d0patlst -> d1patlst
+//
+(*
+overload trans01 with trans01_dpat
+overload trans01 with trans01_dpatlst
+*)
 //
 (* ****** ****** *)
 //
