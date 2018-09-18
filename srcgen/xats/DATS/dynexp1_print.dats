@@ -164,6 +164,62 @@ x0.node() of
 (* ****** ****** *)
 
 implement
+print_d1pat(x0) =
+fprint_d1pat(stdout_ref, x0)
+implement
+prerr_d1pat(x0) =
+fprint_d1pat(stderr_ref, x0)
+
+
+local
+
+implement
+fprint_val<d1pat> = fprint_d1pat
+
+in (* in-of-local *)
+
+implement
+fprint_d1pat
+  (out, x0) =
+(
+case+
+x0.node() of
+| D1Pid(tok) =>
+  fprint!
+  (out, "D1Pid(", tok, ")")
+//
+| D1Pint(tok) =>
+  fprint!
+  (out, "D1Pint(", tok, ")")
+| D1Pchr(tok) =>
+  fprint!
+  (out, "D1Pchr(", tok, ")")
+| D1Pflt(tok) =>
+  fprint!
+  (out, "D1Pflt(", tok, ")")
+| D1Pstr(tok) =>
+  fprint!
+  (out, "D1Pstr(", tok, ")")
+//
+| D1Papps(d1p0, d1ps) =>
+  fprint!
+  ( out
+  , "D1Papps(", d1p0, "; ", d1ps, ")")
+//
+| D1Plist(d1ps) =>
+  (
+    fprint!(out, "D1Plist(", d1ps, ")")
+  )
+//
+| D1Pnone((*void*)) => fprint!(out, "D1Pnone(", ")")
+//
+) (* end of [fprint_d1pat] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
 print_d1exp(x0) =
 fprint_d1exp(stdout_ref, x0)
 implement

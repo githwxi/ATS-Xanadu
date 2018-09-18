@@ -62,9 +62,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-q1arg_get_loc(x) = x.q1arg_loc
+q1arg_get_loc(x0) = x0.q1arg_loc
 implement
-q1arg_get_node(x) = x.q1arg_node
+q1arg_get_node(x0) = x0.q1arg_node
 
 (* ****** ****** *)
 
@@ -94,9 +94,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-tq1arg_get_loc(x) = x.tq1arg_loc
+tq1arg_get_loc(x0) = x0.tq1arg_loc
 implement
-tq1arg_get_node(x) = x.tq1arg_node
+tq1arg_get_node(x0) = x0.tq1arg_node
 
 (* ****** ****** *)
 
@@ -126,9 +126,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-a1typ_get_loc(x) = x.a1typ_loc
+a1typ_get_loc(x0) = x0.a1typ_loc
 implement
-a1typ_get_node(x) = x.a1typ_node
+a1typ_get_node(x0) = x0.a1typ_node
 
 (* ****** ****** *)
 
@@ -158,9 +158,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-d1arg_get_loc(x) = x.d1arg_loc
+d1arg_get_loc(x0) = x0.d1arg_loc
 implement
-d1arg_get_node(x) = x.d1arg_node
+d1arg_get_node(x0) = x0.d1arg_node
 
 (* ****** ****** *)
 
@@ -170,6 +170,42 @@ d1arg_make_node
 {
   d1arg_loc= loc, d1arg_node= node
 } (* end of [d1arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d1pat_tbox = $rec{
+  d1pat_loc= loc_t
+, d1pat_node= d1pat_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d1pat_get_loc(x0) = x0.d1pat_loc
+implement
+d1pat_get_node(x0) = x0.d1pat_node
+
+(* ****** ****** *)
+
+implement
+d1pat_none
+(loc) =
+d1pat_make_node(loc, D1Pnone())
+implement
+d1pat_make_node
+(loc, node) = $rec
+{
+  d1pat_loc= loc, d1pat_node= node
+} (* end of [d1pat_make_node] *)
 
 (* ****** ****** *)
 
@@ -190,9 +226,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-d1exp_get_loc(x) = x.d1exp_loc
+d1exp_get_loc(x0) = x0.d1exp_loc
 implement
-d1exp_get_node(x) = x.d1exp_node
+d1exp_get_node(x0) = x0.d1exp_node
 
 (* ****** ****** *)
 
@@ -226,9 +262,9 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 implement
-d1ecl_get_loc(x) = x.d1ecl_loc
+d1ecl_get_loc(x0) = x0.d1ecl_loc
 implement
-d1ecl_get_node(x) = x.d1ecl_node
+d1ecl_get_node(x0) = x0.d1ecl_node
 
 (* ****** ****** *)
 
