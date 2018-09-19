@@ -733,6 +733,21 @@ end (* end of [trans01_dpat] *)
 
 end // end of [local]
 
+implement
+trans01_dpatlst
+  (d0ps) =
+list_vt2t(d1ps) where
+{
+  val
+  d1ps =
+  list_map<d0pat><d1pat>
+    (d0ps) where
+  {
+    implement
+    list_map$fopr<d0pat><d1pat> = trans01_dpat
+  }
+} (* end of [trans01_dpatlst] *)
+
 (* ****** ****** *)
 
 local
@@ -1021,12 +1036,16 @@ trans01_dcstdec: d0cstdec -> d1cstdec
 and
 trans01_dcstdeclst: d0cstdeclst -> d1cstdeclst
 
+extern
+fun
+trans01_valdecl: v0aldecl -> v1aldecl
+and
+trans01_valdeclist: v0aldeclist -> v1aldeclist
+
 (* ****** ****** *)
 
-local
-
 fun
-aux_effs0expopt
+trans01_effs0expopt
 ( opt
 : effs0expopt): effs1expopt =
 (
@@ -1042,7 +1061,7 @@ case+ opt of
 )
 
 fun
-aux_teqd0expopt
+trans01_teqd0expopt
 ( opt
 : teqd0expopt): teqd1expopt =
 (
@@ -1053,13 +1072,25 @@ case+ opt of
   TEQD1EXPsome(tok, trans01_dexp(d0e))
 )
 
-in (* in-of-local *)
+fun
+trans01_wths0expopt
+( opt
+: wths0expopt): wths1expopt =
+(
+case+ opt of
+| WTHS0EXPnone() =>
+  WTHS1EXPnone()
+| WTHS0EXPsome(tok, s0e) =>
+  WTHS1EXPsome(tok, trans01_sexp(s0e))
+)
+
+(* ****** ****** *)
 
 implement
 trans01_dcstdec
   (d0c0) = let
 //
-val
+val+
 D0CSTDEC(rcd) = d0c0
 //
 val
@@ -1071,9 +1102,9 @@ I0DNTsome(tok) = nam.node()
 val
 arg = trans01_darglst(rcd.arg)
 val
-res = aux_effs0expopt(rcd.res)
+res = trans01_effs0expopt(rcd.res)
 val
-def = aux_teqd0expopt(rcd.def)
+def = trans01_teqd0expopt(rcd.def)
 //
 (*
 val () =
@@ -1091,8 +1122,6 @@ in
   (@{loc=loc,nam=tok,arg=arg,res=res,def=def})
 end // end of [trans01_dcstdec]
 
-end // end of [local]
-
 implement
 trans01_dcstdeclst
   (d0cs) =
@@ -1107,6 +1136,46 @@ list_vt2t(d1cs) where
     list_map$fopr<d0cstdec><d1cstdec> = trans01_dcstdec
   }
 } (* end of [trans01_dcstdeclst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_valdecl
+  (d0c0) = let
+//
+val+
+V0ALDECL(rcd) = d0c0
+//
+val
+loc = rcd.loc
+val
+teq = rcd.teq
+val
+pat = trans01_dpat(rcd.pat)
+val
+def = trans01_dexp(rcd.def)
+val
+wtp = trans01_wths0expopt(rcd.wtp)
+//
+in
+  V1ALDECL
+  (@{loc=loc,pat=pat,teq=teq,def=def,wtp=wtp})
+end // end of [trans01_valdecl]
+
+implement
+trans01_valdeclist
+  (d0cs) =
+list_vt2t(d1cs) where
+{
+  val
+  d1cs =
+  list_map<v0aldecl><v1aldecl>
+    (d0cs) where
+  {
+    implement
+    list_map$fopr<v0aldecl><v1aldecl> = trans01_valdecl
+  }
+} (* end of [trans01_valdeclist] *)
 
 (* ****** ****** *)
 
@@ -1456,6 +1525,27 @@ aux_abstdef
 (* ****** ****** *)
 
 fun
+aux_valdecl
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cvaldecl
+(knd, mopt, d0cs) = d0c0.node()
+//
+val d1cs = trans01_valdeclist(d0cs)
+//
+in
+  d1ecl_make_node
+    (loc0, D1Cvaldecl(knd, mopt, d1cs))
+  // d1ecl_make_node
+end // end of [aux_valdecl]
+
+(* ****** ****** *)
+
+fun
 aux_datasort
 ( d0c0
 : d0ecl): d1ecl = let
@@ -1627,6 +1717,8 @@ d0c0.node() of
 | D0Csexpdef _ => aux_sexpdef(d0c0)
 //
 | D0Cabstype _ => aux_abstype(d0c0)
+//
+| D0Cvaldecl _ => aux_valdecl(d0c0)
 //
 | D0Cdatasort _ => aux_datasort(d0c0)
 //
