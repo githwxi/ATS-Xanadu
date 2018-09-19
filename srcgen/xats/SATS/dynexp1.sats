@@ -222,9 +222,16 @@ d1pat_node =
 | D1Pflt of token
 | D1Pstr of token
 //
+| D1Papp of () // apply
+//
+| D1Pbs0 of () // backslash
+| D1Pbs1 of d1pat // backslash
+//
 | D1Papps of (d1pat, d1patlst)
 //
 | D1Plist of d1patlst // temp.
+| D1Plist of
+  (d1patlst, d1patlst) // temp.
 //
 | D1Pnone of ((*error-indication*))
 // end of [d1pat_node]

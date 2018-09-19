@@ -84,6 +84,11 @@ stadef
 fxitm = $FIX.fxitm
 //
 typedef
+d1pitm = fxitm(d1pat)
+typedef
+d1pitmlst = List0(d1pitm)
+//
+typedef
 d1eitm = fxitm(d1exp)
 typedef
 d1eitmlst = List0(d1eitm)
@@ -95,6 +100,112 @@ macdef
 FXITMopr
 (x, a) = $FIX.FXITMopr(,(x), ,(a))
 //
+(* ****** ****** *)
+
+fun
+fxitmlst_resolve_d1pat
+( loc0: loc_t
+, itms: d1pitmlst): d1pat =
+(
+$FIX.fxitmlst_resolve<d1pat>(loc0, itms)
+) where
+{
+//
+implement
+$FIX.fxitm_infix<d1pat>
+(
+x0, f1, x2
+) = let
+  val loc =
+  x0.loc() + x2.loc()
+  val d1p_node =
+  (
+    case+
+    f1.node() of
+    | D1Papp() =>
+      D1Papps(x0, list_sing(x2))
+    | _(*non-D1Papp*) =>
+      D1Papps(f1, list_pair(x0, x2))
+  ) : d1pat_node // end of [val]
+in
+  FXITMatm(d1pat_make_node(loc, d1p_node))
+end // end of [$FIX.fxitm_infix]
+//
+implement
+$FIX.fxitm_prefix<d1pat>
+  (f0, x1) = let
+in
+//
+case+
+f0.node() of
+| D1Pbs0() => let
+    val d1p =
+    d1pat_make_node
+    (x1.loc(), D1Pbs1(x1))
+  in
+    FXITMopr(d1p, $FIX.infixtemp_fixty)
+  end // end of [D1Pbs0]
+| _(*non-D1Pbs0*) => let
+   val loc =
+   f0.loc() + x1.loc()
+  in
+    FXITMatm
+    (
+      d1pat_make_node(loc, d1p_node)
+    ) where
+    {
+      val
+      d1p_node = D1Papps(f0, list_sing(x1))
+    }
+  end // end of [non-D1Pbs0]
+//
+end // end of [$FIX.fxitm_prefix]
+//
+implement
+$FIX.fxitm_postfix<d1pat>
+  (x0, f1) = let
+  val loc =
+  x0.loc() + f1.loc()
+in
+  FXITMatm
+  (
+  d1pat_make_node(loc, D1Papps(f1, list_sing(x0)))
+  )
+end // end of [$FIX.fxitm_postfix]
+//
+implement
+$FIX.fxatm_none<d1pat>
+  (loc) =
+  d1pat_none(loc)
+implement
+$FIX.fxopr_get_loc<d1pat>
+  (opr) = opr.loc()
+//
+implement
+$FIX.fxitm_get_loc<d1pat>
+  (itm) =
+(
+case+ itm of
+| $FIX.FXITMatm(x0) => x0.loc()
+| $FIX.FXITMopr(x0, _) => x0.loc()
+) (* end of [$FIX.fxitm_get_loc] *)
+//
+implement
+$FIX.fxopr_make_app<d1pat>
+  (itm) = let
+//
+val loc =
+$FIX.fxitm_get_loc<d1pat>(itm)
+//
+val d1p =
+d1pat_make_node(loc, D1Papp(*void*))
+//
+in
+  $FIX.FXITMopr(d1p, $FIX.app_fixty)
+end // end of [$FIX.fxopr_make_app]
+//
+} // end of [fxitmlst_resolve_d1pat]
+
 (* ****** ****** *)
 
 fun
@@ -433,6 +544,202 @@ local
 fun
 auxid0
 ( id0
+: d0pid)
+: d1pitm = let
+//
+val loc = id0.loc()
+val-
+I0DNTsome
+  (tok) = id0.node()
+//
+val tnd = tok.node()
+//
+in
+  case- tnd of
+//
+  | T_IDENT_alp(nam) => auxid0_IDENT(tok, nam)
+  | T_IDENT_sym(nam) => auxid0_IDENT(tok, nam)
+//
+(*
+  | T_IDENT_dlr(nam) => auxid0_IDENT(tok, nam)
+  | T_IDENT_srp(nam) => auxid0_IDENT(tok, nam)
+*)
+//
+  | T_BACKSLASH((*void*)) => auxid0_BACKSLASH(tok)
+//
+end // end of [auxid0]
+
+and
+auxid0_IDENT
+( tok: token
+, nam: string): d1pitm = let
+//
+val loc = tok.loc()
+//
+val sym =
+$SYM.symbol_make(nam)
+val opt =
+the_fixtyenv_search(sym)
+val d1p0 =
+d1pat_make_node(loc, D1Pid(tok))
+//
+in
+case+ opt of
+| ~None_vt() =>
+   FXITMatm(d1p0)
+| ~Some_vt(fxty) =>
+  (case+ fxty of
+   | $FIX.FIXTYnon() => FXITMatm(d1p0)
+   | _(*non-FIXTYnon*) => FXITMopr(d1p0, fxty)
+  ) (* end of [Some_vt] *)
+end // end of [auxid0_IDENT]
+
+and
+auxid0_BACKSLASH
+  (tok:token): d1pitm = let
+//
+val loc = tok.loc()
+//
+val d1p0 =
+  d1pat_make_node(loc, D1Pbs0())
+//
+in
+  FXITMopr(d1p0, $FIX.backslash_fixty)
+end // end of [auxid0_BACKSLASH]
+
+(* ****** ****** *)
+
+fun
+auxitm
+( d0p0
+: d0pat)
+: d1pitm = let
+//
+val
+loc0 = d0p0.loc()
+//
+val () =
+println!("trans01_dpat:")
+val () =
+println!("auxitm: loc0 = ", loc0)
+val () =
+println!("auxitm: d0p0 = ", d0p0)
+//
+in
+//
+case-
+d0p0.node() of
+//
+| D0Pid(id0) =>
+  (
+    auxid0(id0)
+  )
+//
+(*
+| D0Pstr(str) => auxstr(str)
+*)
+//
+| D0Papps(d0ps) =>
+  FXITMatm(d1p0) where
+  {
+    val d1ps =
+    auxitmlst(d0ps)
+    val d1p0 =
+    fxitmlst_resolve_d1pat(loc0, d1ps)
+  }
+//
+| D0Pparen _ => auxparen(d0p0)
+//
+| D0Pnone(_(*tok*)) =>
+  FXITMatm(d1p0) where
+  {
+    val d1p0 = d1pat_make_node(loc0, D1Pnone())
+  } (* end of [D0Pnone] *)
+//
+end // end of [auxitm]
+
+and
+auxitmlst
+( xs
+: d0patlst)
+: d1pitmlst =
+list_vt2t(ys) where
+{
+  val ys =
+  list_map<d0pat><d1pitm>
+    (xs) where
+  {
+    implement
+    list_map$fopr<d0pat><d1pitm>(x) = auxitm(x)
+  }
+} (* end of [auxitmlst] *)
+
+(* ****** ****** *)
+
+and
+auxparen
+( d0p0
+: d0pat): d1pitm = let
+//
+val-
+D0Pparen
+( _
+, d0ps1, rparen) = d0p0.node()
+//
+val
+d1p0_node =
+(
+case+ rparen of
+| d0pat_RPAREN_cons0(_) =>
+  D1Plist(d1ps1) where
+  {
+    val d1ps1 = trans01_dpatlst(d0ps1)
+  }
+| d0pat_RPAREN_cons1(_, d0ps2, _) =>
+  D1Plist(d1ps1, d1ps2) where
+  {
+    val d1ps1 = trans01_dpatlst(d0ps1)
+    val d1ps2 = trans01_dpatlst(d0ps2)
+  }
+) : d1pat_node // end of [val]
+//
+in
+  FXITMatm
+  (d1pat_make_node(d0p0.loc(), d1p0_node))
+end // end of [auxparen]
+
+(* ****** ****** *)
+
+in (* in-of-local *)
+
+implement
+trans01_dpat
+  (d0p0) = let
+//
+(*
+val () =
+println!
+("trans01_dpat: d0p0 = ", d0p0)
+*)
+//
+in
+//
+case+
+auxitm(d0p0) of
+| $FIX.FXITMatm(d1p0) => d1p0
+| $FIX.FXITMopr(d1p0, fxty) => d1p0
+//
+end (* end of [trans01_dpat] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+fun
+auxid0
+( id0
 : d0eid)
 : d1eitm = let
 //
@@ -583,6 +890,9 @@ d0e0.node() of
     auxid0(id0)
   )
 //
+| D0Eint(int) => auxint(int)
+| D0Echr(chr) => auxchr(chr)
+| D0Eflt(flt) => auxflt(flt)
 | D0Estr(str) => auxstr(str)
 //
 | D0Eapps(d0es) =>
