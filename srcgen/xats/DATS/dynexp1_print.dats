@@ -201,15 +201,24 @@ x0.node() of
   fprint!
   (out, "D1Pstr(", tok, ")")
 //
+| D1Papp() =>
+  fprint!(out, "D1Papp(", ")")
+//
+| D1Pbs0() =>
+  fprint!(out, "D1Pbs0()")
+| D1Pbs1(d1p) =>
+  fprint!(out, "D1Pbs1(", d1p, ")")
+//
 | D1Papps(d1p0, d1ps) =>
   fprint!
   ( out
   , "D1Papps(", d1p0, "; ", d1ps, ")")
 //
 | D1Plist(d1ps) =>
-  (
-    fprint!(out, "D1Plist(", d1ps, ")")
-  )
+  fprint!(out, "D1Plist(", d1ps, ")")
+| D1Plist(d1ps1, d1ps2) =>
+  fprint!
+  (out, "D1Plist(", d1ps1, "; ", d1ps2, ")")
 //
 | D1Pnone((*void*)) => fprint!(out, "D1Pnone(", ")")
 //
