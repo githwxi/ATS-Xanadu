@@ -386,4 +386,13 @@ end // end of [v0aldecl_get_loc]
 
 (* ****** ****** *)
 
+implement
+f0undecl_get_loc
+  (x0) =
+let
+  val+F0UNDECL(rcd) = x0 in rcd.loc
+end // end of [f0undecl_get_loc]
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp0.dats] *)

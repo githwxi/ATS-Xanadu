@@ -62,12 +62,15 @@ val tnd = tok.node()
 in
 //
 case+ tnd of
+//
 | T_INT1 _ =>
   (buf.incby1(); tok)
+//
 | T_IDENT_alp _ =>
   (buf.incby1(); tok)
 | T_IDENT_sym _ =>
   (buf.incby1(); tok)
+//
 | T_LT() => tok where
   {
     val () = buf.incby1()
@@ -82,6 +85,15 @@ case+ tnd of
     val tnd = T_IDENT_sym( ">" )
     val tok = token_make_node(loc, tnd)
   }
+//
+| T_EQGT() => tok where
+  {
+    val () = buf.incby1()
+    val loc = tok.loc((*void*))
+    val tnd = T_IDENT_sym( "=>" )
+    val tok = token_make_node(loc, tnd)
+  }
+//
 | _ (* non-IDENT *) =>
   (err := err + 1; tok)
 //
@@ -117,6 +129,7 @@ val tok = buf.get0()
 in
   case+
   tok.node() of
+//
   | T_IDENT_alp _ =>
     i0dnt_some(tok) where
     {
@@ -157,6 +170,8 @@ case+ tnd of
 //
 | T_LT((*void*)) => true // "<"
 | T_GT((*void*)) => true // ">"
+//
+| T_EQGT((*void*)) => true // ">"
 //
 | _ (* non-IDENT *) => false
 //
@@ -221,6 +236,15 @@ in
       val tok = token_make_node(loc, tnd)
     }
 //
+  | T_EQGT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_sym( "=>" )
+      val tok = token_make_node(loc, tnd)
+    }
+//
   | T_BACKSLASH() =>
     i0dnt_some(tok) where
     {
@@ -244,24 +268,17 @@ in
 //
 case+
 tok.node() of
+//
 | tnd
   when
   t_s0eid(tnd) =>
     p_s0eid(buf, err)
+//
 | tnd
   when
   t_d0eid(tnd) =>
     p_d0eid(buf, err)
-(*
-| T_MSGT() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "->" )
-      val tok = token_make_node(loc, tnd)
-    }
-*)
+//
 | _ (* non-i0dnt *) =>
     (err := e0 + 1; i0dnt_none(tok))
 //
@@ -1904,7 +1921,6 @@ val
 d0p = p_d0pat(buf, err)
 //
 val teq = p_EQ(buf, err)
-//
 val d0e = p_d0exp(buf, err)
 //
 val
@@ -1964,8 +1980,11 @@ tok, buf, err
   (
     case+ d0cs of
     | list_nil() => loc
-    | list_cons(d0c, _) => loc+d0c.loc()
-      // list_cons
+    | list_cons _ => let
+        val d0c =
+          list_last(d0cs) in loc+d0c.loc()
+        // end of [val]
+      end // end of [list_cons]
   ) : loc_t // end of [val]
 in
   err := e0;
@@ -1983,6 +2002,96 @@ p_f0undecl
 and
 p_f0undeclseq_AND
  : parser(f0undeclist)
+//
+(* ****** ****** *)
+//
+implement
+p_f0undecl
+  (buf, err) = let
+//
+val e0 = err
+//
+val
+nam =
+p_d0pid(buf, err)
+//
+val arg =
+p_f0argseq(buf, err)
+val res =
+p_effs0expopt(buf, err)
+//
+val teq = p_EQ(buf, err)
+val d0e = p_d0exp(buf, err)
+//
+val
+wopt = p_wths0expopt(buf, err)
+//
+val loc0 = nam.loc()
+//
+val loc1 =
+(
+case+ wopt of
+| WTHS0EXPnone() => loc0+d0e.loc()
+| WTHS0EXPsome(_, s0e) => loc0+s0e.loc()
+) : loc_t // end-of-val
+//
+in
+  err := e0;
+  F0UNDECL
+  (@{loc=loc1,nam=nam,arg=arg,res=res,teq=teq,def=d0e,wtp=wopt})
+end // end of [p_f0undecl]
+//
+implement
+p_f0undeclseq_AND
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_AND_fun
+ {f0undecl}(buf, err, p_f0undecl))
+//
+) (* end of [p_f0undeclseq_AND] *)
+//
+(* ****** ****** *)
+//
+extern
+fun
+ptok_fundecl
+( tok: token
+, buf: &tokbuf >> _
+, err: &int >> _): d0ecl
+implement
+ptok_fundecl
+(
+tok, buf, err
+) = let
+  val e0 = err
+  val () =
+    buf.incby1()
+  // end of [val]
+  val loc = tok.loc()
+  val tqas =
+    p_tq0argseq(buf, err)
+  val mopt =
+    p_declmodopt(buf, err)
+  val d0cs =
+    p_f0undeclseq_AND(buf, err)
+  val loc_res =
+  (
+    case+ d0cs of
+    | list_nil() => loc
+    | list_cons _ => let
+        val d0c =
+          list_last(d0cs) in loc+d0c.loc()
+        // end of [val]
+      end // end of [list_cons]
+  ) : loc_t // end of [val]
+in
+  err := e0;
+  d0ecl_make_node
+    ( loc_res, D0Cfundecl(tok, tqas, mopt, d0cs) )
+  // d0ecl_make_node
+end // end of [ptok_fundecl]
 //
 (* ****** ****** *)
 
@@ -2167,9 +2276,14 @@ case+ tnd of
     // d0ecl_make_node
   end
 //
-| T_VAL _ =>
+| T_VAL _ when f0 > 0 =>
   (
     ptok_valdecl(tok, buf, err)
+  )
+//
+| T_FUN _ when f0 > 0 =>
+  (
+    ptok_fundecl(tok, buf, err)
   )
 //
 | tnd when

@@ -1,8 +1,10 @@
 (* ****** ****** *)
 
+#infixl 30 +
 #infixl 30 -
 #infixl 40 *
 #infixl 20 >=
+#infixr 10 ->
 
 (* ****** ****** *)
 
@@ -29,13 +31,14 @@ lam(x: int): int =<cloref1>
 // end of [lam]
 
 (* ****** ****** *)
-////
-#infixl 40 *
 
-fun
-:(prf)
+fun<>
+:(rec)
 fact(x, r) =
-if x >= 1 then fact(x-1, x*r) else r
+if x >= 1
+  then fact(x-1, x*r) else 1
+// end of [if]
+withtype (int, int) -> int
 
 (* ****** ****** *)
 ////

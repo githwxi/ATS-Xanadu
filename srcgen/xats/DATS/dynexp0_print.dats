@@ -675,9 +675,34 @@ in
   fprint!
   ( out
   , "V0ALDECL@{"
-  , ", nam=", rcd.pat
-  , ", def=", rcd.def, ", res=", rcd.wtp, "}")
+  , ", pat=", rcd.pat
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v0aldecl]
+
+(* ****** ****** *)
+
+implement
+print_f0undecl(x0) =
+fprint_f0undecl(stdout_ref, x0)
+implement
+prerr_f0undecl(x0) =
+fprint_f0undecl(stderr_ref, x0)
+
+implement
+fprint_f0undecl
+  (out, x0) = let
+//
+val+F0UNDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "F0UNDECL@{"
+  , ", nam=", rcd.nam
+  , ", arg=", rcd.arg
+  , ", res=", rcd.res
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+end // end of [fprint_f0undecl]
 
 (* ****** ****** *)
 
@@ -696,6 +721,8 @@ implement
 fprint_val<d0cstdec> = fprint_d0cstdec
 implement
 fprint_val<v0aldecl> = fprint_v0aldecl
+implement
+fprint_val<f0undecl> = fprint_f0undecl
 
 in (* in-of-local *)
 
@@ -758,6 +785,12 @@ case+ x0.node() of
   (tok, mods, d0cs) =>
   fprint!
   (out, "D0Cvaldecl(", tok, "; ", mods, "; ", d0cs)
+//
+| D0Cfundecl
+  (tok, tqas, mods, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cfundecl(", tok, "; ", tqas, "; ", mods, "; ", d0cs)
 //
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")
