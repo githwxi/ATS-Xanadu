@@ -627,7 +627,8 @@ V0ALDECL of @{
 , wtp= wths0expopt
 }
 //
-typedef v0aldeclist = List0(v0aldecl)
+typedef
+v0aldeclist = List0(v0aldecl)
 //
 fun
 v0aldecl_get_loc(v0aldecl): loc_t
@@ -645,7 +646,7 @@ overload prerr with prerr_v0aldecl
 overload fprint with fprint_v0aldecl
 //
 (* ****** ****** *)
-
+//
 datatype
 f0undecl =
 F0UNDECL of @{
@@ -657,10 +658,25 @@ F0UNDECL of @{
 , def= d0exp
 , wtp= wths0expopt
 }
-
+//
 typedef
 f0undeclist = List0(f0undecl)
-
+//
+fun
+f0undecl_get_loc(f0undecl): loc_t
+overload .loc with f0undecl_get_loc
+//
+fun
+print_f0undecl: print_type(f0undecl)
+fun
+prerr_f0undecl: prerr_type(f0undecl)
+fun
+fprint_f0undecl: fprint_type(f0undecl)
+//
+overload print with print_f0undecl
+overload prerr with prerr_f0undecl
+overload fprint with fprint_f0undecl
+//
 (* ****** ****** *)
 
 datatype
@@ -726,6 +742,11 @@ for skipping error
   ( token(*valkind*)
   , declmodopt(*rec/prf/...*), v0aldeclist)
 //
+| D0Cfundecl of
+  ( token(*funkind*)
+  , tq0arglst(*tmpargs*)
+  , declmodopt(*rec/prf/...*), f0undeclist)
+//
 | D0Cdatasort of
     (token(*datasort*), d0tsortlst)
   // D0Cdatasort
@@ -742,7 +763,7 @@ for skipping error
     , d0eclist, token(*IN*), d0eclist, token(*END*))
 //
 // end of [d0ecl_node]
-
+//
 (* ****** ****** *)
 
 and
