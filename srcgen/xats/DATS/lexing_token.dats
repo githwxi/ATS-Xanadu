@@ -244,6 +244,10 @@ case+ tnd of
 | T_THEN() => fprint(out, "THEN")
 | T_ELSE() => fprint(out, "ELSE")
 //
+| T_ENDIF() => fprint(out, "ENDIF")
+| T_ENDSIF() => fprint(out, "ENDSIF")
+| T_ENDCASE() => fprint(out, "ENDCASE")
+//
 | T_LAM(knd) =>
   (
     fprint!(out, "LAM(", knd, ")")
@@ -472,6 +476,10 @@ case+ tnd of
 | T_SIF() => fprint(out, "sif")
 | T_THEN() => fprint(out, "then")
 | T_ELSE() => fprint(out, "else")
+//
+| T_ENDIF() => fprint(out, "endif")
+| T_ENDSIF() => fprint(out, "endsif")
+| T_ENDCASE() => fprint(out, "endcase")
 //
 | T_LAM(knd) =>
     fprint!(out, "lam(", knd, ")")

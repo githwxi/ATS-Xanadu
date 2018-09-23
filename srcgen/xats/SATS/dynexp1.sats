@@ -283,7 +283,16 @@ d1exp_node =
 | D1Elist of
   (d1explst, d1explst) // temp.
 //
-| D1Enone of ((*error-indication*))
+| D1Etuple of
+  (token, d1explst)
+| D1Etuple of
+  (token, d1explst, d1explst)
+//
+| D1Eif0 of
+  ( d1exp(*cond*)
+  , d1exp(*then*), d1expopt(*else*))
+//
+| D1Enone of () // HX-2018-09-25: indicating error 
 // end of [d1exp_node]
 //
 (* ****** ****** *)

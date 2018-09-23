@@ -601,10 +601,10 @@ atmd0pat::
 //
 extern
 fun
-p_atmd0pat : parser(d0pat)
+p_atmd0pat: parser(d0pat)
 extern
 fun
-p_atmd0patseq : parser(d0patlst)
+p_atmd0patseq: parser(d0patlst)
 //
 (* ****** ****** *)
 //
@@ -627,10 +627,10 @@ labd0pat_RBRACE ::=
 *)
 extern
 fun
-p_d0pat_RPAREN : parser(d0pat_RPAREN)
+p_d0pat_RPAREN: parser(d0pat_RPAREN)
 extern
 fun
-p_labd0pat_RBRACE : parser(labd0pat_RBRACE)
+p_labd0pat_RBRACE: parser(labd0pat_RBRACE)
 //
 (* ****** ****** *)
 
@@ -983,15 +983,15 @@ atmd0exp ::
 *)
 extern
 fun
-p_atmd0exp : parser(d0exp)
+p_atmd0exp: parser(d0exp)
 //
 extern
 fun
-p_appd0exp : parser(d0exp)
+p_appd0exp: parser(d0exp)
 //
 extern
 fun
-p_atmd0expseq : parser(d0explst)
+p_atmd0expseq: parser(d0explst)
 //
 (* ****** ****** *)
 //
@@ -1001,10 +1001,10 @@ p_d0expseq: parser(d0explst)
 //
 extern
 fun
-p_d0expseq_COMMA : parser(d0explst)
+p_d0expseq_COMMA: parser(d0explst)
 extern
 fun
-p_labd0expseq_COMMA : parser(labd0explst)
+p_labd0expseq_COMMA: parser(labd0explst)
 //
 (* ****** ****** *)
 //
@@ -1018,10 +1018,18 @@ labd0exp_RBRACE ::=
 *)
 extern
 fun
-p_d0exp_RPAREN : parser(d0exp_RPAREN)
+p_d0exp_RPAREN: parser(d0exp_RPAREN)
 extern
 fun
-p_labd0exp_RBRACE : parser(labd0exp_RBRACE)
+p_labd0exp_RBRACE: parser(labd0exp_RBRACE)
+//
+(* ****** ****** *)
+//
+extern
+fun
+p_d0exp_THEN: parser(d0exp_THEN)
+and
+p_d0exp_ELSE: parser(d0exp_ELSE)
 //
 (* ****** ****** *)
 
@@ -1040,6 +1048,50 @@ p_napps(buf, err) = let
 in
 //
 case+ tnd of
+//
+| T_IF() => let
+//
+    val () = buf.incby1()
+//
+    val d0e1 =
+      p_appd0exp(buf, err)
+    val d0e2 =
+      p_d0exp_THEN(buf, err)
+    val d0e3 =
+      p_d0exp_ELSE(buf, err)
+    val topt = popt_ENDIF(buf, err)
+//
+    val
+    loc_res =
+    (
+    case+ topt of
+    | None() =>
+      (
+      case d0e3 of
+      | d0exp_ELSEnone
+          () =>
+        (
+          case+ d0e2 of
+          | d0exp_THEN
+              (_, d0e) =>
+              tok.loc() + d0e.loc()
+            // end of [d0exp_THEN]
+        )
+      | d0exp_ELSEsome
+          (_, d0e) =>
+          tok.loc() + d0e.loc()
+        // end of [d0exp_ELSEsome]
+      )
+    | Some(tok2) => tok.loc() + tok2.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    d0exp_make_node
+      (loc_res, D0Eif0(tok, d0e1, d0e2, d0e3, topt))
+    // d0exp_make_node
+  end // end of [T_IF]
+//
 | _ (* error *) =>
   ( err := e0 + 1;
     d0exp_make_node(tok.loc(), D0Enone(tok))
@@ -1187,6 +1239,32 @@ case+ tnd of
       // end of [val]
     }
   end // end of [T_LPAREN]
+//
+| T_TUPLE(k0) => let
+    val () = buf.incby1()
+    val topt =
+    ( if
+      (k0 <= 1)
+      then None()
+      else Some(p_LPAREN(buf, err))
+    ) : tokenopt // end of [val]
+    val d0es =
+      p_d0expseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_d0exp_RPAREN(buf, err)
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Etuple
+      (tbeg, topt, d0es, tend)) where
+    {
+      val loc_res =
+        tbeg.loc()+d0exp_RPAREN_loc(tend)
+      // end of [val]
+    }
+  end // end of [T_TUPLE]
 //
 | T_LET() => let
     val () = buf.incby1()
@@ -1353,6 +1431,62 @@ case+ tnd1 of
   )
 //
 end // end of [p_labd0exp_RBRACE]
+
+(* ****** ****** *)
+
+implement
+p_d0exp_THEN
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_THEN() => let
+    val () =
+      buf.incby1()
+    val d0e =
+      p_d0exp(buf, err)
+  in
+    err := e0; d0exp_THEN(tok, d0e)
+  end // end of [T_THEN]
+| _(*non-THEN*) =>
+  ( // HX-2018-09-25: error
+    d0exp_THEN(tok, p_d0exp(buf, err))
+  ) (* end of [non-THEN] *)
+//
+end // end of [p_d0exp_THEN]
+
+(* ****** ****** *)
+
+implement
+p_d0exp_ELSE
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_ELSE() => let
+    val () =
+      buf.incby1()
+    val d0e =
+      p_d0exp(buf, err)
+  in
+    err := e0; d0exp_ELSEsome(tok, d0e)
+  end // end of [T_THEN]
+| _(*non-ELSE*) =>
+  (
+    d0exp_ELSEnone((*void*)) // HX: ELSE-less
+  )
+//
+end // end of [p_d0exp_ELSE]
 
 (* ****** ****** *)
 
@@ -1803,6 +1937,16 @@ in
   // d0ecl_make_node
 end // end of [ptok_valdecl]
 
+(* ****** ****** *)
+//
+static
+fun
+p_f0undecl
+ : parser(f0undecl)
+and
+p_f0undeclseq_AND
+ : parser(f0undeclist)
+//
 (* ****** ****** *)
 
 in (* in-of-local *)

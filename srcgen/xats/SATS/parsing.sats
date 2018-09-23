@@ -232,6 +232,11 @@ popt_LBRACE: parser(tokenopt)
 
 (* ****** ****** *)
 //
+fun popt_ENDIF: parser(tokenopt)
+fun popt_ENDCASE: parser(tokenopt)
+//
+(* ****** ****** *)
+//
 fun t_t0int(tnode): bool
 fun t_t0chr(tnode): bool
 fun t_t0flt(tnode): bool

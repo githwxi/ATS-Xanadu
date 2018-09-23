@@ -353,6 +353,52 @@ in
 end // end of [popt_LBRACE]
 
 (* ****** ****** *)
+
+implement
+popt_ENDIF
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_END() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_END *)
+  | T_ENDIF() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_ENDIF *)
+  | _ (* non-BAR *) => None(*void*)
+end // end of [popt_ENDIF]
+
+implement
+popt_ENDCASE
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_END() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_END *)
+  | T_ENDCASE() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_ENDCASE *)
+  | _ (* non-BAR *) => None(*void*)
+end // end of [popt_ENDCASE]
+
+(* ****** ****** *)
 //
 (*
 fun
