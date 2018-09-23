@@ -148,6 +148,28 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+fprint_f1arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+(*
+| F1ARGnone(tok) =>
+  fprint!(out, "F1ARGnone(", tok, ")")
+*)
+| F1ARGsome_dyn(d1p) =>
+  fprint!(out, "F1ARGsome_dyn(", d1p, ")")
+| F1ARGsome_sta(s1qs) =>
+  fprint!(out, "F1ARGsome_sta(", s1qs, ")")
+| F1ARGsome_met(s1es) =>
+  fprint!(out, "F1ARGsome_met(", s1es, ")")
+//
+) (* end of [fprint_f1arg] *)
+
+(* ****** ****** *)
+
+implement
 fprint_tq1arg
   (out, x0) =
 (

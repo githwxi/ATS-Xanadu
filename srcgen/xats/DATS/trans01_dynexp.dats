@@ -334,6 +334,12 @@ trans01_darglst: d0arglst -> d1arglst
 //
 extern
 fun
+trans01_farg: f0arg -> f1arg
+and
+trans01_farglst: f0arglst -> f1arglst
+//
+extern
+fun
 trans01_tqarg: tq0arg -> tq1arg
 and
 trans01_tqarglst: tq0arglst -> tq1arglst
@@ -513,14 +519,6 @@ d0a0.node() of
   end // end of [D0ARGsome_dyn2]
 //
 end // end of [trans01_darg]
-
-datatype
-d0arg_node =
-| D0ARGnone of token
-| D0ARGsome_sta of
-  (token, s0qualst, token)
-| D0ARGsome_dyn of
-  (token, a0typlst, a0typlstopt, token)
 
 implement
 trans01_darglst
