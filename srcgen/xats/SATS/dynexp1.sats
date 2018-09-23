@@ -427,38 +427,6 @@ overload fprint with fprint_wths1expopt
 (* ****** ****** *)
 //
 datatype
-d1cstdec =
-D1CSTDEC of @{
-  loc= loc_t
-, nam= token
-, arg= d1arglst
-, res= effs1expopt
-, def= teqd1expopt
-}
-//
-typedef
-d1cstdeclst = List0(d1cstdec)
-//
-fun
-d1cstdec_get_loc(d1cstdec): loc_t
-overload .loc with d1cstdec_get_loc
-//
-(* ****** ****** *)
-//
-fun
-print_d1cstdec: print_type(d1cstdec)
-fun
-prerr_d1cstdec: prerr_type(d1cstdec)
-fun
-fprint_d1cstdec: fprint_type(d1cstdec)
-//
-overload print with print_d1cstdec
-overload prerr with prerr_d1cstdec
-overload fprint with fprint_d1cstdec
-//
-(* ****** ****** *)
-//
-datatype
 v1aldecl =
 V1ALDECL of @{
   loc= loc_t
@@ -468,7 +436,8 @@ V1ALDECL of @{
 , wtp= wths1expopt
 }
 //
-typedef v1aldeclist = List0(v1aldecl)
+typedef
+v1aldeclist = List0(v1aldecl)
 //
 fun
 v1aldecl_get_loc(v1aldecl): loc_t
@@ -484,6 +453,70 @@ fprint_v1aldecl: fprint_type(v1aldecl)
 overload print with print_v1aldecl
 overload prerr with prerr_v1aldecl
 overload fprint with fprint_v1aldecl
+//
+(* ****** ****** *)
+//
+datatype
+f1undecl =
+F1UNDECL of @{
+  loc= loc_t
+, nam= token
+, arg= f1arglst
+, res= effs1expopt
+, teq= token
+, def= d1exp
+, wtp= wths1expopt
+}
+//
+typedef
+f1undeclist = List0(f1undecl)
+//
+fun
+f1undecl_get_loc(f1undecl): loc_t
+overload .loc with f1undecl_get_loc
+//
+fun
+print_f1undecl: print_type(f1undecl)
+fun
+prerr_f1undecl: prerr_type(f1undecl)
+fun
+fprint_f1undecl: fprint_type(f1undecl)
+//
+overload print with print_f1undecl
+overload prerr with prerr_f1undecl
+overload fprint with fprint_f1undecl
+//
+(* ****** ****** *)
+//
+datatype
+d1cstdecl =
+D1CSTDECL of @{
+  loc= loc_t
+, nam= token
+, arg= d1arglst
+, res= effs1expopt
+, def= teqd1expopt
+}
+//
+typedef
+d1cstdeclist = List0(d1cstdecl)
+//
+fun
+d1cstdecl_get_loc(d1cstdecl): loc_t
+overload .loc with d1cstdecl_get_loc
+//
+(* ****** ****** *)
+//
+fun
+print_d1cstdecl: print_type(d1cstdecl)
+fun
+prerr_d1cstdecl: prerr_type(d1cstdecl)
+fun
+fprint_d1cstdecl: fprint_type(d1cstdecl)
+//
+overload print with print_d1cstdecl
+overload prerr with prerr_d1cstdecl
+overload fprint with fprint_d1cstdecl
 //
 (* ****** ****** *)
 //
@@ -527,6 +560,11 @@ d1ecl_node =
   ( token(*valkind*)
   , declmodopt(*rec/prf/...*), v1aldeclist)
 //
+| D1Cfundecl of
+  ( token(*funkind*)
+  , tq1arglst(*tmpargs*)
+  , declmodopt(*rec/prf/...*), f1undeclist)
+//
 | D1Cdatasort of
     (token(*datasort*), d1tsortlst)
   // D1Cdatasort
@@ -538,7 +576,7 @@ d1ecl_node =
   (token(*datatype*), d1atypelst, wd1eclseq)
 //
 | D1Cdynconst of
-  (token(*dyncstkind*), tq1arglst, d1cstdeclst)
+  (token(*dyncstkind*), tq1arglst, d1cstdeclist)
 //
 | D1Clocal of (d1eclist(*head*), d1eclist(*body*))
 //

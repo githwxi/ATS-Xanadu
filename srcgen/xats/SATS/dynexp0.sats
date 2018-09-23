@@ -588,36 +588,6 @@ overload fprint with fprint_wths0expopt
 (* ****** ****** *)
 //
 datatype
-d0cstdec =
-D0CSTDEC of @{
-  loc= loc_t
-, nam= d0pid
-, arg= d0arglst
-, res= effs0expopt
-, def= teqd0expopt
-}
-//
-typedef
-d0cstdeclst = List0(d0cstdec)
-//
-fun
-d0cstdec_get_loc(d0cstdec): loc_t
-overload .loc with d0cstdec_get_loc
-//
-fun
-print_d0cstdec: print_type(d0cstdec)
-fun
-prerr_d0cstdec: prerr_type(d0cstdec)
-fun
-fprint_d0cstdec: fprint_type(d0cstdec)
-//
-overload print with print_d0cstdec
-overload prerr with prerr_d0cstdec
-overload fprint with fprint_d0cstdec
-//
-(* ****** ****** *)
-//
-datatype
 v0aldecl =
 V0ALDECL of @{
   loc= loc_t
@@ -676,6 +646,36 @@ fprint_f0undecl: fprint_type(f0undecl)
 overload print with print_f0undecl
 overload prerr with prerr_f0undecl
 overload fprint with fprint_f0undecl
+//
+(* ****** ****** *)
+//
+datatype
+d0cstdecl =
+D0CSTDECL of @{
+  loc= loc_t
+, nam= d0pid
+, arg= d0arglst
+, res= effs0expopt
+, def= teqd0expopt
+}
+//
+typedef
+d0cstdeclist = List0(d0cstdecl)
+//
+fun
+d0cstdecl_get_loc(d0cstdecl): loc_t
+overload .loc with d0cstdecl_get_loc
+//
+fun
+print_d0cstdecl: print_type(d0cstdecl)
+fun
+prerr_d0cstdecl: prerr_type(d0cstdecl)
+fun
+fprint_d0cstdecl: fprint_type(d0cstdecl)
+//
+overload print with print_d0cstdecl
+overload prerr with prerr_d0cstdecl
+overload fprint with fprint_d0cstdecl
 //
 (* ****** ****** *)
 
@@ -756,7 +756,7 @@ for skipping error
   // D0Cdatatype
 //
 | D0Cdynconst of
-    (token(*dyncstkind*), tq0arglst, d0cstdeclst)
+    (token(*dyncstkind*), tq0arglst, d0cstdeclist)
 //
 | D0Clocal of
     ( token(*LOCAL*)

@@ -34,10 +34,11 @@ lam(x: int): int =<cloref1>
 
 fun<>
 :(rec)
-fact(x, r) =
+fact
+{n:nat}.<n>.
+(x: int(n)): int =
 if x >= 1
   then fact(x-1, x*r) else 1
-// end of [if]
 withtype (int, int) -> int
 
 (* ****** ****** *)

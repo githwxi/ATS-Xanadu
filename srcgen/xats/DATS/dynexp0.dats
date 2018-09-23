@@ -369,15 +369,6 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-d0cstdec_get_loc
-  (x0) =
-let
-  val+D0CSTDEC(rcd) = x0 in rcd.loc
-end // end of [d0cstdec_get_loc]
-
-(* ****** ****** *)
-
-implement
 v0aldecl_get_loc
   (x0) =
 let
@@ -392,6 +383,15 @@ f0undecl_get_loc
 let
   val+F0UNDECL(rcd) = x0 in rcd.loc
 end // end of [f0undecl_get_loc]
+
+(* ****** ****** *)
+
+implement
+d0cstdecl_get_loc
+  (x0) =
+let
+  val+D0CSTDECL(rcd) = x0 in rcd.loc
+end // end of [d0cstdecl_get_loc]
 
 (* ****** ****** *)
 

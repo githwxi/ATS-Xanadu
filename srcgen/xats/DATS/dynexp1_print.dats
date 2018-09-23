@@ -77,6 +77,8 @@ fprint_val<tq1arg> = fprint_tq1arg
 implement
 fprint_val<d1ecl> = fprint_d1ecl
 //
+(* ****** ****** *)
+//
 implement
 (a)//tmp
 fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
@@ -416,6 +418,12 @@ local
 
 implement
 fprint_val<d1ecl> = fprint_d1ecl
+implement
+fprint_val<v1aldecl> = fprint_v1aldecl
+implement
+fprint_val<f1undecl> = fprint_f1undecl
+implement
+fprint_val<d1cstdecl> = fprint_d1cstdecl
 
 in (* in-of-local *)
 
@@ -463,6 +471,18 @@ case+ x0.node() of
   ( out, "D1Cabstype("
   , knd, "; ", tok, "; ", arg, "; ", def, ")")
 //
+| D1Cvaldecl
+  (tok, mods, d1cs) =>
+  fprint!
+  ( out
+  , "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs)
+//
+| D1Cfundecl
+  (tok, tqas, mods, d1cs) =>
+  fprint!
+  ( out
+  , "D1Cfundecl(", tok, "; ", tqas, "; ", mods, "; ", d1cs)
+//
 | D1Cdatasort
   ( knd, d1tsts ) =>
   fprint!
@@ -471,17 +491,22 @@ case+ x0.node() of
 | D1Cdatatype
   (knd, d1typs, wopt) =>
   fprint!
-  ( out
+  (out
   , "D1Cdatatype(", knd, "; ", d1typs, "; ", wopt, ")")
+//
+| D1Cdynconst
+  (tok, tqas, d1cs) =>
+  fprint!
+  (out, "D1Cdynconst(", tok, "; ", tqas, "; ", d1cs, ")")
 //
 | D1Clocal
   (d1cs_head, d1cs_body) =>
-  fprint!
-  ( out
-  , "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
+  fprint!(out, "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
 //
+(*
 | _(*rest-of-d1ecl*) =>
-  fprint!(out, "fprint_d1ecl: not-yet-implemented")
+    fprint!(out, "fprint_d1ecl: D1C...: not-yet-implemented")
+*)
 //
 ) (* end of [fprint_d1ecl] *)
 
@@ -528,6 +553,77 @@ case+ x0 of
 | WD1CSsome(d1cs) =>
   fprint!( out, "WD1CSsome(", d1cs, ")")
 ) (* end of [fprint_wd1eclseq] *)
+
+(* ****** ****** *)
+
+implement
+print_v1aldecl(x0) =
+fprint_v1aldecl(stdout_ref, x0)
+implement
+prerr_v1aldecl(x0) =
+fprint_v1aldecl(stderr_ref, x0)
+
+implement
+fprint_v1aldecl
+  (out, x0) = let
+//
+val+V1ALDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "V1ALDECL@{"
+  , ", pat=", rcd.pat
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+end // end of [fprint_v1aldecl]
+
+(* ****** ****** *)
+
+implement
+print_f1undecl(x0) =
+fprint_f1undecl(stdout_ref, x0)
+implement
+prerr_f1undecl(x0) =
+fprint_f1undecl(stderr_ref, x0)
+
+implement
+fprint_f1undecl
+  (out, x0) = let
+//
+val+F1UNDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "F1UNDECL@{"
+  , ", nam=", rcd.nam
+  , ", arg=", rcd.arg
+  , ", res=", rcd.res
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+end // end of [fprint_f1undecl]
+
+(* ****** ****** *)
+
+implement
+print_d1cstdecl(x0) =
+fprint_d1cstdecl(stdout_ref, x0)
+implement
+prerr_d1cstdecl(x0) =
+fprint_d1cstdecl(stderr_ref, x0)
+
+implement
+fprint_d1cstdecl
+  (out, x0) = let
+//
+val+D1CSTDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "D1CSTDEC@{"
+  , ", nam=", rcd.nam, ", arg=", rcd.arg
+  , ", res=", rcd.res, ", def=", rcd.def, "}")
+end // end of [fprint_d1cstdecl]
 
 (* ****** ****** *)
 
