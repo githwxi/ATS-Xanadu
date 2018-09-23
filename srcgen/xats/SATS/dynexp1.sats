@@ -222,8 +222,8 @@ f1arg_node =
 | F1ARGnone of (token)
 *)
 | F1ARGsome_dyn of (d1pat)
-| F1ARGsome_sta of (s0qualst)
-| F1ARGsome_met of (s0explst)
+| F1ARGsome_sta of (s1qualst)
+| F1ARGsome_met of (s1explst)
 //
 fun
 f1arg_get_loc(f1arg): loc_t
@@ -267,6 +267,8 @@ d1pat_node =
 | D1Plist of d1patlst // temp.
 | D1Plist of
   (d1patlst, d1patlst) // temp.
+//
+| D1Panno of (d1pat, s1exp)
 //
 | D1Pnone of ((*error-indication*))
 // end of [d1pat_node]
@@ -327,8 +329,22 @@ d1exp_node =
   ( d1exp(*cond*)
   , d1exp(*then*), d1expopt(*else*))
 //
+| D1Elet of (d1eclist, d1explst)
+//
+| D1Elam of
+  (f1arglst, effs1expopt, f1unarrow, d1exp)
+//
 | D1Enone of () // HX-2018-09-25: indicating error 
 // end of [d1exp_node]
+//
+and
+f1unarrow =
+(*
+| F1UNARROWnone of
+  (token(*error*))
+*)
+| F1UNARROWdflt of ()
+| F1UNARROWlist of (s1explst)
 //
 (* ****** ****** *)
 //
@@ -356,10 +372,21 @@ d1exp_make_node
 //
 (* ****** ****** *)
 //
-datatype
-effs1expopt =
-| EFFS1EXPnone of ((*void*))
-| EFFS1EXPsome of (s1eff, s1exp)
+fun
+print_f1unarrow:
+  print_type(f1unarrow)
+fun
+prerr_f1unarrow:
+  prerr_type(f1unarrow)
+fun
+fprint_f1unarrow: fprint_type(f1unarrow)
+//
+overload print with print_f1unarrow
+overload prerr with prerr_f1unarrow
+overload fprint with fprint_f1unarrow
+//
+(* ****** ****** *)
+//
 datatype
 teqd1expopt =
 | TEQD1EXPnone of ((*void*))
@@ -370,19 +397,6 @@ wths1expopt =
 | WTHS1EXPsome of (token(*WITHTYPE*), s1exp)
 //
 (* ****** ****** *)
-//
-fun
-print_effs1expopt:
-print_type(effs1expopt)
-fun
-prerr_effs1expopt:
-prerr_type(effs1expopt)
-fun
-fprint_effs1expopt: fprint_type(effs1expopt)
-//
-overload print with print_effs1expopt
-overload prerr with prerr_effs1expopt
-overload fprint with fprint_effs1expopt
 //
 fun
 print_teqd1expopt:

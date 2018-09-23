@@ -537,6 +537,63 @@ list_vt2t(d1as) where
 
 (* ****** ****** *)
 
+implement
+trans01_farg
+  (f0a0) = let
+//
+val
+loc0 = f0a0.loc()
+//
+in
+//
+case-
+f0a0.node() of
+//
+| F0ARGsome_dyn(d0p) => let
+//
+    val d1p = trans01_dpat(d0p)
+//
+  in
+    f1arg_make_node(loc0, F1ARGsome_dyn(d1p))
+  end // end of [F0ARGsome_dyn]
+//
+| F0ARGsome_sta
+  (_, s0qs, _) => let
+    val
+    s1qs =
+    trans01_squalst(s0qs)
+  in
+    f1arg_make_node(loc0, F1ARGsome_sta(s1qs))
+  end // end of [F0ARGsome_sta]
+//
+| F0ARGsome_met
+  (_, s0es, _) => let
+    val
+    s1es =
+    trans01_sexplst(s0es)
+  in
+    f1arg_make_node(loc0, F1ARGsome_met(s1es))
+  end // end of [F0ARGsome_met]
+//
+end // end of [trans01_darg]
+
+implement
+trans01_farglst
+  (f0as) =
+list_vt2t(f1as) where
+{
+  val
+  f1as =
+  list_map<f0arg><f1arg>
+    (f0as) where
+  {
+    implement
+    list_map$fopr<f0arg><f1arg> = trans01_farg
+  }
+} (* end of [trans01_farglst] *)
+
+(* ****** ****** *)
+
 local
 
 fun
@@ -648,6 +705,15 @@ d0p0.node() of
 //
 | D0Pparen _ => auxparen(d0p0)
 //
+| D0Panno(d0p, s0e) =>
+  FXITMatm(d1p0) where
+  {
+    val d1p = trans01_dpat(d0p)
+    val s1e = trans01_sexp(s0e)
+    val d1p0 =
+    d1pat_make_node(loc0, D1Panno(d1p, s1e))
+  }
+//
 | D0Pnone(_(*tok*)) =>
   FXITMatm(d1p0) where
   {
@@ -745,6 +811,20 @@ list_vt2t(d1ps) where
     list_map$fopr<d0pat><d1pat> = trans01_dpat
   }
 } (* end of [trans01_dpatlst] *)
+
+(* ****** ****** *)
+
+fun
+trans01_funarrow
+( farrw
+: f0unarrow): f1unarrow =
+(
+case- farrw of
+| F0UNARROWdflt(_) =>
+  F1UNARROWdflt(*void*)
+| F0UNARROWlist(_, s0es, _) =>
+  F1UNARROWlist(trans01_sexplst(s0es))
+)
 
 (* ****** ****** *)
 
@@ -944,9 +1024,45 @@ d0e0.node() of
     FXITMatm(d1e0) where
     {
       val d1e0 =
-      d1exp_make_node(loc0, D1Eif0(d1e1, d1e2, opt3))
+        d1exp_make_node
+        (loc0, D1Eif0(d1e1, d1e2, opt3))
     }
   end (* end of [D0Eif0] *)
+//
+| D0Elet
+  (_, d0cs, _, d0es, _) => let
+    val d1cs = trans01_declist(d0cs)
+    val d1es = trans01_dexplst(d0es)
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+        d1exp_make_node(loc0, D1Elet(d1cs, d1es))
+      // end of [val]
+    }
+  end // end of [D0Elet] *)
+//
+| D0Elam
+  ( _(*lam/lam@*)
+  , arg, res, farrw, fbody) => let
+//
+    val arg =
+      trans01_farglst(arg)
+    val res =
+      trans01_effsexpopt(res)
+    val farrw =
+      trans01_funarrow(farrw)
+    val fbody = trans01_dexp(fbody)
+//
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+        d1exp_make_node
+        (loc0, D1Elam(arg, res, farrw, fbody))
+      // end of [val]
+    }
+  end // end of [D1Elam]
 //
 | D0Enone(_(*tok*)) =>
   FXITMatm(d1e0) where
@@ -1111,23 +1227,7 @@ trans01_valdeclist: v0aldeclist -> v1aldeclist
 (* ****** ****** *)
 
 fun
-trans01_effs0expopt
-( opt
-: effs0expopt): effs1expopt =
-(
-case+ opt of
-| EFFS0EXPnone() =>
-  EFFS1EXPnone()
-| EFFS0EXPsome(s0f, s0e) =>
-  EFFS1EXPsome(s1f, s1e) where
-  {
-    val s1f = trans01_seff(s0f)
-    val s1e = trans01_sexp(s0e)
-  }
-)
-
-fun
-trans01_teqd0expopt
+trans01_teqdexpopt
 ( opt
 : teqd0expopt): teqd1expopt =
 (
@@ -1139,7 +1239,7 @@ case+ opt of
 )
 
 fun
-trans01_wths0expopt
+trans01_wthsexpopt
 ( opt
 : wths0expopt): wths1expopt =
 (
@@ -1172,9 +1272,9 @@ I0DNTsome(tok) = nam.node()
 val
 arg = trans01_darglst(rcd.arg)
 val
-res = trans01_effs0expopt(rcd.res)
+res = trans01_effsexpopt(rcd.res)
 val
-def = trans01_teqd0expopt(rcd.def)
+def = trans01_teqdexpopt(rcd.def)
 //
 (*
 val () =
@@ -1225,7 +1325,7 @@ pat = trans01_dpat(rcd.pat)
 val
 def = trans01_dexp(rcd.def)
 val
-wtp = trans01_wths0expopt(rcd.wtp)
+wtp = trans01_wthsexpopt(rcd.wtp)
 //
 val () =
 println!("trans01_valdecl: pat = ", pat)

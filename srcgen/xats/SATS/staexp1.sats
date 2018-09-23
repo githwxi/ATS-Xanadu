@@ -509,6 +509,26 @@ overload fprint with fprint_s1eff
 //
 (* ****** ****** *)
 //
+datatype
+effs1expopt =
+| EFFS1EXPnone of ((*void*))
+| EFFS1EXPsome of (s1eff, s1exp)
+//
+fun
+print_effs1expopt:
+print_type(effs1expopt)
+fun
+prerr_effs1expopt:
+prerr_type(effs1expopt)
+fun
+fprint_effs1expopt: fprint_type(effs1expopt)
+//
+overload print with print_effs1expopt
+overload prerr with prerr_effs1expopt
+overload fprint with fprint_effs1expopt
+//
+(* ****** ****** *)
+//
 abstbox
 d1atcon_tbox = ptr
 typedef

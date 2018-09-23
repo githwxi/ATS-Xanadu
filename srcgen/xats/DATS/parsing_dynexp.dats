@@ -965,7 +965,7 @@ fun
 p_f0argseq: parser(f0arglst)
 extern
 fun
-p_funarrow: parser(funarrow)
+p_f0unarrow: parser(f0unarrow)
 
 (* ****** ****** *)
 
@@ -980,7 +980,7 @@ p_f0argseq
 (* ****** ****** *)
 //
 implement
-p_funarrow
+p_f0unarrow
   (buf, err) = let
 //
 val e0 = err
@@ -997,7 +997,7 @@ case+ tnd of
       buf.incby1()
     // end of [val]
   in
-    FUNARROWsing(tok)
+    F0UNARROWdflt(tok)
   end // end of [T_EQGT]
 //
 | T_EQLT() => let
@@ -1014,12 +1014,12 @@ case+ tnd of
     val tend = p_GT(buf, err)
   in
     err := e0;
-    FUNARROWsome(tbeg, s0es, tend)
+    F0UNARROWlist(tbeg, s0es, tend)
   end // end of [T_EQLT]
 //
-| _(*non-arrow*) => FUNARROWnone(tok)
+| _(*non-arrow*) => F0UNARROWnone(tok)
 //
-end // end of [p_funarrow]
+end // end of [p_f0unarrow]
 
 (* ****** ****** *)
 (*
@@ -1352,7 +1352,7 @@ case+ tnd of
     val res =
       p_effs0expopt(buf, err)
     val farrw =
-      p_funarrow(buf, err)
+      p_f0unarrow(buf, err)
     val fbody = p_d0exp(buf, err)
   in
     err := e0;
