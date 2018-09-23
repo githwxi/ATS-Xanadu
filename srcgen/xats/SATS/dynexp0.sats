@@ -213,6 +213,39 @@ d0arg_make_node
 (loc: loc_t, node: d0arg_node): d0arg
 //
 (* ****** ****** *)
+//
+abstbox f0arg_tbox = ptr
+typedef f0arg = f0arg_tbox
+typedef f0arglst = List0(f0arg)
+//
+datatype
+f0arg_node =
+| F0ARGnone of (token)
+| F0ARGsome_dyn of (d0pat)
+| F0ARGsome_sta of (token, s0qualst, token)
+| F0ARGsome_met of (token, s0explst, token)
+//
+fun
+f0arg_get_loc(f0arg): loc_t
+fun
+f0arg_get_node(f0arg): f0arg_node
+//
+overload .loc with f0arg_get_loc
+overload .node with f0arg_get_node
+//
+fun print_f0arg : print_type(f0arg)
+fun prerr_f0arg : prerr_type(f0arg)
+fun fprint_f0arg : fprint_type(f0arg)
+//
+overload print with print_f0arg
+overload prerr with prerr_f0arg
+overload fprint with fprint_f0arg
+//
+fun
+f0arg_make_node
+(loc: loc_t, node: f0arg_node): f0arg
+//
+(* ****** ****** *)
 
 datatype
 d0pat_node =
@@ -305,39 +338,6 @@ overload prerr with prerr_labd0pat_RBRACE
 overload fprint with fprint_labd0pat_RBRACE
 //
 (* ****** ****** *)
-//
-abstbox f0arg_tbox = ptr
-typedef f0arg = f0arg_tbox
-typedef f0arglst = List0(f0arg)
-//
-datatype
-f0arg_node =
-| F0ARGnone of (token)
-| F0ARGsome_dyn of (d0pat)
-| F0ARGsome_sta of (token, s0qualst, token)
-| F0ARGsome_met of (token, s0explst, token)
-//
-fun
-f0arg_get_loc(f0arg): loc_t
-fun
-f0arg_get_node(f0arg): f0arg_node
-//
-overload .loc with f0arg_get_loc
-overload .node with f0arg_get_node
-//
-fun print_f0arg : print_type(f0arg)
-fun prerr_f0arg : prerr_type(f0arg)
-fun fprint_f0arg : fprint_type(f0arg)
-//
-overload print with print_f0arg
-overload prerr with prerr_f0arg
-overload fprint with fprint_f0arg
-//
-fun
-f0arg_make_node
-(loc: loc_t, node: f0arg_node): f0arg
-//
-(* ****** ****** *)
 
 datatype
 d0exp_node =
@@ -372,12 +372,18 @@ d0exp_node =
 | D0Ewhere of
   (d0exp, token, tokenopt, d0eclist, token)
 //
+| D0Elam of
+  ( token(*lam/lam@*)
+  , f0arglst, effs0expopt, funarrow, d0exp)
+//
 | D0Eanno of (d0exp, s0exp)
 //
 | D0Equal of (token, d0exp) // qualified
 //
 | D0Enone of (token) // HX-2018-07-08: indicating error 
 // end of [d0exp_node]
+
+(* ****** ****** *)
 
 and
 d0exp_RPAREN =
@@ -399,6 +405,17 @@ d0exp_ELSE =
 | d0exp_ELSEnone of ()
 | d0exp_ELSEsome of (token, d0exp)
 
+(* ****** ****** *)
+//
+and
+funarrow =
+| FUNARROWnone of
+  (token(*=>*))
+| FUNARROWsing of
+  (token(*=>*))
+| FUNARROWsome of
+  (token(*=<*), s0explst, token (*>*))
+//
 (* ****** ****** *)
 //
 fun
@@ -492,6 +509,21 @@ overload fprint with fprint_d0exp_ELSE
 //
 (* ****** ****** *)
 //
+fun
+print_funarrow:
+  print_type(funarrow)
+fun
+prerr_funarrow:
+  prerr_type(funarrow)
+fun
+fprint_funarrow: fprint_type(funarrow)
+//
+overload print with print_funarrow
+overload prerr with prerr_funarrow
+overload fprint with fprint_funarrow
+//
+(* ****** ****** *)
+//
 datatype
 declmodopt =
 | DECLMODnone of
@@ -518,10 +550,6 @@ overload fprint with fprint_declmodopt
 (* ****** ****** *)
 //
 datatype
-effs0expopt =
-| EFFS0EXPnone of ((*void*))
-| EFFS0EXPsome of (s0eff, s0exp)
-datatype
 teqd0expopt =
 | TEQD0EXPnone of ((*void*))
 | TEQD0EXPsome of (token(*EQ*), d0exp)
@@ -531,18 +559,6 @@ wths0expopt =
 | WTHS0EXPsome of (token(*WITHTYPE*), s0exp)
 //
 (* ****** ****** *)
-fun
-print_effs0expopt:
-print_type(effs0expopt)
-fun
-prerr_effs0expopt:
-prerr_type(effs0expopt)
-fun
-fprint_effs0expopt: fprint_type(effs0expopt)
-//
-overload print with print_effs0expopt
-overload prerr with prerr_effs0expopt
-overload fprint with fprint_effs0expopt
 //
 fun
 print_teqd0expopt:

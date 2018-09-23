@@ -665,6 +665,27 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
+print_effs0expopt(x0) =
+fprint_effs0expopt(stdout_ref, x0)
+implement
+prerr_effs0expopt(x0) =
+fprint_effs0expopt(stderr_ref, x0)
+implement
+fprint_effs0expopt
+  (out, x0) =
+(
+case+ x0 of
+| EFFS0EXPnone() =>
+  fprint!(out, "EFFS0EXPnone(", ")")
+| EFFS0EXPsome(s0f, s0e) =>
+  fprint!
+  ( out
+  , "EFFS0EXPsome(", s0f, "; ", s0e, ")")
+) (* end of [fprint_effs0expopt] *)
+
+(* ****** ****** *)
+
+implement
 print_d0atype(x0) =
 fprint_d0atype(stdout_ref, x0)
 implement

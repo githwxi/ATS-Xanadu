@@ -95,6 +95,7 @@ STAEXP0 = "./staexp0.sats"
   typedef d0tsortlst = $STAEXP0.d0tsortlst
   typedef d0atypelst = $STAEXP0.d0atypelst
 //
+  typedef effs0expopt = $STAEXP0.effs0expopt
 //
 (* ****** ****** *)
 
@@ -382,6 +383,11 @@ p_appsort0_NGT: parser(sort0)
 //
 fun // GT excluded
 p_apps0exp_NGT: parser(s0exp)
+//
+(* ****** ****** *)
+//
+fun
+p_effs0expopt: parser(effs0expopt)
 //
 (* ****** ****** *)
 //

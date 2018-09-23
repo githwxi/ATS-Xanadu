@@ -199,6 +199,7 @@ val () = myins("=", T_EQ)
 val () = myins("<", T_LT)
 val () = myins(">", T_GT)
 //
+val () = myins("=<", T_EQLT)
 val () = myins("=>", T_EQGT)
 //
 val () = myins("<>", T_LTGT)

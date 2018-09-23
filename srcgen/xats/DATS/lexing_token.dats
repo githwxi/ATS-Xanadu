@@ -175,6 +175,7 @@ case+ tnd of
 | T_DLR() => fprint(out, "DLR")
 | T_SRP() => fprint(out, "SRP")
 //
+| T_EQLT() => fprint(out, "EQLT")
 | T_EQGT() => fprint(out, "EQGT")
 //
 | T_LTGT() => fprint(out, "LTGT")
@@ -408,6 +409,7 @@ case+ tnd of
 | T_DLR() => fprint(out, "$")
 | T_SRP() => fprint(out, "#")
 //
+| T_EQLT() => fprint(out, "=<")
 | T_EQGT() => fprint(out, "=>")
 //
 | T_LTGT() => fprint(out, "<>")

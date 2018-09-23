@@ -180,6 +180,38 @@ end // end of [local]
 local
 
 absimpl
+f1arg_tbox = $rec{
+  f1arg_loc= loc_t
+, f1arg_node= f1arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+f1arg_get_loc(x0) = x0.f1arg_loc
+implement
+f1arg_get_node(x0) = x0.f1arg_node
+
+(* ****** ****** *)
+
+implement
+f1arg_make_node
+(loc, node) = $rec
+{
+  f1arg_loc= loc, f1arg_node= node
+} (* end of [f1arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d1pat_tbox = $rec{
   d1pat_loc= loc_t
 , d1pat_node= d1pat_node

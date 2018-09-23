@@ -959,6 +959,69 @@ case+ tnd of
 end // end of [p_f0arg]
 
 (* ****** ****** *)
+
+extern
+fun
+p_f0argseq: parser(f0arglst)
+extern
+fun
+p_funarrow: parser(funarrow)
+
+(* ****** ****** *)
+
+implement
+p_f0argseq
+  (buf, err) =
+(
+  list_vt2t
+  (pstar_fun{f0arg}(buf, err, p_f0arg))
+) (* end of [p_f0argseq] *)
+
+(* ****** ****** *)
+//
+implement
+p_funarrow
+  (buf, err) = let
+//
+val e0 = err
+//
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+//
+| T_EQGT() => let
+    val () =
+      buf.incby1()
+    // end of [val]
+  in
+    FUNARROWsing(tok)
+  end // end of [T_EQGT]
+//
+| T_EQLT() => let
+    val () =
+      buf.incby1()
+    // end of [val]
+    val s0es =
+    list_vt2t
+    (
+      pstar_COMMA_fun
+      {s0exp}(buf, err, p_apps0exp_NGT)
+    )
+    val tbeg = tok
+    val tend = p_GT(buf, err)
+  in
+    err := e0;
+    FUNARROWsome(tbeg, s0es, tend)
+  end // end of [T_EQLT]
+//
+| _(*non-arrow*) => FUNARROWnone(tok)
+//
+end // end of [p_funarrow]
+
+(* ****** ****** *)
 (*
 atmd0exp ::
 //
@@ -1278,18 +1341,39 @@ case+ tnd of
   in
     err := e0;
     d0exp_make_node
-    (loc_res, D0Elet(tok, d0cs, tok1, d0es, tok2))
+    ( loc_res
+    , D0Elet(tok, d0cs, tok1, d0es, tok2))
   end // end of [T_LET]
 //
-| T_IDENT_qual _ => let
+| T_LAM(k0) => let
     val () = buf.incby1()
-    val d0e0 = p_atmd0exp(buf, err)
+    val arg =
+      p_f0argseq(buf, err)
+    val res =
+      p_effs0expopt(buf, err)
+    val farrw =
+      p_funarrow(buf, err)
+    val fbody = p_d0exp(buf, err)
   in
     err := e0;
     d0exp_make_node
-    (loc_res, D0Equal(tok, d0e0)) where
+    ( loc_res
+    , D0Elam(tok, arg, res, farrw, fbody)
+    ) where
     {
-      val loc_res = tok.loc()+d0e0.loc()
+      val loc_res = tok.loc()+fbody.loc()
+    }
+  end 
+//
+| T_IDENT_qual _ => let
+    val () = buf.incby1()
+    val d0e = p_atmd0exp(buf, err)
+  in
+    err := e0;
+    d0exp_make_node
+    (loc_res, D0Equal(tok, d0e)) where
+    {
+      val loc_res = tok.loc()+d0e.loc()
     }
   end // end of [T_IDENT_qual]
 //
@@ -1585,9 +1669,6 @@ p_declmodopt: parser(declmodopt)
 //
 static
 fun
-p_effs0expopt: parser(effs0expopt)
-static
-fun
 p_teqd0expopt: parser(teqd0expopt)
 static
 fun
@@ -1639,50 +1720,6 @@ tok0.node() of
 | _ (* non-COLON *) => DECLMODnone(*void*)
 //
 end // end of [p_declmodopt]
-
-(* ****** ****** *)
-
-implement
-p_effs0expopt
-  (buf, err) = let
-//
-val tok = buf.get0()
-//
-in
-//
-case+
-tok.node() of
-| T_COLON() => let
-    val () = buf.incby1()
-    val s0e_res =
-      p_apps0exp_NEQ(buf, err)
-    // end of [val]
-  in
-    EFFS0EXPsome
-      (S0EFFnone(tok), s0e_res)
-  end // end of [T_COLON]
-| T_COLONLT() => let
-    val () = buf.incby1()
-    val s0es =
-    list_vt2t
-    (
-      pstar_COMMA_fun
-      {s0exp}(buf, err, p_apps0exp_NGT)
-    )
-    val tbeg = tok
-    val tend = p_GT(buf, err)
-    val s0e_res =
-      p_apps0exp_NEQ(buf, err)
-    // end of [val]
-    val loc_res = tbeg.loc() + tend.loc()
-  in
-    EFFS0EXPsome
-      (S0EFFsome(tbeg, s0es, tend), s0e_res)
-    // EFFS0EXPsome
-  end // end of [T_COLONLT]
-| _(*non-COLON/LT*) => EFFS0EXPnone()
-//
-end // end of [p_effs0expopt]
 
 (* ****** ****** *)
 
