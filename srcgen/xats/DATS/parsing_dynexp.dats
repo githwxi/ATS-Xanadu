@@ -1792,18 +1792,18 @@ local
 //
 static
 fun
-p_d0cstdec
- : parser(d0cstdec)
+p_d0cstdecl
+ : parser(d0cstdecl)
 and
-p_d0cstdecseq_AND
- : parser(d0cstdeclst)
+p_d0cstdeclseq_AND
+ : parser(d0cstdeclist)
 //
 static
 fun
 p_dynconst : parser(d0ecl)
 //
 implement
-p_d0cstdec
+p_d0cstdecl
   (buf, err) = let
 //
 val e0 = err
@@ -1841,22 +1841,22 @@ case+ def of
 //
 in
   err := e0;
-  D0CSTDEC
+  D0CSTDECL
   (@{loc=loc,nam=nam,arg=arg,res=res,def=def})
-end // end of [p_d0cstdec]
+end // end of [p_d0cstdecl]
 
 (* ****** ****** *)
 //
 implement
-p_d0cstdecseq_AND
+p_d0cstdeclseq_AND
   (buf, err) =
 (
 //
 list_vt2t
 (pstar_AND_fun
- {d0cstdec}(buf, err, p_d0cstdec))
+ {d0cstdecl}(buf, err, p_d0cstdecl))
 //
-) (* end of [p_d0cstdecseq_AND] *)
+) (* end of [p_d0cstdeclseq_AND] *)
 //
 (* ****** ****** *)
 
@@ -1879,7 +1879,7 @@ tok, buf, err
   val tqas =
     p_tq0argseq(buf, err)
   val d0cs =
-    p_d0cstdecseq_AND(buf, err)
+    p_d0cstdeclseq_AND(buf, err)
   val loc_res =
   (
     case+ d0cs of

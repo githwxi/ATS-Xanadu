@@ -636,77 +636,6 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
-print_d0cstdec(x0) =
-fprint_d0cstdec(stdout_ref, x0)
-implement
-prerr_d0cstdec(x0) =
-fprint_d0cstdec(stderr_ref, x0)
-
-implement
-fprint_d0cstdec
-  (out, x0) = let
-//
-val+D0CSTDEC(rcd) = x0
-//
-in
-  fprint!
-  ( out
-  , "D0CSTDEC@{"
-  , ", nam=", rcd.nam, ", arg=", rcd.arg
-  , ", res=", rcd.res, ", def=", rcd.def, "}")
-end // end of [fprint_d0cstdec]
-
-(* ****** ****** *)
-
-implement
-print_v0aldecl(x0) =
-fprint_v0aldecl(stdout_ref, x0)
-implement
-prerr_v0aldecl(x0) =
-fprint_v0aldecl(stderr_ref, x0)
-
-implement
-fprint_v0aldecl
-  (out, x0) = let
-//
-val+V0ALDECL(rcd) = x0
-//
-in
-  fprint!
-  ( out
-  , "V0ALDECL@{"
-  , ", pat=", rcd.pat
-  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
-end // end of [fprint_v0aldecl]
-
-(* ****** ****** *)
-
-implement
-print_f0undecl(x0) =
-fprint_f0undecl(stdout_ref, x0)
-implement
-prerr_f0undecl(x0) =
-fprint_f0undecl(stderr_ref, x0)
-
-implement
-fprint_f0undecl
-  (out, x0) = let
-//
-val+F0UNDECL(rcd) = x0
-//
-in
-  fprint!
-  ( out
-  , "F0UNDECL@{"
-  , ", nam=", rcd.nam
-  , ", arg=", rcd.arg
-  , ", res=", rcd.res
-  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
-end // end of [fprint_f0undecl]
-
-(* ****** ****** *)
-
-implement
 print_d0ecl(x0) =
 fprint_d0ecl(stdout_ref, x0)
 implement
@@ -718,11 +647,11 @@ local
 implement
 fprint_val<d0ecl> = fprint_d0ecl
 implement
-fprint_val<d0cstdec> = fprint_d0cstdec
-implement
 fprint_val<v0aldecl> = fprint_v0aldecl
 implement
 fprint_val<f0undecl> = fprint_f0undecl
+implement
+fprint_val<d0cstdecl> = fprint_d0cstdecl
 
 in (* in-of-local *)
 
@@ -812,6 +741,11 @@ case+ x0.node() of
   ( out, "D0Clocal("
   , tok, "; ", d0cs0, "; ", tok1, "; ", d0cs1, "; ", tok2, ")")
 //
+(*
+| _(*rest-of-d1ecl*) =>
+    fprint!(out, "fprint_d1ecl: D0C...: not-yet-implemented")
+*)
+//
 ) (* end of [fprint_d0ecl] *)
 
 end // end of [local]
@@ -883,6 +817,77 @@ case+ x0 of
   ( out, "WD0CSsome("
   , tbeg, "; ", topt, "; ", d0cs, "; ", tend, ")")
 ) (* end of [fprint_wd0eclseq] *)
+
+(* ****** ****** *)
+
+implement
+print_v0aldecl(x0) =
+fprint_v0aldecl(stdout_ref, x0)
+implement
+prerr_v0aldecl(x0) =
+fprint_v0aldecl(stderr_ref, x0)
+
+implement
+fprint_v0aldecl
+  (out, x0) = let
+//
+val+V0ALDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "V0ALDECL@{"
+  , ", pat=", rcd.pat
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+end // end of [fprint_v0aldecl]
+
+(* ****** ****** *)
+
+implement
+print_f0undecl(x0) =
+fprint_f0undecl(stdout_ref, x0)
+implement
+prerr_f0undecl(x0) =
+fprint_f0undecl(stderr_ref, x0)
+
+implement
+fprint_f0undecl
+  (out, x0) = let
+//
+val+F0UNDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "F0UNDECL@{"
+  , ", nam=", rcd.nam
+  , ", arg=", rcd.arg
+  , ", res=", rcd.res
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+end // end of [fprint_f0undecl]
+
+(* ****** ****** *)
+
+implement
+print_d0cstdecl(x0) =
+fprint_d0cstdecl(stdout_ref, x0)
+implement
+prerr_d0cstdecl(x0) =
+fprint_d0cstdecl(stderr_ref, x0)
+
+implement
+fprint_d0cstdecl
+  (out, x0) = let
+//
+val+D0CSTDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "D0CSTDECL@{"
+  , ", nam=", rcd.nam, ", arg=", rcd.arg
+  , ", res=", rcd.res, ", def=", rcd.def, "}")
+end // end of [fprint_d0cstdecl]
 
 (* ****** ****** *)
 

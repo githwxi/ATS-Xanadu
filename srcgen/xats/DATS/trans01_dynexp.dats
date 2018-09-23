@@ -1214,15 +1214,21 @@ list_vt2t(d1es) where
 
 extern
 fun
-trans01_dcstdec: d0cstdec -> d1cstdec
-and
-trans01_dcstdeclst: d0cstdeclst -> d1cstdeclst
-
-extern
-fun
 trans01_valdecl: v0aldecl -> v1aldecl
 and
 trans01_valdeclist: v0aldeclist -> v1aldeclist
+
+extern
+fun
+trans01_fundecl: f0undecl -> f1undecl
+and
+trans01_fundeclist: f0undeclist -> f1undeclist
+
+extern
+fun
+trans01_dcstdecl: d0cstdecl -> d1cstdecl
+and
+trans01_dcstdeclist: d0cstdeclist -> d1cstdeclist
 
 (* ****** ****** *)
 
@@ -1249,63 +1255,6 @@ case+ opt of
 | WTHS0EXPsome(tok, s0e) =>
   WTHS1EXPsome(tok, trans01_sexp(s0e))
 )
-
-(* ****** ****** *)
-
-implement
-trans01_dcstdec
-  (d0c0) = let
-//
-val () =
-println!
-("trans01_dcstdec: d0c0 = ", d0c0)
-//
-val+
-D0CSTDEC(rcd) = d0c0
-//
-val
-loc = rcd.loc
-val
-nam = rcd.nam
-val-
-I0DNTsome(tok) = nam.node()
-val
-arg = trans01_darglst(rcd.arg)
-val
-res = trans01_effsexpopt(rcd.res)
-val
-def = trans01_teqdexpopt(rcd.def)
-//
-(*
-val () =
-println!("trans01_dcstdec: nam = ", nam)
-val () =
-println!("trans01_dcstdec: arg = ", arg)
-val () =
-println!("trans01_dcstdec: res = ", res)
-val () =
-println!("trans01_dcstdec: def = ", def)
-*)
-//
-in
-  D1CSTDEC
-  (@{loc=loc,nam=tok,arg=arg,res=res,def=def})
-end // end of [trans01_dcstdec]
-
-implement
-trans01_dcstdeclst
-  (d0cs) =
-list_vt2t(d1cs) where
-{
-  val
-  d1cs =
-  list_map<d0cstdec><d1cstdec>
-    (d0cs) where
-  {
-    implement
-    list_map$fopr<d0cstdec><d1cstdec> = trans01_dcstdec
-  }
-} (* end of [trans01_dcstdeclst] *)
 
 (* ****** ****** *)
 
@@ -1353,6 +1302,120 @@ list_vt2t(d1cs) where
     list_map$fopr<v0aldecl><v1aldecl> = trans01_valdecl
   }
 } (* end of [trans01_valdeclist] *)
+
+(* ****** ****** *)
+
+implement
+trans01_fundecl
+  (d0c0) = let
+//
+val+
+F0UNDECL(rcd) = d0c0
+//
+val
+loc = rcd.loc
+val
+teq = rcd.teq
+//
+val
+nam = rcd.nam
+val-
+I0DNTsome(tok) = nam.node()
+//
+val
+arg = trans01_farglst(rcd.arg)
+val
+res = trans01_effsexpopt(rcd.res)
+//
+val
+def = trans01_dexp(rcd.def)
+val
+wtp = trans01_wthsexpopt(rcd.wtp)
+//
+val () =
+println!("trans01_fundecl: nam = ", nam)
+val () =
+println!("trans01_fundecl: def = ", def)
+val () =
+println!("trans01_fundecl: wtp = ", wtp)
+//
+in
+  F1UNDECL
+  (@{loc=loc,nam=tok
+    ,arg=arg,res=res,teq=teq,def=def,wtp=wtp})
+end // end of [trans01_fundecl]
+
+implement
+trans01_fundeclist
+  (d0cs) =
+list_vt2t(d1cs) where
+{
+  val
+  d1cs =
+  list_map<f0undecl><f1undecl>
+    (d0cs) where
+  {
+    implement
+    list_map$fopr<f0undecl><f1undecl> = trans01_fundecl
+  }
+} (* end of [trans01_fundeclist] *)
+
+(* ****** ****** *)
+
+implement
+trans01_dcstdecl
+  (d0c0) = let
+//
+val () =
+println!
+("trans01_dcstdecl: d0c0 = ", d0c0)
+//
+val+
+D0CSTDECL(rcd) = d0c0
+//
+val
+loc = rcd.loc
+val
+nam = rcd.nam
+val-
+I0DNTsome(tok) = nam.node()
+val
+arg = trans01_darglst(rcd.arg)
+val
+res = trans01_effsexpopt(rcd.res)
+val
+def = trans01_teqdexpopt(rcd.def)
+//
+(*
+val () =
+println!("trans01_dcstdecl: nam = ", nam)
+val () =
+println!("trans01_dcstdecl: arg = ", arg)
+val () =
+println!("trans01_dcstdecl: res = ", res)
+val () =
+println!("trans01_dcstdecl: def = ", def)
+*)
+//
+in
+  D1CSTDECL
+  (@{loc=loc,nam=tok,arg=arg,res=res,def=def})
+end // end of [trans01_dcstdecl]
+
+implement
+trans01_dcstdeclist
+  (d0cs) =
+list_vt2t(d1cs) where
+{
+  val
+  d1cs =
+  list_map<d0cstdecl><d1cstdecl>
+    (d0cs) where
+  {
+    implement
+    list_map$fopr<d0cstdecl><d1cstdecl> = trans01_dcstdecl
+  }
+} (* end of [trans01_dcstdeclist] *)
 
 (* ****** ****** *)
 
@@ -1723,6 +1786,29 @@ end // end of [aux_valdecl]
 (* ****** ****** *)
 
 fun
+aux_fundecl
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cfundecl
+( knd
+, tqas, mopt, d0cs) = d0c0.node()
+//
+val tqas = trans01_tqarglst(tqas)
+val d1cs = trans01_fundeclist(d0cs)
+//
+in
+  d1ecl_make_node
+    (loc0, D1Cfundecl(knd, tqas, mopt, d1cs))
+  // d1ecl_make_node
+end // end of [aux_fundecl]
+
+(* ****** ****** *)
+
+fun
 aux_datasort
 ( d0c0
 : d0ecl): d1ecl = let
@@ -1845,7 +1931,7 @@ D0Cdynconst
 (knd, tqas, d0cs) = d0c0.node()
 //
 val tqas = trans01_tqarglst(tqas)
-val d1cs = trans01_dcstdeclst(d0cs)
+val d1cs = trans01_dcstdeclist(d0cs)
 //
 in
   d1ecl_make_node
@@ -1896,6 +1982,7 @@ d0c0.node() of
 | D0Cabstype _ => aux_abstype(d0c0)
 //
 | D0Cvaldecl _ => aux_valdecl(d0c0)
+| D0Cfundecl _ => aux_fundecl(d0c0)
 //
 | D0Cdatasort _ => aux_datasort(d0c0)
 //
