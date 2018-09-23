@@ -114,6 +114,7 @@ tnode =
   | T_DLR of () // $
   | T_SRP of () // #
 //
+  | T_EQLT of () // =<
   | T_EQGT of () // =>
 //
   | T_LTGT of () // <>

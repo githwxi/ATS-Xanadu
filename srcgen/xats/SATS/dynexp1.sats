@@ -212,6 +212,41 @@ d1arg_make_node
 //
 (* ****** ****** *)
 //
+abstbox f1arg_tbox = ptr
+typedef f1arg = f1arg_tbox
+typedef f1arglst = List0(f1arg)
+//
+datatype
+f1arg_node =
+(*
+| F1ARGnone of (token)
+*)
+| F1ARGsome_dyn of (d1pat)
+| F1ARGsome_sta of (s0qualst)
+| F1ARGsome_met of (s0explst)
+//
+fun
+f1arg_get_loc(f1arg): loc_t
+fun
+f1arg_get_node(f1arg): f1arg_node
+//
+overload .loc with f1arg_get_loc
+overload .node with f1arg_get_node
+//
+fun print_f1arg : print_type(f1arg)
+fun prerr_f1arg : prerr_type(f1arg)
+fun fprint_f1arg : fprint_type(f1arg)
+//
+overload print with print_f1arg
+overload prerr with prerr_f1arg
+overload fprint with fprint_f1arg
+//
+fun
+f1arg_make_node
+(loc: loc_t, node: f1arg_node): f1arg
+//
+(* ****** ****** *)
+//
 datatype
 d1pat_node =
 //

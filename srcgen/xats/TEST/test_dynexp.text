@@ -18,7 +18,9 @@ val
 tup_flat = @(1, 2)
 val
 tup_boxd = $(1, 2)
-////
+
+(* ****** ****** *)
+
 val
 :rec
 fact =

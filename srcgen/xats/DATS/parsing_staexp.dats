@@ -1701,7 +1701,6 @@ list_vt2t
 
 (* ****** ****** *)
 
-
 implement
 popt_s0exp_anno
   (buf, err) = let
@@ -1873,6 +1872,51 @@ in
   // end of [s0exp_make_node]
 end // end of [p_apps0exp_NGT]
 
+(* ****** ****** *)
+//
+implement
+p_effs0expopt
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_COLON() => let
+    val () = buf.incby1()
+    val s0e_res =
+      p_apps0exp_NEQ(buf, err)
+    // end of [val]
+  in
+    EFFS0EXPsome
+      (S0EFFnone(tok), s0e_res)
+    // EFFS0EXPsome
+  end // end of [T_COLON]
+| T_COLONLT() => let
+    val () = buf.incby1()
+    val s0es =
+    list_vt2t
+    (
+      pstar_COMMA_fun
+      {s0exp}(buf, err, p_apps0exp_NGT)
+    )
+    val tbeg = tok
+    val tend = p_GT(buf, err)
+    val s0e_res =
+      p_apps0exp_NEQ(buf, err)
+    // end of [val]
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    EFFS0EXPsome
+      (S0EFFsome(tbeg, s0es, tend), s0e_res)
+    // EFFS0EXPsome
+  end // end of [T_COLONLT]
+| _(*non-COLON/LT*) => EFFS0EXPnone()
+//
+end // end of [p_effs0expopt]
+//
 (* ****** ****** *)
 //
 (*

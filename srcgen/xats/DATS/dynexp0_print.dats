@@ -184,15 +184,15 @@ fprint_f0arg
 case+
 x0.node() of
 | F0ARGnone(tok) =>
-  fprintln!(out, "F0ARGnone(", tok, ")")
+  fprint!(out, "F0ARGnone(", tok, ")")
 | F0ARGsome_dyn(d0p) =>
-  fprintln!(out, "F0ARGsome_dyn(", d0p, ")")
+  fprint!(out, "F0ARGsome_dyn(", d0p, ")")
 | F0ARGsome_sta(tbeg, s0qs, tend) =>
-  fprintln!
+  fprint!
   ( out
   , "F0ARGsome_sta(", tbeg, "; ", s0qs, "; ", tend, ")")
 | F0ARGsome_met(tbeg, s0es, tend) =>
-  fprintln!
+  fprint!
   ( out
   , "F0ARGsome_met(", tbeg, "; ", s0es, "; ", tend, ")")
 //
@@ -419,9 +419,16 @@ case+ x0.node() of
   (tok0, d0cs, tok1, d0es, tok2) =>
   fprint!
   ( out
-  , "D0Elet("
-  , tok0, "; ", d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
+  , "D0Elet(", tok0, "; "
+  , d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
 | D0Ewhere _ => fprint!(out, "D0Ewhere(...)")
+//
+| D0Elam
+  (tok0, arg1, res2, farrw, fbody) =>
+  fprint!
+  ( out
+  , "D0Elam(", tok0, "; "
+  , arg1, "; ", res2, "; ", farrw, "; ", fbody, ")")
 //
 | D0Eanno
   (d0e, ann) =>
@@ -536,6 +543,30 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
+print_funarrow(x0) =
+fprint_funarrow(stdout_ref, x0)
+implement
+prerr_funarrow(x0) =
+fprint_funarrow(stderr_ref, x0)
+implement
+fprint_funarrow(out, x0) =
+(
+case+ x0 of
+| FUNARROWnone(tok) =>
+  fprint!
+  (out, "FUNARROWnone(", tok, ")")
+| FUNARROWsing(tok) =>
+  fprint!
+  (out, "FUNARROWsing(", tok, ")")
+| FUNARROWsome(tbeg, s0es, tend) =>
+  fprint!
+  ( out
+  , "FUNARROWsome(", tbeg, "; ", s0es, "; ", tend, ")")
+) (* end of [fprint_funarrow] *)
+
+(* ****** ****** *)
+
+implement
 print_declmodopt(x0) =
 fprint_declmodopt(stdout_ref, x0)
 implement
@@ -558,27 +589,6 @@ case+ x0 of
   fprint!
   ( out, "DECLMODlist("
   , tok, "; ", tbeg, "; ", ids, "; ", tend, ")")
-)
-
-(* ****** ****** *)
-
-implement
-print_effs0expopt(x0) =
-fprint_effs0expopt(stdout_ref, x0)
-implement
-prerr_effs0expopt(x0) =
-fprint_effs0expopt(stderr_ref, x0)
-implement
-fprint_effs0expopt
-  (out, x0) =
-(
-case+ x0 of
-| EFFS0EXPnone() =>
-  fprint!(out, "EFFS0EXPnone(", ")")
-| EFFS0EXPsome(s0f, s0e) =>
-  fprint!
-  ( out
-  , "EFFS0EXPsome(", s0f, "; ", s0e, ")")
 )
 
 (* ****** ****** *)
