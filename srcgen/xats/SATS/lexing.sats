@@ -184,6 +184,10 @@ tnode =
   | T_THEN of () // 'then'
   | T_ELSE of () // 'else'
 //
+  | T_ENDIF of () // 'endif'
+  | T_ENDSIF of () // 'endsif'
+  | T_ENDCASE of () // 'endcase'
+//
   | T_LAM of int
     // 'lam=lam1' and 'lam@=lam0'
   | T_FIX of int

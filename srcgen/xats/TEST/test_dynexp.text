@@ -1,17 +1,39 @@
 (* ****** ****** *)
+
+#infixl 30 -
+#infixl 40 *
+#infixl 20 >=
+
+(* ****** ****** *)
+
 val-
 nil() = xs0
 withtype list(int)
 
 val+
 :rec
-cons(x, xs2) = xs1
+x \cons xs2 = xs1
+
+val
+tup_flat = @(1, 2)
+val
+tup_boxd = $(1, 2)
 ////
+val
+:rec
+fact =
+lam(x: int): int =<cloref1>
+  if x >= 1 then x * fact(x-1) else 1
+// end of [lam]
+
 (* ****** ****** *)
+////
+#infixl 40 *
 
 fun
 :(prf)
-fact(x, r) = if x >= 1 then fact(x-1, x*r) else r
+fact(x, r) =
+if x >= 1 then fact(x-1, x*r) else r
 
 (* ****** ****** *)
 ////

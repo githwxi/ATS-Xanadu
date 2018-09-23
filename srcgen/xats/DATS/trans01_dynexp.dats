@@ -921,10 +921,39 @@ d0e0.node() of
 //
 | D0Eparen _ => auxparen(d0e0)
 //
+| D0Etuple _ => auxtuple(d0e0)
+//
+| D0Eif0
+  ( tif0, d0e1
+  , d0e2, opt3, topt) => let
+    val d1e1 = trans01_dexp(d0e1)
+    val d1e2 =
+    (
+      case+ d0e2 of
+      | d0exp_THEN
+          (_, d0e2) => trans01_dexp(d0e2)
+        // d0exp_THEN
+    ) : d1exp // end of [val]
+    val opt3 =
+    (
+      case+ opt3 of
+      | d0exp_ELSEnone
+          () => None((*void*))
+      | d0exp_ELSEsome
+          (_, d0e) => Some(trans01_dexp(d0e))
+    ) : d1expopt // end of [val]
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+      d1exp_make_node(loc0, D1Eif0(d1e1, d1e2, opt3))
+    }
+  end (* end of [D0Eif0] *)
+//
 | D0Enone(_(*tok*)) =>
   FXITMatm(d1e0) where
   {
-    val d1e0 = d1exp_make_node(loc0, D1Enone())
+    val d1e0 = d1exp_make_node(loc0, D1Enone(*void*))
   } (* end of [D0Enone] *)
 //
 end // end of [auxitm]
@@ -974,6 +1003,45 @@ case+ rparen of
   }
 ) : d1exp_node // end of [val]
 //
+in
+  FXITMatm
+  (d1exp_make_node(d0e0.loc(), d1e0_node))
+end // end of [auxparen]
+
+(* ****** ****** *)
+
+and
+auxtuple
+( d0e0
+: d0exp): d1eitm = let
+//
+val-
+D0Etuple
+( knd, _
+, d0es1, rparen) = d0e0.node()
+//
+val
+d1e0_node =
+(
+case+ rparen of
+//
+| d0exp_RPAREN_cons0
+    (_) =>
+  D1Etuple(knd, d1es1) where
+  {
+    val d1es1 = trans01_dexplst(d0es1)
+  }
+| d0exp_RPAREN_cons1
+    (_, d0es2, _) =>
+  D1Etuple(knd, d1es1, d1es2) where
+  {
+    val d1es1 = trans01_dexplst(d0es1)
+    val d1es2 = trans01_dexplst(d0es2)
+  }
+//
+) : d1exp_node // end of [val]
+//
+
 in
   FXITMatm
   (d1exp_make_node(d0e0.loc(), d1e0_node))
@@ -1090,6 +1158,10 @@ implement
 trans01_dcstdec
   (d0c0) = let
 //
+val () =
+println!
+("trans01_dcstdec: d0c0 = ", d0c0)
+//
 val+
 D0CSTDEC(rcd) = d0c0
 //
@@ -1156,6 +1228,13 @@ val
 def = trans01_dexp(rcd.def)
 val
 wtp = trans01_wths0expopt(rcd.wtp)
+//
+val () =
+println!("trans01_valdecl: pat = ", pat)
+val () =
+println!("trans01_valdecl: def = ", def)
+val () =
+println!("trans01_valdecl: wtp = ", wtp)
 //
 in
   V1ALDECL

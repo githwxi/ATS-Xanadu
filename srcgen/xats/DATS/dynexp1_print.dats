@@ -283,6 +283,19 @@ x0.node() of
   fprint!
   (out, "D1Elist(", d1es1, "; ", d1es2, ")")
 //
+| D1Etuple(tok, d1es) =>
+  fprint!
+  (out, "D1Etuple(", tok, "; ", d1es, ")")
+| D1Etuple(tok, d1es1, d1es2) =>
+  fprint!
+  ( out
+  , "D1Etuple(", tok, "; ", d1es1, "; ", d1es2, ")")
+//
+| D1Eif0(d1e1, d1e2, opt3) =>
+  fprint!
+  ( out
+  , "D1Eif0(", d1e1, "; ", d1e2, "; ", opt3, ")")
+//
 | D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
 //
 ) (* fprint_d1exp *)
@@ -329,6 +342,27 @@ case+ x0 of
 | TEQD1EXPsome(tok, d1e) =>
   fprint!
   (out, "TEQD1EXPsome(", tok, "; ", d1e, ")")
+)
+
+(* ****** ****** *)
+
+implement
+print_wths1expopt(x0) =
+fprint_wths1expopt(stdout_ref, x0)
+implement
+prerr_wths1expopt(x0) =
+fprint_wths1expopt(stderr_ref, x0)
+implement
+fprint_wths1expopt
+  (out, x0) =
+(
+case+ x0 of
+| WTHS1EXPnone() =>
+  fprint!
+  (out, "WTHS1EXPnone(", ")")
+| WTHS1EXPsome(tok, s1e) =>
+  fprint!
+  (out, "WTHS1EXPsome(", tok, "; ", s1e, ")")
 )
 
 (* ****** ****** *)

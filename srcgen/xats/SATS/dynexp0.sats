@@ -356,9 +356,16 @@ d0exp_node =
   // end of [D0Eparen]
 //
 | D0Etuple of
-    (token, tokenopt, d0explst, s0exp_RPAREN)
+    ( token, tokenopt
+    , d0explst, d0exp_RPAREN)
 | D0Erecord of
-    (token, tokenopt, labd0explst, labd0exp_RBRACE)
+    ( token, tokenopt
+    , labd0explst, labd0exp_RBRACE)
+//
+| D0Eif0 of
+  ( token
+  , d0exp
+  , d0exp_THEN, d0exp_ELSE, tokenopt)
 //
 | D0Elet of
   (token, d0eclist, token, d0explst, token)
@@ -382,6 +389,16 @@ labd0exp_RBRACE =
 | labd0exp_RBRACE_cons0 of token
 | labd0exp_RBRACE_cons1 of (token, labd0explst, token)
 //
+(* ****** ****** *)
+
+and
+d0exp_THEN =
+| d0exp_THEN of (token, d0exp)
+and
+d0exp_ELSE =
+| d0exp_ELSEnone of ()
+| d0exp_ELSEsome of (token, d0exp)
+
 (* ****** ****** *)
 //
 fun
@@ -444,6 +461,34 @@ fprint_labd0exp_RBRACE: fprint_type(labd0exp_RBRACE)
 overload print with print_labd0exp_RBRACE
 overload prerr with prerr_labd0exp_RBRACE
 overload fprint with fprint_labd0exp_RBRACE
+//
+(* ****** ****** *)
+//
+fun
+print_d0exp_THEN:
+  print_type(d0exp_THEN)
+fun
+prerr_d0exp_THEN:
+  prerr_type(d0exp_THEN)
+fun
+fprint_d0exp_THEN: fprint_type(d0exp_THEN)
+//
+overload print with print_d0exp_THEN
+overload prerr with prerr_d0exp_THEN
+overload fprint with fprint_d0exp_THEN
+//
+fun
+print_d0exp_ELSE:
+  print_type(d0exp_ELSE)
+fun
+prerr_d0exp_ELSE:
+  prerr_type(d0exp_ELSE)
+fun
+fprint_d0exp_ELSE: fprint_type(d0exp_ELSE)
+//
+overload print with print_d0exp_ELSE
+overload prerr with prerr_d0exp_ELSE
+overload fprint with fprint_d0exp_ELSE
 //
 (* ****** ****** *)
 //
@@ -584,6 +629,23 @@ overload print with print_v0aldecl
 overload prerr with prerr_v0aldecl
 overload fprint with fprint_v0aldecl
 //
+(* ****** ****** *)
+
+datatype
+f0undecl =
+F0UNDECL of @{
+  loc= loc_t
+, nam= d0pid
+, arg= f0arglst
+, res= effs0expopt
+, teq= token
+, def= d0exp
+, wtp= wths0expopt
+}
+
+typedef
+f0undeclist = List0(f0undecl)
+
 (* ****** ****** *)
 
 datatype

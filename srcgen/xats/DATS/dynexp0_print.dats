@@ -408,6 +408,13 @@ case+ x0.node() of
   , "D0Erecord("
   , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
 //
+| D0Eif0
+  (tif0, d0e1, d0e2, d0e3, topt) =>
+  fprint!
+  ( out
+  , "D0Eif0(", tif0, "; "
+  , d0e1, "; ", d0e2, "; ", d0e3, "; ", topt, ")")
+//
 | D0Elet
   (tok0, d0cs, tok1, d0es, tok2) =>
   fprint!
@@ -491,6 +498,40 @@ case+ x0 of
 ) (* end of [fprint_labd0exp_RBRACE] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_d0exp_THEN(x0) =
+fprint_d0exp_THEN(stdout_ref, x0)
+implement
+prerr_d0exp_THEN(x0) =
+fprint_d0exp_THEN(stderr_ref, x0)
+implement
+fprint_d0exp_THEN(out, x0) =
+(
+case+ x0 of
+| d0exp_THEN(tok, d0e) =>
+  fprint!(out, "d0exp_THEN(", tok, "; ", d0e, ")")
+) (* end of [fprint_d0exp_THEN] *)
+
+(* ****** ****** *)
+
+implement
+print_d0exp_ELSE(x0) =
+fprint_d0exp_ELSE(stdout_ref, x0)
+implement
+prerr_d0exp_ELSE(x0) =
+fprint_d0exp_ELSE(stderr_ref, x0)
+implement
+fprint_d0exp_ELSE(out, x0) =
+(
+case+ x0 of
+| d0exp_ELSEnone() =>
+  fprint!(out, "d0exp_ELSEnone(", ")")
+| d0exp_ELSEsome(tok, d0e) =>
+  fprint!(out, "d0exp_ELSEsome(", tok, "; ", d0e, ")")
+) (* end of [fprint_d0exp_ELSE] *)
 
 (* ****** ****** *)
 
