@@ -67,6 +67,9 @@ implement
 fprint_val<d1arg> = fprint_d1arg
 //
 implement
+fprint_val<f1arg> = fprint_f1arg
+//
+implement
 fprint_val<tq1arg> = fprint_tq1arg
 //
 (* ****** ****** *)
@@ -242,6 +245,10 @@ x0.node() of
   fprint!
   (out, "D1Plist(", d1ps1, "; ", d1ps2, ")")
 //
+| D1Panno(d1p, s1e) =>
+  fprint!
+  (out, "D1Panno(", d1p, "; ", s1e, ")")
+//
 | D1Pnone((*void*)) => fprint!(out, "D1Pnone(", ")")
 //
 ) (* end of [fprint_d1pat] *)
@@ -318,6 +325,18 @@ x0.node() of
   ( out
   , "D1Eif0(", d1e1, "; ", d1e2, "; ", opt3, ")")
 //
+| D1Elet(d1cs, d1es) =>
+  (
+    fprint!(out, "D1Elet(", d1cs, "; ", d1es, ")")
+  )
+//
+| D1Elam
+  (arg, res, farrw, fbody) =>
+  fprint!
+  ( out
+  , "D1Elam(", "; "
+  , arg, "; ", res, "; ", farrw, "; ", fbody, ")")
+//
 | D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
 //
 ) (* fprint_d1exp *)
@@ -327,23 +346,20 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-print_effs1expopt(x0) =
-fprint_effs1expopt(stdout_ref, x0)
+print_f1unarrow(x0) =
+fprint_f1unarrow(stdout_ref, x0)
 implement
-prerr_effs1expopt(x0) =
-fprint_effs1expopt(stderr_ref, x0)
+prerr_f1unarrow(x0) =
+fprint_f1unarrow(stderr_ref, x0)
 implement
-fprint_effs1expopt
-  (out, x0) =
+fprint_f1unarrow(out, x0) =
 (
 case+ x0 of
-| EFFS1EXPnone() =>
-  fprint!(out, "EFFS1EXPnone(", ")")
-| EFFS1EXPsome(s1f, s1e) =>
-  fprint!
-  ( out
-  , "EFFS1EXPsome(", s1f, "; ", s1e, ")")
-)
+| F1UNARROWdflt() =>
+  fprint!(out, "F1UNARROWdflt(", ")")
+| F1UNARROWlist(s1es) =>
+  fprint!(out, "F1UNARROWlist(", s1es, ")")
+) (* end of [fprint_f1unarrow] *)
 
 (* ****** ****** *)
 

@@ -374,7 +374,7 @@ d0exp_node =
 //
 | D0Elam of
   ( token(*lam/lam@*)
-  , f0arglst, effs0expopt, funarrow, d0exp)
+  , f0arglst, effs0expopt, f0unarrow, d0exp)
 //
 | D0Eanno of (d0exp, s0exp)
 //
@@ -408,12 +408,11 @@ d0exp_ELSE =
 (* ****** ****** *)
 //
 and
-funarrow =
-| FUNARROWnone of
-  (token(*=>*))
-| FUNARROWsing of
-  (token(*=>*))
-| FUNARROWsome of
+f0unarrow =
+| F0UNARROWnone of
+  (token(*error*))
+| F0UNARROWdflt of (token(*=>*))
+| F0UNARROWlist of
   (token(*=<*), s0explst, token (*>*))
 //
 (* ****** ****** *)
@@ -510,17 +509,17 @@ overload fprint with fprint_d0exp_ELSE
 (* ****** ****** *)
 //
 fun
-print_funarrow:
-  print_type(funarrow)
+print_f0unarrow:
+  print_type(f0unarrow)
 fun
-prerr_funarrow:
-  prerr_type(funarrow)
+prerr_f0unarrow:
+  prerr_type(f0unarrow)
 fun
-fprint_funarrow: fprint_type(funarrow)
+fprint_f0unarrow: fprint_type(f0unarrow)
 //
-overload print with print_funarrow
-overload prerr with prerr_funarrow
-overload fprint with fprint_funarrow
+overload print with print_f0unarrow
+overload prerr with prerr_f0unarrow
+overload fprint with fprint_f0unarrow
 //
 (* ****** ****** *)
 //

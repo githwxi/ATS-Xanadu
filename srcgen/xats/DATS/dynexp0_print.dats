@@ -543,26 +543,26 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
-print_funarrow(x0) =
-fprint_funarrow(stdout_ref, x0)
+print_f0unarrow(x0) =
+fprint_f0unarrow(stdout_ref, x0)
 implement
-prerr_funarrow(x0) =
-fprint_funarrow(stderr_ref, x0)
+prerr_f0unarrow(x0) =
+fprint_f0unarrow(stderr_ref, x0)
 implement
-fprint_funarrow(out, x0) =
+fprint_f0unarrow(out, x0) =
 (
 case+ x0 of
-| FUNARROWnone(tok) =>
+| F0UNARROWnone(tok) =>
   fprint!
-  (out, "FUNARROWnone(", tok, ")")
-| FUNARROWsing(tok) =>
+  (out, "F0UNARROWnone(", tok, ")")
+| F0UNARROWdflt(tok) =>
   fprint!
-  (out, "FUNARROWsing(", tok, ")")
-| FUNARROWsome(tbeg, s0es, tend) =>
+  (out, "F0UNARROWdflt(", tok, ")")
+| F0UNARROWlist(tbeg, s0es, tend) =>
   fprint!
   ( out
-  , "FUNARROWsome(", tbeg, "; ", s0es, "; ", tend, ")")
-) (* end of [fprint_funarrow] *)
+  , "F0UNARROWlist(", tbeg, "; ", s0es, "; ", tend, ")")
+) (* end of [fprint_f0unarrow] *)
 
 (* ****** ****** *)
 

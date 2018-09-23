@@ -1206,6 +1206,23 @@ case+ s0ef of
 (* ****** ****** *)
 
 implement
+trans01_effsexpopt
+  (opt0) =
+(
+case+ opt0 of
+| EFFS0EXPnone() =>
+  EFFS1EXPnone()
+| EFFS0EXPsome(s0f, s0e) =>
+  EFFS1EXPsome(s1f, s1e) where
+  {
+    val s1f = trans01_seff(s0f)
+    val s1e = trans01_sexp(s0e)
+  }
+) (* end of [trans01_effsexpopt] *)
+
+(* ****** ****** *)
+
+implement
 trans01_srtcon
   (s0c0) = let
 //
