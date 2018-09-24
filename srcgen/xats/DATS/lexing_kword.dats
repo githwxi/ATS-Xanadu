@@ -284,6 +284,9 @@ val () = myins("absvtbox", T_ABSVTBOX_)
 val () = myins("absvtflt", T_ABSVTFLT_)
 val () = myins("absvtflat", T_ABSVTFLAT_)
 //
+val () = myins("absimpl", T_ABSIMPL)
+val () = myins("absopen", T_ABSOPEN)
+//
 val () = myins("datasort", T_DATASORT)
 //
 val () = myins("dataprop", T_DATAPROP_)
@@ -347,6 +350,8 @@ val () = myins("#prefix", T_PREFIX_)
 val () = myins("#postfix", T_POSTFIX_)
 //
 val () = myins("#nonfix", T_SRP_NONFIX)
+//
+val () = myins("#stacst", T_SRP_STACST)
 //
 val () = myins("#static", T_SRP_STATIC)
 val () = myins("#extern", T_SRP_EXTERN)

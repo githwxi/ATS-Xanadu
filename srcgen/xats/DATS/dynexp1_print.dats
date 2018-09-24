@@ -452,6 +452,12 @@ case+ x0.node() of
   fprint!
   (out, "D1Cstaload(", knd, "; ", d1e, ")")
 //
+| D1Cstacst0
+  (tok, sid, s0t) =>
+  fprint!
+  ( out
+  , "D1Cstacst0(", tok, "; ", sid, "; ", s0t, ")")
+//
 | D1Csortdef
   (knd, tok, def) =>
   fprint!
@@ -459,17 +465,23 @@ case+ x0.node() of
   , "D1Csortdef(", knd, "; ", tok, "; ", def, ")")
 //
 | D1Csexpdef
-  ( knd, tok
+  ( knd, sid
   , arg, res, def) =>
   fprint!
   ( out, "D1Csexpdef("
-  , knd, "; ", tok, "; ", arg, "; ", res, "; ", def, ")")
+  , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
 //
 | D1Cabstype
   (knd, tok, arg, def) =>
   fprint!
   ( out, "D1Cabstype("
   , knd, "; ", tok, "; ", arg, "; ", def, ")")
+//
+| D1Cabsimpl
+  (tok, fapp, teq1, def2) =>
+  fprint!
+  ( out, "D1Cabsimpl("
+  , tok, "; ", fapp, "; ", teq1, "; ", def2, ")")
 //
 | D1Cvaldecl
   (tok, mods, d1cs) =>

@@ -2174,20 +2174,20 @@ case+ tnd of
 //
     val sid =
       p_s0eid(buf, err)
-    val t0mas =
+    val tmas =
       p_t0margseq(buf, err)
     // end of [val]
-    val tdef0 = p_abstdf0(buf, err)
+    val tdef = p_abstdf0(buf, err)
     val loc_res =
     (
-    case+ tdef0 of
+    case+ tdef of
     | ABSTDF0nil() =>
       (
-      case+ t0mas of
+      case+ tmas of
       | list_nil() => loc+sid.loc()
       | list_cons _ => let
         val t0ma =
-        list_last(t0mas) in loc+t0ma.loc()
+        list_last(tmas) in loc+t0ma.loc()
         end // end of [list_cons]
       ) (* ABSTDF0nil *)
     | ABSTDF0lteq(_, s0e) => loc+s0e.loc()
@@ -2197,8 +2197,24 @@ case+ tnd of
     err := e0;
     d0ecl_make_node
     ( loc_res
-    , D0Cabstype(tok, sid, t0mas, tdef0))
+    , D0Cabstype(tok, sid, tmas, tdef) )
   end
+//
+| T_ABSIMPL() => let
+//
+    val () = buf.incby1()
+//
+    val s0e0 = 
+      p_apps0exp_NEQ(buf, err)
+    val teq1 = p_EQ(buf, err)
+    val def2 = p_s0exp(buf, err)
+    val loc_res = loc + def2.loc()
+  in
+    err := e0;
+    d0ecl_make_node
+    ( loc_res
+    , D0Cabsimpl(tok, s0e0, teq1, def2))
+  end // end of [T_ABSIMPL]
 //
 | T_DATASORT() => let
 //
@@ -2337,6 +2353,20 @@ case+ tnd of
     err := e0;
     d0ecl_make_node(loc_res, D0Cstaload(tok, d0e))
   end // end of [#STALOAD(...)]
+//
+| T_SRP_STACST () => let
+//
+    val () = buf.incby1()
+    val sid = p_s0eid(buf, err)
+    val tok1 = p_COLON(buf, err)
+    val s0t2 = p_sort0(buf, err)
+    val loc_res = loc + s0t2.loc()
+  in
+    err := e0;
+    d0ecl_make_node
+      ( loc_res, D0Cstacst0(tok, sid, tok1, s0t2) )
+    // d0ecl_make_node
+  end // end of [T_SRP_STACST]
 //
 | T_SRP_NONFIX () => let
 //
