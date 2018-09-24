@@ -1335,6 +1335,10 @@ wtp = trans01_wthsexpopt(rcd.wtp)
 val () =
 println!("trans01_fundecl: nam = ", nam)
 val () =
+println!("trans01_fundecl: arg = ", arg)
+val () =
+println!("trans01_fundecl: res = ", res)
+val () =
 println!("trans01_fundecl: def = ", def)
 val () =
 println!("trans01_fundecl: wtp = ", wtp)
@@ -1630,6 +1634,31 @@ end // end of [aux_staload]
 (* ****** ****** *)
 
 fun
+aux_stacst0
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cstacst0
+( tok, sid
+, tcln, s0t2) = d0c0.node()
+//
+val-
+I0DNTsome(sid) = sid.node()
+//
+val s1t2 = trans01_sort(s0t2)
+//
+in
+//
+d1ecl_make_node(loc0, D1Cstacst0(tok, sid, s1t2))
+//
+end // end of [aux_stacst0]
+
+(* ****** ****** *)
+
+fun
 aux_sortdef
 ( d0c0
 : d0ecl): d1ecl = let
@@ -1761,6 +1790,29 @@ aux_abstdef
   | ABSTDF0eqeq(tok, s0e) =>
     ABSTDF1eqeq(trans01_sexp(s0e))
 ) (* end of [aux_abstdef] *)
+
+(* ****** ****** *)
+
+fun
+aux_absimpl
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cabsimpl
+( tok
+, fapp, teq1, def2) = d0c0.node()
+//
+val fapp = trans01_sexp(fapp)
+val def2 = trans01_sexp(def2)
+//
+in
+  d1ecl_make_node
+    (loc0, D1Cabsimpl(tok, fapp, teq1, def2))
+  // d1ecl_make_node
+end // end of [aux_absimpl]
 
 (* ****** ****** *)
 
@@ -1975,11 +2027,14 @@ d0c0.node() of
 //
 | D0Cstaload _ => aux_staload(d0c0)
 //
+| D0Cstacst0 _ => aux_stacst0(d0c0)
+//
 | D0Csortdef _ => aux_sortdef(d0c0)
 //
 | D0Csexpdef _ => aux_sexpdef(d0c0)
 //
 | D0Cabstype _ => aux_abstype(d0c0)
+| D0Cabsimpl _ => aux_absimpl(d0c0)
 //
 | D0Cvaldecl _ => aux_valdecl(d0c0)
 | D0Cfundecl _ => aux_fundecl(d0c0)

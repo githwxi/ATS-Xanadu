@@ -8,6 +8,16 @@
 
 (* ****** ****** *)
 
+abstype abc(a:int)<= int
+abstype abc(a:int)== int
+absimpl abc(a:int) = int
+
+// absopen abc
+
+////
+
+(* ****** ****** *)
+
 val-
 nil() = xs0
 withtype list(int)
@@ -31,7 +41,7 @@ lam(x: int): int =<cloref1>
 // end of [lam]
 
 (* ****** ****** *)
-
+//
 fun<>
 :(rec)
 fact
@@ -39,7 +49,21 @@ fact
 (x: int(n)): int =
 if x >= 1
   then fact(x-1, x*r) else 1
-withtype (int, int) -> int
+// end of [if]
+
+(* /b4{n:nat}(x:int(n)) =
+if x >= 1
+  then fact(x-1, x*r) else 1
+withtype {n:nat}(int(n)) -> int
+
+(* ****** ****** *)
+
+#extern
+fun
+fact
+{n:int}
+(*.<n+1>.*)
+(x: int(n)): intGte(1)
 
 (* ****** ****** *)
 ////
@@ -68,13 +92,6 @@ if x >= 1
 // end of [if]
 withtype int -> int
 *)
-
-#static
-fun
-fact
-{n:int}
-.<n+1>.
-(x: int(n)): intGte(1)
 
 if:
 [n:int]

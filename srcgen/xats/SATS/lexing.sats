@@ -205,6 +205,9 @@ tnode =
 //
   | T_ABSTYPE of int(*kind*)
 //
+  | T_ABSIMPL of ()
+  | T_ABSOPEN of ()
+//
   | T_DATASORT of ()
 //
   | T_DATATYPE of int(*kind*)
@@ -213,6 +216,8 @@ tnode =
 //
   | T_SRP_NONFIX of ()
   | T_SRP_FIXITY of int(*kind*)
+//
+  | T_SRP_STACST of () // #stacst
 //
 // #static
   | T_SRP_STATIC of () // locally

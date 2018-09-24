@@ -32,8 +32,12 @@ bar0( bar1 + ! !! !!! )
 
 (* ****** ****** *)
 
-sexpdef
-foo = int:type
+#stacst
+fint2: (int, int) -> int
+
+(* ****** ****** *)
+
+sexpdef foo = int:type
 
 sexpdef
 foo =

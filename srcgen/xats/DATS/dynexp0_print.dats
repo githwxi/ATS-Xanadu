@@ -690,6 +690,12 @@ case+ x0.node() of
   fprint!
   (out, "D0Cstaload(", tok, "; ", d0e, ")")
 //
+| D0Cstacst0
+  (tok, sid, tok1, s0t2) =>
+  fprint!
+  ( out, "D0Cstacst0("
+  , tok, "; ", sid, "; ", tok1, "; ", s0t2, ")")
+//
 | D0Csortdef
   (tok, tid, tok1, def2) =>
   fprint!
@@ -709,6 +715,12 @@ case+ x0.node() of
   fprint!
   ( out, "D0Cabstype("
   , tok, "; ", sid, "; ", arg0, "; ", tdef, ")")
+//
+| D0Cabsimpl
+  (tok, s0e0, teq1, def2) =>
+  fprint!
+  ( out, "D0Cabsimpl("
+  , tok, "; ", s0e0, "; ", teq1, "; ", def2, ")")
 //
 | D0Cvaldecl
   (tok, mods, d0cs) =>

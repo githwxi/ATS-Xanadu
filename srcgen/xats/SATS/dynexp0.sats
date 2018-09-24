@@ -726,6 +726,9 @@ for skipping error
   // end of [D0Cdynload]
 *)
 //
+| D0Cstacst0 of
+  (token, s0eid, token, sort0)
+//
 | D0Csortdef of
   (token, s0tid, token, s0rtdef)
 //
@@ -737,6 +740,10 @@ for skipping error
 | D0Cabstype of
     (token, s0eid, t0marglst, abstdf0)
   // D0Cabstype
+| D0Cabsimpl of
+    ( token
+    , s0exp(*f0app*), token(*EQ*), s0exp)
+  // D0Cabsimpl
 //
 | D0Cvaldecl of
   ( token(*valkind*)

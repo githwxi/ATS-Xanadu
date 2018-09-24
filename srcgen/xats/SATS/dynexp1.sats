@@ -542,6 +542,10 @@ d1ecl_node =
 | D1Cstaload of
   (token, d1exp) // file staloading
 //
+| D1Cstacst0 of
+  ( token
+  , token(*s0eid*), sort1)
+//
 | D1Csortdef of
   ( token(*kind*)
   , token(*s0tid*), s1rtdef)
@@ -555,6 +559,10 @@ d1ecl_node =
   ( token(*kind*)
   , token(*s0eid*), t1marglst, abstdf1)
   // D1Cabstype
+| D1Cabsimpl of
+  ( token(*kind*)
+  , s1exp(*f1app*), token(*EQ*), s1exp)
+  // D1Cabsimpl
 //
 | D1Cvaldecl of
   ( token(*valkind*)
