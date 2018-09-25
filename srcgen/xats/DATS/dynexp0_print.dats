@@ -199,6 +199,24 @@ x0.node() of
 (* ****** ****** *)
 
 implement
+fprint_sq0arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+| SQ0ARGnone(tok) =>
+  fprint!(out, "SQ0ARGnone(", tok, ")")
+| SQ0ARGsome(tbeg, s0qs, tend) =>
+  fprint!
+  ( out
+  , "SQ0ARGsome(", tbeg, "; ", s0qs, "; ", tend, ")")
+//
+) (* end of [fprint_sq0arg] *)
+
+(* ****** ****** *)
+
+implement
 fprint_tq0arg
   (out, x0) =
 (
@@ -730,6 +748,9 @@ case+ x0.node() of
   fprint!
   ( out
   , "D0Cfundecl(", tok, "; ", tqas, "; ", mods, "; ", d0cs)
+//
+| D0Cimpdecl _ =>
+  fprint!(out, "D0Cimpdecl(", "...", ")")
 //
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")

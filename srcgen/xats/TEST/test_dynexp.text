@@ -26,9 +26,8 @@ foo(x: a):<ntm,wrt> @(b, c) = @(x, x)
 (* ****** ****** *)
 
 implement
-<a:type>
-<b:type>
-(a,b,c:type)
+{a:type;b,c:tbox}
+<a:type;b,c:tbox>
 foo<list(a)><(b, c)>(x: a): int
 
 ////

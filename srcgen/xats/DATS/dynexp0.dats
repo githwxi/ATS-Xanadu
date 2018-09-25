@@ -89,6 +89,38 @@ end // end of [local]
 local
 
 absimpl
+sq0arg_tbox = $rec{
+  sq0arg_loc= loc_t
+, sq0arg_node= sq0arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+sq0arg_get_loc(x0) = x0.sq0arg_loc
+implement
+sq0arg_get_node(x0) = x0.sq0arg_node
+
+(* ****** ****** *)
+
+implement
+sq0arg_make_node
+(loc, node) = $rec
+{
+  sq0arg_loc= loc, sq0arg_node= node
+} (* end of [sq0arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 tq0arg_tbox = $rec{
   tq0arg_loc= loc_t
 , tq0arg_node= tq0arg_node
