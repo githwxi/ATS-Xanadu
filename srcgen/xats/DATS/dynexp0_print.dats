@@ -101,10 +101,8 @@ case+ x0.node() of
 | Q0ARGnone(tok) =>
   fprint!(out, "Q0ARGnone(", tok, ")")
 *)
-| Q0ARGsome(ids, tok, s0t) =>
-  fprint!
-  ( out
-  , "Q0ARGsome(", ids, "; ", tok, "; ", s0t, ")")
+| Q0ARGsome(ids, opt) =>
+  fprint!(out, "Q0ARGsome(", ids, "; ", opt, ")")
 //
 ) (* end of [fprint_q0arg] *)
 

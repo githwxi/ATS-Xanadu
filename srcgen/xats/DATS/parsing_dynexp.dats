@@ -330,26 +330,48 @@ p_q0arg
 //
 val e0 = err
 val ids = auxids(buf, err)
-val tok = p_COLON(buf, err)
-val s0t = p_appsort0_NGT(buf, err)
+//
+val tok = buf.get0()
+val opt =
+(
+case+
+tok.node() of
+| T_COLON() =>
+  Some
+  (
+  p_appsort0_NGT(buf, err)
+  ) where
+  {
+    val () = buf.incby1()
+  }
+| _(* non-COLON *) => None()
+) : sort0opt // end of [val]
 //
 val loc0 =
 (
 case+ ids of
-| list_nil() => tok.loc()
+| list_nil() =>
+  (
+    tok.loc()
+  )
 | list_cons _ =>
   let
     val
     id0 = list_last(ids) in id0.loc()
   end // end of [list_cons]
 ) : loc_t // end of [val]
-val loc_res = loc0 + s0t.loc()
+val loc_res =
+(
+case+ opt of
+| None() => loc0
+| Some(s0t) => loc0 + s0t.loc()
+) : loc_t // end of [val]
 //
 in
-  err := e0;
-  q0arg_make_node
-    (loc_res, Q0ARGsome(ids, tok, s0t))
-  // q0arg_make_node
+//
+err := e0;
+q0arg_make_node(loc_res, Q0ARGsome(ids, opt))
+//
 end where
 {
   fun
@@ -940,7 +962,7 @@ in
 //
 case+ tnd of
 //
-| T_DOTLT() => let
+| T_DOTLT(_) => let
     val () = buf.incby1()
     val s0es =
     p_s0expseq_COMMA(buf, err)

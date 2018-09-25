@@ -437,10 +437,8 @@ fprint_s0qua
 case+ x0.node() of
 | S0QUAprop(s0e) =>
   fprint!(out, "S0QUAprop(", s0e, ")")
-| S0QUAvars(ids, tok, s0t) =>
-  fprint!
-  ( out
-  , "S0QUAvars(", ids, "; ", tok, "; ", s0t, ")")
+| S0QUAvars(ids, opt) =>
+  fprint!(out, "S0QUAvars(", ids, "; ", opt, ")")
 )
 
 (* ****** ****** *)

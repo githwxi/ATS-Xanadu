@@ -131,28 +131,30 @@ end // end of [p_t0str]
 (* ****** ****** *)
 
 implement
-p_l0abl(buf, err) =
-let
+p_l0abl
+  (buf, err) = let
 //
   val e0 = err
   val tok = buf.get0()
 //
 in
 //
-  case+
-  tok.node() of
-  | T_INT1(rep) =>
-    (
-      buf.incby1(); l0abl_make_int1(tok)
-    )
-  | T_IDENT_alp(name) =>
-    (
-      buf.incby1(); l0abl_make_name(tok)
-    )
-  | _ (* non-INT-IDENT *) =>
-    ( err := e0 + 1; l0abl_make_none(tok))
+case+
+tok.node() of
+| T_INT1(rep) =>
+  (
+    buf.incby1(); l0abl_make_int1(tok)
+  )
+| T_IDENT_alp(name) =>
+  (
+    buf.incby1(); l0abl_make_name(tok)
+  )
+| _ (* non-INT-IDENT *) =>
+  (
+    err := e0 + 1; l0abl_make_none(tok)
+  ) (* end of [non-INT-IDENT] *)
 //
-end // end of [p_l0abl]
+end // end-of-let // end of [p_l0abl]
 
 (* ****** ****** *)
 
@@ -169,56 +171,59 @@ case+ tnd of
 ) (* end of [t_s0tid] *)
 
 implement
-p_s0tid(buf, err) =
-let
+p_s0tid
+  (buf, err) = let
 //
 val tok = buf.get0()
 //
 in
-  case+
-  tok.node() of
 //
-  | T_IDENT_alp _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | T_IDENT_sym _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
+case+
+tok.node() of
+//
+| T_IDENT_alp _ =>
+  i0dnt_some(tok) where
+  {
+    val () = buf.incby1()
+  }
+| T_IDENT_sym _ =>
+  i0dnt_some(tok) where
+  {
+    val () = buf.incby1()
+  }
 //
 (*
-  | T_AT() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "@" )
-      val tok = token_make_node(loc, tnd)
-    }
+| T_AT() =>
+  i0dnt_some(tok) where
+  {
+    val () = buf.incby1()
+    val loc = tok.loc((*void*))
+    val tnd = T_IDENT_sym( "@" )
+    val tok = token_make_node(loc, tnd)
+  }
 //
-  | T_MSGT() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-      val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "->" )
-      val tok = token_make_node(loc, tnd)
-    }
+| T_MSGT() =>
+  i0dnt_some(tok) where
+  {
+    val () = buf.incby1()
+    val loc = tok.loc((*void*))
+    val tnd = T_IDENT_sym( "->" )
+    val tok = token_make_node(loc, tnd)
+  }
 *)
 //
-  | T_BACKSLASH() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
+| T_BACKSLASH() =>
+  i0dnt_some(tok) where
+  {
+    val () = buf.incby1()
+  }
 //
-  | _ (* non-IDENT *) =>
-      (err := err + 1; i0dnt_none(tok))
+| _ (* non-IDENT *) =>
+  (
+    err := err + 1; i0dnt_none(tok)
+  ) (* end of [non-IDENT] *)
 //
-end // end of [p_s0tid]
+end // end-of-let // end of [p_s0tid]
 
 (* ****** ****** *)
 //
@@ -234,21 +239,23 @@ implement
 p_s0aid
   (buf, err) = let
 //
-  val tok = buf.get0()
-  val tnd = tok.node()
+val tok = buf.get0()
+val tnd = tok.node()
 //
 in
 //
-  case+ tnd of
-  | T_IDENT_alp _ =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-  | _ (*non-IDENT-alp*) =>
-      (err := err + 1; i0dnt_none(tok))
+case+ tnd of
+| T_IDENT_alp _ =>
+  i0dnt_some(tok) where
+  {
+    val () = buf.incby1()
+  }
+| _ (*non-IDENT-alp*) =>
+  (
+    err := err + 1; i0dnt_none(tok)
+  ) (* end of non-IDENT-alp *)
 //
-end // end of [p_s0aid]
+end // end-of-let // end of [p_s0aid]
 //
 (* ****** ****** *)
 
@@ -1555,6 +1562,34 @@ end // end of [p_labs0exp_RBRACE]
 
 (* ****** ****** *)
 
+local
+//
+// HX-2018-09-25:
+// [auxids] should always returns
+// a non-empty list of identifiers
+//
+fun
+auxids
+( buf: &tokbuf >> _
+, err: &int >> _): i0dntlst = let
+//
+val ids =
+list_vt2t
+(
+  pstar_COMMA_fun
+  {s0eid}(buf, err, p_s0aid)
+) (* end of [val] *)
+//
+in
+//
+if
+isneqz(ids)
+then ids else list_sing(p_s0aid(buf, err))
+//
+end // end of [auxids]
+
+in (* in-of-local *)
+
 implement
 p_s0qua
   (buf, err) = let
@@ -1568,34 +1603,40 @@ in
 case+ tnd of
 | _ when
     t_s0aid(tnd) => let
-    val id0 = p_s0aid(buf, err)
+    val id0 =
+      p_s0aid(buf, err)
+    // end of [val]
     val tok1 = buf.get0()
     val tnd1 = tok1.node()
   in
     case+ tnd1 of
 //
     | T_COLON() => let
+        val () = buf.incby1()
         val ids = list_sing(id0)
-        val tok2 = p_COLON(buf, err)
-        val s0t0 = p_sort0(buf, err)
-        val loc_res = id0.loc() + s0t0.loc()
+        val s0t = p_sort0(buf, err)
+        val loc_res = id0.loc() + s0t.loc()
       in
         err := e0;
         s0qua_make_node
-        (loc_res, S0QUAvars(ids, tok2, s0t0))
+          (loc_res, S0QUAvars(ids, Some(s0t)))
+        // s0qua_make_node
       end // end of [T_COLON]
 //
     | T_COMMA() => let
         val () = buf.incby1()
         val ids = auxids(buf, err)
         val ids = list_cons(id0, ids)
-        val tok2 = p_COLON(buf, err)
-        val s0t0 = p_sort0(buf, err)
-        val loc_res = id0.loc() + s0t0.loc()
+        val opt = popt_sort0_anno(buf, err)
+        val loc_res =
+        (
+          case+ opt of
+          | None() => id0.loc()
+          | Some(s0t) => id0.loc() + s0t.loc()
+        ) : loc_t // end of [val]
       in
         err := e0;
-        s0qua_make_node
-        (loc_res, S0QUAvars(ids, tok2, s0t0))
+        s0qua_make_node(loc_res, S0QUAvars(ids, opt))
       end // end of [T_COMMA]
 //
     | _ (*atms0expseq*) => let
@@ -1608,7 +1649,7 @@ case+ tnd of
           | list_nil() =>
             (
               id0.loc()
-            )
+            ) // end of [list_nil]
           | list_cons _ =>
             let
               val s0e =
@@ -1617,12 +1658,14 @@ case+ tnd of
               id0.loc() + s0e.loc()
             end // end of [list_cons]
         ) : loc_t // end of [val]
+//
         val s0e0 =
         s0exp_make_node(id0.loc(), S0Eid(id0))
         val s0e1 =
         s0exp_make_node
           (loc1, S0Eapps(list_cons(s0e0, s0es)))
         // end of [val]
+//
       in
         err := e0;
         s0qua_make_node(s0e1.loc(), S0QUAprop(s0e1))
@@ -1630,22 +1673,20 @@ case+ tnd of
   end // end of [S0Eid]
 //
 | _ (*non-S0Eid*) => let
-    val s0e = p_s0exp(buf, err)
+    val s0e0 = p_s0exp(buf, err)
   in
     // HX-2018-09-09:
     // for improving error message reporting?
-    err := e0;
-    s0qua_make_node(s0e.loc(), S0QUAprop(s0e))
+    let
+        val ((*void*)) = err := e0
+    in
+        s0qua_make_node(s0e0.loc(), S0QUAprop(s0e0))
+    end
   end // end of [non-S0Eid]
 //
-end where
-{
-  fun
-  auxids
-  ( buf: &tokbuf >> _
-  , err: &int >> _): i0dntlst =
-  list_vt2t(pstar_COMMA_fun{s0eid}(buf, err, p_s0aid))
-} (* end of [p_s0qua] *)
+end // end-of-let // end of [p_s0qua]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -1655,7 +1696,10 @@ p_s0quaseq_BARSEMI
 (
 //
 list_vt2t
-(pstar_BARSEMI_fun{s0qua}(buf, err, p_s0qua))
+(
+  pstar_BARSEMI_fun
+  {s0qua}(buf, err, p_s0qua)
+) (* list_vt2t *)
 //
 ) (* end of [p_s0quaseq_BARSEMI] *)
 
@@ -1894,7 +1938,7 @@ tok.node() of
       (S0EFFnone(tok), s0e_res)
     // EFFS0EXPsome
   end // end of [T_COLON]
-| T_COLONLT() => let
+| T_COLONLT(_) => let
     val () = buf.incby1()
     val s0es =
     list_vt2t

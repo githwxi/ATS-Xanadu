@@ -82,7 +82,7 @@ q1arg_node =
 | Q1ARGnone of token
 *)
 | Q1ARGsome of
-  (tokenlst(*ids*), sort1)
+  (tokenlst(*ids*), sort1opt)
 //
 fun
 q1arg_get_loc(q1arg): loc_t

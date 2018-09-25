@@ -662,12 +662,11 @@ case+
 s0q0.node() of
 | S0QUAprop(s0e) =>
   S1QUAprop(trans01_sexp(s0e))
-| S0QUAvars
-  (ids, _, s0t) =>
-  S1QUAvars(ids, s1t) where
+| S0QUAvars(ids, opt) =>
+  S1QUAvars(ids, opt) where
   {
     val ids = auxids(ids)
-    val s1t = trans01_sort(s0t)
+    val opt = trans01_sortopt(opt)
   }
 ) : s1qua_node // end of [val]
 //

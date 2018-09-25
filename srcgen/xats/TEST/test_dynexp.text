@@ -11,8 +11,25 @@
 abstype abc(a:int)<= int
 abstype abc(a:int)== int
 absimpl abc(a:int) = int
+// absopen abc // explicit def
 
-// absopen abc
+(* ****** ****** *)
+
+fun
+<a1,a2>
+<b:type
+;c:tbox>
+foo(x: a):<ntm,wrt> @(b, c) = @(x, x)
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
+
+implement
+<a:type>
+<b:type>
+(a,b,c:type)
+foo<list(a)><(b, c)>(x: a): int
 
 ////
 
@@ -39,22 +56,6 @@ fact =
 lam(x: int): int =<cloref1>
   if x >= 1 then x * fact(x-1) else 1
 // end of [lam]
-
-(* ****** ****** *)
-//
-fun<>
-:(rec)
-fact
-{n:nat}.<n>.
-(x: int(n)): int =
-if x >= 1
-  then fact(x-1, x*r) else 1
-// end of [if]
-
-(* /b4{n:nat}(x:int(n)) =
-if x >= 1
-  then fact(x-1, x*r) else 1
-withtype {n:nat}(int(n)) -> int
 
 (* ****** ****** *)
 

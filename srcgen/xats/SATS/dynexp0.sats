@@ -86,8 +86,7 @@ q0arg_node =
 (*
 | Q0ARGnone of token
 *)
-| Q0ARGsome of
-  (i0dntlst, token(*':'*), sort0)
+| Q0ARGsome of (i0dntlst, sort0opt)
 //
 fun
 q0arg_get_loc(q0arg): loc_t
@@ -753,6 +752,13 @@ for skipping error
   ( token(*funkind*)
   , tq0arglst(*tmpargs*)
   , declmodopt(*rec/prf/...*), f0undeclist)
+//
+(*
+| D0Cimpdecl of
+  ( token(*impkind*)
+  , s0marglst
+  , tq0arglst, iq0arglst, f0arglst, token, d0exp)
+*)
 //
 | D0Cdatasort of
     (token(*datasort*), d0tsortlst)
