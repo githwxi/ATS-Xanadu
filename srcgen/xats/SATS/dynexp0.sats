@@ -110,6 +110,46 @@ q0arg_make_node
 //
 (* ****** ****** *)
 //
+abstbox sq0arg_tbox = ptr
+//
+typedef sq0arg = sq0arg_tbox
+typedef sq0arglst = List0(sq0arg)
+//
+datatype
+sq0arg_node =
+  | SQ0ARGnone of token
+  | SQ0ARGsome of
+    (token(*'{'*), s0qualst, token(*'}'*))
+//
+fun
+sq0arg_get_loc(sq0arg): loc_t
+fun
+sq0arg_get_node(sq0arg): sq0arg_node
+//
+overload .loc with sq0arg_get_loc
+overload .node with sq0arg_get_node
+//
+fun print_sq0arg : print_type(sq0arg)
+fun prerr_sq0arg : prerr_type(sq0arg)
+fun fprint_sq0arg : fprint_type(sq0arg)
+//
+overload print with print_sq0arg
+overload prerr with prerr_sq0arg
+overload fprint with fprint_sq0arg
+//
+fun
+sq0arg_make_node
+(loc: loc_t, node: sq0arg_node): sq0arg
+//
+(* ****** ****** *)
+//
+abstbox ti0arg_tbox = ptr
+//
+typedef ti0arg = ti0arg_tbox
+typedef ti0arglst = List0(ti0arg)
+//
+(* ****** ****** *)
+//
 abstbox tq0arg_tbox = ptr
 //
 typedef tq0arg = tq0arg_tbox
@@ -753,12 +793,9 @@ for skipping error
   , tq0arglst(*tmpargs*)
   , declmodopt(*rec/prf/...*), f0undeclist)
 //
-(*
 | D0Cimpdecl of
-  ( token(*impkind*)
-  , s0marglst
-  , tq0arglst, iq0arglst, f0arglst, token, d0exp)
-*)
+  ( token(*impkind*), sq0arglst, tq0arglst
+  , dq0eid, ti0arglst, f0arglst, token, d0exp)
 //
 | D0Cdatasort of
     (token(*datasort*), d0tsortlst)

@@ -361,6 +361,33 @@ end // end of [p_s0eid]
 
 (* ****** ****** *)
 //
+implement
+p_sq0eid
+  (buf, err) = let
+//
+  val e0 = err
+  val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_IDENT_qual _ => let
+    val () = buf.incby1()
+  in
+    err := e0;
+    SQ0EIDsome
+      (tok, p_s0eid(buf, err))
+    // SQ0EIDsome
+  end // end of [T_IDENT_qual]
+//
+| _(*non-IDENT_qual*) =>
+    SQ0EIDnone(p_s0eid(buf, err))
+//
+end // end of [p_sq0eid]
+//
+(* ****** ****** *)
+//
 (*
 atmsort0::
 //

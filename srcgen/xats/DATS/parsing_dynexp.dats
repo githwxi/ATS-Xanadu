@@ -256,13 +256,40 @@ in
 end // end of [p_d0eid]
 
 (* ****** ****** *)
-
+//
 implement
-p_i0dnt
+p_dq0eid
   (buf, err) = let
 //
-val e0 = err
-val tok = buf.get0()
+  val e0 = err
+  val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_IDENT_qual _ => let
+    val () = buf.incby1()
+  in
+    err := e0;
+    DQ0EIDsome
+      (tok, p_d0eid(buf, err))
+    // DQ0EIDsome
+  end // end of [T_IDENT_qual]
+//
+| _(*non-IDENT_qual*) =>
+    DQ0EIDnone(p_d0eid(buf, err))
+//
+end // end of [p_dq0eid]
+//
+(* ****** ****** *)
+
+implement
+p_i0dnt(buf, err) =
+let
+//
+  val e0 = err
+  val tok = buf.get0()
 //
 in
 //
@@ -323,15 +350,26 @@ p_q0argseq_SEMICOLON: parser(q0arglst)
 //
 (* ****** ****** *)
 //
-//
 implement
 p_q0arg
   (buf, err) = let
 //
 val e0 = err
-val ids = auxids(buf, err)
+//
+val ids =
+  auxids(buf, err)
 //
 val tok = buf.get0()
+//
+val ids =
+(
+if
+isneqz(ids)
+then ids else
+  list_sing(i0dnt_none(tok))
+// end-of-if
+) : i0dntlst
+//
 val opt =
 (
 case+
@@ -398,6 +436,58 @@ list_vt2t
 //
 extern
 fun
+p_sq0arg: parser(sq0arg)
+extern
+fun
+p_sq0argseq: parser(sq0arglst)
+//
+implement
+p_sq0arg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+(*
+val () =
+println! ("p_sq0arg: tok = ", tok)
+*)
+//
+in
+case+
+tok.node() of
+| T_LBRACE() => let
+    val () = buf.incby1()
+    val s0qs =
+      p_s0quaseq_BARSEMI(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_RBRACE(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    sq0arg_make_node
+    (loc_res, SQ0ARGsome(tbeg, s0qs, tend))
+  end
+| _(* non-LBRACE *) =>
+  ( err := e0 + 1;
+    sq0arg_make_node(tok.loc(), SQ0ARGnone(tok))
+  ) (* end of [non-LBRACE] *)
+//
+end // end of [p_sq0arg]
+//
+implement
+p_sq0argseq
+  (buf, err) =
+(
+  list_vt2t
+  (pstar_fun{sq0arg}(buf, err, p_sq0arg))
+) (* end of [p_sq0argseq] *)
+//
+(* ****** ****** *)
+//
+extern
+fun
 p_tq0arg: parser(tq0arg)
 extern
 fun
@@ -445,7 +535,7 @@ tok.node() of
 | _(* non-LT/GT *) =>
   ( err := e0 + 1;
     tq0arg_make_node(tok.loc(), TQ0ARGnone(tok))
-  ) (* end of [non-LT] *)
+  ) (* end of [non-LT/GT] *)
 //
 end // end of [p_tq0arg]
 //
@@ -453,10 +543,8 @@ implement
 p_tq0argseq
   (buf, err) =
 (
-//
-list_vt2t
-(pstar_fun{tq0arg}(buf, err, p_tq0arg))
-//
+  list_vt2t
+  (pstar_fun{tq0arg}(buf, err, p_tq0arg))
 ) (* end of [p_tq0argseq] *)
 //
 (* ****** ****** *)

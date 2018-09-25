@@ -82,6 +82,9 @@ STAEXP0 = "./staexp0.sats"
   typedef s0qua = $STAEXP0.s0qua
   typedef s0uni = $STAEXP0.s0uni
 //
+  typedef sq0eid = $STAEXP0.sq0eid
+  typedef dq0eid = $STAEXP0.dq0eid
+//
   typedef d0tsort = $STAEXP0.d0tsort
   typedef s0rtdef = $STAEXP0.s0rtdef
 //
@@ -273,6 +276,11 @@ fun t_d0eid(tnode): bool
 //
 fun p_d0pid: parser(d0pid) // pat id
 fun p_d0eid: parser(d0eid) // exp id
+//
+(* ****** ****** *)
+//
+fun p_sq0eid: parser(sq0eid) // qualid
+fun p_dq0eid: parser(dq0eid) // qualid
 //
 (* ****** ****** *)
 //

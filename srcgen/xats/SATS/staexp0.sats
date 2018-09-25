@@ -101,6 +101,17 @@ typedef l0abl = l0abl_tbox
 (* ****** ****** *)
 //
 datatype
+sq0eid =
+| SQ0EIDnone of (s0eid)
+| SQ0EIDsome of (token, s0eid)
+datatype
+dq0eid =
+| DQ0EIDnone of (d0eid)
+| DQ0EIDsome of (token, d0eid)
+//
+(* ****** ****** *)
+//
+datatype
 t0int_node =
   | T0INTnone of token
   | T0INTsome of token
