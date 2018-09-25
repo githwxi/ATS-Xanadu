@@ -375,11 +375,11 @@ in
 case+
 q0a0.node() of
 | Q0ARGsome
-  (ids, _, s0t) => let
+  (ids, opt) => let
     val ids = auxids(ids)
-    val s1t = trans01_sort(s0t)
+    val opt = trans01_sortopt(opt)
   in
-    q1arg_make_node(loc0, Q1ARGsome(ids, s1t))
+    q1arg_make_node(loc0, Q1ARGsome(ids, opt))
   end // end of [Q0ARGsome]
 //
 end // end of [trans01_qarg]
@@ -1277,6 +1277,8 @@ val
 wtp = trans01_wthsexpopt(rcd.wtp)
 //
 val () =
+println!("trans01_valdecl: loc = ", loc)
+val () =
 println!("trans01_valdecl: pat = ", pat)
 val () =
 println!("trans01_valdecl: def = ", def)
@@ -1332,6 +1334,8 @@ def = trans01_dexp(rcd.def)
 val
 wtp = trans01_wthsexpopt(rcd.wtp)
 //
+val () =
+println!("trans01_fundecl: loc = ", loc)
 val () =
 println!("trans01_fundecl: nam = ", nam)
 val () =
@@ -1391,6 +1395,8 @@ val
 def = trans01_teqdexpopt(rcd.def)
 //
 (*
+val () =
+println!("trans01_dcstdecl: loc = ", loc)
 val () =
 println!("trans01_dcstdecl: nam = ", nam)
 val () =
@@ -1745,6 +1751,20 @@ end // end of [aux_sexpdef]
 (* ****** ****** *)
 
 fun
+aux_abstdef
+( def0
+: abstdf0): abstdf1 =
+(
+  case+ def0 of
+  | ABSTDF0nil() =>
+    ABSTDF1nil()
+  | ABSTDF0lteq(tok, s0e) =>
+    ABSTDF1lteq(trans01_sexp(s0e))
+  | ABSTDF0eqeq(tok, s0e) =>
+    ABSTDF1eqeq(trans01_sexp(s0e))
+) (* end of [aux_abstdef] *)
+
+and
 aux_abstype
 ( d0c0
 : d0ecl): d1ecl = let
@@ -1776,20 +1796,6 @@ in
     (loc0, D1Cabstype(knd, tok, arg1, def1))
   // d1ecl_make_node
 end // end of [aux_abstype]
-
-and
-aux_abstdef
-( def0
-: abstdf0): abstdf1 =
-(
-  case+ def0 of
-  | ABSTDF0nil() =>
-    ABSTDF1nil()
-  | ABSTDF0lteq(tok, s0e) =>
-    ABSTDF1lteq(trans01_sexp(s0e))
-  | ABSTDF0eqeq(tok, s0e) =>
-    ABSTDF1eqeq(trans01_sexp(s0e))
-) (* end of [aux_abstdef] *)
 
 (* ****** ****** *)
 
@@ -2038,6 +2044,10 @@ d0c0.node() of
 //
 | D0Cvaldecl _ => aux_valdecl(d0c0)
 | D0Cfundecl _ => aux_fundecl(d0c0)
+//
+(*
+| D0Cimpdecl _ => aux_impdecl(d0c0)
+*)
 //
 | D0Cdatasort _ => aux_datasort(d0c0)
 //

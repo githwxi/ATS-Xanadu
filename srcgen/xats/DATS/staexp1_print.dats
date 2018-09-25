@@ -322,8 +322,8 @@ fprint_s1qua
 case+ x0.node() of
 | S1QUAprop(s1e) =>
   fprint!(out, "S1QUAprop(", s1e, ")")
-| S1QUAvars(ids, s1t) =>
-  fprint!(out, "S1QUAvars(", ids, "; ", s1t, ")")
+| S1QUAvars(ids, opt) =>
+  fprint!(out, "S1QUAvars(", ids, "; ", opt, ")")
 )
 
 (* ****** ****** *)

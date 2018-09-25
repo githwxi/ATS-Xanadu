@@ -589,6 +589,70 @@ end // end of [loop]
 (* ****** ****** *)
 
 fun
+lexing_isDOT
+( buf
+: &lexbuf >> _, i0: int
+) : tnode = let
+//
+val i1 = 
+(
+  lexbuf_getc(buf)
+)
+val c1 = int2char0(i1)
+//
+in
+//
+ifcase
+| c1 = '<' =>
+  T_DOTLT(cs) where
+  {
+    val cs =
+    lexbuf_get_fullseg(buf)
+  }
+| _(* else *) => let
+    val () =
+    lexbuf_unget(buf, i1)
+  in
+    lexing_isSYMBOLIC(buf, i0)
+  end (* end of [......] *)
+//
+end (* end of [lexing_isDOT] *)
+
+(* ****** ****** *)
+
+fun
+lexing_isCOLON
+( buf
+: &lexbuf >> _, i0: int
+) : tnode = let
+//
+val i1 = 
+(
+  lexbuf_getc(buf)
+)
+val c1 = int2char0(i1)
+//
+in
+//
+ifcase
+| c1 = '<' =>
+  T_COLONLT(cs) where
+  {
+    val cs =
+    lexbuf_get_fullseg(buf)
+  }
+| _(* else *) => let
+    val () =
+    lexbuf_unget(buf, i1)
+  in
+    lexing_isSYMBOLIC(buf, i0)
+  end (* end of [......] *)
+//
+end (* end of [lexing_isCOLON] *)
+
+(* ****** ****** *)
+
+fun
 lexing_isSLASH
 ( buf
 : &lexbuf >> _, i0: int
@@ -1214,6 +1278,12 @@ ifcase
 //
 | isBLANK(c0) =>
   lexing_isBLANK(buf, i0)
+//
+| isDOT(c0) =>
+  lexing_isDOT(buf, i0)
+//
+| isCOLON(c0) =>
+  lexing_isCOLON(buf, i0)
 //
 | isSLASH(c0) =>
   lexing_isSLASH(buf, i0)

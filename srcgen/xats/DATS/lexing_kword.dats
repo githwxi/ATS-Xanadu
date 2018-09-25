@@ -211,10 +211,14 @@ val () = myins("->", T_MSGT)
 val () = myins("-<>", T_MSLTGT)
 *)
 //
+(*
 val () = myins(".<", T_DOTLT)
+*)
 val () = myins(">.", T_GTDOT)
 //
+(*
 val () = myins(":<", T_COLONLT)
+*)
 //
 val () = myins("as", T_AS)
 //

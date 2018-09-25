@@ -96,6 +96,11 @@ case+ tnd of
 | T_BLANK(x) =>
   fprint!(out, "BLANK(", x, ")")
 //
+| T_DOTLT(x) =>
+  fprint!(out, "DOTLT(", x, ")")
+| T_COLONLT(x) =>
+  fprint!(out, "COLONLT(", x, ")")
+//
 | T_IDENT_alp(x) =>
   fprint!(out, "IDENT_alp(", x, ")")
 | T_IDENT_sym(x) =>
@@ -187,10 +192,10 @@ case+ tnd of
 | T_MSLTGT() => fprint(out, "MSLTGT")
 *)
 //
+(*
 | T_DOTLT() => fprint(out, "DOTLT")
+*)
 | T_GTDOT() => fprint(out, "GTDOT")
-//
-| T_COLONLT() => fprint(out, "COLONLT")
 //
 | T_COMMA() => fprint(out, "COMMA")
 | T_SEMICOLON() => fprint(out, "SEMICOLON")
@@ -342,7 +347,6 @@ prerr2_tnode
   fprint2_tnode(stderr_ref, tok)
 //
 (* ****** ****** *)
-
 //
 implement
 fprint2_tnode(out, tnd) =
@@ -356,6 +360,9 @@ case+ tnd of
 | T_EOL() => fprint(out, "\n")
 //
 | T_BLANK(x) => fprint(out, x)
+//
+| T_DOTLT(x) => fprint(out, x)
+| T_COLONLT(x) => fprint(out, x)
 //
 | T_IDENT_alp(x) => fprint(out, x)
 | T_IDENT_sym(x) => fprint(out, x)
@@ -431,10 +438,7 @@ case+ tnd of
 | T_MSLTGT() => fprint(out, "-<>")
 *)
 //
-| T_DOTLT() => fprint(out, ".<")
 | T_GTDOT() => fprint(out, ">.")
-//
-| T_COLONLT() => fprint(out, ":<")
 //
 | T_COMMA() => fprint(out, ",")
 | T_SEMICOLON() => fprint(out, ";")
@@ -848,7 +852,10 @@ case+ node of
 //
 | T_BLANK(bs) => posincneol(pos1, bs)
 //
-| T_SPECHAR(c) => posinc1(pos1)
+| T_DOTLT(cs) => posincneol(pos1, cs)
+| T_COLONLT(cs) => posincneol(pos1, cs)
+//
+| T_SPECHAR(c0) => posinc1(pos1)
 //
 | T_IDENT_alp(id) => posincneol(pos1, id)
 | T_IDENT_sym(id) => posincneol(pos1, id)

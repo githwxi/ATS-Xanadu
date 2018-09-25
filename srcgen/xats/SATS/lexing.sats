@@ -58,6 +58,9 @@ tnode =
 //
   | T_BLANK of (string) // blank
 //
+  | T_DOTLT of (string) // .<
+  | T_COLONLT of (string) // :<
+//
   | T_IDENT_alp of string // alnum
   | T_IDENT_sym of string // symbol
 //
@@ -126,10 +129,10 @@ tnode =
   | T_MSLTGT of () // -<>
 *)
 //
+(*
   | T_DOTLT of () // .<
-  | T_GTDOT of () //  >.
-//
-  | T_COLONLT of () // :<
+*)
+  | T_GTDOT of () // >.
 //
   | T_COMMA of () // ,
   | T_SEMICOLON of () // ;

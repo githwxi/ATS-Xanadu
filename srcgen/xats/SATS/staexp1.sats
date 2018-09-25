@@ -352,7 +352,7 @@ typedef s1qualst = List0(s1qua)
 datatype
 s1qua_node =
 | S1QUAprop of s1exp
-| S1QUAvars of (tokenlst, sort1)
+| S1QUAvars of (tokenlst, sort1opt)
 //
 fun
 s1qua_get_loc(s1qua): loc_t
