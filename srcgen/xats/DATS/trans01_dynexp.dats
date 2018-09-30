@@ -1853,7 +1853,7 @@ val loc0 = d0c0.loc()
 val-
 D0Cfundecl
 ( knd
-, tqas, mopt, d0cs) = d0c0.node()
+, mopt, tqas, d0cs) = d0c0.node()
 //
 val tqas = trans01_tqarglst(tqas)
 val d1cs = trans01_fundeclist(d0cs)

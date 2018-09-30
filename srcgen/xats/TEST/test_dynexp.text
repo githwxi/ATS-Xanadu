@@ -1,3 +1,10 @@
+implement
+:nonrec
+{a:type;b,c:tbox}
+<a:type;b,c:tbox>
+foo2<list(a)><b, c>(x: a): int = x
+
+////
 (* ****** ****** *)
 
 #infixl 30 +
@@ -16,19 +23,13 @@ absimpl abc(a:int) = int
 (* ****** ****** *)
 
 fun
+:rec
 <a1,a2>
 <b:type
 ;c:tbox>
 foo(x: a):<ntm,wrt> @(b, c) = @(x, x)
 
 (* ****** ****** *)
-////
-(* ****** ****** *)
-
-implement
-{a:type;b,c:tbox}
-<a:type;b,c:tbox>
-foo<list(a)><(b, c)>(x: a): int
 
 ////
 

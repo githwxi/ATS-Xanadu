@@ -84,6 +84,17 @@ case+ fnk of
 
 (* ****** ****** *)
 
+implement
+fprint_impkind
+  (out, knd) =
+(
+  case+ knd of
+  | IMPval() => fprint!(out, "IMPval")
+  | IMPprf() => fprint!(out, "IMPprf")
+) (* end of [fprint_impkind] *)
+
+(* ****** ****** *)
+
 local
 //
 #staload

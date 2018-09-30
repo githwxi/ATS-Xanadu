@@ -113,6 +113,18 @@ overload fprint with fprint_funkind
 //
 (* ****** ****** *)
 //
+datatype
+impkind =
+//
+| IMPprf // proof implementation
+| IMPval // value implementation
+//
+fun
+fprint_impkind:fprint_type(impkind)
+overload fprint with fprint_impkind
+//
+(* ****** ****** *)
+//
 typedef
 eq_type(a:t0ype) = (a, a) -> bool
 typedef
