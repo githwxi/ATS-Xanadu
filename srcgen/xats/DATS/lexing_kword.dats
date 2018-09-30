@@ -86,6 +86,13 @@ T_PRVAL_ = T_VAL(VLKprval)
 (* ****** ****** *)
 //
 macdef
+T_IMPLMNT_ = T_IMPLMNT(IMPval)
+macdef
+T_PRIMPLMNT_ = T_IMPLMNT(IMPprf)
+//
+(* ****** ****** *)
+//
+macdef
 T_SEXPDEF_ = T_SEXPDEF(0)
 macdef
 T_PROPDEF_ = T_SEXPDEF(PROPSORT)
@@ -266,6 +273,11 @@ val () = myins("prfun", T_PRFUN_)
 //
 val () = myins("val", T_VAL_)
 val () = myins("prval", T_PRVAL_)
+//
+val () = myins("implmnt", T_IMPLMNT_)
+val () = myins("implement", T_IMPLMNT_)
+val () = myins("primplmnt", T_PRIMPLMNT_)
+val () = myins("primplement", T_PRIMPLMNT_)
 //
 val () = myins("sortdef", T_SORTDEF)
 //

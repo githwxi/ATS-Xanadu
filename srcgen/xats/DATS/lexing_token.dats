@@ -255,22 +255,22 @@ case+ tnd of
 | T_ENDCASE() => fprint(out, "ENDCASE")
 //
 | T_LAM(knd) =>
-  (
-    fprint!(out, "LAM(", knd, ")")
-  )
+  fprint!
+  (out, "LAM(", knd, ")")
 | T_FIX(knd) =>
-  (
-    fprint!(out, "FIX(", knd, ")")
-  )
+  fprint!
+  (out, "FIX(", knd, ")")
 //
 | T_FUN(fnk) =>
-  (
-    fprint!(out, "FUN(", fnk, ")")
-  )
+  fprint!
+  (out, "FUN(", fnk, ")")
 | T_VAL(vlk) =>
-  (
-    fprint!(out, "VAL(", vlk, ")")
-  )
+  fprint!
+  (out, "VAL(", vlk, ")")
+//
+| T_IMPLMNT(knd) =>
+  fprint!
+  (out, "IMPLMNT(", knd, ")")
 //
 | T_SORTDEF() =>
   fprint!
@@ -498,18 +498,22 @@ case+ tnd of
 | T_ENDCASE() => fprint(out, "endcase")
 //
 | T_LAM(knd) =>
-    fprint!(out, "lam(", knd, ")")
-  // T_LAM
+  fprint!
+  (out, "lam(", knd, ")")
 | T_FIX(knd) =>
-    fprint!(out, "fix(", knd, ")")
-  // T_FIX
+  fprint!
+  (out, "fix(", knd, ")")
 //
 | T_FUN(fnk) =>
-    fprint!(out, "FUN(", fnk, ")")
-  // T_FUN
+  fprint!
+  (out, "FUN(", fnk, ")")
 | T_VAL(vlk) =>
-    fprint!(out, "VAL(", vlk, ")")
-  // T_VAL
+  fprint!
+  (out, "VAL(", vlk, ")")
+//
+| T_IMPLMNT(knd) =>
+  fprint!
+  (out, "IMPLMNT(", knd, ")")
 //
 | T_SORTDEF() =>
   fprint!

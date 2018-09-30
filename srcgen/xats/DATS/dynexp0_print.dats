@@ -744,10 +744,10 @@ case+ x0.node() of
   (out, "D0Cvaldecl(", tok, "; ", mods, "; ", d0cs)
 //
 | D0Cfundecl
-  (tok, tqas, mods, d0cs) =>
+  (tok, mods, tqas, d0cs) =>
   fprint!
   ( out
-  , "D0Cfundecl(", tok, "; ", tqas, "; ", mods, "; ", d0cs)
+  , "D0Cfundecl(", tok, "; ", mods, "; ", tqas, "; ", d0cs)
 //
 | D0Cimpdecl _ =>
   fprint!(out, "D0Cimpdecl(", "...", ")")

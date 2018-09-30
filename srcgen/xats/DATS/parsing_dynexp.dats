@@ -488,6 +488,63 @@ p_sq0argseq
 //
 extern
 fun
+p_ti0arg: parser(ti0arg)
+extern
+fun
+p_ti0argseq: parser(ti0arglst)
+//
+implement
+p_ti0arg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+(*
+val () =
+println! ("p_tq0arg: tok = ", tok)
+*)
+//
+in
+//
+case+
+tok.node() of
+//
+| T_LT() => let
+    val () = buf.incby1()
+    val s0es =
+    list_vt2t
+    (
+      pstar_COMMA_fun
+      {s0exp}(buf, err, p_apps0exp_NGT)
+    )
+    val tbeg = tok
+    val tend = p_GT(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    ti0arg_make_node
+    (loc_res, TI0ARGsome(tbeg, s0es, tend))
+  end // end of [T_LT]
+| _(* non-LT/GT *) =>
+  ( err := e0 + 1;
+    ti0arg_make_node(tok.loc(), TI0ARGnone(tok))
+  ) (* end of [non-LT/GT] *)
+//
+end // end of [p_ti0arg]
+//
+implement
+p_ti0argseq
+  (buf, err) =
+(
+  list_vt2t
+  (pstar_fun{ti0arg}(buf, err, p_ti0arg))
+) (* end of [p_ti0argseq] *)
+//
+(* ****** ****** *)
+//
+extern
+fun
 p_tq0arg: parser(tq0arg)
 extern
 fun
@@ -1969,47 +2026,6 @@ list_vt2t
 ) (* end of [p_d0cstdeclseq_AND] *)
 //
 (* ****** ****** *)
-
-extern
-fun
-ptok_dynconst
-( tok: token
-, buf: &tokbuf >> _
-, err: &int >> _): d0ecl
-implement
-ptok_dynconst
-(
-tok, buf, err
-) = let
-  val e0 = err
-  val () =
-    buf.incby1()
-  // end of [val]
-  val loc = tok.loc()
-  val tqas =
-    p_tq0argseq(buf, err)
-  val d0cs =
-    p_d0cstdeclseq_AND(buf, err)
-  val loc_res =
-  (
-    case+ d0cs of
-    | list_nil() =>
-      (case+ tqas of
-       | list_nil() => loc
-       | list_cons
-           (tqa, _) => loc + tqa.loc()
-         // list_cons
-      )
-    | list_cons(d0c, _) => loc+d0c.loc()
-  ) : loc_t // end of [val]
-in
-  err := e0;
-  d0ecl_make_node
-    ( loc_res, D0Cdynconst(tok, tqas, d0cs) )
-  // d0ecl_make_node
-end // end of [ptok_dynconst]
-
-(* ****** ****** *)
 //
 static
 fun
@@ -2175,17 +2191,22 @@ ptok_fundecl
 (
 tok, buf, err
 ) = let
+//
   val e0 = err
   val () =
     buf.incby1()
   // end of [val]
   val loc = tok.loc()
-  val tqas =
-    p_tq0argseq(buf, err)
+//
   val mopt =
     p_declmodopt(buf, err)
+//
+  val tqas =
+    p_tq0argseq(buf, err)
+//
   val d0cs =
     p_f0undeclseq_AND(buf, err)
+//
   val loc_res =
   (
     case+ d0cs of
@@ -2199,9 +2220,103 @@ tok, buf, err
 in
   err := e0;
   d0ecl_make_node
-    ( loc_res, D0Cfundecl(tok, tqas, mopt, d0cs) )
+  (loc_res, D0Cfundecl(tok, mopt, tqas, d0cs))
   // d0ecl_make_node
 end // end of [ptok_fundecl]
+//
+(* ****** ****** *)
+//
+extern
+fun
+ptok_impdecl
+( tok: token
+, buf: &tokbuf >> _
+, err: &int >> _): d0ecl
+implement
+ptok_impdecl
+(
+tok, buf, err
+) = let
+//
+  val e0 = err
+  val () =
+    buf.incby1()
+  // end of [val]
+  val loc = tok.loc()
+//
+  val mopt =
+    p_declmodopt(buf, err)
+//
+  val sqas =
+    p_sq0argseq(buf, err)
+  val tqas =
+    p_tq0argseq(buf, err)
+//
+  val dqid =
+    p_dq0eid(buf, err)
+  val tias =
+    p_ti0argseq(buf, err)
+  val f0as =
+    p_f0argseq(buf, err)
+//
+  val tres =
+    p_effs0expopt(buf, err)
+//
+  val teq0 = p_EQ(buf, err)
+  val d0e1 = p_d0exp(buf, err)
+//
+  val loc_res = tok.loc() + d0e1.loc()
+in
+  err := e0;
+  d0ecl_make_node
+  ( loc_res
+  , D0Cimpdecl
+    ( tok, mopt
+    , sqas, tqas
+    , dqid, tias, f0as, tres, teq0, d0e1)
+  ) (* d0ecl_make_node *)
+end // end of [ptok_impdecl]
+//
+(* ****** ****** *)
+//
+extern
+fun
+ptok_dynconst
+( tok: token
+, buf: &tokbuf >> _
+, err: &int >> _): d0ecl
+implement
+ptok_dynconst
+(
+tok, buf, err
+) = let
+  val e0 = err
+  val () =
+    buf.incby1()
+  // end of [val]
+  val loc = tok.loc()
+  val tqas =
+    p_tq0argseq(buf, err)
+  val d0cs =
+    p_d0cstdeclseq_AND(buf, err)
+  val loc_res =
+  (
+    case+ d0cs of
+    | list_nil() =>
+      (case+ tqas of
+       | list_nil() => loc
+       | list_cons
+           (tqa, _) => loc + tqa.loc()
+         // list_cons
+      )
+    | list_cons(d0c, _) => loc+d0c.loc()
+  ) : loc_t // end of [val]
+in
+  err := e0;
+  d0ecl_make_node
+    ( loc_res, D0Cdynconst(tok, tqas, d0cs) )
+  // d0ecl_make_node
+end // end of [ptok_dynconst]
 //
 (* ****** ****** *)
 
@@ -2410,6 +2525,11 @@ case+ tnd of
 | T_FUN _ when f0 > 0 =>
   (
     ptok_fundecl(tok, buf, err)
+  )
+//
+| T_IMPLMNT _ =>
+  (
+    ptok_impdecl(tok, buf, err)
   )
 //
 | tnd when
