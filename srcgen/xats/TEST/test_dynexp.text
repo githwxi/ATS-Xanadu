@@ -2,8 +2,8 @@ implement
 :nonrec
 {a:type;b,c:tbox}
 <a:type;b,c:tbox>
-foo2<list(a)><b, c>(x: a): int = x
-
+foo2<list(a)><b,c>(x: a): int =
+  (if x then x + x else x - x)
 ////
 (* ****** ****** *)
 

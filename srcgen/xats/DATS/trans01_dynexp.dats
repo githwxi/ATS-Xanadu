@@ -340,6 +340,18 @@ trans01_farglst: f0arglst -> f1arglst
 //
 extern
 fun
+trans01_sqarg: sq0arg -> sq1arg
+and
+trans01_sqarglst: sq0arglst -> sq1arglst
+//
+extern
+fun
+trans01_tiarg: ti0arg -> ti1arg
+and
+trans01_tiarglst: ti0arglst -> ti1arglst
+//
+extern
+fun
 trans01_tqarg: tq0arg -> tq1arg
 and
 trans01_tqarglst: tq0arglst -> tq1arglst
@@ -398,6 +410,80 @@ list_vt2t(q1as) where
     list_map$fopr<q0arg><q1arg> = trans01_qarg
   }
 } (* end of [trans01_qarglst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_sqarg
+  (sq0a) = let
+//
+val
+loc0 = sq0a.loc()
+//
+in
+//
+case-
+sq0a.node() of
+| SQ0ARGsome
+  (_, s0qs, _) => let
+    val s1qs = trans01_squalst(s0qs)
+  in
+    sq1arg_make_node(loc0, SQ1ARGsome(s1qs))
+  end // end of [SQ0ARGsome]
+//
+end // end of [trans01_sqarg]
+
+implement
+trans01_sqarglst
+  (sq0as) =
+list_vt2t(sq1as) where
+{
+  val
+  sq1as =
+  list_map<sq0arg><sq1arg>
+    (sq0as) where
+  {
+    implement
+    list_map$fopr<sq0arg><sq1arg> = trans01_sqarg
+  }
+} (* end of [trans01_sqarglst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_tiarg
+  (ti0a) = let
+//
+val
+loc0 = ti0a.loc()
+//
+in
+//
+case-
+ti0a.node() of
+| TI0ARGsome
+  (_, s0es, _) => let
+    val s1es = trans01_sexplst(s0es)
+  in
+    ti1arg_make_node(loc0, TI1ARGsome(s1es))
+  end // end of [TI0ARGsome]
+//
+end // end of [trans01_tiarg]
+
+implement
+trans01_tiarglst
+  (ti0as) =
+list_vt2t(ti1as) where
+{
+  val
+  ti1as =
+  list_map<ti0arg><ti1arg>
+    (ti0as) where
+  {
+    implement
+    list_map$fopr<ti0arg><ti1arg> = trans01_tiarg
+  }
+} (* end of [trans01_tiarglst] *)
 
 (* ****** ****** *)
 

@@ -234,6 +234,50 @@ l0.node() of
 //
 (* ****** ****** *)
 
+(*
+implement
+print_sq0eid(x0) =
+fprint_sq0eid(stdout_ref, x0)
+implement
+prerr_sq0eid(x0) =
+fprint_sq0eid(stderr_ref, x0)
+*)
+
+implement
+fprint_sq0eid
+  (out, x0) =
+(
+case+ x0 of
+| SQ0EIDnone(sid) =>
+  fprint!(out, "SQ0EIDnone(", sid, ")")
+| SQ0EIDsome(tok, sid) =>
+  fprint!(out, "SQ0EIDsome(", tok, "; ", sid, ")")
+)
+
+(* ****** ****** *)
+
+(*
+implement
+print_dq0eid(x0) =
+fprint_dq0eid(stdout_ref, x0)
+implement
+prerr_dq0eid(x0) =
+fprint_dq0eid(stderr_ref, x0)
+*)
+
+implement
+fprint_dq0eid
+  (out, x0) =
+(
+case+ x0 of
+| DQ0EIDnone(sid) =>
+  fprint!(out, "DQ0EIDnone(", sid, ")")
+| DQ0EIDsome(tok, sid) =>
+  fprint!(out, "DQ0EIDsome(", tok, "; ", sid, ")")
+)
+
+(* ****** ****** *)
+
 implement
 print_sort0(x0) =
 fprint_sort0(stdout_ref, x0)

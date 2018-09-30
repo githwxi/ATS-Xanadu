@@ -70,6 +70,8 @@ implement
 fprint_val<f1arg> = fprint_f1arg
 //
 implement
+fprint_val<sq1arg> = fprint_sq1arg
+implement
 fprint_val<tq1arg> = fprint_tq1arg
 //
 (* ****** ****** *)
@@ -170,6 +172,38 @@ x0.node() of
   fprint!(out, "F1ARGsome_met(", s1es, ")")
 //
 ) (* end of [fprint_f1arg] *)
+
+(* ****** ****** *)
+
+implement
+fprint_sq1arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+| SQ1ARGnone(tok) =>
+  fprint!(out, "SQ1ARGnone(", tok, ")")
+| SQ1ARGsome(s1qs) =>
+  fprint!(out, "SQ1ARGsome(", s1qs, ")")
+//
+) (* end of [fprint_sq1arg] *)
+
+(* ****** ****** *)
+
+implement
+fprint_ti1arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+| TI1ARGnone(tok) =>
+  fprint!(out, "TI1ARGnone(", tok, ")")
+| TI1ARGsome(s1es) =>
+  fprint!(out, "TI1ARGsome(", s1es, ")")
+//
+) (* end of [fprint_ti1arg] *)
 
 (* ****** ****** *)
 
