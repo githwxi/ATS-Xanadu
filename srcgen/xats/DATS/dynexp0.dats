@@ -121,38 +121,6 @@ end // end of [local]
 local
 
 absimpl
-ti0arg_tbox = $rec{
-  ti0arg_loc= loc_t
-, ti0arg_node= ti0arg_node
-}
-
-in (* in-of-local *)
-
-(* ****** ****** *)
-
-implement
-ti0arg_get_loc(x0) = x0.ti0arg_loc
-implement
-ti0arg_get_node(x0) = x0.ti0arg_node
-
-(* ****** ****** *)
-
-implement
-ti0arg_make_node
-(loc, node) = $rec
-{
-  ti0arg_loc= loc, ti0arg_node= node
-} (* end of [ti0arg_make_node] *)
-
-(* ****** ****** *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
 tq0arg_tbox = $rec{
   tq0arg_loc= loc_t
 , tq0arg_node= tq0arg_node
@@ -175,6 +143,38 @@ tq0arg_make_node
 {
   tq0arg_loc= loc, tq0arg_node= node
 } (* end of [tq0arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+ti0arg_tbox = $rec{
+  ti0arg_loc= loc_t
+, ti0arg_node= ti0arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+ti0arg_get_loc(x0) = x0.ti0arg_loc
+implement
+ti0arg_get_node(x0) = x0.ti0arg_node
+
+(* ****** ****** *)
+
+implement
+ti0arg_make_node
+(loc, node) = $rec
+{
+  ti0arg_loc= loc, ti0arg_node= node
+} (* end of [ti0arg_make_node] *)
 
 (* ****** ****** *)
 

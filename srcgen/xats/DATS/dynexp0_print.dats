@@ -79,10 +79,10 @@ implement
 fprint_val<sq0arg> = fprint_sq0arg
 //
 implement
-fprint_val<ti0arg> = fprint_ti0arg
+fprint_val<tq0arg> = fprint_tq0arg
 //
 implement
-fprint_val<tq0arg> = fprint_tq0arg
+fprint_val<ti0arg> = fprint_ti0arg
 //
 (* ****** ****** *)
 //
@@ -223,24 +223,6 @@ x0.node() of
 (* ****** ****** *)
 
 implement
-fprint_ti0arg
-  (out, x0) =
-(
-//
-case+
-x0.node() of
-| TI0ARGnone(tok) =>
-  fprint!(out, "TI0ARGnone(", tok, ")")
-| TI0ARGsome(tbeg, q0as, tend) =>
-  fprint!
-  ( out
-  , "TI0ARGsome(", tbeg, "; ", q0as, "; ", tend, ")")
-//
-) (* end of [fprint_ti0arg] *)
-
-(* ****** ****** *)
-
-implement
 fprint_tq0arg
   (out, x0) =
 (
@@ -255,6 +237,24 @@ x0.node() of
   , "TQ0ARGsome(", tbeg, "; ", q0as, "; ", tend, ")")
 //
 ) (* end of [fprint_tq0arg] *)
+
+(* ****** ****** *)
+
+implement
+fprint_ti0arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+| TI0ARGnone(tok) =>
+  fprint!(out, "TI0ARGnone(", tok, ")")
+| TI0ARGsome(tbeg, q0as, tend) =>
+  fprint!
+  ( out
+  , "TI0ARGsome(", tbeg, "; ", q0as, "; ", tend, ")")
+//
+) (* end of [fprint_ti0arg] *)
 
 (* ****** ****** *)
 

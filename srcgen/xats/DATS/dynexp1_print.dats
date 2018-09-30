@@ -71,8 +71,12 @@ fprint_val<f1arg> = fprint_f1arg
 //
 implement
 fprint_val<sq1arg> = fprint_sq1arg
+//
 implement
 fprint_val<tq1arg> = fprint_tq1arg
+//
+implement
+fprint_val<ti1arg> = fprint_ti1arg
 //
 (* ****** ****** *)
 //
@@ -523,10 +527,20 @@ case+ x0.node() of
   , "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs)
 //
 | D1Cfundecl
-  (tok, tqas, mods, d1cs) =>
+  (tok, mopt, tqas, d1cs) =>
   fprint!
   ( out
-  , "D1Cfundecl(", tok, "; ", tqas, "; ", mods, "; ", d1cs)
+  , "D1Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d1cs)
+//
+| D1Cimpdecl
+  ( tok, mopt, sqas, tqas
+  , dqid, tias, f1as, res0, teq1, d1e2) =>
+  fprint!
+  ( out
+  , "D1Cimpdecl("
+  , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
+  , dqid, "; ", tias, "; ", f1as, "; ", res0, "; ", teq1, "; ", d1e2, ")")
+//
 //
 | D1Cdatasort
   ( knd, d1tsts ) =>

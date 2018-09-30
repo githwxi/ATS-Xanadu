@@ -143,39 +143,6 @@ sq0arg_make_node
 //
 (* ****** ****** *)
 //
-abstbox ti0arg_tbox = ptr
-//
-typedef ti0arg = ti0arg_tbox
-typedef ti0arglst = List0(ti0arg)
-//
-datatype
-ti0arg_node =
-  | TI0ARGnone of token
-  | TI0ARGsome of
-    (token(*'<'*), s0explst, token(*'>'*))
-//
-fun
-ti0arg_get_loc(ti0arg): loc_t
-fun
-ti0arg_get_node(ti0arg): ti0arg_node
-//
-overload .loc with ti0arg_get_loc
-overload .node with ti0arg_get_node
-//
-fun print_ti0arg : print_type(ti0arg)
-fun prerr_ti0arg : prerr_type(ti0arg)
-fun fprint_ti0arg : fprint_type(ti0arg)
-//
-overload print with print_ti0arg
-overload prerr with prerr_ti0arg
-overload fprint with fprint_ti0arg
-//
-fun
-ti0arg_make_node
-(loc: loc_t, node: ti0arg_node): ti0arg
-//
-(* ****** ****** *)
-//
 abstbox tq0arg_tbox = ptr
 //
 typedef tq0arg = tq0arg_tbox
@@ -206,6 +173,39 @@ overload fprint with fprint_tq0arg
 fun
 tq0arg_make_node
 (loc: loc_t, node: tq0arg_node): tq0arg
+//
+(* ****** ****** *)
+//
+abstbox ti0arg_tbox = ptr
+//
+typedef ti0arg = ti0arg_tbox
+typedef ti0arglst = List0(ti0arg)
+//
+datatype
+ti0arg_node =
+  | TI0ARGnone of token
+  | TI0ARGsome of
+    (token(*'<'*), s0explst, token(*'>'*))
+//
+fun
+ti0arg_get_loc(ti0arg): loc_t
+fun
+ti0arg_get_node(ti0arg): ti0arg_node
+//
+overload .loc with ti0arg_get_loc
+overload .node with ti0arg_get_node
+//
+fun print_ti0arg : print_type(ti0arg)
+fun prerr_ti0arg : prerr_type(ti0arg)
+fun fprint_ti0arg : fprint_type(ti0arg)
+//
+overload print with print_ti0arg
+overload prerr with prerr_ti0arg
+overload fprint with fprint_ti0arg
+//
+fun
+ti0arg_make_node
+(loc: loc_t, node: ti0arg_node): ti0arg
 //
 (* ****** ****** *)
 //
