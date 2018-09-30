@@ -1279,6 +1279,15 @@ and
 p_d0exp_ELSE: parser(d0exp_ELSE)
 //
 (* ****** ****** *)
+//
+extern
+fun
+p_d0clau: parser(d0clau)
+extern
+fun
+p_d0clauseq_BAR: parser(d0claulst)
+//
+(* ****** ****** *)
 
 local
 
@@ -1339,6 +1348,69 @@ case+ tnd of
     // d0exp_make_node
   end // end of [T_IF]
 //
+| T_CASE _ => let
+//
+    val () = buf.incby1()
+//
+    val d0e1 =
+      p_appd0exp(buf, err)
+//
+    val tok2 = p_OF(buf, err)
+    val tbar = popt_BAR(buf, err)
+    val d0cs = p_d0clauseq_BAR(buf, err)
+    val tend = popt_ENDCASE(buf, err)
+//
+    val loc_res = let
+      val loc = tok.loc()
+    in
+      case+ tend of
+      | None() =>
+        (
+          case+ d0cs of
+          | list_nil() =>
+            (
+              case+ tbar of
+              | None() => loc + tok2.loc()
+              | Some(tok) => loc + tok.loc()
+            )
+          | list_cons(_, _) =>
+            let
+              val d0c =
+                list_last(d0cs) in loc + d0c.loc()
+              // end of [val]
+            end // end of [list_cons]
+        )
+      | Some(tok) => loc + tok.loc()
+    end : loc_t // end of [let] // end of [val]
+//
+  in
+    err := e0;
+    d0exp_make_node
+      ( loc_res
+      , D0Ecase(tok, d0e1, tok2, tbar, d0cs, tend))
+    // end of [d0exp_make_node]
+  end // end of [T_CASE]
+//
+| T_LAM(k0) => let
+    val () = buf.incby1()
+    val arg =
+      p_f0argseq(buf, err)
+    val res =
+      p_effs0expopt(buf, err)
+    val farrw =
+      p_f0unarrow(buf, err)
+    val fbody = p_d0exp(buf, err)
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Elam(tok, arg, res, farrw, fbody)
+    ) where
+    {
+      val loc_res = tok.loc()+fbody.loc()
+    }
+  end 
+//
 | _ (* error *) =>
   ( err := e0 + 1;
     d0exp_make_node(tok.loc(), D0Enone(tok))
@@ -1353,7 +1425,8 @@ p_d0exp(buf, err) =
 let
   val e0 = err
   val d0es0 =
-  p_atmd0expseq(buf, err)
+    p_atmd0expseq(buf, err)
+  // end of [val]
 in
 //
 case+ d0es0 of
@@ -1528,26 +1601,6 @@ case+ tnd of
     ( loc_res
     , D0Elet(tok, d0cs, tok1, d0es, tok2))
   end // end of [T_LET]
-//
-| T_LAM(k0) => let
-    val () = buf.incby1()
-    val arg =
-      p_f0argseq(buf, err)
-    val res =
-      p_effs0expopt(buf, err)
-    val farrw =
-      p_f0unarrow(buf, err)
-    val fbody = p_d0exp(buf, err)
-  in
-    err := e0;
-    d0exp_make_node
-    ( loc_res
-    , D0Elam(tok, arg, res, farrw, fbody)
-    ) where
-    {
-      val loc_res = tok.loc()+fbody.loc()
-    }
-  end 
 //
 | T_IDENT_qual _ => let
     val () = buf.incby1()
@@ -1755,6 +1808,144 @@ tok.node() of
   )
 //
 end // end of [p_d0exp_ELSE]
+
+(* ****** ****** *)
+//
+extern
+fun
+p_d0gua: parser(d0gua)
+extern
+fun
+p_d0guaseq_AND: parser(d0gualst)
+//
+implement
+p_d0gua
+  (buf, err) = let
+//
+val
+d0e =
+p_appd0exp(buf, err)
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_AS() => let
+    val () = buf.incby1()
+    val d0p = p_d0pat(buf, err)
+    val loc_res = d0e.loc() + d0p.loc()
+  in
+    d0gua_make_node
+      (loc_res, D0GUAmat(d0e, tok, d0p))
+    // d0gua_make_node
+  end // end of [T_AS]
+| _(* non-AS *) =>
+  (
+    d0gua_make_node(d0e.loc(), D0GUAexp(d0e))
+  ) (* end of [non-AS] *)
+//
+end // end of [p_d0gua]
+//
+implement
+p_d0guaseq_AND
+  (buf, err) =
+(
+//
+  list_vt2t
+  (pstar_AND_fun{d0gua}(buf, err, p_d0gua))
+//
+) (* end of [p_d0guaseq_AND] *)
+//
+(* ****** ****** *)
+//
+extern
+fun
+p_dg0pat: parser(dg0pat)
+//
+(* ****** ****** *)
+
+implement
+p_dg0pat
+  (buf, err) = let
+//
+val
+d0p =
+p_d0pat(buf, err)
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_WHEN() => let
+    val () = buf.incby1()
+    val d0gs =
+      p_d0guaseq_AND(buf, err)
+    // end of [val]
+    val loc_res =
+    (
+      case+ d0gs of
+      | list_nil() =>
+        (
+          d0p.loc() + tok.loc()
+        )
+      | list_cons _ =>
+        let
+          val d0g =
+            list_last(d0gs)
+          // end of [val]
+        in d0p.loc() + d0g.loc() end
+    ) : loc_t // end of [val]
+  in
+    dg0pat_make_node
+      (loc_res, DG0PATgua(d0p, tok, d0gs))
+    // end of [dg0pat_make_node]
+  end
+| _ (* non-WHEN *) =>
+    dg0pat_make_node(d0p.loc(), DG0PATpat(d0p))
+//
+end // end of [p_dg0pat]
+
+(* ****** ****** *)
+
+implement
+p_d0clau
+  (buf, err) = let
+//
+val
+dgp =
+p_dg0pat(buf, err)
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_EQGT() => let
+    val () = buf.incby1()
+    val d0e = p_d0exp(buf, err)
+    val loc_res = dgp.loc() + d0e.loc()
+  in
+    d0clau_make_node
+    (loc_res, D0CLAUclau(dgp, tok, d0e))
+  end
+| _ (* non-EQGT *) =>
+    d0clau_make_node(dgp.loc(), D0CLAUgpat(dgp))
+//
+end // end of [p_d0clau]
+
+implement
+p_d0clauseq_BAR
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_BAR_fun{d0clau}(buf, err, p_d0clau))
+//
+) (* end of [p_d0clauseq_BAR] *)
 
 (* ****** ****** *)
 

@@ -250,6 +250,14 @@ case+ tnd of
 | T_THEN() => fprint(out, "THEN")
 | T_ELSE() => fprint(out, "ELSE")
 //
+| T_WHEN() => fprint(out, "WHEN")
+//
+| T_CASE(k0) =>
+  fprint!
+  (out, "CASE(", k0, ")")
+//
+| T_SCASE() => fprint(out, "SCASE()")
+//
 | T_ENDIF() => fprint(out, "ENDIF")
 | T_ENDSIF() => fprint(out, "ENDSIF")
 | T_ENDCASE() => fprint(out, "ENDCASE")
@@ -492,6 +500,14 @@ case+ tnd of
 | T_SIF() => fprint(out, "sif")
 | T_THEN() => fprint(out, "then")
 | T_ELSE() => fprint(out, "else")
+//
+| T_WHEN() => fprint(out, "when")
+//
+| T_CASE(k0) =>
+  fprint!
+  (out, "case(", k0, ")")
+//
+| T_SCASE() => fprint(out, "scase")
 //
 | T_ENDIF() => fprint(out, "endif")
 | T_ENDSIF() => fprint(out, "endsif")
@@ -1120,6 +1136,28 @@ case+ x0.node() of
         val loc = x0.loc()+x1.loc()
         val x01 =
         token_make_node(loc, T_VAL(VLKvaln))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_IDENT_sym(-)]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+      // end of [rest-of-tnode]
+  )
+//
+| T_CASE _ =>
+  (
+    case+ x1.node() of
+    | T_IDENT_sym("+") => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_CASE(1))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_IDENT_sym(+)]
+    | T_IDENT_sym("-") => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_CASE(~1))
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of [T_IDENT_sym(-)]
