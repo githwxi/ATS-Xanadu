@@ -76,6 +76,12 @@ implement
 fprint_val<f0arg> = fprint_f0arg
 //
 implement
+fprint_val<sq0arg> = fprint_sq0arg
+//
+implement
+fprint_val<ti0arg> = fprint_ti0arg
+//
+implement
 fprint_val<tq0arg> = fprint_tq0arg
 //
 (* ****** ****** *)
@@ -213,6 +219,24 @@ x0.node() of
   , "SQ0ARGsome(", tbeg, "; ", s0qs, "; ", tend, ")")
 //
 ) (* end of [fprint_sq0arg] *)
+
+(* ****** ****** *)
+
+implement
+fprint_ti0arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+| TI0ARGnone(tok) =>
+  fprint!(out, "TI0ARGnone(", tok, ")")
+| TI0ARGsome(tbeg, q0as, tend) =>
+  fprint!
+  ( out
+  , "TI0ARGsome(", tbeg, "; ", q0as, "; ", tend, ")")
+//
+) (* end of [fprint_ti0arg] *)
 
 (* ****** ****** *)
 
@@ -739,18 +763,24 @@ case+ x0.node() of
   , tok, "; ", s0e0, "; ", teq1, "; ", def2, ")")
 //
 | D0Cvaldecl
-  (tok, mods, d0cs) =>
+  (tok, mopt, d0cs) =>
   fprint!
-  (out, "D0Cvaldecl(", tok, "; ", mods, "; ", d0cs)
+  (out, "D0Cvaldecl(", tok, "; ", mopt, "; ", d0cs)
 //
 | D0Cfundecl
-  (tok, mods, tqas, d0cs) =>
+  (tok, mopt, tqas, d0cs) =>
   fprint!
   ( out
-  , "D0Cfundecl(", tok, "; ", mods, "; ", tqas, "; ", d0cs)
+  , "D0Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d0cs)
 //
-| D0Cimpdecl _ =>
-  fprint!(out, "D0Cimpdecl(", "...", ")")
+| D0Cimpdecl
+  ( tok, mopt, sqas, tqas
+  , dqid, tias, f0as, res0, teq1, d0e2) =>
+  fprint!
+  ( out
+  , "D0Cimpdecl("
+  , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
+  , dqid, "; ", tias, "; ", f0as, "; ", res0, "; ", teq1, "; ", d0e2, ")")
 //
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")
