@@ -455,6 +455,9 @@ case+ x0.node() of
   , "D0Eif0(", tif0, "; "
   , d0e1, "; ", d0e2, "; ", d0e3, "; ", topt, ")")
 //
+| D0Ecase _ =>
+  fprint!(out, "D0Ecase(", "...", ")")
+//
 | D0Elet
   (tok0, d0cs, tok1, d0es, tok2) =>
   fprint!

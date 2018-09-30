@@ -188,6 +188,12 @@ tnode =
   | T_THEN of () // 'then'
   | T_ELSE of () // 'else'
 //
+  | T_WHEN of () // 'when'
+//
+  | T_CASE of int
+    // case, case+, case-
+  | T_SCASE of () // 'scase'
+//
   | T_ENDIF of () // 'endif'
   | T_ENDSIF of () // 'endsif'
   | T_ENDCASE of () // 'endcase'

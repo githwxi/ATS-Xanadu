@@ -215,9 +215,13 @@ fun
 p_RBRACK: parser(token)
 
 (* ****** ****** *)
-
+//
+fun
+p_OF: parser(token)
+//
 fun
 p_IN: parser(token)
+//
 fun
 p_END: parser(token)
 fun
@@ -226,7 +230,7 @@ fun
 p_ENDWHERE: parser(token)
 fun
 p_ENDLOCAL: parser(token)
-
+//
 (* ****** ****** *)
 
 fun

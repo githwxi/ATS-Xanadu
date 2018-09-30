@@ -76,6 +76,12 @@ typedef labd0explst = List0(labd0exp)
 
 (* ****** ****** *)
 //
+abstbox d0clau_tbox = ptr
+typedef d0clau = d0clau_tbox
+typedef d0claulst = List0(d0clau)
+//
+(* ****** ****** *)
+//
 abstbox q0arg_tbox = ptr
 //
 typedef q0arg = q0arg_tbox
@@ -432,6 +438,12 @@ d0exp_node =
   , d0exp
   , d0exp_THEN, d0exp_ELSE, tokenopt)
 //
+| D0Ecase of
+  ( token
+  , d0exp
+  , token(*OF*)
+  , tokenopt(*BAR*), d0claulst, tokenopt)
+//
 | D0Elet of
   (token, d0eclist, token, d0explst, token)
 | D0Ewhere of
@@ -585,6 +597,77 @@ fprint_f0unarrow: fprint_type(f0unarrow)
 overload print with print_f0unarrow
 overload prerr with prerr_f0unarrow
 overload fprint with fprint_f0unarrow
+//
+(* ****** ****** *)
+//
+abstbox d0gua_tbox = ptr
+typedef d0gua = d0gua_tbox
+typedef d0gualst = List0(d0gua)
+//
+datatype
+d0gua_node =
+| D0GUAexp of (d0exp)
+| D0GUAmat of
+  (d0exp, token(*AS*), d0pat)
+//
+fun
+d0gua_get_loc(d0gua): loc_t
+fun
+d0gua_get_node(d0gua): d0gua_node
+//
+overload .loc with d0gua_get_loc
+overload .node with d0gua_get_node
+//
+fun print_d0gua : (d0gua) -> void
+fun prerr_d0gua : (d0gua) -> void
+fun fprint_d0gua : fprint_type(d0gua)
+//
+overload print with print_d0gua
+overload prerr with prerr_d0gua
+overload fprint with fprint_d0gua
+//
+fun
+d0gua_make_node
+(loc: loc_t, node: d0gua_node): d0gua
+//
+(* ****** ****** *)
+//
+abstbox dg0pat_tbox = ptr
+typedef dg0pat = dg0pat_tbox
+//
+datatype
+d0clau_node =
+| D0CLAUgpat of (dg0pat)
+| D0CLAUclau of
+  (dg0pat, token(*EQGT*), d0exp)
+and
+dg0pat_node =
+| DG0PATpat of (d0pat)
+| DG0PATgua of
+  (d0pat, token(*WHEN*), d0gualst)
+//
+fun
+d0clau_get_loc(d0clau): loc_t
+fun
+d0clau_get_node(d0clau): d0clau_node
+//
+overload .loc with d0clau_get_loc
+overload .node with d0clau_get_node
+//
+fun
+dg0pat_get_loc(dg0pat): loc_t
+fun
+dg0pat_get_node(dg0pat): dg0pat_node
+//
+overload .loc with dg0pat_get_loc
+overload .node with dg0pat_get_node
+//
+fun
+d0clau_make_node
+(loc: loc_t, node: d0clau_node): d0clau
+fun
+dg0pat_make_node
+(loc: loc_t, node: dg0pat_node): dg0pat
 //
 (* ****** ****** *)
 //

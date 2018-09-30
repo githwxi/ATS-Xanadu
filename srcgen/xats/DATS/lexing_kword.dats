@@ -46,6 +46,17 @@ UN =
 (* ****** ****** *)
 //
 macdef
+T_CASE_ = T_CASE(0)
+(*
+macdef
+T_CASEP_ = T_CASE( 1)
+macdef
+T_CASEN_ = T_CASE(~1)
+*)
+//
+(* ****** ****** *)
+//
+macdef
 T_FN_ = T_FUN(FNKfn0)
 macdef
 T_FN0_ = T_FUN(FNKfn0)
@@ -239,13 +250,13 @@ val () = myins("and", T_AND)
 val () = myins("end", T_END)
 //
 val () = myins("if", T_IF)
-val () = myins("sif", T_IF)
+val () = myins("sif", T_SIF)
 val () = myins("then", T_THEN)
 val () = myins("else", T_ELSE)
 //
-(*
 val () = myins("case", T_CASE_)
 val () = myins("scase", T_SCASE)
+(*
 val () = myins("ifcase", T_IFCASE)
 *)
 //
