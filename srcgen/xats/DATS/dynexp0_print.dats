@@ -455,8 +455,12 @@ case+ x0.node() of
   , "D0Eif0(", tif0, "; "
   , d0e1, "; ", d0e2, "; ", d0e3, "; ", topt, ")")
 //
-| D0Ecase _ =>
-  fprint!(out, "D0Ecase(", "...", ")")
+| D0Ecase
+  (tok0, d0e1, tof2, tbar, d0cs, tend) =>
+  fprint!
+  ( out
+  , "D0Ecase(", tok0, "; "
+  , d0e1, "; ", tof2, "; ", tbar, "; ", "...", "; ", tend)
 //
 | D0Elet
   (tok0, d0cs, tok1, d0es, tok2) =>
@@ -464,7 +468,9 @@ case+ x0.node() of
   ( out
   , "D0Elet(", tok0, "; "
   , d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
-| D0Ewhere _ => fprint!(out, "D0Ewhere(...)")
+//
+| D0Ewhere _ =>
+  fprint!(out, "D0Ewhere(...)")
 //
 | D0Elam
   (tok0, arg1, res2, farrw, fbody) =>
