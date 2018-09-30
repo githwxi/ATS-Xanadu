@@ -138,38 +138,6 @@ sq1arg_make_node
 //
 (* ****** ****** *)
 //
-abstbox ti1arg_tbox = ptr
-//
-typedef ti1arg = ti1arg_tbox
-typedef ti1arglst = List0(ti1arg)
-//
-datatype
-ti1arg_node =
-  | TI1ARGnone of token
-  | TI1ARGsome of (s1explst)
-//
-fun
-ti1arg_get_loc(ti1arg): loc_t
-fun
-ti1arg_get_node(ti1arg): ti1arg_node
-//
-overload .loc with ti1arg_get_loc
-overload .node with ti1arg_get_node
-//
-fun print_ti1arg : print_type(ti1arg)
-fun prerr_ti1arg : prerr_type(ti1arg)
-fun fprint_ti1arg : fprint_type(ti1arg)
-//
-overload print with print_ti1arg
-overload prerr with prerr_ti1arg
-overload fprint with fprint_ti1arg
-//
-fun
-ti1arg_make_node
-(loc: loc_t, node: ti1arg_node): ti1arg
-//
-(* ****** ****** *)
-//
 abstbox tq1arg_tbox = ptr
 //
 typedef tq1arg = tq1arg_tbox
@@ -199,6 +167,38 @@ overload fprint with fprint_tq1arg
 fun
 tq1arg_make_node
 (loc: loc_t, node: tq1arg_node): tq1arg
+//
+(* ****** ****** *)
+//
+abstbox ti1arg_tbox = ptr
+//
+typedef ti1arg = ti1arg_tbox
+typedef ti1arglst = List0(ti1arg)
+//
+datatype
+ti1arg_node =
+  | TI1ARGnone of token
+  | TI1ARGsome of (s1explst)
+//
+fun
+ti1arg_get_loc(ti1arg): loc_t
+fun
+ti1arg_get_node(ti1arg): ti1arg_node
+//
+overload .loc with ti1arg_get_loc
+overload .node with ti1arg_get_node
+//
+fun print_ti1arg : print_type(ti1arg)
+fun prerr_ti1arg : prerr_type(ti1arg)
+fun fprint_ti1arg : fprint_type(ti1arg)
+//
+overload print with print_ti1arg
+overload prerr with prerr_ti1arg
+overload fprint with fprint_ti1arg
+//
+fun
+ti1arg_make_node
+(loc: loc_t, node: ti1arg_node): ti1arg
 //
 (* ****** ****** *)
 //
@@ -634,8 +634,12 @@ d1ecl_node =
 //
 | D1Cfundecl of
   ( token(*funkind*)
-  , tq1arglst(*tmpargs*)
-  , declmodopt(*rec/prf/...*), f1undeclist)
+  , declmodopt, tq1arglst(*tmpargs*), f1undeclist)
+//
+| D1Cimpdecl of
+  ( token(*impkind*)
+  , declmodopt, sq1arglst, tq1arglst
+  , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)
 //
 | D1Cdatasort of
     (token(*datasort*), d1tsortlst)

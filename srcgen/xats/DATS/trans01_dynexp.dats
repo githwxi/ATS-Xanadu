@@ -1946,9 +1946,48 @@ val d1cs = trans01_fundeclist(d0cs)
 //
 in
   d1ecl_make_node
-    (loc0, D1Cfundecl(knd, tqas, mopt, d1cs))
+    (loc0, D1Cfundecl(knd, mopt, tqas, d1cs))
   // d1ecl_make_node
 end // end of [aux_fundecl]
+
+(* ****** ****** *)
+
+fun
+aux_impdecl
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cimpdecl
+( knd
+, mopt, sqas, tqas
+, dqid, tias, f0as, res0, teq1, d0e2) = d0c0.node()
+//
+val sqas =
+  trans01_sqarglst(sqas)
+val tqas =
+  trans01_tqarglst(tqas)
+//
+val tias =
+  trans01_tiarglst(tias)
+//
+val f1as =
+  trans01_farglst(f0as)
+val res0 =
+  trans01_effsexpopt(res0)
+//
+val d1e2 = trans01_dexp(d0e2)
+//
+in
+  d1ecl_make_node
+  ( loc0
+  , D1Cimpdecl
+    (knd, mopt, sqas, tqas, dqid, tias, f1as, res0, teq1, d1e2)
+  )
+  // d1ecl_make_node
+end // end of [aux_impdecl]
 
 (* ****** ****** *)
 
@@ -2131,9 +2170,7 @@ d0c0.node() of
 | D0Cvaldecl _ => aux_valdecl(d0c0)
 | D0Cfundecl _ => aux_fundecl(d0c0)
 //
-(*
 | D0Cimpdecl _ => aux_impdecl(d0c0)
-*)
 //
 | D0Cdatasort _ => aux_datasort(d0c0)
 //
