@@ -84,14 +84,23 @@ vtypedef d1eclist_vt = List0_vt(d1ecl)
 //
 (* ****** ****** *)
 //
-datatype q1arg =
-(*
+abstype q1arg_tbox = ptr
+typedef q1arg = q1arg_tbox
+typedef q1arglst = List0(q1arg)
+//
+datatype
+q1arg_node =
 | Q1ARGnone of token
-*)
 | Q1ARGsome of
   (tokenlst(*ids*), sort1opt)
 //
-typedef q1arglst = List0(q1arg)
+fun
+q1arg_get_loc(q1arg): loc_t
+fun
+q1arg_get_node(q1arg): q1arg_node
+//
+overload .loc with q1arg_get_loc
+overload .node with q1arg_get_node
 //
 fun
 print_q1arg : print_type(q1arg)
@@ -103,6 +112,10 @@ fprint_q1arg : fprint_type(q1arg)
 overload print with print_q1arg
 overload prerr with prerr_q1arg
 overload fprint with fprint_q1arg
+//
+fun
+q1arg_make_node
+(loc: loc_t, node: q1arg_node): q1arg
 //
 (* ****** ****** *)
 //

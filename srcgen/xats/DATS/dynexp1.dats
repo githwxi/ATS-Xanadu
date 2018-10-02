@@ -52,6 +52,38 @@ UN =
 local
 
 absimpl
+q1arg_tbox = $rec{
+  q1arg_loc= loc_t
+, q1arg_node= q1arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+q1arg_get_loc(x0) = x0.q1arg_loc
+implement
+q1arg_get_node(x0) = x0.q1arg_node
+
+(* ****** ****** *)
+
+implement
+q1arg_make_node
+(loc, node) = $rec
+{
+  q1arg_loc= loc, q1arg_node= node
+} (* end of [q1arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 sq1arg_tbox = $rec{
   sq1arg_loc= loc_t
 , sq1arg_node= sq1arg_node

@@ -89,14 +89,22 @@ vtypedef d0eclist_vt = List0_vt(d0ecl)
 //
 (* ****** ****** *)
 //
-datatype q0arg =
-(*
-| Q0ARGnone of token
-*)
-| Q0ARGsome of
-  (i0dntlst, sort0opt)
-//
+abstype q0arg_tbox = ptr
+typedef q0arg = q0arg_tbox
 typedef q0arglst = List0(q0arg)
+//
+datatype
+q0arg_node =
+| Q0ARGnone of token
+| Q0ARGsome of (i0dntlst, sort0opt)
+//
+fun
+q0arg_get_loc(q0arg): loc_t
+fun
+q0arg_get_node(q0arg): q0arg_node
+//
+overload .loc with q0arg_get_loc
+overload .node with q0arg_get_node
 //
 fun
 print_q0arg : print_type(q0arg)
@@ -108,6 +116,10 @@ fprint_q0arg : fprint_type(q0arg)
 overload print with print_q0arg
 overload prerr with prerr_q0arg
 overload fprint with fprint_q0arg
+//
+fun
+q0arg_make_node
+(loc: loc_t, node: q0arg_node): q0arg
 //
 (* ****** ****** *)
 //

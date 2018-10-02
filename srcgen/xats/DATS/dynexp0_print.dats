@@ -102,11 +102,10 @@ fprint_q0arg
   (out, x0) =
 (
 //
-case+ x0 of
-(*
+case+
+x0.node() of
 | Q0ARGnone(tok) =>
   fprint!(out, "Q0ARGnone(", tok, ")")
-*)
 | Q0ARGsome(ids, opt) =>
   fprint!(out, "Q0ARGsome(", ids, "; ", opt, ")")
 //
