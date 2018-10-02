@@ -181,11 +181,16 @@ val opt =
 fileref_open_opt
 ("./test_staexp.text", file_mode_r)
 *)
-//(*
+(*
 val opt =
 fileref_open_opt
 ("./test_dynexp.text", file_mode_r)
-//*)
+*)
+// (*
+val opt =
+fileref_open_opt
+("./../../../prelude/DATS/list.dats", file_mode_r)
+// *)
 val-~Some_vt(inp) = opt
 val
 toks =

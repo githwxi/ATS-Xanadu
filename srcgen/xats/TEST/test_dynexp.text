@@ -3,7 +3,10 @@ fun foo(x) =
 case+ x of
 | list_nil() => 0
 | list_cons(_, xs) => foo(xs) + 1
-)
+) where
+{
+  val x = x + x
+}
 ////
 val:rec
 cons(x, xs) = xs

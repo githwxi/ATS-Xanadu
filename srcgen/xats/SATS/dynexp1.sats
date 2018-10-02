@@ -54,6 +54,26 @@ typedef labd1pat = dl0abeled(d1pat)
 typedef labd1patlst = List0(labd1pat)
 //
 (* ****** ****** *)
+
+abstype d1exp_tbox = ptr
+typedef d1exp = d1exp_tbox
+typedef d1explst = List0(d1exp)
+typedef d1expopt = Option(d1exp)
+
+(* ****** ****** *)
+//
+abstbox d1gua_tbox = ptr
+typedef d1gua = d1gua_tbox
+typedef d1gualst = List0(d1gua)
+//
+abstbox dg1pat_tbox = ptr
+typedef dg1pat = dg1pat_tbox
+//
+abstbox d1clau_tbox = ptr
+typedef d1clau = d1clau_tbox
+typedef d1claulst = List0(d1clau)
+//
+(* ****** ****** *)
 //
 abstype d1ecl_tbox = ptr
 typedef d1ecl = d1ecl_tbox
@@ -62,13 +82,6 @@ typedef d1eclopt = Option(d1ecl)
 //
 vtypedef d1eclist_vt = List0_vt(d1ecl)
 //
-(* ****** ****** *)
-
-abstype d1exp_tbox = ptr
-typedef d1exp = d1exp_tbox
-typedef d1explst = List0(d1exp)
-typedef d1expopt = Option(d1exp)
-
 (* ****** ****** *)
 //
 abstbox q1arg_tbox = ptr
@@ -393,6 +406,10 @@ d1exp_node =
   ( d1exp(*cond*)
   , d1exp(*then*), d1expopt(*else*))
 //
+| D1Ecase of
+    (token, d1exp, d1claulst)
+  // D1Ecase
+//
 | D1Elet of (d1eclist, d1explst)
 //
 | D1Elam of
@@ -409,6 +426,67 @@ f1unarrow =
 *)
 | F1UNARROWdflt of ()
 | F1UNARROWlist of (s1explst)
+//
+(* ****** ****** *)
+//
+datatype
+d1gua_node =
+| D1GUAexp of (d1exp)
+| D1GUAmat of (d1exp, d1pat)
+//
+fun
+d1gua_get_loc(d1gua): loc_t
+fun
+d1gua_get_node(d1gua): d1gua_node
+//
+overload .loc with d1gua_get_loc
+overload .node with d1gua_get_node
+//
+fun print_d1gua : (d1gua) -> void
+fun prerr_d1gua : (d1gua) -> void
+fun fprint_d1gua : fprint_type(d1gua)
+//
+overload print with print_d1gua
+overload prerr with prerr_d1gua
+overload fprint with fprint_d1gua
+//
+fun
+d1gua_make_node
+(loc: loc_t, node: d1gua_node): d1gua
+//
+(* ****** ****** *)
+//
+datatype
+d1clau_node =
+| D1CLAUgpat of (dg1pat)
+| D1CLAUclau of (dg1pat, d1exp)
+and
+dg1pat_node =
+| DG1PATpat of (d1pat)
+| DG1PATgua of (d1pat, d1gualst)
+//
+fun
+d1clau_get_loc(d1clau): loc_t
+fun
+d1clau_get_node(d1clau): d1clau_node
+//
+overload .loc with d1clau_get_loc
+overload .node with d1clau_get_node
+//
+fun
+dg1pat_get_loc(dg1pat): loc_t
+fun
+dg1pat_get_node(dg1pat): dg1pat_node
+//
+overload .loc with dg1pat_get_loc
+overload .node with dg1pat_get_node
+//
+fun
+d1clau_make_node
+(loc: loc_t, node: d1clau_node): d1clau
+fun
+dg1pat_make_node
+(loc: loc_t, node: dg1pat_node): dg1pat
 //
 (* ****** ****** *)
 //

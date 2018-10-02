@@ -1052,12 +1052,14 @@ auxitm
 val
 loc0 = d0e0.loc()
 //
+(*
 val () =
 println!("trans01_dexp:")
 val () =
 println!("auxitm: loc0 = ", loc0)
 val () =
 println!("auxitm: d0e0 = ", d0e0)
+*)
 //
 in
 //
@@ -1114,6 +1116,20 @@ d0e0.node() of
         (loc0, D1Eif0(d1e1, d1e2, opt3))
     }
   end (* end of [D0Eif0] *)
+//
+| D0Ecase
+  ( knd, d0e1, tof2
+  , tbar, d0cs, tend) => let
+    val d1e1 = trans01_dexp(d0e1)
+    val d1cs = trans01_dclaulst(d0cs)
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+        d1exp_make_node
+        (loc0, D1Ecase(knd, d1e1, d1cs))
+    }
+  end // end of [D0Ecase]
 //
 | D0Elet
   (_, d0cs, _, d0es, _) => let
@@ -1295,6 +1311,125 @@ list_vt2t(d1es) where
     list_map$fopr<d0exp><d1exp> = trans01_dexp
   }
 } (* end of [trans01_dexplst] *)
+
+(* ****** ****** *)
+//
+extern
+fun
+trans01_dgua: d0gua -> d1gua
+extern
+fun
+trans01_dgpat: dg0pat -> dg1pat
+extern
+fun
+trans01_dgualst: d0gualst -> d1gualst
+//
+(* ****** ****** *)
+
+implement
+trans01_dgua
+  (d0g0) = let
+//
+val loc0 = d0g0.loc()
+//
+in
+//
+case+
+d0g0.node() of
+| D0GUAexp(d0e) => let
+    val d1e = trans01_dexp(d0e)
+  in
+    d1gua_make_node(loc0, D1GUAexp(d1e))
+  end
+| D0GUAmat
+  (d0e, tok, d0p) => let
+    val d1e = trans01_dexp(d0e)
+    val d1p = trans01_dpat(d0p)
+  in
+    d1gua_make_node(loc0, D1GUAmat(d1e, d1p))
+  end
+//
+end // end of [trans01_dgua]
+
+implement
+trans01_dgualst
+  (d0gs) =
+list_vt2t(d1gs) where
+{
+  val
+  d1gs =
+  list_map<d0gua><d1gua>
+    (d0gs) where
+  {
+    implement
+    list_map$fopr<d0gua><d1gua> = trans01_dgua
+  }
+} (* end of [trans01_dgualst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_dgpat
+  (d0gp) = let
+//
+val loc0 = d0gp.loc()
+//
+in
+//
+case+
+d0gp.node() of
+| DG0PATpat(d0p) =>
+  dg1pat_make_node
+  ( loc0
+  , DG1PATpat(trans01_dpat(d0p)))
+| DG0PATgua(d0p, _, d0gs) =>
+  (
+  dg1pat_make_node
+  (loc0, DG1PATgua(d1p, d1gs))
+  ) where
+  {
+    val d1p = trans01_dpat(d0p)
+    val d1gs = trans01_dgualst(d0gs)
+  }
+//
+end // end of [trans01_dgpat]
+
+(* ****** ****** *)
+
+implement
+trans01_dclau
+  (d0c0) = let
+//
+val loc0 = d0c0.loc()
+//
+in
+case+
+d0c0.node() of
+| D0CLAUgpat(dgp) =>
+  d1clau_make_node
+  (loc0, D1CLAUgpat(trans01_dgpat(dgp)))
+| D0CLAUclau(dgp, tok, d0e) =>
+  d1clau_make_node
+  ( loc0
+  , D1CLAUclau
+    (trans01_dgpat(dgp), trans01_dexp(d0e))
+  ) (* d1clau_make_node *)
+end // end of [trans01_dclau]
+
+implement
+trans01_dclaulst
+  (d0cs) =
+list_vt2t(d1cs) where
+{
+  val
+  d1cs =
+  list_map<d0clau><d1clau>
+    (d0cs) where
+  {
+    implement
+    list_map$fopr<d0clau><d1clau> = trans01_dclau
+  }
+} (* end of [trans01_dclaulst] *)
 
 (* ****** ****** *)
 

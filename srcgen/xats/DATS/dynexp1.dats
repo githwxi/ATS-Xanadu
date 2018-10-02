@@ -348,6 +348,84 @@ end // end of [local]
 local
 
 absimpl
+d1gua_tbox = $rec{
+  d1gua_loc= loc_t
+, d1gua_node= d1gua_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d1gua_get_loc(x0) = x0.d1gua_loc
+implement
+d1gua_get_node(x0) = x0.d1gua_node
+
+implement
+d1gua_make_node
+(loc, node) = $rec
+{
+  d1gua_loc= loc, d1gua_node= node
+} (* end of [d1gua_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+dg1pat_tbox = $rec{
+  dg1pat_loc= loc_t
+, dg1pat_node= dg1pat_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+dg1pat_get_loc(x0) = x0.dg1pat_loc
+implement
+dg1pat_get_node(x0) = x0.dg1pat_node
+
+implement
+dg1pat_make_node
+(loc, node) = $rec
+{
+  dg1pat_loc= loc, dg1pat_node= node
+} (* end of [dg1pat_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d1clau_tbox = $rec{
+  d1clau_loc= loc_t
+, d1clau_node= d1clau_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d1clau_get_loc(x0) = x0.d1clau_loc
+implement
+d1clau_get_node(x0) = x0.d1clau_node
+
+implement
+d1clau_make_node
+(loc, node) = $rec
+{
+  d1clau_loc= loc, d1clau_node= node
+} (* end of [d1clau_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d1ecl_tbox = $rec{
   d1ecl_loc= loc_t
 , d1ecl_node= d1ecl_node

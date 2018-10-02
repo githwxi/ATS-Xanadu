@@ -58,6 +58,15 @@ fprint_val<token> = fprint_token
 implement
 fprint_val<d1exp> = fprint_d1exp
 //
+(* ****** ****** *)
+
+(*
+implement
+fprint_val<d1clau> = fprint_d1clau
+*)
+
+(* ****** ****** *)
+//
 implement
 fprint_val<q1arg> = fprint_q1arg
 //
@@ -363,6 +372,11 @@ x0.node() of
   fprint!
   ( out
   , "D1Eif0(", d1e1, "; ", d1e2, "; ", opt3, ")")
+//
+| D1Ecase(knd, d1e1, d1cs) =>
+  fprint!
+  ( out
+  , "D1Ecase(", knd, "; ", d1e1, "; ", "..." , ")")
 //
 | D1Elet(d1cs, d1es) =>
   (
