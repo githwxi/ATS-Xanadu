@@ -102,7 +102,7 @@ fprint_q0arg
   (out, x0) =
 (
 //
-case+ x0.node() of
+case+ x0 of
 (*
 | Q0ARGnone(tok) =>
   fprint!(out, "Q0ARGnone(", tok, ")")
@@ -427,6 +427,13 @@ case+ x0.node() of
 //
 | D0Eapps(d0es) =>
   fprint!(out, "D0Eapps(", d0es, ")")
+//
+| D0Esexp
+  (tbeg, s0es, tend) =>
+  fprint!
+  ( out
+  , "D0Esexp("
+  , tbeg, "; ", s0es, "; ", tend, ")")
 //
 | D0Eparen
   (tbeg, d0es, tend) =>

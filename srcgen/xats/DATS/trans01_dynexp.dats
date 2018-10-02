@@ -362,9 +362,6 @@ implement
 trans01_qarg
   (q0a0) = let
 //
-val
-loc0 = q0a0.loc()
-//
 fun
 auxids
 ( ids
@@ -384,15 +381,14 @@ case+ ids of
 //
 in
 //
-case+
-q0a0.node() of
+case+ q0a0 of
 | Q0ARGsome
-  (ids, opt) => let
+  (ids, opt) =>
+  Q1ARGsome(ids, opt) where
+  {
     val ids = auxids(ids)
     val opt = trans01_sortopt(opt)
-  in
-    q1arg_make_node(loc0, Q1ARGsome(ids, opt))
-  end // end of [Q0ARGsome]
+  } (* end of [Q0ARGsome] *)
 //
 end // end of [trans01_qarg]
 
@@ -1052,14 +1048,14 @@ auxitm
 val
 loc0 = d0e0.loc()
 //
-(*
+// (*
 val () =
 println!("trans01_dexp:")
 val () =
 println!("auxitm: loc0 = ", loc0)
 val () =
 println!("auxitm: d0e0 = ", d0e0)
-*)
+// *)
 //
 in
 //
@@ -1083,6 +1079,16 @@ d0e0.node() of
     auxitmlst(d0es)
     val d1e0 =
     fxitmlst_resolve_d1exp(loc0, d1es)
+  }
+//
+| D0Esexp
+  (tbeg, s0es, tend) =>
+  FXITMatm(d1e0) where
+  {
+    val s1es =
+    trans01_sexplst(s0es)
+    val d1e0 =
+    d1exp_make_node(loc0, D1Esexp(s1es))
   }
 //
 | D0Eparen _ => auxparen(d0e0)
@@ -1136,13 +1142,26 @@ d0e0.node() of
     val d1cs = trans01_declist(d0cs)
     val d1es = trans01_dexplst(d0es)
   in
-    FXITMatm(d1e0) where
-    {
-      val d1e0 =
-        d1exp_make_node(loc0, D1Elet(d1cs, d1es))
-      // end of [val]
-    }
+    FXITMatm
+    (
+      d1exp_make_node(loc0, D1Elet(d1cs, d1es))
+    )
   end // end of [D0Elet] *)
+//
+| D0Ewhere(d0e1, d0cs) => let
+    val d1e1 = trans01_dexp(d0e1)
+  in
+    case+ d0cs of
+    | d0eclseq_WHERE
+      (_, _, d0cs, _) => let
+        val d1cs = trans01_declist(d0cs)
+      in
+        FXITMatm
+        (
+          d1exp_make_node(loc0, D1Ewhere(d1e1, d1cs))
+        )
+      end // end of [d0eclseq_WHERE]
+  end // end of [D0Ewhere]
 //
 | D0Elam
   ( _(*lam/lam@*)

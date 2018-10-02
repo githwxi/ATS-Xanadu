@@ -105,7 +105,7 @@ fprint_q1arg
   (out, x0) =
 (
 //
-case+ x0.node() of
+case+ x0 of
 | Q1ARGsome(ids, opt) =>
   fprint!(out, "Q1ARGsome(", ids, "; ", opt, ")")
 //
@@ -354,6 +354,9 @@ x0.node() of
   fprint!
   (out, "D1Eapps(", d1e0, "; ", d1es, ")")
 //
+| D1Esexp(s1es) =>
+  fprint!(out, "D1Esexp(", s1es, ")")
+//
 | D1Elist(d1es) =>
   fprint!(out, "D1Elist(", d1es, ")")
 | D1Elist(d1es1, d1es2) =>
@@ -381,6 +384,11 @@ x0.node() of
 | D1Elet(d1cs, d1es) =>
   (
     fprint!(out, "D1Elet(", d1cs, "; ", d1es, ")")
+  )
+//
+| D1Ewhere(d1e1, d1cs) =>
+  (
+    fprint!(out, "D1Ewhere(", d1e1, "; ", d1cs, ")")
   )
 //
 | D1Elam
