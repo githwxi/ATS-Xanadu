@@ -361,26 +361,45 @@ val ids =
 //
 val tok = buf.get0()
 //
-val opt =
-(
-case+
-tok.node() of
-| T_COLON() =>
-  Some
-  (
-  p_appsort0_NGT(buf, err)
-  ) where
-  {
-    val () = buf.incby1()
-  }
-| _(* non-COLON *) => None()
-) : sort0opt // end of [val]
-//
 in
 //
-let
-val () = (err := e0) in Q0ARGsome(ids, opt)
-end
+case+ ids of
+| list_nil() =>
+  (
+    err := e0 + 1;
+    q0arg_make_node
+      (tok.loc(), Q0ARGnone(tok))
+    // q0arg_make_node
+  )
+| list_cons _ => let
+    val opt = (
+    case+
+    tok.node() of
+    | T_COLON() =>
+      Some
+      (
+      p_appsort0_NGT(buf, err)
+      ) where
+      {
+        val () = buf.incby1()
+      }
+    | _(* non-COLON *) => None()
+    ) : sort0opt // end of [val]
+    val loc_res = let
+      val id =
+        list_last(ids)
+      val loc = id.loc()
+    in
+      case+ opt of
+      | None() => loc
+      | Some(s0t) => loc+s0t.loc()
+    end : loc_t // end of [val]
+  in
+    err := e0;
+    q0arg_make_node
+      (loc_res, Q0ARGsome(ids, opt))
+    // q0arg_make_node
+  end // end of [list_cons]
 //
 end where
 {

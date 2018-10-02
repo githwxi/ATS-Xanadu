@@ -362,6 +362,8 @@ implement
 trans01_qarg
   (q0a0) = let
 //
+val loc0 = q0a0.loc()
+//
 fun
 auxids
 ( ids
@@ -381,14 +383,18 @@ case+ ids of
 //
 in
 //
-case+ q0a0 of
-| Q0ARGsome
-  (ids, opt) =>
-  Q1ARGsome(ids, opt) where
-  {
+case+
+q0a0.node() of
+| Q0ARGnone(tok) =>
+  (
+    q1arg_make_node(loc0, Q1ARGnone(tok))
+  )
+| Q0ARGsome(ids, opt) => let
     val ids = auxids(ids)
     val opt = trans01_sortopt(opt)
-  } (* end of [Q0ARGsome] *)
+  in
+    q1arg_make_node(loc0, Q1ARGsome(ids, opt))
+  end (* end of [Q0ARGsome] *)
 //
 end // end of [trans01_qarg]
 
