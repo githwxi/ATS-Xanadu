@@ -1282,6 +1282,13 @@ p_d0exp_ELSE: parser(d0exp_ELSE)
 //
 extern
 fun
+popt_d0eclseq_WHERE:
+  parser(Option(d0eclseq_WHERE))
+//
+(* ****** ****** *)
+//
+extern
+fun
 p_d0clau: parser(d0clau)
 extern
 fun
@@ -1424,27 +1431,47 @@ implement
 p_d0exp(buf, err) =
 let
   val e0 = err
-  val d0es0 =
+  val d0es =
     p_atmd0expseq(buf, err)
   // end of [val]
 in
 //
-case+ d0es0 of
+case+ d0es of
 | list_nil
-    ((*void*)) => p_napps(buf, err)
+    ((*void*)) =>
+    p_napps(buf, err)
   // end of [list_nil]
 | list_cons
-    (d0e0, d0es1) =>
-  (
-    case+ d0es1 of
-    | list_nil() => d0e0
+    (d0e1, d0es2) => let
+    val d0e0 =
+    (
+    case+ d0es2 of
+    | list_nil() => d0e1
     | list_cons _ => let
-        val d0e1 = list_last(d0es1)
+        val d0e2 = list_last(d0es2)
+        val loc0 = d0e1.loc()+d0e2.loc()
       in
-        d0exp_make_node
-        (d0e0.loc()+d0e1.loc(), D0Eapps(d0es0))
+        d0exp_make_node(loc0, D0Eapps(d0es))
       end // end of [list_cons]
-  ) (* end of [list_cons] *)
+    ) : d0exp // end of [val]
+    val opt1 = popt_d0eclseq_WHERE(buf, err)
+  in
+    case+ opt1 of
+    | None() => d0e0
+    | Some(d0cs) =>
+      (
+        d0exp_make_node
+        (loc1, D0Ewhere(d0e0, d0cs))
+      ) where
+      {
+        val loc1 =
+        (
+          case+ d0cs of
+          | d0eclseq_WHERE
+            (_, _, _, tend) => d0e0.loc() + tend.loc()
+        ) : loc_t // end of [val]
+      } (* end of [Some] *)
+  end (* end of [list_cons] *)
 //
 end // end of [p_d0exp]
 
@@ -1808,6 +1835,36 @@ tok.node() of
   )
 //
 end // end of [p_d0exp_ELSE]
+
+(* ****** ****** *)
+
+implement
+popt_d0eclseq_WHERE
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_WHERE() => let
+//
+    val () = buf.incby1()
+//
+    val opt =
+      popt_LBRACE(buf, err)
+    val d0cs =
+      p_d0eclseq_dyn(buf, err)
+//
+    val tend = p_ENDWHERE(buf, err)
+//
+  in
+    Some(d0eclseq_WHERE(tok, opt, d0cs, tend))
+  end
+| _(* non-WHERE *) => None((*void*))
+//
+end // end of [popt_d0eclseq_WHERE]
 
 (* ****** ****** *)
 //
@@ -2975,10 +3032,10 @@ end // end of [fp_d0eclseq_top]
 (* ****** ****** *)
 
 local
-
+//
 #define STATIC 0
 #define DYNAMIC 1
-
+//
 in
 //
 implement

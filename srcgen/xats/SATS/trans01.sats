@@ -111,6 +111,11 @@ typedef d0expopt = $D0E.d0expopt
 typedef d0explst = $D0E.d0explst
 //
 (* ****** ****** *)
+
+typedef d0clau = $D0E.d0clau
+typedef d0claulst = $D0E.d0claulst
+
+(* ****** ****** *)
 //
 typedef d0ecl = $D0E.d0ecl
 typedef d0eclopt = $D0E.d0eclopt
@@ -162,6 +167,11 @@ typedef d1exp = $D1E.d1exp
 typedef d1expopt = $D1E.d1expopt
 typedef d1explst = $D1E.d1explst
 //
+(* ****** ****** *)
+
+typedef d1clau = $D1E.d1clau
+typedef d1claulst = $D1E.d1claulst
+
 (* ****** ****** *)
 //
 typedef d1ecl = $D1E.d1ecl
@@ -301,6 +311,13 @@ overload trans01 with trans01_dexp
 overload trans01 with trans01_dexplst
 *)
 //
+(* ****** ****** *)
+
+fun
+trans01_dclau: d0clau -> d1clau
+fun
+trans01_dclaulst: d0claulst -> d1claulst
+
 (* ****** ****** *)
 //
 fun

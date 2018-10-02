@@ -37,15 +37,6 @@
 
 (* ****** ****** *)
 //
-abstype d0ecl_tbox = ptr
-typedef d0ecl = d0ecl_tbox
-typedef d0eclist = List0(d0ecl)
-typedef d0eclopt = Option(d0ecl)
-//
-vtypedef d0eclist_vt = List0_vt(d0ecl)
-//
-(* ****** ****** *)
-//
 datatype
 dl0abeled
   (a:type) =
@@ -76,9 +67,25 @@ typedef labd0explst = List0(labd0exp)
 
 (* ****** ****** *)
 //
+abstbox d0gua_tbox = ptr
+typedef d0gua = d0gua_tbox
+typedef d0gualst = List0(d0gua)
+//
+abstbox dg0pat_tbox = ptr
+typedef dg0pat = dg0pat_tbox
+//
 abstbox d0clau_tbox = ptr
 typedef d0clau = d0clau_tbox
 typedef d0claulst = List0(d0clau)
+//
+(* ****** ****** *)
+//
+abstype d0ecl_tbox = ptr
+typedef d0ecl = d0ecl_tbox
+typedef d0eclist = List0(d0ecl)
+typedef d0eclopt = Option(d0ecl)
+//
+vtypedef d0eclist_vt = List0_vt(d0ecl)
 //
 (* ****** ****** *)
 //
@@ -445,9 +452,10 @@ d0exp_node =
   , tokenopt(*BAR*), d0claulst, tokenopt)
 //
 | D0Elet of
-  (token, d0eclist, token, d0explst, token)
-| D0Ewhere of
-  (d0exp, token, tokenopt, d0eclist, token)
+  ( token
+  , d0eclist, token, d0explst, token)
+//
+| D0Ewhere of (d0exp, d0eclseq_WHERE)
 //
 | D0Elam of
   ( token(*lam/lam@*)
@@ -482,6 +490,13 @@ d0exp_ELSE =
 | d0exp_ELSEnone of ()
 | d0exp_ELSEsome of (token, d0exp)
 
+(* ****** ****** *)
+//
+and
+d0eclseq_WHERE =
+| d0eclseq_WHERE of
+  (token, tokenopt, d0eclist, token)
+//
 (* ****** ****** *)
 //
 and
@@ -585,6 +600,28 @@ overload fprint with fprint_d0exp_ELSE
 //
 (* ****** ****** *)
 //
+(*
+fun
+d0eclseq_WHERE_get_loc
+  (x0: d0eclseq_WHERE): loc_t
+*)
+//
+fun
+print_d0eclseq_WHERE:
+  print_type(d0eclseq_WHERE)
+fun
+prerr_d0eclseq_WHERE:
+  prerr_type(d0eclseq_WHERE)
+fun
+fprint_d0eclseq_WHERE:
+  fprint_type(d0eclseq_WHERE)
+//
+overload print with print_d0eclseq_WHERE
+overload prerr with prerr_d0eclseq_WHERE
+overload fprint with fprint_d0eclseq_WHERE
+//
+(* ****** ****** *)
+//
 fun
 print_f0unarrow:
   print_type(f0unarrow)
@@ -599,10 +636,6 @@ overload prerr with prerr_f0unarrow
 overload fprint with fprint_f0unarrow
 //
 (* ****** ****** *)
-//
-abstbox d0gua_tbox = ptr
-typedef d0gua = d0gua_tbox
-typedef d0gualst = List0(d0gua)
 //
 datatype
 d0gua_node =
@@ -631,9 +664,6 @@ d0gua_make_node
 (loc: loc_t, node: d0gua_node): d0gua
 //
 (* ****** ****** *)
-//
-abstbox dg0pat_tbox = ptr
-typedef dg0pat = dg0pat_tbox
 //
 datatype
 d0clau_node =
@@ -775,7 +805,7 @@ F0UNDECL of @{
 , teq= token
 , def= d0exp
 , wtp= wths0expopt
-}
+} (* f0undecl *)
 //
 typedef
 f0undeclist = List0(f0undecl)

@@ -469,8 +469,10 @@ case+ x0.node() of
   , "D0Elet(", tok0, "; "
   , d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
 //
-| D0Ewhere _ =>
-  fprint!(out, "D0Ewhere(...)")
+| D0Ewhere(d0e1, d0cs) =>
+  fprint!
+  ( out
+  , "D0Ewhere(", d0e1, "; ", d0cs, ")")
 //
 | D0Elam
   (tok0, arg1, res2, farrw, fbody) =>
@@ -589,6 +591,26 @@ case+ x0 of
   fprint!(out, "d0exp_ELSEsome(", tok, "; ", d0e, ")")
 ) (* end of [fprint_d0exp_ELSE] *)
 
+(* ****** ****** *)
+//
+implement
+print_d0eclseq_WHERE(x0) =
+fprint_d0eclseq_WHERE(stdout_ref, x0)
+implement
+prerr_d0eclseq_WHERE(x0) =
+fprint_d0eclseq_WHERE(stderr_ref, x0)
+implement
+fprint_d0eclseq_WHERE(out, x0) =
+(
+case+ x0 of
+| d0eclseq_WHERE
+  (tok0, opt1, d0cs, opt2) =>
+  fprint!
+  ( out
+  , "d0eclseq_WHERE("
+  , tok0, "; ", opt1, "; ", d0cs, "; ", opt2, ")")
+) (* end of [fprint_d0eclseq_WHERE] *)
+//
 (* ****** ****** *)
 
 implement
