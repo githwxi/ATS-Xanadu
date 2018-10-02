@@ -361,15 +361,6 @@ val ids =
 //
 val tok = buf.get0()
 //
-val ids =
-(
-if
-isneqz(ids)
-then ids else
-  list_sing(i0dnt_none(tok))
-// end-of-if
-) : i0dntlst
-//
 val opt =
 (
 case+
@@ -385,30 +376,11 @@ tok.node() of
 | _(* non-COLON *) => None()
 ) : sort0opt // end of [val]
 //
-val loc0 =
-(
-case+ ids of
-| list_nil() =>
-  (
-    tok.loc()
-  )
-| list_cons _ =>
-  let
-    val
-    id0 = list_last(ids) in id0.loc()
-  end // end of [list_cons]
-) : loc_t // end of [val]
-val loc_res =
-(
-case+ opt of
-| None() => loc0
-| Some(s0t) => loc0 + s0t.loc()
-) : loc_t // end of [val]
-//
 in
 //
-err := e0;
-q0arg_make_node(loc_res, Q0ARGsome(ids, opt))
+let
+val () = (err := e0) in Q0ARGsome(ids, opt)
+end
 //
 end where
 {
@@ -1468,7 +1440,7 @@ case+ d0es of
         (
           case+ d0cs of
           | d0eclseq_WHERE
-            (_, _, _, tend) => d0e0.loc() + tend.loc()
+            (_, _, _, tend) => d0e0.loc()+tend.loc()
         ) : loc_t // end of [val]
       } (* end of [Some] *)
   end (* end of [list_cons] *)
@@ -1555,18 +1527,35 @@ case+ tnd of
   end // end of [t_t0chr]
 | _ when t_t0flt(tnd) =>
   let
-    val c0 = p_t0flt(buf, err)
+    val f0 = p_t0flt(buf, err)
   in
     err := e0;
-    d0exp_make_node(c0.loc(), D0Eflt(c0))
+    d0exp_make_node(f0.loc(), D0Eflt(f0))
   end // end of [t_t0flt]
 | _ when t_t0str(tnd) =>
   let
-    val c0 = p_t0str(buf, err)
+    val s0 = p_t0str(buf, err)
   in
     err := e0;
-    d0exp_make_node(c0.loc(), D0Estr(c0))
+    d0exp_make_node(s0.loc(), D0Estr(s0))
   end // end of [t_t0str]
+//
+| T_LBRACE() => let
+    val () = buf.incby1()
+    val s0es =
+      p_s0expseq_COMMA(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACE(buf, err)
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Esexp(tbeg, s0es, tend)) where
+    {
+      val loc_res = tbeg.loc()+tend.loc()
+      // end of [val]
+    }
+  end // end of [T_LBRACE]
 //
 | T_LPAREN() => let
     val () = buf.incby1()

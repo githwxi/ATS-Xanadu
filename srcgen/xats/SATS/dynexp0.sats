@@ -89,37 +89,25 @@ vtypedef d0eclist_vt = List0_vt(d0ecl)
 //
 (* ****** ****** *)
 //
-abstbox q0arg_tbox = ptr
-//
-typedef q0arg = q0arg_tbox
-typedef q0arglst = List0(q0arg)
-//
-datatype
-q0arg_node =
+datatype q0arg =
 (*
 | Q0ARGnone of token
 *)
-| Q0ARGsome of (i0dntlst, sort0opt)
+| Q0ARGsome of
+  (i0dntlst, sort0opt)
+//
+typedef q0arglst = List0(q0arg)
 //
 fun
-q0arg_get_loc(q0arg): loc_t
+print_q0arg : print_type(q0arg)
 fun
-q0arg_get_node(q0arg): q0arg_node
-//
-overload .loc with q0arg_get_loc
-overload .node with q0arg_get_node
-//
-fun print_q0arg : print_type(q0arg)
-fun prerr_q0arg : prerr_type(q0arg)
-fun fprint_q0arg : fprint_type(q0arg)
+prerr_q0arg : prerr_type(q0arg)
+fun
+fprint_q0arg : fprint_type(q0arg)
 //
 overload print with print_q0arg
 overload prerr with prerr_q0arg
 overload fprint with fprint_q0arg
-//
-fun
-q0arg_make_node
-(loc: loc_t, node: q0arg_node): q0arg
 //
 (* ****** ****** *)
 //
@@ -428,6 +416,10 @@ d0exp_node =
 | D0Estr of t0str
 //
 | D0Eapps of d0explst
+//
+| D0Esexp of
+    (token, s0explst, token)
+  // end of [D0Esexp]
 //
 | D0Eparen of
     (token, d0explst, d0exp_RPAREN)
