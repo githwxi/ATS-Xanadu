@@ -90,7 +90,9 @@ typedef q1arglst = List0(q1arg)
 //
 datatype
 q1arg_node =
+(*
 | Q1ARGnone of token
+*)
 | Q1ARGsome of
   (tokenlst(*ids*), sort1opt)
 //

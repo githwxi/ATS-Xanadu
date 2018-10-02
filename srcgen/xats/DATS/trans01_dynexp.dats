@@ -383,12 +383,14 @@ case+ ids of
 //
 in
 //
-case+
+case-
 q0a0.node() of
+(*
 | Q0ARGnone(tok) =>
   (
     q1arg_make_node(loc0, Q1ARGnone(tok))
   )
+*)
 | Q0ARGsome(ids, opt) => let
     val ids = auxids(ids)
     val opt = trans01_sortopt(opt)
@@ -2303,7 +2305,7 @@ println!
 //
 in
 //
-case-
+case+
 d0c0.node() of
 //
 | D0Cnone _ => d1ecl_none(d0c0)
