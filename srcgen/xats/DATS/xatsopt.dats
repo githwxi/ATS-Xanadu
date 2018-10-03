@@ -38,7 +38,21 @@ commarg =
 | COMMARG of (int, string)
 //
 typedef
-commarglst(n:int) = list(commarg, n)
+commarglst
+  (n:int) = list(commarg, n)
+//
+(* ****** ****** *)
+//
+extern
+fun
+parse_commarg
+( string
+) :<> commarg
+and
+parse_commarglst
+  {n:nat}
+( argc: int(n)
+, argv: argv(n)) :<> commarglst(n)
 //
 (* ****** ****** *)
 //
@@ -49,6 +63,12 @@ extern
 fun
 fprint_commarg
 (out: FILEref, x0: commarg): void
+//
+(* ****** ****** *)
+//
+extern
+fun
+commarg_warning(arg: string): void
 //
 (* ****** ****** *)
 //
@@ -63,6 +83,21 @@ case+ x0 of
   fprint!(out, "COMMARG(", i, ", ", k, ")")
 ) (* end of [fprint_commarg] *)
 //
+(* ****** ****** *)
+
+implement
+commarg_warning
+  (arg) = () where
+{
+//
+val () =
+prerr("WARNING(ATS)")
+val () =
+prerrln!
+(": unrecognized command line argument [", arg, "] is ignored.")
+//
+} (* end of [commarg_warning] *)
+
 (* ****** ****** *)
 
 (* end of [xatsopt.dats] *)
