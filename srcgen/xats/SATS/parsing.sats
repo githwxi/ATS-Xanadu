@@ -559,5 +559,18 @@ pent3_fun_fun_fun
 ) : synent3(a1, a2, a3) // pent3_fun_fun_fun
 
 (* ****** ****** *)
+//
+// HX-2018-10-07
+// static/dynamic: 0/1
+//
+fun
+parse_from_stdin_toplevel
+  (stadyn: int): d0eclist
+fun
+parse_from_fileref_toplevel
+  (stadyn: int, inp: FILEref): d0eclist
+// end of [parse_from_fileref_toplevel]
+//
+(* ****** ****** *)
 
 (* end of [xats_parsing.sats] *)
