@@ -36,13 +36,16 @@
 (* ****** ****** *)
 //
 (*
-HX: fixity declarations
+HX-2018-10:
+fixity declarations
+#include "prelude/atsparam.hats"
 *)
-#include "prelude/params.hats"
 //
 (* ****** ****** *)
 
-#if VERBOSE_FIXITY #then
+#if
+VERBOSE_FIXITY
+#then
 #print \
 "Loading [fixity.ats] starts!\n"
 #endif // end of [VERBOSE_FIXITY]
@@ -50,40 +53,40 @@ HX: fixity declarations
 (* ****** ****** *)
 //
 (*
-prefix 00 ! (* static *)
+#prefix 00 ! (* static *)
 *)
 //
-prefix 99 ! (* dynamic *)
+#prefix 99 ! (* dynamic *)
 //
 (* ****** ****** *)
 
 (*
-prefix 81 ID (* identity *)
+#prefix 81 ID (* identity *)
 *)
 
 (* ****** ****** *)
 
 (*
-postfix 80 .lab // dynamic
-postfix 80 ->lab // dynamic
+#postfix 80 .lab // dynamic
+#postfix 80 ->lab // dynamic
 *)
 
 (* ****** ****** *)
 
 (*
-prefix 79 & // dynamic
+#prefix 79 & // dynamic
 *)
 
 (* ****** ****** *)
 
 (*
-infixl 70 app
+#infixl 70 app
 *)
 
 (* ****** ****** *)
 
 (*
-postfix 69 ?
+#postfix 69 ?
 *)
 
 (* ****** ****** *)
@@ -91,109 +94,115 @@ postfix 69 ?
 // HX-2015-08-04:
 // mostly following the Fortran convention
 //
-infixr 61 ** (*exp*)
+#infixr 61 ** (*exp*)
 //
 (* ****** ****** *)
 //
 // multiplicative
 //
-infixl 60 * / % mod
+#infixl 60 * / % mod
 //
 (*
-infixl 60 nmul ndiv nmod
+#infixl 60 nmul ndiv nmod
 *)
 //
 (* ****** ****** *)
 
-prefix 51 ~ (*negative*)
+#prefix 51 ~ (*negative*)
 
 (* ****** ****** *)
 //
-infixl 50 + - (*additive*)
+#infixl 50 + - (*additive*)
 //
 (*
-infixr (+) ++ // concatenative
+#infixr (+) ++ // concatenative
 *)
 //
 (* ****** ****** *)
 
-infixl 41 asl asr
-infixl 41 lsl lsr
+#infixl 41 asl asr
+#infixl 41 lsl lsr
 
 (* ****** ****** *)
 //
-infix 40 < <= > >=
+#infix 40 < <= > >=
 //
-(*
-//
-// HX-2012-07: removed
-//
-infixl ( < ) ilt flt plt ult
-infixl ( <= ) ilte flte plte ulte
-infixl ( > ) igt fgt pgt ugt
-infixl ( >= ) igte fgte pgte ugte
-*)
-//
-(* ****** ****** *)
-
-infixr 40 :: @
-
-(* ****** ****** *)
-
-infix 30 = == != <>
-
-(* ****** ****** *)
-
 (*
 //
 // HX-2012-07: removed
 //
-infix ( = ) ieq feq peq ueq
-infix ( <> ) ineq fneq pneq uneq
+#infixl ( < ) ilt flt plt ult
+#infixl ( <= ) ilte flte plte ulte
+#infixl ( > ) igt fgt pgt ugt
+#infixl ( >= ) igte fgte pgte ugte
+*)
+//
+(* ****** ****** *)
+
+#infixr 40 :: @
+
+(* ****** ****** *)
+
+#infix 30 = == != <>
+
+(* ****** ****** *)
+
+(*
+//
+// HX-2012-07: removed
+//
+#infix ( = ) ieq feq peq ueq
+#infix ( <> ) ineq fneq pneq uneq
 *)
 
 (* ****** ****** *)
 
-infixl 21 &&
-infixl ( && ) andalso land
+#infixl 21 &&
+#infixl ( && ) andalso land
 
 (* ****** ****** *)
 
-infixl 20 ||
-infixl ( || ) xor orelse lor lxor
+#infixl 20 ||
+#infixl ( || ) xor orelse lor lxor
 
 (* ****** ****** *)
 
-infixr 10 ->
+#infixr 10 ->
 
 (* ****** ****** *)
 
-infix 0 := // HX: assign
-infix 0 :=: // HX: exchange
+#infix 0 := // HX: assign
+#infix 0 :=: // HX: exchange
 
 (* ****** ****** *)
 
-infixl 0 << (* g0int_asl, g0uint_lsl *)
-infixr 0 >> (* g0int_asr, g0uint_lsr *)
+#infixl 0 << (* g0int_asl, g0uint_lsl *)
+#infixr 0 >> (* g0int_asr, g0uint_lsr *)
 
 (* ****** ****** *)
 
-prefix 0 ++ -- // inc and dec
-prefix 0 !++ --! // getinc and decget
-infixr 0 =++ --= // setinc and decset
+(*
+#prefix 0 ++ -- // inc and dec
+#prefix 0 !++ --! // getinc and decget
+#infixr 0 =++ --= // setinc and decset
+*)
 
 (* ****** ****** *)
 
-infix 0 :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
-infix 0 :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
+(*
+#infix 0 :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
+#infix 0 :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
+*)
 
 (* ****** ****** *)
 
-prefix 0 ignoret // ignoring a funcall return
+#prefix 0 ignoret // ignoring a funcall return
 
 (* ****** ****** *)
 
-#if VERBOSE_FIXITY #then
+#if
+VERBOSE_FIXITY
+#then
 #print \
 "Loading [fixity.ats] is done!\n"
 #endif // end of [VERBOSE_FIXITY]
