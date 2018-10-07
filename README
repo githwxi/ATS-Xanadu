@@ -26,4 +26,16 @@ ATS3 is.
 
 3. Extensive support for meta-programming
 
+(* ###### ###### ###### ###### ###### *)
+
+Structure of xatsopt
+
+srcgen:
+srcgen/util:
+for system-dependent stuff
+srcgen/xats:
+for system-independent stuff
+
+prelude: for libats-prelude
+
 ############ end of [README] ############
