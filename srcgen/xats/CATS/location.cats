@@ -33,8 +33,10 @@
 //
 /* ****** ****** */
 
-#ifndef XANADU_SRCGEN_CATS_LOCATION
-#define XANADU_SRCGEN_CATS_LOCATION
+#ifndef \
+ATS3_SRCGEN_CATS_XATS_LOCATION
+#define \
+ATS3_SRCGEN_CATS_XATS_LOCATION
 
 /* ****** ****** */
 
@@ -45,9 +47,10 @@ typedef struct {
 } xats_position_struct ;
 
 /* ****** ****** */
-
-#endif // end of [XANADU_SRCGEN_CATS_LOCATION]
-
+//
+#endif // end if [ifndef]
+// [ATS3_SRCGEN_CATS_XATS_LOCATION]
+//
 /* ****** ****** */
 
 /* end of [xats_position.cats] */
