@@ -32,10 +32,12 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
+#include
+"share/atspre_staload.hats"
 #staload
 UN = "prelude/SATS/unsafe.sats"
-
+//
 (* ****** ****** *)
 //
 #staload
@@ -52,22 +54,20 @@ local
 
 absimpl
 filepath_type = $rec
-{
-  filepath_kind= int
+{ filepath_kind= int
 , filepath_givename= string
 , filepath_partpath= string
 , filepath_fullpath= symbol
 } (* end of [filepath_type] *)
 
-in (* nothing *) end // end-of-local
-
-(* ****** ****** *)
+in (* in-of-local *)
 //
 implement
-filepath_get_full(fp) =
-  fp.filepath_fullpath
-  where { absreimpl filepath_type }
+filepath_get_full
+  (fp0) = fp0.filepath_fullpath
 //
+end // end of [local]
+
 (* ****** ****** *)
 
 local

@@ -937,7 +937,8 @@ for skipping error
 //
 | D0Cimpdecl of
   ( token(*impkind*)
-  , declmodopt, sq0arglst, tq0arglst
+  , declmodopt//modifier
+  , sq0arglst, tq0arglst
   , dq0eid, ti0arglst, f0arglst, effs0expopt, token, d0exp)
 //
 | D0Cdatasort of

@@ -55,8 +55,8 @@ exception XATSOPT_TRANS4_EXN of ()
 // raising FatalErrorException
 // raising FatalErrorException_interr
 //
-fun abort{a:vt0ype}():<!exn> (a)
-fun abort_interr{a:vt0ype}():<!exn> (a)
+fun abort():<!exn> void
+fun abort_interr():<!exn> void
 //
 (* ****** ****** *)
 

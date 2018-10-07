@@ -33,14 +33,14 @@
 //
 (* ****** ****** *)
 //
+#include
+"share/atspre_staload.hats"
 #staload
-"./../SATS/basics.sats"
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload
-UN =
-"prelude/SATS/unsafe.sats"
+#staload "./../SATS/basics.sats"
 //
 (* ****** ****** *)
 

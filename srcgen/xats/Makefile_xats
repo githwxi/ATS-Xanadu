@@ -1,0 +1,123 @@
+######
+#
+# For building xatsopt
+#
+######
+
+CC=gcc
+
+######
+
+PATSCC=$(PATSHOME)/bin/patscc
+PATSOPT=$(PATSHOME)/bin/patsopt
+
+######
+#
+CFLAGS=
+#
+# CFLAGS=-g
+# CFLAGS=-g -O
+# CFLAGS=-g -O2
+#
+GCFLAG=
+GCFLAG=-DATS_MEMALLOC_LIBC
+# GCFLAG=-DATS_MEMALLOC_GCBDW
+#
+######
+
+SRCSATS := \
+basics.sats \
+symbol.sats \
+symmap.sats \
+symenv.sats \
+label0.sats \
+fixity.sats \
+xerrory.sats \
+filepath.sats \
+location.sats \
+lexbuf.sats \
+lexing.sats \
+staexp0.sats \
+dynexp0.sats \
+parsing.sats \
+synread.sats \
+staexp1.sats \
+dynexp1.sats \
+trans01.sats \
+
+SRCDATS := \
+basics.dats \
+symbol.dats \
+symmap.dats \
+symenv.dats \
+label0.dats \
+fixity.dats \
+xerrory.dats \
+filepath.dats \
+location.dats \
+lexbuf.dats \
+lexing_token.dats \
+lexing_kword.dats \
+lexing_util0.dats \
+staexp0.dats \
+dynexp0.dats \
+staexp0_print.dats \
+dynexp0_print.dats \
+parsing_tokbuf.dats \
+parsing_basics.dats \
+parsing_staexp.dats \
+parsing_dynexp.dats \
+synread_staexp.dats \
+staexp1.dats \
+dynexp1.dats \
+staexp1_print.dats \
+dynexp1_print.dats \
+trans01_envmap.dats \
+trans01_staexp.dats \
+trans01_dynexp.dats \
+
+######
+
+OBJSATS := \
+$(patsubst %.sats, BUILD/%_sats.o, $(SRCSATS))
+OBJDATS := \
+$(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
+
+######
+#
+all: \
+xatsopt
+xatsopt: \
+DATS/xatsopt.dats \
+$(OBJSATS) $(OBJDATS) ; \
+  $(PATSCC) -o xatsopt $(GCFLAG) $^
+#
+######
+
+BUILD/%_sats.c: SATS/%.sats ; \
+  $(PATSOPT) $(CFLAGS) -o $@ --static $<
+BUILD/%_dats.c: DATS/%.dats ; \
+  $(PATSOPT) $(CFLAGS) $(GCFLAG) -o $@ --dynamic $<
+
+######
+
+BUILD/%_sats.o: BUILD/%_sats.c ; $(PATSCC) $(CFLAGS) -o $@ -c $<
+BUILD/%_dats.o: BUILD/%_dats.c ; $(PATSCC) $(CFLAGS) -o $@ -c $<
+
+######
+
+RMF=rm -f
+
+######
+
+clean:: ; $(RMF) BUILD/*_?ats.c
+clean:: ; $(RMF) BUILD/*_?ats.o
+clean:: ; $(RMF) xatsopt_dats.o
+clean:: ; $(RMF) xatsopt_dats.c
+
+cleanall:: clean
+cleanall:: ; $(RMF) xatsopt
+
+######
+
+###### end of [Makefile_stat] ######

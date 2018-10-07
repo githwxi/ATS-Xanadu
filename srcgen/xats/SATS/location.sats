@@ -39,7 +39,7 @@
 
 (* ****** ****** *)
 
-abstbox location_type
+abstbox location_type = ptr
 typedef loc_t = location_type
 typedef location = location_type
 

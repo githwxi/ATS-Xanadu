@@ -36,10 +36,10 @@
 #staload SYM = "./symbol.sats"
 
 (* ****** ****** *)
-
-abstbox filepath_type
+//
+abstbox filepath_type = ptr
 typedef filepath = filepath_type
-
+//
 (* ****** ****** *)
 
 fun theDirSep_get(): char

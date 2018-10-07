@@ -37,7 +37,7 @@
 
 (* ****** ****** *)
 //
-abstbox symbol_tbox // boxed
+abstbox symbol_tbox = ptr
 //
 typedef sym_t = symbol_tbox
 //
