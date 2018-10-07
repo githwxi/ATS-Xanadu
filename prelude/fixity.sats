@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Postiats - Unleashing the Potential of Types!
-** Copyright (C) 2011-2014 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Authoremail: hwxiATcsDOTbuDOTedu
+// Authoremail: gmhwxiATgmailDOTcom
 //
 // This one was
 // there at the very beginning of ATS
@@ -38,7 +38,7 @@
 (*
 HX-2018-10:
 fixity declarations
-#include "prelude/atsparam.hats"
+#include "prelude/xparam.hats"
 *)
 //
 (* ****** ****** *)
