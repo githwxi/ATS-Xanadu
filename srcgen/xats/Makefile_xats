@@ -5,6 +5,8 @@
 ######
 
 CC=gcc
+SED=sed
+RMF=rm -f
 
 ######
 
@@ -105,9 +107,30 @@ BUILD/%_sats.o: BUILD/%_sats.c ; $(PATSCC) $(CFLAGS) -o $@ -c $<
 BUILD/%_dats.o: BUILD/%_dats.c ; $(PATSCC) $(CFLAGS) -o $@ -c $<
 
 ######
-
-RMF=rm -f
-
+#
+# HX-2018-10-07:
+# '--output-a .depend' means
+# appending instead of overwriting
+#
+SATS_SRCSATS := \
+$(patsubst %.sats, SATS/%.sats, $(SRCSATS))
+DATS_SRCDATS := \
+$(patsubst %.dats, DATS/%.dats, $(SRCDATS))
+#
+depend:: ; $(RMF) .depend
+#
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -s $(SATS_SRCSATS)
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -d $(DATS_SRCDATS)
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -d DATS/xatsopt.dats
+#
+depend:: ; \
+$(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
+#
+-include .depend
+#
 ######
 
 clean:: ; $(RMF) BUILD/*_?ats.c
