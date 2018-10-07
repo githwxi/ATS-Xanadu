@@ -48,6 +48,12 @@ fun theParDir_get(): string
 
 (* ****** ****** *)
 //
+fun
+filepath_dirbase
+(dir: string, base: string): string
+//
+(* ****** ****** *)
+//
 fun eq_filepath_filepath
   (x1: filepath, x2: filepath):<> bool
 fun neq_filepath_filepath

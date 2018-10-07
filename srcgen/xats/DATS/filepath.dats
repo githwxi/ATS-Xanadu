@@ -92,6 +92,72 @@ implement theParDir_get() = theParDir
 end // end of [local]
 
 (* ****** ****** *)
+
+local
+//
+%{^
+typedef char *charptr;
+%} (* %{^ *)
+abstype
+charptr = $extype"charptr"
+//
+in (* in-of-local *)
+//
+implement
+filepath_dirbase
+  (dir, base) = let
+//
+val
+dir = g1ofg0(dir)
+val
+base = g1ofg0(base)
+//
+val n1 = length(dir)
+val n2 = length(base)
+//
+val sep = theDirSep_get()
+//
+val sepd =
+(
+if
+(n1 > 0)
+then (dir[n1-1] = sep) else false
+) : bool // end of [val]
+//
+val n12 = 
+(
+if sepd then (n1+n2+1) else (n1+n2+2)
+) : Size_t // end of [val]
+//
+val dir = $UN.cast{charptr}(dir)
+val base = $UN.cast{charptr}(base)
+//
+in
+//
+if
+sepd
+then let
+  val
+  (pf,fpf|p0) = malloc_gc(n12)
+  val _(*n12*) =
+  $extfcall(int, "sprintf", p0, "%s%s", dir, base)
+in
+  $UN.castvwtp0((pf, fpf | p0))
+end // end of [then]
+else let
+  val
+  (pf, fpf | p0) = malloc_gc(n12)
+  val _(*n12*) =
+  $extfcall(int, "sprintf", p0, "%s/%s", dir, base)
+in
+  $UN.castvwtp0((pf, fpf | p0))
+end // end of [then]
+//
+end // end of [filepath_dirbase]
+
+end // end of [local]
+
+(* ****** ****** *)
 //
 implement
 eq_filepath_filepath

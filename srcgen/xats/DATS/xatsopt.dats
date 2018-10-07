@@ -40,6 +40,22 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload
+FIL = "./../SATS/filepath.sats"
+//
+#staload "./../SATS/parsing.sats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) =
+  "./../DATS/staexp0_print.dats"
+#staload
+_(*TMP*) =
+  "./../DATS/dynexp0_print.dats"
+//
+(* ****** ****** *)
+//
 local
 //
 #include
@@ -81,9 +97,10 @@ end // end of [local]
 #dynload "./staexp0_print.dats"
 #dynload "./dynexp0_print.dats"
 //
+#dynload "./parsing_basics.dats"
+//
 #dynload "./parsing_tokbuf.dats"
 //
-#dynload "./parsing_basics.dats"
 #dynload "./parsing_staexp.dats"
 #dynload "./parsing_dynexp.dats"
 //
@@ -169,14 +186,89 @@ prerrln!
 //
 extern
 fun
+the_fixity_load
+(
+XATSHOME: string
+) : void =
+"\
+ext#\
+libxats_xatsopt_the_fixity_load"
+//
+implement
+the_fixity_load
+  (XATSHOME) = let
+//
+val
+given = "prelude/fixity.sats"
+val
+fpath =
+$FIL.filepath_dirbase(XATSHOME, given)
+//
+val () =
+println!
+("the_fixity_load: give = ", given)
+val () =
+println!
+("the_fixity_load: fpath = ", fpath)
+//
+val opt =
+fileref_open_opt
+(fpath, file_mode_r)
+//
+val-~Some_vt(inp) = opt
+//
+val d0cs =
+parse_from_fileref_toplevel
+  (0(*static*), inp)
+//
+val ((*void*)) = fileref_close(inp)
+//
+in
+  println!
+  ("the_fixity_load: d0cs = "); println!(d0cs)
+end // end of [the_fixity_load]
+//
+(* ****** ****** *)
+//
+extern
+fun
+the_prelude_load
+(
+  PATSHOME: string
+) : void =
+"\
+ext#\
+libxats_xatsopt_the_prelude_load"
+//
+implement
+the_prelude_load
+  (XATSHOME) = () where
+{
+//
+val () =
+println!
+("the_prelude_load: XATSHOME = ", XATSHOME)
+//
+val () = the_fixity_load(XATSHOME)
+//
+} (* end of [the_prelude_load] *)
+//
+(* ****** ****** *)
+//
+extern
+fun
 xatsopt_main0
 {n:int | n >= 1}
-(n: int(n), argv: !argv(n)): void
+(int(n), !argv(n)): void
 //
 (* ****** ****** *)
 
 local
-
+//
+val
+XATSHOME =
+"/home/hwxi/Research/ATS-Xanadu"
+//
 in (* in-of-local *)
 
 implement
@@ -184,8 +276,7 @@ xatsopt_main0
   (argc, argv) = let
 //
 val () =
-println!
-("xatsopt_main0: called")
+the_prelude_load(XATSHOME)
 //
 in
 end // end of [xatsopt_main0]

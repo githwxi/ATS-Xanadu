@@ -605,5 +605,52 @@ pstar_sep_fun
 ) (* end of [pstar_SEMICOLON_fun] *)
 //
 (* ****** ****** *)
+//
+// HX-2018-10-07
+// static/dynamic: 0/1
+//
+implement
+parse_from_stdin_toplevel
+  (stadyn) =
+  parse_from_fileref_toplevel(stadyn, stdin_ref)
+// end of [parser_from_stdin_toplevel]
+//
+implement
+parse_from_fileref_toplevel
+  (stadyn, inp) = let
+//
+val
+toks =
+fileref_tokenize(inp)
+val
+toks =
+list_vt2t
+(lexing_preprocess_tokenlst(toks))
+//
+val _(*ntok*) =
+list_iforeach<token>(toks) where
+{
+//
+implement(env)
+list_iforeach$fwork<token><env>
+  (i, x, env) =
+  println!("TOKEN(", i, ") = ", x)
+//
+} // end of [where] // end of [val]
+//
+in
+//
+let
+  var err: int
+  var buf: tokbuf
+  val ((*void*)) = (err := 0)
+  val ((*void*)) = tokbuf_initize_list(buf, toks)
+in
+  fptop_d0eclseq(stadyn, buf, err)
+end
+//
+end // end of [parse_from_fileref_toplevel]
+//
+(* ****** ****** *)
 
 (* end of [xats_parsing_basics.dats] *)
