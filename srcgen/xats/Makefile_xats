@@ -90,7 +90,7 @@ xatsopt
 xatsopt: \
 DATS/xatsopt.dats \
 $(OBJSATS) $(OBJDATS) ; \
-  $(PATSCC) -o xatsopt $(GCFLAG) $^
+  $(PATSCC) -cleanaft -o xatsopt $(GCFLAG) $^
 #
 ######
 
