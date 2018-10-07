@@ -32,10 +32,16 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
+#include
+"share/atspre_staload.hats"
 #staload
-"./../SATS/xerrory.sats"
-
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/xerrory.sats"
+//
 (* ****** ****** *)
 
 local
@@ -45,8 +51,8 @@ fun
 segfault
 (
 // argless
-) : int =
-  "ext#xats_xerrory_segfault"
+) : int
+  = "ext#xats_xerrory_segfault"
 //
 in (* in-of-local *)
 

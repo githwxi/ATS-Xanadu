@@ -32,9 +32,15 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
+#include
+"share/atspre_staload.hats"
 #staload
-"./../SATS/location.sats"
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+
+#staload "./../SATS/location.sats"
 
 (* ****** ****** *)
 

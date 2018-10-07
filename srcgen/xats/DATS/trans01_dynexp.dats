@@ -33,6 +33,13 @@
 //
 (* ****** ****** *)
 //
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+//
 #staload
 SYM="./../SATS/symbol.sats"
 #staload
@@ -61,6 +68,16 @@ overload print with $LOC.print_location
 #staload "./../SATS/dynexp1.sats"
 //
 #staload "./../SATS/trans01.sats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) = "./../DATS/fixity.dats"
+//
+#staload
+_(*TMP*) = "./../DATS/staexp1_print.dats"
+#staload
+_(*TMP*) = "./../DATS/dynexp1_print.dats"
 //
 (* ****** ****** *)
 //

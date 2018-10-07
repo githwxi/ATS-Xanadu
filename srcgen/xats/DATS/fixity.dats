@@ -32,6 +32,13 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
 #staload
 ERR = "./../SATS/xerrory.sats"

@@ -38,7 +38,7 @@ SYM = "./symbol.sats"
 
 (* ****** ****** *)
 //
-abstbox label_tbox
+abstbox label_tbox = ptr
 //
 typedef label = label_tbox
 //

@@ -33,9 +33,10 @@
 //
 (* ****** ****** *)
 //
+#include
+"share/atspre_staload.hats"
 #staload
-UN =
-"prelude/SATS/unsafe.sats"
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
@@ -44,6 +45,11 @@ UN =
 #staload "./../SATS/staexp0.sats"
 //
 #staload "./../SATS/dynexp0.sats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) = "./../DATS/staexp0_print.dats"
 //
 (* ****** ****** *)
 //
