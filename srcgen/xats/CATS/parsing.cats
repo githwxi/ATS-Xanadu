@@ -32,10 +32,12 @@
 // Authoremail: gmhwxi@gmail.com
 //
 /* ****** ****** */
-
-#ifndef XANADU_SRCGEN_CATS_PARSING
-#define XANADU_SRCGEN_CATS_PARSING
-
+//
+#ifndef \
+ATS3_SRCGEN_CATS_XATS_PARSING
+#define \
+ATS3_SRCGEN_CATS_XATS_PARSING
+//
 /* ****** ****** */
 
 /*
@@ -59,9 +61,10 @@ typedef struct {
 } xats_tokbuf_struct ;
 
 /* ****** ****** */
-
-#endif // end of [XANADU_SRCGEN_CATS_PARSING]
-
+//
+#endif // end if [ifndef]
+// [ATS3_SRCGEN_CATS_XATS_PARSING]
+//
 /* ****** ****** */
 
 /* end of [xats_parsing.cats] */
