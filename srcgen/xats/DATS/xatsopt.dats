@@ -41,9 +41,16 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
+ERR = "./../SATS/xerrory.sats"
+//
+#staload
 FIL = "./../SATS/filepath.sats"
 //
+typedef fpath_t = $FIL.filepath
+//
 #staload "./../SATS/parsing.sats"
+//
+#staload "./../SATS/trans01.sats"
 //
 (* ****** ****** *)
 //
@@ -53,6 +60,18 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
   "./../DATS/dynexp0_print.dats"
+//
+#staload
+_(*TMP*) =
+  "./../DATS/staexp1_print.dats"
+#staload
+_(*TMP*) =
+  "./../DATS/dynexp1_print.dats"
+//
+(* ****** ****** *)
+//
+#staload
+STDIO = "libats/libc/SATS/stdio.sats"
 //
 (* ****** ****** *)
 //
@@ -136,8 +155,98 @@ and
 parse_commarglst
   {n:nat}
 ( argc: int(n)
-, argv: argv(n)) :<> commarglst(n)
+, argv: !argv(n)
+) :<!wrt> commarglst(n)
 //
+(* ****** ****** *)
+
+implement
+parse_commarg
+  (inp) = let
+//
+fun
+loop
+{n,i:nat|i <= n} .<n-i>.
+(
+  inp: string n, n: int n, i: int i
+) :<> commarg = 
+(
+if
+(i < n)
+then (
+if (inp[i] != '-')
+  then COMMARG(i, inp) else loop(inp, n, i+1)
+) else COMMARG(n, inp)
+// end of [if]
+) (* end of [if] *)  
+// end of [loop]
+//
+in
+  loop(inp, sz2i(len), 0) where
+  {
+    val inp = g1ofg0(inp); val len = string_length(inp)
+  }
+end // end of [parse_commarg]
+//
+(* ****** ****** *)
+
+implement
+parse_commarglst
+  {n}(argc, argv) = let
+//
+vtypedef
+arglst(n:int) = list_vt(commarg, n)
+//
+fun
+loop
+{i:nat | i <= n}{l:addr} .<n-i>.
+( pf0: arglst(0) @ l
+| argv: !argv(n), i: int i, p0: ptr l
+) :<!wrt> (arglst(n-i) @ l | void) =
+(
+//
+if
+i < argc
+then let
+  val+~list_vt_nil() = !p0
+  val x = parse_commarg(argv[i])
+  val () =
+  ( !p0 :=
+    list_vt_cons(x, list_vt_nil())
+  ) (* end of [val] *)
+  val+@list_vt_cons(_, xs) = !p0
+  val (pf | ()) =
+    loop (view@xs | argv, i+1, addr@xs) // tail-call
+  // end of [val]
+in
+  fold@(!p0); (pf0 | ())
+end // end of [then]
+else (pf0 | ()) // end of [else]
+//
+) (* end of [loop] *)
+//
+in
+//
+list_vt2t
+(
+res where
+{
+var res: ptr?
+//
+val () =
+res := list_vt_nil{commarg}()
+val
+(pf | ()) =
+loop
+(view@res | argv, 0, addr@res)
+// end of [val]
+prval ((*void*)) = view@res := pf
+//
+}
+) (* end of [list_vt2t] *)
+//
+end // end of [parse_commarglst]
+
 (* ****** ****** *)
 //
 extern
@@ -147,12 +256,6 @@ extern
 fun
 fprint_commarg
 (out: FILEref, x0: commarg): void
-//
-(* ****** ****** *)
-//
-extern
-fun
-commarg_warning(arg: string): void
 //
 (* ****** ****** *)
 //
@@ -168,20 +271,98 @@ case+ x0 of
 ) (* end of [fprint_commarg] *)
 //
 (* ****** ****** *)
-
+//
+extern
+fun
+xatsopt_usage
+( out: FILEref
+, arg0: commarg): void
 implement
-commarg_warning
-  (arg) = () where
+xatsopt_usage
+  (out, arg0) = let
+//
+val+COMMARG(_, cmdname) = arg0
+//
+in
+//
+fprintln!
+(out, "Usage: ", cmdname, " <command> ... <command>\n");
+fprintln!
+(out, "where a <command> is of one of the following forms:\n");
+//
+fprintln! (out, "  -h (for printing out this help usage)");
+fprintln! (out, "  --help (for printing out this help usage)");
+//
+fprintln! (out, "  -v (for printing out the version)");
+fprintln! (out, "  --version (for printing out the version)");
+//
+fprintln! (out, "  -s <filenames> (for compiling static filenames individually)");
+fprintln! (out, "  --static <filenames> (for compiling static filenames individually)");
+//
+fprintln! (out, "  -d <filenames> (for compiling dynamic filenames individually)");
+fprintln! (out, "  --dynamic <filenames> (for compiling dynamic filenames individually)");
+//
+fprintln! (out, "  -dd <filenames> (for compiling dynamic filenames in a combined manner)");
+fprintln! (out, "  --dynamics <filenames> (for compiling dynamic filenames in a combined manner)");
+//
+fprintln! (out, "  -o <filename> (output into filename)");
+fprintln! (out, "  --output <filename> (output into filename)");
+fprintln! (out, "  --output-w <filename> (output-write into filename)");
+fprintln! (out, "  --output-a <filename> (output-append into filename)");
+//
+(*
+fprintln! (out, "  -cc (for compiling into C)");
+fprintln! (out, "  --compile (for compiling into C)");
+*)
+//
+(*
+fprintln! (out, "  -tc (for typechecking only)");
+fprintln! (out, "  --typecheck (for typechecking only)");
+*)
+//
+fprint_newline (out); // HX: needed for flushing out the output
+//
+end // end of [xatsopt_usage]
+//
+(* ****** ****** *)
+//
+extern
+fun
+xatsopt_version
+  (out: FILEref): void
+implement
+xatsopt_version
+  (out) = let
+  val MAJOR = 0
+  val MINOR = 0
+  val MICRO = 0
+in
+  fprint!(out, "ATS/Xanadu version ");
+  fprint!(out, MAJOR, ".", MINOR, ".", MICRO);
+  fprintln!(out, " Copyright (c) 2018-20?? Hongwei Xi")
+end // end of [xatsopt_version]
+//
+(* ****** ****** *)
+//
+extern
+fun
+xatsopt_commarg_warning
+  (out: FILEref, arg: string): void
+implement
+xatsopt_commarg_warning
+  (out, arg) = () where
 {
 //
 val () =
-prerr("WARNING(ATS)")
+fprint(out, "WARNING(ATS)")
 val () =
-prerrln!
-(": unrecognized command line argument [", arg, "] is ignored.")
+fprintln!
+( out
+, ": unrecognized command line argument [", arg, "] is ignored."
+) (* end of [val] *)
 //
-} (* end of [commarg_warning] *)
-
+} (* end of [xatsopt_commarg_warning] *)
+//
 (* ****** ****** *)
 //
 extern
@@ -234,7 +415,7 @@ extern
 fun
 the_prelude_load
 (
-  PATSHOME: string
+  XATSHOME: string
 ) : void =
 "\
 ext#\
@@ -262,12 +443,660 @@ xatsopt_main0
 (int(n), !argv(n)): void
 //
 (* ****** ****** *)
+//
+datatype
+waitknd =
+  | WTKnone of ()
+  | WTKoutput of () // -o ...
+  | WTKinpsta of () // -s ...
+  | WTKinpdyn of () // -d ...
+(*
+  | WTKinpdyns of () // -dd ...
+*)
+  | WTKdefine of () // -DATS ...
+  | WTKinclude of () // -IATS ...
+// end of [waitkind]
+//
+fun
+waitknd_get_stadyn
+(knd: waitknd): int =
+(
+case+ knd of
+| WTKinpsta() => 0
+| WTKinpdyn() => 1
+(*
+| WTKinpdyns() => 2
+*)
+| _ (*rest-of-WTK*) => ~1
+) // end of [waitkind_get_stadyn]
+//
+(* ****** ****** *)
+//
+datatype
+outchan =
+| OUTCHANref of (FILEref)
+| OUTCHANptr of (FILEref)
+// end of [outchan]
+
+fun
+outchan_get_filref
+  (x0: outchan): FILEref =
+(
+case+ x0 of
+| OUTCHANref(filr) => filr
+| OUTCHANptr(filr) => filr
+) (* end of [outchan_get_filref] *)
+//
+(* ****** ****** *)
+//
+typedef
+cmdstate = @{
+//
+arg0= commarg
+,
+wtk0= waitknd
+,
+ATSHOME= string
+,
+inpfil0=fpath_t
+,
+// the number of inputs
+ninpfil= int // processed
+//
+, outmode= fmode
+, outchan= outchan
+//
+// the number of caught
+, nxerror= int // errors
+//
+} (* end of [cmdstate] *)
+//
+(* ****** ****** *)
+//
+fun
+isinpwait
+(
+  st0: cmdstate
+) : bool =
+(
+case+
+st0.wtk0
+of // case+
+ | WTKinpsta() => true
+ | WTKinpdyn() => true
+(*
+ | WTKinpdyns() => true
+*)
+ | _ (*non-WTKinput*) => false
+) // end of [isinpwait]
+
+fun
+isoutwait
+  (st0: cmdstate): bool =
+(
+case+
+st0.wtk0 of
+| WTKoutput() => true
+| _(*non-WTKoutput*) => false
+) (* end of [isoutwait] *)
+
+fun
+isdatswait
+  (st0: cmdstate): bool =
+(
+case+
+st0.wtk0 of
+| WTKdefine() => true
+| _(*non-WTKdefine*) => false
+) (* end of [isdatswait] *)
+
+fun
+isiatswait
+  (st0: cmdstate): bool =
+(
+case+
+st0.wtk0 of
+| WTKinclude() => true
+| _(*non-WTKinclude*) => false
+) (* end of [isiatswait] *)
+//
+(* ****** ****** *)
 
 local
+
+extern
+praxi
+vbox_make_view_ptr
+{a:vt0ype}{l:addr}
+// statically allocated reference
+(a @ l | ptr(l)):<> vbox(a @ l)
+
+var
+theOutFname: Stropt = stropt_none()
+//
+prval pf0 =
+vbox_make_view_ptr
+{Stropt}{..}
+(view@theOutFname | addr@theOutFname)
+// end of [val]
+
+in (* in-of-local *)
+
+fun
+theOutFname_get
+(
+// argless
+) : Stropt = out where
+{
+//
+prval vbox(pf) = pf0
+//
+  val out = theOutFname
+//
+  val ((*void*)) =
+  theOutFname := stropt_none()
+//
+} // end of [theOutFname_get]
+
+fun
+theOutFname_set
+ (fname: Stropt) = () where
+{
+//
+prval vbox(pf) = pf0
+//
+  val () = theOutFname := fname
+//
+} // end of [theOutFname_set]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+fun
+cmdstate_set_outchan
+(
+st0: &cmdstate >> _, out1: outchan
+) : void = let
+  val out0 = st0.outchan
+  val ((*void*)) = st0.outchan := out1
+in
+//
+case+ out0 of
+| OUTCHANref _ => ()
+| OUTCHANptr(filr) => let
+    val err = $STDIO.fclose0(filr) in (*nothing*)
+  end // end of [OUTCHANptr]
+//
+end // end of [cmdstate_set_outchan]
+
+(* ****** ****** *)
+
+local
+
+fun
+auxmain
+(
+st0: &cmdstate, fname: string
+) : outchan = let
+//
+val
+filp =
+$STDIO.fopen(fname, st0.outmode)
+//
+in
+//
+if
+$STDIO.iseqz(filp)
+then
+(
+  OUTCHANref(stderr_ref)
+) where
+{
+prval () =
+$STDIO.FILEptr_free_null(filp)
+} (* end of [then] *)
+else
+(
+  OUTCHANptr($UN.castvwtp0{FILEref}(filp))
+) (* end of [else] *)
+//
+end // end of [auxmain]
+
+in (* in-of-local *)
+
+fun
+outchan_make_fname
+(
+  st0: &cmdstate, fname: string
+) : outchan =
+(
+case+ fname of
+| "-" => OUTCHANref(stdout_ref)
+//
+| _(*~special*) => auxmain(st0, fname)
+//
+) (* outchan_make_path *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+static
+fun
+process_nil
+(st0: &cmdstate >> _): void
+static
+fun
+process_given
+(st0: &cmdstate >> _, given: string): void
+//
+static
+fun
+process_cmdline
+  {n:nat}
+( st0: &cmdstate >> _
+, args: commarglst(n)): void
+and
+process_cmdline2
+  {n:nat}
+( st0: &cmdstate >> _
+, arg0: commarg, args: commarglst(n)): void
 //
 val
 XATSHOME =
 "/home/hwxi/Research/ATS-Xanadu"
+//
+implement
+process_nil
+  (st0) = let
+//
+val
+wtk0 = st0.wtk0
+val
+stadyn =
+waitknd_get_stadyn(wtk0)
+//
+in
+//
+if (
+stadyn >= 0
+) then
+{
+//
+val
+d0cs =
+parse_from_stdin_toplevel
+  (stadyn)
+//
+val
+d1cs = trans01_declist(d0cs)
+//
+val () =
+println!
+("process_nil: d0cs = ", d0cs)
+val () =
+println!
+("process_nil: d1cs = ", d1cs)
+//
+} (* end of [if] *)
+//
+end // end of [process_nil]
+//
+implement
+process_given
+  (st0, arg0) = let
+//
+val () =
+println!
+("process_given: arg0 = ", arg0)
+//
+in
+end // end of [process_give]
+//
+implement
+process_cmdline
+  (st0, args) = let
+in
+//
+case+ args of
+//
+| list_nil() =>
+  (
+    if
+    st0.ninpfil = 0
+    then process_nil(st0) else ()
+  )
+//
+| list_cons
+    (arg0, args) =>
+  (
+    process_cmdline2(st0, arg0, args)
+  )
+//
+end // end of [process_cmdline]
+//
+implement
+process_cmdline2
+  (st0, arg0, args) = let
+//
+(*
+val () =
+println!
+("process_cmdline2: arg0 = ", arg0)
+*)
+//
+fun
+auxkey1
+( st0:
+ &cmdstate >> _
+, key: string): void = let
+//
+val () =
+(st0.wtk0 := WTKnone())
+//
+val () =
+(
+case+ key of
+//
+| "-o" =>
+  {
+    val () =
+    (st0.wtk0 := WTKoutput())
+  } (* end of [-o] *)
+| "-s" =>
+  {
+    val () =
+    (st0.ninpfil := 0)
+    val () =
+    (st0.wtk0 := WTKinpsta())
+  } (* end of [-s] *)
+| "-d" =>
+  {
+    val () =
+    (st0.ninpfil := 0)
+    val () =
+    (st0.wtk0 := WTKinpdyn())
+  } (* end of [-d] *)
+(*
+| "-dd" =>
+  {
+    val () =
+    (st0.ninpfil := 0)
+    val () =
+    (st0.waitknd := WTKinpdyns())
+  } (* end of [-dd] *)
+*)
+//
+(*
+| "-cc" => (st0.tcflag := 0)
+| "-tc" => (st0.tcflag := 1)
+*)
+//
+(*
+| "-dep" => (st0.depgen := 1)
+| "-tag" => (st0.taggen := 1)
+*)
+//
+(*
+| _ when
+    is_DATS_flag(key) => let
+    val def = DATS_extract(key)
+    val issome = stropt_is_some(def)
+  in
+    if issome
+      then
+      process_DATS_def(stropt_unsome(def))
+      else let
+        val () = st0.wtk0 := WTKdefine()
+      in
+        // nothing
+      end // end of [else]
+    // end of [if]
+  end // is_DATS_flag
+*)
+(*
+| _ when
+    is_IATS_flag(key) => let
+    val dir = IATS_extract(key)
+    val issome = stropt_is_some(dir)
+  in
+    if issome
+      then
+      process_IATS_dir(stropt_unsome(dir))
+      else let
+        val () = st0.wtk0 := WTKinclude()
+      in
+        // nothing
+      end // end of [else]
+    // end of [if]
+  end // is_IATS_flag
+*)
+//
+| "-v" =>
+  (
+    xatsopt_version(stdout_ref)
+  )
+//
+| "-h" =>
+  (
+    xatsopt_usage(stdout_ref, st0.arg0)
+  )
+//
+| _ (*rest*) =>
+  ( //
+    // HX: unrecognized key
+    //
+    xatsopt_commarg_warning(stderr_ref, key)
+  ) (* end of [rest] *)
+//
+) : void // end of [val]
+//
+in
+  process_cmdline(st0, args)
+end // end of [auxkey1]
+//
+fun
+auxkey2
+( st0:
+ &cmdstate >> _
+, key: string): void = let
+//
+val () =
+  (st0.wtk0 := WTKnone())
+//
+val () =
+(
+case+ key of
+//
+| "--help" =>
+  (
+  xatsopt_usage(stdout_ref, st0.arg0)
+  )
+//
+| "--output" =>
+  (
+    st0.wtk0 := WTKoutput()
+  )
+| "--output-w" =>
+  {
+    val () = st0.wtk0 := WTKoutput()
+    val () = st0.outmode := file_mode_w
+  } // end of [--output-w]
+| "--output-a" =>
+  {
+    val () = st0.wtk0 := WTKoutput()
+    val () = st0.outmode := file_mode_a
+  } // end of [--output-a]
+//
+| "--static" =>
+  {
+    val () = st0.wtk0 := WTKinpsta()
+  } // end of [--static]
+| "--dynamic" =>
+  {
+    val () = st0.wtk0 := WTKinpdyn()
+  } // end of [--dynamic]
+//
+(*
+| "--dynamics" =>
+  {
+    val () = st0.wtk0 := WTKinpdyns()
+  } // end of [--dynamics]
+*)
+//
+(*
+| "--compile" => (st0.typecheckflag := 0)
+| "--typecheck" => (st0.typecheckflag := 1)
+*)
+//
+(*
+| "--gline" => {
+    val () = $GLOB.the_DEBUGATS_dbgline_set(1)
+  } // end of [--gline] // mostly for debugging
+*)
+//
+(*
+| "--debug" => {
+    val () = debug_flag_set(1) // in xats_basics
+  } // end of [--debug] // more informative error messages
+| "--debug2" => {
+    val () = debug_flag_set(1)
+    val () = $GLOB.the_DEBUGATS_dbgflag_set(1)
+  } // end of [--debug2] // debugging info in generated code
+*)
+//
+(*
+| "--depgen" => (st0.depgen := 1)
+| "--taggen" => (st0.taggen := 1)
+*)
+//
+(*
+| "--codegen-2" => (st0.codegenflag := 2)
+| "--jsonize-2" => (st0.jsonizeflag := 2)
+*)
+//
+(*
+| "--tlcalopt-disable" =>
+  {
+    val () = $GLOB.the_CCOMPATS_tlcalopt_set(0)
+  }
+*)
+//
+(*
+| "--constraint-export" =>
+  {
+    val () = st0.cnstrsolveflag := 1
+  }
+| "--constraint-ignore" =>
+  {
+    val () = st0.cnstrsolveflag := ~1
+  }
+*)
+//
+| "--version" =>
+  (
+    xatsopt_version(stdout_ref)
+  )
+//
+| _ (*rest-of-key2*) =>
+  ( //
+    // HX: unrecognized key
+    //
+    xatsopt_commarg_warning(stderr_ref, key)
+  ) (* end of [rest-of-key2] *)
+//
+) : void // end of [val]
+//
+in
+  process_cmdline(st0, args)
+end // end of [auxkey2]
+//
+in
+//
+case+ arg0 of
+| _ when
+    isinpwait(st0) => let
+    val
+    stadyn =
+    waitknd_get_stadyn(st0.wtk0)
+    val nif = st0.ninpfil
+  in
+    case+ arg0 of
+//
+    | COMMARG(1, key)
+        when nif > 0 =>
+      (
+        auxkey1(st0, key)
+      )
+    | COMMARG(2, key)
+        when nif > 0 =>
+      (
+        auxkey2(st0, key)
+      )
+//
+    | COMMARG(_, "-") =>
+      (
+      process_cmdline(st0, args)
+      ) where
+      {
+        val () =
+        (st0.ninpfil := nif+1)
+        val () = process_nil(st0)
+      } (* end of [COMMARG(_,-)] *)
+//
+    | COMMARG(_, given) =>
+      (
+      process_cmdline(st0, args)
+      ) where
+      {
+        val () =
+        (st0.ninpfil := nif+1)
+        val () =
+        (
+          process_given(st0, given)
+        )
+      } (* end of [COMMARG(_,_)] *)
+  end // end of [isinpwait]
+//
+| _ when
+    isoutwait(st0) => let
+    val () =
+    st0.wtk0 := WTKnone()
+//
+    val+COMMARG(_, given) = arg0
+//
+    val opt =
+      stropt_some(given)
+    val ((*void*)) =
+      theOutFname_set(opt)
+//
+    val _new_ =
+    outchan_make_fname(st0, given)
+    val ((*void*)) =
+    cmdstate_set_outchan(st0, _new_)
+//
+  in
+    process_cmdline(st0, args)
+  end // end of [_ when isoutwait]
+//
+| COMMARG(1, key) => auxkey1(st0, key)
+| COMMARG(2, key) => auxkey2(st0, key)
+//
+| COMMARG(_, key) =>
+  (
+    process_cmdline(st0, args)
+  ) where
+  {
+    val () =
+    st0.wtk0 := WTKnone()
+    val () =
+    xatsopt_commarg_warning(stderr_ref, key)
+  } (* end of [COMMARG] *)
+//
+end // end of [process_cmdline2]
 //
 in (* in-of-local *)
 
@@ -275,10 +1104,44 @@ implement
 xatsopt_main0
   (argc, argv) = let
 //
+val+
+list_cons
+(arg0, args) = args where
+{
+  val
+  args =
+  parse_commarglst(argc, argv)
+} (* end of [val] *)
+//
+var
+st0: cmdstate =
+@{
+  arg0= arg0
+, wtk0= WTKnone()
+//
+, ATSHOME= XATSHOME
+//
+, inpfil0=
+  $FIL.the_filepath_dummy
+//
+, ninpfil= 0(*initset*)
+//
+// load status of prelude files
+//
+, outmode= file_mode_w
+, outchan= OUTCHANref(stdout_ref)
+//
+, nxerror= 0(*initset*)
+//
+} (* end of [var] *)
+//
 val () =
-the_prelude_load(XATSHOME)
+process_cmdline(st0, args)
 //
 in
+//
+if (st0.nxerror > 0) then $ERR.abort()
+//
 end // end of [xatsopt_main0]
 
 end // end of [local]
