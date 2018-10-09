@@ -37,7 +37,7 @@ typedef xyz = $extype"abcde"
 (* ****** ****** *)
 
 abstype xyz(x, y: int, z: int)
-abstype xyz(x, y: int, z: int) = int
+abstype xyz(x, y: int, z: int) <= int
 abstype xyz(x, y: int, z: int) == int
 
 (* ****** ****** *)

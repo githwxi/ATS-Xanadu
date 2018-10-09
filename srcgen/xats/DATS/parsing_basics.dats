@@ -377,6 +377,25 @@ end // end of [popt_LBRACE]
 (* ****** ****** *)
 
 implement
+popt_SEMICOLON
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_SEMICOLON() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_SEMICOLON *)
+  | _ (* non-SEMICOLON *) => None(*void*)
+end // end of [popt_SEMICOLON]
+
+(* ****** ****** *)
+
+implement
 popt_ENDIF
   (buf, err) = let
 //
@@ -419,6 +438,30 @@ in
     } (* T_ENDCASE *)
   | _ (* non-BAR *) => None(*void*)
 end // end of [popt_ENDCASE]
+
+(* ****** ****** *)
+
+implement
+popt_ENDLAM
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_END() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_END *)
+  | T_ENDLAM() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_ENDCASE *)
+  | _ (* non-BAR *) => None(*void*)
+end // end of [popt_ENDLAM]
 
 (* ****** ****** *)
 //

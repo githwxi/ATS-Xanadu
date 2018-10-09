@@ -1163,7 +1163,8 @@ d0e0.node() of
   end // end of [D0Ecase]
 //
 | D0Elet
-  (_, d0cs, _, d0es, _) => let
+  ( tok(*let*)
+  , d0cs, _, d0es, topt) => let
     val d1cs = trans01_declist(d0cs)
     val d1es = trans01_dexplst(d0es)
   in
@@ -1174,7 +1175,9 @@ d0e0.node() of
   end // end of [D0Elet] *)
 //
 | D0Ewhere(d0e1, d0cs) => let
+//
     val d1e1 = trans01_dexp(d0e1)
+//
   in
     case+ d0cs of
     | d0eclseq_WHERE
@@ -1189,8 +1192,9 @@ d0e0.node() of
   end // end of [D0Ewhere]
 //
 | D0Elam
-  ( _(*lam/lam@*)
-  , arg, res, farrw, fbody) => let
+  ( tok(*lam/lam@*)
+  , arg, res
+  , farrw, fbody, tfini) => let
 //
     val arg =
       trans01_farglst(arg)
@@ -1198,6 +1202,7 @@ d0e0.node() of
       trans01_effsexpopt(res)
     val farrw =
       trans01_funarrow(farrw)
+//
     val fbody = trans01_dexp(fbody)
 //
   in
@@ -1261,6 +1266,12 @@ case+ rparen of
     val d1es1 = trans01_dexplst(d0es1)
     val d1es2 = trans01_dexplst(d0es2)
   }
+| d0exp_RPAREN_cons2(_, d0es2, _) =>
+  D1Eseqn(d1es1, d1es2) where
+  {
+    val d1es1 = trans01_dexplst(d0es1)
+    val d1es2 = trans01_dexplst(d0es2)
+  }
 ) : d1exp_node // end of [val]
 //
 in
@@ -1292,6 +1303,16 @@ case+ rparen of
     val d1es1 = trans01_dexplst(d0es1)
   }
 | d0exp_RPAREN_cons1
+    (_, d0es2, _) =>
+  D1Etuple(knd, d1es1, d1es2) where
+  {
+    val d1es1 = trans01_dexplst(d0es1)
+    val d1es2 = trans01_dexplst(d0es2)
+  }
+//
+// HX: redundant!!!
+//
+| d0exp_RPAREN_cons2
     (_, d0es2, _) =>
   D1Etuple(knd, d1es1, d1es2) where
   {
@@ -2039,10 +2060,15 @@ val loc0 = d0c0.loc()
 val-
 D0Cabstype
 ( knd
-, seid, arg0, def0) = d0c0.node()
+, seid
+, arg0, res0, def0) = d0c0.node()
 //
-val def1 = aux_abstdef(def0)
-val arg1 = trans01_tmarglst(arg0)
+val def1 =
+  aux_abstdef(def0)
+val arg1 =
+  trans01_tmarglst(arg0)
+val res1 = trans01_sortopt(res0)
+//
 val-I0DNTsome(tok) = seid.node((*void*))
 //
 (*
@@ -2057,9 +2083,11 @@ println!("aux_abstype: def1 = ", def1)
 *)
 //
 in
-  d1ecl_make_node
-    (loc0, D1Cabstype(knd, tok, arg1, def1))
-  // d1ecl_make_node
+//
+d1ecl_make_node
+( loc0
+, D1Cabstype(knd, tok, arg1, res1, def1))
+//
 end // end of [aux_abstype]
 
 (* ****** ****** *)
@@ -2074,15 +2102,25 @@ val loc0 = d0c0.loc()
 val-
 D0Cabsimpl
 ( tok
-, fapp, teq1, def2) = d0c0.node()
+, sqid
+, smas
+, res0, teq1, def2) = d0c0.node()
 //
-val fapp = trans01_sexp(fapp)
+val smas =
+trans01_smarglst(smas)
+//
+val res0 =
+  trans01_sortopt(res0)
+//
 val def2 = trans01_sexp(def2)
 //
 in
-  d1ecl_make_node
-    (loc0, D1Cabsimpl(tok, fapp, teq1, def2))
-  // d1ecl_make_node
+//
+d1ecl_make_node
+( loc0
+, D1Cabsimpl(tok, sqid, smas, res0, teq1, def2)
+) (* d1ecl_make_node *)
+//
 end // end of [aux_absimpl]
 
 (* ****** ****** *)

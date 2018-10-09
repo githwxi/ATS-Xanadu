@@ -232,16 +232,25 @@ fun
 p_ENDLOCAL: parser(token)
 //
 (* ****** ****** *)
-
+//
 fun
 popt_BAR: parser(tokenopt)
 fun
 popt_LBRACE: parser(tokenopt)
-
+fun
+popt_SEMICOLON: parser(tokenopt)
+//
 (* ****** ****** *)
 //
-fun popt_ENDIF: parser(tokenopt)
-fun popt_ENDCASE: parser(tokenopt)
+fun
+popt_ENDIF: parser(tokenopt)
+fun
+popt_ENDCASE: parser(tokenopt)
+//
+(* ****** ****** *)
+//
+fun
+popt_ENDLAM: parser(tokenopt)
 //
 (* ****** ****** *)
 //
@@ -316,7 +325,9 @@ p_s0arg: parser(s0arg)
 (*
 s0rtdef ::=
 | sort0
-| LBRACE s0arg BAR s0expseq_SEMICOLON RBRACE
+| LBRACE
+  s0arg BAR s0expseq_SEMICOLON
+  RBRACE
 *)
 fun p_s0rtdef: parser(s0rtdef)
 //

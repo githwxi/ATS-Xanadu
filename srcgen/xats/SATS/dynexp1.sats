@@ -403,6 +403,9 @@ d1exp_node =
 | D1Elist of
   (d1explst, d1explst) // temp.
 //
+| D1Eseqn of
+  (d1explst, d1explst) // temp.
+//
 | D1Etuple of
   (token, d1explst)
 | D1Etuple of
@@ -709,11 +712,13 @@ d1ecl_node =
 //
 | D1Cabstype of
   ( token(*kind*)
-  , token(*s0eid*), t1marglst, abstdf1)
-  // D1Cabstype
+  , token(*s0eid*)
+  , t1marglst, sort1opt, abstdf1)
+//
 | D1Cabsimpl of
   ( token(*kind*)
-  , s1exp(*f1app*), token(*EQ*), s1exp)
+  , sq0eid
+  , s1marglst, sort1opt, token(*EQ*), s1exp)
   // D1Cabsimpl
 //
 | D1Cvaldecl of
