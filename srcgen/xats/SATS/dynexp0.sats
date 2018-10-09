@@ -463,7 +463,8 @@ d0exp_node =
 //
 | D0Elam of
   ( token(*lam/lam@*)
-  , f0arglst, effs0expopt, f0unarrow, d0exp)
+  , f0arglst(*arglst*)
+  , effs0expopt, f0unarrow, d0exp, tokenopt)
 //
 | D0Eanno of (d0exp, s0exp)
 //
@@ -476,8 +477,12 @@ d0exp_node =
 
 and
 d0exp_RPAREN =
+// (d0es1)
 | d0exp_RPAREN_cons0 of token
+// (d0es1 | d0es2)
 | d0exp_RPAREN_cons1 of (token, d0explst, token)
+// (d0es1 ; d0es2)
+| d0exp_RPAREN_cons2 of (token, d0explst, token)
 //
 and
 labd0exp_RBRACE =
@@ -920,11 +925,13 @@ for skipping error
   , s0marglst, sort0opt, token, s0exp)
 //
 | D0Cabstype of
-    (token, s0eid, t0marglst, abstdf0)
-  // D0Cabstype
+  ( token
+  , s0eid, t0marglst, sort0opt, abstdf0)
+//
 | D0Cabsimpl of
-    ( token
-    , s0exp(*f0app*), token(*EQ*), s0exp)
+  ( token
+  , sq0eid
+  , s0marglst, sort0opt, token(*EQ*), s0exp)
   // D0Cabsimpl
 //
 | D0Cvaldecl of

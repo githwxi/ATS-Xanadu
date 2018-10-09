@@ -376,6 +376,10 @@ x0.node() of
   fprint!
   (out, "D1Elist(", d1es1, "; ", d1es2, ")")
 //
+| D1Eseqn(d1es1, d1es2) =>
+  fprint!
+  (out, "D1Eseqn(", d1es1, "; ", d1es2, ")")
+//
 | D1Etuple(tok, d1es) =>
   fprint!
   (out, "D1Etuple(", tok, "; ", d1es, ")")
@@ -544,16 +548,17 @@ case+ x0.node() of
   , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
 //
 | D1Cabstype
-  (knd, tok, arg, def) =>
+  (knd, sid, arg, res, def) =>
   fprint!
   ( out, "D1Cabstype("
-  , knd, "; ", tok, "; ", arg, "; ", def, ")")
+  , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
 //
 | D1Cabsimpl
-  (tok, fapp, teq1, def2) =>
+  (tok, sqid, smas, res0, teq1, def2) =>
   fprint!
-  ( out, "D1Cabsimpl("
-  , tok, "; ", fapp, "; ", teq1, "; ", def2, ")")
+  ( out
+  , "D1Cabsimpl(", tok, "; "
+  , sqid, "; ", smas, "; ", res0, "; ", teq1, "; ", def2, ")")
 //
 | D1Cvaldecl
   (tok, mods, d1cs) =>

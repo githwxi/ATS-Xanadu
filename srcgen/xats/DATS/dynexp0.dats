@@ -387,6 +387,9 @@ case+ x0 of
 | d0exp_RPAREN_cons1
     (tok1, d0es, tok2) => tok1.loc() + tok2.loc()
   // d0exp_RPAREN_cons1
+| d0exp_RPAREN_cons2
+    (tok1, d0es, tok2) => tok1.loc() + tok2.loc()
+  // d0exp_RPAREN_cons1
 )  
 //
 (* ****** ****** *)

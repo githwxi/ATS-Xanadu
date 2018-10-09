@@ -174,14 +174,6 @@ tnode =
   | T_AND of () // 'and'
   | T_END of () // 'end'
 //
-  | T_LET of () // 'end'
-  | T_WHERE of () // 'where'
-  | T_LOCAL of () // 'local'
-//
-  | T_ENDLET of () // 'endlet'
-  | T_ENDWHERE of () // 'endwhere'
-  | T_ENDLOCAL of () // 'endlocal'
-//
   | T_IF of () // 'if'
   | T_SIF of () // 'sif'
 //
@@ -202,6 +194,15 @@ tnode =
     // 'lam=lam1' and 'lam@=lam0'
   | T_FIX of int
     // 'fix=lam1' and 'fix@=fix0'
+//
+  | T_LET of () // 'end'
+  | T_WHERE of () // 'where'
+  | T_LOCAL of () // 'local'
+//
+  | T_ENDLAM of () // 'endlam'
+  | T_ENDLET of () // 'endlet'
+  | T_ENDWHERE of () // 'endwhere'
+  | T_ENDLOCAL of () // 'endlocal'
 //
   | T_FUN of (funkind)
     // fn0, fnx, fn1, fun,

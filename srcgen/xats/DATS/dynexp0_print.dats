@@ -461,11 +461,11 @@ case+ x0.node() of
   , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
 //
 | D0Eif0
-  (tif0, d0e1, d0e2, d0e3, topt) =>
+  (tif0, d0e1, d0e2, d0e3, tend) =>
   fprint!
   ( out
   , "D0Eif0(", tif0, "; "
-  , d0e1, "; ", d0e2, "; ", d0e3, "; ", topt, ")")
+  , d0e1, "; ", d0e2, "; ", d0e3, "; ", tend, ")")
 //
 | D0Ecase
   (tok0, d0e1, tof2, tbar, d0cs, tend) =>
@@ -487,11 +487,11 @@ case+ x0.node() of
   , "D0Ewhere(", d0e1, "; ", d0cs, ")")
 //
 | D0Elam
-  (tok0, arg1, res2, farrw, fbody) =>
+  (tok0, arg1, res2, farrw, fbody, tend) =>
   fprint!
   ( out
   , "D0Elam(", tok0, "; "
-  , arg1, "; ", res2, "; ", farrw, "; ", fbody, ")")
+  , arg1, "; ", res2, "; ", farrw, "; ", fbody, "; ", tend, ")")
 //
 | D0Eanno
   (d0e, ann) =>
@@ -534,6 +534,9 @@ case+ x0 of
 | d0exp_RPAREN_cons1(tok1, d0es, tok2) =>
   fprint!
   (out, "d0exp_RPAREN_cons1(", tok1, ", ", d0es, ", ", tok2, ")")
+| d0exp_RPAREN_cons2(tok1, d0es, tok2) =>
+  fprint!
+  (out, "d0exp_RPAREN_cons2(", tok1, ", ", d0es, ", ", tok2, ")")
 ) (* end of [fprint_d0exp_RPAREN] *)
 
 end // end of [local]
@@ -786,24 +789,25 @@ case+ x0.node() of
   , tok, "; ", tid, "; ", tok1, "; ", def2, ")")
 | D0Csexpdef
   ( tok, sid
-  , arg, opt, tok1, tdef) =>
+  , arg, res, tok1, tdef) =>
   fprint!
   ( out
   , "D0Csexpdef("
   , tok, "; ", sid, "; "
-  , arg, "; ", opt, "; ", tok1, "; ", tdef, ")")
+  , arg, "; ", res, "; ", tok1, "; ", tdef, ")")
 //
 | D0Cabstype
-  (tok, sid, arg0, tdef) =>
+  (tok, sid, arg, res, tdef) =>
   fprint!
   ( out, "D0Cabstype("
-  , tok, "; ", sid, "; ", arg0, "; ", tdef, ")")
+  , tok, "; ", sid, "; ", arg, "; ", res, "; ", tdef, ")")
 //
 | D0Cabsimpl
-  (tok, s0e0, teq1, def2) =>
+  (tok, sqid, smas, res0, teq1, def2) =>
   fprint!
   ( out, "D0Cabsimpl("
-  , tok, "; ", s0e0, "; ", teq1, "; ", def2, ")")
+  , tok, "; ", sqid, "; "
+  , smas, "; ", res0, "; ", teq1, "; ", def2, ")")
 //
 | D0Cvaldecl
   (tok, mopt, d0cs) =>

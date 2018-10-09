@@ -256,9 +256,14 @@ val () = myins("else", T_ELSE)
 //
 val () = myins("case", T_CASE_)
 val () = myins("scase", T_SCASE)
+//
 (*
 val () = myins("ifcase", T_IFCASE)
 *)
+//
+val () = myins("endif", T_ENDIF)
+val () = myins("endsif", T_ENDSIF)
+val () = myins("endcase", T_ENDCASE)
 //
 val () = myins("lam", T_LAM(0))
 val () = myins("fix", T_FIX(0))
@@ -267,6 +272,7 @@ val () = myins("let", T_LET)
 val () = myins("where", T_WHERE)
 val () = myins("local", T_LOCAL)
 //
+val () = myins("endlam", T_ENDLAM)
 val () = myins("endlet", T_ENDLET)
 val () = myins("endwhere", T_ENDWHERE)
 val () = myins("endlocal", T_ENDLOCAL)

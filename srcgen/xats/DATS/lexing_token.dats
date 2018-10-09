@@ -243,14 +243,6 @@ case+ tnd of
 | T_AND() => fprint(out, "AND")
 | T_END() => fprint(out, "END")
 //
-| T_LET() => fprint(out, "LET")
-| T_WHERE() => fprint(out, "WHERE")
-| T_LOCAL() => fprint(out, "LOCAL")
-//
-| T_ENDLET() => fprint(out, "ENDLET")
-| T_ENDWHERE() => fprint(out, "ENDWHERE")
-| T_ENDLOCAL() => fprint(out, "ENDLOCAL")
-//
 | T_IF() => fprint(out, "IF")
 | T_SIF() => fprint(out, "SIF")
 | T_THEN() => fprint(out, "THEN")
@@ -269,34 +261,35 @@ case+ tnd of
 | T_ENDCASE() => fprint(out, "ENDCASE")
 //
 | T_LAM(knd) =>
-  fprint!
-  (out, "LAM(", knd, ")")
+  fprint!(out, "LAM(", knd, ")")
 | T_FIX(knd) =>
-  fprint!
-  (out, "FIX(", knd, ")")
+  fprint!(out, "FIX(", knd, ")")
+//
+| T_LET() => fprint(out, "LET")
+| T_WHERE() => fprint(out, "WHERE")
+| T_LOCAL() => fprint(out, "LOCAL")
+//
+| T_ENDLAM() => fprint(out, "ENDLAM")
+| T_ENDLET() => fprint(out, "ENDLET")
+| T_ENDWHERE() => fprint(out, "ENDWHERE")
+| T_ENDLOCAL() => fprint(out, "ENDLOCAL")
 //
 | T_FUN(fnk) =>
-  fprint!
-  (out, "FUN(", fnk, ")")
+  fprint!(out, "FUN(", fnk, ")")
 | T_VAL(vlk) =>
-  fprint!
-  (out, "VAL(", vlk, ")")
+  fprint!(out, "VAL(", vlk, ")")
 //
 | T_IMPLMNT(knd) =>
-  fprint!
-  (out, "IMPLMNT(", knd, ")")
+  fprint!(out, "IMPLMNT(", knd, ")")
 //
 | T_SORTDEF() =>
-  fprint!
-  (out, "SORTDEF(", ")")
+  fprint!(out, "SORTDEF(", ")")
 //
 | T_SEXPDEF(srt) =>
-  fprint!
-  (out, "SEXPDEF(", srt, ")")
+  fprint!(out, "SEXPDEF(", srt, ")")
 //
 | T_ABSTYPE(srt) =>
-  fprint!
-  (out, "ABSTYPE(", srt, ")")
+  fprint!(out, "ABSTYPE(", srt, ")")
 //
 | T_ABSIMPL() =>
   fprint!(out, "ABSIMPL")
@@ -494,14 +487,6 @@ case+ tnd of
 | T_AND() => fprint(out, "and")
 | T_END() => fprint(out, "end")
 //
-| T_LET() => fprint(out, "let")
-| T_WHERE() => fprint(out, "where")
-| T_LOCAL() => fprint(out, "local")
-//
-| T_ENDLET() => fprint(out, "endlet")
-| T_ENDWHERE() => fprint(out, "endwhere")
-| T_ENDLOCAL() => fprint(out, "endlocal")
-//
 | T_IF() => fprint(out, "if")
 | T_SIF() => fprint(out, "sif")
 | T_THEN() => fprint(out, "then")
@@ -510,8 +495,7 @@ case+ tnd of
 | T_WHEN() => fprint(out, "when")
 //
 | T_CASE(k0) =>
-  fprint!
-  (out, "case(", k0, ")")
+  fprint!(out, "case(", k0, ")")
 //
 | T_SCASE() => fprint(out, "scase")
 //
@@ -520,34 +504,35 @@ case+ tnd of
 | T_ENDCASE() => fprint(out, "endcase")
 //
 | T_LAM(knd) =>
-  fprint!
-  (out, "lam(", knd, ")")
+  fprint!(out, "lam(", knd, ")")
 | T_FIX(knd) =>
-  fprint!
-  (out, "fix(", knd, ")")
+  fprint!(out, "fix(", knd, ")")
+//
+| T_LET() => fprint(out, "let")
+| T_WHERE() => fprint(out, "where")
+| T_LOCAL() => fprint(out, "local")
+//
+| T_ENDLAM() => fprint(out, "endlam")
+| T_ENDLET() => fprint(out, "endlet")
+| T_ENDWHERE() => fprint(out, "endwhere")
+| T_ENDLOCAL() => fprint(out, "endlocal")
 //
 | T_FUN(fnk) =>
-  fprint!
-  (out, "FUN(", fnk, ")")
+  fprint!(out, "FUN(", fnk, ")")
 | T_VAL(vlk) =>
-  fprint!
-  (out, "VAL(", vlk, ")")
+  fprint!(out, "VAL(", vlk, ")")
 //
 | T_IMPLMNT(knd) =>
-  fprint!
-  (out, "IMPLMNT(", knd, ")")
+  fprint!(out, "IMPLMNT(", knd, ")")
 //
 | T_SORTDEF() =>
-  fprint!
-  (out, "sortdef(", ")")
+  fprint!(out, "sortdef(", ")")
 //
 | T_SEXPDEF(knd) =>
-  fprint!
-  (out, "sexpdef(", knd, ")")
+  fprint!(out, "sexpdef(", knd, ")")
 //
 | T_ABSTYPE(knd) =>
-  fprint!
-  (out, "abstype(", knd, ")")
+  fprint!(out, "abstype(", knd, ")")
 //
 | T_ABSIMPL() =>
   fprint!(out, "absimpl")
