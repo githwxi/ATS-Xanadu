@@ -23,7 +23,10 @@ CFLAGS=
 #
 GCFLAG=
 GCFLAG=-DATS_MEMALLOC_LIBC
-# GCFLAG=-DATS_MEMALLOC_GCBDW
+GCFLAG=-DATS_MEMALLOC_GCBDW
+#
+LIBGC=
+LIBGC=-lgc
 #
 ######
 
@@ -92,7 +95,7 @@ xatsopt
 xatsopt: \
 DATS/xatsopt.dats \
 $(OBJSATS) $(OBJDATS) ; \
-  $(PATSCC) -cleanaft -o xatsopt $(GCFLAG) $^
+  $(PATSCC) -cleanaft -o xatsopt $(GCFLAG) $^ $(LIBGC)
 #
 ######
 

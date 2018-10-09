@@ -182,10 +182,21 @@ if (inp[i] != '-')
 // end of [loop]
 //
 in
-  loop(inp, sz2i(len), 0) where
-  {
-    val inp = g1ofg0(inp); val len = string_length(inp)
-  }
+//
+if
+(inp = "-")
+then
+(
+COMMARG(0, inp)
+)
+else
+(
+  loop(inp, sz2i(len), 0)
+) where
+{
+  val inp = g1ofg0(inp); val len = string_length(inp)
+}
+//
 end // end of [parse_commarg]
 //
 (* ****** ****** *)
@@ -254,6 +265,9 @@ fun
 print_commarg(commarg): void
 extern
 fun
+prerr_commarg(commarg): void
+extern
+fun
 fprint_commarg
 (out: FILEref, x0: commarg): void
 //
@@ -262,6 +276,9 @@ fprint_commarg
 implement
 print_commarg(x0) =
 fprint_commarg(stdout_ref, x0)
+implement
+prerr_commarg(x0) =
+fprint_commarg(stderr_ref, x0)
 implement
 fprint_commarg(out, x0) =
 (
@@ -346,27 +363,6 @@ end // end of [xatsopt_version]
 //
 extern
 fun
-xatsopt_commarg_warning
-  (out: FILEref, arg: string): void
-implement
-xatsopt_commarg_warning
-  (out, arg) = () where
-{
-//
-val () =
-fprint(out, "WARNING(ATS)")
-val () =
-fprintln!
-( out
-, ": unrecognized command line argument [", arg, "] is ignored."
-) (* end of [val] *)
-//
-} (* end of [xatsopt_commarg_warning] *)
-//
-(* ****** ****** *)
-//
-extern
-fun
 the_fixity_load
 (
 XATSHOME: string
@@ -385,12 +381,14 @@ val
 fpath =
 $FIL.filepath_dirbase(XATSHOME, given)
 //
+(*
 val () =
 println!
 ("the_fixity_load: give = ", given)
 val () =
 println!
 ("the_fixity_load: fpath = ", fpath)
+*)
 //
 val opt =
 fileref_open_opt
@@ -631,13 +629,28 @@ case+ out0 of
 end // end of [cmdstate_set_outchan]
 
 (* ****** ****** *)
-
-local
-
+//
+extern
+fun
+outchan_make_fname
+( st0
+: &cmdstate, fname: string
+) : outchan // end-of-fun
+implement
+outchan_make_fname
+  (st0, fname) =
+(
+case+ fname of
+| "-" => OUTCHANref(stdout_ref)
+//
+| _(*unspecial*) => auxmain(st0, fname)
+//
+) where
+{
 fun
 auxmain
-(
-st0: &cmdstate, fname: string
+( st0
+: &cmdstate, fname: string
 ) : outchan = let
 //
 val
@@ -658,28 +671,35 @@ $STDIO.FILEptr_free_null(filp)
 } (* end of [then] *)
 else
 (
-  OUTCHANptr($UN.castvwtp0{FILEref}(filp))
+  OUTCHANptr
+  ($UN.castvwtp0{FILEref}(filp))
 ) (* end of [else] *)
 //
 end // end of [auxmain]
+//
+} (* end of [outchan_make_path] *)
 
-in (* in-of-local *)
-
+(* ****** ****** *)
+//
+extern
 fun
-outchan_make_fname
-(
-  st0: &cmdstate, fname: string
-) : outchan =
-(
-case+ fname of
-| "-" => OUTCHANref(stdout_ref)
+xatsopt_commarg_warning
+  (out: FILEref, arg: string): void
+implement
+xatsopt_commarg_warning
+  (out, arg) = () where
+{
 //
-| _(*~special*) => auxmain(st0, fname)
+val () =
+fprint(out, "WARNING(ATS)")
+val () =
+fprintln!
+( out
+, ": unrecognized command-line argument [", arg, "] is ignored."
+) (* end of [val] *)
 //
-) (* outchan_make_path *)
-
-end // end of [local]
-
+} (* end of [xatsopt_commarg_warning] *)
+//
 (* ****** ****** *)
 
 local
@@ -691,7 +711,8 @@ process_nil
 static
 fun
 process_given
-(st0: &cmdstate >> _, given: string): void
+( st0
+: &cmdstate >> _, given: string): void
 //
 static
 fun
@@ -754,6 +775,10 @@ println!
 ("process_given: arg0 = ", arg0)
 //
 in
+//
+// HX-2018-10-08:
+// IT-IS-YET-TO-BE-IMPLEMENTED!!!
+//
 end // end of [process_give]
 //
 implement
@@ -846,43 +871,58 @@ case+ key of
     val def = DATS_extract(key)
     val issome = stropt_is_some(def)
   in
-    if issome
-      then
-      process_DATS_def(stropt_unsome(def))
-      else let
-        val () = st0.wtk0 := WTKdefine()
-      in
-        // nothing
-      end // end of [else]
-    // end of [if]
-  end // is_DATS_flag
+    if
+    issome
+    then
+    (
+      process_DATS_def(def) where
+      {
+        val def = stropt_unsome(def)
+      }
+    )
+    else let
+      val () =
+        (st0.wtk0 := WTKdefine(*void*))
+      // end of [val]
+    in
+      // nothing
+    end // end of [else] // end of [if]
+  end // end of [is_DATS_flag]
 *)
 (*
 | _ when
     is_IATS_flag(key) => let
-    val dir = IATS_extract(key)
-    val issome = stropt_is_some(dir)
+    val path = IATS_extract(key)
+    val issome = stropt_is_some(path)
   in
-    if issome
-      then
-      process_IATS_dir(stropt_unsome(dir))
-      else let
-        val () = st0.wtk0 := WTKinclude()
-      in
+    if
+    issome
+    then
+    (
+      process_IATS_dir(path) where
+      {
+        val path = stropt_unsome(path)
+      }
+    )
+    else let
+      val () =
+        (st0.wtk0 := WTKinclude(*void*))
+      // end of [val]
+    in
         // nothing
-      end // end of [else]
-    // end of [if]
-  end // is_IATS_flag
+    end // end of [else] // end of [if]
+  end // end of [is_IATS_flag]
 *)
-//
-| "-v" =>
-  (
-    xatsopt_version(stdout_ref)
-  )
 //
 | "-h" =>
   (
-    xatsopt_usage(stdout_ref, st0.arg0)
+    xatsopt_usage
+      (stdout_ref, st0.arg0)
+    // xatsopt_usage
+  )
+| "-v" =>
+  (
+    xatsopt_version(stdout_ref)
   )
 //
 | _ (*rest*) =>
@@ -910,11 +950,6 @@ val () =
 val () =
 (
 case+ key of
-//
-| "--help" =>
-  (
-  xatsopt_usage(stdout_ref, st0.arg0)
-  )
 //
 | "--output" =>
   (
@@ -953,19 +988,22 @@ case+ key of
 *)
 //
 (*
-| "--gline" => {
-    val () = $GLOB.the_DEBUGATS_dbgline_set(1)
+| "--gline" =>
+  {
+    val () =
+    $GLOB.the_DEBUGATS_dbgline_set(1)
   } // end of [--gline] // mostly for debugging
 *)
 //
 (*
-| "--debug" => {
-    val () = debug_flag_set(1) // in xats_basics
-  } // end of [--debug] // more informative error messages
+| "--debug1" =>
+  {
+    val () = debug_flag_set(1)
+  } // end of [--debug] // more informative errmsgs
 | "--debug2" => {
     val () = debug_flag_set(1)
     val () = $GLOB.the_DEBUGATS_dbgflag_set(1)
-  } // end of [--debug2] // debugging info in generated code
+  } // end of [--debug2] // for generating debugging info
 *)
 //
 (*
@@ -974,28 +1012,41 @@ case+ key of
 *)
 //
 (*
-| "--codegen-2" => (st0.codegenflag := 2)
-| "--jsonize-2" => (st0.jsonizeflag := 2)
+| "--codegen-2" =>
+  {
+    val () = st0.codegen2 := 2
+  }
+| "--jsonize-2" =>
+  {
+    val () = st0.jsonize2 := 2
+  }
 *)
 //
 (*
-| "--tlcalopt-disable" =>
+| "--no-tailcallopt" =>
   {
-    val () = $GLOB.the_CCOMPATS_tlcalopt_set(0)
+    val () =
+    $GLOB.the_CCOMPATS_tailcallopt_set(0)
   }
 *)
 //
 (*
 | "--constraint-export" =>
   {
-    val () = st0.cnstrsolveflag := 1
+    val () = st0.constraint := 1
   }
 | "--constraint-ignore" =>
   {
-    val () = st0.cnstrsolveflag := ~1
+    val () = st0.constraint := ~1
   }
 *)
 //
+| "--help" =>
+  (
+    xatsopt_usage
+      (stdout_ref, st0.arg0)
+    // xatsopt_usage
+  )
 | "--version" =>
   (
     xatsopt_version(stdout_ref)
@@ -1068,10 +1119,13 @@ case+ arg0 of
 //
     val+COMMARG(_, given) = arg0
 //
-    val opt =
-      stropt_some(given)
     val ((*void*)) =
+    (
       theOutFname_set(opt)
+    ) where
+    {
+      val opt = stropt_some(given)
+    }
 //
     val _new_ =
     outchan_make_fname(st0, given)
