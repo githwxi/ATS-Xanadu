@@ -164,6 +164,46 @@ end // end-of-let // end of [p_l0abl]
 
 (* ****** ****** *)
 
+//
+implement
+p_s0ymb(buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_DOT() => let
+    val () = buf.incby1()
+    val lab2 = p_l0abl(buf, err)
+    val
+    loc_res = tok.loc()+lab2.loc()
+  in
+    s0ymb_make_node
+    (loc_res, S0YMBdtlab(tok, lab2))
+  end // end of [T_DOT]
+| T_LBRACK() => let
+    val () = buf.incby1()
+    val tok2 = p_RBRACK(buf, err)
+    val
+    loc_res = tok.loc()+tok2.loc()
+  in
+    s0ymb_make_node
+    (loc_res, S0YMBbrack(tok, tok2))
+  end // end of [T_LBRACK]
+| _ (*rest-of-token*) =>
+  let
+    val idnt = p_i0dnt(buf, err)
+  in
+    s0ymb_make_node(idnt.loc(), S0YMBi0dnt(idnt))
+  end // end of [rest-of-token]
+//
+end // end of [p_s0ymb]
+//
+(* ****** ****** *)
+
 implement
 t_s0tid(tnd) =
 (

@@ -528,6 +528,12 @@ case+ x0.node() of
   fprint!
   (out, "D1Cstaload(", knd, "; ", d1e, ")")
 //
+| D1Csymload
+  (knd, sym, dqid, tint) =>
+  fprint!
+  ( out, "D1Csymload("
+  , knd, "; ", sym, "; ", dqid, "; ", tint, ")")
+//
 | D1Cstacst0
   (tok, sid, s0t) =>
   fprint!
@@ -554,17 +560,15 @@ case+ x0.node() of
   , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
 //
 | D1Cabsimpl
-  (tok, sqid, smas, res0, teq1, def2) =>
+  (tok, sqid, smas, res0, def1) =>
   fprint!
-  ( out
-  , "D1Cabsimpl(", tok, "; "
-  , sqid, "; ", smas, "; ", res0, "; ", teq1, "; ", def2, ")")
+  ( out, "D1Cabsimpl("
+  , tok, "; ", sqid, "; ", smas, "; ", res0, "; ", def1, ")")
 //
 | D1Cvaldecl
   (tok, mods, d1cs) =>
   fprint!
-  ( out
-  , "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs)
+  (out, "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs)
 //
 | D1Cfundecl
   (tok, mopt, tqas, d1cs) =>

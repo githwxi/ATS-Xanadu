@@ -273,6 +273,21 @@ end // end of [p_IN]
 (* ****** ****** *)
 
 implement
+p_WITH(buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_WITH() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-WITH *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_WITH]
+
+(* ****** ****** *)
+
+implement
 p_END(buf, err) = let
   val e0 = err
   val tok = buf.get0()

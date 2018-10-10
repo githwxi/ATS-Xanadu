@@ -172,6 +172,7 @@ tnode =
   | T_IN of () // 'in'
 //
   | T_AND of () // 'and'
+//
   | T_END of () // 'end'
 //
   | T_IF of () // 'if'
@@ -181,6 +182,7 @@ tnode =
   | T_ELSE of () // 'else'
 //
   | T_WHEN of () // 'when'
+  | T_WITH of () // 'with'
 //
   | T_CASE of int
     // case, case+, case-

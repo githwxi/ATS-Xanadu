@@ -299,6 +299,59 @@ l0abl_make_node
 local
 
 absimpl
+s0ymb_tbox = $rec{
+//
+  s0ymb_loc= loc_t
+,
+  s0ymb_node= s0ymb_node
+//
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+//
+implement
+s0ymb_get_loc
+  (l0) = l0.s0ymb_loc
+implement
+s0ymb_get_node
+  (l0) = l0.s0ymb_node
+//
+implement
+s0ymb_make_node
+  (loc, node) = $rec{
+  s0ymb_loc= loc, s0ymb_node= node
+} (* end of [s0ymb_make] *)
+//
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+sq0eid_get_loc
+  (x0) =
+(
+case+ x0 of
+| SQ0EIDnone(id0) => id0.loc()
+| SQ0EIDsome(tok, id0) => tok.loc()+id0.loc()
+)
+implement
+dq0eid_get_loc
+  (x0) =
+(
+case+ x0 of
+| DQ0EIDnone(id0) => id0.loc()
+| DQ0EIDsome(tok, id0) => tok.loc()+id0.loc()
+)
+//
+(* ****** ****** *)
+
+local
+
+absimpl
 sort0_tbox = $rec{
   sort0_loc= loc_t
 , sort0_node= sort0_node

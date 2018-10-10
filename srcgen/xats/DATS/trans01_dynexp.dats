@@ -1920,8 +1920,28 @@ D0Cstaload
 val d1e = trans01_dexp(d0e)
 //
 in
-  d1ecl_make_node(loc0, D1Cstaload(tok, d1e))
+d1ecl_make_node(loc0, D1Cstaload(tok, d1e))
 end // end of [aux_staload]
+
+(* ****** ****** *)
+
+fun
+aux_symload
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Csymload
+(tok, sym, _, dqid, tint) = d0c0.node()
+//
+in
+//
+d1ecl_make_node
+  (loc0, D1Csymload(tok, sym, dqid, tint))
+//
+end // end of [aux_symload]
 
 (* ****** ****** *)
 
@@ -2118,7 +2138,7 @@ in
 //
 d1ecl_make_node
 ( loc0
-, D1Cabsimpl(tok, sqid, smas, res0, teq1, def2)
+, D1Cabsimpl(tok, sqid, smas, res0, def2)
 ) (* d1ecl_make_node *)
 //
 end // end of [aux_absimpl]
@@ -2374,6 +2394,8 @@ d0c0.node() of
 | D0Cinclude _ => aux_include(d0c0)
 //
 | D0Cstaload _ => aux_staload(d0c0)
+//
+| D0Csymload _ => aux_symload(d0c0)
 //
 | D0Cstacst0 _ => aux_stacst0(d0c0)
 //

@@ -1,3 +1,10 @@
+#symload
+[] with $BAR.bar of 100
+#symload
+foo with $BAR.bar of 100
+#symload
+.foo with $BAR$BAR.bar of 100
+////
 
 absimpl
 $FOO.foo(x:int): type = bar
@@ -18,8 +25,6 @@ if x > y then x else y endif endlam
 #symintr
 #symelim
 *)
-#symload
-.foo with bar of 100
 
 ////
 (* ****** ****** *)

@@ -64,6 +64,9 @@ fprint_val<i0dnt> = fprint_i0dnt
 implement
 fprint_val<l0abl> = fprint_l0abl
 //
+implement
+fprint_val<s0ymb> = fprint_s0ymb
+//
 (* ****** ****** *)
 
 implement
@@ -216,11 +219,12 @@ case+ x0.node() of
 (* ****** ****** *)
 //
 implement
-print_l0abl
-  (l0) = fprint_l0abl(stdout_ref, l0)
+print_l0abl(l0) =
+fprint_l0abl(stdout_ref, l0)
 implement
-prerr_l0abl
-  (l0) = fprint_l0abl(stderr_ref, l0)
+prerr_l0abl(l0) =
+fprint_l0abl(stderr_ref, l0)
+//
 implement
 fprint_l0abl
   (out, l0) =
@@ -232,6 +236,37 @@ l0.node() of
 | L0ABnone(tok) =>
   fprint!(out, "L0ABnone(", tok, ")")
 )
+//
+(* ****** ****** *)
+//
+implement
+print_s0ymb(x0) =
+fprint_s0ymb(stdout_ref, x0)
+implement
+prerr_s0ymb(x0) =
+fprint_s0ymb(stderr_ref, x0)
+//
+implement
+fprint_s0ymb
+  (out, x0) =
+(
+case+
+x0.node() of
+//
+| S0YMBi0dnt(id0) =>
+  fprint!
+  (out, "S0YMBi0dnt(", id0, ")")
+//
+| S0YMBdtlab(dot1, lab2) =>
+  fprint!
+  ( out
+  , "S0YMBdtlab(", dot1, "; ", lab2, ")")
+| S0YMBbrack(tok1, tok2) =>
+  fprint!
+  ( out
+  , "S0YMBbrack(", tok1, "; ", tok2, ")")
+//
+) (* end of [fprint_s0ymb] *)
 //
 (* ****** ****** *)
 

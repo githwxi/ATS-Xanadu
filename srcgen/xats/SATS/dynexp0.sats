@@ -37,6 +37,11 @@
 
 (* ****** ****** *)
 //
+typedef
+t0intopt = Option(t0int)
+//
+(* ****** ****** *)
+//
 datatype
 dl0abeled
   (a:type) =
@@ -914,7 +919,8 @@ for skipping error
 *)
 //
 | D0Csymload of
-    (token(*SYMLOAD*), 
+  ( token(*SYMLOAD*)
+  , s0ymb, token, dq0eid, t0intopt)
 //
 | D0Cstacst0 of
   (token, s0eid, token, sort0)
