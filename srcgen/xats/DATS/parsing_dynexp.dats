@@ -2891,7 +2891,46 @@ abstype ::=
     d0ecl_make_node(loc_res, D0Cstaload(tok, d0e))
   end // end of [#STALOAD(...)]
 //
-| T_SRP_STACST () => let
+| T_SRP_SYMLOAD() => let
+//
+    val () = buf.incby1()
+//
+    val sym = p_s0ymb(buf, err)
+    val twth = p_WITH(buf, err)
+    val dqid = p_dq0eid(buf, err)
+//
+    val tint = let
+      val tok = buf.get0()
+      val tnd = tok.node()
+    in
+      case+ tnd of
+      | T_OF() =>
+        (
+        Some(p_t0int(buf, err))
+        ) where
+        {
+          val () = buf.incby1()
+        }
+      | _(*non-OF*) => None(*void*)
+    end : t0intopt // end-of-let
+//
+    val loc_res =
+    let
+      val loc = tok.loc()
+    in
+      case+ tint of
+      | None() => loc+dqid.loc()
+      | Some(int) => loc+int.loc()
+    end : location // end of [val]
+//
+  in
+    err := e0;
+    d0ecl_make_node
+    ( loc_res
+    , D0Csymload(tok, sym, twth, dqid, tint))
+  end // end of [#STALOAD(...)]
+//
+| T_SRP_STACST() => let
 //
     val () = buf.incby1()
     val sid = p_s0eid(buf, err)
@@ -2905,7 +2944,7 @@ abstype ::=
     // d0ecl_make_node
   end // end of [T_SRP_STACST]
 //
-| T_SRP_NONFIX () => let
+| T_SRP_NONFIX() => let
 //
     val () = buf.incby1()
 //

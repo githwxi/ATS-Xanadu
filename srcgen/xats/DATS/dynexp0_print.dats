@@ -56,6 +56,9 @@ _(*TMP*) = "./../DATS/staexp0_print.dats"
 implement
 fprint_val<token> = fprint_token
 //
+implement
+fprint_val<t0int> = fprint_t0int
+//
 (* ****** ****** *)
 //
 implement
@@ -775,6 +778,18 @@ case+ x0.node() of
 | D0Cstaload(tok, d0e) =>
   fprint!
   (out, "D0Cstaload(", tok, "; ", d0e, ")")
+(*
+| D0Cdynload(tok, d0e) =>
+  fprint!
+  (out, "D0Cdynload(", tok, "; ", d0e, ")")
+*)
+//
+| D0Csymload
+  (tok, sym, twth, dqid, tint) =>
+  fprint!
+  ( out, "D0Csymload("
+  , tok, "; ", sym, "; "
+  , twth, "; ", dqid, "; ", tint, ")")
 //
 | D0Cstacst0
   (tok, sid, tok1, s0t2) =>

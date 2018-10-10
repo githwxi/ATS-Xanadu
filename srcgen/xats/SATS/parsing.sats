@@ -68,6 +68,7 @@ STAEXP0 = "./staexp0.sats"
 //
   typedef i0dnt = $STAEXP0.i0dnt
   typedef l0abl = $STAEXP0.l0abl
+  typedef s0ymb = $STAEXP0.s0ymb
 //
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
@@ -223,6 +224,11 @@ fun
 p_IN: parser(token)
 //
 fun
+p_WITH: parser(token)
+//
+(* ****** ****** *)
+//
+fun
 p_END: parser(token)
 fun
 p_ENDLET: parser(token)
@@ -271,6 +277,10 @@ fun p_i0dnt: parser(i0dnt)
 (* ****** ****** *)
 
 fun p_l0abl: parser(l0abl)
+
+(* ****** ****** *)
+
+fun p_s0ymb: parser(s0ymb)
 
 (* ****** ****** *)
 //

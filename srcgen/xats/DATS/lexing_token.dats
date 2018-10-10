@@ -249,6 +249,7 @@ case+ tnd of
 | T_ELSE() => fprint(out, "ELSE")
 //
 | T_WHEN() => fprint(out, "WHEN")
+| T_WITH() => fprint(out, "WITH")
 //
 | T_CASE(k0) =>
   fprint!
@@ -318,6 +319,8 @@ case+ tnd of
 //
 | T_SRP_STALOAD() => fprint(out, "#STALOAD")
 | T_SRP_DYNLOAD() => fprint(out, "#DYNLOAD")
+//
+| T_SRP_SYMLOAD() => fprint(out, "#SYMLOAD")
 //
 ) (* end of [fprint_tnode] *)
 //
@@ -493,6 +496,7 @@ case+ tnd of
 | T_ELSE() => fprint(out, "else")
 //
 | T_WHEN() => fprint(out, "when")
+| T_WITH() => fprint(out, "with")
 //
 | T_CASE(k0) =>
   fprint!(out, "case(", k0, ")")
@@ -561,6 +565,8 @@ case+ tnd of
 //
 | T_SRP_STALOAD() => fprint(out, "#staload")
 | T_SRP_DYNLOAD() => fprint(out, "#dynload")
+//
+| T_SRP_SYMLOAD() => fprint(out, "#symload")
 //
 ) (* end of [fprint2_tnode] *)
 //

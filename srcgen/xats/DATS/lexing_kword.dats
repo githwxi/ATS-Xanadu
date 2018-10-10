@@ -254,6 +254,9 @@ val () = myins("sif", T_SIF)
 val () = myins("then", T_THEN)
 val () = myins("else", T_ELSE)
 //
+val () = myins("when", T_WHEN)
+val () = myins("with", T_WITH)
+//
 val () = myins("case", T_CASE_)
 val () = myins("scase", T_SCASE)
 //
@@ -396,6 +399,8 @@ val () = myins("#include", T_SRP_INCLUDE)
 //
 val () = myins("#staload", T_SRP_STALOAD)
 val () = myins("#dynload", T_SRP_DYNLOAD)
+//
+val () = myins("#symload", T_SRP_SYMLOAD)
 //
 } (* end of [kword_initize] *)
 //

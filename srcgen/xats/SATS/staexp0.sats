@@ -297,6 +297,45 @@ l0abl_make_node
 //
 (* ****** ****** *)
 //
+(*
+s0ymb ::=
+| i0dnt
+| DOT l0ab | LBRACK RBRACK
+*)
+//
+abstype
+s0ymb_tbox = ptr
+typedef
+s0ymb = s0ymb_tbox
+//
+datatype
+s0ymb_node =
+| S0YMBi0dnt of (i0dnt)
+| S0YMBdtlab of (token, l0abl)
+| S0YMBbrack of (token, token)
+//
+fun
+s0ymb_get_loc: (s0ymb) -> loc_t
+fun
+s0ymb_get_node: (s0ymb) -> s0ymb_node
+//
+overload .loc with s0ymb_get_loc
+overload .node with s0ymb_get_node
+//
+fun print_s0ymb : print_type(s0ymb)
+fun prerr_s0ymb : prerr_type(s0ymb)
+fun fprint_s0ymb : fprint_type(s0ymb)
+//
+overload print with print_s0ymb
+overload prerr with prerr_s0ymb
+overload fprint with fprint_s0ymb
+//
+fun
+s0ymb_make_node
+(loc: loc_t, node: s0ymb_node): s0ymb
+//
+(* ****** ****** *)
+//
 datatype
 sl0abeled
   (a:type) =
@@ -317,6 +356,12 @@ datatype
 dq0eid =
 | DQ0EIDnone of (d0eid)
 | DQ0EIDsome of (token, d0eid)
+//
+fun sq0eid_get_loc(sq0eid): loc_t
+fun dq0eid_get_loc(dq0eid): loc_t
+//
+overload .loc with sq0eid_get_loc
+overload .loc with dq0eid_get_loc
 //
 fun
 fprint_sq0eid: fprint_type(sq0eid)
