@@ -913,6 +913,9 @@ for skipping error
   // end of [D0Cdynload]
 *)
 //
+| D0Csymload of
+    (token(*SYMLOAD*), 
+//
 | D0Cstacst0 of
   (token, s0eid, token, sort0)
 //
