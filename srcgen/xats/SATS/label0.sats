@@ -61,10 +61,36 @@ overload fprint with fprint_label
 //
 val label_nil : label
 //
-fun label_make_int(i0: int): label
-fun label_make_sym(i0: symbol): label
-fun label_make_name(s0: string): label
+fun
+label_make_int(i0: int): label
+fun
+label_make_sym(i0: symbol): label
+fun
+label_make_name(s0: string): label
 //
+(* ****** ****** *)
+//
+fun
+label_is_int(l0: label): bool
+fun
+label_is_sym(l0: label): bool
+//
+(* ****** ****** *)
+//
+fun
+label_get_int
+  (l0: label): Option_vt(int)
+fun
+label_get_sym
+  (l0: label): Option_vt(symbol)
+//
+overload .int with label_get_int
+overload .sym with label_get_sym
+//
+(* ****** ****** *)
+
+fun label_dotize(l0: label): symbol
+
 (* ****** ****** *)
 
 (* end of [xats_label0.sats] *)

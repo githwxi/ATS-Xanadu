@@ -88,6 +88,70 @@ label_make_sym(s0) = LABsym(s0)
 implement
 label_make_name(s0) = LABsym(symbol_make(s0))
 
+(* ****** ****** *)
+//
+implement
+label_is_int(l0) = 
+  case+ l0 of
+  | LABint _ => true | LABsym _ => false
+// end of [label_is_int]
+implement
+label_is_sym(l0) = 
+  case+ l0 of
+  | LABint _ => false | LABsym _ => true
+// end of [label_is_sym]
+//
+implement
+label_get_int(l0) =
+  case+ l0 of
+  | LABint (x) => Some_vt(x) | _ => None_vt()
+// end of [label_get_int]
+implement
+label_get_sym(l0) =
+  case+ l0 of
+  | LABsym (x) => Some_vt(x) | _ => None_vt()
+// end of [label_get_sym]
+//
+(* ****** ****** *)
+
+implement
+label_dotize(l0) =
+(
+//
+case+ l0 of
+| LABint(int) => let
+//
+    val
+    name0 =
+    g0int2string(int)
+    val
+    name1 =
+    $UN.strptr2string(name0)
+    val
+    dotnm =
+    string0_append(".", name1)
+//
+    val () = strptr_free(name0)
+//
+  in
+    symbol_make(strptr2string(dotnm))
+  end (* end of [LABint] *)
+//
+| LABsym(sym) => let
+    val
+    name0 =
+    symbol_get_name(sym)
+    val
+    dotnm =
+    string0_append(".", name0)
+  in
+    symbol_make(strptr2string(dotnm))
+  end (* end of [LABsym] *)
+//
+) // end of [label_dotize]
+
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)

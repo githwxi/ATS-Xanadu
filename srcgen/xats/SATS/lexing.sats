@@ -243,6 +243,8 @@ tnode =
   | T_SRP_STALOAD of () // #staload
   | T_SRP_DYNLOAD of () // #dynload
 //
+  | T_SRP_SYMLOAD of () // #symload
+//
 abstbox token_tbox = $tup((*void*))
 //
 (*

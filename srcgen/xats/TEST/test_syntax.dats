@@ -11,7 +11,15 @@ case+ xs of
 )
 
 val f =
-lam(x, y) => if x > y then x else y endif endlam
+lam(x, y) =>
+if x > y then x else y endif endlam
+
+(*
+#symintr
+#symelim
+*)
+#symload
+.foo with bar of 100
 
 ////
 (* ****** ****** *)
