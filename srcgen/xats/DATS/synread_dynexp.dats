@@ -28,57 +28,14 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: 2018-09-03
+// Start Time: September, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-#staload "./parsing.sats"
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 
 (* ****** ****** *)
-//
-typedef
-synreader
-(a:t@ype) = (a) -> void
-//
-(* ****** ****** *)
-//
-fun
-synread_sexp : synreader(s0exp)
-fun
-synread_sexplst : synreader(s0explst)
-//
-(* ****** ****** *)
-//
-fun
-synread_dpat : synreader(d0pat)
-fun
-synread_dpatlst : synreader(d0patlst)
-//
-fun
-synread_labdpat : synreader(labd0pat)
-fun
-synread_labdpatlst : synreader(labd0patlst)
-//
-(* ****** ****** *)
-//
-fun
-synread_dexp : synreader(d0exp)
-fun
-synread_dexplst : synreader(d0explst)
-//
-fun
-synread_labdexp : synreader(labd0exp)
-fun
-synread_labdexplst : synreader(labd0explst)
-//
-(* ****** ****** *)
-//
-fun
-synread_decl : synreader(d0ecl)
-fun
-synread_declist : synreader(d0eclist)
-//
-(* ****** ****** *)
 
-(* end of [xats_synread.sats] *)
+(* end of [xats_synread_dynexp.dats] *)

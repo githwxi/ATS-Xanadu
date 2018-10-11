@@ -809,6 +809,42 @@ overload fprint with fprint_v0aldecl
 //
 (* ****** ****** *)
 //
+(*
+var
+foo:
+s0exp with pfat = d0exp
+*)
+datatype
+v0ardecl =
+V0ARDECL of @{
+  loc= loc_t
+, nam= d0pid
+, wth= d0pidopt
+, res= effs0expopt
+, ini= teqd0expopt
+} where
+  d0pidopt = Option(d0pid)
+//
+typedef
+v0ardeclist = List0(v0ardecl)
+//
+fun
+v0ardecl_get_loc(v0ardecl): loc_t
+overload .loc with v0ardecl_get_loc
+//
+fun
+print_v0ardecl: print_type(v0ardecl)
+fun
+prerr_v0ardecl: prerr_type(v0ardecl)
+fun
+fprint_v0ardecl: fprint_type(v0ardecl)
+//
+overload print with print_v0ardecl
+overload prerr with prerr_v0ardecl
+overload fprint with fprint_v0ardecl
+//
+(* ****** ****** *)
+//
 datatype
 f0undecl =
 F0UNDECL of @{
@@ -946,6 +982,10 @@ for skipping error
 | D0Cvaldecl of
   ( token(*valkind*)
   , declmodopt, v0aldeclist)
+//
+| D0Cvardecl of
+    (token(*varkind*), v0ardeclist)
+  // end of [D0Cvardecl]
 //
 | D0Cfundecl of
   ( token(*funkind*)

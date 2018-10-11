@@ -612,6 +612,36 @@ overload fprint with fprint_v1aldecl
 (* ****** ****** *)
 //
 datatype
+v1ardecl =
+V1ARDECL of @{
+  loc= loc_t
+, nam= token
+, wth= tokenopt
+, res= effs1expopt
+, ini= teqd1expopt
+}
+//
+typedef
+v1ardeclist = List0(v1ardecl)
+//
+fun
+v1ardecl_get_loc(v1ardecl): loc_t
+overload .loc with v1ardecl_get_loc
+//
+fun
+print_v1ardecl: print_type(v1ardecl)
+fun
+prerr_v1ardecl: prerr_type(v1ardecl)
+fun
+fprint_v1ardecl: fprint_type(v1ardecl)
+//
+overload print with print_v1ardecl
+overload prerr with prerr_v1ardecl
+overload fprint with fprint_v1ardecl
+//
+(* ****** ****** *)
+//
+datatype
 f1undecl =
 F1UNDECL of @{
   loc= loc_t
@@ -727,6 +757,10 @@ d1ecl_node =
 | D1Cvaldecl of
   ( token(*valkind*)
   , declmodopt(*rec/prf/...*), v1aldeclist)
+//
+| D1Cvardecl of
+    (token(*VAR*), v1ardeclist)
+  // D1Cvardecl
 //
 | D1Cfundecl of
   ( token(*funkind*)

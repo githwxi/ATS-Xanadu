@@ -522,6 +522,15 @@ end // end of [v0aldecl_get_loc]
 (* ****** ****** *)
 
 implement
+v0ardecl_get_loc
+  (x0) =
+let
+  val+V0ARDECL(rcd) = x0 in rcd.loc
+end // end of [v0ardecl_get_loc]
+
+(* ****** ****** *)
+
+implement
 f0undecl_get_loc
   (x0) =
 let
