@@ -365,10 +365,13 @@ x0.node() of
 //
 | D1Eapps(d1e0, d1es) =>
   fprint!
-  (out, "D1Eapps(", d1e0, "; ", d1es, ")")
+  ( out
+  , "D1Eapps(", d1e0, "; ", d1es, ")")
 //
-| D1Esexp(s1es) =>
-  fprint!(out, "D1Esexp(", s1es, ")")
+| D1Esqarg(s1es) =>
+  fprint!(out, "D1Esqarg(", s1es, ")")
+| D1Etqarg(s1es) =>
+  fprint!(out, "D1Etqarg(", s1es, ")")
 //
 | D1Elist(d1es) =>
   fprint!(out, "D1Elist(", d1es, ")")

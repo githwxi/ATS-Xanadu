@@ -436,11 +436,17 @@ case+ x0.node() of
 | D0Eapps(d0es) =>
   fprint!(out, "D0Eapps(", d0es, ")")
 //
-| D0Esexp
+| D0Esqarg
   (tbeg, s0es, tend) =>
   fprint!
   ( out
-  , "D0Esexp("
+  , "D0Esqarg("
+  , tbeg, "; ", s0es, "; ", tend, ")")
+| D0Etqarg
+  (tbeg, s0es, tend) =>
+  fprint!
+  ( out
+  , "D0Etqarg("
   , tbeg, "; ", s0es, "; ", tend, ")")
 //
 | D0Eparen
@@ -755,8 +761,8 @@ case+ x0.node() of
 | D0Cnone(tok) =>
   fprint!(out, "D0Cnone(", tok, ")")
 //
-| D0Ctkerr(tok) =>
-  fprint!(out, "D0Ctkerr(", tok, ")")
+| D0Ctokerr(tok) =>
+  fprint!(out, "D0Ctokerr(", tok, ")")
 //
 | D0Cnonfix(tok, ids) =>
   fprint!

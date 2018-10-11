@@ -110,8 +110,7 @@ prval vbox(pf) = pf0
 //
 in
 //
-$effmask_ref
-($ENV.symenv_insert2(!p0, k0, x0, mix))
+$effmask_ref($ENV.symenv_insert2(!p0, k0, x0, mix))
 //
 end (* end of [the_fxtyenv_insert] *)
 

@@ -44,40 +44,33 @@ synreader
 (* ****** ****** *)
 //
 fun
-synread_sexp : synreader(s0exp)
-fun
-synread_sexplst : synreader(s0explst)
+synread_sort0 : synreader(sort0)
 //
 (* ****** ****** *)
 //
 fun
-synread_dpat : synreader(d0pat)
-fun
-synread_dpatlst : synreader(d0patlst)
-//
-fun
-synread_labdpat : synreader(labd0pat)
-fun
-synread_labdpatlst : synreader(labd0patlst)
+synread_s0exp : synreader(s0exp)
 //
 (* ****** ****** *)
 //
 fun
-synread_dexp : synreader(d0exp)
+synread_d0pat : synreader(d0pat)
 fun
-synread_dexplst : synreader(d0explst)
-//
-fun
-synread_labdexp : synreader(labd0exp)
-fun
-synread_labdexplst : synreader(labd0explst)
+synread_labd0pat : synreader(labd0pat)
 //
 (* ****** ****** *)
 //
 fun
-synread_decl : synreader(d0ecl)
+synread_d0exp : synreader(d0exp)
 fun
-synread_declist : synreader(d0eclist)
+synread_labd0exp : synreader(labd0exp)
+//
+(* ****** ****** *)
+//
+fun
+synread_d0ecl : synreader(d0ecl)
+fun
+synread_d0eclist : synreader(d0eclist)
 //
 (* ****** ****** *)
 

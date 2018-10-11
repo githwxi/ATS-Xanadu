@@ -1106,14 +1106,23 @@ d0e0.node() of
     fxitmlst_resolve_d1exp(loc0, d1es)
   }
 //
-| D0Esexp
+| D0Esqarg
   (tbeg, s0es, tend) =>
   FXITMatm(d1e0) where
   {
     val s1es =
     trans01_sexplst(s0es)
     val d1e0 =
-    d1exp_make_node(loc0, D1Esexp(s1es))
+    d1exp_make_node(loc0, D1Esqarg(s1es))
+  }
+| D0Etqarg
+  (tbeg, s0es, tend) =>
+  FXITMatm(d1e0) where
+  {
+    val s1es =
+    trans01_sexplst(s0es)
+    val d1e0 =
+    d1exp_make_node(loc0, D1Etqarg(s1es))
   }
 //
 | D0Eparen _ => auxparen(d0e0)
@@ -2496,9 +2505,7 @@ d0c0.node() of
 | D0Cabsimpl _ => aux_absimpl(d0c0)
 //
 | D0Cvaldecl _ => aux_valdecl(d0c0)
-//
 | D0Cvardecl _ => aux_vardecl(d0c0)
-//
 | D0Cfundecl _ => aux_fundecl(d0c0)
 //
 | D0Cimpdecl _ => aux_impdecl(d0c0)
