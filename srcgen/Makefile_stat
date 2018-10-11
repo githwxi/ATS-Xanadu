@@ -1,0 +1,27 @@
+######
+#
+# For some stats
+#
+######
+
+WCL=wc -l
+
+######
+
+all::
+
+######
+
+all:: \
+srclines
+srclines: ; \
+$(WCL) \
+xats/SATS/*.sats \
+xats/DATS/*.dats \
+xats/CATS/*.cats \
+util/SATS/*.sats \
+util/DATS/*.dats \
+util/SATS/Posix/*.sats \
+util/DATS/Posix/*.dats \
+
+###### end of [Makefile_stat] ######

@@ -169,6 +169,217 @@ typedef xyz = $extype"abcde"
 //
 (* ****** ****** *)
 
+sortdef
+foo =
+bar0( bar1 + ! !! !!! )
+
+(* ****** ****** *)
+
+#stacst
+fint2: (int, int) -> int
+
+(* ****** ****** *)
+
+sexpdef foo = int:type
+
+sexpdef
+foo =
+bar0(1 + 2 + 3 + -4 + -5)
+
+sexpdef
+int2int =
+{ n:int | n >= 0
+} int(n) -> [n:nat] int(n:int)
+
+typedef int2 = @(int, int)
+typedef int2 = $(int, int)
+typedef int2 = $tup(int, int)
+typedef int2 = $tup_t(int, int)
+typedef int2 = $tup_vt(int, int)
+typedef point2 = @{x=int | y=int}
+typedef point2 = $rec{x=int | y=int}
+typedef point2 = $rec_t{x=int | y=int}
+typedef point2 = $rec_vt{x=int | y=int}
+
+(* ****** ****** *)
+
+sexpdef
+list0_int_1 =
+(lam(a:type)(n:int) => list(a, n))(int)(1)
+
+(* ****** ****** *)
+
+sexpdef A_int = $A.int
+
+(* ****** ****** *)
+
+sexpdef one:int = 1
+sexpdef one:char = '1'
+sexpdef one:float = 1.0
+sexpdef one:string = "1"
+
+(* ****** ****** *)
+
+sexpdef xy: int = op+(x, y)
+sexpdef xy: int = op(add)(x, y)
+
+(* ****** ****** *)
+
+sexpdef
+xyz: char = foo('a')
+sexpdef
+xyz: string = foo("a")
+sexpdef
+xyz: float = foo(1E-3f)
+sexpdef
+xyz: float = foo(0x1.abcdeP-3)
+
+(* ****** ****** *)
+
+typedef + = $A.+
+typedef @ = $A.@
+
+(* ****** ****** *)
+
+typedef int2 = @(int, int)
+typedef int2 = $(int, int)
+typedef int2 = @{x=int, y=int}
+typedef int2 = ${x=$A.int, y=$B.int}
+
+(* ****** ****** *)
+
+vtypedef int11 = @{x=int | y=int}
+vtypedef int12 = ${x=int | y=int, z=int}
+
+(* ****** ****** *)
+
+absview array_v(vtype+)
+absprop array_p(vtype+)
+
+(* ****** ****** *)
+
+abstype
+arrayref
+(a:vtype+, n:int) == ptr
+absvtype
+arrayptr
+(a:vtype+, n:int) <= ptr
+
+(* ****** ****** *)
+//
+abstype
+foo
+(a:type)
+(b:type) == list(a, b) // illegal
+//
+(* ****** ****** *)
+//
+datasort
+ilist =
+  | ilist_nil
+  | ilist_cons of (int, ilist)
+and
+ilist2 =
+  | ilist2_nil
+  | ilist2_cons of (int, int, ilist2)
+//
+(* ****** ****** *)
+
+vtypedef
+fint1 =
+{a,b:int|a > b}
+(int(a), int(b)) ->
+[c:int | c <= a*b] int(c)
+vtypedef
+fint2 =
+{a,b:int|a > b}
+ (int(a), int(b)) ->
+#[c:int | c <= a*b] int(c)
+
+(* ****** ****** *)
+
+typedef int x y =
+(lam(u:int, v:bool): type => int(x+y))(0, false)
+
+(* ****** ****** *)
+
+local
+
+sexpdef foo = int * int
+
+in (* in-of-local *)
+
+sortdef pos = {a: int | a > 0}
+sortdef neg = {a: int | a < 0}
+sortdef nat = {a: int | a >= 0}
+
+endlocal // end of [local]
+
+(* ****** ****** *)
+//
+datatype
+mylist(a:type+, int) =
+| mylist_nil(a, 0) of ()
+| {n:nat}
+  mylist_cons(a, n+1) of (a, mylist_(a, n))
+and
+mylist2(a:type+, int) =
+| mylist2_nil(a, 0) of ()
+| {n:nat}
+  mylist2_cons(a, n+1) of (a, mylist2_(a, n))
+//
+where
+  sortdef nat = {a: int | a >= 0}
+  typedef mylist_(a, n) = mylist(a, n)
+  typedef mylist2_(a, n) = mylist2(a, n)
+endwhere
+//
+(* ****** ****** *)
+
+typedef foo = bar2 -<0,ntm,!wrt> bar2
+
+(* ****** ****** *)
+
+fun
+foo(x: int): int
+
+(* ****** ****** *)
+//
+#include "/tmp/abcde.sats"
+#staload "/tmp/abcde.sats"
+//
+fun
+<a,b:int>
+foo(int(a)): int(b) = $macro"C_foo"
+fun
+<a,b:int>
+foo(int(a)): int(b) = $extern"C_foo"
+//
+fun
+<a,b:int><c:int>
+foo2(x1: int(a) | x2: int(b)):<0,!ntm,!wrt> int(c)
+//
+(* ****** ****** *)
+//
+// extern
+//
+fun
+bar1(int, int): bool = $mac("bar1")
+and
+bar2(x:[a:int]int(a), int): bool = $mac("bar2")
+//
+(* ****** ****** *)
+
+#static
+val fact : int -> int
+
+#extern
+fun fact (n: int) : int
+#extern
+prfun fact2 int (int, int) : bool
+
+(* ****** ****** *)
+
 val zero : int
 
 val fact : int -> int = $macro"fact"
