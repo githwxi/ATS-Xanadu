@@ -385,6 +385,7 @@ val () = myins("#define")
 *)
 //
 val () = myins("#infix", T_INFIX_)
+val () = myins("#infix0", T_INFIX_)
 val () = myins("#infixl", T_INFIXL_)
 val () = myins("#infixr", T_INFIXR_)
 val () = myins("#prefix", T_PREFIX_)
@@ -408,6 +409,18 @@ val () = myins("#symload", T_SRP_SYMLOAD)
 //
 } (* end of [kword_initize()] *)
 
+(* ****** ****** *)
+//
+implement T_IDENT_AT = T_IDENT_sym("@")
+implement T_IDENT_EQ = T_IDENT_sym("=")
+//
+implement T_IDENT_LT = T_IDENT_sym("<")
+implement T_IDENT_GT = T_IDENT_sym(">")
+//
+implement T_IDENT_EQGT = T_IDENT_sym("=>")
+implement T_IDENT_LTGT = T_IDENT_sym("<>")
+implement T_IDENT_MSGT = T_IDENT_sym("->")
+//
 (* ****** ****** *)
 
 (* end of [xats_lexing_kword.dats] *)

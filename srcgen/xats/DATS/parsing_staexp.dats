@@ -244,7 +244,7 @@ tok.node() of
   {
     val () = buf.incby1()
     val loc = tok.loc((*void*))
-    val tnd = T_IDENT_sym( "@" )
+    val tnd = T_IDENT_AT(*void*)
     val tok = token_make_node(loc, tnd)
   }
 //
@@ -253,7 +253,7 @@ tok.node() of
   {
     val () = buf.incby1()
     val loc = tok.loc((*void*))
-    val tnd = T_IDENT_sym( "->" )
+    val tnd = T_IDENT_MSGT(*void*)
     val tok = token_make_node(loc, tnd)
   }
 *)
@@ -363,7 +363,7 @@ in
     {
       val () = buf.incby1()
       val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "@" )
+      val tnd = T_IDENT_AT(*void*)
       val tok = token_make_node(loc, tnd)
     }
 //
@@ -372,7 +372,7 @@ in
     {
       val () = buf.incby1()
       val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "<" )
+      val tnd = T_IDENT_LT(*void*)
       val tok = token_make_node(loc, tnd)
     }
   | T_GT() =>
@@ -380,7 +380,16 @@ in
     {
       val () = buf.incby1()
       val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( ">" )
+      val tnd = T_IDENT_GT(*void*)
+      val tok = token_make_node(loc, tnd)
+    }
+//
+  | T_LTGT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_LTGT(*void*)
       val tok = token_make_node(loc, tnd)
     }
 //
@@ -396,7 +405,7 @@ in
     {
       val () = buf.incby1()
       val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "=>" )
+      val tnd = T_IDENT_EQGT(*void*)
       val tok = token_make_node(loc, tnd)
     }
 *)

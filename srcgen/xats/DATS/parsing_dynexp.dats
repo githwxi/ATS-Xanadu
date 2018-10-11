@@ -81,14 +81,14 @@ case+ tnd of
   {
     val () = buf.incby1()
     val loc = tok.loc((*void*))
-    val tnd = T_IDENT_sym( "<" )
+    val tnd = T_IDENT_LT(*void*)
     val tok = token_make_node(loc, tnd)
   }
 | T_GT() => tok where
   {
     val () = buf.incby1()
     val loc = tok.loc((*void*))
-    val tnd = T_IDENT_sym( ">" )
+    val tnd = T_IDENT_GT(*void*)
     val tok = token_make_node(loc, tnd)
   }
 //
@@ -96,7 +96,7 @@ case+ tnd of
   {
     val () = buf.incby1()
     val loc = tok.loc((*void*))
-    val tnd = T_IDENT_sym( "=>" )
+    val tnd = T_IDENT_EQGT(*void*)
     val tok = token_make_node(loc, tnd)
   }
 //
@@ -174,8 +174,12 @@ case+ tnd of
 //
 | T_BACKSLASH() => true
 //
+| T_EQ((*void*)) => true // "="
+//
+(*
 | T_LT((*void*)) => true // "<"
 | T_GT((*void*)) => true // ">"
+*)
 //
 | T_EQGT((*void*)) => true // ">"
 //
@@ -221,16 +225,26 @@ in
     {
       val () = buf.incby1()
       val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "@" )
+      val tnd = T_IDENT_AT(*void*)
       val tok = token_make_node(loc, tnd)
     }
 //
+  | T_EQ() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_EQ(*void*)
+      val tok = token_make_node(loc, tnd)
+    }
+//
+(*
   | T_LT() =>
     i0dnt_some(tok) where
     {
       val () = buf.incby1()
       val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "<" )
+      val tnd = T_IDENT_LT(*void*)
       val tok = token_make_node(loc, tnd)
     }
   | T_GT() =>
@@ -238,16 +252,17 @@ in
     {
       val () = buf.incby1()
       val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( ">" )
+      val tnd = T_IDENT_GT(*void*)
       val tok = token_make_node(loc, tnd)
     }
+*)
 //
   | T_EQGT() =>
     i0dnt_some(tok) where
     {
       val () = buf.incby1()
       val loc = tok.loc((*void*))
-      val tnd = T_IDENT_sym( "=>" )
+      val tnd = T_IDENT_EQGT(*void*)
       val tok = token_make_node(loc, tnd)
     }
 //
@@ -1566,6 +1581,73 @@ case+ tnd of
     d0exp_make_node(s0.loc(), D0Estr(s0))
   end // end of [t_t0str]
 //
+| T_LT() => let
+    val () =
+      buf.incby1()
+    val mark =
+      buf.get_mark()
+    // end of [val]
+    val s0es =
+    list_vt2t
+    (
+      pstar_COMMA_fun
+      {s0exp}(buf, err, p_apps0exp_NGT)
+    )
+    val tok2 = buf.get0()
+  in
+    case+
+    tok2.node() of
+    | T_GT() => let
+        val () =
+        buf.incby1()
+        val () =
+        buf.clear_mark(mark)
+        val tbeg = tok
+        val tend = tok2
+        val loc_res = tok.loc() + tok2.loc()
+      in
+        d0exp_make_node
+          (loc_res, D0Etqarg(tbeg, s0es, tend))
+        // d0exp_make_node
+      end // end of [T_GT]
+    | _(* non-GT *) => let
+        val () =
+          buf.set_mark(mark)
+        // end of [val]
+        val loc = tok.loc()
+        val tnd = T_IDENT_LT
+        val tok = token_make_node(loc, tnd)
+      in
+        d0exp_make_node(loc, D0Eid(i0dnt_some(tok)))
+      end // end of [non-GT]
+  end // end of [T_LT]
+//
+| T_GT() => let
+    val () =
+      buf.incby1()
+    // end of [val]
+    val loc = tok.loc()
+    val tnd = T_IDENT_GT
+    val tok =
+      token_make_node(loc, tnd)
+    // end of [val]
+  in
+    d0exp_make_node
+      (loc, D0Eid(i0dnt_some(tok)))
+    // d0exp_make_node
+  end // end of [T_GT]
+//
+| T_LTGT() => let
+    val () = buf.incby1()
+    val s0es = list_nil(*void*)
+    val tbeg = tok
+    val tend = tok
+    val loc_res = tok.loc()
+  in
+    d0exp_make_node
+    (loc_res, D0Etqarg(tbeg, s0es, tend))
+  end // end of [T_LTGT]
+//
 | T_LBRACE() => let
     val () = buf.incby1()
     val s0es =
@@ -1576,10 +1658,9 @@ case+ tnd of
     err := e0;
     d0exp_make_node
     ( loc_res
-    , D0Esexp(tbeg, s0es, tend)) where
+    , D0Esqarg(tbeg, s0es, tend)) where
     {
       val loc_res = tbeg.loc()+tend.loc()
-      // end of [val]
     }
   end // end of [T_LBRACE]
 //
@@ -3240,7 +3321,7 @@ case+ tnd of
     val () = buf.incby1()
     val () = err := err + 1
     val d0c =
-      d0ecl_make_node(loc, D0Ctkerr(tok))
+      d0ecl_make_node(loc, D0Ctokerr(tok))
     // end of [val]
   in
     loop2(buf, err, n0r, list_vt_cons(d0c, res))

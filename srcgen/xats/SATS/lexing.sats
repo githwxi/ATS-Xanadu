@@ -271,6 +271,16 @@ typedef tokenopt = Option(token)
 vtypedef tokenopt_vt = Option_vt(token)
 //
 (* ****** ****** *)
+
+val T_IDENT_AT : tnode
+val T_IDENT_EQ : tnode
+val T_IDENT_LT : tnode
+val T_IDENT_GT : tnode
+val T_IDENT_EQGT : tnode
+val T_IDENT_LTGT : tnode
+val T_IDENT_MSGT : tnode
+      
+(* ****** ****** *)
 //
 fun//{}
 token_make_node

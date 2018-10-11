@@ -397,7 +397,8 @@ d1exp_node =
     (d1exp, d1explst)
   // D1Eapps
 //
-| D1Esexp of s1explst
+| D1Esqarg of s1explst
+| D1Etqarg of s1explst
 //
 | D1Elist of d1explst // temp.
 | D1Elist of

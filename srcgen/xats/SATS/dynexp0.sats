@@ -434,9 +434,12 @@ d0exp_node =
 //
 | D0Eapps of d0explst
 //
-| D0Esexp of
+| D0Esqarg of // sexparg
     (token, s0explst, token)
-  // end of [D0Esexp]
+  // end of [D0Esqarg]
+| D0Etqarg of // temparg
+    (token, s0explst, token)
+  // end of [D0Etqarg]
 //
 | D0Eparen of
     (token, d0explst, d0exp_RPAREN)
@@ -916,7 +919,7 @@ indicating error
 (*
 for skipping error
 *)
-| D0Ctkerr of token // error
+| D0Ctokerr of token // error
 //
 // HX: delete fixity
 //
