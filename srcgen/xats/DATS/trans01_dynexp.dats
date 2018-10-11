@@ -1506,6 +1506,12 @@ trans01_valdeclist: v0aldeclist -> v1aldeclist
 
 extern
 fun
+trans01_vardecl: v0ardecl -> v1ardecl
+and
+trans01_vardeclist: v0ardeclist -> v1ardeclist
+
+extern
+fun
 trans01_fundecl: f0undecl -> f1undecl
 and
 trans01_fundeclist: f0undeclist -> f1undeclist
@@ -1590,6 +1596,70 @@ list_vt2t(d1cs) where
     list_map$fopr<v0aldecl><v1aldecl> = trans01_valdecl
   }
 } (* end of [trans01_valdeclist] *)
+
+(* ****** ****** *)
+
+implement
+trans01_vardecl
+  (d0c0) = let
+//
+val+
+V0ARDECL(rcd) = d0c0
+//
+val
+loc = rcd.loc
+//
+val
+nam = rcd.nam
+val-
+I0DNTsome(tok) = nam.node()
+//
+val
+wth = 
+(
+case+
+rcd.wth of
+| None() => None()
+| Some(nam) =>
+  Some(tok) where
+  {
+    val-
+    I0DNTsome(tok) = nam.node()
+  }
+) : tokenopt // end of [val]
+val
+res = trans01_effsexpopt(rcd.res)
+val
+ini = trans01_teqdexpopt(rcd.ini)
+//
+val () =
+println!("trans01_vardecl: loc = ", loc)
+val () =
+println!("trans01_vardecl: nam = ", nam)
+val () =
+println!("trans01_vardecl: wth = ", wth)
+val () =
+println!("trans01_vardecl: ini = ", ini)
+//
+in
+  V1ARDECL
+  (@{loc=loc,nam=tok,wth=wth,res=res,ini=ini})
+end // end of [trans01_vardecl]
+
+implement
+trans01_vardeclist
+  (d0cs) =
+list_vt2t(d1cs) where
+{
+  val
+  d1cs =
+  list_map<v0ardecl><v1ardecl>
+    (d0cs) where
+  {
+    implement
+    list_map$fopr<v0ardecl><v1ardecl> = trans01_vardecl
+  }
+} (* end of [trans01_vardeclist] *)
 
 (* ****** ****** *)
 
@@ -2167,6 +2237,25 @@ end // end of [aux_valdecl]
 (* ****** ****** *)
 
 fun
+aux_vardecl
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cvardecl
+  (knd, d0cs) = d0c0.node()
+//
+val d1cs = trans01_vardeclist(d0cs)
+//
+in
+d1ecl_make_node(loc0, D1Cvardecl(knd, d1cs))
+end // end of [aux_vardecl]
+
+(* ****** ****** *)
+
+fun
 aux_fundecl
 ( d0c0
 : d0ecl): d1ecl = let
@@ -2407,6 +2496,9 @@ d0c0.node() of
 | D0Cabsimpl _ => aux_absimpl(d0c0)
 //
 | D0Cvaldecl _ => aux_valdecl(d0c0)
+//
+| D0Cvardecl _ => aux_vardecl(d0c0)
+//
 | D0Cfundecl _ => aux_fundecl(d0c0)
 //
 | D0Cimpdecl _ => aux_impdecl(d0c0)

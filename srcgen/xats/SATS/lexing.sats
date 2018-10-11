@@ -212,6 +212,8 @@ tnode =
   | T_VAL of (valkind)
     // val, val+, val-, prval
 //
+  | T_VAR of ((*void*))
+//
   | T_IMPLMNT of (impkind)
     // implmnt implement: val/fun
     // primplmnt primplement: prval/prfun

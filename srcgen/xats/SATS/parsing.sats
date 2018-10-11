@@ -32,6 +32,12 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+// HX-2018-10:
+// Note that comments in this file
+// may be obsolete and/or inaccurate
+//
+(* ****** ****** *)
 
 %{#
 #include "CATS/parsing.cats"
@@ -115,8 +121,15 @@ DYNEXP0 = "./dynexp0.sats"
   typedef labd0pat = $DYNEXP0.labd0pat
   typedef labd0exp = $DYNEXP0.labd0exp
 //
+  typedef d0patlst = $DYNEXP0.d0patlst
+  typedef d0explst = $DYNEXP0.d0explst
+  typedef labd0patlst = $DYNEXP0.labd0patlst
+  typedef labd0explst = $DYNEXP0.labd0explst
+//
+(* ****** ****** *)
+//
   typedef d0ecl = $DYNEXP0.d0ecl
-  typedef d0eclist = List0(d0ecl)
+  typedef d0eclist = $DYNEXP0.d0eclist
 //
 (* ****** ****** *)
 //

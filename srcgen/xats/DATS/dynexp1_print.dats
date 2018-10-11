@@ -497,6 +497,8 @@ fprint_val<d1ecl> = fprint_d1ecl
 implement
 fprint_val<v1aldecl> = fprint_v1aldecl
 implement
+fprint_val<v1ardecl> = fprint_v1ardecl
+implement
 fprint_val<f1undecl> = fprint_f1undecl
 implement
 fprint_val<d1cstdecl> = fprint_d1cstdecl
@@ -568,7 +570,13 @@ case+ x0.node() of
 | D1Cvaldecl
   (tok, mods, d1cs) =>
   fprint!
-  (out, "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs)
+  ( out
+  , "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs)
+//
+| D1Cvardecl(tok, d1cs) =>
+  (
+    fprint!(out, "D1Cvardecl(", tok, "; ", d1cs)
+  )
 //
 | D1Cfundecl
   (tok, mopt, tqas, d1cs) =>
@@ -679,6 +687,30 @@ in
   , ", pat=", rcd.pat
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v1aldecl]
+
+(* ****** ****** *)
+
+implement
+print_v1ardecl(x0) =
+fprint_v1ardecl(stdout_ref, x0)
+implement
+prerr_v1ardecl(x0) =
+fprint_v1ardecl(stderr_ref, x0)
+
+implement
+fprint_v1ardecl
+  (out, x0) = let
+//
+val+V1ARDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "V1ARDECL@{"
+  , ", nam=", rcd.nam
+  , ", wth=", rcd.wth
+  , ", res=", rcd.res, ", ini=", rcd.ini, "}")
+end // end of [fprint_v1ardecl]
 
 (* ****** ****** *)
 

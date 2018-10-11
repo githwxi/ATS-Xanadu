@@ -2408,6 +2408,123 @@ end // end of [ptok_valdecl]
 //
 static
 fun
+p_v0ardecl
+ : parser(v0ardecl)
+and
+p_v0ardeclseq_AND
+ : parser(v0ardeclist)
+//
+(* ****** ****** *)
+//
+implement
+p_v0ardecl
+  (buf, err) = let
+//
+val e0 = err
+//
+val nam =
+p_d0pid(buf, err)
+val res =
+p_effs0expopt(buf, err)
+//
+val wth =
+let
+  val tok = buf.get0()
+in (* in-of-let *)
+//
+case+
+tok.node() of
+| T_WITH() => let
+    val () = buf.incby1()
+  in
+    Some(p_d0pid(buf, err))
+  end // end of [T_WITH]
+| _(*non-WITH*) => None(*void*)
+//
+end : d0pidopt // end of [val]
+//
+val ini = p_teqd0expopt(buf, err)
+//
+val loc0 = nam.loc((*void*))
+//
+val loc1 =
+(
+case+ ini of
+| TEQD0EXPnone() =>
+  ( case+ wth of
+    | None() =>
+      ( case+ res of
+        | EFFS0EXPnone
+          ((*void*)) => loc0
+        | EFFS0EXPsome
+          (tok, s0e) => (loc0+s0e.loc())
+      )
+    | Some(pid) => (loc0 + pid.loc())
+  )
+| TEQD0EXPsome(teq, d0e) => loc0 + d0e.loc()
+) : loc_t // end of [val]
+//
+in
+  err := e0;
+  V0ARDECL
+  (@{loc=loc1,nam=nam,wth=wth,res=res,ini=ini})
+end // end of [p_v0ardecl]
+//
+(* ****** ****** *)
+//
+implement
+p_v0ardeclseq_AND
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_AND_fun
+ {v0ardecl}(buf, err, p_v0ardecl))
+//
+) (* end of [p_v0ardeclseq_AND] *)
+//
+(* ****** ****** *)
+//
+extern
+fun
+ptok_vardecl
+( tok: token
+, buf: &tokbuf >> _
+, err: &int >> _): d0ecl
+implement
+ptok_vardecl
+(
+tok, buf, err
+) = let
+  val e0 = err
+  val () =
+    buf.incby1()
+  // end of [val]
+  val loc = tok.loc()
+//
+  val d0cs =
+    p_v0ardeclseq_AND(buf, err)
+//
+  val loc_res =
+  (
+    case+ d0cs of
+    | list_nil() => loc
+    | list_cons _ => let
+        val d0c =
+          list_last(d0cs) in loc+d0c.loc()
+        // end of [val]
+      end // end of [list_cons]
+  ) : loc_t // end of [val]
+in
+  err := e0;
+  d0ecl_make_node(loc_res, D0Cvardecl(tok, d0cs))
+  // d0ecl_make_node
+end // end of [ptok_vardecl]
+//
+(* ****** ****** *)
+//
+static
+fun
 p_f0undecl
  : parser(f0undecl)
 and
@@ -2422,8 +2539,7 @@ p_f0undecl
 //
 val e0 = err
 //
-val
-nam =
+val nam =
 p_d0pid(buf, err)
 //
 val arg =
@@ -2434,14 +2550,12 @@ p_effs0expopt(buf, err)
 val teq = p_EQ(buf, err)
 val d0e = p_d0exp(buf, err)
 //
-val
-wopt = p_wths0expopt(buf, err)
+val wopt = p_wths0expopt(buf, err)
 //
-val loc0 = nam.loc()
+val loc0 = nam.loc((*void*))
 //
 val loc1 =
-(
-case+ wopt of
+( case+ wopt of
 | WTHS0EXPnone() => loc0+d0e.loc()
 | WTHS0EXPsome(_, s0e) => loc0+s0e.loc()
 ) : loc_t // end-of-val
@@ -2505,7 +2619,7 @@ tok, buf, err
 in
   err := e0;
   d0ecl_make_node
-  (loc_res, D0Cfundecl(tok, mopt, tqas, d0cs))
+    (loc_res, D0Cfundecl(tok, mopt, tqas, d0cs))
   // d0ecl_make_node
 end // end of [ptok_fundecl]
 //
@@ -2827,6 +2941,11 @@ abstype ::=
 | T_VAL _ when f0 > 0 =>
   (
     ptok_valdecl(tok, buf, err)
+  )
+//
+| T_VAR _ when f0 > 0 =>
+  (
+    ptok_vardecl(tok, buf, err)
   )
 //
 | T_FUN _ when f0 > 0 =>

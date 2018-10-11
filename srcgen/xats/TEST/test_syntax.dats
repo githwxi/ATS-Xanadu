@@ -1,3 +1,6 @@
+var
+foo: sexp with pf = 123
+
 #symload
 [] with $BAR.bar of 100
 #symload

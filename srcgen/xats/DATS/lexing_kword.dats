@@ -297,6 +297,8 @@ val () = myins("castfn", T_CASTFN_)
 val () = myins("val", T_VAL_)
 val () = myins("prval", T_PRVAL_)
 //
+val () = myins("var", T_VAR())
+//
 val () = myins("implmnt", T_IMPLMNT_)
 val () = myins("implement", T_IMPLMNT_)
 val () = myins("primplmnt", T_PRIMPLMNT_)

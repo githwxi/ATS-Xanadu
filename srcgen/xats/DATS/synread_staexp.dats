@@ -32,14 +32,12 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-// Author: Hongwei Xi
-// Start Time: August, 2018
-// Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
 
 #staload "./../SATS/staexp0.sats"
+
+(* ****** ****** *)
+
+
 
 (* ****** ****** *)
 

@@ -275,10 +275,12 @@ case+ tnd of
 | T_ENDWHERE() => fprint(out, "ENDWHERE")
 | T_ENDLOCAL() => fprint(out, "ENDLOCAL")
 //
-| T_FUN(fnk) =>
-  fprint!(out, "FUN(", fnk, ")")
 | T_VAL(vlk) =>
   fprint!(out, "VAL(", vlk, ")")
+| T_VAR() => fprint!(out, "VAR")
+//
+| T_FUN(fnk) =>
+  fprint!(out, "FUN(", fnk, ")")
 //
 | T_IMPLMNT(knd) =>
   fprint!(out, "IMPLMNT(", knd, ")")
@@ -521,13 +523,15 @@ case+ tnd of
 | T_ENDWHERE() => fprint(out, "endwhere")
 | T_ENDLOCAL() => fprint(out, "endlocal")
 //
-| T_FUN(fnk) =>
-  fprint!(out, "FUN(", fnk, ")")
 | T_VAL(vlk) =>
   fprint!(out, "VAL(", vlk, ")")
+| T_VAR() => fprint!(out, "var")
+//
+| T_FUN(fnk) =>
+  fprint!(out, "FUN(", fnk, ")")
 //
 | T_IMPLMNT(knd) =>
-  fprint!(out, "IMPLMNT(", knd, ")")
+  fprint!(out, "implmnt(", knd, ")")
 //
 | T_SORTDEF() =>
   fprint!(out, "sortdef(", ")")
