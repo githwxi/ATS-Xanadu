@@ -480,7 +480,7 @@ tok.node() of
     err := e0;
     sq0arg_make_node
     (loc_res, SQ0ARGsome(tbeg, s0qs, tend))
-  end
+  end // end of [T_LBRACE]
 | _(* non-LBRACE *) =>
   ( err := e0 + 1;
     sq0arg_make_node(tok.loc(), SQ0ARGnone(tok))

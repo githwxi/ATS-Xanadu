@@ -138,6 +138,35 @@
 
 (* ****** ****** *)
 
+val float0 = 0x.abcdefp0f
+
+val ((*void*)) =
+println!("float0 = ", float0)
+
+(* ****** ****** *)
+
+fun foo(x) =
+(
+case+ x of
+| list_nil() //
+| list_nil() => 0
+| list_cons(_, xs) => foo(xs) + 1
+) where
+{
+  val x = x + x
+}
+
+(* ****** ****** *)
+
+#extern
+fun
+fact
+{n:int}
+(*.<n+1>.*)
+(x: int(n)): intGte(1)
+
+(* ****** ****** *)
+
 val xyz = (foo<a,b+c>(x, y))
 val xyz = ((foo<a),(b+c>(x, y)))
 
