@@ -2899,6 +2899,18 @@ abstype ::=
     val twth = p_WITH(buf, err)
     val dqid = p_dq0eid(buf, err)
 //
+(*
+    val () =
+    println!("p_d0ecl: tok = ", tok)
+    val () =
+    println!("p_d0ecl: sym = ", sym)
+    val () =
+    println!("p_d0ecl: twth = ", twth)
+    val () =
+    fprintln!
+    (stdout_ref, "p_d0ecl: dqid = ", dqid)
+*)
+//
     val tint = let
       val tok = buf.get0()
       val tnd = tok.node()

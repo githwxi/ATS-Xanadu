@@ -106,8 +106,12 @@ BUILD/%_dats.c: DATS/%.dats ; \
 
 ######
 
-BUILD/%_sats.o: BUILD/%_sats.c ; $(PATSCC) $(CFLAGS) -o $@ -c $<
-BUILD/%_dats.o: BUILD/%_dats.c ; $(PATSCC) $(CFLAGS) -o $@ -c $<
+INCLUDE=-I"."
+
+BUILD/%_sats.o: \
+BUILD/%_sats.c ; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/%_dats.o: \
+BUILD/%_dats.c ; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
 
 ######
 #
