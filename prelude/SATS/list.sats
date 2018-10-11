@@ -123,6 +123,23 @@ list_tuple_6
   (x0: a, x1: a, x2: a, x3: a, x4: a, x5: a):<> list(a, 6)
 //
 (* ****** ****** *)
+//
+#symload
+list_tuple with list_tuple_0
+#symload
+list_tuple with list_tuple_1
+#symload
+list_tuple with list_tuple_2
+#symload
+list_tuple with list_tuple_3
+#symload
+list_tuple with list_tuple_4
+#symload
+list_tuple with list_tuple_5
+#symload
+list_tuple with list_tuple_6
+//
+(* ****** ****** *)
 
 fun
 <x:type>

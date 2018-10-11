@@ -3,8 +3,7 @@
 #symload
 foo with $BAR.bar of 100
 #symload
-.foo with $BAR$BAR.bar of 100
-////
+.foo with $BAR$BAZ.bar of 100
 
 absimpl
 $FOO.foo(x:int): type = bar

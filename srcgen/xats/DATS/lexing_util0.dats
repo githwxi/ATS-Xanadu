@@ -1004,7 +1004,10 @@ val c1 = int2char0(i1)
 in
 //
 if
+(*
 isALNUM_(c1)
+*)
+isIDENTRST(c1)
 then
 (
 loop(buf, k+1)
