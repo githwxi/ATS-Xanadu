@@ -145,7 +145,25 @@ println!("float0 = ", float0)
 
 (* ****** ****** *)
 
-fun foo(x) =
+var
+foo: sexp with pf = 123
+
+#symload
+[] with $BAR.bar of 100
+#symload
+foo with $BAR.bar of 100
+#symload
+.foo with $BAR$BAZ.bar of 100
+
+(* ****** ****** *)
+//
+val xyz =
+  (if x > 0 then (f; g; h) else i; j)
+//
+(* ****** ****** *)
+
+fun
+foo(x) =
 (
 case+ x of
 | list_nil() //
@@ -155,6 +173,15 @@ case+ x of
 {
   val x = x + x
 }
+
+(* ****** ****** *)
+
+implement
+:nonrec
+{a:type;b,c:tbox}
+<a:type;b,c:tbox>
+foo2<list(a)><b,c>(x: a): int =
+  (if x then x + x else x - x)
 
 (* ****** ****** *)
 
@@ -237,9 +264,11 @@ end // end of [list_make_elt]
 (* ****** ****** *)
 
 implement
+:nonrec
 <(*tmp*)>
 list_make_intrange
-  {l0,r} (l0, r) = let
+  {l0,r}
+  (l0, r) = let
 //
 typedef
 elt = intBtw(l0, r)

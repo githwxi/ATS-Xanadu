@@ -1,0 +1,14 @@
+###### start of [README] ######
+
+This is a place for contributed code.
+
+In general, if you have a question on something
+(e.g., the syntax of ATS3), please open an issue
+on Github.
+
+There is a library libxatsopt for ATS3(ATS/Xanadu).
+If you create a tool for ATS3, you may want to consider
+using this library (instead of relying on the source
+code for ATS3).
+
+###### finish of [README] ######
