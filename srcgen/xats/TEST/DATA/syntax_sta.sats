@@ -1,3 +1,5 @@
+typedef xyz = $extern"abcde"
+////
 (* ****** ****** *)
 //
 (*
@@ -166,6 +168,8 @@ typedef int2 = int * int
 (*
 typedef xyz = $extype"abcde"
 *)
+//
+typedef xyz = $extern"abcde"
 //
 (* ****** ****** *)
 

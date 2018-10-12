@@ -4,23 +4,12 @@ cons(x, xs) = xs
 ////
 when x as Some(y) and y >= 0 = xs
 ////
-val
-:rec
-fact =
-lam(x: int): int =<ntm>
-if x >= 1 then x * fact(x-1) else x
 ////
 fun
 :nonrec
 fact(x: int): int =
 if x >= 1 then x * fact(x-1) else x
 ////
-implement
-:nonrec
-{a:type;b,c:tbox}
-<a:type;b,c:tbox>
-foo2<list(a)><b,c>(x: a): int =
-  (if x then x + x else x - x)
 ////
 (* ****** ****** *)
 

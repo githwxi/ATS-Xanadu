@@ -32,19 +32,10 @@ abstype(tbox+, view-)
 
 (* ****** ****** *)
 
-typedef xyz = $extype"abcde"
-
-(* ****** ****** *)
-
 abstype xyz(x, y: int, z: int)
 abstype xyz(x, y: int, z: int) <= int
 abstype xyz(x, y: int, z: int) == int
 
-(* ****** ****** *)
-//
-val xyz =
-  if x > 0 then f; g; h else i; j
-//
 (* ****** ****** *)
 
 val x = `(x+y)` \+ Hello
