@@ -42,35 +42,48 @@ synreader
 (a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
+
+fun
+{a:type}
+synread(a): void
+
+(* ****** ****** *)
 //
 fun
-synread_sort0 : synreader(sort0)
+synread_s0tid: synreader(s0tid)
+fun
+synread_s0eid: synreader(s0eid)
 //
 (* ****** ****** *)
 //
 fun
-synread_s0exp : synreader(s0exp)
+synread_sort0: synreader(sort0)
 //
 (* ****** ****** *)
 //
 fun
-synread_d0pat : synreader(d0pat)
-fun
-synread_labd0pat : synreader(labd0pat)
+synread_s0exp: synreader(s0exp)
 //
 (* ****** ****** *)
 //
 fun
-synread_d0exp : synreader(d0exp)
+synread_d0pat: synreader(d0pat)
 fun
-synread_labd0exp : synreader(labd0exp)
+synread_labd0pat: synreader(labd0pat)
 //
 (* ****** ****** *)
 //
 fun
-synread_d0ecl : synreader(d0ecl)
+synread_d0exp: synreader(d0exp)
 fun
-synread_d0eclist : synreader(d0eclist)
+synread_labd0exp: synreader(labd0exp)
+//
+(* ****** ****** *)
+//
+fun
+synread_d0ecl: synreader(d0ecl)
+fun
+synread_d0eclist: synreader(d0eclist)
 //
 (* ****** ****** *)
 
