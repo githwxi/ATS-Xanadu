@@ -185,6 +185,7 @@ case+ xs of
 (* ****** ****** *)
 //
 implement
+:nonrec
 <a>(*tmp*)
 list_tuple_0() = list_nil()
 //

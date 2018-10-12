@@ -32,8 +32,31 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
 #staload "./../SATS/staexp0.sats"
+
+(* ****** ****** *)
+
+implement
+synread_s0tid
+  (tid) =
+(
+case+
+tid.node() of
+| I0DNTsome _ => ()
+| I0DNTnone(tok) =>
+  (
+    println!
+    ("synread_s0tid: tok = ", tok)
+  )
+)
 
 (* ****** ****** *)
 
