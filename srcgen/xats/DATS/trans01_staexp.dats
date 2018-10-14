@@ -759,6 +759,8 @@ in
   | T_IDENT_alp(nam) => auxsid_IDENT(tok, nam)
   | T_IDENT_sym(nam) => auxsid_IDENT(tok, nam)
 //
+  | T_IDENT_dlr(nam) => auxsid_IDENT(tok, nam)
+//
   | T_BACKSLASH((*void*)) => auxsid_BACKSLASH(tok)
 //
 end // end of [auxsid]

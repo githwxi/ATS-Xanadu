@@ -91,17 +91,6 @@ lemma_list_param
 //
 (* ****** ****** *)
 //
-castfn
-list_vt2t
-  {x:type}{n:int}
-  (xs: list_vt(INV(x), n)):<!wrt> list(x, n)
-castfn
-list_of_list_vt
-  {x:type}{n:int}
-  (xs: list_vt(INV(x), n)):<!wrt> list(x, n)
-//
-(* ****** ****** *)
-//
 fun<a:type>
 list_tuple_0():<> list(a, 0)
 //
@@ -143,18 +132,118 @@ list_tuple with list_tuple_6
 
 fun
 <x:type>
-list_make_sing(x):<!wrt> list_vt(x, 1)
+list_make_sing(x):<wrt> list(x, 1)
 fun
 <x:type>
-list_make_pair(x, x):<!wrt> list_vt(x, 2)
+list_make_pair(x, x):<wrt> list(x, 2)
 
 (* ****** ****** *)
 //
 fun
 <x:type>
 list_make_elt
-  {n:nat}(n: int(n), x: x):<!wrt> list_vt(x, n)
+  {n:nat}
+  (n: int(n), x: x):<wrt> list(x, n)
 // end of [list_make_elt]
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+list_length{n:int}
+  (xs: list(x, n)):<> int(n)
+//
+(* ****** ****** *)
+//
+fun<>
+list_is_nil
+{x:type}{n:int}(xs: list(x, n)):<> bool(n=0)
+fun<>
+list_is_cons
+{x:type}{n:int}(xs: list(x, n)):<> bool(n>0)
+//
+fun
+<x:type>
+list_is_sing{n:int}(xs: list(x, n)):<> bool(n=1)
+fun
+<x:type>
+list_is_pair{n:int}(xs: list(x, n)):<> bool(n=2)
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+<y:type>
+list_map{n:int}
+  (xs: list(x, n)): list(y, n)
+//
+fun
+<x:type>
+list_forall(xs: list(x)): bool
+//
+fun
+<x:type>
+list_foreach(xs: list(x)): void
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+<y:type>
+list_imap{n:int}
+  (xs: list(x, n)): list(y, n)
+//
+fun
+<x:type>
+list_iforall(xs: list(x)): bool
+//
+fun
+<x:type>
+list_iforeach(xs: list(x)): void
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+<y:type>
+list_zip
+  {m,n:int}
+( xs: list(x, m)
+, ys: list(y, n)
+) :<> list((x, y), min(m, n))
+fun
+<x:type>
+<y:type>
+list_zipeq
+  {n:int}
+( xs: list(x, n)
+, ys: list(y, n)):<> list((x, y), n)
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+<y:type>
+list_cross
+  {m,n:int}
+( xs: list(x, m)
+, ys: list(y, n)):<> list((x, y), m*n)
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+list_sort
+// based on mergesort
+  {n:int}(xs: list(x, n)): list(x, n)
+fun
+<x:type>
+list_quicksort
+  {n:int}(xs: list(x, n)): list(x, n)
+fun
+<x:type>
+list_mergesort
+  {n:int}(xs: list(x, n)): list(x, n)
 //
 (* ****** ****** *)
 

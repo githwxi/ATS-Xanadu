@@ -50,7 +50,8 @@
 //
 (* ****** ****** *)
 
-#prefix 51 - ~ (*negative*)
+#prefix 51 - (* neg *)
+#prefix 51 ~ (* neg *)
 
 (* ****** ****** *)
 //
@@ -155,6 +156,25 @@ foo with $BAR.bar of 100
 #symload
 .foo with $BAR$BAZ.bar of 100
 
+(* ****** ****** *)
+
+val-
+nil() = xs0
+withtype list(int)
+
+val+
+:rec
+x \cons xs2 = xs1
+
+val
+tup_flat = @(1, 2)
+val
+tup_boxd = $(1, 2)
+
+(* ****** ****** *)
+
+val:rec cons(x, xs) = xs
+//
 (* ****** ****** *)
 //
 val xyz =
@@ -342,6 +362,57 @@ val _(*len*) = list_iforeach<a>(xs)
 in
   // nothing
 end // end of [fprint_list]
+
+(* ****** ****** *)
+
+val bar = xs.f(x).g(y).h(z1, z2)
+
+val foo = xs.foldleft(0, $lam($0+$1))
+val foo = xs.foldright($lam($0+$1), 0)
+
+(* ****** ****** *)
+
+fun
+<a:type>
+permute
+(xs: list(a)): list(list(a)) =
+if
+iseqz(xs)
+then $list(nil())
+else concat(xs.imap(lam(i,x)=>mcons(x, permute(xs-i))))
+
+(* ****** ****** *)
+
+absimpl
+$FOO.foo(x:int): type = bar
+
+fun
+:rec
+foo(xs: list(int)): int =
+(
+case+ xs of
+| nil() => 0
+| cons(x, xs) => (x) + foo(xs)
+)
+
+val
+:rec
+fact =
+lam(x: int): int =<ntm>
+if x >= 1 then x * fact(x-1) else x
+
+val f =
+lam(x, y) =>
+if x > y then x else y endif endlam
+
+(* ****** ****** *)
+
+val
+:rec
+fact =
+lam(x: int): int =<cloref1>
+  if x >= 1 then x * fact(x-1) else 1
+// end of [lam]
 
 (* ****** ****** *)
 

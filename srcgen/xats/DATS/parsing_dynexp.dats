@@ -1638,10 +1638,12 @@ case+ tnd of
   end // end of [T_GT]
 //
 | T_LTGT() => let
-    val () = buf.incby1()
-    val s0es = list_nil(*void*)
+    val () =
+      buf.incby1()
+    // end of [val]
     val tbeg = tok
     val tend = tok
+    val s0es = list_nil()
     val loc_res = tok.loc()
   in
     d0exp_make_node
@@ -1730,6 +1732,39 @@ case+ tnd of
     ( loc_res
     , D0Elet(tok, d0cs, tok1, d0es, tok2))
   end // end of [T_LET]
+//
+| T_DOT() => let
+    val () =
+      buf.incby1()
+    // end of [val]
+    val lab =
+      p_l0abl(buf, err)
+    val arg = let
+      val tok2 = buf.get0()
+    in
+      case+
+      tok2.node() of
+      | T_LPAREN() =>
+        Some( d0e ) where
+        {
+          val d0e =
+            p_atmd0exp(buf, err)
+          // end of [val]
+        }
+      | _(* non-LPAREN *) => None()
+    end : d0expopt // end of [val]
+    val loc_res = let
+      val loc = tok.loc()
+    in
+      case+ arg of
+      | None() => loc + lab.loc()
+      | Some(d0e) => loc + d0e.loc()
+    end // end of [val]
+  in
+    d0exp_make_node
+      (loc_res, D0Edtsel(tok, lab, arg))
+    // d0exp_make_node
+  end // end of [T_DOT]
 //
 | T_IDENT_qual _ => let
     val () = buf.incby1()

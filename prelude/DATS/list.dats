@@ -82,16 +82,16 @@ list_make_elt
 fun loop
   {i:nat | i <= n} .<i>.
 (
- i: int(i), x: x, res: list_vt(x, n-i)
-) :<> list_vt(x, n) =
+ i: int(i), x: x, res: list(x, n-i)
+) :<> list(x, n) =
 (
   if (i > 0)
-    then loop(pred(i), x, list_vt_cons(x, res)) else res
+    then loop(pred(i), x, list_cons(x, res)) else res
   // end of [if]
 ) // end of [loop]
 //
 in
-  loop(n, x, list_vt_nil(*void*))
+  loop(n, x, list_nil(*void*))
 end // end of [list_make_elt]
 
 (* ****** ****** *)
@@ -105,7 +105,7 @@ typedef
 elt = intBtw(l0, r)
 //
 vtypedef
-res(l:int) = list_vt(elt, r-l)
+res(l:int) = list(elt, r-l)
 //
 fun
 loop
@@ -123,14 +123,14 @@ if
 (l < r)
 then let
   val () = res :=
-    list_vt_cons{elt}{0}(l, _)
+    list_cons{elt}{0}(l, _)
   // end of [val]
-  val+list_vt_cons(_, res1) = res
+  val+list_cons(_, res1) = res
   val () = loop(l+1, r, res1)
   prval ((*folded*)) = fold@(res)
 in
   // nothing
-end else (res := list_vt_nil())
+end else (res := list_nil())
 //
 ) (* end of [loop] *)
 //
@@ -144,12 +144,12 @@ in
 end // end of [list_make_intrange]
 
 (* ****** ****** *)
-
 //
 implement
 <(*tmp*)>
 fprint_list$sep
-  (out) = fprint_string(out, ", ")
+  (out) =
+  fprint_string(out, ", ")
 // end of [fprint_list$sep]
 //
 implement
@@ -162,7 +162,8 @@ list_iforeach$fwork<a><env>
   (i, x, env) = let
   val () =
   if i > 0
-    then fprint_list$sep<(*none*)>(out)
+    then
+    fprint_list$sep<(*none*)>(out)
   // end of [if]
   // end of [val]
 in
@@ -173,7 +174,7 @@ val _(*len*) = list_iforeach<a>(xs)
 //
 in
   // nothing
-end // end of [fprint_list]
+endlet // end of [fprint_list]
 
 (* ****** ****** *)
 

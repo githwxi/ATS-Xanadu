@@ -38,4 +38,35 @@ for system-independent stuff
 
 prelude: for libats-prelude
 
+(* ###### ###### ###### ###### ###### *)
+
+I have been teaching ATS2 at Boston University for about 5 years
+The biggest problem I see is the VERY steep learning curve associated
+with ATS2.  Very few students were able to ever overcome it to reach
+the point where they could truly start enjoying the power of
+(advanced) type-checking.
+
+When I designed DML (the predecessor of ATS) nearly 20 years ago, I
+employed a two-layered approach to type-checking: ML-like
+type-checking first and dependent type-checking second. I abandoned
+this approach in ATS. Instead, there is only dependent type-checking
+in ATS1 and ATS2. In ATS3, I plan to follow DML's two-layered
+approach. In particular, a program in ATS3 that passes ML-like
+type-checking can be compiled and executed. So one can skip dependent
+type-checking in ATS3 if one so chooses. In this way, the learning
+curve is expected to be greatly leveled. But there is much more than
+just leveling the learning curve.
+
+ML-like types are algebraic. Such types are so much friendlier than
+dependent types (which often involve quantifiers) for supporting
+type-based meta-programming. I feel I have finally got a chance to
+properly address the template selection problem that brings so much
+annoyance in ATS2 (due to the use of dependent types for template
+selection).
+
+In short, ATS3 adds an extra layer to ATS2 for supporting ML-like
+algebraic type-checking.  Type-based meta-programming in ATS3 solely
+uses algebraic types (while aTS2 uses dependent types). ATS3 may be
+initially compiled to ATS2 so as to get it going quickly.
+
 ############ end of [README] ############

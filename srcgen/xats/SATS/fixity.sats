@@ -111,7 +111,7 @@ val app_prcdv : prcdv
 val imp_assoc : assoc
 val imp_prcdv : prcdv
 //
-val select_prcdv : prcdv
+val dtsel_prcdv : prcdv
 //
 val exists_prcdv : prcdv
 and forall_prcdv : prcdv
@@ -142,6 +142,8 @@ fixty =
 val app_fixty : fixty
 //
 val imp_fixty : fixty
+//
+val dtsel_fixty : fixty
 //
 val forall_fixty : fixty
 val exists_fixty : fixty

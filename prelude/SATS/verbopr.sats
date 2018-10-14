@@ -28,81 +28,48 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2018
+// Start Time: October, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
+fun
+<x:type>
+<y:type>
+map$fopr(x): y
+fun
+<x:vtype>
+<y:vtype>
+map_vt0$fopr(x): y
+fun
+<x:vtype>
+<y:vtype>
+map_vt1$fopr(&x >> x): y
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+forall$test(x): bool
+fun
+<x:vtype>
+forall_vt0$test(x): bool
+fun
+<x:vtype>
+forall_vt1$test(&x >> x): bool
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+foreach$work(x): void
+fun
+<x:vtype>
+foreach_vt0$work(x): void
+fun
+<x:vtype>
+foreach_vt1$work(&x >> x): void
 //
 (* ****** ****** *)
 
-#staload "./../SATS/staexp0.sats"
-
-(* ****** ****** *)
-////
-implement
-synread_s0tid
-  (tid) =
-(
-case+
-tid.node() of
-| I0DNTsome _ => ()
-| I0DNTnone(tok) =>
-  (
-    println!
-    ("synread_s0tid: tok = ", tok)
-  )
-)
-
-(* ****** ****** *)
-
-(*
-implement
-synread_sort0
-  (s0t0) = let
-//
-val loc0 = s0t0.loc()
-//
-val () =
-println!
-("synread_sort0: s0t0 = ", s0t0)
-//
-in
-//
-case+
-s0t0.node() of
-| S0Tid(tid) =>
-  synread_s0tid(tid)
-//
-| S0Tapps(s0ts) =>
-  synread_sort0lst(s0ts)
-//
-| S0Tlist
-  (tok1, s0ts, tok2) =>
-  {
-    val () = synread_LPAREN(tok1)
-    val () = synread_RPAREN(tok2)
-    val () = synread_sort0lst(s0ts)
-  }
-//
-| S0Tqual(tok, s0t) =>
-  synread_sort0(s0t) where
-  {
-    val () = synread_IDENT_qual(tok)
-  }
-| S0Tnone(tok) =>
-  (
-    prerrln!(loc0, ": [sort] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
-  )
-//
-end // end of [synread_sort0]
-*)
-
-(* ****** ****** *)
-
-(* end of [xats_synread_staexp.dats] *)
+(* end of [verbopr.sats] *)

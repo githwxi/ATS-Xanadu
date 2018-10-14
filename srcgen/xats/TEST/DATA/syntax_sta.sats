@@ -1,5 +1,3 @@
-typedef xyz = $extern"abcde"
-////
 (* ****** ****** *)
 //
 (*
@@ -28,12 +26,6 @@ typedef xyz = $extern"abcde"
 *)
 
 (* ****** ****** *)
-
-(*
-#postfix 69 ?
-*)
-
-(* ****** ****** *)
 //
 // HX-2015-08-04:
 // mostly following the Fortran convention
@@ -52,7 +44,8 @@ typedef xyz = $extern"abcde"
 //
 (* ****** ****** *)
 
-#prefix 51 - ~ (*negative*)
+#prefix 51 - (* neg *)
+#prefix 51 ~ (* neg *)
 
 (* ****** ****** *)
 //
@@ -165,11 +158,8 @@ absvtflt xyz(int(*x*), y: int, z: int) == int
 (* ****** ****** *)
 //
 typedef int2 = int * int
-(*
-typedef xyz = $extype"abcde"
-*)
 //
-typedef xyz = $extern"abcde"
+typedef xyz = $extype"abcde"
 //
 (* ****** ****** *)
 
