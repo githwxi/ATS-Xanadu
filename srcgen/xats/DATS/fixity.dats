@@ -112,6 +112,15 @@ FIXTYinf(imp_prcdv, imp_assoc)
 (* ****** ****** *)
 //
 implement
+dtsel_prcdv =
+add_prcdv_int(app_prcdv, 10)
+//
+implement
+dtsel_fixty = FIXTYpos(dtsel_prcdv)
+//
+(* ****** ****** *)
+//
+implement
 forall_prcdv = (0)
 implement
 exists_prcdv = (0)
@@ -151,6 +160,15 @@ the_posinf_prcdv = MAXPRCDV
 
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+add_prcdv_int(p, i) =
+int2prcdv(g0int_add_int(prcdv2int(p), i))
+implement
+sub_prcdv_int(p, i) =
+int2prcdv(g0int_sub_int(prcdv2int(p), i))
+//
 (* ****** ****** *)
 //
 implement

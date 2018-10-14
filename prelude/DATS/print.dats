@@ -28,81 +28,48 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2018
+// Start Time: October, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
-//
-(* ****** ****** *)
 
-#staload "./../SATS/staexp0.sats"
-
-(* ****** ****** *)
-////
 implement
-synread_s0tid
-  (tid) =
-(
-case+
-tid.node() of
-| I0DNTsome _ => ()
-| I0DNTnone(tok) =>
-  (
-    println!
-    ("synread_s0tid: tok = ", tok)
-  )
-)
-
-(* ****** ****** *)
-
-(*
+<x>(*tmp*)
+print$val<x> =
+fprint$val<x>(stdout_ref, x)
 implement
-synread_sort0
-  (s0t0) = let
-//
-val loc0 = s0t0.loc()
-//
-val () =
-println!
-("synread_sort0: s0t0 = ", s0t0)
-//
-in
-//
-case+
-s0t0.node() of
-| S0Tid(tid) =>
-  synread_s0tid(tid)
-//
-| S0Tapps(s0ts) =>
-  synread_sort0lst(s0ts)
-//
-| S0Tlist
-  (tok1, s0ts, tok2) =>
-  {
-    val () = synread_LPAREN(tok1)
-    val () = synread_RPAREN(tok2)
-    val () = synread_sort0lst(s0ts)
-  }
-//
-| S0Tqual(tok, s0t) =>
-  synread_sort0(s0t) where
-  {
-    val () = synread_IDENT_qual(tok)
-  }
-| S0Tnone(tok) =>
-  (
-    prerrln!(loc0, ": [sort] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
-  )
-//
-end // end of [synread_sort0]
-*)
+<x>(*tmp*)
+prerr$val<x> =
+fprint$val<x>(stderr_ref, x)
 
 (* ****** ****** *)
 
-(* end of [xats_synread_staexp.dats] *)
+implement
+<x>(*tmp*)
+print$ref<x> =
+fprint$ref<x>(stdout_ref, x)
+implement
+<x>(*tmp*)
+prerr$ref<x> =
+fprint$ref<x>(stderr_ref, x)
+
+(* ****** ****** *)
+//
+// HX-2018-10-14:
+// Need to find a way to detect
+// this kind of mutual dependency!
+//
+implement
+{x:type}
+fprint$ref<x>(out, x) =
+fprint$val<x>(out, x)
+implement
+(x:type)
+fprint$val<x>(out, x) =
+let
+val x = x in fprint$ref<x>(out, x)
+endlet // end of [implement]
+//
+(* ****** ****** *)
+
+(* end of [print.dats] *)

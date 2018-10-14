@@ -61,12 +61,6 @@ VERBOSE_FIXITY
 (* ****** ****** *)
 
 (*
-#prefix 81 ID (* identity *)
-*)
-
-(* ****** ****** *)
-
-(*
 #postfix 80 .lab // dynamic
 #postfix 80 ->lab // dynamic
 *)
@@ -108,6 +102,7 @@ VERBOSE_FIXITY
 //
 (* ****** ****** *)
 
+#prefix 51 - (*negative*)
 #prefix 51 ~ (*negative*)
 
 (* ****** ****** *)
@@ -125,17 +120,7 @@ VERBOSE_FIXITY
 
 (* ****** ****** *)
 //
-#infix 40 < <= > >=
-//
-(*
-//
-// HX-2012-07: removed
-//
-#infixl ( < ) ilt flt plt ult
-#infixl ( <= ) ilte flte plte ulte
-#infixl ( > ) igt fgt pgt ugt
-#infixl ( >= ) igte fgte pgte ugte
-*)
+#infix0 40 < <= > >=
 //
 (* ****** ****** *)
 
@@ -143,17 +128,7 @@ VERBOSE_FIXITY
 
 (* ****** ****** *)
 
-#infix 30 = == != // <>
-
-(* ****** ****** *)
-
-(*
-//
-// HX-2012-07: removed
-//
-#infix ( = ) ieq feq peq ueq
-#infix ( <> ) ineq fneq pneq uneq
-*)
+#infix0 30 = == != // <>
 
 (* ****** ****** *)
 
@@ -171,8 +146,8 @@ VERBOSE_FIXITY
 
 (* ****** ****** *)
 
-#infix 0 := // HX: assign
-#infix 0 :=: // HX: exchange
+#infix0 0 := // HX: assign
+#infix0 0 :=: // HX: exchange
 
 (* ****** ****** *)
 
@@ -190,8 +165,8 @@ VERBOSE_FIXITY
 (* ****** ****** *)
 
 (*
-#infix 0 :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
-#infix 0 :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
+#infix0 0 :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
+#infix0 0 :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
 *)
 
 (* ****** ****** *)

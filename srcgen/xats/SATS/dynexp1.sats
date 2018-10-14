@@ -425,9 +425,11 @@ d1exp_node =
   // D1Elet
 | D1Ewhere of (d1exp, d1eclist)
 //
+| D1Edtsel of (label, d1expopt)
 //
 | D1Elam of
-  (f1arglst, effs1expopt, f1unarrow, d1exp)
+  ( f1arglst
+  , effs1expopt, f1unarrow, d1exp(*body*))
 //
 | D1Enone of () // HX-2018-09-25: indicating error 
 // end of [d1exp_node]

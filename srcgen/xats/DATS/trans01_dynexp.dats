@@ -1200,6 +1200,21 @@ d0e0.node() of
       end // end of [d0eclseq_WHERE]
   end // end of [D0Ewhere]
 //
+| D0Edtsel
+  (tok, lab, arg) => let
+    val arg =
+       trans01_dexpopt(arg)
+     // end of [val]
+    val-
+    L0ABsome(lab) = lab.node()
+    val d1e0 =
+      d1exp_make_node
+        (loc0, D1Edtsel(lab, arg))
+      // d1exp_make_node
+  in
+    $FIX.FXITMopr(d1e0, $FIX.dtsel_fixty)
+  end
+//
 | D0Elam
   ( tok(*lam/lam@*)
   , arg, res

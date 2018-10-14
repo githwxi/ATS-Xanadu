@@ -411,6 +411,11 @@ x0.node() of
     fprint!(out, "D1Ewhere(", d1e1, "; ", d1cs, ")")
   )
 //
+| D1Edtsel(lab1, arg2) =>
+  (
+    fprint!(out, "D1Edtsel(", lab1, "; ", arg2, ")")
+  )
+//
 | D1Elam
   (arg, res, farrw, fbody) =>
   fprint!

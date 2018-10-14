@@ -28,81 +28,42 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2018
+// Start Time: October, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
-//
-(* ****** ****** *)
 
-#staload "./../SATS/staexp0.sats"
-
-(* ****** ****** *)
-////
-implement
-synread_s0tid
-  (tid) =
-(
-case+
-tid.node() of
-| I0DNTsome _ => ()
-| I0DNTnone(tok) =>
-  (
-    println!
-    ("synread_s0tid: tok = ", tok)
-  )
-)
+fun
+<x:vtype>
+print$val(x): void
+fun
+<x:vtype>
+print$ref(&x >> _): void
 
 (* ****** ****** *)
 
-(*
-implement
-synread_sort0
-  (s0t0) = let
-//
-val loc0 = s0t0.loc()
-//
-val () =
-println!
-("synread_sort0: s0t0 = ", s0t0)
-//
-in
-//
-case+
-s0t0.node() of
-| S0Tid(tid) =>
-  synread_s0tid(tid)
-//
-| S0Tapps(s0ts) =>
-  synread_sort0lst(s0ts)
-//
-| S0Tlist
-  (tok1, s0ts, tok2) =>
-  {
-    val () = synread_LPAREN(tok1)
-    val () = synread_RPAREN(tok2)
-    val () = synread_sort0lst(s0ts)
-  }
-//
-| S0Tqual(tok, s0t) =>
-  synread_sort0(s0t) where
-  {
-    val () = synread_IDENT_qual(tok)
-  }
-| S0Tnone(tok) =>
-  (
-    prerrln!(loc0, ": [sort] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
-  )
-//
-end // end of [synread_sort0]
-*)
+fun
+<x:vtype>
+prerr$val(x): void
+fun
+<x:vtype>
+prerr$ref(&x >> _): void
 
 (* ****** ****** *)
 
-(* end of [xats_synread_staexp.dats] *)
+fun
+<x:vtype>
+fprint$val(FILEref, x): void
+fun
+<x:vtype>
+fprint$ref(FILEref, &x >> _): void
+
+(* ****** ****** *)
+
+#symload print with print$val of 1000
+#symload prerr with prerr$val of 1000
+#symload fprint with fprint$val of 1000
+
+(* ****** ****** *)
+
+(* end of [print.sats] *)

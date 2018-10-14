@@ -50,6 +50,35 @@ $(CAT) ./DATA/syntax_dyn.dats | $(XATSOPT) --dynamic
 
 ######
 
+all:: prelude
+prelude:: list_sats
+prelude:: list_dats
+prelude:: list_vt_sats
+prelude:: list_vt_dats
+prelude:: verbopr_sats
+
+PRELUDE=./../../../prelude
+
+list_sats:; \
+$(CAT) $(PRELUDE)/SATS/list.sats | $(XATSOPT) --static
+list_dats:; \
+$(CAT) $(PRELUDE)/DATS/list.dats | $(XATSOPT) --dynamic
+
+list_vt_sats: ; \
+$(CAT) $(PRELUDE)/SATS/list_vt.sats | $(XATSOPT) --static
+list_vt_dats: ; \
+$(CAT) $(PRELUDE)/DATS/list_vt.dats | $(XATSOPT) --dynamic
+
+print_sats: ; \
+$(CAT) $(PRELUDE)/SATS/print.sats | $(XATSOPT) --static
+print_dats: ; \
+$(CAT) $(PRELUDE)/DATS/print.dats | $(XATSOPT) --dynamic
+
+verbopr_sats: ; \
+$(CAT) $(PRELUDE)/SATS/verbopr.sats | $(XATSOPT) --static
+
+######
+
 testall:: all
 testall:: regress
 testall:: cleanall

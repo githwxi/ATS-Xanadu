@@ -1,0 +1,39 @@
+(* ****** ****** *)
+(*
+fun
+prf
+fact(x) = fact(x)
+val prf fact = fact
+val
+rec
+fact =
+lam(x) =>
+if x >= 1
+  then x * fact(x-1) else 0
+// end of [if]
+withtype int -> int
+*)
+
+if:
+[n:int]
+(x:int(n), y:int(n)) =>
+(x > 0)
+then ...
+else ...
+
+
+while:
+{n:int}
+(x: int(n), y: int(n))
+[n:int]
+(x: int(n), y: int(n)) =>
+(x > 10)
+{
+  val () = f(x)
+  val () = f(x+y)
+}
+
+
+(* ****** ****** *)
+
+(* end of [test_dynexp.dats] *)

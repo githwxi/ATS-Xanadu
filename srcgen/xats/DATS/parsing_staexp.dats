@@ -317,6 +317,8 @@ case+ tnd of
 //
 | T_AT() => true // "@"
 //
+| T_EQ() => true // "="
+//
 | T_LT() => true // "<"
 | T_GT() => true // ">"
 //
@@ -364,6 +366,15 @@ in
       val () = buf.incby1()
       val loc = tok.loc((*void*))
       val tnd = T_IDENT_AT(*void*)
+      val tok = token_make_node(loc, tnd)
+    }
+//
+  | T_EQ() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_EQ(*void*)
       val tok = token_make_node(loc, tnd)
     }
 //
