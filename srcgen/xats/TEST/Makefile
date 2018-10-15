@@ -55,7 +55,8 @@ prelude:: list_sats
 prelude:: list_dats
 prelude:: list_vt_sats
 prelude:: list_vt_dats
-prelude:: verbopr_sats
+prelude:: opverb_sats
+prelude:: opverb_dats
 
 PRELUDE=./../../../prelude
 
@@ -74,8 +75,10 @@ $(CAT) $(PRELUDE)/SATS/print.sats | $(XATSOPT) --static
 print_dats: ; \
 $(CAT) $(PRELUDE)/DATS/print.dats | $(XATSOPT) --dynamic
 
-verbopr_sats: ; \
-$(CAT) $(PRELUDE)/SATS/verbopr.sats | $(XATSOPT) --static
+opverb_sats: ; \
+$(CAT) $(PRELUDE)/SATS/opverb.sats | $(XATSOPT) --static
+opverb_dats: ; \
+$(CAT) $(PRELUDE)/DATS/opverb.dats | $(XATSOPT) --dynamic
 
 ######
 

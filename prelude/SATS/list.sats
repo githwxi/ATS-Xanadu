@@ -173,9 +173,38 @@ list_is_pair{n:int}(xs: list(x, n)):<> bool(n=2)
 //
 fun
 <x:type>
+list_head
+  {n:pos}(xs: list(INV(x), n)):<> (x)
+fun
+<x:type>
+list_head_exn
+  {n:int}(xs: list(INV(x), n)):<exn> (x)
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+list_tail{n:pos}
+  (xs: SHARED(list(INV(x), n))):<> list(x, n-1)
+fun
+<x:type>
+list_tail_exn{n:int}
+  (xs: SHARED(list(INV(x), n))):<exn> list(x, n-1)
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
 <y:type>
 list_map{n:int}
   (xs: list(x, n)): list(y, n)
+fun
+<x:type>
+<y:vtype>
+list_map_vt0{n:int}
+  (xs: list(x, n)): list_vt(y, n)
+//
+(* ****** ****** *)
 //
 fun
 <x:type>
