@@ -178,4 +178,38 @@ endlet // end of [fprint_list]
 
 (* ****** ****** *)
 
+implement
+<x0><y0>
+list_map =
+opverb_map
+<x0><list(x0)><y0><list(y0)>
+implement
+<x0><y0>
+list_map_vt0 =
+opverb_map_vt0
+<x0><list(x0)><y0><list_vt(y0)>
+
+(* ****** ****** *)
+
+implement
+<r0><x0>
+list_foldleft =
+opverb_foldleft<r0><x0><list(x0)>
+
+(* ****** ****** *)
+//
+implement
+<x0>//tmp
+list_length =
+opverb_length<x0><list(x0)>
+
+(* ****** ****** *)
+//
+implement
+<x0><r0>
+list_foldright =
+opverb_foldright<x0><list(x0)><r0>
+//
+(* ****** ****** *)
+
 (* end of [list.dats] *)

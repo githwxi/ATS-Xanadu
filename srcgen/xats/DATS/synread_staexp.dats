@@ -41,6 +41,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/synread.sats"
 
 (* ****** ****** *)
 ////

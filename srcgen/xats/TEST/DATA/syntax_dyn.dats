@@ -172,7 +172,7 @@ val
 tup_boxd = $(1, 2)
 
 (* ****** ****** *)
-
+//
 val:rec cons(x, xs) = xs
 //
 (* ****** ****** *)
@@ -414,6 +414,11 @@ lam(x: int): int =<cloref1>
   if x >= 1 then x * fact(x-1) else 1
 // end of [lam]
 
+(* ****** ****** *)
+//
+val xs =
+xs.1().2().insert(i, x).insert(i', x')
+//
 (* ****** ****** *)
 
 (* end of [syntax_dyn.dats] *)
