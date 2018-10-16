@@ -58,6 +58,8 @@ synerr =
 //
 | SYNERRs0eid of (i0dnt)
 //
+| SYNERRsort0 of (sort0)
+//
 | SYNERRlparen of (token)
 | SYNERRrparen of (token)
 //

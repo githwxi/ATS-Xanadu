@@ -32,10 +32,38 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/location.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/lexing.sats"
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
-
+//
+#staload "./../SATS/synread.sats"
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_d0explst
+  (d0es) =
+(
+list_foreach<d0exp>(d0es)
+) where
+{
+implement(env)
+list_foreach$fwork<env><d0exp>(env, s0t) = synread_d0exp(s0t)
+} (* end of [synread_d0explst] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_synread_dynexp.dats] *)

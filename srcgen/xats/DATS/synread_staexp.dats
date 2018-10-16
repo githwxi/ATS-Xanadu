@@ -163,10 +163,13 @@ s0t0.node() of
     val () = synread_IDENT_qual<>(tok)
   }
 | S0Tnone(tok) =>
-  (
+  let
+    val () =
+    synerr_add(SYNERRsort0(s0t0))
+  in
     prerrln!(loc0, ": [sort] needed");
     prerrln!(tok.loc(), ": tokerr: ", tok);
-  )
+  end // end of [S0Tnone]
 //
 end // end of [synread_sort0]
 
@@ -180,11 +183,23 @@ synread_sort0lst
 list_foreach<sort0>(s0ts)
 ) where
 {
-implement
-(env)
-list_foreach$fwork<env><sort0>
-  (env, s0t) = synread_sort0(s0t)
+implement(env)
+list_foreach$fwork<env><sort0>(env, s0t) = synread_sort0(s0t)
 } (* end of [synread_sort0lst] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_s0explst
+  (s0es) =
+(
+list_foreach<s0exp>(s0es)
+) where
+{
+implement(env)
+list_foreach$fwork<env><s0exp>(env, s0t) = synread_s0exp(s0t)
+} (* end of [synread_s0explst] *)
 //
 (* ****** ****** *)
 
