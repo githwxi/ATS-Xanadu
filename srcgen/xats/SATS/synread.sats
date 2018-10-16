@@ -33,7 +33,8 @@
 //
 (* ****** ****** *)
 
-#staload "./parsing.sats"
+#staload "./staexp0.sats"
+#staload "./dynexp0.sats"
 
 (* ****** ****** *)
 //
@@ -42,47 +43,73 @@ synreader
 (a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
-
-fun
-{a:type}
-synread(a): void
-
+//
+abstbox
+synreadst_type = ptr
+typedef
+synreadst = synreadst_type
+//
+(* ****** ****** *)
+//
+datatype
+synerr =
+//
+| SYNERRs0tid of (i0dnt)
+//
+| SYNERRs0eid of (i0dnt)
+//
+| SYNERRlparen of (token)
+| SYNERRrparen of (token)
+//
+fun{}
+synerr_add(synerr): void
+//
 (* ****** ****** *)
 //
 fun
+synread_top(d0eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
 synread_s0tid: synreader(s0tid)
-fun
+fun{}
 synread_s0eid: synreader(s0eid)
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 synread_sort0: synreader(sort0)
+fun{}
+synread_sort0lst: synreader(sort0lst)
+
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 synread_s0exp: synreader(s0exp)
+fun{}
+synread_s0explst: synreader(s0explst)
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 synread_d0pat: synreader(d0pat)
-fun
+fun{}
 synread_labd0pat: synreader(labd0pat)
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 synread_d0exp: synreader(d0exp)
-fun
+fun{}
 synread_labd0exp: synreader(labd0exp)
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 synread_d0ecl: synreader(d0ecl)
-fun
+fun{}
 synread_d0eclist: synreader(d0eclist)
 //
 (* ****** ****** *)
