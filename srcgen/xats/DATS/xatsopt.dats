@@ -50,6 +50,8 @@ typedef fpath_t = $FIL.filepath
 //
 #staload "./../SATS/parsing.sats"
 //
+#staload "./../SATS/synread.sats"
+//
 #staload "./../SATS/trans01.sats"
 //
 (* ****** ****** *)
@@ -124,6 +126,7 @@ end // end of [local]
 #dynload "./parsing_dynexp.dats"
 //
 #dynload "./synread_staexp.dats"
+#dynload "./synread_dynexp.dats"
 //
 #dynload "./staexp1.dats"
 #dynload "./dynexp1.dats"
@@ -752,12 +755,17 @@ d0cs =
 parse_from_stdin_toplevel
   (stadyn)
 //
-val
-d1cs = trans01_declist(d0cs)
-//
+(*
 val () =
 println!
 ("process_nil: d0cs = ", d0cs)
+*)
+//
+val () = synread_top(d0cs)
+//
+val
+d1cs = trans01_declist(d0cs)
+//
 val () =
 println!
 ("process_nil: d1cs = ", d1cs)

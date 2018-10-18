@@ -125,6 +125,9 @@ case+ x0.node() of
 | S1Tid(id) =>
   fprint!(out, "S1Tid(", id, ")")
 //
+| S1Tint(int) =>
+  fprint!(out, "S1Tint(", int, ")")
+//
 | S1Tapp() =>
   fprint!(out, "S1Tapp()")
 //

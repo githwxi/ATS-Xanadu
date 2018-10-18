@@ -33,6 +33,10 @@
 //
 (* ****** ****** *)
 
+#staload "./lexing.sats"
+
+(* ****** ****** *)
+
 #staload "./staexp0.sats"
 #staload "./dynexp0.sats"
 
@@ -54,14 +58,17 @@ synreadst = synreadst_type
 datatype
 synerr =
 //
+| SYNERRt0int of (t0int)
+//
 | SYNERRs0tid of (i0dnt)
 //
 | SYNERRs0eid of (i0dnt)
 //
 | SYNERRsort0 of (sort0)
 //
-| SYNERRlparen of (token)
-| SYNERRrparen of (token)
+| SYNERRtoken of (tnode, token)
+//
+(* ****** ****** *)
 //
 fun{}
 synerr_add(synerr): void
@@ -70,6 +77,11 @@ synerr_add(synerr): void
 //
 fun
 synread_top(d0eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
+synread_t0int: synreader(t0int)
 //
 (* ****** ****** *)
 //
@@ -84,7 +96,13 @@ fun{}
 synread_sort0: synreader(sort0)
 fun{}
 synread_sort0lst: synreader(sort0lst)
-
+fun{}
+synread_sort0opt: synreader(sort0opt)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_s0arg: synreader(s0arg)
 //
 (* ****** ****** *)
 //
@@ -92,6 +110,8 @@ fun{}
 synread_s0exp: synreader(s0exp)
 fun{}
 synread_s0explst: synreader(s0explst)
+fun{}
+synread_s0expopt: synreader(s0expopt)
 //
 (* ****** ****** *)
 //
@@ -107,12 +127,47 @@ synread_d0exp: synreader(d0exp)
 fun{}
 synread_labd0exp: synreader(labd0exp)
 //
+fun{}
+synread_d0explst: synreader(d0explst)
+fun{}
+synread_labd0explst: synreader(labd0explst)
+//
 (* ****** ****** *)
 //
 fun{}
 synread_d0ecl: synreader(d0ecl)
 fun{}
 synread_d0eclist: synreader(d0eclist)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_EQ: synreader(token)
+//
+fun{}
+synread_BAR: synreader(token)
+//
+fun{}
+synread_LPAREN: synreader(token)
+fun{}
+synread_RPAREN: synreader(token)
+//
+fun{}
+synread_LBRACE: synreader(token)
+fun{}
+synread_RBRACE: synreader(token)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_SORTDEF: synreader(token)
+fun{}
+synread_s0rtdef: synreader(s0rtdef)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_IDENT_qual: synreader(token)
 //
 (* ****** ****** *)
 

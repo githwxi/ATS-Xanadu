@@ -533,7 +533,8 @@ p_atmsort0
   (buf, err) = let
 //
 val e0 = err
-val tok0 = buf.get0()
+val tok = buf.get0()
+val tnd = tok.node()
 //
 (*
 val () =
@@ -541,15 +542,14 @@ println!
 ("p_atmsort0: e0 = ", e0)
 val () =
 println!
-("p_atmsort0: tok0 = ", tok0)
+("p_atmsort0: tok = ", tok)
 *)
 //
 in
 //
-case+
-tok0.node() of
+case+ tnd of
 //
-| tnd when
+| _ when
   t_s0tid(tnd) =>
   let
     val id = p_s0tid(buf, err)
@@ -558,12 +558,19 @@ tok0.node() of
     sort0_make_node(id.loc(), S0Tid(id))
   end // end of [t_s0tid]
 //
+| _ when t_t0int(tnd) =>
+  let
+    val i0 = p_t0int(buf, err)
+  in
+    err := e0;
+    sort0_make_node(i0.loc(), S0Tint(i0))
+  end // end of [t_t0int]
 | T_LPAREN() => let
     val () = buf.incby1()
     val s0ts =
       p_sort0seq_COMMA(buf, err)
     // end of [val]
-    val tbeg = tok0
+    val tbeg = tok
     val tend = p_RPAREN(buf, err)
   in
     err := e0;
@@ -581,19 +588,21 @@ tok0.node() of
   in
     err := e0;
     sort0_make_node
-    (loc_res, S0Tqual(tok0, s0t0)) where
+    (loc_res, S0Tqual(tok, s0t0)) where
     {
-      val loc_res = tok0.loc()+s0t0.loc()
+      val loc_res = tok.loc() + s0t0.loc()
     }
   end // end of [T_IDENT_qual]
 //
-| _ (* error *) => let
+| _ (* error *) =>
+  let
     val () = (err := e0 + 1)
+    // HX: indicating a parsing error
   in
-    sort0_make_node(tok0.loc(), S0Tnone(tok0))
-  end // HX: indicating a parsing error
+    sort0_make_node(tok.loc(), S0Tnone(tok))
+  end (* this-is-a-case-of-error *)
 //
-end // end of [p_atmsort0]
+end // end-of-let // end of [p_atmsort0]
 //
 (* ****** ****** *)
 

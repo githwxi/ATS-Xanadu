@@ -341,6 +341,22 @@ case+ opt of
 end // end of [auxtid]
 
 fun
+auxint
+( int
+: t0int)
+: s1titm = let
+//
+val loc = int.loc()
+//
+val-
+T0INTsome(tok) = int.node()
+//
+in
+  FXITMatm
+  (sort1_make_node(loc, S1Tint(tok)))
+end // end of [auxint]
+
+fun
 auxitm
 ( s0t0
 : sort0)
@@ -364,6 +380,8 @@ case+
 s0t0.node() of
 //
 | S0Tid(tid) => auxtid(tid)
+//
+| S0Tint(int) => auxint(int)
 //
 | S0Tapps(s0ts) =>
   FXITMatm(s1t0) where
