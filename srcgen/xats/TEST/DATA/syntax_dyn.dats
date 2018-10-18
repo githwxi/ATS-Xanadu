@@ -1,3 +1,6 @@
+sortdef
+nat = {a:int | a >= 0}
+////
 (* ****** ****** *)
 //
 (*
@@ -419,6 +422,15 @@ lam(x: int): int =<cloref1>
 val xs =
 xs.1().2().insert(i, x).insert(i', x')
 //
+(* ****** ****** *)
+
+val x =
+if
+(if True then False else True)
+then if True then False else True endif
+else if True then False else True endif
+endif
+
 (* ****** ****** *)
 
 (* end of [syntax_dyn.dats] *)

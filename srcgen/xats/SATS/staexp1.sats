@@ -78,6 +78,8 @@ sort1_node =
 //
   | S1Tid of token
 //
+  | S1Tint of token
+//
 // HX-2018-08: operators
 //
   | S1Tapp of () // apply

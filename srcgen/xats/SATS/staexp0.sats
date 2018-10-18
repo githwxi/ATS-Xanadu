@@ -409,6 +409,8 @@ sort0_node =
 //
 | S0Tid of (s0tid)
 //
+| S0Tint of (t0int)
+//
 | S0Tapps of
   (sort0lst) // HX: unsupported
 //

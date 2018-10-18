@@ -337,6 +337,9 @@ case+ x0.node() of
 | S0Tid(tid) =>
   fprint!(out, "S0Tid(", tid, ")")
 //
+| S0Tint(int) =>
+  fprint!(out, "S0Tint(", int, ")")
+//
 | S0Tapps(s0ts) =>
   fprint!(out, "S0Tapps(", s0ts, ")")
 //
