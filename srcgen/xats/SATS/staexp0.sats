@@ -772,7 +772,8 @@ s0exp_node =
   (token, s0qualst, token) // existential
 //
 | S0Elam of
-  (token, s0marglst, sort0opt, token, s0exp)
+  ( token, s0marglst
+  , sort0opt, token, s0exp, tokenopt)
 //
 | S0Eanno of
     (s0exp, sort0) // sort annotation

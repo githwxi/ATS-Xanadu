@@ -72,6 +72,7 @@ parsing_basics.dats \
 parsing_tokbuf.dats \
 parsing_staexp.dats \
 parsing_dynexp.dats \
+synread_basics.dats \
 synread_staexp.dats \
 synread_dynexp.dats \
 staexp1.dats \

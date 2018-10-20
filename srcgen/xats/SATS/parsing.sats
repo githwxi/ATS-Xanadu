@@ -246,8 +246,6 @@ p_END: parser(token)
 fun
 p_ENDLET: parser(token)
 fun
-p_ENDWHERE: parser(token)
-fun
 p_ENDLOCAL: parser(token)
 //
 (* ****** ****** *)

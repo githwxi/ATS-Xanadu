@@ -1200,6 +1200,7 @@ case+ tnd of
     // end of [val]
     val tok1 = p_EQGT(buf, err)
     val s0e0 = p_s0exp(buf, err)
+    val tok2 = popt_ENDLAM(buf, err)
     val loc_res = tok.loc() + s0e0.loc()
 //
 (*
@@ -1215,13 +1216,16 @@ case+ tnd of
       println! ("p_s0exp: tok1 = ", tok1)
     val () =
       println! ("p_s0exp: s0e0 = ", s0e0)
+    val () =
+      println! ("p_s0exp: tok2 = ", tok2)
 *)
 //
   in
     err := e0;
     s0exp_make_node
     ( loc_res
-    , S0Elam(tok, s0mas, anno, tok1, s0e0)
+    , S0Elam
+      (tok, s0mas, anno, tok1, s0e0, tok2)
     )
   end // end of [T_LAM]
 //

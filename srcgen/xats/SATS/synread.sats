@@ -60,6 +60,8 @@ synerr =
 //
 | SYNERRt0int of (t0int)
 //
+| SYNERRi0dnt of (i0dnt)
+//
 | SYNERRs0tid of (i0dnt)
 //
 | SYNERRs0eid of (i0dnt)
@@ -86,9 +88,13 @@ synread_t0int: synreader(t0int)
 (* ****** ****** *)
 //
 fun{}
+synread_i0dnt: synreader(i0dnt)
+fun{}
 synread_s0tid: synreader(s0tid)
 fun{}
 synread_s0eid: synreader(s0eid)
+fun{}
+synread_i0dntlst: synreader(i0dntlst)
 //
 (* ****** ****** *)
 //
@@ -113,6 +119,13 @@ synread_s0marglst: synreader(s0marglst)
 (* ****** ****** *)
 //
 fun{}
+synread_s0qua: synreader(s0qua)
+fun{}
+synread_s0qualst: synreader(s0qualst)
+//
+(* ****** ****** *)
+//
+fun{}
 synread_s0exp: synreader(s0exp)
 fun{}
 synread_s0explst: synreader(s0explst)
@@ -120,9 +133,18 @@ fun{}
 synread_s0expopt: synreader(s0expopt)
 //
 (* ****** ****** *)
+//
+fun{}
+synread_labs0exp: synreader(labs0exp)
+fun{}
+synread_labs0explst: synreader(labs0explst)
+//
+(* ****** ****** *)
 
 fun{}
 synread_s0exp_RPAREN: synreader(s0exp_RPAREN)
+fun{}
+synread_labs0exp_RBRACE: synreader(labs0exp_RBRACE)
 
 (* ****** ****** *)
 //
@@ -159,6 +181,9 @@ fun{}
 synread_BAR: synreader(token)
 //
 fun{}
+synread_EQGT: synreader(token)
+//
+fun{}
 synread_LPAREN: synreader(token)
 fun{}
 synread_RPAREN: synreader(token)
@@ -167,6 +192,46 @@ fun{}
 synread_LBRACE: synreader(token)
 fun{}
 synread_RBRACE: synreader(token)
+//
+fun{}
+synread_LBRACK: synreader(token)
+fun{}
+synread_RBRACK: synreader(token)
+fun{}
+synread_EXISTS: synreader(token)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_LAM: synreader(token)
+fun{}
+synread_FIX: synreader(token)
+//
+fun{}
+synread_ENDLAM: synreader(tokenopt)
+fun{}
+synread_ENDFIX: synreader(tokenopt)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_LET: synreader(token)
+fun{}
+synread_ENDLET: synreader(token)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_WHERE: synreader(token)
+fun{}
+synread_ENDWHERE: synreader(tokenopt)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_LOCAL: synreader(token)
+fun{}
+synread_ENDLOCAL: synreader(token)
 //
 (* ****** ****** *)
 //

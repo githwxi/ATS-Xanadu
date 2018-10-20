@@ -512,9 +512,14 @@ d0exp_ELSE =
 (* ****** ****** *)
 //
 and
+endwhere =
+| endwhere_cons1 of token
+| endwhere_cons2 of (token, tokenopt)
+//
+and
 d0eclseq_WHERE =
 | d0eclseq_WHERE of
-  (token, tokenopt, d0eclist, token)
+  (token, tokenopt, d0eclist, endwhere)
 //
 (* ****** ****** *)
 //
@@ -619,6 +624,24 @@ overload fprint with fprint_d0exp_ELSE
 //
 (* ****** ****** *)
 //
+fun
+endwhere_get_loc(endwhere): loc_t
+//
+fun
+print_endwhere: print_type(endwhere)
+fun
+prerr_endwhere: prerr_type(endwhere)
+fun
+fprint_endwhere: fprint_type(endwhere)
+//
+overload .loc with endwhere_get_loc
+//
+overload print with print_endwhere
+overload prerr with prerr_endwhere
+overload fprint with fprint_endwhere
+//
+(* ****** ****** *)
+//
 (*
 fun
 d0eclseq_WHERE_get_loc
@@ -670,8 +693,8 @@ d0gua_get_node(d0gua): d0gua_node
 overload .loc with d0gua_get_loc
 overload .node with d0gua_get_node
 //
-fun print_d0gua : (d0gua) -> void
-fun prerr_d0gua : (d0gua) -> void
+fun print_d0gua: print_type(d0gua)
+fun prerr_d0gua: prerr_type(d0gua)
 fun fprint_d0gua : fprint_type(d0gua)
 //
 overload print with print_d0gua

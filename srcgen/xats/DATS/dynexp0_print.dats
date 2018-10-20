@@ -624,6 +624,29 @@ case+ x0 of
 (* ****** ****** *)
 //
 implement
+print_endwhere(x0) =
+fprint_endwhere(stdout_ref, x0)
+implement
+prerr_endwhere(x0) =
+fprint_endwhere(stderr_ref, x0)
+//
+implement
+fprint_endwhere(out, x0) =
+(
+case+ x0 of
+| endwhere_cons1(tok) =>
+  fprint!
+  ( out
+  , "endwhere_cons1(", tok, ")")
+| endwhere_cons2(tok1, opt2) =>
+  fprint!
+  ( out
+  , "endwhere_cons2(", tok1, "; ", opt2, ")")
+)
+//
+(* ****** ****** *)
+//
+implement
 print_d0eclseq_WHERE(x0) =
 fprint_d0eclseq_WHERE(stdout_ref, x0)
 implement

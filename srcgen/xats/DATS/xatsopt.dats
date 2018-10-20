@@ -125,6 +125,7 @@ end // end of [local]
 #dynload "./parsing_staexp.dats"
 #dynload "./parsing_dynexp.dats"
 //
+#dynload "./synread_basics.dats"
 #dynload "./synread_staexp.dats"
 #dynload "./synread_dynexp.dats"
 //
