@@ -638,10 +638,13 @@ case+ x0.node() of
   , tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
 //
 | S0Elam
-  (tlam, s0mas, opt, teqgt, s0e0) =>
+  ( tbeg
+  , arg0, res1
+  , tok1, s0e0, tend) =>
   fprint!
   ( out, "S0Elam("
-  , tlam, ";", s0mas, ";", opt, "; ", teqgt, "; ", s0e0, ")")
+  , tbeg, ";", arg0, ";", res1, "; "
+  , tok1, "; ", s0e0, "; ", tend, ")")
 //
 | S0Eanno
   (s0e, ann) =>

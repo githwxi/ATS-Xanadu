@@ -984,7 +984,7 @@ s0e0.node() of
   end
 //
 | S0Elam
-  (_, arg, res, _, s0e) => let
+  (_, arg, res, _, s0e, _) => let
     val s1e = trans01_sexp(s0e)
     val res = trans01_sortopt(res)
     val arg = trans01_smarglst(arg)

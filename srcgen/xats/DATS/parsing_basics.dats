@@ -315,26 +315,7 @@ in
     let val ( ) = (err := e0 + 1) in tok end
 end // end of [p_ENDLET]
 
-implement
-p_ENDWHERE(buf, err) = let
-  val e0 = err
-  val tok = buf.get0()
-in
-  case+
-  tok.node() of
-//
-  | T_END() =>
-    let val () = buf.incby1() in tok end
-//
-  | T_RBRACE() =>
-    let val () = buf.incby1() in tok end
-//
-  | T_ENDWHERE() =>
-    let val () = buf.incby1() in tok end
-//
-  | _ (* non-END *) =>
-    let val ( ) = (err := e0 + 1) in tok end
-end // end of [p_ENDWHERE]
+(* ****** ****** *)
 
 implement
 p_ENDLOCAL(buf, err) = let

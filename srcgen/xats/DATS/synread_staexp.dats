@@ -51,157 +51,9 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-implement
-{}(*tmp*)
-synerr_add(xerr) = ()
+#staload
+_(*TMP*) = "./../DATS/synread_basics.dats"
 //
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_EQ
-  (tok) =
-(
-case+
-tok.node() of
-| T_EQ() => ()
-| _(*non-EQ*) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_EQ, tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_EQ: tok = ", tok)
-  end // end of [let]
-) (* end of [synread_EQ] *)
-
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_BAR
-  (tok) =
-(
-case+
-tok.node() of
-| T_BAR() => ()
-| _(*non-BAR*) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_BAR, tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_BAR: tok = ", tok)
-  end // end of [let]
-) (* end of [synread_BAR] *)
-
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_LPAREN
-  (tok) =
-(
-case+
-tok.node() of
-| T_LPAREN() => ()
-| _(*non-LPAREN*) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_LPAREN, tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_LPAREN: tok = ", tok)
-  end // end of [let]
-) (* end of [synread_LPAREN] *)
-
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_RPAREN
-  (tok) =
-(
-case+
-tok.node() of
-| T_RPAREN() => ()
-| _(*non-RPAREN*) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_RPAREN, tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_RPAREN: tok = ", tok)
-  end // end of [let]
-) (* end of [synread_RPAREN] *)
-
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_LBRACE
-  (tok) =
-(
-case+
-tok.node() of
-| T_LBRACE() => ()
-| _(*non-LBRACE*) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_LBRACE, tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_LBRACE: tok = ", tok)
-  end // end of [let]
-) (* end of [synread_LBRACE] *)
-
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_RBRACE
-  (tok) =
-(
-case+
-tok.node() of
-| T_RBRACE() => ()
-| _(*non-RBRACE*) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_RBRACE, tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_RBRACE: tok = ", tok)
-  end // end of [let]
-) (* end of [synread_RBRACE] *)
-
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_IDENT_qual
-  (tok) =
-(
-case+
-tok.node() of
-| T_IDENT_qual _ => ()
-| _(* non-IDENT_qual *) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_IDENT_qual(""), tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_IDENT_qual: tok = ", tok)
-  end // end of [let]
-)
-
 (* ****** ****** *)
 
 implement
@@ -222,6 +74,26 @@ int.node() of
   end // end of [let]
 ) (* end of [synread_t0int] *)
 
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_i0dnt
+  (id0) =
+(
+case+
+id0.node() of
+| I0DNTsome _ => ()
+| I0DNTnone(tok) =>
+  let
+    val () =
+    synerr_add(SYNERRi0dnt(id0))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_i0dnt: tok = ", tok)
+  end // end of [let]
+) (* end of [synread_i0dnt] *)
+//
 (* ****** ****** *)
 
 implement
@@ -262,6 +134,20 @@ sid.node() of
   end // end of [let]
 ) (* end of [synread_s0eid] *)
 
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_i0dntlst
+  (i0ds) =
+(
+list_foreach<i0dnt>(i0ds)
+) where
+{
+implement(env)
+list_foreach$fwork<i0dnt><env>(id0, env) = synread_i0dnt<>(id0)
+} (* end of [synread_i0dntlst] *)
+//
 (* ****** ****** *)
 
 implement
@@ -431,6 +317,38 @@ list_foreach$fwork<s0marg><env>(s0e, env) = synread_s0marg<>(s0e)
 } (* end of [synread_s0marglst] *)
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_s0qua
+  (s0q0) =
+(
+case+
+s0q0.node() of
+| S0QUAprop(s0e) =>
+  synread_s0exp<>(s0e)
+| S0QUAvars(ids, opt) =>
+  {
+    val () = synread_i0dntlst<>(ids)
+    val () = synread_sort0opt<>(opt)
+  }
+)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_s0qualst
+  (s0qs) =
+(
+list_foreach<s0qua>(s0qs)
+) where
+{
+implement(env)
+list_foreach$fwork<s0qua><env>(s0q, env) = synread_s0qua<>(s0q)
+} (* end of [synread_s0qualst] *)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
@@ -439,11 +357,11 @@ synread_s0exp
 //
 val loc0 = s0e0.loc()
 //
-(*
+// (*
 val () =
 println!
 ("synread_s0exp: s0e0 = ", s0e0)
-*)
+// *)
 //
 in
 //
@@ -474,6 +392,36 @@ s0e0.node() of
     val () = synread_LPAREN<>(tbeg)
     val () = synread_s0explst<>(s0es)
     val () = synread_s0exp_RPAREN<>(tend)
+  }
+//
+| S0Eforall
+  (tbeg, s0qs, tend) =>
+  {
+    val () = synread_LBRACE<>(tbeg)
+    val () = synread_s0qualst<>(s0qs)
+    val () = synread_RBRACE<>(tend)
+  }
+| S0Eexists
+  (tbeg, s0qs, tend) =>
+  {
+    val () = synread_EXISTS<>(tbeg)
+    val () = synread_s0qualst<>(s0qs)
+    val () = synread_RBRACK<>(tend)
+  }
+//
+| S0Elam
+  ( tbeg
+  , arg0, res1
+  , arrw, body, tend) =>
+  {
+    val () =
+      synread_LAM<>(tbeg)
+    val () =
+      synread_s0marglst<>(arg0)
+    val () = synread_sort0opt<>(res1)
+    val () = synread_EQGT<>(arrw)
+    val () = synread_s0exp<>(body)
+    val () = synread_ENDLAM<>(tend)
   }
 //
 | S0Eanno(s0e1, s0t2) =>
@@ -514,6 +462,20 @@ list_foreach$fwork<s0exp><env>(s0e, env) = synread_s0exp<>(s0e)
 } (* end of [synread_s0explst] *)
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_labs0explst
+  (ls0es) =
+(
+list_foreach<labs0exp>(ls0es)
+) where
+{
+implement(env)
+list_foreach$fwork<labs0exp><env>(ls0e, env) = synread_labs0exp<>(ls0e)
+} (* end of [synread_labs0explst] *)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
@@ -530,6 +492,24 @@ case+ tend of
     val () = synread_LPAREN<>(tok1)
     val () = synread_s0explst<>(s0es)
     val () = synread_RPAREN<>(tok2)
+  }
+)
+
+implement
+{}(*tmp*)
+synread_labs0exp_RBRACE
+  (tend) =
+(
+case+ tend of
+| labs0exp_RBRACE_cons0
+    (tok) => synread_RPAREN(tok)
+  // s0exp_RPAREN_cons0
+| labs0exp_RBRACE_cons1
+    (tok1, ls0es, tok2) =>
+  {
+    val () = synread_LBRACE<>(tok1)
+    val () = synread_labs0explst<>(ls0es)
+    val () = synread_RBRACE<>(tok2)
   }
 )
 

@@ -513,8 +513,7 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-v0aldecl_get_loc
-  (x0) =
+v0aldecl_get_loc(x0) =
 let
   val+V0ALDECL(rcd) = x0 in rcd.loc
 end // end of [v0aldecl_get_loc]
@@ -522,8 +521,7 @@ end // end of [v0aldecl_get_loc]
 (* ****** ****** *)
 
 implement
-v0ardecl_get_loc
-  (x0) =
+v0ardecl_get_loc(x0) =
 let
   val+V0ARDECL(rcd) = x0 in rcd.loc
 end // end of [v0ardecl_get_loc]
@@ -531,8 +529,7 @@ end // end of [v0ardecl_get_loc]
 (* ****** ****** *)
 
 implement
-f0undecl_get_loc
-  (x0) =
+f0undecl_get_loc(x0) =
 let
   val+F0UNDECL(rcd) = x0 in rcd.loc
 end // end of [f0undecl_get_loc]
@@ -540,11 +537,27 @@ end // end of [f0undecl_get_loc]
 (* ****** ****** *)
 
 implement
-d0cstdecl_get_loc
-  (x0) =
+d0cstdecl_get_loc(x0) =
 let
   val+D0CSTDECL(rcd) = x0 in rcd.loc
 end // end of [d0cstdecl_get_loc]
+
+(* ****** ****** *)
+
+implement
+endwhere_get_loc(x0) =
+(
+case+ x0 of
+| endwhere_cons1
+    (tok) => tok.loc()
+| endwhere_cons2
+    (tok1, opt2) =>
+  (
+    case+ opt2 of
+    | None() => tok1.loc()
+    | Some(tok2) => tok1.loc() + tok2.loc()
+  )
+) (* end of [endwhere_get_loc] *)
 
 (* ****** ****** *)
 

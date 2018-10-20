@@ -1300,6 +1300,10 @@ p_d0exp_ELSE: parser(d0exp_ELSE)
 //
 extern
 fun
+p_ENDWHERE: parser(endwhere)
+//
+extern
+fun
 popt_d0eclseq_WHERE:
   parser(Option(d0eclseq_WHERE))
 //
@@ -1998,6 +2002,58 @@ tok.node() of
 //
 end // end of [p_d0exp_ELSE]
 
+(* ****** ****** *)
+//
+implement
+p_ENDWHERE(buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+//
+  | T_END() =>
+    let
+    val () =
+      buf.incby1() in endwhere_cons1(tok)
+    // end of [val]
+    end
+//
+  | T_RBRACE() =>
+    let
+      val () = buf.incby1()
+      val tok2 = buf.get0()
+    in
+      case+
+      tok2.node() of
+      | T_END() =>
+        let
+          val () = buf.incby1()
+        in
+          endwhere_cons2(tok, Some(tok2))
+        // end of [val]
+        end
+      | T_ENDWHERE() =>
+        let
+          val () = buf.incby1()
+        in
+          endwhere_cons2(tok, Some(tok2))
+        // end of [val]
+        end
+      | _ (* non-END *) => endwhere_cons1(tok)
+    end
+//
+  | T_ENDWHERE() =>
+    let
+      val () = buf.incby1() in endwhere_cons1(tok)
+    end
+//
+  | _ (* non-END *) =>
+    let
+    val () = (err := e0 + 1) in endwhere_cons1(tok)
+    end
+end // end of [p_ENDWHERE]
+//
 (* ****** ****** *)
 
 implement

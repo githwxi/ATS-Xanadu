@@ -53,6 +53,8 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload
+_(*TMP*) = "./../DATS/synread_basics.dats"
+#staload
 _(*TMP*) = "./../DATS/synread_staexp.dats"
 
 (* ****** ****** *)
