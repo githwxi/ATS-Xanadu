@@ -1,5 +1,19 @@
 sortdef
+int = int
+sortdef
 nat = {a:int | a >= 0}
+
+sexpdef foo = int:type
+
+sexpdef
+foo =
+bar0(1 + 2 + 3 + -4 + -5)
+////
+sexpdef
+int2int =
+{ n:int | n >= 0
+} int(n) -> [n:nat] int(n:int)
+
 ////
 (* ****** ****** *)
 //

@@ -279,7 +279,7 @@ println!
 //
 in
 //
-case-
+case+
 s0t0.node() of
 | S0Tid(tid) =>
   synread_s0tid<>(tid)
@@ -356,18 +356,80 @@ in
 //
 case+
 s0a0.node() of
+| S0ARGsome(sid, opt) =>
+  {
+    val () = synread_s0eid<>(sid)
+    val () = synread_sort0opt<>(opt)
+  }
 | S0ARGnone(tok) =>
   (
     prerrln!(loc0, ": [s0arg] needed");
     prerrln!(tok.loc(), ": tokerr: ", tok);
   )
-| S0ARGsome(sid, opt) =>
+//
+end // end of [synread_s0arg]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_s0marg
+  (s0ma) = let
+//
+val loc0 = s0ma.loc()
+//
+(*
+val () =
+println!
+("synread_s0marg: s0ma = ", s0ma)
+*)
+//
+in
+//
+case+
+s0ma.node() of
+| S0MARGsing(sid) =>
+  synread_s0eid<>(sid)
+| S0MARGlist(tbeg, s0as, tend) =>
+  {
+    val () = synread_LPAREN<>(tbeg)
+    val () = synread_s0arglst<>(s0as)
+    val () = synread_RPAREN<>(tend)
+  }
+| S0MARGnone(tok) =>
   (
-    synread_s0eid<>(sid); synread_sort0opt<>(opt)
+    prerrln!(loc0, ": [s0marg] needed");
+    prerrln!(tok.loc(), ": tokerr: ", tok);
   )
 //
-end // end of [synread_sort0]
+end // end of [synread_s0marg]
 
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_s0arglst
+  (s0es) =
+(
+list_foreach<s0arg>(s0es)
+) where
+{
+implement(env)
+list_foreach$fwork<s0arg><env>(s0e, env) = synread_s0arg<>(s0e)
+} (* end of [synread_s0arglst] *)
+//
+implement
+{}(*tmp*)
+synread_s0marglst
+  (s0es) =
+(
+list_foreach<s0marg>(s0es)
+) where
+{
+implement(env)
+list_foreach$fwork<s0marg><env>(s0e, env) = synread_s0marg<>(s0e)
+} (* end of [synread_s0marglst] *)
+//
 (* ****** ****** *)
 
 implement
@@ -387,11 +449,45 @@ in
 //
 case-
 s0e0.node() of
+//
+| S0Eid(sid) =>
+  synread_s0eid<>(sid)
+//
+| S0Eop1(tok) => ()
+| S0Eop2
+  (tbeg, sid, tend) =>
+  {
+    val () = synread_LPAREN<>(tbeg)
+    val () = synread_s0eid<>(sid)
+    val () = synread_RPAREN<>(tend)
+  }
+//
+| S0Eint(int) =>
+  synread_t0int<>(int)
+//
+| S0Eapps(s0es) =>
+  synread_s0explst<>(s0es)
+//
+| S0Eparen
+  (tbeg, s0es, tend) =>
+  {
+    val () = synread_LPAREN<>(tbeg)
+    val () = synread_s0explst<>(s0es)
+    val () = synread_s0exp_RPAREN<>(tend)
+  }
+//
+| S0Eanno(s0e1, s0t2) =>
+  {
+    val () = synread_s0exp<>(s0e1)
+    val () = synread_sort0<>(s0t2)
+  }
+//
 | S0Enone(tok) =>
   (
     prerrln!(loc0, ": [s0exp] needed");
     prerrln!(tok.loc(), ": tokerr: ", tok);
   )
+//
 end // end of [synread_s0exp]
 
 (* ****** ****** *)
@@ -421,6 +517,26 @@ list_foreach$fwork<s0exp><env>(s0e, env) = synread_s0exp<>(s0e)
 
 implement
 {}(*tmp*)
+synread_s0exp_RPAREN
+  (tend) =
+(
+case+ tend of
+| s0exp_RPAREN_cons0
+    (tok) => synread_RPAREN(tok)
+  // s0exp_RPAREN_cons0
+| s0exp_RPAREN_cons1
+    (tok1, s0es, tok2) =>
+  {
+    val () = synread_LPAREN<>(tok1)
+    val () = synread_s0explst<>(s0es)
+    val () = synread_RPAREN<>(tok2)
+  }
+)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 synread_s0rtdef
   (def) =
 (
@@ -430,11 +546,32 @@ def.node() of
   synread_sort0(s0t)
 | S0RTDEFsubset
   (tbeg, s0a0, tbar, s0es, tend) =>
-  (
-    synread_LBRACE(tbeg);
-    synread_s0arg(s0a0); synread_BAR(tbar); synread_s0explst(s0es);
-    synread_RBRACE(tend);
-  )
+  {
+    val () = synread_LBRACE(tbeg)
+    val () = synread_s0arg(s0a0)
+    val () = synread_BAR(tbar)
+    val () = synread_s0explst(s0es)
+    val () = synread_RBRACE(tend)
+//
+    val () =
+    (
+    case+
+    s0a0.node() of
+    | S0ARGnone _ => ()
+    | S0ARGsome(sid, opt) =>
+      (
+      case+ opt of
+      | Some _ => ()
+      | None _ =>
+        let
+          val loc = s0a0.loc()
+        in
+          prerrln!(loc, ": [s0arg]: sort needed");   
+        end // end of [None]
+      )
+    ) (* end of [val] *)
+//
+  } (* end of [S0RTDEFsubset] *)
 )
 
 (* ****** ****** *)
