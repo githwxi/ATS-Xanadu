@@ -77,6 +77,27 @@ tok.node() of
 ) (* end of [synread_SORTDEF] *)
 
 (* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_SEXPDEF
+  (tok) =
+(
+case+
+tok.node() of
+| T_SEXPDEF _ => ()
+| _(*non-*SEXPDEF*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_SEXPDEF(0), tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_SEXPDEF: tok = ", tok)
+  end // end of [let]
+) (* end of [synread_SEXPDEF] *)
+
+(* ****** ****** *)
 //
 implement
 {}(*tmp*)
@@ -109,15 +130,27 @@ in
 //
 case+
 d0c0.node() of
+//
 | D0Csortdef
   (tok, tid, teq, def) =>
   {
-    val () =
-    synread_SORTDEF<>(tok)
-    val () = synread_EQ<>(teq)
+    val () = synread_SORTDEF<>(tok)
     val () = synread_s0tid<>(tid)
+    val () = synread_EQ<>(teq)
     val () = synread_s0rtdef<>(def)
   }
+//
+| D0Csexpdef
+  ( tok, sid
+  , s0ms, opt, teq, def) =>
+  {
+    val () = synread_SEXPDEF<>(tok)
+    val () = synread_s0eid<>(sid)
+    val () = synread_sort0opt<>(opt)
+    val () = synread_EQ<>(teq)  
+    val () = synread_s0exp<>(def)
+  }
+//
 | D0Ctokerr(tok) =>
   (
     prerrln!(loc0, ": [d0ecl] needed");

@@ -103,6 +103,12 @@ synread_sort0opt: synreader(sort0opt)
 //
 fun{}
 synread_s0arg: synreader(s0arg)
+fun{}
+synread_s0marg: synreader(s0marg)
+fun{}
+synread_s0arglst: synreader(s0arglst)
+fun{}
+synread_s0marglst: synreader(s0marglst)
 //
 (* ****** ****** *)
 //
@@ -113,6 +119,11 @@ synread_s0explst: synreader(s0explst)
 fun{}
 synread_s0expopt: synreader(s0expopt)
 //
+(* ****** ****** *)
+
+fun{}
+synread_s0exp_RPAREN: synreader(s0exp_RPAREN)
+
 (* ****** ****** *)
 //
 fun{}
@@ -161,6 +172,11 @@ synread_RBRACE: synreader(token)
 //
 fun{}
 synread_SORTDEF: synreader(token)
+fun{}
+synread_SEXPDEF: synreader(token)
+//
+(* ****** ****** *)
+//
 fun{}
 synread_s0rtdef: synreader(s0rtdef)
 //
