@@ -38,6 +38,41 @@ for common use; it is reserved for experts or developers of ATS.
 
 ########################
 
+Datasorts
+
+A datasort is a user-defined sort. Declaring a datasort is like
+declaring a datatype in an ML-like language. In the following example,
+a datasort ilist is declared via a datasort-declaration:
+
+datasort ilist =
+  | ilist_nil of ()
+  | ilist_cons of (int, ilist)
+// end of [datasort]
+
+There are two data constructors associated ilist: ilist_nil and
+ilist_cons, which are assigned the following functional sorts:
+
+ilist_nil: () -> ilist
+ilist_cons : (int, ilist) -> ilist
+
+########################
+
+Sort definitions
+
+In ATS3, a sortdef-declaration can be introduced to create an alias
+for a sort or a subset sort. For instance, three sortdef-declarations
+are given as follows:
+
+sortdef ints = ilist // alias for sort
+sortdef posint = {a: int | a > 0} // alias for subset sort
+sortdef negint = {a: int | a < 0} // alias for subset sort
+
+Note that a subset sort is NOT a proper sort. Primarily, a subset sort
+is introduced as a form of convenience for handling quantification (which
+is to be explain in details later).
+
+########################
+
 Static Expressions
 
 ########################
