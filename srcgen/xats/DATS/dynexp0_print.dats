@@ -796,10 +796,10 @@ case+ x0.node() of
 | D0Cnonfix(tok, ids) =>
   fprint!
   (out, "D0Cnonfix(", tok, "; ", ids, ")")
-| D0Cfixity(tok, opt, ids) =>
+| D0Cfixity(tok, ids, opt) =>
   fprint!
   ( out
-  , "D0Cfixity(", tok, "; ", opt, "; ", ids, ")")
+  , "D0Cfixity(", tok, "; ", ids, "; ", opt, ")")
 //
 | D0Cstatic(tok, d0c) =>
   fprint!
@@ -918,14 +918,14 @@ case+ x0.node() of
 end // end of [local]
 
 (* ****** ****** *)
-
+//
 implement
 print_precopt(x0) =
 fprint_precopt(stdout_ref, x0)
 implement
 prerr_precopt(x0) =
 fprint_precopt(stderr_ref, x0)
-
+//
 implement
 fprint_precopt
   (out, x0) =
@@ -933,40 +933,13 @@ fprint_precopt
 case+ x0 of
 | PRECOPTnil() =>
   fprint!(out, "PRECOPTnil()")
-| PRECOPTsing(tok) =>
-  fprint!(out, "PRECOPTsing(", tok, ")")
-| PRECOPTlist(tbeg, pval, tend) =>
+| PRECOPTint(tint) =>
+  fprint!(out, "PRECOPTint(", tint, ")")
+| PRECOPTopr(topr, pmod) =>
   fprint!
-  ( out
-  , "PRECOPTlist(", tbeg, "; ", pval, "; ", tend)
+  (out, "PRECOPTopr(", topr, "; ", pmod, ")")
 ) (* end of [fprint_precopt] *)
-
-implement
-fprint_precval
-  (out, x0) =
-(
-case+ x0 of
-| PRECVALint(tint) =>
-  fprint!
-  (out, "PRECVALint(", tint, ")")
-| PRECVALopr(topr, pmod) =>
-  fprint!
-  (out, "PRECVALopr(", topr, "; ", pmod, ")")
-)
-
-implement
-fprint_precmod
-  (out, x0) =
-(
-case+ x0 of
-| PRECMODnone() =>
-  fprint!(out, "PRECMODnone()")
-| PRECMODsome(tbeg, sint, tend) =>
-  fprint!
-  ( out
-  , "PRECMODsome(", tbeg, "; ", sint, "; ", tend, ")")
-)
-
+//
 implement
 fprint_signint
   (out, x0) =
@@ -977,7 +950,19 @@ case+ x0 of
 | SIGNINTopr(topr, tint) =>
   fprint!(out, "SIGNINTopr(", topr, "; ", tint, ")")
 )
-
+//
+implement
+fprint_precmod
+  (out, x0) =
+(
+case+ x0 of
+| PRECMODnone() =>
+  fprint!(out, "PRECMODnone()")
+| PRECMODsome(tbeg, sint, tend) =>
+  fprint!
+  (out, "PRECMODsome(", tbeg, "; ", sint, "; ", tend, ")")
+)
+//
 (* ****** ****** *)
 
 implement

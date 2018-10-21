@@ -68,8 +68,8 @@ sortdef posint = {a: int | a > 0} // alias for subset sort
 sortdef negint = {a: int | a < 0} // alias for subset sort
 
 Note that a subset sort is NOT a proper sort. Primarily, a subset sort
-is introduced as a form of convenience for handling quantification (which
-is to be explain in details later).
+is introduced as a form of convenience for handling quantification
+(which is to be explained with examples later).
 
 ########################
 

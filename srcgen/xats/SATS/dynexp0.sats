@@ -954,7 +954,7 @@ for skipping error
 // HX: attach fixity
 //
 | D0Cfixity of
-  (token, precopt, i0dntlst)
+  (token, i0dntlst, precopt)
 //
 // HX: locally defined
 //
@@ -1047,15 +1047,8 @@ for skipping error
 and
 precopt =
 | PRECOPTnil of ()
-| PRECOPTsing of (token) // token is int
-| PRECOPTlist of
-    (token(*'('*), precval, token(*')'*))
-  // PRECOPTlist
-
-and
-precval =
-| PRECVALint of token(*int*)
-| PRECVALopr of (i0dnt(*opr*), precmod)
+| PRECOPTint of (token)
+| PRECOPTopr of (i0dnt, precmod)
 
 and
 precmod =
@@ -1114,8 +1107,6 @@ prerr_precopt : (precopt) -> void
 fun
 fprint_precopt : fprint_type(precopt)
 fun
-fprint_precval : fprint_type(precval)
-fun
 fprint_precmod : fprint_type(precmod)
 fun
 fprint_signint : fprint_type(signint)
@@ -1124,7 +1115,6 @@ overload print with print_precopt
 overload prerr with prerr_precopt
 //
 overload fprint with fprint_precopt
-overload fprint with fprint_precval
 overload fprint with fprint_precmod
 overload fprint with fprint_signint
 //

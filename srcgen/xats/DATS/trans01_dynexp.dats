@@ -1817,45 +1817,48 @@ local
 (* ****** ****** *)
 
 fun
+aux_signint
+(sint: signint): int =
+(
+case+ sint of
+| SIGNINTint(tint) =>
+  g0string2int(rep) where
+  {
+    val-T_INT1(rep) = tint.node()
+  }
+| SIGNINTopr(topr, tint) =>
+  let
+    val-T_INT1(rep) = tint.node()
+  in
+    case-
+    topr.node() of
+    | T_IDENT_sym("+") => 0+g0string2int(rep)
+    | T_IDENT_sym("-") => 0-g0string2int(rep)
+  end
+) (* end of [signint] *)
+
+(* ****** ****** *)
+
+fun
 aux_precopt
-(opt: precopt): prcdv =
+(opt: precopt): int =
 (
 case+ opt of
-| PRECOPTnil() =>
-  int2prcdv(0)
-| PRECOPTsing(tok) =>
-  let
-    val-
-    T_INT1(rep) = tok.node()
-  in
-    int2prcdv(g0string2int(rep))
-  end // end of [PRECOPTsing]
-//
-| PRECOPTlist(_, pval, _) =>
-  (
-    int2prcdv(aux_precval(pval))
-  )
-//
-) (* end of [aux_precopt] *)
-
-and
-aux_precval
-(pval: precval): int =
-(
-case+ pval of
-| PRECVALint(tint) =>
+| PRECOPTnil() => 0
+| PRECOPTint(tint) =>
   g0string2int(rep) where
   {
     val-
     T_INT1(rep) = tint.node()
-  } (* end of [PRECVALint] *)
-| PRECVALopr(topr, pmod) =>
+  } (* end of [PRECOPTint] *)
+//
+| PRECOPTopr(topr, pmod) =>
   (
   case+ pmod of
   | PRECMODnone
-    ((*void*)) => pint
+    ((*void*)) => pval
   | PRECMODsome
-    (_, sint, _) => pint + aux_signint(sint)
+    (_, sint, _) => pval + aux_signint(sint)
   ) where
   {
     val-
@@ -1868,13 +1871,12 @@ case+ pval of
     ) : string // end of [val]
     val sym = $SYM.symbol_make(nam)
     val opt = the_fixtyenv_search(sym)
-    val pint =
+    val pval =
     (
     case+ opt of
     | ~Some_vt(fxty) =>
-      (
-        prcdv2int($FIX.fixty_prcdv(fxty))
-      )
+      ( prcdv2int
+        ($FIX.fixty_prcdv(fxty)) )
     | ~None_vt((*void*)) => 0 where
       {
         val
@@ -1883,53 +1885,32 @@ case+ pval of
         ((*warn*)) =
         prerrln!(loc, ": warning(1): [", nam, "] is a non-operator!")
       }
-    ) : int // end of [val]
+    ) : int (* end of [val] *)
   }
-)
-
-and
-aux_signint
-(sint: signint): int =
-(
-case+ sint of
-| SIGNINTint(tint) =>
-  g0string2int(rep) where
-  {
-    val-
-    T_INT1(rep) = tint.node()
-  } (* end of [SIGNINTint] *)
-| SIGNINTopr(topr, tint) =>
-  (
-  case-
-  topr.node() of
-  | T_IDENT_sym("+") => int
-  | T_IDENT_sym("-") => ~int
-  ) where
-  {
-    val-
-    T_INT1(rep) = tint.node()
-    val int = g0string2int(rep)
-  } (* end of [SIGNINTopr] *)
-)
+) (* end of [aux_precopt] *)
 
 (* ****** ****** *)
 
 fun
 aux_fixity
-(d0c0: d0ecl): d1ecl = let
+( d0c0
+: d0ecl): d1ecl = let
 //
 val loc0 = d0c0.loc()
 //
 val-
 D0Cfixity
 ( tok0
-, opt1
-, i0ds) = d0c0.node()
+, ids1
+, opt2
+) = d0c0.node()
 //
 val-
-T_SRP_FIXITY(knd) = tok0.node()
+T_SRP_FIXITY
+  (knd) = tok0.node()
 //
-val pval = aux_precopt(opt1)
+val pval =
+int2prcdv(aux_precopt(opt2))
 //
 val fxty =
 (
@@ -1976,7 +1957,7 @@ case+ xs of
 //
 in
   let
-    val () = loop(i0ds)
+    val () = loop(ids1)
   in
     d1ecl_make_node(loc0, D1Cnone(d0c0))
   end
@@ -1990,7 +1971,7 @@ val loc0 = d0c0.loc()
 //
 val-
 D0Cnonfix
-(tok0, i0ds) = d0c0.node()
+(tok0, ids1) = d0c0.node()
 //
 fun
 loop
@@ -2019,7 +2000,7 @@ case+ xs of
 //
 in
   let
-    val () = loop(i0ds)
+    val () = loop(ids1)
   in
     d1ecl_make_node(loc0, D1Cnone(d0c0))
   end

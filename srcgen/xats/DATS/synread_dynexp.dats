@@ -172,15 +172,17 @@ synread_precopt
 (
 case+ opt of
 | PRECOPTnil() => ()
-| PRECOPTsing(tok) =>
+| PRECOPTint(tok) =>
   {
     val () = synread_INT1(tok)
   }
-| PRECOPTlist
-  (tbeg, toks, tend) =>
+| PRECOPTopr
+  (topr, pmod) =>
   {
-    val () = synread_LPAREN(tbeg)
-    val () = synread_RPAREN(tend)
+    val () = synread_i0dnt(topr)
+(*
+    val () = synread_precmod(pmod)
+*)
   }
 )
 

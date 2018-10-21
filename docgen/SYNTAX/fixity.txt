@@ -1,0 +1,56 @@
+########################
+Syntax for fixity declarations
+########################
+
+ATS3 supports prefix, infix, and postfix operators. For instance, the
+following expression involving infix and prefix operators is accepted
+in ATS3:
+
+-2*x**2 + 10*x - 100
+
+which represents
+
+negative 2 times x squared plus 10 times x minus 100
+
+The following fixity-declaration attaches the prefix-status to the
+symbols foo1 and bar1:
+
+#prefix foo1 bar1
+
+The following fixity-declaration attaches the infix-status to the
+symbols foo2 and bar2:
+
+#infix0 foo2 bar2
+
+The following fixity-declaration attaches the infixl-status to the
+symbols foo3 and bar3:
+
+#infixl foo3 bar3
+
+If the expression:
+
+(exp1 foo3 exp2 bar3 exp3)
+
+is written, then it is parsed like the expression:
+
+((exp1 foo3 exp2) bar3 exp3)
+
+For instance, common arithmetic operators +, -, *, and / are given the
+infixl-status.
+
+The following fixity-declaration attaches the infixr-status to the
+symbols foo4 and bar4:
+
+#infixr foo4 bar4
+
+If the expression:
+
+(exp1 foo4 exp2 bar4 exp3)
+
+is written, then it is parsed like the expression
+
+(exp1 foo4 (exp2 bar4 exp3))
+
+For instance, the function type constructor -> is assigned the infixr-status.
+
+############ end of [fixity.txt] ############
