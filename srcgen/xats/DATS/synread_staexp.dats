@@ -442,9 +442,27 @@ s0e0.node() of
 //
 | S0Eint(int) =>
   synread_t0int<>(int)
+| S0Echr(chr) =>
+  synread_t0chr<>(chr)
+| S0Eflt(flt) =>
+  synread_t0flt<>(flt)
+| S0Estr(str) =>
+  synread_t0str<>(str)
 //
 | S0Eapps(s0es) =>
   synread_s0explst<>(s0es)
+//
+| S0Eimp
+  (tbeg, s0es, tend) =>
+  {
+    val () =
+      synread_MSLT<>(tbeg)
+    // end of [val]
+    val () =
+      synread_s0explst(s0es)
+    // end of [val]
+    val () = synread_GT<>(tend)
+  }
 //
 | S0Eparen
   (tbeg, s0es, tend) =>
@@ -454,8 +472,36 @@ s0e0.node() of
     val () = synread_s0exp_RPAREN<>(tend)
   }
 //
+| S0Etuple
+  (tbeg, topt, s0es, tend) =>
+  {
+    val () = synread_TUPLE(tbeg)
+(*
+    val () =
+    (
+    case+ topt of
+    | None() => ()
+    | Some(tok) => synread_LPAREN(tok)
+    )
+*)
+    val () = synread_s0explst(s0es)
+    val () = synread_s0exp_RPAREN(tend)
+  }
 | S0Erecord
   (tbeg, topt, ls0es, tend) =>
+  {
+    val () = synread_RECORD(tbeg)
+(*
+    val () =
+    (
+    case+ topt of
+    | None() => ()
+    | Some(tok) => synread_LBRACE(tok)
+    )
+*)
+    val () = synread_labs0explst(ls0es)
+    val () = synread_labs0exp_RBRACE(tend)
+  }
 //
 | S0Eforall
   (tbeg, s0qs, tend) =>
@@ -493,6 +539,12 @@ s0e0.node() of
     val () = synread_sort0<>(s0t2)
   }
 //
+| S0Equal(tok, s0e) =>
+  synread_s0exp(s0e) where
+  {
+    val () = synread_IDENT_qual<>(tok)
+  }
+//
 | S0Enone(tok) =>
   (
     prerrln!(loc0, ": [s0exp] needed");
@@ -528,6 +580,19 @@ list_foreach$fwork<s0exp><env>(s0e, env) = synread_s0exp<>(s0e)
 //
 implement
 {}(*tmp*)
+synread_labs0exp
+  (ls0e) =
+(
+case+ ls0e of
+| SL0ABELED(l0, teq, s0e) =>
+  {
+    val () = synread_EQ<>(teq)
+    val () = synread_s0exp<>(s0e)
+  }
+)
+//
+implement
+{}(*tmp*)
 synread_labs0explst
   (ls0es) =
 (
@@ -552,7 +617,7 @@ case+ tend of
 | s0exp_RPAREN_cons1
     (tok1, s0es, tok2) =>
   {
-    val () = synread_LPAREN<>(tok1)
+    val () = synread_BAR<>(tok1)
     val () = synread_s0explst<>(s0es)
     val () = synread_RPAREN<>(tok2)
   }
@@ -565,12 +630,12 @@ synread_labs0exp_RBRACE
 (
 case+ tend of
 | labs0exp_RBRACE_cons0
-    (tok) => synread_RPAREN(tok)
+    (tok) => synread_RBRACE(tok)
   // s0exp_RPAREN_cons0
 | labs0exp_RBRACE_cons1
     (tok1, ls0es, tok2) =>
   {
-    val () = synread_LBRACE<>(tok1)
+    val () = synread_BAR<>(tok1)
     val () = synread_labs0explst<>(ls0es)
     val () = synread_RBRACE<>(tok2)
   }
