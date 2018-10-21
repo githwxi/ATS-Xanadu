@@ -44,15 +44,16 @@
 //
 (* ****** ****** *)
 
-#prefix 51 - (* neg *)
 #prefix 51 ~ (* neg *)
 
 (* ****** ****** *)
 //
 #infixl 50 + - (*additive*)
+#prefix(+(+1)) + (* uplus *)
+#prefix(-(+1)) - (* uminus *)
 //
 (*
-#infixr (+) ++ // concatenative
+#infixr(+) ++ // concatenative
 *)
 //
 (* ****** ****** *)
@@ -68,10 +69,10 @@
 //
 // HX-2012-07: removed
 //
-#infixl ( < ) ilt flt plt ult
-#infixl ( > ) igt fgt pgt ugt
-#infixl ( <= ) ilte flte plte ulte
-#infixl ( >= ) igte fgte pgte ugte
+#infixl( < ) ilt flt plt ult
+#infixl( > ) igt fgt pgt ugt
+#infixl( <= ) ilte flte plte ulte
+#infixl( >= ) igte fgte pgte ugte
 *)
 //
 (* ****** ****** *)
