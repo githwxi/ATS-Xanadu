@@ -5,7 +5,7 @@
 (***********************************************************************)
 
 (*
-** ATS/Postiats - Unleashing the Potential of Types!
+** ATS/Xanadu - Unleashing the Potential of Types!
 ** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
