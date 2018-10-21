@@ -5,7 +5,7 @@
 (***********************************************************************)
 
 (*
-** ATS/Postiats - Unleashing the Potential of Types!
+** ATS/Xanadu - Unleashing the Potential of Types!
 ** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
@@ -58,9 +58,12 @@ synreadst = synreadst_type
 datatype
 synerr =
 //
-| SYNERRt0int of (t0int)
-//
 | SYNERRi0dnt of (i0dnt)
+//
+| SYNERRt0int of (t0int)
+| SYNERRt0chr of (t0chr)
+| SYNERRt0str of (t0str)
+| SYNERRt0flt of (t0flt)
 //
 | SYNERRs0tid of (i0dnt)
 //
@@ -83,12 +86,21 @@ synread_top(d0eclist): void
 (* ****** ****** *)
 //
 fun{}
-synread_t0int: synreader(t0int)
+synread_i0dnt: synreader(i0dnt)
 //
 (* ****** ****** *)
 //
 fun{}
-synread_i0dnt: synreader(i0dnt)
+synread_t0int: synreader(t0int)
+fun{}
+synread_t0chr: synreader(t0chr)
+fun{}
+synread_t0flt: synreader(t0flt)
+fun{}
+synread_t0str: synreader(t0str)
+//
+(* ****** ****** *)
+//
 fun{}
 synread_s0tid: synreader(s0tid)
 fun{}

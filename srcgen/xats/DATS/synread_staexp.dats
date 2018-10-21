@@ -5,7 +5,7 @@
 (***********************************************************************)
 
 (*
-** ATS/Postiats - Unleashing the Potential of Types!
+** ATS/Xanadu - Unleashing the Potential of Types!
 ** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
@@ -72,7 +72,67 @@ int.node() of
     prerr(tok.loc());
     prerrln!(": synread_t0int: tok = ", tok)
   end // end of [let]
-) (* end of [synread_t0int] *)
+)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_t0chr
+  (chr) =
+(
+case+
+chr.node() of
+| T0CHRsome _ => ()
+| T0CHRnone(tok) =>
+  let
+    val () =
+    synerr_add(SYNERRt0chr(chr))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_t0chr: tok = ", tok)
+  end // end of [let]
+)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_t0flt
+  (flt) =
+(
+case+
+flt.node() of
+| T0FLTsome _ => ()
+| T0FLTnone(tok) =>
+  let
+    val () =
+    synerr_add(SYNERRt0flt(flt))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_t0flt: tok = ", tok)
+  end // end of [let]
+)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_t0str
+  (str) =
+(
+case+
+str.node() of
+| T0STRsome _ => ()
+| T0STRnone(tok) =>
+  let
+    val () =
+    synerr_add(SYNERRt0str(str))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_t0str: tok = ", tok)
+  end // end of [let]
+)
 
 (* ****** ****** *)
 //
@@ -393,6 +453,9 @@ s0e0.node() of
     val () = synread_s0explst<>(s0es)
     val () = synread_s0exp_RPAREN<>(tend)
   }
+//
+| S0Erecord
+  (tbeg, topt, ls0es, tend) =>
 //
 | S0Eforall
   (tbeg, s0qs, tend) =>
