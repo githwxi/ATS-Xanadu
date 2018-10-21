@@ -4,6 +4,38 @@ Syntax for the statics of ATS3
 
 Sorts
 
+Sorts in ATS are for classifying static terms.
+Note that types (for dynamic terms) are static terms
+but not all the static terms are types. For instance,
+there are static integers and static booleans in ATS,
+which are predicative.
+
+Following is a list of built-in predicative sorts in ATS:
+
+int // for static integers
+bool // for static booleans
+char // for static chars
+float // for static floats
+string // for static strings
+
+Following is a list of built-in imppredicative sorts in ATS:
+
+prop // for props (which are types for proofs)
+view // for views (which are types for linear proofs)
+type // for types
+tbox // for boxed types
+tflt/tflat // for flat/unboxed types
+vtype // for linear types
+vtbox // for linear boxed types
+vtflt/vtflat // for linear flat/unboxed types
+
+Abstract sorts can be introduced in ATS. For instance,
+
+abssort real // introducing an abstract sort for reals
+
+However, introducing abstract sorts is not a feature meant
+for common use; it is reserved for experts or developers of ATS.
+
 ########################
 
 Static Expressions
