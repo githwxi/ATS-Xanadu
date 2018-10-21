@@ -2237,10 +2237,20 @@ case+ tnd of
 | T_VAL _ => true | _ => false
 )
 
+(* ****** ****** *)
+//
 static
 fun
-p_precopt
- : parser(precopt)
+p_precopt: parser(precopt)
+and
+p_precval: parser(precval)
+and
+p_precmod: parser(precmod)
+and
+p_signint: parser(signint)
+//
+(* ****** ****** *)
+
 implement
 p_precopt
   (buf, err) = let
@@ -2258,22 +2268,107 @@ case+ tnd of
   }
 | T_LPAREN() => let
     val () = buf.incby1()
+(*
     val toks =
-      p_idintseq(buf, err)
-    // end of [val]
+    p_idintseq(buf, err)
+*)
+    val pval =
+      p_precval(buf, err)
     val tok2 = p_RPAREN(buf, err)
   in
-    PRECOPTlist(tok, toks, tok2)
+    PRECOPTlist(tok, pval, tok2)
   end
 //
 | _(*non-INT1-LPAREN*) => PRECOPTnil()
 //
 end // end of [p_precopt]
 
+(* ****** ****** *)
+
+implement
+p_precval
+  (buf, err) = let
+//
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| T_INT1 _ =>
+  PRECVALint(tok) where
+  {
+    val () = buf.incby1()
+  }
+| _ (* non-INT1 *) =>
+  PRECVALopr(id0, pmod) where
+  {
+    val id0 = p_i0dnt(buf, err)
+    val pmod = p_precmod(buf, err)
+  }
+//
+end // end of [p_precval]
+
+(* ****** ****** *)
+
+implement
+p_signint
+  (buf, err) = let
+//
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| T_INT1 _ =>
+  SIGNINTint(tok) where
+  {
+    val () = buf.incby1()
+  }
+| _ (* non-INT1 *) =>
+  SIGNINTopr(tok, tint) where
+  {
+    val () = buf.incby1()
+    val tint = buf.get1()
+  }
+//
+end // end of [p_signint]
+
+(* ****** ****** *)
+
+implement
+p_precmod
+  (buf, err) = let
+//
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+| T_LPAREN() =>
+  PRECMODsome
+  (tbeg, sint, tend) where
+  {
+    val () = buf.incby1()
+    val sint =
+      p_signint(buf, err)
+    val tbeg = tok
+    val tend = p_RPAREN(buf, err)
+  }
+| _ (* non-LPAREN *) => PRECMODnone()
+//
+end // end of [p_signint]
+
+(* ****** ****** *)
+
 static
 fun
-p_abstdf0
- : parser(abstdf0)
+p_abstdf0: parser(abstdf0)
+
+(* ****** ****** *)
+
 implement
 p_abstdf0
   (buf, err) = let

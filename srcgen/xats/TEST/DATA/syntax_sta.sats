@@ -22,7 +22,7 @@
 (* ****** ****** *)
 
 (*
-#infixl 70 app
+#infixl 70 app // the app_prcdv
 *)
 
 (* ****** ****** *)
@@ -62,15 +62,15 @@
 
 (* ****** ****** *)
 //
-#infix0 40 < <= > >=
+#infix0 40 < > <= >=
 //
 (*
 //
 // HX-2012-07: removed
 //
 #infixl ( < ) ilt flt plt ult
-#infixl ( <= ) ilte flte plte ulte
 #infixl ( > ) igt fgt pgt ugt
+#infixl ( <= ) ilte flte plte ulte
 #infixl ( >= ) igte fgte pgte ugte
 *)
 //
@@ -80,7 +80,7 @@
 
 (* ****** ****** *)
 
-#infix 30 = == != // <>
+#infix0 30 = == != // <>
 
 (* ****** ****** *)
 
@@ -130,6 +130,10 @@
 #infix0 (0) :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
 #infix0 (0) :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
 *)
+
+(* ****** ****** *)
+
+#nonfix foo bar baz
 
 (* ****** ****** *)
 

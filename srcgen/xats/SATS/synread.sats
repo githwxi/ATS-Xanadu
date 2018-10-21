@@ -71,6 +71,11 @@ synerr =
 //
 | SYNERRsort0 of (sort0)
 //
+| SYNERRs0arg of (s0arg)
+| SYNERRs0marg of (s0marg)
+//
+| SYNERRs0exp of (s0exp)
+//
 | SYNERRtoken of (tnode, token)
 //
 (* ****** ****** *)
@@ -187,6 +192,15 @@ synread_d0eclist: synreader(d0eclist)
 (* ****** ****** *)
 //
 fun{}
+synread_INT1: synreader(token)
+fun{}
+synread_INT12: synreader(token)
+fun{}
+synread_INT123: synreader(token)
+//
+(* ****** ****** *)
+//
+fun{}
 synread_EQ: synreader(token)
 fun{}
 synread_LT: synreader(token)
@@ -261,19 +275,26 @@ synread_RECORD: synreader(token)
 (* ****** ****** *)
 //
 fun{}
+synread_IDENT_qual: synreader(token)
+//
+(* ****** ****** *)
+//
+(*
+fun{}
 synread_SORTDEF: synreader(token)
 fun{}
 synread_SEXPDEF: synreader(token)
+*)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_precopt: synreader(precopt)
 //
 (* ****** ****** *)
 //
 fun{}
 synread_s0rtdef: synreader(s0rtdef)
-//
-(* ****** ****** *)
-//
-fun{}
-synread_IDENT_qual: synreader(token)
 //
 (* ****** ****** *)
 

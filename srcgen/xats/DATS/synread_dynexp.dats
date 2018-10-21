@@ -58,48 +58,6 @@ _(*TMP*) = "./../DATS/synread_basics.dats"
 _(*TMP*) = "./../DATS/synread_staexp.dats"
 
 (* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_SORTDEF
-  (tok) =
-(
-case+
-tok.node() of
-| T_SORTDEF() => ()
-| _(*non-*SORTDEF*) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_SORTDEF, tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_SORTDEF: tok = ", tok)
-  end // end of [let]
-) (* end of [synread_SORTDEF] *)
-
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-synread_SEXPDEF
-  (tok) =
-(
-case+
-tok.node() of
-| T_SEXPDEF _ => ()
-| _(*non-*SEXPDEF*) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRtoken(T_SEXPDEF(0), tok))
-  in
-    prerr(tok.loc());
-    prerrln!(": synread_SEXPDEF: tok = ", tok)
-  end // end of [let]
-) (* end of [synread_SEXPDEF] *)
-
-(* ****** ****** *)
 //
 implement
 {}(*tmp*)
@@ -133,11 +91,28 @@ in
 case+
 d0c0.node() of
 //
+| D0Cnonfix
+  (tok, i0ds) =>
+  {
+(*
+    val () =
+    synread_SRP_NONFIX<>(tok)
+*)
+    val () =
+      synread_i0dntlst<>(i0ds)
+    // end of [val]
+  }
+//
 | D0Csortdef
   (tok, tid, teq, def) =>
   {
-    val () = synread_SORTDEF<>(tok)
-    val () = synread_s0tid<>(tid)
+(*
+    val () =
+    synread_SORTDEF<>(tok)
+*)
+    val () =
+      synread_s0tid<>(tid)
+    // end of [val]
     val () = synread_EQ<>(teq)
     val () = synread_s0rtdef<>(def)
   }
@@ -146,12 +121,22 @@ d0c0.node() of
   ( tok, sid
   , s0ms, opt, teq, def) =>
   {
-    val () = synread_SEXPDEF<>(tok)
+(*
+    val () =
+      synread_SEXPDEF<>(tok)
+    // end of [val]
+*)
     val () = synread_s0eid<>(sid)
     val () = synread_sort0opt<>(opt)
     val () = synread_EQ<>(teq)  
     val () = synread_s0exp<>(def)
   }
+//
+| D0Cnone(tok) =>
+  (
+    prerrln!(loc0, ": [d0ecl] needed");
+    prerrln!(tok.loc(), ": tokerr: ", tok);
+  )
 //
 | D0Ctokerr(tok) =>
   (
@@ -178,6 +163,27 @@ implement(env)
 list_foreach$fwork<d0ecl><env>(d0c, env) = synread_d0ecl<>(d0c)
 } (* end of [synread_d0explst] *)
 //
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_precopt
+  (opt) =
+(
+case+ opt of
+| PRECOPTnil() => ()
+| PRECOPTsing(tok) =>
+  {
+    val () = synread_INT1(tok)
+  }
+| PRECOPTlist
+  (tbeg, toks, tend) =>
+  {
+    val () = synread_LPAREN(tbeg)
+    val () = synread_RPAREN(tend)
+  }
+)
+
 (* ****** ****** *)
 
 implement
