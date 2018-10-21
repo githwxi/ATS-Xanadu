@@ -54,6 +54,7 @@ ENV = "./../SATS/symenv.sats"
 LOC = "./../SATS/location.sats"
 overload + with $LOC.location_combine
 overload print with $LOC.print_location
+overload prerr with $LOC.prerr_location
 
 (* ****** ****** *)
 //
@@ -85,6 +86,8 @@ stadef
 prcdv = $FIX.prcdv
 macdef
 int2prcdv = $FIX.int2prcdv
+macdef
+prcdv2int = $FIX.prcdv2int
 //
 (* ****** ****** *)
 //
@@ -1820,16 +1823,94 @@ aux_precopt
 case+ opt of
 | PRECOPTnil() =>
   int2prcdv(0)
-| PRECOPTsing(tok) => let
+| PRECOPTsing(tok) =>
+  let
     val-
     T_INT1(rep) = tok.node()
   in
     int2prcdv(g0string2int(rep))
   end // end of [PRECOPTsing]
 //
-| PRECOPTlist(_, toks, _) => int2prcdv(0) // FIXME!!!
+| PRECOPTlist(_, pval, _) =>
+  (
+    int2prcdv(aux_precval(pval))
+  )
 //
 ) (* end of [aux_precopt] *)
+
+and
+aux_precval
+(pval: precval): int =
+(
+case+ pval of
+| PRECVALint(tint) =>
+  g0string2int(rep) where
+  {
+    val-
+    T_INT1(rep) = tint.node()
+  } (* end of [PRECVALint] *)
+| PRECVALopr(topr, pmod) =>
+  (
+  case+ pmod of
+  | PRECMODnone
+    ((*void*)) => pint
+  | PRECMODsome
+    (_, sint, _) => pint + aux_signint(sint)
+  ) where
+  {
+    val-
+    I0DNTsome(tok) = topr.node()
+    val nam =
+    (
+    case- tok.node() of
+    | T_IDENT_alp(nam) => nam
+    | T_IDENT_sym(nam) => nam
+    ) : string // end of [val]
+    val sym = $SYM.symbol_make(nam)
+    val opt = the_fixtyenv_search(sym)
+    val pint =
+    (
+    case+ opt of
+    | ~Some_vt(fxty) =>
+      (
+        prcdv2int($FIX.fixty_prcdv(fxty))
+      )
+    | ~None_vt((*void*)) => 0 where
+      {
+        val
+        loc = topr.loc()
+        val
+        ((*warn*)) =
+        prerrln!(loc, ": warning(1): [", nam, "] is a non-operator!")
+      }
+    ) : int // end of [val]
+  }
+)
+
+and
+aux_signint
+(sint: signint): int =
+(
+case+ sint of
+| SIGNINTint(tint) =>
+  g0string2int(rep) where
+  {
+    val-
+    T_INT1(rep) = tint.node()
+  } (* end of [SIGNINTint] *)
+| SIGNINTopr(topr, tint) =>
+  (
+  case-
+  topr.node() of
+  | T_IDENT_sym("+") => int
+  | T_IDENT_sym("-") => ~int
+  ) where
+  {
+    val-
+    T_INT1(rep) = tint.node()
+    val int = g0string2int(rep)
+  } (* end of [SIGNINTopr] *)
+)
 
 (* ****** ****** *)
 

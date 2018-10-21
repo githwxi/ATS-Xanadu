@@ -932,12 +932,51 @@ fprint_precopt
 (
 case+ x0 of
 | PRECOPTnil() =>
-  fprint(out, "PRECOPTnil()")
+  fprint!(out, "PRECOPTnil()")
 | PRECOPTsing(tok) =>
   fprint!(out, "PRECOPTsing(", tok, ")")
-| PRECOPTlist(t0, ts, t1) =>
-  fprint!(out, "PRECOPTlist(", t0, "; ", ts, "; ", t1)
+| PRECOPTlist(tbeg, pval, tend) =>
+  fprint!
+  ( out
+  , "PRECOPTlist(", tbeg, "; ", pval, "; ", tend)
 ) (* end of [fprint_precopt] *)
+
+implement
+fprint_precval
+  (out, x0) =
+(
+case+ x0 of
+| PRECVALint(tint) =>
+  fprint!
+  (out, "PRECVALint(", tint, ")")
+| PRECVALopr(topr, pmod) =>
+  fprint!
+  (out, "PRECVALopr(", topr, "; ", pmod, ")")
+)
+
+implement
+fprint_precmod
+  (out, x0) =
+(
+case+ x0 of
+| PRECMODnone() =>
+  fprint!(out, "PRECMODnone()")
+| PRECMODsome(tbeg, sint, tend) =>
+  fprint!
+  ( out
+  , "PRECMODsome(", tbeg, "; ", sint, "; ", tend, ")")
+)
+
+implement
+fprint_signint
+  (out, x0) =
+(
+case+ x0 of
+| SIGNINTint(tint) =>
+  fprint!(out, "SIGNINTint(", tint, ")")
+| SIGNINTopr(topr, tint) =>
+  fprint!(out, "SIGNINTopr(", topr, "; ", tint, ")")
+)
 
 (* ****** ****** *)
 

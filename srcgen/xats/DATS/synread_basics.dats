@@ -59,6 +59,27 @@ synerr_add(xerr) = ()
 
 implement
 {}(*tmp*)
+synread_INT1
+  (tok) =
+(
+case+
+tok.node() of
+| T_INT1 _ => ()
+| _(*non-INT1*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_INT1(""), tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_INT1: tok = ", tok)
+  end // end of [let]
+) (* end of [synread_INT1] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 synread_EQ
   (tok) =
 (
@@ -519,6 +540,52 @@ tok.node() of
     prerrln!(": synread_IDENT_qual: tok = ", tok)
   end // end of [let]
 )
+
+(* ****** ****** *)
+
+(*
+implement
+{}(*tmp*)
+synread_SORTDEF
+  (tok) =
+(
+case+
+tok.node() of
+| T_SORTDEF() => ()
+| _(*non-*SORTDEF*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_SORTDEF, tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_SORTDEF: tok = ", tok)
+  end // end of [let]
+) (* end of [synread_SORTDEF] *)
+*)
+
+(* ****** ****** *)
+
+(*
+implement
+{}(*tmp*)
+synread_SEXPDEF
+  (tok) =
+(
+case+
+tok.node() of
+| T_SEXPDEF _ => ()
+| _(*non-*SEXPDEF*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_SEXPDEF(0), tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_SEXPDEF: tok = ", tok)
+  end // end of [let]
+) (* end of [synread_SEXPDEF] *)
+*)
 
 (* ****** ****** *)
 

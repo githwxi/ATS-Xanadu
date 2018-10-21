@@ -74,7 +74,7 @@ VERBOSE_FIXITY
 (* ****** ****** *)
 
 (*
-#infixl 70 app
+#infixl 70 app // the app_prcdv
 *)
 
 (* ****** ****** *)
