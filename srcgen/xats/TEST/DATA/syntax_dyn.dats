@@ -18,7 +18,8 @@ sexpdef
 list0_int_1 =
 (lam(a:type)(n:int) => list(a, n))(int)(1)
 
-sexpdef rec = @{x= int | y= int}
+sexpdef tup = @(int | int)
+sexpdef rec = @{1= int | y= int}
 
 ////
 (* ****** ****** *)

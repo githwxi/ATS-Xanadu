@@ -188,12 +188,18 @@ synread_d0eclist: synreader(d0eclist)
 //
 fun{}
 synread_EQ: synreader(token)
+fun{}
+synread_LT: synreader(token)
+fun{}
+synread_GT: synreader(token)
 //
 fun{}
 synread_BAR: synreader(token)
 //
 fun{}
 synread_EQGT: synreader(token)
+fun{}
+synread_MSLT: synreader(token)
 //
 fun{}
 synread_LPAREN: synreader(token)
@@ -244,6 +250,13 @@ fun{}
 synread_LOCAL: synreader(token)
 fun{}
 synread_ENDLOCAL: synreader(token)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_TUPLE: synreader(token)
+fun{}
+synread_RECORD: synreader(token)
 //
 (* ****** ****** *)
 //

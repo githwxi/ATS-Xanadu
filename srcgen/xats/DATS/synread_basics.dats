@@ -80,6 +80,48 @@ tok.node() of
 
 implement
 {}(*tmp*)
+synread_LT
+  (tok) =
+(
+case+
+tok.node() of
+| T_LT() => ()
+| _(*non-LT*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_LT, tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_LT: tok = ", tok)
+  end // end of [let]
+) (* end of [synread_LT] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_GT
+  (tok) =
+(
+case+
+tok.node() of
+| T_GT() => ()
+| _(*non-GT*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_GT, tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_GT: tok = ", tok)
+  end // end of [let]
+) (* end of [synread_GT] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 synread_BAR
   (tok) =
 (
@@ -117,6 +159,27 @@ tok.node() of
     prerrln!(": synread_EQGT: tok = ", tok)
   end // end of [let]
 ) (* end of [synread_EQGT] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_MSLT
+  (tok) =
+(
+case+
+tok.node() of
+| T_MSLT() => ()
+| _(*non-MSLT*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_MSLT, tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_MSLT: tok = ", tok)
+  end // end of [let]
+) (* end of [synread_MSLT] *)
 
 (* ****** ****** *)
 
@@ -393,6 +456,48 @@ synread_ENDLOCAL
       prerrln!(": synread_ENDLOCAL: tok = ", tok)
     end // end of [let]
 ) (* end of [synread_ENDLOCAL] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_TUPLE
+  (tok) =
+(
+case+
+tok.node() of
+| T_TUPLE _ => ()
+| _(* non-TUPLE *) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_TUPLE(0), tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_TUPLE: tok = ", tok)
+  end // end of [let]
+)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_RECORD
+  (tok) =
+(
+case+
+tok.node() of
+| T_RECORD _ => ()
+| _(* non-RECORD *) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(T_RECORD(0), tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": synread_RECORD: tok = ", tok)
+  end // end of [let]
+)
 
 (* ****** ****** *)
 
