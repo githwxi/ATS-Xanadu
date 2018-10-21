@@ -1,0 +1,26 @@
+########################
+An overview of ATS
+########################
+
+ATS is a programming language of an ML-like core that is equipped with
+an advanced type system in which dependent types (based on predicate
+logic) and linear types (based on Girard's linear logic) are
+supported.  The dependent types in ATS are of DML-style, which are
+fundamentally different from those formulated by Martin-Lof for the
+purpose of establishing a type-theoretic foundation for
+mathematics. Note that DML refers to Dependent ML, a dependently typed
+programming language that is now regarded as the predecessor of ATS.
+
+ATS is stratified. In ATS, there are both a static component (statics)
+and a dynamic component (dynamics), containing static terms and dynamic
+terms, respectively. In the following presentation, I may also use 'term'
+and 'expression' exchangeably.
+
+While types are static terms, not all the static terms are types.
+And sorts are introduced to classify static terms. For instance, some
+of the commonly used built-in sorts in ATS are listed as follows: int,
+bool, type, vtype, prop, and view. The sorts int and bool are
+predicative while the sorts type, vtype, prop and view are impredicative.
+
+############ end of [overview.txt] ############
+

@@ -102,12 +102,14 @@ VERBOSE_FIXITY
 //
 (* ****** ****** *)
 
-#prefix 51 - (*negative*)
 #prefix 51 ~ (*negative*)
 
 (* ****** ****** *)
 //
 #infixl 50 + - (*additive*)
+//
+#prefix(+(+1)) + (* uplus *)
+#prefix(-(+1)) - (* uminus *)
 //
 (*
 #infixr (+) ++ // concatenative
