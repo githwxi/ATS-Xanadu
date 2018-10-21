@@ -88,28 +88,28 @@ VERBOSE_FIXITY
 // HX-2015-08-04:
 // mostly following the Fortran convention
 //
-#infixr 61 ** (*exp*)
+#infixr ** of 61 (*exp*)
 //
 (* ****** ****** *)
 //
 // multiplicative
 //
-#infixl 60 * / % mod
+#infixl * / % mod of 60
 //
 (*
-#infixl 60 nmul ndiv nmod
+#infixl nmul ndiv nmod of 60
 *)
 //
 (* ****** ****** *)
 
-#prefix 51 ~ (*negative*)
+#prefix ~ of 51 (*negative*)
 
 (* ****** ****** *)
 //
-#infixl 50 + - (*additive*)
+#infixl + - of 50 (*additive*)
 //
-#prefix(+(+1)) + (* uplus *)
-#prefix(-(+1)) - (* uminus *)
+#prefix + of (+(+1)) (* uplus *)
+#prefix - of (-(+1)) (* uminus *)
 //
 (*
 #infixr (+) ++ // concatenative
@@ -117,63 +117,62 @@ VERBOSE_FIXITY
 //
 (* ****** ****** *)
 
-#infixl 41 asl asr
-#infixl 41 lsl lsr
+#infixl asl asr of 41
+#infixl lsl lsr of 41 
 
 (* ****** ****** *)
 //
-#infix0 40 < <= > >=
+#infix0 < <= of 40
+#infix0 > >= of 40
 //
 (* ****** ****** *)
 
-#infixr 40 :: @
+#infixr :: @ of 40
 
 (* ****** ****** *)
 
-#infix0 30 = == != // <>
+#infix0 = == != of 30
 
 (* ****** ****** *)
 
-#infixl 21 &&
-#infixl ( && ) andalso land
+#infixl && of 21
+#infixl || of 20
+
+#infixl andalso land of &&
+#infixl orelse xor lor lxor of ||
 
 (* ****** ****** *)
 
-#infixl 20 ||
-#infixl ( || ) xor orelse lor lxor
+#infixr -> of 10
 
 (* ****** ****** *)
 
-#infixr 10 ->
+#infix0 := of 0 // HX: assign
+#infix0 :=: of 0 // HX: exchange
 
 (* ****** ****** *)
 
-#infix0 0 := // HX: assign
-#infix0 0 :=: // HX: exchange
-
-(* ****** ****** *)
-
-#infixl 0 << (* g0int_asl, g0uint_lsl *)
-#infixr 0 >> (* g0int_asr, g0uint_lsr *)
+#infixl << of 0 (* asl/lsl *)
+#infixr >> of 0 (* asr/lsr *)
 
 (* ****** ****** *)
 
 (*
-#prefix 0 ++ -- // inc and dec
-#prefix 0 !++ --! // getinc and decget
-#infixr 0 =++ --= // setinc and decset
+#prefix ++ -- // inc and dec
+#prefix !++ --! // getinc and decget
+#infixr =++ --= // setinc and decset
 *)
 
 (* ****** ****** *)
 
 (*
-#infix0 0 :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
-#infix0 0 :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
+#infix0 :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
+#infix0 :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
 *)
 
 (* ****** ****** *)
 
-#prefix 0 ignoret // ignoring a funcall return
+#prefix ignoret of 0 // ignoring a funcall return
 
 (* ****** ****** *)
 

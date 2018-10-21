@@ -1,28 +1,15 @@
 (* ****** ****** *)
 //
 (*
-#prefix 00 ! (* static *)
+#prefix ! of 00 (* static *)
 *)
 //
-#prefix 99 ! (* dynamic *)
+#prefix ! of 99 (* dynamic *)
 //
 (* ****** ****** *)
 
 (*
-#postfix 80 .lab // dynamic
-#postfix 80 ->lab // dynamic
-*)
-
-(* ****** ****** *)
-
-(*
-#prefix 79 & // dynamic
-*)
-
-(* ****** ****** *)
-
-(*
-#infixl 70 app // the app_prcdv
+#infixl app of 70 // the app_prcdv
 *)
 
 (* ****** ****** *)
@@ -30,107 +17,54 @@
 // HX-2015-08-04:
 // mostly following the Fortran convention
 //
-#infixr 61 ** (*exp*)
+#infixr ** of 61 (*exp*)
 //
 (* ****** ****** *)
 //
 // multiplicative
 //
-#infixl 60 * / % mod
-//
-(*
-#infixl 60 nmul ndiv nmod
-*)
+#infixl * / % mod of 60
 //
 (* ****** ****** *)
 
-#prefix 51 ~ (* neg *)
+#prefix ~ of 51 (* neg *)
 
 (* ****** ****** *)
 //
-#infixl 50 + - (*additive*)
-#prefix(+(+1)) + (* uplus *)
-#prefix(-(+1)) - (* uminus *)
+#infixl + - of 50 (*additive*)
+#prefix + of +(+1) (* uplus *)
+#prefix - of -(+1) (* uminus *)
 //
 (*
 #infixr(+) ++ // concatenative
 *)
 //
 (* ****** ****** *)
-
-#infixl 41 asl asr
-#infixl 41 lsl lsr
-
-(* ****** ****** *)
 //
-#infix0 40 < > <= >=
-//
-(*
-//
-// HX-2012-07: removed
-//
-#infixl( < ) ilt flt plt ult
-#infixl( > ) igt fgt pgt ugt
-#infixl( <= ) ilte flte plte ulte
-#infixl( >= ) igte fgte pgte ugte
-*)
+#infix0 < <= of 40
+#infix0 > >= of 40
 //
 (* ****** ****** *)
 
-#infixr 40 :: @
+#infixr :: @ of 40
 
 (* ****** ****** *)
 
-#infix0 30 = == != // <>
+#infix0 = == != of 30
 
 (* ****** ****** *)
 
-(*
-//
-// HX-2012-07: removed
-//
-#infix ( = ) ieq feq peq ueq
-#infix ( <> ) ineq fneq pneq uneq
-*)
+#infixl && of 21
+#infixl andalso land of &&
 
 (* ****** ****** *)
 
-#infixl 21 &&
-#infixl ( && ) andalso land
+#infixl || of 20
+#infixl orelse xor lor lxor of ||
 
 (* ****** ****** *)
 
-#infixl 20 ||
-#infixl ( || ) xor orelse lor lxor
-
-(* ****** ****** *)
-
-#infixr 10 ->
-
-(* ****** ****** *)
-
-#infix0 (0) := // HX: assign
-#infix0 (0) :=: // HX: exchange
-
-(* ****** ****** *)
-
-#infixl (0) << (* g0int_asl, g0uint_lsl *)
-#infixr (0) >> (* g0int_asr, g0uint_lsr *)
-
-(* ****** ****** *)
-
-(*
-#prefix (0) ++ -- // inc and dec
-#prefix (0) !++ --! // getinc and decget
-#infixr (0) =++ --= // setinc and decset
-*)
-
-(* ****** ****** *)
-
-(*
-#infix0 (0) :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
-#infix0 (0) :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
-*)
+#infixr -> of 10
 
 (* ****** ****** *)
 

@@ -2243,8 +2243,6 @@ static
 fun
 p_precopt: parser(precopt)
 and
-p_precval: parser(precval)
-and
 p_precmod: parser(precmod)
 and
 p_signint: parser(signint)
@@ -2261,53 +2259,20 @@ val tnd = tok.node()
 in
 //
 case+ tnd of
+//
 | T_INT1 _ =>
-  PRECOPTsing(tok) where
-  {
-    val () = buf.incby1()
-  }
-| T_LPAREN() => let
-    val () = buf.incby1()
-(*
-    val toks =
-    p_idintseq(buf, err)
-*)
-    val pval =
-      p_precval(buf, err)
-    val tok2 = p_RPAREN(buf, err)
-  in
-    PRECOPTlist(tok, pval, tok2)
-  end
-//
-| _(*non-INT1-LPAREN*) => PRECOPTnil()
-//
-end // end of [p_precopt]
-
-(* ****** ****** *)
-
-implement
-p_precval
-  (buf, err) = let
-//
-val tok = buf.get0()
-val tnd = tok.node()
-//
-in
-//
-case+ tnd of
-| T_INT1 _ =>
-  PRECVALint(tok) where
+  PRECOPTint(tok) where
   {
     val () = buf.incby1()
   }
 | _ (* non-INT1 *) =>
-  PRECVALopr(id0, pmod) where
+  PRECOPTopr(id0, pmod) where
   {
     val id0 = p_i0dnt(buf, err)
     val pmod = p_precmod(buf, err)
   }
 //
-end // end of [p_precval]
+end // end of [p_precopt]
 
 (* ****** ****** *)
 
@@ -2359,7 +2324,7 @@ case+ tnd of
   }
 | _ (* non-LPAREN *) => PRECMODnone()
 //
-end // end of [p_signint]
+end // end of [p_precmod]
 
 (* ****** ****** *)
 
@@ -3367,10 +3332,21 @@ abstype ::=
 //
     val () = buf.incby1()
 //
-    val opt =
-      p_precopt(buf, err)
     val ids =
       p_i0dntseq(buf, err)
+    val tok2 = buf.get0()
+    val opt2 =
+    (
+      case+
+      tok2.node() of
+      | T_OF() =>
+        p_precopt
+        (buf, err) where
+        {
+          val () = buf.incby1()
+        }
+      | _(* non-OF *) => PRECOPTnil()
+    ) : precopt // end of [val]
 //
     val loc_res =
     (
@@ -3383,7 +3359,7 @@ abstype ::=
     ) : loc_t // end of [val]
   in
     err := e0;
-    d0ecl_make_node(loc_res, D0Cfixity(tok, opt, ids))
+    d0ecl_make_node(loc_res, D0Cfixity(tok, ids, opt2))
   end // end of [FIXITY(knd)]
 //
 | _ (* errorcase *) =>
