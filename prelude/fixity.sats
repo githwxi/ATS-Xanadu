@@ -53,34 +53,35 @@ VERBOSE_FIXITY
 (* ****** ****** *)
 //
 (*
-#prefix 00 ! (* static *)
+#prefix ! of 00 (* static *)
 *)
 //
-#prefix 99 ! (* dynamic *)
+#prefix ! of 99 (* dynamic *)
 //
 (* ****** ****** *)
 
 (*
-#postfix 80 .lab // dynamic
-#postfix 80 ->lab // dynamic
+#postfix .lab of 80 // dynamic
+#postfix ->lab of 80 // dynamic
 *)
 
 (* ****** ****** *)
 
 (*
-#prefix 79 & // dynamic
+#prefix & of 79 // dynamic
 *)
 
 (* ****** ****** *)
 
 (*
-#infixl 70 app // the app_prcdv
+#infixl
+app of 70 // the app_prcdv
 *)
 
 (* ****** ****** *)
 
 (*
-#postfix 69 ?
+#postfix ? of 69 // static?
 *)
 
 (* ****** ****** *)
@@ -122,21 +123,17 @@ VERBOSE_FIXITY
 
 (* ****** ****** *)
 //
-#infix0 < <= of 40
-#infix0 > >= of 40
+#infixr :: @ of 40
+#infix0 < <= > >= of 40
 //
 (* ****** ****** *)
 
-#infixr :: @ of 40
+#infix0 = != == !== of 30
 
 (* ****** ****** *)
 
-#infix0 = == != of 30
-
-(* ****** ****** *)
-
-#infixl && of 21
 #infixl || of 20
+#infixl && of ||(+1)
 
 #infixl andalso land of &&
 #infixl orelse xor lor lxor of ||
