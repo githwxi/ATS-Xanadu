@@ -218,7 +218,10 @@ tnode =
     // implmnt implement: val/fun
     // primplmnt primplement: prval/prfun
 //
+  | T_ABSSORT of ()
+//
   | T_SORTDEF of ()
+//
   | T_SEXPDEF of int(*kind*)
 //
   | T_ABSTYPE of int(*kind*)

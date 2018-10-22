@@ -60,6 +60,9 @@ prelude:: opverb_dats
 
 PRELUDE=./../../../prelude
 
+basics_sats:; \
+$(CAT) $(PRELUDE)/basics.sats | $(XATSOPT) --static
+
 list_sats:; \
 $(CAT) $(PRELUDE)/SATS/list.sats | $(XATSOPT) --static
 list_dats:; \

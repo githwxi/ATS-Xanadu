@@ -2,14 +2,17 @@
 An overview of ATS
 ########################
 
-ATS is a programming language of an ML-like core that is equipped with
-an advanced type system in which dependent types (based on predicate
-logic) and linear types (based on Girard's linear logic) are
-supported.  The dependent types in ATS are of DML-style, which are
-fundamentally different from those formulated by Martin-Lof for the
-purpose of establishing a type-theoretic foundation for
-mathematics. Note that DML refers to Dependent ML, a dependently typed
-programming language that is now regarded as the predecessor of ATS.
+ATS is a programming language equipped with an advanced type system in
+which dependent types (based on predicate logic) and linear types
+(based on Girard's linear logic) are supported. The core of ATS
+consists of an ML-like functional programming language, which is
+call-by-value and allows effects (such as references and exceptions).
+
+The dependent types in ATS are of DML-style, which are fundamentally
+different from those formulated by Martin-Lof in his attempt to
+establish a type-theoretic foundation for mathematics.  Note that DML
+refers to Dependent ML, a dependently typed programming language that
+is now regarded as the predecessor of ATS.
 
 ATS is stratified. In ATS, there are both a static component (statics)
 and a dynamic component (dynamics), containing static terms and dynamic

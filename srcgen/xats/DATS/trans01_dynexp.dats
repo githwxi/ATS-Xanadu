@@ -2082,22 +2082,22 @@ end // end of [aux_staload]
 (* ****** ****** *)
 
 fun
-aux_symload
+aux_abssort
 ( d0c0
 : d0ecl): d1ecl = let
 //
 val loc0 = d0c0.loc()
 //
 val-
-D0Csymload
-(tok, sym, _, dqid, tint) = d0c0.node()
+D0Cabssort
+(tok, tid) = d0c0.node()
+//
+val-
+I0DNTsome(tid) = tid.node()
 //
 in
-//
-d1ecl_make_node
-  (loc0, D1Csymload(tok, sym, dqid, tint))
-//
-end // end of [aux_symload]
+d1ecl_make_node(loc0, D1Cabssort(tok, tid))
+end // end of [aux_abssort]
 
 (* ****** ****** *)
 
@@ -2404,6 +2404,26 @@ end // end of [aux_impdecl]
 (* ****** ****** *)
 
 fun
+aux_symload
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Csymload
+(tok, sym, _, dqid, tint) = d0c0.node()
+//
+in
+//
+d1ecl_make_node
+  (loc0, D1Csymload(tok, sym, dqid, tint))
+//
+end // end of [aux_symload]
+
+(* ****** ****** *)
+
+fun
 aux_datasort
 ( d0c0
 : d0ecl): d1ecl = let
@@ -2570,7 +2590,7 @@ d0c0.node() of
 //
 | D0Cstaload _ => aux_staload(d0c0)
 //
-| D0Csymload _ => aux_symload(d0c0)
+| D0Cabssort _ => aux_abssort(d0c0)
 //
 | D0Cstacst0 _ => aux_stacst0(d0c0)
 //
@@ -2586,6 +2606,8 @@ d0c0.node() of
 | D0Cfundecl _ => aux_fundecl(d0c0)
 //
 | D0Cimpdecl _ => aux_impdecl(d0c0)
+//
+| D0Csymload _ => aux_symload(d0c0)
 //
 | D0Cdatasort _ => aux_datasort(d0c0)
 //

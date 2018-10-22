@@ -285,6 +285,9 @@ case+ tnd of
 | T_IMPLMNT(knd) =>
   fprint!(out, "IMPLMNT(", knd, ")")
 //
+| T_ABSSORT() =>
+  fprint!(out, "ABSSORT(", ")")
+//
 | T_SORTDEF() =>
   fprint!(out, "SORTDEF(", ")")
 //
@@ -532,6 +535,9 @@ case+ tnd of
 //
 | T_IMPLMNT(knd) =>
   fprint!(out, "implmnt(", knd, ")")
+//
+| T_ABSSORT() =>
+  fprint!(out, "abssort(", ")")
 //
 | T_SORTDEF() =>
   fprint!(out, "sortdef(", ")")

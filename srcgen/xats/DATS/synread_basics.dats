@@ -71,8 +71,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_INT1(""), tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_INT1: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(INT1): ", tok);
   end // end of [let]
 ) (* end of [synread_INT1] *)
 
@@ -92,8 +92,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_EQ, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_EQ: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(EQ): ", tok);
   end // end of [let]
 ) (* end of [synread_EQ] *)
 
@@ -113,8 +113,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_LT, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_LT: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(LT): ", tok);
   end // end of [let]
 ) (* end of [synread_LT] *)
 
@@ -134,8 +134,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_GT, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_GT: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(GT): ", tok);
   end // end of [let]
 ) (* end of [synread_GT] *)
 
@@ -155,8 +155,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_BAR, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_BAR: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(BAR): ", tok);
   end // end of [let]
 ) (* end of [synread_BAR] *)
 
@@ -176,8 +176,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_EQGT, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_EQGT: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(EQGT): ", tok);
   end // end of [let]
 ) (* end of [synread_EQGT] *)
 
@@ -197,8 +197,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_MSLT, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_MSLT: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(MSLT): ", tok)
   end // end of [let]
 ) (* end of [synread_MSLT] *)
 
@@ -218,8 +218,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_LPAREN, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_LPAREN: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(LPAREN): ", tok)
   end // end of [let]
 ) (* end of [synread_LPAREN] *)
 
@@ -239,8 +239,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_RPAREN, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_RPAREN: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(RPAREN): ", tok)
   end // end of [let]
 ) (* end of [synread_RPAREN] *)
 
@@ -260,8 +260,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_LBRACE, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_LBRACE: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(LBRACE): ", tok)
   end // end of [let]
 ) (* end of [synread_LBRACE] *)
 
@@ -281,8 +281,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_RBRACE, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_RBRACE: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(RBRACE): ", tok)
   end // end of [let]
 ) (* end of [synread_RBRACE] *)
 
@@ -302,8 +302,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_LBRACK, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_LBRACK: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(LBRACK): ", tok)
   end // end of [let]
 ) (* end of [synread_LBRACK] *)
 
@@ -323,8 +323,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_RBRACK, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_RBRACK: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(RBRACK): ", tok)
   end // end of [let]
 ) (* end of [synread_RBRACK] *)
 
@@ -344,8 +344,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_EXISTS(0), tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_EXISTS: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(EXISTS): ", tok)
   end // end of [let]
 ) (* end of [synread_EXISTS] *)
 
@@ -365,8 +365,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_LAM(0), tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_LAM: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(LAM): ", tok)
   end // end of [let]
 ) (* end of [synread_LAM] *)
 
@@ -391,7 +391,7 @@ case+ opt of
       (SYNERRtoken(T_ENDLAM, tok))
     in
       prerr(tok.loc());
-      prerrln!(": synread_ENDLAM: tok = ", tok)
+      prerrln!(": SYNERR(ENDLAM): ", tok)
     end // end of [let]
   )
 ) (* end of [synread_ENDLAM] *)
@@ -412,8 +412,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_LET(), tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_LET: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(LET): ", tok)
   end // end of [let]
 ) (* end of [synread_LET] *)
 
@@ -433,7 +433,7 @@ synread_ENDLET
       (SYNERRtoken(T_ENDLET, tok))
     in
       prerr(tok.loc());
-      prerrln!(": synread_ENDLET: tok = ", tok)
+      prerrln!(": SYNERR(ENDLET): ", tok)
     end // end of [let]
 ) (* end of [synread_ENDLET] *)
 
@@ -454,7 +454,7 @@ tok.node() of
     (SYNERRtoken(T_LOCAL(), tok))
   in
     prerr(tok.loc());
-    prerrln!(": synread_LOCAL: tok = ", tok)
+    prerrln!(": SYNERR(LOCAL): ", tok)
   end // end of [let]
 ) (* end of [synread_LOCAL] *)
 
@@ -474,7 +474,7 @@ synread_ENDLOCAL
       (SYNERRtoken(T_ENDLOCAL, tok))
     in
       prerr(tok.loc());
-      prerrln!(": synread_ENDLOCAL: tok = ", tok)
+      prerrln!(": SYNERR(ENDLOCAL): ", tok)
     end // end of [let]
 ) (* end of [synread_ENDLOCAL] *)
 
@@ -494,8 +494,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_TUPLE(0), tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_TUPLE: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(TUPLE): ", tok)
   end // end of [let]
 )
 
@@ -515,8 +515,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_RECORD(0), tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_RECORD: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(RECORD): ", tok)
   end // end of [let]
 )
 
@@ -537,7 +537,7 @@ tok.node() of
     (SYNERRtoken(T_IDENT_qual(""), tok))
   in
     prerr(tok.loc());
-    prerrln!(": synread_IDENT_qual: tok = ", tok)
+    prerrln!(": SYNERR(IDENT_qual): ", tok)
   end // end of [let]
 )
 
@@ -558,8 +558,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_SORTDEF, tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_SORTDEF: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(SORTDEF): ", tok)
   end // end of [let]
 ) (* end of [synread_SORTDEF] *)
 *)
@@ -581,8 +581,8 @@ tok.node() of
     synerr_add
     (SYNERRtoken(T_SEXPDEF(0), tok))
   in
-    prerr(tok.loc());
-    prerrln!(": synread_SEXPDEF: tok = ", tok)
+    prerrln!
+    (tok.loc(), ": SYNERR(SEXPDEF): ", tok)
   end // end of [let]
 ) (* end of [synread_SEXPDEF] *)
 *)

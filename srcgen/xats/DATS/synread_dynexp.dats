@@ -92,14 +92,44 @@ case+
 d0c0.node() of
 //
 | D0Cnonfix
-  (tok, i0ds) =>
+  (tok, ids) =>
+  {
+    val () =
+    synread_i0dntlst<>(ids)
+  }
+//
+| D0Cfixity
+  (tok, ids, opt) =>
+  {
+    val () =
+    synread_i0dntlst<>(ids)
+//
+    val () =
+    (
+      synread_precopt<>(opt)
+    ) (* end of [val] *)
+  }
+//
+| D0Cstatic
+  (tok, d0c) =>
+  {
+    val () = synread_d0ecl(d0c)
+  }
+| D0Cextern
+  (tok, d0c) =>
+  {
+    val () = synread_d0ecl(d0c)
+  }
+//
+| D0Cabssort
+  (tok, tid) =>
   {
 (*
     val () =
-    synread_SRP_NONFIX<>(tok)
+    synread_ABSSORT<>(tok)
 *)
     val () =
-      synread_i0dntlst<>(i0ds)
+      synread_s0tid<>(tid)
     // end of [val]
   }
 //

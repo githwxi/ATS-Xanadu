@@ -730,9 +730,8 @@ d1ecl_node =
 | D1Cstaload of
   (token, d1exp) // file staloading
 //
-| D1Csymload of
-  ( token
-  , s0ymb, dq0eid, t0intopt)
+| D1Cabssort of
+  (token, token(*s0tid*))
 //
 | D1Cstacst0 of
   ( token
@@ -773,6 +772,10 @@ d1ecl_node =
   ( token(*impkind*)
   , declmodopt, sq1arglst, tq1arglst
   , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)
+//
+| D1Csymload of
+  ( token(*symload*)
+  , s0ymb, dq0eid, t0intopt)
 //
 | D1Cdatasort of
     (token(*datasort*), d1tsortlst)

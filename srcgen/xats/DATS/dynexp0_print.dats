@@ -821,12 +821,9 @@ case+ x0.node() of
   (out, "D0Cdynload(", tok, "; ", d0e, ")")
 *)
 //
-| D0Csymload
-  (tok, sym, twth, dqid, tint) =>
+| D0Cabssort(tok, tid) =>
   fprint!
-  ( out, "D0Csymload("
-  , tok, "; ", sym, "; "
-  , twth, "; ", dqid, "; ", tint, ")")
+  (out, "D0Cabssort(", tok, "; ", tid, ")")
 //
 | D0Cstacst0
   (tok, sid, tok1, s0t2) =>
@@ -887,6 +884,13 @@ case+ x0.node() of
   , "D0Cimpdecl("
   , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f0as, "; ", res0, "; ", teq1, "; ", d0e2, ")")
+//
+| D0Csymload
+  (tok, sym, twth, dqid, tint) =>
+  fprint!
+  ( out, "D0Csymload("
+  , tok, "; ", sym, "; "
+  , twth, "; ", dqid, "; ", tint, ")")
 //
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")
