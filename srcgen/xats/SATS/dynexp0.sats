@@ -982,9 +982,7 @@ for skipping error
   // end of [D0Cdynload]
 *)
 //
-| D0Csymload of
-  ( token(*SYMLOAD*)
-  , s0ymb, token, dq0eid, t0intopt)
+| D0Cabssort of (token, s0tid)
 //
 | D0Cstacst0 of
   (token, s0eid, token, sort0)
@@ -1024,6 +1022,10 @@ for skipping error
   , declmodopt//modifier
   , sq0arglst, tq0arglst
   , dq0eid, ti0arglst, f0arglst, effs0expopt, token, d0exp)
+//
+| D0Csymload of
+  ( token(*SYMLOAD*)
+  , s0ymb, token, dq0eid, t0intopt)
 //
 | D0Cdatasort of
     (token(*datasort*), d0tsortlst)

@@ -538,11 +538,9 @@ case+ x0.node() of
   fprint!
   (out, "D1Cstaload(", knd, "; ", d1e, ")")
 //
-| D1Csymload
-  (knd, sym, dqid, tint) =>
+| D1Cabssort(tok, tid) =>
   fprint!
-  ( out, "D1Csymload("
-  , knd, "; ", sym, "; ", dqid, "; ", tint, ")")
+  (out, "D1Cabssort(", tok, "; ", tid, ")")
 //
 | D1Cstacst0
   (tok, sid, s0t) =>
@@ -601,16 +599,21 @@ case+ x0.node() of
   , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f1as, "; ", res0, "; ", teq1, "; ", d1e2, ")")
 //
+| D1Csymload
+  (knd, sym, dqid, tint) =>
+  fprint!
+  ( out, "D1Csymload("
+  , knd, "; ", sym, "; ", dqid, "; ", tint, ")")
 //
 | D1Cdatasort
-  ( knd, d1tsts ) =>
+  (knd, d1tsts) =>
   fprint!
-  (out, "D1Cdatasort(", knd, "; ", d1tsts, ")")
+  ( out, "D1Cdatasort(", knd, "; ", d1tsts, ")" )
 //
 | D1Cdatatype
   (knd, d1typs, wopt) =>
   fprint!
-  (out
+  ( out
   , "D1Cdatatype(", knd, "; ", d1typs, "; ", wopt, ")")
 //
 | D1Cdynconst

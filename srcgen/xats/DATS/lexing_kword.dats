@@ -304,6 +304,8 @@ val () = myins("implement", T_IMPLMNT_)
 val () = myins("primplmnt", T_PRIMPLMNT_)
 val () = myins("primplement", T_PRIMPLMNT_)
 //
+val () = myins("abssort", T_ABSSORT)
+//
 val () = myins("sortdef", T_SORTDEF)
 //
 val () = myins("sexpdef", T_SEXPDEF_)

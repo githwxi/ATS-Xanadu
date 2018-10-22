@@ -70,7 +70,7 @@ int.node() of
     synerr_add(SYNERRt0int(int))
   in
     prerr(tok.loc());
-    prerrln!(": synread_t0int: tok = ", tok);
+    prerrln!(": SYNERR(t0int): ", tok);
   end // end of [let]
 )
 
@@ -90,7 +90,7 @@ chr.node() of
     synerr_add(SYNERRt0chr(chr))
   in
     prerr(tok.loc());
-    prerrln!(": synread_t0chr: tok = ", tok);
+    prerrln!(": SYNERR(t0chr): ", tok);
   end // end of [let]
 )
 
@@ -110,7 +110,7 @@ flt.node() of
     synerr_add(SYNERRt0flt(flt))
   in
     prerr(tok.loc());
-    prerrln!(": synread_t0flt: tok = ", tok);
+    prerrln!(": SYNERR(t0flt): ", tok);
   end // end of [let]
 )
 
@@ -130,7 +130,7 @@ str.node() of
     synerr_add(SYNERRt0str(str))
   in
     prerr(tok.loc());
-    prerrln!(": synread_t0str: tok = ", tok);
+    prerrln!(": SYNERR(t0str): ", tok);
   end // end of [let]
 )
 
@@ -150,7 +150,7 @@ id0.node() of
     synerr_add(SYNERRi0dnt(id0))
   in
     prerr(tok.loc());
-    prerrln!(": synread_i0dnt: tok = ", tok);
+    prerrln!(": SYNERR(i0dnt): ", tok);
   end // end of [let]
 ) (* end of [synread_i0dnt] *)
 //
@@ -170,7 +170,7 @@ tid.node() of
     synerr_add(SYNERRs0tid(tid))
   in
     prerr(tok.loc());
-    prerrln!(": synread_s0tid: tok = ", tok);
+    prerrln!(": SYNERR(s0tid): ", tok);
   end // end of [let]
 ) (* end of [synread_s0tid] *)
 
@@ -190,7 +190,7 @@ sid.node() of
     synerr_add(SYNERRs0eid(sid))
   in
     prerr(tok.loc());
-    prerrln!(": synread_s0eid: tok = ", tok);
+    prerrln!(": SYNERR(s0eid): ", tok);
   end // end of [let]
 ) (* end of [synread_s0eid] *)
 
@@ -254,8 +254,7 @@ s0t0.node() of
     val () =
     synerr_add(SYNERRsort0(s0t0))
   in
-    prerrln!(loc0, ": [sort0] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
+    prerrln!(loc0, ": SYNERR(sort0): ", tok)
   end // end of [S0Tnone]
 //
 end // end of [synread_sort0]
@@ -313,8 +312,7 @@ s0a0.node() of
     val () =
     synerr_add(SYNERRs0arg(s0a0))
   in
-    prerrln!(loc0, ": [s0arg] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
+    prerrln!(loc0, ": SYNERR(s0arg): ", tok);
   end // end of [S0ARGnone]
 //
 end // end of [synread_s0arg]
@@ -352,8 +350,7 @@ s0ma.node() of
     val () =
     synerr_add(SYNERRs0marg(s0ma))
   in
-    prerrln!(loc0, ": [s0marg] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
+    prerrln!(loc0, ": SYNERR(s0marg): ", tok);
   end // end of [S0MARGnone]
 //
 end // end of [synread_s0marg]
@@ -443,7 +440,9 @@ s0e0.node() of
 | S0Eop2
   (tbeg, sid, tend) =>
   {
-    val () = synread_LPAREN<>(tbeg)
+(*
+    val () = synread_OP_par<>(tbeg)
+*)
     val () = synread_s0eid<>(sid)
     val () = synread_RPAREN<>(tend)
   }
@@ -558,8 +557,7 @@ s0e0.node() of
     val () =
     synerr_add(SYNERRs0exp(s0e0))
   in
-    prerrln!(loc0, ": [s0exp] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
+    prerrln!(loc0, ": SYNERR(s0exp): ", tok);
   end // end of [S0Enone]
 //
 end // end of [synread_s0exp]

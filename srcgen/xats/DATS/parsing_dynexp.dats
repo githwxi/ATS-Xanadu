@@ -2968,7 +2968,9 @@ in
 case+ tnd of
 //
 | T_LOCAL() => let
-    val () = buf.incby1()
+    val () =
+      buf.incby1()
+    // end of [val]
     val tbeg = tok
     val head =
     fp_d0eclseq(f0, buf, err)
@@ -2980,8 +2982,20 @@ case+ tnd of
   in
     err := e0;
     d0ecl_make_node
-    (loc_res, D0Clocal(tbeg, head, tmid, body, tend))
+    ( loc_res
+    , D0Clocal(tbeg, head, tmid, body, tend))
   end // end of [T_LOCAL]
+//
+| T_ABSSORT() => let
+    val () =
+      buf.incby1()
+    val tid =
+      p_s0tid(buf, err)
+    val loc_res = tok.loc() + tid.loc()
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cabssort(tok, tid))
+  end
 //
 | T_SORTDEF() => let
 //
@@ -3001,7 +3015,7 @@ case+ tnd of
   end
 //
 (*
-stadef::
+sexpdef::
 | si0de
   s0margseq
   colons0rtopt EQ s0exp
