@@ -84,6 +84,9 @@ local
 #include
 "./../../util/DATS/Posix/cblist.dats"
 //
+#include
+"./../../util/DATS/Posix/mylibc.dats"
+//
 in
   // nothing
 end // end of [local]
