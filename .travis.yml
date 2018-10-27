@@ -34,7 +34,7 @@ script:
   - (cd xats && make all)
   - export XATSOPT=./xats/xatsopt 
   - echo 'running integration tests...'
-  - (cd TEST && make testall)
+  - (cd xats/TEST && make testall)
 
 after_script:
   - date
