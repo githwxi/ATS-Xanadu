@@ -40,5 +40,34 @@ xatsopt_memcpy
 , nbyte: Size_t): ptr = "ext#xatsopt_memcpy"
 //
 (* ****** ****** *)
+//
+(*
+char *strchr(const char *s, int c);
+char *strrchr(const char *s, int c);
+*)
+//
+fun
+xatsopt_strchr
+(cs: ptr, c0: int): ptr = "ext#xatsopt_strchr"
+fun
+xatsopt_strrchr
+(cs: ptr, c0: int): ptr = "ext#xatsopt_strrchr"
+//      
+(* ****** ****** *)
+//
+(*
+int strcmp(const char *s1, const char *s2);
+int strncmp(const char *s1, const char *s2, size_t n);
+*)
+//
+fun
+xatsopt_strcmp
+(cs1: ptr, cs2: ptr): int = "ext#xatsopt_strcmp"
+fun
+xatsopt_strncmp
+( cs1: ptr
+, cs2: ptr, nlen: size_t): int = "ext#xatsopt_strncmp"
+//       
+(* ****** ****** *)
 
 (* end of [mylibc.sats] *)
