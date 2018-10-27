@@ -12,8 +12,11 @@ env:
 addons:
   apt:
     packages:
-      - libgmp-dev
       - libgc-dev
+      - libgmp-dev
+
+before_install:
+  - date
 
 install:
   - $TRAVIS_BUILD_DIR/travis-ci/install-ats2.sh 0.3.12

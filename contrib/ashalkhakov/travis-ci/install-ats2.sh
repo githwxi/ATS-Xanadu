@@ -1,16 +1,16 @@
 #!/bin/bash
 
-
 ATS2VERSION=$1
 ATS2PKG=ATS2-Postiats-$ATS2VERSION
-ATS2PKGTAR=$ATS2PKG.tgz
+ATS2PKGTGZ=$ATS2PKG.tgz
 
 cd $HOME
-wget https://sourceforge.net/projects/ats2-lang/files/ats2-lang/ats2-postiats-$ATS2VERSION/$ATS2PKGTAR/download
+wget https://sourceforge.net/projects/ats2-lang/files/ats2-lang/ats2-postiats-$ATS2VERSION/$ATS2PKGTGZ/download
 
 tar -xzf download
 
-mv $ATS2PKG $HOME/ats2
-cd $HOME/ats2
-./configure
-make all
+mv $ATS2PKG $HOME/ATS2
+(cd $HOME/ATS2 && ./configure)
+(cd $HOME/ATS2 && make all)
+
+###### end of [install-ats2.sh] ######
