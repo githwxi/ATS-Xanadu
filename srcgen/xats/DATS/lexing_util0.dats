@@ -40,6 +40,11 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload
+"./../../util/SATS/mylibc.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/lexbuf.sats"
 #staload "./../SATS/lexing.sats"
 //
@@ -190,7 +195,16 @@ SYMBOLIC = "%&+-./:=@~`^|*!?<>#$"
 //
 *)
 in
-  $extfcall(ptr, "strchr", SYMBOLIC, c) > the_null_ptr
+//
+found >
+the_null_ptr where
+{
+  val
+  found =
+  xatsopt_strchr
+  (string2ptr(SYMBOLIC), char2int0(c))
+}
+//
 end // end of [SYMBOLIC_test]
 
 (* ****** ****** *)
@@ -201,8 +215,8 @@ implement
 isSLASH4(cs) =
 (
 0 =
-$extfcall
-(int, "strncmp", cs, "////", 4)
+xatsopt_strncmp
+(string2ptr(cs), string2ptr("////"), i2sz(4))
 ) (* end of [isSLASH4] *)
 
 (* ****** ****** *)
