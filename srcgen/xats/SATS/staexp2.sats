@@ -43,13 +43,13 @@ LOC = "./location.sats"
 //
 (* ****** ****** *)
 
-abstype s2tdat_type
-typedef s2tdat = s2tdat_type
+abstbox s2tdat_tbox = ptr
+typedef s2tdat = s2tdat_tbox
 
 (* ****** ****** *)
 
-abstype s2txtv_type
-typedef s2txtv = s2txtv_type
+abstbox s2txtv_tbox = ptr
+typedef s2txtv = s2txtv_tbox
 
 (* ****** ****** *)
 
@@ -96,6 +96,19 @@ overload fprint with fprint_sort2
 (* ****** ****** *)
 //
 fun
+print_s2tbas: print_type(s2tbas)
+fun
+prerr_s2tbas: prerr_type(s2tbas)
+fun
+fprint_s2tbas: fprint_type(s2tbas)
+//
+overload print with print_s2tbas
+overload prerr with prerr_s2tbas
+overload fprint with fprint_s2tbas
+//
+(* ****** ****** *)
+//
+fun
 print_s2tdat: print_type(s2tdat)
 fun
 prerr_s2tdat: prerr_type(s2tdat)
@@ -118,19 +131,6 @@ fprint_s2txtv: fprint_type(s2txtv)
 overload print with print_s2txtv
 overload prerr with prerr_s2txtv
 overload fprint with fprint_s2txtv
-//
-(* ****** ****** *)
-//
-fun
-print_s2tbas: print_type(s2tbas)
-fun
-prerr_s2tbas: prerr_type(s2tbas)
-fun
-fprint_s2tbas: fprint_type(s2tbas)
-//
-overload print with print_s2tbas
-overload prerr with prerr_s2tbas
-overload fprint with fprint_s2tbas
 //
 (* ****** ****** *)
 

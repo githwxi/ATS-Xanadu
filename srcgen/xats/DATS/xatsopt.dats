@@ -95,6 +95,8 @@ end // end of [local]
 //
 #dynload "./basics.dats"
 //
+#dynload "./stamp0.dats"
+//
 #dynload "./symbol.dats"
 #dynload "./symmap.dats"
 #dynload "./symenv.dats"
@@ -140,6 +142,12 @@ end // end of [local]
 #dynload "./trans01_envmap.dats"
 #dynload "./trans01_staexp.dats"
 #dynload "./trans01_dynexp.dats"
+//
+#dynload "./staexp2.dats"
+#dynload "./dynexp2.dats"
+//
+#dynload "./staexp2_print.dats"
+#dynload "./dynexp2_print.dats"
 //
 (* ****** ****** *)
 //

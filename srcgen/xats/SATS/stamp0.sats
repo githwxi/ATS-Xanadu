@@ -33,82 +33,66 @@
 //
 (* ****** ****** *)
 //
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
+abstype
+stamp_type = ptr
+//
+typedef stamp = stamp_type
+typedef stampopt = Option(stamp)
+//
+(* ****** ****** *)
+//
+fun
+stamp_get_int(stamp):<> intptr
+//
+overload .int with stamp_get_int
+//
+(* ****** ****** *)
+//
+fun
+lt_stamp_stamp
+(x1: stamp, x2: stamp):<> bool
+fun
+lte_stamp_stamp
+(x1: stamp, x2: stamp):<> bool
+//
+fun
+eq_stamp_stamp
+(x1: stamp, x2: stamp):<> bool
+fun
+neq_stamp_stamp
+(x1: stamp, x2: stamp):<> bool
+//
+fun
+compare_stamp_stamp
+(x1: stamp, x2: stamp):<> (Sgn)
+//
+overload < with lt_stamp_stamp
+overload <= with lte_stamp_stamp
+//
+overload = with eq_stamp_stamp
+overload != with neq_stamp_stamp
+//
+overload compare with compare_stamp_stamp
 //
 (* ****** ****** *)
 
-#staload
-SYM = "./../SATS/symbol.sats"
-
-overload
-fprint with $SYM.fprint_symbol
+fun print_stamp: print_type(stamp)
+fun prerr_stamp: prerr_type(stamp)
+fun fprint_stamp: fprint_type(stamp)
 
 (* ****** ****** *)
 
-#staload "./../SATS/staexp2.sats"
+abstype stamper_tbox = ptr
+typedef stamper = stamper_tbox
 
 (* ****** ****** *)
 
-implement
-print_sort2(x0) =
-fprint_sort2(stdout_ref, x0) 
-implement
-prerr_sort2(x0) =
-fprint_sort2(stdout_ref, x0) 
-
-local
-
-implement
-fprint_val<sort2> = fprint_sort2
-
-in (* in-of-local *)
-
-implement
-fprint_sort2
-  (out, s2t0) =
-(
-case+ s2t0 of
-| S2Tbas(s2tb) =>
-  fprint!(out, "S2Tbas(", s2tb, ")")
-| S2Txtv(s2tx) =>
-  fprint!(out, "S2Txtv(", s2tx, ")")
-| S2Ttup(s2ts) =>
-  fprint!(out, "S2Ttup(", s2ts, ")")
-| S2Tfun(s2ts, s2t1) =>
-  fprint!
-  (out, "S2Tfun(", s2ts, "; ", s2t1, ")")
-//
-| S2Terr() => fprint!(out, "S2Terr(", ")")
-//
-) (* end of [fprint_sort2] *)
-
-end // end of [local]
+fun stamper_new(): stamper
 
 (* ****** ****** *)
 
-implement
-fprint_s2tbas
-  (out, s2tb) =
-(
-case+ s2tb of
-| S2TBASpre(sym) =>
-  fprint!(out, "S2TBASpre(", sym, ")")
-| S2TBASdef(s2td) =>
-  fprint!(out, "S2TBASdef(", s2td, ")")
-| S2TBASimp(knd, sym) =>
-  fprint!(out, "S2TBASimp(", knd, "; ", sym, ")")
-)
+fun stamper_getinc(stamper): stamp
 
 (* ****** ****** *)
 
-implement
-fprint_s2tdat(out, s2td) = exit(1)
-implement
-fprint_s2txtv(out, s2tx) = exit(1)
-
-(* ****** ****** *)
-
-(* end of [xats_staexp2_print.dats] *)
+(* end of [xats_stamp0.sats] *)

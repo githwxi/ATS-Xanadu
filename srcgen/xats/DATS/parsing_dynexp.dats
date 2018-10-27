@@ -1304,8 +1304,15 @@ p_ENDWHERE: parser(endwhere)
 //
 extern
 fun
+pseq_d0eclseq_WHERE:
+  parser(List0(d0eclseq_WHERE))
+//
+(*
+extern
+fun
 popt_d0eclseq_WHERE:
   parser(Option(d0eclseq_WHERE))
+*)
 //
 (* ****** ****** *)
 //
@@ -1454,6 +1461,36 @@ case+ tnd of
 //
 end // end of [p_napps]
 
+fun
+auxlst_where
+( d0e0
+: d0exp
+, wd0cs
+: List0(d0eclseq_WHERE)): d0exp =
+(
+case+ wd0cs of
+| list_nil
+  ((*void*)) => d0e0
+| list_cons
+  (wd0c0, wd0cs) => let
+    val d0e1 =
+    (
+    d0exp_make_node
+    (loc1, D0Ewhere(d0e0, wd0c0))
+    ) where
+    {
+      val loc1 =
+      (
+        case+ wd0c0 of
+        | d0eclseq_WHERE
+          (_, _, _, tend) => d0e0.loc()+tend.loc()
+      ) : loc_t // end of [val]
+    } (* end of [where] *)
+  in
+    auxlst_where(d0e1, wd0cs)
+  end // end of [list_cons]
+) (* end of [auxlst_where] *)
+
 in (* in-of-local *)
 
 implement
@@ -1471,7 +1508,11 @@ case+ d0es of
     p_napps(buf, err)
   // end of [list_nil]
 | list_cons
-    (d0e1, d0es2) => let
+    (d0e1, d0es2) =>
+  (
+    auxlst_where(d0e0, wd0cs)
+  ) where
+  {
     val d0e0 =
     (
     case+ d0es2 of
@@ -1483,24 +1524,8 @@ case+ d0es of
         d0exp_make_node(loc0, D0Eapps(d0es))
       end // end of [list_cons]
     ) : d0exp // end of [val]
-    val opt1 = popt_d0eclseq_WHERE(buf, err)
-  in
-    case+ opt1 of
-    | None() => d0e0
-    | Some(d0cs) =>
-      (
-        d0exp_make_node
-        (loc1, D0Ewhere(d0e0, d0cs))
-      ) where
-      {
-        val loc1 =
-        (
-          case+ d0cs of
-          | d0eclseq_WHERE
-            (_, _, _, tend) => d0e0.loc()+tend.loc()
-        ) : loc_t // end of [val]
-      } (* end of [Some] *)
-  end (* end of [list_cons] *)
+    val wd0cs = pseq_d0eclseq_WHERE(buf, err)
+  } (* end of [list_cons] *)
 //
 end // end of [p_d0exp]
 
@@ -2057,6 +2082,41 @@ end // end of [p_ENDWHERE]
 (* ****** ****** *)
 
 implement
+pseq_d0eclseq_WHERE
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_WHERE() => let
+//
+    val () = buf.incby1()
+//
+    val opt =
+      popt_LBRACE(buf, err)
+    val d0cs =
+      p_d0eclseq_dyn(buf, err)
+//
+    val tend = p_ENDWHERE(buf, err)
+//
+    val d0c0 =
+      d0eclseq_WHERE(tok, opt, d0cs, tend)
+    // end of [val]
+    val d0cs = pseq_d0eclseq_WHERE(buf, err)
+  in
+    list_cons(d0c0, d0cs)
+  end
+| _(* non-WHERE *) => list_nil(*void*)
+//
+end // end of [pseq_d0eclseq_WHERE]
+
+(* ****** ****** *)
+
+(*
+implement
 popt_d0eclseq_WHERE
   (buf, err) = let
 //
@@ -2083,6 +2143,7 @@ tok.node() of
 | _(* non-WHERE *) => None((*void*))
 //
 end // end of [popt_d0eclseq_WHERE]
+*)
 
 (* ****** ****** *)
 //

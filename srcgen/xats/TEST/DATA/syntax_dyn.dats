@@ -1,58 +1,15 @@
-sortdef
-int = int
-sortdef
-nat = {a:int | a >= 0}
-
-sexpdef foo = int:type
-
-sexpdef
-foo =
-bar0(1 + 2 + 3 + -4 + -5)
-
-sexpdef
-int2int =
-{ n:int | n >= 0
-} int(n) -> [n:nat] int(n:int)
-
-sexpdef
-list0_int_1 =
-(lam(a:type)(n:int) => list(a, n))(int)(1)
-
-sexpdef tup = @(int | int)
-sexpdef rec = @{1= int | y= int}
-
-////
 (* ****** ****** *)
 //
 (*
-#prefix 00 ! (* static *)
+#prefix ! of 00 (* static *)
 *)
 //
-#prefix 99 ! (* dynamic *)
+#prefix ! of 99 (* dynamic *)
 //
 (* ****** ****** *)
 
 (*
-#postfix 80 .lab // dynamic
-#postfix 80 ->lab // dynamic
-*)
-
-(* ****** ****** *)
-
-(*
-#prefix 79 & // dynamic
-*)
-
-(* ****** ****** *)
-
-(*
-#infixl 70 app
-*)
-
-(* ****** ****** *)
-
-(*
-#postfix 69 ?
+#infixl app of 70 // the app_prcdv
 *)
 
 (* ****** ****** *)
@@ -60,106 +17,56 @@ sexpdef rec = @{1= int | y= int}
 // HX-2015-08-04:
 // mostly following the Fortran convention
 //
-#infixr 61 ** (*exp*)
+#infixr ** of 61 (*exp*)
 //
 (* ****** ****** *)
 //
 // multiplicative
 //
-#infixl 60 * / % mod
+#infixl * / % mod of 60
+//
+(* ****** ****** *)
+
+#prefix ~ of 51 (* neg *)
+
+(* ****** ****** *)
+//
+#infixl + - of 50 (*additive*)
+#prefix + of +(+1) (* uplus *)
+#prefix - of -(+1) (* uminus *)
 //
 (*
-#infixl 60 nmul ndiv nmod
+#infixr(+) ++ // concatenative
 *)
 //
 (* ****** ****** *)
-
-#prefix 51 - (* neg *)
-#prefix 51 ~ (* neg *)
-
-(* ****** ****** *)
 //
-#infixl 50 + - (*additive*)
-//
-(*
-#infixr (+) ++ // concatenative
-*)
+#infix0 < <= of 40
+#infix0 > >= of 40
 //
 (* ****** ****** *)
 
-#infixl 41 asl asr
-#infixl 41 lsl lsr
-
-(* ****** ****** *)
-//
-#infix0 40 < <= > >=
-//
-(*
-//
-// HX-2012-07: removed
-//
-#infixl ( < ) ilt flt plt ult
-#infixl ( <= ) ilte flte plte ulte
-#infixl ( > ) igt fgt pgt ugt
-#infixl ( >= ) igte fgte pgte ugte
-*)
-//
-(* ****** ****** *)
-
-#infixr 40 :: @
+#infixr :: @ of 40
 
 (* ****** ****** *)
 
-#infix 30 = == != // <>
+#infix0 = == != of 30
 
 (* ****** ****** *)
 
-(*
-//
-// HX-2012-07: removed
-//
-#infix ( = ) ieq feq peq ueq
-#infix ( <> ) ineq fneq pneq uneq
-*)
+#infixl && of 21
+#infixl andalso land of &&
 
 (* ****** ****** *)
 
-#infixl 21 &&
-#infixl ( && ) andalso land
+#infixl || of 20
+#infixl orelse xor lor lxor of ||
 
 (* ****** ****** *)
 
-#infixl 20 ||
-#infixl ( || ) xor orelse lor lxor
+#infixr -> of 10
 
 (* ****** ****** *)
-
-#infixr 10 ->
-
-(* ****** ****** *)
-
-#infix0 (0) := // HX: assign
-#infix0 (0) :=: // HX: exchange
-
-(* ****** ****** *)
-
-#infixl (0) << (* g0int_asl, g0uint_lsl *)
-#infixr (0) >> (* g0int_asr, g0uint_lsr *)
-
-(* ****** ****** *)
-
-(*
-#prefix (0) ++ -- // inc and dec
-#prefix (0) !++ --! // getinc and decget
-#infixr (0) =++ --= // setinc and decset
-*)
-
-(* ****** ****** *)
-
-(*
-#infix0 (0) :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
-#infix0 (0) :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
-*)
 
 (* ****** ****** *)
 
@@ -202,7 +109,13 @@ val:rec cons(x, xs) = xs
 (* ****** ****** *)
 //
 val xyz =
-  (if x > 0 then (f; g; h) else i; j)
+(
+if x > 0
+  then (f; g; h) else i; j
+) where
+{
+  val f = lam(_) => g + h
+}
 //
 (* ****** ****** *)
 
@@ -216,7 +129,10 @@ case+ x of
 ) where
 {
   val x = x + x
-}
+} where
+{
+  val xs = xs + xs
+} endwhere // end of [fun]
 
 (* ****** ****** *)
 
