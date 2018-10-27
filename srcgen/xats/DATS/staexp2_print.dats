@@ -58,13 +58,34 @@ implement
 fprint_sort2
   (out, s2t0) =
 (
-case- s2t0 of
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+  fprint!(out, "S2Tbas(", s2tb, ")")
+| S2Txtv(s2tx) =>
+  fprint!(out, "S2Txtv(", s2tx, ")")
+| S2Ttup(s2ts) =>
+  fprint!(out, "S2Ttup(", s2ts, ")")
 | S2Tfun(s2ts, s2t1) =>
   fprint!
   (out, "S2Tfun(", s2ts, "; ", s2t1, ")")
 ) (* end of [fprint_sort2] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+fprint_s2tbas
+  (out, s2tb) =
+(
+case+ s2tb of
+| S2TBASpre(sym) =>
+  fprint!(out, "S2TBASpre(", sym, ")")
+| S2TBASdef(s2td) =>
+  fprint!(out, "S2TBASdef(", s2td, ")")
+| S2TBASimp of (knd, sym) =>
+  fprint!(out, "S2TBASimp(", knd, "; ", sym, ")")
+)
 
 (* ****** ****** *)
 

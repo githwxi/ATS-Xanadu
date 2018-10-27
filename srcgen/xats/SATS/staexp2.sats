@@ -45,15 +45,18 @@ LOC = "./location.sats"
 
 abstype s2tdat_type
 typedef s2tdat = s2tdat_type
-abstype s2tVar_type
-typedef s2tVar = s2tVar_type
+
+(* ****** ****** *)
+
+abstype s2txtv_type
+typedef s2txtv = s2txtv_type
 
 (* ****** ****** *)
 
 datatype
 sort2 =
   | S2Tbas of (s2tbas) (* base sort *)
-  | S2TVar of (s2tVar) // for unification
+  | S2Txtv of (s2txtv) // for unification
   | S2Ttup of (sort2lst) (* tuple sort *)
   | S2Tfun of
     (sort2lst(*arg*), sort2(*res*)) // function
@@ -70,10 +73,65 @@ where sort2lst = List0(sort2)
 
 (* ****** ****** *)
 
-typedef sort2opt = Option(sort2)
-typedef sort2lstst = List0(sort2lst)
-typedef sort2lstopt = Option(sort2lst)
+typedef
+sort2opt = Option(sort2)
+typedef
+sort2lstst = List0(sort2lst)
+typedef
+sort2lstopt = Option(sort2lst)
 
+(* ****** ****** *)
+//
+fun
+print_sort2: print_type(sort2)
+fun
+prerr_sort2: prerr_type(sort2)
+fun
+fprint_sort2: fprint_type(sort2)
+//
+overload print with print_sort2
+overload prerr with prerr_sort2
+overload fprint with fprint_sort2
+//
+(* ****** ****** *)
+//
+fun
+print_s2tdat: print_type(s2tdat)
+fun
+prerr_s2tdat: prerr_type(s2tdat)
+fun
+fprint_s2tdat: fprint_type(s2tdat)
+//
+overload print with print_s2tdat
+overload prerr with prerr_s2tdat
+overload fprint with fprint_s2tdat
+//
+(* ****** ****** *)
+//
+fun
+print_s2txtv: print_type(s2txtv)
+fun
+prerr_s2txtv: prerr_type(s2txtv)
+fun
+fprint_s2txtv: fprint_type(s2txtv)
+//
+overload print with print_s2txtv
+overload prerr with prerr_s2txtv
+overload fprint with fprint_s2txtv
+//
+(* ****** ****** *)
+//
+fun
+print_s2tbas: print_type(s2tbas)
+fun
+prerr_s2tbas: prerr_type(s2tbas)
+fun
+fprint_s2tbas: fprint_type(s2tbas)
+//
+overload print with print_s2tbas
+overload prerr with prerr_s2tbas
+overload fprint with fprint_s2tbas
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2.sats] *)
