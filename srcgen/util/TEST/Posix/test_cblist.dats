@@ -32,36 +32,38 @@ in
 end // end of [local]
 
 (* ****** ****** *)
-//
-val () =
-println!
-("Hello from [test_cblist]!")
-//
-(* ****** ****** *)
 
-val opt =
-fpath_get_cblist
-("./test_cblist.dats", i2sz(16))
-val-~Some_vt(cbs) = opt
+implement main0() = {
+  #define BUFSIZE 16
+  val opt =
+  fpath_get_cblist
+  ("./test_cblist.txt", i2sz(BUFSIZE))
+  val-~Some_vt(cbs) = opt
 
-(* ****** ****** *)
+  val () = assert (2 = length(cbs))
 
-val () = println! ("|cbs| = ", length(cbs))
-
-(* ****** ****** *)
-
-val () = foreach(cbs) where
-{
-  val out = stdout_ref
-  implement
-  fprint_array$sep<>(out) = ()
-  implement
-  cblist_foreach$fwork<>(n, cs) = fprint_arrayref<uchar>(out, cs, n)
-}
-
-(* ****** ****** *)
-
-implement main0() = ((*void*))
+  val () = foreach(cbs) where
+  {
+    val r = ref<int>(0)
+    val out = stdout_ref
+    implement
+    fprint_array$sep<>(out) = ()
+    implement
+    cblist_foreach$fwork<>(n, cs) = let
+      val () = assert (n <= i2sz(BUFSIZE))
+      implement
+      tostrptr_val<uchar> (x) = tostrptr_char (uchar2char0 x)
+      val x = tostrptr_arrayref (cs, n)
+      val x = strptr2string x
+    in
+      if r[] = 0 then
+        assert ("hello world\n\nfor" = x)
+      else
+        assert (" cblist\n" = x);
+      r[] := succ (r[])
+    end // end of [cblist_foreach$fwork]
+  }
+} (* end of [main0] *)
 
 (* ****** ****** *)
 
