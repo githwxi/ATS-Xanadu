@@ -34,17 +34,19 @@
 (* ****** ****** *)
 //
 #staload
-UN = "prelude/SATS/unsafe.sats"
+UN =
+"prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload "libats/libc/SATS/stdio.sats"
+#staload
+"libats/libc/SATS/stdio.sats"
 
 (* ****** ****** *)
-
+//
 #staload "./../../SATS/cblist.sats"
 #staload "./../../SATS/Posix/cblist.sats"
-
+//
 (* ****** ****** *)
 
 implement

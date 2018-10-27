@@ -45,6 +45,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload
 "./../../util/SATS/cblist.sats"
+#staload
+"./../../util/SATS/mylibc.sats"
 //
 (* ****** ****** *)
 //
@@ -142,8 +144,7 @@ then let
   arrayptr_make_uninitized<char>(sz+1)
 //
   val p0 = ptrcast(A0)
-  val () =
-  $extfcall(void, "memcpy", p0, bp, sz)
+  val _(*ptr*) = xatsopt_memcpy(p0, bp, sz)
 in
   $UN.castvwtp0(A0) where {
     val () = $UN.ptr0_set_at<char>(p0, sz, CNUL)
@@ -163,12 +164,9 @@ else let
 //
   val p0 = ptrcast(A0)
   val p1 = ptr_add<char>(p0, n0)
-  val () =
-    $extfcall(void, "memcpy", p0, cs, n0)
-  // end of [val]
-  val () =
-    $extfcall(void, "memcpy", p1, bp, sz)
-  // end of [val]
+  val cs = string2ptr(cs)
+  val _(*ptr*) = xatsopt_memcpy(p0, cs, n0)
+  val _(*ptr*) = xatsopt_memcpy(p1, bp, sz)
 //
 in
   $UN.castvwtp0(A0) where {
@@ -203,8 +201,7 @@ then let
   arrayptr_make_uninitized<char>(sz+1)
 //
   val p0 = ptrcast(A0)
-  val () =
-  $extfcall(void, "memcpy", p0, bp, sz)
+  val _(*ptr*) = xatsopt_memcpy(p0, bp, sz)
 in
   $UN.ptr0_set_at<char>(p0, sz, CNUL);
   buf.cbuf := stropt_some($UN.castvwtp0(A0))
@@ -224,12 +221,9 @@ else let
 //
   val p0 = ptrcast(A0)
   val p1 = ptr_add<char>(p0, n0)
-  val () =
-    $extfcall(void, "memcpy", p0, cs, n0)
-  // end of [val]
-  val () =
-    $extfcall(void, "memcpy", p1, bp, sz)
-  // end of [val]
+  val cs = string2ptr(cs)
+  val _(*ptr*) = xatsopt_memcpy(p0, cs, n0)
+  val _(*ptr*) = xatsopt_memcpy(p1, bp, sz)
 //
 in
   $UN.ptr0_set_at<char>(p1, sz, CNUL);
