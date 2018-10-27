@@ -1,6 +1,7 @@
 ---
 os:
   - linux
+
 language: c
 
 node_js:
@@ -18,12 +19,15 @@ addons:
 bef_install:
   - date
 
-install:
+install_ats2:
   - $TRAVIS_BUILD_DIR/travis-ci/install-ats2.sh 0.3.12
   - export PATSHOME=$HOME/ATS2
   - export PATH=${PATH}:${PATSHOME}/bin
 
-script:
+install_aft:
+  - date
+
+testing_ats3:
   - echo 'running unit-tests...'
   - cd $TRAVIS_BUILD_DIR/srcgen
   - (cd util/TEST && make testall)
