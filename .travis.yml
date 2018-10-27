@@ -39,7 +39,7 @@ script:
   - echo 'building ATS-Xanadu...'
   - (cd xats && make all)
   - echo 'running integration tests...'
-  - (cd xats/TEST && make XATSOPT=./xatsopt testall)
+  - (cd xats/TEST && make XATSOPT=./../xatsopt testall)
 
 after_script:
   - date
