@@ -38,9 +38,8 @@ script:
   - (cd util/TEST/Posix && make testall)
   - echo 'building ATS-Xanadu...'
   - (cd xats && make all)
-  - export XATSOPT=./xats/xatsopt 
   - echo 'running integration tests...'
-  - (cd xats/TEST && make XATSOPT=$XATSOPT testall)
+  - (cd xats/TEST && make XATSOPT=./xatsopt testall)
 
 after_script:
   - date
