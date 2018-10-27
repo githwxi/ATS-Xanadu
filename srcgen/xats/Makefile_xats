@@ -32,6 +32,7 @@ LIBGC=-lgc
 
 SRCSATS := \
 basics.sats \
+stamp0.sats \
 symbol.sats \
 symmap.sats \
 symenv.sats \
@@ -49,9 +50,11 @@ synread.sats \
 staexp1.sats \
 dynexp1.sats \
 trans01.sats \
+staexp2.sats \
 
 SRCDATS := \
 basics.dats \
+stamp0.dats \
 symbol.dats \
 symmap.dats \
 symenv.dats \
@@ -82,6 +85,10 @@ dynexp1_print.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
+staexp2.dats \
+dynexp2.dats \
+staexp2_print.dats \
+dynexp2_print.dats \
 
 ######
 

@@ -33,82 +33,8 @@
 //
 (* ****** ****** *)
 //
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
+#staload "./../SATS/stamp0.sats"
 //
 (* ****** ****** *)
 
-#staload
-SYM = "./../SATS/symbol.sats"
-
-overload
-fprint with $SYM.fprint_symbol
-
-(* ****** ****** *)
-
-#staload "./../SATS/staexp2.sats"
-
-(* ****** ****** *)
-
-implement
-print_sort2(x0) =
-fprint_sort2(stdout_ref, x0) 
-implement
-prerr_sort2(x0) =
-fprint_sort2(stdout_ref, x0) 
-
-local
-
-implement
-fprint_val<sort2> = fprint_sort2
-
-in (* in-of-local *)
-
-implement
-fprint_sort2
-  (out, s2t0) =
-(
-case+ s2t0 of
-| S2Tbas(s2tb) =>
-  fprint!(out, "S2Tbas(", s2tb, ")")
-| S2Txtv(s2tx) =>
-  fprint!(out, "S2Txtv(", s2tx, ")")
-| S2Ttup(s2ts) =>
-  fprint!(out, "S2Ttup(", s2ts, ")")
-| S2Tfun(s2ts, s2t1) =>
-  fprint!
-  (out, "S2Tfun(", s2ts, "; ", s2t1, ")")
-//
-| S2Terr() => fprint!(out, "S2Terr(", ")")
-//
-) (* end of [fprint_sort2] *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-implement
-fprint_s2tbas
-  (out, s2tb) =
-(
-case+ s2tb of
-| S2TBASpre(sym) =>
-  fprint!(out, "S2TBASpre(", sym, ")")
-| S2TBASdef(s2td) =>
-  fprint!(out, "S2TBASdef(", s2td, ")")
-| S2TBASimp(knd, sym) =>
-  fprint!(out, "S2TBASimp(", knd, "; ", sym, ")")
-)
-
-(* ****** ****** *)
-
-implement
-fprint_s2tdat(out, s2td) = exit(1)
-implement
-fprint_s2txtv(out, s2tx) = exit(1)
-
-(* ****** ****** *)
-
-(* end of [xats_staexp2_print.dats] *)
+(* end of [xats_stamp0.dats] *)
