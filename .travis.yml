@@ -15,16 +15,19 @@ addons:
       - libgc-dev
       - libgmp-dev
 
-before_install:
+bef_install:
+  - date
+  - export XATSHOME=$TRAVIS_BUILD_DIR
+
+install_ats2:
+  - $XATSHOME/travis-ci/install-ats2.sh 0.3.12
+
+install_aft:
   - date
   - export PATSHOME=$HOME/ATS2
   - export PATH=${PATH}:${PATSHOME}/bin
-  - export XATSHOME=$TRAVIS_BUILD_DIR
 
-install:
-  - $XATSHOME/travis-ci/install-ats2.sh 0.3.12
-
-testing:
+testing_ats3:
   - cd $XATSHOME/srcgen
   - echo "running unit-tests..."
   - (cd util/TEST && make testall)
