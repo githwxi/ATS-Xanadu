@@ -17,22 +17,20 @@ addons:
 
 bef_install:
   - date
-  - export XATSHOME=$TRAVIS_BUILD_DIR
 
-install_ats2:
-  - $XATSHOME/travis-ci/install-ats2.sh 0.3.12
-
-install_aft:
-  - date
+install:
+  - $TRAVIS_BUILD_DIR/travis-ci/install-ats2.sh 0.3.12
   - export PATSHOME=$HOME/ATS2
   - export PATH=${PATH}:${PATSHOME}/bin
 
-testing_ats3:
-  - cd $XATSHOME/srcgen
-  - echo "running unit-tests..."
+script:
+  - echo 'running unit-tests...'
+  - cd $TRAVIS_BUILD_DIR/srcgen
   - (cd util/TEST && make testall)
   - (cd util/TEST/Posix && make testall)
-  - echo "building ATS-Xanadu..."
-  - (cd xats && make all)
-  - echo "running integration tests..."
-  - (cd xats/TEST && make XATSOPT=$XATSHOME/srcgen/xats/xatsopt testall)
+  - echo 'building...'
+  - cd xats
+  - make all
+  - export XATSHOME=$TRAVIS_BUILD_DIR
+  - echo 'running integration tests...'
+  - (cd TEST && make XATSOPT=$XATSHOME/srcgen/xats/xatsopt testall)
