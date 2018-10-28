@@ -108,7 +108,9 @@ val:rec cons(x, xs) = xs
 //
 (* ****** ****** *)
 //
-val xyz =
+val
+xyz
+:nrec =
 (
 if x > 0
   then (f; g; h) else i; j
@@ -120,6 +122,7 @@ if x > 0
 (* ****** ****** *)
 
 fun
+:nrec
 foo(x) =
 (
 case+ x of

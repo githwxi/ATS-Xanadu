@@ -792,6 +792,8 @@ d1ecl_node =
 //
 | D1Clocal of (d1eclist(*head*), d1eclist(*body*))
 //
+| D1Ctokerr of (d0ecl) // HX: for error indication
+//
 and
 abstdf1 =
   | ABSTDF1nil of () // unspecified

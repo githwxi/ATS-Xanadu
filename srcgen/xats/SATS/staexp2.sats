@@ -34,40 +34,47 @@
 (* ****** ****** *)
 //
 #staload
+STM = "./stamp0.sats"
+//
+typedef stamp = $STM.stamp
+//
+(* ****** ****** *)
+
+#staload
 SYM = "./symbol.sats"
 #staload
 LOC = "./location.sats"
 //
-  typedef sym_t = $SYM.sym_t
-  typedef loc_t = $LOC.loc_t
+typedef sym_t = $SYM.sym_t
+typedef loc_t = $LOC.loc_t
 //
 (* ****** ****** *)
 
-abstbox s2tdat_tbox = ptr
-typedef s2tdat = s2tdat_tbox
+abstbox t2dat_tbox = ptr
+typedef t2dat = t2dat_tbox
 
 (* ****** ****** *)
 
-abstbox s2txtv_tbox = ptr
-typedef s2txtv = s2txtv_tbox
+abstbox t2xtv_tbox = ptr
+typedef t2xtv = t2xtv_tbox
 
 (* ****** ****** *)
 
 datatype
 sort2 =
-  | S2Tbas of (s2tbas) (* base sort *)
-  | S2Txtv of (s2txtv) // for unification
+  | S2Tbas of (t2bas) (* base sort *)
+  | S2Txtv of (t2xtv) // for unification
   | S2Ttup of (sort2lst) (* tuple sort *)
   | S2Tfun of
     (sort2lst(*arg*), sort2(*res*)) // function
   | S2Terr of ((*void*)) // HX: error indication
 // end of [sort2]
 
-and s2tbas =
-  | S2TBASpre of (sym_t) // predicative: int, bool, ...
-  | S2TBASdef of (s2tdat) // user-defined datasorts
-  | S2TBASimp of (int(*knd*), sym_t) // impredicative sorts
-// end of [s2tbas]
+and t2bas =
+  | T2BASpre of (sym_t) // predicative: int, bool, ...
+  | T2BASdef of (t2dat) // user-defined datasorts
+  | T2BASimp of (int(*knd*), sym_t) // impredicative sorts
+// end of [t2bas]
 
 where sort2lst = List0(sort2)
 
@@ -96,41 +103,77 @@ overload fprint with fprint_sort2
 (* ****** ****** *)
 //
 fun
-print_s2tbas: print_type(s2tbas)
+print_t2bas: print_type(t2bas)
 fun
-prerr_s2tbas: prerr_type(s2tbas)
+prerr_t2bas: prerr_type(t2bas)
 fun
-fprint_s2tbas: fprint_type(s2tbas)
+fprint_t2bas: fprint_type(t2bas)
 //
-overload print with print_s2tbas
-overload prerr with prerr_s2tbas
-overload fprint with fprint_s2tbas
-//
-(* ****** ****** *)
-//
-fun
-print_s2tdat: print_type(s2tdat)
-fun
-prerr_s2tdat: prerr_type(s2tdat)
-fun
-fprint_s2tdat: fprint_type(s2tdat)
-//
-overload print with print_s2tdat
-overload prerr with prerr_s2tdat
-overload fprint with fprint_s2tdat
+overload print with print_t2bas
+overload prerr with prerr_t2bas
+overload fprint with fprint_t2bas
 //
 (* ****** ****** *)
 //
 fun
-print_s2txtv: print_type(s2txtv)
+print_t2dat: print_type(t2dat)
 fun
-prerr_s2txtv: prerr_type(s2txtv)
+prerr_t2dat: prerr_type(t2dat)
 fun
-fprint_s2txtv: fprint_type(s2txtv)
+fprint_t2dat: fprint_type(t2dat)
 //
-overload print with print_s2txtv
-overload prerr with prerr_s2txtv
-overload fprint with fprint_s2txtv
+overload print with print_t2dat
+overload prerr with prerr_t2dat
+overload fprint with fprint_t2dat
+//
+(* ****** ****** *)
+(*
+//
+fun
+print_t2xtv: print_type(t2xtv)
+fun
+prerr_t2xtv: prerr_type(t2xtv)
+fun
+fprint_t2xtv: fprint_type(t2xtv)
+//
+overload print with print_t2xtv
+overload prerr with prerr_t2xtv
+overload fprint with fprint_t2xtv
+//
+*)
+(* ****** ****** *)
+//
+abstype s2cst_tbox
+typedef s2cst = s2cst_tbox
+typedef s2cstlst = List0(s2cst)
+typedef s2cstopt = Option(s2cst)
+//
+(* ****** ****** *)
+//
+// HX: datasort
+//
+fun t2dat_stamp_new(): stamp
+//
+fun s2var_stamp_new(): stamp
+fun s2xtv_stamp_new(): stamp
+//
+(* ****** ****** *)
+//
+fun
+t2dat_make(sym: sym_t): t2dat
+//
+fun
+t2dat_get_sym(s2td: t2dat): sym_t
+fun
+t2dat_get_stamp(s2td: t2dat): stamp
+//
+overload .sym with t2dat_get_sym
+overload .stamp with t2dat_get_stamp
+//
+fun
+t2dat_get_s2conlst(s2td: t2dat): s2cstlst
+//
+overload .s2conlst with t2dat_get_s2conlst
 //
 (* ****** ****** *)
 

@@ -623,7 +623,10 @@ case+ x0.node() of
 //
 | D1Clocal
   (d1cs_head, d1cs_body) =>
-  fprint!(out, "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
+  fprint!
+  (out, "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
+//
+| D1Ctokerr(d0c0) => fprint!(out, "D1Ctokerr(", d0c0, ")")
 //
 (*
 | _(*rest-of-d1ecl*) =>

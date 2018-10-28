@@ -36,5 +36,68 @@
 #staload "./../SATS/stamp0.sats"
 //
 (* ****** ****** *)
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+
+absimpl
+stamp_type = ptr
+
+(* ****** ****** *)
+//
+implement
+stamp2int(x0) =
+ $UN.cast{intptr}(x0)
+//
+(* ****** ****** *)
+
+implement
+print_stamp(x0) =
+fprint_stamp(stdout_ref, x0)
+implement
+prerr_stamp(x0) =
+fprint_stamp(stderr_ref, x0)
+
+implement
+fprint_stamp(out, x0) =
+fprint_intptr(out, stamp2int(x0))
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+stamper_tbox = ref(stamp)
+//
+in (* in-of-local *)
+//
+implement
+stamper_new() =
+  ref<stamp>(the_null_ptr)
+//
+implement
+stamper_set
+  (obj, n0) = let
+  val n0 =
+  $UN.cast{intptr}(n0)
+in
+  obj[] := $UN.cast{ptr}(n0)
+end // end of [stamper_set]
+//
+implement
+stamper_getinc
+  (obj) = n0 where
+{
+  val n0 = the_null_ptr
+  val () = obj[] := ptr_succ<byte>(n0)
+}
+//
+end // end of [local]
+
+(* ****** ****** *)
 
 (* end of [xats_stamp0.dats] *)

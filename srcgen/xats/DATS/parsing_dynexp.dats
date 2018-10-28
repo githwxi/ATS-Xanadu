@@ -1466,7 +1466,8 @@ auxlst_where
 ( d0e0
 : d0exp
 , wd0cs
-: List0(d0eclseq_WHERE)): d0exp =
+: List0(d0eclseq_WHERE)
+) : d0exp =
 (
 case+ wd0cs of
 | list_nil
