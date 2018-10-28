@@ -300,15 +300,16 @@ d0pat_anno_opt
 (
 case+ opt of
 | None() => d0p
-| Some(s0t) => let
+| Some(s0e) => let
     val
-    loc = d0p.loc()+s0t.loc()
+    loc = d0p.loc()+s0e.loc()
   in
     d0pat_make_node
-      (loc, D0Panno(d0p, s0t))
+      (loc, D0Panno(d0p, s0e))
     // d0pat_make_node
   end (* end of [Some] *)
 ) (* end of [d0pat_anno_opt] *)
+
 implement
 d0pat_make_node
 (loc, node) = $rec
@@ -357,15 +358,16 @@ d0exp_anno_opt
 (
 case+ opt of
 | None() => d0e
-| Some(s0t) => let
+| Some(s0e) => let
     val
-    loc = d0e.loc()+s0t.loc()
+    loc = d0e.loc()+s0e.loc()
   in
     d0exp_make_node
-      (loc, D0Eanno(d0e, s0t))
+      (loc, D0Eanno(d0e, s0e))
     // d0exp_make_node
   end (* end of [Some] *)
 ) (* end of [d0exp_anno_opt] *)
+
 implement
 d0exp_make_node
 (loc, node) = $rec

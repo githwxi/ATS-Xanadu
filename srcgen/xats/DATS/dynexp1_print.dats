@@ -306,6 +306,14 @@ x0.node() of
   fprint!
   (out, "D1Plist(", d1ps1, "; ", d1ps2, ")")
 //
+| D1Ptuple(tok, d1ps) =>
+  fprint!
+  (out, "D1Ptuple(", tok, "; ", d1ps, ")")
+| D1Ptuple(tok, d1ps1, d1ps2) =>
+  fprint!
+  ( out
+  , "D1Ptuple(", tok, "; ", d1ps1, "; ", d1ps2, ")")
+//
 | D1Panno(d1p, s1e) =>
   fprint!
   (out, "D1Panno(", d1p, "; ", s1e, ")")
@@ -422,6 +430,9 @@ x0.node() of
   ( out
   , "D1Elam(", "; "
   , arg, "; ", res, "; ", farrw, "; ", fbody, ")")
+//
+| D1Eanno(d1e, s1e_ann) =>
+  fprint!(out, "D1Eanno(", d1e, "; ", s1e_ann, ")")
 //
 | D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
 //

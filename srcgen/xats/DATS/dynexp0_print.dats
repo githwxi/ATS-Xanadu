@@ -323,6 +323,19 @@ case+ x0.node() of
   , "D0Pparen("
   , tbeg, "; ", d0ps, "; ", tend, ")")
 //
+| D0Ptuple
+  (tbeg, topt, d0ps, tend) =>
+  fprint!
+  ( out
+  , "D0Ptuple("
+  , tbeg, "; ", topt, "; ", d0ps, "; ", tend, ")")
+| D0Precord
+  (tbeg, topt, ld0ps, tend) =>
+  fprint!
+  ( out
+  , "D0Precord("
+  , tbeg, "; ", topt, "; ", ld0ps, "; ", tend, ")")
+//
 | D0Panno
   (d0p, ann) =>
   fprint!(out, "D0Panno(", d0p, "; ", ann, ")")
@@ -463,11 +476,11 @@ case+ x0.node() of
   , "D0Etuple("
   , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
 | D0Erecord
-  (tbeg, topt, d0es, tend) =>
+  (tbeg, topt, ld0es, tend) =>
   fprint!
   ( out
   , "D0Erecord("
-  , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
+  , tbeg, "; ", topt, "; ", ld0es, "; ", tend, ")")
 //
 | D0Eif0
   (tif0, d0e1, d0e2, d0e3, tend) =>
@@ -1032,7 +1045,7 @@ in
   fprint!
   ( out
   , "V0ALDECL@{"
-  , ", pat=", rcd.pat
+  , ", pat=", rcd.pat, ", teq=", rcd.teq
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v0aldecl]
 
@@ -1081,7 +1094,7 @@ in
   , "F0UNDECL@{"
   , ", nam=", rcd.nam
   , ", arg=", rcd.arg
-  , ", res=", rcd.res
+  , ", res=", rcd.res, ", teq=", rcd.teq
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f0undecl]
 
