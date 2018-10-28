@@ -143,6 +143,8 @@ end // end of [local]
 #dynload "./trans01_staexp.dats"
 #dynload "./trans01_dynexp.dats"
 //
+#dynload "./effect.dats"
+//
 #dynload "./staexp2.dats"
 #dynload "./dynexp2.dats"
 //
