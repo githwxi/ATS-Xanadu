@@ -26,7 +26,7 @@ environment:
 
 cache:
     - '%CYG_CACHE%'
-    - '%PATSHOME_WIN%'
+    - '%PATSHOME_WIN% -> appveyor.yml, appveyor/install-ats2.sh'
 
 init:
     # Set Windows environment variables so that they're accessible from within cygwin
