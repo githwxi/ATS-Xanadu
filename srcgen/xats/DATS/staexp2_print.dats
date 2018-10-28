@@ -74,7 +74,7 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
   fprint!(out, "S2Tbas(", s2tb, ")")
 | S2Txtv(s2tx) =>
-  fprint!(out, "S2Txtv(", s2tx, ")")
+  fprint!(out, "S2Txtv(", "...", ")")
 | S2Ttup(s2ts) =>
   fprint!(out, "S2Ttup(", s2ts, ")")
 | S2Tfun(s2ts, s2t1) =>
@@ -90,25 +90,30 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-fprint_s2tbas
+fprint_t2bas
   (out, s2tb) =
 (
 case+ s2tb of
-| S2TBASpre(sym) =>
-  fprint!(out, "S2TBASpre(", sym, ")")
-| S2TBASdef(s2td) =>
-  fprint!(out, "S2TBASdef(", s2td, ")")
-| S2TBASimp(knd, sym) =>
-  fprint!(out, "S2TBASimp(", knd, "; ", sym, ")")
+| T2BASpre(sym) =>
+  fprint!(out, "T2BASpre(", sym, ")")
+| T2BASdef(s2td) =>
+  fprint!(out, "T2BASdef(", s2td, ")")
+| T2BASimp(knd, sym) =>
+  fprint!(out, "T2BASimp(", knd, "; ", sym, ")")
 )
 
 (* ****** ****** *)
-
+//
 implement
-fprint_s2tdat(out, s2td) = exit(1)
+print_t2dat(s2td) =
+fprint_t2dat(stdout_ref, s2td)
 implement
-fprint_s2txtv(out, s2tx) = exit(1)
-
+prerr_t2dat(s2td) =
+fprint_t2dat(stderr_ref, s2td)
+implement
+fprint_t2dat(out, s2td) =
+$SYM.fprint_symbol(out, s2td.sym())
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2_print.dats] *)

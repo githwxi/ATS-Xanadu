@@ -42,9 +42,9 @@ typedef stampopt = Option(stamp)
 (* ****** ****** *)
 //
 fun
-stamp_get_int(stamp):<> intptr
+stamp2int(stamp):<> intptr
 //
-overload .int with stamp_get_int
+overload .int with stamp2int
 //
 (* ****** ****** *)
 //
@@ -87,11 +87,19 @@ typedef stamper = stamper_tbox
 
 (* ****** ****** *)
 
-fun stamper_new(): stamper
+fun
+stamper_new((*void*)): stamper
 
 (* ****** ****** *)
+//
+fun
+stamper_set
+  (obj: stamper, n0: int): void
+//
+(* ****** ****** *)
 
-fun stamper_getinc(stamper): stamp
+fun
+stamper_getinc(obj: stamper): stamp
 
 (* ****** ****** *)
 

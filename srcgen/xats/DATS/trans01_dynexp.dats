@@ -2624,11 +2624,17 @@ d0c0.node() of
     d1ecl_make_node(loc0, D1Clocal(d1cs1, d1cs2))
   end // end of [D0Clocal]
 //
+| D0Ctokerr _ =>
+  (
+    d1ecl_make_node(loc0, D1Ctokerr(d0c0))
+  )
+//
+(*
 | _ (*rest-of-d0ecl*) =>
   (
     println! ("trans01_decl: d0c0 = ", d0c0); exit(1)
   )
-    
+*)    
 //
 end // end of [trans01_decl]
 

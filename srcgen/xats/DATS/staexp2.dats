@@ -40,6 +40,81 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload
+STM = "./../SATS/stamp0.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/staexp2.sats"
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+t2dat_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+s2var_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+s2xtv_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+typedef
+t2dat_struct = $rec
+{
+  t2dat_sym= sym_t // name
+, t2dat_stamp= stamp // unicity
+, t2dat_s2conlst= s2cstlst
+}
+//
+absimpl
+t2dat_tbox = ref(t2dat_struct)
+//
+in (* in-of-local *)
+
+implement
+t2dat_get_sym(s2td) = s2td->t2dat_sym
+implement
+t2dat_get_stamp(s2td) = s2td->t2dat_stamp
+implement
+t2dat_get_s2conlst(s2td) = s2td->t2dat_s2conlst
+
+end // end of [local]
+
 (* ****** ****** *)
 
 (* end of [xats_staexp2.dats] *)
