@@ -347,6 +347,11 @@ d1pat_node =
 | D1Plist of
   (d1patlst, d1patlst) // temp.
 //
+| D1Ptuple of
+  (token, d1patlst)
+| D1Ptuple of
+  (token, d1patlst, d1patlst)
+//
 | D1Panno of (d1pat, s1exp)
 //
 | D1Pnone of ((*error-indication*))
@@ -430,6 +435,8 @@ d1exp_node =
 | D1Elam of
   ( f1arglst
   , effs1expopt, f1unarrow, d1exp(*body*))
+//
+| D1Eanno of (d1exp, s1exp) // type-annotation
 //
 | D1Enone of () // HX-2018-09-25: indicating error 
 // end of [d1exp_node]

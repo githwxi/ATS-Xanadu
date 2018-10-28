@@ -117,7 +117,7 @@ if x > 0
 ) where
 {
   val f = lam(_) => g + h
-}
+} : (int : type) 
 //
 (* ****** ****** *)
 
@@ -136,6 +136,17 @@ case+ x of
 {
   val xs = xs + xs
 } endwhere // end of [fun]
+
+(* ****** ****** *)
+
+fun:
+nrec
+fact(n) =
+(n).foldleft(1, $lam($0*succ($1)))
+fun:
+(rec)
+fact =
+$fix(if $1 > 0 then $1*$0(pred($1)) else 1)
 
 (* ****** ****** *)
 
@@ -370,6 +381,34 @@ if
 then if True then False else True endif
 else if True then False else True endif
 endif
+
+(* ****** ****** *)
+
+fun
+queensol
+(n: int): list(int) =
+(
+if
+n > 0
+then
+mapopt
+(cross(N, queensol(n-1)))
+else list_nil()
+)
+where
+{
+implement
+mapopt$fopr(@(x0, xs)) =
+if
+test(x0, xs) then Some(cons(x0, xs)) else None
+} where
+{
+fun
+test
+( x0: int
+, xs: list(int)): bool =
+(xs).iforall(lam(i, x) => (x != x0) && (abs(x-x0) != i+1))
+}
 
 (* ****** ****** *)
 

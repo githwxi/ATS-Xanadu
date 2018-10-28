@@ -346,6 +346,13 @@ d0pat_node =
     (token, d0patlst, d0pat_RPAREN)
   // end of [D0Pparen]
 //
+| D0Ptuple of
+    ( token, tokenopt
+    , d0patlst, d0pat_RPAREN)
+| D0Precord of
+    ( token, tokenopt
+    , labd0patlst, labd0pat_RBRACE)
+//
 | D0Panno of (d0pat, s0exp)
 //
 | D0Pqual of (token, d0pat) // qualified

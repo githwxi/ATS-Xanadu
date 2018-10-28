@@ -50,6 +50,15 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/parsing.sats"
 
 (* ****** ****** *)
+
+implement
+fprint_val<sort0> = fprint_sort0
+implement
+fprint_val<s0exp> = fprint_s0exp
+implement
+fprint_val<d0exp> = fprint_d0exp
+
+(* ****** ****** *)
 //
 extern
 fun
@@ -985,6 +994,32 @@ case+ tnd of
     }
   end // end of [T_LPAREN]
 //
+| T_TUPLE(k0) => let
+    val () = buf.incby1()
+    val topt =
+    ( if
+      (k0 <= 1)
+      then None()
+      else Some(p_LPAREN(buf, err))
+    ) : tokenopt // end of [val]
+    val d0ps =
+      p_d0patseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_d0pat_RPAREN(buf, err)
+  in
+    err := e0;
+    d0pat_make_node
+    ( loc_res
+    , D0Ptuple
+      (tbeg, topt, d0ps, tend)) where
+    {
+      val loc_res =
+        tbeg.loc()+d0pat_RPAREN_loc(tend)
+      // end of [val]
+    }
+  end // end of [T_TUPLE]
+//
 | T_IDENT_qual _ => let
     val () = buf.incby1()
     val d0p0 = p_atmd0pat(buf, err)
@@ -1497,10 +1532,17 @@ in (* in-of-local *)
 implement
 p_d0exp(buf, err) =
 let
-  val e0 = err
-  val d0es =
-    p_atmd0expseq(buf, err)
-  // end of [val]
+//
+val e0 = err
+val d0es =
+  p_atmd0expseq(buf, err)
+// end of [val]
+//
+(*
+val () =
+println!("p_d0exp: d0es = ", d0es)
+*)
+//
 in
 //
 case+ d0es of
@@ -1511,7 +1553,14 @@ case+ d0es of
 | list_cons
     (d0e1, d0es2) =>
   (
+  let
+    val d0e0 =
     auxlst_where(d0e0, wd0cs)
+    val opt =
+    popt_s0exp_anno(buf, err)
+  in
+    d0exp_anno_opt(d0e0, opt)
+  end
   ) where
   {
     val d0e0 =

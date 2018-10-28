@@ -1870,7 +1870,9 @@ case+
 tok.node() of
 | T_COLON() => let
     val () = buf.incby1()
-    val s0e = p_s0exp(buf, err)
+    val s0e =
+      p_apps0exp_NEQ(buf, err)
+    // end of [val]
   in
     let
       val () = err := e0 in Some(s0e)

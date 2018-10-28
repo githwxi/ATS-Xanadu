@@ -815,6 +815,8 @@ d0p0.node() of
 //
 | D0Pparen _ => auxparen(d0p0)
 //
+| D0Ptuple _ => auxtuple(d0p0)
+//
 | D0Panno(d0p, s0e) =>
   FXITMatm(d1p0) where
   {
@@ -881,6 +883,44 @@ in
   FXITMatm
   (d1pat_make_node(d0p0.loc(), d1p0_node))
 end // end of [auxparen]
+
+(* ****** ****** *)
+
+and
+auxtuple
+( d0p0
+: d0pat): d1pitm = let
+//
+val-
+D0Ptuple
+( knd, _
+, d0ps1, rparen) = d0p0.node()
+//
+val
+d1p0_node =
+(
+case+ rparen of
+//
+| d0pat_RPAREN_cons0
+    (_) =>
+  D1Ptuple(knd, d1ps1) where
+  {
+    val d1ps1 = trans01_dpatlst(d0ps1)
+  }
+| d0pat_RPAREN_cons1
+    (_, d0ps2, _) =>
+  D1Ptuple(knd, d1ps1, d1ps2) where
+  {
+    val d1ps1 = trans01_dpatlst(d0ps1)
+    val d1ps2 = trans01_dpatlst(d0ps2)
+  }
+//
+) : d1pat_node // end of [val]
+//
+in
+  FXITMatm
+  (d1pat_make_node(d0p0.loc(), d1p0_node))
+end // end of [auxtuple]
 
 (* ****** ****** *)
 
@@ -1242,7 +1282,20 @@ d0e0.node() of
     }
   end // end of [D1Elam]
 //
-| D0Enone(_(*tok*)) =>
+| D0Eanno(d0e1, s0e2) =>
+  let
+    val d1e1 = trans01_dexp(d0e1)
+    val s1e2 = trans01_sexp(s0e2)
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+        d1exp_make_node(loc0, D1Eanno(d1e1, s1e2))
+      // end of [val]    
+    }
+  end // end of [D0Eanno]
+//
+| D0Enone(_(*tokerr*)) =>
   FXITMatm(d1e0) where
   {
     val d1e0 = d1exp_make_node(loc0, D1Enone(*void*))
@@ -1349,11 +1402,10 @@ case+ rparen of
 //
 ) : d1exp_node // end of [val]
 //
-
 in
   FXITMatm
   (d1exp_make_node(d0e0.loc(), d1e0_node))
-end // end of [auxparen]
+end // end of [auxtuple]
 
 (* ****** ****** *)
 
