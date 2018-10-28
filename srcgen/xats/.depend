@@ -17,6 +17,7 @@ BUILD/synread_sats.o : SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats
 BUILD/staexp1_sats.o : SATS/label0.sats SATS/location.sats SATS/symbol.sats SATS/lexing.sats SATS/staexp0.sats
 BUILD/dynexp1_sats.o : SATS/basics.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats
 BUILD/trans01_sats.o : SATS/symbol.sats SATS/fixity.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats
+BUILD/effect_sats.o : 
 BUILD/staexp2_sats.o : SATS/stamp0.sats SATS/symbol.sats SATS/location.sats
 BUILD/basics_dats.o : SATS/basics.sats
 BUILD/stamp0_dats.o : SATS/stamp0.sats
@@ -50,6 +51,7 @@ BUILD/dynexp1_print_dats.o : SATS/label0.sats SATS/lexing.sats SATS/staexp0.sats
 BUILD/trans01_envmap_dats.o : SATS/symbol.sats SATS/fixity.sats SATS/symenv.sats SATS/trans01.sats
 BUILD/trans01_staexp_dats.o : SATS/symbol.sats SATS/fixity.sats SATS/symenv.sats SATS/location.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/staexp1.sats SATS/trans01.sats DATS/fixity.dats
 BUILD/trans01_dynexp_dats.o : SATS/symbol.sats SATS/fixity.sats SATS/symenv.sats SATS/location.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/trans01.sats DATS/fixity.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats
+BUILD/effect_dats.o : SATS/effect.sats
 BUILD/staexp2_dats.o : SATS/stamp0.sats SATS/staexp2.sats
 BUILD/dynexp2_dats.o : 
 BUILD/staexp2_print_dats.o : SATS/symbol.sats SATS/staexp2.sats

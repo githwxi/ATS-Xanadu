@@ -143,7 +143,7 @@ t2xtv_get_sortopt
 end // end of [t2xtv_struct]
 
 (* ****** ****** *)
-
+//
 implement
 t2xtv_get_sort
   (s2tx) = s2t0 where
@@ -151,6 +151,25 @@ t2xtv_get_sort
 val-Some(s2t0) = s2tx.sortopt()
 } (* end of [t2xtv_get_sort] *)
 //
+(* ****** ****** *)
+
+local
+
+absimpl
+s2exp_tbox = $rec{
+  s2exp_sort= sort2
+, s2exp_node= s2exp_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+//
+implement
+s2exp_get_sort(x0) = x0.s2exp_sort
+implement
+s2exp_get_node(x0) = x0.s2exp_node
+//
+end // end of [local]
+
 (* ****** ****** *)
 
 (* end of [xats_staexp2.dats] *)

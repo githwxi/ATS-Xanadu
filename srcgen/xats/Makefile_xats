@@ -50,6 +50,7 @@ synread.sats \
 staexp1.sats \
 dynexp1.sats \
 trans01.sats \
+effect.sats \
 staexp2.sats \
 
 SRCDATS := \
@@ -85,6 +86,7 @@ dynexp1_print.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
+effect.dats \
 staexp2.dats \
 dynexp2.dats \
 staexp2_print.dats \
