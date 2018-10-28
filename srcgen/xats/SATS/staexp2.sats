@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: April, 2018
+// Start Time: October, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -150,6 +150,31 @@ typedef s2cstopt = Option(s2cst)
 //
 (* ****** ****** *)
 //
+abstype s2cstset_tbox
+typedef s2cstset_t = s2cstset_tbox
+//
+absvtype s2cstset_vtbox
+vtypedef s2cstset_vt = s2cstset_vtbox
+//
+(* ****** ****** *)
+//
+abstype s2var_tbox
+typedef s2var = s2var_tbox
+typedef s2varlst = List0(s2var)
+typedef s2varopt = Option(s2var)
+vtypedef s2varlst_vt = List0_vt(s2var)
+vtypedef s2varopt_vt = Option_vt(s2var)
+//
+(* ****** ****** *)
+//
+abstype s2varset_tbox
+typedef s2varset_t = s2varset_tbox
+//
+absvtype s2varset_vtbox
+vtypedef s2varset_vt = s2varset_vtbox
+//
+(* ****** ****** *)
+//
 // HX: datasort
 //
 fun t2dat_stamp_new(): stamp
@@ -192,6 +217,63 @@ t2xtv_get_sortopt(s2tx: t2xtv): sort2opt
 //
 overload .sort with t2xtv_get_sort
 overload .sortopt with t2xtv_get_sortopt
+//
+(* ****** ****** *)
+//
+abstbox s2exp_tbox = ptr
+//
+(* ****** ****** *)
+//
+typedef s2exp = s2exp_tbox
+typedef s2explst = List0(s2exp)
+typedef s2expopt = Option(s2exp)
+//
+(* ****** ****** *)
+//
+datatype
+s2exp_node =
+//
+| S2Eint of int // integer
+//
+| S2Ecst of s2cst // constant
+| S2Evar of s2var // variable
+//
+| S2Eapp of
+  (s2exp, s2explst) // application
+| S2Elam of
+  (s2varlst, s2exp) // abstraction
+//
+| S2Etop of // HX: knd: 0/1: 
+  (int(*knd*), s2exp) // topization/typization
+  // end of [S2Etop]
+//
+| S2Eexi of // existent. quantifier
+  (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
+| S2Euni of // universal quantifier
+  (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
+//
+// end of [s2exp_node]
+//
+(* ****** ****** *)
+//
+fun
+s2exp_get_sort(s2exp): sort2
+//
+overload .sort with s2exp_get_sort
+//
+fun
+s2exp_get_node(s2exp): s2exp_node
+//
+overload .node with s2exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+print_s2exp: print_type(s2exp)
+fun
+prerr_s2exp: prerr_type(s2exp)
+fun
+fprint_s2exp: fprint_type(s2exp)
 //
 (* ****** ****** *)
 
