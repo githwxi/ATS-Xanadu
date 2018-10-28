@@ -160,7 +160,7 @@ fun s2xtv_stamp_new(): stamp
 (* ****** ****** *)
 //
 fun
-t2dat_make(sym: sym_t): t2dat
+t2dat_new(sym: sym_t): t2dat
 //
 fun
 t2dat_get_sym(s2td: t2dat): sym_t
@@ -171,9 +171,27 @@ overload .sym with t2dat_get_sym
 overload .stamp with t2dat_get_stamp
 //
 fun
-t2dat_get_s2conlst(s2td: t2dat): s2cstlst
+t2dat_get_sconlst(s2td: t2dat): s2cstlst
 //
-overload .s2conlst with t2dat_get_s2conlst
+overload .sconlst with t2dat_get_sconlst
+//
+(* ****** ****** *)
+//
+fun
+t2xtv_new((*void*)): t2xtv
+//
+fun
+t2xtv_get_stamp(s2tx: t2xtv): stamp
+//
+overload .stamp with t2xtv_get_stamp
+//
+fun
+t2xtv_get_sort(s2tx: t2xtv): sort2
+fun
+t2xtv_get_sortopt(s2tx: t2xtv): sort2opt
+//
+overload .sort with t2xtv_get_sort
+overload .sortopt with t2xtv_get_sortopt
 //
 (* ****** ****** *)
 
