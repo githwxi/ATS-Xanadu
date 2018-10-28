@@ -98,7 +98,7 @@ t2dat_struct = $rec
 {
   t2dat_sym= sym_t // name
 , t2dat_stamp= stamp // unicity
-, t2dat_s2conlst= s2cstlst
+, t2dat_sconlst= s2cstlst
 }
 //
 absimpl
@@ -111,10 +111,46 @@ t2dat_get_sym(s2td) = s2td->t2dat_sym
 implement
 t2dat_get_stamp(s2td) = s2td->t2dat_stamp
 implement
-t2dat_get_s2conlst(s2td) = s2td->t2dat_s2conlst
+t2dat_get_sconlst(s2td) = s2td->t2dat_sconlst
 
 end // end of [local]
 
+(* ****** ****** *)
+
+local
+//
+typedef
+t2xtv_struct = $rec
+{
+  t2xtv_stamp= stamp
+,
+  t2xtv_sortopt= sort2opt
+}
+//
+absimpl
+t2xtv_tbox = ref(t2xtv_struct)
+//
+in (* in-of-local *)
+//
+implement
+t2xtv_get_stamp
+  (s2tx) = s2tx->t2xtv_stamp
+//
+implement
+t2xtv_get_sortopt
+  (s2tx) = s2tx->t2xtv_sortopt
+//
+end // end of [t2xtv_struct]
+
+(* ****** ****** *)
+
+implement
+t2xtv_get_sort
+  (s2tx) = s2t0 where
+{
+val-Some(s2t0) = s2tx.sortopt()
+} (* end of [t2xtv_get_sort] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2.dats] *)
