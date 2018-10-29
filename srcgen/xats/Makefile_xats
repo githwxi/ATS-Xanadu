@@ -52,6 +52,8 @@ dynexp1.sats \
 trans01.sats \
 effect.sats \
 staexp2.sats \
+dynexp2.sats \
+trans12.sats \
 
 SRCDATS := \
 basics.dats \

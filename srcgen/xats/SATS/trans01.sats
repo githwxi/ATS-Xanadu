@@ -38,8 +38,8 @@ SYM = "./symbol.sats"
 #staload
 FIX = "./fixity.sats"
 //
-typedef fixty = $FIX.fixty
 typedef sym_t = $SYM.sym_t
+typedef fixty = $FIX.fixty
 //
 vtypedef
 fixtyopt_vt = Option_vt(fixty)
