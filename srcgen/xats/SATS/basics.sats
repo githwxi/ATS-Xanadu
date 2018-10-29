@@ -125,6 +125,24 @@ overload fprint with fprint_impkind
 //
 (* ****** ****** *)
 //
+(*
+HX: level-2 syntax
+*)
+//
+#define CLOFLT (0) // flat
+#define CLOPTR (1) // linear-boxed
+#define CLOREF %(~1) // non-linear-boxed
+//
+datatype
+funclo2 =
+//
+// function/closure
+//
+| FC2fun of ((*fun*))
+| FC2clo of int(*knd*) // closure: knd=1/0/~1: ptr/clo/ref
+//
+(* ****** ****** *)
+//
 typedef
 eq_type(a:t0ype) = (a, a) -> bool
 typedef

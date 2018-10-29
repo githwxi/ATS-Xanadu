@@ -32,6 +32,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+#staload "./basics.sats"
+
+(* ****** ****** *)
 //
 #staload
 STM = "./stamp0.sats"
@@ -39,7 +43,7 @@ STM = "./stamp0.sats"
 typedef stamp = $STM.stamp
 //
 (* ****** ****** *)
-
+//
 #staload
 SYM = "./symbol.sats"
 #staload
@@ -47,6 +51,14 @@ LOC = "./location.sats"
 //
 typedef sym_t = $SYM.sym_t
 typedef loc_t = $LOC.loc_t
+//
+(* ****** ****** *)
+//
+#staload
+EFF = "./effect.sats"
+//
+typedef effect = $EFF.effect
+typedef effset = $EFF.effset
 //
 (* ****** ****** *)
 
@@ -158,6 +170,19 @@ vtypedef s2cstset_vt = s2cstset_vtbox
 //
 (* ****** ****** *)
 //
+fun
+print_s2cst: print_type(s2cst)
+fun
+prerr_s2cst: prerr_type(s2cst)
+fun
+fprint_s2cst: fprint_type(s2cst)
+//
+overload print with print_s2cst
+overload prerr with prerr_s2cst
+overload fprint with fprint_s2cst
+//
+(* ****** ****** *)
+//
 abstype s2var_tbox
 typedef s2var = s2var_tbox
 typedef s2varlst = List0(s2var)
@@ -172,6 +197,19 @@ typedef s2varset_t = s2varset_tbox
 //
 absvtype s2varset_vtbox
 vtypedef s2varset_vt = s2varset_vtbox
+//
+(* ****** ****** *)
+//
+fun
+print_s2var: print_type(s2var)
+fun
+prerr_s2var: prerr_type(s2var)
+fun
+fprint_s2var: fprint_type(s2var)
+//
+overload print with print_s2var
+overload prerr with prerr_s2var
+overload fprint with fprint_s2var
 //
 (* ****** ****** *)
 //
@@ -231,6 +269,14 @@ typedef s2expopt = Option(s2exp)
 (* ****** ****** *)
 //
 datatype
+s2eff =
+| S2EFFexp of s2exp
+| S2EFFset of effset
+| S2EFFjoin of List0(s2eff)
+//
+(* ****** ****** *)
+//
+datatype
 s2exp_node =
 //
 | S2Eint of int // integer
@@ -242,6 +288,13 @@ s2exp_node =
   (s2exp, s2explst) // application
 | S2Elam of
   (s2varlst, s2exp) // abstraction
+//
+| S2Efun of
+  ( // function type
+    funclo2
+  , int(*lin*), s2eff
+  , int(*npf*), s2explst(*arg*), s2exp(*res*)
+  ) (* end of S2Efun *)
 //
 | S2Etop of // HX: knd: 0/1: 
   (int(*knd*), s2exp) // topization/typization
@@ -269,11 +322,28 @@ overload .node with s2exp_get_node
 (* ****** ****** *)
 //
 fun
+print_s2eff: print_type(s2eff)
+fun
+prerr_s2eff: prerr_type(s2eff)
+fun
+fprint_s2eff: fprint_type(s2eff)
+//
+overload print with print_s2eff
+overload prerr with prerr_s2eff
+overload fprint with fprint_s2eff
+//
+(* ****** ****** *)
+//
+fun
 print_s2exp: print_type(s2exp)
 fun
 prerr_s2exp: prerr_type(s2exp)
 fun
 fprint_s2exp: fprint_type(s2exp)
+//
+overload print with print_s2exp
+overload prerr with prerr_s2exp
+overload fprint with fprint_s2exp
 //
 (* ****** ****** *)
 
