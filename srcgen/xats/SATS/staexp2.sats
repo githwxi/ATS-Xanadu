@@ -259,12 +259,19 @@ overload .sortopt with t2xtv_get_sortopt
 (* ****** ****** *)
 //
 abstbox s2exp_tbox = ptr
+abstype s2hnf_tbox = ptr
 //
 (* ****** ****** *)
 //
 typedef s2exp = s2exp_tbox
 typedef s2explst = List0(s2exp)
 typedef s2expopt = Option(s2exp)
+//
+(* ****** ****** *)
+//
+typedef s2hnf = s2hnf_tbox
+typedef s2hnflst = List0(s2hnf)
+typedef s2hnfopt = Option(s2hnf)
 //
 (* ****** ****** *)
 //
@@ -344,6 +351,19 @@ fprint_s2exp: fprint_type(s2exp)
 overload print with print_s2exp
 overload prerr with prerr_s2exp
 overload fprint with fprint_s2exp
+//
+(* ****** ****** *)
+//
+fun
+print_s2hnf: print_type(s2hnf)
+fun
+prerr_s2hnf: prerr_type(s2hnf)
+fun
+fprint_s2hnf: fprint_type(s2hnf)
+//
+overload print with print_s2hnf
+overload prerr with prerr_s2hnf
+overload fprint with fprint_s2hnf
 //
 (* ****** ****** *)
 

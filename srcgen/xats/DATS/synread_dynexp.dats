@@ -40,6 +40,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/xerrory.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/location.sats"
 //
 (* ****** ****** *)
@@ -163,16 +167,20 @@ d0c0.node() of
   }
 //
 | D0Cnone(tok) =>
-  (
-    prerrln!(loc0, ": [d0ecl] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
-  )
+  let
+    val () =
+    synerr_add(SYNERRd0ecl(d0c0))
+  in
+    prerrln!(loc0, ": SYNERR(d0ecl): ", tok);
+  end // end of [D0Cnone]
 //
 | D0Ctokerr(tok) =>
-  (
-    prerrln!(loc0, ": [d0ecl] needed");
-    prerrln!(tok.loc(), ": tokerr: ", tok);
-  )
+  let
+    val () =
+    synerr_add(SYNERRd0ecl(d0c0))
+  in
+    prerrln!(loc0, ": SYNERR(d0ecl): ", tok);
+  end // end of [D0Cnone]
 | _(* rest-of-d0ecl *) =>
   (
     prerrln!("synread_d0ecl: d0c0 = ", d0c0)
@@ -218,11 +226,93 @@ case+ opt of
 
 (* ****** ****** *)
 
+local
+
+extern
+fun{}
+the_synerrlst_get(): synerrlst
+extern
+fun{}
+the_synerrlst_set(synerrlst): void
+
+implement
+{}(*tmp*)
+synerr_add(xerr) = let
+//
+val
+xerrs = the_synerrlst_get()
+//
+in
+  the_synerrlst_set(list_cons(xerr, xerrs))
+end // end of [synerr_add]
+
+in (* in-of-local *)
+
 implement
 synread_top(d0cs) = let
+//
+local
+val
+the_synerrlst =
+ref<synerrlst>(list_nil)
+in(*in-of-local*)
+val () =
+$tempenver(the_synerrlst)
+implement
+the_synerrlst_get<>() = the_synerrlst[]
+implement
+the_synerrlst_set<>(xs) = the_synerrlst[] := xs
+end // end of [local]
+//
+val () =
+synread_d0eclist<>(d0cs)
+val
+xerrs = the_synerrlst_get()
+val
+nxerr = list_length<synerr>(xerrs)
+//
 in
-  synread_d0eclist<>(d0cs)
+//
+if
+(nxerr > 0)
+then
+{
+//
+val () =
+prerrln!
+("synread_top: nxerr = ", nxerr)
+//
+val () =
+if
+(nxerr = 1)
+then
+prerrln!
+("synread_top: there is one synerr!")
+val () =
+if
+(nxerr > 1)
+then
+prerrln!
+("synread_top: there are some synerrs!")
+//
+val () =
+(
+$raise(XATSOPT_SYNERR_EXN(*void*))
+) : void
+//
+} (* end of [then] *)
+else
+{
+//
+val () =
+prerrln!
+("synread_top: there are no synerrs!")
+//
+} (* end of [else] *)
+//
 end // end of [synread_top]
+
+end // end of [local]
 
 (* ****** ****** *)
 

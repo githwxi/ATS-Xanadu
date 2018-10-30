@@ -76,7 +76,12 @@ synerr =
 //
 | SYNERRs0exp of (s0exp)
 //
+| SYNERRd0ecl of (d0ecl)
+//
 | SYNERRtoken of (tnode, token)
+//
+typedef
+synerrlst = List0(synerr)
 //
 (* ****** ****** *)
 //

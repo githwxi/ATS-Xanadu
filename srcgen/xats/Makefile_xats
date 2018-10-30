@@ -93,6 +93,7 @@ staexp2.dats \
 dynexp2.dats \
 staexp2_print.dats \
 dynexp2_print.dats \
+trans12_envmap.dats \
 
 ######
 
