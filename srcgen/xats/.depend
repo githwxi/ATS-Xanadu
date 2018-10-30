@@ -58,4 +58,5 @@ BUILD/staexp2_dats.o : SATS/stamp0.sats SATS/staexp2.sats
 BUILD/dynexp2_dats.o : 
 BUILD/staexp2_print_dats.o : SATS/symbol.sats SATS/staexp2.sats
 BUILD/dynexp2_print_dats.o : 
+BUILD/trans12_envmap_dats.o : SATS/symbol.sats
 BUILD/xatsopt_dats.o : SATS/xerrory.sats SATS/filepath.sats SATS/parsing.sats SATS/synread.sats SATS/trans01.sats DATS/staexp0_print.dats DATS/dynexp0_print.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats ../util/DATS/cblist.dats ../util/DATS/Posix/cblist.dats ../util/DATS/Posix/mylibc.dats

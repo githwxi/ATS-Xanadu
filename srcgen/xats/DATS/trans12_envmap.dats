@@ -28,40 +28,21 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: October, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-exception XATSOPT_FIXITY_EXN of ()
-//
-(* ****** ****** *)
-//
-exception XATSOPT_SYNERR_EXN of ()
-//
-(* ****** ****** *)
-//
-exception XATSOPT_TRANS01_EXN of ()
-exception XATSOPT_TRANS12_EXN of ()
-exception XATSOPT_TRANS23_EXN of ()
-exception XATSOPT_TRANS34_EXN of ()
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort():<!exn> void
-fun abort_interr():<!exn> void
+#staload
+SYM = "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+(* end of [xats_trans12_envmap.dats] *)
