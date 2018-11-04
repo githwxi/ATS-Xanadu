@@ -145,6 +145,43 @@ t2xtv_tbox = ref(t2xtv_struct)
 in (* in-of-local *)
 //
 implement
+t2xtv_new0() =
+ref<t2xtv_struct>
+(
+$rec
+{
+t2xtv_stamp=stamp
+,
+t2xtv_locopt=None(*void*)
+,
+t2xtv_sortopt=
+ref<sort2opt>(None(*void*))
+}
+) where
+{
+val stamp = s2xtv_stamp_new()
+} (* end of [t2xtv_new0] *)
+//
+implement
+t2xtv_new1
+  (loc0) =
+ref<t2xtv_struct>
+(
+$rec
+{
+t2xtv_stamp=stamp
+,
+t2xtv_locopt=Some(loc0)
+,
+t2xtv_sortopt=
+ref<sort2opt>(None(*void*))
+}
+) where
+{
+val stamp = s2xtv_stamp_new()
+} (* end of [t2xtv_new0] *)
+//
+implement
 t2xtv_get_stamp
   (s2tx) = s2tx->t2xtv_stamp
 //
