@@ -39,10 +39,20 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
+//
 #staload
 STM = "./../SATS/stamp0.sats"
-
+//
+  typedef stamp = $STM.stamp
+//
+(* ****** ****** *)
+//
+#staload
+LOC = "./../SATS/location.sats"
+//
+  typedef loc_t = $LOC.loc_t
+  typedef locopt = Option(loc_t)
+//
 (* ****** ****** *)
 
 #staload "./../SATS/staexp2.sats"
@@ -124,7 +134,9 @@ t2xtv_struct = $rec
 {
   t2xtv_stamp= stamp
 ,
-  t2xtv_sortopt= sort2opt
+  t2xtv_locopt= locopt
+,
+  t2xtv_sortopt= ref(sort2opt)
 }
 //
 absimpl
@@ -137,20 +149,28 @@ t2xtv_get_stamp
   (s2tx) = s2tx->t2xtv_stamp
 //
 implement
+t2xtv_get_sort
+  (s2tx) =
+  (s2t0) where
+{
+val-
+Some(s2t0) = !(s2tx->t2xtv_sortopt)
+} (* end of [t2xtv_get_sort] *)
+//
+implement
+t2xtv_set_sort
+  (s2tx, s2t0) =
+{
+val () =
+!(s2tx->t2xtv_sortopt) := Some(s2t0)
+} (* end of [t2xtv_get_sort] *)
+//
+implement
 t2xtv_get_sortopt
-  (s2tx) = s2tx->t2xtv_sortopt
+  (s2tx) = !(s2tx->t2xtv_sortopt)
 //
 end // end of [t2xtv_struct]
 
-(* ****** ****** *)
-//
-implement
-t2xtv_get_sort
-  (s2tx) = s2t0 where
-{
-val-Some(s2t0) = s2tx.sortopt()
-} (* end of [t2xtv_get_sort] *)
-//
 (* ****** ****** *)
 
 local
