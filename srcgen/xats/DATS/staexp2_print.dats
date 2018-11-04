@@ -41,6 +41,11 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload
+STM = "./../SATS/stamp0.sats"
+
+(* ****** ****** *)
+
+#staload
 SYM = "./../SATS/symbol.sats"
 
 overload
@@ -74,7 +79,7 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
   fprint!(out, "S2Tbas(", s2tb, ")")
 | S2Txtv(s2tx) =>
-  fprint!(out, "S2Txtv(", "...", ")")
+  fprint!(out, "S2Txtv(", s2tx, ")")
 | S2Ttup(s2ts) =>
   fprint!(out, "S2Ttup(", s2ts, ")")
 | S2Tfun(s2ts, s2t1) =>
@@ -113,6 +118,18 @@ fprint_t2dat(stderr_ref, s2td)
 implement
 fprint_t2dat(out, s2td) =
 $SYM.fprint_symbol(out, s2td.sym())
+//
+(* ****** ****** *)
+//
+implement
+print_t2xtv(s2tx) =
+fprint_t2xtv(stdout_ref, s2tx)
+implement
+prerr_t2xtv(s2tx) =
+fprint_t2xtv(stderr_ref, s2tx)
+implement
+fprint_t2xtv(out, s2tx) =
+$STM.fprint_stamp(out, s2tx.stamp())
 //
 (* ****** ****** *)
 

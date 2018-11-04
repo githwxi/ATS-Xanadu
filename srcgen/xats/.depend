@@ -45,7 +45,7 @@ BUILD/parsing_staexp_dats.o : SATS/location.sats SATS/lexing.sats SATS/staexp0.s
 BUILD/parsing_dynexp_dats.o : SATS/location.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/parsing.sats
 BUILD/synread_basics_dats.o : SATS/location.sats SATS/lexing.sats SATS/staexp0.sats SATS/synread.sats
 BUILD/synread_staexp_dats.o : SATS/location.sats SATS/lexing.sats SATS/staexp0.sats SATS/synread.sats DATS/synread_basics.dats
-BUILD/synread_dynexp_dats.o : SATS/location.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/synread.sats DATS/synread_basics.dats DATS/synread_staexp.dats
+BUILD/synread_dynexp_dats.o : SATS/xerrory.sats SATS/location.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/synread.sats DATS/synread_basics.dats DATS/synread_staexp.dats
 BUILD/staexp1_dats.o : SATS/label0.sats SATS/location.sats SATS/lexing.sats SATS/staexp1.sats
 BUILD/dynexp1_dats.o : SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats
 BUILD/staexp1_print_dats.o : SATS/label0.sats SATS/lexing.sats SATS/staexp1.sats DATS/staexp0_print.dats

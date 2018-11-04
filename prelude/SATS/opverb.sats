@@ -136,7 +136,7 @@ fun
  x0:type;xs:type>
 <ky:prop;
  y0:type;ys:type>
-opverb_mapr(xs: xs): ys
+opverb_maprev(xs: xs): ys
 //
 fun
 <kx:prop;
@@ -149,7 +149,7 @@ fun
  x0:vtype;xs:vtype>
 <ky:prop;
  y0:vtype;ys:vtype>
-opverb_mapr_vt0(xs: xs): ys
+opverb_maprev_vt0(xs: xs): ys
 //
 fun
 <kx:prop;
@@ -162,7 +162,7 @@ fun
  x0:vtype;xs:vtype>
 <ky:prop;
  y0:vtype;ys:vtype>
-opverb_mapr_vt1(xs: !xs >> _): ys
+opverb_maprev_vt1(xs: !xs >> _): ys
 //
 (* ****** ****** *)
 //

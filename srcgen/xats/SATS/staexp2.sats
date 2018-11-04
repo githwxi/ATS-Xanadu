@@ -139,7 +139,6 @@ overload prerr with prerr_t2dat
 overload fprint with fprint_t2dat
 //
 (* ****** ****** *)
-(*
 //
 fun
 print_t2xtv: print_type(t2xtv)
@@ -152,7 +151,6 @@ overload print with print_t2xtv
 overload prerr with prerr_t2xtv
 overload fprint with fprint_t2xtv
 //
-*)
 (* ****** ****** *)
 //
 abstype s2cst_tbox
@@ -241,7 +239,9 @@ overload .sconlst with t2dat_get_sconlst
 (* ****** ****** *)
 //
 fun
-t2xtv_new((*void*)): t2xtv
+t2xtv_new0((*void*)): t2xtv
+fun
+t2xtv_new1(loc: loc_t): t2xtv
 //
 fun
 t2xtv_get_stamp(s2tx: t2xtv): stamp
@@ -249,11 +249,17 @@ t2xtv_get_stamp(s2tx: t2xtv): stamp
 overload .stamp with t2xtv_get_stamp
 //
 fun
-t2xtv_get_sort(s2tx: t2xtv): sort2
+t2xtv_get_sort(t2xtv): sort2
 fun
-t2xtv_get_sortopt(s2tx: t2xtv): sort2opt
+t2xtv_set_sort
+(s2tx: t2xtv, s2t0: sort2): void
+//
+fun
+t2xtv_get_sortopt(t2xtv): sort2opt
 //
 overload .sort with t2xtv_get_sort
+overload .sort with t2xtv_set_sort
+//
 overload .sortopt with t2xtv_get_sortopt
 //
 (* ****** ****** *)
