@@ -32,6 +32,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#staload "./symmap.sats"
+//
+(* ****** ****** *)
 
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
@@ -63,6 +67,19 @@ typedef s2exp = $S2E.s2exp
 typedef s2eff = $S2E.s2eff
 typedef s2expopt = $S2E.s2expopt
 typedef s2explst = $S2E.s2explst
+//
+(* ****** ****** *)
+
+typedef s2itm = $S2E.s2itm
+
+(* ****** ****** *)
+//
+vtypedef s2imap = symmap(s2itm)
+//
+(*
+vtypedef d2imap = symmap(d2itm)
+vtypedef s2tmap = symmap(s2rxt)
+*)
 //
 (* ****** ****** *)
 //

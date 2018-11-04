@@ -45,4 +45,14 @@ SYM = "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+
+(* ****** ****** *)
+
 (* end of [xats_trans12_envmap.dats] *)

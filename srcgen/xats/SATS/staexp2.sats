@@ -158,6 +158,8 @@ typedef s2cst = s2cst_tbox
 typedef s2cstlst = List0(s2cst)
 typedef s2cstopt = Option(s2cst)
 //
+typedef s2cstlstlst = List0(s2cstlst)
+//
 (* ****** ****** *)
 //
 abstype s2cstset_tbox
@@ -370,6 +372,54 @@ fprint_s2hnf: fprint_type(s2hnf)
 overload print with print_s2hnf
 overload prerr with prerr_s2hnf
 overload fprint with fprint_s2hnf
+//
+(* ****** ****** *)
+
+datatype s2tex =
+// extended sort
+| S2TEXsrt of sort2
+| S2TEXsub of (s2var, sort2, s2explst)
+// end of [s2tex]
+
+(* ****** ****** *)
+//
+fun
+print_s2tex: print_type(s2tex)
+fun
+prerr_s2tex: prerr_type(s2tex)
+fun
+fprint_s2tex: fprint_type(s2tex)
+//
+overload print with print_s2tex
+overload prerr with prerr_s2tex
+overload fprint with fprint_s2tex
+//
+(* ****** ****** *)
+
+datatype s2itm =
+//
+| S2ITMvar of (s2var)
+//
+| S2ITMcst of
+    (s2cstlstlst) // supporting overload
+  // S2ITMcst
+//
+(*
+| S2ITMexp of (g1exp) // for generic stuff
+*)
+//
+(* ****** ****** *)
+//
+fun
+print_s2itm: print_type(s2itm)
+fun
+prerr_s2itm: prerr_type(s2itm)
+fun
+fprint_s2itm: fprint_type(s2itm)
+//
+overload print with print_s2itm
+overload prerr with prerr_s2itm
+overload fprint with fprint_s2itm
 //
 (* ****** ****** *)
 
