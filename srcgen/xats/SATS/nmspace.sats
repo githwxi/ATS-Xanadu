@@ -32,14 +32,5 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-abstype effect_type = ptr
-abstype effset_type = ptr
-//
-typedef effect = effect_type
-typedef effset = effset_type
-typedef effectlst = List0(effect)
-//
-(* ****** ****** *)
 
-(* end of [xats_effect.sats] *)
+(* end of [xats_nmspace.sats] *)
