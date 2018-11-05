@@ -151,6 +151,8 @@ end // end of [local]
 #dynload "./staexp2_print.dats"
 #dynload "./dynexp2_print.dats"
 //
+#dynload "./nmspace.dats"
+//
 #dynload "./trans12_envmap.dats"
 //
 (* ****** ****** *)

@@ -53,6 +53,7 @@ trans01.sats \
 effect.sats \
 staexp2.sats \
 dynexp2.sats \
+nmspace.sats \
 trans12.sats \
 
 SRCDATS := \
@@ -93,6 +94,7 @@ staexp2.dats \
 dynexp2.dats \
 staexp2_print.dats \
 dynexp2_print.dats \
+nmspace.dats \
 trans12_envmap.dats \
 
 ######
