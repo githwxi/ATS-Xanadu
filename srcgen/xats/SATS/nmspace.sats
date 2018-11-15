@@ -33,4 +33,36 @@
 //
 (* ****** ****** *)
 
+abstbox nmitm_tbox = ptr
+typedef nmitm = nmitm_tbox
+
+(* ****** ****** *)
+//
+fun the_nmspace_top(): nmitm
+//
+fun the_nmspace_ins(nmitm): void
+//
+(* ****** ****** *)
+
+fun the_nmspace_pop(): void
+fun the_nmspace_push(): void
+
+(* ****** ****** *)
+
+fun the_nmspace_save(): void
+fun the_nmspace_restore(): void
+
+(* ****** ****** *)
+
+fun the_nmspace_locjoin(): void
+
+(* ****** ****** *)
+
+fun
+the_nmspace_find{a:type}
+  (fopr: !nmitm -<cloptr1> Option_vt(a)): Option_vt(a)
+// end of [the_nmspace_find]
+
+(* ****** ****** *)
+
 (* end of [xats_nmspace.sats] *)

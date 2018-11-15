@@ -57,12 +57,12 @@ type-checking in ATS3 if one so chooses. In this way, the learning
 curve is expected to be greatly leveled. But there is much more than
 just leveling the learning curve.
 
-ML-like types are algebraic. Such types are so much friendlier than
-dependent types (which often involve quantifiers) for supporting
-type-based meta-programming. I feel I have finally got a chance to
-properly address the template selection problem that brings so much
-annoyance in ATS2 (due to the use of dependent types for template
-selection).
+ML-like types are algebraic (involving no explicit quantifiers). Such
+types are so much friendlier than dependent types (which often involve
+explicit quantifiers) for supporting type-based meta-programming. I
+feel I have finally got a chance to properly address the template
+selection problem that brings so much annoyance in ATS2 (due to the
+use of dependent types for template selection).
 
 In short, ATS3 adds an extra layer to ATS2 for supporting ML-like
 algebraic type-checking.  Type-based meta-programming in ATS3 solely
