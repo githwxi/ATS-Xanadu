@@ -212,17 +212,69 @@ case+ opt of
 | PRECOPTnil() => ()
 | PRECOPTint(tok) =>
   {
-    val () = synread_INT1(tok)
+    val () = synread_INT1<>(tok)
   }
 | PRECOPTopr
   (topr, pmod) =>
   {
-    val () = synread_i0dnt(topr)
-(*
-    val () = synread_precmod(pmod)
-*)
+    val () = synread_i0dnt<>(topr)
+    val () = synread_precmod<>(pmod)
   }
 )
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_precmod
+  (opt) =
+(
+case+ opt of
+| PRECMODnone() => ()
+| PRECMODsome
+  (tbeg, sint, tend) =>
+  {
+    val () = synread_LPAREN<>(tbeg)
+    val () = synread_signint<>(sint)
+    val () = synread_RPAREN<>(tend)
+  }
+)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_signint
+  (sint) =
+(
+case+ sint of
+| SIGNINTint(int) =>
+  {
+    val () = synread_INT1<>(int)
+  }
+| SIGNINTopr(opr, int) =>
+  {
+    val () = auxopr(opr)
+    val () = synread_INT1<>(int)
+  }
+) where
+{
+  fun
+  auxopr(tok: token): void =
+  (
+    case+ tok.node() of
+    | T_IDENT_sym("+") => ()
+    | T_IDENT_sym("-") => ()
+    | _(* unrecognized *) =>
+      let
+        val () =
+        synerr_add(SYNERRs0int(tok))
+      in
+        prerrln!
+        (tok.loc(), ": SYNERR(S0INT): ", tok);
+      end // end of [let]
+  )
+}
 
 (* ****** ****** *)
 

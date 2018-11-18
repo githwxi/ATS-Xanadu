@@ -78,7 +78,9 @@ synerr =
 //
 | SYNERRd0ecl of (d0ecl)
 //
-| SYNERRtoken of (tnode, token)
+| SYNERRs0int of (token) // integer sign: + or -
+//
+| SYNERRtoken of (tnode, token) // token mismatch
 //
 typedef
 synerrlst = List0(synerr)
@@ -295,6 +297,10 @@ synread_SEXPDEF: synreader(token)
 //
 fun{}
 synread_precopt: synreader(precopt)
+fun{}
+synread_precmod: synreader(precmod)
+fun{}
+synread_signint: synreader(signint)
 //
 (* ****** ****** *)
 //
