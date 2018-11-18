@@ -90,8 +90,8 @@ the_fixtyenv_insert
 prval vbox(pf) = pf0  
 //
   fun
-  mix
-  (x0: fixty, x1: fixty): fixty =
+  mix .<>.
+  (x0: fixty, x1: fixty):<> fixty =
   (
   case+ x0 of
   | FIXTYpre(p0) =>

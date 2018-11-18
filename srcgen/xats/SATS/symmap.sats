@@ -51,8 +51,11 @@ fun
 symmap_make_nil
   {itm:type}(): symmap(itm)
 //
+(* ****** ****** *)
+//
 fun symmap_free
-  {itm:type}(map: symmap(itm)): void
+  {itm:type}
+  (map: symmap(itm)):<!wrt> void
 //
 (* ****** ****** *)
 
@@ -61,7 +64,7 @@ symmap_search
   {itm:type}
 (
   kxs: !symmap(itm), k0: sym_t
-) : Option_vt(itm) // end-of-fun
+) :<> Option_vt(itm) // end-of-fun
 
 (* ****** ****** *)
 
@@ -70,7 +73,7 @@ symmap_insert
   {itm:type}
 (
   kxs: &symmap(itm), k0: sym_t, x0: itm
-) : void // end of [symmap_insert]
+) :<> void // end of [symmap_insert]
 
 (* ****** ****** *)
 
@@ -78,9 +81,17 @@ fun
 symmap_insert2
   {itm:type}
 ( kxs: &symmap(itm)
-, key: sym_t, itm: itm, mix: (itm, itm) -> itm
-) : void // end of [symmap_insert2]
+, key: sym_t, itm: itm, mix: (itm, itm) -<0> itm
+) :<> void // end of [symmap_insert2]
 
+(* ****** ****** *)
+//
+fun
+symmap_joinwth
+  {itm:type}
+  (m1: &symmap(itm), m2: !symmap(itm)): void
+// end of [symmap_joinwth]
+//
 (* ****** ****** *)
 
 fun
