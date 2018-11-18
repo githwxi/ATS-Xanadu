@@ -48,9 +48,12 @@ typedef stamp = $STM.stamp
 SYM = "./symbol.sats"
 #staload
 LOC = "./location.sats"
+#staload
+FP0 = "./filepath.sats"
 //
 typedef sym_t = $SYM.sym_t
 typedef loc_t = $LOC.loc_t
+typedef fpath = $FP0.filepath
 //
 (* ****** ****** *)
 //
@@ -292,6 +295,21 @@ s2eff =
 (* ****** ****** *)
 //
 datatype
+s2txt =
+(* extended sort *)
+| S2TXTsrt of sort2
+| S2TXTsub of
+  (s2var, sort2, s2explst(*prop*))
+| S2TXTerr of () // error indication
+//
+typedef
+s2txtopt = Option(s2txt)
+vtypedef
+s2txtopt_vt = Option_vt(s2txt)
+//
+(* ****** ****** *)
+//
+datatype
 s2exp_node =
 //
 | S2Eint of int // integer
@@ -395,6 +413,18 @@ overload prerr with prerr_s2tex
 overload fprint with fprint_s2tex
 //
 (* ****** ****** *)
+//
+abstbox
+fmodenv_tbox = ptr
+typedef
+fmodenv = fmodenv_tbox
+//
+fun
+fmodenv_get_path(fmodenv): fpath
+//
+overload .path with fmodenv_get_path
+//
+(* ****** ****** *)
 
 datatype s2itm =
 //
@@ -402,11 +432,13 @@ datatype s2itm =
 //
 | S2ITMcst of
     (s2cstlstlst) // supporting overload
-  // S2ITMcst
+  // end of [S2ITMcst]
 //
 (*
 | S2ITMexp of (g1exp) // for generic stuff
 *)
+//
+| S2ITMfmodenv of fmodenv
 //
 (* ****** ****** *)
 //

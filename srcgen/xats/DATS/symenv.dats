@@ -211,11 +211,11 @@ val ((*void*)) =
 (* ****** ****** *)
 //
 implement
-symenv_pop_free
+symenv_popfree
   (env) =
   $MAP.symmap_free(symenv_pop(env))
 implement
-symenv_push_nil
+symenv_pushnil
   (env) =
   symenv_push(env, $MAP.symmap_make_nil())
 //
