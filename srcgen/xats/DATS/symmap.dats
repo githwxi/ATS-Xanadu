@@ -192,7 +192,10 @@ in
   loop(map1, kxs)
 ) where
   {
-    val kxs = linmap_listize1<key,itm>(map2)
+    val
+    kxs = linmap_listize1<key,itm>(map2)
+    prval
+    ((*nonneg*)) = lemma_list_vt_param(kxs)
   } (* end of [where] *)
 end // end of [symmap_joinwth]
 
