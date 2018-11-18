@@ -42,7 +42,38 @@ LOC = "./location.sats"
   typedef loc_t = $LOC.loc_t
 //
 (* ****** ****** *)
+//
+abstype d2var_tbox
+typedef d2var = d2var_tbox
+typedef d2varlst = List0(d2var)
+typedef d2varopt = Option(d2var)
+vtypedef d2varlst_vt = List0_vt(d2var)
+vtypedef d2varopt_vt = Option_vt(d2var)
+//
+(* ****** ****** *)
 
+abstbox d2ecl_tbox = ptr
+typedef d2ecl = d2ecl_tbox
+typedef d2eclist = List0(d2ecl)
+
+(* ****** ****** *)
+//
+datatype d2itm =
+| D2ITMvar of (d2var)
+//
+(* ****** ****** *)
+//
+fun
+print_d2itm: print_type(d2itm)
+fun
+prerr_d2itm: prerr_type(d2itm)
+fun
+fprint_d2itm: fprint_type(d2itm)
+//
+overload print with print_d2itm
+overload prerr with prerr_d2itm
+overload fprint with fprint_d2itm
+//
 (* ****** ****** *)
 
 (* end of [xats_dynexp2.sats] *)

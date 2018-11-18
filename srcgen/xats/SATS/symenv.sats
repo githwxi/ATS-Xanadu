@@ -94,10 +94,10 @@ symenv_push
 (* ****** ****** *)
 //
 fun
-symenv_pop_free
+symenv_popfree
   {itm:type}(env: &symenv(itm) >> _): void
 fun
-symenv_push_nil
+symenv_pushnil
   {itm:type}(env: &symenv(itm) >> _): void
 //
 (* ****** ****** *)

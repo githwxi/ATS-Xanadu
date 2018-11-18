@@ -83,4 +83,13 @@ symmap_insert2
 
 (* ****** ****** *)
 
+fun
+fprint_symmap
+  {itm:type}
+( out: FILEref
+, map: !symmap itm, fpr: (FILEref, itm) -> void
+) : void // end of [fprint_symmap]
+
+(* ****** ****** *)
+
 (* end of [xats_symmap.sats] *)

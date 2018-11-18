@@ -92,7 +92,8 @@ symmap_search
 linmap_search_opt<key,itm>
   (kxs, stamp) where
 {
-  val stamp = $SYM.symbol_get_stamp(k0)
+  val
+  stamp = $SYM.symbol_get_stamp(k0)
 }
 )
 //
@@ -135,6 +136,17 @@ symmap_insert2
   end // end of [local]
 }
 //
+(* ****** ****** *)
+
+implement
+fprint_symmap
+{itm}(out, map, fpr) =
+let
+implement
+fprint_val<itm>
+(out, x0) = fpr(out, x0) in fprint_linmap<key,itm>(out, map)
+end // end of [fprint_symmap]
+
 (* ****** ****** *)
 
 end // end of [local]

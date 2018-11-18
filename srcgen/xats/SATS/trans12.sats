@@ -36,6 +36,17 @@
 #staload "./symmap.sats"
 //
 (* ****** ****** *)
+//
+#staload
+  FP0 = "./filepath.sats"
+//
+(* ****** ****** *)
+//
+(*
+#staload LEX = "./lexing.sats"
+*)
+//
+(* ****** ****** *)
 
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
@@ -45,6 +56,10 @@
 (* ****** ****** *)
 
 symintr trans12
+
+(* ****** ****** *)
+
+typedef fpath = $FP0.filepath
 
 (* ****** ****** *)
 //
@@ -68,18 +83,122 @@ typedef s2eff = $S2E.s2eff
 typedef s2expopt = $S2E.s2expopt
 typedef s2explst = $S2E.s2explst
 //
+typedef s2txt = $S2E.s2txt
+typedef s2txtopt = $S2E.s2txtopt
+//
+vtypedef s2txtopt_vt = $S2E.s2txtopt_vt
+//
+(* ****** ****** *)
+
+typedef fmodenv = $S2E.fmodenv
+
+(* ****** ****** *)
+
+typedef d2ecl = $D2E.d2ecl
+typedef d2eclist = $D2E.d2eclist
+
 (* ****** ****** *)
 
 typedef s2itm = $S2E.s2itm
+typedef d2itm = $D2E.d2itm
 
 (* ****** ****** *)
 //
+vtypedef s2tmap = symmap(s2txt)
+//
 vtypedef s2imap = symmap(s2itm)
 //
-(*
 vtypedef d2imap = symmap(d2itm)
-vtypedef s2tmap = symmap(s2rxt)
+//
+(* ****** ****** *)
+
+fun
+fmodenv_make
+( fp: fpath
+, m0: s2tmap
+, m1: s2imap
+, m2: d2imap, d2cs: d2eclist
+) : fmodenv // fmodenv_make
+
+(* ****** ****** *)
+//
+(*
+HX-2018-11-18:
+Not waterproof but seems adequate
 *)
+fun
+fmodenv_get_s2tmap
+( menv
+: fmodenv
+) :
+[
+  l:addr
+]
+( s2tmap@l
+, minus_v(fmodenv, s2tmap@l) | ptr(l))
+fun
+fmodenv_get_s2imap
+( menv
+: fmodenv
+) :
+[
+  l:addr
+]
+( s2imap@l
+, minus_v(fmodenv, s2imap@l) | ptr(l))
+fun
+fmodenv_get_d2imap
+( menv
+: fmodenv
+) :
+[
+  l:addr
+]
+( d2imap@l
+, minus_v(fmodenv, d2imap@l) | ptr(l))
+//
+(* ****** ****** *)
+//
+fun
+fmodenv_get_d2eclist(fmodenv): d2eclist
+//
+(* ****** ****** *)
+//
+fun
+the_sortenv_add
+(tid: sym_t, s2te: s2txt): void
+fun
+the_sortenv_find
+  (tid: sym_t): s2txtopt_vt
+fun
+the_sortenv_qfind
+  (qua: sym_t, tid: sym_t): s2txtopt_vt
+//
+(* ****** ****** *)
+//
+absview sortenv_push_v
+//
+fun
+the_sortenv_pop
+  (sortenv_push_v | (*none*)): s2tmap
+fun
+the_sortenv_popfree
+  (sortenv_push_v | (*none*)): (void)
+fun
+the_sortenv_pushnil
+  ((*void*)): (sortenv_push_v | void)
+//
+fun
+the_sortenv_locjoin
+(
+  pf1: sortenv_push_v
+, pf2: sortenv_push_v | (*none*)
+) : void // end of [the_sortenv_locjoin]
+//
+fun // p: pervasive
+the_sortenv_pjoinwth0(map: s2tmap): void
+fun // p: pervasive
+the_sortenv_pjoinwth1(map: !s2tmap): void
 //
 (* ****** ****** *)
 //
