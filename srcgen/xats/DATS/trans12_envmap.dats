@@ -315,14 +315,16 @@ the_sortenv_pushnil
 (* ****** ****** *)
 
 implement
-the_sortenv_pjoinwth0 (map) = let
+the_sortenv_pjoinwth0(map) = let
   prval
-  vbox(pf) = pfbox in $ENV.symenv_pjoinwth0(!p0, map)
+  vbox(pf) = pfbox in
+  $effmask_ref($ENV.symenv_pjoinwth0(!p0, map))
 end // end of [the_sortenv_pjoinwth0]
 implement
-the_sortenv_pjoinwth1 (map) = let
+the_sortenv_pjoinwth1(map) = let
   prval
-  vbox(pf) = pfbox in $ENV.symenv_pjoinwth1(!p0, map)
+  vbox(pf) = pfbox in
+  $effmask_ref($ENV.symenv_pjoinwth1(!p0, map))
 end // end of [the_sortenv_pjoinwth1]
 
 (* ****** ****** *)
