@@ -78,9 +78,11 @@ synerr =
 //
 | SYNERRd0ecl of (d0ecl)
 //
-| SYNERRs0int of (token) // integer sign: + or -
+| SYNERRtoken of
+    (tnode, token) // token mismatch
+  // SYNERRtoken
 //
-| SYNERRtoken of (tnode, token) // token mismatch
+| SYNERRsignint_opr of (token) // sign: + or -
 //
 typedef
 synerrlst = List0(synerr)

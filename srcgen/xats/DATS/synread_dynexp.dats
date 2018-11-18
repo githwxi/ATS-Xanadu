@@ -84,11 +84,11 @@ synread_d0ecl
 //
 val loc0 = d0c0.loc()
 //
-// (*
+(*
 val () =
 println!
 ("synread_d0ecl: d0c0 = ", d0c0)
-// *)
+*)
 //
 in
 //
@@ -117,12 +117,12 @@ d0c0.node() of
 | D0Cstatic
   (tok, d0c) =>
   {
-    val () = synread_d0ecl(d0c)
+    val () = synread_d0ecl<>(d0c)
   }
 | D0Cextern
   (tok, d0c) =>
   {
-    val () = synread_d0ecl(d0c)
+    val () = synread_d0ecl<>(d0c)
   }
 //
 | D0Cabssort
@@ -132,9 +132,7 @@ d0c0.node() of
     val () =
     synread_ABSSORT<>(tok)
 *)
-    val () =
-      synread_s0tid<>(tid)
-    // end of [val]
+    val () = synread_s0tid<>(tid)
   }
 //
 | D0Csortdef
@@ -144,9 +142,7 @@ d0c0.node() of
     val () =
     synread_SORTDEF<>(tok)
 *)
-    val () =
-      synread_s0tid<>(tid)
-    // end of [val]
+    val () = synread_s0tid<>(tid)
     val () = synread_EQ<>(teq)
     val () = synread_s0rtdef<>(def)
   }
@@ -181,10 +177,12 @@ d0c0.node() of
   in
     prerrln!(loc0, ": SYNERR(d0ecl): ", tok);
   end // end of [D0Cnone]
+//
 | _(* rest-of-d0ecl *) =>
   (
     prerrln!("synread_d0ecl: d0c0 = ", d0c0)
   )
+//
 end // end of [synread_d0ecl]
 
 (* ****** ****** *)
@@ -259,22 +257,26 @@ case+ sint of
   }
 ) where
 {
+// HX-2018-11-18:
+// int sign is either + or -
   fun
   auxopr(tok: token): void =
   (
-    case+ tok.node() of
-    | T_IDENT_sym("+") => ()
-    | T_IDENT_sym("-") => ()
-    | _(* unrecognized *) =>
+    case+
+    tok.node() of
+    | T_IDENT_sym"+" => ()
+    | T_IDENT_sym"-" => ()
+    | _(*unrecognized*) =>
       let
         val () =
-        synerr_add(SYNERRs0int(tok))
+        synerr_add(SYNERRsignint_opr(tok))
       in
         prerrln!
-        (tok.loc(), ": SYNERR(S0INT): ", tok);
+        (tok.loc(), ": SYNERR(SIGNINT_OPR): ", tok);
       end // end of [let]
-  )
-}
+  ) (* end of [auxopr] *)
+//
+} (* end of [synread_signint] *)
 
 (* ****** ****** *)
 
