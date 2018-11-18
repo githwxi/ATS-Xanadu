@@ -64,20 +64,20 @@ symenv_make_nil
 fun
 symenv_search
 {itm:type} // HX: search all
-(env: &symenv(itm), k0: sym_t): Option_vt(itm)
+(env: &symenv(itm), k0: sym_t):<> Option_vt(itm)
 // end of [symenv_search]
 
 fun
 symenv_insert
 {itm:type} // HX: insert first
-(env: &symenv(itm), k0: sym_t, x0: itm): void
+(env: &symenv(itm), k0: sym_t, x0: itm):<> void
 // end of [symenv_insert]
 
 fun
 symenv_insert2
 {itm:type} // HX: insert first
 ( env: &symenv(itm)
-, key: sym_t, itm: itm, mix: (itm, itm) -> itm): void
+, key: sym_t, itm: itm, mix: (itm, itm) -<0> itm):<> void
 // end of [symenv_insert2]
 
 (* ****** ****** *)
@@ -99,6 +99,35 @@ symenv_popfree
 fun
 symenv_pushnil
   {itm:type}(env: &symenv(itm) >> _): void
+//
+(* ****** ****** *)
+//
+fun
+symenv_psearch // p: pervasive
+  {itm:type}
+  (env: &symenv itm, k: sym_t):<> Option_vt(itm)
+// end of [symenv_psearch]
+//
+(* ****** ****** *)
+//
+fun
+symenv_pinsert // p: pervasive
+  {itm:type}
+  (env: &symenv(itm), k: sym_t, x: itm):<> void
+// end of [symenv_pinsert]
+//
+(* ****** ****** *)
+//
+fun
+symenv_pjoinwth0
+  {itm:type}
+  (env: &symenv(itm), map: symmap(itm)): (void)
+// end of [symenv_pjoinwth0]
+fun
+symenv_pjoinwth1
+  {itm:type}
+  (env: &symenv(itm), map: !symmap(itm)): (void)
+// end of [symenv_pjoinwth1]
 //
 (* ****** ****** *)
 

@@ -175,6 +175,9 @@ val ans = ans where
 //
 in
 //
+let
+val ans =
+(
 case+ ans of
 | ~None_vt() =>
   (
@@ -188,6 +191,10 @@ case+ ans of
     $effmask_ref(auxlst2(fopr, !p))
   }
 | _(* Some_vt *) => ans
+) : Option_vt(a)
+in
+  cloptr_free($UN.castvwtp0(fopr)); ans
+end
 //
 end // end of [the_nmspace_find]
 

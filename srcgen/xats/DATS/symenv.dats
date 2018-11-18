@@ -115,8 +115,12 @@ symenv_vt0ype
   (itm:type) = @{
   map0= symmap(itm)
 , maps= symmaplst0(itm)
-, saved= List0_vt(@(symmap(itm), symmaplst(itm)))
-, pervasive= symmap(itm)
+//
+, saved=
+  List0_vt(@(symmap(itm), symmaplst(itm)))
+//
+, pmap0= symmap(itm) // HX: for the pervasive map
+//
 } // end of [symenv_v0type]
 
 (* ****** ****** *)
@@ -126,14 +130,16 @@ symenv_make_nil
   {itm}((*void*)) =
   (pfat | p0) where
 {
+//
   vtypedef env_t = symenv(itm)
+//
   val map0 = $MAP.symmap_make_nil()
   val (pfat, pfgc | p0) = ptr_alloc<env_t>()
 //
   val () = p0->map0 := map0
   val () = p0->maps := list_vt_nil()
   val () = p0->saved := list_vt_nil()
-  val () = p0->pervasive := $MAP.symmap_make_nil()
+  val () = p0->pmap0 := $MAP.symmap_make_nil()
 //
   prval() = mfree_gc_v_elim(pfgc)
 //
@@ -152,7 +158,10 @@ in
   case+ ans of
   | ~None_vt() =>
     (
+    $effmask_all
+    (
       symmaplst_search(env.maps, k0)
+    )
     )
   | @Some_vt _ =>
     (
@@ -166,7 +175,7 @@ implement
 symenv_insert
 {itm}(env, k0, x0) =
 (
-  $MAP.symmap_insert{itm}(env.map0, k0, x0)
+$MAP.symmap_insert{itm}(env.map0, k0, x0)
 ) (* end of [symenv_insert] *)
 
 (* ****** ****** *)
@@ -175,7 +184,7 @@ implement
 symenv_insert2
 {itm}(env, k0, x0, mix) =
 (
-  $MAP.symmap_insert2{itm}(env.map0, k0, x0, mix)
+$MAP.symmap_insert2{itm}(env.map0, k0, x0, mix)
 ) (* end of [symenv_insert2] *)
 
 (* ****** ****** *)
@@ -219,6 +228,39 @@ symenv_pushnil
   (env) =
   symenv_push(env, $MAP.symmap_make_nil())
 //
+(* ****** ****** *)
+//
+implement
+symenv_psearch
+  {itm}(env, k0) =
+  $MAP.symmap_search{itm}(env.pmap0, k0)
+// end of [symenv_pervasive_search]
+//
+implement
+symenv_pinsert
+  {itm}(env, k0, x0) =
+  $MAP.symmap_insert{itm}(env.pmap0, k0, x0)
+// end of [symenv_insert]
+//
+(* ****** ****** *)
+
+implement
+symenv_pjoinwth0
+  (env, map) = let
+//
+val () =
+$MAP.symmap_joinwth(env.pmap0, map)
+//
+in
+  $MAP.symmap_free(map)
+end // end of [symenv_pervasive_joinwth0]
+
+implement
+symenv_pjoinwth1
+  (env, map) =
+  $MAP.symmap_joinwth(env.pmap0, map)
+// end of [symenv_pervasive_joinwth1]
+
 (* ****** ****** *)
 
 (* end of [xats_symenv.dats] *)

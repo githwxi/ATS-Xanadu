@@ -55,6 +55,9 @@ typedef key = uint
 
 local
 //
+#staload _ =
+"libats/DATS/qlist.dats"
+//
 #staload
 "libats/SATS/linmap_avltree.sats"
 #staload _ =
@@ -88,6 +91,7 @@ symmap_free{itm}
 implement
 symmap_search
 {itm}(kxs, k0) =
+$effmask_all
 (
 linmap_search_opt<key,itm>
   (kxs, stamp) where
@@ -99,7 +103,9 @@ linmap_search_opt<key,itm>
 //
 implement
 symmap_insert
-{itm}(kxs, k0, x0) = () where
+{itm}(kxs, k0, x0) =
+$effmask_all
+(
 {
   val opt =
   linmap_insert_opt<key,itm>
@@ -110,10 +116,13 @@ symmap_insert
   }
   val ((*void*)) = option_vt_free(opt)
 }
+)
 //
 implement
 symmap_insert2
-{itm}(kxs, k0, x0, mix) = () where
+{itm}(kxs, k0, x0, mix) =
+$effmask_all
+(
 {
   local
     val
@@ -135,7 +144,58 @@ symmap_insert2
   }
   end // end of [local]
 }
+)
 //
+(* ****** ****** *)
+
+implement
+symmap_joinwth
+{itm}
+(map1, map2) = let
+//
+typedef kx = (key, itm)
+//
+fun
+loop
+{n:nat} .<n>.
+( map: &symmap(itm)
+, kxs: list_vt(kx, n)): void = let
+(*
+val () =
+println!("symmap_joinwth: loop")
+*)
+in
+//
+case+ kxs of
+| ~list_vt_nil
+    ((*void*)) => ()
+| @list_vt_cons
+    (kx, kxs1) => let
+    var res: itm
+    val ret =
+    linmap_insert<key,itm>
+      (map, kx.0, kx.1, res)
+    // end of [ret]
+    val kxs1 = kxs1
+    val ((*freed*)) = free@{kx}{0}(kxs)
+  in
+    let
+      prval() =
+      opt_clear(res) in loop{n-1}(map, kxs1)
+    end
+  end // end of [list_vt_cons]
+//
+end // end of [loop]
+//
+in
+(
+  loop(map1, kxs)
+) where
+  {
+    val kxs = linmap_listize1<key,itm>(map2)
+  } (* end of [where] *)
+end // end of [symmap_joinwth]
+
 (* ****** ****** *)
 
 implement

@@ -60,7 +60,7 @@ fun the_nmspace_locjoin(): void
 
 fun
 the_nmspace_find{a:type}
-  (fopr: !nmitm -<cloptr1> Option_vt(a)): Option_vt(a)
+  (fopr: nmitm -<cloptr1> Option_vt(a)): Option_vt(a)
 // end of [the_nmspace_find]
 
 (* ****** ****** *)

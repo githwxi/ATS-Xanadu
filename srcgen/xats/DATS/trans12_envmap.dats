@@ -42,6 +42,12 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload
 SYM = "./../SATS/symbol.sats"
+#staload
+MAP = "./../SATS/symmap.sats"
+#staload
+ENV = "./../SATS/symenv.sats"
+#staload
+NMS = "./../SATS/nmspace.sats"
 //
 (* ****** ****** *)
 
@@ -56,6 +62,16 @@ SYM = "./../SATS/symbol.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/trans12.sats"
+
+(* ****** ****** *)
+
+absimpl
+$NMS.nmitm_tbox = fmodenv
+
+(* ****** ****** *)
+
+vtypedef
+symenv(a:type) = $ENV.symenv(a)
 
 (* ****** ****** *)
 
@@ -172,6 +188,146 @@ fmodenv_get_d2eclist
 (* ****** ****** *)
 
 end // end of [local] *)
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+sortenv_push_v = unit_v
+//
+vtypedef s2tenv = symenv(s2txt)
+//
+extern
+prfun
+vbox_make_viewptr
+{a:vt0p}{l:addr}
+( pf: a @ l
+| p0: ptr(l)):<> vbox(a @ l)
+//
+val
+(pf | p0) =
+$ENV.symenv_make_nil((*void*))
+//
+prval
+pfbox =
+vbox_make_viewptr{s2tenv}(pf | p0)
+//
+fun
+the_nmspace_find
+  (tid: sym_t): s2txtopt_vt = let
+  fun
+  fopr
+  (menv: fmodenv): s2txtopt_vt =
+    ans where
+  {
+    val (pf, fpf | p0) =
+      fmodenv_get_s2tmap(menv)
+    val ans =
+      $MAP.symmap_search(!p0, tid)
+    prval () =
+      minus_v_addback(fpf, pf | menv)
+    // end of [prval]
+  }
+in
+  $NMS.the_nmspace_find(lam(x) => fopr(x))
+end // end of [the_sortenv_find]
+//
+in
+
+implement
+the_sortenv_add
+  (tid, s2txt) = let
+  prval
+  vbox(pf) = pfbox in $ENV.symenv_insert(!p0, tid, s2txt)
+end // end of [the_sortenv_add]
+
+(* ****** ****** *)
+
+implement
+the_sortenv_find
+  (tid) = let
+  val ans = let
+    prval
+    vbox(pf) = pfbox
+  in
+    $ENV.symenv_search{s2txt}(!p0, tid)
+  end // end of [val]
+in
+//
+case+ ans of
+//
+| Some_vt _ => ans
+//
+| ~None_vt() => let
+    val ans = the_nmspace_find(tid)
+  in
+    case+ ans of
+    | Some_vt _ => ans
+    | ~None_vt() => let
+        prval
+        vbox(pf) = pfbox
+      in
+        $ENV.symenv_psearch{s2txt}(!p0, tid)
+      end // end of [None_vt]
+  end // end of [None_vt]
+//
+end // end of [the_sortenv_find]
+
+(* ****** ****** *)
+
+implement
+the_sortenv_pop (
+  pfenv | (*none*)
+) = let
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+in
+  $effmask_ref
+  ($ENV.symenv_pop{s2txt}(!p0))
+end // end of [the_sortenv_pop]
+
+implement
+the_sortenv_popfree
+  (pfenv | (*none*)) =
+{
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+  val () =
+  $effmask_ref
+  ($ENV.symenv_popfree{s2txt}(!p0))
+} // end of [the_sortenv_popfree]
+
+implement
+the_sortenv_pushnil
+  () = (pfenv | ()) where
+{
+//
+  prval pfenv = unit_v()
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_pushnil{s2txt}(!p0))
+//
+} // end of [the_sortenv_pushnil]
+
+(* ****** ****** *)
+
+implement
+the_sortenv_pjoinwth0 (map) = let
+  prval
+  vbox(pf) = pfbox in $ENV.symenv_pjoinwth0(!p0, map)
+end // end of [the_sortenv_pjoinwth0]
+implement
+the_sortenv_pjoinwth1 (map) = let
+  prval
+  vbox(pf) = pfbox in $ENV.symenv_pjoinwth1(!p0, map)
+end // end of [the_sortenv_pjoinwth1]
+
+(* ****** ****** *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
