@@ -431,8 +431,11 @@ x0.node() of
   , "D1Elam(", "; "
   , arg, "; ", res, "; ", farrw, "; ", fbody, ")")
 //
-| D1Eanno(d1e, s1e_ann) =>
-  fprint!(out, "D1Eanno(", d1e, "; ", s1e_ann, ")")
+| D1Eanno(d1e1, s1e2) =>
+  fprint!(out, "D1Eanno(", d1e1, "; ", s1e2, ")")
+//
+| D1Equal(tok1, d1e2) =>
+  fprint!(out, "D1Equal(", tok1, "; ", d1e2, ")")
 //
 | D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
 //

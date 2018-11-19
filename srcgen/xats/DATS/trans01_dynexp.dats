@@ -1295,6 +1295,18 @@ d0e0.node() of
     }
   end // end of [D0Eanno]
 //
+| D0Equal(tok1, d0e2) =>
+  let
+    val d1e2 = trans01_dexp(d0e2)
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+        d1exp_make_node(loc0, D1Equal(tok1, d1e2))
+      // end of [val]
+    }
+  end // end of [D0Equal]
+//
 | D0Enone(_(*tokerr*)) =>
   FXITMatm(d1e0) where
   {

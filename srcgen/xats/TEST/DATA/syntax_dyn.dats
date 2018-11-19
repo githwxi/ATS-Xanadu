@@ -1,3 +1,7 @@
+#staload N = $ADD
+#staload M = $FOO$S2E
+val xyz = $ME.foo
+////
 (* ****** ****** *)
 //
 (*

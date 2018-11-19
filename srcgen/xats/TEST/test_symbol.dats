@@ -51,6 +51,22 @@ val () = println!(symbol_SUB)
 val () = println!(symbol_MUL)
 val () = println!(symbol_DIV)
 //
+val i0 = symbol_ADD.stamp()
+val-~Some_vt(x0) = stamp_to_symbol(i0)
+val () = println!("x0(ADD) = ", x0)
+//
+val i0 = symbol_SUB.stamp()
+val-~Some_vt(x0) = stamp_to_symbol(i0)
+val () = println!("x0(SUB) = ", x0)
+//
+val i0 = symbol_MUL.stamp()
+val-~Some_vt(x0) = stamp_to_symbol(i0)
+val () = println!("x0(MUL) = ", x0)
+//
+val i0 = symbol_DIV.stamp()
+val-~Some_vt(x0) = stamp_to_symbol(i0)
+val () = println!("x0(DIV) = ", x0)
+//
 (* ****** ****** *)
 
 implement main0() = ((*void*))
