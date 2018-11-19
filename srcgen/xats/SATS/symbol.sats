@@ -46,6 +46,9 @@ typedef symbol = symbol_tbox
 typedef symbolist = List0(symbol)
 typedef symbolopt = Option(symbol)
 //
+vtypedef symbolist_vt = List0_vt(symbol)
+vtypedef symbolopt_vt = Option_vt(symbol)
+//
 (* ****** ****** *)
 
 val symbol_nil : symbol // SYMBOL("")
@@ -126,6 +129,10 @@ overload iseqz with symbol_is_nil
 overload isneqz with symbol_isnot_nil
 //
 overload compare with compare_symbol_symbol
+//
+(* ****** ****** *)
+//
+fun stamp_to_symbol(stamp: uint): symbolopt_vt
 //
 (* ****** ****** *)
 

@@ -438,6 +438,8 @@ d1exp_node =
 //
 | D1Eanno of (d1exp, s1exp) // type-annotation
 //
+| D1Equal of (token(*qual*), d1exp) // qualified
+//
 | D1Enone of () // HX-2018-09-25: indicating error 
 // end of [d1exp_node]
 //
