@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2018
+// Start Time: December, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -39,125 +39,133 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
-#staload
-STM = "./../SATS/stamp0.sats"
-
-(* ****** ****** *)
-
+//
 #staload
 SYM = "./../SATS/symbol.sats"
-
-overload
-fprint with $SYM.fprint_symbol
-
+#staload
+MAP = "./../SATS/symmap.sats"
+#staload
+ENV = "./../SATS/symenv.sats"
+#staload
+NMS = "./../SATS/nmspace.sats"
+//
 (* ****** ****** *)
 
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
 
 (* ****** ****** *)
 
-implement
-print_sort2(x0) =
-fprint_sort2(stdout_ref, x0) 
-implement
-prerr_sort2(x0) =
-fprint_sort2(stdout_ref, x0) 
+#staload "./../SATS/trans12.sats"
+
+(* ****** ****** *)
 
 local
-
-implement
-fprint_val<sort2> = fprint_sort2
 
 in (* in-of-local *)
 
 implement
-fprint_sort2
-  (out, s2t0) =
-(
-case+ s2t0 of
-| S2Tbas(s2tb) =>
-  fprint!(out, "S2Tbas(", s2tb, ")")
-| S2Txtv(s2tx) =>
-  fprint!(out, "S2Txtv(", s2tx, ")")
-| S2Ttup(s2ts) =>
-  fprint!(out, "S2Ttup(", s2ts, ")")
-| S2Tfun(s2ts, s2t1) =>
-  fprint!
-  (out, "S2Tfun(", s2ts, "; ", s2t1, ")")
+trans12_sort
+  (s1t0) = let
 //
-| S2Tnone() => fprint!(out, "S2Tnone(", ")")
+(*
+val () =
+println!
+("trans12_sort: s1t0 = ", s1t0)
+*)
 //
-) (* end of [fprint_sort2] *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-implement
-fprint_t2bas
-  (out, s2tb) =
-(
-case+ s2tb of
-| T2BASpre(sym) =>
-  fprint!(out, "T2BASpre(", sym, ")")
-| T2BASdef(s2td) =>
-  fprint!(out, "T2BASdef(", s2td, ")")
-| T2BASimp(knd, sym) =>
-  fprint!(out, "T2BASimp(", knd, "; ", sym, ")")
-)
-
-(* ****** ****** *)
+val loc0 = s1t0.loc()
 //
-implement
-print_t2dat(s2td) =
-fprint_t2dat(stdout_ref, s2td)
-implement
-prerr_t2dat(s2td) =
-fprint_t2dat(stderr_ref, s2td)
-implement
-fprint_t2dat(out, s2td) =
-$SYM.fprint_symbol(out, s2td.sym())
+in
 //
-(* ****** ****** *)
-//
-implement
-print_t2xtv(s2tx) =
-fprint_t2xtv(stdout_ref, s2tx)
-implement
-prerr_t2xtv(s2tx) =
-fprint_t2xtv(stderr_ref, s2tx)
-implement
-fprint_t2xtv(out, s2tx) =
-$STM.fprint_stamp(out, s2tx.stamp())
-//
-(* ****** ****** *)
-
-implement
-print_s2exp(x0) =
-fprint_s2exp(stdout_ref, x0) 
-implement
-prerr_s2exp(x0) =
-fprint_s2exp(stdout_ref, x0) 
-
-local
-
-implement
-fprint_val<s2exp> = fprint_s2exp
-
-in (* in-of-local *)
-
-implement
-fprint_s2exp
-  (out, s2e0) =
-(
 case-
-s2e0.node() of
-| S2Enone() => fprint!(out, "S2Enone()")
-)
+s1t0.node() of
+| S1Tnone() => S2Tnone()
+//
+end // end of [trans12_sort]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_staexp2_print.dats] *)
+implement
+trans12_sortopt
+  (opt) =
+(
+case+ opt of
+| None() => None()
+| Some(s1t) => Some(trans12_sort(s1t))
+) (* end of [trans12_sortopt] *)
+
+implement
+trans12_sortlst
+  (s1ts) =
+list_vt2t(s2ts) where
+{
+val
+s2ts =
+list_map<sort1><sort2>
+  (s1ts) where
+{
+  implement
+  list_map$fopr<sort1><sort2> = trans12_sort
+}
+} (* end of [trans12_sortlst] *)
+
+(* ****** ****** *)
+
+local
+
+in (* in-of-local *)
+
+implement
+trans12_sexp
+  (s1e0) = let
+//
+(*
+val () =
+println!
+("trans12_sort: s1e0 = ", s1e0)
+*)
+//
+val loc0 = s1e0.loc()
+//
+in
+//
+case-
+s1e0.node() of
+| S1Enone() => s2exp_none()
+//
+end // end of [trans12_sexp]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans12_sexpopt
+  (opt) =
+(
+case+ opt of
+| None() => None()
+| Some(s1e) => Some(trans12_sexp(s1e))
+) (* end of [trans12_sexpopt] *)
+
+implement
+trans12_sexplst
+  (s1es) =
+list_vt2t(s1es) where
+{
+val
+s1es =
+list_map<s1exp><s2exp>
+  (s1es) where
+{
+  implement
+  list_map$fopr<s1exp><s2exp> = trans12_sexp
+}
+} (* end of [trans12_sexplst] *)
+
+(* ****** ****** *)
+
+(* end of [xats_trans12_staexp.dats] *)

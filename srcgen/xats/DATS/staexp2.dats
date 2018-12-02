@@ -209,6 +209,13 @@ t2xtv_get_sortopt
 end // end of [t2xtv_struct]
 
 (* ****** ****** *)
+//
+implement
+s2exp_none() =
+s2exp_make_node
+(S2Tnone(*void*), S2Enone(*void*))
+//
+(* ****** ****** *)
 
 local
 
@@ -224,6 +231,13 @@ implement
 s2exp_get_sort(x0) = x0.s2exp_sort
 implement
 s2exp_get_node(x0) = x0.s2exp_node
+//
+implement
+s2exp_make_node
+  (s0t0, node) = $rec
+{
+ s2exp_sort= s0t0, s2exp_node= node
+} (* end of [s2exp_make_node] *)
 //
 end // end of [local]
 

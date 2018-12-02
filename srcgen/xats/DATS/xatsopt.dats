@@ -155,6 +155,9 @@ end // end of [local]
 //
 #dynload "./trans12_envmap.dats"
 //
+#dynload "./trans12_staexp.dats"
+#dynload "./trans12_dynexp.dats"
+//
 (* ****** ****** *)
 //
 datatype

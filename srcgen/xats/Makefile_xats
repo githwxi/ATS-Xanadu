@@ -96,6 +96,8 @@ staexp2_print.dats \
 dynexp2_print.dats \
 nmspace.dats \
 trans12_envmap.dats \
+trans12_staexp.dats \
+trans12_dynexp.dats \
 
 ######
 
