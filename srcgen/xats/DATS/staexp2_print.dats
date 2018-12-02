@@ -290,4 +290,31 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+print_s2exp(x0) =
+fprint_s2exp(stdout_ref, x0) 
+implement
+prerr_s2exp(x0) =
+fprint_s2exp(stdout_ref, x0) 
+
+local
+
+implement
+fprint_val<s2exp> = fprint_s2exp
+
+in (* in-of-local *)
+
+implement
+fprint_s2exp
+  (out, s2e0) =
+(
+case-
+s2e0.node() of
+| S2Enone() => fprint!(out, "S2Enone()")
+)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_staexp2_print.dats] *)
