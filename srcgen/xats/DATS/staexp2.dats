@@ -209,13 +209,6 @@ t2xtv_get_sortopt
 end // end of [t2xtv_struct]
 
 (* ****** ****** *)
-//
-implement
-s2exp_none() =
-s2exp_make_node
-(S2Tnone(*void*), S2Enone(*void*))
-//
-(* ****** ****** *)
 
 local
 
