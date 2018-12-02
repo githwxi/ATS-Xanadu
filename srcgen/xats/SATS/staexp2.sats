@@ -82,7 +82,7 @@ sort2 =
   | S2Ttup of (sort2lst) (* tuple sort *)
   | S2Tfun of
     (sort2lst(*arg*), sort2(*res*)) // function
-  | S2Terr of ((*void*)) // HX: error indication
+  | S2Tnone of ((*void*)) // HX: error indication
 // end of [sort2]
 
 and t2bas =
@@ -338,7 +338,13 @@ s2exp_node =
 | S2Euni of // universal quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
+| S2Enone of () // HX: error indication
 // end of [s2exp_node]
+//
+(* ****** ****** *)
+//
+fun
+s2exp_none((*void*)): s2exp
 //
 (* ****** ****** *)
 //
@@ -351,6 +357,12 @@ fun
 s2exp_get_node(s2exp): s2exp_node
 //
 overload .node with s2exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+s2exp_make_node
+ (s2t0: sort2, node: s2exp_node): s2exp
 //
 (* ****** ****** *)
 //
