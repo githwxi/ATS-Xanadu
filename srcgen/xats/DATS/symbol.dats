@@ -317,6 +317,23 @@ symbol_BACKSLASH = symbol_make("\\")
 (* ****** ****** *)
 
 implement
+symbol_INT = symbol_make("int")
+implement
+symbol_ADDR = symbol_make("addr")
+implement
+symbol_BOOL = symbol_make("bool")
+
+implement
+symbol_REAL = symbol_make("real")
+
+implement
+symbol_FLOAT = symbol_make("float")
+implement
+symbol_STRING = symbol_make("string")
+
+(* ****** ****** *)
+
+implement
 symbol__STDIN__ = symbol_make("__STDIN__")
 implement
 symbol__STRING__ = symbol_make("__STRING__")

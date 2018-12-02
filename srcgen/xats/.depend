@@ -57,7 +57,8 @@ BUILD/trans01_dynexp_dats.o : SATS/symbol.sats SATS/fixity.sats SATS/symenv.sats
 BUILD/effect_dats.o : SATS/effect.sats
 BUILD/staexp2_dats.o : SATS/stamp0.sats SATS/location.sats SATS/staexp2.sats
 BUILD/dynexp2_dats.o : 
-BUILD/staexp2_print_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/staexp2.sats
+BUILD/staexp2_init_dats.o : SATS/symbol.sats SATS/staexp2.sats
+BUILD/staexp2_print_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/basics.sats SATS/staexp2.sats
 BUILD/dynexp2_print_dats.o : 
 BUILD/nmspace_dats.o : SATS/nmspace.sats
 BUILD/trans12_envmap_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/trans12.sats

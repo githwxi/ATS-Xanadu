@@ -80,6 +80,17 @@ val symbol_BACKSLASH : symbol
 
 (* ****** ****** *)
 
+val symbol_INT : symbol // int sort
+val symbol_ADDR : symbol // addr sort
+val symbol_BOOL : symbol // bool sort
+
+val symbol_REAL : symbol // real sort
+
+val symbol_FLOAT : symbol // float sort
+val symbol_STRING : symbol // string sort
+
+(* ****** ****** *)
+
 val symbol__STDIN__ : symbol // SYMBOL("__STDIN__")
 val symbol__STRING__ : symbol // SYMBOL("__STRING__")
 

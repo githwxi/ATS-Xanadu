@@ -148,6 +148,8 @@ end // end of [local]
 #dynload "./staexp2.dats"
 #dynload "./dynexp2.dats"
 //
+#dynload "./staexp2_init.dats"
+//
 #dynload "./staexp2_print.dats"
 #dynload "./dynexp2_print.dats"
 //
