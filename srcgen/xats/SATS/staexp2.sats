@@ -82,7 +82,7 @@ sort2 =
   | S2Ttup of (sort2lst) (* tuple sort *)
   | S2Tfun of
     (sort2lst(*arg*), sort2(*res*)) // function
-  | S2Terr of ((*void*)) // HX: error indication
+  | S2Tnone of ((*void*)) // HX: error indication
 // end of [sort2]
 
 and t2bas =
@@ -156,7 +156,7 @@ overload fprint with fprint_t2xtv
 //
 (* ****** ****** *)
 //
-abstype s2cst_tbox
+abstype s2cst_tbox = ptr
 typedef s2cst = s2cst_tbox
 typedef s2cstlst = List0(s2cst)
 typedef s2cstopt = Option(s2cst)
@@ -174,6 +174,22 @@ vtypedef s2cstset_vt = s2cstset_vtbox
 (* ****** ****** *)
 //
 fun
+s2cst_get_sym(s2cst): sym_t
+fun
+s2cst_get_loc(s2cst): loc_t
+fun
+s2cst_get_sort(s2cst): sort2
+fun
+s2cst_get_stamp(s2cst): stamp
+//
+overload .sym with s2cst_get_sym
+overload .loc with s2cst_get_loc
+overload .sort with s2cst_get_sort
+overload .stamp with s2cst_get_stamp
+//
+(* ****** ****** *)
+//
+fun
 print_s2cst: print_type(s2cst)
 fun
 prerr_s2cst: prerr_type(s2cst)
@@ -186,7 +202,7 @@ overload fprint with fprint_s2cst
 //
 (* ****** ****** *)
 //
-abstype s2var_tbox
+abstype s2var_tbox = ptr
 typedef s2var = s2var_tbox
 typedef s2varlst = List0(s2var)
 typedef s2varopt = Option(s2var)
@@ -200,6 +216,19 @@ typedef s2varset_t = s2varset_tbox
 //
 absvtype s2varset_vtbox
 vtypedef s2varset_vt = s2varset_vtbox
+//
+(* ****** ****** *)
+//
+fun
+s2var_get_sym(s2var): sym_t
+fun
+s2var_get_sort(s2var): sort2
+fun
+s2var_get_stamp(s2var): stamp
+//
+overload .sym with s2var_get_sym
+overload .sort with s2var_get_sort
+overload .stamp with s2var_get_stamp
 //
 (* ****** ****** *)
 //
@@ -293,6 +322,9 @@ s2eff =
 | S2EFFjoin of List0(s2eff)
 //
 (* ****** ****** *)
+
+
+(* ****** ****** *)
 //
 datatype
 s2txt =
@@ -338,7 +370,13 @@ s2exp_node =
 | S2Euni of // universal quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
+| S2Enone of () // HX: error indication
 // end of [s2exp_node]
+//
+(* ****** ****** *)
+//
+fun
+s2exp_none((*void*)): s2exp
 //
 (* ****** ****** *)
 //
@@ -351,6 +389,12 @@ fun
 s2exp_get_node(s2exp): s2exp_node
 //
 overload .node with s2exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+s2exp_make_node
+ (s2t0: sort2, node: s2exp_node): s2exp
 //
 (* ****** ****** *)
 //

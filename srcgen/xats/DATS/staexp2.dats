@@ -213,6 +213,64 @@ end // end of [t2xtv_struct]
 local
 
 absimpl
+s2cst_tbox = $rec{
+//
+  s2cst_loc= loc_t // loc
+, s2cst_sym= sym_t // name
+, s2cst_sort= sort2  // sort
+, s2cst_stamp= stamp // unicity
+//
+} (* end of [s2cst_tbox] *)
+
+in (* in-of-local *)
+
+implement
+s2cst_get_loc(x0) = x0.s2cst_loc
+implement
+s2cst_get_sym(x0) = x0.s2cst_sym
+implement
+s2cst_get_sort(x0) = x0.s2cst_sort
+implement
+s2cst_get_stamp(x0) = x0.s2cst_stamp
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+s2var_tbox = $rec{
+//
+  s2var_sym= sym_t // name
+, s2var_sort= sort2  // sort
+, s2var_stamp= stamp // unicity
+//
+} (* end of [s2var_tbox] *)
+
+in (* in-of-local *)
+
+implement
+s2var_get_sym(x0) = x0.s2var_sym
+implement
+s2var_get_sort(x0) = x0.s2var_sort
+implement
+s2var_get_stamp(x0) = x0.s2var_stamp
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+s2exp_none() =
+s2exp_make_node
+(S2Tnone(*void*), S2Enone(*void*))
+//
+(* ****** ****** *)
+
+local
+
+absimpl
 s2exp_tbox = $rec{
   s2exp_sort= sort2
 , s2exp_node= s2exp_node
@@ -224,6 +282,13 @@ implement
 s2exp_get_sort(x0) = x0.s2exp_sort
 implement
 s2exp_get_node(x0) = x0.s2exp_node
+//
+implement
+s2exp_make_node
+  (s0t0, node) = $rec
+{
+ s2exp_sort= s0t0, s2exp_node= node
+} (* end of [s2exp_make_node] *)
 //
 end // end of [local]
 
