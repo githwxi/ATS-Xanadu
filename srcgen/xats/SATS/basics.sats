@@ -141,6 +141,17 @@ funclo2 =
 | FC2fun of ((*fun*))
 | FC2clo of int(*knd*) // closure: knd=1/0/~1: ptr/clo/ref
 //
+fun
+print_funclo2: print_type(funclo2)
+fun
+prerr_funclo2: prerr_type(funclo2)
+fun
+fprint_funclo2: fprint_type(funclo2)
+//
+overload print with print_funclo2
+overload prerr with prerr_funclo2
+overload fprint with fprint_funclo2
+//
 (* ****** ****** *)
 //
 typedef

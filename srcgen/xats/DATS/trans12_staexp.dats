@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: June, 2018
+// Start Time: December, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -40,101 +40,132 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
+#staload
+SYM = "./../SATS/symbol.sats"
+#staload
+MAP = "./../SATS/symmap.sats"
+#staload
+ENV = "./../SATS/symenv.sats"
+#staload
+NMS = "./../SATS/nmspace.sats"
 //
 (* ****** ****** *)
 
-implement
-fprint_valkind
-  (out, vlk) =
-(
-//
-case+ vlk of
-| VLKval() => fprint(out, "VLKval")
-| VLKvalp() => fprint(out, "VLKvalp")
-| VLKvaln() => fprint(out, "VLKvaln")
-(*
-| VLKmcval() => fprint(out, "VLKprval")
-*)
-| VLKprval() => fprint(out, "VLKprval")
-//
-) (* end of [fprint_valkind] *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/staexp2.sats"
 
 (* ****** ****** *)
 
-implement
-fprint_funkind
-  (out, fnk) =
-(
-//
-case+ fnk of
-| FNKfn0() => fprint(out, "FNKfn0")
-| FNKfnx() => fprint(out, "FNKfnx")
-| FNKfn1() => fprint(out, "FNKfn1")
-| FNKfun() => fprint(out, "FNKfun")
-//
-| FNKprfn0() => fprint(out, "FNKprfn0")
-| FNKprfn1() => fprint(out, "FNKprfn1")
-| FNKprfun() => fprint(out, "FNKprfun")
-| FNKpraxi() => fprint(out, "FNKpraxi")
-//
-| FNKcastfn() => fprint(out, "FNKcastfn")
-//
-) (* end of [fprint_funkind] *)
+#staload "./../SATS/trans12.sats"
 
-(* ****** ****** *)
-
-implement
-fprint_impkind
-  (out, knd) =
-(
-case+ knd of
-| IMPval() => fprint!(out, "IMPval")
-| IMPprf() => fprint!(out, "IMPprf")
-) (* end of [fprint_impkind] *)
-
-(* ****** ****** *)
-//
-implement
-print_funclo2(fc2) =
-fprint_funclo2(stdout_ref, fc2)
-implement
-prerr_funclo2(fc2) =
-fprint_funclo2(stderr_ref, fc2)
-//
-implement
-fprint_funclo2(out, fc2) =
-(
-case+ fc2 of
-| FC2fun() =>
-  fprint!(out, "FC2fun()")
-| FC2clo(knd) =>
-  fprint!(out, "FC2clo(", knd, ")")
-)
-//
 (* ****** ****** *)
 
 local
-//
-#staload
-"prelude/SATS/string.sats"
-#staload
-"prelude/DATS/string.dats"
-//
+
 in (* in-of-local *)
 
 implement
-xats_string_append
-  (xs, ys) = let
-  val xs = g1ofg0(xs)
-  and ys = g1ofg0(ys)
+trans12_sort
+  (s1t0) = let
+//
+(*
+val () =
+println!
+("trans12_sort: s1t0 = ", s1t0)
+*)
+//
+val loc0 = s1t0.loc()
+//
 in
-  $effmask_all
-  (strptr2string(string_append<>(xs, ys)))
-end // end of [xats_string_append]
+//
+case-
+s1t0.node() of
+| S1Tnone() => S2Tnone()
+//
+end // end of [trans12_sort]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_basics.dats] *)
+implement
+trans12_sortopt
+  (opt) =
+(
+case+ opt of
+| None() => None()
+| Some(s1t) => Some(trans12_sort(s1t))
+) (* end of [trans12_sortopt] *)
+
+implement
+trans12_sortlst
+  (s1ts) =
+list_vt2t(s2ts) where
+{
+val
+s2ts =
+list_map<sort1><sort2>
+  (s1ts) where
+{
+  implement
+  list_map$fopr<sort1><sort2> = trans12_sort
+}
+} (* end of [trans12_sortlst] *)
+
+(* ****** ****** *)
+
+local
+
+in (* in-of-local *)
+
+implement
+trans12_sexp
+  (s1e0) = let
+//
+(*
+val () =
+println!
+("trans12_sort: s1e0 = ", s1e0)
+*)
+//
+val loc0 = s1e0.loc()
+//
+in
+//
+case-
+s1e0.node() of
+| S1Enone() => s2exp_none()
+//
+end // end of [trans12_sexp]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans12_sexpopt
+  (opt) =
+(
+case+ opt of
+| None() => None()
+| Some(s1e) => Some(trans12_sexp(s1e))
+) (* end of [trans12_sexpopt] *)
+
+implement
+trans12_sexplst
+  (s1es) =
+list_vt2t(s1es) where
+{
+val
+s1es =
+list_map<s1exp><s2exp>
+  (s1es) where
+{
+  implement
+  list_map$fopr<s1exp><s2exp> = trans12_sexp
+}
+} (* end of [trans12_sexplst] *)
+
+(* ****** ****** *)
+
+(* end of [xats_trans12_staexp.dats] *)
