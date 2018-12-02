@@ -119,8 +119,8 @@ fprint_t2bas
 case+ s2tb of
 | T2BASpre(sym) =>
   fprint!(out, "T2BASpre(", sym, ")")
-| T2BASdef(s2td) =>
-  fprint!(out, "T2BASdef(", s2td, ")")
+| T2BASdat(dat) =>
+  fprint!(out, "T2BASdef(", dat, ")")
 | T2BASimp(knd, sym) =>
   fprint!(out, "T2BASimp(", knd, "; ", sym, ")")
 )

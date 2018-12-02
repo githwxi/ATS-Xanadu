@@ -87,7 +87,7 @@ sort2 =
 
 and t2bas =
   | T2BASpre of (sym_t) // predicative: int, bool, ...
-  | T2BASdef of (t2dat) // user-defined datasorts
+  | T2BASdat of (t2dat) // user-defined datasorts
   | T2BASimp of (int(*knd*), sym_t) // impredicative sorts
 // end of [t2bas]
 
@@ -101,6 +101,16 @@ typedef
 sort2lstst = List0(sort2lst)
 typedef
 sort2lstopt = Option(sort2lst)
+
+(* ****** ****** *)
+
+val sort2_int : sort2
+val sort2_addr : sort2
+val sort2_bool : sort2
+
+val sort2_real : sort2
+val sort2_float : sort2
+val sort2_string : sort2
 
 (* ****** ****** *)
 //
@@ -321,9 +331,6 @@ s2eff =
 | S2EFFset of effset
 | S2EFFjoin of List0(s2eff)
 //
-(* ****** ****** *)
-
-
 (* ****** ****** *)
 //
 datatype

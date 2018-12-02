@@ -92,6 +92,7 @@ trans01_dynexp.dats \
 effect.dats \
 staexp2.dats \
 dynexp2.dats \
+staexp2_init.dats \
 staexp2_print.dats \
 dynexp2_print.dats \
 nmspace.dats \
