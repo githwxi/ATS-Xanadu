@@ -131,8 +131,10 @@ case+ x0.node() of
 | S1Tapp() =>
   fprint!(out, "S1Tapp()")
 //
+(*
 | S1Ttype(knd) =>
   fprint!(out, "S1Ttype", knd, ")")
+*)
 //
 | S1Tapps(s1t0, s1ts) =>
   fprint!

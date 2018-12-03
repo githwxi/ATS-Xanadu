@@ -54,6 +54,10 @@ LOC = "./../SATS/location.sats"
   typedef locopt = Option(loc_t)
 //
 (* ****** ****** *)
+//
+#staload "./../SATS/symbol.sats"
+//
+(* ****** ****** *)
 
 #staload "./../SATS/staexp2.sats"
 
@@ -98,6 +102,84 @@ implement
 s2xtv_stamp_new() = $STM.stamper_getinc(stamper)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+sort2_is_int
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASpre(sym) => (sym = symbol_INT) | _ => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_int] *)
+implement
+sort2_is_addr
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASpre(sym) => (sym = symbol_ADDR) | _ => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_addr] *)
+implement
+sort2_is_bool
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASpre(sym) => (sym = symbol_BOOL) | _ => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_bool] *)
+
+(* ****** ****** *)
+
+implement
+sort2_is_real
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASpre(sym) => (sym = symbol_REAL) | _ => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_real] *)
+implement
+sort2_is_float
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASpre(sym) => (sym = symbol_FLOAT) | _ => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_float] *)
+implement
+sort2_is_string
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASpre(sym) => (sym = symbol_STRING) | _ => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_string] *)
 
 (* ****** ****** *)
 
@@ -262,9 +344,14 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-s2exp_none() =
+s2exp_none0() =
 s2exp_make_node
-(S2Tnone(*void*), S2Enone(*void*))
+(S2Tnone(*void*), S2Enone())
+//
+implement
+s2exp_none1(s1e) =
+s2exp_make_node
+(S2Tnone(*void*), S2Enone(s1e))
 //
 (* ****** ****** *)
 
@@ -287,7 +374,7 @@ implement
 s2exp_make_node
   (s0t0, node) = $rec
 {
- s2exp_sort= s0t0, s2exp_node= node
+  s2exp_sort= s0t0, s2exp_node= node
 } (* end of [s2exp_make_node] *)
 //
 end // end of [local]

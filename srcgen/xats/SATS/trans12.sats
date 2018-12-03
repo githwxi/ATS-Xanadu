@@ -42,10 +42,19 @@
 //
 (* ****** ****** *)
 //
-(*
 #staload LEX = "./lexing.sats"
-*)
 //
+  typedef token = $LEX.token
+//
+(* ****** ****** *)
+
+fun token2sint : token -> int
+fun token2dint : token -> int
+
+(* ****** ****** *)
+
+fun token2string : token -> string
+
 (* ****** ****** *)
 
 #staload S1E = "./staexp1.sats"
@@ -91,6 +100,23 @@ vtypedef s2txtopt_vt = $S2E.s2txtopt_vt
 (* ****** ****** *)
 
 typedef fmodenv = $S2E.fmodenv
+
+(* ****** ****** *)
+
+typedef d1exp = $D1E.d1exp
+typedef d1explst = $D1E.d1explst
+typedef d1expopt = $D1E.d1expopt
+
+(* ****** ****** *)
+
+typedef d1ecl = $D1E.d1ecl
+typedef d1eclist = $D1E.d1eclist
+
+(* ****** ****** *)
+
+typedef d2exp = $D2E.d2exp
+typedef d2explst = $D2E.d2explst
+typedef d2expopt = $D2E.d2expopt
 
 (* ****** ****** *)
 
@@ -228,6 +254,33 @@ trans12_sexplst: s1explst -> s2explst
 overload trans12 with trans12_sexp
 overload trans12 with trans12_sexpopt
 overload trans12 with trans12_sexplst
+*)
+//
+(* ****** ****** *)
+//
+fun
+trans12_dexp: d1exp -> d2exp 
+fun
+trans12_dexpopt: d1expopt -> d2expopt
+fun
+trans12_dexplst: d1explst -> d2explst
+//
+(*
+overload trans12 with trans12_dexp
+overload trans12 with trans12_dexpopt
+overload trans12 with trans12_dexplst
+*)
+//
+(* ****** ****** *)
+
+fun
+trans12_decl: d1ecl -> d2ecl
+fun
+trans12_declist: d1eclist -> d2eclist
+//
+(*
+overload trans12 with trans12_decl
+overload trans12 with trans12_declopt
 *)
 //
 (* ****** ****** *)

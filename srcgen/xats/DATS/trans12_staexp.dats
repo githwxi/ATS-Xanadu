@@ -51,6 +51,10 @@ NMS = "./../SATS/nmspace.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
 
@@ -61,6 +65,100 @@ NMS = "./../SATS/nmspace.sats"
 (* ****** ****** *)
 
 local
+
+fun
+aux1
+(rep: string): int =
+auxmain
+(10, string2ptr(rep), 0)
+and
+aux2
+( bas: int
+, rep: string): int =
+auxmain
+(bas, string2ptr(rep), 0)
+and
+auxmain
+( b0: int
+, p0: ptr
+, r0: int): int =
+(
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in(* in-of-let *)
+//
+if
+isdigit(c0)
+then
+(
+  auxmain(b0, p0, r0)
+) where
+{
+  val p0 = ptr_succ<char>(p0)
+  val r0 = b0 * r0 + (c0 - '0')
+}
+else (r0) // end of [if]
+//
+end
+) (* end of [auxmain] *)
+
+in (* in-of-local *)
+
+implement
+token2sint(tok) =
+(
+case+
+tok.node() of
+//
+| T_INT1(rep) => aux1(rep)
+| T_INT2(bas, rep) => aux2(bas, rep)
+| T_INT3(bas, rep, _) => aux2(bas, rep)
+//
+| _ (* non-T_INT *) => 0
+//
+) (* end of [token2int] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+fun
+auxid
+( s1t0
+: sort1): sort2 = let
+//
+val-
+S1Tid
+(tok) = s1t0.node()
+val sym =
+(
+case-
+tok.node() of
+| T_IDENT_alp(sym) => sym
+| T_IDENT_sym(sym) => sym
+) : string // end of [val]
+//
+val
+tid = $SYM.symbol_make(sym)
+val
+opt = the_sortenv_find(tid)
+//
+in
+//
+case+ opt of
+| ~Some_vt(s2t) =>
+  (
+    case+ s2t of
+    | S2TXTsrt(s2t) => s2t
+    | _(*non-sort*) => S2Tnone(s1t0)
+  )
+| ~None_vt((*void*)) => S2Tnone(s1t0)
+//
+end // end of [auxid]
+
 
 in (* in-of-local *)
 
@@ -80,7 +178,14 @@ in
 //
 case-
 s1t0.node() of
-| S1Tnone() => S2Tnone()
+//
+| S1Tint(i0) =>
+  S2Tint(token2sint(i0))
+//
+| S1Tlist(s1ts) =>
+  S2Ttup(trans12_sortlst(s1ts))
+//
+| S1Tnone((*void*)) => S2Tnone()
 //
 end // end of [trans12_sort]
 
@@ -134,7 +239,8 @@ in
 //
 case-
 s1e0.node() of
-| S1Enone() => s2exp_none()
+//
+| S1Enone() => s2exp_none1(s1e0)
 //
 end // end of [trans12_sexp]
 

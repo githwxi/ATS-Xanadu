@@ -56,6 +56,7 @@ fprint with $SYM.fprint_symbol
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
 
 (* ****** ****** *)
@@ -94,6 +95,8 @@ fprint_sort2
   (out, s2t0) =
 (
 case+ s2t0 of
+| S2Tint(i0) =>
+  fprint!(out, "S2Tint(", i0, ")")
 | S2Tbas(s2tb) =>
   fprint!(out, "S2Tbas(", s2tb, ")")
 | S2Txtv(s2tx) =>
@@ -105,6 +108,7 @@ case+ s2t0 of
   (out, "S2Tfun(", s2ts, "; ", s2t1, ")")
 //
 | S2Tnone() => fprint!(out, "S2Tnone(", ")")
+| S2Tnone(s1t) => fprint!(out, "S2Tnone(", s1t, ")")
 //
 ) (* end of [fprint_sort2] *)
 
@@ -283,7 +287,8 @@ s2e0.node() of
   ( out
   , "S2Eexi(", s2vs, "; ", s2ps, "; ", body, ")")
 //
-| S2Enone((*void*)) => fprint!(out, "S2Enone(", ")")
+| S2Enone() => fprint!(out, "S2Enone(", ")")
+| S2Enone(s1e) => fprint!(out, "S2Enone(", s1e, ")")
 )
 
 end // end of [local]
