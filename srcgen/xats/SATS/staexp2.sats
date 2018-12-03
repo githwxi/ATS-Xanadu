@@ -64,6 +64,14 @@ typedef effect = $EFF.effect
 typedef effset = $EFF.effset
 //
 (* ****** ****** *)
+//
+#staload
+S1E = "./staexp1.sats"
+//
+typedef sort1 = $S1E.sort1
+typedef s1exp = $S1E.s1exp
+//
+(* ****** ****** *)
 
 abstbox t2dat_tbox = ptr
 typedef t2dat = t2dat_tbox
@@ -77,12 +85,15 @@ typedef t2xtv = t2xtv_tbox
 
 datatype
 sort2 =
+  | S2Tint of (int) (* base sort *)
   | S2Tbas of (t2bas) (* base sort *)
   | S2Txtv of (t2xtv) // for unification
   | S2Ttup of (sort2lst) (* tuple sort *)
   | S2Tfun of
     (sort2lst(*arg*), sort2(*res*)) // function
-  | S2Tnone of ((*void*)) // HX: error indication
+//
+  | S2Tnone of (sort1) // HX: error indication
+  | S2Tnone // of (*void*) // HX: error indication
 // end of [sort2]
 
 and t2bas =
@@ -112,6 +123,22 @@ val sort2_real : sort2
 val sort2_float : sort2
 val sort2_string : sort2
 
+(* ****** ****** *)
+//
+fun
+sort2_is_int(sort2): bool
+fun
+sort2_is_addr(sort2): bool
+fun
+sort2_is_bool(sort2): bool
+//
+fun
+sort2_is_real(sort2): bool
+fun
+sort2_is_float(sort2): bool
+fun
+sort2_is_string(sort2): bool
+//
 (* ****** ****** *)
 //
 fun
@@ -377,13 +404,17 @@ s2exp_node =
 | S2Euni of // universal quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
-| S2Enone of () // HX: error indication
+| S2Enone of (s1exp) // HX: error indication
+| S2Enone // of (*void*) // HX: error indication
+//
 // end of [s2exp_node]
 //
 (* ****** ****** *)
 //
 fun
-s2exp_none((*void*)): s2exp
+s2exp_none0((*void*)): s2exp
+fun
+s2exp_none1(s1e: s1exp): s2exp
 //
 (* ****** ****** *)
 //

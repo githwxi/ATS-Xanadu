@@ -43,23 +43,72 @@ LOC = "./location.sats"
 //
 (* ****** ****** *)
 //
+#staload
+D1E = "./dynexp1.sats"
+//
+  typedef d1ecl = $D1E.d1ecl
+//
+  typedef d1eclist = $D1E.d1eclist
+//
+(* ****** ****** *)
+//
+abstype d2cst_tbox
+typedef d2cst = d2cst_tbox
+//
+typedef d2cstlst = List0(d2cst)
+typedef d2cstopt = Option(d2cst)
+//
+(*
+vtypedef d2cstlst_vt = List0_vt(d2cst)
+vtypedef d2cstopt_vt = Option_vt(d2cst)
+*)
+//
+(* ****** ****** *)
+//
+abstype d2con_tbox
+typedef d2con = d2con_tbox
+//
+typedef d2conlst = List0(d2con)
+typedef d2conopt = Option(d2con)
+//
+(*
+vtypedef d2conlst_vt = List0_vt(d2con)
+vtypedef d2conopt_vt = Option_vt(d2con)
+*)
+//
+(* ****** ****** *)
+//
 abstype d2var_tbox
 typedef d2var = d2var_tbox
+//
 typedef d2varlst = List0(d2var)
 typedef d2varopt = Option(d2var)
+//
+(*
 vtypedef d2varlst_vt = List0_vt(d2var)
 vtypedef d2varopt_vt = Option_vt(d2var)
+*)
 //
+(* ****** ****** *)
+
+abstbox d2exp_tbox = ptr
+typedef d2exp = d2exp_tbox
+typedef d2explst = List0(d2exp)
+typedef d2expopt = Option(d2exp)
+
 (* ****** ****** *)
 
 abstbox d2ecl_tbox = ptr
 typedef d2ecl = d2ecl_tbox
 typedef d2eclist = List0(d2ecl)
+typedef d2eclopt = Option(d2ecl)
 
 (* ****** ****** *)
 //
 datatype d2itm =
-| D2ITMvar of (d2var)
+  | D2ITMcst of (d2cst)
+  | D2ITMvar of (d2var)
+  | D2ITMcon of (d2conlst)
 //
 (* ****** ****** *)
 //
@@ -73,6 +122,24 @@ fprint_d2itm: fprint_type(d2itm)
 overload print with print_d2itm
 overload prerr with prerr_d2itm
 overload fprint with fprint_d2itm
+//
+(* ****** ****** *)
+//
+datatype
+d2ecl_node =
+//
+| D2Cnone of d1ecl
+//
+| D2Clist of d2eclist // for list of declarations
+//
+| D2Cabssort of d1ecl
+| D2Cstacst0 of d1ecl
+| D2Csortdef of d1ecl
+| D2Csexpdef of d1ecl
+| D2Cabstype of d1ecl
+| D2Cabsimpl of d1ecl
+//
+// end of [d2ecl_node]
 //
 (* ****** ****** *)
 
