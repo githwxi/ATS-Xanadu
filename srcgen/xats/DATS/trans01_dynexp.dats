@@ -2642,7 +2642,7 @@ in
 case+
 d0c0.node() of
 //
-| D0Cnone _ => d1ecl_none(d0c0)
+| D0Cnone _ => d1ecl_none1(d0c0)
 //
 | D0Cfixity _ => aux_fixity(d0c0)
 | D0Cnonfix _ => aux_nonfix(d0c0)

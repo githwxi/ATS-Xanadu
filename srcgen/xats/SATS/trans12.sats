@@ -53,6 +53,12 @@ fun token2dint : token -> int
 
 (* ****** ****** *)
 
+fun sortid_sym : token -> sym_t
+fun sexpid_sym : token -> sym_t
+fun dexpid_sym : token -> sym_t
+
+(* ****** ****** *)
+
 fun token2string : token -> string
 
 (* ****** ****** *)

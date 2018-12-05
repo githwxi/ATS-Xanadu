@@ -720,6 +720,7 @@ overload fprint with fprint_d1cstdecl
 datatype
 d1ecl_node =
 //
+| D1Cnone of ()
 | D1Cnone of (d0ecl)
 //
 (*
@@ -832,7 +833,10 @@ overload prerr with prerr_d1ecl
 overload fprint with fprint_d1ecl
 //
 fun
-d1ecl_none(d0c: d0ecl): d1ecl
+d1ecl_none0(loc: loc_t): d1ecl
+fun
+d1ecl_none1(d0c: d0ecl): d1ecl
+//
 fun
 d1ecl_make_node
 (loc: loc_t, node: d1ecl_node): d1ecl

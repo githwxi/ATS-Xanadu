@@ -108,18 +108,53 @@ in (* in-of-local *)
 implement
 token2sint(tok) =
 (
-case+
+case-
 tok.node() of
 //
 | T_INT1(rep) => aux1(rep)
 | T_INT2(bas, rep) => aux2(bas, rep)
 | T_INT3(bas, rep, _) => aux2(bas, rep)
 //
-| _ (* non-T_INT *) => 0
-//
 ) (* end of [token2int] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+sortid_sym(tok) =
+(
+case-
+tok.node() of
+//
+| T_IDENT_alp(nm) => $SYM.symbol_make(nm)
+| T_IDENT_sym(nm) => $SYM.symbol_make(nm)
+//
+) (* end of [sortid_sym] *)
+
+implement
+sexpid_sym(tok) =
+(
+case-
+tok.node() of
+//
+| T_IDENT_alp(nm) => $SYM.symbol_make(nm)
+| T_IDENT_sym(nm) => $SYM.symbol_make(nm)
+//
+) (* end of [sexpid_sym] *)
+
+implement
+dexpid_sym(tok) =
+(
+case-
+tok.node() of
+//
+| T_IDENT_alp(nm) => $SYM.symbol_make(nm)
+| T_IDENT_sym(nm) => $SYM.symbol_make(nm)
+| T_IDENT_srp(nm) => $SYM.symbol_make(nm)
+| T_IDENT_dlr(nm) => $SYM.symbol_make(nm)
+//
+) (* end of [dexpid_sym] *)
 
 (* ****** ****** *)
 
@@ -159,7 +194,6 @@ case+ opt of
 //
 end // end of [auxid]
 
-
 in (* in-of-local *)
 
 implement
@@ -179,8 +213,10 @@ in
 case-
 s1t0.node() of
 //
-| S1Tint(i0) =>
-  S2Tint(token2sint(i0))
+| S1Tid _ => auxid(s1t0)
+//
+| S1Tint(int) =>
+  S2Tint(token2sint(int))
 //
 | S1Tlist(s1ts) =>
   S2Ttup(trans12_sortlst(s1ts))
@@ -271,6 +307,15 @@ list_map<s1exp><s2exp>
   list_map$fopr<s1exp><s2exp> = trans12_sexp
 }
 } (* end of [trans12_sexplst] *)
+
+(* ****** ****** *)
+
+(*
+datatype
+s1rtdef_node =
+| S1RTDEFsort of sort1
+| S1RTDEFsubset of (s1arg, s1explst)
+*)
 
 (* ****** ****** *)
 

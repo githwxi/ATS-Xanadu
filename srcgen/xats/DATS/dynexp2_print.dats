@@ -39,7 +39,55 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+//
+#staload "./../SATS/label0.sats"
+#staload "./../SATS/lexing.sats"
+//
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
+//
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+//
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) = "./../DATS/staexp0_print.dats"
+#staload
+_(*TMP*) = "./../DATS/staexp1_print.dats"
+#staload
+_(*TMP*) = "./../DATS/staexp2_print.dats"
+//
+(* ****** ****** *)
 
+implement
+print_d2ecl(x0) =
+fprint_d2ecl(stdout_ref, x0)
+implement
+prerr_d2ecl(x0) =
+fprint_d2ecl(stderr_ref, x0)
+
+local
+
+in (* in-of-local *)
+
+implement
+fprint_d2ecl
+  (out, x0) =
+(
+case- x0.node() of
+//
+| D2Cnone() =>
+  fprint!(out, "D2Cnone(", ")")
+| D2Cnone(d0c) =>
+  fprint!(out, "D2Cnone(", d0c, ")")
+//
+) (* end of [fprint_d2ecl] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
