@@ -126,6 +126,39 @@ list_map<d1exp><d2exp>
 
 local
 
+fun
+aux_sortdef
+( d1c0
+: d1ecl): d2ecl = let
+//
+val loc0 = d1c0.loc()
+//
+val-
+D1Csortdef
+(knd, tid, def0) =
+d1c0.node((*void*))
+//
+val sym = sortid_sym(tid)
+//
+in
+//
+case-
+def0.node() of
+| S1RTDEFsort(s1t) =>
+  let
+    val
+    s2t =
+    trans12_sort(s1t)
+    val
+    s2t = S2TXTsrt(s2t)
+    val () =
+    the_sortenv_add(sym, s2t)
+  in
+    d2ecl_make_node(loc0, D2Csortdef(d1c0))
+  end
+//
+end // end of [aux_sortdef]
+
 in (* in-of-local *)
 
 implement
@@ -143,6 +176,9 @@ in (* in-of-let *)
 //
 case-
 d1c0.node() of
+//
+| D1Csortdef _ => aux_sortdef(d1c0)
+//
 | _(*rest-of-D1ECL*) =>
   exit_errmsg
   (1, "trans12_decl: yet-to-be-implemented!")

@@ -533,6 +533,8 @@ fprint_d1ecl
 (
 case+ x0.node() of
 //
+| D1Cnone() =>
+  fprint!(out, "D1Cnone(", ")")
 | D1Cnone(d0c) =>
   fprint!(out, "D1Cnone(", d0c, ")")
 //

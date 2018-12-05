@@ -39,6 +39,62 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+//
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+//
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+
+local
+
+absimpl
+d2ecl_tbox = $rec{
+  d2ecl_loc= loc_t
+, d2ecl_node= d2ecl_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d2ecl_get_loc(x0) = x0.d2ecl_loc
+implement
+d2ecl_get_node(x0) = x0.d2ecl_node
+
+(* ****** ****** *)
+
+implement
+d2ecl_none0
+(loc) =
+d2ecl_make_node
+( loc
+, D2Cnone()
+)
+implement
+d2ecl_none1
+(d0c) =
+d2ecl_make_node
+( loc
+, D2Cnone(d0c)
+) where
+{
+  val loc = d0c.loc()
+}
+//
+implement
+d2ecl_make_node
+(loc, node) = $rec
+{
+  d2ecl_loc= loc, d2ecl_node= node
+} (* end of [d2ecl_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
 
 (* ****** ****** *)
 

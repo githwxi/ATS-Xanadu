@@ -267,7 +267,8 @@ synread_sort0opt
   (opt0) =
 (
 case+ opt0 of
-| None() => () | Some(s0t) => synread_sort0<>(s0t)
+| None() => ()
+| Some(s0t) => synread_sort0<>(s0t)
 )
 //
 implement
@@ -570,7 +571,8 @@ synread_s0expopt
   (opt0) =
 (
 case+ opt0 of
-| None() => () | Some(s0t) => synread_s0exp<>(s0t)
+| None() => ()
+| Some(s0t) => synread_s0exp<>(s0t)
 )
 //
 implement

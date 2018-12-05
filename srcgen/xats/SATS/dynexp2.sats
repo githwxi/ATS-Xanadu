@@ -128,18 +128,51 @@ overload fprint with fprint_d2itm
 datatype
 d2ecl_node =
 //
-| D2Cnone of d1ecl
+| D2Cnone of ()
+| D2Cnone of (d1ecl)
 //
 | D2Clist of d2eclist // for list of declarations
 //
-| D2Cabssort of d1ecl
-| D2Cstacst0 of d1ecl
-| D2Csortdef of d1ecl
-| D2Csexpdef of d1ecl
-| D2Cabstype of d1ecl
-| D2Cabsimpl of d1ecl
+| D2Cabssort of (d1ecl)
+| D2Cstacst0 of (d1ecl)
+| D2Csortdef of (d1ecl)
+| D2Csexpdef of (d1ecl)
+| D2Cabstype of (d1ecl)
+| D2Cabsimpl of (d1ecl)
 //
 // end of [d2ecl_node]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_get_loc(d2ecl): loc_t
+fun
+d2ecl_get_node(d2ecl): d2ecl_node
+//
+overload .loc with d2ecl_get_loc
+overload .node with d2ecl_get_node
+//
+fun
+print_d2ecl: print_type(d2ecl)
+fun
+prerr_d2ecl: prerr_type(d2ecl)
+fun
+fprint_d2ecl: fprint_type(d2ecl)
+//
+overload print with print_d2ecl
+overload prerr with prerr_d2ecl
+overload fprint with fprint_d2ecl
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_none0(loc: loc_t): d2ecl
+fun
+d2ecl_none1(d1c: d1ecl): d2ecl
+//
+fun
+d2ecl_make_node
+(loc: loc_t, node: d2ecl_node): d2ecl
 //
 (* ****** ****** *)
 

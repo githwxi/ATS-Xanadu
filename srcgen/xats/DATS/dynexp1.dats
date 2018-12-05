@@ -443,7 +443,14 @@ d1ecl_get_node(x0) = x0.d1ecl_node
 (* ****** ****** *)
 
 implement
-d1ecl_none
+d1ecl_none0
+(loc) =
+d1ecl_make_node
+( loc
+, D1Cnone()
+)
+implement
+d1ecl_none1
 (d0c) =
 d1ecl_make_node
 ( loc
