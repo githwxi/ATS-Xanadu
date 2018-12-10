@@ -128,20 +128,22 @@ symenv_vt0ype
 implement
 symenv_make_nil
   {itm}((*void*)) =
-  (pfat | p0) where
+  (pf | p0) where
 {
 //
   vtypedef env_t = symenv(itm)
 //
   val map0 = $MAP.symmap_make_nil()
-  val (pfat, pfgc | p0) = ptr_alloc<env_t>()
+//
+  val
+  (pf, pfgc | p0) = ptr_alloc<env_t>()
+//
+  prval((*linref*)) = mfree_gc_v_elim(pfgc)
 //
   val () = p0->map0 := map0
   val () = p0->maps := list_vt_nil()
   val () = p0->saved := list_vt_nil()
   val () = p0->pmap0 := $MAP.symmap_make_nil()
-//
-  prval() = mfree_gc_v_elim(pfgc)
 //
 } (* end of [symenv_make_nil] *)
 
@@ -261,6 +263,13 @@ symenv_pjoinwth1
   $MAP.symmap_joinwth(env.pmap0, map)
 // end of [symenv_pervasive_joinwth1]
 
+(* ****** ****** *)
+//
+implement
+fprint_symenv_top
+  (out, env, fpr) =
+  $MAP.fprint_symmap(out, env.map0, fpr)
+//
 (* ****** ****** *)
 
 (* end of [xats_symenv.dats] *)

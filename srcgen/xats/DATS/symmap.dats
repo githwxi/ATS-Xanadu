@@ -203,11 +203,31 @@ end // end of [symmap_joinwth]
 
 implement
 fprint_symmap
-{itm}(out, map, fpr) =
+{itm} // poly
+(out, map, fpr) =
 let
+//
+implement
+fprint_val<key>
+  (out, k0) = let
+  val opt =
+  $SYM.stamp_to_symbol(k0)
+in
+  case- opt of
+  ~Some_vt(sym) =>
+  $SYM.fprint_symbol(out, sym)
+end // end of [fprint_val]
 implement
 fprint_val<itm>
-(out, x0) = fpr(out, x0) in fprint_linmap<key,itm>(out, map)
+  (out, itm) = fpr(out, itm)
+//
+implement
+fprint_linmap$sep<>(out) = fprint(out, "\n")
+//
+in
+//
+  fprint_linmap<key,itm>(out, map)
+//
 end // end of [fprint_symmap]
 
 (* ****** ****** *)

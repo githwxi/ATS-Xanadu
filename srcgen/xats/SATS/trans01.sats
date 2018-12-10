@@ -37,9 +37,12 @@
 SYM = "./symbol.sats"
 #staload
 FIX = "./fixity.sats"
+#staload
+LEX = "./lexing.sats"
 //
 typedef sym_t = $SYM.sym_t
 typedef fixty = $FIX.fixty
+typedef token = $LEX.token
 //
 vtypedef
 fixtyopt_vt = Option_vt(fixty)
@@ -54,6 +57,29 @@ fixtyopt_vt = Option_vt(fixty)
 (* ****** ****** *)
 
 symintr trans01
+
+(* ****** ****** *)
+
+fun
+token2sint : token -> int
+fun
+token2dint : token -> int
+
+(* ****** ****** *)
+//
+fun
+sortid_sym : token -> sym_t
+fun
+sargid_sym : token -> sym_t
+fun
+sexpid_sym : token -> sym_t
+fun
+dexpid_sym : token -> sym_t
+//
+(* ****** ****** *)
+
+fun
+token2string : token -> string
 
 (* ****** ****** *)
 //

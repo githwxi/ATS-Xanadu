@@ -113,7 +113,7 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = symbol_INT) | _ => false
+| T2BASpre(sym) => (sym = INT_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_int] *)
@@ -125,7 +125,7 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = symbol_ADDR) | _ => false
+| T2BASpre(sym) => (sym = ADDR_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_addr] *)
@@ -137,10 +137,22 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = symbol_BOOL) | _ => false
+| T2BASpre(sym) => (sym = BOOL_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_bool] *)
+implement
+sort2_is_char
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASpre(sym) => (sym = CHAR_symbol) | _ => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_char] *)
 
 (* ****** ****** *)
 
@@ -152,7 +164,7 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = symbol_REAL) | _ => false
+| T2BASpre(sym) => (sym = REAL_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_real] *)
@@ -164,7 +176,7 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = symbol_FLOAT) | _ => false
+| T2BASpre(sym) => (sym = FLOAT_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_float] *)
@@ -176,11 +188,35 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = symbol_STRING) | _ => false
+| T2BASpre(sym) => (sym = STRING_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_string] *)
 
+(* ****** ****** *)
+//
+implement
+sort2_apps
+  (f0, xs) =
+(
+case+ xs of
+| list_nil() => f0
+| list_cons(x1, xs2) =>
+  (
+  case+ x1 of
+  | S2Ttup(xs1) =>
+    (
+      sort2_apps(S2Tapp(f0, xs1), xs2)
+    )
+  | _(*non-S2Ttup*) =>
+    let
+      val xs1 = list_sing(x1)
+    in
+      sort2_apps(S2Tapp(f0, xs1), xs2)
+    end
+  )
+) (* end of [sort2_apps] *)
+//
 (* ****** ****** *)
 
 local
@@ -339,19 +375,50 @@ s2var_get_sort(x0) = x0.s2var_sort
 implement
 s2var_get_stamp(x0) = x0.s2var_stamp
 
+implement
+s2var_make_idst
+  (sym, s2t) =
+(
+$rec{
+  s2var_sym= sym
+, s2var_sort= s2t
+, s2var_stamp= stamp
+}
+) where
+{
+  val
+  stamp = s2var_stamp_new((*void*))
+} (* s2var_make_idsort *)
+
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+s2exp_int(i0) = let
+  val
+  s2t = the_sort2_int
+in
+  s2exp_make_node(s2t, S2Eint(i0))
+end // end of [s2exp_int]
+
+implement
+s2exp_chr(c0) = let
+  val
+  s2t = the_sort2_int
+in
+  s2exp_make_node(s2t, S2Echr(c0))
+end // end of [s2exp_chr]
 
 (* ****** ****** *)
 //
 implement
 s2exp_none0() =
-s2exp_make_node
-(S2Tnone(*void*), S2Enone())
+s2exp_make_node(S2Tnone(*void*), S2Enone())
 //
 implement
 s2exp_none1(s1e) =
-s2exp_make_node
-(S2Tnone(*void*), S2Enone(s1e))
+s2exp_make_node(S2Tnone(*void*), S2Enone(s1e))
 //
 (* ****** ****** *)
 

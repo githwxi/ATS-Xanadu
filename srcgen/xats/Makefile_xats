@@ -86,13 +86,14 @@ staexp1.dats \
 dynexp1.dats \
 staexp1_print.dats \
 dynexp1_print.dats \
+trans01_basics.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
 effect.dats \
 staexp2.dats \
 dynexp2.dats \
-staexp2_init.dats \
+staexp2_init0.dats \
 staexp2_print.dats \
 dynexp2_print.dats \
 nmspace.dats \

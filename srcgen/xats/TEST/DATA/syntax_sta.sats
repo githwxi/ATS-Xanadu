@@ -72,11 +72,27 @@
 
 (* ****** ****** *)
 
-sortdef
-nat = {a:int | a >= 0}
+sortdef one = 1
+sortdef two = 2
+sortdef one' = two
 
-sortdef int2 = int * int
+sortdef f0 = f()
+sortdef f1 = f(1)
+sortdef f12 = f(1,2)
+sortdef f_1_2 = f 1 2
+sortdef fint1 = int -> int
+sortdef fint2 = (int, int) -> int
 
+sortdef nat0 = {a:int|a >= 0}
+sortdef nat1 = {a:int|a >= 1}
+
+sortdef nat01 = (nat0 || nat1)
+sortdef nat02 = (nat0 && nat1)
+
+// sortdef int2 = int * int
+
+(* ****** ****** *)
+////
 (* ****** ****** *)
 
 datasort

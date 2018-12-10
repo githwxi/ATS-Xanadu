@@ -67,6 +67,8 @@ symenv_search
 (env: &symenv(itm), k0: sym_t):<> Option_vt(itm)
 // end of [symenv_search]
 
+(* ****** ****** *)
+
 fun
 symenv_insert
 {itm:type} // HX: insert first
@@ -129,6 +131,15 @@ symenv_pjoinwth1
   (env: &symenv(itm), map: !symmap(itm)): (void)
 // end of [symenv_pjoinwth1]
 //
+(* ****** ****** *)
+
+fun
+fprint_symenv_top
+  {itm:type}
+( out: FILEref
+, map: &symenv(itm), fpr: (FILEref, itm) -> void
+) : void // end of [fprint_symenv_top]
+
 (* ****** ****** *)
 
 (* end of [xats_symenv.sats] *)

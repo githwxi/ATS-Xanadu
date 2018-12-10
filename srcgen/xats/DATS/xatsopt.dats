@@ -54,6 +54,8 @@ typedef fpath_t = $FIL.filepath
 //
 #staload "./../SATS/trans01.sats"
 //
+#staload "./../SATS/trans12.sats"
+//
 (* ****** ****** *)
 //
 #staload
@@ -69,6 +71,19 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
   "./../DATS/dynexp1_print.dats"
+//
+#staload
+_(*TMP*) =
+  "./../DATS/staexp2_print.dats"
+#staload
+_(*TMP*) =
+  "./../DATS/dynexp2_print.dats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) =
+  "./../DATS/trans12_envmap.dats"
 //
 (* ****** ****** *)
 //
@@ -139,6 +154,7 @@ end // end of [local]
 #dynload "./staexp1_print.dats"
 #dynload "./dynexp1_print.dats"
 //
+#dynload "./trans01_basics.dats"
 #dynload "./trans01_envmap.dats"
 #dynload "./trans01_staexp.dats"
 #dynload "./trans01_dynexp.dats"
@@ -148,7 +164,7 @@ end // end of [local]
 #dynload "./staexp2.dats"
 #dynload "./dynexp2.dats"
 //
-#dynload "./staexp2_init.dats"
+#dynload "./staexp2_init0.dats"
 //
 #dynload "./staexp2_print.dats"
 #dynload "./dynexp2_print.dats"
@@ -156,7 +172,6 @@ end // end of [local]
 #dynload "./nmspace.dats"
 //
 #dynload "./trans12_envmap.dats"
-//
 #dynload "./trans12_staexp.dats"
 #dynload "./trans12_dynexp.dats"
 //
@@ -788,10 +803,23 @@ val () = synread_top(d0cs)
 //
 val
 d1cs = trans01_declist(d0cs)
-//
 val () =
 println!
 ("process_nil: d1cs = ", d1cs)
+//
+val
+d2cs = trans12_declist(d1cs)
+val () =
+println!
+("process_nil: d2cs = ", d2cs)
+//
+val () =
+println!
+("process_nil: the_sortenv =")
+val () =
+(
+  the_sortenv_println((*void*))
+)
 //
 } (* end of [if] *)
 //

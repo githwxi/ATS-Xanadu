@@ -76,7 +76,7 @@ typedef s1expopt = Option(s1exp)
 datatype
 sort1_node =
 //
-  | S1Tid of token
+  | S1Tid of sym_t
 //
   | S1Tint of token
 //
@@ -425,7 +425,7 @@ typedef labs1explst = List0(labs1exp)
 datatype
 s1exp_node =
 //
-| S1Eid of token
+| S1Eid of sym_t
 //
 | S1Eint of token
 | S1Echr of token

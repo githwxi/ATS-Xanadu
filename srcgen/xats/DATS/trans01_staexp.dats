@@ -80,24 +80,20 @@ stadef fxitm = $FIX.fxitm
 
 (* ****** ****** *)
 
-typedef
-s1titm = fxitm(sort1)
-typedef
-s1titmlst = List0(s1titm)
+typedef s1titm = fxitm(sort1)
+typedef s1titmlst = List0(s1titm)
 
-typedef
-s1eitm = fxitm(s1exp)
-typedef
-s1eitmlst = List0(s1eitm)
+typedef s1eitm = fxitm(s1exp)
+typedef s1eitmlst = List0(s1eitm)
 
 (* ****** ****** *)
 
 macdef
 FXITMatm
-(x) = $FIX.FXITMatm(,(x))
+(i0) = $FIX.FXITMatm(,(i0))
 macdef
 FXITMopr
-(x, a) = $FIX.FXITMopr(,(x), ,(a))
+(i0, f0) = $FIX.FXITMopr(,(i0), ,(f0))
 
 (* ****** ****** *)
 
@@ -328,7 +324,7 @@ val opt =
 the_fixtyenv_search(sym)
 //
 val s1t0 =
-sort1_make_node(loc, S1Tid(tok))
+sort1_make_node(loc, S1Tid(sym))
 //
 in
 //
@@ -798,7 +794,7 @@ $SYM.symbol_make(nam)
 val opt =
 the_fixtyenv_search(sym)
 val s1e0 =
-s1exp_make_node(loc, S1Eid(tok))
+s1exp_make_node(loc, S1Eid(sym))
 //
 in
 case+ opt of
@@ -918,9 +914,11 @@ s0e0.node() of
 | S0Eop1(tok) =>
   FXITMatm(s1e0) where
   {
-    val loc = tok.loc()
+    val sym = sexpid_sym(tok)
     val s1e =
-    s1exp_make_node(loc, S1Eid(tok))
+    s1exp_make_node
+      (tok.loc(), S1Eid(sym))
+    // end of [val]
     val s1e0 =
     s1exp_make_node(loc0, S1Ebs1(s1e))
   }
@@ -930,9 +928,11 @@ s0e0.node() of
     val-
     I0DNTsome
       (tok) = sid.node()
-    val loc = tok.loc()
+    val sym = sexpid_sym(tok)
     val s1e =
-    s1exp_make_node(loc, S1Eid(tok))
+    s1exp_make_node
+      (tok.loc(), S1Eid(sym))
+    // end of [val]
     val s1e0 =
     s1exp_make_node(loc0, S1Ebs1(s1e))
   }
