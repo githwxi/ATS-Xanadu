@@ -138,9 +138,14 @@ case+ x0.node() of
   fprint!(out, "S1Ttype", knd, ")")
 *)
 //
-| S1Tapps(s1t0, s1ts) =>
+| S1Tapp1
+  (s1t0, s1t1) =>
   fprint!
-  (out, "S1Tapps(", s1t0, "; ", s1ts, ")")
+  (out, "S1Tapp1(", s1t0, "; ", s1t1, ")")
+| S1Tapp2
+  (s1t0, s1t1, s1t2) =>
+  fprint!
+  (out, "S1Tapp2(", s1t0, "; ", s1t1, "; ", s1t2, ")")
 //
 | S1Tlist(s1ts) =>
   fprint!(out, "S1Tlist(", s1ts, ")")

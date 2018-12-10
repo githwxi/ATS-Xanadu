@@ -89,9 +89,10 @@ sort1_node =
     (*prop/view/type/t0ype/viewtype/viewt0ype*)
 *)
 //
-  | S1Tapps of
-    ( sort1(*fun*)
-    , sort1lst(*arg*))
+  | S1Tapp1 of
+    (sort1(*fun*), sort1)
+  | S1Tapp2 of
+    (sort1(*fun*), sort1, sort1)
 //
   | S1Tlist of sort1lst // temporary
   | S1Tqual of (token, sort1)
