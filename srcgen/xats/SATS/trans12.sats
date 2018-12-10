@@ -41,27 +41,6 @@
   FP0 = "./filepath.sats"
 //
 (* ****** ****** *)
-//
-#staload LEX = "./lexing.sats"
-//
-  typedef token = $LEX.token
-//
-(* ****** ****** *)
-
-fun token2sint : token -> int
-fun token2dint : token -> int
-
-(* ****** ****** *)
-
-fun sortid_sym : token -> sym_t
-fun sexpid_sym : token -> sym_t
-fun dexpid_sym : token -> sym_t
-
-(* ****** ****** *)
-
-fun token2string : token -> string
-
-(* ****** ****** *)
 
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
@@ -82,6 +61,8 @@ typedef sort1 = $S1E.sort1
 typedef sort1opt = $S1E.sort1opt
 typedef sort1lst = $S1E.sort1lst
 //
+typedef s1arg = $S1E.s1arg
+//
 typedef s1exp = $S1E.s1exp
 typedef s1eff = $S1E.s1eff
 typedef s1expopt = $S1E.s1expopt
@@ -92,6 +73,9 @@ typedef s1explst = $S1E.s1explst
 typedef sort2 = $S2E.sort2
 typedef sort2opt = $S2E.sort2opt
 typedef sort2lst = $S2E.sort2lst
+//
+typedef s2cst = $S2E.s2cst
+typedef s2var = $S2E.s2var
 //
 typedef s2exp = $S2E.s2exp
 typedef s2eff = $S2E.s2eff
@@ -208,6 +192,13 @@ the_sortenv_qfind
 //
 (* ****** ****** *)
 //
+fun
+the_sortenv_fprint(FILEref): void
+fun
+the_sortenv_println((*void*)): void
+//
+(* ****** ****** *)
+//
 absview sortenv_push_v
 //
 fun
@@ -246,6 +237,14 @@ overload trans12 with trans12_sort
 overload trans12 with trans12_sortopt
 overload trans12 with trans12_sortlst
 *)
+//
+(* ****** ****** *)
+//
+fun
+trans12_sarg: s1arg -> s2var
+//
+fun
+trans12_stxt: sort1 -> s2txt
 //
 (* ****** ****** *)
 //

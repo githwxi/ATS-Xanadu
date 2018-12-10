@@ -203,7 +203,7 @@ the_filepath_stdin = $rec{
   filepath_kind= 0
 , filepath_givename= "__STDIN__"
 , filepath_partpath= "__STDIN__"
-, filepath_fullpath= $SYM.symbol__STDIN__
+, filepath_fullpath= $SYM.STDIN_fp_symbol
 } // end of [the_filepath_stdin]
 
 implement
@@ -211,7 +211,7 @@ the_filepath_string = $rec{
   filepath_kind= 0
 , filepath_givename= "__STRING__"
 , filepath_partpath= "__STRING__"
-, filepath_fullpath= $SYM.symbol__STRING__
+, filepath_fullpath= $SYM.STRING_fp_symbol
 } // end of [the_filepath_string]
 
 end // end of [local]

@@ -65,6 +65,7 @@ NMS = "./../SATS/nmspace.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
 
 (* ****** ****** *)
@@ -90,7 +91,7 @@ case-
 d1e0.node() of
 | _(*rest-of-D1EXP*) =>
   exit_errmsg
-  (1, "trans12_dexp: yet-to-be-implemented!")
+  (1, "trans12_dexp: yet-to-be-implemented!\n")
 //
 end // end of [trans12_dexp]
 
@@ -142,20 +143,70 @@ val sym = sortid_sym(tid)
 //
 in
 //
-case-
+case+
 def0.node() of
 | S1RTDEFsort(s1t) =>
   let
-    val
-    s2t =
-    trans12_sort(s1t)
-    val
-    s2t = S2TXTsrt(s2t)
-    val () =
-    the_sortenv_add(sym, s2t)
+    val s2tx = trans12_stxt(s1t)
   in
+    the_sortenv_add(sym, s2tx);
     d2ecl_make_node(loc0, D2Csortdef(d1c0))
   end
+| S1RTDEFsubset(s1a, s1ps) =>
+  (
+  case+ s1a.node() of
+  | S1ARGsome(tok, opt) =>
+    let
+//
+      val tx0 =
+      (
+        case+ opt of
+        | None() =>
+          (
+            S2TXTsrt(the_sort2_int)
+          )
+        | Some(s1t) => trans12_stxt(s1t)
+      ) : s2txt // end of [val]
+//
+      val s2t =
+      (
+        case+ tx0 of
+        | S2TXTsrt(s2t) => s2t
+        | S2TXTsub(s2v, _) => s2v.sort()
+        | S2TXTerr((*void*)) => S2Tnone()
+      ) : sort2 // end of [val]
+//
+      val id0 =
+        sargid_sym(tok)
+      val s2u =
+        s2var_make_idst(id0, s2t)
+//
+      val s2ps =
+      (
+        case+ tx0 of
+        | S2TXTsrt(s2t) =>
+          (
+            trans12_sexplst(s1ps)
+          )
+        | S2TXTsub(s2v, s2ps) =>
+          (
+            s2ps1 + s2ps2
+          ) where
+          {
+            val s2ps1 = list_nil()
+            // s2explst_rename(s2ps, s2v, s2u)
+            val s2ps2 = trans12_sexplst(s1ps)
+          }
+        | S2TXTerr((*void*)) => list_nil()
+      ) : s2explst // end of [val]
+//
+      val s2tx = S2TXTsub(s2u, s2ps)
+//
+    in
+      the_sortenv_add(sym, s2tx);
+      d2ecl_make_node(loc0, D2Csortdef(d1c0))
+    end
+  ) (* end of [S1RTDEFsubset] *)
 //
 end // end of [aux_sortdef]
 
@@ -177,11 +228,14 @@ in (* in-of-let *)
 case-
 d1c0.node() of
 //
+| D1Cnone() => d2ecl_none1(d1c0)
+| D1Cnone(_) => d2ecl_none1(d1c0)
+//
 | D1Csortdef _ => aux_sortdef(d1c0)
 //
 | _(*rest-of-D1ECL*) =>
   exit_errmsg
-  (1, "trans12_decl: yet-to-be-implemented!")
+  (1, "trans12_decl: yet-to-be-implemented!\n")
 //
 end // end of [trans12_decl]
 

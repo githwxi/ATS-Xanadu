@@ -37,7 +37,10 @@
 
 (* ****** ****** *)
 //
+(*
 #staload SYM = "./symbol.sats"
+  typedef symbol = $SYM.symbol
+*)
 //
 #staload LOC = "./location.sats"
   typedef pos_t = $LOC.position

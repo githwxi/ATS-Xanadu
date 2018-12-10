@@ -40,6 +40,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/symbol.sats"
+//
 #staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
 //
@@ -378,9 +380,9 @@ fprint_s1exp
 (
 case+ x0.node() of
 //
-| S1Eid(tok) =>
+| S1Eid(sid) =>
   fprint!
-  (out, "S1Eid(", tok, ")")
+  (out, "S1Eid(", sid, ")")
 //
 | S1Eint(tok) =>
   fprint!

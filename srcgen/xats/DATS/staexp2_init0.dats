@@ -52,33 +52,43 @@ SYM = "./../SATS/symbol.sats"
 local
 //
 val
-s2tb_int = T2BASpre($SYM.symbol_INT)
+s2tb_int = T2BASpre($SYM.INT_symbol)
 val
-s2tb_addr = T2BASpre($SYM.symbol_ADDR)
+s2tb_addr = T2BASpre($SYM.ADDR_symbol)
 val
-s2tb_bool = T2BASpre($SYM.symbol_BOOL)
+s2tb_bool = T2BASpre($SYM.BOOL_symbol)
+val
+s2tb_char = T2BASpre($SYM.CHAR_symbol)
 //
 val
-s2tb_real = T2BASpre($SYM.symbol_REAL)
+s2tb_real = T2BASpre($SYM.REAL_symbol)
 //
 val
-s2tb_float = T2BASpre($SYM.symbol_FLOAT)
+s2tb_float = T2BASpre($SYM.FLOAT_symbol)
 val
-s2tb_string = T2BASpre($SYM.symbol_STRING)
+s2tb_string = T2BASpre($SYM.STRING_symbol)
 //
 in // in of [local]
 //
-implement sort2_int = S2Tbas(s2tb_int)
-implement sort2_addr = S2Tbas(s2tb_addr)
-implement sort2_bool = S2Tbas(s2tb_bool)
+implement
+the_sort2_int = S2Tbas(s2tb_int)
+implement
+the_sort2_addr = S2Tbas(s2tb_addr)
+implement
+the_sort2_bool = S2Tbas(s2tb_bool)
+implement
+the_sort2_char = S2Tbas(s2tb_char)
 //
-implement sort2_real = S2Tbas(s2tb_real)
+implement
+the_sort2_real = S2Tbas(s2tb_real)
 //
-implement sort2_float = S2Tbas(s2tb_float)
-implement sort2_string = S2Tbas(s2tb_string)
+implement
+the_sort2_float = S2Tbas(s2tb_float)
+implement
+the_sort2_string = S2Tbas(s2tb_string)
 //
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_staexp2_init.dats] *)
+(* end of [xats_staexp2_init0.dats] *)

@@ -85,12 +85,17 @@ typedef t2xtv = t2xtv_tbox
 
 datatype
 sort2 =
+//
+  | S2Tid of sym_t (* base sort *)
   | S2Tint of (int) (* base sort *)
+//
   | S2Tbas of (t2bas) (* base sort *)
   | S2Txtv of (t2xtv) // for unification
   | S2Ttup of (sort2lst) (* tuple sort *)
   | S2Tfun of
     (sort2lst(*arg*), sort2(*res*)) // function
+//
+  | S2Tapp of (sort2(*fun*), sort2lst(*arg*))
 //
   | S2Tnone of (sort1) // HX: error indication
   | S2Tnone // of (*void*) // HX: error indication
@@ -115,13 +120,21 @@ sort2lstopt = Option(sort2lst)
 
 (* ****** ****** *)
 
-val sort2_int : sort2
-val sort2_addr : sort2
-val sort2_bool : sort2
+val
+the_sort2_int : sort2
+val
+the_sort2_addr : sort2
+val
+the_sort2_bool : sort2
+val
+the_sort2_char : sort2
 
-val sort2_real : sort2
-val sort2_float : sort2
-val sort2_string : sort2
+val
+the_sort2_real : sort2
+val
+the_sort2_float : sort2
+val
+the_sort2_string : sort2
 
 (* ****** ****** *)
 //
@@ -131,6 +144,8 @@ fun
 sort2_is_addr(sort2): bool
 fun
 sort2_is_bool(sort2): bool
+fun
+sort2_is_char(sort2): bool
 //
 fun
 sort2_is_real(sort2): bool
@@ -151,6 +166,12 @@ fprint_sort2: fprint_type(sort2)
 overload print with print_sort2
 overload prerr with prerr_sort2
 overload fprint with fprint_sort2
+//
+(* ****** ****** *)
+//
+fun
+sort2_apps
+(f0: sort2, xs: sort2lst): sort2
 //
 (* ****** ****** *)
 //
@@ -282,6 +303,12 @@ overload fprint with fprint_s2var
 //
 (* ****** ****** *)
 //
+fun
+s2var_make_idst
+  (id: sym_t, s2t: sort2): s2var
+//
+(* ****** ****** *)
+//
 // HX: datasort
 //
 fun t2dat_stamp_new(): stamp
@@ -365,7 +392,7 @@ s2txt =
 (* extended sort *)
 | S2TXTsrt of sort2
 | S2TXTsub of
-  (s2var, sort2, s2explst(*prop*))
+  (s2var, s2explst(*prop*))
 | S2TXTerr of () // error indication
 //
 typedef
@@ -379,6 +406,7 @@ datatype
 s2exp_node =
 //
 | S2Eint of int // integer
+| S2Echr of char // character
 //
 | S2Ecst of s2cst // constant
 | S2Evar of s2var // variable
@@ -412,6 +440,11 @@ s2exp_node =
 (* ****** ****** *)
 //
 fun
+s2exp_int(i0: int): s2exp
+fun
+s2exp_chr(c0: char): s2exp
+//
+fun
 s2exp_none0((*void*)): s2exp
 fun
 s2exp_none1(s1e: s1exp): s2exp
@@ -432,7 +465,7 @@ overload .node with s2exp_get_node
 //
 fun
 s2exp_make_node
- (s2t0: sort2, node: s2exp_node): s2exp
+(s2t0: sort2, node: s2exp_node): s2exp
 //
 (* ****** ****** *)
 //
@@ -446,6 +479,19 @@ fprint_s2eff: fprint_type(s2eff)
 overload print with print_s2eff
 overload prerr with prerr_s2eff
 overload fprint with fprint_s2eff
+//
+(* ****** ****** *)
+//
+fun
+print_s2txt: print_type(s2txt)
+fun
+prerr_s2txt: prerr_type(s2txt)
+fun
+fprint_s2txt: fprint_type(s2txt)
+//
+overload print with print_s2txt
+overload prerr with prerr_s2txt
+overload fprint with fprint_s2txt
 //
 (* ****** ****** *)
 //

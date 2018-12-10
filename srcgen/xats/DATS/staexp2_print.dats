@@ -70,6 +70,9 @@ implement
 fprint_val<s2var> = fprint_s2var
 
 implement
+fprint_val<s2txt> = fprint_s2txt
+
+implement
 fprint_val<s2eff> = fprint_s2eff
 implement
 fprint_val<s2exp> = fprint_s2exp
@@ -95,8 +98,12 @@ fprint_sort2
   (out, s2t0) =
 (
 case+ s2t0 of
+//
+| S2Tid(id) =>
+  fprint!(out, "S2Tid(", id, ")")
 | S2Tint(i0) =>
   fprint!(out, "S2Tint(", i0, ")")
+//
 | S2Tbas(s2tb) =>
   fprint!(out, "S2Tbas(", s2tb, ")")
 | S2Txtv(s2tx) =>
@@ -106,6 +113,10 @@ case+ s2t0 of
 | S2Tfun(s2ts, s2t1) =>
   fprint!
   (out, "S2Tfun(", s2ts, "; ", s2t1, ")")
+//
+| S2Tapp(s2t1, s2ts) =>
+  fprint!
+  (out, "S2Tapp(", s2t1, "; ", s2ts, ")")
 //
 | S2Tnone() => fprint!(out, "S2Tnone(", ")")
 | S2Tnone(s1t) => fprint!(out, "S2Tnone(", s1t, ")")
@@ -229,6 +240,38 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+print_s2txt(x0) =
+fprint_s2txt(stdout_ref, x0) 
+implement
+prerr_s2txt(x0) =
+fprint_s2txt(stdout_ref, x0) 
+
+local
+
+implement
+fprint_val<s2txt> = fprint_s2txt
+
+in (* in-of-local *)
+
+implement
+fprint_s2txt
+  (out, s2tx) =
+(
+case+ s2tx of
+| S2TXTsrt(s2t) =>
+  fprint!(out, "S2TXTsrt(", s2t, ")")
+| S2TXTsub(s2v, s2ps) =>
+  fprint!(out, "S2TXTsub(", s2v, "; ", s2ps, ")")
+//
+| S2TXTerr((*void*)) => fprint!(out, "S2TXTerr()")
+//
+) (* end of [fprint_s2txt] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
 print_s2exp(x0) =
 fprint_s2exp(stdout_ref, x0) 
 implement
@@ -251,6 +294,8 @@ s2e0.node() of
 //
 | S2Eint(i0) =>
   fprint!(out, "S2Eint(", i0, ")")
+| S2Echr(c0) =>
+  fprint!(out, "S2Echr(", c0, ")")
 //
 | S2Ecst(s2c) =>
   fprint!(out, "S2Ecst(", s2c, ")")

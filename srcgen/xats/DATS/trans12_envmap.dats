@@ -231,9 +231,9 @@ the_nmspace_find
   }
 in
   $NMS.the_nmspace_find(lam(x) => fopr(x))
-end // end of [the_sortenv_find]
+end // end of [the_nmspace_find]
 //
-in
+in (* in-of-local *)
 
 implement
 the_sortenv_add
@@ -273,6 +273,33 @@ case+ ans of
   end // end of [None_vt]
 //
 end // end of [the_sortenv_find]
+
+(* ****** ****** *)
+//
+implement
+the_sortenv_fprint
+  (out) = let
+//
+  prval vbox(pf) = pfbox
+//
+in
+//
+$effmask_ref
+(
+  $ENV.fprint_symenv_top
+  ( out, !p0
+  , lam(out, x) => fprint_s2txt(out, x))
+)
+//
+end // end of [the_sortenv_print]
+
+implement
+the_sortenv_println
+  ((*void*)) = let
+  val out = stdout_ref
+in
+  the_sortenv_fprint(out); fprint_newline(out)
+end // end of [the_sortenv_println]
 
 (* ****** ****** *)
 

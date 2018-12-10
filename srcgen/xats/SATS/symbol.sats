@@ -43,11 +43,15 @@ typedef sym_t = symbol_tbox
 //
 typedef symbol = symbol_tbox
 //
-typedef symbolist = List0(symbol)
-typedef symbolopt = Option(symbol)
+typedef
+symbolist = List0(symbol)
+typedef
+symbolopt = Option(symbol)
 //
-vtypedef symbolist_vt = List0_vt(symbol)
-vtypedef symbolopt_vt = Option_vt(symbol)
+vtypedef
+symbolist_vt = List0_vt(symbol)
+vtypedef
+symbolopt_vt = Option_vt(symbol)
 //
 (* ****** ****** *)
 
@@ -55,45 +59,53 @@ val symbol_nil : symbol // SYMBOL("")
 
 (* ****** ****** *)
 //
-val symbol_ADD : symbol // SYMBOL("+")
-val symbol_SUB : symbol // SYMBOL("-")
-val symbol_MUL : symbol // SYMBOL("*")
-val symbol_DIV : symbol // SYMBOL("/")
+val ADD_symbol : symbol // SYMBOL("+")
+val SUB_symbol : symbol // SYMBOL("-")
+val MUL_symbol : symbol // SYMBOL("*")
+val DIV_symbol : symbol // SYMBOL("/")
 //
 (* ****** ****** *)
 //
-val symbol_LT : symbol // SYMBOL("<")
-val symbol_GT : symbol // SYMBOL(">")
-val symbol_LTEQ : symbol // SYMBOL("<=")
-val symbol_GTEQ : symbol // SYMBOL(">=")
+val LT_symbol : symbol // SYMBOL("<")
+val GT_symbol : symbol // SYMBOL(">")
+val LTEQ_symbol : symbol // SYMBOL("<=")
+val GTEQ_symbol : symbol // SYMBOL(">=")
 //
 (* ****** ****** *)
 //
-val symbol_EQ : symbol // SYMBOL("=")
-val symbol_EQEQ : symbol // SYMBOL("==")
-val symbol_LTGT : symbol // SYMBOL("<>")
-val symbol_BANGEQ : symbol // SYMBOL("!=")
+val EQ_symbol : symbol // SYMBOL("=")
+val EQEQ_symbol : symbol // SYMBOL("==")
+val LTGT_symbol : symbol // SYMBOL("<>")
+val BANGEQ_symbol : symbol // SYMBOL("!=")
 //
 (* ****** ****** *)
 
-val symbol_BACKSLASH : symbol
+val MSGT_symbol : symbol // symbol("->")
 
 (* ****** ****** *)
 
-val symbol_INT : symbol // int sort
-val symbol_ADDR : symbol // addr sort
-val symbol_BOOL : symbol // bool sort
-
-val symbol_REAL : symbol // real sort
-
-val symbol_FLOAT : symbol // float sort
-val symbol_STRING : symbol // string sort
+val BSLASH_symbol : symbol // symbol("\")
 
 (* ****** ****** *)
 
-val symbol__STDIN__ : symbol // SYMBOL("__STDIN__")
-val symbol__STRING__ : symbol // SYMBOL("__STRING__")
+val INT_symbol : symbol // int sort
+val ADDR_symbol : symbol // addr sort
+val BOOL_symbol : symbol // bool sort
+val CHAR_symbol : symbol // char sort
 
+val REAL_symbol : symbol // real sort
+
+val FLOAT_symbol : symbol // float sort
+val STRING_symbol : symbol // string sort
+
+(* ****** ****** *)
+//
+// HX-2018-12-09:
+// these are treated as special filepaths
+//
+val STDIN_fp_symbol : symbol // SYMBOL("__STDIN__")
+val STRING_fp_symbol : symbol // SYMBOL("__STRING__")
+//
 (* ****** ****** *)
 //
 fun

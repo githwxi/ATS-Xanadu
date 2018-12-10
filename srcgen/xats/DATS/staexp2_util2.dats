@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2018
+// Start Time: December, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -39,86 +39,16 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-//
-#staload "./../SATS/label0.sats"
-#staload "./../SATS/lexing.sats"
-//
-#staload "./../SATS/staexp0.sats"
-#staload "./../SATS/dynexp0.sats"
-//
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
+
+#staload
+SYM = "./../SATS/symbol.sats"
+
+(* ****** ****** *)
 //
 #staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) = "./../DATS/staexp0_print.dats"
-#staload
-_(*TMP*) = "./../DATS/staexp1_print.dats"
-#staload
-_(*TMP*) = "./../DATS/staexp2_print.dats"
-//
-(* ****** ****** *)
-//
-implement
-fprint_val<s2exp> = fprint_s2exp
-//
-(* ****** ****** *)
-//
-(*
-implement
-fprint_val<d2exp> = fprint_d2exp
-*)
-//
-(* ****** ****** *)
-//
-implement
-fprint_val<d2ecl> = fprint_d2ecl
 //
 (* ****** ****** *)
 
-implement
-print_d2ecl(x0) =
-fprint_d2ecl(stdout_ref, x0)
-implement
-prerr_d2ecl(x0) =
-fprint_d2ecl(stderr_ref, x0)
-
-local
-
-in (* in-of-local *)
-
-implement
-fprint_d2ecl
-  (out, x0) =
-(
-case- x0.node() of
-//
-| D2Cnone() =>
-  fprint!(out, "D2Cnone(", ")")
-| D2Cnone(d0c) =>
-  fprint!(out, "D2Cnone(", d0c, ")")
-//
-| D2Cabssort(d1c) =>
-  fprint!(out, "D2Cabssort(", d1c, ")")
-| D2Cstacst0(d1c) =>
-  fprint!(out, "D2Cstacst0(", d1c, ")")
-| D2Csortdef(d1c) =>
-  fprint!(out, "D2Csortdef(", d1c, ")")
-| D2Csexpdef(d1c) =>
-  fprint!(out, "D2Csexpdef(", d1c, ")")
-| D2Cabstype(d1c) =>
-  fprint!(out, "D2Cabstype(", d1c, ")")
-| D2Cabsimpl(d1c) =>
-  fprint!(out, "D2Cabsimpl(", d1c, ")")
-//
-) (* end of [fprint_d2ecl] *)
-
-end // end of [local]
-
 (* ****** ****** *)
 
-(* end of [xats_dynexp2_print.dats] *)
+(* end of [xats_staexp2_util2.dats] *)

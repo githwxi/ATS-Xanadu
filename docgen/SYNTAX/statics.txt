@@ -15,6 +15,7 @@ Following is a list of built-in predicative sorts in ATS:
 int // for static integers
 bool // for static booleans
 char // for static chars
+real // for real numbers
 float // for static floats
 string // for static strings
 
@@ -92,7 +93,7 @@ static function of the name double (which is of the sort int -> int):
 
 sexpdef double(a: int) = a + a
 
-Note that no recursion is allowed in sexpdef-declarations.
+Note that NO recursion is allowed in sexpdef-declarations.
 
 ########################
 

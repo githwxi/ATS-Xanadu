@@ -279,64 +279,69 @@ symbol_nil = symbol_make("")
 (* ****** ****** *)
 
 implement
-symbol_ADD = symbol_make("+")
+ADD_symbol = symbol_make("+")
 implement
-symbol_SUB = symbol_make("-")
+SUB_symbol = symbol_make("-")
 implement
-symbol_MUL = symbol_make("*")
+MUL_symbol = symbol_make("*")
 implement
-symbol_DIV = symbol_make("/")
+DIV_symbol = symbol_make("/")
 
 (* ****** ****** *)
 
 implement
-symbol_LT = symbol_make("<")
+LT_symbol = symbol_make("<")
 implement
-symbol_GT = symbol_make(">")
+GT_symbol = symbol_make(">")
 implement
-symbol_LTEQ = symbol_make("<=")
+LTEQ_symbol = symbol_make("<=")
 implement
-symbol_GTEQ = symbol_make(">=")
+GTEQ_symbol = symbol_make(">=")
 
 (* ****** ****** *)
 
 implement
-symbol_EQ = symbol_make("=")
+EQ_symbol = symbol_make("=")
 implement
-symbol_EQEQ = symbol_make("==")
+EQEQ_symbol = symbol_make("==")
 implement
-symbol_LTGT = symbol_make("<>")
+LTGT_symbol = symbol_make("<>")
 implement
-symbol_BANGEQ = symbol_make("!=")
+BANGEQ_symbol = symbol_make("!=")
+
+(* ****** ****** *)
+//
+implement
+MSGT_symbol = symbol_make("->")
+//
+implement
+BSLASH_symbol = symbol_make("\\")
+//
+(* ****** ****** *)
+
+implement
+INT_symbol = symbol_make("int")
+implement
+ADDR_symbol = symbol_make("addr")
+implement
+BOOL_symbol = symbol_make("bool")
+implement
+CHAR_symbol = symbol_make("char")
+
+implement
+REAL_symbol = symbol_make("real")
+
+implement
+FLOAT_symbol = symbol_make("float")
+implement
+STRING_symbol = symbol_make("string")
 
 (* ****** ****** *)
 
 implement
-symbol_BACKSLASH = symbol_make("\\")
-
-(* ****** ****** *)
-
+STDIN_fp_symbol = symbol_make("__STDIN__")
 implement
-symbol_INT = symbol_make("int")
-implement
-symbol_ADDR = symbol_make("addr")
-implement
-symbol_BOOL = symbol_make("bool")
-
-implement
-symbol_REAL = symbol_make("real")
-
-implement
-symbol_FLOAT = symbol_make("float")
-implement
-symbol_STRING = symbol_make("string")
-
-(* ****** ****** *)
-
-implement
-symbol__STDIN__ = symbol_make("__STDIN__")
-implement
-symbol__STRING__ = symbol_make("__STRING__")
+STRING_fp_symbol = symbol_make("__STRING__")
 
 (* ****** ****** *)
 

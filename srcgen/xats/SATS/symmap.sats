@@ -98,7 +98,7 @@ fun
 fprint_symmap
   {itm:type}
 ( out: FILEref
-, map: !symmap itm, fpr: (FILEref, itm) -> void
+, map: !symmap(itm), fpr: (FILEref, itm) -> void
 ) : void // end of [fprint_symmap]
 
 (* ****** ****** *)
