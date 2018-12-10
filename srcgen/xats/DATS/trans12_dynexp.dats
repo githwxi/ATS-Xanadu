@@ -233,9 +233,7 @@ d1c0.node() of
 //
 | D1Csortdef _ => aux_sortdef(d1c0)
 //
-| _(*rest-of-D1ECL*) =>
-  exit_errmsg
-  (1, "trans12_decl: yet-to-be-implemented!\n")
+| _(*rest-of-D1ECL*) => d2ecl_none1(d1c0)
 //
 end // end of [trans12_decl]
 
