@@ -118,9 +118,9 @@ x0, f1, x2
     case+
     f1.node() of
     | S1Tapp() =>
-      S1Tapps(x0, list_sing(x2))
+      S1Tapp1(x0, x2)
     | _(*non-S1Tapp*) =>
-      S1Tapps(f1, list_pair(x0, x2))
+      S1Tapp2(f1, x0, x2)
   ) : sort1_node // end of [val]
 in
   FXITMatm(sort1_make_node(loc, s1t_node))
@@ -137,7 +137,7 @@ in
   sort1_make_node(loc, s1t_node)
   ) where
   {
-    val s1t_node = S1Tapps(f0, list_sing(x1))
+    val s1t_node = S1Tapp1(f0, x1)
   }
 end // end of [$FIX.fxitm_prefix]
 //
@@ -152,7 +152,7 @@ in
   sort1_make_node(loc, s1t_node)
   ) where
   {
-    val s1t_node = S1Tapps(f1, list_sing(x0))
+    val s1t_node = S1Tapp1(f1, x0)
   }
 end // end of [$FIX.fxitm_postfix]
 //

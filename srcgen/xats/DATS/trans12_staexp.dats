@@ -103,7 +103,30 @@ case+ opt of
 end // end of [auxid]
 
 fun
-auxapps
+auxapp1
+( s1t0
+: sort1): sort2 = let
+//
+val-
+S1Tapp1
+(s1t1, s1t2) = s1t0.node()
+//
+val s2t1 = trans12_sort(s1t1)
+val s2ts =
+(
+  case+ s1t2.node() of
+  | S1Tlist(xs) =>
+    trans12_sortlst(xs)
+  | _(*non-S1Tlist*) =>
+    list_sing(trans12_sort(s1t2))
+ ) : sort2lst // end of [val]
+//
+in
+  S2Tapp(s2t1, s2ts)
+end // end of [auxapp1]
+
+fun
+auxapp2
 ( s1t0
 : sort1): sort2 = let
 //
@@ -111,52 +134,38 @@ val () =
 println!
 ("\
 trans01_sort: \
-auxapps: s1t0 = ", s1t0)
+auxapp2: s1t0 = ", s1t0)
 //
 val-
-S1Tapps
-(s1t1, s1ts) = s1t0.node()
+S1Tapp2
+(s1t1, s1t2, s1t3) = s1t0.node()
 //
 in
 //
 if
 isarrw(s1t1)
-then
-(
-  auxfun(s1t1, s1ts)
-)
-else
-(
-  S2Tapp(s2t1, s2ts)
-) where
-{
-  val
-  s2t1 =
-  trans12_sort(s1t1)
-  val
-  s2ts =
+then let
+  val s2ts =
   (
-  if
-  list_is_sing(s1ts)
-  then
-  (
-  case+
-  s1t2.node() of
+  case+ s1t2.node() of
   | S1Tlist(xs) =>
     trans12_sortlst(xs)
   | _(*non-S1Tlist*) =>
-    list_sing
-    (trans12_sort(s1t2))
-  ) where
-  {
-    val
-    s1t2 = list_head(s1ts)
-  }
-  else trans12_sortlst(s1ts)
-  ) : sort2lst // end of [val]
-} (* end of [else] *)
+    list_sing(trans12_sort(s1t2))
+  ) : sort2lst
+  val s2t3 = trans12_sort(s1t3)
+in
+  S2Tfun(s2ts, s2t3)
+end
+else let
+  val s2t1 = trans12_sort(s1t1)
+  val s2t2 = trans12_sort(s1t2)
+  val s2t3 = trans12_sort(s1t3)
+in
+  S2Tapp(s2t1, list_pair(s2t2, s2t2))
+end // end of [else]
 //
-end // end of [auxapps]
+end // end of [auxapp2]
 
 and
 isarrw
@@ -170,38 +179,29 @@ s1t.node() of
 | _(*non-S1Tid*) => false
 )
 
-and
-auxfun
-( s1t
-: sort1
-, s1ts
-: sort1lst): sort2 =
-(
-S2Tfun(s2ts_arg, s2t2_res)
-) where
-{
+fun
+auxlist
+( s1t0
+: sort1): sort2 = let
 //
 val-
-list_cons(s1t1, s1ts) = s1ts
-val-
-list_cons(s1t2, s1ts) = s1ts
+S1Tlist(s1ts) = s1t0.node()
 //
-val s2ts_arg =
-(
-case+
-s1t1.node() of
-| S1Tlist(s1ts) =>
+in
+  if
+  list_is_sing(s1ts)
+  then
   (
-    trans12_sortlst(s1ts)
+    trans12_sort(s1t)
+  ) where
+  {
+    val s1t = list_head(s1ts)
+  }
+  else
+  (
+    S2Ttup(trans12_sortlst(s1ts))
   )
-| _(*non-S1Tlist*) =>
-  list_sing(trans12_sort(s1t1))
-) : sort2lst
-//
-val s2t2_res = trans12_sort(s1t2)
-//
-} (* end of [auxfun] *)
-
+end // end of [auxlist]
 
 in (* in-of-local *)
 
@@ -227,26 +227,16 @@ s1t0.node() of
 | S1Tint(int) =>
   S2Tint(token2sint(int))
 //
-| S1Tapps _ => auxapps(s1t0)
+| S1Tapp _ => S2Tnone(s1t0)
 //
-| S1Tlist(s1ts) =>
-  if
-  list_is_sing(s1ts)
-  then
-  (
-    trans12_sort(s1t)
-  ) where
-  {
-    val s1t = list_head(s1ts)
-  }
-  else
-  (
-    S2Ttup(trans12_sortlst(s1ts))
-  )
+| S1Tapp1 _ => auxapp1(s1t0)
+| S1Tapp2 _ => auxapp2(s1t0)
+//
+| S1Tlist _ => auxlist(s1t0)
+//
+| S1Tqual _ => S2Tnone(s1t0)
 //
 | S1Tnone((*void*)) => S2Tnone()
-//
-| _(*rest-of-sort1*) => S2Tnone(s1t0)
 //
 end // end of [trans12_sort]
 
