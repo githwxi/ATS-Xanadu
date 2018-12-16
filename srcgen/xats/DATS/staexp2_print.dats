@@ -80,6 +80,11 @@ fprint_val<s2exp> = fprint_s2exp
 (* ****** ****** *)
 
 implement
+fprint_val<s2itm> = fprint_s2itm
+
+(* ****** ****** *)
+
+implement
 print_sort2(x0) =
 fprint_sort2(stdout_ref, x0) 
 implement
@@ -338,6 +343,31 @@ s2e0.node() of
 
 end // end of [local]
 
+(* ****** ****** *)
+
+implement
+print_s2itm(x0) =
+fprint_s2itm(stdout_ref, x0) 
+implement
+prerr_s2itm(x0) =
+fprint_s2itm(stdout_ref, x0) 
+
+implement
+fprint_s2itm
+  (out, x0) =
+(
+case+ x0 of
+//
+| S2ITMvar(s2v) =>
+  fprint!(out, "S2ITMvar(", s2v, ")")
+//
+| S2ITMcst(s2cs) =>
+  fprint!(out, "S2ITMcst(", s2cs, ")")
+//
+| S2ITMfmodenv(fmod) =>
+  fprint!(out, "S2ITMfmodenv(", "...", ")")
+)
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2_print.dats] *)
