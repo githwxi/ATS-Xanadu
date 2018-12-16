@@ -589,6 +589,13 @@ datatype s2itm =
 //
 (* ****** ****** *)
 //
+typedef
+s2itmopt = Option(s2itm)
+vtypedef
+s2itmopt_vt = Option_vt(s2itm)
+//
+(* ****** ****** *)
+//
 fun
 print_s2itm: print_type(s2itm)
 fun

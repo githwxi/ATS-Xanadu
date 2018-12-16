@@ -237,9 +237,11 @@ in (* in-of-local *)
 
 implement
 the_sortenv_add
-  (tid, s2txt) = let
+  (tid, s2t) = let
   prval
-  vbox(pf) = pfbox in $ENV.symenv_insert(!p0, tid, s2txt)
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_insert(!p0, tid, s2t)
 end // end of [the_sortenv_add]
 
 (* ****** ****** *)
@@ -382,7 +384,102 @@ prval
 pfbox =
 vbox_make_viewptr{s2ienv}(pf | p0)
 //
+fun
+the_nmspace_find
+  (tid: sym_t): s2itmopt_vt = let
+  fun
+  fopr
+  (menv: fmodenv): s2itmopt_vt =
+    ans where
+  {
+    val (pf, fpf | p0) =
+      fmodenv_get_s2imap(menv)
+    val ans =
+      $MAP.symmap_search(!p0, tid)
+    prval () =
+      minus_v_addback(fpf, pf | menv)
+    // end of [prval]
+  }
+in
+  $NMS.the_nmspace_find(lam(x) => fopr(x))
+end // end of [the_nmspace_find]
+//
 in (* in-of-local *)
+
+implement
+the_sexpenv_add
+  (sid, s2i) = let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_insert(!p0, sid, s2i)
+end // end of [the_sexpenv_add]
+
+implement
+the_sexpenv_add_cst
+  (s2c) =
+(
+let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_insert(!p0, sid, s2i0)
+end
+) where
+{
+//
+val sid = s2c.sym()
+val opt = the_sexpenv_find(sid)
+//
+val s2cs =
+(
+  case+ opt of
+  | ~None_vt() =>
+    (
+      list_nil((*void*))
+    )
+  | ~Some_vt(s2i) =>
+    (
+    case+ s2i of
+    | S2ITMcst(cs) => cs | _ => list_nil()
+    )
+) : s2cstlst // end of [val]
+//
+val s2i0 = S2ITMcst(list_cons(s2c, s2cs))
+//
+} (* end of [the_sexpenv_add_cst] *)
+
+(* ****** ****** *)
+
+implement
+the_sexpenv_find
+  (sid) = let
+  val ans = let
+    prval
+    vbox(pf) = pfbox
+  in
+    $ENV.symenv_search{s2itm}(!p0, sid)
+  end // end of [val]
+in
+//
+case+ ans of
+//
+| Some_vt _ => ans
+//
+| ~None_vt() => let
+    val ans = the_nmspace_find(sid)
+  in
+    case+ ans of
+    | Some_vt _ => ans
+    | ~None_vt() => let
+        prval
+        vbox(pf) = pfbox
+      in
+        $ENV.symenv_psearch{s2itm}(!p0, sid)
+      end // end of [None_vt]
+  end // end of [None_vt]
+//
+end // end of [the_sexpenv_find]
 
 (* ****** ****** *)
 //
