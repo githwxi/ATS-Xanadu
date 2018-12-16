@@ -212,9 +212,9 @@ x0, f1, x2
     case+
     f1.node() of
     | S1Eapp() =>
-      S1Eapps(x0, list_sing(x2))
+      S1Eapp(x0, list_sing(x2))
     | _(*non-S1Eapp*) =>
-      S1Eapps(f1, list_pair(x0, x2))
+      S1Eapp(f1, list_pair(x0, x2))
   ) : s1exp_node // end of [val]
 in
   FXITMatm(s1exp_make_node(loc, s1e_node))
@@ -244,7 +244,7 @@ f0.node() of
     ) where
     {
       val
-      s1e_node = S1Eapps(f0, list_sing(x1))
+      s1e_node = S1Eapp(f0, list_sing(x1))
     }
   end // end of [non-S1Ebs0]
 //
@@ -258,7 +258,7 @@ $FIX.fxitm_postfix<s1exp>
 in
   FXITMatm
   (
-  s1exp_make_node(loc, S1Eapps(f1, list_sing(x0)))
+  s1exp_make_node(loc, S1Eapp(f1, list_sing(x0)))
   )
 end // end of [$FIX.fxitm_postfix]
 //

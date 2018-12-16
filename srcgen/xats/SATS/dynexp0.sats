@@ -992,7 +992,7 @@ for skipping error
 | D0Cabssort of (token, s0tid)
 //
 | D0Cstacst0 of
-  (token, s0eid, token, sort0)
+  (token, s0eid, t0marglst, token, sort0)
 //
 | D0Csortdef of
   (token, s0tid, token, s0rtdef)

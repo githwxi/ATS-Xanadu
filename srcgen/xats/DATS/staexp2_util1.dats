@@ -39,16 +39,47 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
+//
+#staload
+STM = "./../SATS/stamp0.sats"
 #staload
 SYM = "./../SATS/symbol.sats"
-
+//
+overload
+= with $STM.eq_stamp_stamp
+overload
+= with $SYM.eq_symbol_symbol
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
+//
+implement
+eq_t2dat_t2dat
+(x1, x2) =
+(x1.stamp() = x2.stamp())
+//
+(* ****** ****** *)
 
+implement
+eq_t2bas_t2bas
+(x1, x2) =
+(
+case+
+(x1, x2) of
+| ( T2BASpre s1
+  , T2BASpre s2) => (s1 = s2)
+| ( T2BASdat t1
+  , T2BASdat t2) => (t1 = t2)
+| ( T2BASimp(_, s1)
+  , T2BASimp(_, s2)) => (s1 = s2)
+//
+| (_(*rest*), _(*rest*)) => false
+//
+) (* end of [eq_t2bas_t2bas] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2_util1.dats] *)
