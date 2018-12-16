@@ -192,13 +192,6 @@ the_sortenv_qfind
 //
 (* ****** ****** *)
 //
-fun
-the_sortenv_fprint(FILEref): void
-fun
-the_sortenv_println((*void*)): void
-//
-(* ****** ****** *)
-//
 absview sortenv_push_v
 //
 fun
@@ -222,6 +215,24 @@ fun // p: pervasive
 the_sortenv_pjoinwth0(map: s2tmap): void
 fun // p: pervasive
 the_sortenv_pjoinwth1(map: !s2tmap): void
+//
+(* ****** ****** *)
+//
+fun
+the_sortenv_fprint(FILEref): void
+fun
+the_sortenv_println((*void*)): void
+//
+(* ****** ****** *)
+
+absview sexpenv_push_v
+
+(* ****** ****** *)
+//
+fun
+the_sexpenv_fprint(FILEref): void
+fun
+the_sexpenv_println((*void*)): void
 //
 (* ****** ****** *)
 //

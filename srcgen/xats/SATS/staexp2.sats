@@ -56,14 +56,15 @@ typedef loc_t = $LOC.loc_t
 typedef fpath = $FP0.filepath
 //
 (* ****** ****** *)
+
+#staload
+LEX = "./lexing.sats"
+typedef token = $LEX.token
+
+(* ****** ****** *)
 //
 #staload
 EFF = "./effect.sats"
-//
-typedef effect = $EFF.effect
-typedef effset = $EFF.effset
-//
-(* ****** ****** *)
 //
 #staload
 S1E = "./staexp1.sats"
@@ -72,13 +73,24 @@ typedef sort1 = $S1E.sort1
 typedef s1exp = $S1E.s1exp
 //
 (* ****** ****** *)
+//
+// HX: datasort
+//
+fun t2dat_stamp_new(): stamp
+//
+fun s2var_stamp_new(): stamp
+fun s2xtv_stamp_new(): stamp
+//
+fun s2cst_stamp_new(): stamp
+//
+(* ****** ****** *)
 
-abstbox t2dat_tbox = ptr
+abstbox t2dat_tbox = (ptr)
 typedef t2dat = t2dat_tbox
 
 (* ****** ****** *)
 
-abstbox t2xtv_tbox = ptr
+abstbox t2xtv_tbox = (ptr)
 typedef t2xtv = t2xtv_tbox
 
 (* ****** ****** *)
@@ -214,7 +226,7 @@ overload fprint with fprint_t2xtv
 //
 (* ****** ****** *)
 //
-abstype s2cst_tbox = ptr
+abstbox s2cst_tbox = ptr
 typedef s2cst = s2cst_tbox
 typedef s2cstlst = List0(s2cst)
 typedef s2cstopt = Option(s2cst)
@@ -223,7 +235,7 @@ typedef s2cstlstlst = List0(s2cstlst)
 //
 (* ****** ****** *)
 //
-abstype s2cstset_tbox
+abstbox s2cstset_tbox
 typedef s2cstset_t = s2cstset_tbox
 //
 absvtype s2cstset_vtbox
@@ -260,7 +272,13 @@ overload fprint with fprint_s2cst
 //
 (* ****** ****** *)
 //
-abstype s2var_tbox = ptr
+fun
+s2cst_make_idst
+  (sid: token, s2t: sort2): s2cst
+//
+(* ****** ****** *)
+//
+abstbox s2var_tbox = ptr
 typedef s2var = s2var_tbox
 typedef s2varlst = List0(s2var)
 typedef s2varopt = Option(s2var)
@@ -269,7 +287,7 @@ vtypedef s2varopt_vt = Option_vt(s2var)
 //
 (* ****** ****** *)
 //
-abstype s2varset_tbox
+abstbox s2varset_tbox
 typedef s2varset_t = s2varset_tbox
 //
 absvtype s2varset_vtbox
@@ -306,15 +324,6 @@ overload fprint with fprint_s2var
 fun
 s2var_make_idst
   (id: sym_t, s2t: sort2): s2var
-//
-(* ****** ****** *)
-//
-// HX: datasort
-//
-fun t2dat_stamp_new(): stamp
-//
-fun s2var_stamp_new(): stamp
-fun s2xtv_stamp_new(): stamp
 //
 (* ****** ****** *)
 //
@@ -373,7 +382,7 @@ overload .sortopt with t2xtv_get_sortopt
 (* ****** ****** *)
 //
 abstbox s2exp_tbox = ptr
-abstype s2hnf_tbox = ptr
+abstbox s2hnf_tbox = ptr
 //
 (* ****** ****** *)
 //
@@ -392,7 +401,7 @@ typedef s2hnfopt = Option(s2hnf)
 datatype
 s2eff =
 | S2EFFexp of s2exp
-| S2EFFset of effset
+| S2EFFset of $EFF.effset
 | S2EFFjoin of List0(s2eff)
 //
 (* ****** ****** *)

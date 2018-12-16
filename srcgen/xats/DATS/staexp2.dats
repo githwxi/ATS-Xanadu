@@ -57,8 +57,11 @@ LOC = "./../SATS/location.sats"
 //
 #staload "./../SATS/symbol.sats"
 //
+#staload "./../SATS/lexing.sats"
+//
 (* ****** ****** *)
 
+#staload "./../SATS/trans01.sats"
 #staload "./../SATS/staexp2.sats"
 
 (* ****** ****** *)
@@ -100,6 +103,20 @@ in (* in-of-local *)
 
 implement
 s2xtv_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+s2cst_stamp_new() = $STM.stamper_getinc(stamper)
 
 end // end of [local]
 
@@ -335,7 +352,7 @@ s2cst_tbox = $rec{
 //
   s2cst_loc= loc_t // loc
 , s2cst_sym= sym_t // name
-, s2cst_sort= sort2  // sort
+, s2cst_sort= sort2 // sort
 , s2cst_stamp= stamp // unicity
 //
 } (* end of [s2cst_tbox] *)
@@ -350,6 +367,28 @@ implement
 s2cst_get_sort(x0) = x0.s2cst_sort
 implement
 s2cst_get_stamp(x0) = x0.s2cst_stamp
+
+(* ****** ****** *)
+
+implement
+s2cst_make_idst
+  (tok, s2t) =
+(
+$rec{
+  s2cst_loc= loc
+, s2cst_sym= sid
+, s2cst_sort= s2t
+, s2cst_stamp= stamp
+}
+) where
+{
+  val loc = tok.loc()
+  val sid = sexpid_sym(tok)
+//
+  val
+  stamp = s2cst_stamp_new((*void*))
+//
+} (* s2var_make_idsort *)
 
 end // end of [local]
 
@@ -375,12 +414,14 @@ s2var_get_sort(x0) = x0.s2var_sort
 implement
 s2var_get_stamp(x0) = x0.s2var_stamp
 
+(* ****** ****** *)
+
 implement
 s2var_make_idst
-  (sym, s2t) =
+  (sid, s2t) =
 (
 $rec{
-  s2var_sym= sym
+  s2var_sym= sid
 , s2var_sort= s2t
 , s2var_stamp= stamp
 }
