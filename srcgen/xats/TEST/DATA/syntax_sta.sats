@@ -72,6 +72,13 @@
 
 (* ****** ****** *)
 
+abssort int
+abssort addr
+abssort bool
+abssort char
+
+(* ****** ****** *)
+
 #stacst
 add(x: int, y: int): int
 
@@ -83,10 +90,6 @@ add(x: int, y: int): int
 
 #stacst > : (addr, addr) -> bool
 #stacst >= : (addr, addr) -> bool
-
-(* ****** ****** *)
-
-////
 
 (* ****** ****** *)
 
