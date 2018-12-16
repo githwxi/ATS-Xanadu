@@ -81,6 +81,9 @@ add(x: int, y: int): int
 #stacst > : (int, int) -> bool
 #stacst >= : (int, int) -> bool
 
+#stacst > : (addr, addr) -> bool
+#stacst >= : (addr, addr) -> bool
+
 (* ****** ****** *)
 
 ////

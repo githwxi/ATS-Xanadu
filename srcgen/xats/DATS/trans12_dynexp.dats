@@ -182,6 +182,8 @@ auxmargs(arg, trans12_sort(res))
 val
 s2c0 = s2cst_make_idst(sid, s2t0)
 //
+val () = the_sexpenv_add_cst(s2c0)
+//
 val () =
 println!
 ("tran12_decl: aux_stacst0: s2t0 = ", s2t0)

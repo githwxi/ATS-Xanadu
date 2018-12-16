@@ -112,6 +112,11 @@ datatype d2itm =
 //
 (* ****** ****** *)
 //
+typedef d2itmopt = Option(d2itm)
+vtypedef d2itmopt_vt = Option_vt(d2itm)
+//
+(* ****** ****** *)
+//
 fun
 print_d2itm: print_type(d2itm)
 fun

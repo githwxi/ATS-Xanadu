@@ -821,6 +821,14 @@ val () =
   the_sortenv_println((*void*))
 )
 //
+val () =
+println!
+("process_nil: the_sexpenv =")
+val () =
+(
+  the_sexpenv_println((*void*))
+)
+//
 } (* end of [if] *)
 //
 end // end of [process_nil]

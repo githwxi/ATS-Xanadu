@@ -82,6 +82,8 @@ typedef s2eff = $S2E.s2eff
 typedef s2expopt = $S2E.s2expopt
 typedef s2explst = $S2E.s2explst
 //
+(* ****** ****** *)
+//
 typedef s2txt = $S2E.s2txt
 typedef s2txtopt = $S2E.s2txtopt
 //
@@ -114,16 +116,20 @@ typedef d2ecl = $D2E.d2ecl
 typedef d2eclist = $D2E.d2eclist
 
 (* ****** ****** *)
-
+//
 typedef s2itm = $S2E.s2itm
 typedef d2itm = $D2E.d2itm
-
+//
+typedef s2itmopt = $S2E.s2itmopt
+typedef d2itmopt = $D2E.d2itmopt
+//
+vtypedef s2itmopt_vt = $S2E.s2itmopt_vt
+vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
+//
 (* ****** ****** *)
 //
 vtypedef s2tmap = symmap(s2txt)
-//
 vtypedef s2imap = symmap(s2itm)
-//
 vtypedef d2imap = symmap(d2itm)
 //
 (* ****** ****** *)
@@ -182,7 +188,7 @@ fmodenv_get_d2eclist(fmodenv): d2eclist
 //
 fun
 the_sortenv_add
-(tid: sym_t, s2te: s2txt): void
+(tid: sym_t, s2t: s2txt): void
 fun
 the_sortenv_find
   (tid: sym_t): s2txtopt_vt
@@ -222,6 +228,23 @@ fun
 the_sortenv_fprint(FILEref): void
 fun
 the_sortenv_println((*void*)): void
+//
+(* ****** ****** *)
+//
+fun
+the_sexpenv_add
+(tid: sym_t, s2i: s2itm): void
+fun
+the_sexpenv_add_cst(s2c: s2cst): void
+fun
+the_sexpenv_add_var(s2v: s2var): void
+//
+fun
+the_sexpenv_find
+  (tid: sym_t): s2itmopt_vt
+fun
+the_sexpenv_qfind
+  (qua: sym_t, tid: sym_t): s2itmopt_vt
 //
 (* ****** ****** *)
 
