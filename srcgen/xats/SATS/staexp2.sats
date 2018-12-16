@@ -578,7 +578,7 @@ datatype s2itm =
 | S2ITMvar of (s2var)
 //
 | S2ITMcst of
-    (s2cstlstlst) // supporting overload
+    (s2cstlst) // supporting overload
   // end of [S2ITMcst]
 //
 (*
