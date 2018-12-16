@@ -72,6 +72,17 @@
 
 (* ****** ****** *)
 
+#stacst
+add(x: int, y: int): int
+////
+#stacst + : (int, int) -> int
+#stacst - : (int, int) -> int
+
+#stacst > : (int, int) -> bool
+#stacst >= : (int, int) -> bool
+
+(* ****** ****** *)
+
 sortdef one = 1
 sortdef two = 2
 sortdef one' = two
@@ -83,11 +94,15 @@ sortdef f_1_2 = f 1 2
 sortdef fint1 = int -> int
 sortdef fint2 = (int, int) -> int
 
+sortdef qf = $Q.f
+
 sortdef nat0 = {a:int|a >= 0}
 sortdef nat1 = {a:int|a >= 1}
 
 sortdef nat01 = (nat0 || nat1)
 sortdef nat02 = (nat0 && nat1)
+
+(* ****** ****** *)
 
 // sortdef int2 = int * int
 

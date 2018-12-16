@@ -745,7 +745,8 @@ d1ecl_node =
 //
 | D1Cstacst0 of
   ( token
-  , token(*s0eid*), sort1)
+  , token(*s0eid*)
+  , t1marglst(*arg*), sort1)
 //
 | D1Csortdef of
   ( token(*kind*)

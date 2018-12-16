@@ -2175,16 +2175,17 @@ val loc0 = d0c0.loc()
 val-
 D0Cstacst0
 ( tok, sid
-, tcln, s0t2) = d0c0.node()
+, tmas, tcln, s0t2) = d0c0.node()
 //
 val-
 I0DNTsome(sid) = sid.node()
 //
 val s1t2 = trans01_sort(s0t2)
+val tmas = trans01_tmarglst(tmas)
 //
 in
 //
-d1ecl_make_node(loc0, D1Cstacst0(tok, sid, s1t2))
+d1ecl_make_node(loc0, D1Cstacst0(tok, sid, tmas, s1t2))
 //
 end // end of [aux_stacst0]
 

@@ -319,7 +319,17 @@ fun s2xtv_stamp_new(): stamp
 (* ****** ****** *)
 //
 fun
-t2dat_new(sym: sym_t): t2dat
+eq_t2dat_t2dat: eq_type(t2dat)
+overload = with eq_t2dat_t2dat
+//
+fun
+eq_t2bas_t2bas: eq_type(t2bas)
+overload = with eq_t2bas_t2bas
+//
+(* ****** ****** *)
+//
+fun
+t2dat_new(name: sym_t): t2dat
 //
 fun
 t2dat_get_sym(s2td: t2dat): sym_t

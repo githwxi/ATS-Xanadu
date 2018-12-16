@@ -413,9 +413,9 @@ case+ x0.node() of
 | S1Eimp(s1es) =>
   fprint!(out, "S1Eimp(", s1es, ")")
 //
-| S1Eapps(s1e0, s1es) =>
+| S1Eapp(s1e0, s1es) =>
   fprint!
-  (out, "S1Eapps(", s1e0, "; ", s1es, ")")
+  (out, "S1Eapp(", s1e0, "; ", s1es, ")")
 //
 | S1Elist(s1es) =>
   fprint!(out, "S1Elist(", s1es, ")")

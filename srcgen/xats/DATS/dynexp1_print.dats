@@ -559,10 +559,11 @@ case+ x0.node() of
   (out, "D1Cabssort(", tok, "; ", tid, ")")
 //
 | D1Cstacst0
-  (tok, sid, s0t) =>
+  (tok, sid, tmas, s0t) =>
   fprint!
   ( out
-  , "D1Cstacst0(", tok, "; ", sid, "; ", s0t, ")")
+  , "D1Cstacst0("
+  , tok, "; ", sid, "; ", tmas, "; ", s0t, ")")
 //
 | D1Csortdef
   (knd, tok, def) =>

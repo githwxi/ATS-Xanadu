@@ -3422,14 +3422,14 @@ abstype ::=
 //
     val () = buf.incby1()
     val sid = p_s0eid(buf, err)
+    val tmas = p_t0margseq(buf, err)
     val tok1 = p_COLON(buf, err)
     val s0t2 = p_sort0(buf, err)
     val loc_res = loc + s0t2.loc()
   in
     err := e0;
     d0ecl_make_node
-      ( loc_res, D0Cstacst0(tok, sid, tok1, s0t2) )
-    // d0ecl_make_node
+    (loc_res, D0Cstacst0(tok, sid, tmas, tok1, s0t2))
   end // end of [T_SRP_STACST]
 //
 | T_SRP_NONFIX() => let
