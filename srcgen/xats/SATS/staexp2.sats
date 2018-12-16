@@ -114,7 +114,7 @@ sort2 =
 // end of [sort2]
 
 and t2bas =
-  | T2BASpre of (sym_t) // predicative: int, bool, ...
+  | T2BASpre of (sym_t) // predicative: int, ...
   | T2BASdat of (t2dat) // user-defined datasorts
   | T2BASimp of (int(*knd*), sym_t) // impredicative sorts
 // end of [t2bas]

@@ -128,6 +128,28 @@ list_map<d1exp><d2exp>
 local
 
 fun
+aux_abssort
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Cabssort
+(knd, tok) =
+d1c0.node((*void*))
+//
+val tid = sortid_sym(tok)
+//
+val s2tx =
+  S2TXTsrt(S2Tbas(T2BASpre(tid)))
+//
+in
+  the_sortenv_add(tid, s2tx);
+  d2ecl_make_node(loc0, D2Cabssort(d1c0))
+end // end of [aux_abssort]
+
+fun
 aux_stacst0
 ( d1c0
 : d1ecl): d2ecl = let
@@ -298,6 +320,8 @@ d1c0.node() of
 //
 | D1Cnone() => d2ecl_none1(d1c0)
 | D1Cnone(_) => d2ecl_none1(d1c0)
+//
+| D1Cabssort _ => aux_abssort(d1c0)
 //
 | D1Cstacst0 _ => aux_stacst0(d1c0)
 //
