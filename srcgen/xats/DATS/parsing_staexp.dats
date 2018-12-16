@@ -1025,7 +1025,11 @@ list_vt2t
 ) (* end of [p_t0argseq_COMMA] *)
 //
 (* ****** ****** *)
-
+//
+(*
+t0marg ::
+  | ( t0argseq )
+*)
 implement
 p_t0marg
   (buf, err) = let

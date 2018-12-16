@@ -128,12 +128,78 @@ list_map<d1exp><d2exp>
 local
 
 fun
+aux_stacst0
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Cstacst0
+( knd
+, sid, arg, res) =
+d1c0.node((*void*))
+//
+fun
+auxargs
+( xs
+: t1arglst
+) : sort2lst =
+(
+case+ xs of
+| list_nil() =>
+  (
+  list_nil(*void*)
+  )
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | T1ARGsome(s1t, _) =>
+    list_cons
+    (trans12_sort(s1t), auxargs(xs))
+  )
+) (* end of [auxargs] *)
+//
+fun
+auxmargs
+( xs: t1marglst
+, res: sort2): sort2 =
+(
+case+ xs of
+| list_nil() => res
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | T1MARGlist(t1as) =>
+    S2Tfun
+    (auxargs(t1as), auxmargs(xs, res))
+  )
+) (* end of [auxmargs] *)
+//
+val
+s2t0 =
+auxmargs(arg, trans12_sort(res))
+val
+s2c0 = s2cst_make_idst(sid, s2t0)
+//
+val () =
+println!
+("tran12_decl: aux_stacst0: s2t0 = ", s2t0)
+val () =
+println!
+("tran12_decl: aux_stacst0: s2c0 = ", s2c0)
+//
+in
+  d2ecl_make_node(loc0, D2Cstacst0(d1c0))
+end // end of [aux_stacst0]
+
+fun
 aux_sortdef
 ( d1c0
 : d1ecl): d2ecl = let
 //
-val loc0 = d1c0.loc()
-//
+val
+loc0 = d1c0.loc()
 val-
 D1Csortdef
 (knd, tid, def0) =
@@ -230,6 +296,8 @@ d1c0.node() of
 //
 | D1Cnone() => d2ecl_none1(d1c0)
 | D1Cnone(_) => d2ecl_none1(d1c0)
+//
+| D1Cstacst0 _ => aux_stacst0(d1c0)
 //
 | D1Csortdef _ => aux_sortdef(d1c0)
 //

@@ -74,12 +74,16 @@
 
 #stacst
 add(x: int, y: int): int
-////
+
 #stacst + : (int, int) -> int
 #stacst - : (int, int) -> int
 
 #stacst > : (int, int) -> bool
 #stacst >= : (int, int) -> bool
+
+(* ****** ****** *)
+
+////
 
 (* ****** ****** *)
 

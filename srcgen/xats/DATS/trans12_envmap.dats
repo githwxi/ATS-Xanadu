@@ -275,33 +275,6 @@ case+ ans of
 end // end of [the_sortenv_find]
 
 (* ****** ****** *)
-//
-implement
-the_sortenv_fprint
-  (out) = let
-//
-  prval vbox(pf) = pfbox
-//
-in
-//
-$effmask_ref
-(
-  $ENV.fprint_symenv_top
-  ( out, !p0
-  , lam(out, x) => fprint_s2txt(out, x))
-)
-//
-end // end of [the_sortenv_print]
-
-implement
-the_sortenv_println
-  ((*void*)) = let
-  val out = stdout_ref
-in
-  the_sortenv_fprint(out); fprint_newline(out)
-end // end of [the_sortenv_println]
-
-(* ****** ****** *)
 
 implement
 the_sortenv_pop (
@@ -353,6 +326,90 @@ the_sortenv_pjoinwth1(map) = let
   vbox(pf) = pfbox in
   $effmask_ref($ENV.symenv_pjoinwth1(!p0, map))
 end // end of [the_sortenv_pjoinwth1]
+
+(* ****** ****** *)
+//
+implement
+the_sortenv_fprint
+  (out) = let
+//
+prval vbox(pf) = pfbox
+//
+in (* let *)
+//
+$effmask_ref
+(
+  $ENV.fprint_symenv_top
+  ( out, !p0
+  , lam(out, x) => fprint_s2txt(out, x))
+)
+//
+end // end of [the_sortenv_print]
+
+implement
+the_sortenv_println
+  ((*void*)) = let
+  val out = stdout_ref
+in
+  the_sortenv_fprint(out); fprint_newline(out)
+end // end of [the_sortenv_println]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+sexpenv_push_v = unit_v
+//
+vtypedef s2ienv = symenv(s2itm)
+//
+extern
+prfun
+vbox_make_viewptr
+{a:vt0p}{l:addr}
+( pf: a @ l
+| p0: ptr(l)):<> vbox(a @ l)
+//
+val
+(pf | p0) =
+$ENV.symenv_make_nil((*void*))
+//
+prval
+pfbox =
+vbox_make_viewptr{s2ienv}(pf | p0)
+//
+in (* in-of-local *)
+
+(* ****** ****** *)
+//
+implement
+the_sexpenv_fprint
+  (out) = let
+//
+prval vbox(pf) = pfbox
+//
+in (* let *)
+//
+$effmask_ref
+(
+  $ENV.fprint_symenv_top
+  ( out, !p0
+  , lam(out, x) => fprint_s2itm(out, x))
+)
+//
+end // end of [the_sexpenv_print]
+
+implement
+the_sexpenv_println
+  ((*void*)) = let
+  val out = stdout_ref
+in
+  the_sexpenv_fprint(out); fprint_newline(out)
+end // end of [the_sexpenv_println]
 
 (* ****** ****** *)
 

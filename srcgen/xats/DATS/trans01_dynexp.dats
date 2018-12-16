@@ -2180,8 +2180,10 @@ D0Cstacst0
 val-
 I0DNTsome(sid) = sid.node()
 //
+val
+tmas = trans01_tmarglst(tmas)
+//
 val s1t2 = trans01_sort(s0t2)
-val tmas = trans01_tmarglst(tmas)
 //
 in
 //

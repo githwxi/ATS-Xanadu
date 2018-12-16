@@ -92,7 +92,7 @@ implement
 stamper_getinc
   (obj) = n0 where
 {
-  val n0 = the_null_ptr
+  val n0 = obj[]
   val () = obj[] := ptr_succ<byte>(n0)
 }
 //
