@@ -68,6 +68,26 @@ s2tb_float = T2BASpre($SYM.FLOAT_symbol)
 val
 s2tb_string = T2BASpre($SYM.STRING_symbol)
 //
+val
+s2tb_prop =
+  T2BASimp(0(*knd*), $SYM.PROP_symbol)
+val
+s2tb_view =
+  T2BASimp(0(*knd*), $SYM.VIEW_symbol)
+//
+val
+s2tb_tbox =
+  T2BASimp(0(*knd*), $SYM.TBOX_symbol)
+val
+s2tb_type =
+  T2BASimp(0(*knd*), $SYM.TYPE_symbol)
+val
+s2tb_vtbox =
+  T2BASimp(0(*knd*), $SYM.VTBOX_symbol)
+val
+s2tb_vtype =
+  T2BASimp(0(*knd*), $SYM.VTYPE_symbol)
+//
 in // in of [local]
 //
 implement
@@ -86,6 +106,20 @@ implement
 the_sort2_float = S2Tbas(s2tb_float)
 implement
 the_sort2_string = S2Tbas(s2tb_string)
+//
+implement
+the_sort2_prop = S2Tbas(s2tb_prop)
+implement
+the_sort2_view = S2Tbas(s2tb_view)
+//
+implement
+the_sort2_tbox = S2Tbas(s2tb_tbox)
+implement
+the_sort2_type = S2Tbas(s2tb_type)
+implement
+the_sort2_vtbox = S2Tbas(s2tb_vtbox)
+implement
+the_sort2_vtype = S2Tbas(s2tb_vtype)
 //
 end // end of [local]
 

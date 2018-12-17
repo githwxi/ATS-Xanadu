@@ -337,6 +337,22 @@ implement
 STRING_symbol = symbol_make("string")
 
 (* ****** ****** *)
+//
+implement
+PROP_symbol = symbol_make("prop")
+implement
+VIEW_symbol = symbol_make("view")
+//
+implement
+TBOX_symbol = symbol_make("tbox")
+implement
+TYPE_symbol = symbol_make("type")
+implement
+VTBOX_symbol = symbol_make("vtbox")
+implement
+VTYPE_symbol = symbol_make("Vtype")
+//
+(* ****** ****** *)
 
 implement
 STDIN_fp_symbol = symbol_make("__STDIN__")

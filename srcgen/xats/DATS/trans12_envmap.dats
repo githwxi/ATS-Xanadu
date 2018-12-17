@@ -515,7 +515,7 @@ end // end of [local]
 (* ****** ****** *)
 
 local
-
+//
 val
 s2tx_int = S2TXTsrt(the_sort2_int)
 val
@@ -524,9 +524,24 @@ val
 s2tx_bool = S2TXTsrt(the_sort2_bool)
 val
 s2tx_char = S2TXTsrt(the_sort2_char)
-
+//
+val
+s2tx_prop = S2TXTsrt(the_sort2_prop)
+val
+s2tx_view = S2TXTsrt(the_sort2_view)
+//
+val
+s2tx_tbox = S2TXTsrt(the_sort2_tbox)
+val
+s2tx_type = S2TXTsrt(the_sort2_type)
+//
+val
+s2tx_vtbox = S2TXTsrt(the_sort2_vtbox)
+val
+s2tx_vtype = S2TXTsrt(the_sort2_vtype)
+//
 in (* in-of-local *)
-
+//
 val () =
 the_sortenv_add($SYM.INT_symbol, s2tx_int)
 val () =
@@ -535,7 +550,22 @@ val () =
 the_sortenv_add($SYM.BOOL_symbol, s2tx_bool)
 val () =
 the_sortenv_add($SYM.CHAR_symbol, s2tx_char)
-
+//
+val () =
+the_sortenv_add($SYM.PROP_symbol, s2tx_prop)
+val () =
+the_sortenv_add($SYM.VIEW_symbol, s2tx_view)
+//
+val () =
+the_sortenv_add($SYM.TBOX_symbol, s2tx_tbox)
+val () =
+the_sortenv_add($SYM.TYPE_symbol, s2tx_type)
+//
+val () =
+the_sortenv_add($SYM.VTBOX_symbol, s2tx_vtbox)
+val () =
+the_sortenv_add($SYM.VTYPE_symbol, s2tx_vtype)
+//
 end // end of [local]
 
 (* ****** ****** *)
