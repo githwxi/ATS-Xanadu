@@ -63,6 +63,8 @@ typedef sort1lst = $S1E.sort1lst
 //
 typedef s1arg = $S1E.s1arg
 //
+typedef s1rtcon = $S1E.s1rtcon
+//
 typedef s1exp = $S1E.s1exp
 typedef s1eff = $S1E.s1eff
 typedef s1expopt = $S1E.s1expopt

@@ -145,6 +145,8 @@ d2ecl_node =
 | D2Cabstype of (d1ecl)
 | D2Cabsimpl of (d1ecl)
 //
+| D2Cdatasort of (d1ecl)
+//
 // end of [d2ecl_node]
 //
 (* ****** ****** *)

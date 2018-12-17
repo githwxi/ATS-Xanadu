@@ -139,8 +139,10 @@ fprint_t2bas
 case+ s2tb of
 | T2BASpre(sym) =>
   fprint!(out, "T2BASpre(", sym, ")")
+| T2BASabs(abs) =>
+  fprint!(out, "T2BASabs(", abs, ")")
 | T2BASdat(dat) =>
-  fprint!(out, "T2BASdef(", dat, ")")
+  fprint!(out, "T2BASdat(", dat, ")")
 | T2BASimp(knd, sym) =>
   fprint!(out, "T2BASimp(", knd, "; ", sym, ")")
 )
@@ -148,26 +150,38 @@ case+ s2tb of
 (* ****** ****** *)
 //
 implement
-print_t2dat(s2td) =
-fprint_t2dat(stdout_ref, s2td)
+print_t2abs(x0) =
+fprint_t2abs(stdout_ref, x0)
 implement
-prerr_t2dat(s2td) =
-fprint_t2dat(stderr_ref, s2td)
+prerr_t2abs(x0) =
+fprint_t2abs(stderr_ref, x0)
 implement
-fprint_t2dat(out, s2td) =
-$SYM.fprint_symbol(out, s2td.sym())
+fprint_t2abs(out, x0) =
+$SYM.fprint_symbol(out, x0.sym())
 //
 (* ****** ****** *)
 //
 implement
-print_t2xtv(s2tx) =
-fprint_t2xtv(stdout_ref, s2tx)
+print_t2dat(x0) =
+fprint_t2dat(stdout_ref, x0)
 implement
-prerr_t2xtv(s2tx) =
-fprint_t2xtv(stderr_ref, s2tx)
+prerr_t2dat(x0) =
+fprint_t2dat(stderr_ref, x0)
 implement
-fprint_t2xtv(out, s2tx) =
-$STM.fprint_stamp(out, s2tx.stamp())
+fprint_t2dat(out, x0) =
+$SYM.fprint_symbol(out, x0.sym())
+//
+(* ****** ****** *)
+//
+implement
+print_t2xtv(x0) =
+fprint_t2xtv(stdout_ref, x0)
+implement
+prerr_t2xtv(x0) =
+fprint_t2xtv(stderr_ref, x0)
+implement
+fprint_t2xtv(out, x0) =
+$STM.fprint_stamp(out, x0.stamp())
 //
 (* ****** ****** *)
 //

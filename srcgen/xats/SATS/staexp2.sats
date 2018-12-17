@@ -76,6 +76,7 @@ typedef s1exp = $S1E.s1exp
 //
 // HX: datasort
 //
+fun t2abs_stamp_new(): stamp
 fun t2dat_stamp_new(): stamp
 //
 fun s2var_stamp_new(): stamp
@@ -84,6 +85,9 @@ fun s2xtv_stamp_new(): stamp
 fun s2cst_stamp_new(): stamp
 //
 (* ****** ****** *)
+
+abstbox t2abs_tbox = (ptr)
+typedef t2abs = t2abs_tbox
 
 abstbox t2dat_tbox = (ptr)
 typedef t2dat = t2dat_tbox
@@ -115,7 +119,8 @@ sort2 =
 
 and t2bas =
   | T2BASpre of (sym_t) // predicative: int, ...
-  | T2BASdat of (t2dat) // user-defined datasorts
+  | T2BASabs of (t2abs) // for abstract sorts
+  | T2BASdat of (t2dat) // for user-defined datasorts
   | T2BASimp of (int(*knd*), sym_t) // impredicative sorts
 // end of [t2bas]
 
@@ -201,6 +206,19 @@ overload fprint with fprint_t2bas
 (* ****** ****** *)
 //
 fun
+print_t2abs: print_type(t2abs)
+fun
+prerr_t2abs: prerr_type(t2abs)
+fun
+fprint_t2abs: fprint_type(t2abs)
+//
+overload print with print_t2abs
+overload prerr with prerr_t2abs
+overload fprint with fprint_t2abs
+//
+(* ****** ****** *)
+//
+fun
 print_t2dat: print_type(t2dat)
 fun
 prerr_t2dat: prerr_type(t2dat)
@@ -257,6 +275,10 @@ overload .loc with s2cst_get_loc
 overload .sort with s2cst_get_sort
 overload .stamp with s2cst_get_stamp
 //
+fun
+s2cst_make_idst
+  (sid: token, s2t: sort2): s2cst
+//
 (* ****** ****** *)
 //
 fun
@@ -269,12 +291,6 @@ fprint_s2cst: fprint_type(s2cst)
 overload print with print_s2cst
 overload prerr with prerr_s2cst
 overload fprint with fprint_s2cst
-//
-(* ****** ****** *)
-//
-fun
-s2cst_make_idst
-  (sid: token, s2t: sort2): s2cst
 //
 (* ****** ****** *)
 //
@@ -306,6 +322,10 @@ overload .sym with s2var_get_sym
 overload .sort with s2var_get_sort
 overload .stamp with s2var_get_stamp
 //
+fun
+s2var_make_idst
+  (sid: sym_t, s2t: sort2): s2var
+//
 (* ****** ****** *)
 //
 fun
@@ -322,11 +342,8 @@ overload fprint with fprint_s2var
 (* ****** ****** *)
 //
 fun
-s2var_make_idst
-  (id: sym_t, s2t: sort2): s2var
-//
-(* ****** ****** *)
-//
+eq_t2abs_t2abs: eq_type(t2abs)
+overload = with eq_t2abs_t2abs
 fun
 eq_t2dat_t2dat: eq_type(t2dat)
 overload = with eq_t2dat_t2dat
@@ -334,6 +351,19 @@ overload = with eq_t2dat_t2dat
 fun
 eq_t2bas_t2bas: eq_type(t2bas)
 overload = with eq_t2bas_t2bas
+//
+(* ****** ****** *)
+//
+fun
+t2abs_new(name: sym_t): t2abs
+//
+fun
+t2abs_get_sym(s2td: t2abs): sym_t
+fun
+t2abs_get_stamp(s2td: t2abs): stamp
+//
+overload .sym with t2abs_get_sym
+overload .stamp with t2abs_get_stamp
 //
 (* ****** ****** *)
 //
@@ -537,27 +567,6 @@ fprint_s2hnf: fprint_type(s2hnf)
 overload print with print_s2hnf
 overload prerr with prerr_s2hnf
 overload fprint with fprint_s2hnf
-//
-(* ****** ****** *)
-
-datatype s2tex =
-// extended sort
-| S2TEXsrt of sort2
-| S2TEXsub of (s2var, sort2, s2explst)
-// end of [s2tex]
-
-(* ****** ****** *)
-//
-fun
-print_s2tex: print_type(s2tex)
-fun
-prerr_s2tex: prerr_type(s2tex)
-fun
-fprint_s2tex: fprint_type(s2tex)
-//
-overload print with print_s2tex
-overload prerr with prerr_s2tex
-overload fprint with fprint_s2tex
 //
 (* ****** ****** *)
 //

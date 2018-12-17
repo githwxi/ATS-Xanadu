@@ -72,10 +72,12 @@
 
 (* ****** ****** *)
 
+(*
 abssort int
 abssort addr
 abssort bool
 abssort char
+*)
 
 (* ****** ****** *)
 
@@ -114,10 +116,8 @@ sortdef nat02 = (nat0 && nat1)
 
 (* ****** ****** *)
 
-// sortdef int2 = int * int
+sortdef int2 = int * int
 
-(* ****** ****** *)
-////
 (* ****** ****** *)
 
 datasort
@@ -125,6 +125,8 @@ ilist =
 | ilist_nil
 | ilist_cons of (int, ilist)
 
+(* ****** ****** *)
+////
 (* ****** ****** *)
 
 abstype foo(tbox+, prop-)

@@ -74,6 +74,20 @@ stamper = $STM.stamper_new()
 in (* in-of-local *)
 
 implement
+t2abs_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
 t2dat_stamp_new() = $STM.stamper_getinc(stamper)
 
 end // end of [local]
@@ -130,7 +144,8 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = INT_symbol) | _ => false
+| T2BASpre(pre) =>
+  (pre = INT_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_int] *)
@@ -142,7 +157,8 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = ADDR_symbol) | _ => false
+| T2BASpre(pre) =>
+  (pre = ADDR_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_addr] *)
@@ -154,7 +170,8 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = BOOL_symbol) | _ => false
+| T2BASpre(pre) =>
+  (pre = BOOL_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_bool] *)
@@ -166,7 +183,8 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = CHAR_symbol) | _ => false
+| T2BASpre(pre) =>
+  (pre = CHAR_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_char] *)
@@ -181,7 +199,8 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = REAL_symbol) | _ => false
+| T2BASpre(pre) =>
+  (pre = REAL_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_real] *)
@@ -193,7 +212,8 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = FLOAT_symbol) | _ => false
+| T2BASpre(pre) =>
+  (pre = FLOAT_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_float] *)
@@ -205,7 +225,8 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASpre(sym) => (sym = STRING_symbol) | _ => false
+| T2BASpre(pre) =>
+  (pre = STRING_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_string] *)
@@ -239,8 +260,43 @@ case+ xs of
 local
 //
 typedef
-t2dat_struct = $rec
+t2abs_struct = @{
+  t2abs_sym= sym_t // name
+, t2abs_stamp= stamp // unicity
+}
+//
+absimpl
+t2abs_tbox = ref(t2abs_struct)
+//
+in (* in-of-local *)
+
+implement
+t2abs_new(sym) =
+(
+ref<t2abs_struct>
+@{
+  t2abs_sym=sym
+,
+  t2abs_stamp=stamp
+}
+) where
 {
+val stamp = t2abs_stamp_new()
+} (* end of [t2abs_new] *)
+
+implement
+t2abs_get_sym(s2ta) = s2ta->t2abs_sym
+implement
+t2abs_get_stamp(s2ta) = s2ta->t2abs_stamp
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+typedef
+t2dat_struct = @{
   t2dat_sym= sym_t // name
 , t2dat_stamp= stamp // unicity
 , t2dat_sconlst= s2cstlst
@@ -250,6 +306,24 @@ absimpl
 t2dat_tbox = ref(t2dat_struct)
 //
 in (* in-of-local *)
+
+implement
+t2dat_new(sym) =
+(
+ref<t2dat_struct>
+@{
+  t2dat_sym=sym
+,
+  t2dat_stamp=stamp
+,
+  t2dat_sconlst= list_nil()
+}
+) where
+{
+val stamp = t2dat_stamp_new()
+} (* end of [t2dat_new] *)
+
+(* ****** ****** *)
 
 implement
 t2dat_get_sym(s2td) = s2td->t2dat_sym
@@ -360,17 +434,6 @@ s2cst_tbox = $rec{
 in (* in-of-local *)
 
 implement
-s2cst_get_loc(x0) = x0.s2cst_loc
-implement
-s2cst_get_sym(x0) = x0.s2cst_sym
-implement
-s2cst_get_sort(x0) = x0.s2cst_sort
-implement
-s2cst_get_stamp(x0) = x0.s2cst_stamp
-
-(* ****** ****** *)
-
-implement
 s2cst_make_idst
   (tok, s2t) =
 (
@@ -388,7 +451,20 @@ $rec{
   val
   stamp = s2cst_stamp_new((*void*))
 //
-} (* s2var_make_idsort *)
+} (* s2cst_make_idst *)
+
+(* ****** ****** *)
+
+implement
+s2cst_get_loc(x0) = x0.s2cst_loc
+implement
+s2cst_get_sym(x0) = x0.s2cst_sym
+implement
+s2cst_get_sort(x0) = x0.s2cst_sort
+implement
+s2cst_get_stamp(x0) = x0.s2cst_stamp
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -408,15 +484,6 @@ s2var_tbox = $rec{
 in (* in-of-local *)
 
 implement
-s2var_get_sym(x0) = x0.s2var_sym
-implement
-s2var_get_sort(x0) = x0.s2var_sort
-implement
-s2var_get_stamp(x0) = x0.s2var_stamp
-
-(* ****** ****** *)
-
-implement
 s2var_make_idst
   (sid, s2t) =
 (
@@ -429,7 +496,16 @@ $rec{
 {
   val
   stamp = s2var_stamp_new((*void*))
-} (* s2var_make_idsort *)
+} (* s2var_make_idst *)
+
+(* ****** ****** *)
+
+implement
+s2var_get_sym(x0) = x0.s2var_sym
+implement
+s2var_get_sort(x0) = x0.s2var_sort
+implement
+s2var_get_stamp(x0) = x0.s2var_stamp
 
 end // end of [local]
 
