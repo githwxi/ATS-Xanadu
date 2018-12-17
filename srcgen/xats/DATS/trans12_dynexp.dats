@@ -140,14 +140,16 @@ D1Cabssort
 d1c0.node((*void*))
 //
 val tid = sortid_sym(tok)
-//
+val s2ta = t2abs_new(tid)
 val s2tx =
-  S2TXTsrt(S2Tbas(T2BASpre(tid)))
+  S2TXTsrt(S2Tbas(T2BASabs(s2ta)))
 //
 in
   the_sortenv_add(tid, s2tx);
   d2ecl_make_node(loc0, D2Cabssort(d1c0))
 end // end of [aux_abssort]
+
+(* ****** ****** *)
 
 fun
 aux_stacst0
@@ -216,6 +218,8 @@ println!
 in
   d2ecl_make_node(loc0, D2Cstacst0(d1c0))
 end // end of [aux_stacst0]
+
+(* ****** ****** *)
 
 fun
 aux_sortdef
@@ -300,6 +304,134 @@ def0.node() of
 //
 end // end of [aux_sortdef]
 
+(* ****** ****** *)
+
+fun
+aux_datasort
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Cdatasort
+(knd, d1ts) = d1c0.node()
+//
+val s2ts =
+auxd1ts(d1ts) where
+{
+//
+fun
+auxd1t
+( d1t0
+: d1tsort): sort2 = let
+//
+val+
+D1TSORT
+(tok, s1cs) = d1t0.node()
+//
+val tid = sortid_sym(tok)
+//
+val s2td = t2dat_new(tid)
+val s2t0 = S2Tbas(T2BASdat(s2td))
+//
+in
+  the_sortenv_add(tid, S2TXTsrt(s2t0)); s2t0
+end // end of [auxd1t]
+and
+auxd1ts
+( d1ts
+: d1tsortlst): sort2lst =
+(
+  list_vt2t
+  (list_map<d1tsort><sort2>(d1ts))
+) where
+{
+  implement
+  list_map$fopr<d1tsort><sort2>(d1t) = auxd1t(d1t)
+} (* end of [auxd1ts] *)
+}
+//
+val () =
+auxd1ts(d1ts, s2ts) where
+{
+fun
+auxd1t
+( d1t0
+: d1tsort
+, s2t0: sort2): void = let
+//
+fun
+loop
+( s1cs
+: s1rtconlst): void =
+(
+//
+case+ s1cs of
+| list_nil() => ()
+| list_cons(s1c0, s1cs) =>
+  let
+    val+
+    S1RTCON
+    (tok, opt) = s1c0.node()
+    val sid = sexpid_sym(tok)
+    val arg =
+    (
+    case+ opt of
+    | None() => list_nil()
+    | Some(s1t) =>
+      (
+      case+ s1t.node() of
+      | S1Tlist(s1ts) =>
+        trans12_sortlst(s1ts)
+      | _(*non-S1Tlist*) =>
+        list_sing(trans12_sort(s1t))
+      ) : sort2lst // end of [val]
+    )
+    val
+    s2t1 = S2Tfun(arg, s2t0)
+    val
+    s2c0 =
+    s2cst_make_idst(tok, s2t1)
+(*
+    val () =
+    println!("aux_datasort: tok = ", tok)
+    val () =
+    println!("aux_datasort: s2t1 = ", s2t1)
+*)
+  in
+    the_sexpenv_add_cst(s2c0); loop(s1cs)
+  end // end of [list_cons]
+)
+//
+in
+let
+  val+
+  D1TSORT(tok, s1cs) = d1t0.node() in loop(s1cs)
+end
+end // end of [auxd1t]
+and
+auxd1ts
+( d1ts
+: d1tsortlst,
+  s2ts: sort2lst): void =
+(
+case+ d1ts of
+| list_nil() => ()
+| list_cons(d1t0, d1ts) =>
+  let
+    val-
+    list_cons
+    (s2t0, s2ts) = s2ts
+    val () = auxd1t(d1t0, s2t0) in auxd1ts(d1ts, s2ts)
+  end // end of [auxd1ts]
+) (* end of [auxd1ts] *)
+}
+//
+in
+  d2ecl_make_node(loc0, D2Cdatasort(d1c0))
+end // end of [aux_datasort]
+
 in (* in-of-local *)
 
 implement
@@ -326,6 +458,8 @@ d1c0.node() of
 | D1Cstacst0 _ => aux_stacst0(d1c0)
 //
 | D1Csortdef _ => aux_sortdef(d1c0)
+//
+| D1Cdatasort _ => aux_datasort(d1c0)
 //
 | _(*rest-of-D1ECL*) => d2ecl_none1(d1c0)
 //

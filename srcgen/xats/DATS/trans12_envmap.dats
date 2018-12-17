@@ -514,4 +514,30 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+val
+s2tx_int = S2TXTsrt(the_sort2_int)
+val
+s2tx_addr = S2TXTsrt(the_sort2_addr)
+val
+s2tx_bool = S2TXTsrt(the_sort2_bool)
+val
+s2tx_char = S2TXTsrt(the_sort2_char)
+
+in (* in-of-local *)
+
+val () =
+the_sortenv_add($SYM.INT_symbol, s2tx_int)
+val () =
+the_sortenv_add($SYM.ADDR_symbol, s2tx_addr)
+val () =
+the_sortenv_add($SYM.BOOL_symbol, s2tx_bool)
+val () =
+the_sortenv_add($SYM.CHAR_symbol, s2tx_char)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_trans12_envmap.dats] *)

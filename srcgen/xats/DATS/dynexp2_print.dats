@@ -115,6 +115,9 @@ case- x0.node() of
 | D2Cabsimpl(d1c) =>
   fprint!(out, "D2Cabsimpl(", d1c, ")")
 //
+| D2Cdatasort(d1c) =>
+  fprint!(out, "D2Cdatasort(", d1c, ")")
+//
 ) (* end of [fprint_d2ecl] *)
 
 end // end of [local]
