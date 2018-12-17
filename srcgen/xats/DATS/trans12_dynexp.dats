@@ -127,6 +127,8 @@ list_map<d1exp><d2exp>
 
 local
 
+(* ****** ****** *)
+
 fun
 aux_abssort
 ( d1c0
@@ -431,6 +433,8 @@ case+ d1ts of
 in
   d2ecl_make_node(loc0, D2Cdatasort(d1c0))
 end // end of [aux_datasort]
+
+(* ****** ****** *)
 
 in (* in-of-local *)
 

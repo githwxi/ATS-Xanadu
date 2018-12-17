@@ -100,6 +100,17 @@ val STRING_symbol : symbol // string sort
 
 (* ****** ****** *)
 //
+val PROP_symbol : symbol // prop sort
+val VIEW_symbol : symbol // view sort
+//
+val TBOX_symbol : symbol // tbox sort
+val TYPE_symbol : symbol // type sort
+//
+val VTBOX_symbol : symbol // vtboxsort
+val VTYPE_symbol : symbol // vtype sort
+//
+(* ****** ****** *)
+//
 // HX-2018-12-09:
 // these are treated as special filepaths
 //

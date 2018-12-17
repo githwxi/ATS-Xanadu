@@ -155,6 +155,23 @@ the_sort2_string : sort2
 
 (* ****** ****** *)
 //
+val
+the_sort2_prop : sort2
+val
+the_sort2_view : sort2
+//
+val
+the_sort2_tbox : sort2
+val
+the_sort2_type : sort2
+//
+val
+the_sort2_vtbox : sort2
+val
+the_sort2_vtype : sort2
+
+(* ****** ****** *)
+//
 fun
 sort2_is_int(sort2): bool
 fun

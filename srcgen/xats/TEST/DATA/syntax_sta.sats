@@ -126,12 +126,14 @@ ilist =
 | ilist_cons of (int, ilist)
 
 (* ****** ****** *)
-////
-(* ****** ****** *)
 
 abstype foo(tbox+, prop-)
 abstbox foo(tbox+, view-) == bar
 abstflt foo(tflt+, view-) <= bar
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
 
 absvtype xyz(int(*x*), y: int, z: int)
 absvtbox xyz(int(*x*), y: int, z: int) <= int
