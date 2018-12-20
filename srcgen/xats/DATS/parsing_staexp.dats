@@ -771,7 +771,7 @@ case+ tnd of
     err := e0;
     s0rtdef_make_node
     ( tbeg.loc()+tend.loc()
-    , S0RTDEFsubset(tbeg, s0a0, tok1, s0es, tend)
+    , S0RTDEFsbst(tbeg, s0a0, tok1, s0es, tend)
     )
   end // end of [LBRACE]
 | _(* non-LBRACE *) =>

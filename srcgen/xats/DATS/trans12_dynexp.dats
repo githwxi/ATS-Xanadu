@@ -237,7 +237,7 @@ d1c0.node((*void*))
 //
 val sym = sortid_sym(tid)
 //
-in
+in (* in-of-let *)
 //
 case+
 def0.node() of
@@ -248,7 +248,7 @@ def0.node() of
     the_sortenv_add(sym, s2tx);
     d2ecl_make_node(loc0, D2Csortdef(d1c0))
   end
-| S1RTDEFsubset(s1a, s1ps) =>
+| S1RTDEFsbst(s1a, s1ps) =>
   (
   case+ s1a.node() of
   | S1ARGsome(tok, opt) =>

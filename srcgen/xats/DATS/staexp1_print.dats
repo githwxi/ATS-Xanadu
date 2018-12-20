@@ -211,9 +211,9 @@ fprint_s1rtdef
 case+ x0.node() of
 | S1RTDEFsort(s1t) =>
   fprint!(out, "S1RTDEFsort(", s1t, ")")
-| S1RTDEFsubset(s1a0, s1es) =>
+| S1RTDEFsbst(s1a0, s1es) =>
   fprint!
-  ( out, "S1RTDEFsubset(", s1a0, "; ", s1es, ")")
+  ( out, "S1RTDEFsbst(", s1a0, "; ", s1es, ")")
 ) (* end of [fprint_s1rtdef] *)
 
 (* ****** ****** *)

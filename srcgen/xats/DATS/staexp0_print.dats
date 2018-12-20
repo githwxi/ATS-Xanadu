@@ -410,9 +410,9 @@ fprint_s0rtdef
 case+ x0.node() of
 | S0RTDEFsort(s0t) =>
   fprint!(out, "S0RTDEFsort(", s0t, ")")
-| S0RTDEFsubset(tbeg, s0a0, tbar, s0es, tend) =>
+| S0RTDEFsbst(tbeg, s0a0, tbar, s0es, tend) =>
   fprint!
-  ( out, "S0RTDEFsubset("
+  ( out, "S0RTDEFsbst("
   , tbeg, "; ", s0a0, "; ", tbar, "; ", s0es, "; ", tend, ")")
 ) (* end of [fprint_s0rtdef] *)
 
