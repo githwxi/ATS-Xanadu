@@ -665,7 +665,7 @@ def.node() of
   {
     val () = synread_sort0(s0t)
   }
-| S0RTDEFsubset
+| S0RTDEFsbst
   ( tbeg, s0a0
   , tbar, s0es, tend) =>
   {
@@ -694,7 +694,7 @@ def.node() of
       )
     ) (* end of [val] *)
 //
-  } (* end of [S0RTDEFsubset] *)
+  } (* end of [S0RTDEFsbst] *)
 )
 
 (* ****** ****** *)

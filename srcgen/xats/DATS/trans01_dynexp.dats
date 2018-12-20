@@ -2212,14 +2212,14 @@ def0.node() of
   s1rtdef_make_node
   ( def0.loc()
   , S1RTDEFsort(trans01_sort(s0t)))
-| S0RTDEFsubset
+| S0RTDEFsbst
   (_, s0a, _, s0es, _) => let
     val s1a = trans01_sarg(s0a)
     val s1es = trans01_sexplst(s0es)
   in
     s1rtdef_make_node
-    (def0.loc(), S1RTDEFsubset(s1a, s1es))
-  end // end of [S0RTDEFsubset]
+    (def0.loc(), S1RTDEFsbst(s1a, s1es))
+  end // end of [S0RTDEFsbst]
 ) : s1rtdef // end of [val]
 //
 val-I0DNTsome(tok) = tid.node((*void*))

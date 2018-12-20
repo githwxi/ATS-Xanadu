@@ -234,7 +234,7 @@ s1rtdef = s1rtdef_tbox
 datatype
 s1rtdef_node =
 | S1RTDEFsort of sort1
-| S1RTDEFsubset of (s1arg, s1explst)
+| S1RTDEFsbst of (s1arg, s1explst)
 //
 fun
 s1rtdef_get_loc(s1rtdef): loc_t

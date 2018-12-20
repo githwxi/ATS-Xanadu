@@ -530,7 +530,7 @@ s0rtdef = s0rtdef_tbox
 datatype
 s0rtdef_node =
 | S0RTDEFsort of sort0
-| S0RTDEFsubset of
+| S0RTDEFsbst of
   (token, s0arg, token, s0explst, token)
 //
 fun
