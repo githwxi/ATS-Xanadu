@@ -41,17 +41,81 @@
 #define POSTFIX 4
 //
 (* ****** ****** *)
+
+#define BOXFLG (0x1 << 0)
+#define LINFLG (0x1 << 1)
+#define PRFFLG (0x1 << 2)
+
+(* ****** ****** *)
+
+fun sortbox(x: int): int // 0,1
+fun sortlin(x: int): int // 0,1
+fun sortprf(x: int): int // 0,1
+fun sortpol(x: int): int // -1,0,1
+
+(* ****** ****** *)
 //
-#define PROPSORT 0
-#define VIEWSORT 0
+#define PROPSORT 4 // 00100
 //
-#define TYPESORT 0
-#define TBOXSORT 0
-#define TFLATSORT 0
-#define VTYPESORT 0
-#define VTBOXSORT 0
-#define VTFLATSORT 0
+#define VIEWSORT 6 // 00110
 //
+#define TYPESORT 0 // 00000
+#define TBOXSORT 1 // 00001
+#define TFLTSORT 0 // 00000
+#define TFLATSORT 0 // 00000
+//
+#define VTYPESORT 2 // 00010
+#define VTBOXSORT 3 // 00011
+#define VTFLTSORT 2 // 00010
+#define VTFLATSORT 2 // 00010
+//
+(* ****** ****** *)
+
+#define POLPOS(x) (x + 0010)
+#define POLNEG(x) (x + 0100)
+
+(* ****** ****** *)
+
+#define PROPSORT00 PROPSORT
+#define PROPSORT01 %(POLPOS(PROPSORT))
+#define PROPSORT10 %(POLNEG(PROPSORT))
+
+#define VIEWSORT00 VIEWSORT
+#define VIEWSORT01 %(POLPOS(VIEWSORT))
+#define VIEWSORT10 %(POLNEG(VIEWSORT))
+
+#define TYPESORT00 TYPESORT
+#define TYPESORT01 %(POLPOS(TYPESORT))
+#define TYPESORT10 %(POLNEG(TYPESORT))
+
+#define TBOXSORT00 TBOXSORT
+#define TBOXSORT01 %(POLPOS(TBOXSORT))
+#define TBOXSORT10 %(POLNEG(TBOXSORT))
+
+#define TFLTSORT00 TFLTSORT
+#define TFLTSORT01 %(POLPOS(TFLTSORT))
+#define TFLTSORT10 %(POLNEG(TFLTSORT))
+
+#define TFLATSORT00 TFLATSORT
+#define TFLATSORT01 %(POLPOS(TFLATSORT))
+#define TFLATSORT10 %(POLNEG(TFLATSORT))
+
+#define VTYPESORT00 VTYPESORT
+#define VTYPESORT01 %(POLPOS(VTYPESORT))
+#define VTYPESORT10 %(POLNEG(VTYPESORT))
+
+#define VTBOXSORT00 VTBOXSORT
+#define VTBOXSORT01 %(POLPOS(VTBOXSORT))
+#define VTBOXSORT10 %(POLNEG(VTBOXSORT))
+
+#define VTFLTSORT00 VTFLTSORT
+#define VTFLTSORT01 %(POLPOS(VTFLTSORT))
+#define VTFLTSORT10 %(POLNEG(VTFLTSORT))
+
+#define VTFLATSORT00 VTFLATSORT
+#define VTFLATSORT01 %(POLPOS(VTFLATSORT))
+#define VTFLATSORT10 %(POLNEG(VTFLATSORT))
+
 (* ****** ****** *)
 
 datatype

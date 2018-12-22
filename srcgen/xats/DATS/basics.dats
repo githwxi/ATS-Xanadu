@@ -45,6 +45,81 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 implement
+sortbox(knd) =
+let
+  val
+  knd = g0i2u(knd)
+in
+  g0u2i(knd land 0x1u)
+end // end of [sortbox]
+
+(* ****** ****** *)
+
+implement
+sortlin(knd) =
+let
+  val
+  knd = g0i2u(knd)
+in
+  g0u2i((knd >> 1) land 0x1u)
+end // end of [sortlin]
+
+(* ****** ****** *)
+
+implement
+sortprf(knd) =
+let
+  val
+  knd = g0i2u(knd)
+in
+  g0u2i((knd >> 2) land 0x1u)
+end // end of [sortprf]
+
+(* ****** ****** *)
+
+implement
+sortpol(knd) =
+let
+  val knd = knd >> 3
+in
+  if knd <= 1 then knd else ~1
+end // end of [sortpol]
+
+(* ****** ****** *)
+(*
+//
+val () =
+assertloc(sortbox(TYPESORT00) = 0)
+val () =
+assertloc(sortbox(TBOXSORT01) = 1)
+val () =
+assertloc(sortbox(TFLTSORT10) = 0)
+//
+val () =
+assertloc(sortlin(TYPESORT00) = 0)
+val () =
+assertloc(sortlin(VTBOXSORT01) = 1)
+val () =
+assertloc(sortlin(VTFLTSORT10) = 1)
+//
+val () =
+assertloc(sortprf(TYPESORT00) = 0)
+val () =
+assertloc(sortprf(PROPSORT01) = 1)
+val () =
+assertloc(sortprf(VIEWSORT10) = 1)
+//
+val () =
+assertloc(sortpol(TYPESORT00) = 0)
+val () =
+assertloc(sortpol(VTYPESORT01) > 0)
+val () =
+assertloc(sortpol(VTYPESORT10) < 0)
+//
+*)
+(* ****** ****** *)
+
+implement
 fprint_valkind
   (out, vlk) =
 (
