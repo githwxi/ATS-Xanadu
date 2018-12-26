@@ -87,7 +87,8 @@ tnode =
   | T_CHAR_char of (string) // '?'
   | T_CHAR_slash of (string) // '\...'
 //
-  | T_STRING_quote of (string) // utf-8 // for text
+  | T_STRING_closed of (string) // utf-8 // for text
+  | T_STRING_unclsd of (string) // utf-8 // for text
 //
 (*
   | {n:int}

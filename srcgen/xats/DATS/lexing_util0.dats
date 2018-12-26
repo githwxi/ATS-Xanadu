@@ -1254,19 +1254,19 @@ in
 //
 ifcase
 | c0 = '\"' =>
-  T_STRING_quote
+  T_STRING_closed
   (lexbuf_get_fullseg(buf))
 | c0 = '\\' =>
   loop(buf) where
   {
-  val i0 = lexbuf_getc(buf)
+    val i0 = lexbuf_getc(buf)
   } (* end of [......] *)
 | _(* else *) =>
   if
   (i0 >= 0)
   then loop(buf)
   else
-  T_STRING_quote(lexbuf_get_fullseg(buf))
+  T_STRING_unclsd(lexbuf_get_fullseg(buf))
 //
 end // end of [loop]
 //

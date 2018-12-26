@@ -443,8 +443,14 @@ s1exp_node =
 | S1Eimp of
   (s1explst) // imply
 //
+(*
 | S1Eapp of
   (s1exp, s1explst) // apply
+*)
+| S1Eapp1 of
+  (s1exp(*fun*), s1exp)
+| S1Eapp2 of
+  (s1exp(*fun*), s1exp, s1exp)
 //
 | S1Elist of s1explst // temp.
 | S1Elist of

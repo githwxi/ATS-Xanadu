@@ -94,6 +94,22 @@ end // end of [local]
 
 (* ****** ****** *)
 
+(*
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+t2xtv_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+*)
+
+(* ****** ****** *)
+
 local
 
 val
@@ -232,7 +248,23 @@ case+ s2tb of
 ) (* end of [sort2_is_string] *)
 
 (* ****** ****** *)
+
+implement
+sort2_is_impred
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+  case+ s2tb of
+  | T2BASimp(_, _) => true | _ => false
+)
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_impred] *)
+
+(* ****** ****** *)
 //
+(*
 implement
 sort2_apps
   (f0, xs) =
@@ -254,6 +286,7 @@ case+ xs of
     end
   )
 ) (* end of [sort2_apps] *)
+*)
 //
 (* ****** ****** *)
 
@@ -336,6 +369,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
+(*
 local
 //
 typedef
@@ -368,7 +402,7 @@ ref<sort2opt>(None(*void*))
 }
 ) where
 {
-val stamp = s2xtv_stamp_new()
+val stamp = t2xtv_stamp_new()
 } (* end of [t2xtv_new0] *)
 //
 implement
@@ -387,7 +421,7 @@ ref<sort2opt>(None(*void*))
 }
 ) where
 {
-val stamp = s2xtv_stamp_new()
+val stamp = t2xtv_stamp_new()
 } (* end of [t2xtv_new0] *)
 //
 implement
@@ -415,7 +449,8 @@ implement
 t2xtv_get_sortopt
   (s2tx) = !(s2tx->t2xtv_sortopt)
 //
-end // end of [t2xtv_struct]
+end // end of [local]
+*)
 
 (* ****** ****** *)
 
@@ -528,14 +563,107 @@ in
 end // end of [s2exp_chr]
 
 (* ****** ****** *)
+
+implement
+s2exp_cst(s2c) = let
+  val s2t = s2c.sort()
+in
+  s2exp_make_node(s2t, S2Ecst(s2c))
+end // end of [s2exp_cst]
+
+(* ****** ****** *)
+
+implement
+s2exp_var(s2v) = let
+  val s2t = s2v.sort()
+in
+  s2exp_make_node(s2t, S2Evar(s2v))
+end // end of [s2exp_var]
+
+(* ****** ****** *)
+//
+implement
+s2exp_apps
+(s2f0, s2as) = let
+//
+(*
+val () =
+println!
+("\
+s2exp_apps: s2f0 = ", s2f0)
+val () =
+println!
+("\
+s2exp_apps:\
+s2f0.sort = ", s2f0.sort())
+*)
+//
+val
+s2f0 =
+(
+case+
+s2f0.sort() of
+| S2Tfun(_, s2t) => s2f0
+| _(*non-S2Tfun*) =>
+   s2exp_cast(s2f0, S2Tfun())
+) : s2exp // end of [val]
+//
+val
+s2t_res =
+(
+case+
+s2f0.sort() of
+| S2Tfun(_, s2t) => s2t
+| _(*non-S2Tfun*) => S2Tnone()
+) : sort2 // end of [val]
+//
+in
+  s2exp_make_node
+  (s2t_res, S2Eapp(s2f0, s2as))
+end // end of [s2exp_app]
+//
+implement
+s2exp_app2
+(s2f0, s2a1, s2a2) =
+(
+  s2exp_apps(s2f0, list_pair(s2a1, s2a2))
+)
+//
+(* ****** ****** *)
+
+implement
+s2exp_list(s2es) = let
+//
+  val s2t = S2Tnone()
+//
+in
+  s2exp_make_node(s2t, S2Elist(s2es))
+end // end of [s2exp_list]
+
+(* ****** ****** *)
 //
 implement
 s2exp_none0() =
-s2exp_make_node(S2Tnone(*void*), S2Enone())
+s2exp_make_node(S2Tnone(), S2Enone0())
 //
 implement
 s2exp_none1(s1e) =
-s2exp_make_node(S2Tnone(*void*), S2Enone(s1e))
+s2exp_make_node(S2Tnone(), S2Enone1(s1e))
+//
+(* ****** ****** *)
+//
+implement
+s2exp_cast(s2e, s2t) =
+let
+//
+val () =
+println!("s2exp_cast: s2e = ", s2e)
+val () =
+println!("s2exp_cast: s2t = ", s2t)
+//
+in
+  s2exp_make_node(s2t, S2Ecast(s2e, s2t))
+end // end of [s2exp_cast]
 //
 (* ****** ****** *)
 

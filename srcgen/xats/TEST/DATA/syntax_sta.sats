@@ -82,10 +82,26 @@ abssort char
 (* ****** ****** *)
 
 #stacst
+the_true_bool: bool
+#stacst
+the_false_bool: bool
+
+(* ****** ****** *)
+
+sexpdef tt = the_true_bool
+sexpdef ff = the_false_bool
+
+(* ****** ****** *)
+
+#stacst
 add(x: int, y: int): int
 
 #stacst + : (int, int) -> int
 #stacst - : (int, int) -> int
+#stacst * : (int, int) -> int
+#stacst / : (int, int) -> int
+
+#stacst + : (addr, int) -> addr
 
 #stacst > : (int, int) -> bool
 #stacst >= : (int, int) -> bool
@@ -93,6 +109,12 @@ add(x: int, y: int): int
 #stacst > : (addr, addr) -> bool
 #stacst >= : (addr, addr) -> bool
 
+(* ****** ****** *)
+
+sortdef pos = { a: int | (a + 1) > 0 }
+
+(* ****** ****** *)
+////
 (* ****** ****** *)
 
 sortdef one = 1

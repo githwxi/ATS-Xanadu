@@ -79,6 +79,9 @@ typedef sort2lst = $S2E.sort2lst
 typedef s2cst = $S2E.s2cst
 typedef s2var = $S2E.s2var
 //
+typedef s2cstlst = $S2E.s2cstlst
+typedef s2varlst = $S2E.s2varlst
+//
 typedef s2exp = $S2E.s2exp
 typedef s2eff = $S2E.s2eff
 typedef s2expopt = $S2E.s2expopt
@@ -255,9 +258,35 @@ absview sexpenv_push_v
 (* ****** ****** *)
 //
 fun
+the_sexpenv_pop
+  (sexpenv_push_v | (*none*)): s2imap
+fun
+the_sexpenv_popfree
+  (sexpenv_push_v | (*none*)): (void)
+fun
+the_sexpenv_pushnil
+  ((*void*)): (sexpenv_push_v | void)
+//
+(* ****** ****** *)
+//
+fun
 the_sexpenv_fprint(FILEref): void
 fun
 the_sexpenv_println((*void*)): void
+//
+(* ****** ****** *)
+//
+fun
+s2cst_select_bin
+( s2cs
+: s2cstlst
+, arg1: sort2
+, arg2: sort2): Option_vt(s2cst)
+//
+(* ****** ****** *)
+//
+fun
+s1exp_get_s2cstlst(s1exp): s2cstlst
 //
 (* ****** ****** *)
 //
@@ -296,6 +325,15 @@ overload trans12 with trans12_sexp
 overload trans12 with trans12_sexpopt
 overload trans12 with trans12_sexplst
 *)
+//
+(* ****** ****** *)
+//
+fun
+trans12_sexp_ck
+  (s1e0: s1exp, s2t0: sort2): s2exp
+fun
+trans12_sexplst_ck
+  (s1es: s1explst, s2t0: sort2): s2explst
 //
 (* ****** ****** *)
 //

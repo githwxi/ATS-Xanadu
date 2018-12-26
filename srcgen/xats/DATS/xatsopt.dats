@@ -166,11 +166,15 @@ end // end of [local]
 //
 #dynload "./staexp2_init0.dats"
 //
+#dynload "./staexp2_util1.dats"
+#dynload "./staexp2_util2.dats"
+//
 #dynload "./staexp2_print.dats"
 #dynload "./dynexp2_print.dats"
 //
 #dynload "./nmspace.dats"
 //
+#dynload "./trans12_basics.dats"
 #dynload "./trans12_envmap.dats"
 #dynload "./trans12_staexp.dats"
 #dynload "./trans12_dynexp.dats"

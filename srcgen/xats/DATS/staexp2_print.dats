@@ -111,10 +111,19 @@ case+ s2t0 of
 //
 | S2Tbas(s2tb) =>
   fprint!(out, "S2Tbas(", s2tb, ")")
+//
+(*
 | S2Txtv(s2tx) =>
   fprint!(out, "S2Txtv(", s2tx, ")")
+*)
+//
+| S2Ttup() =>
+  fprint!(out, "S2Ttup(", ")")
 | S2Ttup(s2ts) =>
   fprint!(out, "S2Ttup(", s2ts, ")")
+//
+| S2Tfun() =>
+  fprint!(out, "S2Tfun(", ")")
 | S2Tfun(s2ts, s2t1) =>
   fprint!
   (out, "S2Tfun(", s2ts, "; ", s2t1, ")")
@@ -172,6 +181,7 @@ fprint_t2dat(out, x0) =
 $SYM.fprint_symbol(out, x0.sym())
 //
 (* ****** ****** *)
+(*
 //
 implement
 print_t2xtv(x0) =
@@ -183,6 +193,7 @@ implement
 fprint_t2xtv(out, x0) =
 $STM.fprint_stamp(out, x0.stamp())
 //
+*)
 (* ****** ****** *)
 //
 implement
@@ -340,6 +351,9 @@ s2e0.node() of
 | S2Etop(knd, s2e) =>
   fprint!(out, "S2Etop(", knd, "; ", s2e, ")")
 //
+| S2Ecast(s2e, s2t) =>
+  fprint!(out, "S2Ecast(", s2e, "; ", s2t, ")")
+//
 | S2Euni
   (s2vs, s2ps, body) =>
   fprint!
@@ -351,8 +365,11 @@ s2e0.node() of
   ( out
   , "S2Eexi(", s2vs, "; ", s2ps, "; ", body, ")")
 //
-| S2Enone() => fprint!(out, "S2Enone(", ")")
-| S2Enone(s1e) => fprint!(out, "S2Enone(", s1e, ")")
+| S2Elist(s2es) =>
+  fprint!(out, "S2Elist(", s2es, ")")
+//
+| S2Enone0() => fprint!(out, "S2Enone0(", ")")
+| S2Enone1(s1e) => fprint!(out, "S2Enone1(", s1e, ")")
 )
 
 end // end of [local]

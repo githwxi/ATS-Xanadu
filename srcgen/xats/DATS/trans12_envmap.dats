@@ -449,6 +449,23 @@ val s2i0 = S2ITMcst(list_cons(s2c, s2cs))
 //
 } (* end of [the_sexpenv_add_cst] *)
 
+implement
+the_sexpenv_add_var
+  (s2v) =
+(
+let
+//
+  val
+  sid = s2v.sym()
+//
+  prval
+  vbox(pf) = pfbox
+//
+in
+  $ENV.symenv_insert(!p0, sid, S2ITMvar(s2v))
+end
+) (* end of [the_sexpenv_add_var] *)
+
 (* ****** ****** *)
 
 implement
@@ -480,6 +497,44 @@ case+ ans of
   end // end of [None_vt]
 //
 end // end of [the_sexpenv_find]
+
+(* ****** ****** *)
+
+implement
+the_sexpenv_pop (
+  pfenv | (*none*)
+) = let
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+in
+  $effmask_ref
+  ($ENV.symenv_pop{s2itm}(!p0))
+end // end of [the_sexpenv_pop]
+
+implement
+the_sexpenv_popfree
+  (pfenv | (*none*)) =
+{
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+  val () =
+  $effmask_ref
+  ($ENV.symenv_popfree{s2itm}(!p0))
+} // end of [the_sexpenv_popfree]
+
+implement
+the_sexpenv_pushnil
+  () = (pfenv | ()) where
+{
+//
+  prval pfenv = unit_v()
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_pushnil{s2itm}(!p0))
+//
+} // end of [the_sexpenv_pushnil]
 
 (* ****** ****** *)
 //
