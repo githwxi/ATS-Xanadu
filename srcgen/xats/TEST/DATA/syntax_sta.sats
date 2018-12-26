@@ -96,6 +96,8 @@ sexpdef ff = the_false_bool
 #stacst
 add(x: int, y: int): int
 
+#stacst - : int -> int
+
 #stacst + : (int, int) -> int
 #stacst - : (int, int) -> int
 #stacst * : (int, int) -> int
@@ -111,7 +113,7 @@ add(x: int, y: int): int
 
 (* ****** ****** *)
 
-sortdef pos = { a: int | (a + 1) > 0 }
+sortdef pos = { a: int | a > -1 }
 
 (* ****** ****** *)
 ////
