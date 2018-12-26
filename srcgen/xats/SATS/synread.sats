@@ -56,6 +56,36 @@ synreadst = synreadst_type
 (* ****** ****** *)
 //
 datatype
+tkind =
+//
+| K_INT1 of ()
+| K_CHAR of ()
+| K_STRING of ()
+//
+| K_LAM of ()
+| K_ENDLAM of ()
+//
+| K_LET of ()
+| K_ENDLET of ()
+//
+| K_LOCAL of ()
+| K_ENDLOCAL of ()
+//
+| K_TUPLE of ()
+| K_RECORD of ()
+//
+| K_EXISTS of ()
+//
+| K_QUALID of () // qualified identifier
+//
+| K_SYMBOL of symbol
+//
+| K_CLOSED_chr of ()
+| K_CLOSED_str of ()
+//
+(* ****** ****** *)
+//
+datatype
 synerr =
 //
 | SYNERRi0dnt of (i0dnt)
@@ -79,7 +109,7 @@ synerr =
 | SYNERRd0ecl of (d0ecl)
 //
 | SYNERRtoken of
-    (tnode, token) // token mismatch
+    (tkind, token) // token mismatch
   // SYNERRtoken
 //
 | SYNERRsignint_opr of (token) // sign: + or -
@@ -208,6 +238,16 @@ fun{}
 synread_INT123: synreader(token)
 //
 (* ****** ****** *)
+
+fun{}
+synread_CHAR: synreader(token)
+
+(* ****** ****** *)
+
+fun{}
+synread_STRING: synreader(token)
+
+(* ****** ****** *)
 //
 fun{}
 synread_EQ: synreader(token)
@@ -220,9 +260,16 @@ fun{}
 synread_BAR: synreader(token)
 //
 fun{}
+synread_EQLT: synreader(token)
+fun{}
 synread_EQGT: synreader(token)
+//
 fun{}
 synread_MSLT: synreader(token)
+(*
+fun{}
+synread_MSGT: synreader(token)
+*)
 //
 fun{}
 synread_LPAREN: synreader(token)

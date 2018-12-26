@@ -279,6 +279,13 @@ symbol_nil = symbol_make("")
 (* ****** ****** *)
 
 implement
+AMP_symbol = symbol_make("&")
+implement
+BAR_symbol = symbol_make("|")
+
+(* ****** ****** *)
+
+implement
 ADD_symbol = symbol_make("+")
 implement
 SUB_symbol = symbol_make("-")
@@ -312,7 +319,35 @@ BANGEQ_symbol = symbol_make("!=")
 (* ****** ****** *)
 //
 implement
+EQLT_symbol = symbol_make("=<")
+implement
+EQGT_symbol = symbol_make("=>")
+//
+(* ****** ****** *)
+
+implement
+MSLT_symbol = symbol_make("-<")
+implement
 MSGT_symbol = symbol_make("->")
+//
+(* ****** ****** *)
+
+implement
+LPAREN_symbol = symbol_make("(")
+implement
+RPAREN_symbol = symbol_make(")")
+
+implement
+LBRACK_symbol = symbol_make("[")
+implement
+RBRACK_symbol = symbol_make("]")
+
+implement
+LBRACE_symbol = symbol_make("{")
+implement
+RBRACE_symbol = symbol_make("}")
+
+(* ****** ****** *)
 //
 implement
 BSLASH_symbol = symbol_make("\\")
@@ -346,11 +381,16 @@ VIEW_symbol = symbol_make("view")
 implement
 TBOX_symbol = symbol_make("tbox")
 implement
+TFLT_symbol = symbol_make("tflt")
+implement
 TYPE_symbol = symbol_make("type")
+//
 implement
 VTBOX_symbol = symbol_make("vtbox")
 implement
-VTYPE_symbol = symbol_make("Vtype")
+VTFLT_symbol = symbol_make("vtflt")
+implement
+VTYPE_symbol = symbol_make("vtype")
 //
 (* ****** ****** *)
 

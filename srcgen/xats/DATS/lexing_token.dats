@@ -149,8 +149,10 @@ case+ tnd of
 | T_CHAR_slash(rep) =>
   fprint!(out, "CHAR_slash(", rep, ")")
 //
-| T_STRING_quote(str) =>
-  fprint!(out, "STRING_quote(", str, ")")
+| T_STRING_closed(str) =>
+  fprint!(out, "STRING_closed(", str, ")")
+| T_STRING_unclsd(str) =>
+  fprint!(out, "STRING_unclsd(", str, ")")
 //
 (*
 | T_CDATA(cdata, asz) => fprint!(out, "CDATA(...)")
@@ -407,7 +409,8 @@ case+ tnd of
 | T_CHAR_char(rep) => fprint(out, rep)
 | T_CHAR_slash(rep) => fprint(out, rep)
 //
-| T_STRING_quote(str) => fprint(out, str)
+| T_STRING_closed(str) => fprint(out, str)
+| T_STRING_unclsd(str) => fprint(out, str)
 //
 (*
 | T_CDATA(cdata, asz) => fprint!(out, "CDATA(...)")
@@ -904,7 +907,8 @@ case+ node of
 | T_CHAR_char(rep) => posincneol(pos1, rep)
 | T_CHAR_slash(rep) => posincneol(pos1, rep)
 //
-| T_STRING_quote(rep) => posinctext(pos1, rep)
+| T_STRING_closed(rep) => posinctext(pos1, rep)
+| T_STRING_unclsd(rep) => posinctext(pos1, rep)
 //
 | T_COMMENT_line
     (init, content) =>

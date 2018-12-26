@@ -51,6 +51,8 @@ SYM = "./../SATS/symbol.sats"
 
 local
 //
+#staload "./../SATS/basics.sats"
+//
 val
 s2tb_int = T2BASpre($SYM.INT_symbol)
 val
@@ -70,23 +72,30 @@ s2tb_string = T2BASpre($SYM.STRING_symbol)
 //
 val
 s2tb_prop =
-  T2BASimp(0(*knd*), $SYM.PROP_symbol)
+  T2BASimp(PROPSORT, $SYM.PROP_symbol)
 val
 s2tb_view =
-  T2BASimp(0(*knd*), $SYM.VIEW_symbol)
+  T2BASimp(VIEWSORT, $SYM.VIEW_symbol)
 //
 val
 s2tb_tbox =
-  T2BASimp(0(*knd*), $SYM.TBOX_symbol)
+  T2BASimp(TBOXSORT, $SYM.TBOX_symbol)
+val
+s2tb_tflt =
+  T2BASimp(TFLTSORT, $SYM.TFLT_symbol)
 val
 s2tb_type =
-  T2BASimp(0(*knd*), $SYM.TYPE_symbol)
+  T2BASimp(TYPESORT, $SYM.TYPE_symbol)
+//
 val
 s2tb_vtbox =
-  T2BASimp(0(*knd*), $SYM.VTBOX_symbol)
+  T2BASimp(VTBOXSORT, $SYM.VTBOX_symbol)
+val
+s2tb_vtflt =
+  T2BASimp(VTFLTSORT, $SYM.VTFLT_symbol)
 val
 s2tb_vtype =
-  T2BASimp(0(*knd*), $SYM.VTYPE_symbol)
+  T2BASimp(VTYPESORT, $SYM.VTYPE_symbol)
 //
 in // in of [local]
 //

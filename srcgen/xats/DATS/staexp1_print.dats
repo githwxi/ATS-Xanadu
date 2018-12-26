@@ -138,6 +138,12 @@ case+ x0.node() of
   fprint!(out, "S1Ttype", knd, ")")
 *)
 //
+(*
+| S1Tapp(s1t0, s1ts) =>
+  fprint!
+  (out, "S1Tapp(", s1t0, "; ", s1ts, ")")
+*)
+//
 | S1Tapp1
   (s1t0, s1t1) =>
   fprint!
@@ -405,6 +411,15 @@ case+ x0.node() of
 | S1Eapp() =>
   fprint!(out, "S1Eapp()")
 //
+| S1Eapp1
+  (s1e0, s1e1) =>
+  fprint!
+  (out, "S1Eapp1(", s1e0, "; ", s1e1, ")")
+| S1Eapp2
+  (s1e0, s1e1, s1e2) =>
+  fprint!
+  (out, "S1Eapp2(", s1e0, "; ", s1e1, "; ", s1e2, ")")
+//
 | S1Ebs0() =>
   fprint!(out, "S1Ebs0()")
 | S1Ebs1(s1e) =>
@@ -413,15 +428,17 @@ case+ x0.node() of
 | S1Eimp(s1es) =>
   fprint!(out, "S1Eimp(", s1es, ")")
 //
+(*
 | S1Eapp(s1e0, s1es) =>
   fprint!
   (out, "S1Eapp(", s1e0, "; ", s1es, ")")
+*)
 //
 | S1Elist(s1es) =>
-  fprint!(out, "S1Elist(", s1es, ")")
+  fprint!(out, "S1Elist1(", s1es, ")")
 | S1Elist(s1es1, s1es2) =>
   fprint!
-  (out, "S1Elist(", s1es1, "; ", s1es2, ")")
+  (out, "S1Elist2(", s1es1, "; ", s1es2, ")")
 //
 | S1Etuple(k0, s1es) =>
   fprint!(out, "S1Etuple(", k0, "; ", s1es, ")")

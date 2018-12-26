@@ -84,7 +84,10 @@ implement
 t_t0str(tnd) =
 (
   case+ tnd of
-  | T_STRING_quote _ => true
+  | T_STRING_closed _ => true
+(*
+  | T_STRING_unclsd _ => true
+*)
   | _ (* non-STRING *) => false
 ) (* end of [t_t0str] *)
 

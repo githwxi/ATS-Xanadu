@@ -116,6 +116,117 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+(*
+T_CHAR_nil of (string) // ''
+T_CHAR_char of (string) // '?'
+T_CHAR_slash of (string) // '\...'
+*)
+
+in (* in-of-local *)
+
+implement
+token2schr(tok) =
+(
+case-
+tok.node() of
+| T_CHAR_nil(rep) =>
+  (
+    int2char0(0)
+  )
+| T_CHAR_char(rep) =>
+  (
+    $UN.ptr0_get_at<char>(string2ptr(rep), 1)
+  )
+| T_CHAR_slash(rep) =>
+  let
+    val p0 =
+      string2ptr(rep)
+    val p2 =
+      ptr_add<char>(p0, 2)
+    val c2 =
+      $UN.ptr0_get<char>(p2)
+  in
+    if
+    isdigit(c2)
+    then
+    (
+      loop(c2 - '0', p2)
+    ) where
+    {
+//
+// HX-2018-12-23:
+// char-code is octal
+// for instance, '\177' is 127
+// for instance, '\377' is 255
+//
+      val
+      BASE = 8
+      fun
+      loop
+      ( i2: int
+      , p2: ptr): char =
+      let
+        val p2 =
+          ptr_succ<char>(p2)
+        val c2 =
+          $UN.ptr0_get<char>(p2)
+      in
+        if
+        isdigit(c2)
+        then
+        loop(i2*BASE+(c2-'0'), p2)
+        else int2char0(i2)
+      end // end of [let]
+    } else (c2) // end of [if]
+  end // end of [let]
+) (* end of [token2schr] *)
+
+implement
+token2dchr(tok) =
+(
+case-
+tok.node() of
+| T_CHAR_nil(rep) => int2char0(0)
+| T_CHAR_char(rep) =>
+  $UN.ptr0_get_at<char>(string2ptr(rep), 1)
+| T_CHAR_slash(rep) => int2char0(0)
+)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+(*
+//
+// utf-8 // for text
+//
+| T_STRING_quote of (string)
+*)
+
+in (* in-of-local *)
+
+implement
+token2sstr(tok) =
+(
+case-
+tok.node() of T_STRING_closed(rep) => rep
+)
+
+implement
+token2dstr(tok) =
+(
+case-
+tok.node() of T_STRING_closed(rep) => rep
+)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 implement
 sortid_sym(tok) =
 (

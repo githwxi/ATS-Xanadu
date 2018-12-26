@@ -83,7 +83,10 @@ synread_t0chr
 (
 case+
 chr.node() of
-| T0CHRsome _ => ()
+| T0CHRsome(tok) =>
+  (
+    synread_CHAR<>(tok)
+  )
 | T0CHRnone(tok) =>
   let
     val () =

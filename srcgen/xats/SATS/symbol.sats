@@ -59,6 +59,11 @@ val symbol_nil : symbol // SYMBOL("")
 
 (* ****** ****** *)
 //
+val AMP_symbol : symbol // symbol("&")
+val BAR_symbol : symbol // symbol("|")
+//
+(* ****** ****** *)
+//
 val ADD_symbol : symbol // SYMBOL("+")
 val SUB_symbol : symbol // SYMBOL("-")
 val MUL_symbol : symbol // SYMBOL("*")
@@ -79,8 +84,23 @@ val LTGT_symbol : symbol // SYMBOL("<>")
 val BANGEQ_symbol : symbol // SYMBOL("!=")
 //
 (* ****** ****** *)
-
+//
+val EQLT_symbol : symbol // SYMBOL("=<")
+val EQGT_symbol : symbol // SYMBOL("=>")
+//
+val MSLT_symbol : symbol // symbol("-<")
 val MSGT_symbol : symbol // symbol("->")
+//
+(* ****** ****** *)
+
+val LPAREN_symbol : symbol // symbol("(")
+val RPAREN_symbol : symbol // symbol(")")
+
+val LBRACK_symbol : symbol // symbol("[")
+val RBRACK_symbol : symbol // symbol("]")
+
+val LBRACE_symbol : symbol // symbol("{")
+val RBRACE_symbol : symbol // symbol("}")
 
 (* ****** ****** *)
 
@@ -104,9 +124,11 @@ val PROP_symbol : symbol // prop sort
 val VIEW_symbol : symbol // view sort
 //
 val TBOX_symbol : symbol // tbox sort
+val TFLT_symbol : symbol // tflt sort
 val TYPE_symbol : symbol // type sort
 //
-val VTBOX_symbol : symbol // vtboxsort
+val VTBOX_symbol : symbol // vtbox sort
+val VTFLT_symbol : symbol // vtflt sort
 val VTYPE_symbol : symbol // vtype sort
 //
 (* ****** ****** *)

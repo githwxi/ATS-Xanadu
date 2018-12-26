@@ -94,9 +94,12 @@ effect.dats \
 staexp2.dats \
 dynexp2.dats \
 staexp2_init0.dats \
+staexp2_util1.dats \
+staexp2_util2.dats \
 staexp2_print.dats \
 dynexp2_print.dats \
 nmspace.dats \
+trans12_basics.dats \
 trans12_envmap.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \

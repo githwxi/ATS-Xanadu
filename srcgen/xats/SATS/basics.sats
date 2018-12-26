@@ -117,6 +117,13 @@ fun sortpol(x: int): int // -1,0,1
 #define VTFLATSORT10 %(POLNEG(VTFLATSORT))
 
 (* ****** ****** *)
+//
+fun
+subsort_int_int(int, int): bool
+//
+overload subsort with subsort_int_int
+//
+(* ****** ****** *)
 
 datatype
 dctkind =

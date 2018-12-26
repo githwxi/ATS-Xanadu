@@ -28,12 +28,8 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2018
+// Start Time: December, 2018
 // Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/stamp0.sats"
 //
 (* ****** ****** *)
 //
@@ -43,70 +39,57 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
-absimpl
-stamp_type = ptr
-
-(* ****** ****** *)
 //
-implement
-stamp2int(x0) =
- $UN.cast{intptr}(x0)
+#staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/trans12.sats"
+//
+(* ****** ****** *)
+
 implement
-eq_stamp_stamp
-  (x1, x2) =
+s2cst_select_bin
+(s2cs, s2t1, s2t2) =
 (
-  eq_ptr0_ptr0(x1, x2)
-)
-//
-(* ****** ****** *)
-
-implement
-print_stamp(x0) =
-fprint_stamp(stdout_ref, x0)
-implement
-prerr_stamp(x0) =
-fprint_stamp(stderr_ref, x0)
-
-implement
-fprint_stamp(out, x0) =
-fprint_intptr(out, stamp2int(x0))
-
-(* ****** ****** *)
-
-local
-//
-absimpl
-stamper_tbox = ref(stamp)
-//
-in (* in-of-local *)
-//
-implement
-stamper_new() =
-  ref<stamp>(the_null_ptr)
-//
-implement
-stamper_set
-  (obj, n0) = let
-  val n0 =
-  $UN.cast{intptr}(n0)
-in
-  obj[] := $UN.cast{ptr}(n0)
-end // end of [stamper_set]
-//
-implement
-stamper_getinc
-  (obj) = n0 where
+list_find_opt<s2cst>(s2cs)
+) where
 {
-  val n0 = obj[]
-  val () = obj[] := ptr_succ<byte>(n0)
-}
+fun
+test
+( s2c0
+: s2cst): bool = let
 //
-end // end of [local]
+val
+s2t0 = s2c0.sort()
+//
+in
+//
+case+ s2t0 of
+| S2Tfun(s2ts, _) =>
+  (
+  if
+  length(s2ts) = 2
+  then
+  (
+  s2ts[0] <= s2t1
+  &&
+  s2ts[1] <= s2t2
+  ) else false // end of [if]
+  )
+| _(* non-S2Tfun *) => false
+//
+end // end of [test]
+//
+val () = $tempenver(s2t1)
+val () = $tempenver(s2t2)
+//
+implement
+list_find$pred<s2cst>
+  (s2c) = $effmask_all(test(s2c))
+//
+} (* end of [s2cst_select_bin] *)
 
 (* ****** ****** *)
 
-(* end of [xats_stamp0.dats] *)
+(* end of [trans12_basics.dats] *)

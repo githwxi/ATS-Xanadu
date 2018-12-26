@@ -277,13 +277,19 @@ def0.node() of
       val s2u =
         s2var_make_idst(id0, s2t)
 //
+      val (pf0|()) =
+        the_sexpenv_pushnil()
+      val ((*void*)) =
+        the_sexpenv_add_var(s2u)
+//
       val s2ps =
       (
         case+ tx0 of
         | S2TXTsrt(s2t) =>
           (
-            trans12_sexplst(s1ps)
-          )
+            trans12_sexplst_ck
+            (s1ps, the_sort2_bool)
+          ) (* S2TXTsrt *)
         | S2TXTsub(s2v, s2ps) =>
           (
             s2ps1 + s2ps2
@@ -295,6 +301,9 @@ def0.node() of
           }
         | S2TXTerr((*void*)) => list_nil()
       ) : s2explst // end of [val]
+//
+      val ((*void*)) =
+        the_sexpenv_popfree(pf0 | (*void*))
 //
       val s2tx = S2TXTsub(s2u, s2ps)
 //

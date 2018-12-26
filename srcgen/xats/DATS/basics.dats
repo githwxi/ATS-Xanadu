@@ -120,6 +120,28 @@ assertloc(sortpol(VTYPESORT10) < 0)
 (* ****** ****** *)
 
 implement
+subsort_int_int
+  (x1, x2) =
+(
+if
+(sortbox(x1) < sortbox(x2))
+then false
+else
+(
+if
+(sortlin(x1) > sortlin(x2))
+then false
+else
+(
+if
+(sortprf(x1) <= sortprf(x2)) then true else false
+)
+)
+) (* end of [subsort_int_int] *)
+
+(* ****** ****** *)
+
+implement
 fprint_valkind
   (out, vlk) =
 (

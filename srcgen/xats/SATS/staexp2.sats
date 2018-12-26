@@ -78,8 +78,12 @@ typedef s1exp = $S1E.s1exp
 //
 fun t2abs_stamp_new(): stamp
 fun t2dat_stamp_new(): stamp
+(*
+fun t2xtv_stamp_new(): stamp
+*)
 //
 fun s2var_stamp_new(): stamp
+//
 fun s2xtv_stamp_new(): stamp
 //
 fun s2cst_stamp_new(): stamp
@@ -94,34 +98,41 @@ typedef t2dat = t2dat_tbox
 
 (* ****** ****** *)
 
+(*
 abstbox t2xtv_tbox = (ptr)
 typedef t2xtv = t2xtv_tbox
+*)
 
 (* ****** ****** *)
 
 datatype
 sort2 =
 //
-  | S2Tid of sym_t (* base sort *)
-  | S2Tint of (int) (* base sort *)
+| S2Tid of sym_t (* base sort *)
+| S2Tint of (int) (* base sort *)
 //
-  | S2Tbas of (t2bas) (* base sort *)
-  | S2Txtv of (t2xtv) // for unification
-  | S2Ttup of (sort2lst) (* tuple sort *)
-  | S2Tfun of
-    (sort2lst(*arg*), sort2(*res*)) // function
+| S2Tbas of (t2bas) (* base sort *)
+(*
+| S2Txtv of (t2xtv) // for unification
+*)
+| S2Ttup of ((*void*))
+| S2Ttup of (sort2lst) (* tuple sort *)
 //
-  | S2Tapp of (sort2(*fun*), sort2lst(*arg*))
+| S2Tfun of ((*void*))
+| S2Tfun of
+  (sort2lst(*arg*), sort2(*res*)) // function
 //
-  | S2Tnone of (sort1) // HX: error indication
-  | S2Tnone // of (*void*) // HX: error indication
+| S2Tapp of (sort2(*fun*), sort2lst(*arg*))
+//
+| S2Tnone of (sort1) // HX: error indication
+| S2Tnone // of (*void*) // HX: error indication
 // end of [sort2]
 
 and t2bas =
-  | T2BASpre of (sym_t) // predicative: int, ...
-  | T2BASabs of (t2abs) // for abstract sorts
-  | T2BASdat of (t2dat) // for user-defined datasorts
-  | T2BASimp of (int(*knd*), sym_t) // impredicative sorts
+| T2BASpre of (sym_t) // predicative: int, ...
+| T2BASabs of (t2abs) // for abstract sorts
+| T2BASdat of (t2dat) // for user-defined datasorts
+| T2BASimp of (int(*knd*), sym_t) // impredicative sorts
 // end of [t2bas]
 
 where sort2lst = List0(sort2)
@@ -189,6 +200,11 @@ fun
 sort2_is_string(sort2): bool
 //
 (* ****** ****** *)
+
+fun
+sort2_is_impred(sort2): bool
+
+(* ****** ****** *)
 //
 fun
 print_sort2: print_type(sort2)
@@ -203,9 +219,30 @@ overload fprint with fprint_sort2
 //
 (* ****** ****** *)
 //
+(*
 fun
 sort2_apps
 (f0: sort2, xs: sort2lst): sort2
+*)
+//
+(* ****** ****** *)
+//
+fun
+lte_sort2_sort2
+  (x1: sort2, x2: sort2): bool
+fun
+lte_sort2lst_sort2lst
+  (xs1: sort2lst, xs2: sort2lst): bool
+//
+overload <= with lte_sort2_sort2
+overload <= with lte_sort2lst_sort2lst
+//
+(* ****** ****** *)
+//
+fun
+sort2lst_get_at
+  {n:nat}
+  (s2ts: sort2lst, n: int(n)): sort2
 //
 (* ****** ****** *)
 //
@@ -247,6 +284,7 @@ overload prerr with prerr_t2dat
 overload fprint with fprint_t2dat
 //
 (* ****** ****** *)
+(*
 //
 fun
 print_t2xtv: print_type(t2xtv)
@@ -259,6 +297,7 @@ overload print with print_t2xtv
 overload prerr with prerr_t2xtv
 overload fprint with fprint_t2xtv
 //
+*)
 (* ****** ****** *)
 //
 abstbox s2cst_tbox = ptr
@@ -357,6 +396,11 @@ overload prerr with prerr_s2var
 overload fprint with fprint_s2var
 //
 (* ****** ****** *)
+
+abstbox s2xtv_tbox = ptr
+typedef s2xtv = s2xtv_tbox
+
+(* ****** ****** *)
 //
 fun
 eq_t2abs_t2abs: eq_type(t2abs)
@@ -401,6 +445,7 @@ t2dat_get_sconlst(s2td: t2dat): s2cstlst
 overload .sconlst with t2dat_get_sconlst
 //
 (* ****** ****** *)
+(*
 //
 fun
 t2xtv_new0((*void*)): t2xtv
@@ -426,6 +471,7 @@ overload .sort with t2xtv_set_sort
 //
 overload .sortopt with t2xtv_get_sortopt
 //
+*)
 (* ****** ****** *)
 //
 abstbox s2exp_tbox = ptr
@@ -475,7 +521,12 @@ s2exp_node =
 | S2Echr of char // character
 //
 | S2Ecst of s2cst // constant
+//
 | S2Evar of s2var // variable
+//
+(*
+| S2Extv of s2xtv // ext-variable
+*)
 //
 | S2Eapp of
   (s2exp, s2explst) // application
@@ -493,13 +544,18 @@ s2exp_node =
   (int(*knd*), s2exp) // topization/typization
   // end of [S2Etop]
 //
+| S2Ecast of  // HX-2108-12-23:
+  (s2exp, sort2) // for storing sort-checking error
+//
 | S2Eexi of // existent. quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 | S2Euni of // universal quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
-| S2Enone of (s1exp) // HX: error indication
-| S2Enone // of (*void*) // HX: error indication
+| S2Elist of s2explst // HX: temporary use
+//
+| S2Enone0 // of (*void*) // HX: error indication
+| S2Enone1 of s1exp(*src*) // HX: error indication
 //
 // end of [s2exp_node]
 //
@@ -509,6 +565,28 @@ fun
 s2exp_int(i0: int): s2exp
 fun
 s2exp_chr(c0: char): s2exp
+//
+fun
+s2exp_cst(s2c: s2cst): s2exp
+fun
+s2exp_var(s2v: s2var): s2exp
+//
+fun
+s2exp_apps
+( s2f0: s2exp(*fun*)
+, s2as: s2explst(*arg*)): s2exp
+//
+fun
+s2exp_app1
+( s2f0: s2exp(*fun*)
+, s2a1: s2exp(*arg*)): s2exp
+fun
+s2exp_app2
+( s2f0: s2exp(*fun*)
+, s2a1: s2exp, s2a2: s2exp): s2exp
+//
+fun
+s2exp_list(s2explst): s2exp
 //
 fun
 s2exp_none0((*void*)): s2exp
@@ -526,6 +604,11 @@ fun
 s2exp_get_node(s2exp): s2exp_node
 //
 overload .node with s2exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+s2exp_cast(s2exp, sort2): s2exp
 //
 (* ****** ****** *)
 //
