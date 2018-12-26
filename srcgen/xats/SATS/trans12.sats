@@ -283,6 +283,11 @@ s2cst_select_bin
 , arg1: sort2
 , arg2: sort2): Option_vt(s2cst)
 //
+fun
+s2cst_select_list
+( s2cs: s2cstlst
+, s2es: s2explst): Option_vt(s2cst)
+//
 (* ****** ****** *)
 //
 fun
@@ -334,6 +339,9 @@ trans12_sexp_ck
 fun
 trans12_sexplst_ck
   (s1es: s1explst, s2t0: sort2): s2explst
+fun
+trans12_sexplst_cks
+  (s1es: s1explst, s2ts: sort2lst): s2explst
 //
 (* ****** ****** *)
 //

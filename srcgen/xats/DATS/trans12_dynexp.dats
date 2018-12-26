@@ -259,7 +259,7 @@ def0.node() of
         case+ opt of
         | None() =>
           (
-            S2TXTsrt(the_sort2_int)
+            S2TXTsrt(S2Tnone())
           )
         | Some(s1t) => trans12_stxt(s1t)
       ) : s2txt // end of [val]
