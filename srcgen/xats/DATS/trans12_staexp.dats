@@ -72,6 +72,11 @@ NMS = "./../SATS/nmspace.sats"
 
 (* ****** ****** *)
 
+implement
+fprint_val<s2exp> = fprint_s2exp
+
+(* ****** ****** *)
+
 local
 
 fun
@@ -285,7 +290,7 @@ trans12_sarg
 case+
 s1a0.node() of
 | S1ARGsome
-    (tok, opt) => let
+  (tok, opt) => let
     val sym =
     sargid_sym(tok)
     val s2t =
@@ -299,6 +304,34 @@ s1a0.node() of
   end // end of [S1ARGsome]
 )
 //
+(* ****** ****** *)
+
+implement
+trans12_smarg
+  (s1ma) =
+(
+case+
+s1ma.node() of
+| S1MARGlist(xs) => trans12_sarglst(xs)
+)
+
+(* ****** ****** *)
+
+implement
+trans12_sarglst
+  (s1as) =
+list_vt2t(s2vs) where
+{
+val
+s2vs =
+list_map<s1arg><s2var>
+  (s1as) where
+{
+implement
+list_map$fopr<s1arg><s2var> = trans12_sarg
+}
+} (* end of [trans12_sarglst] *)
+
 (* ****** ****** *)
 
 implement
@@ -374,6 +407,110 @@ s1e0.node() of
 
 (* ****** ****** *)
 
+implement
+trans12_squalst
+(s1qs, s2vs_, s2ps_) =
+(
+case+ s1qs of
+| list_nil() => ()
+| list_cons(s1q0, s1qs) =>
+  (
+  case+
+  s1q0.node() of
+  | S1QUAprop(s1p0) => let
+      val
+      s2p0 = trans12_sexp(s1p0)
+    in
+      s2ps_ := list_vt_cons(s2p0, s2ps_);
+      trans12_squalst(s1qs, s2vs_, s2ps_)
+    end
+  | S1QUAvars(ids, opt) =>
+    (
+    case+ opt of
+    | None() =>
+      (
+        auxids1(ids, s2t, s2vs_);
+        trans12_squalst(s1qs, s2vs_, s2ps_)
+      ) where
+      {
+        val s2t = S2Tnone(*none*)
+      }
+    | Some(s1t) =>
+      let
+      val s2tx = trans12_stxt(s1t)
+      in
+      case- s2tx of
+      | S2TXTsrt(s2t) =>
+        (
+        auxids1(ids, s2t, s2vs_);
+        trans12_squalst(s1qs, s2vs_, s2ps_)
+        )
+      | S2TXTsub(s2v, s2ps) =>
+        (
+        auxids2
+        (ids, s2v, s2ps, s2vs_, s2ps_);
+        trans12_squalst(s1qs, s2vs_, s2ps_)
+        )
+      end
+    )
+  )
+) where
+{
+//
+  fun
+  auxids1
+  ( ids
+  : tokenlst, s2t: sort2
+  , s2vs_: &s2varlst_vt >> _): void =
+  (
+  case+ ids of
+  | list_nil() => ()
+  | list_cons(id0, ids) =>
+    (
+      auxids1(ids, s2t, s2vs_)
+    ) where
+    {
+      val sid = sexpid_sym(id0)
+      val s2v = s2var_make_idst(sid, s2t)
+      val ((*void*)) = the_sexpenv_add_var(s2v)
+      val ((*void*)) = s2vs_ := list_vt_cons(s2v, s2vs_)
+    }
+  )
+//
+  fun
+  auxids2
+  ( ids
+  : tokenlst
+  , s2v: s2var
+  , s2ps: s2explst
+  , s2vs_: &s2varlst_vt >> _
+  , s2ps_: &s2explst_vt >> _): void =
+  (
+  case+ ids of
+  | list_nil() => ()
+  | list_cons(id0, ids) =>
+    (
+      auxids2(ids, s2v, s2ps, s2vs_, s2ps_)
+    ) where
+    {
+//
+      val s2t = s2v.sort()
+      val sid = sexpid_sym(id0)
+//
+      val s2v1 = s2var_make_idst(sid, s2t)
+      val ((*void*)) = the_sexpenv_add_var(s2v1)
+      val ((*void*)) = s2vs_ := list_vt_cons(s2v1, s2vs_)
+//
+      val s2ps1 = s2explst_revar_vt(s2ps, s2v, s2v1)
+      val ((*void*)) = s2ps_ := list_vt_reverse_append(s2ps1, s2ps_)
+//
+    } (* end of [where] *) // end of [list_cons]
+  )
+//
+} (* end of [trans12_squalst] *)
+
+(* ****** ****** *)
+
 local
 
 fun
@@ -422,6 +559,25 @@ case- s2cs of
 
 fun
 auxapp1
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+in
+//
+case+
+s1e1.node() of
+| S1Eforall _ => auxapp1_uni_(s1e0)
+| S1Eexists _ => auxapp1_exi_(s1e0)
+| _(*rest-of-s1exp*) => auxapp1_a_(s1e0)
+//
+end // end of [auxapp1]
+
+and
+auxapp1_a_
 ( s1e0
 : s1exp): s2exp = let
 //
@@ -489,7 +645,7 @@ case+ s2cs of
       auxapp1_2_(s1e0, s2cs)
     ) (* end of [else] *)
   )
-end // end of [auxapp1]
+end // end of [auxapp1_a_]
 
 and
 auxapp1_0_
@@ -505,7 +661,7 @@ val s2e1 = trans12_sexp(s1e1)
 //
 in
   auxapp1_1_(s1e0, s2e1)
-end
+end // end of [auxapp1_0_]
 
 and
 auxapp1_1_
@@ -527,21 +683,12 @@ s1e2.node() of
 | _(*non-list*) => list_sing(s1e2)
 ) : s1explst // end of [val]
 //
-val s2e1 =
-(
-case+
-s2e1.sort() of
-| S2Tfun(_, s2t) => s2e1
-| _(*non-S2Tfun*) =>
-   s2exp_cast(s2e1, S2Tfun())
-) : s2exp // end of [val]
-//
 val s2ts =
 (
 case+
 s2e1.sort() of
 | S2Tfun(s2ts, _) => s2ts
-| _(*non-S2Tfun*) => list_nil()
+| _(*non-S2Tfun*) => list_nil(*void*)
 ) : sort2lst // end of [va]
 //
 val s2es =
@@ -588,6 +735,93 @@ case+ opt of
    auxapp1_1_(s1e0, s2exp_cst(s2c1))
 //
 end // end of [auxapp1_2_]
+
+and
+auxapp1_uni_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+val-
+S1Eforall(s1qs) = s1e1.node()
+//
+var s2vs_
+  : s2varlst_vt = list_vt_nil()
+var s2ps_
+  : s2explst_vt = list_vt_nil()
+//
+val (pf0|()) =
+the_sexpenv_pushnil()
+//
+val
+((*void*)) =
+trans12_squalst(s1qs, s2vs_, s2ps_)
+//
+val
+s2e2 = trans12_sexp(s1e2(*body*))
+//
+val ((*void*)) =
+the_sexpenv_popfree(pf0|(*void*))
+//
+in
+//
+  let
+    val s2vs =
+    list_vt2t(list_vt_reverse(s2vs_))
+    val s2ps =
+    list_vt2t(list_vt_reverse(s2ps_))
+  in
+    s2exp_uni(s2vs, s2ps, s2e2(*body*))
+  end
+//
+end // end of [auxapp1_uni_]
+
+and
+auxapp1_exi_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+val-
+S1Eexists
+  (knd, s1qs) = s1e1.node()
+//
+var s2vs
+  : s2varlst_vt = list_vt_nil()
+var s2ps
+  : s2explst_vt = list_vt_nil()
+//
+val (pf0|()) =
+the_sexpenv_pushnil()
+//
+val
+((*void*)) =
+trans12_squalst(s1qs, s2vs, s2ps)
+//
+val
+s2e2 = trans12_sexp(s1e2(*body*))
+//
+val ((*void*)) =
+the_sexpenv_popfree(pf0|(*void*))
+//
+in
+//
+  let
+    val s2vs =
+    list_vt2t(list_vt_reverse(s2vs))
+    val s2ps =
+    list_vt2t(list_vt_reverse(s2ps))
+  in
+    s2exp_exi(s2vs, s2ps, s2e2(*body*))
+  end
+//
+end // end of [auxapp1_exi_]
 
 (* ****** ****** *)
 
@@ -687,15 +921,6 @@ S1Eapp2
 ( _
 , s1e2
 , s1e3) = s1e0.node()
-//
-val s2e1 =
-(
-case+
-s2e1.sort() of
-| S2Tfun(_, s2t) => s2e1
-| _(*non-S2Tfun*) =>
-   s2exp_cast(s2e1, S2Tfun())
-) : s2exp // end of [val]
 //
 val s2t2 =
 (
@@ -856,7 +1081,7 @@ println!
 *)
 //
 in
-
+//
 case+
 s1e0.node() of
 | _(*rest-of-s1exp*) =>
@@ -870,6 +1095,7 @@ s1e0.node() of
       else s2exp_cast(s2e0, s2t0)
     // end of [if]
   end
+//
 end // end of [trans12_sexp_ck]
 
 (* ****** ****** *)
@@ -886,10 +1112,10 @@ case+ opt of
 implement
 trans12_sexplst
   (s1es) =
-list_vt2t(s1es) where
+list_vt2t(s2es) where
 {
 val
-s1es =
+s2es =
 list_map<s1exp><s2exp>
   (s1es) where
 {
@@ -903,10 +1129,10 @@ list_map<s1exp><s2exp>
 implement
 trans12_sexplst_ck
   (s1es, s2t0) =
-list_vt2t(s1es) where
+list_vt2t(s2es) where
 {
 val
-s1es =
+s2es =
 list_map<s1exp><s2exp>
   (s1es) where
 {

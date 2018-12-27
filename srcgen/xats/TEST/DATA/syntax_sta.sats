@@ -104,19 +104,18 @@ add(x: int, y: int): int
 #stacst / : (int, int) -> int
 
 #stacst + : (addr, int) -> addr
+#stacst - : (addr, int) -> addr
 
+#stacst < : (int, int) -> bool
+#stacst <= : (int, int) -> bool
 #stacst > : (int, int) -> bool
 #stacst >= : (int, int) -> bool
 
+#stacst < : (addr, addr) -> bool
+#stacst <= : (addr, addr) -> bool
 #stacst > : (addr, addr) -> bool
 #stacst >= : (addr, addr) -> bool
 
-(* ****** ****** *)
-
-sortdef pos = { a: int | a > -1 }
-
-(* ****** ****** *)
-////
 (* ****** ****** *)
 
 sortdef one = 1
@@ -144,6 +143,11 @@ sortdef int2 = int * int
 
 (* ****** ****** *)
 
+sortdef
+sgn = { a: int | -1 <= a; a <= 1 }
+
+(* ****** ****** *)
+
 datasort
 ilist =
 | ilist_nil
@@ -154,6 +158,22 @@ ilist =
 abstype foo(tbox+, prop-)
 abstbox foo(tbox+, view-) == bar
 abstflt foo(tflt+, view-) <= bar
+
+(* ****** ****** *)
+
+sexpdef
+sqrtrel(x: int, y: int): bool = x * x <= y
+
+(* ****** ****** *)
+
+#stacst int : type
+#stacst int : int -> type
+
+typedef Int = [a:int] int(a)
+typedef Nat = [a:int | a >= 0] int(a)
+
+sortdef nat = {a:int | a >= 0}
+typedef fid_nat = {a:nat ; a >= 10; a >= 100} int(a) -> int(a)
 
 (* ****** ****** *)
 ////

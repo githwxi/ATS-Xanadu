@@ -603,6 +603,7 @@ s2f0 =
 (
 case+
 s2f0.sort() of
+| S2Tfun() => s2f0
 | S2Tfun(_, s2t) => s2f0
 | _(*non-S2Tfun*) =>
    s2exp_cast(s2f0, S2Tfun())
@@ -632,6 +633,50 @@ s2exp_app2
 (* ****** ****** *)
 
 implement
+s2exp_lam
+(s2vs, body) =
+let
+//
+val s2ts =
+(
+list_map<s2var><sort2>(s2vs)
+) where
+{
+implement
+list_map$fopr<s2var><sort2>(x) = x.sort()
+}
+//
+val s2ts =
+list_vt2t(s2ts)
+//
+val s2t0 =
+S2Tfun(s2ts, body.sort())
+//
+in
+  s2exp_make_node(s2t0, S2Elam(s2vs, body))
+end (* end of [s2exp_lam] *)
+
+(* ****** ****** *)
+
+implement
+s2exp_uni
+(s2vs, s2ps, body) = let
+  val s2t0 = body.sort()
+in
+  s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
+end // end of [s2exp_uni]
+
+implement
+s2exp_exi
+(s2vs, s2ps, body) = let
+  val s2t0 = body.sort()
+in
+  s2exp_make_node(s2t0, S2Eexi(s2vs, s2ps, body))
+end // end of [s2exp_exi]
+
+(* ****** ****** *)
+
+implement
 s2exp_list(s2es) = let
 //
   val s2t = S2Tnone()
@@ -656,10 +701,12 @@ implement
 s2exp_cast(s2e, s2t) =
 let
 //
+(*
 val () =
 println!("s2exp_cast: s2e = ", s2e)
 val () =
 println!("s2exp_cast: s2t = ", s2t)
+*)
 //
 in
   s2exp_make_node(s2t, S2Ecast(s2e, s2t))

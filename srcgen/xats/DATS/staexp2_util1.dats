@@ -57,6 +57,20 @@ overload
 (* ****** ****** *)
 //
 implement
+eq_s2cst_s2cst
+(x1, x2) =
+(x1.stamp() = x2.stamp())
+//
+(* ****** ****** *)
+//
+implement
+eq_s2var_s2var
+(x1, x2) =
+(x1.stamp() = x2.stamp())
+//
+(* ****** ****** *)
+//
+implement
 eq_t2dat_t2dat
 (x1, x2) =
 (x1.stamp() = x2.stamp())
@@ -166,6 +180,114 @@ case+ s2ts of
   if n = 0 then s2t0 else sort2lst_get_at(s2ts, n-1)
 ) (* end of [sort2lst_get_at] *)
 
+(* ****** ****** *)
+
+implement
+s2exp_revar
+( s2e0
+, s2v1, s2v2) =
+let
+//
+val
+s2t0 = s2e0.sort()
+//
+fun
+auxsexp
+( s2e0: s2exp
+, flag_: &int >> _): s2exp =
+let
+  val flag = flag_
+in
+//
+case+
+s2e0.node() of
+| S2Evar(s2v0) =>
+  if
+  (s2v0 = s2v1)
+  then
+  (flag_ := flag+1; s2exp_var(s2v2))
+  else s2e0 // end-of-else
+| S2Eapp(s2e1, s2es2) =>
+  let
+    val
+    s2e1 = auxsexp(s2e1, flag_)
+    val
+    s2es2 = auxsexplst(s2es2, flag_)
+  in
+    if
+    flag = flag_ then s2e0
+    else
+    s2exp_make_node
+    (s2t0, S2Eapp(s2e1, s2es2))
+  end
+| S2Elist(s2es) =>
+  let
+    val
+    s2es = auxsexplst(s2es, flag_)
+  in
+    if
+    flag = flag_ then s2e0
+    else
+    s2exp_make_node(s2t0, S2Elist(s2es))
+  end
+| _(* rest-of-s2exp *) => s2e0
+//
+end // end of [let]
+//
+and
+auxsexplst
+( s2es: s2explst
+, flag_: &int >> _): s2explst =
+(
+case+ s2es of
+| list_nil() =>
+  list_nil()
+| list_cons(s2e1, s2es2) =>
+  let
+    val flag = flag_
+    val s2e1 = auxsexp(s2e1, flag_)
+    val s2es2 = auxsexplst(s2es2, flag_)
+  in
+    if
+    flag = flag_
+    then s2es else list_cons(s2e1, s2es2)
+  end // end of [let]
+)
+//
+in
+//
+let
+  var flag: int = 0 in auxsexp(s2e0, flag)
+end
+//
+end // end of [s2exp_revar]
+
+(* ****** ****** *)
+//
+implement
+s2explst_revar
+(s2es, s2v1, s2v2) =
+list_vt2t
+(
+s2explst_revar_vt
+(s2es, s2v1, s2v2)
+)
+//
+implement
+s2explst_revar_vt
+(s2es, s2v1, s2v2) =
+(
+list_map<s2exp><s2exp>(s2es)
+) where
+{
+implement
+list_map$fopr<s2exp><s2exp>
+  (s2e0) =
+(
+  s2exp_revar(s2e0, s2v1, s2v2)
+)
+} (* end of [s2explst_revar_vt] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2_util1.dats] *)

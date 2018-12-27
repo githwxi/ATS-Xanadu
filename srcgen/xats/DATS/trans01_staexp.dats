@@ -227,6 +227,7 @@ in
 //
 case+
 f0.node() of
+//
 | S1Ebs0() => let
     val s1e =
     s1exp_make_node
@@ -234,6 +235,7 @@ f0.node() of
   in
     FXITMopr(s1e, $FIX.infixtemp_fixty)
   end // end of [S1Ebs0]
+//
 | _(*non-S1Ebs0*) => let
    val loc =
    f0.loc() + x1.loc()
