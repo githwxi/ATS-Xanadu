@@ -34,8 +34,8 @@ before_script:
 script:
   - cd $XATSHOME/srcgen
   - echo 'running unit-tests...'
-  - (cd util/TEST && make testall)
-  - (cd util/TEST/Posix && make testall)
+  - (cd xutl/TEST && make testall)
+  - (cd xutl/TEST/Posix && make testall)
   - echo 'building ATS-Xanadu...'
   - (cd xats && make all)
   - echo 'running integration tests...'
