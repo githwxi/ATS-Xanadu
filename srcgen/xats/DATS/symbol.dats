@@ -261,15 +261,25 @@ end // end of [local]
 //
 implement
 print_symbol
-  (x) = fprint_symbol(stdout_ref, x)
+  (sym) =
+fprint_symbol(stdout_ref, sym)
 implement
 prerr_symbol
-  (x) = fprint_symbol(stderr_ref, x)
+  (sym) =
+fprint_symbol(stderr_ref, sym)
 //
 implement
 fprint_symbol
-  (out, x) =
-  fprint!(out, x.name(), "(", x.stamp(), ")")
+  (out, x0) = fprint!(out, x0.name())
+(*
+implement
+fprint_symbol
+  (out, x0) =
+(
+  fprint!
+  (out, x0.name(), "(", x0.stamp(), ")")
+)
+*)
 //
 (* ****** ****** *)
 

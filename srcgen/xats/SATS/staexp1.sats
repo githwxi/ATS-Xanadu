@@ -474,9 +474,9 @@ s1exp_node =
 //
 | S1Eanno of (s1exp, sort1)
 //
-| S1Equal of (token(*mod*), s1exp)
+| S1Equal of (token(*module*), s1exp)
 //
-| S1Enone of ((*error-indication*))
+| S1Enone of ((*for-error-indication*))
 // end of [s1exp_node]
 
 (* ****** ****** *)

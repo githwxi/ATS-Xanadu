@@ -62,6 +62,8 @@ typedef sort1opt = $S1E.sort1opt
 typedef sort1lst = $S1E.sort1lst
 //
 typedef s1arg = $S1E.s1arg
+typedef s1marg = $S1E.s1marg
+typedef s1arglst = $S1E.s1arglst
 //
 typedef s1rtcon = $S1E.s1rtcon
 //
@@ -70,17 +72,24 @@ typedef s1eff = $S1E.s1eff
 typedef s1expopt = $S1E.s1expopt
 typedef s1explst = $S1E.s1explst
 //
+typedef s1qua = $S1E.s1qua
+typedef s1qualst = $S1E.s1qualst
+//
 (* ****** ****** *)
 //
 typedef sort2 = $S2E.sort2
 typedef sort2opt = $S2E.sort2opt
 typedef sort2lst = $S2E.sort2lst
 //
+(* ****** ****** *)
+//
 typedef s2cst = $S2E.s2cst
 typedef s2var = $S2E.s2var
 //
 typedef s2cstlst = $S2E.s2cstlst
 typedef s2varlst = $S2E.s2varlst
+//
+(* ****** ****** *)
 //
 typedef s2exp = $S2E.s2exp
 typedef s2eff = $S2E.s2eff
@@ -92,7 +101,25 @@ typedef s2explst = $S2E.s2explst
 typedef s2txt = $S2E.s2txt
 typedef s2txtopt = $S2E.s2txtopt
 //
-vtypedef s2txtopt_vt = $S2E.s2txtopt_vt
+(* ****** ****** *)
+//
+vtypedef
+  s2cstlst_vt = $S2E.s2cstlst_vt
+vtypedef
+  s2varlst_vt = $S2E.s2varlst_vt
+vtypedef
+  s2explst_vt = $S2E.s2explst_vt
+//
+(* ****** ****** *)
+//
+vtypedef
+  s2cstopt_vt = $S2E.s2cstopt_vt
+vtypedef
+  s2varopt_vt = $S2E.s2varopt_vt
+vtypedef
+  s2expopt_vt = $S2E.s2expopt_vt
+vtypedef
+  s2txtopt_vt = $S2E.s2txtopt_vt
 //
 (* ****** ****** *)
 
@@ -243,6 +270,8 @@ fun
 the_sexpenv_add_cst(s2c: s2cst): void
 fun
 the_sexpenv_add_var(s2v: s2var): void
+fun
+the_sexpenv_add_varlst(s2vs: s2varlst): void
 //
 fun
 the_sexpenv_find
@@ -312,9 +341,24 @@ overload trans12 with trans12_sortlst
 //
 fun
 trans12_sarg: s1arg -> s2var
+fun
+trans12_smarg: s1marg -> s2varlst
+//
+fun
+trans12_sarglst: s1arglst -> s2varlst
+//
+(* ****** ****** *)
 //
 fun
 trans12_stxt: sort1 -> s2txt
+//
+(* ****** ****** *)
+//
+fun
+trans12_squalst
+( s1qs: s1qualst
+, s2vs: &s2varlst_vt >> _
+, s2ps: &s2explst_vt >> _): void
 //
 (* ****** ****** *)
 //

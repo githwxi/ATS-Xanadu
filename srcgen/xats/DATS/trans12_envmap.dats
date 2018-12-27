@@ -466,6 +466,25 @@ in
 end
 ) (* end of [the_sexpenv_add_var] *)
 
+implement
+the_sexpenv_add_varlst
+  (s2vs) =
+(
+  foreach(s2vs)
+) where
+{
+  fun
+  foreach
+  (s2vs: s2varlst): void =
+  (
+  case+ s2vs of
+  | list_nil() => ()
+  | list_cons(s2v0, s2vs) =>
+    (the_sexpenv_add_var(s2v0); foreach(s2vs))
+  )
+  
+} (* end of [the_sexpenv_add_varlst] *)
+
 (* ****** ****** *)
 
 implement

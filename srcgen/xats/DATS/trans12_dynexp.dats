@@ -274,15 +274,15 @@ def0.node() of
 //
       val id0 =
         sargid_sym(tok)
-      val s2u =
+      val s2v1 =
         s2var_make_idst(id0, s2t)
 //
       val (pf0|()) =
         the_sexpenv_pushnil()
       val ((*void*)) =
-        the_sexpenv_add_var(s2u)
+        the_sexpenv_add_var(s2v1)
 //
-      val s2ps =
+      val s2ps1 =
       (
         case+ tx0 of
         | S2TXTsrt(s2t) =>
@@ -295,25 +295,104 @@ def0.node() of
             s2ps1 + s2ps2
           ) where
           {
-            val s2ps1 = list_nil()
-            // s2explst_rename(s2ps, s2v, s2u)
+            val s2ps1 =
+            s2explst_revar(s2ps, s2v, s2v1)
             val s2ps2 = trans12_sexplst(s1ps)
           }
-        | S2TXTerr((*void*)) => list_nil()
+        | S2TXTerr((*void*)) => list_nil(*void*)
       ) : s2explst // end of [val]
 //
       val ((*void*)) =
-        the_sexpenv_popfree(pf0 | (*void*))
-//
-      val s2tx = S2TXTsub(s2u, s2ps)
+        the_sexpenv_popfree(pf0|(*void*))
+      // end of [val]
 //
     in
-      the_sortenv_add(sym, s2tx);
-      d2ecl_make_node(loc0, D2Csortdef(d1c0))
+      let
+        val
+        s2tx =
+        S2TXTsub(s2v1, s2ps1)
+      in
+        the_sortenv_add(sym, s2tx);
+        d2ecl_make_node(loc0, D2Csortdef(d1c0))
+      end
     end
   ) (* end of [S1RTDEFsubset] *)
 //
 end // end of [aux_sortdef]
+
+(* ****** ****** *)
+
+fun
+aux_sexpdef
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Csexpdef
+( knd
+, sid
+, arg, res, body) = d1c0.node()
+//
+val (pf0|()) =
+the_sexpenv_pushnil()
+//
+val
+s2e0 =
+(
+auxlams(arg, res, body)
+) where
+{
+//
+fun
+auxlams
+( arg
+: s1marglst
+, res
+: sort1opt
+, body: s1exp): s2exp =
+(
+case+ arg of
+| list_nil() =>
+  (
+  case res of
+  | None() =>
+    trans12_sexp(body)
+  | Some(s1t) =>
+    trans12_sexp_ck
+    (body, trans12_sort(s1t))
+  )
+| list_cons(x0, xs) =>
+  let
+    val
+    s2vs = trans12_smarg(x0)
+    val () = 
+    the_sexpenv_add_varlst(s2vs)
+  in
+    s2exp_lam(s2vs, auxlams(xs, res, body))
+  end // end of [list_cons]
+)
+//
+} (* end of [val] *)
+//
+val ((*void*)) =
+the_sexpenv_popfree(pf0|(*void*))
+//
+val () =
+println!
+("\
+trans12_decl:\
+ aux_sexpdef: s2e0 = ", s2e0)
+//
+val
+s2c0 =
+s2cst_make_idst(sid, s2e0.sort())
+//
+in
+  the_sexpenv_add_cst(s2c0);
+  d2ecl_make_node(loc0, D2Csexpdef(d1c0))
+end // end of [aux_sexpdef]
 
 (* ****** ****** *)
 
@@ -471,6 +550,8 @@ d1c0.node() of
 | D1Cstacst0 _ => aux_stacst0(d1c0)
 //
 | D1Csortdef _ => aux_sortdef(d1c0)
+//
+| D1Csexpdef _ => aux_sexpdef(d1c0)
 //
 | D1Cdatasort _ => aux_datasort(d1c0)
 //

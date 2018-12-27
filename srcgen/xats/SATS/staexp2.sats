@@ -307,6 +307,9 @@ typedef s2cstopt = Option(s2cst)
 //
 typedef s2cstlstlst = List0(s2cstlst)
 //
+vtypedef s2cstlst_vt = List0_vt(s2cst)
+vtypedef s2cstopt_vt = Option_vt(s2cst)
+//
 (* ****** ****** *)
 //
 abstbox s2cstset_tbox
@@ -314,6 +317,14 @@ typedef s2cstset_t = s2cstset_tbox
 //
 absvtype s2cstset_vtbox
 vtypedef s2cstset_vt = s2cstset_vtbox
+//
+(* ****** ****** *)
+//
+fun
+eq_s2cst_s2cst
+(x1: s2cst, x2: s2cst): bool
+//
+overload = with eq_s2cst_s2cst
 //
 (* ****** ****** *)
 //
@@ -352,8 +363,10 @@ overload fprint with fprint_s2cst
 //
 abstbox s2var_tbox = ptr
 typedef s2var = s2var_tbox
+//
 typedef s2varlst = List0(s2var)
 typedef s2varopt = Option(s2var)
+//
 vtypedef s2varlst_vt = List0_vt(s2var)
 vtypedef s2varopt_vt = Option_vt(s2var)
 //
@@ -364,6 +377,14 @@ typedef s2varset_t = s2varset_tbox
 //
 absvtype s2varset_vtbox
 vtypedef s2varset_vt = s2varset_vtbox
+//
+(* ****** ****** *)
+//
+fun
+eq_s2var_s2var
+(x1: s2var, x2: s2var): bool
+//
+overload = with eq_s2var_s2var
 //
 (* ****** ****** *)
 //
@@ -483,6 +504,9 @@ typedef s2exp = s2exp_tbox
 typedef s2explst = List0(s2exp)
 typedef s2expopt = Option(s2exp)
 //
+vtypedef s2explst_vt = List0_vt(s2exp)
+vtypedef s2expopt_vt = Option_vt(s2exp)
+//
 (* ****** ****** *)
 //
 typedef s2hnf = s2hnf_tbox
@@ -584,6 +608,19 @@ fun
 s2exp_app2
 ( s2f0: s2exp(*fun*)
 , s2a1: s2exp, s2a2: s2exp): s2exp
+//
+fun
+s2exp_lam
+(arg: s2varlst, s2e0: s2exp): s2exp
+//
+fun
+s2exp_uni
+( s2vs: s2varlst
+, s2ps: s2explst, s2e0: s2exp): s2exp
+fun
+s2exp_exi
+( s2vs: s2varlst
+, s2ps: s2explst, s2e0: s2exp): s2exp
 //
 fun
 s2exp_list(s2explst): s2exp
@@ -715,6 +752,18 @@ fprint_s2itm: fprint_type(s2itm)
 overload print with print_s2itm
 overload prerr with prerr_s2itm
 overload fprint with fprint_s2itm
+//
+(* ****** ****** *)
+//
+fun
+s2exp_revar
+(s2exp, s2v1: s2var, s2v2: s2var): s2exp
+fun
+s2explst_revar
+(s2explst, s2v1: s2var, s2v2: s2var): s2explst
+fun
+s2explst_revar_vt
+(s2explst, s2v1: s2var, s2v2: s2var): s2explst_vt
 //
 (* ****** ****** *)
 
