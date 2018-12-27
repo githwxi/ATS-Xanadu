@@ -95,12 +95,12 @@ STDIO = "libats/libc/SATS/stdio.sats"
 local
 //
 #include
-"./../../util/DATS/cblist.dats"
+"./../../xutl/DATS/cblist.dats"
 #include
-"./../../util/DATS/Posix/cblist.dats"
+"./../../xutl/DATS/Posix/cblist.dats"
 //
 #include
-"./../../util/DATS/Posix/mylibc.dats"
+"./../../xutl/DATS/Posix/mylibc.dats"
 //
 in
   // nothing

@@ -177,8 +177,24 @@ sort2lst_get_at
 case+ s2ts of
 | list_nil() => S2Tnone()
 | list_cons(s2t0, s2ts) =>
-  if n = 0 then s2t0 else sort2lst_get_at(s2ts, n-1)
+  if n = 0
+  then s2t0
+  else sort2lst_get_at(s2ts, n-1)
 ) (* end of [sort2lst_get_at] *)
+
+(* ****** ****** *)
+
+implement
+s2varlst_ismem
+  (s2vs, s2v0) =
+(
+list_exists<s2var>(s2vs)
+) where
+{
+implement
+list_exists$pred<s2var>
+   (x0) = $effmask_all(x0 = s2v0)
+} (* end of [s2varlst_ismem] *)
 
 (* ****** ****** *)
 
@@ -230,6 +246,47 @@ s2e0.node() of
     else
     s2exp_make_node(s2t0, S2Elist(s2es))
   end
+//
+| S2Elam(s2vs, body) =>
+  if
+  s2varlst_ismem(s2vs, s2v1)
+  then s2e0
+  else let
+    val body = auxsexp(body, flag_)
+  in
+    if
+    flag = flag_ then s2e0
+    else
+    s2exp_make_node(s2t0, S2Elam(s2vs, body))
+  end
+//
+| S2Eexi(s2vs, s2ps, body) =>
+  if
+  s2varlst_ismem(s2vs, s2v1)
+  then s2e0
+  else let
+    val body = auxsexp(body, flag_)
+    val s2ps = auxsexplst(s2ps, flag_)
+  in
+    if
+    flag = flag_ then s2e0
+    else
+    s2exp_make_node(s2t0, S2Eexi(s2vs, s2ps, body))
+  end
+| S2Euni(s2vs, s2ps, body) =>
+  if
+  s2varlst_ismem(s2vs, s2v1)
+  then s2e0
+  else let
+    val body = auxsexp(body, flag_)
+    val s2ps = auxsexplst(s2ps, flag_)
+  in
+    if
+    flag = flag_ then s2e0
+    else
+    s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
+  end
+//
 | _(* rest-of-s2exp *) => s2e0
 //
 end // end of [let]
