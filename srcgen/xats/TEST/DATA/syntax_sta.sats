@@ -162,7 +162,8 @@ abstflt foo(tflt+, view-) <= bar
 (* ****** ****** *)
 
 sexpdef
-sqrtrel(x: int, y: int): bool = x * x <= y
+sqrtrel
+(x: int, y: int): bool = x * x <= y
 
 (* ****** ****** *)
 
@@ -172,8 +173,8 @@ sqrtrel(x: int, y: int): bool = x * x <= y
 typedef Int = [a:int] int(a)
 typedef Nat = [a:int | a >= 0] int(a)
 
-sortdef nat = {a:int | a >= 0}
-typedef fid_nat = {a:nat ; a >= 10; a >= 100} int(a) -> int(a)
+sortdef nat = {a:int | a >= 0 }
+typedef fid_nat = {a:nat} int(a) -> int(a)
 
 (* ****** ****** *)
 ////

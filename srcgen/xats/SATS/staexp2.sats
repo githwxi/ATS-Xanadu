@@ -756,6 +756,12 @@ overload fprint with fprint_s2itm
 (* ****** ****** *)
 //
 fun
+s2varlst_ismem
+(s2vs: s2varlst, s2v0: s2var): bool
+//
+(* ****** ****** *)
+//
+fun
 s2exp_revar
 (s2exp, s2v1: s2var, s2v2: s2var): s2exp
 fun
