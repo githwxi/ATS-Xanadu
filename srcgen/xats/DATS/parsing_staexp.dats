@@ -1302,7 +1302,7 @@ println! ("p_labs0exp: s0e = ", s0e)
 *)
 //
 in
-  err := e0; SL0ABELED(l0, tok, s0e)
+  err := e0; SL0ABLED(l0, tok, s0e)
 end // end of [p_labs0exp]
 
 (* ****** ****** *)

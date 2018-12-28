@@ -337,14 +337,14 @@ s0ymb_make_node
 (* ****** ****** *)
 //
 datatype
-sl0abeled
+sl0abled
   (a:type) =
-  SL0ABELED of (l0abl, token, a)
+  SL0ABLED of (l0abl, token, a)
 //
 fun
 {a:type}
-fprint_sl0abeled
-  (out: FILEref, x0: sl0abeled(a)): void
+fprint_sl0abled
+  (out: FILEref, x0: sl0abled(a)): void
 //
 (* ****** ****** *)
 //
@@ -733,7 +733,7 @@ s0uni_make_node
 //
 (* ****** ****** *)
 //
-typedef labs0exp = sl0abeled(s0exp)
+typedef labs0exp = sl0abled(s0exp)
 typedef labs0explst = List0(labs0exp)
 //
 (* ****** ****** *)

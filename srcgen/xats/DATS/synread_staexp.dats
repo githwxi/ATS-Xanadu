@@ -598,7 +598,7 @@ synread_labs0exp
   (ls0e) =
 (
 case+ ls0e of
-| SL0ABELED(l0, teq, s0e) =>
+| SL0ABLED(l0, teq, s0e) =>
   {
     val () = synread_EQ<>(teq)
     val () = synread_s0exp<>(s0e)

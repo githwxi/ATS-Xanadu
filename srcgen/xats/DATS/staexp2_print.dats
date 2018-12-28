@@ -52,6 +52,14 @@ fprint with $SYM.fprint_symbol
 
 (* ****** ****** *)
 
+#staload
+LAB = "./../SATS/label0.sats"
+
+overload
+fprint with $LAB.fprint_label
+
+(* ****** ****** *)
+
 #staload "./../SATS/basics.sats"
 
 (* ****** ****** *)
@@ -76,6 +84,8 @@ implement
 fprint_val<s2eff> = fprint_s2eff
 implement
 fprint_val<s2exp> = fprint_s2exp
+implement
+fprint_val<labs2exp> = fprint_labs2exp
 
 (* ****** ****** *)
 
@@ -304,6 +314,37 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+print_tyrec(x0) =
+fprint_tyrec(stdout_ref, x0) 
+implement
+prerr_tyrec(x0) =
+fprint_tyrec(stdout_ref, x0) 
+
+implement
+fprint_tyrec
+  (out, knd) =
+(
+case+ knd of
+//
+| TYRECbox0() =>
+  fprint!(out, "TYRECbox0(", ")")
+| TYRECbox1() =>
+  fprint!(out, "TYRECbox1(", ")")
+//
+| TYRECflt0() =>
+  fprint!(out, "TYRECflt0(", ")")
+(*
+| TYRECflt1(stm) =>
+  fprint!(out, "TYRECflt1(", stm, ")")
+*)
+| TYRECflt2(nam) =>
+  fprint!(out, "TYRECflt2(", nam, ")")
+//
+) (* end of [fprint_tyrec] *)
+
+(* ****** ****** *)
+
+implement
 print_s2exp(x0) =
 fprint_s2exp(stdout_ref, x0) 
 implement
@@ -367,14 +408,38 @@ s2e0.node() of
   ( out
   , "S2Eexi(", s2vs, "; ", s2ps, "; ", body, ")")
 //
+(*
 | S2Elist(s2es) =>
   fprint!(out, "S2Elist(", s2es, ")")
+*)
+//
+| S2Etyrec(knd, npf, ls2es) =>
+  fprint!
+  ( out
+  , "S2Etyrec(", knd, "; ", npf, "; ", ls2es, ")")
 //
 | S2Enone0() => fprint!(out, "S2Enone0(", ")")
 | S2Enone1(s1e) => fprint!(out, "S2Enone1(", s1e, ")")
 )
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_labs2exp(x0) =
+fprint_labs2exp(stdout_ref, x0) 
+implement
+prerr_labs2exp(x0) =
+fprint_labs2exp(stdout_ref, x0) 
+implement
+fprint_labs2exp
+  (out, ls2e) =
+(
+case+ ls2e of
+| SLABELED
+  (l0, s2e) => fprint!(out, l0, "=", s2e)
+)
 
 (* ****** ****** *)
 

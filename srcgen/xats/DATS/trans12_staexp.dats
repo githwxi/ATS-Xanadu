@@ -66,6 +66,7 @@ NMS = "./../SATS/nmspace.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
 
@@ -1075,14 +1076,16 @@ end // end of [auxapp2_2_]
 (* ****** ****** *)
 
 fun
-auxlist
+auxlist1
 ( s1e0
 : s1exp): s2exp = let
 //
 (*
 val () =
 println!
-("auxlist: s1e0 = ", s1e0)
+("\
+trans12_sexp:\
+ auxlist1: s1e0 = ", s1e0)
 *)
 //
 val-
@@ -1100,9 +1103,105 @@ in
   }
   else
   (
-    s2exp_list(trans12_sexplst(s1es))
+    s2exp_list1(trans12_sexplst(s1es))
   )
-end // end of [auxlist]
+end // end of [auxlist1]
+
+fun
+auxlist2
+( s1e0
+: s1exp): s2exp = let
+// 
+(*
+val () =
+println!
+("\
+trans12_sexp:\
+ auxlist2: s1e0 = ", s1e0)
+*)
+//
+val-
+S1Elist
+(s1es1, s1es2) = s1e0.node()
+//
+in
+//
+case+ s1es1 of
+| list_nil() =>
+  s2exp_list1(trans12_sexplst(s1es2))
+| list_cons _ =>
+  s2exp_list2
+  (trans12_sexplst(s1es1), trans12_sexplst(s1es2))
+//
+end // end of [auxlist2]
+
+(* ****** ****** *)
+
+fun
+auxtuple1
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Etuple
+(knd, s1es) = s1e0.node()
+//
+val s2es = trans12_sexplst(s1es)
+//
+in
+  s2exp_tuple1(knd, s2es)
+end // end of [auxtuple1]
+
+fun
+auxtuple2
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Etuple
+( knd, xs1, xs2) = s1e0.node()
+//
+val s2es1 = trans12_sexplst(xs1)
+val s2es2 = trans12_sexplst(xs2)
+//
+in
+  s2exp_tuple2(knd, s2es1, s2es2)
+end // end of [auxtuple2]
+
+(* ****** ****** *)
+
+fun
+auxrecord1
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Erecord
+(knd, ls1es) = s1e0.node()
+//
+val ls2es = trans12_labsexplst(ls1es)
+//
+in
+  s2exp_record1(knd, ls2es)
+end // end of [auxrecord1]
+
+fun
+auxrecord2
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Erecord
+( knd, lxs1, lxs2) = s1e0.node()
+//
+val ls2es1 = trans12_labsexplst(lxs1)
+val ls2es2 = trans12_labsexplst(lxs2)
+//
+in
+  s2exp_record2(knd, ls2es1, ls2es2)
+end // end of [auxrecord2]
+
+(* ****** ****** *)
 
 in (* in-of-local *)
 
@@ -1140,7 +1239,23 @@ s1e0.node() of
 | S1Eapp1 _ => auxapp1(s1e0)
 | S1Eapp2 _ => auxapp2(s1e0)
 //
-| S1Elist(_) => auxlist(s1e0)
+| S1Elist
+    (_) => auxlist1(s1e0)
+| S1Elist
+    (_, _) => auxlist2(s1e0)
+  // end of [S1Elist]
+//
+| S1Etuple
+    (k0, _) => auxtuple1(s1e0)
+| S1Etuple
+    (k0, _, _) => auxtuple2(s1e0)
+  // end of [S1Etuple]
+//
+| S1Erecord
+    (k0, _) => auxrecord1(s1e0)
+| S1Erecord
+    (k0, _, _) => auxrecord2(s1e0)
+  // end of [S1Erecord]
 //
 | S1Eanno(s1e1, s1t2) =>
   let
@@ -1167,10 +1282,10 @@ trans12_sexp_ck
 (*
 val () =
 println!
-("trans12_sort: s1e0 = ", s1e0)
+("trans12_sexp_ck: s1e0 = ", s1e0)
 val () =
 println!
-("trans12_sort: s1t0 = ", s1t0)
+("trans12_sexp_ck: s1t0 = ", s1t0)
 *)
 //
 in
@@ -1282,12 +1397,30 @@ case+ s1es of
 
 (* ****** ****** *)
 
-(*
-datatype
-s1rtdef_node =
-| S1RTDEFsort of sort1
-| S1RTDEFsubset of (s1arg, s1explst)
-*)
+implement
+trans12_labsexplst
+  (lxs) =
+list_vt2t
+(
+list_map<labs1exp><labs2exp>(lxs)
+) where
+{
+//
+implement
+list_map$fopr<labs1exp><labs2exp>
+  (lx0) =
+(
+case+ lx0 of
+| SL0ABLED
+  (l0, _, x0) =>
+  (
+  case- l0.node() of
+  | L0ABsome(l0) =>
+    SLABELED(l0, trans12_sexp(x0))
+  )
+)
+//
+} (* trans12_labsexplst *)
 
 (* ****** ****** *)
 

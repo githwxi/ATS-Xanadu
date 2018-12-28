@@ -1204,10 +1204,10 @@ trans01_lsexp
   (ls0e) = let
 //
   val
-  SL0ABELED(l0, tok, s0e) = ls0e
+  SL0ABLED(l0, tok, s0e) = ls0e
 //
 in
-  SL0ABELED(l0, tok, trans01_sexp(s0e))
+  SL0ABLED(l0, tok, trans01_sexp(s0e))
 end // end of [trans01_lsexp]
 
 implement
