@@ -148,6 +148,18 @@ sgn = { a: int | -1 <= a; a <= 1 }
 
 (* ****** ****** *)
 
+#stacst int : type
+#stacst int : int -> type
+
+(* ****** ****** *)
+
+typedef fint = int -<0> int
+typedef fint = int -<cloref> int
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
+
 datasort
 ilist =
 | ilist_nil
@@ -167,17 +179,12 @@ sqrtrel
 
 (* ****** ****** *)
 
-#stacst int : type
-#stacst int : int -> type
-
 typedef Int = [a:int] int(a)
 typedef Nat = [a:int | a >= 0] int(a)
 
 sortdef nat = {a:int | a >= 0 }
 typedef fid_nat = {a:nat} int(a) -> int(a)
 
-(* ****** ****** *)
-////
 (* ****** ****** *)
 
 absvtype xyz(int(*x*), y: int, z: int)

@@ -517,6 +517,7 @@ typedef s2hnfopt = Option(s2hnf)
 //
 datatype
 s2eff =
+| S2EFFall of ()
 | S2EFFexp of s2exp
 | S2EFFset of $EFF.effset
 | S2EFFjoin of List0(s2eff)
@@ -557,6 +558,10 @@ s2exp_node =
 | S2Elam of
   (s2varlst, s2exp) // abstraction
 //
+(*
+| S2Efun of
+  (int(*npf*), s2explst, s2exp)
+*)
 | S2Efun of
   ( // function type
     funclo2
@@ -608,6 +613,16 @@ fun
 s2exp_app2
 ( s2f0: s2exp(*fun*)
 , s2a1: s2exp, s2a2: s2exp): s2exp
+//
+fun
+s2exp_fun_nil
+( npf: int
+, arg: s2explst, res: s2exp): s2exp
+fun
+s2exp_fun_full
+( fc2: funclo2
+, lin: int, eff: s2eff
+, npf: int, arg: s2explst, res: s2exp): s2exp
 //
 fun
 s2exp_lam
