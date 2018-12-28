@@ -33,6 +33,7 @@
 //
 (* ****** ****** *)
 //
+#staload "./basics.sats"
 #staload "./symmap.sats"
 //
 (* ****** ****** *)
@@ -318,6 +319,13 @@ s2cst_select_list
 , s2es: s2explst): Option_vt(s2cst)
 //
 (* ****** ****** *)
+//
+fun
+s1exp_get_lin(s1exp): int
+fun
+s1exp_get_fc2(s1exp): funclo2
+fun
+s1exp_get_eff(s1exp): (s2eff)
 //
 fun
 s1exp_get_s2cstlst(s1exp): s2cstlst

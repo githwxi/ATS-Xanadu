@@ -58,6 +58,10 @@ NMS = "./../SATS/nmspace.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/basics.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
@@ -102,7 +106,7 @@ case+ opt of
     | S2TXTsub
         (s2v, _) => s2v.sort()
       // S2TXTsub
-    | _(* error *) => S2Tnone(s1t0)
+    | _(*error*) => S2Tnone(s1t0)
   ) (* Some_vt *)
 //
 end // end of [auxid]
@@ -132,6 +136,18 @@ s1t2.node() of
 in
   S2Tapp(s2t1, s2ts)
 end // end of [auxapp1]
+
+fun
+isarrw
+( s1t
+: sort1): bool =
+(
+case+
+s1t.node() of
+| S1Tid(tid) =>
+  tid = $SYM.MSGT_symbol
+| _(*non-S1Tid*) => false
+)
 
 fun
 auxapp2
@@ -179,18 +195,6 @@ in
 end // end of [else]
 //
 end // end of [auxapp2]
-
-and
-isarrw
-( s1t
-: sort1): bool =
-(
-case+
-s1t.node() of
-| S1Tid(tid) =>
-  tid = $SYM.MSGT_symbol
-| _(*non-S1Tid*) => false
-)
 
 fun
 auxlist
@@ -380,6 +384,15 @@ s1t0.node() of
   )
 //
 end // end of [trans12_stxt]
+
+(* ****** ****** *)
+
+implement
+s1exp_get_lin(s1e0) = 0
+implement
+s1exp_get_fc2(s1e0) = FC2fun()
+implement
+s1exp_get_eff(s1e0) = S2EFFall()
 
 (* ****** ****** *)
 
@@ -826,6 +839,18 @@ end // end of [auxapp1_exi_]
 (* ****** ****** *)
 
 fun
+isarrw
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.MSGT_symbol
+| _(*non-S1Eid*) => false
+)
+
+fun
 auxapp2
 ( s1e0
 : s1exp): s2exp = let
@@ -902,12 +927,80 @@ S1Eapp2
 , s1e2
 , s1e3) = s1e0.node()
 //
-val
-s2e1 = trans12_sexp(s1e1)
-//
 in
-  auxapp2_1_(s1e0, s2e1(*f*))
-end
+//
+if
+isarrw(s1e1)
+then let
+  var npf
+    : int = 0
+  val s2es =
+  (
+  case+
+  s1e2.node() of
+  | S1Elist(xs) =>
+    trans12_sexplst(xs)
+  | S1Elist(xs1, xs2) =>
+    (
+      s2es1 + s2es2
+    ) where
+    {
+      val () = (npf := length(xs1))
+      val s2es1 = trans12_sexplst(xs1)
+      val s2es2 = trans12_sexplst(xs2)
+    }
+  | _(*non-S1Elist*) =>
+    list_sing
+    (trans12_sexp(s1e2))
+  ) : s2explst
+  val s2e3 = trans12_sexp(s1e3)
+in
+  s2exp_fun_nil(npf, s2es, s2e3)
+end // end of [then]
+else
+(
+case+
+s1e1.node() of
+| S1Eimp _ =>
+  let
+  var npf
+    : int = 0
+  val fc2 = s1exp_get_fc2(s1e1)
+  val lin = s1exp_get_lin(s1e1)
+  val eff = s1exp_get_eff(s1e1)
+  val s2es =
+  (
+  case+
+  s1e2.node() of
+  | S1Elist(xs) =>
+    trans12_sexplst(xs)
+  | S1Elist(xs1, xs2) =>
+    (
+      s2es1 + s2es2
+    ) where
+    {
+      val () = (npf := length(xs1))
+      val s2es1 = trans12_sexplst(xs1)
+      val s2es2 = trans12_sexplst(xs2)
+    }
+  | _(*non-S1Elist*) =>
+    list_sing
+    (trans12_sexp(s1e2))
+  ) : s2explst
+  val s2e3 = trans12_sexp(s1e3)
+  in
+    s2exp_fun_full
+    (fc2, lin, eff, npf, s2es, s2e3)
+  end
+| _(*non-S1Eimp*) =>
+  let
+    val
+    s2e1 =
+    trans12_sexp(s1e1) in auxapp2_1_(s1e0, s2e1)
+  end // end of [else]
+)
+//
+end // end of [auxapp2_0_]
 
 and
 auxapp2_1_
@@ -1136,8 +1229,10 @@ s2es =
 list_map<s1exp><s2exp>
   (s1es) where
 {
-  implement
-  list_map$fopr<s1exp><s2exp>(s1e) = trans12_sexp_ck(s1e, s2t0)
+implement
+list_map$fopr<s1exp><s2exp>
+  (s1e) = trans12_sexp_ck(s1e, s2t0)
+// implement
 }
 } (* end of [trans12_sexplst_ck] *)
 

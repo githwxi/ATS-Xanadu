@@ -55,6 +55,8 @@ LOC = "./../SATS/location.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/basics.sats"
+//
 #staload "./../SATS/symbol.sats"
 //
 #staload "./../SATS/lexing.sats"
@@ -629,6 +631,36 @@ s2exp_app2
 (
   s2exp_apps(s2f0, list_pair(s2a1, s2a2))
 )
+//
+(* ****** ****** *)
+//
+implement
+s2exp_fun_nil
+(npf, arg, res) =
+(
+s2exp_fun_full
+(fc2, 0(*lin*), eff, npf,  arg, res)
+) where
+{
+  val fc2 = FC2fun() and eff = S2EFFall()
+}
+//
+implement
+s2exp_fun_full
+( fc2, lin, eff
+, npf, arg, res) =
+(
+s2exp_make_node
+( s2t0
+, S2Efun(fc2, lin, eff, npf, arg, res))
+) where
+{
+  val s2t0 =
+  (
+  if lin = 0
+  then the_sort2_tbox else the_sort2_vtbox
+  ) : sort2 // end of [val]
+} (* end of [s2exp_fun_full] *)
 //
 (* ****** ****** *)
 
