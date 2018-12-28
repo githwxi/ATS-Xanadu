@@ -413,14 +413,12 @@ s1uni_make_node
 (loc: loc_t, node: s1uni_node): s1uni
 //
 (* ****** ****** *)
-
-stadef sl0abeled = $S0E.sl0abeled
-
-(* ****** ****** *)
-
-typedef labs1exp = sl0abeled(s1exp)
+//
+stadef sl0abled = $S0E.sl0abled
+//
+typedef labs1exp = sl0abled(s1exp)
 typedef labs1explst = List0(labs1exp)
-
+//
 (* ****** ****** *)
 
 datatype

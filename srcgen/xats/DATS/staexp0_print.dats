@@ -114,7 +114,7 @@ fprint_val<d0atcon> = fprint_d0atcon
 
 implement
 (a)//tmp
-fprint_val<sl0abeled(a)> = fprint_sl0abeled<a>
+fprint_val<sl0abled(a)> = fprint_sl0abled<a>
 
 (* ****** ****** *)
 
@@ -550,16 +550,16 @@ case+ x0.node() of
 
 implement
 {a}(*tmp*)
-fprint_sl0abeled
+fprint_sl0abled
   (out, x0) = let
 //
-val+SL0ABELED(l0, t0, x1) = x0
+val+SL0ABLED(l0, t0, x1) = x0
 //
 in
-  fprint!(out, "SL0ABELED(");
+  fprint!(out, "SL0ABLED(");
   fprint!(out, l0, ", ", t0, ", ");
   fprint_val<a>(out, x1); fprint!(out, ")")
-end // end of [fprint_sl0abeled]
+end // end of [fprint_sl0abled]
 
 (* ****** ****** *)
 

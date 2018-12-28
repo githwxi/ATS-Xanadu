@@ -156,6 +156,12 @@ sgn = { a: int | -1 <= a; a <= 1 }
 typedef fint = int -<0> int
 typedef fint = int -<cloref> int
 
+typedef int2_flt = @(int | int)
+typedef int2_box = $(int | int)
+
+typedef int2_rec_flt = @{l0=int | l1= int}
+typedef int2_rec_box = ${l0=int | l1= int}
+
 (* ****** ****** *)
 ////
 (* ****** ****** *)

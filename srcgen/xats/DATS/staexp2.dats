@@ -585,6 +585,23 @@ end // end of [s2exp_var]
 (* ****** ****** *)
 //
 implement
+s2exp_cast(s2e, s2t) =
+let
+//
+(*
+val () =
+println!("s2exp_cast: s2e = ", s2e)
+val () =
+println!("s2exp_cast: s2t = ", s2t)
+*)
+//
+in
+  s2exp_make_node(s2t, S2Ecast(s2e, s2t))
+end // end of [s2exp_cast]
+//
+(* ****** ****** *)
+//
+implement
 s2exp_apps
 (s2f0, s2as) = let
 //
@@ -709,13 +726,248 @@ end // end of [s2exp_exi]
 (* ****** ****** *)
 
 implement
-s2exp_list(s2es) = let
+s2exp_list1
+  (s2es) = let
 //
-  val s2t = S2Tnone()
+  val knd = TYRECflt0
+  val s2t =
+  (
+  if
+  s2explst_islin(s2es)
+  then
+  the_sort2_vtype else the_sort2_type(*~lin*)
+  ) : sort2 // end of [val]
+  val ls2es =
+  labs2explst_make_list1(s2es)
 //
 in
-  s2exp_make_node(s2t, S2Elist(s2es))
-end // end of [s2exp_list]
+  s2exp_make_node(s2t, S2Etyrec(knd, 0, ls2es))
+end // end of [s2exp_list1]
+
+implement
+s2exp_list2
+  (s2es1, s2es2) = let
+//
+  val knd = TYRECflt0
+  val s2t =
+  (
+  if
+  s2explst_islin(s2es1)
+  then
+  the_sort2_vtype else
+  (
+  if
+  s2explst_islin(s2es2)
+  then
+  the_sort2_vtype else the_sort2_type(*~lin*)
+  )
+  ) : sort2 // end of [val]
+  val npf = list_length(s2es1)
+  val ls2es =
+  labs2explst_make_list2(s2es1, s2es2)
+//
+in
+  s2exp_make_node(s2t, S2Etyrec(knd, npf, ls2es))
+end // end of [s2exp_list2]
+
+(* ****** ****** *)
+
+implement
+s2exp_tuple1
+(knd, s2es) = let
+//
+val
+islin =
+s2explst_islin(s2es)
+//
+val s2t0 =
+(
+if
+islin
+then
+(
+if
+knd = 0
+then the_sort2_vtype
+else the_sort2_vtbox
+)
+else
+(
+if
+knd = 0
+then
+the_sort2_type else the_sort2_tbox
+)
+) : sort2 // end of [val]
+//
+val knd =
+(
+if
+islin
+then
+(if knd = 0 then TYRECflt0 else TYRECbox1)
+else
+(if knd = 0 then TYRECflt0 else TYRECbox0)
+) : tyrec // end of [val]
+//
+val
+ls2es = labs2explst_make_list1(s2es)
+//
+in
+  s2exp_make_node(s2t0, S2Etyrec(knd, 0, ls2es))
+end // end of [s2exp_tuple1]
+
+(* ****** ****** *)
+
+implement
+s2exp_tuple2
+(knd, s2es1, s2es2) = let
+//
+val
+islin =
+s2explst_islin(s2es1)
+val
+islin =
+(
+if islin then islin
+else s2explst_islin(s2es2)
+) : bool // end of [val]
+//
+val s2t0 =
+(
+if
+islin
+then
+(
+if
+knd = 0
+then the_sort2_vtype
+else the_sort2_vtbox
+)
+else
+(
+if
+knd = 0
+then
+the_sort2_type else the_sort2_tbox
+)
+) : sort2 // end of [val]
+//
+val knd =
+(
+if
+islin
+then
+(if knd = 0 then TYRECflt0 else TYRECbox1)
+else
+(if knd = 0 then TYRECflt0 else TYRECbox0)
+) : tyrec // end of [val]
+//
+val
+npf = list_length(s2es1)
+val
+ls2es = labs2explst_make_list2(s2es1, s2es2)
+//
+in
+  s2exp_make_node(s2t0, S2Etyrec(knd, npf, ls2es))
+end // end of [s2exp_tuple2]
+
+(* ****** ****** *)
+
+implement
+s2exp_record1
+(knd, ls2es) = let
+//
+val
+islin =
+labs2explst_islin(ls2es)
+//
+val s2t0 =
+(
+if
+islin
+then
+(
+if
+knd = 0
+then the_sort2_vtype
+else the_sort2_vtbox
+)
+else
+(
+if
+knd = 0
+then
+the_sort2_type else the_sort2_tbox
+)
+) : sort2 // end of [val]
+//
+val knd =
+(
+if
+islin
+then
+(if knd = 0 then TYRECflt0 else TYRECbox1)
+else
+(if knd = 0 then TYRECflt0 else TYRECbox0)
+) : tyrec // end of [val]
+//
+in
+  s2exp_make_node(s2t0, S2Etyrec(knd, 0, ls2es))
+end // end of [s2exp_record1]
+
+(* ****** ****** *)
+
+implement
+s2exp_record2
+(knd, ls2es1, ls2es2) = let
+//
+val
+islin =
+labs2explst_islin(ls2es1)
+val
+islin =
+(
+if islin then islin
+else labs2explst_islin(ls2es2)
+) : bool // end of [val]
+//
+val s2t0 =
+(
+if
+islin
+then
+(
+if
+knd = 0
+then the_sort2_vtype
+else the_sort2_vtbox
+)
+else
+(
+if
+knd = 0
+then
+the_sort2_type else the_sort2_tbox
+)
+) : sort2 // end of [val]
+//
+val knd =
+(
+if
+islin
+then
+(if knd = 0 then TYRECflt0 else TYRECbox1)
+else
+(if knd = 0 then TYRECflt0 else TYRECbox0)
+) : tyrec // end of [val]
+//
+val npf = list_length(ls2es1)
+//
+in
+  s2exp_make_node
+  (s2t0, S2Etyrec(knd, npf, ls2es1 + ls2es2))
+end // end of [s2exp_record2]
 
 (* ****** ****** *)
 //
@@ -728,22 +980,93 @@ s2exp_none1(s1e) =
 s2exp_make_node(S2Tnone(), S2Enone1(s1e))
 //
 (* ****** ****** *)
-//
+
+local
+
+fun
+auxlst1
+( xs
+: s2explst
+, i0: int
+, lxs
+: labs2explst_vt
+)
+: labs2explst_vt =
+(
+case+ xs of
+| list_nil() => lxs
+| list_cons(x0, xs) =>
+  (
+    auxlst1(xs, i0, lxs)
+  ) where
+  {
+    val l0 =
+      $LAB.label_make_int(i0)
+    // end of [val]
+    val i0 = i0 + 1
+    val lx = SLABELED(l0, x0)
+    val lxs = list_vt_cons(lx, lxs)
+  } // end of [list_cons]
+) (* end of [auxlst1] *)
+fun
+
+auxlst2
+( xs
+: s2explst
+, ys
+: s2explst
+, i0: int
+, lxs
+: labs2explst_vt
+)
+: labs2explst_vt =
+(
+case+ xs of
+| list_nil() =>
+  (
+    auxlst1(ys, i0, lxs)
+  )
+| list_cons(x0, xs) =>
+  (
+    auxlst2(xs, ys, i0, lxs)
+  ) where
+  {
+    val l0 =
+      $LAB.label_make_int(i0)
+    // end of [val]
+    val i0 = i0 + 1
+    val lx = SLABELED(l0, x0)
+    val lxs = list_vt_cons(lx, lxs)
+  } // end of [list_cons]
+) (* end of [auxlst] *)
+
+in (* in-of-local *)
+
 implement
-s2exp_cast(s2e, s2t) =
-let
-//
-(*
-val () =
-println!("s2exp_cast: s2e = ", s2e)
-val () =
-println!("s2exp_cast: s2t = ", s2t)
-*)
-//
-in
-  s2exp_make_node(s2t, S2Ecast(s2e, s2t))
-end // end of [s2exp_cast]
-//
+labs2explst_make_list1
+  (xs) =
+list_vt2t
+(
+list_vt_reverse
+(
+  auxlst1(xs, 0, list_vt_nil()
+)
+)
+) (* end of [labs2explst_make_list1] *)
+implement
+labs2explst_make_list2
+  (xs1, xs2) =
+list_vt2t
+(
+list_vt_reverse
+(
+  auxlst2(xs1, xs2, 0, list_vt_nil()
+)
+)
+) (* end of [labs2explst_make_list2] *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 local

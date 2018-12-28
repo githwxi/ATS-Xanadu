@@ -78,6 +78,11 @@ typedef s1qualst = $S1E.s1qualst
 //
 (* ****** ****** *)
 //
+typedef labs1exp = $S1E.labs1exp
+typedef labs1explst = $S1E.labs1explst
+//
+(* ****** ****** *)
+//
 typedef sort2 = $S2E.sort2
 typedef sort2opt = $S2E.sort2opt
 typedef sort2lst = $S2E.sort2lst
@@ -96,6 +101,9 @@ typedef s2exp = $S2E.s2exp
 typedef s2eff = $S2E.s2eff
 typedef s2expopt = $S2E.s2expopt
 typedef s2explst = $S2E.s2explst
+//
+typedef labs2exp = $S2E.labs2exp
+typedef labs2explst = $S2E.labs2explst
 //
 (* ****** ****** *)
 //
@@ -394,6 +402,12 @@ trans12_sexplst_ck
 fun
 trans12_sexplst_cks
   (s1es: s1explst, s2ts: sort2lst): s2explst
+//
+(* ****** ****** *)
+//
+fun
+trans12_labsexplst
+  (ls1es: labs1explst): labs2explst
 //
 (* ****** ****** *)
 //

@@ -52,6 +52,8 @@ overload
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/basics.sats"
+//
 #staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
@@ -185,6 +187,78 @@ case+ s2ts of
 (* ****** ****** *)
 
 implement
+sort2_isimp
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+  (
+  case+ s2tb of
+  | T2BASimp(knd, _) => true
+  | _(*non-T2BASimp*) => false
+  )
+| _(*non-S2Tbas*) => false
+)
+implement
+sort2_islin
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+  (
+  case+ s2tb of
+  | T2BASimp
+    (knd, _) =>
+    sortlin(knd) > 0
+  | _(*non-T2BASimp*) => false
+  )
+| _(*non-S2Tbas*) => false
+)
+
+(* ****** ****** *)
+//
+implement
+s2exp_isimp
+  (s2e0) =
+  sort2_isimp(s2e0.sort())
+implement
+s2exp_islin
+  (s2e0) =
+  sort2_islin(s2e0.sort())
+//
+implement
+s2explst_islin
+  (s2es) =
+(
+list_exists<s2exp>(s2es)
+) where
+{
+implement
+list_exists$pred<s2exp>
+  (s2e) =
+  $effmask_all(s2exp_islin(s2e))
+} (* s2explst_islin *)
+//
+implement
+labs2explst_islin
+  (ls2es) =
+(
+list_exists<labs2exp>(ls2es)
+) where
+{
+implement
+list_exists$pred<labs2exp>
+  (ls2e) =
+let
+  val+SLABELED(l, s2e) = ls2e
+in
+  $effmask_all(s2exp_islin(s2e))
+end // end of [let]
+} (* labs2explst_islin *)
+//
+(* ****** ****** *)
+
+implement
 s2varlst_ismem
   (s2vs, s2v0) =
 (
@@ -193,7 +267,7 @@ list_exists<s2var>(s2vs)
 {
 implement
 list_exists$pred<s2var>
-   (x0) = $effmask_all(x0 = s2v0)
+  (s2v) = $effmask_all(s2v0 = s2v)
 } (* end of [s2varlst_ismem] *)
 
 (* ****** ****** *)
@@ -217,12 +291,28 @@ in
 //
 case+
 s2e0.node() of
+//
+(*
+| S2Eint _ => s2e0
+| S2Echr _ => s2e0
+| S2Eflt _ => s2e0
+| S2Estr _ => s2e0
+*)
+//
+(*
+//
+// HX: please note that
+// [sexpdef] cannot appear under
+| S2Ecst _ => s2e0 // a static lam
+*)
+//
 | S2Evar(s2v0) =>
   if
   (s2v0 = s2v1)
   then
   (flag_ := flag+1; s2exp_var(s2v2))
   else s2e0 // end-of-else
+//
 | S2Eapp(s2e1, s2es2) =>
   let
     val
@@ -236,6 +326,8 @@ s2e0.node() of
     s2exp_make_node
     (s2t0, S2Eapp(s2e1, s2es2))
   end
+//
+(*
 | S2Elist(s2es) =>
   let
     val
@@ -246,6 +338,7 @@ s2e0.node() of
     else
     s2exp_make_node(s2t0, S2Elist(s2es))
   end
+*)
 //
 | S2Elam(s2vs, body) =>
   if

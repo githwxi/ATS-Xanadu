@@ -58,6 +58,10 @@ typedef fpath = $FP0.filepath
 (* ****** ****** *)
 
 #staload
+LAB = "./label0.sats"
+typedef label = $LAB.label
+
+#staload
 LEX = "./lexing.sats"
 typedef token = $LEX.token
 
@@ -173,6 +177,10 @@ the_sort2_view : sort2
 //
 val
 the_sort2_tbox : sort2
+(*
+val
+the_sort2_tflt : sort2
+*)
 val
 the_sort2_type : sort2
 //
@@ -538,6 +546,43 @@ vtypedef
 s2txtopt_vt = Option_vt(s2txt)
 //
 (* ****** ****** *)
+
+datatype
+tyrec =
+//
+| TYRECbox0 (* box *)
+| TYRECbox1 (* box *)
+//
+| TYRECflt0 (* flat *)
+(*
+| TYRECflt1 of stamp (* flat *)
+*)
+| TYRECflt2 of string  (* flat *)
+// end of [tyrec]
+
+datatype
+labs2exp =
+| SLABELED of (label, s2exp)
+where
+labs2explst = List0(labs2exp)
+
+vtypedef
+labs2explst_vt = List0_vt(labs2exp)
+
+(* ****** ****** *)
+//
+fun
+print_tyrec: print_type(tyrec)
+fun
+prerr_tyrec: print_type(tyrec)
+fun
+fprint_tyrec: fprint_type(tyrec)
+//
+overload print with print_tyrec
+overload prerr with prerr_tyrec
+overload fprint with fprint_tyrec
+//
+(* ****** ****** *)
 //
 datatype
 s2exp_node =
@@ -581,7 +626,11 @@ s2exp_node =
 | S2Euni of // universal quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
+(*
 | S2Elist of s2explst // HX: temporary use
+*)
+//
+| S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
 | S2Enone0 // of (*void*) // HX: error indication
 | S2Enone1 of s1exp(*src*) // HX: error indication
@@ -591,6 +640,17 @@ s2exp_node =
 (* ****** ****** *)
 //
 fun
+s2exp_get_sort(s2exp): sort2
+//
+overload .sort with s2exp_get_sort
+//
+fun
+s2exp_get_node(s2exp): s2exp_node
+//
+overload .node with s2exp_get_node
+//
+(* ****** ****** *)
+fun
 s2exp_int(i0: int): s2exp
 fun
 s2exp_chr(c0: char): s2exp
@@ -599,6 +659,10 @@ fun
 s2exp_cst(s2c: s2cst): s2exp
 fun
 s2exp_var(s2v: s2var): s2exp
+//
+fun
+s2exp_cast
+(s2e: s2exp, s2t: sort2): s2exp
 //
 fun
 s2exp_apps
@@ -638,7 +702,23 @@ s2exp_exi
 , s2ps: s2explst, s2e0: s2exp): s2exp
 //
 fun
-s2exp_list(s2explst): s2exp
+s2exp_list1(s2explst): s2exp
+fun
+s2exp_list2(s2explst, s2explst): s2exp
+//
+fun
+s2exp_tuple1
+(knd: int, s2es: s2explst): s2exp
+fun
+s2exp_tuple2
+(knd: int, s2explst, s2explst): s2exp
+//
+fun
+s2exp_record1
+(knd: int, lxs: labs2explst): s2exp
+fun
+s2exp_record2
+(knd: int, labs2explst, labs2explst): s2exp
 //
 fun
 s2exp_none0((*void*)): s2exp
@@ -648,25 +728,18 @@ s2exp_none1(s1e: s1exp): s2exp
 (* ****** ****** *)
 //
 fun
-s2exp_get_sort(s2exp): sort2
-//
-overload .sort with s2exp_get_sort
-//
-fun
-s2exp_get_node(s2exp): s2exp_node
-//
-overload .node with s2exp_get_node
-//
-(* ****** ****** *)
-//
-fun
-s2exp_cast(s2exp, sort2): s2exp
-//
-(* ****** ****** *)
-//
-fun
 s2exp_make_node
 (s2t0: sort2, node: s2exp_node): s2exp
+//
+(* ****** ****** *)
+//
+fun
+labs2explst_make_list1
+  (s2es: s2explst): labs2explst
+fun
+labs2explst_make_list2
+  ( s2es1: s2explst
+  , s2es2: s2explst): labs2explst
 //
 (* ****** ****** *)
 //
@@ -722,6 +795,19 @@ overload fprint with fprint_s2hnf
 //
 (* ****** ****** *)
 //
+fun
+print_labs2exp: print_type(labs2exp)
+fun
+prerr_labs2exp: prerr_type(labs2exp)
+fun
+fprint_labs2exp: fprint_type(labs2exp)
+//
+overload print with print_labs2exp
+overload prerr with prerr_labs2exp
+overload fprint with fprint_labs2exp
+//
+(* ****** ****** *)
+//
 abstbox
 fmodenv_tbox = ptr
 typedef
@@ -768,6 +854,24 @@ overload print with print_s2itm
 overload prerr with prerr_s2itm
 overload fprint with fprint_s2itm
 //
+(* ****** ****** *)
+
+fun
+sort2_isimp(x0: sort2): bool
+fun
+sort2_islin(x0: sort2): bool
+
+(* ****** ****** *)
+
+fun
+s2exp_isimp(x0: s2exp): bool
+fun
+s2exp_islin(x0: s2exp): bool
+fun
+s2explst_islin(xs: s2explst): bool
+fun
+labs2explst_islin(lxs: labs2explst): bool
+
 (* ****** ****** *)
 //
 fun
