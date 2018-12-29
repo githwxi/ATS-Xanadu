@@ -203,19 +203,22 @@ case+ xs of
 ) (* end of [auxmargs] *)
 //
 val
-s2t0 =
-auxmargs(arg, trans12_sort(res))
+res = trans12_sort(res)
+val
+s2t0 = auxmargs(arg, res)
 val
 s2c0 = s2cst_make_idst(sid, s2t0)
 //
 val () = the_sexpenv_add_cst(s2c0)
 //
+(*
 val () =
 println!
 ("tran12_decl: aux_stacst0: s2t0 = ", s2t0)
 val () =
 println!
 ("tran12_decl: aux_stacst0: s2c0 = ", s2c0)
+*)
 //
 in
   d2ecl_make_node(loc0, D2Cstacst0(d1c0))
@@ -397,6 +400,105 @@ end // end of [aux_sexpdef]
 (* ****** ****** *)
 
 fun
+aux_abstdef
+( def
+: abstdf1): abstdf2 =
+(
+case+ def of
+| ABSTDF1nil() =>
+  ABSTDF2nil((*void*))
+| ABSTDF1lteq(s1e) =>
+  ABSTDF2lteq(trans12_sexp(s1e))
+| ABSTDF1eqeq(s1e) =>
+  ABSTDF2eqeq(trans12_sexp(s1e))
+) (* end of [aux_abstdef] *)
+
+and
+aux_abstype
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Cabstype
+( knd
+, sid, arg
+, res, def
+) = d1c0.node()
+//
+fun
+auxargs
+( xs
+: t1arglst
+) : sort2lst =
+(
+case+ xs of
+| list_nil() =>
+  (
+  list_nil(*void*)
+  )
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | T1ARGsome(s1t, _) =>
+    list_cons
+    (trans12_sort(s1t), auxargs(xs))
+  )
+) (* end of [auxargs] *)
+//
+fun
+auxmargs
+( xs: t1marglst
+, res: sort2): sort2 =
+(
+case+ xs of
+| list_nil() => res
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | T1MARGlist(t1as) =>
+    S2Tfun
+    (auxargs(t1as), auxmargs(xs, res))
+  )
+) (* end of [auxmargs] *)
+//
+val
+res =
+(
+case+ res of
+| None() => the_sort2_type
+| Some(s1t) => trans12_sort(s1t)
+) : sort2 // end of [val]
+//
+val
+def = aux_abstdef(def)
+//
+val
+s2t0 = auxmargs(arg, res)
+val
+s2c0 = s2cst_make_idst(sid, s2t0)
+//
+val () = the_sexpenv_add_cst(s2c0)
+//
+val () =
+println!
+("\
+tran12_decl:\
+ aux_abstype: s2t0 = ", s2t0)
+val () =
+println!
+("\
+tran12_decl:\
+ aux_abstype: s2c0 = ", s2c0)
+//
+in
+  d2ecl_make_node(loc0, D2Cabstype(d1c0))
+end // end of [aux_abstype]
+
+(* ****** ****** *)
+
+fun
 aux_datasort
 ( d1c0
 : d1ecl): d2ecl = let
@@ -552,6 +654,8 @@ d1c0.node() of
 | D1Csortdef _ => aux_sortdef(d1c0)
 //
 | D1Csexpdef _ => aux_sexpdef(d1c0)
+//
+| D1Cabstype _ => aux_abstype(d1c0)
 //
 | D1Cdatasort _ => aux_datasort(d1c0)
 //

@@ -21,14 +21,14 @@
     "case" "scase"
     "abssort"
     "abstype"
-    "absprop"
-    "absview"
-    "absvtype"
     "sexpdef"
     "typedef"
-    "propdef"
-    "viewdef"
-    "vtypedef"
+;;  "absprop"
+;;  "absview"
+;;  "absvtype"
+;;  "propdef"
+;;  "viewdef"
+;;  "vtypedef"
 )
 ) ;; end of [defvar]
 

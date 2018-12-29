@@ -397,6 +397,8 @@ typedef
 sort0opt = $STAEXP0.sort0opt
 fun
 popt_sort0_anno: parser(sort0opt)
+fun
+popt_idsort0_anno: parser(sort0opt)
 //
 (* ****** ****** *)
 //

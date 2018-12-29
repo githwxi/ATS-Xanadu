@@ -195,7 +195,7 @@ else let
   val s2t2 = trans12_sort(s1t2)
   val s2t3 = trans12_sort(s1t3)
 in
-  S2Tapp(s2t1, list_pair(s2t2, s2t2))
+  S2Tapp(s2t1, list_pair(s2t2, s2t3))
 end // end of [else]
 //
 end // end of [auxapp2]

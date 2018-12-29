@@ -148,6 +148,9 @@ val dtsel_fixty : fixty
 val forall_fixty : fixty
 val exists_fixty : fixty
 //
+val postplus_fixty : fixty
+val postmnus_fixty : fixty
+//
 val backslash_fixty : fixty
 val infixtemp_fixty : fixty
 //
