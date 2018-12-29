@@ -177,7 +177,9 @@ sort2lst_get_at
   (s2ts, n) =
 (
 case+ s2ts of
-| list_nil() => S2Tnone()
+//
+| list_nil() => S2Tnone0()
+//
 | list_cons(s2t0, s2ts) =>
   if n = 0
   then s2t0

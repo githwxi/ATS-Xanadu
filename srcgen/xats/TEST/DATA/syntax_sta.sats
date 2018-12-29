@@ -365,14 +365,16 @@ sortdef nat = {a: int | a >= 0}
 endlocal // end of [local]
 
 (* ****** ****** *)
-////
+//
 datatype
-mylist(a:type+, int) =
+mylist
+(a:type+, int) =
 | mylist_nil(a, 0) of ()
 | {n:nat}
   mylist_cons(a, n+1) of (a, mylist_(a, n))
 and
-mylist2(a:type+, int) =
+mylist2
+(a:type+, int) =
 | mylist2_nil(a, 0) of ()
 | {n:nat}
   mylist2_cons(a, n+1) of (a, mylist2_(a, n))

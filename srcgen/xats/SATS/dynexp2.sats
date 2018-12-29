@@ -137,10 +137,15 @@ overload fprint with fprint_d2itm
 datatype
 d2ecl_node =
 //
-| D2Cnone of ()
-| D2Cnone of (d1ecl)
+| D2Cnone0 of ()
+| D2Cnone1 of (d1ecl)
 //
-| D2Clist of d2eclist // for list of declarations
+(*
+| D2Clist of (d2eclist)
+*)
+//
+| D2Clocal of
+  (d2eclist(*head*), d2eclist(*body*))
 //
 | D2Cabssort of (d1ecl)
 | D2Cstacst0 of (d1ecl)

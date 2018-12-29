@@ -110,7 +110,7 @@ case+ opt of
     | S2TXTsub
         (s2v, _) => s2v.sort()
       // S2TXTsub
-    | _(*error*) => S2Tnone(s1t0)
+    | _(*error*) => S2Tnone1(s1t0)
   ) (* Some_vt *)
 //
 end // end of [auxid]
@@ -248,16 +248,16 @@ s1t0.node() of
 | S1Tint(int) =>
   S2Tint(token2sint(int))
 //
-| S1Tapp _ => S2Tnone(s1t0)
+| S1Tapp _ => S2Tnone1(s1t0)
 //
 | S1Tapp1 _ => auxapp1(s1t0)
 | S1Tapp2 _ => auxapp2(s1t0)
 //
 | S1Tlist _ => auxlist(s1t0)
 //
-| S1Tqual _ => S2Tnone(s1t0)
+| S1Tqual _ => S2Tnone1(s1t0)
 //
-| S1Tnone((*void*)) => S2Tnone()
+| S1Tnone((*void*)) => S2Tnone0()
 //
 end // end of [trans12_sort]
 
@@ -304,7 +304,7 @@ s1a0.node() of
     val s2t =
     (
     case+ opt of
-    | None() => S2Tnone()
+    | None() => S2Tnone0()
     | Some(s1t) => trans12_sort(s1t)
     ) : sort2 // end of [val]
   in
@@ -450,7 +450,7 @@ case+ s1qs of
         trans12_squalst(s1qs, s2vs_, s2ps_)
       ) where
       {
-        val s2t = S2Tnone(*none*)
+        val s2t = S2Tnone0(*none*)
       }
     | Some(s1t) =>
       let
@@ -1025,7 +1025,7 @@ case+
 s2e1.sort() of
 | S2Tfun(s2ts, _) =>
   sort2lst_get_at(s2ts, 0)
-| _(*non-S2Tfun*) => S2Tnone()
+| _(*non-S2Tfun*) => S2Tnone0()
 ) : sort2 // end of [val]
 //
 val s2t3 =
@@ -1034,7 +1034,7 @@ case+
 s2e1.sort() of
 | S2Tfun(s2ts, _) =>
   sort2lst_get_at(s2ts, 1)
-| _(*non-S2Tfun*) => S2Tnone()
+| _(*non-S2Tfun*) => S2Tnone0()
 ) : sort2 // end of [val]
 //
 val s2e2 = trans12_sexp_ck(s1e2, s2t2)
@@ -1380,7 +1380,7 @@ case+ s1es of
       {
         val s2e0 =
         trans12_sexp_ck
-        (s1e0, S2Tnone())
+        (s1e0, S2Tnone0())
         val s2es = auxlst(s1es, s2ts)
       }
     | list_cons

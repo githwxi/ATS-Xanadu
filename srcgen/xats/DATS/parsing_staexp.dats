@@ -2252,6 +2252,8 @@ val tid =
   p_s0eid(buf, err)
 val arg =
   p_t0margseq(buf, err)
+val res =
+  popt_idsort0_anno(buf, err)
 //
 val tok = p_EQ(buf, err)
 //
@@ -2279,7 +2281,7 @@ in
 //
   err := e0;
   d0atype_make_node
-  (loc_res, D0ATYPE(tid, arg, tok, d0cs))
+  (loc_res, D0ATYPE(tid, arg, res, tok, d0cs))
 //
 end // end of [p_d0atype]
 

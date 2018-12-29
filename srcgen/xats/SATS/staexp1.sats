@@ -585,7 +585,8 @@ d1atypelst = List0(d1atype)
 datatype
 d1atype_node =
 | D1ATYPE of
-    (token, t1marglst, d1atconlst)
+  ( token(*name*)
+  , t1marglst, sort1opt, d1atconlst)
   // D1ATYPE
 //
 fun

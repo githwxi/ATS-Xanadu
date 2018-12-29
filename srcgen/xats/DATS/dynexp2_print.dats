@@ -97,10 +97,15 @@ fprint_d2ecl
 (
 case- x0.node() of
 //
-| D2Cnone() =>
-  fprint!(out, "D2Cnone(", ")")
-| D2Cnone(d0c) =>
-  fprint!(out, "D2Cnone(", d0c, ")")
+| D2Cnone0() =>
+  fprint!(out, "D2Cnone0(", ")")
+| D2Cnone1(d1c) =>
+  fprint!(out, "D2Cnone1(", d1c, ")")
+//
+| D2Clocal(d2cs1, d2cs2) =>
+  fprint!
+  ( out
+  , "D2Clocal(", d2cs1, "; ", d2cs2, ")")
 //
 | D2Cabssort(d1c) =>
   fprint!(out, "D2Cabssort(", d1c, ")")
