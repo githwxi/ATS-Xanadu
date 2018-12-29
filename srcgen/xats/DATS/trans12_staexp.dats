@@ -53,6 +53,9 @@ overload
 MAP = "./../SATS/symmap.sats"
 #staload
 ENV = "./../SATS/symenv.sats"
+//
+(* ****** ****** *)
+//
 #staload
 NMS = "./../SATS/nmspace.sats"
 //
@@ -1327,8 +1330,8 @@ s2es =
 list_map<s1exp><s2exp>
   (s1es) where
 {
-  implement
-  list_map$fopr<s1exp><s2exp> = trans12_sexp
+implement
+list_map$fopr<s1exp><s2exp> = trans12_sexp
 }
 } (* end of [trans12_sexplst] *)
 
