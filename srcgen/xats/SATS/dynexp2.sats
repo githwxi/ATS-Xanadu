@@ -56,20 +56,7 @@ D1E = "./dynexp1.sats"
 
 (* ****** ****** *)
 //
-abstype d2cst_tbox
-typedef d2cst = d2cst_tbox
-//
-typedef d2cstlst = List0(d2cst)
-typedef d2cstopt = Option(d2cst)
-//
-(*
-vtypedef d2cstlst_vt = List0_vt(d2cst)
-vtypedef d2cstopt_vt = Option_vt(d2cst)
-*)
-//
-(* ****** ****** *)
-//
-abstype d2con_tbox
+abstype d2con_tbox = ptr
 typedef d2con = d2con_tbox
 //
 typedef d2conlst = List0(d2con)
@@ -82,7 +69,20 @@ vtypedef d2conopt_vt = Option_vt(d2con)
 //
 (* ****** ****** *)
 //
-abstype d2var_tbox
+abstype d2cst_tbox = ptr
+typedef d2cst = d2cst_tbox
+//
+typedef d2cstlst = List0(d2cst)
+typedef d2cstopt = Option(d2cst)
+//
+(*
+vtypedef d2cstlst_vt = List0_vt(d2cst)
+vtypedef d2cstopt_vt = Option_vt(d2cst)
+*)
+//
+(* ****** ****** *)
+//
+abstype d2var_tbox = ptr
 typedef d2var = d2var_tbox
 //
 typedef d2varlst = List0(d2var)
@@ -92,6 +92,45 @@ typedef d2varopt = Option(d2var)
 vtypedef d2varlst_vt = List0_vt(d2var)
 vtypedef d2varopt_vt = Option_vt(d2var)
 *)
+//
+(* ****** ****** *)
+//
+fun
+print_d2con: print_type(d2con)
+fun
+prerr_d2con: prerr_type(d2con)
+fun
+fprint_d2con: fprint_type(d2con)
+//
+overload print with print_d2con
+overload prerr with prerr_d2con
+overload fprint with fprint_d2con
+//
+(* ****** ****** *)
+//
+fun
+print_d2cst: print_type(d2cst)
+fun
+prerr_d2cst: prerr_type(d2cst)
+fun
+fprint_d2cst: fprint_type(d2cst)
+//
+overload print with print_d2cst
+overload prerr with prerr_d2cst
+overload fprint with fprint_d2cst
+//
+(* ****** ****** *)
+//
+fun
+print_d2var: print_type(d2var)
+fun
+prerr_d2var: prerr_type(d2var)
+fun
+fprint_d2var: fprint_type(d2var)
+//
+overload print with print_d2var
+overload prerr with prerr_d2var
+overload fprint with fprint_d2var
 //
 (* ****** ****** *)
 

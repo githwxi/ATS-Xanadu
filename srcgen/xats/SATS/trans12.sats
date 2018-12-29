@@ -412,6 +412,48 @@ trans12_labsexplst
 (* ****** ****** *)
 //
 fun
+the_dexpenv_add
+(tid: sym_t, d2i: d2itm): void
+fun
+the_dexpenv_add_cst(s2c: s2cst): void
+fun
+the_dexpenv_add_var(s2v: s2var): void
+fun
+the_dexpenv_add_varlst(s2vs: s2varlst): void
+//
+fun
+the_dexpenv_find
+  (tid: sym_t): d2itmopt_vt
+fun
+the_dexpenv_qfind
+  (qua: sym_t, tid: sym_t): d2itmopt_vt
+//
+(* ****** ****** *)
+
+absview dexpenv_push_v
+
+(* ****** ****** *)
+//
+fun
+the_dexpenv_pop
+  (dexpenv_push_v | (*none*)): s2imap
+fun
+the_dexpenv_popfree
+  (dexpenv_push_v | (*none*)): (void)
+fun
+the_dexpenv_pushnil
+  ((*void*)): (dexpenv_push_v | void)
+//
+(* ****** ****** *)
+//
+fun
+the_dexpenv_fprint(FILEref): void
+fun
+the_dexpenv_println((*void*)): void
+//
+(* ****** ****** *)
+//
+fun
 trans12_dexp: d1exp -> d2exp 
 fun
 trans12_dexpopt: d1expopt -> d2expopt
