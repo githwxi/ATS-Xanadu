@@ -191,8 +191,6 @@ abstype
 foo(tbox+, view-): vtbox == bar
 
 (* ****** ****** *)
-////
-(* ****** ****** *)
 
 sexpdef
 sqrtrel
@@ -208,9 +206,9 @@ typedef fid_nat = {a:nat} int(a) -> int(a)
 
 (* ****** ****** *)
 
-absvtype xyz(int(*x*), y: int, z: int)
-absvtbox xyz(int(*x*), y: int, z: int) <= int
-absvtflt xyz(int(*x*), y: int, z: int) == int
+abstype xyz(int(*x*), y: int, z: int)
+abstype xyz(int(*x*), y: int, z: int) <= int
+abstype xyz(int(*x*), y: int, z: int) == int
 
 (* ****** ****** *)
 //
@@ -367,7 +365,7 @@ sortdef nat = {a: int | a >= 0}
 endlocal // end of [local]
 
 (* ****** ****** *)
-//
+////
 datatype
 mylist(a:type+, int) =
 | mylist_nil(a, 0) of ()
