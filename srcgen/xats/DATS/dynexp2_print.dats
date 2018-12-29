@@ -68,15 +68,53 @@ fprint_val<s2exp> = fprint_s2exp
 //
 (* ****** ****** *)
 //
-(*
 implement
-fprint_val<d2exp> = fprint_d2exp
-*)
+fprint_val<d2con> = fprint_d2con
+implement
+fprint_val<d2cst> = fprint_d2cst
+implement
+fprint_val<d2var> = fprint_d2var
 //
 (* ****** ****** *)
 //
 implement
 fprint_val<d2ecl> = fprint_d2ecl
+//
+(* ****** ****** *)
+//
+implement
+print_d2con(x0) =
+fprint_d2con(stdout_ref, x0) 
+implement
+prerr_d2con(x0) =
+fprint_d2con(stdout_ref, x0) 
+//
+implement
+fprint_d2con(out, x0) = fprint!(out, "(d2con)")
+//
+(* ****** ****** *)
+//
+implement
+print_d2cst(x0) =
+fprint_d2cst(stdout_ref, x0) 
+implement
+prerr_d2cst(x0) =
+fprint_d2cst(stdout_ref, x0) 
+//
+implement
+fprint_d2cst(out, x0) = fprint!(out, "(d2cst)")
+//
+(* ****** ****** *)
+//
+implement
+print_d2var(x0) =
+fprint_d2var(stdout_ref, x0) 
+implement
+prerr_d2var(x0) =
+fprint_d2var(stdout_ref, x0) 
+//
+implement
+fprint_d2var(out, x0) = fprint!(out, "(d2var)")
 //
 (* ****** ****** *)
 
@@ -127,6 +165,31 @@ case- x0.node() of
 
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+print_d2itm(x0) =
+fprint_d2itm(stdout_ref, x0) 
+implement
+prerr_d2itm(x0) =
+fprint_d2itm(stdout_ref, x0) 
+//
+implement
+fprint_d2itm
+  (out, x0) =
+(
+case+ x0 of
+//
+| D2ITMvar(d2v) =>
+  fprint!(out, "D2ITMvar(", d2v, ")")
+//
+| D2ITMcst(d2c) =>
+  fprint!(out, "D2ITMvar(", d2c, ")")
+//
+| D2ITMcon(d2cs) =>
+  fprint!(out, "D2ITMcst(", d2cs, ")")
+//
+)
 (* ****** ****** *)
 
 (* end of [xats_dynexp2_print.dats] *)

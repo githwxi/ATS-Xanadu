@@ -446,7 +446,7 @@ case+ ls2e of
 )
 
 (* ****** ****** *)
-
+//
 implement
 print_s2itm(x0) =
 fprint_s2itm(stdout_ref, x0) 

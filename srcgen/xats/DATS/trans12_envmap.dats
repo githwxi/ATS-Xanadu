@@ -330,7 +330,7 @@ the_sortenv_pjoinwth1(map) = let
 end // end of [the_sortenv_pjoinwth1]
 
 (* ****** ****** *)
-//
+
 implement
 the_sortenv_fprint
   (out) = let
@@ -556,7 +556,7 @@ the_sexpenv_pushnil
 } // end of [the_sexpenv_pushnil]
 
 (* ****** ****** *)
-//
+
 implement
 the_sexpenv_fprint
   (out) = let
@@ -583,6 +583,90 @@ in
 end // end of [the_sexpenv_println]
 
 (* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+dexpenv_push_v = unit_v
+//
+vtypedef d2ienv = symenv(d2itm)
+//
+extern
+prfun
+vbox_make_viewptr
+{a:vt0p}{l:addr}
+( pf: a @ l
+| p0: ptr(l)):<> vbox(a @ l)
+//
+val
+(pf | p0) =
+$ENV.symenv_make_nil((*void*))
+//
+prval
+pfbox =
+vbox_make_viewptr{d2ienv}(pf | p0)
+//
+fun
+the_nmspace_find
+  (tid: sym_t): d2itmopt_vt = let
+  fun
+  fopr
+  (menv: fmodenv): d2itmopt_vt =
+    ans where
+  {
+    val (pf, fpf | p0) =
+      fmodenv_get_d2imap(menv)
+    val ans =
+      $MAP.symmap_search(!p0, tid)
+    prval () =
+      minus_v_addback(fpf, pf | menv)
+    // end of [prval]
+  }
+in
+  $NMS.the_nmspace_find(lam(x) => fopr(x))
+end // end of [the_nmspace_find]
+//
+in (* in-of-local *)
+
+implement
+the_dexpenv_add
+  (sym, d2i) = let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_insert(!p0, sym, d2i)
+end // end of [the_dexpenv_add]
+
+(* ****** ****** *)
+
+implement
+the_dexpenv_fprint
+  (out) = let
+//
+prval vbox(pf) = pfbox
+//
+in (* let *)
+//
+$effmask_ref
+(
+  $ENV.fprint_symenv_top
+  ( out, !p0
+  , lam(out, x) => fprint_d2itm(out, x))
+)
+//
+end // end of [the_dexpenv_print]
+
+implement
+the_dexpenv_println
+  ((*void*)) = let
+  val out = stdout_ref
+in
+  the_dexpenv_fprint(out); fprint_newline(out)
+end // end of [the_dexpenv_println]
 
 end // end of [local]
 
