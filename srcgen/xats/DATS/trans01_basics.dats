@@ -254,15 +254,22 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-sexpid_sym(tok) =
-(
+sexpid_sym(tok) = let
+//
+val () =
+println!
+("sexpid_sym: tok = ", tok)
+//
+in
+//
 case-
 tok.node() of
 //
+| T_OP_sym(nm) => $SYM.symbol_make(nm)
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 | T_IDENT_sym(nm) => $SYM.symbol_make(nm)
 //
-) (* end of [sexpid_sym] *)
+end (* end of [sexpid_sym] *)
 
 (* ****** ****** *)
 
@@ -272,6 +279,7 @@ dexpid_sym(tok) =
 case-
 tok.node() of
 //
+| T_OP_sym(nm) => $SYM.symbol_make(nm)
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 | T_IDENT_sym(nm) => $SYM.symbol_make(nm)
 | T_IDENT_srp(nm) => $SYM.symbol_make(nm)
