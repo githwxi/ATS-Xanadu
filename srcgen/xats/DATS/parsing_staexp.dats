@@ -458,6 +458,9 @@ end // end of [p_sq0eid]
 (* ****** ****** *)
 //
 (*
+idsort0::
+  | s0tid
+//
 atmsort0::
 //
   | s0tid
@@ -472,6 +475,9 @@ sort0seq_COMMA::
 //
 *)
 //
+extern
+fun
+p_idsort0: parser(sort0)
 extern
 fun
 p_atmsort0: parser(sort0)
@@ -530,7 +536,48 @@ end // end of [p_sort0]
 end // end of [local]
 
 (* ****** ****** *)
-
+//
+implement
+p_idsort0
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+val tnd = tok.node()
+//
+(*
+val () =
+println!
+("p_idsort0: e0 = ", e0)
+val () =
+println!
+("p_idsort0: tok = ", tok)
+*)
+//
+in
+//
+case+ tnd of
+//
+| _ when
+  t_s0tid(tnd) =>
+  let
+    val id = p_s0tid(buf, err)
+  in
+    err := e0;
+    sort0_make_node(id.loc(), S0Tid(id))
+  end // end of [t_s0tid]
+| _ (* error *) =>
+  let
+    val () = (err := e0 + 1)
+    // HX: indicating a parsing error
+  in
+    sort0_make_node(tok.loc(), S0Tnone(tok))
+  end (* this-is-a-case-of-error *)
+//
+end // end-of-let // end of [p_idsort0]
+//
+(* ****** ****** *)
+//
 implement
 p_atmsort0
   (buf, err) = let
@@ -1119,6 +1166,37 @@ tok.node() of
 | _(*non-COLON*) => None(*void*)
 //
 end // end of [popt_sort0_anno]
+
+(* ****** ****** *)
+
+implement
+popt_idsort0_anno
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+(*
+val ((*void*)) =
+println!
+("popt_idsort0_anno: tok = ", tok)
+*)
+//
+in (* in-of-let *)
+//
+case+
+tok.node() of
+| T_COLON() => let
+    val () = buf.incby1()
+    val s0t = p_atmsort0(buf, err)
+  in
+    let
+      val () = err := e0 in Some(s0t)
+    end
+  end // end of [T_COLON]
+| _(*non-COLON*) => None(*void*)
+//
+end // end of [popt_idsort0_anno]
 
 (* ****** ****** *)
 

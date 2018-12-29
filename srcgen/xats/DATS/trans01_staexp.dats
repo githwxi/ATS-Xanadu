@@ -44,14 +44,15 @@ UN = "prelude/SATS/unsafe.sats"
 SYM = "./../SATS/symbol.sats"
 #staload
 FIX = "./../SATS/fixity.sats"
-//
 #staload
 ENV = "./../SATS/symenv.sats"
 //
-(* ****** ****** *)
-
 #staload
 LOC = "./../SATS/location.sats"
+//
+(* ****** ****** *)
+//
+overload = with $SYM.eq_symbol_symbol
 overload + with $LOC.location_combine
 overload print with $LOC.print_location
 
@@ -322,7 +323,16 @@ tok.node() of
 ) : sym_t // end of [val]
 //
 val opt =
-the_fixtyenv_search(sym)
+(
+ifcase
+| sym= // '+' is special
+  $SYM.ADD_symbol =>
+  Some_vt($FIX.postplus_fixty)
+| sym= // '+' is special
+  $SYM.SUB_symbol =>
+  Some_vt($FIX.postmnus_fixty)
+| _(*else*) => the_fixtyenv_search(sym)
+) : fixtyopt_vt // end of [val]
 //
 val s1t0 =
 sort1_make_node(loc, S1Tid(sym))

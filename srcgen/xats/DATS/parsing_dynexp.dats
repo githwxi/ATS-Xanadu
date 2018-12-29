@@ -3172,7 +3172,7 @@ abstype ::=
       p_t0margseq(buf, err)
     // end of [val]
     val anno =
-      popt_sort0_anno(buf, err)
+      popt_idsort0_anno(buf, err)
     // end of [val]
     val tdef = p_abstdf0(buf, err)
     val loc_res =

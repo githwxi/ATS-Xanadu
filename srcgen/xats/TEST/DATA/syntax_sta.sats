@@ -93,6 +93,10 @@ sexpdef ff = the_false_bool
 
 (* ****** ****** *)
 
+#stacst foo(tbox+, tflt-): prop
+
+(* ****** ****** *)
+
 #stacst
 add(x: int, y: int): int
 
@@ -165,8 +169,6 @@ typedef
 int2_rec_box = ${l0=int | l1= int}
 
 (* ****** ****** *)
-////
-(* ****** ****** *)
 
 datasort
 ilist =
@@ -175,10 +177,21 @@ ilist =
 
 (* ****** ****** *)
 
-abstype foo(tbox+, prop-)
-abstbox foo(tbox+, view-) == bar
-abstflt foo(tflt+, view-) <= bar
+abstype
+foo(tbox+, prop-): type
+abstype
+foo(tbox+, view-): tbox == bar
+abstype
+foo(tflt+, view-): prop <= bar
+abstype
+foo(tflt+, view-): view <= bar
+abstype
+foo(tbox+, view-): vtype == bar
+abstype
+foo(tbox+, view-): vtbox == bar
 
+(* ****** ****** *)
+////
 (* ****** ****** *)
 
 sexpdef

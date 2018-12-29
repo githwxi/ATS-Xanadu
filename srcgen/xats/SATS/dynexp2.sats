@@ -51,6 +51,10 @@ D1E = "./dynexp1.sats"
   typedef d1eclist = $D1E.d1eclist
 //
 (* ****** ****** *)
+
+#staload "./staexp2.sats"
+
+(* ****** ****** *)
 //
 abstype d2cst_tbox
 typedef d2cst = d2cst_tbox
@@ -148,6 +152,12 @@ d2ecl_node =
 | D2Cdatasort of (d1ecl)
 //
 // end of [d2ecl_node]
+//
+and
+abstdf2 =
+  | ABSTDF2nil of () // unspecified
+  | ABSTDF2lteq of s2exp // erasure
+  | ABSTDF2eqeq of s2exp // definition
 //
 (* ****** ****** *)
 //

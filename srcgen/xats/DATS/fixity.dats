@@ -143,6 +143,13 @@ infixtemp_prcdv = 0 // for temporary infix status
 (* ****** ****** *)
 
 implement
+postplus_fixty = FIXTYpos(0)
+implement
+postmnus_fixty = FIXTYpos(0)
+
+(* ****** ****** *)
+
+implement
 backslash_fixty =
 FIXTYpre
 (backslash_prcdv)
