@@ -780,10 +780,12 @@ fprint_d0atype
   (out, x0) =
 (
 case+ x0.node() of
-| D0ATYPE(tid, argopt, teq, d0cs) =>
+| D0ATYPE(tid, arg, res, teq, d0cs) =>
   fprint!
-  ( out, "D0ATYPE("
-  , tid, "; ", argopt, "; ", teq, "; ", d0cs, ")")
+  ( out
+  , "D0ATYPE("
+  , tid, "; "
+  , arg, "; ", res, "; ", teq, "; ", d0cs, ")")
 ) (* end of [fprint_d0atype] *)
 
 (* ****** ****** *)

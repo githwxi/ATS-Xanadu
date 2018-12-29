@@ -2588,13 +2588,18 @@ in
 case+
 d0t0.node() of
 | D0ATYPE
-  (deid, arg0, _, d0cs) => let
+  (deid, arg, res, teq, d0cs) => let
+//
     val-
     I0DNTsome(tok) = deid.node()
-    val arg1 = trans01_tmarglst(arg0)
+//
+    val res = trans01_sortopt(res)
+    val arg = trans01_tmarglst(arg)
+//
     val d1cs = trans01_datconlst(d0cs)
+//
   in
-    d1atype_make_node(loc0, D1ATYPE(tok, arg1, d1cs))
+    d1atype_make_node(loc0, D1ATYPE(tok, arg, res, d1cs))
   end // end of [D0ATYPE]
 //
 end // end of [aux_d0atype]

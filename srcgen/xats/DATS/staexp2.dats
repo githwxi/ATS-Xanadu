@@ -634,7 +634,7 @@ s2t_res =
 case+
 s2f0.sort() of
 | S2Tfun(_, s2t) => s2t
-| _(*non-S2Tfun*) => S2Tnone()
+| _(*non-S2Tfun*) => S2Tnone0()
 ) : sort2 // end of [val]
 //
 in
@@ -973,11 +973,11 @@ end // end of [s2exp_record2]
 //
 implement
 s2exp_none0() =
-s2exp_make_node(S2Tnone(), S2Enone0())
+s2exp_make_node(S2Tnone0(), S2Enone0())
 //
 implement
 s2exp_none1(s1e) =
-s2exp_make_node(S2Tnone(), S2Enone1(s1e))
+s2exp_make_node(S2Tnone0(), S2Enone1(s1e))
 //
 (* ****** ****** *)
 

@@ -128,8 +128,8 @@ sort2 =
 //
 | S2Tapp of (sort2(*fun*), sort2lst(*arg*))
 //
-| S2Tnone of (sort1) // HX: error indication
-| S2Tnone // of (*void*) // HX: error indication
+| S2Tnone0 // of (*void*) // HX: error indication
+| S2Tnone1 of sort1(*src*) // HX: error indication
 // end of [sort2]
 
 and t2bas =

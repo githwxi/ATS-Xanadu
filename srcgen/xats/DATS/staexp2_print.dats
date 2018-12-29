@@ -136,14 +136,18 @@ case+ s2t0 of
   fprint!(out, "S2Tfun(", ")")
 | S2Tfun(s2ts, s2t1) =>
   fprint!
-  (out, "S2Tfun(", s2ts, "; ", s2t1, ")")
+  ( out
+  , "S2Tfun(", s2ts, "; ", s2t1, ")")
 //
 | S2Tapp(s2t1, s2ts) =>
   fprint!
-  (out, "S2Tapp(", s2t1, "; ", s2ts, ")")
+  ( out
+  , "S2Tapp(", s2t1, "; ", s2ts, ")")
 //
-| S2Tnone() => fprint!(out, "S2Tnone(", ")")
-| S2Tnone(s1t) => fprint!(out, "S2Tnone(", s1t, ")")
+| S2Tnone0() =>
+  fprint!(out, "S2Tnone0(", ")")
+| S2Tnone1(s1t) =>
+  fprint!(out, "S2Tnone1(", s1t, ")")
 //
 ) (* end of [fprint_sort2] *)
 

@@ -262,7 +262,7 @@ def0.node() of
         case+ opt of
         | None() =>
           (
-            S2TXTsrt(S2Tnone())
+            S2TXTsrt(S2Tnone0())
           )
         | Some(s1t) => trans12_stxt(s1t)
       ) : s2txt // end of [val]
@@ -272,7 +272,7 @@ def0.node() of
         case+ tx0 of
         | S2TXTsrt(s2t) => s2t
         | S2TXTsub(s2v, _) => s2v.sort()
-        | S2TXTerr((*void*)) => S2Tnone()
+        | S2TXTerr((*void*)) => S2Tnone0()
       ) : sort2 // end of [val]
 //
       val id0 =
@@ -658,6 +658,17 @@ d1c0.node() of
 | D1Cabstype _ => aux_abstype(d1c0)
 //
 | D1Cdatasort _ => aux_datasort(d1c0)
+//
+| D1Clocal
+  (d1cs1, d1cs2) => let
+    val
+    d2cs1 = trans12_declist(d1cs1)
+    val
+    d2cs2 = trans12_declist(d1cs2)
+  in
+    d2ecl_make_node
+    (loc0, D2Clocal(d2cs1, d2cs2))
+  end // end of [D1Clocal]
 //
 | _(*rest-of-D1ECL*) => d2ecl_none1(d1c0)
 //

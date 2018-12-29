@@ -69,20 +69,20 @@ d2ecl_get_node(x0) = x0.d2ecl_node
 
 implement
 d2ecl_none0
-(loc) =
+(loc0) =
 d2ecl_make_node
-( loc
-, D2Cnone()
+(
+  loc0, D2Cnone0()
 )
 implement
 d2ecl_none1
-(d0c) =
+(d0c0) =
 d2ecl_make_node
-( loc
-, D2Cnone(d0c)
+(
+loc0, D2Cnone1(d0c0)
 ) where
 {
-  val loc = d0c.loc()
+  val loc0 = d0c0.loc()
 }
 //
 implement

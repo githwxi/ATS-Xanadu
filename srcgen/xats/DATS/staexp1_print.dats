@@ -530,10 +530,11 @@ fprint_d1atype
   (out, x0) =
 (
 case+ x0.node() of
-| D1ATYPE(tok, t1mas, d1cs) =>
+| D1ATYPE(tok, arg, res, d1cs) =>
   fprint!
   ( out
-  , "D1ATYPE(", tok, "; ", t1mas, "; ", d1cs, ")")
+  , "D1ATYPE("
+  , tok, "; ", arg, "; ", res, "; ", d1cs, ")")
 ) (* end of [fprint_d1atype] *)
 
 (* ****** ****** *)
