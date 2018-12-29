@@ -159,8 +159,10 @@ typedef fint = int -<cloref> int
 typedef int2_flt = @(int | int)
 typedef int2_box = $(int | int)
 
-typedef int2_rec_flt = @{l0=int | l1= int}
-typedef int2_rec_box = ${l0=int | l1= int}
+typedef
+int2_rec_flt = @{l0=int | l1= int}
+typedef
+int2_rec_box = ${l0=int | l1= int}
 
 (* ****** ****** *)
 ////

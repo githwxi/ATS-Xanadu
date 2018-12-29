@@ -19,9 +19,9 @@ $(WCL) \
 xats/SATS/*.sats \
 xats/DATS/*.dats \
 xats/CATS/*.cats \
-util/SATS/*.sats \
-util/DATS/*.dats \
-util/SATS/Posix/*.sats \
-util/DATS/Posix/*.dats \
+xutl/SATS/*.sats \
+xutl/DATS/*.dats \
+xutl/SATS/Posix/*.sats \
+xutl/DATS/Posix/*.dats \
 
 ###### end of [Makefile_stat] ######
