@@ -120,6 +120,20 @@ stamper = $STM.stamper_new()
 in (* in-of-local *)
 
 implement
+s2cst_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
 s2var_stamp_new() = $STM.stamper_getinc(stamper)
 
 end // end of [local]
@@ -135,20 +149,6 @@ in (* in-of-local *)
 
 implement
 s2xtv_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
-s2cst_stamp_new() = $STM.stamper_getinc(stamper)
 
 end // end of [local]
 

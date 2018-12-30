@@ -146,6 +146,16 @@ typedef d1ecl = $D1E.d1ecl
 typedef d1eclist = $D1E.d1eclist
 
 (* ****** ****** *)
+//
+typedef d2con = $D2E.d2con
+typedef d2cst = $D2E.d2cst
+typedef d2var = $D2E.d2var
+//
+typedef d2conlst = $D2E.d2conlst
+typedef d2cstlst = $D2E.d2cstlst
+typedef d2varlst = $D2E.d2varlst
+//
+(* ****** ****** *)
 
 typedef d2exp = $D2E.d2exp
 typedef d2explst = $D2E.d2explst
@@ -415,11 +425,11 @@ fun
 the_dexpenv_add
 (tid: sym_t, d2i: d2itm): void
 fun
-the_dexpenv_add_cst(s2c: s2cst): void
+the_dexpenv_add_cst(d2c: d2cst): void
 fun
-the_dexpenv_add_var(s2v: s2var): void
+the_dexpenv_add_var(d2v: d2var): void
 fun
-the_dexpenv_add_varlst(s2vs: s2varlst): void
+the_dexpenv_add_varlst(d2vs: d2varlst): void
 //
 fun
 the_dexpenv_find

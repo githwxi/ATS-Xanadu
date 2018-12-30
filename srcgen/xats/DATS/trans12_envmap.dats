@@ -644,6 +644,25 @@ end // end of [the_dexpenv_add]
 (* ****** ****** *)
 
 implement
+the_dexpenv_add_var
+  (d2v) =
+(
+let
+//
+  val
+  sym = d2v.sym()
+//
+  prval
+  vbox(pf) = pfbox
+//
+in
+  $ENV.symenv_insert(!p0, sym, D2ITMvar(d2v))
+end
+) (* end of [the_dexpenv_add_var] *)
+
+(* ****** ****** *)
+
+implement
 the_dexpenv_fprint
   (out) = let
 //

@@ -96,6 +96,28 @@ vtypedef d2varopt_vt = Option_vt(d2var)
 (* ****** ****** *)
 //
 fun
+d2con_stamp_new(): stamp
+fun
+d2cst_stamp_new(): stamp
+fun
+d2var_stamp_new(): stamp
+//
+(* ****** ****** *)
+//
+fun
+d2con_get_sym: d2con -> sym_t
+fun
+d2cst_get_sym: d2cst -> sym_t
+fun
+d2var_get_sym: d2var -> sym_t
+//
+overload .sym with d2con_get_sym
+overload .sym with d2cst_get_sym
+overload .sym with d2var_get_sym
+//
+(* ****** ****** *)
+//
+fun
 print_d2con: print_type(d2con)
 fun
 prerr_d2con: prerr_type(d2con)
