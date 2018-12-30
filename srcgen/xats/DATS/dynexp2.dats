@@ -104,6 +104,8 @@ in (* in-of-local *)
 
 implement
 d2con_get_sym(x0) = x0.d2con_sym
+implement
+d2con_get_stamp(x0) = x0.d2con_stamp
 
 end // end of [local]
 
@@ -123,6 +125,8 @@ in (* in-of-local *)
 
 implement
 d2cst_get_sym(x0) = x0.d2cst_sym
+implement
+d2cst_get_stamp(x0) = x0.d2cst_stamp
 
 end // end of [local]
 
@@ -142,6 +146,8 @@ in (* in-of-local *)
 
 implement
 d2var_get_sym(x0) = x0.d2var_sym
+implement
+d2var_get_stamp(x0) = x0.d2var_stamp
 
 end // end of [local]
 

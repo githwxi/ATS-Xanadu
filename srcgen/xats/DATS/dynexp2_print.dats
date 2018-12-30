@@ -40,7 +40,26 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/label0.sats"
+#staload
+STM = "./../SATS/stamp0.sats"
+#staload
+SYM = "./../SATS/symbol.sats"
+overload
+fprint with $STM.fprint_stamp
+overload
+fprint with $SYM.fprint_symbol
+//
+(* ****** ****** *)
+//
+#staload
+LAB = "./../SATS/label0.sats"
+overload
+fprint with $LAB.fprint_label
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/basics.sats"
+//
 #staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/staexp0.sats"
@@ -90,7 +109,16 @@ prerr_d2con(x0) =
 fprint_d2con(stdout_ref, x0) 
 //
 implement
-fprint_d2con(out, x0) = fprint!(out, "(d2con)")
+fprint_d2con
+  (out, x0) =
+(
+  fprint!
+  (out, sym, "(", stamp, ")")
+) where
+{
+  val sym = x0.sym()
+  val stamp = x0.stamp()
+} (* end of [fprint_d2con] *)
 //
 (* ****** ****** *)
 //
@@ -102,7 +130,16 @@ prerr_d2cst(x0) =
 fprint_d2cst(stdout_ref, x0) 
 //
 implement
-fprint_d2cst(out, x0) = fprint!(out, "(d2cst)")
+fprint_d2cst
+  (out, x0) =
+(
+  fprint!
+  (out, sym, "(", stamp, ")")
+) where
+{
+  val sym = x0.sym()
+  val stamp = x0.stamp()
+} (* end of [fprint_d2cst] *)
 //
 (* ****** ****** *)
 //
@@ -114,7 +151,16 @@ prerr_d2var(x0) =
 fprint_d2var(stdout_ref, x0) 
 //
 implement
-fprint_d2var(out, x0) = fprint!(out, "(d2var)")
+fprint_d2var
+  (out, x0) =
+(
+  fprint!
+  (out, sym, "(", stamp, ")")
+) where
+{
+  val sym = x0.sym()
+  val stamp = x0.stamp()
+} (* end of [fprint_d2var] *)
 //
 (* ****** ****** *)
 
