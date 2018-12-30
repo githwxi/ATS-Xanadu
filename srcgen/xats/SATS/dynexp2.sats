@@ -118,6 +118,19 @@ overload .sym with d2var_get_sym
 (* ****** ****** *)
 //
 fun
+d2con_get_stamp(d2con): stamp
+fun
+d2cst_get_stamp(d2cst): stamp
+fun
+d2var_get_stamp(d2var): stamp
+//
+overload .stamp with d2con_get_stamp
+overload .stamp with d2cst_get_stamp
+overload .stamp with d2var_get_stamp
+//
+(* ****** ****** *)
+//
+fun
 print_d2con: print_type(d2con)
 fun
 prerr_d2con: prerr_type(d2con)
