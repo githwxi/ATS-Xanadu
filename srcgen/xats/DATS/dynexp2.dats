@@ -50,6 +50,105 @@ UN = "prelude/SATS/unsafe.sats"
 
 local
 
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+d2con_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+d2cst_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+d2var_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d2con_tbox = $rec{
+//
+  d2con_sym= sym_t // name
+, d2con_stamp= stamp // unicity
+//
+} (* end of [d2con_tbox] *)
+
+in (* in-of-local *)
+
+implement
+d2con_get_sym(x0) = x0.d2con_sym
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d2cst_tbox = $rec{
+//
+  d2cst_sym= sym_t // name
+, d2cst_stamp= stamp // unicity
+//
+} (* end of [d2cst_tbox] *)
+
+in (* in-of-local *)
+
+implement
+d2cst_get_sym(x0) = x0.d2cst_sym
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d2var_tbox = $rec{
+//
+  d2var_sym= sym_t // name
+, d2var_stamp= stamp // unicity
+//
+} (* end of [d2var_tbox] *)
+
+in (* in-of-local *)
+
+implement
+d2var_get_sym(x0) = x0.d2var_sym
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
 absimpl
 d2ecl_tbox = $rec{
   d2ecl_loc= loc_t
