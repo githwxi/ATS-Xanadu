@@ -959,7 +959,7 @@ then let
   ) : s2explst
   val s2e3 = trans12_sexp(s1e3)
 in
-  s2exp_fun_nil(npf, s2es, s2e3)
+  s2exp_fun_all(npf, s2es, s2e3)
 end // end of [then]
 else
 (
@@ -1418,12 +1418,92 @@ case+ lx0 of
   (l0, _, x0) =>
   (
   case- l0.node() of
-  | L0ABsome(l0) =>
-    SLABELED(l0, trans12_sexp(x0))
+  | L0ABsome(l0) => SLABELED(l0, trans12_sexp(x0))
   )
 )
 //
 } (* trans12_labsexplst *)
+
+(* ****** ****** *)
+
+implement
+trans12_datype
+  (d1t) = let
+//
+val
+res =
+(
+case+ res of
+| None() => the_sort2_tbox
+| Some(s1t) => trans12_sort(s1t)
+) : sort2 // end of [val]
+//
+  val
+  s2t0 = auxmargs(arg, res)
+//
+in
+  s2cst_make_idst(sid, s2t0)
+end where
+{
+//
+val+
+D1ATYPE
+( sid, arg
+, res, d1cs) = d1t.node()
+//
+fun
+auxargs
+( xs
+: t1arglst
+) : sort2lst =
+(
+case+ xs of
+| list_nil() =>
+  (
+  list_nil(*void*)
+  )
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | T1ARGsome(s1t, _) =>
+    list_cons
+    (trans12_sort(s1t), auxargs(xs))
+  )
+) (* end of [auxargs] *)
+//
+fun
+auxmargs
+( xs: t1marglst
+, res: sort2): sort2 =
+(
+case+ xs of
+| list_nil() => res
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | T1MARGlist(t1as) =>
+    S2Tfun
+    (auxargs(t1as), auxmargs(xs, res))
+  )
+) (* end of [auxmargs] *)
+//
+} (* end of [trans12_datype] *)
+
+(* ****** ****** *)
+
+implement
+trans12_datypelst
+  (xs) =
+list_vt2t
+(
+list_map<d1atype><s2cst>(xs)
+) where
+{
+//
+implement
+list_map$fopr<d1atype><s2cst> = trans12_datype
+//
+} (* trans12_datypelst *)
 
 (* ****** ****** *)
 

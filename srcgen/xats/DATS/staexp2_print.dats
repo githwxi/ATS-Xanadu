@@ -225,7 +225,12 @@ fprint_s2cst
 val () =
 fprint!(out, x0.sym())
 val () =
-fprint!(out, "(", x0.stamp(), ")")
+fprint!
+(out, "(", x0.stamp(), ")")
+(*
+val () =
+fprint!(out, ": ", x0.sort())
+*)
 //
 } (* end of [fprint_s2cst] *)
 //

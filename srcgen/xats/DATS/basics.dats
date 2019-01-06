@@ -80,7 +80,8 @@ end // end of [sortprf]
 implement
 sortpol(knd) =
 let
-  val knd = knd >> 3
+  val
+  knd = (knd >> 3)
 in
   if knd <= 1 then knd else ~1
 end // end of [sortpol]
@@ -117,6 +118,30 @@ val () =
 assertloc(sortpol(VTYPESORT10) < 0)
 //
 *)
+(* ****** ****** *)
+
+implement
+sortpolpos
+  (knd) = let
+//
+val knd = g0i2u(knd)
+val knd = knd land 07u
+//
+in
+  POLPOS(g0uint2int(knd))
+end // end of [sortpolpos]
+
+implement
+sortpolneg
+  (knd) = let
+//
+val knd = g0i2u(knd)
+val knd = knd land 07u
+//
+in
+  POLNEG(g0uint2int(knd))
+end // end of [sortpolneg]
+
 (* ****** ****** *)
 
 implement

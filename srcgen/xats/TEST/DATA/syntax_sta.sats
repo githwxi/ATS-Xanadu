@@ -177,6 +177,19 @@ ilist =
 
 (* ****** ****** *)
 
+datatype
+mylist
+(a:type+)(int) =
+| mylist_nil(a)(0) of ()
+| {n:nat}
+  mylist_cons(a)(n+1) of (a, mylist_(a)(n))
+where
+  sortdef nat = {a: int | a >= 0}
+  typedef mylist_(a:type)(n:int) = mylist(a)(n)
+endwhere
+////
+(* ****** ****** *)
+
 abstype
 foo(tbox+, prop-): type
 abstype
@@ -362,7 +375,7 @@ sortdef pos = {a: int | a > 0}
 sortdef neg = {a: int | a < 0}
 sortdef nat = {a: int | a >= 0}
 
-endlocal // end of [local]
+endlocal
 
 (* ****** ****** *)
 //

@@ -833,6 +833,14 @@ val () =
   the_sexpenv_println((*void*))
 )
 //
+val () =
+println!
+("process_nil: the_dexpenv =")
+val () =
+(
+  the_dexpenv_println((*void*))
+)
+//
 } (* end of [if] *)
 //
 end // end of [process_nil]

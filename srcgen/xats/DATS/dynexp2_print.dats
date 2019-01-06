@@ -112,8 +112,11 @@ implement
 fprint_d2con
   (out, x0) =
 (
-  fprint!
-  (out, sym, "(", stamp, ")")
+fprint!
+(out, sym, "(", stamp, ")");
+// (*
+fprint!(out, ": ", x0.type())
+// *)
 ) where
 {
   val sym = x0.sym()
@@ -133,8 +136,11 @@ implement
 fprint_d2cst
   (out, x0) =
 (
-  fprint!
-  (out, sym, "(", stamp, ")")
+fprint!
+(out, sym, "(", stamp, ")");
+// (*
+fprint!(out, ": ", x0.type())
+// *)
 ) where
 {
   val sym = x0.sym()
@@ -206,6 +212,8 @@ case- x0.node() of
 //
 | D2Cdatasort(d1c) =>
   fprint!(out, "D2Cdatasort(", d1c, ")")
+| D2Cdatatype(d1c) =>
+  fprint!(out, "D2Cdatatype(", d1c, ")")
 //
 ) (* end of [fprint_d2ecl] *)
 
@@ -226,14 +234,14 @@ fprint_d2itm
 (
 case+ x0 of
 //
-| D2ITMvar(d2v) =>
-  fprint!(out, "D2ITMvar(", d2v, ")")
-//
-| D2ITMcst(d2c) =>
-  fprint!(out, "D2ITMvar(", d2c, ")")
-//
 | D2ITMcon(d2cs) =>
-  fprint!(out, "D2ITMcst(", d2cs, ")")
+  fprint!(out, "D2ITMcon(", d2cs, ")")
+//
+| D2ITMcst(d2c0) =>
+  fprint!(out, "D2ITMcst(", d2c0, ")")
+//
+| D2ITMvar(d2v0) =>
+  fprint!(out, "D2ITMvar(", d2v0, ")")
 //
 )
 (* ****** ****** *)

@@ -213,6 +213,13 @@ fun
 sort2_is_impred(sort2): bool
 
 (* ****** ****** *)
+
+fun
+sort2_polpos(s2t: sort2): sort2
+fun
+sort2_polneg(s2t: sort2): sort2
+
+(* ****** ****** *)
 //
 fun
 print_sort2: print_type(sort2)
@@ -385,6 +392,11 @@ typedef s2varset_t = s2varset_tbox
 //
 absvtype s2varset_vtbox
 vtypedef s2varset_vt = s2varset_vtbox
+//
+(* ****** ****** *)
+//
+fun
+s2var_is_nil(s2var): bool
 //
 (* ****** ****** *)
 //
@@ -680,6 +692,10 @@ s2exp_app2
 //
 fun
 s2exp_fun_nil
+( npf: int
+, arg: s2explst, res: s2exp): s2exp
+fun
+s2exp_fun_all
 ( npf: int
 , arg: s2explst, res: s2exp): s2exp
 fun

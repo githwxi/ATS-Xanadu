@@ -78,6 +78,13 @@ typedef s1qualst = $S1E.s1qualst
 //
 (* ****** ****** *)
 //
+typedef d1atcon = $S1E.d1atcon
+typedef d1atype = $S1E.d1atype
+typedef d1atconlst = $S1E.d1atconlst
+typedef d1atypelst = $S1E.d1atypelst
+//
+(* ****** ****** *)
+//
 typedef labs1exp = $S1E.labs1exp
 typedef labs1explst = $S1E.labs1explst
 //
@@ -95,6 +102,11 @@ typedef s2var = $S2E.s2var
 typedef s2cstlst = $S2E.s2cstlst
 typedef s2varlst = $S2E.s2varlst
 //
+(* ****** ****** *)
+
+typedef
+s2varlstlst = List0($S2E.s2varlst)
+
 (* ****** ****** *)
 //
 typedef s2exp = $S2E.s2exp
@@ -290,7 +302,11 @@ the_sexpenv_add_cst(s2c: s2cst): void
 fun
 the_sexpenv_add_var(s2v: s2var): void
 fun
+the_sexpenv_add_cstlst(s2cs: s2cstlst): void
+fun
 the_sexpenv_add_varlst(s2vs: s2varlst): void
+fun
+the_sexpenv_add_varlstlst(svss: s2varlstlst): void
 //
 fun
 the_sexpenv_find
@@ -425,9 +441,13 @@ fun
 the_dexpenv_add
 (tid: sym_t, d2i: d2itm): void
 fun
+the_dexpenv_add_con(d2c: d2con): void
+fun
 the_dexpenv_add_cst(d2c: d2cst): void
 fun
 the_dexpenv_add_var(d2v: d2var): void
+fun
+the_dexpenv_add_conlst(d2cs: d2conlst): void
 fun
 the_dexpenv_add_varlst(d2vs: d2varlst): void
 //
@@ -477,7 +497,7 @@ overload trans12 with trans12_dexplst
 *)
 //
 (* ****** ****** *)
-
+//
 fun
 trans12_decl: d1ecl -> d2ecl
 fun
@@ -487,6 +507,32 @@ trans12_declist: d1eclist -> d2eclist
 overload trans12 with trans12_decl
 overload trans12 with trans12_declopt
 *)
+//
+(* ****** ****** *)
+//
+typedef
+s2varlstlst = List0(s2varlst)
+typedef
+s2explstlst = List0(s2explst)
+//
+(* ****** ****** *)
+
+//
+fun
+trans12_datype
+(d1t0: d1atype): s2cst
+fun
+trans12_datypelst
+(d1ts: d1atypelst): s2cstlst
+//
+fun
+trans12_datcon
+( s2c0: s2cst
+, s2varlstlst, d1atcon): d2con
+fun
+trans12_datconlst
+( s2c0: s2cst
+, s2varlstlst, d1atconlst): d2conlst
 //
 (* ****** ****** *)
 

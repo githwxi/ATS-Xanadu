@@ -69,6 +69,27 @@ NMS = "./../SATS/nmspace.sats"
 #staload "./../SATS/trans12.sats"
 
 (* ****** ****** *)
+//
+implement
+fprint_val<s2cst> = fprint_s2cst
+implement
+fprint_val<s2var> = fprint_s2var
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d2con> = fprint_d2con
+implement
+fprint_val<d2cst> = fprint_d2cst
+implement
+fprint_val<d2var> = fprint_d2var
+//
+(*
+implement
+fprint_val<d2exp> = fprint_d2exp
+*)
+//
+(* ****** ****** *)
 
 local
 
@@ -424,8 +445,7 @@ val-
 D1Cabstype
 ( knd
 , sid, arg
-, res, def
-) = d1c0.node()
+, res, def) = d1c0.node()
 //
 fun
 auxargs
@@ -626,6 +646,155 @@ end // end of [aux_datasort]
 
 (* ****** ****** *)
 
+fun
+aux_datatype
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Cdatatype
+( knd // datatype
+, d1ts
+, wd1cs) = d1c0.node()
+//
+val
+s2cs =
+trans12_datypelst(d1ts)
+val
+d2cs = aux_wdeclseq(wd1cs)
+//
+val () =
+the_sexpenv_add_cstlst(s2cs)
+//
+val () = aux2_datypelst(s2cs, d1ts)
+//
+in
+  d2ecl_make_node(loc0, D2Cdatatype(d1c0))
+end // end of [aux_datatype]
+
+and
+aux_wdeclseq
+( wd1cs
+: wd1eclseq): d2eclist =
+(
+case+ wd1cs of
+| WD1CSnone() => list_nil()
+| WD1CSsome(d1cs) => trans12_declist(d1cs)
+) (* end of [aux_wdeclseq] *)
+
+and
+aux2_datype
+( s2c0: s2cst
+, d1t0: d1atype): void =
+let
+//
+val+
+D1ATYPE
+(
+_(*tok*), tmas
+,
+_(*res*), d1cs
+) = d1t0.node((*void*))
+//
+val svss =
+aux2_tmarglst(tmas)
+//
+val (pf0|()) =
+the_sexpenv_pushnil()
+//
+val () =
+the_sexpenv_add_varlstlst(svss)
+//
+val d2cs =
+trans12_datconlst(s2c0, svss, d1cs)
+//
+val ((*void*)) =
+the_sexpenv_popfree(pf0|(*void*))
+//
+in
+//
+the_dexpenv_add_conlst(d2cs) where
+{
+val () =
+println!
+("trans12_datype: aux2_datype: s2c0 = ", s2c0)
+val () =
+println!
+("trans12_datype: aux2_datype: d2cs = ", d2cs)
+}  
+//
+end // end of [aux2_datype]
+
+and
+aux2_tmarg
+(x0: t1marg): s2varlst =
+let
+//
+val+
+T1MARGlist(t1as) = x0.node()
+//
+in
+//
+list_vt2t
+(
+list_map<t1arg><s2var>(t1as)
+) where
+{
+//
+implement
+list_map$fopr<t1arg><s2var>
+  (t1a) = let
+//
+  val+
+  T1ARGsome
+  (s1t, opt) = t1a.node()
+  val s2t = trans12_sort(s1t)
+  val sym =
+  (
+  case+ opt of
+  | None() => $SYM.symbol_nil
+  | Some(tok) => sargid_sym(tok)
+  ) : sym_t // end of [val]
+//
+in
+  s2var_make_idst(sym, s2t)
+end // end of [list_map$fopr]
+//
+} (* end of [where] *)
+//
+end // end of [aux2_tmarg]
+
+and
+aux2_tmarglst
+(xs: t1marglst): s2varlstlst =
+(
+case+ xs of
+| list_nil() => list_nil()
+| list_cons(x0, xs) =>
+  list_cons(aux2_tmarg(x0), aux2_tmarglst(xs))
+)
+
+and
+aux2_datypelst
+( s2cs: s2cstlst
+, d1ts: d1atypelst): void =
+(
+case+ s2cs of
+| list_nil() => ()
+| list_cons(s2c0, s2cs) =>
+  let
+    val-
+    list_cons
+    (d1t0, d1ts) = d1ts
+  in
+    aux2_datype(s2c0, d1t0); aux2_datypelst(s2cs, d1ts)
+  end // end of [let]
+) (* end of [aux2_datatypelst] *)
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -658,6 +827,8 @@ d1c0.node() of
 | D1Cabstype _ => aux_abstype(d1c0)
 //
 | D1Cdatasort _ => aux_datasort(d1c0)
+//
+| D1Cdatatype _ => aux_datatype(d1c0)
 //
 | D1Clocal
   (d1cs1, d1cs2) => let
@@ -692,6 +863,291 @@ list_map<d1ecl><d2ecl>
   list_map$fopr<d1ecl><d2ecl> = trans12_decl
 }
 } (* end of [trans12_declist] *)
+
+(* ****** ****** *)
+
+(*
+datatype
+d1atcon_node =
+| D1ATCON of
+  (s1unilst, token, s1exp, s1expopt) 
+*)
+local
+
+(* ****** ****** *)
+
+fun
+auxarg
+( opt
+: s1expopt
+, npf
+: &int >> _
+) : s2explst =
+(
+case+ opt of
+| None() =>
+  list_nil()
+| Some(s1e0) =>
+  (
+  case+
+  s1e0.node() of
+  | S1Elist(s1es) =>
+    trans12_sexplst(s1es)
+  | S1Elist(xs1, xs2) =>
+    (
+      s2es1 + s2es2
+    ) where
+    {
+      val () = (npf := length(xs1))
+      val s2es1 = trans12_sexplst(xs1)
+      val s2es2 = trans12_sexplst(xs2)
+    }
+  | _(*non-S1Elist*) =>
+    list_sing(trans12_sexp(s1e0))
+  )
+)
+
+fun
+auxind
+( svss
+: s2varlstlst
+, s1is: s1explst
+) : s2explstlst =
+(
+case+ s1is of
+| list_nil _ => auxsvss(svss)
+| list_cons _ => auxs1is(s1is)
+) (* end of [auxind] *)
+
+and
+auxsvs
+( s2vs
+: s2varlst
+) : s2explst =
+list_vt2t
+(
+list_map<s2var><s2exp>(s2vs)
+) where
+{
+implement
+list_map$fopr<s2var><s2exp> = s2exp_var
+}
+
+and
+auxsvss
+( svss
+: s2varlstlst
+) : s2explstlst =
+(
+case+ svss of
+| list_nil() => list_nil()
+| list_cons(s2vs, svss) =>
+  list_cons(auxsvs(s2vs), auxsvss(svss))
+)
+
+and
+auxs1is
+( s1is
+: s1explst
+) : s2explstlst =
+(
+case+ s1is of
+| list_nil() =>
+  list_nil(*void*)
+| list_cons(s1i0, s1is) =>
+  (
+  case+
+  s1i0.node() of
+  | S1Elist(s1es) =>
+    (
+    list_cons(s2es, auxs1is(s1is))
+    ) where
+    {
+      val s2es = trans12_sexplst(s1es)
+    }
+  | S1Elist(xs1, xs2) =>
+    (
+    list_cons
+    (s2es1 + s2es2, auxs1is(s1is))
+    ) where
+    {
+      val s2es1 = trans12_sexplst(xs1)
+      val s2es2 = trans12_sexplst(xs2)
+    }
+  | _(* non-S1Elist *) =>
+    let
+      val s2e0 = trans12_sexp(s1i0)
+    in
+      list_cons
+      (list_sing(s2e0), auxs1is(s1is))
+    end // end of [non-S1Elist]
+  )
+) (* end of [auxs1is] *)
+
+fun
+auxres
+( s2e0: s2exp
+, sess: s2explstlst
+) : s2exp =
+(
+case+ sess of
+| list_nil() => s2e0
+| list_cons
+    (s2es, sess) =>
+  (
+    auxres(s2e0, sess)
+  ) where
+  {
+    val s2e0 = s2exp_apps(s2e0, s2es)
+  }
+)
+
+in (* in-of-local *)
+
+implement
+trans12_datcon
+(s2c0, svss, d1c0) =
+let
+//
+val (pf0|()) =
+the_sexpenv_pushnil()
+val s2e0 = auxuni(s1us)
+val ((*void*)) =
+the_sexpenv_popfree(pf0|(*void*))
+//
+val s2e0 =
+(
+s2exp_uni(s2us, s2ps, s2e0)
+) where
+{
+  val s2ps = list_nil(*void*)
+}
+//
+in
+  d2con_make_idtp(tok0, s2e0)
+end where
+{
+//
+val+
+D1ATCON
+( s1us
+, tok0
+, s1is, argopt) = d1c0.node()
+//
+val () =
+println!
+("trans12_datcon: tok0 = ", tok0)
+//
+val
+s2us =
+list_vt2t
+(list_vt_reverse(s2us)) where
+{
+fun
+loop1
+( svss
+: s2varlstlst
+, s2us
+: s2varlst_vt): s2varlst_vt =
+(
+case+ svss of
+| list_nil() => s2us
+| list_cons(s2vs, svss) =>
+  loop1(svss, loop2(s2vs, s2us))
+)
+and
+loop2
+( s2vs
+: s2varlst
+, s2us
+: s2varlst_vt): s2varlst_vt =
+(
+case+ s2vs of
+| list_nil() => s2us
+| list_cons(x0, s2vs) =>
+  if
+  s2var_is_nil(x0)
+  then
+  loop2(s2vs, s2us)
+  else
+  loop2(s2vs, list_vt_cons(x0, s2us))
+)
+//
+val
+s2us = loop1(svss, list_vt_nil(*void*))
+//
+} (* end of [val] *)
+//
+val () =
+println!
+("trans12_datcon: s2us = ", s2us)
+//
+fun
+auxuni
+(s1us: s1unilst): s2exp =
+(
+case+ s1us of
+| list_nil() =>
+  let
+//
+    var npf: int = ~1
+//
+    val ind =
+      auxind(svss, s1is)
+    val arg =
+      auxarg(argopt, npf)
+//
+    val s2e0 = s2exp_cst(s2c0)
+    val s2e0 = auxres(s2e0, ind)
+//
+  in
+    s2exp_fun_nil(npf, arg, s2e0)
+  end // end of [list_nil]
+| list_cons(s1u0, s1us) =>
+  let
+//
+    var s2vs_
+      : s2varlst_vt = list_vt_nil()
+    var s2ps_
+      : s2explst_vt = list_vt_nil()
+//
+    val+S1UNIsome(s1qs) = s1u0.node()
+//
+    val () =
+    trans12_squalst(s1qs, s2vs_, s2ps_)
+//
+  in
+    let
+      val s2vs =
+        list_vt2t(list_vt_reverse(s2vs_))
+      val s2ps =
+        list_vt2t(list_vt_reverse(s2ps_))
+    in
+      s2exp_uni(s2vs, s2ps, auxuni(s1us))
+    end // end of [let]
+  end
+)
+//
+} (* end of [trans12_datcon] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans12_datconlst
+(s2c0, svss, d1cs) =
+list_vt2t
+(
+list_map<d1atcon><d2con>(d1cs)
+) where
+{
+//
+implement
+list_map$fopr<d1atcon><d2con>
+  (d1c) = trans12_datcon(s2c0, svss, d1c)
+//
+} (* end of [trans12_datconlst] *)
 
 (* ****** ****** *)
 

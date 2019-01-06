@@ -39,6 +39,10 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
 //
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -46,6 +50,10 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 //
+(* ****** ****** *)
+
+#staload "./../SATS/trans01.sats"
+
 (* ****** ****** *)
 
 local
@@ -95,7 +103,9 @@ local
 absimpl
 d2con_tbox = $rec{
 //
-  d2con_sym= sym_t // name
+  d2con_loc= loc_t // loc
+, d2con_sym= sym_t // name
+, d2con_type= s2exp // type
 , d2con_stamp= stamp // unicity
 //
 } (* end of [d2con_tbox] *)
@@ -103,7 +113,29 @@ d2con_tbox = $rec{
 in (* in-of-local *)
 
 implement
+d2con_make_idtp
+  (tok, s2e) =
+(
+$rec{
+  d2con_loc= loc
+, d2con_sym= sym
+, d2con_type= s2e
+, d2con_stamp= stamp
+}
+) where
+{
+  val loc = tok.loc()
+  val sym = dexpid_sym(tok)
+//
+  val
+  stamp = d2con_stamp_new((*void*))
+//
+} (* d2con_make_idtp *)
+
+implement
 d2con_get_sym(x0) = x0.d2con_sym
+implement
+d2con_get_type(x0) = x0.d2con_type
 implement
 d2con_get_stamp(x0) = x0.d2con_stamp
 
@@ -117,6 +149,7 @@ absimpl
 d2cst_tbox = $rec{
 //
   d2cst_sym= sym_t // name
+, d2cst_type= s2exp // type
 , d2cst_stamp= stamp // unicity
 //
 } (* end of [d2cst_tbox] *)
@@ -125,6 +158,8 @@ in (* in-of-local *)
 
 implement
 d2cst_get_sym(x0) = x0.d2cst_sym
+implement
+d2cst_get_type(x0) = x0.d2cst_type
 implement
 d2cst_get_stamp(x0) = x0.d2cst_stamp
 

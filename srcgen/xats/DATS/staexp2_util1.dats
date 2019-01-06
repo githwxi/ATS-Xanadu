@@ -57,6 +57,58 @@ overload
 #staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
+
+implement
+sort2_polpos
+  (s2t) =
+(
+case+ s2t of
+| S2Tbas(s2tb) =>
+  (
+  case+ s2tb of
+  | T2BASimp(knd, sym) =>
+    (
+    S2Tbas(T2BASimp(knd, sym))
+    ) where
+    {
+      val knd = sortpolpos(knd)
+    }
+  | _ (* non-T2BASimp *) => s2t
+  )
+| _(* non-S2Tbas *) => s2t
+)
+
+implement
+sort2_polneg
+  (s2t) =
+(
+case+ s2t of
+| S2Tbas(s2tb) =>
+  (
+  case+ s2tb of
+  | T2BASimp(knd, sym) =>
+    (
+    S2Tbas(T2BASimp(knd, sym))
+    ) where
+    {
+      val knd = sortpolneg(knd)
+    }
+  | _ (* non-T2BASimp *) => s2t
+  )
+| _(* non-S2Tbas *) => s2t
+)
+
+(* ****** ****** *)
+//
+implement
+s2var_is_nil
+  (s2v) = let
+  val sym = s2v.sym()
+in
+  $SYM.symbol_is_nil(sym)
+end // s2var_is_nil
+//
+(* ****** ****** *)
 //
 implement
 eq_s2cst_s2cst

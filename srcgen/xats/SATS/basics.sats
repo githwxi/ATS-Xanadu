@@ -118,6 +118,11 @@ fun sortpol(x: int): int // -1,0,1
 
 (* ****** ****** *)
 //
+fun sortpolpos(x: int): int
+fun sortpolneg(x: int): int
+//
+(* ****** ****** *)
+//
 fun
 subsort_int_int(int, int): bool
 //

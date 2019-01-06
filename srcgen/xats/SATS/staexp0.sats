@@ -905,7 +905,8 @@ d0atconlst = List0(d0atcon)
 datatype
 d0atcon_node =
 | D0ATCON of
-  (s0unilst, d0eid, s0exp, s0expopt) 
+  ( s0unilst
+  , d0eid(*nm*), s0explst, s0expopt) 
 //
 fun
 d0atcon_get_loc(d0atcon): loc_t

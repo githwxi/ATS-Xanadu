@@ -1326,6 +1326,7 @@ implement
 p_s0exp(buf, err) = let
 //
 val e0 = err
+//
 val s0es0 =
   p_atms0expseq(buf, err)
 //
@@ -1333,7 +1334,10 @@ in
 //
 case+ s0es0 of
 | list_nil
-    ((*void*)) => p_napps(buf, err)
+    ((*void*)) =>
+  (
+    p_napps(buf, err)
+  )
 | list_cons
     (s0e0, s0es1) => let
     val opt =
@@ -1640,10 +1644,8 @@ implement
 p_atms0expseq
   (buf, err) =
 (
-//
-list_vt2t
-(pstar_fun{s0exp}(buf, err, p_atms0exp))
-//
+  list_vt2t
+  (pstar_fun{s0exp}(buf, err, p_atms0exp))
 ) (* end of [p_atms0expseq] *)
 
 (* ****** ****** *)
@@ -2174,8 +2176,12 @@ p_d0atcon
 //
   val s0us =
     p_s0uniseq(buf, err)
+//
   val dcon = p_d0eid(buf, err)
-  val s0is = p_s0exp(buf, err)
+//
+  val s0is =
+    p_atms0expseq(buf, err)
+//
   val tok0 = buf.get0((*void*))
   val tnd0 = tok0.node((*void*))
 //
@@ -2207,17 +2213,33 @@ in
       case+ s0us of
       | list_nil() =>
         (
-          case+ s0is.node() of
-          | S0Enone _ => dcon.loc()
-          | _(*non-none*) =>
-            (dcon.loc() + s0is.loc())
+          case+ s0is of
+          | list_nil() =>
+            (
+              dcon.loc()
+            )
+          | list_cons _ =>
+            let
+              val
+              s0i1 = list_last(s0is)
+            in
+              dcon.loc() + s0i1.loc()
+            end
         )
       | list_cons(s0u0, _) =>
         (
-          case+ s0is.node() of
-          | S0Enone _ => s0u0.loc()
-          | _(*non-none*) =>
-            (s0u0.loc() + s0is.loc())
+          case+ s0is of
+          | list_nil() =>
+            (
+              s0u0.loc()
+            )
+          | list_cons _ =>
+            let
+              val
+              s0i1 = list_last(s0is)
+            in
+              s0u0.loc() + s0i1.loc()
+            end
         )
       ) : loc_t // end of [val]
     in
@@ -2248,7 +2270,7 @@ p_d0atype
 //
 val e0 = err
 //
-val tid =
+val sid =
   p_s0eid(buf, err)
 val arg =
   p_t0margseq(buf, err)
@@ -2268,12 +2290,12 @@ case+ d0cs of
 | list_nil() =>
   (
   case+ opt of
-  | None() => tid.loc() + tok.loc()
-  | Some(tok) => tid.loc() + tok.loc()
+  | None() => sid.loc() + tok.loc()
+  | Some(tok) => sid.loc() + tok.loc()
   ) (* end of [list_nil] *)
 | list_cons _ => let
     val d0c =
-    list_last(d0cs) in tid.loc() + d0c.loc()
+    list_last(d0cs) in sid.loc() + d0c.loc()
   end // end of [list_cons]
 ) : loc_t // end of [val]
 //
@@ -2281,7 +2303,7 @@ in
 //
   err := e0;
   d0atype_make_node
-  (loc_res, D0ATYPE(tid, arg, res, tok, d0cs))
+  (loc_res, D0ATYPE(sid, arg, res, tok, d0cs))
 //
 end // end of [p_d0atype]
 

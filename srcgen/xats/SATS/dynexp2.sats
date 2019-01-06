@@ -118,6 +118,16 @@ overload .sym with d2var_get_sym
 (* ****** ****** *)
 //
 fun
+d2con_get_type(d2con): s2exp
+fun
+d2cst_get_type(d2cst): s2exp
+//
+overload .type with d2con_get_type
+overload .type with d2cst_get_type
+//
+(* ****** ****** *)
+//
+fun
 d2con_get_stamp(d2con): stamp
 fun
 d2cst_get_stamp(d2cst): stamp
@@ -127,6 +137,15 @@ d2var_get_stamp(d2var): stamp
 overload .stamp with d2con_get_stamp
 overload .stamp with d2cst_get_stamp
 overload .stamp with d2var_get_stamp
+//
+(* ****** ****** *)
+//
+fun
+d2con_make_idtp
+(id: token, s2e: s2exp): d2con
+fun
+d2cst_make_idtp
+(id: token, s2e: s2exp): d2cst
 //
 (* ****** ****** *)
 //
@@ -229,6 +248,7 @@ d2ecl_node =
 | D2Cabsimpl of (d1ecl)
 //
 | D2Cdatasort of (d1ecl)
+| D2Cdatatype of (d1ecl)
 //
 // end of [d2ecl_node]
 //
