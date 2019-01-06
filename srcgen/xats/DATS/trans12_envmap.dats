@@ -466,6 +466,26 @@ in
 end
 ) (* end of [the_sexpenv_add_var] *)
 
+(* ****** ****** *)
+
+implement
+the_sexpenv_add_cstlst
+  (s2cs) =
+(
+  foreach(s2cs)
+) where
+{
+  fun
+  foreach
+  (s2cs: s2cstlst): void =
+  (
+  case+ s2cs of
+  | list_nil() => ()
+  | list_cons(s2c0, s2cs) =>
+    (the_sexpenv_add_cst(s2c0); foreach(s2cs))
+  )
+} (* end of [the_sexpenv_add_cstlst] *)
+
 implement
 the_sexpenv_add_varlst
   (s2vs) =
@@ -482,8 +502,25 @@ the_sexpenv_add_varlst
   | list_cons(s2v0, s2vs) =>
     (the_sexpenv_add_var(s2v0); foreach(s2vs))
   )
-  
 } (* end of [the_sexpenv_add_varlst] *)
+
+implement
+the_sexpenv_add_varlstlst
+  (svss) =
+(
+  foreach(svss)
+) where
+{
+  fun
+  foreach
+  (svss: s2varlstlst): void =
+  (
+  case+ svss of
+  | list_nil() => ()
+  | list_cons(s2vs, svss) =>
+    (the_sexpenv_add_varlst(s2vs); foreach(svss))
+  )
+} (* end of [the_sexpenv_add_varlstlst] *)
 
 (* ****** ****** *)
 
@@ -659,6 +696,114 @@ in
   $ENV.symenv_insert(!p0, sym, D2ITMvar(d2v))
 end
 ) (* end of [the_dexpenv_add_var] *)
+
+(* ****** ****** *)
+
+implement
+the_dexpenv_add_con
+  (d2c) =
+(
+let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_insert(!p0, sym, d2i0)
+end
+) where
+{
+//
+val sym = d2c.sym()
+val opt = the_dexpenv_find(sym)
+//
+val d2cs =
+(
+  case+ opt of
+  | ~None_vt() =>
+    (
+      list_nil((*void*))
+    )
+  | ~Some_vt(d2i) =>
+    (
+    case+ d2i of
+    | D2ITMcon(cs) => cs | _ => list_nil()
+    )
+) : d2conlst // end of [val]
+//
+val d2i0 = D2ITMcon(list_cons(d2c, d2cs))
+//
+} (* end of [the_dexpenv_add_con] *)
+
+(* ****** ****** *)
+
+implement
+the_dexpenv_add_conlst
+  (d2cs) =
+(
+  foreach(d2cs)
+) where
+{
+  fun
+  foreach
+  (d2cs: d2conlst): void =
+  (
+  case+ d2cs of
+  | list_nil() => ()
+  | list_cons(d2c0, d2cs) =>
+    (the_dexpenv_add_con(d2c0); foreach(d2cs))
+  )
+} (* end of [the_dexpenv_add_conlst] *)
+
+(* ****** ****** *)
+
+implement
+the_dexpenv_add_varlst
+  (d2vs) =
+(
+  foreach(d2vs)
+) where
+{
+  fun
+  foreach
+  (d2vs: d2varlst): void =
+  (
+  case+ d2vs of
+  | list_nil() => ()
+  | list_cons(d2v0, d2vs) =>
+    (the_dexpenv_add_var(d2v0); foreach(d2vs))
+  )
+} (* end of [the_dexpenv_add_varlst] *)
+
+(* ****** ****** *)
+
+implement
+the_dexpenv_find
+  (sym) = let
+  val ans = let
+    prval
+    vbox(pf) = pfbox
+  in
+    $ENV.symenv_search{d2itm}(!p0, sym)
+  end // end of [val]
+in
+//
+case+ ans of
+//
+| Some_vt _ => ans
+//
+| ~None_vt() => let
+    val ans = the_nmspace_find(sym)
+  in
+    case+ ans of
+    | Some_vt _ => ans
+    | ~None_vt() => let
+        prval
+        vbox(pf) = pfbox
+      in
+        $ENV.symenv_psearch{d2itm}(!p0, sym)
+      end // end of [None_vt]
+  end // end of [None_vt]
+//
+end // end of [the_dexpenv_find]
 
 (* ****** ****** *)
 

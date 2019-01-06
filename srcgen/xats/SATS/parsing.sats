@@ -326,20 +326,21 @@ fun p_sort0 : parser(sort0)
 (* ****** ****** *)
 //
 (*
-d0tsort ::=
-| s0tid EQ s0rtconseq_BAR
+s0arg ::
+| s0aid [COLON sort0]
 *)
-fun p_d0tsort: parser(d0tsort)
-fun p_d0tsortseq_AND: parser(d0tsortlst)
+fun p_s0arg: parser(s0arg)
 //
 (* ****** ****** *)
 //
 (*
-s0arg ::
-| s0aid [COLON sort0]
+d0tsort ::=
+| s0tid EQ s0rtconseq_BAR
 *)
 fun
-p_s0arg: parser(s0arg)
+p_d0tsort: parser(d0tsort)
+fun
+p_d0tsortseq_AND: parser(d0tsortlst)
 //
 (* ****** ****** *)
 //
@@ -350,7 +351,8 @@ s0rtdef ::=
   s0arg BAR s0expseq_SEMICOLON
   RBRACE
 *)
-fun p_s0rtdef: parser(s0rtdef)
+fun
+p_s0rtdef: parser(s0rtdef)
 //
 (* ****** ****** *)
 //
@@ -362,7 +364,11 @@ fun p_s0exp : parser(s0exp)
 (*
 labs0exp ::= l0abl EQ s0exp
 *)
-fun p_labs0exp : parser(labs0exp)
+//
+(* ****** ****** *)
+//
+fun
+p_labs0exp : parser(labs0exp)
 //
 fun
 p_s0expseq_COMMA : parser(s0explst)

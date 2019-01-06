@@ -1318,15 +1318,17 @@ case+
 d0c0.node() of
 | D0ATCON
   ( s0us
-  , deid, s0e, opt) => let
+  , deid, s0is, opt1) => let
     val
     s1us = trans01_sunilst(s0us)
-    val s1e = trans01_sexp(s0e)
-    val opt = trans01_sexpopt(opt)
+    val
+    s1is = trans01_sexplst(s0is)
+    val
+    opt1 = trans01_sexpopt(opt1)
     val-I0DNTsome(tok) = deid.node()
   in
     d1atcon_make_node
-    (loc0, D1ATCON(s1us, tok, s1e, opt))
+    (loc0, D1ATCON(s1us, tok, s1is, opt1))
   end // end of [D0ATCON]
 //
 end // end of [trans01_datcon]

@@ -551,7 +551,8 @@ d1atconlst = List0(d1atcon)
 datatype
 d1atcon_node =
 | D1ATCON of
-  (s1unilst, token, s1exp, s1expopt) 
+  ( s1unilst
+  , token(*nm*), s1explst, s1expopt) 
 //
 fun
 d1atcon_get_loc(d1atcon): loc_t

@@ -663,6 +663,17 @@ s2exp_fun_full
 }
 //
 implement
+s2exp_fun_all
+(npf, arg, res) =
+(
+s2exp_fun_full
+(fc2, 0(*lin*), eff, npf,  arg, res)
+) where
+{
+  val fc2 = FC2fun() and eff = S2EFFall()
+}
+//
+implement
 s2exp_fun_full
 ( fc2, lin, eff
 , npf, arg, res) =
@@ -710,17 +721,51 @@ end (* end of [s2exp_lam] *)
 implement
 s2exp_uni
 (s2vs, s2ps, body) = let
+//
+val
+isnil =
+(
+  list_is_nil(s2vs)
+  &&
+  list_is_nil(s2ps)
+)
+//
+in
+//
+if
+isnil
+then body
+else let
   val s2t0 = body.sort()
 in
   s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
+end // end of [else]
+//
 end // end of [s2exp_uni]
 
 implement
 s2exp_exi
 (s2vs, s2ps, body) = let
+//
+val
+isnil =
+(
+  list_is_nil(s2vs)
+  &&
+  list_is_nil(s2ps)
+)
+//
+in
+//
+if
+isnil
+then body
+else let
   val s2t0 = body.sort()
 in
   s2exp_make_node(s2t0, S2Eexi(s2vs, s2ps, body))
+end // end of [else]
+//
 end // end of [s2exp_exi]
 
 (* ****** ****** *)
