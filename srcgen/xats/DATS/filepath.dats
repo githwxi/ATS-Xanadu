@@ -217,23 +217,156 @@ the_filepath_string = $rec{
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+filepath_is_dummy(fp) =
+$SYM.eq_symbol_symbol
+  (fp.full(), $SYM.symbol_nil)
+implement
+filepath_isnot_dummy(fp) =
+$SYM.neq_symbol_symbol
+  (fp.full(), $SYM.symbol_nil)
+//
+(* ****** ****** *)
 
 local
-
+//
+assume
+the_filepathlst_v = unit_v
+//
 val
 the_filepath =
 ref<filepath>(the_filepath_dummy)
 val
-the_filepaths =
+the_filepathlst =
 ref<List0_vt(filepath)>(list_vt_nil())
-
+//
 in (* in-of-local *)
 
 (* ****** ****** *)
 //
 implement
-filepath_get_current() = the_filepath[]
+filepath_get_current
+  ((*void*)) = the_filepath[]
 //
+(* ****** ****** *)
+
+implement
+the_filepathlst_pout
+(
+  pf | (*none*)
+) = let
+//
+prval unit_v() = pf
+//
+in
+  the_filepathlst_ppout((*void*))
+end // end of [the_filepathlst_pout]
+
+implement
+the_filepathlst_ppout
+  ((*none*)) = let
+//
+val fp = x0 where {
+//
+  val
+  (vbox pf | p0) =
+  ref_get_viewptr(the_filepathlst)
+//
+  val-
+  ~list_vt_cons(x0, xs) = !p0
+  val ((*void*)) = (!p0 := xs)
+//
+} (* end of [val] *)
+//
+val () = the_filepath[] := fp
+//
+in
+  // nothing
+end // end of [the_filepathlst_ppout]
+
+(* ****** ****** *)
+//
+implement
+the_filepathlst_push(fp) =
+let
+//
+val () =
+the_filepathlst_ppush(fp) in (unit_v() | ())
+//
+end // end of [the_filepathlst_push]
+//
+implement
+the_filepathlst_ppush(fp) =
+let
+  val x0 = the_filepath[]
+  val () = the_filepath[] := fp
+  val (vbox pf | p0) = ref_get_viewptr(the_filepathlst)
+  val () = !p0 := list_vt_cons(x0, !p0)
+in
+  // nothing
+end // end of [the_filepathlst_ppush]
+//
+(* ****** ****** *)
+
+local
+
+fun
+filename_occurs
+  (fp0: filepath): bool = let
+//
+fun
+loop
+{n:nat} .<n>.
+(
+  fps: !list_vt(filepath, n)
+) :<> bool = (
+//
+case+ fps of
+| list_vt_nil
+    ((*void*)) => false
+  // list_vt_nil
+| list_vt_cons
+    (fp1, fps) =>
+  (
+    (fp0 = fp1) orelse loop(fps)
+  ) // list_vt_cons
+//
+) (* end of [loop] *)
+//
+in
+  loop(!p0) where
+  {
+    val (vbox(pf)|p0) =
+    ref_get_viewptr(the_filepathlst)
+  }
+end // end of [filename_occurs]
+
+in (* in-of-local *)
+
+implement
+the_filepathlst_pushck
+  (fp0) =
+(
+  pf | isexi
+) where
+{
+//
+val
+(pf|()) =
+the_filepathlst_push(fp0)
+val
+isexi =
+(
+  if
+  filepath_isnot_dummy(fp0)
+  then filename_occurs(fp0) else false
+) : bool // end of [val]
+//
+} (* end of [the_filepathlst_pushck] *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 end // end of [local]
