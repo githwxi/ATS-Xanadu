@@ -662,13 +662,14 @@ D1Cdatatype
 val
 s2cs =
 trans12_datypelst(d1ts)
+val () =
+the_sexpenv_add_cstlst(s2cs)
+//
 val
 d2cs = aux_wdeclseq(wd1cs)
 //
 val () =
-the_sexpenv_add_cstlst(s2cs)
-//
-val () = aux2_datypelst(s2cs, d1ts)
+aux2_datypelst(s2cs, d1ts)
 //
 in
   d2ecl_make_node(loc0, D2Cdatatype(d1c0))

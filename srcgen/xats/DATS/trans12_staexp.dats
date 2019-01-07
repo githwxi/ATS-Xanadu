@@ -115,32 +115,30 @@ case+ opt of
 //
 end // end of [auxid]
 
+(* ****** ****** *)
+
 fun
-auxapp1
-( s1t0
-: sort1): sort2 = let
-//
-val-
-S1Tapp1
-(s1t1, s1t2) = s1t0.node()
-//
-val s2t1 =
-  trans12_sort(s1t1)
-//
-val s2ts =
+isplus
+( s1t
+: sort1): bool =
 (
 case+
-s1t2.node() of
-| S1Tlist(xs) =>
-  trans12_sortlst(xs)
-| _(*non-S1Tlist*) =>
-  list_sing(trans12_sort(s1t2))
-) : sort2lst // end of [val]
-//
-in
-  S2Tapp(s2t1, s2ts)
-end // end of [auxapp1]
-
+s1t.node() of
+| S1Tid(tid) =>
+  tid = $SYM.ADD_symbol
+| _(*non-S1Tid*) => false
+)
+fun
+ismnus
+( s1t
+: sort1): bool =
+(
+case+
+s1t.node() of
+| S1Tid(tid) =>
+  tid = $SYM.SUB_symbol
+| _(*non-S1Tid*) => false
+)
 fun
 isarrw
 ( s1t
@@ -152,6 +150,50 @@ s1t.node() of
   tid = $SYM.MSGT_symbol
 | _(*non-S1Tid*) => false
 )
+
+(* ****** ****** *)
+
+fun
+auxapp1
+( s1t0
+: sort1): sort2 = let
+//
+val-
+S1Tapp1
+(s1t1, s1t2) = s1t0.node()
+//
+in
+//
+ifcase
+| isplus(s1t1) =>
+  sort2_polpos
+  (trans12_sort(s1t2))
+| ismnus(s1t1) =>
+  sort2_polneg
+  (trans12_sort(s1t2))
+| _ (* else *) => let
+    val
+    s2t1 =
+    trans12_sort(s1t1)
+    //
+    val
+    s2ts =
+    (
+    case+
+    s1t2.node() of
+    | S1Tlist(xs) =>
+      trans12_sortlst(xs)
+    | _(*non-S1Tlist*) =>
+      list_sing(trans12_sort(s1t2))
+    ) : sort2lst // end of [val]
+    //
+  in
+    S2Tapp(s2t1, s2ts)
+  end
+//
+end // end of [auxapp1]
+
+(* ****** ****** *)
 
 fun
 auxapp2
@@ -199,6 +241,8 @@ in
 end // end of [else]
 //
 end // end of [auxapp2]
+
+(* ****** ****** *)
 
 fun
 auxlist
