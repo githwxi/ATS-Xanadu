@@ -32,20 +32,23 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload SYM = "./symbol.sats"
-
-(* ****** ****** *)
 //
-abstbox filepath_type = ptr
-typedef filepath = filepath_type
+#staload
+SYM = "./symbol.sats"
 //
 (* ****** ****** *)
-
+//
+abstbox
+filepath_type = ptr
+typedef
+filepath = filepath_type
+//
+(* ****** ****** *)
+//
 fun theDirSep_get(): char
 fun theCurDir_get(): string
 fun theParDir_get(): string
-
+//
 (* ****** ****** *)
 //
 fun
@@ -54,24 +57,32 @@ filepath_dirbase
 //
 (* ****** ****** *)
 //
-fun eq_filepath_filepath
-  (x1: filepath, x2: filepath):<> bool
-fun neq_filepath_filepath
-  (x1: filepath, x2: filepath):<> bool
+fun
+eq_filepath_filepath
+(x1: filepath, x2: filepath):<> bool
+fun
+neq_filepath_filepath
+(x1: filepath, x2: filepath):<> bool
 //
-fun compare_filepath_filepath
-  (x1: filepath, x2: filepath):<> (Sgn)
+fun
+compare_filepath_filepath
+(x1: filepath, x2: filepath):<> (Sgn)
 //
 overload = with eq_filepath_filepath
 overload != with neq_filepath_filepath
-overload compare with compare_filepath_filepath
+//
+overload
+compare with compare_filepath_filepath
 //
 (* ****** ****** *)
-
-fun print_filepath_full(fil: filepath): void
-fun prerr_filepath_full(fil: filepath): void
-fun fprint_filepath_full(out: FILEref, fil: filepath): void
-
+//
+fun
+print_filepath_full: print_type(filepath)
+fun
+prerr_filepath_full: prerr_type(filepath)
+fun
+fprint_filepath_full: fprint_type(filepath)
+//
 (* ****** ****** *)
 //
 fun
@@ -91,6 +102,36 @@ val the_filepath_dummy : filepath
 val the_filepath_stdin : filepath
 val the_filepath_string : filepath // text
 
+(* ****** ****** *)
+//
+fun
+filepath_is_dummy: filepath -> bool
+fun
+filepath_isnot_dummy: filepath -> bool
+//
+(* ****** ****** *)
+//
+absview the_filepathlst_v
+//
+(* ****** ****** *)
+//
+fun
+the_filepathlst_pout
+  (pf: the_filepathlst_v|(*none*)): void
+//
+fun
+the_filepathlst_push
+  (fp0: filepath): (the_filepathlst_v | void)
+// end of [the_filepathlst_push]
+//
+fun
+the_filepathlst_pushck
+  (fp0: filepath): (the_filepathlst_v | bool)
+// end of [the_filepathlst_push_check]
+//
+fun the_filepathlst_ppout((*void*)): void 
+fun the_filepathlst_ppush(fp0: filepath): void
+//
 (* ****** ****** *)
 
 (* end of [xats_filepath.sats] *)
