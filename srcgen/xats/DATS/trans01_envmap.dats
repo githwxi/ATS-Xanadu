@@ -201,7 +201,8 @@ $effmask_ref
 end // end of [the_fxtyenv_fprint]
 //
 implement
-the_fxtyenv_println() =
+the_fxtyenv_println
+  ((*void*)) =
 (
   fprint_newline(stdout_ref)
 ) where
