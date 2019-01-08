@@ -744,7 +744,7 @@ val loc = tok.loc()
 val sym =
 $SYM.symbol_make(nam)
 val opt =
-the_fixtyenv_search(sym)
+the_fxtyenv_search(sym)
 val d1p0 =
 d1pat_make_node(loc, D1Pid(tok))
 //
@@ -1018,7 +1018,7 @@ val loc = tok.loc()
 val sym =
 $SYM.symbol_make(nam)
 val opt =
-the_fixtyenv_search(sym)
+the_fxtyenv_search(sym)
 val d1e0 =
 d1exp_make_node(loc, D1Eid(tok))
 //
@@ -1925,6 +1925,14 @@ case+ opt of
     (_, sint, _) => pval + aux_signint(sint)
   ) where
   {
+(*
+    val () =
+    println!
+    ("aux_precopt:topr=", topr)
+    val () =
+    println!
+    ("aux_precopt:topr.loc=", topr.loc())
+*)
     val-
     I0DNTsome(tok) = topr.node()
     val nam =
@@ -1934,7 +1942,7 @@ case+ opt of
     | T_IDENT_sym(nam) => nam
     ) : string // end of [val]
     val sym = $SYM.symbol_make(nam)
-    val opt = the_fixtyenv_search(sym)
+    val opt = the_fxtyenv_search(sym)
     val pval =
     (
     case+ opt of
@@ -2014,7 +2022,7 @@ case+ xs of
     loop(xs) where
     {
       val () =
-      the_fixtyenv_insert(sym, fxty)
+      the_fxtyenv_insert(sym, fxty)
     }
   end
 ) (* end of [loop] *)
@@ -2057,7 +2065,7 @@ case+ xs of
     loop(xs) where
     {
       val () =
-      the_fixtyenv_insert(sym, $FIX.FIXTYnon)
+      the_fxtyenv_insert(sym, $FIX.FIXTYnon)
     }
   end
 ) (* end of [loop] *)

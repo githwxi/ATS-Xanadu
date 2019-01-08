@@ -415,45 +415,6 @@ XATSHOME: string
 "\
 ext#\
 libxats_xatsopt_the_fixity_load"
-//
-implement
-the_fixity_load
-  (XATSHOME) = let
-//
-val
-given = "prelude/fixity.sats"
-val
-fpath =
-$FIL.filepath_dirbase(XATSHOME, given)
-//
-(*
-val () =
-println!
-("the_fixity_load: give = ", given)
-val () =
-println!
-("the_fixity_load: fpath = ", fpath)
-*)
-//
-val opt =
-fileref_open_opt
-(fpath, file_mode_r)
-//
-val-~Some_vt(inp) = opt
-//
-val d0cs =
-parse_from_fileref_toplevel
-  (0(*static*), inp)
-//
-val ((*void*)) = fileref_close(inp)
-//
-in
-  println!
-  ("the_fixity_load: d0cs = "); println!(d0cs)
-end // end of [the_fixity_load]
-//
-(* ****** ****** *)
-//
 extern
 fun
 the_prelude_load
@@ -463,19 +424,13 @@ the_prelude_load
 "\
 ext#\
 libxats_xatsopt_the_prelude_load"
-//
-implement
-the_prelude_load
-  (XATSHOME) = () where
-{
-//
-val () =
-println!
-("the_prelude_load: XATSHOME = ", XATSHOME)
-//
-val () = the_fixity_load(XATSHOME)
-//
-} (* end of [the_prelude_load] *)
+extern
+fun
+the_prelude_load_if
+(
+  XATSHOME: string, flag: &int
+) : void =
+  "ext#libatsopt_the_prelude_load_if"
 //
 (* ****** ****** *)
 //
@@ -540,6 +495,8 @@ arg0= commarg
 wtk0= waitknd
 ,
 ATSHOME= string
+,
+prelude= int
 ,
 inpfil0=fpath_t
 ,
@@ -771,10 +728,6 @@ process_cmdline2
 ( st0: &cmdstate >> _
 , arg0: commarg, args: commarglst(n)): void
 //
-val
-XATSHOME =
-"/home/hwxi/Research/ATS-Xanadu"
-//
 implement
 process_nil
   (st0) = let
@@ -785,12 +738,21 @@ val
 stadyn =
 waitknd_get_stadyn(wtk0)
 //
+val
+XATSHOME = st0.ATSHOME
+//
 in
 //
-if (
+if
+(
 stadyn >= 0
 ) then
 {
+//
+val () =
+the_prelude_load_if
+(XATSHOME, st0.prelude)
+// end of [val]
 //
 val
 d0cs =
@@ -1237,6 +1199,10 @@ implement
 xatsopt_main0
   (argc, argv) = let
 //
+val
+XATSHOME =
+"/home/hwxi/Research/ATS-Xanadu"
+//
 val+
 list_cons
 (arg0, args) = args where
@@ -1253,6 +1219,8 @@ st0: cmdstate =
 , wtk0= WTKnone()
 //
 , ATSHOME= XATSHOME
+//
+, prelude= 0(*~loaded*)
 //
 , inpfil0=
   $FIL.the_filepath_dummy
@@ -1297,6 +1265,99 @@ else prerrln! ("Hello from ATS3(ATS/Xanadu)!")
 //
 #endif // ifndef(XATSOPT_MAIN_NONE)
 //
+(* ****** ****** *)
+//
+implement
+the_fixity_load
+  (XATSHOME) = let
+//
+  val given = "prelude/fixity.sats"
+//
+  val fname =
+  $FIL.filepath_dirbase(XATSHOME, given)
+//
+  val
+  (pf0 | ()) =
+  (
+    $FIL.the_filepathlst_push(fpath)
+  ) where
+  {
+  val fpath =
+  $FIL.filepath_make(given, given, fname)  
+  }
+  val d0cs = let
+    val
+    opt =
+    fileref_open_opt(fname, file_mode_r)
+
+  in
+    case+ opt of
+    | ~None_vt() => list_nil()
+    | ~Some_vt(filr) => d0cs where
+      {
+        val d0cs =
+        parse_from_fileref_toplevel
+        (
+          0(*static*), filr(*input*)
+        )
+        val ((*void*)) = fileref_close(filr)
+      }
+   end : d0eclist // end of [val]
+  val
+  ((*popped*)) =
+  $FIL.the_filepathlst_pout(pf0 | (*none*))
+//
+  val
+  (pf0 | ()) =
+  the_fxtyenv_push((*void*))
+  val d1cs = trans01_declist(d0cs)
+  val map =
+  the_fxtyenv_pout(pf0 | (*none*))
+//
+  val ((*joined*)) = the_fxtyenv_pjoinwth0(map)
+//
+// (*
+  val () = println! "the_fxtyenv = "
+  val () = the_fxtyenv_println((*void*))
+  val () = println! "[the_fixity_load] is finished."
+// *)
+//
+in
+  // empty
+end // end of [the_fixity_load]
+
+(* ****** ****** *)
+
+implement
+the_prelude_load
+  (XATSHOME) =
+{
+//
+val () =
+the_fixity_load(XATSHOME)
+//
+(*
+val () =
+println! "[the_prelude_load] is finished."
+*)
+//
+} (* end of [the_prelude_load] *)
+
+(* ****** ****** *)
+//
+implement
+the_prelude_load_if
+  (XATSHOME, flag) =
+(
+//
+if
+(flag = 0)
+then let
+  val () = flag := flag + 1 in the_prelude_load(XATSHOME)
+end // end of [then]
+//
+) (* end of [the_prelude_load_if] *)
+
 (* ****** ****** *)
 
 (* end of [xatsopt.dats] *)

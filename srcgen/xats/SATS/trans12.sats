@@ -261,23 +261,26 @@ the_sortenv_qfind
 //
 (* ****** ****** *)
 //
-absview sortenv_push_v
+absview
+sortenv_view
+viewdef
+sortenv_v = sortenv_view
 //
 fun
 the_sortenv_pop
-  (sortenv_push_v | (*none*)): s2tmap
+  (sortenv_v | (*none*)): s2tmap
 fun
 the_sortenv_popfree
-  (sortenv_push_v | (*none*)): (void)
+  (sortenv_v | (*none*)): (void)
 fun
 the_sortenv_pushnil
-  ((*void*)): (sortenv_push_v | void)
+  ((*void*)): (sortenv_v | void)
 //
 fun
 the_sortenv_locjoin
 (
-  pf1: sortenv_push_v
-, pf2: sortenv_push_v | (*none*)
+  pf1: sortenv_v
+, pf2: sortenv_v | (*none*)
 ) : void // end of [the_sortenv_locjoin]
 //
 fun // p: pervasive
@@ -316,20 +319,21 @@ the_sexpenv_qfind
   (qua: sym_t, tid: sym_t): s2itmopt_vt
 //
 (* ****** ****** *)
-
-absview sexpenv_push_v
-
-(* ****** ****** *)
+//
+absview
+sexpenv_view
+viewdef
+sexpenv_v = sexpenv_view
 //
 fun
 the_sexpenv_pop
-  (sexpenv_push_v | (*none*)): s2imap
+  (sexpenv_v | (*none*)): s2imap
 fun
 the_sexpenv_popfree
-  (sexpenv_push_v | (*none*)): (void)
+  (sexpenv_v | (*none*)): (void)
 fun
 the_sexpenv_pushnil
-  ((*void*)): (sexpenv_push_v | void)
+  ((*void*)): (sexpenv_v | void)
 //
 (* ****** ****** *)
 //
@@ -459,20 +463,21 @@ the_dexpenv_qfind
   (qua: sym_t, tid: sym_t): d2itmopt_vt
 //
 (* ****** ****** *)
-
-absview dexpenv_push_v
-
-(* ****** ****** *)
+//
+absview
+dexpenv_view
+viewdef
+dexpenv_v = dexpenv_view
 //
 fun
 the_dexpenv_pop
-  (dexpenv_push_v | (*none*)): s2imap
+  (dexpenv_v | (*none*)): s2imap
 fun
 the_dexpenv_popfree
-  (dexpenv_push_v | (*none*)): (void)
+  (dexpenv_v | (*none*)): (void)
 fun
 the_dexpenv_pushnil
-  ((*void*)): (dexpenv_push_v | void)
+  ((*void*)): (dexpenv_v | void)
 //
 (* ****** ****** *)
 //

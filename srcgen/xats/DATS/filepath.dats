@@ -214,6 +214,20 @@ the_filepath_string = $rec{
 , filepath_fullpath= $SYM.STRING_fp_symbol
 } // end of [the_filepath_string]
 
+implement
+filepath_make
+(
+  given, pname, fname
+) = let
+//
+val fname = $SYM.symbol_make(fname)
+//
+in '{
+  filepath_kind= 0
+, filepath_givename= given
+, filepath_partpath= pname, filepath_fullpath= fname
+} end // end of [filename_make]
+
 end // end of [local]
 
 (* ****** ****** *)
@@ -395,7 +409,7 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-fprint_the_filepath
+the_filepath_fprint
   (out) =
 (
  fprint_filepath_full(out, fp)
@@ -409,7 +423,7 @@ fprint_the_filepath
 }
 //
 implement
-fprint_the_filepathlst
+the_filepathlst_fprint
   (out) = let
 //
   val (vbox(pf)|p0) =
@@ -425,7 +439,7 @@ implement
 list_vt_foreach$fwork<filepath><void>
   (fp, env) = fprint_filepath_full(out, fp)
 }
-end // end of [fprint_the_filepathlst]
+end // end of [the_filepathlst_fprint]
 //
 (* ****** ****** *)
 

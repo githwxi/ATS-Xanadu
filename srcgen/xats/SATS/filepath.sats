@@ -105,6 +105,13 @@ val the_filepath_string : filepath // text
 (* ****** ****** *)
 //
 fun
+filepath_make
+( given: string
+, pname: string, fname: string): filepath
+//
+(* ****** ****** *)
+//
+fun
 filepath_is_dummy: filepath -> bool
 fun
 filepath_isnot_dummy: filepath -> bool
@@ -135,9 +142,9 @@ fun the_filepathlst_ppush(fp0: filepath): void
 (* ****** ****** *)
 //
 fun
-fprint_the_filepath(out: FILEref): void
+the_filepath_fprint(out: FILEref): void
 fun
-fprint_the_filepathlst(out: FILEref): void
+the_filepathlst_fprint(out: FILEref): void
 //
 (* ****** ****** *)
 

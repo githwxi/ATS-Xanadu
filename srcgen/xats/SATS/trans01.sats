@@ -36,6 +36,8 @@
 #staload
 SYM = "./symbol.sats"
 #staload
+MAP = "./symmap.sats"
+#staload
 FIX = "./fixity.sats"
 #staload
 LEX = "./lexing.sats"
@@ -98,11 +100,39 @@ token2string : token -> string
 (* ****** ****** *)
 //
 fun
-the_fixtyenv_search
+the_fxtyenv_search
   (key: sym_t): fixtyopt_vt
 fun
-the_fixtyenv_insert
+the_fxtyenv_insert
   (key: sym_t, itm: fixty): void
+//
+(* ****** ****** *)
+//
+absview
+fxtyenv_view
+viewdef
+fxtyenv_v = fxtyenv_view
+//
+fun
+the_fxtyenv_push
+  ((*void*)): (fxtyenv_v | void)
+fun
+the_fxtyenv_pout
+( fxtyenv_v 
+| (* none *)): $MAP.symmap(fixty)
+//
+(* ****** ****** *)
+//
+fun // p: pervasive
+the_fxtyenv_pjoinwth0
+  (map: $MAP.symmap(fixty)): void
+//
+(* ****** ****** *)
+//
+fun
+the_fxtyenv_println(): void
+fun
+the_fxtyenv_fprint(FILEref): void
 //
 (* ****** ****** *)
 //

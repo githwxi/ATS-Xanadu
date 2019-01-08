@@ -269,6 +269,10 @@ implement
 fprint_symenv_top
   (out, env, fpr) =
   $MAP.fprint_symmap(out, env.map0, fpr)
+implement
+fprint_symenv_ptop
+  (out, env, fpr) =
+  $MAP.fprint_symmap(out, env.pmap0, fpr)
 //
 (* ****** ****** *)
 
