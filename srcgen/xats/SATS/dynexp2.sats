@@ -241,7 +241,8 @@ overload fprint with fprint_d2itm
 //
 (* ****** ****** *)
 //
-abstype tq2arg_tbox
+abstype
+tq2arg_tbox = ptr
 //
 typedef
 tq2arg = tq2arg_tbox
@@ -251,7 +252,7 @@ tq2arglst = List0(tq2arg)
 fun
 tq2arg_get_loc(tq2arg): loc_t
 fun
-tq2arg_get_s2vs(tq2arg): s2varlst
+tq2arg_get_svss(tq2arg): s2varlstlst
 //
 fun
 tq2arg_make
