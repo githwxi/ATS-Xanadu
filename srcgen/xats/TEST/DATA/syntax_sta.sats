@@ -189,7 +189,7 @@ where
   sortdef nat = {a: int | a >= 0}
   typedef mylist_(a:type)(n:int) = mylist(a)(n)
 endwhere
-////
+
 (* ****** ****** *)
 
 abstype
@@ -580,7 +580,7 @@ list_make_pair(x, x):<!wrt> list_vt(x, 2)
 fun
 <x:type>
 list_make_elt
-  {n:nat}(n: int(n), x: x):<!wrt> list_vt(x, n)
+{n:nat}(n: int(n), x: x):<!wrt> list_vt(x, n)
 // end of [list_make_elt]
 //
 (* ****** ****** *)
