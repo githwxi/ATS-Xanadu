@@ -139,6 +139,12 @@ fprint_symenv_top
 ( out: FILEref
 , map: &symenv(itm), fpr: (FILEref, itm) -> void
 ) : void // end of [fprint_symenv_top]
+fun
+fprint_symenv_ptop
+  {itm:type}
+( out: FILEref
+, map: &symenv(itm), fpr: (FILEref, itm) -> void
+) : void // end of [fprint_symenv_ptop]
 
 (* ****** ****** *)
 

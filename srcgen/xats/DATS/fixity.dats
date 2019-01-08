@@ -212,16 +212,18 @@ fprint_fixty
     fprint!(out, "FIXTYnon()")
     end // end of [FIXTYnon]
   | FIXTYpre(p) =>
-    fprint!(out, "FIXTYpre(", p)
+    fprint!(out, "FIXTYpre(", p, ")")
   | FIXTYpos(p) =>
-    fprint!(out, "FIXTYpos(", p)
+    fprint!(out, "FIXTYpos(", p, ")")
   | FIXTYinf(p, a) =>
-    fprint!(out, "FIXTYinf(", p, ", ", a)
+    fprint!(out, "FIXTYinf(", p, ", ", a, ")")
   | FIXTYpreinf(p1, p2, a) =>
-    fprint!(out, "FIXTYpreinf(", p1, ", ", p2, ", ", a)
+    fprint!
+    (out, "FIXTYpreinf(", p1, ", ", p2, ", ", a, ")")
 (*
   | FIXTYposinf(p1, p2, a) =>
-    fprint!(out, "FIXTYposinf(", p1, ", ", p2, ", ", a)
+    fprint!
+    (out, "FIXTYposinf(", p1, ", ", p2, ", ", a, ")")
 *)
 ) (* end of [fprint_fixty] *)
 //

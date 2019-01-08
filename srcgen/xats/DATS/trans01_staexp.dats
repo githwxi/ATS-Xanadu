@@ -331,7 +331,7 @@ ifcase
 | sym= // '+' is special
   $SYM.SUB_symbol =>
   Some_vt($FIX.postmnus_fixty)
-| _(*else*) => the_fixtyenv_search(sym)
+| _(*else*) => the_fxtyenv_search(sym)
 ) : fixtyopt_vt // end of [val]
 //
 val s1t0 =
@@ -803,7 +803,7 @@ val loc = tok.loc()
 val sym =
 $SYM.symbol_make(nam)
 val opt =
-the_fixtyenv_search(sym)
+the_fxtyenv_search(sym)
 val s1e0 =
 s1exp_make_node(loc, S1Eid(sym))
 //

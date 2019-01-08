@@ -194,9 +194,10 @@ end // end of [local] *)
 local
 //
 absimpl
-sortenv_push_v = unit_v
+sortenv_view = unit_v
 //
-vtypedef s2tenv = symenv(s2txt)
+vtypedef
+  s2tenv = symenv(s2txt)
 //
 extern
 prfun
@@ -365,9 +366,10 @@ end // end of [local]
 local
 //
 absimpl
-sexpenv_push_v = unit_v
+sexpenv_view = unit_v
 //
-vtypedef s2ienv = symenv(s2itm)
+vtypedef
+  s2ienv = symenv(s2itm)
 //
 extern
 prfun
@@ -628,9 +630,10 @@ end // end of [local]
 local
 //
 absimpl
-dexpenv_push_v = unit_v
+dexpenv_view = unit_v
 //
-vtypedef d2ienv = symenv(d2itm)
+vtypedef
+  d2ienv = symenv(d2itm)
 //
 extern
 prfun

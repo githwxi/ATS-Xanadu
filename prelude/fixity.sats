@@ -109,8 +109,8 @@ app of 70 // the app_prcdv
 //
 #infixl + - of 50 (*additive*)
 //
-#prefix + of (+(+1)) (* uplus *)
-#prefix - of (-(+1)) (* uminus *)
+#prefix + of +(+1) (* uplus *)
+#prefix - of -(+1) (* uminus *)
 //
 (*
 #infixr (+) ++ // concatenative
