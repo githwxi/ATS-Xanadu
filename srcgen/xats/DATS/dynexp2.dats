@@ -266,4 +266,32 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+tq2arg_tbox = $rec
+{
+tq2arg_loc= loc_t
+,
+tq2arg_svss= s2varlstlst
+}
+
+in (* in-of-local *)
+
+implement
+tq2arg_make
+(loc, svss) = $rec
+{
+tq2arg_loc= loc, tq2arg_svss= svss
+}
+
+implement
+tq2arg_get_loc(x0) = x0.tq2arg_loc
+implement
+tq2arg_get_svss(x0) = x0.tq2arg_svss
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp2.dats] *)
