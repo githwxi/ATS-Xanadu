@@ -382,6 +382,8 @@ typedef s2var = s2var_tbox
 typedef s2varlst = List0(s2var)
 typedef s2varopt = Option(s2var)
 //
+typedef s2varlstlst = List0(s2varlst)
+//
 vtypedef s2varlst_vt = List0_vt(s2var)
 vtypedef s2varopt_vt = Option_vt(s2var)
 //

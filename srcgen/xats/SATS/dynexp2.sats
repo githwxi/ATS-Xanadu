@@ -105,6 +105,19 @@ d2var_stamp_new(): stamp
 (* ****** ****** *)
 //
 fun
+d2con_get_loc: d2con -> loc_t
+fun
+d2cst_get_loc: d2cst -> loc_t
+fun
+d2var_get_loc: d2var -> loc_t
+//
+overload .loc with d2con_get_loc
+overload .loc with d2cst_get_loc
+overload .loc with d2var_get_loc
+//
+(* ****** ****** *)
+//
+fun
 d2con_get_sym: d2con -> sym_t
 fun
 d2cst_get_sym: d2cst -> sym_t
@@ -143,6 +156,7 @@ overload .stamp with d2var_get_stamp
 fun
 d2con_make_idtp
 (id: token, s2e: s2exp): d2con
+//
 fun
 d2cst_make_idtp
 (id: token, s2e: s2exp): d2cst
@@ -224,6 +238,24 @@ fprint_d2itm: fprint_type(d2itm)
 overload print with print_d2itm
 overload prerr with prerr_d2itm
 overload fprint with fprint_d2itm
+//
+(* ****** ****** *)
+//
+abstype tq2arg_tbox
+//
+typedef
+tq2arg = tq2arg_tbox
+typedef
+tq2arglst = List0(tq2arg)
+//
+fun
+tq2arg_get_loc(tq2arg): loc_t
+fun
+tq2arg_get_s2vs(tq2arg): s2varlst
+//
+fun
+tq2arg_make
+(loc: loc_t, svss: s2varlstlst): tq2arg
 //
 (* ****** ****** *)
 //

@@ -147,6 +147,15 @@ vtypedef
 typedef fmodenv = $S2E.fmodenv
 
 (* ****** ****** *)
+//
+typedef q1arg = $D1E.q1arg
+typedef sq1arg = $D1E.sq1arg
+typedef tq1arg = $D1E.tq1arg
+typedef ti1arg = $D1E.ti1arg
+//
+typedef q1arglst = $D1E.q1arglst
+//
+(* ****** ****** *)
 
 typedef d1exp = $D1E.d1exp
 typedef d1explst = $D1E.d1explst
@@ -167,6 +176,10 @@ typedef d2conlst = $D2E.d2conlst
 typedef d2cstlst = $D2E.d2cstlst
 typedef d2varlst = $D2E.d2varlst
 //
+(* ****** ****** *)
+
+typedef tq2arg = $D2E.tq2arg
+
 (* ****** ****** *)
 
 typedef d2exp = $D2E.d2exp
@@ -521,7 +534,6 @@ typedef
 s2explstlst = List0(s2explst)
 //
 (* ****** ****** *)
-
 //
 fun
 trans12_datype
@@ -538,6 +550,20 @@ fun
 trans12_datconlst
 ( s2c0: s2cst
 , s2varlstlst, d1atconlst): d2conlst
+//
+(* ****** ****** *)
+//
+fun
+trans12_qarg
+  (q1a: q1arg): s2varlst
+fun
+trans12_qarglst
+  (q1as: q1arglst): s2varlstlst
+//
+(* ****** ****** *)
+//
+fun
+trans12_tqarg(tq1a: tq1arg): tq2arg
 //
 (* ****** ****** *)
 
