@@ -132,15 +132,15 @@ case+ opt of
 implement
 trans12_dexplst
   (d1es) =
-list_vt2t(d1es) where
+list_vt2t(d2es) where
 {
 val
-d1es =
+d2es =
 list_map<d1exp><d2exp>
   (d1es) where
 {
-  implement
-  list_map$fopr<d1exp><d2exp> = trans12_dexp
+implement
+list_map$fopr<d1exp><d2exp> = trans12_dexp
 }
 } (* end of [trans12_dexplst] *)
 
@@ -796,6 +796,14 @@ case+ s2cs of
 
 (* ****** ****** *)
 
+fun
+aux_dynconst
+( d1c0
+: d1ecl
+) : d2ecl = d2ecl_none1(d1c0)
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -830,6 +838,8 @@ d1c0.node() of
 | D1Cdatasort _ => aux_datasort(d1c0)
 //
 | D1Cdatatype _ => aux_datatype(d1c0)
+//
+| D1Cdynconst _ => aux_dynconst(d1c0)
 //
 | D1Clocal
   (d1cs1, d1cs2) => let
@@ -1149,6 +1159,86 @@ list_map$fopr<d1atcon><d2con>
   (d1c) = trans12_datcon(s2c0, svss, d1c)
 //
 } (* end of [trans12_datconlst] *)
+
+(* ****** ****** *)
+
+implement
+trans12_qarg(q1a) =
+(
+case+
+q1a.node() of
+|
+Q1ARGsome(xs, opt) =>
+let
+//
+val
+opt = trans12_sortopt(opt)
+//
+val s2t =
+(
+case+ opt of
+| Some(s2t) => s2t
+| None((*void*)) => S2Tnone0()
+) : sort2 // end of [val]
+//
+in
+//
+(
+auxlst(xs)
+) where
+{
+fun
+auxlst
+(xs: tokenlst): s2varlst =
+(
+case+ xs of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  (
+  list_cons(s2v0, auxlst(xs))
+  ) where
+  {
+    val tid = sortid_sym(x0)
+    val s2v0 = s2var_make_idst(tid, s2t)
+  }
+)
+} (* end of [where] *)
+//
+end // end of [trans12_qarg]
+)
+
+implement
+trans12_qarglst
+  (q1as) =
+list_vt2t(svss) where
+{
+val
+svss =
+list_map<q1arg><s2varlst>
+  (q1as) where
+{
+implement
+list_map$fopr<q1arg><s2varlst> = trans12_qarg
+}
+} (* end of [trans12_qarglst] *)
+
+(* ****** ****** *)
+
+implement
+trans12_tqarg
+  (tq1a) = let
+//
+val loc0 = tq1a.loc()
+//
+val-
+TQ1ARGsome(q1as) = tq1a.node()
+//
+val svss = trans12_qarglst(q1as)
+//
+in
+  tq2arg_make(loc0, svss)
+end // end of [trans12_tqarg]
 
 (* ****** ****** *)
 

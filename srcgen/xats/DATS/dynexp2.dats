@@ -133,6 +133,8 @@ $rec{
 } (* d2con_make_idtp *)
 
 implement
+d2con_get_loc(x0) = x0.d2con_loc
+implement
 d2con_get_sym(x0) = x0.d2con_sym
 implement
 d2con_get_type(x0) = x0.d2con_type
@@ -148,7 +150,8 @@ local
 absimpl
 d2cst_tbox = $rec{
 //
-  d2cst_sym= sym_t // name
+  d2cst_loc= loc_t // loc
+, d2cst_sym= sym_t // name
 , d2cst_type= s2exp // type
 , d2cst_stamp= stamp // unicity
 //
@@ -156,6 +159,28 @@ d2cst_tbox = $rec{
 
 in (* in-of-local *)
 
+implement
+d2cst_make_idtp
+  (tok, s2e) =
+(
+$rec{
+  d2cst_loc= loc
+, d2cst_sym= sym
+, d2cst_type= s2e
+, d2cst_stamp= stamp
+}
+) where
+{
+  val loc = tok.loc()
+  val sym = dexpid_sym(tok)
+//
+  val
+  stamp = d2cst_stamp_new((*void*))
+//
+} (* d2cst_make_idtp *)
+
+implement
+d2cst_get_loc(x0) = x0.d2cst_loc
 implement
 d2cst_get_sym(x0) = x0.d2cst_sym
 implement
@@ -172,13 +197,16 @@ local
 absimpl
 d2var_tbox = $rec{
 //
-  d2var_sym= sym_t // name
+  d2var_loc= loc_t // loc
+, d2var_sym= sym_t // name
 , d2var_stamp= stamp // unicity
 //
 } (* end of [d2var_tbox] *)
 
 in (* in-of-local *)
 
+implement
+d2var_get_loc(x0) = x0.d2var_loc
 implement
 d2var_get_sym(x0) = x0.d2var_sym
 implement

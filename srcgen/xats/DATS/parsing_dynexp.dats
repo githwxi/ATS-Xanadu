@@ -523,7 +523,7 @@ val tok = buf.get0()
 //
 (*
 val () =
-println! ("p_tq0arg: tok = ", tok)
+println! ("p_ti0arg: tok = ", tok)
 *)
 //
 in
