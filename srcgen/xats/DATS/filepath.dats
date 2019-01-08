@@ -228,6 +228,31 @@ $SYM.neq_symbol_symbol
   (fp.full(), $SYM.symbol_nil)
 //
 (* ****** ****** *)
+//
+implement
+print_filepath_full
+  (fp0) =
+(
+fprint_filepath_full(stdout_ref, fp0)
+)
+implement
+prerr_filepath_full
+  (fp0) =
+(
+fprint_filepath_full(stderr_ref, fp0)
+)
+implement
+fprint_filepath_full
+  (out, fp0) =
+(
+  fprint_string(out, sym)
+) where
+{
+  val sym =
+  $SYM.symbol_get_name(fp0.full((*void*)))
+} (* end of [fprint_filepath_full] *)
+//
+(* ****** ****** *)
 
 local
 //
@@ -367,6 +392,41 @@ isexi =
 
 end // end of [local]
 
+(* ****** ****** *)
+
+implement
+fprint_the_filepath
+  (out) =
+(
+ fprint_filepath_full(out, fp)
+) where
+{
+  val fp = !p0 where
+  {
+  val (vbox(pf)|p0) =
+  ref_get_viewptr(the_filepath)
+  }
+}
+//
+implement
+fprint_the_filepathlst
+  (out) = let
+//
+  val (vbox(pf)|p0) =
+  ref_get_viewptr(the_filepathlst)
+//
+in
+$effmask_ref
+(
+ list_vt_foreach<filepath>(!p0)
+) where
+{
+implement
+list_vt_foreach$fwork<filepath><void>
+  (fp, env) = fprint_filepath_full(out, fp)
+}
+end // end of [fprint_the_filepathlst]
+//
 (* ****** ****** *)
 
 end // end of [local]

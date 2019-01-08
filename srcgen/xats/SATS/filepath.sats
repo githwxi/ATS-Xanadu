@@ -133,5 +133,12 @@ fun the_filepathlst_ppout((*void*)): void
 fun the_filepathlst_ppush(fp0: filepath): void
 //
 (* ****** ****** *)
+//
+fun
+fprint_the_filepath(out: FILEref): void
+fun
+fprint_the_filepathlst(out: FILEref): void
+//
+(* ****** ****** *)
 
 (* end of [xats_filepath.sats] *)
