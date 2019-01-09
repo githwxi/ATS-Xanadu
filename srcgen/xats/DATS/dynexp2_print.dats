@@ -245,5 +245,26 @@ case+ x0 of
 //
 )
 (* ****** ****** *)
+//
+implement
+print_tq2arg(x0) =
+fprint_tq2arg(stdout_ref, x0) 
+implement
+prerr_tq2arg(x0) =
+fprint_tq2arg(stdout_ref, x0) 
+//
+implement
+fprint_tq2arg
+  (out, x0) =
+(
+list_foreach<s2varlst>(x0.svss())
+) where
+{
+implement
+list_foreach$fwork<s2varlst><void>
+  (s2vs, env) = fprint!(out, "<", s2vs, ">")
+} (* end of [fprint_tq2arg] *)
+//
+(* ****** ****** *)
 
 (* end of [xats_dynexp2_print.dats] *)
