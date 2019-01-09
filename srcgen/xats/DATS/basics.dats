@@ -216,6 +216,15 @@ case+ knd of
 ) (* end of [fprint_impkind] *)
 
 (* ****** ****** *)
+
+implement
+FC2clo_ = FC2clo(0)
+implement
+FC2cloptr = FC2clo(1)
+implement
+FC2cloref = FC2clo(~1)
+
+(* ****** ****** *)
 //
 implement
 print_funclo2(fc2) =

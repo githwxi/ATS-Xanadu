@@ -100,6 +100,11 @@ implement
 fprint_val<d2ecl> = fprint_d2ecl
 //
 (* ****** ****** *)
+
+implement
+fprint_val<tq2arg> = fprint_tq2arg
+
+(* ****** ****** *)
 //
 implement
 print_d2con(x0) =
@@ -119,8 +124,7 @@ fprint!(out, ": ", x0.type())
 // *)
 ) where
 {
-  val sym = x0.sym()
-  val stamp = x0.stamp()
+  val sym = x0.sym() and stamp = x0.stamp()
 } (* end of [fprint_d2con] *)
 //
 (* ****** ****** *)
@@ -143,8 +147,7 @@ fprint!(out, ": ", x0.type())
 // *)
 ) where
 {
-  val sym = x0.sym()
-  val stamp = x0.stamp()
+  val sym = x0.sym() and stamp = x0.stamp()
 } (* end of [fprint_d2cst] *)
 //
 (* ****** ****** *)
@@ -164,8 +167,7 @@ fprint_d2var
   (out, sym, "(", stamp, ")")
 ) where
 {
-  val sym = x0.sym()
-  val stamp = x0.stamp()
+  val sym = x0.sym() and stamp = x0.stamp()
 } (* end of [fprint_d2var] *)
 //
 (* ****** ****** *)
@@ -215,6 +217,9 @@ case- x0.node() of
 | D2Cdatatype(d1c) =>
   fprint!(out, "D2Cdatatype(", d1c, ")")
 //
+| D2Cdynconst(knd, tqas, d2cs) =>
+  fprint!(out, "D2Cdcstdecl(", knd, "; ", tqas, "; ", d2cs)
+//
 ) (* end of [fprint_d2ecl] *)
 
 end // end of [local]
@@ -237,8 +242,8 @@ case+ x0 of
 | D2ITMcon(d2cs) =>
   fprint!(out, "D2ITMcon(", d2cs, ")")
 //
-| D2ITMcst(d2c0) =>
-  fprint!(out, "D2ITMcst(", d2c0, ")")
+| D2ITMcst(d2cs) =>
+  fprint!(out, "D2ITMcst(", d2cs, ")")
 //
 | D2ITMvar(d2v0) =>
   fprint!(out, "D2ITMvar(", d2v0, ")")

@@ -243,6 +243,14 @@ sort2_apps
 (* ****** ****** *)
 //
 fun
+lte_t2bas_t2bas
+  (x1: t2bas, x2: t2bas): bool
+//
+overload <= with lte_t2bas_t2bas
+//
+(* ****** ****** *)
+//
+fun
 lte_sort2_sort2
   (x1: sort2, x2: sort2): bool
 fun
@@ -539,6 +547,7 @@ typedef s2hnfopt = Option(s2hnf)
 //
 datatype
 s2eff =
+| S2EFFnil of ()
 | S2EFFall of ()
 | S2EFFexp of s2exp
 | S2EFFset of $EFF.effset

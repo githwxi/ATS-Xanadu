@@ -629,7 +629,7 @@ V1ARDECL of @{
   loc= loc_t
 , nam= token
 , wth= tokenopt
-, res= effs1expopt
+, res= s1expopt
 , ini= teqd1expopt
 }
 //

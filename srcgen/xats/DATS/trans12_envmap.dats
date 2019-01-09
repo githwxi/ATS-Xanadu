@@ -739,6 +739,42 @@ val d2i0 = D2ITMcon(list_cons(d2c, d2cs))
 (* ****** ****** *)
 
 implement
+the_dexpenv_add_cst
+  (d2c) =
+(
+let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_insert(!p0, sym, d2i0)
+end
+) where
+{
+//
+val sym = d2c.sym()
+val opt = the_dexpenv_find(sym)
+//
+val d2cs =
+(
+  case+ opt of
+  | ~None_vt() =>
+    (
+      list_nil((*void*))
+    )
+  | ~Some_vt(d2i) =>
+    (
+    case+ d2i of
+    | D2ITMcst(cs) => cs | _ => list_nil()
+    )
+) : d2cstlst // end of [val]
+//
+val d2i0 = D2ITMcst(list_cons(d2c, d2cs))
+//
+} (* end of [the_dexpenv_add_cst] *)
+
+(* ****** ****** *)
+
+implement
 the_dexpenv_add_conlst
   (d2cs) =
 (
@@ -753,6 +789,26 @@ the_dexpenv_add_conlst
   | list_nil() => ()
   | list_cons(d2c0, d2cs) =>
     (the_dexpenv_add_con(d2c0); foreach(d2cs))
+  )
+} (* end of [the_dexpenv_add_conlst] *)
+
+(* ****** ****** *)
+
+implement
+the_dexpenv_add_cstlst
+  (d2cs) =
+(
+  foreach(d2cs)
+) where
+{
+  fun
+  foreach
+  (d2cs: d2cstlst): void =
+  (
+  case+ d2cs of
+  | list_nil() => ()
+  | list_cons(d2c0, d2cs) =>
+    (the_dexpenv_add_cst(d2c0); foreach(d2cs))
   )
 } (* end of [the_dexpenv_add_conlst] *)
 

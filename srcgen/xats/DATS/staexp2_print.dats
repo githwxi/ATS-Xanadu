@@ -276,6 +276,8 @@ fprint_s2eff
   (out, s2f0) =
 (
 case+ s2f0 of
+| S2EFFnil() =>
+  fprint!(out, "S2EFFnil(", ")")
 | S2EFFall() =>
   fprint!(out, "S2EFFall(", ")")
 | S2EFFexp(s2e) =>

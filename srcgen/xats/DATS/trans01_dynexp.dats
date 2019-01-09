@@ -1719,7 +1719,7 @@ rcd.wth of
   }
 ) : tokenopt // end of [val]
 val
-res = trans01_effsexpopt(rcd.res)
+res = trans01_sexpopt(rcd.res)
 val
 ini = trans01_teqdexpopt(rcd.ini)
 //
