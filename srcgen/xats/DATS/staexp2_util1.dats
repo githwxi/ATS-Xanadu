@@ -151,6 +151,25 @@ case+
 (* ****** ****** *)
 
 implement
+lte_t2bas_t2bas
+(x1, x2) =
+(
+case+
+(x1, x2) of
+| ( T2BASpre s1
+  , T2BASpre s2) => (s1 = s2)
+| ( T2BASdat t1
+  , T2BASdat t2) => (t1 = t2)
+| ( T2BASimp(k1, s1)
+  , T2BASimp(k2, s2)) => subsort(k1, k2)
+//
+| (_(*rest*), _(*rest*)) => false
+//
+) (* end of [eq_t2bas_t2bas] *)
+//
+(* ****** ****** *)
+
+implement
 lte_sort2_sort2
   (x1, x2) =
 (
@@ -166,7 +185,7 @@ case+ x1 of
 //
 | S2Tbas(stb1) =>
   (case+ x2 of
-   | S2Tbas(stb2) => stb1 = stb2 | _ => false)
+   | S2Tbas(stb2) => stb1 <= stb2 | _ => false)
 //
 | S2Ttup(sts1) =>
   (case+ x2 of

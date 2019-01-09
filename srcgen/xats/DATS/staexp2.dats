@@ -656,10 +656,10 @@ s2exp_fun_nil
 (npf, arg, res) =
 (
 s2exp_fun_full
-(fc2, 0(*lin*), eff, npf,  arg, res)
+(fc2, 0(*lin*), eff, npf, arg, res)
 ) where
 {
-  val fc2 = FC2fun() and eff = S2EFFall()
+  val fc2 = FC2fun() and eff = S2EFFnil()
 }
 //
 implement

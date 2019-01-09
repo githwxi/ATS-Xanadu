@@ -2767,8 +2767,13 @@ val e0 = err
 //
 val nam =
 p_d0pid(buf, err)
+//
+(*
 val res =
 p_effs0expopt(buf, err)
+*)
+val res =
+popt_s0exp_anno(buf, err)
 //
 val wth =
 let
@@ -2796,11 +2801,10 @@ case+ ini of
 | TEQD0EXPnone() =>
   ( case+ wth of
     | None() =>
-      ( case+ res of
-        | EFFS0EXPnone
-          ((*void*)) => loc0
-        | EFFS0EXPsome
-          (tok, s0e) => (loc0+s0e.loc())
+      (
+      case+ res of
+      | None() => loc0
+      | Some(s0e) => loc0+s0e.loc()
       )
     | Some(pid) => (loc0 + pid.loc())
   )

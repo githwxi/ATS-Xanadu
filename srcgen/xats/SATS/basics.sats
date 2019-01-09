@@ -217,6 +217,10 @@ funclo2 =
 | FC2fun of ((*fun*))
 | FC2clo of int(*knd*) // closure: knd=1/0/~1: ptr/clo/ref
 //
+val FC2clo_: funclo2 // flat
+val FC2cloptr: funclo2 // linear
+val FC2cloref: funclo2 // nonlin
+//
 fun
 print_funclo2: print_type(funclo2)
 fun

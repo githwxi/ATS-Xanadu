@@ -217,8 +217,8 @@ typedef d2eclopt = Option(d2ecl)
 (* ****** ****** *)
 //
 datatype d2itm =
-  | D2ITMcst of (d2cst)
   | D2ITMvar of (d2var)
+  | D2ITMcst of (d2cstlst)
   | D2ITMcon of (d2conlst)
 //
 (* ****** ****** *)
@@ -300,6 +300,9 @@ d2ecl_node =
 //
 | D2Cdatasort of (d1ecl)
 | D2Cdatatype of (d1ecl)
+//
+| D2Cdynconst of
+  (token(*kind*), tq2arglst, d2cstlst)
 //
 // end of [d2ecl_node]
 //

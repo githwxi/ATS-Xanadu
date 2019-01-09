@@ -478,6 +478,24 @@ sexpdef list = list_type_int_tbox
 //
 (* ****** ****** *)
 //
+// HX-2018-10-01:
+//
+datatype
+list_vtype_int_vtbox
+  (a:vtype+, int) =
+//
+// type+: covariant
+//
+| list_vt_nil(a, 0) of ()
+| {n:int | n >= 0}
+  list_vt_cons(a, n+1) of
+  (a, list_vt_vtype_int_vtbox(a, n))
+// end of [list_type_int_tbox]
+//
+sexpdef list_vt = list_vtype_int_vtbox
+//
+(* ****** ****** *)
+//
 typedef
 List(a:type) = [n:int] list(a, n)
 //

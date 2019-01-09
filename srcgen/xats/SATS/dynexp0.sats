@@ -855,7 +855,7 @@ V0ARDECL of @{
   loc= loc_t
 , nam= d0pid
 , wth= d0pidopt
-, res= effs0expopt
+, res= s0expopt
 , ini= teqd0expopt
 } where
   d0pidopt = Option(d0pid)
