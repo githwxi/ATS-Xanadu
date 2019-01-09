@@ -254,6 +254,24 @@ tq2arg_get_loc(tq2arg): loc_t
 fun
 tq2arg_get_svss(tq2arg): s2varlstlst
 //
+overload .loc with tq2arg_get_loc
+overload .svss with tq2arg_get_svss
+//
+(* ****** ****** *)
+//
+fun
+print_tq2arg: print_type(tq2arg)
+fun
+prerr_tq2arg: prerr_type(tq2arg)
+fun
+fprint_tq2arg: fprint_type(tq2arg)
+//
+overload print with print_tq2arg
+overload prerr with prerr_tq2arg
+overload fprint with fprint_tq2arg
+//
+(* ****** ****** *)
+//
 fun
 tq2arg_make
 (loc: loc_t, svss: s2varlstlst): tq2arg
