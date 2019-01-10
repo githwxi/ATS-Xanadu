@@ -73,7 +73,7 @@ $ENV.symenv_make_nil()
 val r0 =
 ref_make_viewptr(pf | p0)
 val
-(pf0 | p0) = ref_get_viewptr(r0)
+(pfbox | p0) = ref_get_viewptr(r0)
 
 in (* in-of-local *)
 
@@ -86,7 +86,7 @@ the_fxtyenv_search
   ($ENV.symenv_search(!p0, k0))
 ) where
 {
-  prval vbox(pf) = pf0
+  prval vbox(pf) = pfbox
 } (* end of [the_fxtyenv_search] *)
 *)
 implement
@@ -110,7 +110,7 @@ end // end of [let]
 )
 ) where
 {
-  prval vbox(pf) = pf0
+prval vbox(pf) = pfbox
 } (* end of [the_fxtyenv_search] *)
 
 
@@ -118,7 +118,7 @@ implement
 the_fxtyenv_insert
   (k0, x0) = let
 //
-prval vbox(pf) = pf0  
+prval vbox(pf) = pfbox
 //
 fun
 mix .<>.
@@ -153,7 +153,7 @@ the_fxtyenv_pout
 (
   pfenv | (*none*)
 ) = let
-  prval vbox(pf) = pf0
+  prval vbox(pf) = pfbox
   prval unit_v() = pfenv
 in
   $effmask_ref
@@ -168,7 +168,7 @@ the_fxtyenv_push
   prval
   pfenv = unit_v()
 //
-  prval vbox(pf) = pf0
+  prval vbox(pf) = pfbox
 //
   val () =
   $effmask_ref
@@ -190,9 +190,27 @@ $effmask_ref
 (* ****** ****** *)
 
 implement
+the_fxtyenv_locjoin
+(pf1, pf2| (*void*) ) =
+{
+//
+  prval unit_v() = pf1
+  prval unit_v() = pf2
+//
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_locjoin{fixty}(!p0))
+//
+} // end of [the_fxtyenv_locjoin]
+
+(* ****** ****** *)
+
+implement
 the_fxtyenv_pjoinwth0(map) = let
   prval
-  vbox(pf) = pf0 in
+  vbox(pf) = pfbox in
   $effmask_ref($ENV.symenv_pjoinwth0(!p0, map))
 end // end of [the_fxtyenv_pjoinwth0]
 
@@ -202,7 +220,7 @@ implement
 the_fxtyenv_fprint
   (out) = let
 //
-prval vbox(pf) = pf0  
+prval vbox(pf) = pfbox
 //
 in
 $effmask_ref

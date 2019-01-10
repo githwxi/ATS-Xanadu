@@ -355,6 +355,13 @@ fun
 the_sexpenv_pushnil
   ((*void*)): (sexpenv_v | void)
 //
+fun
+the_sexpenv_locjoin
+(
+  pf1: sexpenv_v
+, pf2: sexpenv_v | (*none*)
+) : void // end of [the_sexpenv_locjoin]
+//
 (* ****** ****** *)
 //
 fun
@@ -500,6 +507,11 @@ the_dexpenv_popfree
 fun
 the_dexpenv_pushnil
   ((*void*)): (dexpenv_v | void)
+//
+fun
+the_dexpenv_locjoin
+( pf1: dexpenv_v
+, pf2: dexpenv_v | (*none*)): void
 //
 (* ****** ****** *)
 //
