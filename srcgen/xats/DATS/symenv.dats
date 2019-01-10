@@ -231,6 +231,38 @@ symenv_pushnil
   symenv_push(env, $MAP.symmap_make_nil())
 //
 (* ****** ****** *)
+
+implement
+symenv_locjoin
+  {itm}(env) = let
+//
+val maps = env.maps
+//
+val-
+~list_vt_cons(map1, maps) = maps
+val-
+~list_vt_cons(map2, maps) = maps
+//
+val ((*void*)) = $MAP.symmap_free(map1)
+val ((*void*)) = (env.maps := maps)
+//
+// HX-2013-06:
+// HX-2019-01-09:
+// it is done in this way so as to hanlde the
+// case where a binding in [map1] may replace
+// another one in [map2] if they happen to be
+// sharing the same key.
+//
+val m0 = env.map0
+val () = env.map0 := map2
+val () = $MAP.symmap_joinwth{itm}(env.map0, m0)
+val () = $MAP.symmap_free{itm}(m0)
+//
+in
+  // nothing
+end // end of [symenv_locjoin]
+
+(* ****** ****** *)
 //
 implement
 symenv_psearch

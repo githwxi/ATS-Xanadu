@@ -1048,12 +1048,15 @@ d1c0.node() of
 | D1Clocal
   (d1cs1, d1cs2) => let
     val
-    d2cs1 = trans12_declist(d1cs1)
+    (pf1|()) = the_trans12_pushnil()
+    val d2cs1 = trans12_declist(d1cs1)
     val
-    d2cs2 = trans12_declist(d1cs2)
+    (pf2|()) = the_trans12_pushnil()
+    val d2cs2 = trans12_declist(d1cs2)
+    val ((*void*)) =
+    the_trans12_locjoin(pf1, pf2 | (*none*))
   in
-    d2ecl_make_node
-    (loc0, D2Clocal(d2cs1, d2cs2))
+    d2ecl_make_node(loc0, D2Clocal(d2cs1, d2cs2))
   end // end of [D1Clocal]
 //
 | _(*rest-of-D1ECL*) => d2ecl_none1(d1c0)

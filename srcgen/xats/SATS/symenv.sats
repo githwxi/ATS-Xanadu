@@ -104,6 +104,16 @@ symenv_pushnil
 //
 (* ****** ****** *)
 //
+// HX:
+// For handling: local ... in ... end
+//
+fun
+symenv_locjoin
+  {itm:type}(env: &symenv(itm) >> _): void
+// end of [symenv_locjoin]
+//
+(* ****** ****** *)
+//
 fun
 symenv_psearch // p: pervasive
   {itm:type}
