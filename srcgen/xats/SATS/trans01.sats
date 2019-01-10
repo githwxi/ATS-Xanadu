@@ -120,6 +120,9 @@ fun
 the_fxtyenv_pout
 ( fxtyenv_v 
 | (* none *)): $MAP.symmap(fixty)
+fun
+the_fxtyenv_popfree
+(pf: fxtyenv_v  | (* none *)): void
 //
 (* ****** ****** *)
 //

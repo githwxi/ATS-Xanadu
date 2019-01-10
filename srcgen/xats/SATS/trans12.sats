@@ -493,7 +493,7 @@ dexpenv_v = dexpenv_view
 //
 fun
 the_dexpenv_pop
-  (dexpenv_v | (*none*)): s2imap
+  (dexpenv_v | (*none*)): d2imap
 fun
 the_dexpenv_popfree
   (dexpenv_v | (*none*)): (void)
@@ -507,6 +507,25 @@ fun
 the_dexpenv_fprint(FILEref): void
 fun
 the_dexpenv_println((*void*)): void
+//
+(* ****** ****** *)
+//
+absview
+trans12_view
+viewdef
+trans12_v = trans12_view
+//
+fun
+the_trans12_popfree
+  (trans12_v | (*none*)): (void)
+fun
+the_trans12_pushnil
+  ((*void*)): (trans12_v | void)
+//
+fun
+the_trans12_locjoin
+( pf1: trans12_v
+, pf2: trans12_v | (*none*)): void
 //
 (* ****** ****** *)
 //

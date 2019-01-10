@@ -46,6 +46,8 @@ SYM = "./../SATS/symbol.sats"
 FIX = "./../SATS/fixity.sats"
 //
 #staload
+MAP = "./../SATS/symmap.sats"
+#staload
 ENV = "./../SATS/symenv.sats"
 //
 #staload "./../SATS/trans01.sats"
@@ -173,6 +175,17 @@ the_fxtyenv_push
   ($ENV.symenv_pushnil{fixty}(!p0))
 //
 } // end of [the_fxtyenv_push]
+
+implement
+the_fxtyenv_popfree
+(
+  pfenv | (*none*)
+) = 
+$effmask_ref
+(
+  $MAP.symmap_free
+  (the_fxtyenv_pout(pfenv | (*void*)))
+) (* end of [the_fxtyenv_popfree] *)
 
 (* ****** ****** *)
 

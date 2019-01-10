@@ -61,6 +61,7 @@ NMS = "./../SATS/nmspace.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
 
 (* ****** ****** *)
@@ -867,6 +868,44 @@ end // end of [the_dexpenv_find]
 (* ****** ****** *)
 
 implement
+the_dexpenv_pop (
+  pfenv | (*none*)
+) = let
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+in
+  $effmask_ref
+  ($ENV.symenv_pop{d2itm}(!p0))
+end // end of [the_dexpenv_pop]
+
+implement
+the_dexpenv_popfree
+  (pfenv | (*none*)) =
+{
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+  val () =
+  $effmask_ref
+  ($ENV.symenv_popfree{d2itm}(!p0))
+} // end of [the_dexpenv_popfree]
+
+implement
+the_dexpenv_pushnil
+  () = (pfenv | ()) where
+{
+//
+  prval pfenv = unit_v()
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_pushnil{d2itm}(!p0))
+//
+} // end of [the_dexpenv_pushnil]
+
+(* ****** ****** *)
+
+implement
 the_dexpenv_fprint
   (out) = let
 //
@@ -890,6 +929,65 @@ the_dexpenv_println
 in
   the_dexpenv_fprint(out); fprint_newline(out)
 end // end of [the_dexpenv_println]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+trans12_view = unit_v
+
+in (* in-of-local *)
+
+implement
+the_trans12_popfree
+  (pfenv | (*void*)) =
+{
+//
+prval
+unit_v() = pfenv
+//
+local
+extern
+prfun _assert_{vw:view}(): vw
+in // in-of-local
+val ((*void*)) =
+the_fxtyenv_popfree(_assert_() | (*void*))
+val ((*void*)) =
+the_sortenv_popfree(_assert_() | (*void*))
+val ((*void*)) =
+the_sexpenv_popfree(_assert_() | (*void*))
+val ((*void*)) =
+the_dexpenv_popfree(_assert_() | (*void*))
+end // end of [local]
+//
+} (* end of [the_trans12_popfree] *)
+
+implement
+the_trans12_pushnil
+  ((*void*)) =
+  (pf | ()) where
+{
+//
+val
+(pf0_ | ()) = the_fxtyenv_push()
+val
+(pf1_ | ()) = the_sortenv_pushnil()
+val
+(pf2_ | ()) = the_sexpenv_pushnil()
+val
+(pf3_ | ()) = the_dexpenv_pushnil()
+//
+prval pf = unit_v
+//
+prval () = $UN.castview0{void}(pf0_)
+prval () = $UN.castview0{void}(pf1_)
+prval () = $UN.castview0{void}(pf2_)
+prval () = $UN.castview0{void}(pf3_)
+//
+} (* end of [the_trans12_pushnil] *)
 
 end // end of [local]
 
