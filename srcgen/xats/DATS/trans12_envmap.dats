@@ -281,7 +281,8 @@ end // end of [the_sortenv_find]
 (* ****** ****** *)
 
 implement
-the_sortenv_pop (
+the_sortenv_pop
+(
   pfenv | (*none*)
 ) = let
   prval vbox(pf) = pfbox
@@ -315,6 +316,24 @@ the_sortenv_pushnil
   ($ENV.symenv_pushnil{s2txt}(!p0))
 //
 } // end of [the_sortenv_pushnil]
+
+(* ****** ****** *)
+
+implement
+the_sortenv_locjoin
+(pf1, pf2| (*void*) ) =
+{
+//
+  prval unit_v() = pf1
+  prval unit_v() = pf2
+//
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_locjoin{s2txt}(!p0))
+//
+} // end of [the_sortenv_locjoin]
 
 (* ****** ****** *)
 
@@ -594,6 +613,24 @@ the_sexpenv_pushnil
   ($ENV.symenv_pushnil{s2itm}(!p0))
 //
 } // end of [the_sexpenv_pushnil]
+
+(* ****** ****** *)
+
+implement
+the_sexpenv_locjoin
+(pf1, pf2| (*void*) ) =
+{
+//
+  prval unit_v() = pf1
+  prval unit_v() = pf2
+//
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_locjoin{s2itm}(!p0))
+//
+} // end of [the_sexpenv_locjoin]
 
 (* ****** ****** *)
 
@@ -906,6 +943,24 @@ the_dexpenv_pushnil
 (* ****** ****** *)
 
 implement
+the_dexpenv_locjoin
+(pf1, pf2| (*void*) ) =
+{
+//
+  prval unit_v() = pf1
+  prval unit_v() = pf2
+//
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_locjoin{d2itm}(!p0))
+//
+} // end of [the_dexpenv_locjoin]
+
+(* ****** ****** *)
+
+implement
 the_dexpenv_fprint
   (out) = let
 //
@@ -988,6 +1043,34 @@ prval () = $UN.castview0{void}(pf2_)
 prval () = $UN.castview0{void}(pf3_)
 //
 } (* end of [the_trans12_pushnil] *)
+
+implement
+the_trans12_locjoin
+(pf1, pf2| (*void*) ) =
+{
+//
+  prval unit_v() = pf1
+  prval unit_v() = pf2
+//
+local
+extern
+prfun _assert_{vw:view}(): vw
+in // in-of-local
+val ((*void*)) =
+the_fxtyenv_locjoin
+(_assert_(), _assert_() | (*void*))
+val ((*void*)) =
+the_sortenv_locjoin
+(_assert_(), _assert_() | (*void*))
+val ((*void*)) =
+the_sexpenv_locjoin
+(_assert_(), _assert_() | (*void*))
+val ((*void*)) =
+the_dexpenv_locjoin
+(_assert_(), _assert_() | (*void*))
+end // end of [local]
+//
+} // end of [the_sexpenv_locjoin]
 
 end // end of [local]
 

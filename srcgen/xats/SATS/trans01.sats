@@ -126,6 +126,15 @@ the_fxtyenv_popfree
 //
 (* ****** ****** *)
 //
+fun
+the_fxtyenv_locjoin
+(
+  pf1: fxtyenv_v
+, pf2: fxtyenv_v | (*none*)
+) : void // end of [the_fxtyenv_locjoin]
+//
+(* ****** ****** *)
+//
 fun // p: pervasive
 the_fxtyenv_pjoinwth0
   (map: $MAP.symmap(fixty)): void
