@@ -603,4 +603,19 @@ list_make_elt
 //
 (* ****** ****** *)
 
+sexpdef
+cfun0
+( x:type
+, y:type) = x -<cloref0> y
+sexpdef
+cfun1
+( x:type
+, y:type) = x -<cloref1> y
+
+fun
+<x,y,z:type>
+compose(cfun0(x, y))(cfun0(y, z)): cfun0(x, z)
+
+(* ****** ****** *)
+
 (* end of [syntax_sta.sats] *)

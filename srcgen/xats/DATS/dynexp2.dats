@@ -58,6 +58,49 @@ UN = "prelude/SATS/unsafe.sats"
 
 local
 
+datavtype
+t2ype1 =
+| T2YPE of (loc_t, s2expopt)
+
+in (* in-of-local *)
+
+implement
+t2ype_none(loc) =
+$UN.castvwtp0(T2YPE(loc, None()))
+implement
+t2ype_some(loc, s2e) =
+$UN.castvwtp0(T2YPE(loc, Some(s2e)))
+
+(* ****** ****** *)
+
+implement
+t2ype_get_topt
+  (x0) = s2eopt where
+{
+  val x0 =
+  $UN.castvwtp0{t2ype1}(x0)
+  val+ T2YPE(_, s2eopt) = (x0)
+  prval () = $UN.cast2void(x0)
+} (* end of [t2ype_get_topt] *)
+
+implement
+t2ype_set_some
+  (x0, s2e) = () where
+{
+  val x0 =
+  $UN.castvwtp0{t2ype1}(x0)
+  val+@T2YPE(_, s2eopt) = (x0)
+  val () = (s2eopt := Some(s2e))
+  prval ((*fold*)) = fold@( x0 )
+  prval ((*void*)) = $UN.cast2void(x0)
+} (* end of [t2ype_set_some] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
 val
 stamper = $STM.stamper_new()
 
@@ -214,6 +257,72 @@ d2var_get_stamp(x0) = x0.d2var_stamp
 
 end // end of [local]
 
+(* ****** ****** *)
+
+local
+
+absimpl
+d2exp_tbox = $rec
+{ d2exp_loc= loc_t
+, d2exp_node= d2exp_node
+, d2exp_type= t2ype_tbox
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d2exp_make_node
+  (loc0, node) = $rec
+{ d2exp_loc= loc0
+, d2exp_node= node
+, d2exp_type= t2ype_none(loc0)
+} (* d2exp_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+d2exp_none1(d1e0) =
+(
+d2exp_make_node
+(loc0, D2Enone1(d1e0))
+) where
+{
+  val loc0 = d1e0.loc((*void*))
+}
+//
+(* ****** ****** *)
+//
+implement
+d2exp_var
+(loc0, d2v0) =
+d2exp_make_node(loc0, D2Evar(d2v0))
+//
+(* ****** ****** *)
+//
+implement
+d2exp_con1
+(loc0, d2c0) =
+d2exp_make_node(loc0, D2Econ1(d2c0))
+//
+implement
+d2exp_cst1
+(loc0, d2c0) =
+d2exp_make_node(loc0, D2Ecst1(d2c0))
+//
+(* ****** ****** *)
+//
+implement
+d2exp_con2
+(loc0, d2cs) =
+d2exp_make_node(loc0, D2Econ2(d2cs))
+//
+implement
+d2exp_cst2
+(loc0, d2cs) =
+d2exp_make_node(loc0, D2Ecst2(d2cs))
+//
 (* ****** ****** *)
 
 local
