@@ -94,6 +94,21 @@ fprint_val<d2exp> = fprint_d2exp
 *)
 //
 (* ****** ****** *)
+//
+extern
+fun
+{x:t0p}
+list_isnot_sing
+{n:int}
+(xs: list(INV(x), n)):<> bool(n != 1)
+implement
+{x}(*tmp*)
+list_isnot_sing (xs) =
+  case+ xs of
+  | list_sing(x) => false | _ =>> true
+// end of [list_isnot_sing]
+//
+(* ****** ****** *)
 
 local
 
@@ -200,7 +215,9 @@ d1e0.node() of
 //
 | D1Eid _ => auxid(d1e0)
 //
+(*
 | D1Eint _ => auxint(d1e0)
+*)
 //
 | D1Eanno
   (d1e1, s1e2) => let
