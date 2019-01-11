@@ -241,7 +241,7 @@ end // end of [list_make_elt]
 
 (* ****** ****** *)
 
-implement
+implmnt
 :nonrec
 <(*tmp*)>
 list_make_intrange

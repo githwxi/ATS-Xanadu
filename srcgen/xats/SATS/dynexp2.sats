@@ -44,8 +44,16 @@ LOC = "./location.sats"
 (* ****** ****** *)
 //
 #staload
+S1E = "./staexp1.sats"
+//
+  typedef s1exp = $S1E.s1exp
+//
+(* ****** ****** *)
+//
+#staload
 D1E = "./dynexp1.sats"
 //
+  typedef d1exp = $D1E.d1exp
   typedef d1ecl = $D1E.d1ecl
 //
   typedef d1eclist = $D1E.d1eclist
@@ -54,6 +62,39 @@ D1E = "./dynexp1.sats"
 
 #staload "./staexp2.sats"
 
+(* ****** ****** *)
+//
+abstbox t2ype_tbox = ptr
+typedef t2ype = t2ype_tbox
+//
+(* ****** ****** *)
+//
+fun
+t2ype_none(loc_t): t2ype
+fun
+t2ype_some(loc_t, s2exp): t2ype
+//
+fun
+t2ype_get_topt(t2ype): s2expopt
+fun
+t2ype_set_some(t2ype, s2exp): void
+//
+overload .topt with t2ype_get_topt
+overload .some with t2ype_set_some
+//
+(* ****** ****** *)
+//
+fun
+print_t2ype: print_type(t2ype)
+fun
+prerr_t2ype: prerr_type(t2ype)
+fun
+fprint_t2ype: fprint_type(t2ype)
+//
+overload print with print_t2ype
+overload prerr with prerr_t2ype
+overload fprint with fprint_t2ype
+//
 (* ****** ****** *)
 //
 abstype d2con_tbox = ptr
@@ -275,6 +316,38 @@ overload fprint with fprint_tq2arg
 fun
 tq2arg_make
 (loc: loc_t, svss: s2varlstlst): tq2arg
+//
+(* ****** ****** *)
+
+datatype
+d2exp_node =
+//
+| D2Evar of (d2var)
+//
+| D2Econ1 of (d2con)
+| D2Ecst1 of (d2cst)
+| D2Econ2 of (d2conlst)
+| D2Ecst2 of (d2cstlst)
+//
+| D2Eanno of (d2exp, s2exp)
+//
+| D2Enone0 of () | D2Enone1 of (d1exp)
+//
+(* ****** ****** *)
+//
+fun d2exp_none0(loc_t): d2exp
+fun d2exp_none1(d1exp): d2exp
+//
+fun d2exp_var(loc_t, d2var): d2exp
+//
+fun d2exp_con1(loc_t, d2con): d2exp
+fun d2exp_cst1(loc_t, d2cst): d2exp
+fun d2exp_con2(loc_t, d2conlst): d2exp
+fun d2exp_cst2(loc_t, d2cstlst): d2exp
+//
+fun
+d2exp_make_node
+(loc0: loc_t, node: d2exp_node): d2exp
 //
 (* ****** ****** *)
 //

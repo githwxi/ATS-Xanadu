@@ -97,6 +97,89 @@ fprint_val<d2exp> = fprint_d2exp
 
 local
 
+fun
+auxid
+( d1e0
+: d1exp): d2exp = let
+//
+val-
+D1Eid(tok) = d1e0.node()
+//
+val sym = dexpid_sym(tok)
+val
+opt = the_dexpenv_find(sym)
+//
+in
+//
+case+ opt of
+//
+| ~None_vt() => d2exp_none1(d1e0)
+//
+| ~Some_vt(x) => auxid_d2i(d1e0, x)
+//
+end // end of [auxid]
+
+and
+auxid_d2i
+( d1e0
+: d1exp
+, d2i0
+: d2itm): d2exp =
+(
+case- d2i0 of
+| D2ITMvar(x0) =>
+  auxid_var(d1e0, x0)
+| D2ITMcon(xs) =>
+  auxid_con(d1e0, xs)
+| D2ITMcst(xs) =>
+  auxid_cst(d1e0, xs)
+) (* end of [auxid_d2i] *)
+and
+auxid_var
+( d1e0
+: d1exp
+, d2v0
+: d2var): d2exp =
+(
+  d2exp_var(d1e0.loc(), d2v0)
+)
+and
+auxid_con
+( d1e0
+: d1exp
+, d2cs
+: d2conlst): d2exp =
+(
+//
+if
+list_isnot_sing(d2cs)
+then d2exp_con2(loc0, d2cs)
+else d2exp_con1(loc0, list_head(d2cs))
+//
+) where
+{
+  val loc0 = d1e0.loc()
+} (* end of [auxid_con] *)
+and
+auxid_cst
+( d1e0
+: d1exp
+, d2cs
+: d2cstlst): d2exp =
+(
+//
+if
+list_isnot_sing(d2cs)
+then d2exp_cst2(loc0, d2cs)
+else d2exp_cst1(loc0, list_head(d2cs))
+//
+) where
+{
+  val loc0 = d1e0.loc()
+} (* end of [auxid_cst] *)
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -114,9 +197,24 @@ in (* in-of-let *)
 //
 case-
 d1e0.node() of
+//
+| D1Eid _ => auxid(d1e0)
+//
+| D1Eint _ => auxint(d1e0)
+//
+| D1Eanno
+  (d1e1, s1e2) => let
+    val d2e1 = trans12_dexp(d1e1)
+    val s2e2 = trans12_sexp(s1e2)
+  in
+    d2exp_make_node(loc0, D2Eanno(d2e1, s2e2))
+  end // end of [D1Eanno]
+//
 | _(*rest-of-D1EXP*) =>
-  exit_errmsg
-  (1, "trans12_dexp: yet-to-be-implemented!\n")
+  (
+    exit_errmsg
+    (1, "trans12_dexp: yet-to-be-implemented!\n")
+  )
 //
 end // end of [trans12_dexp]
 

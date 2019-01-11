@@ -88,6 +88,11 @@ fprint_val<s2exp> = fprint_s2exp
 (* ****** ****** *)
 //
 implement
+fprint_val<t2ype> = fprint_t2ype
+//
+(* ****** ****** *)
+//
+implement
 fprint_val<d2con> = fprint_d2con
 implement
 fprint_val<d2cst> = fprint_d2cst
@@ -104,6 +109,27 @@ fprint_val<d2ecl> = fprint_d2ecl
 implement
 fprint_val<tq2arg> = fprint_tq2arg
 
+(* ****** ****** *)
+//
+implement
+print_t2ype(x0) =
+fprint_t2ype(stdout_ref, x0) 
+implement
+prerr_t2ype(x0) =
+fprint_t2ype(stdout_ref, x0) 
+//
+implement
+fprint_t2ype
+  (out, x0) =
+(
+case+
+x0.topt() of
+| None() =>
+  fprint!(out, "T2YPE()")
+| Some(s2e) =>
+  fprint!(out, "T2YPE(", s2e, ")")
+)
+//
 (* ****** ****** *)
 //
 implement

@@ -600,15 +600,15 @@ auxid_s2i
 , s2i0: s2itm): s2exp =
 (
 case- s2i0 of
-| S2ITMvar(x) => auxid_s2v(s1e0, x)
-| S2ITMcst(xs) => auxid_s2cs(s1e0, xs)
-) (* end of [auxid_itm] *)
+| S2ITMvar(x0) => auxid_var(s1e0, x0)
+| S2ITMcst(xs) => auxid_cst(s1e0, xs)
+) (* end of [auxid_s2i] *)
 and
-auxid_s2v
+auxid_var
 ( s1e0: s1exp
 , s2v0: s2var): s2exp = s2exp_var(s2v0)
 and
-auxid_s2cs
+auxid_cst
 ( s1e0: s1exp
 , s2cs: s2cstlst): s2exp =
 (

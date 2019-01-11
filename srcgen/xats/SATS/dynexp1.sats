@@ -426,8 +426,7 @@ d1exp_node =
   // D1Ecase
 //
 | D1Elet of
-    (d1eclist, d1explst)
-  // D1Elet
+  (d1eclist, d1explst(*semi*))
 | D1Ewhere of (d1exp, d1eclist)
 //
 | D1Edtsel of (label, d1expopt)
