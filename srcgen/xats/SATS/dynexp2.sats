@@ -53,6 +53,7 @@ S1E = "./staexp1.sats"
 #staload
 D1E = "./dynexp1.sats"
 //
+  typedef d1pat = $D1E.d1pat
   typedef d1exp = $D1E.d1exp
   typedef d1ecl = $D1E.d1ecl
 //
@@ -269,7 +270,17 @@ d2pat_node =
 //
 | D2Panno of (d2pat, s2exp) // no s2xtv in anno
 //
+| D2Pnone0 of () | D2Pnone1 of (d1pat)
+//
 (* ****** ****** *)
+//
+fun
+d2pat_get_loc(d2pat): loc_t
+fun
+d2pat_get_node(d2pat): d2pat_node
+//
+overload .loc with d2pat_get_loc
+overload .node with d2pat_get_node
 //
 fun
 print_d2pat: print_type(d2pat)
@@ -281,6 +292,12 @@ fprint_d2pat: fprint_type(d2pat)
 overload print with print_d2pat
 overload prerr with prerr_d2pat
 overload fprint with fprint_d2pat
+//
+(* ****** ****** *)
+//
+fun
+d2pat_make_node
+(loc0: loc_t, node: d2pat_node): d2pat
 //
 (* ****** ****** *)
 
@@ -388,9 +405,12 @@ d2exp_node =
 fun
 d2exp_get_loc(d2exp): loc_t
 fun
+d2exp_get_type(d2exp): t2ype
+fun
 d2exp_get_node(d2exp): d2exp_node
 //
 overload .loc with d2exp_get_loc
+overload .type with d2exp_get_type
 overload .node with d2exp_get_node
 //
 fun
