@@ -195,6 +195,64 @@ else d2exp_cst1(loc0, list_head(d2cs))
 
 (* ****** ****** *)
 
+fun
+auxint
+( d1e0
+: d1exp): d2exp = let
+//
+val loc0 = d1e0.loc()
+//
+val-
+D1Eint(tok) = d1e0.node()
+//
+in
+  d2exp_int(loc0, tok)
+end // end of [auxint]
+
+fun
+auxchr
+( d1e0
+: d1exp): d2exp = let
+//
+val loc0 = d1e0.loc()
+//
+val-
+D1Echr(tok) = d1e0.node()
+//
+in
+  d2exp_chr(loc0, tok)
+end // end of [auxchr]
+
+fun
+auxflt
+( d1e0
+: d1exp): d2exp = let
+//
+val loc0 = d1e0.loc()
+//
+val-
+D1Eflt(tok) = d1e0.node()
+//
+in
+  d2exp_chr(loc0, tok)
+end // end of [auxflt]
+
+fun
+auxstr
+( d1e0
+: d1exp): d2exp = let
+//
+val loc0 = d1e0.loc()
+//
+val-
+D1Estr(tok) = d1e0.node()
+//
+in
+  d2exp_chr(loc0, tok)
+end // end of [auxstr]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -215,9 +273,9 @@ d1e0.node() of
 //
 | D1Eid _ => auxid(d1e0)
 //
-(*
 | D1Eint _ => auxint(d1e0)
-*)
+| D1Echr _ => auxchr(d1e0)
+| D1Estr _ => auxstr(d1e0)
 //
 | D1Eanno
   (d1e1, s1e2) => let

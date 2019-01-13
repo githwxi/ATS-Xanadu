@@ -293,11 +293,33 @@ d2exp_make_node
 }
 //
 (* ****** ****** *)
+
+implement
+d2exp_int
+(loc0, tok) =
+d2exp_make_node(loc0, D2Eint(tok))
+
+implement
+d2exp_chr
+(loc0, tok) =
+d2exp_make_node(loc0, D2Echr(tok))
+
+implement
+d2exp_flt
+(loc0, tok) =
+d2exp_make_node(loc0, D2Eflt(tok))
+
+implement
+d2exp_str
+(loc0, tok) =
+d2exp_make_node(loc0, D2Estr(tok))
+
+(* ****** ****** *)
 //
 implement
 d2exp_var
-(loc0, d2v0) =
-d2exp_make_node(loc0, D2Evar(d2v0))
+(loc0, d2v) =
+d2exp_make_node(loc0, D2Evar(d2v))
 //
 (* ****** ****** *)
 //

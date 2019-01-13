@@ -1,77 +1,10 @@
+var x = 1
+
+////
 #staload N = $ADD
 #staload M = $FOO$S2E
 val xyz = $ME.foo
 ////
-(* ****** ****** *)
-//
-(*
-#prefix ! of 00 (* static *)
-*)
-//
-#prefix ! of 99 (* dynamic *)
-//
-(* ****** ****** *)
-
-(*
-#infixl app of 70 // the app_prcdv
-*)
-
-(* ****** ****** *)
-//
-// HX-2015-08-04:
-// mostly following the Fortran convention
-//
-#infixr ** of 61 (*exp*)
-//
-(* ****** ****** *)
-//
-// multiplicative
-//
-#infixl * / % mod of 60
-//
-(* ****** ****** *)
-
-#prefix ~ of 51 (* neg *)
-
-(* ****** ****** *)
-//
-#infixl + - of 50 (*additive*)
-#prefix + of +(+1) (* uplus *)
-#prefix - of -(+1) (* uminus *)
-//
-(*
-#infixr(+) ++ // concatenative
-*)
-//
-(* ****** ****** *)
-//
-#infix0 < <= of 40
-#infix0 > >= of 40
-//
-(* ****** ****** *)
-
-#infixr :: @ of 40
-
-(* ****** ****** *)
-
-#infix0 = == != of 30
-
-(* ****** ****** *)
-
-#infixl && of 21
-#infixl andalso land of &&
-
-(* ****** ****** *)
-
-#infixl || of 20
-#infixl orelse xor lor lxor of ||
-
-(* ****** ****** *)
-
-#infixr -> of 10
-
-(* ****** ****** *)
-
 (* ****** ****** *)
 
 val float0 = 0x.abcdefp0f
