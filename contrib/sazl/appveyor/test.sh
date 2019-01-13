@@ -3,7 +3,7 @@
 set -e
 
 echo 'running unit-tests'
-cd $XATSHOME/srcgen/util/TEST
+cd $XATSHOME/srcgen/xutl/TEST
 make testall
 
 echo 'running integration tests...'
