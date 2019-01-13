@@ -199,6 +199,32 @@ fprint_d2var
 (* ****** ****** *)
 
 implement
+print_d2pat(x0) =
+fprint_d2pat(stdout_ref, x0)
+implement
+prerr_d2pat(x0) =
+fprint_d2pat(stderr_ref, x0)
+
+local
+
+in (* in-of-local *)
+
+implement
+fprint_d2pat
+  (out, x0) =
+(
+case- x0.node() of
+| D2Pnone0() =>
+  fprint!(out, "D2Pnone0(", ")")
+| D2Pnone1(d1p) =>
+  fprint!(out, "D2Pnone1(", d1p, ")")
+) (* end of [fprint_d2pat] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
 print_d2exp(x0) =
 fprint_d2exp(stdout_ref, x0)
 implement
@@ -214,6 +240,15 @@ fprint_d2exp
   (out, x0) =
 (
 case- x0.node() of
+//
+| D2Eint(tok) =>
+  fprint!(out, "D2Eint(", tok, ")")
+| D2Echr(tok) =>
+  fprint!(out, "D2Echr(", tok, ")")
+| D2Eflt(tok) =>
+  fprint!(out, "D2Eflt(", tok, ")")
+| D2Estr(tok) =>
+  fprint!(out, "D2Estr(", tok, ")")
 //
 | D2Evar(d2v) =>
   fprint!(out, "D2Evar(", d2v, ")")

@@ -262,6 +262,36 @@ end // end of [local]
 local
 
 absimpl
+d2pat_tbox = $rec
+{ d2pat_loc= loc_t
+, d2pat_node= d2pat_node
+, d2pat_type= t2ype_tbox
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+//
+implement
+d2pat_get_loc
+  (d2p) = d2p.d2pat_loc
+implement
+d2pat_get_node
+  (d2p) = d2p.d2pat_node
+//
+implement
+d2pat_make_node
+  (loc0, node) = $rec
+{ d2pat_loc= loc0
+, d2pat_node= node
+, d2pat_type= t2ype_none(loc0)
+} (* d2pat_make_node *)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d2exp_tbox = $rec
 { d2exp_loc= loc_t
 , d2exp_node= d2exp_node
@@ -269,7 +299,17 @@ d2exp_tbox = $rec
 } (* end of [absimpl] *)
 
 in (* in-of-local *)
-
+//
+implement
+d2exp_get_loc
+  (d2e) = d2e.d2exp_loc
+implement
+d2exp_get_type
+  (d2e) = d2e.d2exp_type
+implement
+d2exp_get_node
+  (d2e) = d2e.d2exp_node
+//
 implement
 d2exp_make_node
   (loc0, node) = $rec
@@ -277,12 +317,7 @@ d2exp_make_node
 , d2exp_node= node
 , d2exp_type= t2ype_none(loc0)
 } (* d2exp_make_node *)
-
-implement
-d2exp_get_loc(d2e) = d2e.d2exp_loc
-implement
-d2exp_get_node(d2e) = d2e.d2exp_node
-
+//
 end // end of [local]
 
 (* ****** ****** *)
