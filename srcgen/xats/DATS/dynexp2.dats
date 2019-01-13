@@ -288,6 +288,18 @@ d2pat_make_node
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+d2pat_none1(d1p0) =
+(
+d2pat_make_node
+(loc0, D2Pnone1(d1p0))
+) where
+{
+  val loc0 = d1p0.loc((*void*))
+}
+//
+(* ****** ****** *)
 
 local
 

@@ -114,6 +114,58 @@ local
 
 fun
 auxid
+( d1p0
+: d1pat): d2pat = let
+//
+val-
+D1Pid(tok) = d1p0.node()
+//
+val sym = dexpid_sym(tok)
+val
+opt = the_dexpenv_find(sym)
+//
+in
+//
+case+ opt of
+//
+| ~None_vt() => d2pat_none1(d1p0)
+//
+| ~Some_vt(x) => d2pat_none1(d1p0)
+//
+end // end of [auxid]
+
+in (* in-of-local *)
+
+implement
+trans12_dpat
+  (d1p0) = let
+//
+val
+loc0 = d1p0.loc()
+//
+val () =
+println!
+("trans12_dpat: d1p0 = ", d1p0)
+//
+in (* in-of-let *)
+
+case-
+d1p0.node() of
+//
+| D1Pid _ => auxid(d1p0)
+//
+| _(*rest-of-d1pat*) => d2pat_none1(d1p0)
+
+end // end of [trans12_dpat]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+fun
+auxid
 ( d1e0
 : d1exp): d2exp = let
 //
@@ -285,11 +337,15 @@ d1e0.node() of
     d2exp_make_node(loc0, D2Eanno(d2e1, s2e2))
   end // end of [D1Eanno]
 //
+| _(*rest-of-s1exp*) => d2exp_none1(d1e0)
+//
+(*
 | _(*rest-of-D1EXP*) =>
   (
     exit_errmsg
     (1, "trans12_dexp: yet-to-be-implemented!\n")
   )
+*)
 //
 end // end of [trans12_dexp]
 
