@@ -770,9 +770,7 @@ d1ecl_node =
   ( token(*valkind*)
   , declmodopt(*rec/prf/...*), v1aldeclist)
 //
-| D1Cvardecl of
-    (token(*VAR*), v1ardeclist)
-  // D1Cvardecl
+| D1Cvardecl of (token(*VAR*), v1ardeclist)
 //
 | D1Cfundecl of
   ( token(*funkind*)

@@ -322,6 +322,11 @@ tq2arg_make
 datatype
 d2exp_node =
 //
+| D2Eint of (token)
+| D2Echr of (token)
+| D2Eflt of (token)
+| D2Estr of (token)
+//
 | D2Evar of (d2var)
 //
 | D2Econ1 of (d2con)
@@ -338,6 +343,11 @@ d2exp_node =
 fun d2exp_none0(loc_t): d2exp
 fun d2exp_none1(d1exp): d2exp
 //
+fun d2exp_int(loc_t, token): d2exp
+fun d2exp_chr(loc_t, token): d2exp
+fun d2exp_flt(loc_t, token): d2exp
+fun d2exp_str(loc_t, token): d2exp
+//
 fun d2exp_var(loc_t, d2var): d2exp
 //
 fun d2exp_con1(loc_t, d2con): d2exp
@@ -348,6 +358,21 @@ fun d2exp_cst2(loc_t, d2cstlst): d2exp
 fun
 d2exp_make_node
 (loc0: loc_t, node: d2exp_node): d2exp
+//
+(* ****** ****** *)
+//
+datatype
+v2ardecl =
+V2ARDECL of @{
+  loc= loc_t
+, d2v= d2var
+, wth= d2varopt
+, res= s2expopt
+, ini= d2expopt
+}
+//
+typedef
+v2ardeclist = List0(v2ardecl)
 //
 (* ****** ****** *)
 //
@@ -376,6 +401,8 @@ d2ecl_node =
 //
 | D2Cdynconst of
   (token(*kind*), tq2arglst, d2cstlst)
+//
+| D2Cvardecl of (token(*knd*), v2ardeclist)
 //
 // end of [d2ecl_node]
 //
