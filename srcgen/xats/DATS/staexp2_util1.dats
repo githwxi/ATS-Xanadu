@@ -137,10 +137,10 @@ eq_t2bas_t2bas
 (
 case+
 (x1, x2) of
-| ( T2BASpre s1
-  , T2BASpre s2) => (s1 = s2)
-| ( T2BASdat t1
-  , T2BASdat t2) => (t1 = t2)
+| ( T2BASpre(s1)
+  , T2BASpre(s2)) => (s1 = s2)
+| ( T2BASdat(t1)
+  , T2BASdat(t2)) => (t1 = t2)
 | ( T2BASimp(_, s1)
   , T2BASimp(_, s2)) => (s1 = s2)
 //
@@ -156,10 +156,10 @@ lte_t2bas_t2bas
 (
 case+
 (x1, x2) of
-| ( T2BASpre s1
-  , T2BASpre s2) => (s1 = s2)
-| ( T2BASdat t1
-  , T2BASdat t2) => (t1 = t2)
+| ( T2BASpre(s1)
+  , T2BASpre(s2)) => (s1 = s2)
+| ( T2BASdat(t1)
+  , T2BASdat(t2)) => (t1 = t2)
 | ( T2BASimp(k1, s1)
   , T2BASimp(k2, s2)) => subsort(k1, k2)
 //

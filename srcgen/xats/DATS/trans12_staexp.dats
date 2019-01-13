@@ -1411,10 +1411,25 @@ auxlst
 , s2ts: sort2lst): s2explst =
 (
 case+ s1es of
+//
 | list_nil() =>
-  list_nil()
-| list_cons
-    (s1e0, s1es) =>
+  (
+    case+ s2ts of
+    | list_nil
+        ((*void*)) => list_nil()
+    | list_cons
+        (s2t0, s2ts) =>
+      (
+      list_cons(s2e0, s2es)
+      ) where
+      {
+        val s2e0 =
+          s2exp_none0_s2t(s2t0)
+        val s2es = auxlst(s1es, s2ts)
+      }
+  )
+//
+| list_cons(s1e0, s1es) =>
   (
     case+ s2ts of
     | list_nil() =>
@@ -1422,9 +1437,10 @@ case+ s1es of
       list_cons(s2e0, s2es)
       ) where
       {
+        val s2t0 =
+          S2Tnone0()
         val s2e0 =
-        trans12_sexp_ck
-        (s1e0, S2Tnone0())
+          trans12_sexp_ck(s1e0, s2t0)
         val s2es = auxlst(s1es, s2ts)
       }
     | list_cons

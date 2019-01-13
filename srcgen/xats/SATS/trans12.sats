@@ -163,6 +163,12 @@ typedef tq1arglst = $D1E.tq1arglst
 //
 (* ****** ****** *)
 
+typedef d1pat = $D1E.d1pat
+typedef d1patlst = $D1E.d1patlst
+typedef d1patopt = $D1E.d1patopt
+
+(* ****** ****** *)
+
 typedef d1exp = $D1E.d1exp
 typedef d1explst = $D1E.d1explst
 typedef d1expopt = $D1E.d1expopt
@@ -186,6 +192,12 @@ typedef d2varlst = $D2E.d2varlst
 
 typedef tq2arg = $D2E.tq2arg
 typedef tq2arglst = $D2E.tq2arglst
+
+(* ****** ****** *)
+
+typedef d2pat = $D2E.d2pat
+typedef d2patlst = $D2E.d2patlst
+typedef d2patopt = $D2E.d2patopt
 
 (* ****** ****** *)
 
@@ -538,6 +550,13 @@ fun
 the_trans12_locjoin
 ( pf1: trans12_v
 , pf2: trans12_v | (*none*)): void
+//
+(* ****** ****** *)
+//
+fun
+trans12_dpat: d1pat -> d2pat
+fun
+trans12_dpatlst: d1patlst -> d2patlst
 //
 (* ****** ****** *)
 //
