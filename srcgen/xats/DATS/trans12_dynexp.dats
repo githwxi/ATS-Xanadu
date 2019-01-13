@@ -1475,7 +1475,8 @@ case+ s1is of
 
 fun
 auxres
-( s2e0: s2exp
+( loc0: loc_t
+, s2e0: s2exp
 , sess: s2explstlst
 ) : s2exp =
 (
@@ -1484,10 +1485,10 @@ case+ sess of
 | list_cons
     (s2es, sess) =>
   (
-    auxres(s2e0, sess)
+    auxres(loc0, s2e0, sess)
   ) where
   {
-    val s2e0 = s2exp_apps(s2e0, s2es)
+    val s2e0 = s2exp_apps(loc0, s2e0, s2es)
   }
 )
 
@@ -1522,6 +1523,9 @@ D1ATCON
 ( s1us
 , tok0
 , s1is, argopt) = d1c0.node()
+//
+val
+loc0 = tok0.loc()
 //
 val () =
 println!
@@ -1586,8 +1590,10 @@ case+ s1us of
     val arg =
       auxarg(argopt, npf)
 //
-    val s2e0 = s2exp_cst(s2c0)
-    val s2e0 = auxres(s2e0, ind)
+    val s2e0 =
+      s2exp_cst(s2c0)
+    val s2e0 =
+      auxres(loc0, s2e0, ind)
 //
   in
     s2exp_fun_nil(npf, arg, s2e0)

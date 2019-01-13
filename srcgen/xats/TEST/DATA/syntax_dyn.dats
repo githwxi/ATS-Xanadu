@@ -1,4 +1,12 @@
-var x = 1
+val x = 1
+
+///
+
+fun:
+(prf, rec)
+foo:
+int -> int =
+lam(arg) => 1
 
 ////
 #staload N = $ADD
