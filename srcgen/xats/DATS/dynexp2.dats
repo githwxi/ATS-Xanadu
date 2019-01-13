@@ -300,6 +300,24 @@ d2pat_make_node
 }
 //
 (* ****** ****** *)
+//
+implement
+d2pat_var
+(loc0, d2v) =
+d2pat_make_node(loc0, D2Pvar(d2v))
+//
+(* ****** ****** *)
+//
+implement
+d2pat_con1
+(loc0, d2c0) =
+d2pat_make_node(loc0, D2Pcon1(d2c0))
+implement
+d2pat_con2
+(loc0, d2cs) =
+d2pat_make_node(loc0, D2Pcon2(d2cs))
+//
+(* ****** ****** *)
 
 local
 

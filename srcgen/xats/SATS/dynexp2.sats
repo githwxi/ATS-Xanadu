@@ -263,7 +263,8 @@ d2pat_node =
 | D2Pflt of (token)
 | D2Pstr of (token)
 //
-| D2Pcon of (d2con)
+| D2Pcon1 of (d2con)
+| D2Pcon2 of (d2conlst)
 //
 | D2Psapp of (d2pat, s2varlst)
 | D2Pdapp of (d2pat, int(*npf*), d2patlst)
@@ -297,6 +298,11 @@ overload fprint with fprint_d2pat
 //
 fun d2pat_none0(loc_t): d2pat
 fun d2pat_none1(d1pat): d2pat
+//
+fun d2pat_var(loc_t, d2var): d2pat
+//
+fun d2pat_con1(loc_t, d2con): d2pat
+fun d2pat_con2(loc_t, d2conlst): d2pat
 //
 fun
 d2pat_make_node
