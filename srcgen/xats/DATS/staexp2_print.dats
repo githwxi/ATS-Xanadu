@@ -146,8 +146,8 @@ case+ s2t0 of
 //
 | S2Tnone0() =>
   fprint!(out, "S2Tnone0(", ")")
-| S2Tnone1(s1t) =>
-  fprint!(out, "S2Tnone1(", s1t, ")")
+| S2Tnone1(s1tsrc) =>
+  fprint!(out, "S2Tnone1(", s1tsrc, ")")
 //
 ) (* end of [fprint_sort2] *)
 
@@ -429,8 +429,10 @@ s2e0.node() of
   ( out
   , "S2Etyrec(", knd, "; ", npf, "; ", ls2es, ")")
 //
-| S2Enone0() => fprint!(out, "S2Enone0(", ")")
-| S2Enone1(s1e) => fprint!(out, "S2Enone1(", s1e, ")")
+| S2Enone0() =>
+  fprint!(out, "S2Enone0(", ")")
+| S2Enone1(s1esrc) =>
+  fprint!(out, "S2Enone1(", s1esrc, ")")
 )
 
 end // end of [local]
@@ -448,9 +450,8 @@ fprint_labs2exp
   (out, ls2e) =
 (
 case+ ls2e of
-| SLABELED
-  (l0, s2e) => fprint!(out, l0, "=", s2e)
-)
+| SLABELED(l0, s2e) => fprint!(out, l0, "=", s2e)
+) (* end of [fprint_labs2exp] *)
 
 (* ****** ****** *)
 //
