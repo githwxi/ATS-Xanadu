@@ -127,12 +127,57 @@ opt = the_dexpenv_find(sym)
 in
 //
 case+ opt of
-//
 | ~None_vt() => d2pat_none1(d1p0)
-//
-| ~Some_vt(x) => d2pat_none1(d1p0)
-//
+| ~Some_vt(d2i) => auxid_d2i(d1p0, d2i)
 end // end of [auxid]
+
+and
+auxid_d2i
+( d1p0
+: d1pat
+, d2i0
+: d2itm): d2pat =
+(
+case- d2i0 of
+| D2ITMvar(x0) =>
+  auxid_var(d1p0, x0)
+| D2ITMcon(xs) =>
+  auxid_con(d1p0, xs)
+| D2ITMcst(xs) =>
+  auxid_cst(d1p0, xs)
+) (* end of [auxid_d2i] *)
+and
+auxid_var
+( d1p0
+: d1pat
+, d2v0
+: d2var): d2pat =
+(
+  d2pat_var(d1p0.loc(), d2v0)
+)
+and
+auxid_con
+( d1p0
+: d1pat
+, d2cs
+: d2conlst): d2pat =
+(
+//
+if
+list_isnot_sing(d2cs)
+then d2pat_con2(loc0, d2cs)
+else d2pat_con1(loc0, list_head(d2cs))
+//
+) where
+{
+  val loc0 = d1p0.loc()
+} (* end of [auxid_con] *)
+and
+auxid_cst
+( d1p0
+: d1pat
+, d2cs
+: d2cstlst): d2pat = d2pat_none1(d1p0)
 
 in (* in-of-local *)
 
@@ -179,11 +224,8 @@ opt = the_dexpenv_find(sym)
 in
 //
 case+ opt of
-//
 | ~None_vt() => d2exp_none1(d1e0)
-//
-| ~Some_vt(x) => auxid_d2i(d1e0, x)
-//
+| ~Some_vt(d2i) => auxid_d2i(d1e0, d2i)
 end // end of [auxid]
 
 and
