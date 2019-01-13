@@ -295,6 +295,9 @@ overload fprint with fprint_d2pat
 //
 (* ****** ****** *)
 //
+fun d2pat_none0(loc_t): d2pat
+fun d2pat_none1(d1pat): d2pat
+//
 fun
 d2pat_make_node
 (loc0: loc_t, node: d2pat_node): d2pat
