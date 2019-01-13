@@ -641,8 +641,8 @@ s2exp_node =
   (int(*knd*), s2exp) // topization/typization
   // end of [S2Etop]
 //
-| S2Ecast of  // HX-2108-12-23:
-  (s2exp, sort2) // for storing sort-checking error
+| S2Ecast of // HX-2108-12-23: for storing
+  (loc_t, s2exp, sort2) // sort-checking error
 //
 | S2Eexi of // existent. quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
@@ -664,15 +664,14 @@ s2exp_node =
 //
 fun
 s2exp_get_sort(s2exp): sort2
-//
-overload .sort with s2exp_get_sort
-//
 fun
 s2exp_get_node(s2exp): s2exp_node
 //
+overload .sort with s2exp_get_sort
 overload .node with s2exp_get_node
 //
 (* ****** ****** *)
+//
 fun
 s2exp_int(i0: int): s2exp
 fun
@@ -685,20 +684,25 @@ s2exp_var(s2v: s2var): s2exp
 //
 fun
 s2exp_cast
-(s2e: s2exp, s2t: sort2): s2exp
+( loc: loc_t
+, s2e: s2exp
+, s2t: sort2) : s2exp
 //
 fun
 s2exp_apps
-( s2f0: s2exp(*fun*)
+( loc0: loc_t
+, s2f0: s2exp(*fun*)
 , s2as: s2explst(*arg*)): s2exp
 //
 fun
 s2exp_app1
-( s2f0: s2exp(*fun*)
+( loc0: loc_t
+, s2f0: s2exp(*fun*)
 , s2a1: s2exp(*arg*)): s2exp
 fun
 s2exp_app2
-( s2f0: s2exp(*fun*)
+( loc0: loc_t
+, s2f0: s2exp(*fun*)
 , s2a1: s2exp, s2a2: s2exp): s2exp
 //
 fun

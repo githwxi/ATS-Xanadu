@@ -44,11 +44,15 @@ UN = "prelude/SATS/unsafe.sats"
 STM = "./../SATS/stamp0.sats"
 #staload
 SYM = "./../SATS/symbol.sats"
+#staload
+LOC = "./../SATS/location.sats"
 
 overload
 fprint with $STM.fprint_stamp
 overload
 fprint with $SYM.fprint_symbol
+overload
+fprint with $LOC.fprint_location
 
 (* ****** ****** *)
 
@@ -405,8 +409,10 @@ s2e0.node() of
 | S2Etop(knd, s2e) =>
   fprint!(out, "S2Etop(", knd, "; ", s2e, ")")
 //
-| S2Ecast(s2e, s2t) =>
-  fprint!(out, "S2Ecast(", s2e, "; ", s2t, ")")
+| S2Ecast(loc, s2e, s2t) =>
+  fprint!
+  ( out
+  , "S2Ecast(", loc, "; ", s2e, "; ", s2t, ")")
 //
 | S2Euni
   (s2vs, s2ps, body) =>

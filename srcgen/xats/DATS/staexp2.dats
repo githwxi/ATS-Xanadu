@@ -585,8 +585,8 @@ end // end of [s2exp_var]
 (* ****** ****** *)
 //
 implement
-s2exp_cast(s2e, s2t) =
-let
+s2exp_cast
+(loc, s2e, s2t) = let
 //
 (*
 val () =
@@ -596,14 +596,14 @@ println!("s2exp_cast: s2t = ", s2t)
 *)
 //
 in
-  s2exp_make_node(s2t, S2Ecast(s2e, s2t))
+  s2exp_make_node(s2t, S2Ecast(loc, s2e, s2t))
 end // end of [s2exp_cast]
 //
 (* ****** ****** *)
 //
 implement
 s2exp_apps
-(s2f0, s2as) = let
+(loc0, s2f0, s2as) = let
 //
 (*
 val () =
@@ -625,7 +625,7 @@ s2f0.sort() of
 | S2Tfun() => s2f0
 | S2Tfun(_, s2t) => s2f0
 | _(*non-S2Tfun*) =>
-   s2exp_cast(s2f0, S2Tfun())
+   s2exp_cast(loc0, s2f0, S2Tfun())
 ) : s2exp // end of [val]
 //
 val
@@ -640,13 +640,13 @@ s2f0.sort() of
 in
   s2exp_make_node
   (s2t_res, S2Eapp(s2f0, s2as))
-end // end of [s2exp_app]
+end // end of [s2exp_apps]
 //
 implement
 s2exp_app2
-(s2f0, s2a1, s2a2) =
+(loc0, s2f0, s2a1, s2a2) =
 (
-  s2exp_apps(s2f0, list_pair(s2a1, s2a2))
+  s2exp_apps(loc0, s2f0, list_pair(s2a1, s2a2))
 )
 //
 (* ****** ****** *)

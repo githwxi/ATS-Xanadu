@@ -756,7 +756,7 @@ val s2es =
 trans12_sexplst_cks(s1es, s2ts)
 //
 in
-  s2exp_apps(s2e1, s2es)
+  s2exp_apps(s1e0.loc(), s2e1, s2es)
 end // end of [auxapp1_1_]
 
 and
@@ -1085,7 +1085,7 @@ val s2e2 = trans12_sexp_ck(s1e2, s2t2)
 val s2e3 = trans12_sexp_ck(s1e3, s2t3)
 //
 in
-  s2exp_app2(s2e1, s2e2, s2e3)
+  s2exp_app2(s1e0.loc(), s2e1, s2e2, s2e3)
 end // end of [auxapp2_1_]
 
 and
@@ -1347,7 +1347,8 @@ s1e0.node() of
     if
     s2e0.sort() <= s2t0
       then s2e0
-      else s2exp_cast(s2e0, s2t0)
+      else
+      s2exp_cast(s1e0.loc(), s2e0, s2t0)
     // end of [if]
   end
 //
