@@ -199,6 +199,46 @@ fprint_d2var
 (* ****** ****** *)
 
 implement
+print_d2exp(x0) =
+fprint_d2exp(stdout_ref, x0)
+implement
+prerr_d2exp(x0) =
+fprint_d2exp(stderr_ref, x0)
+
+local
+
+in (* in-of-local *)
+
+implement
+fprint_d2exp
+  (out, x0) =
+(
+case- x0.node() of
+//
+| D2Evar(d2v) =>
+  fprint!(out, "D2Evar(", d2v, ")")
+//
+| D2Ecst1(d2c) =>
+  fprint!(out, "D2Ecst1(", d2c, ")")
+| D2Econ1(d2c) =>
+  fprint!(out, "D2Econ1(", d2c, ")")
+| D2Ecst2(d2cs) =>
+  fprint!(out, "D2Ecst2(", d2cs, ")")
+| D2Econ2(d2cs) =>
+  fprint!(out, "D2Econ2(", d2cs, ")")
+//
+| D2Enone0() =>
+  fprint!(out, "D2Enone0(", ")")
+| D2Enone1(d1e) =>
+  fprint!(out, "D2Enone1(", d1e, ")")
+//
+) (* end of [fprint_d2exp] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
 print_d2ecl(x0) =
 fprint_d2ecl(stdout_ref, x0)
 implement

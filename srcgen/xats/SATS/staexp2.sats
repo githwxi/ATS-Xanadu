@@ -742,15 +742,26 @@ s2exp_tuple2
 //
 fun
 s2exp_record1
-(knd: int, lxs: labs2explst): s2exp
+( knd: int
+, lxs: labs2explst): s2exp
 fun
 s2exp_record2
-(knd: int, labs2explst, labs2explst): s2exp
+( knd: int
+, labs2explst, labs2explst): s2exp
+//
+(* ****** ****** *)
 //
 fun
-s2exp_none0((*void*)): s2exp
+s2exp_none0(): s2exp
 fun
 s2exp_none1(s1e: s1exp): s2exp
+//
+fun
+s2exp_none0_s2t
+  (s2t: sort2): s2exp
+fun
+s2exp_none1_s2t
+  (s1e: s1exp, s2t: sort2): s2exp
 //
 (* ****** ****** *)
 //

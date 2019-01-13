@@ -243,6 +243,47 @@ overload fprint with fprint_d2var
 //
 (* ****** ****** *)
 
+abstbox d2pat_tbox = ptr
+typedef d2pat = d2pat_tbox
+typedef d2patlst = List0(d2pat)
+typedef d2patopt = Option(d2pat)
+
+(* ****** ****** *)
+//
+datatype
+d2pat_node =
+//
+| D2Pany of ()
+//
+| D2Pvar of (d2var)
+//
+| D2Pint of (token)
+| D2Pchr of (token)
+| D2Pflt of (token)
+| D2Pstr of (token)
+//
+| D2Pcon of (d2con)
+//
+| D2Psapp of (d2pat, s2varlst)
+| D2Pdapp of (d2pat, int(*npf*), d2patlst)
+//
+| D2Panno of (d2pat, s2exp) // no s2xtv in anno
+//
+(* ****** ****** *)
+//
+fun
+print_d2pat: print_type(d2pat)
+fun
+prerr_d2pat: prerr_type(d2pat)
+fun
+fprint_d2pat: fprint_type(d2pat)
+//
+overload print with print_d2pat
+overload prerr with prerr_d2pat
+overload fprint with fprint_d2pat
+//
+(* ****** ****** *)
+
 abstbox d2exp_tbox = ptr
 typedef d2exp = d2exp_tbox
 typedef d2explst = List0(d2exp)
@@ -334,9 +375,34 @@ d2exp_node =
 | D2Econ2 of (d2conlst)
 | D2Ecst2 of (d2cstlst)
 //
+| D2Esapp of (d2exp, s2explst)
+| D2Etapp of (d2exp, s2explst)
+| D2Edapp of (d2exp, int(*npf*), d2explst)
+//
 | D2Eanno of (d2exp, s2exp)
 //
 | D2Enone0 of () | D2Enone1 of (d1exp)
+//
+(* ****** ****** *)
+//
+fun
+d2exp_get_loc(d2exp): loc_t
+fun
+d2exp_get_node(d2exp): d2exp_node
+//
+overload .loc with d2exp_get_loc
+overload .node with d2exp_get_node
+//
+fun
+print_d2exp: print_type(d2exp)
+fun
+prerr_d2exp: prerr_type(d2exp)
+fun
+fprint_d2exp: fprint_type(d2exp)
+//
+overload print with print_d2exp
+overload prerr with prerr_d2exp
+overload fprint with fprint_d2exp
 //
 (* ****** ****** *)
 //

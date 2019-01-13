@@ -278,6 +278,11 @@ d2exp_make_node
 , d2exp_type= t2ype_none(loc0)
 } (* d2exp_make_node *)
 
+implement
+d2exp_get_loc(d2e) = d2e.d2exp_loc
+implement
+d2exp_get_node(d2e) = d2e.d2exp_node
+
 end // end of [local]
 
 (* ****** ****** *)
