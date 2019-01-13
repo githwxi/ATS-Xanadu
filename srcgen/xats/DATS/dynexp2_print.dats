@@ -214,10 +214,15 @@ fprint_d2pat
   (out, x0) =
 (
 case- x0.node() of
+//
+| D2Pvar(d2v) =>
+  fprint!(out, "D2Pvar(", d2v, ")")
+//
 | D2Pnone0() =>
   fprint!(out, "D2Pnone0(", ")")
-| D2Pnone1(d1p) =>
-  fprint!(out, "D2Pnone1(", d1p, ")")
+| D2Pnone1(d1psrc) =>
+  fprint!(out, "D2Pnone1(", d1psrc, ")")
+//
 ) (* end of [fprint_d2pat] *)
 
 end // end of [local]
@@ -264,8 +269,8 @@ case- x0.node() of
 //
 | D2Enone0() =>
   fprint!(out, "D2Enone0(", ")")
-| D2Enone1(d1e) =>
-  fprint!(out, "D2Enone1(", d1e, ")")
+| D2Enone1(d1esrc) =>
+  fprint!(out, "D2Enone1(", d1esrc, ")")
 //
 ) (* end of [fprint_d2exp] *)
 
@@ -290,16 +295,6 @@ fprint_d2ecl
 (
 case- x0.node() of
 //
-| D2Cnone0() =>
-  fprint!(out, "D2Cnone0(", ")")
-| D2Cnone1(d1c) =>
-  fprint!(out, "D2Cnone1(", d1c, ")")
-//
-| D2Clocal(d2cs1, d2cs2) =>
-  fprint!
-  ( out
-  , "D2Clocal(", d2cs1, "; ", d2cs2, ")")
-//
 | D2Cabssort(d1c) =>
   fprint!(out, "D2Cabssort(", d1c, ")")
 | D2Cstacst0(d1c) =>
@@ -320,6 +315,16 @@ case- x0.node() of
 //
 | D2Cdynconst(knd, tqas, d2cs) =>
   fprint!(out, "D2Cdcstdecl(", knd, "; ", tqas, "; ", d2cs)
+//
+| D2Clocal(d2cs1, d2cs2) =>
+  fprint!
+  ( out
+  , "D2Clocal(", d2cs1, "; ", d2cs2, ")")
+//
+| D2Cnone0() =>
+    fprint!(out, "D2Cnone0(", ")")
+| D2Cnone1(d1csrc) =>
+    fprint!(out, "D2Cnone1(", d1csrc, ")")
 //
 ) (* end of [fprint_d2ecl] *)
 
