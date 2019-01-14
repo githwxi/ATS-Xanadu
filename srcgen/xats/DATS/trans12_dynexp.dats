@@ -1137,10 +1137,13 @@ aux_dcstdecl
 //
 val (pf0|()) =
 the_sexpenv_pushnil()
+//
 val
 s2e0 =
-auxarg1(0, rcd.arg, rcd.res)
+auxarg1
+(d1c0, 0, rcd.arg, rcd.res)
 val ((*void*)) =
+//
 the_sexpenv_popfree(pf0|(*void*))
 //
 in
@@ -1163,32 +1166,39 @@ end // end of [auxsid]
 
 and
 auxres0
-( res0
+( d1c0
+: d1cstdecl
+, res0
 : effs1expopt): s2exp =
 (
 case+ res0 of
 | EFFS1EXPnone
-  ((*void*)) => s2exp_none0()
+  ((*void*)) =>
+  s2exp_none0(d1c0.loc((*void*)))
 | EFFS1EXPsome
-  (s1f, s1e) => trans12_sexp(s1e)
+  (s1f, s1e0) => trans12_sexp(s1e0)
 ) (* end of [auxres0] *)
 
 and
 auxarg1
-( nfc0: int
+( d1c0
+: d1cstdecl
+, nfc0: int
 , d1as: d1arglst
 , res0: effs1expopt): s2exp =
 (
 case+ d1as of
 | list_nil() =>
-  auxres0(res0)
+  auxres0(d1c0, res0)
 | list_cons(d1a0, d1as) =>
-  auxarg2(nfc0, d1a0, d1as, res0)
+  auxarg2(d1c0, nfc0, d1a0, d1as, res0)
 )
 
 and
 auxarg2
-( nfc0: int
+( d1c0
+: d1cstdecl
+, nfc0: int
 , d1a0: d1arg
 , d1as: d1arglst
 , res0: effs1expopt): s2exp =
@@ -1208,7 +1218,7 @@ let
     trans12_squalst(s1qs, s2vs_, s2ps_)
   val s2vs = list_vt2t(s2vs_)
   val s2ps = list_vt2t(s2ps_)
-  val s2e0 = auxarg1(nfc0+0, d1as, res0)
+  val s2e0 = auxarg1(d1c0, nfc0+0, d1as, res0)
 in
   s2exp_uni(s2vs, s2ps, s2e0)
 end // end of [D1ARGsome_sta]
@@ -1225,7 +1235,7 @@ let
     then FC2fun() else FC2cloref
   ) : funclo2
   val s2es = list_sing(auxsid(tok0))
-  val s2e0 = auxarg1(nfc0+1, d1as, res0)
+  val s2e0 = auxarg1(d1c0, nfc0+1, d1as, res0)
 in
   s2exp_fun_full(fc2, lin, eff, npf, s2es, s2e0)
 end
@@ -1258,7 +1268,7 @@ let
       val s2es2 = trans12_atyplst(arg1)
     }
   ) : s2explst // end-of-val
-  val s2e0 = auxarg1(nfc0+1, d1as, res0)
+  val s2e0 = auxarg1(d1c0, nfc0+1, d1as, res0)
 in
   s2exp_fun_full(fc2, lin, eff, npf, s2es, s2e0)
 end

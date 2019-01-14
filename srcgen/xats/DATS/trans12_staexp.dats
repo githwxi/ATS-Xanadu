@@ -752,11 +752,13 @@ s2e1.sort() of
 | _(*non-S2Tfun*) => list_nil(*void*)
 ) : sort2lst // end of [va]
 //
+val loc0 = s1e0.loc()
+//
 val s2es =
-trans12_sexplst_cks(s1es, s2ts)
+trans12_sexplst_cks(loc0, s1es, s2ts)
 //
 in
-  s2exp_apps(s1e0.loc(), s2e1, s2es)
+  s2exp_apps(loc0, s2e1, s2es)
 end // end of [auxapp1_1_]
 
 and
@@ -1401,7 +1403,7 @@ list_map$fopr<s1exp><s2exp>
 
 implement
 trans12_sexplst_cks
-  (s1es, s2ts) =
+(loc0, s1es, s2ts) =
 (
   auxlst(s1es, s2ts)
 ) where
@@ -1425,7 +1427,8 @@ case+ s1es of
       ) where
       {
         val s2e0 =
-          s2exp_none0_s2t(s2t0)
+          s2exp_none0_s2t(loc0, s2t0)
+        // end of [val]
         val s2es = auxlst(s1es, s2ts)
       }
   )
