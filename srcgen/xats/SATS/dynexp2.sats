@@ -59,6 +59,8 @@ D1E = "./dynexp1.sats"
 //
   typedef d1eclist = $D1E.d1eclist
 //
+  typedef declmodopt = $D1E.declmodopt
+//
 (* ****** ****** *)
 
 #staload "./staexp2.sats"
@@ -202,6 +204,11 @@ d2con_make_idtp
 fun
 d2cst_make_idtp
 (id: token, s2e: s2exp): d2cst
+//
+(* ****** ****** *)
+//
+fun
+d2var_new2(loc_t, sym_t): d2var
 //
 (* ****** ****** *)
 //
@@ -457,6 +464,43 @@ d2exp_make_node
 (* ****** ****** *)
 //
 datatype
+v2aldecl =
+V2ALDECL of @{
+  loc= loc_t
+, pat= d2pat
+, def= d2exp
+, wtp= s2expopt
+}
+//
+typedef
+v2aldeclist = List0(v2aldecl)
+//
+(* ****** ****** *)
+//
+fun
+v2aldecl_get_loc(v2aldecl): loc_t
+fun
+v2aldecl_get_pat(v2aldecl): d2pat
+//
+overload .loc with v2aldecl_get_loc
+overload .pat with v2aldecl_get_pat
+//
+(* ****** ****** *)
+//
+fun
+print_v2aldecl: print_type(v2aldecl)
+fun
+prerr_v2aldecl: prerr_type(v2aldecl)
+fun
+fprint_v2aldecl: fprint_type(v2aldecl)
+//
+overload print with print_v2aldecl
+overload prerr with prerr_v2aldecl
+overload fprint with fprint_v2aldecl
+//
+(* ****** ****** *)
+//
+datatype
 v2ardecl =
 V2ARDECL of @{
   loc= loc_t
@@ -468,6 +512,19 @@ V2ARDECL of @{
 //
 typedef
 v2ardeclist = List0(v2ardecl)
+//
+(* ****** ****** *)
+//
+fun
+print_v2ardecl: print_type(v2ardecl)
+fun
+prerr_v2ardecl: prerr_type(v2ardecl)
+fun
+fprint_v2ardecl: fprint_type(v2ardecl)
+//
+overload print with print_v2ardecl
+overload prerr with prerr_v2ardecl
+overload fprint with fprint_v2ardecl
 //
 (* ****** ****** *)
 //
@@ -490,6 +547,10 @@ d2ecl_node =
 | D2Csexpdef of (d1ecl)
 | D2Cabstype of (d1ecl)
 | D2Cabsimpl of (d1ecl)
+//
+| D2Cvaldecl of
+  ( token(*valkind*)
+  , declmodopt(*rec/prf/...*), v2aldeclist)
 //
 | D2Cdatasort of (d1ecl)
 | D2Cdatatype of (d1ecl)

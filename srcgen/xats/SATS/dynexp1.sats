@@ -46,6 +46,14 @@
 
 (* ****** ****** *)
 //
+// HX-2019-01-13:
+// declared in dynexp0.sats
+//
+typedef declmodopt = declmodopt
+//
+(* ****** ****** *)
+
+//
 abstype d1pat_tbox = ptr
 typedef d1pat = d1pat_tbox
 typedef d1patlst = List0(d1pat)

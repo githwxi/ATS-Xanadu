@@ -485,6 +485,17 @@ end // end of [f1undecl_get_loc]
 (* ****** ****** *)
 
 implement
+v1aldecl_get_loc
+  (d1c0) = let
+//
+val+
+V1ALDECL(rcd) = d1c0 in rcd.loc
+//
+end // end of [v1aldecl_get_loc]
+
+(* ****** ****** *)
+
+implement
 d1cstdecl_get_loc
   (d1c0) = let
 //

@@ -287,6 +287,11 @@ fprint_d2ecl(stderr_ref, x0)
 
 local
 
+implement
+fprint_val<d2ecl> = fprint_d2ecl
+implement
+fprint_val<v2aldecl> = fprint_v2aldecl
+
 in (* in-of-local *)
 
 implement
@@ -307,6 +312,11 @@ case- x0.node() of
   fprint!(out, "D2Cabstype(", d1c, ")")
 | D2Cabsimpl(d1c) =>
   fprint!(out, "D2Cabsimpl(", d1c, ")")
+//
+| D2Cvaldecl
+  (knd, mopt, v2ds) =>
+  fprint!
+  (out, "D2Cvaldecl(", knd, "; ", mopt, "; ", v2ds)
 //
 | D2Cdatasort(d1c) =>
   fprint!(out, "D2Cdatasort(", d1c, ")")
@@ -376,6 +386,29 @@ list_foreach$fwork<s2varlst><void>
   (s2vs, env) = fprint!(out, "<", s2vs, ">")
 } (* end of [fprint_tq2arg] *)
 //
+(* ****** ****** *)
+
+implement
+print_v2aldecl(x0) =
+fprint_v2aldecl(stdout_ref, x0)
+implement
+prerr_v2aldecl(x0) =
+fprint_v2aldecl(stderr_ref, x0)
+
+implement
+fprint_v2aldecl
+  (out, x0) = let
+//
+val+V2ALDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "V2ALDECL@{"
+  , ", pat=", rcd.pat
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+end // end of [fprint_v2aldecl]
+
 (* ****** ****** *)
 
 (* end of [xats_dynexp2_print.dats] *)

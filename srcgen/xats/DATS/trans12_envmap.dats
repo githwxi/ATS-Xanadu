@@ -1070,7 +1070,43 @@ the_dexpenv_locjoin
 (_assert_(), _assert_() | (*void*))
 end // end of [local]
 //
-} // end of [the_sexpenv_locjoin]
+} // end of [the_trans12_locjoin]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+fun
+auxd2p0
+(d2p0: d2pat): void =
+(
+case+
+d2p0.node() of
+//
+| D2Pvar(d2v) =>
+  the_dexpenv_add_var(d2v)
+//
+| _(* rest-of-d2pat *) => ()
+)
+
+fun
+auxd2ps
+(d2ps: d2patlst): void =
+(
+case+ d2ps of
+| list_nil() => ()
+| list_cons(d2p0, d2ps) =>
+  (auxd2p0(d2p0); auxd2ps(d2ps))
+)
+
+in (* in-of-local *)
+
+implement
+the_trans12_add_pat(d2p0) = auxd2p0(d2p0)
+implement
+the_trans12_add_patlst(d2p0) = auxd2ps(d2p0)
 
 end // end of [local]
 
