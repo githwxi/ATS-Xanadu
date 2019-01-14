@@ -435,8 +435,8 @@ s2e0.node() of
   ( out
   , "S2Etyrec(", knd, "; ", npf, "; ", ls2es, ")")
 //
-| S2Enone0() =>
-  fprint!(out, "S2Enone0(", ")")
+| S2Enone0(loc) =>
+  fprint!(out, "S2Enone0(", loc, ")")
 | S2Enone1(s1esrc) =>
   fprint!(out, "S2Enone1(", s1esrc, ")")
 )

@@ -473,4 +473,26 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+f1undecl_get_loc
+  (d1c0) = let
+//
+val+
+F1UNDECL(rcd) = d1c0 in rcd.loc
+//
+end // end of [f1undecl_get_loc]
+
+(* ****** ****** *)
+
+implement
+d1cstdecl_get_loc
+  (d1c0) = let
+//
+val+
+D1CSTDECL(rcd) = d1c0 in rcd.loc
+//
+end // end of [d1cstdecl_get_loc]
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp1.dats] *)

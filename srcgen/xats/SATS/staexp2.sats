@@ -655,7 +655,7 @@ s2exp_node =
 //
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
-| S2Enone0 // of (*void*) // HX: error indication
+| S2Enone0 of (loc_t) // HX: error indication
 | S2Enone1 of s1exp(*src*) // HX: error indication
 //
 // end of [s2exp_node]
@@ -756,13 +756,13 @@ s2exp_record2
 (* ****** ****** *)
 //
 fun
-s2exp_none0(): s2exp
+s2exp_none0(loc: loc_t): s2exp
 fun
 s2exp_none1(s1e: s1exp): s2exp
 //
 fun
 s2exp_none0_s2t
-  (s2t: sort2): s2exp
+  (loc: loc_t, s2t: sort2): s2exp
 fun
 s2exp_none1_s2t
   (s1e: s1exp, s2t: sort2): s2exp

@@ -40,6 +40,10 @@
 //
 #staload
   FP0 = "./filepath.sats"
+#staload
+  LOC = "./location.sats"
+//
+typedef loc_t = $LOC.loc_t
 //
 (* ****** ****** *)
 
@@ -470,7 +474,8 @@ trans12_sexplst_ck
   (s1es: s1explst, s2t0: sort2): s2explst
 fun
 trans12_sexplst_cks
-  (s1es: s1explst, s2ts: sort2lst): s2explst
+  ( loc0: loc_t
+  , s1es: s1explst, s2ts: sort2lst): s2explst
 //
 (* ****** ****** *)
 //
