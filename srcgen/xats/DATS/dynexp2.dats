@@ -249,6 +249,21 @@ d2var_tbox = $rec{
 in (* in-of-local *)
 
 implement
+d2var_new2
+(loc, sym) =
+(
+$rec{
+  d2var_loc= loc
+, d2var_sym= sym
+, d2var_stamp= stamp
+}
+) where
+{
+  val
+  stamp = d2var_stamp_new((*void*))
+}
+
+implement
 d2var_get_loc(x0) = x0.d2var_loc
 implement
 d2var_get_sym(x0) = x0.d2var_sym
@@ -492,6 +507,26 @@ implement
 tq2arg_get_svss(x0) = x0.tq2arg_svss
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+v2aldecl_get_loc
+  (d1c0) = let
+//
+val+
+V2ALDECL(rcd) = d1c0 in rcd.loc
+//
+end // end of [v2aldecl_get_loc]
+
+implement
+v2aldecl_get_pat
+  (d1c0) = let
+//
+val+
+V2ALDECL(rcd) = d1c0 in rcd.pat
+//
+end // end of [v2aldecl_get_pat]
 
 (* ****** ****** *)
 

@@ -559,6 +559,13 @@ the_trans12_locjoin
 (* ****** ****** *)
 //
 fun
+the_trans12_add_pat(d2p: d2pat): void
+fun
+the_trans12_add_patlst(d2ps: d2patlst): void
+//
+(* ****** ****** *)
+//
+fun
 trans12_dpat: d1pat -> d2pat
 fun
 trans12_dpatlst: d1patlst -> d2patlst

@@ -121,63 +121,35 @@ val-
 D1Pid(tok) = d1p0.node()
 //
 val sym = dexpid_sym(tok)
-val
-opt = the_dexpenv_find(sym)
+val opt = the_dexpenv_find(sym)
 //
 in
 //
 case+ opt of
-| ~None_vt() => d2pat_none1(d1p0)
-| ~Some_vt(d2i) => auxid_d2i(d1p0, d2i)
+| ~None_vt() => auxid_none(d1p0, sym)
+| ~Some_vt(d2i) => auxid_some(d1p0, d2i)
 end // end of [auxid]
 
 and
-auxid_d2i
-( d1p0
-: d1pat
-, d2i0
-: d2itm): d2pat =
-(
-case- d2i0 of
-| D2ITMvar(x0) =>
-  auxid_var(d1p0, x0)
-| D2ITMcon(xs) =>
-  auxid_con(d1p0, xs)
-| D2ITMcst(xs) =>
-  auxid_cst(d1p0, xs)
-) (* end of [auxid_d2i] *)
-and
-auxid_var
-( d1p0
-: d1pat
-, d2v0
-: d2var): d2pat =
-(
-  d2pat_var(d1p0.loc(), d2v0)
-)
-and
-auxid_con
-( d1p0
-: d1pat
-, d2cs
-: d2conlst): d2pat =
-(
-//
-if
-list_isnot_sing(d2cs)
-then d2pat_con2(loc0, d2cs)
-else d2pat_con1(loc0, list_head(d2cs))
-//
-) where
-{
+auxid_none
+( d1p0: d1pat
+, name: sym_t): d2pat =
+let
   val loc0 = d1p0.loc()
-} (* end of [auxid_con] *)
+  val d2v0 = d2var_new2(loc0, name)
+in
+  d2pat_make_node(loc0, D2Pvar(d2v0))
+end // end of [auxid_none]
+
 and
-auxid_cst
-( d1p0
-: d1pat
-, d2cs
-: d2cstlst): d2pat = d2pat_none1(d1p0)
+auxid_some
+( d1p0: d1pat
+, d2i0: d2itm): d2pat =
+let
+  val loc0 = d1p0.loc()
+in
+  d2pat_make_node(loc0, D2Pnone1(d1p0))
+end // end of [auxid_some]
 
 in (* in-of-local *)
 
@@ -218,8 +190,7 @@ val-
 D1Eid(tok) = d1e0.node()
 //
 val sym = dexpid_sym(tok)
-val
-opt = the_dexpenv_find(sym)
+val opt = the_dexpenv_find(sym)
 //
 in
 //
@@ -794,6 +765,79 @@ end // end of [aux_abstype]
 (* ****** ****** *)
 
 fun
+aux_valdecl
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Cvaldecl
+( knd
+, mopt
+, v1ds) = d1c0.node()
+//
+val v2ds = auxv1ds(v1ds)
+val ((*void*)) =
+(
+list_foreach<v2aldecl>(v2ds)
+) where
+{
+implement
+list_foreach$fwork<v2aldecl><void>
+  (v2d, env) =
+  the_trans12_add_pat(v2d.pat())
+}
+//
+in
+  d2ecl_make_node
+  (loc0, D2Cvaldecl(knd, mopt, v2ds))
+end where
+{
+//
+fun
+auxv1d0
+( v1d0
+: v1aldecl): v2aldecl = let
+//
+val+
+V1ALDECL(rcd) = v1d0
+//
+val loc = rcd.loc
+val pat = trans12_dpat(rcd.pat)
+val def = trans12_dexp(rcd.def)
+val wtp =
+(
+case+ rcd.wtp of
+| WTHS1EXPnone
+    ((*void*)) => None()
+| WTHS1EXPsome
+    (tok, s1e) => Some(trans12_sexp(s1e))
+) : s2expopt // end of [val]
+//
+in
+  V2ALDECL
+  (@{loc=loc,pat=pat,def=def,wtp=wtp})
+end // end of [val]
+//
+and
+auxv1ds
+( v1ds
+: v1aldeclist): v2aldeclist =
+list_vt2t
+(
+list_map<v1aldecl><v2aldecl>(v1ds)
+) where
+{
+implement
+list_map$fopr<v1aldecl><v2aldecl>(x) = auxv1d0(x)
+} (* end of [auxv1ds] *)
+//
+} (* end of [aux_valdecl] *)
+
+(* ****** ****** *)
+
+fun
 aux_datasort
 ( d1c0
 : d1ecl): d2ecl = let
@@ -1319,6 +1363,8 @@ d1c0.node() of
 | D1Csexpdef _ => aux_sexpdef(d1c0)
 //
 | D1Cabstype _ => aux_abstype(d1c0)
+//
+| D1Cvaldecl _ => aux_valdecl(d1c0)
 //
 | D1Cdatasort _ => aux_datasort(d1c0)
 //
