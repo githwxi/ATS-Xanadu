@@ -182,6 +182,107 @@ end // end of [local]
 local
 
 fun
+auxdyn
+( f1a0
+: f1arg): f2arg = let
+//
+val-
+F1ARGsome_dyn
+  (d1p0) = f1a0.node()
+//
+val
+d2p0 = trans12_dpat(d1p0)
+//
+val () =
+the_trans12_add_pat(d2p0)
+//
+in
+//
+f2arg_make_node
+(f1a0.loc(), F2ARGsome_dyn(d2p0))
+//
+end // end of [auxdyn]
+
+fun
+auxmet
+( f1a0
+: f1arg): f2arg = let
+//
+val-
+F1ARGsome_met
+  (s1es) = f1a0.node((*void*))
+//
+val s2es = trans12_sexplst(s1es)
+//
+in
+//
+f2arg_make_node
+(f1a0.loc(), F2ARGsome_met(s2es))
+//
+end // end of [auxmet]
+
+fun
+auxsta
+( f1a0
+: f1arg): f2arg = let
+//
+val-
+F1ARGsome_sta
+  (s1qs) = f1a0.node()
+//
+var s2vs_
+  : s2varlst_vt =
+  list_vt_nil(*void*)
+var s2ps_
+  : s2varlst_vt =
+  list_vt_nil(*void*)
+val ((*void*)) =
+  trans12_squalst(s1qs, s2vs_, s2ps_)
+//
+val s2vs = list_vt2t(s2vs_)
+val s2ps = list_vt2t(s2ps_)
+//
+in
+//
+f2arg_make_node
+(f1a0.loc(), F2ARGsome_sta(s2vs, s2ps))
+//
+end // end of [auxsta]
+
+in (* in-of-local *)
+
+implement
+trans12_farg
+  (f1a0) =
+(
+//
+case+
+f1a0.node() of
+| F1ARGsome_dyn _ => auxdyn(f1a0)
+| F1ARGsome_sta _ => auxsta(f1a0)
+| F1ARGsome_met _ => auxmet(f1a0)
+//
+) (* end of [trans12_farg] *)
+
+end // end of [local]
+
+implement
+trans12_farglst
+  (f1as) =
+list_vt2t
+(
+list_map<f1arg><f2arg>(f1as)
+) where
+{
+implement
+list_map$fopr<f1arg><f2arg>(f1a) = trans12_farg(f1a)
+} (* end of [trans12_farglst] *)
+
+(* ****** ****** *)
+
+local
+
+fun
 auxid
 ( d1e0
 : d1exp): d2exp = let
@@ -318,6 +419,38 @@ end // end of [auxstr]
 
 (* ****** ****** *)
 
+(*
+fun
+auxapp1
+( d1e0
+: d1exp): d2exp = let
+in
+end // end of [auxapp1]
+*)
+
+(* ****** ****** *)
+
+fun
+auxapp2
+( d1e0
+: d1exp): d2exp = let
+//
+val-
+D1Eapp2
+( d1e1
+, d1e2
+, d1e3) = d1e0.node()
+//
+val d2e1 = trans12_dexp(d1e1)
+val d2e2 = trans12_dexp(d1e2)
+val d2e3 = trans12_dexp(d1e3)
+//
+in
+  d2exp_app2(d1e0.loc(), d2e1, d2e2, d2e3)
+end // end of [auxapp2]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -341,6 +474,11 @@ d1e0.node() of
 | D1Eint _ => auxint(d1e0)
 | D1Echr _ => auxchr(d1e0)
 | D1Estr _ => auxstr(d1e0)
+//
+(*
+| D1Eapp1 _ => auxapp1(d1e0)
+*)
+| D1Eapp2 _ => auxapp2(d1e0)
 //
 | D1Eanno
   (d1e1, s1e2) => let
@@ -838,6 +976,163 @@ list_map$fopr<v1aldecl><v2aldecl>(x) = auxv1d0(x)
 (* ****** ****** *)
 
 fun
+aux_fundecl
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Cfundecl
+( knd
+, mopt
+, tqas, f1ds) = d1c0.node()
+//
+val
+tqas =
+trans12_tqarglst(tqas)
+//
+val (pf0|()) =
+the_sexpenv_pushnil()
+//
+local
+fun
+loop
+(xs: tq2arglst): void =
+(
+case+ xs of
+| list_nil() => ()
+| list_cons(x0, xs) =>
+  (
+    loop(xs)
+  ) where
+  {
+    val () =
+    the_sexpenv_add_varlstlst(x0.svss())
+  }
+) (* end of [loop] *)
+in
+val ((*void*)) = loop(tqas)
+end // end of [local]
+//
+val d2vs = auxd2vs(f1ds)
+//
+val ((*void*)) =
+  the_dexpenv_add_varlst(d2vs)
+//
+val f2ds =
+  auxf1ds(d1c0, d2vs, f1ds)
+//
+val ((*void*)) =
+the_sexpenv_popfree(pf0|(*void*))
+//
+in
+  d2ecl_make_node
+  (loc0, D2Cfundecl(knd, mopt, f2ds))
+end where
+{
+//
+fun
+auxd2vs
+( f1ds
+: f1undeclist): d2varlst =
+list_vt2t
+(
+list_map<f1undecl><d2var>(f1ds)
+) where
+{
+implement
+list_map$fopr<f1undecl><d2var>
+  (f1d) =
+let
+  val+
+  F1UNDECL(rcd) = f1d in d2var_new1(rcd.nam)
+end // end of [list_map$fopr]
+}
+//
+fun
+auxf1d0
+( d1c0
+: d1ecl
+, d2v0
+: d2var
+, f1d0
+: f1undecl
+) : f2undecl = let
+//
+val+
+F1UNDECL(rcd) = f1d0
+//
+val nam = d2v0
+val loc = rcd.loc
+//
+val
+(pf0|()) =
+the_trans12_pushnil()
+//
+val arg =
+trans12_farglst(rcd.arg)
+val res =
+(
+case+ rcd.res of
+| EFFS1EXPnone
+    ((*void*)) => None()
+| EFFS1EXPsome
+    (s1f, s1e) => Some(trans12_sexp(s1e))
+) : s2expopt // end of [val]
+//
+val def = trans12_dexp(rcd.def)
+//
+val
+((*void*)) =
+the_trans12_popfree(pf0|(*void*))
+//
+val wtp =
+(
+case+ rcd.wtp of
+| WTHS1EXPnone
+    ((*void*)) => None()
+| WTHS1EXPsome
+    (tok, s1e) => Some(trans12_sexp(s1e))
+) : s2expopt // end of [val]
+//
+in
+F2UNDECL
+(@{loc=loc,nam=nam,arg=arg,res=res,def=def,wtp=wtp})
+end // end of [auxf1d0]
+and
+auxf1ds
+( d1c0
+: d1ecl
+, d2vs
+: d2varlst
+, f1ds
+: f1undeclist
+) : f2undeclist =
+(
+case+ d2vs of
+| list_nil() =>
+  list_nil((*void*))
+| list_cons(d2v0, d2vs) =>
+  (
+    list_cons(f2d0, f2ds)
+  ) where
+  {
+    val-
+    list_cons
+    (f1d0, f1ds) = f1ds
+    val f2d0 =
+    auxf1d0(d1c0, d2v0, f1d0)
+    val f2ds =
+    auxf1ds(d1c0, d2vs, f1ds)
+  }
+)
+//
+} (* end of [aux_fundecl] *)
+
+(* ****** ****** *)
+
+fun
 aux_datasort
 ( d1c0
 : d1ecl): d2ecl = let
@@ -1217,10 +1512,12 @@ auxres0
 (
 case+ res0 of
 | EFFS1EXPnone
-  ((*void*)) =>
-  s2exp_none0(d1c0.loc((*void*)))
+    ((*void*)) =>
+  (
+    s2exp_none0(d1c0.loc())
+  )
 | EFFS1EXPsome
-  (s1f, s1e0) => trans12_sexp(s1e0)
+    (s1f, s1e) => trans12_sexp(s1e)
 ) (* end of [auxres0] *)
 
 and
@@ -1365,6 +1662,8 @@ d1c0.node() of
 | D1Cabstype _ => aux_abstype(d1c0)
 //
 | D1Cvaldecl _ => aux_valdecl(d1c0)
+//
+| D1Cfundecl _ => aux_fundecl(d1c0)
 //
 | D1Cdatasort _ => aux_datasort(d1c0)
 //

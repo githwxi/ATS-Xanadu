@@ -249,6 +249,19 @@ d2var_tbox = $rec{
 in (* in-of-local *)
 
 implement
+d2var_new1
+  (tok) = let
+//
+val
+loc = tok.loc()
+val
+sym = dexpid_sym(tok)
+//
+in
+  d2var_new2(loc, sym)
+end // end of [d2var_new1]
+
+implement
 d2var_new2
 (loc, sym) =
 (
@@ -269,6 +282,34 @@ implement
 d2var_get_sym(x0) = x0.d2var_sym
 implement
 d2var_get_stamp(x0) = x0.d2var_stamp
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+f2arg_tbox = $rec{
+  f2arg_loc= loc_t
+, f2arg_node= f2arg_node
+} (* f2arg_tbox *)
+
+in (* in-of-local *)
+
+implement
+f2arg_get_loc(x0) = x0.f2arg_loc
+implement
+f2arg_get_node(x0) = x0.f2arg_node
+
+(* ****** ****** *)
+
+implement
+f2arg_make_node
+(loc, node) = $rec
+{
+  f2arg_loc= loc, f2arg_node= node
+} (* end of [f2arg_make_node] *)
 
 end // end of [local]
 
@@ -429,6 +470,30 @@ implement
 d2exp_cst2
 (loc0, d2cs) =
 d2exp_make_node(loc0, D2Ecst2(d2cs))
+//
+(* ****** ****** *)
+//
+implement
+d2exp_dapp
+(loc0, d2f0, npf0, d2as) =
+(
+  d2exp_make_node
+  (loc0, D2Edapp(d2f0, npf0, d2as))
+)
+//
+(* ****** ****** *)
+//
+implement
+d2exp_app2
+(loc0, d2f0, d2a1, d2a2) =
+(
+  d2exp_dapp
+  (loc0, d2f0, npf0, d2as)
+) where
+{
+  val npf0 = 0
+  val d2as = list_pair(d2a1, d2a2)
+}
 //
 (* ****** ****** *)
 

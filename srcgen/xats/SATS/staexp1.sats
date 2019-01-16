@@ -442,7 +442,7 @@ s1exp_node =
   (s1explst) // imply
 //
 (*
-| S1Eapp of
+| S1Eapps of
   (s1exp, s1explst) // apply
 *)
 | S1Eapp1 of

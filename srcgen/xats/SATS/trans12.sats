@@ -173,6 +173,11 @@ typedef d1patopt = $D1E.d1patopt
 
 (* ****** ****** *)
 
+typedef f1arg = $D1E.f1arg
+typedef f1arglst = $D1E.f1arglst
+
+(* ****** ****** *)
+
 typedef d1exp = $D1E.d1exp
 typedef d1explst = $D1E.d1explst
 typedef d1expopt = $D1E.d1expopt
@@ -202,6 +207,11 @@ typedef tq2arglst = $D2E.tq2arglst
 typedef d2pat = $D2E.d2pat
 typedef d2patlst = $D2E.d2patlst
 typedef d2patopt = $D2E.d2patopt
+
+(* ****** ****** *)
+
+typedef f2arg = $D2E.f2arg
+typedef f2arglst = $D2E.f2arglst
 
 (* ****** ****** *)
 
@@ -569,6 +579,13 @@ fun
 trans12_dpat: d1pat -> d2pat
 fun
 trans12_dpatlst: d1patlst -> d2patlst
+//
+(* ****** ****** *)
+//
+fun
+trans12_farg: f1arg -> f2arg
+fun
+trans12_farglst: f1arglst -> f2arglst
 //
 (* ****** ****** *)
 //

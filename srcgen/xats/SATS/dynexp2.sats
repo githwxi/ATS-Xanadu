@@ -208,6 +208,8 @@ d2cst_make_idtp
 (* ****** ****** *)
 //
 fun
+d2var_new1(tok: token): d2var
+fun
 d2var_new2(loc_t, sym_t): d2var
 //
 (* ****** ****** *)
@@ -256,6 +258,45 @@ typedef d2pat = d2pat_tbox
 typedef d2patlst = List0(d2pat)
 typedef d2patopt = Option(d2pat)
 
+(* ****** ****** *)
+//
+abstbox f2arg_tbox = ptr
+typedef f2arg = f2arg_tbox
+typedef f2arglst = List0(f2arg)
+//
+datatype
+f2arg_node =
+(*
+| F2ARGnone of (token)
+*)
+//
+| F2ARGsome_dyn of (d2pat)
+//
+| F2ARGsome_sta of
+  (s2varlst(*s2vs*), s2explst(*s2ps*))
+//
+| F2ARGsome_met of (s2explst)
+//
+fun
+f2arg_get_loc(f2arg): loc_t
+fun
+f2arg_get_node(f2arg): f2arg_node
+//
+overload .loc with f2arg_get_loc
+overload .node with f2arg_get_node
+//
+fun print_f2arg : print_type(f2arg)
+fun prerr_f2arg : prerr_type(f2arg)
+fun fprint_f2arg : fprint_type(f2arg)
+//
+overload print with print_f2arg
+overload prerr with prerr_f2arg
+overload fprint with fprint_f2arg
+//
+fun
+f2arg_make_node
+(loc: loc_t, node: f2arg_node): f2arg
+//
 (* ****** ****** *)
 //
 datatype
@@ -429,6 +470,29 @@ overload .loc with d2exp_get_loc
 overload .type with d2exp_get_type
 overload .node with d2exp_get_node
 //
+(* ****** ****** *)
+//
+fun
+d2exp_app1
+( loc0: loc_t
+, d2f0: d2exp(*fun*)
+, d2a1: d2exp(*arg*)): d2exp
+fun
+d2exp_app2
+( loc0: loc_t
+, d2f0: d2exp(*fun*)
+, d2a1: d2exp, d2a2: d2exp): d2exp
+//
+(* ****** ****** *)
+//
+fun
+d2exp_dapp
+( loc0: loc_t
+, d2f0: d2exp(*fun*)
+, npf0: int, d2as: d2explst): d2exp
+//
+(* ****** ****** *)
+//
 fun
 print_d2exp: print_type(d2exp)
 fun
@@ -529,6 +593,35 @@ overload fprint with fprint_v2ardecl
 (* ****** ****** *)
 //
 datatype
+f2undecl =
+F2UNDECL of @{
+  loc= loc_t
+, nam= d2var
+, arg= f2arglst
+, res= s2expopt
+, def= d2exp
+, wtp= s2expopt
+}
+//
+typedef
+f2undeclist = List0(f2undecl)
+//
+(* ****** ****** *)
+//
+fun
+print_f2undecl: print_type(f2undecl)
+fun
+prerr_f2undecl: prerr_type(f2undecl)
+fun
+fprint_f2undecl: fprint_type(f2undecl)
+//
+overload print with print_f2undecl
+overload prerr with prerr_f2undecl
+overload fprint with fprint_f2undecl
+//
+(* ****** ****** *)
+//
+datatype
 d2ecl_node =
 //
 | D2Cnone0 of ()
@@ -551,6 +644,10 @@ d2ecl_node =
 | D2Cvaldecl of
   ( token(*valkind*)
   , declmodopt(*rec/prf/...*), v2aldeclist)
+//
+| D2Cfundecl of
+  ( token(*funkind*)
+  , declmodopt(*rec/prf/...*), f2undeclist)
 //
 | D2Cdatasort of (d1ecl)
 | D2Cdatatype of (d1ecl)

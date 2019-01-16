@@ -1,6 +1,54 @@
-val x = 1
+fun + : (int, int) -> int
 
-///
+val x = 1 + 1
+
+////
+
+fun
+isevn: int -> int
+and
+isodd(x: int): int =
+if x > 0 then isevn(x-1) else false
+// end of [isodd]
+
+implmnt
+isevn(x) =
+  if x > 0 then isodd(x-1) else true
+// implmnt
+
+////
+
+#static
+val foo: int
+
+#extern
+fun
+foo: int -> int
+and
+bar: int -> int
+
+////
+val
+foo: int
+and
+bar: int = 1
+
+////
+fun
+foo(x: int(x)): int
+////
+extern
+fun
+foo: int -> int
+////
+val
+:rec
+x = 1
+val
+:prf
+y = foo(x)
+
+////
 
 fun:
 (prf, rec)
