@@ -619,6 +619,19 @@ case- s2cs of
 (* ****** ****** *)
 
 fun
+isextp
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid =
+  $SYM.DLR_EXTYPE_symbol
+| _(*non-S1Eid*) => false
+)
+
+fun
 auxapp1
 ( s1e0
 : s1exp): s2exp = let
@@ -633,6 +646,10 @@ case+
 s1e1.node() of
 | S1Eforall _ => auxapp1_uni_(s1e0)
 | S1Eexists _ => auxapp1_exi_(s1e0)
+//
+| _ when
+    isextp(s1e1) => auxapp1_extp_(s1e0)
+//
 | _(*rest-of-s1exp*) => auxapp1_a_(s1e0)
 //
 end // end of [auxapp1]
@@ -885,6 +902,51 @@ in
   end
 //
 end // end of [auxapp1_exi_]
+
+(* ****** ****** *)
+
+and
+auxapp1_extp_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+val s1es =
+(
+case+
+s1e2.node() of
+| S1Elist(s1es) => s1es
+| _(*non-list*) => list_sing(s1e2)
+) : s1explst // end of [val]
+//
+val
+s2t0 = the_sort2_type
+val
+s2es =
+(
+case+ s1es of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  (
+    list_cons(y0, ys)
+  ) where
+  {
+    val y0 =
+    trans12_sexp(x0)
+    val ys =
+    trans12_sexplst_ck(xs, s2t0)
+  }
+) : s2explst // end of [val]
+//
+in
+//
+  s2exp_tyext(the_sort2_type, s2es)
+//
+end // end of [auxapp1_extp_]
 
 (* ****** ****** *)
 

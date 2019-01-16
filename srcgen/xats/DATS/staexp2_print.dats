@@ -393,37 +393,41 @@ s2e0.node() of
 | S2Eapp
   (s2fn, s2es) =>
   fprint!
-  (out, "S2Eapp(", s2fn, "; ", s2es, ")")
+  ( out
+  , "S2Eapp(", s2fn, "; ", s2es, ")")
 | S2Elam
   (s2vs, body) =>
   fprint!
-  (out, "S2Elam(", s2vs, "; ", body, ")")
+  ( out
+  , "S2Elam(", s2vs, "; ", body, ")")
 //
 | S2Efun
   (fc2, lin, eff, npf, arg, res) =>
   fprint!
-  ( out
-  , "S2Efun(", fc2, "; ", lin, "; ", eff, "; ", npf, "; ", arg, "; ", res, ")"
+  ( out, "S2Efun("
+  , fc2, "; ", lin, "; ", eff, "; ", npf, "; ", arg, "; ", res, ")"
   )
 //
 | S2Etop(knd, s2e) =>
-  fprint!(out, "S2Etop(", knd, "; ", s2e, ")")
+  fprint!
+  ( out
+  , "S2Etop(", knd, "; ", s2e, ")")
 //
 | S2Ecast(loc, s2e, s2t) =>
   fprint!
-  ( out
-  , "S2Ecast(", loc, "; ", s2e, "; ", s2t, ")")
+  ( out, "S2Ecast("
+  , loc, "; ", s2e, "; ", s2t, ")")
 //
 | S2Euni
   (s2vs, s2ps, body) =>
   fprint!
-  ( out
-  , "S2Euni(", s2vs, "; ", s2ps, "; ", body, ")")
+  ( out, "S2Euni("
+  , s2vs, "; ", s2ps, "; ", body, ")")
 | S2Eexi
   (s2vs, s2ps, body) =>
   fprint!
-  ( out
-  , "S2Eexi(", s2vs, "; ", s2ps, "; ", body, ")")
+  ( out, "S2Eexi("
+  , s2vs, "; ", s2ps, "; ", body, ")")
 //
 (*
 | S2Elist(s2es) =>
@@ -432,25 +436,29 @@ s2e0.node() of
 //
 | S2Etyrec(knd, npf, ls2es) =>
   fprint!
-  ( out
-  , "S2Etyrec(", knd, "; ", npf, "; ", ls2es, ")")
+  ( out, "S2Etyrec("
+  , knd, "; ", npf, "; ", ls2es, ")")
+//
+| S2Etyext(s2es) =>
+  fprint!(out, "S2Etyext(", s2es, ")")
 //
 | S2Enone0(loc) =>
   fprint!(out, "S2Enone0(", loc, ")")
 | S2Enone1(s1esrc) =>
   fprint!(out, "S2Enone1(", s1esrc, ")")
-)
+) (* end of [fprint_s2exp] *)
 
 end // end of [local]
 
 (* ****** ****** *)
-
+//
 implement
 print_labs2exp(x0) =
 fprint_labs2exp(stdout_ref, x0) 
 implement
 prerr_labs2exp(x0) =
 fprint_labs2exp(stdout_ref, x0) 
+//
 implement
 fprint_labs2exp
   (out, ls2e) =
@@ -467,7 +475,7 @@ fprint_s2itm(stdout_ref, x0)
 implement
 prerr_s2itm(x0) =
 fprint_s2itm(stdout_ref, x0) 
-
+//
 implement
 fprint_s2itm
   (out, x0) =

@@ -132,6 +132,10 @@ val VTFLT_symbol : symbol // vtflt sort
 val VTYPE_symbol : symbol // vtype sort
 //
 (* ****** ****** *)
+
+val DLR_EXTYPE_symbol : symbol // $extype
+
+(* ****** ****** *)
 //
 // HX-2018-12-09:
 // these are treated as special filepaths
