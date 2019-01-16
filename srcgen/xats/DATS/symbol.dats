@@ -405,6 +405,11 @@ VTYPE_symbol = symbol_make("vtype")
 (* ****** ****** *)
 
 implement
+DLR_EXTYPE_symbol = symbol_make("$extype")
+
+(* ****** ****** *)
+
+implement
 STDIN_fp_symbol = symbol_make("__STDIN__")
 implement
 STRING_fp_symbol = symbol_make("__STRING__")

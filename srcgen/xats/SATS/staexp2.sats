@@ -655,6 +655,8 @@ s2exp_node =
 //
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
+| S2Etyext of s2explst (* externlly named *)
+//
 | S2Enone0 of (loc_t) // HX: error indication
 | S2Enone1 of s1exp(*src*) // HX: error indication
 //
@@ -752,6 +754,12 @@ fun
 s2exp_record2
 ( knd: int
 , labs2explst, labs2explst): s2exp
+//
+(* ****** ****** *)
+//
+fun
+s2exp_tyext
+(s2t0: sort2, s2es: s2explst): s2exp
 //
 (* ****** ****** *)
 //

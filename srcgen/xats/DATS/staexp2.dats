@@ -1017,6 +1017,16 @@ end // end of [s2exp_record2]
 (* ****** ****** *)
 //
 implement
+s2exp_tyext
+  (s2t0, s2es) =
+(
+  s2exp_make_node
+  (s2t0, S2Etyext(s2es))
+)
+//
+(* ****** ****** *)
+//
+implement
 s2exp_none0(loc) =
 s2exp_none0_s2t(loc, S2Tnone0())
 implement
