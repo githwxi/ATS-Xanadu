@@ -349,7 +349,14 @@ d1pat_node =
 | D1Pbs0 of () // backslash
 | D1Pbs1 of d1pat // backslash
 //
-| D1Papps of (d1pat, d1patlst)
+(*
+| D1Papps of
+  (d1pat, d1patlst) // apply
+*)
+| D1Papp1 of
+  (d1pat(*fun*), d1pat)
+| D1Papp2 of
+  (d1pat(*fun*), d1pat, d1pat)
 //
 | D1Plist of d1patlst // temp.
 | D1Plist of
@@ -406,9 +413,14 @@ d1exp_node =
 | D1Ebs0 of () // backslash
 | D1Ebs1 of d1exp // backslash
 //
+(*
 | D1Eapps of
-    (d1exp, d1explst)
-  // D1Eapps
+  (d1exp, d1explst) // apply
+*)
+| D1Eapp1 of
+  (d1exp(*fun*), d1exp)
+| D1Eapp2 of
+  (d1exp(*fun*), d1exp, d1exp)
 //
 | D1Esqarg of s1explst
 | D1Etqarg of s1explst
@@ -872,6 +884,19 @@ fprint_wd1eclseq : fprint_type(wd1eclseq)
 overload print with print_wd1eclseq
 overload prerr with prerr_wd1eclseq
 overload fprint with fprint_wd1eclseq
+//
+(* ****** ****** *)
+//
+(*
+// HX-2019-01-15:
+// kind=0: interface only
+// kind=1: interface+definition
+*)
+fun
+f1undecl_classify(f1d0: f1undecl): int
+//
+fun
+v1aldecl_classify(v1d0: v1aldecl): int
 //
 (* ****** ****** *)
 

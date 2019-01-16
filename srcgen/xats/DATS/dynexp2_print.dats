@@ -102,13 +102,28 @@ fprint_val<d2var> = fprint_d2var
 (* ****** ****** *)
 //
 implement
+fprint_val<d2pat> = fprint_d2pat
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<f2arg> = fprint_f2arg
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d2exp> = fprint_d2exp
+//
+(* ****** ****** *)
+//
+implement
 fprint_val<d2ecl> = fprint_d2ecl
 //
 (* ****** ****** *)
-
+//
 implement
 fprint_val<tq2arg> = fprint_tq2arg
-
+//
 (* ****** ****** *)
 //
 implement
@@ -199,6 +214,28 @@ fprint_d2var
 (* ****** ****** *)
 
 implement
+fprint_f2arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+(*
+| F2ARGnone(tok) =>
+  fprint!(out, "F2ARGnone(", tok, ")")
+*)
+| F2ARGsome_dyn(d2p0) =>
+  fprint!(out, "F2ARGsome_dyn(", d2p0, ")")
+| F2ARGsome_met(s2es) =>
+  fprint!(out, "F2ARGsome_met(", s2es, ")")
+| F2ARGsome_sta(s2vs, s2ps) =>
+  fprint!(out, "F2ARGsome_sta(", s2vs, "; ", s2ps, ")")
+//
+) (* end of [fprint_f2arg] *)
+
+(* ****** ****** *)
+
+implement
 print_d2pat(x0) =
 fprint_d2pat(stdout_ref, x0)
 implement
@@ -267,6 +304,11 @@ case- x0.node() of
 | D2Econ2(d2cs) =>
   fprint!(out, "D2Econ2(", d2cs, ")")
 //
+| D2Edapp(d2f0, npf0, d2as) =>
+  fprint!
+  ( out, "D2Edapp("
+  , d2f0, "; ", npf0, "; ", d2as, ")")
+//
 | D2Enone0() =>
   fprint!(out, "D2Enone0(", ")")
 | D2Enone1(d1esrc) =>
@@ -291,6 +333,8 @@ implement
 fprint_val<d2ecl> = fprint_d2ecl
 implement
 fprint_val<v2aldecl> = fprint_v2aldecl
+implement
+fprint_val<f2undecl> = fprint_f2undecl
 
 in (* in-of-local *)
 
@@ -317,6 +361,10 @@ case- x0.node() of
   (knd, mopt, v2ds) =>
   fprint!
   (out, "D2Cvaldecl(", knd, "; ", mopt, "; ", v2ds)
+| D2Cfundecl
+  (knd, mopt, f2ds) =>
+  fprint!
+  (out, "D2Cfundecl(", knd, "; ", mopt, "; ", f2ds)
 //
 | D2Cdatasort(d1c) =>
   fprint!(out, "D2Cdatasort(", d1c, ")")
@@ -408,6 +456,31 @@ in
   , ", pat=", rcd.pat
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v2aldecl]
+
+(* ****** ****** *)
+
+implement
+print_f2undecl(x0) =
+fprint_f2undecl(stdout_ref, x0)
+implement
+prerr_f2undecl(x0) =
+fprint_f2undecl(stderr_ref, x0)
+
+implement
+fprint_f2undecl
+  (out, x0) = let
+//
+val+F2UNDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "F2UNDECL@{"
+  , ", nam=", rcd.nam
+  , ", arg=", rcd.arg
+  , ", res=", rcd.res
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+end // end of [fprint_f2undecl]
 
 (* ****** ****** *)
 

@@ -3328,8 +3328,13 @@ abstype ::=
 | T_SRP_STATIC() => let
     val () =
       buf.incby1()
+(*
     val d0c =
       p_d0ecl_sta(buf, err)
+*)
+    val d0c =
+      fp_d0ecl(f0, buf, err)
+    // end of [val]
     val loc_res = loc+d0c.loc()
   in
     err := e0;
@@ -3339,8 +3344,13 @@ abstype ::=
 | T_SRP_EXTERN() => let
     val () =
       buf.incby1()
+(*
     val d0c =
       p_d0ecl_sta(buf, err)
+*)
+    val d0c =
+      fp_d0ecl(f0, buf, err)
+    // end of [val]
     val loc_res = loc+d0c.loc()
   in
     err := e0;

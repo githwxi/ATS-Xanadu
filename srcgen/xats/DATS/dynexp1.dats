@@ -247,7 +247,7 @@ absimpl
 f1arg_tbox = $rec{
   f1arg_loc= loc_t
 , f1arg_node= f1arg_node
-}
+} (* f1arg_tbox *)
 
 in (* in-of-local *)
 
@@ -475,10 +475,10 @@ end // end of [local]
 
 implement
 f1undecl_get_loc
-  (d1c0) = let
+  (f1d0) = let
 //
 val+
-F1UNDECL(rcd) = d1c0 in rcd.loc
+F1UNDECL(rcd) = f1d0 in rcd.loc
 //
 end // end of [f1undecl_get_loc]
 
@@ -486,10 +486,10 @@ end // end of [f1undecl_get_loc]
 
 implement
 v1aldecl_get_loc
-  (d1c0) = let
+  (v1d0) = let
 //
 val+
-V1ALDECL(rcd) = d1c0 in rcd.loc
+V1ALDECL(rcd) = v1d0 in rcd.loc
 //
 end // end of [v1aldecl_get_loc]
 
@@ -503,6 +503,52 @@ val+
 D1CSTDECL(rcd) = d1c0 in rcd.loc
 //
 end // end of [d1cstdecl_get_loc]
+
+(* ****** ****** *)
+
+implement
+f1undecl_classify
+  (f1d0) = let
+//
+val+
+F1UNDECL(rcd) = f1d0
+//
+in
+//
+(
+case+
+d1e0.node() of
+| D1Enone() => 0
+| _ (*rest-of-d1exp*) => 1
+) where
+{
+  val d1e0 = rcd.def
+}
+//
+end // end of [f1undecl_classify]
+
+(* ****** ****** *)
+
+implement
+v1aldecl_classify
+  (v1d0) = let
+//
+val+
+V1ALDECL(rcd) = v1d0
+//
+in
+//
+(
+case+
+d1e0.node() of
+| D1Enone() => 0
+| _ (*rest-of-d1exp*) => 1
+) where
+{
+  val d1e0 = rcd.def
+}
+//
+end // end of [v1aldecl_classify]
 
 (* ****** ****** *)
 

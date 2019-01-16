@@ -190,8 +190,8 @@ x0.node() of
 | F1ARGnone(tok) =>
   fprint!(out, "F1ARGnone(", tok, ")")
 *)
-| F1ARGsome_dyn(d1p) =>
-  fprint!(out, "F1ARGsome_dyn(", d1p, ")")
+| F1ARGsome_dyn(d1p0) =>
+  fprint!(out, "F1ARGsome_dyn(", d1p0, ")")
 | F1ARGsome_sta(s1qs) =>
   fprint!(out, "F1ARGsome_sta(", s1qs, ")")
 | F1ARGsome_met(s1es) =>
@@ -295,10 +295,14 @@ x0.node() of
 | D1Pbs1(d1p) =>
   fprint!(out, "D1Pbs1(", d1p, ")")
 //
-| D1Papps(d1p0, d1ps) =>
+| D1Papp1(d1p0, d1p1) =>
   fprint!
-  ( out
-  , "D1Papps(", d1p0, "; ", d1ps, ")")
+  ( out, "D1Papps("
+  , d1p0, "; ", d1p1, ")")
+| D1Papp2(d1p0, d1p1, d1p2) =>
+  fprint!
+  ( out, "D1Papps("
+  , d1p0, "; ", d1p1, ";", d1p2, ")")
 //
 | D1Plist(d1ps) =>
   fprint!(out, "D1Plist(", d1ps, ")")
@@ -371,10 +375,14 @@ x0.node() of
 | D1Ebs1(d1e) =>
   fprint!(out, "D1Ebs1(", d1e, ")")
 //
-| D1Eapps(d1e0, d1es) =>
+| D1Eapp1(d1e0, d1e1) =>
   fprint!
-  ( out
-  , "D1Eapps(", d1e0, "; ", d1es, ")")
+  ( out, "D1Eapps("
+  , d1e0, "; ", d1e1, ")")
+| D1Eapp2(d1e0, d1e1, d1e2) =>
+  fprint!
+  ( out, "D1Eapps("
+  , d1e0, "; ", d1e1, "; ", d1e2, ")")
 //
 | D1Esqarg(s1es) =>
   fprint!(out, "D1Esqarg(", s1es, ")")

@@ -143,9 +143,9 @@ x0, f1, x2
     case+
     f1.node() of
     | D1Papp() =>
-      D1Papps(x0, list_sing(x2))
+      D1Papp1(x0, x2)
     | _(*non-D1Papp*) =>
-      D1Papps(f1, list_pair(x0, x2))
+      D1Papp2(f1, x0, x2)
   ) : d1pat_node // end of [val]
 in
   FXITMatm(d1pat_make_node(loc, d1p_node))
@@ -174,8 +174,7 @@ f0.node() of
       d1pat_make_node(loc, d1p_node)
     ) where
     {
-      val
-      d1p_node = D1Papps(f0, list_sing(x1))
+      val d1p_node = D1Papp1(f0, x1)
     }
   end // end of [non-D1Pbs0]
 //
@@ -189,7 +188,7 @@ $FIX.fxitm_postfix<d1pat>
 in
   FXITMatm
   (
-  d1pat_make_node(loc, D1Papps(f1, list_sing(x0)))
+  d1pat_make_node(loc, D1Papp1(f1, x0))
   )
 end // end of [$FIX.fxitm_postfix]
 //
@@ -249,9 +248,9 @@ x0, f1, x2
     case+
     f1.node() of
     | D1Eapp() =>
-      D1Eapps(x0, list_sing(x2))
+      D1Eapp1(x0, x2)
     | _(*non-D1Eapp*) =>
-      D1Eapps(f1, list_pair(x0, x2))
+      D1Eapp2(f1, x0, x2)
   ) : d1exp_node // end of [val]
 in
   FXITMatm(d1exp_make_node(loc, d1e_node))
@@ -280,8 +279,7 @@ f0.node() of
       d1exp_make_node(loc, d1e_node)
     ) where
     {
-      val
-      d1e_node = D1Eapps(f0, list_sing(x1))
+      val d1e_node = D1Eapp1(f0, x1)
     }
   end // end of [non-D1Ebs0]
 //
@@ -295,7 +293,7 @@ $FIX.fxitm_postfix<d1exp>
 in
   FXITMatm
   (
-  d1exp_make_node(loc, D1Eapps(f1, list_sing(x0)))
+  d1exp_make_node(loc, D1Eapp1(f1, x0))
   )
 end // end of [$FIX.fxitm_postfix]
 //
