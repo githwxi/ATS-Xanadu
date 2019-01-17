@@ -47,30 +47,53 @@ list_type_int_tbox
   (a, list_type_int_tbox(a, n))
 // end of [list_type_int_tbox]
 //
+datavtype
+list_vtype_int_vtbox
+  (a:vtype+, int) =
+//
+// type+: covariant
+//
+| list_vt_nil(a, 0) of ()
+| {n:int | n >= 0}
+  list_vt_cons(a, n+1) of
+  (a, list_vtype_int_vtbox(a, n))
+// end of [list_vtype_int_vtbox]
+//
 sexpdef list = list_type_int_tbox
+sexpdef list_vt = list_vtype_int_vtbox
 //
 (* ****** ****** *)
 //
 typedef
-List(a:type) = [n:int] list(a, n)
+list(a:type) = [n:int] list(a, n)
 //
 typedef
-List0(a:type) = [n:int | n >= 0] list(a, n)
+list0(a:type) = [n:int | n >= 0] list(a, n)
 typedef
-List1(a:type) = [n:int | n >= 1] list(a, n)
+list1(a:type) = [n:int | n >= 1] list(a, n)
 //
-typedef listLt
+typedef listlt
   (a:type, n:int) = [k:nat | k < n] list(a, k)
-typedef listLte
+typedef listlte
   (a:type, n:int) = [k:nat | k <= n] list(a, k)
-typedef listGt
+typedef listgt
   (a:type, n:int) = [k:int | k > n] list(a, k)
-typedef listGte
+typedef listgte
   (a:type, n:int) = [k:int | k >= n] list(a, k)
-typedef listBtw
+typedef listbtw
   (a:type, m:int, n:int) = [k:int | m <= k; k < n] list(a, k)
-typedef listBtwe
+typedef listbtwe
   (a:type, m:int, n:int) = [k:int | m <= k; k <= n] list(a, k)
+//
+(* ****** ****** *)
+//
+typedef
+list_vt(a:type) = [n:int] list_vt(a, n)
+//
+typedef
+list0_vt(a:type) = [n:int | n >= 0] list_vt(a, n)
+typedef
+list1_vt(a:type) = [n:int | n >= 1] list_vt(a, n)
 //
 (* ****** ****** *)
 (*
@@ -86,30 +109,30 @@ typedef listBtwe
 prfun
 lemma_list_param
   {x:type}{n:int}
-  (xs: list(INV(x), n)): [n >= 0] void
+  (xs: list(x, n)): [n >= 0] void
 // end of [lemma_list_param]
 //
 (* ****** ****** *)
 //
 fun<a:type>
-list_tuple_0():<> list(a, 0)
+list_tuple_0():<> list_vt(a, 0)
 //
 fun<a:type>
-list_tuple_1(x0: a):<> list(a, 1)
+list_tuple_1(x0: a):<> list_vt(a, 1)
 fun<a:type>
-list_tuple_2(x0: a, x1: a):<> list(a, 2)
+list_tuple_2(x0: a, x1: a):<> list_vt(a, 2)
 fun<a:type>
-list_tuple_3(x0: a, x1: a, x2: a):<> list(a, 3)
+list_tuple_3(x0: a, x1: a, x2: a):<> list_vt(a, 3)
 //
 fun<a:type>
 list_tuple_4
-  (x0: a, x1: a, x2: a, x3: a):<> list(a, 4)
+  (x0: a, x1: a, x2: a, x3: a):<> list_vt(a, 4)
 fun<a:type>
 list_tuple_5
-  (x0: a, x1: a, x2: a, x3: a, x4: a):<> list(a, 5)
+  (x0: a, x1: a, x2: a, x3: a, x4: a):<> list_vt(a, 5)
 fun<a:type>
 list_tuple_6
-  (x0: a, x1: a, x2: a, x3: a, x4: a, x5: a):<> list(a, 6)
+  (x0: a, x1: a, x2: a, x3: a, x4: a, x5: a):<> list_vt(a, 6)
 //
 (* ****** ****** *)
 //
@@ -129,21 +152,21 @@ list_tuple with list_tuple_5
 list_tuple with list_tuple_6
 //
 (* ****** ****** *)
-
+//
 fun
 <x:type>
-list_make_sing(x):<wrt> list(x, 1)
+list_make_sing(x):<wrt> list_vt(x, 1)
 fun
 <x:type>
-list_make_pair(x, x):<wrt> list(x, 2)
-
+list_make_pair(x, x):<wrt> list_vt(x, 2)
+//
 (* ****** ****** *)
 //
 fun
 <x:type>
 list_make_elt
   {n:nat}
-  (n: int(n), x: x):<wrt> list(x, n)
+  (n: int(n), x: x):<wrt> list_vt(x, n)
 // end of [list_make_elt]
 //
 (* ****** ****** *)
@@ -157,78 +180,192 @@ list_length{n:int}
 //
 fun<>
 list_is_nil
-{x:type}{n:int}(xs: list(x, n)):<> bool(n=0)
+{x:type}
+{n:int}(xs: list(x, n)):<> bool(n=0)
 fun<>
 list_is_cons
-{x:type}{n:int}(xs: list(x, n)):<> bool(n>0)
+{x:type}
+{n:int}(xs: list(x, n)):<> bool(n>0)
 //
 fun
 <x:type>
-list_is_sing{n:int}(xs: list(x, n)):<> bool(n=1)
+list_is_sing
+{n:int}(xs: list(x, n)):<> bool(n=1)
 fun
 <x:type>
-list_is_pair{n:int}(xs: list(x, n)):<> bool(n=2)
+list_is_pair
+{n:int}(xs: list(x, n)):<> bool(n=2)
 //
 (* ****** ****** *)
 //
 fun
 <x:type>
 list_head
-  {n:pos}(xs: list(INV(x), n)):<> (x)
+  {n:pos}(xs: list(x, n)):<> (x)
 fun
 <x:type>
 list_head_exn
-  {n:int}(xs: list(INV(x), n)):<exn> (x)
+  {n:int}(xs: list(x, n)):<exn> (x)
 //
 (* ****** ****** *)
 //
 fun
 <x:type>
 list_tail{n:pos}
-  (xs: SHARED(list(INV(x), n))):<> list(x, n-1)
+  (xs: SHARED(list(x, n))):<> list(x, n-1)
 fun
 <x:type>
 list_tail_exn{n:int}
-  (xs: SHARED(list(INV(x), n))):<exn> list(x, n-1)
+  (xs: SHARED(list(x, n))):<exn> list(x, n-1)
 //
 (* ****** ****** *)
 //
 fun
 <x:type>
-<y:type>
-list_map{n:int}
-  (xs: list(x, n)): list(y, n)
+list_copy
+{n:int}(list(x, n)): list_vt(x, n)
+fun
+<x:vtype>
+list_copy_vt1
+{n:int}(!list_vt(x, n)): list_vt(x, n)
+//
+fun
+<x:type>
+list_reverse
+{n:int}(xs: list(x, n)): list_vt(x, n)
+fun
+<x:vtype>
+list_reverse_vt0
+{n:int}(xs: list_vt(x, n)): list_vt(x, n)
+fun
+<x:vtype>
+list_reverse_vt1
+{n:int}(xs: !list_vt(x, n)): list_vt(x, n)
+//
+fun
+<x:type>
+list_append_tt0_tt1
+{m,n:int}
+(list(x, m), list(x, n)):<> list(x, m+n)
+fun
+<x:type>
+list_append_tt0_vt0
+{m,n:int}
+(list(x, m), list_vt(x, n)):<> list_vt(x, m+n)
+fun
+<x:vtype>
+list_append_vt0_vt0
+{m,n:int}
+(list_vt(x, m), list_vt(x, n)):<> list_vt(x, m+n)
+//
+fun
+<x:type>
+list_revapp_tt0_tt1
+{m,n:int}
+(list(x, m), list(x, n)): list(x, m+n)
+fun
+<x:type>
+list_revapp_tt0_vt0
+{m,n:int}
+(list(x, m), list_vt(x, n)): list_vt(x, m+n)
+fun
+<x:vtype>
+list_revapp_vt0_vt0
+{m,n:int}
+(list_vt(x, m), list_vt(x, n)): list_vt(x, m+n)
+//
+(* ****** ****** *)
+//
+fun
+<x:type>
+list_get_at
+{ n,i:int
+| 0 <= i; i < n}
+(xs: list(x, n), i: int(i)):<> x
+fun
+<x:vtype>
+list_get_at_vt1
+{ n,i:int
+| 0 <= i; i < n}
+(xs: !list_vt(x, n), i: int(i)):<> x
+//
+(* ****** ****** *)
+//
 fun
 <x:type>
 <y:vtype>
-list_map_vt0{n:int}
+list_map{n:int}
   (xs: list(x, n)): list_vt(y, n)
+fun
+<x:vtype>
+<y:vtype>
+list_map_vt0{n:int}
+  (xs: list_vt(x, n)): list_vt(y, n)
+fun
+<x:vtype>
+<y:vtype>
+list_map_vt1{n:int}
+  (xs: !list_vt(x, n)): list_vt(y, n)
+//
+fun
+<x:type>
+<y:vtype>
+list_imap{n:int}
+  (xs: list(x, n)): list_vt(y, n)
+fun
+<x:vtype>
+<y:vtype>
+list_imap_vt0{n:int}
+  (xs: list_vt(x, n)): list_vt(y, n)
+fun
+<x:vtype>
+<y:vtype>
+list_imap_vt1{n:int}
+  (xs: !list_vt(x, n)): list_vt(y, n)
 //
 (* ****** ****** *)
 //
 fun
 <x:type>
 list_forall(xs: list(x)): bool
+fun
+<x:vtype>
+list_forall_vt0(xs: list_vt(x)): bool
+fun
+<x:vtype>
+list_forall_vt1(xs: !list_vt(x)): bool
 //
 fun
 <x:type>
 list_foreach(xs: list(x)): void
+fun
+<x:vtype>
+list_foreach_vt0(xs: list_vt(x)): void
+fun
+<x:vtype>
+list_foreach_vt1(xs: !list_vt(x)): void
 //
 (* ****** ****** *)
 //
 fun
 <x:type>
-<y:type>
-list_imap{n:int}
-  (xs: list(x, n)): list(y, n)
-//
-fun
-<x:type>
 list_iforall(xs: list(x)): bool
+fun
+<x:vtype>
+list_iforall_vt0(xs: list_vt(x)): bool
+fun
+<x:vtype>
+list_iforall_vt1(xs: !list_vt(x)): bool
 //
 fun
 <x:type>
 list_iforeach(xs: list(x)): void
+fun
+<x:vtype>
+list_iforeach_vt0(xs: list_vt(x)): void
+fun
+<x:vtype>
+list_iforeach_vt1(xs: !list_vt(x)): void
 //
 (* ****** ****** *)
 //
@@ -239,14 +376,14 @@ list_zip
   {m,n:int}
 ( xs: list(x, m)
 , ys: list(y, n)
-) :<> list((x, y), min(m, n))
+) :<> list_vt((x, y), min(m, n))
 fun
 <x:type>
 <y:type>
 list_zipeq
   {n:int}
 ( xs: list(x, n)
-, ys: list(y, n)):<> list((x, y), n)
+, ys: list(y, n)):<> list_vt((x, y), n)
 //
 (* ****** ****** *)
 //
@@ -256,7 +393,7 @@ fun
 list_cross
   {m,n:int}
 ( xs: list(x, m)
-, ys: list(y, n)):<> list((x, y), m*n)
+, ys: list(y, n)):<> list_vt((x, y), m*n)
 //
 (* ****** ****** *)
 //
@@ -264,15 +401,29 @@ fun
 <x:type>
 list_sort
 // based on mergesort
-  {n:int}(xs: list(x, n)): list(x, n)
+  {n:int}(xs: list(x, n)):<> list_vt(x, n)
 fun
 <x:type>
 list_quicksort
-  {n:int}(xs: list(x, n)): list(x, n)
+  {n:int}(xs: list(x, n)):<> list_vt(x, n)
 fun
 <x:type>
 list_mergesort
-  {n:int}(xs: list(x, n)): list(x, n)
+  {n:int}(xs: list(x, n)):<> list_vt(x, n)
+//
+fun
+<x:vtype>
+list_sort_vt0
+// based on mergesort
+  {n:int}(xs: list_vt(x, n)):<> list_vt(x, n)
+fun
+<x:vtype>
+list_quicksort_vt0
+  {n:int}(xs: list_vt(x, n)):<> list_vt(x, n)
+fun
+<x:vtype>
+list_mergesort_vt0
+  {n:int}(xs: list_vt(x, n)):<> list_vt(x, n)
 //
 (* ****** ****** *)
 
