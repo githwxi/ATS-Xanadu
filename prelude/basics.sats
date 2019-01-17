@@ -35,6 +35,8 @@
 //
 (* ****** ****** *)
 //
+// predicative sorts
+//
 (*
 abssort int // [int] is built-in
 abssort bool // [bool] is built-in
@@ -46,6 +48,67 @@ abssort real // for handling reals
 abssort float // for handling floats
 abssort string // for handling strings
 *)
+//
+(* ****** ****** *)
+//
+#stacst
+neg_int: (int) -> int
+#stacst
+add_int_int: (int, int) -> int
+#stacst
+sub_int_int: (int, int) -> int
+#stacst
+mul_int_int: (int, int) -> int
+#stacst
+div_int_int: (int, int) -> int
+//
+sexpdef - = neg_int // overloading
+sexpdef + = add_int_int // overloading
+sexpdef - = sub_int_int // overloading
+sexpdef * = mul_int_int // overloading
+sexpdef / = div_int_int // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+lt_int_int: (int, int) -> bool
+#stacst
+gt_int_int: (int, int) -> bool
+//
+#stacst
+lte_int_int: (int, int) -> bool
+#stacst
+gte_int_int: (int, int) -> bool
+//
+#stacst
+eq_int_int: (int, int) -> bool
+#stacst
+neq_int_int: (int, int) -> bool
+//
+sexpdef < = lt_int_int // overloading
+sexpdef > = gt_int_int // overloading
+sexpdef = = eq_int_int // overloading
+//
+sexpdef <= = lte_int_int // overloading
+sexpdef >= = gte_int_int // overloading
+sexpdef != = neq_int_int // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+neg_bool_bool: (bool) -> bool
+#stacst
+add_bool_bool: (bool, bool) -> bool
+#stacst
+mul_bool_bool: (bool, bool) -> bool
+//
+sexpdef ~ = neg_bool // overloading
+sexpdef + = add_bool_bool // overloading
+sexpdef * = mul_bool_bool // overloading
+//
+(* ****** ****** *)
+//
+// impredicative sorts
 //
 (*
 abssort prop // prop: for proofs
@@ -75,9 +138,19 @@ typedef
 uint_k = $extype("xats_uint_t")
 
 typedef
+slint_k = $extype("xats_slint_t")
+typedef
+ulint_k = $extype("xats_ulint_t")
+
+typedef
 ssize_k = $extype("xats_ssize_t")
 typedef
 usize_k = $extype("xats_usize_t")
+
+typedef
+sllint_k = $extype("xats_sllint_t")
+typedef
+ullint_k = $extype("xats_ullint_t")
 
 (* ****** ****** *)
 //
@@ -105,9 +178,19 @@ typedef
 uint = g0int_type(uint_k)
 //
 typedef
+slint = g0int_type(slint_k)
+typedef
+ulint = g0int_type(ulint_k)
+//
+typedef
 ssize = g0int_type(ssize_t)
 typedef
 usize = g0int_type(usize_t)
+//
+typedef
+sllint = g0int_type(sllint_k)
+typedef
+ullint = g0int_type(ullint_k)
 //
 (* ****** ****** *)
 //
@@ -120,9 +203,19 @@ typedef
 uint(i: int) = g1int_type(uint_k, i)
 //
 typedef
+slint(i: int) = g1int_type(slint_k, i)
+typedef
+ulint(i: int) = g1int_type(ulint_k, i)
+//
+typedef
 ssize(i: int) = g1int_type(ssize_k, i)
 typedef
 usize(i: int) = g1int_type(usize_k, i)
+//
+typedef
+sllint(i: int) = g1int_type(sllint_k, i)
+typedef
+ullint(i: int) = g1int_type(ullint_k, i)
 //
 (* ****** ****** *)
 
