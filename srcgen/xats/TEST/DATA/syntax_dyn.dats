@@ -1,6 +1,56 @@
-fun + : (int, int) -> int
+fun
+<a:type>
+foo:
+{n:nat}(a) -> int(n)
 
-val x = 1 + 1
+val x = foo<int>{1}(1)
+
+fun
+bar(x: int): int =
+(
+  x + y
+) where
+{
+  val y = foo(x) + 1
+} endwhere
+
+(*
+fun
+baz:
+$type
+($A.foo<int>) = lam (x) => -x + 1
+*)
+
+(*
+typedef
+append_type =
+{a:type}
+{m,n:int}
+( list(a, m)
+, list(a, n)) => list(a, m+n)
+
+fun
+<a:type>append : append_type(a)
+
+implement
+<a>
+append
+{m,n}(xs, ys) =
+auxlst(xs) where
+{
+fun
+auxlst
+{m:int}
+$type
+(append<x>) =
+lam(xs, ys) =>
+(
+case+ xs of
+| nil() => ys
+| cons(x0, xs) => cons(x0, auxlst(xs, ys))
+)
+}
+*)
 
 ////
 

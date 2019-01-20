@@ -183,9 +183,9 @@ typedef
 ulint = g0int_type(ulint_k)
 //
 typedef
-ssize = g0int_type(ssize_t)
+ssize = g0int_type(ssize_k)
 typedef
-usize = g0int_type(usize_t)
+usize = g0int_type(usize_k)
 //
 typedef
 sllint = g0int_type(sllint_k)

@@ -419,14 +419,92 @@ end // end of [auxstr]
 
 (* ****** ****** *)
 
-(*
 fun
 auxapp1
 ( d1e0
 : d1exp): d2exp = let
+//
+val-
+D1Eapp1
+( d1e1
+, d1e2) = d1e0.node()
+//
 in
+//
+case+
+d1e2.node() of
+//
+| D1Esqarg(s1es) =>
+  let
+    val d2e1 =
+    trans12_dexp(d1e1)
+    val s2es =
+    trans12_sexplst(s1es)
+  in
+    d2exp_sapp(d1e0.loc(), d2e1, s2es)
+  end // end of [D1Esqarg]
+//
+| D1Etqarg(s1es) =>
+  let
+    val d2e1 =
+    trans12_dexp(d1e1)
+    val s2es =
+    trans12_sexplst(s1es)
+  in
+    d2exp_tapp(d1e0.loc(), d2e1, s2es)
+  end // end of [D1Etqarg]
+//
+| _(*rest-of-d1exp*) => auxapp1_0_(d1e0)
+//
 end // end of [auxapp1]
-*)
+
+and
+auxapp1_0_
+( d1e0
+: d1exp): d2exp = let
+//
+val-
+D1Eapp1
+( d1e1
+, d1e2) = d1e0.node()
+//
+val npf =
+(
+case+
+d1e2.node() of
+| D1Elist(d1es, _) =>
+  list_length<d1exp>(d1es)
+| _(* non-D2Elist *) => ~1
+) : int // end of [val]
+//
+val d2e1 = trans12_dexp(d1e1)
+//
+val d2es =
+(
+case+
+d1e2.node() of
+| D1Elist(d1es) =>
+  trans12_dexplst(d1es)
+| D1Elist(d1es1, d1es2) =>
+  (
+    d2es1 + d2es2
+  ) where
+  {
+    val d2es1 = trans12_dexplst(d1es1)
+    val d2es2 = trans12_dexplst(d1es2)
+  }
+| _(* non-D2Elist *) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2) in list_sing(d2e2)
+  end
+) : d2explst // end of [val]
+//
+in
+//
+  d2exp_dapp(d1e0.loc(), d2e1, npf, d2es)
+//
+end // end of [auxapp1_0_]
 
 (* ****** ****** *)
 
@@ -448,6 +526,85 @@ val d2e3 = trans12_dexp(d1e3)
 in
   d2exp_app2(d1e0.loc(), d2e1, d2e2, d2e3)
 end // end of [auxapp2]
+
+(* ****** ****** *)
+
+fun
+auxwhere
+( d1e0
+: d1exp): d2exp = let
+//
+val-
+D1Ewhere
+( d1e1
+, d1cs) = d1e0.node()
+//
+val
+(pf0|()) =
+the_trans12_pushnil()
+//
+val d2cs =
+  trans12_declist(d1cs)
+//
+val d2e1 = trans12_dexp(d1e1)
+//
+val
+((*void*)) =
+the_trans12_popfree(pf0|(*void*))
+//
+in
+  d2exp_where(d1e0.loc(), d2e1, d2cs)
+end // end of [auxwhere]
+
+(* ****** ****** *)
+
+fun
+auxlist1
+( d1e0
+: d1exp): d2exp = let
+//
+val-
+D1Elist(d1es) = d1e0.node()
+//
+in
+//
+if
+list_is_sing(d1es)
+then
+trans12_dexp(d1es.head())
+else
+(
+d2exp_tuple
+(d1e0.loc(), knd, npf, d2es)
+) where
+{
+  val knd = 0
+  val npf = ~1
+  val d2es = trans12_dexplst(d1es)
+}
+//
+end // end of [auxlist1]
+
+fun
+auxlist2
+( d1e0
+: d1exp): d2exp = let
+//
+val-
+D1Elist
+(d1es1, d1es2) = d1e0.node()
+//
+in
+(
+d2exp_tuple
+(d1e0.loc(), knd, npf, d2es1+d2es2)
+) where {
+  val knd = 0
+  val npf = length(d1es1)
+  val d2es1 = trans12_dexplst(d1es1)
+  val d2es2 = trans12_dexplst(d1es2)
+}
+end // end of [auxlist2]
 
 (* ****** ****** *)
 
@@ -475,10 +632,16 @@ d1e0.node() of
 | D1Echr _ => auxchr(d1e0)
 | D1Estr _ => auxstr(d1e0)
 //
-(*
 | D1Eapp1 _ => auxapp1(d1e0)
-*)
 | D1Eapp2 _ => auxapp2(d1e0)
+//
+(*
+| D1Elet _ => auxlet(d1e0)
+*)
+| D1Ewhere _ => auxwhere(d1e0)
+//
+| D1Elist(_) => auxlist1(d1e0)
+| D1Elist(_, _) => auxlist2(d1e0)
 //
 | D1Eanno
   (d1e1, s1e2) => let

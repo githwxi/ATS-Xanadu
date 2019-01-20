@@ -304,10 +304,28 @@ case- x0.node() of
 | D2Econ2(d2cs) =>
   fprint!(out, "D2Econ2(", d2cs, ")")
 //
+| D2Esapp(d2f0, s2as) =>
+  fprint!
+  ( out
+  , "D2Esapp(", d2f0, "; ", s2as, ")")
+| D2Etapp(d2f0, s2as) =>
+  fprint!
+  ( out
+  , "D2Etapp(", d2f0, "; ", s2as, ")")
 | D2Edapp(d2f0, npf0, d2as) =>
   fprint!
   ( out, "D2Edapp("
   , d2f0, "; ", npf0, "; ", d2as, ")")
+//
+| D2Ewhere(d2e1, d2cs) =>
+  fprint!
+  ( out
+  , "D2Ewhere(", d2e1, "; ", d2cs, ")")
+//
+| D2Etuple(knd, npf, d2es) =>
+  fprint!
+  ( out, "D2Etuple("
+  , knd, "; ", npf, "; ", d2es, ")")
 //
 | D2Enone0() =>
   fprint!(out, "D2Enone0(", ")")

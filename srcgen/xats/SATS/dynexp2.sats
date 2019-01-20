@@ -453,7 +453,13 @@ d2exp_node =
 | D2Etapp of (d2exp, s2explst)
 | D2Edapp of (d2exp, int(*npf*), d2explst)
 //
-| D2Eanno of (d2exp, s2exp)
+| D2Ewhere of (d2exp, d2eclist)
+//
+| D2Etuple of
+  (int(*knd*), int(*npf*), d2explst)
+//
+| D2Eanno of
+  (d2exp(*applst*), s2exp(*type*))
 //
 | D2Enone0 of () | D2Enone1 of (d1exp)
 //
@@ -473,23 +479,44 @@ overload .node with d2exp_get_node
 (* ****** ****** *)
 //
 fun
-d2exp_app1
+d2exp_sapp
 ( loc0: loc_t
 , d2f0: d2exp(*fun*)
-, d2a1: d2exp(*arg*)): d2exp
+, s2as: s2explst(*arg*)): d2exp
+fun
+d2exp_tapp
+( loc0: loc_t
+, d2f0: d2exp(*fun*)
+, s2as: s2explst(*arg*)): d2exp
+//
+(* ****** ****** *)
+//
 fun
 d2exp_app2
 ( loc0: loc_t
 , d2f0: d2exp(*fun*)
 , d2a1: d2exp, d2a2: d2exp): d2exp
 //
-(* ****** ****** *)
-//
 fun
 d2exp_dapp
 ( loc0: loc_t
 , d2f0: d2exp(*fun*)
 , npf0: int, d2as: d2explst): d2exp
+//
+(* ****** ****** *)
+//
+fun
+d2exp_where
+( loc0: loc_t
+, d2e1: d2exp
+, d2cs: d2eclist(*where*)): d2exp
+//
+(* ****** ****** *)
+//
+fun
+d2exp_tuple
+( loc0: loc_t, knd: int
+, npf: int, d2es: d2explst): d2exp
 //
 (* ****** ****** *)
 //
