@@ -663,6 +663,7 @@ val-
 S1Eapp1
 (s1e1, s1e2) = s1e0.node()
 //
+(*
 val narg =
 (
 case+
@@ -671,6 +672,7 @@ s1e2.node() of
   list_length<s1exp>(s1es)
 | _(*non-S2Elist*) => 1
 ) : int // end of [val]
+*)
 //
 val
 s2cs =

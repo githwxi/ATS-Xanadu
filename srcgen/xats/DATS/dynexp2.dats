@@ -474,11 +474,19 @@ d2exp_make_node(loc0, D2Ecst2(d2cs))
 (* ****** ****** *)
 //
 implement
-d2exp_dapp
-(loc0, d2f0, npf0, d2as) =
+d2exp_sapp
+(loc0, d2f0, s2as) =
 (
   d2exp_make_node
-  (loc0, D2Edapp(d2f0, npf0, d2as))
+  (loc0, D2Esapp(d2f0, s2as))
+)
+//
+implement
+d2exp_tapp
+(loc0, d2f0, s2as) =
+(
+d2exp_make_node
+(loc0, D2Etapp(d2f0, s2as))
 )
 //
 (* ****** ****** *)
@@ -491,9 +499,37 @@ d2exp_app2
   (loc0, d2f0, npf0, d2as)
 ) where
 {
-  val npf0 = 0
-  val d2as = list_pair(d2a1, d2a2)
+val npf0 = 0
+val d2as = list_pair(d2a1, d2a2)
 }
+//
+implement
+d2exp_dapp
+(loc0, d2f0, npf0, d2as) =
+(
+d2exp_make_node
+(loc0, D2Edapp(d2f0, npf0, d2as))
+)
+//
+(* ****** ****** *)
+//
+implement
+d2exp_where
+(loc0, d2e1, d2cs) =
+(
+  d2exp_make_node
+  (loc0, D2Ewhere(d2e1, d2cs))
+)
+//
+(* ****** ****** *)
+//
+implement
+d2exp_tuple
+(loc0, knd, npf, d2es) =
+(
+  d2exp_make_node
+  (loc0, D2Etuple(knd, npf, d2es))
+)
 //
 (* ****** ****** *)
 
