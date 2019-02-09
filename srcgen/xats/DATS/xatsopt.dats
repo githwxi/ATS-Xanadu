@@ -1285,11 +1285,11 @@ the_fixity_load
   val fpath =
   $FIL.filepath_make(given, given, fname)  
   }
+//
   val d0cs = let
     val
     opt =
     fileref_open_opt(fname, file_mode_r)
-
   in
     case+ opt of
     | ~None_vt() => list_nil()
@@ -1303,6 +1303,7 @@ the_fixity_load
         val ((*void*)) = fileref_close(filr)
       }
    end : d0eclist // end of [val]
+//
   val
   ((*popped*)) =
   $FIL.the_filepathlst_pout(pf0 | (*none*))
@@ -1327,6 +1328,74 @@ in
 end // end of [the_fixity_load]
 
 (* ****** ****** *)
+//
+extern
+fun
+the_pervasive_load
+(
+XATSHOME: string, given: string
+) : void =
+  "ext#libxatsopt_the_pervasive_load"
+//
+implement
+the_pervasive_load
+(XATSHOME, given) =
+{
+//
+val () =
+(
+println!
+("pervasive_load: given = ", given)
+) (* end of [val] *)
+//
+val fname =
+$FIL.filepath_dirbase(XATSHOME, given)
+//
+  val
+  (pf0 | ()) =
+  (
+    $FIL.the_filepathlst_push(fpath)
+  ) where
+  {
+  val fpath =
+  $FIL.filepath_make(given, given, fname)  
+  }
+//
+  val d0cs = let
+    val
+    opt =
+    fileref_open_opt(fname, file_mode_r)
+  in
+    case+ opt of
+    | ~None_vt() => list_nil()
+    | ~Some_vt(filr) => d0cs where
+      {
+        val d0cs =
+        parse_from_fileref_toplevel
+        (
+          0(*static*), filr(*input*)
+        )
+        val ((*void*)) = fileref_close(filr)
+      }
+   end : d0eclist // end of [val]
+//
+  val
+  ((*popped*)) =
+  $FIL.the_filepathlst_pout(pf0 | (*none*))
+//
+  val d1cs = trans01_declist(d0cs)
+//
+  val
+  (pf0 | ()) =
+  the_trans12_pushnil((*void*))
+  val d2cs = trans12_declist(d1cs)
+  val
+  ((*joined*)) =
+  the_trans12_pjoinwth0(pf0 | (*none*))
+//
+} (* the_pervasive_load *)
+//
+(* ****** ****** *)
 
 implement
 the_prelude_load
@@ -1335,6 +1404,10 @@ the_prelude_load
 //
 val () =
 the_fixity_load(XATSHOME)
+//
+val () =
+the_pervasive_load
+  (XATSHOME, "prelude/basics.sats")
 //
 (*
 val () =

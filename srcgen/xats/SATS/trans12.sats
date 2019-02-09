@@ -388,6 +388,11 @@ the_sexpenv_locjoin
 , pf2: sexpenv_v | (*none*)
 ) : void // end of [the_sexpenv_locjoin]
 //
+fun // p: pervasive
+the_sexpenv_pjoinwth0(map: s2imap): void
+fun // p: pervasive
+the_sexpenv_pjoinwth1(map: !s2imap): void
+//
 (* ****** ****** *)
 //
 fun
@@ -540,6 +545,11 @@ the_dexpenv_locjoin
 ( pf1: dexpenv_v
 , pf2: dexpenv_v | (*none*)): void
 //
+fun // p: pervasive
+the_dexpenv_pjoinwth0(map: d2imap): void
+fun // p: pervasive
+the_dexpenv_pjoinwth1(map: !d2imap): void
+//
 (* ****** ****** *)
 //
 fun
@@ -565,6 +575,12 @@ fun
 the_trans12_locjoin
 ( pf1: trans12_v
 , pf2: trans12_v | (*none*)): void
+//
+(* ****** ****** *)
+//
+fun
+the_trans12_pjoinwth0
+(pf0: trans12_v | (*none*)): (void)
 //
 (* ****** ****** *)
 //

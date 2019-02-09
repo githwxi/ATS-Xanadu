@@ -635,6 +635,21 @@ the_sexpenv_locjoin
 (* ****** ****** *)
 
 implement
+the_sexpenv_pjoinwth0(map) = let
+  prval
+  vbox(pf) = pfbox in
+  $effmask_ref($ENV.symenv_pjoinwth0(!p0, map))
+end // end of [the_sexpenv_pjoinwth0]
+implement
+the_sexpenv_pjoinwth1(map) = let
+  prval
+  vbox(pf) = pfbox in
+  $effmask_ref($ENV.symenv_pjoinwth1(!p0, map))
+end // end of [the_sexpenv_pjoinwth1]
+
+(* ****** ****** *)
+
+implement
 the_sexpenv_fprint
   (out) = let
 //
@@ -961,6 +976,21 @@ the_dexpenv_locjoin
 (* ****** ****** *)
 
 implement
+the_dexpenv_pjoinwth0(map) = let
+  prval
+  vbox(pf) = pfbox in
+  $effmask_ref($ENV.symenv_pjoinwth0(!p0, map))
+end // end of [the_dexpenv_pjoinwth0]
+implement
+the_dexpenv_pjoinwth1(map) = let
+  prval
+  vbox(pf) = pfbox in
+  $effmask_ref($ENV.symenv_pjoinwth1(!p0, map))
+end // end of [the_dexpenv_pjoinwth1]
+
+(* ****** ****** *)
+
+implement
 the_dexpenv_fprint
   (out) = let
 //
@@ -1071,6 +1101,41 @@ the_dexpenv_locjoin
 end // end of [local]
 //
 } // end of [the_trans12_locjoin]
+
+(* ****** ****** *)
+
+implement
+the_trans12_pjoinwth0
+  (pf0 | (*none*)) =
+{
+//
+  prval unit_v() = pf0
+//
+local
+extern
+prfun _assert_{vw:view}(): vw
+in // in-of-local
+//
+  val m0 =
+  the_sortenv_pop
+  (_assert_() | (*none*))
+  val () = the_sortenv_pjoinwth0(m0)
+//
+  val m1 =
+  the_sexpenv_pop
+  (_assert_() | (*none*))
+  val () = the_sexpenv_pjoinwth0(m1)
+//
+  val m2 =
+  the_dexpenv_pop
+  (_assert_() | (*none*))
+  val () = the_dexpenv_pjoinwth0(m2)
+//
+end // end of [local]
+//
+} (* end of [the_trans12_pjoinwth0] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 

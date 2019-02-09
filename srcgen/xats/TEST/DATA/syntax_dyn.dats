@@ -1,3 +1,5 @@
+typedef int(i:int) = sint(i)
+////
 fun
 <a:type>
 foo:
