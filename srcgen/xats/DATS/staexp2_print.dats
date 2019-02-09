@@ -415,8 +415,13 @@ s2e0.node() of
 //
 | S2Ecast(loc, s2e, s2t) =>
   fprint!
+  ( out
+  , "S2Ecast(", s2e, "; ", s2t, ")")
+(*
+  fprint!
   ( out, "S2Ecast("
   , loc, "; ", s2e, "; ", s2t, ")")
+*)
 //
 | S2Euni
   (s2vs, s2ps, body) =>
