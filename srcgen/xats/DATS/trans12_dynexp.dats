@@ -151,6 +151,58 @@ in
   d2pat_make_node(loc0, D2Pnone1(d1p0))
 end // end of [auxid_some]
 
+(* ****** ****** *)
+
+fun
+auxlist1
+( d1p0
+: d1pat): d2pat = let
+//
+val-
+D1Plist(d1ps) = d1p0.node()
+//
+in
+//
+if
+list_is_sing(d1ps)
+then
+trans12_dpat(d1ps.head())
+else
+(
+d2pat_tuple
+(d1p0.loc(), knd, npf, d2ps)
+) where
+{
+  val knd = 0
+  val npf = ~1
+  val d2ps = trans12_dpatlst(d1ps)
+}
+//
+end // end of [auxlist1]
+
+fun
+auxlist2
+( d1p0
+: d1pat): d2pat = let
+//
+val-
+D1Plist
+(d1ps1, d1ps2) = d1p0.node()
+//
+in
+(
+d2pat_tuple
+(d1p0.loc(), knd, npf, d2ps1+d2ps2)
+) where {
+  val knd = 0
+  val npf = length(d1ps1)
+  val d2ps1 = trans12_dpatlst(d1ps1)
+  val d2ps2 = trans12_dpatlst(d1ps2)
+}
+end // end of [auxlist2]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -171,11 +223,52 @@ d1p0.node() of
 //
 | D1Pid _ => auxid(d1p0)
 //
+| D1Plist
+  (d1ps) => auxlist1(d1p0)
+| D1Plist
+  (xs1, xs2) => auxlist2(d1p0)
+//
+| D1Panno
+  (d1p1, s1e2) =>
+  (
+    d2pat_make_node
+    (loc0, D2Panno(d2p1, s2e2))
+  ) where
+  {
+    val d2p1 = trans12_dpat(d1p1)
+    val s2e2 = trans12_sexp(s1e2)
+  } (* end of [D1Panno] *)
+//
 | _(*rest-of-d1pat*) => d2pat_none1(d1p0)
-
+//
+(*
+| _(*rest-of-D1PAT*) =>
+  (
+    exit_errmsg
+    (1, "trans12_dpat: yet-to-be-implemented!\n")
+  )
+*)
+//
 end // end of [trans12_dpat]
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans12_dpatlst
+  (d1ps) =
+list_vt2t(d2ps) where
+{
+val
+d2ps =
+list_map<d1pat><d2pat>
+  (d1ps) where
+{
+implement
+list_map$fopr<d1pat><d2pat> = trans12_dpat
+}
+} (* end of [trans12_dpatlst] *)
 
 (* ****** ****** *)
 
@@ -190,36 +283,44 @@ val-
 F1ARGsome_dyn
   (d1p0) = f1a0.node()
 //
+var
+npf :
+int = (~1)
+//
 val
-d2p0 = trans12_dpat(d1p0)
+d2ps =
+(
+case+
+d1p0.node() of
+| D1Plist
+  (xs1) =>
+  (
+    trans12_dpatlst(xs1)
+  )
+| D1Plist
+  (xs1, xs2) =>
+  (
+    npf := length(xs1); ys1 + ys2
+  ) where
+  {
+    val ys1 = trans12_dpatlst(xs1)
+    val ys2 = trans12_dpatlst(xs2)
+  }
+| _(*non-D1Plist*) =>
+  (
+    list_sing(trans12_dpat(d1p0))
+  )
+) : d2patlst // end-of-val
 //
 val () =
-the_trans12_add_pat(d2p0)
+the_trans12_add_patlst(d2ps)
 //
 in
 //
 f2arg_make_node
-(f1a0.loc(), F2ARGsome_dyn(d2p0))
+(f1a0.loc(), F2ARGsome_dyn(npf, d2ps))
 //
 end // end of [auxdyn]
-
-fun
-auxmet
-( f1a0
-: f1arg): f2arg = let
-//
-val-
-F1ARGsome_met
-  (s1es) = f1a0.node((*void*))
-//
-val s2es = trans12_sexplst(s1es)
-//
-in
-//
-f2arg_make_node
-(f1a0.loc(), F2ARGsome_met(s2es))
-//
-end // end of [auxmet]
 
 fun
 auxsta
@@ -248,6 +349,24 @@ f2arg_make_node
 (f1a0.loc(), F2ARGsome_sta(s2vs, s2ps))
 //
 end // end of [auxsta]
+
+fun
+auxmet
+( f1a0
+: f1arg): f2arg = let
+//
+val-
+F1ARGsome_met
+  (s1es) = f1a0.node((*void*))
+//
+val s2es = trans12_sexplst(s1es)
+//
+in
+//
+f2arg_make_node
+(f1a0.loc(), F2ARGsome_met(s2es))
+//
+end // end of [auxmet]
 
 in (* in-of-local *)
 
@@ -644,14 +763,17 @@ d1e0.node() of
 | D1Elist(_, _) => auxlist2(d1e0)
 //
 | D1Eanno
-  (d1e1, s1e2) => let
+  (d1e1, s1e2) =>
+  (
+    d2exp_make_node
+    (loc0, D2Eanno(d2e1, s2e2))
+  ) where
+  {
     val d2e1 = trans12_dexp(d1e1)
     val s2e2 = trans12_sexp(s1e2)
-  in
-    d2exp_make_node(loc0, D2Eanno(d2e1, s2e2))
-  end // end of [D1Eanno]
+  } (* end of [D1Eanno] *)
 //
-| _(*rest-of-s1exp*) => d2exp_none1(d1e0)
+| _(*rest-of-d1exp*) => d2exp_none1(d1e0)
 //
 (*
 | _(*rest-of-D1EXP*) =>
@@ -1068,6 +1190,12 @@ end // end of [aux_abstype]
 fun
 aux_valdecl
 ( d1c0
+: d1ecl): d2ecl =
+aux_valdecl_nrc(d1c0)
+
+and
+aux_valdecl_nrc
+( d1c0
 : d1ecl): d2ecl = let
 //
 val
@@ -1141,6 +1269,12 @@ list_map$fopr<v1aldecl><v2aldecl>(x) = auxv1d0(x)
 fun
 aux_fundecl
 ( d1c0
+: d1ecl): d2ecl =
+aux_fundecl_rec(d1c0)
+
+and
+aux_fundecl_rec
+( d1c0
 : d1ecl): d2ecl = let
 //
 val
@@ -1149,7 +1283,8 @@ val-
 D1Cfundecl
 ( knd
 , mopt
-, tqas, f1ds) = d1c0.node()
+, tqas
+, f1ds) = d1c0.node()
 //
 val
 tqas =
@@ -1191,7 +1326,7 @@ the_sexpenv_popfree(pf0|(*void*))
 //
 in
   d2ecl_make_node
-  (loc0, D2Cfundecl(knd, mopt, f2ds))
+  (loc0, D2Cfundecl(knd, mopt, tqas, f2ds))
 end where
 {
 //

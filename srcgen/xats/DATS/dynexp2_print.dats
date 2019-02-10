@@ -224,10 +224,10 @@ x0.node() of
 | F2ARGnone(tok) =>
   fprint!(out, "F2ARGnone(", tok, ")")
 *)
-| F2ARGsome_dyn(d2p0) =>
-  fprint!(out, "F2ARGsome_dyn(", d2p0, ")")
 | F2ARGsome_met(s2es) =>
   fprint!(out, "F2ARGsome_met(", s2es, ")")
+| F2ARGsome_dyn(npf, d2ps) =>
+  fprint!(out, "F2ARGsome_dyn(", npf, "; ", d2ps, ")")
 | F2ARGsome_sta(s2vs, s2ps) =>
   fprint!(out, "F2ARGsome_sta(", s2vs, "; ", s2ps, ")")
 //
@@ -254,6 +254,15 @@ case- x0.node() of
 //
 | D2Pvar(d2v) =>
   fprint!(out, "D2Pvar(", d2v, ")")
+//
+| D2Ptuple(knd, npf, d2ps) =>
+  fprint!
+  ( out, "D2Ptuple("
+  , knd, "; ", npf, "; ", d2ps, ")")
+//
+| D2Panno(d2p1, s2e2) =>
+  fprint!
+  (out, "D2Panno(", d2p1, "; ", s2e2, ")")
 //
 | D2Pnone0() =>
   fprint!(out, "D2Pnone0(", ")")
@@ -304,28 +313,37 @@ case- x0.node() of
 | D2Econ2(d2cs) =>
   fprint!(out, "D2Econ2(", d2cs, ")")
 //
-| D2Esapp(d2f0, s2as) =>
+| D2Esapp
+  (d2f0, s2as) =>
   fprint!
   ( out
   , "D2Esapp(", d2f0, "; ", s2as, ")")
-| D2Etapp(d2f0, s2as) =>
+| D2Etapp
+  (d2f0, s2as) =>
   fprint!
   ( out
   , "D2Etapp(", d2f0, "; ", s2as, ")")
-| D2Edapp(d2f0, npf0, d2as) =>
+| D2Edapp
+  (d2f0, npf0, d2as) =>
   fprint!
   ( out, "D2Edapp("
   , d2f0, "; ", npf0, "; ", d2as, ")")
 //
-| D2Ewhere(d2e1, d2cs) =>
+| D2Ewhere
+  (d2e1, d2cs) =>
   fprint!
   ( out
   , "D2Ewhere(", d2e1, "; ", d2cs, ")")
 //
-| D2Etuple(knd, npf, d2es) =>
+| D2Etuple
+  (knd, npf, d2es) =>
   fprint!
   ( out, "D2Etuple("
   , knd, "; ", npf, "; ", d2es, ")")
+//
+| D2Eanno(d2e1, s2e2) =>
+  fprint!
+  (out, "D2Eanno(", d2e1, "; ", s2e2, ")")
 //
 | D2Enone0() =>
   fprint!(out, "D2Enone0(", ")")
@@ -378,11 +396,15 @@ case- x0.node() of
 | D2Cvaldecl
   (knd, mopt, v2ds) =>
   fprint!
-  (out, "D2Cvaldecl(", knd, "; ", mopt, "; ", v2ds)
+  ( out
+  , "D2Cvaldecl("
+  , knd, "; ", mopt, "; ", v2ds)
 | D2Cfundecl
-  (knd, mopt, f2ds) =>
+  (knd, mopt, tqas, f2ds) =>
   fprint!
-  (out, "D2Cfundecl(", knd, "; ", mopt, "; ", f2ds)
+  ( out
+  , "D2Cfundecl("
+  , knd, "; ", mopt, "; ", tqas, "; ", f2ds)
 //
 | D2Cdatasort(d1c) =>
   fprint!(out, "D2Cdatasort(", d1c, ")")
@@ -390,7 +412,8 @@ case- x0.node() of
   fprint!(out, "D2Cdatatype(", d1c, ")")
 //
 | D2Cdynconst(knd, tqas, d2cs) =>
-  fprint!(out, "D2Cdcstdecl(", knd, "; ", tqas, "; ", d2cs)
+  fprint!
+  (out, "D2Cdcstdecl(", knd, "; ", tqas, "; ", d2cs)
 //
 | D2Clocal(d2cs1, d2cs2) =>
   fprint!

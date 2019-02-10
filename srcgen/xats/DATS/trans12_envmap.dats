@@ -1193,6 +1193,37 @@ end // end of [local]
 
 implement
 the_trans12_pjoinwth0
+  (pf0 | (*void*)) =
+{
+//
+  prval unit_v() = pf0
+//
+local
+extern
+prfun _assert_{vw:view}(): vw
+in // in-of-local
+//
+  val m0 =
+  the_sortenv_pop
+  (_assert_() | (*none*))
+  val () = the_sortenv_pjoinwth0(m0)
+//
+  val m1 =
+  the_sexpenv_pop
+  (_assert_() | (*none*))
+  val () = the_sexpenv_pjoinwth0(m1)
+//
+  val m2 =
+  the_dexpenv_pop
+  (_assert_() | (*none*))
+  val () = the_dexpenv_pjoinwth0(m2)
+//
+end // end of [local]
+//
+} (* end of [the_trans12_pjoinwth0] *)
+
+implement
+the_trans12_pjoinwth1
   (pf0 | fp0, d2cs) =
 {
 //
@@ -1226,7 +1257,7 @@ in // in-of-local
 //
 end // end of [local]
 //
-} (* end of [the_trans12_pjoinwth0] *)
+} (* end of [the_trans12_pjoinwth1] *)
 
 (* ****** ****** *)
 

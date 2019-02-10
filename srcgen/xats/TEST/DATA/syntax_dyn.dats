@@ -1,4 +1,26 @@
 fun
+<i:nat>
+fact
+(x:int(i), y): int =
+if x > 0 then x * fact(x-1) else 1
+////
+val
+x = 1
+
+fun
+fact(x) =
+if x > 0 then x * fact(x-1) else 1
+////
+val:
+(rec
+,prf)
+fact =
+lam(x) =>
+if x > 0 then x * fact(x-1) else 1
+
+////
+
+fun
 <a:type>
 foo:
 {n:nat}(a) -> int(n)

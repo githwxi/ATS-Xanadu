@@ -403,6 +403,11 @@ the_sexpenv_println((*void*)): void
 (* ****** ****** *)
 //
 fun
+s2cst_select_any
+( s2cs
+: s2cstlst): Option_vt(s2cst)
+//
+fun
 s2cst_select_bin
 ( s2cs
 : s2cstlst
@@ -590,6 +595,9 @@ the_trans12_locjoin
 //
 fun
 the_trans12_pjoinwth0
+( pf0: trans12_v | (*void*)): (void)
+fun
+the_trans12_pjoinwth1
 ( pf0: trans12_v
 | fp0: fpath, d2cs: d2eclist): (void)
 //

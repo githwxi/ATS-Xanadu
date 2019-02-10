@@ -41,20 +41,20 @@ for common use; it is reserved for experts or developers of ATS.
 
 Datasorts
 
-A datasort is a user-defined sort. Declaring a datasort is like
-declaring a datatype in an ML-like language. In the following example,
-a datasort ilist is introduced via a datasort-declaration:
+A datasort is a user-defined sort. Declaring a datasort
+is like declaring a datatype in an ML-like language. For instance,
+a datasort list is introduced via a datasort-declaration:
 
-datasort ilist =
-  | ilist_nil of ()
-  | ilist_cons of (int, ilist)
+datasort list =
+  | list_nil of ()
+  | list_cons of (int, list)
 // end of [datasort]
 
-There are two data constructors associated ilist: ilist_nil and
-ilist_cons, which are assigned the following functional sorts:
+There are two data constructors associated list: list_nil and
+list_cons, which are assigned the following functional sorts:
 
-ilist_nil: () -> ilist
-ilist_cons : (int, ilist) -> ilist
+list_nil: () -> list
+list_cons : (int, list) -> list
 
 ########################
 

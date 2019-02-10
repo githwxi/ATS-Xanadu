@@ -107,6 +107,12 @@ sexpdef + = add_bool_bool // overloading
 sexpdef * = mul_bool_bool // overloading
 //
 (* ****** ****** *)
+
+sortdef nat = {a:int | a >= 0}
+sortdef pos = {a:int | a >= 1}
+sortdef neg = {a:int | a <= -1}
+
+(* ****** ****** *)
 //
 // impredicative sorts
 //
@@ -219,19 +225,19 @@ ullint(i: int) = g1int_type(ullint_k, i)
 //
 (* ****** ****** *)
 
-typedef
-sintlt(n) = [i:int | i < n] sint(i)
-typedef
-sintgt(n) = [i:int | i > n] sint(i)
-typedef
-sintlte(n) = [i:int | i <= n] sint(i)
-typedef
-sintgte(n) = [i:int | i >= n] sint(i)
+typedef int = sint
+typedef int(i:int) = sint(i)
 
 (* ****** ****** *)
 
-typedef int = sint
-typedef int(i:int) = sint(int)
+typedef
+sintlt(n:int) = [i:int | i < n] sint(i)
+typedef
+sintgt(n:int) = [i:int | i > n] sint(i)
+typedef
+sintlte(n:int) = [i:int | i <= n] sint(i)
+typedef
+sintgte(n:int) = [i:int | i >= n] sint(i)
 
 (* ****** ****** *)
 
@@ -241,7 +247,6 @@ typedef nsize = [i:int | i >= 0] ssize(i)
 typedef nllint = [i:int | i >= 0] sllint(i)
 
 (* ****** ****** *)
-
 //
 // HX-2018-10-01:
 //

@@ -387,8 +387,16 @@ s2e0.node() of
 //
 | S2Ecst(s2c) =>
   fprint!(out, "S2Ecst(", s2c, ")")
+(*
+  fprint!
+  (out, "S2Ecst(", s2c, "; ", s2c.sort(), ")")
+*)
 | S2Evar(s2v) =>
   fprint!(out, "S2Evar(", s2v, ")")
+(*
+  fprint!
+  (out, "S2Evar(", s2v, "; ", s2v.sort(), ")")
+*)
 //
 | S2Eapp
   (s2fn, s2es) =>

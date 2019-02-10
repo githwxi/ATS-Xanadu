@@ -111,12 +111,12 @@ the_nmspace_top
 
 implement
 the_nmspace_ins
-  (nmi) = () where
+  (x0) = () where
 {
   val
   (vbox pf | p) =
   ref_get_viewptr(the_nmitmlst)
-  val () = !p := list_vt_cons(nmi, !p)
+  val () = !p := list_vt_cons(x0, !p)
 } // end of [the_nmspace_ins]
 
 (* ****** ****** *)
@@ -135,15 +135,15 @@ auxlst
 , xs: !nmitmlst_vt
 ) : Option_vt(a) =
 (
-  case+ xs of
-  | list_vt_nil
-      () => None_vt()
-  | list_vt_cons
-      (x0, xs) =>
-    (
-      case+ f0(x0) of
-      | ~None_vt () => auxlst(f0, xs) | ans => ans
-    ) // end of [list_cons]
+case+ xs of
+| list_vt_nil
+    () => None_vt()
+| list_vt_cons
+    (x0, xs) =>
+  (
+    case+ f0(x0) of
+    | ~None_vt () => auxlst(f0, xs) | ans => ans
+  ) // end of [list_cons]
 ) (* end of [auxlst] *)
 //
 fun
@@ -152,16 +152,16 @@ auxlst2
 , xss: !nmitmlst2_vt
 ) : Option_vt(a) =
 (
-  case+ xss of
-  | list_vt_nil
-      () => None_vt()
-  | list_vt_cons
-      (xs0, xss) =>
-    (
-      case+
-      auxlst(f0, xs0) of
-      | ~None_vt () => auxlst2(f0, xss) | ans => ans
-    ) // end of [list_cons]
+case+ xss of
+| list_vt_nil
+    () => None_vt()
+| list_vt_cons
+    (xs0, xss) =>
+  (
+    case+
+    auxlst(f0, xs0) of
+    | ~None_vt () => auxlst2(f0, xss) | ans => ans
+  ) // end of [list_cons]
 ) (* end of [auxlst2] *)
 //
 val ans = ans where
