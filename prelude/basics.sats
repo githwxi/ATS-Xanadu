@@ -38,73 +38,111 @@
 // predicative sorts
 //
 (*
-abssort int // [int] is built-in
-abssort bool // [bool] is built-in
-abssort char // [char] is built-in
+abssort int
+// [int] is built-in
+abssort bool
+// [bool] is built-in
+abssort char
+// [char] is built-in
 *)
+//
+(* ****** ****** *)
 //
 (*
-abssort real // for handling reals
-abssort float // for handling floats
-abssort string // for handling strings
+abssort real
+// for handling reals
+abssort float
+// for handling floats
+abssort string
+// for handling strings
 *)
 //
 (* ****** ****** *)
 //
-#stacst
-neg_int: (int) -> int
-#stacst
-add_int_int: (int, int) -> int
-#stacst
-sub_int_int: (int, int) -> int
-#stacst
-mul_int_int: (int, int) -> int
-#stacst
-div_int_int: (int, int) -> int
+sortdef i0 = int
+sortdef b0 = bool
+sortdef c0 = char
 //
-sexpdef - = neg_int // overloading
-sexpdef + = add_int_int // overloading
-sexpdef - = sub_int_int // overloading
-sexpdef * = mul_int_int // overloading
-sexpdef / = div_int_int // overloading
+sortdef p0 = prop
+sortdef v0 = view
+sortdef t0 = type
+sortdef x0 = tbox
+sortdef vt = vtype
+sortdef vx = vtbox
 //
 (* ****** ****** *)
 //
 #stacst
-lt_int_int: (int, int) -> bool
+cast_b0_i0:
+bool -> int // t->1/f->0
 #stacst
-gt_int_int: (int, int) -> bool
+cast_i0_b0:
+(int) -> bool // !0->t/=0->f
 //
-#stacst
-lte_int_int: (int, int) -> bool
-#stacst
-gte_int_int: (int, int) -> bool
+sexpdef b2i = cast_b0_i0
+sexpdef i2b = cast_i0_b0
 //
-#stacst
-eq_int_int: (int, int) -> bool
-#stacst
-neq_int_int: (int, int) -> bool
+(* ****** ****** *)
 //
-sexpdef < = lt_int_int // overloading
-sexpdef > = gt_int_int // overloading
-sexpdef = = eq_int_int // overloading
-//
-sexpdef <= = lte_int_int // overloading
-sexpdef >= = gte_int_int // overloading
-sexpdef != = neq_int_int // overloading
+#stacst tt : bool // true
+#stacst ff : bool // false
 //
 (* ****** ****** *)
 //
 #stacst
-neg_bool_bool: (bool) -> bool
+neg_i0: (int) -> int
 #stacst
-add_bool_bool: (bool, bool) -> bool
+add_i0_i0: (int, int) -> int
 #stacst
-mul_bool_bool: (bool, bool) -> bool
+sub_i0_i0: (int, int) -> int
+#stacst
+mul_i0_i0: (int, int) -> int
+#stacst
+div_i0_i0: (int, int) -> int
 //
-sexpdef ~ = neg_bool // overloading
-sexpdef + = add_bool_bool // overloading
-sexpdef * = mul_bool_bool // overloading
+sexpdef - = neg_i0 // overloading
+sexpdef + = add_i0_i0 // overloading
+sexpdef - = sub_i0_i0 // overloading
+sexpdef * = mul_i0_i0 // overloading
+sexpdef / = div_i0_i0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+lt_i0_i0: (int, int) -> bool
+#stacst
+gt_i0_i0: (int, int) -> bool
+//
+#stacst
+lte_i0_i0: (int, int) -> bool
+#stacst
+gte_i0_i0: (int, int) -> bool
+//
+#stacst
+eq_i0_i0: (int, int) -> bool
+#stacst
+neq_i0_i0: (int, int) -> bool
+//
+sexpdef < = lt_i0_i0 // overloading
+sexpdef > = gt_i0_i0 // overloading
+sexpdef = = eq_i0_i0 // overloading
+//
+sexpdef <= = lte_i0_i0 // overloading
+sexpdef >= = gte_i0_i0 // overloading
+sexpdef != = neq_i0_i0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+neg_b0_b0: (bool) -> bool
+#stacst
+add_b0_b0: (bool, bool) -> bool
+#stacst
+mul_b0_b0: (bool, bool) -> bool
+//
+sexpdef ~ = neg_b0 // overloading
+sexpdef + = add_b0_b0 // overloading
+sexpdef * = mul_b0_b0 // overloading
 //
 (* ****** ****** *)
 
@@ -166,12 +204,14 @@ abstype
 bool1_type(bool) <= bool_k
 //
 typedef
-bool0 = bool0_type
+bool = bool0_type
 typedef
-bool1(b: bool) = bool1_type(b)
+bool(b:bool) = bool1_type(b)
 //
-sexpdef bool = bool0
-sexpdef bool = bool1
+typedef
+true = bool(tt) // singleton
+typedef
+false = bool(ff) // singleton
 //
 (* ****** ****** *)
 //
@@ -204,29 +244,40 @@ abstype
 g1int_type(a:type, int) <= a
 //
 typedef
-sint(i: int) = g1int_type(sint_k, i)
+sint(i:int) = g1int_type(sint_k, i)
 typedef
-uint(i: int) = g1int_type(uint_k, i)
+uint(i:int) = g1int_type(uint_k, i)
 //
 typedef
-slint(i: int) = g1int_type(slint_k, i)
+slint(i:int) = g1int_type(slint_k, i)
 typedef
-ulint(i: int) = g1int_type(ulint_k, i)
+ulint(i:int) = g1int_type(ulint_k, i)
 //
 typedef
-ssize(i: int) = g1int_type(ssize_k, i)
+ssize(i:int) = g1int_type(ssize_k, i)
 typedef
-usize(i: int) = g1int_type(usize_k, i)
+usize(i:int) = g1int_type(usize_k, i)
 //
 typedef
-sllint(i: int) = g1int_type(sllint_k, i)
+sllint(i:int) = g1int_type(sllint_k, i)
 typedef
-ullint(i: int) = g1int_type(ullint_k, i)
+ullint(i:int) = g1int_type(ullint_k, i)
 //
 (* ****** ****** *)
 
 typedef int = sint
 typedef int(i:int) = sint(i)
+
+(* ****** ****** *)
+
+typedef
+nint = [i:int | i >= 0] sint(i)
+typedef
+nlint = [i:int | i >= 0] slint(i)
+typedef
+nsize = [i:int | i >= 0] ssize(i)
+typedef
+nllint = [i:int | i >= 0] sllint(i)
 
 (* ****** ****** *)
 
@@ -240,42 +291,78 @@ typedef
 sintgte(n:int) = [i:int | i >= n] sint(i)
 
 (* ****** ****** *)
-
-typedef nint = [i:int | i >= 0] sint(i)
-typedef nlint = [i:int | i >= 0] slint(i)
-typedef nsize = [i:int | i >= 0] ssize(i)
-typedef nllint = [i:int | i >= 0] sllint(i)
-
+//
+datatype
+optn_t0_i0_x0
+(
+  a:type+, int(*0/1*)
+) =
+  | optn_nil(a, 0) of ()
+  | optn_cons(a, 1) of (a)
+//
+// end of [optn_t0_i0_tbox]
+//
+datatype
+optn_vt_i0_vx
+(
+  a:vtype+, int(*0/1*)
+) =
+  | optn_vt_nil(a, 0) of ()
+  | optn_vt_cons(a, 1) of (a)
+//
+// end of [optn_vt_i0_vx]
+//
+(* ****** ****** *)
+//
+sexpdef optn = optn_t0_i0_x0
+sexpdef optn_vt = optn_vt_i0_vx
+//
+(* ****** ****** *)
+//
+typedef
+optn
+(a:type) = [n:int] optn(a, n)
+//
+(* ****** ****** *)
+//
+typedef
+optn_vt
+(a:vtype) = [n:int] optn_vt(a, n)
+//
 (* ****** ****** *)
 //
 // HX-2018-10-01:
 //
 datatype
-list_type_int_tbox
-  (a:type+, int) =
+list_t0_i0_x0
+(
+  a:type+, int(*len*)
+) =
 //
-// type+: covariant
+  | list_nil(a, 0)
 //
-| list_nil(a, 0) of ()
-| {n:int | n >= 0}
-  list_cons(a, n+1) of
-  (a, list_type_int_tbox(a, n))
-// end of [list_type_int_tbox]
+  | {n:int | n >= 0}
+    list_cons(a, n+1) of (a, list_t0_i0_x0(a, n))
+//
+// end of [list_t0_i0_x0]
 //
 datavtype
-list_vtype_int_vtbox
-  (a:vtype+, int) =
+list_vt_i0_vx
+(
+  a:vtype+, int(*len*)
+) =
 //
-// type+: covariant
+  | list_vt_nil(a, 0)
 //
-| list_vt_nil(a, 0) of ()
-| {n:int | n >= 0}
-  list_vt_cons(a, n+1) of
-  (a, list_vtype_int_vtbox(a, n))
-// end of [list_vtype_int_vtbox]
+  | {n:int | n >= 0}
+    list_vt_cons(a, n+1) of (a, list_vt_i0_vx(a, n))
 //
-sexpdef list = list_type_int_tbox
-sexpdef list_vt = list_vtype_int_vtbox
+// end of [list_vt_i0_vx]
+//
+(* ****** ****** *)
+//
+sexpdef list = list_t0_i0_x0
+sexpdef list_vt = list_vt_i0_vx
 //
 (* ****** ****** *)
 //
@@ -291,10 +378,12 @@ typedef listlt
   (a:type, n:int) = [k:nat | k < n] list(a, k)
 typedef listgt
   (a:type, n:int) = [k:int | k > n] list(a, k)
+//
 typedef listlte
   (a:type, n:int) = [k:nat | k <= n] list(a, k)
 typedef listgte
   (a:type, n:int) = [k:int | k >= n] list(a, k)
+//
 typedef listbtw
   (a:type, m:int, n:int) = [k:int | m <= k; k < n] list(a, k)
 typedef listbtwe
@@ -303,25 +392,26 @@ typedef listbtwe
 (* ****** ****** *)
 //
 typedef
-list_vt(a:type) = [n:int] list_vt(a, n)
+list_vt(a:vtype) = [n:int] list_vt(a, n)
 //
 typedef
-list0_vt(a:type) = [n:int | n >= 0] list_vt(a, n)
+list0_vt(a:vtype) = [n:int | n >= 0] list_vt(a, n)
 typedef
-list1_vt(a:type) = [n:int | n >= 1] list_vt(a, n)
+list1_vt(a:vtype) = [n:int | n >= 1] list_vt(a, n)
 //
 typedef listlt_vt
-  (a:type, n:int) = [k:nat | k < n] list_vt(a, k)
+  (a:vtype, n:int) = [k:nat | k < n] list_vt(a, k)
 typedef listgt_vt
-  (a:type, n:int) = [k:int | k > n] list_vt(a, k)
+  (a:vtype, n:int) = [k:int | k > n] list_vt(a, k)
 typedef listlte_vt
-  (a:type, n:int) = [k:nat | k <= n] list_vt(a, k)
+  (a:vtype, n:int) = [k:nat | k <= n] list_vt(a, k)
 typedef listgte_vt
-  (a:type, n:int) = [k:int | k >= n] list_vt(a, k)
+  (a:vtype, n:int) = [k:int | k >= n] list_vt(a, k)
+//
 typedef listbtw_vt
-  (a:type, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
+  (a:vtype, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
 typedef listbtwe_vt
-  (a:type, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
+  (a:vtype, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
 //
 (* ****** ****** *)
 

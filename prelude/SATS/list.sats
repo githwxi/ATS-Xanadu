@@ -52,34 +52,34 @@
 //
 prfun
 lemma_list_param
-  {x:type}{n:int}
+  {x:t0}{n:i0}
   (xs: list(x, n)): [n >= 0] void
 // end of [lemma_list_param]
 prfun
 lemma_list_vt_param
-  {x:type}{n:int}
+  {x:vt}{n:i0}
   (xs: !list_vt(x, n)): [n >= 0] void
 // end of [lemma_list_vt_param]
 //
 (* ****** ****** *)
 //
-fun<a:type>
+fun<a:t0>
 list_tuple_0():<> list_vt(a, 0)
 //
-fun<a:type>
+fun<a:t0>
 list_tuple_1(x0: a):<> list_vt(a, 1)
-fun<a:type>
+fun<a:t0>
 list_tuple_2(x0: a, x1: a):<> list_vt(a, 2)
-fun<a:type>
+fun<a:t0>
 list_tuple_3(x0: a, x1: a, x2: a):<> list_vt(a, 3)
 //
-fun<a:type>
+fun<a:t0>
 list_tuple_4
   (x0: a, x1: a, x2: a, x3: a):<> list_vt(a, 4)
-fun<a:type>
+fun<a:t0>
 list_tuple_5
   (x0: a, x1: a, x2: a, x3: a, x4: a):<> list_vt(a, 5)
-fun<a:type>
+fun<a:t0>
 list_tuple_6
   (x0: a, x1: a, x2: a, x3: a, x4: a, x5: a):<> list_vt(a, 6)
 //
@@ -103,16 +103,16 @@ list_tuple with list_tuple_6
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_make_sing(x):<wrt> list_vt(x, 1)
 fun
-<x:type>
+<x:t0>
 list_make_pair(x, x):<wrt> list_vt(x, 2)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_make_elt
   {n:nat}
   (n: int(n), x: x):<wrt> list_vt(x, n)
@@ -121,230 +121,246 @@ list_make_elt
 (* ****** ****** *)
 //
 fun
-<x:type>
-list_length{n:int}
+<x:t0>
+list_length{n:i0}
   (xs: list(x, n)):<> int(n)
+//
+fun
+<x:vt>
+list_length_vt1{n:i0}
+  (xs: !list_vt(x, n)):<> int(n)
 //
 (* ****** ****** *)
 //
 fun<>
 list_is_nil
-{x:type}
-{n:int}(xs: list(x, n)):<> bool(n=0)
+{x:t0}
+{n:i0}(xs: list(x, n)):<> bool(n=0)
 fun<>
 list_is_cons
-{x:type}
-{n:int}(xs: list(x, n)):<> bool(n>0)
+{x:t0}
+{n:i0}(xs: list(x, n)):<> bool(n>0)
 //
 fun
-<x:type>
+<x:t0>
 list_is_sing
-{n:int}(xs: list(x, n)):<> bool(n=1)
+{n:i0}(xs: list(x, n)):<> bool(n=1)
 fun
-<x:type>
+<x:t0>
 list_is_pair
-{n:int}(xs: list(x, n)):<> bool(n=2)
+{n:i0}(xs: list(x, n)):<> bool(n=2)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_head
   {n:pos}(xs: list(x, n)):<> (x)
 fun
-<x:type>
+<x:t0>
 list_head_exn
   {n:int}(xs: list(x, n)):<exn> (x)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_tail{n:pos}
   (xs: SHARED(list(x, n))):<> list(x, n-1)
 fun
-<x:type>
+<x:t0>
 list_tail_exn{n:int}
   (xs: SHARED(list(x, n))):<exn> list(x, n-1)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
-list_copy
-{n:int}(list(x, n)): list_vt(x, n)
+<x:t0>
+list_uncons{n:pos}
+  (xs: &list(x, n) >> list(x, n-1)): (x)
 fun
-<x:vtype>
-list_copy_vt1
-{n:int}(!list_vt(x, n)): list_vt(x, n)
+<x:vt>
+list_vt_uncons{n:pos}
+  (xs: &list_vt(x, n) >> list_vt(x, n-1)): (x)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
+list_copy
+{n:i0}(list(x, n)): list_vt(x, n)
+fun
+<x:vt>
+list_copy_vt1
+{n:i0}(!list_vt(x, n)): list_vt(x, n)
+//
+(* ****** ****** *)
+//
+fun
+<x:t0>
 list_append_dt0_dt1
-{m,n:int}
+{m,n:i0}
 (list(x, m), list(x, n)):<> list(x, m+n)
 fun
-<x:type>
+<x:t0>
 list_append_dt0_vt0
-{m,n:int}
+{m,n:i0}
 (list(x, m), list_vt(x, n)):<> list_vt(x, m+n)
 fun
-<x:vtype>
+<x:vt>
 list_append_vt0_vt0
-{m,n:int}
+{m,n:i0}
 (list_vt(x, m), list_vt(x, n)):<> list_vt(x, m+n)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_reverse
-{n:int}(xs: list(x, n)): list_vt(x, n)
+{n:i0}(xs: list(x, n)): list_vt(x, n)
 fun
-<x:vtype>
+<x:vt>
 list_reverse_vt0
-{n:int}(xs: list_vt(x, n)): list_vt(x, n)
+{n:i0}(xs: list_vt(x, n)): list_vt(x, n)
 fun
-<x:vtype>
+<x:vt>
 list_reverse_vt1
-{n:int}(xs: !list_vt(x, n)): list_vt(x, n)
+{n:i0}(xs: !list_vt(x, n)): list_vt(x, n)
 //
 fun
-<x:type>
+<x:t0>
 list_rappend_dt0_dt1
-{m,n:int}
+{m,n:i0}
 (list(x, m), list(x, n)): list(x, m+n)
 fun
-<x:type>
+<x:t0>
 list_rappend_dt0_vt0
-{m,n:int}
+{m,n:i0}
 (list(x, m), list_vt(x, n)): list_vt(x, m+n)
 fun
-<x:vtype>
+<x:vt>
 list_rappend_vt0_vt0
-{m,n:int}
+{m,n:i0}
 (list_vt(x, m), list_vt(x, n)): list_vt(x, m+n)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_get_at
-{ n,i:int
+{ n,i:i0
 | 0 <= i; i < n}
 (xs: list(x, n), i: int(i)):<> (x)
 fun
-<x:type>
+<x:t0>
 list_get_at_vt1
-{ n,i:int
+{ n,i:i0
 | 0 <= i; i < n}
 (xs: !list_vt(x, n), i: int(i)):<> (x)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
-<y:vtype>
-list_map{n:int}
+<x:t0>
+<y:vt>
+list_map{n:i0}
   (xs: list(x, n)): list_vt(y, n)
 fun
-<x:vtype>
-<y:vtype>
-list_map_vt0{n:int}
+<x:vt>
+<y:vt>
+list_map_vt0{n:i0}
   (xs: list_vt(x, n)): list_vt(y, n)
 fun
-<x:vtype>
-<y:vtype>
-list_map_vt1{n:int}
+<x:vt>
+<y:vt>
+list_map_vt1{n:i0}
   (xs: !list_vt(x, n)): list_vt(y, n)
 //
 fun
-<x:type>
-<y:vtype>
-list_imap{n:int}
+<x:t0>
+<y:vt>
+list_imap{n:i0}
   (xs: list(x, n)): list_vt(y, n)
 fun
-<x:vtype>
-<y:vtype>
-list_imap_vt0{n:int}
+<x:vt>
+<y:vt>
+list_imap_vt0{n:i0}
   (xs: list_vt(x, n)): list_vt(y, n)
 fun
-<x:vtype>
-<y:vtype>
-list_imap_vt1{n:int}
+<x:vt>
+<y:vt>
+list_imap_vt1{n:i0}
   (xs: !list_vt(x, n)): list_vt(y, n)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_forall(xs: list(x)): bool
 fun
-<x:vtype>
+<x:vt>
 list_forall_vt0(xs: list_vt(x)): bool
 fun
-<x:vtype>
+<x:vt>
 list_forall_vt1(xs: !list_vt(x)): bool
 //
 fun
-<x:type>
+<x:t0>
 list_foreach(xs: list(x)): void
 fun
-<x:vtype>
+<x:vt>
 list_foreach_vt0(xs: list_vt(x)): void
 fun
-<x:vtype>
+<x:vt>
 list_foreach_vt1(xs: !list_vt(x)): void
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_iforall(xs: list(x)): bool
 fun
-<x:vtype>
+<x:vt>
 list_iforall_vt0(xs: list_vt(x)): bool
 fun
-<x:vtype>
+<x:vt>
 list_iforall_vt1(xs: !list_vt(x)): bool
 //
 fun
-<x:type>
+<x:t0>
 list_iforeach(xs: list(x)): void
 fun
-<x:vtype>
+<x:vt>
 list_iforeach_vt0(xs: list_vt(x)): void
 fun
-<x:vtype>
+<x:vt>
 list_iforeach_vt1(xs: !list_vt(x)): void
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
-<y:type>
+<x:t0>
+<y:t0>
 list_zip
-  {m,n:int}
+  {m,n:i0}
 ( xs: list(x, m)
 , ys: list(y, n)
 ) :<> list_vt((x, y), min(m, n))
 fun
-<x:type>
-<y:type>
+<x:t0>
+<y:t0>
 list_zipeq
-  {n:int}
+  {n:i0}
 ( xs: list(x, n)
 , ys: list(y, n)):<> list_vt((x, y), n)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
-<y:type>
+<x:t0>
+<y:t0>
 list_cross
-  {m,n:int}
+  {m,n:i0}
 ( xs: list(x, m)
 , ys: list(y, n)):<> list_vt((x, y), m*n)
 //
@@ -352,45 +368,45 @@ list_cross
 //
 fun
 <x
-:vtype>
-<n:int>
+:vt>
+<n:i0>
 list_tabulate
 {n >= 0}
 (n0: sint(n)): list_vt(x, n)
 //
 fun
-<x:vtype><n:int>
+<x:vt><n:i0>
 list_tabulate$fopr(i: sintlt(n)): (x)
 //
 (* ****** ****** *)
 //
 fun
-<x:type>
+<x:t0>
 list_sort
 // based on mergesort
-  {n:int}(xs: list(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list(x, n)):<> list_vt(x, n)
 fun
-<x:type>
+<x:t0>
 list_quicksort
-  {n:int}(xs: list(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list(x, n)):<> list_vt(x, n)
 fun
-<x:type>
+<x:t0>
 list_mergesort
-  {n:int}(xs: list(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list(x, n)):<> list_vt(x, n)
 //
 fun
-<x:vtype>
+<x:vt>
 list_sort_vt0
 // based on mergesort
-  {n:int}(xs: list_vt(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list_vt(x, n)):<> list_vt(x, n)
 fun
-<x:vtype>
+<x:vt>
 list_quicksort_vt0
-  {n:int}(xs: list_vt(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list_vt(x, n)):<> list_vt(x, n)
 fun
-<x:vtype>
+<x:vt>
 list_mergesort_vt0
-  {n:int}(xs: list_vt(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list_vt(x, n)):<> list_vt(x, n)
 //
 (* ****** ****** *)
 

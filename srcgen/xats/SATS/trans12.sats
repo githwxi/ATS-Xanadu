@@ -299,6 +299,10 @@ fun
 the_sortenv_add
 (tid: sym_t, s2t: s2txt): void
 fun
+the_sortenv_padd
+(tid: sym_t, s2t: s2txt): void
+//
+fun
 the_sortenv_find
   (tid: sym_t): s2txtopt_vt
 fun

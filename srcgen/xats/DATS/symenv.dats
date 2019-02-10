@@ -148,7 +148,7 @@ symenv_make_nil
 } (* end of [symenv_make_nil] *)
 
 (* ****** ****** *)
-
+//
 implement
 symenv_search
 {itm}(env, k0) = let
@@ -170,7 +170,15 @@ in
       ans where { prval () = fold@(ans) }
     )
 end // end of [symenv_search]
-
+//
+(* ****** ****** *)
+//
+implement
+symenv_psearch
+  {itm}(env, k0) =
+  $MAP.symmap_search{itm}(env.pmap0, k0)
+// end of [symenv_pervasive_search]
+//
 (* ****** ****** *)
 
 implement
@@ -189,6 +197,15 @@ symenv_insert2
 $MAP.symmap_insert2{itm}(env.map0, k0, x0, mix)
 ) (* end of [symenv_insert2] *)
 
+(* ****** ****** *)
+//
+implement
+symenv_pinsert
+  {itm}(env, k0, x0) =
+(
+  $MAP.symmap_insert{itm}(env.pmap0, k0, x0)
+) (* end of [symenv_pinsert] *)
+//
 (* ****** ****** *)
 
 implement
@@ -262,20 +279,6 @@ in
   // nothing
 end // end of [symenv_locjoin]
 
-(* ****** ****** *)
-//
-implement
-symenv_psearch
-  {itm}(env, k0) =
-  $MAP.symmap_search{itm}(env.pmap0, k0)
-// end of [symenv_pervasive_search]
-//
-implement
-symenv_pinsert
-  {itm}(env, k0, x0) =
-  $MAP.symmap_insert{itm}(env.pmap0, k0, x0)
-// end of [symenv_insert]
-//
 (* ****** ****** *)
 
 implement
