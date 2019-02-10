@@ -270,7 +270,8 @@ f2arg_node =
 | F2ARGnone of (token)
 *)
 //
-| F2ARGsome_dyn of (d2pat)
+| F2ARGsome_dyn of
+  (int(*npf*), d2patlst)
 //
 | F2ARGsome_sta of
   (s2varlst(*s2vs*), s2explst(*s2ps*))
@@ -317,6 +318,9 @@ d2pat_node =
 | D2Psapp of (d2pat, s2varlst)
 | D2Pdapp of (d2pat, int(*npf*), d2patlst)
 //
+| D2Ptuple of
+  (int(*knd*), int(*npf*), d2patlst)
+//
 | D2Panno of (d2pat, s2exp) // no s2xtv in anno
 //
 | D2Pnone0 of () | D2Pnone1 of (d1pat)
@@ -351,6 +355,13 @@ fun d2pat_var(loc_t, d2var): d2pat
 //
 fun d2pat_con1(loc_t, d2con): d2pat
 fun d2pat_con2(loc_t, d2conlst): d2pat
+//
+fun
+d2pat_tuple
+( loc0: loc_t, knd: int
+, npf: int, d2ps: d2patlst): d2pat
+//
+(* ****** ****** *)
 //
 fun
 d2pat_make_node
@@ -674,7 +685,7 @@ d2ecl_node =
 //
 | D2Cfundecl of
   ( token(*funkind*)
-  , declmodopt(*rec/prf/...*), f2undeclist)
+  , declmodopt, tq2arglst(*tmpargs*), f2undeclist)
 //
 | D2Cdatasort of (d1ecl)
 | D2Cdatatype of (d1ecl)

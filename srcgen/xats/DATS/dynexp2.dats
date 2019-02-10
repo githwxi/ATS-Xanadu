@@ -374,6 +374,16 @@ d2pat_con2
 d2pat_make_node(loc0, D2Pcon2(d2cs))
 //
 (* ****** ****** *)
+//
+implement
+d2pat_tuple
+(loc0, knd, npf, d2ps) =
+(
+  d2pat_make_node
+  (loc0, D2Ptuple(knd, npf, d2ps))
+)
+//
+(* ****** ****** *)
 
 local
 

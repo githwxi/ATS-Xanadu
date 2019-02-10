@@ -422,25 +422,31 @@ the_fixity_load
 (
 XATSHOME: string
 ) : void =
-"\
-ext#\
-libxats_xatsopt_the_fixity_load"
+  "ext#libxatsopt_the_fixity_load"
+extern
+fun
+the_basics_load
+(
+XATSHOME: string
+,
+stadyn: int, given: string
+) : void =
+  "ext#libxatsopt_the_basics_load"
+//
 extern
 fun
 the_prelude_load
 (
   XATSHOME: string
 ) : void =
-"\
-ext#\
-libxats_xatsopt_the_prelude_load"
+  "ext#libxatsopt_the_prelude_load"
 extern
 fun
 the_prelude_load_if
 (
   XATSHOME: string, flag: &int
 ) : void =
-  "ext#libatsopt_the_prelude_load_if"
+  "ext#libxatsopt_the_prelude_load_if"
 //
 (* ****** ****** *)
 //
@@ -1335,22 +1341,27 @@ end // end of [the_fixity_load]
 
 (* ****** ****** *)
 //
-extern
-fun
-the_pervasive_load
-(
-XATSHOME: string, given: string
-) : void =
-  "ext#libxatsopt_the_pervasive_load"
-//
 implement
-the_pervasive_load
-(XATSHOME, given) =
+the_basics_load
+(XATSHOME, stadyn, given) = let
+//
+  val
+  d1cs = trans01_declist(d0cs)
+//
+  val
+  (pf0|()) =
+  the_trans12_pushnil((*void*))
+  val d2cs = trans12_declist(d1cs)
+  val
+  ((*joined*)) =
+  the_trans12_pjoinwth0(pf0 | (*void*))
+//
+in (* nothing *) end where
 {
 //
 val () =
 println!
-("pervasive_load: given = ", given)
+("the_basics_load: ", given)
 //
   val fname =
   dirbase(XATSHOME, given)
@@ -1369,32 +1380,22 @@ println!
     case+ opt of
     | ~None_vt() =>
        list_nil(*void*)
-    | ~Some_vt(filr) => d0cs where
+    | ~Some_vt(filr) =>
+      (
+        fileref_close(filr); d0cs
+      ) where
       {
-        val d0cs =
-        parse_from_fileref_toplevel
-        (
-          0(*static*), filr(*input*)
-        )
-        val ((*void*)) = fileref_close(filr)
-      }
-   end : d0eclist // end of [val]
+        val
+        d0cs =
+        parse_from_fileref_toplevel(stadyn, filr)
+      } (* end of [Some_vt] *)
+   end : d0eclist // end-of-let
 //
   val
   ((*popped*)) =
   $FP0.the_filepathlst_pout(pf0 | (*none*))
 //
-  val d1cs = trans01_declist(d0cs)
-//
-  val
-  (pf0 | ()) =
-  the_trans12_pushnil((*void*))
-  val d2cs = trans12_declist(d1cs)
-  val
-  ((*joined*)) =
-  the_trans12_pjoinwth0(pf0 | fpath, d2cs)
-//
-} (* the_pervasive_load *)
+} (* the_basics_load *)
 //
 (* ****** ****** *)
 
@@ -1407,8 +1408,9 @@ val () =
 the_fixity_load(XATSHOME)
 //
 val () =
-the_pervasive_load
-  (XATSHOME, "prelude/basics.sats")
+the_basics_load
+( XATSHOME
+, 0(*static*), "prelude/basics.sats")
 //
 (*
 val () =

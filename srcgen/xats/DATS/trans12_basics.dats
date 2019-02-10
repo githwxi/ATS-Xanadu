@@ -47,6 +47,50 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans12.sats"
 //
 (* ****** ****** *)
+//
+// HX-2019-02:
+// Please note that
+// a non-functional s2cst is
+// preferred over the functional ones
+//
+implement
+s2cst_select_any
+(s2cs) =
+(
+  test1(s2cs)
+) where
+{
+//
+fun
+test1
+(
+xs: s2cstlst
+) : s2cstopt_vt =
+(
+case+ xs of
+| list_nil() =>
+  (
+    test2(s2cs)
+  )
+| list_cons(x0, xs) =>
+  if
+  sort2_is_fun(x0.sort())
+  then test1(xs) else Some_vt(x0) 
+)
+and
+test2
+(
+xs: s2cstlst
+) : s2cstopt_vt =
+(
+case+ xs of
+| list_nil() => None_vt()
+| list_cons(x0, xs) => Some_vt(x0)
+)
+//
+} (* end of [s2cst_select_any] *)
+
+(* ****** ****** *)
 
 implement
 s2cst_select_bin

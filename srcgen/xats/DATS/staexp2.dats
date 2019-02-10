@@ -252,6 +252,17 @@ case+ s2tb of
 (* ****** ****** *)
 
 implement
+sort2_is_fun
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tfun _ => true
+| _ (* non-S2Tfun *) => false
+) (* end of [sort2_is_fun] *)
+
+(* ****** ****** *)
+
+implement
 sort2_is_impred
   (s2t0) =
 (

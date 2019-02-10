@@ -611,10 +611,14 @@ and
 auxid_cst
 ( s1e0: s1exp
 , s2cs: s2cstlst): s2exp =
-(
-case- s2cs of
-| list_cons(s2c0, _) => s2exp_cst(s2c0)
-) (* end of [auxid_s2cs] *)
+let
+  val
+  opt = s2cst_select_any(s2cs)
+in
+  case- opt of
+    | ~Some_vt(s2c0) => s2exp_cst(s2c0)
+  // end of [case-]
+end (* end of [auxid_s2cs] *)
 
 (* ****** ****** *)
 

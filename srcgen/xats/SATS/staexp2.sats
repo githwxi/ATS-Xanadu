@@ -210,6 +210,11 @@ sort2_is_string(sort2): bool
 (* ****** ****** *)
 
 fun
+sort2_is_fun(sort2): bool
+
+(* ****** ****** *)
+
+fun
 sort2_is_impred(sort2): bool
 
 (* ****** ****** *)

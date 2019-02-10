@@ -2,9 +2,9 @@
 Syntax for fixity declarations
 ########################
 
-ATS3 supports prefix, infix, and postfix operators. For instance, the
-following expression involving infix and prefix operators is accepted
-in ATS3:
+ATS3 supports prefix, infix, and postfix operators.
+For instance, the following expression involving infix
+and prefix operators is accepted in ATS3:
 
 -2*x**2 + 10*x - 100
 
@@ -13,7 +13,8 @@ which represents
 negative 2 times x squared plus 10 times x minus 100
 
 Note that the minus sign is used as a prefix operator
-and also an infix one.
+and also an infix one. In ATS2, ~ is for unary minus and
+- for binary minus, often causing confusion for beginners!
 
 The following fixity-declaration attaches the prefix-status
 and postfix-status to the symbols foo1 and bar1, respectively:
