@@ -34,41 +34,42 @@
 (* ****** ****** *)
 
 implement
-<x>(*tmp*)
-print$val<x> =
-fprint$val<x>(stdout_ref, x)
+<x0>(*tmp*)
+print$val<x0> =
+fprint$val<x0>(stdout, x0)
 implement
-<x>(*tmp*)
-prerr$val<x> =
-fprint$val<x>(stderr_ref, x)
+<x0>(*tmp*)
+prerr$val<x0> =
+fprint$val<x0>(stderr, x0)
 
 (* ****** ****** *)
 
 implement
-<x>(*tmp*)
-print$ref<x> =
-fprint$ref<x>(stdout_ref, x)
+<x0>(*tmp*)
+print$ref<x0> =
+fprint$ref<x0>(stdout, x0)
 implement
-<x>(*tmp*)
-prerr$ref<x> =
-fprint$ref<x>(stderr_ref, x)
+<x0>(*tmp*)
+prerr$ref<x0> =
+fprint$ref<x0>(stderr, x0)
 
 (* ****** ****** *)
 //
 // HX-2018-10-14:
-// Need to find a way to detect
+// We need a way to detect
 // this kind of mutual dependency!
 //
 implement
-{x:type}
-fprint$ref<x>(out, x) =
-fprint$val<x>(out, x)
+{x0:vtype}
+fprint$ref<x0>(out, x0) =
+fprint$val<x0>(out, x0)
+//
 implement
-(x:type)
-fprint$val<x>(out, x) =
+(x0:vtype)
+fprint$val<x0>(out, x0) =
 let
-val x = x in fprint$ref<x>(out, x)
-endlet // end of [implement]
+var x0 = x0 in fprint$ref<x0>(out, x0)
+endlet // end of [fprint$val]
 //
 (* ****** ****** *)
 

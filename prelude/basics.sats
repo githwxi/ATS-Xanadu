@@ -219,4 +219,100 @@ ullint(i: int) = g1int_type(ullint_k, i)
 //
 (* ****** ****** *)
 
+typedef
+sintlt(n) = [i:int | i < n] sint(i)
+typedef
+sintgt(n) = [i:int | i > n] sint(i)
+typedef
+sintlte(n) = [i:int | i <= n] sint(i)
+typedef
+sintgte(n) = [i:int | i >= n] sint(i)
+
+(* ****** ****** *)
+
+typedef nint = [i:int | i >= 0] sint(i)
+typedef nlint = [i:int | i >= 0] slint(i)
+typedef nsize = [i:int | i >= 0] ssize(i)
+typedef nllint = [i:int | i >= 0] sllint(i)
+
+(* ****** ****** *)
+
+//
+// HX-2018-10-01:
+//
+datatype
+list_type_int_tbox
+  (a:type+, int) =
+//
+// type+: covariant
+//
+| list_nil(a, 0) of ()
+| {n:int | n >= 0}
+  list_cons(a, n+1) of
+  (a, list_type_int_tbox(a, n))
+// end of [list_type_int_tbox]
+//
+datavtype
+list_vtype_int_vtbox
+  (a:vtype+, int) =
+//
+// type+: covariant
+//
+| list_vt_nil(a, 0) of ()
+| {n:int | n >= 0}
+  list_vt_cons(a, n+1) of
+  (a, list_vtype_int_vtbox(a, n))
+// end of [list_vtype_int_vtbox]
+//
+sexpdef list = list_type_int_tbox
+sexpdef list_vt = list_vtype_int_vtbox
+//
+(* ****** ****** *)
+//
+typedef
+list(a:type) = [n:int] list(a, n)
+//
+typedef
+list0(a:type) = [n:int | n >= 0] list(a, n)
+typedef
+list1(a:type) = [n:int | n >= 1] list(a, n)
+//
+typedef listlt
+  (a:type, n:int) = [k:nat | k < n] list(a, k)
+typedef listlte
+  (a:type, n:int) = [k:nat | k <= n] list(a, k)
+typedef listgt
+  (a:type, n:int) = [k:int | k > n] list(a, k)
+typedef listgte
+  (a:type, n:int) = [k:int | k >= n] list(a, k)
+typedef listbtw
+  (a:type, m:int, n:int) = [k:int | m <= k; k < n] list(a, k)
+typedef listbtwe
+  (a:type, m:int, n:int) = [k:int | m <= k; k <= n] list(a, k)
+//
+(* ****** ****** *)
+//
+typedef
+list_vt(a:type) = [n:int] list_vt(a, n)
+//
+typedef
+list0_vt(a:type) = [n:int | n >= 0] list_vt(a, n)
+typedef
+list1_vt(a:type) = [n:int | n >= 1] list_vt(a, n)
+//
+typedef listlt_vt
+  (a:type, n:int) = [k:nat | k < n] list_vt(a, k)
+typedef listlte_vt
+  (a:type, n:int) = [k:nat | k <= n] list_vt(a, k)
+typedef listgt_vt
+  (a:type, n:int) = [k:int | k > n] list_vt(a, k)
+typedef listgte_vt
+  (a:type, n:int) = [k:int | k >= n] list_vt(a, k)
+typedef listbtw_vt
+  (a:type, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
+typedef listbtwe_vt
+  (a:type, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
+//
+(* ****** ****** *)
+
 (* end of [basics.sats] *)
