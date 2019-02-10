@@ -43,10 +43,20 @@ UN = "prelude/SATS/unsafe.sats"
 #staload
 ERR = "./../SATS/xerrory.sats"
 //
-#staload
-FIL = "./../SATS/filepath.sats"
+(* ****** ****** *)
 //
-typedef fpath_t = $FIL.filepath
+#staload
+FP0 = "./../SATS/filepath.sats"
+//
+  typedef
+  fpath_t = $FP0.filepath
+  macdef
+  dirbase =
+  $FP0.filepath_dirbase
+  macdef
+  fpath_make = $FP0.filepath_make
+//
+(* ****** ****** *)
 //
 #staload "./../SATS/parsing.sats"
 //
@@ -1223,7 +1233,7 @@ st0: cmdstate =
 , prelude= 0(*~loaded*)
 //
 , inpfil0=
-  $FIL.the_filepath_dummy
+  $FP0.the_filepath_dummy
 //
 , ninpfil= 0(*initset*)
 //
@@ -1274,17 +1284,13 @@ the_fixity_load
   val given = "prelude/fixity.sats"
 //
   val fname =
-  $FIL.filepath_dirbase(XATSHOME, given)
+  dirbase(XATSHOME, given)
+  val fpath =
+  fpath_make(given, given, fname)  
 //
   val
   (pf0 | ()) =
-  (
-    $FIL.the_filepathlst_push(fpath)
-  ) where
-  {
-  val fpath =
-  $FIL.filepath_make(given, given, fname)  
-  }
+  $FP0.the_filepathlst_push(fpath)
 //
   val d0cs = let
     val
@@ -1306,7 +1312,7 @@ the_fixity_load
 //
   val
   ((*popped*)) =
-  $FIL.the_filepathlst_pout(pf0 | (*none*))
+  $FP0.the_filepathlst_pout(pf0 | (*none*))
 //
   val
   (pf0 | ()) =
@@ -1343,23 +1349,17 @@ the_pervasive_load
 {
 //
 val () =
-(
 println!
 ("pervasive_load: given = ", given)
-) (* end of [val] *)
 //
-val fname =
-$FIL.filepath_dirbase(XATSHOME, given)
+  val fname =
+  dirbase(XATSHOME, given)
+  val fpath =
+  fpath_make(given, given, fname)  
 //
   val
   (pf0 | ()) =
-  (
-    $FIL.the_filepathlst_push(fpath)
-  ) where
-  {
-  val fpath =
-  $FIL.filepath_make(given, given, fname)  
-  }
+  $FP0.the_filepathlst_push(fpath)
 //
   val d0cs = let
     val
@@ -1367,7 +1367,8 @@ $FIL.filepath_dirbase(XATSHOME, given)
     fileref_open_opt(fname, file_mode_r)
   in
     case+ opt of
-    | ~None_vt() => list_nil()
+    | ~None_vt() =>
+       list_nil(*void*)
     | ~Some_vt(filr) => d0cs where
       {
         val d0cs =
@@ -1381,7 +1382,7 @@ $FIL.filepath_dirbase(XATSHOME, given)
 //
   val
   ((*popped*)) =
-  $FIL.the_filepathlst_pout(pf0 | (*none*))
+  $FP0.the_filepathlst_pout(pf0 | (*none*))
 //
   val d1cs = trans01_declist(d0cs)
 //
@@ -1391,7 +1392,7 @@ $FIL.filepath_dirbase(XATSHOME, given)
   val d2cs = trans12_declist(d1cs)
   val
   ((*joined*)) =
-  the_trans12_pjoinwth0(pf0 | (*none*))
+  the_trans12_pjoinwth0(pf0 | fpath, d2cs)
 //
 } (* the_pervasive_load *)
 //

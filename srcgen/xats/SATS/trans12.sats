@@ -558,6 +558,16 @@ fun
 the_dexpenv_println((*void*)): void
 //
 (* ****** ****** *)
+
+fun
+the_fmodenv_add
+  (fid: sym_t, env: fmodenv): void
+//
+fun
+the_fmodenv_find
+  (fid: sym_t): Option_vt(fmodenv)
+//
+(* ****** ****** *)
 //
 absview
 trans12_view
@@ -580,7 +590,8 @@ the_trans12_locjoin
 //
 fun
 the_trans12_pjoinwth0
-(pf0: trans12_v | (*none*)): (void)
+( pf0: trans12_v
+| fp0: fpath, d2cs: d2eclist): (void)
 //
 (* ****** ****** *)
 //

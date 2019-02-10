@@ -42,12 +42,20 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload
 SYM = "./../SATS/symbol.sats"
+//
+(* ****** ****** *)
+//
 #staload
 MAP = "./../SATS/symmap.sats"
 #staload
 ENV = "./../SATS/symenv.sats"
 #staload
 NMS = "./../SATS/nmspace.sats"
+//
+(* ****** ****** *)
+//
+#staload
+FP0 = "./../SATS/filepath.sats"
 //
 (* ****** ****** *)
 
@@ -130,7 +138,7 @@ fmodenv_get_path
 {
   val
   (vbox(pf) | p0) = ref_get_viewptr(menv)
-} (* end of [filenv_get_path] *)
+} (* end of [fmodenv_get_path] *)
 
 (* ****** ****** *)
 
@@ -147,32 +155,50 @@ in (* in-of-local *)
 implement
 fmodenv_get_s2tmap
   (menv) = let
+//
   val
-  (vbox(pf) | p0) = ref_get_viewptr(menv)
-  prval (pf1, fpf1) = myassert(view@(p0->s2txt))
+  (pfbox|p0) =
+  ref_get_viewptr(menv)
+  prval
+  vbox( pf0 ) = pfbox
+//
+  prval
+  (pf1, fpf1) = myassert(view@(p0->s2txt))
 in
   (pf1, fpf1 | addr@(p0->s2txt))
-end // end of [filenv_get_s2tmap]
+end // end of [fmodenv_get_s2tmap]
 
 implement
 fmodenv_get_s2imap
   (menv) = let
+//
   val
-  (vbox(pf) | p0) = ref_get_viewptr(menv)
-  prval (pf1, fpf1) = myassert(view@(p0->s2itm))
+  (pfbox|p0) =
+  ref_get_viewptr(menv)
+  prval
+  vbox( pf0 ) = pfbox
+//
+  prval
+  (pf1, fpf1) = myassert(view@(p0->s2itm))
 in
   (pf1, fpf1 | addr@(p0->s2itm))
-end // end of [filenv_get_s2imap]
+end // end of [fmodenv_get_s2imap]
 
 implement
 fmodenv_get_d2imap
   (menv) = let
+//
   val
-  (vbox(pf) | p0) = ref_get_viewptr(menv)
-  prval (pf1, fpf1) = myassert(view@(p0->d2itm))
+  (pfbox|p0) =
+  ref_get_viewptr(menv)
+  prval
+  vbox( pf0 ) = pfbox
+//
+  prval
+  (pf1, fpf1) = myassert(view@(p0->d2itm))
 in
   (pf1, fpf1 | addr@(p0->d2itm))
-end // end of [filenv_get_d2imap]
+end // end of [fmodenv_get_d2imap]
 
 end // end of [local]
 
@@ -183,8 +209,8 @@ fmodenv_get_d2eclist
   (menv) =
   (p0 -> d2ecl) where
 {
-  val (vbox(pf) | p0) = ref_get_viewptr(menv)
-} (* end of [filenv_get_d2eclist] *)
+  val (vbox(pf0)|p0) = ref_get_viewptr(menv)
+} (* end of [fmodenv_get_d2eclist] *)
 
 (* ****** ****** *)
 
@@ -208,12 +234,13 @@ vbox_make_viewptr
 | p0: ptr(l)):<> vbox(a @ l)
 //
 val
-(pf | p0) =
+( pf
+| p0) =
 $ENV.symenv_make_nil((*void*))
 //
 prval
 pfbox =
-vbox_make_viewptr{s2tenv}(pf | p0)
+vbox_make_viewptr{s2tenv}(pf|p0)
 //
 fun
 the_nmspace_find
@@ -399,12 +426,13 @@ vbox_make_viewptr
 | p0: ptr(l)):<> vbox(a @ l)
 //
 val
-(pf | p0) =
+( pf
+| p0) =
 $ENV.symenv_make_nil((*void*))
 //
 prval
 pfbox =
-vbox_make_viewptr{s2ienv}(pf | p0)
+vbox_make_viewptr{s2ienv}(pf|p0)
 //
 fun
 the_nmspace_find
@@ -696,12 +724,13 @@ vbox_make_viewptr
 | p0: ptr(l)):<> vbox(a @ l)
 //
 val
-(pf | p0) =
+( pf
+| p0) =
 $ENV.symenv_make_nil((*void*))
 //
 prval
 pfbox =
-vbox_make_viewptr{d2ienv}(pf | p0)
+vbox_make_viewptr{d2ienv}(pf|p0)
 //
 fun
 the_nmspace_find
@@ -1021,6 +1050,43 @@ end // end of [local]
 
 local
 
+vtypedef
+symmap =
+$MAP.symmap(fmodenv)
+
+val
+the_fmodenv =
+ref<symmap>
+($MAP.symmap_make_nil())
+
+in (* in of [local] *)
+
+implement
+the_fmodenv_add
+  (fid, env) = let
+  val
+  (vbox(pf)|p0) =
+  ref_get_viewptr(the_fmodenv)
+in
+  $MAP.symmap_insert(!p0, fid, env)
+end // end of [the_fmodenv_add]
+
+implement
+the_fmodenv_find
+  (fid) = let
+  val
+  (vbox(pf)|p0) =
+  ref_get_viewptr(the_fmodenv)
+in
+  $MAP.symmap_search{fmodenv}(!p0, fid)
+end // end of [the_fmodenv_find]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
 absimpl
 trans12_view = unit_v
 
@@ -1034,12 +1100,18 @@ the_trans12_popfree
 prval
 unit_v() = pfenv
 //
+val
+((*void*)) =
+$NMS.the_nmspace_pop()
+//
 local
 extern
 prfun _assert_{vw:view}(): vw
 in // in-of-local
+(*
 val ((*void*)) =
 the_fxtyenv_popfree(_assert_() | (*void*))
+*)
 val ((*void*)) =
 the_sortenv_popfree(_assert_() | (*void*))
 val ((*void*)) =
@@ -1056,8 +1128,17 @@ the_trans12_pushnil
   (pf | ()) where
 {
 //
+prval pf = unit_v
+//
+val
+((*void*)) =
+$NMS.the_nmspace_push()
+//
+(*
 val
 (pf0_ | ()) = the_fxtyenv_push()
+*)
+//
 val
 (pf1_ | ()) = the_sortenv_pushnil()
 val
@@ -1065,9 +1146,9 @@ val
 val
 (pf3_ | ()) = the_dexpenv_pushnil()
 //
-prval pf = unit_v
-//
+(*
 prval () = $UN.castview0{void}(pf0_)
+*)
 prval () = $UN.castview0{void}(pf1_)
 prval () = $UN.castview0{void}(pf2_)
 prval () = $UN.castview0{void}(pf3_)
@@ -1076,19 +1157,25 @@ prval () = $UN.castview0{void}(pf3_)
 
 implement
 the_trans12_locjoin
-(pf1, pf2| (*void*) ) =
+(pf1, pf2| (*void*)) =
 {
 //
-  prval unit_v() = pf1
-  prval unit_v() = pf2
+prval unit_v() = pf1
+prval unit_v() = pf2
+//
+val
+((*void*)) =
+$NMS.the_nmspace_locjoin()
 //
 local
 extern
 prfun _assert_{vw:view}(): vw
 in // in-of-local
+(*
 val ((*void*)) =
 the_fxtyenv_locjoin
 (_assert_(), _assert_() | (*void*))
+*)
 val ((*void*)) =
 the_sortenv_locjoin
 (_assert_(), _assert_() | (*void*))
@@ -1106,7 +1193,7 @@ end // end of [local]
 
 implement
 the_trans12_pjoinwth0
-  (pf0 | (*none*)) =
+  (pf0 | fp0, d2cs) =
 {
 //
   prval unit_v() = pf0
@@ -1119,17 +1206,23 @@ in // in-of-local
   val m0 =
   the_sortenv_pop
   (_assert_() | (*none*))
-  val () = the_sortenv_pjoinwth0(m0)
+  val () = the_sortenv_pjoinwth1(m0)
 //
   val m1 =
   the_sexpenv_pop
   (_assert_() | (*none*))
-  val () = the_sexpenv_pjoinwth0(m1)
+  val () = the_sexpenv_pjoinwth1(m1)
 //
   val m2 =
   the_dexpenv_pop
   (_assert_() | (*none*))
-  val () = the_dexpenv_pjoinwth0(m2)
+  val () = the_dexpenv_pjoinwth1(m2)
+//
+  val fid =
+  $FP0.filepath_get_full(fp0)
+  val env =
+  fmodenv_make(fp0, m0, m1, m2, d2cs)
+  val ((*void*)) = the_fmodenv_add(fid, env)
 //
 end // end of [local]
 //
