@@ -60,13 +60,18 @@ symenv_make_nil
 // end of [symenv_make_nil]
 
 (* ****** ****** *)
-
+//
 fun
 symenv_search
 {itm:type} // HX: search all
 (env: &symenv(itm), k0: sym_t):<> Option_vt(itm)
 // end of [symenv_search]
-
+fun
+symenv_psearch // p: pervasive
+{itm:type}
+(env: &symenv(itm), k0: sym_t):<> Option_vt(itm)
+// end of [symenv_psearch]
+//
 (* ****** ****** *)
 
 fun
@@ -82,6 +87,14 @@ symenv_insert2
 , key: sym_t, itm: itm, mix: (itm, itm) -<0> itm):<> void
 // end of [symenv_insert2]
 
+(* ****** ****** *)
+//
+fun
+symenv_pinsert // p: pervasive
+{itm:type}
+(env: &symenv(itm), k0: sym_t, x0: itm):<> void
+// end of [symenv_pinsert]
+//
 (* ****** ****** *)
 //
 fun
@@ -111,22 +124,6 @@ fun
 symenv_locjoin
   {itm:type}(env: &symenv(itm) >> _): void
 // end of [symenv_locjoin]
-//
-(* ****** ****** *)
-//
-fun
-symenv_psearch // p: pervasive
-  {itm:type}
-  (env: &symenv itm, k: sym_t):<> Option_vt(itm)
-// end of [symenv_psearch]
-//
-(* ****** ****** *)
-//
-fun
-symenv_pinsert // p: pervasive
-  {itm:type}
-  (env: &symenv(itm), k: sym_t, x: itm):<> void
-// end of [symenv_pinsert]
 //
 (* ****** ****** *)
 //

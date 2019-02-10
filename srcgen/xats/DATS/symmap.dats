@@ -222,7 +222,11 @@ fprint_val<itm>
   (out, itm) = fpr(out, itm)
 //
 implement
+fprint_linmap$sep<>(out) = ()
+(*
+implement
 fprint_linmap$sep<>(out) = fprint(out, "\n")
+*)
 //
 in
 //

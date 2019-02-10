@@ -276,6 +276,17 @@ end // end of [the_sortenv_add]
 (* ****** ****** *)
 
 implement
+the_sortenv_padd
+  (tid, s2t) = let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_pinsert(!p0, tid, s2t)
+end // end of [the_sortenv_padd]
+
+(* ****** ****** *)
+
+implement
 the_sortenv_find
   (tid) = let
   val ans = let
@@ -379,6 +390,16 @@ end // end of [the_sortenv_pjoinwth1]
 
 (* ****** ****** *)
 
+local
+
+fun
+fprintln_s2txt
+( out
+: FILEref
+, s2t: s2txt) = fprintln!(out, s2t)
+
+in (* in-of-local *)
+
 implement
 the_sortenv_fprint
   (out) = let
@@ -389,12 +410,19 @@ in (* let *)
 //
 $effmask_ref
 (
-  $ENV.fprint_symenv_top
-  ( out, !p0
-  , lam(out, x) => fprint_s2txt(out, x))
+fprintln!(out, "top:");
+$ENV.fprint_symenv_top
+( out, !p0
+, lam(out, x) => fprintln_s2txt(out, x));
+fprintln!(out, "ptop:");
+$ENV.fprint_symenv_ptop
+( out, !p0
+, lam(out, x) => fprintln_s2txt(out, x));
 )
 //
 end // end of [the_sortenv_print]
+
+end // end of [local]
 
 implement
 the_sortenv_println
@@ -677,6 +705,16 @@ end // end of [the_sexpenv_pjoinwth1]
 
 (* ****** ****** *)
 
+local
+
+fun
+fprintln_s2itm
+( out
+: FILEref
+, s2i: s2itm) = fprintln!(out, s2i)
+
+in (* in-of-local *)
+
 implement
 the_sexpenv_fprint
   (out) = let
@@ -687,12 +725,19 @@ in (* let *)
 //
 $effmask_ref
 (
-  $ENV.fprint_symenv_top
-  ( out, !p0
-  , lam(out, x) => fprint_s2itm(out, x))
+fprintln!(out, "top:");
+$ENV.fprint_symenv_top
+( out, !p0
+, lam(out, x) => fprintln_s2itm(out, x));
+fprintln!(out, "ptop:");
+$ENV.fprint_symenv_ptop
+( out, !p0
+, lam(out, x) => fprintln_s2itm(out, x));
 )
 //
 end // end of [the_sexpenv_print]
+
+end // end of [local]
 
 implement
 the_sexpenv_println
@@ -1019,6 +1064,16 @@ end // end of [the_dexpenv_pjoinwth1]
 
 (* ****** ****** *)
 
+local
+
+fun
+fprintln_d2itm
+( out
+: FILEref
+, d2i: d2itm) = fprintln!(out, d2i)
+
+in (* in-of-local *)
+
 implement
 the_dexpenv_fprint
   (out) = let
@@ -1029,12 +1084,19 @@ in (* let *)
 //
 $effmask_ref
 (
-  $ENV.fprint_symenv_top
-  ( out, !p0
-  , lam(out, x) => fprint_d2itm(out, x))
+fprintln!(out, "top:");
+$ENV.fprint_symenv_top
+( out, !p0
+, lam(out, x) => fprintln_d2itm(out, x));
+fprintln!(out, "ptop:");
+$ENV.fprint_symenv_ptop
+( out, !p0
+, lam(out, x) => fprintln_d2itm(out, x));
 )
 //
 end // end of [the_dexpenv_print]
+
+end // end of [local]
 
 implement
 the_dexpenv_println
@@ -1330,28 +1392,28 @@ s2tx_vtype = S2TXTsrt(the_sort2_vtype)
 in (* in-of-local *)
 //
 val () =
-the_sortenv_add($SYM.INT_symbol, s2tx_int)
+the_sortenv_padd($SYM.INT_symbol, s2tx_int)
 val () =
-the_sortenv_add($SYM.ADDR_symbol, s2tx_addr)
+the_sortenv_padd($SYM.ADDR_symbol, s2tx_addr)
 val () =
-the_sortenv_add($SYM.BOOL_symbol, s2tx_bool)
+the_sortenv_padd($SYM.BOOL_symbol, s2tx_bool)
 val () =
-the_sortenv_add($SYM.CHAR_symbol, s2tx_char)
+the_sortenv_padd($SYM.CHAR_symbol, s2tx_char)
 //
 val () =
-the_sortenv_add($SYM.PROP_symbol, s2tx_prop)
+the_sortenv_padd($SYM.PROP_symbol, s2tx_prop)
 val () =
-the_sortenv_add($SYM.VIEW_symbol, s2tx_view)
+the_sortenv_padd($SYM.VIEW_symbol, s2tx_view)
 //
 val () =
-the_sortenv_add($SYM.TBOX_symbol, s2tx_tbox)
+the_sortenv_padd($SYM.TBOX_symbol, s2tx_tbox)
 val () =
-the_sortenv_add($SYM.TYPE_symbol, s2tx_type)
+the_sortenv_padd($SYM.TYPE_symbol, s2tx_type)
 //
 val () =
-the_sortenv_add($SYM.VTBOX_symbol, s2tx_vtbox)
+the_sortenv_padd($SYM.VTBOX_symbol, s2tx_vtbox)
 val () =
-the_sortenv_add($SYM.VTYPE_symbol, s2tx_vtype)
+the_sortenv_padd($SYM.VTYPE_symbol, s2tx_vtype)
 //
 end // end of [local]
 

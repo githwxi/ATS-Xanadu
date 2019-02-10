@@ -49,7 +49,11 @@ map_vt1$fopr(!x0 >> _): y0
 fun
 <x0:vtype>
 <y0:vtype>
-map_vtr1$fopr(&x0 >> _): y0
+map_vtr0$fopr(&x0 >> ?): y0
+fun
+<x0:vtype>
+<y0:vtype>
+map_vtr1$fopr(&x0 >> x0): y0
 //
 (* ****** ****** *)
 //
@@ -65,7 +69,10 @@ forall_vt1$test(!x0 >> _): bool
 //
 fun
 <x0:vtype>
-forall_vtr1$test(&x0 >> _): bool
+forall_vtr0$test(&x0 >> ?): bool
+fun
+<x0:vtype>
+forall_vtr1$test(&x0 >> x0): bool
 //
 (* ****** ****** *)
 //
@@ -79,6 +86,9 @@ fun
 <x0:vtype>
 foreach_vt1$work(!x0 >> _): void
 //
+fun
+<x0:vtype>
+foreach_vtr0$work(&x0 >> ?): void
 fun
 <x0:vtype>
 foreach_vtr1$work(&x0 >> _): void
