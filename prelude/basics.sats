@@ -230,6 +230,11 @@ sintgte(n) = [i:int | i >= n] sint(i)
 
 (* ****** ****** *)
 
+typedef int = sint
+typedef int(i:int) = sint(int)
+
+(* ****** ****** *)
+
 typedef nint = [i:int | i >= 0] sint(i)
 typedef nlint = [i:int | i >= 0] slint(i)
 typedef nsize = [i:int | i >= 0] ssize(i)
@@ -279,10 +284,10 @@ list1(a:type) = [n:int | n >= 1] list(a, n)
 //
 typedef listlt
   (a:type, n:int) = [k:nat | k < n] list(a, k)
-typedef listlte
-  (a:type, n:int) = [k:nat | k <= n] list(a, k)
 typedef listgt
   (a:type, n:int) = [k:int | k > n] list(a, k)
+typedef listlte
+  (a:type, n:int) = [k:nat | k <= n] list(a, k)
 typedef listgte
   (a:type, n:int) = [k:int | k >= n] list(a, k)
 typedef listbtw
@@ -302,10 +307,10 @@ list1_vt(a:type) = [n:int | n >= 1] list_vt(a, n)
 //
 typedef listlt_vt
   (a:type, n:int) = [k:nat | k < n] list_vt(a, k)
-typedef listlte_vt
-  (a:type, n:int) = [k:nat | k <= n] list_vt(a, k)
 typedef listgt_vt
   (a:type, n:int) = [k:int | k > n] list_vt(a, k)
+typedef listlte_vt
+  (a:type, n:int) = [k:nat | k <= n] list_vt(a, k)
 typedef listgte_vt
   (a:type, n:int) = [k:int | k >= n] list_vt(a, k)
 typedef listbtw_vt

@@ -123,7 +123,7 @@ the_nmspace_ins
 
 implement
 the_nmspace_find
-  {a} (fopr) = let
+  {a}(fopr) = let
 //
 vtypedef
 fopr_t =
@@ -316,6 +316,32 @@ val () = () where {
 } (* end of [val] *)
 //
 } (* end of [the_nmspace_restore] *)
+
+(* ****** ****** *)
+
+implement
+the_nmspace_locjoin
+  () = let
+//
+val xs2 = xs2 where
+{
+  val
+  (vbox(pf)|p0) =
+  ref_get_viewptr(the_nmitmlst2)
+  val-
+  ~list_vt_cons(xs1, xss) = !p0
+  val-
+  ~list_vt_cons(xs2, xss) = xss
+  val () = nmitmlst_vt_free(xs1); val () = (!p0 := xss)
+} (* end of [val] *)
+//
+in
+let
+  val
+  (vbox(pf)|p0) =
+  ref_get_viewptr(the_nmitmlst) in !p0 := list_vt_append(!p0, xs2)
+end
+end // end of [the_nmspace_locjoin]
 
 (* ****** ****** *)
 
