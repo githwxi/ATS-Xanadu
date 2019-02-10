@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,66 +28,69 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2018
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-primplmnt
-(*nonrec*)
-lemma_list_param
-  (xs) =
-(
 //
-case+ xs of
-| list_nil _ => ()
-| list_cons _ => ()
-//
-) (* lemma_list_param *)
-
-(* ****** ****** *)
-
-implement
-<x><n>
-list_tabulate(n0) =
-(
-let
-var r0: ptr?
-val () = auxlst(0, r0) in r0
-endlet
-) where
-{
 fun
-auxlst
-{ i:nat
-| i <= n}
-(
-i0: sint(i)
-,
-r0: ptr? >>
-    list_vt(x0, n-i)
-) : void =
-(
-if
-(i0 < n0)
-then let
+<xs:type>
+<x0:type>
+gseq_forall(xs): bool
+fun
+<xs:type>
+<x0:type>
+gseq_foreach(xs): void
 //
-val x0 =
-list_tabulate$fopr
-<x><n>(i0)
+(* ****** ****** *)
 //
-val r0 =
-list_vt_cons(x0, ?)
-val+
-list_vt_cons(_, r1) = r0
+fun
+<xs:type>
+<x0:type>
+gseq_iforall(xs): bool
+fun
+<xs:type>
+<x0:type>
+gseq_iforeach(xs): void
 //
-in
-  auxlst(i0+1, r1); fold@(r0)
-end // end of [then]
-else (r0 := list_vt_nil())
-)
-}
-
+(* ****** ****** *)
+//
+fun
+<xs:type>
+<x0:type>
+<y0:vtype>
+gseq_map_list(xs): list_vt(y0)
+fun
+<xs:type>
+<x0:type>
+<y0:vtype>
+gseq_map_rlist(xs): list_vt(y0)
+//
+fun
+<xs:type>
+<x0:type>
+<y0:vtype>
+gseq_map_stream(xs): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:type>
+<x0:type>
+<y0:vtype>
+gseq_imap_list(xs): list_vt(y0)
+fun
+<xs:type>
+<x0:type>
+<y0:vtype>
+gseq_imap_rlist(xs): list_vt(y0)
+//
+fun
+<xs:type>
+<x0:type>
+<y0:vtype>
+gseq_imap_stream(xs): stream_vt(y0)
+//
 (* ****** ****** *)
 
-(* end of [list.dats] *)
+(* end of [gseq.sats] *)

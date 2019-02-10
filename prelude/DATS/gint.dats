@@ -33,6 +33,46 @@
 //
 (* ****** ****** *)
 
+typedef sk = sint_k
+typedef uk = uint_k
+
+typedef slk = slint_k
+typedef ulk = ulint_k
+
+typedef ssk = ssize_k
+typedef usk = usize_k
+
+typedef sllk = sllint_k
+typedef ullk = ullint_k
+
+(* ****** ****** *)
+//
+implement
+g0int_add<sk,sk><sk> = g0add_sint_sint
+implement
+g1int_add<sk,sk><sk> = g1add_sint_sint
+//
+(* ****** ****** *)
+//
+implement
+g0int_sub<sk,sk><sk> = g0sub_sint_sint
+implement
+g1int_sub<sk,sk><sk> = g1sub_sint_sint
+//
+(* ****** ****** *)
+//
+implement
+g0int_mul<sk,sk><sk> = g0mul_sint_sint
+implement
+g1int_mul<sk,sk><sk> = g1mul_sint_sint
+//
+(* ****** ****** *)
+//
+implement
+g0int_div<sk,sk><sk> = g0div_sint_sint
+implement
+g1int_div<sk,sk><sk> = g1div_sint_sint
+//
 (* ****** ****** *)
 
-(* end of [list_vt.dats] *)
+(* end of [gint.dats] *)

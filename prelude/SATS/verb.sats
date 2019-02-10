@@ -32,32 +32,131 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
+fun
+<x0:type>
+<y0:vtype>
+map$fopr(x0): y0
 fun
 <x0:vtype>
-print$val(!x0): void
+<y0:vtype>
+map_vt0$fopr(x0): y0
 fun
 <x0:vtype>
-print$ref(&x0 >> _): void
-
+<y0:vtype>
+map_vt1$fopr(!x0 >> _): y0
+//
+fun
+<x0:vtype>
+<y0:vtype>
+map_vtr1$fopr(&x0 >> _): y0
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+forall$test(x0): bool
+fun
+<x0:vtype>
+forall_vt0$test(x0): bool
+fun
+<x0:vtype>
+forall_vt1$test(!x0 >> _): bool
+//
+fun
+<x0:vtype>
+forall_vtr1$test(&x0 >> _): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+foreach$work(x0): void
+fun
+<x0:vtype>
+foreach_vt0$work(x0): void
+fun
+<x0:vtype>
+foreach_vt1$work(!x0 >> _): void
+//
+fun
+<x0:vtype>
+foreach_vtr1$work(&x0 >> _): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+iforall$test(nint, x0): bool
+fun
+<x0:vtype>
+iforall_vt0$test(nint, x0): bool
+fun
+<x0:vtype>
+iforall_vt1$test(nint, !x0 >> _): bool
+//
+fun
+<x0:vtype>
+iforall_vtr1$test(nint, &x0 >> _): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+<r0:type>
+foldleft$nil(r0): r0
+fun
+<x0:type>
+<r0:type>
+foldleft$cons(r0, x0): r0
+//
+fun
+<x0:type>
+<r0:type>
+foldright$nil(r0): r0
+fun
+<x0:type>
+<r0:type>
+foldright$nil(x0, r0): r0
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+<y0:type>
+<z0:vtype>
+xmap$fopr(x0, y0): z0
+//
+fun
+<x0:vtype>
+<y0:vtype>
+<z0:vtype>
+xmap$fopr_vt0_vt0(x0, y0): z0
+fun
+<x0:vtype>
+<y0:vtype>
+<z0:vtype>
+xmap$fopr_vt1_vt1(!x0, !y0): z0
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+<y0:type>
+<z0:vtype>
+zmap$fopr(x0, y0): z0
+//
+fun
+<x0:vtype>
+<y0:vtype>
+<z0:vtype>
+zmap$fopr_vt0_vt0(x0, y0): z0
+fun
+<x0:vtype>
+<y0:vtype>
+<z0:vtype>
+zmap$fopr_vt1_vt1(!x0, !y0): z0
+//
 (* ****** ****** *)
 
-fun
-<x0:vtype>
-prerr$val(!x0): void
-fun
-<x0:vtype>
-prerr$ref(&x0 >> _): void
-
-(* ****** ****** *)
-
-fun
-<x0:vtype>
-fprint$val(FILEref, !x0): void
-fun
-<x0:vtype>
-fprint$ref(FILEref, &x0 >> _): void
-
-(* ****** ****** *)
-
-(* end of [print.sats] *)
+(* end of [verb.sats] *)
