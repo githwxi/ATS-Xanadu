@@ -434,6 +434,13 @@ case- x0.node() of
   , "D2Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f2ds)
 //
+| D2Csymload
+  (tok, sym0, dpi0) =>
+  fprint!
+  ( out
+  , "D2Csymload("
+  , tok, "; ", sym0, "; ", dpi0, ")")
+//
 | D2Cdatasort(d1c) =>
   fprint!(out, "D2Cdatasort(", d1c, ")")
 | D2Cdatatype(d1c) =>

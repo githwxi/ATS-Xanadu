@@ -704,6 +704,9 @@ auxlist1
 ( d1e0
 : d1exp): d2exp = let
 //
+val
+loc0 = d1e0.loc()
+//
 val-
 D1Elist(d1es) = d1e0.node()
 //
@@ -716,7 +719,7 @@ trans12_dexp(d1es.head())
 else
 (
 d2exp_tuple
-(d1e0.loc(), knd, npf, d2es)
+(loc0, knd, npf, d2es)
 ) where
 {
   val knd = 0
@@ -731,21 +734,75 @@ auxlist2
 ( d1e0
 : d1exp): d2exp = let
 //
+val
+loc0 = d1e0.loc()
+//
 val-
 D1Elist
-(d1es1, d1es2) = d1e0.node()
+(xs1, xs2) = d1e0.node()
 //
 in
 (
 d2exp_tuple
-(d1e0.loc(), knd, npf, d2es1+d2es2)
+(loc0, knd, npf, ys1 + ys2)
 ) where {
   val knd = 0
-  val npf = length(d1es1)
-  val d2es1 = trans12_dexplst(d1es1)
-  val d2es2 = trans12_dexplst(d1es2)
+  val npf = list_length(xs1)
+  val ys1 = trans12_dexplst(xs1)
+  val ys2 = trans12_dexplst(xs2)
 }
 end // end of [auxlist2]
+
+(* ****** ****** *)
+
+fun
+auxtuple1
+( d1e0
+: d1exp): d2exp = let
+//
+val
+loc0 = d1e0.loc()
+//
+val-
+D1Etuple
+(tok, d1es) = d1e0.node()
+//
+val knd = 0
+val npf = ~1
+val d2es = trans12_dexplst(d1es)
+//
+in
+  d2exp_tuple(loc0, knd, npf, d2es)
+end // end of [auxtuple1]
+
+fun
+auxtuple2
+( d1e0
+: d1exp): d2exp = let
+//
+val
+loc0 = d1e0.loc()
+//
+val-
+D1Etuple
+( tok
+, xs1, xs2) = d1e0.node()
+//
+val knd = 0
+val npf = list_length(xs1)
+//
+val d2es =
+(
+  list_append(ys1, ys2)
+) where
+{
+  val ys1 = trans12_dexplst(xs1)
+  val ys2 = trans12_dexplst(xs2)
+} (* end of [val] *)
+//
+in
+  d2exp_tuple(loc0, knd, npf, d2es)
+end // end of [auxtuple2]
 
 (* ****** ****** *)
 
@@ -781,8 +838,15 @@ d1e0.node() of
 *)
 | D1Ewhere _ => auxwhere(d1e0)
 //
-| D1Elist(_) => auxlist1(d1e0)
-| D1Elist(_, _) => auxlist2(d1e0)
+| D1Elist
+  ( d1es ) => auxlist1(d1e0)
+| D1Elist
+  (xs1, xs2) => auxlist2(d1e0)
+//
+| D1Etuple
+  (k0, _) => auxtuple1(d1e0)
+| D1Etuple
+  (k0, _, _) => auxtuple2(d1e0)
 //
 | D1Eif0 // simple
   (d1e1, d1e2, opt3) =>
