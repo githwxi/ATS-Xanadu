@@ -384,14 +384,29 @@ typedef d2eclopt = Option(d2ecl)
 (* ****** ****** *)
 //
 datatype d2itm =
-  | D2ITMvar of (d2var)
-  | D2ITMcst of (d2cstlst)
-  | D2ITMcon of (d2conlst)
 //
+| D2ITMvar of (d2var)
+| D2ITMcst of (d2cstlst)
+| D2ITMcon of (d2conlst)
+//
+| D2ITMsym of (sym_t, d2pitmlst)
+//
+and
+d2pitm =
+| D2PITMnone of (int(*pval*))
+| D2PITMsome of (int(*pval*), d2itm)
+//
+where
+d2itmlst = List0(d2itm)
+and
+d2pitmlst = List0(d2pitm)
+
 (* ****** ****** *)
 //
-typedef d2itmopt = Option(d2itm)
-vtypedef d2itmopt_vt = Option_vt(d2itm)
+typedef
+d2itmopt = Option(d2itm)
+vtypedef
+d2itmopt_vt = Option_vt(d2itm)
 //
 (* ****** ****** *)
 //
@@ -405,6 +420,10 @@ fprint_d2itm: fprint_type(d2itm)
 overload print with print_d2itm
 overload prerr with prerr_d2itm
 overload fprint with fprint_d2itm
+//
+fun
+fprint_d2pitm: fprint_type(d2pitm)
+overload fprint with fprint_d2pitm
 //
 (* ****** ****** *)
 //
@@ -460,6 +479,8 @@ d2exp_node =
 | D2Econ2 of (d2conlst)
 | D2Ecst2 of (d2cstlst)
 //
+| D2Esym0 of (d1exp, d2pitmlst)
+//
 | D2Esapp of (d2exp, s2explst)
 | D2Etapp of (d2exp, s2explst)
 | D2Edapp of (d2exp, int(*npf*), d2explst)
@@ -468,6 +489,10 @@ d2exp_node =
 //
 | D2Etuple of
   (int(*knd*), int(*npf*), d2explst)
+//
+| D2Eif0 of
+  ( d2exp(*cond*)
+  , d2exp(*then*), d2expopt(*else*))
 //
 | D2Eanno of
   (d2exp(*applst*), s2exp(*type*))
@@ -558,6 +583,11 @@ fun d2exp_con1(loc_t, d2con): d2exp
 fun d2exp_cst1(loc_t, d2cst): d2exp
 fun d2exp_con2(loc_t, d2conlst): d2exp
 fun d2exp_cst2(loc_t, d2cstlst): d2exp
+//
+fun
+d2exp_sym0
+( loc0: loc_t
+, d1e0: d1exp, dpis: d2pitmlst): d2exp
 //
 fun
 d2exp_make_node
@@ -669,6 +699,11 @@ d2ecl_node =
 | D2Clist of (d2eclist)
 *)
 //
+| D2Cstatic of
+  (token(*STATIC*), d2ecl)
+| D2Cextern of
+  (token(*EXTERN*), d2ecl)
+//
 | D2Clocal of
   (d2eclist(*head*), d2eclist(*body*))
 //
@@ -681,11 +716,15 @@ d2ecl_node =
 //
 | D2Cvaldecl of
   ( token(*valkind*)
-  , declmodopt(*rec/prf/...*), v2aldeclist)
+  , declmodopt, v2aldeclist)
 //
 | D2Cfundecl of
   ( token(*funkind*)
   , declmodopt, tq2arglst(*tmpargs*), f2undeclist)
+//
+| D2Csymload of
+  ( token(*symload*)
+  , sym_t(*loaded*), d2pitm(*loading*))
 //
 | D2Cdatasort of (d1ecl)
 | D2Cdatatype of (d1ecl)

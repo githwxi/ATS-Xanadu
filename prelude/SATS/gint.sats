@@ -32,13 +32,66 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
 fun
 <k1:type>
 <k2:type>
 g0int_cast
 (g0int(k1)):<> g0int(k2)
-
+fun
+<k1:type>
+<k2:type>
+g1int_cast
+{i:int}
+(g1int(k1, i)):<> g1int(k2, i)
+fun
+<k1:type>
+<k2:type>
+g1uint_cast
+{i:nat}
+(g1int(k1, i)):<> g1int(k2, i)
+//
+(* ****** ****** *)
+//
+fun
+g0cast_sint_uint
+(x: sint):<> uint = $ext()
+fun
+g1cast_sint_uint
+{i:nat}
+(x: sint(i)):<> uint(i) = $ext()
+//
+#symload
+cast with g0cast_sint_uint of 10
+#symload
+cast with g1cast_sint_uint of 11
+//
+fun
+g0cast_sint_slint
+(x: sint):<> slint = $ext()
+fun
+g1cast_sint_slint
+{i:int}
+(x: sint(i)):<> slint(i) = $ext()
+//
+#symload
+cast with g0cast_sint_slint of 10
+#symload
+cast with g1cast_sint_slint of 11
+//
+fun
+g0cast_slint_sllint
+(x: slint):<> sllint = $ext()
+fun
+g1cast_slint_sllint
+{i:int}
+(x: slint(i)):<> sllint(i) = $ext()
+//
+#symload
+cast with g0cast_slint_sllint of 10
+#symload
+cast with g1cast_slint_sllint of 11
+//
 (* ****** ****** *)
 //
 fun
@@ -61,8 +114,19 @@ g1succ_sint
 {i:int}
 (x: sint(i)):<> sint(i+1) = $ext()
 //
-overload succ with g0succ_sint of 10
-overload succ with g1succ_sint of 11
+#symload succ with g0succ_sint of 10
+#symload succ with g1succ_sint of 11
+//
+fun
+g0succ_uint
+(x: uint):<> uint = $ext()
+fun
+g1succ_uint
+{i:int}
+(x: uint(i)):<> uint(i+1) = $ext()
+//
+#symload succ with g0succ_uint of 11
+#symload succ with g1succ_uint of 11
 //
 (* ****** ****** *)
 //
@@ -91,9 +155,14 @@ fun
 g1pred_sint
 {i:int}
 (x: sint(i)):<> sint(i-1) = $ext()
+fun
+g1pred_uint
+{i:pos}
+(x: uint(i)):<> uint(i-1) = $ext()
 //
-overload pred with g0pred_sint of 10
-overload pred with g1pred_sint of 11
+#symload pred with g0pred_sint of 10
+#symload pred with g1pred_sint of 11
+#symload pred with g1pred_uint of 11
 //
 (* ****** ****** *)
 //
@@ -125,8 +194,8 @@ g1add_sint_sint
 ( x: sint(i)
 , y: sint(j)):<> sint(i+j) = $ext()
 //
-overload + with g0add_sint_sint of 10
-overload + with g1add_sint_sint of 12
+#symload + with g0add_sint_sint of 10
+#symload + with g1add_sint_sint of 12
 //
 (* ****** ****** *)
 //
@@ -163,10 +232,10 @@ fun
 g1sub_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(i)):<> sint(i-j) = $ext()
+, y: sint(j)):<> sint(i-j) = $ext()
 //
-overload - with g0sub_sint_sint of 10
-overload - with g1sub_sint_sint of 12
+#symload - with g0sub_sint_sint of 10
+#symload - with g1sub_sint_sint of 12
 //
 (* ****** ****** *)
 //
@@ -194,10 +263,10 @@ fun
 g1mul_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(i)):<> sint(i*j) = $ext()
+, y: sint(j)):<> sint(i*j) = $ext()
 //
-overload * with g0mul_sint_sint of 10
-overload * with g1mul_sint_sint of 12
+#symload * with g0mul_sint_sint of 10
+#symload * with g1mul_sint_sint of 12
 //
 (* ****** ****** *)
 //
@@ -227,10 +296,94 @@ g1div_sint_sint
 {i,j:int
 |j != 0 }
 ( x: sint(i)
-, y: sint(i)):<> sint(i/j) = $ext()
+, y: sint(j)):<> sint(i/j) = $ext()
 //
-overload / with g0div_sint_sint of 10
-overload / with g1div_sint_sint of 12
+#symload / with g0div_sint_sint of 10
+#symload / with g1div_sint_sint of 12
+//
+(* ****** ****** *)
+//
+fun
+g0lt_sint_sint
+( x: sint
+, y: sint):<> bool = $ext()
+fun
+g0lte_sint_sint
+( x: sint
+, y: sint):<> bool = $ext()
+//
+fun
+g0gt_sint_sint
+( x: sint
+, y: sint):<> bool = $ext()
+fun
+g0gte_sint_sint
+( x: sint
+, y: sint):<> bool = $ext()
+//
+fun
+g0eq_sint_sint
+( x: sint
+, y: sint):<> bool = $ext()
+fun
+g0neq_sint_sint
+( x: sint
+, y: sint):<> bool = $ext()
+//
+(* ****** ****** *)
+//
+#symload < with g0lt_sint_sint of 10
+#symload > with g0gt_sint_sint of 10
+#symload = with g0eq_sint_sint of 10
+//
+#symload <= with g0lte_sint_sint of 10
+#symload >= with g0gte_sint_sint of 10
+#symload != with g0neq_sint_sint of 10
+//
+(* ****** ****** *)
+//
+fun
+g1lt_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)):<> bool(i<j) = $ext()
+fun
+g1lte_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)):<> bool(i<=j) = $ext()
+//
+fun
+g1gt_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)):<> bool(i>j) = $ext()
+fun
+g1gte_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)):<> bool(i>=j) = $ext()
+//
+fun
+g1eq_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)):<> bool(i=j) = $ext()
+fun
+g1neq_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)):<> bool(i!=j) = $ext()
+//
+(* ****** ****** *)
+//
+#symload < with g1lt_sint_sint of 12
+#symload > with g1gt_sint_sint of 12
+#symload = with g1eq_sint_sint of 12
+//
+#symload <= with g1lte_sint_sint of 12
+#symload >= with g1gte_sint_sint of 12
+#symload != with g1neq_sint_sint of 12
 //
 (* ****** ****** *)
 

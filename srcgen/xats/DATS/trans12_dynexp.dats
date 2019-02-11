@@ -59,6 +59,10 @@ NMS = "./../SATS/nmspace.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp0.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 
@@ -433,6 +437,8 @@ case- d2i0 of
   auxid_con(d1e0, xs)
 | D2ITMcst(xs) =>
   auxid_cst(d1e0, xs)
+| D2ITMsym(_, dpis) =>
+  auxid_sym(d1e0, dpis)
 ) (* end of [auxid_d2i] *)
 and
 auxid_var
@@ -453,8 +459,10 @@ auxid_con
 //
 if
 list_isnot_sing(d2cs)
-then d2exp_con2(loc0, d2cs)
-else d2exp_con1(loc0, list_head(d2cs))
+then
+d2exp_con2(loc0, d2cs)
+else
+d2exp_con1(loc0, d2cs.head())
 //
 ) where
 {
@@ -470,14 +478,28 @@ auxid_cst
 //
 if
 list_isnot_sing(d2cs)
-then d2exp_cst2(loc0, d2cs)
-else d2exp_cst1(loc0, list_head(d2cs))
+then
+d2exp_cst2(loc0, d2cs)
+else
+d2exp_cst1(loc0, d2cs.head())
 //
 ) where
 {
   val loc0 = d1e0.loc()
 } (* end of [auxid_cst] *)
-
+and
+auxid_sym
+( d1e0
+: d1exp
+, dpis
+: d2pitmlst): d2exp =
+(
+  d2exp_sym0(loc0, d1e0, dpis)
+) where
+{
+  val loc0 = d1e0.loc()
+} (* end of [auxid_sym] *)
+//
 (* ****** ****** *)
 
 fun
@@ -761,6 +783,19 @@ d1e0.node() of
 //
 | D1Elist(_) => auxlist1(d1e0)
 | D1Elist(_, _) => auxlist2(d1e0)
+//
+| D1Eif0 // simple
+  (d1e1, d1e2, opt3) =>
+  (
+    d2exp_make_node
+    ( loc0
+    , D2Eif0(d2e1, d2e2, opt3))
+  ) where
+  {
+    val d2e1 = trans12_dexp(d1e1)
+    val d2e2 = trans12_dexp(d1e2)
+    val opt3 = trans12_dexpopt(opt3)
+  } (* end of [D1Eif0] *)
 //
 | D1Eanno
   (d1e1, s1e2) =>
@@ -1430,6 +1465,161 @@ case+ d2vs of
 
 (* ****** ****** *)
 
+local
+
+fun
+auxsym
+(x0: s0ymb): sym_t =
+(
+case+
+x0.node() of
+| S0YMBi0dnt
+  (id) =>
+  (
+    dexpid_sym(tok)
+  ) where
+  {
+    val-
+    I0DNTsome(tok) = id.node()
+  }
+| S0YMBdtlab
+  (tok, l0) =>
+  (
+    $LAB.label_dotize(lab)
+  ) where
+  {
+    val-
+    L0ABsome(lab) = l0.node()
+  }
+| S0YMBbrack
+  (tok1, tok2) => $SYM.LRBRACK_symbol
+) (* end of [auxsym] *)
+
+fun
+auxdqid
+( dqid
+: dq0eid
+, pval: int): d2pitm =
+let
+//
+val opt =
+(
+case+ dqid of
+| DQ0EIDnone(id0) =>
+  let
+    val
+    sym = dexpid_sym(tok)
+  in
+    the_dexpenv_find(sym)
+  end where
+  {
+    val-
+    I0DNTsome(tok) = id0.node()
+  }
+| DQ0EIDsome(qua, id0) =>
+  let
+    val
+    qua = sexpid_sym(qua)
+    val
+    sym = dexpid_sym(tok)
+  in
+    the_dexpenv_qfind(qua, sym)
+  end where
+  {
+    val-
+    I0DNTsome(tok) = id0.node()
+  }
+) : d2itmopt_vt // end of [val]
+//
+in
+//
+case+ opt of
+| ~None_vt() => D2PITMnone(pval)
+| ~Some_vt(d2i) => D2PITMsome(pval, d2i)
+//
+end // end of [auxdqid]
+
+in (* in-of-local *)
+
+fun
+aux_symload
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Csymload
+( tok
+, sym
+, dqid, opt) = d1c0.node()
+//
+val pval =
+(
+case+ opt of
+| None() =>
+  (0)(*default*)
+| Some(int) =>
+  (
+  token2sint(tok)
+  ) where
+  {
+    val-
+    T0INTsome(tok) = int.node()
+  }
+) : int // end of [val]
+//
+val
+sym = auxsym(sym)
+//
+val
+dpis = let
+//
+val opt =
+the_dexpenv_find(sym)
+//
+in (* in-of-let *)
+(
+case+ opt of
+| ~None_vt() =>
+   list_nil()
+| ~Some_vt(d2i) =>
+  (
+  case+ d2i of
+  | D2ITMsym
+    (_, dpis) => dpis
+  | _(*else*) =>
+    (
+      list_sing
+      (D2PITMsome(0, d2i))
+    )
+  )
+) : d2pitmlst // end of [val]
+end // end of [let]
+//
+val
+dpi0 =
+auxdqid(dqid, pval)
+//
+val ((*void*)) =
+(
+  the_dexpenv_add(sym, d2i)
+) where
+{
+  val d2i =
+  D2ITMsym
+  (sym, list_cons(dpi0, dpis))
+}
+//
+in
+  d2ecl_make_node
+  (loc0, D2Csymload(tok, sym, dpi0))
+end // end of [aux_symload]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 fun
 aux_datasort
 ( d1c0
@@ -1949,6 +2139,21 @@ d1c0.node() of
 | D1Cnone() => d2ecl_none1(d1c0)
 | D1Cnone(_) => d2ecl_none1(d1c0)
 //
+| D1Cstatic
+  (tok, d1c) =>
+  let
+    val d2c = trans12_decl(d1c)
+  in
+    d2ecl_make_node(loc0, D2Cstatic(tok, d2c))
+  end
+| D1Cextern
+  (tok, d1c) =>
+  let
+    val d2c = trans12_decl(d1c)
+  in
+    d2ecl_make_node(loc0, D2Cextern(tok, d2c))
+  end
+//
 | D1Cabssort _ => aux_abssort(d1c0)
 //
 | D1Cstacst0 _ => aux_stacst0(d1c0)
@@ -1962,6 +2167,8 @@ d1c0.node() of
 | D1Cvaldecl _ => aux_valdecl(d1c0)
 //
 | D1Cfundecl _ => aux_fundecl(d1c0)
+//
+| D1Csymload _ => aux_symload(d1c0)
 //
 | D1Cdatasort _ => aux_datasort(d1c0)
 //

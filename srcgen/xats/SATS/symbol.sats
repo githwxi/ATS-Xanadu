@@ -108,6 +108,10 @@ val BSLASH_symbol : symbol // symbol("\")
 
 (* ****** ****** *)
 
+val LRBRACK_symbol : symbol // symbol("[]")
+
+(* ****** ****** *)
+
 val INT_symbol : symbol // int sort
 val ADDR_symbol : symbol // addr sort
 val BOOL_symbol : symbol // bool sort

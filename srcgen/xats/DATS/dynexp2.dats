@@ -484,6 +484,13 @@ d2exp_make_node(loc0, D2Ecst2(d2cs))
 (* ****** ****** *)
 //
 implement
+d2exp_sym0
+(loc0, d1e0, dpis) =
+d2exp_make_node(loc0, D2Esym0(d1e0, dpis))
+//
+(* ****** ****** *)
+//
+implement
 d2exp_sapp
 (loc0, d2f0, s2as) =
 (
@@ -509,7 +516,7 @@ d2exp_app2
   (loc0, d2f0, npf0, d2as)
 ) where
 {
-val npf0 = 0
+val npf0 = ~1
 val d2as = list_pair(d2a1, d2a2)
 }
 //

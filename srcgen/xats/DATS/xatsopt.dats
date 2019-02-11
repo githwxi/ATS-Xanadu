@@ -437,16 +437,26 @@ extern
 fun
 the_prelude_load
 (
-  XATSHOME: string
+XATSHOME: string
+,
+stadyn: int, given: string
 ) : void =
   "ext#libxatsopt_the_prelude_load"
+//
 extern
 fun
-the_prelude_load_if
+the_preludes_load
+(
+  XATSHOME: string
+) : void =
+  "ext#libxatsopt_the_preludes_load"
+extern
+fun
+the_preludes_load_if
 (
   XATSHOME: string, flag: &int
 ) : void =
-  "ext#libxatsopt_the_prelude_load_if"
+  "ext#libxatsopt_the_preludes_load_if"
 //
 (* ****** ****** *)
 //
@@ -766,7 +776,7 @@ stadyn >= 0
 {
 //
 val () =
-the_prelude_load_if
+the_preludes_load_if
 (XATSHOME, st0.prelude)
 // end of [val]
 //
@@ -1398,41 +1408,107 @@ println!
 } (* the_basics_load *)
 //
 (* ****** ****** *)
-
+//
 implement
 the_prelude_load
+(XATSHOME, stadyn, given) = let
+//
+  val
+  d1cs = trans01_declist(d0cs)
+//
+  val
+  (pf0|()) =
+  the_trans12_pushnil((*void*))
+  val d2cs = trans12_declist(d1cs)
+  val
+  ((*joined*)) =
+  the_trans12_pjoinwth1(pf0 | fpath, d2cs)
+//
+in (* nothing *) end where
+{
+//
+val () =
+println!
+("the_prelude_load: ", given)
+//
+  val fname =
+  dirbase(XATSHOME, given)
+  val fpath =
+  fpath_make(given, given, fname)  
+//
+  val
+  (pf0 | ()) =
+  $FP0.the_filepathlst_push(fpath)
+//
+  val d0cs = let
+    val
+    opt =
+    fileref_open_opt(fname, file_mode_r)
+  in
+    case+ opt of
+    | ~None_vt() =>
+       list_nil(*void*)
+    | ~Some_vt(filr) =>
+      (
+        fileref_close(filr); d0cs
+      ) where
+      {
+        val
+        d0cs =
+        parse_from_fileref_toplevel(stadyn, filr)
+      } (* end of [Some_vt] *)
+   end : d0eclist // end-of-let
+//
+  val
+  ((*popped*)) =
+  $FP0.the_filepathlst_pout(pf0 | (*none*))
+//
+} (* the_prelude_load *)
+//
+(* ****** ****** *)
+
+implement
+the_preludes_load
   (XATSHOME) =
 {
 //
 val () =
-the_fixity_load(XATSHOME)
+the_fixity_load
+  (XATSHOME)
 //
 val () =
 the_basics_load
 ( XATSHOME
-, 0(*static*), "prelude/basics.sats")
+, 0(*static*)
+, "prelude/basics.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gint.sats")
 //
 (*
 val () =
-println! "[the_prelude_load] is finished."
+println! "[the_preludes_load] is finished."
 *)
 //
-} (* end of [the_prelude_load] *)
+} (* end of [the_preludes_load] *)
 
 (* ****** ****** *)
 //
 implement
-the_prelude_load_if
+the_preludes_load_if
   (XATSHOME, flag) =
 (
 //
 if
 (flag = 0)
 then let
-  val () = flag := flag + 1 in the_prelude_load(XATSHOME)
+  val () =
+  (flag := flag + 1) in the_preludes_load(XATSHOME)
 end // end of [then]
 //
-) (* end of [the_prelude_load_if] *)
+) (* end of [the_preludes_load_if] *)
 
 (* ****** ****** *)
 

@@ -244,18 +244,23 @@ vbox_make_viewptr{s2tenv}(pf|p0)
 //
 fun
 the_nmspace_find
-  (tid: sym_t): s2txtopt_vt = let
+  (tid: sym_t): s2txtopt_vt =
+let
   fun
   fopr
-  (menv: fmodenv): s2txtopt_vt =
-    ans where
+  ( menv
+  : fmodenv)
+  : s2txtopt_vt = s2topt where
   {
-    val (pf, fpf | p0) =
+    val
+    ( pf0
+    , fpf|p0) =
       fmodenv_get_s2tmap(menv)
-    val ans =
+    // end of [val]
+    val s2topt =
       $MAP.symmap_search(!p0, tid)
-    prval () =
-      minus_v_addback(fpf, pf | menv)
+    prval ((*void*)) =
+      minus_v_addback(fpf, pf0 | menv)
     // end of [prval]
   }
 in
@@ -414,10 +419,12 @@ fprintln!(out, "top:");
 $ENV.fprint_symenv_top
 ( out, !p0
 , lam(out, x) => fprintln_s2txt(out, x));
+(*
 fprintln!(out, "ptop:");
 $ENV.fprint_symenv_ptop
 ( out, !p0
 , lam(out, x) => fprintln_s2txt(out, x));
+*)
 )
 //
 end // end of [the_sortenv_print]
@@ -464,18 +471,21 @@ vbox_make_viewptr{s2ienv}(pf|p0)
 //
 fun
 the_nmspace_find
-  (tid: sym_t): s2itmopt_vt = let
+  (tid: sym_t): s2itmopt_vt =
+let
   fun
   fopr
   (menv: fmodenv): s2itmopt_vt =
-    ans where
+    s2iopt where
   {
-    val (pf, fpf | p0) =
+    val
+    ( pf0
+    , fpf|p0) =
       fmodenv_get_s2imap(menv)
-    val ans =
+    val s2iopt =
       $MAP.symmap_search(!p0, tid)
-    prval () =
-      minus_v_addback(fpf, pf | menv)
+    prval ((*void*)) =
+      minus_v_addback(fpf, pf0 | menv)
     // end of [prval]
   }
 in
@@ -729,10 +739,12 @@ fprintln!(out, "top:");
 $ENV.fprint_symenv_top
 ( out, !p0
 , lam(out, x) => fprintln_s2itm(out, x));
+(*
 fprintln!(out, "ptop:");
 $ENV.fprint_symenv_ptop
 ( out, !p0
 , lam(out, x) => fprintln_s2itm(out, x));
+*)
 )
 //
 end // end of [the_sexpenv_print]
@@ -779,18 +791,23 @@ vbox_make_viewptr{d2ienv}(pf|p0)
 //
 fun
 the_nmspace_find
-  (tid: sym_t): d2itmopt_vt = let
+  (tid: sym_t): d2itmopt_vt =
+let
   fun
   fopr
-  (menv: fmodenv): d2itmopt_vt =
-    ans where
+  ( menv
+  : fmodenv )
+  : d2itmopt_vt = d2iopt where
   {
-    val (pf, fpf | p0) =
+    val
+    ( pf0
+    , fpf|p0) =
       fmodenv_get_d2imap(menv)
-    val ans =
+    // end of [val]
+    val d2iopt =
       $MAP.symmap_search(!p0, tid)
-    prval () =
-      minus_v_addback(fpf, pf | menv)
+    prval ((*void*)) =
+      minus_v_addback(fpf, pf0 | menv)
     // end of [prval]
   }
 in
@@ -994,6 +1011,43 @@ end // end of [the_dexpenv_find]
 (* ****** ****** *)
 
 implement
+the_dexpenv_qfind
+  (qua, sym) = let
+//
+val
+opt =
+the_sexpenv_find(qua)
+//
+in
+//
+case+ opt of
+| ~None_vt() =>
+   None_vt()
+| ~Some_vt(s2i) =>
+  (
+  case+ s2i of
+  | S2ITMfmodenv
+    (menv) => d2iopt where
+    {
+      val
+      ( pf0
+      , fpf|p0) =
+        fmodenv_get_d2imap(menv)
+      // end of [val]
+      val d2iopt =
+        $MAP.symmap_search(!p0, sym)
+      prval ((*void*)) =
+        minus_v_addback(fpf, pf0 | menv)
+      // end of [prval]
+    }
+  | _(*non-S2ITMfmodenv*) => None_vt()
+  ) (* end of [Some_vt] *)
+//
+end // end of [the_dexpenv_qfind]
+
+(* ****** ****** *)
+
+implement
 the_dexpenv_pop (
   pfenv | (*none*)
 ) = let
@@ -1088,10 +1142,12 @@ fprintln!(out, "top:");
 $ENV.fprint_symenv_top
 ( out, !p0
 , lam(out, x) => fprintln_d2itm(out, x));
+(*
 fprintln!(out, "ptop:");
 $ENV.fprint_symenv_ptop
 ( out, !p0
 , lam(out, x) => fprintln_d2itm(out, x));
+*)
 )
 //
 end // end of [the_dexpenv_print]
@@ -1338,6 +1394,9 @@ d2p0.node() of
 //
 | D2Pvar(d2v) =>
   the_dexpenv_add_var(d2v)
+//
+| D2Panno
+  (d2p, s2e) => auxd2p0(d2p)
 //
 | _(* rest-of-d2pat *) => ()
 )
