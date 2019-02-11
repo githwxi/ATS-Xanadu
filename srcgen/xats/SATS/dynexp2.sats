@@ -485,6 +485,8 @@ d2exp_node =
 | D2Etapp of (d2exp, s2explst)
 | D2Edapp of (d2exp, int(*npf*), d2explst)
 //
+| D2Elet of
+  (d2eclist, d2explst(*semi*))
 | D2Ewhere of (d2exp, d2eclist)
 //
 | D2Etuple of
@@ -540,6 +542,12 @@ d2exp_dapp
 , npf0: int, d2as: d2explst): d2exp
 //
 (* ****** ****** *)
+//
+fun
+d2exp_let
+( loc0: loc_t
+, d2cs: d2eclist
+, d2es: d2explst(*semi*)): d2exp
 //
 fun
 d2exp_where

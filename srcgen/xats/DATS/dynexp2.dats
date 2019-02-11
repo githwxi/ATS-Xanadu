@@ -531,6 +531,14 @@ d2exp_make_node
 (* ****** ****** *)
 //
 implement
+d2exp_let
+(loc0, d2cs, d2es) =
+(
+  d2exp_make_node
+  (loc0, D2Elet(d2cs, d2es))
+)
+//
+implement
 d2exp_where
 (loc0, d2e1, d2cs) =
 (
