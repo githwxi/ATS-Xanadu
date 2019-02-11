@@ -100,6 +100,13 @@ implement
 fprint_val<d2var> = fprint_d2var
 //
 (* ****** ****** *)
+
+implement
+fprint_val<d2itm> = fprint_d2itm
+implement
+fprint_val<d2pitm> = fprint_d2pitm
+
+(* ****** ****** *)
 //
 implement
 fprint_val<d2pat> = fprint_d2pat
@@ -313,6 +320,14 @@ case- x0.node() of
 | D2Econ2(d2cs) =>
   fprint!(out, "D2Econ2(", d2cs, ")")
 //
+| D2Esym0
+  (d1e0, dpis) =>
+  fprint!(out, "D2Esym0(", d1e0, ")")
+(*
+  fprint!
+  (out, "D2Esym0(", d1e0, "; ", dpis, ")")
+*)
+//
 | D2Esapp
   (d2f0, s2as) =>
   fprint!
@@ -340,6 +355,12 @@ case- x0.node() of
   fprint!
   ( out, "D2Etuple("
   , knd, "; ", npf, "; ", d2es, ")")
+//
+| D2Eif0
+  (d2e1, d2e2, opt3) =>
+  fprint!
+  ( out, "D2Eif0("
+  , d2e1, "; ", d2e2, "; ", opt3, ")")
 //
 | D2Eanno(d2e1, s2e2) =>
   fprint!
@@ -379,6 +400,13 @@ fprint_d2ecl
   (out, x0) =
 (
 case- x0.node() of
+//
+| D2Cstatic
+  (tok, d2c) =>
+  fprint!(out, "D2Cstatic(", d2c, ")")
+| D2Cextern
+  (tok, d2c) =>
+  fprint!(out, "D2Cextern(", d2c, ")")
 //
 | D2Cabssort(d1c) =>
   fprint!(out, "D2Cabssort(", d1c, ")")
@@ -453,7 +481,23 @@ case+ x0 of
 | D2ITMvar(d2v0) =>
   fprint!(out, "D2ITMvar(", d2v0, ")")
 //
+| D2ITMsym(sym, dpis) =>
+  fprint!
+  (out, "D2ITMsym(", sym, "; ", dpis, ")")
+//
+) (* end of [fprint_d2itm] *)
+//
+implement
+fprint_d2pitm
+  (out, x0) =
+(
+case+ x0 of
+| D2PITMnone(pval) =>
+  fprint!(out, "D2PITMnone(", pval, ")")
+| D2PITMsome(pval, d2i0) =>
+  fprint!(out, "D2PITMsome(", pval, "; ", d2i0, ")")
 )
+//
 (* ****** ****** *)
 //
 implement

@@ -365,6 +365,11 @@ BSLASH_symbol = symbol_make("\\")
 (* ****** ****** *)
 
 implement
+LRBRACK_symbol = symbol_make("[]")
+
+(* ****** ****** *)
+
+implement
 INT_symbol = symbol_make("int")
 implement
 ADDR_symbol = symbol_make("addr")
