@@ -51,37 +51,30 @@ $(CAT) ./DATA/syntax_dyn.dats | $(XATSOPT) --dynamic
 ######
 
 all:: prelude
+prelude:: gint_sats
+prelude:: gint_dats
 prelude:: list_sats
 prelude:: list_dats
-prelude:: list_vt_sats
-prelude:: list_vt_dats
-prelude:: opverb_sats
-prelude:: opverb_dats
 
 PRELUDE=./../../../prelude
 
 basics_sats:; \
 $(CAT) $(PRELUDE)/basics.sats | $(XATSOPT) --static
 
+gint_sats:; \
+$(CAT) $(PRELUDE)/SATS/gint.sats | $(XATSOPT) --static
+gint_dats:; \
+$(CAT) $(PRELUDE)/DATS/gint.dats | $(XATSOPT) --static
+
 list_sats:; \
 $(CAT) $(PRELUDE)/SATS/list.sats | $(XATSOPT) --static
 list_dats:; \
 $(CAT) $(PRELUDE)/DATS/list.dats | $(XATSOPT) --dynamic
 
-list_vt_sats: ; \
-$(CAT) $(PRELUDE)/SATS/list_vt.sats | $(XATSOPT) --static
-list_vt_dats: ; \
-$(CAT) $(PRELUDE)/DATS/list_vt.dats | $(XATSOPT) --dynamic
-
 print_sats: ; \
 $(CAT) $(PRELUDE)/SATS/print.sats | $(XATSOPT) --static
 print_dats: ; \
 $(CAT) $(PRELUDE)/DATS/print.dats | $(XATSOPT) --dynamic
-
-opverb_sats: ; \
-$(CAT) $(PRELUDE)/SATS/opverb.sats | $(XATSOPT) --static
-opverb_dats: ; \
-$(CAT) $(PRELUDE)/DATS/opverb.dats | $(XATSOPT) --dynamic
 
 ######
 
