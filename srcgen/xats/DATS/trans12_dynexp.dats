@@ -671,6 +671,33 @@ end // end of [auxapp2]
 (* ****** ****** *)
 
 fun
+auxlet
+( d1e0
+: d1exp): d2exp = let
+//
+val-
+D1Elet
+( d1cs
+, d1es) = d1e0.node()
+//
+val
+(pf0|()) =
+the_trans12_pushnil()
+//
+val d2cs = trans12_declist(d1cs)
+val d2es = trans12_dexplst(d1es)
+//
+val
+((*void*)) =
+the_trans12_popfree(pf0|(*void*))
+//
+in
+  d2exp_let(d1e0.loc(), d2cs, d2es)
+end // end of [auxlet]
+
+(* ****** ****** *)
+
+fun
 auxwhere
 ( d1e0
 : d1exp): d2exp = let
@@ -833,9 +860,8 @@ d1e0.node() of
 | D1Eapp1 _ => auxapp1(d1e0)
 | D1Eapp2 _ => auxapp2(d1e0)
 //
-(*
 | D1Elet _ => auxlet(d1e0)
-*)
+//
 | D1Ewhere _ => auxwhere(d1e0)
 //
 | D1Elist

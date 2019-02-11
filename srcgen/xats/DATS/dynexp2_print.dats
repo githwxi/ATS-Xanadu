@@ -344,6 +344,11 @@ case- x0.node() of
   ( out, "D2Edapp("
   , d2f0, "; ", npf0, "; ", d2as, ")")
 //
+| D2Elet
+  (d2cs, d2es) =>
+  fprint!
+  ( out
+  , "D2Elet(", d2cs, "; ", d2es, ")")
 | D2Ewhere
   (d2e1, d2cs) =>
   fprint!
@@ -435,25 +440,27 @@ case- x0.node() of
   , knd, "; ", mopt, "; ", tqas, "; ", f2ds)
 //
 | D2Csymload
-  (tok, sym0, dpi0) =>
+  (tok, sym0, dpi1) =>
   fprint!
   ( out
   , "D2Csymload("
-  , tok, "; ", sym0, "; ", dpi0, ")")
+  , tok, "; ", sym0, "; ", dpi1, ")")
 //
 | D2Cdatasort(d1c) =>
   fprint!(out, "D2Cdatasort(", d1c, ")")
 | D2Cdatatype(d1c) =>
   fprint!(out, "D2Cdatatype(", d1c, ")")
 //
-| D2Cdynconst(knd, tqas, d2cs) =>
-  fprint!
-  (out, "D2Cdcstdecl(", knd, "; ", tqas, "; ", d2cs)
-//
-| D2Clocal(d2cs1, d2cs2) =>
+| D2Cdynconst
+  (knd, tqas, d2cs) =>
   fprint!
   ( out
-  , "D2Clocal(", d2cs1, "; ", d2cs2, ")")
+  , "D2Cynconst(", knd, "; ", tqas, "; ", d2cs)
+//
+| D2Clocal(head, body) =>
+  fprint!
+  ( out
+  , "D2Clocal(", head, "; ", body, ")")
 //
 | D2Cnone0() =>
     fprint!(out, "D2Cnone0(", ")")

@@ -1,10 +1,22 @@
+fun
+pair(x, y) = @(x, y)
+fun
+pair(x, y) = $(x, y)
+
+////
 #extern
 fun
 fact
 {i:nat}
 .< i >.
 (x:int(i)): int =
-if x > 0 then x * fact(x-1) else 1
+if
+(x > 0)
+then
+let
+val x1 = x-1 in x * fact(x1)
+endlet
+else 1 // end of [else]
 ////
 val
 x = 1
