@@ -356,6 +356,21 @@ fun d2pat_var(loc_t, d2var): d2pat
 fun d2pat_con1(loc_t, d2con): d2pat
 fun d2pat_con2(loc_t, d2conlst): d2pat
 //
+(* ****** ****** *)
+//
+fun
+d2pat_sapp
+( loc0: loc_t
+, d2f0: d2pat(*fun*)
+, s2vs: s2varlst(*arg*)): d2pat
+fun
+d2pat_dapp
+( loc0: loc_t
+, d2f0: d2pat(*fun*)
+, npf0:int, d2ps: d2patlst(*arg*)): d2pat
+//
+(* ****** ****** *)
+//
 fun
 d2pat_tuple
 ( loc0: loc_t, knd: int

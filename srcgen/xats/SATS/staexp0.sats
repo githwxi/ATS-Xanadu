@@ -677,7 +677,7 @@ typedef s0qualst = List0(s0qua)
 //
 datatype
 s0qua_node =
-| S0QUAprop of s0exp
+| S0QUAprop of (s0exp)
 | S0QUAvars of (i0dntlst, sort0opt)
 //
 fun

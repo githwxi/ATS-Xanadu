@@ -166,7 +166,6 @@ tok.node() of
 end // end-of-let // end of [p_l0abl]
 
 (* ****** ****** *)
-
 //
 implement
 p_s0ymb(buf, err) = let
@@ -834,12 +833,6 @@ case+ tnd of
 //
 end // end of [p_s0rtdef]
 
-(* ****** ****** *)
-//
-extern
-fun
-p_s0argseq_COMMA: parser(s0arglst)
-//
 (* ****** ****** *)
 
 implement

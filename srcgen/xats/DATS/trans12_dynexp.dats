@@ -210,6 +210,85 @@ end // end of [auxid_d2cs]
 (* ****** ****** *)
 
 fun
+auxapp1
+( d1p0
+: d1pat): d2pat = let
+//
+val-
+D1Papp1
+( d1p1
+, d1p2) = d1p0.node()
+//
+in
+//
+case+
+d1p2.node() of
+//
+| D1Psqarg(s1as) =>
+  let
+    val d2p1 =
+    trans12_dpat(d1p1)
+    val s2vs =
+    trans12_sarglst(s1as)
+  in
+    d2pat_sapp(d1p0.loc(), d2p1, s2vs)
+  end // end of [D1Psqarg]
+//
+| _(*rest-of-d1pat*) => auxapp1_0_(d1p0)
+//
+end // end of [auxapp1]
+
+and
+auxapp1_0_
+( d1p0
+: d1pat): d2pat = let
+//
+val-
+D1Papp1
+( d1p1
+, d1p2) = d1p0.node()
+//
+val npf =
+(
+case+
+d1p2.node() of
+| D1Plist(d1ps, _) =>
+  list_length<d1pat>(d1ps)
+| _(* non-D2Plist *) => ~1
+) : int // end of [val]
+//
+val d2p1 = trans12_dpat(d1p1)
+//
+val d2ps =
+(
+case+
+d1p2.node() of
+| D1Plist(d1ps) =>
+  trans12_dpatlst(d1ps)
+| D1Plist(d1ps1, d1ps2) =>
+  (
+    d2ps1 + d2ps2
+  ) where
+  {
+    val d2ps1 = trans12_dpatlst(d1ps1)
+    val d2ps2 = trans12_dpatlst(d1ps2)
+  }
+| _(* non-D2Plist *) =>
+  let
+    val d2p2 =
+    trans12_dpat(d1p2) in list_sing(d2p2)
+  end
+) : d2patlst // end of [val]
+//
+in
+//
+  d2pat_dapp(d1p0.loc(), d2p1, npf, d2ps)
+//
+end // end of [auxapp1_0_]
+
+(* ****** ****** *)
+
+fun
 auxlist1
 ( d1p0
 : d1pat): d2pat = let
@@ -278,6 +357,8 @@ case-
 d1p0.node() of
 //
 | D1Pid _ => auxid(d1p0)
+//
+| D1Papp1 _ => auxapp1(d1p0)
 //
 | D1Plist
   (d1ps) => auxlist1(d1p0)

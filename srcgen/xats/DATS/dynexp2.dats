@@ -376,6 +376,24 @@ d2pat_make_node(loc0, D2Pcon2(d2cs))
 (* ****** ****** *)
 //
 implement
+d2pat_sapp
+(loc0, d2f0, s2vs) =
+(
+  d2pat_make_node
+  (loc0, D2Psapp(d2f0, s2vs))
+)
+//
+implement
+d2pat_dapp
+(loc0, d2f0, npf0, d2ps) =
+(
+  d2pat_make_node
+  (loc0, D2Pdapp(d2f0, npf0, d2ps))
+)
+//
+(* ****** ****** *)
+//
+implement
 d2pat_tuple
 (loc0, knd, npf, d2ps) =
 (

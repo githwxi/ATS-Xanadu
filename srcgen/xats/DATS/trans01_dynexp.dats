@@ -811,6 +811,8 @@ d0p0.node() of
     fxitmlst_resolve_d1pat(loc0, d1ps)
   }
 //
+| D0Psqarg _ => auxsqarg(d0p0)
+//
 | D0Pparen _ => auxparen(d0p0)
 //
 | D0Ptuple _ => auxtuple(d0p0)
@@ -847,6 +849,30 @@ list_vt2t(ys) where
     list_map$fopr<d0pat><d1pitm>(x) = auxitm(x)
   }
 } (* end of [auxitmlst] *)
+
+(* ****** ****** *)
+
+and
+auxsqarg
+( d0p0
+: d0pat): d1pitm = let
+//
+val
+loc0 = d0p0.loc()
+//
+val-
+D0Psqarg
+(_, s0as, _) = d0p0.node()
+//
+val
+s1as = trans01_sarglst(s0as)
+//
+in
+//
+FXITMatm
+(d1pat_make_node(loc0, D1Psqarg(s1as)))
+//
+end // end of [auxsqarg]
 
 (* ****** ****** *)
 

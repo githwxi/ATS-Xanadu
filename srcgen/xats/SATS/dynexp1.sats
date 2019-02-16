@@ -358,6 +358,9 @@ d1pat_node =
 | D1Papp2 of
   (d1pat(*fun*), d1pat, d1pat)
 //
+| D1Psqarg of
+  (s1arglst(*static*))
+//
 | D1Plist of d1patlst // temp.
 | D1Plist of
   (d1patlst, d1patlst) // temp.
