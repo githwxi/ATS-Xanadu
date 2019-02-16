@@ -135,11 +135,13 @@ list_length_vt1{n:i0}
 fun<>
 list_is_nil
 {x:t0}
-{n:i0}(xs: list(x, n)):<> bool(n=0)
+{n:i0}
+(xs: list(x, n)):<> bool(n=0)
 fun<>
 list_is_cons
 {x:t0}
-{n:i0}(xs: list(x, n)):<> bool(n>0)
+{n:i0}
+(xs: list(x, n)):<> bool(n>0)
 //
 fun
 <x:t0>
@@ -149,6 +151,51 @@ fun
 <x:t0>
 list_is_pair
 {n:i0}(xs: list(x, n)):<> bool(n=2)
+//
+overload iseqz with list_is_nil
+overload iseq1 with list_is_sing
+overload iseq2 with list_is_pair
+overload isneqz with list_is_cons
+//
+(* ****** ****** *)
+//
+fun
+<x:t0>
+lt_list_int
+{n,i:i0}
+(list(x, n), int(i)): bool(n<i)
+fun
+<x:t0>
+gt_list_int
+{n,i:i0}
+(list(x, n), int(i)): bool(n>i)
+fun
+<x:t0>
+eq_list_int
+{n,i:i0}
+(list(x, n), int(i)): bool(n=i)
+//
+<x:t0>
+lte_list_int
+{n,i:i0}
+(list(x, n), int(i)): bool(n<=i)
+fun
+<x:t0>
+gte_list_int
+{n,i:i0}
+(list(x, n), int(i)): bool(n>=i)
+fun
+<x:t0>
+neq_list_int
+{n,i:i0}
+(list(x, n), int(i)): bool(n!=i)
+//
+overload < with lt_list_int of 12
+overload > with gt_list_int of 12
+overload = with eq_list_int of 12
+overload <= with lte_list_int of 12
+overload >= with gte_list_int of 12
+overload != with neq_list_int of 12
 //
 (* ****** ****** *)
 //
@@ -252,7 +299,7 @@ list_get_at
 | 0 <= i; i < n}
 (xs: list(x, n), i: int(i)):<> (x)
 fun
-<x:t0>
+<x:vt>
 list_get_at_vt1
 { n,i:i0
 | 0 <= i; i < n}
