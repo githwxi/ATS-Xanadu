@@ -1,7 +1,42 @@
 fun
-pair(x, y) = @(x, y)
+foo(x) =
+(
+case+ x of
+| list_nil() //
+| list_nil() => 0
+| list_cons(_, xs) => foo(xs) + 1
+) where
+{
+  val x = x + x
+} where
+{
+  val xs = xs + xs
+} endwhere // end of [fun]
+
+////
+#extern
 fun
+<a
+,b:type
+;c:type>
+pair
+( x: !a >> a?
+, y: !a >> a?): list(?a, ?n) = @(x, y)
+////
+
+if nil?(xs) then () els
+
+if some(xs) then unsome(xs) else  eq
+
+~nil?(x)
+
+#static
+fun
+<a
+,b:type>
 pair(x, y) = $(x, y)
+
+fun myplus(x, y) = x + y
 
 ////
 #extern

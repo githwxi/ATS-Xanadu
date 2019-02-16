@@ -124,6 +124,15 @@ fprint_val<d2exp> = fprint_d2exp
 (* ****** ****** *)
 //
 implement
+fprint_val<d2gua> = fprint_d2gua
+implement
+fprint_val<d2clau> = fprint_d2clau
+implement
+fprint_val<dg2pat> = fprint_dg2pat
+//
+(* ****** ****** *)
+//
+implement
 fprint_val<d2ecl> = fprint_d2ecl
 //
 (* ****** ****** *)
@@ -367,6 +376,12 @@ case- x0.node() of
   ( out, "D2Eif0("
   , d2e1, "; ", d2e2, "; ", opt3, ")")
 //
+| D2Ecase
+  (knd, d2e1, d2cls) =>
+  fprint!
+  ( out, "D2Ecase("
+  , knd, "; ", d2e1, "; ", d2cls, ")")
+//
 | D2Eanno(d2e1, s2e2) =>
   fprint!
   (out, "D2Eanno(", d2e1, "; ", s2e2, ")")
@@ -379,6 +394,71 @@ case- x0.node() of
 ) (* end of [fprint_d2exp] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_d2gua(x0) =
+fprint_d2gua(stdout_ref, x0)
+implement
+prerr_d2gua(x0) =
+fprint_d2gua(stderr_ref, x0)
+
+implement
+fprint_d2gua
+  (out, x0) =
+(
+case+
+x0.node() of
+| D2GUAexp(d2e) =>
+  fprint!
+  (out, "D2GUAexp(", d2e, ")")
+| D2GUAmat(d2e, d2p) =>
+  fprint!
+  (out, "D2GUAmat(", d2e, "; ", d2p, ")")
+) (* end of [fprint_d2gua] *)
+
+(* ****** ****** *)
+
+implement
+print_d2clau(x0) =
+fprint_d2clau(stdout_ref, x0)
+implement
+prerr_d2clau(x0) =
+fprint_d2clau(stderr_ref, x0)
+
+implement
+print_dg2pat(x0) =
+fprint_dg2pat(stdout_ref, x0)
+implement
+prerr_dg2pat(x0) =
+fprint_dg2pat(stderr_ref, x0)
+
+implement
+fprint_d2clau
+  (out, x0) =
+(
+case+
+x0.node() of
+| D2CLAUgpat(d2gp) =>
+  fprint!
+  (out, "D2CLAUgpat(", d2gp, ")")
+| D2CLAUclau(d2gp, d0e0) =>
+  fprint!
+  (out, "D2CLAUclau(", d2gp, "; ", d0e0, ")")
+) (* end of [fprint_d2clau] *)
+
+implement
+fprint_dg2pat
+  (out, x0) =
+(
+case+
+x0.node() of
+| DG2PATpat(d2p) =>
+  fprint!(out, "DG2PATpat(", d2p, ")")
+| DG2PATgua(d2p, d2gs) =>
+  fprint!(out, "DG2PATgua(", d2p, "; ", d2gs, ")")
+) (* end of [fprint_dg2pat] *)
 
 (* ****** ****** *)
 
