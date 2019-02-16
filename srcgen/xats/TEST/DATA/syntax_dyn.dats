@@ -1,16 +1,18 @@
 fun
-foo(x) =
+foo(xs) =
 (
-case+ x of
-| list_nil() //
+case+ xs of
+| list_nil //
 | list_nil() => 0
+| xs => foo(xs) + 1
+| ys => xs + foo(ys)
 | list_cons(_, xs) => foo(xs) + 1
 ) where
 {
-  val x = x + x
+  val xs = xs ++ xs
 } where
 {
-  val xs = xs + xs
+  val xs = xs ++ xs
 } endwhere // end of [fun]
 
 ////
@@ -26,7 +28,7 @@ pair
 
 if nil?(xs) then () els
 
-if some(xs) then unsome(xs) else  eq
+if some?(xs) then process(unsome(xs)) else ()
 
 ~nil?(x)
 

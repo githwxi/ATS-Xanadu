@@ -68,12 +68,14 @@ implement
 fprint_val<d1exp> = fprint_d1exp
 //
 (* ****** ****** *)
-
-(*
+//
+implement
+fprint_val<d1gua> = fprint_d1gua
 implement
 fprint_val<d1clau> = fprint_d1clau
-*)
-
+implement
+fprint_val<dg1pat> = fprint_dg1pat
+//
 (* ****** ****** *)
 //
 implement
@@ -412,10 +414,10 @@ x0.node() of
   ( out
   , "D1Eif0(", d1e1, "; ", d1e2, "; ", opt3, ")")
 //
-| D1Ecase(knd, d1e1, d1cs) =>
+| D1Ecase(knd, d1e1, dcls) =>
   fprint!
   ( out
-  , "D1Ecase(", knd, "; ", d1e1, "; ", "..." , ")")
+  , "D1Ecase(", knd, "; ", d1e1, "; ", dcls , ")")
 //
 | D1Elet(d1cs, d1es) =>
   (
@@ -510,6 +512,71 @@ case+ x0 of
   fprint!
   (out, "WTHS1EXPsome(", tok, "; ", s1e, ")")
 )
+
+(* ****** ****** *)
+
+implement
+print_d1gua(x0) =
+fprint_d1gua(stdout_ref, x0)
+implement
+prerr_d1gua(x0) =
+fprint_d1gua(stderr_ref, x0)
+
+implement
+fprint_d1gua
+  (out, x0) =
+(
+case+
+x0.node() of
+| D1GUAexp(d1e) =>
+  fprint!
+  (out, "D1GUAexp(", d1e, ")")
+| D1GUAmat(d1e, d1p) =>
+  fprint!
+  (out, "D1GUAmat(", d1e, "; ", d1p, ")")
+) (* end of [fprint_d1gua] *)
+
+(* ****** ****** *)
+
+implement
+print_d1clau(x0) =
+fprint_d1clau(stdout_ref, x0)
+implement
+prerr_d1clau(x0) =
+fprint_d1clau(stderr_ref, x0)
+
+implement
+print_dg1pat(x0) =
+fprint_dg1pat(stdout_ref, x0)
+implement
+prerr_dg1pat(x0) =
+fprint_dg1pat(stderr_ref, x0)
+
+implement
+fprint_d1clau
+  (out, x0) =
+(
+case+
+x0.node() of
+| D1CLAUgpat(d1gp) =>
+  fprint!
+  (out, "D1CLAUgpat(", d1gp, ")")
+| D1CLAUclau(d1gp, d0e0) =>
+  fprint!
+  (out, "D1CLAUclau(", d1gp, "; ", d0e0, ")")
+) (* end of [fprint_d1clau] *)
+
+implement
+fprint_dg1pat
+  (out, x0) =
+(
+case+
+x0.node() of
+| DG1PATpat(d1p) =>
+  fprint!(out, "DG1PATpat(", d1p, ")")
+| DG1PATgua(d1p, d1gs) =>
+  fprint!(out, "DG1PATgua(", d1p, "; ", d1gs, ")")
+) (* end of [fprint_dg1pat] *)
 
 (* ****** ****** *)
 

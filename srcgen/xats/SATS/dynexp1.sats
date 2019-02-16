@@ -451,6 +451,28 @@ overload .loc with dg1pat_get_loc
 overload .node with dg1pat_get_node
 //
 fun
+print_d1clau : (d1clau) -> void
+fun
+prerr_d1clau : (d1clau) -> void
+fun
+fprint_d1clau : fprint_type(d1clau)
+//
+overload print with print_d1clau
+overload prerr with prerr_d1clau
+overload fprint with fprint_d1clau
+//
+fun
+print_dg1pat : (dg1pat) -> void
+fun
+prerr_dg1pat : (dg1pat) -> void
+fun
+fprint_dg1pat : fprint_type(dg1pat)
+//
+overload print with print_dg1pat
+overload prerr with prerr_dg1pat
+overload fprint with fprint_dg1pat
+//
+fun
 d1clau_make_node
 (loc: loc_t, node: d1clau_node): d1clau
 fun
