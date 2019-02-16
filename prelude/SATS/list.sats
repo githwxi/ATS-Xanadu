@@ -152,10 +152,10 @@ fun
 list_is_pair
 {n:i0}(xs: list(x, n)):<> bool(n=2)
 //
-overload iseqz with list_is_nil
-overload iseq1 with list_is_sing
-overload iseq2 with list_is_pair
-overload isneqz with list_is_cons
+#symload iseqz with list_is_nil
+#symload iseq1 with list_is_sing
+#symload iseq2 with list_is_pair
+#symload isneqz with list_is_cons
 //
 (* ****** ****** *)
 //
@@ -175,6 +175,7 @@ eq_list_int
 {n,i:i0}
 (list(x, n), int(i)): bool(n=i)
 //
+fun
 <x:t0>
 lte_list_int
 {n,i:i0}
@@ -190,12 +191,12 @@ neq_list_int
 {n,i:i0}
 (list(x, n), int(i)): bool(n!=i)
 //
-overload < with lt_list_int of 12
-overload > with gt_list_int of 12
-overload = with eq_list_int of 12
-overload <= with lte_list_int of 12
-overload >= with gte_list_int of 12
-overload != with neq_list_int of 12
+#symload < with lt_list_int of 12
+#symload > with gt_list_int of 12
+#symload = with eq_list_int of 12
+#symload <= with lte_list_int of 12
+#symload >= with gte_list_int of 12
+#symload != with neq_list_int of 12
 //
 (* ****** ****** *)
 //
