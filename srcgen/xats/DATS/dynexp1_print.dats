@@ -306,6 +306,10 @@ x0.node() of
   ( out, "D1Papps("
   , d1p0, "; ", d1p1, ";", d1p2, ")")
 //
+| D1Psqarg(s1as) =>
+  fprint!
+  (out, "D1Psqarg(", s1as, ")")
+//
 | D1Plist(d1ps) =>
   fprint!(out, "D1Plist(", d1ps, ")")
 | D1Plist(d1ps1, d1ps2) =>

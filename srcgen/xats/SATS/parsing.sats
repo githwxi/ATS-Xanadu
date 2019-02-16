@@ -100,6 +100,7 @@ STAEXP0 = "./staexp0.sats"
   typedef labs0exp = $STAEXP0.labs0exp
 //
   typedef s0explst = $STAEXP0.s0explst
+  typedef s0arglst = $STAEXP0.s0arglst
   typedef s0qualst = $STAEXP0.s0qualst
   typedef s0unilst = $STAEXP0.s0unilst
   typedef d0tsortlst = $STAEXP0.d0tsortlst
@@ -330,6 +331,8 @@ s0arg ::
 | s0aid [COLON sort0]
 *)
 fun p_s0arg: parser(s0arg)
+fun
+p_s0argseq_COMMA: parser(s0arglst)
 //
 (* ****** ****** *)
 //

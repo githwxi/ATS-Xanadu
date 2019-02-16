@@ -6,7 +6,7 @@ case+ xs of
 | list_nil() => 0
 | xs => foo(xs) + 1
 | ys => xs + foo(ys)
-| list_cons(_, xs) => foo(xs) + 1
+| list_cons{a}{n}(_, xs) => foo(xs) + 1
 ) where
 {
   val xs = xs ++ xs

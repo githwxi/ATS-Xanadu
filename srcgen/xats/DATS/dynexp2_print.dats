@@ -279,6 +279,15 @@ case- x0.node() of
   fprint!
   (out, "D2Pcon2(", d2cs, ")")
 //
+| D2Psapp(d2f0, s2vs) =>
+  fprint!
+  ( out, "D2Psapp("
+  , d2f0, "; ", s2vs, ")")
+| D2Pdapp(d2f0, npf0, d2ps) =>
+  fprint!
+  ( out, "D2Pdapp("
+  , d2f0, "; ", npf0, "; ", d2ps, ")")
+//
 | D2Ptuple(knd, npf, d2ps) =>
   fprint!
   ( out, "D2Ptuple("

@@ -975,6 +975,19 @@ case+ tnd of
     d0pat_make_node(c0.loc(), D0Pstr(c0))
   end // end of [t_t0str]
 //
+| T_LBRACE() => let
+    val () = buf.incby1()
+    val s0as =
+    p_s0argseq_COMMA(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACE(buf, err)
+    val loc_res = tbeg.loc()+tend.loc()
+  in
+    err := e0;
+    d0pat_make_node
+    (loc_res, D0Psqarg(tbeg, s0as, tend))
+  end // end of [T_LBRACE]
+//
 | T_LPAREN() => let
     val () = buf.incby1()
     val d0ps =
@@ -1254,6 +1267,7 @@ end // end of [p_f0unarrow]
 
 (* ****** ****** *)
 (*
+//
 atmd0exp ::
 //
   | d0eid

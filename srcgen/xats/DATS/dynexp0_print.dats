@@ -316,6 +316,13 @@ case+ x0.node() of
 | D0Papps(d0ps) =>
   fprint!(out, "D0Papps(", d0ps, ")")
 //
+| D0Psqarg
+  (tbeg, s0as, tend) =>
+  fprint!
+  ( out
+  , "D0Psqarg("
+  , tbeg, "; ", s0as, "; ", tend, ")")
+//
 | D0Pparen
   (tbeg, d0ps, tend) =>
   fprint!
