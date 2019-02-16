@@ -125,13 +125,23 @@ val-
 D1Pid(tok) = d1p0.node()
 //
 val sym = dexpid_sym(tok)
+//
+(*
+val opt = None_vt((*void*))
+*)
 val opt = the_dexpenv_find(sym)
 //
 in
 //
 case+ opt of
-| ~None_vt() => auxid_none(d1p0, sym)
-| ~Some_vt(d2i) => auxid_some(d1p0, d2i)
+//
+| ~None_vt() =>
+   auxid_none
+   (d1p0, sym(*d2var*))
+| ~Some_vt(d2i) =>
+   auxid_some
+   (d1p0, sym(*d2var*), d2i(*d2con*))
+//
 end // end of [auxid]
 
 and
@@ -145,15 +155,57 @@ in
   d2pat_make_node(loc0, D2Pvar(d2v0))
 end // end of [auxid_none]
 
+(*
 and
 auxid_some
 ( d1p0: d1pat
+, name: sym_t
 , d2i0: d2itm): d2pat =
 let
   val loc0 = d1p0.loc()
 in
   d2pat_make_node(loc0, D2Pnone1(d1p0))
 end // end of [auxid_some]
+*)
+and
+auxid_some
+( d1p0: d1pat
+, name: sym_t
+, d2i0: d2itm): d2pat =
+(
+case+ d2i0 of
+//
+| D2ITMcon(d2cs) =>
+  auxid_d2cs(d1p0, d2cs)
+//
+| D2ITMvar _ =>
+  auxid_none(d1p0, name)
+| D2ITMcst _ =>
+  auxid_none(d1p0, name)
+| D2ITMsym _ =>
+  auxid_none(d1p0, name)
+) (* end of [auxid_some] *)
+
+and
+auxid_d2cs
+( d1p0: d1pat
+, d2cs: d2conlst): d2pat =
+let
+  val loc0 = d1p0.loc()
+in
+//
+if
+list_is_sing(d2cs)
+then
+(
+d2pat_con1(loc0, d2c0)
+) where
+{
+  val d2c0 = d2cs.head()
+}
+else d2pat_con2(loc0, d2cs)
+//
+end // end of [auxid_d2cs]
 
 (* ****** ****** *)
 

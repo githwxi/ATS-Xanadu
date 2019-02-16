@@ -269,7 +269,15 @@ fprint_d2pat
 case- x0.node() of
 //
 | D2Pvar(d2v) =>
-  fprint!(out, "D2Pvar(", d2v, ")")
+  fprint!
+  (out, "D2Pvar(", d2v, ")")
+//
+| D2Pcon1(d2c0) =>
+  fprint!
+  (out, "D2Pcon1(", d2c0, ")")
+| D2Pcon2(d2cs) =>
+  fprint!
+  (out, "D2Pcon2(", d2cs, ")")
 //
 | D2Ptuple(knd, npf, d2ps) =>
   fprint!
