@@ -561,7 +561,86 @@ d2exp_tuple
 local
 
 absimpl
-d2ecl_tbox = $rec{
+d2gua_tbox = $rec
+{ d2gua_loc= loc_t
+, d2gua_node= d2gua_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d2gua_get_loc(x0) = x0.d2gua_loc
+implement
+d2gua_get_node(x0) = x0.d2gua_node
+
+implement
+d2gua_make_node
+  (loc0, node) = $rec
+{
+  d2gua_loc= loc0, d2gua_node= node
+} (* d2exp_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d2clau_tbox = $rec
+{ d2clau_loc= loc_t
+, d2clau_node= d2clau_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d2clau_get_loc(x0) = x0.d2clau_loc
+implement
+d2clau_get_node(x0) = x0.d2clau_node
+
+implement
+d2clau_make_node
+  (loc0, node) = $rec
+{
+  d2clau_loc= loc0, d2clau_node= node
+} (* d2exp_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+dg2pat_tbox = $rec
+{ dg2pat_loc= loc_t
+, dg2pat_node= dg2pat_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+dg2pat_get_loc(x0) = x0.dg2pat_loc
+implement
+dg2pat_get_node(x0) = x0.dg2pat_node
+
+implement
+dg2pat_make_node
+  (loc0, node) = $rec
+{
+  dg2pat_loc= loc0, dg2pat_node= node
+} (* d2exp_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d2ecl_tbox = $rec
+{
   d2ecl_loc= loc_t
 , d2ecl_node= d2ecl_node
 } (* end of [absimpl] *)
@@ -578,6 +657,19 @@ d2ecl_get_node(x0) = x0.d2ecl_node
 (* ****** ****** *)
 
 implement
+d2ecl_make_node
+(loc, node) = $rec
+{
+  d2ecl_loc= loc, d2ecl_node= node
+} (* end of [d2ecl_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
 d2ecl_none0
 (loc0) =
 d2ecl_make_node
@@ -589,22 +681,8 @@ d2ecl_none1
 (d0c0) =
 d2ecl_make_node
 (
-loc0, D2Cnone1(d0c0)
-) where
-{
-  val loc0 = d0c0.loc()
-}
-//
-implement
-d2ecl_make_node
-(loc, node) = $rec
-{
-  d2ecl_loc= loc, d2ecl_node= node
-} (* end of [d2ecl_make_node] *)
-
-(* ****** ****** *)
-
-end // end of [local]
+  d0c0.loc(), D2Cnone1(d0c0)
+)
 
 (* ****** ****** *)
 
@@ -653,6 +731,17 @@ val+
 V2ALDECL(rcd) = d1c0 in rcd.pat
 //
 end // end of [v2aldecl_get_pat]
+
+(* ****** ****** *)
+
+implement
+f2undecl_get_loc
+  (d1c0) = let
+//
+val+
+F2UNDECL(rcd) = d1c0 in rcd.loc
+//
+end // end of [f2undecl_get_loc]
 
 (* ****** ****** *)
 

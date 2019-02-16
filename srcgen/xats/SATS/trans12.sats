@@ -178,6 +178,15 @@ typedef f1arglst = $D1E.f1arglst
 
 (* ****** ****** *)
 
+typedef d1gua = $D1E.d1gua
+typedef d1clau = $D1E.d1clau
+typedef dg1pat = $D1E.dg1pat
+
+typedef d1gualst = $D1E.d1gualst
+typedef d1claulst = $D1E.d1claulst
+
+(* ****** ****** *)
+
 typedef d1exp = $D1E.d1exp
 typedef d1explst = $D1E.d1explst
 typedef d1expopt = $D1E.d1expopt
@@ -212,6 +221,15 @@ typedef d2patopt = $D2E.d2patopt
 
 typedef f2arg = $D2E.f2arg
 typedef f2arglst = $D2E.f2arglst
+
+(* ****** ****** *)
+
+typedef d2gua = $D2E.d2gua
+typedef d2clau = $D2E.d2clau
+typedef dg2pat = $D2E.dg2pat
+
+typedef d2gualst = $D2E.d2gualst
+typedef d2claulst = $D2E.d2claulst
 
 (* ****** ****** *)
 
@@ -612,6 +630,13 @@ the_trans12_add_pat(d2p: d2pat): void
 fun
 the_trans12_add_patlst(d2ps: d2patlst): void
 //
+fun
+the_trans12_add_gua(d2g: d2gua): void
+fun
+the_trans12_add_gpat(d2gp: dg2pat): void
+fun
+the_trans12_add_gualst(d2gs: d2gualst): void
+//
 (* ****** ****** *)
 //
 fun
@@ -625,6 +650,20 @@ fun
 trans12_farg: f1arg -> f2arg
 fun
 trans12_farglst: f1arglst -> f2arglst
+//
+(* ****** ****** *)
+//
+fun
+trans12_dgua: d1gua -> d2gua
+fun
+trans12_dclau: d1clau -> d2clau
+fun
+trans12_dgpat: dg1pat -> dg2pat
+//
+fun
+trans12_dgualst: d1gualst -> d2gualst
+fun
+trans12_dclaulst: d1claulst -> d2claulst
 //
 (* ****** ****** *)
 //

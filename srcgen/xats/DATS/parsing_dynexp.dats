@@ -2197,6 +2197,15 @@ end // end of [popt_d0eclseq_WHERE]
 
 (* ****** ****** *)
 //
+(*
+HX-2019-02-15:
+//
+case [d0e] of
+| [d0p] when [d0e]
+| [d0p] when [d0e] as [d0p]
+//
+*)
+//
 extern
 fun
 p_d0gua: parser(d0gua)

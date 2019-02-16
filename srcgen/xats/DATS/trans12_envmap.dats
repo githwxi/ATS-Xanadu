@@ -1408,16 +1408,56 @@ auxd2ps
 case+ d2ps of
 | list_nil() => ()
 | list_cons(d2p0, d2ps) =>
-  (auxd2p0(d2p0); auxd2ps(d2ps))
+    (auxd2p0(d2p0); auxd2ps(d2ps))
+  // end of [list_cons]
+)
+
+fun
+auxd2g0
+(d2g0: d2gua): void =
+(
+case+
+d2g0.node() of
+| D2GUAexp _ => ()
+| D2GUAmat(_, d2p) => auxd2p0(d2p)
+)
+fun
+auxd2gs
+(d2gs: d2gualst): void =
+(
+case+ d2gs of
+| list_nil() => ()
+| list_cons(d2g0, d2gs) =>
+    (auxd2g0(d2g0); auxd2gs(d2gs))
+  // end of [list_cons]
+)
+
+fun
+auxd2gp
+(d2gp: dg2pat): void =
+(
+case+
+d2gp.node() of
+| DG2PATpat(d2p) =>
+    auxd2p0(d2p)
+| DG2PATgua(d2p, d2gs) =>
+    (auxd2p0(d2p); auxd2gs(d2gs))
 )
 
 in (* in-of-local *)
-
+//
 implement
 the_trans12_add_pat(d2p0) = auxd2p0(d2p0)
 implement
-the_trans12_add_patlst(d2p0) = auxd2ps(d2p0)
-
+the_trans12_add_patlst(d2ps) = auxd2ps(d2ps)
+//
+implement
+the_trans12_add_gua(d2g0) = auxd2g0(d2g0)
+implement
+the_trans12_add_gpat(d2gp) = auxd2gp(d2gp)
+implement
+the_trans12_add_gualst(d2gs) = auxd2gs(d2gs)
+//
 end // end of [local]
 
 (* ****** ****** *)

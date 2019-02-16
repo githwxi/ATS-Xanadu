@@ -1045,7 +1045,9 @@ case+ x0.node() of
       end // end of ["{"]
 //
     | _ (* rest-of-tnode *) =>
+      (
         loop1(x1, xs2, list_vt_cons(x0, res))
+      ) (* end of [rest-of-tnode] *)
 //
   )
 //
@@ -1067,7 +1069,9 @@ case+ x0.node() of
         loop0(xs2, list_vt_cons(x01, res))
       end // end of [T_IDENT_sym]
     | _ (* rest-of-tnode *) =>
+      (
         loop1(x1, xs2, list_vt_cons(x0, res))
+      ) (* end of [rest-of-tnode] *)
   )
 //
 | T_DLR() =>
@@ -1089,7 +1093,9 @@ case+ x0.node() of
       end // end of ["{"]
 //
     | _ (* rest-of-tnode *) =>
+      (
         loop1(x1, xs2, list_vt_cons(x0, res))
+      ) (* end of [rest-of-tnode] *)
 //
   )
 | T_SRP() =>
@@ -1237,7 +1243,9 @@ case+ x0.node() of
 *)
 //
 | _ (* rest-of-tnode *) =>
+  (
     loop1(x1, xs2, list_vt_cons(x0, res))
+  ) (* end of [rest-of-tnode] *)
 //
 )
 //
