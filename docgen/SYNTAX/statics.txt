@@ -19,7 +19,7 @@ real // for real numbers
 float // for static floats
 string // for static strings
 
-Following is a list of built-in imppredicative sorts in ATS:
+Following is a list of built-in impredicative sorts in ATS:
 
 prop // for props (which are types for proofs)
 view // for views (which are types for linear proofs)
