@@ -139,7 +139,7 @@ val+
 list_vt_cons(_, r1) = r0
 //
 in
-  loop(i0+1, r1); fold@(r0)
+  loop(i0+1, r1); $foldcon(r0)
 end // end of [then]
 else (r0 := list_vt_nil())
 ) (* end of [loop] *)
