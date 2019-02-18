@@ -46,8 +46,10 @@ fun<>
 string_iscons
 {n:int}(string(n)): bool(n>0)
 
-#symload iseqz with string_isnil 11
-#symload isneqz with string_iscons 11
+#symload
+iseqz with string_isnil of 11
+#symload
+isneqz with string_iscons of 11
 
 (* ****** ****** *)
 
