@@ -129,9 +129,14 @@ implement
 t_d0pid(tnd) =
 (
 case+ tnd of
+//
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
+//
 | T_BACKSLASH() => true
+//
+| T_AT((*void*)) => true // "@"
+//
 | _ (* non-IDENT *) => false
 )
 
@@ -162,6 +167,15 @@ in
       val () = buf.incby1()
     }
 //
+  | T_AT() =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+      val loc = tok.loc((*void*))
+      val tnd = T_IDENT_AT(*void*)
+      val tok = token_make_node(loc, tnd)
+    }
+//
   | _ (* non-IDENT *) =>
     (err := err + 1; i0dnt_none(tok))
 end // end of [p_d0pid]
@@ -183,6 +197,7 @@ case+ tnd of
 //
 | T_BACKSLASH() => true
 //
+| T_AT((*void*)) => true // "@"
 | T_EQ((*void*)) => true // "="
 //
 (*
