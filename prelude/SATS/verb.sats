@@ -32,6 +32,22 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+fun
+<x0:vt>
+copy$val(!x0): x0
+fun
+<x0:vt>
+copy$ref(&x0): x0
+
+fun
+<x0:vt>
+free$val(!x0 >> ?): void
+fun
+<x0:vt>
+free$ref(&x0 >> ?): void
+
+(* ****** ****** *)
 //
 fun
 <x0:type>

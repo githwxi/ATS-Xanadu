@@ -34,28 +34,28 @@
 (* ****** ****** *)
 
 fun
-<x0:vtype>
+<x0:vt>
 print$val(!x0): void
 fun
-<x0:vtype>
+<x0:vt>
 print$ref(&x0 >> _): void
 
 (* ****** ****** *)
 
 fun
-<x0:vtype>
+<x0:vt>
 prerr$val(!x0): void
 fun
-<x0:vtype>
+<x0:vt>
 prerr$ref(&x0 >> _): void
 
 (* ****** ****** *)
 
 fun
-<x0:vtype>
+<x0:vt>
 fprint$val(FILEref, !x0): void
 fun
-<x0:vtype>
+<x0:vt>
 fprint$ref(FILEref, &x0 >> _): void
 
 (* ****** ****** *)

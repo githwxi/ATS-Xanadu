@@ -493,6 +493,8 @@ fprint_val<d2ecl> = fprint_d2ecl
 implement
 fprint_val<v2aldecl> = fprint_v2aldecl
 implement
+fprint_val<v2ardecl> = fprint_v2ardecl
+implement
 fprint_val<f2undecl> = fprint_f2undecl
 
 in (* in-of-local *)
@@ -529,6 +531,10 @@ case- x0.node() of
   ( out
   , "D2Cvaldecl("
   , knd, "; ", mopt, "; ", v2ds)
+| D2Cvardecl(knd, v2ds) =>
+  fprint!
+  ( out
+  , "D2Cvardecl(", knd, "; ", v2ds)
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
   fprint!
@@ -652,6 +658,30 @@ in
   , ", pat=", rcd.pat
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v2aldecl]
+
+(* ****** ****** *)
+
+implement
+print_v2ardecl(x0) =
+fprint_v2ardecl(stdout_ref, x0)
+implement
+prerr_v2ardecl(x0) =
+fprint_v2ardecl(stderr_ref, x0)
+
+implement
+fprint_v2ardecl
+  (out, x0) = let
+//
+val+V2ARDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "V2ARDECL@{"
+  , ", d2v=", rcd.d2v
+  , ", wth=", rcd.wth
+  , ", res=", rcd.res, ", ini=", rcd.ini, "}")
+end // end of [fprint_v2ardecl]
 
 (* ****** ****** *)
 

@@ -63,6 +63,18 @@ lemma_list_vt_param
 //
 (* ****** ****** *)
 //
+fun
+<x:vt>
+list_free(list_vt(x)): void
+fun
+<x:t0>
+list_copy(xs: list(x)): list_vt(x)
+fun
+<x:vt>
+list_copy_vt1(xs: !list_vt(x)): list_vt(x)
+//
+(* ****** ****** *)
+//
 fun<a:t0>
 list_tuple_0():<> list_vt(a, 0)
 //
@@ -133,29 +145,29 @@ list_length_vt1{n:i0}
 (* ****** ****** *)
 //
 fun<>
-list_is_nil
+list_isnil
 {x:t0}
 {n:i0}
 (xs: list(x, n)):<> bool(n=0)
 fun<>
-list_is_cons
+list_iscons
 {x:t0}
 {n:i0}
 (xs: list(x, n)):<> bool(n>0)
 //
 fun
 <x:t0>
-list_is_sing
+list_issing
 {n:i0}(xs: list(x, n)):<> bool(n=1)
 fun
 <x:t0>
-list_is_pair
+list_ispair
 {n:i0}(xs: list(x, n)):<> bool(n=2)
 //
-#symload iseqz with list_is_nil
-#symload iseq1 with list_is_sing
-#symload iseq2 with list_is_pair
-#symload isneqz with list_is_cons
+#symload iseqz with list_isnil
+#symload iseq1 with list_issing
+#symload iseq2 with list_ispair
+#symload isneqz with list_iscons
 //
 (* ****** ****** *)
 //
@@ -415,16 +427,23 @@ list_cross
 (* ****** ****** *)
 //
 fun
-<x
-:vt>
+<x:vt>
 <n:i0>
 list_tabulate
 {n >= 0}
-(n0: sint(n)): list_vt(x, n)
+(n0: int(n)): list_vt(x, n)
 //
 fun
-<x:vt><n:i0>
-list_tabulate$fopr(i: sintlt(n)): (x)
+<x:vt>
+<n:i0>
+list_tabulate$fopr(i: natlt(n)): (x)
+//
+fun
+<x:vt>
+list_tabulate
+  {n:nat}
+( n0:int(n)
+, f0:natlt(n) -<cloref> x): list_vt(x, n)
 //
 (* ****** ****** *)
 //

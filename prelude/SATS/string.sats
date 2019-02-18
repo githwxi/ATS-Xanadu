@@ -28,59 +28,34 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2018
+// Start Time: February, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-(*
-//
-#define none optn_nil
-#define some optn_cons
-//
-#define none_vt optn_vt_nil
-#define some_vt optn_vt_cons
-//
-*)
-(* ****** ****** *)
-//
-prfun
-lemma_optn_param
-{x:t0}{n:i0}
-(optn(x, n)): [0<=n; n<=1] void
-//
-prfun
-lemma_optn_vt_param
-{x:vt}{n:i0}
-(!optn_vt(x, n)): [0<=n; n<=1] void
-//
-(* ****** ****** *)
-//
-typedef
-option(x:t0) = optn(x)
-typedef
-option
-(x:t0, b:b0) = optn(x, b2i(b))
-//
-typedef
-option_vt(x:t0) = optn_vt(x)
-typedef
-option_vt
-(x:vt, b:b0) = optn_vt(x, b2i(b))
-//
-(* ****** ****** *)
-//
-fun
-<x:t0>
-optn_isnone
-{n:i0}(optn(x, n)): bool(i0=0)
-fun
-<x:t0>
-optn_issome
-{n:i0}(optn(x, n)): bool(i0=1)
-//
-#symload iseqz with optn_isnone
-#symload isneqz with optn_issome
-//
+
+fun<>
+string_length
+{n:int}(string(n)): nat(n)
+
 (* ****** ****** *)
 
-(* end of [option.sats] *)
+fun<>
+string_isnil
+{n:int}(string(n)): bool(n=0)
+fun<>
+string_iscons
+{n:int}(string(n)): bool(n>0)
+
+#symload iseqz with string_isnil 11
+#symload isneqz with string_iscons 11
+
+(* ****** ****** *)
+
+fun<>
+string_append
+{m,n:int}
+(string(m), string(n)): string_vt(m+n)
+
+(* ****** ****** *)
+
+(* end of [string.sats] *)

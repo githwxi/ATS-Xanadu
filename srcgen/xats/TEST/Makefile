@@ -55,6 +55,7 @@ prelude:: gint_sats
 prelude:: gint_dats
 prelude:: list_sats
 prelude:: list_dats
+prelude:: string_sats
 
 PRELUDE=./../../../prelude
 
@@ -75,6 +76,9 @@ print_sats: ; \
 $(CAT) $(PRELUDE)/SATS/print.sats | $(XATSOPT) --static
 print_dats: ; \
 $(CAT) $(PRELUDE)/DATS/print.dats | $(XATSOPT) --dynamic
+
+string_sats:; \
+$(CAT) $(PRELUDE)/SATS/string.sats | $(XATSOPT) --static
 
 ######
 

@@ -1,3 +1,29 @@
+(* ****** ****** *)
+
+val x = $addr(x)
+val:
+prf x = $view(x)
+val:
+prf x = $fold(x)
+val:
+prf x = $unfold(x)
+
+(* ****** ****** *)
+
+fun
+foo(xs) = let
+//
+var
+d2v:int = (0)
+val pfx = $view(d2v)
+//
+var
+d2v:int with pfx = (0)
+//
+in
+end // end of [foo]
+
+////
 fun
 foo(xs) =
 (

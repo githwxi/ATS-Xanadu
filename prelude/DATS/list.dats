@@ -45,6 +45,60 @@ case+ xs of
 //
 ) (* lemma_list_param *)
 
+primplmnt
+(*nonrec*)
+lemma_list_vt_param
+  (xs) =
+(
+//
+case+ xs of
+| list_vt_nil _ => ()
+| list_vt_cons _ => ()
+//
+) (* lemma_list_vt_param *)
+
+(* ****** ****** *)
+
+implement
+<x>(*tmp*)
+list_copy
+  (xs) =
+(
+list_map_vt1<x><x>(xs)
+) where
+{
+implement
+list_map$fopr_vt1<x><x>(x) = copy$val<x>(x)
+} (* end of [list_copy] *)
+
+(* ****** ****** *)
+
+implement
+<x>(*tmp*)
+list_free
+  (xs) =
+(
+  loop(xs)
+) where
+{
+fun
+loop
+( xs
+: list_vt(x)): void =
+(
+case+ xs of
+| ~list_vt_nil() => ()
+| @list_vt_cons(x0, xs1) =>
+  (
+    let
+      val xs1 = xs1
+    in
+      free$ref<x>(x0); $freecon(xs1); loop(xs1)
+    end
+  )
+) (* end of [loop] *)
+} (* end of [list_free] *)
+
 (* ****** ****** *)
 
 implement
@@ -52,13 +106,16 @@ implement
 list_tabulate(n0) =
 (
 let
+//
 var r0: ptr?
-val () = auxlst(0, r0) in r0
+val () =
+loop(0, r0) in r0
+//
 endlet
 ) where
 {
 fun
-auxlst
+loop
 { i:nat
 | i <= n}
 (
@@ -82,11 +139,25 @@ val+
 list_vt_cons(_, r1) = r0
 //
 in
-  auxlst(i0+1, r1); fold@(r0)
+  loop(i0+1, r1); fold@(r0)
 end // end of [then]
 else (r0 := list_vt_nil())
-)
-}
+) (* end of [loop] *)
+} endwhere // list_tabulate
+
+(* ****** ****** *)
+
+implement
+<x>
+list_tabulate
+{n}(n0, f0) =
+(
+  list_tabulate<x><n>(n0)
+) where
+{
+  implement
+  list_tabulate$fopr<x><n>(x) = f0(x)
+} endwhere // list_tabulate
 
 (* ****** ****** *)
 
