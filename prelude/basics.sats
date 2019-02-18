@@ -60,6 +60,7 @@ abssort string
 (* ****** ****** *)
 //
 sortdef i0 = int
+sortdef a0 = addr
 sortdef b0 = bool
 sortdef c0 = char
 //
@@ -291,6 +292,13 @@ typedef
 sintgte(n:int) = [i:int | i >= n] sint(i)
 
 (* ****** ****** *)
+
+typedef
+nintlt(n:int) = [i:nat | i < n] sint(i)
+typedef
+nintlte(n:int) = [i:nat | i <= n] sint(i)
+
+(* ****** ****** *)
 //
 datatype
 optn_t0_i0_x0
@@ -412,6 +420,38 @@ typedef listbtw_vt
   (a:vtype, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
 typedef listbtwe_vt
   (a:vtype, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
+//
+(* ****** ****** *)
+//
+abstype
+string_i0_x0(n:int) <= ptr
+abstype
+string_i0_vx(n:int) <= ptr
+//
+abstype
+stropt_i0_x0(n:int) <= ptr
+abstype
+stropt_i0_vx(n:int) <= ptr
+//
+(* ****** ****** *)
+//
+typedef
+string = [n:int] string_i0_x0(n)
+typedef
+string_vt = [n:int] string_i0_vx(n)
+//
+typedef string(n:int) = string_i0_x0(n)
+typedef string_vt(n:int) = string_i0_vx(n)
+//
+(* ****** ****** *)
+//
+typedef
+stropt = [n:int] stropt_i0_x0(n)
+typedef
+stropt_vt = [n:int] stropt_i0_vx(n)
+//
+typedef stropt(n:int) = stropt_i0_x0(n)
+typedef stropt_vt(n:int) = stropt_i0_vx(n)
 //
 (* ****** ****** *)
 
