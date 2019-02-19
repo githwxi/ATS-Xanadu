@@ -1,3 +1,11 @@
+
+#extern
+fun
+foo(x:int): bool
+and
+bar(x:int): bool = (x = x)
+
+////
 (* ****** ****** *)
 
 val x = $addr(x)

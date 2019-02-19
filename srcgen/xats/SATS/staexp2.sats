@@ -539,6 +539,9 @@ typedef s2exp = s2exp_tbox
 typedef s2explst = List0(s2exp)
 typedef s2expopt = Option(s2exp)
 //
+typedef s2explstlst = List0(s2explst)
+typedef s2explstopt = Option(s2explst)
+//
 vtypedef s2explst_vt = List0_vt(s2exp)
 vtypedef s2expopt_vt = Option_vt(s2exp)
 //
@@ -867,6 +870,10 @@ overload prerr with prerr_labs2exp
 overload fprint with fprint_labs2exp
 //
 (* ****** ****** *)
+//
+// HX-2019-02-18:
+// There is no longer plan
+// to support effect-tracking!!!
 //
 datatype
 effs2expopt =
