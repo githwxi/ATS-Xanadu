@@ -85,9 +85,11 @@ implement
 fprint_val<s2txt> = fprint_s2txt
 
 implement
-fprint_val<s2eff> = fprint_s2eff
-implement
 fprint_val<s2exp> = fprint_s2exp
+(*
+implement
+fprint_val<s2eff> = fprint_s2eff
+*)
 implement
 fprint_val<labs2exp> = fprint_labs2exp
 
@@ -261,13 +263,15 @@ fprint!(out, "(", x0.stamp(), ")")
 //
 (* ****** ****** *)
 
+(*
 implement
 print_s2eff(x0) =
 fprint_s2eff(stdout_ref, x0) 
 implement
 prerr_s2eff(x0) =
 fprint_s2eff(stdout_ref, x0) 
-
+*)
+(*
 local
 
 implement
@@ -293,6 +297,37 @@ case+ s2f0 of
 )
 //
 end // end of [local]
+*)
+
+(* ****** ****** *)
+
+implement
+print_effs2expopt
+  (x0) =
+(
+fprint_effs2expopt(stdout_ref, x0)
+)
+implement
+prerr_effs2expopt
+  (x0) =
+(
+fprint_effs2expopt(stderr_ref, x0)
+)
+implement
+fprint_effs2expopt
+  (out, x0) =
+(
+case+ x0 of
+| EFFS2EXPnone() =>
+  fprint!(out, "EFFS2EXPnone(", ")")
+| EFFS2EXPsome(s2e) =>
+  fprint!(out, "EFFS2EXPsome(", s2e, ")")
+(*
+| EFFS2EXPsome(s2f, s2e) =>
+  fprint!
+  (out, "EFFS2EXPsome(", s2f, "; ", s2e, ")")
+*)
+) (* end of [fprint_effs2expopt] *)
 
 (* ****** ****** *)
 
@@ -410,10 +445,10 @@ s2e0.node() of
   , "S2Elam(", s2vs, "; ", body, ")")
 //
 | S2Efun
-  (fc2, lin, eff, npf, arg, res) =>
+  (fc2, lin, npf, arg, res) =>
   fprint!
   ( out, "S2Efun("
-  , fc2, "; ", lin, "; ", eff, "; ", npf, "; ", arg, "; ", res, ")"
+  , fc2, "; ", lin, "; ", npf, "; ", arg, "; ", res, ")"
   )
 //
 | S2Etop(knd, s2e) =>

@@ -1144,14 +1144,17 @@ case+ rparen of
   (_) =>
   S1Erecord(k0, ls1es1) where
   {
-    val ls1es1 = trans01_lsexplst(ls0es1)
+    val
+    ls1es1 = trans01_labsexplst(ls0es1)
   }
 | labs0exp_RBRACE_cons1
   (_, ls0es2, _) =>
   S1Erecord(k0, ls1es1, ls1es2) where
   {
-    val ls1es1 = trans01_lsexplst(ls0es1)
-    val ls1es2 = trans01_lsexplst(ls0es2)
+    val
+    ls1es1 = trans01_labsexplst(ls0es1)
+    val
+    ls1es2 = trans01_labsexplst(ls0es2)
   }
 ) : s1exp_node // end of [val]
 //
@@ -1210,7 +1213,7 @@ list_map<s0exp><s1exp>
 (* ****** ****** *)
 
 implement
-trans01_lsexp
+trans01_labsexp
   (ls0e) = let
 //
   val
@@ -1218,10 +1221,10 @@ trans01_lsexp
 //
 in
   SL0ABLED(l0, tok, trans01_sexp(s0e))
-end // end of [trans01_lsexp]
+end // end of [trans01_labsexp]
 
 implement
-trans01_lsexplst
+trans01_labsexplst
   (ls0es) =
 list_vt2t(ls1es) where
 {
@@ -1231,12 +1234,13 @@ list_map<labs0exp><labs1exp>
   (ls0es) where
 {
   implement
-  list_map$fopr<labs0exp><labs1exp> = trans01_lsexp
+  list_map$fopr<labs0exp><labs1exp> = trans01_labsexp
 }
-} (* end of [trans01_lsexplst] *)
+} (* end of [trans01_labsexplst] *)
 
 (* ****** ****** *)
 //
+(*
 implement
 trans01_seff
   (s0ef) =
@@ -1247,6 +1251,7 @@ case+ s0ef of
 | S0EFFsome(_, s0es, _) =>
   S1EFFsome(trans01_sexplst(s0es))
 ) (* end of [trans01_seff] *)
+*)
 //
 (* ****** ****** *)
 
@@ -1257,12 +1262,16 @@ trans01_effsexpopt
 case+ opt0 of
 | EFFS0EXPnone() =>
   EFFS1EXPnone()
+| EFFS0EXPsome(s0e) =>
+  EFFS1EXPsome(trans01_sexp(s0e))
+(*
 | EFFS0EXPsome(s0f, s0e) =>
   EFFS1EXPsome(s1f, s1e) where
   {
     val s1f = trans01_seff(s0f)
     val s1e = trans01_sexp(s0e)
   }
+*)
 ) (* end of [trans01_effsexpopt] *)
 
 (* ****** ****** *)

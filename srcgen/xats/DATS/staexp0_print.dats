@@ -724,6 +724,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
+(*
 implement
 print_s0eff(x0) =
 fprint_s0eff(stdout_ref, x0)
@@ -744,7 +745,8 @@ case+ x0 of
   ( out
   , "S0EFFsome("
   , tbeg, "; ", s0es, "; ", tend, ")")
-)
+) (* end of [fprint_s0eff] *)
+*)
 
 (* ****** ****** *)
 
@@ -761,10 +763,14 @@ fprint_effs0expopt
 case+ x0 of
 | EFFS0EXPnone() =>
   fprint!(out, "EFFS0EXPnone(", ")")
+| EFFS0EXPsome(s0e) =>
+  fprint!(out, "EFFS0EXPsome(", s0e, ")")
+(*
 | EFFS0EXPsome(s0f, s0e) =>
   fprint!
   ( out
   , "EFFS0EXPsome(", s0f, "; ", s0e, ")")
+*)
 ) (* end of [fprint_effs0expopt] *)
 
 (* ****** ****** *)

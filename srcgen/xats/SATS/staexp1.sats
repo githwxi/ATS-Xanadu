@@ -487,9 +487,12 @@ s1exp_get_node(s1exp): s1exp_node
 overload .loc with s1exp_get_loc
 overload .node with s1exp_get_node
 //
-fun print_s1exp : print_type(s1exp)
-fun prerr_s1exp : prerr_type(s1exp)
-fun fprint_s1exp : fprint_type(s1exp)
+fun
+print_s1exp : print_type(s1exp)
+fun
+prerr_s1exp : prerr_type(s1exp)
+fun
+fprint_s1exp : fprint_type(s1exp)
 //
 overload print with print_s1exp
 overload prerr with prerr_s1exp
@@ -502,6 +505,7 @@ s1exp_make_node
 (loc: loc_t, node: s1exp_node): s1exp
 //
 (* ****** ****** *)
+(*
 //
 datatype
 s1eff =
@@ -519,12 +523,16 @@ overload print with print_s1eff
 overload prerr with prerr_s1eff
 overload fprint with fprint_s1eff
 //
+*)
 (* ****** ****** *)
 //
 datatype
 effs1expopt =
-| EFFS1EXPnone of ((*void*))
+| EFFS1EXPnone of ()
+| EFFS1EXPsome of (s1exp)
+(*
 | EFFS1EXPsome of (s1eff, s1exp)
+*)
 //
 fun
 print_effs1expopt:

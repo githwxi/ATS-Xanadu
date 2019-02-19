@@ -789,9 +789,8 @@ F2UNDECL of @{
   loc= loc_t
 , nam= d2var
 , arg= f2arglst
-, res= s2expopt
-, def= d2exp
-, wtp= s2expopt
+, res= effs2expopt
+, def= d2exp, wtp= s2expopt
 }
 //
 typedef

@@ -550,6 +550,7 @@ typedef s2hnfopt = Option(s2hnf)
 //
 (* ****** ****** *)
 //
+(*
 datatype
 s2eff =
 | S2EFFnil of ()
@@ -557,6 +558,7 @@ s2eff =
 | S2EFFexp of s2exp
 | S2EFFset of $EFF.effset
 | S2EFFjoin of List0(s2eff)
+*)
 //
 (* ****** ****** *)
 //
@@ -638,7 +640,7 @@ s2exp_node =
 | S2Efun of
   ( // function type
     funclo2
-  , int(*lin*), s2eff
+  , int(*lin*)
   , int(*npf*), s2explst(*arg*), s2exp(*res*)
   ) (* end of S2Efun *)
 //
@@ -722,8 +724,9 @@ s2exp_fun_all
 , arg: s2explst, res: s2exp): s2exp
 fun
 s2exp_fun_full
-( fc2: funclo2
-, lin: int, eff: s2eff
+( fc2
+: funclo2
+, lin: int
 , npf: int, arg: s2explst, res: s2exp): s2exp
 //
 fun
@@ -798,6 +801,7 @@ labs2explst_make_list2
 //
 (* ****** ****** *)
 //
+(*
 fun
 print_s2eff: print_type(s2eff)
 fun
@@ -808,6 +812,7 @@ fprint_s2eff: fprint_type(s2eff)
 overload print with print_s2eff
 overload prerr with prerr_s2eff
 overload fprint with fprint_s2eff
+*)
 //
 (* ****** ****** *)
 //
@@ -860,6 +865,29 @@ fprint_labs2exp: fprint_type(labs2exp)
 overload print with print_labs2exp
 overload prerr with prerr_labs2exp
 overload fprint with fprint_labs2exp
+//
+(* ****** ****** *)
+//
+datatype
+effs2expopt =
+| EFFS2EXPnone of ()
+| EFFS2EXPsome of (s2exp)
+(*
+| EFFS2EXPsome of (s2eff, s2exp)
+*)
+//
+fun
+print_effs2expopt:
+print_type(effs2expopt)
+fun
+prerr_effs2expopt:
+prerr_type(effs2expopt)
+fun
+fprint_effs2expopt: fprint_type(effs2expopt)
+//
+overload print with print_effs2expopt
+overload prerr with prerr_effs2expopt
+overload fprint with fprint_effs2expopt
 //
 (* ****** ****** *)
 //
