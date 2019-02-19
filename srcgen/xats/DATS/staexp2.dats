@@ -667,10 +667,11 @@ s2exp_fun_nil
 (npf, arg, res) =
 (
 s2exp_fun_full
-(fc2, 0(*lin*), eff, npf, arg, res)
+(fc2, lin, npf, arg, res)
 ) where
 {
-  val fc2 = FC2fun() and eff = S2EFFnil()
+  val lin = 0
+  val fc2 = FC2fun((*void*))
 }
 //
 implement
@@ -678,20 +679,21 @@ s2exp_fun_all
 (npf, arg, res) =
 (
 s2exp_fun_full
-(fc2, 0(*lin*), eff, npf,  arg, res)
+(fc2, lin, npf, arg, res)
 ) where
 {
-  val fc2 = FC2fun() and eff = S2EFFall()
+  val lin = 0
+  val fc2 = FC2fun((*void*))
 }
 //
 implement
 s2exp_fun_full
-( fc2, lin, eff
+( fc2, lin
 , npf, arg, res) =
 (
 s2exp_make_node
 ( s2t0
-, S2Efun(fc2, lin, eff, npf, arg, res))
+, S2Efun(fc2, lin, npf, arg, res))
 ) where
 {
   val s2t0 =

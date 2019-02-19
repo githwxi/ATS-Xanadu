@@ -2122,10 +2122,14 @@ tok.node() of
       p_apps0exp_NEQ(buf, err)
     // end of [val]
   in
+    EFFS0EXPsome(s0e_res)
+(*
     EFFS0EXPsome
       (S0EFFnone(tok), s0e_res)
     // EFFS0EXPsome
+*)
   end // end of [T_COLON]
+(*
 | T_COLONLT(_) => let
     val () = buf.incby1()
     val s0es =
@@ -2145,7 +2149,8 @@ tok.node() of
       (S0EFFsome(tbeg, s0es, tend), s0e_res)
     // EFFS0EXPsome
   end // end of [T_COLONLT]
-| _(*non-COLON/LT*) => EFFS0EXPnone()
+*)
+| _(*non-COLON/LT*) => EFFS0EXPnone(*none*)
 //
 end // end of [p_effs0expopt]
 //

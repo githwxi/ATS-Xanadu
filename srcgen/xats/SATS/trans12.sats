@@ -73,7 +73,9 @@ typedef s1arglst = $S1E.s1arglst
 typedef s1rtcon = $S1E.s1rtcon
 //
 typedef s1exp = $S1E.s1exp
+(*
 typedef s1eff = $S1E.s1eff
+*)
 typedef s1expopt = $S1E.s1expopt
 typedef s1explst = $S1E.s1explst
 //
@@ -91,6 +93,10 @@ typedef d1atypelst = $S1E.d1atypelst
 //
 typedef labs1exp = $S1E.labs1exp
 typedef labs1explst = $S1E.labs1explst
+//
+(* ****** ****** *)
+//
+typedef effs1expopt = $S1E.effs1expopt
 //
 (* ****** ****** *)
 //
@@ -114,13 +120,19 @@ s2varlstlst = List0($S2E.s2varlst)
 (* ****** ****** *)
 //
 typedef s2exp = $S2E.s2exp
+(*
 typedef s2eff = $S2E.s2eff
+*)
 typedef s2expopt = $S2E.s2expopt
 typedef s2explst = $S2E.s2explst
 //
 typedef labs2exp = $S2E.labs2exp
 typedef labs2explst = $S2E.labs2explst
 //
+(* ****** ****** *)
+
+typedef effs2expopt = $S2E.effs2expopt
+
 (* ****** ****** *)
 //
 typedef s2txt = $S2E.s2txt
@@ -447,8 +459,10 @@ fun
 s1exp_get_lin(s1exp): int
 fun
 s1exp_get_fc2(s1exp): funclo2
+(*
 fun
 s1exp_get_eff(s1exp): (s2eff)
+*)
 //
 fun
 s1exp_get_s2cstlst(s1exp): s2cstlst
@@ -495,6 +509,9 @@ trans12_squalst
 //
 fun
 trans12_sexp: s1exp -> s2exp 
+//
+(* ****** ****** *)
+//
 fun
 trans12_sexpopt: s1expopt -> s2expopt
 fun
@@ -524,6 +541,16 @@ trans12_sexplst_cks
 fun
 trans12_labsexplst
   (ls1es: labs1explst): labs2explst
+//
+(* ****** ****** *)
+//
+(*
+fun
+trans12_seff: s1eff -> s2eff
+*)
+//
+fun
+trans12_effsexpopt: effs1expopt -> effs2expopt
 //
 (* ****** ****** *)
 //

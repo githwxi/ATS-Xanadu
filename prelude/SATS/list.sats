@@ -76,24 +76,24 @@ list_copy_vt1(xs: !list_vt(x)): list_vt(x)
 (* ****** ****** *)
 //
 fun<a:t0>
-list_tuple_0():<> list_vt(a, 0)
+list_tuple_0(): list_vt(a, 0)
 //
 fun<a:t0>
-list_tuple_1(x0: a):<> list_vt(a, 1)
+list_tuple_1(x0: a): list_vt(a, 1)
 fun<a:t0>
-list_tuple_2(x0: a, x1: a):<> list_vt(a, 2)
+list_tuple_2(x0: a, x1: a): list_vt(a, 2)
 fun<a:t0>
-list_tuple_3(x0: a, x1: a, x2: a):<> list_vt(a, 3)
+list_tuple_3(x0: a, x1: a, x2: a): list_vt(a, 3)
 //
 fun<a:t0>
 list_tuple_4
-  (x0: a, x1: a, x2: a, x3: a):<> list_vt(a, 4)
+  (x0: a, x1: a, x2: a, x3: a): list_vt(a, 4)
 fun<a:t0>
 list_tuple_5
-  (x0: a, x1: a, x2: a, x3: a, x4: a):<> list_vt(a, 5)
+  (x0: a, x1: a, x2: a, x3: a, x4: a): list_vt(a, 5)
 fun<a:t0>
 list_tuple_6
-  (x0: a, x1: a, x2: a, x3: a, x4: a, x5: a):<> list_vt(a, 6)
+  (x0: a, x1: a, x2: a, x3: a, x4: a, x5: a): list_vt(a, 6)
 //
 (* ****** ****** *)
 //
@@ -116,10 +116,10 @@ list_tuple with list_tuple_6
 //
 fun
 <x:t0>
-list_make_sing(x):<wrt> list_vt(x, 1)
+list_make_sing(x): list_vt(x, 1)
 fun
 <x:t0>
-list_make_pair(x, x):<wrt> list_vt(x, 2)
+list_make_pair(x, x): list_vt(x, 2)
 //
 (* ****** ****** *)
 //
@@ -127,7 +127,7 @@ fun
 <x:t0>
 list_make_elt
   {n:nat}
-  (n: int(n), x: x):<wrt> list_vt(x, n)
+  (n: int(n), x: x): list_vt(x, n)
 // end of [list_make_elt]
 //
 (* ****** ****** *)
@@ -135,12 +135,12 @@ list_make_elt
 fun
 <x:t0>
 list_length{n:i0}
-  (xs: list(x, n)):<> int(n)
+  (xs: list(x, n)): int(n)
 //
 fun
 <x:vt>
 list_length_vt1{n:i0}
-  (xs: !list_vt(x, n)):<> int(n)
+  (xs: !list_vt(x, n)): int(n)
 //
 (* ****** ****** *)
 //
@@ -148,21 +148,21 @@ fun<>
 list_isnil
 {x:t0}
 {n:i0}
-(xs: list(x, n)):<> bool(n=0)
+(xs: list(x, n)): bool(n=0)
 fun<>
 list_iscons
 {x:t0}
 {n:i0}
-(xs: list(x, n)):<> bool(n>0)
+(xs: list(x, n)): bool(n>0)
 //
 fun
 <x:t0>
 list_issing
-{n:i0}(xs: list(x, n)):<> bool(n=1)
+{n:i0}(xs: list(x, n)): bool(n=1)
 fun
 <x:t0>
 list_ispair
-{n:i0}(xs: list(x, n)):<> bool(n=2)
+{n:i0}(xs: list(x, n)): bool(n=2)
 //
 #symload iseqz with list_isnil
 #symload iseq1 with list_issing
@@ -215,22 +215,22 @@ neq_list_int
 fun
 <x:t0>
 list_head
-  {n:pos}(xs: list(x, n)):<> (x)
+  {n:pos}(xs: list(x, n)): (x)
 fun
 <x:t0>
 list_head_exn
-  {n:int}(xs: list(x, n)):<exn> (x)
+  {n:int}(xs: list(x, n)): (x)
 //
 (* ****** ****** *)
 //
 fun
 <x:t0>
 list_tail{n:pos}
-  (xs: SHARED(list(x, n))):<> list(x, n-1)
+  (xs: SHARED(list(x, n))): list(x, n-1)
 fun
 <x:t0>
 list_tail_exn{n:int}
-  (xs: SHARED(list(x, n))):<exn> list(x, n-1)
+  (xs: SHARED(list(x, n))): list(x, n-1)
 //
 (* ****** ****** *)
 //
@@ -260,17 +260,17 @@ fun
 <x:t0>
 list_append_dt0_dt1
 {m,n:i0}
-(list(x, m), list(x, n)):<> list(x, m+n)
+(list(x, m), list(x, n)): list(x, m+n)
 fun
 <x:t0>
 list_append_dt0_vt0
 {m,n:i0}
-(list(x, m), list_vt(x, n)):<> list_vt(x, m+n)
+(list(x, m), list_vt(x, n)): list_vt(x, m+n)
 fun
 <x:vt>
 list_append_vt0_vt0
 {m,n:i0}
-(list_vt(x, m), list_vt(x, n)):<> list_vt(x, m+n)
+(list_vt(x, m), list_vt(x, n)): list_vt(x, m+n)
 //
 (* ****** ****** *)
 //
@@ -310,13 +310,13 @@ fun
 list_get_at
 { n,i:i0
 | 0 <= i; i < n}
-(xs: list(x, n), i: int(i)):<> (x)
+(xs: list(x, n), i: int(i)): (x)
 fun
 <x:vt>
 list_get_at_vt1
 { n,i:i0
 | 0 <= i; i < n}
-(xs: !list_vt(x, n), i: int(i)):<> (x)
+(xs: !list_vt(x, n), i: int(i)): (x)
 //
 (* ****** ****** *)
 //
@@ -405,14 +405,14 @@ list_zip
   {m,n:i0}
 ( xs: list(x, m)
 , ys: list(y, n)
-) :<> list_vt((x, y), min(m, n))
+) : list_vt((x, y), min(m, n))
 fun
 <x:t0>
 <y:t0>
 list_zipeq
   {n:i0}
 ( xs: list(x, n)
-, ys: list(y, n)):<> list_vt((x, y), n)
+, ys: list(y, n)): list_vt((x, y), n)
 //
 (* ****** ****** *)
 //
@@ -421,8 +421,8 @@ fun
 <y:t0>
 list_cross
   {m,n:i0}
-( xs: list(x, m)
-, ys: list(y, n)):<> list_vt((x, y), m*n)
+( xs:list(x, m)
+, ys:list(y, n)): list_vt((x, y), m*n)
 //
 (* ****** ****** *)
 //
@@ -451,29 +451,29 @@ fun
 <x:t0>
 list_sort
 // based on mergesort
-  {n:i0}(xs: list(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list(x, n)): list_vt(x, n)
 fun
 <x:t0>
 list_quicksort
-  {n:i0}(xs: list(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list(x, n)): list_vt(x, n)
 fun
 <x:t0>
 list_mergesort
-  {n:i0}(xs: list(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list(x, n)): list_vt(x, n)
 //
 fun
 <x:vt>
 list_sort_vt0
 // based on mergesort
-  {n:i0}(xs: list_vt(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list_vt(x, n)): list_vt(x, n)
 fun
 <x:vt>
 list_quicksort_vt0
-  {n:i0}(xs: list_vt(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list_vt(x, n)): list_vt(x, n)
 fun
 <x:vt>
 list_mergesort_vt0
-  {n:i0}(xs: list_vt(x, n)):<> list_vt(x, n)
+  {n:i0}(xs: list_vt(x, n)): list_vt(x, n)
 //
 (* ****** ****** *)
 

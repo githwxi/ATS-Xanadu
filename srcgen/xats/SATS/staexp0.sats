@@ -854,6 +854,7 @@ overload prerr with prerr_labs0exp_RBRACE
 overload fprint with fprint_labs0exp_RBRACE
 //
 (* ****** ****** *)
+(*
 //
 datatype
 s0eff =
@@ -873,12 +874,16 @@ overload print with print_s0eff
 overload prerr with prerr_s0eff
 overload fprint with fprint_s0eff
 //
+*)
 (* ****** ****** *)
 //
 datatype
 effs0expopt =
-| EFFS0EXPnone of ((*void*))
+| EFFS0EXPnone of ()
+| EFFS0EXPsome of (s0exp)
+(*
 | EFFS0EXPsome of (s0eff, s0exp)
+*)
 //
 fun
 print_effs0expopt:

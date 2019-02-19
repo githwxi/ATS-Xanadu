@@ -479,6 +479,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
+(*
 implement
 print_s1eff(x0) =
 fprint_s1eff(stdout_ref, x0)
@@ -494,7 +495,8 @@ case+ x0 of
   fprint!(out, "S1EFFnone(", ")")
 | S1EFFsome(s1es) =>
   fprint!(out, "S1EFFsome(", s1es, ")")
-)
+) (* end of [fprint_s1eff] *)
+*)
 
 (* ****** ****** *)
 
@@ -511,10 +513,14 @@ fprint_effs1expopt
 case+ x0 of
 | EFFS1EXPnone() =>
   fprint!(out, "EFFS1EXPnone(", ")")
+| EFFS1EXPsome(s1e) =>
+  fprint!(out, "EFFS1EXPsome(", s1e, ")")
+(*
 | EFFS1EXPsome(s1f, s1e) =>
   fprint!
   ( out
   , "EFFS1EXPsome(", s1f, "; ", s1e, ")")
+*)
 ) (* end of [fprint_effs1expopt] *)
 
 (* ****** ****** *)

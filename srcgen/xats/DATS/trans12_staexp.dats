@@ -434,14 +434,17 @@ s1t0.node() of
 end // end of [trans12_stxt]
 
 (* ****** ****** *)
-
+//
 implement
 s1exp_get_lin(s1e0) = 0
 implement
 s1exp_get_fc2(s1e0) = FC2fun()
+//
+(*
 implement
 s1exp_get_eff(s1e0) = S2EFFall()
-
+*)
+//
 (* ****** ****** *)
 
 implement
@@ -1083,9 +1086,13 @@ s1e1.node() of
   let
   var npf
     : int = 0
+//
   val fc2 = s1exp_get_fc2(s1e1)
   val lin = s1exp_get_lin(s1e1)
+(*
   val eff = s1exp_get_eff(s1e1)
+*)
+//
   val s2es =
   (
   case+
@@ -1107,8 +1114,7 @@ s1e1.node() of
   ) : s2explst
   val s2e3 = trans12_sexp(s1e3)
   in
-    s2exp_fun_full
-    (fc2, lin, eff, npf, s2es, s2e3)
+    s2exp_fun_full(fc2, lin, npf, s2es, s2e3)
   end
 | _(*non-S1Eimp*) =>
   let
@@ -1555,6 +1561,40 @@ case+ lx0 of
 )
 //
 } (* trans12_labsexplst *)
+
+(* ****** ****** *)
+//
+(*
+implement
+trans12_seff
+  (s1f0) =
+(
+case+ s1f0 of
+| S1EFFnone _ => S2EFFnil()
+| S1EFFsome _ => S2EFFall()
+) (* end of [trans12_seff] *)
+*)
+//
+(* ****** ****** *)
+
+implement
+trans12_effsexpopt
+  (opt0) =
+(
+case+ opt0 of
+| EFFS1EXPnone() =>
+  EFFS2EXPnone()
+| EFFS1EXPsome(s1e) =>
+  EFFS2EXPsome(trans12_sexp(s1e))
+(*
+| EFFS1EXPsome(s1f, s1e) =>
+  EFFS2EXPsome(s2f, s2e) where
+  {
+    val s2f = trans12_seff(s1f)
+    val s2e = trans12_sexp(s1e)
+  }
+*)
+) (* end of [trans12_effsexpopt] *)
 
 (* ****** ****** *)
 

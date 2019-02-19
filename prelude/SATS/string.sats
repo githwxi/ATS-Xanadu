@@ -36,6 +36,14 @@
 fun<>
 string_length
 {n:int}(string(n)): nat(n)
+fun<>
+string_length_vt1
+{n:int}(!string_vt(n)): nat(n)
+
+#symload
+length with string_length
+#symload
+length with string_length_vt1
 
 (* ****** ****** *)
 
@@ -46,10 +54,22 @@ fun<>
 string_iscons
 {n:int}(string(n)): bool(n>0)
 
+fun<>
+string_isnil_vt1
+{n:int}(!string(n)): bool(n=0)
+fun<>
+string_iscons_vt1
+{n:int}(!string(n)): bool(n>0)
+
 #symload
 iseqz with string_isnil of 11
 #symload
 isneqz with string_iscons of 11
+
+#symload
+iseqz with string_vt_isnil of 11
+#symload
+isneqz with string_vt_iscons of 11
 
 (* ****** ****** *)
 
@@ -57,6 +77,10 @@ fun<>
 string_append
 {m,n:int}
 (string(m), string(n)): string_vt(m+n)
+fun<>
+string_append_vt0_vt0
+{m,n:int}
+(string_vt(m), string_vt(n)): string_vt(m+n)
 
 (* ****** ****** *)
 

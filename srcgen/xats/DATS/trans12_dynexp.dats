@@ -352,7 +352,7 @@ println!
 ("trans12_dpat: d1p0 = ", d1p0)
 //
 in (* in-of-let *)
-
+//
 case-
 d1p0.node() of
 //
@@ -1882,13 +1882,7 @@ the_trans12_pushnil()
 val arg =
 trans12_farglst(rcd.arg)
 val res =
-(
-case+ rcd.res of
-| EFFS1EXPnone
-    ((*void*)) => None()
-| EFFS1EXPsome
-    (s1f, s1e) => Some(trans12_sexp(s1e))
-) : s2expopt // end of [val]
+trans12_effsexpopt(rcd.res)
 //
 val def = trans12_dexp(rcd.def)
 //
@@ -2476,12 +2470,18 @@ auxres0
 (
 case+ res0 of
 | EFFS1EXPnone
-    ((*void*)) =>
+    () =>
   (
     s2exp_none0(d1c0.loc())
   )
 | EFFS1EXPsome
+    (s1e) => trans12_sexp(s1e)
+  // EFFS1EXPsome
+(*
+| EFFS1EXPsome
     (s1f, s1e) => trans12_sexp(s1e)
+  // EFFS1EXPsome
+*)
 ) (* end of [auxres0] *)
 
 and
@@ -2508,7 +2508,7 @@ auxarg2
 , d1as: d1arglst
 , res0: effs1expopt): s2exp =
 (
-case-
+case+
 d1a0.node() of
 |
 D1ARGsome_sta(s1qs) =>
@@ -2529,35 +2529,55 @@ in
 end // end of [D1ARGsome_sta]
 |
 D1ARGsome_dyn1(tok0) =>
+(*
+let
+//
+val npf = ~1
+//
+val lin = (0)
+val fc2 =
+(
+  if
+  nfc0 <= 0
+  then FC2fun() else FC2cloref
+) : funclo2
+val eff = S2EFFnil()
+//
+val s2es =
+  list_sing(auxsid(tok0))
+val s2e0 =
+  auxarg1(d1c0, nfc0+1, d1as, res0)
+in
+  s2exp_fun_full
+    (fc2, lin, eff, npf, s2es, s2e0)
+  // s2exp_fun_full
+end
+*)
 let
   val npf = ~1
-  and lin = (0)
-  and eff = S2EFFnil()
-  val fc2 =
-  (
-    if
-    nfc0 <= 0
-    then FC2fun() else FC2cloref
-  ) : funclo2
   val s2es = list_sing(auxsid(tok0))
-  val s2e0 = auxarg1(d1c0, nfc0+1, d1as, res0)
 in
-  s2exp_fun_full(fc2, lin, eff, npf, s2es, s2e0)
+  auxarg3(d1c0, nfc0, npf, s2es, d1as, res0)
 end
 |
 D1ARGsome_dyn2(arg0, opt1) =>
+(*
 let
+//
   var npf
     : int = ~1
+//
   val lin = (0)
-  and eff = S2EFFnil()
   val fc2 =
   (
     if
     nfc0 <= 0
     then FC2fun() else FC2cloref
-  ) : funclo2 // end of [val]
-  val s2es = trans12_atyplst(arg0)
+  ) : funclo2 // end-of-val
+  val eff = S2EFFnil()
+//
+  val s2es =
+  trans12_atyplst(arg0)
   val s2es =
   (
   case+ opt1 of
@@ -2573,11 +2593,115 @@ let
       val s2es2 = trans12_atyplst(arg1)
     }
   ) : s2explst // end-of-val
+//
   val s2e0 = auxarg1(d1c0, nfc0+1, d1as, res0)
+//
 in
   s2exp_fun_full(fc2, lin, eff, npf, s2es, s2e0)
 end
+*)
+let
+//
+  var npf
+    : int = ~1
+//
+  val s2es =
+  trans12_atyplst(arg0)
+//
+  val s2es =
+  (
+  case+ opt1 of
+  | None() => s2es
+  | Some(arg1) =>
+    (
+      s2es1 + s2es1
+    ) where
+    {
+      val () =
+        (npf := list_length(s2es))
+      val s2es1 = s2es
+      val s2es2 = trans12_atyplst(arg1)
+    }
+  ) : s2explst // end-of-val
+//
+in
+  auxarg3(d1c0, nfc0, npf, s2es, d1as, res0)
+end
 ) (* end of [auxarg2]  *)
+
+and
+auxarg3
+( d1c0
+: d1cstdecl
+, nfc0: int
+, npf0: int
+, s2es: s2explst
+, d1as: d1arglst
+, res0: effs1expopt): s2exp =
+(
+case+ d1as of
+|
+list_nil() =>
+let
+  val lin = 0
+  val fc2 =
+  (
+    if
+    nfc0 <= 0
+    then FC2fun()
+    else FC2cloref
+  ) : funclo2 // end-of-val
+(*
+  val eff =
+  (
+  case+ res0 of
+  | EFFS1EXPnone
+    ((*void*)) => S2EFFnil()
+  | EFFS1EXPsome
+    (s1f, s1e) => trans12_seff(s1f)
+  ) : s2eff // end of [val]
+*)
+  val s2e0 =
+  (
+  case+ res0 of
+  | EFFS1EXPnone
+      () =>
+    (
+      s2exp_none0(d1c0.loc())
+    )
+  | EFFS1EXPsome
+      (s1e) => trans12_sexp(s1e)
+    // EFFS1EXPsome
+(*
+  | EFFS1EXPsome
+      (s1f, s1e) => trans12_sexp(s1e)
+    // EFFS1EXPsome
+*)
+  ) : s2exp // end of [val]
+in
+  s2exp_fun_full(fc2, lin, npf0, s2es, s2e0)
+end
+|
+list_cons _ =>
+let
+  val lin = 0
+  val fc2 =
+  (
+    if
+    nfc0 <= 0
+    then FC2fun()
+    else FC2cloref
+  ) : funclo2 // end of [val]
+(*
+  val eff = S2EFFnil()
+*)
+  val s2e0 =
+    auxarg1(d1c0, nfc0+1, d1as, res0)
+  // end of [val]
+in
+  s2exp_fun_full(fc2, lin, npf0, s2es, s2e0)
+end
+)
 
 and
 aux_dcstdeclist

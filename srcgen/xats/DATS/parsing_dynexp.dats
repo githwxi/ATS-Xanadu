@@ -2665,9 +2665,10 @@ case+ def of
      | list_cons
        (tqa, _) => loc+tqa.loc()
     )
-  | EFFS0EXPsome
-      (sfe, s0e) => loc+s0e.loc()
-    // EFFS0EXPsome
+  | EFFS0EXPsome(s0e) => loc+s0e.loc()
+(*
+  | EFFS0EXPsome(sfe, s0e) => loc+s0e.loc()
+*)
   )
 | TEQD0EXPsome(_, d0e) => loc+d0e.loc()
 ) : loc_t // end of [val]
