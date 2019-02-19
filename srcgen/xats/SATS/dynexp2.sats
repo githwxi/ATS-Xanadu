@@ -44,6 +44,13 @@ LOC = "./location.sats"
 (* ****** ****** *)
 //
 #staload
+S0E = "./staexp0.sats"
+//
+typedef dq0eid = $S0E.dq0eid
+//
+(* ****** ****** *)
+//
+#staload
 S1E = "./staexp1.sats"
 //
   typedef s1exp = $S1E.s1exp
@@ -491,6 +498,43 @@ tq2arg_make
 (loc: loc_t, svss: s2varlstlst): tq2arg
 //
 (* ****** ****** *)
+//
+abstype
+ti2arg_tbox = ptr
+//
+typedef
+ti2arg = ti2arg_tbox
+typedef
+ti2arglst = List0(ti2arg)
+//
+fun
+ti2arg_get_loc(ti2arg): loc_t
+fun
+ti2arg_get_sess(ti2arg): s2explstlst
+//
+overload .loc with ti2arg_get_loc
+overload .sess with ti2arg_get_sess
+//
+(* ****** ****** *)
+//
+fun
+print_ti2arg: print_type(ti2arg)
+fun
+prerr_ti2arg: prerr_type(ti2arg)
+fun
+fprint_ti2arg: fprint_type(ti2arg)
+//
+overload print with print_ti2arg
+overload prerr with prerr_ti2arg
+overload fprint with fprint_ti2arg
+//
+(* ****** ****** *)
+//
+fun
+ti2arg_make
+(loc: loc_t, sess: s2explstlst): ti2arg
+//
+(* ****** ****** *)
 
 datatype
 d2exp_node =
@@ -847,9 +891,21 @@ d2ecl_node =
   ( token(*valkind*)
   , declmodopt, v2aldeclist)
 //
+// HX-2019-02-18:
+// tq2arglst is used as tq2argopt
+//
 | D2Cfundecl of
   ( token(*funkind*)
   , declmodopt, tq2arglst(*tmpargs*), f2undeclist)
+//
+// HX-2019-02-18:
+// tq2arglst is used as tq2argopt
+// ti2arglst is used as ti2argopt
+//
+| D2Cimpdecl of
+  ( token(*impkind*)
+  , declmodopt, tq2arglst
+  , impdeclcst, ti2arglst, f2arglst, effs2expopt, d2exp)
 //
 | D2Csymload of
   ( token(*symload*)
@@ -870,6 +926,10 @@ abstdf2 =
   | ABSTDF2nil of () // unspecified
   | ABSTDF2lteq of s2exp // erasure
   | ABSTDF2eqeq of s2exp // definition
+//
+and
+impdeclcst =
+  | IMPDECLCST of (dq0eid, d2cstlst)
 //
 (* ****** ****** *)
 //
@@ -902,6 +962,22 @@ d2ecl_none1(d1c: d1ecl): d2ecl
 fun
 d2ecl_make_node
 (loc: loc_t, node: d2ecl_node): d2ecl
+//
+(* ****** ****** *)
+//
+fun
+print_impdeclcst:
+print_type(impdeclcst)
+fun
+prerr_impdeclcst:
+prerr_type(impdeclcst)
+fun
+fprint_impdeclcst:
+fprint_type(impdeclcst)
+//
+overload print with print_impdeclcst
+overload prerr with prerr_impdeclcst
+overload fprint with fprint_impdeclcst
 //
 (* ****** ****** *)
 

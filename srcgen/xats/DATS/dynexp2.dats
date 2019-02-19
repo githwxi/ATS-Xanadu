@@ -732,6 +732,34 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+ti2arg_tbox = $rec
+{
+ti2arg_loc= loc_t
+,
+ti2arg_sess= s2explstlst
+}
+
+in (* in-of-local *)
+
+implement
+ti2arg_make
+(loc, sess) = $rec
+{
+ti2arg_loc= loc, ti2arg_sess= sess
+}
+
+implement
+ti2arg_get_loc(x0) = x0.ti2arg_loc
+implement
+ti2arg_get_sess(x0) = x0.ti2arg_sess
+
+end // end of [local]
+
+(* ****** ****** *)
+
 implement
 v2aldecl_get_loc
   (d1c0) = let

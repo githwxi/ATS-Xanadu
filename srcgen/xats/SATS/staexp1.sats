@@ -505,6 +505,11 @@ s1exp_make_node
 (loc: loc_t, node: s1exp_node): s1exp
 //
 (* ****** ****** *)
+//
+// HX-2019-02-18:
+// There is no longer plan
+// to support effect-tracking!!!
+//
 (*
 //
 datatype
@@ -524,7 +529,6 @@ overload prerr with prerr_s1eff
 overload fprint with fprint_s1eff
 //
 *)
-(* ****** ****** *)
 //
 datatype
 effs1expopt =

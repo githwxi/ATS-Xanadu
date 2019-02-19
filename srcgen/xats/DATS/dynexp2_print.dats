@@ -139,6 +139,8 @@ fprint_val<d2ecl> = fprint_d2ecl
 //
 implement
 fprint_val<tq2arg> = fprint_tq2arg
+implement
+fprint_val<ti2arg> = fprint_ti2arg
 //
 (* ****** ****** *)
 //
@@ -534,13 +536,22 @@ case- x0.node() of
 | D2Cvardecl(knd, v2ds) =>
   fprint!
   ( out
-  , "D2Cvardecl(", knd, "; ", v2ds)
+  , "D2Cvardecl(", knd, "; ", v2ds, ")")
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
   fprint!
   ( out
   , "D2Cfundecl("
-  , knd, "; ", mopt, "; ", tqas, "; ", f2ds)
+  , knd, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
+//
+| D2Cimpdecl
+  ( knd, mopt, tqas
+  , dqid, tias, f2as, res0, d2e1) =>
+  fprint!
+  ( out
+  , "D2Cimpdecl("
+  , knd, "; ", mopt, "; "
+  , tqas, "; ", dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
 //
 | D2Csymload
   (tok, sym0, dpi1) =>
@@ -637,6 +648,27 @@ list_foreach$fwork<s2varlst><void>
 } (* end of [fprint_tq2arg] *)
 //
 (* ****** ****** *)
+//
+implement
+print_ti2arg(x0) =
+fprint_ti2arg(stdout_ref, x0) 
+implement
+prerr_ti2arg(x0) =
+fprint_ti2arg(stdout_ref, x0) 
+//
+implement
+fprint_ti2arg
+  (out, x0) =
+(
+list_foreach<s2explst>(x0.sess())
+) where
+{
+implement
+list_foreach$fwork<s2explst><void>
+  (s2es, env) = fprint!(out, "<", s2es, ">")
+} (* end of [fprint_ti2arg] *)
+//
+(* ****** ****** *)
 
 implement
 print_v2aldecl(x0) =
@@ -707,6 +739,28 @@ in
   , ", res=", rcd.res
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
+
+(* ****** ****** *)
+
+implement
+print_impdeclcst(x0) =
+fprint_impdeclcst(stdout_ref, x0)
+implement
+prerr_impdeclcst(x0) =
+fprint_impdeclcst(stderr_ref, x0)
+
+implement
+fprint_impdeclcst
+  (out, x0) = let
+//
+val+
+IMPDECLCST(dqid, d2cs) = x0
+//
+in
+//
+fprint!(out, "IMPDECLCST(", dqid, "; ", d2cs, ")")
+//
+end // end of [fprint_impdeclst]
 
 (* ****** ****** *)
 

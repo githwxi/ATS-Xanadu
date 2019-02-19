@@ -854,6 +854,12 @@ overload prerr with prerr_labs0exp_RBRACE
 overload fprint with fprint_labs0exp_RBRACE
 //
 (* ****** ****** *)
+//
+//
+// HX-2019-02-18:
+// There is no longer plan
+// to support effect-tracking!!!
+//
 (*
 //
 datatype
@@ -875,7 +881,6 @@ overload prerr with prerr_s0eff
 overload fprint with fprint_s0eff
 //
 *)
-(* ****** ****** *)
 //
 datatype
 effs0expopt =
