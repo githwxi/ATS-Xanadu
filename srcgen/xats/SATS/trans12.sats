@@ -175,7 +175,9 @@ typedef tq1arg = $D1E.tq1arg
 typedef ti1arg = $D1E.ti1arg
 //
 typedef q1arglst = $D1E.q1arglst
+typedef sq1arglst = $D1E.sq1arglst
 typedef tq1arglst = $D1E.tq1arglst
+typedef ti1arglst = $D1E.ti1arglst
 //
 (* ****** ****** *)
 
@@ -220,8 +222,12 @@ typedef d2varlst = $D2E.d2varlst
 //
 (* ****** ****** *)
 
+typedef sq2arg = $D2E.sq2arg
 typedef tq2arg = $D2E.tq2arg
+typedef ti2arg = $D2E.ti2arg
+typedef sq2arglst = $D2E.sq2arglst
 typedef tq2arglst = $D2E.tq2arglst
+typedef ti2arglst = $D2E.ti2arglst
 
 (* ****** ****** *)
 
@@ -755,17 +761,26 @@ trans12_atyplst(x0: a1typlst): s2explst
 //
 fun
 trans12_qarg
-  (q1a: q1arg): s2varlst
+  (q1a: q1arg): s2var
 fun
 trans12_qarglst
-  (q1as: q1arglst): s2varlstlst
+  (q1as: q1arglst): s2varlst
 //
 (* ****** ****** *)
 //
 fun
+trans12_sqarg(sq1a: sq1arg): sq2arg
+fun
 trans12_tqarg(tq1a: tq1arg): tq2arg
 fun
+trans12_tiarg(ti1a: ti1arg): ti2arg
+//
+fun
+trans12_sqarglst(sqas: sq1arglst): sq2arglst
+fun
 trans12_tqarglst(tqas: tq1arglst): tq2arglst
+fun
+trans12_tiarglst(tias: ti1arglst): ti2arglst
 //
 (* ****** ****** *)
 

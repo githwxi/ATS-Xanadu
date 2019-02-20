@@ -100,8 +100,10 @@ typedef q0arglst = List0(q0arg)
 //
 datatype
 q0arg_node =
+(*
 | Q0ARGnone of token
-| Q0ARGsome of (i0dntlst, sort0opt)
+*)
+| Q0ARGsome of (i0dnt, sort0opt)
 //
 fun
 q0arg_get_loc(q0arg): loc_t
@@ -135,9 +137,9 @@ typedef sq0arglst = List0(sq0arg)
 //
 datatype
 sq0arg_node =
-  | SQ0ARGnone of token
-  | SQ0ARGsome of
-    (token(*'{'*), s0qualst, token(*'}'*))
+| SQ0ARGnone of token
+| SQ0ARGsome of
+  (token(*'{'*), q0arglst, token(*'}'*))
 //
 fun
 sq0arg_get_loc(sq0arg): loc_t
@@ -147,9 +149,12 @@ sq0arg_get_node(sq0arg): sq0arg_node
 overload .loc with sq0arg_get_loc
 overload .node with sq0arg_get_node
 //
-fun print_sq0arg : print_type(sq0arg)
-fun prerr_sq0arg : prerr_type(sq0arg)
-fun fprint_sq0arg : fprint_type(sq0arg)
+fun
+print_sq0arg : print_type(sq0arg)
+fun
+prerr_sq0arg : prerr_type(sq0arg)
+fun
+fprint_sq0arg : fprint_type(sq0arg)
 //
 overload print with print_sq0arg
 overload prerr with prerr_sq0arg
@@ -168,9 +173,9 @@ typedef tq0arglst = List0(tq0arg)
 //
 datatype
 tq0arg_node =
-  | TQ0ARGnone of token
-  | TQ0ARGsome of
-    (token(*'<'*), q0arglst, token(*'>'*))
+| TQ0ARGnone of token
+| TQ0ARGsome of
+  (token(*'<'*), q0arglst, token(*'>'*))
 //
 fun
 tq0arg_get_loc(tq0arg): loc_t

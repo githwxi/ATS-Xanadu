@@ -463,6 +463,39 @@ overload fprint with fprint_d2pitm
 (* ****** ****** *)
 //
 abstype
+sq2arg_tbox = ptr
+//
+typedef
+sq2arg = sq2arg_tbox
+typedef
+sq2arglst = List0(sq2arg)
+//
+fun
+sq2arg_get_loc(sq2arg): loc_t
+fun
+sq2arg_get_s2vs(sq2arg): s2varlst
+//
+overload .loc with sq2arg_get_loc
+overload .s2vs with sq2arg_get_s2vs
+//
+fun
+print_sq2arg: print_type(sq2arg)
+fun
+prerr_sq2arg: prerr_type(sq2arg)
+fun
+fprint_sq2arg: fprint_type(sq2arg)
+//
+overload print with print_sq2arg
+overload prerr with prerr_sq2arg
+overload fprint with fprint_sq2arg
+//
+fun
+sq2arg_make
+(loc: loc_t, s2vs: s2varlst): sq2arg
+//
+(* ****** ****** *)
+//
+abstype
 tq2arg_tbox = ptr
 //
 typedef
@@ -473,12 +506,10 @@ tq2arglst = List0(tq2arg)
 fun
 tq2arg_get_loc(tq2arg): loc_t
 fun
-tq2arg_get_svss(tq2arg): s2varlstlst
+tq2arg_get_s2vs(tq2arg): s2varlst
 //
 overload .loc with tq2arg_get_loc
-overload .svss with tq2arg_get_svss
-//
-(* ****** ****** *)
+overload .s2vs with tq2arg_get_s2vs
 //
 fun
 print_tq2arg: print_type(tq2arg)
@@ -491,11 +522,9 @@ overload print with print_tq2arg
 overload prerr with prerr_tq2arg
 overload fprint with fprint_tq2arg
 //
-(* ****** ****** *)
-//
 fun
 tq2arg_make
-(loc: loc_t, svss: s2varlstlst): tq2arg
+(loc: loc_t, s2vs: s2varlst): tq2arg
 //
 (* ****** ****** *)
 //
@@ -510,12 +539,10 @@ ti2arglst = List0(ti2arg)
 fun
 ti2arg_get_loc(ti2arg): loc_t
 fun
-ti2arg_get_sess(ti2arg): s2explstlst
+ti2arg_get_s2es(ti2arg): s2explst
 //
 overload .loc with ti2arg_get_loc
-overload .sess with ti2arg_get_sess
-//
-(* ****** ****** *)
+overload .s2es with ti2arg_get_s2es
 //
 fun
 print_ti2arg: print_type(ti2arg)
@@ -528,11 +555,9 @@ overload print with print_ti2arg
 overload prerr with prerr_ti2arg
 overload fprint with fprint_ti2arg
 //
-(* ****** ****** *)
-//
 fun
 ti2arg_make
-(loc: loc_t, sess: s2explstlst): ti2arg
+(loc: loc_t, s2es: s2explst): ti2arg
 //
 (* ****** ****** *)
 
@@ -904,7 +929,8 @@ d2ecl_node =
 //
 | D2Cimpdecl of
   ( token(*impkind*)
-  , declmodopt, tq2arglst
+  , declmodopt
+  , sq2arglst, tq2arglst
   , impdeclcst, ti2arglst, f2arglst, effs2expopt, d2exp)
 //
 | D2Csymload of

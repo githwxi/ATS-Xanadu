@@ -102,7 +102,7 @@ q1arg_node =
 | Q1ARGnone of token
 *)
 | Q1ARGsome of
-  (tokenlst(*ids*), sort1opt)
+  (token(*sid*), sort1opt)
 //
 fun
 q1arg_get_loc(q1arg): loc_t
@@ -137,7 +137,7 @@ typedef sq1arglst = List0(sq1arg)
 datatype
 sq1arg_node =
   | SQ1ARGnone of token
-  | SQ1ARGsome of (s1qualst)
+  | SQ1ARGsome of (q1arglst)
 //
 fun
 sq1arg_get_loc(sq1arg): loc_t
@@ -358,7 +358,7 @@ d1pat_node =
 | D1Papp2 of
   (d1pat(*fun*), d1pat, d1pat)
 //
-| D1Psqarg of
+| D1Psarg of
   (s1arglst(*static*))
 //
 | D1Plist of d1patlst // temp.

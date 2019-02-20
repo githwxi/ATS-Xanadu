@@ -224,7 +224,7 @@ in
 case+
 d1p2.node() of
 //
-| D1Psqarg(s1as) =>
+| D1Psarg(s1as) =>
   let
     val d2p1 =
     trans12_dpat(d1p1)
@@ -1817,7 +1817,7 @@ case+ xs of
   ) where
   {
     val () =
-    the_sexpenv_add_varlstlst(x0.svss())
+    the_sexpenv_add_varlst(x0.s2vs())
   }
 ) (* end of [loop] *)
 in
@@ -1932,6 +1932,90 @@ case+ d2vs of
 )
 //
 } (* end of [aux_fundecl] *)
+
+(* ****** ****** *)
+
+fun
+aux_impdecl
+( d1c0
+: d1ecl): d2ecl =
+aux_impdecl_rec(d1c0)
+
+and
+aux_impdecl_rec
+( d1c0
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1c0.loc()
+val-
+D1Cimpdecl
+( knd
+, mopt
+, sqas, tqas
+, dqid, tias
+, f1as, res0
+, teq1, d1e2) = d1c0.node()
+//
+val
+sqas = trans12_sqarglst(sqas)
+val
+tqas = trans12_tqarglst(tqas)
+//
+val
+(pf0|()) =
+the_trans12_pushnil()
+//
+val () =
+(
+case+ sqas of
+| list_nil() => ()
+| list_cons(x0, _) =>
+  the_sexpenv_add_varlst(x0.s2vs())
+) : void // end of [val]
+val () =
+(
+list_foreach<tq2arg>(tqas)
+) where
+{
+implement
+list_foreach$fwork<tq2arg><void>
+  (tq2a, env) =
+  the_sexpenv_add_varlst(tq2a.s2vs())
+}
+//
+val tias =
+  trans12_tiarglst(tias)
+//
+val dqid = auxdqid(dqid)
+val f2as = trans12_farglst(f1as)
+val res0 = trans12_effsexpopt(res0)
+//
+val d2e2 = trans12_dexp(d1e2)
+//
+val
+((*void*)) =
+the_trans12_popfree(pf0|(*void*))
+//
+in
+  d2ecl_make_node
+  ( loc0
+  , D2Cimpdecl
+    ( knd, mopt
+    , sqas, tqas, dqid, tias, f2as, res0, d2e2)
+  ) (* d2ecl_make_node *)
+end // end of [aux_impdecl_rec]
+
+and
+auxdqid
+( dqid
+: dq0eid): impdeclcst =
+(
+  IMPDECLCST(dqid, d2cs)
+) where
+{
+  val d2cs = list_nil(*void*)
+} (* end of [auxdqid] *)
 
 (* ****** ****** *)
 
@@ -2402,7 +2486,7 @@ case+ xs of
   ) where
   {
     val () =
-    the_sexpenv_add_varlstlst(x0.svss())
+    the_sexpenv_add_varlst(x0.s2vs())
   }
 ) (* end of [loop] *)
 in
@@ -2769,6 +2853,8 @@ d1c0.node() of
 | D1Cvardecl _ => aux_vardecl(d1c0)
 //
 | D1Cfundecl _ => aux_fundecl(d1c0)
+//
+| D1Cimpdecl _ => aux_impdecl(d1c0)
 //
 | D1Csymload _ => aux_symload(d1c0)
 //
@@ -3143,7 +3229,7 @@ trans12_qarg(q1a) =
 case+
 q1a.node() of
 |
-Q1ARGsome(xs, opt) =>
+Q1ARGsome(x0, opt) =>
 let
 //
 val
@@ -3158,27 +3244,12 @@ case+ opt of
 //
 in
 //
-(
-auxlst(xs)
-) where
-{
-fun
-auxlst
-(xs: tokenlst): s2varlst =
-(
-case+ xs of
-| list_nil() =>
-  list_nil()
-| list_cons(x0, xs) =>
-  (
-  list_cons(s2v0, auxlst(xs))
-  ) where
-  {
-    val tid = sortid_sym(x0)
-    val s2v0 = s2var_make_idst(tid, s2t)
-  }
-)
-} (* end of [where] *)
+  let
+    val
+    sid = sexpid_sym(x0)
+  in
+    s2var_make_idst(sid, s2t)
+  end
 //
 end // end of [trans12_qarg]
 )
@@ -3186,17 +3257,47 @@ end // end of [trans12_qarg]
 implement
 trans12_qarglst
   (q1as) =
-list_vt2t(svss) where
-{
-val
-svss =
-list_map<q1arg><s2varlst>
+list_vt2t
+(
+list_map<q1arg><s2var>
   (q1as) where
 {
 implement
-list_map$fopr<q1arg><s2varlst> = trans12_qarg
+list_map$fopr<q1arg><s2var> = trans12_qarg
 }
-} (* end of [trans12_qarglst] *)
+) (* end of [trans12_qarglst] *)
+
+(* ****** ****** *)
+
+implement
+trans12_sqarg
+  (sq1a) = let
+//
+val loc0 = sq1a.loc()
+//
+val-
+SQ1ARGsome(q1as) = sq1a.node()
+//
+val s2vs = trans12_qarglst(q1as)
+//
+in
+  sq2arg_make(loc0, s2vs)
+end // end of [trans12_sqarg]
+
+implement
+trans12_sqarglst
+  (sqas) =
+list_vt2t(sqas) where
+{
+val
+sqas =
+list_map<sq1arg><sq2arg>
+  (sqas) where
+{
+implement
+list_map$fopr<sq1arg><sq2arg> = trans12_sqarg
+}
+} (* end of [trans12_sqarglst] *)
 
 (* ****** ****** *)
 
@@ -3209,10 +3310,10 @@ val loc0 = tq1a.loc()
 val-
 TQ1ARGsome(q1as) = tq1a.node()
 //
-val svss = trans12_qarglst(q1as)
+val s2vs = trans12_qarglst(q1as)
 //
 in
-  tq2arg_make(loc0, svss)
+  tq2arg_make(loc0, s2vs)
 end // end of [trans12_tqarg]
 
 implement
@@ -3229,6 +3330,38 @@ implement
 list_map$fopr<tq1arg><tq2arg> = trans12_tqarg
 }
 } (* end of [trans12_tqarglst] *)
+
+(* ****** ****** *)
+
+implement
+trans12_tiarg
+  (ti1a) = let
+//
+val loc0 = ti1a.loc()
+//
+val-
+TI1ARGsome(s1es) = ti1a.node()
+//
+val s2es = trans12_sexplst(s1es)
+//
+in
+  ti2arg_make(loc0, s2es)
+end // end of [trans12_t1arg]
+
+implement
+trans12_tiarglst
+  (tias) =
+list_vt2t(tias) where
+{
+val
+tias =
+list_map<ti1arg><ti2arg>
+  (tias) where
+{
+implement
+list_map$fopr<ti1arg><ti2arg> = trans12_tiarg
+}
+} (* end of [trans12_tiarglst] *)
 
 (* ****** ****** *)
 

@@ -707,26 +707,54 @@ d2ecl_make_node
 local
 
 absimpl
+sq2arg_tbox = $rec
+{
+sq2arg_loc= loc_t
+,
+sq2arg_s2vs= s2varlst
+}
+
+in (* in-of-local *)
+
+implement
+sq2arg_make
+(loc, s2vs) = $rec
+{
+sq2arg_loc= loc, sq2arg_s2vs= s2vs
+} (* sq2arg_make *)
+
+implement
+sq2arg_get_loc(x0) = x0.sq2arg_loc
+implement
+sq2arg_get_s2vs(x0) = x0.sq2arg_s2vs
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 tq2arg_tbox = $rec
 {
 tq2arg_loc= loc_t
 ,
-tq2arg_svss= s2varlstlst
+tq2arg_s2vs= s2varlst
 }
 
 in (* in-of-local *)
 
 implement
 tq2arg_make
-(loc, svss) = $rec
+(loc, s2vs) = $rec
 {
-tq2arg_loc= loc, tq2arg_svss= svss
+tq2arg_loc= loc, tq2arg_s2vs= s2vs
 }
 
 implement
 tq2arg_get_loc(x0) = x0.tq2arg_loc
 implement
-tq2arg_get_svss(x0) = x0.tq2arg_svss
+tq2arg_get_s2vs(x0) = x0.tq2arg_s2vs
 
 end // end of [local]
 
@@ -739,22 +767,22 @@ ti2arg_tbox = $rec
 {
 ti2arg_loc= loc_t
 ,
-ti2arg_sess= s2explstlst
+ti2arg_s2es= s2explst
 }
 
 in (* in-of-local *)
 
 implement
 ti2arg_make
-(loc, sess) = $rec
+(loc, s2es) = $rec
 {
-ti2arg_loc= loc, ti2arg_sess= sess
+ti2arg_loc= loc, ti2arg_s2es= s2es
 }
 
 implement
 ti2arg_get_loc(x0) = x0.ti2arg_loc
 implement
-ti2arg_get_sess(x0) = x0.ti2arg_sess
+ti2arg_get_s2es(x0) = x0.ti2arg_s2es
 
 end // end of [local]
 

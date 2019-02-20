@@ -1,4 +1,11 @@
 
+implement
+{x:int}
+<y1:int,y2:int>
+foo<x,y1+y2>(xyz) = xyz
+
+////
+
 #extern
 fun
 foo(x:int): bool

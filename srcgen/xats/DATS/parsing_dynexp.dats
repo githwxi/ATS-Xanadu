@@ -391,82 +391,58 @@ fun
 p_q0arg: parser(q0arg)
 extern
 fun
-p_q0argseq_SEMICOLON: parser(q0arglst)
+p_q0argseq_COMMA: parser(q0arglst)
 //
 (* ****** ****** *)
 //
 implement
 p_q0arg
-  (buf, err) = let
+(buf, err) = let
 //
 val e0 = err
 //
-val ids =
-  auxids(buf, err)
+val sid =
+  p_s0aid(buf, err)
 //
 val tok = buf.get0()
 //
-in
-//
-case+ ids of
-| list_nil() =>
+val opt =
+(
+case+
+tok.node() of
+| T_COLON() =>
+  Some
   (
-    err := e0 + 1;
-    q0arg_make_node
-      (tok.loc(), Q0ARGnone(tok))
-    // q0arg_make_node
-  )
-| list_cons _ => let
-    val opt = (
-    case+
-    tok.node() of
-    | T_COLON() =>
-      Some
-      (
-      p_appsort0_NGT(buf, err)
-      ) where
-      {
-        val () = buf.incby1()
-      }
-    | _(* non-COLON *) => None()
-    ) : sort0opt // end of [val]
-    val loc_res = let
-      val id =
-        list_last(ids)
-      val loc = id.loc()
-    in
-      case+ opt of
-      | None() => loc
-      | Some(s0t) => loc+s0t.loc()
-    end : loc_t // end of [val]
-  in
-    err := e0;
-    q0arg_make_node
-      (loc_res, Q0ARGsome(ids, opt))
-    // q0arg_make_node
-  end // end of [list_cons]
+   p_appsort0_NGT(buf, err)
+  ) where
+  {
+    val () = buf.incby1()
+  }
+| _(* non-COLON *) => None()
+) : sort0opt // end of [val]
 //
-end where
-{
-  fun
-  auxids
-  ( buf: &tokbuf >> _
-  , err: &int >> _): i0dntlst =
-  list_vt2t
-  (pstar_COMMA_fun{s0eid}(buf, err, p_s0aid))
-} (* end of [p_q0arg] *)
+val loc0 = let
+  val loc = sid.loc()
+in
+  case+ opt of
+  | None() => loc
+  | Some(s0t) => loc+s0t.loc()
+end : loc_t // end of [val]
+//
+in
+  err := e0;
+  q0arg_make_node(loc0, Q0ARGsome(sid, opt))
+end (* end of [p_q0arg] *)
 
 (* ****** ****** *)
 //
 implement
-p_q0argseq_SEMICOLON
+p_q0argseq_COMMA
   (buf, err) =
 (
-//
-list_vt2t
-(pstar_SEMICOLON_fun{q0arg}(buf, err, p_q0arg))
-//
-) (* end of [p_q0argseq_SEMICOLON] *)
+  list_vt2t
+  (pstar_COMMA_fun{q0arg}(buf, err, p_q0arg))
+) (* end of [p_q0argseq_COMMA] *)
 //
 (* ****** ****** *)
 //
@@ -494,8 +470,8 @@ case+
 tok.node() of
 | T_LBRACE() => let
     val () = buf.incby1()
-    val s0qs =
-      p_s0quaseq_BARSEMI(buf, err)
+    val q0as =
+      p_q0argseq_COMMA(buf, err)
     // end of [val]
     val tbeg = tok
     val tend = p_RBRACE(buf, err)
@@ -503,7 +479,7 @@ tok.node() of
   in
     err := e0;
     sq0arg_make_node
-    (loc_res, SQ0ARGsome(tbeg, s0qs, tend))
+    (loc_res, SQ0ARGsome(tbeg, q0as, tend))
   end // end of [T_LBRACE]
 | _(* non-LBRACE *) =>
   ( err := e0 + 1;
@@ -519,6 +495,69 @@ p_sq0argseq
   list_vt2t
   (pstar_fun{sq0arg}(buf, err, p_sq0arg))
 ) (* end of [p_sq0argseq] *)
+//
+(* ****** ****** *)
+//
+extern
+fun
+p_tq0arg: parser(tq0arg)
+extern
+fun
+p_tq0argseq: parser(tq0arglst)
+//
+implement
+p_tq0arg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+(*
+val () =
+println! ("p_tq0arg: tok = ", tok)
+*)
+//
+in
+//
+case+
+tok.node() of
+| T_LT() => let
+    val () = buf.incby1()
+    val q0as =
+      p_q0argseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_GT(buf, err)
+    val loc_res = tbeg.loc() + tend.loc()
+  in
+    err := e0;
+    tq0arg_make_node
+    (loc_res, TQ0ARGsome(tbeg, q0as, tend))
+  end
+| T_LTGT() => let
+    val () = buf.incby1()
+    val q0as = list_nil(*void*)
+    val tbeg = tok
+    val tend = tok
+    val loc_res = tok.loc()
+  in
+    tq0arg_make_node
+    (loc_res, TQ0ARGsome(tbeg, q0as, tend))
+  end
+| _(* non-LT/GT *) =>
+  ( err := e0 + 1;
+    tq0arg_make_node(tok.loc(), TQ0ARGnone(tok))
+  ) (* end of [non-LT/GT] *)
+//
+end // end of [p_tq0arg]
+//
+implement
+p_tq0argseq
+  (buf, err) =
+(
+  list_vt2t
+  (pstar_fun{tq0arg}(buf, err, p_tq0arg))
+) (* end of [p_tq0argseq] *)
 //
 (* ****** ****** *)
 //
@@ -576,69 +615,6 @@ p_ti0argseq
   list_vt2t
   (pstar_fun{ti0arg}(buf, err, p_ti0arg))
 ) (* end of [p_ti0argseq] *)
-//
-(* ****** ****** *)
-//
-extern
-fun
-p_tq0arg: parser(tq0arg)
-extern
-fun
-p_tq0argseq: parser(tq0arglst)
-//
-implement
-p_tq0arg
-  (buf, err) = let
-//
-val e0 = err
-val tok = buf.get0()
-//
-(*
-val () =
-println! ("p_tq0arg: tok = ", tok)
-*)
-//
-in
-//
-case+
-tok.node() of
-| T_LT() => let
-    val () = buf.incby1()
-    val q0as =
-      p_q0argseq_SEMICOLON(buf, err)
-    // end of [val]
-    val tbeg = tok
-    val tend = p_GT(buf, err)
-    val loc_res = tbeg.loc() + tend.loc()
-  in
-    err := e0;
-    tq0arg_make_node
-    (loc_res, TQ0ARGsome(tbeg, q0as, tend))
-  end
-| T_LTGT() => let
-    val () = buf.incby1()
-    val q0as = list_nil(*void*)
-    val tbeg = tok
-    val tend = tok
-    val loc_res = tok.loc()
-  in
-    tq0arg_make_node
-    (loc_res, TQ0ARGsome(tbeg, q0as, tend))
-  end
-| _(* non-LT/GT *) =>
-  ( err := e0 + 1;
-    tq0arg_make_node(tok.loc(), TQ0ARGnone(tok))
-  ) (* end of [non-LT/GT] *)
-//
-end // end of [p_tq0arg]
-//
-implement
-p_tq0argseq
-  (buf, err) =
-(
-  list_vt2t
-  (pstar_fun{tq0arg}(buf, err, p_tq0arg))
-) (* end of [p_tq0argseq] *)
 //
 (* ****** ****** *)
 (*

@@ -121,8 +121,8 @@ case+ x0.node() of
 | Q1ARGnone(tok) =>
   fprint!(out, "Q1ARGnone(", tok, ")")
 *)
-| Q1ARGsome(ids, opt) =>
-  fprint!(out, "Q1ARGsome(", ids, "; ", opt, ")")
+| Q1ARGsome(tok, opt) =>
+  fprint!(out, "Q1ARGsome(", tok, "; ", opt, ")")
 //
 ) (* end of [fprint_q1arg] *)
 
@@ -212,8 +212,8 @@ case+
 x0.node() of
 | SQ1ARGnone(tok) =>
   fprint!(out, "SQ1ARGnone(", tok, ")")
-| SQ1ARGsome(s1qs) =>
-  fprint!(out, "SQ1ARGsome(", s1qs, ")")
+| SQ1ARGsome(q1as) =>
+  fprint!(out, "SQ1ARGsome(", q1as, ")")
 //
 ) (* end of [fprint_sq1arg] *)
 
@@ -306,9 +306,9 @@ x0.node() of
   ( out, "D1Papps("
   , d1p0, "; ", d1p1, ";", d1p2, ")")
 //
-| D1Psqarg(s1as) =>
+| D1Psarg(s1as) =>
   fprint!
-  (out, "D1Psqarg(", s1as, ")")
+  (out, "D1Psarg(", s1as, ")")
 //
 | D1Plist(d1ps) =>
   fprint!(out, "D1Plist(", d1ps, ")")
