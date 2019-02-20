@@ -36,5 +36,11 @@
 #staload "./../SATS/effect.sats"
 //
 (* ****** ****** *)
+//
+// HX-2019-02-20:
+// It is no longer planned to support
+// effect-tracking given its "obtrusiveness"!!!
+//
+(* ****** ****** *)
 
 (* end of [xats_effect.dats] *)

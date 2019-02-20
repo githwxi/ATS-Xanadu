@@ -923,7 +923,8 @@ fun
 prerr_effs2expopt:
 prerr_type(effs2expopt)
 fun
-fprint_effs2expopt: fprint_type(effs2expopt)
+fprint_effs2expopt:
+fprint_type(effs2expopt)
 //
 overload print with print_effs2expopt
 overload prerr with prerr_effs2expopt
@@ -978,14 +979,14 @@ overload prerr with prerr_s2itm
 overload fprint with fprint_s2itm
 //
 (* ****** ****** *)
-
+//
 fun
 sort2_isimp(x0: sort2): bool
 fun
 sort2_islin(x0: sort2): bool
-
+//
 (* ****** ****** *)
-
+//
 fun
 s2exp_isimp(x0: s2exp): bool
 fun
@@ -994,7 +995,7 @@ fun
 s2explst_islin(xs: s2explst): bool
 fun
 labs2explst_islin(lxs: labs2explst): bool
-
+//
 (* ****** ****** *)
 //
 fun
