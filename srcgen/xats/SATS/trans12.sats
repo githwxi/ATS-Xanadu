@@ -399,10 +399,10 @@ the_sexpenv_add_varlstlst(svss: s2varlstlst): void
 //
 fun
 the_sexpenv_find
-  (tid: sym_t): s2itmopt_vt
+  (sym: sym_t): s2itmopt_vt
 fun
 the_sexpenv_qfind
-  (qua: sym_t, tid: sym_t): s2itmopt_vt
+  (qua: sym_t, sym: sym_t): s2itmopt_vt
 //
 (* ****** ****** *)
 //
@@ -578,10 +578,10 @@ the_dexpenv_add_varlst(d2vs: d2varlst): void
 //
 fun
 the_dexpenv_find
-  (tid: sym_t): d2itmopt_vt
+  (sym: sym_t): d2itmopt_vt
 fun
 the_dexpenv_qfind
-  (qua: sym_t, tid: sym_t): d2itmopt_vt
+  (qua: sym_t, sym: sym_t): d2itmopt_vt
 //
 (* ****** ****** *)
 //

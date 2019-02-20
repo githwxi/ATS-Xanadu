@@ -1,8 +1,7 @@
 
 implement
-{x:int}
-<y1:int,y2:int>
-foo<x,y1+y2>(xyz) = xyz
+<x0:t0>
+list_length(xs) = 0
 
 ////
 

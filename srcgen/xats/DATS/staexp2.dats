@@ -67,91 +67,14 @@ LOC = "./../SATS/location.sats"
 #staload "./../SATS/staexp2.sats"
 
 (* ****** ****** *)
-
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
-t2abs_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
-t2dat_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
-
-(* ****** ****** *)
-
 (*
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
-t2xtv_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
+//
+static
+fun
+staexp2_initize(): void
+val () = staexp2_initize()
+//
 *)
-
-(* ****** ****** *)
-
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
-s2cst_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
-s2var_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
-s2xtv_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
-
 (* ****** ****** *)
 
 implement
@@ -542,9 +465,8 @@ $rec{
 }
 ) where
 {
-  val
-  stamp = s2var_stamp_new((*void*))
-} (* s2var_make_idst *)
+  val stamp = s2var_stamp_new()
+} (* end of [s2var_make_idst] *)
 
 (* ****** ****** *)
 
@@ -557,6 +479,23 @@ s2var_get_stamp(x0) = x0.s2var_stamp
 
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+s2arg_get_svar(x0) =
+(
+case+ x0 of
+| S2ARGvar(s2v) => (s2v)
+| S2ARGsub(s2v, s2t) => (s2v)
+)
+implement
+s2arg_get_sort(x0) =
+(
+case+ x0 of
+| S2ARGvar(s2v) => s2v.sort()
+| S2ARGsub(s2v, s2t) => s2v.sort()
+)
+//
 (* ****** ****** *)
 
 implement
@@ -706,17 +645,52 @@ s2exp_make_node
 (* ****** ****** *)
 
 implement
-s2exp_lam
+s2exp_lamvar
 (s2vs, body) =
 let
 //
 val s2ts =
+list_vt2t
 (
-list_map<s2var><sort2>(s2vs)
+let
+implement
+list_map$fopr<s2var><sort2>
+  (s2v) = s2v.sort()
+in
+  list_map<s2var><sort2>(s2vs)
+end
+)
+//
+val s2t0 =
+  S2Tfun(s2ts, body.sort())
+//
+val s2as =
+list_vt2t
+(
+let
+implement
+list_map$fopr<s2var><s2arg>
+  (s2v) = S2ARGvar(s2v)
+in
+  list_map<s2var><s2arg>(s2vs)
+end
+)
+in
+  s2exp_make_node(s2t0, S2Elam(s2as, body))
+end (* end of [s2exp_lamvar] *)
+
+implement
+s2exp_lamarg
+(s2as, body) =
+let
+//
+val s2ts =
+(
+list_map<s2arg><sort2>(s2as)
 ) where
 {
 implement
-list_map$fopr<s2var><sort2>(x) = x.sort()
+list_map$fopr<s2arg><sort2>(x) = x.sort()
 }
 //
 val s2ts =
@@ -726,8 +700,8 @@ val s2t0 =
 S2Tfun(s2ts, body.sort())
 //
 in
-  s2exp_make_node(s2t0, S2Elam(s2vs, body))
-end (* end of [s2exp_lam] *)
+  s2exp_make_node(s2t0, S2Elam(s2as, body))
+end (* end of [s2exp_lamarg] *)
 
 (* ****** ****** *)
 
@@ -1165,6 +1139,80 @@ s2exp_make_node
   s2exp_sort= s0t0, s2exp_node= node
 } (* end of [s2exp_make_node] *)
 //
+end // end of [local]
+
+(* ****** ****** *)
+//
+// HX-2019-02-20:
+// Please put the code below
+// that requires initialization
+//
+(* ****** ****** *)
+
+local
+val
+stamper =
+$STM.stamper_new()
+in (* in-of-local *)
+implement
+t2abs_stamp_new() = $STM.stamper_getinc(stamper)
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+val
+stamper =
+$STM.stamper_new()
+in (* in-of-local *)
+implement
+t2dat_stamp_new() = $STM.stamper_getinc(stamper)
+end // end of [local]
+
+(* ****** ****** *)
+
+(*
+local
+val
+stamper =
+$STM.stamper_new()
+in (* in-of-local *)
+implement
+t2xtv_stamp_new() = $STM.stamper_getinc(stamper)
+end // end of [local]
+*)
+
+(* ****** ****** *)
+
+local
+val
+stamper =
+$STM.stamper_new()
+in (* in-of-local *)
+implement
+s2cst_stamp_new() = $STM.stamper_getinc(stamper)
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+val
+stamper =
+$STM.stamper_new()
+in (* in-of-local *)
+implement
+s2var_stamp_new() = $STM.stamper_getinc(stamper)
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+val
+stamper =
+$STM.stamper_new()
+in (* in-of-local *)
+implement
+s2xtv_stamp_new() = $STM.stamper_getinc(stamper)
 end // end of [local]
 
 (* ****** ****** *)

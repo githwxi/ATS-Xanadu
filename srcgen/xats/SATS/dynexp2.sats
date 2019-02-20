@@ -46,6 +46,7 @@ LOC = "./location.sats"
 #staload
 S0E = "./staexp0.sats"
 //
+typedef sq0eid = $S0E.sq0eid
 typedef dq0eid = $S0E.dq0eid
 //
 (* ****** ****** *)
@@ -910,22 +911,21 @@ d2ecl_node =
 | D2Csortdef of (d1ecl)
 | D2Csexpdef of (d1ecl)
 | D2Cabstype of (d1ecl)
+//
 | D2Cabsimpl of (d1ecl)
+(*
+| D2Cabsimpl of
+  ( token(*kind*)
+  , sq0eid, s2cstlst, s2exp)
+*)
 //
 | D2Cvaldecl of
   ( token(*valkind*)
   , declmodopt, v2aldeclist)
 //
-// HX-2019-02-18:
-// tq2arglst is used as tq2argopt
-//
 | D2Cfundecl of
   ( token(*funkind*)
   , declmodopt, tq2arglst(*tmpargs*), f2undeclist)
-//
-// HX-2019-02-18:
-// tq2arglst is used as tq2argopt
-// ti2arglst is used as ti2argopt
 //
 | D2Cimpdecl of
   ( token(*impkind*)
