@@ -645,6 +645,43 @@ end // end of [the_sexpenv_find]
 (* ****** ****** *)
 
 implement
+the_sexpenv_qfind
+  (qua, sym) = let
+//
+val
+opt =
+the_sexpenv_find(qua)
+//
+in
+//
+case+ opt of
+| ~None_vt() =>
+   None_vt()
+| ~Some_vt(s2i) =>
+  (
+  case+ s2i of
+  | S2ITMfmodenv
+    (menv) => s2iopt where
+    {
+      val
+      ( pf0
+      , fpf|p0) =
+        fmodenv_get_s2imap(menv)
+      // end of [val]
+      val s2iopt =
+        $MAP.symmap_search(!p0, sym)
+      prval ((*void*)) =
+        minus_v_addback(fpf, pf0 | menv)
+      // end of [prval]
+    }
+  | _(*non-S2ITMfmodenv*) => None_vt()
+  ) (* end of [Some_vt] *)
+//
+end // end of [the_sexpenv_qfind]
+
+(* ****** ****** *)
+
+implement
 the_sexpenv_pop (
   pfenv | (*none*)
 ) = let

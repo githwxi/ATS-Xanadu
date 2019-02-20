@@ -526,8 +526,17 @@ case- x0.node() of
   fprint!(out, "D2Csexpdef(", d1c, ")")
 | D2Cabstype(d1c) =>
   fprint!(out, "D2Cabstype(", d1c, ")")
+//
 | D2Cabsimpl(d1c) =>
   fprint!(out, "D2Cabsimpl(", d1c, ")")
+(*
+| D2Cabsimpl
+  (knd, sqid, s2cs, def0) =>
+  fprint!
+  ( out
+  , "D2Cabsimpl("
+  , knd, "; ", sqid, "; ", s2cs, "; ", def0, ")")
+*)
 //
 | D2Cvaldecl
   (knd, mopt, v2ds) =>

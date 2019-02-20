@@ -60,21 +60,21 @@ case+ xs of
 (* ****** ****** *)
 
 implement
-<x>(*tmp*)
+<x0>(*tmp*)
 list_copy
   (xs) =
 (
-list_map_vt1<x><x>(xs)
+list_map_vt1<x0><x0>(xs)
 ) where
 {
 implement
-list_map$fopr_vt1<x><x>(x) = copy$val<x>(x)
+list_map$fopr_vt1<x0><x0> = copy$val<x0>
 } (* end of [list_copy] *)
 
 (* ****** ****** *)
 
 implement
-<x>(*tmp*)
+<x0>(*tmp*)
 list_free
   (xs) =
 (
@@ -84,7 +84,7 @@ list_free
 fun
 loop
 ( xs
-: list_vt(x)): void =
+: list_vt(x0)): void =
 (
 case+ xs of
 | ~list_vt_nil() => ()
@@ -93,7 +93,7 @@ case+ xs of
     let
       val xs1 = xs1
     in
-      free$ref<x>(x0); $freecon(xs1); loop(xs1)
+      free$ref<x0>(x0); $freecon(xs1); loop(xs1)
     end
   )
 ) (* end of [loop] *)
@@ -102,7 +102,7 @@ case+ xs of
 (* ****** ****** *)
 
 implement
-<x><n>
+<x0><n0>
 list_tabulate(n0) =
 (
 let
@@ -116,13 +116,13 @@ endlet
 {
 fun
 loop
-{ i:nat
-| i <= n}
+{ i0:nat
+| i0 <= n0}
 (
-i0: sint(i)
+i0: int(i0)
 ,
 r0: ptr? >>
-    list_vt(x0, n-i)
+    list_vt(x0, n0-i0)
 ) : void =
 (
 if
@@ -131,7 +131,7 @@ then let
 //
 val x0 =
 list_tabulate$fopr
-<x><n>(i0)
+<x0><n0>(i0)
 //
 val r0 =
 list_vt_cons(x0, ?)
@@ -141,22 +141,22 @@ list_vt_cons(_, r1) = r0
 in
   loop(i0+1, r1); $foldcon(r0)
 end // end of [then]
-else (r0 := list_vt_nil())
+else (r0 := list_vt_nil(*void*))
 ) (* end of [loop] *)
 } endwhere // list_tabulate
 
 (* ****** ****** *)
 
 implement
-<x>
+<x0>
 list_tabulate
-{n}(n0, f0) =
+{n0}(n0, f0) =
 (
-  list_tabulate<x><n>(n0)
+  list_tabulate<x0><n0>(n0)
 ) where
 {
   implement
-  list_tabulate$fopr<x><n>(x) = f0(x)
+  list_tabulate$fopr<x0><n0>(x0) = f0(x0)
 } endwhere // list_tabulate
 
 (* ****** ****** *)
