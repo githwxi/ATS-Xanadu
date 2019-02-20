@@ -32,6 +32,7 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+(*
 //
 abstype effect_type = ptr
 abstype effset_type = ptr
@@ -39,6 +40,13 @@ abstype effset_type = ptr
 typedef effect = effect_type
 typedef effset = effset_type
 typedef effectlst = List0(effect)
+//
+*)
+(* ****** ****** *)
+//
+// HX-2019-02-20:
+// It is no longer planned to support
+// effect-tracking given its "obtrusiveness"!!!
 //
 (* ****** ****** *)
 
