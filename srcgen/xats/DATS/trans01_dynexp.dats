@@ -382,23 +382,6 @@ trans01_qarg
 //
 val loc0 = q0a0.loc()
 //
-fun
-auxids
-( ids
-: i0dntlst): tokenlst =
-(
-case+ ids of
-| list_nil() =>
-  list_nil()
-| list_cons(id, ids) =>
-  let
-    val-
-    I0DNTsome(tok) = id.node()
-  in
-    list_cons(tok, auxids(ids))
-  end // end of [list_cons]
-)
-//
 in
 //
 case-
@@ -409,11 +392,15 @@ q0a0.node() of
     q1arg_make_node(loc0, Q1ARGnone(tok))
   )
 *)
-| Q0ARGsome(ids, opt) => let
-    val ids = auxids(ids)
+| Q0ARGsome(sid, opt) => let
+//
+    val-
+    I0DNTsome(tok) = sid.node()
+//
     val opt = trans01_sortopt(opt)
+//
   in
-    q1arg_make_node(loc0, Q1ARGsome(ids, opt))
+    q1arg_make_node(loc0, Q1ARGsome(tok, opt))
   end (* end of [Q0ARGsome] *)
 //
 end // end of [trans01_qarg]
@@ -447,65 +434,28 @@ in
 case-
 sq0a.node() of
 | SQ0ARGsome
-  (_, s0qs, _) => let
-    val s1qs = trans01_squalst(s0qs)
+  (_, q0as, _) => let
+    val q1as = trans01_qarglst(q0as)
   in
-    sq1arg_make_node(loc0, SQ1ARGsome(s1qs))
+    sq1arg_make_node(loc0, SQ1ARGsome(q1as))
   end // end of [SQ0ARGsome]
 //
 end // end of [trans01_sqarg]
 
 implement
 trans01_sqarglst
-  (sq0as) =
-list_vt2t(sq1as) where
+  (sqas) =
+list_vt2t(sqas) where
 {
   val
-  sq1as =
+  sqas =
   list_map<sq0arg><sq1arg>
-    (sq0as) where
+    (sqas) where
   {
     implement
     list_map$fopr<sq0arg><sq1arg> = trans01_sqarg
   }
 } (* end of [trans01_sqarglst] *)
-
-(* ****** ****** *)
-
-implement
-trans01_tiarg
-  (ti0a) = let
-//
-val
-loc0 = ti0a.loc()
-//
-in
-//
-case-
-ti0a.node() of
-| TI0ARGsome
-  (_, s0es, _) => let
-    val s1es = trans01_sexplst(s0es)
-  in
-    ti1arg_make_node(loc0, TI1ARGsome(s1es))
-  end // end of [TI0ARGsome]
-//
-end // end of [trans01_tiarg]
-
-implement
-trans01_tiarglst
-  (ti0as) =
-list_vt2t(ti1as) where
-{
-  val
-  ti1as =
-  list_map<ti0arg><ti1arg>
-    (ti0as) where
-  {
-    implement
-    list_map$fopr<ti0arg><ti1arg> = trans01_tiarg
-  }
-} (* end of [trans01_tiarglst] *)
 
 (* ****** ****** *)
 
@@ -543,6 +493,43 @@ list_vt2t(tq1as) where
     list_map$fopr<tq0arg><tq1arg> = trans01_tqarg
   }
 } (* end of [trans01_tqarglst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_tiarg
+  (ti0a) = let
+//
+val
+loc0 = ti0a.loc()
+//
+in
+//
+case-
+ti0a.node() of
+| TI0ARGsome
+  (_, s0es, _) => let
+    val s1es = trans01_sexplst(s0es)
+  in
+    ti1arg_make_node(loc0, TI1ARGsome(s1es))
+  end // end of [TI0ARGsome]
+//
+end // end of [trans01_tiarg]
+
+implement
+trans01_tiarglst
+  (ti0as) =
+list_vt2t(ti1as) where
+{
+  val
+  ti1as =
+  list_map<ti0arg><ti1arg>
+    (ti0as) where
+  {
+    implement
+    list_map$fopr<ti0arg><ti1arg> = trans01_tiarg
+  }
+} (* end of [trans01_tiarglst] *)
 
 (* ****** ****** *)
 
@@ -870,7 +857,7 @@ s1as = trans01_sarglst(s0as)
 in
 //
 FXITMatm
-(d1pat_make_node(loc0, D1Psqarg(s1as)))
+(d1pat_make_node(loc0, D1Psarg(s1as)))
 //
 end // end of [auxsqarg]
 
