@@ -343,18 +343,6 @@ list_exists$pred<s2var>
   (s2v) = $effmask_all(s2v0 = s2v)
 } (* end of [s2varlst_ismem] *)
 
-implement
-s2arglst_ismem
-  (s2as, s2v0) =
-(
-list_exists<s2arg>(s2as)
-) where
-{
-implement
-list_exists$pred<s2arg>
-  (s2a) = $effmask_all(s2v0 = s2a.svar())
-} (* end of [s2arglst_ismem] *)
-
 (* ****** ****** *)
 
 implement
@@ -425,24 +413,22 @@ s2e0.node() of
   end
 *)
 //
-| S2Elam(s2as, body) =>
+| S2Elam(s2vs, body) =>
   if
-  s2arglst_ismem(s2as, s2v1)
-  then s2e0
-  else let
+  s2varlst_ismem(s2vs, s2v1)
+  then s2e0 else let
     val body = auxsexp(body, flag_)
   in
     if
     flag = flag_ then s2e0
     else
-    s2exp_make_node(s2t0, S2Elam(s2as, body))
-  end
+    s2exp_make_node(s2t0, S2Elam(s2vs, body))
+  end // end of [else]
 //
 | S2Eexi(s2vs, s2ps, body) =>
   if
   s2varlst_ismem(s2vs, s2v1)
-  then s2e0
-  else let
+  then s2e0 else let
     val body = auxsexp(body, flag_)
     val s2ps = auxsexplst(s2ps, flag_)
   in
@@ -450,12 +436,11 @@ s2e0.node() of
     flag = flag_ then s2e0
     else
     s2exp_make_node(s2t0, S2Eexi(s2vs, s2ps, body))
-  end
+  end // end of [else]
 | S2Euni(s2vs, s2ps, body) =>
   if
   s2varlst_ismem(s2vs, s2v1)
-  then s2e0
-  else let
+  then s2e0 else let
     val body = auxsexp(body, flag_)
     val s2ps = auxsexplst(s2ps, flag_)
   in
@@ -463,7 +448,7 @@ s2e0.node() of
     flag = flag_ then s2e0
     else
     s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
-  end
+  end // end of [else]
 //
 | _(* rest-of-s2exp *) => s2e0
 //

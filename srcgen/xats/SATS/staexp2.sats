@@ -452,6 +452,7 @@ overload prerr with prerr_s2var
 overload fprint with fprint_s2var
 //
 (* ****** ****** *)
+(*
 //
 datatype
 s2arg =
@@ -468,8 +469,6 @@ s2arg_get_svar(s2arg): s2var
 overload .sort with s2arg_get_sort
 overload .svar with s2arg_get_svar
 //
-(* ****** ****** *)
-//
 fun
 print_s2arg: print_type(s2arg)
 fun
@@ -481,6 +480,7 @@ overload print with print_s2arg
 overload prerr with prerr_s2arg
 overload fprint with fprint_s2arg
 //
+*)
 (* ****** ****** *)
 
 abstbox s2xtv_tbox = ptr
@@ -664,7 +664,7 @@ s2exp_node =
 | S2Eapp of
   (s2exp, s2explst) // application
 | S2Elam of
-  (s2arglst, s2exp) // abstraction
+  (s2varlst, s2exp) // abstraction
 //
 (*
 | S2Efun of
@@ -763,11 +763,8 @@ s2exp_fun_full
 , npf: int, arg: s2explst, res: s2exp): s2exp
 //
 fun
-s2exp_lamvar
+s2exp_lam
 (s2as: s2varlst, s2e0: s2exp): s2exp
-fun
-s2exp_lamarg
-(s2as: s2arglst, s2e0: s2exp): s2exp
 //
 fun
 s2exp_uni
@@ -1001,9 +998,6 @@ labs2explst_islin(lxs: labs2explst): bool
 fun
 s2varlst_ismem
 (s2vs: s2varlst, s2v0: s2var): bool
-fun
-s2arglst_ismem
-(s2as: s2arglst, s2v0: s2var): bool
 //
 (* ****** ****** *)
 //

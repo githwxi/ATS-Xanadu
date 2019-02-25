@@ -81,8 +81,6 @@ fprint_val<s2cst> = fprint_s2cst
 
 implement
 fprint_val<s2var> = fprint_s2var
-implement
-fprint_val<s2arg> = fprint_s2arg
 
 implement
 fprint_val<s2txt> = fprint_s2txt
@@ -263,28 +261,6 @@ val () =
 fprint!(out, "(", x0.stamp(), ")")
 //
 } (* end of [fprint_s2var] *)
-//
-(* ****** ****** *)
-//
-implement
-print_s2arg(x0) =
-fprint_s2arg(stdout_ref, x0) 
-implement
-prerr_s2arg(x0) =
-fprint_s2arg(stdout_ref, x0) 
-//
-implement
-fprint_s2arg
-  (out, x0) =
-(
-case+ x0 of
-| S2ARGvar(s2v) =>
-  fprint!
-  (out, "S2ARGvar(", s2v, ")")
-| S2ARGsub(s2v, s2t) =>
-  fprint!
-  (out, "S2ARGvar(", s2v, "; ", s2t, ")")
-) (* end of [fprint_s2arg] *)
 //
 (* ****** ****** *)
 

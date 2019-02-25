@@ -1451,8 +1451,7 @@ val
 loc0 = d1c0.loc()
 val-
 D1Csexpdef
-( knd
-, sid
+( knd, sid
 , arg, res, body) = d1c0.node()
 //
 val (pf0|()) =
@@ -1490,12 +1489,11 @@ case+ arg of
     val () = 
     the_sexpenv_add_varlst(s2vs)
   in
-    s2exp_lamvar
-    (s2vs, auxlams(xs, res, body))
+    s2exp_lam(s2vs, auxlams(xs, res, body))
   end // end of [list_cons]
 )
 //
-} (* end of [val] *)
+} (* where *) // end of [val]
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
@@ -1511,8 +1509,11 @@ s2c0 =
 s2cst_make_idst(sid, s2e0.sort())
 //
 in
-  the_sexpenv_add_cst(s2c0);
-  d2ecl_make_node(loc0, D2Csexpdef(d1c0))
+  let
+    val () = the_sexpenv_add_cst(s2c0)
+  in
+    d2ecl_make_node(loc0, D2Csexpdef(d1c0))
+  end
 end // end of [aux_sexpdef]
 
 (* ****** ****** *)
@@ -1540,9 +1541,8 @@ val
 loc0 = d1c0.loc()
 val-
 D1Cabstype
-( knd
-, sid, arg
-, res, def) = d1c0.node()
+( knd, sid
+, arg, res, def) = d1c0.node()
 //
 fun
 auxargs
