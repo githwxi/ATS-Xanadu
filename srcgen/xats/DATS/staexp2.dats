@@ -480,23 +480,6 @@ s2var_get_stamp(x0) = x0.s2var_stamp
 end // end of [local]
 
 (* ****** ****** *)
-//
-implement
-s2arg_get_svar(x0) =
-(
-case+ x0 of
-| S2ARGvar(s2v) => (s2v)
-| S2ARGsub(s2v, s2t) => (s2v)
-)
-implement
-s2arg_get_sort(x0) =
-(
-case+ x0 of
-| S2ARGvar(s2v) => s2v.sort()
-| S2ARGsub(s2v, s2t) => s2v.sort()
-)
-//
-(* ****** ****** *)
 
 implement
 s2exp_int(i0) = let
@@ -645,7 +628,7 @@ s2exp_make_node
 (* ****** ****** *)
 
 implement
-s2exp_lamvar
+s2exp_lam
 (s2vs, body) =
 let
 //
@@ -664,44 +647,9 @@ end
 val s2t0 =
   S2Tfun(s2ts, body.sort())
 //
-val s2as =
-list_vt2t
-(
-let
-implement
-list_map$fopr<s2var><s2arg>
-  (s2v) = S2ARGvar(s2v)
 in
-  list_map<s2var><s2arg>(s2vs)
-end
-)
-in
-  s2exp_make_node(s2t0, S2Elam(s2as, body))
-end (* end of [s2exp_lamvar] *)
-
-implement
-s2exp_lamarg
-(s2as, body) =
-let
-//
-val s2ts =
-(
-list_map<s2arg><sort2>(s2as)
-) where
-{
-implement
-list_map$fopr<s2arg><sort2>(x) = x.sort()
-}
-//
-val s2ts =
-list_vt2t(s2ts)
-//
-val s2t0 =
-S2Tfun(s2ts, body.sort())
-//
-in
-  s2exp_make_node(s2t0, S2Elam(s2as, body))
-end (* end of [s2exp_lamarg] *)
+  s2exp_make_node(s2t0, S2Elam(s2vs, body))
+end (* end of [s2exp_lam] *)
 
 (* ****** ****** *)
 
