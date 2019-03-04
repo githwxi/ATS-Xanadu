@@ -666,6 +666,7 @@ toks =
 list_vt2t
 (lexing_preprocess_tokenlst(toks))
 //
+(*
 val _(*ntok*) =
 list_iforeach<token>(toks) where
 {
@@ -676,6 +677,7 @@ list_iforeach$fwork<token><env>
   println!("TOKEN(", i, ") = ", x)
 //
 } // end of [where] // end of [val]
+*)
 //
 in
 //
