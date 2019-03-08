@@ -1,4 +1,10 @@
 
+abstype
+abcdefg1(int)
+
+absimpl
+abcedfg2(x:int) = int(x)
+
 ////
 
 implement

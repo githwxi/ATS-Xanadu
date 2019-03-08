@@ -912,16 +912,14 @@ d2ecl_node =
 | D2Csexpdef of (d1ecl)
 | D2Cabstype of (d1ecl)
 //
-| D2Cabsimpl of (d1ecl)
 (*
-| D2Cabsimpl of
-  ( token(*kind*)
-  , sq0eid, s2cstlst, s2exp)
+| D2Cabsimpl of (d1ecl)
 *)
+| D2Cabsimpl of
+  ( token(*kind*), absimplcst, s2exp(*def*))
 //
 | D2Cvaldecl of
-  ( token(*valkind*)
-  , declmodopt, v2aldeclist)
+  ( token(*valkind*), declmodopt, v2aldeclist)
 //
 | D2Cfundecl of
   ( token(*funkind*)
@@ -952,6 +950,10 @@ abstdf2 =
   | ABSTDF2nil of () // unspecified
   | ABSTDF2lteq of s2exp // erasure
   | ABSTDF2eqeq of s2exp // definition
+//
+and
+absimplcst =
+  | ABSIMPLCST of (sq0eid, s2cstlst)
 //
 and
 impdeclcst =
@@ -988,6 +990,22 @@ d2ecl_none1(d1c: d1ecl): d2ecl
 fun
 d2ecl_make_node
 (loc: loc_t, node: d2ecl_node): d2ecl
+//
+(* ****** ****** *)
+//
+fun
+print_absimplcst:
+print_type(absimplcst)
+fun
+prerr_absimplcst:
+prerr_type(absimplcst)
+fun
+fprint_absimplcst:
+fprint_type(absimplcst)
+//
+overload print with print_absimplcst
+overload prerr with prerr_absimplcst
+overload fprint with fprint_absimplcst
 //
 (* ****** ****** *)
 //
