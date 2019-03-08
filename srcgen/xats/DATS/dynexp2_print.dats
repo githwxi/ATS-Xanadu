@@ -527,16 +527,12 @@ case- x0.node() of
 | D2Cabstype(d1c) =>
   fprint!(out, "D2Cabstype(", d1c, ")")
 //
-| D2Cabsimpl(d1c) =>
-  fprint!(out, "D2Cabsimpl(", d1c, ")")
-(*
 | D2Cabsimpl
-  (knd, sqid, s2cs, def0) =>
+  (knd, sqid, def0) =>
   fprint!
   ( out
   , "D2Cabsimpl("
-  , knd, "; ", sqid, "; ", s2cs, "; ", def0, ")")
-*)
+  , knd, "; ", sqid, "; ", def0, ")")
 //
 | D2Cvaldecl
   (knd, mopt, v2ds) =>
@@ -758,6 +754,28 @@ in
   , ", res=", rcd.res
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
+
+(* ****** ****** *)
+
+implement
+print_absimplcst(x0) =
+fprint_absimplcst(stdout_ref, x0)
+implement
+prerr_absimplcst(x0) =
+fprint_absimplcst(stderr_ref, x0)
+
+implement
+fprint_absimplcst
+  (out, x0) = let
+//
+val+
+ABSIMPLCST(sqid, d2cs) = x0
+//
+in
+//
+fprint!(out, "ABSIMPLCST(", sqid, "; ", d2cs, ")")
+//
+end // end of [fprint_impdeclst]
 
 (* ****** ****** *)
 

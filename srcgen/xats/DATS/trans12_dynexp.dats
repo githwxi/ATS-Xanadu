@@ -1615,6 +1615,108 @@ end // end of [aux_abstype]
 
 (* ****** ****** *)
 
+local
+//
+typedef s2vs = s2varlst
+//
+fun
+auxsqid
+( sqid
+: sq0eid): absimplcst =
+(
+  ABSIMPLCST(sqid, s2cs)
+) where
+{
+val s2cs =
+(
+case+ sqid of
+| SQ0EIDnone(id0) =>
+  let
+    val-
+    I0DNTsome
+      (tok) = id0.node()
+    // end of [val]
+    val sym = sexpid_sym(tok)
+    val opt = the_sexpenv_find(sym)
+  in
+    case+ opt of
+    | ~None_vt() =>
+       list_nil()
+    | ~Some_vt(s2i) =>
+      ( case+ s2i of
+        | S2ITMcst(s2cs) => s2cs | _ => list_nil()
+      ) (* end of [Some_vt] *)
+  end
+| SQ0EIDsome(qua, id0) =>
+  let
+    val-
+    I0DNTsome
+      (tok) = id0.node()
+    // end of [val]
+    val qua = sexpid_sym(qua)
+    val sym = sexpid_sym(tok)
+    val opt = the_sexpenv_qfind(qua, sym)
+  in
+    case+ opt of
+    | ~None_vt() =>
+       list_nil()
+    | ~Some_vt(s2i) =>
+      ( case+ s2i of
+        | S2ITMcst(s2cs) => s2cs | _ => list_nil()
+      ) (* end of [Some_vt] *)
+  end
+) : s2cstlst // end of [val]
+} (* end of [auxsqid] *)
+
+fun
+auxsmas
+( sqid
+: absimplcst
+, smas
+: s1marglst)
+: s2varlstlst = let
+//
+val svss =
+(
+list_map<s1marg><s2vs>(smas)
+) where
+{
+implement
+list_map$fopr<s1marg><s2vs>(x) = trans12_smarg(x)
+} (* end of [svss] *)
+//
+in
+  list_vt2t{s2varlst}(svss)
+end // end of [auxsmas]
+
+fun
+auxlams
+( svss
+: s2varlstlst
+, res1: sort1opt, s1e2: s1exp
+) : s2exp =
+(
+case+ svss of
+| list_nil() =>
+  (
+  case res1 of
+  | None() =>
+    trans12_sexp(s1e2)
+  | Some(s1t) =>
+    trans12_sexp_ck
+    (s1e2, trans12_sort(s1t))
+  )
+| list_cons(s2vs, svss) =>
+  let
+    val () = 
+    the_sexpenv_add_varlst(s2vs)
+  in
+    s2exp_lam(s2vs, auxlams(svss, res1, s1e2))
+  end
+)
+
+in (* in-of-local *)
+
 fun
 aux_absimpl
 ( d1c0
@@ -1629,9 +1731,22 @@ D1Cabsimpl
 , sqid
 , smas, res1, s1e2) = d1c0.node()
 //
+val sqid = auxsqid(sqid)
+val svss = auxsmas(sqid, smas)
+//
+val (pf0|()) =
+the_sexpenv_pushnil()
+//
+val s2e2 = auxlams(svss, res1, s1e2)
+//
+val ((*void*)) =
+the_sexpenv_popfree(pf0|(*void*))
+//
 in
-  d2ecl_make_node(loc0, D2Cabsimpl(d1c0))
+  d2ecl_make_node(loc0, D2Cabsimpl(knd, sqid, s2e2))
 end // end of [aux_absimpl]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -1956,6 +2071,59 @@ case+ d2vs of
 
 (* ****** ****** *)
 
+local
+
+fun
+auxdqid
+( dqid
+: dq0eid): impdeclcst =
+(
+  IMPDECLCST(dqid, d2cs)
+) where
+{
+val d2cs =
+(
+case+ dqid of
+| DQ0EIDnone(id0) =>
+  let
+    val-
+    I0DNTsome
+      (tok) = id0.node()
+    // end of [val]
+    val sym = dexpid_sym(tok)
+    val opt = the_dexpenv_find(sym)
+  in
+    case+ opt of
+    | ~None_vt() =>
+       list_nil()
+    | ~Some_vt(d2i) =>
+      ( case+ d2i of
+        | D2ITMcst(d2cs) => d2cs | _ => list_nil()
+      ) (* end of [Some_vt] *)
+  end
+| DQ0EIDsome(qua, id0) =>
+  let
+    val-
+    I0DNTsome
+      (tok) = id0.node()
+    // end of [val]
+    val qua = sexpid_sym(qua)
+    val sym = dexpid_sym(tok)
+    val opt = the_dexpenv_qfind(qua, sym)
+  in
+    case+ opt of
+    | ~None_vt() =>
+       list_nil()
+    | ~Some_vt(d2i) =>
+      ( case+ d2i of
+        | D2ITMcst(d2cs) => d2cs | _ => list_nil()
+      ) (* end of [Some_vt] *)
+  end
+) : d2cstlst // end of [val]
+} (* end of [auxdqid] *)
+
+in (* in-of-local *)
+
 fun
 aux_impdecl
 ( d1c0
@@ -2027,54 +2195,7 @@ in
   ) (* d2ecl_make_node *)
 end // end of [aux_impdecl_rec]
 
-and
-auxdqid
-( dqid
-: dq0eid): impdeclcst =
-(
-  IMPDECLCST(dqid, d2cs)
-) where
-{
-val d2cs =
-(
-case+ dqid of
-| DQ0EIDnone(id0) =>
-  let
-    val-
-    I0DNTsome
-      (tok) = id0.node()
-    // end of [val]
-    val sym = dexpid_sym(tok)
-    val opt = the_dexpenv_find(sym)
-  in
-    case+ opt of
-    | ~None_vt() =>
-       list_nil()
-    | ~Some_vt(d2i) =>
-      ( case+ d2i of
-        | D2ITMcst(d2cs) => d2cs | _ => list_nil()
-      ) (* end of [Some_vt] *)
-  end
-| DQ0EIDsome(qua, id0) =>
-  let
-    val-
-    I0DNTsome
-      (tok) = id0.node()
-    // end of [val]
-    val qua = sexpid_sym(qua)
-    val sym = dexpid_sym(tok)
-    val opt = the_dexpenv_qfind(qua, sym)
-  in
-    case+ opt of
-    | ~None_vt() =>
-       list_nil()
-    | ~Some_vt(d2i) =>
-      ( case+ d2i of
-        | D2ITMcst(d2cs) => d2cs | _ => list_nil()
-      ) (* end of [Some_vt] *)
-  end
-) : d2cstlst // end of [val]
-} (* end of [auxdqid] *)
+end // end of [local]
 
 (* ****** ****** *)
 
