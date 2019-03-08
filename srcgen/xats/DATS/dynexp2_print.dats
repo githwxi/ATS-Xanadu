@@ -543,7 +543,7 @@ case- x0.node() of
   fprint!
   ( out
   , "D2Cvaldecl("
-  , knd, "; ", mopt, "; ", v2ds)
+  , knd, "; ", mopt, "; ", v2ds, ")")
 | D2Cvardecl(knd, v2ds) =>
   fprint!
   ( out
@@ -581,7 +581,7 @@ case- x0.node() of
   (knd, tqas, d2cs) =>
   fprint!
   ( out
-  , "D2Cynconst(", knd, "; ", tqas, "; ", d2cs)
+  , "D2Cynconst(", knd, "; ", tqas, "; ", d2cs, ")")
 //
 | D2Clocal(head, body) =>
   fprint!
