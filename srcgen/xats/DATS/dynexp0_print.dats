@@ -884,19 +884,19 @@ case+ x0.node() of
   (tok, mopt, d0cs) =>
   fprint!
   ( out
-  , "D0Cvaldecl(", tok, "; ", mopt, "; ", d0cs)
+  , "D0Cvaldecl(", tok, "; ", mopt, "; ", d0cs, ")")
 //
 | D0Cvardecl
   (tok, d0cs) =>
   (
-    fprint!(out, "D0Cvardecl(", tok, "; ", d0cs)
+    fprint!(out, "D0Cvardecl(", tok, "; ", d0cs, ")")
   ) (*D0Cvardecl*)
 //
 | D0Cfundecl
   (tok, mopt, tqas, d0cs) =>
   fprint!
   ( out
-  , "D0Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d0cs)
+  , "D0Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d0cs, ")")
 //
 | D0Cimpdecl
   ( tok, mopt, sqas, tqas

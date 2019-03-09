@@ -577,7 +577,7 @@ case- x0.node() of
   (knd, tqas, d2cs) =>
   fprint!
   ( out
-  , "D2Cynconst(", knd, "; ", tqas, "; ", d2cs)
+  , "D2Cynconst(", knd, "; ", tqas, "; ", d2cs, ")")
 //
 | D2Clocal(head, body) =>
   fprint!
