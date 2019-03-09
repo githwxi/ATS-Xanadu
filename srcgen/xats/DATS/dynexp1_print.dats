@@ -673,18 +673,18 @@ case+ x0.node() of
   (tok, mods, d1cs) =>
   fprint!
   ( out
-  , "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs)
+  , "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs, ")")
 //
 | D1Cvardecl(tok, d1cs) =>
   (
-    fprint!(out, "D1Cvardecl(", tok, "; ", d1cs)
+    fprint!(out, "D1Cvardecl(", tok, "; ", d1cs, ")")
   )
 //
 | D1Cfundecl
   (tok, mopt, tqas, d1cs) =>
   fprint!
   ( out
-  , "D1Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d1cs)
+  , "D1Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d1cs, ")")
 //
 | D1Cimpdecl
   ( tok, mopt, sqas, tqas
