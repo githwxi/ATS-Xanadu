@@ -106,8 +106,7 @@ val the_filepath_string : filepath // text
 //
 fun
 filepath_make
-( given: string
-, pname: string, fname: string): filepath
+(given: string, fname: string): filepath
 //
 (* ****** ****** *)
 //

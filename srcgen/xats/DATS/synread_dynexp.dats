@@ -142,23 +142,24 @@ d0c0.node() of
     val () =
     synread_SORTDEF<>(tok)
 *)
-    val () = synread_s0tid<>(tid)
     val () = synread_EQ<>(teq)
+    val () = synread_s0tid<>(tid)
     val () = synread_s0rtdef<>(def)
   }
 //
 | D0Csexpdef
   ( tok, sid
-  , s0ms, opt, teq, def) =>
+  , arg, res, teq, def) =>
   {
 (*
     val () =
       synread_SEXPDEF<>(tok)
     // end of [val]
 *)
-    val () = synread_s0eid<>(sid)
-    val () = synread_sort0opt<>(opt)
     val () = synread_EQ<>(teq)  
+    val () = synread_s0eid<>(sid)
+    val () = synread_sort0opt<>(res)
+    val () = synread_s0marglst<>(arg)
     val () = synread_s0exp<>(def)
   }
 //
