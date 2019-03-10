@@ -254,9 +254,10 @@ p_ENDLOCAL: parser(token)
 fun
 popt_BAR: parser(tokenopt)
 fun
-popt_LBRACE: parser(tokenopt)
+popt_SMCLN: parser(tokenopt)
+//
 fun
-popt_SEMICOLON: parser(tokenopt)
+popt_LBRACE: parser(tokenopt)
 //
 (* ****** ****** *)
 //
@@ -351,7 +352,7 @@ p_d0tsortseq_AND: parser(d0tsortlst)
 s0rtdef ::=
 | sort0
 | LBRACE
-  s0arg BAR s0expseq_SEMICOLON
+  s0arg BAR s0expseq_SMCLN
   RBRACE
 *)
 fun
@@ -414,7 +415,7 @@ popt_idsort0_anno: parser(sort0opt)
 fun
 p_s0qua: parser(s0qua)
 fun
-p_s0quaseq_BARSEMI: parser(s0qualst)
+p_s0quaseq_BARSMCLN: parser(s0qualst)
 //
 (* ****** ****** *)
 
@@ -572,17 +573,18 @@ pstar_COMMA_fun
 ) : List0_vt(a) // end of [pstar_COMMA_fun]
 //
 fun
-pstar_BARSEMI_fun
+pstar_SMCLN_fun
   {a:type}
 (
   buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
-) : List0_vt(a) // end of [pstar_BARSEMI_fun]
+) : List0_vt(a) // end of [pstar_SMCLN_fun]
+//
 fun
-pstar_SEMICOLON_fun
+pstar_BARSMCLN_fun
   {a:type}
 (
   buf: &tokbuf >> _, err: &int >> _, fpar: parser(a)
-) : List0_vt(a) // end of [pstar_SEMICOLON_fun]
+) : List0_vt(a) // end of [pstar_BARSMCLN_fun]
 //
 (* ****** ****** *)
 

@@ -102,10 +102,10 @@ case+ tnd of
 | T_BLANK(x) =>
   fprint!(out, "BLANK(", x, ")")
 //
+| T_CLNLT(x) =>
+  fprint!(out, "CLNLT(", x, ")")
 | T_DOTLT(x) =>
   fprint!(out, "DOTLT(", x, ")")
-| T_COLONLT(x) =>
-  fprint!(out, "COLONLT(", x, ")")
 //
 | T_IDENT_alp(x) =>
   fprint!(out, "IDENT_alp(", x, ")")
@@ -177,8 +177,8 @@ case+ tnd of
 | T_AT() => fprint(out, "AT")
 //
 | T_BAR() => fprint(out, "BAR")
+| T_CLN() => fprint(out, "CLN")
 | T_DOT() => fprint(out, "DOT")
-| T_COLON() => fprint(out, "COLON")
 //
 | T_EQ() => fprint(out, "EQ")
 //
@@ -206,9 +206,9 @@ case+ tnd of
 | T_GTDOT() => fprint(out, "GTDOT")
 //
 | T_COMMA() => fprint(out, "COMMA")
-| T_SEMICOLON() => fprint(out, "SEMICOLON")
+| T_SMCLN() => fprint(out, "SMCLN")
 //
-| T_BACKSLASH() => fprint(out, "BACKSLASH")
+| T_BSLASH() => fprint(out, "BSLASH")
 //
 | T_LPAREN() => fprint(out, "LPAREN")
 | T_RPAREN() => fprint(out, "RPAREN")
@@ -379,8 +379,8 @@ case+ tnd of
 //
 | T_BLANK(x) => fprint(out, x)
 //
+| T_CLNLT(x) => fprint(out, x)
 | T_DOTLT(x) => fprint(out, x)
-| T_COLONLT(x) => fprint(out, x)
 //
 | T_IDENT_alp(x) => fprint(out, x)
 | T_IDENT_sym(x) => fprint(out, x)
@@ -434,8 +434,8 @@ case+ tnd of
 | T_AT() => fprint(out, "@")
 //
 | T_BAR() => fprint(out, "|")
+| T_CLN() => fprint(out, ":")
 | T_DOT() => fprint(out, ".")
-| T_COLON() => fprint(out, ":")
 //
 | T_EQ() => fprint(out, "=")
 //
@@ -460,9 +460,9 @@ case+ tnd of
 | T_GTDOT() => fprint(out, ">.")
 //
 | T_COMMA() => fprint(out, ",")
-| T_SEMICOLON() => fprint(out, ";")
+| T_SMCLN() => fprint(out, ";")
 //
-| T_BACKSLASH() => fprint(out, "\\")
+| T_BSLASH() => fprint(out, "\\")
 //
 | T_LPAREN() => fprint(out, "(")
 | T_RPAREN() => fprint(out, ")")
@@ -604,7 +604,9 @@ val () = theMap[c2i('=')] := T_EQ()
 *)
 //
 val () = theMap[c2i(',')] := T_COMMA()
-val () = theMap[c2i(';')] := T_SEMICOLON()
+val () = theMap[c2i(';')] := T_SMCLN()
+//
+val () = theMap[c2i('\\')] := T_BSLASH()
 //
 val () = theMap[c2i('\(')] := T_LPAREN()
 val () = theMap[c2i('\)')] := T_RPAREN()
@@ -614,8 +616,6 @@ val () = theMap[c2i('\}')] := T_RBRACE()
 //
 val () = theMap[c2i('\[')] := T_LBRACK()
 val () = theMap[c2i('\]')] := T_RBRACK()
-//
-val () = theMap[c2i('\\')] := T_BACKSLASH()
 //
 in (* in-of-local *)
 
@@ -652,6 +652,14 @@ tnode_is_BAR
 )
 //
 implement
+tnode_is_CLN
+  (node) =
+(
+  case+ node of
+  | T_CLN() => true | _ => false
+)
+//
+implement
 tnode_is_COMMA
   (node) =
 (
@@ -660,27 +668,20 @@ tnode_is_COMMA
 )
 //
 implement
-tnode_is_COLON
+tnode_is_SMCLN
   (node) =
 (
   case+ node of
-  | T_COLON() => true | _ => false
+  | T_SMCLN() => true | _ => false
 )
 //
 implement
-tnode_is_BARSEMI
+tnode_is_BARSMCLN
   (node) =
 (
   case+ node of
   | T_BAR() => true
-  | T_SEMICOLON() => true | _ => false
-)
-implement
-tnode_is_SEMICOLON
-  (node) =
-(
-  case+ node of
-  | T_SEMICOLON() => true | _ => false
+  | T_SMCLN() => true | _ => false
 )
 //
 (* ****** ****** *)
@@ -884,8 +885,8 @@ case+ node of
 //
 | T_BLANK(bs) => posincneol(pos1, bs)
 //
+| T_CLNLT(cs) => posincneol(pos1, cs)
 | T_DOTLT(cs) => posincneol(pos1, cs)
-| T_COLONLT(cs) => posincneol(pos1, cs)
 //
 | T_SPECHAR(c0) => posinc1(pos1)
 //

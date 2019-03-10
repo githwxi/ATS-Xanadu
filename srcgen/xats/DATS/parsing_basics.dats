@@ -131,7 +131,7 @@ p_COLON
 in
   case+
   tok.node() of
-  | T_COLON() =>
+  | T_CLN() =>
     let val () = buf.incby1() in tok end
   | _ (* non-COLON *) =>
     let val ( ) = (err := e0 + 1) in tok end
@@ -354,6 +354,25 @@ end // end of [popt_BAR]
 (* ****** ****** *)
 
 implement
+popt_SMCLN
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_SMCLN() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_SMCLN *)
+  | _ (* non-SMCLN *) => None(*void*)
+end // end of [popt_SMCLN]
+
+(* ****** ****** *)
+
+implement
 popt_LBRACE
   (buf, err) = let
 //
@@ -369,25 +388,6 @@ in
     } (* T_LBRACE *)
   | _ (* non-LBRACE *) => None(*void*)
 end // end of [popt_LBRACE]
-
-(* ****** ****** *)
-
-implement
-popt_SEMICOLON
-  (buf, err) = let
-//
-  val tok = buf.get0()
-//
-in
-  case+
-  tok.node() of
-  | T_SEMICOLON() =>
-    Some(tok) where
-    {
-      val () = buf.incby1()
-    } (* T_SEMICOLON *)
-  | _ (* non-SEMICOLON *) => None(*void*)
-end // end of [popt_SEMICOLON]
 
 (* ****** ****** *)
 
@@ -620,28 +620,29 @@ pstar_sep_fun
 (* ****** ****** *)
 //
 implement
-pstar_BARSEMI_fun
+pstar_SMCLN_fun
   {a}
 (
   buf, err, fpar
 ) = (
 //
 pstar_sep_fun
-(buf, err, tnode_is_BARSEMI, fpar)
+(buf, err, tnode_is_SMCLN, fpar)
 //
-) (* end of [pstar_BARSEMI_fun] *)
+) (* end of [pstar_SMCLN_fun] *)
 //
 implement
-pstar_SEMICOLON_fun
+pstar_BARSMCLN_fun
   {a}
 (
   buf, err, fpar
 ) = (
 //
 pstar_sep_fun
-(buf, err, tnode_is_SEMICOLON, fpar)
+(buf, err, tnode_is_BARSMCLN, fpar)
 //
-) (* end of [pstar_SEMICOLON_fun] *)
+) (* end of [pstar_BARSMCLN_fun] *)
+//
 //
 (* ****** ****** *)
 //

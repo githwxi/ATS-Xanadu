@@ -656,7 +656,7 @@ in
 //
 ifcase
 | c1 = '<' =>
-  T_COLONLT(cs) where
+  T_CLNLT(cs) where
   {
     val cs =
     lexbuf_get_fullseg(buf)
