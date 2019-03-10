@@ -1297,12 +1297,13 @@ implement
 the_fixity_load
   (XATSHOME) = let
 //
-  val given = "prelude/fixity.sats"
+  val given =
+    "prelude/fixity.sats"
 //
   val fname =
-  dirbase(XATSHOME, given)
+    dirbase(XATSHOME, given)
   val fpath =
-  fpath_make(given, given, fname)  
+    fpath_make(given, fname)  
 //
   val
   (pf0 | ()) =
@@ -1374,9 +1375,9 @@ println!
 ("the_basics_load: ", given)
 //
   val fname =
-  dirbase(XATSHOME, given)
+    dirbase(XATSHOME, given)
   val fpath =
-  fpath_make(given, given, fname)  
+    fpath_make(given, fname)  
 //
   val
   (pf0 | ()) =
@@ -1432,9 +1433,9 @@ println!
 ("the_prelude_load: ", given)
 //
   val fname =
-  dirbase(XATSHOME, given)
+    dirbase(XATSHOME, given)
   val fpath =
-  fpath_make(given, given, fname)  
+    fpath_make(given, fname)  
 //
   val
   (pf0 | ()) =
