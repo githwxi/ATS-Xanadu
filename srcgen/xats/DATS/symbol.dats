@@ -292,6 +292,8 @@ implement
 AMP_symbol = symbol_make("&")
 implement
 BAR_symbol = symbol_make("|")
+implement
+CLN_symbol = symbol_make(":")
 
 (* ****** ****** *)
 

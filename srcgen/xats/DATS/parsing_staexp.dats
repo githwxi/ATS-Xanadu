@@ -210,12 +210,14 @@ implement
 t_s0tid(tnd) =
 (
 case+ tnd of
+//
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
 //
-| T_BACKSLASH() => true
+| T_BSLASH((*void*)) => true
 //
-| _ (* non-IDENT *) => false
+| _ (* non-identifier *) => false
+//
 ) (* end of [t_s0tid] *)
 
 implement
@@ -260,13 +262,13 @@ tok.node() of
   }
 *)
 //
-| T_BACKSLASH() =>
+| T_BSLASH() =>
   i0dnt_some(tok) where
   {
     val () = buf.incby1()
   }
 //
-| _ (* non-IDENT *) =>
+| _ (* non-identifier *) =>
   (
     err := err + 1; i0dnt_none(tok)
   ) (* end of [non-IDENT] *)
@@ -330,9 +332,9 @@ case+ tnd of
 | T_EQGT() => true // "=>"
 *)
 //
-| T_BACKSLASH() => true
+| T_BSLASH() => true
 //
-| _ (* non-IDENT *) => false
+| _ (* non-identifier *) => false
 ) (* end of [t_s0eid] *)
 
 implement
@@ -406,7 +408,7 @@ in
       val tok = token_make_node(loc, tnd)
     }
 //
-  | T_BACKSLASH() =>
+  | T_BSLASH() =>
     i0dnt_some(tok) where
     {
       val () = buf.incby1()
@@ -793,7 +795,7 @@ val d0ts =
 
 extern
 fun
-p_s0expseq_SEMICOLON: parser(s0explst)
+p_s0expseq_SMCLN: parser(s0explst)
 
 (* ****** ****** *)
 
@@ -814,7 +816,7 @@ case+ tnd of
     val s0a0 =
       p_s0arg(buf, err)
     val tok1 = p_BAR(buf, err)
-    val s0es = p_s0expseq_SEMICOLON(buf, err)
+    val s0es = p_s0expseq_SMCLN(buf, err)
     val tend = p_RBRACE(buf, err)
   in
     err := e0;
@@ -855,7 +857,8 @@ in
 //
 case+
 tok.node() of
-| T_COLON() => let
+//
+| T_CLN() => let
     val () = buf.incby1()
     val
     s0t = p_sort0(buf, err)
@@ -867,7 +870,8 @@ tok.node() of
     ( loc
     , S0ARGsome(id, Some(s0t))
     )
-  end // end of [T_COLON]
+  end // end of [T_CLN]
+//
 | _ (*non-COLON*) =>
   (
     s0arg_make_node
@@ -961,7 +965,7 @@ case+ tnd of
     in
       case+
       tok.node() of
-      | T_COLON() => let
+      | T_CLN() => let
           val () = buf.incby1()
           val
           s0t = p_atmsort0(buf, err)
@@ -979,7 +983,7 @@ case+ tnd of
           s0marg_make_node
             (s0a.loc(), S0MARGsing(s0a))
           // s0marg_make_node
-        end // end of [T_COLON]
+        end // end of [T_CLN]
       | _ (*non-COLON*) => s0marg_make_s0eid(id)
     end // end of [then]
     else s0marg_make_s0eid(id)
@@ -1031,7 +1035,8 @@ in
 //
 case+
 tok1.node() of
-| T_COLON() => let
+//
+| T_CLN() => let
     val () =
     buf.clear_mark(mark)
     val () = buf.incby1()
@@ -1041,7 +1046,8 @@ tok1.node() of
     err := e0;
     t0arg_make_node
     (loc_res, T0ARGsome(s0t, Some(tok0)))
-  end // end of [COLON]
+  end // end of [CLN]
+//
 | _(*non-COLON*) => let
     val () =
       buf.set_mark(mark)
@@ -1148,14 +1154,14 @@ in (* in-of-let *)
 //
 case+
 tok.node() of
-| T_COLON() => let
+| T_CLN() => let
     val () = buf.incby1()
     val s0t = p_sort0(buf, err)
   in
     let
       val () = err := e0 in Some(s0t)
     end
-  end // end of [T_COLON]
+  end // end of [T_CLN]
 | _(*non-COLON*) => None(*void*)
 //
 end // end of [popt_sort0_anno]
@@ -1179,14 +1185,14 @@ in (* in-of-let *)
 //
 case+
 tok.node() of
-| T_COLON() => let
+| T_CLN() => let
     val () = buf.incby1()
     val s0t = p_atmsort0(buf, err)
   in
     let
       val () = err := e0 in Some(s0t)
     end
-  end // end of [T_COLON]
+  end // end of [T_CLN]
 | _(*non-COLON*) => None(*void*)
 //
 end // end of [popt_idsort0_anno]
@@ -1486,7 +1492,7 @@ case+ tnd of
 | T_LBRACE() => let
     val () = buf.incby1()
     val s0qs =
-      p_s0quaseq_BARSEMI(buf, err)
+      p_s0quaseq_BARSMCLN(buf, err)
     val tbeg = tok
     val tend = p_RBRACE(buf, err)
     val loc_res = tbeg.loc() + tend.loc()
@@ -1498,7 +1504,7 @@ case+ tnd of
 | T_LBRACK() => let
     val () = buf.incby1()
     val s0qs =
-      p_s0quaseq_BARSEMI(buf, err)
+      p_s0quaseq_BARSMCLN(buf, err)
     val tnd = T_EXISTS(0)
     val loc = tok.loc((*void*))
     val tbeg =
@@ -1513,7 +1519,7 @@ case+ tnd of
 | T_EXISTS(k0) => let
     val () = buf.incby1()
     val s0qs =
-      p_s0quaseq_BARSEMI(buf, err)
+      p_s0quaseq_BARSMCLN(buf, err)
     val tbeg = tok
     val tend = p_RBRACK(buf, err)
     val loc_res = tbeg.loc() + tend.loc()
@@ -1667,14 +1673,14 @@ list_vt2t
 (* ****** ****** *)
 
 implement
-p_s0expseq_SEMICOLON
+p_s0expseq_SMCLN
   (buf, err) =
 (
 //
 list_vt2t
-(pstar_SEMICOLON_fun{s0exp}(buf, err, p_s0exp))
+(pstar_SMCLN_fun{s0exp}(buf, err, p_s0exp))
 //
-) (* end of [p_s0expseq_SEMICOLON] *)
+) (* end of [p_s0expseq_SMCLN] *)
 
 (* ****** ****** *)
 
@@ -1797,7 +1803,7 @@ case+ tnd of
   in
     case+ tnd1 of
 //
-    | T_COLON() => let
+    | T_CLN() => let
         val () = buf.incby1()
         val ids = list_sing(id0)
         val s0t = p_sort0(buf, err)
@@ -1807,7 +1813,7 @@ case+ tnd of
         s0qua_make_node
           (loc_res, S0QUAvars(ids, Some(s0t)))
         // s0qua_make_node
-      end // end of [T_COLON]
+      end // end of [T_CLN]
 //
     | T_COMMA() => let
         val () = buf.incby1()
@@ -1877,17 +1883,17 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-p_s0quaseq_BARSEMI
+p_s0quaseq_BARSMCLN
   (buf, err) =
 (
 //
 list_vt2t
 (
-  pstar_BARSEMI_fun
+  pstar_BARSMCLN_fun
   {s0qua}(buf, err, p_s0qua)
 ) (* list_vt2t *)
 //
-) (* end of [p_s0quaseq_BARSEMI] *)
+) (* end of [p_s0quaseq_BARSMCLN] *)
 
 (* ****** ****** *)
 
@@ -1901,7 +1907,7 @@ in
   | T_LBRACE() => let
       val () = buf.incby1()
       val s0qs =
-      p_s0quaseq_BARSEMI(buf, err)
+      p_s0quaseq_BARSMCLN(buf, err)
       val tbeg = tok
       val tend = p_RBRACE(buf, err)
       val loc_res = tbeg.loc()+tend.loc()
@@ -1948,7 +1954,7 @@ in (* in-of-let *)
 //
 case+
 tok.node() of
-| T_COLON() => let
+| T_CLN() => let
     val () = buf.incby1()
     val s0e =
       p_apps0exp_NEQ(buf, err)
@@ -1957,7 +1963,7 @@ tok.node() of
     let
       val () = err := e0 in Some(s0e)
     end
-  end // end of [T_COLON]
+  end // end of [T_CLN]
 | _(*non-COLON*) => None(*void*)
 //
 end // end of [popt_s0exp_anno]
@@ -2116,7 +2122,7 @@ in
 //
 case+
 tok.node() of
-| T_COLON() => let
+| T_CLN() => let
     val () = buf.incby1()
     val s0e_res =
       p_apps0exp_NEQ(buf, err)
@@ -2128,9 +2134,9 @@ tok.node() of
       (S0EFFnone(tok), s0e_res)
     // EFFS0EXPsome
 *)
-  end // end of [T_COLON]
+  end // end of [T_CLN]
 (*
-| T_COLONLT(_) => let
+| T_CLNLT(_) => let
     val () = buf.incby1()
     val s0es =
     list_vt2t
@@ -2148,7 +2154,7 @@ tok.node() of
     EFFS0EXPsome
       (S0EFFsome(tbeg, s0es, tend), s0e_res)
     // EFFS0EXPsome
-  end // end of [T_COLONLT]
+  end // end of [T_CLNLT]
 *)
 | _(*non-COLON/LT*) => EFFS0EXPnone(*none*)
 //

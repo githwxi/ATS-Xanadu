@@ -58,7 +58,9 @@ extern
 val K_EQ: tkind
 and K_LT: tkind
 and K_GT: tkind
+//
 and K_BAR: tkind
+and K_CLN: tkind
 //
 and K_EQLT: tkind
 and K_EQGT: tkind
@@ -78,7 +80,9 @@ and K_RBRACK: tkind
 implement K_EQ = K_SYMBOL(EQ_symbol)
 implement K_LT = K_SYMBOL(LT_symbol)
 implement K_GT = K_SYMBOL(GT_symbol)
+//
 implement K_BAR = K_SYMBOL(BAR_symbol)
+implement K_CLN = K_SYMBOL(CLN_symbol)
 //
 implement K_EQLT = K_SYMBOL(EQLT_symbol)
 implement K_EQGT = K_SYMBOL(EQGT_symbol)
@@ -310,6 +314,27 @@ tok.node() of
     (tok.loc(), ": SYNERR(BAR): ", tok);
   end // end of [let]
 ) (* end of [synread_BAR] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_CLN
+  (tok) =
+(
+case+
+tok.node() of
+| T_CLN() => ()
+| _(*non-CLN*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_CLN, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(CLN): ", tok);
+  end // end of [let]
+) (* end of [synread_CLN] *)
 
 (* ****** ****** *)
 

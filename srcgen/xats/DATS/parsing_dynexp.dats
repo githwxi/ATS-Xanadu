@@ -133,11 +133,11 @@ case+ tnd of
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
 //
-| T_BACKSLASH() => true
-//
 | T_AT((*void*)) => true // "@"
 //
-| _ (* non-IDENT *) => false
+| T_BSLASH((*void*)) => true
+//
+| _ (* non-identifier *) => false
 )
 
 implement
@@ -161,13 +161,7 @@ in
       val () = buf.incby1()
     }
 //
-  | T_BACKSLASH() =>
-    i0dnt_some(tok) where
-    {
-      val () = buf.incby1()
-    }
-//
-  | T_AT() =>
+  | T_AT((*void*)) =>
     i0dnt_some(tok) where
     {
       val () = buf.incby1()
@@ -176,7 +170,13 @@ in
       val tok = token_make_node(loc, tnd)
     }
 //
-  | _ (* non-IDENT *) =>
+  | T_BSLASH((*void*)) =>
+    i0dnt_some(tok) where
+    {
+      val () = buf.incby1()
+    }
+//
+  | _ (* non-identifier *) =>
     (err := err + 1; i0dnt_none(tok))
 end // end of [p_d0pid]
 
@@ -195,8 +195,6 @@ case+ tnd of
 | T_IDENT_srp _ => true
 *)
 //
-| T_BACKSLASH() => true
-//
 | T_AT((*void*)) => true // "@"
 | T_EQ((*void*)) => true // "="
 //
@@ -207,7 +205,9 @@ case+ tnd of
 //
 | T_EQGT((*void*)) => true // ">"
 //
-| _ (* non-IDENT *) => false
+| T_BSLASH((*void*)) => true
+//
+| _ (* non-identifier *) => false
 //
 ) (* end of [t_d0eid] *)
 
@@ -290,13 +290,13 @@ in
       val tok = token_make_node(loc, tnd)
     }
 //
-  | T_BACKSLASH() =>
+  | T_BSLASH((*void*)) =>
     i0dnt_some(tok) where
     {
       val () = buf.incby1()
     }
 //
-  | _ (* non-IDENT *) =>
+  | _ (* non-identifier *) =>
     (err := err + 1; i0dnt_none(tok))
 end // end of [p_d0eid]
 
@@ -410,7 +410,7 @@ val opt =
 (
 case+
 tok.node() of
-| T_COLON() =>
+| T_CLN() =>
   Some
   (
    p_appsort0_NGT(buf, err)
@@ -652,7 +652,7 @@ in
 //
 case+
 tok1.node() of
-| T_COLON() => let
+| T_CLN() => let
     val () =
     buf.clear_mark(mark)
     val () = buf.incby1()
@@ -662,7 +662,7 @@ tok1.node() of
     err := e0;
     a0typ_make_node
     (loc_res, A0TYPsome(s0e, Some(tok0)))
-  end // end of [COLON]
+  end // end of [T_CLN]
 | _(*non-COLON*) => let
     val () =
       buf.set_mark(mark)
@@ -740,7 +740,7 @@ case+ tnd of
 | T_LBRACE() => let
     val () = buf.incby1()
     val s0qs =
-      p_s0quaseq_BARSEMI(buf, err)
+      p_s0quaseq_BARSMCLN(buf, err)
     val tbeg = tok
     val tend = p_RBRACE(buf, err)
     val loc_res = tbeg.loc() + tend.loc()
@@ -1174,7 +1174,7 @@ case+ tnd of
 | T_LBRACE() => let
     val () = buf.incby1()
     val s0qs =
-    p_s0quaseq_BARSEMI(buf, err)
+    p_s0quaseq_BARSMCLN(buf, err)
     val tbeg = tok
     val tend = p_RBRACE(buf, err)
     val loc_res = tbeg.loc() + tend.loc()
@@ -1275,7 +1275,7 @@ atmd0exp ::
 //
   | ( d0expseq_COMMA )
   | ( d0expseq_COMMA | d0expseq_COMMA )
-  | ( d0expseq_COMMA ; d0expseq_SEMICOLON )
+  | ( d0expseq_COMMA ; d0expseq_SMCLN )
 //
   | { labd0expseq_COMMA }
   | { labd0expseq_COMMA | labd0expseq_COMMA }
@@ -1306,7 +1306,7 @@ p_labd0expseq_COMMA: parser(labd0explst)
 //
 extern
 fun
-p_d0expseq_SEMICOLON: parser(d0explst)
+p_d0expseq_SMCLN: parser(d0explst)
 //
 (* ****** ****** *)
 //
@@ -1314,7 +1314,7 @@ p_d0expseq_SEMICOLON: parser(d0explst)
 d0exp_RPAREN ::=
   | RPAREN
   | BAR d0expseq_COMMA RPAREN
-  | SEMICOLON d0expseq_SEMICOLON RPAREN
+  | SMCLN d0expseq_SMCLN RPAREN
 *)
 (*
 labd0exp_RBRACE ::=
@@ -1805,7 +1805,7 @@ case+ tnd of
     val tok1 = p_IN(buf, err)
 //
     val d0es =
-    p_d0expseq_SEMICOLON(buf, err)
+    p_d0expseq_SMCLN(buf, err)
 //
     val tok2 = p_ENDLET(buf, err)
 //
@@ -1934,14 +1934,14 @@ list_vt2t
 (* ****** ****** *)
 
 implement
-p_d0expseq_SEMICOLON
+p_d0expseq_SMCLN
   (buf, err) =
 (
 //
 list_vt2t
-(pstar_SEMICOLON_fun{d0exp}(buf, err, p_d0exp))
+(pstar_SMCLN_fun{d0exp}(buf, err, p_d0exp))
 //
-) (* end of [p_d0expseq_SEMICOLON] *)
+) (* end of [p_d0expseq_SMCLN] *)
 
 (* ****** ****** *)
 
@@ -1965,11 +1965,11 @@ case+ tnd1 of
     err := e0;
     d0exp_RPAREN_cons1(tok1, d0es, tok2)
   end // end of [T_BAR]
-| T_SEMICOLON() => let
+| T_SMCLN() => let
     val () =
       buf.incby1()
     val d0es =
-      p_d0expseq_SEMICOLON
+      p_d0expseq_SMCLN
         (buf, err)
     val tok2 = p_RPAREN(buf, err)
   in
@@ -2515,7 +2515,7 @@ in
 case+
 tok0.node() of
 //
-| T_COLON() => let
+| T_CLN() => let
     val () = buf.incby1()
     val tok1 = buf.get0()
   in
@@ -2541,7 +2541,7 @@ tok0.node() of
         // end of [val]
       end // end of [non-LPAREN]
 //
-  end // end of [T_COLON]
+  end // end of [T_CLN]
 //
 | _ (* non-COLON *) => DECLMODnone(*void*)
 //
