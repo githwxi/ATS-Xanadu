@@ -212,16 +212,16 @@ kword_initize(): void =
 //
 val () = myins("@", T_AT)
 //
-val () = myins("|", T_BAR)
-val () = myins(".", T_DOT)
-val () = myins(":", T_COLON)
-//
-val () = myins("$", T_DLR)
-val () = myins("#", T_SRP)
-//
 val () = myins("=", T_EQ)
 val () = myins("<", T_LT)
 val () = myins(">", T_GT)
+//
+val () = myins("|", T_BAR)
+val () = myins(":", T_CLN)
+val () = myins(".", T_DOT)
+//
+val () = myins("$", T_DLR)
+val () = myins("#", T_SRP)
 //
 val () = myins("=<", T_EQLT)
 val () = myins("=>", T_EQGT)

@@ -61,8 +61,8 @@ tnode =
 //
   | T_BLANK of (string) // blank
 //
+  | T_CLNLT of (string) // :<
   | T_DOTLT of (string) // .<
-  | T_COLONLT of (string) // :<
 //
   | T_IDENT_alp of string // alnum
   | T_IDENT_sym of string // symbol
@@ -110,8 +110,8 @@ tnode =
 *)
 //
   | T_BAR of () // |
+  | T_CLN of () // :
   | T_DOT of () // .
-  | T_COLON of () // :
 //
   | T_EQ of () // =
 //
@@ -133,15 +133,12 @@ tnode =
   | T_MSLTGT of () // -<>
 *)
 //
-(*
-  | T_DOTLT of () // .<
-*)
   | T_GTDOT of () // >.
 //
   | T_COMMA of () // ,
-  | T_SEMICOLON of () // ;
+  | T_SMCLN of () // ;
 //
-  | T_BACKSLASH of () // \
+  | T_BSLASH of () // \
 //
   | T_LPAREN of () // (
   | T_RPAREN of () // )
@@ -348,22 +345,22 @@ fun
 char2tnode(c0: int): tnode
 //
 (* ****** ****** *)
-
+//
 fun
 tnode_is_AND : tnode -> bool
 fun
 tnode_is_BAR : tnode -> bool
-
+fun
+tnode_is_CLN : tnode -> bool
+//
 fun
 tnode_is_COMMA : tnode -> bool
 fun
-tnode_is_COLON : tnode -> bool
-
+tnode_is_SMCLN : tnode -> bool
+//
 fun
-tnode_is_BARSEMI : tnode -> bool
-fun
-tnode_is_SEMICOLON : tnode -> bool
-
+tnode_is_BARSMCLN : tnode -> bool
+//
 (* ****** ****** *)
 
 fun tnode_is_blank(tnode): bool

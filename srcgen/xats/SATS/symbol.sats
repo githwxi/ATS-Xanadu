@@ -61,6 +61,7 @@ val symbol_nil : symbol // SYMBOL("")
 //
 val AMP_symbol : symbol // symbol("&")
 val BAR_symbol : symbol // symbol("|")
+val CLN_symbol : symbol // symbol(":")
 //
 (* ****** ****** *)
 //
@@ -79,6 +80,7 @@ val GTEQ_symbol : symbol // SYMBOL(">=")
 (* ****** ****** *)
 //
 val EQ_symbol : symbol // SYMBOL("=")
+//
 val EQEQ_symbol : symbol // SYMBOL("==")
 val LTGT_symbol : symbol // SYMBOL("<>")
 val BANGEQ_symbol : symbol // SYMBOL("!=")
