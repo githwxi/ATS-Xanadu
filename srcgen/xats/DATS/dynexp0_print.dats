@@ -503,7 +503,7 @@ case+ x0.node() of
   fprint!
   ( out
   , "D0Ecase(", tok0, "; "
-  , d0e1, "; ", tof2, "; ", tbar, "; ", "...", "; ", tend)
+  , d0e1, "; ", tof2, "; ", tbar, "; ", "...", "; ", tend, ")")
 //
 | D0Elet
   (tok0, d0cs, tok1, d0es, tok2) =>
@@ -521,7 +521,7 @@ case+ x0.node() of
   (tok, lab, arg) =>
   fprint!
   ( out
-  , "D0Edtsel(", tok, "; ", lab, "; ", arg)
+  , "D0Edtsel(", tok, "; ", lab, "; ", arg, ")")
 //
 | D0Elam
   (tok0, arg1, res2, farrw, fbody, tend) =>
