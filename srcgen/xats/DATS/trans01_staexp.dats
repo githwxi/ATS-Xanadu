@@ -784,12 +784,15 @@ val tnd = tok.node()
 in
   case- tnd of
 //
-  | T_IDENT_alp(nam) => auxsid_IDENT(tok, nam)
-  | T_IDENT_sym(nam) => auxsid_IDENT(tok, nam)
+  | T_IDENT_alp(nam) =>
+    auxsid_IDENT(tok, nam)
+  | T_IDENT_sym(nam) =>
+    auxsid_IDENT(tok, nam)
 //
-  | T_IDENT_dlr(nam) => auxsid_IDENT(tok, nam)
+  | T_IDENT_dlr(nam) =>
+    auxsid_IDENT(tok, nam)
 //
-  | T_BACKSLASH((*void*)) => auxsid_BACKSLASH(tok)
+  | T_BSLASH((*void*)) => auxsid_BSLASH(tok)
 //
 end // end of [auxsid]
 
@@ -819,7 +822,7 @@ case+ opt of
 end // end of [auxsid_IDENT]
 
 and
-auxsid_BACKSLASH
+auxsid_BSLASH
   (tok:token): s1eitm = let
 //
 val loc = tok.loc()
@@ -829,7 +832,7 @@ val s1e0 =
 //
 in
   FXITMopr(s1e0, $FIX.backslash_fixty)
-end // end of [auxsid_BACKSLASH]
+end // end of [auxsid_BSLASH]
 
 fun
 auxint

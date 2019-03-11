@@ -1,3 +1,17 @@
+#staload
+"prelude/SATS/list.sats"
+#staload
+"${XATSHOME}/prelude/SATS/list.sats"
+
+////
+
+#staload
+"http://www.ats-lang.org/hello1.dats"
+#staload
+HELLO2 =
+"http://www.ats-lang.org/hello2.dats"
+
+////
 
 abstype
 abcdefg1(int)

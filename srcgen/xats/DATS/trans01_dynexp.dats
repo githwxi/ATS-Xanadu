@@ -707,15 +707,19 @@ val tnd = tok.node()
 in
   case- tnd of
 //
-  | T_IDENT_alp(nam) => auxid0_IDENT(tok, nam)
-  | T_IDENT_sym(nam) => auxid0_IDENT(tok, nam)
+  | T_IDENT_alp(nam) =>
+    auxid0_IDENT(tok, nam)
+  | T_IDENT_sym(nam) =>
+    auxid0_IDENT(tok, nam)
 //
 (*
-  | T_IDENT_dlr(nam) => auxid0_IDENT(tok, nam)
-  | T_IDENT_srp(nam) => auxid0_IDENT(tok, nam)
+  | T_IDENT_dlr(nam) =>
+    auxid0_IDENT(tok, nam)
+  | T_IDENT_srp(nam) =>
+    auxid0_IDENT(tok, nam)
 *)
 //
-  | T_BACKSLASH((*void*)) => auxid0_BACKSLASH(tok)
+  | T_BSLASH((*void*)) => auxid0_BSLASH(tok)
 //
 end // end of [auxid0]
 
@@ -745,7 +749,7 @@ case+ opt of
 end // end of [auxid0_IDENT]
 
 and
-auxid0_BACKSLASH
+auxid0_BSLASH
   (tok:token): d1pitm = let
 //
 val loc = tok.loc()
@@ -755,7 +759,7 @@ val d1p0 =
 //
 in
   FXITMopr(d1p0, $FIX.backslash_fixty)
-end // end of [auxid0_BACKSLASH]
+end // end of [auxid0_BSLASH]
 
 (* ****** ****** *)
 
@@ -1007,15 +1011,20 @@ val tnd = tok.node()
 in
   case- tnd of
 //
-  | T_IDENT_alp(nam) => auxid0_IDENT(tok, nam)
-  | T_IDENT_sym(nam) => auxid0_IDENT(tok, nam)
+  | T_IDENT_alp(nam) =>
+    auxid0_IDENT(tok, nam)
+  | T_IDENT_sym(nam) =>
+    auxid0_IDENT(tok, nam)
 //
-  | T_IDENT_dlr(nam) => auxid0_IDENT(tok, nam)
+  | T_IDENT_dlr(nam) =>
+    auxid0_IDENT(tok, nam)
+//
 (*
-  | T_IDENT_srp(nam) => auxid0_IDENT(tok, nam)
+  | T_IDENT_srp(nam) =>
+    auxid0_IDENT(tok, nam)
 *)
 //
-  | T_BACKSLASH((*void*)) => auxid0_BACKSLASH(tok)
+  | T_BSLASH((*void*)) => auxid0_BSLASH(tok)
 //
 end // end of [auxid0]
 
@@ -1045,7 +1054,7 @@ case+ opt of
 end // end of [auxid0_IDENT]
 
 and
-auxid0_BACKSLASH
+auxid0_BSLASH
   (tok:token): d1eitm = let
 //
 val loc = tok.loc()
@@ -1055,7 +1064,7 @@ val d1e0 =
 //
 in
   FXITMopr(d1e0, $FIX.backslash_fixty)
-end // end of [auxid0_BACKSLASH]
+end // end of [auxid0_BSLASH]
 
 fun
 auxint

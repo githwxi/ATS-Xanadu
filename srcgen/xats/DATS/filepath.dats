@@ -56,7 +56,6 @@ absimpl
 filepath_type = $rec
 { filepath_kind= int
 , filepath_givename= string
-, filepath_partpath= string
 , filepath_fullpath= symbol
 } (* end of [filepath_type] *)
 
@@ -194,7 +193,6 @@ implement
 the_filepath_dummy = $rec{
   filepath_kind= 0
 , filepath_givename= ""
-, filepath_partpath= ""
 , filepath_fullpath= $SYM.symbol_nil
 } // end of [the_filepath_dummy]
 
@@ -202,7 +200,6 @@ implement
 the_filepath_stdin = $rec{
   filepath_kind= 0
 , filepath_givename= "__STDIN__"
-, filepath_partpath= "__STDIN__"
 , filepath_fullpath= $SYM.STDIN_fp_symbol
 } // end of [the_filepath_stdin]
 
@@ -210,22 +207,20 @@ implement
 the_filepath_string = $rec{
   filepath_kind= 0
 , filepath_givename= "__STRING__"
-, filepath_partpath= "__STRING__"
 , filepath_fullpath= $SYM.STRING_fp_symbol
 } // end of [the_filepath_string]
 
 implement
 filepath_make
 (
-  given, pname, fname
+  given, fname
 ) = let
 //
 val fname = $SYM.symbol_make(fname)
 //
 in '{
   filepath_kind= 0
-, filepath_givename= given
-, filepath_partpath= pname, filepath_fullpath= fname
+, filepath_givename= given, filepath_fullpath= fname
 } end // end of [filename_make]
 
 end // end of [local]

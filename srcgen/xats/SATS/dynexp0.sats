@@ -994,7 +994,7 @@ for skipping error
   // end of [D0Cstaload]
 (*
 | D0Cdynload of
-    (token(*STALOAD*), d0exp)
+    (token(*DYNLOAD*), d0exp)
   // end of [D0Cdynload]
 *)
 //

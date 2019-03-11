@@ -258,6 +258,8 @@ synread_GT: synreader(token)
 //
 fun{}
 synread_BAR: synreader(token)
+fun{}
+synread_CLN: synreader(token)
 //
 fun{}
 synread_EQLT: synreader(token)
