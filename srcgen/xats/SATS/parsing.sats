@@ -200,20 +200,22 @@ parser(res:t@ype) =
 (&tokbuf >> _, &int >> _) -> res
 //
 (* ****** ****** *)
-
+//
 fun
 p_EQ: parser(token)
 fun
 p_GT: parser(token)
+//
 fun
 p_BAR: parser(token)
 fun
+p_CLN: parser(token)
+//
+fun
 p_EQGT: parser(token)
 fun
-p_COLON: parser(token)
-fun
 p_GTDOT: parser(token)
-
+//
 (* ****** ****** *)
 
 fun

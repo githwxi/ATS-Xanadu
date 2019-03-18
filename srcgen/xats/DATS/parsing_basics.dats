@@ -108,6 +108,22 @@ end // end of [p_BAR]
 (* ****** ****** *)
 
 implement
+p_CLN
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_CLN() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-COLON *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_CLN]
+
+(* ****** ****** *)
+
+implement
 p_EQGT
   (buf, err) = let
   val e0 = err
@@ -120,22 +136,6 @@ in
   | _ (* non-EQ *) =>
     let val ( ) = (err := e0 + 1) in tok end
 end // end of [p_EQGT]
-
-(* ****** ****** *)
-
-implement
-p_COLON
-  (buf, err) = let
-  val e0 = err
-  val tok = buf.get0()
-in
-  case+
-  tok.node() of
-  | T_CLN() =>
-    let val () = buf.incby1() in tok end
-  | _ (* non-COLON *) =>
-    let val ( ) = (err := e0 + 1) in tok end
-end // end of [p_COLON]
 
 (* ****** ****** *)
 
