@@ -10,14 +10,15 @@
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/filepath.sats"
+#staload
+FIL = "./../SATS/filpath.sats"
 //
 (* ****** ****** *)
 
 local
 //
 #include "./../DATS/symbol.dats"
-#include "./../DATS/filepath.dats"
+#include "./../DATS/filpath.dats"
 //
 in
   // nothing
@@ -27,7 +28,7 @@ end // end of [local]
 //
 val () =
 println!
-("Hello from [test_filepath]!")
+("Hello from [test_filpath]!")
 //
 (* ****** ****** *)
 
@@ -35,4 +36,4 @@ implement main0() = ((*void*))
 
 (* ****** ****** *)
 
-(* end of [test_filepath.dats] *)
+(* end of [test_filpath.dats] *)
