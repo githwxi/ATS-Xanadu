@@ -46,15 +46,15 @@ ERR = "./../SATS/xerrory.sats"
 (* ****** ****** *)
 //
 #staload
-FP0 = "./../SATS/filepath.sats"
+FP0 = "./../SATS/filpath.sats"
 //
   typedef
-  fpath_t = $FP0.filepath
+  fpath_t = $FP0.filpath
   macdef
   dirbase =
-  $FP0.filepath_dirbase
+  $FP0.filpath_dirbase
   macdef
-  fpath_make = $FP0.filepath_make
+  fpath_make = $FP0.filpath_make
 //
 (* ****** ****** *)
 //
@@ -132,8 +132,8 @@ end // end of [local]
 //
 #dynload "./xerrory.dats"
 //
-#dynload "./filepath.dats"
-#dynload "./location.dats"
+#dynload "./filpath.dats"
+#dynload "./locinfo.dats"
 //
 // HX-2018-10:
 // The following
@@ -1249,7 +1249,7 @@ st0: cmdstate =
 , prelude= 0(*~loaded*)
 //
 , inpfil0=
-  $FP0.the_filepath_dummy
+  $FP0.the_filpath_dummy
 //
 , ninpfil= 0(*initset*)
 //
@@ -1307,7 +1307,7 @@ the_fixity_load
 //
   val
   (pf0 | ()) =
-  $FP0.the_filepathlst_push(fpath)
+  $FP0.the_filpathlst_push(fpath)
 //
   val d0cs = let
     val
@@ -1329,7 +1329,7 @@ the_fixity_load
 //
   val
   ((*popped*)) =
-  $FP0.the_filepathlst_pout(pf0 | (*none*))
+  $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
   val
   (pf0 | ()) =
@@ -1381,7 +1381,7 @@ println!
 //
   val
   (pf0 | ()) =
-  $FP0.the_filepathlst_push(fpath)
+  $FP0.the_filpathlst_push(fpath)
 //
   val d0cs = let
     val
@@ -1404,7 +1404,7 @@ println!
 //
   val
   ((*popped*)) =
-  $FP0.the_filepathlst_pout(pf0 | (*none*))
+  $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
 } (* the_basics_load *)
 //
@@ -1439,7 +1439,7 @@ println!
 //
   val
   (pf0 | ()) =
-  $FP0.the_filepathlst_push(fpath)
+  $FP0.the_filpathlst_push(fpath)
 //
   val d0cs = let
     val
@@ -1462,7 +1462,7 @@ println!
 //
   val
   ((*popped*)) =
-  $FP0.the_filepathlst_pout(pf0 | (*none*))
+  $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
 } (* the_prelude_load *)
 //

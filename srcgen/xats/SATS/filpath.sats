@@ -39,9 +39,9 @@ SYM = "./symbol.sats"
 (* ****** ****** *)
 //
 abstbox
-filepath_type = ptr
+filpath_type = ptr
 typedef
-filepath = filepath_type
+filpath = filpath_type
 //
 (* ****** ****** *)
 //
@@ -52,99 +52,99 @@ fun theParDir_get(): string
 (* ****** ****** *)
 //
 fun
-filepath_dirbase
+filpath_dirbase
 (dir: string, base: string): string
 //
 (* ****** ****** *)
 //
 fun
-eq_filepath_filepath
-(x1: filepath, x2: filepath):<> bool
+eq_filpath_filpath
+(x1: filpath, x2: filpath):<> bool
 fun
-neq_filepath_filepath
-(x1: filepath, x2: filepath):<> bool
+neq_filpath_filpath
+(x1: filpath, x2: filpath):<> bool
 //
 fun
-compare_filepath_filepath
-(x1: filepath, x2: filepath):<> (Sgn)
+compare_filpath_filpath
+(x1: filpath, x2: filpath):<> (Sgn)
 //
-overload = with eq_filepath_filepath
-overload != with neq_filepath_filepath
+overload = with eq_filpath_filpath
+overload != with neq_filpath_filpath
 //
 overload
-compare with compare_filepath_filepath
+compare with compare_filpath_filpath
 //
 (* ****** ****** *)
 //
 fun
-print_filepath_full: print_type(filepath)
+print_filpath_full: print_type(filpath)
 fun
-prerr_filepath_full: prerr_type(filepath)
+prerr_filpath_full: prerr_type(filpath)
 fun
-fprint_filepath_full: fprint_type(filepath)
+fprint_filpath_full: fprint_type(filpath)
 //
 (* ****** ****** *)
 //
 fun
-filepath_get_full
-  (fp: filepath):<> $SYM.symbol
+filpath_get_full
+  (fp: filpath):<> $SYM.symbol
 //
-overload .full with filepath_get_full
-//
-(* ****** ****** *)
-//
-fun
-filepath_get_current((*void*)): filepath
-//
-(* ****** ****** *)
-
-val the_filepath_dummy : filepath
-val the_filepath_stdin : filepath
-val the_filepath_string : filepath // text
-
-(* ****** ****** *)
-//
-fun
-filepath_make
-(given: string, fname: string): filepath
+overload .full with filpath_get_full
 //
 (* ****** ****** *)
 //
 fun
-filepath_is_dummy: filepath -> bool
-fun
-filepath_isnot_dummy: filepath -> bool
-//
-(* ****** ****** *)
-//
-absview the_filepathlst_v
-//
-(* ****** ****** *)
-//
-fun
-the_filepathlst_pout
-  (pf: the_filepathlst_v|(*none*)): void
-//
-fun
-the_filepathlst_push
-  (fp0: filepath): (the_filepathlst_v | void)
-// end of [the_filepathlst_push]
-//
-fun
-the_filepathlst_pushck
-  (fp0: filepath): (the_filepathlst_v | bool)
-// end of [the_filepathlst_push_check]
-//
-fun the_filepathlst_ppout((*void*)): void 
-fun the_filepathlst_ppush(fp0: filepath): void
-//
-(* ****** ****** *)
-//
-fun
-the_filepath_fprint(out: FILEref): void
-fun
-the_filepathlst_fprint(out: FILEref): void
+filpath_get_current((*void*)): filpath
 //
 (* ****** ****** *)
 
-(* end of [xats_filepath.sats] *)
+val the_filpath_dummy : filpath
+val the_filpath_stdin : filpath
+val the_filpath_string : filpath // text
+
+(* ****** ****** *)
+//
+fun
+filpath_make
+(given: string, fname: string): filpath
+//
+(* ****** ****** *)
+//
+fun
+filpath_is_dummy: filpath -> bool
+fun
+filpath_isnot_dummy: filpath -> bool
+//
+(* ****** ****** *)
+//
+absview the_filpathlst_v
+//
+(* ****** ****** *)
+//
+fun
+the_filpathlst_pout
+  (pf: the_filpathlst_v|(*none*)): void
+//
+fun
+the_filpathlst_push
+  (fp0: filpath): (the_filpathlst_v | void)
+// end of [the_filpathlst_push]
+//
+fun
+the_filpathlst_pushck
+  (fp0: filpath): (the_filpathlst_v | bool)
+// end of [the_filpathlst_push_check]
+//
+fun the_filpathlst_ppout((*void*)): void 
+fun the_filpathlst_ppush(fp0: filpath): void
+//
+(* ****** ****** *)
+//
+fun
+the_filpath_fprint(out: FILEref): void
+fun
+the_filpathlst_fprint(out: FILEref): void
+//
+(* ****** ****** *)
+
+(* end of [xats_filpath.sats] *)

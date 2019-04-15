@@ -51,7 +51,7 @@ ENV = "./../SATS/symenv.sats"
 (* ****** ****** *)
 
 #staload
-LOC = "./../SATS/location.sats"
+LOC = "./../SATS/locinfo.sats"
 overload + with $LOC.location_combine
 overload print with $LOC.print_location
 overload prerr with $LOC.prerr_location

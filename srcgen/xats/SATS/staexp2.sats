@@ -47,13 +47,13 @@ typedef stamp = $STM.stamp
 #staload
 SYM = "./symbol.sats"
 #staload
-LOC = "./location.sats"
+LOC = "./locinfo.sats"
 #staload
-FP0 = "./filepath.sats"
+FP0 = "./filpath.sats"
 //
 typedef sym_t = $SYM.sym_t
 typedef loc_t = $LOC.loc_t
-typedef fpath = $FP0.filepath
+typedef fpath = $FP0.filpath
 //
 (* ****** ****** *)
 

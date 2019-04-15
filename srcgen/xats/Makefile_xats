@@ -39,8 +39,8 @@ symenv.sats \
 label0.sats \
 fixity.sats \
 xerrory.sats \
-filepath.sats \
-location.sats \
+filpath.sats \
+locinfo.sats \
 lexbuf.sats \
 lexing.sats \
 staexp0.sats \
@@ -65,8 +65,8 @@ symenv.dats \
 label0.dats \
 fixity.dats \
 xerrory.dats \
-filepath.dats \
-location.dats \
+filpath.dats \
+locinfo.dats \
 lexbuf.dats \
 lexing_token.dats \
 lexing_kword.dats \

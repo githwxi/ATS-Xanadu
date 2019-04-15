@@ -43,7 +43,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload
 "./../SATS/label0.sats"
 #staload
-"./../SATS/location.sats"
+"./../SATS/locinfo.sats"
 //
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/staexp0.sats"
