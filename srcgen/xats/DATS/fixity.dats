@@ -46,7 +46,7 @@ ERR = "./../SATS/xerrory.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/fixity.sats"
-#staload "./../SATS/location.sats"
+#staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)
 //

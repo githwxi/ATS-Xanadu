@@ -49,7 +49,7 @@
 SYM = "./symbol.sats"
 typedef kword = $SYM.symbol
 #staload
-LOC = "./location.sats"
+LOC = "./locinfo.sats"
 typedef loc_t = $LOC.location
 //
 (* ****** ****** *)

@@ -46,7 +46,7 @@ typedef cblist = $CBS.cblist
 //
 (* ****** ****** *)
 //
-#staload LOC = "./location.sats"
+#staload LOC = "./locinfo.sats"
 //
 typedef pos_t = $LOC.pos_t
 typedef loc_t = $LOC.loc_t

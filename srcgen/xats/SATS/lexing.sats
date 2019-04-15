@@ -42,7 +42,7 @@
   typedef symbol = $SYM.symbol
 *)
 //
-#staload LOC = "./location.sats"
+#staload LOC = "./locinfo.sats"
   typedef pos_t = $LOC.position
   typedef loc_t = $LOC.location
 //

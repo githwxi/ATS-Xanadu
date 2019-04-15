@@ -34,9 +34,9 @@
 /* ****** ****** */
 
 #ifndef \
-ATS3_SRCGEN_CATS_XATS_LOCATION
+ATS3_SRCGEN_CATS_XATS_LOCINFO
 #define \
-ATS3_SRCGEN_CATS_XATS_LOCATION
+ATS3_SRCGEN_CATS_XATS_LOCINFO
 
 /* ****** ****** */
 
@@ -49,8 +49,8 @@ typedef struct {
 /* ****** ****** */
 //
 #endif // end if [ifndef]
-// [ATS3_SRCGEN_CATS_XATS_LOCATION]
+// [ATS3_SRCGEN_CATS_XATS_LOCINFO]
 //
 /* ****** ****** */
 
-/* end of [xats_position.cats] */
+/* end of [xats_locinfo.cats] */

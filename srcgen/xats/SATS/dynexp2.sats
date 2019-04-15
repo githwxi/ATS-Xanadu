@@ -36,7 +36,7 @@
 #staload
 SYM = "./symbol.sats"
 #staload
-LOC = "./location.sats"
+LOC = "./locinfo.sats"
 //
   typedef sym_t = $SYM.sym_t
   typedef loc_t = $LOC.loc_t

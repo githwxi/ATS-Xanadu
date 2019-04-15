@@ -46,24 +46,24 @@ SYM = "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/filepath.sats"
+#staload "./../SATS/filpath.sats"
 
 (* ****** ****** *)
 
 local
 
 absimpl
-filepath_type = $rec
-{ filepath_kind= int
-, filepath_givename= string
-, filepath_fullpath= symbol
-} (* end of [filepath_type] *)
+filpath_type = $rec
+{ filpath_kind= int
+, filpath_givename= string
+, filpath_fullpath= symbol
+} (* end of [filpath_type] *)
 
 in (* in-of-local *)
 //
 implement
-filepath_get_full
-  (fp0) = fp0.filepath_fullpath
+filpath_get_full
+  (fp0) = fp0.filpath_fullpath
 //
 end // end of [local]
 
@@ -103,7 +103,7 @@ charptr = $extype"charptr"
 in (* in-of-local *)
 //
 implement
-filepath_dirbase
+filpath_dirbase
   (dir, base) = let
 //
 val
@@ -152,23 +152,23 @@ in
   $UN.castvwtp0((pf, fpf | p0))
 end // end of [then]
 //
-end // end of [filepath_dirbase]
+end // end of [filpath_dirbase]
 
 end // end of [local]
 
 (* ****** ****** *)
 //
 implement
-eq_filepath_filepath
+eq_filpath_filpath
   (x, y) = (compare(x, y) = 0)
 implement
-neq_filepath_filepath
+neq_filpath_filpath
   (x, y) = (compare(x, y) != 0)
 //
 (* ****** ****** *)
 
 implement
-compare_filepath_filepath
+compare_filpath_filpath
   (x1, x2) = let
 //
 val f1 =
@@ -179,39 +179,39 @@ $SYM.symbol_get_name(x2.full())
 //
 in
   compare_string_string(f1, f2)
-end // end of [compare_filepath_filepath]
+end // end of [compare_filpath_filpath]
 
 (* ****** ****** *)
 
 local
 
-absreimpl filepath_type
+absreimpl filpath_type
 
 in (* in-of-local *)
 
 implement
-the_filepath_dummy = $rec{
-  filepath_kind= 0
-, filepath_givename= ""
-, filepath_fullpath= $SYM.symbol_nil
-} // end of [the_filepath_dummy]
+the_filpath_dummy = $rec{
+  filpath_kind= 0
+, filpath_givename= ""
+, filpath_fullpath= $SYM.symbol_nil
+} // end of [the_filpath_dummy]
 
 implement
-the_filepath_stdin = $rec{
-  filepath_kind= 0
-, filepath_givename= "__STDIN__"
-, filepath_fullpath= $SYM.STDIN_fp_symbol
-} // end of [the_filepath_stdin]
+the_filpath_stdin = $rec{
+  filpath_kind= 0
+, filpath_givename= "__STDIN__"
+, filpath_fullpath= $SYM.STDIN_fp_symbol
+} // end of [the_filpath_stdin]
 
 implement
-the_filepath_string = $rec{
-  filepath_kind= 0
-, filepath_givename= "__STRING__"
-, filepath_fullpath= $SYM.STRING_fp_symbol
-} // end of [the_filepath_string]
+the_filpath_string = $rec{
+  filpath_kind= 0
+, filpath_givename= "__STRING__"
+, filpath_fullpath= $SYM.STRING_fp_symbol
+} // end of [the_filpath_string]
 
 implement
-filepath_make
+filpath_make
 (
   given, fname
 ) = let
@@ -219,8 +219,8 @@ filepath_make
 val fname = $SYM.symbol_make(fname)
 //
 in '{
-  filepath_kind= 0
-, filepath_givename= given, filepath_fullpath= fname
+  filpath_kind= 0
+, filpath_givename= given, filpath_fullpath= fname
 } end // end of [filename_make]
 
 end // end of [local]
@@ -228,30 +228,30 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-filepath_is_dummy(fp) =
+filpath_is_dummy(fp) =
 $SYM.eq_symbol_symbol
   (fp.full(), $SYM.symbol_nil)
 implement
-filepath_isnot_dummy(fp) =
+filpath_isnot_dummy(fp) =
 $SYM.neq_symbol_symbol
   (fp.full(), $SYM.symbol_nil)
 //
 (* ****** ****** *)
 //
 implement
-print_filepath_full
+print_filpath_full
   (fp0) =
 (
-fprint_filepath_full(stdout_ref, fp0)
+fprint_filpath_full(stdout_ref, fp0)
 )
 implement
-prerr_filepath_full
+prerr_filpath_full
   (fp0) =
 (
-fprint_filepath_full(stderr_ref, fp0)
+fprint_filpath_full(stderr_ref, fp0)
 )
 implement
-fprint_filepath_full
+fprint_filpath_full
   (out, fp0) =
 (
   fprint_string(out, sym)
@@ -259,34 +259,34 @@ fprint_filepath_full
 {
   val sym =
   $SYM.symbol_get_name(fp0.full((*void*)))
-} (* end of [fprint_filepath_full] *)
+} (* end of [fprint_filpath_full] *)
 //
 (* ****** ****** *)
 
 local
 //
 assume
-the_filepathlst_v = unit_v
+the_filpathlst_v = unit_v
 //
 val
-the_filepath =
-ref<filepath>(the_filepath_dummy)
+the_filpath =
+ref<filpath>(the_filpath_dummy)
 val
-the_filepathlst =
-ref<List0_vt(filepath)>(list_vt_nil())
+the_filpathlst =
+ref<List0_vt(filpath)>(list_vt_nil())
 //
 in (* in-of-local *)
 
 (* ****** ****** *)
 //
 implement
-filepath_get_current
-  ((*void*)) = the_filepath[]
+filpath_get_current
+  ((*void*)) = the_filpath[]
 //
 (* ****** ****** *)
 
 implement
-the_filepathlst_pout
+the_filpathlst_pout
 (
   pf | (*none*)
 ) = let
@@ -294,18 +294,18 @@ the_filepathlst_pout
 prval unit_v() = pf
 //
 in
-  the_filepathlst_ppout((*void*))
-end // end of [the_filepathlst_pout]
+  the_filpathlst_ppout((*void*))
+end // end of [the_filpathlst_pout]
 
 implement
-the_filepathlst_ppout
+the_filpathlst_ppout
   ((*none*)) = let
 //
 val fp = x0 where {
 //
   val
   (vbox pf | p0) =
-  ref_get_viewptr(the_filepathlst)
+  ref_get_viewptr(the_filpathlst)
 //
   val-
   ~list_vt_cons(x0, xs) = !p0
@@ -313,33 +313,33 @@ val fp = x0 where {
 //
 } (* end of [val] *)
 //
-val () = the_filepath[] := fp
+val () = the_filpath[] := fp
 //
 in
   // nothing
-end // end of [the_filepathlst_ppout]
+end // end of [the_filpathlst_ppout]
 
 (* ****** ****** *)
 //
 implement
-the_filepathlst_push(fp) =
+the_filpathlst_push(fp) =
 let
 //
 val () =
-the_filepathlst_ppush(fp) in (unit_v() | ())
+the_filpathlst_ppush(fp) in (unit_v() | ())
 //
-end // end of [the_filepathlst_push]
+end // end of [the_filpathlst_push]
 //
 implement
-the_filepathlst_ppush(fp) =
+the_filpathlst_ppush(fp) =
 let
-  val x0 = the_filepath[]
-  val () = the_filepath[] := fp
-  val (vbox pf | p0) = ref_get_viewptr(the_filepathlst)
+  val x0 = the_filpath[]
+  val () = the_filpath[] := fp
+  val (vbox pf | p0) = ref_get_viewptr(the_filpathlst)
   val () = !p0 := list_vt_cons(x0, !p0)
 in
   // nothing
-end // end of [the_filepathlst_ppush]
+end // end of [the_filpathlst_ppush]
 //
 (* ****** ****** *)
 
@@ -347,13 +347,13 @@ local
 
 fun
 filename_occurs
-  (fp0: filepath): bool = let
+  (fp0: filpath): bool = let
 //
 fun
 loop
 {n:nat} .<n>.
 (
-  fps: !list_vt(filepath, n)
+  fps: !list_vt(filpath, n)
 ) :<> bool = (
 //
 case+ fps of
@@ -372,14 +372,14 @@ in
   loop(!p0) where
   {
     val (vbox(pf)|p0) =
-    ref_get_viewptr(the_filepathlst)
+    ref_get_viewptr(the_filpathlst)
   }
 end // end of [filename_occurs]
 
 in (* in-of-local *)
 
 implement
-the_filepathlst_pushck
+the_filpathlst_pushck
   (fp0) =
 (
   pf | isexi
@@ -388,53 +388,53 @@ the_filepathlst_pushck
 //
 val
 (pf|()) =
-the_filepathlst_push(fp0)
+the_filpathlst_push(fp0)
 val
 isexi =
 (
   if
-  filepath_isnot_dummy(fp0)
+  filpath_isnot_dummy(fp0)
   then filename_occurs(fp0) else false
 ) : bool // end of [val]
 //
-} (* end of [the_filepathlst_pushck] *)
+} (* end of [the_filpathlst_pushck] *)
 
 end // end of [local]
 
 (* ****** ****** *)
 
 implement
-the_filepath_fprint
+the_filpath_fprint
   (out) =
 (
- fprint_filepath_full(out, fp)
+ fprint_filpath_full(out, fp)
 ) where
 {
   val fp = !p0 where
   {
   val (vbox(pf)|p0) =
-  ref_get_viewptr(the_filepath)
+  ref_get_viewptr(the_filpath)
   }
 }
 //
 implement
-the_filepathlst_fprint
+the_filpathlst_fprint
   (out) = let
 //
   val (vbox(pf)|p0) =
-  ref_get_viewptr(the_filepathlst)
+  ref_get_viewptr(the_filpathlst)
 //
 in
 $effmask_ref
 (
- list_vt_foreach<filepath>(!p0)
+ list_vt_foreach<filpath>(!p0)
 ) where
 {
 implement
-list_vt_foreach$fwork<filepath><void>
-  (fp, env) = fprint_filepath_full(out, fp)
+list_vt_foreach$fwork<filpath><void>
+  (fp, env) = fprint_filpath_full(out, fp)
 }
-end // end of [the_filepathlst_fprint]
+end // end of [the_filpathlst_fprint]
 //
 (* ****** ****** *)
 
@@ -442,4 +442,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_filepath.dats] *)
+(* end of [xats_filpath.dats] *)

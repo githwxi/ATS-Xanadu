@@ -34,7 +34,7 @@
 (* ****** ****** *)
 
 %{#
-#include "CATS/location.cats"
+#include "CATS/locinfo.cats"
 %} // end of [%{#]
 
 (* ****** ****** *)
@@ -57,9 +57,9 @@ $extype"xats_position_struct"
 (* ****** ****** *)
 //
 #staload
-FIL = "./filepath.sats"
-  typedef fil_t = $FIL.filepath
-  typedef filepath = $FIL.filepath
+FIL = "./filpath.sats"
+  typedef fil_t = $FIL.filpath
+  typedef filpath = $FIL.filpath
 //
 (* ****** ****** *)
 //
@@ -138,11 +138,11 @@ position_incby_neol
 (* ****** ****** *)
 //
 fun
-location_filepath
+location_filpath
   (loc: loc_t): fil_t
 //
 overload
-.filepath with location_filepath
+.filpath with location_filpath
 //
 fun
 location_beg_ntot(loc: loc_t): int
@@ -206,4 +206,4 @@ overload fprint with fprint_location
 //
 (* ****** ****** *)
 
-(* end of [xats_location.sats] *)
+(* end of [xats_locinfo.sats] *)

@@ -40,7 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/location.sats"
+#staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)
 
@@ -247,8 +247,8 @@ absimpl
 location_type =
 $rec{
 //
-  filepath=
-  filepath // filepath
+  filpath=
+  filpath // filpath
 //
 , beg_ntot= int // beginning char position
 , beg_nrow= int
@@ -269,7 +269,7 @@ implement
 location_make_pos_pos
   (bpos, cpos) = $rec
 {
-  filepath= fil
+  filpath= fil
 //
 , beg_ntot=bpos.ntot()
 , beg_nrow=bpos.nrow()
@@ -282,14 +282,14 @@ location_make_pos_pos
 } where
 {
   val fil =
-  $FIL.filepath_get_current()
+  $FIL.filpath_get_current()
 } (* location_make_pos_pos *)
 
 implement
 location_make_fil_pos_pos
   (fil, bpos, cpos) = $rec
 {
-  filepath= fil
+  filpath= fil
 //
 , beg_ntot=bpos.ntot()
 , beg_nrow=bpos.nrow()
@@ -302,7 +302,7 @@ location_make_fil_pos_pos
 } (* location_make_fil_pos_pos *)
 
 implement
-location_filepath(loc) = loc.filepath
+location_filpath(loc) = loc.filpath
 implement
 location_beg_ntot(loc) = loc.beg_ntot
 implement
@@ -324,8 +324,8 @@ implement
 location_combine
   (loc1, loc2) = let
 //
-  val fil1 = loc1.filepath()
-  val fil2 = loc2.filepath()
+  val fil1 = loc1.filpath()
+  val fil2 = loc2.filpath()
 //
 local
   val ntot1 = loc1.beg_ntot()
@@ -371,7 +371,7 @@ implement
 location_leftmost
   (loc) = let
 //
-  val fil = loc.filepath()
+  val fil = loc.filpath()
 //
   val ntot = loc.beg_ntot()
   val nrow = loc.beg_nrow()
@@ -390,7 +390,7 @@ implement
 location_rightmost
   (loc) = let
 //
-  val fil = loc.filepath()
+  val fil = loc.filpath()
 //
   val ntot = loc.end_ntot()
   val nrow = loc.end_nrow()
@@ -452,4 +452,4 @@ fprint_location(out, loc) = fprint_locrange(out, loc)
 
 (* ****** ****** *)
 
-(* end of [xats_location.dats] *)
+(* end of [xats_locinfo.dats] *)

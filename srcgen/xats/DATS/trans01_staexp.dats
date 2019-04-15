@@ -48,7 +48,7 @@ FIX = "./../SATS/fixity.sats"
 ENV = "./../SATS/symenv.sats"
 //
 #staload
-LOC = "./../SATS/location.sats"
+LOC = "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //

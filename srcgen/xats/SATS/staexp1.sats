@@ -36,7 +36,7 @@
 #staload
 LAB = "./label0.sats"
 #staload
-LOC = "./location.sats"
+LOC = "./locinfo.sats"
 //
 typedef label = $LAB.label
 typedef loc_t = $LOC.location

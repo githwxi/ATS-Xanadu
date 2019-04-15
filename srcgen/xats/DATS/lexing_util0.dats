@@ -48,9 +48,9 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexbuf.sats"
 #staload "./../SATS/lexing.sats"
 //
-#staload "./../SATS/location.sats"
+#staload "./../SATS/locinfo.sats"
 #staload
-_(*TMP*) = "./../DATS/location.dats"
+_(*TMP*) = "./../DATS/locinfo.dats"
 //
 (* ****** ****** *)
 
