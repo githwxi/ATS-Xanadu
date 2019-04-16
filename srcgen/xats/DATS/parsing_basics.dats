@@ -652,7 +652,14 @@ pstar_sep_fun
 implement
 parse_from_stdin_toplevel
   (stadyn) =
-  parse_from_fileref_toplevel(stadyn, stdin_ref)
+let
+  val inp = stdin_ref
+in
+//
+parse_from_fileref_toplevel
+  (stadyn, inp)
+//
+end
 // end of [parser_from_stdin_toplevel]
 //
 implement

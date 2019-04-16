@@ -258,8 +258,18 @@ fprint_filpath_full
 ) where
 {
   val sym =
-  $SYM.symbol_get_name(fp0.full((*void*)))
+  $SYM.symbol_get_name(fp0.full())
 } (* end of [fprint_filpath_full] *)
+//
+implement
+fprintln_filpath_full
+  (out, fp0) =
+(
+  fprint_newline(out)
+) where
+{
+  val () = fprint_filpath_full(out, fp0)
+}
 //
 (* ****** ****** *)
 
@@ -407,7 +417,7 @@ implement
 the_filpath_fprint
   (out) =
 (
- fprint_filpath_full(out, fp)
+ fprintln_filpath_full(out, fp)
 ) where
 {
   val fp = !p0 where
@@ -432,7 +442,7 @@ $effmask_ref
 {
 implement
 list_vt_foreach$fwork<filpath><void>
-  (fp, env) = fprint_filpath_full(out, fp)
+  (fp, env) = fprintln_filpath_full(out, fp)
 }
 end // end of [the_filpathlst_fprint]
 //

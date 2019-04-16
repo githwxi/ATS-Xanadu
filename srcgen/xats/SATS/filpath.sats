@@ -38,16 +38,30 @@ SYM = "./symbol.sats"
 //
 (* ****** ****** *)
 //
+fun theDirSep_get(): char
+fun theCurDir_get(): string
+fun theParDir_get(): string
+//
+(* ****** ****** *)
+//
+abstbox
+dirpath_type = ptr
+typedef
+dirpath = dirpath_type
+//
+(* ****** ****** *)
+//
+fun
+fprint_dirpath: fprint_type(dirpath)
+fun
+fprintln_dirpath: fprint_type(dirpath)
+//
+(* ****** ****** *)
+//
 abstbox
 filpath_type = ptr
 typedef
 filpath = filpath_type
-//
-(* ****** ****** *)
-//
-fun theDirSep_get(): char
-fun theCurDir_get(): string
-fun theParDir_get(): string
 //
 (* ****** ****** *)
 //
@@ -82,6 +96,8 @@ fun
 prerr_filpath_full: prerr_type(filpath)
 fun
 fprint_filpath_full: fprint_type(filpath)
+fun
+fprintln_filpath_full: fprint_type(filpath)
 //
 (* ****** ****** *)
 //

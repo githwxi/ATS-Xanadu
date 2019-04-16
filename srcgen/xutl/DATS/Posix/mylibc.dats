@@ -41,6 +41,8 @@ UN =
 //
 #staload
 "libats/libc/SATS/string.sats"
+#staload
+"libats/libc/SATS/unistd.sats"
 //
 (* ****** ****** *)
 //
@@ -81,6 +83,49 @@ xatsopt_strncmp(cs1, cs2, nlen) =
   $extfcall(int, "strncmp", cs1, cs2, nlen)
 )
 //
+(* ****** ****** *)
+//
+implement
+xatsopt_getcwd(buf, bsz) =
+(
+  $extfcall(ptr, "getcwd", buf, bsz)
+)
+//
+(* ****** ****** *)
+
+%{$
+//
+extern
+atstype_strptr
+xatsopt_getcwd_gc
+(
+// void
+) {
+  int bsz ;
+  int myeno ;
+  char *p1_cwd ;
+  char *p2_cwd ;
+//
+// HX: [64] is chosen nearly randomly
+//
+  bsz = 64 ;
+  p1_cwd = (char*)0 ;
+//
+  while(1)
+  {
+    p1_cwd =
+    atspre_malloc_gc(bsz) ;
+    p2_cwd =
+    xatsopt_getcwd(p1_cwd, bsz) ; myeno = errno ;
+    if (p2_cwd != 0) return p1_cwd ; else atspre_mfree_gc(p1_cwd) ;
+    if ( myeno != ERANGE ) break ; bsz = 2 * bsz ;
+  }
+//
+  return (char*)0 ;
+//
+} /* end of [xatsopt_getcwd_gc] */
+%}
+
 (* ****** ****** *)
 
 (* end of [Posix_mylibc.dats] *)

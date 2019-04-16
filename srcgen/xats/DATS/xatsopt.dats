@@ -781,9 +781,22 @@ the_preludes_load_if
 // end of [val]
 //
 val
+fp0 =
+$FP0.the_filpath_stdin 
+val
+(pf0 | ()) =
+$FP0.the_filpathlst_push
+  (fp0)
+val
 d0cs =
 parse_from_stdin_toplevel
   (stadyn)
+prval () = $UN.castview0{void}(pf0)
+(*
+val
+((*popped*)) =
+$FP0.the_filpathlst_pout(pf0 | (*none*))
+*)
 //
 (*
 val () =
