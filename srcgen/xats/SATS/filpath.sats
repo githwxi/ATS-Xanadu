@@ -50,12 +50,25 @@ typedef
 dirpath = dirpath_type
 //
 (* ****** ****** *)
+
+val the_dirpath_dummy : dirpath
+
+(* ****** ****** *)
+
+fun
+the_dirpath_get((*void*)): dirpath
+
+(* ****** ****** *)
 //
 fun
 fprint_dirpath: fprint_type(dirpath)
 fun
 fprintln_dirpath: fprint_type(dirpath)
 //
+(* ****** ****** *)
+
+absview the_dirpathlst_v
+
 (* ****** ****** *)
 //
 abstbox
@@ -110,7 +123,7 @@ overload .full with filpath_get_full
 (* ****** ****** *)
 //
 fun
-filpath_get_current((*void*)): filpath
+the_filpath_get((*void*)): filpath
 //
 (* ****** ****** *)
 
