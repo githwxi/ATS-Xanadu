@@ -93,6 +93,45 @@ end // end of [local]
 (* ****** ****** *)
 
 local
+
+absimpl
+dirpath_type = string
+
+in
+
+implement the_dirpath_dummy = ""
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+the_dirpathlst_v = unit_v
+//
+val
+the_dirpath =
+ref<dirpath>(the_dirpath_dummy)
+val
+the_dirpathlst =
+ref<List0_vt(dirpath)>(list_vt_nil())
+//
+in (* in-of-local *)
+
+(* ****** ****** *)
+//
+implement
+the_dirpath_get
+  ((*void*)) = the_dirpath[]
+//
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
 //
 %{^
 typedef char *charptr;
@@ -275,7 +314,7 @@ fprintln_filpath_full
 
 local
 //
-assume
+absimpl
 the_filpathlst_v = unit_v
 //
 val
@@ -290,7 +329,7 @@ in (* in-of-local *)
 (* ****** ****** *)
 //
 implement
-filpath_get_current
+the_filpath_get
   ((*void*)) = the_filpath[]
 //
 (* ****** ****** *)

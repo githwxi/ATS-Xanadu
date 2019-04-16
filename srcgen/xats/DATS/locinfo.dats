@@ -282,7 +282,7 @@ location_make_pos_pos
 } where
 {
   val fil =
-  $FIL.filpath_get_current()
+  $FIL.the_filpath_get()
 } (* location_make_pos_pos *)
 
 implement
