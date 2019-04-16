@@ -1,6 +1,6 @@
-#staload
+#include
 "prelude/SATS/list.sats"
-#staload
+#include
 "${XATSHOME}/prelude/SATS/list.sats"
 
 ////

@@ -88,6 +88,8 @@ typedef d1ecl = d1ecl_tbox
 typedef d1eclist = List0(d1ecl)
 typedef d1eclopt = Option(d1ecl)
 //
+typedef d1eclistopt = Option(d1eclist)
+//
 vtypedef d1eclist_vt = List0_vt(d1ecl)
 //
 (* ****** ****** *)
@@ -780,9 +782,14 @@ d1ecl_node =
   (token, d1ecl) // globally
 //
 | D1Cinclude of
-  (token, d1exp) // file inclusion
+  ( token
+  , d0exp
+  , d1eclistopt) // file inclusion
+//
 | D1Cstaload of
-  (token, d1exp) // file staloading
+  ( token
+  , d0exp
+  , d1eclistopt) // file staloading
 //
 | D1Cabssort of
   (token, token(*s0tid*))

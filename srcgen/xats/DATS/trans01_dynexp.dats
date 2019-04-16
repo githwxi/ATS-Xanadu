@@ -49,13 +49,16 @@ FIX="./../SATS/fixity.sats"
 ENV = "./../SATS/symenv.sats"
 //
 (* ****** ****** *)
-
+//
+#staload
+FIL = "./../SATS/filpath.sats"
+//
 #staload
 LOC = "./../SATS/locinfo.sats"
 overload + with $LOC.location_combine
 overload print with $LOC.print_location
 overload prerr with $LOC.prerr_location
-
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/basics.sats"
@@ -2135,6 +2138,38 @@ end // end of [aux_extern]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxd1e
+(
+d1e: d1exp
+) : d1eclistopt =
+(
+case+
+d1e.node() of
+| D1Estr(tok) => auxtok(tok)
+| _(*non-D1Estr*) => None(*void*)
+) // end of [auxd1e]
+and
+auxtok
+(
+tok: token
+) : d1eclistopt = let
+//
+val fnm =
+(
+  case-
+  tok.node() of
+  | T_STRING_closed(fnm) => fnm
+) : string
+//
+in
+  Some(list_nil())
+end // end of [auxtok]
+
+in (* in-of-local *)
+
 fun
 aux_include
 ( d0c0
@@ -2148,11 +2183,48 @@ D0Cinclude
 //
 val d1e = trans01_dexp(d0e)
 //
+(*
+//
+val out = stdout_ref
+//
+val (_) =
+fprintln!(out, "trans01: ")
+val (_) =
+fprintln!(out, "aux_include: ")
+val (_) =
+fprintln!(out, "the_filepath: ")
+val (_) = $FIL.the_filpath_fprint(out)
+val (_) =
+fprintln!(out, "the_filepathlst: ")
+val (_) = $FIL.the_filpathlst_fprint(out)
+*)
+//
+val opt = auxd1e(trans01_dexp(d0e))
+//
 in
-  d1ecl_make_node(loc0, D1Cinclude(tok, d1e))
+  d1ecl_make_node(loc0, D1Cinclude(tok, d0e, opt))
 end // end of [aux_include]
 
+end // end of [local]
+
 (* ****** ****** *)
+
+local
+
+fun
+auxd1e
+(
+d1e: d1exp
+) : d1eclistopt =
+(
+case+
+d1e.node() of
+| D1Estr _ =>
+  Some(list_nil())
+| _(*non-D1Estr*) => None(*void*)
+)
+
+in (* in-of-local *)
 
 fun
 aux_staload
@@ -2165,11 +2237,15 @@ val-
 D0Cstaload
 (tok, d0e) = d0c0.node()
 //
-val d1e = trans01_dexp(d0e)
+val opt = auxd1e(trans01_dexp(d0e))
 //
 in
-d1ecl_make_node(loc0, D1Cstaload(tok, d1e))
+//
+d1ecl_make_node(loc0, D1Cstaload(tok, d0e, opt))
+//
 end // end of [aux_staload]
+
+end // end of [local]
 
 (* ****** ****** *)
 

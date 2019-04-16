@@ -70,4 +70,12 @@ xatsopt_strncmp
 //       
 (* ****** ****** *)
 
+fun
+xatsopt_getcwd
+(buf: ptr, bsz: size_t): ptr = "ext#xatsopt_getcwd"
+fun
+xatsopt_getcwd_gc(): Strptr0 = "ext#xatsopt_getcwd_gc"
+
+(* ****** ****** *)
+
 (* end of [mylibc.sats] *)
