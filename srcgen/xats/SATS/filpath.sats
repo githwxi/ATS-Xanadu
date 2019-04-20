@@ -44,10 +44,20 @@ fun theParDir_get(): string
 //
 (* ****** ****** *)
 //
-abstbox
-dirpath_type = ptr
-typedef
-dirpath = dirpath_type
+fun
+fpath_is_normal(fp: string): bool
+fun
+fpath_normalize(fp: string): string
+//
+(* ****** ****** *)
+//
+abstbox dirpath_type = ptr
+typedef dirpath = dirpath_type
+//
+(* ****** ****** *)
+//
+abstbox filpath_type = ptr
+typedef filpath = filpath_type
 //
 (* ****** ****** *)
 
@@ -71,10 +81,17 @@ absview the_dirpathlst_v
 
 (* ****** ****** *)
 //
-abstbox
-filpath_type = ptr
-typedef
-filpath = filpath_type
+fun
+the_dirpathlst_pout
+  (pf: the_dirpathlst_v|(*none*)): void
+//
+fun
+the_dirpathlst_push
+  (dp0: dirpath): (the_dirpathlst_v | void)
+// end of [the_dirpathlst_push]
+//
+fun the_dirpathlst_ppout((*void*)): void 
+fun the_dirpathlst_ppush(dp0: dirpath): void
 //
 (* ****** ****** *)
 //
@@ -104,21 +121,36 @@ compare with compare_filpath_filpath
 (* ****** ****** *)
 //
 fun
-print_filpath_full: print_type(filpath)
+print_filpath_full1: print_type(filpath)
 fun
-prerr_filpath_full: prerr_type(filpath)
+prerr_filpath_full1: prerr_type(filpath)
 fun
-fprint_filpath_full: fprint_type(filpath)
+fprint_filpath_full1: fprint_type(filpath)
 fun
-fprintln_filpath_full: fprint_type(filpath)
+fprintln_filpath_full1: fprint_type(filpath)
 //
 (* ****** ****** *)
 //
 fun
-filpath_get_full
+print_filpath_full2: print_type(filpath)
+fun
+prerr_filpath_full2: prerr_type(filpath)
+fun
+fprint_filpath_full2: fprint_type(filpath)
+fun
+fprintln_filpath_full2: fprint_type(filpath)
+//
+(* ****** ****** *)
+//
+fun
+filpath_get_full1
+  (fp: filpath):<> string
+fun
+filpath_get_full2
   (fp: filpath):<> $SYM.symbol
 //
-overload .full with filpath_get_full
+overload .full1 with filpath_get_full1
+overload .full2 with filpath_get_full2
 //
 (* ****** ****** *)
 //

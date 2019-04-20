@@ -1405,7 +1405,7 @@ in // in-of-local
   val () = the_dexpenv_pjoinwth1(m2)
 //
   val fid =
-  $FP0.filpath_get_full(fp0)
+  $FP0.filpath_get_full2(fp0)
   val env =
   fmodenv_make(fp0, m0, m1, m2, d2cs)
   val ((*void*)) = the_fmodenv_add(fid, env)
