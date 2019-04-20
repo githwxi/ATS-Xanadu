@@ -51,34 +51,17 @@ SYM = "./../SATS/symbol.sats"
 (* ****** ****** *)
 
 local
-
-absimpl
-filpath_type = $rec
-{ filpath_kind= int
-, filpath_givename= string
-, filpath_fullpath= symbol
-} (* end of [filpath_type] *)
-
-in (* in-of-local *)
-//
-implement
-filpath_get_full
-  (fp0) = fp0.filpath_fullpath
-//
-end // end of [local]
-
-(* ****** ****** *)
-
-local
 //
 #include
 "./../sysparam.hats"
 //
-#if SYSTEM_IS_UNIX_LIKE #then
+#if
+SYSTEM_IS_UNIX_LIKE
+#then
 //
 val theDirSep: char = '/'
-val theCurDir: string = "./"
-val theParDir: string = "../"
+val theCurDir: string = "."
+val theParDir: string = ".."
 //
 #endif
 
@@ -92,15 +75,54 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+fpath_normalize(fp) = fp
+
+(* ****** ****** *)
+
 local
 
 absimpl
 dirpath_type = string
 
-in
+in (*in-of-local*)
+
+(* ****** ****** *)
 
 implement the_dirpath_dummy = ""
 
+(* ****** ****** *)
+
+implement
+fprint_dirpath(out, dir) = fprint!(out, dir)
+implement
+fprintln_dirpath(out, dir) = fprintln!(out, dir)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+filpath_type = $rec
+{ filpath_kind= int
+, filpath_givename= string // given name
+, filpath_fullname= string // in raw form
+, filpath_fullpath= symbol // is normalized
+} (* end of [filpath_type] *)
+
+in (* in-of-local *)
+//
+implement
+filpath_get_full1
+  (fp0) = fp0.filpath_fullname
+implement
+filpath_get_full2
+  (fp0) = fp0.filpath_fullpath
+//
 end // end of [local]
 
 (* ****** ****** *)
@@ -124,6 +146,64 @@ in (* in-of-local *)
 implement
 the_dirpath_get
   ((*void*)) = the_dirpath[]
+//
+(* ****** ****** *)
+
+implement
+the_dirpathlst_pout
+(
+  pf | (*none*)
+) = let
+//
+prval unit_v() = pf
+//
+in
+  the_dirpathlst_ppout((*void*))
+end // end of [the_dirpathlst_pout]
+
+implement
+the_dirpathlst_ppout
+  ((*none*)) = let
+//
+val dp = x0 where {
+//
+  val
+  (vbox pf | p0) =
+  ref_get_viewptr(the_dirpathlst)
+//
+  val-
+  ~list_vt_cons(x0, xs) = !p0
+  val ((*void*)) = (!p0 := xs)
+//
+} (* end of [val] *)
+//
+val () = the_dirpath[] := dp
+//
+in
+  // nothing
+end // end of [the_dirpathlst_ppout]
+
+(* ****** ****** *)
+//
+implement
+the_dirpathlst_push(dp) =
+let
+//
+val () =
+the_dirpathlst_ppush(dp) in (unit_v() | ())
+//
+end // end of [the_dirpathlst_push]
+//
+implement
+the_dirpathlst_ppush(dp) =
+let
+  val x0 = the_dirpath[]
+  val () = the_dirpath[] := dp
+  val (vbox pf | p0) = ref_get_viewptr(the_dirpathlst)
+  val () = !p0 := list_vt_cons(x0, !p0)
+in
+  // nothing
+end // end of [the_dirpathlst_ppush]
 //
 (* ****** ****** *)
 
@@ -211,10 +291,10 @@ compare_filpath_filpath
   (x1, x2) = let
 //
 val f1 =
-$SYM.symbol_get_name(x1.full())
+$SYM.symbol_get_name(x1.full2())
 //
 val f2 =
-$SYM.symbol_get_name(x2.full())
+$SYM.symbol_get_name(x2.full2())
 //
 in
   compare_string_string(f1, f2)
@@ -232,6 +312,7 @@ implement
 the_filpath_dummy = $rec{
   filpath_kind= 0
 , filpath_givename= ""
+, filpath_fullname= ""
 , filpath_fullpath= $SYM.symbol_nil
 } // end of [the_filpath_dummy]
 
@@ -239,6 +320,7 @@ implement
 the_filpath_stdin = $rec{
   filpath_kind= 0
 , filpath_givename= "__STDIN__"
+, filpath_fullname= "__STDIN__"
 , filpath_fullpath= $SYM.STDIN_fp_symbol
 } // end of [the_filpath_stdin]
 
@@ -246,20 +328,28 @@ implement
 the_filpath_string = $rec{
   filpath_kind= 0
 , filpath_givename= "__STRING__"
+, filpath_fullname= "__STRING__"
 , filpath_fullpath= $SYM.STRING_fp_symbol
 } // end of [the_filpath_string]
 
 implement
 filpath_make
 (
-  given, fname
+  given, fname1
 ) = let
 //
-val fname = $SYM.symbol_make(fname)
+val
+fname2 =
+fpath_normalize(fname1)
+val
+fname2 =
+$SYM.symbol_make(fname2)
 //
 in '{
   filpath_kind= 0
-, filpath_givename= given, filpath_fullpath= fname
+, filpath_givename= given
+, filpath_fullname= fname1
+, filpath_fullpath= fname2
 } end // end of [filename_make]
 
 end // end of [local]
@@ -269,45 +359,79 @@ end // end of [local]
 implement
 filpath_is_dummy(fp) =
 $SYM.eq_symbol_symbol
-  (fp.full(), $SYM.symbol_nil)
+  (fp.full2(), $SYM.symbol_nil)
 implement
 filpath_isnot_dummy(fp) =
 $SYM.neq_symbol_symbol
-  (fp.full(), $SYM.symbol_nil)
+  (fp.full2(), $SYM.symbol_nil)
 //
 (* ****** ****** *)
 //
 implement
-print_filpath_full
+print_filpath_full1
   (fp0) =
 (
-fprint_filpath_full(stdout_ref, fp0)
+fprint_filpath_full1(stdout_ref, fp0)
 )
 implement
-prerr_filpath_full
+prerr_filpath_full1
   (fp0) =
 (
-fprint_filpath_full(stderr_ref, fp0)
+fprint_filpath_full1(stderr_ref, fp0)
 )
 implement
-fprint_filpath_full
+fprint_filpath_full1
   (out, fp0) =
 (
-  fprint_string(out, sym)
+  fprint_string(out, name)
 ) where
 {
-  val sym =
-  $SYM.symbol_get_name(fp0.full())
-} (* end of [fprint_filpath_full] *)
+  val name = fp0.full1()
+} (* end of [fprint_filpath_full1] *)
 //
 implement
-fprintln_filpath_full
+fprintln_filpath_full1
   (out, fp0) =
 (
   fprint_newline(out)
 ) where
 {
-  val () = fprint_filpath_full(out, fp0)
+  val () = fprint_filpath_full1(out, fp0)
+}
+//
+(* ****** ****** *)
+//
+implement
+print_filpath_full2
+  (fp0) =
+(
+fprint_filpath_full2(stdout_ref, fp0)
+)
+implement
+prerr_filpath_full2
+  (fp0) =
+(
+fprint_filpath_full2(stderr_ref, fp0)
+)
+implement
+fprint_filpath_full2
+  (out, fp0) =
+(
+  fprint_string(out, name)
+) where
+{
+  val name =
+  $SYM.symbol_get_name(fp0.full2())
+} (* end of [fprint_filpath_full2] *)
+//
+implement
+fprintln_filpath_full2
+  (out, fp0) =
+(
+  fprint_newline(out)
+) where
+{
+  val () = fprint_filpath_full2(out, fp0)
 }
 //
 (* ****** ****** *)
@@ -456,7 +580,7 @@ implement
 the_filpath_fprint
   (out) =
 (
- fprintln_filpath_full(out, fp)
+ fprintln_filpath_full2(out, fp)
 ) where
 {
   val fp = !p0 where
@@ -481,7 +605,7 @@ $effmask_ref
 {
 implement
 list_vt_foreach$fwork<filpath><void>
-  (fp, env) = fprintln_filpath_full(out, fp)
+  (fp, env) = fprintln_filpath_full2(out, fp)
 }
 end // end of [the_filpathlst_fprint]
 //
