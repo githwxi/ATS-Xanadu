@@ -53,22 +53,37 @@ fpath_normalize(fp: string): string
 //
 abstbox dirpath_type = ptr
 typedef dirpath = dirpath_type
+typedef dirpathlst = List0(dirpath)
 //
 (* ****** ****** *)
 //
 abstbox filpath_type = ptr
+//
 typedef filpath = filpath_type
+typedef filpathopt = Option(filpath)
 //
 (* ****** ****** *)
-
-val the_dirpath_dummy : dirpath
-
+//
+val
+the_dirpath_dummy : dirpath
+//
 (* ****** ****** *)
-
+//
+fun
+dirpath_make(string): dirpath
+//
+(* ****** ****** *)
+//
+fun
+dirpath_get_name(dirpath): string
+//
+overload .name with dirpath_get_name
+//
+(* ****** ****** *)
+//
 fun
 the_dirpath_get((*void*)): dirpath
-
-(* ****** ****** *)
+//
 //
 fun
 fprint_dirpath: fprint_type(dirpath)
@@ -87,17 +102,32 @@ the_dirpathlst_pout
 //
 fun
 the_dirpathlst_push
-  (dp0: dirpath): (the_dirpathlst_v | void)
+  (dp: dirpath): (the_dirpathlst_v | void)
 // end of [the_dirpathlst_push]
 //
 fun the_dirpathlst_ppout((*void*)): void 
-fun the_dirpathlst_ppush(dp0: dirpath): void
+fun the_dirpathlst_ppush(dp: dirpath): void
+//
+fun the_dirpathlst_ppush_cwd((*void*)): void
+//
+(* ****** ****** *)
+//
+fun
+the_includes_get(): dirpathlst
+//
+fun
+the_includes_pout((*void*)): void
+fun
+the_includes_push(dir: string): void
 //
 (* ****** ****** *)
 //
 fun
 filpath_dirbase
 (dir: string, base: string): string
+fun
+filpath_dirbase_vt
+(dir: string, base: string): Strptr1
 //
 (* ****** ****** *)
 //

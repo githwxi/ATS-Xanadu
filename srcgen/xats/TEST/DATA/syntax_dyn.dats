@@ -1,7 +1,16 @@
 #include
-"prelude/SATS/list.sats"
+"./syntax_sta.sats"
 #include
-"${XATSHOME}/prelude/SATS/list.sats"
+"prelude/SATS/list.sats"
+
+////
+
+#include
+XATSPRE("SATS/list.sats")
+#include
+XATSLIB("SATS/list.sats")
+#include
+XATSLIBC("SATS/list.sats")
 
 ////
 

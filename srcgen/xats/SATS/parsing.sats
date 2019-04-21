@@ -51,6 +51,9 @@ typedef kword = $SYM.symbol
 #staload
 LOC = "./locinfo.sats"
 typedef loc_t = $LOC.location
+#staload
+FIL = "./filpath.sats"
+typedef filpath = $FIL.filpath
 //
 (* ****** ****** *)
 //
@@ -617,6 +620,12 @@ fun
 parse_from_fileref_toplevel
   (stadyn: int, inp: FILEref): d0eclist
 // end of [parse_from_fileref_toplevel]
+//
+(* ****** ****** *)
+//
+fun
+parse_from_filpath_toplevel
+(stadyn: int, inp: filpath): Option_vt(d0eclist)
 //
 (* ****** ****** *)
 

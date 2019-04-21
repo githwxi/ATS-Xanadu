@@ -56,6 +56,9 @@ FP0 = "./../SATS/filpath.sats"
   macdef
   fpath_make = $FP0.filpath_make
 //
+#staload
+FS0 = "./../SATS/filsrch.sats"
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/parsing.sats"
@@ -133,6 +136,8 @@ end // end of [local]
 #dynload "./xerrory.dats"
 //
 #dynload "./filpath.dats"
+#dynload "./filsrch.dats"
+//
 #dynload "./locinfo.dats"
 //
 // HX-2018-10:
@@ -767,6 +772,9 @@ waitknd_get_stadyn(wtk0)
 val
 XATSHOME = st0.ATSHOME
 //
+val () =
+$FP0.the_dirpathlst_ppush_cwd()
+//
 in
 //
 if
@@ -1241,6 +1249,9 @@ xatsopt_main0
 val
 XATSHOME =
 "/home/hwxi/Research/ATS-Xanadu"
+//
+val () = 
+$FP0.the_includes_push(XATSHOME)
 //
 val+
 list_cons

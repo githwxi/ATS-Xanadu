@@ -88,9 +88,18 @@ dirpath_type = string
 in (*in-of-local*)
 
 (* ****** ****** *)
-
-implement the_dirpath_dummy = ""
-
+//
+implement
+the_dirpath_dummy = ""
+//
+implement
+dirpath_make(dp0) = dp0
+//
+(* ****** ****** *)
+//
+implement
+dirpath_get_name(dir) = dir
+//
 (* ****** ****** *)
 
 implement
@@ -148,7 +157,7 @@ the_dirpath_get
   ((*void*)) = the_dirpath[]
 //
 (* ****** ****** *)
-
+//
 implement
 the_dirpathlst_pout
 (
@@ -160,7 +169,7 @@ prval unit_v() = pf
 in
   the_dirpathlst_ppout((*void*))
 end // end of [the_dirpathlst_pout]
-
+//
 implement
 the_dirpathlst_ppout
   ((*none*)) = let
@@ -182,7 +191,7 @@ val () = the_dirpath[] := dp
 in
   // nothing
 end // end of [the_dirpathlst_ppout]
-
+//
 (* ****** ****** *)
 //
 implement
@@ -210,6 +219,70 @@ end // end of [the_dirpathlst_ppush]
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+the_dirpathlst_ppush_cwd
+  ((*void*)) =
+(
+  the_dirpathlst_ppush(dir)
+) where
+{
+  val dir = dirpath_make(theCurDir_get())
+} (* end of [the_dirpathlst_ppush_cwd] *)
+//
+(* ****** ****** *)
+
+local
+
+val
+the_includes =
+ref<dirpathlst>(list_nil())
+
+in (* in-of-local *)
+//
+implement
+the_includes_get
+((*void*)) = the_includes[]
+//
+implement
+the_includes_pout
+((*void*)) =
+let
+  val dps = the_includes[]
+in
+//
+case+ dps of
+| list_nil
+  ((*void*)) => ()
+| list_cons
+  (dp0, dps) => the_includes[] := dps
+//
+end // end of [the_includes]
+implement
+the_includes_push
+  ( dir ) = let
+  val dps = the_includes[]
+  val dp0 = dirpath_make(dir)
+in
+  the_includes[] := list_cons(dp0, dps)
+end // end of [the_includes]
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+filpath_dirbase
+  (dir, base) =
+(
+strptr2string(fpath)
+) where
+{
+val fpath =
+filpath_dirbase_vt(dir, base)
+} (* end of [filpath_dirbase] *)
+
+(* ****** ****** *)
 
 local
 //
@@ -222,7 +295,7 @@ charptr = $extype"charptr"
 in (* in-of-local *)
 //
 implement
-filpath_dirbase
+filpath_dirbase_vt
   (dir, base) = let
 //
 val
@@ -271,7 +344,7 @@ in
   $UN.castvwtp0((pf, fpf | p0))
 end // end of [then]
 //
-end // end of [filpath_dirbase]
+end // end of [filpath_dirbase_vt]
 
 end // end of [local]
 

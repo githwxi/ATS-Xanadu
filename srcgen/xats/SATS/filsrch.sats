@@ -28,68 +28,67 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: April, 2018
+// Start Time: May, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-fun
-xatsopt_memcpy
-( dst: ptr
-, src: ptr
-, nbyte: Size_t): ptr = "ext#xatsopt_memcpy"
-//
-(* ****** ****** *)
-//
-(*
-char *strchr(const char *s, int c);
-char *strrchr(const char *s, int c);
-*)
-//
-fun
-xatsopt_strchr
-(cs: ptr, c0: int): ptr = "ext#xatsopt_strchr"
-fun
-xatsopt_strrchr
-(cs: ptr, c0: int): ptr = "ext#xatsopt_strrchr"
-//      
-(* ****** ****** *)
-//
-fun
-xatsopt_strunq // "<string>" -> <string>
-(source: string): string = "ext#xatsopt_strunq"
-//
-(* ****** ****** *)
-//
-(*
-int strcmp(const char *s1, const char *s2);
-int strncmp(const char *s1, const char *s2, size_t n);
-*)
-//
-fun
-xatsopt_strcmp
-(cs1: ptr, cs2: ptr): int = "ext#xatsopt_strcmp"
-fun
-xatsopt_strncmp
-( cs1: ptr
-, cs2: ptr, nlen: size_t): int = "ext#xatsopt_strncmp"
-//       
-(* ****** ****** *)
-//
-fun
-xatsopt_getcwd
-( buf: ptr
-, bsz: size_t): ptr = "ext#xatsopt_getcwd"
-fun
-xatsopt_getcwd_gc
-  ((*void*)): Strptr0 = "ext#xatsopt_getcwd_gc"
-//
-(* ****** ****** *)
-//
-fun
-xatsopt_is_exist
-  (fpath: string): bool = "ext#xatsopt_is_exist"
+#staload
+SYM = "./symbol.sats"
 //
 (* ****** ****** *)
 
-(* end of [mylibc.sats] *)
+#staload "./filpath.sats"
+
+(* ****** ****** *)
+//
+datatype fname =
+  | FNM0 of (string)
+//
+typedef
+fnameopt = Option(fname)
+vtypedef
+fnameopt_vt = Option_vt(fname)
+//
+(* ****** ****** *)
+
+fun
+print_fname : print_type(fname)
+fun
+prerr_fname : prerr_type(fname)
+fun
+fprint_fname : fprint_type(fname)
+
+(* ****** ****** *)
+
+fun
+filsrch_absolut
+(base: string): Option_vt(filpath)
+fun
+filsrch_current
+(base: string): Option_vt(filpath)
+fun
+filsrch_includes
+(base: string): Option_vt(filpath)
+
+(* ****** ****** *)
+
+fun
+filsrch_combined
+(fnm0: fname): Option_vt(filpath)
+
+(* ****** ****** *)
+//
+fun
+filsrch_dirbase
+( dir: dirpath
+, base: string): Option_vt(filpath)
+fun
+filsrch_dirsbase
+( dirs
+: List(dirpath)
+, base: string): Option_vt(filpath)
+//
+(* ****** ****** *)
+
+(* end of [xats_filsrch.sats] *)
