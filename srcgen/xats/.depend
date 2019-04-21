@@ -15,7 +15,7 @@ BUILD/dynexp0_sats.o : SATS/staexp0.sats
 BUILD/parsing_sats.o : SATS/symbol.sats SATS/locinfo.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats
 BUILD/synread_sats.o : SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats
 BUILD/staexp1_sats.o : SATS/label0.sats SATS/locinfo.sats SATS/symbol.sats SATS/lexing.sats SATS/staexp0.sats
-BUILD/dynexp1_sats.o : SATS/basics.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats
+BUILD/dynexp1_sats.o : SATS/basics.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/filpath.sats
 BUILD/trans01_sats.o : SATS/symbol.sats SATS/symmap.sats SATS/fixity.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats
 BUILD/effect_sats.o : 
 BUILD/staexp2_sats.o : SATS/basics.sats SATS/stamp0.sats SATS/symbol.sats SATS/locinfo.sats SATS/filpath.sats SATS/label0.sats SATS/lexing.sats SATS/effect.sats SATS/staexp1.sats
@@ -54,7 +54,7 @@ BUILD/dynexp1_print_dats.o : SATS/label0.sats SATS/lexing.sats SATS/staexp0.sats
 BUILD/trans01_basics_dats.o : SATS/symbol.sats SATS/lexing.sats SATS/trans01.sats
 BUILD/trans01_envmap_dats.o : SATS/symbol.sats SATS/fixity.sats SATS/symmap.sats SATS/symenv.sats SATS/trans01.sats
 BUILD/trans01_staexp_dats.o : SATS/symbol.sats SATS/fixity.sats SATS/symenv.sats SATS/locinfo.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/staexp1.sats SATS/trans01.sats DATS/fixity.dats
-BUILD/trans01_dynexp_dats.o : SATS/symbol.sats SATS/fixity.sats SATS/symenv.sats SATS/locinfo.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/trans01.sats DATS/fixity.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats
+BUILD/trans01_dynexp_dats.o : SATS/symbol.sats SATS/fixity.sats SATS/symenv.sats SATS/filpath.sats SATS/filsrch.sats SATS/locinfo.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/trans01.sats DATS/fixity.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats
 BUILD/effect_dats.o : SATS/effect.sats
 BUILD/staexp2_dats.o : SATS/stamp0.sats SATS/locinfo.sats SATS/basics.sats SATS/symbol.sats SATS/lexing.sats SATS/trans01.sats SATS/staexp2.sats
 BUILD/dynexp2_dats.o : SATS/lexing.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/trans01.sats
@@ -68,4 +68,4 @@ BUILD/trans12_basics_dats.o : SATS/staexp2.sats SATS/trans12.sats
 BUILD/trans12_envmap_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/filpath.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/trans01.sats SATS/trans12.sats
 BUILD/trans12_staexp_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/staexp1.sats SATS/staexp2.sats SATS/trans01.sats SATS/trans12.sats
 BUILD/trans12_dynexp_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/trans01.sats SATS/trans12.sats
-BUILD/xatsopt_dats.o : SATS/xerrory.sats SATS/filpath.sats SATS/parsing.sats SATS/synread.sats SATS/trans01.sats SATS/trans12.sats DATS/staexp0_print.dats DATS/dynexp0_print.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats DATS/staexp2_print.dats DATS/dynexp2_print.dats DATS/trans12_envmap.dats ../xutl/DATS/cblist.dats ../xutl/DATS/Posix/cblist.dats ../xutl/DATS/Posix/mylibc.dats
+BUILD/xatsopt_dats.o : SATS/xerrory.sats SATS/filpath.sats SATS/filsrch.sats SATS/parsing.sats SATS/synread.sats SATS/trans01.sats SATS/trans12.sats DATS/staexp0_print.dats DATS/dynexp0_print.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats DATS/staexp2_print.dats DATS/dynexp2_print.dats DATS/trans12_envmap.dats ../xutl/DATS/cblist.dats ../xutl/DATS/Posix/cblist.dats ../xutl/DATS/Posix/mylibc.dats

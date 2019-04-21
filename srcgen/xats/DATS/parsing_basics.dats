@@ -40,6 +40,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/filpath.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/parsing.sats"
 
@@ -700,6 +704,33 @@ end
 //
 end // end of [parse_from_fileref_toplevel]
 //
+(* ****** ****** *)
+
+implement
+parse_from_filpath_toplevel
+  (stadyn, fp0) = let
+//
+val fnm = fp0.full1()
+val opt =
+  fileref_open_opt(fnm, file_mode_r)
+//
+in
+//
+case+ opt of
+| ~None_vt() =>
+   None_vt()
+| ~Some_vt(inp) =>
+  let
+    val d0cs =
+    parse_from_fileref_toplevel
+      (stadyn, inp)
+    val ((*void*)) = fileref_close(inp)
+  in
+    Some_vt(d0cs)
+  end // end of [Some_vt]
+//
+end // end of [parser_from_filpath_toplevel]
+
 (* ****** ****** *)
 
 (* end of [xats_parsing_basics.dats] *)

@@ -41,6 +41,11 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
+"./../../xutl/SATS/mylibc.sats"
+//
+(* ****** ****** *)
+//
+#staload
 SYM="./../SATS/symbol.sats"
 #staload
 FIX="./../SATS/fixity.sats"
@@ -49,9 +54,6 @@ FIX="./../SATS/fixity.sats"
 ENV = "./../SATS/symenv.sats"
 //
 (* ****** ****** *)
-//
-#staload
-FIL = "./../SATS/filpath.sats"
 //
 #staload
 LOC = "./../SATS/locinfo.sats"
@@ -63,7 +65,11 @@ overload prerr with $LOC.prerr_location
 //
 #staload "./../SATS/basics.sats"
 //
+#staload "./../SATS/filpath.sats"
+#staload "./../SATS/filsrch.sats"
+//
 #staload "./../SATS/lexing.sats"
+#staload "./../SATS/parsing.sats"
 //
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
@@ -2144,30 +2150,27 @@ fun
 auxd1e
 (
 d1e: d1exp
-) : d1eclistopt =
+) : fnameopt_vt =
 (
 case+
 d1e.node() of
 | D1Estr(tok) => auxtok(tok)
-| _(*non-D1Estr*) => None(*void*)
+| _(*non-D1Estr*) => None_vt(*void*)
 ) // end of [auxd1e]
 and
 auxtok
 (
 tok: token
-) : d1eclistopt = let
-//
-val fnm =
+) : fnameopt_vt =
 (
-  case-
-  tok.node() of
-  | T_STRING_closed(fnm) => fnm
-) : string
-//
-in
-  Some(list_nil())
-end // end of [auxtok]
-
+case+
+tok.node() of
+| T_STRING_closed
+  (fnm) =>
+  Some_vt
+  (FNM0(xatsopt_strunq(fnm)))
+| _(* else *) => None_vt(*void*)
+)
 in (* in-of-local *)
 
 fun
@@ -2193,13 +2196,46 @@ val (_) =
 fprintln!(out, "aux_include: ")
 val (_) =
 fprintln!(out, "the_filepath: ")
-val (_) = $FIL.the_filpath_fprint(out)
+val (_) = $FP0.the_filpath_fprint(out)
 val (_) =
 fprintln!(out, "the_filepathlst: ")
-val (_) = $FIL.the_filpathlst_fprint(out)
+val (_) = $FP0.the_filpathlst_fprint(out)
 *)
 //
-val opt = auxd1e(trans01_dexp(d0e))
+val
+opt =
+auxd1e(trans01_dexp(d0e))
+val
+opt =
+(
+case+ opt of
+| ~None_vt() => None_vt()
+| ~Some_vt(fnm) => filsrch_combined(fnm)
+) : Option_vt(filpath)
+//
+val opt =
+(
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(fp0) =>
+let
+  val knd = 1
+in
+  parse_from_filpath_toplevel(knd, fp0)
+end // end of [Some_vt]
+) : Option_vt(d0eclist)
+//
+val opt =
+(
+case+ opt of
+|
+~None_vt() => None()
+|
+~Some_vt(d0cs) => Some(trans01_declist(d0cs))
+) : d1eclistopt
 //
 in
   d1ecl_make_node(loc0, D1Cinclude(tok, d0e, opt))

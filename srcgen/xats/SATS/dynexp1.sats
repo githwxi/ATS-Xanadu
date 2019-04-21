@@ -45,6 +45,13 @@
 #staload "./staexp1.sats"
 
 (* ****** ****** *)
+
+#staload
+FP0 = "./filpath.sats"
+typedef filpath = $FP0.filpath
+typedef filpathopt = $FP0.filpathopt
+
+(* ****** ****** *)
 //
 // HX-2019-01-13:
 // declared in dynexp0.sats
@@ -781,6 +788,12 @@ d1ecl_node =
 | D1Cextern of
   (token, d1ecl) // globally
 //
+(*
+| D1Cinclude of
+  ( token
+  , d0exp
+  , filpathopt) // file inclusion
+*)
 | D1Cinclude of
   ( token
   , d0exp

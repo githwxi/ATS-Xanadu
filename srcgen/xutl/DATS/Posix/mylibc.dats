@@ -43,6 +43,8 @@ UN =
 "libats/libc/SATS/string.sats"
 #staload
 "libats/libc/SATS/unistd.sats"
+#staload
+"libats/libc/SATS/sys/stat.sats"
 //
 (* ****** ****** *)
 //
@@ -56,6 +58,30 @@ xatsopt_memcpy
 (
   $extfcall(ptr, "memcpy", dst, src, nbyte)
 )
+//
+(* ****** ****** *)
+//
+implement
+xatsopt_strunq(src) =
+let
+//
+#define CNUL '\000'
+//
+  val p0 = string2ptr(src)
+  val n0 = g1ofg0(length(src))
+  val () = assertloc(n0 >= 2)
+  val p1 = ptr0_succ<char>(p0)
+  val
+  ( pf0
+  , fpf | q0) = malloc_gc(n0-1)
+  val () =
+  ignoret
+  (xatsopt_memcpy(q0, p1, n0-2))
+  val () =
+  $UN.ptr0_set_at<char>(q0, n0-2, CNUL)
+in
+  $UN.castvwtp0((pf0, fpf | q0))
+end // end of [xatsopt_strunq]
 //
 (* ****** ****** *)
 //
@@ -124,6 +150,23 @@ xatsopt_getcwd_gc
   return (char*)0 ;
 //
 } /* end of [xatsopt_getcwd_gc] */
+%}
+
+(* ****** ****** *)
+
+%{$
+//
+atstype_bool
+xatsopt_is_exist
+  (atstype_string fp)
+{
+  int err;
+  struct stat st ;
+  err = stat((const char*)fp, &st) ;
+  return \
+  (err==0 ? atsbool_true : atsbool_false) ;
+} // end of [xatsopt_is_exist]
+//
 %}
 
 (* ****** ****** *)
