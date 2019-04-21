@@ -173,14 +173,31 @@ fprintln_filpath_full2: fprint_type(filpath)
 (* ****** ****** *)
 //
 fun
+filpath_get_given
+  (fp: filpath):<> string
+fun
 filpath_get_full1
   (fp: filpath):<> string
 fun
 filpath_get_full2
   (fp: filpath):<> $SYM.symbol
 //
+overload .given with filpath_get_given
 overload .full1 with filpath_get_full1
 overload .full2 with filpath_get_full2
+//
+(* ****** ****** *)
+//
+fun
+filpath_is_cats(filpath):<> bool
+fun
+filpath_is_sats(filpath):<> bool
+fun
+filpath_is_dats(filpath):<> bool
+//
+overload is_cats with filpath_is_cats
+overload is_sats with filpath_is_sats
+overload is_dats with filpath_is_dats
 //
 (* ****** ****** *)
 //

@@ -126,12 +126,54 @@ filpath_type = $rec
 in (* in-of-local *)
 //
 implement
+filpath_get_given
+  (fp0) = fp0.filpath_givename
+implement
 filpath_get_full1
   (fp0) = fp0.filpath_fullname
 implement
 filpath_get_full2
   (fp0) = fp0.filpath_fullpath
 //
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+fun
+issfx
+( fp0: filpath
+, sfx: string): bool = let
+//
+val nm = fp0.given()
+val p0 = string2ptr(nm)
+val n0 = string_length(nm)
+val n1 = string_length(sfx)
+//
+in
+  if n0 < n1
+    then false
+    else let
+      val p1 =
+      ptr_add<char>(p0, n0-n1)
+    in
+      iseqz(strcmp($UN.cast{string}(p1), sfx))
+    end // end of [else]
+end // end of [issfix]
+
+in (* in-of-local *)
+
+implement
+filpath_is_cats(fp0) =
+$effmask_all(issfx(fp0, ".cats"))
+implement
+filpath_is_sats(fp0) =
+$effmask_all(issfx(fp0, ".sats"))
+implement
+filpath_is_dats(fp0) =
+$effmask_all(issfx(fp0, ".dats"))
+
 end // end of [local]
 
 (* ****** ****** *)

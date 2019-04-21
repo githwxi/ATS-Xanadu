@@ -2222,7 +2222,16 @@ case+ opt of
 |
 ~Some_vt(fp0) =>
 let
-  val knd = 1
+(*
+  val knd = 0(*sta*)
+  val knd = 1(*dyn*)
+*)
+  val knd =
+  (
+  ifcase
+  | is_sats(fp0) => 0
+  | _(*non-sats*) => 1
+  )
 in
   parse_from_filpath_toplevel(knd, fp0)
 end // end of [Some_vt]
