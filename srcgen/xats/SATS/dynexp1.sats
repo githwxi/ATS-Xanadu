@@ -788,6 +788,9 @@ d1ecl_node =
 | D1Cextern of
   (token, d1ecl) // globally
 //
+| D1Cdefine of
+  (token, d0ecl) // #define
+//
 (*
 | D1Cinclude of
   ( token
