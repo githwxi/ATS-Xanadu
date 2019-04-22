@@ -983,6 +983,18 @@ for skipping error
     (token(*EXTERN*), d0ecl)
   // end of [D0Cextern]
 //
+| D0Cdefine of
+  ( token
+  , g0eid(*fun*)
+  , g0marglst(*arg*), g0expdef)
+(*
+| D0Cmacdef of
+  ( token
+  , g0eid(*fun*)
+  , g0marglst(*arg*), d0macdef)
+  // end of [D0Cmacdef]
+*)
+//
 | D0Cinclude of
     (token(*INCLUDE*), d0exp)
   // HX: for file inclusion
@@ -1093,6 +1105,17 @@ wd0eclseq =
 | WD0CSnone of ()
 | WD0CSsome of
   (token(*where*), tokenopt, d0eclist, token)
+
+(* ****** ****** *)
+
+and
+g0expdef =
+| G0EDEFnone of ()
+| G0EDEFsome of (tokenopt, g0exp)
+
+and
+d0macdef =
+| D0MDEFsome of (tokenopt, d0exp)
 
 (* ****** ****** *)
 //

@@ -830,6 +830,9 @@ case+ x0.node() of
   fprint!
   (out, "D0Cextern(", tok, "; ", d0c, ")")
 //
+| D0Cdefine _ =>
+  fprint!(out, "D0Cdefine(", "...", ")")
+//
 | D0Cinclude(tok, d0e) =>
   fprint!
   (out, "D0Cinclude(", tok, "; ", d0e, ")")

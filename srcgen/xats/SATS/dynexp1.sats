@@ -797,11 +797,13 @@ d1ecl_node =
 | D1Cinclude of
   ( token
   , d0exp
+  , int(*knd*) // sta/dyn: 0/1
   , d1eclistopt) // file inclusion
 //
 | D1Cstaload of
   ( token
   , d0exp
+  , int(*knd*) // sta/dyn: 0/1
   , d1eclistopt) // file staloading
 //
 | D1Cabssort of
