@@ -2154,6 +2154,25 @@ end // end of [aux_extern]
 
 (* ****** ****** *)
 
+fun
+aux_define
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cdefine
+( tok
+, gid
+, gmas, gdef) = d0c0.node()
+//
+in
+  d1ecl_make_node(loc0, D1Cdefine(tok, d0c0))
+end // end of [aux_define]
+
+(* ****** ****** *)
+
 local
 //
 fun
@@ -2889,9 +2908,7 @@ d0c0.node() of
 | D0Cstatic _ => aux_static(d0c0)
 | D0Cextern _ => aux_extern(d0c0)
 //
-(*
 | D0Cdefine _ => aux_define(d0c0)
-*)
 //
 | D0Cinclude _ => aux_include(d0c0)
 //
@@ -2936,12 +2953,12 @@ d0c0.node() of
     d1ecl_make_node(loc0, D1Ctokerr(d0c0))
   )
 //
-// (*
+(*
 | _ (*rest-of-d0ecl*) =>
   (
     println! ("trans01_decl: d0c0 = ", d0c0); exit(1)
   ) (* end of [D0C...] *)
-// *)    
+*)    
 //
 end // end of [trans01_decl]
 

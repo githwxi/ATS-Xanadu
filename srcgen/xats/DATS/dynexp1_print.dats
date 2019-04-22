@@ -625,6 +625,10 @@ case+ x0.node() of
   fprint!
   (out, "D1Cextern(", knd, "; ", d1c, ")")
 //
+| D1Cdefine(knd, d0c) =>
+  fprint!
+  (out, "D1Cdefine(", knd, "; ", d0c, ")")
+//
 | D1Cinclude
   (tok, d0e, knd, opt) =>
   (
