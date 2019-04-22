@@ -70,6 +70,11 @@ fprint_val<s0ymb> = fprint_s0ymb
 (* ****** ****** *)
 
 implement
+fprint_val<g0exp> = fprint_g0exp
+
+(* ****** ****** *)
+
+implement
 fprint_val<sort0> = fprint_sort0
 
 (* ****** ****** *)
@@ -315,6 +320,81 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
+print_g0exp(x0) =
+fprint_g0exp(stdout_ref, x0)
+implement
+prerr_g0exp(x0) =
+fprint_g0exp(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<g0exp> = fprint_g0exp
+
+in (* in-of-local *)
+
+implement
+fprint_g0exp
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| G0Eid(tid) =>
+  fprint!(out, "G0Eid(", tid, ")")
+//
+| G0Eint(int) =>
+  fprint!(out, "G0Eint(", int, ")")
+//
+| G0Eapps(s0ts) =>
+  fprint!(out, "G0Eapps(", s0ts, ")")
+//
+| G0Elist(t0, g0es, t1) =>
+  fprint!
+  (out, "G0Elist(", t0, "; ", g0es, "; ", t1, ")")
+//
+| G0Enone(tok) =>
+  fprint!( out, "G0Enone(", tok, ")" )
+  // end of [G0Enone]
+//
+) (* end of [fprint_g0exp] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_g0marg(x0) =
+fprint_g0marg(stdout_ref, x0)
+implement
+prerr_g0marg(x0) =
+fprint_g0marg(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<g0eid> = fprint_i0dnt
+
+in (* in-of-local *)
+
+implement
+fprint_g0marg
+  (out, x0) =
+(
+case+
+x0.node() of
+| G0MARGnone(tok) =>
+  fprint!
+  (out, "G0MARGnone(", tok, ")")
+| G0MARGlist(tbeg, g0as, tend) =>
+  fprint!
+  (out, "G0MARGlist(", tbeg, "; ", g0as, "; ", tend, ")")
+) (* fprint_g0marg *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
 print_sort0(x0) =
 fprint_sort0(stdout_ref, x0)
 implement
@@ -352,8 +432,7 @@ case+ x0.node() of
   (out, "S0Tqid(", q0, ", ", s0t, ")")
 //
 | S0Tnone(tok) =>
-    fprint!(out, "S0Tnone(", tok, ")")
-  // end of [S0Tnone]
+  fprint!( out, "S0Tnone(", tok, ")" )
 //
 ) (* end of [fprint_sort0] *)
 

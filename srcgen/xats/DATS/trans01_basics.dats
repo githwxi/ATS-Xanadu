@@ -256,9 +256,11 @@ tok.node() of
 implement
 sexpid_sym(tok) = let
 //
+(*
 val () =
 println!
 ("sexpid_sym: tok = ", tok)
+*)
 //
 in
 //

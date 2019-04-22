@@ -50,6 +50,12 @@ vtypedef
 fixtyopt_vt = Option_vt(fixty)
 //
 (* ****** ****** *)
+
+#staload
+FIL = "./filpath.sats"
+typedef filpath = $FIL.filpath
+
+(* ****** ****** *)
 //
 #staload S0E = "./staexp0.sats"
 #staload D0E = "./dynexp0.sats"
@@ -441,6 +447,22 @@ fun
 trans01_datcon: d0atcon -> d1atcon
 fun
 trans01_datconlst: d0atconlst -> d1atconlst
+//
+(* ****** ****** *)
+//
+fun
+trans01_staload_add
+(fp: filpath, d1cs: d1eclist): void
+//
+fun
+trans01_staload_find
+  (fp0: filpath): Option_vt(d1eclist)
+//
+(* ****** ****** *)
+//
+fun
+trans01_staload_from_filpath
+(stadyn: int, inp: filpath): Option_vt(d1eclist)
 //
 (* ****** ****** *)
 

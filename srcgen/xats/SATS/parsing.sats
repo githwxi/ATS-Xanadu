@@ -79,10 +79,14 @@ STAEXP0 = "./staexp0.sats"
   typedef l0abl = $STAEXP0.l0abl
   typedef s0ymb = $STAEXP0.s0ymb
 //
+  typedef g0eid = $STAEXP0.g0eid
+//
   typedef s0tid = $STAEXP0.s0tid
   typedef s0eid = $STAEXP0.s0eid
   typedef d0pid = $STAEXP0.d0pid
   typedef d0eid = $STAEXP0.d0eid
+//
+  typedef g0exp = $STAEXP0.g0exp
 //
   typedef sort0 = $STAEXP0.sort0
   typedef s0exp = $STAEXP0.s0exp
@@ -301,6 +305,11 @@ fun p_l0abl: parser(l0abl)
 fun p_s0ymb: parser(s0ymb)
 
 (* ****** ****** *)
+
+fun t_g0eid(tnode): bool
+fun p_g0eid: parser(g0eid)
+
+(* ****** ****** *)
 //
 fun t_s0tid(tnode): bool
 fun t_s0aid(tnode): bool
@@ -322,6 +331,21 @@ fun p_d0eid: parser(d0eid) // exp id
 //
 fun p_sq0eid: parser(sq0eid) // qualid
 fun p_dq0eid: parser(dq0eid) // qualid
+//
+(* ****** ****** *)
+
+fun p_g0exp : parser(g0exp)
+
+(* ****** ****** *)
+//
+typedef
+g0marg = $STAEXP0.g0marg
+typedef
+g0marglst = $STAEXP0.g0marglst
+fun
+p_g0marg: parser(g0marg)
+fun
+p_g0margseq: parser(g0marglst)
 //
 (* ****** ****** *)
 //

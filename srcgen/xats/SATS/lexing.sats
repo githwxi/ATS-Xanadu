@@ -247,6 +247,8 @@ tnode =
 // #extern
   | T_SRP_EXTERN of () // globally
 //
+  | T_SRP_DEFINE of () // #define
+//
   | T_SRP_INCLUDE of () // #include
 //
   | T_SRP_STALOAD of () // #staload

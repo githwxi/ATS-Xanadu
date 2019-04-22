@@ -626,33 +626,36 @@ case+ x0.node() of
   (out, "D1Cextern(", knd, "; ", d1c, ")")
 //
 | D1Cinclude
-  (knd, d0e, opt) =>
+  (tok, d0e, knd, opt) =>
   (
   fprint!
   ( out
-  , "D1Cinclude(", knd, "; ", d0e, "; ", opt, ")")
+  , "D1Cinclude("
+  , tok, "; ", d0e, "; ", knd, "; ", opt, ")")
   ) where
   {
     val opt =
     (
     case+ opt of
     | None _ => "None()"
-    | Some _ => "Some(...)"
+    | Some _ => "Some(<d1cs>)"
     ) : string // end of [val]
   }
 //
-| D1Cstaload(knd, d0e, opt) =>
+| D1Cstaload
+  (tok, d0e, knd, opt) =>
   (
   fprint!
   ( out
-  , "D1Cstaload(", knd, "; ", d0e, "; ", opt, ")")
+  , "D1Cstaload("
+  , tok, "; ", d0e, "; ", knd, "; ", opt, ")")
   ) where
   {
     val opt =
     (
     case+ opt of
     | None _ => "None()"
-    | Some _ => "Some(...)"
+    | Some _ => "Some(<d1cs>)"
     ) : string // end of [val]
   }
 //

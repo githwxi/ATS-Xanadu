@@ -323,6 +323,8 @@ case+ tnd of
 | T_SRP_STATIC() => fprint(out, "#STATIC")
 | T_SRP_EXTERN() => fprint(out, "#EXTERN")
 //
+| T_SRP_DEFINE() => fprint(out, "#DEFINE")
+//
 | T_SRP_INCLUDE() => fprint(out, "#INCLUDE")
 //
 | T_SRP_STALOAD() => fprint(out, "#STALOAD")
@@ -575,6 +577,8 @@ case+ tnd of
 //
 | T_SRP_STATIC() => fprint!(out, "#static")
 | T_SRP_EXTERN() => fprint!(out, "#extern")
+//
+| T_SRP_DEFINE() => fprint!(out, "#define")
 //
 | T_SRP_INCLUDE() => fprint(out, "#include")
 //

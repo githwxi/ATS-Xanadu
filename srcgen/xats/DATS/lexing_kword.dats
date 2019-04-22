@@ -411,6 +411,8 @@ val () = myins("#stacst", T_SRP_STACST)
 val () = myins("#static", T_SRP_STATIC)
 val () = myins("#extern", T_SRP_EXTERN)
 //
+val () = myins("#define", T_SRP_DEFINE)
+//
 val () = myins("#include", T_SRP_INCLUDE)
 //
 val () = myins("#staload", T_SRP_STALOAD)
