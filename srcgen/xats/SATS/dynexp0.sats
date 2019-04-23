@@ -1101,21 +1101,21 @@ abstdf0 =
 (* ****** ****** *)
 
 and
-wd0eclseq =
-| WD0CSnone of ()
-| WD0CSsome of
-  (token(*where*), tokenopt, d0eclist, token)
+g0expdef =
+| G0EDEFnone of ()
+| G0EDEFsome of (tokenopt, g0exp(*def*))
+
+and
+d0macdef =
+| D0MDEFsome of (tokenopt, d0exp(*def*))
 
 (* ****** ****** *)
 
 and
-g0expdef =
-| G0EDEFnone of ()
-| G0EDEFsome of (tokenopt, g0exp)
-
-and
-d0macdef =
-| D0MDEFsome of (tokenopt, d0exp)
+wd0eclseq =
+| WD0CSnone of ()
+| WD0CSsome of
+  (token(*where*), tokenopt, d0eclist, token)
 
 (* ****** ****** *)
 //
@@ -1171,6 +1171,19 @@ fprint_abstdf0 : fprint_type(abstdf0)
 overload print with print_abstdf0
 overload prerr with prerr_abstdf0
 overload fprint with fprint_abstdf0
+//
+(* ****** ****** *)
+//
+fun
+print_g0expdef : (g0expdef) -> void
+fun
+prerr_g0expdef : (g0expdef) -> void
+fun
+fprint_g0expdef : fprint_type(g0expdef)
+//
+overload print with print_g0expdef
+overload prerr with prerr_g0expdef
+overload fprint with fprint_g0expdef
 //
 (* ****** ****** *)
 //

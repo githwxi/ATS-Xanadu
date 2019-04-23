@@ -1,5 +1,5 @@
 #define x 5
-#define f(y) y+y
+#define f(x) y+z
 ////
 (*
 #macdef g(x) x + 6

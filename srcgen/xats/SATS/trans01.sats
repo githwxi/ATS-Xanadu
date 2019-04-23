@@ -154,6 +154,14 @@ the_fxtyenv_fprint(FILEref): void
 //
 (* ****** ****** *)
 //
+typedef g0exp = $S0E.g0exp
+typedef g0explst = $S0E.g0explst
+//
+typedef g0marg = $S0E.g0marg
+typedef g0marglst = $S0E.g0marglst
+//
+(* ****** ****** *)
+//
 typedef sort0 = $S0E.sort0
 typedef sort0opt = $S0E.sort0opt
 typedef sort0lst = $S0E.sort0lst
@@ -213,6 +221,14 @@ typedef d0eclist = $D0E.d0eclist
 //
 (* ****** ****** *)
 //
+typedef g1exp = $S1E.g1exp
+typedef g1explst = $S1E.g1explst
+//
+typedef g1marg = $S1E.g1marg
+typedef g1marglst = $S1E.g1marglst
+//
+(* ****** ****** *)
+//
 typedef sort1 = $S1E.sort1
 typedef sort1opt = $S1E.sort1opt
 typedef sort1lst = $S1E.sort1lst
@@ -269,6 +285,16 @@ typedef d1claulst = $D1E.d1claulst
 typedef d1ecl = $D1E.d1ecl
 typedef d1eclopt = $D1E.d1eclopt
 typedef d1eclist = $D1E.d1eclist
+//
+(* ****** ****** *)
+//
+fun
+trans01_gexp: g0exp -> g1exp
+fun
+trans01_gmarg: g0marg -> g1marg
+//
+fun
+trans01_gexplst: g0explst -> g1explst
 //
 (* ****** ****** *)
 //

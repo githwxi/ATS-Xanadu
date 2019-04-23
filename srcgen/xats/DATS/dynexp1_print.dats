@@ -596,6 +596,8 @@ local
 implement
 fprint_val<d1ecl> = fprint_d1ecl
 implement
+fprint_val<g1marg> = fprint_g1marg
+implement
 fprint_val<v1aldecl> = fprint_v1aldecl
 implement
 fprint_val<v1ardecl> = fprint_v1ardecl
@@ -625,9 +627,12 @@ case+ x0.node() of
   fprint!
   (out, "D1Cextern(", knd, "; ", d1c, ")")
 //
-| D1Cdefine(knd, d0c) =>
+| D1Cdefine
+  (tok, sym, arg, def) =>
   fprint!
-  (out, "D1Cdefine(", knd, "; ", d0c, ")")
+  ( out
+  , "D1Cdefine("
+  , tok, "; ", sym, "; ", arg, "; ", def, ")")
 //
 | D1Cinclude
   (tok, d0e, knd, opt) =>

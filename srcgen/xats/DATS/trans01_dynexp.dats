@@ -1647,6 +1647,41 @@ trans01_dcstdeclist: d0cstdeclist -> d1cstdeclist
 (* ****** ****** *)
 
 fun
+trans01_gmarglst
+( gmas
+: g0marglst
+) : g1marglst =
+(
+list_vt2t(gmas) where
+{
+  val
+  gmas =
+  list_map<g0marg><g1marg>
+    (gmas) where
+  {
+    implement
+    list_map$fopr<g0marg><g1marg> = trans01_gmarg
+  }
+}
+) (* end of [trans01_gmarglst] *)
+
+(* ****** ****** *)
+
+fun
+trans01_g0expdef
+( gdef
+: g0expdef): g1expopt =
+(
+case+ gdef of
+| G0EDEFnone
+  ((*void*)) => None()
+| G0EDEFsome
+  (opt, g0e) => Some(trans01_gexp(g0e))
+)
+
+(* ****** ****** *)
+
+fun
 trans01_teqdexpopt
 ( opt
 : teqd0expopt): teqd1expopt =
@@ -2165,10 +2200,17 @@ val-
 D0Cdefine
 ( tok
 , gid
-, gmas, gdef) = d0c0.node()
+, gmas
+, gdef) = d0c0.node()
+//
+val-I0DNTsome(gid) = gid.node()
+//
+val gmas = trans01_gmarglst(gmas)
+val gdef = trans01_g0expdef(gdef)
 //
 in
-  d1ecl_make_node(loc0, D1Cdefine(tok, d0c0))
+  d1ecl_make_node
+  (loc0, D1Cdefine(tok, gid, gmas, gdef))
 end // end of [aux_define]
 
 (* ****** ****** *)
