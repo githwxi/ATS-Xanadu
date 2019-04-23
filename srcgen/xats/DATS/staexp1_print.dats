@@ -58,6 +58,14 @@ implement
 fprint_val<token> = fprint_token
 //
 (* ****** ****** *)
+//
+implement
+fprint_val<g1exp> = fprint_g1exp
+//
+implement
+fprint_val<g1marg> = fprint_g1marg
+//
+(* ****** ****** *)
 
 implement
 fprint_val<sort1> = fprint_sort1
@@ -101,6 +109,85 @@ implement
 fprint_val<d1atype> = fprint_d1atype
 implement
 fprint_val<d1atcon> = fprint_d1atcon
+
+(* ****** ****** *)
+
+implement
+print_g1exp(x0) =
+fprint_g1exp(stdout_ref, x0)
+implement
+prerr_g1exp(x0) =
+fprint_g1exp(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<g1exp> = fprint_g1exp
+
+in (* in-of-local *)
+
+implement
+fprint_g1exp
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| G1Eid(tok) =>
+  fprint!(out, "G1Eid(", tok, ")")
+//
+| G1Eint(int) =>
+  fprint!(out, "G1Eint(", int, ")")
+//
+| G1Eapp() =>
+  fprint!(out, "G1Eapp()")
+//
+| G1Eapp1
+  (g1e0, g1e1) =>
+  fprint!
+  (out, "G1Eapp1(", g1e0, "; ", g1e1, ")")
+| G1Eapp2
+  (g1e0, g1e1, g1e2) =>
+  fprint!
+  (out, "G1Eapp2(", g1e0, "; ", g1e1, "; ", g1e2, ")")
+//
+| G1Elist(g1es) =>
+  fprint!(out, "G1Elist(", g1es, ")")
+//
+| G1Enone((*void*)) => fprint!( out, "G1Enone(", ")" )
+  // end of [G1Enone]
+//
+) (* end of [fprint_g1exp] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_g1marg(x0) =
+fprint_g1marg(stdout_ref, x0)
+implement
+prerr_g1marg(x0) =
+fprint_g1marg(stderr_ref, x0)
+
+local
+
+implement
+fprint_val<g1arg> = fprint_token
+
+in(* in-of-local *)
+
+implement
+fprint_g1marg
+  (out, x0) =
+(
+case+
+x0.node() of
+|
+G1MARGlist(g1as) =>
+fprint!(out, "G1MARGlist(", g1as, ")")
+) (* end of [fprint_g1marg] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 

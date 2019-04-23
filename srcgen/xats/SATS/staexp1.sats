@@ -58,6 +58,100 @@ S0E = "./staexp0.sats"
 
 (* ****** ****** *)
 //
+abstbox g1exp_tbox = ptr
+abstbox g1marg_tbox = ptr
+//
+typedef g1exp = g1exp_tbox
+typedef g1explst = List0(g1exp)
+typedef g1expopt = Option(g1exp)
+//
+typedef g1arg = token
+typedef g1marg = g1marg_tbox
+//
+typedef g1arglst = List0(g1arg)
+typedef g1marglst = List0(g1marg)
+//
+(* ****** ****** *)
+//
+datatype
+g1exp_node =
+//
+| G1Eid of (sym_t)
+| G1Eint of (token)
+| G1Eapp of ((*void*))
+//
+| G1Eapp1 of
+  (g1exp(*fun*), g1exp)
+| G1Eapp2 of
+  (g1exp(*fun*), g1exp, g1exp)
+//
+| G1Elist of g1explst (*temp*)
+//
+| G1Enone of ((* error indicaton*))
+//
+(* ****** ****** *)
+//
+fun
+g1exp_get_loc(g1exp): loc_t
+fun
+g1exp_get_node(g1exp): g1exp_node
+//
+overload .loc with g1exp_get_loc
+overload .node with g1exp_get_node
+//
+fun
+print_g1exp : print_type(g1exp)
+fun
+prerr_g1exp : prerr_type(g1exp)
+fun
+fprint_g1exp : fprint_type(g1exp)
+//
+overload print with print_g1exp
+overload prerr with prerr_g1exp
+overload fprint with fprint_g1exp
+//
+fun
+g1exp_none(loc: loc_t): g1exp
+fun
+g1exp_make_node
+(loc: loc_t, node: g1exp_node): g1exp
+//
+(* ****** ****** *)
+//
+datatype
+g1marg_node =
+(*
+| G1MARGnone of ((*void*))
+*)
+| G1MARGlist of (g1arglst)
+//
+(* ****** ****** *)
+//
+fun
+g1marg_get_loc(g1marg): loc_t
+fun
+g1marg_get_node(g1marg): g1marg_node
+//
+overload .loc with g1marg_get_loc
+overload .node with g1marg_get_node
+//
+fun
+print_g1marg : print_type(g1marg)
+fun
+prerr_g1marg : prerr_type(g1marg)
+fun
+fprint_g1marg : fprint_type(g1marg)
+//
+overload print with print_g1marg
+overload prerr with prerr_g1marg
+overload fprint with fprint_g1marg
+//
+fun
+g1marg_make_node
+(loc: loc_t, node: g1marg_node): g1marg
+//
+(* ****** ****** *)
+//
 abstbox sort1_tbox = ptr
 abstbox s1exp_tbox = ptr
 //

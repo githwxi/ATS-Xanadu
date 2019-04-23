@@ -789,7 +789,9 @@ d1ecl_node =
   (token, d1ecl) // globally
 //
 | D1Cdefine of
-  (token, d0ecl) // #define
+  ( token
+  , token(*g0eid*)
+  , g1marglst(*arg*), g1expopt)
 //
 (*
 | D1Cinclude of
