@@ -221,12 +221,18 @@ implement
 fprint_val<itm>
   (out, itm) = fpr(out, itm)
 //
-implement
-fprint_linmap$sep<>(out) = ()
 (*
 implement
-fprint_linmap$sep<>(out) = fprint(out, "\n")
+fprint_linmap$sep<>(out) = ()
 *)
+// (*
+implement
+fprint_linmap$sep<>
+  (out) = fprint_string(out, "\n")
+implement
+fprint_linmap$mapto<>
+  (out) = fprint_string(out, " -> ")
+// *)
 //
 in
 //

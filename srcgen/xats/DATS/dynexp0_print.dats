@@ -838,6 +838,12 @@ case+ x0.node() of
   ( out, "D0Cdefine("
   , gid, "; ", gmas, "; ", gdef, ")")
 //
+| D0Cmacdef
+  (tok, gid, gmas, mdef) =>
+  fprint!
+  ( out, "D0Cmacdef("
+  , gid, "; ", gmas, "; ", mdef, ")")
+//
 | D0Cinclude(tok, d0e) =>
   fprint!
   (out, "D0Cinclude(", tok, "; ", d0e, ")")
@@ -1041,6 +1047,25 @@ case+ x0 of
 | G0EDEFsome(topt, g0e1) =>
   fprint!
   (out, "G0EDEFsome(", topt, "; ", g0e1, ")")
+)
+//
+(* ****** ****** *)
+//
+implement
+print_d0macdef(x0) =
+fprint_d0macdef(stdout_ref, x0)
+implement
+prerr_d0macdef(x0) =
+fprint_d0macdef(stderr_ref, x0)
+//
+implement
+fprint_d0macdef
+  (out, x0) =
+(
+case+ x0 of
+| D0MDEFsome(topt, d0e1) =>
+  fprint!
+  (out, "D0MDEFsome(", topt, "; ", d0e1, ")")
 )
 //
 (* ****** ****** *)

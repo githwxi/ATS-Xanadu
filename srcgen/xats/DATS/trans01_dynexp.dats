@@ -1678,6 +1678,15 @@ case+ gdef of
 | G0EDEFsome
   (opt, g0e) => Some(trans01_gexp(g0e))
 )
+fun
+trans01_d0macdef
+( mdef
+: d0macdef): d1expopt =
+(
+case+ mdef of
+| D0MDEFsome
+  (opt, d0e) => Some(trans01_dexp(d0e))
+)
 
 (* ****** ****** *)
 
@@ -2212,6 +2221,32 @@ in
   d1ecl_make_node
   (loc0, D1Cdefine(tok, gid, gmas, gdef))
 end // end of [aux_define]
+
+(* ****** ****** *)
+
+fun
+aux_macdef
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cmacdef
+( tok
+, gid
+, gmas
+, mdef) = d0c0.node()
+//
+val-I0DNTsome(gid) = gid.node()
+//
+val gmas = trans01_gmarglst(gmas)
+val mdef = trans01_d0macdef(mdef)
+//
+in
+  d1ecl_make_node
+  (loc0, D1Cmacdef(tok, gid, gmas, mdef))
+end // end of [aux_macdef]
 
 (* ****** ****** *)
 
@@ -2951,6 +2986,7 @@ d0c0.node() of
 | D0Cextern _ => aux_extern(d0c0)
 //
 | D0Cdefine _ => aux_define(d0c0)
+| D0Cmacdef _ => aux_macdef(d0c0)
 //
 | D0Cinclude _ => aux_include(d0c0)
 //

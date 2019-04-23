@@ -212,10 +212,14 @@ the_fxtyenv_locjoin
 (* ****** ****** *)
 
 implement
-the_fxtyenv_pjoinwth0(map) = let
-  prval
-  vbox(pf) = pfbox in
-  $effmask_ref($ENV.symenv_pjoinwth0(!p0, map))
+the_fxtyenv_pjoinwth0
+  (map) = let
+//
+  prval vbox(pf) = pfbox
+//
+in
+  $effmask_ref
+  ($ENV.symenv_pjoinwth0(!p0, map))
 end // end of [the_fxtyenv_pjoinwth0]
 
 (* ****** ****** *)
@@ -229,9 +233,9 @@ prval vbox(pf) = pfbox
 in
 $effmask_ref
 (
-  $ENV.fprint_symenv_ptop
-  ( out, !p0
-  , lam(out, x) => fprint_fixty(out, x))
+$ENV.fprint_symenv_ptop
+( out, !p0
+, lam(out, x) => fprint_fixty(out, x))
 )
 end // end of [the_fxtyenv_fprint]
 //

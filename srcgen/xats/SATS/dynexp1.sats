@@ -792,6 +792,10 @@ d1ecl_node =
   ( token
   , token(*g0eid*)
   , g1marglst(*arg*), g1expopt)
+| D1Cmacdef of
+  ( token
+  , token(*g0eid*)
+  , g1marglst(*arg*), d1expopt)
 //
 (*
 | D1Cinclude of

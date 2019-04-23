@@ -633,6 +633,12 @@ case+ x0.node() of
   ( out
   , "D1Cdefine("
   , tok, "; ", sym, "; ", arg, "; ", def, ")")
+| D1Cmacdef
+  (tok, sym, arg, def) =>
+  fprint!
+  ( out
+  , "D1Cmacdef("
+  , tok, "; ", sym, "; ", arg, "; ", def, ")")
 //
 | D1Cinclude
   (tok, d0e, knd, opt) =>
