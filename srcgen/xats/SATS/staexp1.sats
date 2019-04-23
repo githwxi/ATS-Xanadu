@@ -65,7 +65,7 @@ typedef g1exp = g1exp_tbox
 typedef g1explst = List0(g1exp)
 typedef g1expopt = Option(g1exp)
 //
-typedef g1arg = token
+typedef g1arg = token(*sym*)
 typedef g1marg = g1marg_tbox
 //
 typedef g1arglst = List0(g1arg)

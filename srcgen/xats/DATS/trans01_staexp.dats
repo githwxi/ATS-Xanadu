@@ -677,14 +677,14 @@ auxitm
 val
 loc0 = s0t0.loc()
 //
-// (*
+(*
 val () =
 println!("trans01_sort:")
 val () =
 println!("auxitm: loc0 = ", loc0)
 val () =
 println!("auxitm: s0t0 = ", s0t0)
-// *)
+*)
 //
 in
 //
