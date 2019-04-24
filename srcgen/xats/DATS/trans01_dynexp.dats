@@ -1684,6 +1684,8 @@ trans01_d0macdef
 : d0macdef): d1expopt =
 (
 case+ mdef of
+| D0MDEFnone
+  ((*void*)) => None()
 | D0MDEFsome
   (opt, d0e) => Some(trans01_dexp(d0e))
 )

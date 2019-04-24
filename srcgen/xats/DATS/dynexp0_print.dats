@@ -1063,6 +1063,9 @@ fprint_d0macdef
   (out, x0) =
 (
 case+ x0 of
+| D0MDEFnone() =>
+  fprint!
+  (out, "D0MDEFnone(", ")")
 | D0MDEFsome(topt, d0e1) =>
   fprint!
   (out, "D0MDEFsome(", topt, "; ", d0e1, ")")
