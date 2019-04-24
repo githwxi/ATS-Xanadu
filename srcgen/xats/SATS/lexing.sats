@@ -248,6 +248,7 @@ tnode =
   | T_SRP_EXTERN of () // globally
 //
   | T_SRP_DEFINE of () // #define
+  | T_SRP_MACDEF of () // #macdef
 //
   | T_SRP_INCLUDE of () // #include
 //

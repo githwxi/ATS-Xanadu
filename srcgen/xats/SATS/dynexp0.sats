@@ -1105,6 +1105,7 @@ g0expdef =
 
 and
 d0macdef =
+| D0MDEFnone of ()
 | D0MDEFsome of (tokenopt, d0exp(*def*))
 
 (* ****** ****** *)

@@ -2490,6 +2490,9 @@ end // end of [p_abstdf0]
 static
 fun
 p_g0expdef: parser(g0expdef)
+static
+fun
+p_d0macdef: parser(d0macdef)
 //
 (* ****** ****** *)
 
@@ -2521,6 +2524,37 @@ tok.node() of
   end
 //
 end // end of [p_g0expdef]
+
+(* ****** ****** *)
+
+implement
+p_d0macdef
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_EQ() => let
+    val () = buf.incby1()
+    val d0e = p_d0exp(buf, err)
+  in
+    D0MDEFsome(Some(tok), d0e(*def*))
+  end
+| _(*non-EQ*) => let
+    val d0e = p_d0exp(buf, err)
+  in
+    case+
+    d0e.node() of
+    | D0Enone(_) =>
+      D0MDEFnone(*void*)
+    | _(*non-G0Enone*) =>
+      D0MDEFsome(None(*void*), d0e(*def*))
+  end
+//
+end // end of [p_d0macdef]
 
 (* ****** ****** *)
 //
@@ -3413,10 +3447,14 @@ abstype ::=
 | T_SRP_DEFINE() => let
 //
     val () = buf.incby1()
-    val gid = p_g0eid(buf, err)
+//
+    val gid =
+      p_g0eid(buf, err)
     val gmas =
       p_g0margseq(buf, err)
-    val gdef = p_g0expdef(buf, err)
+    val gdef =
+      (p_g0expdef(buf, err))
+//
     val loc_res =
     (
       case+ gdef of
@@ -3443,6 +3481,45 @@ abstype ::=
     d0ecl_make_node
     (loc_res, D0Cdefine(tok, gid, gmas, gdef))
   end // end of [T_SRP_DEFINE]
+//
+| T_SRP_MACDEF() => let
+//
+    val () = buf.incby1()
+//
+    val gid =
+      p_g0eid(buf, err)
+    val gmas =
+      p_g0margseq(buf, err)
+    val mdef =
+      (p_d0macdef(buf, err))
+//
+    val loc_res =
+    (
+      case+ mdef of
+      | D0MDEFnone() =>
+        (
+          case+ gmas of
+          | list_nil _ =>
+            (
+              gid.loc()
+            )
+          | list_cons _ =>
+            (
+              gid.loc() + loc_arg
+            ) where
+            {
+              val loc_arg = (list_last(gmas)).loc()
+            }
+        )
+      | D0MDEFsome(opt, g0e) => gid.loc() + g0e.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    d0ecl_make_node
+    (loc_res, D0Cmacdef(tok, gid, gmas, mdef))
+  end // end of [T_SRP_MACDEF]
+//
 | T_SRP_INCLUDE() => let
     val () = buf.incby1()
     val d0e =
