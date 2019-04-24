@@ -33,41 +33,8 @@
 //
 (* ****** ****** *)
 
-#staload "./dynexp2.sats"
+#staload "./../SATS/trans23.sats"
 
 (* ****** ****** *)
 
-abstbox d3exp_tbox = ptr
-
-(* ****** ****** *)
-
-typedef d3exp = d3exp_tbox
-typedef d3explst = List0(d3exp)
-typedef d3expopt = Option(d3exp)
-
-(* ****** ****** *)
-
-datatype
-d3exp_node =
-| D3Enone0 of () | D3Enone1 of (d2exp)
-
-(* ****** ****** *)
-//
-fun
-d3exp_get_loc(d3exp): loc_t
-fun
-d3exp_get_type(d3exp): t2ype
-fun
-d3exp_get_node(d3exp): d3exp_node
-//
-overload .loc with d3exp_get_loc
-overload .type with d3exp_get_type
-overload .node with d3exp_get_node
-//
-fun
-d3exp_make_node
-(loc: loc_t, node: d3exp_node): d3exp
-//
-(* ****** ****** *)
-
-(* end of [dynexp3.sats] *)
+(* end of [xats_trans23.sats] *)
