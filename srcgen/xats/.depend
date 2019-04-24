@@ -23,6 +23,7 @@ BUILD/staexp2_sats.o : SATS/basics.sats SATS/stamp0.sats SATS/symbol.sats SATS/l
 BUILD/dynexp2_sats.o : SATS/symbol.sats SATS/locinfo.sats SATS/staexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats
 BUILD/nmspace_sats.o : 
 BUILD/trans12_sats.o : SATS/basics.sats SATS/symmap.sats SATS/filpath.sats SATS/locinfo.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats
+BUILD/dynexp3_sats.o : SATS/dynexp2.sats
 BUILD/basics_dats.o : SATS/basics.sats
 BUILD/stamp0_dats.o : SATS/stamp0.sats
 BUILD/symbol_dats.o : SATS/symbol.sats
@@ -70,4 +71,6 @@ BUILD/trans12_basics_dats.o : SATS/staexp2.sats SATS/trans12.sats
 BUILD/trans12_envmap_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/filpath.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/trans01.sats SATS/trans12.sats
 BUILD/trans12_staexp_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/staexp1.sats SATS/staexp2.sats SATS/trans01.sats SATS/trans12.sats
 BUILD/trans12_dynexp_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/trans01.sats SATS/trans12.sats
-BUILD/xatsopt_dats.o : SATS/xerrory.sats SATS/filpath.sats SATS/filsrch.sats SATS/parsing.sats SATS/synread.sats SATS/trans01.sats SATS/trans12.sats DATS/staexp0_print.dats DATS/dynexp0_print.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats DATS/staexp2_print.dats DATS/dynexp2_print.dats DATS/trans12_envmap.dats ../xutl/DATS/cblist.dats ../xutl/DATS/Posix/cblist.dats ../xutl/DATS/Posix/mylibc.dats
+BUILD/dynexp3_dats.o : SATS/symbol.sats SATS/locinfo.sats SATS/dynexp2.sats SATS/dynexp3.sats
+BUILD/dynexp3_print_dats.o : SATS/dynexp3.sats DATS/staexp2_print.dats DATS/dynexp2_print.dats
+BUILD/xatsopt_dats.o : SATS/xerrory.sats SATS/filpath.sats SATS/filsrch.sats SATS/parsing.sats SATS/synread.sats SATS/trans01.sats SATS/trans12.sats DATS/staexp0_print.dats DATS/dynexp0_print.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats DATS/staexp2_print.dats DATS/dynexp2_print.dats DATS/dynexp3_print.dats DATS/trans12_envmap.dats ../xutl/DATS/cblist.dats ../xutl/DATS/Posix/cblist.dats ../xutl/DATS/Posix/mylibc.dats
