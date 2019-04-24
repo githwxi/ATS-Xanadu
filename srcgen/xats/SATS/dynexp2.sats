@@ -691,12 +691,9 @@ dg2pat_make_node
 fun
 d2exp_get_loc(d2exp): loc_t
 fun
-d2exp_get_type(d2exp): t2ype
-fun
 d2exp_get_node(d2exp): d2exp_node
 //
 overload .loc with d2exp_get_loc
-overload .type with d2exp_get_type
 overload .node with d2exp_get_node
 //
 (* ****** ****** *)

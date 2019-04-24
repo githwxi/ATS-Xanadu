@@ -92,6 +92,10 @@ _(*TMP*) =
 _(*TMP*) =
   "./../DATS/dynexp2_print.dats"
 //
+#staload
+_(*TMP*) =
+  "./../DATS/dynexp3_print.dats"
+//
 (* ****** ****** *)
 //
 #staload
@@ -193,6 +197,10 @@ end // end of [local]
 #dynload "./trans12_envmap.dats"
 #dynload "./trans12_staexp.dats"
 #dynload "./trans12_dynexp.dats"
+//
+#dynload "./dynexp3.dats"
+//
+#dynload "./dynexp3_print.dats"
 //
 (* ****** ****** *)
 //
