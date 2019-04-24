@@ -578,7 +578,7 @@ trans01_gmarg
 case-
 g0ma.node() of
 |
-G0MARGlist
+G0MARGsarg
 (tbeg, g0as, tend) =>
 let
   val g1as =
@@ -595,7 +595,27 @@ let
   } (* end of [where] *)
   val g1as = list_vt2t{g1arg}(g1as)
 in
-    g1marg_make_node(g0ma.loc(), G1MARGlist(g1as))
+  g1marg_make_node(g0ma.loc(), G1MARGsarg(g1as))
+end // end of [let]
+|
+G0MARGdarg
+(tbeg, g0as, tend) =>
+let
+  val g1as =
+  (
+    list_map<g0arg><g1arg>(g0as)
+  ) where
+  {
+    implement
+    list_map$fopr<g0arg><g1arg>
+      (g0a) =
+      let
+      val-I0DNTsome(tok) = g0a.node() in tok
+      end
+  } (* end of [where] *)
+  val g1as = list_vt2t{g1arg}(g1as)
+in
+  g1marg_make_node(g0ma.loc(), G1MARGdarg(g1as))
 end // end of [let]
 ) (* end of [trans01_gmarg] *)
 

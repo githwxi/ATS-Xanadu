@@ -59,7 +59,7 @@ UN = "prelude/SATS/unsafe.sats"
 local
 
 datavtype
-t2ype1 =
+t2yper =
 | T2YPE of (loc_t, s2expopt)
 
 in (* in-of-local *)
@@ -78,7 +78,7 @@ t2ype_get_topt
   (x0) = s2eopt where
 {
   val x0 =
-  $UN.castvwtp0{t2ype1}(x0)
+  $UN.castvwtp0{t2yper}(x0)
   val+ T2YPE(_, s2eopt) = (x0)
   prval () = $UN.cast2void(x0)
 } (* end of [t2ype_get_topt] *)
@@ -88,7 +88,7 @@ t2ype_set_some
   (x0, s2e) = () where
 {
   val x0 =
-  $UN.castvwtp0{t2ype1}(x0)
+  $UN.castvwtp0{t2yper}(x0)
   val+@T2YPE(_, s2eopt) = (x0)
   val () = (s2eopt := Some(s2e))
   prval ((*fold*)) = fold@( x0 )
