@@ -202,6 +202,8 @@ end // end of [local]
 //
 #dynload "./dynexp3_print.dats"
 //
+#dynload "./trans23_dynexp.dats"
+//
 (* ****** ****** *)
 //
 datatype

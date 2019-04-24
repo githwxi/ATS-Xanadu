@@ -57,6 +57,7 @@ dynexp2.sats \
 nmspace.sats \
 trans12.sats \
 dynexp3.sats \
+trans23.sats \
 
 SRCDATS := \
 basics.dats \
@@ -108,6 +109,7 @@ trans12_staexp.dats \
 trans12_dynexp.dats \
 dynexp3.dats \
 dynexp3_print.dats \
+trans23_dynexp.dats \
 
 ######
 
