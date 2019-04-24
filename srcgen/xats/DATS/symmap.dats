@@ -213,9 +213,11 @@ fprint_val<key>
   val opt =
   $SYM.stamp_to_symbol(k0)
 in
-  case- opt of
-  ~Some_vt(sym) =>
-  $SYM.fprint_symbol(out, sym)
+//
+case- opt of
+| ~Some_vt(sym) =>
+  ($SYM.fprint_symbol(out, sym))
+//
 end // end of [fprint_val]
 implement
 fprint_val<itm>

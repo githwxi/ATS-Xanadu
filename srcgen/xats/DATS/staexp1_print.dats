@@ -183,8 +183,11 @@ fprint_g1marg
 case+
 x0.node() of
 |
-G1MARGlist(g1as) =>
-fprint!(out, "G1MARGlist(", g1as, ")")
+G1MARGsarg(g1as) =>
+fprint!(out, "G1MARGsarg(", g1as, ")")
+|
+G1MARGdarg(g1as) =>
+fprint!(out, "G1MARGdarg(", g1as, ")")
 ) (* end of [fprint_g1marg] *)
 
 end // end of [local]

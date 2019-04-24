@@ -123,7 +123,8 @@ g1marg_node =
 (*
 | G1MARGnone of ((*void*))
 *)
-| G1MARGlist of (g1arglst)
+| G1MARGsarg of (g1arglst)
+| G1MARGdarg of (g1arglst)
 //
 (* ****** ****** *)
 //

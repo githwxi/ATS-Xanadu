@@ -691,6 +691,25 @@ in (* in-of-let *)
 //
 case+ tnd of
 //
+| T_LBRACE() => let
+    val () = buf.incby1()
+    val g0as =
+      p_g0argseq_COMMA(buf, err)
+    // end of [val]
+    val tbeg = tok
+    val tend = p_RBRACE(buf, err)
+  in
+    err := e0;
+    g0marg_make_node
+    ( loc_res
+    , G0MARGsarg(tbeg, g0as, tend)
+    ) where
+    {
+      val
+      loc_res = tbeg.loc() + tend.loc()
+    } // g0marg_make_node
+  end // end of [T_LBRACE]
+//
 | T_LPAREN() => let
     val () = buf.incby1()
     val g0as =
@@ -702,7 +721,7 @@ case+ tnd of
     err := e0;
     g0marg_make_node
     ( loc_res
-    , G0MARGlist(tbeg, g0as, tend)
+    , G0MARGdarg(tbeg, g0as, tend)
     ) where
     {
       val
@@ -715,7 +734,7 @@ case+ tnd of
     val () = (err := e0 + 1)
   in
     g0marg_make_node(tok.loc(), G0MARGnone(tok))
-  end // end of [non-LPAREN]
+  end // end of [non-LBRACE-LPAREN]
 //
 end // end of [p_g0marg]
 //

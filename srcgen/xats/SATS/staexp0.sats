@@ -462,7 +462,9 @@ typedef g0arglst = List0(g0arg)
 datatype
 g0marg_node =
 | G0MARGnone of (token)
-| G0MARGlist of
+| G0MARGsarg of
+  (token(*LP*), g0arglst, token(*RP*))
+| G0MARGdarg of
   (token(*LP*), g0arglst, token(*RP*))
 //
 (* ****** ****** *)

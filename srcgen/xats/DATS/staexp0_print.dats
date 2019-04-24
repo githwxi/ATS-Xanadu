@@ -385,9 +385,12 @@ x0.node() of
 | G0MARGnone(tok) =>
   fprint!
   (out, "G0MARGnone(", tok, ")")
-| G0MARGlist(tbeg, g0as, tend) =>
+| G0MARGsarg(tbeg, g0as, tend) =>
   fprint!
-  (out, "G0MARGlist(", tbeg, "; ", g0as, "; ", tend, ")")
+  (out, "G0MARGsarg(", tbeg, "; ", g0as, "; ", tend, ")")
+| G0MARGdarg(tbeg, g0as, tend) =>
+  fprint!
+  (out, "G0MARGdarg(", tbeg, "; ", g0as, "; ", tend, ")")
 ) (* fprint_g0marg *)
 
 end // end of [local]
