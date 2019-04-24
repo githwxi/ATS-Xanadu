@@ -1,5 +1,5 @@
 #define x 5
-#define f{a}(x,y) x+y*z
+#macdef f{a}(x,y) = x+y*z
 ////
 (*
 #macdef g(x) x + 6
