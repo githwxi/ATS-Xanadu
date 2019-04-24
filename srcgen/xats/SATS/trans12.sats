@@ -54,7 +54,9 @@ typedef loc_t = $LOC.loc_t
 
 (* ****** ****** *)
 
+(*
 symintr trans12
+*)
 
 (* ****** ****** *)
 

@@ -1,5 +1,17 @@
+(*
+fun
+{a
+:type}
+length
+| nil() => 0
+| cons(x, xs) = x+length(xs)
+withtype
+{n:nat} list(a, n) -> int(n)
+*)
+
+////
 #define x 5
-#macdef f{a}(x,y) = x+y*z
+#macdef f{a}(x,y) = u*(x+y*z)
 ////
 (*
 #macdef g(x) x + 6
@@ -17,7 +29,7 @@ G0Vclo(lam(y) => x + y, D0E
 
 D0E
 
-app(lam(xs) => cons(x, xs)
+app(lam(xs) => cons(x, xs))
 
 
 
