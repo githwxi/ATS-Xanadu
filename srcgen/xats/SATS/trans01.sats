@@ -64,7 +64,9 @@ typedef filpath = $FIL.filpath
 //
 (* ****** ****** *)
 
+(*
 symintr trans01
+*)
 
 (* ****** ****** *)
 

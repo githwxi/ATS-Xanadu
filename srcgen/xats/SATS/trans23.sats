@@ -32,42 +32,41 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#staload "./basics.sats"
+//
+(* ****** ****** *)
+//
+#staload S2E = "./staexp2.sats"
+#staload D2E = "./dynexp2.sats"
+//
+#staload D3E = "./dynexp3.sats"
+//
+(* ****** ****** *)
 
-#staload "./dynexp2.sats"
+typedef s2exp = $S2E.s2exp
 
 (* ****** ****** *)
 
-abstbox d3exp_tbox = ptr
+typedef d2exp = $D2E.d2exp
+typedef d2expopt = $D2E.d2expopt
+typedef d2explst = $D2E.d2explst
 
 (* ****** ****** *)
 
-typedef d3exp = d3exp_tbox
-typedef d3explst = List0(d3exp)
-typedef d3expopt = Option(d3exp)
-
-(* ****** ****** *)
-
-datatype
-d3exp_node =
-| D3Enone0 of () | D3Enone1 of (d2exp)
+typedef d3exp = $D3E.d3exp
+typedef d3expopt = $D3E.d3expopt
+typedef d3explst = $D3E.d3explst
 
 (* ****** ****** *)
 //
 fun
-d3exp_get_loc(d3exp): loc_t
+trans23_dexp: d2exp -> d3exp 
 fun
-d3exp_get_type(d3exp): t2ype
+trans23_dexpopt: d2expopt -> d3expopt
 fun
-d3exp_get_node(d3exp): d3exp_node
-//
-overload .loc with d3exp_get_loc
-overload .type with d3exp_get_type
-overload .node with d3exp_get_node
-//
-fun
-d3exp_make_node
-(loc: loc_t, node: d3exp_node): d3exp
+trans23_dexplst: d2explst -> d3explst
 //
 (* ****** ****** *)
 
-(* end of [xats_dynexp3.sats] *)
+(* end of [xats_trans23.sats] *)

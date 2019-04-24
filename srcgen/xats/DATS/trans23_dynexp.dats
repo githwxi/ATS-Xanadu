@@ -70,4 +70,4 @@ d3exp_make_node
 //
 (* ****** ****** *)
 
-(* end of [xats_dynexp3.sats] *)
+(* end of [dynexp3.sats] *)
