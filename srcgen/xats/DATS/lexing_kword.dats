@@ -412,6 +412,7 @@ val () = myins("#static", T_SRP_STATIC)
 val () = myins("#extern", T_SRP_EXTERN)
 //
 val () = myins("#define", T_SRP_DEFINE)
+val () = myins("#macdef", T_SRP_MACDEF)
 //
 val () = myins("#include", T_SRP_INCLUDE)
 //
