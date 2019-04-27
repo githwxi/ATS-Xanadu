@@ -64,8 +64,8 @@ overload fprint with fprint_t2ype
 abstbox t2xtv_tbox
 typedef t2xtv = t2xtv_tbox
 //
-abstype fc2ref_tbox
-typedef fc2ref = fc2ref_tbox
+abstype fcref_tbox
+typedef fcref = fcref_tbox
 //
 (* ****** ****** *)
 
@@ -80,19 +80,24 @@ labt2ypelst = List0(labt2ype)
 datatype
 t2ype_node =
 //
-| T2Pnone of (sort2)
-//
 | T2Pcst of s2cst // constant
 | T2Pvar of s2var // variable
 //
 | T2Extv of t2xtv // ext-variable
 //
 | T2Pfun of
-  ( fc2ref(*funclo2*)
+  ( fcref // ref(funclo2)
   , int(*npf*), t2ypelst(*arg*), t2ype(*res*)
   ) (* end of T2Pfun *)
 //
 | T2Ptuple of (tyrec, int(*npf*), labt2ypelst)
+//
+(* ****** ****** *)
+//
+fun
+t2ype_get_node(t2ype): t2ype_node
+//
+overload .node with t2ype_get_node
 //
 (* ****** ****** *)
 
@@ -108,7 +113,15 @@ typedef d3expopt = Option(d3exp)
 
 datatype
 d3exp_node =
-| D3Eint of token
+//
+| D3Eint of (token)
+| D3Estr of (token)
+//
+| D2Evar of (d2var)
+//
+| D3Etuple of
+  (int(*knd*), int(*npf*), d3explst)
+//
 | D3Enone0 of () | D3Enone1 of (d2exp)
 
 (* ****** ****** *)
@@ -134,6 +147,19 @@ fun d3exp_none1(d2exp): d3exp
 fun
 d3exp_make_node
 (loc: loc_t, node: d3exp_node): d3exp
+//
+(* ****** ****** *)
+//
+fun
+print_d3exp: print_type(d3exp)
+fun
+prerr_d3exp: prerr_type(d3exp)
+fun
+fprint_d3exp: fprint_type(d3exp)
+//
+overload print with print_d3exp
+overload prerr with prerr_d3exp
+overload fprint with fprint_d3exp
 //
 (* ****** ****** *)
 
