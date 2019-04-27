@@ -32,65 +32,34 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./../SATS/basics.sats"
-
+//
+#staload
+SYM = "./../SATS/symbol.sats"
+#staload
+LOC = "./../SATS/locinfo.sats"
+//
+  typedef sym_t = $SYM.sym_t
+  typedef loc_t = $LOC.loc_t
+//
 (* ****** ****** *)
 
 #staload "./../SATS/staexp2.sats"
-#staload "./../SATS/stacst2.sats"
-#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp3.sats"
-
-(* ****** ****** *)
-
-#staload "./../SATS/trans23.sats"
 
 (* ****** ****** *)
 
 local
 
-fun
-aux_int
-( d2e0
-: d2exp): d3exp =
-(
-  d3e0.type1(t2p0)
-) where
+absimpl
+t2ype_tbox = $rec
 {
-//
-val
-loc0 = d2e0.loc()
-val-
-D2Eint(tok) = d2e0.node()
-//
-val t2p0 =
-t2ype_g0int((*void*))
-val d3e0 =
-d3exp_make_node(loc0, D3Eint(tok))
-//
-} (* end of [aux_int] *)
+  t2ype_node= t2ype_node
+}
 
 in (* in-of-local *)
-
-implement
-trans23_dexp
-  (d2e0) = let
-//
-val
-loc0 = d2e0.loc()
-//
-val () =
-println!
-("trans23_dexp: d2e0 = ", d2e0)
-//
-in
-  d3exp_none1(d2e0)
-end // end of [trans23_dexp]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_trans23.sats] *)
+(* end of [xats_statyp2.dats] *)

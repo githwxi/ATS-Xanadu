@@ -41,64 +41,9 @@
 #staload "./dynexp2.sats"
 
 (* ****** ****** *)
-//
-abstbox t2ype_tbox = ptr
-typedef t2ype = t2ype_tbox
-typedef t2ypelst = List0(t2ype)
-//
-(* ****** ****** *)
-//
-fun
-print_t2ype: print_type(t2ype)
-fun
-prerr_t2ype: prerr_type(t2ype)
-fun
-fprint_t2ype: fprint_type(t2ype)
-//
-overload print with print_t2ype
-overload prerr with prerr_t2ype
-overload fprint with fprint_t2ype
-//
-(* ****** ****** *)
-//
-abstbox t2xtv_tbox
-typedef t2xtv = t2xtv_tbox
-//
-abstype fcref_tbox
-typedef fcref = fcref_tbox
-//
-(* ****** ****** *)
 
-datatype
-labt2ype =
-| TLABELED of (label, t2ype)
-where
-labt2ypelst = List0(labt2ype)
+#staload "./statyp2.sats"
 
-(* ****** ****** *)
-//
-datatype
-t2ype_node =
-//
-| T2Pcst of s2cst // constant
-| T2Pvar of s2var // variable
-//
-| T2Extv of t2xtv // ext-variable
-//
-| T2Pfun of
-  ( fcref // ref(funclo2)
-  , int(*npf*), t2ypelst(*arg*), t2ype(*res*)
-  ) (* end of T2Pfun *)
-//
-| T2Ptuple of (tyrec, int(*npf*), labt2ypelst)
-//
-(* ****** ****** *)
-//
-fun
-t2ype_get_node(t2ype): t2ype_node
-//
-overload .node with t2ype_get_node
-//
 (* ****** ****** *)
 
 abstbox d3exp_tbox = ptr
@@ -129,13 +74,25 @@ d3exp_node =
 fun
 d3exp_get_loc(d3exp): loc_t
 fun
-d3exp_get_type(d3exp): t2ype
-fun
 d3exp_get_node(d3exp): d3exp_node
 //
 overload .loc with d3exp_get_loc
-overload .type with d3exp_get_type
 overload .node with d3exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+d3exp_get_type(d3exp): t2ype
+fun
+d3exp_set_type0
+(d3e: d3exp, t2p: t2ype): void
+fun
+d3exp_set_type1
+(d3e: d3exp, t2p: t2ype): d3exp
+//
+overload .type with d3exp_get_type
+overload .type0 with d3exp_set_type0
+overload .type1 with d3exp_set_type1
 //
 (* ****** ****** *)
 

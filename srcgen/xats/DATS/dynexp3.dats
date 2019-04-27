@@ -43,7 +43,9 @@ LOC = "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
@@ -54,7 +56,7 @@ absimpl
 d3exp_tbox = $rec
 { d3exp_loc= loc_t
 , d3exp_node= d3exp_node
-, d3exp_type= t2ype_tbox
+, d3exp_type= t2xtv_tbox
 } (* end of [absimpl] *)
 
 in (* in-of-local *)
@@ -71,7 +73,7 @@ d3exp_make_node
   (loc0, node) = $rec
 { d3exp_loc= loc0
 , d3exp_node= node
-, d3exp_type= t2ype_none(loc0)
+, d3exp_type= t2xtv_new(loc0)
 } (* d3exp_make_node *)
 //
 end // end of [local]
@@ -90,4 +92,4 @@ d3exp_make_node
 //
 (* ****** ****** *)
 
-(* end of [dynexp3.dats] *)
+(* end of [xats_dynexp3.dats] *)
