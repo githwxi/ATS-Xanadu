@@ -58,49 +58,6 @@ UN = "prelude/SATS/unsafe.sats"
 
 local
 
-datavtype
-t2yper =
-| T2YPE of (loc_t, s2expopt)
-
-in (* in-of-local *)
-
-implement
-t2ype_none(loc) =
-$UN.castvwtp0(T2YPE(loc, None()))
-implement
-t2ype_some(loc, s2e) =
-$UN.castvwtp0(T2YPE(loc, Some(s2e)))
-
-(* ****** ****** *)
-
-implement
-t2ype_get_topt
-  (x0) = s2eopt where
-{
-  val x0 =
-  $UN.castvwtp0{t2yper}(x0)
-  val+ T2YPE(_, s2eopt) = (x0)
-  prval () = $UN.cast2void(x0)
-} (* end of [t2ype_get_topt] *)
-
-implement
-t2ype_set_some
-  (x0, s2e) = () where
-{
-  val x0 =
-  $UN.castvwtp0{t2yper}(x0)
-  val+@T2YPE(_, s2eopt) = (x0)
-  val () = (s2eopt := Some(s2e))
-  prval ((*fold*)) = fold@( x0 )
-  prval ((*void*)) = $UN.cast2void(x0)
-} (* end of [t2ype_set_some] *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
 val
 stamper = $STM.stamper_new()
 

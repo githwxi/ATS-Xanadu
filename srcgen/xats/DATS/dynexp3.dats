@@ -77,5 +77,17 @@ d3exp_make_node
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+d3exp_none1(d2e0) =
+(
+d3exp_make_node
+(loc0, D3Enone1(d2e0))
+) where
+{
+  val loc0 = d2e0.loc((*void*))
+}
+//
+(* ****** ****** *)
 
 (* end of [dynexp3.dats] *)

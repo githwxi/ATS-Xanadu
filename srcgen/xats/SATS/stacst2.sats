@@ -32,47 +32,17 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
+
 #staload "./basics.sats"
-//
-(* ****** ****** *)
-//
-#staload S2E = "./staexp2.sats"
-#staload D2E = "./dynexp2.sats"
-//
-#staload D3E = "./dynexp3.sats"
-//
-(* ****** ****** *)
-
-typedef s2exp = $S2E.s2exp
 
 (* ****** ****** *)
 
-typedef d2exp = $D2E.d2exp
-typedef d2expopt = $D2E.d2expopt
-typedef d2explst = $D2E.d2explst
-
-(* ****** ****** *)
-
-typedef d3exp = $D3E.d3exp
-typedef d3expopt = $D3E.d3expopt
-typedef d3explst = $D3E.d3explst
+#staload "./staexp2.sats"
 
 (* ****** ****** *)
 //
-fun
-trans23_dexp: d2exp -> d3exp 
-fun
-trans23_dexpopt: d2expopt -> d3expopt
-fun
-trans23_dexplst: d2explst -> d3explst
-//
-(* ****** ****** *)
-//
-fun
-trans23_dexp_dn
-  (d2e0: d2exp, s2e0: s2exp): (d3exp)
+fun s2exp_g0int(): s2exp
 //
 (* ****** ****** *)
 
-(* end of [xats_trans23.sats] *)
+(* end of [xats_stacst2.sats] *)
