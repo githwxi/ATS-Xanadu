@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,69 +28,52 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: April, 2019
+// Start Time: October, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./../SATS/basics.sats"
-
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
 (* ****** ****** *)
-
+//
 #staload "./../SATS/staexp2.sats"
-#staload "./../SATS/stacst2.sats"
-#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp3.sats"
-
+//
 (* ****** ****** *)
-
-#staload "./../SATS/trans23.sats"
-
+//
+#staload
+_(*TMP*) = "./../DATS/staexp2_print.dats"
+//
 (* ****** ****** *)
-
-local
-
-fun
-aux_int
-( d2e0
-: d2exp): d3exp =
-(
-  d3e0.type1(t2p0)
-) where
-{
 //
-val
-loc0 = d2e0.loc()
-val-
-D2Eint(tok) = d2e0.node()
-//
-val t2p0 =
-t2ype_g0int((*void*))
-val d3e0 =
-d3exp_make_node(loc0, D3Eint(tok))
-//
-} (* end of [aux_int] *)
-
-in (* in-of-local *)
-
 implement
-trans23_dexp
-  (d2e0) = let
+fprint_val<t2ype> = fprint_t2ype
 //
-val
-loc0 = d2e0.loc()
+(* ****** ****** *)
 //
-val () =
-println!
-("trans23_dexp: d2e0 = ", d2e0)
+implement
+print_t2ype(x0) =
+fprint_t2ype(stdout_ref, x0) 
+implement
+prerr_t2ype(x0) =
+fprint_t2ype(stdout_ref, x0) 
 //
-in
-  d3exp_none1(d2e0)
-end // end of [trans23_dexp]
-
-end // end of [local]
-
+implement
+fprint_t2ype
+  (out, x0) =
+(
+case-
+x0.node() of
+| T2Pcst(s2c) =>
+  fprint!(out, "T2Pcst(", s2c, ")")
+| T2Pvar(s2v) =>
+  fprint!(out, "T2Pvar(", s2v, ")")
+)
+//
 (* ****** ****** *)
 
-(* end of [xats_trans23.sats] *)
+(* end of [xats_statyp2_print.dats] *)

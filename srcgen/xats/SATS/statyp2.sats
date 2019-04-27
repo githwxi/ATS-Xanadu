@@ -33,64 +33,82 @@
 //
 (* ****** ****** *)
 
-#staload "./../SATS/basics.sats"
+#staload "./basics.sats"
 
 (* ****** ****** *)
 
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/stacst2.sats"
-#staload "./../SATS/dynexp2.sats"
-#staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp3.sats"
+#staload "./staexp2.sats"
+#staload "./dynexp2.sats"
 
 (* ****** ****** *)
-
-#staload "./../SATS/trans23.sats"
-
+//
+abstbox t2ype_tbox = ptr
+typedef t2ype = t2ype_tbox
+typedef t2ypelst = List0(t2ype)
+//
 (* ****** ****** *)
 
-local
+fun t2ype_bool(): t2ype
+fun t2ype_char(): t2ype
+fun t2ype_g0int(): t2ype
 
+(* ****** ****** *)
+//
 fun
-aux_int
-( d2e0
-: d2exp): d3exp =
-(
-  d3e0.type1(t2p0)
-) where
-{
+print_t2ype: print_type(t2ype)
+fun
+prerr_t2ype: prerr_type(t2ype)
+fun
+fprint_t2ype: fprint_type(t2ype)
 //
-val
-loc0 = d2e0.loc()
-val-
-D2Eint(tok) = d2e0.node()
+overload print with print_t2ype
+overload prerr with prerr_t2ype
+overload fprint with fprint_t2ype
 //
-val t2p0 =
-t2ype_g0int((*void*))
-val d3e0 =
-d3exp_make_node(loc0, D3Eint(tok))
+(* ****** ****** *)
 //
-} (* end of [aux_int] *)
-
-in (* in-of-local *)
-
-implement
-trans23_dexp
-  (d2e0) = let
+abstbox t2xtv_tbox = ptr
+typedef t2xtv = t2xtv_tbox
 //
-val
-loc0 = d2e0.loc()
+abstype fcref_tbox = ptr
+typedef fcref = fcref_tbox
 //
-val () =
-println!
-("trans23_dexp: d2e0 = ", d2e0)
+(* ****** ****** *)
 //
-in
-  d3exp_none1(d2e0)
-end // end of [trans23_dexp]
-
-end // end of [local]
-
+fun t2xtv_new(loc_t): t2xtv
+//
 (* ****** ****** *)
 
-(* end of [xats_trans23.sats] *)
+datatype
+labt2ype =
+| TLABELED of (label, t2ype)
+where
+labt2ypelst = List0(labt2ype)
+
+(* ****** ****** *)
+//
+datatype
+t2ype_node =
+//
+| T2Pcst of s2cst // constant
+| T2Pvar of s2var // variable
+//
+| T2Extv of t2xtv // ext-variable
+//
+| T2Pfun of
+  ( fcref // ref(funclo2)
+  , int(*npf*), t2ypelst(*arg*), t2ype(*res*)
+  ) (* end of T2Pfun *)
+//
+| T2Ptuple of (tyrec, int(*npf*), labt2ypelst)
+//
+(* ****** ****** *)
+//
+fun
+t2ype_get_node(t2ype): t2ype_node
+//
+overload .node with t2ype_get_node
+//
+(* ****** ****** *)
+
+(* end of [statyp2.sats] *)
