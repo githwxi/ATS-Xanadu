@@ -111,4 +111,4 @@ overload .node with t2ype_get_node
 //
 (* ****** ****** *)
 
-(* end of [statyp2.sats] *)
+(* end of [xats_statyp2.sats] *)
