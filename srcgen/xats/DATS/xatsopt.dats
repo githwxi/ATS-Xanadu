@@ -90,11 +90,11 @@ _(*TMP*) =
   "./../DATS/staexp2_print.dats"
 #staload
 _(*TMP*) =
-  "./../DATS/dynexp2_print.dats"
-//
+  "./../DATS/statyp2_print.dats"
 #staload
 _(*TMP*) =
-  "./../DATS/statyp2_print.dats"
+  "./../DATS/dynexp2_print.dats"
+//
 #staload
 _(*TMP*) =
   "./../DATS/dynexp3_print.dats"
@@ -184,6 +184,7 @@ end // end of [local]
 #dynload "./effect.dats"
 //
 #dynload "./staexp2.dats"
+#dynload "./statyp2.dats"
 #dynload "./dynexp2.dats"
 //
 #dynload "./staexp2_init0.dats"
@@ -191,7 +192,10 @@ end // end of [local]
 #dynload "./staexp2_util1.dats"
 #dynload "./staexp2_util2.dats"
 //
+#dynload "./staexp2_const.dats"
+//
 #dynload "./staexp2_print.dats"
+#dynload "./statyp2_print.dats"
 #dynload "./dynexp2_print.dats"
 //
 #dynload "./nmspace.dats"
@@ -201,10 +205,8 @@ end // end of [local]
 #dynload "./trans12_staexp.dats"
 #dynload "./trans12_dynexp.dats"
 //
-#dynload "./statyp2.dats"
 #dynload "./dynexp3.dats"
 //
-#dynload "./statyp2_print.dats"
 #dynload "./dynexp3_print.dats"
 //
 #dynload "./trans23_dynexp.dats"

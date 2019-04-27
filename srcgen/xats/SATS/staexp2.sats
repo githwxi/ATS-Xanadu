@@ -834,6 +834,13 @@ labs2explst_make_list2
 //
 (* ****** ****** *)
 //
+fun s2exp_g0int(): s2exp
+fun s2exp_bool0(): s2exp
+fun s2exp_char0(): s2exp
+fun s2exp_list0(s2exp): s2exp
+//
+(* ****** ****** *)
+//
 (*
 fun
 print_s2eff: print_type(s2eff)

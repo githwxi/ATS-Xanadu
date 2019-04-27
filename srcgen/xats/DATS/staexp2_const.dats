@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,21 +28,28 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: April, 2019
+// Start Time: December, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./basics.sats"
-
-(* ****** ****** *)
-
-#staload "./staexp2.sats"
-
-(* ****** ****** *)
 //
-fun s2exp_g0int(): s2exp
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-(* end of [xats_stacst2.sats] *)
+#staload
+SYM = "./../SATS/symbol.sats"
+
+(* ****** ****** *)
+//
+#staload "./../SATS/staexp2.sats"
+//
+(* ****** ****** *)
+
+
+(* ****** ****** *)
+
+(* end of [xats_staexp2_const.dats] *)
