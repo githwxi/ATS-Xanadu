@@ -38,11 +38,8 @@
 (* ****** ****** *)
 
 #staload "./staexp2.sats"
-#staload "./dynexp2.sats"
-
-(* ****** ****** *)
-
 #staload "./statyp2.sats"
+#staload "./dynexp2.sats"
 
 (* ****** ****** *)
 

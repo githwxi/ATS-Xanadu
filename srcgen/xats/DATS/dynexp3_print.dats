@@ -41,17 +41,19 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 //
 #staload
 _(*TMP*) = "./../DATS/staexp2_print.dats"
+#staload
+_(*TMP*) = "./../DATS/statyp2_print.dats"
 #staload
 _(*TMP*) = "./../DATS/dynexp2_print.dats"
 //
@@ -64,27 +66,6 @@ fprint_val<t2ype> = fprint_t2ype
 //
 implement
 fprint_val<d3exp> = fprint_d3exp
-//
-(* ****** ****** *)
-//
-implement
-print_t2ype(x0) =
-fprint_t2ype(stdout_ref, x0) 
-implement
-prerr_t2ype(x0) =
-fprint_t2ype(stdout_ref, x0) 
-//
-implement
-fprint_t2ype
-  (out, x0) =
-(
-case-
-x0.node() of
-| T2Pcst(s2c) =>
-  fprint!(out, "T2Pcst(", s2c, ")")
-| T2Pvar(s2v) =>
-  fprint!(out, "T2Pvar(", s2v, ")")
-)
 //
 (* ****** ****** *)
 //
