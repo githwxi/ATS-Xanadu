@@ -33,8 +33,18 @@
 //
 (* ****** ****** *)
 
-#staload "./basics.sats"
+#staload"./basics.sats"
 
+(* ****** ****** *)
+//
+#staload
+  SYM = "./symbol.sats"
+#staload
+  LAB = "./label0.sats"
+//
+typedef sym_t = $SYM.sym_t
+typedef label = $LAB.label
+//
 (* ****** ****** *)
 
 #staload "./staexp2.sats"
@@ -70,6 +80,9 @@ overload fprint with fprint_t2ype
 abstbox t2xtv_tbox = ptr
 typedef t2xtv = t2xtv_tbox
 //
+abstype t2srt_tbox = ptr
+typedef t2srt = t2srt_tbox
+//
 abstype fcref_tbox = ptr
 typedef fcref = fcref_tbox
 //
@@ -89,6 +102,8 @@ labt2ypelst = List0(labt2ype)
 //
 datatype
 t2ype_node =
+// externally named
+| T2Pbas of sym_t // type
 //
 | T2Pcst of s2cst // constant
 | T2Pvar of s2var // variable
@@ -104,20 +119,30 @@ t2ype_node =
 //
 (* ****** ****** *)
 //
-fun
-t2ype_get_node(t2ype): t2ype_node
-//
-overload .node with t2ype_get_node
-//
-(* ****** ****** *)
-//
 fun t2ype_sint0(): t2ype
 fun t2ype_uint0(): t2ype
 //
 fun t2ype_bool0(): t2ype
 fun t2ype_char0(): t2ype
 //
-fun t2ype_list0(t2ype): t2ype
+fun
+t2ype_make_name(string): t2ype
+//
+(* ****** ****** *)
+//
+fun
+t2ype_get_sort(t2ype): t2srt
+fun
+t2ype_get_node(t2ype): t2ype_node
+//
+overload .sort with t2ype_get_sort
+overload .node with t2ype_get_node
+//
+(* ****** ****** *)
+//
+fun
+t2ype_make_node
+(t2s0: t2srt, node: t2ype_node): t2ype
 //
 (* ****** ****** *)
 
