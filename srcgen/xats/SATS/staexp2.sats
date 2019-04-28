@@ -80,17 +80,19 @@ typedef s1exp = $S1E.s1exp
 //
 // HX: datasort
 //
-fun t2abs_stamp_new(): stamp
-fun t2dat_stamp_new(): stamp
-(*
-fun t2xtv_stamp_new(): stamp
-*)
+fun
+t2abs_stamp_new(): stamp
+fun
+t2dat_stamp_new(): stamp
 //
-fun s2cst_stamp_new(): stamp
+fun
+s2cst_stamp_new(): stamp
 //
-fun s2var_stamp_new(): stamp
+fun
+s2var_stamp_new(): stamp
 //
-fun s2xtv_stamp_new(): stamp
+fun
+s2xtv_stamp_new(): stamp
 //
 (* ****** ****** *)
 

@@ -40,6 +40,9 @@
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
@@ -65,7 +68,7 @@ val-
 D2Eint(tok) = d2e0.node()
 //
 val t2p0 =
-t2ype_g0int((*void*))
+t2ype_sint((*void*))
 val d3e0 =
 d3exp_make_node(loc0, D3Eint(tok))
 //

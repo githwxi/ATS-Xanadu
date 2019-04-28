@@ -52,16 +52,33 @@ typedef label = $LAB.label
 
 (* ****** ****** *)
 //
+(*
+abstype t2srt_tbox = ptr
+typedef t2srt = t2srt_tbox
+*)
+datatype t2srt = 
+| T2Snul of ((*void*))
+| T2Simp of (int(*knd*), sym_t)
+//
+(* ****** ****** *)
+//
 abstbox t2ype_tbox = ptr
 typedef t2ype = t2ype_tbox
 typedef t2ypelst = List0(t2ype)
 //
 (* ****** ****** *)
-
+//
+fun t2ype_sint(): t2ype
+fun t2ype_uint(): t2ype
+//
 fun t2ype_bool(): t2ype
 fun t2ype_char(): t2ype
-fun t2ype_g0int(): t2ype
-
+//
+fun t2ype_float(): t2ype
+fun t2ype_double(): t2ype
+//
+fun t2ype_string(): t2ype
+//
 (* ****** ****** *)
 //
 fun
@@ -80,13 +97,13 @@ overload fprint with fprint_t2ype
 abstbox t2xtv_tbox = ptr
 typedef t2xtv = t2xtv_tbox
 //
-abstype t2srt_tbox = ptr
-typedef t2srt = t2srt_tbox
-//
 abstype fcref_tbox = ptr
 typedef fcref = fcref_tbox
 //
 (* ****** ****** *)
+//
+fun
+t2xtv_stamp_new(): stamp
 //
 fun t2xtv_new(loc_t): t2xtv
 //
@@ -119,14 +136,9 @@ t2ype_node =
 //
 (* ****** ****** *)
 //
-fun t2ype_sint0(): t2ype
-fun t2ype_uint0(): t2ype
-//
-fun t2ype_bool0(): t2ype
-fun t2ype_char0(): t2ype
-//
 fun
-t2ype_make_name(string): t2ype
+t2ype_make_name
+(t2s0: t2srt, name: sym_t): t2ype
 //
 (* ****** ****** *)
 //
