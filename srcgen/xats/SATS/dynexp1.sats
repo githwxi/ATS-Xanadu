@@ -36,6 +36,16 @@
 #staload "./basics.sats"
 
 (* ****** ****** *)
+//
+#staload
+  FP0 = "./filpath.sats"
+//
+typedef
+filpath = $FP0.filpath
+typedef
+filpathopt = $FP0.filpathopt
+//
+(* ****** ****** *)
 
 #staload "./staexp0.sats"
 #staload "./dynexp0.sats"
@@ -43,13 +53,6 @@
 (* ****** ****** *)
 
 #staload "./staexp1.sats"
-
-(* ****** ****** *)
-
-#staload
-FP0 = "./filpath.sats"
-typedef filpath = $FP0.filpath
-typedef filpathopt = $FP0.filpathopt
 
 (* ****** ****** *)
 //
