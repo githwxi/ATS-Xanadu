@@ -34,6 +34,12 @@
 (* ****** ****** *)
 //
 #staload
+UN =
+"prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+//
+#staload
 SYM = "./../SATS/symbol.sats"
 #staload
 LOC = "./../SATS/locinfo.sats"
@@ -57,13 +63,98 @@ t2ype_tbox = $rec
 }
 
 in (* in-of-local *)
-
+//
+implement
+t2ype_get_sort
+  (t2p) = t2p.t2ype_sort
+implement
+t2ype_get_node
+  (t2p) = t2p.t2ype_node
+//
 implement
 t2ype_make_node
   (t2s0, node) = $rec
 {
   t2ype_sort= t2s0, t2ype_node= node
 }
+//
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+t2ype_make_name
+  (t2s0, name) =
+(
+  t2ype_make_node(t2s0, T2Pbas(name))
+)
+//
+(* ****** ****** *)
+
+local
+
+macdef
+symbol =
+$SYM.symbol_make
+
+val
+XATS_SINT_T =
+symbol("xats_sint_t")
+val
+XATS_UINT_T =
+symbol("xats_uint_t")
+
+val
+the_t2srt_type =
+T2Simp(0, $SYM.TYPE_symbol)
+val
+the_t2ype_sint =
+t2ype_make_name
+(the_t2srt_type, XATS_SINT_T)
+val
+the_t2ype_uint =
+t2ype_make_name
+(the_t2srt_type, XATS_UINT_T)
+
+in(*in-of-local*)
+
+implement
+t2ype_sint() = the_t2ype_sint
+implement
+t2ype_uint() = the_t2ype_uint
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+typedef t2ypenul = ptr
+//
+datavtype
+t2xtv_vt =
+T2XTV of (loc_t, t2ypenul)
+//
+in(*in-of-local*)
+
+implement
+t2xtv_new(loc) =
+$UN.castvwtp0{t2xtv}
+(
+  T2XTV(loc, the_null_ptr)
+)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+val
+stamper =
+$STM.stamper_new()
+in (* in-of-local *)
+implement
+t2xtv_stamp_new() = $STM.stamper_getinc(stamper)
 end // end of [local]
 
 (* ****** ****** *)
