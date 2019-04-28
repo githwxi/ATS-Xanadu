@@ -48,8 +48,62 @@ SYM = "./../SATS/symbol.sats"
 #staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
+//
+abstype
+s2cstnul_tbox(l:addr) = ptr
+typedef
+s2cstnul(l:addr) = s2cstnul_tbox(l)
+//
+typedef s2cstnul = [l:agez] s2cstnul(l)
+//
+(* ****** ****** *)
+//
+extern
+castfn
+s2cstnul_none(ptr(null)): s2cstnul(null)
+extern
+castfn
+s2cstnul_some(s2cst):<> [l:agz] s2cstnul(l)
+extern
+castfn
+s2cstnul_unsome{l:agz}(s2cstnul(l)):<> s2cst
+//
+(* ****** ****** *)
+//
+extern
+fun
+s2cstnul_iseqz
+{l:addr}(s2cstnul(l)): bool(l==null)
+// end of [s2cstnul_iseqz]
+extern
+fun
+s2cstnul_isneqz
+{l:addr}(s2cstnul(l)): bool(l > null)
+// end of [s2cstnul_isneqz]
+//
+overload iseqz with s2cstnul_iseqz
+overload isneqz with s2cstnul_isneqz
+//
+(* ****** ****** *)
+//
+local
 
+extern
+castfn
+_cast_
+{l:addr}(s2cstnul(l)):<> ptr(l)
 
+in (*in-of-local*)
+//
+implement
+s2cstnul_iseqz
+  (s2c) = (_cast_(s2c) = the_null_ptr)
+implement
+s2cstnul_isneqz
+  (s2c) = (_cast_(s2c) > the_null_ptr)
+//
+end // end of [local]
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2_const.dats] *)
