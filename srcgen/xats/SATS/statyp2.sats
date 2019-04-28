@@ -110,5 +110,15 @@ t2ype_get_node(t2ype): t2ype_node
 overload .node with t2ype_get_node
 //
 (* ****** ****** *)
+//
+fun t2ype_sint0(): t2ype
+fun t2ype_uint0(): t2ype
+//
+fun t2ype_bool0(): t2ype
+fun t2ype_char0(): t2ype
+//
+fun t2ype_list0(t2ype): t2ype
+//
+(* ****** ****** *)
 
 (* end of [xats_statyp2.sats] *)

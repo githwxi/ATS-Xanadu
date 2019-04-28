@@ -834,9 +834,12 @@ labs2explst_make_list2
 //
 (* ****** ****** *)
 //
-fun s2exp_g0int(): s2exp
+fun s2exp_sint0(): s2exp
+fun s2exp_uint0(): s2exp
+//
 fun s2exp_bool0(): s2exp
 fun s2exp_char0(): s2exp
+//
 fun s2exp_list0(s2exp): s2exp
 //
 (* ****** ****** *)
@@ -1017,6 +1020,57 @@ s2explst_revar
 fun
 s2explst_revar_vt
 (s2explst, s2v1: s2var, s2v2: s2var): s2explst_vt
+//
+(* ****** ****** *)
+
+abstype s2cstref_tbox = ptr
+typedef s2cstref = s2cstref_tbox
+
+(* ****** ****** *)
+
+fun
+s2cstref_make_name(string): s2cstref
+
+(* ****** ****** *)
+//
+fun
+s2cstref_get_s2cst(r0: s2cstref): s2cst
+fun
+s2cstref_get_s2exp(r0: s2cstref): s2exp
+//
+(* ****** ****** *)
+//
+fun
+s2cstref_equ_s2cst(s2cstref, s2cst): bool
+fun
+s2cstref_equ_s2exp(s2cstref, s2exp): bool
+//
+(* ****** ****** *)
+
+val the_tt_b0 : s2cstref // true
+val the_ff_b0 : s2cstref // false
+
+(* ****** ****** *)
+//
+val the_neg_b0 : s2cstref // b0 -> b0
+//
+val the_add_b0_b0 : s2cstref // (b0, b0) -> b0
+val the_mul_b0_b0 : s2cstref // (b0, b0) -> b0
+val the_equ_b0_b0 : s2cstref // (b0, b0) -> b0
+val the_neq_b0_b0 : s2cstref // (b0, b0) -> b0
+//
+(* ****** ****** *)
+//
+val the_neg_i0 : s2cstref // : (int) -> int
+//
+val the_add_i0_i0 : s2cstref // : (int, int) -> int
+val the_sub_i0_i0 : s2cstref // : (int, int) -> int
+val the_mul_i0_i0 : s2cstref // : (int, int) -> int
+val the_div_i0_i0 : s2cstref // : (int, int) -> int
+val the_mod_i0_i0 : s2cstref // : (int, int) -> int
+//
+val the_ndiv_i0_i0 : s2cstref // : (int, int) -> int
+val the_idiv_i0_i0 : s2cstref // : (int, int) -> int
 //
 (* ****** ****** *)
 
