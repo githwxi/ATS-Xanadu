@@ -83,6 +83,12 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
+t2ype_none() =
+t2ype_make_node(T2Snul(), T2Pnone())
+//
+(* ****** ****** *)
+//
+implement
 t2ype_make_name
   (t2s0, name) =
 (

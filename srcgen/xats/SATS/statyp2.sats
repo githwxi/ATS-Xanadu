@@ -108,13 +108,13 @@ t2xtv_stamp_new(): stamp
 fun t2xtv_new(loc_t): t2xtv
 //
 (* ****** ****** *)
-
+//
 datatype
 labt2ype =
 | TLABELED of (label, t2ype)
 where
 labt2ypelst = List0(labt2ype)
-
+//
 (* ****** ****** *)
 //
 datatype
@@ -132,7 +132,9 @@ t2ype_node =
   , int(*npf*), t2ypelst(*arg*), t2ype(*res*)
   ) (* end of T2Pfun *)
 //
-| T2Ptuple of (tyrec, int(*npf*), labt2ypelst)
+| T2Prec of (tyrec, int(*npf*), labt2ypelst)
+//
+| T2Pnone of ((*void*)) // HX: of sort T2Snul
 //
 (* ****** ****** *)
 //
@@ -149,6 +151,11 @@ t2ype_get_node(t2ype): t2ype_node
 //
 overload .sort with t2ype_get_sort
 overload .node with t2ype_get_node
+//
+(* ****** ****** *)
+//
+fun
+t2ype_none((*void*)): t2ype
 //
 (* ****** ****** *)
 //

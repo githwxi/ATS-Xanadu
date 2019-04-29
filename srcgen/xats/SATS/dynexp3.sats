@@ -80,16 +80,18 @@ overload .node with d3exp_get_node
 //
 fun
 d3exp_get_type(d3exp): t2ype
+overload .type with d3exp_get_type
+//
+(*
 fun
 d3exp_set_type0
 (d3e: d3exp, t2p: t2ype): void
 fun
 d3exp_set_type1
 (d3e: d3exp, t2p: t2ype): d3exp
-//
-overload .type with d3exp_get_type
 overload .type0 with d3exp_set_type0
 overload .type1 with d3exp_set_type1
+*)
 //
 (* ****** ****** *)
 
@@ -100,7 +102,9 @@ fun d3exp_none1(d2exp): d3exp
 //
 fun
 d3exp_make_node
-(loc: loc_t, node: d3exp_node): d3exp
+( loc: loc_t
+, t2p: t2ype
+, node: d3exp_node): d3exp
 //
 (* ****** ****** *)
 //

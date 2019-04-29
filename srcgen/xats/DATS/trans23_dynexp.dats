@@ -57,22 +57,21 @@ fun
 aux_int
 ( d2e0
 : d2exp): d3exp =
-(
-  d3e0.type1(t2p0)
-) where
-{
+let
 //
 val
 loc0 = d2e0.loc()
 val-
 D2Eint(tok) = d2e0.node()
 //
-val t2p0 =
-t2ype_sint((*void*))
-val d3e0 =
-d3exp_make_node(loc0, D3Eint(tok))
+val
+t2p0 = t2ype_sint((*void*))
 //
-} (* end of [aux_int] *)
+in
+//
+d3exp_make_node(loc0, t2p0, D3Eint(tok))
+//
+end (* end of [aux_int] *)
 
 in (* in-of-local *)
 

@@ -51,14 +51,14 @@ LOC = "./../SATS/locinfo.sats"
 (* ****** ****** *)
 
 local
-
+//
 absimpl
 d3exp_tbox = $rec
 { d3exp_loc= loc_t
+, d3exp_type= t2ype
 , d3exp_node= d3exp_node
-, d3exp_type= t2xtv_tbox
 } (* end of [absimpl] *)
-
+//
 in (* in-of-local *)
 //
 implement
@@ -70,10 +70,11 @@ d3exp_get_node
 //
 implement
 d3exp_make_node
-  (loc0, node) = $rec
+(
+loc0, t2p0, node
+) = $rec
 { d3exp_loc= loc0
-, d3exp_node= node
-, d3exp_type= t2xtv_new(loc0)
+, d3exp_type= t2p0, d3exp_node= node
 } (* d3exp_make_node *)
 //
 end // end of [local]
@@ -84,10 +85,11 @@ implement
 d3exp_none1(d2e0) =
 (
 d3exp_make_node
-(loc0, D3Enone1(d2e0))
+(loc0, t2p0, D3Enone1(d2e0))
 ) where
 {
   val loc0 = d2e0.loc((*void*))
+  val t2p0 = t2ype_none((*void*))
 }
 //
 (* ****** ****** *)
