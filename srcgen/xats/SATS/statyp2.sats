@@ -128,8 +128,8 @@ t2ype_node =
 | T2Extv of t2xtv // ext-variable
 //
 | T2Pfun of
-  ( fcref // ref(funclo2)
-  , int(*npf*), t2ypelst(*arg*), t2ype(*res*)
+  ( fcref//ref(funclo2)
+  , int(*npf*),t2ypelst(*arg*),t2ype(*res*)
   ) (* end of T2Pfun *)
 //
 | T2Prec of (tyrec, int(*npf*), labt2ypelst)
