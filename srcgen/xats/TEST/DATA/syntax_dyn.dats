@@ -1,3 +1,4 @@
+
 (*
 fun
 {a
@@ -657,6 +658,10 @@ test
 , xs: list(int)): bool =
 (xs).iforall(lam(i, x) => (x != x0) && (abs(x-x0) != i+1))
 }
+
+(* ****** ****** *)
+
+typedef xyz = $extype("list", int)
 
 (* ****** ****** *)
 

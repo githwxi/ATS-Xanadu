@@ -695,12 +695,12 @@ s2exp_node =
 | S2Elist of s2explst // HX: temporary use
 *)
 //
+| S2Etyext of (s2explst) (* externlly named *)
+//
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
-| S2Etyext of s2explst (* externlly named *)
-//
 | S2Enone0 of (loc_t) // HX: error indication
-| S2Enone1 of s1exp(*src*) // HX: error indication
+| S2Enone1 of (s1exp) // HX: error indication
 //
 // end of [s2exp_node]
 //

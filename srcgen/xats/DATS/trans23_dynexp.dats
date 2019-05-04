@@ -56,8 +56,7 @@ local
 fun
 aux_int
 ( d2e0
-: d2exp): d3exp =
-let
+: d2exp): d3exp = let
 //
 val
 loc0 = d2e0.loc()
@@ -87,7 +86,11 @@ println!
 ("trans23_dexp: d2e0 = ", d2e0)
 //
 in
-  d3exp_none1(d2e0)
+//
+case+
+d2e0.node() of
+| _ (*rest-of-d2e0*) => d3exp_none1(d2e0)
+//
 end // end of [trans23_dexp]
 
 end // end of [local]
