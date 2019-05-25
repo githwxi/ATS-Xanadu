@@ -10,7 +10,5 @@ wget https://sourceforge.net/projects/ats2-lang/files/ats2-lang/ats2-postiats-$A
 tar -xzf download
 
 mv $ATS2PKG $HOME/ATS2
-(cd $HOME/ATS2 && ./configure)
-(cd $HOME/ATS2 && make all)
 
 ###### end of [install-ats2.sh] ######
