@@ -21,6 +21,8 @@ before_install:
   - export PATSHOME=${HOME}/ATS2
   - export PATH=${PATH}:${PATSHOME}/bin
   - export XATSHOME=${TRAVIS_BUILD_DIR}
+  - export GCC=gcc
+  - export CLANG=clang
 
 install:
   - $XATSHOME/travis-ci/install-ats2.sh 0.3.12
