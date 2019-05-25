@@ -18,9 +18,9 @@ addons:
 
 before_install:
   - date
-  - export PATSHOME=$HOME/ATS2
+  - export PATSHOME=${HOME}/ATS2
   - export PATH=${PATH}:${PATSHOME}/bin
-  - export XATSHOME=$TRAVIS_BUILD_DIR
+  - export XATSHOME=${TRAVIS_BUILD_DIR}
 
 install:
   - $XATSHOME/travis-ci/install-ats2.sh 0.3.12
@@ -32,6 +32,10 @@ before_script:
   - date
 
 script:
+  # Building ATS2
+  - cd ${PATSHOME}
+  - ./configure&&make CC=${GCC} all
+  # Building Xanadu
   - cd $XATSHOME/srcgen
   - echo 'running unit-tests...'
   - (cd xutl/TEST && make testall)
