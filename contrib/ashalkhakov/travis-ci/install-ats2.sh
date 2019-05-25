@@ -18,6 +18,6 @@ tar -xzf download
 
 ######################################
 
-(mv $ATSPKG $HOME/ATS2)
+(mv -f ${ATSPACK} ${HOME}/ATS2)
 
 ###### end of [install-ats2.sh] ######
