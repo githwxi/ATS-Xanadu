@@ -10,7 +10,7 @@ ATSPACKTGZ=$ATSPACK.tgz
 ######################################
 
 cd $HOME
-wget https://sourceforge.net/projects/ats2-lang/files/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ/download
+wget https://sourceforge.net/projects/ats2-lang/files/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ
 
 ######################################
 
