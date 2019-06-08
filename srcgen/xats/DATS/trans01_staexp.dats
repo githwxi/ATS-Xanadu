@@ -48,7 +48,7 @@ FIX = "./../SATS/fixity.sats"
 ENV = "./../SATS/symenv.sats"
 //
 #staload
-LOC = "./../SATS/location.sats"
+LOC = "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
@@ -81,6 +81,9 @@ stadef fxitm = $FIX.fxitm
 
 (* ****** ****** *)
 
+typedef g1eitm = fxitm(g1exp)
+typedef g1eitmlst = List0(g1eitm)
+
 typedef s1titm = fxitm(sort1)
 typedef s1titmlst = List0(s1titm)
 
@@ -95,6 +98,100 @@ FXITMatm
 macdef
 FXITMopr
 (i0, f0) = $FIX.FXITMopr(,(i0), ,(f0))
+
+(* ****** ****** *)
+
+fun
+fxitmlst_resolve_g1exp
+( loc0: loc_t
+, itms: g1eitmlst): g1exp =
+(
+$FIX.fxitmlst_resolve<g1exp>(loc0, itms)
+) where
+{
+//
+implement
+$FIX.fxitm_infix<g1exp>
+(
+x0, f1, x2
+) = let
+  val loc =
+  x0.loc() + x2.loc()
+  val g1e_node =
+  (
+    case+
+    f1.node() of
+    | G1Eapp() =>
+      G1Eapp1(x0, x2)
+    | _(*non-G1Eapp*) =>
+      G1Eapp2(f1, x0, x2)
+  ) : g1exp_node // end of [val]
+in
+  FXITMatm(g1exp_make_node(loc, g1e_node))
+end // end of [$FIX.fxitm_infix]
+//
+implement
+$FIX.fxitm_prefix<g1exp>
+  (f0, x1) = let
+  val loc =
+  f0.loc() + x1.loc()
+in
+  FXITMatm
+  (
+  g1exp_make_node(loc, g1e_node)
+  ) where
+  {
+    val g1e_node = G1Eapp1(f0, x1)
+  }
+end // end of [$FIX.fxitm_prefix]
+//
+implement
+$FIX.fxitm_postfix<g1exp>
+  (x0, f1) = let
+  val loc =
+  x0.loc() + f1.loc()
+in
+  FXITMatm
+  (
+  g1exp_make_node(loc, g1e_node)
+  ) where
+  {
+    val g1e_node = G1Eapp1(f1, x0)
+  }
+end // end of [$FIX.fxitm_postfix]
+//
+implement
+$FIX.fxatm_none<g1exp>
+  (loc) =
+  g1exp_none(loc)
+implement
+$FIX.fxopr_get_loc<g1exp>
+  (opr) = opr.loc()
+//
+implement
+$FIX.fxitm_get_loc<g1exp>
+  (itm) =
+(
+case+ itm of
+| $FIX.FXITMatm(x0) => x0.loc()
+| $FIX.FXITMopr(x0, _) => x0.loc()
+) (* end of [$FIX.fxitm_get_loc] *)
+//
+implement
+$FIX.fxopr_make_app<g1exp>
+  (itm) = let
+//
+val loc =
+$FIX.fxitm_get_loc<g1exp>(itm)
+//
+val g1e =
+g1exp_make_node(loc, G1Eapp(*void*))
+//
+in
+  $FIX.FXITMopr(g1e, $FIX.app_fixty)
+end // end of [$FIX.fxopr_make_app]
+//
+} // end of [fxitmlst_resolve_g1exp]
 
 (* ****** ****** *)
 
@@ -302,6 +399,231 @@ end // end of [$FIX.fxopr_make_app]
 local
 
 fun
+auxgid
+( gid
+: g0eid)
+: g1eitm = let
+//
+val loc = gid.loc()
+val-
+I0DNTsome
+  (tok) = gid.node()
+//
+val sym =
+(
+case-
+tok.node() of
+| T_IDENT_alp(nam) =>
+  $SYM.symbol_make(nam)
+| T_IDENT_sym(nam) =>
+  $SYM.symbol_make(nam)
+) : sym_t // end of [val]
+//
+val opt =
+the_fxtyenv_search(sym)
+//
+val g1e0 =
+g1exp_make_node(loc, G1Eid(sym))
+//
+in
+//
+case+ opt of
+| ~None_vt() =>
+   FXITMatm(g1e0)
+| ~Some_vt(fxty) =>
+  (case+ fxty of
+   | $FIX.FIXTYnon() => FXITMatm(g1e0)
+   | _(*non-FIXTYnon*) => FXITMopr(g1e0, fxty)
+  ) (* end of [Some_vt] *)
+//
+end // end of [auxgid]
+
+fun
+auxint
+( int
+: t0int)
+: g1eitm = let
+//
+val loc = int.loc()
+//
+val-
+T0INTsome(tok) = int.node()
+//
+in
+  FXITMatm
+  (g1exp_make_node(loc, G1Eint(tok)))
+end // end of [auxint]
+
+fun
+auxitm
+( g0e0
+: g0exp)
+: g1eitm = let
+//
+val
+loc0 = g0e0.loc()
+//
+(*
+val () =
+println!("trans01_gexp:")
+val () =
+println!("auxitm: loc0 = ", loc0)
+val () =
+println!("auxitm: g0e0 = ", g0e0)
+*)
+//
+in
+//
+case+
+g0e0.node() of
+//
+| G0Eid(gid) => auxgid(gid)
+//
+| G0Eint(int) => auxint(int)
+//
+| G0Eapps(g0es) =>
+  FXITMatm(g1e0) where
+  {
+    val g1es =
+    auxitmlst(g0es)
+    val g1e0 =
+    fxitmlst_resolve_g1exp(loc0, g1es)
+  }
+//
+| G0Elist
+  (_, g0es, _) =>
+  FXITMatm(g1e0) where
+  {
+    val g1es =
+    trans01_gexplst(g0es)
+    val g1e0 =
+    g1exp_make_node(loc0, G1Elist(g1es))
+  }
+//
+| G0Enone(tok) =>
+  FXITMatm(g1e0) where
+  {
+    val g1e0 =
+      g1exp_make_node(loc0, G1Enone((*void*)))
+    // end of [val]
+  }
+//
+end // end of [auxitm]
+
+and
+auxitmlst
+( xs
+: g0explst)
+: g1eitmlst =
+list_vt2t(ys) where
+{
+  val ys =
+  list_map<g0exp><g1eitm>
+    (xs) where
+  {
+    implement
+    list_map$fopr<g0exp><g1eitm>(x) = auxitm(x)
+  }
+} (* end of [auxitmlst] *)
+
+in (* in-of-local *)
+
+implement
+trans01_gexp
+  (g0e0) = let
+//
+val
+loc0 = g0e0.loc()
+//
+(*
+val () =
+println!
+("trans01_gexp: g0e0 = ", g0e0)
+*)
+//
+in(*in-of-let*)
+//
+case+
+auxitm(g0e0) of
+| $FIX.FXITMatm(g1e0) => g1e0
+| $FIX.FXITMopr(g1e0, fxty) => g1e0
+//
+end (* end of [trans01_gexp] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans01_gexplst
+  (g0es) =
+list_vt2t(g1es) where
+{
+val
+g1es =
+list_map<g0exp><g1exp>
+  (g0es) where
+{
+  implement
+  list_map$fopr<g0exp><g1exp> = trans01_gexp
+}
+} (* end of [trans01_gexplst] *)
+
+(* ****** ****** *)
+
+implement
+trans01_gmarg
+  (g0ma) =
+(
+case-
+g0ma.node() of
+|
+G0MARGsarg
+(tbeg, g0as, tend) =>
+let
+  val g1as =
+  (
+    list_map<g0arg><g1arg>(g0as)
+  ) where
+  {
+    implement
+    list_map$fopr<g0arg><g1arg>
+      (g0a) =
+      let
+      val-I0DNTsome(tok) = g0a.node() in tok
+      end
+  } (* end of [where] *)
+  val g1as = list_vt2t{g1arg}(g1as)
+in
+  g1marg_make_node(g0ma.loc(), G1MARGsarg(g1as))
+end // end of [let]
+|
+G0MARGdarg
+(tbeg, g0as, tend) =>
+let
+  val g1as =
+  (
+    list_map<g0arg><g1arg>(g0as)
+  ) where
+  {
+    implement
+    list_map$fopr<g0arg><g1arg>
+      (g0a) =
+      let
+      val-I0DNTsome(tok) = g0a.node() in tok
+      end
+  } (* end of [where] *)
+  val g1as = list_vt2t{g1arg}(g1as)
+in
+  g1marg_make_node(g0ma.loc(), G1MARGdarg(g1as))
+end // end of [let]
+) (* end of [trans01_gmarg] *)
+
+(* ****** ****** *)
+
+local
+
+fun
 auxtid
 ( tid
 : s0tid)
@@ -328,7 +650,7 @@ ifcase
 | sym= // '+' is special
   $SYM.ADD_symbol =>
   Some_vt($FIX.postplus_fixty)
-| sym= // '+' is special
+| sym= // '-' is special
   $SYM.SUB_symbol =>
   Some_vt($FIX.postmnus_fixty)
 | _(*else*) => the_fxtyenv_search(sym)
@@ -463,7 +785,7 @@ println!
 ("trans01_sort: s0t0 = ", s0t0)
 *)
 //
-in
+in(*in-of-let*)
 //
 case+
 auxitm(s0t0) of
@@ -473,6 +795,8 @@ auxitm(s0t0) of
 end (* end of [trans01_sort] *)
 
 end // end of [local]
+
+(* ****** ****** *)
 
 implement
 trans01_sortopt
@@ -775,9 +1099,10 @@ auxsid
 : s1eitm = let
 //
 val loc = sid.loc()
+//
 val-
 I0DNTsome
-  (tok) = sid.node()
+( tok ) = sid.node()
 //
 val tnd = tok.node()
 //

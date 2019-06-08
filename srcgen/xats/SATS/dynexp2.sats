@@ -36,10 +36,14 @@
 #staload
 SYM = "./symbol.sats"
 #staload
-LOC = "./location.sats"
+LOC = "./locinfo.sats"
 //
-  typedef sym_t = $SYM.sym_t
-  typedef loc_t = $LOC.loc_t
+typedef sym_t = $SYM.sym_t
+typedef loc_t = $LOC.loc_t
+//
+#staload
+LEX = "./lexing.sats"
+typedef token = $LEX.token
 //
 (* ****** ****** *)
 //
@@ -73,39 +77,6 @@ D1E = "./dynexp1.sats"
 
 #staload "./staexp2.sats"
 
-(* ****** ****** *)
-//
-abstbox t2ype_tbox = ptr
-typedef t2ype = t2ype_tbox
-//
-(* ****** ****** *)
-//
-fun
-t2ype_none(loc_t): t2ype
-fun
-t2ype_some(loc_t, s2exp): t2ype
-//
-fun
-t2ype_get_topt(t2ype): s2expopt
-fun
-t2ype_set_some(t2ype, s2exp): void
-//
-overload .topt with t2ype_get_topt
-overload .some with t2ype_set_some
-//
-(* ****** ****** *)
-//
-fun
-print_t2ype: print_type(t2ype)
-fun
-prerr_t2ype: prerr_type(t2ype)
-fun
-fprint_t2ype: fprint_type(t2ype)
-//
-overload print with print_t2ype
-overload prerr with prerr_t2ype
-overload fprint with fprint_t2ype
-//
 (* ****** ****** *)
 //
 abstype d2con_tbox = ptr
@@ -691,13 +662,45 @@ dg2pat_make_node
 fun
 d2exp_get_loc(d2exp): loc_t
 fun
-d2exp_get_type(d2exp): t2ype
-fun
 d2exp_get_node(d2exp): d2exp_node
 //
 overload .loc with d2exp_get_loc
-overload .type with d2exp_get_type
 overload .node with d2exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+print_d2exp: print_type(d2exp)
+fun
+prerr_d2exp: prerr_type(d2exp)
+fun
+fprint_d2exp: fprint_type(d2exp)
+//
+overload print with print_d2exp
+overload prerr with prerr_d2exp
+overload fprint with fprint_d2exp
+//
+(* ****** ****** *)
+//
+fun d2exp_none0(loc_t): d2exp
+fun d2exp_none1(d1exp): d2exp
+//
+fun d2exp_int(loc_t, token): d2exp
+fun d2exp_chr(loc_t, token): d2exp
+fun d2exp_flt(loc_t, token): d2exp
+fun d2exp_str(loc_t, token): d2exp
+//
+fun d2exp_var(loc_t, d2var): d2exp
+//
+fun d2exp_con1(loc_t, d2con): d2exp
+fun d2exp_cst1(loc_t, d2cst): d2exp
+fun d2exp_con2(loc_t, d2conlst): d2exp
+fun d2exp_cst2(loc_t, d2cstlst): d2exp
+//
+fun
+d2exp_sym0
+( loc0: loc_t
+, d1e0: d1exp, dpis: d2pitmlst): d2exp
 //
 (* ****** ****** *)
 //
@@ -748,39 +751,6 @@ d2exp_tuple
 , npf: int, d2es: d2explst): d2exp
 //
 (* ****** ****** *)
-//
-fun
-print_d2exp: print_type(d2exp)
-fun
-prerr_d2exp: prerr_type(d2exp)
-fun
-fprint_d2exp: fprint_type(d2exp)
-//
-overload print with print_d2exp
-overload prerr with prerr_d2exp
-overload fprint with fprint_d2exp
-//
-(* ****** ****** *)
-//
-fun d2exp_none0(loc_t): d2exp
-fun d2exp_none1(d1exp): d2exp
-//
-fun d2exp_int(loc_t, token): d2exp
-fun d2exp_chr(loc_t, token): d2exp
-fun d2exp_flt(loc_t, token): d2exp
-fun d2exp_str(loc_t, token): d2exp
-//
-fun d2exp_var(loc_t, d2var): d2exp
-//
-fun d2exp_con1(loc_t, d2con): d2exp
-fun d2exp_cst1(loc_t, d2cst): d2exp
-fun d2exp_con2(loc_t, d2conlst): d2exp
-fun d2exp_cst2(loc_t, d2cstlst): d2exp
-//
-fun
-d2exp_sym0
-( loc0: loc_t
-, d1e0: d1exp, dpis: d2pitmlst): d2exp
 //
 fun
 d2exp_make_node

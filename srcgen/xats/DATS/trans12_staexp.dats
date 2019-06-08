@@ -647,7 +647,7 @@ val-
 S1Eapp1
 (s1e1, s1e2) = s1e0.node()
 //
-in
+in(*in-of-let*)
 //
 case+
 s1e1.node() of
@@ -901,14 +901,14 @@ the_sexpenv_popfree(pf0|(*void*))
 //
 in
 //
-  let
-    val s2vs =
-    list_vt2t(list_vt_reverse(s2vs))
-    val s2ps =
-    list_vt2t(list_vt_reverse(s2ps))
-  in
-    s2exp_exi(s2vs, s2ps, s2e2(*body*))
-  end
+let
+  val s2vs =
+  list_vt2t(list_vt_reverse(s2vs))
+  val s2ps =
+  list_vt2t(list_vt_reverse(s2ps))
+in
+  s2exp_exi(s2vs, s2ps, s2e2(*body*))
+end
 //
 end // end of [auxapp1_exi_]
 
@@ -953,7 +953,17 @@ case+ s1es of
 //
 in
 //
+s2e0 where
+{
+  val s2e0 =
   s2exp_tyext(the_sort2_type, s2es)
+(*
+  val ((*void*)) =
+  println!("trans12_sexp: ")
+  val ((*void*)) =
+  println!("auxapp1_extp_: s2e0 = ", s2e0)
+*)
+}
 //
 end // end of [auxapp1_extp_]
 

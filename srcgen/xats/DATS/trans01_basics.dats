@@ -256,9 +256,11 @@ tok.node() of
 implement
 sexpid_sym(tok) = let
 //
+(*
 val () =
 println!
 ("sexpid_sym: tok = ", tok)
+*)
 //
 in
 //
@@ -289,4 +291,4 @@ tok.node() of
 
 (* ****** ****** *)
 
-(* end of [trans01_basics.dats] *)
+(* end of [xats_trans01_basics.dats] *)

@@ -33,45 +33,45 @@
 //
 (* ****** ****** *)
 
-#staload "./basics.sats"
+#staload"./basics.sats"
 
 (* ****** ****** *)
 //
 #staload
-STM = "./stamp0.sats"
+  STM = "./stamp0.sats"
 //
 typedef stamp = $STM.stamp
 //
 (* ****** ****** *)
 //
 #staload
-SYM = "./symbol.sats"
+  SYM = "./symbol.sats"
 #staload
-LOC = "./location.sats"
+  LOC = "./locinfo.sats"
 #staload
-FP0 = "./filepath.sats"
+  FP0 = "./filpath.sats"
 //
 typedef sym_t = $SYM.sym_t
 typedef loc_t = $LOC.loc_t
-typedef fpath = $FP0.filepath
+typedef fpath = $FP0.filpath
 //
 (* ****** ****** *)
 
 #staload
-LAB = "./label0.sats"
+  LAB = "./label0.sats"
 typedef label = $LAB.label
 
 #staload
-LEX = "./lexing.sats"
+  LEX = "./lexing.sats"
 typedef token = $LEX.token
 
 (* ****** ****** *)
 //
 #staload
-EFF = "./effect.sats"
+  EFF = "./effect.sats"
 //
 #staload
-S1E = "./staexp1.sats"
+  S1E = "./staexp1.sats"
 //
 typedef sort1 = $S1E.sort1
 typedef s1exp = $S1E.s1exp
@@ -80,17 +80,19 @@ typedef s1exp = $S1E.s1exp
 //
 // HX: datasort
 //
-fun t2abs_stamp_new(): stamp
-fun t2dat_stamp_new(): stamp
-(*
-fun t2xtv_stamp_new(): stamp
-*)
+fun
+t2abs_stamp_new(): stamp
+fun
+t2dat_stamp_new(): stamp
 //
-fun s2cst_stamp_new(): stamp
+fun
+s2cst_stamp_new(): stamp
 //
-fun s2var_stamp_new(): stamp
+fun
+s2var_stamp_new(): stamp
 //
-fun s2xtv_stamp_new(): stamp
+fun
+s2xtv_stamp_new(): stamp
 //
 (* ****** ****** *)
 
@@ -693,12 +695,12 @@ s2exp_node =
 | S2Elist of s2explst // HX: temporary use
 *)
 //
+| S2Etyext of (s2explst) (* externlly named *)
+//
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
-| S2Etyext of s2explst (* externlly named *)
-//
 | S2Enone0 of (loc_t) // HX: error indication
-| S2Enone1 of s1exp(*src*) // HX: error indication
+| S2Enone1 of (s1exp) // HX: error indication
 //
 // end of [s2exp_node]
 //
@@ -831,6 +833,16 @@ fun
 labs2explst_make_list2
   ( s2es1: s2explst
   , s2es2: s2explst): labs2explst
+//
+(* ****** ****** *)
+//
+fun s2exp_sint0(): s2exp
+fun s2exp_uint0(): s2exp
+//
+fun s2exp_bool0(): s2exp
+fun s2exp_char0(): s2exp
+//
+fun s2exp_list0(s2exp): s2exp
 //
 (* ****** ****** *)
 //
@@ -1010,6 +1022,57 @@ s2explst_revar
 fun
 s2explst_revar_vt
 (s2explst, s2v1: s2var, s2v2: s2var): s2explst_vt
+//
+(* ****** ****** *)
+
+abstype s2cstref_tbox = ptr
+typedef s2cstref = s2cstref_tbox
+
+(* ****** ****** *)
+
+fun
+s2cstref_make_name(string): s2cstref
+
+(* ****** ****** *)
+//
+fun
+s2cstref_get_s2cst(r0: s2cstref): s2cst
+fun
+s2cstref_get_s2exp(r0: s2cstref): s2exp
+//
+(* ****** ****** *)
+//
+fun
+s2cstref_equ_s2cst(s2cstref, s2cst): bool
+fun
+s2cstref_equ_s2exp(s2cstref, s2exp): bool
+//
+(* ****** ****** *)
+
+val the_tt_b0 : s2cstref // true
+val the_ff_b0 : s2cstref // false
+
+(* ****** ****** *)
+//
+val the_neg_b0 : s2cstref // b0 -> b0
+//
+val the_add_b0_b0 : s2cstref // (b0, b0) -> b0
+val the_mul_b0_b0 : s2cstref // (b0, b0) -> b0
+val the_equ_b0_b0 : s2cstref // (b0, b0) -> b0
+val the_neq_b0_b0 : s2cstref // (b0, b0) -> b0
+//
+(* ****** ****** *)
+//
+val the_neg_i0 : s2cstref // : (int) -> int
+//
+val the_add_i0_i0 : s2cstref // : (int, int) -> int
+val the_sub_i0_i0 : s2cstref // : (int, int) -> int
+val the_mul_i0_i0 : s2cstref // : (int, int) -> int
+val the_div_i0_i0 : s2cstref // : (int, int) -> int
+val the_mod_i0_i0 : s2cstref // : (int, int) -> int
+//
+val the_ndiv_i0_i0 : s2cstref // : (int, int) -> int
+val the_idiv_i0_i0 : s2cstref // : (int, int) -> int
 //
 (* ****** ****** *)
 

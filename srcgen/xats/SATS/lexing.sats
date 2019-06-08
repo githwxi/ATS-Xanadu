@@ -42,7 +42,7 @@
   typedef symbol = $SYM.symbol
 *)
 //
-#staload LOC = "./location.sats"
+#staload LOC = "./locinfo.sats"
   typedef pos_t = $LOC.position
   typedef loc_t = $LOC.location
 //
@@ -246,6 +246,9 @@ tnode =
   | T_SRP_STATIC of () // locally
 // #extern
   | T_SRP_EXTERN of () // globally
+//
+  | T_SRP_DEFINE of () // #define
+  | T_SRP_MACDEF of () // #macdef
 //
   | T_SRP_INCLUDE of () // #include
 //

@@ -197,4 +197,4 @@ list_find$pred<s2cst>
 
 (* ****** ****** *)
 
-(* end of [trans12_basics.dats] *)
+(* end of [xats_trans12_basics.dats] *)

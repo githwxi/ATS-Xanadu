@@ -40,6 +40,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/filpath.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/parsing.sats"
 
@@ -108,6 +112,22 @@ end // end of [p_BAR]
 (* ****** ****** *)
 
 implement
+p_CLN
+  (buf, err) = let
+  val e0 = err
+  val tok = buf.get0()
+in
+  case+
+  tok.node() of
+  | T_CLN() =>
+    let val () = buf.incby1() in tok end
+  | _ (* non-COLON *) =>
+    let val ( ) = (err := e0 + 1) in tok end
+end // end of [p_CLN]
+
+(* ****** ****** *)
+
+implement
 p_EQGT
   (buf, err) = let
   val e0 = err
@@ -120,22 +140,6 @@ in
   | _ (* non-EQ *) =>
     let val ( ) = (err := e0 + 1) in tok end
 end // end of [p_EQGT]
-
-(* ****** ****** *)
-
-implement
-p_COLON
-  (buf, err) = let
-  val e0 = err
-  val tok = buf.get0()
-in
-  case+
-  tok.node() of
-  | T_CLN() =>
-    let val () = buf.incby1() in tok end
-  | _ (* non-COLON *) =>
-    let val ( ) = (err := e0 + 1) in tok end
-end // end of [p_COLON]
 
 (* ****** ****** *)
 
@@ -652,7 +656,14 @@ pstar_sep_fun
 implement
 parse_from_stdin_toplevel
   (stadyn) =
-  parse_from_fileref_toplevel(stadyn, stdin_ref)
+let
+  val inp = stdin_ref
+in
+//
+parse_from_fileref_toplevel
+  (stadyn, inp)
+//
+end
 // end of [parser_from_stdin_toplevel]
 //
 implement
@@ -693,6 +704,33 @@ end
 //
 end // end of [parse_from_fileref_toplevel]
 //
+(* ****** ****** *)
+
+implement
+parse_from_filpath_toplevel
+  (stadyn, fp0) = let
+//
+val fnm = fp0.full1()
+val opt =
+  fileref_open_opt(fnm, file_mode_r)
+//
+in
+//
+case+ opt of
+| ~None_vt() =>
+   None_vt()
+| ~Some_vt(inp) =>
+  let
+    val d0cs =
+    parse_from_fileref_toplevel
+      (stadyn, inp)
+    val ((*void*)) = fileref_close(inp)
+  in
+    Some_vt(d0cs)
+  end // end of [Some_vt]
+//
+end // end of [parser_from_filpath_toplevel]
+
 (* ****** ****** *)
 
 (* end of [xats_parsing_basics.dats] *)

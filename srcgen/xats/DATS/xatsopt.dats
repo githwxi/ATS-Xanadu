@@ -46,15 +46,18 @@ ERR = "./../SATS/xerrory.sats"
 (* ****** ****** *)
 //
 #staload
-FP0 = "./../SATS/filepath.sats"
+FP0 = "./../SATS/filpath.sats"
 //
   typedef
-  fpath_t = $FP0.filepath
+  fpath_t = $FP0.filpath
   macdef
   dirbase =
-  $FP0.filepath_dirbase
+  $FP0.filpath_dirbase
   macdef
-  fpath_make = $FP0.filepath_make
+  fpath_make = $FP0.filpath_make
+//
+#staload
+FS0 = "./../SATS/filsrch.sats"
 //
 (* ****** ****** *)
 //
@@ -87,7 +90,14 @@ _(*TMP*) =
   "./../DATS/staexp2_print.dats"
 #staload
 _(*TMP*) =
+  "./../DATS/statyp2_print.dats"
+#staload
+_(*TMP*) =
   "./../DATS/dynexp2_print.dats"
+//
+#staload
+_(*TMP*) =
+  "./../DATS/dynexp3_print.dats"
 //
 (* ****** ****** *)
 //
@@ -132,8 +142,10 @@ end // end of [local]
 //
 #dynload "./xerrory.dats"
 //
-#dynload "./filepath.dats"
-#dynload "./location.dats"
+#dynload "./filpath.dats"
+#dynload "./filsrch.dats"
+//
+#dynload "./locinfo.dats"
 //
 // HX-2018-10:
 // The following
@@ -172,6 +184,7 @@ end // end of [local]
 #dynload "./effect.dats"
 //
 #dynload "./staexp2.dats"
+#dynload "./statyp2.dats"
 #dynload "./dynexp2.dats"
 //
 #dynload "./staexp2_init0.dats"
@@ -179,7 +192,10 @@ end // end of [local]
 #dynload "./staexp2_util1.dats"
 #dynload "./staexp2_util2.dats"
 //
+#dynload "./staexp2_const.dats"
+//
 #dynload "./staexp2_print.dats"
+#dynload "./statyp2_print.dats"
 #dynload "./dynexp2_print.dats"
 //
 #dynload "./nmspace.dats"
@@ -188,6 +204,12 @@ end // end of [local]
 #dynload "./trans12_envmap.dats"
 #dynload "./trans12_staexp.dats"
 #dynload "./trans12_dynexp.dats"
+//
+#dynload "./dynexp3.dats"
+//
+#dynload "./dynexp3_print.dats"
+//
+#dynload "./trans23_dynexp.dats"
 //
 (* ****** ****** *)
 //
@@ -767,6 +789,9 @@ waitknd_get_stadyn(wtk0)
 val
 XATSHOME = st0.ATSHOME
 //
+val () =
+$FP0.the_dirpathlst_ppush_cwd()
+//
 in
 //
 if
@@ -781,9 +806,22 @@ the_preludes_load_if
 // end of [val]
 //
 val
+fp0 =
+$FP0.the_filpath_stdin 
+val
+(pf0 | ()) =
+$FP0.the_filpathlst_push
+  (fp0)
+val
 d0cs =
 parse_from_stdin_toplevel
   (stadyn)
+prval () = $UN.castview0{void}(pf0)
+(*
+val
+((*popped*)) =
+$FP0.the_filpathlst_pout(pf0 | (*none*))
+*)
 //
 (*
 val () =
@@ -1229,6 +1267,9 @@ val
 XATSHOME =
 "/home/hwxi/Research/ATS-Xanadu"
 //
+val () = 
+$FP0.the_includes_push(XATSHOME)
+//
 val+
 list_cons
 (arg0, args) = args where
@@ -1249,7 +1290,7 @@ st0: cmdstate =
 , prelude= 0(*~loaded*)
 //
 , inpfil0=
-  $FP0.the_filepath_dummy
+  $FP0.the_filpath_dummy
 //
 , ninpfil= 0(*initset*)
 //
@@ -1307,7 +1348,7 @@ the_fixity_load
 //
   val
   (pf0 | ()) =
-  $FP0.the_filepathlst_push(fpath)
+  $FP0.the_filpathlst_push(fpath)
 //
   val d0cs = let
     val
@@ -1329,7 +1370,7 @@ the_fixity_load
 //
   val
   ((*popped*)) =
-  $FP0.the_filepathlst_pout(pf0 | (*none*))
+  $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
   val
   (pf0 | ()) =
@@ -1381,7 +1422,7 @@ println!
 //
   val
   (pf0 | ()) =
-  $FP0.the_filepathlst_push(fpath)
+  $FP0.the_filpathlst_push(fpath)
 //
   val d0cs = let
     val
@@ -1404,7 +1445,7 @@ println!
 //
   val
   ((*popped*)) =
-  $FP0.the_filepathlst_pout(pf0 | (*none*))
+  $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
 } (* the_basics_load *)
 //
@@ -1439,7 +1480,7 @@ println!
 //
   val
   (pf0 | ()) =
-  $FP0.the_filepathlst_push(fpath)
+  $FP0.the_filpathlst_push(fpath)
 //
   val d0cs = let
     val
@@ -1462,7 +1503,7 @@ println!
 //
   val
   ((*popped*)) =
-  $FP0.the_filepathlst_pout(pf0 | (*none*))
+  $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
 } (* the_prelude_load *)
 //
@@ -1517,4 +1558,4 @@ end // end of [then]
 
 (* ****** ****** *)
 
-(* end of [xatsopt.dats] *)
+(* end of [xats_xatsopt.dats] *)

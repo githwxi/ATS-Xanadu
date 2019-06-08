@@ -347,9 +347,11 @@ trans12_dpat
 val
 loc0 = d1p0.loc()
 //
+(*
 val () =
 println!
 ("trans12_dpat: d1p0 = ", d1p0)
+*)
 //
 in (* in-of-let *)
 //
@@ -1131,9 +1133,11 @@ trans12_dexp
 val
 loc0 = d1e0.loc()
 //
+(*
 val () =
 println!
 ("trans12_dexp: d1e0 = ", d1e0)
+*)
 //
 in (* in-of-let *)
 //
@@ -1498,11 +1502,13 @@ case+ arg of
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
 //
+(*
 val () =
 println!
 ("\
 trans12_decl:\
  aux_sexpdef: s2e0 = ", s2e0)
+*)
 //
 val
 s2c0 =
@@ -1598,6 +1604,7 @@ s2c0 = s2cst_make_idst(sid, s2t0)
 //
 val () = the_sexpenv_add_cst(s2c0)
 //
+(*
 val () =
 println!
 ("\
@@ -1608,6 +1615,7 @@ println!
 ("\
 tran12_decl:\
  aux_abstype: s2c0 = ", s2c0)
+ *)
 //
 in
   d2ecl_make_node(loc0, D2Cabstype(d1c0))
@@ -2554,12 +2562,14 @@ in
 //
 the_dexpenv_add_conlst(d2cs) where
 {
+(*
 val () =
 println!
 ("trans12_datype: aux2_datype: s2c0 = ", s2c0)
 val () =
 println!
 ("trans12_datype: aux2_datype: d2cs = ", d2cs)
+*)
 }  
 //
 end // end of [aux2_datype]
@@ -2991,9 +3001,11 @@ trans12_decl
 val
 loc0 = d1c0.loc()
 //
+(*
 val () =
 println!
 ("trans12_decl: d1c0 = ", d1c0)
+*)
 //
 in (* in-of-let *)
 //
@@ -3257,9 +3269,11 @@ D1ATCON
 val
 loc0 = tok0.loc()
 //
+(*
 val () =
 println!
 ("trans12_datcon: tok0 = ", tok0)
+*)
 //
 val
 s2us =
@@ -3301,9 +3315,11 @@ s2us = loop1(svss, list_vt_nil(*void*))
 //
 } (* end of [val] *)
 //
+(*
 val () =
 println!
 ("trans12_datcon: s2us = ", s2us)
+*)
 //
 fun
 auxuni
@@ -3547,4 +3563,4 @@ list_map$fopr<ti1arg><ti2arg> = trans12_tiarg
 
 (* ****** ****** *)
 
-(* end of [xats_trans12_dynecl.dats] *)
+(* end of [xats_trans12_dynexp.dats] *)

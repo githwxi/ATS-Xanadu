@@ -41,7 +41,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/label0.sats"
-#staload "./../SATS/location.sats"
+#staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
@@ -49,6 +49,78 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/staexp1.sats"
 //
+(* ****** ****** *)
+
+local
+
+absimpl
+g1exp_tbox = $rec{
+  g1exp_loc= loc_t
+, g1exp_node= g1exp_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+//
+implement
+g1exp_get_loc
+  (x0) = x0.g1exp_loc
+implement
+g1exp_get_node
+  (x0) = x0.g1exp_node
+//
+(* ****** ****** *)
+
+implement
+g1exp_none
+(loc) =
+g1exp_make_node(loc, G1Enone())
+implement
+g1exp_make_node
+(loc, node) = $rec
+{
+  g1exp_loc= loc, g1exp_node= node
+} (* end of [g1exp_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+g1marg_tbox = $rec{
+  g1marg_loc= loc_t
+, g1marg_node= g1marg_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+//
+implement
+g1marg_get_loc
+  (x0) = x0.g1marg_loc
+implement
+g1marg_get_node
+  (x0) = x0.g1marg_node
+//
+(* ****** ****** *)
+
+implement
+g1marg_make_node
+(loc, node) = $rec
+{
+  g1marg_loc= loc, g1marg_node= node
+} (* end of [g1marg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 local

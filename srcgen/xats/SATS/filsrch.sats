@@ -32,99 +32,63 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#staload
+SYM = "./symbol.sats"
+//
+(* ****** ****** *)
 
-%{#
-#include "CATS/lexbuf.cats"
-%} // end of [%{#]
+#staload "./filpath.sats"
 
 (* ****** ****** *)
 //
-#staload CBS =
-"./../../xutl/SATS/cblist.sats"
+datatype fname =
+  | FNM0 of (string)
 //
-typedef cblist = $CBS.cblist
-//
-(* ****** ****** *)
-//
-#staload LOC = "./locinfo.sats"
-//
-typedef pos_t = $LOC.pos_t
-typedef loc_t = $LOC.loc_t
-typedef position = $LOC.position
-typedef location = $LOC.location
-//
-(* ****** ****** *)
-//
-abstflat
-lexbuf_tflat =
-$extype"xats_lexbuf_struct"
-//
-  typedef lexbuf = lexbuf_tflat
+typedef
+fnameopt = Option(fname)
+vtypedef
+fnameopt_vt = Option_vt(fname)
 //
 (* ****** ****** *)
 
 fun
-lexbuf_initize_cblist
-(
-  buf: &lexbuf? >> _, cbs: cblist
-) : void // end of [lexbuf_initize_cblist]
+print_fname : print_type(fname)
+fun
+prerr_fname : prerr_type(fname)
+fun
+fprint_fname : fprint_type(fname)
+
+(* ****** ****** *)
+
+fun
+filsrch_absolut
+(base: string): Option_vt(filpath)
+fun
+filsrch_current
+(base: string): Option_vt(filpath)
+fun
+filsrch_includes
+(base: string): Option_vt(filpath)
+
+(* ****** ****** *)
+
+fun
+filsrch_combined
+(fnm0: fname): Option_vt(filpath)
 
 (* ****** ****** *)
 //
-(*
 fun
-lexbuf_get_ntot(buf: &lexbuf): int
+filsrch_dirbase
+( dir: dirpath
+, base: string): Option_vt(filpath)
 fun
-lexbuf_get_nspc(buf: &lexbuf): int
-*)
+filsrch_dirsbase
+( dirs
+: List(dirpath)
+, base: string): Option_vt(filpath)
 //
-(* ****** ****** *)
-//
-fun
-lexbuf_get_none
-  (buf: &lexbuf >> _): void
-fun
-lexbuf_get_fullseg
-  (buf: &lexbuf >> _): string
-//
-(* ****** ****** *)
-//
-// HX-2018-05-27:
-// [lexbuf_getc] is like getc
-// [lexbuf_unget] can be safely
-// applied only once at a given
-// position!
-//
-fun
-lexbuf_getc(buf: &lexbuf >> _): int
-fun
-lexbuf_unget
-  (buf: &lexbuf >> _, i0: int): void
-//
-(* ****** ****** *)
-//
-(*
-fun
-lexbuf_get_pos
-(
-  buf: &lexbuf, pos: &pos_t? >> _
-) : void // end-of-fun
-*)
-//
-(*
-fun
-lexbuf_set_pos
-(buf: &lexbuf >> _, pos: &pos_t): void
-*)
-//
-(* ****** ****** *)
-(*
-//
-fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
-//
-*)
 (* ****** ****** *)
 
-(* end of [xats_lexbuf.sats] *)
+(* end of [xats_filsrch.sats] *)

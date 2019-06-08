@@ -34,7 +34,7 @@
 (* ****** ****** *)
 //
 #staload
-LOC = "./location.sats"
+LOC = "./locinfo.sats"
 //
   typedef loc_t = $LOC.loc_t
 //

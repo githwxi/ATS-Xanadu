@@ -983,6 +983,16 @@ for skipping error
     (token(*EXTERN*), d0ecl)
   // end of [D0Cextern]
 //
+| D0Cdefine of
+  ( token
+  , g0eid(*fun*)
+  , g0marglst(*arg*), g0expdef(*opt*))
+| D0Cmacdef of
+  ( token
+  , g0eid(*fun*)
+  , g0marglst(*arg*), d0macdef(*d0exp*))
+  // end of [D0Cmacdef]
+//
 | D0Cinclude of
     (token(*INCLUDE*), d0exp)
   // HX: for file inclusion
@@ -990,11 +1000,11 @@ for skipping error
 // HX: for static loading
 //
 | D0Cstaload of
-    (token(*STALOAD*), d0exp)
+    (token(*#STALOAD*), d0exp)
   // end of [D0Cstaload]
 (*
 | D0Cdynload of
-    (token(*DYNLOAD*), d0exp)
+    (token(*#DYNLOAD*), d0exp)
   // end of [D0Cdynload]
 *)
 //
@@ -1089,6 +1099,18 @@ abstdf0 =
 (* ****** ****** *)
 
 and
+g0expdef =
+| G0EDEFnone of ()
+| G0EDEFsome of (tokenopt, g0exp(*def*))
+
+and
+d0macdef =
+| D0MDEFnone of ()
+| D0MDEFsome of (tokenopt, d0exp(*def*))
+
+(* ****** ****** *)
+
+and
 wd0eclseq =
 | WD0CSnone of ()
 | WD0CSsome of
@@ -1148,6 +1170,32 @@ fprint_abstdf0 : fprint_type(abstdf0)
 overload print with print_abstdf0
 overload prerr with prerr_abstdf0
 overload fprint with fprint_abstdf0
+//
+(* ****** ****** *)
+//
+fun
+print_g0expdef : (g0expdef) -> void
+fun
+prerr_g0expdef : (g0expdef) -> void
+fun
+fprint_g0expdef : fprint_type(g0expdef)
+//
+overload print with print_g0expdef
+overload prerr with prerr_g0expdef
+overload fprint with fprint_g0expdef
+//
+(* ****** ****** *)
+//
+fun
+print_d0macdef : (d0macdef) -> void
+fun
+prerr_d0macdef : (d0macdef) -> void
+fun
+fprint_d0macdef : fprint_type(d0macdef)
+//
+overload print with print_d0macdef
+overload prerr with prerr_d0macdef
+overload fprint with fprint_d0macdef
 //
 (* ****** ****** *)
 //

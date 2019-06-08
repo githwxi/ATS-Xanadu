@@ -213,20 +213,28 @@ fprint_val<key>
   val opt =
   $SYM.stamp_to_symbol(k0)
 in
-  case- opt of
-  ~Some_vt(sym) =>
-  $SYM.fprint_symbol(out, sym)
+//
+case- opt of
+| ~Some_vt(sym) =>
+  ($SYM.fprint_symbol(out, sym))
+//
 end // end of [fprint_val]
 implement
 fprint_val<itm>
   (out, itm) = fpr(out, itm)
 //
-implement
-fprint_linmap$sep<>(out) = ()
 (*
 implement
-fprint_linmap$sep<>(out) = fprint(out, "\n")
+fprint_linmap$sep<>(out) = ()
 *)
+// (*
+implement
+fprint_linmap$sep<>
+  (out) = fprint_string(out, "\n")
+implement
+fprint_linmap$mapto<>
+  (out) = fprint_string(out, " -> ")
+// *)
 //
 in
 //

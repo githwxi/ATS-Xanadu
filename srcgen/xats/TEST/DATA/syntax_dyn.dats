@@ -1,7 +1,78 @@
+
+(*
+fun
+{a
+:type}
+length
+| nil() => 0
+| cons(x, xs) = x+length(xs)
+withtype
+{n:nat} list(a, n) -> int(n)
+*)
+
+////
+#define x 5
+#macdef f{a}(x,y) = u*(x+y*z)
+////
+(*
+#macdef g(x) x + 6
+*)
+
+case+ xs of
+| nil () => 0
+| cons x xs => 1+length(xs)
+
+#define f(x)(y) x + y
+
+lam(x) => lam(y) => x + y
+
+G0Vclo(lam(y) => x + y, D0E
+
+D0E
+
+app(lam(xs) => cons(x, xs))
+
+
+
+#if
+x = 0
+#then
+#define x = 0
+#elif
+x = 1
+#then
+#define x = 1
+#else
+#define x = 2
+#endif
+
+(*
+p_ifgdec := [#if] p_ifrest
+p_ifrest := g0exp p_srpthen p_srpendif
+p_srpthen := [#then] d0eclseq p_srpelse
+p_srpelse := | [#else] d0eclseq | [#elif] p_ifrest
+*)
+
+////
+
+#include
+"./syntax_sta.sats"
+#include
+"prelude/SATS/list.sats"
 #staload
 "prelude/SATS/list.sats"
 #staload
-"${XATSHOME}/prelude/SATS/list.sats"
+List =
+"prelude/SATS/list.sats"
+
+////
+
+#include
+XATSPRE("SATS/list.sats")
+#include
+XATSLIB("SATS/list.sats")
+#include
+XATSLIBC("SATS/list.sats")
 
 ////
 
@@ -587,6 +658,10 @@ test
 , xs: list(int)): bool =
 (xs).iforall(lam(i, x) => (x != x0) && (abs(x-x0) != i+1))
 }
+
+(* ****** ****** *)
+
+typedef xyz = $extype("list", int)
 
 (* ****** ****** *)
 
