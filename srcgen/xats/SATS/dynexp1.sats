@@ -36,6 +36,16 @@
 #staload "./basics.sats"
 
 (* ****** ****** *)
+//
+#staload
+  FP0 = "./filpath.sats"
+//
+typedef
+filpath = $FP0.filpath
+typedef
+filpathopt = $FP0.filpathopt
+//
+(* ****** ****** *)
 
 #staload "./staexp0.sats"
 #staload "./dynexp0.sats"
@@ -87,6 +97,8 @@ abstype d1ecl_tbox = ptr
 typedef d1ecl = d1ecl_tbox
 typedef d1eclist = List0(d1ecl)
 typedef d1eclopt = Option(d1ecl)
+//
+typedef d1eclistopt = Option(d1eclist)
 //
 vtypedef d1eclist_vt = List0_vt(d1ecl)
 //
@@ -779,10 +791,32 @@ d1ecl_node =
 | D1Cextern of
   (token, d1ecl) // globally
 //
+| D1Cdefine of
+  ( token
+  , token(*g0eid*)
+  , g1marglst(*arg*), g1expopt)
+| D1Cmacdef of
+  ( token
+  , token(*g0eid*)
+  , g1marglst(*arg*), d1expopt)
+//
+(*
 | D1Cinclude of
-  (token, d1exp) // file inclusion
+  ( token
+  , d0exp
+  , filpathopt) // file inclusion
+*)
+| D1Cinclude of
+  ( token
+  , d0exp
+  , int(*knd*) // sta/dyn: 0/1
+  , d1eclistopt) // file inclusion
+//
 | D1Cstaload of
-  (token, d1exp) // file staloading
+  ( token
+  , d0exp
+  , int(*knd*) // sta/dyn: 0/1
+  , d1eclistopt) // file staloading
 //
 | D1Cabssort of
   (token, token(*s0tid*))

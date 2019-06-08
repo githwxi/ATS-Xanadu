@@ -28,13 +28,13 @@ regress:: test_symbol_dats; ./test_symbol_dats
 ######
 #
 # all:: \
-# test_filepath
+# test_filpath
 #
-test_filepath: \
-test_filepath_dats
-test_filepath_dats: \
-test_filepath.dats; $(MYATSCC) $<
-regress:: test_filepath_dats; ./test_filepath_dats
+test_filpath: \
+test_filpath_dats
+test_filpath_dats: \
+test_filpath.dats; $(MYATSCC) $<
+regress:: test_filpath_dats; ./test_filpath_dats
 
 ######
 
@@ -98,7 +98,7 @@ clean:: ; $(RMF) *_dats.c
 
 cleanall:: clean
 cleanall:: ; $(RMF) test_symbol_dats
-cleanall:: ; $(RMF) test_filepath_dats
+cleanall:: ; $(RMF) test_filpath_dats
 
 ######
 

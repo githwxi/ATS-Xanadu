@@ -55,6 +55,12 @@ xatsopt_strrchr
 //      
 (* ****** ****** *)
 //
+fun
+xatsopt_strunq // "<string>" -> <string>
+(source: string): string = "ext#xatsopt_strunq"
+//
+(* ****** ****** *)
+//
 (*
 int strcmp(const char *s1, const char *s2);
 int strncmp(const char *s1, const char *s2, size_t n);
@@ -68,6 +74,22 @@ xatsopt_strncmp
 ( cs1: ptr
 , cs2: ptr, nlen: size_t): int = "ext#xatsopt_strncmp"
 //       
+(* ****** ****** *)
+//
+fun
+xatsopt_getcwd
+( buf: ptr
+, bsz: size_t): ptr = "ext#xatsopt_getcwd"
+fun
+xatsopt_getcwd_gc
+  ((*void*)): Strptr0 = "ext#xatsopt_getcwd_gc"
+//
+(* ****** ****** *)
+//
+fun
+xatsopt_is_exist
+  (fpath: string): bool = "ext#xatsopt_is_exist"
+//
 (* ****** ****** *)
 
 (* end of [mylibc.sats] *)

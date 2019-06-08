@@ -40,7 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/location.sats"
+#staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 
@@ -2489,6 +2489,77 @@ end // end of [p_abstdf0]
 //
 static
 fun
+p_g0expdef: parser(g0expdef)
+static
+fun
+p_d0macdef: parser(d0macdef)
+//
+(* ****** ****** *)
+
+implement
+p_g0expdef
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_EQ() => let
+    val () = buf.incby1()
+    val g0e = p_g0exp(buf, err)
+  in
+    G0EDEFsome(Some(tok), g0e(*def*))
+  end
+| _(*non-EQ*) => let
+    val g0e = p_g0exp(buf, err)
+  in
+    case+
+    g0e.node() of
+    | G0Enone(_) =>
+      G0EDEFnone(*void*)
+    | _(*non-G0Enone*) =>
+      G0EDEFsome(None(*void*), g0e(*def*))
+  end
+//
+end // end of [p_g0expdef]
+
+(* ****** ****** *)
+
+implement
+p_d0macdef
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_EQ() => let
+    val () = buf.incby1()
+    val d0e = p_d0exp(buf, err)
+  in
+    D0MDEFsome(Some(tok), d0e(*def*))
+  end
+| _(*non-EQ*) => let
+    val d0e = p_d0exp(buf, err)
+  in
+    case+
+    d0e.node() of
+    | D0Enone(_) =>
+      D0MDEFnone(*void*)
+    | _(*non-G0Enone*) =>
+      D0MDEFsome(None(*void*), d0e(*def*))
+  end
+//
+end // end of [p_d0macdef]
+
+(* ****** ****** *)
+//
+static
+fun
 p_declmodopt: parser(declmodopt)
 //
 (* ****** ****** *)
@@ -3357,8 +3428,9 @@ abstype ::=
   end // end of [T_SRP_STATIC]
 //
 | T_SRP_EXTERN() => let
-    val () =
-      buf.incby1()
+//
+    val () = buf.incby1()
+//
 (*
     val d0c =
       p_d0ecl_sta(buf, err)
@@ -3371,6 +3443,82 @@ abstype ::=
     err := e0;
     d0ecl_make_node(loc_res, D0Cextern(tok, d0c))
   end // end of [T_SRP_EXTERN]
+//
+| T_SRP_DEFINE() => let
+//
+    val () = buf.incby1()
+//
+    val gid =
+      p_g0eid(buf, err)
+    val gmas =
+      p_g0margseq(buf, err)
+    val gdef =
+      (p_g0expdef(buf, err))
+//
+    val loc_res =
+    (
+      case+ gdef of
+      | G0EDEFnone() =>
+        (
+          case+ gmas of
+          | list_nil _ =>
+            (
+              gid.loc()
+            )
+          | list_cons _ =>
+            (
+              gid.loc() + loc_arg
+            ) where
+            {
+              val loc_arg = (list_last(gmas)).loc()
+            }
+        )
+      | G0EDEFsome(opt, g0e) => gid.loc() + g0e.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    d0ecl_make_node
+    (loc_res, D0Cdefine(tok, gid, gmas, gdef))
+  end // end of [T_SRP_DEFINE]
+//
+| T_SRP_MACDEF() => let
+//
+    val () = buf.incby1()
+//
+    val gid =
+      p_g0eid(buf, err)
+    val gmas =
+      p_g0margseq(buf, err)
+    val mdef =
+      (p_d0macdef(buf, err))
+//
+    val loc_res =
+    (
+      case+ mdef of
+      | D0MDEFnone() =>
+        (
+          case+ gmas of
+          | list_nil _ =>
+            (
+              gid.loc()
+            )
+          | list_cons _ =>
+            (
+              gid.loc() + loc_arg
+            ) where
+            {
+              val loc_arg = (list_last(gmas)).loc()
+            }
+        )
+      | D0MDEFsome(opt, g0e) => gid.loc() + g0e.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    d0ecl_make_node
+    (loc_res, D0Cmacdef(tok, gid, gmas, mdef))
+  end // end of [T_SRP_MACDEF]
 //
 | T_SRP_INCLUDE() => let
     val () = buf.incby1()
@@ -3450,11 +3598,17 @@ abstype ::=
 | T_SRP_STACST() => let
 //
     val () = buf.incby1()
-    val sid = p_s0eid(buf, err)
-    val tmas = p_t0margseq(buf, err)
-    val tok1 = p_COLON(buf, err)
+//
+    val sid =
+      p_s0eid(buf, err)
+    val tmas =
+      p_t0margseq(buf, err)
+//
+    val tok1 = p_CLN(buf, err)
     val s0t2 = p_sort0(buf, err)
+//
     val loc_res = loc + s0t2.loc()
+//
   in
     err := e0;
     d0ecl_make_node

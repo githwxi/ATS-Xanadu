@@ -45,7 +45,7 @@ STM = "./../SATS/stamp0.sats"
 #staload
 SYM = "./../SATS/symbol.sats"
 #staload
-LOC = "./../SATS/location.sats"
+LOC = "./../SATS/locinfo.sats"
 
 overload
 fprint with $STM.fprint_stamp

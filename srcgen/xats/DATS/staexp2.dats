@@ -48,7 +48,7 @@ STM = "./../SATS/stamp0.sats"
 (* ****** ****** *)
 //
 #staload
-LOC = "./../SATS/location.sats"
+LOC = "./../SATS/locinfo.sats"
 //
   typedef loc_t = $LOC.loc_t
   typedef locopt = Option(loc_t)

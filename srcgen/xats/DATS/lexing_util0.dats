@@ -48,9 +48,9 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexbuf.sats"
 #staload "./../SATS/lexing.sats"
 //
-#staload "./../SATS/location.sats"
+#staload "./../SATS/locinfo.sats"
 #staload
-_(*TMP*) = "./../DATS/location.dats"
+_(*TMP*) = "./../DATS/locinfo.dats"
 //
 (* ****** ****** *)
 
@@ -62,18 +62,18 @@ _(*TMP*) = "./../DATS/location.dats"
 //
 extern
 fun
-isEOL(c: char): bool
+isEMP(c: char): bool
 //
 extern
 fun
-isBLANK(c: char): bool
+isEOL(c: char): bool
 //
 extern
 fun
 isDOT(c: char): bool
 extern
 fun
-isCOLON(c: char): bool
+isCLN(c: char): bool
 //
 extern
 fun
@@ -128,7 +128,7 @@ implement
 isEOL(c) = (c = '\n')
 //
 implement
-isBLANK(c) =
+isEMP(c) =
 if
 (c = ' ')
 then true
@@ -139,7 +139,7 @@ else (if (c = '\t') then true else false)
 implement
 isDOT(c) = (c = '.')
 implement
-isCOLON(c) = (c = ':')
+isCLN(c) = (c = ':')
 //
 (* ****** ****** *)
 //
@@ -573,7 +573,7 @@ end (* end of [lexing_isEOL] *)
 (* ****** ****** *)
 
 fun
-lexing_isBLANK
+lexing_isEMP
 ( buf
 : &lexbuf >> _, i0: int
 ) : tnode =
@@ -594,7 +594,7 @@ val c0 = int2char0(i0)
 in
 //
 if
-isBLANK(c0)
+isEMP(c0)
 then loop(buf)
 else let
   val () = lexbuf_unget(buf, i0)
@@ -604,7 +604,7 @@ end // end of [else]
 //
 end // end of [loop]
 //
-} (* end of [lexing_isBLANK] *)
+} (* end of [lexing_isEMP] *)
 
 (* ****** ****** *)
 
@@ -641,7 +641,7 @@ end (* end of [lexing_isDOT] *)
 (* ****** ****** *)
 
 fun
-lexing_isCOLON
+lexing_isCLN
 ( buf
 : &lexbuf >> _, i0: int
 ) : tnode = let
@@ -1296,17 +1296,17 @@ in
 //
 ifcase
 //
+| isEMP(c0) =>
+  lexing_isEMP(buf, i0)
+//
 | isEOL(c0) =>
   lexing_isEOL(buf, i0)
-//
-| isBLANK(c0) =>
-  lexing_isBLANK(buf, i0)
 //
 | isDOT(c0) =>
   lexing_isDOT(buf, i0)
 //
-| isCOLON(c0) =>
-  lexing_isCOLON(buf, i0)
+| isCLN(c0) =>
+  lexing_isCLN(buf, i0)
 //
 | isSLASH(c0) =>
   lexing_isSLASH(buf, i0)

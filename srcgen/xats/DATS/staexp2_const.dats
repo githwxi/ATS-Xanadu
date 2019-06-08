@@ -28,103 +28,82 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2018
+// Start Time: December, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-%{#
-#include "CATS/lexbuf.cats"
-%} // end of [%{#]
-
-(* ****** ****** *)
 //
-#staload CBS =
-"./../../xutl/SATS/cblist.sats"
-//
-typedef cblist = $CBS.cblist
-//
-(* ****** ****** *)
-//
-#staload LOC = "./locinfo.sats"
-//
-typedef pos_t = $LOC.pos_t
-typedef loc_t = $LOC.loc_t
-typedef position = $LOC.position
-typedef location = $LOC.location
-//
-(* ****** ****** *)
-//
-abstflat
-lexbuf_tflat =
-$extype"xats_lexbuf_struct"
-//
-  typedef lexbuf = lexbuf_tflat
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-fun
-lexbuf_initize_cblist
-(
-  buf: &lexbuf? >> _, cbs: cblist
-) : void // end of [lexbuf_initize_cblist]
+#staload
+SYM = "./../SATS/symbol.sats"
 
 (* ****** ****** *)
 //
-(*
-fun
-lexbuf_get_ntot(buf: &lexbuf): int
-fun
-lexbuf_get_nspc(buf: &lexbuf): int
-*)
+#staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
 //
-fun
-lexbuf_get_none
-  (buf: &lexbuf >> _): void
-fun
-lexbuf_get_fullseg
-  (buf: &lexbuf >> _): string
+abstype
+s2cstnul_tbox(l:addr) = ptr
+typedef
+s2cstnul(l:addr) = s2cstnul_tbox(l)
+//
+typedef s2cstnul = [l:agez] s2cstnul(l)
 //
 (* ****** ****** *)
 //
-// HX-2018-05-27:
-// [lexbuf_getc] is like getc
-// [lexbuf_unget] can be safely
-// applied only once at a given
-// position!
-//
-fun
-lexbuf_getc(buf: &lexbuf >> _): int
-fun
-lexbuf_unget
-  (buf: &lexbuf >> _, i0: int): void
+extern
+castfn
+s2cstnul_none(ptr(null)): s2cstnul(null)
+extern
+castfn
+s2cstnul_some(s2cst):<> [l:agz] s2cstnul(l)
+extern
+castfn
+s2cstnul_unsome{l:agz}(s2cstnul(l)):<> s2cst
 //
 (* ****** ****** *)
 //
-(*
+extern
 fun
-lexbuf_get_pos
-(
-  buf: &lexbuf, pos: &pos_t? >> _
-) : void // end-of-fun
-*)
+s2cstnul_iseqz
+{l:addr}(s2cstnul(l)): bool(l==null)
+// end of [s2cstnul_iseqz]
+extern
+fun
+s2cstnul_isneqz
+{l:addr}(s2cstnul(l)): bool(l > null)
+// end of [s2cstnul_isneqz]
 //
-(*
-fun
-lexbuf_set_pos
-(buf: &lexbuf >> _, pos: &pos_t): void
-*)
+overload iseqz with s2cstnul_iseqz
+overload isneqz with s2cstnul_isneqz
 //
 (* ****** ****** *)
-(*
 //
-fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
+local
+
+extern
+castfn
+_cast_
+{l:addr}(s2cstnul(l)):<> ptr(l)
+
+in (*in-of-local*)
 //
-*)
+implement
+s2cstnul_iseqz
+  (s2c) = (_cast_(s2c) = the_null_ptr)
+implement
+s2cstnul_isneqz
+  (s2c) = (_cast_(s2c) > the_null_ptr)
+//
+end // end of [local]
+//
 (* ****** ****** *)
 
-(* end of [xats_lexbuf.sats] *)
+(* end of [xats_staexp2_const.dats] *)

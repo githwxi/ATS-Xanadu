@@ -41,6 +41,11 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
+"./../../xutl/SATS/mylibc.sats"
+//
+(* ****** ****** *)
+//
+#staload
 SYM="./../SATS/symbol.sats"
 #staload
 FIX="./../SATS/fixity.sats"
@@ -49,18 +54,22 @@ FIX="./../SATS/fixity.sats"
 ENV = "./../SATS/symenv.sats"
 //
 (* ****** ****** *)
-
+//
 #staload
-LOC = "./../SATS/location.sats"
+LOC = "./../SATS/locinfo.sats"
 overload + with $LOC.location_combine
 overload print with $LOC.print_location
 overload prerr with $LOC.prerr_location
-
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/basics.sats"
 //
+#staload "./../SATS/filpath.sats"
+#staload "./../SATS/filsrch.sats"
+//
 #staload "./../SATS/lexing.sats"
+#staload "./../SATS/parsing.sats"
 //
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
@@ -772,12 +781,14 @@ auxitm
 val
 loc0 = d0p0.loc()
 //
+(*
 val () =
 println!("trans01_dpat:")
 val () =
 println!("auxitm: loc0 = ", loc0)
 val () =
 println!("auxitm: d0p0 = ", d0p0)
+*)
 //
 in
 //
@@ -1136,14 +1147,14 @@ auxitm
 val
 loc0 = d0e0.loc()
 //
-// (*
+(*
 val () =
 println!("trans01_dexp:")
 val () =
 println!("auxitm: loc0 = ", loc0)
 val () =
 println!("auxitm: d0e0 = ", d0e0)
-// *)
+*)
 //
 in
 //
@@ -1636,6 +1647,52 @@ trans01_dcstdeclist: d0cstdeclist -> d1cstdeclist
 (* ****** ****** *)
 
 fun
+trans01_gmarglst
+( gmas
+: g0marglst
+) : g1marglst =
+(
+list_vt2t(gmas) where
+{
+  val
+  gmas =
+  list_map<g0marg><g1marg>
+    (gmas) where
+  {
+    implement
+    list_map$fopr<g0marg><g1marg> = trans01_gmarg
+  }
+}
+) (* end of [trans01_gmarglst] *)
+
+(* ****** ****** *)
+
+fun
+trans01_g0expdef
+( gdef
+: g0expdef): g1expopt =
+(
+case+ gdef of
+| G0EDEFnone
+  ((*void*)) => None()
+| G0EDEFsome
+  (opt, g0e) => Some(trans01_gexp(g0e))
+)
+fun
+trans01_d0macdef
+( mdef
+: d0macdef): d1expopt =
+(
+case+ mdef of
+| D0MDEFnone
+  ((*void*)) => None()
+| D0MDEFsome
+  (opt, d0e) => Some(trans01_dexp(d0e))
+)
+
+(* ****** ****** *)
+
+fun
 trans01_teqdexpopt
 ( opt
 : teqd0expopt): teqd1expopt =
@@ -1679,6 +1736,7 @@ def = trans01_dexp(rcd.def)
 val
 wtp = trans01_wthsexpopt(rcd.wtp)
 //
+(*
 val () =
 println!("trans01_valdecl: loc = ", loc)
 val () =
@@ -1687,6 +1745,7 @@ val () =
 println!("trans01_valdecl: def = ", def)
 val () =
 println!("trans01_valdecl: wtp = ", wtp)
+*)
 //
 in
   V1ALDECL
@@ -1743,6 +1802,7 @@ res = trans01_sexpopt(rcd.res)
 val
 ini = trans01_teqdexpopt(rcd.ini)
 //
+(*
 val () =
 println!("trans01_vardecl: loc = ", loc)
 val () =
@@ -1751,6 +1811,7 @@ val () =
 println!("trans01_vardecl: wth = ", wth)
 val () =
 println!("trans01_vardecl: ini = ", ini)
+*)
 //
 in
   V1ARDECL
@@ -1801,6 +1862,7 @@ def = trans01_dexp(rcd.def)
 val
 wtp = trans01_wthsexpopt(rcd.wtp)
 //
+(*
 val () =
 println!("trans01_fundecl: loc = ", loc)
 val () =
@@ -1813,6 +1875,7 @@ val () =
 println!("trans01_fundecl: def = ", def)
 val () =
 println!("trans01_fundecl: wtp = ", wtp)
+*)
 //
 in
   F1UNDECL
@@ -1841,9 +1904,11 @@ implement
 trans01_dcstdecl
   (d0c0) = let
 //
+(*
 val () =
 println!
 ("trans01_dcstdecl: d0c0 = ", d0c0)
+*)
 //
 val+
 D0CSTDECL(rcd) = d0c0
@@ -2136,11 +2201,104 @@ end // end of [aux_extern]
 (* ****** ****** *)
 
 fun
+aux_define
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cdefine
+( tok
+, gid
+, gmas
+, gdef) = d0c0.node()
+//
+val-I0DNTsome(gid) = gid.node()
+//
+val gmas = trans01_gmarglst(gmas)
+val gdef = trans01_g0expdef(gdef)
+//
+in
+  d1ecl_make_node
+  (loc0, D1Cdefine(tok, gid, gmas, gdef))
+end // end of [aux_define]
+
+(* ****** ****** *)
+
+fun
+aux_macdef
+( d0c0
+: d0ecl): d1ecl = let
+//
+val loc0 = d0c0.loc()
+//
+val-
+D0Cmacdef
+( tok
+, gid
+, gmas
+, mdef) = d0c0.node()
+//
+val-I0DNTsome(gid) = gid.node()
+//
+val gmas = trans01_gmarglst(gmas)
+val mdef = trans01_d0macdef(mdef)
+//
+in
+  d1ecl_make_node
+  (loc0, D1Cmacdef(tok, gid, gmas, mdef))
+end // end of [aux_macdef]
+
+(* ****** ****** *)
+
+local
+//
+fun
+auxd1e
+(
+d1e: d1exp
+) : fnameopt_vt =
+let
+(*
+val () =
+println!
+("auxd1e: d1e = ", d1e)
+*)
+in
+case+
+d1e.node() of
+| D1Estr(tok) => auxtok(tok)
+| _(*non-D1Estr*) => None_vt(*void*)
+end // end of [auxd1e]
+and
+auxtok
+(
+tok: token
+) : fnameopt_vt =
+(
+case+
+tok.node() of
+| T_STRING_closed
+  (fnm) =>
+  Some_vt
+  (FNM0(xatsopt_strunq(fnm)))
+| _(* else *) => None_vt(*void*)
+)
+//
+in (* in-of-local *)
+
+fun
 aux_include
 ( d0c0
 : d0ecl): d1ecl = let
 //
 val loc0 = d0c0.loc()
+//
+(*
+val () =
+println!("aux_include")
+*)
 //
 val-
 D0Cinclude
@@ -2148,11 +2306,109 @@ D0Cinclude
 //
 val d1e = trans01_dexp(d0e)
 //
+(*
+//
+val out = stdout_ref
+//
+val (_) =
+fprintln!(out, "trans01: ")
+val (_) =
+fprintln!(out, "aux_include: ")
+val (_) =
+fprintln!(out, "the_filepath: ")
+val (_) = $FP0.the_filpath_fprint(out)
+val (_) =
+fprintln!(out, "the_filepathlst: ")
+val (_) = $FP0.the_filpathlst_fprint(out)
+*)
+//
+val
+opt =
+auxd1e(trans01_dexp(d0e))
+val
+opt =
+(
+case+ opt of
+| ~None_vt() => None_vt()
+| ~Some_vt(fnm) => filsrch_combined(fnm)
+) : Option_vt(filpath)
+//
+var
+knd:
+int = ~1
+//
+val opt =
+(
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(fp0) =>
+let
+  val () =
+  (
+  ifcase
+  | is_sats(fp0) => knd := 0(*sta*)
+  | _(*non-sats*) => knd := 1(*dyn*)
+  )
 in
-  d1ecl_make_node(loc0, D1Cinclude(tok, d1e))
+  parse_from_filpath_toplevel(knd, fp0)
+end // end of [Some_vt]
+) : Option_vt(d0eclist)
+//
+val opt =
+(
+case+ opt of
+|
+~None_vt() => None()
+|
+~Some_vt(d0cs) => Some(trans01_declist(d0cs))
+) : d1eclistopt
+//
+in
+  d1ecl_make_node(loc0, D1Cinclude(tok, d0e, knd, opt))
 end // end of [aux_include]
 
+end // end of [local]
+
 (* ****** ****** *)
+
+local
+
+fun
+auxd1e
+(
+d1e: d1exp
+) : fnameopt_vt =
+let
+(*
+val () =
+println!
+("auxd1e: d1e = ", d1e)
+*)
+in
+case+
+d1e.node() of
+| D1Estr(tok) => auxtok(tok)
+| _(*non-D1Estr*) => None_vt(*void*)
+end // end of [auxd1e]
+and
+auxtok
+(
+tok: token
+) : fnameopt_vt =
+(
+case+
+tok.node() of
+| T_STRING_closed
+  (fnm) =>
+  Some_vt
+  (FNM0(xatsopt_strunq(fnm)))
+| _(* else *) => None_vt(*void*)
+)
+//
+in (* in-of-local *)
 
 fun
 aux_staload
@@ -2161,15 +2417,58 @@ aux_staload
 //
 val loc0 = d0c0.loc()
 //
+(*
+val () =
+println!("aux_staload")
+*)
+//
 val-
 D0Cstaload
 (tok, d0e) = d0c0.node()
 //
-val d1e = trans01_dexp(d0e)
+val opt = auxd1e(trans01_dexp(d0e))
+//
+val
+opt =
+(
+case+ opt of
+| ~None_vt() => None_vt()
+| ~Some_vt(fnm) => filsrch_combined(fnm)
+) : Option_vt(filpath)
+//
+var
+knd:
+int = ~1
+//
+val opt =
+(
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(fp0) =>
+let
+  val () =
+  (
+  ifcase
+  | is_sats(fp0) => knd := 0(*sta*)
+  | _(*non-sats*) => knd := 1(*dyn*)
+  )
+in
+  trans01_staload_from_filpath(knd, fp0)
+end // end of [Some_vt]
+) : Option_vt(d1eclist)
+//
+val opt = option_vt2t(opt)
 //
 in
-d1ecl_make_node(loc0, D1Cstaload(tok, d1e))
+//
+d1ecl_make_node(loc0, D1Cstaload(tok, d0e, knd, opt))
+//
 end // end of [aux_staload]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -2593,12 +2892,14 @@ case+ wd0cs of
   WD1CSsome(trans01_declist(d0cs))
 ) : wd1eclseq // end of [val]
 //
+(*
 val () =
 println!("trans01_decl:")
 val () =
 println!("aux_datatype: d1ts = ", d1ts)
 val () =
 println!("aux_datatype: wd1cs = ", wd1cs)
+*)
 //
 in
   d1ecl_make_node(loc0, D1Cdatatype(knd, d1ts, wd1cs))
@@ -2686,6 +2987,9 @@ d0c0.node() of
 | D0Cstatic _ => aux_static(d0c0)
 | D0Cextern _ => aux_extern(d0c0)
 //
+| D0Cdefine _ => aux_define(d0c0)
+| D0Cmacdef _ => aux_macdef(d0c0)
+//
 | D0Cinclude _ => aux_include(d0c0)
 //
 | D0Cstaload _ => aux_staload(d0c0)
@@ -2733,7 +3037,7 @@ d0c0.node() of
 | _ (*rest-of-d0ecl*) =>
   (
     println! ("trans01_decl: d0c0 = ", d0c0); exit(1)
-  )
+  ) (* end of [D0C...] *)
 *)    
 //
 end // end of [trans01_decl]

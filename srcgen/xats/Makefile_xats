@@ -39,8 +39,9 @@ symenv.sats \
 label0.sats \
 fixity.sats \
 xerrory.sats \
-filepath.sats \
-location.sats \
+filpath.sats \
+filsrch.sats \
+locinfo.sats \
 lexbuf.sats \
 lexing.sats \
 staexp0.sats \
@@ -52,9 +53,12 @@ dynexp1.sats \
 trans01.sats \
 effect.sats \
 staexp2.sats \
+statyp2.sats \
 dynexp2.sats \
 nmspace.sats \
 trans12.sats \
+dynexp3.sats \
+trans23.sats \
 
 SRCDATS := \
 basics.dats \
@@ -65,8 +69,9 @@ symenv.dats \
 label0.dats \
 fixity.dats \
 xerrory.dats \
-filepath.dats \
-location.dats \
+filpath.dats \
+filsrch.dats \
+locinfo.dats \
 lexbuf.dats \
 lexing_token.dats \
 lexing_kword.dats \
@@ -92,17 +97,23 @@ trans01_staexp.dats \
 trans01_dynexp.dats \
 effect.dats \
 staexp2.dats \
+statyp2.dats \
 dynexp2.dats \
 staexp2_init0.dats \
 staexp2_util1.dats \
 staexp2_util2.dats \
+staexp2_const.dats \
 staexp2_print.dats \
+statyp2_print.dats \
 dynexp2_print.dats \
 nmspace.dats \
 trans12_basics.dats \
 trans12_envmap.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
+dynexp3.dats \
+dynexp3_print.dats \
+trans23_dynexp.dats \
 
 ######
 

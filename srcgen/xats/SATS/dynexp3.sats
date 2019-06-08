@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,103 +28,97 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2018
+// Start Time: April, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-%{#
-#include "CATS/lexbuf.cats"
-%} // end of [%{#]
+#staload "./basics.sats"
+
+(* ****** ****** *)
+
+#staload "./staexp2.sats"
+#staload "./statyp2.sats"
+#staload "./dynexp2.sats"
+
+(* ****** ****** *)
+
+abstbox d3exp_tbox = ptr
+
+(* ****** ****** *)
+
+typedef d3exp = d3exp_tbox
+typedef d3explst = List0(d3exp)
+typedef d3expopt = Option(d3exp)
+
+(* ****** ****** *)
+
+datatype
+d3exp_node =
+//
+| D3Eint of (token)
+| D3Estr of (token)
+//
+| D2Evar of (d2var)
+//
+| D3Etuple of
+  (int(*knd*), int(*npf*), d3explst)
+//
+| D3Enone0 of () | D3Enone1 of (d2exp)
 
 (* ****** ****** *)
 //
-#staload CBS =
-"./../../xutl/SATS/cblist.sats"
+fun
+d3exp_get_loc(d3exp): loc_t
+fun
+d3exp_get_node(d3exp): d3exp_node
 //
-typedef cblist = $CBS.cblist
-//
-(* ****** ****** *)
-//
-#staload LOC = "./locinfo.sats"
-//
-typedef pos_t = $LOC.pos_t
-typedef loc_t = $LOC.loc_t
-typedef position = $LOC.position
-typedef location = $LOC.location
+overload .loc with d3exp_get_loc
+overload .node with d3exp_get_node
 //
 (* ****** ****** *)
 //
-abstflat
-lexbuf_tflat =
-$extype"xats_lexbuf_struct"
+fun
+d3exp_get_type(d3exp): t2ype
+overload .type with d3exp_get_type
 //
-  typedef lexbuf = lexbuf_tflat
+(*
+fun
+d3exp_set_type0
+(d3e: d3exp, t2p: t2ype): void
+fun
+d3exp_set_type1
+(d3e: d3exp, t2p: t2ype): d3exp
+overload .type0 with d3exp_set_type0
+overload .type1 with d3exp_set_type1
+*)
 //
 (* ****** ****** *)
 
-fun
-lexbuf_initize_cblist
-(
-  buf: &lexbuf? >> _, cbs: cblist
-) : void // end of [lexbuf_initize_cblist]
+fun d3exp_none0(loc_t): d3exp
+fun d3exp_none1(d2exp): d3exp
 
 (* ****** ****** *)
 //
-(*
 fun
-lexbuf_get_ntot(buf: &lexbuf): int
-fun
-lexbuf_get_nspc(buf: &lexbuf): int
-*)
+d3exp_make_node
+( loc: loc_t
+, t2p: t2ype
+, node: d3exp_node): d3exp
 //
 (* ****** ****** *)
 //
 fun
-lexbuf_get_none
-  (buf: &lexbuf >> _): void
+print_d3exp: print_type(d3exp)
 fun
-lexbuf_get_fullseg
-  (buf: &lexbuf >> _): string
-//
-(* ****** ****** *)
-//
-// HX-2018-05-27:
-// [lexbuf_getc] is like getc
-// [lexbuf_unget] can be safely
-// applied only once at a given
-// position!
-//
+prerr_d3exp: prerr_type(d3exp)
 fun
-lexbuf_getc(buf: &lexbuf >> _): int
-fun
-lexbuf_unget
-  (buf: &lexbuf >> _, i0: int): void
+fprint_d3exp: fprint_type(d3exp)
 //
-(* ****** ****** *)
+overload print with print_d3exp
+overload prerr with prerr_d3exp
+overload fprint with fprint_d3exp
 //
-(*
-fun
-lexbuf_get_pos
-(
-  buf: &lexbuf, pos: &pos_t? >> _
-) : void // end-of-fun
-*)
-//
-(*
-fun
-lexbuf_set_pos
-(buf: &lexbuf >> _, pos: &pos_t): void
-*)
-//
-(* ****** ****** *)
-(*
-//
-fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
-//
-*)
 (* ****** ****** *)
 
-(* end of [xats_lexbuf.sats] *)
+(* end of [xats_dynexp3.sats] *)

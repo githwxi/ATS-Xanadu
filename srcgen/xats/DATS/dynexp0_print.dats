@@ -793,6 +793,8 @@ local
 implement
 fprint_val<d0ecl> = fprint_d0ecl
 implement
+fprint_val<g0marg> = fprint_g0marg
+implement
 fprint_val<v0aldecl> = fprint_v0aldecl
 implement
 fprint_val<v0ardecl> = fprint_v0ardecl
@@ -829,6 +831,18 @@ case+ x0.node() of
 | D0Cextern(tok, d0c) =>
   fprint!
   (out, "D0Cextern(", tok, "; ", d0c, ")")
+//
+| D0Cdefine
+  (tok, gid, gmas, gdef) =>
+  fprint!
+  ( out, "D0Cdefine("
+  , gid, "; ", gmas, "; ", gdef, ")")
+//
+| D0Cmacdef
+  (tok, gid, gmas, mdef) =>
+  fprint!
+  ( out, "D0Cmacdef("
+  , gid, "; ", gmas, "; ", mdef, ")")
 //
 | D0Cinclude(tok, d0e) =>
   fprint!
@@ -1013,6 +1027,50 @@ case+ x0 of
   (out, "ABSTDF0eqeq(", tok, "; ", s0e, ")")
 ) (* end of [fprint_abstdf0] *)
 
+(* ****** ****** *)
+//
+implement
+print_g0expdef(x0) =
+fprint_g0expdef(stdout_ref, x0)
+implement
+prerr_g0expdef(x0) =
+fprint_g0expdef(stderr_ref, x0)
+//
+implement
+fprint_g0expdef
+  (out, x0) =
+(
+case+ x0 of
+| G0EDEFnone() =>
+  fprint!
+  (out, "G0EDEFnone(", ")")
+| G0EDEFsome(topt, g0e1) =>
+  fprint!
+  (out, "G0EDEFsome(", topt, "; ", g0e1, ")")
+)
+//
+(* ****** ****** *)
+//
+implement
+print_d0macdef(x0) =
+fprint_d0macdef(stdout_ref, x0)
+implement
+prerr_d0macdef(x0) =
+fprint_d0macdef(stderr_ref, x0)
+//
+implement
+fprint_d0macdef
+  (out, x0) =
+(
+case+ x0 of
+| D0MDEFnone() =>
+  fprint!
+  (out, "D0MDEFnone(", ")")
+| D0MDEFsome(topt, d0e1) =>
+  fprint!
+  (out, "D0MDEFsome(", topt, "; ", d0e1, ")")
+)
+//
 (* ****** ****** *)
 
 implement

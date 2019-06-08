@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,103 +28,73 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2018
+// Start Time: April, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-%{#
-#include "CATS/lexbuf.cats"
-%} // end of [%{#]
+#staload "./../SATS/basics.sats"
 
 (* ****** ****** *)
-//
-#staload CBS =
-"./../../xutl/SATS/cblist.sats"
-//
-typedef cblist = $CBS.cblist
-//
-(* ****** ****** *)
-//
-#staload LOC = "./locinfo.sats"
-//
-typedef pos_t = $LOC.pos_t
-typedef loc_t = $LOC.loc_t
-typedef position = $LOC.position
-typedef location = $LOC.location
-//
-(* ****** ****** *)
-//
-abstflat
-lexbuf_tflat =
-$extype"xats_lexbuf_struct"
-//
-  typedef lexbuf = lexbuf_tflat
-//
-(* ****** ****** *)
 
-fun
-lexbuf_initize_cblist
-(
-  buf: &lexbuf? >> _, cbs: cblist
-) : void // end of [lexbuf_initize_cblist]
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 
 (* ****** ****** *)
-//
-(*
-fun
-lexbuf_get_ntot(buf: &lexbuf): int
-fun
-lexbuf_get_nspc(buf: &lexbuf): int
-*)
-//
-(* ****** ****** *)
-//
-fun
-lexbuf_get_none
-  (buf: &lexbuf >> _): void
-fun
-lexbuf_get_fullseg
-  (buf: &lexbuf >> _): string
-//
-(* ****** ****** *)
-//
-// HX-2018-05-27:
-// [lexbuf_getc] is like getc
-// [lexbuf_unget] can be safely
-// applied only once at a given
-// position!
-//
-fun
-lexbuf_getc(buf: &lexbuf >> _): int
-fun
-lexbuf_unget
-  (buf: &lexbuf >> _, i0: int): void
-//
-(* ****** ****** *)
-//
-(*
-fun
-lexbuf_get_pos
-(
-  buf: &lexbuf, pos: &pos_t? >> _
-) : void // end-of-fun
-*)
-//
-(*
-fun
-lexbuf_set_pos
-(buf: &lexbuf >> _, pos: &pos_t): void
-*)
-//
-(* ****** ****** *)
-(*
-//
-fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
-//
-*)
+
+#staload "./../SATS/dynexp3.sats"
+
 (* ****** ****** *)
 
-(* end of [xats_lexbuf.sats] *)
+#staload "./../SATS/trans23.sats"
+
+(* ****** ****** *)
+
+local
+
+fun
+aux_int
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eint(tok) = d2e0.node()
+//
+val
+t2p0 = t2ype_sint((*void*))
+//
+in
+//
+d3exp_make_node(loc0, t2p0, D3Eint(tok))
+//
+end (* end of [aux_int] *)
+
+in (* in-of-local *)
+
+implement
+trans23_dexp
+  (d2e0) = let
+//
+val
+loc0 = d2e0.loc()
+//
+val () =
+println!
+("trans23_dexp: d2e0 = ", d2e0)
+//
+in
+//
+case+
+d2e0.node() of
+| _ (*rest-of-d2e0*) => d3exp_none1(d2e0)
+//
+end // end of [trans23_dexp]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+(* end of [xats_trans23_dynexp.dats] *)

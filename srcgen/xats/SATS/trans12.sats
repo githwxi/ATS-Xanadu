@@ -39,9 +39,9 @@
 (* ****** ****** *)
 //
 #staload
-  FP0 = "./filepath.sats"
+  FP0 = "./filpath.sats"
 #staload
-  LOC = "./location.sats"
+  LOC = "./locinfo.sats"
 //
 typedef loc_t = $LOC.loc_t
 //
@@ -54,11 +54,13 @@ typedef loc_t = $LOC.loc_t
 
 (* ****** ****** *)
 
+(*
 symintr trans12
+*)
 
 (* ****** ****** *)
 
-typedef fpath = $FP0.filepath
+typedef fpath = $FP0.filpath
 
 (* ****** ****** *)
 //

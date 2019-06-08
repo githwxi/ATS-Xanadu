@@ -44,9 +44,9 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/lexing.sats"
 //
-#staload "./../SATS/location.sats"
+#staload "./../SATS/locinfo.sats"
 #staload
-_(*TMP*) = "./../DATS/location.dats"
+_(*TMP*) = "./../DATS/locinfo.dats"
 //
 (* ****** ****** *)
 
@@ -323,6 +323,9 @@ case+ tnd of
 | T_SRP_STATIC() => fprint(out, "#STATIC")
 | T_SRP_EXTERN() => fprint(out, "#EXTERN")
 //
+| T_SRP_DEFINE() => fprint(out, "#DEFINE")
+| T_SRP_MACDEF() => fprint(out, "#MACDEF")
+//
 | T_SRP_INCLUDE() => fprint(out, "#INCLUDE")
 //
 | T_SRP_STALOAD() => fprint(out, "#STALOAD")
@@ -575,6 +578,9 @@ case+ tnd of
 //
 | T_SRP_STATIC() => fprint!(out, "#static")
 | T_SRP_EXTERN() => fprint!(out, "#extern")
+//
+| T_SRP_DEFINE() => fprint!(out, "#define")
+| T_SRP_MACDEF() => fprint!(out, "#macdef")
 //
 | T_SRP_INCLUDE() => fprint(out, "#include")
 //

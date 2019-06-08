@@ -596,6 +596,8 @@ local
 implement
 fprint_val<d1ecl> = fprint_d1ecl
 implement
+fprint_val<g1marg> = fprint_g1marg
+implement
 fprint_val<v1aldecl> = fprint_v1aldecl
 implement
 fprint_val<v1ardecl> = fprint_v1ardecl
@@ -625,13 +627,52 @@ case+ x0.node() of
   fprint!
   (out, "D1Cextern(", knd, "; ", d1c, ")")
 //
-| D1Cinclude(knd, d1e) =>
+| D1Cdefine
+  (tok, sym, arg, def) =>
   fprint!
-  (out, "D1Cinclude(", knd, "; ", d1e, ")")
+  ( out
+  , "D1Cdefine("
+  , tok, "; ", sym, "; ", arg, "; ", def, ")")
+| D1Cmacdef
+  (tok, sym, arg, def) =>
+  fprint!
+  ( out
+  , "D1Cmacdef("
+  , tok, "; ", sym, "; ", arg, "; ", def, ")")
 //
-| D1Cstaload(knd, d1e) =>
+| D1Cinclude
+  (tok, d0e, knd, opt) =>
+  (
   fprint!
-  (out, "D1Cstaload(", knd, "; ", d1e, ")")
+  ( out
+  , "D1Cinclude("
+  , tok, "; ", d0e, "; ", knd, "; ", opt, ")")
+  ) where
+  {
+    val opt =
+    (
+    case+ opt of
+    | None _ => "None()"
+    | Some _ => "Some(<d1cs>)"
+    ) : string // end of [val]
+  }
+//
+| D1Cstaload
+  (tok, d0e, knd, opt) =>
+  (
+  fprint!
+  ( out
+  , "D1Cstaload("
+  , tok, "; ", d0e, "; ", knd, "; ", opt, ")")
+  ) where
+  {
+    val opt =
+    (
+    case+ opt of
+    | None _ => "None()"
+    | Some _ => "Some(<d1cs>)"
+    ) : string // end of [val]
+  }
 //
 | D1Cabssort(tok, tid) =>
   fprint!

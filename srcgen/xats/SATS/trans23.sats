@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,103 +28,51 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2018
+// Start Time: April, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-%{#
-#include "CATS/lexbuf.cats"
-%} // end of [%{#]
-
-(* ****** ****** *)
 //
-#staload CBS =
-"./../../xutl/SATS/cblist.sats"
-//
-typedef cblist = $CBS.cblist
+#staload "./basics.sats"
 //
 (* ****** ****** *)
 //
-#staload LOC = "./locinfo.sats"
+#staload S2E = "./staexp2.sats"
+#staload D2E = "./dynexp2.sats"
 //
-typedef pos_t = $LOC.pos_t
-typedef loc_t = $LOC.loc_t
-typedef position = $LOC.position
-typedef location = $LOC.location
-//
-(* ****** ****** *)
-//
-abstflat
-lexbuf_tflat =
-$extype"xats_lexbuf_struct"
-//
-  typedef lexbuf = lexbuf_tflat
+#staload D3E = "./dynexp3.sats"
 //
 (* ****** ****** *)
 
-fun
-lexbuf_initize_cblist
-(
-  buf: &lexbuf? >> _, cbs: cblist
-) : void // end of [lexbuf_initize_cblist]
+typedef s2exp = $S2E.s2exp
+
+(* ****** ****** *)
+
+typedef d2exp = $D2E.d2exp
+typedef d2expopt = $D2E.d2expopt
+typedef d2explst = $D2E.d2explst
+
+(* ****** ****** *)
+
+typedef d3exp = $D3E.d3exp
+typedef d3expopt = $D3E.d3expopt
+typedef d3explst = $D3E.d3explst
 
 (* ****** ****** *)
 //
-(*
 fun
-lexbuf_get_ntot(buf: &lexbuf): int
+trans23_dexp: d2exp -> d3exp 
 fun
-lexbuf_get_nspc(buf: &lexbuf): int
-*)
+trans23_dexpopt: d2expopt -> d3expopt
+fun
+trans23_dexplst: d2explst -> d3explst
 //
 (* ****** ****** *)
 //
 fun
-lexbuf_get_none
-  (buf: &lexbuf >> _): void
-fun
-lexbuf_get_fullseg
-  (buf: &lexbuf >> _): string
+trans23_dexp_dn
+  (d2e0: d2exp, s2e0: s2exp): (d3exp)
 //
-(* ****** ****** *)
-//
-// HX-2018-05-27:
-// [lexbuf_getc] is like getc
-// [lexbuf_unget] can be safely
-// applied only once at a given
-// position!
-//
-fun
-lexbuf_getc(buf: &lexbuf >> _): int
-fun
-lexbuf_unget
-  (buf: &lexbuf >> _, i0: int): void
-//
-(* ****** ****** *)
-//
-(*
-fun
-lexbuf_get_pos
-(
-  buf: &lexbuf, pos: &pos_t? >> _
-) : void // end-of-fun
-*)
-//
-(*
-fun
-lexbuf_set_pos
-(buf: &lexbuf >> _, pos: &pos_t): void
-*)
-//
-(* ****** ****** *)
-(*
-//
-fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
-//
-*)
 (* ****** ****** *)
 
-(* end of [xats_lexbuf.sats] *)
+(* end of [xats_trans23.sats] *)

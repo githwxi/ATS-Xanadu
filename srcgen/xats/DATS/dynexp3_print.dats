@@ -28,103 +28,66 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2018
+// Start Time: October, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-%{#
-#include "CATS/lexbuf.cats"
-%} // end of [%{#]
-
-(* ****** ****** *)
 //
-#staload CBS =
-"./../../xutl/SATS/cblist.sats"
-//
-typedef cblist = $CBS.cblist
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload LOC = "./locinfo.sats"
-//
-typedef pos_t = $LOC.pos_t
-typedef loc_t = $LOC.loc_t
-typedef position = $LOC.position
-typedef location = $LOC.location
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
-abstflat
-lexbuf_tflat =
-$extype"xats_lexbuf_struct"
-//
-  typedef lexbuf = lexbuf_tflat
+#staload "./../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
-
-fun
-lexbuf_initize_cblist
+//
+#staload
+_(*TMP*) = "./../DATS/staexp2_print.dats"
+#staload
+_(*TMP*) = "./../DATS/statyp2_print.dats"
+#staload
+_(*TMP*) = "./../DATS/dynexp2_print.dats"
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<t2ype> = fprint_t2ype
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d3exp> = fprint_d3exp
+//
+(* ****** ****** *)
+//
+implement
+print_d3exp(x0) =
+fprint_d3exp(stdout_ref, x0) 
+implement
+prerr_d3exp(x0) =
+fprint_d3exp(stdout_ref, x0) 
+//
+implement
+fprint_d3exp
+  (out, x0) =
 (
-  buf: &lexbuf? >> _, cbs: cblist
-) : void // end of [lexbuf_initize_cblist]
-
-(* ****** ****** *)
+case-
+x0.node() of
+| D3Enone0() =>
+  fprint!(out, "D3Enone0(", ")")
+| D3Enone1(d2e) =>
+  fprint!(out, "D3Enone1(", d2e, ")")
+)
 //
-(*
-fun
-lexbuf_get_ntot(buf: &lexbuf): int
-fun
-lexbuf_get_nspc(buf: &lexbuf): int
-*)
-//
-(* ****** ****** *)
-//
-fun
-lexbuf_get_none
-  (buf: &lexbuf >> _): void
-fun
-lexbuf_get_fullseg
-  (buf: &lexbuf >> _): string
-//
-(* ****** ****** *)
-//
-// HX-2018-05-27:
-// [lexbuf_getc] is like getc
-// [lexbuf_unget] can be safely
-// applied only once at a given
-// position!
-//
-fun
-lexbuf_getc(buf: &lexbuf >> _): int
-fun
-lexbuf_unget
-  (buf: &lexbuf >> _, i0: int): void
-//
-(* ****** ****** *)
-//
-(*
-fun
-lexbuf_get_pos
-(
-  buf: &lexbuf, pos: &pos_t? >> _
-) : void // end-of-fun
-*)
-//
-(*
-fun
-lexbuf_set_pos
-(buf: &lexbuf >> _, pos: &pos_t): void
-*)
-//
-(* ****** ****** *)
-(*
-//
-fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
-//
-*)
 (* ****** ****** *)
 
-(* end of [xats_lexbuf.sats] *)
+(* end of [xats_dynexp3_print.dats] *)

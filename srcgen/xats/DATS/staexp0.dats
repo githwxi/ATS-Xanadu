@@ -43,7 +43,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload
 "./../SATS/label0.sats"
 #staload
-"./../SATS/location.sats"
+"./../SATS/locinfo.sats"
 //
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/staexp0.sats"
@@ -347,6 +347,68 @@ case+ x0 of
 | DQ0EIDsome(tok, id0) => tok.loc()+id0.loc()
 )
 //
+(* ****** ****** *)
+
+local
+
+absimpl
+g0exp_tbox = $rec{
+  g0exp_loc= loc_t
+, g0exp_node= g0exp_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+g0exp_get_loc(x0) = x0.g0exp_loc
+implement
+g0exp_get_node(x0) = x0.g0exp_node
+
+(* ****** ****** *)
+
+implement
+g0exp_make_node
+(loc, node) = $rec
+{
+  g0exp_loc= loc, g0exp_node= node
+} (* end of [g0exp_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+g0marg_tbox = $rec{
+  g0marg_loc= loc_t
+, g0marg_node= g0marg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+g0marg_get_loc(x0) = x0.g0marg_loc
+implement
+g0marg_get_node(x0) = x0.g0marg_node
+
+(* ****** ****** *)
+
+implement
+g0marg_make_node
+(loc, node) = $rec
+{
+  g0marg_loc= loc, g0marg_node= node
+} (* end of [g0marg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 local
