@@ -33,22 +33,22 @@
 //
 (* ****** ****** *)
 
-implement
+impltmp
 <x0>(*tmp*)
 print$val<x0> =
 fprint$val<x0>(stdout, x0)
-implement
+impltmp
 <x0>(*tmp*)
 prerr$val<x0> =
 fprint$val<x0>(stderr, x0)
 
 (* ****** ****** *)
 
-implement
+impltmp
 <x0>(*tmp*)
 print$ref<x0> =
 fprint$ref<x0>(stdout, x0)
-implement
+impltmp
 <x0>(*tmp*)
 prerr$ref<x0> =
 fprint$ref<x0>(stderr, x0)
@@ -59,12 +59,12 @@ fprint$ref<x0>(stderr, x0)
 // We need a way to detect
 // this kind of mutual dependency!
 //
-implement
+impltmp
 {x0:vtype}
 fprint$ref<x0>(out, x0) =
 fprint$val<x0>(out, x0)
 //
-implement
+impltmp
 (x0:vtype)
 fprint$val<x0>(out, x0) =
 let
