@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 
-primplmnt
+implprf
 (*nonrec*)
 lemma_list_param
   (xs) =
@@ -45,7 +45,7 @@ case+ xs of
 //
 ) (* lemma_list_param *)
 
-primplmnt
+implprf
 (*nonrec*)
 lemma_list_vt_param
   (xs) =
@@ -59,7 +59,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 <x0>(*tmp*)
 list_copy
   (xs) =
@@ -67,13 +67,13 @@ list_copy
 list_map_vt1<x0><x0>(xs)
 ) where
 {
-implement
+impltmp
 list_map$fopr_vt1<x0><x0> = copy$val<x0>
 } (* end of [list_copy] *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 <x0>(*tmp*)
 list_free
   (xs) =
@@ -101,7 +101,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-implement
+impltmp
 <x0><n0>
 list_tabulate(n0) =
 (
@@ -147,7 +147,7 @@ else (r0 := list_vt_nil(*void*))
 
 (* ****** ****** *)
 
-implement
+impltmp
 <x0>
 list_tabulate
 {n0}(n0, f0) =
@@ -155,7 +155,7 @@ list_tabulate
   list_tabulate<x0><n0>(n0)
 ) where
 {
-  implement
+  impltmp
   list_tabulate$fopr<x0><n0>(x0) = f0(x0)
 } endwhere // list_tabulate
 
