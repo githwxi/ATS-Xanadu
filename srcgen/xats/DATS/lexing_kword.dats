@@ -97,9 +97,20 @@ T_PRVAL_ = T_VAL(VLKprval)
 (* ****** ****** *)
 //
 macdef
-T_IMPLMNT_ = T_IMPLMNT(IMPval)
+T_IMPLMNT_ = T_IMPLMNT(IMPgen)
 macdef
-T_PRIMPLMNT_ = T_IMPLMNT(IMPprf)
+T_IMPLPRF_ = T_IMPLMNT(IMPprf)
+//
+macdef
+T_IMPLVAL_ = T_IMPLMNT(IMPval)
+macdef
+T_IMPLFUN_ = T_IMPLMNT(IMPfun)
+macdef
+T_IMPLTMP_ = T_IMPLMNT(IMPtmp)
+(*
+macdef
+T_IMPLTMPR_ = T_IMPLMNT(IMPtmpr)
+*)
 //
 (* ****** ****** *)
 //
@@ -305,10 +316,17 @@ val () = myins("prval", T_PRVAL_)
 //
 val () = myins("var", T_VAR())
 //
+//
 val () = myins("implmnt", T_IMPLMNT_)
-val () = myins("implement", T_IMPLMNT_)
-val () = myins("primplmnt", T_PRIMPLMNT_)
-val () = myins("primplement", T_PRIMPLMNT_)
+//
+val () = myins("implprf", T_IMPLPRF_)
+//
+val () = myins("implval", T_IMPLVAL_)
+val () = myins("implfun", T_IMPLFUN_)
+val () = myins("impltmp", T_IMPLTMP_)
+(*
+val () = myins("impltmpr", T_IMPLTMPR_)
+*)
 //
 val () = myins("abssort", T_ABSSORT)
 //

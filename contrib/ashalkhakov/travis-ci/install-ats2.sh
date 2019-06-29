@@ -14,7 +14,7 @@ WGETQ="wget -q"
 TARZXF="tar -zxf"
 
 ATSLANGURL_srcfg=\
-http://sourceforge.net/projects/ats2-lang
+https://sourceforge.net/projects/ats2-lang
 
 cd $HOME
 $WGETQ ${ATSLANGURL_srcfg}/files/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ

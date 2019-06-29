@@ -47,30 +47,30 @@ typedef ullk = ullint_k
 
 (* ****** ****** *)
 //
-implement
+impltmp
 g0int_add<sk,sk><sk> = g0add_sint_sint
-implement
+impltmp
 g1int_add<sk,sk><sk> = g1add_sint_sint
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 g0int_sub<sk,sk><sk> = g0sub_sint_sint
-implement
+impltmp
 g1int_sub<sk,sk><sk> = g1sub_sint_sint
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 g0int_mul<sk,sk><sk> = g0mul_sint_sint
-implement
+impltmp
 g1int_mul<sk,sk><sk> = g1mul_sint_sint
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 g0int_div<sk,sk><sk> = g0div_sint_sint
-implement
+impltmp
 g1int_div<sk,sk><sk> = g1div_sint_sint
 //
 (* ****** ****** *)
