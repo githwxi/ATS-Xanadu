@@ -34,60 +34,69 @@
 (* ****** ****** *)
 //
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs
+,x0:type>
 gseq_forall(xs): bool
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs
+,x0:type>
 gseq_foreach(xs): void
 //
 (* ****** ****** *)
 //
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs
+,x0:type>
 gseq_iforall(xs): bool
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs
+,x0:type>
 gseq_iforeach(xs): void
 //
 (* ****** ****** *)
 //
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs
+,x0:type>
 <y0:vtype>
 gseq_map_list(xs): list_vt(y0)
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs:type
+,x0:type>
 <y0:vtype>
 gseq_map_rlist(xs): list_vt(y0)
 //
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs:type
+,x0:type>
 <y0:vtype>
 gseq_map_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
 //
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs:type
+,x0:type>
 <y0:vtype>
 gseq_imap_list(xs): list_vt(y0)
 fun
-<xs:type>
-<x0:type>
+<xs:type
+,x0:type>
 <y0:vtype>
 gseq_imap_rlist(xs): list_vt(y0)
 //
 fun
-<xs:type>
-<x0:type>
+<k0:prop>
+<xs:type
+,x0:type>
 <y0:vtype>
 gseq_imap_stream(xs): stream_vt(y0)
 //

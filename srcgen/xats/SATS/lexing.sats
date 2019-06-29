@@ -217,8 +217,9 @@ tnode =
   | T_VAR of ((*void*))
 //
   | T_IMPLMNT of (impkind)
-    // implmnt implement: val/fun
-    // primplmnt primplement: prval/prfun
+    // implmnt: generic
+    // implprf: prval/fun
+    // implval/fun/tmp/tmpr: val/fun/tmp/tmpr
 //
   | T_ABSSORT of ()
 //
