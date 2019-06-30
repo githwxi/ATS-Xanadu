@@ -13,22 +13,42 @@ which are predicative.
 Following is a list of built-in predicative sorts in ATS:
 
 int // for static integers
+addr // for memory addresses
 bool // for static booleans
 char // for static chars
 real // for real numbers
 float // for static floats
 string // for static strings
 
-Following is a list of built-in imppredicative sorts in ATS:
+Following is a list of built-in impredicative sorts in ATS:
 
 prop // for props (which are types for proofs)
 view // for views (which are types for linear proofs)
 type // for types
 tbox // for boxed types
-tflt/tflat // for flat/unboxed types
 vtype // for linear types
 vtbox // for linear boxed types
+(*
+tflt/tflat // for flat/unboxed types
 vtflt/vtflat // for linear flat/unboxed types
+*)
+
+There are also various short names for the
+above sorts:
+
+sortdef i0 = int
+sortdef a0 = addr
+sortdef b0 = bool
+sortdef c0 = char
+
+sortdef p0 = prop
+sortdef v0 = view
+sortdef t0 = type
+sortdef x0 = tbox
+sortdef vt = vtype
+sortdef vx = vtbox
+
+########################
 
 Abstract sorts can be introduced in ATS. For instance,
 
@@ -68,9 +88,11 @@ sortdef ints = ilist // alias for sort
 sortdef posint = {a: int | a > 0} // alias for subset sort
 sortdef negint = {a: int | a < 0} // alias for subset sort
 
-Note that a subset sort is NOT a proper sort. Primarily, a subset sort
-is introduced as a form of convenience for handling quantification
-(which is to be explained with examples later).
+Note that a subset sort is NOT a proper sort.
+
+Primarily, a subset sort is introduced as a form of convenience
+for handling quantification (which is to be explained with examples
+later).
 
 ########################
 

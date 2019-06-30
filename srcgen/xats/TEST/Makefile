@@ -53,16 +53,31 @@ $(CAT) ./DATA/syntax_dyn.dats | $(XATSOPT) --dynamic
 all:: prelude
 prelude:: gbas_sats
 prelude:: gbas_dats
+prelude:: gord_sats
+prelude:: gord_dats
+
+######
 
 PRELUDE=./../../../prelude
 
+######
+
 basics_sats:; \
 $(CAT) $(PRELUDE)/basics.sats | $(XATSOPT) --static
+
+######
 
 gbas_sats:; \
 $(CAT) $(PRELUDE)/SATS/gbas.sats | $(XATSOPT) --static
 gbas_dats:; \
 $(CAT) $(PRELUDE)/DATS/gbas.dats | $(XATSOPT) --dynamic
+
+######
+
+gord_sats:; \
+$(CAT) $(PRELUDE)/SATS/gord.sats | $(XATSOPT) --static
+gord_dats:; \
+$(CAT) $(PRELUDE)/DATS/gord.dats | $(XATSOPT) --dynamic
 
 ######
 
