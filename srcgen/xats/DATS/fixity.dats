@@ -71,7 +71,7 @@ fprint_assoc(out, x0) =
 local
 
 absimpl
-prcdv_tflat = int
+prcdv_tflt = int
 
 #define
 MINPRCDV ~1000000000 // HX: low enough

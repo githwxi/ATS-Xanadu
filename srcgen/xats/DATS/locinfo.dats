@@ -49,12 +49,12 @@ local
 (* ****** ****** *)
 
 absimpl
-position_tflat =
+position_tflt =
 $extype_struct
 "xats_position_struct" of
 {
   ntot= int, nrow= int, ncol= int
-} // end of [position_tflat]
+} // end of [position_tflt]
 
 (* ****** ****** *)
 

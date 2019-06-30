@@ -810,12 +810,10 @@ fp0 =
 $FP0.the_filpath_stdin 
 val
 (pf0 | ()) =
-$FP0.the_filpathlst_push
-  (fp0)
+$FP0.the_filpathlst_push(fp0)
 val
 d0cs =
-parse_from_stdin_toplevel
-  (stadyn)
+parse_from_stdin_toplevel(stadyn)
 prval () = $UN.castview0{void}(pf0)
 (*
 val
@@ -1527,11 +1525,7 @@ the_basics_load
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gint.sats")
-val () =
-the_prelude_load
-( XATSHOME
-, 0(*static*), "prelude/SATS/list.sats")
+, 0(*static*), "prelude/SATS/gbas.sats")
 //
 (*
 val () =

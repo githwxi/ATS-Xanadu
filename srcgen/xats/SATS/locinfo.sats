@@ -46,13 +46,13 @@ typedef location = location_type
 (* ****** ****** *)
 //
 (*
-HX: atstflat = atst@ype
+HX: atstflt = atst@ype
 *)
-abstflat
-position_tflat =
+abstflt
+position_tflt =
 $extype"xats_position_struct"
-  typedef pos_t = position_tflat
-  typedef position = position_tflat
+typedef pos_t = position_tflt
+typedef position = position_tflt
 //
 (* ****** ****** *)
 //

@@ -55,11 +55,11 @@ typedef location = $LOC.location
 //
 (* ****** ****** *)
 //
-abstflat
-lexbuf_tflat =
+abstflt
+lexbuf_tflt =
 $extype"xats_lexbuf_struct"
 //
-  typedef lexbuf = lexbuf_tflat
+  typedef lexbuf = lexbuf_tflt
 //
 (* ****** ****** *)
 

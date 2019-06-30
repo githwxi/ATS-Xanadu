@@ -1904,11 +1904,11 @@ implement
 trans01_dcstdecl
   (d0c0) = let
 //
-(*
+// (*
 val () =
 println!
 ("trans01_dcstdecl: d0c0 = ", d0c0)
-*)
+// *)
 //
 val+
 D0CSTDECL(rcd) = d0c0

@@ -5,6 +5,34 @@ and Templates
 
 ## Project Description
 
+ATS3 is an attempt to greatly improve upon ATS2.  Probably the biggest
+problem with ATS2 is the VERY steep learning curve associated with it.
+Very few programmers were able to ever overcome it to reach the point
+where they could truly start enjoying the tremendous power of (advanced)
+type-checking and (embeddable) templates.
+
+When DML (the predecessor of ATS) was designed nearly 20 years ago, a
+two-layered approach to type-checking was taken: ML-like type-checking
+first and dependent type-checking second.  This approach was later
+abandoned in the design of ATS. Instead, there is only dependent
+type-checking in ATS1 and ATS2. In ATS3, DML's two-layered approach is
+to adopted. In particular, a program in ATS3 that passes ML-like
+type-checking can be compiled and executed. So one can skip dependent
+type-checking in ATS3 if one so chooses. In this way, the learning
+curve is expected to be greatly leveled. But there is much more than
+just leveling the learning curve.
+
+ML-like types are algebraic (involving no explicit quantifiers). Such
+types are so much friendlier than dependent types (which often involve
+explicit quantifiers) for supporting type-based meta-programming.  It
+seems that a chance has finally arrived to properly address the
+template selection problem that brings so much annoyance in ATS2 (due
+to the very use of dependent types for template selection).
+
+In short, ATS3 adds an extra layer to ATS2 for supporting ML-like
+algebraic type-checking. Type-based meta-programming in ATS3 solely
+uses algebraic types (while ATS2 uses dependent types).
+
 ## Build Status
 
 * [![Build Status](https://travis-ci.org/githwxi/ATS-Xanadu.svg?branch=master)](https://travis-ci.org/githwxi/ATS-Xanadu) Ubuntu
