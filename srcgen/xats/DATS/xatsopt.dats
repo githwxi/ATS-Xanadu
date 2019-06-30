@@ -882,7 +882,7 @@ in
 // HX-2018-10-08:
 // IT-IS-YET-TO-BE-IMPLEMENTED!!!
 //
-end // end of [process_give]
+end // end of [process_given]
 //
 implement
 process_cmdline
@@ -1526,6 +1526,14 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/gbas.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gord.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gnum.sats")
 //
 (*
 val () =

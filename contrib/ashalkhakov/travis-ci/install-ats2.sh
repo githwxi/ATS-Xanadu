@@ -5,10 +5,6 @@
 ATSVER=$1
 ATSPACK=\
 ATS2-Postiats-$ATSVER
-ATSPACKint=\
-ATS2-Postiats-int-$ATSVER
-ATSPACKgmp=\
-ATS2-Postiats-gmp-$ATSVER
 ATSPACKTGZ=$ATSPACK.tgz
 
 ######################################
@@ -28,9 +24,18 @@ $WGETQ ${ATSLANGURL_srcfg}/files/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ
 $TARZXF ${ATSPACKTGZ}
 
 ######################################
-
+#
+# HX-2019-06:
+# ATSPACKgmp is the default
+#
+ATSPACKint=\
+ATS2-Postiats-int-$ATSVER
+ATSPACKgmp=\
+ATS2-Postiats-gmp-$ATSVER
+######################################
+#
 (${MV} -f ${ATSPACKgmp} ${HOME}/ATS2)
-
+#
 ######################################
 
 ###### end of [install-ats2.sh] ######
