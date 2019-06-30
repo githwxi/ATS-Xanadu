@@ -11,7 +11,7 @@ ATSPACKTGZ=$ATSPACK.tgz
 
 MV=mv
 WGETQ="wget -q"
-TARZXF="tar -zxf"
+TARZXF="tar zvxf"
 
 ATSLANGURL_srcfg=\
 https://sourceforge.net/projects/ats2-lang
@@ -21,7 +21,9 @@ $WGETQ ${ATSLANGURL_srcfg}/files/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ
 
 ######################################
 
-$TARZXF $ATSPACKTGZ
+$TARZXF ${ATSPACKTGZ}
+
+ls -al .
 
 ######################################
 
