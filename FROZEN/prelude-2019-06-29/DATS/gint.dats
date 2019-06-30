@@ -33,132 +33,46 @@
 //
 (* ****** ****** *)
 
-primplmnt
-(*nonrec*)
-lemma_list_param
-  (xs) =
-(
-//
-case+ xs of
-| list_nil _ => ()
-| list_cons _ => ()
-//
-) (* lemma_list_param *)
+typedef sk = sint_k
+typedef uk = uint_k
 
-primplmnt
-(*nonrec*)
-lemma_list_vt_param
-  (xs) =
-(
-//
-case+ xs of
-| list_vt_nil _ => ()
-| list_vt_cons _ => ()
-//
-) (* lemma_list_vt_param *)
+typedef slk = slint_k
+typedef ulk = ulint_k
+
+typedef ssk = ssize_k
+typedef usk = usize_k
+
+typedef sllk = sllint_k
+typedef ullk = ullint_k
 
 (* ****** ****** *)
-
-implement
-<x0>(*tmp*)
-list_copy
-  (xs) =
-(
-list_map_vt1<x0><x0>(xs)
-) where
-{
-implement
-list_map$fopr_vt1<x0><x0> = copy$val<x0>
-} (* end of [list_copy] *)
-
+//
+impltmp
+g0int_add<sk,sk><sk> = g0add_sint_sint
+impltmp
+g1int_add<sk,sk><sk> = g1add_sint_sint
+//
+(* ****** ****** *)
+//
+impltmp
+g0int_sub<sk,sk><sk> = g0sub_sint_sint
+impltmp
+g1int_sub<sk,sk><sk> = g1sub_sint_sint
+//
+(* ****** ****** *)
+//
+impltmp
+g0int_mul<sk,sk><sk> = g0mul_sint_sint
+impltmp
+g1int_mul<sk,sk><sk> = g1mul_sint_sint
+//
+(* ****** ****** *)
+//
+impltmp
+g0int_div<sk,sk><sk> = g0div_sint_sint
+impltmp
+g1int_div<sk,sk><sk> = g1div_sint_sint
+//
 (* ****** ****** *)
 
-implement
-<x0>(*tmp*)
-list_free
-  (xs) =
-(
-  loop(xs)
-) where
-{
-fun
-loop
-( xs
-: list_vt(x0)): void =
-(
-case+ xs of
-| ~list_vt_nil() => ()
-| @list_vt_cons(x0, xs1) =>
-  (
-    let
-      val xs1 = xs1
-    in
-      free$ref<x0>(x0); $freecon(xs1); loop(xs1)
-    end
-  )
-) (* end of [loop] *)
-} (* end of [list_free] *)
-
-(* ****** ****** *)
-
-implement
-<x0><n0>
-list_tabulate(n0) =
-(
-let
-//
-var r0: ptr?
-val () =
-loop(0, r0) in r0
-//
-endlet
-) where
-{
-fun
-loop
-{ i0:nat
-| i0 <= n0}
-(
-i0: int(i0)
-,
-r0: ptr? >>
-    list_vt(x0, n0-i0)
-) : void =
-(
-if
-(i0 < n0)
-then let
-//
-val x0 =
-list_tabulate$fopr
-<x0><n0>(i0)
-//
-val r0 =
-list_vt_cons(x0, ?)
-val+
-list_vt_cons(_, r1) = r0
-//
-in
-  loop(i0+1, r1); $foldcon(r0)
-end // end of [then]
-else (r0 := list_vt_nil(*void*))
-) (* end of [loop] *)
-} endwhere // list_tabulate
-
-(* ****** ****** *)
-
-implement
-<x0>
-list_tabulate
-{n0}(n0, f0) =
-(
-  list_tabulate<x0><n0>(n0)
-) where
-{
-  implement
-  list_tabulate$fopr<x0><n0>(x0) = f0(x0)
-} endwhere // list_tabulate
-
-(* ****** ****** *)
-
-(* end of [list.dats] *)
+(* end of [gint.dats] *)

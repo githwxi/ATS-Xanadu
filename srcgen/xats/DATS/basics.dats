@@ -211,8 +211,11 @@ fprint_impkind
   (out, knd) =
 (
 case+ knd of
-| IMPval() => fprint!(out, "IMPval")
 | IMPprf() => fprint!(out, "IMPprf")
+| IMPval() => fprint!(out, "IMPval")
+| IMPfun() => fprint!(out, "IMPfun")
+| IMPtmp() => fprint!(out, "IMPtmp")
+| IMPgen() => fprint!(out, "IMPgen")
 ) (* end of [fprint_impkind] *)
 
 (* ****** ****** *)

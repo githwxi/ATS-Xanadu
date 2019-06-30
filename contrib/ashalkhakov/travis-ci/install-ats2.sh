@@ -5,26 +5,32 @@
 ATSVER=$1
 ATSPACK=\
 ATS2-Postiats-$ATSVER
+ATSPACKint=\
+ATS2-Postiats-int-$ATSVER
+ATSPACKgmp=\
+ATS2-Postiats-gmp-$ATSVER
 ATSPACKTGZ=$ATSPACK.tgz
 
 ######################################
 
 MV=mv
 WGETQ="wget -q"
-TARZXF="tar -zxf"
+TARZXF="tar zxf"
 
 ATSLANGURL_srcfg=\
-http://sourceforge.net/projects/ats2-lang
+https://sourceforge.net/projects/ats2-lang
 
 cd $HOME
 $WGETQ ${ATSLANGURL_srcfg}/files/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ
 
 ######################################
 
-$TARZXF $ATSPACKTGZ
+$TARZXF ${ATSPACKTGZ}
 
 ######################################
 
-(${MV} -f ${ATSPACK} ${HOME}/ATS2)
+(${MV} -f ${ATSPACKgmp} ${HOME}/ATS2)
+
+######################################
 
 ###### end of [install-ats2.sh] ######

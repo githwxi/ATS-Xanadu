@@ -51,34 +51,18 @@ $(CAT) ./DATA/syntax_dyn.dats | $(XATSOPT) --dynamic
 ######
 
 all:: prelude
-prelude:: gint_sats
-prelude:: gint_dats
-prelude:: list_sats
-prelude:: list_dats
-prelude:: string_sats
+prelude:: gbas_sats
+prelude:: gbas_dats
 
 PRELUDE=./../../../prelude
 
 basics_sats:; \
 $(CAT) $(PRELUDE)/basics.sats | $(XATSOPT) --static
 
-gint_sats:; \
-$(CAT) $(PRELUDE)/SATS/gint.sats | $(XATSOPT) --static
-gint_dats:; \
-$(CAT) $(PRELUDE)/DATS/gint.dats | $(XATSOPT) --static
-
-list_sats:; \
-$(CAT) $(PRELUDE)/SATS/list.sats | $(XATSOPT) --static
-list_dats:; \
-$(CAT) $(PRELUDE)/DATS/list.dats | $(XATSOPT) --dynamic
-
-print_sats: ; \
-$(CAT) $(PRELUDE)/SATS/print.sats | $(XATSOPT) --static
-print_dats: ; \
-$(CAT) $(PRELUDE)/DATS/print.dats | $(XATSOPT) --dynamic
-
-string_sats:; \
-$(CAT) $(PRELUDE)/SATS/string.sats | $(XATSOPT) --static
+gbas_sats:; \
+$(CAT) $(PRELUDE)/SATS/gbas.sats | $(XATSOPT) --static
+gbas_dats:; \
+$(CAT) $(PRELUDE)/DATS/gbas.dats | $(XATSOPT) --dynamic
 
 ######
 

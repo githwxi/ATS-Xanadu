@@ -97,9 +97,20 @@ T_PRVAL_ = T_VAL(VLKprval)
 (* ****** ****** *)
 //
 macdef
-T_IMPLMNT_ = T_IMPLMNT(IMPval)
+T_IMPLMNT_ = T_IMPLMNT(IMPgen)
 macdef
-T_PRIMPLMNT_ = T_IMPLMNT(IMPprf)
+T_IMPLPRF_ = T_IMPLMNT(IMPprf)
+//
+macdef
+T_IMPLVAL_ = T_IMPLMNT(IMPval)
+macdef
+T_IMPLFUN_ = T_IMPLMNT(IMPfun)
+macdef
+T_IMPLTMP_ = T_IMPLMNT(IMPtmp)
+(*
+macdef
+T_IMPLTMPR_ = T_IMPLMNT(IMPtmpr)
+*)
 //
 (* ****** ****** *)
 //
@@ -114,34 +125,27 @@ T_TYPEDEF_ = T_SEXPDEF(TYPESORT)
 macdef
 T_VTYPEDEF_ = T_SEXPDEF(VTYPESORT)
 //
+(* ****** ****** *)
+//
 macdef
 T_ABSTYPE_ = T_ABSTYPE(TYPESORT)
 //
-(*
 macdef
 T_ABSPROP_ = T_ABSTYPE(PROPSORT)
 macdef
 T_ABSVIEW_ = T_ABSTYPE(VIEWSORT)
-*)
-(*
+//
 macdef
 T_ABSTBOX_ = T_ABSTYPE(TBOXSORT)
 macdef
-T_ABSTFLT_ = T_ABSTYPE(TFLATSORT)
-macdef
-T_ABSTFLAT_ = T_ABSTYPE(TFLATSORT)
-*)
+T_ABSTFLT_ = T_ABSTYPE(TFLTSORT)
 //
-(*
 macdef
 T_ABSVTYPE_ = T_ABSTYPE(VTYPESORT)
 macdef
 T_ABSVTBOX_ = T_ABSTYPE(VTBOXSORT)
 macdef
-T_ABSVTFLT_ = T_ABSTYPE(VTFLATSORT)
-macdef
-T_ABSVTFLAT_ = T_ABSTYPE(VTFLATSORT)
-*)
+T_ABSVTFLT_ = T_ABSTYPE(VTFLTSORT)
 //
 (* ****** ****** *)
 //
@@ -305,10 +309,17 @@ val () = myins("prval", T_PRVAL_)
 //
 val () = myins("var", T_VAR())
 //
+//
 val () = myins("implmnt", T_IMPLMNT_)
-val () = myins("implement", T_IMPLMNT_)
-val () = myins("primplmnt", T_PRIMPLMNT_)
-val () = myins("primplement", T_PRIMPLMNT_)
+//
+val () = myins("implprf", T_IMPLPRF_)
+//
+val () = myins("implval", T_IMPLVAL_)
+val () = myins("implfun", T_IMPLFUN_)
+val () = myins("impltmp", T_IMPLTMP_)
+(*
+val () = myins("impltmpr", T_IMPLTMPR_)
+*)
 //
 val () = myins("abssort", T_ABSSORT)
 //
@@ -321,22 +332,13 @@ val () = myins("typedef", T_TYPEDEF_)
 val () = myins("vtypedef", T_VTYPEDEF_)
 //
 val () = myins("abstype", T_ABSTYPE_)
-//
-(*
 val () = myins("absprop", T_ABSPROP_)
 val () = myins("absview", T_ABSVIEW_)
-*)
-(*
 val () = myins("abstbox", T_ABSTBOX_)
 val () = myins("abstflt", T_ABSTFLT_)
-val () = myins("abstflat", T_ABSTFLAT_)
-*)
-(*
 val () = myins("absvtype", T_ABSVTYPE_)
 val () = myins("absvtbox", T_ABSVTBOX_)
 val () = myins("absvtflt", T_ABSVTFLT_)
-val () = myins("absvtflat", T_ABSVTFLAT_)
-*)
 //
 val () = myins("absimpl", T_ABSIMPL)
 val () = myins("absopen", T_ABSOPEN)

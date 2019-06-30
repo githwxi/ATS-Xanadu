@@ -33,44 +33,132 @@
 //
 (* ****** ****** *)
 
-implement
-<x0>(*tmp*)
-print$val<x0> =
-fprint$val<x0>(stdout, x0)
-implement
-<x0>(*tmp*)
-prerr$val<x0> =
-fprint$val<x0>(stderr, x0)
+implprf
+(*nonrec*)
+lemma_list_param
+  (xs) =
+(
+//
+case+ xs of
+| list_nil _ => ()
+| list_cons _ => ()
+//
+) (* lemma_list_param *)
+
+implprf
+(*nonrec*)
+lemma_list_vt_param
+  (xs) =
+(
+//
+case+ xs of
+| list_vt_nil _ => ()
+| list_vt_cons _ => ()
+//
+) (* lemma_list_vt_param *)
 
 (* ****** ****** *)
 
-implement
+impltmp
 <x0>(*tmp*)
-print$ref<x0> =
-fprint$ref<x0>(stdout, x0)
-implement
-<x0>(*tmp*)
-prerr$ref<x0> =
-fprint$ref<x0>(stderr, x0)
+list_copy
+  (xs) =
+(
+list_map_vt1<x0><x0>(xs)
+) where
+{
+impltmp
+list_map$fopr_vt1<x0><x0> = copy$val<x0>
+} (* end of [list_copy] *)
 
 (* ****** ****** *)
-//
-// HX-2018-10-14:
-// We need a way to detect
-// this kind of mutual dependency!
-//
-implement
-{x0:vtype}
-fprint$ref<x0>(out, x0) =
-fprint$val<x0>(out, x0)
-//
-implement
-(x0:vtype)
-fprint$val<x0>(out, x0) =
+
+impltmp
+<x0>(*tmp*)
+list_free
+  (xs) =
+(
+  loop(xs)
+) where
+{
+fun
+loop
+( xs
+: list_vt(x0)): void =
+(
+case+ xs of
+| ~list_vt_nil() => ()
+| @list_vt_cons(x0, xs1) =>
+  (
+    let
+      val xs1 = xs1
+    in
+      free$ref<x0>(x0); $freecon(xs1); loop(xs1)
+    end
+  )
+) (* end of [loop] *)
+} (* end of [list_free] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0><n0>
+list_tabulate(n0) =
+(
 let
-var x0 = x0 in fprint$ref<x0>(out, x0)
-endlet // end of [fprint$val]
 //
+var r0: ptr?
+val () =
+loop(0, r0) in r0
+//
+endlet
+) where
+{
+fun
+loop
+{ i0:nat
+| i0 <= n0}
+(
+i0: int(i0)
+,
+r0: ptr? >>
+    list_vt(x0, n0-i0)
+) : void =
+(
+if
+(i0 < n0)
+then let
+//
+val x0 =
+list_tabulate$fopr
+<x0><n0>(i0)
+//
+val r0 =
+list_vt_cons(x0, ?)
+val+
+list_vt_cons(_, r1) = r0
+//
+in
+  loop(i0+1, r1); $foldcon(r0)
+end // end of [then]
+else (r0 := list_vt_nil(*void*))
+) (* end of [loop] *)
+} endwhere // list_tabulate
+
 (* ****** ****** *)
 
-(* end of [print.dats] *)
+impltmp
+<x0>
+list_tabulate
+{n0}(n0, f0) =
+(
+  list_tabulate<x0><n0>(n0)
+) where
+{
+  impltmp
+  list_tabulate$fopr<x0><n0>(x0) = f0(x0)
+} endwhere // list_tabulate
+
+(* ****** ****** *)
+
+(* end of [list.dats] *)
