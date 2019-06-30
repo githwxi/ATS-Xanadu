@@ -59,9 +59,9 @@ overload fprint with fprint_assoc
 //
 // HX: precedence value
 //
-abstflat prcdv_tflat = int
+abstflt prcdv_tflt = int
 //
-  typedef prcdv = prcdv_tflat
+typedef prcdv = prcdv_tflt
 //
 (* ****** ****** *)
 //

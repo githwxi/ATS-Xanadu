@@ -46,7 +46,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 absimpl
-tokbuf_tflat =
+tokbuf_tflt =
 $extype_struct
 "xats_tokbuf_struct" of
 {

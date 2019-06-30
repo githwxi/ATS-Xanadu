@@ -200,8 +200,11 @@ overload fprint with fprint_funkind
 datatype
 impkind =
 //
+| IMPgen // for non-proof case
 | IMPprf // proof implementation
 | IMPval // value implementation
+| IMPfun // function implementation
+| IMPtmp // template implementation
 //
 fun
 fprint_impkind:fprint_type(impkind)

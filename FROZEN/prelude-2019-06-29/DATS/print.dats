@@ -28,103 +28,49 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May, 2018
+// Start Time: October, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-%{#
-#include "CATS/lexbuf.cats"
-%} // end of [%{#]
+impltmp
+<x0>(*tmp*)
+print$val<x0> =
+fprint$val<x0>(stdout, x0)
+impltmp
+<x0>(*tmp*)
+prerr$val<x0> =
+fprint$val<x0>(stderr, x0)
+
+(* ****** ****** *)
+
+impltmp
+<x0>(*tmp*)
+print$ref<x0> =
+fprint$ref<x0>(stdout, x0)
+impltmp
+<x0>(*tmp*)
+prerr$ref<x0> =
+fprint$ref<x0>(stderr, x0)
 
 (* ****** ****** *)
 //
-#staload CBS =
-"./../../xutl/SATS/cblist.sats"
+// HX-2018-10-14:
+// We need a way to detect
+// this kind of mutual dependency!
 //
-typedef cblist = $CBS.cblist
+impltmp
+{x0:vtype}
+fprint$ref<x0>(out, x0) =
+fprint$val<x0>(out, x0)
 //
-(* ****** ****** *)
-//
-#staload LOC = "./locinfo.sats"
-//
-typedef pos_t = $LOC.pos_t
-typedef loc_t = $LOC.loc_t
-typedef position = $LOC.position
-typedef location = $LOC.location
-//
-(* ****** ****** *)
-//
-abstflt
-lexbuf_tflt =
-$extype"xats_lexbuf_struct"
-//
-  typedef lexbuf = lexbuf_tflt
+impltmp
+(x0:vtype)
+fprint$val<x0>(out, x0) =
+let
+var x0 = x0 in fprint$ref<x0>(out, x0)
+endlet // end of [fprint$val]
 //
 (* ****** ****** *)
 
-fun
-lexbuf_initize_cblist
-(
-  buf: &lexbuf? >> _, cbs: cblist
-) : void // end of [lexbuf_initize_cblist]
-
-(* ****** ****** *)
-//
-(*
-fun
-lexbuf_get_ntot(buf: &lexbuf): int
-fun
-lexbuf_get_nspc(buf: &lexbuf): int
-*)
-//
-(* ****** ****** *)
-//
-fun
-lexbuf_get_none
-  (buf: &lexbuf >> _): void
-fun
-lexbuf_get_fullseg
-  (buf: &lexbuf >> _): string
-//
-(* ****** ****** *)
-//
-// HX-2018-05-27:
-// [lexbuf_getc] is like getc
-// [lexbuf_unget] can be safely
-// applied only once at a given
-// position!
-//
-fun
-lexbuf_getc(buf: &lexbuf >> _): int
-fun
-lexbuf_unget
-  (buf: &lexbuf >> _, i0: int): void
-//
-(* ****** ****** *)
-//
-(*
-fun
-lexbuf_get_pos
-(
-  buf: &lexbuf, pos: &pos_t? >> _
-) : void // end-of-fun
-*)
-//
-(*
-fun
-lexbuf_set_pos
-(buf: &lexbuf >> _, pos: &pos_t): void
-*)
-//
-(* ****** ****** *)
-(*
-//
-fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
-//
-*)
-(* ****** ****** *)
-
-(* end of [xats_lexbuf.sats] *)
+(* end of [print.dats] *)

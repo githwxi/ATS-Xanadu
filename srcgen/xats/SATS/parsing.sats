@@ -141,11 +141,11 @@ DYNEXP0 = "./dynexp0.sats"
 //
 (* ****** ****** *)
 //
-abstflat
-tokbuf_tflat =
+abstflt
+tokbuf_tflt =
 $extype"xats_tokbuf_struct"
 //
-  typedef tokbuf = tokbuf_tflat
+  typedef tokbuf = tokbuf_tflt
 //
 (* ****** ****** *)
 //

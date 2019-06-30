@@ -27,52 +27,18 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: October, 2018
-// Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
-
-typedef sk = sint_k
-typedef uk = uint_k
-
-typedef slk = slint_k
-typedef ulk = ulint_k
-
-typedef ssk = ssize_k
-typedef usk = usize_k
-
-typedef sllk = sllint_k
-typedef ullk = ullint_k
-
-(* ****** ****** *)
-//
-implement
-g0int_add<sk,sk><sk> = g0add_sint_sint
-implement
-g1int_add<sk,sk><sk> = g1add_sint_sint
+#define VERBOSE_FIXITY 0
+(*
+#define VERBOSE_FIXITY 1 (* used in [prelude/fixity.ats] *)
+*)
 //
 (* ****** ****** *)
 //
-implement
-g0int_sub<sk,sk><sk> = g0sub_sint_sint
-implement
-g1int_sub<sk,sk><sk> = g1sub_sint_sint
-//
-(* ****** ****** *)
-//
-implement
-g0int_mul<sk,sk><sk> = g0mul_sint_sint
-implement
-g1int_mul<sk,sk><sk> = g1mul_sint_sint
-//
-(* ****** ****** *)
-//
-implement
-g0int_div<sk,sk><sk> = g0div_sint_sint
-implement
-g1int_div<sk,sk><sk> = g1div_sint_sint
+#define VERBOSE_PRELUDE 0
+(*
+#define VERBOSE_PRELUDE 1 (* mainly for the purpose of debugging *)
+*)
 //
 (* ****** ****** *)
 
-(* end of [gint.dats] *)
+(* end of [xparam.hats] *)

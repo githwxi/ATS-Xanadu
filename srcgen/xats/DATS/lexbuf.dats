@@ -59,7 +59,7 @@ LOC = "./../SATS/locinfo.sats"
 (* ****** ****** *)
 //
 absimpl
-lexbuf_tflat =
+lexbuf_tflt =
 $extype_struct
 "xats_lexbuf_struct" of
 {

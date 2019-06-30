@@ -40,6 +40,13 @@ prelude: for libats-prelude
 
 (* ###### ###### ###### ###### ###### *)
 
+HX-2019-05:
+Started ATS-Temptory
+One crucial lesson learned:
+By default, template implementation should not be recursive!!!
+
+(* ###### ###### ###### ###### ###### *)  
+
 I have been teaching ATS2 at Boston University for about 5 years
 The biggest problem I see is the VERY steep learning curve associated
 with ATS2.  Very few students were able to ever overcome it to reach
