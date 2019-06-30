@@ -173,16 +173,6 @@ abssort vtflt // viewtflt: linear tflt
 *)
 //
 (* ****** ****** *)
-//
-sortdef type0 = type
-sortdef tbox0 = tbox
-sortdef tflt0 = tflt
-//
-sortdef type1 = vtype
-sortdef tbox1 = vtbox
-sortdef tflt1 = vtflt
-//
-(* ****** ****** *)
 
 typedef
 bool_k = $extype("xats_bool_t")
@@ -210,70 +200,75 @@ ullint_k = $extype("xats_ullint_t")
 (* ****** ****** *)
 //
 abstype
-bool_type(bool) <= bool_k
+bool0_type <= bool_k
+abstype
+bool1_type(bool) <= bool_k
 //
 typedef
-bool0 = [b:b0] bool_type(b0)
+bool = bool0_type
 typedef
-bool1(b:bool) = bool_type(b)
+bool(b:bool) = bool1_type(b)
 //
 typedef
-tbool = bool_type(tt) // singleton
+true = bool(tt) // singleton
 typedef
-fbool = bool_type(ff) // singleton
+false = bool(ff) // singleton
 //
 (* ****** ****** *)
 //
 abstype
-gint_type(a:type, int) <= a
+g0int_type(a:type) <= a
 //
 typedef
-sint0 = [i:i0] gint_type(sint_k, i)
+sint = g0int_type(sint_k)
 typedef
-sint1(i:int) = gint_type(sint_k, i)
+uint = g0int_type(uint_k)
 //
 typedef
-uint0 = [i:i0] gint_type(uint_k, i)
+slint = g0int_type(slint_k)
 typedef
-uint1(i:int) = gint_type(uint_k, i)
+ulint = g0int_type(ulint_k)
 //
 typedef
-slint0 = [i:i0] gint_type(slint_k, i)
+ssize = g0int_type(ssize_k)
 typedef
-slint1(i:int) = gint_type(slint_k, i)
+usize = g0int_type(usize_k)
 //
 typedef
-ulint0 = [i:i0] gint_type(ulint_k, i)
+sllint = g0int_type(sllint_k)
 typedef
-ulint1(i:int) = gint_type(ulint_k, i)
-//
-typedef
-ssize0 = [i:i0] gint_type(ssize_k, i)
-typedef
-ssize1(i:int) = gint_type(ssize_k, i)
-//
-typedef
-usize0 = [i:i0] gint_type(usize_k, i)
-typedef
-usize1(i:int) = gint_type(usize_k, i)
+ullint = g0int_type(ullint_k)
 //
 (* ****** ****** *)
 //
-typedef int = sint0
-typedef int(i:int) = sint1(i)
-typedef uint = uint0
-typedef uint(i:int) = uint1(i)
+abstype
+g1int_type(a:type, int) <= a
 //
-typedef lint = slint0
-typedef lint(i:int) = slint1(i)
-typedef ulint = ulint0
-typedef ulint(i:int) = ulint1(i)
+typedef
+sint(i:int) = g1int_type(sint_k, i)
+typedef
+uint(i:int) = g1int_type(uint_k, i)
 //
-typedef size = usize0
-typedef size(i:int) = usize1(i)
-typedef ssize = ssize0
-typedef ssize(i:int) = ssize1(i)
+typedef
+slint(i:int) = g1int_type(slint_k, i)
+typedef
+ulint(i:int) = g1int_type(ulint_k, i)
 //
+typedef
+ssize(i:int) = g1int_type(ssize_k, i)
+typedef
+usize(i:int) = g1int_type(usize_k, i)
+//
+typedef
+sllint(i:int) = g1int_type(sllint_k, i)
+typedef
+ullint(i:int) = g1int_type(ullint_k, i)
+//
+(* ****** ****** *)
+
+typedef int = sint
+typedef int(i:int) = sint(i)
+
 (* ****** ****** *)
 
 typedef
@@ -282,6 +277,8 @@ typedef
 nlint = [i:int | i >= 0] slint(i)
 typedef
 nsize = [i:int | i >= 0] ssize(i)
+typedef
+nllint = [i:int | i >= 0] sllint(i)
 
 (* ****** ****** *)
 
@@ -306,20 +303,20 @@ nintlte(n:int) = [i:nat | i <= n] sint(i)
 datatype
 optn_t0_i0_x0
 (
-  a:type+, bool
+  a:type+, int(*0/1*)
 ) =
-  | optn_nil(a, ff) of ()
-  | optn_cons(a, tt) of (a)
+  | optn_nil(a, 0) of ()
+  | optn_cons(a, 1) of (a)
 //
 // end of [optn_t0_i0_tbox]
 //
-datavtype
+datatype
 optn_vt_i0_vx
 (
-  a:vtype+, bool
+  a:vtype+, int(*0/1*)
 ) =
-  | optn_vt_nil(a, ff) of ()
-  | optn_vt_cons(a, tt) of (a)
+  | optn_vt_nil(a, 0) of ()
+  | optn_vt_cons(a, 1) of (a)
 //
 // end of [optn_vt_i0_vx]
 //
@@ -328,15 +325,17 @@ optn_vt_i0_vx
 sexpdef optn = optn_t0_i0_x0
 sexpdef optn_vt = optn_vt_i0_vx
 //
-typedef
-optn0(a:type) = [b:b0] optn(a, b)
-typedef
-optn1(a:type, b: bool) = optn(a, b)
+(* ****** ****** *)
 //
-vtypedef
-optn0_vt(a:type) = [b:b0] optn_vt(a, b)
-vtypedef
-optn1_vt(a:type, b: bool) = optn_vt(a, b)
+typedef
+optn
+(a:type) = [n:int] optn(a, n)
+//
+(* ****** ****** *)
+//
+typedef
+optn_vt
+(a:vtype) = [n:int] optn_vt(a, n)
 //
 (* ****** ****** *)
 //
@@ -400,26 +399,26 @@ typedef listbtwe
 //
 (* ****** ****** *)
 //
-vtypedef
+typedef
 list_vt(a:vtype) = [n:int] list_vt(a, n)
 //
-vtypedef
+typedef
 list0_vt(a:vtype) = [n:int | n >= 0] list_vt(a, n)
-vtypedef
+typedef
 list1_vt(a:vtype) = [n:int | n >= 1] list_vt(a, n)
 //
-vtypedef listlt_vt
+typedef listlt_vt
   (a:vtype, n:int) = [k:nat | k < n] list_vt(a, k)
-vtypedef listgt_vt
+typedef listgt_vt
   (a:vtype, n:int) = [k:int | k > n] list_vt(a, k)
-vtypedef listlte_vt
+typedef listlte_vt
   (a:vtype, n:int) = [k:nat | k <= n] list_vt(a, k)
-vtypedef listgte_vt
+typedef listgte_vt
   (a:vtype, n:int) = [k:int | k >= n] list_vt(a, k)
 //
-vtypedef listbtw_vt
+typedef listbtw_vt
   (a:vtype, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
-vtypedef listbtwe_vt
+typedef listbtwe_vt
   (a:vtype, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
 //
 (* ****** ****** *)
@@ -427,34 +426,32 @@ vtypedef listbtwe_vt
 abstype
 string_i0_x0(n:int) <= ptr
 abstype
+string_i0_vx(n:int) <= ptr
+//
+abstype
 stropt_i0_x0(n:int) <= ptr
-//
-typedef
-string0 = [n:i0] string_i0_x0(n)
-typedef
-string1(n:int) = string_i0_x0(n)
-//
-typedef
-stropt0 = [n:i0] stropt_i0_x0(n)
-typedef
-stropt1(n:int) = stropt_i0_x0(n)
+abstype
+stropt_i0_vx(n:int) <= ptr
 //
 (* ****** ****** *)
 //
-absvtype
-string_i0_vx(n:int) <= ptr
-absvtype
-stropt_i0_vx(n:int) <= ptr
+typedef
+string = [n:int] string_i0_x0(n)
+typedef
+string_vt = [n:int] string_i0_vx(n)
 //
-vtypedef
-string0_vt = [n:i0] string_i0_vx(n)
-vtypedef
-string1_vt(n:int) = string_i0_vx(n)
+typedef string(n:int) = string_i0_x0(n)
+typedef string_vt(n:int) = string_i0_vx(n)
 //
-vtypedef
-stropt0_vt = [n:i0] stropt_i0_vx(n)
-vtypedef
-stropt1_vt(n:int) = stropt_i0_vx(n)
+(* ****** ****** *)
+//
+typedef
+stropt = [n:int] stropt_i0_x0(n)
+typedef
+stropt_vt = [n:int] stropt_i0_vx(n)
+//
+typedef stropt(n:int) = stropt_i0_x0(n)
+typedef stropt_vt(n:int) = stropt_i0_vx(n)
 //
 (* ****** ****** *)
 
