@@ -3,13 +3,20 @@
 A Programming Language System to Unleash the Potentials of Types
 and Templates
 
+## Build Status
+
+* [![Build Status](https://travis-ci.org/githwxi/ATS-Xanadu.svg?branch=master)](https://travis-ci.org/githwxi/ATS-Xanadu) Ubuntu
+* [![Build Status](https://ci.appveyor.com/api/projects/status/github/githwxi/ats-xanadu?branch=master&svg=true)](https://ci.appveyor.com/project/githwxi/ats-xanadu/branch/master) Cygwin
+
 ## Project Description
 
-ATS3 is an attempt to greatly improve upon ATS2.  Probably the biggest
-problem with ATS2 is the VERY steep learning curve associated with it.
-Very few programmers were able to ever overcome it to reach the point
-where they could truly start enjoying the tremendous power of (advanced)
-type-checking and (embeddable) templates.
+ATS3 is an attempt to greatly improve upon ATS2.
+
+Probably the biggest problem with ATS2 is the *very* steep learning
+curve associated with it.  Very few programmers were able to ever
+overcome it to reach the point where they could truly start enjoying
+the tremendous power of (advanced) type-checking and (embeddable)
+templates.
 
 When DML (the predecessor of ATS) was designed nearly 20 years ago, a
 two-layered approach to type-checking was taken: ML-like type-checking
@@ -26,17 +33,12 @@ ML-like types are algebraic (involving no explicit quantifiers). Such
 types are so much friendlier than dependent types (which often involve
 explicit quantifiers) for supporting type-based meta-programming.  It
 seems that a chance has finally arrived to properly address the
-template selection problem that brings so much annoyance in ATS2 (due
+template selection problem that causes so much annoyance in ATS2 (due
 to the very use of dependent types for template selection).
 
 In short, ATS3 adds an extra layer to ATS2 for supporting ML-like
 algebraic type-checking. Type-based meta-programming in ATS3 solely
 uses algebraic types (while ATS2 uses dependent types).
-
-## Build Status
-
-* [![Build Status](https://travis-ci.org/githwxi/ATS-Xanadu.svg?branch=master)](https://travis-ci.org/githwxi/ATS-Xanadu) Ubuntu
-* [![Build Status](https://ci.appveyor.com/api/projects/status/github/githwxi/ats-xanadu?branch=master&svg=true)](https://ci.appveyor.com/project/githwxi/ats-xanadu/branch/master) Cygwin
 
 ## Installing ATS3
 
