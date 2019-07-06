@@ -18,7 +18,7 @@ https://sourceforge.net/projects/ats2-lang
 
 ######################################
 
-$ATSPACKTGZURL_download=\
+ATSPACKTGZURL_download=\
 "\
 ${ATSLANGURL_srcfg}/files\
 /ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ"
