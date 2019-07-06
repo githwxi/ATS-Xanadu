@@ -51,7 +51,7 @@ synread.sats \
 staexp1.sats \
 dynexp1.sats \
 trans01.sats \
-t1check.sats \
+t1xread.sats \
 effect.sats \
 staexp2.sats \
 statyp2.sats \
@@ -96,8 +96,8 @@ trans01_basics.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
-t1check_staexp.dats \
-t1check_dynexp.dats \
+t1xread_staexp.dats \
+t1xread_dynexp.dats \
 effect.dats \
 staexp2.dats \
 statyp2.dats \
@@ -114,8 +114,8 @@ trans12_basics.dats \
 trans12_envmap.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
-t2check_staexp.dats \
-t2check_dynexp.dats \
+t2xread_staexp.dats \
+t2xread_dynexp.dats \
 dynexp3.dats \
 dynexp3_print.dats \
 trans23_dynexp.dats \

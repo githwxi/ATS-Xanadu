@@ -28,45 +28,27 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: June, 2019
+// Start Time: September, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./staexp1.sats"
-#staload "./dynexp1.sats"
-
-(* ****** ****** *)
-
-#staload "./staexp2.sats"
-#staload "./dynexp2.sats"
-
-(* ****** ****** *)
 //
-typedef
-t2checker
-(a:t@ype) = (a) -> void
-//
-(* ****** ****** *)
-
-datatype t2xerr =
-| T2XERRd2ecl of (d2ecl)
-
-typedef
-t2xerrlst = List0(t2xerr)
-
-(* ****** ****** *)
-//
-fun
-t2xread_main(d2eclist): void
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-fun{}
-t2check_d2ecl: t2checker(d2ecl)
-fun{}
-t2check_d2eclist: t2checker(d2eclist)
+#staload "./../SATS/locinfo.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/staexp1.sats"
+//
+#staload "./../SATS/t1xread.sats"
 //
 (* ****** ****** *)
 
-(* end of [xats_t2check.sats] *)
+(* end of [xats_t1xread_staexp.dats] *)
