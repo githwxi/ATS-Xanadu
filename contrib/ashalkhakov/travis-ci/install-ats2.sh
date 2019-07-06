@@ -11,7 +11,7 @@ ATSPACKTGZ=$ATSPACK.tgz
 
 MV=mv
 WGET="wget"
-TARZXF="tar zxf"
+TARZX="tar zx"
 
 ATSLANGURL_srcfg=\
 https://sourceforge.net/projects/ats2-lang
@@ -34,8 +34,9 @@ ${ATSLANGURL_srcfg}/files\
 #
 ######################################
 
-(cd $HOME &&
-$WGET -qO- $ATSPACKTGZURL_download | $TARZXF -C ATS2 --strip 1)
+( \
+cd $HOME && \
+$WGET -qO- $ATSPACKTGZURL_download | $TARZX -C ATS2 --strip 1)
 
 ######################################
 

@@ -18,8 +18,13 @@ https://sourceforge.net/projects/ats2-lang
 
 ######
 
-ATS2URL=\
-"${ATSLANGURL_srcfg}/files/ats2-lang/ats2-postiats-$ATS2VER/$ATS2PKGTGZ"
+WGET=wget
+TARZX=tar zx
+
+ATSLANGURL_download=\
+"\
+${ATSLANGURL_srcfg}/files\
+/ats2-lang/ats2-postiats-$ATS2VER/$ATS2PKGTGZ"
 
 ######
 
@@ -32,10 +37,8 @@ mkdir -p $ATS2HOME
 ######
 
 ( \
-cd $ATS2HOME && \
-wget -qO- $ATS2URL | \
-tar xz -C $ATS2HOME --strip 1 \
-)
+cd $HOME && \
+$WGET -qO- $ATSLANGURL_download | $TARZX -C $ATS2HOME --strip 1)
 
 ######
 
