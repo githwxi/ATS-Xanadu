@@ -49,51 +49,52 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/lexing.sats"
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
 //
-#staload "./../SATS/t1check.sats"
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+//
+#staload "./../SATS/t2xread.sats"
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t1check_d1ecl
-  (d1c0) = let
+t2xread_d2ecl
+  (d2c0) = let
 //
-val loc0 = d1c0.loc()
+val loc0 = d2c0.loc()
 //
 (*
 val () =
 println!
-("t1check_d1ecl: d1c0 = ", d1c0)
+("t2xread_d2ecl: d2c0 = ", d2c0)
 *)
 //
 in
 //
 case+
-d1c0.node() of
+d2c0.node() of
 //
-| _(* rest-of-d1ecl *) =>
+| _(* rest-of-d2ecl *) =>
   (
-    prerrln!("t1check_d1ecl: d1c0 = ", d1c0)
+    prerrln!("t2xread_d2ecl: d2c0 = ", d2c0)
   )
 //
-end // end of [t1check_d1ecl]
+end // end of [t2xread_d2ecl]
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t1check_d1eclist
-  (d1cs) =
+t2xread_d2eclist
+  (d2cs) =
 (
-list_foreach<d1ecl>(d1cs)
+list_foreach<d2ecl>(d2cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1ecl><env>(d1c, env) = t1check_d1ecl<>(d1c)
-} (* end of [t1check_d1ecllst] *)
+list_foreach$fwork<d2ecl><env>(d2c, env) = t2xread_d2ecl<>(d2c)
+} (* end of [t2xread_d2ecllst] *)
 //
 (* ****** ****** *)
 
@@ -101,48 +102,48 @@ local
 
 extern
 fun{}
-the_t1xerrlst_get(): t1xerrlst
+the_t2xerrlst_get(): t2xerrlst
 extern
 fun{}
-the_t1xerrlst_set(t1xerrlst): void
+the_t2xerrlst_set(t2xerrlst): void
 
 implement
 {}(*tmp*)
-t1xerr_add(xerr) = let
+t2xerr_add(xerr) = let
 //
 val
-xerrs = the_t1xerrlst_get()
+xerrs = the_t2xerrlst_get()
 //
 in
-  the_t1xerrlst_set(list_cons(xerr, xerrs))
-end // end of [t1xerr_add]
+  the_t2xerrlst_set(list_cons(xerr, xerrs))
+end // end of [t2xerr_add]
 
 in (* in-of-local *)
 
 implement
-t1check_main(d1cs) = let
+t2xread_main(d2cs) = let
 //
 local
 //
 val
-the_t1xerrlst =
-ref<t1xerrlst>(list_nil)
+the_t2xerrlst =
+ref<t2xerrlst>(list_nil)
 //
 in(*in-of-local*)
 val () =
-$tempenver(the_t1xerrlst)
+$tempenver(the_t2xerrlst)
 implement
-the_t1xerrlst_get<>() = the_t1xerrlst[]
+the_t2xerrlst_get<>() = the_t2xerrlst[]
 implement
-the_t1xerrlst_set<>(xs) = the_t1xerrlst[] := xs
+the_t2xerrlst_set<>(xs) = the_t2xerrlst[] := xs
 end // end of [local]
 //
 val () =
-t1check_d1eclist<>(d1cs)
+t2xread_d2eclist<>(d2cs)
 val
-xerrs = the_t1xerrlst_get()
+xerrs = the_t2xerrlst_get()
 val
-nxerr = list_length<t1xerr>(xerrs)
+nxerr = list_length<t2xerr>(xerrs)
 //
 in
 //
@@ -153,24 +154,24 @@ then
 //
 val () =
 prerrln!
-("t1check_main: nxerr = ", nxerr)
+("t2xread_main: nxerr = ", nxerr)
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("t1check_main: there is one t1xerr!")
+("t2xread_main: there is one t2xerr!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("t1check_main: there are some t1xerrs!")
+("t2xread_main: there are some t2xerrs!")
 //
 val () =
 (
-$raise(XATSOPT_T1XERR_EXN(*void*))
+$raise(XATSOPT_T2XERR_EXN(*void*))
 ) : void
 //
 } (* end of [then] *)
@@ -179,14 +180,14 @@ else
 //
 val () =
 prerrln!
-("t1check_main: there are no t1xerrs!")
+("t2xread_main: there are no t2xerrs!")
 //
 } (* end of [else] *)
 //
-end // end of [t1check_main]
+end // end of [t2xread_main]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_t1check_dynexp.dats] *)
+(* end of [xats_t2xread_dynexp.dats] *)

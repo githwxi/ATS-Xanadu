@@ -47,51 +47,9 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
 //
-#staload "./../SATS/t2check.sats"
-//
-(* ****** ****** *)
-
-implement
-{}(*tmp*)
-t2check_d2ecl
-  (d2c0) = let
-//
-val loc0 = d2c0.loc()
-//
-(*
-val () =
-println!
-("t2check_d2ecl: d2c0 = ", d2c0)
-*)
-//
-in
-//
-case+
-d2c0.node() of
-//
-| _(* rest-of-d2ecl *) =>
-  (
-    prerrln!("t2check_d2ecl: d2c0 = ", d2c0)
-  )
-//
-end // end of [t2check_d2ecl]
-
-(* ****** ****** *)
-//
-implement
-{}(*tmp*)
-t2check_d2eclist
-  (d2cs) =
-(
-list_foreach<d2ecl>(d2cs)
-) where
-{
-implement(env)
-list_foreach$fwork<d2ecl><env>(d2c, env) = t2check_d2ecl<>(d2c)
-} (* end of [t2check_d2ecllst] *)
+#staload "./../SATS/t2xread.sats"
 //
 (* ****** ****** *)
 
-(* end of [xats_t2check_dynexp.dats] *)
+(* end of [xats_t2xread_staexp.dats] *)

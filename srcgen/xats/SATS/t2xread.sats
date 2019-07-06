@@ -28,27 +28,57 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2018
+// Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
-//
+
+#staload "./staexp1.sats"
+#staload "./dynexp1.sats"
+
+(* ****** ****** *)
+
+#staload "./staexp2.sats"
+#staload "./dynexp2.sats"
+
 (* ****** ****** *)
 //
-#staload "./../SATS/locinfo.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/lexing.sats"
-#staload "./../SATS/staexp1.sats"
-//
-#staload "./../SATS/t1check.sats"
+typedef
+t2xreader
+(a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
 
-(* end of [xats_t1check_staexp.dats] *)
+datatype t2xerr =
+| T2XERRd2ecl of (d2ecl)
+
+typedef
+t2xerrlst = List0(t2xerr)
+
+(* ****** ****** *)
+//
+fun{}
+t2xerr_add(t2xerr): void
+//
+(* ****** ****** *)
+//
+fun
+t2xread_main(d2eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
+t2xread_d1exp: t2xreader(d1exp)
+fun{}
+t2xread_d1explst: t2xreader(d1explst)
+//
+(* ****** ****** *)
+//
+fun{}
+t2xread_d2ecl: t2xreader(d2ecl)
+fun{}
+t2xread_d2eclist: t2xreader(d2eclist)
+//
+(* ****** ****** *)
+
+(* end of [xats_t2xread.sats] *)

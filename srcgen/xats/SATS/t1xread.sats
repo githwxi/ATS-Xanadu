@@ -39,7 +39,7 @@
 (* ****** ****** *)
 //
 typedef
-t1checker
+t1xreader
 (a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
@@ -58,15 +58,22 @@ t1xerr_add(t1xerr): void
 (* ****** ****** *)
 //
 fun
-t1check_main(d1eclist): void
+t1xread_main(d1eclist): void
 //
 (* ****** ****** *)
 //
 fun{}
-t1check_d1ecl: t1checker(d1ecl)
+t1xread_d1exp: t1xreader(d1exp)
 fun{}
-t1check_d1eclist: t1checker(d1eclist)
+t1xread_d1explst: t1xreader(d1explst)
+//
+(* ****** ****** *)
+//
+fun{}
+t1xread_d1ecl: t1xreader(d1ecl)
+fun{}
+t1xread_d1eclist: t1xreader(d1eclist)
 //
 (* ****** ****** *)
 
-(* end of [xats_t1check.sats] *)
+(* end of [xats_t1xread.sats] *)
