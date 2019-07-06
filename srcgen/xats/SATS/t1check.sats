@@ -28,39 +28,45 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
-//
+
+#staload "./staexp1.sats"
+#staload "./dynexp1.sats"
+
 (* ****** ****** *)
 //
-exception XATSOPT_FIXITY_EXN of ()
-//
-(* ****** ****** *)
-//
-exception XATSOPT_SYNERR_EXN of ()
-//
-(* ****** ****** *)
-//
-exception XATSOPT_T1XERR_EXN of ()
-exception XATSOPT_T2XERR_EXN of ()
-exception XATSOPT_T3XERR_EXN of ()
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort():<!exn> void
-fun abort_interr():<!exn> void
+typedef
+t1checker
+(a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+datatype t1xerr =
+| T1XERRd1ecl of (d1ecl)
+
+typedef
+t1xerrlst = List0(t1xerr)
+
+(* ****** ****** *)
+//
+fun{}
+t1xerr_add(t1xerr): void
+//
+(* ****** ****** *)
+//
+fun
+t1check_main(d1eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
+t1check_d1ecl: t1checker(d1ecl)
+fun{}
+t1check_d1eclist: t1checker(d1eclist)
+//
+(* ****** ****** *)
+
+(* end of [xats_t1check.sats] *)

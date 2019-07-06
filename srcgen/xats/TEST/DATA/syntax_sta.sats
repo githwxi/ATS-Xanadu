@@ -95,8 +95,12 @@ sexpdef ff = the_false_bool
 
 (* ****** ****** *)
 
-#stacst foo(tbox+, tflt-): prop
+sexpdef xy = (x:int) + (y:int)
 
+(* ****** ****** *)
+
+#stacst foo(tbox+, type-): prop
+////
 (* ****** ****** *)
 
 #stacst

@@ -181,6 +181,9 @@ end // end of [local]
 #dynload "./trans01_staexp.dats"
 #dynload "./trans01_dynexp.dats"
 //
+#dynload "./t1check_staexp.dats"
+#dynload "./t1check_dynexp.dats"
+//
 #dynload "./effect.dats"
 //
 #dynload "./staexp2.dats"
@@ -204,6 +207,9 @@ end // end of [local]
 #dynload "./trans12_envmap.dats"
 #dynload "./trans12_staexp.dats"
 #dynload "./trans12_dynexp.dats"
+//
+#dynload "./t2check_staexp.dats"
+#dynload "./t2check_dynexp.dats"
 //
 #dynload "./dynexp3.dats"
 //
@@ -827,7 +833,7 @@ println!
 ("process_nil: d0cs = ", d0cs)
 *)
 //
-val () = synread_top(d0cs)
+val () = synread_main(d0cs)
 //
 val
 d1cs = trans01_declist(d0cs)
