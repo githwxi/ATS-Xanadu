@@ -18,8 +18,8 @@ https://sourceforge.net/projects/ats2-lang
 
 ######
 
-WGET=wget
-TARZX=tar zx
+TARZX="tar zx"
+WGETQ="wget -q"
 
 ATSLANGURL_download=\
 "\
@@ -38,7 +38,7 @@ mkdir -p $ATS2HOME
 
 ( \
 cd $HOME && \
-$WGET -qO- $ATSLANGURL_download | $TARZX -C $ATS2HOME --strip 1)
+$WGETQ -O- $ATSLANGURL_download | $TARZX -C $ATS2HOME --strip 1)
 
 ######
 
