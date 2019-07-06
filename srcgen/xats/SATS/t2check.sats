@@ -37,6 +37,11 @@
 #staload "./dynexp1.sats"
 
 (* ****** ****** *)
+
+#staload "./staexp2.sats"
+#staload "./dynexp2.sats"
+
+(* ****** ****** *)
 //
 typedef
 t2checker
@@ -45,7 +50,7 @@ t2checker
 (* ****** ****** *)
 
 datatype t2xerr =
-| T2XERRd1ecl of (d1ecl)
+| T2XERRd2ecl of (d2ecl)
 
 typedef
 t2xerrlst = List0(t2xerr)
@@ -53,7 +58,14 @@ t2xerrlst = List0(t2xerr)
 (* ****** ****** *)
 //
 fun
-t2xread_main(d1eclist): void
+t2xread_main(d2eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
+t2check_d2ecl: t2checker(d2ecl)
+fun{}
+t2check_d2eclist: t2checker(d2eclist)
 //
 (* ****** ****** *)
 

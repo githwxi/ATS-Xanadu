@@ -56,6 +56,47 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+implement
+{}(*tmp*)
+t1check_d1ecl
+  (d1c0) = let
+//
+val loc0 = d1c0.loc()
+//
+(*
+val () =
+println!
+("t1check_d1ecl: d1c0 = ", d1c0)
+*)
+//
+in
+//
+case+
+d1c0.node() of
+//
+| _(* rest-of-d1ecl *) =>
+  (
+    prerrln!("t1check_d1ecl: d1c0 = ", d1c0)
+  )
+//
+end // end of [t1check_d1ecl]
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t1check_d1eclist
+  (d1cs) =
+(
+list_foreach<d1ecl>(d1cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d1ecl><env>(d1c, env) = t1check_d1ecl<>(d1c)
+} (* end of [t1check_d1ecllst] *)
+//
+(* ****** ****** *)
+
 local
 
 extern
@@ -79,7 +120,7 @@ end // end of [t1xerr_add]
 in (* in-of-local *)
 
 implement
-t1check_main(d0cs) = let
+t1check_main(d1cs) = let
 //
 local
 //
@@ -97,7 +138,7 @@ the_t1xerrlst_set<>(xs) = the_t1xerrlst[] := xs
 end // end of [local]
 //
 val () =
-t1check_d1eclist<>(d0cs)
+t1check_d1eclist<>(d1cs)
 val
 xerrs = the_t1xerrlst_get()
 val
