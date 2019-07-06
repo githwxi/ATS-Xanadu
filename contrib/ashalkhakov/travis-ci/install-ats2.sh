@@ -36,7 +36,7 @@ ${ATSLANGURL_srcfg}/files\
 ######################################
 
 ( \
-cd $HOME && \
+cd $HOME && mkdir -p ATS2 && \
 $WGETQ -O- $ATSPACKTGZURL_download | $TARZX -C ATS2 --strip 1)
 
 ######################################
