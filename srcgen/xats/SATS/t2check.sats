@@ -28,39 +28,33 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
-//
+
+#staload "./staexp1.sats"
+#staload "./dynexp1.sats"
+
 (* ****** ****** *)
 //
-exception XATSOPT_FIXITY_EXN of ()
-//
-(* ****** ****** *)
-//
-exception XATSOPT_SYNERR_EXN of ()
-//
-(* ****** ****** *)
-//
-exception XATSOPT_T1XERR_EXN of ()
-exception XATSOPT_T2XERR_EXN of ()
-exception XATSOPT_T3XERR_EXN of ()
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort():<!exn> void
-fun abort_interr():<!exn> void
+typedef
+t2checker
+(a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+datatype t2xerr =
+| T2XERRd1ecl of (d1ecl)
+
+typedef
+t2xerrlst = List0(t2xerr)
+
+(* ****** ****** *)
+//
+fun
+t2xread_main(d1eclist): void
+//
+(* ****** ****** *)
+
+(* end of [xats_t2check.sats] *)

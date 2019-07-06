@@ -1332,14 +1332,14 @@ s2c0 = s2cst_make_idst(sid, s2t0)
 //
 val () = the_sexpenv_add_cst(s2c0)
 //
-(*
+// (*
 val () =
 println!
-("tran12_decl: aux_stacst0: s2t0 = ", s2t0)
+("trans12_decl: aux_stacst0: s2t0 = ", s2t0)
 val () =
 println!
-("tran12_decl: aux_stacst0: s2c0 = ", s2c0)
-*)
+("trans12_decl: aux_stacst0: s2c0 = ", s2c0)
+// *)
 //
 in
   d2ecl_make_node(loc0, D2Cstacst0(d1c0))
@@ -1502,13 +1502,12 @@ case+ arg of
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
 //
-(*
+// (*
 val () =
 println!
 ("\
-trans12_decl:\
- aux_sexpdef: s2e0 = ", s2e0)
-*)
+trans12_decl: aux_sexpdef: s2e0 = ", s2e0)
+// *)
 //
 val
 s2c0 =
@@ -1604,18 +1603,16 @@ s2c0 = s2cst_make_idst(sid, s2t0)
 //
 val () = the_sexpenv_add_cst(s2c0)
 //
-(*
+// (*
 val () =
 println!
 ("\
-tran12_decl:\
- aux_abstype: s2t0 = ", s2t0)
+trans12_decl: aux_abstype: s2t0 = ", s2t0)
 val () =
 println!
 ("\
-tran12_decl:\
- aux_abstype: s2c0 = ", s2c0)
- *)
+trans12_decl: aux_abstype: s2c0 = ", s2c0)
+// *)
 //
 in
   d2ecl_make_node(loc0, D2Cabstype(d1c0))

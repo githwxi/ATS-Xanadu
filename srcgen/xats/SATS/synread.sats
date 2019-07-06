@@ -47,12 +47,14 @@ synreader
 (a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
+(*
 //
 abstbox
 synreadst_type = ptr
 typedef
 synreadst = synreadst_type
 //
+*)
 (* ****** ****** *)
 //
 datatype
@@ -85,8 +87,7 @@ tkind =
 //
 (* ****** ****** *)
 //
-datatype
-synerr =
+datatype synerr =
 //
 | SYNERRi0dnt of (i0dnt)
 //
@@ -125,7 +126,7 @@ synerr_add(synerr): void
 (* ****** ****** *)
 //
 fun
-synread_top(d0eclist): void
+synread_main(d0eclist): void
 //
 (* ****** ****** *)
 //

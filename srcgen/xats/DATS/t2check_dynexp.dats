@@ -28,39 +28,29 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: September, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-exception XATSOPT_FIXITY_EXN of ()
+#staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
-exception XATSOPT_SYNERR_EXN of ()
+#staload "./../SATS/lexing.sats"
 //
-(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
 //
-exception XATSOPT_T1XERR_EXN of ()
-exception XATSOPT_T2XERR_EXN of ()
-exception XATSOPT_T3XERR_EXN of ()
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort():<!exn> void
-fun abort_interr():<!exn> void
+#staload "./../SATS/t2check.sats"
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+(* end of [xats_t2check_dynexp.dats] *)

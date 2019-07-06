@@ -318,12 +318,14 @@ end // end of [synerr_add]
 in (* in-of-local *)
 
 implement
-synread_top(d0cs) = let
+synread_main(d0cs) = let
 //
 local
+//
 val
 the_synerrlst =
 ref<synerrlst>(list_nil)
+//
 in(*in-of-local*)
 val () =
 $tempenver(the_synerrlst)
@@ -349,20 +351,20 @@ then
 //
 val () =
 prerrln!
-("synread_top: nxerr = ", nxerr)
+("synread_main: nxerr = ", nxerr)
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("synread_top: there is one synerr!")
+("synread_main: there is one synerr!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("synread_top: there are some synerrs!")
+("synread_main: there are some synerrs!")
 //
 val () =
 (
@@ -375,11 +377,11 @@ else
 //
 val () =
 prerrln!
-("synread_top: there are no synerrs!")
+("synread_main: there are no synerrs!")
 //
 } (* end of [else] *)
 //
-end // end of [synread_top]
+end // end of [synread_main]
 
 end // end of [local]
 
