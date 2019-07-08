@@ -1,4 +1,10 @@
 
+val () =
+let
+val x = 1
+val y = x + x
+end
+
 (*
 fun
 {a
