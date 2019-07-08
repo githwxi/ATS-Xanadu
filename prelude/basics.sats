@@ -432,12 +432,12 @@ stropt_i0_x0(n:int) <= ptr
 typedef
 string0 = [n:i0] string_i0_x0(n)
 typedef
-string1(n:int) = string_i0_x0(n)
+string1(n: int) = string_i0_x0(n)
 //
 typedef
 stropt0 = [n:i0] stropt_i0_x0(n)
 typedef
-stropt1(n:int) = stropt_i0_x0(n)
+stropt1(n: int) = stropt_i0_x0(n)
 //
 (* ****** ****** *)
 //
@@ -449,12 +449,12 @@ stropt_i0_vx(n:int) <= ptr
 vtypedef
 string0_vt = [n:i0] string_i0_vx(n)
 vtypedef
-string1_vt(n:int) = string_i0_vx(n)
+string1_vt(n: int) = string_i0_vx(n)
 //
 vtypedef
 stropt0_vt = [n:i0] stropt_i0_vx(n)
 vtypedef
-stropt1_vt(n:int) = stropt_i0_vx(n)
+stropt1_vt(n: int) = stropt_i0_vx(n)
 //
 (* ****** ****** *)
 

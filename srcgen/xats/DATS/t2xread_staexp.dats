@@ -28,39 +28,100 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: September, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-exception XATSOPT_FIXITY_EXN of ()
+#staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
-exception XATSOPT_SYNERR_EXN of ()
+#staload "./../SATS/lexing.sats"
+//
+#staload "./../SATS/staexp2.sats"
+//
+#staload "./../SATS/t2xread.sats"
 //
 (* ****** ****** *)
 //
-exception XATSOPT_T1XERR_EXN of ()
-exception XATSOPT_T2XERR_EXN of ()
-exception XATSOPT_T3XERR_EXN of ()
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort():<!exn> void
-fun abort_interr():<!exn> void
+implement
+{}(*tmp*)
+t2xread_sort2
+  (s2t0) = ((*void*))
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+implement
+{}(*tmp*)
+t2xread_s2exp(s2e0) = let
+//
+(*
+val loc0 = s2e0.loc()
+*)
+//
+// (*
+val () =
+println!
+("t2xread_s2exp: s2e0 = ", s2e0)
+// *)
+//
+in
+//
+case+
+s2e0.node() of
+//
+| S2Eint(int) => ()
+| S2Echr(chr) => ()
+//
+| S2Ecst(s2c) => ()
+| S2Evar(s2v) => ()
+//
+| S2Eapp(s2e1, s2es) =>
+  {
+    val () = t2xread_s2exp<>(s2e1)
+    val () = t2xread_s2explst<>(s2es)  
+  }
+//
+| S2Ecast
+  (loc0, s2e1, s2t2) =>
+  {
+//
+    val () =
+    t2xerr_add(T2XERRs2exp(s2e0))
+//
+    val () = t2xread_s2exp<>(s2e1)
+    val () = t2xread_sort2<>(s2t2)
+//
+    val () =
+    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+//
+  }
+//
+| _(*rest-of-s2exp*) => ()
+//
+end // end of [t2xread_s2exp]
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_s2explst(d2cs) =
+(
+list_foreach<s2exp>(d2cs)
+) where
+{
+implement(env)
+list_foreach$fwork<s2exp><env>(d2c, env) = t2xread_s2exp<>(d2c)
+} (* end of [t2xread_s2explst] *)
+//
+(* ****** ****** *)
+
+(* end of [xats_t2xread_staexp.dats] *)

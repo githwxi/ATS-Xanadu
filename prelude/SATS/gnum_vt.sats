@@ -27,7 +27,7 @@
 
 (* ****** ****** *)
 //
-// For generic basics
+// For generic numbers
 //
 (* ****** ****** *)
 //
@@ -38,24 +38,36 @@
 (* ****** ****** *)
 
 fun
-<a:vtflt>
-g_self(x: a): a
+<a:vtype>
+gl_0((*void*)): a
+fun
+<a:vtype>
+gl_1((*void*)): a
+fun
+<a:vtype>
+gl_2((*void*)): a
 
 (* ****** ****** *)
 
 fun
-<a:vtflt>
-g_free(x: a): void
+<a:vtype>
+gl_add00(x: a, y: a): a
 fun
-<a:vtflt>
-g_copy(x: !(a)): (a)
+<a:vtype>
+gl_sub00(x: a, y: a): a
 
 (* ****** ****** *)
 
 fun
-<a:vtflt>
-g_equal(!a, !a): void
+<a:vtype>
+gl_mul00(x: a, y: a): a
+fun
+<a:vtype>
+gl_div00(x: a, y: a): a
+fun
+<a:vtype>
+gl_mod00(x: a, y: a): a
 
 (* ****** ****** *)
 
-(* end of [gbas.sats] *)
+(* end of [gnum_vt.sats] *)

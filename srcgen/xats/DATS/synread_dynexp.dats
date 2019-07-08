@@ -62,6 +62,45 @@ _(*TMP*) = "./../DATS/synread_basics.dats"
 _(*TMP*) = "./../DATS/synread_staexp.dats"
 
 (* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_d0exp
+  (d0e0) = let
+//
+val loc0 = d0e0.loc((*void*))
+//
+in
+//
+case+
+d0e0.node() of
+| D0Elet
+  (tbeg, d0cs, topt, d0es, tend) =>
+  {
+//
+    val () =
+    synread_d0eclist<>(d0cs)
+//
+    val () =
+    (
+    case+ topt of
+    | None() =>
+      synread_d0explst(d0es)
+    | Some(tok) =>
+      synread_d0explst(d0es)
+    ) : void // end of [val]
+//
+    val () = synread_ENDLET(tend)
+//
+  }
+| _(* rest-of-d0exp *) =>
+  (
+    prerrln!("synread_d0exp: d0e0 = ", d0e0)
+  )
+//
+end // end of [synread_d0exp]
+
+(* ****** ****** *)
 //
 implement
 {}(*tmp*)
@@ -82,7 +121,7 @@ implement
 synread_d0ecl
   (d0c0) = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0c0.loc((*void*))
 //
 (*
 val () =
@@ -212,14 +251,13 @@ list_foreach<d0ecl>(d0cs)
 {
 implement(env)
 list_foreach$fwork<d0ecl><env>(d0c, env) = synread_d0ecl<>(d0c)
-} (* end of [synread_d0explst] *)
+} (* end of [synread_d0eclist] *)
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-synread_precopt
-  (opt) =
+synread_precopt(opt) =
 (
 case+ opt of
 | PRECOPTnil() => ()
@@ -318,12 +356,14 @@ end // end of [synerr_add]
 in (* in-of-local *)
 
 implement
-synread_top(d0cs) = let
+synread_main(d0cs) = let
 //
 local
+//
 val
 the_synerrlst =
 ref<synerrlst>(list_nil)
+//
 in(*in-of-local*)
 val () =
 $tempenver(the_synerrlst)
@@ -349,20 +389,20 @@ then
 //
 val () =
 prerrln!
-("synread_top: nxerr = ", nxerr)
+("synread_main: nxerr = ", nxerr)
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("synread_top: there is one synerr!")
+("synread_main: there is one synerr!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("synread_top: there are some synerrs!")
+("synread_main: there are some synerrs!")
 //
 val () =
 (
@@ -375,11 +415,11 @@ else
 //
 val () =
 prerrln!
-("synread_top: there are no synerrs!")
+("synread_main: there are no synerrs!")
 //
 } (* end of [else] *)
 //
-end // end of [synread_top]
+end // end of [synread_main]
 
 end // end of [local]
 
