@@ -52,4 +52,71 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+implement
+{}(*tmp*)
+t2xread_s2exp
+  (s2e0) = let
+//
+(*
+val loc0 = s2e0.loc()
+*)
+//
+// (*
+val () =
+println!
+("t2xread_s2exp: s2e0 = ", s2e0)
+// *)
+//
+in
+//
+case+
+s2e0.node() of
+//
+| S2Eint(int) => ()
+| S2Echr(chr) => ()
+//
+| S2Ecst(s2c) => ()
+| S2Evar(s2v) => ()
+//
+| S2Eapp(s2e1, s2es) =>
+  {
+    val () = t2xread_s2exp<>(s2e1)
+    val () = t2xread_s2explst<>(s2es)  
+  }
+//
+| S2Ecast
+  (loc0, s2e1, s2t2) =>
+  {
+//
+    val () =
+    t2xerr_add(T2XERRs2exp(s2e0))
+//
+    val () = t2xread_s2exp<>(s2e1)
+    val () = t2xread_sort2<>(s2t2)
+//
+    val () =
+    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+//
+  }
+//
+| _(*rest-of-s2exp*) => ()
+//
+end // end of [t2xread_s2exp]
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_s2explst
+  (d2cs) =
+(
+list_foreach<s2exp>(d2cs)
+) where
+{
+implement(env)
+list_foreach$fwork<s2exp><env>(d2c, env) = t2xread_s2exp<>(d2c)
+} (* end of [t2xread_s2explst] *)
+//
+(* ****** ****** *)
+
 (* end of [xats_t2xread_staexp.dats] *)

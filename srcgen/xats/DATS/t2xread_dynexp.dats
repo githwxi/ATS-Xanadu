@@ -57,6 +57,11 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload
+_(*TMP*) = "./../DATS/t2xread_staexp.dats"
+
+(* ****** ****** *)
+
 implement
 {}(*tmp*)
 t2xread_d2ecl
@@ -75,6 +80,11 @@ in
 case+
 d2c0.node() of
 //
+| D2Cabsimpl
+  (knd, d2c, s2e) =>
+  {
+    val () = t2xread_s2exp<>(s2e)
+  }
 | _(* rest-of-d2ecl *) =>
   (
     prerrln!("t2xread_d2ecl: d2c0 = ", d2c0)
@@ -94,7 +104,7 @@ list_foreach<d2ecl>(d2cs)
 {
 implement(env)
 list_foreach$fwork<d2ecl><env>(d2c, env) = t2xread_d2ecl<>(d2c)
-} (* end of [t2xread_d2ecllst] *)
+} (* end of [t2xread_d2eclist] *)
 //
 (* ****** ****** *)
 

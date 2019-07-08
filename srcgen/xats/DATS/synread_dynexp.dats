@@ -212,7 +212,7 @@ list_foreach<d0ecl>(d0cs)
 {
 implement(env)
 list_foreach$fwork<d0ecl><env>(d0c, env) = synread_d0ecl<>(d0c)
-} (* end of [synread_d0ecllst] *)
+} (* end of [synread_d0eclist] *)
 //
 (* ****** ****** *)
 
