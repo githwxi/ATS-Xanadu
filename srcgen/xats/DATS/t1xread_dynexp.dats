@@ -55,6 +55,11 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/t1xread.sats"
 //
 (* ****** ****** *)
+
+#staload
+_(*TMP*) = "./../DATS/t1xread_staexp.dats"
+
+(* ****** ****** *)
 //
 implement
 {}(*tmp*)
@@ -107,7 +112,7 @@ list_foreach<d1ecl>(d1cs)
 {
 implement(env)
 list_foreach$fwork<d1ecl><env>(d1c, env) = t1xread_d1ecl<>(d1c)
-} (* end of [t1xread_d1ecllst] *)
+} (* end of [t1xread_d1eclist] *)
 //
 (* ****** ****** *)
 

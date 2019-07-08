@@ -48,13 +48,14 @@ t2xreader
 (a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
-
+//
 datatype t2xerr =
+| T2XERRs2exp of (s2exp)
 | T2XERRd2ecl of (d2ecl)
-
+//
 typedef
 t2xerrlst = List0(t2xerr)
-
+//
 (* ****** ****** *)
 //
 fun{}
@@ -68,9 +69,21 @@ t2xread_main(d2eclist): void
 (* ****** ****** *)
 //
 fun{}
-t2xread_d1exp: t2xreader(d1exp)
+t2xread_sort2: t2xreader(sort2)
+//
+(* ****** ****** *)
+//
 fun{}
-t2xread_d1explst: t2xreader(d1explst)
+t2xread_s2exp: t2xreader(s2exp)
+fun{}
+t2xread_s2explst: t2xreader(s2explst)
+//
+(* ****** ****** *)
+//
+fun{}
+t2xread_d2exp: t2xreader(d2exp)
+fun{}
+t2xread_d2explst: t2xreader(d2explst)
 //
 (* ****** ****** *)
 //

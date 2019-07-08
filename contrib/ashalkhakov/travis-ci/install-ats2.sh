@@ -2,10 +2,10 @@
 
 ######################################
 
-ATSVER=$1
-ATSPACK=\
-ATS2-Postiats-$ATSVER
-ATSPACKTGZ=$ATSPACK.tgz
+ATS2VER=$1
+ATS2PACK=\
+ATS2-Postiats-$ATS2VER
+ATS2PACKTGZ=$ATS2PACK.tgz
 
 ######################################
 
@@ -13,31 +13,31 @@ MV=mv
 TARZX="tar zx"
 WGETQ="wget -q"
 
-ATSLANGURL_srcfg=\
+ATS2LANGURL_srcfg=\
 https://sourceforge.net/projects/ats2-lang
 
 ######################################
 
-ATSPACKTGZURL_download=\
+ATS2PACKTGZURL_download=\
 "\
-${ATSLANGURL_srcfg}/files\
-/ats2-lang/ats2-postiats-$ATSVER/$ATSPACKTGZ"
+${ATS2LANGURL_srcfg}/files\
+/ats2-lang/ats2-postiats-$ATS2VER/$ATS2PACKTGZ"
 
 ######################################
 #
 # HX-2019-06:
-# ATSPACKgmp is the default
+# ATS2PACKgmp is the default
 #
-# ATSPACKint=\
-# ATS2-Postiats-int-$ATSVER
-# ATSPACKgmp=\
-# ATS2-Postiats-gmp-$ATSVER
+# ATS2PACKint=\
+# ATS2-Postiats-int-$ATS2VER
+# ATS2PACKgmp=\
+# ATS2-Postiats-gmp-$ATS2VER
 #
 ######################################
 
 ( \
 cd $HOME && mkdir -p ATS2 && \
-$WGETQ -O- $ATSPACKTGZURL_download | $TARZX -C ATS2 --strip 1)
+$WGETQ -O- $ATS2PACKTGZURL_download | $TARZX -C ATS2 --strip 1)
 
 ######################################
 
