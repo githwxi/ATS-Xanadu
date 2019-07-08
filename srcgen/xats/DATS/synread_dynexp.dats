@@ -82,7 +82,7 @@ implement
 synread_d0ecl
   (d0c0) = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0c0.loc((*void*))
 //
 (*
 val () =
@@ -218,8 +218,7 @@ list_foreach$fwork<d0ecl><env>(d0c, env) = synread_d0ecl<>(d0c)
 
 implement
 {}(*tmp*)
-synread_precopt
-  (opt) =
+synread_precopt(opt) =
 (
 case+ opt of
 | PRECOPTnil() => ()

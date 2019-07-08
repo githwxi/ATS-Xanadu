@@ -63,8 +63,7 @@ _(*TMP*) = "./../DATS/t1xread_staexp.dats"
 //
 implement
 {}(*tmp*)
-t1xread_d1explst
-  (d1es) =
+t1xread_d1explst(d1es) =
 (
 list_foreach<d1exp>(d1es)
 ) where
@@ -77,10 +76,9 @@ list_foreach$fwork<d1exp><env>(d1e, env) = t1xread_d1exp<>(d1e)
 
 implement
 {}(*tmp*)
-t1xread_d1ecl
-  (d1c0) = let
+t1xread_d1ecl(d1c0) = let
 //
-val loc0 = d1c0.loc()
+val loc0 = d1c0.loc((*void*))
 //
 (*
 val () =
@@ -104,8 +102,7 @@ end // end of [t1xread_d1ecl]
 //
 implement
 {}(*tmp*)
-t1xread_d1eclist
-  (d1cs) =
+t1xread_d1eclist(d1cs) =
 (
 list_foreach<d1ecl>(d1cs)
 ) where
