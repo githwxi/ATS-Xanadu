@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,35 +27,53 @@
 
 (* ****** ****** *)
 //
-// For generic basics
-//
-(* ****** ****** *)
-//
 // Author: Hongwei Xi
 // Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-fun
-<a:vtflt>
-g_self(x: a): a
+#staload "./staexp1.sats"
+#staload "./dynexp1.sats"
 
 (* ****** ****** *)
-
-fun
-<a:vtflt>
-g_free(x: a): void
-fun
-<a:vtflt>
-g_copy(x: !(a)): (a)
-
+//
+typedef
+t1xreader
+(a:t@ype) = (a) -> void
+//
 (* ****** ****** *)
 
-fun
-<a:vtflt>
-g_equal(!a, !a): void
+datatype t1xerr =
+| T1XERRd1ecl of (d1ecl)
+
+typedef
+t1xerrlst = List0(t1xerr)
 
 (* ****** ****** *)
+//
+fun{}
+t1xerr_add(t1xerr): void
+//
+(* ****** ****** *)
+//
+fun
+t1xread_main(d1eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
+t1xread_d1exp: t1xreader(d1exp)
+fun{}
+t1xread_d1explst: t1xreader(d1explst)
+//
+(* ****** ****** *)
+//
+fun{}
+t1xread_d1ecl: t1xreader(d1ecl)
+fun{}
+t1xread_d1eclist: t1xreader(d1eclist)
+//
+(* ****** ****** *)
 
-(* end of [gbas.sats] *)
+(* end of [xats_t1xread.sats] *)

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,35 +27,71 @@
 
 (* ****** ****** *)
 //
-// For generic basics
-//
-(* ****** ****** *)
-//
 // Author: Hongwei Xi
 // Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-fun
-<a:vtflt>
-g_self(x: a): a
+#staload "./staexp1.sats"
+#staload "./dynexp1.sats"
 
 (* ****** ****** *)
 
-fun
-<a:vtflt>
-g_free(x: a): void
-fun
-<a:vtflt>
-g_copy(x: !(a)): (a)
+#staload "./staexp2.sats"
+#staload "./dynexp2.sats"
 
 (* ****** ****** *)
-
+//
+typedef
+t2xreader
+(a:t@ype) = (a) -> void
+//
+(* ****** ****** *)
+//
+datatype t2xerr =
+| T2XERRs2exp of (s2exp)
+| T2XERRd2ecl of (d2ecl)
+//
+typedef
+t2xerrlst = List0(t2xerr)
+//
+(* ****** ****** *)
+//
+fun{}
+t2xerr_add(t2xerr): void
+//
+(* ****** ****** *)
+//
 fun
-<a:vtflt>
-g_equal(!a, !a): void
-
+t2xread_main(d2eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
+t2xread_sort2: t2xreader(sort2)
+//
+(* ****** ****** *)
+//
+fun{}
+t2xread_s2exp: t2xreader(s2exp)
+fun{}
+t2xread_s2explst: t2xreader(s2explst)
+//
+(* ****** ****** *)
+//
+fun{}
+t2xread_d2exp: t2xreader(d2exp)
+fun{}
+t2xread_d2explst: t2xreader(d2explst)
+//
+(* ****** ****** *)
+//
+fun{}
+t2xread_d2ecl: t2xreader(d2ecl)
+fun{}
+t2xread_d2eclist: t2xreader(d2eclist)
+//
 (* ****** ****** *)
 
-(* end of [gbas.sats] *)
+(* end of [xats_t2xread.sats] *)

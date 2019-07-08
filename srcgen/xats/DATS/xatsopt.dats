@@ -66,8 +66,10 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/synread.sats"
 //
 #staload "./../SATS/trans01.sats"
+#staload "./../SATS/t1xread.sats"
 //
 #staload "./../SATS/trans12.sats"
+#staload "./../SATS/t2xread.sats"
 //
 (* ****** ****** *)
 //
@@ -181,6 +183,9 @@ end // end of [local]
 #dynload "./trans01_staexp.dats"
 #dynload "./trans01_dynexp.dats"
 //
+#dynload "./t1xread_staexp.dats"
+#dynload "./t1xread_dynexp.dats"
+//
 #dynload "./effect.dats"
 //
 #dynload "./staexp2.dats"
@@ -204,6 +209,9 @@ end // end of [local]
 #dynload "./trans12_envmap.dats"
 #dynload "./trans12_staexp.dats"
 #dynload "./trans12_dynexp.dats"
+//
+#dynload "./t2xread_staexp.dats"
+#dynload "./t2xread_dynexp.dats"
 //
 #dynload "./dynexp3.dats"
 //
@@ -827,19 +835,29 @@ println!
 ("process_nil: d0cs = ", d0cs)
 *)
 //
-val () = synread_top(d0cs)
+val () = synread_main(d0cs)
 //
 val
 d1cs = trans01_declist(d0cs)
+//
+(*
 val () =
 println!
 ("process_nil: d1cs = ", d1cs)
+*)
+//
+val () = t1xread_main(d1cs)
 //
 val
 d2cs = trans12_declist(d1cs)
+//
+(*
 val () =
 println!
 ("process_nil: d2cs = ", d2cs)
+*)
+//
+val () = t2xread_main(d2cs)
 //
 val () =
 println!
@@ -882,7 +900,7 @@ in
 // HX-2018-10-08:
 // IT-IS-YET-TO-BE-IMPLEMENTED!!!
 //
-end // end of [process_give]
+end // end of [process_given]
 //
 implement
 process_cmdline
@@ -1526,6 +1544,14 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/gbas.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gord.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gnum.sats")
 //
 (*
 val () =

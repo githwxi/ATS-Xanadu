@@ -4,7 +4,8 @@
 *)
 (* ****** ****** *)
 
-#staload "./../SATS/gbas.sats"
+#staload
+"./../SATS/gbas.sats"
 
 (* ****** ****** *)
 
@@ -45,4 +46,4 @@ case+ xs of
 
 (* ****** ****** *)
 
-(* end of [gbas.sats] *)
+(* end of [gbas.dats] *)

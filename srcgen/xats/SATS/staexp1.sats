@@ -563,7 +563,7 @@ s1exp_node =
 | S1Eexists of (int(*#*), s1qualst)
 //
 | S1Elam of
-  (s1marglst(*arg*), sort1opt(*res*), s1exp)
+  (s1marglst(*arg*), sort1opt(*res*), s1exp(*body*))
 //
 | S1Eanno of (s1exp, sort1)
 //

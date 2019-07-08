@@ -27,7 +27,7 @@
 
 (* ****** ****** *)
 //
-// For generic basics
+// For generic integers
 //
 (* ****** ****** *)
 //
@@ -38,24 +38,78 @@
 (* ****** ****** *)
 
 fun
-<a:vtflt>
-g_self(x: a): a
+<a:type>
+gint_add
+{i,j:int}
+( x: gint(a, i)
+, y: gint(a, j)): gint(a, i+j)
+fun
+<a:type>
+gint_sub
+{i,j:int}
+( x: gint(a, i)
+, y: gint(a, j)): gint(a, i-j)
+fun
+<a:type>
+gint_mul
+{i,j:int}
+( x: gint(a, i)
+, y: gint(a, j)): gint(a, i*j)
+fun
+<a:type>
+gint_div
+{i,j:int | j != 0}
+( x: gint(a, i)
+, y: gint(a, j)): gint(a, i/j)
+fun
+<a:type>
+gint_mod
+{i,j:int | j >= 1}
+( x: gint(a, i)
+, y: gint(a, j)): gint(a, mod(i,j))
 
 (* ****** ****** *)
 
-fun
-<a:vtflt>
-g_free(x: a): void
-fun
-<a:vtflt>
-g_copy(x: !(a)): (a)
+fun//<>
+gint_add_sint_sint
+{i,j:int}
+(x: sint(i), y: sint(j)): sint(i+j) = $ext()
+fun//<>
+gint_sub_sint_sint
+{i,j:int}
+(x: sint(i), y: sint(j)): sint(i-j) = $ext()
+fun//<>
+gint_mul_sint_sint
+{i,j:int}
+(x: sint(i), y: sint(j)): sint(i*j) = $ext()
+fun//<>
+gint_div_sint_sint
+{i,j:int | j != 0}
+(x: sint(i), y: sint(j)): sint(i/j) = $ext()
+fun//<>
+gint_mod_sint_sint
+{i,j:int | j >= 1}
+(x: sint(i), y: sint(j)): sint(mod(i,j)) = $ext()
 
 (* ****** ****** *)
 
-fun
-<a:vtflt>
-g_equal(!a, !a): void
+fun//<>
+gint_add_uint_uint
+{i,j:int}
+(x: uint(i), y: uint(j)): uint(i+j) = $ext()
+fun//<>
+gint_mul_uint_uint
+{i,j:int}
+(x: uint(i), y: uint(j)): uint(i*j) = $ext()
+fun//<>
+gint_div_uint_uint
+{i,j:int | j >= 1}
+(x: uint(i), y: uint(j)): uint(i/j) = $ext()
+fun//<>
+gint_mod_uint_uint
+{i,j:int | j >= 1}
+(x: uint(i), y: uint(j)): uint(mod(i,j)) = $ext()
 
 (* ****** ****** *)
 
-(* end of [gbas.sats] *)
+(* end of [gint.sats] *)
