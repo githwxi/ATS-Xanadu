@@ -1271,6 +1271,7 @@ atmd0exp ::
   | qualid atm0exp
 //
   | { d0eclseq }
+  | LET d0eclseq END
   | LET d0eclseq IN d0expseq END
 //
   | ( d0expseq_COMMA )
@@ -1802,11 +1803,10 @@ case+ tnd of
     val d0cs =
     p_d0eclseq_dyn(buf, err)
 //
-    val tok1 = p_IN(buf, err)
-//
+    val
+    topt = popt_IN(buf, err)
     val d0es =
     p_d0expseq_SMCLN(buf, err)
-//
     val tok2 = p_ENDLET(buf, err)
 //
     val loc_res = tok.loc()+tok2.loc()
@@ -1814,7 +1814,7 @@ case+ tnd of
     err := e0;
     d0exp_make_node
     ( loc_res
-    , D0Elet(tok, d0cs, tok1, d0es, tok2))
+    , D0Elet(tok, d0cs, topt, d0es, tok2))
   end // end of [T_LET]
 //
 | T_DOT() => let
