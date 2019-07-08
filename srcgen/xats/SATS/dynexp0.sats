@@ -481,7 +481,8 @@ d0exp_node =
 //
 | D0Elet of
   ( token
-  , d0eclist, token, d0explst, token)
+  , d0eclist
+  , tokenopt(*IN*), d0explst, token(*END*))
 //
 | D0Ewhere of (d0exp, d0eclseq_WHERE)
 //

@@ -506,11 +506,11 @@ case+ x0.node() of
   , d0e1, "; ", tof2, "; ", tbar, "; ", "...", "; ", tend)
 //
 | D0Elet
-  (tok0, d0cs, tok1, d0es, tok2) =>
+  (tok0, d0cs, topt, d0es, tok2) =>
   fprint!
   ( out
   , "D0Elet(", tok0, "; "
-  , d0cs, "; ", tok1, "; ", d0es, "; ", tok2, ")")
+  , d0cs, "; ", topt, "; ", d0es, "; ", tok2, ")")
 //
 | D0Ewhere(d0e1, d0cs) =>
   fprint!
