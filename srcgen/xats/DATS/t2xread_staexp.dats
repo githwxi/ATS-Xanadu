@@ -51,11 +51,17 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/t2xread.sats"
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_sort2
+  (s2t0) = ((*void*))
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
-t2xread_s2exp
-  (s2e0) = let
+t2xread_s2exp(s2e0) = let
 //
 (*
 val loc0 = s2e0.loc()
@@ -107,8 +113,7 @@ end // end of [t2xread_s2exp]
 //
 implement
 {}(*tmp*)
-t2xread_s2explst
-  (d2cs) =
+t2xread_s2explst(d2cs) =
 (
 list_foreach<s2exp>(d2cs)
 ) where

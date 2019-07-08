@@ -64,8 +64,8 @@ _(*TMP*) = "./../DATS/t2xread_staexp.dats"
 
 implement
 {}(*tmp*)
-t2xread_d2ecl
-  (d2c0) = let
+t2xread_d2ecl(d2c0) =
+let
 //
 val loc0 = d2c0.loc()
 //
@@ -96,8 +96,7 @@ end // end of [t2xread_d2ecl]
 //
 implement
 {}(*tmp*)
-t2xread_d2eclist
-  (d2cs) =
+t2xread_d2eclist(d2cs) =
 (
 list_foreach<d2ecl>(d2cs)
 ) where
