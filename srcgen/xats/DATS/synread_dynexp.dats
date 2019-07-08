@@ -62,6 +62,45 @@ _(*TMP*) = "./../DATS/synread_basics.dats"
 _(*TMP*) = "./../DATS/synread_staexp.dats"
 
 (* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_d0exp
+  (d0e0) = let
+//
+val loc0 = d0e0.loc((*void*))
+//
+in
+//
+case+
+d0e0.node() of
+| D0Elet
+  (tbeg, d0cs, topt, d0es, tend) =>
+  {
+//
+    val () =
+    synread_d0eclist<>(d0cs)
+//
+    val () =
+    (
+    case+ topt of
+    | None() =>
+      synread_d0explst(d0es)
+    | Some(tok) =>
+      synread_d0explst(d0es)
+    ) : void // end of [val]
+//
+    val () = synread_ENDLET(tend)
+//
+  }
+| _(* rest-of-d0exp *) =>
+  (
+    prerrln!("synread_d0exp: d0e0 = ", d0e0)
+  )
+//
+end // end of [synread_d0exp]
+
+(* ****** ****** *)
 //
 implement
 {}(*tmp*)
