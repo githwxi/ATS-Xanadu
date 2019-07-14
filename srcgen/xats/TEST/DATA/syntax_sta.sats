@@ -1,3 +1,4 @@
+////
 (* ****** ****** *)
 //
 (*
@@ -93,6 +94,8 @@ sexpdef ff = the_false_bool
 
 (* ****** ****** *)
 
+#stacst x: int
+#stacst y: int
 sexpdef xy = (x:int) + (y:int)
 
 (* ****** ****** *)
