@@ -55,7 +55,6 @@ overload tail with list_tail
 
 (* ****** ****** *)
 
-
 fun sortbox(x: int): int // 0,1
 fun sortlin(x: int): int // 0,1
 fun sortprf(x: int): int // 0,1

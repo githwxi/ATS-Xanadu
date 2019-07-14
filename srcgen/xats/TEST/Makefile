@@ -24,7 +24,7 @@ test_symbol_dats
 test_symbol_dats: \
 test_symbol.dats; $(MYATSCC) $<
 regress:: test_symbol_dats; ./test_symbol_dats
-
+#
 ######
 #
 # all:: \
@@ -35,7 +35,15 @@ test_filpath_dats
 test_filpath_dats: \
 test_filpath.dats; $(MYATSCC) $<
 regress:: test_filpath_dats; ./test_filpath_dats
-
+#
+######
+#
+# all:: \
+# test00
+#
+test00: ; \
+$(CAT) ./DATA/test00.dats | $(XATSOPT) --dynamic
+#
 ######
 
 all:: \

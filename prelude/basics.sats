@@ -217,10 +217,15 @@ bool0 = [b:b0] bool_type(b0)
 typedef
 bool1(b:bool) = bool_type(b)
 //
+(* ****** ****** *)
+//
 typedef
-tbool = bool_type(tt) // singleton
+tbool = bool1(tt) // singleton
 typedef
-fbool = bool_type(ff) // singleton
+fbool = bool1(ff) // singleton
+//
+typedef bool = bool0
+typedef bool(b:bool) = bool1(b)
 //
 (* ****** ****** *)
 //

@@ -217,6 +217,10 @@ sort2_is_fun(sort2): bool
 (* ****** ****** *)
 
 fun
+sort2_is_proof(sort2): bool
+fun
+sort2_is_tcode(sort2): bool
+fun
 sort2_is_impred(sort2): bool
 
 (* ****** ****** *)
@@ -371,6 +375,11 @@ overload .sym with s2cst_get_sym
 overload .loc with s2cst_get_loc
 overload .sort with s2cst_get_sort
 overload .stamp with s2cst_get_stamp
+//
+(* ****** ****** *)
+//
+fun
+stamp_s2cst(s2cst): void
 //
 fun
 s2cst_make_idst
@@ -683,6 +692,12 @@ s2exp_node =
   (int(*knd*), s2exp) // topization/typization
   // end of [S2Etop]
 //
+| S2Ecimp of // HX: for storing
+  (loc_t, s2exp) // sort-checking error
+| S2Ecprf of // HX: for storing
+  (loc_t, s2exp) // sort-checking error
+| S2Ectcd of // HX: for storing
+  (loc_t, s2exp) // sort-checking error
 | S2Ecast of // HX-2108-12-23: for storing
   (loc_t, s2exp, sort2) // sort-checking error
 //
@@ -726,6 +741,18 @@ s2exp_cst(s2c: s2cst): s2exp
 fun
 s2exp_var(s2v: s2var): s2exp
 //
+fun
+s2exp_cimp
+( loc: loc_t
+, s2e: s2exp) : s2exp
+fun
+s2exp_cprf
+( loc: loc_t
+, s2e: s2exp) : s2exp
+fun
+s2exp_ctcd
+( loc: loc_t
+, s2e: s2exp) : s2exp
 fun
 s2exp_cast
 ( loc: loc_t
@@ -1022,6 +1049,78 @@ s2explst_revar
 fun
 s2explst_revar_vt
 (s2explst, s2v1: s2var, s2v2: s2var): s2explst_vt
+//
+(* ****** ****** *)
+//
+abstype
+s2cstnul_tbox(l:addr) = ptr
+typedef
+s2cstnul(l:addr) = s2cstnul_tbox(l)
+//
+typedef s2cstnul = [l:agez] s2cstnul(l)
+//
+(* ****** ****** *)
+//
+fun
+s2cstnul_none
+((*void*)): s2cstnul(null)
+fun
+s2cstnul_some
+(x0:s2cst):<> [l:agz] s2cstnul(l)
+castfn
+s2cstnul_unsome
+{l:agz}(x0: s2cstnul(l)):<> s2cst
+//
+fun
+s2cstnul_iseqz
+{l:addr}(s2cstnul(l)): bool(l==null)
+fun
+s2cstnul_isneqz
+{l:addr}(s2cstnul(l)): bool(l > null)
+//
+overload iseqz with s2cstnul_iseqz
+overload isneqz with s2cstnul_isneqz
+overload unsome with s2cstnul_unsome
+//
+(* ****** ****** *)
+//
+abstype
+s2expnul_tbox(l:addr) = ptr
+typedef
+s2expnul(l:addr) = s2expnul_tbox(l)
+//
+typedef s2expnul = [l:agez] s2expnul(l)
+//
+(* ****** ****** *)
+//
+fun
+s2expnul_none
+((*void*)): s2expnul(null)
+fun
+s2expnul_some
+(x0:s2exp):<> [l:agz] s2expnul(l)
+castfn
+s2expnul_unsome
+{l:agz}(x0: s2expnul(l)):<> s2exp
+//
+fun
+s2expnul_iseqz
+{l:addr}(s2expnul(l)): bool(l==null)
+fun
+s2expnul_isneqz
+{l:addr}(s2expnul(l)): bool(l > null)
+//
+overload iseqz with s2expnul_iseqz
+overload isneqz with s2expnul_isneqz
+overload unsome with s2expnul_unsome
+//
+(* ****** ****** *)
+//
+fun
+s2cst_get_def(s2cst): s2expnul
+fun
+stamp_s2cst_def
+(s2c: s2cst, def: s2expnul): void
 //
 (* ****** ****** *)
 

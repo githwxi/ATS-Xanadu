@@ -211,7 +211,7 @@ implement
 fprint_val<key>
   (out, k0) = let
   val opt =
-  $SYM.stamp_to_symbol(k0)
+  $SYM.symbol_of_stamp(k0)
 in
 //
 case- opt of

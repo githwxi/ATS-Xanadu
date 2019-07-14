@@ -184,7 +184,36 @@ case+ s2t0 of
 ) (* end of [sort2_is_fun] *)
 
 (* ****** ****** *)
-
+//
+implement
+sort2_is_proof
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASimp
+  (k0, _) => sortprf(k0) <= 1
+| _ => false
+)
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_proof] *)
+implement
+sort2_is_tcode
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASimp
+  (k0, _) => sortprf(k0) <= 0
+| _ => false
+)
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_tcode] *)
+//
 implement
 sort2_is_impred
   (s2t0) =
@@ -197,7 +226,7 @@ case+ s2t0 of
 )
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_impred] *)
-
+//
 (* ****** ****** *)
 //
 (*
@@ -393,57 +422,6 @@ end // end of [local]
 local
 
 absimpl
-s2cst_tbox = $rec{
-//
-  s2cst_loc= loc_t // loc
-, s2cst_sym= sym_t // name
-, s2cst_sort= sort2 // sort
-, s2cst_stamp= stamp // unicity
-//
-} (* end of [s2cst_tbox] *)
-
-in (* in-of-local *)
-
-implement
-s2cst_make_idst
-  (tok, s2t) =
-(
-$rec{
-  s2cst_loc= loc
-, s2cst_sym= sid
-, s2cst_sort= s2t
-, s2cst_stamp= stamp
-}
-) where
-{
-  val loc = tok.loc()
-  val sid = sexpid_sym(tok)
-//
-  val
-  stamp = s2cst_stamp_new((*void*))
-//
-} (* s2cst_make_idst *)
-
-(* ****** ****** *)
-
-implement
-s2cst_get_loc(x0) = x0.s2cst_loc
-implement
-s2cst_get_sym(x0) = x0.s2cst_sym
-implement
-s2cst_get_sort(x0) = x0.s2cst_sort
-implement
-s2cst_get_stamp(x0) = x0.s2cst_stamp
-
-(* ****** ****** *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
 s2var_tbox = $rec{
 //
   s2var_sym= sym_t // name
@@ -516,6 +494,50 @@ in
 end // end of [s2exp_var]
 
 (* ****** ****** *)
+//
+implement
+s2exp_cprf
+(loc, s2e) = let
+//
+(*
+val () =
+println!("s2exp_cimp: s2e = ", s2e)
+*)
+//
+val s2t = the_sort2_view
+//
+in
+  s2exp_make_node(s2t, S2Ecprf(loc, s2e))
+end // end of [s2exp_cprf]
+implement
+s2exp_ctcd
+(loc, s2e) = let
+//
+(*
+val () =
+println!("s2exp_cimp: s2e = ", s2e)
+*)
+//
+val s2t = the_sort2_vtype
+//
+in
+  s2exp_make_node(s2t, S2Ectcd(loc, s2e))
+end // end of [s2exp_ctcd]
+//
+implement
+s2exp_cimp
+(loc, s2e) = let
+//
+(*
+val () =
+println!("s2exp_cimp: s2e = ", s2e)
+*)
+//
+val s2t = the_sort2_vtype
+//
+in
+  s2exp_make_node(s2t, S2Ecimp(loc, s2e))
+end // end of [s2exp_cimp]
 //
 implement
 s2exp_cast

@@ -1506,18 +1506,96 @@ the_sexpenv_popfree(pf0|(*void*))
 val () =
 println!
 ("\
+trans12_decl: aux_sexpdef: knd = ", knd)
+val () =
+println!
+("\
 trans12_decl: aux_sexpdef: s2e0 = ", s2e0)
 // *)
 //
 val
+s2t0 =
+s2e0.sort()
+val
+s2e0 =
+(
+auxck1(knd, s2t0)
+) where
+{
+fun
+auxck1
+( knd: token
+, s2t1: sort2): s2exp =
+let
+val-
+T_SEXPDEF(knd) = knd.node()
+in
+//
+ifcase
+| (knd < 0) => s2e0
+| (knd=TYPESORT) =>
+  auxck2(s2t0, the_sort2_type)
+| (knd=PROPSORT) =>
+  auxck2(s2t0, the_sort2_prop)
+| (knd=VIEWSORT) =>
+  auxck2(s2t0, the_sort2_view)
+| (knd=VTYPESORT) =>
+  auxck2(s2t0, the_sort2_vtype)
+| _(* SEXPDEF *) =>
+  let val () = assertloc(false) in s2e0 end
+//
+end // end of [let]
+//
+and
+auxck2
+( s2tf: sort2
+, s2t1: sort2): s2exp =
+(
+case+ s2tf of
+| S2Tfun
+  (_, s2tf) => auxck2(s2tf, s2t1)
+| _(*non-S2Elam*) =>
+  (
+  if
+  s2tf <= s2t1
+    then s2e0
+    else
+    let
+      val
+      s2t0 = auxst0(s2t0)
+    in
+      s2exp_cast(loc0, s2e0, s2t0)
+    end
+  // end of [if]
+  ) where
+  {
+    fun
+    auxst0(s2tf: sort2): sort2 =
+    (
+      case+ s2tf of
+      | S2Tfun(s2ts, s2tf) =>
+        S2Tfun(s2ts, auxst0(s2tf))
+      | _ (* non-S2Tfun *) => s2tf
+    )
+  }
+)
+//
+} (* end of [val] *)
+//
+val
 s2c0 =
 s2cst_make_idst(sid, s2e0.sort())
+val
+def0 = s2expnul_some(s2e0)
+//
+val () = stamp_s2cst(s2c0)
+val () = stamp_s2cst_def(s2c0, def0)
 //
 in
   let
     val () = the_sexpenv_add_cst(s2c0)
   in
-    d2ecl_make_node(loc0, D2Csexpdef(d1c0))
+    d2ecl_make_node(loc0, D2Csexpdef(s2c0))
   end
 end // end of [aux_sexpdef]
 

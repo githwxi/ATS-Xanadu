@@ -198,7 +198,7 @@ overload compare with compare_symbol_symbol
 //
 (* ****** ****** *)
 //
-fun stamp_to_symbol(stamp: uint): symbolopt_vt
+fun symbol_of_stamp(stamp: uint): symbolopt_vt
 //
 (* ****** ****** *)
 

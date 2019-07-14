@@ -1,4 +1,3 @@
-(*
 (* ****** ****** *)
 //
 (*
@@ -72,7 +71,6 @@
 #nonfix foo bar baz
 
 (* ****** ****** *)
-*)
 
 (*
 abssort int
@@ -100,7 +98,7 @@ sexpdef xy = (x:int) + (y:int)
 (* ****** ****** *)
 
 #stacst foo(tbox+, type-): prop
-////
+
 (* ****** ****** *)
 
 #stacst

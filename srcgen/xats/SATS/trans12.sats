@@ -533,6 +533,24 @@ overload trans12 with trans12_sexplst
 //
 (* ****** ****** *)
 //
+// HX:
+// checking for impredicativity
+//
+fun
+trans12_sexp_ci(s1e0: s1exp): s2exp
+fun
+trans12_sexplst_ci(s1es: s1explst): s2explst
+fun
+trans12_sexp_cp(s1e0: s1exp): s2exp
+fun
+trans12_sexplst_cp(s1es: s1explst): s2explst
+fun
+trans12_sexp_ct(s1e0: s1exp): s2exp
+fun
+trans12_sexplst_ct(s1es: s1explst): s2explst
+//
+(* ****** ****** *)
+//
 fun
 trans12_sexp_ck
   (s1e0: s1exp, s2t0: sort2): s2exp
@@ -547,7 +565,13 @@ trans12_sexplst_cks
 (* ****** ****** *)
 //
 fun
-trans12_labsexplst
+trans12_labsexplst_ci
+  (ls1es: labs1explst): labs2explst
+fun
+trans12_labsexplst_cp
+  (ls1es: labs1explst): labs2explst
+fun
+trans12_labsexplst_ct
   (ls1es: labs1explst): labs2explst
 //
 (* ****** ****** *)
