@@ -109,6 +109,11 @@ s2e0.node() of
     val () = t2xread_s2explst<>(s2ps)
   }
 //
+| S2Elam(s2vs, s2e1) =>
+  {
+    val () = t2xread_s2exp<>(s2e1)
+  }
+//
 | S2Etyrec(knd, npf, ls2es) =>
   {
     val () = t2xread_labs2explst<>(ls2es)

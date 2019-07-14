@@ -165,13 +165,25 @@ d2c0.node() of
     val () =
     println!
     ("t2xread_d2ecl: D2Cabstype: s2c.def = ", df2)  
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c.sort = ", s2c.sort())
 //
   }
 //
 | D2Cabsimpl
-  (knd, d2c, s2e) =>
+  (knd, scs, s2e) =>
   {
+//
     val () = t2xread_s2exp<>(s2e)
+//
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabsimpl: scs = ", scs)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabsimpl: def = ", s2e)
+//
   }
 //
 | _(* rest-of-d2ecl *) =>
