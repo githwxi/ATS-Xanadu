@@ -58,7 +58,7 @@ $(CAT) ./DATA/syntax_dyn.dats | $(XATSOPT) --dynamic
 
 ######
 
-all:: prelude
+# all:: prelude
 prelude:: gbas_sats
 prelude:: gbas_dats
 prelude:: gord_sats
