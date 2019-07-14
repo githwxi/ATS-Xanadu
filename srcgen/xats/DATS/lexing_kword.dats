@@ -34,8 +34,12 @@
 (* ****** ****** *)
 //
 #staload
-UN =
-"prelude/SATS/unsafe.sats"
+"prelude/DATS/integer.dats"
+//
+(* ****** ****** *)
+//
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
@@ -115,7 +119,7 @@ T_IMPLTMPR_ = T_IMPLMNT(IMPtmpr)
 (* ****** ****** *)
 //
 macdef
-T_SEXPDEF_ = T_SEXPDEF(0)
+T_SEXPDEF_ = T_SEXPDEF(~1)
 macdef
 T_PROPDEF_ = T_SEXPDEF(PROPSORT)
 macdef

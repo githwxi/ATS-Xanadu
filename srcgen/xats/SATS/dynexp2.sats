@@ -877,9 +877,13 @@ d2ecl_node =
   (d2eclist(*head*), d2eclist(*body*))
 //
 | D2Cabssort of (d1ecl)
+//
 | D2Cstacst0 of (d1ecl)
+//
 | D2Csortdef of (d1ecl)
-| D2Csexpdef of (d1ecl)
+//
+| D2Csexpdef of (s2cst)
+//
 | D2Cabstype of (d1ecl)
 //
 (*

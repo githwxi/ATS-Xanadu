@@ -496,8 +496,10 @@ case- x0.node() of
   fprint!(out, "D2Cstacst0(", d1c, ")")
 | D2Csortdef(d1c) =>
   fprint!(out, "D2Csortdef(", d1c, ")")
-| D2Csexpdef(d1c) =>
-  fprint!(out, "D2Csexpdef(", d1c, ")")
+//
+| D2Csexpdef(s2c) =>
+  fprint!(out, "D2Csexpdef(", s2c, ")")
+//
 | D2Cabstype(d1c) =>
   fprint!(out, "D2Cabstype(", d1c, ")")
 //

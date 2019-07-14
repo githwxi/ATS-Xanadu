@@ -45,30 +45,31 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 local
-
-#staload "libats/SATS/dynarray.sats"
-#staload _ = "libats/DATS/dynarray.dats"
-
+//
+#staload
+"libats/SATS/dynarray.sats"
+#staload _ =
+"libats/DATS/dynarray.dats"
+//
 typedef itm = symbol
-vtypedef
-dynarray = dynarray(itm)
-
+vtypedef dynarray = dynarray(itm)
+//
 val
-theCap = 1024
+theCap = 4*1024
 val
 theDynarr = 
 dynarray_make_nil<itm>(i2sz(theCap))
 val
 theDynarr = $UN.castvwtp0{ptr}(theDynarr)
-
+//
 in (* in-of-local *)
 
 static
 fun
-stamp_insert(symbol): void
+stamp_symbol(symbol): void
 
 implement
-stamp_insert
+stamp_symbol
   (sym) = let
   val i0 =
   u2sz(g1ofg0(sym.stamp()))
@@ -80,10 +81,12 @@ stamp_insert
   prval ((*void*)) = $UN.cast2void(A0)
 in
   // nothing
-end // end of [stamp_insert]
+end // end of [stamp_symbol]
+
+(* ****** ****** *)
 
 implement
-stamp_to_symbol
+symbol_of_stamp
   (stamp) = let
   val i0 = u2sz(g1ofg0(stamp))
   val A0 =
@@ -94,7 +97,7 @@ in
   if
   isneqz(cp)
   then Some_vt($UN.cptr_get(cp)) else None_vt()
-end // end of [stamp_to_symbol]
+end // end of [symbol_of_stamp]
 
 end // end of [local]
 
@@ -155,7 +158,7 @@ case+ ans of
     prval ((*void*)) = opt_unnone(res)
   in
     let
-      val () = stamp_insert(sym)
+      val () = stamp_symbol(sym)
       val () = symbol_insert(sym) in sym
     end
   end (* end of [false] *)
@@ -197,7 +200,8 @@ symbol_isnot_nil(x) = (x != symbol_nil)
 
 local
 //
-#staload "libats/SATS/hashtbl_chain.sats"
+#staload
+"libats/SATS/hashtbl_chain.sats"
 //
 #staload _(*anon*) = "libats/DATS/qlist.dats"
 //
@@ -211,7 +215,7 @@ typedef itm = symbol
 vtypedef hashtbl = hashtbl(key, itm)
 //
 val
-theCap = 1024
+theCap = 4*1024
 val
 theHashtbl = 
 hashtbl_make_nil<key,itm>(i2sz(theCap))

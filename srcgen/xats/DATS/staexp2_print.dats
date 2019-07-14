@@ -457,13 +457,26 @@ s2e0.node() of
   ( out
   , "S2Etop(", knd, "; ", s2e, ")")
 //
+| S2Ecimp(loc, s2e) =>
+  fprint!
+  ( out
+  , "S2Ecimp(", s2e, ":", s2e.sort(), ")")
+| S2Ecprf(loc, s2e) =>
+  fprint!
+  ( out
+  , "S2Ecprf(", s2e, ":", s2e.sort(), ")")
+| S2Ectcd(loc, s2e) =>
+  fprint!
+  ( out
+  , "S2Ectcd(", s2e, ":", s2e.sort(), ")")
 | S2Ecast(loc, s2e, s2t) =>
   fprint!
   ( out
-  , "S2Ecast(", s2e, "; ", s2t, ")")
+  , "S2Ecast(", s2e, ":", s2e.sort(), "; ", s2t, ")")
 (*
   fprint!
-  ( out, "S2Ecast("
+  ( out
+  , "S2Ecast("
   , loc, "; ", s2e, "; ", s2t, ")")
 *)
 //

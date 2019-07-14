@@ -221,7 +221,7 @@ d0c0.node() of
     val () =
     synerr_add(SYNERRd0ecl(d0c0))
   in
-    prerrln!(loc0, ": SYNERR(d0ecl): ", tok);
+    prerrln!(loc0, ": SYNERR(d0ecl): ", d0c0);
   end // end of [D0Cnone]
 //
 | D0Ctokerr(tok) =>
@@ -229,12 +229,12 @@ d0c0.node() of
     val () =
     synerr_add(SYNERRd0ecl(d0c0))
   in
-    prerrln!(loc0, ": SYNERR(d0ecl): ", tok);
+    prerrln!(loc0, ": SYNERR(d0ecl): ", d0c0);
   end // end of [D0Cnone]
 //
 | _(* rest-of-d0ecl *) =>
   (
-    prerrln!("synread_d0ecl: d0c0 = ", d0c0)
+    prerrln!(loc0, ": synread_d0ecl: d0c0 = ", d0c0)
   )
 //
 end // end of [synread_d0ecl]

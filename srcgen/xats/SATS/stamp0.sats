@@ -42,9 +42,9 @@ typedef stampopt = Option(stamp)
 (* ****** ****** *)
 //
 fun
-stamp2int(stamp):<> intptr
+stamp2uint(stamp):<> uint
 //
-overload .int with stamp2int
+overload .uint with stamp2uint
 //
 (* ****** ****** *)
 //
@@ -94,7 +94,7 @@ stamper_new((*void*)): stamper
 //
 fun
 stamper_set
-  (obj: stamper, n0: int): void
+  (obj: stamper, n0: uint): void
 //
 (* ****** ****** *)
 
