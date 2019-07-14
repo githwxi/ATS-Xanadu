@@ -2599,9 +2599,9 @@ println!("aux_sexpdef: def1 = ", def1)
 *)
 //
 in
-  d1ecl_make_node
-    (loc0, D1Csexpdef(knd, tok, arg1, opt1, def1))
-  // d1ecl_make_node
+d1ecl_make_node
+  (loc0, D1Csexpdef(knd, tok, arg1, opt1, def1))
+// d1ecl_make_node
 end // end of [aux_sexpdef]
 
 (* ****** ****** *)
@@ -2612,8 +2612,8 @@ aux_abstdef
 : abstdf0): abstdf1 =
 (
   case+ def0 of
-  | ABSTDF0nil() =>
-    ABSTDF1nil()
+  | ABSTDF0some() =>
+    ABSTDF1some()
   | ABSTDF0lteq(tok, s0e) =>
     ABSTDF1lteq(trans01_sexp(s0e))
   | ABSTDF0eqeq(tok, s0e) =>

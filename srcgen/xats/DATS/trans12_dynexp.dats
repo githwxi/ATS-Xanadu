@@ -1582,21 +1582,25 @@ case+ s2tf of
 //
 } (* end of [val] *)
 //
+//
+val
+s2t0 = s2e0.sort()
+val
+def0 =
+s2expnul_some(s2e0)
 val
 s2c0 =
-s2cst_make_idst(sid, s2e0.sort())
-val
-def0 = s2expnul_some(s2e0)
+s2cst_make_idst(sid, s2t0)
 //
 val () = stamp_s2cst(s2c0)
 val () = stamp_s2cst_def(s2c0, def0)
 //
 in
-  let
-    val () = the_sexpenv_add_cst(s2c0)
-  in
-    d2ecl_make_node(loc0, D2Csexpdef(s2c0))
-  end
+let
+  val () = the_sexpenv_add_cst(s2c0)
+in
+  d2ecl_make_node(loc0, D2Csexpdef(s2c0, s2e0))
+end
 end // end of [aux_sexpdef]
 
 (* ****** ****** *)
@@ -1604,15 +1608,18 @@ end // end of [aux_sexpdef]
 fun
 aux_abstdef
 ( def
-: abstdf1): abstdf2 =
+: abstdf1
+, res: sort2): abstdf2 =
 (
 case+ def of
-| ABSTDF1nil() =>
-  ABSTDF2nil((*void*))
+| ABSTDF1some() =>
+  ABSTDF2some((*void*))
 | ABSTDF1lteq(s1e) =>
-  ABSTDF2lteq(trans12_sexp(s1e))
+  ABSTDF2lteq
+  (trans12_sexp_ck(s1e, res))
 | ABSTDF1eqeq(s1e) =>
-  ABSTDF2eqeq(trans12_sexp(s1e))
+  ABSTDF2eqeq
+  (trans12_sexp_ck(s1e, res))
 ) (* end of [aux_abstdef] *)
 
 and
@@ -1666,18 +1673,54 @@ case+ xs of
 val
 res =
 (
+(
 case+ res of
-| None() => the_sort2_type
-| Some(s1t) => trans12_sort(s1t)
-) : sort2 // end of [val]
+| None() =>
+  auxst(knd)
+| Some(s1t) =>
+  trans12_sort(s1t)
+)
+: sort2
+) where
+{
+fun
+auxst
+(knd: token): sort2 =
+(
+let
+val-
+T_ABSTYPE(knd) = knd.node()
+in
+//
+ifcase
+| (knd=TYPESORT) => the_sort2_type
+| (knd=PROPSORT) => the_sort2_prop
+| (knd=VIEWSORT) => the_sort2_view
+| (knd=VTYPESORT) => the_sort2_vtype
+| _(* SEXPDEF *) =>
+  let
+  val () =
+  assertloc(false) in the_sort2_type
+  end
+//
+end // end-of-let
+)
+} (* end of [val] *)
 //
 val
-def = aux_abstdef(def)
+def =
+aux_abstdef(def, res)
 //
 val
 s2t0 = auxmargs(arg, res)
 val
-s2c0 = s2cst_make_idst(sid, s2t0)
+s2c0 =
+s2cst_make_idst(sid, s2t0)
+//
+val () =
+stamp_s2cst(s2c0)
+val () =
+stamp_s2cst_abs(s2c0, def)
 //
 val () = the_sexpenv_add_cst(s2c0)
 //
@@ -1685,15 +1728,17 @@ val () = the_sexpenv_add_cst(s2c0)
 val () =
 println!
 ("\
-trans12_decl: aux_abstype: s2t0 = ", s2t0)
+trans12_decl:\
+ aux_abstype: s2t0 = ", s2t0)
 val () =
 println!
 ("\
-trans12_decl: aux_abstype: s2c0 = ", s2c0)
+trans12_decl:\
+ aux_abstype: s2c0 = ", s2c0)
 // *)
 //
 in
-  d2ecl_make_node(loc0, D2Cabstype(d1c0))
+  d2ecl_make_node(loc0, D2Cabstype(s2c0, def))
 end // end of [aux_abstype]
 
 (* ****** ****** *)

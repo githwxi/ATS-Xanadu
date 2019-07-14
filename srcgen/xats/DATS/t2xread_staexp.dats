@@ -221,4 +221,17 @@ list_foreach$fwork<labs2exp><env>(ls2e, env) = t2xread_labs2exp<>(ls2e)
 //
 (* ****** ****** *)
 
+implement
+{}(*tmp*)
+t2xread_abstdf2(df2) =
+(
+case+ df2 of
+| ABSTDF2none() => ()
+| ABSTDF2some() => ()
+| ABSTDF2lteq(s2e) => t2xread_s2exp<>(s2e)
+| ABSTDF2eqeq(s2e) => t2xread_s2exp<>(s2e)
+)
+
+(* ****** ****** *)
+
 (* end of [xats_t2xread_staexp.dats] *)

@@ -416,6 +416,26 @@ VTYPE_symbol = symbol_make("vtype")
 (* ****** ****** *)
 
 implement
+LIN_symbol = symbol_make("lin")
+(*
+implement
+LINEAR_symbol = symbol_make("linear")
+*)
+
+(* ****** ****** *)
+
+implement
+CLO_symbol = symbol_make("clo")
+implement
+CLOFLT_symbol = symbol_make("cloflt")
+implement
+CLOPTR_symbol = symbol_make("cloptr")
+implement
+CLOREF_symbol = symbol_make("cloref")
+
+(* ****** ****** *)
+
+implement
 DLR_EXTYPE_symbol = symbol_make("$extype")
 
 (* ****** ****** *)

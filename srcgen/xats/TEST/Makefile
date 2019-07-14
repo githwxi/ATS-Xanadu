@@ -17,28 +17,6 @@ all::
 ######
 #
 # all:: \
-# test_symbol
-#
-test_symbol: \
-test_symbol_dats
-test_symbol_dats: \
-test_symbol.dats; $(MYATSCC) $<
-regress:: test_symbol_dats; ./test_symbol_dats
-#
-######
-#
-# all:: \
-# test_filpath
-#
-test_filpath: \
-test_filpath_dats
-test_filpath_dats: \
-test_filpath.dats; $(MYATSCC) $<
-regress:: test_filpath_dats; ./test_filpath_dats
-#
-######
-#
-# all:: \
 # test00
 #
 test00: ; \

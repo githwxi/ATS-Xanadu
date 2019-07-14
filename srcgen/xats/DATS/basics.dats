@@ -221,7 +221,7 @@ case+ knd of
 (* ****** ****** *)
 
 implement
-FC2clo_ = FC2clo(0)
+FC2cloflt = FC2clo(0)
 implement
 FC2cloptr = FC2clo(1)
 implement

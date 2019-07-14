@@ -129,8 +129,9 @@ in
 case+
 d2c0.node() of
 //
-| D2Csexpdef(s2c) =>
+| D2Csexpdef(s2c, def) =>
   {
+(*
     val
     def =
     s2cst_get_def(s2c)
@@ -138,15 +139,33 @@ d2c0.node() of
     assertloc(isneqz(def))
     val
     def = unsome(def)
+*)
 //
+    val () = t2xread_s2exp(def)
+//
+(*
     val () =
     println!
     ("t2xread_d2ecl: D2Cs2expdef: s2c = ", s2c)
     val () =
     println!
     ("t2xread_d2ecl: D2Cs2expdef: s2c.def = ", def)
+*)
 //
-    val () = t2xread_s2exp(def)
+  }
+//
+| D2Cabstype(s2c, df2) =>
+  {
+//
+    val () = t2xread_abstdf2(df2)
+//
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c = ", s2c)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c.def = ", df2)  
+//
   }
 //
 | D2Cabsimpl
