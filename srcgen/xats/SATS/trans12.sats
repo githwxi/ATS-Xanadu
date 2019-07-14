@@ -280,14 +280,21 @@ vtypedef s2imap = symmap(s2itm)
 vtypedef d2imap = symmap(d2itm)
 //
 (* ****** ****** *)
+//
+fun
+sargid_new((*void*)): sym_t
+fun
+dargid_new((*void*)): sym_t
+//
+(* ****** ****** *)
 
 fun
 fmodenv_make
 ( fp: fpath
 , m0: s2tmap
 , m1: s2imap
-, m2: d2imap, d2cs: d2eclist
-) : fmodenv // fmodenv_make
+, m2: d2imap
+, d2cs: d2eclist) : fmodenv
 
 (* ****** ****** *)
 //

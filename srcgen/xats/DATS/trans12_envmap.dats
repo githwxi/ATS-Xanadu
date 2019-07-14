@@ -74,6 +74,60 @@ FP0 = "./../SATS/filpath.sats"
 
 (* ****** ****** *)
 
+local
+
+val r0 = ref<int>(0)
+
+in (* in-of-local *)
+
+implement
+sargid_new() = let
+//
+val n0 = r0[] + 1
+val () = (r0[] := n0)
+//
+val
+(pf,fpf|p0) = malloc_gc(i2sz(16))
+val _(*bsz*) =
+$extfcall
+(int, "sprintf", p0, "$a(%i)", n0)
+//
+in
+  $SYM.symbol_make
+  ($UN.castvwtp0{string}((pf,fpf|p0)))
+end // end of [sargid_new]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val r0 = ref<int>(0)
+
+in (* in-of-local *)
+
+implement
+dargid_new() = let
+//
+val n0 = r0[] + 1
+val () = (r0[] := n0)
+//
+val
+(pf,fpf|p0) = malloc_gc(i2sz(16))
+val _(*bsz*) =
+$extfcall
+(int, "sprintf", p0, "$x(%i)", n0)
+//
+in
+  $SYM.symbol_make
+  ($UN.castvwtp0{string}((pf,fpf|p0)))
+end // end of [dargid_new]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 absimpl
 $NMS.nmitm_tbox = fmodenv
 
