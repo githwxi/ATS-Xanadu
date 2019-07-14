@@ -877,10 +877,20 @@ d2ecl_node =
   (d2eclist(*head*), d2eclist(*body*))
 //
 | D2Cabssort of (d1ecl)
+//
 | D2Cstacst0 of (d1ecl)
+//
 | D2Csortdef of (d1ecl)
+//
+(*
 | D2Csexpdef of (d1ecl)
+*)
+| D2Csexpdef of (s2cst, s2exp)
+//
+(*
 | D2Cabstype of (d1ecl)
+*)
+| D2Cabstype of (s2cst, abstdf2)
 //
 (*
 | D2Cabsimpl of (d1ecl)
@@ -915,11 +925,13 @@ d2ecl_node =
 //
 // end of [d2ecl_node]
 //
+(*
 and
 abstdf2 =
   | ABSTDF2nil of () // unspecified
   | ABSTDF2lteq of s2exp // erasure
   | ABSTDF2eqeq of s2exp // definition
+*)
 //
 and
 absimplcst =

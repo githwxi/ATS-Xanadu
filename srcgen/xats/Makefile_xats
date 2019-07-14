@@ -105,7 +105,7 @@ dynexp2.dats \
 staexp2_init0.dats \
 staexp2_util1.dats \
 staexp2_util2.dats \
-staexp2_const.dats \
+staexp2_s2cst.dats \
 staexp2_print.dats \
 statyp2_print.dats \
 dynexp2_print.dats \

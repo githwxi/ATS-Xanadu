@@ -90,6 +90,75 @@ s2e0.node() of
     val () = t2xread_s2explst<>(s2es)  
   }
 //
+| S2Efun
+  ( fc0
+  , lin, npf, s2es, s2e1) =>
+  {
+    val () = t2xread_s2exp<>(s2e1)
+    val () = t2xread_s2explst<>(s2es)
+  }
+//
+| S2Eexi(s2vs, s2ps, s2e1) =>
+  {
+    val () = t2xread_s2exp<>(s2e1)
+    val () = t2xread_s2explst<>(s2ps)
+  }
+| S2Euni(s2vs, s2ps, s2e1) =>
+  {
+    val () = t2xread_s2exp<>(s2e1)
+    val () = t2xread_s2explst<>(s2ps)
+  }
+//
+| S2Elam(s2vs, s2e1) =>
+  {
+    val () = t2xread_s2exp<>(s2e1)
+  }
+//
+| S2Etyrec(knd, npf, ls2es) =>
+  {
+    val () = t2xread_labs2explst<>(ls2es)
+  }
+//
+| S2Ecimp
+  (loc0, s2e1) =>
+  {
+//
+    val () =
+    t2xerr_add(T2XERRs2exp(s2e0))
+//
+    val () = t2xread_s2exp<>(s2e1)
+//
+    val () =
+    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+//
+  }
+| S2Ecprf
+  (loc0, s2e1) =>
+  {
+//
+    val () =
+    t2xerr_add(T2XERRs2exp(s2e0))
+//
+    val () = t2xread_s2exp<>(s2e1)
+//
+    val () =
+    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+//
+  }
+| S2Ectcd
+  (loc0, s2e1) =>
+  {
+//
+    val () =
+    t2xerr_add(T2XERRs2exp(s2e0))
+//
+    val () = t2xread_s2exp<>(s2e1)
+//
+    val () =
+    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+//
+  }
+//
 | S2Ecast
   (loc0, s2e1, s2t2) =>
   {
@@ -113,15 +182,61 @@ end // end of [t2xread_s2exp]
 //
 implement
 {}(*tmp*)
-t2xread_s2explst(d2cs) =
+t2xread_s2expnul(opt) =
 (
-list_foreach<s2exp>(d2cs)
+if
+iseqz(opt)
+then ((*void*))
+else t2xread_s2exp(unsome(opt))
+)
+//
+implement
+{}(*tmp*)
+t2xread_s2explst(s2es) =
+(
+list_foreach<s2exp>(s2es)
 ) where
 {
 implement(env)
-list_foreach$fwork<s2exp><env>(d2c, env) = t2xread_s2exp<>(d2c)
+list_foreach$fwork<s2exp><env>(s2e, env) = t2xread_s2exp<>(s2e)
 } (* end of [t2xread_s2explst] *)
 //
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_labs2exp(ls2e) =
+let
+val+
+SLABELED(lab, s2e) = ls2e
+in
+  t2xread_s2exp<>(s2e)
+end // end of [t2xread_labs2exp]
+//
+implement
+{}(*tmp*)
+t2xread_labs2explst(ls2es) =
+(
+list_foreach<labs2exp>(ls2es)
+) where
+{
+implement(env)
+list_foreach$fwork<labs2exp><env>(ls2e, env) = t2xread_labs2exp<>(ls2e)
+} (* end of [t2xread_labs2explst] *)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+t2xread_abstdf2(df2) =
+(
+case+ df2 of
+| ABSTDF2none() => ()
+| ABSTDF2some() => ()
+| ABSTDF2lteq(s2e) => t2xread_s2exp<>(s2e)
+| ABSTDF2eqeq(s2e) => t2xread_s2exp<>(s2e)
+)
+
 (* ****** ****** *)
 
 (* end of [xats_t2xread_staexp.dats] *)

@@ -51,6 +51,7 @@ t2xreader
 //
 datatype t2xerr =
 | T2XERRs2exp of (s2exp)
+| T2XERRd2exp of (d2exp)
 | T2XERRd2ecl of (d2ecl)
 //
 typedef
@@ -76,8 +77,20 @@ t2xread_sort2: t2xreader(sort2)
 fun{}
 t2xread_s2exp: t2xreader(s2exp)
 fun{}
+t2xread_s2expnul: t2xreader(s2expnul)
+fun{}
 t2xread_s2explst: t2xreader(s2explst)
 //
+fun{}
+t2xread_labs2exp: t2xreader(labs2exp)
+fun{}
+t2xread_labs2explst: t2xreader(labs2explst)
+//
+(* ****** ****** *)
+
+fun{}
+t2xread_abstdf2: t2xreader(abstdf2)
+
 (* ****** ****** *)
 //
 fun{}

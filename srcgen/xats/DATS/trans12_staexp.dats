@@ -43,9 +43,19 @@ UN = "prelude/SATS/unsafe.sats"
 #staload
 SYM = "./../SATS/symbol.sats"
 //
+macdef
+LIN_sym = $SYM.LIN_symbol
 //
-overload
-= with $SYM.eq_symbol_symbol
+macdef
+CLO_sym = $SYM.CLO_symbol
+macdef
+CLOFLT_sym = $SYM.CLOFLT_symbol
+macdef
+CLOPTR_sym = $SYM.CLOPTR_symbol
+macdef
+CLOREF_sym = $SYM.CLOREF_symbol
+//
+overload = with $SYM.eq_symbol_symbol
 //
 (* ****** ****** *)
 //
@@ -435,10 +445,108 @@ end // end of [trans12_stxt]
 
 (* ****** ****** *)
 //
+(*
+HX-2019-07-14:
+Should a warning
+be issued fro 'lincloref'?
+*)
+//
 implement
-s1exp_get_lin(s1e0) = 0
+s1exp_get_lin(s1e0) =
+let
+val-
+S1Eimp(s1es) = s1e0.node()
+in
+//
+auxlst(s1es) where
+{
+fun
+islin
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  (sym = LIN_sym)
+| _ (*non-S1Eid*) => false
+)
+fun
+auxlst
+( xs
+: s1explst): int =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(x0, xs) =>
+  ifcase
+  | islin(x0) => 1
+  | _ (* else *) => auxlst(xs)
+)
+}
+//
+end // end of [s1exp_get_lin]
+
 implement
-s1exp_get_fc2(s1e0) = FC2fun()
+s1exp_get_fc2(s1e0) =
+let
+val-
+S1Eimp(s1es) = s1e0.node()
+in
+//
+auxlst(s1es) where
+{
+fun
+cref
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  (sym = CLOREF_sym)
+| _ (*non-S1Eid*) => false
+)
+fun
+cptr
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  (sym = CLOPTR_sym)
+| _ (*non-S1Eid*) => false
+)
+fun
+cflt
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  if
+  (sym = CLO_sym)
+  then true
+  else (sym = CLOFLT_sym)
+| _ (* non-S1Eid *) => false
+)
+fun
+auxlst
+( xs
+: s1explst): funclo2 =
+(
+case+ xs of
+| list_nil() => FC2fun()
+| list_cons(x0, xs) =>
+  ifcase
+  | cref(x0) => FC2cloref
+  | cptr(x0) => FC2cloptr
+  | cflt(x0) => FC2cloflt
+  | _ (* else *) => auxlst(xs)
+)
+}
+//
+end // end of [s1exp_get_fc2]
+//
+(* ****** ****** *)
 //
 (*
 implement
@@ -850,7 +958,8 @@ val
 trans12_squalst(s1qs, s2vs_, s2ps_)
 //
 val
-s2e2 = trans12_sexp(s1e2(*body*))
+s2e2 =
+trans12_sexp_ci(s1e2(*body*))
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
@@ -894,7 +1003,8 @@ val
 trans12_squalst(s1qs, s2vs, s2ps)
 //
 val
-s2e2 = trans12_sexp(s1e2(*body*))
+s2e2 =
+trans12_sexp_ci(s1e2(*body*))
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
@@ -1070,21 +1180,21 @@ then let
   case+
   s1e2.node() of
   | S1Elist(xs) =>
-    trans12_sexplst(xs)
+    trans12_sexplst_ci(xs)
   | S1Elist(xs1, xs2) =>
     (
       s2es1 + s2es2
     ) where
     {
       val () = (npf := length(xs1))
-      val s2es1 = trans12_sexplst(xs1)
-      val s2es2 = trans12_sexplst(xs2)
+      val s2es1 = trans12_sexplst_cp(xs1)
+      val s2es2 = trans12_sexplst_ct(xs2)
     }
   | _(*non-S1Elist*) =>
     list_sing
-    (trans12_sexp(s1e2))
+    (trans12_sexp_ci(s1e2))
   ) : s2explst
-  val s2e3 = trans12_sexp(s1e3)
+  val s2e3 = trans12_sexp_ci(s1e3)
 in
   s2exp_fun_all(npf, s2es, s2e3)
 end // end of [then]
@@ -1108,21 +1218,21 @@ s1e1.node() of
   case+
   s1e2.node() of
   | S1Elist(xs) =>
-    trans12_sexplst(xs)
+    trans12_sexplst_ci(xs)
   | S1Elist(xs1, xs2) =>
     (
       s2es1 + s2es2
     ) where
     {
       val () = (npf := length(xs1))
-      val s2es1 = trans12_sexplst(xs1)
-      val s2es2 = trans12_sexplst(xs2)
+      val s2es1 = trans12_sexplst_cp(xs1)
+      val s2es2 = trans12_sexplst_ct(xs2)
     }
   | _(*non-S1Elist*) =>
     list_sing
-    (trans12_sexp(s1e2))
+    (trans12_sexp_ci(s1e2))
   ) : s2explst
-  val s2e3 = trans12_sexp(s1e3)
+  val s2e3 = trans12_sexp_ci(s1e3)
   in
     s2exp_fun_full(fc2, lin, npf, s2es, s2e3)
   end
@@ -1279,7 +1389,7 @@ val-
 S1Etuple
 (knd, s1es) = s1e0.node()
 //
-val s2es = trans12_sexplst(s1es)
+val s2es = trans12_sexplst_ci(s1es)
 //
 in
   s2exp_tuple1(knd, s2es)
@@ -1294,8 +1404,8 @@ val-
 S1Etuple
 ( knd, xs1, xs2) = s1e0.node()
 //
-val s2es1 = trans12_sexplst(xs1)
-val s2es2 = trans12_sexplst(xs2)
+val s2es1 = trans12_sexplst_cp(xs1)
+val s2es2 = trans12_sexplst_ct(xs2)
 //
 in
   s2exp_tuple2(knd, s2es1, s2es2)
@@ -1312,7 +1422,7 @@ val-
 S1Erecord
 (knd, ls1es) = s1e0.node()
 //
-val ls2es = trans12_labsexplst(ls1es)
+val ls2es = trans12_labsexplst_ci(ls1es)
 //
 in
   s2exp_record1(knd, ls2es)
@@ -1327,8 +1437,8 @@ val-
 S1Erecord
 ( knd, lxs1, lxs2) = s1e0.node()
 //
-val ls2es1 = trans12_labsexplst(lxs1)
-val ls2es2 = trans12_labsexplst(lxs2)
+val ls2es1 = trans12_labsexplst_cp(lxs1)
+val ls2es2 = trans12_labsexplst_ct(lxs2)
 //
 in
   s2exp_record2(knd, ls2es1, ls2es2)
@@ -1409,6 +1519,83 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+trans12_sexp_ci
+  (s1e0) = let
+(*
+val () =
+println!
+("trans12_sexp_ci: s1e0 = ", s1e0)
+*)
+in
+//
+case+
+s1e0.node() of
+| _(*rest-of-s1exp*) =>
+  let
+    val s2e0 =
+    trans12_sexp(s1e0)
+  in
+    if
+    sort2_is_impred(s2e0.sort())
+    then s2e0 else s2exp_cimp(s1e0.loc(), s2e0)
+    // end of [if]
+  end
+//
+end // end of [trans12_sexp_ci]
+
+implement
+trans12_sexp_cp
+  (s1e0) = let
+(*
+val () =
+println!
+("trans12_sexp_cp: s1e0 = ", s1e0)
+*)
+in
+//
+case+
+s1e0.node() of
+| _(*rest-of-s1exp*) =>
+  let
+    val s2e0 =
+    trans12_sexp(s1e0)
+  in
+    if
+    sort2_is_proof(s2e0.sort())
+    then s2e0 else s2exp_cprf(s1e0.loc(), s2e0)
+    // end of [if]
+  end
+//
+end // end of [trans12_sexp_cp]
+
+implement
+trans12_sexp_ct
+  (s1e0) = let
+(*
+val () =
+println!
+("trans12_sexp_ct: s1e0 = ", s1e0)
+*)
+in
+//
+case+
+s1e0.node() of
+| _(*rest-of-s1exp*) =>
+  let
+    val s2e0 =
+    trans12_sexp(s1e0)
+  in
+    if
+    sort2_is_tcode(s2e0.sort())
+    then s2e0 else s2exp_ctcd(s1e0.loc(), s2e0)
+    // end of [if]
+  end
+//
+end // end of [trans12_sexp_ct]
+
+(* ****** ****** *)
+
+implement
 trans12_sexp_ck
   (s1e0, s2t0) = let
 //
@@ -1465,6 +1652,59 @@ implement
 list_map$fopr<s1exp><s2exp> = trans12_sexp
 }
 } (* end of [trans12_sexplst] *)
+
+(* ****** ****** *)
+
+implement
+trans12_sexplst_cp
+  (s1es) =
+list_vt2t(s2es) where
+{
+val
+s2es =
+list_map<s1exp><s2exp>
+  (s1es) where
+{
+implement
+list_map$fopr<s1exp><s2exp>
+  (s1e) = trans12_sexp_cp(s1e)
+// implement
+}
+} (* end of [trans12_sexplst_cp] *)
+
+implement
+trans12_sexplst_ct
+  (s1es) =
+list_vt2t(s2es) where
+{
+val
+s2es =
+list_map<s1exp><s2exp>
+  (s1es) where
+{
+implement
+list_map$fopr<s1exp><s2exp>
+  (s1e) = trans12_sexp_ct(s1e)
+// implement
+}
+} (* end of [trans12_sexplst_ct] *)
+
+implement
+trans12_sexplst_ci
+  (s1es) =
+list_vt2t(s2es) where
+{
+val
+s2es =
+list_map<s1exp><s2exp>
+  (s1es) where
+{
+implement
+list_map$fopr<s1exp><s2exp>
+  (s1e) = trans12_sexp_ci(s1e)
+// implement
+}
+} (* end of [trans12_sexplst_ci] *)
 
 (* ****** ****** *)
 
@@ -1549,7 +1789,7 @@ case+ s1es of
 (* ****** ****** *)
 
 implement
-trans12_labsexplst
+trans12_labsexplst_ci
   (lxs) =
 list_vt2t
 (
@@ -1566,11 +1806,57 @@ case+ lx0 of
   (l0, _, x0) =>
   (
   case- l0.node() of
-  | L0ABsome(l0) => SLABELED(l0, trans12_sexp(x0))
+  | L0ABsome(l0) => SLABELED(l0, trans12_sexp_ci(x0))
   )
 )
 //
-} (* trans12_labsexplst *)
+} (* trans12_labsexplst_ci *)
+implement
+trans12_labsexplst_cp
+  (lxs) =
+list_vt2t
+(
+list_map<labs1exp><labs2exp>(lxs)
+) where
+{
+//
+implement
+list_map$fopr<labs1exp><labs2exp>
+  (lx0) =
+(
+case+ lx0 of
+| SL0ABLED
+  (l0, _, x0) =>
+  (
+  case- l0.node() of
+  | L0ABsome(l0) => SLABELED(l0, trans12_sexp_cp(x0))
+  )
+)
+//
+} (* trans12_labsexplst_cp *)
+implement
+trans12_labsexplst_ct
+  (lxs) =
+list_vt2t
+(
+list_map<labs1exp><labs2exp>(lxs)
+) where
+{
+//
+implement
+list_map$fopr<labs1exp><labs2exp>
+  (lx0) =
+(
+case+ lx0 of
+| SL0ABLED
+  (l0, _, x0) =>
+  (
+  case- l0.node() of
+  | L0ABsome(l0) => SLABELED(l0, trans12_sexp_ct(x0))
+  )
+)
+//
+} (* trans12_labsexplst_ct *)
 
 (* ****** ****** *)
 //

@@ -1093,7 +1093,7 @@ signint =
 
 and
 abstdf0 =
-| ABSTDF0nil of () // unspecified
+| ABSTDF0some of () // unspecified
 | ABSTDF0lteq of (token(*"<="*), s0exp)
 | ABSTDF0eqeq of (token(*"=="*), s0exp)
 

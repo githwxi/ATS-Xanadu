@@ -55,7 +55,6 @@ overload tail with list_tail
 
 (* ****** ****** *)
 
-
 fun sortbox(x: int): int // 0,1
 fun sortlin(x: int): int // 0,1
 fun sortprf(x: int): int // 0,1
@@ -228,7 +227,7 @@ funclo2 =
 | FC2fun of ((*fun*))
 | FC2clo of int(*knd*) // closure: knd=1/0/~1: ptr/clo/ref
 //
-val FC2clo_: funclo2 // flat
+val FC2cloflt: funclo2 // flat
 val FC2cloptr: funclo2 // linear
 val FC2cloref: funclo2 // nonlin
 //

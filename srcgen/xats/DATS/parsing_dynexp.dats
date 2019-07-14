@@ -2481,7 +2481,7 @@ case+ tnd of
     ABSTDF0eqeq
     (tok, p_s0exp(buf, err))    
   end
-| _(*non-eq-eqeq*) => ABSTDF0nil()
+| _(*non-eq-eqeq*) => ABSTDF0some()
 //
 end // end of [p_abstdf0]
 
@@ -3268,15 +3268,16 @@ abstype ::=
     val loc_res =
     (
     case+ tdef of
-    | ABSTDF0nil() =>
+    | ABSTDF0some() =>
       (
       case+ tmas of
       | list_nil() => loc+sid.loc()
-      | list_cons _ => let
+      | list_cons _ =>
+        let
         val t0ma =
         list_last(tmas) in loc+t0ma.loc()
         end // end of [list_cons]
-      ) (* ABSTDF0nil *)
+      ) (* ABSTDF0some *)
     | ABSTDF0lteq(_, s0e) => loc+s0e.loc()
     | ABSTDF0eqeq(_, s0e) => loc+s0e.loc()
     ) : loc_t // end of [val]
