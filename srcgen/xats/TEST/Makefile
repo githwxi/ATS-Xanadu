@@ -13,29 +13,17 @@ XATSOPT=$(XATSHOME)/bin/xatsopt
 ######
 
 all::
+regress::
+cleanall::
 
 ######
 #
 # all:: \
-# test_symbol
+# test00
 #
-test_symbol: \
-test_symbol_dats
-test_symbol_dats: \
-test_symbol.dats; $(MYATSCC) $<
-regress:: test_symbol_dats; ./test_symbol_dats
-
-######
+test00: ; \
+$(CAT) ./DATA/test00.dats | $(XATSOPT) --dynamic
 #
-# all:: \
-# test_filpath
-#
-test_filpath: \
-test_filpath_dats
-test_filpath_dats: \
-test_filpath.dats; $(MYATSCC) $<
-regress:: test_filpath_dats; ./test_filpath_dats
-
 ######
 
 all:: \
@@ -50,7 +38,7 @@ $(CAT) ./DATA/syntax_dyn.dats | $(XATSOPT) --dynamic
 
 ######
 
-all:: prelude
+# all:: prelude
 prelude:: gbas_sats
 prelude:: gbas_dats
 prelude:: gord_sats

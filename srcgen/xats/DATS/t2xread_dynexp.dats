@@ -64,6 +64,55 @@ _(*TMP*) = "./../DATS/t2xread_staexp.dats"
 
 implement
 {}(*tmp*)
+t2xread_d2exp
+  (d2e0) = let
+//
+val loc0 = d2e0.loc((*void*))
+//
+in
+//
+case+
+d2e0.node() of
+//
+| D2Enone0() =>
+  let
+    val () =
+    t2xerr_add(T2XERRd2exp(d2e0))
+  in
+    prerrln!(loc0, ": T2XERR(d0exp): ", d2e0);
+  end // end of [D0Cnone]
+| D2Enone1(_) =>
+  let
+    val () =
+    t2xerr_add(T2XERRd2exp(d2e0))
+  in
+    prerrln!(loc0, ": T2XERR(d0exp): ", d2e0);
+  end // end of [D1Cnone]
+//
+| _(* rest-of-d2ecl *) =>
+  (
+    prerrln!(loc0, ": t2xread_d2exp: d2c0 = ", d2e0)
+  )
+//
+end // end of [t2xread_d2exp]
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_d2explst(d2es) =
+(
+list_foreach<d2exp>(d2es)
+) where
+{
+implement(env)
+list_foreach$fwork<d2exp><env>(d2e, env) = t2xread_d2exp<>(d2e)
+} (* end of [t2xread_d2explst] *)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 t2xread_d2ecl(d2c0) =
 let
 //
@@ -80,14 +129,66 @@ in
 case+
 d2c0.node() of
 //
-| D2Cabsimpl
-  (knd, d2c, s2e) =>
+| D2Csexpdef(s2c, def) =>
   {
-    val () = t2xread_s2exp<>(s2e)
+(*
+    val
+    def =
+    s2cst_get_def(s2c)
+    val () =
+    assertloc(isneqz(def))
+    val
+    def = unsome(def)
+*)
+//
+    val () = t2xread_s2exp(def)
+//
+(*
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cs2expdef: s2c = ", s2c)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cs2expdef: s2c.def = ", def)
+*)
+//
   }
+//
+| D2Cabstype(s2c, df2) =>
+  {
+//
+    val () = t2xread_abstdf2(df2)
+//
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c = ", s2c)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c.def = ", df2)  
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c.sort = ", s2c.sort())
+//
+  }
+//
+| D2Cabsimpl
+  (knd, scs, s2e) =>
+  {
+//
+    val () = t2xread_s2exp<>(s2e)
+//
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabsimpl: scs = ", scs)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabsimpl: def = ", s2e)
+//
+  }
+//
 | _(* rest-of-d2ecl *) =>
   (
-    prerrln!("t2xread_d2ecl: d2c0 = ", d2c0)
+    prerrln!(loc0, ": t2xread_d2ecl: d2c0 = ", d2c0)
   )
 //
 end // end of [t2xread_d2ecl]

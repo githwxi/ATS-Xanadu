@@ -1506,36 +1506,185 @@ the_sexpenv_popfree(pf0|(*void*))
 val () =
 println!
 ("\
+trans12_decl: aux_sexpdef: knd = ", knd)
+val () =
+println!
+("\
 trans12_decl: aux_sexpdef: s2e0 = ", s2e0)
 // *)
 //
 val
+s2t0 =
+s2e0.sort()
+val
+s2e0 =
+(
+auxck1(knd, s2t0)
+) where
+{
+fun
+auxck1
+( knd: token
+, s2t1: sort2): s2exp =
+let
+val-
+T_SEXPDEF(knd) = knd.node()
+in
+//
+ifcase
+| (knd < 0) => s2e0
+| (knd=TYPESORT) =>
+  auxck2(s2t0, the_sort2_type)
+| (knd=PROPSORT) =>
+  auxck2(s2t0, the_sort2_prop)
+| (knd=VIEWSORT) =>
+  auxck2(s2t0, the_sort2_view)
+| (knd=VTYPESORT) =>
+  auxck2(s2t0, the_sort2_vtype)
+| _(* SEXPDEF *) =>
+  let val () = assertloc(false) in s2e0 end
+//
+end // end of [let]
+//
+and
+auxck2
+( s2tf: sort2
+, s2t1: sort2): s2exp =
+(
+case+ s2tf of
+| S2Tfun
+  (_, s2tf) => auxck2(s2tf, s2t1)
+| _(*non-S2Elam*) =>
+  (
+  if
+  s2tf <= s2t1
+    then s2e0
+    else
+    let
+      val
+      s2t0 = auxst0(s2t0)
+    in
+      s2exp_cast(loc0, s2e0, s2t0)
+    end
+  // end of [if]
+  ) where
+  {
+    fun
+    auxst0(s2tf: sort2): sort2 =
+    (
+      case+ s2tf of
+      | S2Tfun(s2ts, s2tf) =>
+        S2Tfun(s2ts, auxst0(s2tf))
+      | _ (* non-S2Tfun *) => s2tf
+    )
+  }
+)
+//
+} (* end of [val] *)
+//
+//
+val
+s2t0 = s2e0.sort()
+val
+def0 =
+s2expnul_some(s2e0)
+val
 s2c0 =
-s2cst_make_idst(sid, s2e0.sort())
+s2cst_make_idst(sid, s2t0)
+//
+val () = stamp_s2cst(s2c0)
+val () = stamp_s2cst_def(s2c0, def0)
 //
 in
-  let
-    val () = the_sexpenv_add_cst(s2c0)
-  in
-    d2ecl_make_node(loc0, D2Csexpdef(d1c0))
-  end
+let
+  val () = the_sexpenv_add_cst(s2c0)
+in
+  d2ecl_make_node(loc0, D2Csexpdef(s2c0, s2e0))
+end
 end // end of [aux_sexpdef]
 
 (* ****** ****** *)
 
 fun
 aux_abstdef
-( def
-: abstdf1): abstdf2 =
+( arg
+: t1marglst
+, def: abstdf1
+, res: sort2): abstdf2 =
 (
 case+ def of
-| ABSTDF1nil() =>
-  ABSTDF2nil((*void*))
+| ABSTDF1some() =>
+  ABSTDF2some((*void*))
 | ABSTDF1lteq(s1e) =>
-  ABSTDF2lteq(trans12_sexp(s1e))
+  ABSTDF2lteq(auxfck(arg, s1e, res))
 | ABSTDF1eqeq(s1e) =>
-  ABSTDF2eqeq(trans12_sexp(s1e))
-) (* end of [aux_abstdef] *)
+  ABSTDF2eqeq(auxfck(arg, s1e, res))
+) where
+{
+fun
+auxfck
+( t1ms
+: t1marglst
+, s1e: s1exp
+, res: sort2): s2exp =
+(
+case+ t1ms of
+| list_nil() =>
+  trans12_sexp_ck(s1e, res)
+| list_cons(t1m0, t1ms) =>
+  let
+  val+
+  T1MARGlist(t1as) = t1m0.node()
+  in
+  case- res of
+  | S2Tfun(s2ts, res) =>
+    let
+    val
+    s2vs = auxsvs(t1as, s2ts)
+    val () =
+    the_sexpenv_add_varlst(s2vs)
+    in
+      s2exp_lam(s2vs, auxfck(t1ms, s1e, res))
+    end
+  end // end of [list_cons]
+)
+and
+auxsvs
+( t1as: t1arglst
+, s2ts: sort2lst): s2varlst =
+(
+case+ t1as of
+| list_nil() =>
+  list_nil()
+| list_cons(t1a0, t1as) =>
+  let
+  val-
+  list_cons(s2t0, s2ts) = s2ts
+  val+
+  T1ARGsome(_, opt) = t1a0.node()
+  val s2v0 =
+  (
+  case+ opt of
+  | None() =>
+    let
+    val
+    sid = sargid_new()
+    in
+      s2var_make_idst(sid, s2t0)
+    end    
+  | Some(tok) =>
+    let
+    val
+    sid = sargid_sym(tok)
+    in
+      s2var_make_idst(sid, s2t0)
+    end
+  ) : s2var // end of [val]
+  in
+    list_cons(s2v0, auxsvs(t1as, s2ts))
+  end
+)
+} (* end of [aux_abstdef] *)
 
 and
 aux_abstype
@@ -1588,18 +1737,60 @@ case+ xs of
 val
 res =
 (
+(
 case+ res of
-| None() => the_sort2_type
-| Some(s1t) => trans12_sort(s1t)
-) : sort2 // end of [val]
+| None() =>
+  auxst(knd)
+| Some(s1t) =>
+  trans12_sort(s1t)
+)
+: sort2
+) where
+{
+fun
+auxst
+(knd: token): sort2 =
+(
+let
+val-
+T_ABSTYPE(knd) = knd.node()
+in
+//
+ifcase
+| (knd=TYPESORT) => the_sort2_type
+| (knd=PROPSORT) => the_sort2_prop
+| (knd=VIEWSORT) => the_sort2_view
+| (knd=VTYPESORT) => the_sort2_vtype
+| _(* SEXPDEF *) =>
+  let
+    val () =
+    assertloc(false) in the_sort2_type
+  end
+//
+end // end-of-let
+)
+} (* end of [val] *)
 //
 val
-def = aux_abstdef(def)
+s2t0 =
+auxmargs(arg, res)
+//
+val (pf0|()) =
+the_sexpenv_pushnil()
+val
+def0 =
+aux_abstdef(arg, def, s2t0)
+val ((*void*)) =
+the_sexpenv_popfree(pf0|(*void*))
 //
 val
-s2t0 = auxmargs(arg, res)
-val
-s2c0 = s2cst_make_idst(sid, s2t0)
+s2c0 =
+s2cst_make_idst(sid, s2t0)
+//
+val () =
+stamp_s2cst(s2c0)
+val () =
+stamp_s2cst_abs(s2c0, def0)
 //
 val () = the_sexpenv_add_cst(s2c0)
 //
@@ -1607,15 +1798,17 @@ val () = the_sexpenv_add_cst(s2c0)
 val () =
 println!
 ("\
-trans12_decl: aux_abstype: s2t0 = ", s2t0)
+trans12_decl:\
+ aux_abstype: s2t0 = ", s2t0)
 val () =
 println!
 ("\
-trans12_decl: aux_abstype: s2c0 = ", s2c0)
+trans12_decl:\
+ aux_abstype: s2c0 = ", s2c0)
 // *)
 //
 in
-  d2ecl_make_node(loc0, D2Cabstype(d1c0))
+  d2ecl_make_node(loc0, D2Cabstype(s2c0, def0))
 end // end of [aux_abstype]
 
 (* ****** ****** *)
@@ -1706,7 +1899,7 @@ case+ svss of
   (
   case res1 of
   | None() =>
-    trans12_sexp(s1e2)
+    trans12_sexp_ci(s1e2)
   | Some(s1t) =>
     trans12_sexp_ck
     (s1e2, trans12_sort(s1t))

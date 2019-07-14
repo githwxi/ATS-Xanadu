@@ -883,7 +883,7 @@ d1ecl_node =
 //
 and
 abstdf1 =
-  | ABSTDF1nil of () // unspecified
+  | ABSTDF1some of () // unspecified
   | ABSTDF1lteq of s1exp // erasure
   | ABSTDF1eqeq of s1exp // definition
 //

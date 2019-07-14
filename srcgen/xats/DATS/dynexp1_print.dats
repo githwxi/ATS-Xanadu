@@ -788,8 +788,8 @@ fprint_abstdf1
   (out, x0) =
 (
 case+ x0 of
-| ABSTDF1nil() =>
-  fprint(out, "ABSTDF1nil()")
+| ABSTDF1some() =>
+  fprint(out, "ABSTDF1some()")
 | ABSTDF1lteq(s0e) =>
   fprint!(out, "ABSTDF1lteq(", s0e, ")")
 | ABSTDF1eqeq(s0e) =>
