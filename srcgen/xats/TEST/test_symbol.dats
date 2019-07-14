@@ -52,19 +52,19 @@ val () = println!(MUL_symbol)
 val () = println!(DIV_symbol)
 //
 val i0 = ADD_symbol.stamp()
-val-~Some_vt(x0) = stamp_to_symbol(i0)
+val-~Some_vt(x0) = symbol_of_stamp(i0)
 val () = println!("x0(ADD) = ", x0)
 //
 val i0 = SUB_symbol.stamp()
-val-~Some_vt(x0) = stamp_to_symbol(i0)
+val-~Some_vt(x0) = symbol_of_stamp(i0)
 val () = println!("x0(SUB) = ", x0)
 //
 val i0 = MUL_symbol.stamp()
-val-~Some_vt(x0) = stamp_to_symbol(i0)
+val-~Some_vt(x0) = symbol_of_stamp(i0)
 val () = println!("x0(MUL) = ", x0)
 //
 val i0 = DIV_symbol.stamp()
-val-~Some_vt(x0) = stamp_to_symbol(i0)
+val-~Some_vt(x0) = symbol_of_stamp(i0)
 val () = println!("x0(DIV) = ", x0)
 //
 (* ****** ****** *)
