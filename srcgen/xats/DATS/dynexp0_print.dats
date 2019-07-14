@@ -1017,8 +1017,9 @@ fprint_abstdf0
   (out, x0) =
 (
 case+ x0 of
-| ABSTDF0nil() =>
-  fprint(out, "ABSTDF0nil()")
+| ABSTDF0some() =>
+  fprint
+  (out, "ABSTDF0some()")
 | ABSTDF0lteq(tok, s0e) =>
   fprint!
   (out, "ABSTDF0lteq(", tok, "; ", s0e, ")")

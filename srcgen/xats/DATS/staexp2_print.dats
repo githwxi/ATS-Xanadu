@@ -301,6 +301,35 @@ end // end of [local]
 *)
 
 (* ****** ****** *)
+//
+implement
+print_abstdf2
+  (x0) =
+(
+fprint_abstdf2(stdout_ref, x0)
+)
+implement
+prerr_abstdf2
+  (x0) =
+(
+fprint_abstdf2(stderr_ref, x0)
+)
+implement
+fprint_abstdf2
+  (out, x0) =
+(
+case+ x0 of
+| ABSTDF2none() =>
+  fprint!(out, "ABSTDF2none(", ")")
+| ABSTDF2some() =>
+  fprint!(out, "ABSTDF2some(", ")")
+| ABSTDF2lteq(s2e) =>
+  fprint!(out, "ABSTDF2lteq(", s2e, ")")
+| ABSTDF2eqeq(s2e) =>
+  fprint!(out, "ABSTDF2eqeq(", s2e, ")")
+)
+//
+(* ****** ****** *)
 
 implement
 print_effs2expopt

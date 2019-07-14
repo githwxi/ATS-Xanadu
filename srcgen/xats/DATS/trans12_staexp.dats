@@ -43,9 +43,19 @@ UN = "prelude/SATS/unsafe.sats"
 #staload
 SYM = "./../SATS/symbol.sats"
 //
+macdef
+LIN_sym = $SYM.LIN_symbol
 //
-overload
-= with $SYM.eq_symbol_symbol
+macdef
+CLO_sym = $SYM.CLO_symbol
+macdef
+CLOFLT_sym = $SYM.CLOFLT_symbol
+macdef
+CLOPTR_sym = $SYM.CLOPTR_symbol
+macdef
+CLOREF_sym = $SYM.CLOREF_symbol
+//
+overload = with $SYM.eq_symbol_symbol
 //
 (* ****** ****** *)
 //
@@ -435,10 +445,108 @@ end // end of [trans12_stxt]
 
 (* ****** ****** *)
 //
+(*
+HX-2019-07-14:
+Should a warning
+be issued fro 'lincloref'?
+*)
+//
 implement
-s1exp_get_lin(s1e0) = 0
+s1exp_get_lin(s1e0) =
+let
+val-
+S1Eimp(s1es) = s1e0.node()
+in
+//
+auxlst(s1es) where
+{
+fun
+islin
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  (sym = LIN_sym)
+| _ (*non-S1Eid*) => false
+)
+fun
+auxlst
+( xs
+: s1explst): int =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(x0, xs) =>
+  ifcase
+  | islin(x0) => 1
+  | _ (* else *) => auxlst(xs)
+)
+}
+//
+end // end of [s1exp_get_lin]
+
 implement
-s1exp_get_fc2(s1e0) = FC2fun()
+s1exp_get_fc2(s1e0) =
+let
+val-
+S1Eimp(s1es) = s1e0.node()
+in
+//
+auxlst(s1es) where
+{
+fun
+cref
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  (sym = CLOREF_sym)
+| _ (*non-S1Eid*) => false
+)
+fun
+cptr
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  (sym = CLOPTR_sym)
+| _ (*non-S1Eid*) => false
+)
+fun
+cflt
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  if
+  (sym = CLO_sym)
+  then true
+  else (sym = CLOFLT_sym)
+| _ (* non-S1Eid *) => false
+)
+fun
+auxlst
+( xs
+: s1explst): funclo2 =
+(
+case+ xs of
+| list_nil() => FC2fun()
+| list_cons(x0, xs) =>
+  ifcase
+  | cref(x0) => FC2cloref
+  | cptr(x0) => FC2cloptr
+  | cflt(x0) => FC2cloflt
+  | _ (* else *) => auxlst(xs)
+)
+}
+//
+end // end of [s1exp_get_fc2]
+//
+(* ****** ****** *)
 //
 (*
 implement
@@ -1281,7 +1389,7 @@ val-
 S1Etuple
 (knd, s1es) = s1e0.node()
 //
-val s2es = trans12_sexplst(s1es)
+val s2es = trans12_sexplst_ci(s1es)
 //
 in
   s2exp_tuple1(knd, s2es)
@@ -1296,8 +1404,8 @@ val-
 S1Etuple
 ( knd, xs1, xs2) = s1e0.node()
 //
-val s2es1 = trans12_sexplst(xs1)
-val s2es2 = trans12_sexplst(xs2)
+val s2es1 = trans12_sexplst_cp(xs1)
+val s2es2 = trans12_sexplst_ct(xs2)
 //
 in
   s2exp_tuple2(knd, s2es1, s2es2)

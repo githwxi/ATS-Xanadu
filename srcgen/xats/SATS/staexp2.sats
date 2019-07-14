@@ -940,6 +940,26 @@ overload fprint with fprint_labs2exp
 //
 (* ****** ****** *)
 //
+datatype
+abstdf2 =
+| ABSTDF2none of () // nonabs
+| ABSTDF2some of () // unspecified
+| ABSTDF2lteq of s2exp // erasure
+| ABSTDF2eqeq of s2exp // definition
+//
+fun
+print_abstdf2: print_type(abstdf2)
+fun
+prerr_abstdf2: prerr_type(abstdf2)
+fun
+fprint_abstdf2: fprint_type(abstdf2)
+//
+overload print with print_abstdf2
+overload prerr with prerr_abstdf2
+overload fprint with fprint_abstdf2
+//
+(* ****** ****** *)
+//
 // HX-2019-02-18:
 // There is no longer plan
 // to support effect-tracking!!!
@@ -1121,6 +1141,15 @@ s2cst_get_def(s2cst): s2expnul
 fun
 stamp_s2cst_def
 (s2c: s2cst, def: s2expnul): void
+//
+(* ****** ****** *)
+//
+fun
+s2cst_get_abs
+(s2c: s2cst): abstdf2
+fun
+stamp_s2cst_abs
+(s2c: s2cst, abs: abstdf2): void
 //
 (* ****** ****** *)
 

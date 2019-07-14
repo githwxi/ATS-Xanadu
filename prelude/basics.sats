@@ -307,6 +307,13 @@ typedef
 nintlte(n:int) = [i:nat | i <= n] sint(i)
 
 (* ****** ****** *)
+
+datatype
+unit = unit of ()
+datavtype
+unit_vt = unit_vt of ()
+
+(* ****** ****** *)
 //
 datatype
 optn_t0_i0_x0

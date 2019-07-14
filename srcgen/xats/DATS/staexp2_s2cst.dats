@@ -49,6 +49,10 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
+
+#define NS2CST 1*1024
+
+(* ****** ****** *)
 //
 implement
 s2cstnul_none
@@ -112,10 +116,8 @@ typedef itm = s2cst
 vtypedef dynarray = dynarray(itm)
 //
 val
-theCap = 1*1024
-val
 theDynarr = 
-dynarray_make_nil<itm>(i2sz(theCap))
+dynarray_make_nil<itm>(i2sz(NS2CST))
 val
 theDynarr = $UN.castvwtp0{ptr}(theDynarr)
 //
@@ -175,12 +177,15 @@ $rec{
 //
 } (* end-of-val *)
 val
+abs = ABSTDF2none()
+val
 def =
 s2expnul_none((*void*))
 in
 s2c where
 {
 val () = stamp_s2cst(s2c)
+val () = stamp_s2cst_abs(s2c, abs)
 val () = stamp_s2cst_def(s2c, def)
 }
 end
@@ -223,10 +228,8 @@ typedef itm = s2expnul
 vtypedef dynarray = dynarray(itm)
 //
 val
-theCap = 1*1024
-val
 theDynarr = 
-dynarray_make_nil<itm>(i2sz(theCap))
+dynarray_make_nil<itm>(i2sz(NS2CST))
 val
 theDynarr = $UN.castvwtp0{ptr}(theDynarr)
 //
@@ -271,6 +274,68 @@ stamp_s2cst_def
 in
   // nothing
 end // end of [stamp_s2cst_def]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+#staload
+"libats/SATS/dynarray.sats"
+#staload _ =
+"libats/DATS/dynarray.dats"
+//
+typedef itm = abstdf2
+vtypedef dynarray = dynarray(itm)
+//
+val
+theDynarr = 
+dynarray_make_nil<itm>(i2sz(NS2CST))
+val
+theDynarr = $UN.castvwtp0{ptr}(theDynarr)
+//
+in (* in-of-local *)
+
+implement
+s2cst_get_abs
+  (s2c) = let
+  val s0 =
+  s2c.stamp()
+  val i0 =
+  stamp2uint(s0)
+  val i0 =
+  u2sz(g1ofg0(i0))
+  val A0 =
+  $UN.castvwtp0{dynarray}(theDynarr)
+  val cp = dynarray_getref_at(A0, i0)
+  prval ((*void*)) = $UN.cast2void(A0)
+in
+  if
+  isneqz(cp)
+  then $UN.cptr_get(cp) else ABSTDF2none()
+end // end of [s2cst_get_abs]
+
+(* ****** ****** *)
+
+implement
+stamp_s2cst_abs
+  (s2c, abs) = let
+  val s0 =
+  s2c.stamp()
+  val i0 =
+  stamp2uint(s0)
+  val i0 =
+  u2sz(g1ofg0(i0))
+  val A0 =
+  $UN.castvwtp0{dynarray}(theDynarr)
+  val-
+  ~None_vt() =
+  dynarray_insert_at_opt(A0, i0, abs)
+  prval ((*void*)) = $UN.cast2void(A0)
+in
+  // nothing
+end // end of [stamp_s2cst_abs]
 
 end // end of [local]
 
