@@ -13,6 +13,7 @@ XATSOPT=$(XATSHOME)/bin/xatsopt
 ######
 
 all::
+regress::
 
 ######
 #
