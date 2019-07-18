@@ -734,6 +734,29 @@ end (* end of [auxid_s2cs] *)
 (* ****** ****** *)
 
 fun
+iscbv
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.CBV_symbol
+| _(*non-S1Eid*) => false
+)
+fun
+iscbr
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.CBR_symbol
+| _(*non-S1Eid*) => false
+)
+
+fun
 isextp
 ( s1e
 : s1exp): bool =
@@ -762,6 +785,10 @@ s1e1.node() of
 | S1Eforall _ => auxapp1_uni_(s1e0)
 | S1Eexists _ => auxapp1_exi_(s1e0)
 //
+| _ when
+    iscbv(s1e1) => auxapp1_cbv_(s1e0)
+| _ when
+    iscbr(s1e1) => auxapp1_cbr_(s1e0)
 | _ when
     isextp(s1e1) => auxapp1_extp_(s1e0)
 //
@@ -1025,6 +1052,51 @@ end // end of [auxapp1_exi_]
 (* ****** ****** *)
 
 and
+auxapp1_cbv_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+in
+s2exp_arg
+(0(*cbv*), trans12_sexp_ci(s1e2))
+end // [auxapp1_cbv_]
+and
+auxapp1_cbr_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+in
+s2exp_arg
+(1(*cbr*), trans12_sexp_ci(s1e2))
+end // [auxapp1_cbr_]
+
+(* ****** ****** *)
+
+and
+auxapp1_atx_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+in
+s2exp_arg
+(1(*cbr*), trans12_sexp_ci(s1e2))
+end // [auxapp1_atx_]
+
+(* ****** ****** *)
+//
+and
 auxapp1_extp_
 ( s1e0
 : s1exp): s2exp = let
@@ -1079,6 +1151,17 @@ end // end of [auxapp1_extp_]
 
 (* ****** ****** *)
 
+fun
+isatx
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.AXT_symbol
+| _(*non-S1Eid*) => false
+)
 fun
 isarrw
 ( s1e
@@ -1237,11 +1320,24 @@ s1e1.node() of
     s2exp_fun_full(fc2, lin, npf, s2es, s2e3)
   end
 | _(*non-S1Eimp*) =>
-  let
+  (
+  ifcase
+  | isatx(s1e1) =>
+    let
+    val s2e2 =
+    trans12_sexp_ci(s1e2)
+    val s2e3 =
+    trans12_sexp_ck(s1e3, s2e2.sort())
+    in
+      s2exp_atx(s2e2, s2e3)
+    end
+  | _(* else *) =>
+    let
     val
     s2e1 =
     trans12_sexp(s1e1) in auxapp2_1_(s1e0, s2e1)
-  end // end of [else]
+    end // end of [let]
+  )
 )
 //
 end // end of [auxapp2_0_]

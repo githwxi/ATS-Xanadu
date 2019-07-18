@@ -1,10 +1,16 @@
+
+fun
+foo(x: &int(0) >> int(1)): int
+
 ////
 (* ****** ****** *)
 //
 (*
+#prefix & of 00 (* static *)
 #prefix ! of 00 (* static *)
 *)
 //
+#prefix & of 99 (* dynamic *)
 #prefix ! of 99 (* dynamic *)
 //
 (* ****** ****** *)

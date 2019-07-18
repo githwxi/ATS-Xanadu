@@ -772,12 +772,24 @@ declmodopt =
     (token(*COLON*), token, i0dntlst(*ids*), token)
   // end of [DECLMODlist]
 //
+(* ****** ****** *)
+//
 fun
-print_declmodopt: print_type(declmodopt)
+declmodopt_rec(declmodopt): int
 fun
-prerr_declmodopt: prerr_type(declmodopt)
+declmodopt_tlrec(declmodopt): int
+//
+(* ****** ****** *)
+//
 fun
-fprint_declmodopt: fprint_type(declmodopt)
+print_declmodopt:
+print_type(declmodopt)
+fun
+prerr_declmodopt:
+prerr_type(declmodopt)
+fun
+fprint_declmodopt:
+fprint_type(declmodopt)
 //
 overload print with print_declmodopt
 overload prerr with prerr_declmodopt

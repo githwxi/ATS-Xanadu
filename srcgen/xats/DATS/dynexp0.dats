@@ -563,4 +563,65 @@ case+ x0 of
 
 (* ****** ****** *)
 
+implement
+declmodopt_rec
+  (mopt) =
+(
+case+ mopt of
+| DECLMODnone() => 0 
+| DECLMODsing
+  (_, id) => auxid(id)
+| DECLMODlist
+  (_, _, ids, _) => auxids(0, ids)
+) where
+{
+fun
+auxid(id: i0dnt): int =
+(
+case+
+id.node() of
+| I0DNTnone(_) => 0
+| I0DNTsome(tok) => auxtok(tok)
+)
+and
+auxtok
+(tok: token): int =
+(
+case+
+tok.node() of
+| T_IDENT_alp(nam) =>
+  (
+  ifcase
+//
+  | nam = "rec" => 1
+//
+  | nam = "nrc" => ~1
+  | nam = "nrec" => ~1
+  | nam = "nonrec" => ~1
+//
+  | _ (* else *) => 0
+  )
+| _(* non-ident *) => 0
+
+)
+and
+auxids
+(k0: int, ids: i0dntlst): int =
+(
+case+ ids of
+| list_nil() => k0
+| list_cons(id, ids) =>
+  (
+    auxids(k0, ids)
+  ) where
+  {
+    val k1 = auxid(id)
+    val k0 =
+    (if k1 = 0 then k0 else k1): int
+  }
+)
+} (* end of [declmodopt_rec] *)
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp0.dats] *)

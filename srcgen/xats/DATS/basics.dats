@@ -185,6 +185,23 @@ case+ vlk of
 (* ****** ****** *)
 
 implement
+funkind_isrec
+  (fnk) =
+(
+case+ fnk of
+| FNKfnx() => true
+| FNKfn1() => true
+| FNKfun() => true
+//
+| FNKprfn1() => true
+| FNKprfun() => true
+//
+| _(*rest-of-fnk*) => false
+)
+
+(* ****** ****** *)
+
+implement
 fprint_funkind
   (out, fnk) =
 (

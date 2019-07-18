@@ -474,17 +474,23 @@ s2e0.node() of
   ( out
   , "S2Elam(", s2vs, "; ", body, ")")
 //
+| S2Etop(knd, s2e) =>
+  fprint!
+  (out, "S2Etop(", knd, "; ", s2e, ")")
+//
+| S2Earg(knd, s2e) =>
+  fprint!
+  (out, "S2Earg(", knd, "; ", s2e, ")")
+| S2Eatx(bef, aft) =>
+  fprint!
+  (out, "S2Eatx(", bef, "; ", aft, ")")
+//
 | S2Efun
   (fc2, lin, npf, arg, res) =>
   fprint!
   ( out, "S2Efun("
   , fc2, "; ", lin, "; ", npf, "; ", arg, "; ", res, ")"
   )
-//
-| S2Etop(knd, s2e) =>
-  fprint!
-  ( out
-  , "S2Etop(", knd, "; ", s2e, ")")
 //
 | S2Ecimp(loc, s2e) =>
   fprint!

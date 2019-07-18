@@ -94,6 +94,13 @@ t2xread_abstdf2: t2xreader(abstdf2)
 (* ****** ****** *)
 //
 fun{}
+t2xread_d2cst: t2xreader(d2cst)
+fun{}
+t2xread_d2cstlst: t2xreader(d2cstlst)
+//
+(* ****** ****** *)
+//
+fun{}
 t2xread_d2exp: t2xreader(d2exp)
 fun{}
 t2xread_d2explst: t2xreader(d2explst)

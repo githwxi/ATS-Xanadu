@@ -191,6 +191,9 @@ funkind =
 // end of [funkind]
 //
 fun
+funkind_isrec(funkind): bool
+//
+fun
 fprint_funkind:fprint_type(funkind)
 overload fprint with fprint_funkind
 //

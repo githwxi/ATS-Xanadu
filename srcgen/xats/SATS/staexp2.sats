@@ -677,6 +677,15 @@ s2exp_node =
 | S2Elam of
   (s2varlst, s2exp) // abstraction
 //
+| S2Etop of // HX: knd: 0/1: 
+  (int(*knd*), s2exp) // top/typization
+  // end of [S2Etop]
+//
+| S2Earg of // HX: knd: 0/1: 
+  (int(*knd*), s2exp) // call-by-val/ref
+| S2Eatx of
+  (s2exp(*bef*), s2exp(*aft*)) // trans
+//
 (*
 | S2Efun of
   (int(*npf*), s2explst, s2exp)
@@ -687,10 +696,6 @@ s2exp_node =
   , int(*lin*)
   , int(*npf*), s2explst(*arg*), s2exp(*res*)
   ) (* end of S2Efun *)
-//
-| S2Etop of // HX: knd: 0/1: 
-  (int(*knd*), s2exp) // topization/typization
-  // end of [S2Etop]
 //
 | S2Ecimp of // HX: for storing
   (loc_t, s2exp) // sort-checking error
@@ -777,6 +782,13 @@ s2exp_app2
 , s2a1: s2exp, s2a2: s2exp): s2exp
 //
 fun
+s2exp_arg
+(knd: int, s2e0: s2exp): s2exp
+fun
+s2exp_atx
+(bef: s2exp, aft: s2exp): s2exp
+//
+fun
 s2exp_fun_nil
 ( npf: int
 , arg: s2explst, res: s2exp): s2exp
@@ -789,7 +801,8 @@ s2exp_fun_full
 ( fc2
 : funclo2
 , lin: int
-, npf: int, arg: s2explst, res: s2exp): s2exp
+, npf: int
+, arg: s2explst, res: s2exp): s2exp
 //
 fun
 s2exp_lam
