@@ -57,6 +57,8 @@ FP0 = "./../SATS/filpath.sats"
   fpath_make = $FP0.filpath_make
 //
 #staload
+GLO = "./../SATS/global.sats"
+#staload
 FS0 = "./../SATS/filsrch.sats"
 //
 (* ****** ****** *)
@@ -141,6 +143,8 @@ end // end of [local]
 #dynload "./label0.dats"
 //
 #dynload "./fixity.dats"
+//
+#dynload "./global.dats"
 //
 #dynload "./xerrory.dats"
 //
@@ -1281,7 +1285,7 @@ xatsopt_main0
 //
 val
 XATSHOME =
-"/home/hwxi/Research/ATS-Xanadu"
+$GLO.the_XATSHOME_get((*void*))
 //
 val () = 
 $FP0.the_includes_push(XATSHOME)
