@@ -38,6 +38,7 @@ symmap.sats \
 symenv.sats \
 label0.sats \
 fixity.sats \
+global.sats \
 xerrory.sats \
 filpath.sats \
 filsrch.sats \
@@ -69,6 +70,7 @@ symmap.dats \
 symenv.dats \
 label0.dats \
 fixity.dats \
+global.dats \
 xerrory.dats \
 filpath.dats \
 filsrch.dats \

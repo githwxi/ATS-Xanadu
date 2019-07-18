@@ -153,6 +153,39 @@ xatsopt_getcwd_gc
 %}
 
 (* ****** ****** *)
+//
+implement
+xatsopt_getenv(key) =
+(
+$extfcall(ptr, "getenv", key)
+)
+//
+(* ****** ****** *)
+
+%{$
+//
+extern
+atstype_strptr
+xatsopt_getenv_gc
+(
+atstype_string key
+) {
+  int len;
+  char *val;
+  char *res;
+//
+  val = xatsopt_getenv(key);
+//
+  if(!val) { return (char*)0 ; }
+//
+  len = strlen(val);
+  res = atspre_malloc_gc(len+1) ;
+  strcpy(res, val) ; return res ;
+//
+} /* end of [xatsopt_getcwd_gc] */
+%}
+
+(* ****** ****** *)
 
 %{$
 //
