@@ -60,6 +60,7 @@ NMS = "./../SATS/nmspace.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 
 (* ****** ****** *)
 
@@ -375,7 +376,7 @@ d1p0.node() of
   ) where
   {
     val d2p1 = trans12_dpat(d1p1)
-    val s2e2 = trans12_sexp(s1e2)
+    val s2e2 = trans12_sexp_ci(s1e2)
   } (* end of [D1Panno] *)
 //
 | _(*rest-of-d1pat*) => d2pat_none1(d1p0)
@@ -1201,7 +1202,7 @@ d1e0.node() of
   ) where
   {
     val d2e1 = trans12_dexp(d1e1)
-    val s2e2 = trans12_sexp(s1e2)
+    val s2e2 = trans12_sexp_ci(s1e2)
   } (* end of [D1Eanno] *)
 //
 | _(*rest-of-d1exp*) => d2exp_none1(d1e0)
@@ -2114,12 +2115,6 @@ list_map$fopr<v1ardecl><v2ardecl>(x) = auxv1d0(x)
 fun
 aux_fundecl
 ( d1c0
-: d1ecl): d2ecl =
-aux_fundecl_rec(d1c0)
-
-and
-aux_fundecl_rec
-( d1c0
 : d1ecl): d2ecl = let
 //
 val
@@ -2130,6 +2125,24 @@ D1Cfundecl
 , mopt
 , tqas
 , f1ds) = d1c0.node()
+//
+val
+isr =
+declmodopt_rec(mopt)
+val
+isr =
+(
+ifcase
+| isr > 0 => true
+| isr < 0 => false
+| _(* else *) =>
+  let
+  val-
+  T_FUN(fnk) = knd.node()
+  in
+    funkind_isrec(fnk)
+  end
+) : bool // endval
 //
 val
 tqas =
@@ -2161,10 +2174,15 @@ end // end of [local]
 val d2vs = auxd2vs(f1ds)
 //
 val ((*void*)) =
-  the_dexpenv_add_varlst(d2vs)
+if isr then
+the_dexpenv_add_varlst(d2vs)
 //
 val f2ds =
   auxf1ds(d1c0, d2vs, f1ds)
+//
+val ((*void*)) =
+if ~isr then
+the_dexpenv_add_varlst(d2vs)
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
@@ -2844,7 +2862,8 @@ loc0 = d1c0.loc()
 val-
 D1Cdynconst
 ( knd
-, tqas, d1cs) = d1c0.node()
+, tqas
+, d1cs) = d1c0.node()
 //
 val
 tqas =
@@ -2917,12 +2936,15 @@ auxsid
 : token): s2exp =
 let
 //
+val sid =
+sexpid_sym(tok0)
 val s1e0 =
 s1exp_make_node
-( tok0.loc()
-, S1Eid(sexpid_sym(tok0)))
+(
+tok0.loc(), S1Eid(sid)
+)
 in
-  trans12_sexp(s1e0)
+  trans12_sexp_ci(s1e0)
 end // end of [auxsid]
 
 and
@@ -2984,7 +3006,7 @@ let
     : s2varlst_vt =
     list_vt_nil(*void*)
   val ((*void*)) =
-    trans12_squalst(s1qs, s2vs_, s2ps_)
+  trans12_squalst(s1qs, s2vs_, s2ps_)
   val s2vs = list_vt2t(s2vs_)
   val s2ps = list_vt2t(s2ps_)
   val s2e0 = auxarg1(d1c0, nfc0+0, d1as, res0)
@@ -3585,7 +3607,7 @@ list_map$fopr<d1atcon><d2con>
 implement
 trans12_atyp(x0) =
 (
-  trans12_sexp(s1e)
+  trans12_sexp_ci(s1e)
 ) where
 {
 //

@@ -501,24 +501,25 @@ s2exp_cprf
 //
 (*
 val () =
-println!("s2exp_cimp: s2e = ", s2e)
+println!("s2exp_cprf: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_view
+val s2t = the_sort2_prop
 //
 in
   s2exp_make_node(s2t, S2Ecprf(loc, s2e))
 end // end of [s2exp_cprf]
+//
 implement
 s2exp_ctcd
 (loc, s2e) = let
 //
 (*
 val () =
-println!("s2exp_cimp: s2e = ", s2e)
+println!("s2exp_ctcd: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_vtype
+val s2t = the_sort2_type
 //
 in
   s2exp_make_node(s2t, S2Ectcd(loc, s2e))
@@ -533,7 +534,7 @@ val () =
 println!("s2exp_cimp: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_vtype
+val s2t = the_sort2_type
 //
 in
   s2exp_make_node(s2t, S2Ecimp(loc, s2e))
@@ -604,6 +605,29 @@ s2exp_app2
   s2exp_apps(loc0, s2f0, list_pair(s2a1, s2a2))
 )
 //
+(* ****** ****** *)
+
+implement
+s2exp_arg
+(knd, s2e) =
+(
+s2exp_make_node
+(s2t, S2Earg(knd, s2e))
+) where
+{
+  val s2t = s2e.sort((*void*))
+}
+implement
+s2exp_atx
+(bef, aft) =
+(
+s2exp_make_node
+(s2t, S2Eatx(bef, aft))
+) where
+{
+  val s2t = bef.sort((*void*))
+}
+
 (* ****** ****** *)
 //
 implement

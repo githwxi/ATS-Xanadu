@@ -61,6 +61,35 @@ UN = "prelude/SATS/unsafe.sats"
 _(*TMP*) = "./../DATS/t2xread_staexp.dats"
 
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_d2cst
+  (d2c0) = let
+//
+val
+loc0 = d2c0.loc((*void*))
+val
+s2e0 = d2cst_get_type(d2c0)
+//
+val () = t2xread_s2exp(s2e0)
+//
+in
+  // nothing
+end // end of [t2xread_d2exp]
+//
+implement
+{}(*tmp*)
+t2xread_d2cstlst(d2cs) =
+(
+list_foreach<d2cst>(d2cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d2cst><env>(d2c, env) = t2xread_d2cst<>(d2c)
+} (* end of [t2xread_d2cstlst] *)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
@@ -129,6 +158,17 @@ in
 case+
 d2c0.node() of
 //
+| D2Cstatic
+  (tok, d2c) =>
+  {
+    val () = t2xread_d2ecl<>(d2c)
+  }
+| D2Cextern
+  (tok, d2c) =>
+  {
+    val () = t2xread_d2ecl<>(d2c)
+  }
+//
 | D2Csexpdef(s2c, def) =>
   {
 (*
@@ -141,7 +181,7 @@ d2c0.node() of
     def = unsome(def)
 *)
 //
-    val () = t2xread_s2exp(def)
+    val () = t2xread_s2exp<>(def)
 //
 (*
     val () =
@@ -157,8 +197,9 @@ d2c0.node() of
 | D2Cabstype(s2c, df2) =>
   {
 //
-    val () = t2xread_abstdf2(df2)
+    val () = t2xread_abstdf2<>(df2)
 //
+(*
     val () =
     println!
     ("t2xread_d2ecl: D2Cabstype: s2c = ", s2c)
@@ -168,22 +209,34 @@ d2c0.node() of
     val () =
     println!
     ("t2xread_d2ecl: D2Cabstype: s2c.sort = ", s2c.sort())
+*)
 //
   }
 //
 | D2Cabsimpl
-  (knd, scs, s2e) =>
+  (knd, scs, def) =>
   {
 //
-    val () = t2xread_s2exp<>(s2e)
+    val () = t2xread_s2exp<>(def)
 //
+(*
     val () =
     println!
     ("t2xread_d2ecl: D2Cabsimpl: scs = ", scs)
     val () =
     println!
-    ("t2xread_d2ecl: D2Cabsimpl: def = ", s2e)
+    ("t2xread_d2ecl: D2Cabsimpl: def = ", def)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabsimpl: def.sort = ", def.sort())
+*)
 //
+  }
+//
+| D2Cdynconst
+  (knd, tqas, d2cs) =>
+  {
+    val () = t2xread_d2cstlst<>(d2cs)
   }
 //
 | _(* rest-of-d2ecl *) =>
@@ -222,10 +275,10 @@ implement
 t2xerr_add(xerr) = let
 //
 val
-xerrs = the_t2xerrlst_get()
+xerrs = the_t2xerrlst_get<>()
 //
 in
-  the_t2xerrlst_set(list_cons(xerr, xerrs))
+  the_t2xerrlst_set<>(list_cons(xerr, xerrs))
 end // end of [t2xerr_add]
 
 in (* in-of-local *)
@@ -251,7 +304,7 @@ end // end of [local]
 val () =
 t2xread_d2eclist<>(d2cs)
 val
-xerrs = the_t2xerrlst_get()
+xerrs = the_t2xerrlst_get<>()
 val
 nxerr = list_length<t2xerr>(xerrs)
 //

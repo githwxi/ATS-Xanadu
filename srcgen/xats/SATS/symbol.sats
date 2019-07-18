@@ -64,6 +64,12 @@ val BAR_symbol : symbol // symbol("|")
 val CLN_symbol : symbol // symbol(":")
 //
 (* ****** ****** *)
+
+val CBV_symbol : symbol // symbol("!")
+val CBR_symbol : symbol // symbol("&")
+val AXT_symbol : symbol // symbol(">>")
+
+(* ****** ****** *)
 //
 val ADD_symbol : symbol // SYMBOL("+")
 val SUB_symbol : symbol // SYMBOL("-")
