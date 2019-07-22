@@ -654,8 +654,8 @@ v1aldecl =
 V1ALDECL of @{
   loc= loc_t
 , pat= d1pat
-, teq= token
-, def= d1exp
+, teq= tokenopt
+, def= d1expopt
 , wtp= wths1expopt
 }
 //
@@ -716,8 +716,8 @@ F1UNDECL of @{
 , nam= token
 , arg= f1arglst
 , res= effs1expopt
-, teq= token
-, def= d1exp
+, teq= tokenopt
+, def= d1expopt
 , wtp= wths1expopt
 }
 //

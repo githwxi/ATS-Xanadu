@@ -1732,7 +1732,7 @@ teq = rcd.teq
 val
 pat = trans01_dpat(rcd.pat)
 val
-def = trans01_dexp(rcd.def)
+def = trans01_dexpopt(rcd.def)
 val
 wtp = trans01_wthsexpopt(rcd.wtp)
 //
@@ -1858,7 +1858,7 @@ val
 res = trans01_effsexpopt(rcd.res)
 //
 val
-def = trans01_dexp(rcd.def)
+def = trans01_dexpopt(rcd.def)
 val
 wtp = trans01_wthsexpopt(rcd.wtp)
 //

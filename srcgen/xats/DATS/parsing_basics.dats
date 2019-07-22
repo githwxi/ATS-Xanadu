@@ -339,6 +339,25 @@ end // end of [p_ENDLOCAL]
 (* ****** ****** *)
 
 implement
+popt_EQ
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_EQ() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_BAR *)
+  | _ (* non-BAR *) => None(*void*)
+end // end of [popt_EQ]
+
+(* ****** ****** *)
+
+implement
 popt_IN
   (buf, err) = let
 //
