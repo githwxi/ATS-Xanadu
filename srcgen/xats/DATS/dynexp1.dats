@@ -516,13 +516,11 @@ F1UNDECL(rcd) = f1d0
 in
 //
 (
-case+
-d1e0.node() of
-| D1Enone() => 0
-| _ (*rest-of-d1exp*) => 1
+case+ dopt of
+| None() => 0 | Some(d1e) => 1
 ) where
 {
-  val d1e0 = rcd.def
+  val dopt = rcd.def
 }
 //
 end // end of [f1undecl_classify]
@@ -539,13 +537,11 @@ V1ALDECL(rcd) = v1d0
 in
 //
 (
-case+
-d1e0.node() of
-| D1Enone() => 0
-| _ (*rest-of-d1exp*) => 1
+case+ dopt of
+| None() => 0 | Some(d1e) => 1
 ) where
 {
-  val d1e0 = rcd.def
+  val dopt = rcd.def
 }
 //
 end // end of [v1aldecl_classify]

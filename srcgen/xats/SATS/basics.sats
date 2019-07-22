@@ -188,8 +188,11 @@ funkind =
 | FNKpraxi // proof axiom
 //
 | FNKcastfn // casting fun
+//
 // end of [funkind]
 //
+fun
+funkind_isprf(funkind): bool
 fun
 funkind_isrec(funkind): bool
 //

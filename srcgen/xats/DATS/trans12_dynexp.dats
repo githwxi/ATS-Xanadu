@@ -1996,7 +1996,7 @@ V1ALDECL(rcd) = v1d0
 //
 val loc = rcd.loc
 val pat = trans12_dpat(rcd.pat)
-val def = trans12_dexp(rcd.def)
+val def = trans12_dexpopt(rcd.def)
 val wtp =
 (
 case+ rcd.wtp of
@@ -2236,7 +2236,8 @@ trans12_farglst(rcd.arg)
 val res =
 trans12_effsexpopt(rcd.res)
 //
-val def = trans12_dexp(rcd.def)
+val def =
+trans12_dexpopt(rcd.def)
 //
 val
 ((*void*)) =

@@ -763,7 +763,7 @@ v2aldecl =
 V2ALDECL of @{
   loc= loc_t
 , pat= d2pat
-, def= d2exp
+, def= d2expopt
 , wtp= s2expopt
 }
 //
@@ -830,7 +830,7 @@ F2UNDECL of @{
 , nam= d2var
 , arg= f2arglst
 , res= effs2expopt
-, def= d2exp, wtp= s2expopt
+, def= d2expopt, wtp= s2expopt
 }
 //
 typedef

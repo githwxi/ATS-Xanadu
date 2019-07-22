@@ -841,8 +841,8 @@ v0aldecl =
 V0ALDECL of @{
   loc= loc_t
 , pat= d0pat
-, teq= token
-, def= d0exp
+, teq= tokenopt
+, def= d0expopt
 , wtp= wths0expopt
 }
 //
@@ -909,8 +909,8 @@ F0UNDECL of @{
 , nam= d0pid
 , arg= f0arglst
 , res= effs0expopt
-, teq= token
-, def= d0exp
+, teq= tokenopt
+, def= d0expopt
 , wtp= wths0expopt
 } (* f0undecl *)
 //

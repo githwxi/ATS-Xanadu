@@ -817,4 +817,9 @@ trans12_tiarglst(tias: ti1arglst): ti2arglst
 //
 (* ****** ****** *)
 
+fun
+d2exp_is_fundecl(d2e0: d2exp): bool
+
+(* ****** ****** *)
+
 (* end of [xats_trans12.sats] *)

@@ -183,7 +183,22 @@ case+ vlk of
 ) (* end of [fprint_valkind] *)
 
 (* ****** ****** *)
-
+//
+implement
+funkind_isprf
+  (fnk) =
+(
+case+ fnk of
+//
+| FNKprfn0() => true
+| FNKprfn1() => true
+| FNKprfun() => true
+//
+| FNKpraxi() => true
+//
+| _(*rest-of-fnk*) => false
+)
+//
 implement
 funkind_isrec
   (fnk) =
@@ -198,7 +213,7 @@ case+ fnk of
 //
 | _(*rest-of-fnk*) => false
 )
-
+//
 (* ****** ****** *)
 
 implement
