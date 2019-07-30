@@ -148,7 +148,8 @@ end // end of [local]
 local
 
 absimpl
-d2cst_tbox = $rec{
+d2cst_tbox =
+$rec{
 //
   d2cst_loc= loc_t // loc
 , d2cst_sym= sym_t // name

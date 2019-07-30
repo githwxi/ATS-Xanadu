@@ -947,6 +947,12 @@ overload fprint with fprint_wd1eclseq
 (* ****** ****** *)
 //
 (*
+//
+// HX-2019-07-22:
+// Should this be done
+// at level-2?
+//
+(*
 // HX-2019-01-15:
 // kind=0: interface only
 // kind=1: interface+definition
@@ -956,6 +962,8 @@ f1undecl_classify(f1d0: f1undecl): int
 //
 fun
 v1aldecl_classify(v1d0: v1aldecl): int
+//
+*)
 //
 (* ****** ****** *)
 
