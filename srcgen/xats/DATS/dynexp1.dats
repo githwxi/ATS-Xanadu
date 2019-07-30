@@ -506,6 +506,7 @@ end // end of [d1cstdecl_get_loc]
 
 (* ****** ****** *)
 
+(*
 implement
 f1undecl_classify
   (f1d0) = let
@@ -525,8 +526,6 @@ case+ dopt of
 //
 end // end of [f1undecl_classify]
 
-(* ****** ****** *)
-
 implement
 v1aldecl_classify
   (v1d0) = let
@@ -545,6 +544,7 @@ case+ dopt of
 }
 //
 end // end of [v1aldecl_classify]
+*)
 
 (* ****** ****** *)
 

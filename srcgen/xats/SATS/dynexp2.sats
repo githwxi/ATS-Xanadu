@@ -183,6 +183,9 @@ d2con_make_idtp
 fun
 d2cst_make_idtp
 (id: token, s2e: s2exp): d2cst
+fun
+d2cst_make_dvar
+(d2v: d2var, s2e: s2exp): d2cst
 //
 (* ****** ****** *)
 //
@@ -840,8 +843,11 @@ f2undeclist = List0(f2undecl)
 //
 fun
 f2undecl_get_loc(f2undecl): loc_t
+fun
+f2undecl_get_type(f2undecl): s2exp
 //
 overload .loc with f2undecl_get_loc
+overload .type with f2undecl_get_type
 //
 (* ****** ****** *)
 //
