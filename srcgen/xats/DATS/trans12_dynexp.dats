@@ -1270,7 +1270,7 @@ val s2tx =
 //
 in
   the_sortenv_add(tid, s2tx);
-  d2ecl_make_node(loc0, D2Cabssort(d1c0))
+  d2ecl_make_node(loc0, D2Cabssort(tid))
 end // end of [aux_abssort]
 
 (* ****** ****** *)
@@ -1343,7 +1343,7 @@ println!
 // *)
 //
 in
-  d2ecl_make_node(loc0, D2Cstacst0(d1c0))
+  d2ecl_make_node(loc0, D2Cstacst0(s2c0, s2t0))
 end // end of [aux_stacst0]
 
 (* ****** ****** *)
@@ -1366,13 +1366,15 @@ in (* in-of-let *)
 //
 case+
 def0.node() of
+//
 | S1RTDEFsort(s1t) =>
   let
     val s2tx = trans12_stxt(s1t)
   in
     the_sortenv_add(sym, s2tx);
-    d2ecl_make_node(loc0, D2Csortdef(d1c0))
+    d2ecl_make_node(loc0, D2Csortdef(sym, s2tx))
   end
+//
 | S1RTDEFsbst(s1a, s1ps) =>
   (
   case+ s1a.node() of
@@ -1394,7 +1396,9 @@ def0.node() of
         case+ tx0 of
         | S2TXTsrt(s2t) => s2t
         | S2TXTsub(s2v, _) => s2v.sort()
-        | S2TXTerr((*void*)) => S2Tnone0()
+(*
+        | S2TXTerr _(*loc*) => S2Tnone0()
+*)
       ) : sort2 // end of [val]
 //
       val id0 =
@@ -1424,7 +1428,9 @@ def0.node() of
             s2explst_revar(s2ps, s2v, s2v1)
             val s2ps2 = trans12_sexplst(s1ps)
           }
-        | S2TXTerr((*void*)) => list_nil(*void*)
+(*
+        | S2TXTerr _(*loc*) => list_nil(*void*)
+*)
       ) : s2explst // end of [val]
 //
       val ((*void*)) =
@@ -1438,7 +1444,7 @@ def0.node() of
         S2TXTsub(s2v1, s2ps1)
       in
         the_sortenv_add(sym, s2tx);
-        d2ecl_make_node(loc0, D2Csortdef(d1c0))
+        d2ecl_make_node(loc0, D2Csortdef(sym, s2tx))
       end
     end
   ) (* end of [S1RTDEFsubset] *)
@@ -2173,16 +2179,14 @@ end // end of [local]
 //
 val d2vs = auxd2vs(f1ds)
 //
-val ((*void*)) =
-if isr then
-the_dexpenv_add_varlst(d2vs)
+val d2cs =
+auxd2cs_rec(isr, d2vs, f1ds)
 //
 val f2ds =
   auxf1ds(d1c0, d2vs, f1ds)
 //
 val ((*void*)) =
-if ~isr then
-the_dexpenv_add_varlst(d2vs)
+auxd2cs_nrc(isr, d2vs, f1ds)
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
@@ -2282,6 +2286,103 @@ case+ d2vs of
     val f2ds =
     auxf1ds(d1c0, d2vs, f1ds)
   }
+)
+//
+fun
+ishdr
+( f1d0
+: f1undecl): bool =
+let
+val+
+F1UNDECL(rcd) = f1d0
+in
+  case+ rcd.def of
+  | None() => true | Some(d1e) => false
+end
+//
+fun
+auxd2cs_rec
+( isr: bool
+, d2vs: d2varlst
+, f1ds: f1undeclist
+) : List0(d2cstopt) =
+(
+case+ d2vs of
+| list_nil() =>
+  list_nil()
+| list_cons(d2v0, d2vs) =>
+  let
+    val-
+    list_cons
+    (f1d0, f1ds) = f1ds
+  in
+    if
+    ishdr(f1d0)
+    then
+    let
+      val
+      d2c0 =
+      d2cst_make_dvar(d2v0)
+    in
+      let
+      val () =
+      the_dexpenv_add_cst(d2c0)
+      in
+        list_cons
+        ( Some(d2c0)
+        , auxd2cs_rec(isr, d2vs, f1ds)
+        )
+      end
+    end
+    else
+    (
+      let
+      val () =
+      if
+      isr
+      then the_dexpenv_add_var(d2v0)
+      in
+        list_cons
+        ( None(*void*)
+        , auxd2cs_rec(isr, d2vs, f1ds))
+      end
+    ) (* end of [if] *)
+  end
+)
+//
+fun
+auxd2cs_nrc
+( isr: bool
+, d2vs: d2varlst
+, f1ds: f1undeclist
+) : void =
+(
+case+ d2vs of
+| list_nil() => ()
+| list_cons(d2v0, d2vs) =>
+  let
+    val-
+    list_cons
+    (f1d0, f1ds) = f1ds
+  in
+    if
+    ishdr(f1d0)
+    then
+    (
+      auxd2cs_nrc(isr, d2vs, f1ds)
+    )
+    else
+    (
+      let
+      val () =
+      if isr then
+        the_dexpenv_add_var(d2v0)
+      // end of [if]
+      in
+        auxd2cs_nrc(isr, d2vs, f1ds)
+      end
+    ) (* end of [if] *)
+  end
 )
 //
 } (* end of [aux_fundecl] *)

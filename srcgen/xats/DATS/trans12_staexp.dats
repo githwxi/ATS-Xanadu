@@ -120,7 +120,9 @@ case+ opt of
     | S2TXTsub
         (s2v, _) => s2v.sort()
       // S2TXTsub
-    | _(*error*) => S2Tnone1(s1t0)
+(*
+    | S2TXTerr _(*loc*) => S2Tnone1(s1t0)
+*)
   ) (* Some_vt *)
 //
 end // end of [auxid]
@@ -1604,7 +1606,7 @@ s1e0.node() of
     trans12_sexp_ck(s1e1, s2t2)
   end
 //
-| S1Enone((*void*)) => s2exp_none1(s1e0)
+| S1Enone(loc) => s2exp_none1(s1e0)
 //
 | _(*rest-of-s1exp*) => s2exp_none1(s1e0)
 //

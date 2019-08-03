@@ -20,9 +20,13 @@ cleanall::
 #
 # all:: \
 # test00
+# all:: \
+# test01
 #
 test00: ; \
 $(CAT) ./DATA/test00.dats | $(XATSOPT) --dynamic
+test01: ; \
+$(CAT) ./DATA/test01.dats | $(XATSOPT) --dynamic
 #
 ######
 

@@ -1341,7 +1341,7 @@ d0e0.node() of
 | D0Enone(_(*tokerr*)) =>
   FXITMatm(d1e0) where
   {
-    val d1e0 = d1exp_make_node(loc0, D1Enone(*void*))
+    val d1e0 = d1exp_make_node(loc0, D1Enone(loc0))
   } (* end of [D0Enone] *)
 //
 end // end of [auxitm]

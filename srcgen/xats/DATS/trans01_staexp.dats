@@ -504,7 +504,7 @@ g0e0.node() of
   FXITMatm(g1e0) where
   {
     val g1e0 =
-      g1exp_make_node(loc0, G1Enone((*void*)))
+      g1exp_make_node(loc0, G1Enone(loc0))
     // end of [val]
   }
 //
@@ -1359,7 +1359,7 @@ s0e0.node() of
 | S0Enone(_(*tok*)) =>
   FXITMatm(s1e0) where
   {
-    val s1e0 = s1exp_make_node(loc0, S1Enone())
+    val s1e0 = s1exp_make_node(loc0, S1Enone(loc0))
   } (* end of [S0Enone] *)
 //
 end // end of [auxitm]

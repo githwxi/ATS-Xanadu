@@ -326,11 +326,13 @@ case- x0.node() of
 //
 | D2Esym0
   (d1e0, dpis) =>
-  fprint!(out, "D2Esym0(", d1e0, ")")
 (*
+  fprint!(out, "D2Esym0(", d1e0, ")")
+*)
+// (*
   fprint!
   (out, "D2Esym0(", d1e0, "; ", dpis, ")")
-*)
+// *)
 //
 | D2Esapp
   (d2f0, s2as) =>
@@ -492,10 +494,16 @@ case- x0.node() of
 //
 | D2Cabssort(d1c) =>
   fprint!(out, "D2Cabssort(", d1c, ")")
-| D2Cstacst0(d1c) =>
-  fprint!(out, "D2Cstacst0(", d1c, ")")
-| D2Csortdef(d1c) =>
-  fprint!(out, "D2Csortdef(", d1c, ")")
+//
+| D2Cstacst0(s2c, s2t) =>
+  fprint!
+  ( out
+  , "D2Cstacst0(", s2c, "; ", s2t, ")")
+//
+| D2Csortdef(sym, s2tx) =>
+  fprint!
+  ( out
+  , "D2Csortdef(", sym, "; ", s2tx, ")")
 //
 | D2Csexpdef(s2c, s2e) =>
   fprint!

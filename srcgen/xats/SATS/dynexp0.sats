@@ -497,7 +497,7 @@ d0exp_node =
 //
 | D0Equal of (token, d0exp) // qualified
 //
-| D0Enone of (token) // HX-2018-07-08: indicating error 
+| D0Enone of (token) // HX: for error indication
 // end of [d0exp_node]
 
 (* ****** ****** *)

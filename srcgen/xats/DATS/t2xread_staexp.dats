@@ -61,6 +61,46 @@ t2xread_sort2
 //
 implement
 {}(*tmp*)
+t2xread_s2txt
+  (s2tx) =
+(
+case+ s2tx of
+| S2TXTsrt(s2t) =>
+  t2xread_sort2<>(s2t)
+| S2TXTsub(s2v, s2ps) =>
+  {
+    val () = t2xread_s2var<>(s2v)
+    val () = t2xread_s2explst<>(s2ps)
+  }
+//
+(*
+| S2TXTerr(loc0) =>
+  {
+    val () =
+    t2xerr_add(T2XERRs2txt(s2tx))
+//
+    val () =
+    prerrln!(loc0, ": T2XERR(s2txt): ", s2tx);
+  }
+*)
+//
+)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_s2cst
+  (s2c0) = ((*void*))
+implement
+{}(*tmp*)
+t2xread_s2cstlst
+  (s2cs) = ((*void*))
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
 t2xread_s2var
   (s2v0) = ((*void*))
 implement

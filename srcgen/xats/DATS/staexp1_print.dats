@@ -45,6 +45,8 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
 //
+#staload "./../SATS/locinfo.sats"
+//
 #staload "./../SATS/staexp1.sats"
 //
 (* ****** ****** *)
@@ -153,8 +155,7 @@ case+ x0.node() of
 | G1Elist(g1es) =>
   fprint!(out, "G1Elist(", g1es, ")")
 //
-| G1Enone((*void*)) => fprint!( out, "G1Enone(", ")" )
-  // end of [G1Enone]
+| G1Enone(loc) => fprint!( out, "G1Enone(", ")" )
 //
 ) (* end of [fprint_g1exp] *)
 
@@ -561,7 +562,7 @@ case+ x0.node() of
   fprint!
   (out, "S1Equal(", tok, "; ", s1e, ")")
 //
-| S1Enone((*void*)) => fprint!(out, "S1Enone(", ")")
+| S1Enone(loc) => fprint!(out, "S1Enone(", ")")
 //
 ) (* fprint_s0exp *)
 

@@ -301,6 +301,12 @@ d2c0.node() of
     val () = t2xread_d2ecl<>(d2c)
   }
 //
+| D2Cstacst0(s2c, s2t) =>
+  {
+    val () = t2xread_s2cst<>(s2c)
+    val () = t2xread_sort2<>(s2t)
+  }
+//
 | D2Csexpdef(s2c, def) =>
   {
 (*

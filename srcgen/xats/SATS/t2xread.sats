@@ -50,6 +50,10 @@ t2xreader
 (* ****** ****** *)
 //
 datatype t2xerr =
+//
+| T2XERRsort2 of (sort2)
+//
+| T2XERRs2txt of (s2txt)
 | T2XERRs2exp of (s2exp)
 | T2XERRd2pat of (d2pat)
 | T2XERRd2exp of (d2exp)
@@ -72,8 +76,15 @@ t2xread_main(d2eclist): void
 //
 fun{}
 t2xread_sort2: t2xreader(sort2)
+fun{}
+t2xread_s2txt: t2xreader(s2txt)
 //
 (* ****** ****** *)
+//
+fun{}
+t2xread_s2cst: t2xreader(s2cst)
+fun{}
+t2xread_s2cstlst: t2xreader(s2cstlst)
 //
 fun{}
 t2xread_s2var: t2xreader(s2var)

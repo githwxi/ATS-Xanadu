@@ -184,8 +184,7 @@ fun
 d2cst_make_idtp
 (id: token, s2e: s2exp): d2cst
 fun
-d2cst_make_dvar
-(d2v: d2var, s2e: s2exp): d2cst
+d2cst_make_dvar(d2v: d2var): d2cst
 //
 (* ****** ****** *)
 //
@@ -882,11 +881,11 @@ d2ecl_node =
 | D2Clocal of
   (d2eclist(*head*), d2eclist(*body*))
 //
-| D2Cabssort of (d1ecl)
+| D2Cabssort of (sym_t)
 //
-| D2Cstacst0 of (d1ecl)
+| D2Cstacst0 of (s2cst, sort2)
 //
-| D2Csortdef of (d1ecl)
+| D2Csortdef of (sym_t, s2txt)
 //
 (*
 | D2Csexpdef of (d1ecl)
