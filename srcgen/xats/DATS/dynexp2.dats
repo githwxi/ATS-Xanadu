@@ -161,6 +161,30 @@ $rec{
 in (* in-of-local *)
 
 implement
+d2cst_make_dvar
+  (d2v) =
+(
+$rec{
+  d2cst_loc= loc
+, d2cst_sym= sym
+, d2cst_type= s2e
+, d2cst_stamp= stamp
+}
+) where
+{
+  val loc =
+    d2var_get_loc(d2v)
+  val sym =
+    d2var_get_sym(d2v)
+//
+  val s2e = s2exp_none0(loc)
+//
+  val
+  stamp = d2cst_stamp_new((*void*))
+//
+} (* d2cst_make_dvar *)
+
+implement
 d2cst_make_idtp
   (tok, s2e) =
 (

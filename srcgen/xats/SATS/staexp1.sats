@@ -87,7 +87,7 @@ g1exp_node =
 //
 | G1Elist of g1explst (*temp*)
 //
-| G1Enone of ((* error indicaton*))
+| G1Enone of (loc_t) // HX: for error indicaton
 //
 (* ****** ****** *)
 //
@@ -563,13 +563,13 @@ s1exp_node =
 | S1Eexists of (int(*#*), s1qualst)
 //
 | S1Elam of
-  (s1marglst(*arg*), sort1opt(*res*), s1exp(*body*))
+  (s1marglst, sort1opt(*res*), s1exp(*body*))
 //
 | S1Eanno of (s1exp, sort1)
 //
 | S1Equal of (token(*module*), s1exp)
 //
-| S1Enone of ((*for-error-indication*))
+| S1Enone of (loc_t) // HX: for error indication
 // end of [s1exp_node]
 
 (* ****** ****** *)

@@ -43,6 +43,8 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
 //
+#staload "./../SATS/locinfo.sats"
+//
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 //
@@ -451,7 +453,7 @@ x0.node() of
 | D1Equal(tok1, d1e2) =>
   fprint!(out, "D1Equal(", tok1, "; ", d1e2, ")")
 //
-| D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
+| D1Enone(loc) => fprint!(out, "D1Enone(", loc, ")")
 //
 ) (* fprint_d1exp *)
 

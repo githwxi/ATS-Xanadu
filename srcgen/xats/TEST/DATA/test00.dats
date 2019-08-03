@@ -1,14 +1,11 @@
 (* ****** ****** *)
 
-(*
 #stacst x: int
 #stacst y: int
 sexpdef xy = x + y
-*)
 
 (* ****** ****** *)
 
-(*
 typedef u0 = {i:int} int(i)
 typedef v0 = [j:int] int(j)
 
@@ -19,7 +16,6 @@ typedef frec0 =
 bool(xy=0) -> @{x=int, y=int(1), z=bool}
 typedef frec1 =
 bool(xy=1) -> ${x=int, y=int(1), z=bool}
-*)
 
 (* ****** ****** *)
 
@@ -44,6 +40,8 @@ absimpl abc1(n:int) = int(n)
 #extern
 fun
 foo1(x: &int(0) >> int(1)): int
+and
+foo2(x: &int(0) >> int(1)): int
 
 (* ****** ****** *)
 

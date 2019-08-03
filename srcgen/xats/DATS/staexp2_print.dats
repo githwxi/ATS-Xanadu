@@ -385,7 +385,9 @@ case+ s2tx of
 | S2TXTsub(s2v, s2ps) =>
   fprint!(out, "S2TXTsub(", s2v, "; ", s2ps, ")")
 //
-| S2TXTerr((*void*)) => fprint!(out, "S2TXTerr()")
+(*
+| S2TXTerr(loc0) => fprint!(out, "S2TXTerr(...)")
+*)
 //
 ) (* end of [fprint_s2txt] *)
 

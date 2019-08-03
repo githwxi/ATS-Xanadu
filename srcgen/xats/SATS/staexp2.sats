@@ -612,7 +612,9 @@ s2txt =
 | S2TXTsrt of sort2
 | S2TXTsub of
   (s2var, s2explst(*prop*))
-| S2TXTerr of () // error indication
+(*
+| S2TXTerr of (loc_t) // error indication
+*)
 //
 typedef
 s2txtopt = Option(s2txt)

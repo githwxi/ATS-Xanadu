@@ -557,7 +557,7 @@ d1exp_node =
 //
 | D1Equal of (token(*qual*), d1exp) // qualified
 //
-| D1Enone of () // HX-2018-09-25: indicating error 
+| D1Enone of (loc_t) // HX: for error indication
 // end of [d1exp_node]
 //
 and
