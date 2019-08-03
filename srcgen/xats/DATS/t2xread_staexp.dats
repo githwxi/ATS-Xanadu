@@ -46,6 +46,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/lexing.sats"
 //
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
 //
 #staload "./../SATS/t2xread.sats"
@@ -240,7 +241,19 @@ s2e0.node() of
 //
   }
 //
-| _(*rest-of-s2exp*) => ()
+| S2Enone0() => ()
+| S2Enone1(s1e) =>
+  {
+//
+    val () =
+    t2xerr_add(T2XERRs2exp(s2e0))
+//
+    val () =
+    prerrln!(s1e.loc(), ": T2XERR(s2exp): ", s2e0);
+//
+  }
+//
+| _(*rest-of-s2exp*) => () // HX: yet-to-be-implemented
 //
 end // end of [t2xread_s2exp]
 
