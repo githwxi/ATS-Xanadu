@@ -177,7 +177,7 @@ $rec{
   val sym =
     d2var_get_sym(d2v)
 //
-  val s2e = s2exp_none0(loc)
+  val s2e = s2exp_none0()
 //
   val
   stamp = d2cst_stamp_new((*void*))
