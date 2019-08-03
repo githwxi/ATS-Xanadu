@@ -58,6 +58,17 @@ t2xread_sort2
   (s2t0) = ((*void*))
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_s2var
+  (s2v0) = ((*void*))
+implement
+{}(*tmp*)
+t2xread_s2varlst
+  (s2vs) = ((*void*))
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
@@ -88,6 +99,21 @@ s2e0.node() of
   {
     val () = t2xread_s2exp<>(s2e1)
     val () = t2xread_s2explst<>(s2es)  
+  }
+//
+| S2Etop(knd, s2e) =>
+  {
+    val () = t2xread_s2exp<>(s2e)
+  }
+//
+| S2Earg(knd, s2e) =>
+  {
+    val () = t2xread_s2exp<>(s2e)
+  }
+| S2Eatx(s2e1, s2e2) =>
+  {
+    val () = t2xread_s2exp<>(s2e1)
+    val () = t2xread_s2exp<>(s2e2)
   }
 //
 | S2Efun
@@ -182,12 +208,22 @@ end // end of [t2xread_s2exp]
 //
 implement
 {}(*tmp*)
+t2xread_s2expopt(opt) =
+(
+case+ opt of
+| None() => ()
+| Some(s2e) =>
+  t2xread_s2exp<>(s2e)
+)
+//
+implement
+{}(*tmp*)
 t2xread_s2expnul(opt) =
 (
 if
 iseqz(opt)
 then ((*void*))
-else t2xread_s2exp(unsome(opt))
+else t2xread_s2exp<>(unsome(opt))
 )
 //
 implement
