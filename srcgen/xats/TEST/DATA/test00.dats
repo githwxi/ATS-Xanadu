@@ -42,21 +42,8 @@ absimpl abc1(n:int) = int(n)
 (* ****** ****** *)
 
 #extern
-fun foo1(x: &0 >> 1): int
-and foo2(x: &0 >> 1): int
-
-(* ****** ****** *)
-
-fun:rec
-fact(x: int): int =
-if x > 0 then x * fact(x-1) else 1
-fun:nrc
-fact(x: int): int =
-if x > 0 then x * fact(x-1) else 1
-
-(* ****** ****** *)
-
-implfun foo(x) = x
+fun
+foo1(x: &int(0) >> int(1)): int
 
 (* ****** ****** *)
 
