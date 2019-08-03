@@ -1849,7 +1849,7 @@ case+ s1es of
       ) where
       {
         val s2e0 =
-          s2exp_none0_s2t(loc0, s2t0)
+          s2exp_none0_s2t(s2t0)
         // end of [val]
         val s2es = auxlst(s1es, s2ts)
       }

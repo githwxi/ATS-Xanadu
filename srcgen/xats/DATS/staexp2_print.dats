@@ -541,8 +541,8 @@ s2e0.node() of
 | S2Etyext(s2es) =>
   fprint!(out, "S2Etyext(", s2es, ")")
 //
-| S2Enone0(loc) =>
-  fprint!(out, "S2Enone0(", loc, ")")
+| S2Enone0() =>
+  fprint!(out, "S2Enone0(", ")")
 | S2Enone1(s1esrc) =>
   fprint!(out, "S2Enone1(", s1esrc, ")")
 ) (* end of [fprint_s2exp] *)

@@ -3060,7 +3060,7 @@ case+ res0 of
 | EFFS1EXPnone
     () =>
   (
-    s2exp_none0(d1c0.loc())
+    s2exp_none0((*void*))
   )
 | EFFS1EXPsome
     (s1e) => trans12_sexp(s1e)
@@ -3255,7 +3255,7 @@ let
   | EFFS1EXPnone
       () =>
     (
-      s2exp_none0(d1c0.loc())
+      s2exp_none0((*void*))
     )
   | EFFS1EXPsome
       (s1e) => trans12_sexp(s1e)

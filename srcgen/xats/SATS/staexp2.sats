@@ -130,7 +130,7 @@ sort2 =
 //
 | S2Tapp of (sort2(*fun*), sort2lst(*arg*))
 //
-| S2Tnone0 // of (*void*) // HX: error indication
+| S2Tnone0 // of (*void*) // HX: error or special
 | S2Tnone1 of sort1(*src*) // HX: error indication
 // end of [sort2]
 
@@ -721,8 +721,8 @@ s2exp_node =
 //
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
-| S2Enone0 of (loc_t) // HX: error indication
-| S2Enone1 of (s1exp) // HX: error indication
+| S2Enone0 // of () // HX: error or special
+| S2Enone1 of s1exp(*src*) // HX: error indication
 //
 // end of [s2exp_node]
 //
@@ -849,13 +849,13 @@ s2exp_tyext
 (* ****** ****** *)
 //
 fun
-s2exp_none0(loc: loc_t): s2exp
+s2exp_none0(): s2exp
 fun
 s2exp_none1(s1e: s1exp): s2exp
 //
 fun
 s2exp_none0_s2t
-  (loc: loc_t, s2t: sort2): s2exp
+  (s2t: sort2): s2exp
 fun
 s2exp_none1_s2t
   (s1e: s1exp, s2t: sort2): s2exp

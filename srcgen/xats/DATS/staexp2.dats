@@ -1008,15 +1008,15 @@ s2exp_tyext
 (* ****** ****** *)
 //
 implement
-s2exp_none0(loc) =
-s2exp_none0_s2t(loc, S2Tnone0())
+s2exp_none0() =
+s2exp_none0_s2t(S2Tnone0())
 implement
 s2exp_none1(s1e) =
 s2exp_none1_s2t(s1e, S2Tnone0())
 //
 implement
-s2exp_none0_s2t(loc, s2t) =
-s2exp_make_node(s2t, S2Enone0(loc))
+s2exp_none0_s2t(s2t) =
+s2exp_make_node(s2t, S2Enone0())
 implement
 s2exp_none1_s2t(s1e, s2t) =
 s2exp_make_node(s2t, S2Enone1(s1e))
