@@ -32,6 +32,13 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
 #staload "./../SATS/basics.sats"
 
@@ -68,6 +75,60 @@ t2ype_of_d2pat
 s2exp_erase(s2exp_of_d2pat(d2p0))
 )
 //
+implement
+s2explst_of_d2patlst
+  (d2ps) =
+list_vt2t(d2ps) where
+{
+val
+d2ps =
+list_map<d2pat><s2exp>
+  (d2ps) where
+{
+implement
+list_map$fopr<d2pat><s2exp> = s2exp_of_d2pat
+}
+} (* end of [s2explst_of_d2patlst] *)
+//
+implement
+t2ypelst_of_d2patlst
+  (d2ps) =
+list_vt2t(d2ps) where
+{
+val
+d2ps =
+list_map<d2pat><t2ype>
+  (d2ps) where
+{
+implement
+list_map$fopr<d2pat><t2ype> = t2ype_of_d2pat
+}
+} (* end of [t2ypelst_of_d2patlst] *)
+//
+(* ****** ****** *)
+
+implement
+s2exp_of_f2undecl
+  (f2d0) = let
+//
+val+F2UNDECL(rcd) = f2d0
+//
+in
+  s2exp_none0()
+end // end of [s2exp_of_f2undecl]
+
+(* ****** ****** *)
+
+implement
+s2exp_of_v2aldecl
+  (v2d0) = let
+//
+val+V2ALDECL(rcd) = v2d0
+//
+in
+  s2exp_none0()
+end // end of [s2exp_of_v2aldecl]
+
 (* ****** ****** *)
 
 (* end of [trans23_util0.dats] *)
