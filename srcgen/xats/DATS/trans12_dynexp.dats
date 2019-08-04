@@ -2586,7 +2586,7 @@ case+ dqid of
 in
 //
 case+ opt of
-| ~None_vt() => D2PITMnone(pval)
+| ~None_vt() => D2PITMnone(dqid)
 | ~Some_vt(d2i) => D2PITMsome(pval, d2i)
 //
 end // end of [auxdqid]

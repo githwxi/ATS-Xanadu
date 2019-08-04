@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,61 +28,46 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: April, 2019
+// Start Time: August, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#staload "./basics.sats"
-//
-(* ****** ****** *)
-//
-#staload S2E = "./staexp2.sats"
-#staload S2T = "./statyp2.sats"
-#staload D2E = "./dynexp2.sats"
-//
-#staload D3E = "./dynexp3.sats"
-//
-(* ****** ****** *)
 
-typedef s2exp = $S2E.s2exp
-typedef t2ype = $S2T.t2ype
+#staload "./../SATS/basics.sats"
 
 (* ****** ****** *)
 
-typedef d2pat = $D2E.d2pat
-typedef d2exp = $D2E.d2exp
-typedef d2expopt = $D2E.d2expopt
-typedef d2explst = $D2E.d2explst
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 
 (* ****** ****** *)
 
-typedef d3exp = $D3E.d3exp
-typedef d3expopt = $D3E.d3expopt
-typedef d3explst = $D3E.d3explst
+#staload "./../SATS/dynexp3.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/trans23.sats"
 
 (* ****** ****** *)
 //
-fun
-d2pat_get_sexp(d2pat): s2exp
-fun
-d2pat_get_type(d2pat): t2ype
+implement
+d2pat_get_sexp
+  (d2p0) =
+(
+case+
+d2p0.node() of
+| D2Panno(d2p1, s2e2) => s2e2
+| _ (* else *) => s2exp_none0()
+)
 //
-(* ****** ****** *)
-//
-fun
-trans23_dexp: d2exp -> d3exp 
-fun
-trans23_dexpopt: d2expopt -> d3expopt
-fun
-trans23_dexplst: d2explst -> d3explst
-//
-(* ****** ****** *)
-//
-fun
-trans23_dexp_dn
-  (d2e0: d2exp, t2p0: t2ype): (d3exp)
+implement
+d2pat_get_type
+  (d2p0) =
+(
+s2exp_erase(d2pat_get_sexp(d2p0))
+)
 //
 (* ****** ****** *)
 
-(* end of [xats_trans23.sats] *)
+(* end of [trans23_util0.dats] *)

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,61 +28,72 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: April, 2019
+// Start Time: August, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-#staload "./basics.sats"
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload S2E = "./staexp2.sats"
-#staload S2T = "./statyp2.sats"
-#staload D2E = "./dynexp2.sats"
+#staload
+STM = "./../SATS/stamp0.sats"
+#staload
+SYM = "./../SATS/symbol.sats"
 //
-#staload D3E = "./dynexp3.sats"
-//
-(* ****** ****** *)
-
-typedef s2exp = $S2E.s2exp
-typedef t2ype = $S2T.t2ype
-
-(* ****** ****** *)
-
-typedef d2pat = $D2E.d2pat
-typedef d2exp = $D2E.d2exp
-typedef d2expopt = $D2E.d2expopt
-typedef d2explst = $D2E.d2explst
-
-(* ****** ****** *)
-
-typedef d3exp = $D3E.d3exp
-typedef d3expopt = $D3E.d3expopt
-typedef d3explst = $D3E.d3explst
-
-(* ****** ****** *)
-//
-fun
-d2pat_get_sexp(d2pat): s2exp
-fun
-d2pat_get_type(d2pat): t2ype
+overload
+= with $STM.eq_stamp_stamp
+overload
+= with $SYM.eq_symbol_symbol
 //
 (* ****** ****** *)
 //
-fun
-trans23_dexp: d2exp -> d3exp 
-fun
-trans23_dexpopt: d2expopt -> d3expopt
-fun
-trans23_dexplst: d2explst -> d3explst
+#staload "./../SATS/basics.sats"
 //
-(* ****** ****** *)
-//
-fun
-trans23_dexp_dn
-  (d2e0: d2exp, t2p0: t2ype): (d3exp)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
 
-(* end of [xats_trans23.sats] *)
+implement
+sort2_erase(s2t0) =
+(
+case+ s2t0 of
+| _ (* else *) => T2Snone()
+)
+
+(* ****** ****** *)
+
+implement
+s2exp_erase(s2e0) =
+let
+(*
+val
+t2s0 =
+sort2_erase(s2e0.sort())
+*)
+in
+case-
+s2e0.node() of
+//
+| S2Ecst(s2c) => t2ype_cst(s2c)
+| S2Evar(s2v) => t2ype_var(s2v)
+//
+| S2Eexi
+  (s2vs, s2ps, body) =>
+  t2ype_exi(s2vs, s2exp_erase(body))
+| S2Euni
+  (s2vs, s2ps, body) =>
+  t2ype_uni(s2vs, s2exp_erase(body))
+//
+| _ (* else *) => t2ype_none((*void*))
+//
+end (* end of [s2exp_erase] *)
+
+(* ****** ****** *)
+
+(* end of [xats_statyp2_util0.dats] *)

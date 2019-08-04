@@ -109,6 +109,7 @@ staexp2_util1.dats \
 staexp2_util2.dats \
 staexp2_s2cst.dats \
 staexp2_print.dats \
+statyp2_util0.dats \
 statyp2_print.dats \
 dynexp2_print.dats \
 nmspace.dats \
@@ -120,6 +121,7 @@ t2xread_staexp.dats \
 t2xread_dynexp.dats \
 dynexp3.dats \
 dynexp3_print.dats \
+trans23_util0.dats \
 trans23_dynexp.dats \
 
 ######

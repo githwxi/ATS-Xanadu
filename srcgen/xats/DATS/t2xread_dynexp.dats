@@ -109,20 +109,15 @@ d2p0.node() of
 //
 | D2Pany() => ()
 //
-| D2Pnone0() =>
-  let
-    val () =
-    t2xerr_add(T2XERRd2pat(d2p0))
-  in
-    prerrln!(loc0, ": T2XERR(d2pat): ", d2p0);
-  end // end of [D0Cnone]
+| D2Pnone0() => ((*void*))
+//
 | D2Pnone1(_) =>
   let
     val () =
     t2xerr_add(T2XERRd2pat(d2p0))
   in
     prerrln!(loc0, ": T2XERR(d2pat): ", d2p0);
-  end // end of [D1Cnone]
+  end // end of [D2Pnone1]
 //
 | D2Ptuple
   (knd, npf, d2ps) =>
@@ -226,13 +221,8 @@ d2e0.node() of
     val () = t2xread_s2exp(s2e2)
   }
 //
-| D2Enone0() =>
-  let
-    val () =
-    t2xerr_add(T2XERRd2exp(d2e0))
-  in
-    prerrln!(loc0, ": T2XERR(d2exp): ", d2e0);
-  end // end of [D0Cnone]
+| D2Enone0() => ((*void*))
+//
 | D2Enone1(_) =>
   let
     val () =
@@ -370,6 +360,20 @@ d2c0.node() of
 *)
 //
   }
+//
+| D2Csymload
+  (tok, sym0, dpi1) =>
+  (
+  case+ dpi1 of
+  | D2PITMnone(dqid) =>
+    let
+    val () =
+    t2xerr_add(T2XERRd2ecl(d2c0))
+    in
+      prerrln!(loc0, ": T2XERR(d2ecl): ", d2c0);
+    end // end of [D1Cnone]
+  | D2PITMsome(_, _) => ((*void*))
+  )
 //
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>

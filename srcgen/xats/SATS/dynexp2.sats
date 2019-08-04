@@ -402,7 +402,7 @@ datatype d2itm =
 //
 and
 d2pitm =
-| D2PITMnone of (int(*pval*))
+| D2PITMnone of (dq0eid)
 | D2PITMsome of (int(*pval*), d2itm)
 //
 where
@@ -903,6 +903,10 @@ d2ecl_node =
 | D2Cabsimpl of
   ( token(*kind*), absimplcst, s2exp(*def*))
 //
+| D2Csymload of
+  ( token(*symload*)
+  , sym_t(*loaded*), d2pitm(*loading*))
+//
 | D2Cvaldecl of
   ( token(*valkind*), declmodopt, v2aldeclist)
 //
@@ -910,23 +914,19 @@ d2ecl_node =
   ( token(*funkind*)
   , declmodopt, tq2arglst(*tmpargs*), f2undeclist)
 //
+| D2Cvardecl of (token(*knd*), v2ardeclist)
+//
 | D2Cimpdecl of
   ( token(*impkind*)
   , declmodopt
   , sq2arglst, tq2arglst
   , impdeclcst, ti2arglst, f2arglst, effs2expopt, d2exp)
 //
-| D2Csymload of
-  ( token(*symload*)
-  , sym_t(*loaded*), d2pitm(*loading*))
-//
 | D2Cdatasort of (d1ecl)
 | D2Cdatatype of (d1ecl)
 //
 | D2Cdynconst of
   (token(*kind*), tq2arglst, d2cstlst)
-//
-| D2Cvardecl of (token(*knd*), v2ardeclist)
 //
 // end of [d2ecl_node]
 //

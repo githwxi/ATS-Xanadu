@@ -57,8 +57,8 @@ abstype t2srt_tbox = ptr
 typedef t2srt = t2srt_tbox
 *)
 datatype t2srt = 
-| T2Snul of ((*void*))
-| T2Simp of (int(*knd*), sym_t)
+| T2Snone of ((*void*))
+| T2Ssome of (int(*knd*), sym_t)
 //
 (* ****** ****** *)
 //
@@ -125,22 +125,22 @@ t2ype_node =
 | T2Pcst of s2cst // constant
 | T2Pvar of s2var // variable
 //
-| T2Extv of t2xtv // ext-variable
+| T2Pxtv of t2xtv // ext-variable
 //
 | T2Pfun of
   ( fcref//ref(funclo2)
   , int(*npf*),t2ypelst(*arg*),t2ype(*res*)
   ) (* end of T2Pfun *)
 //
-| T2Prec of (tyrec, int(*npf*), labt2ypelst)
+| T2Pexi of // exists quantifier
+  (s2varlst(*vars*), t2ype(*body*))
+| T2Puni of // forall quantifier
+  (s2varlst(*vars*), t2ype(*body*))
+//
+| T2Ptyrec of
+  (tyrec(*knd*), int(*npf*), labt2ypelst)
 //
 | T2Pnone of ((*void*)) // HX: of sort T2Snul
-//
-(* ****** ****** *)
-//
-fun
-t2ype_make_name
-(t2s0: t2srt, name: sym_t): t2ype
 //
 (* ****** ****** *)
 //
@@ -160,9 +160,36 @@ t2ype_none((*void*)): t2ype
 (* ****** ****** *)
 //
 fun
+t2ype_make_name
+(t2s0: t2srt, name: sym_t): t2ype
+//
+fun
 t2ype_make_node
 (t2s0: t2srt, node: t2ype_node): t2ype
 //
+(* ****** ****** *)
+
+fun
+t2ype_cst(s2c0: s2cst): t2ype
+fun
+t2ype_var(s2v0: s2var): t2ype
+
+(* ****** ****** *)
+
+fun
+t2ype_exi
+(s2vs: s2varlst, body: t2ype): t2ype
+fun
+t2ype_uni
+(s2vs: s2varlst, body: t2ype): t2ype
+
+(* ****** ****** *)
+
+fun
+sort2_erase(s2t0: sort2): t2srt
+fun
+s2exp_erase(s2e0: s2exp): t2ype
+
 (* ****** ****** *)
 
 (* end of [xats_statyp2.sats] *)

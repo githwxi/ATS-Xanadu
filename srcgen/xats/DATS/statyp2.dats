@@ -84,7 +84,8 @@ end // end of [local]
 //
 implement
 t2ype_none() =
-t2ype_make_node(T2Snul(), T2Pnone())
+t2ype_make_node
+(T2Snone(), T2Pnone())
 //
 (* ****** ****** *)
 //
@@ -112,7 +113,7 @@ symbol("xats_uint_t")
 
 val
 the_t2srt_type =
-T2Simp(0, $SYM.TYPE_symbol)
+T2Ssome(0, $SYM.TYPE_symbol)
 val
 the_t2ype_sint =
 t2ype_make_name
@@ -130,6 +131,61 @@ implement
 t2ype_uint() = the_t2ype_uint
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+t2ype_cst
+(s2c0) = let
+//
+val s2t0 =
+s2c0.sort()
+val t2s0 =
+sort2_erase(s2t0)
+//
+val node = T2Pcst(s2c0)
+//
+in
+  t2ype_make_node(t2s0, node)
+end
+
+implement
+t2ype_var
+(s2v0) = let
+//
+val s2t0 =
+s2v0.sort()
+val t2s0 =
+sort2_erase(s2t0)
+//
+val node = T2Pvar(s2v0)
+//
+in
+  t2ype_make_node(t2s0, node)
+end
+
+(* ****** ****** *)
+
+implement
+t2ype_exi
+(s2vs, body) = let
+//
+val t2s0 = body.sort()
+val node = T2Pexi(s2vs, body)
+//
+in
+  t2ype_make_node(t2s0, node)
+end // end of [t2ype_exi]
+implement
+t2ype_uni
+(s2vs, body) = let
+//
+val t2s0 = body.sort()
+val node = T2Puni(s2vs, body)
+//
+in
+  t2ype_make_node(t2s0, node)
+end // end of [t2ype_uni]
 
 (* ****** ****** *)
 
