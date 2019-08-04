@@ -708,6 +708,8 @@ s2exp_node =
 | S2Ecast of // HX-2108-12-23: for storing
   (loc_t, s2exp, sort2) // sort-checking error
 //
+| S2Emet of (s2explst(*met*), s2exp(*body*))
+//
 | S2Eexi of // exists quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 | S2Euni of // forall quantifier
@@ -809,6 +811,10 @@ s2exp_fun_full
 fun
 s2exp_lam
 (s2as: s2varlst, s2e0: s2exp): s2exp
+//
+fun
+s2exp_met
+(s2es: s2explst, s2e0: s2exp): s2exp
 //
 fun
 s2exp_exi
