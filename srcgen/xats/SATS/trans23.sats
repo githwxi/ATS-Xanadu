@@ -81,18 +81,6 @@ typedef v2ardecl = $D2E.v2ardecl
 (* ****** ****** *)
 //
 fun
-s2exp_of_d2pat(d2pat): s2exp
-fun
-t2ype_of_d2pat(d2pat): t2ype
-//
-fun
-s2explst_of_d2patlst(d2patlst): s2explst
-fun
-t2ypelst_of_d2patlst(d2patlst): t2ypelst
-//
-(* ****** ****** *)
-//
-fun
 trans23_dexp: d2exp -> d3exp 
 fun
 trans23_dexpopt: d2expopt -> d3expopt
@@ -104,15 +92,6 @@ trans23_dexplst: d2explst -> d3explst
 fun
 trans23_dexp_dn
   (d2e0: d2exp, t2p0: t2ype): (d3exp)
-//
-(* ****** ****** *)
-//
-fun
-s2exp_of_f2undecl(f2undecl): s2exp
-fun
-s2exp_of_v2aldecl(v2aldecl): s2exp
-fun
-s2exp_of_v2ardecl(v2ardecl): s2exp
 //
 (* ****** ****** *)
 

@@ -842,11 +842,8 @@ f2undeclist = List0(f2undecl)
 //
 fun
 f2undecl_get_loc(f2undecl): loc_t
-fun
-f2undecl_get_type(f2undecl): s2exp
 //
 overload .loc with f2undecl_get_loc
-overload .type with f2undecl_get_type
 //
 (* ****** ****** *)
 //
@@ -1009,6 +1006,20 @@ fprint_type(impdeclcst)
 overload print with print_impdeclcst
 overload prerr with prerr_impdeclcst
 overload fprint with fprint_impdeclcst
+//
+(* ****** ****** *)
+//
+fun
+s2exp_of_d2pat
+  (d2p0: d2pat): s2exp
+fun
+s2explst_of_d2patlst
+  (d2ps: d2patlst): s2explst
+//
+(* ****** ****** *)
+//
+fun
+s2exp_of_f2undecl(f2undecl): s2exp
 //
 (* ****** ****** *)
 

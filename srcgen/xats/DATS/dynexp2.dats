@@ -40,6 +40,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/basics.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
@@ -803,6 +807,112 @@ val+
 F2UNDECL(rcd) = d1c0 in rcd.loc
 //
 end // end of [f2undecl_get_loc]
+
+(* ****** ****** *)
+
+implement
+s2exp_of_d2pat
+  (d2p0) =
+(
+case+
+d2p0.node() of
+| D2Panno(d2p1, s2e2) => s2e2
+| _ (* else *) => s2exp_none0()
+)
+implement
+s2explst_of_d2patlst
+  (d2ps) =
+list_vt2t(d2ps) where
+{
+val
+d2ps =
+list_map<d2pat><s2exp>
+  (d2ps) where
+{
+implement
+list_map$fopr<d2pat><s2exp> = s2exp_of_d2pat
+}
+} (* end of [s2explst_of_d2patlst] *)
+
+(* ****** ****** *)
+
+implement
+s2exp_of_f2undecl
+  (f2d0) =
+let
+//
+val+F2UNDECL(rcd) = f2d0
+//
+in
+//
+  case+
+  rcd.wtp of
+  | None() =>
+    let
+      val
+      res =
+      auxres(rcd.res)
+    in
+      auxarg(rcd.arg, res)
+    end
+  | Some(s2e) => s2e
+//
+end where
+{
+//
+fun
+auxres
+( res
+: effs2expopt
+) : s2exp =
+(
+case+ res of
+| EFFS2EXPnone() =>
+  (
+    s2exp_none0((*void*))
+  )
+| EFFS2EXPsome(s2e) => s2e
+)
+//
+fun
+auxarg
+( arg
+: f2arglst
+, res: s2exp): s2exp =
+(
+case+ arg of
+| list_nil() => res
+| list_cons(x0, xs) =>
+  let
+  val
+  res = auxarg(xs, res)
+  in
+  (
+  case+
+  x0.node() of
+  | F2ARGsome_dyn
+    (npf, d2ps) => let
+      val
+      fc2 =
+      (
+      case+ xs of
+      | list_nil() => FC2fun((*void*))
+      | list_cons _ => FC2cloref(*void*)
+      ) : funclo2 // end-of-val
+      val s2es =
+      s2explst_of_d2patlst(d2ps)
+    in
+      s2exp_fun_full
+      (fc2, 0(*lin*), npf, s2es, res)
+    end
+  | F2ARGsome_sta
+    (s2vs, s2ps) => s2exp_uni(s2vs, s2ps, res)
+  | F2ARGsome_met(s2es) => s2exp_met(s2es, res)
+  )
+  end
+)
+//
+} (* end of [s2exp_of_f2undecl] *)
 
 (* ****** ****** *)
 
