@@ -48,12 +48,16 @@
 typedef s2exp = $S2E.s2exp
 typedef t2ype = $S2T.t2ype
 
+typedef s2explst = $S2E.s2explst
+typedef t2ypelst = $S2T.t2ypelst
+
 (* ****** ****** *)
 
 typedef d2pat = $D2E.d2pat
 typedef d2exp = $D2E.d2exp
 typedef d2ecl = $D2E.d2ecl
 
+typedef d2patlst = $D2E.d2patlst
 typedef d2expopt = $D2E.d2expopt
 typedef d2explst = $D2E.d2explst
 
@@ -69,11 +73,22 @@ typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
 
 (* ****** ****** *)
+
+typedef f2undecl = $D2E.f2undecl
+typedef v2aldecl = $D2E.v2aldecl
+typedef v2ardecl = $D2E.v2ardecl
+
+(* ****** ****** *)
 //
 fun
 s2exp_of_d2pat(d2pat): s2exp
 fun
 t2ype_of_d2pat(d2pat): t2ype
+//
+fun
+s2explst_of_d2patlst(d2patlst): s2explst
+fun
+t2ypelst_of_d2patlst(d2patlst): t2ypelst
 //
 (* ****** ****** *)
 //
@@ -89,6 +104,15 @@ trans23_dexplst: d2explst -> d3explst
 fun
 trans23_dexp_dn
   (d2e0: d2exp, t2p0: t2ype): (d3exp)
+//
+(* ****** ****** *)
+//
+fun
+s2exp_of_f2undecl(f2undecl): s2exp
+fun
+s2exp_of_v2aldecl(v2aldecl): s2exp
+fun
+s2exp_of_v2ardecl(v2ardecl): s2exp
 //
 (* ****** ****** *)
 
