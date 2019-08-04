@@ -52,21 +52,28 @@ typedef t2ype = $S2T.t2ype
 
 typedef d2pat = $D2E.d2pat
 typedef d2exp = $D2E.d2exp
+typedef d2ecl = $D2E.d2ecl
+
 typedef d2expopt = $D2E.d2expopt
 typedef d2explst = $D2E.d2explst
+
+typedef d2eclist = $D2E.d2eclist
 
 (* ****** ****** *)
 
 typedef d3exp = $D3E.d3exp
+typedef d3ecl = $D3E.d3ecl
+
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
+typedef d3eclist = $D3E.d3eclist
 
 (* ****** ****** *)
 //
 fun
-d2pat_get_sexp(d2pat): s2exp
+s2exp_of_d2pat(d2pat): s2exp
 fun
-d2pat_get_type(d2pat): t2ype
+t2ype_of_d2pat(d2pat): t2ype
 //
 (* ****** ****** *)
 //
@@ -83,6 +90,13 @@ fun
 trans23_dexp_dn
   (d2e0: d2exp, t2p0: t2ype): (d3exp)
 //
+(* ****** ****** *)
+
+fun
+trans23_decl: d2ecl -> d3ecl 
+fun
+trans23_declist: d2eclist -> d3eclist
+
 (* ****** ****** *)
 
 (* end of [xats_trans23.sats] *)

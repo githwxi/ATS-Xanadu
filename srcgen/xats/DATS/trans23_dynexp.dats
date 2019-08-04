@@ -97,4 +97,17 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+trans23_decl
+  (d2c0) = let
+//
+val
+loc0 = d2c0.loc()
+//
+in
+  d3ecl_none1(d2c0)
+end // end of [trans23_decl]
+
+(* ****** ****** *)
+
 (* end of [xats_trans23_dynexp.dats] *)

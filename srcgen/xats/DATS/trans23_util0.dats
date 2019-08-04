@@ -52,7 +52,7 @@
 (* ****** ****** *)
 //
 implement
-d2pat_get_sexp
+s2exp_of_d2pat
   (d2p0) =
 (
 case+
@@ -62,10 +62,10 @@ d2p0.node() of
 )
 //
 implement
-d2pat_get_type
+t2ype_of_d2pat
   (d2p0) =
 (
-s2exp_erase(d2pat_get_sexp(d2p0))
+s2exp_erase(s2exp_of_d2pat(d2p0))
 )
 //
 (* ****** ****** *)

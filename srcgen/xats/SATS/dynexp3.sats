@@ -121,4 +121,40 @@ overload fprint with fprint_d3exp
 //
 (* ****** ****** *)
 
+abstbox d3ecl_tbox = ptr
+typedef d3ecl = d3ecl_tbox
+typedef d3eclist = List0(d3ecl)
+typedef d3eclopt = Option(d3ecl)
+
+(* ****** ****** *)
+//
+datatype
+d3ecl_node =
+//
+| D3Cnone0 of ()
+| D3Cnone1 of (d2ecl)
+//
+// end of [d3ecl_node]
+//
+(* ****** ****** *)
+//
+fun
+d3ecl_get_loc(d3ecl): loc_t
+fun
+d3ecl_get_node(d3ecl): d3ecl_node
+//
+overload .loc with d3ecl_get_loc
+overload .node with d3ecl_get_node
+//
+(* ****** ****** *)
+//
+fun d3ecl_none0(loc_t): d3ecl
+fun d3ecl_none1(d2ecl): d3ecl
+//
+fun
+d3ecl_make_node
+(loc: loc_t, node: d3ecl_node): d3ecl
+//
+(* ****** ****** *)
+
 (* end of [xats_dynexp3.sats] *)
