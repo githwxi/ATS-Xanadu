@@ -59,7 +59,7 @@ d3exp_node =
 | D3Eint of (token)
 | D3Estr of (token)
 //
-| D2Evar of (d2var)
+| D3Evar of (d2var)
 //
 | D3Etuple of
   (int(*knd*), int(*npf*), d3explst)
@@ -120,6 +120,28 @@ overload prerr with prerr_d3exp
 overload fprint with fprint_d3exp
 //
 (* ****** ****** *)
+//
+datatype
+f3undecl =
+F3UNDECL of @{
+  loc= loc_t
+, nam= d2var
+, arg= f2arglst
+, res= effs2expopt
+, def= d3expopt, wtp= s2expopt
+}
+//
+typedef
+f3undeclist = List0(f3undecl)
+//
+(* ****** ****** *)
+//
+fun
+f3undecl_get_loc(f3undecl): loc_t
+//
+overload .loc with f3undecl_get_loc
+//
+(* ****** ****** *)
 
 abstbox d3ecl_tbox = ptr
 typedef d3ecl = d3ecl_tbox
@@ -133,6 +155,10 @@ d3ecl_node =
 //
 | D3Cnone0 of ()
 | D3Cnone1 of (d2ecl)
+//
+| D3Cfundecl of
+  ( token(*funkind*)
+  , declmodopt, tq2arglst(*tmpargs*), f3undeclist)
 //
 // end of [d3ecl_node]
 //

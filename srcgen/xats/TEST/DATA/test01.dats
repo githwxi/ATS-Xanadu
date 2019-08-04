@@ -71,7 +71,6 @@ end
 
 (* ****** ****** *)
 
-#static
 fun:rec
 fact(x: int): int =
 if x > 0 then x * fact(x-1) else 1

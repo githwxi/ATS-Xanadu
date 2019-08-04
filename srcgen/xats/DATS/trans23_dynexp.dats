@@ -32,6 +32,13 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
 #staload "./../SATS/basics.sats"
 
@@ -97,16 +104,84 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+fun
+aux_fundecl
+( d2c0
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2c0.loc()
+val-
+D2Cfundecl
+( knd
+, mopt
+, tqas
+, f2ds) = d2c0.node()
+//
+val
+f3ds = auxf2ds(d2c0, f2ds)
+//
+in
+  d3ecl_make_node
+  (loc0, D3Cfundecl(knd, mopt, tqas, f3ds))
+end where
+{
+//
+fun
+auxf2ds
+( d2c0: d2ecl
+, f2ds
+: f2undeclist
+)
+: f3undeclist = list_nil()
+//
+} (* end of [aux_fundecl] *)
+
+in (* in-of-local *)
+
 implement
 trans23_decl
   (d2c0) = let
 //
 val
 loc0 = d2c0.loc()
+// (*
+val () =
+println!
+("trans23_decl: d2c0 = ", d2c0)
+// *)
 //
 in
-  d3ecl_none1(d2c0)
+//
+case+
+d2c0.node() of
+//
+| D2Cfundecl _ => aux_fundecl(d2c0)
+//
+| _ (* rest-of-d2ecl *) => d3ecl_none1(d2c0)
+//
 end // end of [trans23_decl]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans23_declist
+  (d2cs) =
+list_vt2t(d2cs) where
+{
+val
+d2cs =
+list_map<d2ecl><d3ecl>
+  (d2cs) where
+{
+  implement
+  list_map$fopr<d2ecl><d3ecl> = trans23_decl
+}
+} (* end of [trans23_declist] *)
 
 (* ****** ****** *)
 

@@ -3314,7 +3314,6 @@ trans12_decl
 //
 val
 loc0 = d1c0.loc()
-//
 (*
 val () =
 println!

@@ -73,6 +73,11 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/trans12.sats"
 #staload "./../SATS/t2xread.sats"
 //
+#staload "./../SATS/trans23.sats"
+(*
+#staload "./../SATS/t3xread.sats"
+*)
+//
 (* ****** ****** *)
 //
 #staload
@@ -846,7 +851,6 @@ val () = synread_main(d0cs)
 //
 val
 d1cs = trans01_declist(d0cs)
-//
 (*
 val () =
 println!
@@ -857,7 +861,6 @@ val () = t1xread_main(d1cs)
 //
 val
 d2cs = trans12_declist(d1cs)
-//
 (*
 val () =
 println!
@@ -865,6 +868,9 @@ println!
 *)
 //
 val () = t2xread_main(d2cs)
+//
+val
+d3cs = trans23_declist(d2cs)
 //
 val () =
 println!
