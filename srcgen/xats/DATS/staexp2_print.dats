@@ -517,15 +517,21 @@ s2e0.node() of
   , loc, "; ", s2e, "; ", s2t, ")")
 *)
 //
-| S2Euni
-  (s2vs, s2ps, body) =>
+| S2Emet
+  (s2es, body) =>
   fprint!
-  ( out, "S2Euni("
-  , s2vs, "; ", s2ps, "; ", body, ")")
+  ( out, "S2Emet("
+  , s2es, "; ", body, ")")
+//
 | S2Eexi
   (s2vs, s2ps, body) =>
   fprint!
   ( out, "S2Eexi("
+  , s2vs, "; ", s2ps, "; ", body, ")")
+| S2Euni
+  (s2vs, s2ps, body) =>
+  fprint!
+  ( out, "S2Euni("
   , s2vs, "; ", s2ps, "; ", body, ")")
 //
 (*

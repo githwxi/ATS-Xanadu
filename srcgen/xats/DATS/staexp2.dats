@@ -700,6 +700,16 @@ end (* end of [s2exp_lam] *)
 (* ****** ****** *)
 
 implement
+s2exp_met
+(s2es, body) = let
+  val s2t0 = body.sort()
+in
+  s2exp_make_node(s2t0, S2Emet(s2es, body))
+end // end of [s2exp_met]
+
+(* ****** ****** *)
+
+implement
 s2exp_exi
 (s2vs, s2ps, body) = let
 //
