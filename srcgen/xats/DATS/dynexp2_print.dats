@@ -522,22 +522,29 @@ case- x0.node() of
   , "D2Cabsimpl("
   , knd, "; ", sqid, "; ", def0, ")")
 //
+| D2Csymload
+  (tok, sym0, dpi1) =>
+  fprint!
+  ( out
+  , "D2Csymload("
+  , tok, "; ", sym0, "; ", dpi1, ")")
+//
 | D2Cvaldecl
   (knd, mopt, v2ds) =>
   fprint!
   ( out
   , "D2Cvaldecl("
   , knd, "; ", mopt, "; ", v2ds, ")")
-| D2Cvardecl(knd, v2ds) =>
-  fprint!
-  ( out
-  , "D2Cvardecl(", knd, "; ", v2ds, ")")
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
   fprint!
   ( out
   , "D2Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
+//
+| D2Cvardecl(knd, v2ds) =>
+  fprint!
+  (out, "D2Cvardecl(", knd, "; ", v2ds, ")")
 //
 | D2Cimpdecl
   ( knd, mopt, sqas, tqas
@@ -548,13 +555,6 @@ case- x0.node() of
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
-//
-| D2Csymload
-  (tok, sym0, dpi1) =>
-  fprint!
-  ( out
-  , "D2Csymload("
-  , tok, "; ", sym0, "; ", dpi1, ")")
 //
 | D2Cdatasort(d1c) =>
   fprint!(out, "D2Cdatasort(", d1c, ")")
@@ -616,8 +616,8 @@ fprint_d2pitm
   (out, x0) =
 (
 case+ x0 of
-| D2PITMnone(pval) =>
-  fprint!(out, "D2PITMnone(", pval, ")")
+| D2PITMnone(dqid) =>
+  fprint!(out, "D2PITMnone(", dqid, ")")
 | D2PITMsome(pval, d2i0) =>
   fprint!
   (out, "D2PITMsome(", pval, "; ", d2i0, ")")

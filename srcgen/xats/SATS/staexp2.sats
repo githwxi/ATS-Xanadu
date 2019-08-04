@@ -708,9 +708,9 @@ s2exp_node =
 | S2Ecast of // HX-2108-12-23: for storing
   (loc_t, s2exp, sort2) // sort-checking error
 //
-| S2Eexi of // existent. quantifier
+| S2Eexi of // exists quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
-| S2Euni of // universal quantifier
+| S2Euni of // forall quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
 (*
@@ -811,11 +811,11 @@ s2exp_lam
 (s2as: s2varlst, s2e0: s2exp): s2exp
 //
 fun
-s2exp_uni
+s2exp_exi
 ( s2vs: s2varlst
 , s2ps: s2explst, s2e0: s2exp): s2exp
 fun
-s2exp_exi
+s2exp_uni
 ( s2vs: s2varlst
 , s2ps: s2explst, s2e0: s2exp): s2exp
 //

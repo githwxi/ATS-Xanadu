@@ -203,6 +203,8 @@ end // end of [local]
 //
 #dynload "./staexp2_s2cst.dats"
 //
+#dynload "./statyp2_util0.dats"
+//
 #dynload "./staexp2_print.dats"
 #dynload "./statyp2_print.dats"
 #dynload "./dynexp2_print.dats"
@@ -221,6 +223,7 @@ end // end of [local]
 //
 #dynload "./dynexp3_print.dats"
 //
+#dynload "./trans23_util0.dats"
 #dynload "./trans23_dynexp.dats"
 //
 (* ****** ****** *)
