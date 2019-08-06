@@ -89,7 +89,7 @@ d3exp_make_node
 ) where
 {
   val loc0 = d2e0.loc((*void*))
-  val t2p0 = t2ype_none((*void*))
+  val t2p0 = t2ype_none0((*void*))
 }
 //
 (* ****** ****** *)

@@ -76,6 +76,7 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 
 #staload "./staexp2.sats"
+#staload "./statyp2.sats"
 
 (* ****** ****** *)
 //
@@ -154,12 +155,18 @@ overload .sym with d2var_get_sym
 (* ****** ****** *)
 //
 fun
-d2con_get_type(d2con): s2exp
+d2con_get_sexp(d2con): s2exp
 fun
-d2cst_get_type(d2cst): s2exp
+d2cst_get_sexp(d2cst): s2exp
+fun
+d2var_get_sexp(d2var): s2exp
+fun
+d2var_get_type(d2var): t2ype
 //
-overload .type with d2con_get_type
-overload .type with d2cst_get_type
+overload .sexp with d2con_get_sexp
+overload .sexp with d2cst_get_sexp
+overload .sexp with d2var_get_sexp
+overload .type with d2var_get_type
 //
 (* ****** ****** *)
 //

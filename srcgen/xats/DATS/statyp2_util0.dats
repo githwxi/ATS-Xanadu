@@ -63,7 +63,7 @@ implement
 sort2_erase(s2t0) =
 (
 case+ s2t0 of
-| _ (* else *) => T2Snone()
+| _ (* else *) => T2Snone0()
 )
 
 (* ****** ****** *)
@@ -90,7 +90,7 @@ s2e0.node() of
   (s2vs, s2ps, body) =>
   t2ype_uni(s2vs, s2exp_erase(body))
 //
-| _ (* else *) => t2ype_none((*void*))
+| _ (*rest-of-s2exp*) => t2ype_none1(s2e0)
 //
 end (* end of [s2exp_erase] *)
 

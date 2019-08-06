@@ -83,9 +83,13 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-t2ype_none() =
+t2ype_none0() =
 t2ype_make_node
-(T2Snone(), T2Pnone())
+(T2Snone0(), T2Pnone0())
+implement
+t2ype_none1(s2e) =
+t2ype_make_node
+(T2Snone0(), T2Pnone1(s2e))
 //
 (* ****** ****** *)
 //
@@ -99,21 +103,34 @@ t2ype_make_name
 (* ****** ****** *)
 
 local
-
+//
 macdef
 symbol =
 $SYM.symbol_make
-
+//
 val
 XATS_SINT_T =
 symbol("xats_sint_t")
 val
 XATS_UINT_T =
 symbol("xats_uint_t")
-
+val
+XATS_CHAR_T =
+symbol("xats_char_t")
+val
+XATS_FLOAT_T =
+symbol("xats_float_t")
+val
+XATS_DOUBLE_T =
+symbol("xats_double_t")
+val
+XATS_STRING_T =
+symbol("xats_string_t")
+//
 val
 the_t2srt_type =
-T2Ssome(0, $SYM.TYPE_symbol)
+T2Sbas($SYM.TYPE_symbol)
+//
 val
 the_t2ype_sint =
 t2ype_make_name
@@ -122,6 +139,25 @@ val
 the_t2ype_uint =
 t2ype_make_name
 (the_t2srt_type, XATS_UINT_T)
+//
+val
+the_t2ype_char =
+t2ype_make_name
+(the_t2srt_type, XATS_CHAR_T)
+//
+val
+the_t2ype_float =
+t2ype_make_name
+(the_t2srt_type, XATS_FLOAT_T)
+val
+the_t2ype_double =
+t2ype_make_name
+(the_t2srt_type, XATS_DOUBLE_T)
+//
+val
+the_t2ype_string =
+t2ype_make_name
+(the_t2srt_type, XATS_STRING_T)
 
 in(*in-of-local*)
 
@@ -129,6 +165,14 @@ implement
 t2ype_sint() = the_t2ype_sint
 implement
 t2ype_uint() = the_t2ype_uint
+implement
+t2ype_char() = the_t2ype_char
+implement
+t2ype_float() = the_t2ype_float
+implement
+t2ype_double() = the_t2ype_double
+implement
+t2ype_string() = the_t2ype_string
 
 end // end of [local]
 

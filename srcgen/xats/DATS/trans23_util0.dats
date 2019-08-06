@@ -58,6 +58,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
+(*
 implement
 t2ype_of_d2pat
   (d2p0) =
@@ -79,6 +80,7 @@ implement
 list_map$fopr<d2pat><t2ype> = t2ype_of_d2pat
 }
 } (* end of [t2ypelst_of_d2patlst] *)
+*)
 //
 (* ****** ****** *)
 

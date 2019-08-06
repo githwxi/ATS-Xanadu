@@ -57,6 +57,8 @@ datatype
 d3exp_node =
 //
 | D3Eint of (token)
+| D3Echr of (token)
+| D3Eflt of (token)
 | D3Estr of (token)
 //
 | D3Evar of (d2var)

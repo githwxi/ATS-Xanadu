@@ -48,7 +48,6 @@ typedef label = $LAB.label
 (* ****** ****** *)
 
 #staload "./staexp2.sats"
-#staload "./dynexp2.sats"
 
 (* ****** ****** *)
 //
@@ -57,8 +56,13 @@ abstype t2srt_tbox = ptr
 typedef t2srt = t2srt_tbox
 *)
 datatype t2srt = 
-| T2Snone of ((*void*))
-| T2Ssome of (int(*knd*), sym_t)
+| T2Sbas of sym_t
+| T2Sfun of
+  (t2srtlst(*arg*), t2srt(*res*))
+| T2Snone0 of ()
+| T2Snone1 of sort2
+//
+where t2srtlst = List0(t2srt)
 //
 (* ****** ****** *)
 //
@@ -140,7 +144,7 @@ t2ype_node =
 | T2Ptyrec of
   (tyrec(*knd*), int(*npf*), labt2ypelst)
 //
-| T2Pnone of ((*void*)) // HX: of sort T2Snul
+| T2Pnone0 of () | T2Pnone1 of (s2exp)
 //
 (* ****** ****** *)
 //
@@ -155,7 +159,9 @@ overload .node with t2ype_get_node
 (* ****** ****** *)
 //
 fun
-t2ype_none((*void*)): t2ype
+t2ype_none0((*void*)): t2ype
+fun
+t2ype_none1(s2e: s2exp): t2ype
 //
 (* ****** ****** *)
 //
