@@ -250,6 +250,13 @@ overload fprint with fprint_funclo2
 //
 (* ****** ****** *)
 //
+fun
+intsign(rep: string): int(*0/1*)
+fun
+intsize(rep: string): int(*0/1/2*)
+//
+(* ****** ****** *)
+//
 typedef
 eq_type(a:t0ype) = (a, a) -> bool
 typedef

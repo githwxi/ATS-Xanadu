@@ -280,6 +280,53 @@ case+ fc2 of
 //
 (* ****** ****** *)
 
+implement
+intsign(rep) =
+(
+loop(string2ptr(rep))
+) where
+{
+fun
+loop(p0: ptr): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if iseqz(c0) then 0 else
+(
+if
+toupper(c0) = 'U'
+then 1 else loop(ptr0_succ<char>(p0))
+)
+end
+} (* end of [intsign] *)
+
+(* ****** ****** *)
+
+implement
+intsize(rep) =
+(
+loop(string2ptr(rep), 0)
+) where
+{
+fun
+loop(p0: ptr, r0: int): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if iseqz(c0) then r0 else
+(
+  if
+  toupper(c0) != 'L'
+  then loop(ptr0_succ<char>(p0), r0)
+  else loop(ptr0_succ<char>(p0), r0+1)
+)
+end
+} (* end of [intsign] *)
+
+(* ****** ****** *)
+
 local
 //
 #staload

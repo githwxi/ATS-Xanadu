@@ -52,6 +52,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp1.sats"
 //
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
@@ -109,7 +110,7 @@ d2con_tbox = $rec{
 //
   d2con_loc= loc_t // loc
 , d2con_sym= sym_t // name
-, d2con_type= s2exp // type
+, d2con_sexp= s2exp // sexp
 , d2con_stamp= stamp // unicity
 //
 } (* end of [d2con_tbox] *)
@@ -123,7 +124,7 @@ d2con_make_idtp
 $rec{
   d2con_loc= loc
 , d2con_sym= sym
-, d2con_type= s2e
+, d2con_sexp= s2e
 , d2con_stamp= stamp
 }
 ) where
@@ -141,7 +142,7 @@ d2con_get_loc(x0) = x0.d2con_loc
 implement
 d2con_get_sym(x0) = x0.d2con_sym
 implement
-d2con_get_type(x0) = x0.d2con_type
+d2con_get_sexp(x0) = x0.d2con_sexp
 implement
 d2con_get_stamp(x0) = x0.d2con_stamp
 
@@ -157,7 +158,7 @@ $rec{
 //
   d2cst_loc= loc_t // loc
 , d2cst_sym= sym_t // name
-, d2cst_type= s2exp // type
+, d2cst_sexp= s2exp // type
 , d2cst_stamp= stamp // unicity
 //
 } (* end of [d2cst_tbox] *)
@@ -171,7 +172,7 @@ d2cst_make_dvar
 $rec{
   d2cst_loc= loc
 , d2cst_sym= sym
-, d2cst_type= s2e
+, d2cst_sexp= s2e
 , d2cst_stamp= stamp
 }
 ) where
@@ -195,7 +196,7 @@ d2cst_make_idtp
 $rec{
   d2cst_loc= loc
 , d2cst_sym= sym
-, d2cst_type= s2e
+, d2cst_sexp= s2e
 , d2cst_stamp= stamp
 }
 ) where
@@ -213,7 +214,7 @@ d2cst_get_loc(x0) = x0.d2cst_loc
 implement
 d2cst_get_sym(x0) = x0.d2cst_sym
 implement
-d2cst_get_type(x0) = x0.d2cst_type
+d2cst_get_sexp(x0) = x0.d2cst_sexp
 implement
 d2cst_get_stamp(x0) = x0.d2cst_stamp
 
@@ -228,6 +229,8 @@ d2var_tbox = $rec{
 //
   d2var_loc= loc_t // loc
 , d2var_sym= sym_t // name
+, d2var_sexp= s2exp // sexp
+, d2var_type= t2ype // type
 , d2var_stamp= stamp // unicity
 //
 } (* end of [d2var_tbox] *)
@@ -254,18 +257,23 @@ d2var_new2
 $rec{
   d2var_loc= loc
 , d2var_sym= sym
+, d2var_sexp= s2e1
+, d2var_type= t2p2
 , d2var_stamp= stamp
 }
 ) where
 {
-  val
-  stamp = d2var_stamp_new((*void*))
+  val s2e1 = s2exp_none0()
+  val t2p2 = t2ype_none0()
+  val stamp = d2var_stamp_new()
 }
 
 implement
 d2var_get_loc(x0) = x0.d2var_loc
 implement
 d2var_get_sym(x0) = x0.d2var_sym
+implement
+d2var_get_type(x0) = x0.d2var_type
 implement
 d2var_get_stamp(x0) = x0.d2var_stamp
 

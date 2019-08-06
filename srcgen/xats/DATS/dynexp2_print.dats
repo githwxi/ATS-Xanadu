@@ -155,7 +155,7 @@ fprint_d2con
 fprint!
 (out, sym, "(", stamp, ")");
 // (*
-fprint!(out, ": ", x0.type())
+fprint!(out, ": ", x0.sexp())
 // *)
 ) where
 {
@@ -178,7 +178,7 @@ fprint_d2cst
 fprint!
 (out, sym, "(", stamp, ")");
 // (*
-fprint!(out, ": ", x0.type())
+fprint!(out, ": ", x0.sexp())
 // *)
 ) where
 {

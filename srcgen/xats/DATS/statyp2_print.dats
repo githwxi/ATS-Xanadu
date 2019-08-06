@@ -98,7 +98,8 @@ x0.node() of
 | T2Ptyrec(knd, npf, lxs) =>
   fprint!(out, "T2Ptyrec(", "...", ")")
 //
-| T2Pnone() => fprint!(out, "T2Pnone(", ")")
+| T2Pnone0() => fprint!(out, "T2Pnone0(", ")")
+| T2Pnone1(s2e) => fprint!(out, "T2Pnone1(", s2e, ")")
 //
 )
 //

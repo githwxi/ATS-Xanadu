@@ -44,6 +44,10 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -71,13 +75,86 @@ val-
 D2Eint(tok) = d2e0.node()
 //
 val
-t2p0 = t2ype_sint((*void*))
+t2p0 =
+(
+case+
+tok.node() of
+| T_INT1 _ => t2ype_sint()
+| T_INT2 _ => t2ype_sint()
+| T_INT3 _ => t2ype_sint()
+| _ (* dead *) => t2ype_sint()
+) : t2ype // end of [val]
 //
 in
-//
-d3exp_make_node(loc0, t2p0, D3Eint(tok))
-//
+let
+val node = D3Eint(tok)
+in
+d3exp_make_node(loc0, t2p0, node)
+end
 end (* end of [aux_int] *)
+
+fun
+aux_chr
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Echr(tok) = d2e0.node()
+//
+val node = D3Echr(tok)
+val t2p0 = t2ype_char((*void*))
+//
+in
+d3exp_make_node(loc0, t2p0, node)
+end (* end of [aux_chr] *)
+
+fun
+aux_flt
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Echr(tok) = d2e0.node()
+//
+val
+t2p0 =
+(
+case+
+tok.node() of
+| T_FLOAT1 _ => t2ype_double()
+| T_FLOAT2 _ => t2ype_double()
+| T_FLOAT3 _ => t2ype_double()
+| _ (* dead *) => t2ype_double()
+) : t2ype // end of [val]
+//
+in
+let
+val node = D3Eflt(tok)
+in
+d3exp_make_node(loc0, t2p0, node)
+end
+end (* end of [aux_flt] *)
+
+fun
+aux_str
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Estr(tok) = d2e0.node()
+//
+val node = D3Estr(tok)
+val t2p0 = t2ype_string((*void*))
+//
+in
+d3exp_make_node(loc0, t2p0, node)
+end (* end of [aux_str] *)
 
 in (* in-of-local *)
 
@@ -96,6 +173,13 @@ in
 //
 case+
 d2e0.node() of
+//
+| D2Eint _ => aux_int(d2e0)
+| D2Echr _ => aux_chr(d2e0)
+| D2Eflt _ => aux_flt(d2e0)
+| D2Estr _ => aux_str(d2e0)
+//
+//
 | _ (*rest-of-d2e0*) => d3exp_none1(d2e0)
 //
 end // end of [trans23_dexp]

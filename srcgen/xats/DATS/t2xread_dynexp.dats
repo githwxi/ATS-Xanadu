@@ -74,7 +74,7 @@ t2xread_d2cst
 val
 loc0 = d2c0.loc((*void*))
 val
-s2e0 = d2cst_get_type(d2c0)
+s2e0 = d2cst_get_sexp(d2c0)
 //
 val () = t2xread_s2exp(s2e0)
 //
