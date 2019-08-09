@@ -130,7 +130,7 @@ sort2 =
 //
 | S2Tapp of (sort2(*fun*), sort2lst(*arg*))
 //
-| S2Tnone0 // of (*void*) // HX: error indication
+| S2Tnone0 // of (*void*) // HX: error or special
 | S2Tnone1 of sort1(*src*) // HX: error indication
 // end of [sort2]
 
@@ -216,6 +216,10 @@ sort2_is_fun(sort2): bool
 
 (* ****** ****** *)
 
+fun
+sort2_is_proof(sort2): bool
+fun
+sort2_is_tcode(sort2): bool
 fun
 sort2_is_impred(sort2): bool
 
@@ -371,6 +375,11 @@ overload .sym with s2cst_get_sym
 overload .loc with s2cst_get_loc
 overload .sort with s2cst_get_sort
 overload .stamp with s2cst_get_stamp
+//
+(* ****** ****** *)
+//
+fun
+stamp_s2cst(s2cst): void
 //
 fun
 s2cst_make_idst
@@ -603,7 +612,9 @@ s2txt =
 | S2TXTsrt of sort2
 | S2TXTsub of
   (s2var, s2explst(*prop*))
-| S2TXTerr of () // error indication
+(*
+| S2TXTerr of (loc_t) // error indication
+*)
 //
 typedef
 s2txtopt = Option(s2txt)
@@ -668,6 +679,15 @@ s2exp_node =
 | S2Elam of
   (s2varlst, s2exp) // abstraction
 //
+| S2Etop of // HX: knd: 0/1: 
+  (int(*knd*), s2exp) // top/typization
+  // end of [S2Etop]
+//
+| S2Earg of // HX: knd: 0/1: 
+  (int(*knd*), s2exp) // call-by-val/ref
+| S2Eatx of
+  (s2exp(*bef*), s2exp(*aft*)) // trans
+//
 (*
 | S2Efun of
   (int(*npf*), s2explst, s2exp)
@@ -679,16 +699,20 @@ s2exp_node =
   , int(*npf*), s2explst(*arg*), s2exp(*res*)
   ) (* end of S2Efun *)
 //
-| S2Etop of // HX: knd: 0/1: 
-  (int(*knd*), s2exp) // topization/typization
-  // end of [S2Etop]
-//
+| S2Ecimp of // HX: for storing
+  (loc_t, s2exp) // sort-checking error
+| S2Ecprf of // HX: for storing
+  (loc_t, s2exp) // sort-checking error
+| S2Ectcd of // HX: for storing
+  (loc_t, s2exp) // sort-checking error
 | S2Ecast of // HX-2108-12-23: for storing
   (loc_t, s2exp, sort2) // sort-checking error
 //
-| S2Eexi of // existent. quantifier
+| S2Emet of (s2explst(*met*), s2exp(*body*))
+//
+| S2Eexi of // exists quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
-| S2Euni of // universal quantifier
+| S2Euni of // forall quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
 (*
@@ -699,8 +723,8 @@ s2exp_node =
 //
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
-| S2Enone0 of (loc_t) // HX: error indication
-| S2Enone1 of (s1exp) // HX: error indication
+| S2Enone0 // of () // HX: error or special
+| S2Enone1 of s1exp(*src*) // HX: error indication
 //
 // end of [s2exp_node]
 //
@@ -727,6 +751,18 @@ fun
 s2exp_var(s2v: s2var): s2exp
 //
 fun
+s2exp_cimp
+( loc: loc_t
+, s2e: s2exp) : s2exp
+fun
+s2exp_cprf
+( loc: loc_t
+, s2e: s2exp) : s2exp
+fun
+s2exp_ctcd
+( loc: loc_t
+, s2e: s2exp) : s2exp
+fun
 s2exp_cast
 ( loc: loc_t
 , s2e: s2exp
@@ -750,6 +786,13 @@ s2exp_app2
 , s2a1: s2exp, s2a2: s2exp): s2exp
 //
 fun
+s2exp_arg
+(knd: int, s2e0: s2exp): s2exp
+fun
+s2exp_atx
+(bef: s2exp, aft: s2exp): s2exp
+//
+fun
 s2exp_fun_nil
 ( npf: int
 , arg: s2explst, res: s2exp): s2exp
@@ -762,18 +805,23 @@ s2exp_fun_full
 ( fc2
 : funclo2
 , lin: int
-, npf: int, arg: s2explst, res: s2exp): s2exp
+, npf: int
+, arg: s2explst, res: s2exp): s2exp
 //
 fun
 s2exp_lam
 (s2as: s2varlst, s2e0: s2exp): s2exp
 //
 fun
-s2exp_uni
+s2exp_met
+(s2es: s2explst, s2e0: s2exp): s2exp
+//
+fun
+s2exp_exi
 ( s2vs: s2varlst
 , s2ps: s2explst, s2e0: s2exp): s2exp
 fun
-s2exp_exi
+s2exp_uni
 ( s2vs: s2varlst
 , s2ps: s2explst, s2e0: s2exp): s2exp
 //
@@ -807,13 +855,13 @@ s2exp_tyext
 (* ****** ****** *)
 //
 fun
-s2exp_none0(loc: loc_t): s2exp
+s2exp_none0(): s2exp
 fun
 s2exp_none1(s1e: s1exp): s2exp
 //
 fun
 s2exp_none0_s2t
-  (loc: loc_t, s2t: sort2): s2exp
+  (s2t: sort2): s2exp
 fun
 s2exp_none1_s2t
   (s1e: s1exp, s2t: sort2): s2exp
@@ -910,6 +958,26 @@ fprint_labs2exp: fprint_type(labs2exp)
 overload print with print_labs2exp
 overload prerr with prerr_labs2exp
 overload fprint with fprint_labs2exp
+//
+(* ****** ****** *)
+//
+datatype
+abstdf2 =
+| ABSTDF2none of () // nonabs
+| ABSTDF2some of () // unspecified
+| ABSTDF2lteq of s2exp // erasure
+| ABSTDF2eqeq of s2exp // definition
+//
+fun
+print_abstdf2: print_type(abstdf2)
+fun
+prerr_abstdf2: prerr_type(abstdf2)
+fun
+fprint_abstdf2: fprint_type(abstdf2)
+//
+overload print with print_abstdf2
+overload prerr with prerr_abstdf2
+overload fprint with fprint_abstdf2
 //
 (* ****** ****** *)
 //
@@ -1022,6 +1090,87 @@ s2explst_revar
 fun
 s2explst_revar_vt
 (s2explst, s2v1: s2var, s2v2: s2var): s2explst_vt
+//
+(* ****** ****** *)
+//
+abstype
+s2cstnul_tbox(l:addr) = ptr
+typedef
+s2cstnul(l:addr) = s2cstnul_tbox(l)
+//
+typedef s2cstnul = [l:agez] s2cstnul(l)
+//
+(* ****** ****** *)
+//
+fun
+s2cstnul_none
+((*void*)): s2cstnul(null)
+fun
+s2cstnul_some
+(x0:s2cst):<> [l:agz] s2cstnul(l)
+castfn
+s2cstnul_unsome
+{l:agz}(x0: s2cstnul(l)):<> s2cst
+//
+fun
+s2cstnul_iseqz
+{l:addr}(s2cstnul(l)): bool(l==null)
+fun
+s2cstnul_isneqz
+{l:addr}(s2cstnul(l)): bool(l > null)
+//
+overload iseqz with s2cstnul_iseqz
+overload isneqz with s2cstnul_isneqz
+overload unsome with s2cstnul_unsome
+//
+(* ****** ****** *)
+//
+abstype
+s2expnul_tbox(l:addr) = ptr
+typedef
+s2expnul(l:addr) = s2expnul_tbox(l)
+//
+typedef s2expnul = [l:agez] s2expnul(l)
+//
+(* ****** ****** *)
+//
+fun
+s2expnul_none
+((*void*)): s2expnul(null)
+fun
+s2expnul_some
+(x0:s2exp):<> [l:agz] s2expnul(l)
+castfn
+s2expnul_unsome
+{l:agz}(x0: s2expnul(l)):<> s2exp
+//
+fun
+s2expnul_iseqz
+{l:addr}(s2expnul(l)): bool(l==null)
+fun
+s2expnul_isneqz
+{l:addr}(s2expnul(l)): bool(l > null)
+//
+overload iseqz with s2expnul_iseqz
+overload isneqz with s2expnul_isneqz
+overload unsome with s2expnul_unsome
+//
+(* ****** ****** *)
+//
+fun
+s2cst_get_def(s2cst): s2expnul
+fun
+stamp_s2cst_def
+(s2c: s2cst, def: s2expnul): void
+//
+(* ****** ****** *)
+//
+fun
+s2cst_get_abs
+(s2c: s2cst): abstdf2
+fun
+stamp_s2cst_abs
+(s2c: s2cst, abs: abstdf2): void
 //
 (* ****** ****** *)
 

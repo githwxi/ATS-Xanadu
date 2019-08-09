@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: December, 2018
+// Start Time: August, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -40,70 +40,48 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload
-SYM = "./../SATS/symbol.sats"
+#staload "./../SATS/basics.sats"
 
 (* ****** ****** *)
-//
+
 #staload "./../SATS/staexp2.sats"
-//
-(* ****** ****** *)
-//
-abstype
-s2cstnul_tbox(l:addr) = ptr
-typedef
-s2cstnul(l:addr) = s2cstnul_tbox(l)
-//
-typedef s2cstnul = [l:agez] s2cstnul(l)
-//
-(* ****** ****** *)
-//
-extern
-castfn
-s2cstnul_none(ptr(null)): s2cstnul(null)
-extern
-castfn
-s2cstnul_some(s2cst):<> [l:agz] s2cstnul(l)
-extern
-castfn
-s2cstnul_unsome{l:agz}(s2cstnul(l)):<> s2cst
-//
-(* ****** ****** *)
-//
-extern
-fun
-s2cstnul_iseqz
-{l:addr}(s2cstnul(l)): bool(l==null)
-// end of [s2cstnul_iseqz]
-extern
-fun
-s2cstnul_isneqz
-{l:addr}(s2cstnul(l)): bool(l > null)
-// end of [s2cstnul_isneqz]
-//
-overload iseqz with s2cstnul_iseqz
-overload isneqz with s2cstnul_isneqz
-//
-(* ****** ****** *)
-//
-local
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 
-extern
-castfn
-_cast_
-{l:addr}(s2cstnul(l)):<> ptr(l)
+(* ****** ****** *)
 
-in (*in-of-local*)
+#staload "./../SATS/dynexp3.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/trans23.sats"
+
+(* ****** ****** *)
+//
+(*
+implement
+t2ype_of_d2pat
+  (d2p0) =
+(
+s2exp_erase(s2exp_of_d2pat(d2p0))
+)
 //
 implement
-s2cstnul_iseqz
-  (s2c) = (_cast_(s2c) = the_null_ptr)
+t2ypelst_of_d2patlst
+  (d2ps) =
+list_vt2t(d2ps) where
+{
+val
+d2ps =
+list_map<d2pat><t2ype>
+  (d2ps) where
+{
 implement
-s2cstnul_isneqz
-  (s2c) = (_cast_(s2c) > the_null_ptr)
-//
-end // end of [local]
+list_map$fopr<d2pat><t2ype> = t2ype_of_d2pat
+}
+} (* end of [t2ypelst_of_d2patlst] *)
+*)
 //
 (* ****** ****** *)
 
-(* end of [xats_staexp2_const.dats] *)
+(* end of [trans23_util0.dats] *)

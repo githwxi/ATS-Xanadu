@@ -2481,7 +2481,7 @@ case+ tnd of
     ABSTDF0eqeq
     (tok, p_s0exp(buf, err))    
   end
-| _(*non-eq-eqeq*) => ABSTDF0nil()
+| _(*non-eq-eqeq*) => ABSTDF0some()
 //
 end // end of [p_abstdf0]
 
@@ -2760,14 +2760,38 @@ val e0 = err
 val
 d0p = p_d0pat(buf, err)
 //
-val teq = p_EQ(buf, err)
-val d0e = p_d0exp(buf, err)
-//
 val
-wopt = p_wths0expopt(buf, err)
+teq = popt_EQ(buf, err)
+//
+in
+//
+case+ teq of
+|
+None() => let
+val dopt = None()
+val wopt = WTHS0EXPnone()
+val loc0 = d0p.loc()
+val loc1 =
+(
+case+ wopt of
+| WTHS0EXPnone() => loc0
+| WTHS0EXPsome(_, s0e) => loc0+s0e.loc()
+) : loc_t // end of [val]
+//
+in
+  err := e0;
+  V0ALDECL
+  (@{loc=loc1,pat=d0p,teq=teq,def=dopt,wtp=wopt})
+end
+|
+Some(tok) => let
+val d0e =
+p_d0exp(buf, err)
+val dopt = Some(d0e)
+val wopt =
+p_wths0expopt(buf, err)
 //
 val loc0 = d0p.loc()
-//
 val loc1 =
 (
 case+ wopt of
@@ -2778,7 +2802,9 @@ case+ wopt of
 in
   err := e0;
   V0ALDECL
-  (@{loc=loc1,pat=d0p,teq=teq,def=d0e,wtp=wopt})
+  (@{loc=loc1,pat=d0p,teq=teq,def=dopt,wtp=wopt})
+end
+//
 end // end of [p_v0aldecl]
 
 (* ****** ****** *)
@@ -2980,10 +3006,46 @@ p_f0argseq(buf, err)
 val res =
 p_effs0expopt(buf, err)
 //
-val teq = p_EQ(buf, err)
-val d0e = p_d0exp(buf, err)
+val teq = popt_EQ(buf, err)
 //
-val wopt = p_wths0expopt(buf, err)
+in
+//
+case+ teq of
+|
+None() =>
+let
+val dopt = None()
+val wopt = WTHS0EXPnone()
+val loc0 = nam.loc((*void*))
+val loc1 =
+(
+case+ res of
+|
+EFFS0EXPnone() =>
+(
+case+ arg of
+| list_nil() => loc0
+| list_cons _ =>
+  let
+  val f0a =
+  list_last(arg) in loc0+f0a.loc()
+  end
+)
+|
+EFFS0EXPsome(s0e) => loc0+s0e.loc()
+) : loc_t // end of [val]
+in
+  err := e0;
+  F0UNDECL
+  (@{loc=loc1,nam=nam,arg=arg,res=res,teq=teq,def=dopt,wtp=wopt})
+end
+| Some(tok) =>
+let
+val d0e =
+p_d0exp(buf, err)
+val dopt = Some(d0e)
+val wopt =
+p_wths0expopt(buf, err)
 //
 val loc0 = nam.loc((*void*))
 //
@@ -2996,7 +3058,9 @@ val loc1 =
 in
   err := e0;
   F0UNDECL
-  (@{loc=loc1,nam=nam,arg=arg,res=res,teq=teq,def=d0e,wtp=wopt})
+  (@{loc=loc1,nam=nam,arg=arg,res=res,teq=teq,def=dopt,wtp=wopt})
+end
+//
 end // end of [p_f0undecl]
 //
 implement
@@ -3268,15 +3332,16 @@ abstype ::=
     val loc_res =
     (
     case+ tdef of
-    | ABSTDF0nil() =>
+    | ABSTDF0some() =>
       (
       case+ tmas of
       | list_nil() => loc+sid.loc()
-      | list_cons _ => let
+      | list_cons _ =>
+        let
         val t0ma =
         list_last(tmas) in loc+t0ma.loc()
         end // end of [list_cons]
-      ) (* ABSTDF0nil *)
+      ) (* ABSTDF0some *)
     | ABSTDF0lteq(_, s0e) => loc+s0e.loc()
     | ABSTDF0eqeq(_, s0e) => loc+s0e.loc()
     ) : loc_t // end of [val]

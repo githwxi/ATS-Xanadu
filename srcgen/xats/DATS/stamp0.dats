@@ -50,8 +50,11 @@ stamp_type = ptr
 (* ****** ****** *)
 //
 implement
-stamp2int(x0) =
- $UN.cast{intptr}(x0)
+stamp2uint(x0) =
+$UN.cast{uint}
+(
+$UN.cast{uintptr}(x0)
+)
 //
 (* ****** ****** *)
 //
@@ -63,18 +66,20 @@ eq_stamp_stamp
 )
 //
 (* ****** ****** *)
-
+//
 implement
 print_stamp(x0) =
 fprint_stamp(stdout_ref, x0)
 implement
 prerr_stamp(x0) =
 fprint_stamp(stderr_ref, x0)
-
+//
 implement
 fprint_stamp(out, x0) =
-fprint_intptr(out, stamp2int(x0))
-
+(
+  fprint_uint(out, stamp2uint(x0))
+)
+//
 (* ****** ****** *)
 
 local
@@ -92,7 +97,7 @@ implement
 stamper_set
   (obj, n0) = let
   val n0 =
-  $UN.cast{intptr}(n0)
+  $UN.cast{uintptr}(n0)
 in
   obj[] := $UN.cast{ptr}(n0)
 end // end of [stamper_set]

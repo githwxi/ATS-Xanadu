@@ -38,7 +38,7 @@ script:
   - cd ${PATSHOME}
   - ./configure&&make CC=${GCC} all
   # Building Xanadu
-  - cd $XATSHOME/srcgen
+  - cd ${XATSHOME}/srcgen
   - echo 'running unit-tests...'
   - (cd xutl/TEST && make testall)
   - (cd xutl/TEST/Posix && make testall)

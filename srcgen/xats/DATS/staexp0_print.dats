@@ -736,7 +736,7 @@ case+ x0.node() of
   (tok, s0e) =>
   fprint!(out, "S0Equal(", tok, "; ", s0e, ")")
 //
-| S0Enone(token) => fprint!(out, "S0Enone(", token, ")")
+| S0Enone(tok) => fprint!(out, "S0Enone(", tok, ")")
 //
 ) (* end of [fprint_s0exp] *)
 

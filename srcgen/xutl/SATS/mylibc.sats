@@ -62,8 +62,10 @@ xatsopt_strunq // "<string>" -> <string>
 (* ****** ****** *)
 //
 (*
-int strcmp(const char *s1, const char *s2);
-int strncmp(const char *s1, const char *s2, size_t n);
+int
+strcmp(const char *s1, const char *s2);
+int
+strncmp(const char *s1, const char *s2, size_t n);
 *)
 //
 fun
@@ -83,6 +85,15 @@ xatsopt_getcwd
 fun
 xatsopt_getcwd_gc
   ((*void*)): Strptr0 = "ext#xatsopt_getcwd_gc"
+//
+(* ****** ****** *)
+//
+fun
+xatsopt_getenv
+  (key: string): ptr = "ext#xatsopt_getenv"
+fun
+xatsopt_getenv_gc
+  (key: string): Strptr0 = "ext#xatsopt_getenv_gc"
 //
 (* ****** ****** *)
 //

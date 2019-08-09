@@ -89,7 +89,52 @@ d3exp_make_node
 ) where
 {
   val loc0 = d2e0.loc((*void*))
-  val t2p0 = t2ype_none((*void*))
+  val t2p0 = t2ype_none0((*void*))
+}
+//
+(* ****** ****** *)
+
+local
+
+absimpl
+d3ecl_tbox = $rec
+{
+  d3ecl_loc= loc_t
+, d3ecl_node= d3ecl_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d3ecl_get_loc(x0) = x0.d3ecl_loc
+implement
+d3ecl_get_node(x0) = x0.d3ecl_node
+
+(* ****** ****** *)
+
+implement
+d3ecl_make_node
+(loc, node) = $rec
+{
+  d3ecl_loc= loc, d3ecl_node= node
+} (* end of [d3ecl_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+d3ecl_none1(d2c0) =
+(
+d3ecl_make_node
+(loc0, D3Cnone1(d2c0))
+) where
+{
+  val loc0 = d2c0.loc((*void*))
 }
 //
 (* ****** ****** *)

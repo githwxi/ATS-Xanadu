@@ -55,7 +55,6 @@ overload tail with list_tail
 
 (* ****** ****** *)
 
-
 fun sortbox(x: int): int // 0,1
 fun sortlin(x: int): int // 0,1
 fun sortprf(x: int): int // 0,1
@@ -189,7 +188,13 @@ funkind =
 | FNKpraxi // proof axiom
 //
 | FNKcastfn // casting fun
+//
 // end of [funkind]
+//
+fun
+funkind_isprf(funkind): bool
+fun
+funkind_isrec(funkind): bool
 //
 fun
 fprint_funkind:fprint_type(funkind)
@@ -228,7 +233,7 @@ funclo2 =
 | FC2fun of ((*fun*))
 | FC2clo of int(*knd*) // closure: knd=1/0/~1: ptr/clo/ref
 //
-val FC2clo_: funclo2 // flat
+val FC2cloflt: funclo2 // flat
 val FC2cloptr: funclo2 // linear
 val FC2cloref: funclo2 // nonlin
 //
@@ -242,6 +247,13 @@ fprint_funclo2: fprint_type(funclo2)
 overload print with print_funclo2
 overload prerr with prerr_funclo2
 overload fprint with fprint_funclo2
+//
+(* ****** ****** *)
+//
+fun
+intsign(rep: string): int(*0/1*)
+fun
+intsize(rep: string): int(*0/1/2*)
 //
 (* ****** ****** *)
 //

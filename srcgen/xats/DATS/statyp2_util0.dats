@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,78 +28,72 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: April, 2019
+// Start Time: August, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-#staload "./basics.sats"
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload S2E = "./staexp2.sats"
-#staload S2T = "./statyp2.sats"
-#staload D2E = "./dynexp2.sats"
+#staload
+STM = "./../SATS/stamp0.sats"
+#staload
+SYM = "./../SATS/symbol.sats"
 //
-#staload D3E = "./dynexp3.sats"
-//
-(* ****** ****** *)
-
-typedef s2exp = $S2E.s2exp
-typedef t2ype = $S2T.t2ype
-
-typedef s2explst = $S2E.s2explst
-typedef t2ypelst = $S2T.t2ypelst
-
-(* ****** ****** *)
-
-typedef d2pat = $D2E.d2pat
-typedef d2exp = $D2E.d2exp
-typedef d2ecl = $D2E.d2ecl
-
-typedef d2patlst = $D2E.d2patlst
-typedef d2expopt = $D2E.d2expopt
-typedef d2explst = $D2E.d2explst
-
-typedef d2eclist = $D2E.d2eclist
-
-(* ****** ****** *)
-
-typedef d3exp = $D3E.d3exp
-typedef d3ecl = $D3E.d3ecl
-
-typedef d3expopt = $D3E.d3expopt
-typedef d3explst = $D3E.d3explst
-typedef d3eclist = $D3E.d3eclist
-
-(* ****** ****** *)
-
-typedef f2undecl = $D2E.f2undecl
-typedef v2aldecl = $D2E.v2aldecl
-typedef v2ardecl = $D2E.v2ardecl
-
-(* ****** ****** *)
-//
-fun
-trans23_dexp: d2exp -> d3exp 
-fun
-trans23_dexpopt: d2expopt -> d3expopt
-fun
-trans23_dexplst: d2explst -> d3explst
+overload
+= with $STM.eq_stamp_stamp
+overload
+= with $SYM.eq_symbol_symbol
 //
 (* ****** ****** *)
 //
-fun
-trans23_dexp_dn
-  (d2e0: d2exp, t2p0: t2ype): (d3exp)
+#staload "./../SATS/basics.sats"
+//
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
 
-fun
-trans23_decl: d2ecl -> d3ecl 
-fun
-trans23_declist: d2eclist -> d3eclist
+implement
+sort2_erase(s2t0) =
+(
+case+ s2t0 of
+| _ (* else *) => T2Snone0()
+)
 
 (* ****** ****** *)
 
-(* end of [xats_trans23.sats] *)
+implement
+s2exp_erase(s2e0) =
+let
+(*
+val
+t2s0 =
+sort2_erase(s2e0.sort())
+*)
+in
+case-
+s2e0.node() of
+//
+| S2Ecst(s2c) => t2ype_cst(s2c)
+| S2Evar(s2v) => t2ype_var(s2v)
+//
+| S2Eexi
+  (s2vs, s2ps, body) =>
+  t2ype_exi(s2vs, s2exp_erase(body))
+| S2Euni
+  (s2vs, s2ps, body) =>
+  t2ype_uni(s2vs, s2exp_erase(body))
+//
+| _ (*rest-of-s2exp*) => t2ype_none1(s2e0)
+//
+end (* end of [s2exp_erase] *)
+
+(* ****** ****** *)
+
+(* end of [xats_statyp2_util0.dats] *)

@@ -261,6 +261,9 @@ p_ENDLOCAL: parser(token)
 (* ****** ****** *)
 //
 fun
+popt_EQ: parser(tokenopt)
+//
+fun
 popt_IN: parser(tokenopt)
 //
 fun
