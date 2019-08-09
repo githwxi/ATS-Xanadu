@@ -331,7 +331,7 @@ d1exp_get_node(x0) = x0.d1exp_node
 implement
 d1exp_none
 (loc) =
-d1exp_make_node(loc, D1Enone())
+d1exp_make_node(loc, D1Enone(loc))
 implement
 d1exp_make_node
 (loc, node) = $rec
@@ -506,6 +506,7 @@ end // end of [d1cstdecl_get_loc]
 
 (* ****** ****** *)
 
+(*
 implement
 f1undecl_classify
   (f1d0) = let
@@ -516,18 +517,14 @@ F1UNDECL(rcd) = f1d0
 in
 //
 (
-case+
-d1e0.node() of
-| D1Enone() => 0
-| _ (*rest-of-d1exp*) => 1
+case+ dopt of
+| None() => 0 | Some(d1e) => 1
 ) where
 {
-  val d1e0 = rcd.def
+  val dopt = rcd.def
 }
 //
 end // end of [f1undecl_classify]
-
-(* ****** ****** *)
 
 implement
 v1aldecl_classify
@@ -539,16 +536,15 @@ V1ALDECL(rcd) = v1d0
 in
 //
 (
-case+
-d1e0.node() of
-| D1Enone() => 0
-| _ (*rest-of-d1exp*) => 1
+case+ dopt of
+| None() => 0 | Some(d1e) => 1
 ) where
 {
-  val d1e0 = rcd.def
+  val dopt = rcd.def
 }
 //
 end // end of [v1aldecl_classify]
+*)
 
 (* ****** ****** *)
 

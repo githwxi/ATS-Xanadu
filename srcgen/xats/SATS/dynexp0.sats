@@ -497,7 +497,7 @@ d0exp_node =
 //
 | D0Equal of (token, d0exp) // qualified
 //
-| D0Enone of (token) // HX-2018-07-08: indicating error 
+| D0Enone of (token) // HX: for error indication
 // end of [d0exp_node]
 
 (* ****** ****** *)
@@ -772,12 +772,24 @@ declmodopt =
     (token(*COLON*), token, i0dntlst(*ids*), token)
   // end of [DECLMODlist]
 //
+(* ****** ****** *)
+//
 fun
-print_declmodopt: print_type(declmodopt)
+declmodopt_rec(declmodopt): int
 fun
-prerr_declmodopt: prerr_type(declmodopt)
+declmodopt_tlrec(declmodopt): int
+//
+(* ****** ****** *)
+//
 fun
-fprint_declmodopt: fprint_type(declmodopt)
+print_declmodopt:
+print_type(declmodopt)
+fun
+prerr_declmodopt:
+prerr_type(declmodopt)
+fun
+fprint_declmodopt:
+fprint_type(declmodopt)
 //
 overload print with print_declmodopt
 overload prerr with prerr_declmodopt
@@ -829,8 +841,8 @@ v0aldecl =
 V0ALDECL of @{
   loc= loc_t
 , pat= d0pat
-, teq= token
-, def= d0exp
+, teq= tokenopt
+, def= d0expopt
 , wtp= wths0expopt
 }
 //
@@ -897,8 +909,8 @@ F0UNDECL of @{
 , nam= d0pid
 , arg= f0arglst
 , res= effs0expopt
-, teq= token
-, def= d0exp
+, teq= tokenopt
+, def= d0expopt
 , wtp= wths0expopt
 } (* f0undecl *)
 //
@@ -1093,7 +1105,7 @@ signint =
 
 and
 abstdf0 =
-| ABSTDF0nil of () // unspecified
+| ABSTDF0some of () // unspecified
 | ABSTDF0lteq of (token(*"<="*), s0exp)
 | ABSTDF0eqeq of (token(*"=="*), s0exp)
 

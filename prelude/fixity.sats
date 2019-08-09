@@ -52,36 +52,18 @@ VERBOSE_FIXITY
 
 (* ****** ****** *)
 //
-(*
-#prefix ! of 00 (* static *)
-*)
+#prefix
+! of 69 (* stadyn *)
+#prefix
+& of 69 (* stadyn *)
+#prefix
+? of 69 (* static *)
 //
-#prefix ! of 99 (* dynamic *)
-//
-(* ****** ****** *)
-
-(*
-#postfix .lab of 80 // dynamic
-#postfix ->lab of 80 // dynamic
-*)
-
-(* ****** ****** *)
-
-(*
-#prefix & of 79 // dynamic
-*)
-
 (* ****** ****** *)
 
 (*
 #infixl
-app of 70 // the app_prcdv
-*)
-
-(* ****** ****** *)
-
-(*
-#postfix ? of 69 // static?
+app of 70 // app_prcdv
 *)
 
 (* ****** ****** *)

@@ -58,8 +58,208 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload
+_(*TMP*) = "./../DATS/staexp2_print.dats"
+#staload
+_(*TMP*) = "./../DATS/dynexp2_print.dats"
+#staload
 _(*TMP*) = "./../DATS/t2xread_staexp.dats"
 
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_d2cst
+  (d2c0) = let
+//
+val
+loc0 = d2c0.loc((*void*))
+val
+s2e0 = d2cst_get_sexp(d2c0)
+//
+val () = t2xread_s2exp(s2e0)
+//
+in
+  // nothing
+end // end of [t2xread_d2cst]
+//
+implement
+{}(*tmp*)
+t2xread_d2cstlst(d2cs) =
+(
+list_foreach<d2cst>(d2cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d2cst><env>(d2c, env) = t2xread_d2cst<>(d2c)
+} (* end of [t2xread_d2cstlst] *)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+t2xread_d2pat
+  (d2p0) = let
+//
+val loc0 = d2p0.loc((*void*))
+//
+in
+//
+case+
+d2p0.node() of
+//
+| D2Pany() => ()
+//
+| D2Pnone0() => ((*void*))
+//
+| D2Pnone1(_) =>
+  let
+    val () =
+    t2xerr_add(T2XERRd2pat(d2p0))
+  in
+    prerrln!(loc0, ": T2XERR(d2pat): ", d2p0);
+  end // end of [D2Pnone1]
+//
+| D2Ptuple
+  (knd, npf, d2ps) =>
+  {
+    val () =
+    t2xread_d2patlst<>(d2ps)
+  }
+//
+| D2Panno(d2p1, s2e2) =>
+  {
+    val () = t2xread_s2exp<>(s2e2)
+    val () = t2xread_d2pat<>(d2p1)
+  }
+//
+| _(* rest-of-d2pat *) =>
+  (
+    prerrln!(loc0, ": t2xread_d2pat: d2p0 = ", d2p0)
+  )
+//
+end // end of [t2xread_d2pat]
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_d2patopt(opt) =
+(
+case+ opt of
+| None() => ()
+| Some(d2p) => t2xread_d2pat<>(d2p)
+)
+//
+implement
+{}(*tmp*)
+t2xread_d2patlst(d2ps) =
+(
+list_foreach<d2pat>(d2ps)
+) where
+{
+implement(env)
+list_foreach$fwork<d2pat><env>(d2p, env) = t2xread_d2pat<>(d2p)
+} (* end of [t2xread_d2patlst] *)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+t2xread_d2exp
+  (d2e0) = let
+//
+val loc0 = d2e0.loc((*void*))
+//
+in
+//
+case+
+d2e0.node() of
+//
+| D2Eint(tok) => ()
+| D2Echr(tok) => ()
+| D2Eflt(tok) => ()
+| D2Estr(tok) => ()
+//
+| D2Evar(d2v) => ()
+//
+| D2Econ1(d2c) => ()
+| D2Ecst1(d2c) => ()
+//
+| D2Econ2(d2cs) => ()
+| D2Ecst2(d2cs) => ()
+//
+| D2Esapp
+  (d2e1, s2es) =>
+  {
+    val () = t2xread_d2exp(d2e1)
+    val () = t2xread_s2explst(s2es)
+  }
+| D2Etapp
+  (d2e1, s2es) =>
+  {
+    val () = t2xread_d2exp(d2e1)
+    val () = t2xread_s2explst(s2es)
+  }
+| D2Edapp
+  (d2e1, npf, d2es) =>
+  {
+    val () = t2xread_d2exp(d2e1)
+    val () = t2xread_d2explst(d2es)
+  }
+//
+| D2Eif0
+  (d2e1, d2e2, opt3) =>
+  {
+    val () = t2xread_d2exp(d2e1)
+    val () = t2xread_d2exp(d2e2)
+    val () = t2xread_d2expopt(opt3)
+  }
+//
+| D2Eanno(d2e1, s2e2) =>
+  {
+    val () = t2xread_d2exp(d2e1)
+    val () = t2xread_s2exp(s2e2)
+  }
+//
+| D2Enone0() => ((*void*))
+//
+| D2Enone1(_) =>
+  let
+    val () =
+    t2xerr_add(T2XERRd2exp(d2e0))
+  in
+    prerrln!(loc0, ": T2XERR(d2exp): ", d2e0);
+  end // end of [D1Cnone]
+//
+| _(* rest-of-d2exp *) =>
+  (
+    prerrln!(loc0, ": t2xread_d2exp: d2e0 = ", d2e0)
+  )
+//
+end // end of [t2xread_d2exp]
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_d2expopt(opt) =
+(
+case+ opt of
+| None() => ()
+| Some(d2e) => t2xread_d2exp<>(d2e)
+)
+//
+implement
+{}(*tmp*)
+t2xread_d2explst(d2es) =
+(
+list_foreach<d2exp>(d2es)
+) where
+{
+implement(env)
+list_foreach$fwork<d2exp><env>(d2e, env) = t2xread_d2exp<>(d2e)
+} (* end of [t2xread_d2explst] *)
+//
 (* ****** ****** *)
 
 implement
@@ -80,14 +280,134 @@ in
 case+
 d2c0.node() of
 //
-| D2Cabsimpl
-  (knd, d2c, s2e) =>
+| D2Cstatic
+  (tok, d2c) =>
   {
-    val () = t2xread_s2exp<>(s2e)
+    val () = t2xread_d2ecl<>(d2c)
   }
+| D2Cextern
+  (tok, d2c) =>
+  {
+    val () = t2xread_d2ecl<>(d2c)
+  }
+//
+| D2Cstacst0(s2c, s2t) =>
+  {
+    val () = t2xread_s2cst<>(s2c)
+    val () = t2xread_sort2<>(s2t)
+  }
+//
+| D2Csexpdef(s2c, def) =>
+  {
+(*
+    val
+    def =
+    s2cst_get_def(s2c)
+    val () =
+    assertloc(isneqz(def))
+    val
+    def = unsome(def)
+*)
+//
+    val () = t2xread_s2exp<>(def)
+//
+(*
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cs2expdef: s2c = ", s2c)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cs2expdef: s2c.def = ", def)
+*)
+//
+  }
+//
+| D2Cabstype(s2c, df2) =>
+  {
+//
+    val () = t2xread_abstdf2<>(df2)
+//
+(*
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c = ", s2c)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c.def = ", df2)  
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabstype: s2c.sort = ", s2c.sort())
+*)
+//
+  }
+//
+| D2Cabsimpl
+  (knd, scs, def) =>
+  {
+//
+    val () = t2xread_s2exp<>(def)
+//
+(*
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabsimpl: scs = ", scs)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabsimpl: def = ", def)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cabsimpl: def.sort = ", def.sort())
+*)
+//
+  }
+//
+| D2Csymload
+  (tok, sym0, dpi1) =>
+  (
+  case+ dpi1 of
+  | D2PITMnone(dqid) =>
+    let
+    val () =
+    t2xerr_add(T2XERRd2ecl(d2c0))
+    in
+      prerrln!(loc0, ": T2XERR(d2ecl): ", d2c0);
+    end // end of [D1Cnone]
+  | D2PITMsome(_, _) => ((*void*))
+  )
+//
+| D2Cfundecl
+  (knd, mopt, tqas, f2ds) =>
+  {
+    val () = t2xread_tq2arglst<>(tqas)
+    val () = t2xread_f2undeclist<>(f2ds)
+(*
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cfundecl: tqas = ", tqas)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cfundecl: f2ds = ", f2ds)
+*)
+  }
+//
+| D2Cdynconst
+  (knd, tqas, d2cs) =>
+  {
+    val () = t2xread_d2cstlst<>(d2cs)
+    val () = t2xread_tq2arglst<>(tqas)
+(*
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cdynconst: tqas = ", tqas)
+    val () =
+    println!
+    ("t2xread_d2ecl: D2Cdynconst: d2cs = ", d2cs)
+*)
+  }
+//
 | _(* rest-of-d2ecl *) =>
   (
-    prerrln!("t2xread_d2ecl: d2c0 = ", d2c0)
+    prerrln!(loc0, ": t2xread_d2ecl: d2c0 = ", d2c0)
   )
 //
 end // end of [t2xread_d2ecl]
@@ -106,6 +426,96 @@ list_foreach$fwork<d2ecl><env>(d2c, env) = t2xread_d2ecl<>(d2c)
 } (* end of [t2xread_d2eclist] *)
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_f2arg
+  (f2a0) =
+(
+case+
+f2a0.node() of
+| F2ARGsome_dyn
+  (npf, d2ps) =>
+  {
+    val () = t2xread_d2patlst<>(d2ps)
+  }
+| F2ARGsome_sta
+  (s2vs, s2ps) =>
+  {
+    val () = t2xread_s2varlst<>(s2vs)
+    val () = t2xread_s2explst<>(s2ps)
+  }
+//
+| F2ARGsome_met(s2es) =>
+  {
+    val () = t2xread_s2explst<>(s2es)
+  }
+)
+//
+implement
+{}(*tmp*)
+t2xread_f2arglst(f2as) =
+(
+list_foreach<f2arg>(f2as)
+) where
+{
+implement(env)
+list_foreach$fwork<f2arg><env>(f2a, env) = t2xread_f2arg<>(f2a)
+} (* end of [t2xread_f2arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_tq2arg
+  (tq2a) =
+(
+  t2xread_s2varlst(tq2a.s2vs())
+)
+//
+implement
+{}(*tmp*)
+t2xread_tq2arglst(tqas) =
+(
+list_foreach<tq2arg>(tqas)
+) where
+{
+implement(env)
+list_foreach$fwork<tq2arg><env>(tq2a, env) = t2xread_tq2arg<>(tq2a)
+} (* end of [t2xread_tq2arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_f2undecl
+  (f2d0) =
+{
+  val () =
+  t2xread_d2expopt(rcd.def)
+  val () =
+  t2xread_f2arglst(rcd.arg)
+  val () =
+  t2xread_s2expopt(rcd.wtp)
+} where
+{
+//
+  val+F2UNDECL(rcd) = f2d0
+//
+} (* end of [t2xread_f2undecl] *)
+//
+implement
+{}(*tmp*)
+t2xread_f2undeclist(f2ds) =
+(
+list_foreach<f2undecl>(f2ds)
+) where
+{
+implement(env)
+list_foreach$fwork<f2undecl><env>(f2ds, env) = t2xread_f2undecl<>(f2ds)
+} (* end of [t2xread_f2undeclist] *)
+//
+(* ****** ****** *)
 
 local
 
@@ -121,10 +531,10 @@ implement
 t2xerr_add(xerr) = let
 //
 val
-xerrs = the_t2xerrlst_get()
+xerrs = the_t2xerrlst_get<>()
 //
 in
-  the_t2xerrlst_set(list_cons(xerr, xerrs))
+  the_t2xerrlst_set<>(list_cons(xerr, xerrs))
 end // end of [t2xerr_add]
 
 in (* in-of-local *)
@@ -150,7 +560,7 @@ end // end of [local]
 val () =
 t2xread_d2eclist<>(d2cs)
 val
-xerrs = the_t2xerrlst_get()
+xerrs = the_t2xerrlst_get<>()
 val
 nxerr = list_length<t2xerr>(xerrs)
 //

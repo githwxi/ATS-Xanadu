@@ -184,7 +184,36 @@ case+ s2t0 of
 ) (* end of [sort2_is_fun] *)
 
 (* ****** ****** *)
-
+//
+implement
+sort2_is_proof
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASimp
+  (k0, _) => sortprf(k0) <= 1
+| _ => false
+)
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_proof] *)
+implement
+sort2_is_tcode
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+(
+case+ s2tb of
+| T2BASimp
+  (k0, _) => sortprf(k0) <= 0
+| _ => false
+)
+| _ (* non-S2Tbas *) => false
+) (* end of [sort2_is_tcode] *)
+//
 implement
 sort2_is_impred
   (s2t0) =
@@ -197,7 +226,7 @@ case+ s2t0 of
 )
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_impred] *)
-
+//
 (* ****** ****** *)
 //
 (*
@@ -393,57 +422,6 @@ end // end of [local]
 local
 
 absimpl
-s2cst_tbox = $rec{
-//
-  s2cst_loc= loc_t // loc
-, s2cst_sym= sym_t // name
-, s2cst_sort= sort2 // sort
-, s2cst_stamp= stamp // unicity
-//
-} (* end of [s2cst_tbox] *)
-
-in (* in-of-local *)
-
-implement
-s2cst_make_idst
-  (tok, s2t) =
-(
-$rec{
-  s2cst_loc= loc
-, s2cst_sym= sid
-, s2cst_sort= s2t
-, s2cst_stamp= stamp
-}
-) where
-{
-  val loc = tok.loc()
-  val sid = sexpid_sym(tok)
-//
-  val
-  stamp = s2cst_stamp_new((*void*))
-//
-} (* s2cst_make_idst *)
-
-(* ****** ****** *)
-
-implement
-s2cst_get_loc(x0) = x0.s2cst_loc
-implement
-s2cst_get_sym(x0) = x0.s2cst_sym
-implement
-s2cst_get_sort(x0) = x0.s2cst_sort
-implement
-s2cst_get_stamp(x0) = x0.s2cst_stamp
-
-(* ****** ****** *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
 s2var_tbox = $rec{
 //
   s2var_sym= sym_t // name
@@ -518,6 +496,51 @@ end // end of [s2exp_var]
 (* ****** ****** *)
 //
 implement
+s2exp_cprf
+(loc, s2e) = let
+//
+(*
+val () =
+println!("s2exp_cprf: s2e = ", s2e)
+*)
+//
+val s2t = the_sort2_prop
+//
+in
+  s2exp_make_node(s2t, S2Ecprf(loc, s2e))
+end // end of [s2exp_cprf]
+//
+implement
+s2exp_ctcd
+(loc, s2e) = let
+//
+(*
+val () =
+println!("s2exp_ctcd: s2e = ", s2e)
+*)
+//
+val s2t = the_sort2_type
+//
+in
+  s2exp_make_node(s2t, S2Ectcd(loc, s2e))
+end // end of [s2exp_ctcd]
+//
+implement
+s2exp_cimp
+(loc, s2e) = let
+//
+(*
+val () =
+println!("s2exp_cimp: s2e = ", s2e)
+*)
+//
+val s2t = the_sort2_type
+//
+in
+  s2exp_make_node(s2t, S2Ecimp(loc, s2e))
+end // end of [s2exp_cimp]
+//
+implement
 s2exp_cast
 (loc, s2e, s2t) = let
 //
@@ -582,6 +605,29 @@ s2exp_app2
   s2exp_apps(loc0, s2f0, list_pair(s2a1, s2a2))
 )
 //
+(* ****** ****** *)
+
+implement
+s2exp_arg
+(knd, s2e) =
+(
+s2exp_make_node
+(s2t, S2Earg(knd, s2e))
+) where
+{
+  val s2t = s2e.sort((*void*))
+}
+implement
+s2exp_atx
+(bef, aft) =
+(
+s2exp_make_node
+(s2t, S2Eatx(bef, aft))
+) where
+{
+  val s2t = bef.sort((*void*))
+}
+
 (* ****** ****** *)
 //
 implement
@@ -654,29 +700,14 @@ end (* end of [s2exp_lam] *)
 (* ****** ****** *)
 
 implement
-s2exp_uni
-(s2vs, s2ps, body) = let
-//
-val
-isnil =
-(
-  list_is_nil(s2vs)
-  &&
-  list_is_nil(s2ps)
-)
-//
-in
-//
-if
-isnil
-then body
-else let
+s2exp_met
+(s2es, body) = let
   val s2t0 = body.sort()
 in
-  s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
-end // end of [else]
-//
-end // end of [s2exp_uni]
+  s2exp_make_node(s2t0, S2Emet(s2es, body))
+end // end of [s2exp_met]
+
+(* ****** ****** *)
 
 implement
 s2exp_exi
@@ -702,6 +733,31 @@ in
 end // end of [else]
 //
 end // end of [s2exp_exi]
+
+implement
+s2exp_uni
+(s2vs, s2ps, body) = let
+//
+val
+isnil =
+(
+  list_is_nil(s2vs)
+  &&
+  list_is_nil(s2ps)
+)
+//
+in
+//
+if
+isnil
+then body
+else let
+  val s2t0 = body.sort()
+in
+  s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
+end // end of [else]
+//
+end // end of [s2exp_uni]
 
 (* ****** ****** *)
 
@@ -962,15 +1018,15 @@ s2exp_tyext
 (* ****** ****** *)
 //
 implement
-s2exp_none0(loc) =
-s2exp_none0_s2t(loc, S2Tnone0())
+s2exp_none0() =
+s2exp_none0_s2t(S2Tnone0())
 implement
 s2exp_none1(s1e) =
 s2exp_none1_s2t(s1e, S2Tnone0())
 //
 implement
-s2exp_none0_s2t(loc, s2t) =
-s2exp_make_node(s2t, S2Enone0(loc))
+s2exp_none0_s2t(s2t) =
+s2exp_make_node(s2t, S2Enone0())
 implement
 s2exp_none1_s2t(s1e, s2t) =
 s2exp_make_node(s2t, S2Enone1(s1e))

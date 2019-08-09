@@ -872,7 +872,6 @@ s0exp_node =
   // end of [S0Equal]
 //
 | S0Enone of (token) // HX-2018-07-08: indicating error 
-// end of [s0exp_node]
 //
 and
 s0exp_RPAREN =

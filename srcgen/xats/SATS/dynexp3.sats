@@ -57,9 +57,11 @@ datatype
 d3exp_node =
 //
 | D3Eint of (token)
+| D3Echr of (token)
+| D3Eflt of (token)
 | D3Estr of (token)
 //
-| D2Evar of (d2var)
+| D3Evar of (d2var)
 //
 | D3Etuple of
   (int(*knd*), int(*npf*), d3explst)
@@ -118,6 +120,68 @@ fprint_d3exp: fprint_type(d3exp)
 overload print with print_d3exp
 overload prerr with prerr_d3exp
 overload fprint with fprint_d3exp
+//
+(* ****** ****** *)
+//
+datatype
+f3undecl =
+F3UNDECL of @{
+  loc= loc_t
+, nam= d2var
+, arg= f2arglst
+, res= effs2expopt
+, def= d3expopt, wtp= s2expopt
+}
+//
+typedef
+f3undeclist = List0(f3undecl)
+//
+(* ****** ****** *)
+//
+fun
+f3undecl_get_loc(f3undecl): loc_t
+//
+overload .loc with f3undecl_get_loc
+//
+(* ****** ****** *)
+
+abstbox d3ecl_tbox = ptr
+typedef d3ecl = d3ecl_tbox
+typedef d3eclist = List0(d3ecl)
+typedef d3eclopt = Option(d3ecl)
+
+(* ****** ****** *)
+//
+datatype
+d3ecl_node =
+//
+| D3Cnone0 of ()
+| D3Cnone1 of (d2ecl)
+//
+| D3Cfundecl of
+  ( token(*funkind*)
+  , declmodopt, tq2arglst(*tmpargs*), f3undeclist)
+//
+// end of [d3ecl_node]
+//
+(* ****** ****** *)
+//
+fun
+d3ecl_get_loc(d3ecl): loc_t
+fun
+d3ecl_get_node(d3ecl): d3ecl_node
+//
+overload .loc with d3ecl_get_loc
+overload .node with d3ecl_get_node
+//
+(* ****** ****** *)
+//
+fun d3ecl_none0(loc_t): d3ecl
+fun d3ecl_none1(d2ecl): d3ecl
+//
+fun
+d3ecl_make_node
+(loc: loc_t, node: d3ecl_node): d3ecl
 //
 (* ****** ****** *)
 

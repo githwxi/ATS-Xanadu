@@ -76,6 +76,7 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 
 #staload "./staexp2.sats"
+#staload "./statyp2.sats"
 
 (* ****** ****** *)
 //
@@ -154,12 +155,18 @@ overload .sym with d2var_get_sym
 (* ****** ****** *)
 //
 fun
-d2con_get_type(d2con): s2exp
+d2con_get_sexp(d2con): s2exp
 fun
-d2cst_get_type(d2cst): s2exp
+d2cst_get_sexp(d2cst): s2exp
+fun
+d2var_get_sexp(d2var): s2exp
+fun
+d2var_get_type(d2var): t2ype
 //
-overload .type with d2con_get_type
-overload .type with d2cst_get_type
+overload .sexp with d2con_get_sexp
+overload .sexp with d2cst_get_sexp
+overload .sexp with d2var_get_sexp
+overload .type with d2var_get_type
 //
 (* ****** ****** *)
 //
@@ -183,6 +190,8 @@ d2con_make_idtp
 fun
 d2cst_make_idtp
 (id: token, s2e: s2exp): d2cst
+fun
+d2cst_make_dvar(d2v: d2var): d2cst
 //
 (* ****** ****** *)
 //
@@ -400,7 +409,7 @@ datatype d2itm =
 //
 and
 d2pitm =
-| D2PITMnone of (int(*pval*))
+| D2PITMnone of (dq0eid)
 | D2PITMsome of (int(*pval*), d2itm)
 //
 where
@@ -763,7 +772,7 @@ v2aldecl =
 V2ALDECL of @{
   loc= loc_t
 , pat= d2pat
-, def= d2exp
+, def= d2expopt
 , wtp= s2expopt
 }
 //
@@ -830,7 +839,7 @@ F2UNDECL of @{
 , nam= d2var
 , arg= f2arglst
 , res= effs2expopt
-, def= d2exp, wtp= s2expopt
+, def= d2expopt, wtp= s2expopt
 }
 //
 typedef
@@ -876,17 +885,31 @@ d2ecl_node =
 | D2Clocal of
   (d2eclist(*head*), d2eclist(*body*))
 //
-| D2Cabssort of (d1ecl)
-| D2Cstacst0 of (d1ecl)
-| D2Csortdef of (d1ecl)
+| D2Cabssort of (sym_t)
+//
+| D2Cstacst0 of (s2cst, sort2)
+//
+| D2Csortdef of (sym_t, s2txt)
+//
+(*
 | D2Csexpdef of (d1ecl)
+*)
+| D2Csexpdef of (s2cst, s2exp)
+//
+(*
 | D2Cabstype of (d1ecl)
+*)
+| D2Cabstype of (s2cst, abstdf2)
 //
 (*
 | D2Cabsimpl of (d1ecl)
 *)
 | D2Cabsimpl of
   ( token(*kind*), absimplcst, s2exp(*def*))
+//
+| D2Csymload of
+  ( token(*symload*)
+  , sym_t(*loaded*), d2pitm(*loading*))
 //
 | D2Cvaldecl of
   ( token(*valkind*), declmodopt, v2aldeclist)
@@ -895,15 +918,13 @@ d2ecl_node =
   ( token(*funkind*)
   , declmodopt, tq2arglst(*tmpargs*), f2undeclist)
 //
+| D2Cvardecl of (token(*knd*), v2ardeclist)
+//
 | D2Cimpdecl of
   ( token(*impkind*)
   , declmodopt
   , sq2arglst, tq2arglst
   , impdeclcst, ti2arglst, f2arglst, effs2expopt, d2exp)
-//
-| D2Csymload of
-  ( token(*symload*)
-  , sym_t(*loaded*), d2pitm(*loading*))
 //
 | D2Cdatasort of (d1ecl)
 | D2Cdatatype of (d1ecl)
@@ -911,15 +932,15 @@ d2ecl_node =
 | D2Cdynconst of
   (token(*kind*), tq2arglst, d2cstlst)
 //
-| D2Cvardecl of (token(*knd*), v2ardeclist)
-//
 // end of [d2ecl_node]
 //
+(*
 and
 abstdf2 =
   | ABSTDF2nil of () // unspecified
   | ABSTDF2lteq of s2exp // erasure
   | ABSTDF2eqeq of s2exp // definition
+*)
 //
 and
 absimplcst =
@@ -992,6 +1013,20 @@ fprint_type(impdeclcst)
 overload print with print_impdeclcst
 overload prerr with prerr_impdeclcst
 overload fprint with fprint_impdeclcst
+//
+(* ****** ****** *)
+//
+fun
+s2exp_of_d2pat
+  (d2p0: d2pat): s2exp
+fun
+s2explst_of_d2patlst
+  (d2ps: d2patlst): s2explst
+//
+(* ****** ****** *)
+//
+fun
+s2exp_of_f2undecl(f2undecl): s2exp
 //
 (* ****** ****** *)
 

@@ -64,6 +64,12 @@ val BAR_symbol : symbol // symbol("|")
 val CLN_symbol : symbol // symbol(":")
 //
 (* ****** ****** *)
+
+val CBV_symbol : symbol // symbol("!")
+val CBR_symbol : symbol // symbol("&")
+val AXT_symbol : symbol // symbol(">>")
+
+(* ****** ****** *)
 //
 val ADD_symbol : symbol // SYMBOL("+")
 val SUB_symbol : symbol // SYMBOL("-")
@@ -139,6 +145,17 @@ val VTYPE_symbol : symbol // vtype sort
 //
 (* ****** ****** *)
 
+val LIN_symbol : symbol // lin
+
+(* ****** ****** *)
+
+val CLO_symbol : symbol // clo
+val CLOFLT_symbol : symbol // cloft
+val CLOPTR_symbol : symbol // cloptr
+val CLOREF_symbol : symbol // cloref
+
+(* ****** ****** *)
+
 val DLR_EXTYPE_symbol : symbol // $extype
 
 (* ****** ****** *)
@@ -198,7 +215,7 @@ overload compare with compare_symbol_symbol
 //
 (* ****** ****** *)
 //
-fun stamp_to_symbol(stamp: uint): symbolopt_vt
+fun symbol_of_stamp(stamp: uint): symbolopt_vt
 //
 (* ****** ****** *)
 

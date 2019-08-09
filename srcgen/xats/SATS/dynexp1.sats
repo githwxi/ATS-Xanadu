@@ -557,7 +557,7 @@ d1exp_node =
 //
 | D1Equal of (token(*qual*), d1exp) // qualified
 //
-| D1Enone of () // HX-2018-09-25: indicating error 
+| D1Enone of (loc_t) // HX: for error indication
 // end of [d1exp_node]
 //
 and
@@ -654,8 +654,8 @@ v1aldecl =
 V1ALDECL of @{
   loc= loc_t
 , pat= d1pat
-, teq= token
-, def= d1exp
+, teq= tokenopt
+, def= d1expopt
 , wtp= wths1expopt
 }
 //
@@ -716,8 +716,8 @@ F1UNDECL of @{
 , nam= token
 , arg= f1arglst
 , res= effs1expopt
-, teq= token
-, def= d1exp
+, teq= tokenopt
+, def= d1expopt
 , wtp= wths1expopt
 }
 //
@@ -883,7 +883,7 @@ d1ecl_node =
 //
 and
 abstdf1 =
-  | ABSTDF1nil of () // unspecified
+  | ABSTDF1some of () // unspecified
   | ABSTDF1lteq of s1exp // erasure
   | ABSTDF1eqeq of s1exp // definition
 //
@@ -947,6 +947,12 @@ overload fprint with fprint_wd1eclseq
 (* ****** ****** *)
 //
 (*
+//
+// HX-2019-07-22:
+// Should this be done
+// at level-2?
+//
+(*
 // HX-2019-01-15:
 // kind=0: interface only
 // kind=1: interface+definition
@@ -956,6 +962,8 @@ f1undecl_classify(f1d0: f1undecl): int
 //
 fun
 v1aldecl_classify(v1d0: v1aldecl): int
+//
+*)
 //
 (* ****** ****** *)
 

@@ -301,6 +301,35 @@ end // end of [local]
 *)
 
 (* ****** ****** *)
+//
+implement
+print_abstdf2
+  (x0) =
+(
+fprint_abstdf2(stdout_ref, x0)
+)
+implement
+prerr_abstdf2
+  (x0) =
+(
+fprint_abstdf2(stderr_ref, x0)
+)
+implement
+fprint_abstdf2
+  (out, x0) =
+(
+case+ x0 of
+| ABSTDF2none() =>
+  fprint!(out, "ABSTDF2none(", ")")
+| ABSTDF2some() =>
+  fprint!(out, "ABSTDF2some(", ")")
+| ABSTDF2lteq(s2e) =>
+  fprint!(out, "ABSTDF2lteq(", s2e, ")")
+| ABSTDF2eqeq(s2e) =>
+  fprint!(out, "ABSTDF2eqeq(", s2e, ")")
+)
+//
+(* ****** ****** *)
 
 implement
 print_effs2expopt
@@ -356,7 +385,9 @@ case+ s2tx of
 | S2TXTsub(s2v, s2ps) =>
   fprint!(out, "S2TXTsub(", s2v, "; ", s2ps, ")")
 //
-| S2TXTerr((*void*)) => fprint!(out, "S2TXTerr()")
+(*
+| S2TXTerr(loc0) => fprint!(out, "S2TXTerr(...)")
+*)
 //
 ) (* end of [fprint_s2txt] *)
 
@@ -445,6 +476,17 @@ s2e0.node() of
   ( out
   , "S2Elam(", s2vs, "; ", body, ")")
 //
+| S2Etop(knd, s2e) =>
+  fprint!
+  (out, "S2Etop(", knd, "; ", s2e, ")")
+//
+| S2Earg(knd, s2e) =>
+  fprint!
+  (out, "S2Earg(", knd, "; ", s2e, ")")
+| S2Eatx(bef, aft) =>
+  fprint!
+  (out, "S2Eatx(", bef, "; ", aft, ")")
+//
 | S2Efun
   (fc2, lin, npf, arg, res) =>
   fprint!
@@ -452,30 +494,44 @@ s2e0.node() of
   , fc2, "; ", lin, "; ", npf, "; ", arg, "; ", res, ")"
   )
 //
-| S2Etop(knd, s2e) =>
+| S2Ecimp(loc, s2e) =>
   fprint!
   ( out
-  , "S2Etop(", knd, "; ", s2e, ")")
-//
+  , "S2Ecimp(", s2e, ":", s2e.sort(), ")")
+| S2Ecprf(loc, s2e) =>
+  fprint!
+  ( out
+  , "S2Ecprf(", s2e, ":", s2e.sort(), ")")
+| S2Ectcd(loc, s2e) =>
+  fprint!
+  ( out
+  , "S2Ectcd(", s2e, ":", s2e.sort(), ")")
 | S2Ecast(loc, s2e, s2t) =>
   fprint!
   ( out
-  , "S2Ecast(", s2e, "; ", s2t, ")")
+  , "S2Ecast(", s2e, ":", s2e.sort(), "; ", s2t, ")")
 (*
   fprint!
-  ( out, "S2Ecast("
+  ( out
+  , "S2Ecast("
   , loc, "; ", s2e, "; ", s2t, ")")
 *)
 //
-| S2Euni
-  (s2vs, s2ps, body) =>
+| S2Emet
+  (s2es, body) =>
   fprint!
-  ( out, "S2Euni("
-  , s2vs, "; ", s2ps, "; ", body, ")")
+  ( out, "S2Emet("
+  , s2es, "; ", body, ")")
+//
 | S2Eexi
   (s2vs, s2ps, body) =>
   fprint!
   ( out, "S2Eexi("
+  , s2vs, "; ", s2ps, "; ", body, ")")
+| S2Euni
+  (s2vs, s2ps, body) =>
+  fprint!
+  ( out, "S2Euni("
   , s2vs, "; ", s2ps, "; ", body, ")")
 //
 (*
@@ -491,8 +547,8 @@ s2e0.node() of
 | S2Etyext(s2es) =>
   fprint!(out, "S2Etyext(", s2es, ")")
 //
-| S2Enone0(loc) =>
-  fprint!(out, "S2Enone0(", loc, ")")
+| S2Enone0() =>
+  fprint!(out, "S2Enone0(", ")")
 | S2Enone1(s1esrc) =>
   fprint!(out, "S2Enone1(", s1esrc, ")")
 ) (* end of [fprint_s2exp] *)

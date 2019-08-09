@@ -1341,7 +1341,7 @@ d0e0.node() of
 | D0Enone(_(*tokerr*)) =>
   FXITMatm(d1e0) where
   {
-    val d1e0 = d1exp_make_node(loc0, D1Enone(*void*))
+    val d1e0 = d1exp_make_node(loc0, D1Enone(loc0))
   } (* end of [D0Enone] *)
 //
 end // end of [auxitm]
@@ -1732,7 +1732,7 @@ teq = rcd.teq
 val
 pat = trans01_dpat(rcd.pat)
 val
-def = trans01_dexp(rcd.def)
+def = trans01_dexpopt(rcd.def)
 val
 wtp = trans01_wthsexpopt(rcd.wtp)
 //
@@ -1858,7 +1858,7 @@ val
 res = trans01_effsexpopt(rcd.res)
 //
 val
-def = trans01_dexp(rcd.def)
+def = trans01_dexpopt(rcd.def)
 val
 wtp = trans01_wthsexpopt(rcd.wtp)
 //
@@ -2599,9 +2599,9 @@ println!("aux_sexpdef: def1 = ", def1)
 *)
 //
 in
-  d1ecl_make_node
-    (loc0, D1Csexpdef(knd, tok, arg1, opt1, def1))
-  // d1ecl_make_node
+d1ecl_make_node
+  (loc0, D1Csexpdef(knd, tok, arg1, opt1, def1))
+// d1ecl_make_node
 end // end of [aux_sexpdef]
 
 (* ****** ****** *)
@@ -2612,8 +2612,8 @@ aux_abstdef
 : abstdf0): abstdf1 =
 (
   case+ def0 of
-  | ABSTDF0nil() =>
-    ABSTDF1nil()
+  | ABSTDF0some() =>
+    ABSTDF1some()
   | ABSTDF0lteq(tok, s0e) =>
     ABSTDF1lteq(trans01_sexp(s0e))
   | ABSTDF0eqeq(tok, s0e) =>

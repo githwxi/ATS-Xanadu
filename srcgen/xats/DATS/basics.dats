@@ -183,6 +183,38 @@ case+ vlk of
 ) (* end of [fprint_valkind] *)
 
 (* ****** ****** *)
+//
+implement
+funkind_isprf
+  (fnk) =
+(
+case+ fnk of
+//
+| FNKprfn0() => true
+| FNKprfn1() => true
+| FNKprfun() => true
+//
+| FNKpraxi() => true
+//
+| _(*rest-of-fnk*) => false
+)
+//
+implement
+funkind_isrec
+  (fnk) =
+(
+case+ fnk of
+| FNKfnx() => true
+| FNKfn1() => true
+| FNKfun() => true
+//
+| FNKprfn1() => true
+| FNKprfun() => true
+//
+| _(*rest-of-fnk*) => false
+)
+//
+(* ****** ****** *)
 
 implement
 fprint_funkind
@@ -221,7 +253,7 @@ case+ knd of
 (* ****** ****** *)
 
 implement
-FC2clo_ = FC2clo(0)
+FC2cloflt = FC2clo(0)
 implement
 FC2cloptr = FC2clo(1)
 implement
@@ -246,6 +278,53 @@ case+ fc2 of
   fprint!(out, "FC2clo(", knd, ")")
 )
 //
+(* ****** ****** *)
+
+implement
+intsign(rep) =
+(
+loop(string2ptr(rep))
+) where
+{
+fun
+loop(p0: ptr): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if iseqz(c0) then 0 else
+(
+if
+toupper(c0) = 'U'
+then 1 else loop(ptr0_succ<char>(p0))
+)
+end
+} (* end of [intsign] *)
+
+(* ****** ****** *)
+
+implement
+intsize(rep) =
+(
+loop(string2ptr(rep), 0)
+) where
+{
+fun
+loop(p0: ptr, r0: int): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if iseqz(c0) then r0 else
+(
+  if
+  toupper(c0) != 'L'
+  then loop(ptr0_succ<char>(p0), r0)
+  else loop(ptr0_succ<char>(p0), r0+1)
+)
+end
+} (* end of [intsign] *)
+
 (* ****** ****** *)
 
 local

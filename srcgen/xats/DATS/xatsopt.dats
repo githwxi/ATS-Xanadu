@@ -57,6 +57,8 @@ FP0 = "./../SATS/filpath.sats"
   fpath_make = $FP0.filpath_make
 //
 #staload
+GLO = "./../SATS/global.sats"
+#staload
 FS0 = "./../SATS/filsrch.sats"
 //
 (* ****** ****** *)
@@ -70,6 +72,11 @@ FS0 = "./../SATS/filsrch.sats"
 //
 #staload "./../SATS/trans12.sats"
 #staload "./../SATS/t2xread.sats"
+//
+#staload "./../SATS/trans23.sats"
+(*
+#staload "./../SATS/t3xread.sats"
+*)
 //
 (* ****** ****** *)
 //
@@ -142,6 +149,8 @@ end // end of [local]
 //
 #dynload "./fixity.dats"
 //
+#dynload "./global.dats"
+//
 #dynload "./xerrory.dats"
 //
 #dynload "./filpath.dats"
@@ -197,7 +206,9 @@ end // end of [local]
 #dynload "./staexp2_util1.dats"
 #dynload "./staexp2_util2.dats"
 //
-#dynload "./staexp2_const.dats"
+#dynload "./staexp2_s2cst.dats"
+//
+#dynload "./statyp2_util0.dats"
 //
 #dynload "./staexp2_print.dats"
 #dynload "./statyp2_print.dats"
@@ -217,6 +228,7 @@ end // end of [local]
 //
 #dynload "./dynexp3_print.dats"
 //
+#dynload "./trans23_util0.dats"
 #dynload "./trans23_dynexp.dats"
 //
 (* ****** ****** *)
@@ -839,7 +851,6 @@ val () = synread_main(d0cs)
 //
 val
 d1cs = trans01_declist(d0cs)
-//
 (*
 val () =
 println!
@@ -850,7 +861,6 @@ val () = t1xread_main(d1cs)
 //
 val
 d2cs = trans12_declist(d1cs)
-//
 (*
 val () =
 println!
@@ -858,6 +868,9 @@ println!
 *)
 //
 val () = t2xread_main(d2cs)
+//
+val
+d3cs = trans23_declist(d2cs)
 //
 val () =
 println!
@@ -1281,7 +1294,7 @@ xatsopt_main0
 //
 val
 XATSHOME =
-"/home/hwxi/Research/ATS-Xanadu"
+$GLO.the_XATSHOME_get((*void*))
 //
 val () = 
 $FP0.the_includes_push(XATSHOME)

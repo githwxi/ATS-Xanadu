@@ -50,7 +50,13 @@ t2xreader
 (* ****** ****** *)
 //
 datatype t2xerr =
+//
+| T2XERRsort2 of (sort2)
+//
+| T2XERRs2txt of (s2txt)
 | T2XERRs2exp of (s2exp)
+| T2XERRd2pat of (d2pat)
+| T2XERRd2exp of (d2exp)
 | T2XERRd2ecl of (d2ecl)
 //
 typedef
@@ -70,18 +76,62 @@ t2xread_main(d2eclist): void
 //
 fun{}
 t2xread_sort2: t2xreader(sort2)
+fun{}
+t2xread_s2txt: t2xreader(s2txt)
 //
 (* ****** ****** *)
 //
 fun{}
+t2xread_s2cst: t2xreader(s2cst)
+fun{}
+t2xread_s2cstlst: t2xreader(s2cstlst)
+//
+fun{}
+t2xread_s2var: t2xreader(s2var)
+fun{}
+t2xread_s2varlst: t2xreader(s2varlst)
+//
+fun{}
 t2xread_s2exp: t2xreader(s2exp)
 fun{}
+t2xread_s2expnul: t2xreader(s2expnul)
+fun{}
+t2xread_s2expopt: t2xreader(s2expopt)
+fun{}
 t2xread_s2explst: t2xreader(s2explst)
+//
+fun{}
+t2xread_labs2exp: t2xreader(labs2exp)
+fun{}
+t2xread_labs2explst: t2xreader(labs2explst)
+//
+(* ****** ****** *)
+
+fun{}
+t2xread_abstdf2: t2xreader(abstdf2)
+
+(* ****** ****** *)
+//
+fun{}
+t2xread_d2cst: t2xreader(d2cst)
+fun{}
+t2xread_d2cstlst: t2xreader(d2cstlst)
+//
+(* ****** ****** *)
+//
+fun{}
+t2xread_d2pat: t2xreader(d2pat)
+fun{}
+t2xread_d2patopt: t2xreader(d2patopt)
+fun{}
+t2xread_d2patlst: t2xreader(d2patlst)
 //
 (* ****** ****** *)
 //
 fun{}
 t2xread_d2exp: t2xreader(d2exp)
+fun{}
+t2xread_d2expopt: t2xreader(d2expopt)
 fun{}
 t2xread_d2explst: t2xreader(d2explst)
 //
@@ -92,6 +142,27 @@ t2xread_d2ecl: t2xreader(d2ecl)
 fun{}
 t2xread_d2eclist: t2xreader(d2eclist)
 //
+(* ****** ****** *)
+
+fun{}
+t2xread_f2arg: t2xreader(f2arg)
+fun{}
+t2xread_f2arglst: t2xreader(f2arglst)
+
+(* ****** ****** *)
+
+fun{}
+t2xread_tq2arg: t2xreader(tq2arg)
+fun{}
+t2xread_tq2arglst: t2xreader(tq2arglst)
+
+(* ****** ****** *)
+
+fun{}
+t2xread_f2undecl: t2xreader(f2undecl)
+fun{}
+t2xread_f2undeclist: t2xreader(f2undeclist)
+
 (* ****** ****** *)
 
 (* end of [xats_t2xread.sats] *)

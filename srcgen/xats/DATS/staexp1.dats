@@ -75,7 +75,7 @@ g1exp_get_node
 implement
 g1exp_none
 (loc) =
-g1exp_make_node(loc, G1Enone())
+g1exp_make_node(loc, G1Enone(loc))
 implement
 g1exp_make_node
 (loc, node) = $rec
@@ -489,7 +489,7 @@ s1exp_get_node
 implement
 s1exp_none
 (loc) =
-s1exp_make_node(loc, S1Enone())
+s1exp_make_node(loc, S1Enone(loc))
 implement
 s1exp_make_node
 (loc, node) = $rec

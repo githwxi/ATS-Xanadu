@@ -40,6 +40,14 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload
+SYM = "./../SATS/symbol.sats"
+//
+overload
+fprint with $SYM.fprint_symbol
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 //
@@ -66,12 +74,33 @@ implement
 fprint_t2ype
   (out, x0) =
 (
-case-
+case+
 x0.node() of
+//
+| T2Pbas(sym) =>
+  fprint!(out, "T2Pbas(", sym, ")")  
 | T2Pcst(s2c) =>
   fprint!(out, "T2Pcst(", s2c, ")")
 | T2Pvar(s2v) =>
   fprint!(out, "T2Pvar(", s2v, ")")
+//
+| T2Pxtv(t2x) =>
+  fprint!(out, "T2Pxtv(", "...", ")")
+//
+| T2Pfun(fcr, npf, arg, res) =>
+  fprint!(out, "T2Pfun(", "...", ")")
+//
+| T2Pexi(s2vs, body) =>
+  fprint!(out, "T2Pexi(", "...", ")")
+| T2Puni(s2vs, body) =>
+  fprint!(out, "T2Puni(", "...", ")")
+//
+| T2Ptyrec(knd, npf, lxs) =>
+  fprint!(out, "T2Ptyrec(", "...", ")")
+//
+| T2Pnone0() => fprint!(out, "T2Pnone0(", ")")
+| T2Pnone1(s2e) => fprint!(out, "T2Pnone1(", s2e, ")")
+//
 )
 //
 (* ****** ****** *)
