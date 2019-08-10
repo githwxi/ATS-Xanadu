@@ -156,6 +156,23 @@ in
 d3exp_make_node(loc0, t2p0, node)
 end (* end of [aux_str] *)
 
+fun
+aux_var
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Evar(d2v) = d2e0.node()
+//
+val node = D3Evar(d2v)
+val t2p0 = d2var_get_type(d2v)
+//
+in
+d3exp_make_node(loc0, t2p0, node)
+end (* end of [aux_var] *)
+
 in (* in-of-local *)
 
 implement
@@ -179,6 +196,7 @@ d2e0.node() of
 | D2Eflt _ => aux_flt(d2e0)
 | D2Estr _ => aux_str(d2e0)
 //
+| D2Evar _ => aux_var(d2e0)
 //
 | _ (*rest-of-d2e0*) => d3exp_none1(d2e0)
 //

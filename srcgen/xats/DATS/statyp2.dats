@@ -58,7 +58,7 @@ local
 
 absimpl
 t2ype_tbox = $rec
-{ t2ype_sort= t2srt
+{ t2ype_sort= sort2
 , t2ype_node= t2ype_node
 }
 
@@ -85,11 +85,11 @@ end // end of [local]
 implement
 t2ype_none0() =
 t2ype_make_node
-(T2Snone0(), T2Pnone0())
+(S2Tnone0(), T2Pnone0())
 implement
 t2ype_none1(s2e) =
 t2ype_make_node
-(T2Snone0(), T2Pnone1(s2e))
+(S2Tnone0(), T2Pnone1(s2e))
 //
 (* ****** ****** *)
 //
@@ -128,36 +128,32 @@ XATS_STRING_T =
 symbol("xats_string_t")
 //
 val
-the_t2srt_type =
-T2Sbas($SYM.TYPE_symbol)
-//
-val
 the_t2ype_sint =
 t2ype_make_name
-(the_t2srt_type, XATS_SINT_T)
+(the_sort2_type, XATS_SINT_T)
 val
 the_t2ype_uint =
 t2ype_make_name
-(the_t2srt_type, XATS_UINT_T)
+(the_sort2_type, XATS_UINT_T)
 //
 val
 the_t2ype_char =
 t2ype_make_name
-(the_t2srt_type, XATS_CHAR_T)
+(the_sort2_type, XATS_CHAR_T)
 //
 val
 the_t2ype_float =
 t2ype_make_name
-(the_t2srt_type, XATS_FLOAT_T)
+(the_sort2_type, XATS_FLOAT_T)
 val
 the_t2ype_double =
 t2ype_make_name
-(the_t2srt_type, XATS_DOUBLE_T)
+(the_sort2_type, XATS_DOUBLE_T)
 //
 val
 the_t2ype_string =
 t2ype_make_name
-(the_t2srt_type, XATS_STRING_T)
+(the_sort2_type, XATS_STRING_T)
 
 in(*in-of-local*)
 
@@ -182,30 +178,22 @@ implement
 t2ype_cst
 (s2c0) = let
 //
-val s2t0 =
-s2c0.sort()
-val t2s0 =
-sort2_erase(s2t0)
-//
+val s2t0 = s2c0.sort()
 val node = T2Pcst(s2c0)
 //
 in
-  t2ype_make_node(t2s0, node)
+  t2ype_make_node(s2t0, node)
 end
 
 implement
 t2ype_var
 (s2v0) = let
 //
-val s2t0 =
-s2v0.sort()
-val t2s0 =
-sort2_erase(s2t0)
-//
+val s2t0 = s2v0.sort()
 val node = T2Pvar(s2v0)
 //
 in
-  t2ype_make_node(t2s0, node)
+  t2ype_make_node(s2t0, node)
 end
 
 (* ****** ****** *)
