@@ -52,17 +52,14 @@ typedef label = $LAB.label
 (* ****** ****** *)
 //
 (*
-abstype t2srt_tbox = ptr
-typedef t2srt = t2srt_tbox
-*)
 datatype t2srt = 
 | T2Sbas of sym_t
 | T2Sfun of
   (t2srtlst(*arg*), t2srt(*res*))
 | T2Snone0 of ()
 | T2Snone1 of sort2
-//
 where t2srtlst = List0(t2srt)
+*)
 //
 (* ****** ****** *)
 //
@@ -149,7 +146,7 @@ t2ype_node =
 (* ****** ****** *)
 //
 fun
-t2ype_get_sort(t2ype): t2srt
+t2ype_get_sort(t2ype): sort2
 fun
 t2ype_get_node(t2ype): t2ype_node
 //
@@ -167,11 +164,11 @@ t2ype_none1(s2e: s2exp): t2ype
 //
 fun
 t2ype_make_name
-(t2s0: t2srt, name: sym_t): t2ype
+(s2t0: sort2, name: sym_t): t2ype
 //
 fun
 t2ype_make_node
-(t2s0: t2srt, node: t2ype_node): t2ype
+(s2t0: sort2, node: t2ype_node): t2ype
 //
 (* ****** ****** *)
 
@@ -191,8 +188,6 @@ t2ype_uni
 
 (* ****** ****** *)
 
-fun
-sort2_erase(s2t0: sort2): t2srt
 fun
 s2exp_erase(s2e0: s2exp): t2ype
 
