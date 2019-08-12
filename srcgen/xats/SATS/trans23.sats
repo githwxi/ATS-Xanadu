@@ -79,6 +79,13 @@ typedef v2aldecl = $D2E.v2aldecl
 typedef v2ardecl = $D2E.v2ardecl
 
 (* ****** ****** *)
+
+fun
+trenv23_dpat: d2pat -> void
+fun
+trenv23_dpatlst: d2patlst -> void
+
+(* ****** ****** *)
 //
 fun
 trans23_dexp: d2exp -> d3exp 

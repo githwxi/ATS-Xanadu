@@ -42,15 +42,21 @@
 #staload "./dynexp2.sats"
 
 (* ****** ****** *)
-
+//
 abstbox d3exp_tbox = ptr
-
-(* ****** ****** *)
-
+//
 typedef d3exp = d3exp_tbox
 typedef d3explst = List0(d3exp)
 typedef d3expopt = Option(d3exp)
-
+//
+(* ****** ****** *)
+//
+abstbox d3ecl_tbox = ptr
+//
+typedef d3ecl = d3ecl_tbox
+typedef d3eclist = List0(d3ecl)
+typedef d3eclopt = Option(d3ecl)
+//
 (* ****** ****** *)
 
 datatype
@@ -144,12 +150,18 @@ f3undecl_get_loc(f3undecl): loc_t
 overload .loc with f3undecl_get_loc
 //
 (* ****** ****** *)
-
-abstbox d3ecl_tbox = ptr
-typedef d3ecl = d3ecl_tbox
-typedef d3eclist = List0(d3ecl)
-typedef d3eclopt = Option(d3ecl)
-
+//
+fun
+print_f3undecl: print_type(f3undecl)
+fun
+prerr_f3undecl: prerr_type(f3undecl)
+fun
+fprint_f3undecl: fprint_type(f3undecl)
+//
+overload print with print_f3undecl
+overload prerr with prerr_f3undecl
+overload fprint with fprint_f3undecl
+//
 (* ****** ****** *)
 //
 datatype
@@ -173,6 +185,19 @@ d3ecl_get_node(d3ecl): d3ecl_node
 //
 overload .loc with d3ecl_get_loc
 overload .node with d3ecl_get_node
+//
+(* ****** ****** *)
+//
+fun
+print_d3ecl: print_type(d3ecl)
+fun
+prerr_d3ecl: prerr_type(d3ecl)
+fun
+fprint_d3ecl: fprint_type(d3ecl)
+//
+overload print with print_d3ecl
+overload prerr with prerr_d3ecl
+overload fprint with fprint_d3ecl
 //
 (* ****** ****** *)
 //

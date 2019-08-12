@@ -39,6 +39,14 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/dynexp0.sats"
+
+(* ****** ****** *)
 //
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
@@ -50,23 +58,26 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload
-_(*TMP*) = "./../DATS/staexp2_print.dats"
-#staload
-_(*TMP*) = "./../DATS/statyp2_print.dats"
-#staload
-_(*TMP*) = "./../DATS/dynexp2_print.dats"
-//
-(* ****** ****** *)
-//
 implement
 fprint_val<t2ype> = fprint_t2ype
+implement
+fprint_val<s2exp> = fprint_s2exp
+//
+implement
+fprint_val<f2arg> = fprint_f2arg
+implement
+fprint_val<tq2arg> = fprint_tq2arg
 //
 (* ****** ****** *)
 //
 implement
 fprint_val<d3exp> = fprint_d3exp
 //
+(* ****** ****** *)
+
+implement
+fprint_val<d3ecl> = fprint_d3ecl
+
 (* ****** ****** *)
 //
 implement
@@ -82,12 +93,89 @@ fprint_d3exp
 (
 case-
 x0.node() of
+//
+| D3Eint(tok) =>
+  fprint!(out, "D3Eint(", tok, ")")
+| D3Echr(tok) =>
+  fprint!(out, "D3Echr(", tok, ")")
+| D3Eflt(tok) =>
+  fprint!(out, "D3Eflt(", tok, ")")
+| D3Estr(tok) =>
+  fprint!(out, "D3Estr(", tok, ")")
+//
+| D3Evar(d2v) =>
+  fprint!(out, "D3Evar(", d2v, ")")
+//
 | D3Enone0() =>
   fprint!(out, "D3Enone0(", ")")
 | D3Enone1(d2e) =>
   fprint!(out, "D3Enone1(", d2e, ")")
+//
 )
 //
+(* ****** ****** *)
+//
+implement
+print_d3ecl(x0) =
+fprint_d3ecl(stdout_ref, x0) 
+implement
+prerr_d3ecl(x0) =
+fprint_d3ecl(stdout_ref, x0) 
+//
+local
+
+implement
+fprint_val<f3undecl> = fprint_f3undecl
+
+in(*in-of-local*)
+
+implement
+fprint_d3ecl
+  (out, x0) =
+(
+//
+case-
+x0.node() of
+| D3Cnone0() =>
+  fprint!(out, "D3Cnone0(", ")")
+| D3Cnone1(d2c) =>
+  fprint!(out, "D3Cnone1(", d2c, ")")
+| D3Cfundecl
+  (knd, mopt, tqas, f3ds) =>
+  fprint!
+  ( out
+  , "D3Cfundecl("
+  , knd, "; ", mopt, "; ", tqas, "; ", f3ds, ")")
+//
+)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_f3undecl(x0) =
+fprint_f3undecl(stdout_ref, x0)
+implement
+prerr_f3undecl(x0) =
+fprint_f3undecl(stderr_ref, x0)
+
+implement
+fprint_f3undecl
+  (out, x0) = let
+//
+val+F3UNDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "F3UNDECL@{"
+  , ", nam=", rcd.nam
+  , ", arg=", rcd.arg
+  , ", res=", rcd.res
+  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+end // end of [fprint_f3undecl]
+
 (* ****** ****** *)
 
 (* end of [xats_dynexp3_print.dats] *)

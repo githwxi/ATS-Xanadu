@@ -62,6 +62,26 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+implement
+trenv23_dpat(d2p0) =
+let
+in
+end // end of [trenv23_dpat]
+
+implement
+trenv23_dpatlst
+  (d2ps) =
+(
+case+ d2ps of
+| list_nil() => ()
+| list_cons(d2p0, d2ps) =>
+  let
+  val () =
+  trenv23_dpat(d2p0)
+  in trenv23_dpatlst(d2ps) end
+)
+(* ****** ****** *)
+
 local
 
 fun
@@ -198,11 +218,42 @@ d2e0.node() of
 //
 | D2Evar _ => aux_var(d2e0)
 //
+(*
+| D2Edapp
+  (d1e1, npf, d2es) =>
+*)
+//
 | _ (*rest-of-d2e0*) => d3exp_none1(d2e0)
 //
 end // end of [trans23_dexp]
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans23_dexpopt
+  (opt) =
+(
+case+ opt of
+| None() => None()
+| Some(d2e) => Some(trans23_dexp(d2e))
+) (* end of [trans23_dexpopt] *)
+
+implement
+trans23_dexplst
+  (d2es) =
+list_vt2t(d3es) where
+{
+val
+d3es =
+list_map<d2exp><d3exp>
+  (d2es) where
+{
+implement
+list_map$fopr<d2exp><d3exp> = trans23_dexp
+}
+} (* end of [trans23_dexplst] *)
 
 (* ****** ****** *)
 
@@ -232,12 +283,81 @@ end where
 {
 //
 fun
+ishdr
+( f2d0
+: f2undecl): bool =
+let
+val+
+F2UNDECL(rcd) = f2d0
+in
+  case+ rcd.def of
+  | None() => true | Some(d2e) => false
+end
+//
+fun
+auxarg
+( f2as
+: f2arglst): void =
+(
+case+ f2as of
+| list_nil() => ()
+| list_cons
+  (f2a0, f2as) =>
+  (
+  case+
+  f2a0.node() of
+  | F2ARGsome_dyn
+    (npf, d2ps) =>
+    auxarg(f2as) where
+    {
+    val () = trenv23_dpatlst(d2ps)
+    }
+  | F2ARGsome_sta _ => auxarg(f2as)
+  | F2ARGsome_met _ => auxarg(f2as)
+  )
+) (* end of [auxarg] *)
+//
+fun
+auxf2d0
+( d2c0: d2ecl
+, f2d0: f2undecl
+) : f3undecl = let
+//
+val+
+F2UNDECL(rcd) = f2d0
+//
+val loc = rcd.loc
+val nam = rcd.nam
+val arg = rcd.arg
+val res = rcd.res
+val def = rcd.def
+val wtp = rcd.wtp
+//
+val ( ) =
+if
+ishdr(f2d0) then auxarg(arg)
+//
+val def = trans23_dexpopt(def)
+//
+in
+F3UNDECL
+(@{loc=loc,nam=nam,arg=arg,res=res,def=def,wtp=wtp})
+end // end of [let]
+fun
 auxf2ds
 ( d2c0: d2ecl
 , f2ds
 : f2undeclist
 )
-: f3undeclist = list_nil()
+: f3undeclist =
+(
+case+ f2ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons
+  (auxf2d0(d2c0, x0), auxf2ds(d2c0, xs))
+)
 //
 } (* end of [aux_fundecl] *)
 
