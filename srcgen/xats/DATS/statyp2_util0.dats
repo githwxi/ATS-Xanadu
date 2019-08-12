@@ -73,6 +73,8 @@ s2e0.node() of
 | S2Ecst(s2c) => t2ype_cst(s2c)
 | S2Evar(s2v) => t2ype_var(s2v)
 //
+| S2Extv(xtv) => t2ype_xtv(xtv)
+//
 | S2Eexi
   (s2vs, s2ps, body) =>
   t2ype_exi(s2vs, s2exp_erase(body))

@@ -73,9 +73,9 @@ t2ype_get_node
 //
 implement
 t2ype_make_node
-  (t2s0, node) = $rec
+  (s2t0, node) = $rec
 {
-  t2ype_sort= t2s0, t2ype_node= node
+  t2ype_sort= s2t0, t2ype_node= node
 }
 //
 end // end of [local]
@@ -95,9 +95,9 @@ t2ype_make_node
 //
 implement
 t2ype_make_name
-  (t2s0, name) =
+  (s2t0, name) =
 (
-  t2ype_make_node(t2s0, T2Pbas(name))
+  t2ype_make_node(s2t0, T2Pbas(name))
 )
 //
 (* ****** ****** *)
@@ -199,57 +199,38 @@ end
 (* ****** ****** *)
 
 implement
+t2ype_xtv
+  (xtv0) = let
+//
+val s2t0 = xtv0.sort()
+val node = T2Pxtv(xtv0)
+//
+in
+  t2ype_make_node(s2t0, node)
+end // end of [t2ype_xtv]
+
+(* ****** ****** *)
+
+implement
 t2ype_exi
 (s2vs, body) = let
 //
-val t2s0 = body.sort()
+val s2t0 = body.sort()
 val node = T2Pexi(s2vs, body)
 //
 in
-  t2ype_make_node(t2s0, node)
+  t2ype_make_node(s2t0, node)
 end // end of [t2ype_exi]
 implement
 t2ype_uni
 (s2vs, body) = let
 //
-val t2s0 = body.sort()
+val s2t0 = body.sort()
 val node = T2Puni(s2vs, body)
 //
 in
-  t2ype_make_node(t2s0, node)
+  t2ype_make_node(s2t0, node)
 end // end of [t2ype_uni]
-
-(* ****** ****** *)
-
-local
-//
-typedef t2ypenul = ptr
-//
-datavtype
-t2xtv_vt =
-T2XTV of (loc_t, t2ypenul)
-//
-in(*in-of-local*)
-
-implement
-t2xtv_new(loc) =
-$UN.castvwtp0{t2xtv}
-(
-  T2XTV(loc, the_null_ptr)
-)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-val
-stamper =
-$STM.stamper_new()
-in (* in-of-local *)
-implement
-t2xtv_stamp_new() = $STM.stamper_getinc(stamper)
-end // end of [local]
 
 (* ****** ****** *)
 

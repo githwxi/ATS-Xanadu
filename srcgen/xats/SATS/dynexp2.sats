@@ -557,7 +557,9 @@ d2exp_node =
 | D2Econ2 of (d2conlst)
 | D2Ecst2 of (d2cstlst)
 //
-| D2Esym0 of (d1exp, d2pitmlst)
+| D2Esym0 of
+    (d1exp, d2pitmlst)
+  // D2Esym0
 //
 | D2Esapp of (d2exp, s2explst)
 | D2Etapp of (d2exp, s2explst)

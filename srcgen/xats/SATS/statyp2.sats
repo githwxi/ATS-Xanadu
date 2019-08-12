@@ -95,18 +95,8 @@ overload fprint with fprint_t2ype
 //
 (* ****** ****** *)
 //
-abstbox t2xtv_tbox = ptr
-typedef t2xtv = t2xtv_tbox
-//
-abstype fcref_tbox = ptr
-typedef fcref = fcref_tbox
-//
-(* ****** ****** *)
-//
-fun
-t2xtv_stamp_new(): stamp
-//
-fun t2xtv_new(loc_t): t2xtv
+abstype fcr_tbox = ptr
+typedef fcr = fcr_tbox
 //
 (* ****** ****** *)
 //
@@ -126,10 +116,10 @@ t2ype_node =
 | T2Pcst of s2cst // constant
 | T2Pvar of s2var // variable
 //
-| T2Pxtv of t2xtv // ext-variable
+| T2Pxtv of s2xtv // ext-variable
 //
 | T2Pfun of
-  ( fcref//ref(funclo2)
+  ( fcr//ref(funclo2)
   , int(*npf*),t2ypelst(*arg*),t2ype(*res*)
   ) (* end of T2Pfun *)
 //
@@ -180,11 +170,21 @@ t2ype_var(s2v0: s2var): t2ype
 (* ****** ****** *)
 
 fun
+t2ype_xtv(xtv0: s2xtv): t2ype
+
+(* ****** ****** *)
+
+fun
 t2ype_exi
 (s2vs: s2varlst, body: t2ype): t2ype
 fun
 t2ype_uni
 (s2vs: s2varlst, body: t2ype): t2ype
+
+(* ****** ****** *)
+
+fun
+s2xtv_get_t2ype(s2xtv): t2ype
 
 (* ****** ****** *)
 

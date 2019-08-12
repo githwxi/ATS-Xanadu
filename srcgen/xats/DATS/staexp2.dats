@@ -334,88 +334,48 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(*
 local
 //
 typedef
-t2xtv_struct = $rec
+s2xtv_struct = $rec
 {
-  t2xtv_stamp= stamp
+(*
+  s2xtv_loc= loc,
+*)
+  s2xtv_sort= sort2
 ,
-  t2xtv_locopt= locopt
-,
-  t2xtv_sortopt= ref(sort2opt)
+  s2xtv_stamp= stamp
 }
 //
 absimpl
-t2xtv_tbox = ref(t2xtv_struct)
+s2xtv_tbox = ref(s2xtv_struct)
 //
 in (* in-of-local *)
 //
 implement
-t2xtv_new0() =
-ref<t2xtv_struct>
+s2xtv_new(s2t0) =
+ref<s2xtv_struct>
 (
 $rec
 {
-t2xtv_stamp=stamp
+s2xtv_sort=s2t0
 ,
-t2xtv_locopt=None(*void*)
-,
-t2xtv_sortopt=
-ref<sort2opt>(None(*void*))
+s2xtv_stamp=stamp
 }
 ) where
 {
-val stamp = t2xtv_stamp_new()
-} (* end of [t2xtv_new0] *)
+val
+stamp = s2xtv_stamp_new()
+} (* end of [s2xtv_new0] *)
 //
 implement
-t2xtv_new1
-  (loc0) =
-ref<t2xtv_struct>
-(
-$rec
-{
-t2xtv_stamp=stamp
-,
-t2xtv_locopt=Some(loc0)
-,
-t2xtv_sortopt=
-ref<sort2opt>(None(*void*))
-}
-) where
-{
-val stamp = t2xtv_stamp_new()
-} (* end of [t2xtv_new0] *)
-//
+s2xtv_get_sort
+  (xtv0) = xtv0->s2xtv_sort
 implement
-t2xtv_get_stamp
-  (s2tx) = s2tx->t2xtv_stamp
-//
-implement
-t2xtv_get_sort
-  (s2tx) =
-  (s2t0) where
-{
-val-
-Some(s2t0) = !(s2tx->t2xtv_sortopt)
-} (* end of [t2xtv_get_sort] *)
-//
-implement
-t2xtv_set_sort
-  (s2tx, s2t0) =
-{
-val () =
-!(s2tx->t2xtv_sortopt) := Some(s2t0)
-} (* end of [t2xtv_get_sort] *)
-//
-implement
-t2xtv_get_sortopt
-  (s2tx) = !(s2tx->t2xtv_sortopt)
+s2xtv_get_stamp
+  (xtv0) = xtv0->s2xtv_stamp
 //
 end // end of [local]
-*)
 
 (* ****** ****** *)
 
@@ -1172,19 +1132,6 @@ in (* in-of-local *)
 implement
 t2dat_stamp_new() = $STM.stamper_getinc(stamper)
 end // end of [local]
-
-(* ****** ****** *)
-
-(*
-local
-val
-stamper =
-$STM.stamper_new()
-in (* in-of-local *)
-implement
-t2xtv_stamp_new() = $STM.stamper_getinc(stamper)
-end // end of [local]
-*)
 
 (* ****** ****** *)
 
