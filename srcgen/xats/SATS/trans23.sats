@@ -36,6 +36,10 @@
 #staload "./basics.sats"
 //
 (* ****** ****** *)
+
+#staload "./locinfo.sats"
+
+(* ****** ****** *)
 //
 #staload S2E = "./staexp2.sats"
 #staload S2T = "./statyp2.sats"
@@ -106,6 +110,31 @@ fun
 trans23_decl: d2ecl -> d3ecl 
 fun
 trans23_declist: d2eclist -> d3eclist
+
+(* ****** ****** *)
+//
+fun
+ulte_t2ype_t2ype
+(t2p1: t2ype, t2p2: t2ype): bool
+//
+overload ulte with ulte_t2ype_t2ype
+//
+(* ****** ****** *)
+//
+fun
+d3exp_dn
+(d3e0: d3exp, t2p0: t2ype): d3exp
+fun
+d3explst_dn
+( loc0: loc_t
+, d3es: d3explst, t2ps: t2ypelst): d3explst
+//
+(* ****** ****** *)
+
+fun
+d3exp_dapp_up
+( loc0: loc_t
+, d3f0: d3exp, npf0: int, d3es: d3explst): d3exp
 
 (* ****** ****** *)
 

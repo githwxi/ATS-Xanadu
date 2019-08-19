@@ -192,6 +192,11 @@ val
 the_sort2_vtype : sort2
 
 (* ****** ****** *)
+
+val
+the_sort2_none : sort2
+
+(* ****** ****** *)
 //
 fun
 sort2_is_int(sort2): bool
@@ -489,20 +494,20 @@ fun
 s2xtv_get_loc(s2xtv): loc_t
 *)
 fun
+s2xtv_get_loc(s2xtv): loc_t
+fun
 s2xtv_get_sort(s2xtv): sort2
 fun
 s2xtv_get_stamp(s2xtv): stamp
 //
-(*
 overload .loc with s2xtv_get_loc
-*)
 overload .sort with s2xtv_get_sort
 overload .stamp with s2xtv_get_stamp
 //
 (* ****** ****** *)
 //
 fun
-s2xtv_new(s2t0: sort2): s2xtv
+s2xtv_new(loc_t, sort2): s2xtv
 //
 (* ****** ****** *)
 //

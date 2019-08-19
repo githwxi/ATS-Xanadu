@@ -130,6 +130,9 @@ the_sort2_vtbox = S2Tbas(s2tb_vtbox)
 implement
 the_sort2_vtype = S2Tbas(s2tb_vtype)
 //
+implement
+the_sort2_none = S2Tnone0((*void*))
+//
 end // end of [local]
 
 (* ****** ****** *)
