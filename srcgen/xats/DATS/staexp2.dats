@@ -36,7 +36,7 @@
 #include
 "share/atspre_staload.hats"
 #staload
-UN = "prelude/SATS/unsafe.sats"
+UN="prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
@@ -339,35 +339,39 @@ local
 typedef
 s2xtv_struct = $rec
 {
-(*
-  s2xtv_loc= loc,
-*)
+  s2xtv_loc= loc_t
+,
   s2xtv_sort= sort2
 ,
   s2xtv_stamp= stamp
 }
 //
 absimpl
-s2xtv_tbox = ref(s2xtv_struct)
+s2xtv_tbox=ref(s2xtv_struct)
 //
 in (* in-of-local *)
 //
 implement
-s2xtv_new(s2t0) =
+s2xtv_new
+(loc0, s2t0) =
 ref<s2xtv_struct>
 (
 $rec
 {
+s2xtv_loc= loc0
+,
 s2xtv_sort=s2t0
 ,
 s2xtv_stamp=stamp
 }
 ) where
 {
-val
-stamp = s2xtv_stamp_new()
+val stamp = s2xtv_stamp_new()
 } (* end of [s2xtv_new0] *)
 //
+implement
+s2xtv_get_loc
+  (xtv0) = xtv0->s2xtv_loc
 implement
 s2xtv_get_sort
   (xtv0) = xtv0->s2xtv_sort

@@ -33,9 +33,21 @@
 //
 (* ****** ****** *)
 //
+#include
+"share/atspre_staload.hats"
 #staload
-UN =
-"prelude/SATS/unsafe.sats"
+UN="prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+
+#staload "./../SATS/basics.sats"
+
+(* ****** ****** *)
+//
+#staload
+STM = "./../SATS/stamp0.sats"
+//
+  typedef stamp = $STM.stamp
 //
 (* ****** ****** *)
 //
@@ -197,18 +209,55 @@ in
 end
 
 (* ****** ****** *)
+//
+local
+//
+typedef
+t2xtv_struct = $rec
+{
+  t2xtv_loc= loc_t
+,
+  t2xtv_stamp= stamp
+}
+//
+absimpl
+t2xtv_tbox=ref(t2xtv_struct)
+//
+in (*in-of-local*)
 
 implement
-t2ype_xtv
-  (xtv0) = let
+t2xtv_new(loc0) =
+ref<t2xtv_struct>
+(
+$rec
+{
+t2xtv_loc= loc0
+,
+t2xtv_stamp=stamp
+}
+) where
+{
+val stamp = t2xtv_stamp_new()
+} (* end of [t2xtv_new0] *)
+
+end // end of [local]
 //
-val s2t0 = xtv0.sort()
+(* ****** ****** *)
+//
+implement
+t2ype_new(loc0) =
+t2ype_xtv(t2xtv_new(loc0))
+//
+implement
+t2ype_xtv(xtv0) = let
+//
 val node = T2Pxtv(xtv0)
+val s2t0 = the_sort2_none
 //
 in
   t2ype_make_node(s2t0, node)
 end // end of [t2ype_xtv]
-
+//
 (* ****** ****** *)
 
 implement
@@ -231,6 +280,57 @@ val node = T2Puni(s2vs, body)
 in
   t2ype_make_node(s2t0, node)
 end // end of [t2ype_uni]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+fcr_tbox =
+ref(funclo2)
+//
+in
+implement
+fcr_new0() =
+fcr_new1(FC2fun())
+implement
+fcr_new1(fc2) = ref(fc2)
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+t2ype_fun0
+(npf, arg, res) =
+(
+t2ype_fun1
+(fc2, npf, arg, res)
+) where
+{
+val fc2 = FC2fun(*void*)
+}
+implement
+t2ype_fun1
+(fc2, npf, arg, res) = let
+//
+val fcr = fcr_new1(fc2)
+//
+val node = T2Pfun(fcr, npf, arg, res)
+//
+in
+  t2ype_make_node(the_sort2_none, node)
+end // end of [t2ype_fun1]
+
+(* ****** ****** *)
+
+local
+val
+stamper =
+$STM.stamper_new()
+in (* in-of-local *)
+implement
+t2xtv_stamp_new() = $STM.stamper_getinc(stamper)
+end // end of [local]
 
 (* ****** ****** *)
 

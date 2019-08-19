@@ -55,10 +55,12 @@ typedef label = $LAB.label
 datatype t2srt = 
 | T2Sbas of sym_t
 | T2Sfun of
-  (t2srtlst(*arg*), t2srt(*res*))
+  (t2srtlst, t2srt)
 | T2Snone0 of ()
 | T2Snone1 of sort2
+//
 where t2srtlst = List0(t2srt)
+//
 *)
 //
 (* ****** ****** *)
@@ -66,6 +68,30 @@ where t2srtlst = List0(t2srt)
 abstbox t2ype_tbox = ptr
 typedef t2ype = t2ype_tbox
 typedef t2ypelst = List0(t2ype)
+typedef t2ypeopt = Option(t2ype)
+//
+(* ****** ****** *)
+//
+abstype fcr_tbox = ptr
+typedef fcr = fcr_tbox
+//
+fun
+fcr_new0((*void*)): fcr
+fun
+fcr_new1(fc2: funclo2): fcr
+//
+(* ****** ****** *)
+//
+abstbox t2xtv_tbox = ptr
+typedef t2xtv = t2xtv_tbox
+//
+(* ****** ****** *)
+//
+datatype
+labt2ype =
+| TLABELED of (label, t2ype)
+where
+labt2ypelst = List0(labt2ype)
 //
 (* ****** ****** *)
 //
@@ -95,19 +121,6 @@ overload fprint with fprint_t2ype
 //
 (* ****** ****** *)
 //
-abstype fcr_tbox = ptr
-typedef fcr = fcr_tbox
-//
-(* ****** ****** *)
-//
-datatype
-labt2ype =
-| TLABELED of (label, t2ype)
-where
-labt2ypelst = List0(labt2ype)
-//
-(* ****** ****** *)
-//
 datatype
 t2ype_node =
 // externally named
@@ -116,7 +129,7 @@ t2ype_node =
 | T2Pcst of s2cst // constant
 | T2Pvar of s2var // variable
 //
-| T2Pxtv of s2xtv // ext-variable
+| T2Pxtv of t2xtv // ext-variable
 //
 | T2Pfun of
   ( fcr//ref(funclo2)
@@ -168,24 +181,36 @@ fun
 t2ype_var(s2v0: s2var): t2ype
 
 (* ****** ****** *)
-
+//
 fun
-t2ype_xtv(xtv0: s2xtv): t2ype
-
+t2xtv_stamp_new(): stamp
+fun
+t2xtv_new(loc0: loc_t): t2xtv
+fun
+t2ype_new(loc0: loc_t): t2ype
+fun
+t2ype_xtv(xtv0: t2xtv): t2ype
+//
 (* ****** ****** *)
 
 fun
 t2ype_exi
-(s2vs: s2varlst, body: t2ype): t2ype
+(s2varlst, scope: t2ype): t2ype
 fun
 t2ype_uni
-(s2vs: s2varlst, body: t2ype): t2ype
+(s2varlst, scope: t2ype): t2ype
 
 (* ****** ****** *)
-
+//
 fun
-s2xtv_get_t2ype(s2xtv): t2ype
-
+t2ype_fun0
+( npf: int
+, arg: t2ypelst, res: t2ype): t2ype
+fun
+t2ype_fun1
+( fc2: funclo2, npf: int
+, arg: t2ypelst, res: t2ype): t2ype
+//
 (* ****** ****** *)
 
 fun

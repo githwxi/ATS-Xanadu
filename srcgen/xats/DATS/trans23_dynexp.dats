@@ -84,6 +84,8 @@ case+ d2ps of
 
 local
 
+(* ****** ****** *)
+
 fun
 aux_int
 ( d2e0
@@ -176,6 +178,8 @@ in
 d3exp_make_node(loc0, t2p0, node)
 end (* end of [aux_str] *)
 
+(* ****** ****** *)
+
 fun
 aux_var
 ( d2e0
@@ -192,6 +196,28 @@ val t2p0 = d2var_get_type(d2v)
 in
 d3exp_make_node(loc0, t2p0, node)
 end (* end of [aux_var] *)
+
+(* ****** ****** *)
+
+fun
+aux_dapp
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Edapp
+(d2e1, npf, d2es) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+val d3es = trans23_dexplst(d2es)
+//
+in
+d3exp_dapp_up(loc0, d3e1, npf, d3es)
+end (* end of [aux_dapp] *)
+
+(* ****** ****** *)
 
 in (* in-of-local *)
 
@@ -218,12 +244,9 @@ d2e0.node() of
 //
 | D2Evar _ => aux_var(d2e0)
 //
-(*
-| D2Edapp
-  (d1e1, npf, d2es) =>
-*)
+| D2Edapp _ => aux_dapp(d2e0)
 //
-| _ (*rest-of-d2e0*) => d3exp_none1(d2e0)
+| _ (*else*) => d3exp_none1_0(d2e0)
 //
 end // end of [trans23_dexp]
 

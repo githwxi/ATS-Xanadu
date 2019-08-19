@@ -84,4 +84,111 @@ list_map$fopr<d2pat><t2ype> = t2ype_of_d2pat
 //
 (* ****** ****** *)
 
+implement
+ulte_t2ype_t2ype
+(t2p1, t2p2) = false
+
+(* ****** ****** *)
+
+implement
+d3exp_dn
+(d3e0, t2p0) = let
+//
+val test =
+ulte(d3e0.type(), t2p0)
+//
+in
+//
+if test then d3e0 else d3exp_cast(d3e0, t2p0)
+//
+end // end of [d3exp_dn]
+
+(* ****** ****** *)
+
+implement
+d3explst_dn
+(loc0, d3es, t2ps) = let
+//
+fun
+auxt2ps
+( t2ps
+: t2ypelst
+)
+: d3explst =
+(
+case+ t2ps of
+| list_nil() =>
+  list_nil()
+| list_cons(t2p0, t2ps) =>
+  let
+    val d3e0 =
+    d3exp_none0_1(loc0, t2p0)
+  in
+    list_cons(d3e0, auxt2ps(t2ps))
+  end
+)
+fun
+auxd3es
+( d3es
+: d3explst
+)
+: d3explst =
+(
+case+ d3es of
+| list_nil() =>
+  list_nil()
+| list_cons(d3e0, d3es) =>
+  let
+    val d3e0 =
+    d3exp_none2_0(d3e0)
+  in
+    list_cons(d3e0, auxd3es(d3es))
+  end
+)
+//
+in (* in-of-let *)
+//
+case+ d3es of
+| list_nil() => auxt2ps(t2ps)
+| list_cons _ =>
+  (
+  case+ t2ps of
+  | list_nil() => auxd3es(d3es)
+  | list_cons _ =>
+    let
+      val+
+      list_cons
+      (d3e0, d3es) = d3es
+      val+
+      list_cons
+      (t2p0, t2ps) = t2ps
+      val
+      d3e0 = d3exp_dn(d3e0, t2p0)
+    in
+      list_cons(d3e0, auxd3es(d3es))
+    end
+  )
+//
+end (* end of [d3explst_dn] *)
+
+(* ****** ****** *)
+
+implement
+d3exp_dapp_up
+(loc0, d3f0, npf0, d3es) =
+let
+//
+val
+targ =
+d3explst_get_type(d3es)
+//
+val tres = t2ype_new(loc0)
+val tfun = t2ype_fun0(targ, tres)
+//
+in
+  d3exp_cast(d3f0, tfun)
+end // end of [d3exp_dapp_up]
+
+(* ****** ****** *)
+
 (* end of [trans23_util0.dats] *)
