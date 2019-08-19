@@ -183,7 +183,7 @@ targ =
 d3explst_get_type(d3es)
 //
 val tres = t2ype_new(loc0)
-val tfun = t2ype_fun0(targ, tres)
+val tfun = t2ype_fun0(npf0, targ, tres)
 //
 in
   d3exp_cast(d3f0, tfun)
