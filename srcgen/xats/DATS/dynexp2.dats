@@ -111,6 +111,7 @@ d2con_tbox = $rec{
   d2con_loc= loc_t // loc
 , d2con_sym= sym_t // name
 , d2con_sexp= s2exp // sexp
+, d2con_type= t2ype // type
 , d2con_stamp= stamp // unicity
 //
 } (* end of [d2con_tbox] *)
@@ -125,12 +126,14 @@ $rec{
   d2con_loc= loc
 , d2con_sym= sym
 , d2con_sexp= s2e
+, d2con_sexp= t2p
 , d2con_stamp= stamp
 }
 ) where
 {
   val loc = tok.loc()
   val sym = dexpid_sym(tok)
+  val t2p = s2exp_erase(s2e)
 //
   val
   stamp = d2con_stamp_new((*void*))
@@ -158,7 +161,8 @@ $rec{
 //
   d2cst_loc= loc_t // loc
 , d2cst_sym= sym_t // name
-, d2cst_sexp= s2exp // type
+, d2cst_sexp= s2exp // sexp
+, d2cst_type= t2ype // type
 , d2cst_stamp= stamp // unicity
 //
 } (* end of [d2cst_tbox] *)
@@ -173,6 +177,7 @@ $rec{
   d2cst_loc= loc
 , d2cst_sym= sym
 , d2cst_sexp= s2e
+, d2cst_type= t2p
 , d2cst_stamp= stamp
 }
 ) where
@@ -183,6 +188,7 @@ $rec{
     d2var_get_sym(d2v)
 //
   val s2e = s2exp_none0()
+  val t2p = t2ype_none0()
 //
   val
   stamp = d2cst_stamp_new((*void*))
@@ -197,12 +203,15 @@ $rec{
   d2cst_loc= loc
 , d2cst_sym= sym
 , d2cst_sexp= s2e
+, d2cst_type= t2p
 , d2cst_stamp= stamp
 }
 ) where
 {
   val loc = tok.loc()
   val sym = dexpid_sym(tok)
+//
+  val t2p = s2exp_erase(s2e)
 //
   val
   stamp = d2cst_stamp_new((*void*))

@@ -192,6 +192,11 @@ val
 the_sort2_vtype : sort2
 
 (* ****** ****** *)
+
+val
+the_sort2_none : sort2
+
+(* ****** ****** *)
 //
 fun
 sort2_is_int(sort2): bool
@@ -317,21 +322,6 @@ overload print with print_t2dat
 overload prerr with prerr_t2dat
 overload fprint with fprint_t2dat
 //
-(* ****** ****** *)
-(*
-//
-fun
-print_t2xtv: print_type(t2xtv)
-fun
-prerr_t2xtv: prerr_type(t2xtv)
-fun
-fprint_t2xtv: fprint_type(t2xtv)
-//
-overload print with print_t2xtv
-overload prerr with prerr_t2xtv
-overload fprint with fprint_t2xtv
-//
-*)
 (* ****** ****** *)
 //
 abstbox s2cst_tbox = ptr
@@ -499,6 +489,28 @@ typedef s2xtv = s2xtv_tbox
 
 (* ****** ****** *)
 //
+(*
+fun
+s2xtv_get_loc(s2xtv): loc_t
+*)
+fun
+s2xtv_get_loc(s2xtv): loc_t
+fun
+s2xtv_get_sort(s2xtv): sort2
+fun
+s2xtv_get_stamp(s2xtv): stamp
+//
+overload .loc with s2xtv_get_loc
+overload .sort with s2xtv_get_sort
+overload .stamp with s2xtv_get_stamp
+//
+(* ****** ****** *)
+//
+fun
+s2xtv_new(loc_t, sort2): s2xtv
+//
+(* ****** ****** *)
+//
 fun
 eq_t2abs_t2abs: eq_type(t2abs)
 overload = with eq_t2abs_t2abs
@@ -541,34 +553,6 @@ t2dat_get_sconlst(s2td: t2dat): s2cstlst
 //
 overload .sconlst with t2dat_get_sconlst
 //
-(* ****** ****** *)
-(*
-//
-fun
-t2xtv_new0((*void*)): t2xtv
-fun
-t2xtv_new1(loc: loc_t): t2xtv
-//
-fun
-t2xtv_get_stamp(s2tx: t2xtv): stamp
-//
-overload .stamp with t2xtv_get_stamp
-//
-fun
-t2xtv_get_sort(t2xtv): sort2
-fun
-t2xtv_set_sort
-(s2tx: t2xtv, s2t0: sort2): void
-//
-fun
-t2xtv_get_sortopt(t2xtv): sort2opt
-//
-overload .sort with t2xtv_get_sort
-overload .sort with t2xtv_set_sort
-//
-overload .sortopt with t2xtv_get_sortopt
-//
-*)
 (* ****** ****** *)
 //
 abstbox s2exp_tbox = ptr
@@ -670,9 +654,7 @@ s2exp_node =
 //
 | S2Evar of s2var // variable
 //
-(*
 | S2Extv of s2xtv // ext-variable
-*)
 //
 | S2Eapp of
   (s2exp, s2explst) // application

@@ -33,9 +33,21 @@
 //
 (* ****** ****** *)
 //
+#include
+"share/atspre_staload.hats"
 #staload
-UN =
-"prelude/SATS/unsafe.sats"
+UN="prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+
+#staload "./../SATS/basics.sats"
+
+(* ****** ****** *)
+//
+#staload
+STM = "./../SATS/stamp0.sats"
+//
+  typedef stamp = $STM.stamp
 //
 (* ****** ****** *)
 //
@@ -58,7 +70,7 @@ local
 
 absimpl
 t2ype_tbox = $rec
-{ t2ype_sort= t2srt
+{ t2ype_sort= sort2
 , t2ype_node= t2ype_node
 }
 
@@ -73,9 +85,9 @@ t2ype_get_node
 //
 implement
 t2ype_make_node
-  (t2s0, node) = $rec
+  (s2t0, node) = $rec
 {
-  t2ype_sort= t2s0, t2ype_node= node
+  t2ype_sort= s2t0, t2ype_node= node
 }
 //
 end // end of [local]
@@ -85,19 +97,19 @@ end // end of [local]
 implement
 t2ype_none0() =
 t2ype_make_node
-(T2Snone0(), T2Pnone0())
+(S2Tnone0(), T2Pnone0())
 implement
 t2ype_none1(s2e) =
 t2ype_make_node
-(T2Snone0(), T2Pnone1(s2e))
+(S2Tnone0(), T2Pnone1(s2e))
 //
 (* ****** ****** *)
 //
 implement
 t2ype_make_name
-  (t2s0, name) =
+  (s2t0, name) =
 (
-  t2ype_make_node(t2s0, T2Pbas(name))
+  t2ype_make_node(s2t0, T2Pbas(name))
 )
 //
 (* ****** ****** *)
@@ -128,36 +140,32 @@ XATS_STRING_T =
 symbol("xats_string_t")
 //
 val
-the_t2srt_type =
-T2Sbas($SYM.TYPE_symbol)
-//
-val
 the_t2ype_sint =
 t2ype_make_name
-(the_t2srt_type, XATS_SINT_T)
+(the_sort2_type, XATS_SINT_T)
 val
 the_t2ype_uint =
 t2ype_make_name
-(the_t2srt_type, XATS_UINT_T)
+(the_sort2_type, XATS_UINT_T)
 //
 val
 the_t2ype_char =
 t2ype_make_name
-(the_t2srt_type, XATS_CHAR_T)
+(the_sort2_type, XATS_CHAR_T)
 //
 val
 the_t2ype_float =
 t2ype_make_name
-(the_t2srt_type, XATS_FLOAT_T)
+(the_sort2_type, XATS_FLOAT_T)
 val
 the_t2ype_double =
 t2ype_make_name
-(the_t2srt_type, XATS_DOUBLE_T)
+(the_sort2_type, XATS_DOUBLE_T)
 //
 val
 the_t2ype_string =
 t2ype_make_name
-(the_t2srt_type, XATS_STRING_T)
+(the_sort2_type, XATS_STRING_T)
 
 in(*in-of-local*)
 
@@ -182,75 +190,136 @@ implement
 t2ype_cst
 (s2c0) = let
 //
-val s2t0 =
-s2c0.sort()
-val t2s0 =
-sort2_erase(s2t0)
-//
+val s2t0 = s2c0.sort()
 val node = T2Pcst(s2c0)
 //
 in
-  t2ype_make_node(t2s0, node)
+  t2ype_make_node(s2t0, node)
 end
 
 implement
 t2ype_var
 (s2v0) = let
 //
-val s2t0 =
-s2v0.sort()
-val t2s0 =
-sort2_erase(s2t0)
-//
+val s2t0 = s2v0.sort()
 val node = T2Pvar(s2v0)
 //
 in
-  t2ype_make_node(t2s0, node)
+  t2ype_make_node(s2t0, node)
 end
 
+(* ****** ****** *)
+//
+local
+//
+typedef
+t2xtv_struct = $rec
+{
+  t2xtv_loc= loc_t
+,
+  t2xtv_stamp= stamp
+}
+//
+absimpl
+t2xtv_tbox=ref(t2xtv_struct)
+//
+in (*in-of-local*)
+
+implement
+t2xtv_new(loc0) =
+ref<t2xtv_struct>
+(
+$rec
+{
+t2xtv_loc= loc0
+,
+t2xtv_stamp=stamp
+}
+) where
+{
+val stamp = t2xtv_stamp_new()
+} (* end of [t2xtv_new0] *)
+
+end // end of [local]
+//
+(* ****** ****** *)
+//
+implement
+t2ype_new(loc0) =
+t2ype_xtv(t2xtv_new(loc0))
+//
+implement
+t2ype_xtv(xtv0) = let
+//
+val node = T2Pxtv(xtv0)
+val s2t0 = the_sort2_none
+//
+in
+  t2ype_make_node(s2t0, node)
+end // end of [t2ype_xtv]
+//
 (* ****** ****** *)
 
 implement
 t2ype_exi
 (s2vs, body) = let
 //
-val t2s0 = body.sort()
+val s2t0 = body.sort()
 val node = T2Pexi(s2vs, body)
 //
 in
-  t2ype_make_node(t2s0, node)
+  t2ype_make_node(s2t0, node)
 end // end of [t2ype_exi]
 implement
 t2ype_uni
 (s2vs, body) = let
 //
-val t2s0 = body.sort()
+val s2t0 = body.sort()
 val node = T2Puni(s2vs, body)
 //
 in
-  t2ype_make_node(t2s0, node)
+  t2ype_make_node(s2t0, node)
 end // end of [t2ype_uni]
 
 (* ****** ****** *)
 
 local
 //
-typedef t2ypenul = ptr
+absimpl
+fcr_tbox =
+ref(funclo2)
 //
-datavtype
-t2xtv_vt =
-T2XTV of (loc_t, t2ypenul)
-//
-in(*in-of-local*)
+in
+implement
+fcr_new0() =
+fcr_new1(FC2fun())
+implement
+fcr_new1(fc2) = ref(fc2)
+end // end of [local]
+
+(* ****** ****** *)
 
 implement
-t2xtv_new(loc) =
-$UN.castvwtp0{t2xtv}
+t2ype_fun0
+(npf, arg, res) =
 (
-  T2XTV(loc, the_null_ptr)
-)
-
-end // end of [local]
+t2ype_fun1
+(fc2, npf, arg, res)
+) where
+{
+val fc2 = FC2fun(*void*)
+}
+implement
+t2ype_fun1
+(fc2, npf, arg, res) = let
+//
+val fcr = fcr_new1(fc2)
+//
+val node = T2Pfun(fcr, npf, arg, res)
+//
+in
+  t2ype_make_node(the_sort2_none, node)
+end // end of [t2ype_fun1]
 
 (* ****** ****** *)
 

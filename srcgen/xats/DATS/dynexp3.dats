@@ -33,6 +33,13 @@
 //
 (* ****** ****** *)
 //
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+//
 #staload
 SYM = "./../SATS/symbol.sats"
 #staload
@@ -69,6 +76,10 @@ d3exp_get_node
   (d3e) = d3e.d3exp_node
 //
 implement
+d3exp_get_type
+  (d3e) = d3e.d3exp_type
+//
+implement
 d3exp_make_node
 (
 loc0, t2p0, node
@@ -80,18 +91,79 @@ loc0, t2p0, node
 end // end of [local]
 
 (* ****** ****** *)
+
+implement
+d3expopt_get_type
+  (opt) =
+(
+case+ opt of
+| None() => None()
+| Some(d3e) => Some(d3e.type())
+)
+implement
+d3explst_get_type
+  (d3es) =
+list_vt2t
+(
+list_map<d3exp><t2ype>(d3es)
+) where
+{
+implement
+list_map$fopr<d3exp><t2ype>(d3e) = d3e.type()
+}
+
+(* ****** ****** *)
 //
 implement
-d3exp_none1(d2e0) =
+d3exp_none0_0(d2e0) =
+d3exp_none0_1
+(d2e0, t2ype_none0())
+implement
+d3exp_none0_1(loc0, t2p0) =
+d3exp_make_node
+(loc0, t2p0, D3Enone0())
+//
+implement
+d3exp_none1_0(d2e0) =
+d3exp_none1_1
+(d2e0, t2ype_none0())
+implement
+d3exp_none1_1(d2e0, t2p0) =
 (
 d3exp_make_node
 (loc0, t2p0, D3Enone1(d2e0))
 ) where
 {
   val loc0 = d2e0.loc((*void*))
-  val t2p0 = t2ype_none0((*void*))
 }
 //
+(* ****** ****** *)
+
+implement
+d3exp_none2_0(d3e0) =
+(
+d3exp_make_node
+(loc0, t2p0, D3Enone2(d3e0))
+) where
+{
+  val loc0 = d3e0.loc((*void*))
+  val t2p0 = d3e0.type((*void*))
+}
+
+(* ****** ****** *)
+
+implement
+d3exp_cast
+(d3e0, t2p0) =
+(
+d3exp_make_node
+( loc0
+, t2p0, D3Ecast(d3e0, t2p0))
+) where
+{
+  val loc0 = d3e0.loc((*void*))
+}
+
 (* ****** ****** *)
 
 local
