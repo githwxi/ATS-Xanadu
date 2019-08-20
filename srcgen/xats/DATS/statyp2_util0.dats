@@ -60,21 +60,11 @@ overload
 (* ****** ****** *)
 
 implement
-sort2_erase(s2t0) =
-(
-case+ s2t0 of
-| _ (* else *) => T2Snone0()
-)
-
-(* ****** ****** *)
-
-implement
 s2exp_erase(s2e0) =
 let
 (*
 val
-t2s0 =
-sort2_erase(s2e0.sort())
+s2t0 = s2e0.sort()
 *)
 in
 case-

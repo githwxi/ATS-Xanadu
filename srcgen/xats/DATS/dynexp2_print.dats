@@ -73,15 +73,10 @@ fprint with $LAB.fprint_label
 //
 (* ****** ****** *)
 //
-#staload
-_(*TMP*) = "./../DATS/staexp0_print.dats"
-#staload
-_(*TMP*) = "./../DATS/staexp1_print.dats"
-#staload
-_(*TMP*) = "./../DATS/staexp2_print.dats"
-//
-(* ****** ****** *)
-//
+implement
+fprint_val<s2cst> = fprint_s2cst
+implement
+fprint_val<s2var> = fprint_s2var
 implement
 fprint_val<s2exp> = fprint_s2exp
 //

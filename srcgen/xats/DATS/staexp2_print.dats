@@ -465,6 +465,9 @@ s2e0.node() of
   (out, "S2Evar(", s2v, "; ", s2v.sort(), ")")
 *)
 //
+| S2Extv(xtv) =>
+  fprint!(out, "S2Extv(", "...", ")")
+//
 | S2Eapp
   (s2fn, s2es) =>
   fprint!

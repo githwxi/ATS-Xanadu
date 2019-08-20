@@ -54,16 +54,37 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload
-_(*TMP*) = "./../DATS/staexp0_print.dats"
-#staload
-_(*TMP*) = "./../DATS/staexp1_print.dats"
-//
-(* ****** ****** *)
-//
 implement
 fprint_val<token> = fprint_token
+implement
+fprint_val<t0int> = fprint_t0int
 //
+(* ****** ****** *)
+
+implement
+fprint_val<g1exp> = fprint_g1exp
+
+implement
+fprint_val<sort1> = fprint_sort1
+implement
+fprint_val<s1exp> = fprint_s1exp
+
+implement
+fprint_val<s1arg> = fprint_s1arg
+implement
+fprint_val<t1arg> = fprint_t1arg
+implement
+fprint_val<s1qua> = fprint_s1qua
+implement
+fprint_val<s1marg> = fprint_s1marg
+implement
+fprint_val<t1marg> = fprint_t1marg
+
+implement
+fprint_val<d1tsort> = fprint_d1tsort
+implement
+fprint_val<d1atype> = fprint_d1atype
+
 (* ****** ****** *)
 //
 implement
