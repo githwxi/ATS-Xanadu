@@ -85,6 +85,22 @@ fcr_new1(fc2: funclo2): fcr
 abstbox t2xtv_tbox = ptr
 typedef t2xtv = t2xtv_tbox
 //
+fun
+t2xtv_get_loc(t2xtv): loc_t
+fun
+t2xtv_get_type(t2xtv): t2ype
+fun
+t2xtv_set_type(t2xtv, t2ype): void
+//
+fun
+eq_t2xtv_t2xtv
+(xtv1: t2xtv, xtv2: t2xtv): bool
+//
+overload = with eq_t2xtv_t2xtv
+overload .loc with t2xtv_get_loc
+overload .type with t2xtv_get_type
+overload .type with t2xtv_set_type
+//
 (* ****** ****** *)
 //
 datatype
@@ -95,16 +111,26 @@ labt2ypelst = List0(labt2ype)
 //
 (* ****** ****** *)
 //
-fun t2ype_sint(): t2ype
-fun t2ype_uint(): t2ype
+val
+the_t2ype_sint: t2ype
+val
+the_t2ype_uint: t2ype
 //
-fun t2ype_bool(): t2ype
-fun t2ype_char(): t2ype
+val
+the_t2ype_bool: t2ype
+val
+the_t2ype_char: t2ype
 //
-fun t2ype_float(): t2ype
-fun t2ype_double(): t2ype
+val
+the_t2ype_void: t2ype
 //
-fun t2ype_string(): t2ype
+val
+the_t2ype_float: t2ype
+and
+the_t2ype_double: t2ype
+//
+val
+the_t2ype_string: t2ype
 //
 (* ****** ****** *)
 //
@@ -155,6 +181,13 @@ t2ype_get_node(t2ype): t2ype_node
 //
 overload .sort with t2ype_get_sort
 overload .node with t2ype_get_node
+//
+(* ****** ****** *)
+//
+fun
+t2ype_eval(t2p: t2ype): t2ype
+//
+overload .eval with t2ype_eval
 //
 (* ****** ****** *)
 //

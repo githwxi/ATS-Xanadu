@@ -72,6 +72,9 @@ d3exp_node =
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
 //
+| D3Eif0 of
+  (d3exp, d3exp, d3expopt)
+//
 | D3Etuple of
   (int(*knd*), int(*npf*), d3explst)
 //

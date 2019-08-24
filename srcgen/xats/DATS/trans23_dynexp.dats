@@ -87,7 +87,7 @@ local
 (* ****** ****** *)
 
 fun
-aux_int
+auxint
 ( d2e0
 : d2exp): d3exp = let
 //
@@ -101,10 +101,10 @@ t2p0 =
 (
 case+
 tok.node() of
-| T_INT1 _ => t2ype_sint()
-| T_INT2 _ => t2ype_sint()
-| T_INT3 _ => t2ype_sint()
-| _ (* dead *) => t2ype_sint()
+| T_INT1 _ => the_t2ype_sint
+| T_INT2 _ => the_t2ype_sint
+| T_INT3 _ => the_t2ype_sint
+| _ (* dead *) => the_t2ype_sint
 ) : t2ype // end of [val]
 //
 in
@@ -113,10 +113,10 @@ val node = D3Eint(tok)
 in
 d3exp_make_node(loc0, t2p0, node)
 end
-end (* end of [aux_int] *)
+end (* end of [auxint] *)
 
 fun
-aux_chr
+auxchr
 ( d2e0
 : d2exp): d3exp = let
 //
@@ -126,31 +126,31 @@ val-
 D2Echr(tok) = d2e0.node()
 //
 val node = D3Echr(tok)
-val t2p0 = t2ype_char((*void*))
+val t2p0 = the_t2ype_char
 //
 in
 d3exp_make_node(loc0, t2p0, node)
-end (* end of [aux_chr] *)
+end (* end of [auxchr] *)
 
 fun
-aux_flt
+auxflt
 ( d2e0
 : d2exp): d3exp = let
 //
 val
 loc0 = d2e0.loc()
 val-
-D2Echr(tok) = d2e0.node()
+D2Eflt(tok) = d2e0.node()
 //
 val
 t2p0 =
 (
 case+
 tok.node() of
-| T_FLOAT1 _ => t2ype_double()
-| T_FLOAT2 _ => t2ype_double()
-| T_FLOAT3 _ => t2ype_double()
-| _ (* dead *) => t2ype_double()
+| T_FLOAT1 _ => the_t2ype_double
+| T_FLOAT2 _ => the_t2ype_double
+| T_FLOAT3 _ => the_t2ype_double
+| _ (* dead *) => the_t2ype_double
 ) : t2ype // end of [val]
 //
 in
@@ -159,10 +159,10 @@ val node = D3Eflt(tok)
 in
 d3exp_make_node(loc0, t2p0, node)
 end
-end (* end of [aux_flt] *)
+end (* end of [auxflt] *)
 
 fun
-aux_str
+auxstr
 ( d2e0
 : d2exp): d3exp = let
 //
@@ -172,16 +172,16 @@ val-
 D2Estr(tok) = d2e0.node()
 //
 val node = D3Estr(tok)
-val t2p0 = t2ype_string((*void*))
+val t2p0 = the_t2ype_string
 //
 in
 d3exp_make_node(loc0, t2p0, node)
-end (* end of [aux_str] *)
+end (* end of [auxstr] *)
 
 (* ****** ****** *)
 
 fun
-aux_var
+auxvar
 ( d2e0
 : d2exp): d3exp = let
 //
@@ -195,12 +195,12 @@ val t2p0 = d2var_get_type(d2v)
 //
 in
 d3exp_make_node(loc0, t2p0, node)
-end (* end of [aux_var] *)
+end (* end of [auxvar] *)
 
 (* ****** ****** *)
 
 fun
-aux_dapp
+auxdapp
 ( d2e0
 : d2exp): d3exp = let
 //
@@ -215,7 +215,28 @@ val d3es = trans23_dexplst(d2es)
 //
 in
 d3exp_dapp_up(loc0, d3e1, npf, d3es)
-end (* end of [aux_dapp] *)
+end (* end of [auxdapp] *)
+
+(* ****** ****** *)
+
+fun
+aux_if0
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eif0
+(d2e1, d2e2, opt3) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+val d3e2 = trans23_dexp(d2e2)
+val opt3 = trans23_dexpopt(opt3)
+//
+in
+  d3exp_if0_up(loc0, d3e1, d3e2, opt3)
+end (* end of [aux_if0] *)
 
 (* ****** ****** *)
 
@@ -237,14 +258,16 @@ in
 case+
 d2e0.node() of
 //
-| D2Eint _ => aux_int(d2e0)
-| D2Echr _ => aux_chr(d2e0)
-| D2Eflt _ => aux_flt(d2e0)
-| D2Estr _ => aux_str(d2e0)
+| D2Eint _ => auxint(d2e0)
+| D2Echr _ => auxchr(d2e0)
+| D2Eflt _ => auxflt(d2e0)
+| D2Estr _ => auxstr(d2e0)
 //
-| D2Evar _ => aux_var(d2e0)
+| D2Evar _ => auxvar(d2e0)
 //
-| D2Edapp _ => aux_dapp(d2e0)
+| D2Edapp _ => auxdapp(d2e0)
+//
+| D2Eif0(_, _, _) => aux_if0(d2e0)
 //
 | _ (*else*) => d3exp_none1_0(d2e0)
 //

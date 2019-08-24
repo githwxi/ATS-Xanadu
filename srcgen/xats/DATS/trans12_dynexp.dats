@@ -833,7 +833,7 @@ val-
 D1Eflt(tok) = d1e0.node()
 //
 in
-  d2exp_chr(loc0, tok)
+  d2exp_flt(loc0, tok)
 end // end of [auxflt]
 
 fun
@@ -1149,6 +1149,7 @@ d1e0.node() of
 //
 | D1Eint _ => auxint(d1e0)
 | D1Echr _ => auxchr(d1e0)
+| D1Eflt _ => auxflt(d1e0)
 | D1Estr _ => auxstr(d1e0)
 //
 | D1Eapp1 _ => auxapp1(d1e0)

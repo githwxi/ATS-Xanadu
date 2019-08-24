@@ -84,11 +84,20 @@ x0.node() of
 | T2Pvar(s2v) =>
   fprint!(out, "T2Pvar(", s2v, ")")
 //
-| T2Pxtv(t2x) =>
-  fprint!(out, "T2Pxtv(", "...", ")")
+| T2Pxtv(xtv) =>
+  let
+(*
+    val t2p = "..."
+*)
+    val t2p = t2xtv_get_type(xtv)
+  in  
+    fprint!(out, "T2Pxtv(", t2p, ")")
+  end
 //
 | T2Pfun(fcr, npf, arg, res) =>
-  fprint!(out, "T2Pfun(", "...", ")")
+  fprint!
+  ( out, "T2Pfun("
+  , npf, "; ", arg, "; ", res, ")")
 //
 | T2Pexi(s2vs, body) =>
   fprint!(out, "T2Pexi(", "...", ")")

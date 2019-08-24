@@ -44,6 +44,10 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/symbol.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -86,7 +90,144 @@ list_map$fopr<d2pat><t2ype> = t2ype_of_d2pat
 
 implement
 ulte_t2ype_t2ype
-(t2p1, t2p2) = false
+(loc0, t2p1, t2p2) =
+(
+let
+//
+val
+t2p1 = t2p1.eval()
+and
+t2p2 = t2p2.eval()
+//
+val () =
+println!("ulte: t2p1 = ", t2p1)
+val () =
+println!("ulte: t2p2 = ", t2p2)
+//
+in (* in-of-let *)
+case+
+t2p1.node() of
+| T2Pxtv(xtv1) =>
+  auxtv1(xtv1, t2p2)
+| _ (* else *) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Pxtv(xtv2) =>
+    auxtv2(t2p1, xtv2)
+  | _ (* else *) => auxtp0(t2p1, t2p2)
+  )
+end where
+{
+//
+fun
+auxtp0
+( t2p1: t2ype
+, t2p2: t2ype): bool =
+(
+case+
+t2p1.node() of
+| T2Pbas(nam1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Pbas(nam2) =>
+    (nam1 = nam2)
+  | _ (* else *) => false
+  )
+| T2Pcst(s2c1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Pcst(s2c2) =>
+    (s2c1 = s2c2)
+  | _ (* else *) => false
+  )
+| T2Pfun
+  (fcr1, npf1, arg1, res1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Pfun
+    (fcr2, npf2, arg2, res2) =>
+    let
+      val
+      tfcr = true
+      val
+      tnpf = (npf1 = npf2)
+      val
+      targ = ulte(loc0, arg1, arg2)
+      val
+      tres = ulte(loc0, res1, res2)
+    in
+      (tfcr && (tnpf && (targ && tres)))
+    end
+  | _ (* else *) => false  
+  )
+| _ (* else *) => false
+)
+//
+fun
+auxtv1
+( xtv1: t2xtv
+, t2p2: t2ype): bool =
+(
+case+
+t2p2.node() of
+| T2Pxtv(xtv2) => true where
+  {
+    val () =
+    if xtv1 = xtv2
+      then () else xtv1.type(t2p2)
+    // end of [if]
+  }
+| _ (* else *) =>
+  let
+    val () = xtv1.type(t2p2) in true
+  end
+)
+//
+fun
+auxtv2
+( t2p1: t2ype
+, xtv2: t2xtv): bool =
+  let
+    val () = xtv2.type(t2p1) in true
+  end
+//
+} (* end of [where] *)
+) (* end of [ulte_t2ype_t2ype] *)
+
+(* ****** ****** *)
+
+implement
+ulte_t2ypelst_t2ypelst
+  (loc0, t2ps1, t2ps2) =
+(
+case+ t2ps1 of
+| list_nil() =>
+  (
+  case+ t2ps2 of
+  | list_nil() => true
+  | list_cons _ => false
+  )
+| list_cons(t2p1, t2ps1) =>
+  (
+  case+ t2ps2 of
+  | list_nil() => false
+  | list_cons(t2p2, t2ps2) =>
+    let
+      val
+      test1 =
+      ulte(loc0, t2p1, t2p2)
+      val
+      test2 =
+      ulte(loc0, t2ps1, t2ps2)
+    in
+      if test1 then test2 else false
+    end
+  )
+)
 
 (* ****** ****** *)
 
@@ -95,7 +236,7 @@ d3exp_dn
 (d3e0, t2p0) = let
 //
 val test =
-ulte(d3e0.type(), t2p0)
+ulte(d3e0.loc(), d3e0.type(), t2p0)
 //
 in
 //
@@ -175,7 +316,8 @@ end (* end of [d3explst_dn] *)
 
 implement
 d3exp_dapp_up
-(loc0, d3f0, npf0, d3es) =
+( loc0
+, d3f0, npf0, d3es) =
 let
 //
 val
@@ -183,11 +325,51 @@ targ =
 d3explst_get_type(d3es)
 //
 val tres = t2ype_new(loc0)
-val tfun = t2ype_fun0(npf0, targ, tres)
+val tfun =
+t2ype_fun0(npf0, targ, tres)
+//
+val
+d3f0 = d3exp_cast(d3f0, tfun)
 //
 in
-  d3exp_cast(d3f0, tfun)
+//
+d3exp_make_node
+(loc0, tres, D3Edapp(d3f0, npf0, d3es))
+//
 end // end of [d3exp_dapp_up]
+
+(* ****** ****** *)
+
+implement
+d3exp_if0_up
+( loc0
+, d3e1, d3e2, opt3) =
+let
+//
+val d3e1 =
+d3exp_dn
+(d3e1, the_t2ype_bool)
+val tres =
+(
+case+ opt3 of
+| None _ => the_t2ype_void
+| Some _ => t2ype_new(loc0)
+) : t2ype // end of [val]
+//
+val d3e2 =
+d3exp_dn(d3e2, tres)
+val opt3 =
+(
+case+ opt3 of
+| None() => None()
+| Some(d3e3) =>
+  Some(d3exp_dn(d3e3, tres))
+) : d3expopt // end of [val]
+//
+in
+  d3exp_make_node
+  (loc0, tres, D3Eif0(d3e1, d3e2, opt3))
+end // end of [d3exp_if0_up]
 
 (* ****** ****** *)
 
