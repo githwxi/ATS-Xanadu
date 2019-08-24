@@ -94,10 +94,17 @@ end // end of [local]
 
 (* ****** ****** *)
 //
+local
+val
+the_t2ype_none0 =
+t2ype_make_node
+(S2Tnone0, T2Pnone0)
+in (*in-of-local*)
 implement
 t2ype_none0() =
-t2ype_make_node
-(S2Tnone0(), T2Pnone0())
+the_t2ype_none0(*void*)
+end // end-of-local
+//
 implement
 t2ype_none1(s2e) =
 t2ype_make_node
@@ -127,8 +134,14 @@ val
 XATS_UINT_T =
 symbol("xats_uint_t")
 val
+XATS_BOOL_T =
+symbol("xats_bool_t")
+val
 XATS_CHAR_T =
 symbol("xats_char_t")
+val
+XATS_VOID_T =
+symbol("xats_void_t")
 val
 XATS_FLOAT_T =
 symbol("xats_float_t")
@@ -139,48 +152,45 @@ val
 XATS_STRING_T =
 symbol("xats_string_t")
 //
-val
+in(*in-of-local*)
+
+implement
 the_t2ype_sint =
 t2ype_make_name
 (the_sort2_type, XATS_SINT_T)
-val
+implement
 the_t2ype_uint =
 t2ype_make_name
 (the_sort2_type, XATS_UINT_T)
 //
-val
+implement
+the_t2ype_bool =
+t2ype_make_name
+(the_sort2_type, XATS_BOOL_T)
+//
+implement
 the_t2ype_char =
 t2ype_make_name
 (the_sort2_type, XATS_CHAR_T)
 //
-val
+implement
+the_t2ype_void =
+t2ype_make_name
+(the_sort2_type, XATS_VOID_T)
+//
+implement
 the_t2ype_float =
 t2ype_make_name
 (the_sort2_type, XATS_FLOAT_T)
-val
+implement
 the_t2ype_double =
 t2ype_make_name
 (the_sort2_type, XATS_DOUBLE_T)
 //
-val
+implement
 the_t2ype_string =
 t2ype_make_name
 (the_sort2_type, XATS_STRING_T)
-
-in(*in-of-local*)
-
-implement
-t2ype_sint() = the_t2ype_sint
-implement
-t2ype_uint() = the_t2ype_uint
-implement
-t2ype_char() = the_t2ype_char
-implement
-t2ype_float() = the_t2ype_float
-implement
-t2ype_double() = the_t2ype_double
-implement
-t2ype_string() = the_t2ype_string
 
 end // end of [local]
 
@@ -213,9 +223,10 @@ end
 local
 //
 typedef
-t2xtv_struct = $rec
-{
+t2xtv_struct = @{
   t2xtv_loc= loc_t
+,
+  t2xtv_type= t2ype
 ,
   t2xtv_stamp= stamp
 }
@@ -224,22 +235,43 @@ absimpl
 t2xtv_tbox=ref(t2xtv_struct)
 //
 in (*in-of-local*)
-
+//
 implement
 t2xtv_new(loc0) =
-ref<t2xtv_struct>
 (
-$rec
-{
-t2xtv_loc= loc0
+ref<t2xtv_struct>
+@{
+  t2xtv_loc= loc0
 ,
-t2xtv_stamp=stamp
+  t2xtv_type= t2p0
+,
+  t2xtv_stamp=stamp
 }
 ) where
 {
+val t2p0 = t2ype_none0()
 val stamp = t2xtv_stamp_new()
 } (* end of [t2xtv_new0] *)
-
+//
+implement
+t2xtv_get_loc
+  (xtv) = xtv->t2xtv_loc
+implement
+t2xtv_get_type
+  (xtv) = xtv->t2xtv_type
+implement
+t2xtv_set_type
+  (xtv, t2p) =
+  (xtv->t2xtv_type := t2p)
+//
+implement
+eq_t2xtv_t2xtv
+  (xtv1, xtv2) =
+$STM.eq_stamp_stamp
+(
+  xtv1->t2xtv_stamp, xtv2->t2xtv_stamp
+) (*eq_t2xtv_t2xtv*)
+//
 end // end of [local]
 //
 (* ****** ****** *)
@@ -257,6 +289,25 @@ val s2t0 = the_sort2_none
 in
   t2ype_make_node(s2t0, node)
 end // end of [t2ype_xtv]
+//
+(* ****** ****** *)
+//
+implement
+t2ype_eval
+  (t2p0) =
+(
+case+
+t2p0.node() of
+| T2Pxtv(xtv) =>
+  let
+  val
+  t2p1 = xtv.type()
+  in
+  case+ t2p1.node() of
+  | T2Pnone0() => t2p0 | _ => t2ype_eval(t2p1)
+  end
+| _(* else *) => t2p0
+)
 //
 (* ****** ****** *)
 

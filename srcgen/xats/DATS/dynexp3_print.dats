@@ -106,16 +106,21 @@ x0.node() of
 | D3Evar(d2v) =>
   fprint!(out, "D3Evar(", d2v, ")")
 //
-| D3Ecast(d3e1, t2p2) =>
-  fprint!
-  ( out
-  , "D3Ecast(", d3e1, "; ", t2p2, ")")
-//
 | D3Edapp
   (d3e1, npf2, d3es) =>
   fprint!
   ( out, "D3Edapp("
   , d3e1, "; ", npf2, "; ", d3es, ")")
+//
+| D3Eif0
+  (d3e1, d3e2, opt3) =>
+  fprint!
+  ( out, "D3Eif0("
+  , d3e1, "; ", d3e2, "; ", opt3, ")")
+//
+| D3Ecast(d3e1, t2p2) =>
+  fprint!
+  (out, "D3Ecast(", d3e1, "; ", t2p2, ")")
 //
 | D3Enone0() =>
   fprint!(out, "D3Enone0(", ")")

@@ -115,9 +115,20 @@ trans23_declist: d2eclist -> d3eclist
 //
 fun
 ulte_t2ype_t2ype
-(t2p1: t2ype, t2p2: t2ype): bool
+( loc0: loc_t
+, t2p1: t2ype
+, t2p2: t2ype): bool
 //
-overload ulte with ulte_t2ype_t2ype
+fun
+ulte_t2ypelst_t2ypelst
+( loc0: loc_t
+, t2ps1: t2ypelst
+, t2ps2: t2ypelst): bool
+//
+overload
+ulte with ulte_t2ype_t2ype
+overload
+ulte with ulte_t2ypelst_t2ypelst
 //
 (* ****** ****** *)
 //
@@ -136,6 +147,13 @@ d3exp_dapp_up
 ( loc0: loc_t
 , d3f0: d3exp, npf0: int, d3es: d3explst): d3exp
 
+(* ****** ****** *)
+//
+fun
+d3exp_if0_up
+( loc0: loc_t
+, d3e1: d3exp, d3e2: d3exp, opt3: d3expopt): d3exp
+//
 (* ****** ****** *)
 
 (* end of [xats_trans23.sats] *)
