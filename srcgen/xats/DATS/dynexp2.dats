@@ -233,8 +233,8 @@ end // end of [local]
 
 local
 
-absimpl
-d2var_tbox = $rec{
+typedef
+d2var_struct = @{
 //
   d2var_loc= loc_t // loc
 , d2var_sym= sym_t // name
@@ -243,6 +243,9 @@ d2var_tbox = $rec{
 , d2var_stamp= stamp // unicity
 //
 } (* end of [d2var_tbox] *)
+
+absimpl
+d2var_tbox=ref(d2var_struct)
 
 in (* in-of-local *)
 
@@ -263,7 +266,8 @@ implement
 d2var_new2
 (loc, sym) =
 (
-$rec{
+ref<d2var_struct>
+@{
   d2var_loc= loc
 , d2var_sym= sym
 , d2var_sexp= s2e1
@@ -276,16 +280,20 @@ $rec{
   val t2p2 = t2ype_none0()
   val stamp = d2var_stamp_new()
 }
-
+//
 implement
-d2var_get_loc(x0) = x0.d2var_loc
+d2var_get_loc(x0) = x0->d2var_loc
 implement
-d2var_get_sym(x0) = x0.d2var_sym
+d2var_get_sym(x0) = x0->d2var_sym
 implement
-d2var_get_type(x0) = x0.d2var_type
+d2var_get_type(x0) = x0->d2var_type
 implement
-d2var_get_stamp(x0) = x0.d2var_stamp
-
+d2var_get_stamp(x0) = x0->d2var_stamp
+//
+implement
+d2var_set_type
+  (x0, t2p0) = x0->d2var_type := t2p0
+//
 end // end of [local]
 
 (* ****** ****** *)

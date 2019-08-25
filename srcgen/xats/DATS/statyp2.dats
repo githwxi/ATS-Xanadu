@@ -265,6 +265,10 @@ t2xtv_set_type
   (xtv->t2xtv_type := t2p)
 //
 implement
+t2xtv_get_stamp
+  (xtv) = xtv->t2xtv_stamp
+//
+implement
 eq_t2xtv_t2xtv
   (xtv1, xtv2) =
 $STM.eq_stamp_stamp

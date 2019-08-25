@@ -47,6 +47,10 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp0.sats"
 
 (* ****** ****** *)
+
+#staload "./../SATS/dynexp1.sats"
+
+(* ****** ****** *)
 //
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
@@ -105,6 +109,14 @@ x0.node() of
 //
 | D3Evar(d2v) =>
   fprint!(out, "D3Evar(", d2v, ")")
+//
+| D3Esym0
+  (d1e1, dpis) =>
+  fprint!(out, "D3Esym0(", d1e1, ")")
+(*
+  fprint!
+  (out, "D3Esym0(", d1e1, "; ", dpis, ")")
+*)
 //
 | D3Edapp
   (d3e1, npf2, d3es) =>

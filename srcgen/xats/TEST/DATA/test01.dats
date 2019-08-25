@@ -72,11 +72,22 @@ end
 (* ****** ****** *)
 
 (*
-fun succ(x:int) = x+1
+fun
+omega(x) = x(x)
 *)
 
 (* ****** ****** *)
-//
+
+fun
+<a:type>
+app(f: a -> a, x: a) = f(x)
+
+(* ****** ****** *)
+////
+fun succ(x:int):int = x+1
+
+(* ****** ****** *)
+////
 fun:rec
 fact(x: int): int =
 if x > 0 then x * fact(x-1) else 1

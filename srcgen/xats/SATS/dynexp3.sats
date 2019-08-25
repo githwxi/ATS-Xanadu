@@ -69,6 +69,10 @@ d3exp_node =
 //
 | D3Evar of (d2var)
 //
+| D3Esym0 of
+    (d1exp, d2pitmlst)
+  // D3Esym0
+//
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
 //

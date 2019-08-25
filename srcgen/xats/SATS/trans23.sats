@@ -51,12 +51,14 @@
 
 typedef s2exp = $S2E.s2exp
 typedef t2ype = $S2T.t2ype
+typedef t2xtv = $S2T.t2xtv
 
 typedef s2explst = $S2E.s2explst
 typedef t2ypelst = $S2T.t2ypelst
 
 (* ****** ****** *)
 
+typedef d2var = $D2E.d2var
 typedef d2pat = $D2E.d2pat
 typedef d2exp = $D2E.d2exp
 typedef d2ecl = $D2E.d2ecl
@@ -85,9 +87,16 @@ typedef v2ardecl = $D2E.v2ardecl
 (* ****** ****** *)
 
 fun
+trenv23_dvar: d2var -> void
+fun
 trenv23_dpat: d2pat -> void
 fun
 trenv23_dpatlst: d2patlst -> void
+
+fun
+trenv23_dvar_dn: (d2var, t2ype) -> void
+fun
+trenv23_dpat_dn: (d2pat, t2ype) -> void
 
 (* ****** ****** *)
 //
@@ -114,16 +123,20 @@ trans23_declist: d2eclist -> d3eclist
 (* ****** ****** *)
 //
 fun
+t2xtv_occurs
+(xtv0: t2xtv, t2p1: t2ype): bool
+//
+(* ****** ****** *)
+//
+fun
 ulte_t2ype_t2ype
 ( loc0: loc_t
-, t2p1: t2ype
-, t2p2: t2ype): bool
+, t2p1: t2ype, t2p2: t2ype): bool
 //
 fun
 ulte_t2ypelst_t2ypelst
 ( loc0: loc_t
-, t2ps1: t2ypelst
-, t2ps2: t2ypelst): bool
+, t2ps1: t2ypelst, t2ps2: t2ypelst): bool
 //
 overload
 ulte with ulte_t2ype_t2ype

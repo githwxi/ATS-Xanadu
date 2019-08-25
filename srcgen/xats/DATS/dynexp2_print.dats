@@ -320,14 +320,12 @@ case- x0.node() of
   fprint!(out, "D2Econ2(", d2cs, ")")
 //
 | D2Esym0
-  (d1e0, dpis) =>
+  (d1e1, dpis) =>
+  fprint!(out, "D2Esym0(", d1e1, ")")
 (*
-  fprint!(out, "D2Esym0(", d1e0, ")")
-*)
-// (*
   fprint!
-  (out, "D2Esym0(", d1e0, "; ", dpis, ")")
-// *)
+  (out, "D2Esym0(", d1e1, "; ", dpis, ")")
+*)
 //
 | D2Esapp
   (d2f0, s2as) =>
