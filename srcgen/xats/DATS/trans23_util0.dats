@@ -89,6 +89,75 @@ list_map$fopr<d2pat><t2ype> = t2ype_of_d2pat
 (* ****** ****** *)
 
 implement
+t2xtv_occurs
+(xtv0, t2p0) =
+(auxt2p(t2p0)) where
+{
+//
+fun
+auxt2p
+(t2p0: t2ype): bool = (
+//
+case+
+t2p0.node() of
+//
+| T2Pbas _ => false
+//
+| T2Pcst _ => false
+| T2Pvar _ => false
+//
+| T2Pnone0 _ => false
+| T2Pnone1 _ => false
+//
+| T2Pxtv(xtv1) =>
+  if
+  (xtv0 = xtv1)
+  then true else auxt2p(xtv1.type())
+//
+| T2Pfun
+  (fcr, npf, t2ps, t2p1) =>
+  if
+  auxt2p(t2p1)
+  then true else auxt2ps(t2ps)
+//
+| T2Pexi(s2vs, t2p1) => auxt2p(t2p1)
+| T2Puni(s2vs, t2p1) => auxt2p(t2p1)
+//
+| T2Ptyrec
+  (knd, npf, lt2ps) => auxlt2ps(lt2ps)
+//
+) (* end of [auxt2p] *)
+and
+auxt2ps
+(t2ps: t2ypelst): bool =
+(
+case+ t2ps of
+| list_nil() => false
+| list_cons(t2p0, t2ps) =>
+  if auxt2p(t2p0) then true else auxt2ps(t2ps)
+)
+//
+and
+auxlt2p
+(lt2p: labt2ype): bool =
+let
+  val+TLABELED(lab, t2p) = lt2p in auxt2p(t2p)
+end
+and
+auxlt2ps
+(lt2ps: labt2ypelst): bool =
+(
+case+ lt2ps of
+| list_nil() => true
+| list_cons(lt2p, lt2ps) =>
+  if auxlt2p(lt2p) then true else auxlt2ps(lt2ps)
+)
+//
+} (* end of [t2xtv_occurs] *)
+
+(* ****** ****** *)
+
+implement
 ulte_t2ype_t2ype
 (loc0, t2p1, t2p2) =
 (
@@ -143,6 +212,14 @@ t2p1.node() of
     (s2c1 = s2c2)
   | _ (* else *) => false
   )
+| T2Pvar(s2v1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Pvar(s2v2) =>
+    (s2v1 = s2v2)
+  | _ (* else *) => false
+  )
 | T2Pfun
   (fcr1, npf1, arg1, res1) =>
   (
@@ -156,7 +233,7 @@ t2p1.node() of
       val
       tnpf = (npf1 = npf2)
       val
-      targ = ulte(loc0, arg1, arg2)
+      targ = ulte(loc0, arg2, arg1)
       val
       tres = ulte(loc0, res1, res2)
     in
@@ -183,7 +260,16 @@ t2p2.node() of
   }
 | _ (* else *) =>
   let
-    val () = xtv1.type(t2p2) in true
+    val occurs =
+    t2xtv_occurs(xtv1, t2p2) 
+    val ((*void*)) =
+    println!
+    ("auxtv1: occurs = ", occurs)
+  in
+    if occurs then false else
+    let
+      val () = xtv1.type(t2p2) in true
+    end
   end
 )
 //
@@ -192,7 +278,16 @@ auxtv2
 ( t2p1: t2ype
 , xtv2: t2xtv): bool =
   let
-    val () = xtv2.type(t2p1) in true
+    val occurs =
+    t2xtv_occurs(xtv2, t2p1) 
+    val ((*void*)) =
+    println!
+    ("auxtv2: occurs = ", occurs)
+  in
+    if occurs then false else
+    let
+      val () = xtv2.type(t2p1) in true
+    end
   end
 //
 } (* end of [where] *)
@@ -227,7 +322,7 @@ case+ t2ps1 of
       if test1 then test2 else false
     end
   )
-)
+) (* end of [ulte_t2ypelst_t2ypelst] *)
 
 (* ****** ****** *)
 
@@ -325,11 +420,11 @@ targ =
 d3explst_get_type(d3es)
 //
 val tres = t2ype_new(loc0)
+//
 val tfun =
 t2ype_fun0(npf0, targ, tres)
 //
-val
-d3f0 = d3exp_cast(d3f0, tfun)
+val d3f0 = d3exp_dn(d3f0, tfun)
 //
 in
 //

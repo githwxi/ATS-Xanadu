@@ -162,11 +162,14 @@ fun
 d2var_get_sexp(d2var): s2exp
 fun
 d2var_get_type(d2var): t2ype
+fun
+d2var_set_type(d2var, t2ype): void
 //
 overload .sexp with d2con_get_sexp
 overload .sexp with d2cst_get_sexp
 overload .sexp with d2var_get_sexp
 overload .type with d2var_get_type
+overload .type with d2var_set_type
 //
 (* ****** ****** *)
 //

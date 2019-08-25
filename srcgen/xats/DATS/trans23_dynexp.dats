@@ -61,13 +61,55 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans23.sats"
 
 (* ****** ****** *)
-
+//
 implement
-trenv23_dpat(d2p0) =
+trenv23_dvar
+  (d2v0) =
+(
 let
+val loc0 = d2v0.loc()
 in
-end // end of [trenv23_dpat]
-
+  d2v0.type(t2ype_new(loc0))
+end
+)
+implement
+trenv23_dvar_dn
+  (d2v0, t2p0) =
+(
+  d2var_set_type(d2v0, t2p0)
+)
+//
+(* ****** ****** *)
+//
+implement
+trenv23_dpat
+  (d2p0) =
+(
+case+
+d2p0.node() of
+//
+| D2Pany() => ()
+//
+| D2Pint(tok) => ()
+| D2Pchr(tok) => ()
+| D2Pflt(tok) => ()
+| D2Pstr(tok) => ()
+//
+| D2Pvar(d2v0) =>
+  trenv23_dvar(d2v0)
+//
+| D2Panno(d2p1, s2e2) =>
+  let
+  val
+  t2p2 = s2exp_erase(s2e2)
+  in
+    trenv23_dpat_dn(d2p1, t2p2)
+  end
+//
+| _(* else *) => ((*void*))
+//
+) (* end of [trenv23_dpat] *)
+//
 implement
 trenv23_dpatlst
   (d2ps) =
@@ -80,6 +122,30 @@ case+ d2ps of
   trenv23_dpat(d2p0)
   in trenv23_dpatlst(d2ps) end
 )
+//
+(* ****** ****** *)
+
+implement
+trenv23_dpat_dn
+  (d2p0, t2p0) =
+(
+case+
+d2p0.node() of
+//
+| D2Pany() => ()
+//
+| D2Pint(tok) => ()
+| D2Pchr(tok) => ()
+| D2Pflt(tok) => ()
+| D2Pstr(tok) => ()
+//
+| D2Pvar(d2v0) =>
+  trenv23_dvar_dn(d2v0, t2p0)
+//
+| _(* else *) => ((*void*))
+//
+) (* end of [trenv23_dpat_dn] *)
+
 (* ****** ****** *)
 
 local
@@ -200,6 +266,26 @@ end (* end of [auxvar] *)
 (* ****** ****** *)
 
 fun
+auxsym0
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Esym0(d1e, dpis) = d2e0.node()
+//
+val
+t2p0 = t2ype_new(loc0)
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Esym0(d1e, dpis))
+end // end of [auxsym0]
+
+(* ****** ****** *)
+
+fun
 auxdapp
 ( d2e0
 : d2exp): d3exp = let
@@ -264,6 +350,8 @@ d2e0.node() of
 | D2Estr _ => auxstr(d2e0)
 //
 | D2Evar _ => auxvar(d2e0)
+//
+| D2Esym0 _ => auxsym0(d2e0)
 //
 | D2Edapp _ => auxdapp(d2e0)
 //
@@ -381,9 +469,29 @@ val wtp = rcd.wtp
 //
 val ( ) =
 if
-ishdr(f2d0) then auxarg(arg)
+ishdr(f2d0)
+then () else auxarg(arg)
 //
-val def = trans23_dexpopt(def)
+val def =
+(
+case+ def of
+| None() => None()
+| Some(d2e0) =>
+  let
+    val d3e0 =
+    trans23_dexp(d2e0)
+  in
+    case+ res of
+    | EFFS2EXPnone() => Some(d3e0)
+    | EFFS2EXPsome(s2e0) =>
+      (
+        Some(d3exp_dn(d3e0, t2p0))
+      ) where
+      {
+        val t2p0 = s2exp_erase(s2e0)
+      }
+  end
+) : d3expopt // end of [val]
 //
 in
 F3UNDECL

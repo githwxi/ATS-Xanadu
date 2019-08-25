@@ -91,15 +91,21 @@ fun
 t2xtv_get_type(t2xtv): t2ype
 fun
 t2xtv_set_type(t2xtv, t2ype): void
+fun
+t2xtv_get_stamp(t2xtv): stamp
 //
 fun
 eq_t2xtv_t2xtv
 (xtv1: t2xtv, xtv2: t2xtv): bool
 //
 overload = with eq_t2xtv_t2xtv
+//
 overload .loc with t2xtv_get_loc
+//
 overload .type with t2xtv_get_type
 overload .type with t2xtv_set_type
+//
+overload .stamp with t2xtv_get_stamp
 //
 (* ****** ****** *)
 //
@@ -248,6 +254,8 @@ t2ype_fun1
 
 fun
 s2exp_erase(s2e0: s2exp): t2ype
+fun
+s2explst_erase(s2es: s2explst): t2ypelst
 
 (* ****** ****** *)
 

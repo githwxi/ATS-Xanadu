@@ -41,8 +41,12 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+STM = "./../SATS/stamp0.sats"
+overload
+fprint with $STM.fprint_stamp
 //
+#staload
+SYM = "./../SATS/symbol.sats"
 overload
 fprint with $SYM.fprint_symbol
 //
@@ -90,8 +94,19 @@ x0.node() of
     val t2p = "..."
 *)
     val t2p = t2xtv_get_type(xtv)
-  in  
-    fprint!(out, "T2Pxtv(", t2p, ")")
+  in
+    case+
+    t2p.node() of
+    | T2Pnone0() =>
+      (
+      fprint!
+      (out, "T2Pxtv(", stm, ")")
+      ) where
+      {
+        val stm = xtv.stamp((*void*))
+      }
+    | _ (* else *) =>
+      fprint!(out, "T2Pxtv(", t2p, ")")
   end
 //
 | T2Pfun(fcr, npf, arg, res) =>

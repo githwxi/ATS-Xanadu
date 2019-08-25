@@ -1258,8 +1258,10 @@ in
 if
 isarrw(s1e1)
 then let
+//
   var npf
-    : int = 0
+    : int = ~1
+//
   val s2es =
   (
   case+
@@ -1278,8 +1280,10 @@ then let
   | _(*non-S1Elist*) =>
     list_sing
     (trans12_sexp_ci(s1e2))
-  ) : s2explst
+  ) : s2explst // end-of-val
+//
   val s2e3 = trans12_sexp_ci(s1e3)
+//
 in
   s2exp_fun_all(npf, s2es, s2e3)
 end // end of [then]
