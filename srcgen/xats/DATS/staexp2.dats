@@ -214,17 +214,26 @@ case+ s2tb of
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_tcode] *)
 //
+(* ****** ****** *)
+//
 implement
 sort2_is_impred
   (s2t0) =
 (
 case+ s2t0 of
+//
 | S2Tbas(s2tb) =>
-(
+  (
   case+ s2tb of
-  | T2BASimp(_, _) => true | _ => false
-)
-| _ (* non-S2Tbas *) => false
+  | T2BASimp _ => true
+  | _ (* else *) => false
+  )
+//
+| S2Tfun(_, s2t1) =>
+  sort2_is_impred(s2t1)
+//
+| _ (*rest-of-sort2*) => false
+//
 ) (* end of [sort2_is_impred] *)
 //
 (* ****** ****** *)
@@ -337,11 +346,13 @@ end // end of [local]
 local
 //
 typedef
-s2xtv_struct = $rec
-{
+s2xtv_struct =
+@{
   s2xtv_loc= loc_t
 ,
   s2xtv_sort= sort2
+,
+  s2xtv_sexp= s2exp
 ,
   s2xtv_stamp= stamp
 }
@@ -354,20 +365,22 @@ in (* in-of-local *)
 implement
 s2xtv_new
 (loc0, s2t0) =
-ref<s2xtv_struct>
 (
-$rec
-{
-s2xtv_loc= loc0
+ref<s2xtv_struct>
+@{
+  s2xtv_loc= loc0
 ,
-s2xtv_sort=s2t0
+  s2xtv_sort= s2t0
 ,
-s2xtv_stamp=stamp
+  s2xtv_sexp= s2e0
+,
+  s2xtv_stamp= stamp
 }
 ) where
 {
+val s2e0 = the_s2exp_none0
 val stamp = s2xtv_stamp_new()
-} (* end of [s2xtv_new0] *)
+} (* end of [s2xtv_new] *)
 //
 implement
 s2xtv_get_loc
@@ -375,6 +388,15 @@ s2xtv_get_loc
 implement
 s2xtv_get_sort
   (xtv0) = xtv0->s2xtv_sort
+//
+implement
+s2xtv_get_sexp
+  (xtv0) = xtv0->s2xtv_sexp
+implement
+s2xtv_set_sexp
+  (xtv0, s2e0) =
+  (xtv0->s2xtv_sexp := s2e0)
+//
 implement
 s2xtv_get_stamp
   (xtv0) = xtv0->s2xtv_stamp
@@ -980,6 +1002,10 @@ s2exp_tyext
 )
 //
 (* ****** ****** *)
+//
+implement
+the_s2exp_none0 =
+  s2exp_none0((*void*))
 //
 implement
 s2exp_none0() =

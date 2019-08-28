@@ -67,6 +67,17 @@ fprint_val<t2ype> = fprint_t2ype
 implement
 fprint_val<s2exp> = fprint_s2exp
 //
+(* ****** ****** *)
+//
+implement
+fprint_val<d2con> = fprint_d2con
+implement
+fprint_val<d2cst> = fprint_d2cst
+implement
+fprint_val<d2var> = fprint_d2var
+//
+(* ****** ****** *)
+//
 implement
 fprint_val<f2arg> = fprint_f2arg
 implement
@@ -75,13 +86,73 @@ fprint_val<tq2arg> = fprint_tq2arg
 (* ****** ****** *)
 //
 implement
+fprint_val<d3pat> = fprint_d3pat
+//
+(* ****** ****** *)
+//
+implement
 fprint_val<d3exp> = fprint_d3exp
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d3gua> = fprint_d3gua
+implement
+fprint_val<d3clau> = fprint_d3clau
+implement
+fprint_val<dg3pat> = fprint_dg3pat
 //
 (* ****** ****** *)
 
 implement
 fprint_val<d3ecl> = fprint_d3ecl
 
+(* ****** ****** *)
+//
+implement
+print_d3pat(x0) =
+fprint_d3pat(stdout_ref, x0)
+implement
+prerr_d3pat(x0) =
+fprint_d3pat(stderr_ref, x0)
+//
+implement
+fprint_d3pat
+  (out, x0) =
+(
+case- x0.node() of
+//
+| D3Pany() =>
+  fprint!(out, "D3Pany()")
+//
+| D3Pvar(d2v) =>
+  fprint!
+  (out, "D3Pvar(", d2v, ")")
+//
+| D3Pcon1(d2c0) =>
+  fprint!
+  (out, "D3Pcon1(", d2c0, ")")
+| D3Pcon2(d2cs) =>
+  fprint!
+  (out, "D3Pcon2(", d2cs, ")")
+//
+| D3Pdapp
+  (d3f0, npf0, d3ps) =>
+  fprint!
+  ( out, "D3Pdapp("
+  , d3f0, "; ", npf0, "; ", d3ps, ")")
+//
+| D3Pcast(d3p1, t2p2) =>
+  fprint!
+  (out, "D3Pcast(", d3p1, "; ", t2p2, ")")
+//
+| D3Pnone0() =>
+  fprint!(out, "D3Pnone0(", ")")
+| D3Pnone1(d1psrc) =>
+  fprint!(out, "D3Pnone1(", d1psrc, ")")
+//
+) (* end of [fprint_d3pat] *)
+//
 (* ****** ****** *)
 //
 implement
@@ -124,11 +195,23 @@ x0.node() of
   ( out, "D3Edapp("
   , d3e1, "; ", npf2, "; ", d3es, ")")
 //
+| D3Etuple
+  (knd1, npf2, d3es) =>
+  fprint!
+  ( out, "D3Etuple("
+  , knd1, "; ", npf2, "; ", d3es, ")")
+//
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   fprint!
   ( out, "D3Eif0("
   , d3e1, "; ", d3e2, "; ", opt3, ")")
+//
+| D3Ecase
+  (knd0, d3e1, d3cls) =>
+  fprint!
+  ( out, "D3Ecase("
+  , knd0, "; ", d3e1, "; ", d3cls, ")")
 //
 | D3Ecast(d3e1, t2p2) =>
   fprint!
@@ -141,6 +224,71 @@ x0.node() of
 //
 )
 //
+(* ****** ****** *)
+
+implement
+print_d3gua(x0) =
+fprint_d3gua(stdout_ref, x0)
+implement
+prerr_d3gua(x0) =
+fprint_d3gua(stderr_ref, x0)
+
+implement
+fprint_d3gua
+  (out, x0) =
+(
+case+
+x0.node() of
+| D3GUAexp(d3e) =>
+  fprint!
+  (out, "D3GUAexp(", d3e, ")")
+| D3GUAmat(d3e, d3p) =>
+  fprint!
+  (out, "D3GUAmat(", d3e, "; ", d3p, ")")
+) (* end of [fprint_d3gua] *)
+
+(* ****** ****** *)
+
+implement
+print_d3clau(x0) =
+fprint_d3clau(stdout_ref, x0)
+implement
+prerr_d3clau(x0) =
+fprint_d3clau(stderr_ref, x0)
+
+implement
+print_dg3pat(x0) =
+fprint_dg3pat(stdout_ref, x0)
+implement
+prerr_dg3pat(x0) =
+fprint_dg3pat(stderr_ref, x0)
+
+implement
+fprint_d3clau
+  (out, x0) =
+(
+case+
+x0.node() of
+| D3CLAUgpat(dg3p) =>
+  fprint!
+  (out, "D3CLAUgpat(", dg3p, ")")
+| D3CLAUclau(dg3p, d0e0) =>
+  fprint!
+  (out, "D3CLAUclau(", dg3p, "; ", d0e0, ")")
+) (* end of [fprint_d3clau] *)
+
+implement
+fprint_dg3pat
+  (out, x0) =
+(
+case+
+x0.node() of
+| DG3PATpat(d3p) =>
+  fprint!(out, "DG3PATpat(", d3p, ")")
+| DG3PATgua(d3p, d3gs) =>
+  fprint!(out, "DG3PATgua(", d3p, "; ", d3gs, ")")
+) (* end of [fprint_dg3pat] *)
+
 (* ****** ****** *)
 //
 implement
@@ -166,8 +314,8 @@ case-
 x0.node() of
 | D3Cnone0() =>
   fprint!(out, "D3Cnone0(", ")")
-| D3Cnone1(d2c) =>
-  fprint!(out, "D3Cnone1(", d2c, ")")
+| D3Cnone1(d3c) =>
+  fprint!(out, "D3Cnone1(", d3c, ")")
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>
   fprint!
@@ -199,7 +347,7 @@ in
   ( out
   , "F3UNDECL@{"
   , ", nam=", rcd.nam
-  , ", arg=", rcd.arg
+  , ", a2g=", rcd.a2g
   , ", res=", rcd.res
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f3undecl]

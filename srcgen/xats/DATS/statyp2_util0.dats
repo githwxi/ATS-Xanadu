@@ -65,8 +65,39 @@ let
 //
 val
 s2t0 = s2e0.sort()
+val
+impred =
+sort2_is_impred(s2t0)
 //
-in
+fun
+auxs2vs
+(s2vs
+: s2varlst
+)
+: s2varlst =
+(
+case+ s2vs of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (s2v0, s2vs) =>
+  (
+  if
+  impred
+  then
+  list_cons(s2v0, s2vs) else s2vs
+  ) where
+  {
+    val s2t0 = s2v0.sort()
+    val s2vs = auxs2vs(s2vs)
+    val impred = sort2_is_impred(s2t0)
+  }
+) (* end of [auxs2vs] *)
+//
+fun
+auxmain
+(s2e0: s2exp): t2ype =
+(
 case-
 s2e0.node() of
 //
@@ -75,10 +106,27 @@ s2e0.node() of
 //
 | S2Eexi
   (s2vs, s2ps, body) =>
-  t2ype_exi(s2vs, s2exp_erase(body))
+  let
+    val s2vs = auxs2vs(s2vs)
+  in
+    t2ype_exi(s2vs, s2exp_erase(body))
+  end
 | S2Euni
   (s2vs, s2ps, body) =>
-  t2ype_uni(s2vs, s2exp_erase(body))
+  let
+    val s2vs = auxs2vs(s2vs)
+  in
+    t2ype_uni(s2vs, s2exp_erase(body))
+  end
+//
+| S2Eapp(s2e1, s2es) =>
+  let
+    val t2p1 = s2exp_erase(s2e1)
+    val t2ps = s2explst_erase(s2es)
+  in
+    t2ype_make_node
+    (s2t0, T2Papp(t2p1, t2ps))
+  end
 //
 | S2Efun
   (fc2, lin, npf, s2es, s2e1) =>
@@ -91,9 +139,13 @@ s2e0.node() of
     (s2t0, T2Pfun(fcr, npf, t2ps, t2p1))
   end
 //
-| _ (*rest-of-s2exp*) => t2ype_none1(s2e0)
+| _(*rest-of-s2exp*) => t2ype_none1(s2e0)
 //
-end (* end of [s2exp_erase] *)
+)
+//
+in
+if impred then auxmain(s2e0) else t2ype_none1(s2e0)
+end // end of [s2exp_erase]
 
 (* ****** ****** *)
 

@@ -1086,7 +1086,11 @@ val-
 D1Etuple
 (tok, d1es) = d1e0.node()
 //
-val knd = 0
+val knd =
+let
+val-
+T_TUPLE(knd) = tok.node() in knd
+end
 val npf = ~1
 val d2es = trans12_dexplst(d1es)
 //
@@ -1107,7 +1111,11 @@ D1Etuple
 ( tok
 , xs1, xs2) = d1e0.node()
 //
-val knd = 0
+val knd =
+let
+val-
+T_TUPLE(knd) = tok.node() in knd
+end
 val npf = list_length(xs1)
 //
 val d2es =
@@ -1183,14 +1191,18 @@ d1e0.node() of
   } (* end of [D1Eif0] *)
 //
 | D1Ecase
-  (knd, d1e1, d1cls) =>
+  (tok, d1e1, d1cls) =>
   (
     d2exp_make_node
     ( loc0
     , D2Ecase(knd, d2e1, d2cls))
   ) where
   {
-    val knd = 0
+    val knd =
+    (
+      case-
+      tok.node() of T_CASE(knd) => knd
+    ) : int // end of [val]
     val d2e1 = trans12_dexp(d1e1)
     val d2cls = trans12_dclaulst(d1cls)
   } (* end of [D1Ecase] *)
@@ -1594,14 +1606,11 @@ case+ s2tf of
 val
 s2t0 = s2e0.sort()
 val
-def0 =
-s2expnul_some(s2e0)
-val
 s2c0 =
 s2cst_make_idst(sid, s2t0)
 //
 val () = stamp_s2cst(s2c0)
-val () = stamp_s2cst_def(s2c0, def0)
+val () = stamp_s2cst_def(s2c0, s2e0)
 //
 in
 let
@@ -3061,7 +3070,7 @@ case+ res0 of
 | EFFS1EXPnone
     () =>
   (
-    s2exp_none0((*void*))
+    the_s2exp_none0(*void*)
   )
 | EFFS1EXPsome
     (s1e) => trans12_sexp(s1e)
@@ -3256,7 +3265,7 @@ let
   | EFFS1EXPnone
       () =>
     (
-      s2exp_none0((*void*))
+      the_s2exp_none0(*void*)
     )
   | EFFS1EXPsome
       (s1e) => trans12_sexp(s1e)

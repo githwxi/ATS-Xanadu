@@ -109,15 +109,17 @@ x0.node() of
       fprint!(out, "T2Pxtv(", t2p, ")")
   end
 //
+| T2Papp(t2p1, t2ps) =>
+  fprint!(out, "T2Papp(", t2p1, "; ", t2ps, ")")
+//
 | T2Pfun(fcr, npf, arg, res) =>
   fprint!
-  ( out, "T2Pfun("
-  , npf, "; ", arg, "; ", res, ")")
+  (out, "T2Pfun(", npf, "; ", arg, "; ", res, ")")
 //
 | T2Pexi(s2vs, body) =>
-  fprint!(out, "T2Pexi(", "...", ")")
+  fprint!(out, "T2Pexi(", s2vs, "; ", body, ")")
 | T2Puni(s2vs, body) =>
-  fprint!(out, "T2Puni(", "...", ")")
+  fprint!(out, "T2Puni(", s2vs, "; ", body, ")")
 //
 | T2Ptyrec(knd, npf, lxs) =>
   fprint!(out, "T2Ptyrec(", "...", ")")

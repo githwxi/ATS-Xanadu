@@ -271,16 +271,6 @@ case+ opt of
 //
 implement
 {}(*tmp*)
-t2xread_s2expnul(opt) =
-(
-if
-iseqz(opt)
-then ((*void*))
-else t2xread_s2exp<>(unsome(opt))
-)
-//
-implement
-{}(*tmp*)
 t2xread_s2explst(s2es) =
 (
 list_foreach<s2exp>(s2es)

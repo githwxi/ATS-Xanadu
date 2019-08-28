@@ -2205,9 +2205,11 @@ end // end of [popt_d0eclseq_WHERE]
 (*
 HX-2019-02-15:
 //
-case [d0e] of
-| [d0p] when [d0e]
-| [d0p] when [d0e] as [d0p]
+case [d0exp] of
+|
+[d0pat] when [d0exp]
+|
+[d0pat] when [d0exp] as [d0pat]
 //
 *)
 //
@@ -2292,11 +2294,12 @@ tok.node() of
           d0p.loc() + tok.loc()
         )
       | list_cons _ =>
-        let
-          val d0g =
-            list_last(d0gs)
-          // end of [val]
-        in d0p.loc() + d0g.loc() end
+        (
+          d0p.loc() + d0g.loc()
+        ) where
+        {
+          val d0g = list_last(d0gs)
+        }
     ) : loc_t // end of [val]
   in
     dg0pat_make_node

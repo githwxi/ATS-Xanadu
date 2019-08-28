@@ -39,11 +39,18 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+//
+#staload
+STM = "./../SATS/stamp0.sats"
+overload print with $STM.print_stamp
+//
+(* ****** ****** *)
 
 #staload "./../SATS/basics.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/symbol.sats"
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
@@ -126,7 +133,7 @@ $rec{
   d2con_loc= loc
 , d2con_sym= sym
 , d2con_sexp= s2e
-, d2con_sexp= t2p
+, d2con_type= t2p
 , d2con_stamp= stamp
 }
 ) where
@@ -138,6 +145,13 @@ $rec{
   val
   stamp = d2con_stamp_new((*void*))
 //
+  val () =
+  println!("d2con_make_idtp: sym = ", sym)
+  val () =
+  println!("d2con_make_idtp: s2e = ", s2e)
+  val () =
+  println!("d2con_make_idtp: stamp = ", stamp)
+//
 } (* d2con_make_idtp *)
 
 implement
@@ -146,6 +160,8 @@ implement
 d2con_get_sym(x0) = x0.d2con_sym
 implement
 d2con_get_sexp(x0) = x0.d2con_sexp
+implement
+d2con_get_type(x0) = x0.d2con_type
 implement
 d2con_get_stamp(x0) = x0.d2con_stamp
 
@@ -187,8 +203,8 @@ $rec{
   val sym =
     d2var_get_sym(d2v)
 //
-  val s2e = s2exp_none0()
-  val t2p = t2ype_none0()
+  val s2e = the_s2exp_none0
+  val t2p = the_t2ype_none0
 //
   val
   stamp = d2cst_stamp_new((*void*))
@@ -276,8 +292,8 @@ ref<d2var_struct>
 }
 ) where
 {
-  val s2e1 = s2exp_none0()
-  val t2p2 = t2ype_none0()
+  val s2e1 = the_s2exp_none0
+  val t2p2 = the_t2ype_none0
   val stamp = d2var_stamp_new()
 }
 //
@@ -294,34 +310,6 @@ implement
 d2var_set_type
   (x0, t2p0) = x0->d2var_type := t2p0
 //
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
-f2arg_tbox = $rec{
-  f2arg_loc= loc_t
-, f2arg_node= f2arg_node
-} (* f2arg_tbox *)
-
-in (* in-of-local *)
-
-implement
-f2arg_get_loc(x0) = x0.f2arg_loc
-implement
-f2arg_get_node(x0) = x0.f2arg_node
-
-(* ****** ****** *)
-
-implement
-f2arg_make_node
-(loc, node) = $rec
-{
-  f2arg_loc= loc, f2arg_node= node
-} (* end of [f2arg_make_node] *)
-
 end // end of [local]
 
 (* ****** ****** *)
@@ -352,7 +340,7 @@ d2pat_make_node
 { d2pat_loc= loc0
 , d2pat_node= node
 (*
-, d2pat_type= t2ype_none(loc0)
+, d2pat_type= the_t2ype_none
 *)
 } (* d2pat_make_node *)
 //
@@ -416,6 +404,34 @@ d2pat_tuple
   (loc0, D2Ptuple(knd, npf, d2ps))
 )
 //
+(* ****** ****** *)
+
+local
+
+absimpl
+f2arg_tbox = $rec{
+  f2arg_loc= loc_t
+, f2arg_node= f2arg_node
+} (* f2arg_tbox *)
+
+in (* in-of-local *)
+
+implement
+f2arg_get_loc(x0) = x0.f2arg_loc
+implement
+f2arg_get_node(x0) = x0.f2arg_node
+
+(* ****** ****** *)
+
+implement
+f2arg_make_node
+(loc, node) = $rec
+{
+  f2arg_loc= loc, f2arg_node= node
+} (* end of [f2arg_make_node] *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 local
@@ -612,7 +628,7 @@ d2gua_make_node
   (loc0, node) = $rec
 {
   d2gua_loc= loc0, d2gua_node= node
-} (* d2exp_make_node *)
+} (* d2gua_make_node *)
 
 end // end of [local]
 
@@ -638,7 +654,7 @@ d2clau_make_node
   (loc0, node) = $rec
 {
   d2clau_loc= loc0, d2clau_node= node
-} (* d2exp_make_node *)
+} (* d2clau_make_node *)
 
 end // end of [local]
 
@@ -664,7 +680,7 @@ dg2pat_make_node
   (loc0, node) = $rec
 {
   dg2pat_loc= loc0, dg2pat_node= node
-} (* d2exp_make_node *)
+} (* dg2pat_make_node *)
 
 end // end of [local]
 
@@ -842,7 +858,7 @@ s2exp_of_d2pat
 case+
 d2p0.node() of
 | D2Panno(d2p1, s2e2) => s2e2
-| _ (* else *) => s2exp_none0()
+| _ (*else*) => the_s2exp_none0
 )
 implement
 s2explst_of_d2patlst
@@ -894,7 +910,7 @@ auxres
 case+ res of
 | EFFS2EXPnone() =>
   (
-    s2exp_none0((*void*))
+    the_s2exp_none0(*void*)
   )
 | EFFS2EXPsome(s2e) => s2e
 )

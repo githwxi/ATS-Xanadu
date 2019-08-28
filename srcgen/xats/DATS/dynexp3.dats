@@ -60,6 +60,129 @@ LOC = "./../SATS/locinfo.sats"
 local
 //
 absimpl
+d3pat_tbox = $rec
+{ d3pat_loc= loc_t
+, d3pat_type= t2ype
+, d3pat_node= d3pat_node
+} (* end of [absimpl] *)
+//
+in
+//
+implement
+d3pat_get_loc
+  (d3p) = d3p.d3pat_loc
+implement
+d3pat_get_node
+  (d3p) = d3p.d3pat_node
+//
+implement
+d3pat_get_type
+  (d3p) = d3p.d3pat_type
+//
+implement
+d3pat_make_node
+(
+loc0, t2p0, node
+) = $rec
+{ d3pat_loc= loc0
+, d3pat_type= t2p0, d3pat_node= node
+} (* d3pat_make_node *)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+d3patlst_get_type
+  (d3ps) =
+list_vt2t
+(
+list_map<d3pat><t2ype>(d3ps)
+) where
+{
+implement
+list_map$fopr<d3pat><t2ype>(d3p) = d3p.type()
+} (* end of [d3patlst_get_type] *)
+
+(* ****** ****** *)
+
+implement
+d3pat_any
+(loc0, t2p0) =
+d3pat_make_node
+(loc0, t2p0, D3Pany())
+
+(* ****** ****** *)
+
+implement
+d3pat_var
+(loc0, d2v0) =
+let
+val t2p0 = d2v0.type()
+in
+d3pat_make_node
+(loc0, t2p0, D3Pvar(d2v0))
+end // end of [let]
+
+(* ****** ****** *)
+
+implement
+d3pat_con
+(loc0, d2c0) =
+let
+val t2p0 = d2c0.type()
+in
+d3pat_make_node
+(loc0, t2p0, D3Pcon1(d2c0))
+end // end of [let]
+
+(* ****** ****** *)
+
+implement
+d3pat_cast
+(d3p0, t2p0) =
+(
+d3pat_make_node
+( loc0
+, t2p0, D3Pcast(d3p0, t2p0))
+) where
+{
+  val loc0 = d3p0.loc((*void*))
+}
+
+(* ****** ****** *)
+
+local
+
+absimpl
+f3arg_tbox = $rec{
+  f3arg_loc= loc_t
+, f3arg_node= f3arg_node
+} (* f3arg_tbox *)
+
+in (* in-of-local *)
+
+implement
+f3arg_get_loc(x0) = x0.f3arg_loc
+implement
+f3arg_get_node(x0) = x0.f3arg_node
+
+(* ****** ****** *)
+
+implement
+f3arg_make_node
+(loc, node) = $rec
+{
+  f3arg_loc= loc, f3arg_node= node
+} (* end of [f3arg_make_node] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
 d3exp_tbox = $rec
 { d3exp_loc= loc_t
 , d3exp_type= t2ype
@@ -91,7 +214,7 @@ loc0, t2p0, node
 end // end of [local]
 
 (* ****** ****** *)
-
+//
 implement
 d3expopt_get_type
   (opt) =
@@ -110,23 +233,23 @@ list_map<d3exp><t2ype>(d3es)
 {
 implement
 list_map$fopr<d3exp><t2ype>(d3e) = d3e.type()
-}
-
+} (* end of [d3explst_get_type] *)
+//
 (* ****** ****** *)
 //
 implement
 d3exp_none0_0(d2e0) =
 d3exp_none0_1
-(d2e0, t2ype_none0())
+(d2e0, the_t2ype_none0)
 implement
 d3exp_none0_1(loc0, t2p0) =
 d3exp_make_node
-(loc0, t2p0, D3Enone0())
+(loc0, t2p0, D3Enone0(*void*))
 //
 implement
 d3exp_none1_0(d2e0) =
 d3exp_none1_1
-(d2e0, t2ype_none0())
+(d2e0, the_t2ype_none0)
 implement
 d3exp_none1_1(d2e0, t2p0) =
 (
@@ -138,7 +261,7 @@ d3exp_make_node
 }
 //
 (* ****** ****** *)
-
+//
 implement
 d3exp_none2_0(d3e0) =
 (
@@ -149,9 +272,9 @@ d3exp_make_node
   val loc0 = d3e0.loc((*void*))
   val t2p0 = d3e0.type((*void*))
 }
-
+//
 (* ****** ****** *)
-
+//
 implement
 d3exp_cast
 (d3e0, t2p0) =
@@ -163,6 +286,84 @@ d3exp_make_node
 {
   val loc0 = d3e0.loc((*void*))
 }
+//
+(* ****** ****** *)
+
+local
+
+absimpl
+d3gua_tbox = $rec
+{ d3gua_loc= loc_t
+, d3gua_node= d3gua_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d3gua_get_loc(x0) = x0.d3gua_loc
+implement
+d3gua_get_node(x0) = x0.d3gua_node
+
+implement
+d3gua_make_node
+  (loc0, node) = $rec
+{
+  d3gua_loc= loc0, d3gua_node= node
+} (* d3gua_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+d3clau_tbox = $rec
+{ d3clau_loc= loc_t
+, d3clau_node= d3clau_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+d3clau_get_loc(x0) = x0.d3clau_loc
+implement
+d3clau_get_node(x0) = x0.d3clau_node
+
+implement
+d3clau_make_node
+  (loc0, node) = $rec
+{
+  d3clau_loc= loc0, d3clau_node= node
+} (* d3clau_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+dg3pat_tbox = $rec
+{ dg3pat_loc= loc_t
+, dg3pat_node= dg3pat_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+dg3pat_get_loc(x0) = x0.dg3pat_loc
+implement
+dg3pat_get_node(x0) = x0.dg3pat_node
+
+implement
+dg3pat_make_node
+  (loc0, node) = $rec
+{
+  dg3pat_loc= loc0, dg3pat_node= node
+} (* dg3pat_make_node *)
+
+end // end of [local]
 
 (* ****** ****** *)
 

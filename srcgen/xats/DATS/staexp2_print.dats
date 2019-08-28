@@ -466,7 +466,14 @@ s2e0.node() of
 *)
 //
 | S2Extv(xtv) =>
-  fprint!(out, "S2Extv(", "...", ")")
+  let
+(*
+    val s2e = "..."
+*)
+    val s2e = s2xtv_get_sexp(xtv)
+  in
+    fprint!(out, "S2Extv(", s2e, ")")
+  end
 //
 | S2Eapp
   (s2fn, s2es) =>

@@ -44,6 +44,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/label0.sats"
 #staload "./../SATS/symbol.sats"
 
 (* ****** ****** *)
@@ -112,7 +113,13 @@ t2p0.node() of
 | T2Pxtv(xtv1) =>
   if
   (xtv0 = xtv1)
-  then true else auxt2p(xtv1.type())
+  then true
+  else auxt2p(xtv1.type())
+//
+| T2Papp(t2p1, t2ps) =>
+  if
+  auxt2p(t2p1)
+  then true else auxt2ps(t2ps)
 //
 | T2Pfun
   (fcr, npf, t2ps, t2p1) =>
@@ -327,6 +334,47 @@ case+ t2ps1 of
 (* ****** ****** *)
 
 implement
+d3pat_dn
+(d3p0, t2p0) = let
+//
+val test =
+ulte(d3p0.loc(), t2p0, d3p0.type())
+//
+in
+//
+if test then d3p0 else d3pat_cast(d3p0, t2p0)
+//
+end // end of [d3pat_dn]
+
+(* ****** ****** *)
+
+implement
+d3pat_dapp_up
+( loc0
+, d3f0, npf0, d3ps) =
+let
+//
+val
+targ =
+d3patlst_get_type(d3ps)
+//
+val tres = t2ype_new(loc0)
+//
+val tfun =
+t2ype_fun0(npf0, targ, tres)
+//
+val d3f0 = d3pat_dn(d3f0, tfun)
+//
+in
+//
+d3pat_make_node
+(loc0, tres, D3Pdapp(d3f0, npf0, d3ps))
+//
+end // end of [d3pat_dapp_up]
+
+(* ****** ****** *)
+
+implement
 d3exp_dn
 (d3e0, t2p0) = let
 //
@@ -436,6 +484,58 @@ end // end of [d3exp_dapp_up]
 (* ****** ****** *)
 
 implement
+d3exp_tuple_up
+( loc0
+, knd, npf, d3es) = let
+//
+val tknd =
+(
+ifcase
+| knd = 0 => TYRECflt0(*void*)
+| _(*else*) => TYRECbox0(*void*)
+) : tyrec // end of [val]
+//
+val lt2ps =
+(
+  auxlst(d3es, 0)
+) where
+{
+fun
+auxlst
+( d3es
+: d3explst
+, i0: int): labt2ypelst =
+(
+case+ d3es of
+| list_nil() =>
+  list_nil((*void*))
+| list_cons(d3e0, d3es) =>
+  let
+    val l0 =
+    label_make_int(i0)
+    val lt2p0 =
+    TLABELED(l0, d3e0.type())
+  in
+    list_cons(lt2p0, auxlst(d3es, i0+1))
+  end // end of [list_cons]
+)
+} (* end of [val] *)
+//
+val s2t0 =
+  the_sort2_none
+val t2p0 =
+t2ype_make_node
+  (s2t0, T2Ptyrec(tknd, npf, lt2ps))
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Etuple(knd, npf, d3es))
+end (* end of [d3exp_tuple_up] *)
+
+
+(* ****** ****** *)
+
+implement
 d3exp_if0_up
 ( loc0
 , d3e1, d3e2, opt3) =
@@ -465,6 +565,22 @@ in
   d3exp_make_node
   (loc0, tres, D3Eif0(d3e1, d3e2, opt3))
 end // end of [d3exp_if0_up]
+
+(* ****** ****** *)
+
+implement
+d3exp_case_up
+( loc0
+, knd0, d3e1, d3cs) =
+let
+//
+val t2p1 = d3e1.type()
+val tres = t2ype_new(loc0)
+//
+in
+  d3exp_make_node
+  (loc0, tres, D3Ecase(knd0, d3e1, d3cs))
+end // end of [d3exp_case_up]
 
 (* ****** ****** *)
 
