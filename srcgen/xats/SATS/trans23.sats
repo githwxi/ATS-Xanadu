@@ -71,33 +71,49 @@ typedef d2eclist = $D2E.d2eclist
 
 (* ****** ****** *)
 
+typedef d3pat = $D3E.d3pat
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 
+typedef d3patlst = $D3E.d3patlst
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
 
 (* ****** ****** *)
 
-typedef f2undecl = $D2E.f2undecl
-typedef v2aldecl = $D2E.v2aldecl
-typedef v2ardecl = $D2E.v2ardecl
+typedef d2gua = $D2E.d2gua
+typedef d3gua = $D3E.d3gua
+
+typedef dg2pat = $D2E.dg2pat
+typedef dg3pat = $D3E.dg3pat
+
+typedef d2clau = $D2E.d2clau
+typedef d3clau = $D3E.d3clau
+
+typedef d2gualst = $D2E.d2gualst
+typedef d3gualst = $D3E.d3gualst
+typedef d2claulst = $D2E.d2claulst
+typedef d3claulst = $D3E.d3claulst
 
 (* ****** ****** *)
-
+//
 fun
 trenv23_dvar: d2var -> void
 fun
-trenv23_dpat: d2pat -> void
+trenv23_dvar_dn
+  (d2v0: d2var, t2p0: t2ype): void
+//
+(* ****** ****** *)
+//
 fun
-trenv23_dpatlst: d2patlst -> void
-
+trans23_dpat: d2pat -> d3pat
 fun
-trenv23_dvar_dn: (d2var, t2ype) -> void
+trans23_dpatlst: d2patlst -> d3patlst
+//
 fun
-trenv23_dpat_dn: (d2pat, t2ype) -> void
-
+trans23_dpat_dn: (d2pat, t2ype) -> d3pat
+//
 (* ****** ****** *)
 //
 fun
@@ -107,11 +123,31 @@ trans23_dexpopt: d2expopt -> d3expopt
 fun
 trans23_dexplst: d2explst -> d3explst
 //
+fun
+trans23_dexp_dn: (d2exp, t2ype) -> d3exp
+//
 (* ****** ****** *)
 //
 fun
 trans23_dexp_dn
   (d2e0: d2exp, t2p0: t2ype): (d3exp)
+//
+(* ****** ****** *)
+
+fun
+trans23_dgua: d2gua -> d3gua
+fun
+trans23_dgpat: dg2pat -> dg3pat
+
+fun
+trans23_dgualst: d2gualst -> d3gualst
+
+(* ****** ****** *)
+//
+fun
+trans23_dclau(d2c0: d2clau): d3clau
+fun
+trans23_dclaulst(d2cs: d2claulst): d3claulst
 //
 (* ****** ****** *)
 
@@ -146,6 +182,20 @@ ulte with ulte_t2ypelst_t2ypelst
 (* ****** ****** *)
 //
 fun
+d3pat_dn
+(d3p0: d3pat, t2p0: t2ype): d3pat
+//
+(* ****** ****** *)
+
+fun
+d3pat_dapp_up
+( loc0: loc_t
+, d3f0: d3pat
+, npf0: int, d3ps: d3patlst): d3pat
+
+(* ****** ****** *)
+//
+fun
 d3exp_dn
 (d3e0: d3exp, t2p0: t2ype): d3exp
 fun
@@ -158,14 +208,32 @@ d3explst_dn
 fun
 d3exp_dapp_up
 ( loc0: loc_t
-, d3f0: d3exp, npf0: int, d3es: d3explst): d3exp
+, d3f0: d3exp
+, npf0: int, d3es: d3explst): d3exp
 
+(* ****** ****** *)
+//
+fun
+d3exp_tuple_up
+( loc0: loc_t
+, knd0: int // 0/1
+, npf0: int, d3es: d3explst): d3exp
+//
 (* ****** ****** *)
 //
 fun
 d3exp_if0_up
 ( loc0: loc_t
-, d3e1: d3exp, d3e2: d3exp, opt3: d3expopt): d3exp
+, d3e1: d3exp
+, d3e2: d3exp, opt3: d3expopt): d3exp
+//
+(* ****** ****** *)
+//
+fun
+d3exp_case_up
+( loc0: loc_t
+, knd0: int // -/0/+
+, d3e1: d3exp, d3cs: d3claulst): d3exp
 //
 (* ****** ****** *)
 

@@ -483,6 +483,14 @@ overload fprint with fprint_s2arg
 //
 *)
 (* ****** ****** *)
+//
+abstbox s2exp_tbox = ptr
+abstbox s2hnf_tbox = ptr
+//
+typedef s2exp = s2exp_tbox
+typedef s2hnf = s2hnf_tbox
+//
+(* ****** ****** *)
 
 abstbox s2xtv_tbox = ptr
 typedef s2xtv = s2xtv_tbox
@@ -497,11 +505,21 @@ fun
 s2xtv_get_loc(s2xtv): loc_t
 fun
 s2xtv_get_sort(s2xtv): sort2
+//
+fun
+s2xtv_get_sexp(s2xtv): s2exp
+fun
+s2xtv_set_sexp(s2xtv, s2exp): void
+//
 fun
 s2xtv_get_stamp(s2xtv): stamp
 //
 overload .loc with s2xtv_get_loc
 overload .sort with s2xtv_get_sort
+//
+overload .sexp with s2xtv_get_sexp
+overload .sexp with s2xtv_set_sexp
+//
 overload .stamp with s2xtv_get_stamp
 //
 (* ****** ****** *)
@@ -555,12 +573,6 @@ overload .sconlst with t2dat_get_sconlst
 //
 (* ****** ****** *)
 //
-abstbox s2exp_tbox = ptr
-abstbox s2hnf_tbox = ptr
-//
-(* ****** ****** *)
-//
-typedef s2exp = s2exp_tbox
 typedef s2explst = List0(s2exp)
 typedef s2expopt = Option(s2exp)
 //
@@ -836,8 +848,11 @@ s2exp_tyext
 //
 (* ****** ****** *)
 //
+val
+the_s2exp_none0: s2exp
+//
 fun
-s2exp_none0(): s2exp
+s2exp_none0((*void*)): s2exp
 fun
 s2exp_none1(s1e: s1exp): s2exp
 //
@@ -1107,43 +1122,11 @@ overload unsome with s2cstnul_unsome
 //
 (* ****** ****** *)
 //
-abstype
-s2expnul_tbox(l:addr) = ptr
-typedef
-s2expnul(l:addr) = s2expnul_tbox(l)
-//
-typedef s2expnul = [l:agez] s2expnul(l)
-//
-(* ****** ****** *)
-//
 fun
-s2expnul_none
-((*void*)): s2expnul(null)
-fun
-s2expnul_some
-(x0:s2exp):<> [l:agz] s2expnul(l)
-castfn
-s2expnul_unsome
-{l:agz}(x0: s2expnul(l)):<> s2exp
-//
-fun
-s2expnul_iseqz
-{l:addr}(s2expnul(l)): bool(l==null)
-fun
-s2expnul_isneqz
-{l:addr}(s2expnul(l)): bool(l > null)
-//
-overload iseqz with s2expnul_iseqz
-overload isneqz with s2expnul_isneqz
-overload unsome with s2expnul_unsome
-//
-(* ****** ****** *)
-//
-fun
-s2cst_get_def(s2cst): s2expnul
+s2cst_get_def(s2cst): s2exp
 fun
 stamp_s2cst_def
-(s2c: s2cst, def: s2expnul): void
+(s2c: s2cst, def: s2exp): void
 //
 (* ****** ****** *)
 //

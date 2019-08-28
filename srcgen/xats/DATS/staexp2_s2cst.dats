@@ -61,13 +61,6 @@ $UN.cast(the_null_ptr)
 implement
 s2cstnul_some(s2c) = $UN.cast(s2c)
 //
-implement
-s2expnul_none
-((*void*)) =
-$UN.cast(the_null_ptr)
-implement
-s2expnul_some(s2e) = $UN.cast(s2e)
-//
 (* ****** ****** *)
 //
 local
@@ -76,10 +69,6 @@ extern
 castfn
 _s2c2ptr_
 {l:addr}(s2cstnul(l)):<> ptr(l)
-extern
-castfn
-_s2e2ptr_
-{l:addr}(s2expnul(l)):<> ptr(l)
 //
 in (*in-of-local*)
 //
@@ -91,15 +80,6 @@ implement
 s2cstnul_isneqz
   (s2c) =
   (_s2c2ptr_(s2c) > the_null_ptr)
-//
-implement
-s2expnul_iseqz
-  (s2e) =
-  (_s2e2ptr_(s2e) = the_null_ptr)
-implement
-s2expnul_isneqz
-  (s2e) =
-  (_s2e2ptr_(s2e) > the_null_ptr)
 //
 end // end of [local]
 //
@@ -180,7 +160,7 @@ val
 abs = ABSTDF2none()
 val
 def =
-s2expnul_none((*void*))
+the_s2exp_none0(*void*)
 in
 s2c where
 {
@@ -224,7 +204,7 @@ local
 #staload _ =
 "libats/DATS/dynarray.dats"
 //
-typedef itm = s2expnul
+typedef itm = s2exp
 vtypedef dynarray = dynarray(itm)
 //
 val
@@ -251,7 +231,7 @@ s2cst_get_def
 in
   if
   isneqz(cp)
-  then $UN.cptr_get(cp) else s2expnul_none()
+  then $UN.cptr_get(cp) else the_s2exp_none0
 end // end of [s2cst_get_def]
 
 (* ****** ****** *)

@@ -157,7 +157,13 @@ overload .sym with d2var_get_sym
 fun
 d2con_get_sexp(d2con): s2exp
 fun
+d2con_get_type(d2con): t2ype
+//
+fun
 d2cst_get_sexp(d2cst): s2exp
+fun
+d2cst_get_type(d2cst): t2ype
+//
 fun
 d2var_get_sexp(d2var): s2exp
 fun
@@ -166,7 +172,11 @@ fun
 d2var_set_type(d2var, t2ype): void
 //
 overload .sexp with d2con_get_sexp
+overload .type with d2con_get_type
+//
 overload .sexp with d2cst_get_sexp
+overload .type with d2cst_get_type
+//
 overload .sexp with d2var_get_sexp
 overload .type with d2var_get_type
 overload .type with d2var_set_type
@@ -243,51 +253,17 @@ overload prerr with prerr_d2var
 overload fprint with fprint_d2var
 //
 (* ****** ****** *)
-
+//
 abstbox d2pat_tbox = ptr
 typedef d2pat = d2pat_tbox
 typedef d2patlst = List0(d2pat)
 typedef d2patopt = Option(d2pat)
-
+//
 (* ****** ****** *)
 //
 abstbox f2arg_tbox = ptr
 typedef f2arg = f2arg_tbox
 typedef f2arglst = List0(f2arg)
-//
-datatype
-f2arg_node =
-(*
-| F2ARGnone of (token)
-*)
-//
-| F2ARGsome_dyn of
-  (int(*npf*), d2patlst)
-//
-| F2ARGsome_sta of
-  (s2varlst(*s2vs*), s2explst(*s2ps*))
-//
-| F2ARGsome_met of (s2explst)
-//
-fun
-f2arg_get_loc(f2arg): loc_t
-fun
-f2arg_get_node(f2arg): f2arg_node
-//
-overload .loc with f2arg_get_loc
-overload .node with f2arg_get_node
-//
-fun print_f2arg : print_type(f2arg)
-fun prerr_f2arg : prerr_type(f2arg)
-fun fprint_f2arg : fprint_type(f2arg)
-//
-overload print with print_f2arg
-overload prerr with prerr_f2arg
-overload fprint with fprint_f2arg
-//
-fun
-f2arg_make_node
-(loc: loc_t, node: f2arg_node): f2arg
 //
 (* ****** ****** *)
 //
@@ -374,6 +350,47 @@ d2pat_make_node
 (loc0: loc_t, node: d2pat_node): d2pat
 //
 (* ****** ****** *)
+//
+datatype
+f2arg_node =
+(*
+| F2ARGnone of (token)
+*)
+//
+| F2ARGsome_dyn of
+  (int(*npf*), d2patlst)
+//
+| F2ARGsome_sta of
+  (s2varlst(*s2vs*), s2explst(*s2ps*))
+//
+| F2ARGsome_met of (s2explst)
+//
+(* ****** ****** *)
+//
+fun
+f2arg_get_loc(f2arg): loc_t
+fun
+f2arg_get_node(f2arg): f2arg_node
+//
+overload .loc with f2arg_get_loc
+overload .node with f2arg_get_node
+//
+fun
+print_f2arg : print_type(f2arg)
+fun
+prerr_f2arg : prerr_type(f2arg)
+fun
+fprint_f2arg : fprint_type(f2arg)
+//
+overload print with print_f2arg
+overload prerr with prerr_f2arg
+overload fprint with fprint_f2arg
+//
+fun
+f2arg_make_node
+(loc: loc_t, node: f2arg_node): f2arg
+//
+(* ****** ****** *)
 
 abstbox d2exp_tbox = ptr
 typedef d2exp = d2exp_tbox
@@ -381,7 +398,7 @@ typedef d2explst = List0(d2exp)
 typedef d2expopt = Option(d2exp)
 
 (* ****** ****** *)
-
+//
 abstbox d2gua_tbox = ptr
 typedef d2gua = d2gua_tbox
 typedef d2gualst = List0(d2gua)
@@ -392,7 +409,7 @@ typedef dg2pat = dg2pat_tbox
 abstbox d2clau_tbox = ptr
 typedef d2clau = d2clau_tbox
 typedef d2claulst = List0(d2clau)
-
+//
 (* ****** ****** *)
 
 abstbox d2ecl_tbox = ptr
@@ -578,10 +595,10 @@ d2exp_node =
 | D2Eif0 of
   ( d2exp(*cond*)
   , d2exp(*then*), d2expopt(*else*))
-//
+  // D2Eif0
 | D2Ecase of
   (int(*knd*), d2exp(*val*), d2claulst)
-  // D1Ecase
+  // D2Ecase
 //
 | D2Eanno of
   (d2exp(*applst*), s2exp(*type*))

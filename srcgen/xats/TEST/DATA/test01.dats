@@ -80,7 +80,26 @@ omega(x) = x(x)
 
 fun
 <a:type>
-app(f: a -> a, x: a) = f(x)
+length
+(xs:list(a)): int =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => 1+length(xs)
+)
+
+(* ****** ****** *)
+////
+fun
+<a:type
+,b:type>
+swap(x: a, y: b) = $(y, x)
+
+(* ****** ****** *)
+////
+fun
+<a:type>
+app0(f: a -> a, x: a) = f(f(x))
 
 (* ****** ****** *)
 ////

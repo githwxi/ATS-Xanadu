@@ -94,16 +94,14 @@ end // end of [local]
 
 (* ****** ****** *)
 //
-local
-val
+implement
 the_t2ype_none0 =
 t2ype_make_node
 (S2Tnone0, T2Pnone0)
-in (*in-of-local*)
+//
 implement
 t2ype_none0() =
 the_t2ype_none0(*void*)
-end // end-of-local
 //
 implement
 t2ype_none1(s2e) =
@@ -249,7 +247,7 @@ ref<t2xtv_struct>
 }
 ) where
 {
-val t2p0 = t2ype_none0()
+val t2p0 = the_t2ype_none0
 val stamp = t2xtv_stamp_new()
 } (* end of [t2xtv_new0] *)
 //
@@ -307,35 +305,40 @@ t2p0.node() of
   val
   t2p1 = xtv.type()
   in
-  case+ t2p1.node() of
-  | T2Pnone0() => t2p0 | _ => t2ype_eval(t2p1)
+    case+ t2p1.node() of
+    | T2Pnone0() => t2p0
+    | _ (*else*) => t2ype_eval(t2p1)
   end
-| _(* else *) => t2p0
+| _(* non-T2Pxtv *) => (t2p0)
 )
 //
 (* ****** ****** *)
-
+//
 implement
 t2ype_exi
-(s2vs, body) = let
-//
-val s2t0 = body.sort()
-val node = T2Pexi(s2vs, body)
-//
-in
-  t2ype_make_node(s2t0, node)
-end // end of [t2ype_exi]
+(s2vs, body) =
+(
+case+ s2vs of
+| list_nil() => body
+| list_cons _ => let
+  val s2t0 = body.sort()
+  in
+    t2ype_make_node(s2t0, T2Pexi(s2vs, body))
+  end // end of [list_cons]
+)
 implement
 t2ype_uni
-(s2vs, body) = let
+(s2vs, body) =
+(
+case+ s2vs of
+| list_nil() => body
+| list_cons _ => let
+  val s2t0 = body.sort()
+  in
+    t2ype_make_node(s2t0, T2Puni(s2vs, body))
+  end // end of [list_cons]
+)
 //
-val s2t0 = body.sort()
-val node = T2Puni(s2vs, body)
-//
-in
-  t2ype_make_node(s2t0, node)
-end // end of [t2ype_uni]
-
 (* ****** ****** *)
 
 local

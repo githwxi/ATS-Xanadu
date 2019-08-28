@@ -163,6 +163,8 @@ t2ype_node =
 //
 | T2Pxtv of t2xtv // ext-variable
 //
+| T2Papp of (t2ype, t2ypelst)
+//
 | T2Pfun of
   ( fcr//ref(funclo2)
   , int(*npf*),t2ypelst(*arg*),t2ype(*res*)
@@ -196,6 +198,9 @@ t2ype_eval(t2p: t2ype): t2ype
 overload .eval with t2ype_eval
 //
 (* ****** ****** *)
+//
+val
+the_t2ype_none0: t2ype
 //
 fun
 t2ype_none0((*void*)): t2ype
@@ -257,6 +262,19 @@ s2exp_erase(s2e0: s2exp): t2ype
 fun
 s2explst_erase(s2es: s2explst): t2ypelst
 
+(* ****** ****** *)
+//
+fun
+t2ype_subst
+( t2p0: t2ype
+, s2v0: s2varlst, tsub: t2ype
+) : t2ype // end of [t2ype_subst]
+fun
+t2ype_substs
+( t2p0: t2ype
+, s2vs: s2varlst, tsub: t2ypelst
+) : t2ype // end of [t2ype_substs]
+//
 (* ****** ****** *)
 
 (* end of [xats_statyp2.sats] *)

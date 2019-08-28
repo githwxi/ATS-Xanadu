@@ -75,11 +75,11 @@ overload != with neq_stamp_stamp
 overload compare with compare_stamp_stamp
 //
 (* ****** ****** *)
-
+//
 fun print_stamp: print_type(stamp)
 fun prerr_stamp: prerr_type(stamp)
 fun fprint_stamp: fprint_type(stamp)
-
+//
 (* ****** ****** *)
 
 abstype stamper_tbox = ptr

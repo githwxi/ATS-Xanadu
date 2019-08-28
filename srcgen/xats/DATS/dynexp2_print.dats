@@ -69,6 +69,7 @@ fprint with $LAB.fprint_label
 #staload "./../SATS/dynexp1.sats"
 //
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
@@ -150,8 +151,11 @@ fprint_d2con
 fprint!
 (out, sym, "(", stamp, ")");
 // (*
-fprint!(out, ": ", x0.sexp())
+fprint!(out, ": ", x0.type());
 // *)
+(*
+fprint!(out, ": ", x0.sexp());
+*)
 ) where
 {
   val sym = x0.sym() and stamp = x0.stamp()
@@ -430,12 +434,12 @@ fprint_d2clau
 (
 case+
 x0.node() of
-| D2CLAUgpat(d2gp) =>
+| D2CLAUgpat(dg2p) =>
   fprint!
-  (out, "D2CLAUgpat(", d2gp, ")")
-| D2CLAUclau(d2gp, d0e0) =>
+  (out, "D2CLAUgpat(", dg2p, ")")
+| D2CLAUclau(dg2p, d0e0) =>
   fprint!
-  (out, "D2CLAUclau(", d2gp, "; ", d0e0, ")")
+  (out, "D2CLAUclau(", dg2p, "; ", d0e0, ")")
 ) (* end of [fprint_d2clau] *)
 
 implement
