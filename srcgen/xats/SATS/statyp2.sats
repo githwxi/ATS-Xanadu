@@ -234,6 +234,9 @@ fun
 t2ype_new(loc0: loc_t): t2ype
 fun
 t2ype_xtv(xtv0: t2xtv): t2ype
+fun
+t2ype_srt_xtv
+(s2t0: sort2, xtv0: t2xtv): t2ype
 //
 (* ****** ****** *)
 
@@ -256,18 +259,11 @@ t2ype_fun1
 , arg: t2ypelst, res: t2ype): t2ype
 //
 (* ****** ****** *)
-
-fun
-s2exp_erase(s2e0: s2exp): t2ype
-fun
-s2explst_erase(s2es: s2explst): t2ypelst
-
-(* ****** ****** *)
 //
 fun
 t2ype_subst
 ( t2p0: t2ype
-, s2v0: s2varlst, tsub: t2ype
+, s2v0: s2var, tsub: t2ype
 ) : t2ype // end of [t2ype_subst]
 fun
 t2ype_substs
@@ -275,6 +271,13 @@ t2ype_substs
 , s2vs: s2varlst, tsub: t2ypelst
 ) : t2ype // end of [t2ype_substs]
 //
+(* ****** ****** *)
+
+fun
+s2exp_erase(s2e0: s2exp): t2ype
+fun
+s2explst_erase(s2es: s2explst): t2ypelst
+
 (* ****** ****** *)
 
 (* end of [xats_statyp2.sats] *)

@@ -292,6 +292,16 @@ in
   t2ype_make_node(s2t0, node)
 end // end of [t2ype_xtv]
 //
+implement
+t2ype_srt_xtv
+  (s2t0, xtv0) = let
+//
+val node = T2Pxtv(xtv0)
+//
+in
+  t2ype_make_node(s2t0, node)
+end // end of [t2ype_srt_xtv]
+//
 (* ****** ****** *)
 //
 implement

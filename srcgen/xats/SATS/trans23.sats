@@ -133,21 +133,29 @@ trans23_dexp_dn
   (d2e0: d2exp, t2p0: t2ype): (d3exp)
 //
 (* ****** ****** *)
-
+//
 fun
 trans23_dgua: d2gua -> d3gua
 fun
-trans23_dgpat: dg2pat -> dg3pat
-
-fun
 trans23_dgualst: d2gualst -> d3gualst
-
+//
 (* ****** ****** *)
 //
 fun
-trans23_dclau(d2c0: d2clau): d3clau
+trans23_dgpat_dn
+( dgpt
+: dg2pat
+, targ: t2ype(*guard*)): dg3pat
 fun
-trans23_dclaulst(d2cs: d2claulst): d3claulst
+trans23_dclau_dn
+( d2c0
+: d2clau
+, targ: t2ype(*guard*), tres: t2ype): d3clau
+fun
+trans23_dclaulst_dn
+( d2cs
+: d2claulst
+, targ: t2ype(*guard*), tres: t2ype): d3claulst
 //
 (* ****** ****** *)
 
@@ -226,14 +234,6 @@ d3exp_if0_up
 ( loc0: loc_t
 , d3e1: d3exp
 , d3e2: d3exp, opt3: d3expopt): d3exp
-//
-(* ****** ****** *)
-//
-fun
-d3exp_case_up
-( loc0: loc_t
-, knd0: int // -/0/+
-, d3e1: d3exp, d3cs: d3claulst): d3exp
 //
 (* ****** ****** *)
 
