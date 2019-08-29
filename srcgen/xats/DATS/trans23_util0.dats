@@ -227,6 +227,21 @@ t2p1.node() of
     (s2v1 = s2v2)
   | _ (* else *) => false
   )
+| T2Papp(t2f1, arg1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Papp(t2f2, arg2) =>
+    let
+      val tfun =
+      ulte(loc0, t2f1, t2f2) 
+      val targ =
+      ulte(loc0, arg1, arg2)
+    in
+      if tfun then targ else false
+    end
+  | _ (* non-T2Papp *) => false
+  )
 | T2Pfun
   (fcr1, npf1, arg1, res1) =>
   (
@@ -248,6 +263,34 @@ t2p1.node() of
     end
   | _ (* else *) => false  
   )
+//
+| T2Pexi(s2vs, t2p1) =>
+  (
+    auxtp0(t2p1, t2p2)
+  )
+| T2Puni(s2vs, t2p1) =>
+  (
+    auxtp0(t2p1, t2p2)
+  ) where
+  {
+    val tsub =
+    (
+    list_map<s2var><t2ype>(s2vs)
+    ) where
+    {
+      implement
+      list_map$fopr<s2var><t2ype>(s2v) =
+      t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
+    }
+    val tsub = list_vt2t(tsub)
+    val t2p1 = t2ype_substs(t2p1, s2vs, tsub)
+  }
+//
+| T2Pnone0() =>
+  (
+  case+ t2p2.node() of T2Pnone0() => true | _ => false
+  )
+//
 | _ (* else *) => false
 )
 //
@@ -337,8 +380,19 @@ implement
 d3pat_dn
 (d3p0, t2p0) = let
 //
+val () =
+println!
+("d3pat_dn: d3p0 = ", d3p0)
+val () =
+println!
+("d3pat_dn: t2p0 = ", t2p0)
+//
 val test =
-ulte(d3p0.loc(), t2p0, d3p0.type())
+ulte(d3p0.loc(), d3p0.type(), t2p0)
+//
+val () =
+println!
+("d3pat_dn: test = ", test)
 //
 in
 //
@@ -532,7 +586,6 @@ in
   (loc0, t2p0, D3Etuple(knd, npf, d3es))
 end (* end of [d3exp_tuple_up] *)
 
-
 (* ****** ****** *)
 
 implement
@@ -565,22 +618,6 @@ in
   d3exp_make_node
   (loc0, tres, D3Eif0(d3e1, d3e2, opt3))
 end // end of [d3exp_if0_up]
-
-(* ****** ****** *)
-
-implement
-d3exp_case_up
-( loc0
-, knd0, d3e1, d3cs) =
-let
-//
-val t2p1 = d3e1.type()
-val tres = t2ype_new(loc0)
-//
-in
-  d3exp_make_node
-  (loc0, tres, D3Ecase(knd0, d3e1, d3cs))
-end // end of [d3exp_case_up]
 
 (* ****** ****** *)
 

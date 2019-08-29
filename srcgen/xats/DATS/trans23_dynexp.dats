@@ -420,10 +420,15 @@ D2Ecase
 , d2e2, d2cs) = d2e0.node()
 //
 val d3e2 = trans23_dexp(d2e2)
-val d3cs = trans23_dclaulst(d2cs)
+//
+val targ = d3e2.type()
+val tres = t2ype_new(loc0)
+val d3cs =
+  trans23_dclaulst_dn(d2cs, targ, tres)
 //
 in
-  d3exp_case_up(loc0, knd1, d3e2, d3cs)
+  d3exp_make_node
+  (loc0, tres, D3Ecase(knd1, d3e2, d3cs))
 end (* end of [aux_case] *)
 
 (* ****** ****** *)
@@ -553,8 +558,9 @@ list_map<d2gua><d3gua>
 (* ****** ****** *)
 
 implement
-trans23_dclau
-  (d2cl) = let
+trans23_dclau_dn
+( d2cl
+, targ, tres) = let
 //
 val loc0 = d2cl.loc()
 //
@@ -566,30 +572,28 @@ d2cl.node() of
   let
   val
   dgpt =
-  trans23_dgpat(dgpt)
+  trans23_dgpat_dn(dgpt, targ)
   in
-    d3clau_make_node
-    (loc0, D3CLAUgpat(dgpt))
+    d3clau_make_node(loc0, D3CLAUgpat(dgpt))
   end
 | D2CLAUclau(dgpt, d2e1) =>
   let
   val
   dgpt =
-  trans23_dgpat(dgpt)
+  trans23_dgpat_dn(dgpt, targ)
   val
-  d3e1 = trans23_dexp(d2e1)
+  d3e1 = trans23_dexp_dn(d2e1, tres)
   in
-    d3clau_make_node
-    (loc0, D3CLAUclau(dgpt, d3e1))
+    d3clau_make_node(loc0, D3CLAUclau(dgpt, d3e1))
   end
 //
-end // end of [trans23_dclau]
+end // end of [trans23_dclau_dn]
 
 (* ****** ****** *)
 
 implement
-trans23_dgpat
-  (dgpt) = let
+trans23_dgpat_dn
+  (dgpt, targ) = let
 //
 val loc0 = dgpt.loc()
 //
@@ -600,38 +604,38 @@ dgpt.node() of
 | DG2PATpat(d2p0) =>
   let
   val
-  d3p0 = trans23_dpat(d2p0)
+  d3p0 = trans23_dpat_dn(d2p0, targ)
   in
     dg3pat_make_node(loc0, DG3PATpat(d3p0))
   end
 | DG2PATgua(d2p0, d2gs) =>
   let
   val
-  d3p0 = trans23_dpat(d2p0)
+  d3p0 =
+  trans23_dpat_dn(d2p0, targ)
   val
   d3gs = trans23_dgualst(d2gs)
   in
     dg3pat_make_node(loc0, DG3PATgua(d3p0, d3gs))
   end
 //
-end // end of [trans23_dgpat]
+end // end of [trans23_dgpat_dn]
 
 (* ****** ****** *)
 //
 implement
-trans23_dclaulst
-  (d2cs) =
-list_vt2t(d3cs) where
-{
-val
-d3cs =
-list_map<d2clau><d3clau>
-  (d2cs) where
+trans23_dclaulst_dn
+(d2cs, targ, tres) =
+list_vt2t
+(
+list_map<d2clau><d3clau>(d2cs)
+) where
 {
   implement
-  list_map$fopr<d2clau><d3clau> = trans23_dclau
-}
-} (* end of [trans23_dclaulst] *)
+  list_map$fopr<d2clau><d3clau>
+  (d2c) =
+  trans23_dclau_dn(d2c, targ, tres)
+} (* end of [trans23_dclaulst_dn] *)
 //
 (* ****** ****** *)
 
