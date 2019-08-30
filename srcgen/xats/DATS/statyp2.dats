@@ -39,31 +39,17 @@
 UN="prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
+//
 #staload "./../SATS/basics.sats"
-
-(* ****** ****** *)
-//
-#staload
-STM = "./../SATS/stamp0.sats"
-//
-  typedef stamp = $STM.stamp
+#staload "./../SATS/stamp0.sats"
+#staload "./../SATS/symbol.sats"
+#staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
-#staload
-SYM = "./../SATS/symbol.sats"
-#staload
-LOC = "./../SATS/locinfo.sats"
-//
-  typedef sym_t = $SYM.sym_t
-  typedef loc_t = $LOC.loc_t
-//
-(* ****** ****** *)
-
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
-
+//
 (* ****** ****** *)
 
 local
@@ -123,7 +109,7 @@ local
 //
 macdef
 symbol =
-$SYM.symbol_make
+symbol_make
 //
 val
 XATS_SINT_T =
@@ -366,7 +352,7 @@ fcr_new1(fc2) = ref(fc2)
 end // end of [local]
 
 (* ****** ****** *)
-
+//
 implement
 t2ype_fun0
 (npf, arg, res) =
@@ -376,7 +362,8 @@ t2ype_fun1
 ) where
 {
 val fc2 = FC2fun(*void*)
-}
+} // end of [t2ype_fun0]
+//
 implement
 t2ype_fun1
 (fc2, npf, arg, res) = let
@@ -388,7 +375,7 @@ val node = T2Pfun(fcr, npf, arg, res)
 in
   t2ype_make_node(the_sort2_none, node)
 end // end of [t2ype_fun1]
-
+//
 (* ****** ****** *)
 
 local
