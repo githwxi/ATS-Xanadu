@@ -145,6 +145,13 @@ s2e0.node() of
     t2ype_make_node(s2t0, T2Plam(s2vs, t2p1))
   end
 //
+| S2Etyrec(knd, npf, ls2es) =>
+  let
+    val lt2ps = labs2explst_erase(ls2es)
+  in
+    t2ype_make_node(s2t0, T2Ptyrec(knd, npf, lt2ps))
+  end
+//
 | _(*rest-of-s2exp*) => t2ype_none1(s2e0)
 //
 )
@@ -690,6 +697,23 @@ list_map<s2exp><t2ype>(s2es)
 {
 implement
 list_map$fopr<s2exp><t2ype>(s2e) = s2exp_erase(s2e)
+}
+
+(* ****** ****** *)
+
+implement
+labs2explst_erase
+  (ls2es) =
+list_vt2t
+(
+list_map<labs2exp><labt2ype>(ls2es)
+) where
+{
+  implement
+  list_map$fopr<labs2exp><labt2ype>(ls2e) =
+  let
+  val+SLABELED(l0, s2e) = ls2e in TLABELED(l0, s2exp_erase(s2e))
+  end
 }
 
 (* ****** ****** *)

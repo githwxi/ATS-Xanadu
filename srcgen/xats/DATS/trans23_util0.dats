@@ -157,7 +157,7 @@ auxlt2ps
 (lt2ps: labt2ypelst): bool =
 (
 case+ lt2ps of
-| list_nil() => true
+| list_nil() => false
 | list_cons(lt2p, lt2ps) =>
   if auxlt2p(lt2p) then true else auxlt2ps(lt2ps)
 )
@@ -323,6 +323,23 @@ t2p1.node() of
   | _ (* else *) => false  
   )
 //
+| T2Ptyrec
+  (knd1, npf1, lxs1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Ptyrec(knd2, npf2, lxs2) =>
+    (
+      tknd && (tnpf && tlxs)
+    ) where
+    {
+      val tknd = (knd1 = knd2)
+      val tnpf = (npf1 = npf2)
+      val tlxs = ulte(loc0, lxs1, lxs2)
+    }
+  | _ (* non-T2Ptyrec *) => false
+  )
+//
 | T2Pnone0() =>
   (
   case+ t2p2.node() of T2Pnone0() => true | _ => false
@@ -410,6 +427,53 @@ case+ t2ps1 of
     end
   )
 ) (* end of [ulte_t2ypelst_t2ypelst] *)
+
+(* ****** ****** *)
+
+implement
+ulte_labt2ype_labt2ype
+(loc0, lt2p1, lt2p2) =
+let
+val+TLABELED(l1, t2p1) = lt2p1
+val+TLABELED(l2, t2p2) = lt2p2
+in
+//
+if
+(l1 = l2)
+then ulte(loc0, t2p1, t2p2) else false
+//
+end // end of [ulte_labt2ype_labt2ype]
+
+(* ****** ****** *)
+
+implement
+ulte_labt2ypelst_labt2ypelst
+(loc0, lt2ps1, lt2ps2) =
+(
+case+ lt2ps1 of
+| list_nil() =>
+  (
+  case+ lt2ps2 of
+  | list_nil() => true
+  | list_cons _ => false
+  )
+| list_cons(lt2p1, lt2ps1) =>
+  (
+  case+ lt2ps2 of
+  | list_nil() => false
+  | list_cons(lt2p2, lt2ps2) =>
+    let
+      val
+      test1 =
+      ulte(loc0, lt2p1, lt2p2)
+      val
+      test2 =
+      ulte(loc0, lt2ps1, lt2ps2)
+    in
+      if test1 then test2 else false
+    end
+  )
+) (* end of [ulte_labt2ypelst_labt2ypelst] *)
 
 (* ****** ****** *)
 
