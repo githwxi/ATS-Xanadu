@@ -77,7 +77,13 @@ trenv23_dvar_dn
   (d2v0, t2p0) =
 (
   d2var_set_type(d2v0, t2p0)
-)
+) where
+{
+(*
+  val t2p1 = d2v0.type()
+  val-T2Pnone0() = t2p1.node()
+*)
+}
 //
 (* ****** ****** *)
 //
@@ -694,7 +700,8 @@ case+ f2as of
   f2a0.node() of
   | F2ARGsome_dyn
     (npf, d2ps) =>
-    auxarg(f2as) where
+    list_cons
+    (f3a0, auxarg(f2as)) where
     {
       val
       d3ps = trans23_dpatlst(d2ps)
@@ -723,12 +730,76 @@ case+ f2as of
 ) (* end of [auxarg] *)
 //
 fun
+auxtfun
+( fa2g
+: f2arglst
+, fa3g
+: f3arglstopt
+, tres
+: t2ype): t2ype =
+(
+case+ fa3g of
+| None() =>
+  auxfa2g(fa2g, tres, 0)
+| Some(fa3g) =>
+  auxfa3g(fa3g, tres, 0)
+)
+and
+auxfa2g
+( fa2g
+: f2arglst
+, tres
+: t2ype
+, flag: int): t2ype = the_t2ype_none0
+and
+auxfa3g
+( fa3g
+: f3arglst
+, tres
+: t2ype
+, flag: int): t2ype =
+(
+case+ fa3g of
+| list_nil() => tres
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | F3ARGsome_dyn
+    (npf, d3ps) =>
+    let
+    val fc2 =
+    (
+    if flag = 0
+    then FC2fun(*void*)
+    else FC2cloref(*void*)
+    ) : funclo2 // end-of-val
+    val t2ps =
+    d3patlst_get_type(d3ps)
+    val tres =
+    auxfa3g(xs, tres, flag+1)
+    in
+    t2ype_fun1(fc2, npf, t2ps, tres)
+    end
+  | F3ARGsome_sta
+    (s2vs, s2ps) =>
+    let
+    val tres =
+    auxfa3g(xs,tres,flag) in t2ype_uni(s2vs, tres)
+    end
+  | F3ARGsome_met(s2es) => auxfa3g(xs, tres, flag)
+  )
+)
+//
+fun
 auxf2d0
 ( d2c0
 : d2ecl
 , f2d0
 : f2undecl
 ) : f3undecl = let
+//
+val
+loc0 = d2c0.loc()
 //
 val+
 F2UNDECL(rcd) = f2d0
@@ -750,30 +821,45 @@ val a3g =
 (
 if
 ishdr(f2d0)
-then None(*void*)
+then
+None(*void*)
 else
 Some(auxarg(a2g))): f3arglstopt
+//
+val tres =
+(
+case+ res of
+| EFFS2EXPnone() => t2ype_new(loc0)
+| EFFS2EXPsome(s2e0) => s2exp_erase(s2e0)
+) : t2ype // end-of-val
+//
+val () =
+(
+d2var_set_type(nam, tfun)
+) where
+{
+val
+tfun = auxtfun(a2g, a3g, tres)
+} (* end of [where] *)
+//
+val () =
+println!
+("trans23_decl: aux_fundecl:")
+val () =
+println!
+("auxf2d0: nam = ", nam)
+val () =
+println!
+("auxf2d0: nam.type = ", nam.type())
 //
 val def =
 (
 case+ def of
-| None() => None()
+| None() =>
+  None()
 | Some(d2e0) =>
-  let
-    val d3e0 =
-    trans23_dexp(d2e0)
-  in
-    case+ res of
-    | EFFS2EXPnone() => Some(d3e0)
-    | EFFS2EXPsome(s2e0) =>
-      (
-        Some(d3exp_dn(d3e0, t2p0))
-      ) where
-      {
-        val t2p0 = s2exp_erase(s2e0)
-      }
-  end
-) : d3expopt // end of [val]
+  Some(trans23_dexp_dn(d2e0, tres))
+) : d3expopt // end-of-val
 //
 in
 F3UNDECL

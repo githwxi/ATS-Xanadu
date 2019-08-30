@@ -486,9 +486,11 @@ overload fprint with fprint_s2arg
 //
 abstbox s2exp_tbox = ptr
 abstbox s2hnf_tbox = ptr
+abstbox t2ype_tbox = ptr
 //
 typedef s2exp = s2exp_tbox
 typedef s2hnf = s2hnf_tbox
+typedef t2ype = t2ype_tbox
 //
 (* ****** ****** *)
 
@@ -584,10 +586,14 @@ vtypedef s2expopt_vt = Option_vt(s2exp)
 //
 (* ****** ****** *)
 //
-typedef s2hnf = s2hnf_tbox
 typedef s2hnflst = List0(s2hnf)
 typedef s2hnfopt = Option(s2hnf)
 //
+(* ****** ****** *)
+
+typedef t2ypelst = List0(t2ype)
+typedef t2ypeopt = Option(t2ype)
+
 (* ****** ****** *)
 //
 (*
@@ -1123,19 +1129,31 @@ overload unsome with s2cstnul_unsome
 (* ****** ****** *)
 //
 fun
-s2cst_get_def(s2cst): s2exp
-fun
-stamp_s2cst_def
-(s2c: s2cst, def: s2exp): void
-//
-(* ****** ****** *)
-//
-fun
 s2cst_get_abs
 (s2c: s2cst): abstdf2
 fun
 stamp_s2cst_abs
 (s2c: s2cst, abs: abstdf2): void
+//
+(* ****** ****** *)
+//
+fun
+s2cst_get_sexp(s2cst): s2exp
+fun
+stamp_s2cst_sexp
+(s2c: s2cst, def: s2exp): void
+//
+overload .sexp with s2cst_get_sexp
+//
+(* ****** ****** *)
+//
+fun
+s2cst_get_type(s2cst): t2ype
+fun
+stamp_s2cst_type
+(s2c: s2cst, def: t2ype): void
+//
+overload .type with s2cst_get_type
 //
 (* ****** ****** *)
 

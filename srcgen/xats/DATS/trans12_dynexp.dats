@@ -70,6 +70,7 @@ NMS = "./../SATS/nmspace.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 
 (* ****** ****** *)
@@ -847,7 +848,7 @@ val-
 D1Estr(tok) = d1e0.node()
 //
 in
-  d2exp_chr(loc0, tok)
+  d2exp_str(loc0, tok)
 end // end of [auxstr]
 
 (* ****** ****** *)
@@ -1606,11 +1607,14 @@ case+ s2tf of
 val
 s2t0 = s2e0.sort()
 val
+t2p0 = s2exp_erase(s2e0)
+val
 s2c0 =
 s2cst_make_idst(sid, s2t0)
 //
 val () = stamp_s2cst(s2c0)
-val () = stamp_s2cst_def(s2c0, s2e0)
+val () = stamp_s2cst_sexp(s2c0, s2e0)
+val () = stamp_s2cst_type(s2c0, t2p0)
 //
 in
 let

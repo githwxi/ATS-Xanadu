@@ -78,13 +78,17 @@ omega(x) = x(x)
 
 (* ****** ****** *)
 
+val x = 0.0
+
+(* ****** ****** *)
+////
 fun
 <a:type>
 length
 (xs:list(a)): int =
 (
 case+ xs of
-| list_nil() => 0
+| list_nil() => "0"
 | list_cons(_, xs) => 1+length(xs)
 )
 

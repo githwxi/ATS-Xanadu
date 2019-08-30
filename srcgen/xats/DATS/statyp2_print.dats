@@ -111,6 +111,8 @@ x0.node() of
 //
 | T2Papp(t2p1, t2ps) =>
   fprint!(out, "T2Papp(", t2p1, "; ", t2ps, ")")
+| T2Plam(s2vs, t2p1) =>
+  fprint!(out, "T2Plam(", s2vs, "; ", t2p1, ")")
 //
 | T2Pfun(fcr, npf, arg, res) =>
   fprint!

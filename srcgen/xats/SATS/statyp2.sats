@@ -34,6 +34,7 @@
 (* ****** ****** *)
 
 #staload"./basics.sats"
+#staload"./stamp0.sats"
 
 (* ****** ****** *)
 //
@@ -47,7 +48,7 @@ typedef label = $LAB.label
 //
 (* ****** ****** *)
 
-#staload "./staexp2.sats"
+#staload S2E = "./staexp2.sats"
 
 (* ****** ****** *)
 //
@@ -65,10 +66,24 @@ where t2srtlst = List0(t2srt)
 //
 (* ****** ****** *)
 //
+(*
 abstbox t2ype_tbox = ptr
-typedef t2ype = t2ype_tbox
+*)
+//
+typedef loc_t = $S2E.loc_t
+//
+typedef sort2 = $S2E.sort2
+typedef s2cst = $S2E.s2cst
+typedef s2var = $S2E.s2var
+typedef s2exp = $S2E.s2exp
+typedef t2ype = $S2E.t2ype
+//
+typedef tyrec = $S2E.tyrec
+//
+typedef s2cstlst = List0(s2cst)
+typedef s2varlst = List0(s2var)
+typedef s2explst = List0(s2exp)
 typedef t2ypelst = List0(t2ype)
-typedef t2ypeopt = Option(t2ype)
 //
 (* ****** ****** *)
 //
@@ -164,6 +179,7 @@ t2ype_node =
 | T2Pxtv of t2xtv // ext-variable
 //
 | T2Papp of (t2ype, t2ypelst)
+| T2Plam of (s2varlst, t2ype)
 //
 | T2Pfun of
   ( fcr//ref(funclo2)
@@ -270,6 +286,13 @@ t2ype_substs
 ( t2p0: t2ype
 , s2vs: s2varlst, tsub: t2ypelst
 ) : t2ype // end of [t2ype_substs]
+//
+(* ****** ****** *)
+//
+fun
+t2ype_hnfize(t2p0: t2ype): t2ype
+//
+overload hnfize with t2ype_hnfize
 //
 (* ****** ****** *)
 

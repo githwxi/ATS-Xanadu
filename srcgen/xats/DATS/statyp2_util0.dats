@@ -119,15 +119,6 @@ s2e0.node() of
     t2ype_uni(s2vs, s2exp_erase(body))
   end
 //
-| S2Eapp(s2e1, s2es) =>
-  let
-    val t2p1 = s2exp_erase(s2e1)
-    val t2ps = s2explst_erase(s2es)
-  in
-    t2ype_make_node
-    (s2t0, T2Papp(t2p1, t2ps))
-  end
-//
 | S2Efun
   (fc2, lin, npf, s2es, s2e1) =>
   let
@@ -137,6 +128,21 @@ s2e0.node() of
   in
     t2ype_make_node
     (s2t0, T2Pfun(fcr, npf, t2ps, t2p1))
+  end
+//
+| S2Eapp(s2e1, s2es) =>
+  let
+    val t2p1 = s2exp_erase(s2e1)
+    val t2ps = s2explst_erase(s2es)
+  in
+    t2ype_make_node(s2t0, T2Papp(t2p1, t2ps))
+  end
+//
+| S2Elam(s2vs, s2e1) =>
+  let
+    val t2p1 = s2exp_erase(s2e1)
+  in
+    t2ype_make_node(s2t0, T2Plam(s2vs, t2p1))
   end
 //
 | _(*rest-of-s2exp*) => t2ype_none1(s2e0)
@@ -519,6 +525,158 @@ case+ lt2ps of
 )
 //
 } (* end of [t2ype_substs] *)
+
+(* ****** ****** *)
+
+local
+
+fun
+auxcst
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val-
+T2Pcst
+(s2c0) = t2p0.node()
+val def0 =
+s2cst_get_type(s2c0)
+in
+//
+case+
+def0.node() of
+| T2Pnone0() => t2p0 | _ => def0
+//
+end // end of [appcst]
+
+and
+auxxtv
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val-
+T2Pxtv
+(xtv0) = t2p0.node()
+in
+//
+case+
+t2p0.node() of
+| T2Pxtv(xtv) =>
+  let
+  val
+  t2p1 = xtv.type()
+  in
+    case+
+    t2p1.node() of
+    | T2Pnone0() => t2p0
+    | _ (*non-T2Pnone0*) =>
+      (flag := flag+1; t2ype_hnfize(t2p1))
+  end
+| _(* non-T2Pxtv *) => (t2p0)
+//
+end // end of [auxxtv]
+
+and
+auxapp
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+//
+val-
+T2Papp
+(t2p1, t2ps) = t2p0.node()
+//
+val fini = flag
+//
+val t2p1 = auxt2p(t2p1, flag)
+val t2ps = auxt2ps(t2ps, flag)
+in
+//
+case+
+t2p1.node() of
+| T2Plam
+  (s2vs, t2p2) =>
+  let
+    val () = flag := flag + 1
+  in
+    t2ype_hnfize
+    (
+    t2ype_substs(t2p2, s2vs, t2ps)
+    )
+  end
+| _ (*non-T2Plam*) =>
+  if
+  fini=flag
+  then t2p0
+  else
+  t2ype_make_node
+  (t2p0.sort(), T2Papp(t2p1, t2ps))
+//
+end // end of [auxapp]
+
+and
+auxt2p
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+(
+case+
+t2p0.node() of
+| T2Pbas _ => t2p0
+| T2Pvar _ => t2p0
+| T2Pcst _ =>
+  auxcst(t2p0, flag)
+| T2Pxtv _ =>
+  auxxtv(t2p0, flag)
+| T2Papp _ =>
+  auxapp(t2p0, flag)
+| _ (*rest-of-t2ype*) => t2p0
+)
+
+and
+auxt2ps
+( t2ps
+: t2ypelst
+, flag
+: &int >> int): t2ypelst =
+(
+case+ t2ps of
+| list_nil() =>
+  list_nil()
+| list_cons(t2p1, t2ps2) =>
+  let
+  val fini = flag
+  val t2p1 = auxt2p(t2p1, flag)
+  val t2ps2 = auxt2ps(t2ps2, flag)
+  in
+    if
+    fini = flag
+    then t2ps else list_cons(t2p1, t2ps2)
+  end
+)
+
+
+in (*in-of-local*)
+
+implement
+t2ype_hnfize
+  (t2p0) = let
+//
+val () =
+println!
+("t2ype_hnfize: t2p0 = ", t2p0)
+//
+in
+//
+let
+var flag: int = 0 in auxt2p(t2p0, flag)
+end
+//
+end // end of [t2ype_hnfize]
+
+end // end of [local]
 
 (* ****** ****** *)
 

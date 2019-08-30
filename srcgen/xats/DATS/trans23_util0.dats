@@ -121,6 +121,8 @@ t2p0.node() of
   auxt2p(t2p1)
   then true else auxt2ps(t2ps)
 //
+| T2Plam(s2vs, t2p1) => auxt2p(t2p1)
+//
 | T2Pfun
   (fcr, npf, t2ps, t2p1) =>
   if
@@ -171,9 +173,9 @@ ulte_t2ype_t2ype
 let
 //
 val
-t2p1 = t2p1.eval()
+t2p1 = hnfize(t2p1)
 and
-t2p2 = t2p2.eval()
+t2p2 = hnfize(t2p2)
 //
 val () =
 println!("ulte: t2p1 = ", t2p1)

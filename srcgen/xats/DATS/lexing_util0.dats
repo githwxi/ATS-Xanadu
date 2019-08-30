@@ -753,9 +753,8 @@ ifcase
       loop0d(buf)
     ) // end of [then]
     else let
-      val () = lexbuf_unget(buf, i0)
-    in
-      T_INT1(lexbuf_get_fullseg(buf))
+      val () =
+      lexbuf_unget(buf, i0) in loop1(buf)
     end // end of [else]
   )
 //
@@ -832,7 +831,7 @@ loop0X
 
 (* ****** ****** *)
 
-fun
+and
 loop1
 (buf:
 &lexbuf >> _): tnode = let
