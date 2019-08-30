@@ -198,6 +198,17 @@ d2p0.node() of
     val () =
     trenv23_dvar_dn(d2v0, t2p0)
   }
+| D2Panno
+  (d2p1, s2e2) =>
+  (
+    d3pat_dn(d3p1, t2p2)
+  ) where
+  {
+    val t2p2 =
+    s2exp_erase(s2e2)
+    val d3p1 =
+    trans23_dpat_dn(d2p1, t2p0)
+  }
 | _(* else *) =>
   (
     d3pat_dn(d3p0, t2p0)
@@ -208,7 +219,7 @@ d2p0.node() of
 ) where
 {
   val loc0 = d2p0.loc((*void*))
-} (* end of [trans23_dpat_dn] *)
+} // end-of-where // end of [trans23_dpat_dn]
 
 (* ****** ****** *)
 
@@ -648,6 +659,99 @@ list_map<d2clau><d3clau>(d2cs)
 local
 
 fun
+aux_valdecl
+( d2c0
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2c0.loc()
+val-
+D2Cvaldecl
+( knd
+, mopt
+, v2ds) = d2c0.node()
+//
+val
+v3ds = auxv2ds(d2c0, v2ds)
+//
+in
+  d3ecl_make_node
+  (loc0, D3Cvaldecl(knd, mopt, v3ds))
+end where
+{
+//
+fun
+ishdr
+( v2d0
+: v2aldecl): bool =
+let
+val+
+V2ALDECL(rcd) = v2d0
+in
+  case+ rcd.def of
+  | None() => true | Some(d2e) => false
+end
+//
+fun
+auxv2d0
+( d2c0
+: d2ecl
+, v2d0
+: v2aldecl
+) : v3aldecl = let
+//
+val
+loc0 = d2c0.loc()
+val+
+V2ALDECL(rcd) = v2d0
+//
+val loc = rcd.loc
+val pat = rcd.pat
+val def = rcd.def
+val wtp = rcd.wtp
+//
+val pat = trans23_dpat(pat)
+//
+val def =
+(
+case+ def of
+| None() =>
+  None()
+| Some(d2e0) =>
+  let
+  val tres = pat.type()
+  in
+  Some(trans23_dexp_dn(d2e0, tres))
+  end
+) : d3expopt // end-of-val
+//
+in
+V3ALDECL
+(@{
+loc=loc,pat=pat,def=def,wtp=wtp})
+end // end of [auxv2d0]
+//
+fun
+auxv2ds
+( d2c0: d2ecl
+, v2ds
+: v2aldeclist
+)
+: v3aldeclist =
+(
+case+ v2ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons
+  (auxv2d0(d2c0, x0), auxv2ds(d2c0, xs))
+)
+//
+} (* end of [aux_valdecl] *)
+
+(* ****** ****** *)
+
+fun
 aux_fundecl
 ( d2c0
 : d2ecl): d3ecl = let
@@ -904,6 +1008,7 @@ in
 case+
 d2c0.node() of
 //
+| D2Cvaldecl _ => aux_valdecl(d2c0)
 | D2Cfundecl _ => aux_fundecl(d2c0)
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2c0)

@@ -205,6 +205,63 @@ auxtp0
 (
 case+
 t2p1.node() of
+| T2Pexi(s2vs, t2p1) =>
+  (
+    auxtp0(t2p1, t2p2)
+  )
+| T2Puni(s2vs, t2p1) =>
+  (
+    auxtp0(t2p1, t2p2)
+  ) where
+  {
+    val tsub =
+    (
+    list_map<s2var><t2ype>(s2vs)
+    ) where
+    {
+      implement
+      list_map$fopr<s2var><t2ype>(s2v) =
+      t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
+    }
+    val tsub = list_vt2t(tsub)
+    val t2p1 = t2ype_substs(t2p1, s2vs, tsub)
+  }
+//
+| _ (* non-quantifier *) =>
+  (
+  case+ t2p2.node() of
+  | T2Puni(s2vs, t2p2) =>
+    (
+      auxtp0(t2p1, t2p2)
+    )
+  | T2Pexi(s2vs, t2p2) =>
+    (
+      auxtp0(t2p1, t2p2)
+    ) where
+    {
+      val tsub =
+      (
+      list_map<s2var><t2ype>(s2vs)
+      ) where
+      {
+        implement
+        list_map$fopr<s2var><t2ype>(s2v) =
+        t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
+      }
+      val tsub = list_vt2t(tsub)
+      val t2p2 = t2ype_substs(t2p2, s2vs, tsub)
+    }
+  | _ (* non-quantifier *) => auxtp1(t2p1, t2p2)
+  )
+//
+)
+and
+auxtp1
+( t2p1: t2ype
+, t2p2: t2ype): bool =
+(
+case+
+t2p1.node() of
 | T2Pbas(nam1) =>
   (
   case+
@@ -265,28 +322,6 @@ t2p1.node() of
     end
   | _ (* else *) => false  
   )
-//
-| T2Pexi(s2vs, t2p1) =>
-  (
-    auxtp0(t2p1, t2p2)
-  )
-| T2Puni(s2vs, t2p1) =>
-  (
-    auxtp0(t2p1, t2p2)
-  ) where
-  {
-    val tsub =
-    (
-    list_map<s2var><t2ype>(s2vs)
-    ) where
-    {
-      implement
-      list_map$fopr<s2var><t2ype>(s2v) =
-      t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
-    }
-    val tsub = list_vt2t(tsub)
-    val t2p1 = t2ype_substs(t2p1, s2vs, tsub)
-  }
 //
 | T2Pnone0() =>
   (
