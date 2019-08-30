@@ -46,6 +46,11 @@ overload
 fprint with $STM.fprint_stamp
 //
 #staload
+LAB = "./../SATS/label0.sats"
+overload
+fprint with $LAB.fprint_label
+//
+#staload
 SYM = "./../SATS/symbol.sats"
 overload
 fprint with $SYM.fprint_symbol
@@ -73,6 +78,13 @@ fprint_t2ype(stdout_ref, x0)
 implement
 prerr_t2ype(x0) =
 fprint_t2ype(stdout_ref, x0) 
+//
+local
+
+implement
+fprint_val<labt2ype> = fprint_labt2ype
+
+in (* in-of-local *)
 //
 implement
 fprint_t2ype
@@ -124,12 +136,33 @@ x0.node() of
   fprint!(out, "T2Puni(", s2vs, "; ", body, ")")
 //
 | T2Ptyrec(knd, npf, lxs) =>
-  fprint!(out, "T2Ptyrec(", "...", ")")
+  fprint!
+  ( out
+  , "T2Ptyrec(", knd, "; ", npf, "; ", lxs, ")")
 //
 | T2Pnone0() => fprint!(out, "T2Pnone0(", ")")
 | T2Pnone1(s2e) => fprint!(out, "T2Pnone1(", s2e, ")")
 //
 )
+//
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+print_labt2ype(x0) =
+fprint_labt2ype(stdout_ref, x0) 
+implement
+prerr_labt2ype(x0) =
+fprint_labt2ype(stdout_ref, x0) 
+//
+implement
+fprint_labt2ype
+  (out, lt2p) =
+(
+case+ lt2p of
+| TLABELED(l0, t2p) => fprint!(out, l0, "=", t2p)
+) (* end of [fprint_labt2ype] *)
 //
 (* ****** ****** *)
 

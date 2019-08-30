@@ -98,7 +98,7 @@ case+ xs of
 fun
 <a:type
 ,b:type>
-swap(x: a, y: b) = $(y, x)
+swap(x: a, y: b): $(b, a) = $(y, x)
 
 (* ****** ****** *)
 ////

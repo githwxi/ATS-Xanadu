@@ -56,6 +56,9 @@ typedef t2xtv = $S2T.t2xtv
 typedef s2explst = $S2E.s2explst
 typedef t2ypelst = $S2T.t2ypelst
 
+typedef labt2ype = $S2T.labt2ype
+typedef labt2ypelst = $S2T.labt2ypelst
+
 (* ****** ****** *)
 
 typedef d2var = $D2E.d2var
@@ -181,11 +184,23 @@ fun
 ulte_t2ypelst_t2ypelst
 ( loc0: loc_t
 , t2ps1: t2ypelst, t2ps2: t2ypelst): bool
+fun
+ulte_labt2ype_labt2ype
+( loc0: loc_t
+, lt2p1: labt2ype, lt2p2: labt2ype): bool
+fun
+ulte_labt2ypelst_labt2ypelst
+( loc0: loc_t
+, lt2ps1: labt2ypelst, lt2ps2: labt2ypelst): bool
 //
 overload
 ulte with ulte_t2ype_t2ype
 overload
 ulte with ulte_t2ypelst_t2ypelst
+overload
+ulte with ulte_labt2ype_labt2ype
+overload
+ulte with ulte_labt2ypelst_labt2ypelst
 //
 (* ****** ****** *)
 //

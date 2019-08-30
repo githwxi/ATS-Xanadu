@@ -85,6 +85,9 @@ typedef s2varlst = List0(s2var)
 typedef s2explst = List0(s2exp)
 typedef t2ypelst = List0(t2ype)
 //
+typedef labs2exp = $S2E.labs2exp
+typedef labs2explst = List0(labs2exp)
+//
 (* ****** ****** *)
 //
 abstype fcr_tbox = ptr
@@ -129,6 +132,19 @@ labt2ype =
 | TLABELED of (label, t2ype)
 where
 labt2ypelst = List0(labt2ype)
+//
+(* ****** ****** *)
+//
+fun
+print_labt2ype: print_type(labt2ype)
+fun
+prerr_labt2ype: prerr_type(labt2ype)
+fun
+fprint_labt2ype: fprint_type(labt2ype)
+//
+overload print with print_labt2ype
+overload prerr with prerr_labt2ype
+overload fprint with fprint_labt2ype
 //
 (* ****** ****** *)
 //
@@ -295,12 +311,17 @@ t2ype_hnfize(t2p0: t2ype): t2ype
 overload hnfize with t2ype_hnfize
 //
 (* ****** ****** *)
-
+//
 fun
-s2exp_erase(s2e0: s2exp): t2ype
+s2exp_erase
+  (s2e0: s2exp): t2ype
 fun
-s2explst_erase(s2es: s2explst): t2ypelst
-
+s2explst_erase
+  (s2es: s2explst): t2ypelst
+fun
+labs2explst_erase
+  (ls2es: labs2explst): labt2ypelst
+//
 (* ****** ****** *)
 
 (* end of [xats_statyp2.sats] *)

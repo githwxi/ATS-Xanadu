@@ -650,6 +650,13 @@ labs2explst_vt = List0_vt(labs2exp)
 (* ****** ****** *)
 //
 fun
+eq_tyrec_tyrec
+(k1: tyrec, k2: tyrec): bool
+overload = with eq_tyrec_tyrec
+//
+(* ****** ****** *)
+//
+fun
 print_tyrec: print_type(tyrec)
 fun
 prerr_tyrec: print_type(tyrec)
