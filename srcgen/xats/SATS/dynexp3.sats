@@ -418,6 +418,32 @@ d3exp_cast
 (* ****** ****** *)
 //
 datatype
+v3aldecl =
+V3ALDECL of @{
+  loc= loc_t
+, pat= d3pat
+, def= d3expopt, wtp= s2expopt
+}
+//
+typedef
+v3aldeclist = List0(v3aldecl)
+//
+(* ****** ****** *)
+//
+fun
+print_v3aldecl: print_type(v3aldecl)
+fun
+prerr_v3aldecl: prerr_type(v3aldecl)
+fun
+fprint_v3aldecl: fprint_type(v3aldecl)
+//
+overload print with print_v3aldecl
+overload prerr with prerr_v3aldecl
+overload fprint with fprint_v3aldecl
+//
+(* ****** ****** *)
+//
+datatype
 f3undecl =
 F3UNDECL of @{
   loc= loc_t
@@ -458,6 +484,9 @@ d3ecl_node =
 //
 | D3Cnone0 of ()
 | D3Cnone1 of (d2ecl)
+//
+| D3Cvaldecl of
+  (token(*valkind*), declmodopt, v3aldeclist)
 //
 | D3Cfundecl of
   ( token(*funkind*)
