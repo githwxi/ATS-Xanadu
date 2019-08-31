@@ -32,6 +32,19 @@ gint_lt1 :
 
 #extern
 fun
+gint_gte1 :
+(int, int) -> bool
+and
+gint_lte1 :
+(int, int) -> bool
+
+#symload >= with gint_gte1 of 1
+#symload <= with gint_lte1 of 1
+
+(* ****** ****** *)
+
+#extern
+fun
 gint_gt2 :
 (int, int) -> bool
 and
@@ -78,11 +91,12 @@ omega(x) = x(x)
 
 (* ****** ****** *)
 
-val x: double
-val y = x + 0.0
+val x: int = 0
+val y: int = x
 
 (* ****** ****** *)
 
+(*
 fun
 <a:type>
 length
@@ -92,6 +106,80 @@ case+ xs of
 | list_nil() => 0
 | list_cons(_, xs) => 1+length(xs)
 )
+*)
+
+(* ****** ****** *)
+
+val
+omega = lam(x): int => x(x)
+
+(* ****** ****** *)
+
+fun<>
+fib(n: int) =
+if
+n <= 1
+then n
+else
+(
+  fib(n1) + fib(n2)
+) where
+{
+  val n1 = n - 1 and n2 = n - 2
+}
+////
+(* ****** ****** *)
+
+fun
+<a:type>
+length
+(xs:list(a)): int =
+let
+fun
+loop(xs, i0) =
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => loop(xs, i0+1)
+in
+  loop(xs, 0)
+end
+////
+(* ****** ****** *)
+
+fun
+<a:type>
+<b:type>
+map
+( xs:list(a)
+, f0: a -<cloref> b) =
+(
+case+ xs of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons(f0(x0), map(xs, f0))
+)
+////
+
+(* ****** ****** *)
+
+fun
+<a:type>
+append
+(xs:list(a)
+,ys:list(a)): list(a) =
+(
+case+ xs of
+| list_nil() => ys
+| list_cons(x0, xs) =>
+  list_cons(x0, append(xs, ys))
+)
+////
+(* ****** ****** *)
+
+fun
+<a:type>
+app2(f: a -> a, x: a): a = f(f(x))
 
 (* ****** ****** *)
 
@@ -99,12 +187,6 @@ fun
 <a:type
 ,b:type>
 swap(x: a, y: b): $(b, a) = $(y, x)
-
-(* ****** ****** *)
-////
-fun
-<a:type>
-app0(f: a -> a, x: a) = f(f(x))
 
 (* ****** ****** *)
 ////

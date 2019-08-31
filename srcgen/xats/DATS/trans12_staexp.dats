@@ -1296,8 +1296,14 @@ s1e1.node() of
   var npf
     : int = 0
 //
-  val fc2 = s1exp_get_fc2(s1e1)
   val lin = s1exp_get_lin(s1e1)
+  val fc2 = s1exp_get_fc2(s1e1)
+//
+  val fc2 =
+  (
+  if lin = 0 then fc2 else funclo2_linize(fc2)
+  ) : funclo2
+//
 (*
   val eff = s1exp_get_eff(s1e1)
 *)
@@ -1323,7 +1329,7 @@ s1e1.node() of
   ) : s2explst
   val s2e3 = trans12_sexp_ci(s1e3)
   in
-    s2exp_fun_full(fc2, lin, npf, s2es, s2e3)
+    s2exp_fun_full(fc2, npf, s2es, s2e3)
   end
 | _(*non-S1Eimp*) =>
   (

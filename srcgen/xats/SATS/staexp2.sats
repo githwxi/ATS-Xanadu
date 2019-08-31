@@ -702,7 +702,6 @@ s2exp_node =
 | S2Efun of
   ( // function type
     funclo2
-  , int(*lin*)
   , int(*npf*), s2explst(*arg*), s2exp(*res*)
   ) (* end of S2Efun *)
 //
@@ -811,7 +810,6 @@ fun
 s2exp_fun_full
 ( fc2
 : funclo2
-, lin: int
 , npf: int
 , arg: s2explst, res: s2exp): s2exp
 //

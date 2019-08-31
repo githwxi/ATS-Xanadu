@@ -158,8 +158,7 @@ s2e0.node() of
   }
 //
 | S2Efun
-  ( fc0
-  , lin, npf, s2es, s2e1) =>
+  (fc0, npf, s2es, s2e1) =>
   {
     val () = t2xread_s2exp<>(s2e1)
     val () = t2xread_s2explst<>(s2es)

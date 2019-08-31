@@ -241,6 +241,8 @@ d2cst_get_sym(x0) = x0.d2cst_sym
 implement
 d2cst_get_sexp(x0) = x0.d2cst_sexp
 implement
+d2cst_get_type(x0) = x0.d2cst_type
+implement
 d2cst_get_stamp(x0) = x0.d2cst_stamp
 
 end // end of [local]
@@ -943,8 +945,7 @@ case+ arg of
       val s2es =
       s2explst_of_d2patlst(d2ps)
     in
-      s2exp_fun_full
-      (fc2, 0(*lin*), npf, s2es, res)
+      s2exp_fun_full(fc2, npf, s2es, res)
     end
   | F2ARGsome_sta
     (s2vs, s2ps) => s2exp_uni(s2vs, s2ps, res)

@@ -376,6 +376,13 @@ case- x0.node() of
   ( out, "D2Ecase("
   , knd, "; ", d2e1, "; ", d2cls, ")")
 //
+| D2Elam
+  (f2as, tres, arrw, body) =>
+  fprint!
+  ( out, "D2Elam("
+  , f2as, "; "
+  , tres, "; ", arrw, "; ", body, ")")
+//
 | D2Eanno(d2e1, s2e2) =>
   fprint!
   (out, "D2Eanno(", d2e1, "; ", s2e2, ")")

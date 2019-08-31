@@ -120,7 +120,7 @@ s2e0.node() of
   end
 //
 | S2Efun
-  (fc2, lin, npf, s2es, s2e1) =>
+  (fc2, npf, s2es, s2e1) =>
   let
     val fcr = fcr_new1(fc2)
     val t2p1 = s2exp_erase(s2e1)

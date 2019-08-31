@@ -544,7 +544,7 @@ d1exp_node =
   // D1Ecase
 //
 | D1Elet of
-  (d1eclist, d1explst(*semi*))
+  (d1eclist, d1explst(*seqn*))
 | D1Ewhere of (d1exp, d1eclist)
 //
 | D1Edtsel of (label, d1expopt)
@@ -566,7 +566,7 @@ f1unarrow =
 | F1UNARROWnone of
   (token(*error*))
 *)
-| F1UNARROWdflt of ()
+| F1UNARROWdflt // default
 | F1UNARROWlist of (s1explst)
 //
 (* ****** ****** *)

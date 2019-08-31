@@ -48,6 +48,11 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -146,8 +151,11 @@ d2p0.node() of
   let
     val
     t2p2 = s2exp_erase(s2e2)
-  in
+    val
+    d3p1 =
     trans23_dpat_dn(d2p1, t2p2)
+  in
+    d3pat_anno(d3p1, s2e2)
   end
 //
 | D2Pdapp _ => auxdapp(d2p0)
@@ -220,6 +228,63 @@ d2p0.node() of
 {
   val loc0 = d2p0.loc((*void*))
 } // end-of-where // end of [trans23_dpat_dn]
+
+(* ****** ****** *)
+
+implement
+trans23_farglst
+  (f2as) =
+(
+  auxlst(f2as)
+) where
+{
+fun
+auxlst
+( f2as
+: f2arglst): f3arglst =
+(
+case+ f2as of
+//
+| list_nil() => list_nil()
+//
+| list_cons
+  (f2a0, f2as) =>
+  let
+  val loc0 = f2a0.loc()
+  in
+  case+
+  f2a0.node() of
+  | F2ARGsome_dyn
+    (npf, d2ps) =>
+    list_cons
+    (f3a0, auxlst(f2as)) where
+    {
+      val
+      d3ps = trans23_dpatlst(d2ps)
+      val
+      f3a0 =
+      f3arg_make_node
+      (loc0, F3ARGsome_dyn(npf, d3ps))
+    }
+  | F2ARGsome_sta
+    (s2vs, s2ps) =>
+    list_cons
+    (f3a0, auxlst(f2as)) where
+    {
+      val f3a0 =
+      f3arg_make_node
+      (loc0, F3ARGsome_sta(s2vs, s2ps))
+    }
+  | F2ARGsome_met(s2es) =>
+    list_cons
+    (f3a0, auxlst(f2as)) where
+    {
+      val f3a0 =
+      f3arg_make_node(loc0, F3ARGsome_met(s2es))
+    }
+  end
+)
+} (* end of [trans23_farglst] *)
 
 (* ****** ****** *)
 
@@ -341,6 +406,84 @@ end (* end of [auxvar] *)
 (* ****** ****** *)
 
 fun
+auxcon1
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Econ1(d2c0) = d2e0.node()
+//
+val
+t2p0 = d2c0.type((*void*))
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Econ1(d2c0))
+end // end of [auxcon1]
+
+fun
+auxcst1
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ecst1(d2c0) = d2e0.node()
+//
+val
+t2p0 = d2c0.type((*void*))
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Ecst1(d2c0))
+end // end of [auxcst1]
+
+(* ****** ****** *)
+
+fun
+auxcon2
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Econ2(d2cs) = d2e0.node()
+//
+val
+t2p0 = t2ype_new(loc0)
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Econ2(d2cs))
+end // end of [auxcon2]
+
+(* ****** ****** *)
+
+fun
+auxcst2
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ecst2(d2cs) = d2e0.node()
+//
+val
+t2p0 = t2ype_new(loc0)
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Ecst2(d2cs))
+end // end of [auxcst2]
+
+(* ****** ****** *)
+
+fun
 auxsym0
 ( d2e0
 : d2exp): d3exp = let
@@ -369,13 +512,17 @@ val
 loc0 = d2e0.loc()
 val-
 D2Edapp
-(d2e1, npf, d2es) = d2e0.node()
+( d2e1
+, npf2
+, d2es) = d2e0.node()
 //
-val d3e1 = trans23_dexp(d2e1)
-val d3es = trans23_dexplst(d2es)
+val
+d3e1 = trans23_dexp(d2e1)
+val
+d3es = trans23_dexplst(d2es)
 //
 in
-d3exp_dapp_up(loc0, d3e1, npf, d3es)
+d3exp_dapp_up(loc0, d3e1, npf2, d3es)
 end (* end of [auxdapp] *)
 
 (* ****** ****** *)
@@ -389,16 +536,64 @@ val
 loc0 = d2e0.loc()
 val-
 D2Etuple
-( knd
-, npf
+( knd1
+, npf2
 , d2es) = d2e0.node()
 //
 val
 d3es = trans23_dexplst(d2es)
 //
 in
-  d3exp_tuple_up(loc0, knd, npf, d3es)  
+d3exp_tuple_up(loc0, knd1, npf2, d3es)  
 end // end of [aux_tuple]
+
+(* ****** ****** *)
+
+fun
+aux_let
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Elet
+( d2cs
+, d2es) = d2e0.node()
+//
+val
+d3cs = trans23_declist(d2cs)
+val
+d3es = trans23_dexpseq(d2es)
+//
+in
+  d3exp_let_up(loc0, d3cs, d3es)
+end (* end of [aux_let] *)
+
+(* ****** ****** *)
+
+fun
+aux_where
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ewhere
+( d2e1
+, d2cs) = d2e0.node()
+//
+val
+d3cs = trans23_declist(d2cs)
+//
+in
+let
+val d3e1 = trans23_dexp(d2e1)
+in
+  d3exp_where_up(loc0, d3e1, d3cs)
+end
+end (* end of [aux_where] *)
 
 (* ****** ****** *)
 
@@ -450,6 +645,130 @@ end (* end of [aux_case] *)
 
 (* ****** ****** *)
 
+fun
+aux_lam
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Elam
+( f2as
+, tres
+, arrw, body) = d2e0.node()
+//
+val
+f3as =
+trans23_farglst(f2as)
+//
+val
+body =
+(
+case+ tres of
+| EFFS2EXPnone() =>
+  (
+    trans23_dexp(body)
+  )
+| EFFS2EXPsome(s2e0) =>
+  let
+    val
+    t2p0 = s2exp_erase(s2e0)
+  in
+    trans23_dexp_dn(body, t2p0)
+  end
+) : d3exp // end-of-val
+//
+val
+tfun = let
+val
+fc2 =
+(
+  auxfc2(arrw)
+) where
+{
+fun
+auxfc2
+( arrw
+: f1unarrow
+) : funclo2 =
+(
+case arrw of
+| F1UNARROWdflt
+  () => FC2fun(*void*)
+| F1UNARROWlist
+  (s1es) => FC2fun(*void*)
+)
+}
+fun
+auxfa3g
+( fa3g
+: f3arglst
+, tres
+: t2ype
+, flag: int): t2ype =
+(
+case+ fa3g of
+| list_nil() => tres
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | F3ARGsome_dyn
+    (npf, d3ps) =>
+    let
+    val fc2 =
+    (
+    if flag = 0
+    then fc2(*funarrow*)
+    else FC2cloref(*void*)
+    ) : funclo2 // end-of-val
+    val t2ps =
+    d3patlst_get_type(d3ps)
+    val tres =
+    auxfa3g(xs, tres, flag+1)
+    in
+    t2ype_fun1(fc2, npf, t2ps, tres)
+    end
+  | F3ARGsome_sta
+    (s2vs, s2ps) =>
+    let
+    val tres =
+    auxfa3g(xs,tres,flag) in t2ype_uni(s2vs, tres)
+    end
+  | F3ARGsome_met(s2es) => auxfa3g(xs, tres, flag)
+  )
+)
+in
+  auxfa3g(f3as, body.type(), 0)
+end // end-of-val
+//
+in
+  d3exp_make_node
+  (loc0, tfun, D3Elam(f3as, tres, arrw, body))
+end // end of [aux_lam]
+
+(* ****** ****** *)
+
+fun
+aux_anno
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eanno
+(d2e1, s2e2) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+//
+in
+d3exp_make_node
+(loc0, d3e1.type(), D3Eanno(d3e1, s2e2))
+end // end of [aux_anno]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -475,15 +794,28 @@ d2e0.node() of
 //
 | D2Evar _ => auxvar(d2e0)
 //
+| D2Econ1 _ => auxcon1(d2e0)
+| D2Ecst1 _ => auxcst1(d2e0)
+//
+| D2Econ2 _ => auxcon2(d2e0)
+| D2Ecst2 _ => auxcst2(d2e0)
+//
 | D2Esym0 _ => auxsym0(d2e0)
 //
 | D2Edapp _ => auxdapp(d2e0)
 //
 | D2Etuple _ => aux_tuple(d2e0)
 //
+| D2Elet(_, _) => aux_let(d2e0)
+| D2Ewhere(_, _) => aux_where(d2e0)
+//
 | D2Eif0(_, _, _) => aux_if0(d2e0)
 //
 | D2Ecase(_, _, _) => aux_case(d2e0)
+//
+| D2Elam(_, _, _, _) => aux_lam(d2e0)
+//
+| D2Eanno _ => aux_anno(d2e0)
 //
 | _ (*else*) => d3exp_none1_0(d2e0)
 //
@@ -525,6 +857,56 @@ implement
 list_map$fopr<d2exp><d3exp> = trans23_dexp
 }
 } (* end of [trans23_dexplst] *)
+
+(* ****** ****** *)
+
+implement
+trans23_dexpseq
+  (d2es) =
+(
+  auxlst1(d2es)
+) where
+{
+//
+fun
+auxlst1
+( d2es
+: d2explst): d3explst =
+(
+case+ d2es of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (d2e0, d2es) =>
+  auxlst2(d2e0, d2es)
+)
+//
+and
+auxlst2
+( d2e0
+: d2exp
+, d2es
+: d2explst): d3explst =
+(
+case+ d2es of
+| list_nil() =>
+  list_sing
+  (trans23_dexp(d2e0))
+| list_cons
+  (d2e1, d2es) =>
+  (
+  list_cons
+  (d3e0, auxlst2(d2e1, d2es))
+  ) where
+  {
+    val t2p0 =
+    the_t2ype_void(*void*)
+    val d3e0 =
+    trans23_dexp_dn(d2e0, t2p0)
+  }
+)
+//
+} (* end of [trans23_dexpseq] *)
 
 (* ****** ****** *)
 
@@ -769,8 +1151,9 @@ val
 f3ds = auxf2ds(d2c0, f2ds)
 //
 in
-  d3ecl_make_node
-  (loc0, D3Cfundecl(knd, mopt, tqas, f3ds))
+d3ecl_make_node
+( loc0
+, D3Cfundecl(knd, mopt, tqas, f3ds))
 end where
 {
 //
@@ -785,53 +1168,6 @@ in
   case+ rcd.def of
   | None() => true | Some(d2e) => false
 end
-//
-fun
-auxarg
-( f2as
-: f2arglst): f3arglst =
-(
-case+ f2as of
-//
-| list_nil() => list_nil()
-//
-| list_cons
-  (f2a0, f2as) =>
-  let
-  val loc0 = f2a0.loc()
-  in
-  case+
-  f2a0.node() of
-  | F2ARGsome_dyn
-    (npf, d2ps) =>
-    list_cons
-    (f3a0, auxarg(f2as)) where
-    {
-      val
-      d3ps = trans23_dpatlst(d2ps)
-      val
-      f3a0 =
-      f3arg_make_node
-      (loc0, F3ARGsome_dyn(npf, d3ps))
-    }
-  | F2ARGsome_sta
-    (s2vs, s2ps) =>
-    list_cons
-    (f3a0, auxarg(f2as)) where
-    {
-      val f3a0 =
-      f3arg_make_node
-      (loc0, F3ARGsome_sta(s2vs, s2ps))
-    }
-  | F2ARGsome_met(s2es) =>
-    list_cons
-    (f3a0, auxarg(f2as)) where
-    {
-      val f3a0 =
-      f3arg_make_node(loc0, F3ARGsome_met(s2es))
-    }
-  end
-) (* end of [auxarg] *)
 //
 fun
 auxtfun
@@ -928,7 +1264,8 @@ ishdr(f2d0)
 then
 None(*void*)
 else
-Some(auxarg(a2g))): f3arglstopt
+Some
+(trans23_farglst(a2g))): f3arglstopt
 //
 val tres =
 (
