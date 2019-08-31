@@ -71,6 +71,7 @@ D1E = "./dynexp1.sats"
 //
   typedef d1eclist = $D1E.d1eclist
 //
+  typedef f1unarrow = $D1E.f1unarrow
   typedef declmodopt = $D1E.declmodopt
 //
 (* ****** ****** *)
@@ -375,15 +376,19 @@ f2arg_get_node(f2arg): f2arg_node
 overload .loc with f2arg_get_loc
 overload .node with f2arg_get_node
 //
+(*
 fun
 print_f2arg : print_type(f2arg)
 fun
 prerr_f2arg : prerr_type(f2arg)
+*)
 fun
 fprint_f2arg : fprint_type(f2arg)
 //
+(*
 overload print with print_f2arg
 overload prerr with prerr_f2arg
+*)
 overload fprint with fprint_f2arg
 //
 fun
@@ -586,7 +591,7 @@ d2exp_node =
 | D2Edapp of (d2exp, int(*npf*), d2explst)
 //
 | D2Elet of
-  (d2eclist, d2explst(*semi*))
+  (d2eclist, d2explst(*seqn*))
 | D2Ewhere of (d2exp, d2eclist)
 //
 | D2Etuple of
@@ -599,6 +604,10 @@ d2exp_node =
 | D2Ecase of
   (int(*knd*), d2exp(*val*), d2claulst)
   // D2Ecase
+//
+| D2Elam of
+  ( f2arglst
+  , effs2expopt, f1unarrow, d2exp(*body*))
 //
 | D2Eanno of
   (d2exp(*applst*), s2exp(*type*))

@@ -657,10 +657,9 @@ s2exp_fun_nil
 (npf, arg, res) =
 (
 s2exp_fun_full
-(fc2, lin, npf, arg, res)
+(fc2, npf, arg, res)
 ) where
 {
-  val lin = 0
   val fc2 = FC2fun((*void*))
 }
 //
@@ -669,26 +668,26 @@ s2exp_fun_all
 (npf, arg, res) =
 (
 s2exp_fun_full
-(fc2, lin, npf, arg, res)
+(fc2, npf, arg, res)
 ) where
 {
-  val lin = 0
   val fc2 = FC2fun((*void*))
 }
 //
 implement
 s2exp_fun_full
-( fc2, lin
+( fc2
 , npf, arg, res) =
 (
 s2exp_make_node
 ( s2t0
-, S2Efun(fc2, lin, npf, arg, res))
+, S2Efun(fc2, npf, arg, res))
 ) where
 {
   val s2t0 =
   (
-  if lin = 0
+  if
+  funclo2_islin(fc2)
   then the_sort2_tbox else the_sort2_vtbox
   ) : sort2 // end of [val]
 } (* end of [s2exp_fun_full] *)

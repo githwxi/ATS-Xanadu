@@ -224,6 +224,8 @@ HX: level-2 syntax
 #define CLOFLT (0) // flat
 #define CLOPTR (1) // linear-boxed
 #define CLOREF %(~1) // non-linear-boxed
+#define LINCLOFLT (2) // linear-boxed
+#define LINCLOPTR (3) // linear-boxed
 //
 datatype
 funclo2 =
@@ -236,6 +238,14 @@ funclo2 =
 val FC2cloflt: funclo2 // flat
 val FC2cloptr: funclo2 // linear
 val FC2cloref: funclo2 // nonlin
+//
+val FC2lincloflt: funclo2 // linenv
+val FC2lincloptr: funclo2 // linenv
+//
+fun
+funclo2_islin: funclo2 -> bool
+fun
+funclo2_linize: funclo2 -> funclo2
 //
 fun
 print_funclo2: print_type(funclo2)

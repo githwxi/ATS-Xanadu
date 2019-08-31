@@ -67,6 +67,7 @@ typedef d2exp = $D2E.d2exp
 typedef d2ecl = $D2E.d2ecl
 
 typedef d2patlst = $D2E.d2patlst
+typedef f2arglst = $D2E.f2arglst
 typedef d2expopt = $D2E.d2expopt
 typedef d2explst = $D2E.d2explst
 
@@ -79,6 +80,7 @@ typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 
 typedef d3patlst = $D3E.d3patlst
+typedef f3arglst = $D3E.f3arglst
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
@@ -118,6 +120,11 @@ fun
 trans23_dpat_dn: (d2pat, t2ype) -> d3pat
 //
 (* ****** ****** *)
+
+fun
+trans23_farglst: f2arglst -> f3arglst
+
+(* ****** ****** *)
 //
 fun
 trans23_dexp: d2exp -> d3exp 
@@ -125,6 +132,8 @@ fun
 trans23_dexpopt: d2expopt -> d3expopt
 fun
 trans23_dexplst: d2explst -> d3explst
+fun
+trans23_dexpseq: d2explst -> d3explst
 //
 fun
 trans23_dexp_dn: (d2exp, t2ype) -> d3exp
@@ -249,6 +258,19 @@ d3exp_if0_up
 ( loc0: loc_t
 , d3e1: d3exp
 , d3e2: d3exp, opt3: d3expopt): d3exp
+//
+(* ****** ****** *)
+//
+fun
+d3exp_let_up
+( loc0: loc_t
+, d3cs: d3eclist
+, d3es: d3explst(*seq*)): d3exp
+//
+fun
+d3exp_where_up
+( loc0: loc_t
+, d3e1: d3exp, d3cs: d3eclist): d3exp
 //
 (* ****** ****** *)
 

@@ -136,6 +136,12 @@ d3pat_con
 (loc0: loc_t, d2c0: d2con): d3pat
 
 (* ****** ****** *)
+
+fun
+d3pat_anno
+(d3p0: d3pat, s2e0: s2exp): d3pat
+
+(* ****** ****** *)
 //
 fun
 d3pat_cast
@@ -174,15 +180,19 @@ f3arg_get_node(f3arg): f3arg_node
 overload .loc with f3arg_get_loc
 overload .node with f3arg_get_node
 //
+(*
 fun
 print_f3arg : print_type(f3arg)
 fun
 prerr_f3arg : prerr_type(f3arg)
+*)
 fun
 fprint_f3arg : fprint_type(f3arg)
 //
+(*
 overload print with print_f3arg
 overload prerr with prerr_f3arg
+*)
 overload fprint with fprint_f3arg
 //
 fun
@@ -230,6 +240,11 @@ d3exp_node =
 //
 | D3Evar of (d2var)
 //
+| D3Econ1 of (d2con)
+| D3Ecst1 of (d2cst)
+| D3Econ2 of (d2conlst)
+| D3Ecst2 of (d2cstlst)
+//
 | D3Esym0 of
     (d1exp, d2pitmlst)
   // D3Esym0
@@ -237,15 +252,26 @@ d3exp_node =
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
 //
+| D3Elet of
+  (d3eclist, d3explst(*seqn*))
+| D3Ewhere of (d3exp, d3eclist)
+//
+| D3Etuple of
+  (int(*knd*), int(*npf*), d3explst)
+//
 | D3Eif0 of
-  (d3exp, d3exp, d3expopt)
+  ( d3exp(*cond*)
+  , d3exp(*then*), d3expopt(*else*))
 //
 | D3Ecase of
   (int(*knd*), d3exp(*val*), d3claulst)
   // D3Ecase
 //
-| D3Etuple of
-  (int(*knd*), int(*npf*), d3explst)
+| D3Elam of
+  ( f3arglst
+  , effs2expopt, f1unarrow, d3exp(*body*))
+//
+| D3Eanno of (d3exp, s2exp)
 //
 | D3Ecast of (d3exp, t2ype)
 //

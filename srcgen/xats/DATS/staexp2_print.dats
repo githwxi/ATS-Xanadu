@@ -498,10 +498,10 @@ s2e0.node() of
   (out, "S2Eatx(", bef, "; ", aft, ")")
 //
 | S2Efun
-  (fc2, lin, npf, arg, res) =>
+  (fc2, npf, arg, res) =>
   fprint!
   ( out, "S2Efun("
-  , fc2, "; ", lin, "; ", npf, "; ", arg, "; ", res, ")"
+  , fc2, "; ", npf, "; ", arg, "; ", res, ")"
   )
 //
 | S2Ecimp(loc, s2e) =>

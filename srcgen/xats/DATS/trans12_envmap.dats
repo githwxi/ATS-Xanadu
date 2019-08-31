@@ -1486,13 +1486,20 @@ d2p0.node() of
 | D2Pvar(d2v) =>
   the_dexpenv_add_var(d2v)
 //
+| D2Pdapp
+  (d2p1, npf2, d2ps) =>
+  {
+    val () = auxd2p0(d2p1)
+    val () = auxd2ps(d2ps)  
+  }
+//
 | D2Panno
   (d2p, s2e) => auxd2p0(d2p)
 //
 | _(* rest-of-d2pat *) => ()
 )
 
-fun
+and
 auxd2ps
 (d2ps: d2patlst): void =
 (

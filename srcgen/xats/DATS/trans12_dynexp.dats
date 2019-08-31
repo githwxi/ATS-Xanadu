@@ -425,8 +425,7 @@ F1ARGsome_dyn
   (d1p0) = f1a0.node()
 //
 var
-npf :
-int = (~1)
+npf: int = (~1)
 //
 val
 d2ps =
@@ -1207,6 +1206,28 @@ d1e0.node() of
     val d2e1 = trans12_dexp(d1e1)
     val d2cls = trans12_dclaulst(d1cls)
   } (* end of [D1Ecase] *)
+//
+| D1Elam
+  (f1as, tres, arrw, body) =>
+  let
+  val
+  (pf0|()) =
+  the_trans12_pushnil()
+//
+  val f2as =
+    trans12_farglst(f1as)
+  val tres =
+    trans12_effsexpopt(tres)
+  val body = trans12_dexp(body)
+//
+  val
+  ((*void*)) =
+  the_trans12_popfree(pf0|(*void*))
+  in
+    d2exp_make_node
+    ( loc0
+    , D2Elam(f2as, tres, arrw, body))
+  end
 //
 | D1Eanno
   (d1e1, s1e2) =>
@@ -2475,7 +2496,7 @@ D1Cimpdecl
 , mopt
 , sqas, tqas
 , dqid, tias
-, f1as, res0
+, f1as, tres
 , teq1, d1e2) = d1c0.node()
 //
 val
@@ -2509,8 +2530,11 @@ val tias =
   trans12_tiarglst(tias)
 //
 val dqid = auxdqid(dqid)
-val f2as = trans12_farglst(f1as)
-val res0 = trans12_effsexpopt(res0)
+//
+val f2as =
+  trans12_farglst(f1as)
+val tres =
+  trans12_effsexpopt(tres)
 //
 val d2e2 = trans12_dexp(d1e2)
 //
@@ -2523,7 +2547,7 @@ in
   ( loc0
   , D2Cimpdecl
     ( knd, mopt
-    , sqas, tqas, dqid, tias, f2as, res0, d2e2)
+    , sqas, tqas, dqid, tias, f2as, tres, d2e2)
   ) (* d2ecl_make_node *)
 end // end of [aux_impdecl_rec]
 
@@ -3163,49 +3187,9 @@ in
 end
 |
 D1ARGsome_dyn2(arg0, opt1) =>
-(*
 let
 //
-  var npf
-    : int = ~1
-//
-  val lin = (0)
-  val fc2 =
-  (
-    if
-    nfc0 <= 0
-    then FC2fun() else FC2cloref
-  ) : funclo2 // end-of-val
-  val eff = S2EFFnil()
-//
-  val s2es =
-  trans12_atyplst(arg0)
-  val s2es =
-  (
-  case+ opt1 of
-  | None() => s2es
-  | Some(arg1) =>
-    (
-      s2es1 + s2es1
-    ) where
-    {
-      val () =
-        (npf := list_length(s2es))
-      val s2es1 = s2es
-      val s2es2 = trans12_atyplst(arg1)
-    }
-  ) : s2explst // end-of-val
-//
-  val s2e0 = auxarg1(d1c0, nfc0+1, d1as, res0)
-//
-in
-  s2exp_fun_full(fc2, lin, eff, npf, s2es, s2e0)
-end
-*)
-let
-//
-  var npf
-    : int = ~1
+  var npf: int = ~1
 //
   val s2es =
   trans12_atyplst(arg0)
@@ -3245,14 +3229,11 @@ case+ d1as of
 |
 list_nil() =>
 let
-  val lin = 0
   val fc2 =
-  (
-    if
+  ( if
     nfc0 <= 0
     then FC2fun()
-    else FC2cloref
-  ) : funclo2 // end-of-val
+    else FC2cloref ) : funclo2
 (*
   val eff =
   (
@@ -3281,19 +3262,16 @@ let
 *)
   ) : s2exp // end of [val]
 in
-  s2exp_fun_full(fc2, lin, npf0, s2es, s2e0)
+  s2exp_fun_full(fc2, npf0, s2es, s2e0)
 end
 |
 list_cons _ =>
 let
-  val lin = 0
   val fc2 =
-  (
-    if
+  ( if
     nfc0 <= 0
     then FC2fun()
-    else FC2cloref
-  ) : funclo2 // end of [val]
+    else FC2cloref ) : funclo2
 (*
   val eff = S2EFFnil()
 *)
@@ -3301,7 +3279,7 @@ let
     auxarg1(d1c0, nfc0+1, d1as, res0)
   // end of [val]
 in
-  s2exp_fun_full(fc2, lin, npf0, s2es, s2e0)
+  s2exp_fun_full(fc2, npf0, s2es, s2e0)
 end
 )
 
