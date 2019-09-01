@@ -335,14 +335,16 @@ fun
 d2pat_dapp
 ( loc0: loc_t
 , d2f0: d2pat(*fun*)
-, npf0:int, d2ps: d2patlst(*arg*)): d2pat
+, npf0: int
+, d2ps: d2patlst(*arg*)): d2pat
 //
 (* ****** ****** *)
 //
 fun
 d2pat_tuple
-( loc0: loc_t, knd: int
-, npf: int, d2ps: d2patlst): d2pat
+( loc0: loc_t
+, knd1: int
+, npf2: int, d2ps: d2patlst): d2pat
 //
 (* ****** ****** *)
 //
@@ -597,6 +599,9 @@ d2exp_node =
 | D2Etuple of
   (int(*knd*), int(*npf*), d2explst)
 //
+| D2Edtsel of
+  (label, d2pitmlst, d2expopt(*arg*))
+//
 | D2Eif0 of
   ( d2exp(*cond*)
   , d2exp(*then*), d2expopt(*else*))
@@ -609,10 +614,9 @@ d2exp_node =
   ( f2arglst
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
-| D2Eanno of
-  (d2exp(*applst*), s2exp(*type*))
+| D2Eanno of (d2exp(*applst*), s2exp(*type*))
 //
-| D2Enone0 of () | D2Enone1 of (d1exp)
+| D2Enone0 of ((*void*)) | D2Enone1 of (d1exp)
 //
 (* ****** ****** *)
 //

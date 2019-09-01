@@ -535,6 +535,12 @@ d1exp_node =
 | D1Etuple of
   (token, d1explst, d1explst)
 //
+| D1Edtsel of (label, d1expopt)
+//
+| D1Elet of
+  (d1eclist, d1explst(*seqn*))
+| D1Ewhere of (d1exp, d1eclist)
+//
 | D1Eif0 of
   ( d1exp(*cond*)
   , d1exp(*then*), d1expopt(*else*))
@@ -542,12 +548,6 @@ d1exp_node =
 | D1Ecase of
     (token, d1exp, d1claulst)
   // D1Ecase
-//
-| D1Elet of
-  (d1eclist, d1explst(*seqn*))
-| D1Ewhere of (d1exp, d1eclist)
-//
-| D1Edtsel of (label, d1expopt)
 //
 | D1Elam of
   ( f1arglst

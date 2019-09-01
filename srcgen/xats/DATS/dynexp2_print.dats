@@ -364,6 +364,12 @@ case- x0.node() of
   ( out, "D2Etuple("
   , knd, "; ", npf, "; ", d2es, ")")
 //
+| D2Edtsel
+  (lab, dpis, arg3) =>
+  fprint!
+  ( out, "D2Edtsel("
+  , lab, "; ", dpis, "; ", arg3, ")")
+//
 | D2Eif0
   (d2e1, d2e2, opt3) =>
   fprint!

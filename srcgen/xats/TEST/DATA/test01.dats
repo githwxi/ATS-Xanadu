@@ -32,6 +32,19 @@ gint_lt1 :
 
 #extern
 fun
+gint_gt2 :
+(int, int) -> bool
+and
+gint_lt2 :
+(int, int) -> bool
+
+#symload > with gint_gt2 of 2
+#symload < with gint_lt2 of 2
+
+(* ****** ****** *)
+
+#extern
+fun
 gint_gte1 :
 (int, int) -> bool
 and
@@ -43,16 +56,7 @@ gint_lte1 :
 
 (* ****** ****** *)
 
-#extern
-fun
-gint_gt2 :
-(int, int) -> bool
-and
-gint_lt2 :
-(int, int) -> bool
-
-#symload > with gint_gt2 of 2
-#symload < with gint_lt2 of 2
+#symload gte with gint_gte1 of 1
 
 (* ****** ****** *)
 
@@ -91,9 +95,25 @@ omega(x) = x(x)
 
 (* ****** ****** *)
 
+(*
 val x: int = 0
 val y: int = x
+*)
 
+(* ****** ****** *)
+
+fun
+<a:type
+,b:type>
+swap(xy: $(a, b)) = $(xy.1, xy.0)
+
+(* ****** ****** *)
+////
+val a = 0
+val b = 0
+val x = 0
+val y = x.1(a, b)
+////
 (* ****** ****** *)
 
 (*
@@ -110,9 +130,16 @@ case+ xs of
 
 (* ****** ****** *)
 
-val
-omega = lam(x): int => x(x)
+var x: (int, int)
+val () = x.0 := 0
+val () = x.1 := 1
 
+(* ****** ****** *)
+////
+val
+omega:
+int -> int = lam(x) => x+1
+////
 (* ****** ****** *)
 
 fun<>
@@ -180,13 +207,6 @@ case+ xs of
 fun
 <a:type>
 app2(f: a -> a, x: a): a = f(f(x))
-
-(* ****** ****** *)
-
-fun
-<a:type
-,b:type>
-swap(x: a, y: b): $(b, a) = $(y, x)
 
 (* ****** ****** *)
 ////

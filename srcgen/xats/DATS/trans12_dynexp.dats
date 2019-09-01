@@ -55,6 +55,7 @@ NMS = "./../SATS/nmspace.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
@@ -1075,7 +1076,7 @@ end // end of [auxlist2]
 (* ****** ****** *)
 
 fun
-auxtuple1
+aux_tup1
 ( d1e0
 : d1exp): d2exp = let
 //
@@ -1096,10 +1097,10 @@ val d2es = trans12_dexplst(d1es)
 //
 in
   d2exp_tuple(loc0, knd, npf, d2es)
-end // end of [auxtuple1]
+end // end of [aux_tup1]
 
 fun
-auxtuple2
+aux_tup2
 ( d1e0
 : d1exp): d2exp = let
 //
@@ -1129,7 +1130,68 @@ val d2es =
 //
 in
   d2exp_tuple(loc0, knd, npf, d2es)
-end // end of [auxtuple2]
+end // end of [aux_tup2]
+
+(* ****** ****** *)
+
+fun
+aux_dtsel
+( d1e0
+: d1exp): d2exp = let
+//
+val
+loc0 = d1e0.loc()
+//
+val-
+D1Edtsel
+(lab, arg) = d1e0.node()
+//
+val
+dpis =
+let
+//
+val
+opt =
+label_get_sym(lab)
+//
+fun
+auxsym
+( sym
+: sym_t): d2pitmlst =
+let
+  val
+  opt =
+  the_dexpenv_find(sym)
+in
+//
+case+ opt of
+| ~None_vt() =>
+  (
+    list_nil()
+  )
+| ~Some_vt(d2i) =>
+  (
+    case+ d2i of
+    | D2ITMsym
+    (_, dpis) => dpis | _ => list_nil()
+  )
+//
+end // end of [auxsym]
+//
+in (*in-of-let*)
+//
+case+ opt of
+| ~None_vt() => list_nil()
+| ~Some_vt(sym) => auxsym(sym)
+//
+end : d2pitmlst
+//
+val arg = trans12_dexpopt(arg)
+//
+in
+  d2exp_make_node
+  (loc0, D2Edtsel(lab, dpis, arg))
+end // end of [aux_dtsel]
 
 (* ****** ****** *)
 
@@ -1173,9 +1235,11 @@ d1e0.node() of
   (xs1, xs2) => auxlist2(d1e0)
 //
 | D1Etuple
-  (k0, _) => auxtuple1(d1e0)
+  (k0, _) => aux_tup1(d1e0)
 | D1Etuple
-  (k0, _, _) => auxtuple2(d1e0)
+  (k0, _, _) => aux_tup2(d1e0)
+//
+| D1Edtsel _ => aux_dtsel(d1e0)
 //
 | D1Eif0 // simple
   (d1e1, d1e2, opt3) =>
