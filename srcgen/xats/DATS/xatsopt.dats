@@ -852,21 +852,21 @@ val () = synread_main(d0cs)
 //
 val
 d1cs = trans01_declist(d0cs)
-(*
+// (*
 val () =
 println!
 ("process_nil: d1cs = ", d1cs)
-*)
+// *)
 //
 val () = t1xread_main(d1cs)
 //
 val
 d2cs = trans12_declist(d1cs)
-(*
+// (*
 val () =
 println!
 ("process_nil: d2cs = ", d2cs)
-*)
+// *)
 //
 val () = t2xread_main(d2cs)
 //

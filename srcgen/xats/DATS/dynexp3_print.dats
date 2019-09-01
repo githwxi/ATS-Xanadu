@@ -40,6 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
@@ -80,6 +81,13 @@ implement
 fprint_val<d2cst> = fprint_d2cst
 implement
 fprint_val<d2var> = fprint_d2var
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d2itm> = fprint_d2itm
+implement
+fprint_val<d2pitm> = fprint_d2pitm
 //
 (* ****** ****** *)
 //
@@ -246,6 +254,12 @@ x0.node() of
   fprint!
   ( out, "D3Etuple("
   , knd1, "; ", npf2, "; ", d3es, ")")
+//
+| D3Edtsel
+  (lab1, dpis, arg3) =>
+  fprint!
+  ( out, "D3Edtsel("
+  , lab1, "; ", dpis, "; ", arg3, ")")
 //
 | D3Elet(d3cs, d3es) =>
   fprint!

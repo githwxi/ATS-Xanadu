@@ -259,6 +259,9 @@ d3exp_node =
 | D3Etuple of
   (int(*knd*), int(*npf*), d3explst)
 //
+| D3Edtsel of
+  (label, d2pitmlst, d3expopt(*arg*))
+//
 | D3Eif0 of
   ( d3exp(*cond*)
   , d3exp(*then*), d3expopt(*else*))

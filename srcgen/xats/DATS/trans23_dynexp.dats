@@ -544,8 +544,30 @@ val
 d3es = trans23_dexplst(d2es)
 //
 in
-d3exp_tuple_up(loc0, knd1, npf2, d3es)  
+d3exp_tuple_up(loc0, knd1, npf2, d3es)
 end // end of [aux_tuple]
+
+(* ****** ****** *)
+
+fun
+aux_dtsel
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Edtsel
+( lab1
+, dpis
+, arg3) = d2e0.node()
+//
+val
+arg3 = trans23_dexpopt(arg3)
+//
+in
+d3exp_dtsel_up(loc0, lab1, dpis, arg3)
+end // end of [aux_dtsel]
 
 (* ****** ****** *)
 
@@ -742,6 +764,10 @@ in
   auxfa3g(f3as, body.type(), 0)
 end // end-of-val
 //
+val () =
+println!
+("trans23_dexp: aux_lam: tfun = ", tfun)
+//
 in
   d3exp_make_node
   (loc0, tfun, D3Elam(f3as, tres, arrw, body))
@@ -806,6 +832,8 @@ d2e0.node() of
 //
 | D2Etuple _ => aux_tuple(d2e0)
 //
+| D2Edtsel _ => aux_dtsel(d2e0)
+//
 | D2Elet(_, _) => aux_let(d2e0)
 | D2Ewhere(_, _) => aux_where(d2e0)
 //
@@ -827,10 +855,20 @@ end // end of [local]
 //
 implement
 trans23_dexp_dn
-  (d2e0, t2p0) =
-(
+  (d2e0, t2p0) = let
+//
+(*
+val () =
+println!
+("trans23_dexp_dn: d2e0 = ", d2e0)
+val () =
+println!
+("trans23_dexp_dn: t2p0 = ", t2p0)
+*)
+//
+in
   d3exp_dn(trans23_dexp(d2e0), t2p0)
-)
+end // end of [trans23_dexp_dn]
 //
 (* ****** ****** *)
 

@@ -690,6 +690,19 @@ end (* end of [d3exp_tuple_up] *)
 (* ****** ****** *)
 
 implement
+d3exp_dtsel_up
+( loc0
+, lab, dpis, arg3) =
+let
+  val t2p0 = t2ype_new(loc0)
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Edtsel(lab, dpis, arg3))
+end // end of [d3exp_dtsel_up]
+
+(* ****** ****** *)
+
+implement
 d3exp_if0_up
 ( loc0
 , d3e1, d3e2, opt3) =

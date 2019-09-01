@@ -37,6 +37,7 @@
 //
 (* ****** ****** *)
 
+#staload "./label0.sats"
 #staload "./locinfo.sats"
 
 (* ****** ****** *)
@@ -72,6 +73,10 @@ typedef d2expopt = $D2E.d2expopt
 typedef d2explst = $D2E.d2explst
 
 typedef d2eclist = $D2E.d2eclist
+
+(* ****** ****** *)
+
+typedef d2pitmlst = $D2E.d2pitmlst
 
 (* ****** ****** *)
 
@@ -248,8 +253,14 @@ d3exp_dapp_up
 fun
 d3exp_tuple_up
 ( loc0: loc_t
-, knd0: int // 0/1
-, npf0: int, d3es: d3explst): d3exp
+, knd1: int // 0/1
+, npf2: int, d3es: d3explst): d3exp
+//
+fun
+d3exp_dtsel_up
+( loc0: loc_t
+, lab1: label
+, dpis: d2pitmlst, arg3: d3expopt): d3exp
 //
 (* ****** ****** *)
 //

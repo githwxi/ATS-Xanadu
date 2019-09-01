@@ -453,6 +453,13 @@ stropt1(n: int) = stropt_i0_x0(n)
 //
 (* ****** ****** *)
 //
+typedef string = string0
+typedef string(n:int) = string1(n)
+typedef stropt = stropt0
+typedef stropt(n:int) = stropt1(n)
+//
+(* ****** ****** *)
+//
 absvtype
 string_i0_vx(n:int) <= ptr
 absvtype
@@ -467,6 +474,13 @@ vtypedef
 stropt0_vt = [n:i0] stropt_i0_vx(n)
 vtypedef
 stropt1_vt(n: int) = stropt_i0_vx(n)
+//
+(* ****** ****** *)
+//
+vtypedef string_vt = string0_vt
+vtypedef string_vt(n:int) = string1_vt(n)
+vtypedef stropt_vt = stropt0_vt
+vtypedef stropt_vt(n:int) = stropt1_vt(n)
 //
 (* ****** ****** *)
 
