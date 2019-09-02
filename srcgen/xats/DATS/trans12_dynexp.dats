@@ -99,10 +99,10 @@ fprint_val<d2cst> = fprint_d2cst
 implement
 fprint_val<d2var> = fprint_d2var
 //
-(*
+implement
+fprint_val<d1exp> = fprint_d1exp
 implement
 fprint_val<d2exp> = fprint_d2exp
-*)
 //
 (* ****** ****** *)
 //
@@ -990,7 +990,8 @@ val
 loc2 =
 let
 val-
-list_cons(d1e0, _) = d1es
+list_cons
+(d1e0, d1es) = d1es
 in
   auxlst1(d1e0.loc(), d1es)
 end // end of [val]
@@ -1127,10 +1128,10 @@ val
 loc0 = d1e0.loc()
 val-
 D1Eseqn
-(tok, d1es) = d1e0.node()
+(d1es1, d1es2) = d1e0.node()
 //
 in
-  trans12_dexpseq(loc0, d1es)
+  trans12_dexpseq(loc0, d1es1+d1es2)
 end // end of [auxseqn]
 
 (* ****** ****** *)
@@ -1263,11 +1264,11 @@ trans12_dexp
 val
 loc0 = d1e0.loc()
 //
-(*
+// (*
 val () =
 println!
 ("trans12_dexp: d1e0 = ", d1e0)
-*)
+// *)
 //
 in (* in-of-let *)
 //
@@ -1413,11 +1414,14 @@ implement
 trans12_dexpseq
   (loc0, d1es) = let
 //
+val () =
+println!
+("trans12_dexpseq: d1es = ", d1es)
+//
 fun
 auxlst1
 ( d1es
-: d1explst
-)
+: d1explst )
 : (d2explst, d2exp) =
 (
 case+ d1es of
@@ -1440,8 +1444,7 @@ auxlst2
 , d1es
 : d1explst
 , d2es
-: List0_vt(d2exp)
-)
+: List0_vt(d2exp) )
 : (d2explst, d2exp) =
 (
 case+ d1es of
@@ -1466,8 +1469,7 @@ case+ d1es of
   }
 ) (* end of [auxlst2] *)
 //
-val
-(d2es, d2e1) = auxlst1(d1es)
+val (d2es, d2e1) = auxlst1(d1es)
 //
 in
 //

@@ -1390,7 +1390,8 @@ case+ rparen of
 | d0exp_RPAREN_cons0(_) =>
   D1Elist(d1es1) where
   {
-    val d1es1 = trans01_dexplst(d0es1)
+    val
+    d1es1 = trans01_dexplst(d0es1)
   }
 | d0exp_RPAREN_cons1(_, d0es2, _) =>
   D1Elist(d1es1, d1es2) where

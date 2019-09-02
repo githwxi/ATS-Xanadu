@@ -256,6 +256,9 @@ d3exp_node =
   (d3eclist, d3exp(*sequence*))
 | D3Ewhere of (d3exp, d3eclist)
 //
+| D3Eseqn of
+  (d3explst(*semi*), d3exp(*last*))
+//
 | D3Etuple of
   (int(*knd*), int(*npf*), d3explst)
 //
