@@ -102,10 +102,13 @@ val y: int = x
 
 (* ****** ****** *)
 
+fun foo() = (x; y;)
+
+////
 fun
 <a:type
 ,b:type>
-swap(xy: $(a, b)) = $(xy.1, xy.0)
+swap(xy: @(a, b)) = $(xy.1, xy.0)
 
 (* ****** ****** *)
 ////

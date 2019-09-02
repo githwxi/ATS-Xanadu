@@ -458,19 +458,23 @@ x0.node() of
   , "D1Ecase(", knd, "; ", d1e1, "; ", dcls , ")")
 //
 | D1Elam
-  (arg, res, farrw, fbody) =>
+  (farg, tres, arrw, body) =>
   fprint!
   ( out
   , "D1Elam(", "; "
-  , arg, "; ", res, "; ", farrw, "; ", fbody, ")")
+  , farg, "; ", tres, "; ", arrw, "; ", body, ")")
 //
 | D1Eanno(d1e1, s1e2) =>
-  fprint!(out, "D1Eanno(", d1e1, "; ", s1e2, ")")
+  (
+    fprint!(out, "D1Eanno(", d1e1, "; ", s1e2, ")")
+  )
 //
 | D1Equal(tok1, d1e2) =>
-  fprint!(out, "D1Equal(", tok1, "; ", d1e2, ")")
+  (
+    fprint!(out, "D1Equal(", tok1, "; ", d1e2, ")")
+  )
 //
-| D1Enone(loc) => fprint!(out, "D1Enone(", loc, ")")
+| D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
 //
 ) (* fprint_d1exp *)
 

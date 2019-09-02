@@ -738,39 +738,14 @@ end // end of [d3exp_if0_up]
 implement
 d3exp_let_up
 (
-  loc0, d3cs, d3es
+  loc0, d3cs, d3e2
 ) = let
 //
 val
-t2p0 =
-auxlst1(d3es) where
-{
-fun
-auxlst1
-( d3es
-: d3explst): t2ype =
-(
-case+ d3es of
-| list_nil() => the_t2ype_void
-| list_cons
-  (d3e0, d3es) => auxlst2(d3e0, d3es)
-)
-and
-auxlst2
-( d3e0
-: d3exp
-, d3es
-: d3explst): t2ype =
-(
-case+ d3es of
-| list_nil() => d3e0.type()
-| list_cons
-  (d3e1, d3es) => auxlst2(d3e1, d3es)
-)
-} (* end of [where] *)
+t2p0 = d3e2.type((*void*))
 //
 in
-d3exp_make_node(loc0, t2p0, D3Elet(d3cs, d3es))
+d3exp_make_node(loc0, t2p0, D3Elet(d3cs, d3e2))
 end // end of [d3exp_let_up]
 
 (* ****** ****** *)

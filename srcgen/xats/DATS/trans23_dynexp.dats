@@ -581,15 +581,19 @@ loc0 = d2e0.loc()
 val-
 D2Elet
 ( d2cs
-, d2es) = d2e0.node()
+, d2e2) = d2e0.node()
 //
 val
 d3cs = trans23_declist(d2cs)
-val
-d3es = trans23_dexpseq(d2es)
 //
 in
-  d3exp_let_up(loc0, d3cs, d3es)
+//
+let
+  val d3e2 = trans23_dexp(d2e2)
+in
+  d3exp_let_up(loc0, d3cs, d3e2)
+end
+//
 end (* end of [aux_let] *)
 
 (* ****** ****** *)

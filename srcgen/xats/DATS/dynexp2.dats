@@ -471,6 +471,12 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
+d2exp_none0(loc0) =
+(
+d2exp_make_node
+(loc0, D2Enone0(*void*))
+)
+implement
 d2exp_none1(d1e0) =
 (
 d2exp_make_node
@@ -584,10 +590,10 @@ d2exp_make_node
 //
 implement
 d2exp_let
-(loc0, d2cs, d2es) =
+(loc0, d2cs, d2e2) =
 (
   d2exp_make_node
-  (loc0, D2Elet(d2cs, d2es))
+  (loc0, D2Elet(d2cs, d2e2))
 )
 //
 implement

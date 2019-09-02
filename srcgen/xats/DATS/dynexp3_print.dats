@@ -261,10 +261,10 @@ x0.node() of
   ( out, "D3Edtsel("
   , lab1, "; ", dpis, "; ", arg3, ")")
 //
-| D3Elet(d3cs, d3es) =>
+| D3Elet(d3cs, d3e2) =>
   fprint!
   ( out
-  , "D3Elet(", d3cs, "; ", d3es, ")")
+  , "D3Elet(", d3cs, "; ", d3e2, ")")
 | D3Ewhere(d3e1, d3cs) =>
   fprint!
   ( out

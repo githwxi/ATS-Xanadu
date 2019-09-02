@@ -253,7 +253,7 @@ d3exp_node =
   (d3exp, int(*npf*), d3explst)
 //
 | D3Elet of
-  (d3eclist, d3explst(*seqn*))
+  (d3eclist, d3exp(*sequence*))
 | D3Ewhere of (d3exp, d3eclist)
 //
 | D3Etuple of
