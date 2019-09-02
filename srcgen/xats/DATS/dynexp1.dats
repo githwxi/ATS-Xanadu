@@ -331,7 +331,7 @@ d1exp_get_node(x0) = x0.d1exp_node
 implement
 d1exp_none
 (loc) =
-d1exp_make_node(loc, D1Enone(loc))
+d1exp_make_node(loc, D1Enone())
 implement
 d1exp_make_node
 (loc, node) = $rec

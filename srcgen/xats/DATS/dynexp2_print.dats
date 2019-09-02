@@ -348,15 +348,21 @@ case- x0.node() of
   , d2f0, "; ", npf0, "; ", d2as, ")")
 //
 | D2Elet
-  (d2cs, d2es) =>
+  (d2cs, d2e2) =>
   fprint!
   ( out
-  , "D2Elet(", d2cs, "; ", d2es, ")")
+  , "D2Elet(", d2cs, "; ", d2e2, ")")
 | D2Ewhere
   (d2e1, d2cs) =>
   fprint!
   ( out
   , "D2Ewhere(", d2e1, "; ", d2cs, ")")
+//
+| D2Eseqn
+  (d2es, d1e1) =>
+  fprint!
+  ( out, "D2Eseqn("
+  , d2es, "; ", d1e1(*last*), ")")
 //
 | D2Etuple
   (knd, npf, d2es) =>

@@ -60,6 +60,10 @@ NMS = "./../SATS/nmspace.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/locinfo.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 
@@ -977,15 +981,54 @@ val
 (pf0|()) =
 the_trans12_pushnil()
 //
-val d2cs = trans12_declist(d1cs)
-val d2es = trans12_dexplst(d1es)
+val d2cs =
+  trans12_declist(d1cs)
+val d2e2 =
+let
+//
+val
+loc2 =
+let
+val-
+list_cons(d1e0, _) = d1es
+in
+  auxlst1(d1e0.loc(), d1es)
+end // end of [val]
+//
+in
+  trans12_dexpseq(loc2, d1es)
+end where
+{
+fun
+auxlst1
+( loc0: loc_t
+, d1es: d1explst): loc_t =
+(
+case+ d1es of
+| list_nil() => loc0
+| list_cons(d1e1, d1es) =>
+  auxlst2(loc0, d1e1, d1es)
+)
+and
+auxlst2
+( loc0: loc_t
+, d1e1: d1exp
+, d1es: d1explst): loc_t =
+(
+case+ d1es of
+| list_nil() =>
+  (loc0 + d1e1.loc())
+| list_cons(d1e1, d1es) =>
+  auxlst2(loc0, d1e1, d1es)
+)
+} (* end of [where] *)
 //
 val
 ((*void*)) =
 the_trans12_popfree(pf0|(*void*))
 //
 in
-  d2exp_let(d1e0.loc(), d2cs, d2es)
+  d2exp_let(d1e0.loc(), d2cs, d2e2)
 end // end of [auxlet]
 
 (* ****** ****** *)
@@ -1076,13 +1119,29 @@ end // end of [auxlist2]
 (* ****** ****** *)
 
 fun
+auxseqn
+( d1e0
+: d1exp): d2exp = let
+//
+val
+loc0 = d1e0.loc()
+val-
+D1Eseqn
+(tok, d1es) = d1e0.node()
+//
+in
+  trans12_dexpseq(loc0, d1es)
+end // end of [auxseqn]
+
+(* ****** ****** *)
+
+fun
 aux_tup1
 ( d1e0
 : d1exp): d2exp = let
 //
 val
 loc0 = d1e0.loc()
-//
 val-
 D1Etuple
 (tok, d1es) = d1e0.node()
@@ -1232,7 +1291,9 @@ d1e0.node() of
 | D1Elist
   ( d1es ) => auxlist1(d1e0)
 | D1Elist
-  (xs1, xs2) => auxlist2(d1e0)
+  ( _, _ ) => auxlist2(d1e0)
+//
+| D1Eseqn _ => auxseqn(d1e0)
 //
 | D1Etuple
   (k0, _) => aux_tup1(d1e0)
@@ -1304,6 +1365,8 @@ d1e0.node() of
     val s2e2 = trans12_sexp_ci(s1e2)
   } (* end of [D1Eanno] *)
 //
+| D1Enone() => d2exp_none0(loc0)
+//
 | _(*rest-of-d1exp*) => d2exp_none1(d1e0)
 //
 (*
@@ -1343,6 +1406,77 @@ implement
 list_map$fopr<d1exp><d2exp> = trans12_dexp
 }
 } (* end of [trans12_dexplst] *)
+
+(* ****** ****** *)
+
+implement
+trans12_dexpseq
+  (loc0, d1es) = let
+//
+fun
+auxlst1
+( d1es
+: d1explst
+)
+: (d2explst, d2exp) =
+(
+case+ d1es of
+| list_nil() =>
+  let
+  val d2e1 =
+  d2exp_none0(loc0)
+  in
+    (list_nil(), d2e1)
+  end
+| list_cons
+  (d1e1, d1es) =>
+  auxlst2
+  (d1e1, d1es, list_vt_nil())
+)
+and
+auxlst2
+( d1e1
+: d1exp
+, d1es
+: d1explst
+, d2es
+: List0_vt(d2exp)
+)
+: (d2explst, d2exp) =
+(
+case+ d1es of
+| list_nil() =>
+  (d2es, d2e1) where
+  {
+    val d2e1 =
+    trans12_dexp(d1e1)
+    val d2es =
+    list_vt2t
+    (list_vt_reverse(d2es))
+  }
+| list_cons
+  (d1e2, d1es) =>
+  auxlst2
+  (d1e2, d1es, d2es) where
+  {
+    val d2e1 = 
+    trans12_dexp(d1e1)
+    val d2es =
+    list_vt_cons(d2e1, d2es)
+  }
+) (* end of [auxlst2] *)
+//
+val
+(d2es, d2e1) = auxlst1(d1es)
+//
+in
+//
+case+ d2es of
+| list_nil _ => d2e1
+| list_cons _ =>
+  d2exp_make_node(loc0, D2Eseqn(d2es, d2e1))
+//
+end // end of [trans12_dexpseq]
 
 (* ****** ****** *)
 

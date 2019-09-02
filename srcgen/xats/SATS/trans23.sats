@@ -276,7 +276,7 @@ fun
 d3exp_let_up
 ( loc0: loc_t
 , d3cs: d3eclist
-, d3es: d3explst(*seq*)): d3exp
+, d3es: d3exp(*sequence*)): d3exp
 //
 fun
 d3exp_where_up
