@@ -637,22 +637,30 @@ d3exp_make_node
 end // end of [d3exp_dapp_up]
 
 (* ****** ****** *)
+//
+implement
+d3exp_seqn_up
+(loc0, d3es, d3e2) =
+d3exp_make_node
+(loc0, d3e2.type(), D3Eseqn(d3es, d3e2))
+//
+(* ****** ****** *)
 
 implement
 d3exp_tuple_up
 ( loc0
-, knd, npf, d3es) = let
+, knd1, npf2, d3es) = let
 //
 val tknd =
 (
 ifcase
-| knd = 0 => TYRECflt0(*void*)
+| knd1 = 0 => TYRECflt0(*void*)
 | _(*else*) => TYRECbox0(*void*)
 ) : tyrec // end of [val]
 //
 val lt2ps =
 (
-  auxlst(d3es, 0)
+  auxlst(d3es, 0(*i0*))
 ) where
 {
 fun
@@ -680,11 +688,11 @@ val s2t0 =
   the_sort2_none
 val t2p0 =
 t2ype_make_node
-  (s2t0, T2Ptyrec(tknd, npf, lt2ps))
+  (s2t0, T2Ptyrec(tknd, npf2, lt2ps))
 //
 in
   d3exp_make_node
-  (loc0, t2p0, D3Etuple(knd, npf, d3es))
+  (loc0, t2p0, D3Etuple(knd1, npf2, d3es))
 end (* end of [d3exp_tuple_up] *)
 
 (* ****** ****** *)

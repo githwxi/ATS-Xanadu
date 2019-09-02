@@ -251,6 +251,13 @@ d3exp_dapp_up
 (* ****** ****** *)
 //
 fun
+d3exp_seqn_up
+( loc0: loc_t
+, d3es: d3explst, d3e2: d3exp): d3exp
+//
+(* ****** ****** *)
+//
+fun
 d3exp_tuple_up
 ( loc0: loc_t
 , knd1: int // 0/1

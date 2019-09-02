@@ -526,6 +526,31 @@ d3exp_dapp_up(loc0, d3e1, npf2, d3es)
 end (* end of [auxdapp] *)
 
 (* ****** ****** *)
+//
+fun
+aux_seqn
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eseqn
+( d2es
+, d2e2) = d2e0.node()
+//
+val
+d3es = trans23_dexpseq(d2es)
+//
+in
+let
+val d3e2 = trans23_dexp(d2e2)
+in
+d3exp_seqn_up(loc0, d3es, d3e2)
+end
+end // end of [aux_seqn]
+//
+(* ****** ****** *)
 
 fun
 aux_tuple
@@ -834,12 +859,14 @@ d2e0.node() of
 //
 | D2Edapp _ => auxdapp(d2e0)
 //
+| D2Elet _ => aux_let(d2e0)
+| D2Ewhere _ => aux_where(d2e0)
+//
+| D2Eseqn _ => aux_seqn(d2e0)
+//
 | D2Etuple _ => aux_tuple(d2e0)
 //
 | D2Edtsel _ => aux_dtsel(d2e0)
-//
-| D2Elet(_, _) => aux_let(d2e0)
-| D2Ewhere(_, _) => aux_where(d2e0)
 //
 | D2Eif0(_, _, _) => aux_if0(d2e0)
 //
@@ -901,55 +928,20 @@ list_map$fopr<d2exp><d3exp> = trans23_dexp
 } (* end of [trans23_dexplst] *)
 
 (* ****** ****** *)
-
+//
 implement
 trans23_dexpseq
   (d2es) =
+list_vt2t
 (
-  auxlst1(d2es)
+list_map<d2exp><d3exp>(d2es)
 ) where
 {
-//
-fun
-auxlst1
-( d2es
-: d2explst): d3explst =
-(
-case+ d2es of
-| list_nil() =>
-  list_nil()
-| list_cons
-  (d2e0, d2es) =>
-  auxlst2(d2e0, d2es)
-)
-//
-and
-auxlst2
-( d2e0
-: d2exp
-, d2es
-: d2explst): d3explst =
-(
-case+ d2es of
-| list_nil() =>
-  list_sing
-  (trans23_dexp(d2e0))
-| list_cons
-  (d2e1, d2es) =>
-  (
-  list_cons
-  (d3e0, auxlst2(d2e1, d2es))
-  ) where
-  {
-    val t2p0 =
-    the_t2ype_void(*void*)
-    val d3e0 =
-    trans23_dexp_dn(d2e0, t2p0)
-  }
-)
-//
+implement
+list_map$fopr<d2exp><d3exp>(d2e) =
+trans23_dexp_dn(d2e, the_t2ype_void(*void*))
 } (* end of [trans23_dexpseq] *)
-
+//
 (* ****** ****** *)
 
 implement

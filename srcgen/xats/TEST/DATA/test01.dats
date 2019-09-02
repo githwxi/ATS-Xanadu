@@ -102,7 +102,7 @@ val y: int = x
 
 (* ****** ****** *)
 
-fun foo() = (x; y;)
+fun foo(x, y) = (x; x; y; y)
 
 ////
 fun

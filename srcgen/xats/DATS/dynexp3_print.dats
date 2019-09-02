@@ -249,6 +249,20 @@ x0.node() of
   ( out, "D3Edapp("
   , d3e1, "; ", npf2, "; ", d3es, ")")
 //
+| D3Elet(d3cs, d3e2) =>
+  fprint!
+  ( out
+  , "D3Elet(", d3cs, "; ", d3e2, ")")
+| D3Ewhere(d3e1, d3cs) =>
+  fprint!
+  ( out
+  , "D3Ewhere(", d3e1, "; ", d3cs, ")")
+//
+| D3Eseqn(d3es, d3e2) =>
+  fprint!
+  ( out
+  , "D3Eseqn(", d3es, "; ", d3e2, ")")
+//
 | D3Etuple
   (knd1, npf2, d3es) =>
   fprint!
@@ -260,15 +274,6 @@ x0.node() of
   fprint!
   ( out, "D3Edtsel("
   , lab1, "; ", dpis, "; ", arg3, ")")
-//
-| D3Elet(d3cs, d3e2) =>
-  fprint!
-  ( out
-  , "D3Elet(", d3cs, "; ", d3e2, ")")
-| D3Ewhere(d3e1, d3cs) =>
-  fprint!
-  ( out
-  , "D3Ewhere(", d3e1, "; ", d3cs, ")")
 //
 | D3Eif0
   (d3e1, d3e2, opt3) =>
