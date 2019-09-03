@@ -2209,17 +2209,31 @@ D1Cvaldecl
 , mopt
 , v1ds) = d1c0.node()
 //
-val v2ds = auxv1ds(v1ds)
-val ((*void*)) =
+val
+isr =
+declmodopt_rec(mopt)
+val
+isr =
 (
-list_foreach<v2aldecl>(v2ds)
-) where
-{
-implement
-list_foreach$fwork<v2aldecl><void>
-  (v2d, env) =
-  the_trans12_add_pat(v2d.pat())
-}
+ifcase
+| isr > 0 => true
+| isr < 0 => false
+| _(* default *) => false
+) : bool // endval
+//
+val d2ps = auxv1ds_d2p(v1ds)
+//
+val ((*void*)) =
+if isr
+then the_trans12_add_patlst(d2ps)
+else ((*void*))
+//
+val v2ds = auxv1ds_d2c(v1ds, d2ps)
+//
+val ((*void*)) =
+if not(isr)
+then the_trans12_add_patlst(d2ps)
+else ((*void*))
 //
 in
   d2ecl_make_node
@@ -2228,16 +2242,41 @@ end where
 {
 //
 fun
-auxv1d0
+auxv1d0_d2p
 ( v1d0
-: v1aldecl): v2aldecl = let
+: v1aldecl): d2pat =
+let
 //
 val+
 V1ALDECL(rcd) = v1d0
 //
-val loc = rcd.loc
-val pat = trans12_dpat(rcd.pat)
+in
+  trans12_dpat(rcd.pat)
+end // end of [auxv1d0_d2p]
+fun
+auxv1ds_d2p
+( v1ds
+: v1aldeclist): d2patlst =
+list_vt2t
+(
+list_map<v1aldecl><d2pat>(v1ds)
+) where
+{
+implement
+list_map$fopr<v1aldecl><d2pat>(x) = auxv1d0_d2p(x)
+} (* end of [auxv1ds_d2p] *)
+//
+fun
+auxv1d0_d2c
+( v1d0
+: v1aldecl
+, d2p0: d2pat): v2aldecl = let
+//
+val+
+V1ALDECL(rcd) = v1d0
+//
 val def = trans12_dexpopt(rcd.def)
+//
 val wtp =
 (
 case+ rcd.wtp of
@@ -2249,21 +2288,26 @@ case+ rcd.wtp of
 //
 in
   V2ALDECL
-  (@{loc=loc,pat=pat,def=def,wtp=wtp})
-end // end of [val]
-//
-and
-auxv1ds
+  (@{loc=rcd.loc,pat=d2p0,def=def,wtp=wtp})
+end // end of [auxv1d0_d2c]
+fun
+auxv1ds_d2c
 ( v1ds
-: v1aldeclist): v2aldeclist =
-list_vt2t
+: v1aldeclist
+, d2ps: d2patlst): v2aldeclist =
 (
-list_map<v1aldecl><v2aldecl>(v1ds)
-) where
-{
-implement
-list_map$fopr<v1aldecl><v2aldecl>(x) = auxv1d0(x)
-} (* end of [auxv1ds] *)
+case+ v1ds of
+| list_nil() =>
+  list_nil()
+| list_cons(v1d0, v1ds) =>
+  let
+  val-
+  list_cons(d2p0, d2ps) = d2ps
+  in
+    list_cons
+    (auxv1d0_d2c(v1d0, d2p0), auxv1ds_d2c(v1ds, d2ps))
+  end
+) (* end of [auxv1ds_d2c] *)
 //
 } (* end of [aux_valdecl] *)
 
@@ -2379,9 +2423,7 @@ ifcase
 | _(* else *) =>
   let
   val-
-  T_FUN(fnk) = knd.node()
-  in
-    funkind_isrec(fnk)
+  T_FUN(fnk) = knd.node() in funkind_isrec(fnk)
   end
 ) : bool // endval
 //

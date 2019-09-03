@@ -200,8 +200,14 @@ implement
 fprint_d2var
   (out, x0) =
 (
-  fprint!
-  (out, sym, "(", stamp, ")")
+fprint!
+(out, sym, "(", stamp, ")");
+(*
+fprint!(out, ": ", x0.sexp())
+*)
+// (*
+fprint!(out, ": ", x0.type())
+// *)
 ) where
 {
   val sym = x0.sym() and stamp = x0.stamp()
