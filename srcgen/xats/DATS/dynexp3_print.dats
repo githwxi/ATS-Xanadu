@@ -408,10 +408,13 @@ fprint_d3ecl
 //
 case-
 x0.node() of
-| D3Cnone0() =>
-  fprint!(out, "D3Cnone0(", ")")
-| D3Cnone1(d3c) =>
-  fprint!(out, "D3Cnone1(", d3c, ")")
+//
+| D3Cstatic
+  (tok, d3c) =>
+  fprint!(out, "D3Cstatic(", d3c, ")")
+| D3Cextern
+  (tok, d3c) =>
+  fprint!(out, "D3Cextern(", d3c, ")")
 //
 | D3Cvaldecl
   (knd, mopt, v3ds) =>
@@ -426,6 +429,10 @@ x0.node() of
   , "D3Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f3ds, ")")
 //
+| D3Cnone0() =>
+  fprint!(out, "D3Cnone0(", ")")
+| D3Cnone1(d3csrc) =>
+  fprint!(out, "D3Cnone1(", d3csrc, ")")
 )
 //
 end // end of [local]

@@ -171,9 +171,8 @@ end // end of [local]
 
 local
 
-absimpl
-d2cst_tbox =
-$rec{
+typedef
+d2cst_struct = @{
 //
   d2cst_loc= loc_t // loc
 , d2cst_sym= sym_t // name
@@ -183,13 +182,17 @@ $rec{
 //
 } (* end of [d2cst_tbox] *)
 
+absimpl
+d2cst_tbox = ref(d2cst_struct)
+
 in (* in-of-local *)
 
 implement
 d2cst_make_dvar
   (d2v) =
 (
-$rec{
+ref<d2cst_struct>
+@{
   d2cst_loc= loc
 , d2cst_sym= sym
 , d2cst_sexp= s2e
@@ -198,16 +201,25 @@ $rec{
 }
 ) where
 {
+//
   val loc =
     d2var_get_loc(d2v)
   val sym =
     d2var_get_sym(d2v)
-//
-  val s2e = the_s2exp_none0
-  val t2p = the_t2ype_none0
+  val s2e =
+    d2var_get_sexp(d2v)
+  val t2p =
+    d2var_get_type(d2v)
 //
   val
   stamp = d2cst_stamp_new((*void*))
+//
+(*
+  val () =
+  println!("d2cst_make_dvar: d2v = ", d2v)
+  val () =
+  println!("d2cst_make_dvar: s2e = ", s2e)
+*)
 //
 } (* d2cst_make_dvar *)
 
@@ -215,7 +227,8 @@ implement
 d2cst_make_idtp
   (tok, s2e) =
 (
-$rec{
+ref<d2cst_struct> 
+@{
   d2cst_loc= loc
 , d2cst_sym= sym
 , d2cst_sexp= s2e
@@ -224,6 +237,7 @@ $rec{
 }
 ) where
 {
+//
   val loc = tok.loc()
   val sym = dexpid_sym(tok)
 //
@@ -232,19 +246,30 @@ $rec{
   val
   stamp = d2cst_stamp_new((*void*))
 //
+(*
+  val () =
+  println!("d2cst_make_idtp: sym = ", sym)
+  val () =
+  println!("d2cst_make_idtp: s2e = ", s2e)
+*)
+//
 } (* d2cst_make_idtp *)
 
 implement
-d2cst_get_loc(x0) = x0.d2cst_loc
+d2cst_get_loc(x0) = x0->d2cst_loc
 implement
-d2cst_get_sym(x0) = x0.d2cst_sym
+d2cst_get_sym(x0) = x0->d2cst_sym
 implement
-d2cst_get_sexp(x0) = x0.d2cst_sexp
+d2cst_get_sexp(x0) = x0->d2cst_sexp
 implement
-d2cst_get_type(x0) = x0.d2cst_type
+d2cst_get_type(x0) = x0->d2cst_type
 implement
-d2cst_get_stamp(x0) = x0.d2cst_stamp
-
+d2cst_get_stamp(x0) = x0->d2cst_stamp
+//
+implement
+d2cst_set_type
+  (x0, t2p) = (x0->d2cst_type := t2p)
+//
 end // end of [local]
 
 (* ****** ****** *)
@@ -304,13 +329,15 @@ d2var_get_loc(x0) = x0->d2var_loc
 implement
 d2var_get_sym(x0) = x0->d2var_sym
 implement
+d2var_get_sexp(x0) = x0->d2var_sexp
+implement
 d2var_get_type(x0) = x0->d2var_type
 implement
 d2var_get_stamp(x0) = x0->d2var_stamp
 //
 implement
 d2var_set_type
-  (x0, t2p0) = x0->d2var_type := t2p0
+  (x0, t2p) = (x0->d2var_type := t2p)
 //
 end // end of [local]
 

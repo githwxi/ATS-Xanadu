@@ -2418,7 +2418,7 @@ val d2cs =
 auxd2cs_rec(isr, d2vs, f1ds)
 //
 val f2ds =
-  auxf1ds(d1c0, d2vs, f1ds)
+auxf1ds(d1c0, d2vs, d2cs, f1ds)
 //
 val ((*void*)) =
 auxd2cs_nrc(isr, d2vs, f1ds)
@@ -2431,6 +2431,9 @@ in
   (loc0, D2Cfundecl(knd, mopt, tqas, f2ds))
 end where
 {
+//
+typedef
+d2cstoptlst = List0(d2cstopt)
 //
 fun
 auxd2vs
@@ -2456,6 +2459,8 @@ auxf1d0
 : d1ecl
 , d2v0
 : d2var
+, d2c0
+: d2cstopt
 , f1d0
 : f1undecl
 ) : f2undecl = let
@@ -2464,6 +2469,7 @@ val+
 F1UNDECL(rcd) = f1d0
 //
 val nam = d2v0
+val dct = d2c0
 val loc = rcd.loc
 //
 val
@@ -2493,14 +2499,17 @@ case+ rcd.wtp of
 //
 in
 F2UNDECL
-(@{loc=loc,nam=nam,arg=arg,res=res,def=def,wtp=wtp})
+(@{loc=loc,nam=nam,arg=arg,res=res,dct=dct,def=def,wtp=wtp})
 end // end of [auxf1d0]
+//
 and
 auxf1ds
 ( d1c0
 : d1ecl
 , d2vs
 : d2varlst
+, d2cs
+: d2cstoptlst
 , f1ds
 : f1undeclist
 ) : f2undeclist =
@@ -2515,11 +2524,14 @@ case+ d2vs of
   {
     val-
     list_cons
+    (d2c0, d2cs) = d2cs
+    val-
+    list_cons
     (f1d0, f1ds) = f1ds
     val f2d0 =
-    auxf1d0(d1c0, d2v0, f1d0)
+    auxf1d0(d1c0, d2v0, d2c0, f1d0)
     val f2ds =
-    auxf1ds(d1c0, d2vs, f1ds)
+    auxf1ds(d1c0, d2vs, d2cs, f1ds)
   }
 )
 //
@@ -2537,10 +2549,13 @@ end
 //
 fun
 auxd2cs_rec
-( isr: bool
-, d2vs: d2varlst
-, f1ds: f1undeclist
-) : List0(d2cstopt) =
+( isr
+: bool
+, d2vs
+: d2varlst
+, f1ds
+: f1undeclist
+) : d2cstoptlst =
 (
 case+ d2vs of
 | list_nil() =>
