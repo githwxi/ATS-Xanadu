@@ -1127,18 +1127,6 @@ end where
 {
 //
 fun
-ishdr
-( v2d0
-: v2aldecl): bool =
-let
-val+
-V2ALDECL(rcd) = v2d0
-in
-  case+ rcd.def of
-  | None() => true | Some(d2e) => false
-end
-//
-fun
 auxv2d0
 ( d2c0
 : d2ecl
@@ -1229,8 +1217,8 @@ let
 val+
 F2UNDECL(rcd) = f2d0
 in
-  case+ rcd.def of
-  | None() => true | Some(d2e) => false
+  case+ rcd.dct of
+  | None() => true | Some(d2c) => false
 end
 //
 fun

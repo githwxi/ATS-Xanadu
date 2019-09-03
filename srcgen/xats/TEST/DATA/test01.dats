@@ -1,6 +1,15 @@
 (* ****** ****** *)
 
 #extern
+val
+gint_add :
+(int, int) -> int
+and
+gint_sub :
+(int, int) -> int
+
+////
+#extern
 fun
 gint_add :
 (int, int) -> int
