@@ -504,6 +504,27 @@ end // end of [auxsym0]
 (* ****** ****** *)
 
 fun
+auxsapp
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Esapp
+( d2e1
+, s2es) = d2e0.node()
+//
+val
+d3e1 = trans23_dexp(d2e1)
+//
+in
+d3exp_sapp_up(loc0, d3e1, s2es)
+end // end of [auxsapp]
+
+(* ****** ****** *)
+
+fun
 auxdapp
 ( d2e0
 : d2exp): d3exp = let
@@ -857,6 +878,7 @@ d2e0.node() of
 //
 | D2Esym0 _ => auxsym0(d2e0)
 //
+| D2Esapp _ => auxsapp(d2e0)
 | D2Edapp _ => auxdapp(d2e0)
 //
 | D2Elet _ => aux_let(d2e0)

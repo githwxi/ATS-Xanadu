@@ -1118,21 +1118,24 @@ s1e2.node() of
 val
 s2t0 = the_sort2_type
 val
+tnm1 =
+(
+case+ s1es of
+| list_nil() => ""
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | S1Estr(s0) => token2sstr(s0) | _ => ""
+  )
+) : string // end of [val]
+val
 s2es =
 (
 case+ s1es of
 | list_nil() =>
   list_nil()
 | list_cons(x0, xs) =>
-  (
-    list_cons(y0, ys)
-  ) where
-  {
-    val y0 =
-    trans12_sexp(x0)
-    val ys =
-    trans12_sexplst_ck(xs, s2t0)
-  }
+  trans12_sexplst_ck(xs, s2t0)
 ) : s2explst // end of [val]
 //
 in
@@ -1140,7 +1143,7 @@ in
 s2e0 where
 {
   val s2e0 =
-  s2exp_tyext(the_sort2_type, s2es)
+  s2exp_tyext(the_sort2_type, tnm1, s2es)
 (*
   val ((*void*)) =
   println!("trans12_sexp: ")
@@ -1582,10 +1585,8 @@ s1e0.node() of
 (*
 | S1Eflt of token
 *)
-(*
 | S1Estr(tok) =>
   s2exp_str(token2sstr(tok))
-*)
 //
 | S1Eapp1 _ => auxapp1(s1e0)
 | S1Eapp2 _ => auxapp2(s1e0)

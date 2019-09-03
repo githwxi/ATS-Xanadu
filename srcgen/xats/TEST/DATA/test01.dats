@@ -102,7 +102,17 @@ val y: int = x
 
 (* ****** ****** *)
 
-fun foo(x, y) = (x; x; y; y)
+fun<>
+foo(n:int): int = foo(n)
+fun<>
+foo{n:int}(n:int(n)): int = foo{n}(n)
+
+(* ****** ****** *)
+////
+
+fun
+foo(x:int, y): int =
+let val x = 1 in x; x; y; y; x end
 
 ////
 fun

@@ -452,6 +452,9 @@ s2e0.node() of
 | S2Echr(c0) =>
   fprint!(out, "S2Echr(", c0, ")")
 //
+| S2Estr(s0) =>
+  fprint!(out, "S2Estr(", s0, ")")
+//
 | S2Ecst(s2c) =>
   fprint!(out, "S2Ecst(", s2c, ")")
 (*
@@ -549,13 +552,16 @@ s2e0.node() of
   fprint!(out, "S2Elist(", s2es, ")")
 *)
 //
-| S2Etyrec(knd, npf, ls2es) =>
+| S2Etyrec
+  (knd, npf, ls2es) =>
   fprint!
   ( out, "S2Etyrec("
   , knd, "; ", npf, "; ", ls2es, ")")
 //
-| S2Etyext(s2es) =>
-  fprint!(out, "S2Etyext(", s2es, ")")
+| S2Etyext(tnm1, s2es) =>
+  fprint!
+  ( out
+  , "S2Etyext(", tnm1, "; ", s2es, ")")
 //
 | S2Enone0() =>
   fprint!(out, "S2Enone0(", ")")

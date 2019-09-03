@@ -207,10 +207,13 @@ t2ype_node =
 | T2Puni of // forall quantifier
   (s2varlst(*vars*), t2ype(*body*))
 //
+| T2Ptyext of
+  (string(*name*), t2ypelst) // external
+//
 | T2Ptyrec of
   (tyrec(*knd*), int(*npf*), labt2ypelst)
 //
-| T2Pnone0 of () | T2Pnone1 of (s2exp)
+| T2Pnone0 of ((*void*)) | T2Pnone1 of (s2exp)
 //
 (* ****** ****** *)
 //

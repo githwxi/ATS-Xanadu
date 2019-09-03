@@ -145,6 +145,13 @@ s2e0.node() of
     t2ype_make_node(s2t0, T2Plam(s2vs, t2p1))
   end
 //
+| S2Etyext(tnm1, s2es) =>
+  let
+    val t2ps = s2explst_erase(s2es)
+  in
+    t2ype_make_node(s2t0, T2Ptyext(tnm1, t2ps))
+  end
+//
 | S2Etyrec(knd, npf, ls2es) =>
   let
     val lt2ps = labs2explst_erase(ls2es)
@@ -552,7 +559,8 @@ in
 //
 case+
 def0.node() of
-| T2Pnone0() => t2p0 | _ => def0
+| T2Pnone0() => t2p0
+| _(* else *) => t2ype_hnfize(def0)
 //
 end // end of [appcst]
 
@@ -663,7 +671,6 @@ case+ t2ps of
     then t2ps else list_cons(t2p1, t2ps2)
   end
 )
-
 
 in (*in-of-local*)
 
