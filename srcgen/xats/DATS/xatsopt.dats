@@ -878,7 +878,6 @@ println!
 ("process_nil: d3cs = ", d3cs)
 // *)
 //
-//
 val () =
 println!
 ("process_nil: the_sortenv =")

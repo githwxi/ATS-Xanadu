@@ -150,12 +150,12 @@ fprint_d2con
 (
 fprint!
 (out, sym, "(", stamp, ")");
-// (*
-fprint!(out, ": ", x0.type());
-// *)
 (*
 fprint!(out, ": ", x0.sexp());
 *)
+// (*
+fprint!(out, ": ", x0.type());
+// *)
 ) where
 {
   val sym = x0.sym() and stamp = x0.stamp()
@@ -176,8 +176,11 @@ fprint_d2cst
 (
 fprint!
 (out, sym, "(", stamp, ")");
-// (*
+(*
 fprint!(out, ": ", x0.sexp())
+*)
+// (*
+fprint!(out, ": ", x0.type())
 // *)
 ) where
 {
@@ -581,7 +584,8 @@ case- x0.node() of
   (knd, tqas, d2cs) =>
   fprint!
   ( out
-  , "D2Cynconst(", knd, "; ", tqas, "; ", d2cs, ")")
+  , "D2Cynconst("
+  , knd, "; ", tqas, "; ", d2cs, ")")
 //
 | D2Clocal(head, body) =>
   fprint!
@@ -589,9 +593,9 @@ case- x0.node() of
   , "D2Clocal(", head, "; ", body, ")")
 //
 | D2Cnone0() =>
-    fprint!(out, "D2Cnone0(", ")")
+  fprint!(out, "D2Cnone0(", ")")
 | D2Cnone1(d1csrc) =>
-    fprint!(out, "D2Cnone1(", d1csrc, ")")
+  fprint!(out, "D2Cnone1(", d1csrc, ")")
 //
 ) (* end of [fprint_d2ecl] *)
 
@@ -756,6 +760,7 @@ in
   , ", nam=", rcd.nam
   , ", arg=", rcd.arg
   , ", res=", rcd.res
+  , ", dct=", rcd.dct
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
 

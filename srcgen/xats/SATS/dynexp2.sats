@@ -164,6 +164,8 @@ fun
 d2cst_get_sexp(d2cst): s2exp
 fun
 d2cst_get_type(d2cst): t2ype
+fun
+d2cst_set_type(d2cst, t2ype): void
 //
 fun
 d2var_get_sexp(d2var): s2exp
@@ -177,6 +179,7 @@ overload .type with d2con_get_type
 //
 overload .sexp with d2cst_get_sexp
 overload .type with d2cst_get_type
+overload .type with d2cst_set_type
 //
 overload .sexp with d2var_get_sexp
 overload .type with d2var_get_type
@@ -874,6 +877,7 @@ F2UNDECL of @{
 , nam= d2var
 , arg= f2arglst
 , res= effs2expopt
+, dct= d2cstopt
 , def= d2expopt, wtp= s2expopt
 }
 //
