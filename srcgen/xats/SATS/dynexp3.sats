@@ -249,6 +249,9 @@ d3exp_node =
     (d1exp, d2pitmlst)
   // D3Esym0
 //
+| D3Esap0 of (d3exp, s2explst)
+| D3Esap1 of (d3exp, s2explst)
+//
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
 //

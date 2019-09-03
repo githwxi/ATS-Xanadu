@@ -132,6 +132,9 @@ t2p0.node() of
 | T2Pexi(s2vs, t2p1) => auxt2p(t2p1)
 | T2Puni(s2vs, t2p1) => auxt2p(t2p1)
 //
+| T2Ptyext
+  (tnm, t2ps) => auxt2ps(t2ps)
+//
 | T2Ptyrec
   (knd, npf, lt2ps) => auxlt2ps(lt2ps)
 //
@@ -320,7 +323,20 @@ t2p1.node() of
     in
       (tfcr && (tnpf && (targ && tres)))
     end
-  | _ (* else *) => false  
+  | _ (* else *) => false
+  )
+//
+| T2Ptyext
+  (tnm1, tps1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Ptyext(tnm2, tps2) =>
+    if
+    (tnm1 = tnm2)
+    then
+    ulte(loc0, tps1, tps2) else false
+  | _ (* non-T2Ptyext *) => false
   )
 //
 | T2Ptyrec
@@ -609,6 +625,78 @@ case+ d3es of
   )
 //
 end (* end of [d3explst_dn] *)
+
+(* ****** ****** *)
+
+implement
+d3exp_sapp_up
+( loc0
+, d3f0, s2es ) = let
+//
+fun
+auxmain
+( t2p0
+: t2ype): d3exp = let
+//
+val t2p0 = hnfize(t2p0)
+//
+in
+case+
+t2p0.node() of
+| T2Puni
+  (s2vs, t2p1) =>
+  let
+  val t2p1 =
+  t2ype_substs
+  (t2p1, s2vs, auxtsub(s2vs, s2es))
+  in
+    d3exp_make_node
+    (loc0, t2p1, D3Esap1(d3f0, s2es))
+  end
+//
+| T2Pexi(s2vs, t2p1) => auxmain(t2p1)
+//
+| _(*non-T2Puni*) =>
+  (
+    d3exp_make_node
+    (loc0, t2p0, D3Esap0(d3f0, s2es))
+  )
+end // end of [auxmain]
+//
+and
+auxtsub
+( s2vs
+: s2varlst
+, s2es
+: s2explst): t2ypelst =
+(
+case+ s2vs of
+| list_nil
+  ((*void*)) => list_nil()
+| list_cons
+  (s2v1, s2vs) =>
+  let
+    val t2p1 =
+    (
+    case+ s2es of
+    | list_nil
+      () => the_t2ype_none0(*void*)
+    | list_cons
+      (s2e1, _) => s2exp_erase(s2e1)
+    ) : t2ype // end of [val]
+    val s2es =
+    (
+    case+ s2es of
+    | list_nil() => list_nil() | list_cons(_, s2es) => s2es
+    ) : s2explst // end of [val]
+  in
+     list_cons(t2p1, auxtsub(s2vs, s2es))
+  end
+)
+//
+in
+  auxmain(d3f0.type((*void*)))
+end (* end of [d3exp_sapp_up] *)
 
 (* ****** ****** *)
 

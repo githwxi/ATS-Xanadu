@@ -675,6 +675,8 @@ s2exp_node =
 | S2Eint of int // integer
 | S2Echr of char // character
 //
+| S2Estr of string // string
+//
 | S2Ecst of s2cst // constant
 //
 | S2Evar of s2var // variable
@@ -725,7 +727,8 @@ s2exp_node =
 | S2Elist of s2explst // HX: temporary use
 *)
 //
-| S2Etyext of (s2explst) (* externlly named *)
+| S2Etyext of
+  (string(*name*), s2explst) (* external *)
 //
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
@@ -750,6 +753,9 @@ fun
 s2exp_int(i0: int): s2exp
 fun
 s2exp_chr(c0: char): s2exp
+//
+fun
+s2exp_str(s0: string): s2exp
 //
 fun
 s2exp_cst(s2c: s2cst): s2exp
@@ -855,7 +861,8 @@ s2exp_record2
 //
 fun
 s2exp_tyext
-(s2t0: sort2, s2es: s2explst): s2exp
+( s2t0: sort2
+, tnm1: string, s2es: s2explst): s2exp
 //
 (* ****** ****** *)
 //
@@ -878,7 +885,7 @@ s2exp_none1_s2t
 //
 fun
 s2exp_make_node
-(s2t0: sort2, node: s2exp_node): s2exp
+  (s2t0: sort2, node: s2exp_node): s2exp
 //
 (* ****** ****** *)
 //

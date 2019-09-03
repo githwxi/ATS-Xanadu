@@ -243,6 +243,15 @@ x0.node() of
   (out, "D3Esym0(", d1e1, "; ", dpis, ")")
 *)
 //
+| D3Esap0
+  (d3e1, s2es) =>
+  fprint!
+  (out, "D3Esap0(", d3e1, "; ", s2es, ")")
+| D3Esap1
+  (d3e1, s2es) =>
+  fprint!
+  (out, "D3Esap1(", d3e1, "; ", s2es, ")")
+//
 | D3Edapp
   (d3e1, npf2, d3es) =>
   fprint!

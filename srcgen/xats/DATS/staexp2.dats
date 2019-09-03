@@ -500,6 +500,16 @@ end // end of [s2exp_chr]
 (* ****** ****** *)
 
 implement
+s2exp_str(s0) = let
+  val
+  s2t = the_sort2_string
+in
+  s2exp_make_node(s2t, S2Estr(s0))
+end // end of [s2exp_str]
+
+(* ****** ****** *)
+
+implement
 s2exp_cst(s2c) = let
   val s2t = s2c.sort()
 in
@@ -1046,10 +1056,10 @@ end // end of [s2exp_record2]
 //
 implement
 s2exp_tyext
-  (s2t0, s2es) =
+  (s2t0, tnm1, s2es) =
 (
-  s2exp_make_node
-  (s2t0, S2Etyext(s2es))
+s2exp_make_node
+(s2t0, S2Etyext(tnm1, s2es))
 )
 //
 (* ****** ****** *)
