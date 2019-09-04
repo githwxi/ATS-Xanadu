@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -138,10 +138,10 @@ fprint_val<ti2arg> = fprint_ti2arg
 //
 implement
 print_d2con(x0) =
-fprint_d2con(stdout_ref, x0) 
+fprint_d2con(stdout_ref, x0)
 implement
 prerr_d2con(x0) =
-fprint_d2con(stdout_ref, x0) 
+fprint_d2con(stdout_ref, x0)
 //
 implement
 fprint_d2con
@@ -161,10 +161,10 @@ fprint!(out, ": ", x0.sexp())
 //
 implement
 print_d2cst(x0) =
-fprint_d2cst(stdout_ref, x0) 
+fprint_d2cst(stdout_ref, x0)
 implement
 prerr_d2cst(x0) =
-fprint_d2cst(stdout_ref, x0) 
+fprint_d2cst(stdout_ref, x0)
 //
 implement
 fprint_d2cst
@@ -184,10 +184,10 @@ fprint!(out, ": ", x0.sexp())
 //
 implement
 print_d2var(x0) =
-fprint_d2var(stdout_ref, x0) 
+fprint_d2var(stdout_ref, x0)
 implement
 prerr_d2var(x0) =
-fprint_d2var(stdout_ref, x0) 
+fprint_d2var(stdout_ref, x0)
 //
 implement
 fprint_d2var
@@ -580,10 +580,10 @@ end // end of [local]
 //
 implement
 print_d2itm(x0) =
-fprint_d2itm(stdout_ref, x0) 
+fprint_d2itm(stdout_ref, x0)
 implement
 prerr_d2itm(x0) =
-fprint_d2itm(stdout_ref, x0) 
+fprint_d2itm(stdout_ref, x0)
 //
 implement
 fprint_d2itm
@@ -622,10 +622,10 @@ case+ x0 of
 //
 implement
 print_sq2arg(x0) =
-fprint_sq2arg(stdout_ref, x0) 
+fprint_sq2arg(stdout_ref, x0)
 implement
 prerr_sq2arg(x0) =
-fprint_sq2arg(stdout_ref, x0) 
+fprint_sq2arg(stdout_ref, x0)
 //
 implement
 fprint_sq2arg
@@ -638,10 +638,10 @@ fprint_sq2arg
 //
 implement
 print_tq2arg(x0) =
-fprint_tq2arg(stdout_ref, x0) 
+fprint_tq2arg(stdout_ref, x0)
 implement
 prerr_tq2arg(x0) =
-fprint_tq2arg(stdout_ref, x0) 
+fprint_tq2arg(stdout_ref, x0)
 //
 implement
 fprint_tq2arg
@@ -654,10 +654,10 @@ fprint_tq2arg
 //
 implement
 print_ti2arg(x0) =
-fprint_ti2arg(stdout_ref, x0) 
+fprint_ti2arg(stdout_ref, x0)
 implement
 prerr_ti2arg(x0) =
-fprint_ti2arg(stdout_ref, x0) 
+fprint_ti2arg(stdout_ref, x0)
 //
 implement
 fprint_ti2arg
@@ -685,7 +685,7 @@ in
   fprint!
   ( out
   , "V2ALDECL@{"
-  , ", pat=", rcd.pat
+  , "pat=", rcd.pat
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v2aldecl]
 
@@ -708,7 +708,7 @@ in
   fprint!
   ( out
   , "V2ARDECL@{"
-  , ", d2v=", rcd.d2v
+  , "d2v=", rcd.d2v
   , ", wth=", rcd.wth
   , ", res=", rcd.res, ", ini=", rcd.ini, "}")
 end // end of [fprint_v2ardecl]
@@ -732,7 +732,7 @@ in
   fprint!
   ( out
   , "F2UNDECL@{"
-  , ", nam=", rcd.nam
+  , "nam=", rcd.nam
   , ", arg=", rcd.arg
   , ", res=", rcd.res
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
