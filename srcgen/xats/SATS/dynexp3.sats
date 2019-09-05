@@ -43,11 +43,182 @@
 
 (* ****** ****** *)
 //
+abstbox d3pat_tbox = ptr
+typedef d3pat = d3pat_tbox
+typedef d3patlst = List0(d3pat)
+typedef d3patopt = Option(d3pat)
+//
+(* ****** ****** *)
+//
+abstbox f3arg_tbox = ptr
+typedef f3arg = f3arg_tbox
+typedef f3arglst = List0(f3arg)
+typedef f3arglstopt = Option(f3arglst)
+//
+(* ****** ****** *)
+//
+datatype
+d3pat_node =
+//
+| D3Pany of ()
+//
+| D3Pvar of (d2var)
+//
+| D3Pint of (token)
+| D3Pchr of (token)
+| D3Pflt of (token)
+| D3Pstr of (token)
+//
+| D3Pcon1 of (d2con)
+| D3Pcon2 of (d2conlst)
+//
+| D3Psapp of (d3pat, s2varlst)
+| D3Pdapp of (d3pat, int(*npf*), d3patlst)
+//
+| D3Ptuple of
+  (int(*knd*), int(*npf*), d3patlst)
+//
+| D3Panno of (d3pat, s2exp) // no s2xtv in anno
+//
+| D3Pcast of (d3pat, t2ype) // HX: error indication?
+//
+| D3Pnone0 of () | D3Pnone1 of (d2pat)
+//
+(* ****** ****** *)
+//
+fun
+d3pat_get_loc
+(d3p0: d3pat): loc_t
+fun
+d3pat_get_node
+(d3p0: d3pat): d3pat_node
+//
+overload .loc with d3pat_get_loc
+overload .node with d3pat_get_node
+//
+(* ****** ****** *)
+//
+fun
+d3pat_get_type
+(d3p0: d3pat): t2ype
+fun
+d3patlst_get_type
+(d3ps: d3patlst): t2ypelst
+//
+overload .type with d3pat_get_type
+//
+(* ****** ****** *)
+//
+fun
+print_d3pat: print_type(d3pat)
+fun
+prerr_d3pat: prerr_type(d3pat)
+fun
+fprint_d3pat: fprint_type(d3pat)
+//
+overload print with print_d3pat
+overload prerr with prerr_d3pat
+overload fprint with fprint_d3pat
+//
+(* ****** ****** *)
+//
+fun
+d3pat_any
+(loc0: loc_t, t2p0: t2ype): d3pat
+fun
+d3pat_var
+(loc0: loc_t, d2v0: d2var): d3pat
+//
+(* ****** ****** *)
+
+fun
+d3pat_con
+(loc0: loc_t, d2c0: d2con): d3pat
+
+(* ****** ****** *)
+
+fun
+d3pat_anno
+(d3p0: d3pat, s2e0: s2exp): d3pat
+
+(* ****** ****** *)
+//
+fun
+d3pat_cast
+(d3p0: d3pat, t2p0: t2ype): d3pat
+//
+(* ****** ****** *)
+//
+fun
+d3pat_make_node
+( loc0: loc_t
+, t2p0: t2ype, node: d3pat_node): d3pat
+//
+(* ****** ****** *)
+//
+datatype
+f3arg_node =
+(*
+| F3ARGnone of (token)
+*)
+//
+| F3ARGsome_dyn of
+  (int(*npf*), d3patlst)
+//
+| F3ARGsome_sta of
+  (s2varlst(*s2vs*), s2explst(*s2ps*))
+//
+| F3ARGsome_met of (s2explst)
+//
+(* ****** ****** *)
+//
+fun
+f3arg_get_loc(f3arg): loc_t
+fun
+f3arg_get_node(f3arg): f3arg_node
+//
+overload .loc with f3arg_get_loc
+overload .node with f3arg_get_node
+//
+(*
+fun
+print_f3arg : print_type(f3arg)
+fun
+prerr_f3arg : prerr_type(f3arg)
+*)
+fun
+fprint_f3arg : fprint_type(f3arg)
+//
+(*
+overload print with print_f3arg
+overload prerr with prerr_f3arg
+*)
+overload fprint with fprint_f3arg
+//
+fun
+f3arg_make_node
+(loc: loc_t, node: f3arg_node): f3arg
+//
+(* ****** ****** *)
+//
 abstbox d3exp_tbox = ptr
 //
 typedef d3exp = d3exp_tbox
 typedef d3explst = List0(d3exp)
 typedef d3expopt = Option(d3exp)
+//
+(* ****** ****** *)
+//
+abstbox d3gua_tbox = ptr
+typedef d3gua = d3gua_tbox
+typedef d3gualst = List0(d3gua)
+//
+abstbox dg3pat_tbox = ptr
+typedef dg3pat = dg3pat_tbox
+//
+abstbox d3clau_tbox = ptr
+typedef d3clau = d3clau_tbox
+typedef d3claulst = List0(d3clau)
 //
 (* ****** ****** *)
 //
@@ -69,17 +240,136 @@ d3exp_node =
 //
 | D3Evar of (d2var)
 //
+| D3Econ1 of (d2con)
+| D3Ecst1 of (d2cst)
+| D3Econ2 of (d2conlst)
+| D3Ecst2 of (d2cstlst)
+//
+| D3Esym0 of
+    (d1exp, d2pitmlst)
+  // D3Esym0
+//
+| D3Esap0 of (d3exp, s2explst)
+| D3Esap1 of (d3exp, s2explst)
+//
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
 //
+| D3Elet of
+  (d3eclist, d3exp(*sequence*))
+| D3Ewhere of (d3exp, d3eclist)
+//
+| D3Eseqn of
+  (d3explst(*semi*), d3exp(*last*))
+//
 | D3Etuple of
   (int(*knd*), int(*npf*), d3explst)
+//
+| D3Edtsel of
+  (label, d2pitmlst, d3expopt(*arg*))
+//
+| D3Eif0 of
+  ( d3exp(*cond*)
+  , d3exp(*then*), d3expopt(*else*))
+//
+| D3Ecase of
+  (int(*knd*), d3exp(*val*), d3claulst)
+  // D3Ecase
+//
+| D3Elam of
+  ( f3arglst
+  , effs2expopt, f1unarrow, d3exp(*body*))
+//
+| D3Eanno of (d3exp, s2exp)
 //
 | D3Ecast of (d3exp, t2ype)
 //
 | D3Enone0 of ()
 | D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
 
+(* ****** ****** *)
+//
+datatype
+d3gua_node =
+| D3GUAexp of (d3exp)
+| D3GUAmat of (d3exp, d3pat)
+//
+fun
+d3gua_get_loc(d3gua): loc_t
+fun
+d3gua_get_node(d3gua): d3gua_node
+//
+overload .loc with d3gua_get_loc
+overload .node with d3gua_get_node
+//
+fun print_d3gua : (d3gua) -> void
+fun prerr_d3gua : (d3gua) -> void
+fun fprint_d3gua : fprint_type(d3gua)
+//
+overload print with print_d3gua
+overload prerr with prerr_d3gua
+overload fprint with fprint_d3gua
+//
+fun
+d3gua_make_node
+(loc: loc_t, node: d3gua_node): d3gua
+//
+(* ****** ****** *)
+//
+datatype
+d3clau_node =
+| D3CLAUgpat of (dg3pat)
+| D3CLAUclau of (dg3pat, d3exp)
+and
+dg3pat_node =
+| DG3PATpat of (d3pat)
+| DG3PATgua of (d3pat, d3gualst)
+//
+fun
+d3clau_get_loc(d3clau): loc_t
+fun
+d3clau_get_node(d3clau): d3clau_node
+//
+overload .loc with d3clau_get_loc
+overload .node with d3clau_get_node
+//
+fun
+dg3pat_get_loc(dg3pat): loc_t
+fun
+dg3pat_get_node(dg3pat): dg3pat_node
+//
+overload .loc with dg3pat_get_loc
+overload .node with dg3pat_get_node
+//
+fun
+print_d3clau : (d3clau) -> void
+fun
+prerr_d3clau : (d3clau) -> void
+fun
+fprint_d3clau : fprint_type(d3clau)
+//
+overload print with print_d3clau
+overload prerr with prerr_d3clau
+overload fprint with fprint_d3clau
+//
+fun
+print_dg3pat : (dg3pat) -> void
+fun
+prerr_dg3pat : (dg3pat) -> void
+fun
+fprint_dg3pat : fprint_type(dg3pat)
+//
+overload print with print_dg3pat
+overload prerr with prerr_dg3pat
+overload fprint with fprint_dg3pat
+//
+fun
+d3clau_make_node
+(loc: loc_t, node: d3clau_node): d3clau
+fun
+dg3pat_make_node
+(loc: loc_t, node: dg3pat_node): dg3pat
+//
 (* ****** ****** *)
 //
 fun
@@ -139,8 +429,7 @@ d3exp_none2_0(d3e0: d3exp): d3exp
 fun
 d3exp_make_node
 ( loc0: loc_t
-, t2p0: t2ype
-, node: d3exp_node): d3exp
+, t2p0: t2ype, node: d3exp_node): d3exp
 //
 (* ****** ****** *)
 //
@@ -164,11 +453,38 @@ d3exp_cast
 (* ****** ****** *)
 //
 datatype
+v3aldecl =
+V3ALDECL of @{
+  loc= loc_t
+, pat= d3pat
+, def= d3expopt, wtp= s2expopt
+}
+//
+typedef
+v3aldeclist = List0(v3aldecl)
+//
+(* ****** ****** *)
+//
+fun
+print_v3aldecl: print_type(v3aldecl)
+fun
+prerr_v3aldecl: prerr_type(v3aldecl)
+fun
+fprint_v3aldecl: fprint_type(v3aldecl)
+//
+overload print with print_v3aldecl
+overload prerr with prerr_v3aldecl
+overload fprint with fprint_v3aldecl
+//
+(* ****** ****** *)
+//
+datatype
 f3undecl =
 F3UNDECL of @{
   loc= loc_t
 , nam= d2var
-, arg= f2arglst
+, a2g= f2arglst
+, a3g= f3arglstopt
 , res= effs2expopt
 , def= d3expopt, wtp= s2expopt
 }
@@ -203,6 +519,14 @@ d3ecl_node =
 //
 | D3Cnone0 of ()
 | D3Cnone1 of (d2ecl)
+//
+| D3Cstatic of
+  (token(*STATIC*), d3ecl)
+| D3Cextern of
+  (token(*EXTERN*), d3ecl)
+//
+| D3Cvaldecl of
+  (token(*valkind*), declmodopt, v3aldeclist)
 //
 | D3Cfundecl of
   ( token(*funkind*)

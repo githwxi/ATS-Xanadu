@@ -69,6 +69,7 @@ fprint with $LAB.fprint_label
 #staload "./../SATS/dynexp1.sats"
 //
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
@@ -149,8 +150,11 @@ fprint_d2con
 (
 fprint!
 (out, sym, "(", stamp, ")");
+(*
+fprint!(out, ": ", x0.sexp());
+*)
 // (*
-fprint!(out, ": ", x0.sexp())
+fprint!(out, ": ", x0.type());
 // *)
 ) where
 {
@@ -172,8 +176,11 @@ fprint_d2cst
 (
 fprint!
 (out, sym, "(", stamp, ")");
-// (*
+(*
 fprint!(out, ": ", x0.sexp())
+*)
+// (*
+fprint!(out, ": ", x0.type())
 // *)
 ) where
 {
@@ -193,8 +200,14 @@ implement
 fprint_d2var
   (out, x0) =
 (
-  fprint!
-  (out, sym, "(", stamp, ")")
+fprint!
+(out, sym, "(", stamp, ")");
+(*
+fprint!(out, ": ", x0.sexp())
+*)
+// (*
+fprint!(out, ": ", x0.type())
+// *)
 ) where
 {
   val sym = x0.sym() and stamp = x0.stamp()
@@ -320,14 +333,12 @@ case- x0.node() of
   fprint!(out, "D2Econ2(", d2cs, ")")
 //
 | D2Esym0
-  (d1e0, dpis) =>
+  (d1e1, dpis) =>
+  fprint!(out, "D2Esym0(", d1e1, ")")
 (*
-  fprint!(out, "D2Esym0(", d1e0, ")")
-*)
-// (*
   fprint!
-  (out, "D2Esym0(", d1e0, "; ", dpis, ")")
-// *)
+  (out, "D2Esym0(", d1e1, "; ", dpis, ")")
+*)
 //
 | D2Esapp
   (d2f0, s2as) =>
@@ -346,21 +357,33 @@ case- x0.node() of
   , d2f0, "; ", npf0, "; ", d2as, ")")
 //
 | D2Elet
-  (d2cs, d2es) =>
+  (d2cs, d2e2) =>
   fprint!
   ( out
-  , "D2Elet(", d2cs, "; ", d2es, ")")
+  , "D2Elet(", d2cs, "; ", d2e2, ")")
 | D2Ewhere
   (d2e1, d2cs) =>
   fprint!
   ( out
   , "D2Ewhere(", d2e1, "; ", d2cs, ")")
 //
+| D2Eseqn
+  (d2es, d1e1) =>
+  fprint!
+  ( out, "D2Eseqn("
+  , d2es, "; ", d1e1(*last*), ")")
+//
 | D2Etuple
   (knd, npf, d2es) =>
   fprint!
   ( out, "D2Etuple("
   , knd, "; ", npf, "; ", d2es, ")")
+//
+| D2Edtsel
+  (lab, dpis, arg3) =>
+  fprint!
+  ( out, "D2Edtsel("
+  , lab, "; ", dpis, "; ", arg3, ")")
 //
 | D2Eif0
   (d2e1, d2e2, opt3) =>
@@ -373,6 +396,13 @@ case- x0.node() of
   fprint!
   ( out, "D2Ecase("
   , knd, "; ", d2e1, "; ", d2cls, ")")
+//
+| D2Elam
+  (f2as, tres, arrw, body) =>
+  fprint!
+  ( out, "D2Elam("
+  , f2as, "; "
+  , tres, "; ", arrw, "; ", body, ")")
 //
 | D2Eanno(d2e1, s2e2) =>
   fprint!
@@ -432,12 +462,12 @@ fprint_d2clau
 (
 case+
 x0.node() of
-| D2CLAUgpat(d2gp) =>
+| D2CLAUgpat(dg2p) =>
   fprint!
-  (out, "D2CLAUgpat(", d2gp, ")")
-| D2CLAUclau(d2gp, d0e0) =>
+  (out, "D2CLAUgpat(", dg2p, ")")
+| D2CLAUclau(dg2p, d0e0) =>
   fprint!
-  (out, "D2CLAUclau(", d2gp, "; ", d0e0, ")")
+  (out, "D2CLAUclau(", dg2p, "; ", d0e0, ")")
 ) (* end of [fprint_d2clau] *)
 
 implement
@@ -560,7 +590,8 @@ case- x0.node() of
   (knd, tqas, d2cs) =>
   fprint!
   ( out
-  , "D2Cynconst(", knd, "; ", tqas, "; ", d2cs, ")")
+  , "D2Cynconst("
+  , knd, "; ", tqas, "; ", d2cs, ")")
 //
 | D2Clocal(head, body) =>
   fprint!
@@ -568,9 +599,9 @@ case- x0.node() of
   , "D2Clocal(", head, "; ", body, ")")
 //
 | D2Cnone0() =>
-    fprint!(out, "D2Cnone0(", ")")
+  fprint!(out, "D2Cnone0(", ")")
 | D2Cnone1(d1csrc) =>
-    fprint!(out, "D2Cnone1(", d1csrc, ")")
+  fprint!(out, "D2Cnone1(", d1csrc, ")")
 //
 ) (* end of [fprint_d2ecl] *)
 
@@ -735,6 +766,7 @@ in
   , "nam=", rcd.nam
   , ", arg=", rcd.arg
   , ", res=", rcd.res
+  , ", dct=", rcd.dct
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
 

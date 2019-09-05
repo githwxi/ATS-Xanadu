@@ -47,6 +47,14 @@ typedef symbol = $SYM.symbol
 (* ****** ****** *)
 //
 fun
+eq_label_label
+(l1: label, l2: label): bool
+//
+overload = with eq_label_label
+//
+(* ****** ****** *)
+//
+fun
 print_label : print_type(label)
 fun
 prerr_label : prerr_type(label)

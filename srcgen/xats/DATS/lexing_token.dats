@@ -254,8 +254,7 @@ case+ tnd of
 | T_WITH() => fprint(out, "WITH")
 //
 | T_CASE(k0) =>
-  fprint!
-  (out, "CASE(", k0, ")")
+  fprint!(out, "CASE(", k0, ")")
 //
 | T_SCASE() => fprint(out, "SCASE()")
 //

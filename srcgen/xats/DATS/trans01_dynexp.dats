@@ -1247,9 +1247,21 @@ d0e0.node() of
 //
 | D0Elet
   ( tok(*let*)
-  , d0cs, _, d0es, topt) => let
+  , d0cs
+  , topt, d0es, tend) => let
     val d1cs = trans01_declist(d0cs)
-    val d1es = trans01_dexplst(d0es)
+    val d1es =
+    (
+    case+ d0es of
+    | list_nil() =>
+      (
+        list_sing(d1e0)
+      ) where
+      {
+        val d1e0 = d1exp_none(tend.loc())
+      }
+    | list_cons _ => trans01_dexplst(d0es)
+    ) : d1explst // end of [val]
   in
     FXITMatm
     (
@@ -1307,9 +1319,8 @@ d0e0.node() of
     FXITMatm(d1e0) where
     {
       val d1e0 =
-        d1exp_make_node
-        (loc0, D1Elam(arg, res, farrw, fbody))
-      // end of [val]
+      d1exp_make_node
+      (loc0, D1Elam(arg, res, farrw, fbody))
     }
   end // end of [D1Elam]
 //
@@ -1321,8 +1332,7 @@ d0e0.node() of
     FXITMatm(d1e0) where
     {
       val d1e0 =
-        d1exp_make_node(loc0, D1Eanno(d1e1, s1e2))
-      // end of [val]    
+      d1exp_make_node(loc0, D1Eanno(d1e1, s1e2))
     }
   end // end of [D0Eanno]
 //
@@ -1333,18 +1343,17 @@ d0e0.node() of
     FXITMatm(d1e0) where
     {
       val d1e0 =
-        d1exp_make_node(loc0, D1Equal(tok1, d1e2))
+      d1exp_make_node(loc0, D1Equal(tok1, d1e2))
       // end of [val]
     }
   end // end of [D0Equal]
 //
 | D0Enone(_(*tokerr*)) =>
-  FXITMatm(d1e0) where
-  {
-    val d1e0 = d1exp_make_node(loc0, D1Enone(loc0))
-  } (* end of [D0Enone] *)
+  let
+    val d1e0 = d1exp_none(loc0) in FXITMatm(d1e0)
+  end // end of [D0Enone]
 //
-end // end of [auxitm]
+end (* end of [auxitm] *)
 
 and
 auxitmlst
@@ -1381,7 +1390,8 @@ case+ rparen of
 | d0exp_RPAREN_cons0(_) =>
   D1Elist(d1es1) where
   {
-    val d1es1 = trans01_dexplst(d0es1)
+    val
+    d1es1 = trans01_dexplst(d0es1)
   }
 | d0exp_RPAREN_cons1(_, d0es2, _) =>
   D1Elist(d1es1, d1es2) where

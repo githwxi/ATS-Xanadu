@@ -258,7 +258,41 @@ implement
 FC2cloptr = FC2clo(1)
 implement
 FC2cloref = FC2clo(~1)
+implement
+FC2lincloflt = FC2clo(2)
+implement
+FC2lincloptr = FC2clo(3)
 
+(* ****** ****** *)
+//
+implement
+funclo2_islin(fc2) =
+(
+case+ fc2 of
+| FC2fun() => false
+| FC2clo(knd) =>
+  (
+  ifcase
+  | knd=LINCLOFLT => true
+  | knd=LINCLOPTR => true
+  | _ (* non-FC2lin... *) => false
+  )
+) (* end of [funclo2_islin] *)
+//
+implement
+funclo2_linize(fc2) =
+(
+case+ fc2 of
+| FC2fun() => fc2
+| FC2clo(knd) =>
+  (
+  ifcase
+  | knd=CLOFLT => FC2lincloflt
+  | knd=CLOPTR => FC2lincloptr
+  | _ (* else *) => fc2(*nonlin*)
+  )
+) (* end of [funclo2_linize] *)
+//
 (* ****** ****** *)
 //
 implement

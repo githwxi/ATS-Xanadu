@@ -214,17 +214,26 @@ case+ s2tb of
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_tcode] *)
 //
+(* ****** ****** *)
+//
 implement
 sort2_is_impred
   (s2t0) =
 (
 case+ s2t0 of
+//
 | S2Tbas(s2tb) =>
-(
+  (
   case+ s2tb of
-  | T2BASimp(_, _) => true | _ => false
-)
-| _ (* non-S2Tbas *) => false
+  | T2BASimp _ => true
+  | _ (* else *) => false
+  )
+//
+| S2Tfun(_, s2t1) =>
+  sort2_is_impred(s2t1)
+//
+| _ (*rest-of-sort2*) => false
+//
 ) (* end of [sort2_is_impred] *)
 //
 (* ****** ****** *)
@@ -335,55 +344,6 @@ end // end of [local]
 (* ****** ****** *)
 
 local
-//
-typedef
-s2xtv_struct = $rec
-{
-  s2xtv_loc= loc_t
-,
-  s2xtv_sort= sort2
-,
-  s2xtv_stamp= stamp
-}
-//
-absimpl
-s2xtv_tbox=ref(s2xtv_struct)
-//
-in (* in-of-local *)
-//
-implement
-s2xtv_new
-(loc0, s2t0) =
-ref<s2xtv_struct>
-(
-$rec
-{
-s2xtv_loc= loc0
-,
-s2xtv_sort=s2t0
-,
-s2xtv_stamp=stamp
-}
-) where
-{
-val stamp = s2xtv_stamp_new()
-} (* end of [s2xtv_new0] *)
-//
-implement
-s2xtv_get_loc
-  (xtv0) = xtv0->s2xtv_loc
-implement
-s2xtv_get_sort
-  (xtv0) = xtv0->s2xtv_sort
-implement
-s2xtv_get_stamp
-  (xtv0) = xtv0->s2xtv_stamp
-//
-end // end of [local]
-
-(* ****** ****** *)
-
-local
 
 absimpl
 s2var_tbox = $rec{
@@ -423,6 +383,104 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+//
+typedef
+s2xtv_struct =
+@{
+  s2xtv_loc= loc_t
+,
+  s2xtv_sort= sort2
+,
+  s2xtv_sexp= s2exp
+,
+  s2xtv_stamp= stamp
+}
+//
+absimpl
+s2xtv_tbox=ref(s2xtv_struct)
+//
+in (* in-of-local *)
+//
+implement
+s2xtv_new
+(loc0, s2t0) =
+(
+ref<s2xtv_struct>
+@{
+  s2xtv_loc= loc0
+,
+  s2xtv_sort= s2t0
+,
+  s2xtv_sexp= s2e0
+,
+  s2xtv_stamp= stamp
+}
+) where
+{
+val s2e0 = the_s2exp_none0
+val stamp = s2xtv_stamp_new()
+} (* end of [s2xtv_new] *)
+//
+implement
+s2xtv_get_loc
+  (xtv0) = xtv0->s2xtv_loc
+implement
+s2xtv_get_sort
+  (xtv0) = xtv0->s2xtv_sort
+//
+implement
+s2xtv_get_sexp
+  (xtv0) = xtv0->s2xtv_sexp
+implement
+s2xtv_set_sexp
+  (xtv0, s2e0) =
+  (xtv0->s2xtv_sexp := s2e0)
+//
+implement
+s2xtv_get_stamp
+  (xtv0) = xtv0->s2xtv_stamp
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+eq_tyrec_tyrec
+(x1, x2) =
+(
+case+
+(x1, x2) of
+|
+(
+TYRECbox0()
+, 
+TYRECbox0()) => true
+//
+|
+(
+TYRECbox1()
+, 
+TYRECbox1()) => true
+//
+|
+(
+TYRECflt0()
+, 
+TYRECflt0()) => true
+//
+|
+(
+TYRECflt2(nm1)
+, 
+TYRECflt2(nm2)) => (nm1 = nm2)
+//
+|
+(_(*else*), _(*else*)) => false
+) (* eq_tyrec_tyrec *)
+
+(* ****** ****** *)
+
 implement
 s2exp_int(i0) = let
   val
@@ -438,6 +496,16 @@ s2exp_chr(c0) = let
 in
   s2exp_make_node(s2t, S2Echr(c0))
 end // end of [s2exp_chr]
+
+(* ****** ****** *)
+
+implement
+s2exp_str(s0) = let
+  val
+  s2t = the_sort2_string
+in
+  s2exp_make_node(s2t, S2Estr(s0))
+end // end of [s2exp_str]
 
 (* ****** ****** *)
 
@@ -599,10 +667,9 @@ s2exp_fun_nil
 (npf, arg, res) =
 (
 s2exp_fun_full
-(fc2, lin, npf, arg, res)
+(fc2, npf, arg, res)
 ) where
 {
-  val lin = 0
   val fc2 = FC2fun((*void*))
 }
 //
@@ -611,26 +678,26 @@ s2exp_fun_all
 (npf, arg, res) =
 (
 s2exp_fun_full
-(fc2, lin, npf, arg, res)
+(fc2, npf, arg, res)
 ) where
 {
-  val lin = 0
   val fc2 = FC2fun((*void*))
 }
 //
 implement
 s2exp_fun_full
-( fc2, lin
+( fc2
 , npf, arg, res) =
 (
 s2exp_make_node
 ( s2t0
-, S2Efun(fc2, lin, npf, arg, res))
+, S2Efun(fc2, npf, arg, res))
 ) where
 {
   val s2t0 =
   (
-  if lin = 0
+  if
+  funclo2_islin(fc2)
   then the_sort2_tbox else the_sort2_vtbox
   ) : sort2 // end of [val]
 } (* end of [s2exp_fun_full] *)
@@ -729,30 +796,40 @@ implement
 s2exp_list1
   (s2es) = let
 //
-  val knd = TYRECflt0
+  val knd =
+  TYRECflt0(*void*)
+  val lin =
+  s2explst_islin(s2es)
   val s2t =
   (
   if
-  s2explst_islin(s2es)
+  lin
   then
-  the_sort2_vtype else the_sort2_type(*~lin*)
+  the_sort2_vtype
+  else
+    the_sort2_type(*~lin*)
+  // end of [if]
   ) : sort2 // end of [val]
   val ls2es =
   labs2explst_make_list1(s2es)
 //
 in
-  s2exp_make_node(s2t, S2Etyrec(knd, 0, ls2es))
+  s2exp_make_node
+  (s2t, S2Etyrec(knd, ~1(*npf*), ls2es))
 end // end of [s2exp_list1]
 
 implement
 s2exp_list2
   (s2es1, s2es2) = let
 //
-  val knd = TYRECflt0
+  val knd =
+  TYRECflt0(*void*)
+  val islin =
+  s2explst_islin(s2es1)
   val s2t =
   (
   if
-  s2explst_islin(s2es1)
+  islin
   then
   the_sort2_vtype else
   (
@@ -805,16 +882,19 @@ val knd =
 if
 islin
 then
-(if knd = 0 then TYRECflt0 else TYRECbox1)
+(if knd = 0
+ then TYRECflt0 else TYRECbox1)
 else
-(if knd = 0 then TYRECflt0 else TYRECbox0)
+(if knd = 0
+ then TYRECflt0 else TYRECbox0)
 ) : tyrec // end of [val]
 //
 val
 ls2es = labs2explst_make_list1(s2es)
 //
 in
-  s2exp_make_node(s2t0, S2Etyrec(knd, 0, ls2es))
+  s2exp_make_node
+  (s2t0, S2Etyrec(knd, ~1(*npf*), ls2es))
 end // end of [s2exp_tuple1]
 
 (* ****** ****** *)
@@ -907,13 +987,16 @@ val knd =
 if
 islin
 then
-(if knd = 0 then TYRECflt0 else TYRECbox1)
+(if knd = 0
+ then TYRECflt0 else TYRECbox1)
 else
-(if knd = 0 then TYRECflt0 else TYRECbox0)
+(if knd = 0
+ then TYRECflt0 else TYRECbox0)
 ) : tyrec // end of [val]
 //
 in
-  s2exp_make_node(s2t0, S2Etyrec(knd, 0, ls2es))
+  s2exp_make_node
+  (s2t0, S2Etyrec(knd, ~1(*npf*), ls2es))
 end // end of [s2exp_record1]
 
 (* ****** ****** *)
@@ -973,13 +1056,17 @@ end // end of [s2exp_record2]
 //
 implement
 s2exp_tyext
-  (s2t0, s2es) =
+  (s2t0, tnm1, s2es) =
 (
-  s2exp_make_node
-  (s2t0, S2Etyext(s2es))
+s2exp_make_node
+(s2t0, S2Etyext(tnm1, s2es))
 )
 //
 (* ****** ****** *)
+//
+implement
+the_s2exp_none0 =
+  s2exp_none0((*void*))
 //
 implement
 s2exp_none0() =

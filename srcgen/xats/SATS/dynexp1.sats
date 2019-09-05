@@ -535,29 +535,32 @@ d1exp_node =
 | D1Etuple of
   (token, d1explst, d1explst)
 //
-| D1Eif0 of
-  ( d1exp(*cond*)
-  , d1exp(*then*), d1expopt(*else*))
-//
-| D1Ecase of
-    (token, d1exp, d1claulst)
-  // D1Ecase
+| D1Edtsel of (label, d1expopt)
 //
 | D1Elet of
   (d1eclist, d1explst(*semi*))
 | D1Ewhere of (d1exp, d1eclist)
 //
-| D1Edtsel of (label, d1expopt)
+| D1Eif0 of
+  ( d1exp(*cond*)
+  , d1exp(*then*), d1expopt(*else*))
+//
+| D1Ecase of
+  ( token(*+/0/-*)
+  , d1exp(*value*), d1claulst(*clauses*))
+  // D1Ecase
 //
 | D1Elam of
   ( f1arglst
   , effs1expopt, f1unarrow, d1exp(*body*))
 //
-| D1Eanno of (d1exp, s1exp) // type-annotation
+| D1Eanno of
+  (d1exp, s1exp(*anno*)) // HX: type-annotation
 //
-| D1Equal of (token(*qual*), d1exp) // qualified
+| D1Equal of
+  (token(*qual*), d1exp) // HX: qualified expression
 //
-| D1Enone of (loc_t) // HX: for error indication
+| D1Enone of ((*error*)) // HX: for special treatment
 // end of [d1exp_node]
 //
 and
@@ -566,7 +569,7 @@ f1unarrow =
 | F1UNARROWnone of
   (token(*error*))
 *)
-| F1UNARROWdflt of ()
+| F1UNARROWdflt // default
 | F1UNARROWlist of (s1explst)
 //
 (* ****** ****** *)

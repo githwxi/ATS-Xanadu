@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,79 +28,34 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2018
+// Start Time: August, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-abstype
-stamp_type = ptr
-//
-typedef stamp = stamp_type
-typedef stampopt = Option(stamp)
-//
-(* ****** ****** *)
-//
-fun
-stamp2uint(stamp):<> uint
-//
-overload .uint with stamp2uint
-//
-(* ****** ****** *)
-//
-fun
-lt_stamp_stamp
-(x1: stamp, x2: stamp):<> bool
-fun
-lte_stamp_stamp
-(x1: stamp, x2: stamp):<> bool
-//
-fun
-eq_stamp_stamp
-(x1: stamp, x2: stamp):<> bool
-fun
-neq_stamp_stamp
-(x1: stamp, x2: stamp):<> bool
-//
-fun
-compare_stamp_stamp
-(x1: stamp, x2: stamp):<> (Sgn)
-//
-overload < with lt_stamp_stamp
-overload <= with lte_stamp_stamp
-//
-overload = with eq_stamp_stamp
-overload != with neq_stamp_stamp
-//
-overload compare with compare_stamp_stamp
-//
-(* ****** ****** *)
-//
-fun print_stamp: print_type(stamp)
-fun prerr_stamp: prerr_type(stamp)
-fun fprint_stamp: fprint_type(stamp)
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-abstype stamper_tbox = ptr
-typedef stamper = stamper_tbox
+#staload "./../SATS/basics.sats"
 
 (* ****** ****** *)
 
-fun
-stamper_new((*void*)): stamper
-
-(* ****** ****** *)
-//
-fun
-stamper_set
-  (obj: stamper, n0: uint): void
-//
-(* ****** ****** *)
-
-fun
-stamper_getinc(obj: stamper): stamp
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 
 (* ****** ****** *)
 
-(* end of [xats_stamp0.sats] *)
+#staload "./../SATS/dynexp3.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/trans23.sats"
+
+(* ****** ****** *)
+
+(* end of [trans23_tcheck.dats] *)

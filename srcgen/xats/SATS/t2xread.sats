@@ -94,8 +94,6 @@ t2xread_s2varlst: t2xreader(s2varlst)
 fun{}
 t2xread_s2exp: t2xreader(s2exp)
 fun{}
-t2xread_s2expnul: t2xreader(s2expnul)
-fun{}
 t2xread_s2expopt: t2xreader(s2expopt)
 fun{}
 t2xread_s2explst: t2xreader(s2explst)
