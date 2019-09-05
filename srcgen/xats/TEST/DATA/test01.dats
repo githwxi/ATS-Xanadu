@@ -112,6 +112,31 @@ val y: int = x
 
 (* ****** ****** *)
 
+fun
+<a:type>
+<b:type>
+map
+( xs: list(a)
+, f0: a -<cloref> b) =
+(
+case+ xs of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons(f0(x0), map(xs, f0))
+)
+(* ****** ****** *)
+
+////
+
+fun
+<a:type>
+app2(f: a -> a, x: a) = f(f(x))
+
+
+(* ****** ****** *)
+////
+
 val:
 rec
 fact =
@@ -206,23 +231,6 @@ end
 
 fun
 <a:type>
-<b:type>
-map
-( xs:list(a)
-, f0: a -<cloref> b) =
-(
-case+ xs of
-| list_nil() =>
-  list_nil()
-| list_cons(x0, xs) =>
-  list_cons(f0(x0), map(xs, f0))
-)
-////
-
-(* ****** ****** *)
-
-fun
-<a:type>
 append
 (xs:list(a)
 ,ys:list(a)): list(a) =
@@ -235,12 +243,6 @@ case+ xs of
 ////
 (* ****** ****** *)
 
-fun
-<a:type>
-app2(f: a -> a, x: a): a = f(f(x))
-
-(* ****** ****** *)
-////
 fun succ(x:int):int = x+1
 
 (* ****** ****** *)
