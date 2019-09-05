@@ -70,6 +70,62 @@ overload print with $STM.print_stamp
 
 local
 
+absimpl
+sq2arg_tbox = $rec
+{
+sq2arg_loc= loc_t
+,
+sq2arg_s2vs= s2varlst
+}
+
+in (* in-of-local *)
+
+implement
+sq2arg_make
+(loc, s2vs) = $rec
+{
+sq2arg_loc= loc, sq2arg_s2vs= s2vs
+} (* sq2arg_make *)
+
+implement
+sq2arg_get_loc(x0) = x0.sq2arg_loc
+implement
+sq2arg_get_s2vs(x0) = x0.sq2arg_s2vs
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+tq2arg_tbox = $rec
+{
+tq2arg_loc= loc_t
+,
+tq2arg_s2vs= s2varlst
+}
+
+in (* in-of-local *)
+
+implement
+tq2arg_make
+(loc, s2vs) = $rec
+{
+tq2arg_loc= loc, tq2arg_s2vs= s2vs
+}
+
+implement
+tq2arg_get_loc(x0) = x0.tq2arg_loc
+implement
+tq2arg_get_s2vs(x0) = x0.tq2arg_s2vs
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
 val
 stamper = $STM.stamper_new()
 
@@ -127,30 +183,35 @@ in (* in-of-local *)
 
 implement
 d2con_make_idtp
-  (tok, s2e) =
+  (tok, s2e1) =
 (
 $rec{
   d2con_loc= loc
 , d2con_sym= sym
-, d2con_sexp= s2e
-, d2con_type= t2p
+, d2con_sexp= s2e1
+, d2con_type= t2p2
 , d2con_stamp= stamp
 }
 ) where
 {
   val loc = tok.loc()
   val sym = dexpid_sym(tok)
-  val t2p = s2exp_erase(s2e)
+//
+  val t2p2 = s2exp_erase(s2e1)
 //
   val
   stamp = d2con_stamp_new((*void*))
 //
+(*
   val () =
   println!("d2con_make_idtp: sym = ", sym)
   val () =
-  println!("d2con_make_idtp: s2e = ", s2e)
+  println!("d2con_make_idtp: s2e1 = ", s2e1)
+  val () =
+  println!("d2con_make_idtp: t2p2 = ", t2p2)
   val () =
   println!("d2con_make_idtp: stamp = ", stamp)
+*)
 //
 } (* d2con_make_idtp *)
 
@@ -176,6 +237,7 @@ d2cst_struct = @{
 //
   d2cst_loc= loc_t // loc
 , d2cst_sym= sym_t // name
+, d2cst_tqas= tq2as // tqas
 , d2cst_sexp= s2exp // sexp
 , d2cst_type= t2ype // type
 , d2cst_stamp= stamp // unicity
@@ -195,21 +257,19 @@ ref<d2cst_struct>
 @{
   d2cst_loc= loc
 , d2cst_sym= sym
-, d2cst_sexp= s2e
-, d2cst_type= t2p
+, d2cst_tqas= tqas
+, d2cst_sexp= s2e1
+, d2cst_type= t2p2
 , d2cst_stamp= stamp
 }
 ) where
 {
 //
-  val loc =
-    d2var_get_loc(d2v)
-  val sym =
-    d2var_get_sym(d2v)
-  val s2e =
-    d2var_get_sexp(d2v)
-  val t2p =
-    d2var_get_type(d2v)
+  val loc = d2var_get_loc(d2v)
+  val sym = d2var_get_sym(d2v)
+  val tqas = d2var_get_tqas(d2v)
+  val s2e1 = d2var_get_sexp(d2v)
+  val t2p2 = d2var_get_type(d2v)
 //
   val
   stamp = d2cst_stamp_new((*void*))
@@ -218,21 +278,26 @@ ref<d2cst_struct>
   val () =
   println!("d2cst_make_dvar: d2v = ", d2v)
   val () =
-  println!("d2cst_make_dvar: s2e = ", s2e)
+  println!("d2cst_make_dvar: tqa0 = ", tqa0)
+  val () =
+  println!("d2cst_make_dvar: s2e1 = ", s2e1)
+  val () =
+  println!("d2cst_make_dvar: t2p2 = ", t2p2)
 *)
 //
 } (* d2cst_make_dvar *)
 
 implement
 d2cst_make_idtp
-  (tok, s2e) =
+(tok, tqas, s2e1) =
 (
 ref<d2cst_struct> 
 @{
   d2cst_loc= loc
 , d2cst_sym= sym
-, d2cst_sexp= s2e
-, d2cst_type= t2p
+, d2cst_tqas= tqas
+, d2cst_sexp= s2e1
+, d2cst_type= t2p2
 , d2cst_stamp= stamp
 }
 ) where
@@ -241,7 +306,7 @@ ref<d2cst_struct>
   val loc = tok.loc()
   val sym = dexpid_sym(tok)
 //
-  val t2p = s2exp_erase(s2e)
+  val t2p2 = s2exp_erase(s2e1)
 //
   val
   stamp = d2cst_stamp_new((*void*))
@@ -250,7 +315,11 @@ ref<d2cst_struct>
   val () =
   println!("d2cst_make_idtp: sym = ", sym)
   val () =
-  println!("d2cst_make_idtp: s2e = ", s2e)
+  println!("d2cst_make_idtp: tqa0 = ", tqa0)
+  val () =
+  println!("d2cst_make_idtp: s2e1 = ", s2e1)
+  val () =
+  println!("d2cst_make_idtp: t2p2 = ", t2p2)
 *)
 //
 } (* d2cst_make_idtp *)
@@ -260,6 +329,8 @@ d2cst_get_loc(x0) = x0->d2cst_loc
 implement
 d2cst_get_sym(x0) = x0->d2cst_sym
 implement
+d2cst_get_tqas(x0) = x0->d2cst_tqas
+implement
 d2cst_get_sexp(x0) = x0->d2cst_sexp
 implement
 d2cst_get_type(x0) = x0->d2cst_type
@@ -268,7 +339,7 @@ d2cst_get_stamp(x0) = x0->d2cst_stamp
 //
 implement
 d2cst_set_type
-  (x0, t2p) = (x0->d2cst_type := t2p)
+  (x0, t2p0) = (x0->d2cst_type := t2p0)
 //
 end // end of [local]
 
@@ -281,6 +352,7 @@ d2var_struct = @{
 //
   d2var_loc= loc_t // loc
 , d2var_sym= sym_t // name
+, d2var_tqas= tq2as // tqas
 , d2var_sexp= s2exp // sexp
 , d2var_type= t2ype // type
 , d2var_stamp= stamp // unicity
@@ -313,21 +385,28 @@ ref<d2var_struct>
 @{
   d2var_loc= loc
 , d2var_sym= sym
+, d2var_tqas= tqas
 , d2var_sexp= s2e1
 , d2var_type= t2p2
 , d2var_stamp= stamp
 }
 ) where
 {
+//
+  val tqas = list_nil()
+//
   val s2e1 = the_s2exp_none0
   val t2p2 = the_t2ype_none0
   val stamp = d2var_stamp_new()
+//
 }
 //
 implement
 d2var_get_loc(x0) = x0->d2var_loc
 implement
 d2var_get_sym(x0) = x0->d2var_sym
+implement
+d2var_get_tqas(x0) = x0->d2var_tqas
 implement
 d2var_get_sexp(x0) = x0->d2var_sexp
 implement
@@ -336,8 +415,11 @@ implement
 d2var_get_stamp(x0) = x0->d2var_stamp
 //
 implement
+d2var_set_tqas
+  (x0, tqas) = (x0->d2var_tqas := tqas)
+implement
 d2var_set_type
-  (x0, t2p) = (x0->d2var_type := t2p)
+  (x0, t2p0) = (x0->d2var_type := t2p0)
 //
 end // end of [local]
 
@@ -768,62 +850,6 @@ d2ecl_make_node
 (
   d0c0.loc(), D2Cnone1(d0c0)
 )
-
-(* ****** ****** *)
-
-local
-
-absimpl
-sq2arg_tbox = $rec
-{
-sq2arg_loc= loc_t
-,
-sq2arg_s2vs= s2varlst
-}
-
-in (* in-of-local *)
-
-implement
-sq2arg_make
-(loc, s2vs) = $rec
-{
-sq2arg_loc= loc, sq2arg_s2vs= s2vs
-} (* sq2arg_make *)
-
-implement
-sq2arg_get_loc(x0) = x0.sq2arg_loc
-implement
-sq2arg_get_s2vs(x0) = x0.sq2arg_s2vs
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
-tq2arg_tbox = $rec
-{
-tq2arg_loc= loc_t
-,
-tq2arg_s2vs= s2varlst
-}
-
-in (* in-of-local *)
-
-implement
-tq2arg_make
-(loc, s2vs) = $rec
-{
-tq2arg_loc= loc, tq2arg_s2vs= s2vs
-}
-
-implement
-tq2arg_get_loc(x0) = x0.tq2arg_loc
-implement
-tq2arg_get_s2vs(x0) = x0.tq2arg_s2vs
-
-end // end of [local]
 
 (* ****** ****** *)
 

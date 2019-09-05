@@ -2434,7 +2434,11 @@ trans12_tqarglst(tqas)
 val (pf0|()) =
 the_sexpenv_pushnil()
 //
-local
+val ((*void*)) =
+(
+  loop(tqas)
+) where
+{
 fun
 loop
 (xs: tq2arglst): void =
@@ -2450,11 +2454,28 @@ case+ xs of
     the_sexpenv_add_varlst(x0.s2vs())
   }
 ) (* end of [loop] *)
-in
-val ((*void*)) = loop(tqas)
-end // end of [local]
+} (* end of [local] *)
 //
-val d2vs = auxd2vs(f1ds)
+val d2vs =
+let
+val
+d2vs = auxd2vs(f1ds)
+fun
+loop
+(d2vs: d2varlst): void =
+(
+case+ d2vs of
+| list_nil() => ()
+| list_cons(d2v0, d2vs) =>
+  let
+  val () = d2v0.tqas(tqas) in loop(d2vs)
+  end
+)
+in (*in-of-let*)
+let
+val () = loop(d2vs) in d2vs
+end
+end // end=of-let // end-of-val
 //
 val d2cs =
 auxd2cs_rec(isr, d2vs, f1ds)
@@ -3290,7 +3311,8 @@ val ((*void*)) = loop(tqas)
 end // end of [local]
 //
 val
-d2cs = aux_dcstdeclist(d1cs)
+d2cs =
+aux_dcstdeclist(tqas, d1cs)
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
@@ -3306,7 +3328,9 @@ end // end of [aux_dynconst]
 
 and
 aux_dcstdecl
-( d1c0
+( tqas
+: tq2arglst
+, d1c0
 : d1cstdecl): d2cst = let
 //
   val+D1CSTDECL(rcd) = d1c0
@@ -3324,7 +3348,7 @@ val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
 //
 in
-  d2cst_make_idtp(rcd.nam, s2e0)
+  d2cst_make_idtp(rcd.nam, tqas, s2e0)
 end // end of [aux_dcstdecl]
 
 and
@@ -3542,7 +3566,9 @@ end
 
 and
 aux_dcstdeclist
-( d1cs
+( tqas
+: tq2arglst
+, d1cs
 : d1cstdeclist): d2cstlst =
 list_vt2t
 (
@@ -3550,7 +3576,7 @@ list_map<d1cstdecl><d2cst>(d1cs)
 ) where
 {
 implement
-list_map$fopr<d1cstdecl><d2cst>(d1c) = aux_dcstdecl(d1c)
+list_map$fopr<d1cstdecl><d2cst>(d1c0) = aux_dcstdecl(tqas, d1c0)
 } (* end of [aux_dcstdeclist] *)
 
 (* ****** ****** *)

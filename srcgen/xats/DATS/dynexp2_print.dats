@@ -716,8 +716,8 @@ in
   fprint!
   ( out
   , "V2ALDECL@{"
-  , "pat=", rcd.pat
-  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+  , "pat=", rcd.pat, ", "
+  , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
 end // end of [fprint_v2aldecl]
 
 (* ****** ****** *)
@@ -739,9 +739,9 @@ in
   fprint!
   ( out
   , "V2ARDECL@{"
-  , "d2v=", rcd.d2v
-  , ", wth=", rcd.wth
-  , ", res=", rcd.res, ", ini=", rcd.ini, "}")
+  , "d2v=", rcd.d2v, ", "
+  , "wth=", rcd.wth, ", "
+  , "res=", rcd.res, ", ", "ini=", rcd.ini, "}")
 end // end of [fprint_v2ardecl]
 
 (* ****** ****** *)
@@ -763,11 +763,11 @@ in
   fprint!
   ( out
   , "F2UNDECL@{"
-  , "nam=", rcd.nam
-  , ", arg=", rcd.arg
-  , ", res=", rcd.res
-  , ", dct=", rcd.dct
-  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+  , "nam=", rcd.nam, ", "
+  , "arg=", rcd.arg, ", "
+  , "res=", rcd.res, ", "
+  , "dct=", rcd.dct, ", "
+  , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
 
 (* ****** ****** *)
