@@ -68,6 +68,25 @@ label_tbox = label
 in (* in-of-local *)
 
 implement
+eq_label_label
+  (l1, l2) =
+(
+case+ l1 of
+| LABint(i1) =>
+  (
+  case+ l2 of
+  | LABint(i2) => (i1 = i2) | _ => false
+  )
+| LABsym(s1) =>
+  (
+  case+ l2 of
+  | LABsym(s2) => (s1 = s2) | _ => false
+  )
+) (* end of [eq_label_label] *)
+
+(* ****** ****** *)
+
+implement
 fprint_label
   (out, l0) =
 (
@@ -77,6 +96,8 @@ case+ l0 of
 | LABsym(s0) =>
   fprint!(out, "LABsym(", s0, ")")
 )
+
+(* ****** ****** *)
 
 implement
 label_nil = LABsym(symbol_nil)

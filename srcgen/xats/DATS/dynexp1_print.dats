@@ -430,11 +430,22 @@ x0.node() of
 //
 | D1Etuple(tok, d1es) =>
   fprint!
-  (out, "D1Etuple(", tok, "; ", d1es, ")")
+  ( out
+  , "D1Etuple(", tok, "; ", d1es, ")")
 | D1Etuple(tok, d1es1, d1es2) =>
   fprint!
-  ( out
-  , "D1Etuple(", tok, "; ", d1es1, "; ", d1es2, ")")
+  ( out, "D1Etuple("
+  , tok, "; ", d1es1, "; ", d1es2, ")")
+//
+| D1Edtsel(lab1, arg2) =>
+  fprint!
+  (out, "D1Edtsel(", lab1, "; ", arg2, ")")
+//
+| D1Elet(d1cs, d1es) =>
+  fprint!(out, "D1Elet(", d1cs, "; ", d1es, ")")
+//
+| D1Ewhere(d1e1, d1cs) =>
+  fprint!(out, "D1Ewhere(", d1e1, "; ", d1cs, ")")
 //
 | D1Eif0(d1e1, d1e2, opt3) =>
   fprint!
@@ -446,35 +457,24 @@ x0.node() of
   ( out
   , "D1Ecase(", knd, "; ", d1e1, "; ", dcls , ")")
 //
-| D1Elet(d1cs, d1es) =>
-  (
-    fprint!(out, "D1Elet(", d1cs, "; ", d1es, ")")
-  )
-//
-| D1Ewhere(d1e1, d1cs) =>
-  (
-    fprint!(out, "D1Ewhere(", d1e1, "; ", d1cs, ")")
-  )
-//
-| D1Edtsel(lab1, arg2) =>
-  (
-    fprint!(out, "D1Edtsel(", lab1, "; ", arg2, ")")
-  )
-//
 | D1Elam
-  (arg, res, farrw, fbody) =>
+  (farg, tres, arrw, body) =>
   fprint!
   ( out
   , "D1Elam(", "; "
-  , arg, "; ", res, "; ", farrw, "; ", fbody, ")")
+  , farg, "; ", tres, "; ", arrw, "; ", body, ")")
 //
 | D1Eanno(d1e1, s1e2) =>
-  fprint!(out, "D1Eanno(", d1e1, "; ", s1e2, ")")
+  (
+    fprint!(out, "D1Eanno(", d1e1, "; ", s1e2, ")")
+  )
 //
 | D1Equal(tok1, d1e2) =>
-  fprint!(out, "D1Equal(", tok1, "; ", d1e2, ")")
+  (
+    fprint!(out, "D1Equal(", tok1, "; ", d1e2, ")")
+  )
 //
-| D1Enone(loc) => fprint!(out, "D1Enone(", loc, ")")
+| D1Enone((*void*)) => fprint!(out, "D1Enone(", ")")
 //
 ) (* fprint_d1exp *)
 

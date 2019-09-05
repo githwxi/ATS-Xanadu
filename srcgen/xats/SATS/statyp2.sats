@@ -34,6 +34,7 @@
 (* ****** ****** *)
 
 #staload"./basics.sats"
+#staload"./stamp0.sats"
 
 (* ****** ****** *)
 //
@@ -47,7 +48,7 @@ typedef label = $LAB.label
 //
 (* ****** ****** *)
 
-#staload "./staexp2.sats"
+#staload S2E = "./staexp2.sats"
 
 (* ****** ****** *)
 //
@@ -65,10 +66,27 @@ where t2srtlst = List0(t2srt)
 //
 (* ****** ****** *)
 //
+(*
 abstbox t2ype_tbox = ptr
-typedef t2ype = t2ype_tbox
+*)
+//
+typedef loc_t = $S2E.loc_t
+//
+typedef sort2 = $S2E.sort2
+typedef s2cst = $S2E.s2cst
+typedef s2var = $S2E.s2var
+typedef s2exp = $S2E.s2exp
+typedef t2ype = $S2E.t2ype
+//
+typedef tyrec = $S2E.tyrec
+//
+typedef s2cstlst = List0(s2cst)
+typedef s2varlst = List0(s2var)
+typedef s2explst = List0(s2exp)
 typedef t2ypelst = List0(t2ype)
-typedef t2ypeopt = Option(t2ype)
+//
+typedef labs2exp = $S2E.labs2exp
+typedef labs2explst = List0(labs2exp)
 //
 (* ****** ****** *)
 //
@@ -85,6 +103,28 @@ fcr_new1(fc2: funclo2): fcr
 abstbox t2xtv_tbox = ptr
 typedef t2xtv = t2xtv_tbox
 //
+fun
+t2xtv_get_loc(t2xtv): loc_t
+fun
+t2xtv_get_type(t2xtv): t2ype
+fun
+t2xtv_set_type(t2xtv, t2ype): void
+fun
+t2xtv_get_stamp(t2xtv): stamp
+//
+fun
+eq_t2xtv_t2xtv
+(xtv1: t2xtv, xtv2: t2xtv): bool
+//
+overload = with eq_t2xtv_t2xtv
+//
+overload .loc with t2xtv_get_loc
+//
+overload .type with t2xtv_get_type
+overload .type with t2xtv_set_type
+//
+overload .stamp with t2xtv_get_stamp
+//
 (* ****** ****** *)
 //
 datatype
@@ -95,16 +135,39 @@ labt2ypelst = List0(labt2ype)
 //
 (* ****** ****** *)
 //
-fun t2ype_sint(): t2ype
-fun t2ype_uint(): t2ype
+fun
+print_labt2ype: print_type(labt2ype)
+fun
+prerr_labt2ype: prerr_type(labt2ype)
+fun
+fprint_labt2ype: fprint_type(labt2ype)
 //
-fun t2ype_bool(): t2ype
-fun t2ype_char(): t2ype
+overload print with print_labt2ype
+overload prerr with prerr_labt2ype
+overload fprint with fprint_labt2ype
 //
-fun t2ype_float(): t2ype
-fun t2ype_double(): t2ype
+(* ****** ****** *)
 //
-fun t2ype_string(): t2ype
+val
+the_t2ype_sint: t2ype
+val
+the_t2ype_uint: t2ype
+//
+val
+the_t2ype_bool: t2ype
+val
+the_t2ype_char: t2ype
+//
+val
+the_t2ype_void: t2ype
+//
+val
+the_t2ype_float: t2ype
+and
+the_t2ype_double: t2ype
+//
+val
+the_t2ype_string: t2ype
 //
 (* ****** ****** *)
 //
@@ -131,6 +194,9 @@ t2ype_node =
 //
 | T2Pxtv of t2xtv // ext-variable
 //
+| T2Papp of (t2ype, t2ypelst)
+| T2Plam of (s2varlst, t2ype)
+//
 | T2Pfun of
   ( fcr//ref(funclo2)
   , int(*npf*),t2ypelst(*arg*),t2ype(*res*)
@@ -141,10 +207,13 @@ t2ype_node =
 | T2Puni of // forall quantifier
   (s2varlst(*vars*), t2ype(*body*))
 //
+| T2Ptyext of
+  (string(*name*), t2ypelst) // external
+//
 | T2Ptyrec of
   (tyrec(*knd*), int(*npf*), labt2ypelst)
 //
-| T2Pnone0 of () | T2Pnone1 of (s2exp)
+| T2Pnone0 of ((*void*)) | T2Pnone1 of (s2exp)
 //
 (* ****** ****** *)
 //
@@ -157,6 +226,16 @@ overload .sort with t2ype_get_sort
 overload .node with t2ype_get_node
 //
 (* ****** ****** *)
+//
+fun
+t2ype_eval(t2p: t2ype): t2ype
+//
+overload .eval with t2ype_eval
+//
+(* ****** ****** *)
+//
+val
+the_t2ype_none0: t2ype
 //
 fun
 t2ype_none0((*void*)): t2ype
@@ -190,6 +269,9 @@ fun
 t2ype_new(loc0: loc_t): t2ype
 fun
 t2ype_xtv(xtv0: t2xtv): t2ype
+fun
+t2ype_srt_xtv
+(s2t0: sort2, xtv0: t2xtv): t2ype
 //
 (* ****** ****** *)
 
@@ -212,10 +294,37 @@ t2ype_fun1
 , arg: t2ypelst, res: t2ype): t2ype
 //
 (* ****** ****** *)
-
+//
 fun
-s2exp_erase(s2e0: s2exp): t2ype
-
+t2ype_subst
+( t2p0: t2ype
+, s2v0: s2var, tsub: t2ype
+) : t2ype // end of [t2ype_subst]
+fun
+t2ype_substs
+( t2p0: t2ype
+, s2vs: s2varlst, tsub: t2ypelst
+) : t2ype // end of [t2ype_substs]
+//
+(* ****** ****** *)
+//
+fun
+t2ype_hnfize(t2p0: t2ype): t2ype
+//
+overload hnfize with t2ype_hnfize
+//
+(* ****** ****** *)
+//
+fun
+s2exp_erase
+  (s2e0: s2exp): t2ype
+fun
+s2explst_erase
+  (s2es: s2explst): t2ypelst
+fun
+labs2explst_erase
+  (ls2es: labs2explst): labt2ypelst
+//
 (* ****** ****** *)
 
 (* end of [xats_statyp2.sats] *)

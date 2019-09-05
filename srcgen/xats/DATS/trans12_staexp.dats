@@ -1118,21 +1118,24 @@ s1e2.node() of
 val
 s2t0 = the_sort2_type
 val
+tnm1 =
+(
+case+ s1es of
+| list_nil() => ""
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | S1Estr(s0) => token2sstr(s0) | _ => ""
+  )
+) : string // end of [val]
+val
 s2es =
 (
 case+ s1es of
 | list_nil() =>
   list_nil()
 | list_cons(x0, xs) =>
-  (
-    list_cons(y0, ys)
-  ) where
-  {
-    val y0 =
-    trans12_sexp(x0)
-    val ys =
-    trans12_sexplst_ck(xs, s2t0)
-  }
+  trans12_sexplst_ck(xs, s2t0)
 ) : s2explst // end of [val]
 //
 in
@@ -1140,7 +1143,7 @@ in
 s2e0 where
 {
   val s2e0 =
-  s2exp_tyext(the_sort2_type, s2es)
+  s2exp_tyext(the_sort2_type, tnm1, s2es)
 (*
   val ((*void*)) =
   println!("trans12_sexp: ")
@@ -1258,8 +1261,10 @@ in
 if
 isarrw(s1e1)
 then let
+//
   var npf
-    : int = 0
+    : int = ~1
+//
   val s2es =
   (
   case+
@@ -1278,8 +1283,10 @@ then let
   | _(*non-S1Elist*) =>
     list_sing
     (trans12_sexp_ci(s1e2))
-  ) : s2explst
+  ) : s2explst // end-of-val
+//
   val s2e3 = trans12_sexp_ci(s1e3)
+//
 in
   s2exp_fun_all(npf, s2es, s2e3)
 end // end of [then]
@@ -1292,8 +1299,14 @@ s1e1.node() of
   var npf
     : int = 0
 //
-  val fc2 = s1exp_get_fc2(s1e1)
   val lin = s1exp_get_lin(s1e1)
+  val fc2 = s1exp_get_fc2(s1e1)
+//
+  val fc2 =
+  (
+  if lin = 0 then fc2 else funclo2_linize(fc2)
+  ) : funclo2
+//
 (*
   val eff = s1exp_get_eff(s1e1)
 *)
@@ -1319,7 +1332,7 @@ s1e1.node() of
   ) : s2explst
   val s2e3 = trans12_sexp_ci(s1e3)
   in
-    s2exp_fun_full(fc2, lin, npf, s2es, s2e3)
+    s2exp_fun_full(fc2, npf, s2es, s2e3)
   end
 | _(*non-S1Eimp*) =>
   (
@@ -1572,10 +1585,8 @@ s1e0.node() of
 (*
 | S1Eflt of token
 *)
-(*
 | S1Estr(tok) =>
   s2exp_str(token2sstr(tok))
-*)
 //
 | S1Eapp1 _ => auxapp1(s1e0)
 | S1Eapp2 _ => auxapp2(s1e0)

@@ -158,8 +158,7 @@ s2e0.node() of
   }
 //
 | S2Efun
-  ( fc0
-  , lin, npf, s2es, s2e1) =>
+  (fc0, npf, s2es, s2e1) =>
   {
     val () = t2xread_s2exp<>(s2e1)
     val () = t2xread_s2explst<>(s2es)
@@ -267,16 +266,6 @@ case+ opt of
 | None() => ()
 | Some(s2e) =>
   t2xread_s2exp<>(s2e)
-)
-//
-implement
-{}(*tmp*)
-t2xread_s2expnul(opt) =
-(
-if
-iseqz(opt)
-then ((*void*))
-else t2xread_s2exp<>(unsome(opt))
 )
 //
 implement

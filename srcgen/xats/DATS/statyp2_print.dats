@@ -41,8 +41,17 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+STM = "./../SATS/stamp0.sats"
+overload
+fprint with $STM.fprint_stamp
 //
+#staload
+LAB = "./../SATS/label0.sats"
+overload
+fprint with $LAB.fprint_label
+//
+#staload
+SYM = "./../SATS/symbol.sats"
 overload
 fprint with $SYM.fprint_symbol
 //
@@ -70,6 +79,13 @@ implement
 prerr_t2ype(x0) =
 fprint_t2ype(stdout_ref, x0) 
 //
+local
+
+implement
+fprint_val<labt2ype> = fprint_labt2ype
+
+in (* in-of-local *)
+//
 implement
 fprint_t2ype
   (out, x0) =
@@ -84,24 +100,72 @@ x0.node() of
 | T2Pvar(s2v) =>
   fprint!(out, "T2Pvar(", s2v, ")")
 //
-| T2Pxtv(t2x) =>
-  fprint!(out, "T2Pxtv(", "...", ")")
+| T2Pxtv(xtv) =>
+  let
+(*
+    val t2p = "..."
+*)
+    val t2p = t2xtv_get_type(xtv)
+  in
+    case+
+    t2p.node() of
+    | T2Pnone0() =>
+      (
+      fprint!
+      (out, "T2Pxtv(", stm, ")")
+      ) where
+      {
+        val stm = xtv.stamp((*void*))
+      }
+    | _ (* else *) =>
+      fprint!(out, "T2Pxtv(", t2p, ")")
+  end
+//
+| T2Papp(t2p1, t2ps) =>
+  fprint!(out, "T2Papp(", t2p1, "; ", t2ps, ")")
+| T2Plam(s2vs, t2p1) =>
+  fprint!(out, "T2Plam(", s2vs, "; ", t2p1, ")")
 //
 | T2Pfun(fcr, npf, arg, res) =>
-  fprint!(out, "T2Pfun(", "...", ")")
+  fprint!
+  (out, "T2Pfun(", npf, "; ", arg, "; ", res, ")")
 //
 | T2Pexi(s2vs, body) =>
-  fprint!(out, "T2Pexi(", "...", ")")
+  fprint!(out, "T2Pexi(", s2vs, "; ", body, ")")
 | T2Puni(s2vs, body) =>
-  fprint!(out, "T2Puni(", "...", ")")
+  fprint!(out, "T2Puni(", s2vs, "; ", body, ")")
 //
-| T2Ptyrec(knd, npf, lxs) =>
-  fprint!(out, "T2Ptyrec(", "...", ")")
+| T2Ptyext(tnm1, t2ps) =>
+  fprint!(out, "T2Ptyext(", tnm1, "; ", t2ps, ")")
+//
+| T2Ptyrec(knd1, npf2, ltps) =>
+  fprint!
+  ( out
+  , "T2Ptyrec(", knd1, "; ", npf2, "; ", ltps, ")")
 //
 | T2Pnone0() => fprint!(out, "T2Pnone0(", ")")
 | T2Pnone1(s2e) => fprint!(out, "T2Pnone1(", s2e, ")")
 //
 )
+//
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+print_labt2ype(x0) =
+fprint_labt2ype(stdout_ref, x0) 
+implement
+prerr_labt2ype(x0) =
+fprint_labt2ype(stdout_ref, x0) 
+//
+implement
+fprint_labt2ype
+  (out, lt2p) =
+(
+case+ lt2p of
+| TLABELED(l0, t2p) => fprint!(out, l0, "=", t2p)
+) (* end of [fprint_labt2ype] *)
 //
 (* ****** ****** *)
 

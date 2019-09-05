@@ -747,6 +747,12 @@ overload trans12 with trans12_dexplst
 *)
 //
 (* ****** ****** *)
+
+fun
+trans12_dexpseq
+(loc0: loc_t, d1es: d1explst): d2exp
+
+(* ****** ****** *)
 //
 fun
 trans12_decl: d1ecl -> d2ecl

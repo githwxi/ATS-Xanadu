@@ -483,6 +483,16 @@ overload fprint with fprint_s2arg
 //
 *)
 (* ****** ****** *)
+//
+abstbox s2exp_tbox = ptr
+abstbox s2hnf_tbox = ptr
+abstbox t2ype_tbox = ptr
+//
+typedef s2exp = s2exp_tbox
+typedef s2hnf = s2hnf_tbox
+typedef t2ype = t2ype_tbox
+//
+(* ****** ****** *)
 
 abstbox s2xtv_tbox = ptr
 typedef s2xtv = s2xtv_tbox
@@ -497,11 +507,21 @@ fun
 s2xtv_get_loc(s2xtv): loc_t
 fun
 s2xtv_get_sort(s2xtv): sort2
+//
+fun
+s2xtv_get_sexp(s2xtv): s2exp
+fun
+s2xtv_set_sexp(s2xtv, s2exp): void
+//
 fun
 s2xtv_get_stamp(s2xtv): stamp
 //
 overload .loc with s2xtv_get_loc
 overload .sort with s2xtv_get_sort
+//
+overload .sexp with s2xtv_get_sexp
+overload .sexp with s2xtv_set_sexp
+//
 overload .stamp with s2xtv_get_stamp
 //
 (* ****** ****** *)
@@ -555,12 +575,6 @@ overload .sconlst with t2dat_get_sconlst
 //
 (* ****** ****** *)
 //
-abstbox s2exp_tbox = ptr
-abstbox s2hnf_tbox = ptr
-//
-(* ****** ****** *)
-//
-typedef s2exp = s2exp_tbox
 typedef s2explst = List0(s2exp)
 typedef s2expopt = Option(s2exp)
 //
@@ -572,10 +586,14 @@ vtypedef s2expopt_vt = Option_vt(s2exp)
 //
 (* ****** ****** *)
 //
-typedef s2hnf = s2hnf_tbox
 typedef s2hnflst = List0(s2hnf)
 typedef s2hnfopt = Option(s2hnf)
 //
+(* ****** ****** *)
+
+typedef t2ypelst = List0(t2ype)
+typedef t2ypeopt = Option(t2ype)
+
 (* ****** ****** *)
 //
 (*
@@ -632,6 +650,13 @@ labs2explst_vt = List0_vt(labs2exp)
 (* ****** ****** *)
 //
 fun
+eq_tyrec_tyrec
+(k1: tyrec, k2: tyrec): bool
+overload = with eq_tyrec_tyrec
+//
+(* ****** ****** *)
+//
+fun
 print_tyrec: print_type(tyrec)
 fun
 prerr_tyrec: print_type(tyrec)
@@ -649,6 +674,8 @@ s2exp_node =
 //
 | S2Eint of int // integer
 | S2Echr of char // character
+//
+| S2Estr of string // string
 //
 | S2Ecst of s2cst // constant
 //
@@ -677,7 +704,6 @@ s2exp_node =
 | S2Efun of
   ( // function type
     funclo2
-  , int(*lin*)
   , int(*npf*), s2explst(*arg*), s2exp(*res*)
   ) (* end of S2Efun *)
 //
@@ -701,7 +727,8 @@ s2exp_node =
 | S2Elist of s2explst // HX: temporary use
 *)
 //
-| S2Etyext of (s2explst) (* externlly named *)
+| S2Etyext of
+  (string(*name*), s2explst) (* external *)
 //
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
@@ -726,6 +753,9 @@ fun
 s2exp_int(i0: int): s2exp
 fun
 s2exp_chr(c0: char): s2exp
+//
+fun
+s2exp_str(s0: string): s2exp
 //
 fun
 s2exp_cst(s2c: s2cst): s2exp
@@ -786,7 +816,6 @@ fun
 s2exp_fun_full
 ( fc2
 : funclo2
-, lin: int
 , npf: int
 , arg: s2explst, res: s2exp): s2exp
 //
@@ -832,12 +861,16 @@ s2exp_record2
 //
 fun
 s2exp_tyext
-(s2t0: sort2, s2es: s2explst): s2exp
+( s2t0: sort2
+, tnm1: string, s2es: s2explst): s2exp
 //
 (* ****** ****** *)
 //
+val
+the_s2exp_none0: s2exp
+//
 fun
-s2exp_none0(): s2exp
+s2exp_none0((*void*)): s2exp
 fun
 s2exp_none1(s1e: s1exp): s2exp
 //
@@ -852,7 +885,7 @@ s2exp_none1_s2t
 //
 fun
 s2exp_make_node
-(s2t0: sort2, node: s2exp_node): s2exp
+  (s2t0: sort2, node: s2exp_node): s2exp
 //
 (* ****** ****** *)
 //
@@ -1107,52 +1140,32 @@ overload unsome with s2cstnul_unsome
 //
 (* ****** ****** *)
 //
-abstype
-s2expnul_tbox(l:addr) = ptr
-typedef
-s2expnul(l:addr) = s2expnul_tbox(l)
-//
-typedef s2expnul = [l:agez] s2expnul(l)
-//
-(* ****** ****** *)
-//
-fun
-s2expnul_none
-((*void*)): s2expnul(null)
-fun
-s2expnul_some
-(x0:s2exp):<> [l:agz] s2expnul(l)
-castfn
-s2expnul_unsome
-{l:agz}(x0: s2expnul(l)):<> s2exp
-//
-fun
-s2expnul_iseqz
-{l:addr}(s2expnul(l)): bool(l==null)
-fun
-s2expnul_isneqz
-{l:addr}(s2expnul(l)): bool(l > null)
-//
-overload iseqz with s2expnul_iseqz
-overload isneqz with s2expnul_isneqz
-overload unsome with s2expnul_unsome
-//
-(* ****** ****** *)
-//
-fun
-s2cst_get_def(s2cst): s2expnul
-fun
-stamp_s2cst_def
-(s2c: s2cst, def: s2expnul): void
-//
-(* ****** ****** *)
-//
 fun
 s2cst_get_abs
 (s2c: s2cst): abstdf2
 fun
 stamp_s2cst_abs
 (s2c: s2cst, abs: abstdf2): void
+//
+(* ****** ****** *)
+//
+fun
+s2cst_get_sexp(s2cst): s2exp
+fun
+stamp_s2cst_sexp
+(s2c: s2cst, def: s2exp): void
+//
+overload .sexp with s2cst_get_sexp
+//
+(* ****** ****** *)
+//
+fun
+s2cst_get_type(s2cst): t2ype
+fun
+stamp_s2cst_type
+(s2c: s2cst, def: t2ype): void
+//
+overload .type with s2cst_get_type
 //
 (* ****** ****** *)
 
