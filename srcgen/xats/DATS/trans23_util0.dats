@@ -699,6 +699,17 @@ in
 end (* end of [d3exp_sapp_up] *)
 
 (* ****** ****** *)
+//
+implement
+d3exp_tapp_up
+( loc0
+, d3f0, s2es ) =
+(
+d3exp_make_node
+(loc0, d3f0.type(), D3Etap1(d3f0, s2es))
+)
+//
+(* ****** ****** *)
 
 implement
 d3exp_dapp_up

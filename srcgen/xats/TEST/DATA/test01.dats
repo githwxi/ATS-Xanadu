@@ -1,5 +1,6 @@
 (* ****** ****** *)
 
+(*
 #extern
 val
 gint_add :
@@ -7,8 +8,8 @@ gint_add :
 and
 gint_sub :
 (int, int) -> int
+*)
 
-////
 #extern
 fun
 gint_add :
@@ -111,6 +112,14 @@ val y: int = x
 
 (* ****** ****** *)
 
+val:
+rec
+fact =
+lam(x:int): int =>
+if x > 0 then x*fact(x-1) else 1
+
+(* ****** ****** *)
+////
 fun<>
 foo(n:int): int = foo(n)
 fun<>

@@ -81,6 +81,79 @@ D1E = "./dynexp1.sats"
 
 (* ****** ****** *)
 //
+abstype
+sq2arg_tbox = ptr
+//
+typedef
+sq2arg = sq2arg_tbox
+typedef
+sq2arglst = List0(sq2arg)
+//
+abstype
+tq2arg_tbox = ptr
+//
+typedef
+tq2arg = tq2arg_tbox
+typedef
+tq2arglst = List0(tq2arg)
+//
+(* ****** ****** *)
+//
+typedef sq2as = sq2arglst
+typedef tq2as = tq2arglst
+//
+(* ****** ****** *)
+//
+fun
+sq2arg_get_loc(sq2arg): loc_t
+fun
+sq2arg_get_s2vs(sq2arg): s2varlst
+//
+overload .loc with sq2arg_get_loc
+overload .s2vs with sq2arg_get_s2vs
+//
+fun
+print_sq2arg: print_type(sq2arg)
+fun
+prerr_sq2arg: prerr_type(sq2arg)
+fun
+fprint_sq2arg: fprint_type(sq2arg)
+//
+overload print with print_sq2arg
+overload prerr with prerr_sq2arg
+overload fprint with fprint_sq2arg
+//
+fun
+sq2arg_make
+(loc: loc_t, s2vs: s2varlst): sq2arg
+//
+(* ****** ****** *)
+//
+fun
+tq2arg_get_loc(tq2arg): loc_t
+fun
+tq2arg_get_s2vs(tq2arg): s2varlst
+//
+overload .loc with tq2arg_get_loc
+overload .s2vs with tq2arg_get_s2vs
+//
+fun
+print_tq2arg: print_type(tq2arg)
+fun
+prerr_tq2arg: prerr_type(tq2arg)
+fun
+fprint_tq2arg: fprint_type(tq2arg)
+//
+overload print with print_tq2arg
+overload prerr with prerr_tq2arg
+overload fprint with fprint_tq2arg
+//
+fun
+tq2arg_make
+(loc: loc_t, s2vs: s2varlst): tq2arg
+//
+(* ****** ****** *)
+//
 abstype d2con_tbox = ptr
 typedef d2con = d2con_tbox
 //
@@ -165,6 +238,9 @@ d2cst_get_sexp(d2cst): s2exp
 fun
 d2cst_get_type(d2cst): t2ype
 fun
+d2cst_get_tqas(d2cst): tq2as
+//
+fun
 d2cst_set_type(d2cst, t2ype): void
 //
 fun
@@ -172,18 +248,30 @@ d2var_get_sexp(d2var): s2exp
 fun
 d2var_get_type(d2var): t2ype
 fun
+d2var_get_tqas(d2var): tq2as
+//
+fun
 d2var_set_type(d2var, t2ype): void
+fun
+d2var_set_tqas(d2var, tq2as): void
+//
+(* ****** ****** *)
 //
 overload .sexp with d2con_get_sexp
 overload .type with d2con_get_type
 //
 overload .sexp with d2cst_get_sexp
 overload .type with d2cst_get_type
+overload .tqas with d2cst_get_tqas
+//
 overload .type with d2cst_set_type
 //
 overload .sexp with d2var_get_sexp
 overload .type with d2var_get_type
+overload .tqas with d2var_get_tqas
+//
 overload .type with d2var_set_type
+overload .tqas with d2var_set_tqas
 //
 (* ****** ****** *)
 //
@@ -206,7 +294,9 @@ d2con_make_idtp
 //
 fun
 d2cst_make_idtp
-(id: token, s2e: s2exp): d2cst
+( id: token
+, tqas: tq2as, s2e0: s2exp): d2cst
+//
 fun
 d2cst_make_dvar(d2v: d2var): d2cst
 //
@@ -470,72 +560,6 @@ overload fprint with fprint_d2itm
 fun
 fprint_d2pitm: fprint_type(d2pitm)
 overload fprint with fprint_d2pitm
-//
-(* ****** ****** *)
-//
-abstype
-sq2arg_tbox = ptr
-//
-typedef
-sq2arg = sq2arg_tbox
-typedef
-sq2arglst = List0(sq2arg)
-//
-fun
-sq2arg_get_loc(sq2arg): loc_t
-fun
-sq2arg_get_s2vs(sq2arg): s2varlst
-//
-overload .loc with sq2arg_get_loc
-overload .s2vs with sq2arg_get_s2vs
-//
-fun
-print_sq2arg: print_type(sq2arg)
-fun
-prerr_sq2arg: prerr_type(sq2arg)
-fun
-fprint_sq2arg: fprint_type(sq2arg)
-//
-overload print with print_sq2arg
-overload prerr with prerr_sq2arg
-overload fprint with fprint_sq2arg
-//
-fun
-sq2arg_make
-(loc: loc_t, s2vs: s2varlst): sq2arg
-//
-(* ****** ****** *)
-//
-abstype
-tq2arg_tbox = ptr
-//
-typedef
-tq2arg = tq2arg_tbox
-typedef
-tq2arglst = List0(tq2arg)
-//
-fun
-tq2arg_get_loc(tq2arg): loc_t
-fun
-tq2arg_get_s2vs(tq2arg): s2varlst
-//
-overload .loc with tq2arg_get_loc
-overload .s2vs with tq2arg_get_s2vs
-//
-fun
-print_tq2arg: print_type(tq2arg)
-fun
-prerr_tq2arg: prerr_type(tq2arg)
-fun
-fprint_tq2arg: fprint_type(tq2arg)
-//
-overload print with print_tq2arg
-overload prerr with prerr_tq2arg
-overload fprint with fprint_tq2arg
-//
-fun
-tq2arg_make
-(loc: loc_t, s2vs: s2varlst): tq2arg
 //
 (* ****** ****** *)
 //
