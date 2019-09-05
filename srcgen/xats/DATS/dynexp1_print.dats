@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -858,7 +858,7 @@ in
   fprint!
   ( out
   , "V1ALDECL@{"
-  , ", pat=", rcd.pat
+  , "pat=", rcd.pat
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v1aldecl]
 
@@ -881,7 +881,7 @@ in
   fprint!
   ( out
   , "V1ARDECL@{"
-  , ", nam=", rcd.nam
+  , "nam=", rcd.nam
   , ", wth=", rcd.wth
   , ", res=", rcd.res, ", ini=", rcd.ini, "}")
 end // end of [fprint_v1ardecl]
@@ -905,7 +905,7 @@ in
   fprint!
   ( out
   , "F1UNDECL@{"
-  , ", nam=", rcd.nam
+  , "nam=", rcd.nam
   , ", arg=", rcd.arg
   , ", res=", rcd.res
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
@@ -930,7 +930,7 @@ in
   fprint!
   ( out
   , "D1CSTDEC@{"
-  , ", nam=", rcd.nam, ", arg=", rcd.arg
+  , "nam=", rcd.nam, ", arg=", rcd.arg
   , ", res=", rcd.res, ", def=", rcd.def, "}")
 end // end of [fprint_d1cstdecl]
 
