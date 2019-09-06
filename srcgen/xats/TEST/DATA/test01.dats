@@ -121,7 +121,7 @@ map
 (
 case+ xs of
 | list_nil() =>
-  list_nil()
+  1 // list_nil()
 | list_cons(x0, xs) =>
   list_cons(f0(x0), map(xs, f0))
 )
