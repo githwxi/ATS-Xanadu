@@ -88,13 +88,15 @@ trenv23_dvar_dn
   val t2p1 = d2v0.type()
   val-T2Pnone0() = t2p1.node()
 *)
+(*
   val () =
   println!
   ("trenv23_dvar_dn: d2v0 = ", d2v0)
   val () =
   println!
   ("trenv23_dvar_dn: t2p0 = ", t2p0)
-}
+*)
+} (* end of [trenv23_dvar_dn] *)
 //
 (* ****** ****** *)
 //
@@ -235,10 +237,12 @@ d2p0.node() of
 //
   val loc0 = d2p0.loc((*void*))
 //
+(*
   val ((*void*)) =
   println!("trans23_dpat_dn: d2p0 = ", d2p0)
   val ((*void*)) =
   println!("trans23_dpat_dn: t2p0 = ", t2p0)
+*)
 //
 } // end-of-where // end of [trans23_dpat_dn]
 
@@ -1253,7 +1257,7 @@ val+
 F2UNDECL(rcd) = f2d0
 in
   case+ rcd.dct of
-  | None() => false | Some(d2c) => true
+  | Some(d2c) => true | None() => false 
 end
 //
 fun
