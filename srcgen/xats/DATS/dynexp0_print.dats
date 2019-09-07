@@ -713,27 +713,27 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
-print_declmodopt(x0) =
-fprint_declmodopt(stdout_ref, x0)
+print_decmodopt(x0) =
+fprint_decmodopt(stdout_ref, x0)
 implement
-prerr_declmodopt(x0) =
-fprint_declmodopt(stderr_ref, x0)
+prerr_decmodopt(x0) =
+fprint_decmodopt(stderr_ref, x0)
 implement
-fprint_declmodopt
+fprint_decmodopt
   (out, x0) =
 (
 case+ x0 of
 //
-| DECLMODnone() =>
+| DECMODnone() =>
   fprint!
-  (out, "DECLMODnone(", ")")
+  (out, "DECMODnone(", ")")
 //
-| DECLMODsing(tok, id0) =>
+| DECMODsing(tok, id0) =>
   fprint!
-  (out, "DECLMODsing(", tok, "; ", id0, ")")
-| DECLMODlist(tok, tbeg, ids, tend) =>
+  (out, "DECMODsing(", tok, "; ", id0, ")")
+| DECMODlist(tok, tbeg, ids, tend) =>
   fprint!
-  ( out, "DECLMODlist("
+  ( out, "DECMODlist("
   , tok, "; ", tbeg, "; ", ids, "; ", tend, ")")
 )
 

@@ -59,7 +59,7 @@ filpathopt = $FP0.filpathopt
 // HX-2019-01-13:
 // declared in dynexp0.sats
 //
-typedef declmodopt = declmodopt
+typedef decmodopt = decmodopt
 //
 (* ****** ****** *)
 
@@ -850,17 +850,17 @@ d1ecl_node =
 //
 | D1Cvaldecl of
   ( token(*valkind*)
-  , declmodopt(*rec/prf/...*), v1aldeclist)
+  , decmodopt(*rec/prf/...*), v1aldeclist)
 //
 | D1Cvardecl of (token(*VAR*), v1ardeclist)
 //
 | D1Cfundecl of
   ( token(*funkind*)
-  , declmodopt, tq1arglst(*tmpargs*), f1undeclist)
+  , decmodopt, tq1arglst(*tmpargs*), f1undeclist)
 //
 | D1Cimpdecl of
   ( token(*impkind*)
-  , declmodopt, sq1arglst, tq1arglst
+  , decmodopt, sq1arglst, tq1arglst
   , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)
 //
 | D1Csymload of

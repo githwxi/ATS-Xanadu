@@ -72,7 +72,7 @@ D1E = "./dynexp1.sats"
   typedef d1eclist = $D1E.d1eclist
 //
   typedef f1unarrow = $D1E.f1unarrow
-  typedef declmodopt = $D1E.declmodopt
+  typedef decmodopt = $D1E.decmodopt
 //
 (* ****** ****** *)
 
@@ -968,26 +968,26 @@ d2ecl_node =
 | D2Cabsimpl of (d1ecl)
 *)
 | D2Cabsimpl of
-  ( token(*kind*), absimplcst, s2exp(*def*))
+  ( token(*kind*), impls2cst, s2exp(*def*))
 //
 | D2Csymload of
   ( token(*symload*)
   , sym_t(*loaded*), d2pitm(*loading*))
 //
 | D2Cvaldecl of
-  ( token(*valkind*), declmodopt, v2aldeclist)
+  ( token(*valkind*), decmodopt, v2aldeclist)
 //
 | D2Cfundecl of
   ( token(*funkind*)
-  , declmodopt, tq2arglst(*tmpargs*), f2undeclist)
+  , decmodopt, tq2arglst(*tmpargs*), f2undeclist)
 //
 | D2Cvardecl of (token(*knd*), v2ardeclist)
 //
 | D2Cimpdecl of
   ( token(*impkind*)
-  , declmodopt
+  , decmodopt
   , sq2arglst, tq2arglst
-  , impdeclcst, ti2arglst, f2arglst, effs2expopt, d2exp)
+  , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
 //
 | D2Cdatasort of (d1ecl)
 | D2Cdatatype of (d1ecl)
@@ -1006,12 +1006,12 @@ abstdf2 =
 *)
 //
 and
-absimplcst =
-  | ABSIMPLCST of (sq0eid, s2cstlst)
+impls2cst =
+  | IMPLS2CST of (sq0eid, s2cstlst)
 //
 and
-impdeclcst =
-  | IMPDECLCST of (dq0eid, d2cstlst)
+impld2cst =
+  | IMPLD2CST of (dq0eid, d2cstlst)
 //
 (* ****** ****** *)
 //
@@ -1048,48 +1048,40 @@ d2ecl_make_node
 (* ****** ****** *)
 //
 fun
-print_absimplcst:
-print_type(absimplcst)
+print_impls2cst(impls2cst): void
 fun
-prerr_absimplcst:
-prerr_type(absimplcst)
+prerr_impls2cst(impls2cst): void
 fun
-fprint_absimplcst:
-fprint_type(absimplcst)
+fprint_impls2cst: fprint_type(impls2cst)
 //
-overload print with print_absimplcst
-overload prerr with prerr_absimplcst
-overload fprint with fprint_absimplcst
+overload print with print_impls2cst
+overload prerr with prerr_impls2cst
+overload fprint with fprint_impls2cst
 //
 (* ****** ****** *)
 //
 fun
-print_impdeclcst:
-print_type(impdeclcst)
+print_impld2cst(impld2cst): void
 fun
-prerr_impdeclcst:
-prerr_type(impdeclcst)
+prerr_impld2cst(impld2cst): void
 fun
-fprint_impdeclcst:
-fprint_type(impdeclcst)
+fprint_impld2cst: fprint_type(impld2cst)
 //
-overload print with print_impdeclcst
-overload prerr with prerr_impdeclcst
-overload fprint with fprint_impdeclcst
+overload print with print_impld2cst
+overload prerr with prerr_impld2cst
+overload fprint with fprint_impld2cst
 //
 (* ****** ****** *)
 //
 fun
-s2exp_of_d2pat
-  (d2p0: d2pat): s2exp
+s2exp_of_d2pat(d2pat): s2exp
 fun
-s2explst_of_d2patlst
-  (d2ps: d2patlst): s2explst
+s2explst_of_d2patlst(d2patlst): s2explst
 //
 (* ****** ****** *)
 //
 fun
-s2exp_of_f2undecl(f2undecl): s2exp
+f2undecl_get_s2exp(f2undecl): s2exp
 //
 (* ****** ****** *)
 

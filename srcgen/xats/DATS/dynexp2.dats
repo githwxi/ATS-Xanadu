@@ -939,9 +939,8 @@ list_map$fopr<d2pat><s2exp> = s2exp_of_d2pat
 (* ****** ****** *)
 
 implement
-s2exp_of_f2undecl
-  (f2d0) =
-let
+f2undecl_get_s2exp
+  (f2d0) = let
 //
 val+F2UNDECL(rcd) = f2d0
 //
@@ -949,15 +948,15 @@ in
 //
   case+
   rcd.wtp of
-  | None() =>
-    let
-      val
-      res =
-      auxres(rcd.res)
-    in
-      auxarg(rcd.arg, res)
-    end
   | Some(s2e) => s2e
+  | None((*void*)) =>
+    (
+      auxarg(arg, res)
+    ) where
+    {
+      val arg = rcd.arg
+      val res = auxres(rcd.res)
+    }
 //
 end where
 {
@@ -965,8 +964,7 @@ end where
 fun
 auxres
 ( res
-: effs2expopt
-) : s2exp =
+: effs2expopt): s2exp =
 (
 case+ res of
 | EFFS2EXPnone() =>

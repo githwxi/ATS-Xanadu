@@ -2563,7 +2563,7 @@ end // end of [p_d0macdef]
 //
 static
 fun
-p_declmodopt: parser(declmodopt)
+p_decmodopt: parser(decmodopt)
 //
 (* ****** ****** *)
 //
@@ -2577,7 +2577,7 @@ p_wths0expopt: parser(wths0expopt)
 (* ****** ****** *)
 
 implement
-p_declmodopt
+p_decmodopt
   (buf, err) = let
 //
 val e0 = err
@@ -2606,20 +2606,20 @@ tok0.node() of
         val tend = p_RPAREN(buf, err)
 //
       in
-        DECLMODlist(tok0, tbeg, ids, tend)
+        DECMODlist(tok0, tbeg, ids, tend)
       end // end of [T_LPAREN]
 //
     | _(*non-LPAREN*) => let
         val id0 =
-          p_i0dnt(buf, err) in DECLMODsing(tok0, id0)
+          p_i0dnt(buf, err) in DECMODsing(tok0, id0)
         // end of [val]
       end // end of [non-LPAREN]
 //
   end // end of [T_CLN]
 //
-| _ (* non-COLON *) => DECLMODnone(*void*)
+| _ (* non-COLON *) => DECMODnone(*void*)
 //
-end // end of [p_declmodopt]
+end // end of [p_decmodopt]
 
 (* ****** ****** *)
 
@@ -2842,7 +2842,7 @@ tok, buf, err
   // end of [val]
   val loc = tok.loc()
   val mopt =
-    p_declmodopt(buf, err)
+    p_decmodopt(buf, err)
   val d0cs =
     p_v0aldeclseq_AND(buf, err)
   val loc_res =
@@ -3098,7 +3098,7 @@ tok, buf, err
   val loc = tok.loc()
 //
   val mopt =
-    p_declmodopt(buf, err)
+    p_decmodopt(buf, err)
 //
   val tqas =
     p_tq0argseq(buf, err)
@@ -3144,7 +3144,7 @@ tok, buf, err
   val loc = tok.loc()
 //
   val mopt =
-    p_declmodopt(buf, err)
+    p_decmodopt(buf, err)
 //
   val sqas =
     p_sq0argseq(buf, err)

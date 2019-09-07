@@ -554,11 +554,17 @@ d3ecl_node =
   (token(*EXTERN*), d3ecl)
 //
 | D3Cvaldecl of
-  (token(*valkind*), declmodopt, v3aldeclist)
+  (token(*valkind*), decmodopt, v3aldeclist)
 //
 | D3Cfundecl of
   ( token(*funkind*)
-  , declmodopt, tq2arglst(*tmpargs*), f3undeclist)
+  , decmodopt, tq2arglst(*tmpargs*), f3undeclist)
+//
+| D3Cimpdecl of
+  ( token(*impkind*)
+  , decmodopt
+  , sq2arglst, tq2arglst
+  , impld2cst, ti2arglst, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
 //

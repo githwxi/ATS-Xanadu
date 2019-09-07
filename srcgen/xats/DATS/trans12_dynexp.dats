@@ -2062,9 +2062,9 @@ typedef s2vs = s2varlst
 fun
 auxsqid
 ( sqid
-: sq0eid): absimplcst =
+: sq0eid): impls2cst =
 (
-  ABSIMPLCST(sqid, s2cs)
+  IMPLS2CST(sqid, s2cs)
 ) where
 {
 val s2cs =
@@ -2111,7 +2111,7 @@ case+ sqid of
 fun
 auxsmas
 ( sqid
-: absimplcst
+: impls2cst
 , smas
 : s1marglst)
 : s2varlstlst = let
@@ -2211,7 +2211,7 @@ D1Cvaldecl
 //
 val
 isr =
-declmodopt_rec(mopt)
+decmodopt_rec(mopt)
 val
 isr =
 (
@@ -2413,7 +2413,7 @@ D1Cfundecl
 //
 val
 isr =
-declmodopt_rec(mopt)
+decmodopt_rec(mopt)
 val
 isr =
 (
@@ -2707,9 +2707,9 @@ local
 fun
 auxdqid
 ( dqid
-: dq0eid): impdeclcst =
+: dq0eid): impld2cst =
 (
-  IMPDECLCST(dqid, d2cs)
+  IMPLD2CST(dqid, d2cs)
 ) where
 {
 val d2cs =
