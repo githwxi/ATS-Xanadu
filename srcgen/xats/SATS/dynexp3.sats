@@ -587,17 +587,19 @@ d3ecl_node =
   , decmodopt
   , sq2arglst
   , tq2arglst
-  , impld3cst
+  , impld2cst
   , ti2arglst, ti3arglst, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
 //
 (* ****** ****** *)
+(*
 //
 and
 impld3cst =
   | IMPLD3CST of (dq0eid, d2cstlst, t2pcast)
 //
+*)
 (* ****** ****** *)
 //
 fun
@@ -631,6 +633,7 @@ d3ecl_make_node
 (loc: loc_t, node: d3ecl_node): d3ecl
 //
 (* ****** ****** *)
+(*
 //
 fun
 print_impld3cst(impld3cst): void
@@ -643,6 +646,7 @@ overload print with print_impld3cst
 overload prerr with prerr_impld3cst
 overload fprint with fprint_impld3cst
 //
+*)
 (* ****** ****** *)
 
 (* end of [xats_dynexp3.sats] *)

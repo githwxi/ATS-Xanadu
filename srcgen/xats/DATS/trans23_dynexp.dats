@@ -1584,20 +1584,6 @@ case+ f3as of
 )
 } (* end of [where] *)
 //
-val id3c =
-(
-(
-case+ id2c of
-| IMPLD2CST
-  (dqid, d2cs) =>
-  IMPLD3CST
-  (dqid, d2cs, ct2p)
-) where
-{
-  val ct2p = T2PCASTnone()
-}
-) : impld3cst // end-of-val
-//
 val d3e0 = trans23_dexp(d2e0)
 //
 in
@@ -1610,7 +1596,7 @@ val node =
 D3Cimpdecl
 ( knd, mopt
 , sqas, tqas
-, id3c, ti2s, ti3s, f3as, res0, d3e0)
+, id2c, ti2s, ti3s, f3as, res0, d3e0)
 }
 //
 end // end of [aux_impdecl]

@@ -108,6 +108,11 @@ impltmp
 power<a>(x, n) =
 if n > 0 then x * power(x, n-1) else 1
 
+impltmp
+<a:type>
+power(x, n) =
+if n > 0 then x * power(x, n-1) else 1
+
 ////
 (* ****** ****** *)
 
