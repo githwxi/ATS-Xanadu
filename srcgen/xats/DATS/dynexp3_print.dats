@@ -463,13 +463,13 @@ x0.node() of
 | D3Cimpdecl
   ( knd, mopt
   , sqas, tqas
-  , id3c, ti2s, ti3s, f3as, res0, d3e0) =>
+  , id2c, ti2s, ti3s, f3as, res0, d3e0) =>
   fprint!
   ( out
   , "D3Cimpdecl("
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
-  , id3c, "; ", ti2s, "; ", ti3s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
+  , id2c, "; ", ti2s, "; ", ti3s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl] *)
 //
 | D3Cnone0() =>
@@ -554,14 +554,14 @@ in
 end // end of [fprint_f3undecl]
 
 (* ****** ****** *)
-
+(*
 implement
 print_impld3cst(x0) =
 fprint_impld3cst(stdout_ref, x0)
 implement
 prerr_impld3cst(x0) =
 fprint_impld3cst(stderr_ref, x0)
-
+//
 implement
 fprint_impld3cst
   (out, x0) = let
@@ -574,7 +574,7 @@ in
 fprint!(out, "IMPLD3CST(", dqid, "; ", d2cs, "; ", ct2p, ")")
 //
 end // end of [fprint_impdeclst]
-
+*)
 (* ****** ****** *)
 
 (* end of [xats_dynexp3_print.dats] *)
