@@ -564,14 +564,14 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
-declmodopt_rec
+decmodopt_rec
   (mopt) =
 (
 case+ mopt of
-| DECLMODnone() => 0 
-| DECLMODsing
+| DECMODnone() => 0 
+| DECMODsing
   (_, id) => auxid(id)
-| DECLMODlist
+| DECMODlist
   (_, _, ids, _) => auxids(0, ids)
 ) where
 {
@@ -620,7 +620,7 @@ case+ ids of
     (if k1 = 0 then k0 else k1): int
   }
 )
-} (* end of [declmodopt_rec] *)
+} (* end of [decmodopt_rec] *)
 
 (* ****** ****** *)
 

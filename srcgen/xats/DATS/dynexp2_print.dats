@@ -773,44 +773,44 @@ end // end of [fprint_f2undecl]
 (* ****** ****** *)
 
 implement
-print_absimplcst(x0) =
-fprint_absimplcst(stdout_ref, x0)
+print_impls2cst(x0) =
+fprint_impls2cst(stdout_ref, x0)
 implement
-prerr_absimplcst(x0) =
-fprint_absimplcst(stderr_ref, x0)
+prerr_impls2cst(x0) =
+fprint_impls2cst(stderr_ref, x0)
 
 implement
-fprint_absimplcst
+fprint_impls2cst
   (out, x0) = let
 //
 val+
-ABSIMPLCST(sqid, d2cs) = x0
+IMPLS2CST(sqid, d2cs) = x0
 //
 in
 //
-fprint!(out, "ABSIMPLCST(", sqid, "; ", d2cs, ")")
+fprint!(out, "IMPLS2CST(", sqid, "; ", d2cs, ")")
 //
 end // end of [fprint_impdeclst]
 
 (* ****** ****** *)
 
 implement
-print_impdeclcst(x0) =
-fprint_impdeclcst(stdout_ref, x0)
+print_impld2cst(x0) =
+fprint_impld2cst(stdout_ref, x0)
 implement
-prerr_impdeclcst(x0) =
-fprint_impdeclcst(stderr_ref, x0)
+prerr_impld2cst(x0) =
+fprint_impld2cst(stderr_ref, x0)
 
 implement
-fprint_impdeclcst
+fprint_impld2cst
   (out, x0) = let
 //
 val+
-IMPDECLCST(dqid, d2cs) = x0
+IMPLD2CST(dqid, d2cs) = x0
 //
 in
 //
-fprint!(out, "IMPDECLCST(", dqid, "; ", d2cs, ")")
+fprint!(out, "IMPLD2CST(", dqid, "; ", d2cs, ")")
 //
 end // end of [fprint_impdeclst]
 

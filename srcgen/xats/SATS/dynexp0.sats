@@ -761,39 +761,39 @@ dg0pat_make_node
 (* ****** ****** *)
 //
 datatype
-declmodopt =
-| DECLMODnone of
+decmodopt =
+| DECMODnone of
     ((*void*))
-  // end of [DECLMODnone]
-| DECLMODsing of
+  // end of [DECMODnone]
+| DECMODsing of
     (token(*COLON*), i0dnt)
-  // end of [DECLMODsing]
-| DECLMODlist of
+  // end of [DECMODsing]
+| DECMODlist of
     (token(*COLON*), token, i0dntlst(*ids*), token)
-  // end of [DECLMODlist]
+  // end of [DECMODlist]
 //
 (* ****** ****** *)
 //
 fun
-declmodopt_rec(declmodopt): int
+decmodopt_rec(decmodopt): int
 fun
-declmodopt_tlrec(declmodopt): int
+decmodopt_tlrec(decmodopt): int
 //
 (* ****** ****** *)
 //
 fun
-print_declmodopt:
-print_type(declmodopt)
+print_decmodopt:
+print_type(decmodopt)
 fun
-prerr_declmodopt:
-prerr_type(declmodopt)
+prerr_decmodopt:
+prerr_type(decmodopt)
 fun
-fprint_declmodopt:
-fprint_type(declmodopt)
+fprint_decmodopt:
+fprint_type(decmodopt)
 //
-overload print with print_declmodopt
-overload prerr with prerr_declmodopt
-overload fprint with fprint_declmodopt
+overload print with print_decmodopt
+overload prerr with prerr_decmodopt
+overload fprint with fprint_decmodopt
 //
 (* ****** ****** *)
 //
@@ -1046,7 +1046,7 @@ for skipping error
 //
 | D0Cvaldecl of
   ( token(*valkind*)
-  , declmodopt, v0aldeclist)
+  , decmodopt, v0aldeclist)
 //
 | D0Cvardecl of
     (token(*varkind*), v0ardeclist)
@@ -1054,11 +1054,11 @@ for skipping error
 //
 | D0Cfundecl of
   ( token(*funkind*)
-  , declmodopt, tq0arglst, f0undeclist)
+  , decmodopt, tq0arglst, f0undeclist)
 //
 | D0Cimpdecl of
   ( token(*impkind*)
-  , declmodopt//modifier
+  , decmodopt//modifier
   , sq0arglst, tq0arglst
   , dq0eid, ti0arglst, f0arglst, effs0expopt, token, d0exp)
 //
