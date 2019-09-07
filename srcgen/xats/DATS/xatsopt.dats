@@ -842,11 +842,11 @@ val
 $FP0.the_filpathlst_pout(pf0 | (*none*))
 *)
 //
-(*
+// (*
 val () =
 println!
 ("process_nil: d0cs = ", d0cs)
-*)
+// *)
 //
 val () = synread_main(d0cs)
 //
