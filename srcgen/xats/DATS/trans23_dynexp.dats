@@ -1183,7 +1183,19 @@ val pat = rcd.pat
 val def = rcd.def
 val wtp = rcd.wtp
 //
-val pat = trans23_dpat(pat)
+val pat =
+(
+case+ wtp of
+| None() =>
+  trans23_dpat(pat)
+| Some(s2e) =>
+  (
+  trans23_dpat_dn(pat, t2p)
+  ) where
+  {
+    val t2p = s2exp_erase(s2e)
+  }
+) : d3pat // end of [val]
 //
 val def =
 (
@@ -1406,23 +1418,38 @@ then
 None(*void*)
 else
 Some
-(trans23_farglst(a2g))): f3arglstopt
+(trans23_farglst(a2g))
+) : f3arglstopt // end
 //
 val tres =
 (
 case+ res of
-| EFFS2EXPnone() => t2ype_new(loc0)
-| EFFS2EXPsome(s2e0) => s2exp_erase(s2e0)
+| EFFS2EXPnone
+  () => t2ype_new(loc0)
+| EFFS2EXPsome
+  (s2e0) => s2exp_erase(s2e0)
 ) : t2ype // end-of-val
 //
-val () =
-(
-d2var_set_type(nam, tfun)
-) where
-{
 val
-tfun = auxtfun(a2g, a3g, tres)
-} (* end of [where] *)
+tfn1 =
+auxtfun(a2g, a3g, tres)
+val
+tfn2 =
+(
+case+ wtp of
+| None() => tfn1
+| Some(sfun) => s2exp_erase(sfun)
+) : t2ype // endofval
+//
+val () = d2var_set_type(nam, tfn2)
+//
+val ctp =
+if
+ulte(loc0, tfn1, tfn2)
+then T2PCSTnone(*void*)
+else
+T2PCSTsome
+(tfn1(*infer*), tfn2(*given*))
 //
 val () =
 (
@@ -1435,11 +1462,9 @@ val () =
 println!
 ("trans23_decl: aux_fundecl:")
 val () =
-println!
-("auxf2d0: nam = ", nam)
+println!("auxf2d0: nam = ", nam)
 val () =
-println!
-("auxf2d0: nam.type = ", nam.type())
+println!("auxf2d0: nam.type = ", nam.type())
 //
 val def =
 (
@@ -1454,7 +1479,7 @@ in
 F3UNDECL
 (@{
 loc=loc,nam=nam,
-a2g=a2g,a3g=a3g,res=res,def=def,wtp=wtp})
+a2g=a2g,a3g=a3g,res=res,def=def,wtp=wtp,ctp=ctp})
 end // end of [let]
 fun
 auxf2ds

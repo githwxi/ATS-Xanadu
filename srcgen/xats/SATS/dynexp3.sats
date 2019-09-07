@@ -454,13 +454,37 @@ d3exp_cast
 (d3e0: d3exp, t2p0: t2ype): d3exp
 
 (* ****** ****** *)
+
+datatype
+t2ypecst =
+| T2PCSTnone of ()
+| T2PCSTsome of (t2ype, t2ype)
+
+(* ****** ****** *)
+//
+fun
+print_t2ypecst: print_type(t2ypecst)
+fun
+prerr_t2ypecst: prerr_type(t2ypecst)
+fun
+fprint_t2ypecst: fprint_type(t2ypecst)
+//
+overload print with print_t2ypecst
+overload prerr with prerr_t2ypecst
+overload fprint with fprint_t2ypecst
+//
+(* ****** ****** *)
 //
 datatype
 v3aldecl =
 V3ALDECL of @{
   loc= loc_t
 , pat= d3pat
-, def= d3expopt, wtp= s2expopt
+, def= d3expopt
+, wtp= s2expopt
+(*
+, ctp= t2ypecst
+*)
 }
 //
 typedef
@@ -489,7 +513,8 @@ F3UNDECL of @{
 , a2g= f2arglst
 , a3g= f3arglstopt
 , res= effs2expopt
-, def= d3expopt, wtp= s2expopt
+, def= d3expopt
+, wtp= s2expopt, ctp= t2ypecst
 }
 //
 typedef

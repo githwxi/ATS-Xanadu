@@ -438,6 +438,28 @@ x0.node() of
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+print_t2ypecst(x0) =
+fprint_t2ypecst(stdout_ref, x0)
+implement
+prerr_t2ypecst(x0) =
+fprint_t2ypecst(stderr_ref, x0)
+//
+implement
+fprint_t2ypecst
+  (out, x0) =
+(
+case+ x0 of
+| T2PCSTnone() =>
+  fprint!
+  (out, "T2PCSTnone(", ")")
+| T2PCSTsome(t2p1, t2p2) =>
+  fprint!
+  (out, "T2PCSTsome(", t2p1, "; ", t2p2, ")")
+) (* end of [fprint_t2ypecst] *)
+//
+(* ****** ****** *)
 
 implement
 print_v3aldecl(x0) =
@@ -457,7 +479,8 @@ in
   ( out
   , "V3ALDECL@{"
   , ", pat=", rcd.pat
-  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+  , ", def=", rcd.def
+  , ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v3aldecl]
 
 (* ****** ****** *)
@@ -482,7 +505,9 @@ in
   , ", nam=", rcd.nam
   , ", a2g=", rcd.a2g
   , ", res=", rcd.res
-  , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
+  , ", def=", rcd.def
+  , ", ctp=", rcd.ctp
+  , ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f3undecl]
 
 (* ****** ****** *)
