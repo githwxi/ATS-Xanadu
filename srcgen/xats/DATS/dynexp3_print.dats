@@ -45,10 +45,12 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 
 (* ****** ****** *)
@@ -125,6 +127,17 @@ fprint_val<dg3pat> = fprint_dg3pat
 implement
 fprint_val<d3ecl> = fprint_d3ecl
 
+(* ****** ****** *)
+//
+implement
+fprint_val<sq2arg> = fprint_sq2arg
+implement
+fprint_val<tq2arg> = fprint_tq2arg
+implement
+fprint_val<ti2arg> = fprint_ti2arg
+implement
+fprint_val<ti3arg> = fprint_ti3arg
+//
 (* ****** ****** *)
 //
 implement
@@ -386,6 +399,24 @@ x0.node() of
 (* ****** ****** *)
 //
 implement
+print_ti3arg(x0) =
+fprint_ti3arg(stdout_ref, x0) 
+implement
+prerr_ti3arg(x0) =
+fprint_ti3arg(stdout_ref, x0) 
+//
+implement
+fprint_ti3arg
+  (out, x0) =
+(
+case+ x0 of
+| TI3ARG(t2ps) =>
+  fprint!(out, "TI3ARG(", t2ps, ")")
+)
+//
+(* ****** ****** *)
+//
+implement
 print_d3ecl(x0) =
 fprint_d3ecl(stdout_ref, x0) 
 implement
@@ -429,6 +460,18 @@ x0.node() of
   , "D3Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f3ds, ")")
 //
+| D3Cimpdecl
+  ( knd, mopt
+  , sqas, tqas
+  , id3c, ti2s, ti3s, f3as, res0, d3e0) =>
+  fprint!
+  ( out
+  , "D3Cimpdecl("
+  , knd, "; ", mopt, "; "
+  , sqas, "; ", tqas, "; "
+  , id3c, "; ", ti2s, "; ", ti3s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
+  ) (* end of [D3Cimpdecl] *)
+//
 | D3Cnone0() =>
   fprint!(out, "D3Cnone0(", ")")
 | D3Cnone1(d3csrc) =>
@@ -440,24 +483,24 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-print_t2ypecst(x0) =
-fprint_t2ypecst(stdout_ref, x0)
+print_t2pcast(x0) =
+fprint_t2pcast(stdout_ref, x0)
 implement
-prerr_t2ypecst(x0) =
-fprint_t2ypecst(stderr_ref, x0)
+prerr_t2pcast(x0) =
+fprint_t2pcast(stderr_ref, x0)
 //
 implement
-fprint_t2ypecst
+fprint_t2pcast
   (out, x0) =
 (
 case+ x0 of
-| T2PCSTnone() =>
+| T2PCASTnone() =>
   fprint!
-  (out, "T2PCSTnone(", ")")
-| T2PCSTsome(t2p1, t2p2) =>
+  (out, "T2PCASTnone(", ")")
+| T2PCASTsome(t2p1, t2p2) =>
   fprint!
-  (out, "T2PCSTsome(", t2p1, "; ", t2p2, ")")
-) (* end of [fprint_t2ypecst] *)
+  (out, "T2PCASTsome(", t2p1, "; ", t2p2, ")")
+) (* end of [fprint_t2pcast] *)
 //
 (* ****** ****** *)
 
@@ -509,6 +552,28 @@ in
   , ", ctp=", rcd.ctp
   , ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f3undecl]
+
+(* ****** ****** *)
+
+implement
+print_impld3cst(x0) =
+fprint_impld3cst(stdout_ref, x0)
+implement
+prerr_impld3cst(x0) =
+fprint_impld3cst(stderr_ref, x0)
+
+implement
+fprint_impld3cst
+  (out, x0) = let
+//
+val+
+IMPLD3CST(dqid, d2cs, ct2p) = x0
+//
+in
+//
+fprint!(out, "IMPLD3CST(", dqid, "; ", d2cs, "; ", ct2p, ")")
+//
+end // end of [fprint_impdeclst]
 
 (* ****** ****** *)
 

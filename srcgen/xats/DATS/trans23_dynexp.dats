@@ -1274,28 +1274,28 @@ end
 //
 fun
 auxtfun
-( fa2g
+( f2as
 : f2arglst
-, fa3g
+, f3as
 : f3arglstopt
 , tres
 : t2ype): t2ype =
 (
-case+ fa3g of
+case+ f3as of
 | None() =>
-  auxfa2g(fa2g, tres, 0)
-| Some(fa3g) =>
-  auxfa3g(fa3g, tres, 0)
+  auxf2as(f2as, tres, 0)
+| Some(f3as) =>
+  auxf3as(f3as, tres, 0)
 )
 and
-auxfa2g
-( fa2g
+auxf2as
+( f2as
 : f2arglst
 , tres
 : t2ype
 , flag: int): t2ype =
 (
-case+ fa2g of
+case+ f2as of
 | list_nil() => tres
 | list_cons(x0, xs) =>
   (
@@ -1313,7 +1313,7 @@ case+ fa2g of
 //
     val t2ps = auxd2ps(d2ps)
     val tres =
-    auxfa2g(xs, tres, flag+1)
+    auxf2as(xs, tres, flag+1)
 //
     in
       t2ype_fun1(fc2, npf, t2ps, tres)
@@ -1322,20 +1322,20 @@ case+ fa2g of
     (s2vs, s2ps) =>
     let
     val tres =
-    auxfa2g(xs,tres,flag) in t2ype_uni(s2vs, tres)
+    auxf2as(xs,tres,flag) in t2ype_uni(s2vs, tres)
     end
-  | F2ARGsome_met(s2es) => auxfa2g(xs, tres, flag)
+  | F2ARGsome_met(s2es) => auxf2as(xs, tres, flag)
   )
 )
 and
-auxfa3g
-( fa3g
+auxf3as
+( f3as
 : f3arglst
 , tres
 : t2ype
 , flag: int): t2ype =
 (
-case+ fa3g of
+case+ f3as of
 | list_nil() => tres
 | list_cons(x0, xs) =>
   (
@@ -1352,7 +1352,7 @@ case+ fa3g of
     val t2ps =
     d3patlst_get_type(d3ps)
     val tres =
-    auxfa3g(xs, tres, flag+1)
+    auxf3as(xs, tres, flag+1)
     in
     t2ype_fun1(fc2, npf, t2ps, tres)
     end
@@ -1360,9 +1360,9 @@ case+ fa3g of
     (s2vs, s2ps) =>
     let
     val tres =
-    auxfa3g(xs,tres,flag) in t2ype_uni(s2vs, tres)
+    auxf3as(xs,tres,flag) in t2ype_uni(s2vs, tres)
     end
-  | F3ARGsome_met(s2es) => auxfa3g(xs, tres, flag)
+  | F3ARGsome_met(s2es) => auxf3as(xs, tres, flag)
   )
 )
 and
@@ -1444,12 +1444,18 @@ case+ wtp of
 val () = d2var_set_type(nam, tfn2)
 //
 val ctp =
-if
-ulte(loc0, tfn1, tfn2)
-then T2PCSTnone(*void*)
-else
-T2PCSTsome
-(tfn1(*infer*), tfn2(*given*))
+(
+case+ wtp of
+| None _ =>
+  T2PCASTnone(*void*)
+| Some _ =>
+  if
+  ulte(loc0, tfn1, tfn2)
+  then T2PCASTnone(*void*)
+  else
+  T2PCASTsome
+  (tfn1(*infer*), tfn2(*given*))
+) : t2pcast // end-of-val
 //
 val () =
 (
@@ -1499,6 +1505,117 @@ case+ f2ds of
 //
 } (* end of [aux_fundecl] *)
 
+(* ****** ****** *)
+
+fun
+aux_impdecl
+( d2c0
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2c0.loc()
+val-
+D2Cimpdecl
+( knd
+, mopt
+, sqas, tqas
+, id2c, ti2s
+, f2as, res0
+, d2e0(*body*)) = d2c0.node()
+//
+val
+ti3s = list_nil()
+val
+f3as =
+trans23_farglst(f2as)
+//
+val tres =
+(
+case+ res0 of
+| EFFS2EXPnone
+  () => t2ype_new(loc0)
+| EFFS2EXPsome
+  (s2e0) => s2exp_erase(s2e0)
+) : t2ype // end-of-val
+//
+val
+tfn1: t2ype =
+(
+auxf3as(f3as, tres, 0)
+) where
+{
+fun
+auxf3as
+( f3as
+: f3arglst
+, tres
+: t2ype
+, flag: int): t2ype =
+(
+case+ f3as of
+| list_nil() => tres
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | F3ARGsome_dyn
+    (npf, d3ps) =>
+    let
+    val fc2 =
+    (
+    if flag = 0
+    then FC2fun(*void*)
+    else FC2cloref(*void*)
+    ) : funclo2 // end-of-val
+    val t2ps =
+    d3patlst_get_type(d3ps)
+    val tres =
+    auxf3as(xs, tres, flag+1)
+    in
+    t2ype_fun1(fc2, npf, t2ps, tres)
+    end
+  | F3ARGsome_sta
+    (s2vs, s2ps) =>
+    let
+    val tres =
+    auxf3as(xs,tres,flag) in t2ype_uni(s2vs, tres)
+    end
+  | F3ARGsome_met(s2es) => auxf3as(xs, tres, flag)
+  )
+)
+} (* end of [where] *)
+//
+val id3c =
+(
+(
+case+ id2c of
+| IMPLD2CST
+  (dqid, d2cs) =>
+  IMPLD3CST
+  (dqid, d2cs, ct2p)
+) where
+{
+  val ct2p = T2PCASTnone()
+}
+) : impld3cst // end-of-val
+//
+val d3e0 = trans23_dexp(d2e0)
+//
+in
+//
+(
+  d3ecl_make_node(loc0, node)
+) where
+{
+val node =
+D3Cimpdecl
+( knd, mopt
+, sqas, tqas
+, id3c, ti2s, ti3s, f3as, res0, d3e0)
+}
+//
+end // end of [aux_impdecl]
+
+
 in (* in-of-local *)
 
 implement
@@ -1539,6 +1656,8 @@ d2c0.node() of
 //
 | D2Cvaldecl _ => aux_valdecl(d2c0)
 | D2Cfundecl _ => aux_fundecl(d2c0)
+//
+| D2Cimpdecl _ => aux_impdecl(d2c0)
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2c0)
 //

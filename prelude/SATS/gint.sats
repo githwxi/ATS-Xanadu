@@ -38,31 +38,31 @@
 (* ****** ****** *)
 
 fun
-<a:type>
+<k:type>
 gint_add
 {i,j:int}
 ( x: gint(a, i)
 , y: gint(a, j)): gint(a, i+j)
 fun
-<a:type>
+<k:type>
 gint_sub
 {i,j:int}
 ( x: gint(a, i)
 , y: gint(a, j)): gint(a, i-j)
 fun
-<a:type>
+<k:type>
 gint_mul
 {i,j:int}
 ( x: gint(a, i)
 , y: gint(a, j)): gint(a, i*j)
 fun
-<a:type>
+<k:type>
 gint_div
 {i,j:int | j != 0}
 ( x: gint(a, i)
 , y: gint(a, j)): gint(a, i/j)
 fun
-<a:type>
+<k:type>
 gint_mod
 {i,j:int | j >= 1}
 ( x: gint(a, i)

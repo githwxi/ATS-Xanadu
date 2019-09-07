@@ -98,6 +98,19 @@ end
 
 (* ****** ****** *)
 
+#extern
+fun
+<a:type>
+power(x: a, n: int): a
+
+impltmp
+{a:type}
+power<a>(x, n) =
+if n > 0 then x * power(x, n-1) else 1
+
+////
+(* ****** ****** *)
+
 fun
 <a:type>
 power(x, n) =
