@@ -456,22 +456,40 @@ d3exp_cast
 (* ****** ****** *)
 
 datatype
-t2ypecst =
-| T2PCSTnone of ()
-| T2PCSTsome of (t2ype, t2ype)
+ti3arg = TI3ARG of t2ypelst
 
 (* ****** ****** *)
 //
 fun
-print_t2ypecst: print_type(t2ypecst)
+print_ti3arg: print_type(ti3arg)
 fun
-prerr_t2ypecst: prerr_type(t2ypecst)
+prerr_ti3arg: prerr_type(ti3arg)
 fun
-fprint_t2ypecst: fprint_type(t2ypecst)
+fprint_ti3arg: fprint_type(ti3arg)
 //
-overload print with print_t2ypecst
-overload prerr with prerr_t2ypecst
-overload fprint with fprint_t2ypecst
+overload print with print_ti3arg
+overload prerr with prerr_ti3arg
+overload fprint with fprint_ti3arg
+//
+(* ****** ****** *)
+
+datatype
+t2pcast =
+| T2PCASTnone of ()
+| T2PCASTsome of (t2ype, t2ype)
+
+(* ****** ****** *)
+//
+fun
+print_t2pcast: print_type(t2pcast)
+fun
+prerr_t2pcast: prerr_type(t2pcast)
+fun
+fprint_t2pcast: fprint_type(t2pcast)
+//
+overload print with print_t2pcast
+overload prerr with prerr_t2pcast
+overload fprint with fprint_t2pcast
 //
 (* ****** ****** *)
 //
@@ -483,7 +501,7 @@ V3ALDECL of @{
 , def= d3expopt
 , wtp= s2expopt
 (*
-, ctp= t2ypecst
+, ctp= t2pcast
 *)
 }
 //
@@ -514,7 +532,7 @@ F3UNDECL of @{
 , a3g= f3arglstopt
 , res= effs2expopt
 , def= d3expopt
-, wtp= s2expopt, ctp= t2ypecst
+, wtp= s2expopt, ctp= t2pcast
 }
 //
 typedef
@@ -541,6 +559,10 @@ overload prerr with prerr_f3undecl
 overload fprint with fprint_f3undecl
 //
 (* ****** ****** *)
+
+typedef ti3arglst = List0(ti3arg)
+
+(* ****** ****** *)
 //
 datatype
 d3ecl_node =
@@ -563,10 +585,18 @@ d3ecl_node =
 | D3Cimpdecl of
   ( token(*impkind*)
   , decmodopt
-  , sq2arglst, tq2arglst
-  , impld2cst, ti2arglst, f3arglst, effs2expopt, d3exp)
+  , sq2arglst
+  , tq2arglst
+  , impld3cst
+  , ti2arglst, ti3arglst, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
+//
+(* ****** ****** *)
+//
+and
+impld3cst =
+  | IMPLD3CST of (dq0eid, d2cstlst, t2pcast)
 //
 (* ****** ****** *)
 //
@@ -599,6 +629,19 @@ fun d3ecl_none1(d2ecl): d3ecl
 fun
 d3ecl_make_node
 (loc: loc_t, node: d3ecl_node): d3ecl
+//
+(* ****** ****** *)
+//
+fun
+print_impld3cst(impld3cst): void
+fun
+prerr_impld3cst(impld3cst): void
+fun
+fprint_impld3cst: fprint_type(impld3cst)
+//
+overload print with print_impld3cst
+overload prerr with prerr_impld3cst
+overload fprint with fprint_impld3cst
 //
 (* ****** ****** *)
 

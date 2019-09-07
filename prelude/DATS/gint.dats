@@ -33,47 +33,46 @@
 //
 (* ****** ****** *)
 
-typedef sk = sint_k
-typedef uk = uint_k
+typedef sik = sint_k
+typedef uik = uik
 
-typedef slk = slint_k
-typedef ulk = ulint_k
+typedef slik = slint_k
+typedef ulik = ulint_k
 
-typedef ssk = ssize_k
-typedef usk = usize_k
+typedef ssik = ssize_k
+typedef usik = usize_k
 
-typedef sllk = sllint_k
-typedef ullk = ullint_k
+typedef sllik = sllint_k
+typedef ullik = ullint_k
 
 (* ****** ****** *)
 //
 impltmp
-g0int_add<sk,sk><sk> = g0add_sint_sint
+g0int_add<sik,sik><sik> = g0add_sint_sint
 impltmp
-g1int_add<sk,sk><sk> = g1add_sint_sint
+g1int_add<sik,sik><sik> = g1add_sint_sint
 //
 (* ****** ****** *)
 //
 impltmp
-g0int_sub<sk,sk><sk> = g0sub_sint_sint
+g0int_sub<sik,sik><sik> = g0sub_sint_sint
 impltmp
-g1int_sub<sk,sk><sk> = g1sub_sint_sint
+g1int_sub<sik,sik><sik> = g1sub_sint_sint
 //
 (* ****** ****** *)
 //
 impltmp
-g0int_mul<sk,sk><sk> = g0mul_sint_sint
+g0int_mul<sik,sik><sik> = g0mul_sint_sint
 impltmp
-g1int_mul<sk,sk><sk> = g1mul_sint_sint
+g1int_mul<sik,sik><sik> = g1mul_sint_sint
 //
 (* ****** ****** *)
 //
 impltmp
-g0int_div<sk,sk><sk> = g0div_sint_sint
+g0int_div<sik,sik><sik> = g0div_sint_sint
 impltmp
-g1int_div<sk,sk><sk> = g1div_sint_sint
+g1int_div<sik,sik><sik> = g1div_sint_sint
 //
-(* ****** ****** *)
 (* ****** ****** *)
 (*
 ** for generics
@@ -84,51 +83,31 @@ g1int_div<sk,sk><sk> = g1div_sint_sint
 "./../SATS/gint.sats"
 
 (* ****** ****** *)
-
+//
 impltmp
-gint_add<sint_k>(x, y)
-=
-gint_add_sint_sint(x, y)
+gint_add<sik>(x, y) = gint_add_sint_sint(x, y)
 impltmp
-gint_sub<sint_k>(x, y)
-=
-gint_sub_sint_sint(x, y)
+gint_sub<sik>(x, y) = gint_sub_sint_sint(x, y)
 impltmp
-gint_mul<sint_k>(x, y)
-=
-gint_mul_sint_sint(x, y)
+gint_mul<sik>(x, y) = gint_mul_sint_sint(x, y)
 impltmp
-gint_div<sint_k>(x, y)
-=
-gint_div_sint_sint(x, y)
+gint_div<sik>(x, y) = gint_div_sint_sint(x, y)
 impltmp
-gint_mod<sint_k>(x, y)
-=
-gint_mod_sint_sint(x, y)
-
+gint_mod<sik>(x, y) = gint_mod_sint_sint(x, y)
+//
 (* ****** ****** *)
-
+//
 impltmp
-gint_add<uint_k>(x, y)
-=
-gint_add_uint_uint(x, y)
+gint_add<uik>(x, y) = gint_add_uint_uint(x, y)
 impltmp
-gint_sub<uint_k>(x, y)
-=
-gint_sub_uint_uint(x, y)
+gint_sub<uik>(x, y) = gint_sub_uint_uint(x, y)
 impltmp
-gint_mul<uint_k>(x, y)
-=
-gint_mul_uint_uint(x, y)
+gint_mul<uik>(x, y) = gint_mul_uint_uint(x, y)
 impltmp
-gint_div<uint_k>(x, y)
-=
-gint_div_uint_uint(x, y)
+gint_div<uik>(x, y) = gint_div_uint_uint(x, y)
 impltmp
-gint_mod<uint_k>(x, y)
-=
-gint_mod_uint_uint(x, y)
-
+gint_mod<uik>(x, y) = gint_mod_uint_uint(x, y)
+//
 (* ****** ****** *)
 
 (* end of [gint.dats] *)
