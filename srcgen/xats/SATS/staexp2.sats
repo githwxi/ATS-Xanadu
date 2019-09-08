@@ -118,9 +118,11 @@ sort2 =
 | S2Tint of (int) (* base sort *)
 //
 | S2Tbas of (t2bas) (* base sort *)
+//
 (*
 | S2Txtv of (t2xtv) // for unification
 *)
+//
 | S2Ttup of ((*void*))
 | S2Ttup of (sort2lst) (* tuple sort *)
 //
@@ -429,10 +431,13 @@ s2var_get_sym(s2var): sym_t
 fun
 s2var_get_sort(s2var): sort2
 fun
+s2var_set_sort(s2var, sort2): void
+fun
 s2var_get_stamp(s2var): stamp
 //
 overload .sym with s2var_get_sym
 overload .sort with s2var_get_sort
+overload .sort with s2var_set_sort
 overload .stamp with s2var_get_stamp
 //
 fun
@@ -1105,6 +1110,13 @@ s2explst_revar
 fun
 s2explst_revar_vt
 (s2explst, s2v1: s2var, s2v2: s2var): s2explst_vt
+//
+(* ****** ****** *)
+//
+fun
+s2exp_hnfize(s2e0: s2exp): s2exp
+//
+overload hnfize with s2exp_hnfize
 //
 (* ****** ****** *)
 //

@@ -679,7 +679,7 @@ f0a0.node() of
     f1arg_make_node(loc0, F1ARGsome_met(s1es))
   end // end of [F0ARGsome_met]
 //
-end // end of [trans01_darg]
+end // end of [trans01_farg]
 
 implement
 trans01_farglst

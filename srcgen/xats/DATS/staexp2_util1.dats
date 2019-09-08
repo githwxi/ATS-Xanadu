@@ -510,4 +510,9 @@ list_map$fopr<s2exp><s2exp>
 //
 (* ****** ****** *)
 
+implement
+s2exp_hnfize(s2e0) = s2e0
+
+(* ****** ****** *)
+
 (* end of [xats_staexp2_util1.dats] *)

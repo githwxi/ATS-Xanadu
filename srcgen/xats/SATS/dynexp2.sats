@@ -241,6 +241,8 @@ fun
 d2cst_get_tqas(d2cst): tq2as
 //
 fun
+d2cst_set_sexp(d2cst, s2exp): void
+fun
 d2cst_set_type(d2cst, t2ype): void
 //
 fun
@@ -250,6 +252,8 @@ d2var_get_type(d2var): t2ype
 fun
 d2var_get_tqas(d2var): tq2as
 //
+fun
+d2var_set_sexp(d2var, s2exp): void
 fun
 d2var_set_type(d2var, t2ype): void
 fun
@@ -264,6 +268,7 @@ overload .sexp with d2cst_get_sexp
 overload .type with d2cst_get_type
 overload .tqas with d2cst_get_tqas
 //
+overload .sexp with d2cst_set_sexp
 overload .type with d2cst_set_type
 //
 overload .sexp with d2var_get_sexp
@@ -471,19 +476,15 @@ f2arg_get_node(f2arg): f2arg_node
 overload .loc with f2arg_get_loc
 overload .node with f2arg_get_node
 //
-(*
 fun
 print_f2arg : print_type(f2arg)
 fun
 prerr_f2arg : prerr_type(f2arg)
-*)
 fun
 fprint_f2arg : fprint_type(f2arg)
 //
-(*
 overload print with print_f2arg
 overload prerr with prerr_f2arg
-*)
 overload fprint with fprint_f2arg
 //
 fun
@@ -1074,14 +1075,14 @@ overload fprint with fprint_impld2cst
 (* ****** ****** *)
 //
 fun
-s2exp_of_d2pat(d2pat): s2exp
+d2pat_get_sexp(d2pat): s2exp
 fun
-s2explst_of_d2patlst(d2patlst): s2explst
+d2patlst_get_sexps(d2patlst): s2explst
 //
 (* ****** ****** *)
 //
 fun
-f2undecl_get_s2exp(f2undecl): s2exp
+f2undecl_get_sexp(f2d0: f2undecl): s2exp
 //
 (* ****** ****** *)
 

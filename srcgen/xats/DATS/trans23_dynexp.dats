@@ -860,9 +860,11 @@ in
   auxfa3g(f3as, body.type(), 0)
 end // end-of-val
 //
+(*
 val () =
 println!
 ("trans23_dexp: aux_lam: tfun = ", tfun)
+*)
 //
 in
   d3exp_make_node
@@ -1274,58 +1276,16 @@ end
 //
 fun
 auxtfun
-( f2as
-: f2arglst
-, f3as
+( f3as
 : f3arglstopt
 , tres
 : t2ype): t2ype =
 (
 case+ f3as of
 | None() =>
-  auxf2as(f2as, tres, 0)
+  the_t2ype_none0
 | Some(f3as) =>
   auxf3as(f3as, tres, 0)
-)
-and
-auxf2as
-( f2as
-: f2arglst
-, tres
-: t2ype
-, flag: int): t2ype =
-(
-case+ f2as of
-| list_nil() => tres
-| list_cons(x0, xs) =>
-  (
-  case+ x0.node() of
-  | F2ARGsome_dyn
-    (npf, d2ps) =>
-    let
-//
-    val fc2 =
-    (
-    if flag = 0
-    then FC2fun(*void*)
-    else FC2cloref(*void*)
-    ) : funclo2 // end-of-val
-//
-    val t2ps = auxd2ps(d2ps)
-    val tres =
-    auxf2as(xs, tres, flag+1)
-//
-    in
-      t2ype_fun1(fc2, npf, t2ps, tres)
-    end
-  | F2ARGsome_sta
-    (s2vs, s2ps) =>
-    let
-    val tres =
-    auxf2as(xs,tres,flag) in t2ype_uni(s2vs, tres)
-    end
-  | F2ARGsome_met(s2es) => auxf2as(xs, tres, flag)
-  )
 )
 and
 auxf3as
@@ -1432,7 +1392,7 @@ case+ res of
 //
 val
 tfn1 =
-auxtfun(a2g, a3g, tres)
+auxtfun(a3g, tres)
 val
 tfn2 =
 (
@@ -1464,6 +1424,7 @@ case+ dct of
 | Some(d2c) => d2c.type(nam.type())
 )
 //
+(*
 val () =
 println!
 ("trans23_decl: aux_fundecl:")
@@ -1471,6 +1432,7 @@ val () =
 println!("auxf2d0: nam = ", nam)
 val () =
 println!("auxf2d0: nam.type = ", nam.type())
+*)
 //
 val def =
 (
@@ -1610,11 +1572,11 @@ trans23_decl
 //
 val
 loc0 = d2c0.loc()
-// (*
+(*
 val () =
 println!
 ("trans23_decl: d2c0 = ", d2c0)
-// *)
+*)
 //
 in
 //
