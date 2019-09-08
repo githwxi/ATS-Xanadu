@@ -59,6 +59,11 @@ implement
 fprint_val<d0exp> = fprint_d0exp
 
 (* ****** ****** *)
+
+implement
+fprint_val<f0arg> = fprint_f0arg
+
+(* ****** ****** *)
 //
 extern
 fun
@@ -3131,6 +3136,81 @@ ptok_impdecl
 ( tok: token
 , buf: &tokbuf >> _
 , err: &int >> _): d0ecl
+//
+local
+//
+fun
+auxs0q0
+( s0q0
+: s0qua): s0qua =
+(
+case+
+s0q0.node() of
+| S0QUAprop(s0p) =>
+  (
+  case+
+  s0p.node() of
+  | S0Eid(id) =>
+    let
+      val loc = s0p.loc()
+      val opt = None(*sort0*)
+      val ids = list_sing(id)
+    in
+      s0qua_make_node
+      (loc, S0QUAvars(ids, opt))
+    end
+  | _ (* non-S0Eid *) => s0q0
+  )
+| _(* non-S0QUAprop *) => s0q0
+)
+and
+auxs0qs
+( xs
+: s0qualst): s0qualst =
+list_vt2t
+(
+list_map<s0qua><s0qua>(xs)
+) where
+{
+implement
+list_map$fopr<s0qua><s0qua>(x0) = auxs0q0(x0)
+}
+//
+fun
+auxf0a0
+( f0a0
+: f0arg): f0arg =
+(
+case+
+f0a0.node() of
+| F0ARGsome_sta
+  (tbeg, s0qs, tend) =>
+  (
+    f0arg_make_node(loc, node)
+  ) where
+  {
+    val loc = f0a0.loc()
+    val s0qs = auxs0qs(s0qs)
+    val node =
+    F0ARGsome_sta(tbeg, s0qs, tend)
+  }
+| _ (* non-F0ARGsom_sta *) => f0a0
+)
+and
+auxf0as
+( xs
+: f0arglst): f0arglst =
+list_vt2t
+(
+list_map<f0arg><f0arg>(xs)
+) where
+{
+implement
+list_map$fopr<f0arg><f0arg>(x0) = auxf0a0(x0)
+}
+//
+in (*in-of-local*)
+
 implement
 ptok_impdecl
 (
@@ -3155,8 +3235,10 @@ tok, buf, err
     p_dq0eid(buf, err)
   val tias =
     p_ti0argseq(buf, err)
+//
   val f0as =
     p_f0argseq(buf, err)
+  val f0as = auxf0as(f0as)
 //
   val tres =
     p_effs0expopt(buf, err)
@@ -3175,6 +3257,8 @@ in
     , dqid, tias, f0as, tres, teq0, d0e1)
   ) (* d0ecl_make_node *)
 end // end of [ptok_impdecl]
+//
+end // end of [local]
 //
 (* ****** ****** *)
 //

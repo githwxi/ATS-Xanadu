@@ -176,11 +176,12 @@ fprint_d2cst
 (
 fprint!
 (out, sym, "(", stamp, ")");
+fprint!(out, ": ", x0.tqas());
 (*
-fprint!(out, ": ", x0.sexp())
+fprint!(out, ": ", x0.sexp());
 *)
 // (*
-fprint!(out, ": ", x0.type())
+fprint!(out, ": ", x0.type());
 // *)
 ) where
 {
@@ -214,6 +215,13 @@ fprint!(out, ": ", x0.type())
 } (* end of [fprint_d2var] *)
 //
 (* ****** ****** *)
+
+implement
+print_f2arg(x0) =
+fprint_f2arg(stdout_ref, x0)
+implement
+prerr_f2arg(x0) =
+fprint_f2arg(stderr_ref, x0)
 
 implement
 fprint_f2arg

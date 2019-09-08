@@ -265,11 +265,16 @@ ref<d2cst_struct>
 ) where
 {
 //
-  val loc = d2var_get_loc(d2v)
-  val sym = d2var_get_sym(d2v)
-  val tqas = d2var_get_tqas(d2v)
-  val s2e1 = d2var_get_sexp(d2v)
-  val t2p2 = d2var_get_type(d2v)
+  val loc =
+    d2var_get_loc(d2v)
+  val sym =
+    d2var_get_sym(d2v)
+  val tqas =
+    d2var_get_tqas(d2v)
+  val s2e1 =
+    d2var_get_sexp(d2v)
+//
+  val t2p2 = s2exp_erase(s2e1)
 //
   val
   stamp = d2cst_stamp_new((*void*))
@@ -338,8 +343,11 @@ implement
 d2cst_get_stamp(x0) = x0->d2cst_stamp
 //
 implement
+d2cst_set_sexp
+  (x0, s2e) = (x0->d2cst_sexp := s2e)
+implement
 d2cst_set_type
-  (x0, t2p0) = (x0->d2cst_type := t2p0)
+  (x0, t2p) = (x0->d2cst_type := t2p)
 //
 end // end of [local]
 
@@ -417,6 +425,9 @@ d2var_get_stamp(x0) = x0->d2var_stamp
 implement
 d2var_set_tqas
   (x0, tqas) = (x0->d2var_tqas := tqas)
+implement
+d2var_set_sexp
+  (x0, s2e0) = (x0->d2var_sexp := s2e0)
 implement
 d2var_set_type
   (x0, t2p0) = (x0->d2var_type := t2p0)
@@ -913,7 +924,7 @@ end // end of [f2undecl_get_loc]
 (* ****** ****** *)
 
 implement
-s2exp_of_d2pat
+d2pat_get_sexp
   (d2p0) =
 (
 case+
@@ -922,7 +933,7 @@ d2p0.node() of
 | _ (*else*) => the_s2exp_none0
 )
 implement
-s2explst_of_d2patlst
+d2patlst_get_sexps
   (d2ps) =
 list_vt2t(d2ps) where
 {
@@ -932,14 +943,14 @@ list_map<d2pat><s2exp>
   (d2ps) where
 {
 implement
-list_map$fopr<d2pat><s2exp> = s2exp_of_d2pat
+list_map$fopr<d2pat><s2exp> = d2pat_get_sexp
 }
 } (* end of [s2explst_of_d2patlst] *)
 
 (* ****** ****** *)
 
 implement
-f2undecl_get_s2exp
+f2undecl_get_sexp
   (f2d0) = let
 //
 val+F2UNDECL(rcd) = f2d0
@@ -999,8 +1010,7 @@ case+ arg of
       | list_nil() => FC2fun((*void*))
       | list_cons _ => FC2cloref(*void*)
       ) : funclo2 // end-of-val
-      val s2es =
-      s2explst_of_d2patlst(d2ps)
+      val s2es = d2patlst_get_sexps(d2ps)
     in
       s2exp_fun_full(fc2, npf, s2es, res)
     end
@@ -1011,7 +1021,7 @@ case+ arg of
   end
 )
 //
-} (* end of [s2exp_of_f2undecl] *)
+} (* end of [f2undecl_get_s2exp] *)
 
 (* ****** ****** *)
 

@@ -345,8 +345,8 @@ end // end of [local]
 
 local
 
-absimpl
-s2var_tbox = $rec{
+typedef
+s2var_struct = @{
 //
   s2var_sym= sym_t // name
 , s2var_sort= sort2  // sort
@@ -354,13 +354,17 @@ s2var_tbox = $rec{
 //
 } (* end of [s2var_tbox] *)
 
+absimpl
+s2var_tbox = ref(s2var_struct)
+
 in (* in-of-local *)
 
 implement
 s2var_make_idst
   (sid, s2t) =
 (
-$rec{
+ref<s2var_struct>
+@{
   s2var_sym= sid
 , s2var_sort= s2t
 , s2var_stamp= stamp
@@ -371,13 +375,19 @@ $rec{
 } (* end of [s2var_make_idst] *)
 
 (* ****** ****** *)
-
+//
 implement
-s2var_get_sym(x0) = x0.s2var_sym
+s2var_get_sym(x0) = x0->s2var_sym
 implement
-s2var_get_sort(x0) = x0.s2var_sort
+s2var_get_sort(x0) = x0->s2var_sort
 implement
-s2var_get_stamp(x0) = x0.s2var_stamp
+s2var_get_stamp(x0) = x0->s2var_stamp
+//
+implement
+s2var_set_sort
+  (x0, s2t) = (x0->s2var_sort := s2t)
+//
+(* ****** ****** *)
 
 end // end of [local]
 

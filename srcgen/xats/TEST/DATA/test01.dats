@@ -100,6 +100,38 @@ end
 
 #extern
 fun
+<x:type>
+list_make_elt
+  {n:nat} (n: int n, x: x): list_vt(x, n)
+// end of [list_make_elt]
+
+implmnt
+<x>(*tmp*)
+list_make_elt
+  {n} (n, x) = let
+//
+fun:
+(prf,trec)
+loop
+{i:nat | i <= n} .<i>.
+(
+  i: int i, x: x, res: list_vt(x, n-i)
+) : list_vt(x, n) =
+(
+  if (i > 0)
+    then loop(i-1, x, list_vt_cons(x, res)) else res
+  // end of [if]
+) // end of [loop]
+//
+in
+  loop(n, x, list_vt_nil())
+end // end of [list_make_elt]
+
+(* ****** ****** *)
+////
+
+#extern
+fun
 <a:type>
 power(x: a, n: int): a
 
@@ -113,8 +145,8 @@ impltmp
 power(x, n) =
 if n > 0 then x * power(x, n-1) else 1
 
-////
 (* ****** ****** *)
+////
 
 fun
 <a:type>

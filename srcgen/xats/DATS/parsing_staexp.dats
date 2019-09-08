@@ -1628,13 +1628,15 @@ case+ s0es0 of
     case+ s0es1 of
     | list_nil() =>
       s0exp_anno_opt(s0e0, opt)
-    | list_cons _ => let
+    | list_cons _ =>
+      (
+        s0exp_anno_opt(s0app, opt)
+      ) where
+      {
         val s0e1 = list_last(s0es1)
         val loc01 = s0e0.loc()+s0e1.loc()
-      in
-        s0exp_anno_opt
-        (s0exp_make_node(loc01, S0Eapps(s0es0)), opt)
-      end // end of [list_cons]
+        val s0app = s0exp_make_node(loc01, S0Eapps(s0es0))
+      } // end of [list_cons]
   end (* end of [list_cons] *)
 //
 end // end of [p_s0exp]
@@ -2118,28 +2120,21 @@ case+ tnd of
         val s0es =
           p_atms0expseq(buf, err)
         // end of [val]
-        val loc1 =
-        (
-          case+ s0es of
-          | list_nil() =>
-            (
-              id0.loc()
-            ) // end of [list_nil]
-          | list_cons _ =>
-            let
-              val s0e =
-              list_last(s0es)
-            in
-              id0.loc() + s0e.loc()
-            end // end of [list_cons]
-        ) : loc_t // end of [val]
 //
         val s0e0 =
         s0exp_make_node(id0.loc(), S0Eid(id0))
         val s0e1 =
-        s0exp_make_node
-          (loc1, S0Eapps(list_cons(s0e0, s0es)))
-        // end of [val]
+        (
+        case+ s0es of
+        | list_nil() => s0e0
+        | list_cons _ =>
+          let
+            val s0e = list_last(s0es)
+            val loc01 = id0.loc() + s0e.loc()
+          in
+            s0exp_make_node(loc01, S0Eapps(list_cons(s0e0, s0es)))
+          end
+        ) : s0exp // end of [val]
 //
       in
         err := e0;
@@ -2283,20 +2278,17 @@ val s0e0 =
 val s0es = 
   list_vt2t
   (pstar_fun{s0exp}(buf, err, auxneq))
-val loc_res =
-(
-case+ s0es of
-| list_nil() => s0e0.loc()
-| list_cons _ => let
-    val s0e1 =
-    list_last(s0es) in s0e0.loc()+s0e1.loc()
-  end // end of [list_cons]
-) : loc_t // end of [val]
-//
 in
-  s0exp_make_node
-    (loc_res, S0Eapps(list_cons(s0e0, s0es)))
-  // end of [s0exp_make_node]
+//
+case+ s0es of
+| list_nil() => s0e0
+| list_cons _ => let
+    val s0e1 = list_last(s0es)
+    val loc01 = s0e0.loc()+s0e1.loc()
+  in
+    s0exp_make_node(loc01, S0Eapps(list_cons(s0e0, s0es)))
+  end // end of [list_cons]
+//
 end // end of [p_apps0exp_NEQ]
 
 (* ****** ****** *)
@@ -2377,20 +2369,18 @@ val s0e0 =
 val s0es = 
   list_vt2t
   (pstar_fun{s0exp}(buf, err, auxngt))
-val loc_res =
-(
-case+ s0es of
-| list_nil() => s0e0.loc()
-| list_cons _ => let
-    val s0e1 =
-    list_last(s0es) in s0e0.loc()+s0e1.loc()
-  end // end of [list_cons]
-) : loc_t // end of [val]
 //
 in
-  s0exp_make_node
-    (loc_res, S0Eapps(list_cons(s0e0, s0es)))
-  // end of [s0exp_make_node]
+//
+case+ s0es of
+| list_nil() => s0e0
+| list_cons _ => let
+    val s0e1 = list_last(s0es)
+    val loc01 = s0e0.loc()+s0e1.loc()
+  in
+    s0exp_make_node(loc01, S0Eapps(list_cons(s0e0, s0es)))
+  end // end of [list_cons]
+//
 end // end of [p_apps0exp_NGT]
 
 (* ****** ****** *)
