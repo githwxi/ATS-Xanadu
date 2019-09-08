@@ -561,7 +561,7 @@ val () =
 println!("s2exp_ctcd: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_type
+val s2t = the_sort2_tflt
 //
 in
   s2exp_make_node(s2t, S2Ectcd(loc, s2e))
@@ -576,7 +576,7 @@ val () =
 println!("s2exp_cimp: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_type
+val s2t = the_sort2_tflt
 //
 in
   s2exp_make_node(s2t, S2Ecimp(loc, s2e))
@@ -647,6 +647,20 @@ s2exp_app2
   s2exp_apps(loc0, s2f0, list_pair(s2a1, s2a2))
 )
 //
+(* ****** ****** *)
+
+implement
+s2exp_top
+(knd, s2e) =
+(
+s2exp_make_node
+(s2t, S2Etop(knd, s2e))
+) where
+{
+  val s2t =
+  sort2_topize(s2e.sort())
+}
+
 (* ****** ****** *)
 
 implement
@@ -815,9 +829,9 @@ s2exp_list1
   if
   lin
   then
-  the_sort2_vtype
+  the_sort2_vtflt
   else
-    the_sort2_type(*~lin*)
+    the_sort2_tflt(*~lin*)
   // end of [if]
   ) : sort2 // end of [val]
   val ls2es =
@@ -841,12 +855,12 @@ s2exp_list2
   if
   islin
   then
-  the_sort2_vtype else
+  the_sort2_vtflt else
   (
-  if
-  s2explst_islin(s2es2)
-  then
-  the_sort2_vtype else the_sort2_type(*~lin*)
+    if
+    s2explst_islin(s2es2)
+    then
+    the_sort2_vtflt else the_sort2_tflt(*~lin*)
   )
   ) : sort2 // end of [val]
   val npf = list_length(s2es1)
@@ -875,7 +889,7 @@ then
 (
 if
 knd = 0
-then the_sort2_vtype
+then the_sort2_vtflt
 else the_sort2_vtbox
 )
 else
@@ -883,7 +897,7 @@ else
 if
 knd = 0
 then
-the_sort2_type else the_sort2_tbox
+the_sort2_tflt else the_sort2_tbox
 )
 ) : sort2 // end of [val]
 //
@@ -931,7 +945,7 @@ then
 (
 if
 knd = 0
-then the_sort2_vtype
+then the_sort2_vtflt
 else the_sort2_vtbox
 )
 else
@@ -939,7 +953,7 @@ else
 if
 knd = 0
 then
-the_sort2_type else the_sort2_tbox
+the_sort2_tflt else the_sort2_tbox
 )
 ) : sort2 // end of [val]
 //
@@ -980,7 +994,7 @@ then
 (
 if
 knd = 0
-then the_sort2_vtype
+then the_sort2_vtflt
 else the_sort2_vtbox
 )
 else
@@ -988,7 +1002,7 @@ else
 if
 knd = 0
 then
-the_sort2_type else the_sort2_tbox
+the_sort2_tflt else the_sort2_tbox
 )
 ) : sort2 // end of [val]
 //
@@ -1033,7 +1047,7 @@ then
 (
 if
 knd = 0
-then the_sort2_vtype
+then the_sort2_vtflt
 else the_sort2_vtbox
 )
 else
@@ -1041,7 +1055,7 @@ else
 if
 knd = 0
 then
-the_sort2_type else the_sort2_tbox
+the_sort2_tflt else the_sort2_tbox
 )
 ) : sort2 // end of [val]
 //

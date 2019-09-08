@@ -687,8 +687,24 @@ case+ s1qs of
 
 local
 
+(*
 fun
-auxid
+isany
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.WCARD_symbol
+| _(*non-S1Eid*) => false
+)
+*)
+
+(* ****** ****** *)
+
+fun
+auxid0
 ( s1e0
 : s1exp): s2exp = let
 //
@@ -700,38 +716,45 @@ opt = the_sexpenv_find(sid)
 in
 //
 case+ opt of
-//
 | ~None_vt() => s2exp_none1(s1e0)
+| ~Some_vt(s2i) => auxid0_s2i(s1e0, s2i)
 //
-| ~Some_vt(x) => auxid_s2i(s1e0, x)
-//
-end // end of [auxid]
+end // end of [auxid0]
 
 and
-auxid_s2i
-( s1e0: s1exp
-, s2i0: s2itm): s2exp =
+auxid0_var
+( s1e0
+: s1exp
+, s2v0
+: s2var): s2exp =
 (
-case- s2i0 of
-| S2ITMvar(x0) => auxid_var(s1e0, x0)
-| S2ITMcst(xs) => auxid_cst(s1e0, xs)
-) (* end of [auxid_s2i] *)
+  s2exp_var(s2v0)
+)
 and
-auxid_var
-( s1e0: s1exp
-, s2v0: s2var): s2exp = s2exp_var(s2v0)
-and
-auxid_cst
-( s1e0: s1exp
-, s2cs: s2cstlst): s2exp =
+auxid0_cst
+( s1e0
+: s1exp
+, s2cs
+: s2cstlst): s2exp =
 let
   val
   opt = s2cst_select_any(s2cs)
 in
-  case- opt of
-    | ~Some_vt(s2c0) => s2exp_cst(s2c0)
-  // end of [case-]
-end (* end of [auxid_s2cs] *)
+  case+ opt of
+  | ~None_vt() => s2exp_none1(s1e0)
+  | ~Some_vt(s2c0) => s2exp_cst(s2c0)
+end
+and
+auxid0_s2i
+( s1e0: s1exp
+, s2i0: s2itm): s2exp =
+(
+//
+case- s2i0 of
+| S2ITMvar(s2v0) => auxid0_var(s1e0, s2v0)
+| S2ITMcst(s2cs) => auxid0_cst(s1e0, s2cs)
+//
+) (* end of [auxid0_s2i] *)
 
 (* ****** ****** *)
 
@@ -755,6 +778,29 @@ case+
 s1e.node() of
 | S1Eid(sid) =>
   sid = $SYM.CBR_symbol
+| _(*non-S1Eid*) => false
+)
+
+fun
+istop0
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.QMARK_symbol
+| _(*non-S1Eid*) => false
+)
+fun
+istop1
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.QBANG_symbol
 | _(*non-S1Eid*) => false
 )
 
@@ -784,6 +830,7 @@ in(*in-of-let*)
 //
 case+
 s1e1.node() of
+//
 | S1Eforall _ => auxapp1_uni_(s1e0)
 | S1Eexists _ => auxapp1_exi_(s1e0)
 //
@@ -791,6 +838,12 @@ s1e1.node() of
     iscbv(s1e1) => auxapp1_cbv_(s1e0)
 | _ when
     iscbr(s1e1) => auxapp1_cbr_(s1e0)
+//
+| _ when
+    istop0(s1e1) => auxapp1_top0_(s1e0)
+| _ when
+    istop1(s1e1) => auxapp1_top1_(s1e0)
+//
 | _ when
     isextp(s1e1) => auxapp1_extp_(s1e0)
 //
@@ -1097,6 +1150,35 @@ s2exp_arg
 end // [auxapp1_atx_]
 
 (* ****** ****** *)
+
+and
+auxapp1_top0_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+in
+s2exp_top
+(0(*knd*), trans12_sexp_ci(s1e2))
+end // [auxapp1_top0_]
+and
+auxapp1_top1_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+in
+s2exp_top
+(1(*knd*), trans12_sexp_ci(s1e2))
+end // [auxapp1_top1_]
+
+(* ****** ****** *)
 //
 and
 auxapp1_extp_
@@ -1116,7 +1198,7 @@ s1e2.node() of
 ) : s1explst // end of [val]
 //
 val
-s2t0 = the_sort2_type
+s2t0 = the_sort2_tflt
 val
 tnm1 =
 (
@@ -1143,7 +1225,7 @@ in
 s2e0 where
 {
   val s2e0 =
-  s2exp_tyext(the_sort2_type, tnm1, s2es)
+  s2exp_tyext(the_sort2_tflt, tnm1, s2es)
 (*
   val ((*void*)) =
   println!("trans12_sexp: ")
@@ -1576,7 +1658,7 @@ in
 case-
 s1e0.node() of
 //
-| S1Eid _ => auxid(s1e0)
+| S1Eid _ => auxid0(s1e0)
 //
 | S1Eint(tok) =>
   s2exp_int(token2sint(tok))

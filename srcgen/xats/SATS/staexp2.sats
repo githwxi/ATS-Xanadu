@@ -181,18 +181,14 @@ the_sort2_view : sort2
 //
 val
 the_sort2_tbox : sort2
-(*
 val
 the_sort2_tflt : sort2
-*)
-val
-the_sort2_type : sort2
 //
 val
 the_sort2_vtbox : sort2
 val
-the_sort2_vtype : sort2
-
+the_sort2_vtflt : sort2
+//
 (* ****** ****** *)
 
 val
@@ -803,6 +799,10 @@ s2exp_app2
 , s2a1: s2exp, s2a2: s2exp): s2exp
 //
 fun
+s2exp_top
+(knd: int, s2e0: s2exp): s2exp
+//
+fun
 s2exp_arg
 (knd: int, s2e0: s2exp): s2exp
 fun
@@ -1081,6 +1081,9 @@ fun
 sort2_isimp(x0: sort2): bool
 fun
 sort2_islin(x0: sort2): bool
+//
+fun
+sort2_topize(x0: sort2): sort2
 //
 (* ****** ****** *)
 //

@@ -58,6 +58,8 @@ VERBOSE_FIXITY
 & of 69 (* stadyn *)
 #prefix
 ? of 69 (* static *)
+#prefix
+?! of 69 (* static *)
 //
 (* ****** ****** *)
 

@@ -45,6 +45,13 @@ STM = "./../SATS/stamp0.sats"
 #staload
 SYM = "./../SATS/symbol.sats"
 //
+macdef
+VIEW = $SYM.VIEW_symbol
+macdef
+VTBOX = $SYM.VTBOX_symbol
+macdef
+VTFLT = $SYM.VTFLT_symbol
+//
 overload
 = with $STM.eq_stamp_stamp
 overload
@@ -287,6 +294,41 @@ case+ s2t0 of
   )
 | _(*non-S2Tbas*) => false
 )
+
+(* ****** ****** *)
+
+implement
+sort2_topize
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(s2tb) =>
+  (
+  case+ s2tb of
+  | T2BASimp
+    (knd, sym) =>
+    (
+    if
+    lin = 0
+    then s2t0 else
+    (
+    ifcase
+    | sym=VIEW =>
+      the_sort2_prop
+    | sym=VTBOX =>
+      the_sort2_tbox
+    | sym=VTFLT =>
+      the_sort2_tflt
+    | _ (* else *) => s2t0
+    )
+    ) where
+    {
+      val lin = sortlin(knd)
+    }
+  | _(* else *) => s2t0
+  )
+| _(*non-S2Tbas*) => s2t0
+)  
 
 (* ****** ****** *)
 //

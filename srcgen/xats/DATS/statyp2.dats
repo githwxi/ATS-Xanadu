@@ -141,40 +141,40 @@ in(*in-of-local*)
 implement
 the_t2ype_sint =
 t2ype_make_name
-(the_sort2_type, XATS_SINT_T)
+(the_sort2_tflt, XATS_SINT_T)
 implement
 the_t2ype_uint =
 t2ype_make_name
-(the_sort2_type, XATS_UINT_T)
+(the_sort2_tflt, XATS_UINT_T)
 //
 implement
 the_t2ype_bool =
 t2ype_make_name
-(the_sort2_type, XATS_BOOL_T)
+(the_sort2_tflt, XATS_BOOL_T)
 //
 implement
 the_t2ype_char =
 t2ype_make_name
-(the_sort2_type, XATS_CHAR_T)
+(the_sort2_tflt, XATS_CHAR_T)
 //
 implement
 the_t2ype_void =
 t2ype_make_name
-(the_sort2_type, XATS_VOID_T)
+(the_sort2_tflt, XATS_VOID_T)
 //
 implement
 the_t2ype_float =
 t2ype_make_name
-(the_sort2_type, XATS_FLOAT_T)
+(the_sort2_tflt, XATS_FLOAT_T)
 implement
 the_t2ype_double =
 t2ype_make_name
-(the_sort2_type, XATS_DOUBLE_T)
+(the_sort2_tflt, XATS_DOUBLE_T)
 //
 implement
 the_t2ype_string =
 t2ype_make_name
-(the_sort2_type, XATS_STRING_T)
+(the_sort2_tbox, XATS_STRING_T)
 
 end // end of [local]
 
