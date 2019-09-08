@@ -98,11 +98,36 @@ end
 
 (* ****** ****** *)
 
+(*
+#extern
+fun
+<x:type>
+identity1(x: !x >> x): void
+#extern
+fun
+<x:type>
+identity2(x: &x >> x): void
+*)
+
+#extern
+fun
+<x:type>
+list_init{n:int}
+(x0: !list(?x, n) >> list(x, n))
+#extern
+fun
+<x:type>
+list_clear{n:int}
+(x0: !list(x, n) >> list(?!x, n))
+
+(* ****** ****** *)
+////
 #extern
 fun
 <x:type>
 list_make_elt
-  {n:nat} (n: int n, x: x): list_vt(x, n)
+  {n:nat}
+  (n: int n, x: x): list_vt(x, n)
 // end of [list_make_elt]
 
 implmnt

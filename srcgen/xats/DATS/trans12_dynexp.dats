@@ -1784,14 +1784,14 @@ in
 //
 ifcase
 | (knd < 0) => s2e0
-| (knd=TYPESORT) =>
-  auxck2(s2t0, the_sort2_type)
 | (knd=PROPSORT) =>
   auxck2(s2t0, the_sort2_prop)
 | (knd=VIEWSORT) =>
   auxck2(s2t0, the_sort2_view)
-| (knd=VTYPESORT) =>
-  auxck2(s2t0, the_sort2_vtype)
+| (knd=TFLTSORT) =>
+  auxck2(s2t0, the_sort2_tflt)
+| (knd=VTFLTSORT) =>
+  auxck2(s2t0, the_sort2_vtflt)
 | _(* SEXPDEF *) =>
   let val () = assertloc(false) in s2e0 end
 //
@@ -2008,14 +2008,14 @@ T_ABSTYPE(knd) = knd.node()
 in
 //
 ifcase
-| (knd=TYPESORT) => the_sort2_type
 | (knd=PROPSORT) => the_sort2_prop
 | (knd=VIEWSORT) => the_sort2_view
-| (knd=VTYPESORT) => the_sort2_vtype
+| (knd=TFLTSORT) => the_sort2_tflt
+| (knd=VTFLTSORT) => the_sort2_vtflt
 | _(* SEXPDEF *) =>
   let
     val () =
-    assertloc(false) in the_sort2_type
+    assertloc(false) in the_sort2_tflt
   end
 //
 end // end-of-let
@@ -4351,10 +4351,12 @@ implement
 trans12_tiarg
   (ti1a) = let
 //
-val loc0 = ti1a.loc()
+val
+loc0 = ti1a.loc()
 //
 val-
-TI1ARGsome(s1es) = ti1a.node()
+TI1ARGsome
+  (s1es) = ti1a.node()
 //
 val s2es = trans12_sexplst(s1es)
 //

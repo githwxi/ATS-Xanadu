@@ -66,12 +66,16 @@ fun sortpol(x: int): int // -1,0,1
 //
 #define VIEWSORT 6 // 00110
 //
+(*
 #define TYPESORT 0 // 00000
+*)
 #define TBOXSORT 1 // 00001
 #define TFLTSORT 0 // 00000
 #define TFLATSORT 0 // 00000
 //
+(*
 #define VTYPESORT 2 // 00010
+*)
 #define VTBOXSORT 3 // 00011
 #define VTFLTSORT 2 // 00010
 #define VTFLATSORT 2 // 00010
@@ -91,9 +95,11 @@ fun sortpol(x: int): int // -1,0,1
 #define VIEWSORT01 %(POLPOS(VIEWSORT))
 #define VIEWSORT10 %(POLNEG(VIEWSORT))
 
+(*
 #define TYPESORT00 TYPESORT
 #define TYPESORT01 %(POLPOS(TYPESORT))
 #define TYPESORT10 %(POLNEG(TYPESORT))
+*)
 
 #define TBOXSORT00 TBOXSORT
 #define TBOXSORT01 %(POLPOS(TBOXSORT))
@@ -107,9 +113,11 @@ fun sortpol(x: int): int // -1,0,1
 #define TFLATSORT01 %(POLPOS(TFLATSORT))
 #define TFLATSORT10 %(POLNEG(TFLATSORT))
 
+(*
 #define VTYPESORT00 VTYPESORT
 #define VTYPESORT01 %(POLPOS(VTYPESORT))
 #define VTYPESORT10 %(POLNEG(VTYPESORT))
+*)
 
 #define VTBOXSORT00 VTBOXSORT
 #define VTBOXSORT01 %(POLPOS(VTBOXSORT))

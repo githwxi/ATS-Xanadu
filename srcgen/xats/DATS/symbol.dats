@@ -349,11 +349,21 @@ implement
 EQGT_symbol = symbol_make("=>")
 //
 (* ****** ****** *)
-
+//
 implement
 MSLT_symbol = symbol_make("-<")
 implement
 MSGT_symbol = symbol_make("->")
+//
+(* ****** ****** *)
+//
+implement
+WCARD_symbol = symbol_make("_")
+//
+implement
+QMARK_symbol = symbol_make("?")
+implement
+QBANG_symbol = symbol_make("?!")
 //
 (* ****** ****** *)
 
