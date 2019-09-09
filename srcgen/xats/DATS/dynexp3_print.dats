@@ -160,6 +160,22 @@ case- x0.node() of
   fprint!
   (out, "D3Pvar(", d2v, ")")
 //
+| D3Pint(tok) =>
+  fprint!
+  (out, "D3Pint(", tok, ")")
+| D3Pbtf(tok) =>
+  fprint!
+  (out, "D3Pbtf(", tok, ")")
+| D3Pchr(tok) =>
+  fprint!
+  (out, "D3Pchr(", tok, ")")
+| D3Pflt(tok) =>
+  fprint!
+  (out, "D3Pflt(", tok, ")")
+| D3Pstr(tok) =>
+  fprint!
+  (out, "D3Pstr(", tok, ")")
+//
 | D3Pcon1(d2c0) =>
   fprint!
   (out, "D3Pcon1(", d2c0, ")")
@@ -228,6 +244,8 @@ x0.node() of
 //
 | D3Eint(tok) =>
   fprint!(out, "D3Eint(", tok, ")")
+| D3Ebtf(tok) =>
+  fprint!(out, "D3Ebtf(", tok, ")")
 | D3Echr(tok) =>
   fprint!(out, "D3Echr(", tok, ")")
 | D3Eflt(tok) =>
@@ -250,11 +268,17 @@ x0.node() of
 //
 | D3Esym0
   (d1e1, dpis) =>
-  fprint!(out, "D3Esym0(", d1e1, ")")
 (*
+  fprint!(out, "D3Esym0(", d1e1, ")")
   fprint!
   (out, "D3Esym0(", d1e1, "; ", dpis, ")")
 *)
+  let
+  val t2p0 = x0.type()
+  in
+  fprint!
+  (out, "D3Esym0(", d1e1, ": ", t2p0, ")")
+  end
 //
 | D3Esap0
   (d3e1, s2es) =>

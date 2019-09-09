@@ -412,6 +412,13 @@ implement
 STRING_symbol = symbol_make("string")
 
 (* ****** ****** *)
+
+implement
+TRUE_symbol = symbol_make("true")
+implement
+FALSE_symbol = symbol_make("false")
+
+(* ****** ****** *)
 //
 implement
 PROP_symbol = symbol_make("prop")

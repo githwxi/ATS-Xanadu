@@ -98,6 +98,43 @@ end
 
 (* ****** ****** *)
 
+#symload nil with list_nil
+#symload nil with list_vt_nil
+
+(* ****** ****** *)
+
+fun
+not(tf: bool) =
+(
+case tf of
+true => false | false => true
+)
+
+(* ****** ****** *)
+////
+#extern
+fun
+isodd(n:int): bool
+and
+isevn(n:int): bool
+
+implmnt
+isevn(n) =
+if n > 0 then isodd(n-1) else true
+implmnt
+isodd(n) =
+if n > 0 then isevn(n-1) else false
+
+(* ****** ****** *)
+////
+val:
+rec
+fact =
+lam(x:int): int =>
+if x > 0 then x*fact(x-1) else 1
+
+(* ****** ****** *)
+
 (*
 #extern
 fun
@@ -109,6 +146,8 @@ fun
 identity2(x: &x >> x): void
 *)
 
+(* ****** ****** *)
+////
 #extern
 fun
 <x:type>
@@ -225,15 +264,6 @@ fun
 <a:type>
 app2(f: a -> a, x: a) = f(f(x))
 
-
-(* ****** ****** *)
-////
-
-val:
-rec
-fact =
-lam(x:int): int =>
-if x > 0 then x*fact(x-1) else 1
 
 (* ****** ****** *)
 ////
