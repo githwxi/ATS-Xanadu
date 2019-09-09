@@ -150,6 +150,15 @@ d2p0.node() of
     d3pat_var(loc0, d2v0)
   end
 //
+| D2Pint(tok0) =>
+  (
+    d3pat_int(loc0, tok0)
+  )
+| D2Pbtf(tok0) =>
+  (
+    d3pat_btf(loc0, tok0)
+  )
+//
 | D2Pcon1(d2c0) =>
   (
     d3pat_con(loc0, d2c0)
@@ -337,6 +346,23 @@ in
 d3exp_make_node(loc0, t2p0, node)
 end
 end (* end of [auxint] *)
+
+fun
+auxbtf
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ebtf(tok) = d2e0.node()
+//
+val node = D3Ebtf(tok)
+val t2p0 = the_t2ype_bool
+//
+in
+  d3exp_make_node(loc0, t2p0, node)
+end (* end of [auxbtf] *)
 
 fun
 auxchr
@@ -912,6 +938,7 @@ case+
 d2e0.node() of
 //
 | D2Eint _ => auxint(d2e0)
+| D2Ebtf _ => auxbtf(d2e0)
 | D2Echr _ => auxchr(d2e0)
 | D2Eflt _ => auxflt(d2e0)
 | D2Estr _ => auxstr(d2e0)
@@ -1417,12 +1444,18 @@ case+ wtp of
   (tfn1(*infer*), tfn2(*given*))
 ) : t2pcast // end-of-val
 //
+(*
+//
+// HX-2019-09-08:
+// Already handled in [trans12]
+//
 val () =
 (
 case+ dct of
 | None() => ()
 | Some(d2c) => d2c.type(nam.type())
-)
+) (* end of [val] *)
+*)
 //
 (*
 val () =

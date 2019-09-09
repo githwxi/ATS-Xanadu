@@ -130,8 +130,31 @@ list_isnot_sing (xs) =
 
 local
 
+(* ****** ****** *)
+
 fun
-auxid
+isbtf
+( sym
+: sym_t): bool =
+(
+ifcase
+| sym=TRUE => true
+| sym=FALSE => true
+| _(* else *) => false
+) where
+{
+macdef
+TRUE = $SYM.TRUE_symbol
+macdef
+FALSE = $SYM.FALSE_symbol
+overload =
+with $SYM.eq_symbol_symbol
+} (* end of [isbtf] *)
+
+(* ****** ****** *)
+
+fun
+auxid0
 ( d1p0
 : d1pat): d2pat = let
 //
@@ -150,28 +173,43 @@ in
 case+ opt of
 //
 | ~None_vt() =>
-   auxid_none
+   auxid0_none
    (d1p0, sym(*d2var*))
 | ~Some_vt(d2i) =>
-   auxid_some
+   auxid0_some
    (d1p0, sym(*d2var*), d2i(*d2con*))
 //
-end // end of [auxid]
+end // end of [auxid0]
 
 and
-auxid_none
+auxid0_none
 ( d1p0: d1pat
 , name: sym_t): d2pat =
 let
   val loc0 = d1p0.loc()
-  val d2v0 = d2var_new2(loc0, name)
 in
+//
+ifcase
+| isbtf(name) =>
+  let
+  val-
+  D1Pid(tok) = d1p0.node()
+  in
+  d2pat_make_node(loc0, D2Pbtf(tok))
+  end
+| _ (* else *) =>
+  let
+  val
+  d2v0 = d2var_new2(loc0, name)
+  in
   d2pat_make_node(loc0, D2Pvar(d2v0))
-end // end of [auxid_none]
+  end
+//
+end // end of [auxid0_none]
 
 (*
 and
-auxid_some
+auxid0_some
 ( d1p0: d1pat
 , name: sym_t
 , d2i0: d2itm): d2pat =
@@ -179,10 +217,10 @@ let
   val loc0 = d1p0.loc()
 in
   d2pat_make_node(loc0, D2Pnone1(d1p0))
-end // end of [auxid_some]
+end // end of [auxid0_some]
 *)
 and
-auxid_some
+auxid0_some
 ( d1p0: d1pat
 , name: sym_t
 , d2i0: d2itm): d2pat =
@@ -190,18 +228,18 @@ auxid_some
 case+ d2i0 of
 //
 | D2ITMcon(d2cs) =>
-  auxid_d2cs(d1p0, d2cs)
+  auxid0_d2cs(d1p0, d2cs)
 //
 | D2ITMvar _ =>
-  auxid_none(d1p0, name)
+  auxid0_none(d1p0, name)
 | D2ITMcst _ =>
-  auxid_none(d1p0, name)
+  auxid0_none(d1p0, name)
 | D2ITMsym _ =>
-  auxid_none(d1p0, name)
-) (* end of [auxid_some] *)
+  auxid0_none(d1p0, name)
+) (* end of [auxid0_some] *)
 
 and
-auxid_d2cs
+auxid0_d2cs
 ( d1p0: d1pat
 , d2cs: d2conlst): d2pat =
 let
@@ -219,7 +257,7 @@ d2pat_con1(loc0, d2c0)
 }
 else d2pat_con2(loc0, d2cs)
 //
-end // end of [auxid_d2cs]
+end // end of [auxid0_d2cs]
 
 (* ****** ****** *)
 
@@ -372,7 +410,7 @@ in (* in-of-let *)
 case-
 d1p0.node() of
 //
-| D1Pid _ => auxid(d1p0)
+| D1Pid _ => auxid0(d1p0)
 //
 | D1Papp1 _ => auxapp1(d1p0)
 //
@@ -710,7 +748,21 @@ list_map$fopr<d1clau><d2clau> = trans12_dclau
 local
 
 fun
-auxid
+isbtf
+( tok
+: token): bool =
+(
+case+
+tok.node() of
+| T_IDENT_alp(s0) =>
+  (s0="true" || s0="false")
+| _(*non-IDENT_alp*) => false
+)
+
+(* ****** ****** *)
+
+fun
+auxid0
 ( d1e0
 : d1exp): d2exp = let
 //
@@ -723,12 +775,23 @@ val opt = the_dexpenv_find(sym)
 in
 //
 case+ opt of
-| ~None_vt() => d2exp_none1(d1e0)
-| ~Some_vt(d2i) => auxid_d2i(d1e0, d2i)
-end // end of [auxid]
+| ~None_vt() =>
+  (
+  ifcase
+  | isbtf(tok) =>
+    (
+      d2exp_btf(loc0, tok)
+    ) where
+    {
+      val loc0 = d1e0.loc()
+    }
+  | _(* else *) => d2exp_none1(d1e0)
+  )
+| ~Some_vt(d2i) => auxid0_d2i(d1e0, d2i)
+end // end of [auxid0]
 
 and
-auxid_d2i
+auxid0_d2i
 ( d1e0
 : d1exp
 , d2i0
@@ -736,16 +799,16 @@ auxid_d2i
 (
 case- d2i0 of
 | D2ITMvar(x0) =>
-  auxid_var(d1e0, x0)
+  auxid0_var(d1e0, x0)
 | D2ITMcon(xs) =>
-  auxid_con(d1e0, xs)
+  auxid0_con(d1e0, xs)
 | D2ITMcst(xs) =>
-  auxid_cst(d1e0, xs)
+  auxid0_cst(d1e0, xs)
 | D2ITMsym(_, dpis) =>
-  auxid_sym(d1e0, dpis)
-) (* end of [auxid_d2i] *)
+  auxid0_sym(d1e0, dpis)
+) (* end of [auxid0_d2i] *)
 and
-auxid_var
+auxid0_var
 ( d1e0
 : d1exp
 , d2v0
@@ -754,7 +817,7 @@ auxid_var
   d2exp_var(d1e0.loc(), d2v0)
 )
 and
-auxid_con
+auxid0_con
 ( d1e0
 : d1exp
 , d2cs
@@ -771,9 +834,9 @@ d2exp_con1(loc0, d2cs.head())
 ) where
 {
   val loc0 = d1e0.loc()
-} (* end of [auxid_con] *)
+} (* end of [auxid0_con] *)
 and
-auxid_cst
+auxid0_cst
 ( d1e0
 : d1exp
 , d2cs
@@ -790,9 +853,9 @@ d2exp_cst1(loc0, d2cs.head())
 ) where
 {
   val loc0 = d1e0.loc()
-} (* end of [auxid_cst] *)
+} (* end of [auxid0_cst] *)
 and
-auxid_sym
+auxid0_sym
 ( d1e0
 : d1exp
 , dpis
@@ -802,7 +865,7 @@ auxid_sym
 ) where
 {
   val loc0 = d1e0.loc()
-} (* end of [auxid_sym] *)
+} (* end of [auxid0_sym] *)
 //
 (* ****** ****** *)
 
@@ -1282,7 +1345,7 @@ in (* in-of-let *)
 case-
 d1e0.node() of
 //
-| D1Eid _ => auxid(d1e0)
+| D1Eid _ => auxid0(d1e0)
 //
 | D1Eint _ => auxint(d1e0)
 | D1Echr _ => auxchr(d1e0)

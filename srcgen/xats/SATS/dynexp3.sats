@@ -65,6 +65,7 @@ d3pat_node =
 | D3Pvar of (d2var)
 //
 | D3Pint of (token)
+| D3Pbtf of (token)
 | D3Pchr of (token)
 | D3Pflt of (token)
 | D3Pstr of (token)
@@ -129,6 +130,18 @@ fun
 d3pat_var
 (loc0: loc_t, d2v0: d2var): d3pat
 //
+(* ****** ****** *)
+
+fun
+d3pat_int
+(loc0: loc_t, tok0: token): d3pat
+fun
+d3pat_btf
+(loc0: loc_t, tok0: token): d3pat
+fun
+d3pat_chr
+(loc0: loc_t, tok0: token): d3pat
+
 (* ****** ****** *)
 
 fun
@@ -234,6 +247,7 @@ datatype
 d3exp_node =
 //
 | D3Eint of (token)
+| D3Ebtf of (token)
 | D3Echr of (token)
 | D3Eflt of (token)
 | D3Estr of (token)

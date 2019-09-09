@@ -374,6 +374,7 @@ d2pat_node =
 | D2Pvar of (d2var)
 //
 | D2Pint of (token)
+| D2Pbtf of (token)
 | D2Pchr of (token)
 | D2Pflt of (token)
 | D2Pstr of (token)
@@ -600,10 +601,11 @@ ti2arg_make
 datatype
 d2exp_node =
 //
-| D2Eint of (token)
-| D2Echr of (token)
-| D2Eflt of (token)
-| D2Estr of (token)
+| D2Eint of (token) // int
+| D2Ebtf of (token) // bool
+| D2Echr of (token) // char
+| D2Eflt of (token) // float
+| D2Estr of (token) // string
 //
 | D2Evar of (d2var)
 //
@@ -760,6 +762,7 @@ fun d2exp_none0(loc_t): d2exp
 fun d2exp_none1(d1exp): d2exp
 //
 fun d2exp_int(loc_t, token): d2exp
+fun d2exp_btf(loc_t, token): d2exp
 fun d2exp_chr(loc_t, token): d2exp
 fun d2exp_flt(loc_t, token): d2exp
 fun d2exp_str(loc_t, token): d2exp

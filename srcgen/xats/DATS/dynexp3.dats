@@ -127,6 +127,39 @@ end // end of [let]
 (* ****** ****** *)
 
 implement
+d3pat_int
+(loc0, tok0) =
+let
+val
+t2p0 = the_t2ype_sint
+in
+d3pat_make_node
+(loc0, t2p0, D3Pint(tok0))
+end // end of [let]
+implement
+d3pat_btf
+(loc0, tok0) =
+let
+val
+t2p0 = the_t2ype_bool
+in
+d3pat_make_node
+(loc0, t2p0, D3Pbtf(tok0))
+end // end of [let]
+implement
+d3pat_chr
+(loc0, tok0) =
+let
+val
+t2p0 = the_t2ype_char
+in
+d3pat_make_node
+(loc0, t2p0, D3Pchr(tok0))
+end // end of [let]
+
+(* ****** ****** *)
+
+implement
 d3pat_con
 (loc0, d2c0) =
 let

@@ -614,6 +614,11 @@ d2exp_int
 d2exp_make_node(loc0, D2Eint(tok))
 
 implement
+d2exp_btf
+(loc0, tok) =
+d2exp_make_node(loc0, D2Ebtf(tok))
+
+implement
 d2exp_chr
 (loc0, tok) =
 d2exp_make_node(loc0, D2Echr(tok))

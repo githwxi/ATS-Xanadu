@@ -138,6 +138,11 @@ val FLOAT_symbol : symbol // float sort
 val STRING_symbol : symbol // string sort
 
 (* ****** ****** *)
+
+val TRUE_symbol : symbol // true
+val FALSE_symbol : symbol // false
+
+(* ****** ****** *)
 //
 val PROP_symbol : symbol // prop sort
 val VIEW_symbol : symbol // view sort

@@ -130,6 +130,8 @@ s2e0.node() of
     (s2t0, T2Pfun(fcr, npf, t2ps, t2p1))
   end
 //
+| S2Etop(knd, s2e1) => s2exp_erase(s2e1)
+//
 | S2Eapp(s2e1, s2es) =>
   let
     val t2p1 = s2exp_erase(s2e1)
