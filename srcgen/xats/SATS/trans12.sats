@@ -409,6 +409,9 @@ the_sexpenv_add_varlstlst(svss: s2varlstlst): void
 fun
 the_sexpenv_find
   (sym: sym_t): s2itmopt_vt
+fun // pervasive
+the_sexpenv_pfind
+  (sym: sym_t): s2itmopt_vt
 fun
 the_sexpenv_qfind
   (qua: sym_t, sym: sym_t): s2itmopt_vt

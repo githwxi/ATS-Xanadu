@@ -111,72 +111,61 @@ macdef
 symbol =
 symbol_make
 //
-val
-XATS_SINT_T =
-symbol("xats_sint_t")
-val
-XATS_UINT_T =
-symbol("xats_uint_t")
-val
-XATS_BOOL_T =
-symbol("xats_bool_t")
-val
-XATS_CHAR_T =
-symbol("xats_char_t")
-val
-XATS_VOID_T =
-symbol("xats_void_t")
-val
-XATS_FLOAT_T =
-symbol("xats_float_t")
-val
-XATS_DOUBLE_T =
-symbol("xats_double_t")
-val
-XATS_STRING_T =
-symbol("xats_string_t")
-//
 in(*in-of-local*)
+//
+val
+XATS_SINT_T = symbol("xats_sint_t")
+and
+XATS_UINT_T = symbol("xats_uint_t")
+and
+XATS_BOOL_T = symbol("xats_bool_t")
+and
+XATS_CHAR_T = symbol("xats_char_t")
+//
+val
+XATS_VOID_T = symbol("xats_void_t")
+//
+val
+XATS_FLOAT_T = symbol("xats_float_t")
+and
+XATS_DOUBLE_T = symbol("xats_double_t")
+//
+val
+XATS_STRING_T = symbol("xats_string_t")
+//
+end // end of [local]
+
+(* ****** ****** *)
 
 implement
 the_t2ype_sint =
-t2ype_make_name
-(the_sort2_tflt, XATS_SINT_T)
+t2ype_make_name(the_sort2_tflt, XATS_SINT_T)
 implement
 the_t2ype_uint =
-t2ype_make_name
-(the_sort2_tflt, XATS_UINT_T)
+t2ype_make_name(the_sort2_tflt, XATS_UINT_T)
 //
 implement
 the_t2ype_bool =
-t2ype_make_name
-(the_sort2_tflt, XATS_BOOL_T)
+t2ype_make_name(the_sort2_tflt, XATS_BOOL_T)
 //
 implement
 the_t2ype_char =
-t2ype_make_name
-(the_sort2_tflt, XATS_CHAR_T)
+t2ype_make_name(the_sort2_tflt, XATS_CHAR_T)
 //
 implement
 the_t2ype_void =
-t2ype_make_name
-(the_sort2_tflt, XATS_VOID_T)
+t2ype_make_name(the_sort2_tflt, XATS_VOID_T)
 //
 implement
 the_t2ype_float =
-t2ype_make_name
-(the_sort2_tflt, XATS_FLOAT_T)
+t2ype_make_name(the_sort2_tflt, XATS_FLOAT_T)
 implement
 the_t2ype_double =
-t2ype_make_name
-(the_sort2_tflt, XATS_DOUBLE_T)
+t2ype_make_name(the_sort2_tflt, XATS_DOUBLE_T)
 //
 implement
 the_t2ype_string =
-t2ype_make_name
-(the_sort2_tbox, XATS_STRING_T)
-
-end // end of [local]
+t2ype_make_name(the_sort2_tbox, XATS_STRING_T)
 
 (* ****** ****** *)
 
@@ -291,15 +280,50 @@ end // end of [t2ype_srt_xtv]
 (* ****** ****** *)
 //
 implement
+t2bas_eval
+  (t2p0) = let
+//
+val-
+T2Pbas(sym) = t2p0.node()
+//
+in
+//
+ifcase
+//
+| sym=XATS_SINT_T =>
+  the_sint_ctype.type()
+| sym=XATS_UINT_T =>
+  the_uint_ctype.type()
+| sym=XATS_BOOL_T =>
+  the_bool_ctype.type()
+| sym=XATS_CHAR_T =>
+  the_char_ctype.type()
+//
+| sym=XATS_VOID_T =>
+  the_void_ctype.type()
+//
+| sym=XATS_FLOAT_T => the_t2ype_float
+| sym=XATS_DOUBLE_T => the_t2ype_double
+//
+| sym=XATS_STRING_T => the_t2ype_string
+//
+| _(*unrecognized base type*) => t2p0
+//
+end // end of [t2bas_eval]
+//
+implement
 t2ype_eval
   (t2p0) =
 (
 case+
 t2p0.node() of
-| T2Pxtv(xtv) =>
-  let
-  val
-  t2p1 = xtv.type()
+| T2Pbas _ =>
+  (
+    t2bas_eval(t2p0)
+  )
+| T2Pxtv(xtv) => let
+    val
+    t2p1 = xtv.type()
   in
     case+ t2p1.node() of
     | T2Pnone0() => t2p0

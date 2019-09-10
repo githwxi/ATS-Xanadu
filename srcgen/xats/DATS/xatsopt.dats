@@ -1482,7 +1482,7 @@ println!
   ((*popped*)) =
   $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
-} (* the_basics_load *)
+} (* end of [the_basics_load] *)
 //
 (* ****** ****** *)
 //
@@ -1540,7 +1540,7 @@ println!
   ((*popped*)) =
   $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
-} (* the_prelude_load *)
+} (* end of [the_prelude_load] *)
 //
 (* ****** ****** *)
 
@@ -1556,8 +1556,12 @@ the_fixity_load
 val () =
 the_basics_load
 ( XATSHOME
-, 0(*static*)
-, "prelude/basics.sats")
+, 0(*static*), "prelude/basics.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/xsetup.sats")
 //
 val () =
 the_prelude_load
