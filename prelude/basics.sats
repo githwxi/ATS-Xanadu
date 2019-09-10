@@ -439,6 +439,21 @@ vtypedef listbtwe_vt
 //
 (* ****** ****** *)
 //
+typedef
+sfloat_k =
+$extype("xats_sfloat_t")
+typedef
+dfloat_k =
+$extype("xats_dfloat_t")
+//
+abstype
+gfloat_type(a:type) <= a
+//
+typedef sfloat = gfloat(sfloat_k)
+typedef dfloat = gfloat(dfloat_k)
+//
+(* ****** ****** *)
+//
 abstype
 string_i0_x0(n:int) <= ptr
 abstype

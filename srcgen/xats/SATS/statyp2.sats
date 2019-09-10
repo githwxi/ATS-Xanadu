@@ -162,9 +162,9 @@ val
 the_t2ype_void: t2ype
 //
 val
-the_t2ype_float: t2ype
+the_t2ype_sfloat: t2ype
 and
-the_t2ype_double: t2ype
+the_t2ype_dfloat: t2ype
 //
 val
 the_t2ype_string: t2ype

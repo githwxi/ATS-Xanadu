@@ -459,7 +459,7 @@ else let
   auxsrch(r0->syms2cst_sym)
 in
 //
-case- opt of
+case+ opt of
 |
 ~Some_vt(s2c) =>
  let
