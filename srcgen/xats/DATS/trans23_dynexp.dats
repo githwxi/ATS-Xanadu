@@ -1174,6 +1174,8 @@ list_map<d2clau><d3clau>(d2cs)
 
 local
 
+(* ****** ****** *)
+
 fun
 aux_valdecl
 ( d2c0
@@ -1264,6 +1266,94 @@ case+ v2ds of
 )
 //
 } (* end of [aux_valdecl] *)
+
+(* ****** ****** *)
+
+fun
+aux_vardecl
+( d2c0
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2c0.loc()
+val-
+D2Cvardecl
+( knd
+, v2ds) = d2c0.node()
+//
+val
+v3ds = auxv2ds(d2c0, v2ds)
+//
+in
+  d3ecl_make_node
+  (loc0, D3Cvardecl(knd, v3ds))
+end where
+{
+//
+//
+fun
+auxv2d0
+( d2c0
+: d2ecl
+, v2d0
+: v2ardecl
+) : v3ardecl = let
+//
+val
+loc0 = d2c0.loc()
+val+
+V2ARDECL(rcd) = v2d0
+//
+val loc = rcd.loc
+val d2v = rcd.d2v
+val wth = rcd.wth
+val res = rcd.res
+val ini = rcd.ini
+//
+val
+ini =
+(
+case+ ini of
+| None() => None()
+| Some(d3e) =>
+  Some(trans23_dexp_dn(d3e, tres))
+) where
+{
+val
+tres =
+(
+case+ res of
+| None() => t2ype_new(loc0)
+| Some(s2e) => s2exp_erase(s2e)
+) : t2ype // end-of-val
+//
+val () = d2var_set_type(d2v, tres)
+//
+}
+//
+in
+V3ARDECL
+(@{
+loc=loc,d2v=d2v,wth=wth,res=res,ini=ini})
+end // end of [auxv2d0]
+//
+fun
+auxv2ds
+( d2c0: d2ecl
+, v2ds
+: v2ardeclist
+)
+: v3ardeclist =
+(
+case+ v2ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons
+  (auxv2d0(d2c0, x0), auxv2ds(d2c0, xs))
+)
+//
+} (* end of [aux_vardecl] *)
 
 (* ****** ****** *)
 
@@ -1638,6 +1728,8 @@ d2c0.node() of
   end
 //
 | D2Cvaldecl _ => aux_valdecl(d2c0)
+| D2Cvardecl _ => aux_vardecl(d2c0)
+//
 | D2Cfundecl _ => aux_fundecl(d2c0)
 //
 | D2Cimpdecl _ => aux_impdecl(d2c0)

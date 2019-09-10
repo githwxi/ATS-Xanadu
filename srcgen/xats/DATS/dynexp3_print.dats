@@ -450,7 +450,11 @@ fprint_d3ecl(stdout_ref, x0)
 local
 
 implement
+fprint_val<d3ecl> = fprint_d3ecl
+implement
 fprint_val<v3aldecl> = fprint_v3aldecl
+implement
+fprint_val<v3ardecl> = fprint_v3ardecl
 implement
 fprint_val<f3undecl> = fprint_f3undecl
 
@@ -477,6 +481,11 @@ x0.node() of
   ( out
   , "D3Cvaldecl("
   , knd, "; ", mopt, "; ", v3ds, ")")
+| D3Cvardecl(knd, v3ds) =>
+  fprint!
+  ( out
+  , "D3Cvardecl(", knd, "; ", v3ds, ")")
+//
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>
   fprint!
@@ -549,6 +558,30 @@ in
   , ", def=", rcd.def
   , ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v3aldecl]
+
+(* ****** ****** *)
+
+implement
+print_v3ardecl(x0) =
+fprint_v3ardecl(stdout_ref, x0)
+implement
+prerr_v3ardecl(x0) =
+fprint_v3ardecl(stderr_ref, x0)
+
+implement
+fprint_v3ardecl
+  (out, x0) = let
+//
+val+V3ARDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "V3ARDECL@{"
+  , "d2v=", rcd.d2v, ", "
+  , "wth=", rcd.wth, ", "
+  , "res=", rcd.res, ", ", "ini=", rcd.ini, "}")
+end // end of [fprint_v3ardecl]
 
 (* ****** ****** *)
 
