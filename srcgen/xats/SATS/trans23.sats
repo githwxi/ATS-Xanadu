@@ -190,31 +190,31 @@ t2xtv_occurs
 (* ****** ****** *)
 //
 fun
-ulte_t2ype_t2ype
+unify_t2ype_t2ype
 ( loc0: loc_t
 , t2p1: t2ype, t2p2: t2ype): bool
 //
 fun
-ulte_t2ypelst_t2ypelst
+unify_t2ypelst_t2ypelst
 ( loc0: loc_t
 , t2ps1: t2ypelst, t2ps2: t2ypelst): bool
 fun
-ulte_labt2ype_labt2ype
+unify_labt2ype_labt2ype
 ( loc0: loc_t
 , lt2p1: labt2ype, lt2p2: labt2ype): bool
 fun
-ulte_labt2ypelst_labt2ypelst
+unify_labt2ypelst_labt2ypelst
 ( loc0: loc_t
 , lt2ps1: labt2ypelst, lt2ps2: labt2ypelst): bool
 //
 overload
-ulte with ulte_t2ype_t2ype
+unify with unify_t2ype_t2ype
 overload
-ulte with ulte_t2ypelst_t2ypelst
+unify with unify_t2ypelst_t2ypelst
 overload
-ulte with ulte_labt2ype_labt2ype
+unify with unify_labt2ype_labt2ype
 overload
-ulte with ulte_labt2ypelst_labt2ypelst
+unify with unify_labt2ypelst_labt2ypelst
 //
 (* ****** ****** *)
 //
