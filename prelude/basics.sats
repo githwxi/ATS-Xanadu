@@ -85,8 +85,11 @@ sexpdef i2b = cast_i0_b0
 //
 (* ****** ****** *)
 //
-#stacst tt : bool // true
-#stacst ff : bool // false
+#stacst tt_b0 : bool
+#stacst ff_b0 : bool
+//
+sexpdef tt = tt_b0 // true
+sexpdef ff = ff_b0 // false
 //
 (* ****** ****** *)
 //

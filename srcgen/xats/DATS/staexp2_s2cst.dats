@@ -46,6 +46,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/trans01.sats"
+#staload "./../SATS/trans12.sats"
 //
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
@@ -129,18 +130,18 @@ end // end of [local]
 (* ****** ****** *)
 
 local
-
+//
 absimpl
-s2cst_tbox = $rec{
+s2cst_tbox =
+$rec{
 //
   s2cst_loc= loc_t // loc
 , s2cst_sym= sym_t // name
 , s2cst_sort= sort2 // sort
-//
 , s2cst_stamp= stamp // unicity
 //
 } (* end of [s2cst_tbox] *)
-
+//
 in (* in-of-local *)
 
 implement
@@ -149,7 +150,7 @@ s2cst_make_idst
 (
 let
 val
-s2c = 
+s2c0 = 
 $rec{
   s2cst_loc= loc
 , s2cst_sym= sid
@@ -159,7 +160,7 @@ $rec{
 //
 } (* end-of-val *)
 val
-abs = ABSTDF2none()
+abs0 = ABSTDF2none()
 val
 def1 =
 the_s2exp_none0(*void*)
@@ -167,12 +168,14 @@ val
 def2 =
 the_t2ype_none0(*void*)
 in
-s2c where
+(
+  s2c0
+) where
 {
-val () = stamp_s2cst(s2c)
-val () = stamp_s2cst_abs(s2c, abs)
-val () = stamp_s2cst_sexp(s2c, def1)
-val () = stamp_s2cst_type(s2c, def2)
+val () = stamp_s2cst(s2c0)
+val () = stamp_s2cst_abs(s2c0, abs0)
+val () = stamp_s2cst_sexp(s2c0, def1)
+val () = stamp_s2cst_type(s2c0, def2)
 }
 end
 ) where
@@ -392,6 +395,124 @@ println!
 in
   // nothing
 end // end of [stamp_s2cst_type]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+typedef
+syms2cst_struct =
+@{
+  syms2cst_sym= symbol
+, syms2cst_s2c= s2cstnul
+} // end of [syms2cst_struct]
+//
+absimpl
+s2cstref_tbox = ref(syms2cst_struct)
+//
+in (* in-of-local *)
+
+implement
+s2cstref_get_scst
+  (r0) = let
+//
+fun
+auxsrch
+( sym
+: sym_t)
+: s2cstopt_vt =
+let
+val
+opt =
+the_sexpenv_pfind(sym)
+in
+//
+case+ opt of
+|
+~None_vt() =>
+ None_vt(*void*)
+|
+~Some_vt(s2i) =>
+(
+case+ s2i of
+| S2ITMcst(s2cs) =>
+  (
+  case- s2cs of
+  | list_cons(s2c, _) => Some_vt(s2c)
+  )
+| _(* non-S2ITMcst *) => None_vt(*void*)
+)
+//
+end // end of [val]
+//
+val s2c0 = r0->syms2cst_s2c
+//
+in
+//
+if
+isneqz(s2c0)
+then unsome(s2c0)
+else let
+  val opt =
+  auxsrch(r0->syms2cst_sym)
+in
+//
+case- opt of
+|
+~Some_vt(s2c) =>
+ let
+   val () =
+   r0->syms2cst_s2c
+   :=
+   s2cstnul_some(s2c) in (s2c)
+ end
+//
+end // end of [else]
+// end of [ifneqz]
+//
+end // end of [s2cstref_get_scst]
+
+(* ****** ****** *)
+
+implement
+s2cstref_get_sexp
+  (r0) = let
+//
+val s2c0 =
+s2cstref_get_scst(r0)
+//
+in
+  s2cst_get_sexp(s2c0)
+end // end of [s2cstref_get_sexp]
+
+implement
+s2cstref_get_type
+  (r0) = let
+//
+val s2c0 =
+s2cstref_get_scst(r0)
+//
+in
+  s2cst_get_type(s2c0)
+end // end of [s2cstref_get_type]
+
+(* ****** ****** *)
+
+implement
+s2cstref_make_name
+  (name) = let
+//
+  val sym0 =
+  $SYM.symbol_make(name)
+//
+  val s2c0 = s2cstnul_none((*void*))
+//
+in
+  ref<syms2cst_struct>
+  (@{syms2cst_sym=sym0,syms2cst_s2c=s2c0})
+end  // end of [s2cstref_make_name]
 
 end // end of [local]
 

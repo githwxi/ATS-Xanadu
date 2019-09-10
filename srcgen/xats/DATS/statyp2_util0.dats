@@ -547,16 +547,51 @@ case+ lt2ps of
 local
 
 fun
-auxcst
+auxbas
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val
+t2p0 = t2bas_eval(t2p0)
+in
+//
+case+
+t2p0.node() of
+| T2Pbas(name) => t2p0
+| _(*non-T2Pbas*) =>
+  (
+    auxt2p(t2p0, flag)
+  ) where
+  {
+    val () = flag := flag + 1
+  }
+//
+end // end of [auxvar]
+
+and
+auxvar
 ( t2p0: t2ype
 , flag
 : &int >> int): t2ype =
 let
 val-
-T2Pcst
-(s2c0) = t2p0.node()
-val def0 =
-s2cst_get_type(s2c0)
+T2Pvar
+(s2v0) = t2p0.node() in t2p0
+end // end of [auxvar]
+
+and
+auxcst
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+//
+val-
+T2Pcst(s2c0) = t2p0.node()
+//
+val def0 = s2cst_get_type(s2c0)
+//
 in
 //
 case+
@@ -564,7 +599,7 @@ def0.node() of
 | T2Pnone0() => t2p0
 | _(* else *) => t2ype_hnfize(def0)
 //
-end // end of [appcst]
+end // end of [auxcst]
 
 and
 auxxtv
@@ -588,7 +623,12 @@ t2p0.node() of
     t2p1.node() of
     | T2Pnone0() => t2p0
     | _ (*non-T2Pnone0*) =>
-      (flag := flag+1; t2ype_hnfize(t2p1))
+      (
+        t2ype_hnfize(t2p1)
+      ) where
+      {
+        val () = flag := flag + 1
+      }
   end
 | _(* non-T2Pxtv *) => (t2p0)
 //
@@ -641,8 +681,13 @@ auxt2p
 (
 case+
 t2p0.node() of
-| T2Pbas _ => t2p0
-| T2Pvar _ => t2p0
+//
+| T2Pbas _ =>
+  auxbas(t2p0, flag)
+//
+| T2Pvar _ =>
+  auxvar(t2p0, flag)
+//
 | T2Pcst _ =>
   auxcst(t2p0, flag)
 | T2Pxtv _ =>

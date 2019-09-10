@@ -504,8 +504,9 @@ val () =
 println!
 ("d3pat_dn: t2p0 = ", t2p0)
 //
+val loc0 = d3p0.loc()
 val test =
-ulte(d3p0.loc(), d3p0.type(), t2p0)
+ulte(loc0, d3p0.type(), t2p0)
 //
 val () =
 println!

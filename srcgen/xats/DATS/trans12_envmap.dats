@@ -699,6 +699,17 @@ end // end of [the_sexpenv_find]
 (* ****** ****** *)
 
 implement
+the_sexpenv_pfind
+  (sid) = let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_psearch{s2itm}(!p0, sid)
+end // end of [the_sexpenv_pfind]
+
+(* ****** ****** *)
+
+implement
 the_sexpenv_qfind
   (qua, sym) = let
 //

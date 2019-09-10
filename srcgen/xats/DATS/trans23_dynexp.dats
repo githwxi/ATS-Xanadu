@@ -336,7 +336,9 @@ tok.node() of
 | T_INT1 _ => the_t2ype_sint
 | T_INT2 _ => the_t2ype_sint
 | T_INT3 _ => the_t2ype_sint
+//
 | _ (* dead *) => the_t2ype_sint
+//
 ) : t2ype // end of [val]
 //
 in

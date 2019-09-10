@@ -131,4 +131,37 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+the_tt_b0 =
+s2cstref_make_name("the_tt_b0")
+implement
+the_ff_b0 =
+s2cstref_make_name("the_ff_b0")
+
+(* ****** ****** *)
+
+implement
+the_sint_ctype =
+s2cstref_make_name("the_sint_ctype")
+implement
+the_uint_ctype =
+s2cstref_make_name("the_uint_ctype")
+
+implement
+the_bool_ctype =
+s2cstref_make_name("the_bool_ctype")
+implement
+the_char_ctype =
+s2cstref_make_name("the_char_ctype")
+
+implement
+the_void_ctype =
+s2cstref_make_name("the_void_ctype")
+
+implement
+the_string_ctype =
+s2cstref_make_name("the_string_ctype")
+
+(* ****** ****** *)
+
 (* end of [xats_staexp2_init0.dats] *)

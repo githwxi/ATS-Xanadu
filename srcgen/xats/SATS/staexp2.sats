@@ -1176,6 +1176,7 @@ overload .sexp with s2cst_get_sexp
 //
 fun
 s2cst_get_type(s2cst): t2ype
+//
 fun
 stamp_s2cst_type
 (s2c: s2cst, def: t2ype): void
@@ -1195,9 +1196,15 @@ s2cstref_make_name(string): s2cstref
 (* ****** ****** *)
 //
 fun
-s2cstref_get_s2cst(r0: s2cstref): s2cst
+s2cstref_get_scst(s2cstref): s2cst
 fun
-s2cstref_get_s2exp(r0: s2cstref): s2exp
+s2cstref_get_sexp(s2cstref): s2exp
+fun
+s2cstref_get_type(s2cstref): t2ype
+//
+overload .scst with s2cstref_get_scst
+overload .sexp with s2cstref_get_sexp
+overload .type with s2cstref_get_type
 //
 (* ****** ****** *)
 //
@@ -1205,6 +1212,19 @@ fun
 s2cstref_equ_s2cst(s2cstref, s2cst): bool
 fun
 s2cstref_equ_s2exp(s2cstref, s2exp): bool
+//
+(* ****** ****** *)
+//
+// HX-2019-09-09:
+// types for the constants
+//
+val the_sint_ctype : s2cstref
+val the_uint_ctype : s2cstref
+val the_bool_ctype : s2cstref
+val the_char_ctype : s2cstref
+val the_void_ctype : s2cstref
+val the_float_ctype : s2cstref
+val the_string_ctype : s2cstref
 //
 (* ****** ****** *)
 
