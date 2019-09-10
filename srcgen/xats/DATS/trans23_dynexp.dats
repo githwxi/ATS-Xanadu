@@ -1529,7 +1529,7 @@ case+ wtp of
   T2PCASTnone(*void*)
 | Some _ =>
   if
-  ulte(loc0, tfn1, tfn2)
+  unify(loc0, tfn1, tfn2)
   then T2PCASTnone(*void*)
   else
   T2PCASTsome

@@ -170,7 +170,7 @@ case+ lt2ps of
 (* ****** ****** *)
 
 implement
-ulte_t2ype_t2ype
+unify_t2ype_t2ype
 (loc0, t2p1, t2p2) =
 (
 let
@@ -181,9 +181,9 @@ and
 t2p2 = hnfize(t2p2)
 //
 val () =
-println!("ulte: t2p1 = ", t2p1)
+println!("unify: t2p1 = ", t2p1)
 val () =
-println!("ulte: t2p2 = ", t2p2)
+println!("unify: t2p2 = ", t2p2)
 //
 in (* in-of-let *)
 case+
@@ -296,9 +296,9 @@ t2p1.node() of
   | T2Papp(t2f2, arg2) =>
     let
       val tfun =
-      ulte(loc0, t2f1, t2f2) 
+      unify(loc0, t2f1, t2f2) 
       val targ =
-      ulte(loc0, arg1, arg2)
+      unify(loc0, arg1, arg2)
     in
       if tfun then targ else false
     end
@@ -317,9 +317,9 @@ t2p1.node() of
       val
       tnpf = (npf1 = npf2)
       val
-      targ = ulte(loc0, arg2, arg1)
+      targ = unify(loc0, arg2, arg1)
       val
-      tres = ulte(loc0, res1, res2)
+      tres = unify(loc0, res1, res2)
     in
       (tfcr && (tnpf && (targ && tres)))
     end
@@ -335,7 +335,7 @@ t2p1.node() of
     if
     (tnm1 = tnm2)
     then
-    ulte(loc0, tps1, tps2) else false
+    unify(loc0, tps1, tps2) else false
   | _ (* non-T2Ptyext *) => false
   )
 //
@@ -351,7 +351,7 @@ t2p1.node() of
     {
       val tknd = (knd1 = knd2)
       val tnpf = (npf1 = npf2)
-      val tlxs = ulte(loc0, lxs1, lxs2)
+      val tlxs = unify(loc0, lxs1, lxs2)
     }
   | _ (* non-T2Ptyrec *) => false
   )
@@ -411,12 +411,12 @@ auxtv2
   end
 //
 } (* end of [where] *)
-) (* end of [ulte_t2ype_t2ype] *)
+) (* end of [unify_t2ype_t2ype] *)
 
 (* ****** ****** *)
 
 implement
-ulte_t2ypelst_t2ypelst
+unify_t2ypelst_t2ypelst
   (loc0, t2ps1, t2ps2) =
 (
 case+ t2ps1 of
@@ -434,20 +434,20 @@ case+ t2ps1 of
     let
       val
       test1 =
-      ulte(loc0, t2p1, t2p2)
+      unify(loc0, t2p1, t2p2)
       val
       test2 =
-      ulte(loc0, t2ps1, t2ps2)
+      unify(loc0, t2ps1, t2ps2)
     in
       if test1 then test2 else false
     end
   )
-) (* end of [ulte_t2ypelst_t2ypelst] *)
+) (* end of [unify_t2ypelst_t2ypelst] *)
 
 (* ****** ****** *)
 
 implement
-ulte_labt2ype_labt2ype
+unify_labt2ype_labt2ype
 (loc0, lt2p1, lt2p2) =
 let
 val+TLABELED(l1, t2p1) = lt2p1
@@ -456,14 +456,14 @@ in
 //
 if
 (l1 = l2)
-then ulte(loc0, t2p1, t2p2) else false
+then unify(loc0, t2p1, t2p2) else false
 //
-end // end of [ulte_labt2ype_labt2ype]
+end // end of [unify_labt2ype_labt2ype]
 
 (* ****** ****** *)
 
 implement
-ulte_labt2ypelst_labt2ypelst
+unify_labt2ypelst_labt2ypelst
 (loc0, lt2ps1, lt2ps2) =
 (
 case+ lt2ps1 of
@@ -481,15 +481,15 @@ case+ lt2ps1 of
     let
       val
       test1 =
-      ulte(loc0, lt2p1, lt2p2)
+      unify(loc0, lt2p1, lt2p2)
       val
       test2 =
-      ulte(loc0, lt2ps1, lt2ps2)
+      unify(loc0, lt2ps1, lt2ps2)
     in
       if test1 then test2 else false
     end
   )
-) (* end of [ulte_labt2ypelst_labt2ypelst] *)
+) (* end of [unify_labt2ypelst_labt2ypelst] *)
 
 (* ****** ****** *)
 
@@ -506,7 +506,7 @@ println!
 //
 val loc0 = d3p0.loc()
 val test =
-ulte(loc0, d3p0.type(), t2p0)
+unify(loc0, d3p0.type(), t2p0)
 //
 val () =
 println!
@@ -550,12 +550,16 @@ implement
 d3exp_dn
 (d3e0, t2p0) = let
 //
-val test =
-ulte(d3e0.loc(), d3e0.type(), t2p0)
+val
+test =
+unify
+(d3e0.loc(), d3e0.type(), t2p0)
 //
 in
 //
-if test then d3e0 else d3exp_cast(d3e0, t2p0)
+if
+test
+then d3e0 else d3exp_cast(d3e0, t2p0)
 //
 end // end of [d3exp_dn]
 
