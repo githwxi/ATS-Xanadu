@@ -38,6 +38,9 @@ typedef the_uint_ctype = uint0
 typedef the_bool_ctype = bool0
 typedef the_char_ctype = char0
 //
+typedef the_sfloat_ctype = sfloat
+typedef the_dfloat_ctype = dfloat
+//
 typedef the_string_ctype = string0
 //
 (* ****** ****** *)

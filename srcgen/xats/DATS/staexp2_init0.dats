@@ -159,6 +159,13 @@ the_void_ctype =
 s2cstref_make_name("the_void_ctype")
 
 implement
+the_sfloat_ctype =
+s2cstref_make_name("the_sfloat_ctype")
+implement
+the_dfloat_ctype =
+s2cstref_make_name("the_dfloat_ctype")
+
+implement
 the_string_ctype =
 s2cstref_make_name("the_string_ctype")
 

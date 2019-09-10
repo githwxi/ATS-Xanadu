@@ -398,10 +398,10 @@ t2p0 =
 (
 case+
 tok.node() of
-| T_FLOAT1 _ => the_t2ype_double
-| T_FLOAT2 _ => the_t2ype_double
-| T_FLOAT3 _ => the_t2ype_double
-| _ (* dead *) => the_t2ype_double
+| T_FLOAT1 _ => the_t2ype_dfloat
+| T_FLOAT2 _ => the_t2ype_dfloat
+| T_FLOAT3 _ => the_t2ype_dfloat
+| _ (* dead *) => the_t2ype_dfloat
 ) : t2ype // end of [val]
 //
 in

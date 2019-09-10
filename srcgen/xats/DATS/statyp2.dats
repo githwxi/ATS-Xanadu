@@ -126,9 +126,9 @@ val
 XATS_VOID_T = symbol("xats_void_t")
 //
 val
-XATS_FLOAT_T = symbol("xats_float_t")
+XATS_SFLOAT_T = symbol("xats_sfloat_t")
 and
-XATS_DOUBLE_T = symbol("xats_double_t")
+XATS_DFLOAT_T = symbol("xats_dfloat_t")
 //
 val
 XATS_STRING_T = symbol("xats_string_t")
@@ -157,11 +157,11 @@ the_t2ype_void =
 t2ype_make_name(the_sort2_tflt, XATS_VOID_T)
 //
 implement
-the_t2ype_float =
-t2ype_make_name(the_sort2_tflt, XATS_FLOAT_T)
+the_t2ype_sfloat =
+t2ype_make_name(the_sort2_tflt, XATS_SFLOAT_T)
 implement
-the_t2ype_double =
-t2ype_make_name(the_sort2_tflt, XATS_DOUBLE_T)
+the_t2ype_dfloat =
+t2ype_make_name(the_sort2_tflt, XATS_DFLOAT_T)
 //
 implement
 the_t2ype_string =
@@ -302,10 +302,13 @@ ifcase
 | sym=XATS_VOID_T =>
   the_void_ctype.type()
 //
-| sym=XATS_FLOAT_T => the_t2ype_float
-| sym=XATS_DOUBLE_T => the_t2ype_double
+| sym=XATS_SFLOAT_T =>
+  the_sfloat_ctype.type()
+| sym=XATS_DFLOAT_T =>
+  the_dfloat_ctype.type()
 //
-| sym=XATS_STRING_T => the_t2ype_string
+| sym=XATS_STRING_T =>
+  the_string_ctype.type()
 //
 | _(*unrecognized base type*) => t2p0
 //
