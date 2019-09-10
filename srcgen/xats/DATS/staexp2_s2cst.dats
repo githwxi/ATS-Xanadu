@@ -468,6 +468,17 @@ case- opt of
    :=
    s2cstnul_some(s2c) in (s2c)
  end
+|
+~None_vt((*void*)) =>
+ let
+ val () =
+ assertloc(false) in exit(1)
+ end where
+ {
+ val () =
+ println!
+ ("s2cstref_get_scst: sym = ", r0->syms2cst_sym)
+ }
 //
 end // end of [else]
 // end of [ifneqz]
