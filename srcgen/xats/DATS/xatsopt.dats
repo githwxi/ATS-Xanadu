@@ -230,7 +230,7 @@ end // end of [local]
 //
 #dynload "./trans23_util0.dats"
 #dynload "./trans23_dynexp.dats"
-#dynload "./trans23_tcheck.dats"
+#dynload "./trans33_dynexp.dats"
 //
 (* ****** ****** *)
 //
