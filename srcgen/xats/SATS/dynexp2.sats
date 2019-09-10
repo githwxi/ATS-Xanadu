@@ -979,13 +979,13 @@ d2ecl_node =
   , sym_t(*loaded*), d2pitm(*loading*))
 //
 | D2Cvaldecl of
-  ( token(*valkind*), decmodopt, v2aldeclist)
+  (token(*knd*), decmodopt, v2aldeclist)
+//
+| D2Cvardecl of (token(*knd*), v2ardeclist)
 //
 | D2Cfundecl of
   ( token(*funkind*)
   , decmodopt, tq2arglst(*tmpargs*), f2undeclist)
-//
-| D2Cvardecl of (token(*knd*), v2ardeclist)
 //
 | D2Cimpdecl of
   ( token(*impkind*)

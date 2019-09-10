@@ -538,6 +538,34 @@ overload fprint with fprint_v3aldecl
 (* ****** ****** *)
 //
 datatype
+v3ardecl =
+V3ARDECL of @{
+  loc= loc_t
+, d2v= d2var
+, wth= d2varopt
+, res= s2expopt
+, ini= d3expopt
+}
+//
+typedef
+v3ardeclist = List0(v3ardecl)
+//
+(* ****** ****** *)
+//
+fun
+print_v3ardecl: print_type(v3ardecl)
+fun
+prerr_v3ardecl: prerr_type(v3ardecl)
+fun
+fprint_v3ardecl: fprint_type(v3ardecl)
+//
+overload print with print_v3ardecl
+overload prerr with prerr_v3ardecl
+overload fprint with fprint_v3ardecl
+//
+(* ****** ****** *)
+//
+datatype
 f3undecl =
 F3UNDECL of @{
   loc= loc_t
@@ -590,7 +618,8 @@ d3ecl_node =
   (token(*EXTERN*), d3ecl)
 //
 | D3Cvaldecl of
-  (token(*valkind*), decmodopt, v3aldeclist)
+  (token(*knd*), decmodopt, v3aldeclist)
+| D3Cvardecl of (token(*knd*), v3ardeclist)
 //
 | D3Cfundecl of
   ( token(*funkind*)
