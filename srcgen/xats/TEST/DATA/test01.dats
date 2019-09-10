@@ -110,6 +110,31 @@ d2v: int
 with pf0 = "0"
 
 (* ****** ****** *)
+
+#extern
+fun
+<x:type>
+list_vt_length
+  {n:nat}
+  (xs: list_vt(x, n)): int(n)
+// end of [list_vt_length]
+
+implement
+list_vt_length
+  {n}(xs) =
+( loop(xs, 0) ) where
+{
+//
+fun
+loop{i,j:nat|i+j=n}
+(xs:
+!list_vt(x, i), j: int(j)): int(i+j) =
+case+ xs of
+| !nil() => j | !cons(_, xs) => loop(xs, j+1)
+//
+}
+
+(* ****** ****** *)
 ////
 #extern
 fun
