@@ -59,9 +59,11 @@ statyp2.sats \
 dynexp2.sats \
 nmspace.sats \
 trans12.sats \
+t2xread.sats \
 dynexp3.sats \
 trans23.sats \
 trans33.sats \
+t3xread.sats \
 
 SRCDATS := \
 basics.dats \
@@ -125,6 +127,7 @@ dynexp3_print.dats \
 trans23_util0.dats \
 trans23_dynexp.dats \
 trans33_dynexp.dats \
+t3xread_dynexp.dats \
 
 ######
 
