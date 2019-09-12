@@ -1724,6 +1724,13 @@ d2c0.node() of
     (loc0, D3Cextern(tok, d3c1))
   end
 //
+| D2Csymload _ =>
+  let
+    val node = D3Cd2ecl(d2c0)
+  in
+    d3ecl_make_node(loc0, node)
+  end
+//
 | D2Cvaldecl _ => aux_valdecl(d2c0)
 | D2Cvardecl _ => aux_vardecl(d2c0)
 //

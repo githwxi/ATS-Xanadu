@@ -500,6 +500,9 @@ fprint_d3ecl
 case-
 x0.node() of
 //
+| D3Cd2ecl(d2c) =>
+  fprint!(out, "D3Cd2ecl(", d2c, ")")
+//
 | D3Cstatic
   (tok, d3c) =>
   fprint!(out, "D3Cstatic(", d3c, ")")

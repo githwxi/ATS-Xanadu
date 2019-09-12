@@ -614,6 +614,8 @@ d3ecl_node =
 | D3Cnone0 of ()
 | D3Cnone1 of (d2ecl)
 //
+| D3Cd2ecl of (d2ecl)
+//
 | D3Cstatic of
   (token(*STATIC*), d3ecl)
 | D3Cextern of
