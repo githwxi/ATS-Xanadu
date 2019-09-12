@@ -101,6 +101,8 @@ fun{}
 t3xread_f3arg: t3xreader(f3arg)
 fun{}
 t3xread_f3arglst: t3xreader(f3arglst)
+fun{}
+t3xread_f3arglstopt: t3xreader(f3arglstopt)
 
 (* ****** ****** *)
 

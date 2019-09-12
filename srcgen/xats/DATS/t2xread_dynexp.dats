@@ -94,7 +94,7 @@ list_foreach$fwork<d2cst><env>(d2c, env) = t2xread_d2cst<>(d2c)
 } (* end of [t2xread_d2cstlst] *)
 //
 (* ****** ****** *)
-
+//
 implement
 {}(*tmp*)
 t2xread_d2pat
@@ -138,7 +138,7 @@ d2p0.node() of
   )
 //
 end // end of [t2xread_d2pat]
-
+//
 (* ****** ****** *)
 //
 implement
@@ -229,7 +229,7 @@ d2e0.node() of
     t2xerr_add(T2XERRd2exp(d2e0))
   in
     prerrln!(loc0, ": T2XERR(d2exp): ", d2e0);
-  end // end of [D1Cnone]
+  end // end of [D1Enone1]
 //
 | _(* rest-of-d2exp *) =>
   (
@@ -371,7 +371,7 @@ d2c0.node() of
     t2xerr_add(T2XERRd2ecl(d2c0))
     in
       prerrln!(loc0, ": T2XERR(d2ecl): ", d2c0);
-    end // end of [D1Cnone]
+    end // end of [D2PITMnone]
   | D2PITMsome(_, _) => ((*void*))
   )
 //
