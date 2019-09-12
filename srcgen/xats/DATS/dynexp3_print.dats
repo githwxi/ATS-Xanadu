@@ -239,7 +239,7 @@ implement
 fprint_d3exp
   (out, x0) =
 (
-case-
+case+
 x0.node() of
 //
 | D3Eint(tok) =>
@@ -270,24 +270,43 @@ x0.node() of
   (d1e1, dpis) =>
 (*
   fprint!(out, "D3Esym0(", d1e1, ")")
+*)
+(*
   fprint!
-  (out, "D3Esym0(", d1e1, "; ", dpis, ")")
+  ( out
+  , "D3Esym0(", d1e1, "; ", dpis, ")")
 *)
   let
   val t2p0 = x0.type()
   in
   fprint!
-  (out, "D3Esym0(", d1e1, ": ", t2p0, ")")
+  ( out
+  , "D3Esym0(", d1e1, ": ", t2p0, ")")
   end
 //
 | D3Esap0
   (d3e1, s2es) =>
   fprint!
-  (out, "D3Esap0(", d3e1, "; ", s2es, ")")
+  ( out
+  , "D3Esap0(", d3e1, "; ", s2es, ")")
 | D3Esap1
   (d3e1, s2es) =>
   fprint!
-  (out, "D3Esap1(", d3e1, "; ", s2es, ")")
+  ( out
+  , "D3Esap1(", d3e1, "; ", s2es, ")")
+//
+(*
+| D3Etap0
+  (d2c0, s2es) =>
+  fprint!
+  ( out
+  , "D3Etap0(", d2c0, "; ", s2es, ")")
+*)
+| D3Etap1
+  (d2f0, s2es) =>
+  fprint!
+  ( out
+  , "D3Etap1(", d2f0, "; ", s2es, ")")
 //
 | D3Edapp
   (d3e1, npf2, d3es) =>
@@ -342,16 +361,20 @@ x0.node() of
 //
 | D3Eanno(d3e1, s2e2) =>
   fprint!
-  (out, "D3Eanno(", d3e1, "; ", s2e2, ")")
+  ( out
+  , "D3Eanno(", d3e1, "; ", s2e2, ")")
 //
 | D3Ecast(d3e1, t2p2) =>
   fprint!
-  (out, "D3Ecast(", d3e1, "; ", t2p2, ")")
+  ( out
+  , "D3Ecast(", d3e1, "; ", t2p2, ")")
 //
 | D3Enone0() =>
   fprint!(out, "D3Enone0(", ")")
-| D3Enone1(d2e) =>
-  fprint!(out, "D3Enone1(", d2e, ")")
+| D3Enone1(d2esrc) =>
+  fprint!(out, "D3Enone1(", d2esrc, ")")
+| D3Enone2(d3esrc) =>
+  fprint!(out, "D3Enone2(", d3esrc, ")")
 //
 )
 //
@@ -400,12 +423,16 @@ fprint_d3clau
 (
 case+
 x0.node() of
+//
 | D3CLAUgpat(dg3p) =>
   fprint!
   (out, "D3CLAUgpat(", dg3p, ")")
+//
 | D3CLAUclau(dg3p, d0e0) =>
   fprint!
-  (out, "D3CLAUclau(", dg3p, "; ", d0e0, ")")
+  ( out
+  , "D3CLAUclau(", dg3p, "; ", d0e0, ")")
+//
 ) (* end of [fprint_d3clau] *)
 
 implement
@@ -414,10 +441,15 @@ fprint_dg3pat
 (
 case+
 x0.node() of
+//
 | DG3PATpat(d3p) =>
-  fprint!(out, "DG3PATpat(", d3p, ")")
+  fprint!
+  (out, "DG3PATpat(", d3p, ")")
+//
 | DG3PATgua(d3p, d3gs) =>
-  fprint!(out, "DG3PATgua(", d3p, "; ", d3gs, ")")
+  fprint!
+  (out, "DG3PATgua(", d3p, "; ", d3gs, ")")
+//
 ) (* end of [fprint_dg3pat] *)
 
 (* ****** ****** *)

@@ -266,8 +266,10 @@ d3exp_node =
 | D3Esap0 of (d3exp, s2explst)
 | D3Esap1 of (d3exp, s2explst)
 //
-| D3Etap0 of (d3exp, s2explst)
-| D3Etap1 of (d3exp, s2explst)
+(*
+| D3Etap0 of (d2cst, s2explst)
+*)
+| D3Etap1 of (d2exp, s2explst)
 //
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)

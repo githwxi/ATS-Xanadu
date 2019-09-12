@@ -121,18 +121,18 @@ case+ tnd of
   fprint!(out, "IDENT_qual(", x, ")")
 //
 | T_INT1(rep) =>
-  fprint!(out, "INT(", rep, ")")
+  fprint!(out, "INT1(", rep, ")")
 | T_INT2(base, rep) =>
-  fprint!(out, "INT(", base, ", ", rep, ")")
-| T_INT3(base, rep, _(*sfx*)) =>
-  fprint!(out, "INT(", base, ", ", rep, ")")
+  fprint!(out, "INT3(", base, ", ", rep, ")")
+| T_INT3(base, rep, k0(*sfx*)) =>
+  fprint!(out, "INT3(", base, ", ", rep, ", ", k0, ")")
 //
 | T_FLOAT1(rep) =>
-  fprint!(out, "FLOAT(", rep, ")")
+  fprint!(out, "FLOAT1(", rep, ")")
 | T_FLOAT2(base, rep) =>
-  fprint!(out, "FLOAT(", base, ", ", rep, ")")
-| T_FLOAT3(base, rep, _(*sfx*)) =>
-  fprint!(out, "FLOAT(", base, ", ", rep, ")")
+  fprint!(out, "FLOAT2(", base, ", ", rep, ")")
+| T_FLOAT3(base, rep, k0(*sfx*)) =>
+  fprint!(out, "FLOAT3(", base, ", ", rep, ", ", k0, ")")
 //
 (*
 | T_CHAR(chr) =>

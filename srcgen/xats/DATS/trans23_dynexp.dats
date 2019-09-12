@@ -587,11 +587,8 @@ D2Etapp
 ( d2e1
 , s2es) = d2e0.node()
 //
-val
-d3e1 = trans23_dexp(d2e1)
-//
 in
-  d3exp_tapp_up(loc0, d3e1, s2es)
+  d3exp_tapp_up(loc0, d2e1, s2es)
 end // end of [auxtapp]
 
 (* ****** ****** *)

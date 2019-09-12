@@ -98,23 +98,28 @@ end
 
 (* ****** ****** *)
 
-#symload nil with list_nil
-#symload nil with list_vt_nil
-#symload cons with list_cons
-#symload cons with list_vt_cons
+#symload
+nil with list_nil
+#symload
+nil with list_vt_nil
+#symload
+cons with list_cons
+#symload
+cons with list_vt_cons
 
 (* ****** ****** *)
 
-val x = 1
+val x = 1sz
 
 (* ****** ****** *)
 ////
-var
-d2v: int
-with pf0 = "0"
+var d2v:int = 0
+var d2v:uint = 0u
+var d2v:double = 0.0
+var d2v:string with pf0 = "0.0"
 
 (* ****** ****** *)
-
+////
 #extern
 fun
 <x:type>
@@ -136,7 +141,7 @@ loop{i,j:nat|i+j=n}
 case+ xs of
 | !nil() => j | !cons(_, xs) => loop(xs, j+1)
 //
-}
+}(*list_vt_length*)
 
 (* ****** ****** *)
 ////
