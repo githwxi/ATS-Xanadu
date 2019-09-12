@@ -708,11 +708,14 @@ end (* end of [d3exp_sapp_up] *)
 implement
 d3exp_tapp_up
 ( loc0
-, d3f0, s2es ) =
+, d2f0, s2es ) =
 (
 d3exp_make_node
-(loc0, d3f0.type(), D3Etap1(d3f0, s2es))
-)
+(loc0, t2p0, D3Etap1(d2f0, s2es))
+) where
+{
+  val t2p0 = t2ype_new(d2f0.loc())
+}
 //
 (* ****** ****** *)
 

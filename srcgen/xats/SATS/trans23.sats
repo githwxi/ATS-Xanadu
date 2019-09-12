@@ -250,7 +250,7 @@ d3exp_sapp_up
 fun
 d3exp_tapp_up
 ( loc0: loc_t
-, d3f0: d3exp
+, d2f0: d2exp
 , s2es: s2explst): d3exp
 
 (* ****** ****** *)

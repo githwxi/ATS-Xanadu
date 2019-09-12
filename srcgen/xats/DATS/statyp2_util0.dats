@@ -558,7 +558,7 @@ in
 //
 case+
 t2p0.node() of
-| T2Pbas(name) => t2p0
+| T2Pbas _ => t2p0
 | _(*non-T2Pbas*) =>
   (
     auxt2p(t2p0, flag)

@@ -358,23 +358,64 @@ end // end of [loop]
 } (* end of [testing_xdigits] *)
 
 (* ****** ****** *)
+
+extern
+fun
+testing_numersfx
+(buf: &lexbuf >> _): int
+
+(* ****** ****** *)
+//
+implement
+testing_numersfx
+  (buf) =
+(
+  loop(buf, 0)
+) where
+{
+//
+fun
+loop
+(buf:
+&lexbuf >> _, k0: int): int =
+let
+//
+val i0 =
+(
+  lexbuf_getc(buf)
+)
+val c0 = int2char0(i0)
+//
+in
+//
+ifcase
+| isalpha(c0) => loop(buf, k0+1)
+| _ (* else *) =>
+  let
+    val () = lexbuf_unget(buf, i0) in k0
+  end
+//
+end // end of [loop]
+//
+} (* [testing_numersfx] *)
+//
+(* ****** ****** *)
 //
 extern
 fun
-testing_floatsfx
+testing_floatext
 (buf:
 &lexbuf >> _, i0: int): int
-//
 extern
 fun
-testing_floatsfx_hex
+testing_floatext_hex
 (buf:
 &lexbuf >> _, i0: int): int
 //
 (* ****** ****** *)
 
 implement
-testing_floatsfx
+testing_floatext
   (buf, i0) = let
 //
 val c0 = int2char0(i0)
@@ -437,10 +478,12 @@ ifcase
 //
 end // end of [let]
 //
-} (* testing_floatsfx *)
+} (* testing_floatext *)
+
+(* ****** ****** *)
 
 implement
-testing_floatsfx_hex
+testing_floatext_hex
   (buf, i0) = let
 //
 val c0 = int2char0(i0)
@@ -506,7 +549,7 @@ ifcase
 //
 end // end of [let]
 //
-} (* testing_floatsfx_hex *)
+} (* testing_floatext_hex *)
 
 (* ****** ****** *)
 
@@ -778,22 +821,49 @@ isDIGIT(c0)
 then loop0d(buf)
 else let
   val k0 =
-  testing_floatsfx(buf, i0)
+  testing_floatext(buf, i0)
+in
+//
+if
+(k0 = 0)
+then
+let
+  val k1 = testing_numersfx(buf)
 in
   if
-  (k0 = 0)
+  (k1 = 0)
   then
-  T_INT2
-  (OCT, lexbuf_get_fullseg(buf))
+  T_INT2(OCT, lexbuf_get_fullseg(buf))
   else
-  T_FLOAT2
-  (DEC, lexbuf_get_fullseg(buf))
+  T_INT3(OCT, lexbuf_get_fullseg(buf), k1)
+  end // end of [then]
+else
+  let
+  val k1 = testing_numersfx(buf)
+  in
+  if
+  (k1 = 0)
+  then
+  T_FLOAT2(DEC, lexbuf_get_fullseg(buf))
+  else
+  T_FLOAT3(DEC, lexbuf_get_fullseg(buf), k1)
+end // end of [else]
+//
 end // end of [else]
 //
 end // end of [loop0d]
 
 and
 loop0x
+(buf:
+&lexbuf >> _): tnode =
+(
+loop0X(buf) //
+// HX: case-insensitive
+//
+)
+and
+loop0X
 (buf:
 &lexbuf >> _): tnode = let
 //
@@ -810,24 +880,37 @@ isXDIGIT(c0)
 then loop0x(buf)
 else let
   val k0 =
-  testing_floatsfx_hex(buf, i0)
+  testing_floatext_hex(buf, i0)
+in
+//
+if
+(k0 = 0)
+then
+let
+  val k1 = testing_numersfx(buf)
 in
   if
-  (k0 = 0)
+  (k1 = 0)
   then
-  T_INT2
-  (HEX, lexbuf_get_fullseg(buf))
+  T_INT2(HEX, lexbuf_get_fullseg(buf))
   else
-  T_FLOAT2
-  (HEX, lexbuf_get_fullseg(buf))
+  T_INT3(HEX, lexbuf_get_fullseg(buf), k1)
+end // end of [then]
+else
+let
+  val k1 = testing_numersfx(buf)
+in
+  if
+  (k1 = 0)
+  then
+  T_FLOAT2(HEX, lexbuf_get_fullseg(buf))
+  else
+  T_FLOAT3(HEX, lexbuf_get_fullseg(buf), k1)
 end // end of [else]
 //
-end // end of [loop0x]
-
-and
-loop0X
-(buf:
-&lexbuf >> _): tnode = loop0x(buf)
+end // end of [else]
+//
+end // end of [loop0X]
 
 (* ****** ****** *)
 
@@ -849,14 +932,34 @@ isDIGIT(c0)
 then loop1(buf)
 else let
   val k0 =
-  testing_floatsfx(buf, i0)
+  testing_floatext(buf, i0)
+in
+//
+if
+(k0 = 0)
+then
+let
+  val k1 = testing_numersfx(buf)
 in
   if
-  (k0 = 0)
+  (k1 = 0)
   then
   T_INT1(lexbuf_get_fullseg(buf))
   else
+  T_INT3(DEC, lexbuf_get_fullseg(buf), k1)
+end // end of [then]
+else
+let
+  val k1 = testing_numersfx(buf)
+in
+  if
+  (k1 = 0)
+  then
   T_FLOAT1(lexbuf_get_fullseg(buf))
+  else
+  T_FLOAT3(DEC, lexbuf_get_fullseg(buf), k1)
+end // end of [else]
+//
 end // end of [else]
 //
 end // end of [loop1]
