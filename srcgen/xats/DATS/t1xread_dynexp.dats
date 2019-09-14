@@ -63,6 +63,38 @@ _(*TMP*) = "./../DATS/t1xread_staexp.dats"
 //
 implement
 {}(*tmp*)
+t1xread_d1pat(d1p0) = ()
+//
+implement
+{}(*tmp*)
+t1xread_d1patlst(d1ps) =
+(
+list_foreach<d1pat>(d1ps)
+) where
+{
+implement(env)
+list_foreach$fwork<d1pat><env>(d1p, env) = t1xread_d1pat<>(d1p)
+} (* end of [t1xread_d1patlst] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t1xread_d1exp(d1e0) = ()
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t1xread_d1expopt(opt0) =
+(
+case+ opt0 of
+| None() => ()
+| Some(d1e) => t1xread_d1exp<>(d1e)
+) (* end of [t1xread_d1expopt] *)
+//
+implement
+{}(*tmp*)
 t1xread_d1explst(d1es) =
 (
 list_foreach<d1exp>(d1es)
@@ -91,6 +123,12 @@ in
 case+
 d1c0.node() of
 //
+| D1Cfundecl
+  (knd, mopt, tqas, f1ds) =>
+  {
+    val () = t1xread_f1undeclist<>(f1ds)
+  }
+//
 | _(* rest-of-d1ecl *) =>
   (
     prerrln!("t1xread_d1ecl: d1c0 = ", d1c0)
@@ -110,6 +148,73 @@ list_foreach<d1ecl>(d1cs)
 implement(env)
 list_foreach$fwork<d1ecl><env>(d1c, env) = t1xread_d1ecl<>(d1c)
 } (* end of [t1xread_d1eclist] *)
+//
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+t1xread_wths1expopt
+  (opt0) =
+(
+case+ opt0 of
+| WTHS1EXPnone() => ()
+| WTHS1EXPsome(tok, s1e) => t1xread_s1exp<>(s1e)
+)
+
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t1xread_f1arg(f1a0) =
+(
+case+
+f1a0.node() of
+| F1ARGsome_dyn(d1p0) => t1xread_d1pat<>(d1p0)
+| F1ARGsome_sta(s1qs) => t1xread_s1qualst<>(s1qs)
+| F1ARGsome_met(s1es) => t1xread_s1explst<>(s1es)
+) (* end of [t1xread_f1arg] *)
+//
+implement
+{}(*tmp*)
+t1xread_f1arglst(f1as) =
+(
+list_foreach<f1arg>(f1as)
+) where
+{
+implement(env)
+list_foreach$fwork<f1arg><env>(f1a, env) = t1xread_f1arg<>(f1a)
+} (* end of [t1xread_f1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t1xread_f1undecl
+  (f1d0) =
+{
+  val () =
+  t1xread_d1expopt(rcd.def)
+  val () =
+  t1xread_f1arglst(rcd.arg)
+  val () =
+  t1xread_wths1expopt(rcd.wtp)
+} where
+{
+//
+  val+F1UNDECL(rcd) = f1d0
+//
+} (* end of [t1xread_f1undecl] *)
+//
+implement
+{}(*tmp*)
+t1xread_f1undeclist(f1ds) =
+(
+list_foreach<f1undecl>(f1ds)
+) where
+{
+implement(env)
+list_foreach$fwork<f1undecl><env>(f1ds, env) = t1xread_f1undecl<>(f1ds)
+} (* end of [t1xread_f1undeclist] *)
 //
 (* ****** ****** *)
 
