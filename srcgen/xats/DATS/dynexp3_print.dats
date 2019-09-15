@@ -195,7 +195,7 @@ case- x0.node() of
   )
 //
 | D3Pdapp
-  ( d3f0, npf0, d3ps ) =>
+  (d3f0, npf0, d3ps) =>
   fprint!
   ( out, "D3Pdapp("
   , d3f0, "; ", npf0, "; ", d3ps, ")")
