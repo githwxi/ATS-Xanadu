@@ -103,6 +103,24 @@ trenv23_dvar_dn
 local
 
 fun
+auxsym0
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Psym0(d1p, dpis) = d2p0.node()
+//
+val
+t2p0 = t2ype_new(loc0)
+//
+in
+  d3pat_make_node
+  (loc0, t2p0, D3Psym0(d1p, dpis))
+end // end of [auxsym0]
+
+fun
 auxdapp
 ( d2p0
 : d2pat): d3pat = let
@@ -119,6 +137,26 @@ val d3ps = trans23_dpatlst(d2ps)
 in
 d3pat_dapp_up(loc0, d3p1, npf, d3ps)
 end (* end of [auxdapp] *)
+
+(* ****** ****** *)
+
+fun
+aux_anno
+(d2p0: d2pat): d3pat =
+(
+  d3pat_anno(d3p1, s2e2)
+) where
+{
+//
+  val-
+  D2Panno
+  (d2p1, s2e2) = d2p0.node()
+//
+  val t2p2 = s2exp_erase(s2e2)
+  val d3p1 = trans23_dpat_dn(d2p1, t2p2)
+} (* end of [aux_anno] *)
+
+(* ****** ****** *)
 
 in (* in-of-local *)
 
@@ -164,18 +202,10 @@ d2p0.node() of
     d3pat_con(loc0, d2c0)
   )
 //
-| D2Panno(d2p1, s2e2) =>
-  let
-    val
-    t2p2 = s2exp_erase(s2e2)
-    val
-    d3p1 =
-    trans23_dpat_dn(d2p1, t2p2)
-  in
-    d3pat_anno(d3p1, s2e2)
-  end
-//
+| D2Psym0 _ => auxsym0(d2p0)
 | D2Pdapp _ => auxdapp(d2p0)
+//
+| D2Panno _ => aux_anno(d2p0)
 //
 | _(* else *) =>
   let

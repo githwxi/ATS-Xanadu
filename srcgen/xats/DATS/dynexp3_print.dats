@@ -183,8 +183,19 @@ case- x0.node() of
   fprint!
   (out, "D3Pcon2(", d2cs, ")")
 //
+| D3Psym0(sym0, d2pis) =>
+  (
+  fprint!
+  (out, "D3Psym0(", sym0, ")");
+(*
+  fprint!
+  ( out
+  , "D3Psym0(", sym, "; ", d2pis, ")");
+*)
+  )
+//
 | D3Pdapp
-  (d3f0, npf0, d3ps) =>
+  ( d3f0, npf0, d3ps ) =>
   fprint!
   ( out, "D3Pdapp("
   , d3f0, "; ", npf0, "; ", d3ps, ")")
@@ -197,10 +208,9 @@ case- x0.node() of
   fprint!
   (out, "D3Pcast(", d3p1, "; ", t2p2, ")")
 //
-| D3Pnone0() =>
-  fprint!(out, "D3Pnone0(", ")")
-| D3Pnone1(d1psrc) =>
-  fprint!(out, "D3Pnone1(", d1psrc, ")")
+| D3Pnone0() => fprint!(out, "D3Pnone0(", ")")
+| D3Pnone1(d1psrc) => fprint!(out, "D3Pnone1(", d1psrc, ")")
+| D3Pnone2(d2psrc) => fprint!(out, "D3Pnone2(", d2psrc, ")")
 //
 ) (* end of [fprint_d3pat] *)
 //

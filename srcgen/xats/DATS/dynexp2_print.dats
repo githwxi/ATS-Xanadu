@@ -281,6 +281,14 @@ case- x0.node() of
 | D2Pcon2(d2cs) =>
   fprint!(out, "D2Pcon2(", d2cs, ")")
 //
+| D2Psym0(sym, d2pis) =>
+  (
+  fprint!(out, "D2Psym0(", sym, ")");
+(*
+  fprint!(out, "D2Psym0(", sym, "; ", d2pis, ")");
+*)
+  )
+//
 | D2Psapp(d2f0, s2vs) =>
   fprint!
   ( out, "D2Psapp("
@@ -300,10 +308,8 @@ case- x0.node() of
   ( out
   , "D2Panno(", d2p1, "; ", s2e2, ")")
 //
-| D2Pnone0() =>
-  fprint!(out, "D2Pnone0(", ")")
-| D2Pnone1(d1psrc) =>
-  fprint!(out, "D2Pnone1(", d1psrc, ")")
+| D2Pnone0() => fprint!(out, "D2Pnone0(", ")")
+| D2Pnone1(d1psrc) => fprint!(out, "D2Pnone1(", d1psrc, ")")
 //
 ) (* end of [fprint_d2pat] *)
 
@@ -427,10 +433,8 @@ case- x0.node() of
   fprint!
   (out, "D2Eanno(", d2e1, "; ", s2e2, ")")
 //
-| D2Enone0() =>
-  fprint!(out, "D2Enone0(", ")")
-| D2Enone1(d1esrc) =>
-  fprint!(out, "D2Enone1(", d1esrc, ")")
+| D2Enone0() => fprint!(out, "D2Enone0(", ")")
+| D2Enone1(d1esrc) => fprint!(out, "D2Enone1(", d1esrc, ")")
 //
 ) (* end of [fprint_d2exp] *)
 

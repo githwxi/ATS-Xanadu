@@ -57,6 +57,35 @@ typedef f3arglstopt = Option(f3arglst)
 //
 (* ****** ****** *)
 //
+abstbox d3exp_tbox = ptr
+//
+typedef d3exp = d3exp_tbox
+typedef d3explst = List0(d3exp)
+typedef d3expopt = Option(d3exp)
+//
+(* ****** ****** *)
+//
+abstbox d3gua_tbox = ptr
+typedef d3gua = d3gua_tbox
+typedef d3gualst = List0(d3gua)
+//
+abstbox dg3pat_tbox = ptr
+typedef dg3pat = dg3pat_tbox
+//
+abstbox d3clau_tbox = ptr
+typedef d3clau = d3clau_tbox
+typedef d3claulst = List0(d3clau)
+//
+(* ****** ****** *)
+//
+abstbox d3ecl_tbox = ptr
+//
+typedef d3ecl = d3ecl_tbox
+typedef d3eclist = List0(d3ecl)
+typedef d3eclopt = Option(d3ecl)
+//
+(* ****** ****** *)
+
 datatype
 d3pat_node =
 //
@@ -73,6 +102,9 @@ d3pat_node =
 | D3Pcon1 of (d2con)
 | D3Pcon2 of (d2conlst)
 //
+| D3Psym0 of
+  (d1pat(*sym*), d2pitmlst)
+//
 | D3Psapp of (d3pat, s2varlst)
 | D3Pdapp of (d3pat, int(*npf*), d3patlst)
 //
@@ -83,7 +115,8 @@ d3pat_node =
 //
 | D3Pcast of (d3pat, t2ype) // HX: error indication?
 //
-| D3Pnone0 of () | D3Pnone1 of (d2pat)
+| D3Pnone0 of ()
+| D3Pnone1 of (d2pat) | D3Pnone2 of (d3pat)
 //
 (* ****** ****** *)
 //
@@ -213,35 +246,6 @@ f3arg_make_node
 (loc: loc_t, node: f3arg_node): f3arg
 //
 (* ****** ****** *)
-//
-abstbox d3exp_tbox = ptr
-//
-typedef d3exp = d3exp_tbox
-typedef d3explst = List0(d3exp)
-typedef d3expopt = Option(d3exp)
-//
-(* ****** ****** *)
-//
-abstbox d3gua_tbox = ptr
-typedef d3gua = d3gua_tbox
-typedef d3gualst = List0(d3gua)
-//
-abstbox dg3pat_tbox = ptr
-typedef dg3pat = dg3pat_tbox
-//
-abstbox d3clau_tbox = ptr
-typedef d3clau = d3clau_tbox
-typedef d3claulst = List0(d3clau)
-//
-(* ****** ****** *)
-//
-abstbox d3ecl_tbox = ptr
-//
-typedef d3ecl = d3ecl_tbox
-typedef d3eclist = List0(d3ecl)
-typedef d3eclopt = Option(d3ecl)
-//
-(* ****** ****** *)
 
 datatype
 d3exp_node =
@@ -260,8 +264,7 @@ d3exp_node =
 | D3Ecst2 of (d2cstlst)
 //
 | D3Esym0 of
-    (d1exp, d2pitmlst)
-  // D3Esym0
+  (d1exp(*sym*), d2pitmlst)
 //
 | D3Esap0 of (d3exp, s2explst)
 | D3Esap1 of (d3exp, s2explst)
