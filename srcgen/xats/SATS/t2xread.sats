@@ -109,6 +109,11 @@ fun{}
 t2xread_abstdf2: t2xreader(abstdf2)
 
 (* ****** ****** *)
+
+fun{}
+t2xread_effs2expopt: t2xreader(effs2expopt)
+
+(* ****** ****** *)
 //
 fun{}
 t2xread_d2cst: t2xreader(d2cst)

@@ -49,6 +49,10 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/locinfo.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -180,6 +184,8 @@ t2p1 = hnfize(t2p1)
 and
 t2p2 = hnfize(t2p2)
 //
+val () =
+println!("unify: loc0 = ", loc0)
 val () =
 println!("unify: t2p1 = ", t2p1)
 val () =

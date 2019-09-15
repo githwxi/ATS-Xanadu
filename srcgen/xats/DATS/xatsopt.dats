@@ -844,41 +844,41 @@ val
 $FP0.the_filpathlst_pout(pf0 | (*none*))
 *)
 //
-// (*
+(*
 val () =
 println!
 ("process_nil: d0cs = ", d0cs)
-// *)
+*)
 //
 val () = synread_main(d0cs)
 //
 val
 d1cs = trans01_declist(d0cs)
-// (*
+(*
 val () =
 println!
 ("process_nil: d1cs = ", d1cs)
-// *)
+*)
 //
 val () = t1xread_main(d1cs)
 //
 val
 d2cs = trans12_declist(d1cs)
-// (*
+(*
 val () =
 println!
 ("process_nil: d2cs = ", d2cs)
-// *)
+*)
 //
 val () = t2xread_main(d2cs)
 //
 val
 d3cs = trans23_declist(d2cs)
-// (*
+(*
 val () =
 println!
 ("process_nil: d3cs = ", d3cs)
-// *)
+*)
 //
 val () = t3xread_main(d3cs)
 //
