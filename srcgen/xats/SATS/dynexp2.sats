@@ -365,6 +365,77 @@ typedef f2arg = f2arg_tbox
 typedef f2arglst = List0(f2arg)
 //
 (* ****** ****** *)
+
+abstbox d2exp_tbox = ptr
+typedef d2exp = d2exp_tbox
+typedef d2explst = List0(d2exp)
+typedef d2expopt = Option(d2exp)
+
+(* ****** ****** *)
+//
+abstbox d2gua_tbox = ptr
+typedef d2gua = d2gua_tbox
+typedef d2gualst = List0(d2gua)
+//
+abstbox dg2pat_tbox = ptr
+typedef dg2pat = dg2pat_tbox
+//
+abstbox d2clau_tbox = ptr
+typedef d2clau = d2clau_tbox
+typedef d2claulst = List0(d2clau)
+//
+(* ****** ****** *)
+
+abstbox d2ecl_tbox = ptr
+typedef d2ecl = d2ecl_tbox
+typedef d2eclist = List0(d2ecl)
+typedef d2eclopt = Option(d2ecl)
+
+(* ****** ****** *)
+//
+datatype d2itm =
+//
+| D2ITMvar of (d2var)
+| D2ITMcst of (d2cstlst)
+| D2ITMcon of (d2conlst)
+//
+| D2ITMsym of (sym_t, d2pitmlst)
+//
+and
+d2pitm =
+| D2PITMnone of (dq0eid)
+| D2PITMsome of (int(*pval*), d2itm)
+//
+where
+d2itmlst = List0(d2itm)
+and
+d2pitmlst = List0(d2pitm)
+//
+(* ****** ****** *)
+//
+typedef
+d2itmopt = Option(d2itm)
+vtypedef
+d2itmopt_vt = Option_vt(d2itm)
+//
+(* ****** ****** *)
+//
+fun
+print_d2itm: print_type(d2itm)
+fun
+prerr_d2itm: prerr_type(d2itm)
+fun
+fprint_d2itm: fprint_type(d2itm)
+//
+overload print with print_d2itm
+overload prerr with prerr_d2itm
+overload fprint with fprint_d2itm
+//
+fun
+fprint_d2pitm: fprint_type(d2pitm)
+overload fprint with fprint_d2pitm
+//
+(* ****** ****** *)
 //
 datatype
 d2pat_node =
@@ -381,6 +452,9 @@ d2pat_node =
 //
 | D2Pcon1 of (d2con)
 | D2Pcon2 of (d2conlst)
+//
+| D2Psym0 of
+  (d1pat(*sym*), d2pitmlst)
 //
 | D2Psapp of (d2pat, s2varlst)
 | D2Pdapp of (d2pat, int(*npf*), d2patlst)
@@ -423,6 +497,11 @@ fun d2pat_var(loc_t, d2var): d2pat
 fun d2pat_con1(loc_t, d2con): d2pat
 fun d2pat_con2(loc_t, d2conlst): d2pat
 //
+fun
+d2pat_sym0
+( loc0: loc_t
+, d1p0: d1pat, dpis: d2pitmlst): d2pat
+//
 (* ****** ****** *)
 //
 fun
@@ -434,8 +513,7 @@ fun
 d2pat_dapp
 ( loc0: loc_t
 , d2f0: d2pat(*fun*)
-, npf0: int
-, d2ps: d2patlst(*arg*)): d2pat
+, npf0: int, d2ps: d2patlst(*arg*)): d2pat
 //
 (* ****** ****** *)
 //
@@ -493,77 +571,6 @@ f2arg_make_node
 (loc: loc_t, node: f2arg_node): f2arg
 //
 (* ****** ****** *)
-
-abstbox d2exp_tbox = ptr
-typedef d2exp = d2exp_tbox
-typedef d2explst = List0(d2exp)
-typedef d2expopt = Option(d2exp)
-
-(* ****** ****** *)
-//
-abstbox d2gua_tbox = ptr
-typedef d2gua = d2gua_tbox
-typedef d2gualst = List0(d2gua)
-//
-abstbox dg2pat_tbox = ptr
-typedef dg2pat = dg2pat_tbox
-//
-abstbox d2clau_tbox = ptr
-typedef d2clau = d2clau_tbox
-typedef d2claulst = List0(d2clau)
-//
-(* ****** ****** *)
-
-abstbox d2ecl_tbox = ptr
-typedef d2ecl = d2ecl_tbox
-typedef d2eclist = List0(d2ecl)
-typedef d2eclopt = Option(d2ecl)
-
-(* ****** ****** *)
-//
-datatype d2itm =
-//
-| D2ITMvar of (d2var)
-| D2ITMcst of (d2cstlst)
-| D2ITMcon of (d2conlst)
-//
-| D2ITMsym of (sym_t, d2pitmlst)
-//
-and
-d2pitm =
-| D2PITMnone of (dq0eid)
-| D2PITMsome of (int(*pval*), d2itm)
-//
-where
-d2itmlst = List0(d2itm)
-and
-d2pitmlst = List0(d2pitm)
-
-(* ****** ****** *)
-//
-typedef
-d2itmopt = Option(d2itm)
-vtypedef
-d2itmopt_vt = Option_vt(d2itm)
-//
-(* ****** ****** *)
-//
-fun
-print_d2itm: print_type(d2itm)
-fun
-prerr_d2itm: prerr_type(d2itm)
-fun
-fprint_d2itm: fprint_type(d2itm)
-//
-overload print with print_d2itm
-overload prerr with prerr_d2itm
-overload fprint with fprint_d2itm
-//
-fun
-fprint_d2pitm: fprint_type(d2pitm)
-overload fprint with fprint_d2pitm
-//
-(* ****** ****** *)
 //
 abstype
 ti2arg_tbox = ptr
@@ -615,8 +622,7 @@ d2exp_node =
 | D2Ecst2 of (d2cstlst)
 //
 | D2Esym0 of
-    (d1exp, d2pitmlst)
-  // D2Esym0
+  (d1exp(*sym*), d2pitmlst)
 //
 | D2Esapp of (d2exp, s2explst)
 | D2Etapp of (d2exp, s2explst)

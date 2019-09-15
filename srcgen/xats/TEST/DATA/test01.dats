@@ -109,6 +109,18 @@ cons with list_vt_cons
 
 (* ****** ****** *)
 
+fun
+<a:type>
+length
+(xs:list(a)): int =
+(
+case+ xs of
+| nil() => 0
+| cons(_, xs) => 1+length(xs)
+)
+
+(* ****** ****** *)
+////
 #extern
 fun
 <x:type>
@@ -132,18 +144,6 @@ case+ xs of
 | nil() => j | cons(_, xs) => loop(xs, j+1)
 //
 }(*list_vt_length*)
-
-(* ****** ****** *)
-////
-fun
-<a:type>
-length
-(xs:list(a)): int =
-(
-case+ xs of
-| list_nil() => 0
-| list_cons(_, xs) => 1+length(xs)
-)
 
 (* ****** ****** *)
 ////
