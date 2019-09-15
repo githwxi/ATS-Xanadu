@@ -2589,6 +2589,8 @@ auxd2vs_nrc(isr, d2vs, f1ds)
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
 //
+val ((*void*)) = auxf2ds(d1c0, f2ds)
+//
 in
   d2ecl_make_node
   (loc0, D2Cfundecl(knd, mopt, tqas, f2ds))
@@ -2813,6 +2815,40 @@ case+ d2vs of
     ) (* end of [if] *)
   end
 )
+//
+fun
+auxf2ds
+( d1c0
+: d1ecl
+, f2ds
+: f2undeclist
+) : void =
+(
+case+ f2ds of
+| list_nil() => ()
+| list_cons(f2d0, f2ds) =>
+  (
+    auxf2ds(d1c0, f2ds)
+  ) where
+  {
+//
+    val+
+    F2UNDECL(rcd) = f2d0
+//
+    val ((*void*)) =
+    case+ rcd.dct of
+    | Some _ => ((*void*))
+    | None _ => // definition
+      (
+        the_dexpenv_add_cst(d2c0)
+      )
+      where
+      {
+        val d2v0 = rcd.nam
+        val d2c0 = d2cst_make_dvar(d2v0)
+      }
+  }
+) (* end of [auxf2ds] *)
 //
 } (* end of [aux_fundecl] *)
 
