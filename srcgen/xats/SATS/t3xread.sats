@@ -89,6 +89,19 @@ fun{}
 t3xread_d3explst: t3xreader(d3explst)
 //
 (* ****** ****** *)
+
+fun{}
+t3xread_d3gua: t3xreader(d3gua)
+fun{}
+t3xread_d3clau: t3xreader(d3clau)
+fun{}
+t3xread_dg3pat: t3xreader(dg3pat)
+fun{}
+t3xread_d3gualst: t3xreader(d3gualst)
+fun{}
+t3xread_d3claulst: t3xreader(d3claulst)
+
+(* ****** ****** *)
 //
 fun{}
 t3xread_d3ecl: t3xreader(d3ecl)
