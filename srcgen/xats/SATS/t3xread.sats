@@ -107,6 +107,13 @@ t3xread_f3arglstopt: t3xreader(f3arglstopt)
 (* ****** ****** *)
 
 fun{}
+t3xread_v3aldecl: t3xreader(v3aldecl)
+fun{}
+t3xread_v3aldeclist: t3xreader(v3aldeclist)
+
+(* ****** ****** *)
+
+fun{}
 t3xread_f3undecl: t3xreader(f3undecl)
 fun{}
 t3xread_f3undeclist: t3xreader(f3undeclist)

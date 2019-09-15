@@ -492,11 +492,14 @@ t2xread_f2undecl
   (f2d0) =
 {
   val () =
-  t2xread_d2expopt(rcd.def)
+  t2xread_d2expopt<>(rcd.def)
   val () =
-  t2xread_f2arglst(rcd.arg)
+  t2xread_f2arglst<>(rcd.arg)
   val () =
-  t2xread_s2expopt(rcd.wtp)
+  t2xread_effs2expopt<>(rcd.res)
+//
+  val () = t2xread_s2expopt<>(rcd.wtp)
+//
 } where
 {
 //

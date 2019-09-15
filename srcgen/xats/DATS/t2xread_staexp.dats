@@ -316,5 +316,16 @@ case+ df2 of
 )
 
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t2xread_effs2expopt(opt) =
+(
+case+ opt of
+| EFFS2EXPnone() => ()
+| EFFS2EXPsome(s2e) => t2xread_s2exp<>(s2e)
+)
+//
+(* ****** ****** *)
 
 (* end of [xats_t2xread_staexp.dats] *)

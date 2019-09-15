@@ -567,7 +567,7 @@ t2p0.node() of
     val () = flag := flag + 1
   }
 //
-end // end of [auxvar]
+end // end of [auxbas]
 
 and
 auxvar
@@ -719,7 +719,7 @@ case+ t2ps of
   end
 )
 
-in (*in-of-local*)
+in (* in-of-local *)
 
 implement
 t2ype_hnfize

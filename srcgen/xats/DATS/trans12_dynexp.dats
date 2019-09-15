@@ -530,8 +530,10 @@ var s2ps_
 val ((*void*)) =
   trans12_squalst(s1qs, s2vs_, s2ps_)
 //
-val s2vs = list_vt2t(s2vs_)
-val s2ps = list_vt2t(s2ps_)
+val s2vs =
+  list_vt2t(list_vt_reverse(s2vs_))
+val s2ps =
+  list_vt2t(list_vt_reverse(s2ps_))
 //
 in
 //
@@ -3880,11 +3882,11 @@ trans12_decl
 //
 val
 loc0 = d1c0.loc()
-(*
+// (*
 val () =
 println!
 ("trans12_decl: d1c0 = ", d1c0)
-*)
+// *)
 //
 in (* in-of-let *)
 //

@@ -51,6 +51,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 //
@@ -60,6 +61,8 @@ UN = "prelude/SATS/unsafe.sats"
 
 #staload
 _(*TMP*) = "./../DATS/staexp2_print.dats"
+#staload
+_(*TMP*) = "./../DATS/statyp2_print.dats"
 #staload
 _(*TMP*) = "./../DATS/dynexp2_print.dats"
 #staload
@@ -79,7 +82,14 @@ in
 case+
 d3p0.node() of
 //
-| D3Pany() => ()
+| D3Pany _ => ()
+| D3Pvar _ => ()
+//
+| D3Panno(d3p1, t2p2) =>
+  {
+    val () =
+    t3xread_d3pat<>(d3p1)
+  }
 //
 | D3Pnone0() => ((*void*))
 //
@@ -88,12 +98,12 @@ d3p0.node() of
     val () =
     t3xerr_add(T3XERRd3pat(d3p0))
   in
-    prerrln!(loc0, ": T3XERR(d3pat): ", d3p0);
+    println!(loc0, ": T3XERR(d3pat): ", d3p0);
   end // end of [D3Pnone1]
 //
 | _(* rest-of-d3pat *) =>
   (
-    prerrln!(loc0, ": t3xread_d3pat: d3p0 = ", d3p0)
+    println!(loc0, ": t3xread_d3pat: d3p0 = ", d3p0)
   )
 //
 end // end of [t3xread_d3pat]
@@ -133,19 +143,55 @@ in
 //
 case+
 d3e0.node() of
+//
 | D3Enone0() => ((*void*))
+//
+| D3Elet(d3cs, d3e1) =>
+  {
+    val () =
+    t3xread_d3eclist<>(d3cs)
+    val () = t3xread_d3exp<>(d3e1)
+  }
+| D3Ewhere(d3e1, d3cs) =>
+  {
+    val () =
+    t3xread_d3eclist<>(d3cs)
+    val () = t3xread_d3exp<>(d3e1)
+  }
+//
+| D3Ecast
+  (d3e1, t2p2) =>
+  let
+//
+    val
+    t2p1 = d3e1.type()
+//
+    val () =
+    t3xread_d3exp<>(d3e1)
+//
+    val () =
+    t3xerr_add(T3XERRd3exp(d3e0))
+  in
+//
+    println!
+    (loc0, ": T3XERR(d3exp): D3Ecast: d3e1 = ", d3e1);
+//
+    println!(loc0, ": T3XERR(d3exp): D3Ecast: t2p1 = ", t2p1);
+    println!(loc0, ": T3XERR(d3exp): D3Ecast: t2p2 = ", t2p2);
+//
+end
 //
 | D3Enone1(_) =>
   let
     val () =
     t3xerr_add(T3XERRd3exp(d3e0))
   in
-    prerrln!(loc0, ": T3XERR(d3exp): ", d3e0);
+    println!(loc0, ": T3XERR(d3exp): ", d3e0);
   end // end of [D1Enone1]
 //
 | _(* rest-of-d3exp *) =>
   (
-    prerrln!(loc0, ": t3xread_d3exp: d3e0 = ", d3e0)
+    println!(loc0, ": t3xread_d3exp: d3e0 = ", d3e0)
   )
 //
 end // end of [t3xread_d3exp]
@@ -203,6 +249,17 @@ d3c0.node() of
     val () = t3xread_d3ecl<>(d3c)
   }
 //
+| D3Cvaldecl
+  (knd, mopt, v3ds) =>
+  {
+    val () = t3xread_v3aldeclist<>(v3ds)
+(*
+    val () =
+    println!
+    ("t3xread_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
+*)
+  }
+//
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>
   {
@@ -216,7 +273,7 @@ d3c0.node() of
 //
 | _(* rest-of-d3ecl *) =>
   (
-    prerrln!(loc0, ": t3xread_d3ecl: d3c0 = ", d3c0)
+    println!(loc0, ": t3xread_d3ecl: d3c0 = ", d3c0)
   )
 //
 end // end of [t3xread_d3ecl]
@@ -234,9 +291,6 @@ implement(env)
 list_foreach$fwork<d3ecl><env>(d3c, env) = t3xread_d3ecl<>(d3c)
 } (* end of [t3xread_d3eclist] *)
 //
-(* ****** ****** *)
-
-
 (* ****** ****** *)
 //
 implement
@@ -274,6 +328,39 @@ t3xread_f3arglstopt(opt0) =
 (
 case+ opt0 of None() => () | Some(f3as) => t3xread_f3arglst<>(f3as)
 )
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t3xread_v3aldecl
+  (v3d0) =
+{
+  val () =
+  t3xread_d3pat<>(rcd.pat)
+  val () =
+  t3xread_d3expopt<>(rcd.def)
+(*
+  val () =
+  t3xread_s2expopt<>(rcd.wth)
+*)
+} where
+{
+//
+  val+V3ALDECL(rcd) = v3d0
+//
+} (* end of [t3xread_v3aldecl] *)
+//
+implement
+{}(*tmp*)
+t3xread_v3aldeclist(v3ds) =
+(
+list_foreach<v3aldecl>(v3ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v3aldecl><env>(v3ds, env) = t3xread_v3aldecl<>(v3ds)
+} (* end of [t3xread_v3aldeclist] *)
 //
 (* ****** ****** *)
 //

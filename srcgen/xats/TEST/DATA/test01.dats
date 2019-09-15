@@ -109,17 +109,6 @@ cons with list_vt_cons
 
 (* ****** ****** *)
 
-val x = 1sz
-
-(* ****** ****** *)
-////
-var d2v:int = 0
-var d2v:uint = 0u
-var d2v:double = 0.0
-var d2v:string with pf0 = "0.0"
-
-(* ****** ****** *)
-////
 #extern
 fun
 <x:type>
@@ -137,11 +126,34 @@ list_vt_length
 fun
 loop{i,j:nat|i+j=n}
 (xs:
-!list_vt(x, i), j: int(j)): int(i+j) =
+list_vt(x, i), j: int(j)): int(i+j) =
 case+ xs of
-| !nil() => j | !cons(_, xs) => loop(xs, j+1)
+| nil() => j | cons(_, xs) => loop(xs, j+1)
 //
 }(*list_vt_length*)
+
+(* ****** ****** *)
+////
+fun
+<a:type>
+length
+(xs:list(a)): int =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => 1+length(xs)
+)
+
+(* ****** ****** *)
+////
+val x: int = 1sz
+
+(* ****** ****** *)
+////
+var d2v:int = 0
+var d2v:uint = 0u
+var d2v:double = 0.0
+var d2v:string with pf0 = "0.0"
 
 (* ****** ****** *)
 ////
@@ -336,21 +348,7 @@ val x = 0
 val y = x.1(a, b)
 ////
 (* ****** ****** *)
-
-(*
-fun
-<a:type>
-length
-(xs:list(a)): int =
-(
-case+ xs of
-| list_nil() => 0
-| list_cons(_, xs) => 1+length(xs)
-)
-*)
-
-(* ****** ****** *)
-
+////
 var x: (int, int)
 val () = x.0 := 0
 val () = x.1 := 1
