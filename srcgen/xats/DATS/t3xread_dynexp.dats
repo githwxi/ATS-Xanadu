@@ -159,8 +159,16 @@ d3e0.node() of
     val () = t3xread_d3exp<>(d3e1)
   }
 //
-| D3Ecast
-  (d3e1, t2p2) =>
+| D3Ecase
+  (knd, d3e1, d3cs) =>
+  {
+    val () =
+    t3xread_d3exp<>(d3e1)
+    val () =
+    t3xread_d3claulst<>(d3cs)
+  }
+//
+| D3Ecast(d3e1, t2p2) =>
   let
 //
     val
@@ -219,6 +227,85 @@ list_foreach$fwork<d3exp><env>(d3e, env) = t3xread_d3exp<>(d3e)
 } (* end of [t3xread_d3explst] *)
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t3xread_d3gua
+  (d3g0) =
+(
+case+
+d3g0.node() of
+| D3GUAexp(d3e1) =>
+  {
+    val () = t3xread_d3exp<>(d3e1)
+  }
+| D3GUAmat(d3e1, d3p2) =>
+  {
+    val () = t3xread_d3exp<>(d3e1)
+    val () = t3xread_d3pat<>(d3p2)
+  }
+)
+//
+implement
+{}(*tmp*)
+t3xread_d3clau
+  (d3cl) =
+(
+case+
+d3cl.node() of
+| D3CLAUgpat(dgp1) =>
+  {
+    val () =
+    t3xread_dg3pat<>(dgp1)
+  }
+| D3CLAUclau(dgp1, d3e2) =>
+  {
+    val () =
+    t3xread_dg3pat<>(dgp1)
+    val () = t3xread_d3exp<>(d3e2)
+  }
+)
+implement
+{}(*tmp*)
+t3xread_dg3pat
+  (dgp0) =
+(
+case+
+dgp0.node() of
+| DG3PATpat(d3p1) =>
+  {
+    val () = t3xread_d3pat<>(d3p1)
+  }
+| DG3PATgua(d3p1, d3gs) =>
+  {
+    val () = t3xread_d3pat<>(d3p1)
+    val () = t3xread_d3gualst<>(d3gs)
+  }
+)
+//
+implement
+{}(*tmp*)
+t3xread_d3gualst(d3gs) =
+(
+list_foreach<d3gua>(d3gs)
+) where
+{
+implement(env)
+list_foreach$fwork<d3gua><env>(d3g, env) = t3xread_d3gua<>(d3g)
+} (* end of [t3xread_d3gualst] *)
+//
+implement
+{}(*tmp*)
+t3xread_d3claulst(d3cs) =
+(
+list_foreach<d3clau>(d3cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d3clau><env>(d3cl, env) = t3xread_d3clau<>(d3cl)
+} (* end of [t3xread_d3claulst] *)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
@@ -269,6 +356,21 @@ d3c0.node() of
     println!
     ("t3xread_d3ecl: D3Cfundecl: f3ds = ", f3ds)
 *)
+  }
+//
+| D3Cimpdecl
+  ( tok, mopt
+  , sqas, tqas
+  , id2c, t2as, t3as
+  , f3as, res0, d3e0) =>
+  {
+    val () =
+    t3xread_f3arglst<>(f3as)
+(*
+    val () =
+    t3xread_ti3arglst<>(t3as)
+*)
+    val () = t3xread_d3exp<>(d3e0)
   }
 //
 | _(* rest-of-d3ecl *) =>

@@ -116,6 +116,9 @@ macdef
 T_IMPLTMPR_ = T_IMPLMNT(IMPtmpr)
 *)
 //
+macdef
+T_IMPLEMENT_ = T_IMPLMNT(IMPgen)
+//
 (* ****** ****** *)
 //
 macdef
@@ -324,6 +327,7 @@ val () = myins("impltmp", T_IMPLTMP_)
 (*
 val () = myins("impltmpr", T_IMPLTMPR_)
 *)
+val () = myins("implement", T_IMPLEMENT_)
 //
 val () = myins("abssort", T_ABSSORT)
 //

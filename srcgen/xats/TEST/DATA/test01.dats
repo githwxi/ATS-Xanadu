@@ -118,7 +118,8 @@ list_vt_length
 // end of [list_vt_length]
 
 implement
-list_vt_length
+{x:type}
+list_vt_length<x>
   {n}(xs) =
 ( loop(xs, 0) ) where
 {
