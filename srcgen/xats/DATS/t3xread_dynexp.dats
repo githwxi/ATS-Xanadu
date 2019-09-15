@@ -105,11 +105,15 @@ d3p0.node() of
 //
 | D3Psym0(sym0, dpis) =>
   let
+    val
+    t2p0 = d3p0.type()
     val () =
     t3xerr_add(T3XERRd3pat(d3p0))
   in
     println!
     (loc0, ": T3XERR(d3pat): D3Psym0: sym0 = ", sym0);
+    println!
+    (loc0, ": T3XERR(d3pat): D3Psym0: t2p0 = ", t2p0);
     println!
     (loc0, ": T3XERR(d3pat): D3Psym0: dips = ", dpis);
   end
