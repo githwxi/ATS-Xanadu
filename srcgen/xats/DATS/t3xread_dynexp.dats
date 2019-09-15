@@ -52,6 +52,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 //
@@ -63,6 +64,8 @@ UN = "prelude/SATS/unsafe.sats"
 _(*TMP*) = "./../DATS/staexp2_print.dats"
 #staload
 _(*TMP*) = "./../DATS/statyp2_print.dats"
+#staload
+_(*TMP*) = "./../DATS/dynexp1_print.dats"
 #staload
 _(*TMP*) = "./../DATS/dynexp2_print.dats"
 #staload
@@ -85,11 +88,52 @@ d3p0.node() of
 | D3Pany _ => ()
 | D3Pvar _ => ()
 //
+| D3Pdapp
+  (d3f1, npf2, d3ps) =>
+  {
+    val () =
+    t3xread_d3pat<>(d3f1)
+    val () =
+    t3xread_d3patlst<>(d3ps)
+  }
+//
 | D3Panno(d3p1, t2p2) =>
   {
     val () =
     t3xread_d3pat<>(d3p1)
   }
+//
+| D3Psym0(sym0, dpis) =>
+  let
+    val () =
+    t3xerr_add(T3XERRd3pat(d3p0))
+  in
+    println!
+    (loc0, ": T3XERR(d3pat): D3Psym0: sym0 = ", sym0);
+    println!
+    (loc0, ": T3XERR(d3pat): D3Psym0: dips = ", dpis);
+  end
+//
+| D3Pcast(d3p1, t2p2) =>
+  let
+//
+    val
+    t2p1 = d3p1.type()
+//
+    val () =
+    t3xread_d3pat<>(d3p1)
+//
+    val () =
+    t3xerr_add(T3XERRd3pat(d3p0))
+  in
+//
+    println!
+    (loc0, ": T3XERR(d3pat): D3Pcast: d3p1 = ", d3p1);
+//
+    println!(loc0, ": T3XERR(d3pat): D3Pcast: t2p1 = ", t2p1);
+    println!(loc0, ": T3XERR(d3pat): D3Pcast: t2p2 = ", t2p2);
+//
+  end
 //
 | D3Pnone0() => ((*void*))
 //
@@ -144,7 +188,22 @@ in
 case+
 d3e0.node() of
 //
-| D3Enone0() => ((*void*))
+| D3Eint _ => ()
+| D3Ebtf _ => ()
+| D3Echr _ => ()
+| D3Eflt _ => ()
+| D3Estr _ => ()
+//
+| D3Evar _ => ()
+//
+| D3Edapp
+  (d3f1, npf2, d3es) =>
+  {
+    val () =
+    t3xread_d3exp<>(d3f1)
+    val () =
+    t3xread_d3explst<>(d3es)
+  }
 //
 | D3Elet(d3cs, d3e1) =>
   {
@@ -159,14 +218,36 @@ d3e0.node() of
     val () = t3xread_d3exp<>(d3e1)
   }
 //
+| D3Eif0
+  (d3e1, d3e2, opt3) =>
+  {
+    val () =
+    t3xread_d3exp<>(d3e1)
+    val () =
+    t3xread_d3exp<>(d3e2)
+    val () =
+    t3xread_d3expopt<>(opt3)
+  }
+//
 | D3Ecase
-  (knd, d3e1, d3cs) =>
+  (knd0, d3e1, d3cs) =>
   {
     val () =
     t3xread_d3exp<>(d3e1)
     val () =
     t3xread_d3claulst<>(d3cs)
   }
+//
+| D3Esym0(sym0, dpis) =>
+  let
+    val () =
+    t3xerr_add(T3XERRd3exp(d3e0))
+  in
+    println!
+    (loc0, ": T3XERR(d3exp): D3Esym0: sym0 = ", sym0);
+    println!
+    (loc0, ": T3XERR(d3exp): D3Esym0: dips = ", dpis);
+  end
 //
 | D3Ecast(d3e1, t2p2) =>
   let
@@ -187,7 +268,9 @@ d3e0.node() of
     println!(loc0, ": T3XERR(d3exp): D3Ecast: t2p1 = ", t2p1);
     println!(loc0, ": T3XERR(d3exp): D3Ecast: t2p2 = ", t2p2);
 //
-end
+  end
+//
+| D3Enone0() => ((*void*))
 //
 | D3Enone1(_) =>
   let
