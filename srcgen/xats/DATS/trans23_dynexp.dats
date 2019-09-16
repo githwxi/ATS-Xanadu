@@ -56,9 +56,6 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
-
-(* ****** ****** *)
-
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
@@ -1050,7 +1047,7 @@ list_map<d2exp><d3exp>
   (d2es) where
 {
 implement
-list_map$fopr<d2exp><d3exp> = trans23_dexp
+list_map$fopr<d2exp><d3exp>(d2e) = trans23_dexp(d2e)
 }
 } (* end of [trans23_dexplst] *)
 
@@ -1111,7 +1108,7 @@ list_map<d2gua><d3gua>
   (d2gs) where
 {
   implement
-  list_map$fopr<d2gua><d3gua> = trans23_dgua
+  list_map$fopr<d2gua><d3gua>(d2g) = trans23_dgua(d2g)
 }
 } (* end of [trans23_dgualst] *)
 //
@@ -1185,16 +1182,15 @@ end // end of [trans23_dgpat_dn]
 //
 implement
 trans23_dclaulst_dn
-(d2cs, targ, tres) =
+(d2cls, targ, tres) =
 list_vt2t
 (
-list_map<d2clau><d3clau>(d2cs)
+  list_map<d2clau><d3clau>(d2cls)
 ) where
 {
   implement
   list_map$fopr<d2clau><d3clau>
-  (d2c) =
-  trans23_dclau_dn(d2c, targ, tres)
+    (d2cl) = trans23_dclau_dn( d2cl, targ, tres )
 } (* end of [trans23_dclaulst_dn] *)
 //
 (* ****** ****** *)
@@ -1534,7 +1530,7 @@ case+ res of
   (s2e0) => s2exp_erase(s2e0)
 ) : t2ype // end-of-val
 //
-in
+in (*in-of-let*)
 //
 case+ a3g of
 | None _ => (a3g, tres)
@@ -1727,7 +1723,7 @@ case+ f3as of
     (s2vs, s2ps) =>
     let
     val tres =
-    auxf3as(xs,tres,flag) in t2ype_uni(s2vs, tres)
+    auxf3as(xs,tres,flag) in t2ype_uni(s2vs,tres)
     end
   | F3ARGsome_met(s2es) => auxf3as(xs, tres, flag)
   )
@@ -1829,7 +1825,7 @@ list_map<d2ecl><d3ecl>
   (d2cs) where
 {
   implement
-  list_map$fopr<d2ecl><d3ecl> = trans23_decl
+  list_map$fopr<d2ecl><d3ecl>(d2c) = trans23_decl(d2c)
 }
 } (* end of [trans23_declist] *)
 
