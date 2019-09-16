@@ -77,6 +77,14 @@ gint_lte1 :
 
 (* ****** ****** *)
 
+#extern
+fun
+bool_neg : (bool) -> bool
+
+#symload not with bool_neg
+
+(* ****** ****** *)
+
 (*
 #define
 pow(x, n)
@@ -109,6 +117,22 @@ cons with list_vt_cons
 
 (* ****** ****** *)
 
+fun<>
+isevn(x: int) =
+if x > 0
+then not(isodd(x-1)) else true
+and
+isodd(x: int) =
+if x > 0
+then not(isevn(x-1)) else false
+
+(* ****** ****** *)
+
+val x = isevn(10)
+and y = isodd(10)
+
+(* ****** ****** *)
+////
 fun
 <a:type>
 length

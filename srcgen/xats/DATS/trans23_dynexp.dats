@@ -1399,7 +1399,9 @@ D2Cfundecl
 , f2ds) = d2c0.node()
 //
 val
-f3ds = auxf2ds(d2c0, f2ds)
+agtp = aux1_f2ds(d2c0, f2ds)
+val
+f3ds = aux2_f2ds(d2c0, f2ds, agtp)
 //
 in
 d3ecl_make_node
@@ -1407,6 +1409,11 @@ d3ecl_make_node
 , D3Cfundecl(knd, mopt, tqas, f3ds))
 end where
 {
+//
+typedef
+a3gt2p =
+(f3arglstopt,t2ype)
+//
 //
 fun
 ishdr
@@ -1416,12 +1423,12 @@ let
 val+
 F2UNDECL(rcd) = f2d0
 in
-  case+ rcd.dct of
-  | Some(d2c) => true | None() => false 
+  case+ rcd.def of
+  | None() => true | Some(d2e) => false
 end
 //
 fun
-auxtfun
+aux0_tfun
 ( f3as
 : f3arglstopt
 , tres
@@ -1431,10 +1438,10 @@ case+ f3as of
 | None() =>
   the_t2ype_none0
 | Some(f3as) =>
-  auxf3as(f3as, tres, 0)
+  aux0_f3as(f3as, tres, 0)
 )
 and
-auxf3as
+aux0_f3as
 ( f3as
 : f3arglst
 , tres
@@ -1458,7 +1465,7 @@ case+ f3as of
     val t2ps =
     d3patlst_get_type(d3ps)
     val tres =
-    auxf3as(xs, tres, flag+1)
+    aux0_f3as(xs, tres, flag+1)
     in
     t2ype_fun1(fc2, npf, t2ps, tres)
     end
@@ -1466,13 +1473,14 @@ case+ f3as of
     (s2vs, s2ps) =>
     let
     val tres =
-    auxf3as(xs,tres,flag) in t2ype_uni(s2vs, tres)
+    aux0_f3as
+    (xs,tres,flag) in t2ype_uni(s2vs, tres)
     end
-  | F3ARGsome_met(s2es) => auxf3as(xs, tres, flag)
+  | F3ARGsome_met(s2es) => aux0_f3as(xs, tres, flag)
   )
 )
 and
-auxd2ps
+aux0_d2ps
 ( d2ps
 : d2patlst): t2ypelst =
 list_vt2t
@@ -1489,11 +1497,78 @@ list_vt2t
 } (* end of [auxd2ps] *)
 //
 fun
-auxf2d0
+aux1_f2d0
 ( d2c0
 : d2ecl
 , f2d0
 : f2undecl
+) : a3gt2p = let
+//
+val
+loc0 = d2c0.loc()
+//
+val+
+F2UNDECL(rcd) = f2d0
+//
+val loc = rcd.loc
+val nam = rcd.nam
+val a2g = rcd.arg
+val res = rcd.res
+//
+//
+val a3g =
+(
+if
+ishdr(f2d0)
+then None(*void*)
+else
+Some(trans23_farglst(a2g))
+) : f3arglstopt // end-of-val
+//
+val tres =
+(
+case+ res of
+| EFFS2EXPnone
+  () => t2ype_new(loc0)
+| EFFS2EXPsome
+  (s2e0) => s2exp_erase(s2e0)
+) : t2ype // end-of-val
+//
+in
+//
+case+ a3g of
+| None _ => (a3g, tres)
+| Some _ =>
+  let
+    val
+    tfun =
+    aux0_tfun(a3g, tres)
+  in
+    d2var_set_type(nam, tfun); (a3g, tres)
+  end
+//
+end
+and
+aux1_f2ds
+( d2c0: d2ecl
+, f2ds
+: f2undeclist): List0(a3gt2p) =
+(
+case+ f2ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons
+  (aux1_f2d0(d2c0, x0), aux1_f2ds(d2c0, xs))
+)
+//
+fun
+aux2_f2d0
+( d2c0
+: d2ecl
+, f2d0
+: f2undecl
+, agtp: a3gt2p
 ) : f3undecl = let
 //
 val
@@ -1506,85 +1581,39 @@ val loc = rcd.loc
 val nam = rcd.nam
 val a2g = rcd.arg
 val res = rcd.res
-val dct = rcd.dct
+val d2c = rcd.d2c
 val def = rcd.def
 val wtp = rcd.wtp
 //
-(*
-val () =
-if
-ishdr(f2d0)
-then () else auxarg(arg)
-*)
-val a3g =
-(
-if
-ishdr(f2d0)
-then
-None(*void*)
-else
-Some
-(trans23_farglst(a2g))
-) : f3arglstopt // end
+val a3g = (agtp.0)
 //
-val tres =
-(
-case+ res of
-| EFFS2EXPnone
-  () => t2ype_new(loc0)
-| EFFS2EXPsome
-  (s2e0) => s2exp_erase(s2e0)
-) : t2ype // end-of-val
-//
-val
-tfn1 =
-auxtfun(a3g, tres)
-val
-tfn2 =
-(
-case+ wtp of
-| None() => tfn1
-| Some(sfun) => s2exp_erase(sfun)
-) : t2ype // endofval
-//
-val () = d2var_set_type(nam, tfn2)
+val tfn1 = nam.type()
 //
 val ctp =
 (
 case+ wtp of
 | None _ =>
+  (
   T2PCASTnone(*void*)
-| Some _ =>
-  if
-  unify(loc0, tfn1, tfn2)
-  then T2PCASTnone(*void*)
-  else
-  T2PCASTsome
-  (tfn1(*infer*), tfn2(*given*))
+  ) where
+  {
+    val () = d2c.type(tfn1)
+  }
+| Some(s2e0) =>
+  let
+    val
+    tfn2 =
+    s2exp_erase(s2e0)
+    val () = d2c.type(tfn2)
+  in
+    if
+    unify(loc0, tfn1, tfn2)
+    then T2PCASTnone(*void*)
+    else
+    T2PCASTsome
+    (tfn1(*infer*), tfn2(*given*))
+  end
 ) : t2pcast // end-of-val
-//
-(*
-//
-// HX-2019-09-08:
-// Already handled in [trans12]
-//
-val () =
-(
-case+ dct of
-| None() => ()
-| Some(d2c) => d2c.type(nam.type())
-) (* end of [val] *)
-*)
-//
-(*
-val () =
-println!
-("trans23_decl: aux_fundecl:")
-val () =
-println!("auxf2d0: nam = ", nam)
-val () =
-println!("auxf2d0: nam.type = ", nam.type())
-*)
 //
 val def =
 (
@@ -1592,7 +1621,7 @@ case+ def of
 | None() =>
   None()
 | Some(d2e0) =>
-  Some(trans23_dexp_dn(d2e0, tres))
+  Some(trans23_dexp_dn(d2e0, agtp.1))
 ) : d3expopt // end-of-val
 //
 in
@@ -1601,11 +1630,13 @@ F3UNDECL
 loc=loc,nam=nam,
 a2g=a2g,a3g=a3g,res=res,def=def,wtp=wtp,ctp=ctp})
 end // end of [let]
-fun
-auxf2ds
+and
+aux2_f2ds
 ( d2c0: d2ecl
 , f2ds
 : f2undeclist
+, agtp
+: List0(a3gt2p)
 )
 : f3undeclist =
 (
@@ -1613,8 +1644,13 @@ case+ f2ds of
 | list_nil() =>
   list_nil()
 | list_cons(x0, xs) =>
+  let
+  val-
+  list_cons(y0, ys) = agtp
+  in
   list_cons
-  (auxf2d0(d2c0, x0), auxf2ds(d2c0, xs))
+  (aux2_f2d0(d2c0, x0, y0), aux2_f2ds(d2c0, xs, ys))
+  end
 )
 //
 } (* end of [aux_fundecl] *)

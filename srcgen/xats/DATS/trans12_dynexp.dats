@@ -2584,12 +2584,10 @@ val f2ds =
 auxf1ds(d1c0, d2vs, d2cs, f1ds)
 //
 val ((*void*)) =
-auxd2vs_nrc(isr, d2vs, f1ds)
+auxd2vs_nrc(isr, d2cs, f1ds)
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
-//
-val ((*void*)) = auxf2ds(d1c0, f2ds)
 //
 in
   d2ecl_make_node
@@ -2597,8 +2595,17 @@ in
 end where
 {
 //
-typedef
-d2cstoptlst = List0(d2cstopt)
+fun
+ishdr
+( f1d0
+: f1undecl): bool =
+let
+val+
+F1UNDECL(rcd) = f1d0
+in
+  case+ rcd.def of
+  | None() => true | Some(d1e) => false
+end
 //
 fun
 auxd2vs
@@ -2625,7 +2632,7 @@ auxf1d0
 , d2v0
 : d2var
 , d2c0
-: d2cstopt
+: d2cst
 , f1d0
 : f1undecl
 ) : f2undecl = let
@@ -2634,7 +2641,7 @@ val+
 F1UNDECL(rcd) = f1d0
 //
 val nam = d2v0
-val dct = d2c0
+val d2c = d2c0
 val loc = rcd.loc
 //
 val
@@ -2664,7 +2671,7 @@ case+ rcd.wtp of
 //
 in
 F2UNDECL
-(@{loc=loc,nam=nam,arg=arg,res=res,dct=dct,def=def,wtp=wtp})
+(@{loc=loc,nam=nam,arg=arg,res=res,d2c=d2c,def=def,wtp=wtp})
 end // end of [auxf1d0]
 //
 and
@@ -2674,7 +2681,7 @@ auxf1ds
 , d2vs
 : d2varlst
 , d2cs
-: d2cstoptlst
+: d2cstlst
 , f1ds
 : f1undeclist
 ) : f2undeclist =
@@ -2696,37 +2703,24 @@ case+ d2vs of
     val f2d0 =
     auxf1d0(d1c0, d2v0, d2c0, f1d0)
     val ((*void*)) =
-    (
-    case+ d2c0 of
-    | None() => ()
-    | Some(d2c0) =>
-      let
-        val
-        s2e0 =
-        f2undecl_get_sexp(f2d0)
-        val
-        t2p0 = s2exp_erase(s2e0)
-      in
-        d2cst_set_sexp(d2c0, s2e0);
-        d2cst_set_type(d2c0, t2p0);
-      end
-    )
+    if
+    ishdr(f1d0) then let
+      val
+      s2e0 =
+      f2undecl_get_sexp(f2d0)
+      val
+      t2p0 = s2exp_erase(s2e0)
+    in
+      d2var_set_type(d2v0, t2p0);
+(*
+      println!("trans12_decl: aux_fundecl: auxf1ds: d2v0 = ", d2v0);
+      println!("trans12_decl: aux_fundecl: auxf1ds: t2p0 = ", t2p0);
+*)
+    end // end of [then] // end of [if]
     val f2ds =
     auxf1ds(d1c0, d2vs, d2cs, f1ds)
   }
 )
-//
-fun
-ishdr
-( f1d0
-: f1undecl): bool =
-let
-val+
-F1UNDECL(rcd) = f1d0
-in
-  case+ rcd.def of
-  | None() => true | Some(d1e) => false
-end
 //
 fun
 auxd2vs_rec
@@ -2736,7 +2730,7 @@ auxd2vs_rec
 : d2varlst
 , f1ds
 : f1undeclist
-) : d2cstoptlst =
+) : d2cstlst =
 (
 case+ d2vs of
 | list_nil() =>
@@ -2746,51 +2740,33 @@ case+ d2vs of
     val-
     list_cons
     (f1d0, f1ds) = f1ds
-  in
+    val
+    d2c0 =
+    d2cst_make_dvar(d2v0)
+    val () =
+    if
+    isr
+    then the_dexpenv_add_var(d2v0)
+    val () =
     if
     ishdr(f1d0)
-    then
-    let
-      val
-      d2c0 =
-      d2cst_make_dvar(d2v0)
-    in
-      let
-      val () =
-      the_dexpenv_add_cst(d2c0)
-      in
-        list_cons
-        ( Some(d2c0)
-        , auxd2vs_rec(isr, d2vs, f1ds)
-        )
-      end
-    end
-    else
-    (
-      let
-      val () =
-      if
-      isr
-      then the_dexpenv_add_var(d2v0)
-      in
-        list_cons
-        ( None(*void*)
-        , auxd2vs_rec(isr, d2vs, f1ds))
-      end
-    ) (* end of [if] *)
+    then the_dexpenv_add_cst(d2c0)
+  in
+    list_cons
+    (d2c0, auxd2vs_rec(isr, d2vs, f1ds))
   end
 )
 //
 fun
 auxd2vs_nrc
 ( isr: bool
-, d2vs: d2varlst
+, d2cs: d2cstlst
 , f1ds: f1undeclist
 ) : void =
 (
-case+ d2vs of
+case+ d2cs of
 | list_nil() => ()
-| list_cons(d2v0, d2vs) =>
+| list_cons(d2c0, d2cs) =>
   let
     val-
     list_cons
@@ -2800,55 +2776,19 @@ case+ d2vs of
     ishdr(f1d0)
     then
     (
-      auxd2vs_nrc(isr, d2vs, f1ds)
-    )
+      auxd2vs_nrc(isr, d2cs, f1ds)
+    ) (* end of [then] *)
     else
     (
-      let
-      val () =
-      if isr then
-        the_dexpenv_add_var(d2v0)
-      // end of [if]
-      in
-        auxd2vs_nrc(isr, d2vs, f1ds)
-      end
-    ) (* end of [if] *)
+    let
+    val () =
+      the_dexpenv_add_cst(d2c0)
+    in
+      auxd2vs_nrc(isr, d2cs, f1ds)
+    end
+    ) (* end of [else] *)
   end
 )
-//
-fun
-auxf2ds
-( d1c0
-: d1ecl
-, f2ds
-: f2undeclist
-) : void =
-(
-case+ f2ds of
-| list_nil() => ()
-| list_cons(f2d0, f2ds) =>
-  (
-    auxf2ds(d1c0, f2ds)
-  ) where
-  {
-//
-    val+
-    F2UNDECL(rcd) = f2d0
-//
-    val ((*void*)) =
-    case+ rcd.dct of
-    | Some _ => ((*void*))
-    | None _ => // definition
-      (
-        the_dexpenv_add_cst(d2c0)
-      )
-      where
-      {
-        val d2v0 = rcd.nam
-        val d2c0 = d2cst_make_dvar(d2v0)
-      }
-  }
-) (* end of [auxf2ds] *)
 //
 } (* end of [aux_fundecl] *)
 
