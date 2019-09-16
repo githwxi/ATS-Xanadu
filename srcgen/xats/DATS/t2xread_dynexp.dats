@@ -191,34 +191,47 @@ d2e0.node() of
 | D2Esapp
   (d2e1, s2es) =>
   {
-    val () = t2xread_d2exp(d2e1)
-    val () = t2xread_s2explst(s2es)
+    val () = t2xread_d2exp<>(d2e1)
+    val () = t2xread_s2explst<>(s2es)
   }
 | D2Etapp
   (d2e1, s2es) =>
   {
-    val () = t2xread_d2exp(d2e1)
-    val () = t2xread_s2explst(s2es)
+    val () = t2xread_d2exp<>(d2e1)
+    val () = t2xread_s2explst<>(s2es)
   }
 | D2Edapp
   (d2e1, npf, d2es) =>
   {
-    val () = t2xread_d2exp(d2e1)
-    val () = t2xread_d2explst(d2es)
+    val () = t2xread_d2exp<>(d2e1)
+    val () = t2xread_d2explst<>(d2es)
+  }
+//
+| D2Elet(d2cs, d2e1) =>
+  {
+    val () =
+    t2xread_d2eclist<>(d2cs)
+    val () = t2xread_d2exp<>(d2e1)
+  }
+| D2Ewhere(d2e1, d2cs) =>
+  {
+    val () =
+    t2xread_d2eclist<>(d2cs)
+    val () = t2xread_d2exp<>(d2e1)
   }
 //
 | D2Eif0
   (d2e1, d2e2, opt3) =>
   {
-    val () = t2xread_d2exp(d2e1)
-    val () = t2xread_d2exp(d2e2)
-    val () = t2xread_d2expopt(opt3)
+    val () = t2xread_d2exp<>(d2e1)
+    val () = t2xread_d2exp<>(d2e2)
+    val () = t2xread_d2expopt<>(opt3)
   }
 //
 | D2Eanno(d2e1, s2e2) =>
   {
-    val () = t2xread_d2exp(d2e1)
-    val () = t2xread_s2exp(s2e2)
+    val () = t2xread_d2exp<>(d2e1)
+    val () = t2xread_s2exp<>(s2e2)
   }
 //
 | D2Enone0() => ((*void*))

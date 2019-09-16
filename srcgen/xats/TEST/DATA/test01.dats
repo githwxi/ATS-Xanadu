@@ -117,34 +117,6 @@ cons with list_vt_cons
 
 (* ****** ****** *)
 
-fun<>
-isevn(x: int) =
-if x > 0
-then not(isodd(x-1)) else true
-and
-isodd(x: int) =
-if x > 0
-then not(isevn(x-1)) else false
-
-(* ****** ****** *)
-
-val x = isevn(10)
-and y = isodd(10)
-
-(* ****** ****** *)
-////
-fun
-<a:type>
-length
-(xs:list(a)): int =
-(
-case+ xs of
-| nil() => 0
-| cons(_, xs) => 1+length(xs)
-)
-
-(* ****** ****** *)
-////
 #extern
 fun
 <x:type>
@@ -168,17 +140,6 @@ case+ xs of
 | nil() => j | cons(_, xs) => loop(xs, j+1)
 //
 }(*list_vt_length*)
-
-(* ****** ****** *)
-////
-val x: int = 1sz
-
-(* ****** ****** *)
-////
-var d2v:int = 0
-var d2v:uint = 0u
-var d2v:double = 0.0
-var d2v:string with pf0 = "0.0"
 
 (* ****** ****** *)
 ////
@@ -212,6 +173,53 @@ loop
 in
   loop(n, x, nil())
 end // end of [list_make_elt]
+
+(* ****** ****** *)
+////
+fun<>
+isevn(x: int) =
+if x > 0
+then not(isodd(x-1)) else true
+and
+isodd(x: int) =
+if x > 0
+then not(isevn(x-1)) else false
+
+(* ****** ****** *)
+
+(*
+implement
+isevn(x) =
+if x > 0
+then not(isodd(x-1)) else true
+implement
+isodd(x) =
+if x > 0
+then not(isevn(x-1)) else false
+*)
+
+(* ****** ****** *)
+////
+fun
+<a:type>
+length
+(xs:list(a)): int =
+(
+case+ xs of
+| nil() => 0
+| cons(_, xs) => 1+length(xs)
+)
+
+(* ****** ****** *)
+////
+val x: int = 1sz
+
+(* ****** ****** *)
+////
+var d2v:int = 0
+var d2v:uint = 0u
+var d2v:double = 0.0
+var d2v:string with pf0 = "0.0"
 
 (* ****** ****** *)
 ////
