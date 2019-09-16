@@ -874,11 +874,11 @@ val () = t2xread_main(d2cs)
 //
 val
 d3cs = trans23_declist(d2cs)
-(*
+// (*
 val () =
 println!
 ("process_nil: d3cs = ", d3cs)
-*)
+// *)
 //
 val () = t3xread_main(d3cs)
 //

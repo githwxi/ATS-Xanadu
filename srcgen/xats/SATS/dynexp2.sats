@@ -911,7 +911,7 @@ F2UNDECL of @{
 , nam= d2var
 , arg= f2arglst
 , res= effs2expopt
-, dct= d2cstopt
+, d2c= d2cst
 , def= d2expopt, wtp= s2expopt
 }
 //

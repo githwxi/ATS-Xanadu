@@ -176,12 +176,12 @@ fprint_d2cst
 (
 fprint!
 (out, sym, "(", stamp, ")");
-fprint!(out, ": ", x0.tqas());
+fprint!(out, "; tqas= ", x0.tqas());
 (*
-fprint!(out, ": ", x0.sexp());
+fprint!(out, "; sexp= ", x0.sexp());
 *)
 // (*
-fprint!(out, ": ", x0.type());
+fprint!(out, "; type= ", x0.type());
 // *)
 ) where
 {
@@ -203,11 +203,12 @@ fprint_d2var
 (
 fprint!
 (out, sym, "(", stamp, ")");
+fprint!(out, "; tqas= ", x0.tqas());
 (*
-fprint!(out, ": ", x0.sexp())
+fprint!(out, "; sexp= ", x0.sexp())
 *)
 // (*
-fprint!(out, ": ", x0.type())
+fprint!(out, "; type= ", x0.type())
 // *)
 ) where
 {
@@ -789,7 +790,7 @@ in
   , "nam=", rcd.nam, ", "
   , "arg=", rcd.arg, ", "
   , "res=", rcd.res, ", "
-  , "dct=", rcd.dct, ", "
+  , "d2c=", rcd.d2c, ", "
   , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
 
