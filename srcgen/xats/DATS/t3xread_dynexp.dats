@@ -200,6 +200,9 @@ d3e0.node() of
 //
 | D3Evar _ => ()
 //
+| D3Econ1 _ => ()
+| D3Ecst1 _ => ()
+//
 | D3Edapp
   (d3f1, npf2, d3es) =>
   {
@@ -242,8 +245,23 @@ d3e0.node() of
     t3xread_d3claulst<>(d3cs)
   }
 //
+| D3Econ2(d2cs) =>
+  let
+    val
+    t2p0 = d3e0.type()
+    val () =
+    t3xerr_add(T3XERRd3exp(d3e0))
+  in
+    println!
+    (loc0, ": T3XERR(d3exp): D3Econ2: d2cs = ", d2cs);
+    println!
+    (loc0, ": T3XERR(d3exp): D3Econ2: t2p0 = ", t2p0);
+  end
+//
 | D3Esym0(sym0, dpis) =>
   let
+    val
+    t2p0 = d3e0.type()
     val () =
     t3xerr_add(T3XERRd3exp(d3e0))
   in
@@ -251,6 +269,8 @@ d3e0.node() of
     (loc0, ": T3XERR(d3exp): D3Esym0: sym0 = ", sym0);
     println!
     (loc0, ": T3XERR(d3exp): D3Esym0: dips = ", dpis);
+    println!
+    (loc0, ": T3XERR(d3exp): D3Esym0: t2p0 = ", t2p0);
   end
 //
 | D3Ecast(d3e1, t2p2) =>
