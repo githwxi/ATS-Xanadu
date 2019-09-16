@@ -56,12 +56,18 @@ typedef d3pat = $D3E.d3pat
 typedef d2exp = $D2E.d2exp
 typedef d3exp = $D3E.d3exp
 
+typedef d2ecl = $D2E.d2ecl
+typedef d3ecl = $D3E.d3ecl
+
 typedef d3patlst = $D3E.d3patlst
 typedef d3patopt = $D3E.d3patopt
 typedef d3explst = $D3E.d3explst
 typedef d3expopt = $D3E.d3expopt
 
+typedef f2arglst = $D2E.f2arglst
 typedef f3arglst = $D3E.f3arglst
+
+typedef d3eclist = $D3E.d3eclist
 
 (* ****** ****** *)
 //
@@ -71,11 +77,6 @@ fun
 trans33_dpatlst: d3patlst -> d3patlst
 //
 (* ****** ****** *)
-
-fun
-trans33_farglst: f3arglst -> f3arglst
-
-(* ****** ****** *)
 //
 fun
 trans33_dexp: d3exp -> d3exp 
@@ -83,6 +84,18 @@ fun
 trans33_dexpopt: d3expopt -> d3expopt
 fun
 trans33_dexplst: d3explst -> d3explst
+//
+(* ****** ****** *)
+
+fun
+trans33_farglst: f3arglst -> f3arglst
+
+(* ****** ****** *)
+//
+fun
+trans33_decl: d3ecl -> d3ecl 
+fun
+trans33_decllst: d3eclist -> d3eclist
 //
 (* ****** ****** *)
 

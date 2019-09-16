@@ -485,7 +485,7 @@ list_map<d1pat><d2pat>
   (d1ps) where
 {
 implement
-list_map$fopr<d1pat><d2pat> = trans12_dpat
+list_map$fopr<d1pat><d2pat>(d1p) = trans12_dpat(d1p)
 }
 } (* end of [trans12_dpatlst] *)
 
@@ -769,7 +769,7 @@ list_map<d1clau><d2clau>
   (d1cls) where
 {
 implement
-list_map$fopr<d1clau><d2clau> = trans12_dclau
+list_map$fopr<d1clau><d2clau>(d1cl) = trans12_dclau(d1cl)
 }
 } (* end of [trans12_dclaulst] *)
 
@@ -1504,7 +1504,7 @@ list_map<d1exp><d2exp>
   (d1es) where
 {
 implement
-list_map$fopr<d1exp><d2exp> = trans12_dexp
+list_map$fopr<d1exp><d2exp>(d1e) = trans12_dexp(d1e)
 }
 } (* end of [trans12_dexplst] *)
 
@@ -2222,7 +2222,7 @@ list_map<s1marg><s2vs>(smas)
 ) where
 {
 implement
-list_map$fopr<s1marg><s2vs>(x) = trans12_smarg(x)
+list_map$fopr<s1marg><s2vs>(sma) = trans12_smarg(sma)
 } (* end of [svss] *)
 //
 in
@@ -2363,7 +2363,7 @@ list_map<v1aldecl><d2pat>(v1ds)
 ) where
 {
 implement
-list_map$fopr<v1aldecl><d2pat>(x) = auxv1d0_d2p(x)
+list_map$fopr<v1aldecl><d2pat>(x0) = auxv1d0_d2p(x0)
 } (* end of [auxv1ds_d2p] *)
 //
 fun
@@ -2490,7 +2490,7 @@ list_map<v1ardecl><v2ardecl>(v1ds)
 ) where
 {
 implement
-list_map$fopr<v1ardecl><v2ardecl>(x) = auxv1d0(x)
+list_map$fopr<v1ardecl><v2ardecl>(v1d) = auxv1d0(v1d)
 } (* end of [auxv1ds] *)
 //
 } (* end of [aux_vardecl] *)
@@ -2619,10 +2619,12 @@ list_map<f1undecl><d2var>(f1ds)
 implement
 list_map$fopr<f1undecl><d2var>
   (f1d) =
-let
-  val+
-  F1UNDECL(rcd) = f1d in d2var_new1(rcd.nam)
-end // end of [list_map$fopr]
+(
+  let
+    val+
+    F1UNDECL(rcd) = f1d in d2var_new1(rcd.nam)
+  end
+) (* end of [list_map$fopr] *)
 }
 //
 fun
@@ -3873,7 +3875,7 @@ list_map<d1cstdecl><d2cst>(d1cs)
 ) where
 {
 implement
-list_map$fopr<d1cstdecl><d2cst>(d1c0) = aux_dcstdecl(tqas, d1c0)
+list_map$fopr<d1cstdecl><d2cst>(d1c) = aux_dcstdecl(tqas, d1c)
 } (* end of [aux_dcstdeclist] *)
 
 (* ****** ****** *)
@@ -3968,16 +3970,13 @@ end // end of [local]
 implement
 trans12_declist
   (d1cs) =
-list_vt2t(d1cs) where
+list_vt2t
+(
+list_map<d1ecl><d2ecl>(d1cs)
+) where
 {
-val
-d1cs =
-list_map<d1ecl><d2ecl>
-  (d1cs) where
-{
-  implement
-  list_map$fopr<d1ecl><d2ecl> = trans12_decl
-}
+implement
+list_map$fopr<d1ecl><d2ecl>(d1c) = trans12_decl(d1c)
 } (* end of [trans12_declist] *)
 
 (* ****** ****** *)
@@ -4046,7 +4045,7 @@ list_map<s2var><s2exp>(s2vs)
 ) where
 {
 implement
-list_map$fopr<s2var><s2exp> = s2exp_var
+list_map$fopr<s2var><s2exp>(s2v) = s2exp_var(s2v)
 }
 
 and
@@ -4270,8 +4269,7 @@ list_map<d1atcon><d2con>(d1cs)
 {
 //
 implement
-list_map$fopr<d1atcon><d2con>
-  (d1c) = trans12_datcon(s2c0, svss, d1c)
+list_map$fopr<d1atcon><d2con>(d1c) = trans12_datcon(s2c0, svss, d1c)
 //
 } (* end of [trans12_datconlst] *)
 
@@ -4300,7 +4298,7 @@ list_map<a1typ><s2exp>(xs)
 {
 //
 implement
-list_map$fopr<a1typ><s2exp> = trans12_atyp
+list_map$fopr<a1typ><s2exp>(a1t) = trans12_atyp(a1t)
 //
 } (* trans12_atyplst *)
 
@@ -4346,7 +4344,7 @@ list_map<q1arg><s2var>
   (q1as) where
 {
 implement
-list_map$fopr<q1arg><s2var> = trans12_qarg
+list_map$fopr<q1arg><s2var>(q1a) = trans12_qarg(q1a)
 }
 ) (* end of [trans12_qarglst] *)
 
@@ -4378,7 +4376,7 @@ list_map<sq1arg><sq2arg>
   (sqas) where
 {
 implement
-list_map$fopr<sq1arg><sq2arg> = trans12_sqarg
+list_map$fopr<sq1arg><sq2arg>(sqa) = trans12_sqarg(sqa)
 }
 } (* end of [trans12_sqarglst] *)
 
@@ -4402,16 +4400,13 @@ end // end of [trans12_tqarg]
 implement
 trans12_tqarglst
   (tqas) =
-list_vt2t(tqas) where
-{
-val
-tqas =
-list_map<tq1arg><tq2arg>
-  (tqas) where
+list_vt2t
+(
+list_map<tq1arg><tq2arg>(tqas)
+) where
 {
 implement
-list_map$fopr<tq1arg><tq2arg> = trans12_tqarg
-}
+list_map$fopr<tq1arg><tq2arg>(tqa) = trans12_tqarg(tqa)
 } (* end of [trans12_tqarglst] *)
 
 (* ****** ****** *)
@@ -4436,16 +4431,13 @@ end // end of [trans12_t1arg]
 implement
 trans12_tiarglst
   (tias) =
-list_vt2t(tias) where
-{
-val
-tias =
-list_map<ti1arg><ti2arg>
-  (tias) where
+list_vt2t
+(
+list_map<ti1arg><ti2arg>(tias)
+) where
 {
 implement
-list_map$fopr<ti1arg><ti2arg> = trans12_tiarg
-}
+list_map$fopr<ti1arg><ti2arg>(tia) = trans12_tiarg(tia)
 } (* end of [trans12_tiarglst] *)
 
 (* ****** ****** *)
