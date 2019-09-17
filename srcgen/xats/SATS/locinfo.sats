@@ -167,6 +167,9 @@ overload .end_ncol with location_end_ncol
 //
 (* ****** ****** *)
 //
+val
+the_location_dummy: loc_t
+//
 fun
 location_make_pos_pos
   (bpos: &pos_t, cpos: &pos_t): loc_t
