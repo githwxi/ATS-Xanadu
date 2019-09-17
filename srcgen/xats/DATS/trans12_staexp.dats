@@ -1615,10 +1615,11 @@ val-
 S1Erecord
 (knd, ls1es) = s1e0.node()
 //
-val ls2es = trans12_labsexplst_ci(ls1es)
+val ls2es =
+trans12_labsexplst_ci(ls1es)
 //
 in
-  s2exp_record1(knd, ls2es)
+  s2exp_record1( knd, ls2es )
 end // end of [auxrecord1]
 
 fun
@@ -1630,8 +1631,10 @@ val-
 S1Erecord
 ( knd, lxs1, lxs2) = s1e0.node()
 //
-val ls2es1 = trans12_labsexplst_cp(lxs1)
-val ls2es2 = trans12_labsexplst_ct(lxs2)
+val
+ls2es1 = trans12_labsexplst_cp(lxs1)
+val
+ls2es2 = trans12_labsexplst_ct(lxs2)
 //
 in
   s2exp_record2(knd, ls2es1, ls2es2)

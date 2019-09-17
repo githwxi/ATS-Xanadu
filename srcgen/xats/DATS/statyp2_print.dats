@@ -138,10 +138,10 @@ x0.node() of
 | T2Ptyext(tnm1, t2ps) =>
   fprint!(out, "T2Ptyext(", tnm1, "; ", t2ps, ")")
 //
-| T2Ptyrec(knd1, npf2, ltps) =>
+| T2Ptyrec(knd1, npf2, lt2ps) =>
   fprint!
   ( out
-  , "T2Ptyrec(", knd1, "; ", npf2, "; ", ltps, ")")
+  , "T2Ptyrec(", knd1, "; ", npf2, "; ", lt2ps, ")")
 //
 | T2Pnone0() => fprint!(out, "T2Pnone0(", ")")
 | T2Pnone1(s2e) => fprint!(out, "T2Pnone1(", s2e, ")")

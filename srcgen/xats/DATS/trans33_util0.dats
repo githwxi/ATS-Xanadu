@@ -78,6 +78,7 @@ auxt2p0
 (t2p0, list_vt_nil())
 ) where
 {
+//
 fun
 auxt2p0
 ( t2p0: t2ype
@@ -169,17 +170,18 @@ auxlt2ps
 (
 case+ ltps of
 | list_nil() => xtvs
-| list_cons(lt2p, ltps) =>
+| list_cons(lt2p0, ltps1) =>
   let
     val xtvs =
     auxt2p0(t2p0, xtvs)
   in
-    auxlt2ps(ltps, xtvs)
+    auxlt2ps(ltps1, xtvs)
   end where
   {
-    val+TLABELED(l0, t2p0) = lt2p
+    val+TLABELED(l0, t2p0) = lt2p0
   }
 )
+//
 } (* end of [t2ype_get_xtvs] *)
 
 (* ****** ****** *)

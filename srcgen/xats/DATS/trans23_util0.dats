@@ -67,11 +67,11 @@ UN = "prelude/SATS/unsafe.sats"
 implement
 t2xtv_occurs
 (xtv0, t2p0) =
-(auxt2p(t2p0)) where
+(auxt2p0(t2p0)) where
 {
 //
 fun
-auxt2p
+auxt2p0
 (t2p0: t2ype): bool = (
 //
 case+
@@ -89,23 +89,23 @@ t2p0.node() of
   if
   (xtv0 = xtv1)
   then true
-  else auxt2p(xtv1.type())
+  else auxt2p0(xtv1.type())
 //
 | T2Papp(t2p1, t2ps) =>
   if
-  auxt2p(t2p1)
+  auxt2p0(t2p1)
   then true else auxt2ps(t2ps)
 //
-| T2Plam(s2vs, t2p1) => auxt2p(t2p1)
+| T2Plam(s2vs, t2p1) => auxt2p0(t2p1)
 //
 | T2Pfun
   (fcr, npf, t2ps, t2p1) =>
   if
-  auxt2p(t2p1)
+  auxt2p0(t2p1)
   then true else auxt2ps(t2ps)
 //
-| T2Pexi(s2vs, t2p1) => auxt2p(t2p1)
-| T2Puni(s2vs, t2p1) => auxt2p(t2p1)
+| T2Pexi(s2vs, t2p1) => auxt2p0(t2p1)
+| T2Puni(s2vs, t2p1) => auxt2p0(t2p1)
 //
 | T2Ptyext
   (tnm, t2ps) => auxt2ps(t2ps)
@@ -113,7 +113,7 @@ t2p0.node() of
 | T2Ptyrec
   (knd, npf, lt2ps) => auxlt2ps(lt2ps)
 //
-) (* end of [auxt2p] *)
+) (* end of [auxt2p0] *)
 and
 auxt2ps
 (t2ps: t2ypelst): bool =
@@ -121,23 +121,21 @@ auxt2ps
 case+ t2ps of
 | list_nil() => false
 | list_cons(t2p0, t2ps) =>
-  if auxt2p(t2p0) then true else auxt2ps(t2ps)
+  if auxt2p0(t2p0) then true else auxt2ps(t2ps)
 )
 //
 and
-auxlt2p
-(lt2p: labt2ype): bool =
-let
-  val+TLABELED(lab, t2p) = lt2p in auxt2p(t2p)
-end
-and
 auxlt2ps
-(lt2ps: labt2ypelst): bool =
+(ltps: labt2ypelst): bool =
 (
-case+ lt2ps of
+case+ ltps of
 | list_nil() => false
-| list_cons(lt2p, lt2ps) =>
-  if auxlt2p(lt2p) then true else auxlt2ps(lt2ps)
+| list_cons(lt2p0, ltps1) =>
+  let
+  val+TLABELED(lab, t2p0) = lt2p0
+  in
+  if auxt2p0(t2p0) then true else auxlt2ps(ltps1)
+  end
 )
 //
 } (* end of [t2xtv_occurs] *)
@@ -441,27 +439,27 @@ end // end of [unify_labt2ype_labt2ype]
 
 implement
 unify_labt2ypelst_labt2ypelst
-(loc0, lt2ps1, lt2ps2) =
+(loc0, ltps1, ltps2) =
 (
-case+ lt2ps1 of
+case+ ltps1 of
 | list_nil() =>
   (
-  case+ lt2ps2 of
+  case+ ltps2 of
   | list_nil() => true
   | list_cons _ => false
   )
-| list_cons(lt2p1, lt2ps1) =>
+| list_cons(lt2p1, ltps1) =>
   (
-  case+ lt2ps2 of
+  case+ ltps2 of
   | list_nil() => false
-  | list_cons(lt2p2, lt2ps2) =>
+  | list_cons(lt2p2, ltps2) =>
     let
       val
       test1 =
       unify(loc0, lt2p1, lt2p2)
       val
       test2 =
-      unify(loc0, lt2ps1, lt2ps2)
+      unify(loc0, ltps1, ltps2)
     in
       if test1 then test2 else false
     end
@@ -742,7 +740,7 @@ ifcase
 | _(*else*) => TYRECbox0(*void*)
 ) : tyrec // end of [val]
 //
-val lt2ps =
+val ltps =
 (
   auxlst(d3es, 0(*i0*))
 ) where
@@ -772,7 +770,7 @@ val s2t0 =
   the_sort2_none
 val t2p0 =
 t2ype_make_node
-  (s2t0, T2Ptyrec(tknd, npf2, lt2ps))
+  (s2t0, T2Ptyrec(tknd, npf2, ltps))
 //
 in
   d3exp_make_node
