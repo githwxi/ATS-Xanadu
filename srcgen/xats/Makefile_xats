@@ -126,6 +126,7 @@ dynexp3.dats \
 dynexp3_print.dats \
 trans23_util0.dats \
 trans23_dynexp.dats \
+trans33_util0.dats \
 trans33_dynexp.dats \
 t3xread_dynexp.dats \
 

@@ -116,7 +116,7 @@ cons with list_cons
 cons with list_vt_cons
 
 (* ****** ****** *)
-////
+
 #extern
 fun
 <x:type>

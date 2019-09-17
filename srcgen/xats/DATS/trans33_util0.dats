@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,84 +28,40 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2019
+// Start Time: August, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-#staload "./basics.sats"
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload "./label0.sats"
-#staload "./locinfo.sats"
+#staload "./../SATS/basics.sats"
 
 (* ****** ****** *)
-//
-#staload S2E = "./staexp2.sats"
-#staload S2T = "./statyp2.sats"
-#staload D2E = "./dynexp2.sats"
-//
-#staload D3E = "./dynexp3.sats"
-//
-(* ****** ****** *)
 
-typedef t2ype = $S2T.t2ype
-
-typedef d2pat = $D2E.d2pat
-typedef d3pat = $D3E.d3pat
-
-typedef d2exp = $D2E.d2exp
-typedef d3exp = $D3E.d3exp
-
-typedef d2ecl = $D2E.d2ecl
-typedef d3ecl = $D3E.d3ecl
-
-typedef d3patlst = $D3E.d3patlst
-typedef d3patopt = $D3E.d3patopt
-typedef d3explst = $D3E.d3explst
-typedef d3expopt = $D3E.d3expopt
-
-typedef f2arglst = $D2E.f2arglst
-typedef f3arglst = $D3E.f3arglst
-
-typedef d3eclist = $D3E.d3eclist
+#staload "./../SATS/label0.sats"
+#staload "./../SATS/symbol.sats"
 
 (* ****** ****** *)
-//
-fun
-trans33_dpat: d3pat -> d3pat
-fun
-trans33_dpatlst: d3patlst -> d3patlst
-//
-(* ****** ****** *)
-//
-fun
-trans33_dexp: d3exp -> d3exp 
-fun
-trans33_dexpopt: d3expopt -> d3expopt
-fun
-trans33_dexplst: d3explst -> d3explst
-//
-(* ****** ****** *)
 
-fun
-trans33_farglst: f3arglst -> f3arglst
+#staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)
-//
-fun
-trans33_decl: d3ecl -> d3ecl 
-fun
-trans33_declist: d3eclist -> d3eclist
-//
-(* ****** ****** *)
-//
-fun
-match_t2ype_t2ype
-( loc0: loc_t
-, t2p1: t2ype, t2p2: t2ype): bool
-//
+
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
+
 (* ****** ****** *)
 
-(* end of [xats_trans33.sats] *)
+#staload "./../SATS/trans33.sats"
+
+(* ****** ****** *)
+
+(* end of [trans33_util0.dats] *)

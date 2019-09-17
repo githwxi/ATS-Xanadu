@@ -74,6 +74,16 @@ in
 //
 case+
 d3e0.node() of
+//
+| D3Eint _ => d3e0
+| D3Ebtf _ => d3e0
+| D3Echr _ => d3e0
+| D3Eflt _ => d3e0
+| D3Estr _ => d3e0
+//
+| D3Enone0 _ => d3e0
+| D3Enone1 _ => d3e0
+//
 | _ (* rest-of-d3exp *) => d3e0
 //
 end // end of [trans33_dexp]
@@ -105,6 +115,53 @@ implement
 list_map$fopr<d3exp><d3exp>(d3e) = trans33_dexp(d3e)
 }
 } (* end of [trans33_dexplst] *)
+
+(* ****** ****** *)
+
+local
+
+in
+
+implement
+trans33_decl
+  (d3c0) = let
+//
+(*
+val loc0 = d3c0.loc()
+*)
+val ((*void*)) =
+println!
+("trans33_decl: d3c0 = ", d3c0)
+//
+in
+//
+case+
+d3c0.node() of
+//
+| D3Cnone0 _ => d3c0
+| D3Cnone1 _ => d3c0
+| _ (* rest-of-d3ecl *) => d3c0
+//
+end // end of [trans33_decl]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans33_declist
+  (d3cs) =
+list_vt2t(d3cs) where
+{
+val
+d3cs =
+list_map<d3ecl><d3ecl>
+  (d3cs) where
+{
+implement
+list_map$fopr<d3ecl><d3ecl>(d3c) = trans33_decl(d3c)
+}
+} (* end of [trans33_declist] *)
 
 (* ****** ****** *)
 
