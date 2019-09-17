@@ -178,13 +178,13 @@ t2ype_subst
 let
 var flag: int = 0
 in
-  auxt2p(t2p0, flag)
+  auxt2p0(t2p0, flag)
 end
 ) where
 {
 //
 fun
-auxt2p
+auxt2p0
 ( t2p0: t2ype
 , flag: &int >> int
 ) : t2ype = let
@@ -209,7 +209,7 @@ t2p0.node() of
 | T2Papp
   (t2p1, t2ps) => let
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
     val
     t2ps = auxt2ps(t2ps, flag)
   in
@@ -225,7 +225,7 @@ t2p0.node() of
   (fcr, npf, t2ps, t2p1) =>
   let
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
     val
     t2ps = auxt2ps(t2ps, flag)
   in
@@ -239,7 +239,7 @@ t2p0.node() of
 //
 | T2Pexi(s2vs, t2p1) => let
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
   in
     if
     flag=fini
@@ -249,7 +249,7 @@ t2p0.node() of
   end
 | T2Puni(s2vs, t2p1) => let
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
   in
     if
     flag=fini
@@ -272,7 +272,7 @@ t2p0.node() of
 //
 | _ (* rest-of-t2ype *) => t2p0
 //
-end // end of [auxt2p]
+end // end of [auxt2p0]
 //
 and
 auxt2ps
@@ -289,7 +289,7 @@ case+ t2ps of
   (t2p1, t2ps1) => let
     val fini = flag
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
     val
     t2ps1 = auxt2ps(t2ps1, flag)
   in
@@ -301,22 +301,24 @@ case+ t2ps of
 //
 and
 auxlt2ps
-( lt2ps
+( ltps
 : labt2ypelst
 , flag
 : &int >> int
 ) : labt2ypelst =
 (
-case+ lt2ps of
-| list_nil() => list_nil()
-| list_cons(lt2p0, lt2ps1) =>
+case+ ltps of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (lt2p0, ltps1) =>
   let
 //
     val fini = flag
 //
     val+
     TLABELED(l0, t2p0) = lt2p0
-    val t2p0 = auxt2p(t2p0, flag)
+    val t2p0 = auxt2p0(t2p0, flag)
     val lt2p0 =
     (
     if
@@ -324,12 +326,12 @@ case+ lt2ps of
     then lt2p0 else TLABELED(l0, t2p0)
     ) : labt2ype // end of [val]
 //
-    val lt2ps1 = auxlt2ps(lt2ps1, flag)
+    val ltps1 = auxlt2ps(ltps1, flag)
 //
   in
     if
     flag = fini
-    then lt2ps else list_cons(lt2p0, lt2ps)
+    then ltps else list_cons(lt2p0, ltps1)
   end
 )
 //
@@ -344,7 +346,7 @@ t2ype_substs
 let
 var flag: int = 0
 in
-  auxt2p(t2p0, flag)
+  auxt2p0(t2p0, flag)
 end
 ) where
 {
@@ -391,7 +393,7 @@ in
 end // end of [auxs2v]
 //
 fun
-auxt2p
+auxt2p0
 ( t2p0
 : t2ype
 , flag
@@ -416,7 +418,7 @@ t2p0.node() of
 | T2Papp
   (t2p1, t2ps) => let
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
     val
     t2ps = auxt2ps(t2ps, flag)
   in
@@ -432,7 +434,7 @@ t2p0.node() of
   (fcr, npf, t2ps, t2p1) =>
   let
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
     val
     t2ps = auxt2ps(t2ps, flag)
   in
@@ -446,7 +448,7 @@ t2p0.node() of
 //
 | T2Pexi(s2vs, t2p1) => let
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
   in
     if
     flag=fini
@@ -456,7 +458,7 @@ t2p0.node() of
   end
 | T2Puni(s2vs, t2p1) => let
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
   in
     if
     flag=fini
@@ -479,7 +481,7 @@ t2p0.node() of
 //
 | _ (* rest-of-t2ype *) => t2p0
 //
-end // end of [auxt2p]
+end // end of [auxt2p0]
 //
 and
 auxt2ps
@@ -496,7 +498,7 @@ case+ t2ps of
   (t2p1, t2ps1) => let
     val fini = flag
     val
-    t2p1 = auxt2p(t2p1, flag)
+    t2p1 = auxt2p0(t2p1, flag)
     val
     t2ps1 = auxt2ps(t2ps1, flag)
   in
@@ -508,22 +510,24 @@ case+ t2ps of
 //
 and
 auxlt2ps
-( lt2ps
+( ltps
 : labt2ypelst
 , flag
 : &int >> int
 ) : labt2ypelst =
 (
-case+ lt2ps of
-| list_nil() => list_nil()
-| list_cons(lt2p0, lt2ps1) =>
+case+ ltps of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (lt2p0, ltps1) =>
   let
 //
     val fini = flag
 //
     val+
     TLABELED(l0, t2p0) = lt2p0
-    val t2p0 = auxt2p(t2p0, flag)
+    val t2p0 = auxt2p0(t2p0, flag)
     val lt2p0 =
     (
     if
@@ -531,12 +535,12 @@ case+ lt2ps of
     then lt2p0 else TLABELED(l0, t2p0)
     ) : labt2ype // end of [val]
 //
-    val lt2ps1 = auxlt2ps(lt2ps1, flag)
+    val ltps1 = auxlt2ps(ltps1, flag)
 //
   in
     if
     flag = fini
-    then lt2ps else list_cons(lt2p0, lt2ps)
+    then ltps else list_cons(lt2p0, ltps1)
   end
 )
 //
@@ -561,7 +565,7 @@ t2p0.node() of
 | T2Pbas _ => t2p0
 | _(*non-T2Pbas*) =>
   (
-    auxt2p(t2p0, flag)
+    auxt2p0(t2p0, flag)
   ) where
   {
     val () = flag := flag + 1
@@ -647,7 +651,7 @@ T2Papp
 //
 val fini = flag
 //
-val t2p1 = auxt2p(t2p1, flag)
+val t2p1 = auxt2p0(t2p1, flag)
 val t2ps = auxt2ps(t2ps, flag)
 in
 //
@@ -674,7 +678,7 @@ t2p1.node() of
 end // end of [auxapp]
 
 and
-auxt2p
+auxt2p0
 ( t2p0: t2ype
 , flag
 : &int >> int): t2ype =
@@ -710,7 +714,7 @@ case+ t2ps of
 | list_cons(t2p1, t2ps2) =>
   let
   val fini = flag
-  val t2p1 = auxt2p(t2p1, flag)
+  val t2p1 = auxt2p0(t2p1, flag)
   val t2ps2 = auxt2ps(t2ps2, flag)
   in
     if
@@ -732,7 +736,7 @@ println!
 in
 //
 let
-var flag: int = 0 in auxt2p(t2p0, flag)
+var flag: int = 0 in auxt2p0(t2p0, flag)
 end
 //
 end // end of [t2ype_hnfize]
