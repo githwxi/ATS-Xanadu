@@ -321,6 +321,27 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+the_location_dummy =
+let
+//
+  var
+  bpos: pos_t
+  var
+  cpos: pos_t
+//
+  val () =
+  position_initize(bpos, 0, 0, 0)
+  val () =
+  position_initize(cpos, 0, 0, 0)
+//
+in
+  location_make_fil_pos_pos
+    ($FIL.the_filpath_dummy, bpos, cpos)
+end // end of [the_location_dummy]
+
+(* ****** ****** *)
+
+implement
 location_combine
   (loc1, loc2) = let
 //

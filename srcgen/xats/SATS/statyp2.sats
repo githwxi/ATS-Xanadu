@@ -101,7 +101,9 @@ fcr_new1(fc2: funclo2): fcr
 (* ****** ****** *)
 //
 abstbox t2xtv_tbox = ptr
+//
 typedef t2xtv = t2xtv_tbox
+typedef t2xtvlst = List0(t2xtv)
 //
 fun
 t2xtv_get_loc(t2xtv): loc_t
@@ -109,6 +111,7 @@ fun
 t2xtv_get_type(t2xtv): t2ype
 fun
 t2xtv_set_type(t2xtv, t2ype): void
+//
 fun
 t2xtv_get_stamp(t2xtv): stamp
 //

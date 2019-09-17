@@ -51,6 +51,7 @@
 (* ****** ****** *)
 
 typedef t2ype = $S2T.t2ype
+typedef t2xtv = $S2T.t2xtv
 
 typedef d2pat = $D2E.d2pat
 typedef d3pat = $D3E.d3pat
@@ -61,6 +62,7 @@ typedef d3exp = $D3E.d3exp
 typedef d2ecl = $D2E.d2ecl
 typedef d3ecl = $D3E.d3ecl
 
+typedef t2xtvlst = $S2T.t2xtvlst
 typedef d3patlst = $D3E.d3patlst
 typedef d3patopt = $D3E.d3patopt
 typedef d3explst = $D3E.d3explst
@@ -103,8 +105,7 @@ trans33_declist: d3eclist -> d3eclist
 //
 fun
 match_t2ype_t2ype
-( loc0: loc_t
-, t2p1: t2ype, t2p2: t2ype): bool
+(t2p1: t2ype, t2p2: t2ype): bool
 //
 (* ****** ****** *)
 
