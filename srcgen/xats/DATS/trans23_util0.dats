@@ -56,41 +56,12 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
-
-(* ****** ****** *)
-
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
 
 #staload "./../SATS/trans23.sats"
 
-(* ****** ****** *)
-//
-(*
-implement
-t2ype_of_d2pat
-  (d2p0) =
-(
-s2exp_erase(s2exp_of_d2pat(d2p0))
-)
-//
-implement
-t2ypelst_of_d2patlst
-  (d2ps) =
-list_vt2t(d2ps) where
-{
-val
-d2ps =
-list_map<d2pat><t2ype>
-  (d2ps) where
-{
-implement
-list_map$fopr<d2pat><t2ype> = t2ype_of_d2pat
-}
-} (* end of [t2ypelst_of_d2patlst] *)
-*)
-//
 (* ****** ****** *)
 
 implement
