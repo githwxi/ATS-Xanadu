@@ -269,16 +269,22 @@ usize1(i:int) = gint_type(usize_k, i)
 //
 typedef int = sint0
 typedef int(i:int) = sint1(i)
+typedef sint = sint0
+typedef sint(i:int) = sint1(i)
 typedef uint = uint0
 typedef uint(i:int) = uint1(i)
 //
 typedef lint = slint0
 typedef lint(i:int) = slint1(i)
+typedef slint = slint0
+typedef slint(i:int) = slint1(i)
 typedef ulint = ulint0
 typedef ulint(i:int) = ulint1(i)
 //
 typedef size = usize0
 typedef size(i:int) = usize1(i)
+typedef usize = usize0
+typedef usize(i:int) = usize1(i)
 typedef ssize = ssize0
 typedef ssize(i:int) = ssize1(i)
 //
@@ -449,8 +455,15 @@ $extype("xats_dfloat_t")
 abstype
 gfloat_type(a:type) <= a
 //
-typedef sfloat = gfloat(sfloat_k)
-typedef dfloat = gfloat(dfloat_k)
+typedef
+sfloat = gfloat_type(sfloat_k)
+typedef
+dfloat = gfloat_type(dfloat_k)
+//
+typedef
+float = sfloat // single precision
+typedef
+double = dfloat // double precision
 //
 (* ****** ****** *)
 //

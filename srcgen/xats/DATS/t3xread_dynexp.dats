@@ -115,7 +115,7 @@ d3p0.node() of
     println!
     (loc0, ": T3XERR(d3pat): D3Psym0: t2p0 = ", t2p0);
     println!
-    (loc0, ": T3XERR(d3pat): D3Psym0: dips = ", dpis);
+    (loc0, ": T3XERR(d3pat): D3Psym0: dpis = ", dpis);
   end
 //
 | D3Pcast(d3p1, t2p2) =>
@@ -268,9 +268,9 @@ d3e0.node() of
     println!
     (loc0, ": T3XERR(d3exp): D3Esym0: sym0 = ", sym0);
     println!
-    (loc0, ": T3XERR(d3exp): D3Esym0: dips = ", dpis);
-    println!
     (loc0, ": T3XERR(d3exp): D3Esym0: t2p0 = ", t2p0);
+    println!
+    (loc0, ": T3XERR(d3exp): D3Esym0: dpis = ", dpis);
   end
 //
 | D3Ecast(d3e1, t2p2) =>

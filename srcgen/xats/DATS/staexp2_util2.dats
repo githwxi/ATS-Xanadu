@@ -49,6 +49,4 @@ SYM = "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
 
-(* ****** ****** *)
-
 (* end of [xats_staexp2_util2.dats] *)

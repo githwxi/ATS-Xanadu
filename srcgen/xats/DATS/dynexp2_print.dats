@@ -646,14 +646,14 @@ fprint_d2itm
 (
 case+ x0 of
 //
+| D2ITMvar(d2v0) =>
+  fprint!(out, "D2ITMvar(", d2v0, ")")
+//
 | D2ITMcon(d2cs) =>
   fprint!(out, "D2ITMcon(", d2cs, ")")
 //
 | D2ITMcst(d2cs) =>
   fprint!(out, "D2ITMcst(", d2cs, ")")
-//
-| D2ITMvar(d2v0) =>
-  fprint!(out, "D2ITMvar(", d2v0, ")")
 //
 | D2ITMsym(sym, dpis) =>
   fprint!
