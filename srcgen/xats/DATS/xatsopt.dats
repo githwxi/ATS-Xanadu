@@ -881,6 +881,13 @@ val () =
 println!
 ("process_nil: d3cs = ", d3cs)
 // *)
+val
+d3cs = trans33_declist(d3cs)
+// (*
+val () =
+println!
+("process_nil: d3cs = ", d3cs)
+// *)
 //
 val () = t3xread_main(d3cs)
 //

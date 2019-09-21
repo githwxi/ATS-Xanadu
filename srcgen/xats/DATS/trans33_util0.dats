@@ -222,5 +222,198 @@ let val () = auxlst(xtvs) in test end
 end // end of [match_t2ype_t2ype]
 
 (* ****** ****** *)
+//
+implement
+match_d2var_t2ype
+  (d2v1, t2p2) =
+let
+  val t2p1 = d2v1.type()
+in
+  match_t2ype_t2ype(t2p1, t2p2)
+end
+//
+implement
+match_d2con_t2ype
+  (d2c1, t2p2) =
+let
+  val t2p1 = d2c1.type()
+in
+  match_t2ype_t2ype(t2p1, t2p2)
+end
+//
+implement
+match_d2cst_t2ype
+  (d2c1, t2p2) =
+(
+  match_t2ype_t2ype(t2p1, t2p2)
+) where
+{
+  val t2p1 = d2c1.type()
+  val tqas = d2c1.tqas()
+}
+//
+(* ****** ****** *)
+
+implement
+match_d2itm_t2ype
+  (d2i1, t2p2) =
+let
+(*
+val () =
+println!
+("match_d2itm_t2ype: d2i1 = ", d2i1)
+val () =
+println!
+("match_d2itm_t2ype: t2p2 = ", t2p2)
+*)
+//
+fun
+auxvar
+( d2i1
+: d2itm): d2itmopt_vt =
+let
+  val-D2ITMvar(d2v1) =  d2i1
+in
+if
+match(d2v1, t2p2)
+then Some_vt(d2i1) else None_vt(*void*)
+end // end of [auxvar]
+//
+fun
+auxcon
+( d2i1
+: d2itm): d2itmopt_vt =
+( loop(d2cs) ) where
+{
+//
+val-D2ITMcon(d2cs) =  d2i1
+//
+fun
+loop
+( d2cs
+: d2conlst): d2itmopt_vt =
+(
+case+ d2cs of
+| list_nil
+  ((*void*)) => None_vt()
+| list_cons
+  (d2c1, d2cs2) =>
+  if
+  match(d2c1, t2p2)
+  then Some_vt(D2ITMcon(d2cs)) else loop(d2cs2)
+)
+//
+} (* end of [auxcon] *)
+//
+fun
+auxcst
+( d2i1
+: d2itm): d2itmopt_vt =
+( loop(d2cs) ) where
+{
+//
+  val-D2ITMcst(d2cs) =  d2i1
+//
+fun
+loop
+( d2cs
+: d2cstlst): d2itmopt_vt =
+(
+case+ d2cs of
+| list_nil
+  ((*void*)) => None_vt()
+| list_cons
+  (d2c1, d2cs2) =>
+  if
+  match(d2c1, t2p2)
+  then Some_vt(D2ITMcst(d2cs)) else loop(d2cs2)
+)
+//
+} (* end of [auxcst] *)
+//
+fun
+auxsym
+( d2i1
+: d2itm): d2itmopt_vt =
+let
+  val-
+  D2ITMsym(sym, dpis) = d2i1 in match(dpis, t2p2)
+end
+//
+in
+//
+case+ d2i1 of
+| D2ITMvar _ => auxvar(d2i1)
+| D2ITMcon _ => auxcst(d2i1)
+| D2ITMcst _ => auxcst(d2i1)
+| D2ITMsym _ => auxsym(d2i1)
+//
+end // end of [match_d2itm_t2ype]
+
+(* ****** ****** *)
+//
+implement
+match_d2pitmlst_t2ype
+  (dpis, t2p2) =
+( auxlst1(dpis) ) where
+{
+fun
+auxlst1
+( dpis
+: d2pitmlst): d2itmopt_vt =
+(
+case+ dpis of 
+| list_nil
+  ((*void*)) => None_vt()
+| list_cons
+  (d2pi, dpis) =>
+  (
+  case+ d2pi of
+  | D2PITMnone
+    (deid) => auxlst1(dpis)
+  | D2PITMsome
+    (p0, d2i0) =>
+    let
+    val opt0 = match(d2i0, t2p2)
+    in
+      case+ opt0 of
+      | ~None_vt() => auxlst1(dpis)
+      | ~Some_vt(d2i0) => auxlst2(dpis, p0, d2i0)
+    end // D2PITMsome
+  ) (* end of [list_cons] *)
+)
+and
+auxlst2
+( dpis
+: d2pitmlst
+, p0: int
+, d2i0: d2itm): d2itmopt_vt =
+(
+case+ dpis of
+| list_nil
+  ((*void*)) => Some_vt(d2i0)
+| list_cons
+  (d2pi, dpis) =>
+  (
+  case+ d2pi of
+  | D2PITMnone
+    (deid) =>
+    auxlst2(dpis, p0, d2i0)
+  | D2PITMsome(p1, d2i1) =>
+    if
+    p1 < p0
+    then auxlst2(dpis, p0, d2i0)
+    else let
+      val opt1 = match(d2i1, t2p2)
+    in
+      case+ opt1 of
+      | ~None_vt() => auxlst2(dpis, p0, d2i0)
+      | ~Some_vt(d2i1) => auxlst2(dpis, p1, d2i1)
+    end // D2PITMsome
+  ) (* end of [list_cons] *)
+)
+} (* end of [match_d2pitmlst_t2ype] *)
+//
+(* ****** ****** *)
 
 (* end of [trans33_util0.dats] *)

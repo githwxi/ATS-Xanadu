@@ -76,13 +76,20 @@ gint_lte1 :
 *)
 
 (* ****** ****** *)
-
+//
 #extern
 fun
 bool_neg : (bool) -> bool
-
 #symload not with bool_neg
-
+//
+(* ****** ****** *)
+//
+#extern
+fun
+gfloat_add :
+(dfloat,double) -> double
+#symload + with gfloat_add
+//
 (* ****** ****** *)
 
 (*
@@ -117,6 +124,10 @@ cons with list_vt_cons
 
 (* ****** ****** *)
 
+val x = 1.0 + 2.0
+
+(* ****** ****** *)
+////
 #extern
 fun
 <x:type>

@@ -396,8 +396,8 @@ typedef d2eclopt = Option(d2ecl)
 datatype d2itm =
 //
 | D2ITMvar of (d2var)
-| D2ITMcst of (d2cstlst)
 | D2ITMcon of (d2conlst)
+| D2ITMcst of (d2cstlst)
 //
 | D2ITMsym of (sym_t, d2pitmlst)
 //
