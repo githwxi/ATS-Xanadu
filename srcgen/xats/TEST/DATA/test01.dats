@@ -1,5 +1,13 @@
 (* ****** ****** *)
 
+#extern
+fun
+<a:type>
+g_add : (a, a) -> a
+#symload + with g_add
+
+(* ****** ****** *)
+
 (*
 #extern
 val
@@ -124,7 +132,9 @@ cons with list_vt_cons
 
 (* ****** ****** *)
 
-val x = 1.0 + 2.0
+val x = 1 + 2
+val f = 1.0 + 2.0
+val s = "1" + "2"
 
 (* ****** ****** *)
 ////

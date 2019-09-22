@@ -281,11 +281,10 @@ x0.node() of
 (*
   fprint!(out, "D3Esym0(", d1e1, ")")
 *)
-(*
   fprint!
   ( out
   , "D3Esym0(", d1e1, "; ", dpis, ")")
-*)
+(*
   let
   val t2p0 = x0.type()
   in
@@ -293,6 +292,7 @@ x0.node() of
   ( out
   , "D3Esym0(", d1e1, ": ", t2p0, ")")
   end
+*)
 //
 | D3Esap0
   (d3e1, s2es) =>

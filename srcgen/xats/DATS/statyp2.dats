@@ -56,9 +56,10 @@ local
 
 absimpl
 t2ype_tbox = $rec
-{ t2ype_sort= sort2
+{ 
+  t2ype_sort= sort2
 , t2ype_node= t2ype_node
-}
+} (* absimpl *)
 
 in (* in-of-local *)
 //
