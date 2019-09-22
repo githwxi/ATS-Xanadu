@@ -56,6 +56,80 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+local
+
+fun
+auxsym0
+( d3p0
+: d3pat): d3pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val-
+D3Psym0
+(d1p1, dpis) = d3p0.node()
+//
+val () =
+println!
+("auxsym0: t2p0 = ", t2p0)
+//
+val opt0 =
+match_d2pconlst_t2ype(dpis, t2p0)
+//
+in
+case+ opt0 of
+|
+~None_vt() => d3p0
+|
+~Some_vt(d2i0) =>
+ (
+ case- d2i0 of
+ | D2ITMcon(d2cs) =>
+   (
+   d3pat_make_node
+   (loc0, t2p0, D3Pcon1(d2c1))
+   ) where
+   {
+     val-
+     list_cons(d2c1, _) = d2cs
+     val _(*true*) =
+     unify_d2con_t2ype(loc0, d2c1, t2p0)
+   }
+ )
+end // end of [auxsym0]
+
+(* ****** ****** *)
+
+fun
+auxdapp
+( d3p0
+: d3pat): d3pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pdapp
+(d3f0, npf1, d3ps) = d3p0.node()
+//
+val
+d3f0 = trans33_dpat(d3f0)
+val
+d3ps = trans33_dpatlst(d3ps)
+//
+in
+  d3pat_make_node
+  (loc0, t2p0, D3Pdapp(d3f0, npf1, d3ps))
+end // end of [auxdapp]
+
+in (* in-of-local *)
+
 implement
 trans33_dpat
   (d3p0) = let
@@ -71,12 +145,21 @@ in
 case+
 d3p0.node() of
 //
+| D3Pany _ => d3p0
+| D3Pvar _ => d3p0
+//
+| D3Psym0 _ => auxsym0(d3p0)
+//
+| D3Pdapp _ => auxdapp(d3p0)
+//
 | D3Pnone0 _ => d3p0
 | D3Pnone1 _ => d3p0
 //
 | _ (* rest-of-d3pat *) => d3p0
 //
 end // end of [trans33_dpat]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -267,6 +350,61 @@ in
   (loc0, t2p0, D3Edapp(d3f0, npf1, d3es))
 end // end of [auxdapp]
 
+(* ****** ****** *)
+
+fun
+aux_if0
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val-
+D3Eif0
+( d3e1
+, d3e2, opt3) = d3e0.node()
+//
+val d3e1 = trans33_dexp(d3e1)
+val d3e2 = trans33_dexp(d3e2)
+val opt3 = trans33_dexpopt(opt3)
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
+end (* end of [aux_if0] *)
+
+(* ****** ****** *)
+
+fun
+aux_lam
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val-
+D3Elam
+( f3as
+, tres
+, arrw, body) = d3e0.node()
+//
+val
+f3as =
+trans33_farglst(f3as)
+val
+body = trans33_dexp(body)
+//
+in
+d3exp_make_node
+(loc0, t2p0, D3Elam(f3as, tres, arrw, body))
+end // end of [aux_lam]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -291,6 +429,8 @@ d3e0.node() of
 | D3Eflt _ => d3e0
 | D3Estr _ => d3e0
 //
+| D3Evar _ => d3e0
+//
 | D3Econ1 _ => d3e0
 | D3Ecst1 _ => d3e0
 //
@@ -300,6 +440,15 @@ d3e0.node() of
 | D3Esym0 _ => auxsym0(d3e0)
 //
 | D3Edapp _ => auxdapp(d3e0)
+//
+| D3Eif0
+  (_, _, _) => aux_if0(d3e0)
+(*
+| D3Ecase
+  (_, _, _) => aux_case(d3e0)
+*)
+| D3Elam
+  (_, _, _, _) => aux_lam(d3e0)
 //
 | D3Enone0 _ => d3e0
 | D3Enone1 _ => d3e0
@@ -336,6 +485,85 @@ list_map$fopr<d3exp><d3exp>(d3e) = trans33_dexp(d3e)
 }
 } (* end of [trans33_dexplst] *)
 
+(* ****** ****** *)
+//
+implement
+trans33_dgua
+  (d3g0) =
+let
+val loc0 = d3g0.loc()
+in
+case+
+d3g0.node() of
+| D3GUAexp(d3e1) =>
+  let
+    val
+    d3e1 = trans33_dexp(d3e1)
+  in
+    d3gua_make_node(loc0, D3GUAexp(d3e1))
+  end
+| D3GUAmat(d3e1, d3p2) =>
+  let
+    val d3e1 = trans33_dexp(d3e1)
+    val d3p2 = trans33_dpat(d3p2)
+  in
+    d3gua_make_node(loc0, D3GUAmat(d3e1, d3p2))
+  end
+end
+//
+implement
+trans33_dgualst
+  (d3gs) =
+list_vt2t(d3gs) where
+{
+val
+d3gs =
+list_map<d3gua><d3gua>
+  (d3gs) where
+{
+  implement
+  list_map$fopr<d3gua><d3gua>(d3g) = trans33_dgua(d3g)
+}
+} (* end of [trans33_dgualst] *)
+//
+(* ****** ****** *)
+//
+implement
+trans33_farg
+  (f3a0) =
+(
+case+
+f3a0.node() of
+| F3ARGsome_dyn
+  (npf, d3ps) =>
+  (
+  f3arg_make_node
+  ( f3a0.loc()
+  , F3ARGsome_dyn(npf, d3ps))
+  ) where
+  {
+    val
+    d3ps = trans33_dpatlst(d3ps)
+  }
+//
+| F3ARGsome_sta _ => f3a0
+| F3ARGsome_met _ => f3a0
+)
+implement
+trans33_farglst
+  (f3as) =
+list_vt2t(f3as) where
+{
+val
+f3as =
+list_map<f3arg><f3arg>
+  (f3as) where
+{
+  implement
+  list_map$fopr<f3arg><f3arg>(f3a) = trans33_farg(f3a)
+}
+} (* end of [trans33_farglst] *)
+//
 (* ****** ****** *)
 
 local
@@ -419,9 +647,19 @@ val nam = rcd.nam
 val a2g = rcd.a2g
 val a3g = rcd.a3g
 val res = rcd.res
-val def = trans33_dexpopt(rcd.def)
+val def = rcd.def
 val wtp = rcd.wtp
 val ctp = rcd.ctp
+//
+val a3g =
+(
+case+ a3g of
+| None() => None()
+| Some(f3as) =>
+  Some(trans33_farglst(f3as))
+) : f3arglstopt
+val def =
+trans33_dexpopt(def)
 //
 in
 F3UNDECL
@@ -476,12 +714,10 @@ d3c0.node() of
     aux_valdecl(d3c0)
   )
 //
-(*
 | D3Cfundecl _ =>
   (
     aux_fundecl(d3c0)
   )
-*)
 //
 | D3Cnone0 _ => d3c0
 | D3Cnone1 _ => d3c0

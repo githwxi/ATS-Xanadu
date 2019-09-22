@@ -375,7 +375,9 @@ auxsym
 : d2itm): d2itmopt_vt =
 let
   val-
-  D2ITMsym(sym, dpis) = d2i1 in match(dpis, t2p2)
+  D2ITMsym(sym, dpis) = d2i1
+in
+  match_d2pitmlst_t2ype(dpis, t2p2)
 end
 //
 in
@@ -443,10 +445,22 @@ case+ d2cs of
 (* ****** ****** *)
 //
 implement
-match_d2pitmlst_t2ype
+match_d2pconlst_t2ype
   (dpis, t2p2) =
 ( auxlst1(dpis) ) where
 {
+//
+fun
+auxmat
+( d2i0
+: d2itm
+) : d2itmopt_vt =
+(
+case+ d2i0 of
+| D2ITMcon _ => match(d2i0, t2p2)
+| _(*non-D2ITMcon*) => None_vt(*void*)
+)
+//
 fun
 auxlst1
 ( dpis
@@ -464,7 +478,7 @@ case+ dpis of
   | D2PITMsome
     (p0, d2i0) =>
     let
-    val opt0 = match(d2i0, t2p2)
+      val opt0 = auxmat(d2i0)
     in
       case+ opt0 of
       | ~None_vt() => auxlst1(dpis)
@@ -492,9 +506,89 @@ case+ dpis of
   | D2PITMsome(p1, d2i1) =>
     if
     p1 <= p0
-    then auxlst2(dpis, p0, d2i0)
+    then
+    (
+      auxlst2(dpis, p0, d2i0)
+    )
     else let
-      val opt1 = match(d2i1, t2p2)
+      val opt1 = auxmat(d2i1)
+    in
+      case+ opt1 of
+      | ~None_vt() => auxlst2(dpis, p0, d2i0)
+      | ~Some_vt(d2i1) => auxlst2(dpis, p1, d2i1)
+    end // D2PITMsome
+  ) (* end of [list_cons] *)
+)
+} (* end of [match_d2pconlst_t2ype] *)
+//
+(* ****** ****** *)
+//
+implement
+match_d2pitmlst_t2ype
+  (dpis, t2p2) =
+( auxlst1(dpis) ) where
+{
+//
+fun
+auxmat
+( d2i0
+: d2itm
+) : d2itmopt_vt =
+(
+  match(d2i0, t2p2)
+)
+//
+fun
+auxlst1
+( dpis
+: d2pitmlst): d2itmopt_vt =
+(
+case+ dpis of 
+| list_nil
+  ((*void*)) => None_vt()
+| list_cons
+  (d2pi, dpis) =>
+  (
+  case+ d2pi of
+  | D2PITMnone
+    (deid) => auxlst1(dpis)
+  | D2PITMsome
+    (p0, d2i0) =>
+    let
+      val opt0 = auxmat(d2i0)
+    in
+      case+ opt0 of
+      | ~None_vt() => auxlst1(dpis)
+      | ~Some_vt(d2i0) => auxlst2(dpis, p0, d2i0)
+    end // D2PITMsome
+  ) (* end of [list_cons] *)
+)
+and
+auxlst2
+( dpis
+: d2pitmlst
+, p0: int
+, d2i0: d2itm): d2itmopt_vt =
+(
+case+ dpis of
+| list_nil
+  ((*void*)) => Some_vt(d2i0)
+| list_cons
+  (d2pi, dpis) =>
+  (
+  case+ d2pi of
+  | D2PITMnone
+    (deid) =>
+    auxlst2(dpis, p0, d2i0)
+  | D2PITMsome(p1, d2i1) =>
+    if
+    p1 <= p0
+    then
+    (
+      auxlst2(dpis, p0, d2i0)
+    )
+    else let
+      val opt1 = auxmat(d2i1)
     in
       case+ opt1 of
       | ~None_vt() => auxlst2(dpis, p0, d2i0)

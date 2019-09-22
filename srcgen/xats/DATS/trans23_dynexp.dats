@@ -992,11 +992,17 @@ d2e0.node() of
 //
 | D2Edtsel _ => aux_dtsel(d2e0)
 //
-| D2Eif0(_, _, _) => aux_if0(d2e0)
+| D2Eif0
+    (_, _, _) => aux_if0(d2e0)
+  // D2Eif0
 //
-| D2Ecase(_, _, _) => aux_case(d2e0)
+| D2Ecase
+    (_, _, _) => aux_case(d2e0)
+  // D2Ecase
 //
-| D2Elam(_, _, _, _) => aux_lam(d2e0)
+| D2Elam
+    (_, _, _, _) => aux_lam(d2e0)
+  // D2Elam
 //
 | D2Eanno _ => aux_anno(d2e0)
 //
@@ -1067,7 +1073,7 @@ trans23_dexp_dn(d2e, the_t2ype_void(*void*))
 } (* end of [trans23_dexpseq] *)
 //
 (* ****** ****** *)
-
+//
 implement
 trans23_dgua
   (d2g0) =
@@ -1094,8 +1100,6 @@ d2g0.node() of
     d3gua_make_node(loc0, D3GUAmat(d3e1, d3p2))
   end
 end // end of [trans23_dgua]
-
-(* ****** ****** *)
 //
 implement
 trans23_dgualst
