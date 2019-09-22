@@ -132,9 +132,25 @@ cons with list_vt_cons
 
 (* ****** ****** *)
 
+(*
 val x = 1 + 2
 val f = 1.0 + 2.0
 val s = "1" + "2"
+*)
+
+(* ****** ****** *)
+
+val:
+rec
+fact =
+lam(x:int): int =>
+if x > 0 then x*fact(x-1) else 1
+
+(* ****** ****** *)
+////
+fun:rec
+fact(x: int): int =
+if x > 0 then x * fact(x-1) else 1
 
 (* ****** ****** *)
 ////
@@ -265,14 +281,6 @@ if n > 0 then isodd(n-1) else true
 implmnt
 isodd(n) =
 if n > 0 then isevn(n-1) else false
-
-(* ****** ****** *)
-////
-val:
-rec
-fact =
-lam(x:int): int =>
-if x > 0 then x*fact(x-1) else 1
 
 (* ****** ****** *)
 
@@ -463,10 +471,6 @@ case+ xs of
 fun succ(x:int):int = x+1
 
 (* ****** ****** *)
-////
-fun:rec
-fact(x: int): int =
-if x > 0 then x * fact(x-1) else 1
 ////
 fun:nrc
 fact(x: int): int =

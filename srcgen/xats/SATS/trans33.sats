@@ -64,6 +64,8 @@ typedef d3pat = $D3E.d3pat
 
 typedef d2exp = $D2E.d2exp
 typedef d3exp = $D3E.d3exp
+typedef d3gua = $D3E.d3gua
+typedef f3arg = $D3E.f3arg
 
 typedef d2ecl = $D2E.d2ecl
 typedef d3ecl = $D3E.d3ecl
@@ -85,7 +87,8 @@ typedef d3patopt = $D3E.d3patopt
 typedef d3explst = $D3E.d3explst
 typedef d3expopt = $D3E.d3expopt
 
-typedef f2arglst = $D2E.f2arglst
+typedef d3gualst = $D3E.d3gualst
+
 typedef f3arglst = $D3E.f3arglst
 
 typedef d3eclist = $D3E.d3eclist
@@ -114,7 +117,16 @@ fun
 trans33_dexplst: d3explst -> d3explst
 //
 (* ****** ****** *)
+//
+fun
+trans33_dgua: d3gua -> d3gua
+fun
+trans33_dgualst: d3gualst -> d3gualst
+//
+(* ****** ****** *)
 
+fun
+trans33_farg: f3arg -> f3arg
 fun
 trans33_farglst: f3arglst -> f3arglst
 
@@ -188,12 +200,15 @@ overload match with match_d2conlst_t2ype
 overload match with match_d2cstlst_t2ype
 //
 (* ****** ****** *)
+//
+fun
+match_d2pconlst_t2ype
+( dpis
+: d2pitmlst, t2p2: t2ype): d2itmopt_vt
 fun
 match_d2pitmlst_t2ype
 ( dpis
 : d2pitmlst, t2p2: t2ype): d2itmopt_vt
-//
-overload match with match_d2pitmlst_t2ype
 //
 (* ****** ****** *)
 
