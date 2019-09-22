@@ -69,11 +69,14 @@ typedef d2ecl = $D2E.d2ecl
 typedef d3ecl = $D3E.d3ecl
 
 (* ****** ****** *)
-
+//
+typedef d2conlst = $D2E.d2conlst
+typedef d2cstlst = $D2E.d2cstlst
+//
 typedef d2itmopt = $D2E.d2itmopt
 typedef d2itmlst = $D2E.d2itmlst
 typedef d2pitmlst = $D2E.d2pitmlst
-
+//
 (* ****** ****** *)
 
 typedef t2xtvlst = $S2T.t2xtvlst
@@ -89,6 +92,9 @@ typedef d3eclist = $D3E.d3eclist
 
 (* ****** ****** *)
 
+vtypedef d2conopt_vt = $D2E.d2conopt_vt
+vtypedef d2cstopt_vt = $D2E.d2cstopt_vt
+vtypedef d2varopt_vt = $D2E.d2varopt_vt
 vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
 
 (* ****** ****** *)
@@ -118,6 +124,21 @@ fun
 trans33_decl: d3ecl -> d3ecl 
 fun
 trans33_declist: d3eclist -> d3eclist
+//
+(* ****** ****** *)
+//
+fun
+unify_d2var_t2ype
+(loc0: loc_t,
+ d2v1: d2var, t2p2: t2ype): bool
+fun
+unify_d2con_t2ype
+(loc0: loc_t,
+ d2c1: d2con, t2p2: t2ype): bool
+fun
+unify_d2cst_t2ype
+(loc0: loc_t,
+ d2c1: d2cst, t2p2: t2ype): bool
 //
 (* ****** ****** *)
 //
@@ -154,6 +175,19 @@ overload match with match_d2itm_t2ype
 //
 (* ****** ****** *)
 //
+fun
+match_d2conlst_t2ype
+( d2cs
+: d2conlst, t2p2: t2ype): d2conopt_vt
+fun
+match_d2cstlst_t2ype
+( d2cs
+: d2cstlst, t2p2: t2ype): d2cstopt_vt
+//
+overload match with match_d2conlst_t2ype
+overload match with match_d2cstlst_t2ype
+//
+(* ****** ****** *)
 fun
 match_d2pitmlst_t2ype
 ( dpis

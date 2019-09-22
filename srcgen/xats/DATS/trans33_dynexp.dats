@@ -51,6 +51,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/trans23.sats"
 #staload "./../SATS/trans33.sats"
 
 (* ****** ****** *)
@@ -99,6 +100,84 @@ list_map$fopr<d3pat><d3pat>(d3p) = trans33_dpat(d3p)
 local
 
 fun
+auxcon2
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val-
+D3Econ2
+(d2cs) = d3e0.node()
+//
+val () =
+println!
+("auxcon2: t2p0 = ", t2p0)
+//
+val opt0 =
+match_d2conlst_t2ype(d2cs, t2p0)
+//
+in
+//
+case+ opt0 of
+|
+~None_vt() => d3e0
+|
+~Some_vt(d2c1) =>
+ let
+ val
+ _(*true*) =
+ unify_d2con_t2ype(loc0, d2c1, t2p0)
+ in
+ d3exp_make_node(loc0, t2p0, D3Econ1(d2c1))
+ end
+//
+end // end of [auxcon2]
+
+fun
+auxcst2
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val-
+D3Ecst2
+(d2cs) = d3e0.node()
+//
+val () =
+println!
+("auxcst2: t2p0 = ", t2p0)
+//
+val opt0 =
+match_d2cstlst_t2ype(d2cs, t2p0)
+//
+in
+//
+case+ opt0 of
+|
+~None_vt() => d3e0
+|
+~Some_vt(d2c1) =>
+ let
+ val
+ _(*true*) =
+ unify_d2cst_t2ype(loc0, d2c1, t2p0)
+ in
+ d3exp_make_node(loc0, t2p0, D3Ecst1(d2c1))
+ end
+//
+end // end of [auxcst2]
+
+(* ****** ****** *)
+
+fun
 auxsym0
 ( d3e0
 : d3exp): d3exp =
@@ -128,15 +207,24 @@ case+ opt0 of
  (
  case- d2i0 of
  | D2ITMvar(d2v1) =>
+   (
    d3exp_make_node
    (loc0, t2p0, D3Evar(d2v1))
+   ) where
+   {
+     val _(*true*) =
+     unify_d2var_t2ype(loc0, d2v1, t2p0)
+   }
  | D2ITMcon(d2cs) =>
    (
    d3exp_make_node
    (loc0, t2p0, D3Econ1(d2c1))
    ) where
    {
-     val-list_cons(d2c1, _) = d2cs
+     val-
+     list_cons(d2c1, _) = d2cs
+     val _(*true*) =
+     unify_d2con_t2ype(loc0, d2c1, t2p0)
    }
  | D2ITMcst(d2cs) =>
    (
@@ -144,7 +232,10 @@ case+ opt0 of
    (loc0, t2p0, D3Ecst1(d2c1))
    ) where
    {
-     val-list_cons(d2c1, _) = d2cs
+     val-
+     list_cons(d2c1, _) = d2cs
+     val _(*true*) =
+     unify_d2cst_t2ype(loc0, d2c1, t2p0)
    }
  )
 end // end of [auxsym0]
@@ -199,6 +290,12 @@ d3e0.node() of
 | D3Echr _ => d3e0
 | D3Eflt _ => d3e0
 | D3Estr _ => d3e0
+//
+| D3Econ1 _ => d3e0
+| D3Ecst1 _ => d3e0
+//
+| D3Econ2 _ => auxcon2(d3e0)
+| D3Ecst2 _ => auxcst2(d3e0)
 //
 | D3Esym0 _ => auxsym0(d3e0)
 //

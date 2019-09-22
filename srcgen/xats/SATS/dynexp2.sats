@@ -160,10 +160,8 @@ typedef d2con = d2con_tbox
 typedef d2conlst = List0(d2con)
 typedef d2conopt = Option(d2con)
 //
-(*
 vtypedef d2conlst_vt = List0_vt(d2con)
 vtypedef d2conopt_vt = Option_vt(d2con)
-*)
 //
 (* ****** ****** *)
 //
@@ -173,10 +171,8 @@ typedef d2cst = d2cst_tbox
 typedef d2cstlst = List0(d2cst)
 typedef d2cstopt = Option(d2cst)
 //
-(*
 vtypedef d2cstlst_vt = List0_vt(d2cst)
 vtypedef d2cstopt_vt = Option_vt(d2cst)
-*)
 //
 (* ****** ****** *)
 //
@@ -186,10 +182,8 @@ typedef d2var = d2var_tbox
 typedef d2varlst = List0(d2var)
 typedef d2varopt = Option(d2var)
 //
-(*
 vtypedef d2varlst_vt = List0_vt(d2var)
 vtypedef d2varopt_vt = Option_vt(d2var)
-*)
 //
 (* ****** ****** *)
 //

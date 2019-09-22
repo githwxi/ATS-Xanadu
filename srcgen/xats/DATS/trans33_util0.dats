@@ -185,6 +185,37 @@ case+ ltps of
 } (* end of [t2ype_get_xtvs] *)
 
 (* ****** ****** *)
+//
+implement
+unify_d2var_t2ype
+  (loc0, d2v1, t2p2) =
+let
+val t2p1 = d2v1.type()
+in
+unify_t2ype_t2ype(loc0, t2p1, t2p2)
+end
+implement
+unify_d2con_t2ype
+  (loc0, d2c1, t2p2) =
+let
+val t2p1 = d2c1.type()
+in
+unify_t2ype_t2ype(loc0, t2p1, t2p2)
+end
+//
+implement
+unify_d2cst_t2ype
+  (loc0, d2c1, t2p2) =
+let
+val tqas = d2c1.tqas()
+val t2p1 = d2c1.type()
+val t2p1 =
+  t2ype_tq2as_elim(loc0, t2p1, tqas)
+in
+  unify_t2ype_t2ype(loc0, t2p1, t2p2)
+end
+//
+(* ****** ****** *)
 
 implement
 match_t2ype_t2ype
@@ -249,81 +280,14 @@ let
 val
 loc0 =
 the_location_dummy
+val t2p1 = d2c1.type()
+val tqas = d2c1.tqas()
 //
-vtypedef
-t2ypelst_vt = List0_vt(t2ype)
-//
-fnx
-auxinst1
-( tqas
-: tq2arglst
-, s2vs: s2varlst_vt
-, tsub: t2ypelst_vt): t2ype =
-(
-case+ tqas of
-| list_nil() =>
-  ( t2p1 ) where
-  {
-  val
-  s2vs = list_vt_reverse(s2vs)
-  val
-  tsub = list_vt_reverse(tsub)
-  val
-  t2p1 =
-  t2ype_substs
-  ( d2c1.type()
-  , $UN.list_vt2t(s2vs), $UN.list_vt2t(tsub)
-  )
-  val ((*void*)) = list_vt_free(s2vs)
-  val ((*void*)) = list_vt_free(tsub)
-  }
-| list_cons(tqa0, tqas) =>
-  (
-    auxinst2(tqa0.s2vs(), tqas, s2vs, tsub)
-  )
-)
-and
-auxinst2
-( svs1
-: s2varlst
-, tqas
-: tq2arglst
-, svs2: s2varlst_vt
-, tsub: t2ypelst_vt): t2ype =
-(
-case+ svs1 of
-| list_nil() =>
-  (
-    auxinst1(tqas, svs2, tsub)
-  )
-| list_cons(s2v1, svs1) =>
-  let
-    val
-    s2t1 = s2v1.sort()
-    val
-    xtv1 = t2xtv_new(loc0)
-    val
-    t2px =
-    t2ype_srt_xtv(s2t1, xtv1)
-    val
-    svs2 = list_vt_cons(s2v1, svs2)
-    val
-    tsub = list_vt_cons(t2px, tsub)
-  in
-    auxinst2(svs1, tqas, svs2, tsub)
-  end
-)
+val t2p1 =
+t2ype_tq2as_elim(loc0, t2p1, tqas)
 //
 in
-  let
-  val t2p1 =
-  auxinst1
-  ( d2c1.tqas()
-  , list_vt_nil(), list_vt_nil()
-  )
-  in
-    match_t2ype_t2ype(t2p1, t2p2)
-  end
+  match_t2ype_t2ype(t2p1, t2p2)
 end // end of [match_d2cst_t2ype]
 //
 (* ****** ****** *)
@@ -418,12 +382,64 @@ in
 //
 case+ d2i1 of
 | D2ITMvar _ => auxvar(d2i1)
-| D2ITMcon _ => auxcst(d2i1)
+| D2ITMcon _ => auxcon(d2i1)
 | D2ITMcst _ => auxcst(d2i1)
 | D2ITMsym _ => auxsym(d2i1)
 //
 end // end of [match_d2itm_t2ype]
 
+(* ****** ****** *)
+//
+implement
+match_d2conlst_t2ype
+  (d2cs, t2p2) =
+(
+  auxlst(d2cs)
+) where
+{
+fun
+auxlst
+( d2cs
+: d2conlst): d2conopt_vt =
+(
+case+ d2cs of
+| list_nil
+  ((*void*)) => None_vt()
+| list_cons
+  (d2c1, d2cs) =>
+  (
+    if
+    match(d2c1, t2p2)
+    then Some_vt(d2c1) else auxlst(d2cs)
+  )
+)
+} (* end of [match_d2conlst_t2ype] *)
+//
+implement
+match_d2cstlst_t2ype
+  (d2cs, t2p2) =
+(
+  auxlst(d2cs)
+) where
+{
+fun
+auxlst
+( d2cs
+: d2cstlst): d2cstopt_vt =
+(
+case+ d2cs of
+| list_nil
+  ((*void*)) => None_vt()
+| list_cons
+  (d2c1, d2cs) =>
+  (
+    if
+    match(d2c1, t2p2)
+    then Some_vt(d2c1) else auxlst(d2cs)
+  )
+)
+} (* end of [match_d2cstlst_t2ype] *)
+//
 (* ****** ****** *)
 //
 implement

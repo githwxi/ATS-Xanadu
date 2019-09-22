@@ -76,6 +76,10 @@ typedef d2eclist = $D2E.d2eclist
 
 (* ****** ****** *)
 
+typedef tq2arglst = $D2E.tq2arglst
+
+(* ****** ****** *)
+
 typedef d2pitmlst = $D2E.d2pitmlst
 
 (* ****** ****** *)
@@ -186,6 +190,13 @@ trans23_declist: d2eclist -> d3eclist
 fun
 t2xtv_occurs
 (xtv0: t2xtv, t2p1: t2ype): bool
+//
+(* ****** ****** *)
+//
+fun
+t2ype_tq2as_elim
+( loc0: loc_t
+, t2p0: t2ype, tqas: tq2arglst): t2ype
 //
 (* ****** ****** *)
 //
