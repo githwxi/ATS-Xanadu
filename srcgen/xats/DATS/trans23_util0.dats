@@ -201,8 +201,10 @@ t2p1.node() of
       list_map$fopr<s2var><t2ype>(s2v) =
       t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
     }
-    val tsub = list_vt2t(tsub)
-    val t2p1 = t2ype_substs(t2p1, s2vs, tsub)
+    val t2p1 =
+    t2ype_substs
+    (t2p1, s2vs, $UN.list_vt2t(tsub))
+    val ((*void*)) = list_vt_free(tsub)
   }
 //
 | _ (* non-quantifier *) =>
@@ -226,8 +228,10 @@ t2p1.node() of
         list_map$fopr<s2var><t2ype>(s2v) =
         t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
       }
-      val tsub = list_vt2t(tsub)
-      val t2p2 = t2ype_substs(t2p2, s2vs, tsub)
+      val t2p2 =
+      t2ype_substs
+      (t2p2, s2vs, $UN.list_vt2t(tsub))
+      val ((*void*)) = list_vt_free(tsub)
     }
   | _ (* non-quantifier *) => auxtp1(t2p1, t2p2)
   )

@@ -244,13 +244,87 @@ end
 implement
 match_d2cst_t2ype
   (d2c1, t2p2) =
+let
+//
+val
+loc0 =
+the_location_dummy
+//
+vtypedef
+t2ypelst_vt = List0_vt(t2ype)
+//
+fnx
+auxinst1
+( tqas
+: tq2arglst
+, s2vs: s2varlst_vt
+, tsub: t2ypelst_vt): t2ype =
 (
-  match_t2ype_t2ype(t2p1, t2p2)
-) where
-{
-  val t2p1 = d2c1.type()
-  val tqas = d2c1.tqas()
-}
+case+ tqas of
+| list_nil() =>
+  ( t2p1 ) where
+  {
+  val
+  s2vs = list_vt_reverse(s2vs)
+  val
+  tsub = list_vt_reverse(tsub)
+  val
+  t2p1 =
+  t2ype_substs
+  ( d2c1.type()
+  , $UN.list_vt2t(s2vs), $UN.list_vt2t(tsub)
+  )
+  val ((*void*)) = list_vt_free(s2vs)
+  val ((*void*)) = list_vt_free(tsub)
+  }
+| list_cons(tqa0, tqas) =>
+  (
+    auxinst2(tqa0.s2vs(), tqas, s2vs, tsub)
+  )
+)
+and
+auxinst2
+( svs1
+: s2varlst
+, tqas
+: tq2arglst
+, svs2: s2varlst_vt
+, tsub: t2ypelst_vt): t2ype =
+(
+case+ svs1 of
+| list_nil() =>
+  (
+    auxinst1(tqas, svs2, tsub)
+  )
+| list_cons(s2v1, svs1) =>
+  let
+    val
+    s2t1 = s2v1.sort()
+    val
+    xtv1 = t2xtv_new(loc0)
+    val
+    t2px =
+    t2ype_srt_xtv(s2t1, xtv1)
+    val
+    svs2 = list_vt_cons(s2v1, svs2)
+    val
+    tsub = list_vt_cons(t2px, tsub)
+  in
+    auxinst2(svs1, tqas, svs2, tsub)
+  end
+)
+//
+in
+  let
+  val t2p1 =
+  auxinst1
+  ( d2c1.tqas()
+  , list_vt_nil(), list_vt_nil()
+  )
+  in
+    match_t2ype_t2ype(t2p1, t2p2)
+  end
+end // end of [match_d2cst_t2ype]
 //
 (* ****** ****** *)
 
@@ -401,7 +475,7 @@ case+ dpis of
     auxlst2(dpis, p0, d2i0)
   | D2PITMsome(p1, d2i1) =>
     if
-    p1 < p0
+    p1 <= p0
     then auxlst2(dpis, p0, d2i0)
     else let
       val opt1 = match(d2i1, t2p2)
