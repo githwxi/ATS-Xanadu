@@ -353,6 +353,31 @@ end // end of [auxdapp]
 (* ****** ****** *)
 
 fun
+aux_tuple
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val-
+D3Etuple
+( knd1
+, npf2
+, d3es) = d3e0.node()
+//
+val
+d3es = trans33_dexplst(d3es)
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Etuple(knd1, npf2, d3es))
+end // end of [aux_tuple]
+
+(* ****** ****** *)
+
+fun
 aux_let
 ( d3e0
 : d3exp): d3exp = let
@@ -520,6 +545,8 @@ d3e0.node() of
 | D3Esym0 _ => auxsym0(d3e0)
 //
 | D3Edapp _ => auxdapp(d3e0)
+//
+| D3Etuple _ => aux_tuple(d3e0)
 //
 | D3Elet _ => aux_let(d3e0)
 | D3Ewhere _ => aux_where(d3e0)

@@ -201,6 +201,24 @@ d3pat_make_node
 , t2p0: t2ype, node: d3pat_node): d3pat
 //
 (* ****** ****** *)
+
+datatype
+ti3arg = TI3ARG of t2ypelst
+
+(* ****** ****** *)
+//
+fun
+print_ti3arg: print_type(ti3arg)
+fun
+prerr_ti3arg: prerr_type(ti3arg)
+fun
+fprint_ti3arg: fprint_type(ti3arg)
+//
+overload print with print_ti3arg
+overload prerr with prerr_ti3arg
+overload fprint with fprint_ti3arg
+//
+(* ****** ****** *)
 //
 datatype
 f3arg_node =
@@ -266,6 +284,9 @@ d3exp_node =
 | D3Esym0 of
   (d1exp(*sym*), d2pitmlst)
 //
+| D3Etcst of
+  (d2cst, ti2arg, ti3arg)
+//
 | D3Esap0 of (d3exp, s2explst)
 | D3Esap1 of (d3exp, s2explst)
 //
@@ -308,7 +329,7 @@ d3exp_node =
 //
 | D3Enone0 of ()
 | D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
-
+//
 (* ****** ****** *)
 //
 datatype
@@ -472,24 +493,6 @@ fun
 d3exp_cast
 (d3e0: d3exp, t2p0: t2ype): d3exp
 
-(* ****** ****** *)
-
-datatype
-ti3arg = TI3ARG of t2ypelst
-
-(* ****** ****** *)
-//
-fun
-print_ti3arg: print_type(ti3arg)
-fun
-prerr_ti3arg: prerr_type(ti3arg)
-fun
-fprint_ti3arg: fprint_type(ti3arg)
-//
-overload print with print_ti3arg
-overload prerr with prerr_ti3arg
-overload fprint with fprint_ti3arg
-//
 (* ****** ****** *)
 
 datatype

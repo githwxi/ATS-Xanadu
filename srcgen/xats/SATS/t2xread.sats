@@ -139,6 +139,13 @@ fun{}
 t2xread_d2explst: t2xreader(d2explst)
 //
 (* ****** ****** *)
+
+fun{}
+t2xread_dsapparg: t2xreader(s2explst)
+fun{}
+t2xread_dtapparg: t2xreader(s2explst)
+
+(* ****** ****** *)
 //
 fun{}
 t2xread_d2ecl: t2xreader(d2ecl)

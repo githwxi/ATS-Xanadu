@@ -511,10 +511,15 @@ D2Ecst1(d2c0) = d2e0.node()
 val
 node = D3Ecst1(d2c0)
 val
+tqas = d2c0.tqas((*void*))
+val
 t2p0 = d2c0.type((*void*))
+val
+t2p0 =
+t2ype_tq2as_elim(loc0, t2p0, tqas)
 //
 in
-d3exp_make_node(loc0, t2p0, node)
+  d3exp_make_node(loc0, t2p0, node)
 end // end of [auxcst1]
 
 (* ****** ****** *)
@@ -1673,8 +1678,10 @@ D2Cimpdecl
 , f2as, res0
 , d2e0(*body*)) = d2c0.node()
 //
-val
+// HX: for
+val // trans33
 ti3s = list_nil()
+//
 val
 f3as =
 trans23_farglst(f2as)

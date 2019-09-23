@@ -45,9 +45,9 @@ SYM = "./../SATS/symbol.sats"
 //
 macdef
 LIN_sym = $SYM.LIN_symbol
-//
 macdef
 CLO_sym = $SYM.CLO_symbol
+//
 macdef
 CLOFLT_sym = $SYM.CLOFLT_symbol
 macdef
@@ -55,7 +55,10 @@ CLOPTR_sym = $SYM.CLOPTR_symbol
 macdef
 CLOREF_sym = $SYM.CLOREF_symbol
 //
-overload = with $SYM.eq_symbol_symbol
+overload
+= with $SYM.eq_symbol_symbol
+overload
+.name with $SYM.symbol_get_name
 //
 (* ****** ****** *)
 //
@@ -98,7 +101,7 @@ fprint_val<s2exp> = fprint_s2exp
 local
 
 fun
-auxid
+auxid0
 ( s1t0
 : sort1): sort2 = let
 //
@@ -125,7 +128,7 @@ case+ opt of
 *)
   ) (* Some_vt *)
 //
-end // end of [auxid]
+end // end of [auxid0]
 
 (* ****** ****** *)
 
@@ -299,7 +302,7 @@ in
 case+
 s1t0.node() of
 //
-| S1Tid _ => auxid(s1t0)
+| S1Tid _ => auxid0(s1t0)
 //
 | S1Tint(int) =>
   S2Tint(token2sint(int))
@@ -409,7 +412,7 @@ println!
 *)
 //
 fun
-auxid
+auxid0
 ( s1t0
 : sort1
 ) : s2txt = let
@@ -429,14 +432,14 @@ case+ opt of
    val s2t = S2Tid(tid) in S2TXTsrt(s2t)
   end
 //
-end // end of [auxid]
+end // end of [auxid0]
 //
 in
 //
 case+
 s1t0.node() of
 //
-| S1Tid _ => auxid(s1t0)
+| S1Tid _ => auxid0(s1t0)
 //
 | _(*non-S1Tid*) =>
   (
@@ -450,7 +453,7 @@ end // end of [trans12_stxt]
 (*
 HX-2019-07-14:
 Should a warning
-be issued fro 'lincloref'?
+be issued for 'lincloref'?
 *)
 //
 implement
@@ -686,21 +689,70 @@ case+ s1qs of
 (* ****** ****** *)
 
 local
-
-(*
+//
 fun
 isany
-( s1e
-: s1exp): bool =
-(
-case+
-s1e.node() of
-| S1Eid(sid) =>
-  sid = $SYM.WCARD_symbol
-| _(*non-S1Eid*) => false
-)
+(sid: sym_t): int =
+let
+fun
+auxcnt
+( p0: ptr
+, i0: int): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+  if
+  (c0 = '_')
+  then
+  (
+  auxcnt(p1, i0+1)
+  ) where
+  {
+  val p1 =
+  ptr0_succ<char>(p0)
+  }
+  else
+  (
+  if iseqz(c0) then i0 else (~1)
+  ) (* end of [if] *)
+end
+in
+  auxcnt(string2ptr(sid.name()), 0)
+end (* end of [isany] *)
+(*
+fun
+isdot
+(sid: sym_t): int =
+let
+fun
+auxcnt
+( p0: ptr
+, i0: int): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+  if
+  (c0 = '.')
+  then
+  (
+  auxcnt(p1, i0+1)
+  ) where
+  {
+  val p1 =
+  ptr0_succ<char>(p0)
+  }
+  else
+  (
+  if iseqz(c0) then i0 else (~1)
+  ) (* end of [if] *)
+end
+in
+  auxcnt(string2ptr(sid.name()), 0)
+end (* end of [isdot] *)
 *)
-
+//
 (* ****** ****** *)
 
 fun
@@ -710,14 +762,30 @@ auxid0
 //
 val-
 S1Eid(sid) = s1e0.node()
+//
 val
-opt = the_sexpenv_find(sid)
+knd = isany(sid)
+//
+in
+//
+if
+(knd > 0)
+then
+(
+s2exp_any(knd)
+)
+else let
+val
+opt =
+the_sexpenv_find(sid)
 //
 in
 //
 case+ opt of
 | ~None_vt() => s2exp_none1(s1e0)
 | ~Some_vt(s2i) => auxid0_s2i(s1e0, s2i)
+//
+end // end of [else]
 //
 end // end of [auxid0]
 

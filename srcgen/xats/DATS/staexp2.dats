@@ -648,6 +648,18 @@ s2exp_app2
 )
 //
 (* ****** ****** *)
+//
+implement
+s2exp_any(knd) =
+(
+s2exp_make_node
+(s2t, S2Eany(knd))
+) where
+{
+ val s2t = the_sort2_none
+}
+//
+(* ****** ****** *)
 
 implement
 s2exp_top

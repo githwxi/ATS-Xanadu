@@ -294,6 +294,14 @@ x0.node() of
   end
 *)
 //
+| D3Etcst
+  (d2c1, ti2s, ti3s) =>
+  fprint!
+  ( out
+  , "D3Etcst("
+  , d2c1, "; ", ti2s, "; ", ti3s, ")")
+//
+//
 | D3Esap0
   (d3e1, s2es) =>
   fprint!
