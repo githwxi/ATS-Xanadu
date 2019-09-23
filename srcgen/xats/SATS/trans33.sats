@@ -65,6 +65,9 @@ typedef d3pat = $D3E.d3pat
 typedef d2exp = $D2E.d2exp
 typedef d3exp = $D3E.d3exp
 typedef d3gua = $D3E.d3gua
+typedef d3clau = $D3E.d3clau
+typedef dg3pat = $D3E.dg3pat
+
 typedef f3arg = $D3E.f3arg
 
 typedef d2ecl = $D2E.d2ecl
@@ -88,6 +91,7 @@ typedef d3explst = $D3E.d3explst
 typedef d3expopt = $D3E.d3expopt
 
 typedef d3gualst = $D3E.d3gualst
+typedef d3claulst = $D3E.d3claulst
 
 typedef f3arglst = $D3E.f3arglst
 
@@ -100,43 +104,6 @@ vtypedef d2cstopt_vt = $D2E.d2cstopt_vt
 vtypedef d2varopt_vt = $D2E.d2varopt_vt
 vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
 
-(* ****** ****** *)
-//
-fun
-trans33_dpat: d3pat -> d3pat
-fun
-trans33_dpatlst: d3patlst -> d3patlst
-//
-(* ****** ****** *)
-//
-fun
-trans33_dexp: d3exp -> d3exp 
-fun
-trans33_dexpopt: d3expopt -> d3expopt
-fun
-trans33_dexplst: d3explst -> d3explst
-//
-(* ****** ****** *)
-//
-fun
-trans33_dgua: d3gua -> d3gua
-fun
-trans33_dgualst: d3gualst -> d3gualst
-//
-(* ****** ****** *)
-
-fun
-trans33_farg: f3arg -> f3arg
-fun
-trans33_farglst: f3arglst -> f3arglst
-
-(* ****** ****** *)
-//
-fun
-trans33_decl: d3ecl -> d3ecl 
-fun
-trans33_declist: d3eclist -> d3eclist
-//
 (* ****** ****** *)
 //
 fun
@@ -209,6 +176,52 @@ fun
 match_d2pitmlst_t2ype
 ( dpis
 : d2pitmlst, t2p2: t2ype): d2itmopt_vt
+//
+(* ****** ****** *)
+//
+fun
+trans33_dpat: d3pat -> d3pat
+fun
+trans33_dpatlst: d3patlst -> d3patlst
+//
+(* ****** ****** *)
+//
+fun
+trans33_dexp: d3exp -> d3exp 
+fun
+trans33_dexpopt: d3expopt -> d3expopt
+fun
+trans33_dexplst: d3explst -> d3explst
+//
+(* ****** ****** *)
+//
+fun
+trans33_dgua: d3gua -> d3gua
+fun
+trans33_dgualst: d3gualst -> d3gualst
+//
+(* ****** ****** *)
+
+fun
+trans33_dclau: d3clau -> d3clau
+fun
+trans33_dgpat: dg3pat -> dg3pat
+fun
+trans33_dclaulst: d3claulst -> d3claulst
+
+(* ****** ****** *)
+
+fun
+trans33_farg: f3arg -> f3arg
+fun
+trans33_farglst: f3arglst -> f3arglst
+
+(* ****** ****** *)
+//
+fun
+trans33_decl: d3ecl -> d3ecl 
+fun
+trans33_declist: d3eclist -> d3eclist
 //
 (* ****** ****** *)
 

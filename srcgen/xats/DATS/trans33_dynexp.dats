@@ -353,6 +353,62 @@ end // end of [auxdapp]
 (* ****** ****** *)
 
 fun
+aux_let
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val-
+D3Elet
+( d3cs
+, d3e1) = d3e0.node()
+//
+val
+d3cs = trans33_declist(d3cs)
+//
+in
+let
+val d3e1 = trans33_dexp(d3e1)
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Elet(d3cs, d3e1))
+end
+end (* end of [aux_let] *)
+
+(* ****** ****** *)
+
+fun
+aux_where
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val-
+D3Ewhere
+( d3e1
+, d3cs) = d3e0.node()
+//
+val
+d3cs = trans33_declist(d3cs)
+//
+in
+let
+val d3e1 = trans33_dexp(d3e1)
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Ewhere(d3e1, d3cs))
+end
+end (* end of [aux_where] *)
+
+(* ****** ****** *)
+
+fun
 aux_if0
 ( d3e0
 : d3exp): d3exp = let
@@ -374,6 +430,30 @@ in
   d3exp_make_node
   (loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
 end (* end of [aux_if0] *)
+
+(* ****** ****** *)
+
+fun
+aux_case
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val-
+D3Ecase
+( knd0
+, d3e1, dcls) = d3e0.node()
+//
+val d3e1 = trans33_dexp(d3e1)
+val dcls = trans33_dclaulst(dcls)
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Ecase(knd0, d3e1, dcls))
+end (* end of [aux_case] *)
 
 (* ****** ****** *)
 
@@ -441,12 +521,19 @@ d3e0.node() of
 //
 | D3Edapp _ => auxdapp(d3e0)
 //
+| D3Elet _ => aux_let(d3e0)
+| D3Ewhere _ => aux_where(d3e0)
+//
+(*
+| D3Eseqn _ => aux_seqn(d3e0)
+*)
+//
 | D3Eif0
   (_, _, _) => aux_if0(d3e0)
-(*
+//
 | D3Ecase
   (_, _, _) => aux_case(d3e0)
-*)
+//
 | D3Elam
   (_, _, _, _) => aux_lam(d3e0)
 //
@@ -529,6 +616,84 @@ list_map<d3gua><d3gua>
 (* ****** ****** *)
 //
 implement
+trans33_dclau
+  (d3cl) =
+let
+val loc0 = d3cl.loc()
+in
+case+
+d3cl.node() of
+| D3CLAUgpat(dg3p) =>
+  (
+  d3clau_make_node
+  (loc0, D3CLAUgpat(dg3p))
+  ) where
+  {
+    val
+    dg3p = trans33_dgpat(dg3p)
+  }
+| D3CLAUclau(dg3p, d3e2) =>
+  (
+  d3clau_make_node
+  (loc0, D3CLAUclau(dg3p, d3e2))
+  ) where
+  {
+    val
+    dg3p = trans33_dgpat(dg3p)
+    val d3e2 = trans33_dexp(d3e2)
+  }
+end // end of [trans33_dclau]
+//
+implement
+trans33_dgpat
+  (dg3p) =
+let
+val loc0 = dg3p.loc()
+in
+//
+case+
+dg3p.node() of
+| DG3PATpat(d3p1) =>
+  (
+  dg3pat_make_node
+  (loc0, DG3PATpat(d3p1))
+  ) where
+  {
+    val
+    d3p1 = trans33_dpat(d3p1)
+  }
+| DG3PATgua(d3p1, d3gs) =>
+  (
+  dg3pat_make_node
+  (loc0, DG3PATgua(d3p1, d3gs))
+  ) where
+  {
+    val
+    d3p1 = trans33_dpat(d3p1)
+    val
+    d3gs = trans33_dgualst(d3gs)
+  }
+//
+end // end of [trans33_dg3pat]
+//
+implement
+trans33_dclaulst
+  (d3cs) =
+list_vt2t(d3cs) where
+{
+val
+d3cs =
+list_map<d3clau><d3clau>
+  (d3cs) where
+{
+implement
+list_map$fopr<d3clau><d3clau>(d3cl) = trans33_dclau(d3cl)
+}
+} (* end of [trans33_dclaulst] *)
+//
+(* ****** ****** *)
+//
+implement
 trans33_farg
   (f3a0) =
 (
@@ -549,6 +714,7 @@ f3a0.node() of
 | F3ARGsome_sta _ => f3a0
 | F3ARGsome_met _ => f3a0
 )
+//
 implement
 trans33_farglst
   (f3as) =
@@ -613,9 +779,12 @@ implement
 list_map$fopr<v3aldecl><v3aldecl>(x0) = auxv3d0(x0)
 }
 //
+val v3ds = auxv3ds(v3ds)
+//
 in
-  d3ecl_make_node
-  (d3c0.loc(), D3Cvaldecl(knd, mopt, auxv3ds(v3ds)))
+d3ecl_make_node
+( d3c0.loc()
+, D3Cvaldecl(knd, mopt, v3ds))
 end // end of [aux_valdecl]
 
 (* ****** ****** *)
@@ -684,10 +853,46 @@ implement
 list_map$fopr<f3undecl><f3undecl>(x0) = auxf3d0(x0)
 }
 //
+val f3ds = auxf3ds(f3ds)
+//
 in
-  d3ecl_make_node
-  (d3c0.loc(), D3Cfundecl(knd, mopt, tqas, auxf3ds(f3ds)))
+d3ecl_make_node
+( d3c0.loc()
+, D3Cfundecl(knd, mopt, tqas, f3ds))
 end // end of [aux_fundecl]
+
+(* ****** ****** *)
+
+fun
+aux_impdecl
+( d3c0
+: d3ecl): d3ecl =
+let
+val-
+D3Cimpdecl
+( knd
+, mopt
+, sqas, tqas
+, id2c, ti2s, ti3s
+, f3as, res0, d3e0) = d3c0.node()
+//
+val
+f3as =
+trans33_farglst(f3as)
+//
+val
+d3e0 = trans33_dexp(d3e0)
+//
+in
+d3ecl_make_node
+( d3c0.loc()
+, D3Cimpdecl
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, ti2s, ti3s, f3as, res0, d3e0))
+end // end of [aux_impdecl]
+
+(* ****** ****** *)
 
 in (* in-of-local *)
 
@@ -719,8 +924,14 @@ d3c0.node() of
     aux_fundecl(d3c0)
   )
 //
+| D3Cimpdecl _ =>
+  (
+    aux_impdecl(d3c0)
+  )
+//
 | D3Cnone0 _ => d3c0
 | D3Cnone1 _ => d3c0
+//
 | _ (* rest-of-d3ecl *) => d3c0
 //
 end // end of [trans33_decl]
