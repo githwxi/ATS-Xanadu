@@ -489,6 +489,9 @@ s2e0.node() of
   ( out
   , "S2Elam(", s2vs, "; ", body, ")")
 //
+| S2Eany(knd) =>
+  fprint!(out, "S2Eany(", knd, ")")
+//
 | S2Etop(knd, s2e) =>
   fprint!
   (out, "S2Etop(", knd, "; ", s2e, ")")

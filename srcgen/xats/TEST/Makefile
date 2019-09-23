@@ -27,6 +27,8 @@ test00: ; \
 $(CAT) ./DATA/test00.dats | $(XATSOPT) --dynamic
 test01: ; \
 $(CAT) ./DATA/test01.dats | $(XATSOPT) --dynamic
+test02: ; \
+$(CAT) ./DATA/test02.dats | $(XATSOPT) --dynamic
 #
 ######
 

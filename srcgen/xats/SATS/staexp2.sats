@@ -689,6 +689,8 @@ s2exp_node =
 | S2Elam of
   (s2varlst, s2exp) // abstraction
 //
+| S2Eany of int(*knd*)
+//
 | S2Etop of // HX: knd: 0/1: 
   (int(*knd*), s2exp) // top/typization
   // end of [S2Etop]
@@ -797,6 +799,9 @@ s2exp_app2
 ( loc0: loc_t
 , s2f0: s2exp(*fun*)
 , s2a1: s2exp, s2a2: s2exp): s2exp
+//
+fun
+s2exp_any(knd: int): s2exp
 //
 fun
 s2exp_top

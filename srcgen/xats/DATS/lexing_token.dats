@@ -42,6 +42,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/basics.sats"
 //
+#staload "./../SATS/symbol.sats"
+//
 #staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/locinfo.sats"
@@ -982,6 +984,16 @@ in
 end // end of [lexing_locatize_tnodelst]
 
 (* ****** ****** *)
+//
+implement
+string_is_qbeg(cs) =
+let
+  val p0 = string2ptr(cs)
+in
+  $UN.ptr0_get<char>(p0) = '?'
+end
+//
+(* ****** ****** *)
 
 implement
 lexing_preprocess_tokenlst
@@ -989,8 +1001,10 @@ lexing_preprocess_tokenlst
 //
 fnx
 loop0
-( xs0: tokenlst_vt
-, res: tokenlst_vt): tokenlst_vt =
+( xs0
+: tokenlst_vt
+, res
+: tokenlst_vt): tokenlst_vt =
 (
 case+ xs0 of
 | ~list_vt_nil() => res
@@ -1216,19 +1230,30 @@ case+ x0.node() of
     , list_vt_cons(x01, list_vt_cons(x00, res)))
   end // end of [T_GTLT]
 //
-(*
-| T_DOTLTGTDOT() => let
-    val loc = x0.loc()
-    val x00 = 
-    token_make_node(loc, T_DOTLT())
-    val x01 = 
-    token_make_node(loc, T_GTDOT())
-  in
-    loop1
-    ( x1, xs2
-    , list_vt_cons(x01, list_vt_cons(x00, res)))
-  end // end of [T_GTLT]
-*)
+| T_IDENT_alp(id) =>
+  (
+    case+ x1.node() of
+    | T_IDENT_sym(sym) =>
+      if
+      string_is_qbeg(sym)
+      then let
+        val loc =
+          x0.loc()+x1.loc()
+        val id1 = id + sym
+        val x01 =
+        token_make_node
+          (loc, T_IDENT_alp(id1))
+        // end of [val]
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of [T_IDENT_sym(?...)]
+      else
+        loop1(x1, xs2, list_vt_cons(x0, res))
+      // end of [if]
+    | _ (* rest-of-tnode *) =>
+        loop1(x1, xs2, list_vt_cons(x0, res))
+      // end of [rest-of-tnode]
+  )
 //
 (*
 | T_IDENT_dlr(id) =>

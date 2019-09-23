@@ -409,6 +409,11 @@ lexing_locatize_nodelst
 (* ****** ****** *)
 //
 fun
+string_is_qbeg: (string) -> bool
+//
+(* ****** ****** *)
+//
+fun
 lexing_preprocess_tokenlst
   (tokens: tokenlst_vt): tokenlst_vt
 //

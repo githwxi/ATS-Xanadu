@@ -192,9 +192,11 @@ compare_symbol_symbol(x, y) =
 (* ****** ****** *)
 //
 implement
-symbol_is_nil(x) = (x = symbol_nil)
+symbol_is_nil
+  (sym) = (sym = symbol_nil)
 implement
-symbol_isnot_nil(x) = (x != symbol_nil)
+symbol_isnot_nil
+  (sym) = (sym != symbol_nil)
 //
 (* ****** ****** *)
 

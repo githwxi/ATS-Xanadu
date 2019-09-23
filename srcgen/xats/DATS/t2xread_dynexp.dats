@@ -168,7 +168,8 @@ implement
 t2xread_d2exp
   (d2e0) = let
 //
-val loc0 = d2e0.loc((*void*))
+val
+loc0 = d2e0.loc((*void*))
 //
 in
 //
@@ -192,13 +193,13 @@ d2e0.node() of
   (d2e1, s2es) =>
   {
     val () = t2xread_d2exp<>(d2e1)
-    val () = t2xread_s2explst<>(s2es)
+    val () = t2xread_dsapparg<>(s2es)
   }
 | D2Etapp
   (d2e1, s2es) =>
   {
     val () = t2xread_d2exp<>(d2e1)
-    val () = t2xread_s2explst<>(s2es)
+    val () = t2xread_dtapparg<>(s2es)
   }
 | D2Edapp
   (d2e1, npf, d2es) =>
@@ -273,6 +274,74 @@ implement(env)
 list_foreach$fwork<d2exp><env>(d2e, env) = t2xread_d2exp<>(d2e)
 } (* end of [t2xread_d2explst] *)
 //
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+t2xread_dsapparg
+  (s2es) =
+(
+  auxlst(s2es)
+) where
+{
+fun
+auxlst
+( s2es
+: s2explst): void =
+(
+case+ s2es of
+| list_nil() =>
+  ((*void*))
+| list_cons
+  (s2e0, s2es) =>
+  (
+    auxlst(s2es)
+  ) where
+  {
+    val () =
+    (
+    case+
+    s2e0.node() of
+    | S2Eany(knd) => ()
+    | _(*non-S2Eany*) => t2xread_s2exp<>(s2e0)
+    )
+  }
+) (* end of [auxlst] *)
+} (* end of [t2xread_dsapparg] *)
+
+implement
+{}(*tmp*)
+t2xread_dtapparg
+  (s2es) =
+(
+  auxlst(s2es)
+) where
+{
+fun
+auxlst
+( s2es
+: s2explst): void =
+(
+case+ s2es of
+| list_nil() =>
+  ((*void*))
+| list_cons
+  (s2e0, s2es) =>
+  (
+    auxlst(s2es)
+  ) where
+  {
+    val () =
+    (
+    case+
+    s2e0.node() of
+    | S2Eany(knd) => ()
+    | _(*non-S2Eany*) => t2xread_s2exp<>(s2e0)
+    )
+  }
+) (* end of [auxlst] *)
+} (* end of [t2xread_dtapparg] *)
+
 (* ****** ****** *)
 
 implement
