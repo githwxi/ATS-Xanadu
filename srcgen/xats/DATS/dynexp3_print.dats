@@ -135,8 +135,6 @@ implement
 fprint_val<tq2arg> = fprint_tq2arg
 implement
 fprint_val<ti2arg> = fprint_ti2arg
-implement
-fprint_val<ti3arg> = fprint_ti3arg
 //
 (* ****** ****** *)
 //
@@ -295,11 +293,11 @@ x0.node() of
 *)
 //
 | D3Etcst
-  (d2c1, ti2s, ti3s) =>
+  (d2c1, ti2s, ti3a) =>
   fprint!
   ( out
   , "D3Etcst("
-  , d2c1, "; ", ti2s, "; ", ti3s, ")")
+  , d2c1, "; ", ti2s, "; ", ti3a, ")")
 //
 //
 | D3Esap0
@@ -313,18 +311,11 @@ x0.node() of
   ( out
   , "D3Esap1(", d3e1, "; ", s2es, ")")
 //
-(*
-| D3Etap0
-  (d2c0, s2es) =>
-  fprint!
-  ( out
-  , "D3Etap0(", d2c0, "; ", s2es, ")")
-*)
-| D3Etap1
+| D3Etapp
   (d2f0, s2es) =>
   fprint!
   ( out
-  , "D3Etap1(", d2f0, "; ", s2es, ")")
+  , "D3Etapp(", d2f0, "; ", s2es, ")")
 //
 | D3Edapp
   (d3e1, npf2, d3es) =>
@@ -484,8 +475,10 @@ fprint_ti3arg
   (out, x0) =
 (
 case+ x0 of
-| TI3ARG(t2ps) =>
-  fprint!(out, "TI3ARG(", t2ps, ")")
+| TI3ARGnone() =>
+  fprint!(out, "TI3ARGnone(", ")")
+| TI3ARGsome(t2ps) =>
+  fprint!(out, "TI3ARGsome(", t2ps, ")")
 )
 //
 (* ****** ****** *)
@@ -549,13 +542,13 @@ x0.node() of
 | D3Cimpdecl
   ( knd, mopt
   , sqas, tqas
-  , id2c, ti2s, ti3s, f3as, res0, d3e0) =>
+  , id2c, ti2s, ti3a, f3as, res0, d3e0) =>
   fprint!
   ( out
   , "D3Cimpdecl("
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
-  , id2c, "; ", ti2s, "; ", ti3s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
+  , id2c, "; ", ti2s, "; ", ti3a, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl] *)
 //
 | D3Cnone0() =>

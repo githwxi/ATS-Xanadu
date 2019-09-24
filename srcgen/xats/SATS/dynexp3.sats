@@ -203,7 +203,9 @@ d3pat_make_node
 (* ****** ****** *)
 
 datatype
-ti3arg = TI3ARG of t2ypelst
+ti3arg =
+| TI3ARGnone of ()
+| TI3ARGsome of t2ypelst
 
 (* ****** ****** *)
 //
@@ -285,15 +287,12 @@ d3exp_node =
   (d1exp(*sym*), d2pitmlst)
 //
 | D3Etcst of
-  (d2cst, ti2arg, ti3arg)
+  (d2cst, ti2arglst, ti3arg)
 //
 | D3Esap0 of (d3exp, s2explst)
 | D3Esap1 of (d3exp, s2explst)
 //
-(*
-| D3Etap0 of (d2cst, s2explst)
-*)
-| D3Etap1 of (d2exp, s2explst)
+| D3Etapp of (d2exp, s2explst)
 //
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
@@ -609,10 +608,6 @@ overload prerr with prerr_f3undecl
 overload fprint with fprint_f3undecl
 //
 (* ****** ****** *)
-
-typedef ti3arglst = List0(ti3arg)
-
-(* ****** ****** *)
 //
 datatype
 d3ecl_node =
@@ -641,7 +636,7 @@ d3ecl_node =
   , sq2arglst
   , tq2arglst
   , impld2cst
-  , ti2arglst, ti3arglst, f3arglst, effs2expopt, d3exp)
+  , ti2arglst, ti3arg, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
 //

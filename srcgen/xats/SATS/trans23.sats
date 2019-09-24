@@ -76,6 +76,9 @@ typedef d2eclist = $D2E.d2eclist
 
 (* ****** ****** *)
 
+typedef tq2arg = $D2E.tq2arg
+typedef ti2arg = $D2E.ti2arg
+typedef ti3arg = $D3E.ti3arg
 typedef tq2arglst = $D2E.tq2arglst
 
 (* ****** ****** *)
@@ -196,7 +199,13 @@ t2xtv_occurs
 fun
 t2ype_tq2as_elim
 ( loc0: loc_t
-, t2p0: t2ype, tqas: tq2arglst): t2ype
+, t2p0: t2ype
+, tqas: tq2arglst): t2ype
+fun
+t2ype_tq2as_elim2
+( loc0: loc_t
+, t2p0: t2ype
+, tqas: tq2arglst): (ti3arg, t2ype)
 //
 (* ****** ****** *)
 //
