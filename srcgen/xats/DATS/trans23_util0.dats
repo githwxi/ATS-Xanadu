@@ -146,10 +146,19 @@ implement
 t2ype_tq2as_elim
 (loc0, t2p0, tqas) =
 (
-auxinst1
-( tqas
-, list_vt_nil((*void*))
-, list_vt_nil((*void*)) )
+case+ tqas of
+|
+list_nil() => t2p0
+|
+list_cons _ =>
+let
+val s2vs =
+list_vt_nil((*void*))
+val tsub =
+list_vt_nil((*void*))
+in
+  auxinst1(tqas, s2vs, tsub)
+end
 ) where
 {
 //
@@ -220,6 +229,103 @@ case+ svs1 of
   end
 ) (* end of [auxinst2] *)
 } (* end of [t2ype_tq2as_elim] *)
+//
+(* ****** ****** *)
+//
+implement
+t2ype_tq2as_elim2
+(loc0, t2p0, tqas) =
+(
+case+ tqas of
+|
+list_nil() =>
+(TI3ARGnone(), t2p0)
+|
+list_cons _ =>
+let
+val
+s2vs =
+list_vt_nil((*void*)) 
+val
+tsub =
+list_vt_nil((*void*)) 
+val
+(t2ps, t2p0) =
+auxinst1(tqas, s2vs, tsub)
+in
+  (TI3ARGsome(t2ps), t2p0)
+end
+) where
+{
+//
+vtypedef
+t2ypelst_vt = List0_vt(t2ype)
+//
+fnx
+auxinst1
+( tqas
+: tq2arglst
+, s2vs: s2varlst_vt
+, tsub: t2ypelst_vt
+) : (t2ypelst, t2ype) =
+(
+case+ tqas of
+| list_nil() =>
+  (tsub, t2p0) where
+  {
+  val
+  s2vs = list_vt_reverse(s2vs)
+  val
+  tsub =
+  list_vt2t(list_vt_reverse(tsub))
+  val
+  t2p0 =
+  (
+  t2ype_substs(t2p0, s2vs, tsub)
+  ) where
+  {
+    val s2vs = $UN.list_vt2t(s2vs)
+  }
+  val ((*void*)) = list_vt_free(s2vs)
+  }
+| list_cons(tqa0, tqas) =>
+  (
+    auxinst2(tqa0.s2vs(), tqas, s2vs, tsub)
+  )
+) (* end of [auxinst1] *)
+and
+auxinst2
+( svs1
+: s2varlst
+, tqas
+: tq2arglst
+, svs2: s2varlst_vt
+, tsub: t2ypelst_vt
+) : (t2ypelst, t2ype) =
+(
+case+ svs1 of
+| list_nil() =>
+  (
+    auxinst1(tqas, svs2, tsub)
+  )
+| list_cons(s2v1, svs1) =>
+  let
+    val
+    s2t1 = s2v1.sort()
+    val
+    xtv1 = t2xtv_new(loc0)
+    val
+    t2px =
+    t2ype_srt_xtv(s2t1, xtv1)
+    val
+    svs2 = list_vt_cons(s2v1, svs2)
+    val
+    tsub = list_vt_cons(t2px, tsub)
+  in
+    auxinst2(svs1, tqas, svs2, tsub)
+  end
+) (* end of [auxinst2] *)
+} (* end of [t2ype_tq2as_elim2] *)
 //
 (* ****** ****** *)
 
@@ -771,7 +877,7 @@ d3exp_tapp_up
 , d2f0, s2es ) =
 (
 d3exp_make_node
-(loc0, t2p0, D3Etap1(d2f0, s2es))
+(loc0, t2p0, D3Etapp(d2f0, s2es))
 ) where
 {
   val t2p0 = t2ype_new(d2f0.loc())

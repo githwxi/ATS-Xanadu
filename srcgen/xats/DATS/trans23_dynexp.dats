@@ -509,14 +509,13 @@ val-
 D2Ecst1(d2c0) = d2e0.node()
 //
 val
-node = D3Ecst1(d2c0)
+(ti3a, t2p0) =
+t2ype_tq2as_elim2
+(loc0, d2c0.type(), d2c0.tqas())
 val
-tqas = d2c0.tqas((*void*))
+ti2s = list_nil()
 val
-t2p0 = d2c0.type((*void*))
-val
-t2p0 =
-t2ype_tq2as_elim(loc0, t2p0, tqas)
+node = D3Etcst(d2c0, ti2s, ti3a)
 //
 in
   d3exp_make_node(loc0, t2p0, node)
@@ -1680,7 +1679,7 @@ D2Cimpdecl
 //
 // HX: for
 val // trans33
-ti3s = list_nil()
+ti3a = TI3ARGnone()
 //
 val
 f3as =
@@ -1760,7 +1759,7 @@ val node =
 D3Cimpdecl
 ( knd, mopt
 , sqas, tqas
-, id2c, ti2s, ti3s, f3as, res0, d3e0)
+, id2c, ti2s, ti3a, f3as, res0, d3e0)
 }
 //
 end // end of [aux_impdecl]
