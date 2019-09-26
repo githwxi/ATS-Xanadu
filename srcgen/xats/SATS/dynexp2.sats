@@ -233,6 +233,8 @@ fun
 d2cst_get_type(d2cst): t2ype
 fun
 d2cst_get_tqas(d2cst): tq2as
+fun
+d2cst_get_s2vs(d2cst): s2varlst
 //
 fun
 d2cst_set_sexp(d2cst, s2exp): void

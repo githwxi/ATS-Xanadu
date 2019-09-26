@@ -1898,9 +1898,11 @@ auxck2
 , s2t1: sort2): s2exp =
 (
 case+ s2tf of
+//
 | S2Tfun
   (_, s2tf) => auxck2(s2tf, s2t1)
-| _(*non-S2Elam*) =>
+//
+| _(*non-S2Efun*) =>
   (
   if
   s2tf <= s2t1
@@ -1924,7 +1926,7 @@ case+ s2tf of
       | _ (* non-S2Tfun *) => s2tf
     )
   }
-)
+) (* auxck2 *)
 //
 } (* end of [val] *)
 //

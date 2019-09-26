@@ -206,6 +206,23 @@ t2p0.node() of
     else (flag := flag+1; tsub)
   )
 //
+| T2Pxtv(xtv1) =>
+  let
+    val
+    t2p1 = xtv1.type()
+  in
+    case+
+    t2p1.node() of
+    | T2Pnone0() => t2p0
+    | _(*else*) =>
+      (
+        auxt2p0(t2p1, flag)
+      ) where
+      {
+        val () = flag := flag+1
+      }
+  end
+//
 | T2Papp
   (t2p1, t2ps) => let
     val
@@ -414,6 +431,23 @@ t2p0.node() of
   (
     auxs2v(t2p0, flag)
   )
+//
+| T2Pxtv(xtv1) =>
+  let
+    val
+    t2p1 = xtv1.type()
+  in
+    case+
+    t2p1.node() of
+    | T2Pnone0() => t2p0
+    | _(*else*) =>
+      (
+        auxt2p0(t2p1, flag)
+      ) where
+      {
+        val () = flag := flag+1
+      }
+  end
 //
 | T2Papp
   (t2p1, t2ps) => let

@@ -89,6 +89,11 @@ typedef labs2exp = $S2E.labs2exp
 typedef labs2explst = List0(labs2exp)
 //
 (* ****** ****** *)
+
+vtypedef s2explst_vt = List0_vt(s2exp)
+vtypedef t2ypelst_vt = List0_vt(t2ype)
+
+(* ****** ****** *)
 //
 abstype fcr_tbox = ptr
 typedef fcr = fcr_tbox

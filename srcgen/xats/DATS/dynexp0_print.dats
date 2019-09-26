@@ -105,7 +105,14 @@ implement
 fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
 //
 (* ****** ****** *)
-
+//
+implement
+print_q0arg(x0) = 
+fprint_q0arg(stdout_ref, x0)
+implement
+prerr_q0arg(x0) = 
+fprint_q0arg(stderr_ref, x0)
+//
 implement
 fprint_q0arg
   (out, x0) =
@@ -121,9 +128,16 @@ x0.node() of
   fprint!(out, "Q0ARGsome(", sid, "; ", opt, ")")
 //
 ) (* end of [fprint_q0arg] *)
-
+//
 (* ****** ****** *)
-
+//
+implement
+print_a0typ(x0) = 
+fprint_a0typ(stdout_ref, x0)
+implement
+prerr_a0typ(x0) = 
+fprint_a0typ(stderr_ref, x0)
+//
 implement
 fprint_a0typ
   (out, x0) =
@@ -138,7 +152,7 @@ case+ x0.node() of
   fprint!(out, "A0TYPsome(", s0e, "; ", opt, ")")
 //
 ) (* end of [fprint_a0typ] *)
-
+//
 (* ****** ****** *)
 
 local
@@ -189,7 +203,14 @@ case+ x0.node() of
 end // end of [local]
 
 (* ****** ****** *)
-
+//
+implement
+print_f0arg(x0) = 
+fprint_f0arg(stdout_ref, x0)
+implement
+prerr_f0arg(x0) = 
+fprint_f0arg(stderr_ref, x0)
+//
 implement
 fprint_f0arg
   (out, x0) =
@@ -211,9 +232,16 @@ x0.node() of
   , "F0ARGsome_met(", tbeg, "; ", s0es, "; ", tend, ")")
 //
 ) (* end of [fprint_f0arg] *)
-
+//
 (* ****** ****** *)
-
+//
+implement
+print_sq0arg(x0) = 
+fprint_sq0arg(stdout_ref, x0)
+implement
+prerr_sq0arg(x0) = 
+fprint_sq0arg(stderr_ref, x0)
+//
 implement
 fprint_sq0arg
   (out, x0) =
@@ -229,9 +257,16 @@ x0.node() of
   , "SQ0ARGsome(", tbeg, "; ", q0as, "; ", tend, ")")
 //
 ) (* end of [fprint_sq0arg] *)
-
+//
 (* ****** ****** *)
-
+//
+implement
+print_tq0arg(x0) = 
+fprint_tq0arg(stdout_ref, x0)
+implement
+prerr_tq0arg(x0) = 
+fprint_tq0arg(stderr_ref, x0)
+//
 implement
 fprint_tq0arg
   (out, x0) =
@@ -247,9 +282,16 @@ x0.node() of
   , "TQ0ARGsome(", tbeg, "; ", q0as, "; ", tend, ")")
 //
 ) (* end of [fprint_tq0arg] *)
-
+//
 (* ****** ****** *)
-
+//
+implement
+print_ti0arg(x0) = 
+fprint_ti0arg(stdout_ref, x0)
+implement
+prerr_ti0arg(x0) = 
+fprint_ti0arg(stderr_ref, x0)
+//
 implement
 fprint_ti0arg
   (out, x0) =
@@ -267,7 +309,7 @@ x0.node() of
 ) (* end of [fprint_ti0arg] *)
 
 (* ****** ****** *)
-
+//
 implement
 {a}(*tmp*)
 fprint_dl0abeled

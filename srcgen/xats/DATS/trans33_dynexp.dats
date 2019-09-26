@@ -352,6 +352,84 @@ end // end of [auxsym0]
 (* ****** ****** *)
 
 fun
+auxsap0
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Esap0
+(d3f0, s2es) = d3e0.node()
+//
+val d3f0 = trans33_dexp(d3f0)
+//
+in
+(
+  d3exp_dn(d3e1, t2p0)
+) where
+{
+val d3e1 =
+d3exp_sapp_up(loc0, d3f0, s2es)
+}
+end // end of [auxsap0]
+
+fun
+auxsap1
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Esap0
+(d3f0, s2es) = d3e0.node()
+//
+val d3f0 = trans33_dexp(d3f0)
+//
+in
+d3exp_make_node
+(loc0, t2p0, D3Esap1(d3f0, s2es))
+end // end of [auxsap1]
+
+(* ****** ****** *)
+
+fun
+auxtapp
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Etapp
+(d2f0, s2es) = d3e0.node()
+//
+in
+(
+  d3exp_dn(d3e1, t2p0)
+) where
+{
+val d3e1 =
+d3exp_tapp_up(loc0, d2f0, s2es)
+}
+end // end of [auxtapp]
+
+(* ****** ****** *)
+
+fun
 auxdapp
 ( d3e0
 : d3exp): d3exp =
@@ -569,6 +647,11 @@ d3e0.node() of
 | D3Ecst2 _ => auxcst2(d3e0)
 //
 | D3Esym0 _ => auxsym0(d3e0)
+//
+| D3Esap0 _ => auxsap0(d3e0)
+| D3Esap1 _ => auxsap0(d3e0)
+//
+| D3Etapp _ => auxtapp(d3e0)
 //
 | D3Edapp _ => auxdapp(d3e0)
 //

@@ -162,15 +162,15 @@ id0.node() of
 implement
 {}(*tmp*)
 synread_s0tid
-  (tid) =
+  (id0) =
 (
 case+
-tid.node() of
+id0.node() of
 | I0DNTsome _ => ()
 | I0DNTnone(tok) =>
   let
     val () =
-    synerr_add(SYNERRs0tid(tid))
+    synerr_add(SYNERRs0tid(id0))
   in
     prerr(tok.loc());
     prerrln!(": SYNERR(s0tid): ", tok);
@@ -182,15 +182,15 @@ tid.node() of
 implement
 {}(*tmp*)
 synread_s0eid
-  (sid) =
+  (id0) =
 (
 case+
-sid.node() of
+id0.node() of
 | I0DNTsome _ => ()
 | I0DNTnone(tok) =>
   let
     val () =
-    synerr_add(SYNERRs0eid(sid))
+    synerr_add(SYNERRs0eid(id0))
   in
     prerr(tok.loc());
     prerrln!(": SYNERR(s0eid): ", tok);
@@ -230,8 +230,8 @@ in
 //
 case+
 s0t0.node() of
-| S0Tid(tid) =>
-  synread_s0tid<>(tid)
+| S0Tid(id0) =>
+  synread_s0tid<>(id0)
 //
 | S0Tint(int) =>
   synread_t0int<>(int)
@@ -306,9 +306,9 @@ in
 case+
 s0a0.node() of
 | S0ARGsome
-  (sid, opt) =>
+  (id0, opt) =>
   {
-    val () = synread_s0eid<>(sid)
+    val () = synread_s0eid<>(id0)
     val () = synread_sort0opt<>(opt)
   }
 | S0ARGnone(tok) =>
@@ -340,8 +340,8 @@ in
 //
 case+
 s0ma.node() of
-| S0MARGsing(sid) =>
-  synread_s0eid<>(sid)
+| S0MARGsing(id0) =>
+  synread_s0eid<>(id0)
 | S0MARGlist
   (tbeg, s0as, tend) =>
   {
@@ -437,17 +437,17 @@ in
 case+
 s0e0.node() of
 //
-| S0Eid(sid) =>
-  synread_s0eid<>(sid)
+| S0Eid(id0) =>
+  synread_s0eid<>(id0)
 //
 | S0Eop1(tok) => ()
 | S0Eop2
-  (tbeg, sid, tend) =>
+  (tbeg, id0, tend) =>
   {
 (*
     val () = synread_OP_par<>(tbeg)
 *)
-    val () = synread_s0eid<>(sid)
+    val () = synread_s0eid<>(id0)
     val () = synread_RPAREN<>(tend)
   }
 //
@@ -656,14 +656,26 @@ case+ tend of
 )
 
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_effs0expopt
+  (opt0) =
+(
+case+ opt0 of
+| EFFS0EXPnone() => ()
+| EFFS0EXPsome(s0e) => synread_s0exp<>(s0e)
+)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
 synread_s0rtdef
-  (def) =
+  (def0) =
 (
 case+
-def.node() of
+def0.node() of
 | S0RTDEFsort(s0t) =>
   {
     val () = synread_sort0(s0t)
@@ -683,7 +695,7 @@ def.node() of
     case+
     s0a0.node() of
     | S0ARGnone _ => ()
-    | S0ARGsome(sid, opt) =>
+    | S0ARGsome(id0, opt) =>
       (
       case+ opt of
       | None _ =>

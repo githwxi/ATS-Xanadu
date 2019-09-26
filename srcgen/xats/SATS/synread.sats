@@ -107,7 +107,14 @@ datatype synerr =
 //
 | SYNERRs0exp of (s0exp)
 //
+| SYNERRd0pid of (i0dnt)
+| SYNERRd0eid of (i0dnt)
+//
 | SYNERRd0ecl of (d0ecl)
+//
+| SYNERRf0arg of (f0arg)
+| SYNERRq0arg of (q0arg)
+| SYNERRtq0arg of (tq0arg)
 //
 | SYNERRtoken of
     (tkind, token) // token mismatch
@@ -204,13 +211,29 @@ fun{}
 synread_labs0exp_RBRACE: synreader(labs0exp_RBRACE)
 
 (* ****** ****** *)
+
+fun{}
+synread_effs0expopt: synreader(effs0expopt)
+
+(* ****** ****** *)
+//
+fun{}
+synread_d0pid: synreader(d0pid)
 //
 fun{}
 synread_d0pat: synreader(d0pat)
 fun{}
 synread_labd0pat: synreader(labd0pat)
 //
+fun{}
+synread_d0patlst: synreader(d0patlst)
+fun{}
+synread_labd0patlst: synreader(labd0patlst)
+//
 (* ****** ****** *)
+//
+fun{}
+synread_d0eid: synreader(d0eid)
 //
 fun{}
 synread_d0exp: synreader(d0exp)
@@ -218,10 +241,17 @@ fun{}
 synread_labd0exp: synreader(labd0exp)
 //
 fun{}
+synread_d0expopt: synreader(d0expopt)
+fun{}
 synread_d0explst: synreader(d0explst)
 fun{}
 synread_labd0explst: synreader(labd0explst)
 //
+(* ****** ****** *)
+
+fun{}
+synread_d0exp_RPAREN: synreader(d0exp_RPAREN)
+
 (* ****** ****** *)
 //
 fun{}
@@ -229,6 +259,30 @@ synread_d0ecl: synreader(d0ecl)
 fun{}
 synread_d0eclist: synreader(d0eclist)
 //
+(* ****** ****** *)
+//
+fun{}
+synread_f0arglst: synreader(f0arglst)
+fun{}
+synread_q0arglst: synreader(q0arglst)
+fun{}
+synread_tq0arglst: synreader(tq0arglst)
+//
+fun{}
+synread_wths0expopt: synreader(wths0expopt)
+//
+fun{}
+synread_teqd0expopt: synreader(teqd0expopt)
+//
+(* ****** ****** *)
+
+fun{}
+synread_v0aldeclist: synreader(v0aldeclist)
+fun{}
+synread_v0ardeclist: synreader(v0ardeclist)
+fun{}
+synread_f0undeclist: synreader(f0undeclist)
+
 (* ****** ****** *)
 //
 fun{}
@@ -261,6 +315,8 @@ fun{}
 synread_BAR: synreader(token)
 fun{}
 synread_CLN: synreader(token)
+fun{}
+synread_SMCLN: synreader(token)
 //
 fun{}
 synread_EQLT: synreader(token)
