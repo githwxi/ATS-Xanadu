@@ -817,9 +817,13 @@ t2p0.node() of
 | T2Puni
   (s2vs, t2p1) =>
   let
+//
+  val s2es = auxs2es(s2vs, s2es)
+//
   val t2p1 =
   t2ype_substs
   (t2p1, s2vs, auxtsub(s2vs, s2es))
+//
   in
     d3exp_make_node
     (loc0, t2p1, D3Esap1(d3f0, s2es))
@@ -833,6 +837,40 @@ t2p0.node() of
     (loc0, t2p0, D3Esap0(d3f0, s2es))
   )
 end // end of [auxmain]
+//
+and
+auxs2es
+( s2vs
+: s2varlst
+, s2es
+: s2explst): s2explst =
+(
+case+ s2vs of
+| list_nil
+  ((*void*)) => s2es
+| list_cons
+  (s2v1, s2vs) =>
+  (
+  case+ s2es of
+  | list_nil() =>
+    list_nil()
+  | list_cons
+    (s2e1, s2es) =>
+    let
+    val s2tv = s2v1.sort()
+    val s2te = s2e1.sort()
+    val s2e1 =
+    (
+    if 
+    (s2te <= s2tv)
+    then s2e1 // well-sorted
+    else s2exp_cast(loc0, s2e1, s2tv)
+    ) : s2exp // end of [val]
+    in
+      list_cons(s2e1, auxs2es(s2vs, s2es))
+    end
+  )
+)
 //
 and
 auxtsub
@@ -871,10 +909,210 @@ end (* end of [d3exp_sapp_up] *)
 
 (* ****** ****** *)
 //
+local
+//
+fun
+auxtcst
+( d2f0
+: d2exp
+)
+: d2cstopt_vt =
+(
+case+
+d2f0.node() of
+| D2Ecst1
+  (d2c0) => Some_vt(d2c0)
+| D2Etapp
+  (d2f0, _) => auxtcst(d2f0)
+| _ (*else*) => None_vt(*void*)
+)
+//
+fun
+auxtarg
+( d2f0
+: d2exp
+, ti2s
+: ti2arglst
+)
+: ti2arglst =
+(
+case+
+d2f0.node() of
+| D2Etapp
+  (d2f0, s2es) =>
+  (
+    auxtarg(d2f0, t2is)
+  ) where
+  {
+  val ti2a =
+  ti2arg_make(d2f0.loc(), s2es)
+  val t2is = list_cons(ti2a, ti2s)
+  }
+| _ (* non-D2Etapp *) => ti2s
+)
+//
+fun
+auxd2f0
+( d2f0
+: d2exp
+, sess
+: List0_vt(s2explst)
+)
+: List0_vt(s2explst) =
+(
+case+
+d2f0.node() of
+| D2Etapp
+  (d2f0, s2es) =>
+  (
+  auxd2f0(d2f0, sess)
+  ) where
+  {
+  val sess =
+  list_vt_cons(s2es, sess)
+  }
+| _(*non-D2Etapp*) => sess
+)
+//
+fun
+auxtq2a
+( loc0
+: loc_t
+, tq2a
+: tq2arg
+, s2es
+: s2explst
+, tsub
+: t2ypelst_vt
+)
+: t2ypelst_vt =
+(
+auxs2vs(loc0, tq2a.s2vs(), s2es, tsub)
+)
+and
+auxs2vs
+( loc0
+: loc_t
+, s2vs
+: s2varlst
+, s2es
+: s2explst
+, tsub
+: t2ypelst_vt
+)
+: t2ypelst_vt =
+(
+case+ s2vs of
+| list_nil() => tsub
+| list_cons
+  (s2v0, s2vs) =>
+  (
+  case+ s2es of
+  | list_nil() =>
+    let
+    val s2t0 =
+    s2v0.sort()
+    val t2p0 =
+    t2ype_srt_xtv
+    (s2t0, t2xtv_new(loc0))
+    val tsub =
+    list_vt_cons(t2p0, tsub)
+    in
+      auxs2vs(loc0, s2vs, s2es, tsub)
+    end
+  | list_cons(s2e0, s2es1) =>
+    (
+      case+ s2e0.node() of
+      | S2Eany(k0) =>
+        let
+          val s2t0 =
+          s2v0.sort()
+          val t2p0 =
+          t2ype_srt_xtv
+          (s2t0, t2xtv_new(loc0))
+          val tsub =
+          list_vt_cons(t2p0, tsub)
+        in
+          if
+          (k0 >= 2)
+          then
+          auxs2vs(loc0, s2vs, s2es, tsub)
+          else
+          auxs2vs(loc0, s2vs, s2es1, tsub)
+        end
+      | _(*non-S2Eany*) =>
+        let
+          val t2p0 =
+          s2exp_erase(s2e0)
+          val tsub =
+          list_vt_cons(t2p0, tsub)
+        in
+          auxs2vs(loc0, s2vs, s2es1, tsub)
+        end
+    )
+  )
+) (* end of [auxs2vs] *)
+//
+fun
+auxtqas
+( loc0
+: loc_t
+, tqas
+: tq2arglst
+, sess
+: List0_vt
+  (s2explst)
+, tsub
+: t2ypelst_vt
+)
+: t2ypelst_vt =
+(
+case+ tqas of
+| list_nil
+  ((*void*)) =>
+  let
+  val () =
+  list_vt_free(sess) in tsub
+  end
+| list_cons
+  (tq2a, tqas) =>
+  (
+  case+ sess of
+  |
+  ~list_vt_nil() =>
+   let
+   val s2es = list_nil()
+   val sess = list_vt_nil()
+   val tsub =
+   auxtq2a(loc0, tq2a, s2es, tsub)
+   in
+     auxtqas(loc0, tqas, sess, tsub)
+   end
+  |
+  ~list_vt_cons(s2es, sess) =>
+   let
+     val tsub =
+     auxtq2a(loc0, tq2a, s2es, tsub)
+   in
+     auxtqas(loc0, tqas, sess, tsub)
+   end
+   )
+) (* end of [auxtqas] *)
+//
+in (* in-of-local *)
+
 implement
 d3exp_tapp_up
 ( loc0
 , d2f0, s2es ) =
+let
+val
+opt = auxtcst(d2f0)
+in
+//
+case+ opt of
+|
+~None_vt() =>
 (
 d3exp_make_node
 (loc0, t2p0, D3Etapp(d2f0, s2es))
@@ -882,6 +1120,39 @@ d3exp_make_node
 {
   val t2p0 = t2ype_new(d2f0.loc())
 }
+|
+~Some_vt(d2c0) =>
+let
+//
+val ti2a =
+ti2arg_make(loc0, s2es)
+val ti2s =
+auxtarg
+(d2f0, list_sing(ti2a))
+//
+val tqas = d2c0.tqas()
+val sess = list_vt_sing(s2es)
+val sess = auxd2f0(d2f0, sess)
+//
+val tsub = list_vt_nil()
+val tsub =
+auxtqas(loc0, tqas, sess, tsub)
+val tsub =
+list_vt2t(list_vt_reverse(tsub))
+//
+val s2vs = d2cst_get_s2vs(d2c0)
+val t2p0 =
+t2ype_substs(d2c0.type(), s2vs, tsub)
+//
+in
+d3exp_make_node
+( loc0, t2p0
+, D3Etcst(d2c0, ti2s, TI3ARGsome(tsub)))
+end
+//
+end // end of [d3exp_tapp_up]
+//
+end // end of [local]
 //
 (* ****** ****** *)
 

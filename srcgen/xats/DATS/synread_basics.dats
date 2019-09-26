@@ -62,6 +62,8 @@ and K_GT: tkind
 and K_BAR: tkind
 and K_CLN: tkind
 //
+and K_SMCLN: tkind
+//
 and K_EQLT: tkind
 and K_EQGT: tkind
 //
@@ -83,6 +85,8 @@ implement K_GT = K_SYMBOL(GT_symbol)
 //
 implement K_BAR = K_SYMBOL(BAR_symbol)
 implement K_CLN = K_SYMBOL(CLN_symbol)
+//
+implement K_SMCLN = K_SYMBOL(SMCLN_symbol)
 //
 implement K_EQLT = K_SYMBOL(EQLT_symbol)
 implement K_EQGT = K_SYMBOL(EQGT_symbol)
@@ -335,6 +339,27 @@ tok.node() of
     (tok.loc(), ": SYNERR(CLN): ", tok);
   end // end of [let]
 ) (* end of [synread_CLN] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_SMCLN
+  (tok) =
+(
+case+
+tok.node() of
+| T_SMCLN() => ()
+| _(*non-SMCLN*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_SMCLN, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(SMCLN): ", tok);
+  end // end of [let]
+) (* end of [synread_SMCLN] *)
 
 (* ****** ****** *)
 

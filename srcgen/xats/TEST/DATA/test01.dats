@@ -121,17 +121,6 @@ end
 
 (* ****** ****** *)
 
-#symload
-nil with list_nil
-#symload
-nil with list_vt_nil
-#symload
-cons with list_cons
-#symload
-cons with list_vt_cons
-
-(* ****** ****** *)
-
 (*
 val x = 1 + 2
 val f = 1.0 + 2.0

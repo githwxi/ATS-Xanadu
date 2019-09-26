@@ -353,6 +353,59 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+d2cst_get_s2vs
+  (d2c0) =
+(
+let
+val s2vs =
+auxlst
+(d2c0.tqas(), list_vt_nil())
+in
+list_vt2t(list_vt_reverse(s2vs))
+end
+) where
+{
+fun
+auxlst
+( tqas
+: tq2arglst
+, s2vs
+: List0_vt(s2var)
+)
+: List0_vt(s2var) =
+(
+case+ tqas of
+| list_nil() => s2vs
+| list_cons
+  (t2qa, tqas) =>
+  (
+  auxlst(tqas, s2vs)
+  ) where
+  {
+  val s2vs =
+  revapp(t2qa.s2vs(), s2vs)
+  }
+)
+and
+revapp
+( xs
+: s2varlst
+, ys
+: s2varlst_vt
+)
+: s2varlst_vt =
+(
+case+ xs of
+| list_nil() => ys
+| list_cons(x0, xs) =>
+  revapp(xs, list_vt_cons(x0, ys))
+)
+//
+} (* end of [d2cst_get_s2vs] *)
+
+(* ****** ****** *)
+
 local
 
 typedef
