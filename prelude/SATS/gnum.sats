@@ -39,13 +39,13 @@
 
 fun
 <a:type>
-g_0((*void*)): a
+g_0((*void*)): (a)
 fun
 <a:type>
-g_1((*void*)): a
+g_1((*void*)): (a)
 fun
 <a:type>
-g_2((*void*)): a
+g_2((*void*)): (a)
 
 (* ****** ****** *)
 

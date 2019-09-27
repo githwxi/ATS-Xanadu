@@ -55,6 +55,9 @@ g_copy(x: !(a)): (a)
 fun
 <a:vtflt>
 g_equal(!a, !a): void
+fun
+<a:vtflt>
+g_nequal(!a, !a): void
 
 (* ****** ****** *)
 

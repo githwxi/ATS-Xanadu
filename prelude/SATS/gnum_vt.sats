@@ -39,13 +39,13 @@
 
 fun
 <a:vtype>
-gl_0((*void*)): a
+gl_0((*void*)): (a)
 fun
 <a:vtype>
-gl_1((*void*)): a
+gl_1((*void*)): (a)
 fun
 <a:vtype>
-gl_2((*void*)): a
+gl_2((*void*)): (a)
 
 (* ****** ****** *)
 
