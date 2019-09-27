@@ -41,6 +41,11 @@
 #staload "./locinfo.sats"
 
 (* ****** ****** *)
+
+#staload S1E = "./staexp1.sats"
+#staload D1E = "./dynexp1.sats"
+
+(* ****** ****** *)
 //
 #staload S2E = "./staexp2.sats"
 #staload S2T = "./statyp2.sats"
@@ -59,6 +64,9 @@ typedef t2ypelst = $S2T.t2ypelst
 
 typedef labt2ype = $S2T.labt2ype
 typedef labt2ypelst = $S2T.labt2ypelst
+
+typedef f1unarrow = $D1E.f1unarrow
+typedef effs2expopt = $S2E.effs2expopt
 
 (* ****** ****** *)
 
@@ -323,6 +331,15 @@ d3exp_where_up
 ( loc0: loc_t
 , d3e1: d3exp, d3cs: d3eclist): d3exp
 //
+(* ****** ****** *)
+
+fun
+d3exp_lam_up
+( loc0: loc_t
+, f3as: f3arglst
+, res0: effs2expopt
+, arrw: f1unarrow, body: d3exp): d3exp
+
 (* ****** ****** *)
 
 (* end of [xats_trans23.sats] *)

@@ -53,6 +53,11 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -1310,6 +1315,90 @@ val t2p1 = d3e1.type()
 in
 d3exp_make_node(loc0, t2p1, D3Ewhere(d3e1, d3cs))
 end // end of [d3exp_where_up]
+
+(* ****** ****** *)
+
+implement
+d3exp_lam_up
+( loc0
+, f3as
+, res0, arrw, body) =
+let
+//
+val
+tfun = let
+val
+fc2 =
+(
+  auxfc2(arrw)
+) where
+{
+fun
+auxfc2
+( arrw
+: f1unarrow
+) : funclo2 =
+(
+case arrw of
+| F1UNARROWdflt
+  () => FC2fun(*void*)
+| F1UNARROWlist
+  (s1es) => FC2fun(*void*)
+)
+}
+fun
+auxfa3g
+( fa3g
+: f3arglst
+, tres
+: t2ype
+, flag: int): t2ype =
+(
+case+ fa3g of
+| list_nil() => tres
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | F3ARGsome_dyn
+    (npf, d3ps) =>
+    let
+    val fc2 =
+    (
+    if flag = 0
+    then fc2(*funarrow*)
+    else FC2cloref(*void*)
+    ) : funclo2 // end-of-val
+    val t2ps =
+    d3patlst_get_type(d3ps)
+    val tres =
+    auxfa3g(xs, tres, flag+1)
+    in
+    t2ype_fun1(fc2, npf, t2ps, tres)
+    end
+  | F3ARGsome_sta
+    (s2vs, s2ps) =>
+    let
+    val
+    tres =
+    auxfa3g
+    (xs, tres, flag) in t2ype_uni(s2vs, tres)
+    end
+  | F3ARGsome_met(s2es) => auxfa3g(xs, tres, flag)
+  )
+)
+in
+  auxfa3g(f3as, body.type(), 0)
+end // end-of-val
+//
+(*
+val () =
+println!("d3exp_lam_up: tfun = ", tfun)
+*)
+//
+in
+d3exp_make_node
+(loc0, tfun, D3Elam(f3as, res0, arrw, body))
+end // end of [d3exp_lam_up]
 
 (* ****** ****** *)
 

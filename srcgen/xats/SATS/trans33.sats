@@ -189,6 +189,10 @@ trans33_dpatlst: d3patlst -> d3patlst
 fun
 trans33_dexp: d3exp -> d3exp 
 fun
+trans33_dexp_dn
+(d3e0: d3exp, t2p0: t2ype): d3exp 
+//
+fun
 trans33_dexpopt: d3expopt -> d3expopt
 fun
 trans33_dexplst: d3explst -> d3explst
@@ -201,14 +205,17 @@ fun
 trans33_dgualst: d3gualst -> d3gualst
 //
 (* ****** ****** *)
-
-fun
-trans33_dclau: d3clau -> d3clau
+//
 fun
 trans33_dgpat: dg3pat -> dg3pat
+//
 fun
-trans33_dclaulst: d3claulst -> d3claulst
-
+trans33_dclau_dn
+(d3cl: d3clau, tres: t2ype): d3clau
+fun
+trans33_dclaulst_dn
+(dcls: d3claulst, tres: t2ype): d3claulst
+//
 (* ****** ****** *)
 
 fun
