@@ -823,8 +823,6 @@ t2p0.node() of
   (s2vs, t2p1) =>
   let
 //
-  val s2es = auxs2es(s2vs, s2es)
-//
   val t2p1 =
   t2ype_substs
   (t2p1, s2vs, auxtsub(s2vs, s2es))
@@ -844,40 +842,6 @@ t2p0.node() of
 end // end of [auxmain]
 //
 and
-auxs2es
-( s2vs
-: s2varlst
-, s2es
-: s2explst): s2explst =
-(
-case+ s2vs of
-| list_nil
-  ((*void*)) => s2es
-| list_cons
-  (s2v1, s2vs) =>
-  (
-  case+ s2es of
-  | list_nil() =>
-    list_nil()
-  | list_cons
-    (s2e1, s2es) =>
-    let
-    val s2tv = s2v1.sort()
-    val s2te = s2e1.sort()
-    val s2e1 =
-    (
-    if 
-    (s2te <= s2tv)
-    then s2e1 // well-sorted
-    else s2exp_cast(loc0, s2e1, s2tv)
-    ) : s2exp // end of [val]
-    in
-      list_cons(s2e1, auxs2es(s2vs, s2es))
-    end
-  )
-)
-//
-and
 auxtsub
 ( s2vs
 : s2varlst
@@ -888,25 +852,47 @@ case+ s2vs of
 | list_nil
   ((*void*)) => list_nil()
 | list_cons
-  (s2v1, s2vs) =>
-  let
-    val t2p1 =
-    (
+  (s2v0, s2vs) =>
+  (
     case+ s2es of
-    | list_nil
-      () => the_t2ype_none0(*void*)
+    | list_nil() =>
+      let
+      val
+      t2p0 =the_t2ype_none0
+      in
+        list_cons(t2p0, auxtsub(s2vs, s2es))
+      end
     | list_cons
-      (s2e1, _) => s2exp_erase(s2e1)
-    ) : t2ype // end of [val]
-    val s2es =
-    (
-    case+ s2es of
-    | list_nil() => list_nil() | list_cons(_, s2es) => s2es
-    ) : s2explst // end of [val]
-  in
-     list_cons(t2p1, auxtsub(s2vs, s2es))
-  end
-)
+      (s2e0, s2es1) =>
+      (
+      case+
+      s2e0.node() of
+      | S2Eany(k0) =>
+        let
+          val s2t0 =
+          s2v0.sort()
+          val t2p0 =
+          t2ype_srt_xtv
+          (s2t0, t2xtv_new(loc0))
+        in
+          if
+          (k0 >= 2)
+          then
+          list_cons
+          (t2p0, auxtsub(s2vs, s2es))
+          else
+          list_cons
+          (t2p0, auxtsub(s2vs, s2es1))
+        end
+      | _(*non-S2Eany*) =>
+        let
+          val t2p0 = s2exp_erase(s2e0)
+        in
+          list_cons(t2p0, auxtsub(s2vs, s2es))
+        end
+      )
+  )
+) (* end of [auxtsub] *)
 //
 in
   auxmain(d3f0.type((*void*)))
@@ -1392,7 +1378,11 @@ end // end-of-val
 //
 (*
 val () =
-println!("d3exp_lam_up: tfun = ", tfun)
+println!("d3exp_lam_up: f3as = ", f3as)
+val () =
+println!("d3exp_lam_up: tfun = ", body)
+val () =
+println!("d3exp_lam_up: f3as = ", f3as)
 *)
 //
 in
