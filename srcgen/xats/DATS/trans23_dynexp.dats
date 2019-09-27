@@ -634,17 +634,17 @@ val
 loc0 = d2e0.loc()
 val-
 D2Edapp
-( d2e1
-, npf2
+( d2f0
+, npf1
 , d2es) = d2e0.node()
 //
 val
-d3e1 = trans23_dexp(d2e1)
+d3f0 = trans23_dexp(d2f0)
 val
 d3es = trans23_dexplst(d2es)
 //
 in
-  d3exp_dapp_up(loc0, d3e1, npf2, d3es)
+  d3exp_dapp_up(loc0, d3f0, npf1, d3es)
 end (* end of [auxdapp] *)
 
 (* ****** ****** *)
@@ -830,7 +830,7 @@ loc0 = d2e0.loc()
 val-
 D2Elam
 ( f2as
-, tres
+, res0
 , arrw, body) = d2e0.node()
 //
 val
@@ -840,7 +840,7 @@ trans23_farglst(f2as)
 val
 body =
 (
-case+ tres of
+case+ res0 of
 | EFFS2EXPnone() =>
   (
     trans23_dexp(body)
@@ -854,78 +854,8 @@ case+ tres of
   end
 ) : d3exp // end-of-val
 //
-val
-tfun = let
-val
-fc2 =
-(
-  auxfc2(arrw)
-) where
-{
-fun
-auxfc2
-( arrw
-: f1unarrow
-) : funclo2 =
-(
-case arrw of
-| F1UNARROWdflt
-  () => FC2fun(*void*)
-| F1UNARROWlist
-  (s1es) => FC2fun(*void*)
-)
-}
-fun
-auxfa3g
-( fa3g
-: f3arglst
-, tres
-: t2ype
-, flag: int): t2ype =
-(
-case+ fa3g of
-| list_nil() => tres
-| list_cons(x0, xs) =>
-  (
-  case+ x0.node() of
-  | F3ARGsome_dyn
-    (npf, d3ps) =>
-    let
-    val fc2 =
-    (
-    if flag = 0
-    then fc2(*funarrow*)
-    else FC2cloref(*void*)
-    ) : funclo2 // end-of-val
-    val t2ps =
-    d3patlst_get_type(d3ps)
-    val tres =
-    auxfa3g(xs, tres, flag+1)
-    in
-    t2ype_fun1(fc2, npf, t2ps, tres)
-    end
-  | F3ARGsome_sta
-    (s2vs, s2ps) =>
-    let
-    val tres =
-    auxfa3g(xs,tres,flag) in t2ype_uni(s2vs, tres)
-    end
-  | F3ARGsome_met(s2es) => auxfa3g(xs, tres, flag)
-  )
-)
 in
-  auxfa3g(f3as, body.type(), 0)
-end // end-of-val
-//
-(*
-val () =
-println!
-("trans23_dexp: aux_lam: tfun = ", tfun)
-*)
-//
-in
-  d3exp_make_node
-  (loc0, tfun, D3Elam(f3as, tres, arrw, body))
+d3exp_lam_up(loc0, f3as, res0, arrw, body)
 end // end of [aux_lam]
 
 (* ****** ****** *)
