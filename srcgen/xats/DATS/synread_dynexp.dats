@@ -158,6 +158,24 @@ id0.node() of
 
 implement
 {}(*tmp*)
+synread_dq0eid
+  (qid) =
+(
+case+ qid of
+| DQ0EIDnone(id0) =>
+  {
+    val () = synread_s0eid<>(id0)
+  }
+| DQ0EIDsome(tok, id0) =>
+  {
+    val () = synread_s0eid<>(id0)
+  }
+) (* end of [synread_dq0eid] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 synread_d0exp
   (d0e0) = let
 //
@@ -422,13 +440,9 @@ d0c0.node() of
     val () =
     synread_SYMLOAD<>(tok)
 *)
-(*
     val () = synread_s0ymb<>(sym0)
-*)
-    val () = synread_WITH<>(twth)
-(*
-    val () = synread_dq0id<>(dqid)
-*)
+    val () = synread_WITH<>( twth )
+    val () = synread_dq0eid<>(dqid)
   }
 //
 | D0Cnone(tok) =>

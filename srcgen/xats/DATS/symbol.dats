@@ -300,6 +300,8 @@ implement
 BAR_symbol = symbol_make("|")
 implement
 CLN_symbol = symbol_make(":")
+implement
+DOT_symbol = symbol_make(".")
 //
 implement
 SMCLN_symbol = symbol_make(";")
