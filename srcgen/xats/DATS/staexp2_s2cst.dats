@@ -373,12 +373,14 @@ implement
 stamp_s2cst_type
   (s2c, def) = let
 //
+(*
 val () =
 println!
 ("stamp_s2cst_type: s2c = ", s2c)
 val () =
 println!
 ("stamp_s2cst_type: def = ", def)
+*)
 //
   val s0 =
   s2c.stamp()

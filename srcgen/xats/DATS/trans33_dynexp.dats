@@ -135,9 +135,11 @@ trans33_dpat
 (*
 val loc0 = d3p0.loc()
 *)
+(*
 val ((*void*)) =
 println!
 ("trans33_dpat: d3p0 = ", d3p0)
+*)
 //
 in
 //
@@ -600,9 +602,11 @@ trans33_dexp
 (*
 val loc0 = d3e0.loc()
 *)
+(*
 val ((*void*)) =
 println!
 ("trans33_dexp: d3e0 = ", d3e0)
+*)
 //
 in
 //
@@ -1029,9 +1033,11 @@ trans33_decl
 (*
 val loc0 = d3c0.loc()
 *)
+(*
 val ((*void*)) =
 println!
 ("trans33_decl: d3c0 = ", d3c0)
+*)
 //
 in
 //

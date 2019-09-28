@@ -269,8 +269,8 @@ overload fprint with fprint_i0dnt
 //
 datatype
 l0abl_node =
-  | L0ABsome of label // valid
-  | L0ABnone of (token) // invalid
+  | L0ABLsome of label // valid
+  | L0ABLnone of (token) // invalid
 //
 fun
 l0abl_get_loc(l0abl): loc_t

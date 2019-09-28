@@ -264,7 +264,7 @@ val lab = label_make_int(i0)
 in
 //
 l0abl_make_node
-  (tok.loc(), L0ABsome(lab))
+  (tok.loc(), L0ABLsome(lab))
 //
 end // end of [l0abl_make_int1]
 
@@ -280,7 +280,7 @@ val lab = label_make_name(s0)
 in
 //
 l0abl_make_node
-  (tok.loc(), L0ABsome(lab))
+  (tok.loc(), L0ABLsome(lab))
 //
 end // end of [l0abl_make_name]
 
@@ -290,7 +290,7 @@ l0abl_make_none
 (
 //
 l0abl_make_node
-  (tok.loc(), L0ABnone(tok))
+  (tok.loc(), L0ABLnone(tok))
 //
 ) (* end of [l0abl_make_none] *)
 

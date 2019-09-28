@@ -3159,7 +3159,7 @@ x0.node() of
   ) where
   {
     val-
-    L0ABsome(lab) = l0.node()
+    L0ABLsome(lab) = l0.node()
   }
 | S0YMBbrack
   (tok1, tok2) => $SYM.LRBRACK_symbol
@@ -3892,11 +3892,12 @@ trans12_decl
 //
 val
 loc0 = d1c0.loc()
-// (*
+//
+(*
 val () =
 println!
 ("trans12_decl: d1c0 = ", d1c0)
-// *)
+*)
 //
 in (* in-of-let *)
 //

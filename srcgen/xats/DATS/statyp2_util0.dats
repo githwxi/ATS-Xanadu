@@ -763,9 +763,11 @@ implement
 t2ype_hnfize
   (t2p0) = let
 //
+(*
 val () =
 println!
 ("t2ype_hnfize: t2p0 = ", t2p0)
+*)
 //
 in
 //

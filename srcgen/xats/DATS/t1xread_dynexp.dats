@@ -131,7 +131,7 @@ d1c0.node() of
 //
 | _(* rest-of-d1ecl *) =>
   (
-    prerrln!("t1xread_d1ecl: d1c0 = ", d1c0)
+    prerrln!(loc0, ": t1xread_d1ecl: d1c0 = ", d1c0)
   )
 //
 end // end of [t1xread_d1ecl]

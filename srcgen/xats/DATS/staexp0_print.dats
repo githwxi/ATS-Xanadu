@@ -236,10 +236,10 @@ fprint_l0abl
 (
 case+
 l0.node() of
-| L0ABsome(lab) =>
-  fprint!(out, "L0ABsome(", lab, ")")
-| L0ABnone(tok) =>
-  fprint!(out, "L0ABnone(", tok, ")")
+| L0ABLsome(lab) =>
+  fprint!(out, "L0ABLsome(", lab, ")")
+| L0ABLnone(tok) =>
+  fprint!(out, "L0ABLnone(", tok, ")")
 )
 //
 (* ****** ****** *)

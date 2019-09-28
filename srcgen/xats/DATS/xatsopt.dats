@@ -1429,11 +1429,11 @@ the_fixity_load
 //
   val ((*joined*)) = the_fxtyenv_pjoinwth0(map)
 //
-// (*
+(*
   val () = println! "the_fxtyenv = "
   val () = the_fxtyenv_println((*void*))
   val () = println! "[the_fixity_load] is finished."
-// *)
+*)
 //
 in
   // empty

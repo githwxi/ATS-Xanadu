@@ -1289,14 +1289,15 @@ d0e0.node() of
 | D0Edtsel
   (tok, lab, arg) => let
     val arg =
-       trans01_dexpopt(arg)
-     // end of [val]
+      trans01_dexpopt(arg)
+    // end of [val]
     val-
-    L0ABsome(lab) = lab.node()
+    L0ABLsome(lab) = lab.node()
     val d1e0 =
+    (
       d1exp_make_node
         (loc0, D1Edtsel(lab, arg))
-      // d1exp_make_node
+    ) (* d1exp_make_node *)
   in
     $FIX.FXITMopr(d1e0, $FIX.dtsel_fixty)
   end
@@ -1914,11 +1915,11 @@ implement
 trans01_dcstdecl
   (d0c0) = let
 //
-// (*
+(*
 val () =
 println!
 ("trans01_dcstdecl: d0c0 = ", d0c0)
-// *)
+*)
 //
 val+
 D0CSTDECL(rcd) = d0c0
@@ -3046,7 +3047,8 @@ d0c0.node() of
 (*
 | _ (*rest-of-d0ecl*) =>
   (
-    println! ("trans01_decl: d0c0 = ", d0c0); exit(1)
+    println!
+    (loc0, ": trans01_decl: d0c0 = ", d0c0); exit(1)
   ) (* end of [D0C...] *)
 *)    
 //
