@@ -158,6 +158,26 @@ id0.node() of
 ) (* end of [synread_i0dnt] *)
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_l0abl
+  (lab) =
+(
+case+
+lab.node() of
+| L0ABLsome _ => ()
+| L0ABLnone(tok) =>
+  let
+    val () =
+    synerr_add(SYNERRl0abl(lab))
+  in
+    prerr(tok.loc());
+    prerrln!(": SYNERR(l0abl): ", tok);
+  end // end of [let]
+) (* end of [synread_l0abl] *)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
@@ -426,11 +446,11 @@ synread_s0exp
 //
 val loc0 = s0e0.loc()
 //
-// (*
+(*
 val () =
 println!
 ("synread_s0exp: s0e0 = ", s0e0)
-// *)
+*)
 //
 in
 //

@@ -889,9 +889,11 @@ trans23_dexp
 val
 loc0 = d2e0.loc()
 //
+(*
 val () =
 println!
 ("trans23_dexp: d2e0 = ", d2e0)
+*)
 //
 in
 //
@@ -1673,12 +1675,14 @@ case+ f3as of
 //
 val d3e0 = trans23_dexp(d2e0)
 //
+(*
 val () =
 println!
 ("trans23_decl: aux_impdecl: tfn1 = ", tfn1)
 val () =
 println!
 ("trans23_decl: aux_impdecl: d3e0 = ", d3e0)
+*)
 //
 in
 //
@@ -1703,11 +1707,12 @@ trans23_decl
 //
 val
 loc0 = d2c0.loc()
-// (*
+//
+(*
 val () =
 println!
 ("trans23_decl: d2c0 = ", d2c0)
-// *)
+*)
 //
 in
 //

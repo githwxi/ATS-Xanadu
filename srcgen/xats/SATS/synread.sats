@@ -70,6 +70,11 @@ tkind =
 | K_LET of ()
 | K_ENDLET of ()
 //
+| K_WHERE of ()
+| K_ENDWHERE of ()
+//
+| K_WITH of ()
+//
 | K_LOCAL of ()
 | K_ENDLOCAL of ()
 //
@@ -90,6 +95,9 @@ tkind =
 datatype synerr =
 //
 | SYNERRi0dnt of (i0dnt)
+//
+| SYNERRl0abl of (l0abl)
+| SYNERRs0ymb of (s0ymb)
 //
 | SYNERRt0int of (t0int)
 | SYNERRt0chr of (t0chr)
@@ -139,6 +147,14 @@ synread_main(d0eclist): void
 //
 fun{}
 synread_i0dnt: synreader(i0dnt)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_l0abl: synreader(l0abl)
+//
+fun{}
+synread_s0ymb: synreader(s0ymb)
 //
 (* ****** ****** *)
 //
@@ -372,6 +388,11 @@ fun{}
 synread_WHERE: synreader(token)
 fun{}
 synread_ENDWHERE: synreader(tokenopt)
+//
+(* ****** ****** *)
+//
+fun{}
+synread_WITH: synreader(token)
 //
 (* ****** ****** *)
 //

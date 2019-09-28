@@ -345,12 +345,14 @@ t2p1 = hnfize(t2p1)
 and
 t2p2 = hnfize(t2p2)
 //
+(*
 val () =
 println!("unify: loc0 = ", loc0)
 val () =
 println!("unify: t2p1 = ", t2p1)
 val () =
 println!("unify: t2p2 = ", t2p2)
+*)
 //
 in (* in-of-let *)
 case+
@@ -553,10 +555,12 @@ t2p2.node() of
   let
     val occurs =
     t2xtv_occurs(xtv1, t2p2) 
+(*
     val ((*void*)) =
     println!
     ("auxtv1: occurs = ", occurs)
-  in
+*)
+in
     if occurs then false else
     let
       val () = xtv1.type(t2p2) in true
@@ -571,9 +575,11 @@ auxtv2
   let
     val occurs =
     t2xtv_occurs(xtv2, t2p1) 
+(*
     val ((*void*)) =
     println!
     ("auxtv2: occurs = ", occurs)
+*)
   in
     if occurs then false else
     let
@@ -668,20 +674,24 @@ implement
 d3pat_dn
 (d3p0, t2p0) = let
 //
+(*
 val () =
 println!
 ("d3pat_dn: d3p0 = ", d3p0)
 val () =
 println!
 ("d3pat_dn: t2p0 = ", t2p0)
+*)
 //
 val loc0 = d3p0.loc()
 val test =
 unify(loc0, d3p0.type(), t2p0)
 //
+(*
 val () =
 println!
 ("d3pat_dn: test = ", test)
+*)
 //
 in
 //

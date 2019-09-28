@@ -686,6 +686,74 @@ synread_ENDLET
 
 implement
 {}(*tmp*)
+synread_WHERE
+  (tok) =
+(
+case+
+tok.node() of
+| T_WHERE _ => ()
+| _(*non-WHERE*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_WHERE(), tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(WHERE): ", tok)
+  end // end of [let]
+) (* end of [synread_WHERE] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_ENDWHERE
+  (opt) =
+(
+case+ opt of
+| None() => ()
+| Some(tok) =>
+  (
+  case+
+  tok.node() of
+  | T_END _ => ()
+  | T_ENDWHERE _ => ()
+  | _(*non-ENDWHERE*) => let
+      val () =
+      synerr_add
+      (SYNERRtoken(K_ENDWHERE, tok))
+    in
+      prerr(tok.loc());
+      prerrln!(": SYNERR(ENDWHERE): ", tok)
+    end // end of [let]
+  )
+) (* end of [synread_ENDWHERE] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_WITH
+  (tok) =
+(
+case+
+tok.node() of
+| T_WITH _ => ()
+| _(*non-WITH*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_WITH(), tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(WITH): ", tok)
+  end // end of [let]
+) (* end of [synread_WITH] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
 synread_LOCAL
   (tok) =
 (

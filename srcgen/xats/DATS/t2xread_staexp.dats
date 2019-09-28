@@ -119,11 +119,11 @@ t2xread_s2exp(s2e0) = let
 val loc0 = s2e0.loc()
 *)
 //
-// (*
+(*
 val () =
 println!
 ("t2xread_s2exp: s2e0 = ", s2e0)
-// *)
+*)
 //
 in
 //

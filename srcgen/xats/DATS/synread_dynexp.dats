@@ -114,7 +114,8 @@ d0p0.node() of
 //
 | _(* rest-of-d0pat *) =>
   (
-    prerrln!("synread_d0pat: d0p0 = ", d0p0)
+    prerrln!
+    (loc0, ": synread_d0pat: d0p0 = ", d0p0)
   )
 //
 end // end of [synread_d0pat]
@@ -214,7 +215,8 @@ d0e0.node() of
   }
 | _(* rest-of-d0exp *) =>
   (
-    prerrln!("synread_d0exp: d0e0 = ", d0e0)
+    prerrln!
+    (loc0, ": synread_d0exp: d0e0 = ", d0e0)
   )
 //
 end // end of [synread_d0exp]
@@ -411,6 +413,22 @@ d0c0.node() of
     synread_tq0arglst(tqas)
     val () =
     synread_f0undeclist<>(f0ds)
+  }
+//
+| D0Csymload
+  (tok, sym0, twth, dqid, topt) =>
+  {
+(*
+    val () =
+    synread_SYMLOAD<>(tok)
+*)
+(*
+    val () = synread_s0ymb<>(sym0)
+*)
+    val () = synread_WITH<>(twth)
+(*
+    val () = synread_dq0id<>(dqid)
+*)
   }
 //
 | D0Cnone(tok) =>

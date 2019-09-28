@@ -2068,7 +2068,7 @@ case+ lx0 of
   (l0, _, x0) =>
   (
   case- l0.node() of
-  | L0ABsome(l0) => SLABELED(l0, trans12_sexp_ci(x0))
+  | L0ABLsome(l0) => SLABELED(l0, trans12_sexp_ci(x0))
   )
 )
 //
@@ -2091,7 +2091,7 @@ case+ lx0 of
   (l0, _, x0) =>
   (
   case- l0.node() of
-  | L0ABsome(l0) => SLABELED(l0, trans12_sexp_cp(x0))
+  | L0ABLsome(l0) => SLABELED(l0, trans12_sexp_cp(x0))
   )
 )
 //
@@ -2114,7 +2114,7 @@ case+ lx0 of
   (l0, _, x0) =>
   (
   case- l0.node() of
-  | L0ABsome(l0) => SLABELED(l0, trans12_sexp_ct(x0))
+  | L0ABLsome(l0) => SLABELED(l0, trans12_sexp_ct(x0))
   )
 )
 //
