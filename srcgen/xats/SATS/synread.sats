@@ -174,6 +174,11 @@ synread_s0tid: synreader(s0tid)
 fun{}
 synread_s0eid: synreader(s0eid)
 fun{}
+synread_sq0eid: synreader(sq0eid)
+//
+(* ****** ****** *)
+//
+fun{}
 synread_i0dntlst: synreader(i0dntlst)
 //
 (* ****** ****** *)
@@ -250,6 +255,10 @@ synread_labd0patlst: synreader(labd0patlst)
 //
 fun{}
 synread_d0eid: synreader(d0eid)
+fun{}
+synread_dq0eid: synreader(dq0eid)
+//
+(* ****** ****** *)
 //
 fun{}
 synread_d0exp: synreader(d0exp)
@@ -331,6 +340,8 @@ fun{}
 synread_BAR: synreader(token)
 fun{}
 synread_CLN: synreader(token)
+fun{}
+synread_DOT: synreader(token)
 fun{}
 synread_SMCLN: synreader(token)
 //

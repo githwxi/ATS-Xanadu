@@ -178,6 +178,36 @@ lab.node() of
 ) (* end of [synread_l0abl] *)
 //
 (* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_s0ymb
+  (sym) =
+(
+case+
+sym.node() of
+| S0YMBi0dnt(id0) =>
+  {
+    val () =
+    synread_i0dnt<>(id0)
+  }
+| S0YMBdtlab(tdot, l0ab) =>
+  {
+    val () =
+    synread_DOT<>(tdot)
+    val () =
+    synread_l0abl<>(l0ab)
+  }
+| S0YMBbrack(tbeg, tend) =>
+  {
+    val () =
+    synread_LBRACE<>(tbeg)
+    val () =
+    synread_RBRACE<>(tend)
+  }
+) (* end of [synread_s0ymb] *)
+//
+(* ****** ****** *)
 
 implement
 {}(*tmp*)
@@ -216,6 +246,24 @@ id0.node() of
     prerrln!(": SYNERR(s0eid): ", tok);
   end // end of [let]
 ) (* end of [synread_s0eid] *)
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_sq0eid
+  (qid) =
+(
+case+ qid of
+| SQ0EIDnone(id0) =>
+  {
+    val () = synread_s0eid<>(id0)
+  }
+| SQ0EIDsome(tok, id0) =>
+  {
+    val () = synread_s0eid<>(id0)
+  }
+) (* end of [synread_sq0eid] *)
 
 (* ****** ****** *)
 //

@@ -62,6 +62,7 @@ val symbol_nil : symbol // SYMBOL("")
 val AMP_symbol : symbol // symbol("&")
 val BAR_symbol : symbol // symbol("|")
 val CLN_symbol : symbol // symbol(":")
+val DOT_symbol : symbol // symbol(".")
 //
 val SMCLN_symbol : symbol // symbol(";")
 //
