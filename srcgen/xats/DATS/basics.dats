@@ -264,12 +264,42 @@ implement
 FC2lincloptr = FC2clo(3)
 
 (* ****** ****** *)
+
+implement
+funclo2_isclo(fc2) =
+(
+case+ fc2 of
+| FC2fun() => false | FC2clo(k2) => true
+)
+
+(* ****** ****** *)
+
+implement
+funclo2_equal
+(fc1, fc2) =
+(
+case+ fc1 of
+| FC2fun() =>
+  (
+  case+ fc2 of
+  | FC2fun() => true | FC2clo(k2) => false
+  )
+| FC2clo(k1) =>
+  (
+  case+ fc2 of
+  | FC2fun() => false | FC2clo(k2) => (k1 = k2)
+  )
+) (* end of [funclo2_equal] *)
+
+(* ****** ****** *)
 //
 implement
 funclo2_islin(fc2) =
 (
 case+ fc2 of
+//
 | FC2fun() => false
+//
 | FC2clo(knd) =>
   (
   ifcase
@@ -277,13 +307,16 @@ case+ fc2 of
   | knd=LINCLOPTR => true
   | _ (* non-FC2lin... *) => false
   )
+//
 ) (* end of [funclo2_islin] *)
 //
 implement
 funclo2_linize(fc2) =
 (
 case+ fc2 of
+//
 | FC2fun() => fc2
+//
 | FC2clo(knd) =>
   (
   ifcase

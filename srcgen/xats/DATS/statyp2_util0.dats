@@ -58,6 +58,18 @@ overload
 #staload "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
+//
+implement
+fprint_val<s2var> = fprint_s2var
+implement
+fprint_val<s2cst> = fprint_s2cst
+implement
+fprint_val<s2exp> = fprint_s2exp
+//
+implement
+fprint_val<t2ype> = fprint_t2ype
+//
+(* ****** ****** *)
 
 implement
 s2exp_erase(s2e0) =
@@ -122,12 +134,12 @@ s2e0.node() of
 | S2Efun
   (fc2, npf, s2es, s2e1) =>
   let
-    val fcr = fcr_new1(fc2)
+    val fc2 = t2ype_fc2(fc2)
     val t2p1 = s2exp_erase(s2e1)
     val t2ps = s2explst_erase(s2es)
   in
     t2ype_make_node
-    (s2t0, T2Pfun(fcr, npf, t2ps, t2p1))
+    (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
   end
 //
 | S2Etop(knd, s2e1) => s2exp_erase(s2e1)
@@ -169,6 +181,80 @@ in
 if impred then auxmain(s2e0) else the_t2ype_none0
 end // end of [s2exp_erase]
 
+(* ****** ****** *)
+//
+implement
+t2ype_renam
+(t2p0, s2v0) =
+(
+t2ype_revar
+(t2p0, s2v0, s2v1)
+) where
+{
+  val
+  s2v1 = s2var_copy(s2v0)
+}
+//
+implement
+t2ype_renams
+(t2p0, svs1) = let
+//
+val svs2 =
+(
+list_map<s2var><s2var>(svs1)
+) where
+{
+implement
+list_map$fopr<s2var><s2var>(x) =
+  s2var_make_idst(x.sym(), x.sort())
+}
+val t2p0 =
+(
+t2ype_revars(t2p0, svs1, svs2)
+) where
+{
+  val svs2 = $UN.list_vt2t(svs2)
+}
+in
+  let val () = list_vt_free(svs2) in t2p0 end
+end
+//
+(* ****** ****** *)
+//
+implement
+t2ype_revar
+(t2p0, s2v0, s2v1) =
+(
+t2ype_subst
+(t2p0, s2v0, tsub)
+) where
+{
+  val tsub = t2ype_var(s2v1)
+}
+//
+implement
+t2ype_revars
+(t2p0, svs1, svs2) = let
+//
+val tsub =
+(
+list_map<s2var><t2ype>(svs2)
+) where
+{
+implement
+list_map$fopr<s2var><t2ype>(x) = t2ype_var(x)
+}
+val t2p0 =
+(
+t2ype_substs(t2p0, svs1, tsub)
+) where
+{
+  val tsub = $UN.list_vt2t(tsub)
+}
+in
+  let val () = list_vt_free(tsub) in t2p0 end
+end // end of [t2ype_revars]
+//
 (* ****** ****** *)
 
 implement
@@ -239,7 +325,7 @@ t2p0.node() of
   end
 //
 | T2Pfun
-  (fcr, npf, t2ps, t2p1) =>
+  (fc2, npf, t2ps, t2p1) =>
   let
     val
     t2p1 = auxt2p0(t2p1, flag)
@@ -251,7 +337,7 @@ t2p0.node() of
     then t2p0
     else
     t2ype_make_node
-    (s2t0, T2Pfun(fcr, npf, t2ps, t2p1))
+    (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
   end
 //
 | T2Pexi(s2vs, t2p1) => let
@@ -361,7 +447,18 @@ t2ype_substs
 (t2p0, s2vs, tsub) =
 (
 let
+//
 var flag: int = 0
+//
+(*
+val () =
+println!
+("t2ype_substs: s2vs = ", s2vs)
+val () =
+println!
+("t2ype_substs: tsub = ", tsub)
+*)
+//
 in
   auxt2p0(t2p0, flag)
 end
@@ -465,7 +562,7 @@ t2p0.node() of
   end
 //
 | T2Pfun
-  (fcr, npf, t2ps, t2p1) =>
+  (fc2, npf, t2ps, t2p1) =>
   let
     val
     t2p1 = auxt2p0(t2p1, flag)
@@ -477,7 +574,7 @@ t2p0.node() of
     then t2p0
     else
     t2ype_make_node
-    (s2t0, T2Pfun(fcr, npf, t2ps, t2p1))
+    (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
   end
 //
 | T2Pexi(s2vs, t2p1) => let

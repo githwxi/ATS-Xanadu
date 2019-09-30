@@ -268,6 +268,7 @@ local
 //
 typedef
 t2abs_struct = @{
+//
   t2abs_sym= sym_t // name
 , t2abs_stamp= stamp // unicity
 }
@@ -291,10 +292,16 @@ ref<t2abs_struct>
 val stamp = t2abs_stamp_new()
 } (* end of [t2abs_new] *)
 
+(* ****** ****** *)
+//
 implement
-t2abs_get_sym(s2ta) = s2ta->t2abs_sym
+t2abs_get_sym
+  (s2ta) = s2ta->t2abs_sym
 implement
-t2abs_get_stamp(s2ta) = s2ta->t2abs_stamp
+t2abs_get_stamp
+  (s2ta) = s2ta->t2abs_stamp
+//
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -331,15 +338,27 @@ val stamp = t2dat_stamp_new()
 } (* end of [t2dat_new] *)
 
 (* ****** ****** *)
-
+//
 implement
-t2dat_get_sym(s2td) = s2td->t2dat_sym
+t2dat_get_sym
+  (s2td) = s2td->t2dat_sym
 implement
-t2dat_get_stamp(s2td) = s2td->t2dat_stamp
+t2dat_get_stamp
+  (s2td) = s2td->t2dat_stamp
 implement
-t2dat_get_sconlst(s2td) = s2td->t2dat_sconlst
+t2dat_get_sconlst
+  (s2td) = s2td->t2dat_sconlst
+//
+(* ****** ****** *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+s2var_copy(s2v) =
+s2var_make_idst
+(s2v.sym(), s2v.sort())
 
 (* ****** ****** *)
 
@@ -378,14 +397,15 @@ ref<s2var_struct>
 //
 implement
 s2var_get_sym(x0) = x0->s2var_sym
+//
 implement
 s2var_get_sort(x0) = x0->s2var_sort
 implement
-s2var_get_stamp(x0) = x0->s2var_stamp
-//
-implement
 s2var_set_sort
   (x0, s2t) = (x0->s2var_sort := s2t)
+//
+implement
+s2var_get_stamp(x0) = x0->s2var_stamp
 //
 (* ****** ****** *)
 
@@ -432,9 +452,12 @@ val s2e0 = the_s2exp_none0
 val stamp = s2xtv_stamp_new()
 } (* end of [s2xtv_new] *)
 //
+(* ****** ****** *)
+//
 implement
 s2xtv_get_loc
   (xtv0) = xtv0->s2xtv_loc
+//
 implement
 s2xtv_get_sort
   (xtv0) = xtv0->s2xtv_sort
@@ -451,6 +474,8 @@ implement
 s2xtv_get_stamp
   (xtv0) = xtv0->s2xtv_stamp
 //
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)

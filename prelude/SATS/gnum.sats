@@ -51,18 +51,25 @@ g_2((*void*)): (a)
 
 fun
 <a:type>
+g_i(i0: sint): (a)
+fun
+<a:type>
+g_u(u0: uint): (a)
+
+(* ****** ****** *)
+//
+fun
+<a:type>
 g_add(x: a, y: a): a
 fun
 <a:type>
 g_sub(x: a, y: a): a
-
-(* ****** ****** *)
-
+//
 #symload + with g_add
 #symload - with g_sub
-
+//
 (* ****** ****** *)
-
+//
 fun
 <a:type>
 g_mul(x: a, y: a): a
@@ -72,13 +79,11 @@ g_div(x: a, y: a): a
 fun
 <a:type>
 g_mod(x: a, y: a): a
-
-(* ****** ****** *)
-
+//
 #symload * with g_mul
 #symload / with g_div
 #symload % with g_mod
-
+//
 (* ****** ****** *)
 
 (* end of [gnum.sats] *)

@@ -1447,7 +1447,7 @@ s1e1.node() of
 | S1Eimp _ =>
   let
   var npf
-    : int = 0
+    : int = ~1
 //
   val lin = s1exp_get_lin(s1e1)
   val fc2 = s1exp_get_fc2(s1e1)

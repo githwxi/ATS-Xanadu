@@ -35,11 +35,19 @@
 typedef the_sint_ctype = sint0
 typedef the_uint_ctype = uint0
 //
+(* ****** ****** *)
+//
 typedef the_bool_ctype = bool0
 typedef the_char_ctype = char0
 //
+(* ****** ****** *)
+//
+// single precision
 typedef the_sfloat_ctype = sfloat
+// double precision
 typedef the_dfloat_ctype = dfloat
+//
+(* ****** ****** *)
 //
 typedef the_string_ctype = string0
 //

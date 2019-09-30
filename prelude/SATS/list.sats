@@ -54,7 +54,7 @@ list_cons?
 fun
 <a:type>
 list_length
-{n:int}(xs: list(a, n)): sint(n)
+{n:int}(xs: list(a, n)): int(n)
 //
 #symload length with list_length
 //

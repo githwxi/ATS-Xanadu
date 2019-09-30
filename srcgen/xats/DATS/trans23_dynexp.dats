@@ -1394,24 +1394,27 @@ case+ f3as of
     (npf, d3ps) =>
     let
     val fc2 =
-    (
-    if flag = 0
-    then FC2fun(*void*)
-    else FC2cloref(*void*)
+    ( if
+      flag = 0
+      then
+      FC2fun(*void*)
+      else
+      FC2cloref(*void*)
     ) : funclo2 // end-of-val
     val t2ps =
     d3patlst_get_type(d3ps)
     val tres =
     aux0_f3as(xs, tres, flag+1)
     in
-    t2ype_fun1(fc2, npf, t2ps, tres)
+    t2ype_fun2(fc2, npf, t2ps, tres)
     end
   | F3ARGsome_sta
     (s2vs, s2ps) =>
     let
-    val tres =
-    aux0_f3as
-    (xs,tres,flag) in t2ype_uni(s2vs, tres)
+      val
+      tres =
+      aux0_f3as
+      (xs,tres,flag) in t2ype_uni(s2vs, tres)
     end
   | F3ARGsome_met(s2es) => aux0_f3as(xs, tres, flag)
   )
@@ -1613,72 +1616,29 @@ D2Cimpdecl
 // HX: for
 val // trans33
 ti3a = TI3ARGnone()
+val
+id3c = IMPLD3CSTnone()
 //
 val
-f3as =
-trans23_farglst(f2as)
+f3as = trans23_farglst(f2as)
 //
-val tres =
+val
+tres =
 (
 case+ res0 of
 | EFFS2EXPnone
   () => t2ype_new(loc0)
 | EFFS2EXPsome
   (s2e0) => s2exp_erase(s2e0)
-) : t2ype // end-of-val
+) : t2ype (* end-of-val *)
 //
 val
-tfn1: t2ype =
-(
-auxf3as(f3as, tres, 0)
-) where
-{
-fun
-auxf3as
-( f3as
-: f3arglst
-, tres
-: t2ype
-, flag: int): t2ype =
-(
-case+ f3as of
-| list_nil() => tres
-| list_cons(x0, xs) =>
-  (
-  case+ x0.node() of
-  | F3ARGsome_dyn
-    (npf, d3ps) =>
-    let
-    val fc2 =
-    (
-    if flag = 0
-    then FC2fun(*void*)
-    else FC2cloref(*void*)
-    ) : funclo2 // end-of-val
-    val t2ps =
-    d3patlst_get_type(d3ps)
-    val tres =
-    auxf3as(xs, tres, flag+1)
-    in
-    t2ype_fun1(fc2, npf, t2ps, tres)
-    end
-  | F3ARGsome_sta
-    (s2vs, s2ps) =>
-    let
-    val tres =
-    auxf3as(xs,tres,flag) in t2ype_uni(s2vs,tres)
-    end
-  | F3ARGsome_met(s2es) => auxf3as(xs, tres, flag)
-  )
-)
-} (* end of [where] *)
-//
-val d3e0 = trans23_dexp(d2e0)
+d3e0 = trans23_dexp_dn(d2e0, tres)
 //
 (*
 val () =
 println!
-("trans23_decl: aux_impdecl: tfn1 = ", tfn1)
+("trans23_decl: aux_impdecl: tres = ", tres)
 val () =
 println!
 ("trans23_decl: aux_impdecl: d3e0 = ", d3e0)
@@ -1690,11 +1650,12 @@ in
   d3ecl_make_node(loc0, node)
 ) where
 {
-val node =
-D3Cimpdecl
-( knd, mopt
-, sqas, tqas
-, id2c, ti2s, ti3a, f3as, res0, d3e0)
+  val node =
+  D3Cimpdecl
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, id3c
+  , ti2s, ti3a, f3as, res0, d3e0)
 }
 //
 end // end of [aux_impdecl]

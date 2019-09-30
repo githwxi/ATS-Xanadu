@@ -251,6 +251,12 @@ val FC2lincloflt: funclo2 // linenv
 val FC2lincloptr: funclo2 // linenv
 //
 fun
+funclo2_isclo: funclo2 -> bool
+fun
+funclo2_equal
+(fc1: funclo2, fc2: funclo2): bool
+//
+fun
 funclo2_islin: funclo2 -> bool
 fun
 funclo2_linize: funclo2 -> funclo2

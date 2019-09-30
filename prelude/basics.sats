@@ -186,6 +186,11 @@ sortdef tbox1 = vtbox
 sortdef tflt1 = vtflt
 //
 (* ****** ****** *)
+//
+typedef
+void = $extype("xats_void_t")
+//
+(* ****** ****** *)
 
 typedef
 bool_k = $extype("xats_bool_t")
@@ -346,6 +351,14 @@ optn_vt_i0_vx
 //
 (* ****** ****** *)
 //
+#symload nil with optn_nil
+#symload cons with optn_cons
+//
+#symload nil with optn_vt_nil
+#symload cons with optn_vt_cons
+//
+(* ****** ****** *)
+//
 sexpdef optn = optn_t0_i0_x0
 sexpdef optn_vt = optn_vt_i0_vx
 //
@@ -388,6 +401,14 @@ list_vt_i0_vx
     list_vt_cons(a, n+1) of (a, list_vt_i0_vx(a, n))
 //
 // end of [list_vt_i0_vx]
+//
+(* ****** ****** *)
+//
+#symload nil with list_nil
+#symload cons with list_cons
+//
+#symload nil with list_vt_nil
+#symload cons with list_vt_cons
 //
 (* ****** ****** *)
 //

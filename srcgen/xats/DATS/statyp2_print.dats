@@ -57,6 +57,10 @@ fprint with $SYM.fprint_symbol
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/basics.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 //
@@ -126,9 +130,13 @@ x0.node() of
 | T2Plam(s2vs, t2p1) =>
   fprint!(out, "T2Plam(", s2vs, "; ", t2p1, ")")
 //
-| T2Pfun(fcr, npf, arg, res) =>
+| T2Pfc2(fc2) =>
   fprint!
-  (out, "T2Pfun(", npf, "; ", arg, "; ", res, ")")
+  (out, "T2Pfc2(", fc2, ")")
+| T2Pfun(fc2, npf, arg, res) =>
+  fprint!
+  ( out, "T2Pfun("
+  , fc2, "; ", npf, "; ", arg, "; ", res, ")")
 //
 | T2Pexi(s2vs, body) =>
   fprint!(out, "T2Pexi(", s2vs, "; ", body, ")")
