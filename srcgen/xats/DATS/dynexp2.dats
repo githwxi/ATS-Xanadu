@@ -878,6 +878,29 @@ dg2pat_make_node
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+impls2cst_ns2c
+  (is2c) =
+(
+case+ is2c of
+| IMPLS2CST1
+  (sqid, s2cs) => list_length(s2cs)
+| IMPLS2CST2
+  (sqid, s2cs, _) => list_length(s2cs)
+)
+implement
+impld2cst_nd2c
+  (id2c) =
+(
+case+ id2c of
+| IMPLD2CST1
+  (dqid, d2cs) => list_length(d2cs)
+| IMPLD2CST2
+  (dqid, d2cs, _) => list_length(d2cs)
+)
+//
+(* ****** ****** *)
 
 local
 

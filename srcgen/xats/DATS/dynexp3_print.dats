@@ -541,18 +541,29 @@ x0.node() of
   , "D3Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f3ds, ")")
 //
-| D3Cimpdecl
+| D3Cimpdecl1
   ( knd, mopt
   , sqas, tqas
-  , id2c, id3c
-  , ti2s, ti3a, f3as, res0, d3e0) =>
+  , id2c, ti2s, ti3a
+  , f3as, res0, d3e0) =>
   fprint!
   ( out
-  , "D3Cimpdecl("
+  , "D3Cimpdecl1("
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
-  , id2c, "; ", id3c, "; "
-  , ti2s, "; ", ti3a, "; ", f3as, "; ", res0, "; ", d3e0, ")"
+  , id2c, "; ", ti2s, "; ", ti3a, "; ", f3as, "; ", res0, "; ", d3e0, ")"
+  ) (* end of [D3Cimpdecl] *)
+| D3Cimpdecl2
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, ti2s, ti3a
+  , f3as, res0, d3e0) =>
+  fprint!
+  ( out
+  , "D3Cimpdecl2("
+  , knd, "; ", mopt, "; "
+  , sqas, "; ", tqas, "; "
+  , id2c, "; ", ti2s, "; ", ti3a, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl] *)
 //
 | D3Cnone0() =>

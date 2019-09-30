@@ -438,13 +438,13 @@ d3c0.node() of
 //
 | D3Cd2ecl(d2c) => ()
 //
-| D3Cstatic(tok, d3c) =>
+| D3Cstatic(tok, d3c1) =>
   {
-    val () = t3xread_d3ecl<>(d3c)
+    val () = t3xread_d3ecl<>(d3c1)
   }
-| D3Cextern(tok, d3c) =>
+| D3Cextern(tok, d3c1) =>
   {
-    val () = t3xread_d3ecl<>(d3c)
+    val () = t3xread_d3ecl<>(d3c1)
   }
 //
 | D3Cvaldecl
@@ -469,20 +469,44 @@ d3c0.node() of
 *)
   }
 //
-| D3Cimpdecl
+| D3Cimpdecl2
   ( tok, mopt
   , sqas, tqas
-  , id2c, id3c
-  , t2as, t3as
+  , id2c, ti2s, ti3a
   , f3as, res0, d3e0) =>
   {
     val () =
     t3xread_f3arglst<>(f3as)
 (*
     val () =
-    t3xread_ti3arglst<>(t3as)
+    t3xread_ti3arg<>(ti3a)
+    val () =
+    t3xread_ti2arglst<>(ti2s)
 *)
     val () = t3xread_d3exp<>(d3e0)
+//
+    val-
+    IMPLD2CST2
+    (dqid, d2cs, d2ct) = id2c
+    val () =
+    (
+    case+ d2ct of
+    | Some _ => ()
+    | None _ => let
+        val () =
+        t3xerr_add(T3XERRd3ecl(d3c0))
+      in
+      println!
+      ( loc0
+      , ": T3XERR(d3ecl): D3Cimpdecl: id2c = "
+      , id2c )
+      end // end of [None()]
+    )
+(*
+    val () =
+    println!
+    ("t3xread_d3ecl: D3Cimpdecl: d3c0 = ", d3c0)
+*)
   }
 //
 | _(* rest-of-d3ecl *) =>

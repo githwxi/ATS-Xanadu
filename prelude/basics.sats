@@ -466,6 +466,13 @@ vtypedef listbtwe_vt
 //
 (* ****** ****** *)
 //
+castfn
+list_vt2t
+{a:type}{n:int}
+(list_vt(a, n)): list(a, n)
+//
+(* ****** ****** *)
+//
 typedef
 sfloat_k =
 $extype("xats_sfloat_t")
