@@ -110,12 +110,15 @@ t2p0.node() of
     val
     xtvs = auxt2p0(t2p1, xtvs)
   }
+//
 | T2Pfun
-  (_, _, t2ps, t2p1) =>
+  (fc2, _, t2ps, t2p1) =>
   (
     auxt2p0(t2p1, xtvs)
   ) where
   {
+    val
+    xtvs = auxt2p0(fc2, xtvs)
     val
     xtvs = auxt2ps(t2ps, xtvs)
   }

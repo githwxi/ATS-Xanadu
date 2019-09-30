@@ -84,7 +84,9 @@ typedef d2pitmlst = $D2E.d2pitmlst
 //
 (* ****** ****** *)
 
+typedef t2ypelst = $S2T.t2ypelst
 typedef t2xtvlst = $S2T.t2xtvlst
+
 typedef d3patlst = $D3E.d3patlst
 typedef d3patopt = $D3E.d3patopt
 typedef d3explst = $D3E.d3explst
@@ -182,7 +184,14 @@ match_d2pitmlst_t2ype
 fun
 trans33_dpat: d3pat -> d3pat
 fun
+trans33_dpat_dn
+(d3p0: d3pat, t2p0: t2ype): d3pat
+//
+fun
 trans33_dpatlst: d3patlst -> d3patlst
+fun
+trans33_dpatlst_dn
+(d3ps: d3patlst, t2ps: t2ypelst): d3patlst
 //
 (* ****** ****** *)
 //

@@ -44,6 +44,14 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/locinfo.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/staexp0.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -53,6 +61,13 @@ UN = "prelude/SATS/unsafe.sats"
 
 #staload "./../SATS/trans23.sats"
 #staload "./../SATS/trans33.sats"
+
+(* ****** ****** *)
+
+implement
+fprint_val<tq2arg> = fprint_tq2arg
+implement
+fprint_val<ti2arg> = fprint_ti2arg
 
 (* ****** ****** *)
 
@@ -179,6 +194,64 @@ list_map$fopr<d3pat><d3pat>(d3p) = trans33_dpat(d3p)
 }
 } (* end of [trans33_dpatlst] *)
 
+(* ****** ****** *)
+//
+implement
+trans33_dpat_dn
+  (d3p0, t2p0) =
+(
+d3pat_dn(d3p0, t2p0)
+) where
+{
+  val d3p0 = trans33_dpat(d3p0)
+}
+//
+(* ****** ****** *)
+//
+implement
+trans33_dpatlst_dn
+  (d3ps, t2ps) =
+(
+  auxlst(d3ps, t2ps)
+) where
+{
+fun
+auxlst
+( d3ps: d3patlst
+, t2ps: t2ypelst): d3patlst =
+(
+case+ d3ps of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (d3p0, d3ps) =>
+  (
+  case+ t2ps of
+  | list_nil() =>
+    (
+      list_cons(d3p0, d3ps)
+    ) where
+    {
+      val t2p0 =
+      the_t2ype_none0
+      val d3p0 =
+      trans33_dpat_dn(d3p0, t2p0)
+      val d3ps = auxlst(d3ps, t2ps)
+    }
+  | list_cons
+    (t2p0, t3ps) =>
+    (
+      list_cons(d3p0, d3ps)
+    ) where
+    {
+      val d3p0 =
+      trans33_dpat_dn(d3p0, t2p0)
+      val d3ps = auxlst(d3ps, t2ps)
+    }    
+  )
+) (* end of [auxlst] *)
+}
+//
 (* ****** ****** *)
 
 local
@@ -336,16 +409,14 @@ case+ opt0 of
      d2con_up(loc0, d2c1)
    ) where
    {
-     val-
-     list_cons(d2c1, _) = d2cs
+     val-list_cons(d2c1, _) = d2cs
    }
  | D2ITMcst(d2cs) =>
    (
      d2cst_up(loc0, d2c1)
    ) where
    {
-     val-
-     list_cons(d2c1, _) = d2cs
+     val-list_cons(d2c1, _) = d2cs
    }
  ) (* end of [Some] *)
 //
@@ -628,6 +699,10 @@ d3e0.node() of
 | D3Ecst2 _ => auxcst2(d3e0)
 //
 | D3Esym0 _ => auxsym0(d3e0)
+//
+(*
+| D3Etcst _ => d3e0
+*)
 //
 | D3Esap0 _ => auxsap0(d3e0)
 | D3Esap1 _ => auxsap1(d3e0)
@@ -993,6 +1068,86 @@ end // end of [aux_fundecl]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxid3c
+( id2c
+: impld2cst
+, tfun
+: t2ype): impld3cst =
+let
+//
+val+
+IMPLD2CST(dqid, d2cs) = id2c
+//
+in
+//
+(
+case+ opt0 of
+| ~None_vt() =>
+   IMPLD3CSTnone()
+| ~Some_vt(d2c1) =>
+   IMPLD3CSTsome(d2c1)
+) where
+{
+  val
+  opt0 =
+  match_d2cstlst_t2ype(d2cs, tfun)
+}
+//
+end // end of [auxid3c]
+
+fun
+auxtfun
+( d3c0
+: d3ecl
+, f3as
+: f3arglst
+, tres
+: t2ype
+, flag: int): t2ype =
+(
+case+ f3as of
+| list_nil() => tres
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | F3ARGsome_dyn
+    (npf1, d3ps) =>
+    let
+(*
+      val fc2 =
+      ( if
+        flag = 0
+        then
+        FC2fun(*void*)
+        else
+        FC2cloref(*void*)
+      ) : funclo2 // end-of-val
+*)
+      val loc0 = d3c0.loc()
+      val t2ps =
+      d3patlst_get_type(d3ps)
+      val tres =
+      auxtfun(d3c0, xs, tres, flag+1)
+    in
+      t2ype_fun0(loc0, npf1, t2ps, tres)
+    end
+  | F3ARGsome_sta
+    (s2vs, s2ps) =>
+    let
+      val
+      tres =
+      auxtfun
+      (d3c0,xs,tres,flag) in t2ype_uni(s2vs,tres)
+    end
+  | F3ARGsome_met(s2es) => auxtfun(d3c0, xs, tres, flag)
+  )
+) (* end of [auxtfun] *)
+
+in (* in-of-local *)
+
 fun
 aux_impdecl
 ( d3c0
@@ -1003,15 +1158,58 @@ D3Cimpdecl
 ( knd
 , mopt
 , sqas, tqas
-, id2c, ti2s, ti3s
+, id2c, id3c
+, ti2s, ti3a
 , f3as, res0, d3e0) = d3c0.node()
 //
 val
+tres = d3e0.type()
+val
 f3as =
 trans33_farglst(f3as)
+val
+tfun =
+auxtfun
+(d3c0, f3as, tres, 0)
 //
 val
+id3c = auxid3c(id2c, tfun)
+//
+in
+//
+case+ id3c of
+|
+IMPLD3CSTnone() =>
+let
+val
 d3e0 = trans33_dexp(d3e0)
+in
+d3ecl_make_node
+( d3c0.loc()
+, D3Cimpdecl
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, id3c
+  , ti2s, ti3a, f3as, res0, d3e0))
+end // IMPLD3CSTnone
+//
+|
+IMPLD3CSTsome(d2c0) =>
+let
+val
+ti3a =
+auxti2s_0(d2c0, ti2s)
+val
+tfun =
+auxti3a_0(d2c0, ti3a)
+var tres = tfun
+val
+f3as =
+auxf3as_0(f3as, tres)
+//
+val
+d3e0 =
+trans33_dexp_dn(d3e0, tres)
 //
 in
 d3ecl_make_node
@@ -1019,8 +1217,316 @@ d3ecl_make_node
 , D3Cimpdecl
   ( knd, mopt
   , sqas, tqas
-  , id2c, ti2s, ti3s, f3as, res0, d3e0))
+  , id2c, id3c
+  , ti2s, ti3a, f3as, res0, d3e0))
+end where
+{
+//
+val
+loc0 =
+(
+case+ id2c of
+| IMPLD2CST
+  (dqid, _) =>
+  let
+  val loc1 = dqid.loc()
+  in
+  case+ ti2s of
+  | list_nil() => loc1
+  | list_cons _ =>
+    (
+      loc1 + ti2a.loc()
+    ) where
+    {
+      val ti2a = list_last<ti2arg>(ti2s)
+    }
+  end
+) : loc_t // end of [val]
+//
+//
+fun
+auxti2s_0
+( d2c0
+: d2cst
+, ti2s
+: ti2arglst): ti3arg =
+let
+(*
+val () =
+println!
+("auxti2s_0: d2c0 = ", d2c0)
+val () =
+println!
+("auxti2s_0: ti2s = ", ti2s)
+*)
+in
+let
+  val tqas = d2c0.tqas()
+  val t2ps = list_vt_nil()
+in
+  auxti2s_1(tqas, ti2s, t2ps)
+end
+end
+and
+auxti2s_1
+( tqas
+: tq2arglst
+, ti2s
+: ti2arglst
+, t2ps
+: List0_vt(t2ype)): ti3arg =
+let
+(*
+val () =
+println!
+("auxti2s_1: tqas = ", tqas)
+*)
+in
+case+ tqas of
+| list_nil() =>
+  (
+    TI3ARGsome(t2ps)
+  ) where
+  {
+    val t2ps =
+    list_vt2t
+    (list_vt_reverse(t2ps))
+  }
+| list_cons(tq2a, tqas) =>
+  let
+    val
+    s2vs = tq2a.s2vs()
+  in
+    case+ ti2s of
+    | list_nil() => let
+      val
+      s2es = list_nil()
+      val
+      t2ps =
+      auxti2s_2(s2vs, s2es, t2ps)
+      in
+        auxti2s_1(tqas, ti2s, t2ps)
+      end
+    | list_cons
+      (ti20, ti2s) => let
+      val
+      s2es = ti20.s2es()
+      val
+      t2ps =
+      auxti2s_2(s2vs, s2es, t2ps)
+      in
+        auxti2s_1(tqas, ti2s, t2ps)
+      end
+  end
+end
+and
+auxti2s_2
+( s2vs
+: s2varlst 
+, s2es
+: s2explst
+, t2ps
+: List0_vt(t2ype)
+)
+: List0_vt(t2ype) =
+(
+case+ s2vs of
+| list_nil() => t2ps
+| list_cons
+  (s2v0, s2vs) =>
+  (
+  case+ s2es of
+  | list_nil() => let
+    val s2t0 =
+    s2v0.sort()
+    val t2p0 =
+    t2ype_srt_xtv
+    (s2t0, t2xtv_new(loc0))
+    val
+    t2ps =
+    list_vt_cons(t2p0, t2ps)
+    in
+      auxti2s_2(s2vs, s2es, t2ps)
+    end
+  | list_cons
+    (s2e0, s2es1) =>
+    ( case+
+      s2e0.node() of
+      | S2Eany(k0) =>
+        let
+          val s2t0 =
+          s2v0.sort()
+          val t2p0 =
+          t2ype_srt_xtv
+          (s2t0, t2xtv_new(loc0))
+          val t2ps =
+          list_vt_cons(t2p0, t2ps)
+        in
+          if
+          (k0 >= 2)
+          then
+          auxti2s_2(s2vs, s2es, t2ps)
+          else
+          auxti2s_2(s2vs, s2es1, t2ps)
+        end
+      | _(*non-S2Eany*) =>
+        let
+          val t2p0 =
+          s2exp_erase(s2e0)
+          val t2ps =
+          list_vt_cons(t2p0, t2ps)
+        in
+          auxti2s_2(s2vs, s2es1, t2ps)
+        end
+    )
+  )
+) (* auxti2s_2 *)
+//
+fun
+auxti3a_0
+( d2c0: d2cst
+, ti3a: ti3arg): t2ype =
+let
+//
+val () =
+println!
+("auxti3a_0: ti3a = ", ti3a)
+//
+val tfun = d2c0.type()
+val s2vs = d2cst_get_s2vs(d2c0)
+//
+in
+  case+ ti3a of
+  | TI3ARGnone() => tfun
+  | TI3ARGsome(t2ps) =>
+    t2ype_substs(tfun, s2vs, t2ps)
+end
+//
+fun
+auxf3as_0
+( f3as
+: f3arglst
+, tfun
+: &t2ype >> _
+)
+: f3arglst =
+(
+case+ f3as of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (f3a0, f3as) =>
+  (
+    list_cons(f3a0, f3as)
+  ) where
+  {
+    val
+    f3a0 = auxf3as_1(f3a0, tfun)
+    val
+    f3as = auxf3as_0(f3as, tfun)
+  }
+) (* auxf3as_0 *)
+and
+auxf3as_1
+( f3a0
+: f3arg
+, tfun
+: &t2ype >> _): f3arg =
+(
+case+
+f3a0.node() of
+| F3ARGsome_dyn _ =>
+  auxf3as_1d(f3a0, tfun)
+| F3ARGsome_sta _ =>
+  auxf3as_1s(f3a0, tfun)
+| F3ARGsome_met _ => f3a0
+)
+//
+and
+auxf3as_1s
+( f3a0
+: f3arg
+, tfun
+: &t2ype >> _): f3arg =
+let
+//
+val-
+F3ARGsome_sta
+( svs1
+, s2ps) = f3a0.node()
+//
+val
+t2p0 = t2ype_hnfize(tfun)
+//
+in
+//
+case+
+t2p0.node() of
+| T2Puni
+  (svs2, t2p0) =>
+  let
+    val t2p0 =
+    t2ype_revars(t2p0, svs1, svs2)
+  in
+    let
+      val () = tfun := t2p0 in f3a0
+    end
+  end
+| _(*non-T2Puni*) => f3a0
+//
+end // end of [let] // end of [auxf3as_1s]
+//
+and
+auxf3as_1d
+( f3a0
+: f3arg
+, tfun
+: &t2ype >> _): f3arg =
+let
+//
+val-
+F3ARGsome_dyn
+( npf1
+, d3ps) = f3a0.node()
+//
+val
+t2p0 = t2ype_hnfize(tfun)
+//
+in
+//
+case+
+t2p0.node() of
+//
+| T2Puni
+  (s2vs, t2p0) =>
+  (
+    tfun := t2p0;
+    auxf3as_1d(f3a0, tfun)
+  ) where
+  {
+    val t2p0 =
+    t2ype_renams(t2p0, s2vs)
+  }
+| T2Pfun
+  (_, _, t2ps, t2p0) =>
+  let
+    val d3ps =
+    trans33_dpatlst_dn(d3ps, t2ps)
+  in
+    tfun := t2p0;
+    f3arg_make_node
+    (f3a0.loc(), F3ARGsome_dyn(npf1, d3ps))
+   end
+//
+| _(*non-T2Puni/fun*) => f3a0
+//
+end // end of [let] // end of [auxf3as_1d]
+//
+} (* IMPLD3CSTsome *)
+//
 end // end of [aux_impdecl]
+
+end // end of [local]
 
 (* ****** ****** *)
 

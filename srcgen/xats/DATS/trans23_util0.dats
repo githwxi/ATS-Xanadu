@@ -87,6 +87,8 @@ t2p0.node() of
 | T2Pcst _ => false
 | T2Pvar _ => false
 //
+| T2Pfc2 _ => false
+//
 | T2Pnone0 _ => false
 | T2Pnone1 _ => false
 //
@@ -97,17 +99,13 @@ t2p0.node() of
   else auxt2p0(xtv1.type())
 //
 | T2Papp(t2p1, t2ps) =>
-  if
-  auxt2p0(t2p1)
-  then true else auxt2ps(t2ps)
+  (auxt2p0(t2p1) || auxt2ps(t2ps))
 //
 | T2Plam(s2vs, t2p1) => auxt2p0(t2p1)
 //
 | T2Pfun
-  (fcr, npf, t2ps, t2p1) =>
-  if
-  auxt2p0(t2p1)
-  then true else auxt2ps(t2ps)
+  (fc2, npf, t2ps, t2p1) =>
+  (auxt2p0(t2p1) || auxt2ps(t2ps))
 //
 | T2Pexi(s2vs, t2p1) => auxt2p0(t2p1)
 | T2Puni(s2vs, t2p1) => auxt2p0(t2p1)
@@ -477,24 +475,33 @@ t2p1.node() of
     end
   | _ (* non-T2Papp *) => false
   )
+//
+| T2Pfc2(fc1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Pfc2(fc2) =>
+    funclo2_equal(fc1, fc2)
+  | _(*non-T2Pfc2*) => false
+  )
 | T2Pfun
-  (fcr1, npf1, arg1, res1) =>
+  (tfc1, npf1, arg1, res1) =>
   (
   case+
   t2p2.node() of
   | T2Pfun
-    (fcr2, npf2, arg2, res2) =>
+    (tfc2, npf2, arg2, res2) =>
     let
       val
-      tfcr = true
-      val
       tnpf = (npf1 = npf2)
+      val
+      tfcr = unify(loc0, tfc1, tfc2)
       val
       targ = unify(loc0, arg2, arg1)
       val
       tres = unify(loc0, res1, res2)
     in
-      (tfcr && (tnpf && (targ && tres)))
+      (tnpf && (tfcr && (targ && tres)))
     end
   | _ (* else *) => false
   )
@@ -713,8 +720,9 @@ d3patlst_get_type(d3ps)
 //
 val tres = t2ype_new(loc0)
 //
-val tfun =
-t2ype_fun0(npf0, targ, tres)
+// HX: d2con.type()
+val tfun = // is FC2fun!
+t2ype_fun0(loc0, npf0, targ, tres)
 //
 val d3f0 = d3pat_dn(d3f0, tfun)
 //
@@ -1022,8 +1030,8 @@ case+ s2vs of
       auxs2vs(loc0, s2vs, s2es, tsub)
     end
   | list_cons(s2e0, s2es1) =>
-    (
-      case+ s2e0.node() of
+    ( case+
+      s2e0.node() of
       | S2Eany(k0) =>
         let
           val s2t0 =
@@ -1169,8 +1177,9 @@ d3explst_get_type(d3es)
 //
 val tres = t2ype_new(loc0)
 //
-val tfun =
-t2ype_fun0(npf0, targ, tres)
+// HX: FC2cloref is
+val tfun = // the default
+t2ype_fun0(loc0, npf0, targ, tres)
 //
 val d3f0 = d3exp_dn(d3f0, tfun)
 //
@@ -1359,17 +1368,19 @@ case+ fa3g of
     (npf, d3ps) =>
     let
     val fc2 =
-    (
-    if flag = 0
-    then fc2(*funarrow*)
-    else FC2cloref(*void*)
+    ( if
+      flag = 0
+      then
+      fc2(*funarrow*)
+      else
+      FC2cloref(*void*)
     ) : funclo2 // end-of-val
     val t2ps =
     d3patlst_get_type(d3ps)
     val tres =
     auxfa3g(xs, tres, flag+1)
     in
-    t2ype_fun1(fc2, npf, t2ps, tres)
+    t2ype_fun2(fc2, npf, t2ps, tres)
     end
   | F3ARGsome_sta
     (s2vs, s2ps) =>

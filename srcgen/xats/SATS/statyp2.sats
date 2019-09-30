@@ -95,16 +95,6 @@ vtypedef t2ypelst_vt = List0_vt(t2ype)
 
 (* ****** ****** *)
 //
-abstype fcr_tbox = ptr
-typedef fcr = fcr_tbox
-//
-fun
-fcr_new0((*void*)): fcr
-fun
-fcr_new1(fc2: funclo2): fcr
-//
-(* ****** ****** *)
-//
 abstbox t2xtv_tbox = ptr
 //
 typedef t2xtv = t2xtv_tbox
@@ -205,8 +195,9 @@ t2ype_node =
 | T2Papp of (t2ype, t2ypelst)
 | T2Plam of (s2varlst, t2ype)
 //
+| T2Pfc2 of funclo2
 | T2Pfun of
-  ( fcr//ref(funclo2)
+  ( t2ype // funclo2
   , int(*npf*),t2ypelst(*arg*),t2ype(*res*)
   ) (* end of T2Pfun *)
 //
@@ -293,13 +284,42 @@ t2ype_uni
 (* ****** ****** *)
 //
 fun
+t2ype_fc2(fc2: funclo2): t2ype
+//
+fun
 t2ype_fun0
-( npf: int
+( loc: loc_t, npf: int
 , arg: t2ypelst, res: t2ype): t2ype
 fun
 t2ype_fun1
+( fc2: t2ype, npf: int
+, arg: t2ypelst, res: t2ype): t2ype
+fun
+t2ype_fun2
 ( fc2: funclo2, npf: int
 , arg: t2ypelst, res: t2ype): t2ype
+//
+(* ****** ****** *)
+//
+fun
+t2ype_renam
+( t2p0: t2ype, s2v1: s2var
+) : t2ype // end of [t2ype_renam]
+fun
+t2ype_renams
+( t2p0: t2ype, s2vs: s2varlst
+) : t2ype // end of [t2ype_renams]
+//
+fun
+t2ype_revar
+( t2p0: t2ype
+, s2v1: s2var, s2v2: s2var
+) : t2ype // end of [t2ype_revar]
+fun
+t2ype_revars
+( t2p0: t2ype
+, svs1: s2varlst, svs2: s2varlst
+) : t2ype // end of [t2ype_revars]
 //
 (* ****** ****** *)
 //

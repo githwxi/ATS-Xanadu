@@ -49,6 +49,8 @@ prelude:: gbas_sats
 prelude:: gbas_dats
 prelude:: gord_sats
 prelude:: gord_dats
+prelude:: list_sats
+prelude:: list_dats
 
 ######
 
@@ -72,6 +74,13 @@ gord_sats:; \
 $(CAT) $(PRELUDE)/SATS/gord.sats | $(XATSOPT) --static
 gord_dats:; \
 $(CAT) $(PRELUDE)/DATS/gord.dats | $(XATSOPT) --dynamic
+
+######
+
+list_sats:; \
+$(CAT) $(PRELUDE)/SATS/list.sats | $(XATSOPT) --static
+list_dats:; \
+$(CAT) $(PRELUDE)/DATS/list.dats | $(XATSOPT) --dynamic
 
 ######
 

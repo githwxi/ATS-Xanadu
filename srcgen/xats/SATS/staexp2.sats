@@ -437,6 +437,9 @@ overload .sort with s2var_set_sort
 overload .stamp with s2var_get_stamp
 //
 fun
+s2var_copy(s2v: s2var): s2var
+//
+fun
 s2var_make_idst
   (sid: sym_t, s2t: sort2): s2var
 //

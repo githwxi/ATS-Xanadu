@@ -36,7 +36,7 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
 fun
 <k:type>
 gint_add
@@ -67,7 +67,13 @@ gint_mod
 {i,j:int | j >= 1}
 ( x: gint(a, i)
 , y: gint(a, j)): gint(a, mod(i,j))
-
+//
+#symload + with gint_add
+#symload - with gint_sub
+#symload * with gint_mul
+#symload / with gint_div
+#symload % with gint_mod
+//
 (* ****** ****** *)
 
 fun//<>
@@ -90,13 +96,23 @@ fun//<>
 gint_mod_sint_sint
 {i,j:int | j >= 1}
 (x: sint(i), y: sint(j)): sint(mod(i,j)) = $ext()
-
+//
+#symload + with gint_add_sint_sint
+#symload - with gint_sub_sint_sint
+#symload * with gint_mul_sint_sint
+#symload / with gint_div_sint_sint
+#symload % with gint_mod_sint_sint
+//
 (* ****** ****** *)
 
 fun//<>
 gint_add_uint_uint
 {i,j:int}
 (x: uint(i), y: uint(j)): uint(i+j) = $ext()
+fun//<>
+gint_sub_uint_uint
+{i,j:int | i >= j}
+(x: uint(i), y: uint(j)): uint(i-j) = $ext()
 fun//<>
 gint_mul_uint_uint
 {i,j:int}
@@ -109,7 +125,13 @@ fun//<>
 gint_mod_uint_uint
 {i,j:int | j >= 1}
 (x: uint(i), y: uint(j)): uint(mod(i,j)) = $ext()
-
+//
+#symload + with gint_add_uint_uint
+#symload - with gint_sub_uint_uint
+#symload * with gint_mul_uint_uint
+#symload / with gint_div_uint_uint
+#symload % with gint_mod_uint_uint
+//
 (* ****** ****** *)
 
 (* end of [gint.sats] *)

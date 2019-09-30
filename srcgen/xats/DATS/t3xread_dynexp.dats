@@ -88,6 +88,8 @@ d3p0.node() of
 | D3Pany _ => ()
 | D3Pvar _ => ()
 //
+| D3Pcon1 _ => ()
+//
 | D3Pdapp
   (d3f1, npf2, d3ps) =>
   {
@@ -202,6 +204,8 @@ d3e0.node() of
 //
 | D3Econ1 _ => ()
 | D3Ecst1 _ => ()
+//
+| D3Etcst _ => ()
 //
 | D3Edapp
   (d3f1, npf2, d3es) =>
@@ -468,7 +472,8 @@ d3c0.node() of
 | D3Cimpdecl
   ( tok, mopt
   , sqas, tqas
-  , id2c, t2as, t3as
+  , id2c, id3c
+  , t2as, t3as
   , f3as, res0, d3e0) =>
   {
     val () =

@@ -2868,8 +2868,9 @@ case+ dqid of
   | list_cons(d2c0, d2cs) =>
     (
     if
-    iseqz(d2cs)
-    then
+    isneqz(d2cs)
+    then ((*void*))
+    else
     auxtqas_test(d2c0.tqas(), tqas)
     )
   )

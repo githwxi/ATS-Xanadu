@@ -364,45 +364,38 @@ case+ s2vs of
 )
 //
 (* ****** ****** *)
-
-local
 //
-absimpl
-fcr_tbox =
-ref(funclo2)
-//
-in
 implement
-fcr_new0() =
-fcr_new1(FC2fun())
-implement
-fcr_new1(fc2) = ref(fc2)
-end // end of [local]
-
-(* ****** ****** *)
+t2ype_fc2(fc2) =
+t2ype_make_node
+(the_sort2_none, T2Pfc2(fc2))
 //
 implement
 t2ype_fun0
-(npf, arg, res) =
+(loc, npf, arg, res) =
 (
 t2ype_fun1
 (fc2, npf, arg, res)
 ) where
 {
-val fc2 = FC2fun(*void*)
+val fc2 = t2ype_new(loc)
 } // end of [t2ype_fun0]
 //
 implement
 t2ype_fun1
 (fc2, npf, arg, res) = let
 //
-val fcr = fcr_new1(fc2)
-//
-val node = T2Pfun(fcr, npf, arg, res)
+val node =
+T2Pfun(fc2, npf, arg, res)
 //
 in
   t2ype_make_node(the_sort2_none, node)
 end // end of [t2ype_fun1]
+//
+implement
+t2ype_fun2
+(fc2, npf, arg, res) =
+t2ype_fun1(t2ype_fc2(fc2), npf, arg, res)
 //
 (* ****** ****** *)
 
