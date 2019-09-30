@@ -62,7 +62,7 @@ list_revapp
 {
 fun
 loop
-{m,n:int}
+{m,n:nat}.<m>.
 ( xs
 : list(a, m)
 , ys
@@ -80,8 +80,47 @@ impltmp
 list_reverse
   (xs) =
 (
-  list_revapp<a>(xs, list_nil())
+list_revapp(xs, list_nil())
 ) (* list_reverse *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a><b>
+list_maprev(xs) =
+(
+list_vt2t(list_maprev_vt(xs))
+)
+//
+impltmp
+<a><b>
+list_maprev_vt(xs) =
+(
+loop(xs, list_vt_nil((*void*)))
+) where
+{
+//
+fun
+loop{i:nat}.<i>.
+( xs
+: list(a, i)
+, ys
+: list_vt(b, j)
+) : list_vt(b, i+j) =
+(
+case+ xs of
+| list_nil() => ys
+| list_cons(x0, xs) =>
+  (
+    loop(xs, ys)
+  ) where
+  {
+    val y0 = map$fopr(x0)
+    val ys = list_vt_cons(y0, ys)
+  }
+) (* end of [loop] *)
+//
+} (* end of [list_maprev_vt] *)
 //
 (* ****** ****** *)
 

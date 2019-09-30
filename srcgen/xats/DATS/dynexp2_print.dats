@@ -595,12 +595,21 @@ case- x0.node() of
   fprint!
   (out, "D2Cvardecl(", knd, "; ", v2ds, ")")
 //
-| D2Cimpdecl
+| D2Cimpdecl1
   ( knd, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
-  , "D2Cimpdecl("
+  , "D2Cimpdecl1("
+  , knd, "; ", mopt, "; "
+  , sqas, "; ", tqas, "; "
+  , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
+| D2Cimpdecl2
+  ( knd, mopt, sqas, tqas
+  , dqid, tias, f2as, res0, d2e1) =>
+  fprint!
+  ( out
+  , "D2Cimpdecl2("
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
@@ -795,49 +804,55 @@ in
 end // end of [fprint_f2undecl]
 
 (* ****** ****** *)
-
+//
 implement
 print_impls2cst(x0) =
 fprint_impls2cst(stdout_ref, x0)
 implement
 prerr_impls2cst(x0) =
 fprint_impls2cst(stderr_ref, x0)
-
+//
 implement
 fprint_impls2cst
-  (out, x0) = let
+  (out, x0) =
+(
+case+ x0 of
+|
+IMPLS2CST1(sqid, s2cs) =>
+fprint!
+(out, "IMPLS2CST(", sqid, "; ", s2cs, ")")
+|
+IMPLS2CST2(sqid, s2cs, opt2) =>
+fprint!
+( out
+, "IMPLS2CST(", sqid, "; ", s2cs, "; ", opt2, ")")
+) // end of [fprint_impls2cst]
 //
-val+
-IMPLS2CST(sqid, d2cs) = x0
-//
-in
-//
-fprint!(out, "IMPLS2CST(", sqid, "; ", d2cs, ")")
-//
-end // end of [fprint_impdeclst]
-
 (* ****** ****** *)
-
+//
 implement
 print_impld2cst(x0) =
 fprint_impld2cst(stdout_ref, x0)
 implement
 prerr_impld2cst(x0) =
 fprint_impld2cst(stderr_ref, x0)
-
+//
 implement
 fprint_impld2cst
-  (out, x0) = let
+  (out, x0) =
+(
+case+ x0 of
+|
+IMPLD2CST1(dqid, d2cs) =>
+fprint!
+(out, "IMPLD2CST(", dqid, "; ", d2cs, ")")
+|
+IMPLD2CST2(dqid, d2cs, opt2) =>
+fprint!
+( out
+, "IMPLD2CST(", dqid, "; ", d2cs, "; ", opt2, ")")
+) // end of [fprint_impld2cst]
 //
-val+
-IMPLD2CST(dqid, d2cs) = x0
-//
-in
-//
-fprint!(out, "IMPLD2CST(", dqid, "; ", d2cs, ")")
-//
-end // end of [fprint_impdeclst]
-
 (* ****** ****** *)
 
 (* end of [xats_dynexp2_print.dats] *)

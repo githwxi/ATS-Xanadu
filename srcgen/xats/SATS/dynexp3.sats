@@ -630,13 +630,19 @@ d3ecl_node =
   ( token(*funkind*)
   , decmodopt, tq2arglst(*tmpargs*), f3undeclist)
 //
-| D3Cimpdecl of
+| D3Cimpdecl1 of
   ( token(*impkind*)
   , decmodopt
   , sq2arglst
   , tq2arglst
   , impld2cst
-  , impld3cst // = d2cstopt
+  , ti2arglst, ti3arg, f3arglst, effs2expopt, d3exp)
+| D3Cimpdecl2 of
+  ( token(*impkind*)
+  , decmodopt
+  , sq2arglst
+  , tq2arglst
+  , impld2cst
   , ti2arglst, ti3arg, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]

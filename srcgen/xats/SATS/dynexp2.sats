@@ -989,7 +989,12 @@ d2ecl_node =
   ( token(*funkind*)
   , decmodopt, tq2arglst(*tmpargs*), f2undeclist)
 //
-| D2Cimpdecl of
+| D2Cimpdecl1 of
+  ( token(*impkind*)
+  , decmodopt
+  , sq2arglst, tq2arglst
+  , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
+| D2Cimpdecl2 of
   ( token(*impkind*)
   , decmodopt
   , sq2arglst, tq2arglst
@@ -1013,11 +1018,22 @@ abstdf2 =
 //
 and
 impls2cst =
-  | IMPLS2CST of (sq0eid, s2cstlst)
+  | IMPLS2CST1 of (sq0eid, s2cstlst)
+  | IMPLS2CST2 of (sq0eid, s2cstlst, s2cstopt)
 //
 and
 impld2cst =
-  | IMPLD2CST of (dq0eid, d2cstlst)
+  | IMPLD2CST1 of (dq0eid, d2cstlst)
+  | IMPLD2CST2 of (dq0eid, d2cstlst, d2cstopt)
+//
+(* ****** ****** *)
+//
+fun
+impls2cst_ns2c
+(is2c: impls2cst): int
+fun
+impld2cst_nd2c
+(id2c: impld2cst): int
 //
 (* ****** ****** *)
 //

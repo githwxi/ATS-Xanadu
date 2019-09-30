@@ -1071,24 +1071,26 @@ end // end of [aux_fundecl]
 local
 
 fun
-auxid3c
+auxid2c
 ( id2c
 : impld2cst
 , tfun
-: t2ype): impld3cst =
+: t2ype): impld2cst =
 let
 //
-val+
-IMPLD2CST(dqid, d2cs) = id2c
+val-
+IMPLD2CST1(dqid, d2cs) = id2c
 //
 in
 //
 (
 case+ opt0 of
-| ~None_vt() =>
-   IMPLD3CSTnone()
-| ~Some_vt(d2c1) =>
-   IMPLD3CSTsome(d2c1)
+|
+~None_vt() =>
+ IMPLD2CST2(dqid, d2cs, None())
+|
+~Some_vt(x0) =>
+ IMPLD2CST2(dqid, d2cs, Some(x0))
 ) where
 {
   val
@@ -1149,17 +1151,16 @@ case+ f3as of
 in (* in-of-local *)
 
 fun
-aux_impdecl
+aux_impdecl2
 ( d3c0
 : d3ecl): d3ecl =
 let
 val-
-D3Cimpdecl
+D3Cimpdecl2
 ( knd
 , mopt
 , sqas, tqas
-, id2c, id3c
-, ti2s, ti3a
+, id2c, ti2s, ti3a
 , f3as, res0, d3e0) = d3c0.node()
 //
 val
@@ -1173,28 +1174,32 @@ auxtfun
 (d3c0, f3as, tres, 0)
 //
 val
-id3c = auxid3c(id2c, tfun)
+id2c =
+auxid2c(id2c, tfun)
+val-
+IMPLD2CST2
+(dqid, d2cs, d2ct) = id2c
 //
 in
 //
-case+ id3c of
+case+
+d2ct of
 |
-IMPLD3CSTnone() =>
+None() =>
 let
 val
 d3e0 = trans33_dexp(d3e0)
 in
 d3ecl_make_node
 ( d3c0.loc()
-, D3Cimpdecl
+, D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
-  , id2c, id3c
-  , ti2s, ti3a, f3as, res0, d3e0))
+  , id2c, ti2s, ti3a, f3as, res0, d3e0))
 end // IMPLD3CSTnone
 //
 |
-IMPLD3CSTsome(d2c0) =>
+Some(d2c0) =>
 let
 val
 ti3a =
@@ -1214,20 +1219,19 @@ trans33_dexp_dn(d3e0, tres)
 in
 d3ecl_make_node
 ( d3c0.loc()
-, D3Cimpdecl
+, D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
-  , id2c, id3c
-  , ti2s, ti3a, f3as, res0, d3e0))
+  , id2c, ti2s, ti3a, f3as, res0, d3e0))
 end where
 {
 //
 val
 loc0 =
 (
-case+ id2c of
-| IMPLD2CST
-  (dqid, _) =>
+case- id2c of
+| IMPLD2CST2
+  (dqid, _, _) =>
   let
   val loc1 = dqid.loc()
   in
@@ -1387,9 +1391,11 @@ auxti3a_0
 , ti3a: ti3arg): t2ype =
 let
 //
+(*
 val () =
 println!
 ("auxti3a_0: ti3a = ", ti3a)
+*)
 //
 val tfun = d2c0.type()
 val s2vs = d2cst_get_s2vs(d2c0)
@@ -1561,9 +1567,9 @@ d3c0.node() of
     aux_fundecl(d3c0)
   )
 //
-| D3Cimpdecl _ =>
+| D3Cimpdecl2 _ =>
   (
-    aux_impdecl(d3c0)
+    aux_impdecl2(d3c0)
   )
 //
 | D3Cnone0 _ => d3c0

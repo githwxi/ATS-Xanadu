@@ -2168,7 +2168,7 @@ auxsqid
 ( sqid
 : sq0eid): impls2cst =
 (
-  IMPLS2CST(sqid, s2cs)
+  IMPLS2CST1(sqid, s2cs)
 ) where
 {
 val s2cs =
@@ -2807,7 +2807,7 @@ auxdqid
 ( dqid
 : dq0eid): impld2cst =
 (
-  IMPLD2CST(dqid, d2cs)
+  IMPLD2CST1(dqid, d2cs)
 ) where
 {
 val d2cs =
@@ -2854,14 +2854,14 @@ case+ dqid of
 (* ****** ****** *)
 
 fun
-auxdqid_tqas
-( dqid
+auxid2c_tqas
+( id2c
 : impld2cst
 , tqas
 : tq2arglst): void =
 (
-case+ dqid of
-| IMPLD2CST(_, d2cs) =>
+case- id2c of
+| IMPLD2CST1(_, d2cs) =>
   (
   case+ d2cs of
   | list_nil() => ()
@@ -3001,13 +3001,13 @@ end
 (* ****** ****** *)
 
 fun
-auxdqid_f1as
-( dqid
+auxid2c_f1as
+( id2c
 : impld2cst
 , f1as: f1arglst): f2arglst =
 (
-case+ dqid of
-| IMPLD2CST(_, d2cs) =>
+case- id2c of
+| IMPLD2CST1(_, d2cs) =>
   (
   case+ d2cs of
   | list_nil() => 
@@ -3022,7 +3022,7 @@ case+ dqid of
     auxsexp_f1as(d2c0.sexp(), f1as)
     )
   )
-) (* end of [auxdqid_f1as] *)
+) (* end of [auxid2c_f1as] *)
 and
 auxsexp_f1as
 ( s2e0: s2exp
@@ -3067,7 +3067,7 @@ D1Cimpdecl
 , teq1, d1e2) = d1c0.node()
 //
 val
-dqid = auxdqid(dqid)
+id2c = auxdqid(dqid)
 //
 val
 sqas = trans12_sqarglst(sqas)
@@ -3084,7 +3084,7 @@ println!
 *)
 //
 val () =
-auxdqid_tqas(dqid, tqas)
+auxid2c_tqas(id2c, tqas)
 //
 val
 (pf0|()) =
@@ -3112,7 +3112,7 @@ val tias =
   trans12_tiarglst(tias)
 //
 val f2as =
-  auxdqid_f1as(dqid, f1as)
+  auxid2c_f1as(id2c, f1as)
 //
 val tres =
   trans12_effsexpopt(tres)
@@ -3124,12 +3124,30 @@ val
 the_trans12_popfree(pf0|(*void*))
 //
 in
-  d2ecl_make_node
-  ( loc0
-  , D2Cimpdecl
-    ( knd, mopt
-    , sqas, tqas, dqid, tias, f2as, tres, d2e2)
-  ) (* d2ecl_make_node *)
+//
+let
+val
+nd2c =
+impld2cst_nd2c(id2c)
+in
+if
+nd2c = 1
+then
+d2ecl_make_node
+( loc0
+, D2Cimpdecl2
+  ( knd, mopt
+  , sqas, tqas, id2c, tias, f2as, tres, d2e2)
+) (* d2ecl_make_node *)
+else
+d2ecl_make_node
+( loc0
+, D2Cimpdecl2
+  ( knd, mopt
+  , sqas, tqas, id2c, tias, f2as, tres, d2e2)
+) (* d2ecl_make_node *)
+end
+//
 end // end of [aux_impdecl_rec]
 
 end // end of [local]

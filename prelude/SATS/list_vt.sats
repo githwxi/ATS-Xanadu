@@ -27,74 +27,68 @@
 
 (* ****** ****** *)
 //
-// For generic basics
+// For generic ordering
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: June, 2019
+// Start Time: September, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
+fun<>
+list_vt_nil?
+{a:vtype}{n:int}
+(xs: !list_vt(a, n)): bool(n = 0)
+fun<>
+list_vt_cons?
+{a:vtype}{n:int}
+(xs: !list_vt(a, n)): bool(n > 0)
+//
+#symload
+iseqz with list_vt_nil?
+#symload
+isneqz with list_vt_cons?
+//
+(* ****** ****** *)
+//
 fun
 <a:vtype>
-g_self(x: a): a
-
+list_vt_length
+{n:int}
+(xs: !list_vt(a, n)): int(n)
+//
+#symload
+length with list_vt_length
+//
 (* ****** ****** *)
-
+//
 fun
 <a:vtype>
-g_free(x: a): void
+list_vt_reverse
+{n:int}
+(xs: list_vt(a, n)): list_vt(a, n)
+//
+#symload
+reverse with list_vt_reverse
+//
+(* ****** ****** *)
+//
 fun
 <a:vtype>
-g_copy(x: !(a)): (a)
-
-(* ****** ****** *)
-
+list_vt_copy
+{n:int}
+(xs: !list_vt(a, n)): list_vt(a, n)
 fun
 <a:vtype>
-g_equal(!a, !a): void
-fun
-<a:vtype>
-g_nequal(!a, !a): void
-
+list_vt_rcopy
+{n:int}
+(xs: !list_vt(a, n)): list_vt(a, n)
+//
+#symload copy with list_vt_copy
+#symload rcopy with list_vt_rcopy
+//
 (* ****** ****** *)
 
-fun
-<a:t0><b:vt>
-map$fopr(x: a): b
-fun
-<a:vt><b:vt>
-map0$fopr(x: a): b
-fun
-<a:vt><b:vt>
-map1$fopr(x: !a): b
-
-(* ****** ****** *)
-
-fun
-<a:t0>
-forall$test(x: a): bool
-fun
-<a:t0>
-forall0$test(x: a): bool
-fun
-<a:t0>
-forall1$test(x: !a): bool
-
-(* ****** ****** *)
-
-fun
-<a:t0>
-foreach$work(x: a): void
-fun
-<a:t0>
-foreach0$work(x: a): void
-fun
-<a:t0>
-foreach1$work(x: !a): void
-
-(* ****** ****** *)
-
-(* end of [gbas.sats] *)
+(* end of [list_vt.sats] *)

@@ -46,8 +46,10 @@ list_cons?
 {a:type}{n:int}
 (xs: list(a, n)): bool(n > 0)
 //
-#symload iseqz with list_nil?
-#symload isneqz with list_cons?
+#symload
+iseqz with list_nil?
+#symload
+isneqz with list_cons?
 //
 (* ****** ****** *)
 //
@@ -56,7 +58,8 @@ fun
 list_length
 {n:int}(xs: list(a, n)): int(n)
 //
-#symload length with list_length
+#symload
+length with list_length
 //
 (* ****** ****** *)
 //
@@ -67,7 +70,8 @@ list_append
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
 //
-#symload append with list_append
+#symload
+append with list_append
 //
 (* ****** ****** *)
 //
@@ -78,7 +82,8 @@ list_revapp
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
 //
-#symload revapp with list_revapp
+#symload
+revapp with list_revapp
 //
 (* ****** ****** *)
 //
@@ -87,7 +92,8 @@ fun
 list_reverse
 {n:int}(list(a, n)): list(a, n)
 //
-#symload reverse with list_reverse
+#symload
+reverse with list_reverse
 //
 (* ****** ****** *)
 //
@@ -95,15 +101,24 @@ fun
 <a:type>
 list_copy_vt
 {n:int}(list(a, n)): list_vt(a, n)
+fun
+<a:type>
+list_rcopy_vt
+{n:int}(list(a, n)): list_vt(a, n)
 //
-#symload copy_vt with list_copy_vt
+#symload
+copy_vt with list_copy_vt
+#symload
+rcopy_vt with list_rcopy_vt
 //
 (* ****** ****** *)
 //
+(*
 fun
 <x0:type>
 <y0:vtype>
 list_map$fopr(x0): y0
+*)
 //
 fun
 <x0:type>
@@ -114,6 +129,19 @@ fun
 <x0:type>
 <y0:vtype>
 list_map_vt
+{n:int}(xs: list(x0, n)): list_vt(y0, n)
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+<y0:type>
+list_maprev
+{n:int}(xs: list(x0, n)): list(y0, n)
+fun
+<x0:type>
+<y0:vtype>
+list_maprev_vt
 {n:int}(xs: list(x0, n)): list_vt(y0, n)
 //
 (* ****** ****** *)

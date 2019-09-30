@@ -1598,14 +1598,14 @@ case+ f2ds of
 (* ****** ****** *)
 
 fun
-aux_impdecl
+aux_impdecl2
 ( d2c0
 : d2ecl): d3ecl = let
 //
 val
 loc0 = d2c0.loc()
 val-
-D2Cimpdecl
+D2Cimpdecl2
 ( knd
 , mopt
 , sqas, tqas
@@ -1616,8 +1616,6 @@ D2Cimpdecl
 // HX: for
 val // trans33
 ti3a = TI3ARGnone()
-val
-id3c = IMPLD3CSTnone()
 //
 val
 f3as = trans23_farglst(f2as)
@@ -1651,11 +1649,10 @@ in
 ) where
 {
   val node =
-  D3Cimpdecl
+  D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
-  , id2c, id3c
-  , ti2s, ti3a, f3as, res0, d3e0)
+  , id2c, ti2s, ti3a, f3as, res0, d3e0)
 }
 //
 end // end of [aux_impdecl]
@@ -1711,7 +1708,7 @@ d2c0.node() of
 //
 | D2Cfundecl _ => aux_fundecl(d2c0)
 //
-| D2Cimpdecl _ => aux_impdecl(d2c0)
+| D2Cimpdecl2 _ => aux_impdecl2(d2c0)
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2c0)
 //
