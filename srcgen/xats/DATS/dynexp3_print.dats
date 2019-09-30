@@ -675,9 +675,9 @@ fprint_impld3cst
 (
 case x0 of
 | IMPLD3CSTnone() =>
-  fprintln!(out, "IMPLD3CSTnone(", ")")
+  fprint!(out, "IMPLD3CSTnone(", ")")
 | IMPLD3CSTsome(d2c) =>
-  fprintln!(out, "IMPLD3CSTsome(", d2c, ")")
+  fprint!(out, "IMPLD3CSTsome(", d2c, ")")
 )
 //
 (* ****** ****** *)

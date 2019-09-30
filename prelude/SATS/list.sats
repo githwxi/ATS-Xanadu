@@ -85,7 +85,7 @@ list_revapp
 fun
 <a:type>
 list_reverse
-{n:int}(xs: list(a, n): list(a, n)
+{n:int}(list(a, n)): list(a, n)
 //
 #symload reverse with list_reverse
 //
