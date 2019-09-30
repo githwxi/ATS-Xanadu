@@ -1243,7 +1243,6 @@ case+ id2c of
   end
 ) : loc_t // end of [val]
 //
-//
 fun
 auxti2s_0
 ( d2c0
