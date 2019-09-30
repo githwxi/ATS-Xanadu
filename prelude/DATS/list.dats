@@ -25,7 +25,7 @@ list_cons?
 (
 case+ xs of
 | list_nil() => false
-| list_cons(_, _) => true
+| list_cons(_, _) => (true)
 )
 //
 (* ****** ****** *)
@@ -54,11 +54,34 @@ case+ xs of
 //
 impltmp
 <a>(*tmp*)
+list_revapp
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+fun
+loop
+{m,n:int}
+( xs
+: list(a, m)
+, ys
+: list(a, n)): list(a, m+n) =
+(
+case+ xs of
+| list_nil() => ys
+| list_cons(x0, xs) =>
+  loop(xs, list_cons(x0, ys))
+)
+} (* list_revapp *)
+//
+impltmp
+<a>(*tmp*)
 list_reverse
   (xs) =
 (
   list_revapp<a>(xs, list_nil())
-)
+) (* list_reverse *)
 //
 (* ****** ****** *)
 
