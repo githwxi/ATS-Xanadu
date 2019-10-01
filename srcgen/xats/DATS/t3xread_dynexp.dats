@@ -472,6 +472,22 @@ d3c0.node() of
 *)
   }
 //
+| D3Cimpdecl1
+  ( tok, mopt
+  , sqas, tqas
+  , id2c, ti2s, ti3a
+  , f3as, res0, d3e0) =>
+  {
+    val () =
+    t3xread_f3arglst<>(f3as)
+(*
+    val () =
+    t3xread_ti3arg<>(ti3a)
+    val () =
+    t3xread_ti2arglst<>(ti2s)
+*)
+    val () = t3xread_d3exp<>(d3e0)
+  }
 | D3Cimpdecl2
   ( tok, mopt
   , sqas, tqas

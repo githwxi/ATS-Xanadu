@@ -1718,7 +1718,24 @@ val
 t2ype_f2arg_elim(loc0, tfun, f2as)
 //
 val
-d3e0 = trans23_dexp_dn(d2e0, tres)
+d3e0 =
+(
+case+ res0 of
+| EFFS2EXPnone() =>
+  (
+    trans23_dexp_dn(d2e0, tres)
+  )
+| EFFS2EXPsome(s2e0) =>
+  (
+    d3exp_dn(d3e0, tres)
+  ) where
+  {
+    val
+    t2p0 = s2exp_erase(s2e0)
+    val
+    d3e0 = trans23_dexp_dn(d2e0, t2p0)
+  }
+) : d3exp // end of [val]
 //
 in
 d3ecl_make_node
@@ -1773,10 +1790,10 @@ d3e0 = trans23_dexp_dn(d2e0, tres)
 (*
 val () =
 println!
-("trans23_decl: aux_impdecl: tres = ", tres)
+("trans23_decl: aux_impdecl2: tres = ", tres)
 val () =
 println!
-("trans23_decl: aux_impdecl: d3e0 = ", d3e0)
+("trans23_decl: aux_impdecl2: d3e0 = ", d3e0)
 *)
 //
 in
@@ -1792,7 +1809,7 @@ in
   , id2c, tias, ti3a, f3as, res0, d3e0)
 }
 //
-end // end of [aux_impdecl]
+end // end of [aux_impdecl2]
 
 in (* in-of-local *)
 
@@ -1845,6 +1862,7 @@ d2cl.node() of
 //
 | D2Cfundecl _ => aux_fundecl(d2cl)
 //
+| D2Cimpdecl1 _ => aux_impdecl1(d2cl)
 | D2Cimpdecl2 _ => aux_impdecl2(d2cl)
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2cl)

@@ -1067,6 +1067,35 @@ end // end of [aux_fundecl]
 
 (* ****** ****** *)
 
+fun
+aux_impdecl1
+( d3cl
+: d3ecl): d3ecl =
+let
+val-
+D3Cimpdecl1
+( knd
+, mopt
+, sqas, tqas
+, id2c, tias, ti3a
+, f3as, res0, d3e0) = d3cl.node()
+//
+val
+f3as = trans33_farglst(f3as)
+//
+val d3e0 = trans33_dexp(d3e0)
+//
+in
+d3ecl_make_node
+( d3cl.loc()
+, D3Cimpdecl1
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, tias, ti3a, f3as, res0, d3e0))
+end // end of [aux_impdecl1]
+
+(* ****** ****** *)
+
 local
 
 fun
@@ -1299,6 +1328,10 @@ d3cl.node() of
     aux_fundecl(d3cl)
   )
 //
+| D3Cimpdecl1 _ =>
+  (
+    aux_impdecl1(d3cl)
+  )
 | D3Cimpdecl2 _ =>
   (
     aux_impdecl2(d3cl)
