@@ -1592,15 +1592,15 @@ local
 
 fun
 aux_abssort
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Cabssort
 (knd, tok) =
-d1c0.node((*void*))
+d1cl.node((*void*))
 //
 val tid = sortid_sym(tok)
 val s2ta = t2abs_new(tid)
@@ -1616,16 +1616,16 @@ end // end of [aux_abssort]
 
 fun
 aux_stacst0
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Cstacst0
 ( knd
 , sid, arg, res) =
-d1c0.node((*void*))
+d1cl.node((*void*))
 //
 fun
 auxargs
@@ -1689,15 +1689,15 @@ end // end of [aux_stacst0]
 
 fun
 aux_sortdef
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Csortdef
 (knd, tid, def0) =
-d1c0.node((*void*))
+d1cl.node((*void*))
 //
 val sym = sortid_sym(tid)
 //
@@ -1794,15 +1794,15 @@ end // end of [aux_sortdef]
 
 fun
 aux_sexpdef
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Csexpdef
 ( knd, sid
-, arg, res, body) = d1c0.node()
+, arg, res, body) = d1cl.node()
 //
 val (pf0|()) =
 the_sexpenv_pushnil()
@@ -2036,15 +2036,15 @@ case+ t1as of
 
 and
 aux_abstype
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Cabstype
 ( knd, sid
-, arg, res, def) = d1c0.node()
+, arg, res, def) = d1cl.node()
 //
 fun
 auxargs
@@ -2263,17 +2263,17 @@ in (* in-of-local *)
 
 fun
 aux_absimpl
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 //
 val-
 D1Cabsimpl
 ( knd
 , sqid
-, smas, res1, s1e2) = d1c0.node()
+, smas, res1, s1e2) = d1cl.node()
 //
 val sqid = auxsqid(sqid)
 val svss = auxsmas(sqid, smas)
@@ -2296,22 +2296,22 @@ end // end of [local]
 
 fun
 aux_valdecl
-( d1c0
+( d1cl
 : d1ecl): d2ecl =
-aux_valdecl_nrc(d1c0)
+aux_valdecl_nrc(d1cl)
 
 and
 aux_valdecl_nrc
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Cvaldecl
 ( knd
 , mopt
-, v1ds) = d1c0.node()
+, v1ds) = d1cl.node()
 //
 val
 isr =
@@ -2419,16 +2419,16 @@ case+ v1ds of
 
 fun
 aux_vardecl
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 //
 val-
 D1Cvardecl
 ( knd
-, v1ds) = d1c0.node()
+, v1ds) = d1cl.node()
 //
 val v2ds = auxv1ds(v1ds)
 //
@@ -2503,17 +2503,17 @@ list_map$fopr<v1ardecl><v2ardecl>(v1d) = auxv1d0(v1d)
 
 fun
 aux_fundecl
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Cfundecl
 ( knd
 , mopt
 , tqas
-, f1ds) = d1c0.node()
+, f1ds) = d1cl.node()
 //
 val
 isr =
@@ -2585,7 +2585,7 @@ val d2cs =
 auxd2vs_rec(isr, d2vs, f1ds)
 //
 val f2ds =
-auxf1ds(d1c0, d2vs, d2cs, f1ds)
+auxf1ds(d1cl, d2vs, d2cs, f1ds)
 //
 val ((*void*)) =
 auxd2vs_nrc(isr, d2cs, f1ds)
@@ -2633,7 +2633,7 @@ list_map$fopr<f1undecl><d2var>
 //
 fun
 auxf1d0
-( d1c0
+( d1cl
 : d1ecl
 , d2v0
 : d2var
@@ -2682,7 +2682,7 @@ end // end of [auxf1d0]
 //
 and
 auxf1ds
-( d1c0
+( d1cl
 : d1ecl
 , d2vs
 : d2varlst
@@ -2707,7 +2707,7 @@ case+ d2vs of
     list_cons
     (f1d0, f1ds) = f1ds
     val f2d0 =
-    auxf1d0(d1c0, d2v0, d2c0, f1d0)
+    auxf1d0(d1cl, d2v0, d2c0, f1d0)
     val ((*void*)) =
     if
     ishdr(f1d0) then let
@@ -2724,7 +2724,7 @@ case+ d2vs of
 *)
     end // end of [then] // end of [if]
     val f2ds =
-    auxf1ds(d1c0, d2vs, d2cs, f1ds)
+    auxf1ds(d1cl, d2vs, d2cs, f1ds)
   }
 )
 //
@@ -3046,17 +3046,17 @@ in (* in-of-local *)
 
 fun
 aux_impdecl
-( d1c0
+( d1cl
 : d1ecl): d2ecl =
-aux_impdecl_rec(d1c0)
+aux_impdecl_rec(d1cl)
 
 and
 aux_impdecl_rec
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Cimpdecl
 ( knd
@@ -3064,7 +3064,7 @@ D1Cimpdecl
 , sqas, tqas
 , dqid, tias
 , f1as, tres
-, teq1, d1e2) = d1c0.node()
+, teq1, d1e2) = d1cl.node()
 //
 val
 id2c = auxdqid(dqid)
@@ -3135,7 +3135,7 @@ nd2c = 1
 then
 d2ecl_make_node
 ( loc0
-, D2Cimpdecl2
+, D2Cimpdecl1
   ( knd, mopt
   , sqas, tqas, id2c, tias, f2as, tres, d2e2)
 ) (* d2ecl_make_node *)
@@ -3232,16 +3232,16 @@ in (* in-of-local *)
 
 fun
 aux_symload
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Csymload
 ( tok
 , sym
-, dqid, opt) = d1c0.node()
+, dqid, opt) = d1cl.node()
 //
 val pval =
 (
@@ -3311,14 +3311,14 @@ end // end of [local]
 
 fun
 aux_datasort
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Cdatasort
-(knd, d1ts) = d1c0.node()
+(knd, d1ts) = d1cl.node()
 //
 val s2ts =
 auxd1ts(d1ts) where
@@ -3432,23 +3432,23 @@ case+ d1ts of
 }
 //
 in
-  d2ecl_make_node(loc0, D2Cdatasort(d1c0))
+  d2ecl_make_node(loc0, D2Cdatasort(d1cl))
 end // end of [aux_datasort]
 
 (* ****** ****** *)
 
 fun
 aux_datatype
-( d1c0
+( d1cl
 : d1ecl): d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 val-
 D1Cdatatype
 ( knd // datatype
 , d1ts
-, wd1cs) = d1c0.node()
+, wd1cs) = d1cl.node()
 //
 val
 s2cs =
@@ -3463,7 +3463,7 @@ val () =
 aux2_datypelst(s2cs, d1ts)
 //
 in
-  d2ecl_make_node(loc0, D2Cdatatype(d1c0))
+  d2ecl_make_node(loc0, D2Cdatatype(d1cl))
 end // end of [aux_datatype]
 
 and
@@ -3591,18 +3591,18 @@ case+ s2cs of
 
 fun
 aux_dynconst
-( d1c0
+( d1cl
 : d1ecl
 ) : d2ecl = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 //
 val-
 D1Cdynconst
 ( knd
 , tqas
-, d1cs) = d1c0.node()
+, d1cs) = d1cl.node()
 //
 val
 tqas =
@@ -3652,10 +3652,10 @@ and
 aux_dcstdecl
 ( tqas
 : tq2arglst
-, d1c0
+, d1cl
 : d1cstdecl): d2cst = let
 //
-  val+D1CSTDECL(rcd) = d1c0
+  val+D1CSTDECL(rcd) = d1cl
 //
 //
 val (pf0|()) =
@@ -3664,7 +3664,7 @@ the_sexpenv_pushnil()
 val
 s2e0 =
 auxarg1
-(d1c0, 0, rcd.arg, rcd.res)
+(d1cl, 0, rcd.arg, rcd.res)
 val ((*void*)) =
 //
 the_sexpenv_popfree(pf0|(*void*))
@@ -3692,7 +3692,7 @@ end // end of [auxsid]
 
 and
 auxres0
-( d1c0
+( d1cl
 : d1cstdecl
 , res0
 : effs1expopt): s2exp =
@@ -3715,7 +3715,7 @@ case+ res0 of
 
 and
 auxarg1
-( d1c0
+( d1cl
 : d1cstdecl
 , nfc0: int
 , d1as: d1arglst
@@ -3723,14 +3723,14 @@ auxarg1
 (
 case+ d1as of
 | list_nil() =>
-  auxres0(d1c0, res0)
+  auxres0(d1cl, res0)
 | list_cons(d1a0, d1as) =>
-  auxarg2(d1c0, nfc0, d1a0, d1as, res0)
+  auxarg2(d1cl, nfc0, d1a0, d1as, res0)
 )
 
 and
 auxarg2
-( d1c0
+( d1cl
 : d1cstdecl
 , nfc0: int
 , d1a0: d1arg
@@ -3752,7 +3752,7 @@ let
   trans12_squalst(s1qs, s2vs_, s2ps_)
   val s2vs = list_vt2t(s2vs_)
   val s2ps = list_vt2t(s2ps_)
-  val s2e0 = auxarg1(d1c0, nfc0+0, d1as, res0)
+  val s2e0 = auxarg1(d1cl, nfc0+0, d1as, res0)
 in
   s2exp_uni(s2vs, s2ps, s2e0)
 end // end of [D1ARGsome_sta]
@@ -3775,7 +3775,7 @@ val eff = S2EFFnil()
 val s2es =
   list_sing(auxsid(tok0))
 val s2e0 =
-  auxarg1(d1c0, nfc0+1, d1as, res0)
+  auxarg1(d1cl, nfc0+1, d1as, res0)
 in
   s2exp_fun_full
     (fc2, lin, eff, npf, s2es, s2e0)
@@ -3786,7 +3786,7 @@ let
   val npf = ~1
   val s2es = list_sing(auxsid(tok0))
 in
-  auxarg3(d1c0, nfc0, npf, s2es, d1as, res0)
+  auxarg3(d1cl, nfc0, npf, s2es, d1as, res0)
 end
 |
 D1ARGsome_dyn2(arg0, opt1) =>
@@ -3814,13 +3814,13 @@ let
   ) : s2explst // end-of-val
 //
 in
-  auxarg3(d1c0, nfc0, npf, s2es, d1as, res0)
+  auxarg3(d1cl, nfc0, npf, s2es, d1as, res0)
 end
 ) (* end of [auxarg2]  *)
 
 and
 auxarg3
-( d1c0
+( d1cl
 : d1cstdecl
 , nfc0: int
 , npf0: int
@@ -3879,7 +3879,7 @@ let
   val eff = S2EFFnil()
 *)
   val s2e0 =
-    auxarg1(d1c0, nfc0+1, d1as, res0)
+    auxarg1(d1cl, nfc0+1, d1as, res0)
   // end of [val]
 in
   s2exp_fun_full(fc2, npf0, s2es, s2e0)
@@ -3907,24 +3907,24 @@ in (* in-of-local *)
 
 implement
 trans12_decl
-  (d1c0) = let
+  (d1cl) = let
 //
 val
-loc0 = d1c0.loc()
+loc0 = d1cl.loc()
 //
 (*
 val () =
 println!
-("trans12_decl: d1c0 = ", d1c0)
+("trans12_decl: d1cl = ", d1cl)
 *)
 //
 in (* in-of-let *)
 //
 case-
-d1c0.node() of
+d1cl.node() of
 //
-| D1Cnone() => d2ecl_none1(d1c0)
-| D1Cnone(_) => d2ecl_none1(d1c0)
+| D1Cnone() => d2ecl_none1(d1cl)
+| D1Cnone(_) => d2ecl_none1(d1cl)
 //
 | D1Cstatic
   (tok, d1c) =>
@@ -3941,33 +3941,33 @@ d1c0.node() of
     d2ecl_make_node(loc0, D2Cextern(tok, d2c))
   end
 //
-| D1Cabssort _ => aux_abssort(d1c0)
+| D1Cabssort _ => aux_abssort(d1cl)
 //
-| D1Cstacst0 _ => aux_stacst0(d1c0)
+| D1Cstacst0 _ => aux_stacst0(d1cl)
 //
-| D1Csortdef _ => aux_sortdef(d1c0)
+| D1Csortdef _ => aux_sortdef(d1cl)
 //
-| D1Csexpdef _ => aux_sexpdef(d1c0)
+| D1Csexpdef _ => aux_sexpdef(d1cl)
 //
-| D1Cabstype _ => aux_abstype(d1c0)
+| D1Cabstype _ => aux_abstype(d1cl)
 //
-| D1Cabsimpl _ => aux_absimpl(d1c0)
+| D1Cabsimpl _ => aux_absimpl(d1cl)
 //
-| D1Cvaldecl _ => aux_valdecl(d1c0)
+| D1Cvaldecl _ => aux_valdecl(d1cl)
 //
-| D1Cvardecl _ => aux_vardecl(d1c0)
+| D1Cvardecl _ => aux_vardecl(d1cl)
 //
-| D1Cfundecl _ => aux_fundecl(d1c0)
+| D1Cfundecl _ => aux_fundecl(d1cl)
 //
-| D1Cimpdecl _ => aux_impdecl(d1c0)
+| D1Cimpdecl _ => aux_impdecl(d1cl)
 //
-| D1Csymload _ => aux_symload(d1c0)
+| D1Csymload _ => aux_symload(d1cl)
 //
-| D1Cdatasort _ => aux_datasort(d1c0)
+| D1Cdatasort _ => aux_datasort(d1cl)
 //
-| D1Cdatatype _ => aux_datatype(d1c0)
+| D1Cdatatype _ => aux_datatype(d1cl)
 //
-| D1Cdynconst _ => aux_dynconst(d1c0)
+| D1Cdynconst _ => aux_dynconst(d1cl)
 //
 | D1Clocal
   (d1cs1, d1cs2) => let
@@ -3983,7 +3983,7 @@ d1c0.node() of
     d2ecl_make_node(loc0, D2Clocal(d2cs1, d2cs2))
   end // end of [D1Clocal]
 //
-| _(*rest-of-D1ECL*) => d2ecl_none1(d1c0)
+| _(*rest-of-D1ECL*) => d2ecl_none1(d1cl)
 //
 end // end of [trans12_decl]
 
@@ -4146,7 +4146,7 @@ in (* in-of-local *)
 
 implement
 trans12_datcon
-(s2c0, svss, d1c0) =
+(s2c0, svss, d1cl) =
 let
 //
 val (pf0|()) =
@@ -4172,7 +4172,7 @@ val+
 D1ATCON
 ( s1us
 , tok0
-, s1is, argopt) = d1c0.node()
+, s1is, argopt) = d1cl.node()
 //
 val
 loc0 = tok0.loc()

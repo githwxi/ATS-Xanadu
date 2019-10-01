@@ -136,25 +136,28 @@ d3p0.node() of
     println!
     (loc0, ": T3XERR(d3pat): D3Pcast: d3p1 = ", d3p1);
 //
-    println!(loc0, ": T3XERR(d3pat): D3Pcast: t2p1 = ", t2p1);
-    println!(loc0, ": T3XERR(d3pat): D3Pcast: t2p2 = ", t2p2);
+    println!
+    (loc0, ": T3XERR(d3pat): D3Pcast: t2p1 = ", t2p1);
+    println!
+    (loc0, ": T3XERR(d3pat): D3Pcast: t2p2 = ", t2p2);
 //
   end
 //
 | D3Pnone0() => ((*void*))
 //
-| D3Pnone1(_) =>
+| D3Pnone1(d3p1) =>
   let
     val () =
     t3xerr_add(T3XERRd3pat(d3p0))
   in
-    println!(loc0, ": T3XERR(d3pat): ", d3p0);
+    println!
+    (loc0, ": T3XERR(d3pat): D3Pnone1: d3p1 = ", d3p1);
   end // end of [D3Pnone1]
 //
 | _(* rest-of-d3pat *) =>
-  (
-    println!(loc0, ": t3xread_d3pat: d3p0 = ", d3p0)
-  )
+  {
+    val () = println!(loc0, ": t3xread_d3pat(", d3p0, ")")
+  }
 //
 end // end of [t3xread_d3pat]
 //
@@ -309,9 +312,9 @@ d3e0.node() of
   end // end of [D1Enone1]
 //
 | _(* rest-of-d3exp *) =>
-  (
-    println!(loc0, ": t3xread_d3exp: d3e0 = ", d3e0)
-  )
+  {
+    val () = println!(loc0, ": t3xread_d3exp(", d3e0, ")")
+  }
 //
 end // end of [t3xread_d3exp]
 
@@ -510,9 +513,9 @@ d3c0.node() of
   }
 //
 | _(* rest-of-d3ecl *) =>
-  (
-    println!(loc0, ": t3xread_d3ecl: d3c0 = ", d3c0)
-  )
+  {
+    val () = println!(loc0, ": t3xread_d3ecl(", d3c0, ")")
+  }
 //
 end // end of [t3xread_d3ecl]
 
@@ -538,15 +541,34 @@ t3xread_f3arg
 (
 case+
 f3a0.node() of
-| F3ARGsome_sta
-  (s2vs, s2ps) => ()
 //
-| F3ARGsome_met(s2es) => ()
+| F3ARGsome_sta _ => ()
+| F3ARGsome_met _ => ()
 | F3ARGsome_dyn
   (npf, d3ps) =>
   {
     val () = t3xread_d3patlst<>(d3ps)
   }
+//
+| F3ARGnone2(f2a) =>
+  let
+    val loc0 = f3a0.loc()
+    val ((*void*)) =
+    t3xerr_add(T3XERRf3arg(f3a0))
+  in
+    println!
+    (loc0, ": T3XERR(f3arg): F3ARGnone2: f2a = ", f2a)
+  end
+| F3ARGnone3(f3a) =>
+  let
+    val loc0 = f3a0.loc()
+    val ((*void*)) =
+    t3xerr_add(T3XERRf3arg(f3a0))
+  in
+    println!
+    (loc0, ": T3XERR(f3arg): F3ARGnone3: f3a = ", f3a)
+  end
+//
 ) (* end of [t3xread_f3arg] *)
 //
 implement

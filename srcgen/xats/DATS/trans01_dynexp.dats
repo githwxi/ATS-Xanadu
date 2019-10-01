@@ -1596,13 +1596,13 @@ end // end of [trans01_dgpat]
 
 implement
 trans01_dclau
-  (d0c0) = let
+  (d0cl) = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 in
 case+
-d0c0.node() of
+d0cl.node() of
 | D0CLAUgpat(dgp) =>
   d1clau_make_node
   (loc0, D1CLAUgpat(trans01_dgpat(dgp)))
@@ -1731,10 +1731,10 @@ case+ opt of
 
 implement
 trans01_valdecl
-  (d0c0) = let
+  (d0cl) = let
 //
 val+
-V0ALDECL(rcd) = d0c0
+V0ALDECL(rcd) = d0cl
 //
 val
 loc = rcd.loc
@@ -1782,10 +1782,10 @@ list_vt2t(d1cs) where
 
 implement
 trans01_vardecl
-  (d0c0) = let
+  (d0cl) = let
 //
 val+
-V0ARDECL(rcd) = d0c0
+V0ARDECL(rcd) = d0cl
 //
 val
 loc = rcd.loc
@@ -1848,10 +1848,10 @@ list_vt2t(d1cs) where
 
 implement
 trans01_fundecl
-  (d0c0) = let
+  (d0cl) = let
 //
 val+
-F0UNDECL(rcd) = d0c0
+F0UNDECL(rcd) = d0cl
 //
 val
 loc = rcd.loc
@@ -1913,16 +1913,16 @@ list_vt2t(d1cs) where
 
 implement
 trans01_dcstdecl
-  (d0c0) = let
+  (d0cl) = let
 //
 (*
 val () =
 println!
-("trans01_dcstdecl: d0c0 = ", d0c0)
+("trans01_dcstdecl: d0cl = ", d0cl)
 *)
 //
 val+
-D0CSTDECL(rcd) = d0c0
+D0CSTDECL(rcd) = d0cl
 //
 val
 loc = rcd.loc
@@ -2061,17 +2061,17 @@ case+ opt of
 
 fun
 aux_fixity
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cfixity
 ( tok0
 , ids1
 , opt2
-) = d0c0.node()
+) = d0cl.node()
 //
 val-
 T_SRP_FIXITY
@@ -2127,19 +2127,19 @@ in
   let
     val () = loop(ids1)
   in
-    d1ecl_make_node(loc0, D1Cnone(d0c0))
+    d1ecl_make_node(loc0, D1Cnone(d0cl))
   end
 end // end of [aux_fixity]
 
 fun
 aux_nonfix
-(d0c0: d0ecl): d1ecl = let
+(d0cl: d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cnonfix
-(tok0, ids1) = d0c0.node()
+(tok0, ids1) = d0cl.node()
 //
 fun
 loop
@@ -2170,7 +2170,7 @@ in
   let
     val () = loop(ids1)
   in
-    d1ecl_make_node(loc0, D1Cnone(d0c0))
+    d1ecl_make_node(loc0, D1Cnone(d0cl))
   end
 end // end of [aux_nonfix]
 
@@ -2178,14 +2178,14 @@ end // end of [aux_nonfix]
 
 fun
 aux_static
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cstatic
-(tok, d0c) = d0c0.node()
+(tok, d0c) = d0cl.node()
 //
 val d1c = trans01_decl(d0c)
 //
@@ -2194,14 +2194,14 @@ in
 end // end of [aux_static]
 fun
 aux_extern
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cextern
-(tok, d0c) = d0c0.node()
+(tok, d0c) = d0cl.node()
 //
 val d1c = trans01_decl(d0c)
 //
@@ -2213,17 +2213,17 @@ end // end of [aux_extern]
 
 fun
 aux_define
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cdefine
 ( tok
 , gid
 , gmas
-, gdef) = d0c0.node()
+, gdef) = d0cl.node()
 //
 val-I0DNTsome(gid) = gid.node()
 //
@@ -2239,17 +2239,17 @@ end // end of [aux_define]
 
 fun
 aux_macdef
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cmacdef
 ( tok
 , gid
 , gmas
-, mdef) = d0c0.node()
+, mdef) = d0cl.node()
 //
 val-I0DNTsome(gid) = gid.node()
 //
@@ -2301,10 +2301,10 @@ in (* in-of-local *)
 
 fun
 aux_include
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 (*
 val () =
@@ -2313,7 +2313,7 @@ println!("aux_include")
 //
 val-
 D0Cinclude
-(tok, d0e) = d0c0.node()
+(tok, d0e) = d0cl.node()
 //
 val d1e = trans01_dexp(d0e)
 //
@@ -2423,10 +2423,10 @@ in (* in-of-local *)
 
 fun
 aux_staload
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 (*
 val () =
@@ -2435,7 +2435,7 @@ println!("aux_staload")
 //
 val-
 D0Cstaload
-(tok, d0e) = d0c0.node()
+(tok, d0e) = d0cl.node()
 //
 val opt = auxd1e(trans01_dexp(d0e))
 //
@@ -2485,14 +2485,14 @@ end // end of [local]
 
 fun
 aux_abssort
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cabssort
-(tok, tid) = d0c0.node()
+(tok, tid) = d0cl.node()
 //
 val-
 I0DNTsome(tid) = tid.node()
@@ -2505,15 +2505,15 @@ end // end of [aux_abssort]
 
 fun
 aux_stacst0
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cstacst0
 ( tok, sid
-, tmas, tcln, s0t2) = d0c0.node()
+, tmas, tcln, s0t2) = d0cl.node()
 //
 val-
 I0DNTsome(sid) = sid.node()
@@ -2533,14 +2533,14 @@ end // end of [aux_stacst0]
 
 fun
 aux_sortdef
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Csortdef
-(knd, tid, _, def0) = d0c0.node()
+(knd, tid, _, def0) = d0cl.node()
 //
 val def1 =
 (
@@ -2579,17 +2579,17 @@ end // end of [aux_sortdef]
 
 fun
 aux_sexpdef
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Csexpdef
 ( knd
 , seid
 , arg0
-, opt0, _, def0) = d0c0.node()
+, opt0, _, def0) = d0cl.node()
 //
 val def1 = trans01_sexp(def0)
 val opt1 = trans01_sortopt(opt0)
@@ -2633,16 +2633,16 @@ aux_abstdef
 
 and
 aux_abstype
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cabstype
 ( knd
 , seid
-, arg0, res0, def0) = d0c0.node()
+, arg0, res0, def0) = d0cl.node()
 //
 val def1 =
   aux_abstdef(def0)
@@ -2675,17 +2675,17 @@ end // end of [aux_abstype]
 
 fun
 aux_absimpl
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cabsimpl
 ( tok
 , sqid
 , smas
-, res0, teq1, def2) = d0c0.node()
+, res0, teq1, def2) = d0cl.node()
 //
 val smas =
 trans01_smarglst(smas)
@@ -2708,14 +2708,14 @@ end // end of [aux_absimpl]
 
 fun
 aux_valdecl
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cvaldecl
-(knd, mopt, d0cs) = d0c0.node()
+(knd, mopt, d0cs) = d0cl.node()
 //
 val d1cs = trans01_valdeclist(d0cs)
 //
@@ -2729,14 +2729,14 @@ end // end of [aux_valdecl]
 
 fun
 aux_vardecl
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cvardecl
-  (knd, d0cs) = d0c0.node()
+  (knd, d0cs) = d0cl.node()
 //
 val d1cs = trans01_vardeclist(d0cs)
 //
@@ -2748,15 +2748,15 @@ end // end of [aux_vardecl]
 
 fun
 aux_fundecl
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cfundecl
 ( knd
-, mopt, tqas, d0cs) = d0c0.node()
+, mopt, tqas, d0cs) = d0cl.node()
 //
 val tqas = trans01_tqarglst(tqas)
 val d1cs = trans01_fundeclist(d0cs)
@@ -2771,16 +2771,16 @@ end // end of [aux_fundecl]
 
 fun
 aux_impdecl
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cimpdecl
 ( knd
 , mopt, sqas, tqas
-, dqid, tias, f0as, res0, teq1, d0e2) = d0c0.node()
+, dqid, tias, f0as, res0, teq1, d0e2) = d0cl.node()
 //
 val sqas =
   trans01_sqarglst(sqas)
@@ -2810,14 +2810,14 @@ end // end of [aux_impdecl]
 
 fun
 aux_symload
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Csymload
-(tok, sym, _, dqid, tint) = d0c0.node()
+(tok, sym, _, dqid, tint) = d0cl.node()
 //
 in
 //
@@ -2830,14 +2830,14 @@ end // end of [aux_symload]
 
 fun
 aux_datasort
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cdatasort
-(knd, d0ts) = d0c0.node()
+(knd, d0ts) = d0cl.node()
 //
 val
 d1ts =
@@ -2875,14 +2875,14 @@ d0t0.node() of
 
 fun
 aux_datatype
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cdatatype
-  (knd, d0ts, wd0cs) = d0c0.node()
+  (knd, d0ts, wd0cs) = d0cl.node()
 //
 val
 d1ts =
@@ -2948,14 +2948,14 @@ end // end of [aux_d0atype]
 
 fun
 aux_dynconst
-( d0c0
+( d0cl
 : d0ecl): d1ecl = let
 //
-val loc0 = d0c0.loc()
+val loc0 = d0cl.loc()
 //
 val-
 D0Cdynconst
-(knd, tqas, d0cs) = d0c0.node()
+(knd, tqas, d0cs) = d0cl.node()
 //
 val tqas = trans01_tqarglst(tqas)
 val d1cs = trans01_dcstdeclist(d0cs)
@@ -2974,61 +2974,61 @@ in (* in-of-local *)
 
 implement
 trans01_decl
-  (d0c0) = let
+  (d0cl) = let
 //
 val
-loc0 = d0c0.loc()
+loc0 = d0cl.loc()
 //
 (*
 val () =
 println!
-("trans01_decl: d0c0 = ", d0c0)
+("trans01_decl: d0cl = ", d0cl)
 *)
 //
 in
 //
 case+
-d0c0.node() of
+d0cl.node() of
 //
-| D0Cnone _ => d1ecl_none1(d0c0)
+| D0Cnone _ => d1ecl_none1(d0cl)
 //
-| D0Cfixity _ => aux_fixity(d0c0)
-| D0Cnonfix _ => aux_nonfix(d0c0)
+| D0Cfixity _ => aux_fixity(d0cl)
+| D0Cnonfix _ => aux_nonfix(d0cl)
 //
-| D0Cstatic _ => aux_static(d0c0)
-| D0Cextern _ => aux_extern(d0c0)
+| D0Cstatic _ => aux_static(d0cl)
+| D0Cextern _ => aux_extern(d0cl)
 //
-| D0Cdefine _ => aux_define(d0c0)
-| D0Cmacdef _ => aux_macdef(d0c0)
+| D0Cdefine _ => aux_define(d0cl)
+| D0Cmacdef _ => aux_macdef(d0cl)
 //
-| D0Cinclude _ => aux_include(d0c0)
+| D0Cinclude _ => aux_include(d0cl)
 //
-| D0Cstaload _ => aux_staload(d0c0)
+| D0Cstaload _ => aux_staload(d0cl)
 //
-| D0Cabssort _ => aux_abssort(d0c0)
+| D0Cabssort _ => aux_abssort(d0cl)
 //
-| D0Cstacst0 _ => aux_stacst0(d0c0)
+| D0Cstacst0 _ => aux_stacst0(d0cl)
 //
-| D0Csortdef _ => aux_sortdef(d0c0)
+| D0Csortdef _ => aux_sortdef(d0cl)
 //
-| D0Csexpdef _ => aux_sexpdef(d0c0)
+| D0Csexpdef _ => aux_sexpdef(d0cl)
 //
-| D0Cabstype _ => aux_abstype(d0c0)
-| D0Cabsimpl _ => aux_absimpl(d0c0)
+| D0Cabstype _ => aux_abstype(d0cl)
+| D0Cabsimpl _ => aux_absimpl(d0cl)
 //
-| D0Cvaldecl _ => aux_valdecl(d0c0)
-| D0Cvardecl _ => aux_vardecl(d0c0)
-| D0Cfundecl _ => aux_fundecl(d0c0)
+| D0Cvaldecl _ => aux_valdecl(d0cl)
+| D0Cvardecl _ => aux_vardecl(d0cl)
+| D0Cfundecl _ => aux_fundecl(d0cl)
 //
-| D0Cimpdecl _ => aux_impdecl(d0c0)
+| D0Cimpdecl _ => aux_impdecl(d0cl)
 //
-| D0Csymload _ => aux_symload(d0c0)
+| D0Csymload _ => aux_symload(d0cl)
 //
-| D0Cdatasort _ => aux_datasort(d0c0)
+| D0Cdatasort _ => aux_datasort(d0cl)
 //
-| D0Cdatatype _ => aux_datatype(d0c0)
+| D0Cdatatype _ => aux_datatype(d0cl)
 //
-| D0Cdynconst _ => aux_dynconst(d0c0)
+| D0Cdynconst _ => aux_dynconst(d0cl)
 //
 | D0Clocal
   (_, d0cs1, _, d0cs2, _) =>
@@ -3041,14 +3041,14 @@ d0c0.node() of
 //
 | D0Ctokerr _ =>
   (
-    d1ecl_make_node(loc0, D1Ctokerr(d0c0))
+    d1ecl_make_node(loc0, D1Ctokerr(d0cl))
   )
 //
 (*
 | _ (*rest-of-d0ecl*) =>
   (
     println!
-    (loc0, ": trans01_decl: d0c0 = ", d0c0); exit(1)
+    (loc0, ": trans01_decl: d0cl = ", d0cl); exit(1)
   ) (* end of [D0C...] *)
 *)    
 //

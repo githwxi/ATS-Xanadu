@@ -55,6 +55,8 @@ datatype t3xerr =
 //
 | T3XERRd3pat of (d3pat)
 | T3XERRd3exp of (d3exp)
+//
+| T3XERRf3arg of (f3arg)
 | T3XERRd3ecl of (d3ecl)
 //
 typedef

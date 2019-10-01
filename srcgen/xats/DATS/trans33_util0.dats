@@ -603,4 +603,150 @@ case+ dpis of
 //
 (* ****** ****** *)
 
+implement
+t2ype_f3arg_elim
+(
+loc0, tfun, f3as
+) =
+(
+( f3as, tfun ) where
+{
+  var tfun = tfun
+  val f3as = auxf3as_0(f3as, tfun)
+}
+) where
+{
+fun
+auxf3as_0
+( f3as
+: f3arglst
+, tfun
+: &t2ype >> _
+)
+: f3arglst =
+(
+case+ f3as of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (f3a0, f3as) =>
+  (
+    list_cons(f3a0, f3as)
+  ) where
+  {
+    val
+    f3a0 = auxf3as_1(f3a0, tfun)
+    val
+    f3as = auxf3as_0(f3as, tfun)
+  }
+) (* auxf3as_0 *)
+and
+auxf3as_1
+( f3a0
+: f3arg
+, tfun
+: &t2ype >> _): f3arg =
+(
+case-
+f3a0.node() of
+(*
+| F3ARGnone2 _ => f3a0
+| F3ARGnone3 _ => f3a0
+| F3ARGsome_met _ => f3a0
+*)
+| F3ARGsome_sta _ => auxf3as_1s(f3a0, tfun)
+| F3ARGsome_dyn _ => auxf3as_1d(f3a0, tfun)
+)
+//
+and
+auxf3as_1s
+( f3a0
+: f3arg
+, tfun
+: &t2ype >> _): f3arg =
+let
+//
+val-
+F3ARGsome_sta
+( svs1
+, s2ps) = f3a0.node()
+//
+val
+t2p0 = t2ype_hnfize(tfun)
+//
+in
+//
+case+
+t2p0.node() of
+| T2Puni
+  (svs2, t2p0) =>
+  let
+    val t2p0 =
+    t2ype_revars(t2p0, svs1, svs2)
+  in
+    let
+      val () = tfun := t2p0 in f3a0
+    end
+  end
+| _(*non-T2Puni*) =>
+  (
+    f3arg_make_node
+    (f3a0.loc(), F3ARGnone3(f3a0))
+  )
+//
+end // end of [let] // end of [auxf3as_1s]
+//
+and
+auxf3as_1d
+( f3a0
+: f3arg
+, tfun
+: &t2ype >> _): f3arg =
+let
+//
+val-
+F3ARGsome_dyn
+( npf1
+, d3ps) = f3a0.node()
+//
+val
+loc0 = f3a0.loc()
+val
+t2p0 = t2ype_hnfize(tfun)
+//
+in
+//
+case+
+t2p0.node() of
+//
+| T2Puni
+  (s2vs, t2p0) =>
+  (
+    tfun := t2p0;
+    auxf3as_1d(f3a0, tfun)
+  ) where
+  {
+    val t2p0 =
+    t2ype_renams(t2p0, s2vs)
+  }
+| T2Pfun
+  (_, _, t2ps, t2p0) =>
+  let
+    val d3ps =
+    trans33_dpatlst_dn(d3ps, t2ps)
+  in
+    tfun := t2p0;
+    f3arg_make_node
+    (loc0, F3ARGsome_dyn(npf1, d3ps))
+   end
+//
+| _(*non-T2Puni/fun*) =>
+  f3arg_make_node(loc0, F3ARGnone3(f3a0))
+//
+end // end of [let] // end of [auxf3as_1d]
+//
+} (* end of [t2ype_f3arg_elim] *)
+//
+(* ****** ****** *)
+
 (* end of [trans33_util0.dats] *)
