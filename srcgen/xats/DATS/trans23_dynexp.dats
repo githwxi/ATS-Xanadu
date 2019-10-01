@@ -71,6 +71,20 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans23.sats"
 
 (* ****** ****** *)
+
+implement
+fprint_val<t2ype> = fprint_t2ype
+
+(* ****** ****** *)
+
+implement
+fprint_val<d2pat> = fprint_d2pat
+implement
+fprint_val<f2arg> = fprint_f2arg
+implement
+fprint_val<f3arg> = fprint_f3arg
+
+(* ****** ****** *)
 //
 implement
 trenv23_dvar
@@ -299,6 +313,7 @@ trans23_dpatlst_dn
   auxlst(d2ps, t2ps)
 ) where
 {
+//
 fun
 auxlst
 ( d2ps: d2patlst
@@ -323,7 +338,7 @@ case+ d2ps of
       val d3ps = auxlst(d2ps, t2ps)
     }
   | list_cons
-    (t2p0, t3ps) =>
+    (t2p0, t2ps) =>
     (
       list_cons(d3p0, d3ps)
     ) where
@@ -1712,10 +1727,26 @@ in
     t2ype_substs(tfun, s2vs, t2ps)
 end
 ) : t2ype
+//
+(*
+val () =
+println!
+("aux_impdecl1: tfun = ", tfun)
+*)
+//
 val
 (f3as
 ,tres) =
 t2ype_f2arg_elim(loc0, tfun, f2as)
+//
+(*
+val () =
+println!
+("aux_impdecl1: f3as = ", f3as)
+val () =
+println!
+("aux_impdecl1: tres = ", tres)
+*)
 //
 val
 d3e0 =

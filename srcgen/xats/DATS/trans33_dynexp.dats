@@ -961,9 +961,24 @@ val+
 V3ALDECL(rcd) = v3d0
 //
 val loc = rcd.loc
-val pat = trans33_dpat(rcd.pat)
-val def = trans33_dexpopt(rcd.def)
+val pat = rcd.pat
+val def = rcd.def
 val wtp = rcd.wtp
+//
+val pat =
+trans33_dpat(pat)
+val def =
+(
+case+ def of
+| None() =>
+  None()
+| Some(d3e0) =>
+  let
+  val tres = pat.type()
+  in
+  Some(trans33_dexp_dn(d3e0, tres))
+  end
+) : d3expopt // end-of-val
 //
 in
 V3ALDECL(@{loc=loc,pat=pat,def=def,wtp=wtp})
