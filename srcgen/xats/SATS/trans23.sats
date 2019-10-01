@@ -69,25 +69,28 @@ typedef f1unarrow = $D1E.f1unarrow
 typedef effs2expopt = $S2E.effs2expopt
 
 (* ****** ****** *)
-
+//
 typedef d2var = $D2E.d2var
+typedef d2cst = $D2E.d2cst
+//
 typedef d2pat = $D2E.d2pat
 typedef d2exp = $D2E.d2exp
 typedef d2ecl = $D2E.d2ecl
-
+//
 typedef d2patlst = $D2E.d2patlst
 typedef f2arglst = $D2E.f2arglst
 typedef d2expopt = $D2E.d2expopt
 typedef d2explst = $D2E.d2explst
-
+//
 typedef d2eclist = $D2E.d2eclist
-
+//
 (* ****** ****** *)
 
 typedef tq2arg = $D2E.tq2arg
 typedef ti2arg = $D2E.ti2arg
 typedef ti3arg = $D3E.ti3arg
 typedef tq2arglst = $D2E.tq2arglst
+typedef ti2arglst = $D2E.ti2arglst
 
 (* ****** ****** *)
 
@@ -134,10 +137,14 @@ trenv23_dvar_dn
 fun
 trans23_dpat: d2pat -> d3pat
 fun
-trans23_dpatlst: d2patlst -> d3patlst
+trans23_dpat_dn
+(d2p0: d2pat, t2p0: t2ype): d3pat
 //
 fun
-trans23_dpat_dn: (d2pat, t2ype) -> d3pat
+trans23_dpatlst: d2patlst -> d3patlst
+fun
+trans23_dpatlst_dn
+(ps: d2patlst, ts: t2ypelst): d3patlst
 //
 (* ****** ****** *)
 
@@ -340,6 +347,20 @@ d3exp_lam_up
 , res0: effs2expopt
 , arrw: f1unarrow, body: d3exp): d3exp
 
+(* ****** ****** *)
+//
+fun
+d2cst_ti2as_ti3a
+( loc0: loc_t
+, d2c0: d2cst, tias: ti2arglst): ti3arg
+//
+(* ****** ****** *)
+//
+fun
+t2ype_f2arg_elim
+( loc0: loc_t
+, t2p0: t2ype, f2as: f2arglst): (f3arglst, t2ype)
+//
 (* ****** ****** *)
 
 (* end of [xats_trans23.sats] *)

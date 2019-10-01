@@ -213,7 +213,14 @@ case- x0.node() of
 ) (* end of [fprint_d3pat] *)
 //
 (* ****** ****** *)
-
+//
+implement
+print_f3arg(x0) =
+fprint_f3arg(stdout_ref, x0)
+implement
+prerr_f3arg(x0) =
+fprint_f3arg(stderr_ref, x0)
+//
 implement
 fprint_f3arg
   (out, x0) =
@@ -221,19 +228,22 @@ fprint_f3arg
 //
 case+
 x0.node() of
-(*
-| F2ARGnone(tok) =>
-  fprint!(out, "F2ARGnone(", tok, ")")
-*)
+//
+| F3ARGnone2(f2a) =>
+  fprint!(out, "F3ARGnone2(", f2a, ")")
+| F3ARGnone3(f3a) =>
+  fprint!(out, "F3ARGnone2(", f3a, ")")
+//
 | F3ARGsome_met(s2es) =>
   fprint!(out, "F3ARGsome_met(", s2es, ")")
+//
 | F3ARGsome_dyn(npf, d3ps) =>
   fprint!(out, "F3ARGsome_dyn(", npf, "; ", d3ps, ")")
 | F3ARGsome_sta(s2vs, s2ps) =>
   fprint!(out, "F3ARGsome_sta(", s2vs, "; ", s2ps, ")")
 //
 ) (* end of [fprint_f3arg] *)
-
+//
 (* ****** ****** *)
 //
 implement

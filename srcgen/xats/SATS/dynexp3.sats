@@ -228,6 +228,9 @@ f3arg_node =
 | F3ARGnone of (token)
 *)
 //
+| F3ARGnone2 of f2arg
+| F3ARGnone3 of f3arg
+//
 | F3ARGsome_dyn of
   (int(*npf*), d3patlst)
 //
@@ -246,19 +249,15 @@ f3arg_get_node(f3arg): f3arg_node
 overload .loc with f3arg_get_loc
 overload .node with f3arg_get_node
 //
-(*
 fun
 print_f3arg : print_type(f3arg)
 fun
 prerr_f3arg : prerr_type(f3arg)
-*)
 fun
 fprint_f3arg : fprint_type(f3arg)
 //
-(*
 overload print with print_f3arg
 overload prerr with prerr_f3arg
-*)
 overload fprint with fprint_f3arg
 //
 fun

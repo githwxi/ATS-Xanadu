@@ -191,7 +191,7 @@ fun
 trans33_dpatlst: d3patlst -> d3patlst
 fun
 trans33_dpatlst_dn
-(d3ps: d3patlst, t2ps: t2ypelst): d3patlst
+(ps: d3patlst, ts: t2ypelst): d3patlst
 //
 (* ****** ****** *)
 //
@@ -238,6 +238,13 @@ fun
 trans33_decl: d3ecl -> d3ecl 
 fun
 trans33_declist: d3eclist -> d3eclist
+//
+(* ****** ****** *)
+//
+fun
+t2ype_f3arg_elim
+( loc0: loc_t
+, t2p0: t2ype, f3as: f3arglst): (f3arglst, t2ype)
 //
 (* ****** ****** *)
 

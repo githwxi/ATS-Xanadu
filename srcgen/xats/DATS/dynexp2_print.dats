@@ -216,14 +216,14 @@ fprint!(out, "; type= ", x0.type())
 } (* end of [fprint_d2var] *)
 //
 (* ****** ****** *)
-
+//
 implement
 print_f2arg(x0) =
 fprint_f2arg(stdout_ref, x0)
 implement
 prerr_f2arg(x0) =
 fprint_f2arg(stderr_ref, x0)
-
+//
 implement
 fprint_f2arg
   (out, x0) =
@@ -243,7 +243,7 @@ x0.node() of
   fprint!(out, "F2ARGsome_sta(", s2vs, "; ", s2ps, ")")
 //
 ) (* end of [fprint_f2arg] *)
-
+//
 (* ****** ****** *)
 
 implement
@@ -820,12 +820,13 @@ case+ x0 of
 |
 IMPLS2CST1(sqid, s2cs) =>
 fprint!
-(out, "IMPLS2CST(", sqid, "; ", s2cs, ")")
+( out
+, "IMPLS2CST1(", sqid, "; ", s2cs, ")")
 |
 IMPLS2CST2(sqid, s2cs, opt2) =>
 fprint!
 ( out
-, "IMPLS2CST(", sqid, "; ", s2cs, "; ", opt2, ")")
+, "IMPLS2CST2(", sqid, "; ", s2cs, "; ", opt2, ")")
 ) // end of [fprint_impls2cst]
 //
 (* ****** ****** *)
@@ -845,12 +846,13 @@ case+ x0 of
 |
 IMPLD2CST1(dqid, d2cs) =>
 fprint!
-(out, "IMPLD2CST(", dqid, "; ", d2cs, ")")
+( out
+, "IMPLD2CST1(", dqid, "; ", d2cs, ")")
 |
 IMPLD2CST2(dqid, d2cs, opt2) =>
 fprint!
 ( out
-, "IMPLD2CST(", dqid, "; ", d2cs, "; ", opt2, ")")
+, "IMPLD2CST2(", dqid, "; ", d2cs, "; ", opt2, ")")
 ) // end of [fprint_impld2cst]
 //
 (* ****** ****** *)

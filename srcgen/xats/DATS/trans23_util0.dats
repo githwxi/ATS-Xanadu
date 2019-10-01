@@ -1363,7 +1363,8 @@ case+ fa3g of
 | list_nil() => tres
 | list_cons(x0, xs) =>
   (
-  case+ x0.node() of
+  case-
+  x0.node() of
   | F3ARGsome_dyn
     (npf, d3ps) =>
     let
@@ -1411,6 +1412,321 @@ d3exp_make_node
 (loc0, tfun, D3Elam(f3as, res0, arrw, body))
 end // end of [d3exp_lam_up]
 
+(* ****** ****** *)
+
+implement
+d2cst_ti2as_ti3a
+(loc0, d2c0, tias) =
+(
+auxtias_0(d2c0, tias)
+) where
+{
+//
+fun
+auxtias_0
+( d2c0
+: d2cst
+, tias
+: ti2arglst): ti3arg =
+let
+(*
+val () =
+println!
+("auxtias_0: d2c0 = ", d2c0)
+val () =
+println!
+("auxtias_0: tias = ", tias)
+*)
+in
+let
+  val tqas = d2c0.tqas()
+  val t2ps = list_vt_nil()
+in
+  auxtias_1(tqas, tias, t2ps)
+end
+end
+and
+auxtias_1
+( tqas
+: tq2arglst
+, tias
+: ti2arglst
+, t2ps
+: List0_vt(t2ype)): ti3arg =
+let
+(*
+val () =
+println!
+("auxtias_1: tqas = ", tqas)
+*)
+in
+case+ tqas of
+| list_nil() =>
+  (
+    TI3ARGsome(t2ps)
+  ) where
+  {
+    val t2ps =
+    list_vt2t
+    (list_vt_reverse(t2ps))
+  }
+| list_cons(tq2a, tqas) =>
+  let
+    val
+    s2vs = tq2a.s2vs()
+  in
+    case+ tias of
+    | list_nil() => let
+      val
+      s2es = list_nil()
+      val
+      t2ps =
+      auxtias_2(s2vs, s2es, t2ps)
+      in
+        auxtias_1(tqas, tias, t2ps)
+      end
+    | list_cons
+      (ti20, tias) => let
+      val
+      s2es = ti20.s2es()
+      val
+      t2ps =
+      auxtias_2(s2vs, s2es, t2ps)
+      in
+        auxtias_1(tqas, tias, t2ps)
+      end
+  end
+end
+and
+auxtias_2
+( s2vs
+: s2varlst 
+, s2es
+: s2explst
+, t2ps
+: List0_vt(t2ype)
+)
+: List0_vt(t2ype) =
+(
+case+ s2vs of
+| list_nil() => t2ps
+| list_cons
+  (s2v0, s2vs) =>
+  (
+  case+ s2es of
+  | list_nil() => let
+    val s2t0 =
+    s2v0.sort()
+    val t2p0 =
+    t2ype_srt_xtv
+    (s2t0, t2xtv_new(loc0))
+    val
+    t2ps =
+    list_vt_cons(t2p0, t2ps)
+    in
+      auxtias_2(s2vs, s2es, t2ps)
+    end
+  | list_cons
+    (s2e0, s2es1) =>
+    ( case+
+      s2e0.node() of
+      | S2Eany(k0) =>
+        let
+          val s2t0 =
+          s2v0.sort()
+          val t2p0 =
+          t2ype_srt_xtv
+          (s2t0, t2xtv_new(loc0))
+          val t2ps =
+          list_vt_cons(t2p0, t2ps)
+        in
+          if
+          (k0 >= 2)
+          then
+          auxtias_2(s2vs, s2es, t2ps)
+          else
+          auxtias_2(s2vs, s2es1, t2ps)
+        end
+      | _(*non-S2Eany*) =>
+        let
+          val t2p0 =
+          s2exp_erase(s2e0)
+          val t2ps =
+          list_vt_cons(t2p0, t2ps)
+        in
+          auxtias_2(s2vs, s2es1, t2ps)
+        end
+    )
+  )
+) (* end of [auxtias_2] *)
+//
+} (* end of [d2cst_ti2as_ti3a] *)
+
+(* ****** ****** *)
+
+implement
+t2ype_f2arg_elim
+(
+loc0, tfun, f2as
+) =
+(
+( f3as, tfun ) where
+{
+  var tfun = tfun
+  val f3as = auxf2as_0(f2as, tfun)
+}
+) where
+{
+fun
+auxf2as_0
+( f2as
+: f2arglst
+, tfun
+: &t2ype >> _
+)
+: f3arglst =
+(
+case+ f2as of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (f2a0, f2as) =>
+  (
+    list_cons(f3a0, f3as)
+  ) where
+  {
+    val
+    f3a0 = auxf2as_1(f2a0, tfun)
+    val
+    f3as = auxf2as_0(f2as, tfun)
+  }
+) (* auxf2as_0 *)
+and
+auxf2as_1
+( f2a0
+: f2arg
+, tfun
+: &t2ype >> _): f3arg =
+(
+case-
+f2a0.node() of
+(*
+| F2ARGnone _ => ...
+*)
+| F2ARGsome_met _ => auxf2as_1m(f2a0, tfun)
+| F2ARGsome_sta _ => auxf2as_1s(f2a0, tfun)
+| F2ARGsome_dyn _ => auxf2as_1d(f2a0, tfun)
+)
+//
+and
+auxf2as_1m
+( f2a0
+: f2arg
+, tfun
+: &t2ype >> _): f3arg =
+let
+//
+val-
+F2ARGsome_met
+( s2es ) = f2a0.node()
+//
+in
+  f3arg_make_node
+  (f2a0.loc(), F3ARGsome_met(s2es))
+end
+and
+auxf2as_1s
+( f2a0
+: f2arg
+, tfun
+: &t2ype >> _): f3arg =
+let
+//
+val-
+F2ARGsome_sta
+( svs1
+, s2ps ) = f2a0.node()
+//
+val
+loc0 = f2a0.loc()
+val
+t2p0 = t2ype_hnfize(tfun)
+//
+in
+//
+case+
+t2p0.node() of
+| T2Puni
+  (svs2, t2p0) =>
+  let
+    val t2p0 =
+    t2ype_revars(t2p0, svs1, svs2)
+  in
+    let
+    val () = tfun := t2p0
+    in
+    f3arg_make_node
+    (loc0, F3ARGsome_sta(svs1, s2ps))
+    end
+  end
+| _(*non-T2Puni*) =>
+  (
+    f3arg_make_node(loc0, F3ARGnone2(f2a0))
+  )
+//
+end // end of [let] // end of [auxf2as_1s]
+//
+and
+auxf2as_1d
+( f2a0
+: f2arg
+, tfun
+: &t2ype >> _): f3arg =
+let
+//
+val-
+F2ARGsome_dyn
+( npf1
+, d2ps) = f2a0.node()
+//
+val
+loc0 = f2a0.loc()
+val
+t2p0 = t2ype_hnfize(tfun)
+//
+in
+//
+case+
+t2p0.node() of
+//
+| T2Puni
+  (s2vs, t2p0) =>
+  (
+    tfun := t2p0;
+    auxf2as_1d(f2a0, tfun)
+  ) where
+  {
+    val t2p0 =
+    t2ype_renams(t2p0, s2vs)
+  }
+| T2Pfun
+  (_, _, t2ps, t2p0) =>
+  let
+    val d3ps =
+    trans23_dpatlst_dn(d2ps, t2ps)
+  in
+    tfun := t2p0;
+    f3arg_make_node
+    (loc0, F3ARGsome_dyn(npf1, d3ps))
+   end
+//
+| _(*non-T2Puni/fun*) =>
+  f3arg_make_node(loc0, F3ARGnone2(f2a0))
+//
+end // end of [let] // end of [auxf2as_1d]
+//
+} (* end of [t2ype_f3arg_elim] *)
+//
 (* ****** ****** *)
 
 (* end of [trans23_util0.dats] *)
