@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -271,7 +271,7 @@ loop
 {n,i:nat|i <= n} .<n-i>.
 (
   inp: string n, n: int n, i: int i
-) :<> commarg = 
+) :<> commarg =
 (
 if
 (i < n)
@@ -280,7 +280,7 @@ if (inp[i] != '-')
   then COMMARG(i, inp) else loop(inp, n, i+1)
 ) else COMMARG(n, inp)
 // end of [if]
-) (* end of [if] *)  
+) (* end of [if] *)
 // end of [loop]
 //
 in
@@ -801,51 +801,16 @@ process_cmdline2
 ( st0: &cmdstate >> _
 , arg0: commarg, args: commarglst(n)): void
 //
+
+static
+fun
+go
+{n:nat}
+(d0cs: list(d0ecl, n)): void
+
 implement
-process_nil
-  (st0) = let
-//
-val
-wtk0 = st0.wtk0
-val
-stadyn =
-waitknd_get_stadyn(wtk0)
-//
-val
-XATSHOME = st0.ATSHOME
-//
-val () =
-$FP0.the_dirpathlst_ppush_cwd()
-//
-in
-//
-if
-(
-stadyn >= 0
-) then
+go(d0cs) =
 {
-//
-val () =
-the_preludes_load_if
-(XATSHOME, st0.prelude)
-// end of [val]
-//
-val
-fp0 =
-$FP0.the_filpath_stdin 
-val
-(pf0 | ()) =
-$FP0.the_filpathlst_push(fp0)
-val
-d0cs =
-parse_from_stdin_toplevel(stadyn)
-prval () = $UN.castview0{void}(pf0)
-(*
-val
-((*popped*)) =
-$FP0.the_filpathlst_pout(pf0 | (*none*))
-*)
-//
 (*
 val () =
 println!
@@ -915,22 +880,132 @@ val () =
   the_dexpenv_println((*void*))
 )
 //
-} (* end of [if] *)
+}
+
+
 //
+implement
+process_nil
+  (st0) = let
+//
+val
+wtk0 = st0.wtk0
+val
+stadyn =
+waitknd_get_stadyn(wtk0)
+//
+val
+XATSHOME = st0.ATSHOME
+//
+val () =
+$FP0.the_dirpathlst_ppush_cwd()
+//
+in
+//
+if
+(
+stadyn >= 0
+) then
+{
+//
+val () =
+the_preludes_load_if
+(XATSHOME, st0.prelude)
+// end of [val]
+//
+val
+fp0 =
+$FP0.the_filpath_stdin
+val
+(pf0 | ()) =
+$FP0.the_filpathlst_push(fp0)
+val
+d0cs =
+parse_from_stdin_toplevel(stadyn)
+prval () = $UN.castview0{void}(pf0)
+(*
+val
+((*popped*)) =
+$FP0.the_filpathlst_pout(pf0 | (*none*))
+*)
+//
+val () = go(d0cs)
+//
+} (* end of [if] *)
 end // end of [process_nil]
 //
 implement
 process_given
   (st0, arg0) = let
 //
+(*
 val () =
 println!
 ("process_given: arg0 = ", arg0)
+*)
+val
+wtk0 = st0.wtk0
+val
+stadyn =
+waitknd_get_stadyn(wtk0)
 //
+val
+XATSHOME = st0.ATSHOME
+//
+val () =
+$FP0.the_dirpathlst_ppush_cwd()
+
 in
 //
 // HX-2018-10-08:
 // IT-IS-YET-TO-BE-IMPLEMENTED!!!
+if
+(
+stadyn >= 0
+) then
+{
+val () =
+the_preludes_load_if
+(XATSHOME, st0.prelude)
+
+val fname = arg0
+val fpath =
+  fpath_make(arg0, fname)
+//
+val
+(pf0 | ()) =
+$FP0.the_filpathlst_push(fpath)
+val () =
+  st0.inpfil0 := fpath
+val () = print!("inpfil0 = ")
+val () = $FP0.print_filpath_full1(st0.inpfil0)
+val () = println!()
+
+val d0cs = let
+  val
+  opt =
+  fileref_open_opt(fname, file_mode_r)
+in
+  case+ opt of
+  | ~None_vt() => list_nil()
+  | ~Some_vt(filr) => d0cs where
+    {
+      val d0cs =
+      parse_from_fileref_toplevel
+      (
+        stadyn, filr(*input*)
+      )
+      val () = go(d0cs)
+      val ((*void*)) = fileref_close(filr)
+    }
+ end : d0eclist // end of [val]
+//
+val
+((*popped*)) =
+$FP0.the_filpathlst_pout(pf0 | (*none*))
+} // end of if
+else
+prerrln!("Yet to be implemented")
 //
 end // end of [process_given]
 //
@@ -1315,7 +1390,7 @@ val
 XATSHOME =
 $GLO.the_XATSHOME_get((*void*))
 //
-val () = 
+val () =
 $FP0.the_includes_push(XATSHOME)
 //
 val+
@@ -1392,7 +1467,7 @@ the_fixity_load
   val fname =
     dirbase(XATSHOME, given)
   val fpath =
-    fpath_make(given, fname)  
+    fpath_make(given, fname)
 //
   val
   (pf0 | ()) =
@@ -1466,7 +1541,7 @@ println!
   val fname =
     dirbase(XATSHOME, given)
   val fpath =
-    fpath_make(given, fname)  
+    fpath_make(given, fname)
 //
   val
   (pf0 | ()) =
@@ -1524,7 +1599,7 @@ println!
   val fname =
     dirbase(XATSHOME, given)
   val fpath =
-    fpath_make(given, fname)  
+    fpath_make(given, fname)
 //
   val
   (pf0 | ()) =
