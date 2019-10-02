@@ -65,6 +65,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/trans12.sats"
 #staload "./../SATS/trans23.sats"
 
 (* ****** ****** *)
@@ -1333,22 +1334,39 @@ let
 val
 tfun = let
 val
-fc2 =
+tfc2 =
 (
-  auxfc2(arrw)
+  auxtfc2(arrw)
 ) where
 {
 fun
-auxfc2
+auxtfc2
 ( arrw
 : f1unarrow
-) : funclo2 =
+) : t2ype =
 (
 case arrw of
 | F1UNARROWdflt
-  () => FC2fun(*void*)
+  () =>
+  t2ype_new(loc0)
 | F1UNARROWlist
-  (s1es) => FC2fun(*void*)
+  (s1es) =>
+  (
+    t2ype_fc2(fc2)
+  ) where
+  {
+    val lin =
+    s1explst_get_lin(s1es)
+    val fc2 =
+    s1explst_get_fc2(s1es)
+//
+    val fc2 =
+    (
+    if
+    lin = 0
+    then fc2 else funclo2_linize(fc2)
+    ) : funclo2
+  }
 )
 }
 fun
@@ -1368,20 +1386,19 @@ case+ fa3g of
   | F3ARGsome_dyn
     (npf, d3ps) =>
     let
-    val fc2 =
+    val tfc2 =
     ( if
       flag = 0
-      then
-      fc2(*funarrow*)
+      then tfc2
       else
-      FC2cloref(*void*)
-    ) : funclo2 // end-of-val
+      t2ype_fc2(FC2cloref)
+    ) : t2ype // end-of-val
     val t2ps =
     d3patlst_get_type(d3ps)
     val tres =
     auxfa3g(xs, tres, flag+1)
     in
-    t2ype_fun2(fc2, npf, t2ps, tres)
+    t2ype_fun1(tfc2, npf, t2ps, tres)
     end
   | F3ARGsome_sta
     (s2vs, s2ps) =>

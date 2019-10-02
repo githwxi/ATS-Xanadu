@@ -1248,7 +1248,8 @@ case+ tnd of
     list_vt2t
     (
       pstar_COMMA_fun
-      {s0exp}(buf, err, p_apps0exp_NGT)
+      {s0exp}
+      (buf, err, p_apps0exp_NGT)
     )
     val tbeg = tok
     val tend = p_GT(buf, err)
