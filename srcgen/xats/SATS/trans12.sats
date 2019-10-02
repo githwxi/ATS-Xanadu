@@ -474,13 +474,24 @@ s2cst_select_list
 (* ****** ****** *)
 //
 fun
-s1exp_get_lin(s1exp): int
+s1imp_get_lin(s1exp): int
 fun
-s1exp_get_fc2(s1exp): funclo2
+s1imp_get_fc2(s1exp): funclo2
 (*
 fun
-s1exp_get_eff(s1exp): (s2eff)
+s1imp_get_eff(s1exp): (s2eff)
 *)
+//
+fun
+s1explst_get_lin(s1explst): int
+fun
+s1explst_get_fc2(s1explst): funclo2
+(*
+fun
+s1explst_get_eff(s1explst): (s2eff)
+*)
+//
+(* ****** ****** *)
 //
 fun
 s1exp_get_s2cstlst(s1exp): s2cstlst

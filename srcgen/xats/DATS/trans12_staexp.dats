@@ -457,14 +457,31 @@ be issued for 'lincloref'?
 *)
 //
 implement
-s1exp_get_lin(s1e0) =
+s1imp_get_lin(s1e0) =
 let
-val-
-S1Eimp(s1es) = s1e0.node()
+  val-
+  S1Eimp
+  (s1es) = s1e0.node()
 in
+  s1explst_get_lin(s1es)
+end // end of [s1imp_get_lin]
 //
-auxlst(s1es) where
-{
+implement
+s1imp_get_fc2(s1e0) =
+let
+  val-
+  S1Eimp
+  (s1es) = s1e0.node()
+in
+  s1explst_get_fc2(s1es)
+end // end of [s1imp_get_fc2]
+//
+(* ****** ****** *)
+
+implement
+s1explst_get_lin
+  (s1es) = let
+//
 fun
 islin
 (x0: s1exp): bool =
@@ -475,6 +492,11 @@ x0.node() of
   (sym = LIN_sym)
 | _ (*non-S1Eid*) => false
 )
+//
+in
+//
+auxlst(s1es) where
+{
 fun
 auxlst
 ( xs
@@ -487,19 +509,14 @@ case+ xs of
   | islin(x0) => 1
   | _ (* else *) => auxlst(xs)
 )
-}
+} (* end of [where] *)
 //
 end // end of [s1exp_get_lin]
 
 implement
-s1exp_get_fc2(s1e0) =
-let
-val-
-S1Eimp(s1es) = s1e0.node()
-in
+s1explst_get_fc2
+  (s1es) = let
 //
-auxlst(s1es) where
-{
 fun
 cref
 (x0: s1exp): bool =
@@ -533,13 +550,20 @@ x0.node() of
   else (sym = CLOFLT_sym)
 | _ (* non-S1Eid *) => false
 )
+in
+//
+auxlst(s1es) where
+{
 fun
 auxlst
 ( xs
 : s1explst): funclo2 =
 (
 case+ xs of
-| list_nil() => FC2fun()
+| list_nil() =>
+  (
+    FC2fun()
+  )
 | list_cons(x0, xs) =>
   ifcase
   | cref(x0) => FC2cloref
@@ -547,9 +571,9 @@ case+ xs of
   | cflt(x0) => FC2cloflt
   | _ (* else *) => auxlst(xs)
 )
-}
+} (* end of [where] *)
 //
-end // end of [s1exp_get_fc2]
+end // end of [s1explst_get_fc2]
 //
 (* ****** ****** *)
 //
@@ -1449,8 +1473,8 @@ s1e1.node() of
   var npf
     : int = ~1
 //
-  val lin = s1exp_get_lin(s1e1)
-  val fc2 = s1exp_get_fc2(s1e1)
+  val lin = s1imp_get_lin(s1e1)
+  val fc2 = s1imp_get_fc2(s1e1)
 //
   val fc2 =
   (
