@@ -541,6 +541,23 @@ case- x0.node() of
   (tok, d2c) =>
   fprint!(out, "D2Cextern(", d2c, ")")
 //
+| D2Cinclude
+  (tok, src, knd, body) =>
+  (
+  fprint!
+  ( out
+  , "D2Cinclude("
+  , "src= ", src, "; "
+  , "knd= ", knd, "; ", body, ")")
+  ) where
+  {
+    val body =
+    (
+    case+ body of
+    | None _ => "None()"
+    | Some _ => "Some(<d2cs>)"): string
+  }
+//
 | D2Cabssort(d1c) =>
   fprint!(out, "D2Cabssort(", d1c, ")")
 //

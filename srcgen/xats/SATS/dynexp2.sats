@@ -49,9 +49,13 @@ typedef token = $LEX.token
 //
 #staload
 S0E = "./staexp0.sats"
+#staload
+D0E = "./dynexp0.sats"
 //
 typedef sq0eid = $S0E.sq0eid
 typedef dq0eid = $S0E.dq0eid
+//
+  typedef d0exp = $D0E.d0exp
 //
 (* ****** ****** *)
 //
@@ -381,12 +385,14 @@ typedef d2clau = d2clau_tbox
 typedef d2claulst = List0(d2clau)
 //
 (* ****** ****** *)
-
+//
 abstbox d2ecl_tbox = ptr
 typedef d2ecl = d2ecl_tbox
 typedef d2eclist = List0(d2ecl)
 typedef d2eclopt = Option(d2ecl)
-
+//
+typedef d2eclistopt = Option(d2eclist)
+//
 (* ****** ****** *)
 //
 datatype d2itm =
@@ -950,6 +956,12 @@ d2ecl_node =
   (token(*STATIC*), d2ecl)
 | D2Cextern of
   (token(*EXTERN*), d2ecl)
+//
+| D2Cinclude of
+  ( token
+  , d0exp
+  , int(*knd*) // sta/dyn: 0/1
+  , d2eclistopt) // file inclusion
 //
 | D2Clocal of
   (d2eclist(*head*), d2eclist(*body*))

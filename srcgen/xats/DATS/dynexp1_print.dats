@@ -664,20 +664,20 @@ case+ x0.node() of
   , tok, "; ", sym, "; ", arg, "; ", def, ")")
 //
 | D1Cinclude
-  (tok, d0e, knd, opt) =>
+  (tok, src, knd, body) =>
   (
   fprint!
   ( out
   , "D1Cinclude("
-  , tok, "; ", d0e, "; ", knd, "; ", opt, ")")
+  , tok, "; "
+  , src, "; ", knd, "; ", body, ")")
   ) where
   {
-    val opt =
+    val body =
     (
-    case+ opt of
+    case+ body of
     | None _ => "None()"
-    | Some _ => "Some(<d1cs>)"
-    ) : string // end of [val]
+    | Some _ => "Some(<d1cs>)"): string
   }
 //
 | D1Cstaload
