@@ -1060,7 +1060,8 @@ for skipping error
   ( token(*impkind*)
   , decmodopt//modifier
   , sq0arglst, tq0arglst
-  , dq0eid, ti0arglst, f0arglst, effs0expopt, token, d0exp)
+  , dq0eid, ti0arglst, f0arglst
+  , effs0expopt, token(*EQ*), d0exp(*body*))
 //
 | D0Csymload of
   ( token(*SYMLOAD*)
@@ -1079,7 +1080,7 @@ for skipping error
 //
 | D0Clocal of
     ( token(*LOCAL*)
-    , d0eclist, token(*IN*), d0eclist, token(*END*))
+    , d0eclist, tokenopt(*IN*), d0eclist, token(*END*))
 //
 // end of [d0ecl_node]
 //

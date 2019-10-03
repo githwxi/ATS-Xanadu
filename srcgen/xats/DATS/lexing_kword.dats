@@ -294,8 +294,9 @@ val () = myins("local", T_LOCAL)
 //
 val () = myins("endlam", T_ENDLAM)
 val () = myins("endlet", T_ENDLET)
-val () = myins("endwhere", T_ENDWHERE)
+val () = myins("endloc", T_ENDLOCAL)
 val () = myins("endlocal", T_ENDLOCAL)
+val () = myins("endwhere", T_ENDWHERE)
 //
 val () = myins("fn", T_FN_)
 val () = myins("fn0", T_FN0_)

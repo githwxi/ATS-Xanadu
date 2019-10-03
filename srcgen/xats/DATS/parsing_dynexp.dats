@@ -3327,7 +3327,7 @@ case+ tnd of
     val tbeg = tok
     val head =
     fp_d0eclseq(f0, buf, err)
-    val tmid = p_IN(buf, err)
+    val tmid = popt_IN(buf, err)
     val body =
     fp_d0eclseq(f0, buf, err)
     val tend = p_ENDLOCAL(buf, err)
