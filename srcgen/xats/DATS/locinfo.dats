@@ -40,6 +40,11 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload
+FIL = "./../SATS/filpath.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)
@@ -451,7 +456,8 @@ fprint_locrange
 val () =
 fprint!
 ( out
-, loc.beg_ntot+1, "(line=", loc.beg_nrow+1, ", offs=", loc.beg_ncol+1, ")"
+, loc.beg_ntot+1
+, "(line=", loc.beg_nrow+1, ", offs=", loc.beg_ncol+1, ")"
 )
 //
 val () = fprint_string (out, " -- ")
@@ -459,7 +465,8 @@ val () = fprint_string (out, " -- ")
 val () =
 fprint!
 ( out
-, loc.end_ntot+1, "(line=", loc.end_nrow+1, ", offs=", loc.end_ncol+1, ")"
+, loc.end_ntot+1
+, "(line=", loc.end_nrow+1, ", offs=", loc.end_ncol+1, ")"
 )
 //
 } (* end of [fprint_locrange] *)
@@ -467,10 +474,19 @@ fprint!
 end // end of [local]
 
 (* ****** ****** *)
-
+//
 implement
-fprint_location(out, loc) = fprint_locrange(out, loc)
-
+fprint_location(out, loc) =
+(
+fprint_locrange(out, loc)
+) where
+{
+  val fp0 = 
+  location_filpath(loc)
+  val ((*void*)) =
+  ($FIL.fprint_filpath_full1(out, fp0); fprint!(out, ": "))
+} (* end of [fprint_location] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_locinfo.dats] *)

@@ -483,6 +483,13 @@ $SYM.neq_symbol_symbol
 (* ****** ****** *)
 //
 implement
+filpath_is_stdin(fp) =
+$SYM.eq_symbol_symbol
+  (fp.full2(), $SYM.STDIN_fp_symbol)
+//
+(* ****** ****** *)
+//
+implement
 print_filpath_full1
   (fp0) =
 (

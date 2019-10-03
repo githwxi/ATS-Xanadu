@@ -746,7 +746,20 @@ end // end of [parse_from_fileref_toplevel]
 
 implement
 parse_from_filpath_toplevel
-  (stadyn, fp0) = let
+  (stadyn, fp0) =
+(
+//
+ifcase
+|
+filpath_is_stdin(fp0) =>
+Some_vt(d0cs) where
+{
+  val
+  d0cs =
+  parse_from_stdin_toplevel(stadyn)
+}
+| _(* filename:given *) =>
+let
 //
 val fnm = fp0.full1()
 val opt =
@@ -767,7 +780,9 @@ case+ opt of
     Some_vt(d0cs)
   end // end of [Some_vt]
 //
-end // end of [parser_from_filpath_toplevel]
+end
+//
+) (* parser_from_filpath_toplevel *)
 
 (* ****** ****** *)
 
