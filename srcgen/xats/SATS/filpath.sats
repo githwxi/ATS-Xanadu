@@ -213,15 +213,20 @@ val the_filpath_string : filpath // text
 (* ****** ****** *)
 //
 fun
-filpath_make
-(given: string, fname: string): filpath
+filpath_is_dummy: filpath -> bool
+fun
+filpath_isnot_dummy: filpath -> bool
 //
 (* ****** ****** *)
 //
 fun
-filpath_is_dummy: filpath -> bool
+filpath_is_stdin: filpath -> bool
+//
+(* ****** ****** *)
+//
 fun
-filpath_isnot_dummy: filpath -> bool
+filpath_make
+(given: string, fname: string): filpath
 //
 (* ****** ****** *)
 //

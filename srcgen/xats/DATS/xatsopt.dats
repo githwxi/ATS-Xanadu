@@ -415,14 +415,11 @@ fprintln! (out, "  --help (for printing out this help usage)");
 fprintln! (out, "  -v (for printing out the version)");
 fprintln! (out, "  --version (for printing out the version)");
 //
-fprintln! (out, "  -s <filenames> (for compiling static filenames individually)");
-fprintln! (out, "  --static <filenames> (for compiling static filenames individually)");
+fprintln! (out, "  -s <filenames> (for compiling static filenames)");
+fprintln! (out, "  --static <filenames> (for compiling static filenames)");
 //
-fprintln! (out, "  -d <filenames> (for compiling dynamic filenames individually)");
-fprintln! (out, "  --dynamic <filenames> (for compiling dynamic filenames individually)");
-//
-fprintln! (out, "  -dd <filenames> (for compiling dynamic filenames in a combined manner)");
-fprintln! (out, "  --dynamics <filenames> (for compiling dynamic filenames in a combined manner)");
+fprintln! (out, "  -d <filenames> (for compiling dynamic filenames)");
+fprintln! (out, "  --dynamic <filenames> (for compiling dynamic filenames)");
 //
 fprintln! (out, "  -o <filename> (output into filename)");
 fprintln! (out, "  --output <filename> (output into filename)");
@@ -436,7 +433,7 @@ fprintln! (out, "  --compile (for compiling into C)");
 //
 (*
 fprintln! (out, "  -tc (for typechecking only)");
-fprintln! (out, "  --typecheck (for typechecking only)");
+fprintln! (out, "  --tycheck (for typechecking only)");
 *)
 //
 fprint_newline (out); // HX: needed for flushing out the output
@@ -521,11 +518,8 @@ waitknd =
   | WTKoutput of () // -o ...
   | WTKinpsta of () // -s ...
   | WTKinpdyn of () // -d ...
-(*
-  | WTKinpdyns of () // -dd ...
-*)
   | WTKdefine of () // -DATS ...
-  | WTKinclude of () // -IATS ...
+  | WTKinpath of () // -IATS ...
 // end of [waitkind]
 //
 fun
@@ -535,9 +529,6 @@ waitknd_get_stadyn
 case+ knd of
 | WTKinpsta() => 0
 | WTKinpdyn() => 1
-(*
-| WTKinpdyns() => 2
-*)
 | _ (*rest-of-WTK*) => ~1
 ) // end of [waitkind_get_stadyn]
 //
@@ -629,8 +620,8 @@ isiatswait
 (
 case+
 st0.wtk0 of
-| WTKinclude() => true
-| _(*non-WTKinclude*) => false
+| WTKinpath() => true
+| _(*non-WTKinpath*) => false
 ) (* end of [isiatswait] *)
 //
 (* ****** ****** *)
@@ -770,7 +761,7 @@ fprint(out, "WARNING(ATS)")
 val () =
 fprintln!
 ( out
-, ": unrecognized command-line argument [", arg, "] is ignored."
+, ": unrecognized command-line argument [", arg, "] is skipped."
 ) (* end of [val] *)
 //
 } (* end of [xatsopt_commarg_warning] *)
@@ -781,8 +772,13 @@ local
 //
 static
 fun
-process_nil
+process_stdin
 (st0: &cmdstate >> _): void
+static
+fun
+process_fpath
+( st0
+: &cmdstate >> _, fp0: fpath): void
 static
 fun
 process_given
@@ -802,8 +798,18 @@ process_cmdline2
 , arg0: commarg, args: commarglst(n)): void
 //
 implement
-process_nil
-  (st0) = let
+process_stdin
+  (st0) =
+(
+process_fpath(st0, fp0)
+) where
+{
+  val
+  fp0 = $FP0.the_filpath_stdin
+}
+implement
+process_fpath
+  (st0, fp0) = let
 //
 val
 wtk0 = st0.wtk0
@@ -822,7 +828,8 @@ in
 if
 (
 stadyn >= 0
-) then
+)
+then
 {
 //
 val () =
@@ -830,15 +837,22 @@ the_preludes_load_if
 (XATSHOME, st0.prelude)
 // end of [val]
 //
-val
-fp0 =
-$FP0.the_filpath_stdin 
+val () = (st0.inpfil0 := fp0)
 val
 (pf0 | ()) =
 $FP0.the_filpathlst_push(fp0)
 val
 d0cs =
-parse_from_stdin_toplevel(stadyn)
+let
+val opt =
+parse_from_filpath_toplevel
+  (stadyn, fp0)
+in
+case+ opt of
+| ~Some_vt(d0cs) => d0cs
+| ~None_vt((*void*)) => list_nil()
+end : d0eclist // end-of-val
+//
 prval () = $UN.castview0{void}(pf0)
 (*
 val
@@ -849,7 +863,7 @@ $FP0.the_filpathlst_pout(pf0 | (*none*))
 (*
 val () =
 println!
-("process_nil: d0cs = ", d0cs)
+("process_fpath: d0cs = ", d0cs)
 *)
 //
 val () = synread_main(d0cs)
@@ -859,7 +873,7 @@ d1cs = trans01_declist(d0cs)
 (*
 val () =
 println!
-("process_nil: d1cs = ", d1cs)
+("process_fpath: d1cs = ", d1cs)
 *)
 //
 val () = t1xread_main(d1cs)
@@ -869,7 +883,7 @@ d2cs = trans12_declist(d1cs)
 (*
 val () =
 println!
-("process_nil: d2cs = ", d2cs)
+("process_fpath: d2cs = ", d2cs)
 *)
 //
 val () = t2xread_main(d2cs)
@@ -879,21 +893,21 @@ d3cs = trans23_declist(d2cs)
 // (*
 val () =
 println!
-("process_nil: d3cs = ", d3cs)
+("process_fpath: d3cs = ", d3cs)
 // *)
 val
 d3cs = trans33_declist(d3cs)
 // (*
 val () =
 println!
-("process_nil: d3cs = ", d3cs)
+("process_fpath: d3cs = ", d3cs)
 // *)
 //
 val () = t3xread_main(d3cs)
 //
 val () =
 println!
-("process_nil: the_sortenv =")
+("process_fpath: the_sortenv =")
 val () =
 (
   the_sortenv_println((*void*))
@@ -901,7 +915,7 @@ val () =
 //
 val () =
 println!
-("process_nil: the_sexpenv =")
+("process_fpath: the_sexpenv =")
 val () =
 (
   the_sexpenv_println((*void*))
@@ -909,29 +923,40 @@ val () =
 //
 val () =
 println!
-("process_nil: the_dexpenv =")
+("process_fpath: the_dexpenv =")
 val () =
 (
   the_dexpenv_println((*void*))
 )
 //
-} (* end of [if] *)
+} (* end of [then] *)
+else
+{
+// ~(stadyn >= 0) // not for loading code
+} (* end of [else] *)
 //
-end // end of [process_nil]
+end // end of [process_fpath]
 //
 implement
 process_given
   (st0, arg0) = let
 //
+val fp0 =
+let
+val given = arg0
+val fname = arg0
+in
+fpath_make(given, fname)
+end
+//
+// (*
 val () =
 println!
 ("process_given: arg0 = ", arg0)
+// *)
 //
 in
-//
-// HX-2018-10-08:
-// IT-IS-YET-TO-BE-IMPLEMENTED!!!
-//
+  process_fpath(st0, fp0)
 end // end of [process_given]
 //
 implement
@@ -945,7 +970,7 @@ case+ args of
   (
     if
     st0.ninpfil = 0
-    then process_nil(st0) else ()
+    then process_stdin(st0) else ()
   )
 //
 | list_cons
@@ -1136,8 +1161,8 @@ case+ key of
 *)
 //
 (*
-| "--compile" => (st0.typecheckflag := 0)
-| "--typecheck" => (st0.typecheckflag := 1)
+| "--compile" => (st0.tycheckflag := 0)
+| "--tycheck" => (st0.tycheckflag := 1)
 *)
 //
 (*
@@ -1248,7 +1273,7 @@ case+ arg0 of
       {
         val () =
         (st0.ninpfil := nif+1)
-        val () = process_nil(st0)
+        val () = process_stdin(st0)
       } (* end of [COMMARG(_,-)] *)
 //
     | COMMARG(_, given) =>
