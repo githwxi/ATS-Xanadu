@@ -1591,6 +1591,36 @@ local
 (* ****** ****** *)
 
 fun
+aux_include
+( d1cl
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1cl.loc()
+val-
+D1Cinclude
+( tok, src
+, knd, body) = d1cl.node()
+//
+val body =
+(
+case+ body of
+| None() => None()
+| Some(d1cs) =>
+  Some(trans12_declist(d1cs))
+) : d2eclistopt // end-of-val
+//
+in
+//
+d2ecl_make_node
+( loc0
+, D2Cinclude(tok, src, knd, body))
+//
+end // end of [aux_include]
+
+(* ****** ****** *)
+
+fun
 aux_abssort
 ( d1cl
 : d1ecl): d2ecl = let
@@ -3940,6 +3970,8 @@ d1cl.node() of
   in
     d2ecl_make_node(loc0, D2Cextern(tok, d2c))
   end
+//
+| D1Cinclude _ => aux_include(d1cl)
 //
 | D1Cabssort _ => aux_abssort(d1cl)
 //
