@@ -3031,7 +3031,7 @@ d0cl.node() of
 | D0Cdynconst _ => aux_dynconst(d0cl)
 //
 | D0Clocal
-  (_, d0cs1, _, d0cs2, _) =>
+  (tbeg, d0cs1, topt, d0cs2, tend) =>
   let
     val d1cs1 = trans01_declist(d0cs1)
     val d1cs2 = trans01_declist(d0cs2)

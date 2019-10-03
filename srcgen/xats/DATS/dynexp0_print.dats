@@ -985,10 +985,10 @@ case+ x0.node() of
   , "D0Cdynconst(", tok, "; ", tqas, "; ", d0cs, ")")
 //
 | D0Clocal
-  (tok, d0cs0, tok1, d0cs1, tok2) =>
+  (tbeg, d0cs0, topt, d0cs1, tend) =>
   fprint!
   ( out, "D0Clocal("
-  , tok, "; ", d0cs0, "; ", tok1, "; ", d0cs1, "; ", tok2, ")")
+  , tbeg, "; ", d0cs0, "; ", topt, "; ", d0cs1, "; ", tend, ")")
 //
 (*
 | _(*rest-of-d1ecl*) =>
