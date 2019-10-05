@@ -163,12 +163,18 @@ val VTYPE_symbol : symbol // vtflt sort
 val LIN_symbol : symbol // lin
 
 (* ****** ****** *)
-
+//
 val CLO_symbol : symbol // clo
-val CLOFLT_symbol : symbol // cloft
+val CFLT_symbol : symbol // cflt
+val FPTR_symbol : symbol // fptr
+val CPTR_symbol : symbol // cptr
+val CREF_symbol : symbol // cref
+//
+val CLOFLT_symbol : symbol // cloflt
+val FUNPTR_symbol : symbol // funptr
 val CLOPTR_symbol : symbol // cloptr
 val CLOREF_symbol : symbol // cloref
-
+//
 (* ****** ****** *)
 
 val DLR_EXTYPE_symbol : symbol // $extype
