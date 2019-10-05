@@ -31,6 +31,10 @@
 // These can be re-defined
 //
 (* ****** ****** *)
+
+typedef the_void_ctype = void
+
+(* ****** ****** *)
 //
 typedef the_sint_ctype = sint0
 typedef the_uint_ctype = uint0

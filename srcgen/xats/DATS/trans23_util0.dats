@@ -737,6 +737,58 @@ end // end of [d3pat_dapp_up]
 (* ****** ****** *)
 
 implement
+d3pat_tuple_up
+( loc0
+, knd1, npf2, d3ps) = let
+//
+val
+tknd =
+(
+ifcase
+| knd1 = 0 => TYRECflt0(*void*)
+| _(*else*) => TYRECbox0(*void*)
+) : tyrec // end of [val]
+//
+val
+ltps =
+(
+  auxlst(d3ps, 0(*i0*))
+) where
+{
+fun
+auxlst
+( d3ps
+: d3patlst
+, i0: int): labt2ypelst =
+(
+case+ d3ps of
+| list_nil() =>
+  list_nil((*void*))
+| list_cons(d3p0, d3ps) =>
+  let
+    val l0 =
+    label_make_int(i0)
+    val lt2p0 =
+    TLABELED(l0, d3p0.type())
+  in
+    list_cons(lt2p0, auxlst(d3ps, i0+1))
+  end // end of [list_cons]
+)
+} (* end of [val] *)
+//
+val s2t0 =
+  the_sort2_none
+val t2p0 =
+  t2ype_tyrec(s2t0, tknd, npf2, ltps)
+//
+in
+  d3pat_make_node
+  (loc0, t2p0, D3Ptuple(knd1, npf2, d3ps))
+end (* end of [d3pat_tuple_up] *)
+
+(* ****** ****** *)
+
+implement
 d3exp_dn
 (d3e0, t2p0) = let
 //
@@ -1206,14 +1258,16 @@ d3exp_tuple_up
 ( loc0
 , knd1, npf2, d3es) = let
 //
-val tknd =
+val
+tknd =
 (
 ifcase
 | knd1 = 0 => TYRECflt0(*void*)
 | _(*else*) => TYRECbox0(*void*)
 ) : tyrec // end of [val]
 //
-val ltps =
+val
+ltps =
 (
   auxlst(d3es, 0(*i0*))
 ) where
@@ -1242,8 +1296,7 @@ case+ d3es of
 val s2t0 =
   the_sort2_none
 val t2p0 =
-t2ype_make_node
-  (s2t0, T2Ptyrec(tknd, npf2, ltps))
+  t2ype_tyrec(s2t0, tknd, npf2, ltps)
 //
 in
   d3exp_make_node

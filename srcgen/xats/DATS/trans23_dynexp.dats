@@ -148,14 +148,36 @@ val
 loc0 = d2p0.loc()
 val-
 D2Pdapp
-(d2p1, npf, d2ps) = d2p0.node()
+( d2p1
+, npf2, d2ps) = d2p0.node()
 //
 val d3p1 = trans23_dpat(d2p1)
 val d3ps = trans23_dpatlst(d2ps)
 //
 in
-d3pat_dapp_up(loc0, d3p1, npf, d3ps)
+d3pat_dapp_up(loc0, d3p1, npf2, d3ps)
 end (* end of [auxdapp] *)
+
+(* ****** ****** *)
+
+fun
+aux_tuple
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Ptuple
+( knd1
+, npf2, d2ps) = d2p0.node()
+//
+val
+d3ps = trans23_dpatlst(d2ps)
+//
+in
+d3pat_tuple_up(loc0, knd1, npf2, d3ps)
+end // end of [aux_tuple]
 
 (* ****** ****** *)
 
@@ -224,7 +246,9 @@ d2p0.node() of
 | D2Psym0 _ => auxsym0(d2p0)
 | D2Pdapp _ => auxdapp(d2p0)
 //
-| D2Panno _ => aux_anno(d2p0)
+| D2Ptuple _ => aux_tuple(d2p0)
+//
+| D2Panno(d2e1, s2e2) => aux_anno(d2p0)
 //
 | _(* else *) =>
   let
@@ -1010,9 +1034,9 @@ d2e0.node() of
     (_, _, _, _) => aux_lam(d2e0)
   // D2Elam
 //
-| D2Eanno _ => aux_anno(d2e0)
+| D2Eanno(d2e1, s2e2) => aux_anno(d2e0)
 //
-| _ (*else*) => d3exp_none1_0(d2e0)
+| _ (*rest-of-d2exp*) => d3exp_none1_0(d2e0)
 //
 end // end of [trans23_dexp]
 

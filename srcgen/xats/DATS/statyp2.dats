@@ -399,6 +399,28 @@ t2ype_fun1(t2ype_fc2(fc2), npf, arg, res)
 //
 (* ****** ****** *)
 
+implement
+t2ype_tyrec
+(s2t0, knd1, npf2, ltps) =
+(
+case+ knd1 of
+| TYRECflt0() =>
+  (
+  case ltps of
+  | list_nil _ => the_t2ype_void
+  | list_cons _ =>
+    t2ype_make_node
+    (s2t0, T2Ptyrec(knd1, npf2, ltps))
+  )
+| _(*non-TYRECflt0*) =>
+  (
+    t2ype_make_node
+    (s2t0, T2Ptyrec(knd1, npf2, ltps))
+  )
+) (* end of [t2ype_tyrec] *)
+
+(* ****** ****** *)
+
 local
 val
 stamper =
