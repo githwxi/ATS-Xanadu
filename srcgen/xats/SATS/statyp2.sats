@@ -302,37 +302,9 @@ t2ype_fun2
 (* ****** ****** *)
 //
 fun
-t2ype_renam
-( t2p0: t2ype, s2v1: s2var
-) : t2ype // end of [t2ype_renam]
-fun
-t2ype_renams
-( t2p0: t2ype, s2vs: s2varlst
-) : t2ype // end of [t2ype_renams]
-//
-fun
-t2ype_revar
-( t2p0: t2ype
-, s2v1: s2var, s2v2: s2var
-) : t2ype // end of [t2ype_revar]
-fun
-t2ype_revars
-( t2p0: t2ype
-, svs1: s2varlst, svs2: s2varlst
-) : t2ype // end of [t2ype_revars]
-//
-(* ****** ****** *)
-//
-fun
-t2ype_subst
-( t2p0: t2ype
-, s2v0: s2var, tsub: t2ype
-) : t2ype // end of [t2ype_subst]
-fun
-t2ype_substs
-( t2p0: t2ype
-, s2vs: s2varlst, tsub: t2ypelst
-) : t2ype // end of [t2ype_substs]
+t2ype_tyrec
+( s2t0: sort2
+, knd1: tyrec, npf2: int, ltps: labt2ypelst): t2ype
 //
 (* ****** ****** *)
 //
@@ -340,6 +312,35 @@ fun
 t2ype_hnfize(t2p0: t2ype): t2ype
 //
 overload hnfize with t2ype_hnfize
+//
+(* ****** ****** *)
+//
+fun
+t2ype_renam
+(t2p0: t2ype, s2v1: s2var): t2ype
+fun
+t2ype_renams
+(t2p0: t2ype, s2vs: s2varlst): t2ype
+//
+fun
+t2ype_revar
+( t2p0: t2ype
+, s2v1: s2var, s2v2: s2var): t2ype
+fun
+t2ype_revars
+( t2p0: t2ype
+, svs1: s2varlst, svs2: s2varlst): t2ype
+//
+(* ****** ****** *)
+//
+fun
+t2ype_subst
+( t2p0: t2ype
+, s2v0: s2var, tsub: t2ype): t2ype
+fun
+t2ype_substs
+( t2p0: t2ype
+, s2vs: s2varlst, tsub: t2ypelst): t2ype
 //
 (* ****** ****** *)
 //

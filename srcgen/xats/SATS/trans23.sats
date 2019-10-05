@@ -268,6 +268,14 @@ d3pat_dapp_up
 (* ****** ****** *)
 //
 fun
+d3pat_tuple_up
+( loc0: loc_t
+, knd1: int // 0/1
+, npf2: int, d3ps: d3patlst): d3pat
+//
+(* ****** ****** *)
+//
+fun
 d3exp_dn
 (d3e0: d3exp, t2p0: t2ype): d3exp
 fun

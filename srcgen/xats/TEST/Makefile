@@ -51,6 +51,7 @@ prelude:: gord_sats
 prelude:: gord_dats
 prelude:: list_sats
 prelude:: list_dats
+prelude:: gseq_dats
 
 ######
 
@@ -81,6 +82,11 @@ list_sats:; \
 $(CAT) $(PRELUDE)/SATS/list.sats | $(XATSOPT) --static
 list_dats:; \
 $(CAT) $(PRELUDE)/DATS/list.dats | $(XATSOPT) --dynamic
+
+######
+
+gseq_dats:; \
+$(CAT) $(PRELUDE)/DATS/gseq.dats | $(XATSOPT) --dynamic
 
 ######
 

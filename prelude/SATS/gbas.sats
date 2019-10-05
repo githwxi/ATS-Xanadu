@@ -62,39 +62,50 @@ g_nequal(!a, !a): void
 (* ****** ****** *)
 
 fun
-<a:t0><b:vt>
-map$fopr(x: a): b
+<x0:t0><y0:vt>
+map$fopr(x0: x0): y0
 fun
-<a:vt><b:vt>
-map0$fopr(x: a): b
+<x0:vt><y0:vt>
+map0$fopr(x0: x0): y0
 fun
-<a:vt><b:vt>
-map1$fopr(x: !a): b
+<x0:vt><y0:vt>
+map1$fopr(x0: !x0): y0
 
 (* ****** ****** *)
 
 fun
-<a:t0>
-forall$test(x: a): bool
+<x0:t0>
+forall$test(x0: x0): bool
 fun
-<a:t0>
-forall0$test(x: a): bool
+<x0:t0>
+forall0$test(x0: x0): bool
 fun
-<a:t0>
-forall1$test(x: !a): bool
+<x0:t0>
+forall1$test(x0: !x0): bool
 
 (* ****** ****** *)
 
 fun
-<a:t0>
-foreach$work(x: a): void
+<x0:t0>
+foreach$work(x0: x0): void
 fun
-<a:t0>
-foreach0$work(x: a): void
+<x0:t0>
+foreach0$work(x0: x0): void
 fun
-<a:t0>
-foreach1$work(x: !a): void
+<x0:t0>
+foreach1$work(x0: !x0): void
 
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<r0:vt>
+foldleft$fopr(r0: r0, x0: x0): r0
+fun
+<x0:t0>
+<r0:vt>
+foldright$fopr(x0: x0, r0: r0): r0
+//
 (* ****** ****** *)
 
 (* end of [gbas.sats] *)

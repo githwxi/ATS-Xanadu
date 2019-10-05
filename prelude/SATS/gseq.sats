@@ -10,6 +10,29 @@ fun
 g_forall(xs): bool
 
 (* ****** ****** *)
+
+fun
+<xs:tflt
+,x0:tflt>
+g_foreach(xs): void
+
+(* ****** ****** *)
+//
+fun
+<xs:tflt
+,x0:tflt>
+<r0:vtflt>
+g_foldleft(xs, r0): r0
+fun
+<xs:tflt
+,x0:tflt>
+<r0:vtflt>
+g_foldright(xs, r0): r0
+//
+#symload g_foldl with g_foldleft
+#symload g_foldr with g_foldright
+//
+(* ****** ****** *)
 //
 fun
 <xs:tflt

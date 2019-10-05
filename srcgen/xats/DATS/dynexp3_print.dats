@@ -198,6 +198,12 @@ case- x0.node() of
   ( out, "D3Pdapp("
   , d3f0, "; ", npf0, "; ", d3ps, ")")
 //
+| D3Ptuple
+  (knd1, npf2, ldps) =>
+  fprint!
+  ( out, "D3Ptuple("
+  , knd1, "; ", npf2, "; ", ldps, ")")
+//
 | D3Panno(d3p1, s2e2) =>
   fprint!
   (out, "D3Panno(", d3p1, "; ", s2e2, ")")
