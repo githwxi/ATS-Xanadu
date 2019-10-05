@@ -5,15 +5,21 @@
 (* ****** ****** *)
 
 fun
-<pf:prop>
 <xs:tflt
 ,x0:tflt>
 g_forall(xs): bool
 
 (* ****** ****** *)
+//
+fun
+<xs:tflt
+,x0:tflt>
+g_streamize
+  (xs: xs): stream_vt(x0)
+//
+(* ****** ****** *)
 
 fun
-<pf:prop>
 <xs:tflt
 ,x0:tflt>
 <y0:vtflt>
@@ -22,7 +28,6 @@ g_map_list(xs): list_vt(y0)
 (* ****** ****** *)
 
 fun
-<pf:prop>
 <xs:tflt
 ,x0:tflt>
 <y0:vtflt>

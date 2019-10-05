@@ -373,6 +373,20 @@ d2c0.node() of
     val () = t2xread_d2ecl<>(d2c)
   }
 //
+| D2Cinclude
+  (tok, src, knd, body) =>
+  {
+    val () =
+    (
+    case+ body of
+    | None() => ()
+    | Some(d2cs) =>
+      (
+        t2xread_d2eclist<>(d2cs)
+      )
+    )
+  }
+//
 | D2Cstacst0(s2c, s2t) =>
   {
     val () = t2xread_s2cst<>(s2c)
