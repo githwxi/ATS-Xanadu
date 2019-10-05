@@ -49,7 +49,18 @@ macdef
 CLO_sym = $SYM.CLO_symbol
 //
 macdef
+CFLT_sym = $SYM.CFLT_symbol
+macdef
+FPTR_sym = $SYM.FPTR_symbol
+macdef
+CPTR_sym = $SYM.CPTR_symbol
+macdef
+CREF_sym = $SYM.CREF_symbol
+//
+macdef
 CLOFLT_sym = $SYM.CLOFLT_symbol
+macdef
+FUNPTR_sym = $SYM.FUNPTR_symbol
 macdef
 CLOPTR_sym = $SYM.CLOPTR_symbol
 macdef
@@ -518,23 +529,20 @@ s1explst_get_fc2
   (s1es) = let
 //
 fun
-cref
+fptr
 (x0: s1exp): bool =
 (
 case+
 x0.node() of
 | S1Eid(sym) =>
-  (sym = CLOREF_sym)
-| _ (*non-S1Eid*) => false
-)
-fun
-cptr
-(x0: s1exp): bool =
-(
-case+
-x0.node() of
-| S1Eid(sym) =>
-  (sym = CLOPTR_sym)
+  (
+  ifcase
+  | sym =
+    FPTR_sym => true
+  | sym =
+    FUNPTR_sym => true
+  | _ (* else *) => false
+  )
 | _ (*non-S1Eid*) => false
 )
 fun
@@ -544,11 +552,51 @@ cflt
 case+
 x0.node() of
 | S1Eid(sym) =>
-  if
-  (sym = CLO_sym)
-  then true
-  else (sym = CLOFLT_sym)
+  (
+  ifcase
+  | sym =
+    CLO_sym => true
+  | sym =
+    CFLT_sym => true
+  | sym =
+    CLOFLT_sym => true
+  | _ (* else *) => false
+  )
 | _ (* non-S1Eid *) => false
+)
+fun
+cptr
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  (
+  ifcase
+  | sym =
+    CPTR_sym => true
+  | sym =
+    CLOPTR_sym => true
+  | _ (* else *) => false
+  )
+| _ (*non-S1Eid*) => false
+)
+fun
+cref
+(x0: s1exp): bool =
+(
+case+
+x0.node() of
+| S1Eid(sym) =>
+  (
+  ifcase
+  | sym =
+    CREF_sym => true
+  | sym =
+    CLOREF_sym => true
+  | _ (* else *) => false
+  )
+| _ (*non-S1Eid*) => false
 )
 in
 //
@@ -566,6 +614,7 @@ case+ xs of
   )
 | list_cons(x0, xs) =>
   ifcase
+  | fptr(x0) => FC2fun
   | cref(x0) => FC2cloref
   | cptr(x0) => FC2cloptr
   | cflt(x0) => FC2cloflt
