@@ -459,8 +459,20 @@ LINEAR_symbol = symbol_make("linear")
 
 implement
 CLO_symbol = symbol_make("clo")
+
+implement
+CFLT_symbol = symbol_make("cflt")
+implement
+FPTR_symbol = symbol_make("fptr")
+implement
+CPTR_symbol = symbol_make("cptr")
+implement
+CREF_symbol = symbol_make("cref")
+
 implement
 CLOFLT_symbol = symbol_make("cloflt")
+implement
+FUNPTR_symbol = symbol_make("funptr")
 implement
 CLOPTR_symbol = symbol_make("cloptr")
 implement
