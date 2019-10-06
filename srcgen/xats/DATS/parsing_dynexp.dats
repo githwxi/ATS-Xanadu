@@ -661,7 +661,7 @@ case+
 tok1.node() of
 | T_CLN()
   when 
-  t_s0eid(tnd0) => let
+  t_d0eid(tnd0) => let
     val () =
     buf.clear_mark(mark)
     val () = buf.incby1()
