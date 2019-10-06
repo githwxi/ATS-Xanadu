@@ -3685,11 +3685,11 @@ aux_dcstdecl
 , d1cl
 : d1cstdecl): d2cst = let
 //
-  val+D1CSTDECL(rcd) = d1cl
+val+D1CSTDECL(rcd) = d1cl
 //
 //
 val (pf0|()) =
-the_sexpenv_pushnil()
+the_sexpenv_pushnil((*void*))
 //
 val
 s2e0 =
@@ -3698,6 +3698,16 @@ auxarg1
 val ((*void*)) =
 //
 the_sexpenv_popfree(pf0|(*void*))
+//
+val () =
+println!
+("aux_dcstdecl: d1cl = ", d1cl)
+val () =
+println!
+("aux_dcstdecl: tqas = ", tqas)
+val () =
+println!
+("aux_dcstdecl: s2e0 = ", s2e0)
 //
 in
   d2cst_make_idtp(rcd.nam, tqas, s2e0)

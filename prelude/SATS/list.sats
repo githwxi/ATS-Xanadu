@@ -112,12 +112,21 @@ copy_vt with list_copy_vt
 rcopy_vt with list_rcopy_vt
 //
 (* ****** ****** *)
-//
-(*
+
 fun
 <x0:type>
-<y0:vtype>
-list_map$fopr(x0): y0
+list_forall
+{n:int}(xs: list(x0, n)): bool
+fun
+<x0:type>
+list_foreach
+{n:int}(xs: list(x0, n)): void
+
+(* ****** ****** *)
+//
+(*
+list_map: map$for
+list_map_vt: map$for
 *)
 //
 fun
@@ -132,6 +141,11 @@ list_map_vt
 {n:int}(xs: list(x0, n)): list_vt(y0, n)
 //
 (* ****** ****** *)
+//
+(*
+list_maprev: map$for
+list_maprev_vt: map$for
+*)
 //
 fun
 <x0:type>

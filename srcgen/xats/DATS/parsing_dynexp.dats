@@ -653,11 +653,15 @@ val mark =
 val tok0 = buf.get1()
 val tok1 = buf.get0()
 //
+val tnd0 = tok0.node()
+//
 in
 //
 case+
 tok1.node() of
-| T_CLN() => let
+| T_CLN()
+  when 
+  t_s0eid(tnd0) => let
     val () =
     buf.clear_mark(mark)
     val () = buf.incby1()
@@ -668,16 +672,15 @@ tok1.node() of
     a0typ_make_node
     (loc_res, A0TYPsome(s0e, Some(tok0)))
   end // end of [T_CLN]
-| _(*non-COLON*) => let
+| _(*non-T_CLN*) => let
     val () =
       buf.set_mark(mark)
     // end of [val]
     val s0e = p_s0exp(buf, err)
   in
-    err := e0;
     a0typ_make_node
     (s0e.loc(), A0TYPsome(s0e, None(*void*)))
-  end // end of [non-COLON]
+  end // end of [non-T_CLN]
 //
 end // end of [p_a0typ]
 
