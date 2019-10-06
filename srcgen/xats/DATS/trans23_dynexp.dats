@@ -770,6 +770,27 @@ end // end of [aux_seqn]
 (* ****** ****** *)
 
 fun
+aux_none0
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Enone0() = d2e0.node()
+//
+val
+t2p0 =
+the_t2ype_void(*void*)
+//
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Enone0())
+end // end of [aux_none0]
+
+(* ****** ****** *)
+
+fun
 aux_tuple
 ( d2e0
 : d2exp): d3exp = let
@@ -1018,6 +1039,7 @@ d2e0.node() of
 //
 | D2Eseqn _ => aux_seqn(d2e0)
 //
+| D2Enone0 _ => aux_none0(d2e0)
 | D2Etuple _ => aux_tuple(d2e0)
 //
 | D2Edtsel _ => aux_dtsel(d2e0)
@@ -1034,7 +1056,8 @@ d2e0.node() of
     (_, _, _, _) => aux_lam(d2e0)
   // D2Elam
 //
-| D2Eanno(d2e1, s2e2) => aux_anno(d2e0)
+| D2Eanno
+    (d2e1, s2e2) => aux_anno(d2e0)
 //
 | _ (*rest-of-d2exp*) => d3exp_none1_0(d2e0)
 //

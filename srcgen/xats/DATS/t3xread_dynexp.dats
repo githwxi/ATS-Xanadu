@@ -99,6 +99,15 @@ d3p0.node() of
     t3xread_d3patlst<>(d3ps)
   }
 //
+| D3Pnone0() => ()
+//
+| D3Ptuple
+  (knd, npf, d3ps) =>
+  {
+    val () =
+    t3xread_d3patlst<>(d3ps)
+  }
+//
 | D3Panno(d3p1, t2p2) =>
   {
     val () =
@@ -142,8 +151,6 @@ d3p0.node() of
     (loc0, ": T3XERR(d3pat): D3Pcast: t2p2 = ", t2p2);
 //
   end
-//
-| D3Pnone0() => ((*void*))
 //
 | D3Pnone1(d3p1) =>
   let
