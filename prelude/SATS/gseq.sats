@@ -7,78 +7,89 @@
 fun
 <x0:tflt
 ,xs:tflt>
-g_forall(xs): bool
+gseq_forall(xs): bool
 #symload
-forall with g_forall
+forall with gseq_forall
 
 (* ****** ****** *)
 
 fun
 <x0:tflt
 ,xs:tflt>
-g_foreach(xs): void
+gseq_foreach(xs): void
 #symload
-foreach with g_foreach
+foreach with gseq_foreach
 
 (* ****** ****** *)
 //
 fun
 <x0:tflt
 ,xs:tflt>
-g_listize
-  (x0: xs): list_vt(x0)
-//
+gseq_listize
+  (xs: xs): list_vt(x0)
 #symload
-listize with g_listize
+listize with gseq_listize
 //
 fun
 <x0:tflt
 ,xs:tflt>
-g_streamize
-  (x0: xs): stream_vt(x0)
+gseq_streamize
+  (xs: xs): stream_vt(x0)
 #symload
-streamize with g_streamize
+streamize with gseq_streamize
 //
 (* ****** ****** *)
+//
+(*
+gseq_map: map$fopr
+gseq_maprev: map$fopr
+*)
+//
+fun
+<x0:tflt
+,xs:tflt>
+<y0:vtflt>
+gseq_map_list
+  (xs: xs): list_vt(y0)
+#symload
+map_list with gseq_map_list
+fun
+<x0:tflt
+,xs:tflt>
+<y0:vtflt>
+gseq_maprev_list
+  (xs: xs): list_vt(y0)
+#symload
+maprev_list with gseq_maprev_list
+
+(* ****** ****** *)
+//
+(*
+gseq_foldl: foldl$fopr
+gseq_foldr: foldr$fopr
+*)
 //
 fun
 <x0:tflt
 ,xs:tflt>
 <r0:vtflt>
-g_foldleft(xs, r0): r0
+gseq_foldl(xs, r0): r0
 fun
 <x0:tflt
 ,xs:tflt>
 <r0:vtflt>
-g_foldright(xs, r0): r0
+gseq_foldr(xs, r0): r0
 //
-#symload
-g_foldl with g_foldleft
-#symload
-g_foldr with g_foldright
+#symload foldl with gseq_foldl
+#symload foldr with gseq_foldr
 //
 (* ****** ****** *)
-
+//
 fun
-<x0:tflt
-,xs:tflt>
-<y0:vtflt>
-g_map_list
-  (xs: xs): list_vt(y0)
-#symload
-map_list with g_map_list
-
-(* ****** ****** *)
-
+<x0:tflt,xs:tflt>gseq_add(xs): x0
 fun
-<x0:tflt
-,xs:tflt>
-<y0:vtflt>
-g_maprev_list
-  (xs: xs): list_vt(y0)
-#symload
-maprev_list with g_maprev_list
-
+<x0:tflt,xs:tflt>gseq_mul(xs): x0
+//
 (* ****** ****** *)
 
 (* end of [gseq.sats] *)

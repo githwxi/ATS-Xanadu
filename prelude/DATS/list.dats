@@ -4,8 +4,10 @@
 *)
 (* ****** ****** *)
 
+(*
 #staload
 "./../SATS/list.sats"
+*)
 
 (* ****** ****** *)
 //
@@ -124,23 +126,28 @@ case+ xs of
 //
 (* ****** ****** *)
 
-implement
+impltmp
 {x0:type
 ,xs:type}
-g_forall<x0,list(x0)>(xs) = list_forall<x0>(xs)
+gseq_forall<x0,list(x0)>(xs) = list_forall<x0>(xs)
 
-implement
+impltmp
 {x0:type
 ,xs:type}
-g_foreach<x0,list(x0)>(xs) = list_foreach<x0>(xs)
+gseq_foreach<x0,list(x0)>(xs) = list_foreach<x0>(xs)
 
 (* ****** ****** *)
 
-implement
+impltmp
 {x0:type
 ,xs:type
 ,y0:type}
-g_maprev_list<x0,list(x0)><y0>(xs) = list_maprev_vt<x0>(xs)
+gseq_map_list<x0,list(x0)><y0>(xs) = list_map_vt<x0><y0>(xs)
+impltmp
+{x0:type
+,xs:type
+,y0:type}
+gseq_maprev_list<x0,list(x0)><y0>(xs) = list_maprev_vt<x0><y0>(xs)
 
 (* ****** ****** *)
 

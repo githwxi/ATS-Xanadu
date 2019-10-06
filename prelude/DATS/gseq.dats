@@ -6,11 +6,11 @@
 
 impltmp
 <x0,xs>
-g_foreach(xs) =
+gseq_foreach(xs) =
 let
 val
 test =
-g_forall<x0,xs>(xs) where
+gseq_forall<x0,xs>(xs) where
 {
 impltmp
 forall$test(x0) =
@@ -20,27 +20,65 @@ end
 }
 in
   // nothing
-end // end of [g_foreach]
+end // end of [gseq_foreach]
 
 (* ****** ****** *)
 
 impltmp
 <x0,xs><y0>
-g_maprev_list
+gseq_maprev_list
   (xs) = let
 //
 val r0 = list_vt_nil()
 //
 in
 //
-g_foldleft<x0,xs>(xs, r0) where
+gseq_foldl<x0,xs>(xs, r0) where
 {
   impltmp
-  foldleft$fopr(r0, x0) =
+  foldl$fopr(r0, x0) =
   list_vt_cons{y0}(map$fopr(x0), r0)
 }
 //
-end // end of [g_maprev_list]
+end // end of [gseq_maprev_list]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_add(xs) =
+let
+//
+typedef r0 = x0
+//
+in
+(
+gseq_foldl<x0,xs><r0>(xs, g_0<r0>())
+) where
+{
+implement
+foldl$fopr<x0><r0>(r0, x0) = g_add(r0, x0)
+}
+end // end of [gseq_add]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_mul(xs) =
+let
+//
+typedef r0 = x0
+//
+in
+(
+gseq_foldl<x0,xs><r0>(xs, g_1<r0>())
+) where
+{
+implement
+foldl$fopr<x0><r0>(r0, x0) = g_mul(r0, x0)
+}
+end // end of [gseq_mul]
 
 (* ****** ****** *)
 

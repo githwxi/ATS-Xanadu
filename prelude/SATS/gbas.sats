@@ -100,11 +100,11 @@ foreach1$work(x0: !x0): void
 fun
 <x0:t0>
 <r0:vt>
-foldleft$fopr(r0: r0, x0: x0): r0
+foldl$fopr(r0: r0, x0: x0): r0
 fun
 <x0:t0>
 <r0:vt>
-foldright$fopr(x0: x0, r0: r0): r0
+foldr$fopr(x0: x0, r0: r0): r0
 //
 (* ****** ****** *)
 
