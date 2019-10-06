@@ -1928,6 +1928,13 @@ d2cl.node() of
     (loc0, D3Cextern(tok, d3c))
   end
 //
+| D2Csexpdef _ =>
+  let
+    val node = D3Cd2ecl(d2cl)
+  in
+    d3ecl_make_node(loc0, node)
+  end
+//
 | D2Csymload _ =>
   let
     val node = D3Cd2ecl(d2cl)

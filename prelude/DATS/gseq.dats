@@ -29,15 +29,18 @@ impltmp
 gseq_maprev_list
   (xs) = let
 //
-val r0 = list_vt_nil()
+typedef r0 = list_vt(y0)
 //
 in
 //
-gseq_foldl<x0,xs>(xs, r0) where
+gseq_foldl<x0,xs>
+(xs, list_vt_nil()) where
 {
   impltmp
-  foldl$fopr(r0, x0) =
-  list_vt_cons{y0}(map$fopr(x0), r0)
+  foldl$fopr
+  <x0><r0>
+  (r0, x0) =
+  list_vt_cons(map$fopr(x0), r0)
 }
 //
 end // end of [gseq_maprev_list]
@@ -51,14 +54,13 @@ let
 //
 typedef r0 = x0
 //
-in
-(
-gseq_foldl<x0,xs><r0>(xs, g_0<r0>())
-) where
-{
 implement
-foldl$fopr<x0><r0>(r0, x0) = g_add(r0, x0)
-}
+foldl$fopr
+<x0><r0>
+(r0, x0) = g_add(r0, x0)
+//
+in
+  gseq_foldl<x0,xs><r0>(xs, g_0<r0>())
 end // end of [gseq_add]
 
 (* ****** ****** *)
@@ -70,14 +72,13 @@ let
 //
 typedef r0 = x0
 //
-in
-(
-gseq_foldl<x0,xs><r0>(xs, g_1<r0>())
-) where
-{
 implement
-foldl$fopr<x0><r0>(r0, x0) = g_mul(r0, x0)
-}
+foldl$fopr
+<x0><r0>
+(r0, x0) = g_mul(r0, x0)
+//
+in
+  gseq_foldl<x0,xs><r0>(xs, g_1<r0>())
 end // end of [gseq_mul]
 
 (* ****** ****** *)
