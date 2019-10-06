@@ -86,14 +86,14 @@ list_revapp(xs, list_nil())
 (* ****** ****** *)
 //
 impltmp
-<a><b>
+<x0><y0>
 list_maprev(xs) =
 (
 list_vt2t(list_maprev_vt(xs))
 )
 //
 impltmp
-<a><b>
+<x0><y0>
 list_maprev_vt(xs) =
 (
 loop(xs, list_vt_nil((*void*)))
@@ -103,10 +103,10 @@ loop(xs, list_vt_nil((*void*)))
 fun
 loop{i:nat}.<i>.
 ( xs
-: list(a, i)
+: list(x0, i)
 , ys
-: list_vt(b, j)
-) : list_vt(b, i+j) =
+: list_vt(y0, j)
+) : list_vt(y0, i+j) =
 (
 case+ xs of
 | list_nil() => ys
@@ -116,12 +116,32 @@ case+ xs of
   ) where
   {
     val y0 = map$fopr(x0)
-    val ys = list_vt_cons(y0, ys)
+    val ys = list_vt_cons{y0}(y0, ys)
   }
 ) (* end of [loop] *)
 //
 } (* end of [list_maprev_vt] *)
 //
+(* ****** ****** *)
+
+implement
+{x0:type
+,xs:type}
+g_forall<x0,list(x0)>(xs) = list_forall<x0>(xs)
+
+implement
+{x0:type
+,xs:type}
+g_foreach<x0,list(x0)>(xs) = list_foreach<x0>(xs)
+
+(* ****** ****** *)
+
+implement
+{x0:type
+,xs:type
+,y0:type}
+g_maprev_list<x0,list(x0)><y0>(xs) = list_maprev_vt<x0>(xs)
+
 (* ****** ****** *)
 
 (* end of [list.dats] *)

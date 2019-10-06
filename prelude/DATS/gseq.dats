@@ -5,12 +5,12 @@
 (* ****** ****** *)
 
 impltmp
-<xs,x0>
+<x0,xs>
 g_foreach(xs) =
 let
 val
 test =
-g_forall<xs,x0>(xs) where
+g_forall<x0,xs>(xs) where
 {
 impltmp
 forall$test(x0) =
@@ -25,7 +25,7 @@ end // end of [g_foreach]
 (* ****** ****** *)
 
 impltmp
-<xs,x0><y0>
+<x0,xs><y0>
 g_maprev_list
   (xs) = let
 //
@@ -33,7 +33,7 @@ val r0 = list_vt_nil()
 //
 in
 //
-g_foldleft<xs,x0>(xs, r0) where
+g_foldleft<x0,xs>(xs, r0) where
 {
   impltmp
   foldleft$fopr(r0, x0) =

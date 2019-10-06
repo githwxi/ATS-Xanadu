@@ -556,5 +556,36 @@ vtypedef stropt_vt = stropt0_vt
 vtypedef stropt_vt(n:int) = stropt1_vt(n)
 //
 (* ****** ****** *)
+//
+abstype
+lazy_t0_x0(a: type+) <= ptr
+typedef
+lazy(a:type) = lazy_t0_x0(a)
+//
+abstype
+lazy_vt_vx(a: vtype+) <= ptr
+typedef
+lazy_vt(a:vtype) = lazy_vt_vx(a)
+//
+(* ****** ****** *)
+//
+datatype
+strmcon(a:type+) =
+| strmcon_nil of ((*void*))
+| strmcon_cons of (a, stream(a))
+//
+where
+stream(a:type) = lazy(strmcon(a))
+//
+datavtype
+strmcon_vt(a:vtype+) =
+| strmcon_vt_nil of ((*void*))
+| strmcon_vt_cons of (a, stream_vt(a))
+//
+where
+stream_vt
+(a:vtype) = lazy_vt(strmcon_vt(a))
+//
+(* ****** ****** *)
 
 (* end of [basics.sats] *)
