@@ -82,7 +82,7 @@ impltmp
 list_reverse
   (xs) =
 (
-list_revapp(xs, list_nil())
+list_revapp<a>(xs, list_nil())
 ) (* list_reverse *)
 //
 (* ****** ****** *)
