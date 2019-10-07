@@ -1721,6 +1721,12 @@ auxf2as_1
 , tfun
 : &t2ype >> _): f3arg =
 (
+let
+val () =
+println!("auxf2as_1: f2a0 = ", f2a0)
+val () =
+println!("auxf2as_1: tfun = ", tfun)
+in
 case-
 f2a0.node() of
 (*
@@ -1729,6 +1735,7 @@ f2a0.node() of
 | F2ARGsome_met _ => auxf2as_1m(f2a0, tfun)
 | F2ARGsome_sta _ => auxf2as_1s(f2a0, tfun)
 | F2ARGsome_dyn _ => auxf2as_1d(f2a0, tfun)
+end
 )
 //
 and

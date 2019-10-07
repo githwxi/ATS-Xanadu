@@ -1033,7 +1033,7 @@ list_map<d2pat><s2exp>
 implement
 list_map$fopr<d2pat><s2exp> = d2pat_get_sexp
 }
-} (* end of [s2explst_of_d2patlst] *)
+} (* end of [d2patlst_get_sexps] *)
 
 (* ****** ****** *)
 
