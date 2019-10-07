@@ -1648,6 +1648,15 @@ val tfn1 = nam.type()
 //
 val ctp =
 (
+case+ a3g of
+|
+None _ =>
+(
+  T2PCASTnone(*void*)
+)
+|
+Some _ =>
+(
 case+ wtp of
 | None _ =>
   (
@@ -1670,6 +1679,7 @@ case+ wtp of
     T2PCASTsome
     (tfn1(*infer*), tfn2(*given*))
   end
+) (* Some *)
 ) : t2pcast // end-of-val
 //
 val def =

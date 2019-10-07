@@ -107,6 +107,13 @@ fprint_val<d2exp> = fprint_d2exp
 (* ****** ****** *)
 
 implement
+fprint_val<f1arg> = fprint_f1arg
+implement
+fprint_val<f2arg> = fprint_f2arg
+
+(* ****** ****** *)
+
+implement
 fprint_val<sq2arg> = fprint_sq2arg
 implement
 fprint_val<tq2arg> = fprint_tq2arg
@@ -1705,10 +1712,10 @@ val () = the_sexpenv_add_cst(s2c0)
 (*
 val () =
 println!
-("trans12_decl: aux_stacst0: s2t0 = ", s2t0)
+("aux_stacst0: s2t0 = ", s2t0)
 val () =
 println!
-("trans12_decl: aux_stacst0: s2c0 = ", s2c0)
+("aux_stacst0: s2c0 = ", s2c0)
 *)
 //
 in
@@ -1881,12 +1888,10 @@ the_sexpenv_popfree(pf0|(*void*))
 (*
 val () =
 println!
-("\
-trans12_decl: aux_sexpdef: knd = ", knd)
+("aux_sexpdef: knd = ", knd)
 val () =
 println!
-("\
-trans12_decl: aux_sexpdef: s2e0 = ", s2e0)
+("aux_sexpdef: s2e0 = ", s2e0)
 *)
 //
 val
@@ -2174,13 +2179,9 @@ val () = the_sexpenv_add_cst(s2c0)
 //
 (*
 val () =
-println!
-("\
-trans12_decl: aux_abstype: s2t0 = ", s2t0)
+println!("aux_abstype: s2t0 = ", s2t0)
 val () =
-println!
-("\
-trans12_decl: aux_abstype: s2c0 = ", s2c0)
+println!("aux_abstype: s2c0 = ", s2c0)
 *)
 //
 in
@@ -2690,7 +2691,7 @@ val res =
 trans12_effsexpopt(rcd.res)
 //
 val def =
-trans12_dexpopt(rcd.def)
+  trans12_dexpopt(rcd.def)
 //
 val
 ((*void*)) =
@@ -2747,6 +2748,9 @@ case+ d2vs of
       val
       t2p0 = s2exp_erase(s2e0)
     in
+      d2cst_set_sexp(d2c0, s2e0);
+      d2cst_set_type(d2c0, t2p0);
+      d2var_set_sexp(d2v0, s2e0);
       d2var_set_type(d2v0, t2p0);
 (*
       println!("trans12_decl: aux_fundecl: auxf1ds: d2v0 = ", d2v0);
@@ -3005,6 +3009,14 @@ auxsvs
 ( svs0: s2varlst
 , svs1: s2varlst): void =
 (
+let
+val () =
+println!
+("auxsvs: svs0 = ", svs0)
+val () =
+println!
+("auxsvs: svs1 = ", svs1)
+in
 case+ svs0 of
 | list_nil() => ()
 | list_cons(sv0, svs0) =>
@@ -3019,13 +3031,14 @@ case+ svs0 of
       val () = sv1.sort(sv0.sort())
     }
   )
+end
 )
 in
 case+
 f2a0.node() of
 | F2ARGsome_met _ => s2e0
 | F2ARGsome_dyn _ => auxdyn(s2e0)
-| F2ARGsome_sta(s2vs, s2ps) => auxsta(s2e0, s2vs)
+| F2ARGsome_sta(s2vs, _) => auxsta(s2e0, s2vs)
 end
 
 (* ****** ****** *)
@@ -3058,6 +3071,14 @@ auxsexp_f1as
 ( s2e0: s2exp
 , f1as: f1arglst): f2arglst =
 (
+let
+val () =
+println!
+("auxsexp_f1as: s2e0 = ", s2e0)
+val () =
+println!
+("auxsexp_f1as: f1as = ", f1as)
+in
 case+ f1as of
 | list_nil() =>
   list_nil()
@@ -3070,6 +3091,7 @@ case+ f1as of
     val s2e1 = auxf2a0_sexp(f2a0, s2e0)
     val f2as = auxsexp_f1as(s2e1, f1as)
   }
+end
 ) (* end of [auxsexp_f1as] *)
 
 in (* in-of-local *)
@@ -3952,11 +3974,11 @@ trans12_decl
 val
 loc0 = d1cl.loc()
 //
-(*
+// (*
 val () =
 println!
 ("trans12_decl: d1cl = ", d1cl)
-*)
+// *)
 //
 in (* in-of-let *)
 //
