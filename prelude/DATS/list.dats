@@ -150,25 +150,38 @@ gseq_cons?
 
 impltmp
 {x0:type}
-gseq_forall<x0,list(x0)>(xs) = list_forall<x0>(xs)
-
-impltmp
-{x0:type}
-gseq_foreach<x0,list(x0)>(xs) = list_foreach<x0>(xs)
+gseq_length
+<x0,list(x0)>(xs) = list_length<x0>(xs)
 
 (* ****** ****** *)
 
 impltmp
-{x0:type
-,xs:type
-,y0:type}
-gseq_map_list<x0,list(x0)><y0>(xs) = list_map_vt<x0><y0>(xs)
+{x0:type}
+gseq_forall
+<x0,list(x0)>(xs) = list_forall<x0>(xs)
+
+(* ****** ****** *)
+
+impltmp
+{x0:type}
+gseq_foreach
+<x0,list(x0)>(xs) = list_foreach<x0>(xs)
+
+(* ****** ****** *)
+//
 impltmp
 {x0:type
 ,xs:type
 ,y0:type}
-gseq_maprev_list<x0,list(x0)><y0>(xs) = list_maprev_vt<x0><y0>(xs)
-
+gseq_map_list
+<x0,list(x0)><y0>(xs) = list_map_vt<x0><y0>(xs)
+impltmp
+{x0:type
+,xs:type
+,y0:type}
+gseq_maprev_list
+<x0,list(x0)><y0>(xs) = list_maprev_vt<x0><y0>(xs)
+//
 (* ****** ****** *)
 
 (* end of [list.dats] *)
