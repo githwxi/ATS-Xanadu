@@ -217,6 +217,13 @@ d3e0.node() of
 //
 | D3Etcst _ => ()
 //
+| D3Esap1
+  (d3e1, s2e2) =>
+  {
+    val () =
+    t3xread_d3exp<>(d3e1)
+  }
+//
 | D3Edapp
   (d3f1, npf2, d3es) =>
   {

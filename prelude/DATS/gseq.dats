@@ -6,6 +6,22 @@
 
 impltmp
 <x0,xs>
+gseq_length(xs) =
+(
+gseq_foldl
+<x0,xs><r0>(xs, 0)
+) where
+{
+typedef r0 = nint
+implement
+foldl$fopr
+<x0><r0>(r0, x0) = r0 + 1
+} (* gseq_length *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
 gseq_foreach(xs) =
 let
 val

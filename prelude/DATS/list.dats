@@ -125,15 +125,35 @@ case+ xs of
 } (* end of [list_maprev_vt] *)
 //
 (* ****** ****** *)
+//
+impltmp
+{x0:type}
+gseq_nil
+<x0,list(x0)>() = list_nil()
+impltmp
+{x0:type}
+gseq_cons
+<x0,list(x0)>(x0, xs) = list_cons(x0, xs)
+//
+(* ****** ****** *)
 
 impltmp
-{x0:type
-,xs:type}
+{x0:type}
+gseq_nil?
+<x0,list(x0)>(xs) = list_nil?(xs)
+impltmp
+{x0:type}
+gseq_cons?
+<x0,list(x0)>(xs) = list_cons?(xs)
+
+(* ****** ****** *)
+
+impltmp
+{x0:type}
 gseq_forall<x0,list(x0)>(xs) = list_forall<x0>(xs)
 
 impltmp
-{x0:type
-,xs:type}
+{x0:type}
 gseq_foreach<x0,list(x0)>(xs) = list_foreach<x0>(xs)
 
 (* ****** ****** *)
