@@ -163,7 +163,7 @@ loop{i,j:nat|i+j=n}
 (xs:
 list_vt(x, i), j: int(j)): int(i+j) =
 case+ xs of
-| nil() => j | cons(_, xs) => loop(xs, j+1)
+| nil_vt() => j | cons_vt(_, xs) => loop(xs, j+1)
 //
 }(*list_vt_length*)
 

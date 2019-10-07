@@ -1729,8 +1729,46 @@ t2p0.node() of
 | T2Puni
   (svs2, t2p0) =>
   let
+    val tsub =
+    (
+    auxlst(svs2, svs1)
+    ) where
+    {
+    fun
+    auxlst
+    ( xs0: s2varlst
+    , ys0: s2varlst
+    ) : List0_vt(s2var) =
+    (
+    case+ xs0 of
+    | list_nil _ =>
+      list_vt_nil()
+    | list_cons(x0, xs1) =>
+      (
+      case+ ys0 of
+      | list_nil() =>
+        list_vt_cons(x0, auxlst(xs1, ys0))
+      | list_cons(y0, ys1) =>
+        let
+        val st = y0.sort()
+        in
+        if
+        sort2_is_impred(st)
+        then list_vt_cons(y0, auxlst(xs1, ys1)) else auxlst(xs0, ys1)
+        end
+      )
+    ) (* end of [auxlst] *)
+    }
     val t2p0 =
-    t2ype_revars(t2p0, svs1, svs2)
+    (
+    t2ype_revars
+    (t2p0, svs2, tsub)
+    ) where
+    {
+    val
+    tsub = $UN.list_vt2t(tsub)
+    }
+    val () = list_vt_free(tsub)
   in
     let
     val () = tfun := t2p0
@@ -1741,7 +1779,12 @@ t2p0.node() of
   end
 | _(*non-T2Puni*) =>
   (
-    f3arg_make_node(loc0, F3ARGnone2(f2a0))
+    let
+    val () = tfun := t2p0
+    in
+    f3arg_make_node
+    (loc0, F3ARGsome_sta(svs1, s2ps))
+    end
   )
 //
 end // end of [let] // end of [auxf2as_1s]

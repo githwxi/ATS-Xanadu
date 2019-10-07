@@ -133,7 +133,8 @@ gseq_nil
 impltmp
 {x0:type}
 gseq_cons
-<x0,list(x0)>(x0, xs) = list_cons(x0, xs)
+<x0,list(x0)>
+  (x0, xs) = list_cons(x0, xs)
 //
 (* ****** ****** *)
 

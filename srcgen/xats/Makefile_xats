@@ -64,6 +64,7 @@ dynexp3.sats \
 trans23.sats \
 trans33.sats \
 t3xread.sats \
+trans3t.sats \
 
 SRCDATS := \
 basics.dats \
@@ -129,6 +130,7 @@ trans23_dynexp.dats \
 trans33_util0.dats \
 trans33_dynexp.dats \
 t3xread_dynexp.dats \
+trans3t_dynexp.dats \
 
 ######
 
