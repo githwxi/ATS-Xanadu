@@ -1778,18 +1778,17 @@ T2Puni
 (svs2, t2p0) =>
 let
 val tsub =
-(
 auxtsub(svs2, svs1)
-)
 val t2p0 =
 (
 t2ype_revars
-(t2p0, svs2, tsub)
+  (t2p0, svs2, tsub)
+// t2ype_revars
 ) where
 {
 val
 tsub = $UN.list_vt2t(tsub)
-}
+} (* where *) // end-of-val
 val () = list_vt_free(tsub)
 in
   let
