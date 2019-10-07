@@ -78,6 +78,8 @@ FS0 = "./../SATS/filsrch.sats"
 //
 #staload "./../SATS/t3xread.sats"
 //
+#staload "./../SATS/trans3t.sats"
+//
 (* ****** ****** *)
 //
 #staload
@@ -229,12 +231,13 @@ end // end of [local]
 #dynload "./dynexp3_print.dats"
 //
 #dynload "./trans23_util0.dats"
-#dynload "./trans23_dynexp.dats"
-//
 #dynload "./trans33_util0.dats"
+#dynload "./trans23_dynexp.dats"
 #dynload "./trans33_dynexp.dats"
 //
 #dynload "./t3xread_dynexp.dats"
+//
+#dynload "./trans3t_dynexp.dats"
 //
 (* ****** ****** *)
 //
