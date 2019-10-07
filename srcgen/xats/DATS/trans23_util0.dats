@@ -888,40 +888,81 @@ auxmain
 val t2p0 = hnfize(t2p0)
 //
 in
+//
+if
+auxtest(s2es)
+then
+(
 case+
 t2p0.node() of
 | T2Puni
   (s2vs, t2p1) =>
   let
 //
+  val tsub =
+  auxtsub(s2vs, s2es)
   val t2p1 =
+  (
   t2ype_substs
-  (t2p1, s2vs, auxtsub(s2vs, s2es))
+  (t2p1, s2vs, tsub)
+  ) where
+  {
+    val
+    tsub =
+    $UN.list_vt2t(tsub)
+  }
+  val () = list_vt_free(tsub)
 //
   in
     d3exp_make_node
     (loc0, t2p1, D3Esap1(d3f0, s2es))
   end
 //
-| T2Pexi(s2vs, t2p1) => auxmain(t2p1)
+| T2Pexi
+  (s2vs, t2p1) => auxmain(t2p1)
 //
 | _(*non-T2Puni*) =>
-  (
-    d3exp_make_node
+  d3exp_make_node
     (loc0, t2p0, D3Esap0(d3f0, s2es))
-  )
-end // end of [auxmain]
-//
-and
+  // d3exp_make_node
+) (* end of [then] *)
+else
+(
+  d3exp_make_node
+    (loc0, t2p0, D3Esap0(d3f0, s2es))
+  // d3exp_make_node
+) (* end of [else] *)
+end where
+{
+fun
+auxtest
+( s2es
+: s2explst): bool =
+(
+case+ s2es of
+| list_nil() => false
+| list_cons(s2e0, s2es) =>
+  let
+    val
+    s2t0 = s2e0.sort()
+  in
+    if
+    sort2_is_impred(s2t0)
+    then true else auxtest(s2es)
+  end
+)
+fun
 auxtsub
 ( s2vs
 : s2varlst
 , s2es
-: s2explst): t2ypelst =
+: s2explst)
+: List0_vt(t2ype) =
 (
 case+ s2vs of
 | list_nil
-  ((*void*)) => list_nil()
+  ((*void*)) =>
+  list_vt_nil()
 | list_cons
   (s2v0, s2vs) =>
   (
@@ -929,9 +970,10 @@ case+ s2vs of
     | list_nil() =>
       let
       val
-      t2p0 =the_t2ype_none0
+      t2p0 = the_t2ype_none0
       in
-        list_cons(t2p0, auxtsub(s2vs, s2es))
+        list_vt_cons
+        (t2p0, auxtsub(s2vs, s2es))
       end
     | list_cons
       (s2e0, s2es1) =>
@@ -949,21 +991,22 @@ case+ s2vs of
           if
           (k0 >= 2)
           then
-          list_cons
+          list_vt_cons
           (t2p0, auxtsub(s2vs, s2es))
           else
-          list_cons
+          list_vt_cons
           (t2p0, auxtsub(s2vs, s2es1))
         end
       | _(*non-S2Eany*) =>
         let
           val t2p0 = s2exp_erase(s2e0)
         in
-          list_cons(t2p0, auxtsub(s2vs, s2es))
+          list_vt_cons(t2p0, auxtsub(s2vs, s2es))
         end
       )
   )
 ) (* end of [auxtsub] *)
+} // where // end of [auxmain]
 //
 in
   auxmain(d3f0.type((*void*)))
@@ -1724,70 +1767,99 @@ t2p0 = t2ype_hnfize(tfun)
 //
 in
 //
+if
+auxtest(svs1)
+then
+(
 case+
 t2p0.node() of
-| T2Puni
-  (svs2, t2p0) =>
+|
+T2Puni
+(svs2, t2p0) =>
+let
+val tsub =
+(
+auxtsub(svs2, svs1)
+)
+val t2p0 =
+(
+t2ype_revars
+(t2p0, svs2, tsub)
+) where
+{
+val
+tsub = $UN.list_vt2t(tsub)
+}
+val () = list_vt_free(tsub)
+in
   let
-    val tsub =
-    (
-    auxlst(svs2, svs1)
-    ) where
-    {
-    fun
-    auxlst
-    ( xs0: s2varlst
-    , ys0: s2varlst
-    ) : List0_vt(s2var) =
-    (
-    case+ xs0 of
-    | list_nil _ =>
-      list_vt_nil()
-    | list_cons(x0, xs1) =>
-      (
-      case+ ys0 of
-      | list_nil() =>
-        list_vt_cons(x0, auxlst(xs1, ys0))
-      | list_cons(y0, ys1) =>
-        let
-        val st = y0.sort()
-        in
-        if
-        sort2_is_impred(st)
-        then list_vt_cons(y0, auxlst(xs1, ys1)) else auxlst(xs0, ys1)
-        end
-      )
-    ) (* end of [auxlst] *)
-    }
-    val t2p0 =
-    (
-    t2ype_revars
-    (t2p0, svs2, tsub)
-    ) where
-    {
-    val
-    tsub = $UN.list_vt2t(tsub)
-    }
-    val () = list_vt_free(tsub)
+  val () = tfun := t2p0
   in
-    let
-    val () = tfun := t2p0
-    in
-    f3arg_make_node
-    (loc0, F3ARGsome_sta(svs1, s2ps))
-    end
+  f3arg_make_node
+  ( loc0
+  , F3ARGsome_sta(svs1, s2ps))
   end
+end
 | _(*non-T2Puni*) =>
-  (
-    let
-    val () = tfun := t2p0
-    in
+  let
+  val () = tfun := t2p0
+  in
     f3arg_make_node
-    (loc0, F3ARGsome_sta(svs1, s2ps))
+      (loc0, F3ARGnone2(f2a0))
+    // f3arg_make_node
+  end
+) (* end of [then] *)
+else
+let
+val () = tfun := t2p0
+in
+  f3arg_make_node
+  (loc0, F3ARGsome_sta(svs1, s2ps))
+end // let // end of [else]
+//
+end where
+{
+fun
+auxtest
+( s2vs
+: s2varlst): bool =
+(
+case+ s2vs of
+| list_nil() => false
+| list_cons(s2v0, s2vs) =>
+  let
+  val s2t0 = s2v0.sort()
+  in
+    if
+    sort2_is_impred(s2t0)
+    then true else auxtest(s2vs)
+  end
+)
+fun
+auxtsub
+( xs0: s2varlst
+, ys0: s2varlst
+) : List0_vt(s2var) =
+(
+case+ xs0 of
+| list_nil _ =>
+  list_vt_nil()
+| list_cons(x0, xs1) =>
+  (
+  case+ ys0 of
+  | list_nil() =>
+    list_vt_cons(x0, auxtsub(xs1, list_nil()))
+  | list_cons(y0, ys1) =>
+    let
+    val st = y0.sort()
+    in
+    if
+    sort2_is_impred(st)
+    then list_vt_cons(y0, auxtsub(xs1, ys1)) else auxtsub(xs0, ys1)
     end
   )
-//
-end // end of [let] // end of [auxf2as_1s]
+) (* end of [auxtsub] *)
+} // end of [let] // end of [auxf2as_1s]
 //
 and
 auxf2as_1d
