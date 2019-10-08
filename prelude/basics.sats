@@ -381,6 +381,13 @@ optn1_vt(a:type, b: bool) = optn_vt(a, b)
 //
 (* ****** ****** *)
 //
+castfn
+optn_vt2t
+{a:t0}{b:b0}
+(optn_vt(a, b)): optn(a, b)
+//
+(* ****** ****** *)
+//
 // HX-2018-10-01:
 //
 datatype
@@ -482,7 +489,7 @@ vtypedef listbtwe_vt
 //
 castfn
 list_vt2t
-{a:type}{n:int}
+{a:t0}{n:i0}
 (list_vt(a, n)): list(a, n)
 //
 (* ****** ****** *)

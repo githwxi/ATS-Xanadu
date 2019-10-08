@@ -159,5 +159,18 @@ list_maprev_vt
 {n:int}(xs: list(x0, n)): list_vt(y0, n)
 //
 (* ****** ****** *)
+//
+fun
+<a:t0>
+<n:i0>
+list_tabulate(int(n)): list(a, n)
+fun
+<a:type>
+list_tabulate_cref
+{n:nat}
+( n0: int(n)
+, f0: nintlt(n) -<cref> a): list(a, n)
+//
+(* ****** ****** *)
 
 (* end of [list.sats] *)

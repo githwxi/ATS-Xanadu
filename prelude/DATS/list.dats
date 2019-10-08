@@ -111,18 +111,41 @@ loop{i:nat}.<i>.
 ) : list_vt(y0, i+j) =
 (
 case+ xs of
-| list_nil() => ys
-| list_cons(x0, xs) =>
-  (
-    loop(xs, ys)
-  ) where
-  {
-    val y0 = map$fopr(x0)
-    val ys = list_vt_cons{y0}(y0, ys)
-  }
+|
+list_nil() => ys
+|
+list_cons(x0, xs) =>
+(
+  loop(xs, ys)
+) where
+{
+  val y0 =
+  map$fopr(x0)
+  val ys =
+  list_vt_cons{y0}(y0, ys)
+}
 ) (* end of [loop] *)
 //
 } (* end of [list_maprev_vt] *)
+//
+(* ****** ****** *)
+//
+(*
+HX-2019-10:
+Quite an informative example:
+*)
+//
+impltmp
+<a>(*tmp*)
+list_tabulate_cref
+  {n}(n0, f0) = let
+//
+impltmp
+tabulate$fopr<a><n>(i0) = f0(i0)
+//
+in
+  list_tabulate<a><n>(n0)
+end // end of [list_tabulate_cref]
 //
 (* ****** ****** *)
 //
