@@ -90,5 +90,18 @@ list_vt_rcopy
 #symload rcopy with list_vt_rcopy
 //
 (* ****** ****** *)
+//
+fun
+<a:vt>
+<n:i0>
+list_vt_tabulate(int(n)): list_vt(a, n)
+fun
+<a:vtype>
+list_vt_tabulate_cref
+{n:nat}
+( n0: int(n)
+, f0: nintlt(n) -<cref> a): list_vt(a, n)
+//
+(* ****** ****** *)
 
 (* end of [list_vt.sats] *)

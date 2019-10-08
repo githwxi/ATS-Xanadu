@@ -109,7 +109,7 @@ foldr$fopr(x0: x0, r0: r0): r0
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 <n:i0>
 tabulate$fopr(i0: nintlt(n)): (a)
 //
