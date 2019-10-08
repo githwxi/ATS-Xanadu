@@ -27,92 +27,25 @@
 
 (* ****** ****** *)
 //
-// For generic basics
+// For casting of all sorts
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: June, 2019
+// Start Time: October, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-fun
-<a:vtype>
-g_self(x: a): a
-
-(* ****** ****** *)
-
-fun
-<a:vtype>
-g_free(x: a): void
-fun
-<a:vtype>
-g_copy(x: !(a)): (a)
-
-(* ****** ****** *)
-
-fun
-<a:vtype>
-g_equal(!a, !a): void
-fun
-<a:vtype>
-g_nequal(!a, !a): void
-
-(* ****** ****** *)
-
-fun
-<x0:t0><y0:vt>
-map$fopr(x0: x0): y0
-fun
-<x0:vt><y0:vt>
-map0$fopr(x0: x0): y0
-fun
-<x0:vt><y0:vt>
-map1$fopr(x0: !x0): y0
-
-(* ****** ****** *)
-
-fun
-<x0:t0>
-forall$test(x0: x0): bool
-fun
-<x0:t0>
-forall0$test(x0: x0): bool
-fun
-<x0:t0>
-forall1$test(x0: !x0): bool
-
-(* ****** ****** *)
-
-fun
-<x0:t0>
-foreach$work(x0: x0): void
-fun
-<x0:t0>
-foreach0$work(x0: x0): void
-fun
-<x0:t0>
-foreach1$work(x0: !x0): void
-
-(* ****** ****** *)
 //
-fun
-<x0:t0>
-<r0:vt>
-foldl$fopr(r0: r0, x0: x0): r0
-fun
-<x0:t0>
-<r0:vt>
-foldr$fopr(x0: x0, r0: r0): r0
-//
-(* ****** ****** *)
-//
-fun
-<a:t0>
-<n:i0>
-tabulate$fopr(i0: nintlt(n)): (a)
+castfn
+optn_vt2t
+{a:t0}{b:b0}
+(xs: !optn_vt(a, b)): optn(a, b)
+castfn
+list_vt2t
+{a:t0}{n:i0}
+(xs: !list_vt(a, n)): list(a, n)
 //
 (* ****** ****** *)
 
-(* end of [gbas.sats] *)
+(* end of [unsafe.sats] *)
