@@ -72,7 +72,7 @@ case+ xs of
 | list_cons(x0, xs) =>
   let
     val () =
-    r0 := list_cons(x0, ?)
+    r0 := list_cons(x0, _)
   in
     loop(xs, r0.1); $fold(r0)
   end
@@ -120,6 +120,49 @@ list_revapp<a>(xs, list_nil())
 //
 impltmp
 <x0><y0>
+list_map(xs) =
+(
+list_vt2t(list_map_vt(xs))
+)
+//
+impltmp
+<x0><y0>
+list_map_vt(xs) = let
+//
+fun
+loop{i:nat}.<i>.
+( xs
+: list(x0, i)
+, r0
+: &(?list_vt(y0)) >> list_vt(y0, i)
+) : void =
+(
+case+ xs of
+|
+list_nil() => ()
+|
+list_cons(x0, xs) =>
+let
+  val y0 =
+  map$fopr(x0)
+  val () =
+  (r0 :=
+   list_vt_cons(y0, _))
+in
+  loop(xs, r0.1); $fold(r0)
+end
+) (* end of [loop] *)
+//
+in
+let
+  var r0: list_vt(a) in loop(xs, r0); r0
+end
+end (* end of [list_map_vt] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<x0><y0>
 list_maprev(xs) =
 (
 list_vt2t(list_maprev_vt(xs))
@@ -150,10 +193,8 @@ list_cons(x0, xs) =>
   loop(xs, ys)
 ) where
 {
-  val y0 =
-  map$fopr(x0)
-  val ys =
-  list_vt_cons{y0}(y0, ys)
+  val y0 = map$fopr(x0)
+  val ys = list_vt_cons{y0}(y0, ys)
 }
 ) (* end of [loop] *)
 //
