@@ -329,6 +329,9 @@ d3exp_node =
   ( f3arglst
   , effs2expopt, f1unarrow, d3exp(*body*))
 //
+| D3Eaddr of (d3exp)
+| D3Efold of (d3exp)
+//
 | D3Eanno of (d3exp, s2exp)
 //
 | D3Ecast of (d3exp, t2ype)

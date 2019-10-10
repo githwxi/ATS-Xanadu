@@ -996,8 +996,60 @@ D1Eapp1
 ( d1e1
 , d1e2) = d1e0.node()
 //
+fun
+isADDR
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+| D1Eid(tok) =>
+  (
+  case+
+  tok.node() of
+  | T_IDENT_dlr(x) => (x = "$addr")
+  | _(* non-T_IDENT_dlr *) => false
+  )
+| _(* non-D1Eid *) => false
+)
+fun
+isFOLD
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+| D1Eid(tok) =>
+  (
+  case+
+  tok.node() of
+  | T_IDENT_dlr(x) => (x = "$fold")
+  | _(* non-T_IDENT_dlr *) => false
+  )
+| _(* non-D1Eid *) => false
+)
+//
 in
 //
+ifcase
+//
+| isADDR(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Eaddr(d2e2))
+  end
+| isFOLD(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Efold(d2e2))
+  end
+//
+| _ (* else *) =>
+(
 case+
 d1e2.node() of
 //
@@ -1022,6 +1074,7 @@ d1e2.node() of
   end // end of [D1Etqarg]
 //
 | _(*rest-of-d1exp*) => auxapp1_0_(d1e0)
+)
 //
 end // end of [auxapp1]
 

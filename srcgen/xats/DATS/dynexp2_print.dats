@@ -439,6 +439,11 @@ case- x0.node() of
   , f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
+| D2Eaddr(d2e1) =>
+  fprint!(out, "D2Eaddr(", d2e1, ")")
+| D2Efold(d2e1) =>
+  fprint!(out, "D2Efold(", d2e1, ")")
+//
 | D2Eanno(d2e1, s2e2) =>
   fprint!
   (out, "D2Eanno(", d2e1, "; ", s2e2, ")")
