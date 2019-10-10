@@ -602,14 +602,17 @@ s0e0.node() of
   , arg0, res1
   , arrw, body, tend) =>
   {
+//
     val () =
       synread_LAM<>(tbeg)
+//
     val () =
       synread_s0marglst<>(arg0)
+//
     val () = synread_sort0opt<>(res1)
     val () = synread_EQGT<>(arrw)
     val () = synread_s0exp<>(body)
-    val () = synread_ENDLAM<>(tend)
+    val () = synread_ENDLAM_opt<>(tend)
   }
 //
 | S0Eanno(s0e1, s0t2) =>

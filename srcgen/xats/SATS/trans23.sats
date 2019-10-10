@@ -319,6 +319,14 @@ d3exp_tuple_up
 , knd1: int // 0/1
 , npf2: int, d3es: d3explst): d3exp
 //
+(* ****** ****** *)
+//
+fun
+d3exp_assgn_up
+( loc0: loc_t
+, d3e1: d3exp(*lval*)
+, d3e2: d3exp(*rval*)): d3exp
+//
 fun
 d3exp_dtsel_up
 ( loc0: loc_t

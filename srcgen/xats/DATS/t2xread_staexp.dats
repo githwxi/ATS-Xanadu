@@ -142,14 +142,14 @@ s2e0.node() of
     val () = t2xread_s2explst<>(s2es)  
   }
 //
-| S2Etop(knd, s2e) =>
+| S2Etop(knd0, s2e1) =>
   {
-    val () = t2xread_s2exp<>(s2e)
+    val () = t2xread_s2exp<>(s2e1)
   }
 //
-| S2Earg(knd, s2e) =>
+| S2Earg(knd0, s2e1) =>
   {
-    val () = t2xread_s2exp<>(s2e)
+    val () = t2xread_s2exp<>(s2e1)
   }
 | S2Eatx(s2e1, s2e2) =>
   {

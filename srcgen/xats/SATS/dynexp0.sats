@@ -486,6 +486,7 @@ d0exp_node =
 //
 | D0Ewhere of (d0exp, d0eclseq_WHERE)
 //
+| D0Ebrack of (token, d0explst, token)
 | D0Edtsel of (token, l0abl, d0expopt)
 //
 | D0Elam of

@@ -231,6 +231,13 @@ d0e0.node() of
     val () = synread_ENDLET(tend)
 //
   }
+| D0Ewhere(d0e1, d0cs) =>
+  {
+    val () =
+    synread_d0exp<>(d0e1)
+    val () =
+    synread_d0eclseq_WHERE<>(d0cs)
+  }
 | _(* rest-of-d0exp *) =>
   (
     prerrln!
@@ -482,6 +489,57 @@ implement(env)
 list_foreach$fwork<d0ecl><env>(d0c, env) = synread_d0ecl<>(d0c)
 } (* end of [synread_d0eclist] *)
 //
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_d0eclseq_WHERE
+  (d0cs) = 
+let
+val+
+d0eclseq_WHERE
+( tok0
+, topt
+, d0cs, tend) = d0cs
+//
+val () =
+synread_d0eclist<>(d0cs)
+//
+(*
+val () =
+(
+case+ topt of
+| None() => ()
+| Some(tok1) => synread_LBRACE<>(tok1)
+)
+*)
+in
+//
+case+ tend of
+| endwhere_cons1
+    (tok2) =>
+  (
+  case+ topt of
+  | Some _ =>
+    synread_RBRACE<>(tok2)
+  | None _ =>
+    synread_ENDWHERE<>(tok2)
+  )
+| endwhere_cons2
+    (tok2, _) =>
+  (
+  case+ topt of
+  | Some _ =>
+    {
+    val () =
+    synread_RBRACE<>(tok2)
+    }
+  | None _ =>
+    synread_ENDWHERE<>(tok2)
+  )
+//
+end // end of [synread_d0eclseq_WHERE]
+
 (* ****** ****** *)
 //
 implement

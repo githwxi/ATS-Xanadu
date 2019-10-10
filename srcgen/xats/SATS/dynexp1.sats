@@ -535,6 +535,7 @@ d1exp_node =
 | D1Etuple of
   (token, d1explst, d1explst)
 //
+| D1Ebrack of (d1explst)
 | D1Edtsel of (label, d1expopt)
 //
 | D1Elet of

@@ -56,6 +56,37 @@ case+ xs of
 //
 impltmp
 <a>(*tmp*)
+list_append
+{m,n}(xs, ys) = let
+fun
+loop
+{m:nat} .<m>.
+( xs
+: list(a, m)
+, r0
+: &(?list(a)) >> list(a, m+n)): void =
+(
+case+ xs of
+| list_nil() =>
+  (r0 := ys)
+| list_cons(x0, xs) =>
+  let
+    val () =
+    r0 := list_cons(x0, ?)
+  in
+    loop(xs, r0.1); $fold(r0)
+  end
+)
+in
+  let
+    var r0: list(a) in loop(xs, r0); r0
+  end
+end (* end of [list_append] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
 list_revapp
   (xs, ys) =
 (

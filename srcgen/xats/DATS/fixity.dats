@@ -112,9 +112,14 @@ FIXTYinf(imp_prcdv, imp_assoc)
 (* ****** ****** *)
 //
 implement
+brack_prcdv =
+add_prcdv_int(app_prcdv, 10)
+implement
 dtsel_prcdv =
 add_prcdv_int(app_prcdv, 10)
 //
+implement
+brack_fixty = FIXTYpos(brack_prcdv)
 implement
 dtsel_fixty = FIXTYpos(dtsel_prcdv)
 //

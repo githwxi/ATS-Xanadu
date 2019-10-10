@@ -92,6 +92,10 @@ val EQ_symbol : symbol // SYMBOL("=")
 //
 val EQEQ_symbol : symbol // SYMBOL("==")
 val LTGT_symbol : symbol // SYMBOL("<>")
+//
+(*
+val CLNEQ_symbol : symbol // SYMBOL(":=")
+*)
 val BANGEQ_symbol : symbol // SYMBOL("!=")
 //
 (* ****** ****** *)

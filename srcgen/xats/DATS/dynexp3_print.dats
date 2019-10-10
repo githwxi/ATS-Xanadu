@@ -277,6 +277,9 @@ x0.node() of
 | D3Estr(tok) =>
   fprint!(out, "D3Estr(", tok, ")")
 //
+| D3Etop(tok) =>
+  fprint!(out, "D3Etop(", tok, ")")
+//
 | D3Evar(d2v) =>
   fprint!(out, "D3Evar(", d2v, ")")
 //
@@ -317,6 +320,12 @@ x0.node() of
   , "D3Etcst("
   , d2c1, "; ", ti2s, "; ", ti3a, ")")
 //
+| D3Etimp
+  (d2e1, tsub1, d2c2, tsub2) =>
+  fprint!
+  ( out
+  , "D3Etimp("
+  , d2e1, "; ", tsub1, "; ", d2c2, "; ", tsub2, ")")
 //
 | D3Esap0
   (d3e1, s2es) =>
@@ -361,6 +370,12 @@ x0.node() of
   ( out, "D3Etuple("
   , knd1, "; ", npf2, "; ", d3es, ")")
 //
+| D3Eassgn
+  (d3e1, d3e2) =>
+  fprint!
+  ( out, "D3Eassgn("
+  , d3e1, "; ", d3e2, ")")
+//
 | D3Edtsel
   (lab1, dpis, arg3) =>
   fprint!
@@ -374,10 +389,10 @@ x0.node() of
   , d3e1, "; ", d3e2, "; ", opt3, ")")
 //
 | D3Ecase
-  (knd0, d3e1, d3cls) =>
+  (knd0, d3e1, dcls) =>
   fprint!
   ( out, "D3Ecase("
-  , knd0, "; ", d3e1, "; ", d3cls, ")")
+  , knd0, "; ", d3e1, "; ", dcls, ")")
 //
 | D3Elam
   (f3as, tres, arrw, body) =>

@@ -559,11 +559,17 @@ case+ x0.node() of
   ( out
   , "D0Ewhere(", d0e1, "; ", d0cs, ")")
 //
-| D0Edtsel
-  (tok, lab, arg) =>
+//
+| D0Ebrack
+  (tbeg, d0es, tend) =>
   fprint!
   ( out
-  , "D0Edtsel(", tok, "; ", lab, "; ", arg, ")")
+  , "D0Ebrack(", tbeg, "; ", d0es, "; ", tend, ")")
+| D0Edtsel
+  (tdot, lab1, arg2) =>
+  fprint!
+  ( out
+  , "D0Edtsel(", tdot, "; ", lab1, "; ", arg2, ")")
 //
 | D0Elam
   (tok0, arg1, res2, farrw, fbody, tend) =>

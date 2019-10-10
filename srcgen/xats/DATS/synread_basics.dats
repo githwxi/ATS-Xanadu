@@ -642,7 +642,7 @@ tok.node() of
 
 implement
 {}(*tmp*)
-synread_ENDLAM
+synread_ENDLAM_opt
   (opt) =
 (
 case+ opt of
@@ -662,7 +662,7 @@ case+ opt of
       prerrln!(": SYNERR(ENDLAM): ", tok)
     end // end of [let]
   )
-) (* end of [synread_ENDLAM] *)
+) (* end of [synread_ENDLAM_opt] *)
 
 (* ****** ****** *)
 
@@ -727,31 +727,36 @@ tok.node() of
 ) (* end of [synread_WHERE] *)
 
 (* ****** ****** *)
-
+//
 implement
 {}(*tmp*)
 synread_ENDWHERE
+  (tok) =
+(
+case+
+tok.node() of
+| T_END _ => ()
+| T_ENDWHERE _ => ()
+| _(*non-ENDWHERE*) => let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_ENDWHERE, tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": SYNERR(ENDWHERE): ", tok)
+  end // end of [let]
+)
+//
+implement
+{}(*tmp*)
+synread_ENDWHERE_opt
   (opt) =
 (
 case+ opt of
 | None() => ()
-| Some(tok) =>
-  (
-  case+
-  tok.node() of
-  | T_END _ => ()
-  | T_ENDWHERE _ => ()
-  | _(*non-ENDWHERE*) => let
-      val () =
-      synerr_add
-      (SYNERRtoken(K_ENDWHERE, tok))
-    in
-      prerr(tok.loc());
-      prerrln!(": SYNERR(ENDWHERE): ", tok)
-    end // end of [let]
-  )
-) (* end of [synread_ENDWHERE] *)
-
+| Some(tok) => synread_ENDWHERE<>(tok)
+) (* end of [synread_ENDWHERE_opt] *)
+//
 (* ****** ****** *)
 
 implement

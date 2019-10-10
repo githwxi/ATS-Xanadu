@@ -285,6 +285,11 @@ fun{}
 synread_d0eclist: synreader(d0eclist)
 //
 (* ****** ****** *)
+
+fun{}
+synread_d0eclseq_WHERE: synreader(d0eclseq_WHERE)
+
+(* ****** ****** *)
 //
 fun{}
 synread_f0arglst: synreader(f0arglst)
@@ -382,9 +387,13 @@ fun{}
 synread_FIX: synreader(token)
 //
 fun{}
-synread_ENDLAM: synreader(tokenopt)
+synread_ENDLAM: synreader(token)
 fun{}
-synread_ENDFIX: synreader(tokenopt)
+synread_ENDFIX: synreader(token)
+fun{}
+synread_ENDLAM_opt: synreader(tokenopt)
+fun{}
+synread_ENDFIX_opt: synreader(tokenopt)
 //
 (* ****** ****** *)
 //
@@ -398,7 +407,9 @@ synread_ENDLET: synreader(token)
 fun{}
 synread_WHERE: synreader(token)
 fun{}
-synread_ENDWHERE: synreader(tokenopt)
+synread_ENDWHERE: synreader(token)
+fun{}
+synread_ENDWHERE_opt: synreader(tokenopt)
 //
 (* ****** ****** *)
 //
