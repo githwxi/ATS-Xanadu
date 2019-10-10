@@ -111,10 +111,11 @@ val app_prcdv : prcdv
 val imp_assoc : assoc
 val imp_prcdv : prcdv
 //
+val brack_prcdv : prcdv
 val dtsel_prcdv : prcdv
 //
-val exists_prcdv : prcdv
-and forall_prcdv : prcdv
+val forall_prcdv : prcdv
+and exists_prcdv : prcdv
 //
 (* ****** ****** *)
 //
@@ -143,13 +144,14 @@ val app_fixty : fixty
 //
 val imp_fixty : fixty
 //
+val brack_fixty : fixty
 val dtsel_fixty : fixty
 //
 val forall_fixty : fixty
-val exists_fixty : fixty
+and exists_fixty : fixty
 //
 val postplus_fixty : fixty
-val postmnus_fixty : fixty
+and postmnus_fixty : fixty
 //
 val backslash_fixty : fixty
 val infixtemp_fixty : fixty

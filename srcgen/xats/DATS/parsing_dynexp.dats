@@ -1859,6 +1859,20 @@ case+ tnd of
     // d0exp_make_node
   end // end of [T_DOT]
 //
+| T_LBRACK() => let
+    val () = buf.incby1()
+    val d0es =
+      p_d0expseq_COMMA(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACK(buf, err)
+    val loc_res = tbeg.loc()+tend.loc()
+  in
+    err := e0;
+    d0exp_make_node
+      (loc_res, D0Ebrack(tbeg, d0es, tend))
+    // end of [d0exp_make_node]
+  end // end of [T_LBRACK]
+//
 | T_IDENT_qual _ => let
     val () = buf.incby1()
     val d0e = p_atmd0exp(buf, err)
@@ -2096,15 +2110,15 @@ end // end of [p_d0exp_ELSE]
 implement
 p_ENDWHERE(buf, err) = let
   val e0 = err
-  val tok = buf.get0()
+  val tok1 = buf.get0()
 in
   case+
-  tok.node() of
+  tok1.node() of
 //
   | T_END() =>
     let
     val () =
-      buf.incby1() in endwhere_cons1(tok)
+      buf.incby1() in endwhere_cons1(tok1)
     // end of [val]
     end
 //
@@ -2119,27 +2133,27 @@ in
         let
           val () = buf.incby1()
         in
-          endwhere_cons2(tok, Some(tok2))
+          endwhere_cons2(tok1, Some(tok2))
         // end of [val]
         end
       | T_ENDWHERE() =>
         let
           val () = buf.incby1()
         in
-          endwhere_cons2(tok, Some(tok2))
+          endwhere_cons2(tok1, Some(tok2))
         // end of [val]
         end
-      | _ (* non-END *) => endwhere_cons1(tok)
+      | _ (* non-END *) => endwhere_cons1(tok1)
     end
 //
   | T_ENDWHERE() =>
     let
-      val () = buf.incby1() in endwhere_cons1(tok)
+      val () = buf.incby1() in endwhere_cons1(tok1)
     end
 //
   | _ (* non-END *) =>
     let
-    val () = (err := e0 + 1) in endwhere_cons1(tok)
+    val () = (err := e0 + 1) in endwhere_cons1(tok1)
     end
 end // end of [p_ENDWHERE]
 //

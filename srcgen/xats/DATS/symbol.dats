@@ -345,9 +345,14 @@ implement
 EQEQ_symbol = symbol_make("==")
 implement
 LTGT_symbol = symbol_make("<>")
+//
+(*
+implement
+CLNEQ_symbol = symbol_make(":=")
+*)
 implement
 BANGEQ_symbol = symbol_make("!=")
-
+//
 (* ****** ****** *)
 //
 implement

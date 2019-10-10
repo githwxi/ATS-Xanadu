@@ -1,5 +1,28 @@
 (* ****** ****** *)
 
+var x: int
+val () = (x := 1)
+
+(* ****** ****** *)
+////
+val x = A.x[a]
+
+(* ****** ****** *)
+////
+fun
+foo(&x: int): void = x := 1
+
+////
+
+case !p0 of
+| @list_vt(x0, xs) =>
+
+$fold(xs)
+$addr(xs)
+&xs
+
+(* ****** ****** *)
+////
 #extern
 fun
 <a:type>

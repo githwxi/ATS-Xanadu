@@ -275,6 +275,8 @@ d3exp_node =
 | D3Eflt of (token)
 | D3Estr of (token)
 //
+| D3Etop of (token)
+//
 | D3Evar of (d2var)
 //
 | D3Econ1 of (d2con)
@@ -287,6 +289,10 @@ d3exp_node =
 //
 | D3Etcst of
   (d2cst, ti2arglst, ti3arg)
+| D3Etimp of
+  ( d3exp(*tcst*), t2ypelst(*tsub*)
+  , d2ecl(*impl*), t2ypelst(*tsub*)
+  ) (* end of [D3Etimp] *)
 //
 | D3Esap0 of (d3exp, s2explst)
 | D3Esap1 of (d3exp, s2explst)
@@ -306,6 +312,8 @@ d3exp_node =
 | D3Etuple of
   (int(*knd*), int(*npf*), d3explst)
 //
+| D3Eassgn of
+  (d3exp(*lval*), d3exp(*rval*))
 | D3Edtsel of
   (label, d2pitmlst, d3expopt(*arg*))
 //

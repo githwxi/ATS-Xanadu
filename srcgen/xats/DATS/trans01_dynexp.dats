@@ -1286,18 +1286,32 @@ d0e0.node() of
       end // end of [d0eclseq_WHERE]
   end // end of [D0Ewhere]
 //
-| D0Edtsel
-  (tok, lab, arg) => let
-    val arg =
-      trans01_dexpopt(arg)
-    // end of [val]
-    val-
-    L0ABLsome(lab) = lab.node()
+| D0Ebrack
+  (tbeg, d0es, tend) => let
+    val d1es =
+    trans01_dexplst(d0es)
     val d1e0 =
     (
       d1exp_make_node
-        (loc0, D1Edtsel(lab, arg))
-    ) (* d1exp_make_node *)
+        (loc0, D1Ebrack(d1es))
+      // d1exp_make_node
+    ) (* end of [val] *)
+  in
+    $FIX.FXITMopr(d1e0, $FIX.brack_fixty)
+  end
+//
+| D0Edtsel
+  (tdot, lab1, arg2) => let
+    val arg2 =
+    trans01_dexpopt(arg2)
+    val-
+    L0ABLsome(lab1) = lab1.node()
+    val d1e0 =
+    (
+      d1exp_make_node
+        (loc0, D1Edtsel(lab1, arg2))
+      // d1exp_make_node
+    ) (* end of [val] *)
   in
     $FIX.FXITMopr(d1e0, $FIX.dtsel_fixty)
   end

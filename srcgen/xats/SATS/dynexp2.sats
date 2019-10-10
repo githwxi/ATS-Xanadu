@@ -616,6 +616,8 @@ d2exp_node =
 | D2Eflt of (token) // float
 | D2Estr of (token) // string
 //
+| D2Etop of (token)
+//
 | D2Evar of (d2var)
 //
 | D2Econ1 of (d2con)
@@ -639,6 +641,12 @@ d2exp_node =
 | D2Etuple of
   (int(*knd*), int(*npf*), d2explst)
 //
+| D2Eassgn of
+  (d2exp(*lval*), d2exp(*rval*))
+(*
+| D2Ebrack of
+  (d2pitmlst(*sym*), d2explst(*arg*))
+*)
 | D2Edtsel of
   (label, d2pitmlst, d2expopt(*arg*))
 //
@@ -774,6 +782,8 @@ fun d2exp_btf(loc_t, token): d2exp
 fun d2exp_chr(loc_t, token): d2exp
 fun d2exp_flt(loc_t, token): d2exp
 fun d2exp_str(loc_t, token): d2exp
+//
+fun d2exp_top(loc_t, token): d2exp
 //
 fun d2exp_var(loc_t, d2var): d2exp
 //

@@ -142,7 +142,11 @@ s2e0.node() of
     (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
   end
 //
-| S2Etop(knd, s2e1) => s2exp_erase(s2e1)
+| S2Etop(knd0, s2e1) => s2exp_erase(s2e1)
+//
+| S2Earg(knd0, s2e1) => s2exp_erase(s2e1)
+//
+| S2Eatx(s2e1, s2e2) => s2exp_erase(s2e1)
 //
 | S2Eapp(s2e1, s2es) =>
   let

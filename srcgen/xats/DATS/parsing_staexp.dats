@@ -1866,19 +1866,19 @@ case+ tnd of
   end // end of [T_RECORD]
 //
 (*
-| T_LBRACKET() => let
+| T_LBRACK() => let
     val () = buf.incby1()
     val s0es =
       p_s0expseq_COMMA(buf, err)
     val tbeg = tok
-    val tend = p_RBRACKET(buf, err)
+    val tend = p_RBRACK(buf, err)
     val loc_res = tbeg.loc()+tend.loc()
   in
     err := e0;
     s0exp_make_node
       (loc_res, S0Ebrack(tbeg, s0es, tend))
     // end of [s0exp_make_node]
-  end // end of [T_LBRACKET]
+  end // end of [T_LBRACK]
 *)
 //
 | T_OP_sym _ => let

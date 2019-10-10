@@ -801,6 +801,19 @@ tok.node() of
 (* ****** ****** *)
 
 fun
+istop
+( tok
+: token): bool =
+(
+case+
+tok.node() of
+| T_IDENT_alp(s0) => (s0="_")
+| _(*non-IDENT_alp*) => false
+)
+
+(* ****** ****** *)
+
+fun
 auxid0
 ( d1e0
 : d1exp): d2exp = let
@@ -820,6 +833,13 @@ case+ opt of
   | isbtf(tok) =>
     (
       d2exp_btf(loc0, tok)
+    ) where
+    {
+      val loc0 = d1e0.loc()
+    }
+  | istop(tok) =>
+    (
+      d2exp_top(loc0, tok)
     ) where
     {
       val loc0 = d1e0.loc()
@@ -1060,18 +1080,50 @@ auxapp2
 ( d1e0
 : d1exp): d2exp = let
 //
+val
+loc0 = d1e0.loc()
+//
 val-
 D1Eapp2
 ( d1e1
 , d1e2
 , d1e3) = d1e0.node()
 //
+fun
+isASSGN
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+| D1Eid(tok) =>
+  (
+  case+ tok.node() of
+  | T_IDENT_sym(sym) => (sym = ":=") | _ => false
+  )
+| _ (*non-D1Eid*) => false
+)
+//
+in
+//
+ifcase
+|
+isASSGN(d1e1) =>
+let
+val d2e2 = trans12_dexp(d1e2)
+val d2e3 = trans12_dexp(d1e3)
+in
+  d2exp_make_node
+  (loc0, D2Eassgn(d2e2, d2e3))
+end
+| _ (* else *) =>
+let
 val d2e1 = trans12_dexp(d1e1)
 val d2e2 = trans12_dexp(d1e2)
 val d2e3 = trans12_dexp(d1e3)
-//
 in
-  d2exp_app2(d1e0.loc(), d2e1, d2e2, d2e3)
+  d2exp_app2(loc0, d2e1, d2e2, d2e3)
+end
+//
 end // end of [auxapp2]
 
 (* ****** ****** *)
@@ -2505,8 +2557,18 @@ case+ rcd.ini of
 | TEQD1EXPnone
   ((*void*)) => None()
 | TEQD1EXPsome
-  (teq, d1e) => Some(trans12_dexp(d1e))
+  (teq, d1e) =>
+  Some(trans12_dexp(d1e))
 ) : d2expopt // end-of-val
+//
+val () = the_dexpenv_add_var(d2v)
+//
+val () =
+(
+case+ wth of
+| None() => ()
+| Some(d2v) => the_dexpenv_add_var(d2v)
+)
 //
 in
 //

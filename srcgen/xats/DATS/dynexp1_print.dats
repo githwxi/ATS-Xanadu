@@ -437,6 +437,8 @@ x0.node() of
   ( out, "D1Etuple("
   , tok, "; ", d1es1, "; ", d1es2, ")")
 //
+| D1Ebrack(d1es) =>
+  fprint!(out, "D1Ebrack(", d1es, ")")
 | D1Edtsel(lab1, arg2) =>
   fprint!
   (out, "D1Edtsel(", lab1, "; ", arg2, ")")

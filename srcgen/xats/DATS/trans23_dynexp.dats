@@ -554,6 +554,25 @@ end (* end of [auxstr] *)
 (* ****** ****** *)
 
 fun
+auxtop
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Etop(tok) = d2e0.node()
+//
+val node = D3Etop(tok)
+val t2p0 = t2ype_new(loc0)
+//
+in
+  d3exp_make_node(loc0, t2p0, node)
+end (* end of [auxtop] *)
+
+(* ****** ****** *)
+
+fun
 auxvar
 ( d2e0
 : d2exp): d3exp = let
@@ -582,10 +601,8 @@ loc0 = d2e0.loc()
 val-
 D2Econ1(d2c0) = d2e0.node()
 //
-val
-node = D3Econ1(d2c0)
-val
-t2p0 = d2c0.type((*void*))
+val node = D3Econ1(d2c0)
+val t2p0 = d2c0.type((*void*))
 //
 in
   d3exp_make_node(loc0, t2p0, node)
@@ -627,10 +644,8 @@ loc0 = d2e0.loc()
 val-
 D2Econ2(d2cs) = d2e0.node()
 //
-val
-node = D3Econ2(d2cs)
-val
-t2p0 = t2ype_new(loc0)
+val node = D3Econ2(d2cs)
+val t2p0 = t2ype_new(loc0)
 //
 in
   d3exp_make_node(loc0, t2p0, node)
@@ -648,10 +663,8 @@ loc0 = d2e0.loc()
 val-
 D2Ecst2(d2cs) = d2e0.node()
 //
-val
-node = D3Ecst2(d2cs)
-val
-t2p0 = t2ype_new(loc0)
+val node = D3Ecst2(d2cs)
+val t2p0 = t2ype_new(loc0)
 //
 in
   d3exp_make_node(loc0, t2p0, node)
@@ -669,8 +682,7 @@ loc0 = d2e0.loc()
 val-
 D2Esym0(d1e, dpis) = d2e0.node()
 //
-val
-t2p0 = t2ype_new(loc0)
+val t2p0 = t2ype_new(loc0)
 //
 in
   d3exp_make_node
@@ -691,8 +703,7 @@ D2Esapp
 ( d2e1
 , s2es) = d2e0.node()
 //
-val
-d3e1 = trans23_dexp(d2e1)
+val d3e1 = trans23_dexp(d2e1)
 //
 in
   d3exp_sapp_up(loc0, d3e1, s2es)
@@ -809,6 +820,27 @@ d3es = trans23_dexplst(d2es)
 in
   d3exp_tuple_up(loc0, knd1, npf2, d3es)
 end // end of [aux_tuple]
+
+(* ****** ****** *)
+
+fun
+aux_assgn
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eassgn
+( d2e1
+, d2e2) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+val d3e2 = trans23_dexp(d2e2)
+//
+in
+  d3exp_assgn_up(loc0, d3e1, d3e2)
+end // end of [aux_assgn]
 
 (* ****** ****** *)
 
@@ -1020,6 +1052,8 @@ d2e0.node() of
 | D2Eflt _ => auxflt(d2e0)
 | D2Estr _ => auxstr(d2e0)
 //
+| D2Etop _ => auxtop(d2e0)
+//
 | D2Evar _ => auxvar(d2e0)
 //
 | D2Econ1 _ => auxcon1(d2e0)
@@ -1041,6 +1075,8 @@ d2e0.node() of
 //
 | D2Enone0 _ => aux_none0(d2e0)
 | D2Etuple _ => aux_tuple(d2e0)
+//
+| D2Eassgn _ => aux_assgn(d2e0)
 //
 | D2Edtsel _ => aux_dtsel(d2e0)
 //

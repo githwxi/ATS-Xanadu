@@ -35,6 +35,15 @@
 //
 (* ****** ****** *)
 //
+// sort for true
+//
+(*
+abssort true
+// [true] is built-in
+*)
+//
+(* ****** ****** *)
+//
 // predicative sorts
 //
 (*
@@ -582,6 +591,7 @@ strmcon(a:type+) =
 | strmcon_cons of (a, stream(a))
 //
 where
+typedef
 stream(a:type) = lazy(strmcon(a))
 //
 datavtype
@@ -590,8 +600,27 @@ strmcon_vt(a:vtype+) =
 | strmcon_vt_cons of (a, stream_vt(a))
 //
 where
+vtypedef
 stream_vt
 (a:vtype) = lazy_vt(strmcon_vt(a))
+//
+(* ****** ****** *)
+//
+(*
+fun
+<a1:t0>
+<a2:vt>
+assign
+(x1: &a1 >> a2, x2: a2): void
+//
+#symload := with assign of 00
+//
+fun
+<a1:v0>
+<a2:v0>
+pfexch
+(pf1: !a0 >> a1, pf2: !a2 >> a1): void
+*)
 //
 (* ****** ****** *)
 

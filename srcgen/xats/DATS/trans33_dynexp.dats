@@ -594,6 +594,27 @@ end (* end of [aux_where] *)
 (* ****** ****** *)
 
 fun
+aux_assgn
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Eassgn
+( d3e1
+, d3e2) = d3e0.node()
+//
+val d3e1 = trans33_dexp(d3e1)
+val d3e2 = trans33_dexp(d3e2)
+//
+in
+  d3exp_assgn_up(loc0, d3e1, d3e2)
+end // end of [aux_assgn]
+
+(* ****** ****** *)
+
+fun
 aux_if0
 ( d3e0
 : d3exp): d3exp = let
@@ -720,14 +741,19 @@ d3e0.node() of
 | D3Eseqn _ => aux_seqn(d3e0)
 *)
 //
+| D3Eassgn _ => aux_assgn(d3e0)
+//
 | D3Eif0
-  (_, _, _) => aux_if0(d3e0)
+    (_, _, _) => aux_if0(d3e0)
+  // D3Eif0
 //
 | D3Ecase
-  (_, _, _) => aux_case(d3e0)
+    (_, _, _) => aux_case(d3e0)
+  // D3Ecase
 //
 | D3Elam
-  (_, _, _, _) => aux_lam(d3e0)
+    (_, _, _, _) => aux_lam(d3e0)
+  // D3Elam
 //
 | D3Enone0 _ => d3e0
 | D3Enone1 _ => d3e0

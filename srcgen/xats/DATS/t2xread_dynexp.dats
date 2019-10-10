@@ -221,6 +221,12 @@ d2e0.node() of
     val () = t2xread_d2exp<>(d2e1)
   }
 //
+| D2Eassgn(d2e1, d2e2) =>
+  {
+    val () = t2xread_d2exp<>(d2e1)
+    val () = t2xread_d2exp<>(d2e2)
+  }
+//
 | D2Eif0
   (d2e1, d2e2, opt3) =>
   {

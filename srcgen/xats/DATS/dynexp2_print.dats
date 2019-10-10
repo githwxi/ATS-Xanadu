@@ -346,6 +346,9 @@ case- x0.node() of
 | D2Estr(tok) =>
   fprint!(out, "D2Estr(", tok, ")")
 //
+| D2Etop(tok) =>
+  fprint!(out, "D2Etop(", tok, ")")
+//
 | D2Evar(d2v) =>
   fprint!(out, "D2Evar(", d2v, ")")
 //
@@ -404,6 +407,12 @@ case- x0.node() of
   fprint!
   ( out, "D2Etuple("
   , knd, "; ", npf, "; ", d2es, ")")
+//
+| D2Eassgn
+  (d2e1, d2e2) =>
+  fprint!
+  ( out, "D2Eassgn("
+  , d2e1, "; ", d2e2, ")")
 //
 | D2Edtsel
   (lab, dpis, arg3) =>

@@ -1349,6 +1349,21 @@ end (* end of [d3exp_tuple_up] *)
 (* ****** ****** *)
 
 implement
+d3exp_assgn_up
+( loc0
+, d3e1, d3e2) =
+let
+  val t2p0 = the_t2ype_void
+  val t2p1 = d3e1.type((*void*))
+  val d3e2 = d3exp_dn(d3e2, t2p1)
+in
+  d3exp_make_node
+    (loc0, t2p0, D3Eassgn(d3e1, d3e2))
+end // end of [d3exp_assgn_up]
+
+(* ****** ****** *)
+
+implement
 d3exp_dtsel_up
 ( loc0
 , lab, dpis, arg3) =

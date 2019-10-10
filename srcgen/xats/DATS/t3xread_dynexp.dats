@@ -246,24 +246,25 @@ d3e0.node() of
     val () = t3xread_d3exp<>(d3e1)
   }
 //
+| D3Eassgn(d3e1, d3e2) =>
+  {
+    val () = t3xread_d3exp<>(d3e1)
+    val () = t3xread_d3exp<>(d3e2)
+  }
+//
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   {
-    val () =
-    t3xread_d3exp<>(d3e1)
-    val () =
-    t3xread_d3exp<>(d3e2)
-    val () =
-    t3xread_d3expopt<>(opt3)
+    val () = t3xread_d3exp<>(d3e1)
+    val () = t3xread_d3exp<>(d3e2)
+    val () = t3xread_d3expopt<>(opt3)
   }
 //
 | D3Ecase
   (knd0, d3e1, d3cs) =>
   {
-    val () =
-    t3xread_d3exp<>(d3e1)
-    val () =
-    t3xread_d3claulst<>(d3cs)
+    val () = t3xread_d3exp<>(d3e1)
+    val () = t3xread_d3claulst<>(d3cs)
   }
 //
 | D3Econ2(d2cs) =>
