@@ -42,6 +42,33 @@ end // end of [gseq_foreach]
 
 impltmp
 <x0,xs><y0>
+gseq_map_list
+  (xs) = let
+//
+impltmp
+foldl$fopr
+<x0><r0>
+(r0, x0) =
+let
+val r1 = 
+list_vt_cons
+(map$fopr(x0), _)
+in
+  cptr_set(r0, r1); $addr(r1.1)
+end // foldl$fopr
+//
+var r0: list_vt(y0)
+val r1 =
+gseq_foldl<x0,xs>(xs, $addr(r0))
+//
+in
+  cptr_set(r1, list_vt_nil()); castlin(r0)
+end // end of [gseq_map_list]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs><y0>
 gseq_maprev_list
   (xs) = let
 //

@@ -200,6 +200,36 @@ typedef
 void = $extype("xats_void_t")
 //
 (* ****** ****** *)
+//
+typedef
+p1tr_k = $extype("xats_p1tr_t")
+typedef
+p2tr_k = $extype("xats_p2tr_t")
+//
+(* ****** ****** *)
+//
+abstype
+p1tr_tbox(l: addr) <= p1tr_k
+abstype
+p2tr_tbox
+(l: addr, a: vtype) <= p2tr_k
+//
+typedef
+p1tr0 = [l:a0] p1tr_tbox(l)
+typedef
+p1tr1(l: a0) = p1tr_tbox(l)
+//
+typedef
+p2tr0(a: vt) = [l:a0] p2tr_tbox(l, a)
+typedef
+p2tr1(a: vt, l: a0) = p2tr_tbox(l, a)
+//
+typedef p1tr = p1tr0
+typedef p1tr(l:a0) = p1tr1(l)
+typedef p2tr(a:vt) = p2tr0(a)
+typedef p2tr(l:a0, a:vt) = p2tr1(l, a)
+//
+(* ****** ****** *)
 
 typedef
 bool_k = $extype("xats_bool_t")
@@ -230,7 +260,7 @@ abstype
 bool_type(bool) <= bool_k
 //
 typedef
-bool0 = [b:b0] bool_type(b0)
+bool0 = [b:b0] bool_type(b)
 typedef
 bool1(b:bool) = bool_type(b)
 //

@@ -662,6 +662,9 @@ d2exp_node =
   ( f2arglst
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
+| D2Eaddr of (d2exp)
+| D2Efold of (d2exp)
+//
 | D2Eanno of (d2exp(*applst*), s2exp(*type*))
 //
 | D2Enone0 of ((*void*)) | D2Enone1 of (d1exp)

@@ -143,11 +143,9 @@ list_nil() => ()
 |
 list_cons(x0, xs) =>
 let
-  val y0 =
-  map$fopr(x0)
-  val () =
-  (r0 :=
-   list_vt_cons(y0, _))
+val y0 = map$fopr(x0)
+val () =
+(r0 := list_vt_cons(y0, _))
 in
   loop(xs, r0.1); $fold(r0)
 end
@@ -155,7 +153,7 @@ end
 //
 in
 let
-  var r0: list_vt(a) in loop(xs, r0); r0
+var r0: list_vt(y0) in loop(xs, r0); r0
 end
 end (* end of [list_map_vt] *)
 //

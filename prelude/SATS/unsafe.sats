@@ -38,6 +38,13 @@
 (* ****** ****** *)
 //
 castfn
+cast{a0:t0}{a1:t0}(a0): (a1)
+castfn
+castlin{a0:vt}{a1:vt}(a0): (a1)
+//
+(* ****** ****** *)
+//
+castfn
 optn_vt2t
 {a:t0}{b:b0}
 (xs: !optn_vt(a, b)): optn(a, b)
