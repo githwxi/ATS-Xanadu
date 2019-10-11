@@ -235,6 +235,17 @@ d2e0.node() of
     val () = t2xread_d2expopt<>(opt3)
   }
 //
+| D2Eaddr(d2e1) =>
+  {
+    val () =
+    t2xread_d2exp<>(d2e1)
+  }
+| D2Efold(d2e1) =>
+  {
+    val () =
+    t2xread_d2exp<>(d2e1)
+  }
+//
 | D2Eanno(d2e1, s2e2) =>
   {
     val () = t2xread_d2exp<>(d2e1)

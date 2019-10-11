@@ -197,7 +197,14 @@ implement
 t3xread_d3exp
   (d3e0) = let
 //
-val loc0 = d3e0.loc((*void*))
+val
+loc0 = d3e0.loc((*void*))
+//
+val
+t2p0 = t2ype_hnfize(d3e0.type())
+val () =
+println!
+("t3xread_d3exp: t2p0 = ", t2p0)
 //
 in
 //
@@ -294,6 +301,17 @@ d3e0.node() of
     println!
     (loc0, ": T3XERR(d3exp): D3Esym0: dpis = ", dpis);
   end
+//
+| D3Eaddr(d3e1) =>
+  {
+    val () =
+    t3xread_d3exp<>(d3e1)
+  }
+| D3Efold(d3e1) =>
+  {
+    val () =
+    t3xread_d3exp<>(d3e1)
+  }
 //
 | D3Ecast(d3e1, t2p2) =>
   let

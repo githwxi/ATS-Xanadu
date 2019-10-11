@@ -147,6 +147,14 @@ overload fprint with fprint_labt2ype
 (* ****** ****** *)
 //
 val
+the_t2ype_void: t2ype
+//
+val
+the_t2ype_p1tr: t2ype
+val
+the_t2ype_p2tr: t2ype
+//
+val
 the_t2ype_sint: t2ype
 val
 the_t2ype_uint: t2ype
@@ -155,9 +163,6 @@ val
 the_t2ype_bool: t2ype
 val
 the_t2ype_char: t2ype
-//
-val
-the_t2ype_void: t2ype
 //
 val
 the_t2ype_sfloat: t2ype
@@ -258,6 +263,16 @@ t2ype_cst(s2c0: s2cst): t2ype
 fun
 t2ype_var(s2v0: s2var): t2ype
 
+(* ****** ****** *)
+//
+fun
+t2ype_app1
+(t2pf:t2ype, t2pa:t2ype): t2ype
+fun
+t2ype_app2
+( t2pf:t2ype
+, t2p1:t2ype, t2p2:t2ype): t2ype
+//
 (* ****** ****** *)
 //
 fun

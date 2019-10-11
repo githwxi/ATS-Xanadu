@@ -1226,13 +1226,16 @@ s2cstref_equ_s2exp(s2cstref, s2exp): bool
 // HX-2019-09-09:
 // types for the constants
 //
+val the_void_ctype : s2cstref
+//
+val the_p1tr_ctype : s2cstref
+val the_p2tr_ctype : s2cstref
+//
 val the_sint_ctype : s2cstref
 val the_uint_ctype : s2cstref
 //
 val the_bool_ctype : s2cstref
 val the_char_ctype : s2cstref
-//
-val the_void_ctype : s2cstref
 //
 val the_sfloat_ctype : s2cstref
 val the_dfloat_ctype : s2cstref

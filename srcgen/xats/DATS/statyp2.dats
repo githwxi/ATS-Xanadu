@@ -115,6 +115,14 @@ symbol_make
 in(*in-of-local*)
 //
 val
+XATS_VOID_T = symbol("xats_void_t")
+//
+val
+XATS_P1TR_T = symbol("xats_p1tr_t")
+val
+XATS_P2TR_T = symbol("xats_p2tr_t")
+//
+val
 XATS_SINT_T = symbol("xats_sint_t")
 and
 XATS_UINT_T = symbol("xats_uint_t")
@@ -122,9 +130,6 @@ and
 XATS_BOOL_T = symbol("xats_bool_t")
 and
 XATS_CHAR_T = symbol("xats_char_t")
-//
-val
-XATS_VOID_T = symbol("xats_void_t")
 //
 val
 XATS_SFLOAT_T = symbol("xats_sfloat_t")
@@ -137,7 +142,27 @@ XATS_STRING_T = symbol("xats_string_t")
 end // end of [local]
 
 (* ****** ****** *)
-
+//
+implement
+the_t2ype_void =
+t2ype_make_name
+(the_sort2_tflt, XATS_VOID_T)
+//
+implement
+the_t2ype_p1tr =
+t2ype_make_name
+(the_sort2_tbox, XATS_P1TR_T)
+//
+implement
+the_t2ype_p2tr =
+(
+t2ype_make_name(s2t0, XATS_P2TR_T)
+) where
+{
+val s2ts = list_sing(the_sort2_vtflt)
+val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
+}
+//
 implement
 the_t2ype_sint =
 t2ype_make_name(the_sort2_tflt, XATS_SINT_T)
@@ -152,10 +177,6 @@ t2ype_make_name(the_sort2_tflt, XATS_BOOL_T)
 implement
 the_t2ype_char =
 t2ype_make_name(the_sort2_tflt, XATS_CHAR_T)
-//
-implement
-the_t2ype_void =
-t2ype_make_name(the_sort2_tflt, XATS_VOID_T)
 //
 implement
 the_t2ype_sfloat =
@@ -191,6 +212,43 @@ val node = T2Pvar(s2v0)
 in
   t2ype_make_node(s2t0, node)
 end
+
+(* ****** ****** *)
+
+implement
+t2ype_app1
+(t2pf, t2pa) = let
+//
+val s2tf = t2pf.sort()
+(*
+val s2ta = t2pa.sort()
+*)
+//
+val-S2Tfun(_, s2tr) = s2tf
+//
+in
+t2ype_make_node
+( s2tr
+, T2Papp(t2pf, list_sing(t2pa)))
+end // end of [t2yp2_app1]
+
+implement
+t2ype_app2
+(t2pf, t2p1, t2p2) = let
+//
+val s2tf = t2pf.sort()
+(*
+val s2t1 = t2p1.sort()
+val s2t2 = t2p2.sort()
+*)
+//
+val-S2Tfun(_, s2tr) = s2tf
+//
+in
+t2ype_make_node
+( s2tr
+, T2Papp(t2pf, list_pair(t2p1, t2p2)))
+end // end of [t2yp2_app1]
 
 (* ****** ****** *)
 //
@@ -291,6 +349,14 @@ in
 //
 ifcase
 //
+| sym=XATS_VOID_T =>
+  the_void_ctype.type()
+//
+| sym=XATS_P1TR_T =>
+  the_p1tr_ctype.type()
+| sym=XATS_P2TR_T =>
+  the_p2tr_ctype.type()
+//
 | sym=XATS_SINT_T =>
   the_sint_ctype.type()
 | sym=XATS_UINT_T =>
@@ -299,9 +365,6 @@ ifcase
   the_bool_ctype.type()
 | sym=XATS_CHAR_T =>
   the_char_ctype.type()
-//
-| sym=XATS_VOID_T =>
-  the_void_ctype.type()
 //
 | sym=XATS_SFLOAT_T =>
   the_sfloat_ctype.type()

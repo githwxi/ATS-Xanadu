@@ -32,15 +32,15 @@
 //
 (* ****** ****** *)
 
-typedef the_void_ctype = void
+typedef
+the_void_ctype = void
 
 (* ****** ****** *)
 //
-typedef the_p1tr_ctype = p1tr0
-//
-(*
-typedef the_p2tr_ctype = p2tr0
-*)
+typedef
+the_p1tr_ctype = p1tr0
+typedef
+the_p2tr_ctype(a:vt) = p2tr(a)
 //
 (* ****** ****** *)
 //

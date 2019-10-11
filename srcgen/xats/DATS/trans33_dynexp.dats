@@ -685,6 +685,27 @@ end // end of [aux_lam]
 
 (* ****** ****** *)
 
+fun
+aux_addr
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Eaddr(d3e1) = d3e0.node()
+//
+val d3e1 = trans33_dexp(d3e1)
+//
+val t2p0 =
+t2ype_app1(the_t2ype_p2tr, d3e1.type())
+//
+in
+d3exp_make_node(loc0, t2p0, D3Eaddr(d3e1))
+end // end of [aux_addr]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -754,6 +775,8 @@ d3e0.node() of
 | D3Elam
     (_, _, _, _) => aux_lam(d3e0)
   // D3Elam
+//
+| D3Eaddr(d3e1) => aux_addr(d3e0)
 //
 | D3Enone0 _ => d3e0
 | D3Enone1 _ => d3e0

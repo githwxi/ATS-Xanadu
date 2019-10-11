@@ -209,10 +209,11 @@ p2tr_k = $extype("xats_p2tr_t")
 (* ****** ****** *)
 //
 abstype
-p1tr_tbox(l: addr) <= p1tr_k
+p1tr_tbox
+(l:addr) <= p1tr_k
 abstype
 p2tr_tbox
-(l: addr, a: vtype) <= p2tr_k
+(l:addr, a:vtype) <= p2tr_k
 //
 typedef
 p1tr0 = [l:a0] p1tr_tbox(l)
