@@ -141,6 +141,17 @@ s2cstref_make_name("the_ff_b0")
 (* ****** ****** *)
 
 implement
+the_void_ctype =
+s2cstref_make_name("the_void_ctype")
+
+implement
+the_p1tr_ctype =
+s2cstref_make_name("the_p1tr_ctype")
+implement
+the_p2tr_ctype =
+s2cstref_make_name("the_p2tr_ctype")
+
+implement
 the_sint_ctype =
 s2cstref_make_name("the_sint_ctype")
 implement
@@ -153,10 +164,6 @@ s2cstref_make_name("the_bool_ctype")
 implement
 the_char_ctype =
 s2cstref_make_name("the_char_ctype")
-
-implement
-the_void_ctype =
-s2cstref_make_name("the_void_ctype")
 
 implement
 the_sfloat_ctype =

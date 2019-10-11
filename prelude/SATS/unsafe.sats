@@ -54,5 +54,23 @@ list_vt2t
 (xs: !list_vt(a, n)): list(a, n)
 //
 (* ****** ****** *)
+//
+fun
+<a:vt>
+p1tr_get(p0: p1tr): a
+fun
+<a:vt>
+p1tr_set(p0: p1tr, x0: a): void
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+p2tr_get(p0: p2tr(a)): a
+fun
+<a:vt>
+p2tr_set(p0: p2tr(a), x0: a): void
+//
+(* ****** ****** *)
 
 (* end of [unsafe.sats] *)
