@@ -50,10 +50,6 @@ vtypedef
 symmap(itm:type) = $MAP.symmap(itm)
 //
 (* ****** ****** *)
-
-#staload "./../SATS/symenv.sats"
-
-(* ****** ****** *)
 //
 vtypedef
 symmaplst
@@ -61,12 +57,13 @@ symmaplst
   itm:type, n:int
 ) = list_vt(symmap(itm), n)
 vtypedef
-symmaplst
-(itm:type) = [n:int] symmaplst(itm, n)
-vtypedef
 symmaplst0
 (itm:type) = [n:nat] symmaplst(itm, n)
 //
+(* ****** ****** *)
+
+#staload "./../SATS/symenv.sats"
+
 (* ****** ****** *)
 //
 fun
@@ -74,10 +71,12 @@ symmaplst_free
 {itm:type}{n:nat} .<n>.
 (xs: symmaplst(itm, n)): void =
 (
-  case+ xs of
-  | ~list_vt_nil() => ()
-  | ~list_vt_cons(x, xs) =>
-     ($MAP.symmap_free(x); symmaplst_free(xs))
+case+ xs of
+|
+~list_vt_nil() => ()
+|
+~list_vt_cons(x, xs) =>
+ ($MAP.symmap_free(x); symmaplst_free(xs))
 ) // end of [symmaplst_free]
 //
 (* ****** ****** *)
@@ -85,8 +84,8 @@ symmaplst_free
 fun
 symmaplst_search
 {itm:type}{n:nat} .<n>.
-(
-ms: !symmaplst(itm, n), k0: sym_t
+( ms
+: !symmaplst(itm, n), k0: sym_t
 ) : Option_vt(itm) =
 (
 case+ ms of
@@ -117,7 +116,7 @@ symenv_vt0ype
 , maps= symmaplst0(itm)
 //
 , saved=
-  List0_vt(@(symmap(itm), symmaplst(itm)))
+  List0_vt(@(symmap(itm), symmaplst0(itm)))
 //
 , pmap0= symmap(itm) // HX: for the pervasive map
 //
@@ -298,6 +297,42 @@ symenv_pjoinwth1
   $MAP.symmap_joinwth(env.pmap0, map)
 // end of [symenv_pervasive_joinwth1]
 
+(* ****** ****** *)
+//
+implement
+symenv_savecur
+  {itm}(env) = let
+val m0 = env.map0
+val ms = env.maps
+val () =
+env.map0 :=
+$MAP.symmap_make_nil()
+val () =
+env.maps := list_vt_nil()
+val () =
+env.saved := list_vt_cons((m0, ms), env.saved)
+in
+  // nothing
+end // end of [symenv_savecur]
+//
+implement
+symenv_restore
+  {itm}(env) = let
+//
+val m0 = env.map0
+val () =
+symmaplst_free(env.maps)
+//
+val-
+~list_vt_cons
+  (x0, xs) = env.saved
+val () = env.saved := (xs)
+//
+val () = env.map0 := x0.0 and () = env.maps := x0.1
+in
+m0 // HX-2019-10: the top map
+end // end of [symenv_restore]
+//
 (* ****** ****** *)
 //
 implement

@@ -49,7 +49,7 @@ fun the_nmspace_push(): void
 
 (* ****** ****** *)
 
-fun the_nmspace_save(): void
+fun the_nmspace_savecur(): void
 fun the_nmspace_restore(): void
 
 (* ****** ****** *)

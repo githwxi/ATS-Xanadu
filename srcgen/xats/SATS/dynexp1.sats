@@ -814,13 +814,15 @@ d1ecl_node =
   ( token
   , d0exp
   , int(*knd*) // sta/dyn: 0/1
+  , filpathopt
   , d1eclistopt) // file inclusion
 //
 | D1Cstaload of
   ( token
   , d0exp
   , int(*knd*) // sta/dyn: 0/1
-  , d1eclistopt) // file staloading
+  , filpathopt
+  , int(*shared*), d1eclistopt)
 //
 | D1Cabssort of
   (token, token(*s0tid*))

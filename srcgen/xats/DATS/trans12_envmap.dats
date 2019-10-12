@@ -132,10 +132,37 @@ absimpl
 $NMS.nmitm_tbox = fmodenv
 
 (* ****** ****** *)
+//
+implement
+the_nmspace_open
+  (menv) =
+(
+  $NMS.the_nmspace_ins(menv)
+)
+//
+(* ****** ****** *)
 
 vtypedef
 symenv(a:type) = $ENV.symenv(a)
 
+(* ****** ****** *)
+//
+static
+fun
+the_sortenv_savecur((*void*)): void
+and
+the_sortenv_restore((*void*)): s2tmap
+static
+fun
+the_sexpenv_savecur((*void*)): void
+and
+the_sexpenv_restore((*void*)): s2imap
+static
+fun
+the_dexpenv_savecur((*void*)): void
+and
+the_dexpenv_restore((*void*)): d2imap
+//
 (* ****** ****** *)
 
 local
@@ -435,17 +462,42 @@ the_sortenv_locjoin
 (* ****** ****** *)
 
 implement
-the_sortenv_pjoinwth0(map) = let
+the_sortenv_pjoinwth0
+  (map) = let
   prval
   vbox(pf) = pfbox in
-  $effmask_ref($ENV.symenv_pjoinwth0(!p0, map))
+  $effmask_ref
+  ($ENV.symenv_pjoinwth0(!p0, map))
 end // end of [the_sortenv_pjoinwth0]
 implement
-the_sortenv_pjoinwth1(map) = let
+the_sortenv_pjoinwth1
+  (map) = let
   prval
   vbox(pf) = pfbox in
-  $effmask_ref($ENV.symenv_pjoinwth1(!p0, map))
+  $effmask_ref
+  ($ENV.symenv_pjoinwth1(!p0, map))
 end // end of [the_sortenv_pjoinwth1]
+
+(* ****** ****** *)
+
+implement
+the_sortenv_savecur
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+  $effmask_ref($ENV.symenv_savecur(!p0))
+end
+implement
+the_sortenv_restore
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+  $effmask_ref($ENV.symenv_restore(!p0))
+end
 
 (* ****** ****** *)
 
@@ -803,17 +855,42 @@ the_sexpenv_locjoin
 (* ****** ****** *)
 
 implement
-the_sexpenv_pjoinwth0(map) = let
+the_sexpenv_pjoinwth0
+  (map) = let
   prval
   vbox(pf) = pfbox in
-  $effmask_ref($ENV.symenv_pjoinwth0(!p0, map))
+  $effmask_ref
+  ($ENV.symenv_pjoinwth0(!p0, map))
 end // end of [the_sexpenv_pjoinwth0]
 implement
-the_sexpenv_pjoinwth1(map) = let
+the_sexpenv_pjoinwth1
+  (map) = let
   prval
   vbox(pf) = pfbox in
-  $effmask_ref($ENV.symenv_pjoinwth1(!p0, map))
+  $effmask_ref
+  ($ENV.symenv_pjoinwth1(!p0, map))
 end // end of [the_sexpenv_pjoinwth1]
+
+(* ****** ****** *)
+
+implement
+the_sexpenv_savecur
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+  $effmask_ref($ENV.symenv_savecur(!p0))
+end
+implement
+the_sexpenv_restore
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+  $effmask_ref($ENV.symenv_restore(!p0))
+end
 
 (* ****** ****** *)
 
@@ -1206,17 +1283,42 @@ the_dexpenv_locjoin
 (* ****** ****** *)
 
 implement
-the_dexpenv_pjoinwth0(map) = let
+the_dexpenv_pjoinwth0
+  (map) = let
   prval
   vbox(pf) = pfbox in
-  $effmask_ref($ENV.symenv_pjoinwth0(!p0, map))
+  $effmask_ref
+  ($ENV.symenv_pjoinwth0(!p0, map))
 end // end of [the_dexpenv_pjoinwth0]
 implement
-the_dexpenv_pjoinwth1(map) = let
+the_dexpenv_pjoinwth1
+  (map) = let
   prval
   vbox(pf) = pfbox in
-  $effmask_ref($ENV.symenv_pjoinwth1(!p0, map))
+  $effmask_ref
+  ($ENV.symenv_pjoinwth1(!p0, map))
 end // end of [the_dexpenv_pjoinwth1]
+
+(* ****** ****** *)
+
+implement
+the_dexpenv_savecur
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+  $effmask_ref($ENV.symenv_savecur(!p0))
+end
+implement
+the_dexpenv_restore
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+  $effmask_ref($ENV.symenv_restore(!p0))
+end
 
 (* ****** ****** *)
 
@@ -1282,24 +1384,24 @@ ref<symmap>
 in (* in of [local] *)
 
 implement
-the_fmodenv_add
+the_fmodenvmap_add
   (fid, env) = let
   val
   (vbox(pf)|p0) =
   ref_get_viewptr(the_fmodenv)
 in
   $MAP.symmap_insert(!p0, fid, env)
-end // end of [the_fmodenv_add]
+end // end of [the_fmodenvmap_add]
 
 implement
-the_fmodenv_find
+the_fmodenvmap_find
   (fid) = let
   val
   (vbox(pf)|p0) =
   ref_get_viewptr(the_fmodenv)
 in
   $MAP.symmap_search{fmodenv}(!p0, fid)
-end // end of [the_fmodenv_find]
+end // end of [the_fmodenvmap_find]
 
 end // end of [local]
 
@@ -1473,13 +1575,69 @@ in // in-of-local
   $FP0.filpath_get_full2(fp0)
   val env =
   fmodenv_make(fp0, m0, m1, m2, d2cs)
-  val ((*void*)) = the_fmodenv_add(fid, env)
+//
+  val ( ) = the_fmodenvmap_add(fid, env)
 //
 end // end of [local]
 //
 } (* end of [the_trans12_pjoinwth1] *)
 
 (* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+trans12_save_view = unit_v
+
+in (* in-of-local *)
+
+implement
+the_trans12_savecur
+  ((*void*)) =
+(
+  (pf | ())
+) where
+{
+//
+prval pf = unit_v(*void*)
+//
+  val () = the_sortenv_savecur()
+  val () = the_sexpenv_savecur()
+  val () = the_dexpenv_savecur()
+//
+  val () = $NMS.the_nmspace_savecur()
+//
+} (* end of [the_trans12_savecur] *)
+
+implement
+the_trans12_restore
+  (pf | (*void*)) =
+let
+//
+prval unit_v() = pf
+//
+in
+let
+val
+s2tenv =
+the_sortenv_restore()
+val
+s2ienv =
+the_sexpenv_restore()
+val
+d2ienv =
+the_dexpenv_restore()
+//
+val ((*void*)) = $NMS.the_nmspace_restore()
+//
+in
+  (s2tenv, s2ienv, d2ienv)
+end
+end (* end of [the_trans12_restore] *)
 
 end // end of [local]
 
@@ -1569,6 +1727,26 @@ the_trans12_add_gualst(d2gs) = auxd2gs(d2gs)
 //
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+trans12_staload_add
+( fp0
+, menv) =
+let
+val fid =
+$FP0.filpath_get_full2(fp0)
+in
+  the_fmodenvmap_add(fid, menv)
+end
+implement
+trans12_staload_find
+  (fp0) =
+(
+  the_fmodenvmap_find
+  ($FP0.filpath_get_full2(fp0))
+)
+//
 (* ****** ****** *)
 
 local

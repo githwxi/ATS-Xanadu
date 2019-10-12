@@ -363,35 +363,38 @@ case+ s2es of
 
 implement
 {}(*tmp*)
-t2xread_d2ecl(d2c0) =
+t2xread_d2ecl(d2cl) =
 let
 //
-val loc0 = d2c0.loc()
+val loc0 = d2cl.loc()
 //
 (*
 val () =
 println!
-("t2xread_d2ecl: d2c0 = ", d2c0)
+("t2xread_d2ecl: d2cl = ", d2cl)
 *)
 //
 in
 //
 case+
-d2c0.node() of
+d2cl.node() of
 //
 | D2Cstatic
-  (tok, d2c) =>
+  (tok, d2c1) =>
   {
-    val () = t2xread_d2ecl<>(d2c)
+    val () =
+    t2xread_d2ecl<>(d2c1)
   }
 | D2Cextern
-  (tok, d2c) =>
+  (tok, d2c1) =>
   {
-    val () = t2xread_d2ecl<>(d2c)
+    val () =
+    t2xread_d2ecl<>(d2c1)
   }
 //
 | D2Cinclude
-  (tok, src, knd, body) =>
+  ( tok
+  , src, knd, fopt, body) =>
   {
     val () =
     (
@@ -481,9 +484,9 @@ d2c0.node() of
   | D2PITMnone(dqid) =>
     let
     val () =
-    t2xerr_add(T2XERRd2ecl(d2c0))
+    t2xerr_add(T2XERRd2ecl(d2cl))
     in
-      prerrln!(loc0, ": T2XERR(d2ecl): ", d2c0);
+      prerrln!(loc0, ": T2XERR(d2ecl): ", d2cl);
     end // end of [D2PITMnone]
   | D2PITMsome(_, _) => ((*void*))
   )
@@ -520,7 +523,7 @@ d2c0.node() of
 //
 | _(* rest-of-d2ecl *) =>
   (
-    prerrln!(loc0, ": t2xread_d2ecl: d2c0 = ", d2c0)
+    prerrln!(loc0, ": t2xread_d2ecl: d2cl = ", d2cl)
   )
 //
 end // end of [t2xread_d2ecl]

@@ -139,6 +139,22 @@ symenv_pjoinwth1
 // end of [symenv_pjoinwth1]
 //
 (* ****** ****** *)
+//
+// HX: saving the current env
+//
+fun
+symenv_savecur
+  {itm:type}(env: &symenv(itm) >> _): void
+// end of [symenv_savecur]
+//
+// HX: restoring the last saved env
+//
+fun
+symenv_restore
+  {itm:type}(env: &symenv(itm) >> _): symmap(itm)
+// end of [symenv_restore]
+//
+(* ****** ****** *)
 
 fun
 fprint_symenv_top

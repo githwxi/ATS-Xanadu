@@ -1711,8 +1711,9 @@ val
 loc0 = d1cl.loc()
 val-
 D1Cinclude
-( tok, src
-, knd, body) = d1cl.node()
+( tok
+, src, knd
+, fopt, body) = d1cl.node()
 //
 val body =
 (
@@ -1726,9 +1727,132 @@ in
 //
 d2ecl_make_node
 ( loc0
-, D2Cinclude(tok, src, knd, body))
+, D2Cinclude(tok, src, knd, fopt, body))
 //
 end // end of [aux_include]
+
+(* ****** ****** *)
+
+(*
+fun
+aux_staload
+( d1cl
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1cl.loc()
+val-
+D1Cstaload
+( tok, src
+, knd, body) = d1cl.node()
+//
+val body =
+(
+case+ body of
+| None() => None()
+| Some(d1cs) =>
+  Some(trans12_declist(d1cs))
+) : d2eclistopt // end-of-val
+//
+in
+d2ecl_make_node
+( loc0
+, D2Cstaload(tok, src, knd, body))
+end // end of [aux_staload]
+*)
+fun
+aux_staload
+( d1cl
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1cl.loc()
+//
+val-
+D1Cstaload
+( tok
+, src, knd
+, fopt
+, flag, body) = d1cl.node()
+//
+var
+flag: int
+val
+body =
+(
+(
+case+ body of
+|
+None() =>
+(flag := 0; None())
+|
+Some(d1cs) =>
+let
+val
+res =
+auxd1cs(fopt, d1cs)
+in
+flag := res.0; Some(res.1)
+end
+)
+: fmodenvopt // end-of-val
+) where
+{
+fun
+auxd1cs
+( fopt
+: filpathopt
+, d1cs: d1eclist
+)
+:
+(int, fmodenv) = let
+//
+val-
+Some(fp0) = fopt
+val
+mopt =
+trans12_staload_find(fp0)
+//
+in (*in-of-let*)
+//
+case+ mopt of
+|
+~None_vt() =>
+(0(*nshare*), menv) where
+{
+val
+(pf | ()) =
+the_trans12_savecur((*void*))
+//
+val d2cs = trans12_declist(d1cs)
+//
+val env3 =
+the_trans12_restore(pf|(*void*))
+val menv =
+fmodenv_make
+(fp0, env3.0, env3.1, env3.2, d2cs)
+//
+val () = trans12_staload_add(fp0, menv)
+//
+} (* end of [None_vt] *)
+| ~Some_vt(menv) => (1(*shared*), menv)
+//
+end // end of [auxd1cs]
+} (* where *) // end-of-val
+//
+val () =
+(
+case+ body of
+| None() => ()
+| Some(menv) =>
+  the_nmspace_open(menv)
+)
+//
+in
+d2ecl_make_node
+( loc0
+, D2Cstaload(tok, src, knd, fopt, flag, body))
+end // end of [aux_staload]
 
 (* ****** ****** *)
 
@@ -4119,6 +4243,8 @@ d1cl.node() of
   end
 //
 | D1Cinclude _ => aux_include(d1cl)
+//
+| D1Cstaload _ => aux_staload(d1cl)
 //
 | D1Cabssort _ => aux_abssort(d1cl)
 //

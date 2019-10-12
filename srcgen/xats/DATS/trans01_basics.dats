@@ -291,4 +291,128 @@ tok.node() of
 
 (* ****** ****** *)
 
+implement
+strnormize(cs) = let
+//
+vtypedef
+charlst = List0_vt(char)
+//
+fun
+isnm
+(p0: ptr): bool =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if
+iseqz(c0)
+then true
+else
+(
+ifcase
+| c0 = '\\' =>
+  let
+  val p0 =
+  ptr_succ<char>(p0)
+  val c1 =
+  $UN.ptr0_get<char>(p0)
+  in
+    if
+    (
+    c1 = '\n'
+    )
+    then false
+    else
+    (
+    if
+    iseqz(c1)
+    then true
+    else isnm(ptr_succ<char>(p0))
+    )
+  end
+| _ (* else *) => isnm(ptr_succ<char>(p0))
+)
+end
+//
+fun
+norm
+(
+cs: string
+) : string =
+(
+strnptr2string
+(
+string_make_rlist_vt
+(
+$UN.castvwtp0
+{List0_vt(charNZ)}
+(loop1(p0, list_vt_nil()))
+)
+)
+) where
+{
+//
+val p0 = string2ptr(cs)
+//
+fnx
+loop1
+( p0: ptr
+, r0: charlst): charlst =
+let
+  val c0 = $UN.ptr0_get<char>(p0)
+in
+if
+iseqz(c0)
+then (r0)
+else
+loop2(ptr_succ<char>(p0), c0, r0)
+end
+and
+loop2
+( p0: ptr
+, c0: char
+, r0: charlst): charlst =
+(
+if
+(c0 = '\\')
+then
+let
+val c1 =
+$UN.ptr0_get<char>(p0)
+in
+if
+iseqz(c1)
+then list_vt_cons(c0, r0)
+else
+(
+  if
+  (c1 = '\n')
+  then
+  (
+  loop1(ptr_succ<char>(p0), r0)
+  )
+  else
+  let
+  val r0 = list_vt_cons(c0, r0)
+  val r0 = list_vt_cons(c1, r0)
+  in
+  loop1(ptr_succ<char>(p0), r0)
+  end
+) (* end of [else] *)
+end // end of [then]
+else
+(
+  loop1(p0, list_vt_cons(c0, r0))
+) (* end of [else] *)
+)
+} (* end of [norm] *)
+//
+in
+(
+if isnm(string2ptr(cs)) then cs else norm(cs)
+)
+end // end of [string_normlize]
+
+(* ****** ****** *)
+
 (* end of [xats_trans01_basics.dats] *)

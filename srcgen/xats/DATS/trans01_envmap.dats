@@ -52,8 +52,12 @@ ENV = "./../SATS/symenv.sats"
 //
 (* ****** ****** *)
 
+#staload
+FP0 = "./../SATS/filpath.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/parsing.sats"
-#staload "./../SATS/filpath.sats"
 #staload "./../SATS/trans01.sats"
 
 (* ****** ****** *)
@@ -259,33 +263,45 @@ end // end of [local]
 local
 
 vtypedef
-map = $MAP.symmap(d1eclist)
+map =
+$MAP.symmap(d1eclist)
 val r0 =
-ref<map>($MAP.symmap_make_nil())
+ref<map>
+($MAP.symmap_make_nil())
 val
-(pfbox | p0) = ref_get_viewptr(r0)
+(pf0 | p0) = ref_get_viewptr(r0)
 
 in (* in-of-local *)
 //
 implement
 trans01_staload_add
   (fp0, d1cs) =
-(
-$MAP.symmap_insert
-  (!p0, sym, d1cs)
-) where
-{
-  val sym = fp0.full2()
-  prval vbox(pf) = pfbox
-}
+let
+//
+val sym =
+$FP0.filpath_get_full2(fp0)
+//
+in
+let
+prval vbox(pf) = pf0
+in
+$MAP.symmap_insert(!p0, sym, d1cs)
+end
+end
 //
 implement
 trans01_staload_find
   (fp0) = let
-  val sym = fp0.full2()
-  prval vbox(pf) = pfbox
+//
+val sym =
+$FP0.filpath_get_full2(fp0)
+//
+in
+let
+  prval vbox(pf) = pf0
 in
   $MAP.symmap_search(!p0, sym)
+end
 end
 //
 end // end of [local]
@@ -302,7 +318,8 @@ val opt =
 val
 ((*void*)) =
 let
-  val fp0 = filpath_get_full1(fp0)
+  val fp0 =
+  $FP0.filpath_get_full1(fp0)
 in
 println!
 ("trans01_staload_from_filpath: fp0 = ", fp0)
@@ -322,7 +339,10 @@ in
 //
 case+ opt of
 | @Some_vt(d1cs) => 
-  (fold@(opt); opt)
+    (1, opt) where
+  {
+    val () = fold@(opt)
+  }
 | ~None_vt((*void*)) =>
   let
     val opt =
@@ -332,11 +352,11 @@ case+ opt of
     case+ opt of
     | ~None_vt() =>
       (
-        None_vt()
+        (0, None_vt())
       )
     | ~Some_vt(d0cs) =>
       (
-        Some_vt(d1cs)
+        (0, Some_vt(d1cs))
       ) where
       {
         val d1cs =
