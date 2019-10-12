@@ -1041,6 +1041,8 @@ abstbox
 fmodenv_tbox = ptr
 typedef
 fmodenv = fmodenv_tbox
+typedef
+fmodenvopt = Option(fmodenv)
 //
 fun
 fmodenv_get_path(fmodenv): fpath

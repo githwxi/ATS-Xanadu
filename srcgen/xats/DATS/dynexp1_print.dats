@@ -43,6 +43,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
 //
+#staload "./../SATS/filpath.sats"
 #staload "./../SATS/locinfo.sats"
 //
 #staload "./../SATS/staexp0.sats"
@@ -58,6 +59,15 @@ implement
 fprint_val<token> = fprint_token
 implement
 fprint_val<t0int> = fprint_t0int
+//
+(* ****** ****** *)
+//
+(*
+implement
+fprint_val<filpath> = fprint_filpath_full1
+*)
+implement
+fprint_val<filpath> = fprint_filpath_full2
 //
 (* ****** ****** *)
 
@@ -666,13 +676,14 @@ case+ x0.node() of
   , tok, "; ", sym, "; ", arg, "; ", def, ")")
 //
 | D1Cinclude
-  (tok, src, knd, body) =>
+  (tok, src, knd, opt, body) =>
   (
   fprint!
   ( out
   , "D1Cinclude("
   , tok, "; "
-  , src, "; ", knd, "; ", body, ")")
+  , src, "; " // src: d0exp
+  , knd, "; ", opt, "; ", body, ")")
   ) where
   {
     val body =
@@ -683,20 +694,23 @@ case+ x0.node() of
   }
 //
 | D1Cstaload
-  (tok, d0e, knd, opt) =>
+  ( tok, src
+  , knd, opt, flag, body) =>
   (
   fprint!
   ( out
   , "D1Cstaload("
-  , tok, "; ", d0e, "; ", knd, "; ", opt, ")")
+  , tok, "; "
+  , src, "; " // src: d0exp
+  , knd, "; " // knd: stadyn
+  , opt, "; ", flag, "; ", body, ")")
   ) where
   {
-    val opt =
+    val body =
     (
-    case+ opt of
+    case+ body of
     | None _ => "None()"
-    | Some _ => "Some(<d1cs>)"
-    ) : string // end of [val]
+    | Some _ => "Some(<d1cs>)") : string
   }
 //
 | D1Cabssort(tok, tid) =>

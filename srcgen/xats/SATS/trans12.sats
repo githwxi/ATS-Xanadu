@@ -61,6 +61,7 @@ symintr trans12
 (* ****** ****** *)
 
 typedef fpath = $FP0.filpath
+typedef filpath = $FP0.filpath
 
 (* ****** ****** *)
 //
@@ -337,6 +338,12 @@ fmodenv_get_d2imap
 //
 fun
 fmodenv_get_d2eclist(fmodenv): d2eclist
+//
+(* ****** ****** *)
+//
+fun
+the_nmspace_open
+  (menv: fmodenv): void
 //
 (* ****** ****** *)
 //
@@ -665,13 +672,13 @@ fun
 the_dexpenv_println((*void*)): void
 //
 (* ****** ****** *)
-
-fun
-the_fmodenv_add
-  (fid: sym_t, env: fmodenv): void
 //
 fun
-the_fmodenv_find
+the_fmodenvmap_add
+(fid: sym_t, env: fmodenv): void
+//
+fun
+the_fmodenvmap_find
   (fid: sym_t): Option_vt(fmodenv)
 //
 (* ****** ****** *)
@@ -702,6 +709,20 @@ fun
 the_trans12_pjoinwth1
 ( pf0: trans12_v
 | fp0: fpath, d2cs: d2eclist): (void)
+//
+(* ****** ****** *)
+//
+absview
+trans12_save_view
+viewdef
+trans12_save_v = trans12_save_view
+//
+fun
+the_trans12_savecur
+((*none*)): (trans12_save_v | void)
+fun
+the_trans12_restore
+(trans12_save_v | (*none*)) : (s2tmap, s2imap, d2imap)
 //
 (* ****** ****** *)
 //
@@ -840,6 +861,22 @@ trans12_tiarglst(tias: ti1arglst): ti2arglst
 fun
 d2exp_is_fundecl(d2e0: d2exp): bool
 
+(* ****** ****** *)
+//
+fun
+(*
+the_fmodenvmap_add
+*)
+trans12_staload_add
+(fp: filpath, menv: fmodenv): void
+//
+fun
+(*
+the_fmodenvmap_find
+*)
+trans12_staload_find
+  (fp0: filpath): Option_vt(fmodenv)
+//
 (* ****** ****** *)
 
 (* end of [xats_trans12.sats] *)

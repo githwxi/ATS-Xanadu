@@ -53,6 +53,7 @@ fixtyopt_vt = Option_vt(fixty)
 
 #staload
 FIL = "./filpath.sats"
+typedef fpath = $FIL.filpath
 typedef filpath = $FIL.filpath
 
 (* ****** ****** *)
@@ -100,6 +101,11 @@ sexpid_sym : token -> sym_t
 fun
 dexpid_sym : token -> sym_t
 //
+(* ****** ****** *)
+
+fun
+strnormize(cs: string): string
+
 (* ****** ****** *)
 
 fun
@@ -490,7 +496,8 @@ trans01_staload_find
 //
 fun
 trans01_staload_from_filpath
-(stadyn: int, inp: filpath): Option_vt(d1eclist)
+( stadyn: int, inp: filpath
+) : (int(*share*), Option_vt(d1eclist))
 //
 (* ****** ****** *)
 

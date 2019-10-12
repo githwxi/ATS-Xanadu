@@ -62,14 +62,18 @@ fun
 <a:vt>
 p1tr_set(p0: p1tr, x0: a): void
 //
-(* ****** ****** *)
-//
 fun
 <a:vt>
 p2tr_get(p0: p2tr(a)): a
 fun
 <a:vt>
 p2tr_set(p0: p2tr(a), x0: a): void
+//
+#symload ptr_get with p1tr_get
+#symload ptr_set with p1tr_set
+//
+#symload ptr_get with p2tr_get
+#symload ptr_set with p2tr_set
 //
 (* ****** ****** *)
 

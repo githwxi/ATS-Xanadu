@@ -52,6 +52,13 @@ fprint with $SYM.fprint_symbol
 (* ****** ****** *)
 //
 #staload
+LOC = "./../SATS/locinfo.sats"
+#staload
+FP0 = "./../SATS/filpath.sats"
+//
+(* ****** ****** *)
+//
+#staload
 LAB = "./../SATS/label0.sats"
 overload
 fprint with $LAB.fprint_label
@@ -71,6 +78,17 @@ fprint with $LAB.fprint_label
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+//
+(*
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full1
+*)
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full2
 //
 (* ****** ****** *)
 //
@@ -556,13 +574,16 @@ case- x0.node() of
   fprint!(out, "D2Cextern(", d2c, ")")
 //
 | D2Cinclude
-  (tok, src, knd, body) =>
+  ( tok
+  , src, knd
+  , fopt, body) =>
   (
   fprint!
   ( out
   , "D2Cinclude("
   , "src= ", src, "; "
-  , "knd= ", knd, "; ", body, ")")
+  , "knd= ", knd, "; "
+  , fopt, "; ", body, ")")
   ) where
   {
     val body =
@@ -570,6 +591,26 @@ case- x0.node() of
     case+ body of
     | None _ => "None()"
     | Some _ => "Some(<d2cs>)"): string
+  }
+//
+| D2Cstaload
+  ( tok
+  , src, knd
+  , fopt, flag, body) =>
+  (
+  fprint!
+  ( out
+  , "D2Cstaload("
+  , "src= ", src, "; "
+  , "knd= ", knd, "; "
+  , fopt, "; ", flag, "; ", body, ")")
+  ) where
+  {
+    val body =
+    (
+    case+ body of
+    | None _ => "None()"
+    | Some _ => "Some(<fmodenv>)"): string
   }
 //
 | D2Cabssort(d1c) =>

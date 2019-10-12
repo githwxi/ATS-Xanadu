@@ -86,6 +86,27 @@ implement
 symmap_free{itm}
   (map) = linmap_free<key,itm>(map)
 //
+(*
+implement
+symmaplst_free{itm}
+  (maps) =
+( loop(maps) ) where
+{
+//
+vtypedef map = symmap(itm)
+//
+fun
+loop{i:nat}.<i>.
+(maps: list_vt(map, i)):<!wrt> void =
+case+ maps of
+| ~list_vt_nil
+   () => ((*void*))
+| ~list_vt_cons
+   (m0, ms) => (symmap_free(m0); loop(ms))
+//
+} (* symmaplst_free *)
+*)
+//
 (* ****** ****** *)
 //
 implement

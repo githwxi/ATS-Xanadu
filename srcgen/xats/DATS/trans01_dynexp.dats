@@ -2294,7 +2294,7 @@ in
 case+
 d1e.node() of
 | D1Estr(tok) => auxtok(tok)
-| _(*non-D1Estr*) => None_vt(*void*)
+| _(*non-D1Estr*) => None_vt()
 end // end of [auxd1e]
 and
 auxtok
@@ -2306,8 +2306,13 @@ case+
 tok.node() of
 | T_STRING_closed
   (fnm) =>
-  Some_vt
-  (FNM0(xatsopt_strunq(fnm)))
+  (
+    Some_vt(FNM0(fnm))
+  ) where
+  { val
+    fnm = xatsopt_strunq(fnm)
+    val fnm = strnormize(fnm)
+  } // T_STRING_closed
 | _(* else *) => None_vt(*void*)
 )
 //
@@ -2321,8 +2326,11 @@ aux_include
 val loc0 = d0cl.loc()
 //
 (*
+val (_) =
+println!("trans01: ")
 val () =
-println!("aux_include")
+println!
+("aux_include: d0cl = ", d0cl")
 *)
 //
 val-
@@ -2349,27 +2357,30 @@ val (_) = $FP0.the_filpathlst_fprint(out)
 //
 val
 opt =
-auxd1e(trans01_dexp(d0e))
+auxd1e
+(trans01_dexp(d0e))
 val
-opt =
+opt1 =
 (
 case+ opt of
-| ~None_vt() => None_vt()
-| ~Some_vt(fnm) => filsrch_combined(fnm)
+|
+~None_vt() => None_vt()
+|
+~Some_vt(fnm) => filsrch_combined(fnm)
 ) : Option_vt(filpath)
 //
 var
 knd:
 int = ~1
 //
-val opt =
+val opt2 =
 (
-case+ opt of
+case+ opt1 of
 |
-~None_vt() =>
- None_vt()
+None_vt() =>
+None_vt()
 |
-~Some_vt(fp0) =>
+Some_vt(fp0) =>
 let
   val () =
   (
@@ -2382,17 +2393,20 @@ in
 end // end of [Some_vt]
 ) : Option_vt(d0eclist)
 //
-val opt =
+val opt2 =
 (
-case+ opt of
+case+ opt2 of
 |
 ~None_vt() => None()
 |
 ~Some_vt(d0cs) => Some(trans01_declist(d0cs))
 ) : d1eclistopt
 //
+val opt1 = option_vt2t(opt1)
+//
 in
-  d1ecl_make_node(loc0, D1Cinclude(tok, d0e, knd, opt))
+  d1ecl_make_node
+  (loc0, D1Cinclude(tok, d0e, knd, opt1, opt2))
 end // end of [aux_include]
 
 end // end of [local]
@@ -2428,8 +2442,13 @@ case+
 tok.node() of
 | T_STRING_closed
   (fnm) =>
-  Some_vt
-  (FNM0(xatsopt_strunq(fnm)))
+  (
+    Some_vt(FNM0(fnm))
+  ) where
+  { val
+    fnm = xatsopt_strunq(fnm)
+    val fnm = strnormize(fnm)
+  } // T_STRING_closed
 | _(* else *) => None_vt(*void*)
 )
 //
@@ -2451,10 +2470,12 @@ val-
 D0Cstaload
 (tok, d0e) = d0cl.node()
 //
-val opt = auxd1e(trans01_dexp(d0e))
-//
 val
 opt =
+auxd1e(trans01_dexp(d0e))
+//
+val
+opt1 =
 (
 case+ opt of
 | ~None_vt() => None_vt()
@@ -2465,14 +2486,18 @@ var
 knd:
 int = ~1
 //
-val opt =
+var
+flag:int = 0
+//
+val
+opt2 =
 (
-case+ opt of
+case+ opt1 of
 |
-~None_vt() =>
- None_vt()
+None_vt() =>
+None_vt()
 |
-~Some_vt(fp0) =>
+Some_vt(fp0) =>
 let
   val () =
   (
@@ -2481,15 +2506,22 @@ let
   | _(*non-sats*) => knd := 1(*dyn*)
   )
 in
+  let
+  val res =
   trans01_staload_from_filpath(knd, fp0)
+  in
+    flag := res.0; res.1
+  end
 end // end of [Some_vt]
 ) : Option_vt(d1eclist)
 //
-val opt = option_vt2t(opt)
+val opt1 = option_vt2t(opt1)
+val opt2 = option_vt2t(opt2)
 //
 in
 //
-d1ecl_make_node(loc0, D1Cstaload(tok, d0e, knd, opt))
+d1ecl_make_node
+(loc0, D1Cstaload(tok, d0e, knd, opt1, flag, opt2))
 //
 end // end of [aux_staload]
 

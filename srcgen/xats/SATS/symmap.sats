@@ -53,7 +53,8 @@ symmap_make_nil
 //
 (* ****** ****** *)
 //
-fun symmap_free
+fun
+symmap_free
   {itm:type}
   (map: symmap(itm)):<!wrt> void
 //

@@ -160,25 +160,35 @@ implement
 filsrch_combined
   (fnm0) = let
 //
-val base =
+val
+base =
 (
 case+
-fnm0 of FNM0(x) => x
-)
+fnm0 of
+| FNM0(fnm) => fnm
+) : string
 //
-val knd = auxknd(base)
+val
+fknd = auxknd(base)
+//
+val () =
+println!
+("filsrch_combined: base = ", base)
+val () =
+println!
+("filsrch_combined: fknd = ", fknd)
 //
 in
 //
 ifcase
 //
-| knd = 0 =>
+| fknd = 0 =>
   filsrch_absolut(base)
 //
-| knd = 1 =>
+| fknd = 1 =>
   filsrch_current(base)
 //
-| _(*else*) =>
+| _(* else *) =>
   filsrch_includes(base)
 //
 end // end of [filsrch_combined]

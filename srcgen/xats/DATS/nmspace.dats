@@ -257,7 +257,7 @@ val () = // push down
 (* ****** ****** *)
 
 implement
-the_nmspace_save
+the_nmspace_savecur
   () = () where {
 //
 val x0 = x0 where
@@ -283,7 +283,7 @@ val () = () where
   val () = !p := list_vt_cons((x0, xs), !p)
 } (* end of [val] *)
 //
-} (* end of [the_nmspace_save] *)
+} (* end of [the_nmspace_savecur] *)
 
 (* ****** ****** *)
 

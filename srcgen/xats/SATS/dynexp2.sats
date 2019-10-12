@@ -42,6 +42,11 @@ typedef sym_t = $SYM.sym_t
 typedef loc_t = $LOC.loc_t
 //
 #staload
+FP0 = "./filpath.sats"
+typedef
+filpathopt = $FP0.filpathopt
+//
+#staload
 LEX = "./lexing.sats"
 typedef token = $LEX.token
 //
@@ -974,7 +979,15 @@ d2ecl_node =
   ( token
   , d0exp
   , int(*knd*) // sta/dyn: 0/1
+  , filpathopt
   , d2eclistopt) // file inclusion
+//
+| D2Cstaload of
+  ( token
+  , d0exp
+  , int(*knd*) // sta/dyn: 0/1
+  , filpathopt
+  , int(*shared*), fmodenvopt)
 //
 | D2Clocal of
   (d2eclist(*head*), d2eclist(*body*))
