@@ -34,6 +34,7 @@
 (* ****** ****** *)
 //
 #staload "./basics.sats"
+#staload "./symbol.sats"
 #staload "./symmap.sats"
 //
 (* ****** ****** *)
@@ -859,7 +860,8 @@ trans12_tiarglst(tias: ti1arglst): ti2arglst
 (* ****** ****** *)
 
 fun
-d2exp_is_fundecl(d2e0: d2exp): bool
+d1exp_nmspace
+(d1e0: d1exp): symbolopt_vt
 
 (* ****** ****** *)
 //

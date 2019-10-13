@@ -812,14 +812,14 @@ d1ecl_node =
 *)
 | D1Cinclude of
   ( token
-  , d0exp
+  , d1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , d1eclistopt) // file inclusion
 //
 | D1Cstaload of
   ( token
-  , d0exp
+  , d1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , int(*shared*), d1eclistopt)

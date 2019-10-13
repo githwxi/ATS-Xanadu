@@ -416,11 +416,11 @@ x0.node() of
 //
 | D1Eapp1(d1e0, d1e1) =>
   fprint!
-  ( out, "D1Eapps("
+  ( out, "D1Eapp1("
   , d1e0, "; ", d1e1, ")")
 | D1Eapp2(d1e0, d1e1, d1e2) =>
   fprint!
-  ( out, "D1Eapps("
+  ( out, "D1Eapp2("
   , d1e0, "; ", d1e1, "; ", d1e2, ")")
 //
 | D1Esqarg(s1es) =>
@@ -682,7 +682,7 @@ case+ x0.node() of
   ( out
   , "D1Cinclude("
   , tok, "; "
-  , src, "; " // src: d0exp
+  , src, "; " // src: d1exp
   , knd, "; ", opt, "; ", body, ")")
   ) where
   {
@@ -701,7 +701,7 @@ case+ x0.node() of
   ( out
   , "D1Cstaload("
   , tok, "; "
-  , src, "; " // src: d0exp
+  , src, "; " // src: d1exp
   , knd, "; " // knd: stadyn
   , opt, "; ", flag, "; ", body, ")")
   ) where
