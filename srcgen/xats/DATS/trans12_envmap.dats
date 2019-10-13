@@ -333,16 +333,31 @@ _(*else*) =>
 end // end of [let] // auxlst2
 //
 in
+//
 implement
 the_qualist_find
   (qua) =
-let
-val-
-T_IDENT_qual
-(qua) = qua.node()
-in
-  auxlst0(string2ptr(qua))
-end // end of [the_qualist_find]
+(
+case+
+qua.node() of
+|
+T_IDENT_dlr(qua) =>
+auxlst0(string2ptr(qua))
+|
+T_IDENT_qual(qua) =>
+auxlst0(string2ptr(qua))
+//
+| _(* else *) => None_vt()
+//
+) where
+{
+(*
+val () =
+println!
+("the_qualist_find: qua = ", qua)
+*)
+} (* where *) // the_qualist_find
+//
 end // end of [local]
 //
 (* ****** ****** *)

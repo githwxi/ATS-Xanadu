@@ -1481,27 +1481,6 @@ D1Equal
 , d1e1) = d1e0.node()
 //
 fun
-deDOT
-( qua
-: string): string =
-let
-val
-qua = string0_copy(qua)
-val
-qua = strptr2string(qua)
-in
-  qua where
-{
-  val CZ = '\000'
-  val p0 = string2ptr(qua)
-  val n0 = string_length(qua)
-  val () =
-  if n0 > 0 then 
-  $UN.ptr0_set_at<char>(p0, n0-1, CZ)
-}
-end
-//
-fun
 auxqid
 ( qua: token
 , d1e: d1exp): d2exp =
@@ -1887,13 +1866,18 @@ body =
 case+ body of
 |
 None() =>
-(flag := 0; None())
+(
+auxd1exp(src)
+) where
+{
+val () = (flag := 0)
+}
 |
 Some(d1cs) =>
 let
 val
 res =
-auxd1cs(fopt, d1cs)
+auxd1cls(fopt, d1cs)
 in
 flag := res.0; Some(res.1)
 end
@@ -1902,7 +1886,43 @@ end
 ) where
 {
 fun
-auxd1cs
+auxd1exp
+( src
+: d1exp
+) : fmodenvopt =
+(
+case+
+src.node() of
+|
+D1Eid _ => auxd1eid(src)
+|
+D1Eapp2
+(_,_,src) => auxd1eid(src)
+| _ (*else*) => None(*void*)
+) // end of [auxd1exp]
+and
+auxd1eid
+( src
+: d1exp
+) : fmodenvopt =
+(
+case+
+src.node() of
+|
+D1Eid(tok) =>
+let
+val opt =
+the_qualist_find(tok)
+in
+case+ opt of
+| ~None_vt() => None()
+| ~Some_vt(m0) => Some(m0)
+end // end of [let]
+| _ (*else*) => None(*void*)
+) // end of [auxd1eid]
+//
+fun
+auxd1cls
 ( fopt
 : filpathopt
 , d1cs: d1eclist
@@ -1940,7 +1960,7 @@ val () = trans12_staload_add(fp0, menv)
 } (* end of [None_vt] *)
 | ~Some_vt(menv) => (1(*shared*), menv)
 //
-end // end of [auxd1cs]
+end // end of [auxd1cls]
 } (* where *) // end-of-val
 //
 val () =

@@ -129,6 +129,13 @@ t3xread_v3aldeclist: t3xreader(v3aldeclist)
 (* ****** ****** *)
 
 fun{}
+t3xread_v3ardecl: t3xreader(v3ardecl)
+fun{}
+t3xread_v3ardeclist: t3xreader(v3ardeclist)
+
+(* ****** ****** *)
+
+fun{}
 t3xread_f3undecl: t3xreader(f3undecl)
 fun{}
 t3xread_f3undeclist: t3xreader(f3undeclist)

@@ -1028,6 +1028,26 @@ end // end of [aux_addr]
 (* ****** ****** *)
 
 fun
+aux_fold
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Efold(d2e1) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+//
+val t2p0 = the_t2ype_void(*void*)
+//
+in
+d3exp_make_node(loc0, t2p0, D3Efold(d3e1))
+end // end of [aux_fold]
+
+(* ****** ****** *)
+
+fun
 aux_anno
 ( d2e0
 : d2exp): d3exp = let
@@ -1114,6 +1134,7 @@ d2e0.node() of
   // D2Elam
 //
 | D2Eaddr(d2e1) => aux_addr(d2e0)
+| D2Efold(d2e1) => aux_fold(d2e0)
 //
 | D2Eanno
     (d2e1, s2e2) => aux_anno(d2e0)
@@ -1995,6 +2016,13 @@ d2cl.node() of
   in
     d3ecl_make_node
     (loc0, D3Cextern(tok, d3c))
+  end
+//
+| D2Cstaload _ =>
+  let
+    val node = D3Cd2ecl(d2cl)
+  in
+    d3ecl_make_node(loc0, node)
   end
 //
 | D2Csexpdef _ =>
