@@ -1503,7 +1503,7 @@ end
 //
 fun
 auxqid
-( qua: sym_t
+( qua: token
 , d1e: d1exp): d2exp =
 let
 //
@@ -1585,20 +1585,11 @@ auxqid_d2sym
   val loc0 = d1e0.loc()
 } (* end of [auxqid_d2sym] *)
 //
-val-
-T_IDENT_qual
-  (qua) = tok0.node()
-//
-val
-qua = deDOT(qua)
-val
-qua = $SYM.symbol_make(qua)
-//
 in
 //
 case+
 d1e1.node() of
-| D1Eid _ => auxqid(qua, d1e1)
+| D1Eid _ => auxqid(tok0, d1e1)
 | _(*else*) => d2exp_none1(d1e0)
 //
 end // end of [aux_qual0]
@@ -2583,7 +2574,6 @@ case+ sqid of
     I0DNTsome
       (tok) = id0.node()
     // end of [val]
-    val qua = sexpid_sym(qua)
     val sym = sexpid_sym(tok)
     val opt = the_sexpenv_qfind(qua, sym)
   in
@@ -3235,7 +3225,6 @@ case+ dqid of
     I0DNTsome
       (tok) = id0.node()
     // end of [val]
-    val qua = sexpid_sym(qua)
     val sym = dexpid_sym(tok)
     val opt = the_dexpenv_qfind(qua, sym)
   in
@@ -3624,8 +3613,6 @@ case+ dqid of
   }
 | DQ0EIDsome(qua, id0) =>
   let
-    val
-    qua = sexpid_sym(qua)
     val
     sym = dexpid_sym(tok)
   in

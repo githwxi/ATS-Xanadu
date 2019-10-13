@@ -59,6 +59,7 @@ FP0 = "./../SATS/filpath.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 
@@ -139,6 +140,210 @@ the_nmspace_open
 (
   $NMS.the_nmspace_ins(menv)
 )
+//
+(* ****** ****** *)
+//
+local
+//
+vtypedef
+res =
+fmodenvopt_vt
+//
+fun
+auxsym1
+( cs
+: List0_vt(char)
+) : res =
+let
+val sym =
+$SYM.symbol_make
+(
+$UN.castvwtp0{string}
+(
+string_make_rlist_vt($UN.castvwtp0(cs))
+)
+)
+val opt =
+the_sexpenv_find(sym)
+in
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(s2i) =>
+ (
+ case+ s2i of
+ | S2ITMfmodenv(menv) => Some_vt(menv)
+ | _(*non-S2ITMfmodenv*) => None_vt(*void*)
+ )
+end // end of [auxsym1]
+//
+fun
+auxsym2
+( m0
+: fmodenv
+, cs
+: List0_vt(char)
+) : res =
+let
+val sym =
+$SYM.symbol_make
+(
+$UN.castvwtp0{string}
+(
+string_make_rlist_vt($UN.castvwtp0(cs))
+)
+)
+val opt = s2iopt where
+{
+  val
+  ( pf0
+  , fpf|p0) =
+    fmodenv_get_s2imap(m0)
+  // end of [val]
+  val s2iopt =
+    $MAP.symmap_search(!p0, sym)
+  prval ((*void*)) =
+    minus_v_addback(fpf, pf0 | m0)
+  // end of [prval]
+}
+in
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(s2i) =>
+ (
+ case+ s2i of
+ | S2ITMfmodenv(menv) => Some_vt(menv)
+ | _(*non-S2ITMfmodenv*) => None_vt(*void*)
+ )
+end
+//
+fun
+auxlst0
+( p0
+: ptr): res =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if
+iseqz(c0)
+then None_vt()
+else
+let
+val p1 =
+ptr_succ<char>(p0)
+in
+auxlst1(p1, list_vt_sing(c0))
+end (* else] *)
+end // end of [let] // auxlst0
+and
+auxlst1
+( p0
+: ptr
+, cs
+: List0_vt(char)): res =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+val p1 = ptr_succ<char>(p0)
+in
+ifcase
+|
+iseqz(c0) =>
+(
+  auxsym1(cs)
+)
+|
+(c0 = '.') =>
+(
+  auxsym1(cs)
+)
+|
+(c0 = '$') =>
+let
+val
+opt = auxsym1(cs)
+in
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(m0) =>
+ auxlst2
+ (m0, p1, list_vt_sing(c0))
+end // end of [let]
+|
+_(*else*) =>
+(
+  auxlst1
+  (p1, list_vt_cons(c0, cs))
+)
+end // end of [let] // auxlst1
+//
+and
+auxlst2
+( m0
+: fmodenv
+, p0: ptr
+, cs
+: List0_vt(char)): res =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+val p1 = ptr_succ<char>(p0)
+in
+ifcase
+|
+iseqz(c0) =>
+(
+  auxsym2(m0, cs)
+)
+|
+(c0 = '.') =>
+(
+  auxsym2(m0, cs)
+)
+|
+(c0 = '$') =>
+let
+val
+opt = auxsym2(m0, cs)
+in
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(m0) =>
+ auxlst2
+ (m0, p1, list_vt_sing(c0))
+end // end of [let]
+|
+_(*else*) =>
+(
+  auxlst2
+  (m0, p1, list_vt_cons(c0, cs))
+)
+end // end of [let] // auxlst2
+//
+in
+implement
+the_qualist_find
+  (qua) =
+let
+val-
+T_IDENT_qual
+(qua) = qua.node()
+in
+  auxlst0(string2ptr(qua))
+end // end of [the_qualist_find]
+end // end of [local]
 //
 (* ****** ****** *)
 
@@ -375,12 +580,12 @@ end // end of [the_sortenv_padd]
 implement
 the_sortenv_find
   (tid) = let
-  val ans = let
-    prval
-    vbox(pf) = pfbox
-  in
-    $ENV.symenv_search{s2txt}(!p0, tid)
-  end // end of [val]
+val ans = let
+  prval
+  vbox(pf) = pfbox
+in
+$ENV.symenv_search{s2txt}(!p0, tid)
+end // end of [val]
 in
 //
 case+ ans of
@@ -401,6 +606,40 @@ case+ ans of
   end // end of [None_vt]
 //
 end // end of [the_sortenv_find]
+
+(* ****** ****** *)
+
+implement
+the_sortenv_qfind
+  (qua, sym) = let
+//
+val
+opt =
+the_qualist_find(qua)
+//
+in
+//
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(menv) =>
+ ( s2topt ) where
+{
+  val
+  ( pf0
+  , fpf|p0) =
+    fmodenv_get_s2tmap(menv)
+  // end of [val]
+  val s2topt =
+    $MAP.symmap_search(!p0, sym)
+  prval ((*void*)) =
+    minus_v_addback(fpf, pf0 | menv)
+  // end of [prval]
+}
+//
+end // end of [the_sortenv_qfind]
 
 (* ****** ****** *)
 
@@ -761,12 +1000,17 @@ end // end of [the_sexpenv_pfind]
 
 (* ****** ****** *)
 
+(*
 implement
 the_sexpenv_qfind
   (qua, sym) = let
 //
-val
-opt =
+val-
+T_IDENT_qual
+(qua) = qua.node()
+val qua =
+$SYM.symbol_make(qua)
+val opt =
 the_sexpenv_find(qua)
 //
 in
@@ -793,6 +1037,38 @@ case+ opt of
     }
   | _(*non-S2ITMfmodenv*) => None_vt()
   ) (* end of [Some_vt] *)
+//
+end // end of [the_sexpenv_qfind]
+*)
+implement
+the_sexpenv_qfind
+  (qua, sym) = let
+//
+val
+opt =
+the_qualist_find(qua)
+//
+in
+//
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(menv) =>
+ ( s2iopt ) where
+{
+  val
+  ( pf0
+  , fpf|p0) =
+    fmodenv_get_s2imap(menv)
+  // end of [val]
+  val s2iopt =
+    $MAP.symmap_search(!p0, sym)
+  prval ((*void*)) =
+    minus_v_addback(fpf, pf0 | menv)
+  // end of [prval]
+}
 //
 end // end of [the_sexpenv_qfind]
 
@@ -1189,12 +1465,17 @@ end // end of [the_dexpenv_find]
 
 (* ****** ****** *)
 
+(*
 implement
 the_dexpenv_qfind
   (qua, sym) = let
 //
-val
-opt =
+val-
+T_IDENT_qual
+(qua) = qua.node()
+val qua =
+$SYM.symbol_make(qua)
+val opt =
 the_sexpenv_find(qua)
 //
 in
@@ -1221,6 +1502,38 @@ case+ opt of
     }
   | _(*non-S2ITMfmodenv*) => None_vt()
   ) (* end of [Some_vt] *)
+//
+end // end of [the_dexpenv_qfind]
+*)
+implement
+the_dexpenv_qfind
+  (qua, sym) = let
+//
+val
+opt =
+the_qualist_find(qua)
+//
+in
+//
+case+ opt of
+|
+~None_vt() =>
+ None_vt()
+|
+~Some_vt(menv) =>
+ ( d2iopt ) where
+{
+  val
+  ( pf0
+  , fpf|p0) =
+    fmodenv_get_d2imap(menv)
+  // end of [val]
+  val d2iopt =
+    $MAP.symmap_search(!p0, sym)
+  prval ((*void*)) =
+    minus_v_addback(fpf, pf0 | menv)
+  // end of [prval]
+}
 //
 end // end of [the_dexpenv_qfind]
 
