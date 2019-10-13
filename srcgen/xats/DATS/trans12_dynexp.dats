@@ -1415,7 +1415,6 @@ aux_dtsel
 //
 val
 loc0 = d1e0.loc()
-//
 val-
 D1Edtsel
 (lab, arg) = d1e0.node()
@@ -1466,6 +1465,143 @@ in
   d2exp_make_node
   (loc0, D2Edtsel(lab, dpis, arg))
 end // end of [aux_dtsel]
+
+(* ****** ****** *)
+
+fun
+aux_qual0
+( d1e0
+: d1exp): d2exp = let
+//
+val
+loc0 = d1e0.loc()
+val-
+D1Equal
+( tok0
+, d1e1) = d1e0.node()
+//
+fun
+deDOT
+( qua
+: string): string =
+let
+val
+qua = string0_copy(qua)
+val
+qua = strptr2string(qua)
+in
+  qua where
+{
+  val CZ = '\000'
+  val p0 = string2ptr(qua)
+  val n0 = string_length(qua)
+  val () =
+  if n0 > 0 then 
+  $UN.ptr0_set_at<char>(p0, n0-1, CZ)
+}
+end
+//
+fun
+auxqid
+( qua: sym_t
+, d1e: d1exp): d2exp =
+let
+//
+val-
+D1Eid(tok) = d1e.node()
+//
+val
+sym = dexpid_sym(tok)
+val
+opt =
+the_dexpenv_qfind(qua, sym)
+//
+in
+case+ opt of
+| ~None_vt() => d2exp_none1(d1e0)
+| ~Some_vt(d2i) => auxqid_some(d2i)
+end // end of [auxqid]
+//
+and
+auxqid_some
+( d2i0
+: d2itm): d2exp =
+(
+case- d2i0 of
+| D2ITMvar(x0) => auxqid_d2var(x0)
+| D2ITMcon(xs) => auxqid_d2con(xs)
+| D2ITMcst(xs) => auxqid_d2cst(xs)
+| D2ITMsym(_, dpis) => auxqid_d2sym(dpis)
+) (* end of [auxid0_d2i] *)
+and
+auxqid_d2var
+( d2v0
+: d2var): d2exp =
+(
+  d2exp_var(d1e0.loc(), d2v0)
+)
+and
+auxqid_d2con
+( d2cs
+: d2conlst): d2exp =
+(
+//
+if
+list_isnot_sing(d2cs)
+then
+d2exp_con2(loc0, d2cs)
+else
+d2exp_con1(loc0, d2cs.head())
+//
+) where
+{
+  val loc0 = d1e0.loc()
+} (* end of [auxqid_d2con] *)
+and
+auxqid_d2cst
+( d2cs
+: d2cstlst): d2exp =
+(
+//
+if
+list_isnot_sing(d2cs)
+then
+d2exp_cst2(loc0, d2cs)
+else
+d2exp_cst1(loc0, d2cs.head())
+//
+) where
+{
+  val loc0 = d1e0.loc()
+} (* end of [auxqid_d2cst] *)
+and
+auxqid_d2sym
+( dpis
+: d2pitmlst): d2exp =
+(
+  d2exp_sym0(loc0, d1e0, dpis)
+) where
+{
+  val loc0 = d1e0.loc()
+} (* end of [auxqid_d2sym] *)
+//
+val-
+T_IDENT_qual
+  (qua) = tok0.node()
+//
+val
+qua = deDOT(qua)
+val
+qua = $SYM.symbol_make(qua)
+//
+in
+//
+case+
+d1e1.node() of
+| D1Eid _ => auxqid(qua, d1e1)
+| _(*else*) => d2exp_none1(d1e0)
+//
+end // end of [aux_qual0]
 
 (* ****** ****** *)
 
@@ -1580,7 +1716,10 @@ d1e0.node() of
     val s2e2 = trans12_sexp_ci(s1e2)
   } (* end of [D1Eanno] *)
 //
-| D1Enone() => d2exp_none0(loc0)
+| D1Equal
+  (tok0, d1e1) => aux_qual0(d1e0)
+//
+| D1Enone((*void*)) => d2exp_none0(loc0)
 //
 | _(*rest-of-d1exp*) => d2exp_none1(d1e0)
 //
@@ -1733,33 +1872,6 @@ end // end of [aux_include]
 
 (* ****** ****** *)
 
-(*
-fun
-aux_staload
-( d1cl
-: d1ecl): d2ecl = let
-//
-val
-loc0 = d1cl.loc()
-val-
-D1Cstaload
-( tok, src
-, knd, body) = d1cl.node()
-//
-val body =
-(
-case+ body of
-| None() => None()
-| Some(d1cs) =>
-  Some(trans12_declist(d1cs))
-) : d2eclistopt // end-of-val
-//
-in
-d2ecl_make_node
-( loc0
-, D2Cstaload(tok, src, knd, body))
-end // end of [aux_staload]
-*)
 fun
 aux_staload
 ( d1cl
@@ -1843,10 +1955,24 @@ end // end of [auxd1cs]
 val () =
 (
 case+ body of
-| None() => ()
-| Some(menv) =>
-  the_nmspace_open(menv)
-)
+|
+None() => ((*void*))
+|
+Some(menv) =>
+let
+val
+nmopt =
+d1exp_nmspace(src)
+in
+case+ nmopt of
+|
+~None_vt() =>
+ the_nmspace_open(menv)
+|
+~Some_vt(nm0) =>
+ the_sexpenv_add(nm0, S2ITMfmodenv(menv))
+end
+) : void // end of val
 //
 in
 d2ecl_make_node

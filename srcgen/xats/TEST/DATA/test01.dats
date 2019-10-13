@@ -1,12 +1,13 @@
 (* ****** ****** *)
 
 #staload
+UN =
 "prelude\
 /SATS/unsafe.sats"
 var x0 : int
 val () = (x0 := 1)
 val p0 = $addr(x0)
-val i0 = p2tr_get(p0)
+val i0 = $UN.ptr_get(p0)
 
 (* ****** ****** *)
 

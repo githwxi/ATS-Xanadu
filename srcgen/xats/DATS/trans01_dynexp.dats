@@ -2279,11 +2279,12 @@ end // end of [aux_macdef]
 
 local
 //
+vtypedef
+fopt = fnameopt_vt
+//
 fun
 auxd1e
-(
-d1e: d1exp
-) : fnameopt_vt =
+(d1e: d1exp): fopt =
 let
 (*
 val () =
@@ -2293,14 +2294,19 @@ println!
 in
 case+
 d1e.node() of
-| D1Estr(tok) => auxtok(tok)
+| D1Estr _ => auxstr(d1e)
 | _(*non-D1Estr*) => None_vt()
 end // end of [auxd1e]
 and
+auxstr
+(d1e: d1exp): fopt =
+  auxtok(tok) where
+{
+  val-D1Estr(tok) = d1e.node()
+}
+and
 auxtok
-(
-tok: token
-) : fnameopt_vt =
+(tok: token): fopt =
 (
 case+
 tok.node() of
@@ -2337,8 +2343,6 @@ val-
 D0Cinclude
 (tok, d0e) = d0cl.node()
 //
-val d1e = trans01_dexp(d0e)
-//
 (*
 //
 val out = stdout_ref
@@ -2356,9 +2360,10 @@ val (_) = $FP0.the_filpathlst_fprint(out)
 *)
 //
 val
-opt =
-auxd1e
-(trans01_dexp(d0e))
+src =
+trans01_dexp(d0e)
+val
+opt = auxd1e(src)
 val
 opt1 =
 (
@@ -2406,7 +2411,7 @@ val opt1 = option_vt2t(opt1)
 //
 in
   d1ecl_make_node
-  (loc0, D1Cinclude(tok, d0e, knd, opt1, opt2))
+  (loc0, D1Cinclude(tok, src, knd, opt1, opt2))
 end // end of [aux_include]
 
 end // end of [local]
@@ -2415,11 +2420,34 @@ end // end of [local]
 
 local
 
+vtypedef
+fopt = fnameopt_vt
+
+(* ****** ****** *)
+
+fun
+iseq
+(x0: d1exp): bool =
+(
+case+
+x0.node() of
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_sym
+("=") => true | _ => false
+)
+| _ (* non-D1Eid *) => false
+)
+
+(* ****** ****** *)
+
 fun
 auxd1e
-(
-d1e: d1exp
-) : fnameopt_vt =
+(d1e: d1exp): fopt =
 let
 (*
 val () =
@@ -2429,14 +2457,22 @@ println!
 in
 case+
 d1e.node() of
-| D1Estr(tok) => auxtok(tok)
-| _(*non-D1Estr*) => None_vt(*void*)
+| D1Estr _ => auxstr(d1e)
+| D1Eapp2 _ => auxapp2(d1e)
+| _(*non-D1Estr*) => None_vt()
 end // end of [auxd1e]
+//
+and
+auxstr
+(d1e: d1exp): fopt =
+  auxtok(tok) where
+{
+  val-D1Estr(tok) = d1e.node()
+}
+//
 and
 auxtok
-(
-tok: token
-) : fnameopt_vt =
+(tok: token): fopt =
 (
 case+
 tok.node() of
@@ -2452,6 +2488,29 @@ tok.node() of
 | _(* else *) => None_vt(*void*)
 )
 //
+and
+auxapp2
+(d1e: d1exp): fopt =
+let
+//
+val-
+D1Eapp2
+(x0, x1, x2) = d1e.node()
+//
+in
+//
+ifcase
+|
+iseq(x0) =>
+(
+case+ x2.node() of
+| D1Estr _ => auxstr(x2)
+| _ (*else*) => None_vt(*void*)
+)
+| _ (* else *) => None_vt(*void*)
+//
+end // end of [auxapp2]
+
 in (* in-of-local *)
 
 fun
@@ -2471,8 +2530,10 @@ D0Cstaload
 (tok, d0e) = d0cl.node()
 //
 val
-opt =
-auxd1e(trans01_dexp(d0e))
+src =
+trans01_dexp(d0e)
+val
+opt = auxd1e(src)
 //
 val
 opt1 =
@@ -2521,7 +2582,7 @@ val opt2 = option_vt2t(opt2)
 in
 //
 d1ecl_make_node
-(loc0, D1Cstaload(tok, d0e, knd, opt1, flag, opt2))
+(loc0, D1Cstaload(tok, src, knd, opt1, flag, opt2))
 //
 end // end of [aux_staload]
 

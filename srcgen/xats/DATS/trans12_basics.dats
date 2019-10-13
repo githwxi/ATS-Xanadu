@@ -39,6 +39,16 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+
+#staload "./../SATS/symbol.sats"
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+
+(* ****** ****** *)
 //
 #staload "./../SATS/staexp2.sats"
 //
@@ -194,6 +204,74 @@ list_find$pred<s2cst>
   (s2c) = $effmask_all(test(s2c))
 //
 } (* end of [s2cst_select_list] *)
+
+(* ****** ****** *)
+
+local
+//
+fun
+DLR
+( nm
+: string): string =
+strptr2string
+(string0_append("$", nm))
+//
+fun
+iseq
+(x0: d1exp): bool =
+(
+case+
+x0.node() of
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_sym
+("=") => true | _ => false
+)
+| _ (* non-D1Eid *) => false
+)
+in (* in-of-local *)
+//
+implement
+d1exp_nmspace
+  (d1e0) =
+(
+case+
+d1e0.node() of
+|
+D1Eapp2
+(x0, x1, x2) =>
+(
+ifcase
+|
+iseq(x0) =>
+(
+case+
+x1.node() of
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+| T_IDENT_alp(nm0) =>
+  Some_vt
+  (
+    symbol_make(DLR(nm0))
+  )
+| _ =>
+  Some_vt(symbol_make("$_"))
+)
+| _ (* else *) => None_vt(*void*)
+)
+| _ (* else *) => None_vt(*void*)
+)
+| _ (* else *) => None_vt(*void*)
+)
+//
+end // end of [local]
 
 (* ****** ****** *)
 
