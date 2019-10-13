@@ -48,6 +48,7 @@ typedef loc_t = $LOC.loc_t
 //
 (* ****** ****** *)
 
+#staload LEX = "./lexing.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
 #staload S2E = "./staexp2.sats"
@@ -63,6 +64,10 @@ symintr trans12
 
 typedef fpath = $FP0.filpath
 typedef filpath = $FP0.filpath
+
+(* ****** ****** *)
+
+typedef token = $LEX.token
 
 (* ****** ****** *)
 //
@@ -163,9 +168,14 @@ vtypedef
   s2txtopt_vt = $S2E.s2txtopt_vt
 //
 (* ****** ****** *)
-
-typedef fmodenv = $S2E.fmodenv
-
+//
+typedef
+  fmodenv = $S2E.fmodenv
+typedef
+  fmodenvopt = $S2E.fmodenvopt
+vtypedef
+  fmodenvopt_vt = $S2E.fmodenvopt_vt
+//
 (* ****** ****** *)
 //
 typedef a1typ = $D1E.a1typ
@@ -349,6 +359,12 @@ the_nmspace_open
 (* ****** ****** *)
 //
 fun
+the_qualist_find
+  (qua: token): fmodenvopt_vt
+//
+(* ****** ****** *)
+//
+fun
 the_sortenv_add
 (tid: sym_t, s2t: s2txt): void
 fun
@@ -360,7 +376,7 @@ the_sortenv_find
   (tid: sym_t): s2txtopt_vt
 fun
 the_sortenv_qfind
-  (qua: sym_t, tid: sym_t): s2txtopt_vt
+  (qua: token, tid: sym_t): s2txtopt_vt
 //
 (* ****** ****** *)
 //
@@ -422,7 +438,7 @@ the_sexpenv_pfind
   (sym: sym_t): s2itmopt_vt
 fun
 the_sexpenv_qfind
-  (qua: sym_t, sym: sym_t): s2itmopt_vt
+  (qua: token, sym: sym_t): s2itmopt_vt
 //
 (* ****** ****** *)
 //
@@ -636,7 +652,7 @@ the_dexpenv_find
   (sym: sym_t): d2itmopt_vt
 fun
 the_dexpenv_qfind
-  (qua: sym_t, sym: sym_t): d2itmopt_vt
+  (qua: token, sym: sym_t): d2itmopt_vt
 //
 (* ****** ****** *)
 //
