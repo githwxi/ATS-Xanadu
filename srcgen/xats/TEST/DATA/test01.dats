@@ -1,9 +1,11 @@
 (* ****** ****** *)
 //
 #staload
-UN =
+UNSAFE =
 "prelude\
 /SATS/unsafe.sats"
+//
+#staload UN = $UNSAFE
 //
 var x0 : int
 val () = (x0 := 1)

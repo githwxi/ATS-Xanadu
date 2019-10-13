@@ -199,12 +199,16 @@ t3xread_d3exp
 //
 val
 loc0 = d3e0.loc((*void*))
-//
 val
 t2p0 = t2ype_hnfize(d3e0.type())
+(*
+val () =
+println!
+("t3xread_d3exp: d3e0 = ", d3e0)
 val () =
 println!
 ("t3xread_d3exp: t2p0 = ", t2p0)
+*)
 //
 in
 //
@@ -456,21 +460,21 @@ list_foreach$fwork<d3clau><env>(d3cl, env) = t3xread_d3clau<>(d3cl)
 
 implement
 {}(*tmp*)
-t3xread_d3ecl(d3c0) =
+t3xread_d3ecl(d3cl) =
 let
 //
-val loc0 = d3c0.loc()
+val loc0 = d3cl.loc()
 //
 (*
 val () =
 println!
-("t3xread_d3ecl: d3c0 = ", d3c0)
+("t3xread_d3ecl: d3cl = ", d3cl)
 *)
 //
 in
 //
 case+
-d3c0.node() of
+d3cl.node() of
 //
 | D3Cd2ecl(d2c) => ()
 //
@@ -491,6 +495,16 @@ d3c0.node() of
     val () =
     println!
     ("t3xread_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
+*)
+  }
+//
+| D3Cvardecl(knd, v3ds) =>
+  {
+    val () = t3xread_v3ardeclist<>(v3ds)
+(*
+    val () =
+    println!
+    ("t3xread_d3ecl: D3Cvardecl: v3ds = ", v3ds)
 *)
   }
 //
@@ -546,7 +560,7 @@ d3c0.node() of
     | Some _ => ()
     | None _ => let
         val () =
-        t3xerr_add(T3XERRd3ecl(d3c0))
+        t3xerr_add(T3XERRd3ecl(d3cl))
       in
       println!
       ( loc0
@@ -557,13 +571,13 @@ d3c0.node() of
 (*
     val () =
     println!
-    ("t3xread_d3ecl: D3Cimpdecl: d3c0 = ", d3c0)
+    ("t3xread_d3ecl: D3Cimpdecl: d3cl = ", d3cl)
 *)
   }
 //
 | _(* rest-of-d3ecl *) =>
   {
-    val () = println!(loc0, ": t3xread_d3ecl(", d3c0, ")")
+    val () = println!(loc0, ": t3xread_d3ecl(", d3cl, ")")
   }
 //
 end // end of [t3xread_d3ecl]
@@ -670,6 +684,35 @@ list_foreach<v3aldecl>(v3ds)
 implement(env)
 list_foreach$fwork<v3aldecl><env>(v3ds, env) = t3xread_v3aldecl<>(v3ds)
 } (* end of [t3xread_v3aldeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+t3xread_v3ardecl
+  (v3d0) =
+{
+(*
+  val () =
+  t3xread_d2var(rcd.d2v)
+*)
+  val () =
+  t3xread_d3expopt(rcd.ini)
+} where
+{
+  val+V3ARDECL(rcd) = v3d0
+}
+//
+implement
+{}(*tmp*)
+t3xread_v3ardeclist(v3ds) =
+(
+list_foreach<v3ardecl>(v3ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v3ardecl><env>(v3ds, env) = t3xread_v3ardecl<>(v3ds)
+} (* end of [t3xread_v3ardeclist] *)
 //
 (* ****** ****** *)
 //
