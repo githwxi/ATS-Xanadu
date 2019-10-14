@@ -39,16 +39,26 @@
 //
 fun<>
 optn_none?
-{a:type}{n:int}
+{a:type}{b:bool}
 (xs: optn(a, b)): bool(b=ff)
 fun<>
 optn_some?
-{a:type}{n:int}
+{a:type}{b:bool}
 (xs: optn(a, b)): bool(b=tt)
 //
-#symload iseqz with optn_nil?
-#symload isneqz with optn_cons?
+#symload iseqz with optn_none?
+#symload isneqz with optn_some?
 //
+(* ****** ****** *)
+
+fun
+<a:type>
+optn_length
+{b:bool}
+(xs: optn(a, b)): int(b2i(b))
+
+#symload length with optn_length
+
 (* ****** ****** *)
 
 (* end of [optn.sats] *)

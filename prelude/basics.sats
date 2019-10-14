@@ -103,6 +103,16 @@ sexpdef ff = ff_b0 // false
 (* ****** ****** *)
 //
 #stacst
+eq_b0_b0: (b0, b0) -> bool
+#stacst
+neq_b0_b0: (b0, b0) -> bool
+//
+sexpdef = = eq_b0_b0 // overloading
+sexpdef != = neq_b0_b0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
 neg_i0: (int) -> int
 #stacst
 add_i0_i0: (int, int) -> int
