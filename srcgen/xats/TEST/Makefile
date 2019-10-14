@@ -78,6 +78,13 @@ $(CAT) $(PRELUDE)/DATS/gord.dats | $(XATSOPT) --dynamic
 
 ######
 
+gseq_sats:; \
+$(CAT) $(PRELUDE)/SATS/gseq.sats | $(XATSOPT) --dynamic
+gseq_dats:; \
+$(CAT) $(PRELUDE)/DATS/gseq.dats | $(XATSOPT) --dynamic
+
+######
+
 list_sats:; \
 $(CAT) $(PRELUDE)/SATS/list.sats | $(XATSOPT) --static
 list_dats:; \
@@ -85,8 +92,10 @@ $(CAT) $(PRELUDE)/DATS/list.dats | $(XATSOPT) --dynamic
 
 ######
 
-gseq_dats:; \
-$(CAT) $(PRELUDE)/DATS/gseq.dats | $(XATSOPT) --dynamic
+optn_sats:; \
+$(CAT) $(PRELUDE)/SATS/optn.sats | $(XATSOPT) --static
+optn_dats:; \
+$(CAT) $(PRELUDE)/DATS/optn.dats | $(XATSOPT) --dynamic
 
 ######
 
