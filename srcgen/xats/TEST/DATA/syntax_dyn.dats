@@ -1,20 +1,13 @@
-////
-val () =
-let
-val x = 1
-val y = x + x
-end
-
-(*
 fun
-{a
-:type}
-length
+<a:type>
+list_length
+(xs) =
+(
+case+ xs
 | nil() => 0
-| cons(x, xs) = x+length(xs)
-withtype
-{n:nat} list(a, n) -> int(n)
-*)
+| cons(x, xs) => 1+list_length(xs)
+)
+withtype {n:nat} list(a, n) -> int(n)
 
 ////
 #define x 5

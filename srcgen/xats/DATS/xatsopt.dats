@@ -237,6 +237,7 @@ end // end of [local]
 //
 #dynload "./t3xread_dynexp.dats"
 //
+#dynload "./trans3t_envmap.dats"
 #dynload "./trans3t_dynexp.dats"
 //
 (* ****** ****** *)

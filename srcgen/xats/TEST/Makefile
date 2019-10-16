@@ -32,18 +32,6 @@ $(CAT) ./DATA/test02.dats | $(XATSOPT) --dynamic
 #
 ######
 
-all:: \
-syntax_sta
-syntax_sta: ; \
-$(CAT) ./DATA/syntax_sta.sats | $(XATSOPT) --static
-
-all:: \
-syntax_dyn
-syntax_dyn: ; \
-$(CAT) ./DATA/syntax_dyn.dats | $(XATSOPT) --dynamic
-
-######
-
 # all:: prelude
 prelude:: gbas_sats
 prelude:: gbas_dats
@@ -55,47 +43,59 @@ prelude:: gseq_dats
 
 ######
 
-PRELUDE=./../../../prelude
+PRELUDE=$(XATSHOME)/prelude
 
 ######
 
 basics_sats:; \
-$(CAT) $(PRELUDE)/basics.sats | $(XATSOPT) --static
+$(XATSOPT) -s $(PRELUDE)/basics.sats
 
 ######
 
 gbas_sats:; \
-$(CAT) $(PRELUDE)/SATS/gbas.sats | $(XATSOPT) --static
+$(XATSOPT) -s $(PRELUDE)/SATS/gbas.sats
 gbas_dats:; \
-$(CAT) $(PRELUDE)/DATS/gbas.dats | $(XATSOPT) --dynamic
+$(XATSOPT) -d $(PRELUDE)/DATS/gbas.dats
 
 ######
 
 gord_sats:; \
-$(CAT) $(PRELUDE)/SATS/gord.sats | $(XATSOPT) --static
+$(XATSOPT) -s $(PRELUDE)/SATS/gord.sats
 gord_dats:; \
-$(CAT) $(PRELUDE)/DATS/gord.dats | $(XATSOPT) --dynamic
+$(XATSOPT) -d $(PRELUDE)/DATS/gord.dats
 
 ######
 
 gseq_sats:; \
-$(CAT) $(PRELUDE)/SATS/gseq.sats | $(XATSOPT) --dynamic
+$(XATSOPT) -s $(PRELUDE)/SATS/gseq.sats 
 gseq_dats:; \
-$(CAT) $(PRELUDE)/DATS/gseq.dats | $(XATSOPT) --dynamic
+$(XATSOPT) -d $(PRELUDE)/DATS/gseq.dats
 
 ######
 
 list_sats:; \
-$(CAT) $(PRELUDE)/SATS/list.sats | $(XATSOPT) --static
+$(XATSOPT) -s $(PRELUDE)/SATS/list.sats
 list_dats:; \
-$(CAT) $(PRELUDE)/DATS/list.dats | $(XATSOPT) --dynamic
+$(XATSOPT) -d $(PRELUDE)/DATS/list.dats
 
 ######
 
 optn_sats:; \
-$(CAT) $(PRELUDE)/SATS/optn.sats | $(XATSOPT) --static
+$(XATSOPT) -s $(PRELUDE)/SATS/optn.sats
 optn_dats:; \
-$(CAT) $(PRELUDE)/DATS/optn.dats | $(XATSOPT) --dynamic
+$(XATSOPT) -d $(PRELUDE)/DATS/optn.dats
+
+######
+
+all:: \
+syntax_sta
+syntax_sta: ; \
+$(CAT) ./DATA/syntax_sta.sats | $(XATSOPT) --static
+
+all:: \
+syntax_dyn
+syntax_dyn: ; \
+$(CAT) ./DATA/syntax_dyn.dats | $(XATSOPT) --dynamic
 
 ######
 
