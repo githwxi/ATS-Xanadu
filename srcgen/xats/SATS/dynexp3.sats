@@ -288,7 +288,8 @@ d3exp_node =
   (d1exp(*sym*), d2pitmlst)
 //
 | D3Etcst of
-  (d2cst, ti2arglst, ti3arg)
+  ( d2cst
+  , ti3arg, ti2arglst(*sess*))
 | D3Etimp of
   ( d3exp(*tcst*), t2ypelst(*tsub*)
   , d2ecl(*impl*), t2ypelst(*tsub*)
@@ -649,14 +650,14 @@ d3ecl_node =
   , sq2arglst
   , tq2arglst
   , impld2cst
-  , ti2arglst, ti3arg, f3arglst, effs2expopt, d3exp)
+  , ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 | D3Cimpdecl2 of
   ( token(*impkind*)
   , decmodopt
   , sq2arglst
   , tq2arglst
   , impld2cst
-  , ti2arglst, ti3arg, f3arglst, effs2expopt, d3exp)
+  , ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
 //

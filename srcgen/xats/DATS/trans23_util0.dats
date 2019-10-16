@@ -1252,7 +1252,7 @@ t2ype_substs(d2c0.type(), s2vs, tsub)
 in
 d3exp_make_node
 ( loc0, t2p0
-, D3Etcst(d2c0, ti2s, TI3ARGsome(tsub)))
+, D3Etcst(d2c0, TI3ARGsome(tsub), ti2s))
 end
 //
 end // end of [d3exp_tapp_up]

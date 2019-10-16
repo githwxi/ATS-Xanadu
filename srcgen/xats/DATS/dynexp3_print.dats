@@ -314,11 +314,11 @@ x0.node() of
 // *)
 //
 | D3Etcst
-  (d2c1, ti2s, ti3a) =>
+  (d2c1, ti3a, ti2s) =>
   fprint!
   ( out
   , "D3Etcst("
-  , d2c1, "; ", ti2s, "; ", ti3a, ")")
+  , d2c1, "; ", ti3a, "; ", ti2s, ")")
 //
 | D3Etimp
   (d2e1, tsub1, d2c2, tsub2) =>
@@ -580,26 +580,26 @@ x0.node() of
 | D3Cimpdecl1
   ( knd, mopt
   , sqas, tqas
-  , id2c, ti2s, ti3a
+  , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
   fprint!
   ( out
   , "D3Cimpdecl1("
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
-  , id2c, "; ", ti2s, "; ", ti3a, "; ", f3as, "; ", res0, "; ", d3e0, ")"
+  , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl] *)
 | D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
-  , id2c, ti2s, ti3a
+  , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
   fprint!
   ( out
   , "D3Cimpdecl2("
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
-  , id2c, "; ", ti2s, "; ", ti3a, "; ", f3as, "; ", res0, "; ", d3e0, ")"
+  , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl] *)
 //
 | D3Cnone0() =>
