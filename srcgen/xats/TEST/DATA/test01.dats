@@ -270,6 +270,15 @@ then not(isevn(x-1)) else false
 *)
 
 (* ****** ****** *)
+(*
+fun
+<a:type>
+list_length
+| nil() => 0
+| cons(x, xs) => 1+list_length(xs)
+withtype {n:nat} list(a, n) -> int(n)
+*)
+(* ****** ****** *)
 ////
 fun
 <a:type>

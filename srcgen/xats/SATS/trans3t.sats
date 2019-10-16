@@ -50,6 +50,71 @@
 //
 (* ****** ****** *)
 
+typedef t2ype = $S2T.t2ype
+typedef t2ypelst = $S2T.t2ypelst
+
+(* ****** ****** *)
+//
+typedef d3exp = $D3E.d3exp
+typedef d3ecl = $D3E.d3ecl
+//
+typedef d3explst = $D3E.d3explst
+typedef d3eclist = $D3E.d3eclist
+//
+(* ****** ****** *)
+//
+absvtype implenv_vtype = ptr
+vtypedef implenv = implenv_vtype
+//
+(* ****** ****** *)
+//
+fun
+implenv_get_tsub
+  (!implenv): t2ypelst
+overload
+.tsub with implenv_get_tsub
+//
+(* ****** ****** *)
+//
+fun
+implenv_add_let1
+  (env0: !implenv): void
+fun
+implenv_pop_let1
+  (env0: !implenv): void
+//
+fun
+implenv_add_loc1
+  (env0: !implenv): void
+fun
+implenv_add_loc2
+  (env0: !implenv): void
+fun
+implenv_pop_loc12
+  (env0: !implenv): void
+//
+(* ****** ****** *)
+
+fun
+trans3t_dexp
+( env0
+: !implenv, d3e0: d3exp): d3exp
+fun
+trans3t_dexplst
+( env0
+: !implenv, d3es: d3explst): d3explst
+
+(* ****** ****** *)
+
+fun
+trans3t_decl
+( env0
+: !implenv, d3c0: d3ecl): d3ecl
+fun
+trans3t_declist
+( env0
+: !implenv, d3cs: d3eclist): d3eclist
+
 (* ****** ****** *)
 
 (* end of [xats_trans3t.sats] *)

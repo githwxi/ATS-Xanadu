@@ -632,6 +632,9 @@ d3ecl_node =
 | D3Cextern of
   (token(*EXTERN*), d3ecl)
 //
+| D3Clocal of
+  (d3eclist(*head*), d3eclist(*body*))
+//
 | D3Cvaldecl of
   (token(*knd*), decmodopt, v3aldeclist)
 | D3Cvardecl of (token(*knd*), v3ardeclist)
