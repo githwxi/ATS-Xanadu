@@ -58,6 +58,7 @@ typedef t2ypelst = $S2T.t2ypelst
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 //
+typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
 //
@@ -99,6 +100,10 @@ fun
 trans3t_dexp
 ( env0
 : !implenv, d3e0: d3exp): d3exp
+fun
+trans3t_dexpopt
+( env0
+: !implenv, opt0: d3expopt): d3expopt
 fun
 trans3t_dexplst
 ( env0
