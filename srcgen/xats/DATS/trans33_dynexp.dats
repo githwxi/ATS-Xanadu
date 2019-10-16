@@ -293,7 +293,7 @@ t2ype_tq2as_elim2
 (loc0, d2c1.type(), d2c1.tqas())
 in
 d3exp_make_node
-(loc0, t2p1, D3Etcst(d2c1, ti2s, ti3a))
+(loc0, t2p1, D3Etcst(d2c1, ti3a, ti2s))
 end // end of [d2cst_up]
 //
 (* ****** ****** *)
@@ -1162,7 +1162,7 @@ D3Cimpdecl1
 ( knd
 , mopt
 , sqas, tqas
-, id2c, tias, ti3a
+, id2c, ti3a, tias
 , f3as, res0, d3e0) = d3cl.node()
 //
 val
@@ -1176,7 +1176,7 @@ d3ecl_make_node
 , D3Cimpdecl1
   ( knd, mopt
   , sqas, tqas
-  , id2c, tias, ti3a, f3as, res0, d3e0))
+  , id2c, ti3a, tias, f3as, res0, d3e0))
 end // end of [aux_impdecl1]
 
 (* ****** ****** *)
@@ -1274,7 +1274,7 @@ D3Cimpdecl2
 ( knd
 , mopt
 , sqas, tqas
-, id2c, tias, ti3a
+, id2c, ti3a, tias
 , f3as, res0, d3e0) = d3cl.node()
 //
 val
@@ -1309,7 +1309,7 @@ d3ecl_make_node
 , D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
-  , id2c, tias, ti3a, f3as, res0, d3e0))
+  , id2c, ti3a, tias, f3as, res0, d3e0))
 end // IMPLD3CSTnone
 //
 |
@@ -1372,7 +1372,7 @@ d3ecl_make_node
 , D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
-  , id2c, tias, ti3a, f3as, res0, d3e0))
+  , id2c, ti3a, tias, f3as, res0, d3e0))
 end (* IMPLD3CSTsome *)
 //
 end // end of [aux_impdecl]

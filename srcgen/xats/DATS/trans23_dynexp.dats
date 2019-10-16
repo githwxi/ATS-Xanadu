@@ -626,7 +626,7 @@ t2ype_tq2as_elim2
 val
 tias = list_nil()
 val
-node = D3Etcst(d2c0, tias, ti3a)
+node = D3Etcst(d2c0, ti3a, tias)
 //
 in
   d3exp_make_node(loc0, t2p0, node)
@@ -1913,7 +1913,7 @@ d2cl.loc()
 D3Cimpdecl1
   ( knd, mopt
   , sqas, tqas
-  , id2c, tias, ti3a, f3as, res0, d3e0)
+  , id2c, ti3a, tias, f3as, res0, d3e0)
 ) (* d3ecl_make_node *)
 end // end of [aux_impdecl1]
 
@@ -1974,7 +1974,7 @@ in
   D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
-  , id2c, tias, ti3a, f3as, res0, d3e0)
+  , id2c, ti3a, tias, f3as, res0, d3e0)
 }
 //
 end // end of [aux_impdecl2]
