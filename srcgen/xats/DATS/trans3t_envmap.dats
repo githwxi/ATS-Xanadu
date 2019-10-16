@@ -48,6 +48,12 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans3t.sats"
 
 (* ****** ****** *)
+//
+datatype ti3env =
+| TI3ENV of
+  (t2xtvlst, t2ypelst)
+//
+(* ****** ****** *)
 
 datavtype implist =
 //
@@ -57,12 +63,73 @@ datavtype implist =
 | implist_loc1 of implist
 | implist_loc2 of implist
 //
-| implist_cons of (d3ecl, implist)
+| implist_cons of
+  (d3ecl, ti3env, implist)
 //
 (* ****** ****** *)
 
 datavtype implenv =
 | IMPLENV of (t2ypelst, implist)
+
+(* ****** ****** *)
+//
+extern
+fun
+ti3env_reset(ti3env): void
+//
+extern
+fun
+ti3env_get_targ(ti3env): t2ypelst
+extern
+fun
+ti3env_get_tsub(ti3env): t2ypelst
+overload .targ with ti3env_get_targ
+overload .tsub with ti3env_get_tsub
+//
+(* ****** ****** *)
+
+implement
+ti3env_reset(ti3e) =
+let
+val+
+TI3ENV(xtvs, _) = ti3e
+in (* in-of-let *)
+(
+list_foreach<t2xtv>(xtvs)
+) where
+{
+implement
+(env)(*tmp*)
+list_foreach$fwork<t2xtv><env>
+  (xtv, env) = xtv.type(the_t2ype_none0)
+}
+end // end of [ti3env_reset]
+
+(* ****** ****** *)
+
+implement
+ti3env_get_targ
+( ti3e ) =
+( targ ) where
+{
+val+TI3ENV(xtvs, targ) = ti3e
+} (* end of [ti3env_get_targ] *)
+
+implement
+ti3env_get_tsub
+( ti3e ) =
+let
+val+TI3ENV(xtvs, targ) = ti3e
+in
+list_vt2t
+(
+list_map<t2xtv><t2ype>(xtvs)
+) where
+{
+implement
+list_map$fopr<t2xtv><t2ype>(xtv) = xtv.type()
+}
+end (* end of [ti3env_get_tsub] *)
 
 (* ****** ****** *)
 
@@ -85,7 +152,8 @@ auxlst
 : implist): implist =
 case- xs of
 | ~implist_let1(xs) => xs
-| ~implist_cons(d2cl, xs) => auxlst(xs)
+| ~implist_cons
+   (d3cl, ti3e, xs) => auxlst(xs)
 }
 //
 (* ****** ****** *)
@@ -118,11 +186,16 @@ auxlst1
 : implist): implist =
 (
 case- xs of
-| ~implist_loc2
+|
+~implist_loc2
    (xs) => auxlst2(xs, ys)
-| ~implist_cons
-   (x0, xs) =>
-   auxlst1(xs, implist_cons(x0, ys))
+|
+~implist_cons
+   (d3cl, ti3e, xs) =>
+ (
+   auxlst1
+   (xs, implist_cons(d3cl, ti3e, ys))
+ )
 )
 and
 auxlst2
@@ -135,7 +208,7 @@ case- xs of
 | ~implist_loc1
    (xs) => auxlst3(xs, ys)
 | ~implist_cons
-   (x0, xs) => auxlst2(xs, ys)
+   (d3cl, ti3e, xs) => auxlst2(xs, ys)
 )
 and
 auxlst3
@@ -145,10 +218,15 @@ auxlst3
 : implist): implist =
 (
 case- ys of
-| ~implist_nil() => xs
-| ~implist_cons(y0, ys) =>
-   auxlst3(implist_cons(y0, xs), ys)
-)
+|
+~implist_nil() => xs
+|
+~implist_cons(d3cl, ti3e, ys) =>
+ (
+   auxlst3
+   (implist_cons(d3cl, ti3e, xs), ys)
+ )
+) (* end of [auxlst3] *)
 } (* where *) // implenv_pop_loc12
 //
 (* ****** ****** *)
