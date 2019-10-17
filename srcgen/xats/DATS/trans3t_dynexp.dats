@@ -219,7 +219,7 @@ end // end of [trans3t_dexplst]
 
 implement
 trans3t_decl
-  (env, d3cl) = let
+  (env0, d3cl) = let
 //
 val loc0 = d3cl.loc()
 //
@@ -232,20 +232,38 @@ d3cl.node() of
   (d3cs1, d3cs2) =>
   let
     val () =
-    implenv_add_loc1(env)
+    implenv_add_loc1(env0)
     val
     d3cs1 =
-    trans3t_declist(env, d3cs1)
+    trans3t_declist(env0, d3cs1)
     val () =
-    implenv_add_loc2(env)
+    implenv_add_loc2(env0)
     val
     d3cs1 =
-    trans3t_declist(env, d3cs2)
+    trans3t_declist(env0, d3cs2)
     val () =
-    implenv_pop_loc12(env)
+    implenv_pop_loc12(env0)
   in
     d3ecl_make_node(loc0, D3Clocal(d3cs1, d3cs2))
   end
+//
+(*
+| D3Cimpdecl1
+  ( tok0,
+  , mopt
+  , sqas
+  , tqas
+  , id2c
+  , ti3a, ti2s, f3as, res1, body) =>
+  let
+    val ti3a =
+    ti3arg_subst(ti3a, env0.tsub())
+    val xtvs = ...(sqas/tqas)...
+    val ti3a =
+    ti3arg_subst(ti3a, xtvs.tsub())
+  in
+  end
+*)
 //
 end // end of [trans3t_decl]
 

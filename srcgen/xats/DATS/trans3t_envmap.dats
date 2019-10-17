@@ -51,7 +51,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 datatype ti3env =
 | TI3ENV of
-  (t2xtvlst, t2ypelst)
+  (s2varlst, t2xtvlst, t2ypelst)
 //
 (* ****** ****** *)
 
@@ -79,10 +79,15 @@ ti3env_reset(ti3env): void
 //
 extern
 fun
+ti3env_get_s2vs(ti3env): s2varlst
+extern
+fun
 ti3env_get_targ(ti3env): t2ypelst
 extern
 fun
 ti3env_get_tsub(ti3env): t2ypelst
+//
+overload .s2vs with ti3env_get_s2vs
 overload .targ with ti3env_get_targ
 overload .tsub with ti3env_get_tsub
 //
@@ -92,7 +97,7 @@ implement
 ti3env_reset(ti3e) =
 let
 val+
-TI3ENV(xtvs, _) = ti3e
+TI3ENV(_, xtvs, _) = ti3e
 in (* in-of-let *)
 (
 list_foreach<t2xtv>(xtvs)
@@ -108,18 +113,29 @@ end // end of [ti3env_reset]
 (* ****** ****** *)
 
 implement
+ti3env_get_s2vs
+( ti3e ) =
+( s2vs ) where
+{
+val+
+TI3ENV(s2vs, _, _) = ti3e
+} (* end of [ti3env_get_s2vs] *)
+
+implement
 ti3env_get_targ
 ( ti3e ) =
 ( targ ) where
 {
-val+TI3ENV(xtvs, targ) = ti3e
+val+
+TI3ENV(_, _, targ) = ti3e
 } (* end of [ti3env_get_targ] *)
 
 implement
 ti3env_get_tsub
 ( ti3e ) =
 let
-val+TI3ENV(xtvs, targ) = ti3e
+val+
+TI3ENV(_, xtvs, _) = ti3e
 in
 list_vt2t
 (
@@ -132,12 +148,14 @@ list_map$fopr<t2xtv><t2ype>(xtv) = xtv.type()
 end (* end of [ti3env_get_tsub] *)
 
 (* ****** ****** *)
-
+//
 fun
 implist_add_let1
 ( xs
-: implist): implist = implist_let1(xs)
-
+: implist
+)
+: implist = implist_let1(xs)
+//
 (* ****** ****** *)
 //
 fun
@@ -257,61 +275,61 @@ end // end of [implenv_get_tsub]
 
 implement
 implenv_add_let1
-  (env) = let
+  (env) =
+( fold@(env) ) where
+{
 //
 val+
 @IMPLENV(x0, xs) = env
 val () =
 (xs := implist_add_let1(xs))
 //
-in
-  fold@(env)
-end // end of [implenv_add_let1]
+} (* end of [implenv_add_let1] *)
 
 (* ****** ****** *)
 
 implement
 implenv_pop_let1
-  (env) = let
+  (env) =
+( fold@(env) ) where
+{
 //
 val+
 @IMPLENV(x0, xs) = env
 val () =
 (xs := implist_pop_let1(xs))
 //
-in
-  fold@(env)
-end // end of [implenv_pop_let1]
+} (* end of [implenv_pop_let1] *)
 
 (* ****** ****** *)
 
 implement
 implenv_add_loc1
-  (env) = let
+  (env) =
+( fold@(env) ) where
+{
 //
 val+
 @IMPLENV(x0, xs) = env
 val () =
 (xs := implist_add_loc1(xs))
 //
-in
-  fold@(env)
-end // end of [implenv_add_loc1]
+} (* end of [implenv_add_loc1] *)
 
 (* ****** ****** *)
 
 implement
 implenv_add_loc2
-  (env) = let
+  (env) =
+( fold@(env) ) where
+{
 //
 val+
 @IMPLENV(x0, xs) = env
 val () =
 (xs := implist_add_loc2(xs))
 //
-in
-  fold@(env)
-end // end of [implenv_add_loc2]
+} (* end of [implenv_add_loc2] *)
 
 (* ****** ****** *)
 
@@ -325,7 +343,7 @@ val () =
 (xs := implist_pop_loc12(xs))
 //
 in
-  fold@(env)
+  fold@(env) // nothing
 end // end of [implenv_pop_loc12]
 
 (* ****** ****** *)
