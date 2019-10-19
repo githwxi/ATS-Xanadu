@@ -3518,11 +3518,14 @@ the_trans12_pushnil((*void*))
 //
 val () =
 (
-case+ sqas of
-| list_nil() => ()
-| list_cons(x0, _) =>
-  the_sexpenv_add_varlst(x0.s2vs())
-) : void // end of [val]
+list_foreach<sq2arg>(sqas)
+) where
+{
+implement
+list_foreach$fwork<sq2arg><void>
+  (sq2a, env) =
+  the_sexpenv_add_varlst(sq2a.s2vs())
+}
 val () =
 (
 list_foreach<tq2arg>(tqas)

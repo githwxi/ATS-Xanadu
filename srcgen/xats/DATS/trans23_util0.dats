@@ -1543,6 +1543,41 @@ end // end of [d3exp_lam_up]
 (* ****** ****** *)
 
 implement
+join_ti2as_tq2as
+  (tias, tqas) =
+let
+//
+fun
+auxlst
+(tqas: tq2arglst): ti2arglst =
+list_vt2t
+(
+list_map<tq2arg><ti2arg>(tqas)
+) where
+{
+implement
+list_map$fopr<tq2arg><ti2arg>(tqa) =
+let
+val s2es =
+list_map<s2var><s2exp>(tqa.s2vs())
+in
+  ti2arg_make(tqa.loc(), list_vt2t(s2es))
+end where
+{
+implement
+list_map$fopr<s2var><s2exp>(s2v) = s2exp_var(s2v)
+}
+} (* where *)
+//
+in
+case+ tqas of
+| list_nil _ => tias
+| list_cons _ => list_append(tias, auxlst(tqas))
+end // end of [join_ti2as_tq2as]
+
+(* ****** ****** *)
+
+implement
 d2cst_ti2as_ti3a
 (loc0, d2c0, tias) =
 (
@@ -1637,7 +1672,8 @@ auxtias_2
 : List0_vt(t2ype) =
 (
 case+ s2vs of
-| list_nil() => t2ps
+| list_nil
+  ((*void*)) => t2ps
 | list_cons
   (s2v0, s2vs) =>
   (
