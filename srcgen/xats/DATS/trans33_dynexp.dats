@@ -726,6 +726,30 @@ end // end of [aux_fold]
 
 (* ****** ****** *)
 
+fun
+aux_anno
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Eanno
+(d3e1, s2e2) = d3e0.node()
+//
+val t2p2 = d3e0.type()
+(*
+val t2p2 = s2exp_erase(s2e2)
+*)
+val d3e1 = trans33_dexp_dn(d3e1, t2p2)
+//
+in
+d3exp_make_node
+(loc0, d3e1.type(), D3Eanno(d3e1, s2e2))
+end // end of [aux_anno]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -798,6 +822,9 @@ d3e0.node() of
 //
 | D3Eaddr(d3e1) => aux_addr(d3e0)
 | D3Efold(d3e1) => aux_fold(d3e0)
+//
+| D3Eanno
+    (d3e1, s2e2) => aux_anno(d3e0)
 //
 | D3Enone0 _ => d3e0
 | D3Enone1 _ => d3e0
@@ -1339,6 +1366,13 @@ case- id2c of
   end
 ) : loc_t // end of [val]
 //
+(*
+//
+// HX: [tias] is already
+val // computed in trans23
+tias =
+join_ti2as_tq2as(tias, tqas)
+*)
 val
 ti3a =
 d2cst_ti2as_ti3a(loc0,d2c0,tias)

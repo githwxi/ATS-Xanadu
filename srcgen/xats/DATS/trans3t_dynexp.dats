@@ -217,13 +217,25 @@ end // end of [trans3t_dexplst]
 
 (* ****** ****** *)
 
+local
+
+(*
+fun
+auxsqas
+( sqas
+: sq2as
+)
+*)
+
+in(*in-of-local*)
+
 implement
 trans3t_decl
   (env0, d3cl) = let
 //
 val loc0 = d3cl.loc()
 //
-in
+in(* in-of-let *)
 //
 case-
 d3cl.node() of
@@ -266,6 +278,8 @@ d3cl.node() of
 *)
 //
 end // end of [trans3t_decl]
+
+end // end of [local]
 
 (* ****** ****** *)
 

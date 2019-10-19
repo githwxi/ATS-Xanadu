@@ -1058,7 +1058,8 @@ val-
 D2Eanno
 (d2e1, s2e2) = d2e0.node()
 //
-val d3e1 = trans23_dexp(d2e1)
+val t2p2 = s2exp_erase(s2e2)
+val d3e1 = trans23_dexp_dn(d2e1, t2p2)
 //
 in
 d3exp_make_node
@@ -1847,7 +1848,11 @@ case- id2c of
   end
 ) : loc_t // end of [val]
 //
-val ti3a =
+val
+tias =
+join_ti2as_tq2as(tias, tqas)
+val
+ti3a =
 d2cst_ti2as_ti3a(loc0,d2c0,tias)
 val
 tfun =
@@ -1935,9 +1940,12 @@ D2Cimpdecl2
 , f2as, res0
 , d2e0(*body*)) = d2cl.node()
 //
-// HX: for
-val // trans33
-ti3a = TI3ARGnone()
+// HX: [ti3a] is to be
+val // computed in trans33
+ti3a = TI3ARGnone((*void*))
+val
+tias =
+join_ti2as_tq2as(tias, tqas)
 //
 val
 f3as = trans23_farglst(f2as)
