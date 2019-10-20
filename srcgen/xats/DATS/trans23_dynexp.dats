@@ -1966,10 +1966,10 @@ d3e0 = trans23_dexp_dn(d2e0, tres)
 (*
 val () =
 println!
-("trans23_decl: aux_impdecl2: tres = ", tres)
+("aux_impdecl2: tres = ", tres)
 val () =
 println!
-("trans23_decl: aux_impdecl2: d3e0 = ", d3e0)
+("aux_impdecl2: d3e0 = ", d3e0)
 *)
 //
 in

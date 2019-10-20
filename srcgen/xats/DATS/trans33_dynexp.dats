@@ -1200,7 +1200,7 @@ val d3e0 = trans33_dexp(d3e0)
 in
 d3ecl_make_node
 ( d3cl.loc()
-, D3Cimpdecl1
+, D3Cimpdecl3
   ( knd, mopt
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0))
@@ -1403,13 +1403,13 @@ d3e0 = trans33_dexp_dn(d3e0, tres)
 in
 d3ecl_make_node
 ( d3cl.loc()
-, D3Cimpdecl2
+, D3Cimpdecl3
   ( knd, mopt
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0))
 end (* IMPLD3CSTsome *)
 //
-end // end of [aux_impdecl]
+end // end of [aux_impdecl2]
 
 end // end of [local]
 

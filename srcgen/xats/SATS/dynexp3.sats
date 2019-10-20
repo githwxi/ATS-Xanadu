@@ -658,15 +658,15 @@ d3ecl_node =
   , tq2arglst
   , impld2cst
   , ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
+| D3Cimpdecl3 of
+  ( token(*impkind*)
+  , decmodopt
+  , sq2arglst
+  , tq2arglst
+  , impld2cst
+  , ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
-//
-(* ****** ****** *)
-//
-and
-impld3cst =
-  | IMPLD3CSTnone of ()
-  | IMPLD3CSTsome of (d2cst)
 //
 (* ****** ****** *)
 //
@@ -699,19 +699,6 @@ fun d3ecl_none1(d2ecl): d3ecl
 fun
 d3ecl_make_node
 (loc: loc_t, node: d3ecl_node): d3ecl
-//
-(* ****** ****** *)
-//
-fun
-print_impld3cst(impld3cst): void
-fun
-prerr_impld3cst(impld3cst): void
-fun
-fprint_impld3cst: fprint_type(impld3cst)
-//
-overload print with print_impld3cst
-overload prerr with prerr_impld3cst
-overload fprint with fprint_impld3cst
 //
 (* ****** ****** *)
 
