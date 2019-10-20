@@ -163,6 +163,18 @@ tq2arg_make
 //
 (* ****** ****** *)
 //
+fun
+sq2arglst_get_s2vs
+  (sqas: sq2arglst): s2varlst
+fun
+tq2arglst_get_s2vs
+  (tqas: tq2arglst): s2varlst
+//
+overload .s2vs with sq2arglst_get_s2vs
+overload .s2vs with tq2arglst_get_s2vs
+//
+(* ****** ****** *)
+//
 abstype d2con_tbox = ptr
 typedef d2con = d2con_tbox
 //

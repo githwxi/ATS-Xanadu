@@ -683,6 +683,20 @@ case+ ltps of
 
 (* ****** ****** *)
 
+implement
+t2ypelst_substs
+(t2ps, s2vs, tsub) =
+list_vt2t
+(
+list_map<t2ype><t2ype>(t2ps)
+) where
+{
+implement
+list_map$fopr<t2ype><t2ype>(t2p) = t2ype_substs(t2p, s2vs, tsub)
+}
+
+(* ****** ****** *)
+
 local
 
 fun

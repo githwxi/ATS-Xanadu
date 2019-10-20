@@ -123,6 +123,40 @@ tq2arg_get_s2vs(x0) = x0.tq2arg_s2vs
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+sq2arglst_get_s2vs
+  (xs) =
+(
+case+ xs of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) => 
+  (
+  case+ xs of
+  | list_nil() => x0.s2vs()
+  | list_cons _ =>
+    (x0.s2vs() + sq2arglst_get_s2vs(xs))
+  )
+)
+//
+implement
+tq2arglst_get_s2vs
+  (xs) =
+(
+case+ xs of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) => 
+  (
+  case+ xs of
+  | list_nil() => x0.s2vs()
+  | list_cons _ =>
+    (x0.s2vs() + tq2arglst_get_s2vs(xs))
+  )
+)
+//
+(* ****** ****** *)
 
 local
 
