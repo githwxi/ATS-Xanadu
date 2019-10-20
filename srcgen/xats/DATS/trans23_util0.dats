@@ -1571,8 +1571,15 @@ list_map$fopr<s2var><s2exp>(s2v) = s2exp_var(s2v)
 //
 in
 case+ tqas of
-| list_nil _ => tias
-| list_cons _ => list_append(tias, auxlst(tqas))
+|
+list_nil _ => tias
+|
+list_cons _ =>
+(
+  case+ tias of
+  | list_nil _ => auxlst(tqas)
+  | list_cons _ => list_append(tias, auxlst(tqas))
+)
 end // end of [join_ti2as_tq2as]
 
 (* ****** ****** *)

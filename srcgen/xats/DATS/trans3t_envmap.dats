@@ -49,12 +49,6 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
-datatype ti3env =
-| TI3ENV of
-  (s2varlst, t2xtvlst, t2ypelst)
-//
-(* ****** ****** *)
-
 datavtype implist =
 //
 | implist_nil of ()
@@ -69,7 +63,8 @@ datavtype implist =
 (* ****** ****** *)
 
 datavtype implenv =
-| IMPLENV of (t2ypelst, implist)
+| IMPLENV of
+  (s2varlst, t2ypelst, implist)
 
 (* ****** ****** *)
 //
@@ -259,17 +254,29 @@ in(*in-of-local*)
 (* ****** ****** *)
 
 implement
-implenv_get_tsub
+implenv_get_s2vs
   (env) = let
 //
 val+
-@IMPLENV(x0, xs) = env
+@IMPLENV(x0, x1, xs) = env
 //
 in
 let
-val tsub = x0 in fold@(env); tsub
+val s2vs = x0 in fold@(env); s2vs
 end
-end // end of [implenv_get_tsub]
+end // end of [implenv_get_s2vs]
+implement
+implenv_get_t2ps
+  (env) = let
+//
+val+
+@IMPLENV(x0, x1, xs) = env
+//
+in
+let
+val t2ps = x1 in fold@(env); t2ps
+end
+end // end of [implenv_get_t2ps]
 
 (* ****** ****** *)
 
@@ -280,7 +287,7 @@ implenv_add_let1
 {
 //
 val+
-@IMPLENV(x0, xs) = env
+@IMPLENV(x0, x1, xs) = env
 val () =
 (xs := implist_add_let1(xs))
 //
@@ -295,7 +302,7 @@ implenv_pop_let1
 {
 //
 val+
-@IMPLENV(x0, xs) = env
+@IMPLENV(x0, x1, xs) = env
 val () =
 (xs := implist_pop_let1(xs))
 //
@@ -310,7 +317,7 @@ implenv_add_loc1
 {
 //
 val+
-@IMPLENV(x0, xs) = env
+@IMPLENV(x0, x1, xs) = env
 val () =
 (xs := implist_add_loc1(xs))
 //
@@ -325,7 +332,7 @@ implenv_add_loc2
 {
 //
 val+
-@IMPLENV(x0, xs) = env
+@IMPLENV(x0, x1, xs) = env
 val () =
 (xs := implist_add_loc2(xs))
 //
@@ -338,13 +345,29 @@ implenv_pop_loc12
   (env) = let
 //
 val+
-@IMPLENV(x0, xs) = env
+@IMPLENV(x0, x1, xs) = env
 val () =
 (xs := implist_pop_loc12(xs))
 //
 in
   fold@(env) // nothing
 end // end of [implenv_pop_loc12]
+
+(* ****** ****** *)
+
+implement
+implenv_add_d3ecl
+( env0
+, d3cl, ti3e) =
+( fold@(env0) ) where
+{
+//
+val+
+@IMPLENV(x0, x1, xs) = env0
+val () =
+(xs := implist_cons(d3cl, ti3e, xs))
+//
+} (* end of [implenv_add_d3ecl] *)
 
 (* ****** ****** *)
 

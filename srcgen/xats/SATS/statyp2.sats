@@ -357,6 +357,11 @@ t2ype_substs
 ( t2p0: t2ype
 , s2vs: s2varlst, tsub: t2ypelst): t2ype
 //
+fun
+t2ypelst_substs
+( t2ps: t2ypelst
+, s2vs: s2varlst, tsub: t2ypelst): t2ypelst
+//
 (* ****** ****** *)
 //
 fun

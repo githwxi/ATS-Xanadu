@@ -50,7 +50,13 @@
 //
 (* ****** ****** *)
 
+typedef s2var = $S2E.s2var
+typedef s2exp = $S2E.s2exp
+typedef t2xtv = $S2T.t2xtv
 typedef t2ype = $S2T.t2ype
+typedef s2varlst = $S2E.s2varlst
+typedef s2explst = $S2E.s2explst
+typedef t2xtvlst = $S2T.t2xtvlst
 typedef t2ypelst = $S2T.t2ypelst
 
 (* ****** ****** *)
@@ -70,10 +76,15 @@ vtypedef implenv = implenv_vtype
 (* ****** ****** *)
 //
 fun
-implenv_get_tsub
+implenv_get_s2vs
+  (!implenv): s2varlst
+fun
+implenv_get_t2ps
   (!implenv): t2ypelst
 overload
-.tsub with implenv_get_tsub
+.s2vs with implenv_get_s2vs
+overload
+.t2ps with implenv_get_t2ps
 //
 (* ****** ****** *)
 //
@@ -93,6 +104,17 @@ implenv_add_loc2
 fun
 implenv_pop_loc12
   (env0: !implenv): void
+//
+(* ****** ****** *)
+//
+datatype ti3env =
+| TI3ENV of
+  (s2varlst, t2xtvlst, t2ypelst)
+//
+fun
+implenv_add_d3ecl
+( env0: !implenv
+, d3cl: d3ecl, ti3e: ti3env): void
 //
 (* ****** ****** *)
 

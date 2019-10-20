@@ -219,13 +219,150 @@ end // end of [trans3t_dexplst]
 
 local
 
-(*
 fun
-auxsqas
-( sqas
-: sq2as
+aux_impdecl1
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val-
+D3Cimpdecl1
+( tok0, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s
+, f3as, res1, body) = d3cl.node()
+//
+in
+//
+if
+iseqz(ti2s)
+then aux_impdecl1_fun(env0, d3cl)
+else aux_impdecl1_tmp(env0, d3cl)
+//
+end // end of [aux_impdecl1]
+//
+and
+aux_impdecl1_fun
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val-
+D3Cimpdecl1
+( tok0, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s
+, f3as, res1, body) = d3cl.node()
+//
+val body = trans3t_dexp(env0, body)
+//
+in(*in-of-let*)
+//
+d3ecl_make_node
+(
+d3cl.loc()
+,
+D3Cimpdecl1
+( tok0, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s, f3as, res1, body)
 )
-*)
+//
+end // end of [aux_impdecl1_fun]
+and
+aux_impdecl1_tmp
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+val-
+D3Cimpdecl1
+( tok0, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s
+, f3as, res1, body) = d3cl.node()
+//
+val t2ps =
+(
+case- ti3a of 
+|
+TI3ARGsome(t2ps) =>
+t2ypelst_substs
+(t2ps, env0.s2vs(), env0.t2ps())): t2ypelst
+//
+val s2vs =
+(
+auxs2vs_sqas_tqas(sqas, tqas)
+)
+val xtvs =
+list_vt2t
+(
+list_map<s2var><t2xtv>(s2vs)
+) where
+{
+implement
+list_map$fopr<s2var><t2xtv>(s2v) = t2xtv_new(loc0)
+} (* end of [val xtvs] *)
+val tsub =
+(
+auxtsub_s2vs_xtvs(s2vs, xtvs)
+)
+//
+val t2ps =
+(
+t2ypelst_substs(t2ps, s2vs, tsub)
+) where
+{
+  val tsub = $UN.list_vt2t(tsub)
+}
+val ((*freed*)) = list_vt_free(tsub)
+//
+val ti3e = TI3ENV(s2vs, xtvs, t2ps)
+//
+in
+//
+let
+val () =
+implenv_add_d3ecl(env0, d3cl, ti3e) in d3cl
+end
+//
+end // end of [aux_impdecl1_tmp]
+//
+and
+auxs2vs_sqas_tqas
+( sqas: sq2arglst
+, tqas: tq2arglst): s2varlst =
+let
+  val s2vs = sqas.s2vs()
+in
+  case s2vs of
+  | list_nil _ => tqas.s2vs()
+  | list_cons _ => s2vs + tqas.s2vs()
+end // end of [auxs2vs_sqas_tqas]
+and
+auxtsub_s2vs_xtvs
+( s2vs: s2varlst
+, xtvs: t2xtvlst): t2ypelst_vt =
+(
+case+ s2vs of
+| list_nil() =>
+  list_vt_nil()
+| list_cons(s2v0, s2vs) =>
+  let
+  val-
+  list_cons(xtv0, xtvs) = xtvs
+  val s2t0 = s2v0.sort()
+  val t2p0 = t2ype_srt_xtv(s2t0, xtv0)
+  in
+    list_vt_cons
+    (t2p0, auxtsub_s2vs_xtvs(s2vs, xtvs))
+  end
+) (* end of [auxtsub_s2vs_xtvs] *)
 
 in(*in-of-local*)
 
@@ -259,21 +396,51 @@ d3cl.node() of
     d3ecl_make_node(loc0, D3Clocal(d3cs1, d3cs2))
   end
 //
+| D3Cimpdecl1 _ =>
+  aux_impdecl1(env0, d3cl)
+//
 (*
 | D3Cimpdecl1
-  ( tok0,
+  ( tok0
   , mopt
   , sqas
   , tqas
   , id2c
   , ti3a, ti2s, f3as, res1, body) =>
   let
-    val ti3a =
-    ti3arg_subst(ti3a, env0.tsub())
-    val xtvs = ...(sqas/tqas)...
-    val ti3a =
-    ti3arg_subst(ti3a, xtvs.tsub())
+//
+    val s2vs =
+    (
+    auxs2vs_sqas_tqas(sqas, tqas)
+    )
+    val xtvs =
+    list_vt2t
+    (
+    list_map<s2var><t2xtv>(s2vs)
+    ) where
+    {
+    implement
+    list_map$fopr<s2var><t2xtv>(s2v) = t2xtv_new(loc0)
+    } (* end of [val xtvs] *)
+    val tsub =
+    (
+    auxtsub_s2vs_xtvs(s2vs, xtvs)
+    )
+    val t2ps =
+    (
+    case- ti3a of 
+    | TI3ARGsome(t2ps) =>
+      t2ypelst_substs
+      (t2ps, env0.s2vs(), env0.tsub())
+    )
+//
+    val t2ps =
+    (
+      t2ypelst_substs(t2ps, s2vs, tsub)
+    )
+    val ((*freed*)) = list_vt_free(tsub)
   in
+    d3cl
   end
 *)
 //
