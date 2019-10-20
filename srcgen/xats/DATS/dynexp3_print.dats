@@ -588,7 +588,7 @@ x0.node() of
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
-  ) (* end of [D3Cimpdecl] *)
+  ) (* end of [D3Cimpdecl1] *)
 | D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
@@ -600,7 +600,19 @@ x0.node() of
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
-  ) (* end of [D3Cimpdecl] *)
+  ) (* end of [D3Cimpdecl2] *)
+| D3Cimpdecl3
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, ti3a, ti2s
+  , f3as, res0, d3e0) =>
+  fprint!
+  ( out
+  , "D3Cimpdecl3("
+  , knd, "; ", mopt, "; "
+  , sqas, "; ", tqas, "; "
+  , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
+  ) (* end of [D3Cimpdecl3] *)
 //
 | D3Cnone0() =>
   fprint!(out, "D3Cnone0(", ")")
@@ -707,26 +719,6 @@ in
   , ", wtp=", rcd.wtp, "}")
 end // end of [fprint_f3undecl]
 
-(* ****** ****** *)
-//
-implement
-print_impld3cst(x0) =
-fprint_impld3cst(stdout_ref, x0)
-implement
-prerr_impld3cst(x0) =
-fprint_impld3cst(stderr_ref, x0)
-//
-implement
-fprint_impld3cst
-  (out, x0) =
-(
-case x0 of
-| IMPLD3CSTnone() =>
-  fprint!(out, "IMPLD3CSTnone(", ")")
-| IMPLD3CSTsome(d2c) =>
-  fprint!(out, "IMPLD3CSTsome(", d2c, ")")
-)
-//
 (* ****** ****** *)
 
 (* end of [xats_dynexp3_print.dats] *)
