@@ -113,9 +113,17 @@ datatype ti3env =
 //
 fun
 implenv_add_d3ecl
-( env0: !implenv
+( env0
+: !implenv
 , d3cl: d3ecl, ti3e: ti3env): void
 //
+(* ****** ****** *)
+
+fun
+implenv_find
+( env0: !implenv
+, d3exp(*tcst*): d3ecl) : Option_vt(d3exp(*timp*))
+
 (* ****** ****** *)
 
 fun
@@ -136,7 +144,7 @@ trans3t_dexplst
 fun
 trans3t_decl
 ( env0
-: !implenv, d3c0: d3ecl): d3ecl
+: !implenv, d3cl: d3ecl): d3ecl
 fun
 trans3t_declist
 ( env0

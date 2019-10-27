@@ -58,6 +58,31 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans3t.sats"
 
 (* ****** ****** *)
+//
+fn
+t2ype_substs
+( t2p0: t2ype
+, s2vs: s2varlst
+, tsub: t2ypelst): t2ype =
+(
+case+ s2vs of
+| list_nil _ => t2p0
+| list_cons _ =>
+  t2ype_substs(t2p0, s2vs, tsub)
+)
+fn
+t2ypelst_substs
+( t2ps: t2ypelst
+, s2vs: s2varlst
+, tsub: t2ypelst): t2ypelst =
+(
+case+ s2vs of
+| list_nil _ => t2ps
+| list_cons _ =>
+  t2ypelst_substs(t2ps, s2vs, tsub)
+)
+//
+(* ****** ****** *)
 
 local
 
@@ -79,6 +104,24 @@ D3Etcst
 in
   d3e0
 end // end of [auxtcst]
+
+fun
+auxtimp
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+//
+val-
+D3Etimp
+( d2e1, t2ps
+, d2cl, tsub) = d3e0.node()
+//
+in
+  d3e0
+end // end of [auxtimp]
 
 in(*in-of-local*)
 
@@ -102,6 +145,7 @@ d3e0.node() of
 | D3Evar _ => d3e0
 //
 | D3Etcst _ => auxtcst(d3e0)
+| D3Etimp _ => auxtimp(d3e0)
 //
 | D3Elet(d3cs, d3e1) =>
   let
@@ -393,7 +437,7 @@ val loc0 = d3cl.loc()
 //
 in(* in-of-let *)
 //
-case-
+case+
 d3cl.node() of
 //
 | D3Cd2ecl _ => d3cl
@@ -421,6 +465,14 @@ d3cl.node() of
     trans3t_decl(env0, d3c1)
   }
 //
+| D3Cvaldecl _ => aux_valdecl(env0, d3cl)
+| D3Cvardecl _ => aux_vardecl(env0, d3cl)
+| D3Cfundecl _ => aux_fundecl(env0, d3cl)
+//
+| D3Cimpdecl1 _ => d3cl
+| D3Cimpdecl2 _ => d3cl
+| D3Cimpdecl3 _ => aux_impdecl3(env0, d3cl)
+//
 | D3Clocal
   (d3cs1, d3cs2) =>
   let
@@ -440,13 +492,7 @@ d3cl.node() of
     d3ecl_make_node(loc0, D3Clocal(d3cs1, d3cs2))
   end
 //
-| D3Cvaldecl _ => aux_valdecl(env0, d3cl)
-| D3Cvardecl _ => aux_vardecl(env0, d3cl)
-| D3Cfundecl _ => aux_fundecl(env0, d3cl)
-//
-| D3Cimpdecl1 _ => d3cl
-| D3Cimpdecl2 _ => d3cl
-| D3Cimpdecl3 _ => aux_impdecl3(env0, d3cl)
+| _ (* rest-of-d3ecl *) => d3cl // HX: yet-to-be-handled
 //
 end // end of [trans3t_decl]
 
