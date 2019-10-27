@@ -2062,6 +2062,18 @@ d2cl.node() of
 | D2Cimpdecl1 _ => aux_impdecl1(d2cl)
 | D2Cimpdecl2 _ => aux_impdecl2(d2cl)
 //
+| D2Clocal
+  (d2cs1, d2cs2) => let
+    val
+    d3cs1 = trans23_declist(d2cs1)
+    val
+    d3cs2 = trans23_declist(d2cs2)
+  in
+    d3ecl_make_node
+      (loc0, D3Clocal(d3cs1, d3cs2))
+    // d3ecl_make_node
+  end
+//
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2cl)
 //
 end // end of [trans23_decl]
