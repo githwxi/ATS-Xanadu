@@ -1381,14 +1381,19 @@ tfun =
 (
 let
 //
-  val tfun = d2c0.type()
-  val s2vs = d2cst_get_s2vs(d2c0)
+val tfun = d2c0.type()
+val s2vs = d2cst_get_s2vs(d2c0)
 //
 in
+case+ s2vs of
+| list_nil _ => tfun
+| list_cons _ =>
+  (
   case+ ti3a of
   | TI3ARGnone() => tfun
   | TI3ARGsome(t2ps) =>
     t2ype_substs(tfun, s2vs, t2ps)
+  )
 end
 ) : t2ype // end-of-val
 //
