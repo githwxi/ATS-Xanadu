@@ -1426,10 +1426,12 @@ implement
 trans33_decl
   (d3cl) = let
 //
-(*
 val loc0 = d3cl.loc()
-*)
+//
 (*
+val ((*void*)) =
+println!
+("trans33_decl: loc0 = ", loc0)
 val ((*void*)) =
 println!
 ("trans33_decl: d3cl = ", d3cl)
@@ -1460,6 +1462,18 @@ d3cl.node() of
   (
     aux_impdecl2(d3cl)
   )
+//
+| D3Clocal
+  (d3cs1, d3cs2) => let
+    val
+    d3cs1 = trans33_declist(d3cs1)
+    val
+    d3cs2 = trans33_declist(d3cs2)
+  in
+    d3ecl_make_node
+      (loc0, D3Clocal(d3cs1, d3cs2))
+    // d3ecl_make_node
+  end
 //
 | D3Cnone0 _ => d3cl
 | D3Cnone1 _ => d3cl
