@@ -903,15 +903,12 @@ t2p0.node() of
   auxtsub(s2vs, s2es)
   val t2p1 =
   (
-  t2ype_substs
-  (t2p1, s2vs, tsub)
+  t2ype_substs(t2p1, s2vs, tsub)
   ) where
   {
-    val
-    tsub =
-    $UN.list_vt2t(tsub)
+    val tsub = $UN.list_vt2t(tsub)
   }
-  val () = list_vt_free(tsub)
+  val ((*void*)) = list_vt_free(tsub)
 //
   in
     d3exp_make_node
@@ -1247,7 +1244,11 @@ list_vt2t(list_vt_reverse(tsub))
 //
 val s2vs = d2cst_get_s2vs(d2c0)
 val t2p0 =
-t2ype_substs(d2c0.type(), s2vs, tsub)
+let
+  val t2p0 = d2c0.type()
+in
+  t2ype_substs(t2p0, s2vs, tsub)
+end
 //
 in
 d3exp_make_node

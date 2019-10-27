@@ -219,6 +219,8 @@ end // end of [trans3t_dexplst]
 
 local
 
+(* ****** ****** *)
+
 fun
 aux_valdecl
 ( env0
@@ -378,6 +380,8 @@ case+ s2vs of
     (t2p0, auxtsub_s2vs_xtvs(s2vs, xtvs))
   end
 ) (* end of [auxtsub_s2vs_xtvs] *)
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 
