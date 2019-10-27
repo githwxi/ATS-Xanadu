@@ -292,7 +292,7 @@ d3exp_node =
   , ti3arg, ti2arglst(*sess*))
 | D3Etimp of
   ( d3exp(*tcst*), t2ypelst(*tsub*)
-  , d2ecl(*impl*), t2ypelst(*tsub*)
+  , d3ecl(*impl*), t2ypelst(*tsub*)
   ) (* end of [D3Etimp] *)
 //
 | D3Esap0 of (d3exp, s2explst)

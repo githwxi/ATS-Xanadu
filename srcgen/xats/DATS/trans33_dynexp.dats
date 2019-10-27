@@ -1478,7 +1478,7 @@ d3cl.node() of
 | D3Cnone0 _ => d3cl
 | D3Cnone1 _ => d3cl
 //
-| _ (* rest-of-d3ecl *) => d3cl
+| _ (* rest-of-d3ecl *) => d3cl // HX: yet-to-be-handled
 //
 end // end of [trans33_decl]
 
