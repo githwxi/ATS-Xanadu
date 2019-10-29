@@ -88,8 +88,9 @@ local
 
 fun
 auxtcst
-( d3e0
-: d3exp): d3exp =
+( env0
+: !implenv
+, d3e0: d3exp): d3exp =
 let
 //
 val
@@ -98,36 +99,47 @@ loc0 = d3e0.loc()
 val-
 D3Etcst
 ( d2c0
-, ti2s
-, ti3a) = d3e0.node()
-//
-in
-  d3e0
-end // end of [auxtcst]
-
-fun
-auxtimp
-( d3e0
-: d3exp): d3exp =
-let
-//
-val
-loc0 = d3e0.loc()
+, ti3a
+, ti2s) = d3e0.node()
 //
 val-
-D3Etimp
-( d2e1, t2ps
-, d2cl, tsub) = d3e0.node()
+TI3ARGsome(targ) = ti3a
+//
+val targ =
+t2ypelst_substs
+( targ
+, env0.s2vs(), env0.t2ps())
+//
+val opt0 =
+implenv_find_timp(env0, d2c0, targ)
 //
 in
-  d3e0
-end // end of [auxtimp]
+//
+case+ opt0 of
+|
+~None_vt() => d3e0
+|
+~Some_vt
+@(d3cl, tsub) =>
+let
+//
+  val d3cl =
+  trans3t_timp(env0, d3cl)
+//
+in
+  d3exp_make_node
+  ( d3e0.loc(), d3e0.type()
+  , D3Etimp(d3e0, targ, d3cl, tsub)
+ )
+end
+//
+end // end of [auxtcst]
 
 in(*in-of-local*)
 
 implement
 trans3t_dexp
-  (env, d3e0) = let
+  (env0, d3e0) = let
 //
 val loc0 = d3e0.loc()
 val t2p0 = d3e0.type()
@@ -144,20 +156,21 @@ d3e0.node() of
 //
 | D3Evar _ => d3e0
 //
-| D3Etcst _ => auxtcst(d3e0)
-| D3Etimp _ => auxtimp(d3e0)
+| D3Etcst _ =>
+  auxtcst(env0, d3e0)
+| D3Etimp _ => (d3e0)
 //
 | D3Elet(d3cs, d3e1) =>
   let
     val () =
-    implenv_add_let1(env)
+    implenv_add_let1(env0)
     val
     d3cs =
-    trans3t_declist(env, d3cs)
+    trans3t_declist(env0, d3cs)
     val
-    d3e1 = trans3t_dexp(env, d3e1)
+    d3e1 = trans3t_dexp(env0, d3e1)
     val () =
-    implenv_pop_let1(env)
+    implenv_pop_let1(env0)
   in
     d3exp_make_node
     (loc0, t2p0, D3Elet(d3cs, d3e1))
@@ -166,14 +179,14 @@ d3e0.node() of
 | D3Ewhere(d3e1, d3cs) =>
   let
     val () =
-    implenv_add_let1(env)
+    implenv_add_let1(env0)
     val
     d3cs =
-    trans3t_declist(env, d3cs)
+    trans3t_declist(env0, d3cs)
     val
-    d3e1 = trans3t_dexp(env, d3e1)
+    d3e1 = trans3t_dexp(env0, d3e1)
     val () =
-    implenv_pop_let1(env)
+    implenv_pop_let1(env0)
   in
     d3exp_make_node
     (loc0, t2p0, D3Ewhere(d3e1, d3cs))
@@ -183,9 +196,9 @@ d3e0.node() of
   let
     val
     d3es =
-    trans3t_dexplst(env, d3es)
+    trans3t_dexplst(env0, d3es)
     val
-    d3e1 = trans3t_dexp(env, d3e1)
+    d3e1 = trans3t_dexp(env0, d3e1)
   in
     d3exp_make_node
     (loc0, t2p0, D3Eseqn(d3es, d3e1))
@@ -195,7 +208,7 @@ d3e0.node() of
   let
     val
     d3es =
-    trans3t_dexplst(env, d3es)
+    trans3t_dexplst(env0, d3es)
   in
     d3exp_make_node
     (loc0, t2p0, D3Etuple(knd, npf, d3es))
@@ -205,11 +218,11 @@ d3e0.node() of
   (d3e1, d3e2, opt3) =>
   let
     val d3e1 =
-    trans3t_dexp(env, d3e1)
+    trans3t_dexp(env0, d3e1)
     val d3e2 =
-    trans3t_dexp(env, d3e2)
+    trans3t_dexp(env0, d3e2)
     val opt3 =
-    trans3t_dexpopt(env, opt3)
+    trans3t_dexpopt(env0, opt3)
   in
     d3exp_make_node
     (loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
@@ -525,6 +538,38 @@ let prval () = $UN.cast2void(env0) in d3cl end
 end
 }
 end // end of [trans3t_declist]
+
+(* ****** ****** *)
+
+local
+
+fun
+aux_fundecl
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl = d3cl
+fun
+aux_impdecl3
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl = d3cl
+
+in (*in-of-local*)
+
+implement
+trans3t_timp
+  (env0, d3cl) =
+(
+case+
+d3cl.node() of
+| D3Cfundecl _ =>
+  aux_fundecl(env0, d3cl)
+| D3Cimpdecl3 _ =>
+  aux_impdecl3(env0, d3cl)
+| _ (* rest-of-d3ecl *) => d3cl
+)
+
+end // end of [local]
 
 (* ****** ****** *)
 

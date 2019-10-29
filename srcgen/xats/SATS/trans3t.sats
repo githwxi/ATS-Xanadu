@@ -61,6 +61,8 @@ typedef t2ypelst = $S2T.t2ypelst
 
 (* ****** ****** *)
 //
+typedef d2cst = $D2E.d2cst
+//
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 //
@@ -107,6 +109,22 @@ implenv_pop_loc12
 //
 (* ****** ****** *)
 //
+fun
+implenv_make_nil(): implenv
+//
+(* ****** ****** *)
+//
+fun
+implenv_pop_tsub
+(env0: !implenv): void
+fun
+implenv_push_tsub
+( env0
+: !implenv
+, s2vs: s2var, t2ps: t2ypelst): void
+//
+(* ****** ****** *)
+//
 datatype ti3env =
 | TI3ENV of
   (s2varlst, t2xtvlst, t2ypelst)
@@ -117,13 +135,6 @@ implenv_add_d3ecl
 : !implenv
 , d3cl: d3ecl, ti3e: ti3env): void
 //
-(* ****** ****** *)
-
-fun
-implenv_find
-( env0: !implenv
-, d3exp(*tcst*): d3ecl) : Option_vt(d3exp(*timp*))
-
 (* ****** ****** *)
 
 fun
@@ -151,5 +162,22 @@ trans3t_declist
 : !implenv, d3cs: d3eclist): d3eclist
 
 (* ****** ****** *)
+//
+fun
+trans3t_timp
+( env0
+: !implenv, d3cl: d3ecl): d3ecl
+//
+fun
+implenv_find_timp
+( env0
+: !implenv
+, d2c0
+: d2cst
+, t2ps
+: t2ypelst): Option_vt@(d3ecl, t2ypelst)
+//
+(* ****** ****** *)
 
 (* end of [xats_trans3t.sats] *)
+

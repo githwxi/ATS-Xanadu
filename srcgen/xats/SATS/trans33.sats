@@ -109,6 +109,15 @@ vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
 (* ****** ****** *)
 //
 fun
+t2ype_get_xtvs
+(t2p0: t2ype): List0_vt(t2xtv)
+fun
+t2ypelst_get_xtvs
+(t2ps: t2ypelst): List0_vt(t2xtv)
+//
+(* ****** ****** *)
+//
+fun
 unify_d2var_t2ype
 (loc0: loc_t,
  d2v1: d2var, t2p2: t2ype): bool
