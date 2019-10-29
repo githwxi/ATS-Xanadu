@@ -85,7 +85,7 @@ case+ s2vs of
 (* ****** ****** *)
 
 implement
-trans3t_main
+trans3t_program
   (d3cls) =
   (d3cls) where
 {
@@ -106,7 +106,7 @@ val () =
 //
 val () = implenv_free_nil(env0)
 //
-} (* end of [trans3t_main] *)
+} (* end of [trans3t_program] *)
 
 (* ****** ****** *)
 
