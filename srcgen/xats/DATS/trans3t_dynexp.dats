@@ -120,11 +120,16 @@ case+ opt0 of
 ~None_vt() => d3e0
 |
 ~Some_vt
-@(d3cl, tsub) =>
+@(d3cl, s2vs, tsub) =>
 let
 //
-  val d3cl =
-  trans3t_timp(env0, d3cl)
+val () =
+implenv_push_tsub
+(env0, s2vs, tsub)
+val d3cl =
+trans3t_timp(env0, d3cl)
+val () =
+implenv_pop0_tsub(env0)
 //
 in
   d3exp_make_node
@@ -552,7 +557,27 @@ fun
 aux_impdecl3
 ( env0
 : !implenv
-, d3cl: d3ecl): d3ecl = d3cl
+, d3cl: d3ecl): d3ecl =
+let
+val-
+D3Cimpdecl3
+( knd
+, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s
+, f3as, res0, body) = d3cl.node()
+//
+val body = trans3t_dexp(env0, body)
+//
+in
+  d3ecl_make_node
+  ( d3cl.loc()
+  , D3Cimpdecl3
+    ( knd, mopt
+    , sqas, tqas
+    , id2c, ti3a, ti2s, f3as, res0, body)
+  )
+end // end of [aux_impdecl3]
 
 in (*in-of-local*)
 
