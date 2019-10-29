@@ -261,7 +261,8 @@ implist_find_timp
 )
 :
 Option_vt
-@(d3ecl, t2ypelst) =
+@(d3ecl
+, s2varlst, t2ypelst) =
 (
 let
 val () =
@@ -308,7 +309,8 @@ auxlst
 )
 :
 Option_vt
-@(d3ecl, t2ypelst) =
+@(d3ecl
+, s2varlst, t2ypelst) =
 (
 case+ xs of
 //
@@ -332,7 +334,8 @@ case+ xs of
   in
     if test
     then
-    Some_vt@(d3cl, fxtvs(xtvs))
+    Some_vt
+    @(d3cl, s2vs, fxtvs(xtvs))
     else
     ( auxrst(xarg)
     ; auxrst(xtvs); auxlst(xs, xarg)
@@ -494,6 +497,39 @@ implenv_make_nil() =
 IMPLENV
 (list_vt_nil(), implist_nil())
 //
+(* ****** ****** *)
+
+implement
+implenv_pop0_tsub
+  (env0) =
+(
+let
+val () =
+(us := us1) in fold@(env0)
+end
+) where
+{
+//
+val+
+@IMPLENV(us, xs) = env0
+//
+val-~list_vt_cons(_, us1) = us
+//
+} (* end of [implenv_pop0_tsub] *)
+
+implement
+implenv_push_tsub
+(env0, s2vs, t2ps) =
+( fold@(env0) ) where
+{
+val+
+@IMPLENV(us, xs) = env0
+val () =
+(us :=
+ list_vt_cons(@(s2vs, t2ps), us))
+//
+} (* end of [implenv_push_tsub] *)
+
 (* ****** ****** *)
 //
 implement

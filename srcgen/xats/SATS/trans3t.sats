@@ -115,13 +115,13 @@ implenv_make_nil(): implenv
 (* ****** ****** *)
 //
 fun
-implenv_pop_tsub
+implenv_pop0_tsub
 (env0: !implenv): void
 fun
 implenv_push_tsub
 ( env0
 : !implenv
-, s2vs: s2var, t2ps: t2ypelst): void
+, s2vs: s2varlst, tsub: t2ypelst): void
 //
 (* ****** ****** *)
 //
@@ -175,7 +175,8 @@ implenv_find_timp
 , d2c0
 : d2cst
 , t2ps
-: t2ypelst): Option_vt@(d3ecl, t2ypelst)
+: t2ypelst)
+: Option_vt@(d3ecl, s2varlst, t2ypelst)
 //
 (* ****** ****** *)
 
