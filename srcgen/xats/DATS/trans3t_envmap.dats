@@ -40,11 +40,17 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/locinfo.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/trans23.sats"
+#staload "./../SATS/trans33.sats"
 #staload "./../SATS/trans3t.sats"
 
 (* ****** ****** *)
@@ -61,11 +67,13 @@ datavtype implist =
   (d3ecl, ti3env, implist)
 //
 (* ****** ****** *)
-
+//
 datavtype implenv =
 | IMPLENV of
-  (s2varlst, t2ypelst, implist)
-
+  (List0_vt(svtplst), implist)
+//
+where svtplst = @(s2varlst, t2ypelst)
+//
 (* ****** ****** *)
 //
 extern
@@ -244,6 +252,106 @@ case- ys of
 //
 (* ****** ****** *)
 
+fun
+implist_find_timp
+( xs
+: !implist
+, d2c0: d2cst
+, targ: t2ypelst
+)
+:
+Option_vt
+@(d3ecl, t2ypelst) =
+(
+let
+val () =
+list_vt_free(xtvs) in opt0
+end
+) where
+{
+//
+val
+loc0 = the_location_dummy
+//
+fun
+fxtvs
+( vs
+: t2xtvlst
+)
+: t2ypelst =
+list_vt2t
+(
+list_map<t2xtv><t2ype>(vs)
+) where
+{
+implement
+list_map$fopr<t2xtv><t2ype>(v0) = v0.type()
+}
+//
+fun
+auxrst
+(vs: t2xtvlst): void =
+(
+case+ vs of
+| list_nil() => ()
+| list_cons(v0, vs) =>
+  ( auxrst(vs) ) where
+  {
+    val () =
+    v0.type(the_t2ype_none0)
+  }
+)
+fun
+auxlst
+( xs: !implist
+, xarg: t2xtvlst
+)
+:
+Option_vt
+@(d3ecl, t2ypelst) =
+(
+case+ xs of
+//
+| implist_nil() =>
+    None_vt((*void*))
+//
+| implist_let1
+    (xs) => auxlst(xs, xarg)
+| implist_loc1
+    (xs) => auxlst(xs, xarg)
+| implist_loc2
+    (xs) => auxlst(xs, xarg)
+//
+| implist_cons
+  (d3cl, ti3e, xs) =>
+  let
+  val+
+  TI3ENV
+  (s2vs, xtvs, t2ps) = ti3e
+  val test = unify(loc0, targ, t2ps)
+  in
+    if test
+    then
+    Some_vt@(d3cl, fxtvs(xtvs))
+    else
+    ( auxrst(xarg)
+    ; auxrst(xtvs); auxlst(xs, xarg)
+    )
+  end // end of [implist_cons]
+)
+//
+val xtvs = t2ypelst_get_xtvs(targ)
+//
+val opt0 =
+let
+val
+xtvs = $UN.list_vt2t(xtvs) in auxlst(xs, xtvs)
+end // end-of-let // end-of-val
+//
+} (* end of [implist_find_timp] *)
+
+(* ****** ****** *)
+
 local
 
 absimpl
@@ -258,11 +366,16 @@ implenv_get_s2vs
   (env) = let
 //
 val+
-@IMPLENV(x0, x1, xs) = env
+@IMPLENV(us, xs) = env
 //
 in
 let
-val s2vs = x0 in fold@(env); s2vs
+val-
+@list_vt_cons
+ (u0, _) = us
+val s2vs = u0.0
+in
+  fold@(us); fold@(env); s2vs
 end
 end // end of [implenv_get_s2vs]
 implement
@@ -270,11 +383,16 @@ implenv_get_t2ps
   (env) = let
 //
 val+
-@IMPLENV(x0, x1, xs) = env
+@IMPLENV(us, xs) = env
 //
 in
 let
-val t2ps = x1 in fold@(env); t2ps
+val-
+@list_vt_cons
+ (u0, _) = us
+val t2ps = u0.1
+in
+  fold@(us); fold@(env); t2ps
 end
 end // end of [implenv_get_t2ps]
 
@@ -287,7 +405,7 @@ implenv_add_let1
 {
 //
 val+
-@IMPLENV(x0, x1, xs) = env
+@IMPLENV(us, xs) = env
 val () =
 (xs := implist_add_let1(xs))
 //
@@ -302,7 +420,7 @@ implenv_pop_let1
 {
 //
 val+
-@IMPLENV(x0, x1, xs) = env
+@IMPLENV(us, xs) = env
 val () =
 (xs := implist_pop_let1(xs))
 //
@@ -317,7 +435,7 @@ implenv_add_loc1
 {
 //
 val+
-@IMPLENV(x0, x1, xs) = env
+@IMPLENV(us, xs) = env
 val () =
 (xs := implist_add_loc1(xs))
 //
@@ -332,7 +450,7 @@ implenv_add_loc2
 {
 //
 val+
-@IMPLENV(x0, x1, xs) = env
+@IMPLENV(us, xs) = env
 val () =
 (xs := implist_add_loc2(xs))
 //
@@ -345,7 +463,7 @@ implenv_pop_loc12
   (env) = let
 //
 val+
-@IMPLENV(x0, x1, xs) = env
+@IMPLENV(us, xs) = env
 val () =
 (xs := implist_pop_loc12(xs))
 //
@@ -363,12 +481,31 @@ implenv_add_d3ecl
 {
 //
 val+
-@IMPLENV(x0, x1, xs) = env0
+@IMPLENV(us, xs) = env0
 val () =
 (xs := implist_cons(d3cl, ti3e, xs))
 //
 } (* end of [implenv_add_d3ecl] *)
 
+(* ****** ****** *)
+//
+implement
+implenv_make_nil() =
+IMPLENV
+(list_vt_nil(), implist_nil())
+//
+(* ****** ****** *)
+//
+implement
+implenv_find_timp
+(env0, d2c0, t2ps) = let
+//
+val+IMPLENV(us, xs) = env0
+//
+in
+  implist_find_timp(xs, d2c0, t2ps)
+end // end of [implenv_find_timp]
+//
 (* ****** ****** *)
 
 end // end of [local]

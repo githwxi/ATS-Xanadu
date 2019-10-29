@@ -65,19 +65,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-extern
-fun
-t2ype_get_xtvs
-(t2p0: t2ype): List0_vt(t2xtv)
-
-implement
-t2ype_get_xtvs
-  (t2p0) =
-(
-auxt2p0
-(t2p0, list_vt_nil())
-) where
-{
+local
 //
 fun
 auxt2p0
@@ -185,7 +173,20 @@ case+ ltps of
   }
 )
 //
-} (* end of [t2ype_get_xtvs] *)
+in (* in-of-local *)
+//
+implement
+t2ype_get_xtvs(t2p0) =
+(
+auxt2p0(t2p0, list_vt_nil(*void*))
+)
+implement
+t2ypelst_get_xtvs(t2ps) =
+(
+auxt2ps(t2ps, list_vt_nil(*void*))
+)
+//
+end (* end of [local] *)
 
 (* ****** ****** *)
 //
