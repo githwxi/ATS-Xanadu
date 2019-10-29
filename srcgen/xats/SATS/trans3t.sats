@@ -111,6 +111,8 @@ implenv_pop_loc12
 //
 fun
 implenv_make_nil(): implenv
+fun
+implenv_free_nil(implenv): void
 //
 (* ****** ****** *)
 //
@@ -125,7 +127,8 @@ implenv_push_tsub
 //
 (* ****** ****** *)
 //
-datatype ti3env =
+datatype
+ti3env =
 | TI3ENV of
   (s2varlst, t2xtvlst, t2ypelst)
 //
@@ -134,6 +137,11 @@ implenv_add_d3ecl
 ( env0
 : !implenv
 , d3cl: d3ecl, ti3e: ti3env): void
+//
+(* ****** ****** *)
+//
+fun
+trans3t_main: d3eclist -> d3eclist
 //
 (* ****** ****** *)
 
