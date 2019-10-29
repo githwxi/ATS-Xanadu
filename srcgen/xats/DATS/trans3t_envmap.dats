@@ -253,6 +253,27 @@ case- ys of
 (* ****** ****** *)
 
 fun
+implist_free
+(xs: implist): void =
+(
+case+ xs of
+|
+~implist_nil() => ()
+|
+~implist_let1(xs) => implist_free(xs)
+|
+~implist_loc1(xs) => implist_free(xs)
+|
+~implist_loc2(xs) => implist_free(xs)
+//
+|
+~implist_cons(_, _, xs) => implist_free(xs)
+//
+) (* end of [implist_free] *)
+
+(* ****** ****** *)
+
+fun
 implist_find_timp
 ( xs
 : !implist
@@ -506,11 +527,10 @@ let
 val+
 ~IMPLENV(us, xs) = env0
 //
-val-~list_vt_nil() = us
-val-~implist_nil() = xs
-//
 in
-  // nothing
+let
+val-~list_vt_nil() = us in implist_free(xs)
+end
 end // end of [implenv_free_nil]
 //
 (* ****** ****** *)

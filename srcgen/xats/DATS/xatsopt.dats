@@ -906,8 +906,15 @@ val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
 // *)
-//
 val () = t3xread_main(d3cs)
+//
+val
+d3cs = trans3t_program(d3cs)
+// (*
+val () =
+println!
+("process_fpath: d3cs = ", d3cs)
+// *)
 //
 val () =
 println!

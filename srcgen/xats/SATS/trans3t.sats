@@ -141,7 +141,8 @@ implenv_add_d3ecl
 (* ****** ****** *)
 //
 fun
-trans3t_main: d3eclist -> d3eclist
+trans3t_program
+  (d3cls: d3eclist): d3eclist
 //
 (* ****** ****** *)
 
