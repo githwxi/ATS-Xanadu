@@ -84,6 +84,32 @@ case+ s2vs of
 //
 (* ****** ****** *)
 
+implement
+trans3t_main
+  (d3cls) =
+  (d3cls) where
+{
+val
+env0 =
+implenv_make_nil()
+val () =
+implenv_push_tsub
+( env0
+, list_nil(), list_nil())
+//
+val
+d3cls =
+trans3t_declist(env0, d3cls)
+//
+val () =
+  implenv_pop0_tsub(env0)
+//
+val () = implenv_free_nil(env0)
+//
+} (* end of [trans3t_main] *)
+
+(* ****** ****** *)
+
 local
 
 fun

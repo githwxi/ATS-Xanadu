@@ -498,6 +498,22 @@ IMPLENV
 (list_vt_nil(), implist_nil())
 //
 (* ****** ****** *)
+//
+implement
+implenv_free_nil(env0) =
+let
+//
+val+
+~IMPLENV(us, xs) = env0
+//
+val-~list_vt_nil() = us
+val-~implist_nil() = xs
+//
+in
+  // nothing
+end // end of [implenv_free_nil]
+//
+(* ****** ****** *)
 
 implement
 implenv_pop0_tsub
