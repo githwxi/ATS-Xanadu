@@ -355,6 +355,8 @@ case+ xs of
   val
   test = unify(loc0, targ, t2ps)
 //
+  val () = auxrst(xtvs) // reset
+//
   val () =
   println!
   ("implist_find_timp: d2c0 = ", d2c0)
@@ -371,8 +373,7 @@ case+ xs of
     Some_vt
     @(d3cl, s2vs, fxtvs(xtvs))
     else
-    ( auxrst(xarg)
-    ; auxrst(xtvs); auxlst(xs, xarg)
+    (auxrst(xarg); auxlst(xs, xarg)
     )
   end // end of [implist_cons]
 )
