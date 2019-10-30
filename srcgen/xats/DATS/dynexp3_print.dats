@@ -280,13 +280,13 @@ x0.node() of
 | D3Etop(tok) =>
   fprint!(out, "D3Etop(", tok, ")")
 //
-| D3Evar(d2v) =>
-  fprint!(out, "D3Evar(", d2v, ")")
+| D3Evar(d2v1) =>
+  fprint!(out, "D3Evar(", d2v1, ")")
 //
-| D3Econ1(d2c) =>
-  fprint!(out, "D3Econ1(", d2c, ")")
-| D3Ecst1(d2c) =>
-  fprint!(out, "D3Ecst1(", d2c, ")")
+| D3Econ1(d2c1) =>
+  fprint!(out, "D3Econ1(", d2c1, ")")
+| D3Ecst1(d2c1) =>
+  fprint!(out, "D3Ecst1(", d2c1, ")")
 //
 | D3Econ2(d2cs) =>
   fprint!(out, "D3Econ2(", d2cs, ")")
@@ -312,6 +312,9 @@ x0.node() of
   , "D3Esym0(", d1e1, ": ", t2p0, ")")
   end
 // *)
+//
+| D3Efcst(d2c1) =>
+  fprint!(out, "D3Efcst(", d2c1, ")")
 //
 | D3Etcst
   (d2c1, ti3a, ti2s) =>

@@ -194,6 +194,8 @@ d3e0.node() of
 //
 | D3Evar _ => d3e0
 //
+| D3Efcst _ => d3e0
+//
 | D3Etcst _ =>
   auxtcst(env0, d3e0)
 | D3Etimp _ => (d3e0)
