@@ -306,6 +306,74 @@ end // end of [d2cst_up]
 (* ****** ****** *)
 
 fun
+auxcon1
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Econ1(d2c1) = d3e0.node()
+//
+val
+t2p0 = d3e0.type()
+(*
+val () =
+println!
+("auxcon1: t2p0 = ", t2p0)
+*)
+//
+in
+//
+(
+if opt0
+then d3e0
+else d2con_up(loc0, d2c1)
+) where
+{
+val opt0 =
+match_d2con_t2ype(d2c1, t2p0)
+}
+//
+end // end of [auxcon1]
+
+fun
+auxcst1
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Ecst1(d2c1) = d3e0.node()
+//
+val
+t2p0 = d3e0.type()
+(*
+val () =
+println!
+("auxcst1: t2p0 = ", t2p0)
+*)
+//
+in
+//
+(
+if opt0
+then d3e0
+else d2cst_up(loc0, d2c1)
+) where
+{
+val opt0 =
+match_d2cst_t2ype(d2c1, t2p0)
+}
+//
+end // end of [auxcst1]
+
+(* ****** ****** *)
+
+fun
 auxcon2
 ( d3e0
 : d3exp): d3exp =
@@ -785,8 +853,8 @@ d3e0.node() of
 //
 | D3Evar _ => d3e0
 //
-| D3Econ1 _ => d3e0
-| D3Ecst1 _ => d3e0
+| D3Econ1 _ => auxcon1(d3e0)
+| D3Ecst1 _ => auxcst1(d3e0)
 //
 | D3Econ2 _ => auxcon2(d3e0)
 | D3Ecst2 _ => auxcst2(d3e0)
