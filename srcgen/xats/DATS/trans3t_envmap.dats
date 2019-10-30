@@ -45,6 +45,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
@@ -351,7 +352,19 @@ case+ xs of
   val+
   TI3ENV
   (s2vs, xtvs, t2ps) = ti3e
-  val test = unify(loc0, targ, t2ps)
+  val
+  test = unify(loc0, targ, t2ps)
+//
+  val () =
+  println!
+  ("implist_find_timp: d2c0 = ", d2c0)
+  val () =
+  println!
+  ("implist_find_timp: d3cl = ", d3cl)
+  val () =
+  println!
+  ("implist_find_timp: test = ", test)
+//
   in
     if test
     then

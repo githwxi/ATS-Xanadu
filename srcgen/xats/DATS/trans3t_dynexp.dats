@@ -175,6 +175,13 @@ trans3t_dexp
 val loc0 = d3e0.loc()
 val t2p0 = d3e0.type()
 //
+val () =
+println!
+("trans3t_dexp: d3e0 = ", d3e0)
+val () =
+println!
+("trans3t_dexp: t2p0 = ", t2p0)
+//
 in
 //
 case-
@@ -190,6 +197,19 @@ d3e0.node() of
 | D3Etcst _ =>
   auxtcst(env0, d3e0)
 | D3Etimp _ => (d3e0)
+//
+| D3Edapp
+  (d3f0, npf1, d3es) =>
+  let
+  val d3f0 =
+  trans3t_dexp(env0, d3f0)
+  val d3es =
+  trans3t_dexplst(env0, d3es)
+  in
+  d3exp_make_node
+  ( loc0, t2p0
+  , D3Edapp(d3f0, npf1, d3es))
+  end // end of [D3Edapp]
 //
 | D3Elet(d3cs, d3e1) =>
   let
@@ -313,7 +333,63 @@ fun
 aux_valdecl
 ( env0
 : !implenv
-, d3cl: d3ecl): d3ecl = d3cl
+, d3cl: d3ecl): d3ecl =
+let
+//
+val-
+D3Cvaldecl
+( knd
+, mopt
+, v3ds) = d3cl.node()
+//
+val v3ds = auxv3ds(env0, v3ds)
+//
+in
+d3ecl_make_node
+(d3cl.loc(), D3Cvaldecl(knd, mopt, v3ds))
+end where
+{
+//
+fun
+auxv3d0
+( env0
+: !implenv
+, v3d0
+: v3aldecl): v3aldecl =
+let
+//
+val+V3ALDECL(rcd) = v3d0
+//
+val loc = rcd.loc
+val pat = rcd.pat
+val def = rcd.def
+val wtp = rcd.wtp
+//
+val def = trans3t_dexpopt(env0, def)
+//
+in
+V3ALDECL
+@{loc=loc, pat=pat, def=def, wtp=wtp}
+end // end of [auxv3d0]
+//
+fun
+auxv3ds
+( env0
+: !implenv
+, v3ds
+: v3aldeclist): v3aldeclist =
+(
+case+ v3ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons(auxv3d0(env0, x0), auxv3ds(env0, xs))
+)
+//
+} (* end of [aux_valdecl] *)
+
+(* ****** ****** *)
+
 fun
 aux_vardecl
 ( env0
