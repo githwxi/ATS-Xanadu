@@ -292,6 +292,13 @@ val
 t2ype_tq2as_elim2
 (loc0, d2c1.type(), d2c1.tqas())
 in
+case+ ti3a of
+|
+TI3ARGnone _ =>
+d3exp_make_node
+(loc0, t2p1, D3Efcst(d2c1))
+|
+TI3ARGsome _ =>
 d3exp_make_node
 (loc0, t2p1, D3Etcst(d2c1, ti3a, ti2s))
 end // end of [d2cst_up]

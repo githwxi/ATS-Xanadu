@@ -287,6 +287,8 @@ d3exp_node =
 | D3Esym0 of
   (d1exp(*sym*), d2pitmlst)
 //
+| D3Efcst of (d2cst)
+//
 | D3Etcst of
   ( d2cst
   , ti3arg, ti2arglst(*sess*))
