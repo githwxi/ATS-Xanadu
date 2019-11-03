@@ -37,6 +37,20 @@
 // level-1 intermediate representation
 //
 (* ****** ****** *)
+//
+#staload
+"./basics.sats"
+#staload
+"./locinfo.sats"
+//
+(* ****** ****** *)
+//
+#staload
+LEX = "./lexing.sats"
+//
+typedef token = $LEX.token
+//
+(* ****** ****** *)
 
 #staload
 D2E = "./dynexp2.sats"
@@ -50,23 +64,32 @@ typedef d2cst = $D2E.d2cst
 typedef d2var = $D2E.d2var
 
 (* ****** ****** *)
-
+//
+typedef d3pat = $D3E.d3pat
 typedef d3exp = $D3E.d3exp
-
+typedef d3ecl = $D3E.d3ecl
+//
+typedef d3patlst = $D3E.d3patlst
+//
+typedef d3expopt = $D3E.d3expopt
+typedef d3explst = $D3E.d3explst
+//
+typedef d3eclist = $D3E.d3eclist
+//
 (* ****** ****** *)
 
-abstype ir0pat_type = ptr
-typedef ir0pat = ir0pat_type
+abstype ir0pat_tbox = ptr
+typedef ir0pat = ir0pat_tbox
 typedef ir0patlst = List0(ir0pat)
 
 (* ****** ****** *)
 
-abstype ir0dcl_type = ptr
-typedef ir0dcl = ir0dcl_type
+abstype ir0dcl_tbox = ptr
+typedef ir0dcl = ir0dcl_tbox
 typedef ir0dclist = List0(ir0dcl)
 
-abstype ir0exp_type = ptr
-typedef ir0exp = ir0exp_type
+abstype ir0exp_tbox = ptr
+typedef ir0exp = ir0exp_tbox
 typedef ir0explst = List0(ir0exp)
 typedef ir0expopt = Option(ir0exp)
 
@@ -75,11 +98,13 @@ typedef ir0expopt = Option(ir0exp)
 datatype
 ir0exp_node =
 //
-| IR0Eint of int
+| IR0Eint of (token)
+| IR0Ebtf of (token)
+| IR0Estr of (token)
 //
-| IR0Evar of d2var
-| IR0Econ of d2con
-| IR0Ecst of d2cst
+| IR0Evar of (d2var)
+| IR0Econ of (d2con)
+| IR0Ecst of (d2cst)
 //
 | IR0Eapp of (ir0exp, ir0explst)
 //
@@ -90,15 +115,81 @@ ir0exp_node =
 (* ****** ****** *)
 //
 fun
+ir0exp_get_loc
+(x0: ir0exp): loc_t
+fun
+ir0exp_get_node
+(x0: ir0exp): ir0exp_node
+//
+overload
+.loc with ir0exp_get_loc
+overload
+.node with ir0exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+ir0exp_make_node
+(loc_t, ir0exp_node): ir0exp
+//
+(* ****** ****** *)
+//
+fun
 print_ir0exp: print_type(ir0exp)
 fun
 prerr_ir0exp: prerr_type(ir0exp)
-fun
-fprint_ir0exp: fprint_type(ir0exp)
-//
 overload print with print_ir0exp
 overload prerr with prerr_ir0exp
+//
+fun
+fprint_ir0exp: fprint_type(ir0exp)
 overload fprint with fprint_ir0exp
+//
+(* ****** ****** *)
+//
+datatype
+ir0dcl_node =
+//
+| IR0Clocal of
+  (ir0dclist, ir0dclist)
+//
+| IR0Cnone0 of () | IR0Cnone1 of (d3ecl)
+//
+(* ****** ****** *)
+//
+fun
+ir0dcl_get_loc
+(x0: ir0dcl): loc_t
+fun
+ir0dcl_get_node
+(x0: ir0dcl): ir0dcl_node
+//
+overload
+.loc with ir0dcl_get_loc
+overload
+.node with ir0dcl_get_node
+//
+(* ****** ****** *)
+//
+fun
+ir0dcl_make_node
+(loc_t, ir0dcl_node): ir0dcl
+//
+(* ****** ****** *)
+//
+fun
+irerase_dpat(d3pat): ir0pat
+fun
+irerase_dpatlst(d3patlst): ir0patlst
+//
+(* ****** ****** *)
+//
+fun
+irerase_dexp(d3exp): ir0exp
+fun
+irerase_dexplst(d3expopt): ir0expopt
+fun
+irerase_dexplst(d3explst): ir0explst
 //
 (* ****** ****** *)
 

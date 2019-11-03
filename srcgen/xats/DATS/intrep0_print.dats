@@ -33,68 +33,65 @@
 //
 (* ****** ****** *)
 //
-// HX-2019-11-02: level-1 interpreter
-//
-(* ****** ****** *)
-
-#define
-XATS_targetloc
-"./../../xats"
-
-(* ****** ****** *)
-
+#include
+"share/atspre_staload.hats"
 #staload
-D2E =
-"{$XATS}/SATS/dynexp2.sats"
-
-(* ****** ****** *)
-
-#staload
-"{$XATS}/SATS/intrep0.sats"
-
-(* ****** ****** *)
-
-typedef d2var = $D2E.d2var
-typedef d2con = $D2E.d2con
-typedef d2cst = $D2E.d2cst
-
-(* ****** ****** *)
-
-abstype ir0env_type = ptr
-typedef ir0env = ir0env_type
-
-(* ****** ****** *)
-//
-datatype
-ir0val =
-//
-| IR0Vnil of ()
-//
-| IR0Vint of int
-| IR0Vbtf of bool
-| IR0Vchr of char
-| IR0Vflt of double
-| IR0Vstr of string
-//
-| IR0Vvar of d2var
-| IR0Vcon of d2con
-| IR0Vcst of d2cst
-//
-| IR0Vfc2 of (ir0exp, ir0env)
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-fun
-print_ir0val: print_type(ir0val)
-fun
-prerr_ir0val: prerr_type(ir0val)
-overload print with print_ir0val
-overload prerr with prerr_ir0val
+#staload "./../SATS/lexing.sats"
 //
-fun
-fprint_ir0val: fprint_type(ir0val)
-overload fprint with fprint_ir0val
+#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d2con> = fprint_d2con
+implement
+fprint_val<d2cst> = fprint_d2cst
+implement
+fprint_val<d2var> = fprint_d2var
+//
+(* ****** ****** *)
+//
+implement
+print_ir0exp(x0) =
+fprint_ir0exp(stdout_ref, x0)
+implement
+prerr_ir0exp(x0) =
+fprint_ir0exp(stderr_ref, x0)
+//
+implement
+fprint_ir0exp
+  (out, x0) =
+(
+case- x0.node() of
+//
+| IR0Eint(tok) =>
+  fprint!(out, "IR0Eint(", tok, ")")
+| IR0Ebtf(tok) =>
+  fprint!(out, "IR0Ebtf(", tok, ")")
+//
+| IR0Econ(d2c) =>
+  fprint!(out, "IR0Econ(", d2c, ")")
+| IR0Ecst(d2c) =>
+  fprint!(out, "IR0Ecst(", d2c, ")")
+| IR0Evar(d2v) =>
+  fprint!(out, "IR0Evar(", d2v, ")")
+//
+| IR0Enone0() =>
+  fprint!(out, "IR0Enone0(", ")")
+| IR0Enone1(d3e) =>
+  fprint!(out, "IR0Enone1(", d3e, ")")
+//
+)
 //
 (* ****** ****** *)
 
-(* end of [xint_interp0.sats] *)
+(* end of [intrep0_print.dats] *)
