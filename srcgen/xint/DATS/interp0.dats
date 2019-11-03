@@ -37,8 +37,8 @@
 //
 (* ****** ****** *)
 
-#staload "./../SATS/interp1.sats"
+#staload "./../SATS/interp0.sats"
 
 (* ****** ****** *)
 
-(* end of [xint_interp1.dats] *)
+(* end of [xint_interp0.dats] *)

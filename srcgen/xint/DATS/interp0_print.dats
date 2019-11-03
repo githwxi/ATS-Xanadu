@@ -28,48 +28,13 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2019
+// Start Time: November, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-// HX-2019-10-30:
-// level-1 intermediate representation
-//
-(* ****** ****** *)
 
-#staload
-D2E = "./dynexp2.sats"
+#staload "./../SATS/interp0.sats"
 
 (* ****** ****** *)
 
-typedef d2con = $D2E.d2con
-typedef d2cst = $D2E.d2cst
-typedef d2var = $D2E.d2var
-
-(* ****** ****** *)
-
-abstype ir1pat_type = ptr
-typedef ir1pat = ir1pat_type
-typedef ir1patlst = List0(ir1pat)
-
-(* ****** ****** *)
-
-abstype ir1exp_type = ptr
-typedef ir1exp = ir1exp_type
-typedef ir1explst = List0(ir1exp)
-typedef ir1expopt = Option(ir1exp)
-
-(* ****** ****** *)
-
-datatype
-ir1exp_node =
-| IR1Eint of int
-| IR1Evar of d2var
-| IR1Econ of d2con
-| IR1Ecst of d2cst
-| IR1Eapp of (ir1exp, ir1explst)
-
-(* ****** ****** *)
-
-(* end of [intrep1.sats] *)
+(* end of [xint_interp0_print.dats] *)

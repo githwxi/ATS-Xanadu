@@ -50,7 +50,7 @@ D2E =
 (* ****** ****** *)
 
 #staload
-"{$XATS}/SATS/intrep1.sats"
+"{$XATS}/SATS/intrep0.sats"
 
 (* ****** ****** *)
 
@@ -60,37 +60,41 @@ typedef d2cst = $D2E.d2cst
 
 (* ****** ****** *)
 
-abstype irenv_type = ptr
-typedef irenv = irenv_type
+abstype ir0env_type = ptr
+typedef ir0env = ir0env_type
 
 (* ****** ****** *)
 //
 datatype
-irval =
+ir0val =
 //
-| IRVnil of ()
+| IR0Vnil of ()
 //
-| IRVint of int
-| IRVbtf of bool
-| IRVchr of char
-| IRVflt of double
-| IRVstr of string
+| IR0Vint of int
+| IR0Vbtf of bool
+| IR0Vchr of char
+| IR0Vflt of double
+| IR0Vstr of string
 //
-| IRVvar of d2var
-| IRVcon of d2con
-| IRVcst of d2cst
+| IR0Vvar of d2var
+| IR0Vcon of d2con
+| IR0Vcst of d2cst
 //
-| IRVfc2 of (ir1exp, irenv)
+| IR0Vfc2 of (ir0exp, ir0env)
 //
 (* ****** ****** *)
 //
 fun
-print_irval: print_type(irval)
+print_ir0val: print_type(ir0val)
 fun
-prerr_irval: prerr_type(irval)
+prerr_ir0val: prerr_type(ir0val)
 fun
-fprint_irval: fprint_type(irval)
+fprint_ir0val: fprint_type(ir0val)
+//
+overload print with print_ir0val
+overload prerr with prerr_ir0val
+overload fprint with fprint_ir0val
 //
 (* ****** ****** *)
 
-(* end of [xint_interp1.sats] *)
+(* end of [xint_interp0.sats] *)
