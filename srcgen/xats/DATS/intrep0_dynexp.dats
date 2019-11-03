@@ -32,69 +32,42 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-// HX-2019-11-02: level-1 interpreter
-//
-(* ****** ****** *)
 
-#define
-XATS_targetloc
-"./../../xats"
+#staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
 
-#staload
-D2E =
-"{$XATS}/SATS/dynexp2.sats"
+#staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
 
-#staload
-"{$XATS}/SATS/intrep0.sats"
+implement
+irerase_dexp
+  (d3e0) =
+let
+//
+val loc0 = d3e0.loc()
+//
+in
+//
+case+
+d3e0.node() of
+//
+| D3Eint(tok) =>
+  ir0exp_make_node
+  (loc0, IR0Eint(tok))
+| D3Ebtf(tok) =>
+  ir0exp_make_node
+  (loc0, IR0Ebtf(tok))
+| D3Estr(tok) =>
+  ir0exp_make_node
+  (loc0, IR0Estr(tok))
+//
+| _(*rest-of-d3exp*) =>
+  ir0exp_make_node(loc0, IR0Enone1(d3e0))
+//
+end // end of [interp0_erase]
 
 (* ****** ****** *)
 
-typedef d2var = $D2E.d2var
-typedef d2con = $D2E.d2con
-typedef d2cst = $D2E.d2cst
-
-(* ****** ****** *)
-
-abstype ir0env_type = ptr
-typedef ir0env = ir0env_type
-
-(* ****** ****** *)
-//
-datatype
-ir0val =
-//
-| IR0Vnil of ()
-//
-| IR0Vint of int
-| IR0Vbtf of bool
-| IR0Vchr of char
-| IR0Vflt of double
-| IR0Vstr of string
-//
-| IR0Vvar of d2var
-| IR0Vcon of d2con
-| IR0Vcst of d2cst
-//
-| IR0Vfc2 of (ir0exp, ir0env)
-//
-(* ****** ****** *)
-//
-fun
-print_ir0val: print_type(ir0val)
-fun
-prerr_ir0val: prerr_type(ir0val)
-overload print with print_ir0val
-overload prerr with prerr_ir0val
-//
-fun
-fprint_ir0val: fprint_type(ir0val)
-overload fprint with fprint_ir0val
-//
-(* ****** ****** *)
-
-(* end of [xint_interp0.sats] *)
+(* end of [intrep0_erase.dats] *)

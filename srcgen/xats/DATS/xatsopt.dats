@@ -80,6 +80,8 @@ FS0 = "./../SATS/filsrch.sats"
 //
 #staload "./../SATS/trans3t.sats"
 //
+#staload "./../SATS/intrep0.sats"
+//
 (* ****** ****** *)
 //
 #staload
@@ -239,6 +241,10 @@ end // end of [local]
 //
 #dynload "./trans3t_envmap.dats"
 #dynload "./trans3t_dynexp.dats"
+//
+#dynload "./intrep0.dats"
+#dynload "./intrep0_print.dats"
+#dynload "./intrep0_dynexp.dats"
 //
 (* ****** ****** *)
 //

@@ -32,69 +32,73 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-// HX-2019-11-02: level-1 interpreter
-//
-(* ****** ****** *)
 
-#define
-XATS_targetloc
-"./../../xats"
+#staload
+"./../SATS/locinfo.sats"
 
 (* ****** ****** *)
 
 #staload
-D2E =
-"{$XATS}/SATS/dynexp2.sats"
-
-(* ****** ****** *)
-
+"./../SATS/dynexp3.sats"
 #staload
-"{$XATS}/SATS/intrep0.sats"
+"./../SATS/intrep0.sats"
 
 (* ****** ****** *)
 
-typedef d2var = $D2E.d2var
-typedef d2con = $D2E.d2con
-typedef d2cst = $D2E.d2cst
+local
+
+absimpl
+ir0exp_tbox = $rec
+{ ir0exp_loc= loc_t
+, ir0exp_node= ir0exp_node
+} (* end of [absimpl] *)
+
+in(*in-of-local*)
+//
+implement
+ir0exp_get_loc
+  (x0) = x0.ir0exp_loc
+implement
+ir0exp_get_node
+  (x0) = x0.ir0exp_node
+//  
+implement
+ir0exp_make_node
+(loc0, node) = $rec
+{
+ir0exp_loc= loc0, ir0exp_node= node
+} (* ir0exp_make_node *)
+//
+end // end of [local]
 
 (* ****** ****** *)
 
-abstype ir0env_type = ptr
-typedef ir0env = ir0env_type
+local
+
+absimpl
+ir0dcl_tbox = $rec
+{ ir0dcl_loc= loc_t
+, ir0dcl_node= ir0dcl_node
+} (* end of [absimpl] *)
+
+in(*in-of-local*)
+//
+implement
+ir0dcl_get_loc
+  (x0) = x0.ir0dcl_loc
+implement
+ir0dcl_get_node
+  (x0) = x0.ir0dcl_node
+//  
+implement
+ir0dcl_make_node
+(loc0, node) = $rec
+{
+ir0dcl_loc= loc0, ir0dcl_node= node
+} (* ir0dcl_make_node *)
+//
+end // end of [local]
 
 (* ****** ****** *)
-//
-datatype
-ir0val =
-//
-| IR0Vnil of ()
-//
-| IR0Vint of int
-| IR0Vbtf of bool
-| IR0Vchr of char
-| IR0Vflt of double
-| IR0Vstr of string
-//
-| IR0Vvar of d2var
-| IR0Vcon of d2con
-| IR0Vcst of d2cst
-//
-| IR0Vfc2 of (ir0exp, ir0env)
-//
-(* ****** ****** *)
-//
-fun
-print_ir0val: print_type(ir0val)
-fun
-prerr_ir0val: prerr_type(ir0val)
-overload print with print_ir0val
-overload prerr with prerr_ir0val
-//
-fun
-fprint_ir0val: fprint_type(ir0val)
-overload fprint with fprint_ir0val
-//
-(* ****** ****** *)
 
-(* end of [xint_interp0.sats] *)
+(* end of [intrep0.dats] *)
