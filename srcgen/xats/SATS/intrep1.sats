@@ -49,11 +49,26 @@ typedef d2var = $D2E.d2var
 
 (* ****** ****** *)
 
+abstype ir1pat_type = ptr
+typedef ir1pat = ir1pat_type
+typedef ir1patlst = List0(ir1pat)
+
+(* ****** ****** *)
+
+abstype ir1exp_type = ptr
+typedef ir1exp = ir1exp_type
+typedef ir1explst = List0(ir1exp)
+typedef ir1expopt = Option(ir1exp)
+
+(* ****** ****** *)
+
 datatype
 ir1exp_node =
+| IR1Eint of int
 | IR1Evar of d2var
 | IR1Econ of d2con
 | IR1Ecst of d2cst
+| IR1Eapp of (ir1exp, ir1explst)
 
 (* ****** ****** *)
 
