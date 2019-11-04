@@ -40,8 +40,39 @@
 
 #staload
 "./../SATS/dynexp3.sats"
+
+(* ****** ****** *)
+
 #staload
 "./../SATS/intrep0.sats"
+
+(* ****** ****** *)
+
+local
+
+absimpl
+ir0pat_tbox = $rec
+{ ir0pat_loc= loc_t
+, ir0pat_node= ir0pat_node
+} (* end of [absimpl] *)
+
+in(*in-of-local*)
+//
+implement
+ir0pat_get_loc
+  (x0) = x0.ir0pat_loc
+implement
+ir0pat_get_node
+  (x0) = x0.ir0pat_node
+//  
+implement
+ir0pat_make_node
+(loc0, node) = $rec
+{
+ir0pat_loc= loc0, ir0pat_node= node
+} (* ir0pat_make_node *)
+//
+end // end of [local]
 
 (* ****** ****** *)
 
