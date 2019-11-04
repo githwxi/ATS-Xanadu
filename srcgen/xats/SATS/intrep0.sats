@@ -96,6 +96,36 @@ typedef ir0expopt = Option(ir0exp)
 (* ****** ****** *)
 //
 datatype
+ir0pat_node =
+//
+| IR0Pany of ()
+| IR0Pvar of (d2var)
+//
+| IR0Ecapp of (d2con, ir0patlst)
+//
+(* ****** ****** *)
+//
+fun
+ir0pat_get_loc
+(x0: ir0pat): loc_t
+fun
+ir0pat_get_node
+(x0: ir0pat): ir0pat_node
+//
+overload
+.loc with ir0pat_get_loc
+overload
+.node with ir0pat_get_node
+//
+(* ****** ****** *)
+//
+fun
+ir0pat_make_node
+(loc_t, ir0pat_node): ir0pat
+//
+(* ****** ****** *)
+//
+datatype
 ir0exp_node =
 //
 | IR0Eint of (token)
@@ -106,9 +136,9 @@ ir0exp_node =
 | IR0Econ of (d2con)
 | IR0Ecst of (d2cst)
 //
-| IR0Eapp of (ir0exp, ir0explst)
-//
 | IR0Elet of (ir0dclist, ir0exp)
+//
+| IR0Edapp of (ir0exp, ir0explst)
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //
