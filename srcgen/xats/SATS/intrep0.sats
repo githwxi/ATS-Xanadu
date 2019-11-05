@@ -98,10 +98,17 @@ typedef ir0expopt = Option(ir0exp)
 datatype
 ir0pat_node =
 //
+| IR0Pint of (token)
+| IR0Pbtf of (token)
+//
 | IR0Pany of ()
 | IR0Pvar of (d2var)
 //
 | IR0Ecapp of (d2con, ir0patlst)
+//
+| IR0Ptuple of (int(*knd*), ir0patlst)
+//
+| IR0Pnone0 of () | IR0Pnone1 of (d3pat)
 //
 (* ****** ****** *)
 //
