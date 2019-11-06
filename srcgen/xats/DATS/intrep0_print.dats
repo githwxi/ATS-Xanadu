@@ -144,5 +144,27 @@ case- x0.node() of
 )
 //
 (* ****** ****** *)
+//
+implement
+print_ir0dcl(x0) =
+fprint_ir0dcl(stdout_ref, x0)
+implement
+prerr_ir0dcl(x0) =
+fprint_ir0dcl(stderr_ref, x0)
+//
+implement
+fprint_ir0dcl
+  (out, x0) =
+(
+case- x0.node() of
+//
+| IR0Cnone0() =>
+  fprint!(out, "IR0Cnone0(", ")")
+| IR0Cnone1(d3cl) =>
+  fprint!(out, "IR0Cnone1(", d3cl, ")")
+//
+)
+//
+(* ****** ****** *)
 
 (* end of [intrep0_print.dats] *)
