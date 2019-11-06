@@ -61,6 +61,38 @@ fprint_val<d2var> = fprint_d2var
 (* ****** ****** *)
 //
 implement
+print_ir0pat(x0) =
+fprint_ir0pat(stdout_ref, x0)
+implement
+prerr_ir0pat(x0) =
+fprint_ir0pat(stderr_ref, x0)
+//
+implement
+fprint_ir0pat
+  (out, x0) =
+(
+case- x0.node() of
+//
+| IR0Pint(tok) =>
+  fprint!(out, "IR0Pint(", tok, ")")
+| IR0Pbtf(tok) =>
+  fprint!(out, "IR0Pbtf(", tok, ")")
+//
+| IR0Pany() =>
+  fprint!(out, "IR0Pany(", ")")
+| IR0Pvar(d2v) =>
+  fprint!(out, "IR0Pvar(", d2v, ")")
+//
+| IR0Pnone0() =>
+  fprint!(out, "IR0Pnone0(", ")")
+| IR0Pnone1(d3p) =>
+  fprint!(out, "IR0Pnone1(", d3p, ")")
+//
+)
+//
+(* ****** ****** *)
+//
+implement
 print_ir0exp(x0) =
 fprint_ir0exp(stdout_ref, x0)
 implement
