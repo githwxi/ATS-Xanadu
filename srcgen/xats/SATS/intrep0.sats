@@ -132,6 +132,19 @@ ir0pat_make_node
 //
 (* ****** ****** *)
 //
+fun
+print_ir0pat: print_type(ir0pat)
+fun
+prerr_ir0pat: prerr_type(ir0pat)
+overload print with print_ir0pat
+overload prerr with prerr_ir0pat
+//
+fun
+fprint_ir0pat: fprint_type(ir0pat)
+overload fprint with fprint_ir0pat
+//
+(* ****** ****** *)
+//
 datatype
 ir0exp_node =
 //
