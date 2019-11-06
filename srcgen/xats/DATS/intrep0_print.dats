@@ -59,6 +59,15 @@ implement
 fprint_val<d2var> = fprint_d2var
 //
 (* ****** ****** *)
+
+implement
+fprint_val<ir0pat> = fprint_ir0pat
+implement
+fprint_val<ir0exp> = fprint_ir0exp
+implement
+fprint_val<ir0dcl> = fprint_ir0dcl
+
+(* ****** ****** *)
 //
 implement
 print_ir0pat(x0) =
@@ -82,6 +91,11 @@ case- x0.node() of
   fprint!(out, "IR0Pany(", ")")
 | IR0Pvar(d2v) =>
   fprint!(out, "IR0Pvar(", d2v, ")")
+//
+| IR0Ptuple(knd, irps) =>
+  fprint!
+  ( out
+  , "IR0Ptuple(", knd, "; ", irps, ")")
 //
 | IR0Pnone0() =>
   fprint!(out, "IR0Pnone0(", ")")
@@ -116,6 +130,11 @@ case- x0.node() of
   fprint!(out, "IR0Ecst(", d2c, ")")
 | IR0Evar(d2v) =>
   fprint!(out, "IR0Evar(", d2v, ")")
+//
+| IR0Edapp(irf0, ires) =>
+  fprint!
+  ( out
+  , "IR0Edapp(", irf0, "; ", ires, ")")
 //
 | IR0Enone0() =>
   fprint!(out, "IR0Enone0(", ")")

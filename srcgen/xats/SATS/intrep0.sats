@@ -228,6 +228,19 @@ ir0dcl_make_node
 (* ****** ****** *)
 //
 fun
+print_ir0dcl: print_type(ir0dcl)
+fun
+prerr_ir0dcl: prerr_type(ir0dcl)
+overload print with print_ir0dcl
+overload prerr with prerr_ir0dcl
+//
+fun
+fprint_ir0dcl: fprint_type(ir0dcl)
+overload fprint with fprint_ir0dcl
+//
+(* ****** ****** *)
+//
+fun
 irerase_dpat(d3pat): ir0pat
 fun
 irerase_dpatlst(d3patlst): ir0patlst
