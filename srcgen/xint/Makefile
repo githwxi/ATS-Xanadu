@@ -1,0 +1,209 @@
+######
+#
+# For building xinterp
+#
+######
+
+CC=gcc
+SED=sed
+RMF=rm -f
+
+######
+
+PATSCC=$(PATSHOME)/bin/patscc
+PATSOPT=$(PATSHOME)/bin/patsopt
+
+######
+#
+CFLAGS=
+#
+# CFLAGS=-g
+# CFLAGS=-g -O
+# CFLAGS=-g -O2
+#
+GCFLAG=
+GCFLAG=-DATS_MEMALLOC_LIBC
+GCFLAG=-DATS_MEMALLOC_GCBDW
+#
+LIBGC=
+LIBGC=-lgc
+#
+######
+
+SRCSATS := \
+basics.sats \
+stamp0.sats \
+symbol.sats \
+symmap.sats \
+symenv.sats \
+label0.sats \
+fixity.sats \
+global.sats \
+xerrory.sats \
+filpath.sats \
+filsrch.sats \
+locinfo.sats \
+lexbuf.sats \
+lexing.sats \
+staexp0.sats \
+dynexp0.sats \
+parsing.sats \
+synread.sats \
+staexp1.sats \
+dynexp1.sats \
+trans01.sats \
+t1xread.sats \
+effect.sats \
+staexp2.sats \
+statyp2.sats \
+dynexp2.sats \
+nmspace.sats \
+trans12.sats \
+t2xread.sats \
+dynexp3.sats \
+trans23.sats \
+trans33.sats \
+t3xread.sats \
+trans3t.sats \
+intrep0.sats \
+
+SRCDATS := \
+basics.dats \
+stamp0.dats \
+symbol.dats \
+symmap.dats \
+symenv.dats \
+label0.dats \
+fixity.dats \
+global.dats \
+xerrory.dats \
+filpath.dats \
+filsrch.dats \
+locinfo.dats \
+lexbuf.dats \
+lexing_token.dats \
+lexing_kword.dats \
+lexing_util0.dats \
+staexp0.dats \
+dynexp0.dats \
+staexp0_print.dats \
+dynexp0_print.dats \
+parsing_basics.dats \
+parsing_tokbuf.dats \
+parsing_staexp.dats \
+parsing_dynexp.dats \
+synread_basics.dats \
+synread_staexp.dats \
+synread_dynexp.dats \
+staexp1.dats \
+dynexp1.dats \
+staexp1_print.dats \
+dynexp1_print.dats \
+trans01_basics.dats \
+trans01_envmap.dats \
+trans01_staexp.dats \
+trans01_dynexp.dats \
+t1xread_staexp.dats \
+t1xread_dynexp.dats \
+effect.dats \
+staexp2.dats \
+statyp2.dats \
+dynexp2.dats \
+staexp2_init0.dats \
+staexp2_util1.dats \
+staexp2_util2.dats \
+staexp2_s2cst.dats \
+staexp2_print.dats \
+statyp2_util0.dats \
+statyp2_print.dats \
+dynexp2_print.dats \
+nmspace.dats \
+trans12_basics.dats \
+trans12_envmap.dats \
+trans12_staexp.dats \
+trans12_dynexp.dats \
+t2xread_staexp.dats \
+t2xread_dynexp.dats \
+dynexp3.dats \
+dynexp3_print.dats \
+trans23_util0.dats \
+trans23_dynexp.dats \
+trans33_util0.dats \
+trans33_dynexp.dats \
+t3xread_dynexp.dats \
+trans3t_envmap.dats \
+trans3t_dynexp.dats \
+intrep0.dats \
+intrep0_print.dats \
+intrep0_dynexp.dats \
+
+######
+
+OBJSATS := \
+$(patsubst %.sats, BUILD/%_sats.o, $(SRCSATS))
+OBJDATS := \
+$(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
+
+######
+#
+all: \
+xinterp
+xinterp: \
+DATS/xinterp.dats \
+$(OBJSATS) $(OBJDATS) ; \
+  $(PATSCC) -cleanaft -o xinterp $(GCFLAG) $^ $(LIBGC)
+#
+######
+
+BUILD/%_sats.c: SATS/%.sats ; \
+  $(PATSOPT) $(CFLAGS) -o $@ --static $<
+BUILD/%_dats.c: DATS/%.dats ; \
+  $(PATSOPT) $(CFLAGS) $(GCFLAG) -o $@ --dynamic $<
+
+######
+
+INCLUDE=-I"."
+
+BUILD/%_sats.o: \
+BUILD/%_sats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/%_dats.o: \
+BUILD/%_dats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+
+######
+#
+# HX-2018-10-07:
+# '--output-a .depend' means
+# appending instead of overwriting
+#
+SATS_SRCSATS := \
+$(patsubst %.sats, SATS/%.sats, $(SRCSATS))
+DATS_SRCDATS := \
+$(patsubst %.dats, DATS/%.dats, $(SRCDATS))
+#
+depend:: ; $(RMF) .depend
+#
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -s $(SATS_SRCSATS)
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -d $(DATS_SRCDATS)
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -d DATS/xinterp.dats
+#
+depend:: ; \
+$(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
+#
+-include .depend
+#
+######
+
+clean:: ; $(RMF) BUILD/*_?ats.c
+clean:: ; $(RMF) BUILD/*_?ats.o
+clean:: ; $(RMF) xinterp_dats.o
+clean:: ; $(RMF) xinterp_dats.c
+
+cleanall:: clean
+cleanall:: ; $(RMF) xinterp
+
+######
+
+###### end of [Makefile] ######

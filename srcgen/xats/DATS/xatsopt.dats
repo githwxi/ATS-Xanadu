@@ -116,6 +116,12 @@ _(*TMP*) =
 //
 #staload
 _(*TMP*) =
+  "./../DATS/intrep0_print.dats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) =
   "./../DATS/trans12_envmap.dats"
 //
 (* ****** ****** *)
@@ -945,6 +951,12 @@ val () =
 (
   the_dexpenv_println((*void*))
 )
+//
+val
+irdcs = irerase_declist(d3cs)
+val () =
+println!
+("process_fpath: irdcs = ", irdcs)
 //
 } (* end of [then] *)
 else

@@ -40,8 +40,12 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/basics.sats"
+//
 #staload "./../SATS/lexing.sats"
 //
+#staload "./../SATS/dynexp0.sats"
+#staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 //
@@ -131,10 +135,12 @@ case- x0.node() of
 | IR0Evar(d2v) =>
   fprint!(out, "IR0Evar(", d2v, ")")
 //
-| IR0Edapp(irf0, ires) =>
+| IR0Edapp
+  (irf0, npf1, ires) =>
   fprint!
   ( out
-  , "IR0Edapp(", irf0, "; ", ires, ")")
+  , "IR0Edapp("
+  , irf0, "; ", npf1, "; ", ires, ")")
 //
 | IR0Enone0() =>
   fprint!(out, "IR0Enone0(", ")")
@@ -152,18 +158,77 @@ implement
 prerr_ir0dcl(x0) =
 fprint_ir0dcl(stderr_ref, x0)
 //
+local
+
+implement
+fprint_val<ir0valdecl> = fprint_ir0valdecl
+
+in(*in-of-local*)
+
 implement
 fprint_ir0dcl
   (out, x0) =
 (
 case- x0.node() of
 //
+| IR0Cstatic
+  (tok, irc1) =>
+  fprint!
+  ( out
+  , "IR0Cstatic("
+  , tok, "; ", irc1, ")")
+| IR0Cextern
+  (tok, irc1) =>
+  fprint!
+  ( out
+  , "IR0Cextern("
+  , tok, "; ", irc1, ")")
+//
+| IR0Clocal
+  (head, body) =>
+  fprint!
+  ( out
+  , "IR0Clocal("
+  , head, "; ", body, ")")
+//
+| IR0Cvaldecl
+  (knd, mopt, irds) =>
+  fprint!
+  ( out
+  , "IR0Cvaldecl("
+  , knd, "; ", mopt, "; ", irds, ")")
+//
 | IR0Cnone0() =>
-  fprint!(out, "IR0Cnone0(", ")")
+    fprint!(out, "IR0Cnone0(", ")")
 | IR0Cnone1(d3cl) =>
-  fprint!(out, "IR0Cnone1(", d3cl, ")")
+    fprint!(out, "IR0Cnone1(", d3cl, ")")
 //
 )
+//
+end // end of [local]
+//
+(* ****** ****** *)
+//
+implement
+print_ir0valdecl(x0) =
+fprint_ir0valdecl(stdout_ref, x0)
+implement
+prerr_ir0valdecl(x0) =
+fprint_ir0valdecl(stderr_ref, x0)
+//
+implement
+fprint_ir0valdecl
+  (out, x0) = let
+//
+val+IR0VALDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "IR0VALDECL@{"
+  , ", pat=", rcd.pat
+  , ", def=", rcd.def, "}")
+end // end of [fprint_ir0valdecl]
 //
 (* ****** ****** *)
 

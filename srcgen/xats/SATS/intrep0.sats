@@ -53,6 +53,8 @@ typedef token = $LEX.token
 (* ****** ****** *)
 
 #staload
+D1E = "./dynexp1.sats"
+#staload
 D2E = "./dynexp2.sats"
 #staload
 D3E = "./dynexp3.sats"
@@ -158,7 +160,8 @@ ir0exp_node =
 //
 | IR0Elet of (ir0dclist, ir0exp)
 //
-| IR0Edapp of (ir0exp, ir0explst)
+| IR0Edapp of
+  (ir0exp, int(*npf*), ir0explst)
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //
@@ -198,10 +201,43 @@ overload fprint with fprint_ir0exp
 (* ****** ****** *)
 //
 datatype
+ir0valdecl =
+IR0VALDECL of @{
+  loc= loc_t
+, pat= ir0pat
+, def= ir0expopt
+}
+//
+typedef
+ir0valdeclist = List0(ir0valdecl)
+//
+fun
+print_ir0valdecl(ir0valdecl): void
+fun
+prerr_ir0valdecl(ir0valdecl): void
+fun
+fprint_ir0valdecl: fprint_type(ir0valdecl)
+//
+overload print with print_ir0valdecl
+overload prerr with prerr_ir0valdecl
+overload fprint with fprint_ir0valdecl
+//
+(* ****** ****** *)
+//
+datatype
 ir0dcl_node =
+//
+| IR0Cstatic of
+  (token(*STATIC*), ir0dcl)
+| IR0Cextern of
+  (token(*EXTERN*), ir0dcl)
 //
 | IR0Clocal of
   (ir0dclist, ir0dclist)
+//
+| IR0Cvaldecl of
+  ( token(*knd*)
+  , $D1E.decmodopt, ir0valdeclist)
 //
 | IR0Cnone0 of () | IR0Cnone1 of (d3ecl)
 //
@@ -250,9 +286,25 @@ irerase_dpatlst(d3patlst): ir0patlst
 fun
 irerase_dexp(d3exp): ir0exp
 fun
-irerase_dexplst(d3expopt): ir0expopt
+irerase_dexpopt(d3expopt): ir0expopt
 fun
 irerase_dexplst(d3explst): ir0explst
+//
+(* ****** ****** *)
+//
+fun
+irerase_decl(d3ecl): ir0dcl
+fun
+irerase_declist(d3eclist): ir0dclist
+//
+(* ****** ****** *)
+//
+fun
+irerase_valdecl
+(irvd: $D3E.v3aldecl): ir0valdecl
+fun
+irerase_valdeclist
+(irvds: $D3E.v3aldeclist): ir0valdeclist
 //
 (* ****** ****** *)
 

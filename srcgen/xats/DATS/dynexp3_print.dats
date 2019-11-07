@@ -648,14 +648,14 @@ case+ x0 of
 ) (* end of [fprint_t2pcast] *)
 //
 (* ****** ****** *)
-
+//
 implement
 print_v3aldecl(x0) =
 fprint_v3aldecl(stdout_ref, x0)
 implement
 prerr_v3aldecl(x0) =
 fprint_v3aldecl(stderr_ref, x0)
-
+//
 implement
 fprint_v3aldecl
   (out, x0) = let
@@ -670,7 +670,7 @@ in
   , ", def=", rcd.def
   , ", wtp=", rcd.wtp, "}")
 end // end of [fprint_v3aldecl]
-
+//
 (* ****** ****** *)
 
 implement
