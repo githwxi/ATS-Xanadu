@@ -106,7 +106,7 @@ ir0pat_node =
 | IR0Pany of ()
 | IR0Pvar of (d2var)
 //
-| IR0Ecapp of (d2con, ir0patlst)
+| IR0Pcapp of (d2con, ir0patlst)
 //
 | IR0Ptuple of (int(*knd*), ir0patlst)
 //
@@ -155,8 +155,11 @@ ir0exp_node =
 | IR0Estr of (token)
 //
 | IR0Evar of (d2var)
-| IR0Econ of (d2con)
-| IR0Ecst of (d2cst)
+//
+| IR0Econ1 of (d2con)
+| IR0Ecst1 of (d2cst)
+//
+| IR0Efcst of (d2cst)
 //
 | IR0Elet of (ir0dclist, ir0exp)
 //

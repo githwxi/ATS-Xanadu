@@ -128,12 +128,16 @@ case- x0.node() of
 | IR0Ebtf(tok) =>
   fprint!(out, "IR0Ebtf(", tok, ")")
 //
-| IR0Econ(d2c) =>
-  fprint!(out, "IR0Econ(", d2c, ")")
-| IR0Ecst(d2c) =>
-  fprint!(out, "IR0Ecst(", d2c, ")")
 | IR0Evar(d2v) =>
   fprint!(out, "IR0Evar(", d2v, ")")
+//
+| IR0Econ1(d2c) =>
+  fprint!(out, "IR0Econ1(", d2c, ")")
+| IR0Ecst1(d2c) =>
+  fprint!(out, "IR0Ecst1(", d2c, ")")
+//
+| IR0Efcst(d2c) =>
+  fprint!(out, "IR0Efcst(", d2c, ")")
 //
 | IR0Edapp
   (irf0, npf1, ires) =>

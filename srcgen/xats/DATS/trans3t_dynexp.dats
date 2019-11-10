@@ -267,6 +267,17 @@ d3e0.node() of
     (loc0, t2p0, D3Etuple(knd, npf, d3es))
   end
 //
+| D3Eassgn(d3el, d3er) =>
+  let
+    val
+    d3el = trans3t_dexp(env0, d3el)
+    val
+    d3er = trans3t_dexp(env0, d3er)
+  in
+    d3exp_make_node
+    (loc0, t2p0, D3Eassgn(d3el, d3er))
+  end
+//
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   let
@@ -280,6 +291,21 @@ d3e0.node() of
     d3exp_make_node
     (loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
   end
+//
+| D3Eaddr(d3e1) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, D3Eaddr(d3e1))
+  end // end of [D3Eaddr]
+| D3Efold(d3e1) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, D3Efold(d3e1))
+  end // end of [D3Efold]
 //
 end // end of [trans3t_dexp]
 

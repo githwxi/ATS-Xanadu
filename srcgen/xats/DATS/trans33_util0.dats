@@ -290,6 +290,15 @@ val tqas = d2c1.tqas()
 val t2p1 =
 t2ype_tq2as_elim(loc0, t2p1, tqas)
 //
+(*
+val () =
+println!
+("match_d2cst_t2ype: t2p1 = ", t2p1)
+val () =
+println!
+("match_d2cst_t2ype: t2p2 = ", t2p2)
+*)
+//
 in
   match_t2ype_t2ype(t2p1, t2p2)
 end // end of [match_d2cst_t2ype]
@@ -540,7 +549,15 @@ auxmat
 ) : d2itmopt_vt =
 (
   match(d2i0, t2p2)
-)
+) where
+{
+(*
+val () =
+println!("auxmat: d2i0 = ", d2i0)
+val () =
+println!("auxmat: t2p0 = ", t2p2)
+*)
+}
 //
 fun
 auxlst1

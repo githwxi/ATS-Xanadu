@@ -42,4 +42,48 @@
 
 (* ****** ****** *)
 
+fun
+gint_add_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vint(x+y) end
+
+fun
+gint_sub_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vint(x-y) end
+
+(* ****** ****** *)
+
+fun
+gint_mul_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vint(x*y) end
+
+fun
+gint_div_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vint(x/y) end
+
+fun
+gint_mod_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vint(x%y) end
+
+(* ****** ****** *)
+
 (* end of [xint_interp0_envmap.dats] *)

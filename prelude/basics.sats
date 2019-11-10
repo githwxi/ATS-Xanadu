@@ -291,34 +291,44 @@ abstype
 gint_type(a:type, int) <= a
 //
 typedef
-sint0 = [i:i0] gint_type(sint_k, i)
+gint0
+(a:type)=[i:int] gint_type(a, i)
 typedef
-sint1(i:int) = gint_type(sint_k, i)
+gint1
+(a:type,i:int) = gint_type(a, i)
+//
+(* ****** ****** *)
+//
+typedef sint0 = gint0(sint_k)
+typedef uint0 = gint0(uint_k)
 //
 typedef
-uint0 = [i:i0] gint_type(uint_k, i)
+sint1(i:int) = gint1(sint_k, i)
 typedef
-uint1(i:int) = gint_type(uint_k, i)
+uint1(i:int) = gint1(uint_k, i)
+//
+typedef slint0 = gint0(slint_k)
+typedef ulint0 = gint0(ulint_k)
 //
 typedef
-slint0 = [i:i0] gint_type(slint_k, i)
+slint1(i:int) = gint1(slint_k, i)
 typedef
-slint1(i:int) = gint_type(slint_k, i)
+ulint1(i:int) = gint1(ulint_k, i)
+//
+typedef ssize0 = gint0(ssize_k)
+typedef usize0 = gint0(usize_k)
 //
 typedef
-ulint0 = [i:i0] gint_type(ulint_k, i)
+ssize1(i:int) = gint1(ssize_k, i)
 typedef
-ulint1(i:int) = gint_type(ulint_k, i)
+usize1(i:int) = gint1(usize_k, i)
+//
+(* ****** ****** *)
 //
 typedef
-ssize0 = [i:i0] gint_type(ssize_k, i)
+gint(a:type) = gint0(a)
 typedef
-ssize1(i:int) = gint_type(ssize_k, i)
-//
-typedef
-usize0 = [i:i0] gint_type(usize_k, i)
-typedef
-usize1(i:int) = gint_type(usize_k, i)
+gint(a:type,i:int) = gint1(a, i)
 //
 (* ****** ****** *)
 //
