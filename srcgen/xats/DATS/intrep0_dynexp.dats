@@ -102,6 +102,20 @@ d3e0.node() of
   ir0exp_make_node
   (loc0, IR0Estr(tok))
 //
+| D3Evar(d2v) =>
+  ir0exp_make_node
+  (loc0, IR0Evar(d2v))
+| D3Econ1(d2c) =>
+  ir0exp_make_node
+  (loc0, IR0Econ1(d2c))
+| D3Ecst1(d2c) =>
+  ir0exp_make_node
+  (loc0, IR0Ecst1(d2c))
+//
+| D3Efcst(d2c) =>
+  ir0exp_make_node
+  (loc0, IR0Efcst(d2c))
+//
 | D3Edapp
   (d3f0, npf1, d3es) =>
   let
