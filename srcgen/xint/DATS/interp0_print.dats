@@ -93,12 +93,12 @@ case+ x0 of
 | IR0Vstr(s0) =>
   fprintln!(out, "IR0Vstr(", s0, ")")
 //
+| IR0Vcst(d2c) =>
+  fprintln!(out, "IR0Vcst(", d2c, ")")
+//
 | IR0Vcon(d2c, xs) =>
   fprintln!
   (out, "IR0Vcon(", d2c, "; ", xs, ")")
-//
-| IR0Vcst(d2c) =>
-  fprintln!(out, "IR0Vcst(", d2c, ")")
 //
 | IR0Vfc2(ire, env) =>
   fprintln!(out, "IR0Vfc2(", "...", ")")

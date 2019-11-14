@@ -80,10 +80,10 @@ ir0val =
 | IR0Vvar of d2var
 | IR0Vcon of d2con
 *)
+| IR0Vcst of d2cst
+//
 | IR0Vcon of
   (d2con, ir0valist)
-//
-| IR0Vcst of (d2cst)
 //
 | IR0Vfc2 of (ir0exp, ir0env)
 //
