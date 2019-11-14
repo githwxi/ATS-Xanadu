@@ -33,78 +33,16 @@
 //
 (* ****** ****** *)
 //
-// HX-2019-11-02:
+// HX-2019-11-10:
 // level-1 interpreter for syncheck!
 //
 (* ****** ****** *)
-//
-#staload D2E =
-"./../..\
-/xats/SATS/dynexp2.sats"
-#staload IR0 =
-"./../..\
-/xats/SATS/intrep0.sats"
-//
-overload
-fprint with $D2E.fprint_d2var
-overload
-fprint with $D2E.fprint_d2con
-overload
-fprint with $D2E.fprint_d2cst
-//
-overload
-fprint with $IR0.fprint_ir0exp
-//
-(* ****** ****** *)
-//
+
 #staload "./../SATS/interp0.sats"
-//
-(* ****** ****** *)
-//
-implement
-fprint_val<ir0val> = fprint_ir0val
-//
-(* ****** ****** *)
-//
-implement
-print_ir0val(x0) = 
-fprint_ir0val(stdout_ref, x0)
-implement
-prerr_ir0val(x0) = 
-fprint_ir0val(stderr_ref, x0)
-//
-implement
-fprint_ir0val
-  (out, x0) =
-(
-case+ x0 of
-//
-| IR0Vnil() =>
-  fprintln!(out, "IR0Vnil()")
-//
-| IR0Vint(i0) =>
-  fprintln!(out, "IR0Vint(", i0, ")")
-| IR0Vbtf(b0) =>
-  fprintln!(out, "IR0Vbtf(", b0, ")")
-| IR0Vchr(c0) =>
-  fprintln!(out, "IR0Vchr(", c0, ")")
-| IR0Vflt(f0) =>
-  fprintln!(out, "IR0Vflt(", f0, ")")
-| IR0Vstr(s0) =>
-  fprintln!(out, "IR0Vstr(", s0, ")")
-//
-| IR0Vcon(d2c, xs) =>
-  fprintln!
-  (out, "IR0Vcon(", d2c, "; ", xs, ")")
-//
-| IR0Vcst(d2c) =>
-  fprintln!(out, "IR0Vcst(", d2c, ")")
-//
-| IR0Vfc2(ire, env) =>
-  fprintln!(out, "IR0Vfc2(", "...", ")")
-//
-) (* end of [fprint_ir0val] *)
-//
+
 (* ****** ****** *)
 
-(* end of [xint_interp0_print.dats] *)
+
+(* ****** ****** *)
+
+(* end of [xint_interp0_dynexp.dats] *)
