@@ -37,8 +37,35 @@
 //
 (* ****** ****** *)
 
-#staload "./../SATS/interp0.sats"
+#staload
+"./../SATS/interp0.sats"
 
+(* ****** ****** *)
+//
+extern
+fun
+interp0_main0
+{n:int | n >= 1}
+(int(n), !argv(n)): void
+//
+(* ****** ****** *)
+//
+#ifndef
+INTERP0_MAIN_NONE
+//
+implement
+main0(argc, argv) =
+(
+//
+if
+(argc >= 2)
+then interp0_main0(argc, argv)
+else prerrln! ("Hello from ATS3(ATS/Xanadu)!")
+// end of [if]
+) (* end of [main] *)
+//
+#endif // ifndef(INTERP0_MAIN_NONE)
+//
 (* ****** ****** *)
 
 (* end of [xint_interp0.dats] *)
