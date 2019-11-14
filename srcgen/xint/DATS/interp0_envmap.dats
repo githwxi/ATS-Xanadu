@@ -43,12 +43,59 @@
 (* ****** ****** *)
 
 fun
+gint_lt_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vbtf(x < y) end
+fun
+gint_gt_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vbtf(x > y) end
+
+fun
+gint_lte_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vbtf(x <= y) end
+fun
+gint_gte_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vbtf(x >= y) end
+
+fun
+gint_eq_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vbtf(x = y) end
+fun
+gint_neq_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vbtf(x != y) end
+
+(* ****** ****** *)
+
+fun
 gint_add_sint_sint
 ( x: ir0val
 , y: ir0val): ir0val =
 let
 val-IR0Vint(x) = x
-val-IR0Vint(y) = y in IR0Vint(x+y) end
+val-IR0Vint(y) = y in IR0Vint(x + y) end
 
 fun
 gint_sub_sint_sint
@@ -56,7 +103,7 @@ gint_sub_sint_sint
 , y: ir0val): ir0val =
 let
 val-IR0Vint(x) = x
-val-IR0Vint(y) = y in IR0Vint(x-y) end
+val-IR0Vint(y) = y in IR0Vint(x - y) end
 
 (* ****** ****** *)
 
@@ -66,7 +113,7 @@ gint_mul_sint_sint
 , y: ir0val): ir0val =
 let
 val-IR0Vint(x) = x
-val-IR0Vint(y) = y in IR0Vint(x*y) end
+val-IR0Vint(y) = y in IR0Vint(x * y) end
 
 fun
 gint_div_sint_sint
@@ -74,7 +121,7 @@ gint_div_sint_sint
 , y: ir0val): ir0val =
 let
 val-IR0Vint(x) = x
-val-IR0Vint(y) = y in IR0Vint(x/y) end
+val-IR0Vint(y) = y in IR0Vint(x / y) end
 
 fun
 gint_mod_sint_sint
@@ -82,7 +129,41 @@ gint_mod_sint_sint
 , y: ir0val): ir0val =
 let
 val-IR0Vint(x) = x
-val-IR0Vint(y) = y in IR0Vint(x%y) end
+val-IR0Vint(y) = y in IR0Vint(x % y) end
+
+(* ****** ****** *)
+
+local
+
+fun
+firfun1
+(
+f1:
+(ir0val) -> ir0val
+)
+: ir0valist -<cloref1> ir0val =
+lam(vs) =>
+let
+val-list_cons(v1, vs) = vs in f1(v1)
+end
+
+fun
+firfun2
+(
+f2:
+( ir0val
+, ir0val) -> ir0val
+)
+: ir0valist -<cloref1> ir0val =
+lam(vs) =>
+let
+val-list_cons(v1, vs) = vs
+val-list_cons(v2, vs) = vs in f2(v1, v2)
+end
+
+in(*in-of-local*)
+
+end // end of [local]
 
 (* ****** ****** *)
 
