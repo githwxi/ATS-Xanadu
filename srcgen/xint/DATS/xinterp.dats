@@ -60,7 +60,7 @@ main0(argc, argv) =
 if
 (argc >= 2)
 then interp0_main0(argc, argv)
-else prerrln! ("Hello from ATS3(ATS/Xanadu)!")
+else prerrln! ("Hello from ATS3(xinterp)!")
 // end of [if]
 ) (* end of [main] *)
 //
