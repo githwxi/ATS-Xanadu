@@ -147,6 +147,19 @@ end // end of [local]
 //
 (* ****** ****** *)
 //
+// HX-2019-11-14:
+//
+#ifdef
+_LIBXATSOPT_
+#then
+#define
+ATS_MAINATSFLAG 1
+#define
+ATS_DYNLOADNAME "libxatsopt_dynloadall"
+#endif // #ifdef
+//
+(* ****** ****** *)
+//
 #dynload "./basics.dats"
 //
 #dynload "./stamp0.dats"
@@ -794,7 +807,7 @@ static
 fun
 process_fpath
 ( st0
-: &cmdstate >> _, fp0: fpath): void
+: &cmdstate >> _, fp0: fpath_t): void
 static
 fun
 process_given
@@ -1418,8 +1431,10 @@ end // end of [local]
 
 (* ****** ****** *)
 //
-#ifndef
-XATSOPT_MAIN_NONE
+#ifdef
+_LIBXATSOPT_
+#then
+#else
 //
 implement
 main0(argc, argv) =
@@ -1427,12 +1442,14 @@ main0(argc, argv) =
 //
 if
 (argc >= 2)
-then xatsopt_main0(argc, argv)
-else prerrln! ("Hello from ATS3(ATS/Xanadu)!")
+then
+xatsopt_main0(argc, argv)
+else
+prerrln!("Hello from ATS3(xatsopt)!")
 // end of [if]
 ) (* end of [main] *)
 //
-#endif // ifndef(XATSOPT_MAIN_NONE)
+#endif // ifdef(_LIBXATSOPT_)
 //
 (* ****** ****** *)
 //

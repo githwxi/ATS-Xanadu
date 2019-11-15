@@ -46,6 +46,13 @@ OBJDATS := \
 $(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
 
 ######
+
+INCLUDE:=
+INCLUDE+=-I"."
+INCLUDE+=-I"./BUILD/xats"
+LIBRARY:=-L./../../lib -lxatsopt
+
+######
 #
 all: \
 xinterp
@@ -53,7 +60,8 @@ xinterp: \
 DATS/xinterp.dats \
 $(OBJSATS) $(OBJDATS) ; \
 $(PATSCC) \
--cleanaft -o xinterp $(INCLUDE) $(GCFLAG) $^ $(LIBGC)
+-cleanaft -o xinterp \
+$(INCLUDE) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 #
 ######
 
@@ -63,10 +71,6 @@ BUILD/%_dats.c: ./DATS/%.dats ; \
   $(PATSOPT) $(CFLAGS) $(GCFLAG) -o $@ --dynamic $<
 
 ######
-
-INCLUDE:=
-INCLUDE+=-I"."
-INCLUDE+=-I"./BUILD/xats"
 
 BUILD/%_sats.o: \
 BUILD/%_sats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<

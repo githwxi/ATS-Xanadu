@@ -4,6 +4,9 @@
 #
 ######
 
+AR=ar
+MV=mv
+CP=cp
 CC=gcc
 SED=sed
 RMF=rm -f
@@ -154,6 +157,16 @@ $(OBJSATS) $(OBJDATS) ; \
 $(PATSCC) \
 -cleanaft -o xatsopt $(INCLUDE) $(GCFLAG) $^ $(LIBGC)
 #
+######
+
+libxatsopt: \
+BUILD/libxatsopt_dats.o \
+$(OBJSATS) \
+$(OBJDATS) ; $(AR) -r libxatsopt.a $^
+BUILD/libxatsopt_dats.o: \
+DATS/xatsopt.dats; \
+$(PATSCC) -DATS _LIBXATSOPT_ -o $@ -c $<
+
 ######
 
 BUILD/%_sats.c: ./SATS/%.sats ; \
