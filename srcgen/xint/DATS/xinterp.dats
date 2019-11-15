@@ -36,29 +36,34 @@
 // HX-2019-11-02: level-1 interpreter
 //
 (* ****** ****** *)
-
+//
+#include
+"share/atspre_staload.hats"
 #staload
-"./../SATS/interp0.sats"
-
-(* ****** ****** *)
-//
-extern
-fun
-interp0_main0
-{n:int | n >= 1}
-(int(n), !argv(n)): void
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
+//
+#staload "./../SATS/interp0.sats"
+//
+#dynload "./../DATS/interp0.dats"
+#dynload "./../DATS/interp0_print.dats"
+#dynload "./../DATS/interp0_envmap.dats"
+#dynload "./../DATS/interp0_dynexp.dats"
+//
+(* ****** ****** *)
+//
 implement
-interp0_main0
-(argc, argv) =
-{
-val () =
-println!
-("interp0_main0: yet-to-be-done!")
-}
-
+main0(argc, argv) =
+(
+//
+if
+(argc >= 2)
+then interp0_main0(argc, argv)
+else prerrln! ("Hello from ATS3(ATS/Xanadu)!")
+// end of [if]
+) (* end of [main] *)
+//
 (* ****** ****** *)
 
-(* end of [xint_interp0.dats] *)
+(* end of [xint_xinterp.dats] *)

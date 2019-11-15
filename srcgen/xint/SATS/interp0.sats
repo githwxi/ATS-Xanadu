@@ -107,5 +107,11 @@ fprint_ir0val: fprint_type(ir0val)
 overload fprint with fprint_ir0val
 //
 (* ****** ****** *)
+//
+fun
+interp0_main0
+{n:int | n >= 1}(int(n), !argv(n)): void
+//
+(* ****** ****** *)
 
 (* end of [xint_interp0.sats] *)
