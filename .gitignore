@@ -8,5 +8,8 @@
 *_?ats.c
 *.exe
 srcgen/xats/xatsopt
+srcgen/xint/BUILD/*
+srcgen/xint/xinterp
+srcgen/xint/BUILD/*
 
 ###### end of [.gitignore] ######

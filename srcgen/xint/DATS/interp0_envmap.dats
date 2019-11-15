@@ -37,6 +37,13 @@
 // level-1 interpreter for syncheck!
 //
 (* ****** ****** *)
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
 #staload "./../SATS/interp0.sats"
 

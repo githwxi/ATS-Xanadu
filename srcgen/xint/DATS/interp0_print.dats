@@ -38,12 +38,17 @@
 //
 (* ****** ****** *)
 //
-#staload D2E =
-"./../..\
-/xats/SATS/dynexp2.sats"
-#staload IR0 =
-"./../..\
-/xats/SATS/intrep0.sats"
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+
+#include
+"./../HATS/libxatsopt.hats"
+
+(* ****** ****** *)
 //
 overload
 fprint with $D2E.fprint_d2var
