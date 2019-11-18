@@ -61,22 +61,102 @@ interp0_program
   (irdcls) =
 let
 //
+val () =
+interp0_initize()
+//
 val
 env0 =
 intpenv_make_nil()
 //
 val () =
-interp0_irdclist
-  (env0, irdcls)
+interp0_irdclist(env0, irdcls)
 //
-val () =
-intpenv_free_nil(env0)
+val () = intpenv_free_nil(env0)
 //
 in
   // nothing
 end // end of [interp0_program]
 
 (* ****** ****** *)
+
+implement
+interp0_irexp
+  (env0, ire0) =
+let
+//
+val () =
+println!
+("interp0_irexp: ire0 = ", ire0)
+//
+in
+//
+case+
+ire0.node() of
+//
+(*
+| IR0Eint(tok) =>
+| IR0Ebtf(tok) =>
+| IR0Estr(tok) =>
+*)
+//
+| _(*rest-of-ir0exp*) => IR0Vnone1(ire0)
+//
+end // end of [interp0_irexp]
+
+(* ****** ****** *)
+
+implement
+interp0_irexplst
+  (env0, ires) =
+(
+case+ ires of
+| list_nil() =>
+  list_nil()
+| list_cons(ire0, ires) =>
+  (
+    list_cons(irv0, irvs)
+  ) where
+  {
+    val irv0 =
+    interp0_irexp(env0, ire0)
+    val irvs =
+    interp0_irexplst(env0, ires)
+  }
+) (* end of [interp0_irexplst] *)
+
+(* ****** ****** *)
+
+implement
+interp0_irexpopt
+  (env0, opt1) =
+(
+case+ opt1 of
+| None() =>
+  None(*void*)
+| Some(ire1) =>
+  Some(interp0_irexp(env0, ire1))
+) (* end of [interp0_irexpopt] *)
+
+(* ****** ****** *)
+
+local
+
+fun
+aux_valdecl
+( env0
+: !intpenv
+, irdcl: ir0dcl): void =
+let
+val-
+IR0Cvaldecl
+( knd
+, mopt
+, irvds) = irdcl.node()
+in
+  interp0_ir0valdeclist(env0, irvds)
+end // end of [aux_valdecl]
+
+in(*in-of-local*)
 
 implement
 interp0_irdcl
@@ -88,9 +168,19 @@ println!
 ("interp0_irdcl: x0 = ", x0)
 // *)
 in
-case+ x0 of
-| _ (* rest-of-ir0dcl *) => ()
+case+
+x0.node() of
+//
+| IR0Cvaldecl _ =>
+  aux_valdecl(env0, x0)
+//
+| _(* rest-of-ir0dcl *) => ()
+//
 end // end of [interp0_irdcl]
+
+end // end of [local]
+
+(* ****** ****** *)
 
 implement
 interp0_irdclist
@@ -106,6 +196,43 @@ case+ xs of
     val () = interp0_irdcl(env0, x0)
   }
 ) (* end of [interp0_irdclist] *)
+
+(* ****** ****** *)
+
+implement
+interp0_ir0valdecl
+  (env0, x0) =
+let
+//
+val+
+IR0VALDECL(rcd) = x0
+//
+val pat = rcd.pat
+val def = rcd.def
+//
+val def =
+interp0_irexpopt(env0, def)
+//
+in
+  // nothing
+end // end of [interp0_ir0valdecl]
+
+(* ****** ****** *)
+
+implement
+interp0_ir0valdeclist
+  (env0, xs) =
+(
+case+ xs of
+| list_nil() => ()
+| list_cons(x0, xs) =>
+  (
+    interp0_ir0valdeclist(env0, xs)
+  ) where
+  {
+    val () = interp0_ir0valdecl(env0, x0)
+  }
+) (* end of [interp0_ir0valdeclist] *)
 
 (* ****** ****** *)
 

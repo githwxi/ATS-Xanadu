@@ -88,6 +88,8 @@ ir0val =
 | IR0Vfun of ir0valfun
 | IR0Vfc2 of (ir0exp, ir0env)
 //
+| IR0Vnone0 of () | IR0Vnone1 of (ir0exp)
+//
 where
 //
 ir0valist = List0(ir0val)
@@ -159,7 +161,19 @@ interp0_irexp
 fun
 interp0_irexplst
 (env: !intpenv, ires: ir0explst): ir0valist
+fun
+interp0_irexpopt
+(env: !intpenv, opt0: ir0expopt): ir0valopt
 //
+(* ****** ****** *)
+
+fun
+interp0_ir0valdecl
+(env: !intpenv, irvd: ir0valdecl): void
+fun
+interp0_ir0valdeclist
+(env: !intpenv, irvds: ir0valdeclist): void
+
 (* ****** ****** *)
 //
 fun
