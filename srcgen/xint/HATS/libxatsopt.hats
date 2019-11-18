@@ -1,10 +1,19 @@
 (* ****** ****** *)
+//
 #staload
 ERR =
 "./../../xats/SATS/xerrory.sats"
 //
 (* ****** ****** *)
 //
+#staload
+STM =
+"./../../xats/SATS/stamp0.sats"
+#staload
+SYM =
+"./../../xats/SATS/symbol.sats"
+//
+(* ****** ****** *)
 //
 #staload
 FP0 =

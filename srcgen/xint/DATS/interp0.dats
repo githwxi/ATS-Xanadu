@@ -762,10 +762,12 @@ val () =
 )
 //
 val
-irdcs = irerase_declist(d3cs)
+irdcls = irerase_declist(d3cs)
 val () =
 println!
-("process_fpath: irdcs = ", irdcs)
+("process_fpath: irdcls = ", irdcls)
+//
+val () = interp0_program(irdcls)
 //
 } (* end of [then] *)
 else

@@ -522,6 +522,21 @@ d2var_set_type
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+eq_d2con_d2con
+(x1, x2) =
+$STM.eq_stamp_stamp(x1.stamp(), x2.stamp())
+implement
+eq_d2cst_d2cst
+(x1, x2) =
+$STM.eq_stamp_stamp(x1.stamp(), x2.stamp())
+implement
+eq_d2var_d2var
+(x1, x2) =
+$STM.eq_stamp_stamp(x1.stamp(), x2.stamp())
+//
+(* ****** ****** *)
 
 local
 
