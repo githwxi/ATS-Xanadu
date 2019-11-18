@@ -73,7 +73,7 @@ tnode =
   | T_IDENT_qual of string // $alnum.
 //
   | T_INT1 of (string) // base=10
-  | T_INT2 of (int(*base*), string)
+  | T_INT2 of (int(*base*), string(*rep*))
   | T_INT3 of (int(*base*), string(*rep*), int(*suffix*))
 //
   | T_FLOAT1 of (string(*rep*)) // base=10

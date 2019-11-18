@@ -137,9 +137,7 @@ intpenv_free_nil(env: intpenv): void
 
 fun
 interp0_search_d2cst
-( env
-: !intpenv
-, d2c: d2cst): Option_vt(ir0val)
+(d2c: d2cst): Option_vt(ir0val)
 fun
 interp0_search_d2var
 ( env

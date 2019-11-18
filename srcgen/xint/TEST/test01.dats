@@ -2,7 +2,11 @@
 
 val x = 0
 val y = 1
-val z = cons(x, cons(y, nil()))
+val z = x + y
+////
+(* ****** ****** *)
+
+val xy = cons(x, cons(y, nil()))
 
 (* ****** ****** *)
 
