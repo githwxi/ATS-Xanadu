@@ -110,6 +110,11 @@ case+ x0 of
 | IR0Vfc2(ire, env) =>
   fprintln!(out, "IR0Vfc2(", "...", ")")
 //
+| IR0Vnone0() =>
+  fprintln!(out, "IR0Vnone0(", ")")
+| IR0Vnone1(ire1) =>
+  fprintln!(out, "IR0Vnone1(", ire1, ")")
+//
 ) (* end of [fprint_ir0val] *)
 //
 (* ****** ****** *)
