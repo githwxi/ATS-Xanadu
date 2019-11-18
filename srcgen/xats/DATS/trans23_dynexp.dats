@@ -625,11 +625,19 @@ t2ype_tq2as_elim2
 //
 val
 tias = list_nil()
-val
-node = D3Etcst(d2c0, ti3a, tias)
 //
 in
-  d3exp_make_node(loc0, t2p0, node)
+//
+case+ ti3a of
+|
+TI3ARGnone _ =>
+d3exp_make_node
+(loc0, t2p0, D3Efcst(d2c0))
+|
+TI3ARGsome _ => 
+d3exp_make_node
+(loc0, t2p0, D3Etcst(d2c0, ti3a, tias))
+//
 end // end of [auxcst1]
 
 (* ****** ****** *)

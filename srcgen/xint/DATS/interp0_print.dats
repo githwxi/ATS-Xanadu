@@ -105,6 +105,8 @@ case+ x0 of
   fprintln!
   (out, "IR0Vcon(", d2c, "; ", xs, ")")
 //
+| IR0Vfun(firv) =>
+  fprintln!(out, "IR0Vfun(", "...", ")")
 | IR0Vfc2(ire, env) =>
   fprintln!(out, "IR0Vfc2(", "...", ")")
 //

@@ -39,13 +39,73 @@
 (* ****** ****** *)
 //
 #include
-"share/atspre_staload.hats"
+"share\
+/atspre_staload.hats"
 #staload
-UN = "prelude/SATS/unsafe.sats"
+UN =
+"prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+//
+#include
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 
 #staload "./../SATS/interp0.sats"
+
+(* ****** ****** *)
+
+implement
+interp0_program
+  (irdcls) =
+let
+//
+val
+env0 =
+intpenv_make_nil()
+//
+val () =
+interp0_irdclist
+  (env0, irdcls)
+//
+val () =
+intpenv_free_nil(env0)
+//
+in
+  // nothing
+end // end of [interp0_program]
+
+(* ****** ****** *)
+
+implement
+interp0_irdcl
+  (env0, x0) =
+let
+// (*
+val () =
+println!
+("interp0_irdcl: x0 = ", x0)
+// *)
+in
+case+ x0 of
+| _ (* rest-of-ir0dcl *) => ()
+end // end of [interp0_irdcl]
+
+implement
+interp0_irdclist
+  (env0, xs) =
+(
+case+ xs of
+| list_nil() => ()
+| list_cons(x0, xs) =>
+  (
+    interp0_irdclist(env0, xs)
+  ) where
+  {
+    val () = interp0_irdcl(env0, x0)
+  }
+) (* end of [interp0_irdclist] *)
 
 (* ****** ****** *)
 

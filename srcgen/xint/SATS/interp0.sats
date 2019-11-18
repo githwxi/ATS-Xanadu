@@ -60,8 +60,8 @@ typedef d2cst = $D2E.d2cst
 
 (* ****** ****** *)
 
-abstype ir0env_type = ptr
-typedef ir0env = ir0env_type
+abstype ir0env_tbox = ptr
+typedef ir0env = ir0env_tbox
 
 (* ****** ****** *)
 //
@@ -85,6 +85,7 @@ ir0val =
 | IR0Vcon of
   (d2con, ir0valist)
 //
+| IR0Vfun of ir0valfun
 | IR0Vfc2 of (ir0exp, ir0env)
 //
 where
@@ -92,6 +93,8 @@ where
 ir0valist = List0(ir0val)
 and
 ir0valopt = Option(ir0val)
+and
+ir0valfun = (ir0valist -<cloref1> ir0val)
 //
 (* ****** ****** *)
 //
@@ -106,6 +109,70 @@ fun
 fprint_ir0val: fprint_type(ir0val)
 overload fprint with fprint_ir0val
 //
+(* ****** ****** *)
+
+absvtype intpenv_vtbox = ptr
+vtypedef intpenv = intpenv_vtbox
+
+(* ****** ****** *)
+//
+fun
+ir0env_make_nil(): ir0env
+//
+fun
+intpenv_make_nil(): intpenv
+fun
+intpenv_make_env(ir0env): intpenv
+fun
+intpenv_take_env(env: !intpenv): ir0env
+//
+(* ****** ****** *)
+//
+fun
+intpenv_free_nil(env: intpenv): void
+//
+(* ****** ****** *)
+
+fun
+interp0_search_d2cst
+( env
+: !intpenv
+, d2c: d2cst): Option_vt(ir0val)
+fun
+interp0_search_d2var
+( env
+: !intpenv
+, d2v: d2var): Option_vt(ir0val)
+
+(* ****** ****** *)
+//
+fun
+interp0_irdcl
+(env: !intpenv, irc: ir0dcl): void
+fun
+interp0_irdclist
+(env: !intpenv, ircs: ir0dclist): void
+//
+fun
+interp0_irexp
+(env: !intpenv, ire: ir0exp): ir0val
+fun
+interp0_irexplst
+(env: !intpenv, ires: ir0explst): ir0valist
+//
+(* ****** ****** *)
+//
+fun
+interp0_initize(): void
+//
+fun
+interp0_initize_gint(): void
+//
+(* ****** ****** *)
+
+fun
+interp0_program(xs: ir0dclist): void
+
 (* ****** ****** *)
 //
 fun

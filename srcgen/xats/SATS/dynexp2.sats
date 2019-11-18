@@ -311,6 +311,22 @@ overload .stamp with d2var_get_stamp
 (* ****** ****** *)
 //
 fun
+eq_d2con_d2con
+(x1: d2con, x2: d2con): bool
+fun
+eq_d2cst_d2cst
+(x1: d2cst, x2: d2cst): bool
+fun
+eq_d2var_d2var
+(x1: d2var, x2: d2var): bool
+//
+overload = with eq_d2con_d2con
+overload = with eq_d2cst_d2cst
+overload = with eq_d2var_d2var
+//
+(* ****** ****** *)
+//
+fun
 d2con_make_idtp
 (id: token, s2e: s2exp): d2con
 //
