@@ -221,7 +221,7 @@ val+~INTPENV(l0, xs) = env
 
 implement
 interp0_search_d2cst
-  (env0, d2c0) =
+  (d2c0) =
 (
 the_d2cstdef_search(d2c0)
 )
@@ -585,7 +585,38 @@ d2cst("gint_gte_sint_sint")
 ,
 IR0Vfun(firfun2(gint_gte_sint_sint)))
 //
-} 
+val () =
+the_d2cstdef_insert
+(
+d2cst("gint_add_sint_sint")
+,
+IR0Vfun(firfun2(gint_add_sint_sint)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("gint_sub_sint_sint")
+,
+IR0Vfun(firfun2(gint_sub_sint_sint)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("gint_mul_sint_sint")
+,
+IR0Vfun(firfun2(gint_mul_sint_sint)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("gint_div_sint_sint")
+,
+IR0Vfun(firfun2(gint_div_sint_sint)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("gint_mod_sint_sint")
+,
+IR0Vfun(firfun2(gint_mod_sint_sint)))
+//
+} (* end of [then] *) 
 end (* end of [interp0_initize_gint] *)
 
 (* ****** ****** *)

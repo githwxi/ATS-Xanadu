@@ -39,6 +39,9 @@ FS0 =
 (* ****** ****** *)
 //
 #staload
+"./../../xats/SATS/lexing.sats"
+//
+#staload
 "./../../xats/SATS/parsing.sats"
 //
 #staload
