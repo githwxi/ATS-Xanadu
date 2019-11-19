@@ -161,10 +161,14 @@ ir0exp_node =
 //
 | IR0Efcst of (d2cst)
 //
-| IR0Elet of (ir0dclist, ir0exp)
-//
 | IR0Edapp of
   (ir0exp, int(*npf*), ir0explst)
+//
+| IR0Elet of (ir0dclist, ir0exp)
+//
+| IR0Eif0 of
+  ( ir0exp(*cond*)
+  , ir0exp(*then*), ir0expopt(*else*))
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //

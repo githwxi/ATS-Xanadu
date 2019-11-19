@@ -178,12 +178,19 @@ interp0_irexpopt
 (* ****** ****** *)
 //
 fun
-interp0_irpat_ck
+interp0_irpat_ck1
+(irp: ir0pat, irv: ir0val): bool
+fun
+interp0_irpatlst_ck1
+(irps: ir0patlst, irvs: ir0valist): bool
+//
+fun
+interp0_irpat_ck2
 ( env
 : !intpenv
 , irp: ir0pat, irv: ir0val): void
 fun
-interp0_irpatlst_ck
+interp0_irpatlst_ck2
 ( env
 : !intpenv
 , irps: ir0patlst, irvs: ir0valist): void
@@ -210,6 +217,13 @@ interp0_initize_gint(): void
 fun
 interp0_program(xs: ir0dclist): void
 
+(* ****** ****** *)
+//
+fun
+interp0_fprint_d2cstmap(FILEref): void
+fun
+interp0_fprint_d2varmap(FILEref): void
+//
 (* ****** ****** *)
 //
 fun
