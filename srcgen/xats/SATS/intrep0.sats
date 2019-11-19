@@ -68,10 +68,12 @@ typedef d2var = $D2E.d2var
 (* ****** ****** *)
 //
 typedef d3pat = $D3E.d3pat
+typedef f3arg = $D3E.f3arg
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 //
 typedef d3patlst = $D3E.d3patlst
+typedef f3arglst = $D3E.f3arglst
 //
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
@@ -148,6 +150,29 @@ overload fprint with fprint_ir0pat
 (* ****** ****** *)
 //
 datatype
+ir0arg =
+| IR0ARGsome of
+  (int(*npf*), ir0patlst)
+//
+typedef
+ir0arglst = List0(ir0arg)
+//
+(* ****** ****** *)
+//
+fun
+print_ir0arg: print_type(ir0arg)
+fun
+prerr_ir0arg: prerr_type(ir0arg)
+overload print with print_ir0arg
+overload prerr with prerr_ir0arg
+//
+fun
+fprint_ir0arg: fprint_type(ir0arg)
+overload fprint with fprint_ir0arg
+//
+(* ****** ****** *)
+//
+datatype
 ir0exp_node =
 //
 | IR0Eint of (token)
@@ -162,13 +187,17 @@ ir0exp_node =
 | IR0Efcst of (d2cst)
 //
 | IR0Edapp of
-  (ir0exp, int(*npf*), ir0explst)
+  ( ir0exp
+  , int(*npf*), ir0explst)
 //
 | IR0Elet of (ir0dclist, ir0exp)
+| IR0Ewhere of (ir0exp, ir0dclist)
 //
 | IR0Eif0 of
   ( ir0exp(*cond*)
   , ir0exp(*then*), ir0expopt(*else*))
+//
+| IR0Elam of (ir0arglst, ir0exp)
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //
@@ -287,6 +316,11 @@ fun
 irerase_dpat(d3pat): ir0pat
 fun
 irerase_dpatlst(d3patlst): ir0patlst
+//
+(* ****** ****** *)
+//
+fun
+irerase_farglst(f3arglst): ir0arglst
 //
 (* ****** ****** *)
 //

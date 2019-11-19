@@ -67,6 +67,8 @@ fprint_val<d2var> = fprint_d2var
 implement
 fprint_val<ir0pat> = fprint_ir0pat
 implement
+fprint_val<ir0arg> = fprint_ir0arg
+implement
 fprint_val<ir0exp> = fprint_ir0exp
 implement
 fprint_val<ir0dcl> = fprint_ir0dcl
@@ -107,6 +109,25 @@ case- x0.node() of
   fprint!(out, "IR0Pnone1(", d3p, ")")
 //
 )
+//
+(* ****** ****** *)
+//
+implement
+print_ir0arg(x0) =
+fprint_ir0arg(stdout_ref, x0)
+implement
+prerr_ir0arg(x0) =
+fprint_ir0arg(stderr_ref, x0)
+//
+implement
+fprint_ir0arg
+  (out, x0) =
+let
+val+IR0ARGsome(npf, irps) = x0
+in
+fprint!
+(out, "IR0ARGsome(", npf, "; ", irps, ")")
+end // end of [fprint_ir0arg]
 //
 (* ****** ****** *)
 //
@@ -157,7 +178,10 @@ x0.node() of
   fprint!
   ( out
   , "IR0Elet(", irds, "; ", ire1, ")")
-
+| IR0Ewhere(ire1, irds) =>
+  fprint!
+  ( out
+  , "IR0Ewhere(", ire1, "; ", irds, ")")
 //
 | IR0Eif0
   (ire1, ire2, opt3) =>
@@ -165,10 +189,19 @@ x0.node() of
   ( out, "IR0Eif0("
   , ire1, "; ", ire2, "; ", opt3, ")")
 //
+| IR0Elam(farg, body) =>
+  fprint!
+  ( out
+  , "IR0Elam(", farg, "; ", body, ")")
+//
 | IR0Enone0() =>
-  fprint!(out, "IR0Enone0(", ")")
-| IR0Enone1(d3e) =>
-  fprint!(out, "IR0Enone1(", d3e, ")")
+  (
+    fprint!(out, "IR0Enone0(", ")")
+  )
+| IR0Enone1(d3e1) =>
+  (
+    fprint!(out, "IR0Enone1(", d3e1, ")")
+  )
 //
 )
 //

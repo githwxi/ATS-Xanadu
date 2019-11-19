@@ -1,8 +1,9 @@
 (* ****** ****** *)
 
-val x = 0
-val y = 1
-val z = x < y
+val x = 10
+val y = 20
+val z = x * y % y
+val f = lam(x:int) => x + x
 ////
 (* ****** ****** *)
 
