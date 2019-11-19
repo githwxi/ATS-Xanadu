@@ -54,14 +54,21 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/interp0.sats"
-
-(* ****** ****** *)
-
 overload =
 with $D2E.eq_d2cst_d2cst
 overload =
 with $D2E.eq_d2var_d2var
+
+(* ****** ****** *)
+
+#staload "./../SATS/interp0.sats"
+
+(* ****** ****** *)
+
+implement
+fprint_val<ir0exp> = fprint_ir0exp
+implement
+fprint_val<ir0val> = fprint_ir0val
 
 (* ****** ****** *)
 //
@@ -429,6 +436,15 @@ hashtbl_make_nil<key,itm>(i2sz(D2CSTMAPSZ))
 in (*in-of-local*)
 
 implement
+interp0_fprint_d2cstmap
+  (out) =
+(
+  fprint_hashtbl(out, the_d2cstdef_map)
+)
+
+(* ****** ****** *)
+
+implement
 the_d2cstdef_search
   (k0) =
 hashtbl_search<key,itm>(the_d2cstdef_map, k0)
@@ -441,6 +457,8 @@ val-
 ~None_vt() =
 hashtbl_insert<key,itm>(the_d2cstdef_map, k0, x0)
 } (* end of [the_d2cstdef_insert] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -478,6 +496,15 @@ hashtbl_make_nil<key,itm>(i2sz(D2VARMAPSZ))
 in (*in-of-local*)
 
 implement
+interp0_fprint_d2varmap
+  (out) =
+(
+  fprint_hashtbl(out, the_d2vardef_map)
+)
+
+(* ****** ****** *)
+
+implement
 the_d2vardef_search
   (k0) =
 hashtbl_search<key,itm>(the_d2vardef_map, k0)
@@ -490,6 +517,8 @@ val-
 ~None_vt() =
 hashtbl_insert<key,itm>(the_d2vardef_map, k0, x0)
 } (* end of [the_d2vardef_insert] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 

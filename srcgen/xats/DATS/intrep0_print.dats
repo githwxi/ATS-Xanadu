@@ -121,12 +121,19 @@ implement
 fprint_ir0exp
   (out, x0) =
 (
-case- x0.node() of
+case+
+x0.node() of
 //
 | IR0Eint(tok) =>
   fprint!(out, "IR0Eint(", tok, ")")
 | IR0Ebtf(tok) =>
   fprint!(out, "IR0Ebtf(", tok, ")")
+(*
+| IR0Eflt(tok) =>
+  fprint!(out, "IR0Eflt(", tok, ")")
+*)
+| IR0Estr(tok) =>
+  fprint!(out, "IR0Estr(", tok, ")")
 //
 | IR0Evar(d2v) =>
   fprint!(out, "IR0Evar(", d2v, ")")
@@ -145,6 +152,18 @@ case- x0.node() of
   ( out
   , "IR0Edapp("
   , irf0, "; ", npf1, "; ", ires, ")")
+//
+| IR0Elet(irds, ire1) =>
+  fprint!
+  ( out
+  , "IR0Elet(", irds, "; ", ire1, ")")
+
+//
+| IR0Eif0
+  (ire1, ire2, opt3) =>
+  fprint!
+  ( out, "IR0Eif0("
+  , ire1, "; ", ire2, "; ", opt3, ")")
 //
 | IR0Enone0() =>
   fprint!(out, "IR0Enone0(", ")")

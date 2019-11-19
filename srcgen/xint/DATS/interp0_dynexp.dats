@@ -146,8 +146,10 @@ val
 opt =
 interp0_search_d2var(env0, d2v)
 //
+(*
 val () =
 println!("auxvar: d2v = ", d2v)
+*)
 //
 in
 case- opt of ~Some_vt(irv) => irv
@@ -165,8 +167,10 @@ IR0Efcst(d2c) = ire0.node()
 val
 opt = interp0_search_d2cst(d2c)
 //
+(*
 val () =
 println!("auxfcst: d2c = ", d2c)
+*)
 //
 in
 case- opt of ~Some_vt(irv) => irv
@@ -371,6 +375,24 @@ case+ xs of
 (* ****** ****** *)
 
 implement
+interp0_irpat_ck2
+(env0, irp0, irv0) =
+(
+case-
+irp0.node() of
+//
+| IR0Pany() => ()
+| IR0Pvar(d2v0) =>
+  {
+    val () =
+    interp0_insert_d2var(env0, d2v0, irv0)
+  } (* end of [IR0Pvar] *)
+//
+) (* end of [interp0_irpat_ck2] *)
+
+(* ****** ****** *)
+
+implement
 interp0_ir0valdecl
   (env0, x0) =
 let
@@ -385,7 +407,12 @@ val def =
 interp0_irexpopt(env0, def)
 //
 in
-  // nothing
+//
+case+ def of
+| None() => ()
+| Some(irv) =>
+  interp0_irpat_ck2(env0, pat, irv)
+//
 end // end of [interp0_ir0valdecl]
 
 (* ****** ****** *)
