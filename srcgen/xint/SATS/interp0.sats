@@ -147,6 +147,18 @@ interp0_search_d2var
 (* ****** ****** *)
 //
 fun
+interp0_insert_d2cst
+(d2c: d2cst, irv: ir0val): void
+//
+fun
+interp0_insert_d2var
+( env
+: !intpenv
+, d2v: d2var, irv: ir0val): void
+//
+(* ****** ****** *)
+//
+fun
 interp0_irdcl
 (env: !intpenv, irc: ir0dcl): void
 fun
@@ -162,6 +174,19 @@ interp0_irexplst
 fun
 interp0_irexpopt
 (env: !intpenv, opt0: ir0expopt): ir0valopt
+//
+(* ****** ****** *)
+//
+fun
+interp0_irpat_ck
+( env
+: !intpenv
+, irp: ir0pat, irv: ir0val): void
+fun
+interp0_irpatlst_ck
+( env
+: !intpenv
+, irps: ir0patlst, irvs: ir0valist): void
 //
 (* ****** ****** *)
 
