@@ -85,35 +85,32 @@ fprint_ir0val
 case+ x0 of
 //
 | IR0Vnil() =>
-  fprintln!(out, "IR0Vnil()")
+  fprint!(out, "IR0Vnil()")
 //
 | IR0Vint(i0) =>
-  fprintln!(out, "IR0Vint(", i0, ")")
+  fprint!(out, "IR0Vint(", i0, ")")
 | IR0Vbtf(b0) =>
-  fprintln!(out, "IR0Vbtf(", b0, ")")
+  fprint!(out, "IR0Vbtf(", b0, ")")
 | IR0Vchr(c0) =>
-  fprintln!(out, "IR0Vchr(", c0, ")")
+  fprint!(out, "IR0Vchr(", c0, ")")
 | IR0Vflt(f0) =>
-  fprintln!(out, "IR0Vflt(", f0, ")")
+  fprint!(out, "IR0Vflt(", f0, ")")
 | IR0Vstr(s0) =>
-  fprintln!(out, "IR0Vstr(", s0, ")")
-//
-| IR0Vcst(d2c) =>
-  fprintln!(out, "IR0Vcst(", d2c, ")")
+  fprint!(out, "IR0Vstr(", s0, ")")
 //
 | IR0Vcon(d2c, xs) =>
-  fprintln!
+  fprint!
   (out, "IR0Vcon(", d2c, "; ", xs, ")")
 //
 | IR0Vfun(firv) =>
-  fprintln!(out, "IR0Vfun(", "...", ")")
+  fprint!(out, "IR0Vfun(", "...", ")")
 | IR0Vfc2(ire, env) =>
-  fprintln!(out, "IR0Vfc2(", "...", ")")
+  fprint!(out, "IR0Vfc2(", "...", ")")
 //
 | IR0Vnone0() =>
-  fprintln!(out, "IR0Vnone0(", ")")
+  fprint!(out, "IR0Vnone0(", ")")
 | IR0Vnone1(ire1) =>
-  fprintln!(out, "IR0Vnone1(", ire1, ")")
+  fprint!(out, "IR0Vnone1(", ire1, ")")
 //
 ) (* end of [fprint_ir0val] *)
 //

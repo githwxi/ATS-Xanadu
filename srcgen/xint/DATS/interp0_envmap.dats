@@ -60,16 +60,12 @@ overload =
 with $D2E.eq_d2var_d2var
 
 (* ****** ****** *)
-
+//
 #staload "./../SATS/interp0.sats"
-
-(* ****** ****** *)
-
-implement
-fprint_val<ir0exp> = fprint_ir0exp
+//
 implement
 fprint_val<ir0val> = fprint_ir0val
-
+//
 (* ****** ****** *)
 //
 extern

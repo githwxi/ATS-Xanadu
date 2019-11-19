@@ -73,10 +73,67 @@ d3p0.node() of
 | D3Pvar(d2v) =>
   ir0pat_make_node(loc0, IR0Pvar(d2v))
 //
+| D3Panno(d3p1, _) => irerase_dpat(d3p1)
+//
 | _(*rest-of-d3pat*) =>
   ir0pat_make_node(loc0, IR0Pnone1(d3p0))
 //
 end // end of [irerase_dpat]
+
+(* ****** ****** *)
+
+implement
+irerase_dpatlst
+  (d3ps) =
+list_vt2t(irps) where
+{
+val
+irps =
+list_map<d3pat><ir0pat>
+  (d3ps) where
+{
+implement
+list_map$fopr<d3pat><ir0pat>(d3p) = irerase_dpat(d3p)
+}
+} (* end of [irerase_dpatlst] *)
+
+(* ****** ****** *)
+
+implement
+irerase_farglst
+  (f3as) =
+(
+case+ f3as of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(f3a0, f3as) =>
+(
+case+
+f3a0.node() of 
+//
+| F3ARGsome_dyn
+    (npf, d3ps) =>
+  (
+    list_cons(ir0a, iras)
+  ) where
+  {
+    val ir0a =
+    IR0ARGsome
+    (npf, irerase_dpatlst(d3ps))
+    val iras = irerase_farglst(f3as)
+  }
+//
+| F3ARGnone2 _ => irerase_farglst(f3as)
+| F3ARGnone3 _ => irerase_farglst(f3as)
+//
+| F3ARGsome_sta _ => irerase_farglst(f3as)
+| F3ARGsome_met _ => irerase_farglst(f3as)
+)
+) (* end of [irerase_farglst] *)
+
 
 (* ****** ****** *)
 
@@ -126,6 +183,47 @@ d3e0.node() of
     (loc0, IR0Edapp(irf0, npf1, ires))
   end
 //
+| D3Elet(d3cs, d3e1) =>
+  let
+    val
+    ircs =
+    irerase_declist(d3cs)
+  in
+    let
+    val
+    ire1 = irerase_dexp(d3e1)
+    in
+      ir0exp_make_node
+      (loc0, IR0Elet(ircs, ire1))
+    end
+  end
+| D3Ewhere(d3e1, d3cs) =>
+  let
+    val
+    ire1 = irerase_dexp(d3e1)
+    val
+    ircs = irerase_declist(d3cs)
+  in
+    ir0exp_make_node
+      (loc0, IR0Ewhere(ire1, ircs))
+    // ir0exp_make_node
+  end
+//
+| D3Elam
+  (f3as, res1, arrw, body) =>
+  let
+    val iras =
+    irerase_farglst(f3as)
+  in
+    let
+      val
+      body = irerase_dexp(body)
+    in
+      ir0exp_make_node
+      (loc0, IR0Elam(iras, body))
+    end
+  end
+//
 | _(*rest-of-d3exp*) =>
   ir0exp_make_node(loc0, IR0Enone1(d3e0))
 //
@@ -145,10 +243,10 @@ case+ opt of
 implement
 irerase_dexplst
   (d3es) =
-list_vt2t(d3es) where
+list_vt2t(ires) where
 {
 val
-d3es =
+ires =
 list_map<d3exp><ir0exp>
   (d3es) where
 {

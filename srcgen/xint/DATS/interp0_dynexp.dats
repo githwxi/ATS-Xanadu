@@ -60,9 +60,12 @@ overload
 print with $D2E.print_d2var
 //
 (* ****** ****** *)
-
+//
 #staload "./../SATS/interp0.sats"
-
+//
+implement
+fprint_val<ir0val> = fprint_ir0val
+//
 (* ****** ****** *)
 
 implement
@@ -176,6 +179,8 @@ in
 case- opt of ~Some_vt(irv) => irv
 end // end of [auxfcst]
 
+(* ****** ****** *)
+
 fun
 auxdapp
 ( env0
@@ -196,6 +201,18 @@ auxdfun(env0, irf0)
 val
 irvs =
 auxdarg(env0, npf1, ires)
+//
+(*
+val () =
+println!
+("auxdapp: ire0 = ", ire0)
+val () =
+println!
+("auxdapp: irf0 = ", irf0)
+val () =
+println!
+("auxdapp: irvs = ", irvs)
+*)
 //
 in
 //
@@ -244,6 +261,22 @@ case+ ires of
   )
 ) (* end of [auxdarg] *)
 
+(* ****** ****** *)
+
+fun
+aux_lam
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+(
+IR0Vfc2(ire0, env1)
+) where
+{
+  val
+  env1 = intpenv_take_env(env0)
+} (* end of [aux_lam] *)
+
 in (* in-of-local *)
 
 implement
@@ -271,6 +304,8 @@ ire0.node() of
 | IR0Efcst _ => auxfcst(env0, ire0)
 //
 | IR0Edapp _ => auxdapp(env0, ire0)
+//
+| IR0Elam(_, _) => aux_lam(env0, ire0)
 //
 | _(*rest-of-ir0exp*) => IR0Vnone1(ire0)
 //

@@ -294,6 +294,17 @@ d3e0.node() of
     (loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
   end
 //
+| D3Elam
+  (arg1, res2, arrw, body) =>
+  let
+    val body =
+    trans3t_dexp(env0, body)
+  in
+    d3exp_make_node
+    ( loc0
+    , t2p0, D3Elam(arg1, res2, arrw, body))
+  end // D3Elam
+//
 | D3Eaddr(d3e1) =>
   let
     val d3e1 =
