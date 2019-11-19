@@ -259,6 +259,49 @@ interp0_search_d2var
 
 (* ****** ****** *)
 
+implement
+interp0_insert_d2cst
+  (d2c0, irv0) =
+(
+the_d2cstdef_insert(d2c0, irv0)
+)
+
+(* ****** ****** *)
+
+implement
+interp0_insert_d2var
+  (env0, d2v0, irv0) =
+let
+//
+val+
+@INTPENV(l0, xs) = env0
+//
+in
+//
+case xs of
+|
+intplst_nil() =>
+(
+fold@(env0);
+the_d2vardef_insert(d2v0, irv0)
+)
+|
+_(*non-intplst_nil*) =>
+(
+fold@(env0)
+) where
+{
+  val () =
+  (
+  xs :=
+  intplst_cons(d2v0, irv0, xs)
+  )
+} (* non-intplst_nil *)
+//
+end // end of [interp0_insert_d2var]
+
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)
