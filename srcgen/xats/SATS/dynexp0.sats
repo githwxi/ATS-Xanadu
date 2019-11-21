@@ -493,6 +493,11 @@ d0exp_node =
   ( token(*lam/lam@*)
   , f0arglst(*arglst*)
   , effs0expopt, f0unarrow, d0exp, tokenopt)
+| D0Efix of
+  ( token(*fix/fix@*)
+  , d0eid(*fixed-pnt*)
+  , f0arglst(*arglst*)
+  , effs0expopt, f0unarrow, d0exp, tokenopt)
 //
 | D0Eanno of (d0exp, s0exp)
 //

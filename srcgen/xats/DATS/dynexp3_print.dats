@@ -398,10 +398,20 @@ x0.node() of
   , knd0, "; ", d3e1, "; ", dcls, ")")
 //
 | D3Elam
-  (f3as, tres, arrw, body) =>
+  (knd, f3as, tres, arrw, body) =>
   fprint!
-  ( out, "D3Elam("
+  ( out
+  , "D3Elam("
+  , knd, "; "
   , f3as, "; "
+  , tres, "; ", arrw, "; ", body, ")")
+| D3Efix
+  (knd, fid, f3as, tres, arrw, body) =>
+  fprint!
+  ( out
+  , "D3Efix("
+  , knd, "; "
+  , fid, "; ", f3as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
 | D3Eaddr(d3e1) =>

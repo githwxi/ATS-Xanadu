@@ -1654,7 +1654,8 @@ d1e0.node() of
   } (* end of [D1Ecase] *)
 //
 | D1Elam
-  (f1as, tres, arrw, body) =>
+  ( knd
+  , f1as, tres, arrw, body) =>
   let
   val
   (pf0|()) =
@@ -1672,7 +1673,37 @@ d1e0.node() of
   in
     d2exp_make_node
     ( loc0
-    , D2Elam(f2as, tres, arrw, body))
+    , D2Elam(knd, f2as, tres, arrw, body))
+  end
+//
+| D1Efix
+  ( knd
+  , fid, f1as, tres, arrw, body) =>
+  let
+//
+  val
+  (pf0|()) =
+  the_trans12_pushnil()
+//
+  val
+  d2v = d2var_new1(fid)
+  val ((*void*)) =
+  the_dexpenv_add_var(d2v)
+//
+  val f2as =
+    trans12_farglst(f1as)
+  val tres =
+    trans12_effsexpopt(tres)
+  val body = trans12_dexp(body)
+//
+  val
+  ((*void*)) =
+  the_trans12_popfree(pf0|(*void*))
+  in
+    d2exp_make_node
+    ( loc0
+    , D2Efix
+      (knd, d2v, f2as, tres, arrw, body))
   end
 //
 | D1Eanno

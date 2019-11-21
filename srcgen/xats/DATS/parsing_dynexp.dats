@@ -1478,7 +1478,9 @@ case+ tnd of
   end // end of [T_CASE]
 //
 | T_LAM(k0) => let
+//
     val () = buf.incby1()
+//
     val arg =
       p_f0argseq(buf, err)
     val res =
@@ -1487,12 +1489,47 @@ case+ tnd of
       p_f0unarrow(buf, err)
     val fbody = p_d0exp(buf, err)
     val tfini = popt_ENDLAM(buf, err)
+//
   in
     err := e0;
     d0exp_make_node
     ( loc_res
     , D0Elam
-      (tok, arg, res, farrw, fbody, tfini)
+      ( tok // lam|lam@
+      , arg, res, farrw, fbody, tfini)
+    ) where
+    {
+      val loc_res =
+      (
+        case+ tfini of 
+        | None() => tok.loc()+fbody.loc()
+        | Some(tok2) => tok.loc()+tok2.loc()
+      ) : loc_t // end of [val]
+    }
+  end 
+//
+| T_FIX(k0) => let
+//
+    val () = buf.incby1()
+//
+    val fid =
+      p_d0eid(buf, err)
+    val arg =
+      p_f0argseq(buf, err)
+    val res =
+      p_effs0expopt(buf, err)
+    val farrw =
+      p_f0unarrow(buf, err)
+    val fbody = p_d0exp(buf, err)
+    val tfini = popt_ENDLAM(buf, err)
+//
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Efix
+      ( tok // fix|fix@
+      , fid, arg, res, farrw, fbody, tfini)
     ) where
     {
       val loc_res =

@@ -451,10 +451,18 @@ case- x0.node() of
   , knd, "; ", d2e1, "; ", d2cls, ")")
 //
 | D2Elam
-  (f2as, tres, arrw, body) =>
+  (knd, f2as, tres, arrw, body) =>
   fprint!
-  ( out, "D2Elam("
+  ( out
+  , "D2Elam(", knd, "; "
   , f2as, "; "
+  , tres, "; ", arrw, "; ", body, ")")
+| D2Efix
+  (knd, fid, f2as, tres, arrw, body) =>
+  fprint!
+  ( out
+  , "D2Efix(", knd, "; "
+  , fid, "; ", f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
 | D2Eaddr(d2e1) =>

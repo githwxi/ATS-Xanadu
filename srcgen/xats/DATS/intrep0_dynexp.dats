@@ -210,7 +210,8 @@ d3e0.node() of
   end
 //
 | D3Elam
-  (f3as, res1, arrw, body) =>
+  ( knd0
+  , f3as, res1, arrw, body) =>
   let
     val iras =
     irerase_farglst(f3as)
@@ -220,7 +221,7 @@ d3e0.node() of
       body = irerase_dexp(body)
     in
       ir0exp_make_node
-      (loc0, IR0Elam(iras, body))
+      (loc0, IR0Elam(knd0, iras, body))
     end
   end
 //

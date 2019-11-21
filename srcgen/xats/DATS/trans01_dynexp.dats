@@ -1317,7 +1317,7 @@ d0e0.node() of
   end
 //
 | D0Elam
-  ( tok(*lam/lam@*)
+  ( knd//lam|lam@
   , arg, res
   , farrw, fbody, tfini) => let
 //
@@ -1335,9 +1335,43 @@ d0e0.node() of
     {
       val d1e0 =
       d1exp_make_node
-      (loc0, D1Elam(arg, res, farrw, fbody))
+      ( loc0
+      , D1Elam
+        (knd, arg, res, farrw, fbody))
     }
   end // end of [D1Elam]
+//
+| D0Efix
+  ( knd//fix|fix@
+  , fid, arg, res
+  , farrw, fbody, tfini) => let
+//
+    val fid =
+    (
+    case-
+    fid.node() of
+    | I0DNTsome(tok) => tok
+    ) : token
+//
+    val arg =
+      trans01_farglst(arg)
+    val res =
+      trans01_effsexpopt(res)
+    val farrw =
+      trans01_funarrow(farrw)
+//
+    val fbody = trans01_dexp(fbody)
+//
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+      d1exp_make_node
+      ( loc0
+      , D1Efix
+        (knd, fid, arg, res, farrw, fbody))
+    }
+  end // end of [D1Efix]
 //
 | D0Eanno(d0e1, s0e2) =>
   let

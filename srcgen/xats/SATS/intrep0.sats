@@ -197,7 +197,8 @@ ir0exp_node =
   ( ir0exp(*cond*)
   , ir0exp(*then*), ir0expopt(*else*))
 //
-| IR0Elam of (ir0arglst, ir0exp)
+| IR0Elam of
+  (token(*knd*), ir0arglst, ir0exp)
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //

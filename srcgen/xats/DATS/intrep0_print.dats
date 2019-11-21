@@ -189,10 +189,12 @@ x0.node() of
   ( out, "IR0Eif0("
   , ire1, "; ", ire2, "; ", opt3, ")")
 //
-| IR0Elam(farg, body) =>
+| IR0Elam
+  (knd0, farg, body) =>
   fprint!
   ( out
-  , "IR0Elam(", farg, "; ", body, ")")
+  , "IR0Elam("
+  , knd0, "; ", farg, "; ", body, ")")
 //
 | IR0Enone0() =>
   (

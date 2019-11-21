@@ -983,7 +983,8 @@ val
 loc0 = d2e0.loc()
 val-
 D2Elam
-( f2as
+( knd0
+, f2as
 , res0
 , arrw, body) = d2e0.node()
 //
@@ -1009,8 +1010,102 @@ case+ res0 of
 ) : d3exp // end-of-val
 //
 in
-d3exp_lam_up(loc0, f3as, res0, arrw, body)
+d3exp_lam_up
+(loc0, knd0, f3as, res0, arrw, body)
 end // end of [aux_lam]
+
+(* ****** ****** *)
+
+fun
+aux_fix
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Efix
+( knd0
+, d2v0
+, f2as
+, res0
+, arrw, body) = d2e0.node()
+//
+val
+f3as =
+trans23_farglst(f2as)
+//
+val
+tres =
+(
+case+ res0 of
+| EFFS2EXPnone() =>
+  let
+  val
+  loc = body.loc() in t2ype_new(loc)
+  end
+| EFFS2EXPsome(s2e0) => s2exp_erase(s2e0)
+) : t2ype // end-of-val
+//
+val () =
+(
+  d2var_set_type(d2v0, tfun)
+) where
+{
+val
+tfun = aux_fix_f3as(f3as, tres, 0)
+}
+//
+val body = trans23_dexp_dn(body, tres)
+//
+in
+d3exp_fix_up
+(loc0, knd0, d2v0, f3as, res0, arrw, body)
+end // end of [aux_fix]
+
+and
+aux_fix_f3as
+( f3as
+: f3arglst
+, tres
+: t2ype
+, flag: int): t2ype =
+(
+case+ f3as of
+| list_nil() => tres
+| list_cons(x0, xs) =>
+  (
+  case-
+  x0.node() of
+  | F3ARGsome_dyn
+    (npf, d3ps) =>
+    let
+    val fc2 =
+    ( if
+      flag = 0
+      then
+      FC2fun(*void*)
+      else
+      FC2cloref(*void*)
+    ) : funclo2 // end-of-val
+    val t2ps =
+    d3patlst_get_type(d3ps)
+    val tres =
+    aux_fix_f3as(xs, tres, flag+1)
+    in
+    t2ype_fun2(fc2, npf, t2ps, tres)
+    end
+  | F3ARGsome_sta
+    (s2vs, s2ps) =>
+    let
+      val
+      tres =
+      aux_fix_f3as
+      (xs,tres,flag) in t2ype_uni(s2vs, tres)
+    end
+  | F3ARGsome_met(s2es) => aux_fix_f3as(xs, tres, flag)
+  )
+) (* end of [aux_fix_f3as] *)
 
 (* ****** ****** *)
 
@@ -1139,8 +1234,9 @@ d2e0.node() of
   // D2Ecase
 //
 | D2Elam
-    (_, _, _, _) => aux_lam(d2e0)
-  // D2Elam
+  (_, _, _, _, _) => aux_lam(d2e0)
+| D2Efix
+  (_, _, _, _, _, _) => aux_fix(d2e0)
 //
 | D2Eaddr(d2e1) => aux_addr(d2e0)
 | D2Efold(d2e1) => aux_fold(d2e0)
