@@ -295,15 +295,29 @@ d3e0.node() of
   end
 //
 | D3Elam
-  (arg1, res2, arrw, body) =>
+  ( knd0
+  , arg1, res2, arrw, body) =>
   let
     val body =
     trans3t_dexp(env0, body)
   in
     d3exp_make_node
     ( loc0
-    , t2p0, D3Elam(arg1, res2, arrw, body))
+    , t2p0
+    , D3Elam(knd0, arg1, res2, arrw, body))
   end // D3Elam
+| D3Efix
+  ( knd0
+  , d2v0, arg1, res2, arrw, body) =>
+  let
+    val body =
+    trans3t_dexp(env0, body)
+  in
+    d3exp_make_node
+    ( loc0
+    , t2p0
+    , D3Efix(knd0, d2v0, arg1, res2, arrw, body))
+  end // D3Efix
 //
 | D3Eaddr(d3e1) =>
   let

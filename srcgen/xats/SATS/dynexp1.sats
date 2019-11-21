@@ -552,7 +552,13 @@ d1exp_node =
   // D1Ecase
 //
 | D1Elam of
-  ( f1arglst
+  ( token
+  , f1arglst(*arg*)
+  , effs1expopt, f1unarrow, d1exp(*body*))
+| D1Efix of
+  ( token
+  , token(*fid*)
+  , f1arglst(*arg*)
   , effs1expopt, f1unarrow, d1exp(*body*))
 //
 | D1Eanno of

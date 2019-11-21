@@ -692,7 +692,13 @@ d2exp_node =
   // D2Ecase
 //
 | D2Elam of
-  ( f2arglst
+  ( token(*knd*)
+  , f2arglst(*arg*)
+  , effs2expopt, f1unarrow, d2exp(*body*))
+| D2Efix of
+  ( token(*knd*)
+  , d2var(*fid*)
+  , f2arglst(*arg*)
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
 | D2Eaddr of (d2exp)

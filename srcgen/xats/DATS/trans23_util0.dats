@@ -1439,6 +1439,7 @@ end // end of [d3exp_where_up]
 implement
 d3exp_lam_up
 ( loc0
+, knd0
 , f3as
 , res0, arrw, body) =
 let
@@ -1482,14 +1483,14 @@ case arrw of
 )
 }
 fun
-auxfa3g
-( fa3g
+auxfa3s
+( fa3s
 : f3arglst
 , tres
 : t2ype
 , flag: int): t2ype =
 (
-case+ fa3g of
+case+ fa3s of
 | list_nil() => tres
 | list_cons(x0, xs) =>
   (
@@ -1508,7 +1509,7 @@ case+ fa3g of
     val t2ps =
     d3patlst_get_type(d3ps)
     val tres =
-    auxfa3g(xs, tres, flag+1)
+    auxfa3s(xs, tres, flag+1)
     in
     t2ype_fun1(tfc2, npf, t2ps, tres)
     end
@@ -1517,14 +1518,14 @@ case+ fa3g of
     let
     val
     tres =
-    auxfa3g
+    auxfa3s
     (xs, tres, flag) in t2ype_uni(s2vs, tres)
     end
-  | F3ARGsome_met(s2es) => auxfa3g(xs, tres, flag)
+  | F3ARGsome_met(s2es) => auxfa3s(xs, tres, flag)
   )
 )
 in
-  auxfa3g(f3as, body.type(), 0)
+  auxfa3s(f3as, body.type(), 0)
 end // end-of-val
 //
 (*
@@ -1538,8 +1539,24 @@ println!("d3exp_lam_up: f3as = ", f3as)
 //
 in
 d3exp_make_node
-(loc0, tfun, D3Elam(f3as, res0, arrw, body))
+(loc0, tfun, D3Elam(knd0, f3as, res0, arrw, body))
 end // end of [d3exp_lam_up]
+
+(* ****** ****** *)
+
+implement
+d3exp_fix_up
+( loc0
+, knd0
+, d2v0
+, f3as
+, res0, arrw, body) =
+let
+val tfun = d2v0.type()
+in
+d3exp_make_node
+(loc0, tfun, D3Efix(knd0, d2v0, f3as, res0, arrw, body))
+end // end of [d3exp_fix_up]
 
 (* ****** ****** *)
 

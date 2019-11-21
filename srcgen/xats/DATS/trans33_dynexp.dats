@@ -747,7 +747,8 @@ val
 loc0 = d3e0.loc()
 val-
 D3Elam
-( f3as
+( knd0
+, f3as
 , tres
 , arrw, body) = d3e0.node()
 //
@@ -758,8 +759,37 @@ val
 body = trans33_dexp(body)
 //
 in
-d3exp_lam_up(loc0, f3as, tres, arrw, body)
+d3exp_lam_up
+(loc0, knd0, f3as, tres, arrw, body)
 end // end of [aux_lam]
+
+(* ****** ****** *)
+
+fun
+aux_fix
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Efix
+( knd0
+, d2v0
+, f3as
+, tres
+, arrw, body) = d3e0.node()
+//
+val
+f3as =
+trans33_farglst(f3as)
+val
+body = trans33_dexp(body)
+//
+in
+d3exp_fix_up
+(loc0, knd0, d2v0, f3as, tres, arrw, body)
+end // end of [aux_fix]
 
 (* ****** ****** *)
 
@@ -895,8 +925,11 @@ d3e0.node() of
   // D3Ecase
 //
 | D3Elam
-    (_, _, _, _) => aux_lam(d3e0)
+  (_, _, _, _, _) => aux_lam(d3e0)
   // D3Elam
+| D3Efix
+  (_, _, _, _, _, _) => aux_fix(d3e0)
+  // D3Efix
 //
 | D3Eaddr(d3e1) => aux_addr(d3e0)
 | D3Efold(d3e1) => aux_fold(d3e0)

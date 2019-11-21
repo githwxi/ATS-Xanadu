@@ -577,6 +577,12 @@ case+ x0.node() of
   ( out
   , "D0Elam(", tok0, "; "
   , arg1, "; ", res2, "; ", farrw, "; ", fbody, "; ", tend, ")")
+| D0Efix
+  (tok0, fid0, arg1, res2, farrw, fbody, tend) =>
+  fprint!
+  ( out
+  , "D0Efix(", tok0, "; "
+  , fid0, "; ", arg1, "; ", res2, "; ", farrw, "; ", fbody, "; ", tend, ")")
 //
 | D0Eanno
   (d0e, ann) =>

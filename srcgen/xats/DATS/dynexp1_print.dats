@@ -470,11 +470,17 @@ x0.node() of
   , "D1Ecase(", knd, "; ", d1e1, "; ", dcls , ")")
 //
 | D1Elam
-  (farg, tres, arrw, body) =>
+  (knd, farg, tres, arrw, body) =>
   fprint!
   ( out
-  , "D1Elam(", "; "
+  , "D1Elam(", knd, "; "
   , farg, "; ", tres, "; ", arrw, "; ", body, ")")
+| D1Efix
+  (knd, fid, farg, tres, arrw, body) =>
+  fprint!
+  ( out
+  , "D1Efix(", knd, "; "
+  , fid, "; ", farg, "; ", tres, "; ", arrw, "; ", body, ")")
 //
 | D1Eanno(d1e1, s1e2) =>
   (

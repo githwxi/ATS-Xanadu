@@ -329,7 +329,13 @@ d3exp_node =
   // D3Ecase
 //
 | D3Elam of
-  ( f3arglst
+  ( token(*knd*)
+  , f3arglst(*arg*)
+  , effs2expopt, f1unarrow, d3exp(*body*))
+| D3Efix of
+  ( token(*knd*)
+  , d2var(*fid*)
+  , f3arglst(*arg*)
   , effs2expopt, f1unarrow, d3exp(*body*))
 //
 | D3Eaddr of (d3exp)

@@ -42,8 +42,13 @@
 
 (* ****** ****** *)
 
+#staload LEX = "./lexing.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
+
+(* ****** ****** *)
+
+typedef token = $LEX.token
 
 (* ****** ****** *)
 //
@@ -359,6 +364,15 @@ d3exp_where_up
 fun
 d3exp_lam_up
 ( loc0: loc_t
+, knd0: token
+, f3as: f3arglst
+, res0: effs2expopt
+, arrw: f1unarrow, body: d3exp): d3exp
+fun
+d3exp_fix_up
+( loc0: loc_t
+, knd0: token
+, d2v0: d2var
 , f3as: f3arglst
 , res0: effs2expopt
 , arrw: f1unarrow, body: d3exp): d3exp
