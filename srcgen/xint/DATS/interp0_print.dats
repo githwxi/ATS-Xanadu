@@ -102,10 +102,12 @@ case+ x0 of
   fprint!
   (out, "IR0Vcon(", d2c, "; ", xs, ")")
 //
-| IR0Vfun(firv) =>
+| IR0Vfun(fopr) =>
   fprint!(out, "IR0Vfun(", "...", ")")
-| IR0Vfc2(ire, env) =>
-  fprint!(out, "IR0Vfc2(", "...", ")")
+| IR0Vlam(fenv, iras, ire1) =>
+  fprint!(out, "IR0Vlam(", "...", ")")
+| IR0Vfix(fenv, d2v0, iras, ire1) =>
+  fprint!(out, "IR0Vfix(", "...", ")")
 //
 | IR0Vnone0() =>
   fprint!(out, "IR0Vnone0(", ")")

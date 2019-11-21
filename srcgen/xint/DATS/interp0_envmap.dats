@@ -102,7 +102,7 @@ intpenv =
 and
 intplst =
 | intplst_nil of ()
-| intplst_lam of ()
+| intplst_fun of ()
 //
 | intplst_let1 of intplst
 | intplst_loc1 of intplst
@@ -127,11 +127,11 @@ INTPENV(0, intplst_nil())
 (* ****** ****** *)
 
 fun
-intplst_make_env
+intplst_make_fun
 (kxs: ir0env): intplst =
 (
 auxlst
-(kxs, intplst_lam())
+(kxs, intplst_fun())
 ) where
 {
 //
@@ -174,7 +174,7 @@ auxenv
 case+ env of
 //
 | intplst_nil() => res
-| intplst_lam() => res
+| intplst_fun() => res
 //
 | intplst_let1
     (env) => auxenv(env, res)
@@ -191,18 +191,18 @@ case+ env of
 (* ****** ****** *)
 
 implement
-intpenv_make_env(kxs) =
+intpenv_make_fun(kxs) =
 INTPENV
 (
 1(*level*)
 ,
-intplst_make_env(kxs)
+intplst_make_fun(kxs)
 )
 //
 implement
 intpenv_take_env(env) =
 (
-intplst_take_env(xs)
+  intplst_take_env(xs)
 ) where
 {
   val+INTPENV(l0, xs) = env
@@ -211,15 +211,62 @@ intplst_take_env(xs)
 (* ****** ****** *)
 
 implement
+intpenv_bind_fix
+  (env0, irv0) =
+let
+val-
+IR0Vfix
+(fenv, d2v0, _, _) = irv0
+in
+(
+  fold@(env0)
+) where
+{
+val-
+@INTPENV(l0, xs) = env0
+val () =
+(
+  xs :=
+  intplst_cons(d2v0, irv0, xs)
+)
+} (* end of [where] *)
+end // end of [intpenv_bind_fix]
+
+(* ****** ****** *)
+
+implement
 intpenv_free_nil
-  (env) =
+  (env0) =
 {
 val-~intplst_nil() = xs
 } where
 {
-val+~INTPENV(l0, xs) = env
+val+~INTPENV(l0, xs) = env0
 } (* intpenv_free_nil *)
 
+(* ****** ****** *)
+//
+implement
+intpenv_free_fun
+  (env) =
+( auxlst(xs) ) where
+{
+//
+fun
+auxlst
+(xs: intplst): void =
+(
+case- xs of
+|
+~intplst_fun() => ()
+|
+~intplst_cons(_, _, xs) => auxlst(xs)
+)
+//
+val+~INTPENV(l0, xs) = env
+//
+} (* end of [intpenv_free_lam] *)
+//
 (* ****** ****** *)
 
 implement
@@ -248,7 +295,7 @@ interp0_search_d2var
   case+ xs of
   | intplst_nil() =>
     the_d2vardef_search(d2v0)
-  | intplst_lam() =>
+  | intplst_fun() =>
     the_d2vardef_search(d2v0)
   | intplst_let1(xs) => auxlst(xs)
   | intplst_loc1(xs) => auxlst(xs)
