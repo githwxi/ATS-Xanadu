@@ -217,7 +217,13 @@ println!
 in
 //
 case- irf0 of
-| IR0Vfun(f0) => f0(irvs)
+//
+| IR0Vfun(fopr) => fopr(irvs)
+//
+| IR0Vlam(_, _, _) =>
+  interp0_fcall_lam(irf0, irvs)
+| IR0Vfix(_, _, _, _) =>
+  interp0_fcall_fix(irf0, irvs)
 //
 end // end of [auxdapp]
 
@@ -269,13 +275,19 @@ aux_lam
 : !intpenv
 , ire0
 : ir0exp): ir0val =
+let
+val-
+IR0Elam
+(iras, body) = ire0.node()
+in
 (
-IR0Vfc2(ire0, env1)
+  IR0Vlam(fenv, iras, body)
 ) where
 {
   val
-  env1 = intpenv_take_env(env0)
-} (* end of [aux_lam] *)
+  fenv = intpenv_take_env(env0)
+}
+end // end of [aux_lam]
 
 in (* in-of-local *)
 
@@ -352,6 +364,120 @@ case+ opt1 of
 local
 
 fun
+auxnpf
+( npf1: int
+, irps
+: ir0patlst): ir0patlst =
+if
+(npf1 >= 1)
+then
+let
+val-
+list_cons
+(_, irps) = irps in auxnpf(npf1-1, irps)
+end
+else irps // end of [if]
+
+in(*in-of-local*)
+
+implement
+interp0_fcall_lam
+  (irf0, irvs) =
+let
+val-
+IR0Vlam
+( fenv
+, iras, body) = irf0
+val env0 =
+intpenv_make_fun(fenv)
+in
+let
+  val-
+  list_cons
+  (ira0, iras) = iras
+  val+
+  IR0ARGsome
+  (npf1, irps) = ira0
+  val
+  irps = auxnpf(npf1, irps)
+  val () =
+  interp0_irpatlst_ck2(env0, irps, irvs)
+  val irv0 =
+  (
+  case+ iras of
+  | list_nil() =>
+    interp0_irexp(env0, body)
+  | list_cons _ =>
+    (
+    IR0Vlam(fenv, iras, body)
+    ) where
+    {
+      val
+      fenv = intpenv_take_env(env0)
+    }
+  ) : ir0val // end of [val]
+in
+  let
+  val () = intpenv_free_fun(env0) in irv0
+  end
+end // end of [let]
+//
+end // end of [interp0_fcall_lam]
+
+implement
+interp0_fcall_fix
+  (irf0, irvs) =
+let
+val-
+IR0Vfix
+( fenv
+, d2v0
+, iras, body) = irf0
+val env0 =
+intpenv_make_fun(fenv)
+val ((*void*)) =
+intpenv_bind_fix(env0, irf0)
+in
+let
+  val-
+  list_cons
+  (ira0, iras) = iras
+  val+
+  IR0ARGsome
+  (npf1, irps) = ira0
+  val
+  irps = auxnpf(npf1, irps)
+  val () =
+  interp0_irpatlst_ck2(env0, irps, irvs)
+  val irv0 =
+  (
+  case+ iras of
+  | list_nil _ =>
+    interp0_irexp(env0, body)
+  | list_cons _ =>
+    (
+    IR0Vlam(fenv, iras, body)
+    ) where
+    {
+      val
+      fenv = intpenv_take_env(env0)
+    }
+  ) : ir0val // end of [val]
+in
+  let
+  val () = intpenv_free_fun(env0) in irv0
+  end
+end // end of [let]
+//
+end // end of [interp0_fcall_fix]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+fun
 aux_valdecl
 ( env0
 : !intpenv
@@ -411,7 +537,7 @@ case+ xs of
 
 implement
 interp0_irpat_ck2
-(env0, irp0, irv0) =
+  (env0, irp0, irv0) =
 (
 case-
 irp0.node() of
@@ -424,6 +550,25 @@ irp0.node() of
   } (* end of [IR0Pvar] *)
 //
 ) (* end of [interp0_irpat_ck2] *)
+
+implement
+interp0_irpatlst_ck2
+  (env0, irps, irvs) =
+(
+case+ irps of
+|
+list_nil() => ()
+|
+list_cons(irp0, irps) =>
+let
+  val-
+  list_cons(irv0, irvs) = irvs
+  val () =
+  interp0_irpat_ck2(env0, irp0, irv0)  
+in
+  interp0_irpatlst_ck2(env0, irps, irvs)
+end // end of [list_cons]
+) (* end of [interp0_irpatlst_ck2] *)
 
 (* ****** ****** *)
 

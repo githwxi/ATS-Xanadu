@@ -86,7 +86,11 @@ ir0val =
   (d2con, ir0valist)
 //
 | IR0Vfun of ir0valfun
-| IR0Vfc2 of (ir0exp, ir0env)
+//
+| IR0Vlam of
+  (ir0env, ir0arglst, ir0exp)
+| IR0Vfix of
+  (ir0env, d2var, ir0arglst, ir0exp)
 //
 | IR0Vnone0 of () | IR0Vnone1 of (ir0exp)
 //
@@ -124,14 +128,20 @@ ir0env_make_nil(): ir0env
 fun
 intpenv_make_nil(): intpenv
 fun
-intpenv_make_env(ir0env): intpenv
+intpenv_make_fun(ir0env): intpenv
+//
 fun
-intpenv_take_env(env: !intpenv): ir0env
+intpenv_take_env(!intpenv): ir0env
+//
+fun
+intpenv_bind_fix(!intpenv, ir0val): void
 //
 (* ****** ****** *)
 //
 fun
 intpenv_free_nil(env: intpenv): void
+fun
+intpenv_free_fun(env: intpenv): void
 //
 (* ****** ****** *)
 
@@ -175,6 +185,15 @@ fun
 interp0_irexpopt
 (env: !intpenv, opt0: ir0expopt): ir0valopt
 //
+(* ****** ****** *)
+
+fun
+interp0_fcall_lam
+(irf0: ir0val, irvs: ir0valist): ir0val
+fun
+interp0_fcall_fix
+(irf0: ir0val, irvs: ir0valist): ir0val
+
 (* ****** ****** *)
 //
 fun
