@@ -192,9 +192,14 @@ x0.node() of
 | IR0Elam
   (knd0, farg, body) =>
   fprint!
-  ( out
-  , "IR0Elam("
+  ( out, "IR0Elam("
   , knd0, "; ", farg, "; ", body, ")")
+| IR0Efix
+  (knd0, d2v0, farg, body) =>
+  fprint!
+  ( out, "IR0Efix("
+  , knd0, "; "
+  , d2v0, "; ", farg, "; ", body, ")")
 //
 | IR0Enone0() =>
   (

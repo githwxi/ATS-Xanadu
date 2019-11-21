@@ -209,6 +209,20 @@ d3e0.node() of
     // ir0exp_make_node
   end
 //
+| D3Eif0
+  (d3e1, d3e2, opt3) =>
+  let
+    val
+    ire1 = irerase_dexp(d3e1)
+    val
+    ire2 = irerase_dexp(d3e2)
+    val
+    opt3 = irerase_dexpopt(opt3)
+  in
+    ir0exp_make_node
+    (loc0, IR0Eif0(ire1, ire2, opt3))
+  end
+//
 | D3Elam
   ( knd0
   , f3as, res1, arrw, body) =>
@@ -222,6 +236,23 @@ d3e0.node() of
     in
       ir0exp_make_node
       (loc0, IR0Elam(knd0, iras, body))
+    end
+  end
+| D3Efix
+  ( knd0
+  , d2v0
+  , f3as, res1, arrw, body) =>
+  let
+    val iras =
+    irerase_farglst(f3as)
+  in
+    let
+      val
+      body = irerase_dexp(body)
+    in
+      ir0exp_make_node
+      ( loc0
+      , IR0Efix(knd0, d2v0, iras, body))
     end
   end
 //

@@ -270,6 +270,42 @@ case+ ires of
 (* ****** ****** *)
 
 fun
+aux_if0
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Eif0
+( ire1
+, ire2
+, opt3) = ire0.node()
+val
+irv1 =
+interp0_irexp(env0, ire1)
+in
+//
+case- irv1 of
+|
+IR0Vbtf(tf) =>
+if
+(tf)
+then
+interp0_irexp(env0, ire2)
+else
+(
+case+ opt3 of
+| None() => IR0Vnil()
+| Some(ire3) =>
+  interp0_irexp(env0, ire3)
+)
+//
+end // end of [aux_if0]
+
+(* ****** ****** *)
+
+fun
 aux_lam
 ( env0
 : !intpenv
@@ -278,16 +314,42 @@ aux_lam
 let
 val-
 IR0Elam
-(iras, body) = ire0.node()
+( knd0
+, iras, body) = ire0.node()
 in
 (
-  IR0Vlam(fenv, iras, body)
+  IR0Vlam
+  (fenv, iras(*arg*), body)
 ) where
 {
   val
   fenv = intpenv_take_env(env0)
 }
 end // end of [aux_lam]
+
+fun
+aux_fix
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Efix
+( knd0
+, d2v0
+, iras, body) = ire0.node()
+in
+(
+IR0Vfix
+( fenv
+, d2v0(*fid*), iras(*arg*), body)
+) where
+{
+  val
+  fenv = intpenv_take_env(env0)
+}
+end // end of [aux_fix]
 
 in (* in-of-local *)
 
@@ -317,7 +379,13 @@ ire0.node() of
 //
 | IR0Edapp _ => auxdapp(env0, ire0)
 //
-| IR0Elam(_, _) => aux_lam(env0, ire0)
+| IR0Eif0
+  (_, _, _) => aux_if0(env0, ire0)
+//
+| IR0Elam
+  (_, _, _) => aux_lam(env0, ire0)
+| IR0Efix
+  (_, _, _, _) => aux_fix(env0, ire0)
 //
 | _(*rest-of-ir0exp*) => IR0Vnone1(ire0)
 //
