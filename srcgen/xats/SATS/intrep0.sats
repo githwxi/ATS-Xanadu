@@ -199,6 +199,8 @@ ir0exp_node =
 //
 | IR0Elam of
   (token(*knd*), ir0arglst, ir0exp)
+| IR0Efix of
+  (token(*knd*), d2var, ir0arglst, ir0exp)
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //
