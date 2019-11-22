@@ -1243,6 +1243,7 @@ val nam = rcd.nam
 val a2g = rcd.a2g
 val a3g = rcd.a3g
 val res = rcd.res
+val d2c = rcd.d2c
 val def = rcd.def
 val wtp = rcd.wtp
 val ctp = rcd.ctp
@@ -1258,12 +1259,13 @@ val def =
 trans33_dexpopt(def)
 //
 in
-F3UNDECL
-(
+F3UNDECL(
 @{
- loc=loc,nam=nam
-,a2g=a2g,a3g=a3g,res=res,def=def,wtp=wtp,ctp=ctp}
-)(*F3UNDECL*)
+ loc=loc
+,nam=nam,d2c=d2c
+,a2g=a2g,a3g=a3g
+,res=res,def=def,wtp=wtp,ctp=ctp}
+) (* F3UNDECL *)
 end // end of [auxf3d0]
 and
 auxf3ds

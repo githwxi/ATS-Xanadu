@@ -771,6 +771,7 @@ val () =
 interp0_program(irdcls)
 val () =
 interp0_fprint_d2varmap(stdout_ref)
+val () = fprint_newline(stdout_ref)
 //
 } (* end of [then] *)
 else

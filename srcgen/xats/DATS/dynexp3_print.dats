@@ -724,12 +724,12 @@ in
   fprint!
   ( out
   , "F3UNDECL@{"
-  , ", nam=", rcd.nam
-  , ", a2g=", rcd.a2g
-  , ", res=", rcd.res
-  , ", def=", rcd.def
-  , ", ctp=", rcd.ctp
-  , ", wtp=", rcd.wtp, "}")
+  , "nam=", rcd.nam, ", "
+  , "d2c=", rcd.d2c, ", "
+  , "a2g=", rcd.a2g, ", "
+  , "res=", rcd.res, ", "
+  , "def=", rcd.def, ", "
+  , "ctp=", rcd.ctp, ", ", "wtp=", rcd.wtp, "}")
 end // end of [fprint_f3undecl]
 
 (* ****** ****** *)

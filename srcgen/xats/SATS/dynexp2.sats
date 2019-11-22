@@ -963,9 +963,9 @@ f2undecl =
 F2UNDECL of @{
   loc= loc_t
 , nam= d2var
+, d2c= d2cst
 , arg= f2arglst
 , res= effs2expopt
-, d2c= d2cst
 , def= d2expopt, wtp= s2expopt
 }
 //

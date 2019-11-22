@@ -3113,8 +3113,11 @@ case+ rcd.wtp of
 ) : s2expopt // end of [val]
 //
 in
-F2UNDECL
-(@{loc=loc,nam=nam,arg=arg,res=res,d2c=d2c,def=def,wtp=wtp})
+F2UNDECL(
+@{
+ loc=loc
+,nam=nam,d2c=d2c,arg=arg,res=res,def=def,wtp=wtp}
+) (* F2UNDECL *)
 end // end of [auxf1d0]
 //
 and

@@ -877,9 +877,9 @@ in
   ( out
   , "F2UNDECL@{"
   , "nam=", rcd.nam, ", "
+  , "d2c=", rcd.d2c, ", "
   , "arg=", rcd.arg, ", "
   , "res=", rcd.res, ", "
-  , "d2c=", rcd.d2c, ", "
   , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
 

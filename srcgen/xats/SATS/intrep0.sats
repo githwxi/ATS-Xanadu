@@ -64,6 +64,9 @@ D3E = "./dynexp3.sats"
 typedef d2con = $D2E.d2con
 typedef d2cst = $D2E.d2cst
 typedef d2var = $D2E.d2var
+typedef f2arg = $D2E.f2arg
+
+typedef f2arglst = $D2E.f2arglst
 
 (* ****** ****** *)
 //
@@ -156,6 +159,8 @@ ir0arg =
 //
 typedef
 ir0arglst = List0(ir0arg)
+typedef
+ir0arglstopt = Option(ir0arglst)
 //
 (* ****** ****** *)
 //
@@ -264,6 +269,38 @@ overload fprint with fprint_ir0valdecl
 (* ****** ****** *)
 //
 datatype
+ir0fundecl =
+IR0FUNDECL of @{
+  loc= loc_t
+//
+, nam= d2var
+, d2c= d2cst
+//
+, a2g=
+  f2arglst
+, a3g=
+  ir0arglstopt
+//
+, def= ir0expopt
+}
+//
+typedef
+ir0fundeclist = List0(ir0fundecl)
+//
+fun
+print_ir0fundecl(ir0fundecl): void
+fun
+prerr_ir0fundecl(ir0fundecl): void
+fun
+fprint_ir0fundecl: fprint_type(ir0fundecl)
+//
+overload print with print_ir0fundecl
+overload prerr with prerr_ir0fundecl
+overload fprint with fprint_ir0fundecl
+//
+(* ****** ****** *)
+//
+datatype
 ir0dcl_node =
 //
 | IR0Cstatic of
@@ -277,6 +314,11 @@ ir0dcl_node =
 | IR0Cvaldecl of
   ( token(*knd*)
   , $D1E.decmodopt, ir0valdeclist)
+//
+| IR0Cfundecl of
+  ( token(*knd*)
+  , $D1E.decmodopt
+  , $D2E.tq2arglst, ir0fundeclist)
 //
 | IR0Cnone0 of () | IR0Cnone1 of (d3ecl)
 //
@@ -349,6 +391,15 @@ irerase_valdecl
 fun
 irerase_valdeclist
 (irvds: $D3E.v3aldeclist): ir0valdeclist
+//
+(* ****** ****** *)
+//
+fun
+irerase_fundecl
+(irfd: $D3E.f3undecl): ir0fundecl
+fun
+irerase_fundeclist
+(irfds: $D3E.f3undeclist): ir0fundeclist
 //
 (* ****** ****** *)
 
