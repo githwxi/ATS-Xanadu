@@ -596,6 +596,7 @@ f3undecl =
 F3UNDECL of @{
   loc= loc_t
 , nam= d2var
+, d2c= d2cst
 , a2g= f2arglst
 , a3g= f3arglstopt
 , res= effs2expopt

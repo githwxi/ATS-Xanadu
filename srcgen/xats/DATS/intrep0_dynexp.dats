@@ -301,7 +301,8 @@ in
 case+
 d3cl.node() of
 //
-| D3Cstatic(tok, d3c1) =>
+| D3Cstatic
+  (tok, d3c1) =>
   (
   ir0dcl_make_node
     (loc0, IR0Cstatic(tok, irc1))
@@ -309,7 +310,8 @@ d3cl.node() of
   {
     val irc1 = irerase_decl(d3c1)
   }
-| D3Cextern(tok, d3c1) =>
+| D3Cextern
+  (tok, d3c1) =>
   (
   ir0dcl_make_node
     (loc0, IR0Cextern(tok, irc1))
@@ -318,7 +320,8 @@ d3cl.node() of
     val irc1 = irerase_decl(d3c1)
   }
 //
-| D3Clocal(head, body) =>
+| D3Clocal
+  (head, body) =>
   let
   val head = irerase_declist(head)
   val body = irerase_declist(body)
@@ -328,13 +331,25 @@ d3cl.node() of
     // ir0dcl_make_node
   end
 //
-| D3Cvaldecl(tok, mopt, v3ds) =>
+| D3Cvaldecl
+  (tok, mopt, v3ds) =>
   let
     val
     irds = irerase_valdeclist(v3ds)
   in
     ir0dcl_make_node
     (loc0, IR0Cvaldecl(tok, mopt, irds))
+  end
+//
+| D3Cfundecl
+  (tok, mopt, tqas, f3ds) =>
+  let
+    val
+    irds = irerase_fundeclist(f3ds)
+  in
+    ir0dcl_make_node
+    ( loc0
+    , IR0Cfundecl(tok, mopt, tqas, irds))
   end
 //
 | _(*rest-of-d3ecl*) =>
@@ -388,9 +403,59 @@ list_map<v3aldecl><ir0valdecl>
   (v3ds) where
 {
 implement
-list_map$fopr<v3aldecl><ir0valdecl>(d3c) = irerase_valdecl(d3c)
+list_map$fopr<v3aldecl><ir0valdecl>(v3d) = irerase_valdecl(v3d)
 }
 } (* end of [irerase_valdeclist] *)
+
+(* ****** ****** *)
+
+implement
+irerase_fundecl
+  (f3d0) =
+let
+val+
+F3UNDECL(rcd) = f3d0
+//
+val loc = rcd.loc
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a2g = rcd.a2g
+val a3g = rcd.a3g
+val def = rcd.def
+//
+val a3g =
+(
+case+ a3g of
+| None() =>
+  None()
+| Some(f3as) =>
+  Some(irerase_farglst(f3as))
+) : ir0arglstopt
+//
+val def = irerase_dexpopt(def)
+//
+in
+IR0FUNDECL(
+@{
+ loc=loc
+,nam=nam,d2c=d2c,a2g=a2g, a3g=a3g,def=def}
+)(*IR0FUNDECL*)
+end // end of [irerase_fundecl]
+
+implement
+irerase_fundeclist
+  (f3ds) =
+list_vt2t(irds) where
+{
+val
+irds =
+list_map<f3undecl><ir0fundecl>
+  (f3ds) where
+{
+implement
+list_map$fopr<f3undecl><ir0fundecl>(v3d) = irerase_fundecl(v3d)
+}
+} (* end of [irerase_fundeclist] *)
 
 (* ****** ****** *)
 

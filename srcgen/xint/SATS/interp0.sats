@@ -130,11 +130,22 @@ intpenv_make_nil(): intpenv
 fun
 intpenv_make_fun(ir0env): intpenv
 //
+(* ****** ****** *)
+//
 fun
 intpenv_take_env(!intpenv): ir0env
 //
+(* ****** ****** *)
+//
 fun
 intpenv_bind_fix(!intpenv, ir0val): void
+//
+(* ****** ****** *)
+//
+fun
+intpenv_pop0_let1(!intpenv): void
+fun
+intpenv_push_let1(!intpenv): void
 //
 (* ****** ****** *)
 //
@@ -222,6 +233,15 @@ interp0_ir0valdecl
 fun
 interp0_ir0valdeclist
 (env: !intpenv, irvds: ir0valdeclist): void
+
+(* ****** ****** *)
+
+fun
+interp0_ir0fundecl
+(env: !intpenv, irfd: ir0fundecl): void
+fun
+interp0_ir0fundeclist
+(env: !intpenv, irfds: ir0fundeclist): void
 
 (* ****** ****** *)
 //

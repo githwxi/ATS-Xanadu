@@ -62,6 +62,14 @@ fprint_val<d2cst> = fprint_d2cst
 implement
 fprint_val<d2var> = fprint_d2var
 //
+implement
+fprint_val<f2arg> = fprint_f2arg
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<tq2arg> = fprint_tq2arg
+//
 (* ****** ****** *)
 
 implement
@@ -72,6 +80,13 @@ implement
 fprint_val<ir0exp> = fprint_ir0exp
 implement
 fprint_val<ir0dcl> = fprint_ir0dcl
+
+(* ****** ****** *)
+
+(*
+implement
+fprint_val<ir0arglst> = fprint_ir0arglst
+*)
 
 (* ****** ****** *)
 //
@@ -128,6 +143,11 @@ in
 fprint!
 (out, "IR0ARGsome(", npf, "; ", irps, ")")
 end // end of [fprint_ir0arg]
+//
+(*
+implement
+fprint_ir0arglst(out, xs) = fprint!(out, xs)
+*)
 //
 (* ****** ****** *)
 //
@@ -225,6 +245,8 @@ local
 
 implement
 fprint_val<ir0valdecl> = fprint_ir0valdecl
+implement
+fprint_val<ir0fundecl> = fprint_ir0fundecl
 
 in(*in-of-local*)
 
@@ -261,6 +283,13 @@ case- x0.node() of
   , "IR0Cvaldecl("
   , knd, "; ", mopt, "; ", irds, ")")
 //
+| IR0Cfundecl
+  (knd, mopt, tqas, irds) =>
+  fprint!
+  ( out
+  , "IR0Cfundecl("
+  , knd, "; ", mopt, "; ", tqas, "; ", irds, ")")
+//
 | IR0Cnone0() =>
     fprint!(out, "IR0Cnone0(", ")")
 | IR0Cnone1(d3cl) =>
@@ -292,6 +321,34 @@ in
   , ", pat=", rcd.pat
   , ", def=", rcd.def, "}")
 end // end of [fprint_ir0valdecl]
+//
+(* ****** ****** *)
+//
+implement
+print_ir0fundecl(x0) =
+fprint_ir0fundecl(stdout_ref, x0)
+implement
+prerr_ir0fundecl(x0) =
+fprint_ir0fundecl(stderr_ref, x0)
+//
+implement
+fprint_ir0fundecl
+  (out, x0) = let
+//
+val+IR0FUNDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "IR0FUNDECL@{"
+  , ", nam=", rcd.nam
+  , ", d2c=", rcd.d2c
+  , ", a2g=", rcd.a2g
+(*
+  , ", a3g=", rcd.a3g
+*)
+  , ", def=", rcd.def, "}")
+end // end of [fprint_ir0fundecl]
 //
 (* ****** ****** *)
 

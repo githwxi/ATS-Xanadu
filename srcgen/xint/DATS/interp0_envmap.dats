@@ -235,6 +235,46 @@ end // end of [intpenv_bind_fix]
 (* ****** ****** *)
 
 implement
+intpenv_pop0_let1
+  (env0) =
+(
+  fold@(env0)
+) where
+{
+//
+fun
+auxlst
+( xs
+: intplst): intplst =
+(
+case- xs of
+| ~intplst_let1
+   (xs) => xs
+| ~intplst_cons
+   (_, _, xs) => auxlst(xs)
+)
+//
+val-
+@INTPENV(l0, xs) = env0
+val () = (xs := auxlst(xs))
+} // end of [intpenv_push_let1] *)
+
+implement
+intpenv_push_let1
+  (env0) =
+(
+  fold@(env0)
+) where
+{
+val-
+@INTPENV(l0, xs) = env0
+val () =
+(xs := intplst_let1(xs))
+} // end of [intpenv_push_let1] *)
+
+(* ****** ****** *)
+
+implement
 intpenv_free_nil
   (env0) =
 {
@@ -265,7 +305,7 @@ case- xs of
 //
 val+~INTPENV(l0, xs) = env
 //
-} (* end of [intpenv_free_lam] *)
+} (* end of [intpenv_free_fun] *)
 //
 (* ****** ****** *)
 
