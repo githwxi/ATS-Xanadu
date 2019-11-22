@@ -638,8 +638,18 @@ IR0Cfundecl
 , mopt
 , tqas
 , irfds) = irdcl.node()
+//
+val
+istmp = list_is_cons(tqas)
 in
-  interp0_ir0fundeclist(env0, irfds)
+//
+if
+istmp
+then
+((*nothing*))
+else
+interp0_ir0fundeclist(env0, irfds)
+//
 end // end of [aux_fundecl]
 
 in(*in-of-local*)
