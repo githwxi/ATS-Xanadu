@@ -1367,15 +1367,15 @@ in
 //
 case+
 d2cl.node() of
-| D2CLAUgpat(dgpt) =>
+| D2CLAUpat(dgpt) =>
   let
   val
   dgpt =
   trans23_dgpat_dn(dgpt, targ)
   in
-    d3clau_make_node(loc0, D3CLAUgpat(dgpt))
+    d3clau_make_node(loc0, D3CLAUpat(dgpt))
   end
-| D2CLAUclau(dgpt, d2e1) =>
+| D2CLAUexp(dgpt, d2e1) =>
   let
   val
   dgpt =
@@ -1383,7 +1383,7 @@ d2cl.node() of
   val
   d3e1 = trans23_dexp_dn(d2e1, tres)
   in
-    d3clau_make_node(loc0, D3CLAUclau(dgpt, d3e1))
+    d3clau_make_node(loc0, D3CLAUexp(dgpt, d3e1))
   end
 //
 end // end of [trans23_dclau_dn]
@@ -1400,14 +1400,14 @@ in
 //
 case+
 dgpt.node() of
-| DG2PATpat(d2p0) =>
+| D2GPATpat(d2p0) =>
   let
   val
   d3p0 = trans23_dpat_dn(d2p0, targ)
   in
-    dg3pat_make_node(loc0, DG3PATpat(d3p0))
+    d3gpat_make_node(loc0, D3GPATpat(d3p0))
   end
-| DG2PATgua(d2p0, d2gs) =>
+| D2GPATgua(d2p0, d2gs) =>
   let
   val
   d3p0 =
@@ -1415,7 +1415,7 @@ dgpt.node() of
   val
   d3gs = trans23_dgualst(d2gs)
   in
-    dg3pat_make_node(loc0, DG3PATgua(d3p0, d3gs))
+    d3gpat_make_node(loc0, D3GPATgua(d3p0, d3gs))
   end
 //
 end // end of [trans23_dgpat_dn]

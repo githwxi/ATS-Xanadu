@@ -1565,7 +1565,7 @@ fun
 trans01_dgua: d0gua -> d1gua
 extern
 fun
-trans01_dgpat: dg0pat -> dg1pat
+trans01_dgpat: d0gpat -> d1gpat
 extern
 fun
 trans01_dgualst: d0gualst -> d1gualst
@@ -1624,14 +1624,14 @@ in
 //
 case+
 d0gp.node() of
-| DG0PATpat(d0p) =>
-  dg1pat_make_node
+| D0GPATpat(d0p) =>
+  d1gpat_make_node
   ( loc0
-  , DG1PATpat(trans01_dpat(d0p)))
-| DG0PATgua(d0p, _, d0gs) =>
+  , D1GPATpat(trans01_dpat(d0p)))
+| D0GPATgua(d0p, _, d0gs) =>
   (
-  dg1pat_make_node
-  (loc0, DG1PATgua(d1p, d1gs))
+  d1gpat_make_node
+  (loc0, D1GPATgua(d1p, d1gs))
   ) where
   {
     val d1p = trans01_dpat(d0p)

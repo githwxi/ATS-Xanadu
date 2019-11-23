@@ -2323,12 +2323,12 @@ p_d0guaseq_AND
 //
 extern
 fun
-p_dg0pat: parser(dg0pat)
+p_d0gpat: parser(d0gpat)
 //
 (* ****** ****** *)
 
 implement
-p_dg0pat
+p_d0gpat
   (buf, err) = let
 //
 val
@@ -2362,14 +2362,14 @@ tok.node() of
         }
     ) : loc_t // end of [val]
   in
-    dg0pat_make_node
-      (loc_res, DG0PATgua(d0p, tok, d0gs))
-    // end of [dg0pat_make_node]
+    d0gpat_make_node
+      (loc_res, D0GPATgua(d0p, tok, d0gs))
+    // end of [d0gpat_make_node]
   end
 | _ (* non-WHEN *) =>
-    dg0pat_make_node(d0p.loc(), DG0PATpat(d0p))
+    d0gpat_make_node(d0p.loc(), D0GPATpat(d0p))
 //
-end // end of [p_dg0pat]
+end // end of [p_d0gpat]
 
 (* ****** ****** *)
 
@@ -2379,7 +2379,7 @@ p_d0clau
 //
 val
 dgp =
-p_dg0pat(buf, err)
+p_d0gpat(buf, err)
 //
 val tok = buf.get0()
 //

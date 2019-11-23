@@ -66,7 +66,7 @@ typedef d2exp = $D2E.d2exp
 typedef d3exp = $D3E.d3exp
 typedef d3gua = $D3E.d3gua
 typedef d3clau = $D3E.d3clau
-typedef dg3pat = $D3E.dg3pat
+typedef d3gpat = $D3E.d3gpat
 
 typedef f3arg = $D3E.f3arg
 
@@ -225,7 +225,7 @@ trans33_dgualst: d3gualst -> d3gualst
 (* ****** ****** *)
 //
 fun
-trans33_dgpat: dg3pat -> dg3pat
+trans33_dgpat: d3gpat -> d3gpat
 //
 fun
 trans33_dclau_dn

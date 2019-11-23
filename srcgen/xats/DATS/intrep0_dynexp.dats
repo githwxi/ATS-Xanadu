@@ -48,6 +48,65 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+local
+
+fun
+auxdapp
+( d3p0
+: d3pat): ir0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+//
+val-
+D3Pdapp
+( d3f0
+, npf1
+, d3ps) = d3p0.node()
+//
+val d3ps =
+(
+auxnpf(npf1, d3ps)
+) where
+{
+fun
+auxnpf
+( npf1
+: int
+, d3ps
+: d3patlst) : d3patlst =
+(
+if
+npf1 > 0
+then let
+//
+val-
+list_cons
+(_, d3ps) = d3ps
+in
+auxnpf(npf1-1, d3ps)
+end // end of [then]
+else d3ps // end of [else]
+)
+}
+//
+val irps =
+irerase_dpatlst(d3ps)
+//
+in
+//
+case-
+d3f0.node() of
+|
+D3Pcon1(d2c0) =>
+ir0pat_make_node
+(loc0, IR0Pcapp(d2c0, irps))
+//
+end // end of [auxdapp]
+
+in(*in-of-local*)
+
 implement
 irerase_dpat
   (d3p0) =
@@ -73,12 +132,16 @@ d3p0.node() of
 | D3Pvar(d2v) =>
   ir0pat_make_node(loc0, IR0Pvar(d2v))
 //
+| D3Pdapp _ => auxdapp(d3p0)
+//
 | D3Panno(d3p1, _) => irerase_dpat(d3p1)
 //
 | _(*rest-of-d3pat*) =>
   ir0pat_make_node(loc0, IR0Pnone1(d3p0))
 //
 end // end of [irerase_dpat]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -223,6 +286,16 @@ d3e0.node() of
     (loc0, IR0Eif0(ire1, ire2, opt3))
   end
 //
+| D3Ecase
+  (knd0, d3e1, d3cls) =>
+  let
+    val ire1 = irerase_dexp(d3e1)
+    val ircls = irerase_dclaulst(d3cls)
+  in
+    ir0exp_make_node
+    (loc0, IR0Ecase(knd0, ire1, ircls))
+  end
+//
 | D3Elam
   ( knd0
   , f3as, res1, arrw, body) =>
@@ -286,6 +359,134 @@ implement
 list_map$fopr<d3exp><ir0exp>(d3e) = irerase_dexp(d3e)
 }
 } (* end of [irerase_dexplst] *)
+
+(* ****** ****** *)
+
+implement
+irerase_dgua
+  (d3g0) =
+let
+val loc0 = d3g0.loc()
+in
+case+
+d3g0.node() of
+|
+D3GUAexp(d3e1) =>
+(
+  ir0gua_make_node
+  (loc0, IR0GUAexp(ire1))
+) where
+{
+  val ire1 = irerase_dexp(d3e1)
+}
+|
+D3GUAmat(d3e1, d3p2) =>
+(
+  ir0gua_make_node
+  (loc0, IR0GUAmat(ire1, irp2))
+) where
+{
+  val ire1 = irerase_dexp(d3e1)
+  val irp2 = irerase_dpat(d3p2)
+}
+end // end of [irerase_dgua]
+
+implement
+irerase_dgualst
+  (d3gs) =
+list_vt2t(irgs) where
+{
+val
+irgs =
+list_map<d3gua><ir0gua>
+  (d3gs) where
+{
+implement
+list_map$fopr<d3gua><ir0gua>(d3g) = irerase_dgua(d3g)
+}
+} (* end of [irerase_dgualst] *)
+
+(* ****** ****** *)
+
+implement
+irerase_dgpat
+  (d3gp) =
+let
+val loc0 = d3gp.loc()
+in
+case+
+d3gp.node() of
+|
+D3GPATpat(d3p1) =>
+(
+  ir0gpat_make_node
+  (loc0, IR0GPATpat(irp1))
+) where
+{
+  val irp1 = irerase_dpat(d3p1)
+}
+|
+D3GPATgua(d3p1, d3gs) =>
+(
+  ir0gpat_make_node
+  (loc0, IR0GPATgua(irp1, irgs))
+) where
+{
+  val irp1 = irerase_dpat(d3p1)
+  val irgs = irerase_dgualst(d3gs)
+}
+end // end of [irerase_dgpat]
+
+(* ****** ****** *)
+
+implement
+irerase_dclau
+  (d3cl) =
+let
+val loc0 = d3cl.loc()
+in
+case+
+d3cl.node() of
+|
+D3CLAUpat(d3gp) =>
+(
+  ir0clau_make_node
+  (loc0, IR0CLAUpat(irgp))
+) where
+{
+  val
+  irgp = irerase_dgpat(d3gp)
+}
+|
+D3CLAUexp(d3gp, d3e2) =>
+(
+  ir0clau_make_node
+  (loc0, IR0CLAUexp(irgp, ire2))
+) where
+{
+//
+  val
+  irgp = irerase_dgpat(d3gp)
+//
+  val ire2 = irerase_dexp(d3e2)
+//
+}
+end // end of [irerase_dclau]
+
+implement
+irerase_dclaulst
+  (d3cls) =
+list_vt2t(ircls) where
+{
+val
+ircls =
+list_map<d3clau><ir0clau>
+  (d3cls) where
+{
+implement
+list_map$fopr<d3clau><ir0clau>(d3cl) = irerase_dclau(d3cl)
+}
+} (* end of [irerase_dclaulst] *)
 
 (* ****** ****** *)
 

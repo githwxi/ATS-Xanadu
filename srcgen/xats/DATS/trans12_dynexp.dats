@@ -704,7 +704,7 @@ d1cl.node() of
     trans12_dgpat(d1gp)
   in
     d2clau_make_node
-    (d1cl.loc(), D2CLAUgpat(d2gp))
+    (d1cl.loc(), D2CLAUpat(d2gp))
   end // end of [let]
 | D1CLAUclau
   (d1gp, d1e0) =>
@@ -729,7 +729,7 @@ d1cl.node() of
 //
   in
     d2clau_make_node
-    (d1cl.loc(), D2CLAUclau(d2gp, d2e0))
+    (d1cl.loc(), D2CLAUexp(d2gp, d2e0))
   end // end of [let]
 //
 ) (* end of [trans12_dclau] *)
@@ -747,17 +747,17 @@ in (* in-of-let *)
 //
 case+
 d1gp.node() of
-| DG1PATpat
+| D1GPATpat
   (d1p) =>
-  dg2pat_make_node
+  d2gpat_make_node
   ( loc0
-  , DG2PATpat(trans12_dpat(d1p))
+  , D2GPATpat(trans12_dpat(d1p))
   )
-| DG1PATgua
+| D1GPATgua
   (d1p, d1gs) =>
-  dg2pat_make_node
+  d2gpat_make_node
   ( loc0
-  , DG2PATgua
+  , D2GPATgua
     (trans12_dpat(d1p),trans12_dgualst(d1gs))
   )
 //

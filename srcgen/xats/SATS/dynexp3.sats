@@ -69,8 +69,8 @@ abstbox d3gua_tbox = ptr
 typedef d3gua = d3gua_tbox
 typedef d3gualst = List0(d3gua)
 //
-abstbox dg3pat_tbox = ptr
-typedef dg3pat = dg3pat_tbox
+abstbox d3gpat_tbox = ptr
+typedef d3gpat = d3gpat_tbox
 //
 abstbox d3clau_tbox = ptr
 typedef d3clau = d3clau_tbox
@@ -379,12 +379,12 @@ d3gua_make_node
 //
 datatype
 d3clau_node =
-| D3CLAUgpat of (dg3pat)
-| D3CLAUclau of (dg3pat, d3exp)
+| D3CLAUpat of d3gpat
+| D3CLAUexp of (d3gpat, d3exp)
 and
-dg3pat_node =
-| DG3PATpat of (d3pat)
-| DG3PATgua of (d3pat, d3gualst)
+d3gpat_node =
+| D3GPATpat of (d3pat)
+| D3GPATgua of (d3pat, d3gualst)
 //
 fun
 d3clau_get_loc(d3clau): loc_t
@@ -395,12 +395,12 @@ overload .loc with d3clau_get_loc
 overload .node with d3clau_get_node
 //
 fun
-dg3pat_get_loc(dg3pat): loc_t
+d3gpat_get_loc(d3gpat): loc_t
 fun
-dg3pat_get_node(dg3pat): dg3pat_node
+d3gpat_get_node(d3gpat): d3gpat_node
 //
-overload .loc with dg3pat_get_loc
-overload .node with dg3pat_get_node
+overload .loc with d3gpat_get_loc
+overload .node with d3gpat_get_node
 //
 fun
 print_d3clau : (d3clau) -> void
@@ -414,22 +414,22 @@ overload prerr with prerr_d3clau
 overload fprint with fprint_d3clau
 //
 fun
-print_dg3pat : (dg3pat) -> void
+print_d3gpat : (d3gpat) -> void
 fun
-prerr_dg3pat : (dg3pat) -> void
+prerr_d3gpat : (d3gpat) -> void
 fun
-fprint_dg3pat : fprint_type(dg3pat)
+fprint_d3gpat : fprint_type(d3gpat)
 //
-overload print with print_dg3pat
-overload prerr with prerr_dg3pat
-overload fprint with fprint_dg3pat
+overload print with print_d3gpat
+overload prerr with prerr_d3gpat
+overload fprint with fprint_d3gpat
 //
 fun
 d3clau_make_node
 (loc: loc_t, node: d3clau_node): d3clau
 fun
-dg3pat_make_node
-(loc: loc_t, node: dg3pat_node): dg3pat
+d3gpat_make_node
+(loc: loc_t, node: d3gpat_node): d3gpat
 //
 (* ****** ****** *)
 //

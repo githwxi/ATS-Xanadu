@@ -208,7 +208,7 @@ typedef f1arglst = $D1E.f1arglst
 
 typedef d1gua = $D1E.d1gua
 typedef d1clau = $D1E.d1clau
-typedef dg1pat = $D1E.dg1pat
+typedef d1gpat = $D1E.d1gpat
 
 typedef d1gualst = $D1E.d1gualst
 typedef d1claulst = $D1E.d1claulst
@@ -258,7 +258,7 @@ typedef f2arglst = $D2E.f2arglst
 
 typedef d2gua = $D2E.d2gua
 typedef d2clau = $D2E.d2clau
-typedef dg2pat = $D2E.dg2pat
+typedef d2gpat = $D2E.d2gpat
 
 typedef d2gualst = $D2E.d2gualst
 typedef d2claulst = $D2E.d2claulst
@@ -751,7 +751,7 @@ the_trans12_add_patlst(d2ps: d2patlst): void
 fun
 the_trans12_add_gua(d2g: d2gua): void
 fun
-the_trans12_add_gpat(d2gp: dg2pat): void
+the_trans12_add_gpat(d2gp: d2gpat): void
 fun
 the_trans12_add_gualst(d2gs: d2gualst): void
 //
@@ -776,7 +776,7 @@ trans12_dgua: d1gua -> d2gua
 fun
 trans12_dclau: d1clau -> d2clau
 fun
-trans12_dgpat: dg1pat -> dg2pat
+trans12_dgpat: d1gpat -> d2gpat
 //
 fun
 trans12_dgualst: d1gualst -> d2gualst

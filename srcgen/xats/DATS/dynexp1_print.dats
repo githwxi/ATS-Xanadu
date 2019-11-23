@@ -107,7 +107,7 @@ fprint_val<d1gua> = fprint_d1gua
 implement
 fprint_val<d1clau> = fprint_d1clau
 implement
-fprint_val<dg1pat> = fprint_dg1pat
+fprint_val<d1gpat> = fprint_d1gpat
 //
 (* ****** ****** *)
 //
@@ -591,11 +591,11 @@ prerr_d1clau(x0) =
 fprint_d1clau(stderr_ref, x0)
 
 implement
-print_dg1pat(x0) =
-fprint_dg1pat(stdout_ref, x0)
+print_d1gpat(x0) =
+fprint_d1gpat(stdout_ref, x0)
 implement
-prerr_dg1pat(x0) =
-fprint_dg1pat(stderr_ref, x0)
+prerr_d1gpat(x0) =
+fprint_d1gpat(stderr_ref, x0)
 
 implement
 fprint_d1clau
@@ -612,16 +612,16 @@ x0.node() of
 ) (* end of [fprint_d1clau] *)
 
 implement
-fprint_dg1pat
+fprint_d1gpat
   (out, x0) =
 (
 case+
 x0.node() of
-| DG1PATpat(d1p) =>
-  fprint!(out, "DG1PATpat(", d1p, ")")
-| DG1PATgua(d1p, d1gs) =>
-  fprint!(out, "DG1PATgua(", d1p, "; ", d1gs, ")")
-) (* end of [fprint_dg1pat] *)
+| D1GPATpat(d1p) =>
+  fprint!(out, "D1GPATpat(", d1p, ")")
+| D1GPATgua(d1p, d1gs) =>
+  fprint!(out, "D1GPATgua(", d1p, "; ", d1gs, ")")
+) (* end of [fprint_d1gpat] *)
 
 (* ****** ****** *)
 

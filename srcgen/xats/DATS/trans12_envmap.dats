@@ -2029,13 +2029,13 @@ case+ d2gs of
 
 fun
 auxd2gp
-(d2gp: dg2pat): void =
+(d2gp: d2gpat): void =
 (
 case+
 d2gp.node() of
-| DG2PATpat(d2p) =>
+| D2GPATpat(d2p) =>
     auxd2p0(d2p)
-| DG2PATgua(d2p, d2gs) =>
+| D2GPATgua(d2p, d2gs) =>
     (auxd2p0(d2p); auxd2gs(d2gs))
 )
 

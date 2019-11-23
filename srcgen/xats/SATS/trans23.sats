@@ -118,8 +118,8 @@ typedef d3eclist = $D3E.d3eclist
 typedef d2gua = $D2E.d2gua
 typedef d3gua = $D3E.d3gua
 
-typedef dg2pat = $D2E.dg2pat
-typedef dg3pat = $D3E.dg3pat
+typedef d2gpat = $D2E.d2gpat
+typedef d3gpat = $D3E.d3gpat
 
 typedef d2clau = $D2E.d2clau
 typedef d3clau = $D3E.d3clau
@@ -188,8 +188,8 @@ trans23_dgualst: d2gualst -> d3gualst
 fun
 trans23_dgpat_dn
 ( dgpt
-: dg2pat
-, targ: t2ype(*guard*)): dg3pat
+: d2gpat
+, targ: t2ype(*guard*)): d3gpat
 fun
 trans23_dclau_dn
 ( d2c0

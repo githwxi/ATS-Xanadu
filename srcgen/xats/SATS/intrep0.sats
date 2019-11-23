@@ -75,6 +75,10 @@ typedef f3arg = $D3E.f3arg
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 //
+typedef d3gua = $D3E.d3gua
+typedef d3clau = $D3E.d3clau
+typedef d3gpat = $D3E.d3gpat
+//
 typedef d3patlst = $D3E.d3patlst
 typedef f3arglst = $D3E.f3arglst
 //
@@ -82,6 +86,9 @@ typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 //
 typedef d3eclist = $D3E.d3eclist
+//
+typedef d3gualst = $D3E.d3gualst
+typedef d3claulst = $D3E.d3claulst
 //
 (* ****** ****** *)
 
@@ -99,6 +106,20 @@ abstype ir0exp_tbox = ptr
 typedef ir0exp = ir0exp_tbox
 typedef ir0explst = List0(ir0exp)
 typedef ir0expopt = Option(ir0exp)
+
+(* ****** ****** *)
+
+abstype ir0gua_tbox = ptr
+typedef ir0gua = ir0gua_tbox
+typedef ir0gualst = List0(ir0gua)
+
+abstype ir0clau_tbox = ptr
+typedef ir0clau = ir0clau_tbox
+typedef ir0claulst = List0(ir0clau)
+
+abstype ir0gpat_tbox = ptr
+typedef ir0gpat = ir0gpat_tbox
+typedef ir0gpatlst = List0(ir0gpat)
 
 (* ****** ****** *)
 //
@@ -202,12 +223,31 @@ ir0exp_node =
   ( ir0exp(*cond*)
   , ir0exp(*then*), ir0expopt(*else*))
 //
+| IR0Ecase of
+  (int(*knd*), ir0exp, ir0claulst)
+//
 | IR0Elam of
   (token(*knd*), ir0arglst, ir0exp)
 | IR0Efix of
   (token(*knd*), d2var, ir0arglst, ir0exp)
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
+//
+(* ****** ****** *)
+//
+datatype
+ir0gua_node =
+| IR0GUAexp of (ir0exp)
+| IR0GUAmat of (ir0exp, ir0pat)
+//
+datatype
+ir0clau_node =
+| IR0CLAUpat of ir0gpat
+| IR0CLAUexp of (ir0gpat, ir0exp)
+and
+ir0gpat_node =
+| IR0GPATpat of (ir0pat)
+| IR0GPATgua of (ir0pat, ir0gualst)
 //
 (* ****** ****** *)
 //
@@ -218,10 +258,8 @@ fun
 ir0exp_get_node
 (x0: ir0exp): ir0exp_node
 //
-overload
-.loc with ir0exp_get_loc
-overload
-.node with ir0exp_get_node
+overload .loc with ir0exp_get_loc
+overload .node with ir0exp_get_node
 //
 (* ****** ****** *)
 //
@@ -241,6 +279,60 @@ overload prerr with prerr_ir0exp
 fun
 fprint_ir0exp: fprint_type(ir0exp)
 overload fprint with fprint_ir0exp
+//
+(* ****** ****** *)
+//
+fun
+ir0gua_get_loc
+(x0: ir0gua): loc_t
+fun
+ir0gua_get_node
+(x0: ir0gua): ir0gua_node
+//
+overload .loc with ir0gua_get_loc
+overload .node with ir0gua_get_node
+//
+(* ****** ****** *)
+//
+fun
+ir0gua_make_node
+(loc_t, ir0gua_node): ir0gua
+//
+(* ****** ****** *)
+//
+fun
+ir0clau_get_loc
+(x0: ir0clau): loc_t
+fun
+ir0clau_get_node
+(x0: ir0clau): ir0clau_node
+//
+overload .loc with ir0clau_get_loc
+overload .node with ir0clau_get_node
+//
+(* ****** ****** *)
+//
+fun
+ir0clau_make_node
+(loc_t, ir0clau_node): ir0clau
+//
+(* ****** ****** *)
+//
+fun
+ir0gpat_get_loc
+(x0: ir0gpat): loc_t
+fun
+ir0gpat_get_node
+(x0: ir0gpat): ir0gpat_node
+//
+overload .loc with ir0gpat_get_loc
+overload .node with ir0gpat_get_node
+//
+(* ****** ****** *)
+//
+fun
+ir0gpat_make_node
+(loc_t, ir0gpat_node): ir0gpat
 //
 (* ****** ****** *)
 //
@@ -376,6 +468,19 @@ irerase_dexpopt(d3expopt): ir0expopt
 fun
 irerase_dexplst(d3explst): ir0explst
 //
+(* ****** ****** *)
+
+fun
+irerase_dgua(d3gua): ir0gua
+fun
+irerase_dclau(d3clau): ir0clau
+fun
+irerase_dgpat(d3gpat): ir0gpat
+fun
+irerase_dgualst(d3gualst): ir0gualst
+fun
+irerase_dclaulst(d3claulst): ir0claulst
+
 (* ****** ****** *)
 //
 fun

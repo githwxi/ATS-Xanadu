@@ -410,8 +410,8 @@ abstbox d2gua_tbox = ptr
 typedef d2gua = d2gua_tbox
 typedef d2gualst = List0(d2gua)
 //
-abstbox dg2pat_tbox = ptr
-typedef dg2pat = dg2pat_tbox
+abstbox d2gpat_tbox = ptr
+typedef d2gpat = d2gpat_tbox
 //
 abstbox d2clau_tbox = ptr
 typedef d2clau = d2clau_tbox
@@ -739,12 +739,12 @@ d2gua_make_node
 //
 datatype
 d2clau_node =
-| D2CLAUgpat of (dg2pat)
-| D2CLAUclau of (dg2pat, d2exp)
+| D2CLAUpat of d2gpat
+| D2CLAUexp of (d2gpat, d2exp)
 and
-dg2pat_node =
-| DG2PATpat of (d2pat)
-| DG2PATgua of (d2pat, d2gualst)
+d2gpat_node =
+| D2GPATpat of (d2pat)
+| D2GPATgua of (d2pat, d2gualst)
 //
 fun
 d2clau_get_loc(d2clau): loc_t
@@ -755,12 +755,12 @@ overload .loc with d2clau_get_loc
 overload .node with d2clau_get_node
 //
 fun
-dg2pat_get_loc(dg2pat): loc_t
+d2gpat_get_loc(d2gpat): loc_t
 fun
-dg2pat_get_node(dg2pat): dg2pat_node
+d2gpat_get_node(d2gpat): d2gpat_node
 //
-overload .loc with dg2pat_get_loc
-overload .node with dg2pat_get_node
+overload .loc with d2gpat_get_loc
+overload .node with d2gpat_get_node
 //
 fun
 print_d2clau : (d2clau) -> void
@@ -774,22 +774,22 @@ overload prerr with prerr_d2clau
 overload fprint with fprint_d2clau
 //
 fun
-print_dg2pat : (dg2pat) -> void
+print_d2gpat : (d2gpat) -> void
 fun
-prerr_dg2pat : (dg2pat) -> void
+prerr_d2gpat : (d2gpat) -> void
 fun
-fprint_dg2pat : fprint_type(dg2pat)
+fprint_d2gpat : fprint_type(d2gpat)
 //
-overload print with print_dg2pat
-overload prerr with prerr_dg2pat
-overload fprint with fprint_dg2pat
+overload print with print_d2gpat
+overload prerr with prerr_d2gpat
+overload fprint with fprint_d2gpat
 //
 fun
 d2clau_make_node
 (loc: loc_t, node: d2clau_node): d2clau
 fun
-dg2pat_make_node
-(loc: loc_t, node: dg2pat_node): dg2pat
+d2gpat_make_node
+(loc: loc_t, node: d2gpat_node): d2gpat
 //
 (* ****** ****** *)
 //
