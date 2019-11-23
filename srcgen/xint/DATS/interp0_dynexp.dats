@@ -159,6 +159,20 @@ case- opt of ~Some_vt(irv) => irv
 end // end of [auxvar]
 
 fun
+auxcon1
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+IR0Vfun
+(
+lam(arg) => IR0Vcon(d2c0, arg)
+) where
+{
+val-IR0Econ1(d2c0) = ire0.node()
+}
+
+fun
 auxfcst
 ( env0
 : !intpenv
@@ -433,6 +447,8 @@ ire0.node() of
 //
 | IR0Evar _ => auxvar(env0, ire0)
 //
+| IR0Econ1 _ => auxcon1(env0, ire0)
+//
 | IR0Efcst _ => auxfcst(env0, ire0)
 //
 | IR0Edapp _ => auxdapp(env0, ire0)
@@ -699,20 +715,102 @@ case+ xs of
 (* ****** ****** *)
 
 implement
-interp0_irpat_ck2
-  (env0, irp0, irv0) =
-(
+interp0_irpat_ck1
+  (irp0, irv0) =
+let
+//
+(*
+val () =
+println!
+("interp0_irpat_ck1: irp0 = ", irp0)
+val () =
+println!
+("interp0_irpat_ck1: irv0 = ", irv0)
+*)
+//
+in
 case-
 irp0.node() of
 //
-| IR0Pany() => ()
-| IR0Pvar(d2v0) =>
-  {
-    val () =
-    interp0_insert_d2var(env0, d2v0, irv0)
-  } (* end of [IR0Pvar] *)
+|
+IR0Pany() => true
+|
+IR0Pvar(d2v0) => true
 //
-) (* end of [interp0_irpat_ck2] *)
+|
+IR0Pcapp(d2c0, irps) =>
+(
+case- irv0 of
+|
+IR0Vcon(d2c1, irvs) =>
+interp0_irpatlst_ck1(irps, irvs)
+)
+//
+end (* end of [interp0_irpat_ck1] *)
+
+implement
+interp0_irpatlst_ck1
+  (irps, irvs) =
+(
+case+ irps of
+|
+list_nil() => true
+|
+list_cons(irp0, irps) =>
+let
+  val-
+  list_cons(irv0, irvs) = irvs
+  val ans =
+  interp0_irpat_ck1(irp0, irv0)  
+in
+//
+  if ans
+  then interp0_irpatlst_ck1(irps, irvs)
+  else false
+//
+end // end of [list_cons]
+) (* end of [interp0_irpatlst_ck1] *)
+
+(* ****** ****** *)
+
+implement
+interp0_irpat_ck2
+  (env0, irp0, irv0) =
+let
+//
+(*
+val () =
+println!
+("interp0_irpat_ck2: irp0 = ", irp0)
+val () =
+println!
+("interp0_irpat_ck2: irv0 = ", irv0)
+*)
+//
+in
+case-
+irp0.node() of
+//
+|
+IR0Pany() => ()
+|
+IR0Pvar(d2v0) =>
+{
+val () =
+interp0_insert_d2var
+  (env0, d2v0, irv0)
+} (* end of [IR0Pvar] *)
+//
+|
+IR0Pcapp(d2c0, irps) =>
+(
+case- irv0 of
+|
+IR0Vcon(d2c1, irvs) =>
+interp0_irpatlst_ck2(env0, irps, irvs)
+)
+//
+end (* end of [interp0_irpat_ck2] *)
 
 implement
 interp0_irpatlst_ck2

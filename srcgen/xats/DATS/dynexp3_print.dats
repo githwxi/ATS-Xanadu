@@ -120,7 +120,7 @@ fprint_val<d3gua> = fprint_d3gua
 implement
 fprint_val<d3clau> = fprint_d3clau
 implement
-fprint_val<dg3pat> = fprint_dg3pat
+fprint_val<d3gpat> = fprint_d3gpat
 //
 (* ****** ****** *)
 
@@ -471,11 +471,11 @@ prerr_d3clau(x0) =
 fprint_d3clau(stderr_ref, x0)
 
 implement
-print_dg3pat(x0) =
-fprint_dg3pat(stdout_ref, x0)
+print_d3gpat(x0) =
+fprint_d3gpat(stdout_ref, x0)
 implement
-prerr_dg3pat(x0) =
-fprint_dg3pat(stderr_ref, x0)
+prerr_d3gpat(x0) =
+fprint_d3gpat(stderr_ref, x0)
 
 implement
 fprint_d3clau
@@ -484,33 +484,33 @@ fprint_d3clau
 case+
 x0.node() of
 //
-| D3CLAUgpat(dg3p) =>
+| D3CLAUpat(d3gp) =>
   fprint!
-  (out, "D3CLAUgpat(", dg3p, ")")
+  (out, "D3CLAUpat(", d3gp, ")")
 //
-| D3CLAUclau(dg3p, d0e0) =>
+| D3CLAUexp(d3gp, d0e0) =>
   fprint!
   ( out
-  , "D3CLAUclau(", dg3p, "; ", d0e0, ")")
+  , "D3CLAUexp(", d3gp, "; ", d0e0, ")")
 //
 ) (* end of [fprint_d3clau] *)
 
 implement
-fprint_dg3pat
+fprint_d3gpat
   (out, x0) =
 (
 case+
 x0.node() of
 //
-| DG3PATpat(d3p) =>
+| D3GPATpat(d3p) =>
   fprint!
-  (out, "DG3PATpat(", d3p, ")")
+  (out, "D3GPATpat(", d3p, ")")
 //
-| DG3PATgua(d3p, d3gs) =>
+| D3GPATgua(d3p, d3gs) =>
   fprint!
-  (out, "DG3PATgua(", d3p, "; ", d3gs, ")")
+  (out, "D3GPATgua(", d3p, "; ", d3gs, ")")
 //
-) (* end of [fprint_dg3pat] *)
+) (* end of [fprint_d3gpat] *)
 
 (* ****** ****** *)
 //

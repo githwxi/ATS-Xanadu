@@ -101,7 +101,7 @@ implement
 fprint_ir0pat
   (out, x0) =
 (
-case- x0.node() of
+case+ x0.node() of
 //
 | IR0Pint(tok) =>
   fprint!(out, "IR0Pint(", tok, ")")
@@ -113,15 +113,22 @@ case- x0.node() of
 | IR0Pvar(d2v) =>
   fprint!(out, "IR0Pvar(", d2v, ")")
 //
+| IR0Pcapp(d2c0, irps) =>
+  fprint!
+  ( out
+  , "IR0Pcapp(", d2c0, "; ", irps, ")")
+//
 | IR0Ptuple(knd, irps) =>
   fprint!
   ( out
   , "IR0Ptuple(", knd, "; ", irps, ")")
 //
 | IR0Pnone0() =>
-  fprint!(out, "IR0Pnone0(", ")")
+    fprint!(out, "IR0Pnone0(", ")")
+  // end of [IR0Pnone0]
 | IR0Pnone1(d3p) =>
-  fprint!(out, "IR0Pnone1(", d3p, ")")
+    fprint!(out, "IR0Pnone1(", d3p, ")")
+  // end of [IR0Pnone1]
 //
 )
 //
@@ -208,6 +215,12 @@ x0.node() of
   fprint!
   ( out, "IR0Eif0("
   , ire1, "; ", ire2, "; ", opt3, ")")
+//
+| IR0Ecase
+  (knd0, ire1, ircls) =>
+  fprint!
+  ( out, "IR0Ecase("
+  , knd0, "; ", ire1, "; ", "...", ")")
 //
 | IR0Elam
   (knd0, farg, body) =>

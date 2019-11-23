@@ -392,24 +392,24 @@ end // end of [local]
 local
 
 absimpl
-dg3pat_tbox = $rec
-{ dg3pat_loc= loc_t
-, dg3pat_node= dg3pat_node
+d3gpat_tbox = $rec
+{ d3gpat_loc= loc_t
+, d3gpat_node= d3gpat_node
 } (* end of [absimpl] *)
 
 in (* in-of-local *)
 
 implement
-dg3pat_get_loc(x0) = x0.dg3pat_loc
+d3gpat_get_loc(x0) = x0.d3gpat_loc
 implement
-dg3pat_get_node(x0) = x0.dg3pat_node
+d3gpat_get_node(x0) = x0.d3gpat_node
 
 implement
-dg3pat_make_node
+d3gpat_make_node
   (loc0, node) = $rec
 {
-  dg3pat_loc= loc0, dg3pat_node= node
-} (* dg3pat_make_node *)
+  d3gpat_loc= loc0, d3gpat_node= node
+} (* d3gpat_make_node *)
 
 end // end of [local]
 

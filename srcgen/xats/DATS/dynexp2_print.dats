@@ -137,7 +137,7 @@ fprint_val<d2gua> = fprint_d2gua
 implement
 fprint_val<d2clau> = fprint_d2clau
 implement
-fprint_val<dg2pat> = fprint_dg2pat
+fprint_val<d2gpat> = fprint_d2gpat
 //
 (* ****** ****** *)
 //
@@ -514,11 +514,11 @@ prerr_d2clau(x0) =
 fprint_d2clau(stderr_ref, x0)
 
 implement
-print_dg2pat(x0) =
-fprint_dg2pat(stdout_ref, x0)
+print_d2gpat(x0) =
+fprint_d2gpat(stdout_ref, x0)
 implement
-prerr_dg2pat(x0) =
-fprint_dg2pat(stderr_ref, x0)
+prerr_d2gpat(x0) =
+fprint_d2gpat(stderr_ref, x0)
 
 implement
 fprint_d2clau
@@ -526,25 +526,25 @@ fprint_d2clau
 (
 case+
 x0.node() of
-| D2CLAUgpat(dg2p) =>
+| D2CLAUpat(d2gp) =>
   fprint!
-  (out, "D2CLAUgpat(", dg2p, ")")
-| D2CLAUclau(dg2p, d0e0) =>
+  (out, "D2CLAUpat(", d2gp, ")")
+| D2CLAUexp(d2gp, d0e0) =>
   fprint!
-  (out, "D2CLAUclau(", dg2p, "; ", d0e0, ")")
+  (out, "D2CLAUexp(", d2gp, "; ", d0e0, ")")
 ) (* end of [fprint_d2clau] *)
 
 implement
-fprint_dg2pat
+fprint_d2gpat
   (out, x0) =
 (
 case+
 x0.node() of
-| DG2PATpat(d2p) =>
-  fprint!(out, "DG2PATpat(", d2p, ")")
-| DG2PATgua(d2p, d2gs) =>
-  fprint!(out, "DG2PATgua(", d2p, "; ", d2gs, ")")
-) (* end of [fprint_dg2pat] *)
+| D2GPATpat(d2p) =>
+  fprint!(out, "D2GPATpat(", d2p, ")")
+| D2GPATgua(d2p, d2gs) =>
+  fprint!(out, "D2GPATgua(", d2p, "; ", d2gs, ")")
+) (* end of [fprint_d2gpat] *)
 
 (* ****** ****** *)
 

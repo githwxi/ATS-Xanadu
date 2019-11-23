@@ -97,7 +97,7 @@ t3xread_d3gua: t3xreader(d3gua)
 fun{}
 t3xread_d3clau: t3xreader(d3clau)
 fun{}
-t3xread_dg3pat: t3xreader(dg3pat)
+t3xread_d3gpat: t3xreader(d3gpat)
 fun{}
 t3xread_d3gualst: t3xreader(d3gualst)
 fun{}

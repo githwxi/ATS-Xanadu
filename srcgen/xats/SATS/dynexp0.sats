@@ -76,8 +76,8 @@ abstbox d0gua_tbox = ptr
 typedef d0gua = d0gua_tbox
 typedef d0gualst = List0(d0gua)
 //
-abstbox dg0pat_tbox = ptr
-typedef dg0pat = dg0pat_tbox
+abstbox d0gpat_tbox = ptr
+typedef d0gpat = d0gpat_tbox
 //
 abstbox d0clau_tbox = ptr
 typedef d0clau = d0clau_tbox
@@ -732,13 +732,13 @@ d0gua_make_node
 //
 datatype
 d0clau_node =
-| D0CLAUgpat of (dg0pat)
+| D0CLAUgpat of d0gpat
 | D0CLAUclau of
-  (dg0pat, token(*EQGT*), d0exp)
+  (d0gpat, token(*EQGT*), d0exp)
 and
-dg0pat_node =
-| DG0PATpat of (d0pat)
-| DG0PATgua of
+d0gpat_node =
+| D0GPATpat of (d0pat)
+| D0GPATgua of
   (d0pat, token(*WHEN*), d0gualst)
 //
 fun
@@ -750,19 +750,19 @@ overload .loc with d0clau_get_loc
 overload .node with d0clau_get_node
 //
 fun
-dg0pat_get_loc(dg0pat): loc_t
+d0gpat_get_loc(d0gpat): loc_t
 fun
-dg0pat_get_node(dg0pat): dg0pat_node
+d0gpat_get_node(d0gpat): d0gpat_node
 //
-overload .loc with dg0pat_get_loc
-overload .node with dg0pat_get_node
+overload .loc with d0gpat_get_loc
+overload .node with d0gpat_get_node
 //
 fun
 d0clau_make_node
 (loc: loc_t, node: d0clau_node): d0clau
 fun
-dg0pat_make_node
-(loc: loc_t, node: dg0pat_node): dg0pat
+d0gpat_make_node
+(loc: loc_t, node: d0gpat_node): d0gpat
 //
 (* ****** ****** *)
 //

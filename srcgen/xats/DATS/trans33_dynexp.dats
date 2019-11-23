@@ -1029,26 +1029,26 @@ list_map<d3gua><d3gua>
 //
 implement
 trans33_dgpat
-  (dg3p) =
+  (d3gp) =
 let
-val loc0 = dg3p.loc()
+val loc0 = d3gp.loc()
 in
 //
 case+
-dg3p.node() of
-| DG3PATpat(d3p1) =>
+d3gp.node() of
+| D3GPATpat(d3p1) =>
   (
-  dg3pat_make_node
-  (loc0, DG3PATpat(d3p1))
+  d3gpat_make_node
+  (loc0, D3GPATpat(d3p1))
   ) where
   {
     val
     d3p1 = trans33_dpat(d3p1)
   }
-| DG3PATgua(d3p1, d3gs) =>
+| D3GPATgua(d3p1, d3gs) =>
   (
-  dg3pat_make_node
-  (loc0, DG3PATgua(d3p1, d3gs))
+  d3gpat_make_node
+  (loc0, D3GPATgua(d3p1, d3gs))
   ) where
   {
     val
@@ -1057,7 +1057,7 @@ dg3p.node() of
     d3gs = trans33_dgualst(d3gs)
   }
 //
-end // end of [trans33_dg3pat]
+end // end of [trans33_d3gpat]
 //
 implement
 trans33_dclau_dn
@@ -1067,23 +1067,23 @@ val loc0 = d3cl.loc()
 in
 case+
 d3cl.node() of
-| D3CLAUgpat(dg3p) =>
+| D3CLAUpat(d3gp) =>
   (
   d3clau_make_node
-  (loc0, D3CLAUgpat(dg3p))
+  (loc0, D3CLAUpat(d3gp))
   ) where
   {
     val
-    dg3p = trans33_dgpat(dg3p)
+    d3gp = trans33_dgpat(d3gp)
   }
-| D3CLAUclau(dg3p, d3e2) =>
+| D3CLAUexp(d3gp, d3e2) =>
   (
   d3clau_make_node
-  (loc0, D3CLAUclau(dg3p, d3e2))
+  (loc0, D3CLAUexp(d3gp, d3e2))
   ) where
   {
     val
-    dg3p = trans33_dgpat(dg3p)
+    d3gp = trans33_dgpat(d3gp)
     val
     d3e2 = trans33_dexp_dn(d3e2, tres)
   }

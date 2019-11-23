@@ -374,24 +374,24 @@ end // end of [local]
 local
 
 absimpl
-dg1pat_tbox = $rec{
-  dg1pat_loc= loc_t
-, dg1pat_node= dg1pat_node
+d1gpat_tbox = $rec{
+  d1gpat_loc= loc_t
+, d1gpat_node= d1gpat_node
 } (* end of [absimpl] *)
 
 in (* in-of-local *)
 
 implement
-dg1pat_get_loc(x0) = x0.dg1pat_loc
+d1gpat_get_loc(x0) = x0.d1gpat_loc
 implement
-dg1pat_get_node(x0) = x0.dg1pat_node
+d1gpat_get_node(x0) = x0.d1gpat_node
 
 implement
-dg1pat_make_node
+d1gpat_make_node
 (loc, node) = $rec
 {
-  dg1pat_loc= loc, dg1pat_node= node
-} (* end of [dg1pat_make_node] *)
+  d1gpat_loc= loc, d1gpat_node= node
+} (* end of [d1gpat_make_node] *)
 
 end // end of [local]
 

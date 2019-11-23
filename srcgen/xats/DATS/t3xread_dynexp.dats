@@ -404,30 +404,30 @@ t3xread_d3clau
 (
 case+
 d3cl.node() of
-| D3CLAUgpat(dgp1) =>
+| D3CLAUpat(dgp1) =>
   {
     val () =
-    t3xread_dg3pat<>(dgp1)
+    t3xread_d3gpat<>(dgp1)
   }
-| D3CLAUclau(dgp1, d3e2) =>
+| D3CLAUexp(dgp1, d3e2) =>
   {
     val () =
-    t3xread_dg3pat<>(dgp1)
+    t3xread_d3gpat<>(dgp1)
     val () = t3xread_d3exp<>(d3e2)
   }
 )
 implement
 {}(*tmp*)
-t3xread_dg3pat
+t3xread_d3gpat
   (dgp0) =
 (
 case+
 dgp0.node() of
-| DG3PATpat(d3p1) =>
+| D3GPATpat(d3p1) =>
   {
     val () = t3xread_d3pat<>(d3p1)
   }
-| DG3PATgua(d3p1, d3gs) =>
+| D3GPATgua(d3p1, d3gs) =>
   {
     val () = t3xread_d3pat<>(d3p1)
     val () = t3xread_d3gualst<>(d3gs)
