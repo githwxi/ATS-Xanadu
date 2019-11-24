@@ -59,6 +59,8 @@ print with $D2E.print_d2cst
 overload
 print with $D2E.print_d2var
 //
+overload = with $D2E.eq_d2con_d2con
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/interp0.sats"
@@ -378,6 +380,35 @@ end // end of [aux_if0]
 (* ****** ****** *)
 
 fun
+aux_case
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+(
+case+ opt2 of
+| ~None_vt() =>
+   IR0Vnone0((*void*))
+| ~Some_vt(irv2) => irv2
+) where
+{
+//
+val-
+IR0Ecase
+( knd
+, ire1, ircls) = ire0.node()
+//
+val
+irv1 = interp0_irexp(env0, ire1)
+val
+opt2 =
+interp0_irclaulst(env0, irv1, ircls)
+//
+} (* end of [aux_case] *)
+
+(* ****** ****** *)
+
+fun
 aux_lam
 ( env0
 : !intpenv
@@ -461,6 +492,8 @@ ire0.node() of
 | IR0Eif0
     (_, _, _) => aux_if0(env0, ire0)
   // IR0Eif0
+| IR0Ecase
+    (_, _, _) => aux_case(env0, ire0)
 //
 | IR0Elam
     (_, _, _) => aux_lam(env0, ire0)
@@ -551,7 +584,7 @@ let
   val
   irps = auxnpf(npf1, irps)
   val () =
-  interp0_irpatlst_ck2(env0, irps, irvs)
+  interp0_irpatlst_ck1(env0, irps, irvs)
   val irv0 =
   (
   case+ iras of
@@ -598,7 +631,7 @@ let
   val
   irps = auxnpf(npf1, irps)
   val () =
-  interp0_irpatlst_ck2(env0, irps, irvs)
+  interp0_irpatlst_ck1(env0, irps, irvs)
   val irv0 =
   (
   case+ iras of
@@ -715,17 +748,17 @@ case+ xs of
 (* ****** ****** *)
 
 implement
-interp0_irpat_ck1
+interp0_irpat_ck0
   (irp0, irv0) =
 let
 //
 (*
 val () =
 println!
-("interp0_irpat_ck1: irp0 = ", irp0)
+("interp0_irpat_ck0: irp0 = ", irp0)
 val () =
 println!
-("interp0_irpat_ck1: irv0 = ", irv0)
+("interp0_irpat_ck0: irv0 = ", irv0)
 *)
 //
 in
@@ -743,13 +776,17 @@ IR0Pcapp(d2c0, irps) =>
 case- irv0 of
 |
 IR0Vcon(d2c1, irvs) =>
-interp0_irpatlst_ck1(irps, irvs)
+if
+d2c0=d2c1
+then
+interp0_irpatlst_ck0(irps, irvs)
+else false
 )
 //
-end (* end of [interp0_irpat_ck1] *)
+end (* end of [interp0_irpat_ck0] *)
 
 implement
-interp0_irpatlst_ck1
+interp0_irpatlst_ck0
   (irps, irvs) =
 (
 case+ irps of
@@ -761,30 +798,30 @@ let
   val-
   list_cons(irv0, irvs) = irvs
   val ans =
-  interp0_irpat_ck1(irp0, irv0)  
+  interp0_irpat_ck0(irp0, irv0)  
 in
 //
   if ans
-  then interp0_irpatlst_ck1(irps, irvs)
+  then interp0_irpatlst_ck0(irps, irvs)
   else false
 //
 end // end of [list_cons]
-) (* end of [interp0_irpatlst_ck1] *)
+) (* end of [interp0_irpatlst_ck0] *)
 
 (* ****** ****** *)
 
 implement
-interp0_irpat_ck2
+interp0_irpat_ck1
   (env0, irp0, irv0) =
 let
 //
 (*
 val () =
 println!
-("interp0_irpat_ck2: irp0 = ", irp0)
+("interp0_irpat_ck1: irp0 = ", irp0)
 val () =
 println!
-("interp0_irpat_ck2: irv0 = ", irv0)
+("interp0_irpat_ck1: irv0 = ", irv0)
 *)
 //
 in
@@ -807,13 +844,13 @@ IR0Pcapp(d2c0, irps) =>
 case- irv0 of
 |
 IR0Vcon(d2c1, irvs) =>
-interp0_irpatlst_ck2(env0, irps, irvs)
+interp0_irpatlst_ck1(env0, irps, irvs)
 )
 //
-end (* end of [interp0_irpat_ck2] *)
+end (* end of [interp0_irpat_ck1] *)
 
 implement
-interp0_irpatlst_ck2
+interp0_irpatlst_ck1
   (env0, irps, irvs) =
 (
 case+ irps of
@@ -825,11 +862,183 @@ let
   val-
   list_cons(irv0, irvs) = irvs
   val () =
-  interp0_irpat_ck2(env0, irp0, irv0)  
+  interp0_irpat_ck1(env0, irp0, irv0)  
 in
-  interp0_irpatlst_ck2(env0, irps, irvs)
+  interp0_irpatlst_ck1(env0, irps, irvs)
 end // end of [list_cons]
-) (* end of [interp0_irpatlst_ck2] *)
+) (* end of [interp0_irpatlst_ck1] *)
+
+(* ****** ****** *)
+
+implement
+interp0_irgpat_ck2
+  (env0, irgp, irv0) =
+(
+case+
+irgp.node() of
+|
+IR0GPATpat(irp0) =>
+(
+  test
+) where
+{
+val
+test =
+interp0_irpat_ck0(irp0, irv0)
+val () =
+if test then
+interp0_irpat_ck1(env0, irp0, irv0)
+}
+|
+IR0GPATgua(irp0, irgs) =>
+let
+val
+test =
+interp0_irpat_ck0(irp0, irv0)
+val () =
+if test then
+interp0_irpat_ck1(env0, irp0, irv0)
+in
+if
+test
+then
+interp0_irgualst_ck2(env0, irgs) else false
+end // end of [let]
+) (* end of [interp0_irgpat_ck2] *)
+
+(* ****** ****** *)
+//
+implement
+interp0_irgua_ck2
+  (env0, irg0) =
+(
+case+
+irg0.node() of
+|
+IR0GUAexp(ire1) =>
+let
+val irv1 =
+interp0_irexp(env0, ire1)
+in
+case- irv1 of IR0Vbtf(tf) => tf
+end
+|
+IR0GUAmat(ire1, irp1) =>
+let
+val irv1 =
+interp0_irexp(env0, ire1)
+val test =
+interp0_irpat_ck0(irp1, irv1)
+in
+if
+test
+then
+interp0_irpat_ck1(env0, irp1, irv1); test
+end
+)
+//
+implement
+interp0_irgualst_ck2
+  (env0, irgs) =
+(
+case+ irgs of
+|
+list_nil() => true
+|
+list_cons(irg0, irgs) =>
+if
+interp0_irgua_ck2(env0, irg0)
+then
+interp0_irgualst_ck2(env0, irgs) else false
+) (* end of [interp0_irgualst_ck2] *)
+//
+(* ****** ****** *)
+
+implement
+interp0_irclau
+(env0, irv0, ircl) =
+let
+val () =
+println!
+("interp0_irclau: irv0 = ", irv0)
+in
+//
+case+
+ircl.node() of
+|
+IR0CLAUpat(irgp) =>
+let
+val () =
+intpenv_push_let1(env0)
+val test =
+interp0_irgpat_ck2(env0, irgp, irv0)
+val opt0 =
+(
+  if
+  test
+  then
+  Some_vt(IR0Vnone0()) else None_vt()
+) : Option_vt(ir0val)
+in
+let
+val () = intpenv_pop0_let1(env0) in opt0
+end
+end
+|
+IR0CLAUexp(irgp, ire1) =>
+let
+val () =
+intpenv_push_let1(env0)
+val test =
+interp0_irgpat_ck2(env0, irgp, irv0)
+val opt0 =
+(
+if
+test
+then
+let
+val
+irv1 =
+interp0_irexp(env0, ire1) in Some_vt(irv1)
+end
+else
+(
+  None_vt(*void*)
+)
+) : Option_vt(ir0val)
+in
+  let
+  val () = intpenv_pop0_let1(env0) in opt0
+  end
+end // end of [IR0CLAUexp]
+//
+end (* end of [interp0_irclau] *)
+
+(* ****** ****** *)
+
+implement
+interp0_irclaulst
+(env0, irv0, ircls) =
+(
+case+ ircls of
+|
+list_nil() =>
+(
+  None_vt(*void*)
+)
+|
+list_cons
+(ircl, ircls) =>
+let
+val opt =
+interp0_irclau(env0, irv0, ircl)
+in
+case+ opt of
+|  Some_vt _ => opt
+| ~None_vt _ =>
+   interp0_irclaulst(env0, irv0, ircls)
+end // end of [list_cons]
+)
 
 (* ****** ****** *)
 
@@ -850,9 +1059,11 @@ interp0_irexpopt(env0, def)
 in
 //
 case+ def of
-| None() => ()
-| Some(irv) =>
-  interp0_irpat_ck2(env0, pat, irv)
+|
+None() => ()
+|
+Some(irv) =>
+interp0_irpat_ck1(env0, pat, irv)
 //
 end // end of [interp0_ir0valdecl]
 
