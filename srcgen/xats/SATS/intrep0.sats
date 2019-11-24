@@ -301,6 +301,19 @@ ir0gua_make_node
 (* ****** ****** *)
 //
 fun
+print_ir0gua: print_type(ir0gua)
+fun
+prerr_ir0gua: prerr_type(ir0gua)
+overload print with print_ir0gua
+overload prerr with prerr_ir0gua
+//
+fun
+fprint_ir0gua: fprint_type(ir0gua)
+overload fprint with fprint_ir0gua
+//
+(* ****** ****** *)
+//
+fun
 ir0clau_get_loc
 (x0: ir0clau): loc_t
 fun
@@ -333,6 +346,29 @@ overload .node with ir0gpat_get_node
 fun
 ir0gpat_make_node
 (loc_t, ir0gpat_node): ir0gpat
+//
+(* ****** ****** *)
+//
+fun
+print_ir0clau:print_type(ir0clau)
+fun
+prerr_ir0clau:prerr_type(ir0clau)
+overload print with print_ir0clau
+overload prerr with prerr_ir0clau
+//
+fun
+print_ir0gpat:print_type(ir0gpat)
+fun
+prerr_ir0gpat:prerr_type(ir0gpat)
+overload print with print_ir0gpat
+overload prerr with prerr_ir0gpat
+//
+fun
+fprint_ir0clau:fprint_type(ir0clau)
+overload fprint with fprint_ir0clau
+fun
+fprint_ir0gpat:fprint_type(ir0gpat)
+overload fprint with fprint_ir0gpat
 //
 (* ****** ****** *)
 //
