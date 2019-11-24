@@ -45,7 +45,7 @@ fun
 g_neq(a, a): bool
 
 (* ****** ****** *)
-
+//
 fun
 <a:type>
 g_lt(a, a): bool
@@ -54,26 +54,46 @@ fun
 g_gt(a, a): bool
 fun
 <a:type>
+g_eq(a, a): bool
+//
+fun
+<a:type>
 g_lte(a, a): bool
 fun
 <a:type>
 g_gte(a, a): bool
-
+fun
+<a:type>
+g_neq(a, a): bool
+//
+#symload < with g_lt of 000
+#symload > with g_gt of 000
+#symload = with g_eq of 000
+//
+#symload <= with g_lte of 000
+#symload >= with g_gte of 000
+#symload != with g_neq of 000
+//
 (* ****** ****** *)
-
+//
 fun
 <a:type>
 g_cmp(a, a): sint
-
+//
+#symload cmp with g_cmp of 000
+//
 (* ****** ****** *)
-
+//
 fun
 <a:type>
 g_max(x: a, y: a): (a)
 fun
 <a:type>
 g_min(x: a, y: a): (a)
-
+//
+#symload max with g_max of 000
+#symload min with g_min of 000
+//
 (* ****** ****** *)
 
 (* end of [gord.sats] *)

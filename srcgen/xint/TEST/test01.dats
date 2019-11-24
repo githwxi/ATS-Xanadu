@@ -1,4 +1,51 @@
 fun
+kfact
+( n: int
+, k: int -> int): int =
+if n = 0
+then k(1)
+else
+kfact(n-1, lam(r) => k(n*r))
+
+val
+fact10 = kfact(10, lam r => r)
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
+
+fun
+from(n: int): list(int) =
+if
+(n > 0)
+then
+cons(n, from(n-1)) else nil()
+
+(* ****** ****** *)
+
+fun
+list_mul
+( xs
+: list(int)): int =
+case+ xs of
+| nil() => 1
+| cons(x0, xs) => x0*list_mul(xs)
+
+(* ****** ****** *)
+
+fun
+fact(n) =
+list_mul(from(n))
+
+(* ****** ****** *)
+
+val fact10 = fact(10)
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
+
+fun
 tally
 ( xs
 : list(int)): int =

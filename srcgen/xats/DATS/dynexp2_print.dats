@@ -170,10 +170,8 @@ fprint!
 (out, sym, "(", stamp, ")");
 (*
 fprint!(out, ": ", x0.sexp());
-*)
-// (*
 fprint!(out, ": ", x0.type());
-// *)
+*)
 ) where
 {
   val sym = x0.sym() and stamp = x0.stamp()
@@ -194,13 +192,11 @@ fprint_d2cst
 (
 fprint!
 (out, sym, "(", stamp, ")");
-fprint!(out, "; tqas= ", x0.tqas());
 (*
+fprint!(out, "; tqas= ", x0.tqas());
 fprint!(out, "; sexp= ", x0.sexp());
-*)
-// (*
 fprint!(out, "; type= ", x0.type());
-// *)
+*)
 ) where
 {
   val sym = x0.sym() and stamp = x0.stamp()
@@ -221,13 +217,11 @@ fprint_d2var
 (
 fprint!
 (out, sym, "(", stamp, ")");
-fprint!(out, "; tqas= ", x0.tqas());
 (*
+fprint!(out, "; tqas= ", x0.tqas());
 fprint!(out, "; sexp= ", x0.sexp())
-*)
-// (*
 fprint!(out, "; type= ", x0.type())
-// *)
+*)
 ) where
 {
   val sym = x0.sym() and stamp = x0.stamp()

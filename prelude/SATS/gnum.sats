@@ -65,8 +65,8 @@ fun
 <a:type>
 g_sub(x: a, y: a): a
 //
-#symload + with g_add of 00
-#symload - with g_sub of 00
+#symload + with g_add of 000
+#symload - with g_sub of 000
 //
 (* ****** ****** *)
 //
@@ -80,9 +80,9 @@ fun
 <a:type>
 g_mod(x: a, y: a): a
 //
-#symload * with g_mul of 00
-#symload / with g_div of 00
-#symload % with g_mod of 00
+#symload * with g_mul of 000
+#symload / with g_div of 000
+#symload % with g_mod of 000
 //
 (* ****** ****** *)
 

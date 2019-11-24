@@ -151,10 +151,10 @@ val
 opt =
 interp0_search_d2var(env0, d2v)
 //
-// (*
+(*
 val () =
 println!("auxvar: d2v = ", d2v)
-// *)
+*)
 //
 in
 case- opt of ~Some_vt(irv) => irv
@@ -461,9 +461,11 @@ interp0_irexp
   (env0, ire0) =
 let
 //
+(*
 val () =
 println!
 ("interp0_irexp: ire0 = ", ire0)
+*)
 //
 in
 //
@@ -707,11 +709,11 @@ implement
 interp0_irdcl
   (env0, x0) =
 let
-// (*
+(*
 val () =
 println!
 ("interp0_irdcl: x0 = ", x0)
-// *)
+*)
 in
 case+
 x0.node() of
@@ -958,9 +960,14 @@ implement
 interp0_irclau
 (env0, irv0, ircl) =
 let
+(*
 val () =
 println!
 ("interp0_irclau: irv0 = ", irv0)
+val () =
+println!
+("interp0_irclau: ircl = ", ircl)
+*)
 in
 //
 case+

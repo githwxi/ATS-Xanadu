@@ -91,6 +91,15 @@ fprint_val<ir0arglst> = fprint_ir0arglst
 (* ****** ****** *)
 //
 implement
+fprint_val<ir0gua> = fprint_ir0gua
+implement
+fprint_val<ir0clau> = fprint_ir0clau
+implement
+fprint_val<ir0gpat> = fprint_ir0gpat
+//
+(* ****** ****** *)
+//
+implement
 print_ir0pat(x0) =
 fprint_ir0pat(stdout_ref, x0)
 implement
@@ -244,6 +253,83 @@ x0.node() of
   )
 //
 )
+//
+(* ****** ****** *)
+//
+implement
+print_ir0gua(x0) =
+fprint_ir0gua(stdout_ref, x0)
+implement
+prerr_ir0gua(x0) =
+fprint_ir0gua(stderr_ref, x0)
+//
+implement
+fprint_ir0gua
+  (out, x0) =
+(
+case+
+x0.node() of
+| IR0GUAexp(ir0e) =>
+  fprint!
+  (out, "IR0GUAexp(", ir0e, ")")
+| IR0GUAmat(ir0e, ir0p) =>
+  fprint!
+  (out, "IR0GUAmat(", ir0e, "; ", ir0p, ")")
+) (* end of [fprint_ir0gua] *)
+//
+(* ****** ****** *)
+//
+implement
+print_ir0clau(x0) =
+fprint_ir0clau(stdout_ref, x0)
+implement
+prerr_ir0clau(x0) =
+fprint_ir0clau(stderr_ref, x0)
+//
+implement
+print_ir0gpat(x0) =
+fprint_ir0gpat(stdout_ref, x0)
+implement
+prerr_ir0gpat(x0) =
+fprint_ir0gpat(stderr_ref, x0)
+//
+implement
+fprint_ir0clau
+  (out, x0) =
+(
+case+
+x0.node() of
+//
+|
+IR0CLAUpat(ir0gp) =>
+fprint!
+(out, "IR0CLAUpat(", ir0gp, ")")
+//
+|
+IR0CLAUexp(ir0gp, d0e0) =>
+fprint!
+(out, "IR0CLAUexp(", ir0gp, "; ", d0e0, ")")
+//
+) (* end of [fprint_ir0clau] *)
+//
+implement
+fprint_ir0gpat
+  (out, x0) =
+(
+case+
+x0.node() of
+//
+|
+IR0GPATpat(ir0p) =>
+fprint!
+(out, "IR0GPATpat(", ir0p, ")")
+//
+|
+IR0GPATgua(ir0p, ir0gs) =>
+fprint!
+(out, "IR0GPATgua(", ir0p, "; ", ir0gs, ")")
+//
+) (* end of [fprint_ir0gpat] *)
 //
 (* ****** ****** *)
 //
