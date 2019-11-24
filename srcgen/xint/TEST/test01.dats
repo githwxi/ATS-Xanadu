@@ -1,10 +1,18 @@
+fun
+tally
+( xs
+: list(int)): int =
+case+ xs of
+| nil() => 0
+| cons(x0, xs) => x0+tally(xs)
+
 (* ****** ****** *)
 
 val x0 = nil()
-val x1 = cons(1, x0)
-val x2 = cons(2, x1)
-
-val-cons(y2, x1) = x2
+val x1 = cons(1,x0)
+val x2 = cons(2,x1)
+val x3 = cons(3,x2)
+val sum = tally(x3)
 
 (* ****** ****** *)
 

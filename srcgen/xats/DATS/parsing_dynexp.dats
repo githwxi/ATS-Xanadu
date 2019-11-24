@@ -208,7 +208,7 @@ case+ tnd of
 | T_GT((*void*)) => true // ">"
 *)
 //
-| T_EQGT((*void*)) => true // ">"
+| T_EQGT((*void*)) => true // "=>"
 //
 | T_BSLASH((*void*)) => true
 //
@@ -2280,6 +2280,58 @@ extern
 fun
 p_d0guaseq_AND: parser(d0gualst)
 //
+(* ****** ****** *)
+
+local
+
+fun
+p_appd0exp
+( buf
+: &tokbuf >> _
+, err: &int >> _): d0exp = let
+
+fun
+auxdexp
+( buf: &tokbuf >> _
+, err: &int >> _): d0exp = let
+//
+  val e0 = err
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+  | T_EQGT() => let
+      val () = (err := e0 + 1)
+    in
+      d0exp_make_node
+        (tok.loc(), D0Enone(tok))
+      // end of [d0exp_make_node]
+    end // end of [T_EQGT]
+  | _(*non-EQGT...*) => p_atmd0exp(buf, err)
+end // end of [auxngt]
+//
+val d0e0 =
+  auxdexp(buf, err)
+val d0es = 
+  list_vt2t
+  (pstar_fun{d0exp}(buf, err, auxdexp))
+//
+in
+//
+case+ d0es of
+| list_nil() => d0e0
+| list_cons _ => let
+    val d0e1 = list_last(d0es)
+    val loc01 = d0e0.loc()+d0e1.loc()
+  in
+    d0exp_make_node(loc01, D0Eapps(list_cons(d0e0, d0es)))
+  end // end of [list_cons]
+//
+end // end of [p_appd0exp]
+
+in(*in-of-local*)
+
 implement
 p_d0gua
   (buf, err) = let
@@ -2308,6 +2360,10 @@ tok.node() of
   ) (* end of [non-AS] *)
 //
 end // end of [p_d0gua]
+
+end // end of [local]
+
+(* ****** ****** *)
 //
 implement
 p_d0guaseq_AND

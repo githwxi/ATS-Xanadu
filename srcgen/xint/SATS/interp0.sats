@@ -208,22 +208,52 @@ interp0_fcall_fix
 (* ****** ****** *)
 //
 fun
-interp0_irpat_ck1
-(irp: ir0pat, irv: ir0val): bool
+interp0_irpat_ck0
+(irp0: ir0pat, irv0: ir0val): bool
 fun
-interp0_irpatlst_ck1
+interp0_irpatlst_ck0
 (irps: ir0patlst, irvs: ir0valist): bool
 //
 fun
-interp0_irpat_ck2
+interp0_irpat_ck1
 ( env
 : !intpenv
-, irp: ir0pat, irv: ir0val): void
+, irp0: ir0pat, irv0: ir0val): void
 fun
-interp0_irpatlst_ck2
+interp0_irpatlst_ck1
 ( env
 : !intpenv
 , irps: ir0patlst, irvs: ir0valist): void
+//
+(* ****** ****** *)
+//
+fun
+interp0_irgpat_ck2
+( env
+: !intpenv
+, irgp: ir0gpat, irv0: ir0val): bool
+//
+fun
+interp0_irgua_ck2
+(env: !intpenv, irg0: ir0gua): bool
+fun
+interp0_irgualst_ck2
+(env: !intpenv, irgs: ir0gualst): bool
+//
+(* ****** ****** *)
+//
+fun
+interp0_irclau
+( env
+: !intpenv
+, irv0: ir0val
+, ircl: ir0clau): Option_vt(ir0val)
+fun
+interp0_irclaulst
+( env
+: !intpenv
+, irv0: ir0val
+, ircls: ir0claulst): Option_vt(ir0val)
 //
 (* ****** ****** *)
 

@@ -656,15 +656,7 @@ trans12_dgualst
   (d2gs) where
 {
 //
-val
-(pf0|()) =
-the_trans12_pushnil()
-//
 val d2gs = auxlst(d1gs)
-//
-val
-((*void*)) =
-the_trans12_popfree(pf0|(*void*))
 //
 } where
 {
@@ -682,6 +674,7 @@ case+ d1gs of
      // end of [val]
      val ((*void*)) =
        the_trans12_add_gua(d2g0)
+     // end of [val]
    in
      list_cons(d2g0, auxlst(d1gs))
    end
@@ -747,19 +740,36 @@ in (* in-of-let *)
 //
 case+
 d1gp.node() of
-| D1GPATpat
-  (d1p) =>
-  d2gpat_make_node
-  ( loc0
-  , D2GPATpat(trans12_dpat(d1p))
-  )
-| D1GPATgua
-  (d1p, d1gs) =>
-  d2gpat_make_node
-  ( loc0
-  , D2GPATgua
-    (trans12_dpat(d1p),trans12_dgualst(d1gs))
-  )
+|
+D1GPATpat
+(d1p) =>
+d2gpat_make_node
+( loc0
+, D2GPATpat(trans12_dpat(d1p))
+)
+|
+D1GPATgua
+(d1p, d1gs) =>
+let
+val
+d2p = trans12_dpat(d1p)
+//
+val
+(pf0|()) =
+the_trans12_pushnil()
+val () =
+(
+  the_trans12_add_pat(d2p)
+)
+val
+d2gs = trans12_dgualst(d1gs)
+val
+((*void*)) =
+the_trans12_popfree(pf0|(*void*))
+//
+in
+d2gpat_make_node(loc0, D2GPATgua(d2p, d2gs))
+end
 //
 end (* end of [trans12_dgpat] *)
 
