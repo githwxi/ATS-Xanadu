@@ -219,6 +219,9 @@ ir0exp_node =
 | IR0Elet of (ir0dclist, ir0exp)
 | IR0Ewhere of (ir0exp, ir0dclist)
 //
+| IR0Etuple of
+  (int(*knd*), int(*npf*), ir0explst)
+//
 | IR0Eif0 of
   ( ir0exp(*cond*)
   , ir0exp(*then*), ir0expopt(*else*))

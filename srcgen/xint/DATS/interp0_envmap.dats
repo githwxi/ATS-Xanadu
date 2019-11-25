@@ -729,6 +729,13 @@ IR0Vfun(firfun2(gint_gt_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
+d2cst("gint_eq_sint_sint")
+,
+IR0Vfun(firfun2(gint_eq_sint_sint)))
+//
+val () =
+the_d2cstdef_insert
+(
 d2cst("gint_lte_sint_sint")
 ,
 IR0Vfun(firfun2(gint_lte_sint_sint)))
@@ -739,12 +746,6 @@ d2cst("gint_gte_sint_sint")
 ,
 IR0Vfun(firfun2(gint_gte_sint_sint)))
 //
-val () =
-the_d2cstdef_insert
-(
-d2cst("gint_eq_sint_sint")
-,
-IR0Vfun(firfun2(gint_eq_sint_sint)))
 val () =
 the_d2cstdef_insert
 (

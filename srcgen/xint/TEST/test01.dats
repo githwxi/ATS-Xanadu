@@ -1,3 +1,21 @@
+val xy = @(1, 2)
+val xy = $(1, 2)
+val xy_0 = xy.0
+val xy_1 = xy.1
+////
+(* ****** ****** *)
+
+fun
+fact2
+(nr: @(int, int)): int =
+if
+nr.0 = 0
+then nr.1 else fact2(@(nr.0-1, nr.0*nr.1))
+
+val fact10 = fact2(@(10, 1))
+
+(* ****** ****** *)
+
 fun
 kfact
 ( n: int
@@ -10,8 +28,6 @@ kfact(n-1, lam(r) => k(n*r))
 val
 fact10 = kfact(10, lam r => r)
 
-(* ****** ****** *)
-////
 (* ****** ****** *)
 
 fun

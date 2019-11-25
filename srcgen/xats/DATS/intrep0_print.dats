@@ -219,6 +219,13 @@ x0.node() of
   ( out
   , "IR0Ewhere(", ire1, "; ", irds, ")")
 //
+| IR0Etuple
+  (knd0, npf1, ires) =>
+  fprint!
+  ( out
+  , "IR0Etuple("
+  , knd0, "; ", npf1, "; ", ires, ")")
+//
 | IR0Eif0
   (ire1, ire2, opt3) =>
   fprint!

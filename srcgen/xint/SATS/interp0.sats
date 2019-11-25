@@ -87,6 +87,9 @@ ir0val =
 //
 | IR0Vfun of ir0valfun
 //
+| IR0Vtuple of
+  (int(*knd*), ir0valist)
+//
 | IR0Vlam of
   (ir0env, ir0arglst, ir0exp)
 | IR0Vfix of
