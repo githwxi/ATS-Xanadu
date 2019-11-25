@@ -425,6 +425,66 @@ end // end of [auxlist2]
 
 (* ****** ****** *)
 
+fun
+auxtuple1
+( d1p0
+: d1pat): d2pat = let
+//
+val
+loc0 = d1p0.loc()
+//
+val-
+D1Ptuple
+(tok, d1ps) = d1p0.node()
+//
+val knd =
+(
+case-
+tok.node() of T_TUPLE(k0) => k0
+) : int // end of [val]
+//
+in
+//
+(
+d2pat_tuple
+(loc0, knd, npf, d2ps)
+) where
+{
+  val npf = ~1
+  val d2ps = trans12_dpatlst(d1ps)
+}
+//
+end // end of [auxtuple1]
+
+fun
+auxtuple2
+( d1p0
+: d1pat): d2pat = let
+//
+val-
+D1Ptuple
+( tok
+, d1ps1, d1ps2) = d1p0.node()
+//
+val knd =
+(
+case-
+tok.node() of T_TUPLE(k0) => k0
+) : int // end of [val]
+//
+in
+(
+d2pat_tuple
+(d1p0.loc(), knd, npf, d2ps1+d2ps2)
+) where {
+  val npf = length(d1ps1)
+  val d2ps1 = trans12_dpatlst(d1ps1)
+  val d2ps2 = trans12_dpatlst(d1ps2)
+}
+end // end of [auxlist2]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -453,6 +513,12 @@ d1p0.node() of
   (d1ps) => auxlist1(d1p0)
 | D1Plist
   (xs1, xs2) => auxlist2(d1p0)
+//
+| D1Ptuple
+  (tok, d1ps) => auxtuple1(d1p0)
+| D1Ptuple
+  ( tok
+  , xs1, xs2) => auxtuple2(d1p0)
 //
 | D1Panno
   (d1p1, s1e2) =>
