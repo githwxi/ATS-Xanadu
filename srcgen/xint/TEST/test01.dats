@@ -1,4 +1,3 @@
-
 fun
 fact2
 ( nr
@@ -8,7 +7,7 @@ nr.0 = 0
 then nr.1
 else
 let
-val (n, r) = nr
+val @(n, r) = nr
 in fact2(@(n-1, n*r)) end
 
 val fact10 = fact2(@(10, 1))
