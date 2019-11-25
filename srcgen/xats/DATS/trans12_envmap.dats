@@ -1990,6 +1990,12 @@ d2p0.node() of
     val () = auxd2ps(d2ps)  
   }
 //
+| D2Ptuple
+  (knd0, npf1, d2ps) =>
+  {
+    val () = auxd2ps(d2ps)
+  }
+//
 | D2Panno
   (d2p, s2e) => auxd2p0(d2p)
 //

@@ -38,10 +38,10 @@
 //
 (* ****** ****** *)
 //
-#staload
-"./basics.sats"
-#staload
-"./locinfo.sats"
+#staload"./basics.sats"
+//
+#staload"./label0.sats"
+#staload"./locinfo.sats"
 //
 (* ****** ****** *)
 //
@@ -215,6 +215,10 @@ ir0exp_node =
 | IR0Edapp of
   ( ir0exp
   , int(*npf*), ir0explst)
+//
+| IR0Eproj of
+  ( ir0exp(*rcd*)
+  , label(*proj*), int(*index*))
 //
 | IR0Elet of (ir0dclist, ir0exp)
 | IR0Ewhere of (ir0exp, ir0dclist)

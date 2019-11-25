@@ -41,10 +41,14 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
+LAB = "./../SATS/label0.sats"
+#staload
 STM = "./../SATS/stamp0.sats"
 #staload
 SYM = "./../SATS/symbol.sats"
 //
+overload
+= with $LAB.eq_label_label
 overload
 = with $STM.eq_stamp_stamp
 overload
@@ -893,6 +897,48 @@ end
 end // end of [t2ype_hnfize]
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+t2ype_projize
+(t2p0, lab1) =
+let
+val t2p0 = hnfize(t2p0)
+in
+//
+case+
+t2p0.node() of
+//
+| T2Ptyrec
+  (_, _, lt2ps) => auxlst(0, lt2ps)
+| _(*non-T2Ptyrec*) => None_vt(*void*)
+//
+end where
+{
+fun
+auxlst
+( i0: int
+, lxs
+: labt2ypelst
+) :
+Option_vt@(int, t2ype) =
+(
+case+ lxs of
+|
+list_nil() => None_vt()
+|
+list_cons(lx0, lxs) =>
+let
+  val
+  TLABELED(l0, x0) = lx0
+in
+if
+(l0 = lab1)
+then Some_vt@(i0, x0) else auxlst(i0+1, lxs)
+end // end of [list_cons]
+)
+} (* end of [t2ype_projize] *)
 
 (* ****** ****** *)
 

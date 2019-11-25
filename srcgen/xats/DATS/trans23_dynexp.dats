@@ -861,15 +861,23 @@ val
 loc0 = d2e0.loc()
 val-
 D2Edtsel
-( lab1
+( lab0
 , dpis
+, npf2
 , arg3) = d2e0.node()
 //
 val
-arg3 = trans23_dexpopt(arg3)
+arg3 =
+(
+case+ arg3 of
+| None() =>
+  None()
+| Some(d3es) =>
+  Some(trans23_dexplst(d3es))
+) : d3explstopt // end of [val]
 //
 in
-  d3exp_dtsel_up(loc0, lab1, dpis, arg3)
+  d3exp_dtsel_up(loc0, lab0, dpis, npf2, arg3)
 end // end of [aux_dtsel]
 
 (* ****** ****** *)

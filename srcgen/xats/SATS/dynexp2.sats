@@ -398,12 +398,15 @@ typedef f2arg = f2arg_tbox
 typedef f2arglst = List0(f2arg)
 //
 (* ****** ****** *)
-
+//
 abstbox d2exp_tbox = ptr
 typedef d2exp = d2exp_tbox
+//
 typedef d2explst = List0(d2exp)
 typedef d2expopt = Option(d2exp)
-
+//
+typedef d2explstopt = Option(d2explst)
+//
 (* ****** ****** *)
 //
 abstbox d2gua_tbox = ptr
@@ -675,13 +678,15 @@ d2exp_node =
   (int(*knd*), int(*npf*), d2explst)
 //
 | D2Eassgn of
-  (d2exp(*lval*), d2exp(*rval*))
+  ( d2exp(*l-val*), d2exp(*r-val*) )
 (*
 | D2Ebrack of
   (d2pitmlst(*sym*), d2explst(*arg*))
 *)
 | D2Edtsel of
-  (label, d2pitmlst, d2expopt(*arg*))
+  ( label
+  , d2pitmlst
+  , int(*npf*), d2explstopt(*arg*))
 //
 | D2Eif0 of
   ( d2exp(*cond*)

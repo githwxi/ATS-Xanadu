@@ -1469,11 +1469,49 @@ case+ opt of
 //
 end : d2pitmlst
 //
-val arg = trans12_dexpopt(arg)
+var npf: int = ~1
+//
+val arg =
+(
+case+ arg of
+|
+None() =>
+None(*void*)
+|
+Some(d1e) =>
+(
+  Some(d2es)
+) where
+{
+val d2es =
+(
+case+
+d1e.node() of
+| D1Elist(d1es1) =>
+  (
+    trans12_dexplst(d1es1)
+  )
+| D1Elist
+  (d1es1, d1es2) =>
+  let
+  val () =
+  (npf := length(d1es1))
+  val d2es1 =
+    trans12_dexplst(d1es1)
+  val d2es2 =
+    trans12_dexplst(d1es2)
+  in
+    list_append(d2es1, d2es2)
+  end
+| _(*non-D1Elist*) =>
+  list_sing(trans12_dexp(d1e))
+) : d2explst // end of [val]
+}
+) : d2explstopt // end of [val]
 //
 in
   d2exp_make_node
-  (loc0, D2Edtsel(lab, dpis, arg))
+  (loc0, D2Edtsel(lab, dpis, npf, arg))
 end // end of [aux_dtsel]
 
 (* ****** ****** *)

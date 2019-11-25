@@ -40,6 +40,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/label0.sats"
+//
 #staload "./../SATS/xerrory.sats"
 //
 (* ****** ****** *)
@@ -317,7 +319,7 @@ d3e0.node() of
     t3xread_d3exp<>(d3e1)
   }
 //
-| D3Ecast(d3e1, t2p2) =>
+| D3Elcast(d3e1, lab2) =>
   let
 //
     val
@@ -331,10 +333,30 @@ d3e0.node() of
   in
 //
     println!
-    (loc0, ": T3XERR(d3exp): D3Ecast: d3e1 = ", d3e1);
+    (loc0, ": T3XERR(d3exp): D3Elcast: d3e1 = ", d3e1);
 //
-    println!(loc0, ": T3XERR(d3exp): D3Ecast: t2p1 = ", t2p1);
-    println!(loc0, ": T3XERR(d3exp): D3Ecast: t2p2 = ", t2p2);
+    println!(loc0, ": T3XERR(d3exp): D3Elcast: t2p1 = ", t2p1);
+    println!(loc0, ": T3XERR(d3exp): D3Elcast: lab2 = ", lab2);
+//
+  end
+| D3Etcast(d3e1, t2p2) =>
+  let
+//
+    val
+    t2p1 = d3e1.type()
+//
+    val () =
+    t3xread_d3exp<>(d3e1)
+//
+    val () =
+    t3xerr_add(T3XERRd3exp(d3e0))
+  in
+//
+    println!
+    (loc0, ": T3XERR(d3exp): D3Etcast: d3e1 = ", d3e1);
+//
+    println!(loc0, ": T3XERR(d3exp): D3Etcast: t2p1 = ", t2p1);
+    println!(loc0, ": T3XERR(d3exp): D3Etcast: t2p2 = ", t2p2);
 //
   end
 //

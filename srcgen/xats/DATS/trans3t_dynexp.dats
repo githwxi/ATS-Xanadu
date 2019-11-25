@@ -215,6 +215,17 @@ d3e0.node() of
   , D3Edapp(d3f0, npf1, d3es))
   end // end of [D3Edapp]
 //
+| D3Eproj
+  (d3e1, lab2, idx2) =>
+  let
+  val d3e1 =
+  trans3t_dexp(env0, d3e1)
+  in
+  d3exp_make_node
+  ( loc0, t2p0
+  , D3Eproj(d3e1, lab2, idx2))
+  end
+//
 | D3Elet(d3cs, d3e1) =>
   let
     val () =

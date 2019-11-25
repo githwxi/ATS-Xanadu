@@ -142,6 +142,29 @@ in
 d3pat_dapp_up(loc0, d3f0, npf1, d3ps)
 end // end of [auxdapp]
 
+(* ****** ****** *)
+
+fun
+aux_tuple
+( d3p0
+: d3pat): d3pat =
+let
+//
+val
+loc0 = d3p0.loc()
+//
+val-
+D3Ptuple
+( knd0
+, npf1
+, d3ps) = d3p0.node()
+//
+val d3ps = trans33_dpatlst(d3ps)
+//
+in
+d3pat_tuple_up(loc0, knd0, npf1, d3ps)
+end // end of [aux_tuple]
+
 in (* in-of-local *)
 
 implement
@@ -167,6 +190,8 @@ d3p0.node() of
 | D3Psym0 _ => auxsym0(d3p0)
 //
 | D3Pdapp _ => auxdapp(d3p0)
+//
+| D3Ptuple _ => aux_tuple(d3p0)
 //
 | D3Pnone0 _ => d3p0
 | D3Pnone1 _ => d3p0
@@ -576,16 +601,66 @@ val
 loc0 = d3e0.loc()
 val-
 D3Edapp
-(d3f0, npf1, d3es) = d3e0.node()
+( d3f0
+, npf1, d3es) = d3e0.node()
 //
+in
+//
+case+
+d3f0.node() of
+|
+D3Edtsel _ =>
+(
+  auxdapp2(d3e0)
+)
+|
+_(* else *) =>
+let
 val
 d3f0 = trans33_dexp(d3f0)
 val
 d3es = trans33_dexplst(d3es)
-//
 in
 d3exp_dapp_up(loc0, d3f0, npf1, d3es)
+end
+//
 end // end of [auxdapp]
+
+and
+auxdapp2
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Edapp
+( d3f0
+, npf1, d3es) = d3e0.node()
+val-
+D3Edtsel
+( lab0
+, dpis
+, npf2, opt3) = d3f0.node()
+//
+in
+//
+case- opt3 of
+|
+None() =>
+let
+val-
+list_cons(d3e1, _) = d3es
+in
+  d3exp_proj_up(loc0, d3e1, lab0)
+end // end of [None]
+(*
+|
+Some(arg3) =>
+*)
+//
+end // end of [auxdapp2]
 
 (* ****** ****** *)
 

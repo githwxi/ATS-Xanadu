@@ -353,6 +353,13 @@ x0.node() of
   ( out, "D3Edapp("
   , d3e1, "; ", npf2, "; ", d3es, ")")
 //
+| D3Eproj
+  (d3e1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "D3Eproj("
+  , d3e1, "; ", lab2, "; ", idx2, ")")
+//
 | D3Elet(d3cs, d3e2) =>
   fprint!
   ( out
@@ -376,14 +383,28 @@ x0.node() of
 | D3Eassgn
   (d3e1, d3e2) =>
   fprint!
-  ( out, "D3Eassgn("
-  , d3e1, "; ", d3e2, ")")
+  ( out
+  , "D3Eassgn(", d3e1, "; ", d3e2, ")")
 //
 | D3Edtsel
-  (lab1, dpis, arg3) =>
+  ( lab0
+  , dpis, npf2, arg3) =>
+  (
+  case+
+  arg3 of
+  |
+  None() =>
   fprint!
-  ( out, "D3Edtsel("
-  , lab1, "; ", dpis, "; ", arg3, ")")
+  ( out
+  , "D2Edtsel("
+  , lab0, "(", dpis, ")", ")")
+  |
+  Some(d3es) =>
+  fprint!
+  ( out
+  , "D2Edtsel("
+  , lab0, "(", dpis, ")", "(", npf2, "; ", d3es, ")", ")")
+  )
 //
 | D3Eif0
   (d3e1, d3e2, opt3) =>
@@ -424,10 +445,14 @@ x0.node() of
   ( out
   , "D3Eanno(", d3e1, "; ", s2e2, ")")
 //
-| D3Ecast(d3e1, t2p2) =>
+| D3Elcast(d3e1, lab2) =>
   fprint!
   ( out
-  , "D3Ecast(", d3e1, "; ", t2p2, ")")
+  , "D3Elcast(", d3e1, "; ", lab2, ")")
+| D3Etcast(d3e1, t2p2) =>
+  fprint!
+  ( out
+  , "D3Etcast(", d3e1, "; ", t2p2, ")")
 //
 | D3Enone0() =>
   fprint!(out, "D3Enone0(", ")")

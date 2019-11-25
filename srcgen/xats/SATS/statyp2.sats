@@ -319,7 +319,8 @@ t2ype_fun2
 fun
 t2ype_tyrec
 ( s2t0: sort2
-, knd1: tyrec, npf2: int, ltps: labt2ypelst): t2ype
+, knd1: tyrec
+, npf2: int, ltps: labt2ypelst): t2ype
 //
 (* ****** ****** *)
 //
@@ -328,6 +329,13 @@ t2ype_hnfize(t2p0: t2ype): t2ype
 //
 overload hnfize with t2ype_hnfize
 //
+(* ****** ****** *)
+
+fun
+t2ype_projize
+( t2p0: t2ype
+, lab1: label): Option_vt@(int, t2ype)
+
 (* ****** ****** *)
 //
 fun

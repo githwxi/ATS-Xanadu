@@ -423,14 +423,28 @@ case- x0.node() of
 | D2Eassgn
   (d2e1, d2e2) =>
   fprint!
-  ( out, "D2Eassgn("
-  , d2e1, "; ", d2e2, ")")
+  ( out
+  , "D2Eassgn(", d2e1, "; ", d2e2, ")")
 //
 | D2Edtsel
-  (lab, dpis, arg3) =>
+  ( lab0
+  , dpis, npf2, arg3) =>
+  (
+  case+
+  arg3 of
+  |
+  None() =>
   fprint!
-  ( out, "D2Edtsel("
-  , lab, "; ", dpis, "; ", arg3, ")")
+  ( out
+  , "D2Edtsel("
+  , lab0, "(", dpis, ")", ")")
+  |
+  Some(d2es) =>
+  fprint!
+  ( out
+  , "D2Edtsel("
+  , lab0, "(", dpis, ")", "(", npf2, "; ", d2es, ")", ")")
+  )
 //
 | D2Eif0
   (d2e1, d2e2, opt3) =>

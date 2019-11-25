@@ -218,7 +218,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-(*
+// (*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -228,7 +228,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-*)
+// *)
 //
 in
 //
@@ -282,6 +282,55 @@ case+ ires of
   end // end of [else]    
   )
 ) (* end of [auxdarg] *)
+
+(* ****** ****** *)
+
+local
+
+fun
+auxlst
+( irvs
+: ir0valist
+, i0: int): ir0val =
+(
+case+ irvs of
+|
+list_nil() =>
+IR0Vnone0()
+|
+list_cons
+(irv0, irvs) =>
+(
+if
+(i0 > 0)
+then auxlst(irvs, i0-1) else irv0
+)
+) (* end of [auxlst] *)
+
+in(* in-of-local*)
+
+fun
+auxproj
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Eproj
+( ire1
+, lab2
+, idx2) = ire0.node()
+val
+irv1 =
+interp0_irexp(env0, ire1)
+in
+case- irv1 of
+|
+IR0Vtuple(knd, irvs) => auxlst(irvs, idx2)
+end // end of [auxproj]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -542,6 +591,8 @@ ire0.node() of
 | IR0Efcst _ => auxfcst(env0, ire0)
 //
 | IR0Edapp _ => auxdapp(env0, ire0)
+//
+| IR0Eproj _ => auxproj(env0, ire0)
 //
 | IR0Elet
   (ircs, ire1) => aux_let(env0, ire0)
@@ -845,6 +896,20 @@ interp0_irpatlst_ck0(irps, irvs)
 else false
 )
 //
+|
+IR0Ptuple(knd0, irps) =>
+(
+case- irv0 of
+|
+IR0Vtuple(knd1, irvs) =>
+let
+val () =
+assertloc(knd0 = knd1)
+in
+interp0_irpatlst_ck0(irps, irvs)
+end
+)
+//
 end (* end of [interp0_irpat_ck0] *)
 
 implement
@@ -877,14 +942,14 @@ interp0_irpat_ck1
   (env0, irp0, irv0) =
 let
 //
-(*
+// (*
 val () =
 println!
 ("interp0_irpat_ck1: irp0 = ", irp0)
 val () =
 println!
 ("interp0_irpat_ck1: irv0 = ", irv0)
-*)
+// *)
 //
 in
 case-
@@ -907,6 +972,19 @@ case- irv0 of
 |
 IR0Vcon(d2c1, irvs) =>
 interp0_irpatlst_ck1(env0, irps, irvs)
+)
+//
+|
+IR0Ptuple(knd0, irps) =>
+(
+case- irv0 of
+|
+IR0Vtuple(knd1, irvs) =>
+let
+val () = assertloc(knd0 = knd1)
+in
+interp0_irpatlst_ck1(env0, irps, irvs)
+end
 )
 //
 end (* end of [interp0_irpat_ck1] *)

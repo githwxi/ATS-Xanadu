@@ -324,12 +324,12 @@ d3exp_make_node
 (* ****** ****** *)
 //
 implement
-d3exp_cast
+d3exp_tcast
 (d3e0, t2p0) =
 (
 d3exp_make_node
 ( loc0
-, t2p0, D3Ecast(d3e0, t2p0))
+, t2p0, D3Etcast(d3e0, t2p0))
 ) where
 {
   val loc0 = d3e0.loc((*void*))
