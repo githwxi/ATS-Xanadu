@@ -344,6 +344,63 @@ end // end of [aux_where]
 (* ****** ****** *)
 
 fun
+aux_tuple
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+//
+val-
+IR0Etuple
+( knd0
+, npf1
+, ires) = ire0.node()
+//
+fun
+auxlst
+( env0
+: !intpenv
+, npf1: int
+, ires
+: ir0explst
+) : ir0valist =
+(
+case+ ires of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (ire1, ires) =>
+  (
+  if
+  (npf1 > 0)
+  then
+  auxlst(env0, npf1-1, ires)
+  else
+  (
+  list_cons
+  ( irv1
+  , auxlst(env0, npf1-1, ires))
+  ) where
+  {
+  val
+  irv1 = interp0_irexp(env0, ire1)
+  }
+  ) (* end of [list_cons] *)
+)
+//
+in
+(
+  IR0Vtuple(knd0, irvs)
+) where
+{
+  val irvs = auxlst(env0, npf1, ires)
+}
+end // end of [aux_tuple]
+
+(* ****** ****** *)
+
+fun
 aux_if0
 ( env0
 : !intpenv
@@ -490,6 +547,9 @@ ire0.node() of
   (ircs, ire1) => aux_let(env0, ire0)
 | IR0Ewhere
   (ire1, ircs) => aux_where(env0, ire0)
+//
+| IR0Etuple
+  (_, _, ires) => aux_tuple(env0, ire0)
 //
 | IR0Eif0
     (_, _, _) => aux_if0(env0, ire0)

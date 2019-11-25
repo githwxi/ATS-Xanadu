@@ -100,10 +100,17 @@ case+ x0 of
 //
 | IR0Vcon(d2c, xs) =>
   fprint!
-  (out, "IR0Vcon(", d2c, "; ", xs, ")")
+  ( out
+  , "IR0Vcon(", d2c, "; ", xs, ")")
 //
 | IR0Vfun(fopr) =>
   fprint!(out, "IR0Vfun(", "...", ")")
+//
+| IR0Vtuple(knd, irvs) =>
+  fprint!
+  ( out
+  , "IR0Vtuple(", knd, "; ", irvs, ")")
+//
 | IR0Vlam(fenv, iras, ire1) =>
   fprint!(out, "IR0Vlam(", "...", ")")
 | IR0Vfix(fenv, d2v0, iras, ire1) =>

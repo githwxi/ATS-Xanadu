@@ -243,7 +243,8 @@ d3e0.node() of
   val ires = irerase_dexplst(d3es)
   in
     ir0exp_make_node
-    (loc0, IR0Edapp(irf0, npf1, ires))
+    ( loc0
+    , IR0Edapp(irf0, npf1, ires))
   end
 //
 | D3Elet(d3cs, d3e1) =>
@@ -268,8 +269,18 @@ d3e0.node() of
     ircs = irerase_declist(d3cs)
   in
     ir0exp_make_node
-      (loc0, IR0Ewhere(ire1, ircs))
-    // ir0exp_make_node
+    (loc0, IR0Ewhere(ire1, ircs))
+  end
+//
+| D3Etuple
+  (knd0, npf1, d3es) =>
+  let
+    val
+    ires = irerase_dexplst(d3es)
+  in
+    ir0exp_make_node
+    ( loc0
+    , IR0Etuple(knd0, npf1, ires))
   end
 //
 | D3Eif0

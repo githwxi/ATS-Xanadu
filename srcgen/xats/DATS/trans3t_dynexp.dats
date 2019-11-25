@@ -259,7 +259,8 @@ d3e0.node() of
     (loc0, t2p0, D3Eseqn(d3es, d3e1))
   end
 //
-| D3Etuple(knd, npf, d3es) =>
+| D3Etuple
+  (knd, npf, d3es) =>
   let
     val
     d3es =

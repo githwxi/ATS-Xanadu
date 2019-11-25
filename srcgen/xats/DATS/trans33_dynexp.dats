@@ -102,20 +102,20 @@ case+ opt0 of
 ~None_vt() => d3p0
 |
 ~Some_vt(d2i0) =>
- (
- case- d2i0 of
- | D2ITMcon(d2cs) =>
-   (
-   d3pat_make_node
-   (loc0, t2p0, D3Pcon1(d2c1))
-   ) where
-   {
-     val-
-     list_cons(d2c1, _) = d2cs
-     val-true =
-     unify_d2con_t2ype(loc0, d2c1, t2p0)
-   }
- )
+(
+case- d2i0 of
+| D2ITMcon(d2cs) =>
+  (
+  d3pat_make_node
+  (loc0, t2p0, D3Pcon1(d2c1))
+  ) where
+  {
+    val-
+    list_cons(d2c1, _) = d2cs
+    val-true =
+    unify_d2con_t2ype(loc0, d2c1, t2p0)
+  }
+)
 end // end of [auxsym0]
 
 (* ****** ****** *)
@@ -457,46 +457,46 @@ D3Esym0
 //
 val
 t2p0 = d3e0.type()
-// (*
+(*
 val () =
 println!
 ("auxsym0: d3e0 = ", d3e0)
 val () =
 println!
 ("auxsym0: t2p0 = ", t2p0)
-// *)
+*)
 //
 val opt0 =
 match_d2pitmlst_t2ype(dpis, t2p0)
 //
-in
+in(* in-of-let *)
 //
 case+ opt0 of
 |
 ~None_vt() => d3e0
 |
 ~Some_vt(d2i0) =>
- (
- case- d2i0 of
- | D2ITMvar(d2v1) =>
-   (
-     d2var_up(loc0, d2v1)
-   )
- | D2ITMcon(d2cs) =>
-   (
-     d2con_up(loc0, d2c1)
-   ) where
-   {
-     val-list_cons(d2c1, _) = d2cs
-   }
- | D2ITMcst(d2cs) =>
-   (
-     d2cst_up(loc0, d2c1)
-   ) where
-   {
-     val-list_cons(d2c1, _) = d2cs
-   }
- ) (* end of [Some] *)
+(
+case- d2i0 of
+| D2ITMvar(d2v1) =>
+  (
+    d2var_up(loc0, d2v1)
+  )
+| D2ITMcon(d2cs) =>
+  (
+    d2con_up(loc0, d2c1)
+  ) where
+  {
+    val-list_cons(d2c1, _) = d2cs
+  }
+| D2ITMcst(d2cs) =>
+  (
+    d2cst_up(loc0, d2c1)
+  ) where
+  {
+    val-list_cons(d2c1, _) = d2cs
+  }
+) (* end of [Some] *)
 //
 end // end of [auxsym0]
 
