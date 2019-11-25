@@ -51,6 +51,7 @@ typedef d3patopt = Option(d3pat)
 (* ****** ****** *)
 //
 abstbox f3arg_tbox = ptr
+//
 typedef f3arg = f3arg_tbox
 typedef f3arglst = List0(f3arg)
 typedef f3arglstopt = Option(f3arglst)
@@ -62,6 +63,7 @@ abstbox d3exp_tbox = ptr
 typedef d3exp = d3exp_tbox
 typedef d3explst = List0(d3exp)
 typedef d3expopt = Option(d3exp)
+typedef d3explstopt = Option(d3explst)
 //
 (* ****** ****** *)
 //
@@ -305,6 +307,10 @@ d3exp_node =
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
 //
+| D3Eproj of
+  ( d3exp(*rcd*)
+  , label(*proj*), int(*index*))
+//
 | D3Elet of
   (d3eclist, d3exp(*sequence*))
 | D3Ewhere of (d3exp, d3eclist)
@@ -318,7 +324,9 @@ d3exp_node =
 | D3Eassgn of
   (d3exp(*lval*), d3exp(*rval*))
 | D3Edtsel of
-  (label, d2pitmlst, d3expopt(*arg*))
+  ( label
+  , d2pitmlst
+  , int(*npf*), d3explstopt(*arg*))
 //
 | D3Eif0 of
   ( d3exp(*cond*)
@@ -343,7 +351,8 @@ d3exp_node =
 //
 | D3Eanno of (d3exp, s2exp)
 //
-| D3Ecast of (d3exp, t2ype)
+| D3Elcast of (d3exp, label)
+| D3Etcast of (d3exp, t2ype)
 //
 | D3Enone0 of ()
 | D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
@@ -508,7 +517,7 @@ overload fprint with fprint_d3exp
 (* ****** ****** *)
 
 fun
-d3exp_cast
+d3exp_tcast
 (d3e0: d3exp, t2p0: t2ype): d3exp
 
 (* ****** ****** *)

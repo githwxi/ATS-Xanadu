@@ -113,6 +113,8 @@ typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
 
+typedef d3explstopt = $D3E.d3explstopt
+
 (* ****** ****** *)
 
 typedef d2gua = $D2E.d2gua
@@ -312,6 +314,13 @@ d3exp_dapp_up
 (* ****** ****** *)
 //
 fun
+d3exp_proj_up
+( loc0: loc_t
+, d3e1: d3exp, label: label): d3exp
+//
+(* ****** ****** *)
+//
+fun
 d3exp_seqn_up
 ( loc0: loc_t
 , d3es: d3explst, d3e2: d3exp): d3exp
@@ -335,8 +344,9 @@ d3exp_assgn_up
 fun
 d3exp_dtsel_up
 ( loc0: loc_t
-, lab1: label
-, dpis: d2pitmlst, arg3: d3expopt): d3exp
+, lab0: label
+, dpis: d2pitmlst
+, npf2: int, arg3: d3explstopt): d3exp
 //
 (* ****** ****** *)
 //

@@ -42,6 +42,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/basics.sats"
 //
+#staload "./../SATS/label0.sats"
+//
 #staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/dynexp0.sats"
@@ -209,6 +211,13 @@ x0.node() of
   ( out
   , "IR0Edapp("
   , irf0, "; ", npf1, "; ", ires, ")")
+//
+| IR0Eproj
+  (ire1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "IR0Eproj("
+  , ire1, "; ", lab2, "; ", idx2, ")")
 //
 | IR0Elet(irds, ire1) =>
   fprint!

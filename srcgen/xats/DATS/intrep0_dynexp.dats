@@ -100,10 +100,63 @@ case-
 d3f0.node() of
 |
 D3Pcon1(d2c0) =>
-ir0pat_make_node
-(loc0, IR0Pcapp(d2c0, irps))
+ir0pat_make_node(loc0, IR0Pcapp(d2c0, irps))
 //
 end // end of [auxdapp]
+
+(* ****** ****** *)
+
+fun
+aux_tuple
+( d3p0
+: d3pat): ir0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+//
+val-
+D3Ptuple
+( knd0
+, npf1
+, d3ps) = d3p0.node()
+//
+val
+irps =
+(
+  auxlst(npf1, d3ps)
+) where
+{
+fun
+auxlst
+( npf1: int
+, d3ps
+: d3patlst): ir0patlst =
+(
+case+ d3ps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(d3p1, d3ps) =>
+if
+(npf1 > 0)
+then
+auxlst(npf1-1, d3ps)
+else
+let
+val
+irp1 = irerase_dpat(d3p1)
+in
+list_cons
+(irp1, auxlst(npf1-1, d3ps))
+end
+) (* end of [auxlst] *)
+} (* where *) // end-of-val
+//
+in
+ir0pat_make_node(loc0, IR0Ptuple(knd0, irps))
+end // end of [aux_tuple]
 
 in(*in-of-local*)
 
@@ -133,6 +186,8 @@ d3p0.node() of
   ir0pat_make_node(loc0, IR0Pvar(d2v))
 //
 | D3Pdapp _ => auxdapp(d3p0)
+//
+| D3Ptuple _ => aux_tuple(d3p0)
 //
 | D3Panno(d3p1, _) => irerase_dpat(d3p1)
 //
@@ -245,6 +300,16 @@ d3e0.node() of
     ir0exp_make_node
     ( loc0
     , IR0Edapp(irf0, npf1, ires))
+  end
+//
+| D3Eproj
+  (d3e1, lab2, idx2) => let
+    val
+    ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node
+      (loc0, IR0Eproj(ire1, lab2, idx2))
+    // ir0exp_make_node
   end
 //
 | D3Elet(d3cs, d3e1) =>

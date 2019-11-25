@@ -801,7 +801,7 @@ in
 //
 if
 test
-then d3e0 else d3exp_cast(d3e0, t2p0)
+then d3e0 else d3exp_tcast(d3e0, t2p0)
 //
 end // end of [d3exp_dn]
 
@@ -1253,7 +1253,8 @@ end
 in
 d3exp_make_node
 ( loc0, t2p0
-, D3Etcst(d2c0, TI3ARGsome(tsub), ti2s))
+, D3Etcst
+  (d2c0, TI3ARGsome(tsub), ti2s))
 end
 //
 end // end of [d3exp_tapp_up]
@@ -1286,6 +1287,37 @@ d3exp_make_node
 (loc0, tres, D3Edapp(d3f0, npf0, d3es))
 //
 end // end of [d3exp_dapp_up]
+
+(* ****** ****** *)
+
+implement
+d3exp_proj_up
+(loc0, d3e1, lab2) =
+let
+val t2p1 = d3e1.type()
+val opt2 =
+t2ype_projize(t2p1, lab2)
+in
+//
+case+ opt2 of
+|
+~None_vt() =>
+let
+  val t2p2 = t2ype_new(loc0)
+in
+  d3exp_make_node
+  (loc0, t2p2, D3Elcast(d3e1, lab2))
+end
+|
+~Some_vt(it2p2) =>
+let
+  val (i0, t2p2) = it2p2
+in
+  d3exp_make_node
+  (loc0, t2p2, D3Eproj(d3e1, lab2, i0))
+end
+//
+end // end of [d3exp_proj_up]
 
 (* ****** ****** *)
 //
@@ -1367,12 +1399,12 @@ end // end of [d3exp_assgn_up]
 implement
 d3exp_dtsel_up
 ( loc0
-, lab, dpis, arg3) =
+, lab0, dpis, npf2, arg3) =
 let
   val t2p0 = t2ype_new(loc0)
 in
-  d3exp_make_node
-  (loc0, t2p0, D3Edtsel(lab, dpis, arg3))
+d3exp_make_node
+(loc0, t2p0, D3Edtsel(lab0, dpis, npf2, arg3))
 end // end of [d3exp_dtsel_up]
 
 (* ****** ****** *)
