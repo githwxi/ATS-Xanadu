@@ -38,25 +38,48 @@
 (* ****** ****** *)
 
 #define
-XATS_targetloc
-"./../../xats"
+XATS_targetloc "./../../xats"
 
 (* ****** ****** *)
 
 #staload
-D2E =
-"{$XATS}/SATS/dynexp2.sats"
-
-(* ****** ****** *)
-
-#staload
-"{$XATS}/SATS/intrep0.sats"
+D2E = "{$XATS}/SATS/dynexp2.sats"
 
 (* ****** ****** *)
 
 typedef d2var = $D2E.d2var
 typedef d2con = $D2E.d2con
 typedef d2cst = $D2E.d2cst
+
+(* ****** ****** *)
+
+#staload
+INT = "{$XATS}/SATS/intrep0.sats"
+
+(* ****** ****** *)
+
+typedef ir0pat = $INT.ir0pat
+typedef ir0arg = $INT.ir0arg
+typedef ir0exp = $INT.ir0exp
+typedef ir0dcl = $INT.ir0dcl
+
+typedef ir0gua = $INT.ir0gua
+typedef ir0gpat = $INT.ir0gpat
+typedef ir0clau = $INT.ir0clau
+
+typedef ir0patlst = $INT.ir0patlst
+typedef ir0arglst = $INT.ir0arglst
+typedef ir0explst = $INT.ir0explst
+typedef ir0expopt = $INT.ir0expopt
+typedef ir0dclist = $INT.ir0dclist
+
+typedef ir0gualst = $INT.ir0gualst
+typedef ir0claulst = $INT.ir0claulst
+
+typedef ir0valdecl = $INT.ir0valdecl
+typedef ir0fundecl = $INT.ir0fundecl
+typedef ir0valdeclist = $INT.ir0valdeclist
+typedef ir0fundeclist = $INT.ir0fundeclist
 
 (* ****** ****** *)
 
