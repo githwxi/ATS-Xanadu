@@ -254,6 +254,11 @@ synread_labd0patlst: synreader(labd0patlst)
 (* ****** ****** *)
 //
 fun{}
+synread_d0pat_RPAREN: synreader(d0pat_RPAREN)
+//
+(* ****** ****** *)
+//
+fun{}
 synread_d0eid: synreader(d0eid)
 fun{}
 synread_dq0eid: synreader(dq0eid)
