@@ -278,6 +278,50 @@ d0e0.node() of
     val () =
     synread_d0eclseq_WHERE<>(d0cs)
   }
+//
+| D0Elam
+  ( tok
+  , arg, res
+  , arrw, body, topt) =>
+  {
+(*
+    val () = 
+      synread_LAM<>(tok)
+*)
+//
+    val () =
+      synread_f0arglst<>(arg)
+    val () =
+      synread_effs0expopt<>(res)
+    val () =
+      synread_f0unarrow<>(arrw)
+//
+    val () = synread_d0exp<>(body)
+//
+  }
+//
+| D0Efix
+  ( tok, id0
+  , arg, res
+  , arrw, body, topt) =>
+  {
+(*
+    val () = 
+      synread_FIX<>(tok)
+*)
+    val () =
+      synread_d0eid<>(id0)
+    val () =
+      synread_f0arglst<>(arg)
+    val () =
+      synread_effs0expopt<>(res)
+    val () =
+      synread_f0unarrow<>(arrw)
+//
+    val () = synread_d0exp<>(body)
+//
+  }
+//
 | _(* rest-of-d0exp *) =>
   (
     prerrln!
@@ -579,6 +623,50 @@ case+ tend of
   )
 //
 end // end of [synread_d0eclseq_WHERE]
+
+(* ****** ****** *)
+
+implement
+{}(*tmp*)
+synread_f0unarrow
+  (arrw) =
+(
+case+ arrw of
+//
+| F0UNARROWnone(tok) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRf0unarrow(tok))
+  in
+    prerr(tok.loc());
+    prerrln!
+    (": SYNERR(f0unarrow): ", tok);
+  end
+//
+| F0UNARROWdflt(tok) =>
+  {
+(*
+    val () =
+    synread_EQGT<>(tok)
+*)
+  }
+| F0UNARROWlist
+    (tbeg, s0es, tend) =>
+  {
+(*
+    val () =
+    synread_EQLT<>(tbeg)
+*)
+//
+    val () =
+    synread_s0explst<>(s0es)
+//
+    val () = synread_GT<>(tend)
+//
+  }
+//
+) (* end of [synread_f0unarrow] *)
 
 (* ****** ****** *)
 //
