@@ -69,6 +69,14 @@ implement
 fprint_val<ir0val> = fprint_ir0val
 //
 (* ****** ****** *)
+//
+extern
+fun
+xatsopt_strunq
+( source // "<string>" -> <string>
+: string) : string = "ext#xatsopt_strunq"
+//
+(* ****** ****** *)
 
 implement
 interp0_program
@@ -122,21 +130,38 @@ in(*in-of-let*)
 //
 case-
 tok.node() of
-| T_IDENT_alp(rep) =>
-  (
+|
+T_IDENT_alp(rep) =>
+(
 //
 // HX-2019-11-18:
 // [rep] is "true" or "false"
 //
-  IR0Vbtf
-  (ifval(c0 = 't', true, false))
-  ) where
-  {
-    val p0 = string2ptr(rep)
-    val c0 = $UN.ptr0_get<char>(p0)
-  }
+IR0Vbtf
+(ifval(c0 = 't', true, false))
+) where
+{
+  val p0 = string2ptr(rep)
+  val c0 = $UN.ptr0_get<char>(p0)
+}
 //
 end // end of [auxbtf]
+
+fun
+auxstr
+( ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Estr(tok) = ire0.node()
+in(*in-of-let*)
+//
+case-
+tok.node() of
+| T_STRING_closed(rep) =>
+  IR0Vstr(xatsopt_strunq(rep))
+//
+end // end of [auxstr]
 
 fun
 auxvar
@@ -580,9 +605,7 @@ ire0.node() of
 //
 | IR0Eint _ => auxint(ire0)
 | IR0Ebtf _ => auxbtf(ire0)
-(*
-| IR0Estr(tok) =>
-*)
+| IR0Estr _ => auxstr(ire0)
 //
 | IR0Evar _ => auxvar(env0, ire0)
 //
