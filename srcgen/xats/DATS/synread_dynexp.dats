@@ -125,6 +125,12 @@ d0p0.node() of
     synread_d0pat_RPAREN<>(dend)
   }
 //
+| D0Panno(d0p1, s0e2) =>
+  {
+    val () = synread_d0pat<>(d0p1)
+    val () = synread_s0exp<>(s0e2)
+  }
+//
 | _(* rest-of-d0pat *) =>
   (
     prerrln!
@@ -279,6 +285,22 @@ d0e0.node() of
     synread_d0eclseq_WHERE<>(d0cs)
   }
 //
+| D0Eif0
+  ( tbeg(*IF*)
+  , d0e1, d0e2, d0e3, topt) =>
+  {
+(*
+    val () =
+    synread_IF<>(tbeg)
+*)
+    val () =
+    synread_d0exp<>(d0e1)
+    val () =
+    synread_d0exp_THEN<>(d0e2)
+    val () =
+    synread_d0exp_ELSE<>(d0e3)
+  }
+//
 | D0Elam
   ( tok
   , arg, res
@@ -355,6 +377,36 @@ list_foreach<d0exp>(d0es)
 implement(env)
 list_foreach$fwork<d0exp><env>(d0e, env) = synread_d0exp<>(d0e)
 } (* end of [synread_d0explst] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_d0exp_THEN
+  (d0e0) =
+(
+case+ d0e0 of
+| d0exp_THEN
+  (tbeg, d0e1) =>
+  {
+  val () = synread_d0exp<>(d0e1)
+  }
+) (* end of [synread_d0exp_THEN] *)
+//
+implement
+{}(*tmp*)
+synread_d0exp_ELSE
+  (d0e0) =
+(
+case+ d0e0 of
+| d0exp_ELSEnone
+  ((*void*)) => ((*void*))
+| d0exp_ELSEsome
+  (tbeg, d0e1) =>
+  {
+  val () = synread_d0exp<>(d0e1)
+  }
+) (* end of [synread_d0exp_ELSE] *)
 //
 (* ****** ****** *)
 //

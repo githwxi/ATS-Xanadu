@@ -282,6 +282,13 @@ synread_labd0explst: synreader(labd0explst)
 (* ****** ****** *)
 
 fun{}
+synread_d0exp_THEN: synreader(d0exp_THEN)
+fun{}
+synread_d0exp_ELSE: synreader(d0exp_ELSE)
+
+(* ****** ****** *)
+
+fun{}
 synread_d0exp_RPAREN: synreader(d0exp_RPAREN)
 
 (* ****** ****** *)
