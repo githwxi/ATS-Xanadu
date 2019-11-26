@@ -112,6 +112,19 @@ d0p0.node() of
     synread_d0patlst<>(d0ps)
   }
 //
+| D0Pparen
+  (tbeg, d0ps, dend) =>
+  {
+(*
+    val () =
+    synread_LPAREN<>(tbeg)
+*)
+    val () =
+    synread_d0patlst<>(d0ps)
+    val () =
+    synread_d0pat_RPAREN<>(dend)
+  }
+//
 | _(* rest-of-d0pat *) =>
   (
     prerrln!
@@ -133,6 +146,29 @@ list_foreach<d0pat>(d0ps)
 implement(env)
 list_foreach$fwork<d0pat><env>(d0p, env) = synread_d0pat<>(d0p)
 } (* end of [synread_d0patlst] *)
+//
+(* ****** ****** *)
+//
+implement
+{}(*tmp*)
+synread_d0pat_RPAREN
+  (dend) =
+(
+case+ dend of
+| d0pat_RPAREN_cons0
+  (tend) =>
+  {
+    val () = synread_RPAREN<>(tend)
+  }
+// (d0ps1 | d0ps2)
+| d0pat_RPAREN_cons1
+  (tsep, d0ps, tend) =>
+  {
+    val () = synread_BAR<>(tsep)
+    val () = synread_RPAREN<>(tend)
+    val () = synread_d0patlst<>(d0ps)
+  }
+)
 //
 (* ****** ****** *)
 
@@ -206,6 +242,10 @@ d0e0.node() of
 | D0Eparen
   (tbeg, d0es, dend) =>
   {
+(*
+    val () =
+    synread_LPAREN<>(tbeg)
+*)
     val () =
     synread_d0explst<>(d0es)
     val () =
