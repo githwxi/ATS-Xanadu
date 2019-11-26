@@ -13,6 +13,22 @@ in fact2(@(n-1, n*r)) end
 val fact10 = fact2(@(10, 1))
 
 (* ****** ****** *)
+
+fun
+fact2
+( nr
+: $(int, int)): int =
+if
+nr.0 = 0
+then nr.1
+else
+let
+val $(n, r) = nr
+in fact2($(n-1, n*r)) end
+
+val fact10 = fact2($(10, 1))
+
+(* ****** ****** *)
 ////
 val xy = @(1,2)
 val xy_0 = xy.0

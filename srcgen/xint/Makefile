@@ -59,23 +59,24 @@ xinterp
 xinterp: \
 DATS/xinterp.dats \
 $(OBJSATS) $(OBJDATS) ; \
-$(PATSCC) \
--cleanaft -o xinterp \
-$(INCLUDE) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
+$(PATSCC) -cleanaft -o xinterp \
+$(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 #
 ######
 
-BUILD/%_sats.c: ./SATS/%.sats ; \
-  $(PATSOPT) $(CFLAGS) -o $@ --static $<
-BUILD/%_dats.c: ./DATS/%.dats ; \
-  $(PATSOPT) $(CFLAGS) $(GCFLAG) -o $@ --dynamic $<
+BUILD/%_sats.c: \
+./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
+BUILD/%_dats.c: \
+./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
 
 ######
 
 BUILD/%_sats.o: \
-BUILD/%_sats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/%_sats.c; \
+$(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
 BUILD/%_dats.o: \
-BUILD/%_dats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/%_dats.c; \
+$(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
 
 ######
 #

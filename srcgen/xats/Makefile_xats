@@ -154,8 +154,8 @@ xatsopt
 xatsopt: \
 DATS/xatsopt.dats \
 $(OBJSATS) $(OBJDATS) ; \
-$(PATSCC) \
--cleanaft -o xatsopt $(INCLUDE) $(GCFLAG) $^ $(LIBGC)
+$(PATSCC) -cleanaft \
+-o xatsopt $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
 #
 ######
 
@@ -169,19 +169,21 @@ $(PATSCC) -DATS _LIBXATSOPT_ -o $@ -c $<
 
 ######
 
-BUILD/%_sats.c: ./SATS/%.sats ; \
-  $(PATSOPT) $(CFLAGS) -o $@ --static $<
-BUILD/%_dats.c: ./DATS/%.dats ; \
-  $(PATSOPT) $(CFLAGS) $(GCFLAG) -o $@ --dynamic $<
+BUILD/%_sats.c: \
+./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
+BUILD/%_dats.c: \
+./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
 
 ######
 
 INCLUDE=-I"."
 
 BUILD/%_sats.o: \
-BUILD/%_sats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/%_sats.c; \
+$(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
 BUILD/%_dats.o: \
-BUILD/%_dats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/%_dats.c; \
+$(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
 
 ######
 #
