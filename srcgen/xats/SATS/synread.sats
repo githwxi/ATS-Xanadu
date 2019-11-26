@@ -128,6 +128,8 @@ datatype synerr =
     (tkind, token) // token mismatch
   // SYNERRtoken
 //
+| SYNERRf0unarrow of (token) // => | =<
+//
 | SYNERRsignint_opr of (token) // sign: + or -
 //
 typedef
@@ -293,6 +295,11 @@ synread_d0eclist: synreader(d0eclist)
 
 fun{}
 synread_d0eclseq_WHERE: synreader(d0eclseq_WHERE)
+
+(* ****** ****** *)
+
+fun{}
+synread_f0unarrow: synreader(f0unarrow)
 
 (* ****** ****** *)
 //
