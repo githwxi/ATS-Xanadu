@@ -313,17 +313,84 @@ list_map$fopr<t2xtv><t2ype>(v0) = v0.type()
 //
 fun
 auxrst
-(vs: t2xtvlst): void =
+( xtvs
+: t2xtvlst): void =
 (
-case+ vs of
-| list_nil() => ()
-| list_cons(v0, vs) =>
-  ( auxrst(vs) ) where
+case+ xtvs of
+| list_nil
+  ((*void*)) => ()
+| list_cons
+  (xtv0, xtvs) =>
+  ( auxrst(xtvs) ) where
   {
     val () =
-    v0.type(the_t2ype_none0)
+    xtv0.type(the_t2ype_none0)
   }
+) (* end of [auxrst] *)
+//
+fun
+auxd2c
+( d2c0: d2cst
+, d3cl: d3ecl): bool =
+(
+case-
+d3cl.node() of
+|
+D3Cfundecl
+( _, _, _, f3ds) =>
+(
+  auxf3ds(f3ds)
+) where
+{
+fun
+auxf3d0
+( f3d0
+: f3undecl): bool =
+let
+val+
+F3UNDECL(rcd) = f3d0
+in
+  if (d2c0 = rcd.d2c) then true else false
+end
+fun
+auxf3ds
+( f3ds
+: f3undeclist): bool =
+(
+case+ f3ds of
+| list_nil() => false
+| list_cons(f3d0, f3ds) =>
+  if auxf3d0(f3d0) then true else auxf3ds(f3ds)
 )
+} (* D3Cfundecl *)
+|
+D3Cimpdecl3
+( _, _, _, _
+, id2c
+, _, _, _, _, _) =>
+(
+case+ id2c of
+|
+IMPLD2CST1
+(dqid, d2cs) =>
+(
+  d2c0 = d2c1
+) where
+{
+val-
+list_cons(d2c1, _) = d2cs
+}
+|
+IMPLD2CST2
+(dqid, d2cs, opt3) =>
+(
+case+ opt3 of
+| None() => false
+| Some(d2c1) => (d2c0 = d2c1)
+)
+)
+) (* end of [auxd2c] *)
+//
 fun
 auxlst
 ( xs: !implist
@@ -336,26 +403,29 @@ Option_vt
 (
 case+ xs of
 //
-| implist_nil() =>
-    None_vt((*void*))
+|
+implist_nil() =>
+  None_vt((*void*))
+// implist_nil
 //
-| implist_let1
-    (xs) => auxlst(xs, xarg)
-| implist_loc1
-    (xs) => auxlst(xs, xarg)
-| implist_loc2
-    (xs) => auxlst(xs, xarg)
+|
+implist_let1
+  (xs) => auxlst(xs, xarg)
+|
+implist_loc1
+  (xs) => auxlst(xs, xarg)
+|
+implist_loc2
+  (xs) => auxlst(xs, xarg)
 //
-| implist_cons
-  (d3cl, ti3e, xs) =>
-  let
-  val+
-  TI3ENV
-  (s2vs, xtvs, t2ps) = ti3e
+|
+implist_cons
+(d3cl, ti3e, xs) =>
+let
+//
   val
-  test = unify(loc0, targ, t2ps)
-//
-  val () = auxrst(xtvs) // reset
+  found =
+  auxd2c(d2c0, d3cl)
 //
   val () =
   println!
@@ -365,18 +435,44 @@ case+ xs of
   ("implist_find_timp: d3cl = ", d3cl)
   val () =
   println!
+  ("implist_find_timp: found = ", found)
+//
+in
+//
+if
+not
+(
+found // d2c0: found
+)
+then auxlst(xs, xarg)
+else let
+  val+
+  TI3ENV
+  (s2vs
+  , xtvs, t2ps) = ti3e
+  val
+  test =
+  unify
+  (loc0, targ, t2ps)
+  val () = auxrst(xtvs) // reset
+//
+  val () =
+  println!
   ("implist_find_timp: test = ", test)
 //
-  in
-    if test
-    then
-    Some_vt
-    @(d3cl, s2vs, fxtvs(xtvs))
-    else
-    (auxrst(xarg); auxlst(xs, xarg)
-    )
-  end // end of [implist_cons]
-)
+in
+  if
+  test
+  then
+  Some_vt
+  @(d3cl, s2vs, fxtvs(xtvs))
+  else
+  (auxrst(xarg); auxlst(xs, xarg))
+end // end of [else]
+//
+end // end of [implist_cons]
+//
+) (* end of [auxlst] *)
 //
 val xtvs = t2ypelst_get_xtvs(targ)
 //

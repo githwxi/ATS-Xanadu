@@ -397,6 +397,47 @@ local
 (* ****** ****** *)
 
 fun
+auxtsub_make
+( s2vs
+: s2varlst
+, xtvs
+: t2xtvlst): t2ypelst_vt =
+(
+case+ s2vs of
+| list_nil() =>
+  list_vt_nil()
+| list_cons(s2v0, s2vs) =>
+  let
+  val-
+  list_cons(xtv0, xtvs) = xtvs
+  val s2t0 = s2v0.sort()
+  val t2p0 =
+  t2ype_srt_xtv(s2t0, xtv0)
+  in
+    list_vt_cons
+    (t2p0, auxtsub_make(s2vs, xtvs))
+  end
+) (* end of [auxtsub_make] *)
+
+(* ****** ****** *)
+
+fun
+auxs2vs_make
+( sqas
+: sq2arglst
+, tqas
+: tq2arglst): s2varlst =
+let
+  val s2vs = sqas.s2vs()
+in
+  case s2vs of
+  | list_nil _ => tqas.s2vs()
+  | list_cons _ => s2vs + tqas.s2vs()
+end // end of [auxs2vs_make]
+
+(* ****** ****** *)
+
+fun
 aux_valdecl
 ( env0
 : !implenv
@@ -461,15 +502,90 @@ fun
 aux_vardecl
 ( env0
 : !implenv
-, d3cl: d3ecl): d3ecl = d3cl
+, d3cl: d3ecl): d3ecl =
+(
+  d3cl
+) where
+{
+ // HX: yet-to-be-done
+}
+
+(* ****** ****** *)
+
+local
+
+fun
+auxd3cl
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl =
+(
+  d3cl
+) where
+{
+ // HX: yet-to-be-done
+}
+
+in(*in-of-local*)
+
 fun
 aux_fundecl
 ( env0
 : !implenv
-, d3cl: d3ecl): d3ecl = d3cl
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cfundecl
+( knd
+, mopt
+, tqas, f3ds) = d3cl.node()
+//
+in
+//
+case+ tqas of
+|
+list_nil _ =>
+(
+  auxd3cl(env0, d3cl)
+)
+|
+list_cons _ =>
+let
+val s2vs = tqas.s2vs()
+val xtvs =
+list_vt2t
+(
+  list_map<s2var><t2xtv>(s2vs)
+) where
+{
+implement
+list_map$fopr<s2var><t2xtv>(s2v) = t2xtv_new(loc0)
+} (* end of [val xtvs] *)
+val tsub =
+(
+  auxtsub_make(s2vs, xtvs)
+)
+val t2ps = list_vt2t(tsub)
+//
+val ti3e = TI3ENV(s2vs, xtvs, t2ps)
+//
+in
+let
+val () =
+implenv_add_d3ecl(env0, d3cl, ti3e) in d3cl
+end
+end // end of [list_cons]
+//
+end // end of [aux_fundecl]
+
+end // end of [local]
 
 (* ****** ****** *)
-
+//
 fun
 aux_impdecl3
 ( env0
@@ -541,11 +657,13 @@ case- ti3a of
 |
 TI3ARGsome(t2ps) =>
 t2ypelst_substs
-(t2ps, env0.s2vs(), env0.t2ps())): t2ypelst
+( t2ps
+, env0.s2vs()
+, env0.t2ps())): t2ypelst
 //
 val s2vs =
 (
-auxs2vs_sqas_tqas(sqas, tqas)
+  auxs2vs_make(sqas, tqas)
 )
 val xtvs =
 list_vt2t
@@ -558,7 +676,7 @@ list_map$fopr<s2var><t2xtv>(s2v) = t2xtv_new(loc0)
 } (* end of [val xtvs] *)
 val tsub =
 (
-auxtsub_s2vs_xtvs(s2vs, xtvs)
+  auxtsub_make(s2vs, xtvs)
 )
 //
 val t2ps =
@@ -581,37 +699,6 @@ end
 //
 end // end of [aux_impdecl3_tmp]
 //
-and
-auxs2vs_sqas_tqas
-( sqas: sq2arglst
-, tqas: tq2arglst): s2varlst =
-let
-  val s2vs = sqas.s2vs()
-in
-  case s2vs of
-  | list_nil _ => tqas.s2vs()
-  | list_cons _ => s2vs + tqas.s2vs()
-end // end of [auxs2vs_sqas_tqas]
-and
-auxtsub_s2vs_xtvs
-( s2vs: s2varlst
-, xtvs: t2xtvlst): t2ypelst_vt =
-(
-case+ s2vs of
-| list_nil() =>
-  list_vt_nil()
-| list_cons(s2v0, s2vs) =>
-  let
-  val-
-  list_cons(xtv0, xtvs) = xtvs
-  val s2t0 = s2v0.sort()
-  val t2p0 = t2ype_srt_xtv(s2t0, xtv0)
-  in
-    list_vt_cons
-    (t2p0, auxtsub_s2vs_xtvs(s2vs, xtvs))
-  end
-) (* end of [auxtsub_s2vs_xtvs] *)
-
 (* ****** ****** *)
 
 in(*in-of-local*)
