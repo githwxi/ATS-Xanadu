@@ -355,10 +355,16 @@ synread_STRING: synreader(token)
 //
 fun//{}
 synread_EQ: synreader(token)
+//
 fun//{}
 synread_LT: synreader(token)
 fun//{}
 synread_GT: synreader(token)
+fun//{}
+synread_LTGT: synreader(token)
+fun//{}
+synread_LT_GT
+(t0: token, t1: token): void
 //
 fun//{}
 synread_BAR: synreader(token)

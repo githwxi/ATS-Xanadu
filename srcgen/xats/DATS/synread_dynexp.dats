@@ -828,8 +828,8 @@ tq0a.node() of
 | TQ0ARGsome
     (tbeg, q0as, tend) =>
   {
-    val () = synread_LT(tbeg)
-    val () = synread_GT(tend)
+    val () =
+    synread_LT_GT(tbeg, tend)
     val () = synread_q0arglst(q0as)
   }
 //
