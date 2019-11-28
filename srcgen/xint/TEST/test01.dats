@@ -1,3 +1,11 @@
+fun<>
+bop_int_int
+(x: int, y: int) = x+y
+val
+ans = bop_int_int(1, 2)
+
+////
+
 fun
 fact2
 ( nr
