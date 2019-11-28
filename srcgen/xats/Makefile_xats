@@ -160,12 +160,11 @@ $(PATSCC) -cleanaft \
 ######
 
 libxatsopt: \
-BUILD/libxatsopt_dats.o \
-$(OBJSATS) \
-$(OBJDATS) ; $(AR) -r libxatsopt.a $^
+$(OBJSATS) $(OBJDATS) \
+BUILD/libxatsopt_dats.o ; \
+($(AR) -r $@.a $^ && $(CP) -f $@.a ./../../lib)
 BUILD/libxatsopt_dats.o: \
-DATS/xatsopt.dats; \
-$(PATSCC) -DATS _LIBXATSOPT_ -o $@ -c $<
+DATS/xatsopt.dats; $(PATSCC) -DATS _LIBXATSOPT_ -o $@ -c $<
 
 ######
 
