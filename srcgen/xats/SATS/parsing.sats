@@ -286,6 +286,8 @@ popt_ENDCASE: parser(tokenopt)
 //
 fun
 popt_ENDLAM: parser(tokenopt)
+fun
+popt_ENDFIX: parser(tokenopt)
 //
 (* ****** ****** *)
 //

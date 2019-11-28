@@ -526,7 +526,8 @@ case+ x0.node() of
 *)
 //
 | S1Elist(s1es) =>
-  fprint!(out, "S1Elist1(", s1es, ")")
+  fprint!
+  (out, "S1Elist1(", s1es, ")")
 | S1Elist(s1es1, s1es2) =>
   fprint!
   (out, "S1Elist2(", s1es1, "; ", s1es2, ")")
