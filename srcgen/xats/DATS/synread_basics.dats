@@ -58,6 +58,7 @@ extern
 val K_EQ: tkind
 and K_LT: tkind
 and K_GT: tkind
+and K_LTGT: tkind
 //
 and K_BAR: tkind
 and K_CLN: tkind
@@ -81,8 +82,10 @@ and K_LBRACK: tkind
 and K_RBRACK: tkind
 //
 implement K_EQ = K_SYMBOL(EQ_symbol)
+//
 implement K_LT = K_SYMBOL(LT_symbol)
 implement K_GT = K_SYMBOL(GT_symbol)
+implement K_LTGT = K_SYMBOL(LTGT_symbol)
 //
 implement K_BAR = K_SYMBOL(BAR_symbol)
 implement K_CLN = K_SYMBOL(CLN_symbol)
@@ -299,6 +302,59 @@ tok.node() of
     (tok.loc(), ": SYNERR(GT): ", tok);
   end // end of [let]
 ) (* end of [synread_GT] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_LTGT
+  (tok) =
+(
+case+
+tok.node() of
+| T_LTGT() => ()
+| _(*non-LTGT*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_LTGT, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(LTGT): ", tok);
+  end // end of [let]
+) (* end of [synread_LTGT] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_LT_GT
+(tbeg, tend) =
+(
+case+
+tbeg.node() of
+| T_LT() =>
+  {
+    val () = synread_GT(tend)
+  }
+| T_LTGT() =>
+  {
+    val () = synread_LTGT(tbeg)
+  }
+| _(*non-LT-LTGT*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_LT, tbeg))
+  in
+    prerrln!
+    (tbeg.loc(), ": SYNERR(LT_GT): ", tbeg);
+(*
+    prerrln!
+    (tend.loc(), ": SYNERR(LT_GT): ", tend);
+*)
+  end // end of [let]
+) (* end of [synread_LT_GT] *)
 
 (* ****** ****** *)
 

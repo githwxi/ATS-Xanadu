@@ -527,11 +527,12 @@ in
 case+
 tok.node() of
 | T_LT() => let
-    val () = buf.incby1()
+    val () =
+    buf.incby1()
+    val tbeg = tok
     val q0as =
       p_q0argseq_COMMA(buf, err)
     // end of [val]
-    val tbeg = tok
     val tend = p_GT(buf, err)
     val loc_res = tbeg.loc() + tend.loc()
   in
@@ -540,10 +541,11 @@ tok.node() of
     (loc_res, TQ0ARGsome(tbeg, q0as, tend))
   end
 | T_LTGT() => let
-    val () = buf.incby1()
-    val q0as = list_nil(*void*)
+    val () =
+    buf.incby1()
     val tbeg = tok
     val tend = tok
+    val q0as = list_nil()
     val loc_res = tok.loc()
   in
     tq0arg_make_node
@@ -591,21 +593,43 @@ case+
 tok.node() of
 //
 | T_LT() => let
-    val () = buf.incby1()
+    val () =
+    buf.incby1()
+//
+    val tbeg = tok
+//
     val s0es =
     list_vt2t
     (
       pstar_COMMA_fun
       {s0exp}(buf, err, p_apps0exp_NGT)
     )
-    val tbeg = tok
+//
     val tend = p_GT(buf, err)
+//
     val loc_res = tbeg.loc() + tend.loc()
+//
   in
     err := e0;
     ti0arg_make_node
     (loc_res, TI0ARGsome(tbeg, s0es, tend))
   end // end of [T_LT]
+| T_LTGT() => let
+//
+    val () =
+    buf.incby1()
+//
+    val tbeg = tok
+    val tend = tok
+//
+    val s0es = list_nil()
+    val loc_res = tok.loc()
+//
+  in
+    err := e0;
+    ti0arg_make_node
+    (loc_res, TI0ARGsome(tbeg, s0es, tend))
+  end
 | _(* non-LT/GT *) =>
   ( err := e0 + 1;
     ti0arg_make_node(tok.loc(), TI0ARGnone(tok))
