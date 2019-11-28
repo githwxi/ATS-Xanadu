@@ -442,11 +442,13 @@ popt_ENDIF
 in
   case+
   tok.node() of
+(*
   | T_END() =>
     Some(tok) where
     {
       val () = buf.incby1()
     } (* T_END *)
+*)
   | T_ENDIF() =>
     Some(tok) where
     {
@@ -464,11 +466,13 @@ popt_ENDCASE
 in
   case+
   tok.node() of
+(*
   | T_END() =>
     Some(tok) where
     {
       val () = buf.incby1()
     } (* T_END *)
+*)
   | T_ENDCASE() =>
     Some(tok) where
     {
@@ -488,11 +492,13 @@ popt_ENDLAM
 in
   case+
   tok.node() of
+(*
   | T_END() =>
     Some(tok) where
     {
       val () = buf.incby1()
     } (* T_END *)
+*)
   | T_ENDLAM() =>
     Some(tok) where
     {
