@@ -1,11 +1,13 @@
-fun<>
-bop_int_int
-(x: int, y: int) = x+y
-val
-ans = bop_int_int(1, 2)
+#extern
+fun fact : int -> int
+implement
+fact(x) =
+if x > 0 then x * fact(x-1) else 1
 
+val fact10 = fact(10)
+
+(* ****** ****** *)
 ////
-
 fun
 fact2
 ( nr

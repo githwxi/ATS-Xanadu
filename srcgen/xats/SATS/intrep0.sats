@@ -51,14 +51,14 @@ LEX = "./lexing.sats"
 typedef token = $LEX.token
 //
 (* ****** ****** *)
-
-#staload
-D1E = "./dynexp1.sats"
-#staload
-D2E = "./dynexp2.sats"
-#staload
-D3E = "./dynexp3.sats"
-
+//
+#staload D1E = "./dynexp1.sats"
+//
+#staload S2E = "./staexp2.sats"
+#staload D2E = "./dynexp2.sats"
+//
+#staload D3E = "./dynexp3.sats"
+//
 (* ****** ****** *)
 
 typedef d2con = $D2E.d2con
@@ -454,6 +454,16 @@ ir0dcl_node =
   ( token(*knd*)
   , $D1E.decmodopt
   , $D2E.tq2arglst, ir0fundeclist)
+//
+| IR0Cimpdecl3 of
+  ( token(*impkind*)
+  , $D1E.decmodopt
+  , $D2E.sq2arglst
+  , $D2E.tq2arglst
+  , $D2E.impld2cst
+  , $D3E.ti3arg
+  , $D2E.ti2arglst
+  , ir0arglst, ir0exp)
 //
 | IR0Cnone0 of () | IR0Cnone1 of (d3ecl)
 //
