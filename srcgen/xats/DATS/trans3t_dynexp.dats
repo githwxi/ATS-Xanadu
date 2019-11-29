@@ -605,6 +605,17 @@ if
 iseqz(ti2s)
 then aux_impdecl3_fun(env0, d3cl)
 else aux_impdecl3_tmp(env0, d3cl)
+(*
+//
+// HX:
+// It cannot tell by inspecting ti3a
+// whether the implemented dynamic constant
+// is a function or a function template!
+//
+case+ ti3a of
+| TI3ARGnone _ => aux_impdecl3_fun(env0, d3cl)
+| TI3ARGsome _ => aux_impdecl3_tmp(env0, d3cl)
+*)
 //
 end // end of [aux_impdecl3]
 //
@@ -826,13 +837,12 @@ D3Cimpdecl3
 val body = trans3t_dexp(env0, body)
 //
 in
-  d3ecl_make_node
-  ( d3cl.loc()
-  , D3Cimpdecl3
-    ( knd, mopt
-    , sqas, tqas
-    , id2c, ti3a, ti2s, f3as, res0, body)
-  )
+d3ecl_make_node
+( d3cl.loc()
+, D3Cimpdecl3
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, ti3a, ti2s, f3as, res0, body))
 end // end of [aux_impdecl3]
 
 in (*in-of-local*)

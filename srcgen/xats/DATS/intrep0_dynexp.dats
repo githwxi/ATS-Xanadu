@@ -629,6 +629,24 @@ d3cl.node() of
     , IR0Cfundecl(tok, mopt, tqas, irds))
   end
 //
+| D3Cimpdecl3
+  ( tok, mopt
+  , sqas, tqas
+  , id2c, ti3a, ti2s, f3as, res0, body) =>
+  let
+    val
+    iras =
+    irerase_farglst(f3as)
+    val
+    body = irerase_dexp(body)
+  in
+    ir0dcl_make_node
+    ( loc0
+    , IR0Cimpdecl3
+      ( tok, mopt, sqas, tqas
+      , id2c, ti3a, ti2s, iras, body))
+  end
+//
 | _(*rest-of-d3ecl*) =>
   ir0dcl_make_node(loc0, IR0Cnone1(d3cl))
 //

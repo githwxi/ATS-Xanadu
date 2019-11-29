@@ -47,8 +47,12 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/dynexp0.sats"
+//
 #staload "./../SATS/dynexp1.sats"
+//
+#staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
+//
 #staload "./../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
@@ -64,13 +68,22 @@ fprint_val<d2cst> = fprint_d2cst
 implement
 fprint_val<d2var> = fprint_d2var
 //
+(* ****** ****** *)
+//
 implement
 fprint_val<f2arg> = fprint_f2arg
+implement
+fprint_val<f3arg> = fprint_f3arg
 //
 (* ****** ****** *)
 //
 implement
+fprint_val<sq2arg> = fprint_sq2arg
+implement
 fprint_val<tq2arg> = fprint_tq2arg
+//
+implement
+fprint_val<ti2arg> = fprint_ti2arg
 //
 (* ****** ****** *)
 
@@ -369,7 +382,7 @@ implement
 fprint_ir0dcl
   (out, x0) =
 (
-case- x0.node() of
+case+ x0.node() of
 //
 | IR0Cstatic
   (tok, irc1) =>
@@ -404,6 +417,17 @@ case- x0.node() of
   ( out
   , "IR0Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", irds, ")")
+//
+| IR0Cimpdecl3
+  ( knd, mopt
+  , sqas, tqas, id2c
+  , ti3a, ti2s, iras, body) =>
+  fprint!
+  ( out
+  , "IR0Cimpdecl3("
+  , knd, "; ", mopt, "; "
+  , sqas, "; ", tqas, "; ", id2c, "; "
+  , ti3a, "; ", ti2s, "; ", iras, "; ", body, ")")
 //
 | IR0Cnone0() =>
     fprint!(out, "IR0Cnone0(", ")")

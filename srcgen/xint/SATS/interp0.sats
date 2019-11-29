@@ -302,6 +302,13 @@ interp0_ir0fundeclist
 (* ****** ****** *)
 //
 fun
+interp0_ir0impdecl3
+(env: !intpenv, irdcl: ir0dcl(*impdecl3*)): void
+//
+(* ****** ****** *)
+
+//
+fun
 interp0_initize(): void
 //
 fun

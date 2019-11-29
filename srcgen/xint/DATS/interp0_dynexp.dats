@@ -59,6 +59,9 @@ print with $D2E.print_d2cst
 overload
 print with $D2E.print_d2var
 //
+overload
+print with $D2E.print_impld2cst
+//
 overload = with $D2E.eq_d2con_d2con
 //
 (* ****** ****** *)
@@ -211,10 +214,10 @@ IR0Efcst(d2c) = ire0.node()
 val
 opt = interp0_search_d2cst(d2c)
 //
-(*
+// (*
 val () =
 println!("auxfcst: d2c = ", d2c)
-*)
+// *)
 //
 in
 case- opt of ~Some_vt(irv) => irv
@@ -843,11 +846,11 @@ implement
 interp0_irdcl
   (env0, x0) =
 let
-(*
+// (*
 val () =
 println!
 ("interp0_irdcl: x0 = ", x0)
-*)
+// *)
 in
 case+
 x0.node() of
@@ -857,6 +860,9 @@ x0.node() of
 //
 | IR0Cfundecl _ =>
   aux_fundecl(env0, x0)
+//
+| IR0Cimpdecl3 _ =>
+  interp0_ir0impdecl3(env0, x0)
 //
 | _(* rest-of-ir0dcl *) => ()
 //
@@ -1306,6 +1312,62 @@ case+ xs of
     val () = interp0_ir0fundecl(env0, x0)
   }
 ) (* end of [interp0_ir0fundeclist] *)
+
+(* ****** ****** *)
+
+implement
+interp0_ir0impdecl3
+  (env0, irdcl) =
+let
+//
+val-
+IR0Cimpdecl3
+( knd, mopt
+, sqas, tqas, id2c
+, ti3a, ti2s, iras, body) = irdcl.node()
+//
+val () =
+println!
+("interp0_ir0impdecl3: id2c = ", id2c)
+//
+in
+//
+case+ ti2s of
+|
+list_nil() =>
+let
+//
+val fenv =
+intpenv_take_env(env0)
+val d2c0 =
+(
+case+ id2c of
+|
+$D2E.IMPLD2CST1
+(dqid, d2cs) =>
+let
+val-
+list_cons
+(d2c0, _) = d2cs in d2c0 end
+|
+$D2E.IMPLD2CST2
+(dqid, d2cs, opt3) =>
+let
+val-
+Some(d2c0) = opt3 in d2c0 end
+) : d2cst // end of [val]
+//
+val
+irv0 = IR0Vlam(fenv, iras, body)
+//
+in
+  interp0_insert_d2cst(d2c0, irv0)
+end
+//
+|
+list_cons(_, _) => ((*template*))
+//
+end (* end of [interp0_ir0impdecl3] *)
 
 (* ****** ****** *)
 
