@@ -1,3 +1,12 @@
+fun
+fact =
+lam(x) =>
+(
+fix f(x) =>
+if x > 0 then x * fact(x-1) else 1)(x)
+
+val fact10 = fact(10)
+
 #extern
 fun<>
 fact : int -> int
