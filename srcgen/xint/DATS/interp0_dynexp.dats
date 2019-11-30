@@ -226,6 +226,61 @@ end // end of [auxfcst]
 (* ****** ****** *)
 
 fun
+auxtimp
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+//
+val () =
+println!
+("auxtimp: ire0 = ", ire0)
+//
+val-
+IR0Etimp
+( ire1, targ
+, ircl, tsub) = ire0.node()
+//
+in
+//
+case-
+ircl.node() of
+(*
+|
+IR0Cfundecl
+( knd0, mopt
+, tqas, irfds) =>
+*)
+|
+IR0Cimpdecl3
+( knd0, mopt
+, sqas, tqas, id2c
+, ti3a, ti2s, iras, body
+) =>
+(
+//
+case+ iras of
+|
+list_nil _ =>
+interp0_irexp(env0, body)
+|
+list_cons _ =>
+let
+val
+fenv =
+intpenv_take_env(env0)
+in
+  IR0Vlam(fenv, iras, body)
+end
+//
+) (* IR0Cimpdecl3 *)
+//
+end // end of [auxtimp]
+
+(* ****** ****** *)
+
+fun
 auxdapp
 ( env0
 : !intpenv
@@ -246,7 +301,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-// (*
+(*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -256,7 +311,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-// *)
+*)
 //
 in
 //
@@ -444,26 +499,28 @@ auxlst
 ) : ir0valist =
 (
 case+ ires of
-| list_nil() =>
-  list_nil()
-| list_cons
-  (ire1, ires) =>
-  (
-  if
-  (npf1 > 0)
-  then
-  auxlst(env0, npf1-1, ires)
-  else
-  (
-  list_cons
-  ( irv1
-  , auxlst(env0, npf1-1, ires))
-  ) where
-  {
-  val
-  irv1 = interp0_irexp(env0, ire1)
-  }
-  ) (* end of [list_cons] *)
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(ire1, ires) =>
+(
+if
+(npf1 > 0)
+then
+auxlst(env0, npf1-1, ires)
+else
+(
+list_cons
+( irv1
+, auxlst(env0, npf1-1, ires))
+) where
+{
+val
+irv1 = interp0_irexp(env0, ire1)
+}
+) (* end of [list_cons] *)
 )
 //
 in
@@ -595,11 +652,11 @@ interp0_irexp
   (env0, ire0) =
 let
 //
-(*
+// (*
 val () =
 println!
 ("interp0_irexp: ire0 = ", ire0)
-*)
+// *)
 //
 in
 //
@@ -615,6 +672,11 @@ ire0.node() of
 | IR0Econ1 _ => auxcon1(env0, ire0)
 //
 | IR0Efcst _ => auxfcst(env0, ire0)
+//
+(*
+| IR0Etcst _ => auxtcst(env0, ire0)
+*)
+| IR0Etimp _ => auxtimp(env0, ire0)
 //
 | IR0Edapp _ => auxdapp(env0, ire0)
 //
@@ -1282,17 +1344,32 @@ None() => ()
 Some(iras) =>
 (
 case+ def of
-| None() => ()
-| Some(body) =>
-  let
-  val fenv =
-  intpenv_take_env(env0)
-  val irv0 =
-  IR0Vfix(fenv, nam, iras, body)
-  in
+|
+None() => ()
+|
+Some(body) =>
+(
+case+ iras of
+|
+list_nil _ =>
+let
+val irv0 =
+interp0_irexp(env0, body)
+in
   interp0_insert_d2cst(d2c, irv0)
-  end
-)
+end
+|
+list_cons _ =>
+let
+val fenv =
+intpenv_take_env(env0)
+val irv0 =
+IR0Vfix(fenv, nam, iras, body)
+in
+  interp0_insert_d2cst(d2c, irv0)
+end
+) (* end of [Some(body)] *)
+) (* end of [Some(iras)] *)
 //
 end // end of [interp0_ir0fundecl]
 

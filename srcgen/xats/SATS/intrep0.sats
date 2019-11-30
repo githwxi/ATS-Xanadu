@@ -55,10 +55,17 @@ typedef token = $LEX.token
 #staload D1E = "./dynexp1.sats"
 //
 #staload S2E = "./staexp2.sats"
+#staload S2T = "./statyp2.sats"
 #staload D2E = "./dynexp2.sats"
 //
 #staload D3E = "./dynexp3.sats"
 //
+(* ****** ****** *)
+
+typedef s2exp = $S2T.s2exp
+typedef t2ype = $S2T.t2ype
+typedef t2ypelst = $S2T.t2ypelst
+
 (* ****** ****** *)
 
 typedef d2con = $D2E.d2con
@@ -90,6 +97,12 @@ typedef d3eclist = $D3E.d3eclist
 typedef d3gualst = $D3E.d3gualst
 typedef d3claulst = $D3E.d3claulst
 //
+(* ****** ****** *)
+
+typedef ti2arg = $D2E.ti2arg
+typedef ti3arg = $D3E.ti3arg
+typedef ti2arglst = $D2E.ti2arglst
+
 (* ****** ****** *)
 
 abstype ir0pat_tbox = ptr
@@ -211,6 +224,13 @@ ir0exp_node =
 | IR0Ecst1 of (d2cst)
 //
 | IR0Efcst of (d2cst)
+| IR0Etcst of
+  ( d2cst
+  , ti3arg, ti2arglst)
+//
+| IR0Etimp of
+  ( ir0exp, t2ypelst(*targ*)
+  , ir0dcl, t2ypelst(*tsub*))
 //
 | IR0Edapp of
   ( ir0exp
