@@ -291,6 +291,24 @@ d3e0.node() of
   ir0exp_make_node
   (loc0, IR0Efcst(d2c))
 //
+| D3Etcst
+  (d2c1, ti3a, ti2s) =>
+  ir0exp_make_node
+  ( loc0
+  , IR0Etcst(d2c1, ti3a, ti2s))
+| D3Etimp
+  ( d3e1(*tcst*), targ
+  , d3cl(*impl*), tsub) =>
+  let
+  val ire1 = irerase_dexp(d3e1)
+  val ircl = irerase_decl(d3cl)
+  in
+    ir0exp_make_node
+    ( loc0
+    , IR0Etimp
+      (ire1, targ, ircl, tsub))
+  end
+//
 | D3Edapp
   (d3f0, npf1, d3es) =>
   let

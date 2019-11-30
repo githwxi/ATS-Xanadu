@@ -51,6 +51,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp1.sats"
 //
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 //
 #staload "./../SATS/dynexp3.sats"
@@ -58,6 +59,11 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<t2ype> = fprint_t2ype
 //
 (* ****** ****** *)
 //
@@ -217,6 +223,20 @@ x0.node() of
 //
 | IR0Efcst(d2c) =>
   fprint!(out, "IR0Efcst(", d2c, ")")
+//
+| IR0Etcst
+  (d2c1, ti3a, ti2s) =>
+  fprint!
+  ( out
+  , "IR0Etcst("
+  , d2c1, "; ", ti3a, "; ", ti2s, ")")
+| IR0Etimp
+  ( ire1
+  , targ, irc2, tsub) =>
+  fprint!
+  ( out
+  , "IR0Etimp("
+  , ire1, "; ", targ, "; ", irc2, "; ", tsub)
 //
 | IR0Edapp
   (irf0, npf1, ires) =>
