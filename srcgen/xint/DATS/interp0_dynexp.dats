@@ -1354,7 +1354,30 @@ case+ iras of
 list_nil _ =>
 let
 val irv0 =
-interp0_irexp(env0, body)
+(
+case+
+body.node() of
+|
+IR0Elam
+(knd, iras, body) =>
+let
+val fenv =
+intpenv_take_env(env0)
+in
+  IR0Vfix
+  (fenv, nam, iras, body)
+end
+//
+(*
+|
+IR0Efix
+(knd, d2v, iras, body) =>
+*)
+//
+| _(*rest-of-ir0exp*) =>
+  interp0_irexp(env0, body)
+//
+)
 in
   interp0_insert_d2cst(d2c, irv0)
 end
