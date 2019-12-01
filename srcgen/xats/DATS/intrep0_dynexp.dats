@@ -395,43 +395,45 @@ d3e0.node() of
   end
 //
 | D3Elam
-  ( knd0
+  ( tok0
   , f3as, res1, arrw, body) =>
   let
 //
     val-
-    T_LAM(k0) = knd0.node()
+    T_LAM(knd0) = tok0.node()
 //
     val
     iras = irerase_farglst(f3as)
 //
   in
     let
-      val body = irerase_dexp(body)
+      val
+      body = irerase_dexp(body)
     in
       ir0exp_make_node
-      (loc0, IR0Elam(k0, iras, body))
+      ( loc0
+      , IR0Elam(knd0, iras, body))
     end
   end
 | D3Efix
-  ( knd0
+  ( tok0
   , d2v0
   , f3as, res1, arrw, body) =>
   let
     val-
-//
-    T_FIX(k0) = knd0.node()
+    T_FIX(knd0) = tok0.node()
 //
     val
     iras = irerase_farglst(f3as)
 //
   in
     let
-      val body = irerase_dexp(body)
+      val
+      body = irerase_dexp(body)
     in
       ir0exp_make_node
       ( loc0
-      , IR0Efix(k0, d2v0, iras, body))
+      , IR0Efix(knd0, d2v0, iras, body))
     end
   end
 //
