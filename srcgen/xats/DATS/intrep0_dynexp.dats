@@ -40,6 +40,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
@@ -394,15 +398,19 @@ d3e0.node() of
   ( knd0
   , f3as, res1, arrw, body) =>
   let
-    val iras =
-    irerase_farglst(f3as)
+//
+    val-
+    T_LAM(k0) = knd0.node()
+//
+    val
+    iras = irerase_farglst(f3as)
+//
   in
     let
-      val
-      body = irerase_dexp(body)
+      val body = irerase_dexp(body)
     in
       ir0exp_make_node
-      (loc0, IR0Elam(knd0, iras, body))
+      (loc0, IR0Elam(k0, iras, body))
     end
   end
 | D3Efix
@@ -410,16 +418,20 @@ d3e0.node() of
   , d2v0
   , f3as, res1, arrw, body) =>
   let
-    val iras =
-    irerase_farglst(f3as)
+    val-
+//
+    T_FIX(k0) = knd0.node()
+//
+    val
+    iras = irerase_farglst(f3as)
+//
   in
     let
-      val
-      body = irerase_dexp(body)
+      val body = irerase_dexp(body)
     in
       ir0exp_make_node
       ( loc0
-      , IR0Efix(knd0, d2v0, iras, body))
+      , IR0Efix(k0, d2v0, iras, body))
     end
   end
 //

@@ -222,7 +222,7 @@ in
   fold@(env0)
 ) where
 {
-val-
+val+
 @INTPENV(l0, xs) = env0
 val () =
 (
@@ -231,6 +231,58 @@ val () =
 )
 } (* end of [where] *)
 end // end of [intpenv_bind_fix]
+
+implement
+intpenv_bind_fixs
+  (env0, irv0) =
+(
+  auxirdfs(env0, irdfs)
+) where
+{
+//
+val-
+IR0Vfixs
+( fenv
+, d2v0, iras
+, body, irdfs) = irv0
+//
+fun
+auxirdfs
+( env0
+: !intpenv
+, ires
+: ir0explst): void =
+(
+case+ ires of
+| list_nil
+  ((*void*)) => ()
+| list_cons
+  (ire1, ires) =>
+  (
+    fold@(env0);
+    auxirdfs(env0, ires)
+  ) where
+  {
+  val+
+  @INTPENV(l0, xs) = env0
+  val () =
+  (
+    xs :=
+    intplst_cons(d2v1, irv1, xs)
+  )
+  } where
+  {
+  val-
+  IR0Efix
+  ( knd1, d2v1
+  , iras, body) = ire1.node()
+  val irv1 =
+  IR0Vfixs
+  (fenv, d2v1, iras, body, irdfs)
+  }
+) (* end of [auxirdfs] *)
+//
+} (* end of [intpenv_bind_fixs] *)
 
 (* ****** ****** *)
 

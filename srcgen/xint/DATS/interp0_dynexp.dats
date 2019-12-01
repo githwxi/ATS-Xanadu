@@ -179,10 +179,10 @@ val
 opt =
 interp0_search_d2var(env0, d2v)
 //
-(*
+// (*
 val () =
 println!("auxvar: d2v = ", d2v)
-*)
+// *)
 //
 in
 case- opt of ~Some_vt(irv) => irv
@@ -323,6 +323,8 @@ case- irf0 of
   interp0_fcall_lam(irf0, irvs)
 | IR0Vfix(_, _, _, _) =>
   interp0_fcall_fix(irf0, irvs)
+| IR0Vfixs(_, _, _, _, _) =>
+  interp0_fcall_fixs(irf0, irvs)
 //
 end // end of [auxdapp]
 
@@ -808,6 +810,8 @@ end // end of [let]
 //
 end // end of [interp0_fcall_lam]
 
+(* ****** ****** *)
+
 implement
 interp0_fcall_fix
   (irf0, irvs) =
@@ -854,6 +858,58 @@ in
 end // end of [let]
 //
 end // end of [interp0_fcall_fix]
+
+(* ****** ****** *)
+
+implement
+interp0_fcall_fixs
+  (irf0, irvs) =
+let
+val-
+IR0Vfixs
+( fenv
+, d2v0
+, iras
+, body, irdfs) = irf0
+//
+val env0 =
+intpenv_make_fun(fenv)
+val ((*void*)) =
+intpenv_bind_fixs(env0, irf0)
+//
+in
+let
+  val-
+  list_cons
+  (ira0, iras) = iras
+  val+
+  IR0ARGsome
+  (npf1, irps) = ira0
+  val
+  irps = auxnpf(npf1, irps)
+  val () =
+  interp0_irpatlst_ck1(env0, irps, irvs)
+  val irv0 =
+  (
+  case+ iras of
+  | list_nil _ =>
+    interp0_irexp(env0, body)
+  | list_cons _ =>
+    (
+    IR0Vlam(fenv, iras, body)
+    ) where
+    {
+      val
+      fenv = intpenv_take_env(env0)
+    }
+  ) : ir0val // end of [val]
+in
+  let
+  val () = intpenv_free_fun(env0) in irv0
+  end
+end // end of [let]
+//
+end // end of [interp0_fcall_fixs]
 
 end // end of [local]
 
@@ -1324,11 +1380,12 @@ case+ xs of
 
 implement
 interp0_ir0fundecl
-  (env0, x0) =
+(env0, irfd0) =
 let
 //
 val+
-IR0FUNDECL(rcd) = x0
+IR0FUNDECL
+  (rcd) = irfd0
 //
 val nam = rcd.nam
 val d2c = rcd.d2c
@@ -1355,7 +1412,7 @@ list_nil _ =>
 let
 val irv0 =
 (
-case+
+case-
 body.node() of
 |
 IR0Elam
@@ -1364,20 +1421,23 @@ let
 val fenv =
 intpenv_take_env(env0)
 in
-  IR0Vfix
-  (fenv, nam, iras, body)
-end
+IR0Vfix(fenv, nam, iras, body)
+end // end of [IR0Elam]
 //
 (*
 |
 IR0Efix
-(knd, d2v, iras, body) =>
+(knd, d2v, iras, ire2) =>
+let
+val fenv =
+intpenv_take_env(env0)
+in
+IR0Vfix2
+(fenv, nam, iras, ire2, body)
+end
 *)
 //
-| _(*rest-of-ir0exp*) =>
-  interp0_irexp(env0, body)
-//
-)
+) : ir0val // end of [let]
 in
   interp0_insert_d2cst(d2c, irv0)
 end
@@ -1398,20 +1458,238 @@ end // end of [interp0_ir0fundecl]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxfixs
+(
+irfds
+:
+ir0fundeclist
+) : ir0explst =
+(
+case+
+irfds of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(irfd0, irfds) =>
+let
+val+
+IR0FUNDECL
+  (rcd) = irfd0
+//
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a3g = rcd.a3g
+val def = rcd.def
+//
+in
+//
+case+ a3g of
+|
+None() =>
+auxfixs(irfds)
+|
+Some(iras) =>
+(
+case+ def of
+|
+None() =>
+auxfixs(irfds)
+|
+Some(body) =>
+(
+case+ iras of
+|
+list_nil _ =>
+(
+case+
+body.node() of
+|
+IR0Elam
+(knd, iras, ire2) =>
+let
+val ire1 =
+ir0exp_make_node
+(
+body.loc()
+,
+IR0Efix(knd, nam, iras, ire2)
+) (* end of [val] *)
+in
+list_cons(ire1, auxfixs(irfds))
+end
+//
+(*
+|
+IR0Efix
+(knd, d2v, iras, ire2) =>
+let
+val ire1 =
+ir0exp_make_node
+(
+body.loc()
+,
+IR0Efix(knd, nam, iras, ire2)
+)
+val ire2 =
+ir0exp_make_node
+(
+body.loc()
+IR0Efix(knd, nam, iras, ire2)
+)
+in
+list_cons
+( ire1
+, list_cons(ire2, auxfixs(irfds)))
+end
+*)
+//
+| _(*rest-of-ir0exp*) =>
+  list_cons(body, auxfixs(irfds))
+)
+|
+list_cons _ =>
+let
+val ire1 =
+ir0exp_make_node
+(
+rcd.loc
+,
+IR0Efix
+(0(*knd*), nam, iras, body)
+) (* end of [val] *)
+in
+  list_cons(ire1, auxfixs(irfds))
+end 
+) (* end of [Some(body)] *)
+) (* end of [Some(iras)] *)
+//
+end (* end of [list_cons] *) ) (*auxfixs*)
+
+fun
+auxirfds
+( fenv
+: ir0env
+, irdfs
+: ir0explst
+, irfds
+: ir0fundeclist
+) : void =
+(
+case+
+irfds of
+|
+list_nil() => ()
+|
+list_cons
+(irfd0, irfds) =>
+let
+val+
+IR0FUNDECL
+  (rcd) = irfd0
+//
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a3g = rcd.a3g
+val def = rcd.def
+//
+in
+//
+case+ a3g of
+|
+None() => ()
+|
+Some(iras) =>
+(
+case+ def of
+|
+None() => ()
+|
+Some(body) =>
+(
+case+ iras of
+|
+list_nil _ =>
+let
+val irv0 =
+(
+case-
+body.node() of
+|
+IR0Elam
+(knd, iras, body) =>
+IR0Vfixs
+(fenv, nam, iras, body, irdfs)
+|
+IR0Efix
+(knd, d2v, iras, ire2) =>
+IR0Vfixs
+(fenv, nam, iras, ire2, irdfs)
+//
+) : ir0val // end-of-let
+in
+(
+  auxirfds(fenv, irdfs, irfds)
+) where
+{
+val () =
+interp0_insert_d2cst(d2c, irv0)
+}
+end
+|
+list_cons _ =>
+let
+val irv0 =
+IR0Vfixs
+(fenv, nam, iras, body, irdfs)
+in
+(
+  auxirfds(fenv, irdfs, irfds)
+) where
+{
+val () =
+interp0_insert_d2cst(d2c, irv0)
+}
+end
+) (* end of [Some(body)] *)
+) (* end of [Some(iras)] *)
+//
+end (* end of [list_cons] *) ) (* auxirfds *)
+
+in (*in-of-local*)
+
 implement
 interp0_ir0fundeclist
-  (env0, xs) =
+(env0, irfds) =
+(
+case+ irfds of
+|
+list_nil() => ()
+|
+list_cons(x0, xs) =>
 (
 case+ xs of
-| list_nil() => ()
-| list_cons(x0, xs) =>
-  (
-    interp0_ir0fundeclist(env0, xs)
-  ) where
-  {
-    val () = interp0_ir0fundecl(env0, x0)
-  }
-) (* end of [interp0_ir0fundeclist] *)
+| list_nil _ =>
+  interp0_ir0fundecl(env0, x0)
+| list_cons _ =>
+  let
+//
+  val fenv =
+  intpenv_take_env(env0)
+//
+  val irdfs = auxfixs(irfds)
+//
+  in
+    auxirfds(fenv, irdfs, irfds)
+  end
+) (* end of [list_cons] *)
+) (* interp0_ir0fundeclist *)
+
+end // end of [local]
 
 (* ****** ****** *)
 

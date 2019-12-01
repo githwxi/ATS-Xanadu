@@ -1,15 +1,24 @@
 (* ****** ****** *)
 
+#extern
 fun
-kfact(n, k) =
+<ans:type>
+kfact
+( n: int
+, k: int -<cref> ans): ans
+
+implement
+<ans>
+kfact =
+fix
+kf(n, k0) =>
 if n > 0
-then
-kfact(n-1, lam(r) => k(n * r))
-else k(1)
+then kf(n-1, lam(r) => k0(n * r))
+else k0(1) // end of [if]
 
 val
 fact =
-lam(n) => kfact(n, lam r => r)
+lam(n) => kfact<int>(n, lam r => r)
 
 (* ****** ****** *)
 

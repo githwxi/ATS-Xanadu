@@ -111,10 +111,15 @@ case+ x0 of
   ( out
   , "IR0Vtuple(", knd, "; ", irvs, ")")
 //
-| IR0Vlam(fenv, iras, ire1) =>
+| IR0Vlam
+  (fenv, iras, ire1) =>
   fprint!(out, "IR0Vlam(", "...", ")")
-| IR0Vfix(fenv, d2v0, iras, ire1) =>
+| IR0Vfix
+  (fenv, d2v0, iras, ire1) =>
   fprint!(out, "IR0Vfix(", "...", ")")
+| IR0Vfixs
+  (fenv, d2v0, iras, ire1, ires) =>
+  fprint!(out, "IR0Vfixs(", "...", ")")
 //
 | IR0Vnone0() =>
   fprint!(out, "IR0Vnone0(", ")")
