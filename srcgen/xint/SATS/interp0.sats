@@ -117,6 +117,12 @@ ir0val =
   (ir0env, ir0arglst, ir0exp)
 | IR0Vfix of
   (ir0env, d2var, ir0arglst, ir0exp)
+(*
+| IR0Vfix2 of
+  (ir0env, d2var, ir0arglst, ir0exp, ir0exp)
+*)
+| IR0Vfixs of
+  (ir0env, d2var, ir0arglst, ir0exp, ir0explst)
 //
 | IR0Vnone0 of () | IR0Vnone1 of (ir0exp)
 //
@@ -165,6 +171,8 @@ intpenv_take_env(!intpenv): ir0env
 //
 fun
 intpenv_bind_fix(!intpenv, ir0val): void
+fun
+intpenv_bind_fixs(!intpenv, ir0val): void
 //
 (* ****** ****** *)
 //
@@ -223,14 +231,17 @@ interp0_irexpopt
 (env: !intpenv, opt0: ir0expopt): ir0valopt
 //
 (* ****** ****** *)
-
+//
 fun
 interp0_fcall_lam
 (irf0: ir0val, irvs: ir0valist): ir0val
 fun
 interp0_fcall_fix
 (irf0: ir0val, irvs: ir0valist): ir0val
-
+fun
+interp0_fcall_fixs
+(irf0: ir0val, irvs: ir0valist): ir0val
+//
 (* ****** ****** *)
 //
 fun

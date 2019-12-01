@@ -1,12 +1,28 @@
+
+fun
+isevn(x: int): int =
+if x > 0
+then isodd(x-1) else 1
+and
+isodd(x: int): int =
+if x > 0
+then isevn(x-1) else 0
+
+val isevn10 = isevn(10)
+val isodd10 = isodd(10)
+
+////
 fun
 fact =
 lam(x) =>
 (
 fix f(x) =>
-if x > 0 then x * fact(x-1) else 1)(x)
-
+if x > 0
+then x * fact(x-1) else 1)(x)
 val fact10 = fact(10)
 
+(* ****** ****** *)
+////
 #extern
 fun<>
 fact : int -> int
