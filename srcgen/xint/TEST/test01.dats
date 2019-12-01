@@ -1,3 +1,10 @@
+fun f =
+fix g(x: int): int =>
+if x >= 2 then f(x-1) + g(x-2) else x
+
+val f10 = f(10)
+
+////
 
 fun
 isevn(x: int): int =

@@ -1424,18 +1424,29 @@ in
 IR0Vfix(fenv, nam, iras, body)
 end // end of [IR0Elam]
 //
-(*
 |
 IR0Efix
 (knd, d2v, iras, ire2) =>
 let
-val fenv =
-intpenv_take_env(env0)
+//
+val
+irdf1 =
+ir0exp_make_node
+(
+body.loc()
+,
+IR0Efix(0, nam, iras, ire2)
+)
+val
+irdfs = list_pair(irdf1, body)
+//
+val
+fenv = intpenv_take_env(env0)
+//
 in
-IR0Vfix2
-(fenv, nam, iras, ire2, body)
+IR0Vfixs
+(fenv, nam, iras, ire2, irdfs)
 end
-*)
 //
 ) : ir0val // end of [let]
 in
