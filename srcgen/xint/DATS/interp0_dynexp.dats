@@ -63,6 +63,7 @@ overload
 print with $D2E.print_impld2cst
 //
 overload = with $D2E.eq_d2con_d2con
+overload = with $D2E.eq_d2cst_d2cst
 //
 (* ****** ****** *)
 //
@@ -287,6 +288,168 @@ IR0Vfix(fenv, nam, iras, body)
 //
 end // end of [auxirfd0]
 //
+fun
+auxfixs
+( irfds
+: ir0fundeclist
+) : ir0explst =
+(
+case+
+irfds of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(irfd0, irfds) =>
+let
+val+
+IR0FUNDECL
+  (rcd) = irfd0
+//
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a3g = rcd.a3g
+val def = rcd.def
+//
+in
+//
+case+ a3g of
+|
+None() =>
+auxfixs(irfds)
+|
+Some(iras) =>
+(
+case+ def of
+|
+None() =>
+auxfixs(irfds)
+|
+Some(body) =>
+(
+case+ iras of
+|
+list_nil _ =>
+(
+case+
+body.node() of
+|
+IR0Elam
+(knd, iras, ire2) =>
+let
+val ire1 =
+ir0exp_make_node
+(
+body.loc()
+,
+IR0Efix(knd, nam, iras, ire2)
+) (* end of [val] *)
+in
+list_cons(ire1, auxfixs(irfds))
+end // end of [IR0Elam]
+//
+(*
+|
+IR0Efix
+(knd, d2v, iras, ire2) =>
+let
+val irdf =
+ir0exp_make_node
+(
+body.loc()
+,
+IR0Efix(knd, nam, iras, ire2)
+)
+in
+list_cons
+( irdf
+, list_cons(body, auxfixs(irfds)))
+end
+*)
+//
+| _(*rest-of-ir0exp*) =>
+  list_cons(body, auxfixs(irfds))
+)
+|
+list_cons _ =>
+let
+val ire1 =
+ir0exp_make_node
+(
+rcd.loc
+,
+IR0Efix
+(0(*knd*), nam, iras, body)
+) (* end of [val] *)
+in
+  list_cons(ire1, auxfixs(irfds))
+end 
+) (* end of [Some(body)] *)
+) (* end of [Some(iras)] *)
+//
+end (* end of [list_cons] *) ) (*auxfixs*)
+//
+fun
+auxirfds
+( fenv
+: ir0env
+, irdfs
+: ir0explst
+, irfds
+: ir0fundeclist
+) : ir0val =
+(
+case+
+irfds of 
+|
+list_nil() =>
+IR0Vnone0()
+|
+list_cons
+(irfd0, irfds) =>
+let
+val+
+IR0FUNDECL
+  (rcd) = irfd0
+in
+//
+if
+(d2c0 = rcd.d2c)
+then let
+//
+val nam = rcd.nam
+//
+val-
+Some(iras) = rcd.a3g
+val-
+Some(body) = rcd.def
+//
+in
+//
+case+
+iras of
+|
+list_nil() =>
+(
+case-
+body.node() of
+IR0Elam
+(knd, iras, body) =>
+IR0Vfixs
+(fenv, nam, iras, body, irdfs)
+) (* end of [list_nil] *)
+|
+list_cons _ =>
+IR0Vfixs
+(fenv, nam, iras, body, irdfs)
+//
+end // end of [then]
+else auxirfds(fenv, irdfs, irfds)
+//
+end // end of [list_cons]
+)
+//
 in
 //
 case-
@@ -307,10 +470,15 @@ list_cons(irfd0, xs) = irfds
 in
 //
 case- xs of
-| list_nil _ => auxirfd0(fenv, irfd0)
-(*
-| list_cons _ => auxirfds(fenv, irfds)
-*)
+| list_nil _ =>
+  auxirfd0(fenv, irfd0)
+| list_cons _ =>
+  let
+  val
+  irdfs = auxfixs(irfds)
+  in
+  auxirfds(fenv, irdfs, irfds)
+  end
 //
 end
 |
@@ -1691,11 +1859,13 @@ IR0Elam
 (knd, iras, body) =>
 IR0Vfixs
 (fenv, nam, iras, body, irdfs)
+(*
 |
 IR0Efix
 (knd, d2v, iras, ire2) =>
 IR0Vfixs
 (fenv, nam, iras, ire2, irdfs)
+*)
 //
 ) : ir0val // end-of-let
 in
