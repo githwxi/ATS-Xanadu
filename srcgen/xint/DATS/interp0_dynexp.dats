@@ -233,25 +233,86 @@ auxtimp
 : ir0exp): ir0val =
 let
 //
-val () =
-println!
-("auxtimp: ire0 = ", ire0)
-//
 val-
 IR0Etimp
 ( ire1, targ
 , ircl, tsub) = ire0.node()
+val-
+IR0Etcst
+( d2c0
+, ti3a, ti2s) = ire1.node()
+//
+(*
+val () =
+println!("auxtimp: ire0 = ", ire0)
+val () =
+println!("auxtimp: ire1 = ", ire1)
+*)
+//
+fun
+auxirfd0
+( fenv
+: ir0env
+, irfd0
+: ir0fundecl): ir0val =
+let
+//
+val-
+IR0FUNDECL
+  (rcd) = irfd0
+//
+val nam = rcd.nam
+//
+val-
+Some(iras) = rcd.a3g
+val-
+Some(body) = rcd.def
+//
+in
+//
+case+ iras of
+|
+list_nil _ =>
+(
+case-
+body.node() of
+|
+IR0Elam
+(knd, iras, body) =>
+IR0Vfix(fenv, nam, iras, body)
+)
+|
+list_cons _ =>
+IR0Vfix(fenv, nam, iras, body)
+//
+end // end of [auxirfd0]
 //
 in
 //
 case-
 ircl.node() of
-(*
 |
 IR0Cfundecl
 ( knd0, mopt
 , tqas, irfds) =>
+let
+//
+val
+fenv =
+intpenv_take_env(env0)
+//
+val-
+list_cons(irfd0, xs) = irfds
+//
+in
+//
+case- xs of
+| list_nil _ => auxirfd0(fenv, irfd0)
+(*
+| list_cons _ => auxirfds(fenv, irfds)
 *)
+//
+end
 |
 IR0Cimpdecl3
 ( knd0, mopt
@@ -1424,29 +1485,30 @@ in
 IR0Vfix(fenv, nam, iras, body)
 end // end of [IR0Elam]
 //
+(*
 |
 IR0Efix
 (knd, d2v, iras, ire2) =>
 let
 //
 val
-irdf1 =
-ir0exp_make_node
-(
-body.loc()
-,
-IR0Efix(0, nam, iras, ire2)
-)
-val
-irdfs = list_pair(irdf1, body)
+fenv =
+intpenv_take_env(env0)
 //
 val
-fenv = intpenv_take_env(env0)
+irdf =
+ir0exp_make_node
+( body.loc()
+, IR0Efix(0, nam, iras, ire2)
+)
+val
+irdfs = list_pair(irdf, body)
 //
 in
 IR0Vfixs
 (fenv, nam, iras, ire2, irdfs)
 end
+*)
 //
 ) : ir0val // end of [let]
 in
@@ -1532,30 +1594,24 @@ IR0Efix(knd, nam, iras, ire2)
 ) (* end of [val] *)
 in
 list_cons(ire1, auxfixs(irfds))
-end
+end // end of [IR0Elam]
 //
 (*
 |
 IR0Efix
 (knd, d2v, iras, ire2) =>
 let
-val ire1 =
+val irdf =
 ir0exp_make_node
 (
 body.loc()
 ,
 IR0Efix(knd, nam, iras, ire2)
 )
-val ire2 =
-ir0exp_make_node
-(
-body.loc()
-IR0Efix(knd, nam, iras, ire2)
-)
 in
 list_cons
-( ire1
-, list_cons(ire2, auxfixs(irfds)))
+( irdf
+, list_cons(body, auxfixs(irfds)))
 end
 *)
 //

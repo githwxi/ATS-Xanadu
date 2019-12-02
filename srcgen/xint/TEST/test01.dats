@@ -1,8 +1,52 @@
-fun f =
-fix g(x: int): int =>
-if x >= 2 then f(x-1) + g(x-2) else x
+fun
+<ans:type>
+kfact
+( n: int
+, k: int -> ans): ans =
+if n = 0
+then k(1)
+else
+kfact(n-1, lam(r) => k(n*r))
 
-val f10 = f(10)
+val
+fact10 = kfact<int>(10, lam r => r)
+
+////
+
+fun
+fact2
+( nr
+: @(int, int)): int =
+if
+nr.0 = 0
+then nr.1
+else
+let
+val @(n, r) = nr
+in fact2(@(n-1, n*r)) end
+
+val fact10 = fact2(@(10, 1))
+
+////
+
+#extern
+fun fact : int -> int
+implement
+fact(x) =
+if x > 0 then x * fact(x-1) else 1
+
+val fact10 = fact(10)
+
+////
+
+fun
+fact =
+lam(x) =>
+(
+fix f(x) =>
+if x > 0
+then x * fact(x-1) else 1)(x)
+val fact10 = fact(10)
 
 ////
 
@@ -19,17 +63,15 @@ val isevn10 = isevn(10)
 val isodd10 = isodd(10)
 
 ////
-fun
-fact =
-lam(x) =>
-(
-fix f(x) =>
-if x > 0
-then x * fact(x-1) else 1)(x)
-val fact10 = fact(10)
 
-(* ****** ****** *)
+fun f =
+fix g(x: int): int =>
+if x >= 2 then f(x-1) + g(x-2) else x
+
+val f10 = f(10)
+
 ////
+
 #extern
 fun<>
 fact : int -> int
@@ -41,33 +83,7 @@ if x > 0 then x * f(x-1) else 1
 val
 fact10 = fact(10)
 
-(* ****** ****** *)
 ////
-#extern
-fun fact : int -> int
-implement
-fact(x) =
-if x > 0 then x * fact(x-1) else 1
-
-val fact10 = fact(10)
-
-(* ****** ****** *)
-////
-fun
-fact2
-( nr
-: @(int, int)): int =
-if
-nr.0 = 0
-then nr.1
-else
-let
-val @(n, r) = nr
-in fact2(@(n-1, n*r)) end
-
-val fact10 = fact2(@(10, 1))
-
-(* ****** ****** *)
 
 fun
 fact2
@@ -101,17 +117,6 @@ then x*f(x-1) else 1
 //
 (* ****** ****** *)
 ////
-fun
-kfact
-( n: int
-, k: int -> int): int =
-if n = 0
-then k(1)
-else
-kfact(n-1, lam(r) => k(n*r))
-
-val
-fact10 = kfact(10, lam r => r)
 
 (* ****** ****** *)
 
