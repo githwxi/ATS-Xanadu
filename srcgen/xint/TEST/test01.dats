@@ -1,3 +1,4 @@
+
 fun
 <ans:type>
 kfact
@@ -7,7 +8,6 @@ if n = 0
 then k(1)
 else
 kfact(n-1, lam(r) => k(n*r))
-
 val
 fact10 = kfact<int>(10, lam r => r)
 
