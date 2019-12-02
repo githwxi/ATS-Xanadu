@@ -1,3 +1,18 @@
+(*
+
+HX-2019-12-01:
+This one is not yet supported.
+Should it be supported?
+
+fun f =
+fix g(x: int): int =>
+if x >= 2 then f(x-1) + g(x-2) else x
+
+val f10 = f(10)
+
+*)
+
+////
 
 fun
 <ans:type>
@@ -61,14 +76,6 @@ then isevn(x-1) else 0
 
 val isevn10 = isevn(10)
 val isodd10 = isodd(10)
-
-////
-
-fun f =
-fix g(x: int): int =>
-if x >= 2 then f(x-1) + g(x-2) else x
-
-val f10 = f(10)
 
 ////
 
