@@ -850,7 +850,26 @@ val
 XATSHOME = st0.ATSHOME
 //
 val () =
+ifcase
+|
+$FP0.filpath_is_stdin(fp0) =>
 $FP0.the_dirpathlst_ppush_cwd()
+| _ (* regular filename *) =>
+let
+val
+dirpath =
+$FP0.dirpath_make
+($FP0.filpath_get_dirname(fp0))
+val () =
+let
+val out = stdout_ref
+in
+fprint(out, "dirpath = ");
+$FP0.fprintln_dirpath(out, dirpath)
+end
+in
+  $FP0.the_dirpathlst_ppush(dirpath)
+end (* let *) // end of [ifcase]
 //
 in
 //

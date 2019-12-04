@@ -189,6 +189,12 @@ overload .full2 with filpath_get_full2
 (* ****** ****** *)
 //
 fun
+filpath_get_dirname
+  (fp: filpath):<> string
+//
+(* ****** ****** *)
+//
+fun
 filpath_is_cats(filpath):<> bool
 fun
 filpath_is_sats(filpath):<> bool
@@ -221,6 +227,8 @@ filpath_isnot_dummy: filpath -> bool
 //
 fun
 filpath_is_stdin: filpath -> bool
+fun
+filpath_is_string: filpath -> bool
 //
 (* ****** ****** *)
 //

@@ -61,6 +61,12 @@ xatsopt_strunq // "<string>" -> <string>
 //
 (* ****** ****** *)
 //
+fun
+xatsopt_strbtwe
+(p0: ptr, p1: ptr): string = "ext#xatsopt_strbtwe"
+//
+(* ****** ****** *)
+//
 (*
 int
 strcmp(const char *s1, const char *s2);
