@@ -34,7 +34,7 @@
 (* ****** ****** *)
 
 typedef sik = sint_k
-typedef uik = uik
+typedef uik = uint_k
 
 typedef slik = slint_k
 typedef ulik = ulint_k
@@ -46,67 +46,66 @@ typedef sllik = sllint_k
 typedef ullik = ullint_k
 
 (* ****** ****** *)
-//
-impltmp
-g0int_add<sik,sik><sik> = g0add_sint_sint
-impltmp
-g1int_add<sik,sik><sik> = g1add_sint_sint
-//
-(* ****** ****** *)
-//
-impltmp
-g0int_sub<sik,sik><sik> = g0sub_sint_sint
-impltmp
-g1int_sub<sik,sik><sik> = g1sub_sint_sint
-//
-(* ****** ****** *)
-//
-impltmp
-g0int_mul<sik,sik><sik> = g0mul_sint_sint
-impltmp
-g1int_mul<sik,sik><sik> = g1mul_sint_sint
-//
-(* ****** ****** *)
-//
-impltmp
-g0int_div<sik,sik><sik> = g0div_sint_sint
-impltmp
-g1int_div<sik,sik><sik> = g1div_sint_sint
-//
-(* ****** ****** *)
 (*
 ** for generics
 *)
 (* ****** ****** *)
 
-#staload
-"./../SATS/gint.sats"
+#staload "./../SATS/gint.sats"
+
+(* ****** ****** *)
+
+impltmp
+g_lt<sint> = gint_lt_sint_sint
+impltmp
+g_gt<sint> = gint_gt_sint_sint
+impltmp
+g_eq<sint> = gint_eq_sint_sint
+impltmp
+g_lte<sint> = gint_lte_sint_sint
+impltmp
+g_gte<sint> = gint_gte_sint_sint
+impltmp
+g_neq<sint> = gint_neq_sint_sint
+
+(* ****** ****** *)
+
+impltmp
+g_add<sint> = gint_add_sint_sint
+impltmp
+g_sub<sint> = gint_sub_sint_sint
+impltmp
+g_mul<sint> = gint_mul_sint_sint
+impltmp
+g_div<sint> = gint_div_sint_sint
+
+(* ****** ****** *)
+
+impltmp
+gint_lt<sik> = gint_lt_sint_sint
+impltmp
+gint_gt<sik> = gint_gt_sint_sint
+impltmp
+gint_eq<sik> = gint_eq_sint_sint
+impltmp
+gint_lte<sik> = gint_lte_sint_sint
+impltmp
+gint_gte<sik> = gint_gte_sint_sint
+impltmp
+gint_neq<sik> = gint_neq_sint_sint
 
 (* ****** ****** *)
 //
 impltmp
-gint_add<sik>(x, y) = gint_add_sint_sint(x, y)
+gint_add<sik> = gint_add_sint_sint
 impltmp
-gint_sub<sik>(x, y) = gint_sub_sint_sint(x, y)
+gint_sub<sik> = gint_sub_sint_sint
 impltmp
-gint_mul<sik>(x, y) = gint_mul_sint_sint(x, y)
+gint_mul<sik> = gint_mul_sint_sint
 impltmp
-gint_div<sik>(x, y) = gint_div_sint_sint(x, y)
+gint_div<sik> = gint_div_sint_sint
 impltmp
-gint_mod<sik>(x, y) = gint_mod_sint_sint(x, y)
-//
-(* ****** ****** *)
-//
-impltmp
-gint_add<uik>(x, y) = gint_add_uint_uint(x, y)
-impltmp
-gint_sub<uik>(x, y) = gint_sub_uint_uint(x, y)
-impltmp
-gint_mul<uik>(x, y) = gint_mul_uint_uint(x, y)
-impltmp
-gint_div<uik>(x, y) = gint_div_uint_uint(x, y)
-impltmp
-gint_mod<uik>(x, y) = gint_mod_uint_uint(x, y)
+gint_mod<sik> = gint_mod_sint_sint
 //
 (* ****** ****** *)
 

@@ -35,6 +35,34 @@ g_neq<a>(x, y) =
 (g_cmp<a>(x, y) != 0)
 
 (* ****** ****** *)
+//
+impltmp
+{a:type}
+g_ltz<a>(x) = (g_cmpz(x) < 0)
+impltmp
+{a:type}
+g_gtz<a>(x) = (g_cmpz(x) > 0)
+impltmp
+{a:type}
+g_eqz<a>(x) = (g_cmpz(x) = 0)
+//
+impltmp
+{a:type}
+g_ltez<a>(x) = (g_cmpz(x) <= 0)
+impltmp
+{a:type}
+g_gtez<a>(x) = (g_cmpz(x) >= 0)
+impltmp
+{a:type}
+g_neqz<a>(x) = (g_cmpz(x) != 0)
+
+(* ****** ****** *)
+//
+impltmp
+{a:type}
+g_cmpz<a>(x) = (g_cmp(x, g_0()))
+//
+(* ****** ****** *)
 
 impltmp
 {a:type}

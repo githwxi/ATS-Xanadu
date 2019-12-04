@@ -629,6 +629,11 @@ case- x0.node() of
     | Some _ => "Some(<fmodenv>)"): string
   }
 //
+| D2Clocal(head, body) =>
+  fprint!
+  ( out
+  , "D2Clocal(", head, "; ", body, ")")
+//
 | D2Cabssort(d1c) =>
   fprint!(out, "D2Cabssort(", d1c, ")")
 //
@@ -713,11 +718,6 @@ case- x0.node() of
   ( out
   , "D2Cynconst("
   , knd, "; ", tqas, "; ", d2cs, ")")
-//
-| D2Clocal(head, body) =>
-  fprint!
-  ( out
-  , "D2Clocal(", head, "; ", body, ")")
 //
 | D2Cnone0() =>
   fprint!(out, "D2Cnone0(", ")")

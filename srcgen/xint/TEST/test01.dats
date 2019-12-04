@@ -1,16 +1,126 @@
+(* ****** ****** *)
+
+impltmp
+{a:type}
+g_eq<a>(x, y) =
+(g_cmp<a>(x, y) = 0)
+impltmp
+{a:type}
+g_lt<a>(x, y) =
+(g_cmp<a>(x, y) < 0)
+impltmp
+{a:type}
+g_gt<a>(x, y) =
+(g_cmp<a>(x, y) > 0)
+impltmp
+{a:type}
+g_lte<a>(x, y) =
+(g_cmp<a>(x, y) <= 0)
+impltmp
+{a:type}
+g_gte<a>(x, y) =
+(g_cmp<a>(x, y) >= 0)
+impltmp
+{a:type}
+g_neq<a>(x, y) =
+(g_cmp<a>(x, y) != 0)
+
+(* ****** ****** *)
+//
+impltmp
+{a:type}
+g_ltz<a>(x) = (g_cmpz(x) < 0)
+impltmp
+{a:type}
+g_gtz<a>(x) = (g_cmpz(x) > 0)
+impltmp
+{a:type}
+g_eqz<a>(x) = (g_cmpz(x) = 0)
+//
+impltmp
+{a:type}
+g_ltez<a>(x) = (g_cmpz(x) <= 0)
+impltmp
+{a:type}
+g_gtez<a>(x) = (g_cmpz(x) >= 0)
+impltmp
+{a:type}
+g_neqz<a>(x) = (g_cmpz(x) != 0)
+
+(* ****** ****** *)
+//
+impltmp
+{a:type}
+g_cmpz<a>(x) = (g_cmp(x, g_0()))
+//
+(* ****** ****** *)
+
+impltmp
+{a:type}
+g_max<a>(x, y) =
+if g_gte<a>(x, y) then (x) else (y)
+impltmp
+{a:type}
+g_min<a>(x, y) =
+if g_lte<a>(x, y) then (x) else (y)
+
+(* ****** ****** *)
+
+impltmp
+{a:type}
+g_succ<a>(x) = g_add(x, g_1())
+impltmp
+{a:type}
+g_pred<a>(x) = g_sub(x, g_1())
+
+(* ****** ****** *)
+
+impltmp
+g_lt<sint> = gint_lt_sint_sint
+impltmp
+g_gt<sint> = gint_gt_sint_sint
+impltmp
+g_eq<sint> = gint_eq_sint_sint
+impltmp
+g_lte<sint> = gint_lte_sint_sint
+impltmp
+g_gte<sint> = gint_gte_sint_sint
+impltmp
+g_neq<sint> = gint_neq_sint_sint
+
+(* ****** ****** *)
+
+impltmp
+g_cmp<sint> = gint_cmp_sint_sint
+
+(* ****** ****** *)
+
+impltmp
+g_add<sint> = gint_add_sint_sint
+impltmp
+g_sub<sint> = gint_sub_sint_sint
+impltmp
+g_mul<sint> = gint_mul_sint_sint
+impltmp
+g_div<sint> = gint_div_sint_sint
+
+(* ****** ****** *)
+
+////
+
 (*
 
 HX-2019-12-01:
 This one is not yet supported.
 Should it be supported?
 
+*)
+
 fun f =
 fix g(x: int): int =>
 if x >= 2 then f(x-1) + g(x-2) else x
 
 val f10 = f(10)
-
-*)
 
 ////
 

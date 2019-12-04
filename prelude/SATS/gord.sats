@@ -86,6 +86,42 @@ g_cmp(a, a): sint
 //
 fun
 <a:type>
+g_ltz(x: a): bool
+fun
+<a:type>
+g_gtz(x: a): bool
+fun
+<a:type>
+g_eqz(x: a): bool
+fun
+<a:type>
+g_ltez(x: a): bool
+fun
+<a:type>
+g_gtez(x: a): bool
+fun
+<a:type>
+g_neqz(x: a): bool
+//
+fun
+g_cmpz(x: a): sint
+//
+(* ****** ****** *)
+//
+#symload ltz with g_ltz of 000
+#symload gtz with g_gtz of 000
+#symload eqz with g_eqz of 000
+//
+#symload ltez with g_ltez of 000
+#symload gtez with g_gtez of 000
+#symload neqz with g_neqz of 000
+//
+#symload cmpz with g_cmpz of 000
+//
+(* ****** ****** *)
+//
+fun
+<a:type>
 g_max(x: a, y: a): (a)
 fun
 <a:type>

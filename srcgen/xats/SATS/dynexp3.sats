@@ -86,6 +86,8 @@ typedef d3ecl = d3ecl_tbox
 typedef d3eclist = List0(d3ecl)
 typedef d3eclopt = Option(d3ecl)
 //
+typedef d3eclistopt = Option(d3eclist)
+//
 (* ****** ****** *)
 
 datatype
@@ -650,6 +652,13 @@ d3ecl_node =
   (token(*STATIC*), d3ecl)
 | D3Cextern of
   (token(*EXTERN*), d3ecl)
+//
+| D3Cinclude of
+  ( token
+  , d1exp // src
+  , int(*knd*) // sta/dyn: 0/1
+  , filpathopt
+  , d3eclistopt) // file inclusion
 //
 | D3Clocal of
   (d3eclist(*head*), d3eclist(*body*))

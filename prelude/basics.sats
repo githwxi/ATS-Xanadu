@@ -89,31 +89,86 @@ bool -> int // t->1/f->0
 cast_i0_b0:
 (int) -> bool // !0->t/=0->f
 //
-sexpdef b2i = cast_b0_i0
-sexpdef i2b = cast_i0_b0
-//
-(* ****** ****** *)
-//
-#stacst tt_b0 : bool
-#stacst ff_b0 : bool
-//
-sexpdef tt = tt_b0 // true
-sexpdef ff = ff_b0 // false
+sexpdef
+b2i = cast_b0_i0 // overloading
+sexpdef
+i2b = cast_i0_b0 // overloading
 //
 (* ****** ****** *)
 //
 #stacst
+tt_b0 : bool // true
+#stacst
+ff_b0 : bool // false
+//
+sexpdef tt = tt_b0 // overloading
+sexpdef ff = ff_b0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+neg_b0: (b0) -> bool
+sexpdef neg = neg_b0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+lt_b0_b0: (b0, b0) -> bool
+#stacst
+gt_b0_b0: (b0, b0) -> bool
+#stacst
 eq_b0_b0: (b0, b0) -> bool
+//
+#stacst
+lte_b0_b0: (b0, b0) -> bool
+#stacst
+gte_b0_b0: (b0, b0) -> bool
 #stacst
 neq_b0_b0: (b0, b0) -> bool
 //
+sexpdef < = lt_b0_b0 // overloading
+sexpdef > = gt_b0_b0 // overloading
 sexpdef = = eq_b0_b0 // overloading
+//
+sexpdef <= = lte_b0_b0 // overloading
+sexpdef >= = gte_b0_b0 // overloading
 sexpdef != = neq_b0_b0 // overloading
 //
 (* ****** ****** *)
 //
 #stacst
-neg_i0: (int) -> int
+add_b0_b0: (b0, b0) -> bool
+#stacst
+mul_b0_b0: (b0, b0) -> bool
+//
+sexpdef + = add_i0_i0 // overloading
+sexpdef * = mul_i0_i0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+neg_i0: int -> int
+sexpdef - = neg_i0 // overloading
+//
+#stacst
+abs_i0: int -> int
+sexpdef abs = abs_i0 // overloading
+//
+#stacst
+sgn_i0: int -> int
+sexpdef sgn = sgn_i0 // overloading
+//
+(*
+#stacst
+succ_i0: int -> int
+#stacst
+pred_i0: int -> int
+sexpdef succ = succ_i0 // overloading
+sexpdef pred = pred_i0 // overloading
+*)
+//
+(* ****** ****** *)
+//
 #stacst
 add_i0_i0: (int, int) -> int
 #stacst
@@ -123,7 +178,6 @@ mul_i0_i0: (int, int) -> int
 #stacst
 div_i0_i0: (int, int) -> int
 //
-sexpdef - = neg_i0 // overloading
 sexpdef + = add_i0_i0 // overloading
 sexpdef - = sub_i0_i0 // overloading
 sexpdef * = mul_i0_i0 // overloading
@@ -135,14 +189,13 @@ sexpdef / = div_i0_i0 // overloading
 lt_i0_i0: (int, int) -> bool
 #stacst
 gt_i0_i0: (int, int) -> bool
+#stacst
+eq_i0_i0: (int, int) -> bool
 //
 #stacst
 lte_i0_i0: (int, int) -> bool
 #stacst
 gte_i0_i0: (int, int) -> bool
-//
-#stacst
-eq_i0_i0: (int, int) -> bool
 #stacst
 neq_i0_i0: (int, int) -> bool
 //
