@@ -2377,7 +2377,7 @@ val-
 D0Cinclude
 (tok, d0e) = d0cl.node()
 //
-(*
+// (*
 //
 val out = stdout_ref
 //
@@ -2391,7 +2391,8 @@ val (_) = $FP0.the_filpath_fprint(out)
 val (_) =
 fprintln!(out, "the_filepathlst: ")
 val (_) = $FP0.the_filpathlst_fprint(out)
-*)
+//
+// *)
 //
 val
 src =

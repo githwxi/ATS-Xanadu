@@ -41,7 +41,13 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
+"./../../xutl/SATS/mylibc.sats"
+//
+(* ****** ****** *)
+//
+#staload
 SYM = "./../SATS/symbol.sats"
+//
   typedef symbol = $SYM.symbol
 //
 (* ****** ****** *)
@@ -135,6 +141,77 @@ implement
 filpath_get_full2
   (fp0) = fp0.filpath_fullpath
 //
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+fun
+auxmain
+( cs
+: string): string =
+let
+//
+val
+NUL = '\000'
+val
+sep = theDirSep_get()
+//
+fun
+aux1
+(p0: ptr): ptr =
+let
+val p1 =
+ptr0_succ<char>(p0)
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+ifcase
+| (c0=NUL) =>
+  the_null_ptr
+| (c0=sep) =>
+  aux2(p0, p1) | _ => aux1(p1)
+end
+//
+and
+aux2
+( p0: ptr
+, p1: ptr): ptr =
+let
+val p2 =
+ptr0_succ<char>(p1)
+val c1 =
+$UN.ptr0_get<char>(p1)
+in
+ifcase
+| (c1=NUL) => p0
+| (c1=sep) =>
+  aux2(p1, p2) | _ => aux2(p0, p2)
+end
+//
+val p0 =
+string2ptr(cs)
+//
+val p1 = aux1(p0)
+//
+in
+  if
+  iseqz(p1)
+  then theCurDir_get()
+  else xatsopt_strbtwe(p0, p1)
+end // end of [auxmain]
+
+in (*in-of-local*)
+
+implement
+filpath_get_dirname(fp0) =
+$effmask_all
+(
+auxmain
+($SYM.symbol_get_name(fp0.full2()))
+) (* end of [filpath_get_dirname] *)
+
 end // end of [local]
 
 (* ****** ****** *)

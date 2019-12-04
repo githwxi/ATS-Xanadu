@@ -79,10 +79,37 @@ let
   (xatsopt_memcpy(q0, p1, n0-2))
   val () =
   $UN.ptr0_set_at<char>(q0, n0-2, CNUL)
+//
 in
   $UN.castvwtp0((pf0, fpf | q0))
 end // end of [xatsopt_strunq]
 //
+(* ****** ****** *)
+
+implement
+xatsopt_strbtwe(p0, p1) =
+let
+//
+#define CNUL '\000'
+//
+  val
+  bsz0 =
+  sub_ptr0_ptr0(p1, p0)
+  val bsz1 = succ(bsz0)
+  val bsz1 =
+  $UN.cast{Size_t}(bsz1)
+  val
+  ( pf0
+  , fpf | q0) = malloc_gc(bsz1+1)
+  val () =
+  ignoret(xatsopt_memcpy(q0, p0, bsz1))
+  val () =
+  $UN.ptr0_set_at<char>(q0, bsz1, CNUL)
+//
+in
+  $UN.castvwtp0((pf0, fpf | q0))
+end // end of [xatsopt_strbtwe]
+
 (* ****** ****** *)
 //
 implement
