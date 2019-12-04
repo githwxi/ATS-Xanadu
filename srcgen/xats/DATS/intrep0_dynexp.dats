@@ -598,6 +598,41 @@ list_map$fopr<d3clau><ir0clau>(d3cl) = irerase_dclau(d3cl)
 
 (* ****** ****** *)
 
+local
+
+fun
+aux_include
+( d3cl
+: d3ecl): ir0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cinclude
+( tok
+, src, knd
+, fopt, dopt) = d3cl.node()
+//
+val
+iropt =
+(
+case+ dopt of
+| None() =>
+  None()
+| Some(d3cs) =>
+  Some(irerase_declist(d3cs))
+) : ir0dclistopt
+in
+ir0dcl_make_node
+( loc0
+, IR0Cinclude(tok, src, knd, fopt, iropt)
+)
+end // end of [aux_include]
+
+in(*in-of-local*)
+
 implement
 irerase_decl
   (d3cl) =
@@ -628,6 +663,8 @@ d3cl.node() of
   {
     val irc1 = irerase_decl(d3c1)
   }
+//
+| D3Cinclude _ => aux_include(d3cl)
 //
 | D3Clocal
   (head, body) =>
@@ -683,6 +720,10 @@ d3cl.node() of
   ir0dcl_make_node(loc0, IR0Cnone1(d3cl))
 //
 end // end of [irerase_decl]
+
+end // end of [local]
+
+(* ****** ****** *)
 
 implement
 irerase_declist

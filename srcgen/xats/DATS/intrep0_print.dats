@@ -62,6 +62,17 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+(*
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full1
+*)
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full2
+//
+(* ****** ****** *)
+//
 implement
 fprint_val<t2ype> = fprint_t2ype
 //
@@ -416,6 +427,26 @@ case+ x0.node() of
   ( out
   , "IR0Cextern("
   , tok, "; ", irc1, ")")
+//
+| IR0Cinclude
+  ( tok
+  , src, knd
+  , fopt, body) =>
+  (
+  fprint!
+  ( out
+  , "IR0Cinclude("
+  , "src= ", src, "; "
+  , "knd= ", knd, "; "
+  , fopt, "; ", body, ")")
+  ) where
+  {
+    val body =
+    (
+    case+ body of
+    | None _ => "None()"
+    | Some _ => "Some(<irdcls>)"): string
+  }
 //
 | IR0Clocal
   (head, body) =>

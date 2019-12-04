@@ -698,7 +698,7 @@ case+ x0.node() of
     (
     case+ body of
     | None _ => "None()"
-    | Some _ => "Some(<d1cs>)"): string
+    | Some _ => "Some(<d1cls>)"): string
   }
 //
 | D1Cstaload

@@ -606,7 +606,7 @@ case- x0.node() of
     (
     case+ body of
     | None _ => "None()"
-    | Some _ => "Some(<d2cs>)"): string
+    | Some _ => "Some(<d2cls>)"): string
   }
 //
 | D2Cstaload

@@ -1146,6 +1146,32 @@ end // end of [local]
 
 local
 
+(* ****** ****** *)
+
+fun
+aux_include
+( env0
+: !intpenv
+, irdcl: ir0dcl): void =
+let
+//
+val-
+IR0Cinclude
+( tok
+, src(*d1exp*)
+, knd(*stadyn*)
+, fopt(*fpathopt*)
+, iropt) = irdcl.node()
+//
+in
+case+ iropt of
+| None() => ()
+| Some(xs) =>
+  interp0_irdclist(env0, xs)
+end // end of [aux_include]
+
+(* ****** ****** *)
+
 fun
 aux_valdecl
 ( env0
@@ -1187,6 +1213,8 @@ interp0_ir0fundeclist(env0, irfds)
 //
 end // end of [aux_fundecl]
 
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -1201,6 +1229,21 @@ println!
 in
 case+
 x0.node() of
+//
+|
+IR0Cinclude _ =>
+(
+  aux_include(env0, x0)
+)
+//
+| IR0Clocal
+  (head, body) =>
+{
+  val () =
+  interp0_irdclist(env0, head)
+  val () =
+  interp0_irdclist(env0, body)
+}
 //
 | IR0Cvaldecl _ =>
   aux_valdecl(env0, x0)
