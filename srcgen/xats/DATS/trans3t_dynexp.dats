@@ -438,6 +438,40 @@ end // end of [auxs2vs_make]
 (* ****** ****** *)
 
 fun
+aux_include
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+val-
+D3Cinclude
+( tok
+, src, knd
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+(
+case+ dopt of
+| None() =>
+  None((*void*))
+| Some(d3cs) =>
+  Some(trans3t_declist(env0, d3cs))
+) : d3eclistopt // end-of-val
+//
+in
+//
+d3ecl_make_node
+( loc0
+, D3Cinclude(tok, src, knd, fopt, dopt))
+//
+end // end of [aux_include]
+
+(* ****** ****** *)
+
+fun
 aux_valdecl
 ( env0
 : !implenv
@@ -735,8 +769,7 @@ d3cl.node() of
   , D3Cstatic(tok, d3c1))
   ) where
   { val
-    d3c1 =
-    trans3t_decl(env0, d3c1)
+    d3c1 = trans3t_decl(env0, d3c1)
   }
 | D3Cextern
   (tok(*EXTERN*), d3c1) =>
@@ -746,17 +779,14 @@ d3cl.node() of
   , D3Cextern(tok, d3c1))
   ) where
   { val
-    d3c1 =
-    trans3t_decl(env0, d3c1)
+    d3c1 = trans3t_decl(env0, d3c1)
   }
 //
-| D3Cvaldecl _ => aux_valdecl(env0, d3cl)
-| D3Cvardecl _ => aux_vardecl(env0, d3cl)
-| D3Cfundecl _ => aux_fundecl(env0, d3cl)
-//
-| D3Cimpdecl1 _ => d3cl
-| D3Cimpdecl2 _ => d3cl
-| D3Cimpdecl3 _ => aux_impdecl3(env0, d3cl)
+| D3Cinclude _ =>
+  let
+    val d3cl =
+    aux_include(env0, d3cl) in d3cl
+  end // end of [D3Cinclude]
 //
 | D3Clocal
   (d3cs1, d3cs2) =>
@@ -776,6 +806,14 @@ d3cl.node() of
   in
     d3ecl_make_node(loc0, D3Clocal(d3cs1, d3cs2))
   end
+//
+| D3Cvaldecl _ => aux_valdecl(env0, d3cl)
+| D3Cvardecl _ => aux_vardecl(env0, d3cl)
+| D3Cfundecl _ => aux_fundecl(env0, d3cl)
+//
+| D3Cimpdecl1 _ => d3cl
+| D3Cimpdecl2 _ => d3cl
+| D3Cimpdecl3 _ => aux_impdecl3(env0, d3cl)
 //
 | _ (* rest-of-d3ecl *) => d3cl // HX: yet-to-be-handled
 //
