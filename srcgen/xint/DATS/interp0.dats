@@ -653,7 +653,7 @@ $FP0.the_dirpathlst_ppush_cwd()
 | _ (* regular filename *) =>
 let
 val
-dirpath =
+dp0 =
 $FP0.dirpath_make
 ($FP0.filpath_get_dirname(fp0))
 val () =
@@ -661,10 +661,11 @@ let
 val out = stdout_ref
 in
 fprint(out, "dirpath = ");
-$FP0.fprintln_dirpath(out, dirpath)
+$FP0.fprintln_dirpath(out, dp0)
 end
 in
-  $FP0.the_dirpathlst_ppush(dirpath)
+  $FP0.the_filpathlst_ppush(fp0);
+  $FP0.the_dirpathlst_ppush(dp0)
 end (* let *) // end of [ifcase]
 //
 in

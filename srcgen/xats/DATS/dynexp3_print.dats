@@ -639,7 +639,7 @@ x0.node() of
     (
     case+ body of
     | None _ => "None()"
-    | Some _ => "Some(<d3cs>)"): string
+    | Some _ => "Some(<d3cls>)"): string
   }
 //
 | D3Clocal(head, body) =>

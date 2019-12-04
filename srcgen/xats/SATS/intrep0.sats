@@ -41,6 +41,7 @@
 #staload"./basics.sats"
 //
 #staload"./label0.sats"
+#staload"./filpath.sats"
 #staload"./locinfo.sats"
 //
 (* ****** ****** *)
@@ -60,6 +61,10 @@ typedef token = $LEX.token
 //
 #staload D3E = "./dynexp3.sats"
 //
+(* ****** ****** *)
+
+typedef d1exp = $D1E.d1exp
+
 (* ****** ****** *)
 
 typedef s2exp = $S2T.s2exp
@@ -110,10 +115,14 @@ typedef ir0pat = ir0pat_tbox
 typedef ir0patlst = List0(ir0pat)
 
 (* ****** ****** *)
-
+//
 abstype ir0dcl_tbox = ptr
 typedef ir0dcl = ir0dcl_tbox
 typedef ir0dclist = List0(ir0dcl)
+//
+typedef ir0dclistopt = Option(ir0dclist)
+//
+(* ****** ****** *)
 
 abstype ir0exp_tbox = ptr
 typedef ir0exp = ir0exp_tbox
@@ -462,6 +471,13 @@ ir0dcl_node =
   (token(*STATIC*), ir0dcl)
 | IR0Cextern of
   (token(*EXTERN*), ir0dcl)
+//
+| IR0Cinclude of
+  ( token
+  , d1exp // src
+  , int(*knd*) // sta/dyn: 0/1
+  , filpathopt
+  , ir0dclistopt) // file inclusion
 //
 | IR0Clocal of
   (ir0dclist, ir0dclist)

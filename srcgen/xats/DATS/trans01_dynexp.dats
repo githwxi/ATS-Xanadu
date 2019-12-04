@@ -2422,14 +2422,36 @@ None_vt()
 |
 Some_vt(fp0) =>
 let
-  val () =
-  (
-  ifcase
-  | is_sats(fp0) => knd := 0(*sta*)
-  | _(*non-sats*) => knd := 1(*dyn*)
-  )
+//
+val
+dp0 =
+dirpath_make
+(filpath_get_dirname(fp0))
+//
+val () =
+(
+ifcase
+| is_sats(fp0) => knd := 0(*sta*)
+| _(*non-sats*) => knd := 1(*dyn*)
+)
+//
 in
-  parse_from_filpath_toplevel(knd, fp0)
+d1csopt where
+{
+val
+( pf1
+| ()) = the_filpathlst_push(fp0)
+val
+( pf2
+| ()) = the_dirpathlst_push(dp0)
+//
+val d1csopt =
+parse_from_filpath_toplevel(knd, fp0)
+//
+val () = the_filpathlst_pout(pf1|(*void*))
+val () = the_dirpathlst_pout(pf2|(*void*))
+//
+}  
 end // end of [Some_vt]
 ) : Option_vt(d0eclist)
 //
