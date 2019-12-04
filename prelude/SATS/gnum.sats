@@ -60,6 +60,20 @@ g_u(u0: uint): (a)
 //
 fun
 <a:type>
+g_pred(x: a): a
+fun
+<a:type>
+g_succ(x: a): a
+//
+#symload
+pred with g_pred of 000
+#symload
+succ with g_succ of 000
+//
+(* ****** ****** *)
+//
+fun
+<a:type>
 g_add(x: a, y: a): a
 fun
 <a:type>

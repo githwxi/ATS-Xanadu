@@ -1450,6 +1450,38 @@ local
 (* ****** ****** *)
 
 fun
+aux_include
+( d2cl
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2cl.loc()
+val-
+D2Cinclude
+( tok
+, src, knd
+, fopt, dopt) = d2cl.node()
+//
+val dopt =
+(
+case+ dopt of
+| None() =>
+  None((*void*))
+| Some(d2cs) =>
+  Some(trans23_declist(d2cs))
+) : d3eclistopt // end-of-val
+//
+in
+//
+d3ecl_make_node
+( loc0
+, D3Cinclude(tok, src, knd, fopt, dopt))
+//
+end // end of [aux_include]
+
+(* ****** ****** *)
+
+fun
 aux_valdecl
 ( d2cl
 : d2ecl): d3ecl = let
@@ -2154,6 +2186,20 @@ d2cl.node() of
     d3ecl_make_node(loc0, node)
   end
 //
+| D2Cinclude _ => aux_include(d2cl)
+//
+| D2Clocal
+  (d2cs1, d2cs2) => let
+    val
+    d3cs1 = trans23_declist(d2cs1)
+    val
+    d3cs2 = trans23_declist(d2cs2)
+  in
+    d3ecl_make_node
+      (loc0, D3Clocal(d3cs1, d3cs2))
+    // d3ecl_make_node
+  end
+//
 | D2Csexpdef _ =>
   let
     val node = D3Cd2ecl(d2cl)
@@ -2175,18 +2221,6 @@ d2cl.node() of
 //
 | D2Cimpdecl1 _ => aux_impdecl1(d2cl)
 | D2Cimpdecl2 _ => aux_impdecl2(d2cl)
-//
-| D2Clocal
-  (d2cs1, d2cs2) => let
-    val
-    d3cs1 = trans23_declist(d2cs1)
-    val
-    d3cs2 = trans23_declist(d2cs2)
-  in
-    d3ecl_make_node
-      (loc0, D3Clocal(d3cs1, d3cs2))
-    // d3ecl_make_node
-  end
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2cl)
 //

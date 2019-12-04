@@ -82,6 +82,16 @@ gint_neq
 #symload != with gint_neq of 200
 //
 (* ****** ****** *)
+
+fun
+<k:type>
+gint_cmp
+{i,j:int}
+( x: gint(k, i)
+, y: gint(k, j)): sint(sgn(i-j))
+#symload <= with gint_cmp of 200
+
+(* ****** ****** *)
 //
 fun
 <k:type>

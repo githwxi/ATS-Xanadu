@@ -39,10 +39,20 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
+//
+#staload
+LOC = "./../SATS/locinfo.sats"
+#staload
+FP0 = "./../SATS/filpath.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/basics.sats"
+//
 #staload "./../SATS/label0.sats"
+//
 #staload "./../SATS/lexing.sats"
-
+//
 (* ****** ****** *)
 
 #staload "./../SATS/staexp0.sats"
@@ -62,6 +72,17 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+//
+(*
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full1
+*)
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full2
 //
 (* ****** ****** *)
 //
@@ -588,7 +609,7 @@ fprint_d3ecl
   (out, x0) =
 (
 //
-case-
+case+
 x0.node() of
 //
 | D3Cd2ecl(d2c) =>
@@ -600,6 +621,31 @@ x0.node() of
 | D3Cextern
   (tok, d3c) =>
   fprint!(out, "D3Cextern(", d3c, ")")
+//
+| D3Cinclude
+  ( tok
+  , src, knd
+  , fopt, body) =>
+  (
+  fprint!
+  ( out
+  , "D3Cinclude("
+  , "src= ", src, "; "
+  , "knd= ", knd, "; "
+  , fopt, "; ", body, ")")
+  ) where
+  {
+    val body =
+    (
+    case+ body of
+    | None _ => "None()"
+    | Some _ => "Some(<d3cs>)"): string
+  }
+//
+| D3Clocal(head, body) =>
+  fprint!
+  ( out
+  , "D3Clocal(", head, "; ", body, ")")
 //
 | D3Cvaldecl
   (knd, mopt, v3ds) =>

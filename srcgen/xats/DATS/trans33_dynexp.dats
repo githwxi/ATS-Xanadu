@@ -1221,6 +1221,40 @@ list_map<f3arg><f3arg>
 
 local
 
+(* ****** ****** *)
+
+fun
+aux_include
+( d3cl
+: d3ecl): d3ecl = let
+//
+val
+loc0 = d3cl.loc()
+val-
+D3Cinclude
+( tok
+, src, knd
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+(
+case+ dopt of
+| None() =>
+  None((*void*))
+| Some(d3cs) =>
+  Some(trans33_declist(d3cs))
+) : d3eclistopt // end-of-val
+//
+in
+//
+d3ecl_make_node
+( loc0
+, D3Cinclude(tok, src, knd, fopt, dopt))
+//
+end // end of [aux_include]
+
+(* ****** ****** *)
+
 fun
 aux_valdecl
 ( d3cl
@@ -1632,24 +1666,26 @@ d3cl.node() of
 //
 | D3Cd2ecl _ => d3cl
 //
-| D3Cvaldecl _ =>
+| D3Cstatic
+  (tok0, d3c1) =>
   (
-    aux_valdecl(d3cl)
-  )
+  d3ecl_make_node
+  (loc0, D3Cstatic(tok0, d3c1))
+  ) where
+  {
+    val d3c1 = trans33_decl(d3c1)
+  }
+| D3Cextern
+  (tok0, d3c1) =>
+  (
+  d3ecl_make_node
+  (loc0, D3Cextern(tok0, d3c1))
+  ) where
+  {
+    val d3c1 = trans33_decl(d3c1)
+  }
 //
-| D3Cfundecl _ =>
-  (
-    aux_fundecl(d3cl)
-  )
-//
-| D3Cimpdecl1 _ =>
-  (
-    aux_impdecl1(d3cl)
-  )
-| D3Cimpdecl2 _ =>
-  (
-    aux_impdecl2(d3cl)
-  )
+| D3Cinclude _ => aux_include(d3cl)
 //
 | D3Clocal
   (d3cs1, d3cs2) => let
@@ -1662,6 +1698,13 @@ d3cl.node() of
       (loc0, D3Clocal(d3cs1, d3cs2))
     // d3ecl_make_node
   end
+//
+| D3Cvaldecl _ => aux_valdecl(d3cl)
+//
+| D3Cfundecl _ => aux_fundecl(d3cl)
+//
+| D3Cimpdecl1 _ => aux_impdecl1(d3cl)
+| D3Cimpdecl2 _ => aux_impdecl2(d3cl)
 //
 | D3Cnone0 _ => d3cl
 | D3Cnone1 _ => d3cl
