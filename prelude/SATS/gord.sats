@@ -104,6 +104,7 @@ fun
 g_neqz(x: a): bool
 //
 fun
+<a:type>
 g_cmpz(x: a): sint
 //
 (* ****** ****** *)

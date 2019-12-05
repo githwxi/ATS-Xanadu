@@ -307,8 +307,11 @@ list_vt2t
 list_map<t2xtv><t2ype>(vs)
 ) where
 {
+//
 implement
-list_map$fopr<t2xtv><t2ype>(v0) = v0.type()
+list_map$fopr<t2xtv><t2ype>
+  (xtv) = t2ype_eval(xtv.type())
+//
 }
 //
 fun
@@ -448,13 +451,12 @@ then auxlst(xs, xarg)
 else let
   val+
   TI3ENV
-  (s2vs
+  ( s2vs
   , xtvs, t2ps) = ti3e
   val
   test =
   unify
   (loc0, targ, t2ps)
-  val () = auxrst(xtvs) // reset
 //
   val () =
   println!
@@ -464,8 +466,12 @@ in
   if
   test
   then
-  Some_vt
-  @(d3cl, s2vs, fxtvs(xtvs))
+  let
+  val t2ps = fxtvs(xtvs)
+  in
+    auxrst(xtvs); // reset
+    Some_vt@(d3cl, s2vs, t2ps)
+  end
   else
   (auxrst(xarg); auxlst(xs, xarg))
 end // end of [else]

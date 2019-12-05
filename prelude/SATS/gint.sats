@@ -89,7 +89,7 @@ gint_cmp
 {i,j:int}
 ( x: gint(k, i)
 , y: gint(k, j)): sint(sgn(i-j))
-#symload <= with gint_cmp of 200
+#symload cmp with gint_cmp of 200
 
 (* ****** ****** *)
 //
@@ -170,6 +170,15 @@ gint_neq_sint_sint
 ( x: sint(i)
 , y: sint(j)): bool(i!=j) = $ext()
 #symload != with gint_neq_sint_sint of 220
+//
+(* ****** ****** *)
+//
+fun//<>
+gint_cmp_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): sint(sgn(i-j)) = $ext()
+#symload cmp with gint_cmp_sint_sint of 220
 //
 (* ****** ****** *)
 

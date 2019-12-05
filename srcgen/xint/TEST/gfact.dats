@@ -1,15 +1,28 @@
 (* ****** ****** *)
 
+#include
+"./../../../prelude/DATS/gnum.dats"
+#include
+"./../../../prelude/DATS/gord.dats"
+#include
+"./../../../prelude/DATS/gint.dats"
+
+(* ****** ****** *)
+
 #extern
 fun
 <a:type>
-gfact
-(x: a): a =
+gfact(x: a): a
+
+implement
+<a>
+gfact =
+fix
+fact(x) =>
 if
 g_gtz(x)
 then
-g_mul(x, gfact(g_pred(x)))
-else g_1()
+g_mul(x, fact(g_pred(x))) else g_1()
 
 (* ****** ****** *)
 

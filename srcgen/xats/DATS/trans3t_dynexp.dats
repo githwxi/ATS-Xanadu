@@ -58,6 +58,13 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans3t.sats"
 
 (* ****** ****** *)
+
+implement
+fprint_val<s2var> = fprint_s2var
+implement
+fprint_val<t2ype> = fprint_t2ype
+
+(* ****** ****** *)
 //
 fn
 t2ype_substs
@@ -121,6 +128,8 @@ let
 //
 val
 loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
 //
 val-
 D3Etcst
@@ -128,13 +137,51 @@ D3Etcst
 , ti3a
 , ti2s) = d3e0.node()
 //
+val () =
+println!
+("auxtcst: d2c0 = ", d2c0)
+//
 val-
 TI3ARGsome(targ) = ti3a
 //
-val targ =
-t2ypelst_substs
-( targ
-, env0.s2vs(), env0.t2ps())
+val () =
+println!
+("auxtcst: ti3a = ", ti3a)
+val () =
+println!
+("auxtcst: targ = ", targ)
+//
+local
+//
+val s2vs = env0.s2vs()
+val t2ps = env0.t2ps()
+//
+val () =
+println!
+("auxtcst: s2vs = ", s2vs)
+val () =
+println!
+("auxtcst: t2ps = ", t2ps)
+//
+in
+val
+t2p0 =
+t2ype_substs(t2p0, s2vs, t2ps)
+val
+targ =
+t2ypelst_substs(targ, s2vs, t2ps)
+end
+//
+val () =
+println!
+("auxtcst: targ(1) = ", targ)
+//
+val d3e0 =
+d3exp_make_node
+( loc0
+, t2p0
+, D3Etcst
+  (d2c0, TI3ARGsome(targ), ti2s))
 //
 val opt0 =
 implenv_find_timp(env0, d2c0, targ)
@@ -159,7 +206,7 @@ implenv_pop0_tsub(env0)
 //
 in
   d3exp_make_node
-  ( d3e0.loc(), d3e0.type()
+  ( loc0, t2p0
   , D3Etimp(d3e0, targ, d3cl, tsub)
  )
 end
@@ -858,6 +905,9 @@ aux_fundecl
 ( env0
 : !implenv
 , d3cl: d3ecl): d3ecl = d3cl
+
+(* ****** ****** *)
+
 fun
 aux_impdecl3
 ( env0
