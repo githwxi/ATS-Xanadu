@@ -56,6 +56,13 @@ typedef ullik = ullint_k
 (* ****** ****** *)
 
 impltmp
+g_i<sint>(i) = i
+impltmp
+g_u<uint>(u) = u
+
+(* ****** ****** *)
+
+impltmp
 g_lt<sint> = gint_lt_sint_sint
 impltmp
 g_gt<sint> = gint_gt_sint_sint
@@ -67,6 +74,11 @@ impltmp
 g_gte<sint> = gint_gte_sint_sint
 impltmp
 g_neq<sint> = gint_neq_sint_sint
+
+(* ****** ****** *)
+
+impltmp
+g_cmp<sint> = gint_cmp_sint_sint
 
 (* ****** ****** *)
 

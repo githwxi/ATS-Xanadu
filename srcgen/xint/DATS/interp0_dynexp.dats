@@ -530,7 +530,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-(*
+// (*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -540,7 +540,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-*)
+// *)
 //
 in
 //

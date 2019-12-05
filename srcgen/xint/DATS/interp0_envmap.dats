@@ -492,7 +492,17 @@ gint_neq_sint_sint
 let
 val-IR0Vint(x) = x
 val-IR0Vint(y) = y in IR0Vbtf(x != y) end
-
+//
+(* ****** ****** *)
+//
+fun
+gint_cmp_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vint(compare(x, y)) end
+//
 (* ****** ****** *)
 
 fun
@@ -804,6 +814,15 @@ the_d2cstdef_insert
 d2cst("gint_neq_sint_sint")
 ,
 IR0Vfun(firfun2(gint_neq_sint_sint)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst("gint_cmp_sint_sint")
+,
+IR0Vfun(firfun2(gint_cmp_sint_sint)))
 //
 (* ****** ****** *)
 //
