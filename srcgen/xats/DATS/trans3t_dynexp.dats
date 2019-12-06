@@ -904,7 +904,90 @@ fun
 aux_fundecl
 ( env0
 : !implenv
-, d3cl: d3ecl): d3ecl = d3cl
+, d3cl: d3ecl): d3ecl =
+let
+//
+val-
+D3Cfundecl
+( tok0
+, mopt
+, tqas, f3ds) = d3cl.node()
+//
+fun
+auxf3d0
+( env0
+: !implenv
+, f3d0
+: f3undecl
+)
+: f3undecl =
+let
+//
+val+
+F3UNDECL(rcd) = f3d0
+//
+val loc = rcd.loc
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a2g = rcd.a2g
+val a3g = rcd.a3g
+val res = rcd.res
+val def = rcd.def
+val wtp = rcd.wtp
+val ctp = rcd.ctp
+//
+val def =
+(
+case+ def of
+| None() =>
+  None()
+| Some(d3e0) =>
+  Some(trans3t_dexp(env0, d3e0))
+) : d3expopt // end-of-val
+//
+//
+in
+F3UNDECL(
+@{
+ loc=loc
+,nam=nam,d2c=d2c
+,a2g=a2g,a3g=a3g
+,res=res,def=def,wtp=wtp,ctp=ctp}
+) (* F3UNDECL *)
+end // end of [auxf3d0]
+//
+fun
+auxf3ds
+( env0
+: !implenv
+, f3ds
+: f3undeclist
+)
+: f3undeclist =
+(
+case+ f3ds of
+| list_nil() =>
+  list_nil(*void*)
+| list_cons(f3d0, f3ds) =>
+  (
+  list_cons(f3d0, f3ds) 
+  ) where
+  {
+    val
+    f3d0 = auxf3d0(env0, f3d0)
+    val
+    f3ds = auxf3ds(env0, f3ds)
+  }
+)
+//
+val f3ds = auxf3ds(env0, f3ds)
+//
+in
+d3ecl_make_node
+( d3cl.loc()
+, D3Cfundecl(tok0, mopt, tqas, f3ds)
+)
+end // end of [aux_fundecl]
 
 (* ****** ****** *)
 
