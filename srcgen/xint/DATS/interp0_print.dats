@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -72,10 +72,10 @@ fprint_val<ir0val> = fprint_ir0val
 (* ****** ****** *)
 //
 implement
-print_ir0val(x0) = 
+print_ir0val(x0) =
 fprint_ir0val(stdout_ref, x0)
 implement
-prerr_ir0val(x0) = 
+prerr_ir0val(x0) =
 fprint_ir0val(stderr_ref, x0)
 //
 implement
@@ -101,7 +101,7 @@ case+ x0 of
 | IR0Vcon(d2c, xs) =>
   fprint!
   ( out
-  , "IR0Vcon(", d2c, "; ", xs, ")")
+  , "IR0Vcon(", d2c, "; [", xs, "] )")
 //
 | IR0Vfun(fopr) =>
   fprint!(out, "IR0Vfun(", "...", ")")
