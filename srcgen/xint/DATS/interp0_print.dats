@@ -109,7 +109,7 @@ case+ x0 of
 | IR0Vtuple(knd, irvs) =>
   fprint!
   ( out
-  , "IR0Vtuple(", knd, "; ", irvs, ")")
+  , "IR0Vtuple(", knd, "; [", irvs, "])")
 //
 | IR0Vlam
   (fenv, iras, ire1) =>
