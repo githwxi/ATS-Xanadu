@@ -101,7 +101,7 @@ case+ x0 of
 | IR0Vcon(d2c, xs) =>
   fprint!
   ( out
-  , "IR0Vcon(", d2c, "; [", xs, "] )")
+  , "IR0Vcon(", d2c, "; [", xs, "])")
 //
 | IR0Vfun(fopr) =>
   fprint!(out, "IR0Vfun(", "...", ")")
