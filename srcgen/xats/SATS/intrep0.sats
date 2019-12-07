@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -38,6 +38,7 @@
 //
 (* ****** ****** *)
 //
+#staload"./json.sats"
 #staload"./basics.sats"
 //
 #staload"./label0.sats"
@@ -315,6 +316,10 @@ overload prerr with prerr_ir0exp
 fun
 fprint_ir0exp: fprint_type(ir0exp)
 overload fprint with fprint_ir0exp
+//
+fun
+jsonize_ir0exp: jsonize_type(ir0exp)
+overload jsonize with jsonize_ir0exp
 //
 (* ****** ****** *)
 //

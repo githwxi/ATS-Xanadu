@@ -34,6 +34,7 @@ LIBGC=-lgc
 ######
 
 SRCSATS := \
+json.sats   \
 basics.sats \
 stamp0.sats \
 symbol.sats \
@@ -71,6 +72,7 @@ trans3t.sats \
 intrep0.sats \
 
 SRCDATS := \
+json.dats \
 basics.dats \
 stamp0.dats \
 symbol.dats \

@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -50,6 +50,8 @@ UN =
 #include
 "./../HATS/libxatsopt.hats"
 //
+(* #staload "./../../xats/SATS/json.sats" *)
+
 (* ****** ****** *)
 //
 overload
@@ -384,7 +386,7 @@ IR0Efix
 ) (* end of [val] *)
 in
   list_cons(ire1, auxfixs(irfds))
-end 
+end
 ) (* end of [Some(body)] *)
 ) (* end of [Some(iras)] *)
 //
@@ -401,7 +403,7 @@ auxirfds
 ) : ir0val =
 (
 case+
-irfds of 
+irfds of
 |
 list_nil() =>
 IR0Vnone0()
@@ -532,6 +534,10 @@ auxdarg(env0, npf1, ires)
 //
 // (*
 val () =
+fprint_jsonval
+(stdout_ref, jsonize(ire0))
+
+val () =
 println!
 ("auxdapp: ire0 = ", ire0)
 val () =
@@ -562,7 +568,7 @@ auxdfun
 ( env0
 : !intpenv
 , irf0
-: ir0exp): ir0val = 
+: ir0exp): ir0val =
 (
   interp0_irexp(env0, irf0)
 )
@@ -573,7 +579,7 @@ auxdarg
 : !intpenv
 , npf1: int
 , ires
-: ir0explst): ir0valist = 
+: ir0explst): ir0valist =
 (
 case+ ires of
 | list_nil() =>
@@ -593,7 +599,7 @@ case+ ires of
     list_cons
     ( irv1
     , auxdarg(env0, npf1, ires))
-  end // end of [else]    
+  end // end of [else]
   )
 ) (* end of [auxdarg] *)
 
@@ -1344,7 +1350,7 @@ let
   val-
   list_cons(irv0, irvs) = irvs
   val ans =
-  interp0_irpat_ck0(irp0, irv0)  
+  interp0_irpat_ck0(irp0, irv0)
 in
 //
   if ans
@@ -1421,7 +1427,7 @@ let
   val-
   list_cons(irv0, irvs) = irvs
   val () =
-  interp0_irpat_ck1(env0, irp0, irv0)  
+  interp0_irpat_ck1(env0, irp0, irv0)
 in
   interp0_irpatlst_ck1(env0, irps, irvs)
 end // end of [list_cons]
@@ -1842,7 +1848,7 @@ IR0Efix
 ) (* end of [val] *)
 in
   list_cons(ire1, auxfixs(irfds))
-end 
+end
 ) (* end of [Some(body)] *)
 ) (* end of [Some(iras)] *)
 //

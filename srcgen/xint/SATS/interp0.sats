@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -41,6 +41,8 @@
 XATS_targetloc "./../../xats"
 
 (* ****** ****** *)
+
+#staload "{$XATS}/SATS/json.sats"
 
 #staload
 D2E = "{$XATS}/SATS/dynexp2.sats"
@@ -146,6 +148,10 @@ overload prerr with prerr_ir0val
 fun
 fprint_ir0val: fprint_type(ir0val)
 overload fprint with fprint_ir0val
+//
+fun
+jsonize_ir0val: jsonize_type(ir0val)
+overload jsonize with jsonize_ir0val
 //
 (* ****** ****** *)
 

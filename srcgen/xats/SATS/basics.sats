@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -145,6 +145,8 @@ overload subsort with subsort_int_int
 //
 (* ****** ****** *)
 
+#staload "./json.sats"
+
 datatype
 dctkind =
 | DCKfun of ()
@@ -160,6 +162,10 @@ dctkind =
 fun
 fprint_dctkind:fprint_type(dctkind)
 overload fprint with fprint_dctkind
+//
+fun
+jsonize_dctkind:jsonize_type(dctkind)
+overload jsonize with jsonize_dctkind
 //
 (* ****** ****** *)
 //
@@ -178,6 +184,10 @@ valkind =
 fun
 fprint_valkind:fprint_type(valkind)
 overload fprint with fprint_valkind
+//
+fun
+jsonize_valkind:jsonize_type(valkind)
+overload jsonize with jsonize_valkind
 //
 (* ****** ****** *)
 
@@ -208,6 +218,10 @@ fun
 fprint_funkind:fprint_type(funkind)
 overload fprint with fprint_funkind
 //
+fun
+jsonize_funkind:jsonize_type(funkind)
+overload jsonize with jsonize_funkind
+//
 (* ****** ****** *)
 //
 datatype
@@ -222,6 +236,10 @@ impkind =
 fun
 fprint_impkind:fprint_type(impkind)
 overload fprint with fprint_impkind
+//
+fun
+jsonize_impkind:jsonize_type(impkind)
+overload jsonize with jsonize_impkind
 //
 (* ****** ****** *)
 //
@@ -271,6 +289,10 @@ fprint_funclo2: fprint_type(funclo2)
 overload print with print_funclo2
 overload prerr with prerr_funclo2
 overload fprint with fprint_funclo2
+//
+fun
+jsonize_funclo2: jsonize_type(funclo2)
+overload jsonize with jsonize_funclo2
 //
 (* ****** ****** *)
 //

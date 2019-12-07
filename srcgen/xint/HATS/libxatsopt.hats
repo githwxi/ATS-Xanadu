@@ -39,6 +39,8 @@ FS0 =
 (* ****** ****** *)
 //
 #staload
+"./../../xats/SATS/json.sats"
+#staload
 "./../../xats/SATS/lexing.sats"
 //
 #staload
@@ -87,6 +89,9 @@ FS0 =
 //
 #staload
 _(*TMP*) =
+"./../../xats/DATS/json.dats"
+#staload
+_(*TMP*) =
 "./../../xats/DATS/staexp0_print.dats"
 #staload
 _(*TMP*) =
@@ -128,4 +133,3 @@ _(*TMP*) =
 (* ****** ****** *)
 
 (* end of [libxatsopt.hats] *)
-

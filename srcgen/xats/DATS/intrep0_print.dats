@@ -40,6 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/json.sats"
 #staload "./../SATS/basics.sats"
 //
 #staload "./../SATS/label0.sats"
@@ -314,6 +315,106 @@ x0.node() of
 //
 )
 //
+implement
+jsonize_ir0exp
+  (x0) = jsonval_labval2("node", jsonize("ir0exp"), "val", res) where
+val res =
+(
+case+
+x0.node() of
+//
+| IR0Eint(tok) =>
+  jsonval_labval2("node", jsonize("IR0Eint"), "val", JSONlist(list_nil()))
+  (* jsonize("IR0Eint") //, tok, ")") *)
+| IR0Ebtf(tok) =>
+  jsonize("IR0Ebtf") //, tok, ")")
+(*
+| IR0Eflt(tok) =>
+  jsonize("IR0Eflt") //, tok, ")")
+*)
+| IR0Estr(tok) =>
+  jsonize("IR0Estr") //, tok, ")")
+//
+| IR0Evar(d2v) =>
+  jsonize("IR0Evar") //, d2v, ")")
+//
+| IR0Econ1(d2c) =>
+  jsonize("IR0Econ1") //, d2c, ")")
+| IR0Ecst1(d2c) =>
+  jsonize("IR0Ecst1") //, d2c, ")")
+//
+| IR0Efcst(d2c) =>
+  jsonize("IR0Efcst") //, d2c, ")")
+//
+| IR0Etcst
+  (d2c1, ti3a, ti2s) =>
+  jsonize("IR0Etcst") //, d2c1, "; ", ti3a, "; [", ti2s, "])")
+| IR0Etimp
+  ( ire1
+  , targ, irc2, tsub) =>
+  jsonize("IR0Etimp") //, ire1, "; [", targ, "]; ", irc2, "; [", tsub, "])")
+//
+| IR0Edapp
+  (irf0, npf1, ires) =>
+  let
+    (* val _ = $showtype(irf0) *)
+    (* val _ = $showtype(npf1) // int *)
+    (* val _ = $showtype(ires) // int *)
+    val json_irf0 = jsonize(irf0)
+    val json_npf1 = jsonize(npf1)
+    val ires0 = list_map<ir0exp><jsonval>(ires) where
+        implement
+        list_map$fopr<ir0exp><jsonval>(x) = jsonize(x)
+      end
+    val ires0 = list_of_list_vt(ires0)
+    val json_ires = JSONlist(ires0)
+    val xys0 =
+    list_cons(json_irf0, list_cons(json_npf1, list_cons(json_ires, list_nil())))
+  in
+  (* jsonize("IR0Edapp") //, irf0, "; ", npf1, "; [", ires, "])") *)
+  jsonval_labval2("node", jsonize("IR0Edapp"), "val", JSONlist(xys0))
+  end
+//
+| IR0Eproj
+  (ire1, lab2, idx2) =>
+  jsonize("IR0Eproj") //, ire1, "; ", lab2, "; ", idx2, ")")
+//
+| IR0Elet(irds, ire1) =>
+  jsonize("IR0Elet") //, irds, "; ", ire1, ")")
+| IR0Ewhere(ire1, irds) =>
+  jsonize("IR0Ewhere") //, ire1, "; [", irds, "])")
+//
+| IR0Etuple
+  (knd0, npf1, ires) =>
+  jsonize("IR0Etuple") //, knd0, "; ", npf1, "; [", ires, "])")
+//
+| IR0Eif0
+  (ire1, ire2, opt3) =>
+  jsonize("IR0Eif0") //, ire1, "; ", ire2, "; ", opt3, ")")
+//
+| IR0Ecase
+  (knd0, ire1, ircls) =>
+  jsonize("IR0Ecase") //, knd0, "; ", ire1, "; ", "...", ")")
+//
+| IR0Elam
+  (knd0, farg, body) =>
+  jsonize("IR0Elam") //, knd0, "; [", farg, "]; ", body, ")")
+| IR0Efix
+  (knd0, d2v0, farg, body) =>
+  jsonize("IR0Efix") //, knd0, "; ", d2v0, "; [", farg, "]; ", body, ")")
+//
+| IR0Enone0() =>
+  (
+    jsonize("IR0Enone0") //, ")")
+  )
+| IR0Enone1(d3e1) =>
+  (
+    jsonize("IR0Enone1") //, d3e1, ")")
+  )
+//
+)
+end
+
 (* ****** ****** *)
 //
 implement

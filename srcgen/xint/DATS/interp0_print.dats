@@ -45,6 +45,9 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+(* #staload "./../../xats/SATS/json.sats" *)
+(* #staload _ = "./../../xats/DATS/json.dats" *)
+
 #include
 "./../HATS/libxatsopt.hats"
 
@@ -128,6 +131,58 @@ case+ x0 of
 //
 ) (* end of [fprint_ir0val] *)
 //
+(* ****** ****** *)
+
+implement
+jsonize_ir0val
+  (x0) = lab("ir0val", res) where
+val
+res =
+(
+case+ x0 of
+//
+| IR0Vnil() =>
+  jsonize("IR0Vnil")
+//
+| IR0Vint(i0) =>
+  (* jsonize("IR0Vint") //, i0, ")") *)
+  jsonval_labval2("node", jsonize("IR0Vint"), "val", jsonize(i0))
+| IR0Vbtf(b0) =>
+  jsonize("IR0Vbtf") //, b0, ")")
+| IR0Vchr(c0) =>
+  jsonize("IR0Vchr") //, c0, ")")
+| IR0Vflt(f0) =>
+  jsonize("IR0Vflt") //, f0, ")")
+| IR0Vstr(s0) =>
+  jsonize("IR0Vstr") //, s0, ")")
+//
+| IR0Vcon(d2c, xs) =>
+  jsonize("IR0Vcon") //, d2c, "; [", xs, "])")
+//
+| IR0Vfun(fopr) =>
+  jsonize("IR0Vfun") //, "...", ")")
+//
+| IR0Vtuple(knd, irvs) =>
+  jsonize("IR0Vtuple") //, knd, "; [", irvs, "])")
+//
+| IR0Vlam
+  (fenv, iras, ire1) =>
+  jsonize("IR0Vlam") //, "...", ")")
+| IR0Vfix
+  (fenv, d2v0, iras, ire1) =>
+  jsonize("IR0Vfix") //, "...", ")")
+| IR0Vfixs
+  (fenv, d2v0, iras, ire1, ires) =>
+  jsonize("IR0Vfixs") //, "...", ")")
+//
+| IR0Vnone0() =>
+  jsonize("IR0Vnone0") //, ")")
+| IR0Vnone1(ire1) =>
+  jsonize("IR0Vnone1") //, ire1, ")")
+//
+) (* end of [fprint_ir0val] *)
+end
+
 (* ****** ****** *)
 
 (* end of [xint_interp0_print.dats] *)

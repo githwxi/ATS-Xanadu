@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -63,6 +63,7 @@ FS0 = "./../SATS/filsrch.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/json.sats"
 #staload "./../SATS/parsing.sats"
 //
 #staload "./../SATS/synread.sats"
@@ -160,6 +161,7 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 //
 (* ****** ****** *)
 //
+#dynload "./json.dats"
 #dynload "./basics.dats"
 //
 #dynload "./stamp0.dats"
@@ -300,7 +302,7 @@ loop
 {n,i:nat|i <= n} .<n-i>.
 (
   inp: string n, n: int n, i: int i
-) :<> commarg = 
+) :<> commarg =
 (
 if
 (i < n)
@@ -309,7 +311,7 @@ if (inp[i] != '-')
   then COMMARG(i, inp) else loop(inp, n, i+1)
 ) else COMMARG(n, inp)
 // end of [if]
-) (* end of [if] *)  
+) (* end of [if] *)
 // end of [loop]
 //
 in
@@ -1404,7 +1406,7 @@ val
 XATSHOME =
 $GLO.the_XATSHOME_get((*void*))
 //
-val () = 
+val () =
 $FP0.the_includes_push(XATSHOME)
 //
 val+
@@ -1485,7 +1487,7 @@ the_fixity_load
   val fname =
     dirbase(XATSHOME, given)
   val fpath =
-    fpath_make(given, fname)  
+    fpath_make(given, fname)
 //
   val
   (pf0 | ()) =
@@ -1559,7 +1561,7 @@ println!
   val fname =
     dirbase(XATSHOME, given)
   val fpath =
-    fpath_make(given, fname)  
+    fpath_make(given, fname)
 //
   val
   (pf0 | ()) =
@@ -1617,7 +1619,7 @@ println!
   val fname =
     dirbase(XATSHOME, given)
   val fpath =
-    fpath_make(given, fname)  
+    fpath_make(given, fname)
 //
   val
   (pf0 | ()) =
