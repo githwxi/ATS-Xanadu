@@ -12,8 +12,6 @@ jsonval =
   | JSONoption of (jsonvalopt)
 //
   (* | JSONintinf of (intinf) *)
-  (* | JSONlocation of (location) *)
-  (* | JSONfilename of (filename) *)
 //
 // end of [jsonval]
 
@@ -36,11 +34,6 @@ fun jsonval_int (x: int): jsonval
 fun jsonval_bool (x: bool): jsonval
 fun jsonval_double (x: double): jsonval
 fun jsonval_string (x: string): jsonval
-//
-(* ****** ****** *)
-//
-(* fun jsonval_location (loc: location): jsonval *)
-(* fun jsonval_filename (fil: filename): jsonval *)
 //
 (* ****** ****** *)
 //
@@ -171,48 +164,12 @@ overload fprint with fprint_labjsonvalist
 fun print_jsonval(x: jsonval): void
 fun print_jsonvalist(xs: jsonvalist): void
 fun print_labjsonvalist(lxs: labjsonvalist): void
-//
-overload fprint with fprint_jsonval
-overload fprint with fprint_jsonvalist
-overload fprint with fprint_labjsonvalist
 *)
 //
 (* ****** ****** *)
 
 typedef
 jsonize_ftype (a:t@ype) = (a) -> jsonval
-
-(* ****** ****** *)
-
-(* fun jsonize_funclo : jsonize_ftype (funclo) *)
-
-(* ****** ****** *)
-
-(* fun jsonize_caskind : jsonize_ftype (caskind) *)
-
-(* ****** ****** *)
-
-(* fun jsonize_funkind : jsonize_ftype (funkind) *)
-(* fun jsonize_valkind : jsonize_ftype (valkind) *)
-
-(* ****** ****** *)
-
-(* fun jsonize_dcstkind : jsonize_ftype (dcstkind) *)
-
-(* ****** ****** *)
-
-(* fun jsonize_stamp : jsonize_ftype (stamp) *)
-(* fun jsonize_symbol : jsonize_ftype (symbol) *)
-(* fun jsonize_symbolopt : jsonize_ftype (symbolopt) *)
-
-(* ****** ****** *)
-
-(* fun jsonize_location : jsonize_ftype (location) *)
-(* fun jsonize_filename : jsonize_ftype (filename) *)
-
-(* ****** ****** *)
-
-(* fun jsonize_label : jsonize_ftype (label) *)
 
 (* ****** ****** *)
 
@@ -235,41 +192,44 @@ symintr jsonize
 (* symintr jsonize_list *)
 
 fun{a:t@ype} jsonize_val: (a) -> jsonval
+
 fun{a:t@ype} jsonize_list: (List(a)) -> jsonval
 
-(* overload jsonize with jsonize_list *)
-
-fun listj(x: jsonval): jsonval
-fun listj2(x: jsonval, y: jsonval): jsonval
-
-
-
-(* overload jsonize with jsonize_val *)
-(* overload jsonize with jsonize_val *)
-
-(* extern fun jsonizer{a:t@ype}(a): jsonval *)
-
-(* implement jsonizer{a}(xs) = jsonize<a>(xs) *)
-
 fun jsonize_int(x:int): jsonval
+
 fun jsonize_string(x:string): jsonval
+
 fun jsonize_bool(x:bool): jsonval
+
 fun jsonize_double(x:double): jsonval
 
 (* fun jsonize_float(x:float): jsonval = JSONstring(tostring_val<float>(x)) *)
 
 overload jsonize with jsonize_int
+
 overload jsonize with jsonize_string
+
 overload jsonize with jsonize_bool
+
 overload jsonize with jsonize_double
+
 (* overload jsonize with jsonize_float *)
+
 fun lab(x:string, rst:jsonval): jsonval
+
 fun jnul(): jsonval
+
 fun jint(x:int): jsonval
+
 fun jbool(x:bool): jsonval
+
 fun jfloat(x:double): jsonval
+
 fun jstr(x:string): jsonval
 
+fun listj(x: jsonval): jsonval
+
+fun listj2(x: jsonval, y: jsonval): jsonval
 
 fun fprintf {ts:types} (
   out: FILEref,

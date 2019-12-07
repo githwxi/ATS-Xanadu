@@ -21,15 +21,6 @@ implement
 jsonval_string (str) = JSONstring (str)
 
 (* ****** ****** *)
-
-(*
-implement
-jsonval_location (loc) = JSONlocation (loc)
-implement
-jsonval_filename (fil) = JSONfilename (fil)
-*)
-
-(* ****** ****** *)
 //
 #define nil list_nil
 //
@@ -324,174 +315,6 @@ end // end of [fprint_labjsonvalist]
 
 (* ****** ****** *)
 
-(*
-local
-
-fun aux0
-(
-  name: string
-) : jsonval = let
-  val name = jsonval_string (name)
-  val arglst = JSONlist (list_nil())
-in
-  jsonval_labval2 ("funclo_name", name, "funclo_arglst", arglst)
-end // end of [aux0]
-
-fun aux1
-(
-  name: string, arg: jsonval
-) : jsonval = let
-  val name = jsonval_string (name)
-  val arglst = jsonval_sing (arg)
-in
-  jsonval_labval2 ("funclo_name", name, "funclo_arglst", arglst)
-end // end of [aux1]
-
-in (* in of [local] *)
-
-implement
-jsonize_funclo (fc) =
-(
-  case+ fc of
-  | FUNCLOfun () => aux0 ("FUNCLOfun")
-  | FUNCLOclo (knd) => aux1 ("FUNCLOclo", jsonval_int (knd))
-) (* end of [jsonize_funclo] *)
-
-end // end of [local]
-*)
-
-(* ****** ****** *)
-
-(*
-implement
-jsonize_caskind(knd) = (
-//
-case+ knd of
-| CK_case () => jsonval_string "CK_case"
-| CK_case_pos () => jsonval_string "CK_case_pos"
-| CK_case_neg () => jsonval_string "CK_case_neg"
-//
-) (* end of [jsonize_caskind] *)
-*)
-
-(* ****** ****** *)
-
-(*
-implement
-jsonize_funkind(knd) = (
-//
-case+ knd of
-//
-| FK_fn () => jsonval_string "FK_fn"
-| FK_fnx () => jsonval_string "FK_fnx"
-| FK_fun () => jsonval_string "FK_fun"
-//
-| FK_prfn () => jsonval_string "FK_prfn"
-| FK_prfun () => jsonval_string "FK_prfun"
-//
-| FK_praxi () => jsonval_string "FK_praxi"
-//
-| FK_castfn () => jsonval_string "FK_castfn"
-//
-) (* end of [jsonize_funkind] *)
-*)
-
-(* ****** ****** *)
-
-(*
-implement
-jsonize_valkind(knd) = (
-//
-case+ knd of
-| VK_val () => jsonval_string "VK_val"
-| VK_prval () => jsonval_string "VK_prval"
-| VK_val_pos () => jsonval_string "VK_val_pos"
-| VK_val_neg () => jsonval_string "VK_val_neg"
-//
-) (* end of [jsonize_valkind] *)
-*)
-
-(* ****** ****** *)
-
-(*
-implement
-jsonize_dcstkind(knd) = (
-//
-case+ knd of
-| DCKfun () => jsonval_string "DCKfun"
-| DCKval () => jsonval_string "DCKval"
-| DCKpraxi () => jsonval_string "DCKpraxi"
-| DCKprfun () => jsonval_string "DCKprfun"
-| DCKprval () => jsonval_string "DCKprval"
-| DCKcastfn () => jsonval_string "DCKcastfn"
-//
-) (* end of [jsonize_dcstkind] *)
-*)
-
-(* ****** ****** *)
-//
-(*
-implement
-jsonize_stamp(x0) =
-  jsonval_int(stamp_get_int(x0))
-*)
-//
-(* ****** ****** *)
-//
-(*
-implement
-jsonize_symbol(sym) =
-  jsonval_string(symbol_get_name(sym))
-implement
-jsonize_symbolopt(opt) =
-(
-//
-case+ opt of
-| None() => jsonval_none()
-| Some(x) => jsonval_some(jsonize_symbol(x))
-//
-) (* end of [jsonize_symbolopt] *)
-*)
-//
-(* ****** ****** *)
-//
-(*
-implement
-jsonize_location(loc) = jsonval_location (loc)
-implement
-jsonize_filename(fil) = jsonval_filename (fil)
-*)
-//
-(* ****** ****** *)
-
-(*
-implement
-jsonize_label(lab) = let
-//
-val opt = label_get_int(lab)
-//
-in
-//
-case+ opt of
-| ~Some_vt (x) => let
-    val jsv = jsonval_int (x)
-  in
-    jsonval_labval1 ("LABint", jsv)
-  end (* end of [Some_vt] *)
-| ~None_vt ((*void*)) => let
-    val opt = label_get_sym (lab)
-  in
-    case+ opt of
-    | ~Some_vt (sym) => let
-        val jsv = jsonize_symbol (sym)
-      in
-        jsonval_labval1 ("LABsym", jsv)
-      end // end of [Some_vt]
-    | ~None_vt ((*void*)) => JSONnul ((*void*))
-  end (* end of [None_vt] *)
-//
-end // end of [jsonize_label]
-*)
 
 (* ****** ****** *)
 //
@@ -543,22 +366,33 @@ end // end of [jsonize_option_fun]
 
 
 implement lab(x:string, rst:jsonval): jsonval = jsonval_labval1(x, rst)
+
 implement jnul() = JSONnul()
+
 implement jint(x:int) = JSONint(x)
+
 implement jbool(x:bool) = JSONbool(x)
+
 implement jfloat(x:double) = JSONfloat(x)
+
 implement jstr(x:string) = JSONstring(x)
 
-
 implement jsonize_int(x) = JSONint(x)
+
 implement jsonize_string(x) = JSONstring(x)
+
 implement jsonize_bool(x) = JSONbool(x)
+
 implement jsonize_double(x) = JSONstring(tostring_val<double>(x))
 
 implement jsonize_val<int>(x) = jsonize_int(x)
+
 implement jsonize_val<string>(x) = jsonize_string(x)
+
 implement jsonize_val<bool>(x) = jsonize_bool(x)
+
 implement jsonize_val<double>(x) = jsonize_double(x)
+
 (* implement jsonize_val<float>(x) = jsonize_float(x) *)
 
 implement{a} jsonize_list(xs) = JSONlist(res) where
@@ -574,4 +408,5 @@ implement{a} jsonize_list(xs) = JSONlist(res) where
 implement(a:t@ype) jsonize_val<List(a)>(xs) = jsonize_list<a>(xs)
 
 implement listj(x) = JSONlist(list_sing(x))
+
 implement listj2(x, y) = JSONlist(cons(x, cons(y, nil())))
