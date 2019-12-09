@@ -216,6 +216,19 @@ end
 (* ****** ****** *)
 
 implement
+t2ype_lft
+(t2p0) = let
+//
+val node = T2Plft(t2p0)
+val s2t0 = the_sort2_tbox
+//
+in
+  t2ype_make_node(s2t0, node)
+end // end of [t2ype_lft]
+
+(* ****** ****** *)
+
+implement
 t2ype_app1
 (t2pf, t2pa) = let
 //
@@ -234,9 +247,11 @@ end // end of [t2yp2_app1]
 
 implement
 t2ype_app2
-(t2pf, t2p1, t2p2) = let
+( t2pf
+, t2p1, t2p2) = let
 //
 val s2tf = t2pf.sort()
+//
 (*
 val s2t1 = t2p1.sort()
 val s2t2 = t2p2.sort()

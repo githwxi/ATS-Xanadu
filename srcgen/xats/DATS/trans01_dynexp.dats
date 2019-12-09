@@ -2900,12 +2900,13 @@ val loc0 = d0cl.loc()
 //
 val-
 D0Cvardecl
-  (knd, d0cs) = d0cl.node()
+(knd, mopt, d0cs) = d0cl.node()
 //
 val d1cs = trans01_vardeclist(d0cs)
 //
 in
-d1ecl_make_node(loc0, D1Cvardecl(knd, d1cs))
+  d1ecl_make_node
+  (loc0, D1Cvardecl(knd, mopt, d1cs))
 end // end of [aux_vardecl]
 
 (* ****** ****** *)

@@ -191,14 +191,6 @@ end (* end of [local] *)
 (* ****** ****** *)
 //
 implement
-unify_d2var_t2ype
-  (loc0, d2v1, t2p2) =
-let
-val t2p1 = d2v1.type()
-in
-unify_t2ype_t2ype(loc0, t2p1, t2p2)
-end
-implement
 unify_d2con_t2ype
   (loc0, d2c1, t2p2) =
 let
@@ -207,17 +199,34 @@ in
 unify_t2ype_t2ype(loc0, t2p1, t2p2)
 end
 //
+(* ****** ****** *)
+//
+(*
+implement
+unify_d2var_t2ype
+  (loc0, d2v1, t2p2) =
+let
+val t2p1 = d2v1.type()
+in
+unify_t2ype_t2ype(loc0, t2p1, t2p2)
+end
+*)
+//
+(*
 implement
 unify_d2cst_t2ype
   (loc0, d2c1, t2p2) =
 let
+//
 val tqas = d2c1.tqas()
 val t2p1 = d2c1.type()
 val t2p1 =
   t2ype_tq2as_elim(loc0, t2p1, tqas)
+//
 in
   unify_t2ype_t2ype(loc0, t2p1, t2p2)
 end
+*)
 //
 (* ****** ****** *)
 
@@ -259,6 +268,17 @@ end // end of [match_t2ype_t2ype]
 (* ****** ****** *)
 //
 implement
+match_d2con_t2ype
+  (d2c1, t2p2) =
+let
+  val t2p1 = d2c1.type()
+in
+  match_t2ype_t2ype(t2p1, t2p2)
+end
+//
+(* ****** ****** *)
+//
+implement
 match_d2var_t2ype
   (d2v1, t2p2) =
 let
@@ -267,14 +287,93 @@ in
   match_t2ype_t2ype(t2p1, t2p2)
 end
 //
+(* ****** ****** *)
+//
 implement
-match_d2con_t2ype
-  (d2c1, t2p2) =
+tplft_elim
+  (t2p0) =
+(
 let
-  val t2p1 = d2c1.type()
+  var flag: int = 0
 in
-  match_t2ype_t2ype(t2p1, t2p2)
+  auxfun0(flag, t2p0)
 end
+) where
+{
+fun
+auxfun0
+( flag: &int
+, t2p0: t2ype): t2ype =
+(
+case+
+t2p0.node() of
+| 
+T2Pfun
+( fc2, npf
+, t2ps, t2p1) =>
+let
+//
+val
+fini = flag
+//
+val
+t2ps = auxt2ps(flag, t2ps)
+val
+t2p1 = auxfun0(flag, t2p1)
+//
+in
+if
+flag=fini
+then t2p0
+else
+let
+  val s2t0 = t2p0.sort()
+in
+t2ype_make_node
+( s2t0
+, T2Pfun
+  (fc2, npf, t2ps, t2p1))
+end
+end // end of [T2Pfun]
+//
+| _ (* non-T2Pfun *) => t2p0
+//
+) (* end of [auxfun0] *)
+//
+and
+auxt2pa
+( flag: &int
+, t2pa: t2ype): t2ype =
+(
+case+
+t2pa.node() of
+|
+T2Plft(t2pb) =>
+( flag := flag + 1; t2pb)
+|
+_ (* non-T2Pflt *) => t2pa
+)
+and
+auxt2ps
+( flag: &int
+, t2ps0: t2ypelst): t2ypelst =
+(
+case+ t2ps0 of
+| list_nil
+  ((*void*)) => list_nil()
+| list_cons
+  (t2pa, t2ps1) =>
+  let
+  val fint = flag
+  val t2pa = auxt2pa(flag, t2pa)
+  val t2ps1 = auxt2ps(flag, t2ps1)
+  in
+    if
+    flag = fint
+    then t2ps0 else list_cons(t2pa, t2ps1)
+  end
+)
+} (* where *) // end of [tplft_elim]
 //
 implement
 match_d2cst_t2ype
@@ -287,8 +386,21 @@ the_location_dummy
 val t2p1 = d2c1.type()
 val tqas = d2c1.tqas()
 //
-val t2p1 =
+val
+t2p1 =
 t2ype_tq2as_elim(loc0, t2p1, tqas)
+//
+in
+let
+//
+(*
+HX-2019-12-08:
+The [call-by-ref]
+marker is not used
+for resolving overloading
+*)
+val t2p1 = tplft_elim(t2p1)
+val t2p2 = tplft_elim(t2p2)
 //
 (*
 val () =
@@ -301,6 +413,7 @@ println!
 //
 in
   match_t2ype_t2ype(t2p1, t2p2)
+end
 end // end of [match_d2cst_t2ype]
 //
 (* ****** ****** *)

@@ -699,7 +699,7 @@ s2exp_make_node
 }
 
 (* ****** ****** *)
-
+//
 implement
 s2exp_arg
 (knd, s2e) =
@@ -708,8 +708,16 @@ s2exp_make_node
 (s2t, S2Earg(knd, s2e))
 ) where
 {
-  val s2t = s2e.sort((*void*))
+val
+s2t =
+(
+  if
+  knd = 0
+  then s2e.sort((*void*))
+  else the_sort2_tbox(*void*)
+) : sort2 // end-of-val
 }
+//
 implement
 s2exp_atx
 (bef, aft) =
@@ -720,7 +728,7 @@ s2exp_make_node
 {
   val s2t = bef.sort((*void*))
 }
-
+//
 (* ****** ****** *)
 //
 implement

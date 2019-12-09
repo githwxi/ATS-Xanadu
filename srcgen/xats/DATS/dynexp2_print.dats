@@ -677,16 +677,19 @@ case- x0.node() of
   ( out
   , "D2Cvaldecl("
   , knd, "; ", mopt, "; ", v2ds, ")")
+| D2Cvardecl
+  (knd, mopt, v2ds) =>
+  fprint!
+  ( out
+  , "D2Cvardecl("
+  , knd, "; ", mopt, "; ", v2ds, ")")
+//
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
   fprint!
   ( out
   , "D2Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
-//
-| D2Cvardecl(knd, v2ds) =>
-  fprint!
-  (out, "D2Cvardecl(", knd, "; ", v2ds, ")")
 //
 | D2Cimpdecl1
   ( knd, mopt, sqas, tqas

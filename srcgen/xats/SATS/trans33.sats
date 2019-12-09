@@ -139,11 +139,17 @@ match_t2ype_t2ype
 (* ****** ****** *)
 //
 fun
-match_d2var_t2ype
-(d2v1: d2var, t2p2: t2ype): bool
-fun
 match_d2con_t2ype
 (d2c1: d2con, t2p2: t2ype): bool
+fun
+match_d2var_t2ype
+(d2v1: d2var, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+fun
+tplft_elim
+(t2p0: t2ype): t2ype
 fun
 match_d2cst_t2ype
 (d2c1: d2cst, t2p2: t2ype): bool

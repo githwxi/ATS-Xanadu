@@ -255,6 +255,9 @@ ir0exp_node =
 | IR0Etuple of
   (int(*knd*), int(*npf*), ir0explst)
 //
+| IR0Eassgn of
+  (ir0exp(*left*), ir0exp(*right*))
+//
 | IR0Eif0 of
   ( ir0exp(*cond*)
   , ir0exp(*then*), ir0expopt(*else*))
@@ -433,6 +436,30 @@ overload fprint with fprint_ir0valdecl
 (* ****** ****** *)
 //
 datatype
+ir0vardecl =
+IR0VARDECL of @{
+  loc= loc_t
+, d2v= d2var
+, ini= ir0expopt
+}
+//
+typedef
+ir0vardeclist = List0(ir0vardecl)
+//
+fun
+print_ir0vardecl(ir0vardecl): void
+fun
+prerr_ir0vardecl(ir0vardecl): void
+fun
+fprint_ir0vardecl: fprint_type(ir0vardecl)
+//
+overload print with print_ir0vardecl
+overload prerr with prerr_ir0vardecl
+overload fprint with fprint_ir0vardecl
+//
+(* ****** ****** *)
+//
+datatype
 ir0fundecl =
 IR0FUNDECL of @{
   loc= loc_t
@@ -485,6 +512,10 @@ ir0dcl_node =
 | IR0Cvaldecl of
   ( token(*knd*)
   , $D1E.decmodopt, ir0valdeclist)
+//
+| IR0Cvardecl of
+  ( token(*knd*)
+  , $D1E.decmodopt, ir0vardeclist)
 //
 | IR0Cfundecl of
   ( token(*knd*)
@@ -585,6 +616,15 @@ irerase_valdecl
 fun
 irerase_valdeclist
 (irvds: $D3E.v3aldeclist): ir0valdeclist
+//
+(* ****** ****** *)
+//
+fun
+irerase_vardecl
+(irvd: $D3E.v3ardecl): ir0vardecl
+fun
+irerase_vardeclist
+(irvds: $D3E.v3ardeclist): ir0vardeclist
 //
 (* ****** ****** *)
 //

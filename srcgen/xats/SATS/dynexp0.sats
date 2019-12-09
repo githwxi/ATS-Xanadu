@@ -1055,8 +1055,8 @@ for skipping error
   , decmodopt, v0aldeclist)
 //
 | D0Cvardecl of
-    (token(*varkind*), v0ardeclist)
-  // end of [D0Cvardecl]
+  ( token(*varkind*)
+  , decmodopt, v0ardeclist)
 //
 | D0Cfundecl of
   ( token(*funkind*)

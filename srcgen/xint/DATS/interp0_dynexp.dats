@@ -215,10 +215,10 @@ IR0Efcst(d2c) = ire0.node()
 val
 opt = interp0_search_d2cst(d2c)
 //
-// (*
+(*
 val () =
 println!("auxfcst: d2c = ", d2c)
-// *)
+*)
 //
 in
 case- opt of ~Some_vt(irv) => irv
@@ -530,7 +530,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-// (*
+(*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -540,7 +540,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-// *)
+*)
 //
 in
 //
@@ -766,6 +766,34 @@ end // end of [aux_tuple]
 (* ****** ****** *)
 
 fun
+aux_assgn
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Eassgn
+( irel
+, irer) = ire0.node()
+val
+irvl = 
+interp0_irexp(env0, irel)
+val
+irvr = 
+interp0_irexp(env0, irer)
+in
+case- irvl of
+| IR0Vlft(r0) =>
+  let
+  val () =
+  r0[] := Some(irvr) in IR0Vnil()
+  end
+end // end of [aux_assgn]
+
+(* ****** ****** *)
+
+fun
 aux_if0
 ( env0
 : !intpenv
@@ -920,6 +948,9 @@ ire0.node() of
 //
 | IR0Etuple
   (_, _, ires) => aux_tuple(env0, ire0)
+//
+| IR0Eassgn
+  (irel, irer) => aux_assgn(env0, ire0)
 //
 | IR0Eif0
     (_, _, _) => aux_if0(env0, ire0)
@@ -1187,6 +1218,25 @@ in
   interp0_ir0valdeclist(env0, irvds)
 end // end of [aux_valdecl]
 
+(* ****** ****** *)
+
+fun
+aux_vardecl
+( env0
+: !intpenv
+, irdcl: ir0dcl): void =
+let
+val-
+IR0Cvardecl
+( knd
+, mopt
+, irvds) = irdcl.node()
+in
+  interp0_ir0vardeclist(env0, irvds)
+end // end of [aux_vardecl]
+
+(* ****** ****** *)
+
 fun
 aux_fundecl
 ( env0
@@ -1221,11 +1271,13 @@ implement
 interp0_irdcl
   (env0, x0) =
 let
-// (*
+//
+(*
 val () =
 println!
 ("interp0_irdcl: x0 = ", x0)
-// *)
+*)
+//
 in
 case+
 x0.node() of
@@ -1247,6 +1299,9 @@ IR0Cinclude _ =>
 //
 | IR0Cvaldecl _ =>
   aux_valdecl(env0, x0)
+//
+| IR0Cvardecl _ =>
+  aux_vardecl(env0, x0)
 //
 | IR0Cfundecl _ =>
   aux_fundecl(env0, x0)
@@ -1361,14 +1416,14 @@ interp0_irpat_ck1
   (env0, irp0, irv0) =
 let
 //
-// (*
+(*
 val () =
 println!
 ("interp0_irpat_ck1: irp0 = ", irp0)
 val () =
 println!
 ("interp0_irpat_ck1: irv0 = ", irv0)
-// *)
+*)
 //
 in
 case-
@@ -1631,8 +1686,6 @@ interp0_irpat_ck1(env0, pat, irv)
 //
 end // end of [interp0_ir0valdecl]
 
-(* ****** ****** *)
-
 implement
 interp0_ir0valdeclist
   (env0, xs) =
@@ -1647,6 +1700,53 @@ case+ xs of
     val () = interp0_ir0valdecl(env0, x0)
   }
 ) (* end of [interp0_ir0valdeclist] *)
+
+(* ****** ****** *)
+
+implement
+interp0_ir0vardecl
+  (env0, x0) =
+let
+//
+val+
+IR0VARDECL(rcd) = x0
+//
+val d2v = rcd.d2v
+val ini = rcd.ini
+//
+val ini =
+interp0_irexpopt(env0, ini)
+//
+(*
+val ( ) =
+println!
+("interp0_ir0vardecl: d2v = ", d2v)
+val ( ) =
+println!
+("interp0_ir0vardecl: ini = ", ini)
+*)
+//
+in
+//
+  interp0_insert_d2var
+  (env0, d2v, IR0Vlft(ref(ini)))
+//
+end // end of [interp0_ir0vardecl]
+
+implement
+interp0_ir0vardeclist
+  (env0, xs) =
+(
+case+ xs of
+| list_nil() => ()
+| list_cons(x0, xs) =>
+  (
+    interp0_ir0vardeclist(env0, xs)
+  ) where
+  {
+    val () = interp0_ir0vardecl(env0, x0)
+  }
+) (* end of [interp0_ir0vardeclist] *)
 
 (* ****** ****** *)
 
@@ -1984,9 +2084,11 @@ IR0Cimpdecl3
 , sqas, tqas, id2c
 , ti3a, ti2s, iras, body) = irdcl.node()
 //
+(*
 val () =
 println!
 ("interp0_ir0impdecl3: id2c = ", id2c)
+*)
 //
 in
 //

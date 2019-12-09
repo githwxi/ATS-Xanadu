@@ -1060,7 +1060,8 @@ d2ecl_node =
 | D2Cvaldecl of
   (token(*knd*), decmodopt, v2aldeclist)
 //
-| D2Cvardecl of (token(*knd*), v2ardeclist)
+| D2Cvardecl of
+  (token(*knd*), decmodopt, v2ardeclist)
 //
 | D2Cfundecl of
   ( token(*funkind*)

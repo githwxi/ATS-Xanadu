@@ -99,6 +99,8 @@ t2p0.node() of
   then true
   else auxt2p0(xtv1.type())
 //
+| T2Plft(t2p1) => auxt2p0(t2p1)
+//
 | T2Papp(t2p1, t2ps) =>
   (auxt2p0(t2p1) || auxt2ps(t2ps))
 //
@@ -460,6 +462,14 @@ t2p1.node() of
   | T2Pvar(s2v2) =>
     (s2v1 = s2v2)
   | _ (* else *) => false
+  )
+| T2Plft(t2p1) =>
+  (
+  case+
+  t2p2.node() of
+  | T2Plft(t2p2) =>
+    unify(loc0, t2p1, t2p2)
+  | _ (* non-T2Plft *) => false
   )
 | T2Papp(t2f1, arg1) =>
   (
@@ -1382,17 +1392,38 @@ end (* end of [d3exp_tuple_up] *)
 (* ****** ****** *)
 
 implement
-d3exp_assgn_up
+d3exp_a23gn_up
 ( loc0
 , d3e1, d3e2) =
 let
-  val t2p0 = the_t2ype_void
-  val t2p1 = d3e1.type((*void*))
-  val d3e2 = d3exp_dn(d3e2, t2p1)
+val t2p0 =
+  the_t2ype_void
+val t2p1 =
+  d3e1.type((*void*))
+val d3e2 =
+  d3exp_dn(d3e2, t2p1)
 in
   d3exp_make_node
-    (loc0, t2p0, D3Eassgn(d3e1, d3e2))
-end // end of [d3exp_assgn_up]
+  (loc0, t2p0, D3Eassgn(d3e1, d3e2))
+end // end of [d3exp_a23gn_up]
+
+(* ****** ****** *)
+
+implement
+d3exp_a33gn_up
+( loc0
+, d3e1, d3e2) =
+let
+val t2p0 =
+  the_t2ype_void
+val t2p2 = 
+  d3e2.type((*void*))
+val d3e1 =
+  d3exp_dn(d3e1, t2ype_lft(t2p2))
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Eassgn(d3e1, d3e2))
+end // end of [d3exp_a33gn_up]
 
 (* ****** ****** *)
 

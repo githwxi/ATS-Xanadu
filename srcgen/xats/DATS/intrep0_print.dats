@@ -279,6 +279,11 @@ x0.node() of
   , "IR0Etuple("
   , knd0, "; ", npf1, "; ", ires, ")")
 //
+| IR0Eassgn(irel, irer) =>
+  fprint!
+  ( out
+  , "IR0Eassgn(", irel, "; ", irer, ")")
+//
 | IR0Eif0
   (ire1, ire2, opt3) =>
   fprint!
@@ -405,6 +410,8 @@ local
 implement
 fprint_val<ir0valdecl> = fprint_ir0valdecl
 implement
+fprint_val<ir0vardecl> = fprint_ir0vardecl
+implement
 fprint_val<ir0fundecl> = fprint_ir0fundecl
 
 in(*in-of-local*)
@@ -462,6 +469,13 @@ case+ x0.node() of
   , "IR0Cvaldecl("
   , knd, "; ", mopt, "; ", irds, ")")
 //
+| IR0Cvardecl
+  (knd, mopt, irds) =>
+  fprint!
+  ( out
+  , "IR0Cvardecl("
+  , knd, "; ", mopt, "; ", irds, ")")
+//
 | IR0Cfundecl
   (knd, mopt, tqas, irds) =>
   fprint!
@@ -511,6 +525,29 @@ in
   , ", pat=", rcd.pat
   , ", def=", rcd.def, "}")
 end // end of [fprint_ir0valdecl]
+//
+(* ****** ****** *)
+//
+implement
+print_ir0vardecl(x0) =
+fprint_ir0vardecl(stdout_ref, x0)
+implement
+prerr_ir0vardecl(x0) =
+fprint_ir0vardecl(stderr_ref, x0)
+//
+implement
+fprint_ir0vardecl
+  (out, x0) = let
+//
+val+IR0VARDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "IR0VARDECL@{"
+  , ", d2v=", rcd.d2v
+  , ", ini=", rcd.ini, "}")
+end // end of [fprint_ir0vardecl]
 //
 (* ****** ****** *)
 //
