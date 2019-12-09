@@ -212,13 +212,16 @@ in
 case+
 d2p0.node() of
 //
+| D2Pnil() =>
+  d3pat_nil(loc0)
+//
 | D2Pany() =>
   (
-    d3pat_any(loc0, t2p0)
+  d3pat_any(loc0, t2p0)
   ) where
   {
-    val
-    t2p0 = the_t2ype_none0
+  val
+  t2p0 = the_t2ype_none0
   }
 //
 | D2Pvar(d2v0) =>

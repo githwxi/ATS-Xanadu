@@ -583,6 +583,16 @@ d2pat_make_node
 }
 //
 (* ****** ****** *)
+
+implement
+d2pat_nil(loc0) =
+d2pat_make_node(loc0, D2Pnil())
+
+(* ****** ****** *)
+//
+implement
+d2pat_any(loc0) =
+d2pat_make_node(loc0, D2Pany())
 //
 implement
 d2pat_var
@@ -630,10 +640,21 @@ d2pat_dapp
 implement
 d2pat_tuple
 (loc0, knd, npf, d2ps) =
+let
+val isnil =
+(
+if knd = 0
+then iseqz(d2ps) else false
+) : bool // end of [val]
+in
+if isnil
+then d2pat_nil(loc0)
+else
 (
   d2pat_make_node
   (loc0, D2Ptuple(knd, npf, d2ps))
 )
+end // end of [d2pat_tuple]
 //
 (* ****** ****** *)
 

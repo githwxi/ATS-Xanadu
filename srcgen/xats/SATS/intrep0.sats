@@ -148,10 +148,12 @@ typedef ir0gpatlst = List0(ir0gpat)
 datatype
 ir0pat_node =
 //
+| IR0Pnil of ()
+| IR0Pany of ()
+//
 | IR0Pint of (token)
 | IR0Pbtf of (token)
 //
-| IR0Pany of ()
 | IR0Pvar of (d2var)
 //
 | IR0Pcapp of (d2con, ir0patlst)

@@ -144,13 +144,16 @@ fprint_ir0pat
 (
 case+ x0.node() of
 //
+| IR0Pnil() =>
+  fprint!(out, "IR0Pnil(", ")")
+| IR0Pany() =>
+  fprint!(out, "IR0Pany(", ")")
+//
 | IR0Pint(tok) =>
   fprint!(out, "IR0Pint(", tok, ")")
 | IR0Pbtf(tok) =>
   fprint!(out, "IR0Pbtf(", tok, ")")
 //
-| IR0Pany() =>
-  fprint!(out, "IR0Pany(", ")")
 | IR0Pvar(d2v) =>
   fprint!(out, "IR0Pvar(", d2v, ")")
 //
