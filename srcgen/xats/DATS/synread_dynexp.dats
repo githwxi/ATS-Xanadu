@@ -553,7 +553,7 @@ d0c0.node() of
   }
 //
 | D0Cvardecl
-  (tok(*VAR*), v0ds) =>
+  (tok, mopt, v0ds) =>
   {
 (*
     val () =

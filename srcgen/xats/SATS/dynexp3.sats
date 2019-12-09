@@ -665,7 +665,8 @@ d3ecl_node =
 //
 | D3Cvaldecl of
   (token(*knd*), decmodopt, v3aldeclist)
-| D3Cvardecl of (token(*knd*), v3ardeclist)
+| D3Cvardecl of
+  (token(*knd*), decmodopt, v3ardeclist)
 //
 | D3Cfundecl of
   ( token(*funkind*)

@@ -653,10 +653,12 @@ x0.node() of
   ( out
   , "D3Cvaldecl("
   , knd, "; ", mopt, "; ", v3ds, ")")
-| D3Cvardecl(knd, v3ds) =>
+| D3Cvardecl
+  (knd, mopt, v3ds) =>
   fprint!
   ( out
-  , "D3Cvardecl(", knd, "; ", v3ds, ")")
+  , "D3Cvardecl("
+  , knd, "; ", mopt, "; ", v3ds, ")")
 //
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>

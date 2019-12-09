@@ -3104,6 +3104,8 @@ tok, buf, err
   // end of [val]
   val loc = tok.loc()
 //
+  val mopt =
+    p_decmodopt(buf, err)
   val d0cs =
     p_v0ardeclseq_AND(buf, err)
 //
@@ -3119,7 +3121,8 @@ tok, buf, err
   ) : loc_t // end of [val]
 in
   err := e0;
-  d0ecl_make_node(loc_res, D0Cvardecl(tok, d0cs))
+  d0ecl_make_node
+    (loc_res, D0Cvardecl(tok, mopt, d0cs))
   // d0ecl_make_node
 end // end of [ptok_vardecl]
 //

@@ -77,8 +77,10 @@ typedef ir0gualst = $INT.ir0gualst
 typedef ir0claulst = $INT.ir0claulst
 
 typedef ir0valdecl = $INT.ir0valdecl
+typedef ir0vardecl = $INT.ir0vardecl
 typedef ir0fundecl = $INT.ir0fundecl
 typedef ir0valdeclist = $INT.ir0valdeclist
+typedef ir0vardeclist = $INT.ir0vardeclist
 typedef ir0fundeclist = $INT.ir0fundeclist
 
 (* ****** ****** *)
@@ -104,6 +106,8 @@ ir0val =
 | IR0Vcon of d2con
 | IR0Vcst of d2cst
 *)
+//
+| IR0Vlft of ir0valeft
 //
 | IR0Vcon of
   (d2con, ir0valist)
@@ -131,6 +135,8 @@ where
 ir0valist = List0(ir0val)
 and
 ir0valopt = Option(ir0val)
+and
+ir0valeft = ref(ir0valopt)
 and
 ir0valfun = (ir0valist -<cloref1> ir0val)
 //
@@ -300,6 +306,15 @@ interp0_ir0valdecl
 fun
 interp0_ir0valdeclist
 (env: !intpenv, irvds: ir0valdeclist): void
+
+(* ****** ****** *)
+
+fun
+interp0_ir0vardecl
+(env: !intpenv, irvd: ir0vardecl): void
+fun
+interp0_ir0vardeclist
+(env: !intpenv, irvds: ir0vardeclist): void
 
 (* ****** ****** *)
 

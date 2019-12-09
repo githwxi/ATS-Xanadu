@@ -331,6 +331,23 @@ end // end of [d2cst_up]
 (* ****** ****** *)
 
 fun
+auxvar
+( d3e0
+: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Evar(d2v1) = d3e0.node()
+//
+in
+  d2var_up(loc0, d2v1)
+end // end of [auxvar]
+
+(* ****** ****** *)
+
+fun
 auxcon1
 ( d3e0
 : d3exp): d3exp =
@@ -352,7 +369,8 @@ println!
 in
 //
 (
-if opt0
+if
+opt0
 then d3e0
 else d2con_up(loc0, d2c1)
 ) where
@@ -385,7 +403,8 @@ println!
 in
 //
 (
-if opt0
+if
+opt0
 then d3e0
 else d2cst_up(loc0, d2c1)
 ) where
@@ -762,7 +781,7 @@ val d3e1 = trans33_dexp(d3e1)
 val d3e2 = trans33_dexp(d3e2)
 //
 in
-  d3exp_assgn_up(loc0, d3e1, d3e2)
+  d3exp_a33gn_up(loc0, d3e1, d3e2)
 end // end of [aux_assgn]
 
 (* ****** ****** *)
@@ -959,7 +978,7 @@ d3e0.node() of
 | D3Eflt _ => d3e0
 | D3Estr _ => d3e0
 //
-| D3Evar _ => d3e0
+| D3Evar _ => auxvar(d3e0)
 //
 | D3Econ1 _ => auxcon1(d3e0)
 | D3Ecst1 _ => auxcst1(d3e0)
@@ -1322,6 +1341,100 @@ d3ecl_make_node
 ( d3cl.loc()
 , D3Cvaldecl(knd, mopt, v3ds))
 end // end of [aux_valdecl]
+
+(* ****** ****** *)
+
+fun
+aux_vardecl
+( d3cl
+: d3ecl): d3ecl = let
+//
+val
+loc0 = d3cl.loc()
+val-
+D3Cvardecl
+( knd
+, mopt
+, v3ds) = d3cl.node()
+//
+val
+v3ds = auxv3ds(d3cl, v3ds)
+//
+in
+  d3ecl_make_node
+  (loc0, D3Cvardecl(knd, mopt, v3ds))
+end where
+{
+//
+fun
+auxv3d0
+( d3cl
+: d3ecl
+, v3d0
+: v3ardecl
+) : v3ardecl = let
+//
+val
+loc0 = d3cl.loc()
+val+
+V3ARDECL(rcd) = v3d0
+//
+val loc = rcd.loc
+val d2v = rcd.d2v
+val wth = rcd.wth
+val res = rcd.res
+val ini = rcd.ini
+//
+val
+ini =
+(
+case+ ini of
+|
+None() =>
+None((*void*))
+|
+Some(d3e) =>
+Some
+(trans33_dexp_dn(d3e, tres))
+) where // end of [val]
+{
+val
+tres =
+(
+case+ res of
+| Some(s2e) => s2exp_erase(s2e)
+| None((*void*)) => t2ype_new(loc0)
+) : t2ype (* end-of-val: tres *)
+//
+val () =
+d2var_set_type(d2v, t2ype_lft(tres))
+//
+}
+//
+in
+V3ARDECL(
+@{
+loc=loc,d2v=d2v,wth=wth,res=res,ini=ini}
+) (* V3ARDECL *)
+end // end of [auxv3d0]
+//
+fun
+auxv3ds
+( d3cl: d3ecl
+, v3ds
+: v3ardeclist
+)
+: v3ardeclist =
+(
+case+ v3ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons
+  (auxv3d0(d3cl, x0), auxv3ds(d3cl, xs))
+)
+//
+} (* end of [aux_vardecl] *)
 
 (* ****** ****** *)
 
@@ -1700,6 +1813,8 @@ d3cl.node() of
   end
 //
 | D3Cvaldecl _ => aux_valdecl(d3cl)
+//
+| D3Cvardecl _ => aux_vardecl(d3cl)
 //
 | D3Cfundecl _ => aux_fundecl(d3cl)
 //

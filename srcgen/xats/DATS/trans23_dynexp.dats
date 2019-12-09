@@ -572,6 +572,23 @@ end (* end of [auxtop] *)
 
 (* ****** ****** *)
 
+local
+
+fun
+utplft
+( t2p0
+: t2ype): t2ype =
+let
+val
+t2p0 = t2ype_eval(t2p0)
+in
+case+
+t2p0.node() of
+| T2Plft(t2p1) => t2p1 | _ => t2p0
+end // end-of-let // end-of-fun
+
+in(*in-of-local*)
+
 fun
 auxvar
 ( d2e0
@@ -583,11 +600,15 @@ val-
 D2Evar(d2v) = d2e0.node()
 //
 val node = D3Evar(d2v)
-val t2p0 = d2var_get_type(d2v)
+//
+val t2p0 =
+utplft(d2var_get_type(d2v))
 //
 in
   d3exp_make_node(loc0, t2p0, node)
 end (* end of [auxvar] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -847,7 +868,7 @@ val d3e1 = trans23_dexp(d2e1)
 val d3e2 = trans23_dexp(d2e2)
 //
 in
-  d3exp_assgn_up(loc0, d3e1, d3e2)
+  d3exp_a23gn_up(loc0, d3e1, d3e2)
 end // end of [aux_assgn]
 
 (* ****** ****** *)
@@ -1188,11 +1209,11 @@ trans23_dexp
 val
 loc0 = d2e0.loc()
 //
-(*
+// (*
 val () =
 println!
 ("trans23_dexp: d2e0 = ", d2e0)
-*)
+// *)
 //
 in
 //
@@ -1584,6 +1605,7 @@ loc0 = d2cl.loc()
 val-
 D2Cvardecl
 ( knd
+, mopt
 , v2ds) = d2cl.node()
 //
 val
@@ -1591,10 +1613,9 @@ v3ds = auxv2ds(d2cl, v2ds)
 //
 in
   d3ecl_make_node
-  (loc0, D3Cvardecl(knd, v3ds))
+  (loc0, D3Cvardecl(knd, mopt, v3ds))
 end where
 {
-//
 //
 fun
 auxv2d0
@@ -1619,27 +1640,35 @@ val
 ini =
 (
 case+ ini of
-| None() => None()
-| Some(d3e) =>
-  Some(trans23_dexp_dn(d3e, tres))
-) where
+|
+None() =>
+None((*void*))
+|
+Some(d3e) =>
+Some
+(trans23_dexp_dn(d3e, tres))
+) where // end of [val]
 {
 val
 tres =
 (
 case+ res of
-| None() => t2ype_new(loc0)
-| Some(s2e) => s2exp_erase(s2e)
-) : t2ype // end-of-val
+|
+Some(s2e) => s2exp_erase(s2e)
+|
+None((*void*)) => t2ype_new(loc0)
+) : t2ype (* end-of-val: tres *)
 //
-val () = d2var_set_type(d2v, tres)
+val () =
+d2var_set_type(d2v, t2ype_lft(tres))
 //
 }
 //
 in
-V3ARDECL
-(@{
-loc=loc,d2v=d2v,wth=wth,res=res,ini=ini})
+V3ARDECL(
+@{
+loc=loc,d2v=d2v,wth=wth,res=res,ini=ini}
+) (* V3ARDECL *)
 end // end of [auxv2d0]
 //
 fun

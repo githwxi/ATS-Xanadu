@@ -336,10 +336,18 @@ d3exp_tuple_up
 (* ****** ****** *)
 //
 fun
-d3exp_assgn_up
+d3exp_a23gn_up
 ( loc0: loc_t
 , d3e1: d3exp(*lval*)
 , d3e2: d3exp(*rval*)): d3exp
+//
+fun
+d3exp_a33gn_up
+( loc0: loc_t
+, d3e1: d3exp(*lval*)
+, d3e2: d3exp(*rval*)): d3exp
+//
+(* ****** ****** *)
 //
 fun
 d3exp_dtsel_up

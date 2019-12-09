@@ -125,10 +125,16 @@ x0.node() of
       fprint!(out, "T2Pxtv(", t2p, ")")
   end
 //
+| T2Plft(t2p1) =>
+  fprint!
+  (out, "T2Plft(", t2p1, ")")
+//
 | T2Papp(t2p1, t2ps) =>
-  fprint!(out, "T2Papp(", t2p1, "; ", t2ps, ")")
+  fprint!
+  (out, "T2Papp(", t2p1, "; ", t2ps, ")")
 | T2Plam(s2vs, t2p1) =>
-  fprint!(out, "T2Plam(", s2vs, "; ", t2p1, ")")
+  fprint!
+  (out, "T2Plam(", s2vs, "; ", t2p1, ")")
 //
 | T2Pfc2(fc2) =>
   fprint!

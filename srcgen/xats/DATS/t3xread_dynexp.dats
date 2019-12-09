@@ -520,7 +520,8 @@ d3cl.node() of
 *)
   }
 //
-| D3Cvardecl(knd, v3ds) =>
+| D3Cvardecl
+  (knd, mopt, v3ds) =>
   {
     val () = t3xread_v3ardeclist<>(v3ds)
 (*

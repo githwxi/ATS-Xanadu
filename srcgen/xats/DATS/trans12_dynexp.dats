@@ -2969,20 +2969,23 @@ loc0 = d1cl.loc()
 val-
 D1Cvardecl
 ( knd
+, mopt
 , v1ds) = d1cl.node()
 //
 val v2ds = auxv1ds(v1ds)
 //
 in
   d2ecl_make_node
-  (loc0, D2Cvardecl(knd, v2ds))
+  (loc0, D2Cvardecl(knd, mopt, v2ds))
 end where
 {
 //
 fun
 auxv1d0
 ( v1d0
-: v1ardecl): v2ardecl = let
+: v1ardecl
+)
+: v2ardecl = let
 //
 val+
 V1ARDECL(rcd) = v1d0

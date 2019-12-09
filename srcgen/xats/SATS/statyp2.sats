@@ -197,8 +197,10 @@ t2ype_node =
 //
 | T2Pxtv of t2xtv // ext-variable
 //
-| T2Papp of (t2ype, t2ypelst)
-| T2Plam of (s2varlst, t2ype)
+| T2Plft of (t2ype) // left-value
+//
+| T2Papp of (t2ype, t2ypelst) // inst
+| T2Plam of (s2varlst, t2ype) // poly
 //
 | T2Pfc2 of funclo2
 | T2Pfun of
@@ -262,6 +264,11 @@ fun
 t2ype_cst(s2c0: s2cst): t2ype
 fun
 t2ype_var(s2v0: s2var): t2ype
+
+(* ****** ****** *)
+
+fun
+t2ype_lft(t2p0: t2ype): t2ype
 
 (* ****** ****** *)
 //
