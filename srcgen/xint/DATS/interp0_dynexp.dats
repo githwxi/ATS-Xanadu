@@ -1430,6 +1430,13 @@ case-
 irp0.node() of
 //
 |
+IR0Pnil() =>
+(
+case- irv0 of
+|
+IR0Vnil() => ()
+)
+|
 IR0Pany() => ()
 |
 IR0Pvar(d2v0) =>
