@@ -77,6 +77,8 @@ abstype d1exp_tbox = ptr
 typedef d1exp = d1exp_tbox
 typedef d1explst = List0(d1exp)
 typedef d1expopt = Option(d1exp)
+typedef labd1exp = dl0abeled(d1exp)
+typedef labd1explst = List0(labd1exp)
 
 (* ****** ****** *)
 //
@@ -382,6 +384,11 @@ d1pat_node =
 | D1Ptuple of
   (token, d1patlst, d1patlst)
 //
+| D1Precord of
+  (token, labd1patlst)
+| D1Precord of
+  (token, labd1patlst, labd1patlst)
+//
 | D1Panno of (d1pat, s1exp)
 //
 | D1Pnone of ((*error-indication*))
@@ -534,6 +541,11 @@ d1exp_node =
   (token, d1explst)
 | D1Etuple of
   (token, d1explst, d1explst)
+//
+| D1Erecord of
+  (token, labd1explst)
+| D1Erecord of
+  (token, labd1explst, labd1explst)
 //
 | D1Ebrack of (d1explst)
 | D1Edtsel of (label, d1expopt)

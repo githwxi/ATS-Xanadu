@@ -40,11 +40,21 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/label0.sats"
-#staload "./../SATS/lexing.sats"
+#staload
+FP0 = "./../SATS/filpath.sats"
+#staload
+LOC = "./../SATS/locinfo.sats"
 //
-#staload "./../SATS/filpath.sats"
-#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+//
+#staload
+LAB = "./../SATS/label0.sats"
+overload
+fprint with $LAB.fprint_label
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/lexing.sats"
 //
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
@@ -52,6 +62,22 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp1.sats"
 //
 #staload "./../SATS/dynexp1.sats"
+//
+(* ****** ****** *)
+
+#staload _ = "./staexp0_print.dats"
+#staload _ = "./dynexp0_print.dats"
+
+(* ****** ****** *)
+//
+(*
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full1
+*)
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full2
 //
 (* ****** ****** *)
 //
@@ -62,12 +88,9 @@ fprint_val<t0int> = fprint_t0int
 //
 (* ****** ****** *)
 //
-(*
 implement
-fprint_val<filpath> = fprint_filpath_full1
-*)
-implement
-fprint_val<filpath> = fprint_filpath_full2
+(a)//tmp
+fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
 //
 (* ****** ****** *)
 
@@ -348,15 +371,26 @@ x0.node() of
   (out, "D1Plist1(", d1ps, ")")
 | D1Plist(d1ps1, d1ps2) =>
   fprint!
-  (out, "D1Plist2(", d1ps1, "; ", d1ps2, ")")
+  ( out
+  , "D1Plist2(", d1ps1, "; ", d1ps2, ")")
 //
 | D1Ptuple(tok, d1ps) =>
   fprint!
-  (out, "D1Ptuple(", tok, "; ", d1ps, ")")
+  ( out
+  , "D1Ptuple1(", tok, "; ", d1ps, ")")
 | D1Ptuple(tok, d1ps1, d1ps2) =>
   fprint!
   ( out
-  , "D1Ptuple(", tok, "; ", d1ps1, "; ", d1ps2, ")")
+  , "D1Ptuple2(", tok, "; ", d1ps1, "; ", d1ps2, ")")
+//
+| D1Precord(tok, ld1ps) =>
+  fprint!
+  ( out
+  , "D1Precord1(", tok, "; ", ld1ps, ")")
+| D1Precord(tok, ld1ps1, ld1ps2) =>
+  fprint!
+  (out
+  , "D1Precord2(", tok, "; ", ld1ps1, "; ", ld1ps2, ")")
 //
 | D1Panno(d1p, s1e) =>
   fprint!
@@ -443,11 +477,20 @@ x0.node() of
 | D1Etuple(tok, d1es) =>
   fprint!
   ( out
-  , "D1Etuple(", tok, "; ", d1es, ")")
+  , "D1Etuple1(", tok, "; ", d1es, ")")
 | D1Etuple(tok, d1es1, d1es2) =>
   fprint!
-  ( out, "D1Etuple("
-  , tok, "; ", d1es1, "; ", d1es2, ")")
+  ( out
+  , "D1Etuple2(", tok, "; ", d1es1, "; ", d1es2, ")")
+//
+| D1Erecord(tok, ld1es) =>
+  fprint!
+  ( out
+  , "D1Erecord1(", tok, "; ", ld1es, ")")
+| D1Erecord(tok, ld1es1, ld1es2) =>
+  fprint!
+  ( out
+  , "D1Erecord2(", tok, "; ", ld1es1, "; ", ld1es2, ")")
 //
 | D1Ebrack(d1es) =>
   fprint!(out, "D1Ebrack(", d1es, ")")
