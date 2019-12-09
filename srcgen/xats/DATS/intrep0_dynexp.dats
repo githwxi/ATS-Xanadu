@@ -176,6 +176,13 @@ in
 case+
 d3p0.node() of
 //
+| D3Pnil() =>
+  ir0pat_make_node
+  (loc0, IR0Pnil((*void*)))
+| D3Pany() =>
+  ir0pat_make_node
+  (loc0, IR0Pany((*void*)))
+//
 | D3Pint(tok) =>
   ir0pat_make_node
   (loc0, IR0Pint(tok))
@@ -183,9 +190,6 @@ d3p0.node() of
   ir0pat_make_node
   (loc0, IR0Pbtf(tok))
 //
-| D3Pany() =>
-  ir0pat_make_node
-  (loc0, IR0Pany((*void*)))
 | D3Pvar(d2v) =>
   ir0pat_make_node(loc0, IR0Pvar(d2v))
 //
