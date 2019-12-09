@@ -311,7 +311,12 @@ x0.node() of
   , knd0, "; "
   , d2v0, "; ", farg, "; ", body, ")")
 //
-| IR0Enone0() =>
+| IR0Eflat(ire1) =>
+  (
+    fprint!(out, "IR0Eflat(", ire1, ")")
+  )
+//
+| IR0Enone0(   ) =>
   (
     fprint!(out, "IR0Enone0(", ")")
   )

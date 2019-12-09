@@ -51,6 +51,13 @@ VERBOSE_FIXITY
 #endif // end of [VERBOSE_FIXITY]
 
 (* ****** ****** *)
+
+(*
+#infixl
+app of 70 // app_prcdv
+*)
+
+(* ****** ****** *)
 //
 #prefix
 ! of 69 (* stadyn *)
@@ -61,13 +68,6 @@ VERBOSE_FIXITY
 #prefix
 ?! of 69 (* static *)
 //
-(* ****** ****** *)
-
-(*
-#infixl
-app of 70 // app_prcdv
-*)
-
 (* ****** ****** *)
 //
 // HX-2015-08-04:
@@ -107,13 +107,17 @@ app of 70 // app_prcdv
 
 (* ****** ****** *)
 //
-#infixr :: @ of 40
-#infix0 < <= > >= of 40
+#infixr @ of 40 (*flat*)
+#prefix @ of 71 (*uflat*)
+//
+#infixr :: of 40 (*cons*)
 //
 (* ****** ****** *)
-
+//
+#infix0 < > <= >= of 40
+//
 #infix0 = != == !== of 30
-
+//
 (* ****** ****** *)
 
 #infixl || of 20

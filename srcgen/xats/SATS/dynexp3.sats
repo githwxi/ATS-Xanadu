@@ -353,8 +353,10 @@ d3exp_node =
   , f3arglst(*arg*)
   , effs2expopt, f1unarrow, d3exp(*body*))
 //
-| D3Eaddr of (d3exp)
-| D3Efold of (d3exp)
+| D3Eflat of d3exp(*l-value*)
+//
+| D3Eaddr of d3exp(*l-value*)
+| D3Efold of d3exp(*open-con*)
 //
 | D3Eanno of (d3exp, s2exp)
 //

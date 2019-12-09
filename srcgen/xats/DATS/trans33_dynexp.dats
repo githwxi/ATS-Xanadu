@@ -184,7 +184,9 @@ in
 case+
 d3p0.node() of
 //
+| D3Pnil _ => d3p0
 | D3Pany _ => d3p0
+//
 | D3Pvar _ => d3p0
 //
 | D3Psym0 _ => auxsym0(d3p0)
