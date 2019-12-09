@@ -1073,6 +1073,21 @@ D1Eapp1
 , d1e2) = d1e0.node()
 //
 fun
+isFLAT
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+| D1Eid(tok) =>
+  (
+  case+
+  tok.node() of
+  | T_IDENT_sym(x) => (x = "@")
+  | _(* non-T_IDENT_sym *) => false
+  )
+| _(* non-D1Eid *) => false
+)
+fun
 isADDR
 (d1e: d1exp): bool =
 (
@@ -1107,6 +1122,14 @@ in
 //
 ifcase
 //
+| isFLAT(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Eflat(d2e2))
+  end
 | isADDR(d1e1) =>
   let
     val d2e2 =

@@ -714,8 +714,10 @@ d2exp_node =
   , f2arglst(*arg*)
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
-| D2Eaddr of (d2exp)
-| D2Efold of (d2exp)
+| D2Eflat of d2exp(*l-value*)
+//
+| D2Eaddr of d2exp(*l-value*)
+| D2Efold of d2exp(*open-con*)
 //
 | D2Eanno of (d2exp(*applst*), s2exp(*type*))
 //
