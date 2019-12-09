@@ -93,8 +93,9 @@ typedef d3eclistopt = Option(d3eclist)
 datatype
 d3pat_node =
 //
-| D3Pany of ()
+| D3Pnil of ()
 //
+| D3Pany of ()
 | D3Pvar of (d2var)
 //
 | D3Pint of (token)
@@ -159,6 +160,10 @@ overload prerr with prerr_d3pat
 overload fprint with fprint_d3pat
 //
 (* ****** ****** *)
+//
+fun
+d3pat_nil
+(loc0: loc_t): d3pat
 //
 fun
 d3pat_any

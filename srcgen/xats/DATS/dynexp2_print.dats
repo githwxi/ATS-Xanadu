@@ -275,6 +275,11 @@ fprint_d2pat
 (
 case- x0.node() of
 //
+| D2Pnil() =>
+  fprint!(out, "D2Pnil(", ")")
+| D2Pany() =>
+  fprint!(out, "D2Pany(", ")")
+//
 | D2Pint(tok) =>
   fprint!(out, "D2Pint(", tok, ")")
 | D2Pbtf(tok) =>

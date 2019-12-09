@@ -172,12 +172,10 @@ fprint_d3pat
 (
 case- x0.node() of
 //
+| D3Pnil() =>
+  fprint!(out, "D3Pnil()")
 | D3Pany() =>
   fprint!(out, "D3Pany()")
-//
-| D3Pvar(d2v) =>
-  fprint!
-  (out, "D3Pvar(", d2v, ")")
 //
 | D3Pint(tok) =>
   fprint!
@@ -194,6 +192,10 @@ case- x0.node() of
 | D3Pstr(tok) =>
   fprint!
   (out, "D3Pstr(", tok, ")")
+//
+| D3Pvar(d2v) =>
+  fprint!
+  (out, "D3Pvar(", d2v, ")")
 //
 | D3Pcon1(d2c0) =>
   fprint!
