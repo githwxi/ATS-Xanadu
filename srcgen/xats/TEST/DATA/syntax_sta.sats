@@ -1,6 +1,6 @@
 
 fun
-foo(x: &int(0) >> int(1)): int
+foo(x: &(int(0)>>int(1))): int
 
 ////
 (* ****** ****** *)
