@@ -378,6 +378,14 @@ d3e0.node() of
     , D3Efix(knd0, d2v0, arg1, res2, arrw, body))
   end // D3Efix
 //
+| D3Eflat(d3e1) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, D3Eflat(d3e1))
+  end // end of [D3Eflat]
+//
 | D3Eaddr(d3e1) =>
   let
     val d3e1 =

@@ -890,6 +890,27 @@ end // end of [aux_fix]
 (* ****** ****** *)
 
 fun
+aux_flat
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Eflat(d3e1) = d3e0.node()
+//
+val t2p0 = t2ype_new(loc0)
+val t2p1 = t2ype_lft(t2p0)
+//
+val d3e1 = trans33_dexp_dn(d3e1, t2p1)
+//
+in
+d3exp_make_node(loc0, t2p0, D3Eflat(d3e1))
+end // end of [aux_flat]
+
+(* ****** ****** *)
+
+fun
 aux_addr
 ( d3e0
 : d3exp): d3exp = let
@@ -1026,6 +1047,8 @@ d3e0.node() of
 | D3Efix
   (_, _, _, _, _, _) => aux_fix(d3e0)
   // D3Efix
+//
+| D3Eflat(d3e1) => aux_flat(d3e0)
 //
 | D3Eaddr(d3e1) => aux_addr(d3e0)
 | D3Efold(d3e1) => aux_fold(d3e0)
