@@ -1104,40 +1104,70 @@ aux_fix_f3as
 , flag: int): t2ype =
 (
 case+ f3as of
-| list_nil() => tres
-| list_cons(x0, xs) =>
-  (
-  case-
-  x0.node() of
-  | F3ARGsome_dyn
-    (npf, d3ps) =>
-    let
-    val fc2 =
-    ( if
-      flag = 0
-      then
-      FC2fun(*void*)
-      else
-      FC2cloref(*void*)
-    ) : funclo2 // end-of-val
-    val t2ps =
-    d3patlst_get_type(d3ps)
-    val tres =
-    aux_fix_f3as(xs, tres, flag+1)
-    in
-    t2ype_fun2(fc2, npf, t2ps, tres)
-    end
-  | F3ARGsome_sta
-    (s2vs, s2ps) =>
-    let
-      val
-      tres =
-      aux_fix_f3as
-      (xs,tres,flag) in t2ype_uni(s2vs, tres)
-    end
-  | F3ARGsome_met(s2es) => aux_fix_f3as(xs, tres, flag)
-  )
+|
+list_nil() => tres
+|
+list_cons(x0, xs) =>
+(
+case-
+x0.node() of
+| F3ARGsome_dyn
+  (npf, d3ps) =>
+  let
+  val fc2 =
+  ( if
+    flag = 0
+    then
+    FC2fun(*void*)
+    else
+    FC2cloref(*void*)
+  ) : funclo2 // end-of-val
+  val t2ps =
+  d3patlst_get_type(d3ps)
+  val tres =
+  aux_fix_f3as(xs, tres, flag+1)
+  in
+  t2ype_fun2(fc2, npf, t2ps, tres)
+  end
+| F3ARGsome_sta
+  (s2vs, s2ps) =>
+  let
+  val
+  tres =
+  aux_fix_f3as
+  (xs,tres,flag) in t2ype_uni(s2vs, tres)
+  end
+| F3ARGsome_met(s2es) => aux_fix_f3as(xs, tres, flag)
+) (* end of [list_cons] *)
 ) (* end of [aux_fix_f3as] *)
+
+(* ****** ****** *)
+
+fun
+aux_flat
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eflat(d2e1) = d2e0.node()
+//
+(*
+val t2p0 = t2ype_new(loc0)
+val t2p1 = t2ype_lft(t2p0)
+val d3e1 = trans23_dexp_dn(d2e1, t2p1)
+*)
+//
+val d3e1 = trans23_dexp(d2e1)
+//
+in
+let
+val t2p1 = d3e1.type((*void*))
+in
+d3exp_make_node(loc0, t2p1, D3Eflat(d3e1))
+end
+end // end of [aux_flat]
 
 (* ****** ****** *)
 
@@ -1269,6 +1299,8 @@ d2e0.node() of
   (_, _, _, _, _) => aux_lam(d2e0)
 | D2Efix
   (_, _, _, _, _, _) => aux_fix(d2e0)
+//
+| D2Eflat(d2e1) => aux_flat(d2e0)
 //
 | D2Eaddr(d2e1) => aux_addr(d2e0)
 | D2Efold(d2e1) => aux_fold(d2e0)
