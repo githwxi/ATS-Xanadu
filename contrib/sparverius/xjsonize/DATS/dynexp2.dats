@@ -535,8 +535,11 @@ case- x0.node() of
   )
 
 //
-| D2Cvardecl(knd, v2ds) =>
-  jsonify("D2Cvardecl", ("knd", "v2ds"), (jsonize(knd), jsonize("...")))
+| D2Cvardecl(knd, mopt, v2ds) =>
+  jsonify(
+    "D2Cvardecl", ("knd", "mopt", "v2ds"),
+    (jsonize(knd), jsonize(mopt), jsonize("..."))
+  )
 //
 | D2Cimpdecl1
   ( knd, mopt, sqas, tqas

@@ -3,16 +3,9 @@
 
 #staload "./json.sats"
 
-(*
 fun{a:type}
-jsonize_dl0abeled : jsonize_type(dl0abled(a))
-*)
+jsonize_dl0abeled : jsonize_type(dl0abeled(a))
 
-fun
-jsonize_decmodopt: jsonize_type(decmodopt)
-overload jsonize with jsonize_decmodopt
-
-(*
 fun
 jsonize_q0arg : jsonize_type(q0arg)
 overload jsonize with jsonize_q0arg
@@ -134,6 +127,10 @@ jsonize_signint : jsonize_type(signint)
 overload jsonize with jsonize_signint
 
 fun
+jsonize_abstdf0 : jsonize_type(abstdf0)
+overload jsonize with jsonize_abstdf0
+
+fun
 jsonize_g0expdef : jsonize_type(g0expdef)
 overload jsonize with jsonize_g0expdef
 
@@ -144,4 +141,3 @@ overload jsonize with jsonize_d0macdef
 fun
 jsonize_wd0eclseq : jsonize_type(wd0eclseq)
 overload jsonize with jsonize_wd0eclseq
-*)

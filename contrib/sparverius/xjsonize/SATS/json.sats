@@ -199,6 +199,8 @@ symintr labify
 fun{a:t@ype} jsonize_val: (a) -> jsonval
 
 fun{a:t@ype} jsonize_list: (List(a)) -> jsonval
+fun{a:t@ype} jsonize_option: (Option(a)) -> jsonval
+fun{a:t@ype} jsonize_option_vt: (Option_vt(a)) -> jsonval
 
 fun jsonize_int(x:int): jsonval
 
@@ -259,6 +261,7 @@ typedef str_arg6 = (string, string, string, string, string, string)
 typedef str_arg7 = (string, string, string, string, string, string, string)
 typedef str_arg8 = (string, string, string, string, string, string, string, string)
 typedef str_arg9 = (string, string, string, string, string, string, string, string, string)
+typedef str_arg10 = (string, string, string, string, string, string, string, string, string, string)
 
 typedef json_arg2 = (jsonval, jsonval)
 typedef json_arg3 = (jsonval, jsonval, jsonval)
@@ -268,6 +271,7 @@ typedef json_arg6 = (jsonval, jsonval, jsonval, jsonval, jsonval, jsonval)
 typedef json_arg7 = (jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval)
 typedef json_arg8 = (jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval)
 typedef json_arg9 = (jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval)
+typedef json_arg10 = (jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval, jsonval)
 
 fun jsonify0 (guard_name: string): jsonval
 fun jsonify1 (guard_name: string, arg_name: string, arg_json: jsonval): jsonval
@@ -279,6 +283,7 @@ fun jsonify6 (guard_name: string, arg_names: str_arg6, arg_json: json_arg6): jso
 fun jsonify7 (guard_name: string, arg_names: str_arg7, arg_json: json_arg7): jsonval
 fun jsonify8 (guard_name: string, arg_names: str_arg8, arg_json: json_arg8): jsonval
 fun jsonify9 (guard_name: string, arg_names: str_arg9, arg_json: json_arg9): jsonval
+fun jsonify10 (guard_name: string, arg_names: str_arg10, arg_json: json_arg10): jsonval
 
 overload jsonify with jsonify0
 overload jsonify with jsonify1
@@ -290,4 +295,5 @@ overload jsonify with jsonify6
 overload jsonify with jsonify7
 overload jsonify with jsonify8
 overload jsonify with jsonify9
+overload jsonify with jsonify10
 (* fun jsonify(guard_name: string, List(@(string, json))): jsonval *)

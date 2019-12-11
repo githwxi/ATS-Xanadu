@@ -426,6 +426,22 @@ implement{a} jsonize_list(xs) = JSONlist(res) where
   val res = list_of_list_vt{jsonval}(xys)
 }
 
+
+implement{a} jsonize_option(xs) =
+(
+  case+ xs of
+  | None() => jsonize("None")
+  | Some(x) => jsonval_labval1("Some", jsonize_val<a>(x))
+)
+
+implement{a} jsonize_option_vt(xs) =
+(
+  case+ xs of
+  | ~None_vt() => jsonize("None")
+  | ~Some_vt(x) => jsonval_labval1("Some_vt", jsonize_val<a>(x))
+)
+
+
 (*
 implement(a:t@ype) jsonize_list<a>(xs) = JSONlist(res) where
 {
@@ -640,6 +656,36 @@ jsonval_labval1(guard_name, rst) where
   )
   val rst = JSONlablist(lst)
   val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5, json.6, json.7, json.8))
+end
+
+implement jsonify10 (guard_name, names, json) =
+jsonval_labval1(guard_name, rst) where
+(*
+  val rst = jsonval_labval8 (
+    names.0, json.0,
+    names.1, json.1,
+    names.2, json.2,
+    names.3, json.3,
+    names.4, json.4,
+    names.5, json.5,
+    names.6, json.6,
+    names.7, json.7
+  )
+*)
+  val lst = $list{labjsonval}(
+    (names.0, json.0),
+    (names.1, json.1),
+    (names.2, json.2),
+    (names.3, json.3),
+    (names.4, json.4),
+    (names.5, json.5),
+    (names.6, json.6),
+    (names.7, json.7),
+    (names.8, json.8),
+    (names.9, json.9)
+)
+  val rst = JSONlablist(lst)
+  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5, json.6, json.7, json.8, json.9))
 end
 
 (* implement jsonify(guard_name: string, args: List(@(string, json))): jsonval =  *)

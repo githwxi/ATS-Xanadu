@@ -47,7 +47,7 @@ x0.node() of
 //
 | T2Pbas(sym) =>
   (* fprint!(out, "T2Pbas(", sym, ")") *)
-  jsonify("T2Pbas", "sym", $SYM.jsonize_symbol(sym))
+  jsonify("T2Pbas", "sym", jsonize(sym))
   (* where val _ = $showtype(sym) end *)
 | T2Pcst(s2c) =>
   (* fprint!(out, "T2Pcst(", s2c, ")") *)
@@ -89,138 +89,59 @@ x0.node() of
   end
 //
 | T2Papp(t2p1, t2ps) =>
-  (* fprint!(out, "T2Papp(", t2p1, "; ", t2ps, ")") *)
-  jsonify("T2Papp", args, rst) where
-    val args = (
-      "t2p1",
-      "t2ps"
-    )
-    val rst = (
-      fst,
-      snd
-    ) where
-      val fst = jsonize(t2p1)
-      val snd = jsonize_list<t2ype>(t2ps)
-    end
-  end
+  jsonify(
+    "T2Papp", ("t2p1", "t2ps"),
+    (jsonize(t2p1), jsonize_list<t2ype>(t2ps))
+  )
+| T2Plft(t2p1) =>
+  jsonify("T2Plft", "t2p1", jsonize("..."))
 
 | T2Plam(s2vs, t2p1) =>
-  (* fprint!(out, "T2Plam(", s2vs, "; ", t2p1, ")") *)
-  jsonify("T2Plam", args, rst) where
-    val args = (
-      "s2vs",
-      "t2p1"
-    )
-    val rst = (
-      fst,
-      snd
-    ) where
-      val fst = jsonize_list<s2var>(s2vs)
-      val snd = jsonize(t2p1)
-    end
-  end
+  jsonify(
+    "T2Plam", ("s2vs", "t2p1"),
+    (jsonize_list<s2var>(s2vs),jsonize(t2p1))
+  )
 //
 | T2Pfc2(fc2) =>
-  (* fprint! *)
-  (* (out, "T2Pfc2(", fc2, ")") *)
   jsonify("T2pfc2", "fc2", jstr("..."))
 | T2Pfun(fc2, npf, arg, res) =>
-  (* fprint! *)
-  (* ( out, "T2Pfun(" *)
-  (* , fc2, "; ", npf, "; ", arg, "; ", res, ")") *)
-  jsonify("T2Pfun", args, rst) where
-    (* val _ = $showtype(fc2) *)
-    (* val _ = $showtype(res) *)
-    val args = (
-      "fc2",
-      "npf",
-      "arg",
-      "res"
+  jsonify(
+    "T2Pfun", ("fc2", "npf", "arg", "res"),
+    (
+      jsonize(fc2),
+      jsonize(npf),
+      jsonize_list<t2ype>(arg),
+      jsonize(res)
     )
-    val rst = (
-      fst,
-      snd,
-      thd,
-      frh
-    ) where
-      val fst = jsonize(fc2)
-      val snd = jsonize(npf)
-      val thd = jsonize_list<t2ype>(arg)
-      val frh = jsonize(res)
-    end
-  end
-
+  )
 //
 | T2Pexi(s2vs, body) =>
-  (* fprint!(out, "T2Pexi(", s2vs, "; ", body, ")") *)
-  jsonify("T2Pexi", args, rst) where
-    (* val _ = $showtype(s2vs) *)
-    val args = (
-      "s2vs",
-      "body"
-    )
-    val rst = (
-      fst,
-      snd
-    ) where
-      val fst = jsonize_list<s2var>(s2vs)
-      val snd = jsonize(body)
-    end
-  end
+  jsonify(
+    "T2Pexi", ("s2vs","body"),
+    (jsonize_list<s2var>(s2vs), jsonize(body))
+  )
 
 | T2Puni(s2vs, body) =>
-  (* fprint!(out, "T2Puni(", s2vs, "; ", body, ")") *)
-  jsonify("T2Puni", args, rst) where
-    val args = (
-      "s2vs",
-      "body"
-    )
-    val rst = (
-      fst,
-      snd
-    ) where
-      val fst = jsonize_list<s2var>(s2vs)
-      val snd = jsonize(body)
-    end
-  end
+  jsonify(
+    "T2Puni", ("s2vs","body"),
+    (jsonize_list<s2var>(s2vs), jsonize(body))
+  )
 //
 | T2Ptyext(tnm1, t2ps) =>
-  (* fprint!(out, "T2Ptyext(", tnm1, "; ", t2ps, ")") *)
-  jsonify("T2Ptyext", args, rst) where
-    val args = (
-      "tnm1",
-      "t2ps"
-    )
-    val rst = (
-      fst,
-      snd
-    ) where
-      val fst = jsonize(tnm1)
-      val snd = jsonize_list<t2ype>(t2ps)
-    end
-  end//
+  jsonify(
+    "T2Ptyext", ("tnm1", "t2ps"),
+    (jsonize(tnm1), jsonize_list<t2ype>(t2ps))
+  )
 | T2Ptyrec(knd1, npf2, lt2ps) =>
-  (* fprint! *)
-  (* ( out *)
-  (* , "T2Ptyrec(", knd1, "; ", npf2, "; ", lt2ps, ")") *)
-  jsonify("T2Ptyrec", args, rst) where
-    val args = (
-      "knd",
-      "npf2",
-      "lt2ps"
-    )
-    val rst = (
-      fst,
-      snd,
-      thd
-    ) where
-      (* val _ = $showtype(knd1) *)
-      val fst = jstr("...")//jsonize(knd1)
-      val snd = jsonize(npf2)
-      val thd = jsonize_list<labt2ype>(lt2ps)
-    end
-  end//
 
+  jsonify(
+    "T2Ptyrec", ("knd1", "npf2", "lt2ps"),
+    (
+      jsonize((*knd1*)"..."),
+      jsonize(npf2),
+      jsonize_list<labt2ype>(lt2ps)
+    )
+  )
 //
 | T2Pnone0() => //fprint!(out, "T2Pnone0(", ")")
   jsonify("T2Pnone0")
@@ -239,6 +160,6 @@ jsonize_labt2ype
 (
 case+ lt2p of
 | TLABELED(l0, t2p) => //fprint!(out, l0, "=", t2p)
-  jsonify("TLABELED", ("l0", "t2p"), ($LAB.jsonize_label(l0), jsonize(t2p)))
+  jsonify("TLABELED", ("l0", "t2p"), (jsonize(l0), jsonize(t2p)))
   (* where val _ = $showtype(l0) end *)
 ) (* end of [fprint_labt2ype] *)

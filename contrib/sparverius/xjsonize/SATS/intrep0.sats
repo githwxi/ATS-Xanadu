@@ -28,6 +28,10 @@ jsonize_ir0gpat : jsonize_type(ir0gpat)
 overload jsonize with jsonize_ir0gpat
 
 fun
+jsonize_ir0vardecl : jsonize_type(ir0vardecl)
+overload jsonize with jsonize_ir0vardecl
+
+fun
 jsonize_ir0valdecl : jsonize_type(ir0valdecl)
 overload jsonize with jsonize_ir0valdecl
 
