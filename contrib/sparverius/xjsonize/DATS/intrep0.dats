@@ -3,32 +3,31 @@
 
 #include "./../HATS/libxatsopt.hats"
 
-#staload "./../SATS/json.sats"
-#staload _ = "./json.dats"
-
 #define XATS_targetloc "./../../../../srcgen/xats"
-(*
-#staload "{$XATS}/SATS/dynexp0.sats"
-#staload "{$XATS}/SATS/staexp0.sats"
-*)
 #staload "{$XATS}/SATS/dynexp1.sats"
 #staload "{$XATS}/SATS/dynexp2.sats"
 #staload "{$XATS}/SATS/dynexp3.sats"
-(* #staload "{$XATS}/SATS/staexp2.sats" *)
+
 
 #staload "./../SATS/json.sats"
 #staload _ = "./json.dats"
 
-#staload "./../SATS/dynexp0.sats"
-#staload "./../SATS/staexp0.sats"
+
 #staload "./../SATS/lexing.sats"
-#staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/label0.sats"
-#staload "./../SATS/dynexp2.sats"
-#staload "./../SATS/dynexp3.sats"
+
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
+
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+
 #staload "./../SATS/statyp2.sats"
 
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
+
 #staload "./../SATS/intrep0.sats"
 
 
@@ -40,7 +39,6 @@ case+ x0.node() of
 //
 | IR0Pnil() =>
   jsonify("IR0Pnil")
-
 | IR0Pint(tok) =>
   jsonify("IR0Pint", "tok", jsonize(tok))
 | IR0Pbtf(tok) =>
@@ -62,7 +60,7 @@ case+ x0.node() of
 | IR0Pnone1(d3p) =>
   jsonify("IR0Pnone1", "d3p", jsonize("..."))
 //
-)
+) // end of [jsonize_ir0pat]
 
 
 implement jsonize_val<ir0pat>(x) = jsonize_ir0pat(x)
@@ -71,10 +69,10 @@ implement
 jsonize_ir0arg
   (x0) =
 let
-val+IR0ARGsome(npf, irps) = x0
+  val+IR0ARGsome(npf, irps) = x0
 in
-jsonify("IR0ARGsome", ("npf", "irps"), (jsonize(npf), jsonize_list<ir0pat>(irps)))
-end
+  jsonify("IR0ARGsome", ("npf", "irps"), (jsonize(npf), jsonize_list<ir0pat>(irps)))
+end // end of [jsonize_ir0arg]
 
 
 local
@@ -84,21 +82,22 @@ implement jsonize_val<ir0dcl> = jsonize_ir0dcl
 implement jsonize_val<t2ype> = jsonize_t2ype
 implement jsonize_val<ir0arg> = jsonize_ir0arg
 
+implement jsonize_val<ti2arg> = jsonize_ti2arg
+
 in
 //
 implement
 jsonize_ir0exp(x0) =
-  (* (x0) = jsonval_labval2("node", jsonize("ir0exp"), "val", res) where *)
-  (* jsonval_labval1("ir0exp", res) where *)
-  res where
-val res =
+(*
+  jsonval_labval1("ir0exp", res) where
+*)
+res where val res =
 (
 case+
 x0.node() of
 //
 | IR0Eint(tok) =>
-  jsonval_labval2("node", jsonize("IR0Eint"), "val", JSONlist(list_nil()))
-  (* jsonize("IR0Eint") //, tok, ")") *)
+  jsonify("IR0Eint", "tok", jsonize(tok))
 | IR0Ebtf(tok) =>
   jsonify("IR0Ebtf", "tok", jsonize(tok))
 (*
@@ -122,14 +121,11 @@ x0.node() of
 //
 | IR0Etcst
   (d2c1, ti3a, ti2s) =>
-
   jsonify("IR0Etcst", ("d2c1", "ti3a", "ti2s"),
-    (jsonize(d2c1), jsonize(ti3a), jsonize("..."))
+    (jsonize(d2c1), jsonize(ti3a), jsonize_list<ti2arg>(ti2s))
   )
-  where val _ = $showtype(ti2s) end
 | IR0Etimp
-  ( ire1
-  , targ, irc2, tsub) =>
+  (ire1, targ, irc2, tsub) =>
   jsonify(
     "IR0Etimp", ("ire1", "targ", "irc2", "tsub"),
     (
@@ -142,135 +138,61 @@ x0.node() of
 //
 | IR0Edapp
   (irf0, npf1, ires) =>
-  jsonify("IR0Edapp", ("irf0", "npf1", "ires"), (jsonize(irf0), jsonize(npf1), jsonize_list<ir0exp>(ires)))
+  jsonify(
+    "IR0Edapp", ("irf0", "npf1", "ires"),
+    (jsonize(irf0), jsonize(npf1), jsonize_list<ir0exp>(ires))
+  )
 //
 | IR0Eproj
   (ire1, lab2, idx2) =>
-  jsonify("IR0Eproj", ("ire1", "lab2", "idx2"), (jsonize(ire1), jsonize(lab2), jsonize(idx2)))
+  jsonify(
+    "IR0Eproj", ("ire1", "lab2", "idx2"),
+    (jsonize(ire1), jsonize(lab2), jsonize(idx2))
+  )
 //
 | IR0Elet(irds, ire1) =>
-  jsonify("IR0Elet", args, rst) where
-    (* val _ = $showtype(irds) *)
-    val args = (
-      "irds",
-      "ire1"
-    )
-    val rst = (
-      fst,
-      snd
-    ) where
-      val fst = jsonize_list<ir0dcl>(irds)
-      val snd = jsonize(ire1)
-    end
-  end
+  jsonify(
+    "IR0Elet", ("irds", "ire1"),
+    (jsonize_list<ir0dcl>(irds), jsonize(ire1))
+  )
 | IR0Ewhere(ire1, irds) =>
-  (* jsonize("IR0Ewhere") //, ire1, "; [", irds, "])") *)
-  jsonify("IR0Ewhere", args, rst) where
-    val args = (
-      "ire1",
-      "irds"
-    )
-    val rst = (
-      fst,
-      snd
-    ) where
-      val fst = jsonize(ire1)
-      val snd = jsonize_list<ir0dcl>(irds)
-  end
-  end
+  jsonify("IR0Ewhere", ("ire1", "irds"),
+      (jsonize(ire1), jsonize_list<ir0dcl>(irds))
+  )
 //
 | IR0Etuple
   (knd0, npf1, ires) =>
-  (* jsonize("IR0Etuple") //, knd0, "; ", npf1, "; [", ires, "])") *)
-  jsonify("IR0Etuple", args, rst) where
-    val args = (
-      "knd0",
-      "npf1",
-      "ires"
-    )
-    val rst = (fst,snd,thd) where
-      val fst = jstr("...")
-      val snd = jsonize(npf1)
-      val thd = jsonize_list<ir0exp>(ires)
-      (* val _ = $showtype(ires) *)
-    end
-  end
+  jsonify(
+    "IR0Etuple", ("knd0", "npf1", "ires"),
+    (jsonize("..."), jsonize(npf1), jsonize_list<ir0exp>(ires))
+  )
 | IR0Eassgn(irel, irer) =>
   jsonify("IR0Eassgn", ("irel", "irer"), (jsonize(irel), jsonize(irer)))
-
-
 //
 | IR0Eif0
   (ire1, ire2, opt3) =>
-  (* jsonize("IR0Eif0") //, ire1, "; ", ire2, "; ", opt3, ")") *)
-  jsonify("IR0Eif0", args, rst) where
-    val args = (
-      "ire1",
-      "ire2",
-      "opt3"
-    )
-    val rst = (fst,snd,thd) where
-      val fst = jsonize(ire1)
-      val snd = jsonize(ire2)
-      val thd = jstr("...")
-    end
-  end
+  jsonify("IR0Eif0",
+    ("ire1", "ire2", "opt3"),
+    (jsonize(ire1), jsonize(ire2), jsonize("..."))
+  )
 //
 | IR0Ecase
   (knd0, ire1, ircls) =>
-  (* jsonize("IR0Ecase") //, knd0, "; ", ire1, "; ", "...", ")") *)
-  jsonify("IR0Ecase", args, rst) where
-    (* val _ = $showtype(ircls) *)
-    val args = (
-      "knd0",
-      "ire1",
-      "ircls"
-    )
-    val rst = (fst,snd,thd) where
-      val fst = jstr("...")
-      val snd = jstr("...")
-      val thd = jstr("...")
-    end
-  end
+  jsonify("IR0Ecase", ("knd0", "ire1", "ircls"),
+    (jsonize("..."), jsonize("..."), jsonize("..."))
+  )
 //
 | IR0Elam
   (knd0, farg, body) =>
-  (* jsonize("IR0Elam") //, knd0, "; [", farg, "]; ", body, ")") *)
-  jsonify("IR0Elam", args, rst) where
-    val args = (
-      "knd0",
-      "farg",
-      "body"
-    )
-    val rst = (fst,snd,thd) where
-      val fst = jsonize(knd0)
-      (* val _ = $showtype(body) *)
-      val snd = jsonize_list<ir0arg>(farg)
-      val thd = jsonize(body)
-    end
-  end
+  jsonify(
+    "IR0Elam", ("knd0", "farg", "body"),
+    (jsonize(knd0), jsonize_list<ir0arg>(farg), jsonize(body))
+  )
 | IR0Efix
   (knd0, d2v0, farg, body) =>
-  (* jsonize("IR0Efix") //, knd0, "; ", d2v0, "; [", farg, "]; ", body, ")") *)
-  jsonify("IR0Efix", args, rst) where
-    val args = (
-      "knd0",
-      "d2v0",
-      "farg",
-      "body"
-    )
-    val rst = (
-      fst,
-      snd,
-      thd,
-      frh
-    ) where
-      val fst = jstr("...")
-      val snd = jstr("...")
-      val thd = jstr("...")
-      val frh = jstr("...")
-    end
-  end
+  jsonify("IR0Efix", ("knd0", "d2v0", "farg", "body"),
+    (jsonize("..."), jsonize("..."), jsonize("..."), jsonize("..."))
+  )
 //
 | IR0Eaddr(ire1) =>
   jsonify("IR0Eaddr", "ire1", jsonize(ire1))
@@ -289,9 +211,9 @@ x0.node() of
   )
 //
 )
-end
+end // end of [jsonize_ir0exp]
 
-end
+end // end of local
 
 
 implement
@@ -301,12 +223,8 @@ jsonize_ir0gua
 case+
 x0.node() of
 | IR0GUAexp(ir0e) =>
-  (* fprint! *)
-  (* (out, "IR0GUAexp(", ir0e, ")") *)
   jsonify("IR0GUAexp", "ir0e", jsonize(ir0e))
 | IR0GUAmat(ir0e, ir0p) =>
-  (* fprint! *)
-  (* (out, "IR0GUAmat(", ir0e, "; ", ir0p, ")") *)
   jsonify("IR0GUAmat", ("ir0e", "ir0p"),
     (
       jsonize(ir0e),
@@ -323,17 +241,11 @@ jsonize_ir0clau
 case+
 x0.node() of
 //
-|
-IR0CLAUpat(ir0gp) =>
-(* fprint! *)
-(* (out, "IR0CLAUpat(", ir0gp, ")") *)
-jsonify("IR0CLAUpat", "ir0gp", jsonize(ir0gp))
+| IR0CLAUpat(ir0gp) =>
+  jsonify("IR0CLAUpat", "ir0gp", jsonize(ir0gp))
 //
-|
-IR0CLAUexp(ir0gp, d0e0) =>
-(* fprint! *)
-(* (out, "IR0CLAUexp(", ir0gp, "; ", d0e0, ")") *)
-jsonify("IR0CLAUpat", ("ir0gp", "d0e0"), (jstr("..."), jstr("...")))
+| IR0CLAUexp(ir0gp, d0e0) =>
+  jsonify("IR0CLAUpat", ("ir0gp", "d0e0"), (jsonize("..."), jsonize("...")))
 //
 ) (* end of [jsonize_ir0clau] *)
 
@@ -347,27 +259,17 @@ jsonize_ir0gpat
 case+
 x0.node() of
 //
-|
-IR0GPATpat(ir0p) =>
-(* fprint! *)
-(* (out, "IR0GPATpat(", ir0p, ")") *)
-jsonify("IR0GPATpat", "ir0p", jsonize(ir0p))
-//
-|
-IR0GPATgua(ir0p, ir0gs) =>
-(* fprint! *)
-(* (out, "IR0GPATgua(", ir0p, "; ", ir0gs, ")") *)
-jsonify("IR0CLAUpat", ("ir0p", "ir0gs"),
-  (
-    (* jstr("..."),  *)
-    (* jstr("...") *)
-    jsonize(ir0p),
-    jsonize_list<ir0gua>(ir0gs)
+| IR0GPATpat(ir0p) =>
+  jsonify("IR0GPATpat", "ir0p", jsonize(ir0p))
+| IR0GPATgua(ir0p, ir0gs) =>
+  jsonify("IR0CLAUpat", ("ir0p", "ir0gs"),
+    (
+      jsonize(ir0p),
+      jsonize_list<ir0gua>(ir0gs)
+    )
   )
-)
 //
-) (* end of [fprint_ir0gpat] *)
-//
+) (* end of [jsonize_ir0gpat] *)
 
 
 implement jsonize_val<ir0dcl> = jsonize_ir0dcl
@@ -386,48 +288,26 @@ case+ x0.node() of
 //
 | IR0Cstatic
   (tok, irc1) =>
-  (* fprint!(out,"IR0Cstatic(", tok, "; ", irc1, ")") *)
-  jsonify("IR0Cstatic", ("tok", "irc1"), (jsonize(tok), jstr("...")))
+  jsonify("IR0Cstatic", ("tok", "irc1"), (jsonize(tok), jsonize(irc1)))
 | IR0Cextern
   (tok, irc1) =>
-  (* fprint!(out,"IR0Cextern(", tok, "; ", irc1, ")") *)
-  jsonify("IR0Cextern", ("tok", "irc1"), (jsonize(tok), jstr("...")))
+  jsonify("IR0Cextern", ("tok", "irc1"), (jsonize(tok), jsonize(irc1)))
 //
 | IR0Cinclude
   (tok, src, knd, fopt, body) =>
-  jsonify("IR0Cinclude", ("tok", "src", "knd", "fopt", "body"), rst) where
-  (* val _ = $showtype(fopt) // filpath *)
-    val jsrc = jsonize(src)
-    val jknd = jsonize(knd)
-    val jfopt = jstr("...")
+  jsonify("IR0Cinclude", ("tok", "src", "knd", "fopt", "body"),
+    (jsonize(tok), jsonize(src), jsonize(knd), jsonize("..."), jbody)
+  ) where
     val jbody = (
       case+ body of
       | Some(x) => jsonize_list<ir0dcl>(x)
       | None() => JSONlist(list_nil())
     )
-    val rst = (jsonize(tok), jsrc, jknd, jfopt, jbody)
-  end
-(*
-  (
-  (* fprint!(out,"IR0Cinclude(", "src= ", src, "; ", "knd= ", knd, "; ", fopt, "; ", body, ")") *)
-  ) where
-  {
-    val body =
-    (
-    case+ body of
-    | None _ => "None()"
-    | Some _ => "Some(<irdcls>)"): string
-  }
-*)
+    end
 //
 | IR0Clocal
   (head, body) =>
-  (* fprint!(out,"IR0Clocal(", head, "; ", body, ")") *)
-  jsonify("IR0Clocal", ("head", "body"), rst) where
-    val jhead = jstr("...")
-    val jbody = jstr("...")
-    val rst = (jhead, jbody)
-  end
+  jsonify("IR0Clocal", ("head", "body"), (jsonize("..."), jsonize("...")))
 //
 | IR0Cvardecl
   (knd, mopt, irds) =>
@@ -442,49 +322,43 @@ case+ x0.node() of
 //
 | IR0Cfundecl
   (knd, mopt, tqas, irds) =>
-  (* fprint!(out,"IR0Cfundecl(", knd, "; ", mopt, "; ", tqas, "; ", irds, ")") *)
-  jsonify("IR0Cfundecl", ("knd", "mopt", "tqas", "irds"), rst) where
-    val jknd = jsonize(knd)
-    val jmopt = jsonize(mopt)
-    (* val _ = $showtype(tqas) // list tq2arg *)
-    val jtqas = //jstr("...")
-      jsonize_list<tq2arg>(tqas)
-    (* val _ = $showtype(irds) // list ir0fundecl *)
-    val jirds = //jstr("...")
+  jsonify("IR0Cfundecl", ("knd", "mopt", "tqas", "irds"),
+    (
+      jsonize(knd),
+      jsonize(mopt),
+      jsonize_list<tq2arg>(tqas),
       jsonize_list<ir0fundecl>(irds)
-    val rst = (jknd, jmopt, jtqas, jirds)
-  end
+    )
+  )
 //
 | IR0Cimpdecl3
   (knd, mopt, sqas, tqas, id2c, ti3a, ti2s, iras, body) =>
-  (* fprint!(out,"IR0Cimpdecl3(", knd, "; ", mopt, "; ", sqas, "; ", tqas, "; ", id2c, "; ", ti3a, "; ", ti2s, "; ", iras, "; ", body, ")") *)
-  jsonify("IR0Cimpdecl3", args, rst) where
-    val args = ("knd", "mopt", "sqas", "tqas", "id2c", "ti3a", "ti2s", "iras", "body")
-    val jknd = jsonize(knd)//jstr("...")
-    val jmopt = jsonize(mopt)//jstr("...")
-    val jsqas = jsonize_list<sq2arg>(sqas)
-    val jtqas = jsonize_list<tq2arg>(tqas)
-    val jid2c = jsonize(id2c)
-    val jti3a = jsonize(ti3a)
-    val jti2s = jsonize_list<ti2arg>(ti2s)
-    val jiras = jsonize_list<ir0arg>(iras) where val _ = $showtype(iras) end
-    val jbody = jsonize(body)
-    val rst = (jknd, jmopt, jsqas, jtqas, jid2c, jti3a, jti2s, jiras, jbody)
-  end
-
+  jsonify(
+    "IR0Cimpdecl3",
+    ("knd", "mopt", "sqas", "tqas", "id2c", "ti3a", "ti2s", "iras", "body"),
+    (
+      jsonize(knd),
+      jsonize(mopt),
+      jsonize_list<sq2arg>(sqas),
+      jsonize_list<tq2arg>(tqas),
+      jsonize(id2c),
+      jsonize(ti3a),
+      jsonize_list<ti2arg>(ti2s),
+      jsonize_list<ir0arg>(iras),
+      jsonize(body)
+    )
+  )
+  (* where val _ = $showtype(iras) end *)
 //
 | IR0Cnone0() =>
-  (* fprint!(out, "IR0Cnone0(", ")") *)
   jsonify("IR0Cnone0")
-
 | IR0Cnone1(d3cl) =>
-  (* fprint!(out, "IR0Cnone1(", d3cl, ")") *)
-  jsonify("IR0Cnone1", "d3cl", rst) where
-    val rst = jstr("...")
-  end
+  jsonify("IR0Cnone1", "d3cl", jsonize("..."))
 //
-) // end of jsonize_
+) // end of [jsonize_ir0dcl]
 
+
+implement jsonize_val<ir0exp> = jsonize_ir0exp
 
 implement
 jsonize_ir0vardecl
@@ -493,9 +367,11 @@ jsonize_ir0vardecl
 val+IR0VARDECL(rcd) = x0
 //
 in
-  jsonify ("IR0VARDECL", ("d2v", "ini"), (jsonize(rcd.d2v), jsonize("...")))
-  (* , rcd.ini *)
-end // end of [fprint_ir0vardecl]
+  jsonify (
+    "IR0VARDECL", ("d2v", "ini"),
+    (jsonize(rcd.d2v), jsonize_option<ir0exp>(rcd.ini))
+  )
+end // end of [jsonize_ir0vardecl]
 
 
 implement
@@ -516,7 +392,7 @@ in
       | Some(x) => jsonize(x)
     )
   end
-end // end of [fprint_ir0valdecl]
+end // end of [jsonize_ir0valdecl]
 
 
 implement jsonize_val<f2arg> = jsonize_f2arg
@@ -528,35 +404,20 @@ jsonize_ir0fundecl
 val+IR0FUNDECL(rcd) = x0
 //
 in
-(*
-  fprint!
-  ( out
-  , "IR0FUNDECL@{"
-  , ", nam=", rcd.nam
-  , ", d2c=", rcd.d2c
-  , ", a2g=", rcd.a2g
-(*
-  , ", a3g=", rcd.a3g
-*)
-  , ", def=", rcd.def, "}")
-*)
-jsonify("IR0FUNDECL", ("nam", "d2c", "a2g", "a3g", "def"), rst) where
-  val jnam = jsonize(rcd.nam)
-  val jd2c = jsonize(rcd.d2c)
-  (* val _ = $showtype(rcd.a2g) *)
-  val ja2g = jsonize_list<f2arg>(rcd.a2g) //jstr("...")//jsonize(rcd.a2g)
-  val ja3g = (
-    case+ rcd.a3g of
-    | None() => JSONlist(list_nil())
-    | Some(x) => jsonize_list<f2arg>(rcd.a2g)
+  jsonify(
+    "IR0FUNDECL", ("nam", "d2c", "a2g", "a3g", "def"),
+    (jsonize(rcd.nam), jsonize(rcd.d2c),  jsonize_list<f2arg>(rcd.a2g), ja3g, jdef)
   )
-  val jdef = (
-    case+ rcd.def of
-    | None() => JSONlist(list_nil())
-    | Some(x) => jsonize_list<f2arg>(rcd.a2g)
-  )
-  (* val _ = $showtype(rcd.def) *)
-
-  val rst = (jnam, jd2c, ja2g, ja3g, jdef)
-end
-end
+  where
+    val ja3g = (
+      case+ rcd.a3g of
+      | None() => JSONlist(list_nil())
+      | Some(x) => jsonize_list<f2arg>(rcd.a2g)
+    )
+    val jdef = (
+      case+ rcd.def of
+      | None() => JSONlist(list_nil())
+      | Some(x) => jsonize_list<f2arg>(rcd.a2g)
+    )
+  end
+end // end of [jsonize_ir0fundecl]

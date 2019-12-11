@@ -330,3 +330,84 @@ case+ x0.node() of
 //
 ) (* end of [jsonize_d1ecl] *)
 *)
+
+
+local
+
+implement
+jsonize_val<d1pat> = jsonize_d1pat
+
+in (* in-of-local *)
+
+implement
+jsonize_d1pat
+  (x0) =
+(
+case+
+x0.node() of
+| D1Pid(tok) =>
+  jsonify("D1Pid", "tok", jsonize(tok))
+//
+| D1Pint(tok) =>
+  jsonify("D1Pint", "tok", jsonize(tok))
+| D1Pchr(tok) =>
+  jsonify("D1Pchr", "tok", jsonize(tok))
+| D1Pflt(tok) =>
+  jsonify("D1Pflt", "tok", jsonize(tok))
+| D1Pstr(tok) =>
+  jsonify("D1Pstr", "tok", jsonize(tok))
+//
+| D1Papp() =>
+  jsonify("D1Papp")
+//
+| D1Pbs0() =>
+  jsonify("D1Pbs0")
+| D1Pbs1(d1p) =>
+  jsonify("D1Pbs1", "d1p", jsonize(d1p))
+//
+| D1Papp1(d1p0, d1p1) =>
+  jsonify("D1Papps", ("d1p0", "d1p1"), (jsonize(d1p0), jsonize(d1p1)))
+| D1Papp2(d1p0, d1p1, d1p2) =>
+  jsonify("D1Papps", ("d1p0", "d1p1", "d1p2"), (jsonize(d1p0), jsonize(d1p1), jsonize(d1p2)))
+//
+| D1Psarg(s1as) =>
+  jsonify("D1Psarg", "s1as", jsonize("..."))
+//
+| D1Plist(d1ps) =>
+  jsonify("D1Plist1", "d1ps", jsonize("..."))
+| D1Plist(d1ps1, d1ps2) =>
+  jsonify("D1Plist2", ("d1ps1", "d1ps2"), (jsonize("..."), jsonize("...")))
+//
+| D1Ptuple(tok, d1ps) =>
+  jsonify("D1Ptuple1", ("tok", "d1ps"), (jsonize(tok), jsonize("...")))
+| D1Ptuple(tok, d1ps1, d1ps2) =>
+  jsonify("D1Ptuple2", ("tok", "d1ps1", "d1ps2"), (jsonize(tok), jsonize("..."), jsonize("...")))
+//
+| D1Precord(tok, ld1ps) =>
+  jsonify("D1Precord1", ("tok", "ld1ps"), (jsonize(tok), jsonize("...")))
+| D1Precord(tok, ld1ps1, ld1ps2) =>
+  jsonify("D1Precord2", ("tok", "ld1ps1", "ld1ps2"), (jsonize(tok), jsonize("..."), jsonize("...")))
+//
+| D1Panno(d1p, s1e) =>
+  jsonify("D1Panno", ("d1p", "s1e"), (jsonize(d1p), jsonize(s1e)))
+//
+| D1Pnone((*void*)) =>
+  jsonify("D1Pnone")
+//
+) (* end of [fprint_d1pat] *)
+
+end // end of [local]
+
+
+implement jsonize_val<s1exp> = jsonize_s1exp
+
+implement
+jsonize_f1unarrow
+  (x0) =
+(
+case+ x0 of
+| F1UNARROWdflt() =>
+  jsonify("F1UNARROWdflt")
+| F1UNARROWlist(s1es) =>
+  jsonify("F1UNARROWlist", "s1es", jsonize_list<s1exp>(s1es))
+) (* end of [fprint_f1unarrow] *)

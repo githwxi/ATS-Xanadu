@@ -29,6 +29,10 @@ jsonize_d2itm : jsonize_type(d2itm)
 overload jsonize with jsonize_d2itm
 
 fun
+jsonize_d2pitm : jsonize_type(d2pitm)
+overload jsonize with jsonize_d2pitm
+
+fun
 jsonize_d2pat : jsonize_type(d2pat)
 overload jsonize with jsonize_d2pat
 

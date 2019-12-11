@@ -442,3 +442,19 @@ case+ x0 of
   jsonify("S2ITMcst", "fmod", jsonize("..."))
 )
 end
+
+
+implement
+jsonize_effs2expopt
+  (x0) =
+(
+case+ x0 of
+| EFFS2EXPnone() =>
+  jsonify("EFFS2EXPnone")
+| EFFS2EXPsome(s2e) =>
+  jsonify("EFFS2EXPsome", "s2e", jsonize(s2e))
+(*
+| EFFS2EXPsome(s2f, s2e) =>
+  jsonify("EFFS2EXPsome", ("s2f", "s2e"), (jsonize(s2f), jsonize(s2e)))
+*)
+) (* end of [fprint_effs2expopt] *)
