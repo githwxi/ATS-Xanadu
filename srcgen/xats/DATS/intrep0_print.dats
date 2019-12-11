@@ -311,9 +311,18 @@ x0.node() of
   , knd0, "; "
   , d2v0, "; ", farg, "; ", body, ")")
 //
+| IR0Eaddr(ire1) =>
+  (
+    fprint!(out, "IR0Eaddr(", ire1, ")")
+  )
+//
 | IR0Eflat(ire1) =>
   (
     fprint!(out, "IR0Eflat(", ire1, ")")
+  )
+| IR0Etalf(ire1) =>
+  (
+    fprint!(out, "IR0Etalf(", ire1, ")")
   )
 //
 | IR0Enone0(   ) =>

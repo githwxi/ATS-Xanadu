@@ -888,7 +888,14 @@ t2p0.node() of
   auxxtv(t2p0, flag)
 | T2Papp _ =>
   auxapp(t2p0, flag)
+//
+(*
+| T2Plft _ =>
+  auxlft(t2p0, flag)
+*)
+//
 | _ (*rest-of-t2ype*) => t2p0
+//
 )
 
 and

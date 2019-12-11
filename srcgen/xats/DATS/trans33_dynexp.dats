@@ -94,7 +94,7 @@ println!
 *)
 //
 val opt0 =
-match_d2pconlst_t2ype(dpis, t2p0)
+match2_d2pconlst_t2ype(dpis, t2p0)
 //
 in
 case+ opt0 of
@@ -113,7 +113,7 @@ case- d2i0 of
     val-
     list_cons(d2c1, _) = d2cs
     val-true =
-    unify_d2con_t2ype(loc0, d2c1, t2p0)
+    unify2_d2con_t2ype(loc0, d2c1, t2p0)
   }
 )
 end // end of [auxsym0]
@@ -280,6 +280,38 @@ case+ d3ps of
 } (* end of [trans33_dpatlst_dn] *)
 //
 (* ****** ****** *)
+//
+fun
+d33exp_make_node
+( loc0: loc_t
+, t2p0: t2ype
+, d3en: d3exp_node) =
+let
+val t2p0 = hnfize(t2p0)
+val d3e0 =
+d3exp_make_node(loc0, t2p0, d3en)
+in
+case+ t2p0.node() of
+|
+T2Plft(t2p1) =>
+d3exp_make_node
+(loc0, t2p1, D3Eflat(d3e0)) | _ => d3e0
+end // end of [d33exp_make_node]
+//
+(* ****** ****** *)
+//
+macdef d33exp_if0_up = d23exp_if0_up
+//
+macdef d33exp_lam_up = d23exp_lam_up
+macdef d33exp_fix_up = d23exp_fix_up
+//
+macdef d33exp_sapp_up = d23exp_sapp_up
+macdef d33exp_tapp_up = d23exp_tapp_up
+//
+macdef d33exp_proj_up = d23exp_proj_up
+macdef d33exp_tuple_up = d23exp_tuple_up
+//
+(* ****** ****** *)
 
 local
 
@@ -290,7 +322,7 @@ d2var_up
 ( loc0: loc_t
 , d2v1: d2var): d3exp =
 (
-  d3exp_make_node
+  d33exp_make_node
   (loc0, t2p1, D3Evar(d2v1))
 ) where
 {
@@ -301,7 +333,7 @@ d2con_up
 ( loc0: loc_t
 , d2c1: d2con): d3exp =
 (
-  d3exp_make_node
+  d33exp_make_node
   (loc0, t2p1, D3Econ1(d2c1))
 ) where
 {
@@ -322,11 +354,11 @@ in
 case+ ti3a of
 |
 TI3ARGnone _ =>
-d3exp_make_node
+d33exp_make_node
 (loc0, t2p1, D3Efcst(d2c1))
 |
 TI3ARGsome _ =>
-d3exp_make_node
+d33exp_make_node
 (loc0, t2p1, D3Etcst(d2c1, ti3a, ti2s))
 end // end of [d2cst_up]
 //
@@ -377,8 +409,8 @@ then d3e0
 else d2con_up(loc0, d2c1)
 ) where
 {
-val opt0 =
-match_d2con_t2ype(d2c1, t2p0)
+  val opt0 =
+  match2_d2con_t2ype(d2c1, t2p0)
 }
 //
 end // end of [auxcon1]
@@ -411,8 +443,8 @@ then d3e0
 else d2cst_up(loc0, d2c1)
 ) where
 {
-val opt0 =
-match_d2cst_t2ype(d2c1, t2p0)
+  val opt0 =
+  match2_d2cst_t2ype(d2c1, t2p0)
 }
 //
 end // end of [auxcst1]
@@ -447,8 +479,8 @@ case+ opt0 of
    d2con_up(loc0, d2c1)
 ) where
 {
-val opt0 =
-match_d2conlst_t2ype(d2cs, t2p0)
+  val opt0 =
+  match2_d2conlst_t2ype(d2cs, t2p0)
 }
 //
 end // end of [auxcon2]
@@ -481,8 +513,8 @@ case+ opt0 of
    d2cst_up(loc0, d2c1)
 ) where
 {
-val opt0 =
-match_d2cstlst_t2ype(d2cs, t2p0)
+  val opt0 =
+  match2_d2cstlst_t2ype(d2cs, t2p0)
 }
 //
 end // end of [auxcst2]
@@ -513,7 +545,7 @@ println!
 *)
 //
 val opt0 =
-match_d2pitmlst_t2ype(dpis, t2p0)
+match2_d2pitmlst_t2ype(dpis, t2p0)
 //
 in(* in-of-let *)
 //
@@ -566,7 +598,7 @@ val
 d3f0 = trans33_dexp(d3f0)
 //
 in
-d3exp_sapp_up(loc0, d3f0, s2es)
+d33exp_sapp_up(loc0, d3f0, s2es)
 end // end of [auxsap0]
 
 fun
@@ -587,7 +619,7 @@ val
 d3f0 = trans33_dexp(d3f0)
 //
 in
-d3exp_sapp_up(loc0, d3f0, s2es)
+d33exp_sapp_up(loc0, d3f0, s2es)
 end // end of [auxsap1]
 
 (* ****** ****** *)
@@ -607,7 +639,7 @@ D3Etapp
 , s2es) = d3e0.node()
 //
 in
-d3exp_tapp_up(loc0, d2f0, s2es)
+d33exp_tapp_up(loc0, d2f0, s2es)
 end // end of [auxtapp]
 
 (* ****** ****** *)
@@ -642,7 +674,7 @@ d3f0 = trans33_dexp(d3f0)
 val
 d3es = trans33_dexplst(d3es)
 in
-d3exp_dapp_up(loc0, d3f0, npf1, d3es)
+d33exp_dapp_up(loc0, d3f0, npf1, d3es)
 end
 //
 end // end of [auxdapp]
@@ -674,7 +706,7 @@ let
 val-
 list_cons(d3e1, _) = d3es
 in
-  d3exp_proj_up(loc0, d3e1, lab0)
+  d33exp_proj_up(loc0, d3e1, lab0)
 end // end of [None]
 (*
 |
@@ -702,7 +734,7 @@ val
 d3es = trans33_dexplst(d3es)
 //
 in
-d3exp_tuple_up(loc0, knd1, npf2, d3es)
+d33exp_tuple_up(loc0, knd1, npf2, d3es)
 end // end of [aux_tuple]
 
 (* ****** ****** *)
@@ -730,7 +762,7 @@ trans33_dexp(d3e1)
 val
 t2p1 = d3e1.type((*void*))
 in
-  d3exp_make_node
+d33exp_make_node
   (loc0, t2p1, D3Elet(d3cs, d3e1))
 end
 end (* end of [aux_let] *)
@@ -760,7 +792,7 @@ trans33_dexp(d3e1)
 val
 t2p1 = d3e1.type()
 in
-  d3exp_make_node
+d33exp_make_node
   (loc0, t2p1, D3Ewhere(d3e1, d3cs))
 end
 end (* end of [aux_where] *)
@@ -783,7 +815,7 @@ val d3e1 = trans33_dexp(d3e1)
 val d3e2 = trans33_dexp(d3e2)
 //
 in
-  d3exp_a33gn_up(loc0, d3e1, d3e2)
+  d33exp_assgn_up(loc0, d3e1, d3e2)
 end // end of [aux_assgn]
 
 (* ****** ****** *)
@@ -805,7 +837,7 @@ val d3e2 = trans33_dexp(d3e2)
 val opt3 = trans33_dexpopt(opt3)
 //
 in
-d3exp_if0_up(loc0, d3e1, d3e2, opt3)
+d33exp_if0_up(loc0, d3e1, d3e2, opt3)
 end (* end of [aux_if0] *)
 
 (* ****** ****** *)
@@ -828,7 +860,7 @@ val dcls =
   trans33_dclaulst_dn(dcls, tres)
 //
 in
-d3exp_make_node
+d33exp_make_node
 (loc0, tres, D3Ecase(knd0, d3e1, dcls))
 end (* end of [aux_case] *)
 
@@ -855,7 +887,7 @@ val
 body = trans33_dexp(body)
 //
 in
-d3exp_lam_up
+d33exp_lam_up
 (loc0, knd0, f3as, tres, arrw, body)
 end // end of [aux_lam]
 
@@ -883,12 +915,13 @@ val
 body = trans33_dexp(body)
 //
 in
-d3exp_fix_up
+d33exp_fix_up
 (loc0, knd0, d2v0, f3as, tres, arrw, body)
 end // end of [aux_fix]
 
 (* ****** ****** *)
 
+(*
 fun
 aux_flat
 ( d3e0
@@ -905,8 +938,9 @@ val t2p1 = t2ype_lft(t2p0)
 val d3e1 = trans33_dexp_dn(d3e1, t2p1)
 //
 in
-d3exp_make_node(loc0, t2p0, D3Eflat(d3e1))
+d33exp_make_node(loc0, t2p0, D3Eflat(d3e1))
 end // end of [aux_flat]
+*)
 
 (* ****** ****** *)
 
@@ -926,7 +960,7 @@ val t2p0 =
 t2ype_app1(the_t2ype_p2tr, d3e1.type())
 //
 in
-d3exp_make_node(loc0, t2p0, D3Eaddr(d3e1))
+d33exp_make_node(loc0, t2p0, D3Eaddr(d3e1))
 end // end of [aux_addr]
 
 (* ****** ****** *)
@@ -946,7 +980,7 @@ val d3e1 = trans33_dexp(d3e1)
 val t2p0 = the_t2ype_void(*void*)
 //
 in
-d3exp_make_node(loc0, t2p0, D3Efold(d3e1))
+d33exp_make_node(loc0, t2p0, D3Efold(d3e1))
 end // end of [aux_fold]
 
 (* ****** ****** *)
@@ -969,7 +1003,7 @@ val t2p2 = s2exp_erase(s2e2)
 val d3e1 = trans33_dexp_dn(d3e1, t2p2)
 //
 in
-d3exp_make_node
+d33exp_make_node
 (loc0, d3e1.type(), D3Eanno(d3e1, s2e2))
 end // end of [aux_anno]
 
@@ -1048,9 +1082,11 @@ d3e0.node() of
   (_, _, _, _, _, _) => aux_fix(d3e0)
   // D3Efix
 //
+(*
 | D3Eflat(d3e1) => aux_flat(d3e0)
-//
+*)
 | D3Eaddr(d3e1) => aux_addr(d3e0)
+//
 | D3Efold(d3e1) => aux_fold(d3e0)
 //
 | D3Eanno
@@ -1071,7 +1107,7 @@ implement
 trans33_dexp_dn
   (d3e0, t2p0) =
 (
-  d3exp_dn(d3e0, t2p0)
+  d33exp_dn(d3e0, t2p0)
 ) where
 {
   val d3e0 = trans33_dexp(d3e0)
@@ -1595,7 +1631,7 @@ case+ opt0 of
 {
   val
   opt0 =
-  match_d2cstlst_t2ype(d2cs, tfun)
+  match2_d2cstlst_t2ype(d2cs, tfun)
 }
 //
 end // end of [auxid3c]

@@ -272,7 +272,10 @@ ir0exp_node =
 | IR0Efix of
   (int(*knd*), d2var, ir0arglst, ir0exp)
 //
+| IR0Eaddr of (ir0exp(*l-value*))
+//
 | IR0Eflat of (ir0exp(*l-value*))
+| IR0Etalf of (ir0exp(*IR0Eflat*))
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //

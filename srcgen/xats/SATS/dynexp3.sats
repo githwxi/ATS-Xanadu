@@ -353,12 +353,13 @@ d3exp_node =
   , f3arglst(*arg*)
   , effs2expopt, f1unarrow, d3exp(*body*))
 //
-| D3Eflat of d3exp(*l-value*)
-//
 | D3Eaddr of d3exp(*l-value*)
 | D3Efold of d3exp(*open-con*)
 //
 | D3Eanno of (d3exp, s2exp)
+//
+| D3Eflat of d3exp(*l-value*)
+| D3Etalf of d3exp(*D3Eflat*)
 //
 | D3Elcast of (d3exp, label)
 | D3Etcast of (d3exp, t2ype)
@@ -524,11 +525,16 @@ overload prerr with prerr_d3exp
 overload fprint with fprint_d3exp
 //
 (* ****** ****** *)
-
+//
+fun
+d3exp_talf(d3e0: d3exp): d3exp
+//
+(* ****** ****** *)
+//
 fun
 d3exp_tcast
 (d3e0: d3exp, t2p0: t2ype): d3exp
-
+//
 (* ****** ****** *)
 
 datatype

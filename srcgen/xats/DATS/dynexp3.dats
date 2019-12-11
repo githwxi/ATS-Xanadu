@@ -336,10 +336,26 @@ d3exp_make_node
 }
 //
 (* ****** ****** *)
+
+implement
+d3exp_talf
+  (d3e0) =
+let
+val
+loc0 = d3e0.loc()
+val
+t2p0 =
+t2ype_lft(d3e0.type())
+in
+d3exp_make_node
+  (loc0, t2p0, D3Etalf(d3e0))
+end
+
+(* ****** ****** *)
 //
 implement
 d3exp_tcast
-(d3e0, t2p0) =
+  (d3e0, t2p0) =
 (
 d3exp_make_node
 ( loc0

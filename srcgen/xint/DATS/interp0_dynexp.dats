@@ -918,6 +918,12 @@ IR0Eflat(ire1) = ire0.node()
 //
 val
 irv1 = interp0_irexp(env0, ire1)
+//
+(*
+val () =
+println!("aux_flat: irv1 = ", irv1)
+*)
+//
 in
 //
 case- irv1 of
@@ -925,6 +931,22 @@ case- irv1 of
   let val-Some(irv0) = ref[] in irv0 end
 //
 end
+
+(* ****** ****** *)
+
+fun
+aux_talf
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Etalf(ire1) = ire0.node()
+in
+case- ire1.node() of
+| IR0Eflat(ire1) => interp0_irexp(env0, ire1)
+end // end of [aux_talf]
 
 (* ****** ****** *)
 
@@ -990,6 +1012,7 @@ ire0.node() of
   // IR0Efix
 //
 | IR0Eflat(ire1) => aux_flat(env0, ire0)
+| IR0Etalf(ire1) => aux_talf(env0, ire0)
 //
 | _(*rest-of-ir0exp*) => IR0Vnone1(ire0)
 //
