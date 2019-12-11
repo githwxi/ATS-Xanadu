@@ -176,6 +176,13 @@ in
 case+
 d3p0.node() of
 //
+| D3Pnil() =>
+  ir0pat_make_node
+  (loc0, IR0Pnil((*void*)))
+| D3Pany() =>
+  ir0pat_make_node
+  (loc0, IR0Pany((*void*)))
+//
 | D3Pint(tok) =>
   ir0pat_make_node
   (loc0, IR0Pint(tok))
@@ -183,9 +190,6 @@ d3p0.node() of
   ir0pat_make_node
   (loc0, IR0Pbtf(tok))
 //
-| D3Pany() =>
-  ir0pat_make_node
-  (loc0, IR0Pany((*void*)))
 | D3Pvar(d2v) =>
   ir0pat_make_node(loc0, IR0Pvar(d2v))
 //
@@ -370,6 +374,17 @@ d3e0.node() of
     , IR0Etuple(knd0, npf1, ires))
   end
 //
+| D3Eassgn(d3el, d3er) =>
+  let
+    val
+    irel = irerase_dexp(d3el)
+    val
+    irer = irerase_dexp(d3er)
+  in
+    ir0exp_make_node
+    ( loc0, IR0Eassgn(irel, irer))
+  end
+//
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   let
@@ -437,8 +452,30 @@ d3e0.node() of
     end
   end
 //
+| D3Eaddr(d3e1) =>
+  let
+    val ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node(loc0, IR0Eaddr(ire1))
+  end // end of [D3Eaddr]
+//
+| D3Eflat(d3e1) =>
+  let
+    val ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node(loc0, IR0Eflat(ire1))
+  end // end of [D3Eflat]
+| D3Etalf(d3e1) =>
+  let
+    val ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node(loc0, IR0Etalf(ire1))
+  end // end of [D3Eflat]
+//
 | _(*rest-of-d3exp*) =>
-  ir0exp_make_node(loc0, IR0Enone1(d3e0))
+  (
+    ir0exp_make_node(loc0, IR0Enone1(d3e0))
+  )
 //
 end // end of [irerase_dexp]
 
@@ -687,6 +724,16 @@ d3cl.node() of
     (loc0, IR0Cvaldecl(tok, mopt, irds))
   end
 //
+| D3Cvardecl
+  (tok, mopt, v3ds) =>
+  let
+    val
+    irds = irerase_vardeclist(v3ds)
+  in
+    ir0dcl_make_node
+    (loc0, IR0Cvardecl(tok, mopt, irds))
+  end
+//
 | D3Cfundecl
   (tok, mopt, tqas, f3ds) =>
   let
@@ -774,6 +821,40 @@ implement
 list_map$fopr<v3aldecl><ir0valdecl>(v3d) = irerase_valdecl(v3d)
 }
 } (* end of [irerase_valdeclist] *)
+
+(* ****** ****** *)
+
+implement
+irerase_vardecl
+  (v3d0) =
+let
+val+
+V3ARDECL(rcd) = v3d0
+//
+val loc = rcd.loc
+val d2v = rcd.d2v
+val ini = rcd.ini
+//
+val ini = irerase_dexpopt(ini)
+//
+in
+IR0VARDECL(@{loc=loc,d2v=d2v,ini=ini})
+end // end of [irerase_vardecl]
+
+implement
+irerase_vardeclist
+  (v3ds) =
+list_vt2t(irds) where
+{
+val
+irds =
+list_map<v3ardecl><ir0vardecl>
+  (v3ds) where
+{
+implement
+list_map$fopr<v3ardecl><ir0vardecl>(v3d) = irerase_vardecl(v3d)
+}
+} (* end of [irerase_vardeclist] *)
 
 (* ****** ****** *)
 

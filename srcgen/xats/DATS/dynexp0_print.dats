@@ -955,10 +955,10 @@ case+ x0.node() of
   , "D0Cvaldecl(", tok, "; ", mopt, "; ", d0cs, ")")
 //
 | D0Cvardecl
-  (tok, d0cs) =>
-  (
-    fprint!(out, "D0Cvardecl(", tok, "; ", d0cs, ")")
-  ) (*D0Cvardecl*)
+  (tok, mopt, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cvardecl(", tok, "; ", mopt, "; ", d0cs, ")")
 //
 | D0Cfundecl
   (tok, mopt, tqas, d0cs) =>

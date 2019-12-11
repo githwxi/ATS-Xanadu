@@ -144,13 +144,16 @@ fprint_ir0pat
 (
 case+ x0.node() of
 //
+| IR0Pnil() =>
+  fprint!(out, "IR0Pnil(", ")")
+| IR0Pany() =>
+  fprint!(out, "IR0Pany(", ")")
+//
 | IR0Pint(tok) =>
   fprint!(out, "IR0Pint(", tok, ")")
 | IR0Pbtf(tok) =>
   fprint!(out, "IR0Pbtf(", tok, ")")
 //
-| IR0Pany() =>
-  fprint!(out, "IR0Pany(", ")")
 | IR0Pvar(d2v) =>
   fprint!(out, "IR0Pvar(", d2v, ")")
 //
@@ -279,6 +282,11 @@ x0.node() of
   , "IR0Etuple("
   , knd0, "; ", npf1, "; [", ires, "])")
 //
+| IR0Eassgn(irel, irer) =>
+  fprint!
+  ( out
+  , "IR0Eassgn(", irel, "; ", irer, ")")
+//
 | IR0Eif0
   (ire1, ire2, opt3) =>
   fprint!
@@ -303,7 +311,21 @@ x0.node() of
   , knd0, "; "
   , d2v0, "; [", farg, "]; ", body, ")")
 //
-| IR0Enone0() =>
+| IR0Eaddr(ire1) =>
+  (
+    fprint!(out, "IR0Eaddr(", ire1, ")")
+  )
+//
+| IR0Eflat(ire1) =>
+  (
+    fprint!(out, "IR0Eflat(", ire1, ")")
+  )
+| IR0Etalf(ire1) =>
+  (
+    fprint!(out, "IR0Etalf(", ire1, ")")
+  )
+//
+| IR0Enone0(   ) =>
   (
     fprint!(out, "IR0Enone0(", ")")
   )
@@ -405,6 +427,8 @@ local
 implement
 fprint_val<ir0valdecl> = fprint_ir0valdecl
 implement
+fprint_val<ir0vardecl> = fprint_ir0vardecl
+implement
 fprint_val<ir0fundecl> = fprint_ir0fundecl
 
 in(*in-of-local*)
@@ -462,6 +486,13 @@ case+ x0.node() of
   , "IR0Cvaldecl("
   , knd, "; ", mopt, "; ", irds, ")")
 //
+| IR0Cvardecl
+  (knd, mopt, irds) =>
+  fprint!
+  ( out
+  , "IR0Cvardecl("
+  , knd, "; ", mopt, "; ", irds, ")")
+//
 | IR0Cfundecl
   (knd, mopt, tqas, irds) =>
   fprint!
@@ -511,6 +542,29 @@ in
   , ", pat=", rcd.pat
   , ", def=", rcd.def, "}")
 end // end of [fprint_ir0valdecl]
+//
+(* ****** ****** *)
+//
+implement
+print_ir0vardecl(x0) =
+fprint_ir0vardecl(stdout_ref, x0)
+implement
+prerr_ir0vardecl(x0) =
+fprint_ir0vardecl(stderr_ref, x0)
+//
+implement
+fprint_ir0vardecl
+  (out, x0) = let
+//
+val+IR0VARDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "IR0VARDECL@{"
+  , ", d2v=", rcd.d2v
+  , ", ini=", rcd.ini, "}")
+end // end of [fprint_ir0vardecl]
 //
 (* ****** ****** *)
 //

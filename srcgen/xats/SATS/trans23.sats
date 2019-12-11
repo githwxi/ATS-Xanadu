@@ -213,8 +213,11 @@ trans23_declist: d2eclist -> d3eclist
 (* ****** ****** *)
 //
 fun
-t2xtv_occurs
-(xtv0: t2xtv, t2p1: t2ype): bool
+unify2_t2ype_t2ype
+( loc0: loc_t
+, t2p1: t2ype, t2p2: t2ype): bool
+//
+overload unify2 with unify2_t2ype_t2ype
 //
 (* ****** ****** *)
 //
@@ -228,35 +231,6 @@ t2ype_tq2as_elim2
 ( loc0: loc_t
 , t2p0: t2ype
 , tqas: tq2arglst): (ti3arg, t2ype)
-//
-(* ****** ****** *)
-//
-fun
-unify_t2ype_t2ype
-( loc0: loc_t
-, t2p1: t2ype, t2p2: t2ype): bool
-//
-fun
-unify_t2ypelst_t2ypelst
-( loc0: loc_t
-, t2ps1: t2ypelst, t2ps2: t2ypelst): bool
-fun
-unify_labt2ype_labt2ype
-( loc0: loc_t
-, lt2p1: labt2ype, lt2p2: labt2ype): bool
-fun
-unify_labt2ypelst_labt2ypelst
-( loc0: loc_t
-, lt2ps1: labt2ypelst, lt2ps2: labt2ypelst): bool
-//
-overload
-unify with unify_t2ype_t2ype
-overload
-unify with unify_t2ypelst_t2ypelst
-overload
-unify with unify_labt2ype_labt2ype
-overload
-unify with unify_labt2ypelst_labt2ypelst
 //
 (* ****** ****** *)
 //
@@ -283,30 +257,28 @@ d3pat_tuple_up
 (* ****** ****** *)
 //
 fun
-d3exp_dn
+d23exp_dn
 (d3e0: d3exp, t2p0: t2ype): d3exp
 fun
-d3explst_dn
+d23explst_dn
 ( loc0: loc_t
 , d3es: d3explst, t2ps: t2ypelst): d3explst
 //
 (* ****** ****** *)
 
 fun
-d3exp_sapp_up
+d23exp_sapp_up
 ( loc0: loc_t
-, d3f0: d3exp
-, s2es: s2explst): d3exp
+, d3f0: d3exp, s2es: s2explst): d3exp
 fun
-d3exp_tapp_up
+d23exp_tapp_up
 ( loc0: loc_t
-, d2f0: d2exp
-, s2es: s2explst): d3exp
+, d2f0: d2exp, s2es: s2explst): d3exp
 
 (* ****** ****** *)
 
 fun
-d3exp_dapp_up
+d23exp_dapp_up
 ( loc0: loc_t
 , d3f0: d3exp
 , npf0: int, d3es: d3explst): d3exp
@@ -314,21 +286,21 @@ d3exp_dapp_up
 (* ****** ****** *)
 //
 fun
-d3exp_proj_up
+d23exp_proj_up
 ( loc0: loc_t
 , d3e1: d3exp, label: label): d3exp
 //
 (* ****** ****** *)
 //
 fun
-d3exp_seqn_up
+d23exp_seqn_up
 ( loc0: loc_t
 , d3es: d3explst, d3e2: d3exp): d3exp
 //
 (* ****** ****** *)
 //
 fun
-d3exp_tuple_up
+d23exp_tuple_up
 ( loc0: loc_t
 , knd1: int // 0/1
 , npf2: int, d3es: d3explst): d3exp
@@ -336,13 +308,16 @@ d3exp_tuple_up
 (* ****** ****** *)
 //
 fun
-d3exp_assgn_up
-( loc0: loc_t
-, d3e1: d3exp(*lval*)
-, d3e2: d3exp(*rval*)): d3exp
+d23exp_assgn_up
+( loc0
+: loc_t
+, d3e1
+: d3exp(*l-val*), d3e2: d3exp): d3exp
+//
+(* ****** ****** *)
 //
 fun
-d3exp_dtsel_up
+d23exp_dtsel_up
 ( loc0: loc_t
 , lab0: label
 , dpis: d2pitmlst
@@ -351,7 +326,7 @@ d3exp_dtsel_up
 (* ****** ****** *)
 //
 fun
-d3exp_if0_up
+d23exp_if0_up
 ( loc0: loc_t
 , d3e1: d3exp
 , d3e2: d3exp, opt3: d3expopt): d3exp
@@ -359,27 +334,27 @@ d3exp_if0_up
 (* ****** ****** *)
 //
 fun
-d3exp_let_up
+d23exp_let_up
 ( loc0: loc_t
 , d3cs: d3eclist
 , d3es: d3exp(*sequence*)): d3exp
 //
 fun
-d3exp_where_up
+d23exp_where_up
 ( loc0: loc_t
 , d3e1: d3exp, d3cs: d3eclist): d3exp
 //
 (* ****** ****** *)
 
 fun
-d3exp_lam_up
+d23exp_lam_up
 ( loc0: loc_t
 , knd0: token
 , f3as: f3arglst
 , res0: effs2expopt
 , arrw: f1unarrow, body: d3exp): d3exp
 fun
-d3exp_fix_up
+d23exp_fix_up
 ( loc0: loc_t
 , knd0: token
 , d2v0: d2var

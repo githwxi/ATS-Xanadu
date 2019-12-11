@@ -238,6 +238,7 @@ d3e0.node() of
 | D3Ebtf _ => d3e0
 | D3Echr _ => d3e0
 | D3Eflt _ => d3e0
+| D3Estr _ => d3e0
 //
 | D3Evar _ => d3e0
 //
@@ -353,6 +354,18 @@ d3e0.node() of
     (loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
   end
 //
+| D3Ecase
+  (knd0, d3e1, dcls) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+    val dcls =
+    trans3t_dclaulst(env0, dcls)
+  in
+    d3exp_make_node
+    (loc0, t2p0, D3Ecase(knd0, d3e1, dcls))
+  end
+//
 | D3Elam
   ( knd0
   , arg1, res2, arrw, body) =>
@@ -377,6 +390,14 @@ d3e0.node() of
     , t2p0
     , D3Efix(knd0, d2v0, arg1, res2, arrw, body))
   end // D3Efix
+//
+| D3Eflat(d3e1) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, D3Eflat(d3e1))
+  end // end of [D3Eflat]
 //
 | D3Eaddr(d3e1) =>
   let
@@ -436,6 +457,136 @@ let prval () = $UN.cast2void(env0) in d3e0 end
 end
 }
 end // end of [trans3t_dexplst]
+
+(* ****** ****** *)
+
+implement
+trans3t_dgua
+  (env0, d3g0) =
+let
+val loc0 = d3g0.loc()
+in
+case+
+d3g0.node() of
+| D3GUAexp(d3e1) =>
+  let
+  val
+  d3e1 =
+  trans3t_dexp(env0, d3e1)
+  in
+  d3gua_make_node(loc0, D3GUAexp(d3e1))
+  end
+| D3GUAmat(d3e1, d3p2) =>
+  let
+  val
+  d3e1 =
+  trans3t_dexp(env0, d3e1)
+  in
+  d3gua_make_node(loc0, D3GUAmat(d3e1, d3p2))
+  end
+end (* end of [trans3t_dgua] *)
+
+(* ****** ****** *)
+
+implement
+trans3t_dgpat
+  (env0, d3gp) = let
+//
+val loc0 = d3gp.loc()
+//
+in
+case+
+d3gp.node() of
+| D3GPATpat(d3p1) => d3gp
+| D3GPATgua(d3p1, d3gs) =>
+  (
+  d3gpat_make_node
+  (loc0, D3GPATgua(d3p1, d3gs))
+  ) where
+  {
+    val d3gs =
+    trans3t_dgualst(env0, d3gs)
+  }
+end // end of [trans3t_dgpat]
+
+(* ****** ****** *)
+
+implement
+trans3t_dgualst
+  (env0, d3gs) = let
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+in
+list_vt2t
+(
+list_map<d3gua><d3gua>(d3gs)
+) where
+{
+implement
+list_map$fopr<d3gua><d3gua>(d3g0) =
+let
+val env0 =
+$UN.castvwtp0{implenv}(env0)
+val d3g0 = trans3t_dgua(env0, d3g0)
+in
+let prval () = $UN.cast2void(env0) in d3g0 end
+end
+}
+end // end of [trans3t_dgualst]
+
+(* ****** ****** *)
+
+implement
+trans3t_dclau
+  (env0, d3cl) =
+let
+val loc0 = d3cl.loc()
+in
+case+
+d3cl.node() of
+| D3CLAUpat(d3gp) =>
+  let
+  val d3gp = trans3t_dgpat(env0, d3gp)
+  in
+  d3clau_make_node(loc0, D3CLAUpat(d3gp))
+  end
+| D3CLAUexp(d3gp, d3e1) =>
+  let
+  val d3e1 = trans3t_dexp(env0, d3e1)
+  val d3gp = trans3t_dgpat(env0, d3gp)
+  in
+  d3clau_make_node(loc0, D3CLAUexp(d3gp, d3e1))
+  end
+end (* end of [trans3t_dclau] *)
+//
+implement
+trans3t_dclaulst
+  (env0, dcls) = let
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+in
+list_vt2t
+(
+list_map<d3clau><d3clau>(dcls)
+) where
+{
+implement
+list_map$fopr<d3clau><d3clau>(d3cl) =
+let
+val env0 =
+$UN.castvwtp0{implenv}(env0)
+val d3cl = trans3t_dclau(env0, d3cl)
+in
+let prval () = $UN.cast2void(env0) in d3cl end
+end
+}
+end // end of [trans3t_dclaulst]
 
 (* ****** ****** *)
 
@@ -904,7 +1055,90 @@ fun
 aux_fundecl
 ( env0
 : !implenv
-, d3cl: d3ecl): d3ecl = d3cl
+, d3cl: d3ecl): d3ecl =
+let
+//
+val-
+D3Cfundecl
+( tok0
+, mopt
+, tqas, f3ds) = d3cl.node()
+//
+fun
+auxf3d0
+( env0
+: !implenv
+, f3d0
+: f3undecl
+)
+: f3undecl =
+let
+//
+val+
+F3UNDECL(rcd) = f3d0
+//
+val loc = rcd.loc
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a2g = rcd.a2g
+val a3g = rcd.a3g
+val res = rcd.res
+val def = rcd.def
+val wtp = rcd.wtp
+val ctp = rcd.ctp
+//
+val def =
+(
+case+ def of
+| None() =>
+  None()
+| Some(d3e0) =>
+  Some(trans3t_dexp(env0, d3e0))
+) : d3expopt // end-of-val
+//
+//
+in
+F3UNDECL(
+@{
+ loc=loc
+,nam=nam,d2c=d2c
+,a2g=a2g,a3g=a3g
+,res=res,def=def,wtp=wtp,ctp=ctp}
+) (* F3UNDECL *)
+end // end of [auxf3d0]
+//
+fun
+auxf3ds
+( env0
+: !implenv
+, f3ds
+: f3undeclist
+)
+: f3undeclist =
+(
+case+ f3ds of
+| list_nil() =>
+  list_nil(*void*)
+| list_cons(f3d0, f3ds) =>
+  (
+  list_cons(f3d0, f3ds) 
+  ) where
+  {
+    val
+    f3d0 = auxf3d0(env0, f3d0)
+    val
+    f3ds = auxf3ds(env0, f3ds)
+  }
+)
+//
+val f3ds = auxf3ds(env0, f3ds)
+//
+in
+d3ecl_make_node
+( d3cl.loc()
+, D3Cfundecl(tok0, mopt, tqas, f3ds)
+)
+end // end of [aux_fundecl]
 
 (* ****** ****** *)
 

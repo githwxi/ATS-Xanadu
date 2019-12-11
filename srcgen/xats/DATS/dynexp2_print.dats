@@ -275,6 +275,11 @@ fprint_d2pat
 (
 case- x0.node() of
 //
+| D2Pnil() =>
+  fprint!(out, "D2Pnil(", ")")
+| D2Pany() =>
+  fprint!(out, "D2Pany(", ")")
+//
 | D2Pint(tok) =>
   fprint!(out, "D2Pint(", tok, ")")
 | D2Pbtf(tok) =>
@@ -475,6 +480,11 @@ case- x0.node() of
 //
 | D2Eaddr(d2e1) =>
   fprint!(out, "D2Eaddr(", d2e1, ")")
+(*
+| D2Eflat(d2e1) =>
+  fprint!(out, "D2Eflat(", d2e1, ")")
+*)
+//
 | D2Efold(d2e1) =>
   fprint!(out, "D2Efold(", d2e1, ")")
 //
@@ -677,16 +687,19 @@ case- x0.node() of
   ( out
   , "D2Cvaldecl("
   , knd, "; ", mopt, "; ", v2ds, ")")
+| D2Cvardecl
+  (knd, mopt, v2ds) =>
+  fprint!
+  ( out
+  , "D2Cvardecl("
+  , knd, "; ", mopt, "; ", v2ds, ")")
+//
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
   fprint!
   ( out
   , "D2Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
-//
-| D2Cvardecl(knd, v2ds) =>
-  fprint!
-  (out, "D2Cvardecl(", knd, "; ", v2ds, ")")
 //
 | D2Cimpdecl1
   ( knd, mopt, sqas, tqas

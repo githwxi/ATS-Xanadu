@@ -107,6 +107,20 @@ list_map$fopr<d3pat><t2ype>(d3p) = d3p.type()
 (* ****** ****** *)
 
 implement
+d3pat_nil
+(loc0) =
+(
+d3pat_make_node
+(loc0, t2p0, D3Pany())
+) where
+{
+val
+t2p0 = the_t2ype_void
+} (* d3pat_nil *)
+
+(* ****** ****** *)
+
+implement
 d3pat_any
 (loc0, t2p0) =
 d3pat_make_node
@@ -322,10 +336,26 @@ d3exp_make_node
 }
 //
 (* ****** ****** *)
+
+implement
+d3exp_talf
+  (d3e0) =
+let
+val
+loc0 = d3e0.loc()
+val
+t2p0 =
+t2ype_lft(d3e0.type())
+in
+d3exp_make_node
+  (loc0, t2p0, D3Etalf(d3e0))
+end
+
+(* ****** ****** *)
 //
 implement
 d3exp_tcast
-(d3e0, t2p0) =
+  (d3e0, t2p0) =
 (
 d3exp_make_node
 ( loc0

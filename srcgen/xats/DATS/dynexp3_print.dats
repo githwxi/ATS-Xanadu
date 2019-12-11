@@ -172,12 +172,10 @@ fprint_d3pat
 (
 case- x0.node() of
 //
+| D3Pnil() =>
+  fprint!(out, "D3Pnil()")
 | D3Pany() =>
   fprint!(out, "D3Pany()")
-//
-| D3Pvar(d2v) =>
-  fprint!
-  (out, "D3Pvar(", d2v, ")")
 //
 | D3Pint(tok) =>
   fprint!
@@ -194,6 +192,10 @@ case- x0.node() of
 | D3Pstr(tok) =>
   fprint!
   (out, "D3Pstr(", tok, ")")
+//
+| D3Pvar(d2v) =>
+  fprint!
+  (out, "D3Pvar(", d2v, ")")
 //
 | D3Pcon1(d2c0) =>
   fprint!
@@ -457,14 +459,27 @@ x0.node() of
   , tres, "; ", arrw, "; ", body, ")")
 //
 | D3Eaddr(d3e1) =>
-  fprint!(out, "D3Eaddr(", d3e1, ")")
+  (
+   fprint!(out, "D3Eaddr(", d3e1, ")")
+  )
 | D3Efold(d3e1) =>
-  fprint!(out, "D3Efold(", d3e1, ")")
+  (
+   fprint!(out, "D3Efold(", d3e1, ")")
+  )
 //
 | D3Eanno(d3e1, s2e2) =>
   fprint!
   ( out
   , "D3Eanno(", d3e1, "; ", s2e2, ")")
+//
+| D3Eflat(d3e1) =>
+  (
+   fprint!(out, "D3Eflat(", d3e1, ")")
+  )
+| D3Etalf(d3e1) =>
+  (
+   fprint!(out, "D3Etalf(", d3e1, ")")
+  )
 //
 | D3Elcast(d3e1, lab2) =>
   fprint!
@@ -653,10 +668,12 @@ x0.node() of
   ( out
   , "D3Cvaldecl("
   , knd, "; ", mopt, "; ", v3ds, ")")
-| D3Cvardecl(knd, v3ds) =>
+| D3Cvardecl
+  (knd, mopt, v3ds) =>
   fprint!
   ( out
-  , "D3Cvardecl(", knd, "; ", v3ds, ")")
+  , "D3Cvardecl("
+  , knd, "; ", mopt, "; ", v3ds, ")")
 //
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>

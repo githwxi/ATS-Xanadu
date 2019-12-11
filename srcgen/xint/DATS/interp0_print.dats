@@ -98,6 +98,9 @@ case+ x0 of
 | IR0Vstr(s0) =>
   fprint!(out, "IR0Vstr(", s0, ")")
 //
+| IR0Vlft(r0) =>
+  fprint!(out, "IR0Vlft(", !r0, ")")
+//
 | IR0Vcon(d2c, arg) =>
   fprint!
   ( out

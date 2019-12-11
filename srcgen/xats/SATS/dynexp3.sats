@@ -93,8 +93,9 @@ typedef d3eclistopt = Option(d3eclist)
 datatype
 d3pat_node =
 //
-| D3Pany of ()
+| D3Pnil of ()
 //
+| D3Pany of ()
 | D3Pvar of (d2var)
 //
 | D3Pint of (token)
@@ -159,6 +160,10 @@ overload prerr with prerr_d3pat
 overload fprint with fprint_d3pat
 //
 (* ****** ****** *)
+//
+fun
+d3pat_nil
+(loc0: loc_t): d3pat
 //
 fun
 d3pat_any
@@ -348,10 +353,13 @@ d3exp_node =
   , f3arglst(*arg*)
   , effs2expopt, f1unarrow, d3exp(*body*))
 //
-| D3Eaddr of (d3exp)
-| D3Efold of (d3exp)
+| D3Eaddr of d3exp(*l-value*)
+| D3Efold of d3exp(*open-con*)
 //
 | D3Eanno of (d3exp, s2exp)
+//
+| D3Eflat of d3exp(*l-value*)
+| D3Etalf of d3exp(*D3Eflat*)
 //
 | D3Elcast of (d3exp, label)
 | D3Etcast of (d3exp, t2ype)
@@ -517,11 +525,16 @@ overload prerr with prerr_d3exp
 overload fprint with fprint_d3exp
 //
 (* ****** ****** *)
-
+//
+fun
+d3exp_talf(d3e0: d3exp): d3exp
+//
+(* ****** ****** *)
+//
 fun
 d3exp_tcast
 (d3e0: d3exp, t2p0: t2ype): d3exp
-
+//
 (* ****** ****** *)
 
 datatype
@@ -665,7 +678,8 @@ d3ecl_node =
 //
 | D3Cvaldecl of
   (token(*knd*), decmodopt, v3aldeclist)
-| D3Cvardecl of (token(*knd*), v3ardeclist)
+| D3Cvardecl of
+  (token(*knd*), decmodopt, v3ardeclist)
 //
 | D3Cfundecl of
   ( token(*funkind*)

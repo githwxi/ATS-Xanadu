@@ -146,9 +146,21 @@ s2e0.node() of
     (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
   end
 //
-| S2Etop(knd0, s2e1) => s2exp_erase(s2e1)
+| S2Etop(knd, s2e1) => s2exp_erase(s2e1)
 //
-| S2Earg(knd0, s2e1) => s2exp_erase(s2e1)
+| S2Earg(knd, s2e1) =>
+  (
+    if
+    (knd = 0)
+    then
+    s2exp_erase(s2e1)
+    else
+    let
+    val t2p1 = s2exp_erase(s2e1)
+    in
+      t2ype_make_node(s2t0, T2Plft(t2p1))
+    end
+  )
 //
 | S2Eatx(s2e1, s2e2) => s2exp_erase(s2e1)
 //
@@ -317,6 +329,20 @@ t2p0.node() of
       }
   end
 //
+| T2Plft(t2p1) =>
+  (
+    if
+    flag=fini
+    then t2p0
+    else
+    t2ype_make_node
+    (s2t0, T2Plft(t2p1))
+  ) where
+  {
+    val
+    t2p1 = auxt2p0(t2p1, flag)
+  }
+//
 | T2Papp
   (t2p1, t2ps) => let
     val
@@ -330,6 +356,17 @@ t2p0.node() of
     else
     t2ype_make_node
     (s2t0, T2Papp(t2p1, t2ps))
+  end
+| T2Plam(s2vs, t2p1) => let
+    val
+    t2p1 = auxt2p0(t2p1, flag)
+  in
+    if
+    flag=fini
+    then t2p0
+    else
+    t2ype_make_node
+    (s2t0, T2Plam(s2vs, t2p1))
   end
 //
 | T2Pfun
@@ -851,7 +888,14 @@ t2p0.node() of
   auxxtv(t2p0, flag)
 | T2Papp _ =>
   auxapp(t2p0, flag)
+//
+(*
+| T2Plft _ =>
+  auxlft(t2p0, flag)
+*)
+//
 | _ (*rest-of-t2ype*) => t2p0
+//
 )
 
 and

@@ -478,15 +478,16 @@ overload fprint with fprint_d2pitm
 datatype
 d2pat_node =
 //
+| D2Pnil of ()
 | D2Pany of ()
-//
-| D2Pvar of (d2var)
 //
 | D2Pint of (token)
 | D2Pbtf of (token)
 | D2Pchr of (token)
 | D2Pflt of (token)
 | D2Pstr of (token)
+//
+| D2Pvar of (d2var)
 //
 | D2Pcon1 of (d2con)
 | D2Pcon2 of (d2conlst)
@@ -527,8 +528,15 @@ overload fprint with fprint_d2pat
 //
 (* ****** ****** *)
 //
-fun d2pat_none0(loc_t): d2pat
-fun d2pat_none1(d1pat): d2pat
+fun
+d2pat_none0(loc_t): d2pat
+fun
+d2pat_none1(d1pat): d2pat
+//
+(* ****** ****** *)
+//
+fun d2pat_nil(loc_t): d2pat
+fun d2pat_any(loc_t): d2pat
 //
 fun d2pat_var(loc_t, d2var): d2pat
 //
@@ -706,8 +714,13 @@ d2exp_node =
   , f2arglst(*arg*)
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
-| D2Eaddr of (d2exp)
-| D2Efold of (d2exp)
+//
+| D2Eaddr of d2exp(*l-value*)
+(*
+| D2Eflat of d2exp(*l-value*)
+*)
+//
+| D2Efold of d2exp(*open-con*)
 //
 | D2Eanno of (d2exp(*applst*), s2exp(*type*))
 //
@@ -1060,7 +1073,8 @@ d2ecl_node =
 | D2Cvaldecl of
   (token(*knd*), decmodopt, v2aldeclist)
 //
-| D2Cvardecl of (token(*knd*), v2ardeclist)
+| D2Cvardecl of
+  (token(*knd*), decmodopt, v2ardeclist)
 //
 | D2Cfundecl of
   ( token(*funkind*)
