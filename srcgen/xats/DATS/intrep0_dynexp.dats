@@ -452,11 +452,24 @@ d3e0.node() of
     end
   end
 //
+| D3Eaddr(d3e1) =>
+  let
+    val ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node(loc0, IR0Eaddr(ire1))
+  end // end of [D3Eaddr]
+//
 | D3Eflat(d3e1) =>
   let
     val ire1 = irerase_dexp(d3e1)
   in
     ir0exp_make_node(loc0, IR0Eflat(ire1))
+  end // end of [D3Eflat]
+| D3Etalf(d3e1) =>
+  let
+    val ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node(loc0, IR0Etalf(ire1))
   end // end of [D3Eflat]
 //
 | _(*rest-of-d3exp*) =>

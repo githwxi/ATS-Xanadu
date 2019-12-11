@@ -66,9 +66,16 @@ typedef d2cst = $D2E.d2cst
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 //
+typedef d3gua = $D3E.d3gua
+typedef d3gpat = $D3E.d3gpat
+typedef d3clau = $D3E.d3clau
+//
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
+//
+typedef d3gualst = $D3E.d3gualst
+typedef d3claulst = $D3E.d3claulst
 //
 (* ****** ****** *)
 //
@@ -159,6 +166,33 @@ trans3t_dexplst
 ( env0
 : !implenv, d3es: d3explst): d3explst
 
+(* ****** ****** *)
+//
+fun
+trans3t_dgua
+( env0
+: !implenv, d3g0: d3gua): d3gua
+fun
+trans3t_dgualst
+( env0
+: !implenv, d3gs: d3gualst): d3gualst
+//
+(* ****** ****** *)
+//
+fun
+trans3t_dgpat
+( env0
+: !implenv, d3gp: d3gpat): d3gpat
+//
+fun
+trans3t_dclau
+( env0
+: !implenv, d3cl: d3clau): d3clau
+fun
+trans3t_dclaulst
+( env0
+: !implenv, dcls: d3claulst): d3claulst
+//
 (* ****** ****** *)
 
 fun

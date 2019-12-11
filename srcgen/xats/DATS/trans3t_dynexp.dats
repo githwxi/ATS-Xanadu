@@ -238,6 +238,7 @@ d3e0.node() of
 | D3Ebtf _ => d3e0
 | D3Echr _ => d3e0
 | D3Eflt _ => d3e0
+| D3Estr _ => d3e0
 //
 | D3Evar _ => d3e0
 //
@@ -353,6 +354,18 @@ d3e0.node() of
     (loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
   end
 //
+| D3Ecase
+  (knd0, d3e1, dcls) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+    val dcls =
+    trans3t_dclaulst(env0, dcls)
+  in
+    d3exp_make_node
+    (loc0, t2p0, D3Ecase(knd0, d3e1, dcls))
+  end
+//
 | D3Elam
   ( knd0
   , arg1, res2, arrw, body) =>
@@ -444,6 +457,136 @@ let prval () = $UN.cast2void(env0) in d3e0 end
 end
 }
 end // end of [trans3t_dexplst]
+
+(* ****** ****** *)
+
+implement
+trans3t_dgua
+  (env0, d3g0) =
+let
+val loc0 = d3g0.loc()
+in
+case+
+d3g0.node() of
+| D3GUAexp(d3e1) =>
+  let
+  val
+  d3e1 =
+  trans3t_dexp(env0, d3e1)
+  in
+  d3gua_make_node(loc0, D3GUAexp(d3e1))
+  end
+| D3GUAmat(d3e1, d3p2) =>
+  let
+  val
+  d3e1 =
+  trans3t_dexp(env0, d3e1)
+  in
+  d3gua_make_node(loc0, D3GUAmat(d3e1, d3p2))
+  end
+end (* end of [trans3t_dgua] *)
+
+(* ****** ****** *)
+
+implement
+trans3t_dgpat
+  (env0, d3gp) = let
+//
+val loc0 = d3gp.loc()
+//
+in
+case+
+d3gp.node() of
+| D3GPATpat(d3p1) => d3gp
+| D3GPATgua(d3p1, d3gs) =>
+  (
+  d3gpat_make_node
+  (loc0, D3GPATgua(d3p1, d3gs))
+  ) where
+  {
+    val d3gs =
+    trans3t_dgualst(env0, d3gs)
+  }
+end // end of [trans3t_dgpat]
+
+(* ****** ****** *)
+
+implement
+trans3t_dgualst
+  (env0, d3gs) = let
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+in
+list_vt2t
+(
+list_map<d3gua><d3gua>(d3gs)
+) where
+{
+implement
+list_map$fopr<d3gua><d3gua>(d3g0) =
+let
+val env0 =
+$UN.castvwtp0{implenv}(env0)
+val d3g0 = trans3t_dgua(env0, d3g0)
+in
+let prval () = $UN.cast2void(env0) in d3g0 end
+end
+}
+end // end of [trans3t_dgualst]
+
+(* ****** ****** *)
+
+implement
+trans3t_dclau
+  (env0, d3cl) =
+let
+val loc0 = d3cl.loc()
+in
+case+
+d3cl.node() of
+| D3CLAUpat(d3gp) =>
+  let
+  val d3gp = trans3t_dgpat(env0, d3gp)
+  in
+  d3clau_make_node(loc0, D3CLAUpat(d3gp))
+  end
+| D3CLAUexp(d3gp, d3e1) =>
+  let
+  val d3e1 = trans3t_dexp(env0, d3e1)
+  val d3gp = trans3t_dgpat(env0, d3gp)
+  in
+  d3clau_make_node(loc0, D3CLAUexp(d3gp, d3e1))
+  end
+end (* end of [trans3t_dclau] *)
+//
+implement
+trans3t_dclaulst
+  (env0, dcls) = let
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+in
+list_vt2t
+(
+list_map<d3clau><d3clau>(dcls)
+) where
+{
+implement
+list_map$fopr<d3clau><d3clau>(d3cl) =
+let
+val env0 =
+$UN.castvwtp0{implenv}(env0)
+val d3cl = trans3t_dclau(env0, d3cl)
+in
+let prval () = $UN.cast2void(env0) in d3cl end
+end
+}
+end // end of [trans3t_dclaulst]
 
 (* ****** ****** *)
 

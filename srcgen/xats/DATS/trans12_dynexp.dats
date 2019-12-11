@@ -1072,6 +1072,7 @@ D1Eapp1
 ( d1e1
 , d1e2) = d1e0.node()
 //
+(*
 fun
 isFLAT
 (d1e: d1exp): bool =
@@ -1087,6 +1088,8 @@ d1e.node() of
   )
 | _(* non-D1Eid *) => false
 )
+*)
+//
 fun
 isADDR
 (d1e: d1exp): bool =
@@ -1122,6 +1125,7 @@ in
 //
 ifcase
 //
+(*
 | isFLAT(d1e1) =>
   let
     val d2e2 =
@@ -1130,6 +1134,8 @@ ifcase
     d2exp_make_node
     (d1e0.loc(), D2Eflat(d2e2))
   end
+*)
+//
 | isADDR(d1e1) =>
   let
     val d2e2 =

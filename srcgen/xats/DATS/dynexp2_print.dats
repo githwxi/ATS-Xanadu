@@ -478,11 +478,13 @@ case- x0.node() of
   , fid, "; ", f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
-| D2Eflat(d2e1) =>
-  fprint!(out, "D2Eflat(", d2e1, ")")
-//
 | D2Eaddr(d2e1) =>
   fprint!(out, "D2Eaddr(", d2e1, ")")
+(*
+| D2Eflat(d2e1) =>
+  fprint!(out, "D2Eflat(", d2e1, ")")
+*)
+//
 | D2Efold(d2e1) =>
   fprint!(out, "D2Efold(", d2e1, ")")
 //

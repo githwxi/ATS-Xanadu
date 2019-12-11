@@ -18,7 +18,6 @@ then
 g_mul(x, gfact(g_pred(x))) else g_1()
 
 (* ****** ****** *)
-
 (*
 //
 #extern
@@ -27,6 +26,7 @@ fun
 gfact(x: a): a
 //
 *)
+(*
 implement
 <a>
 gfact =
@@ -36,8 +36,8 @@ if
 g_eqz(x)
 then g_1()
 else g_mul(x, fact(g_pred(x))) 
+*)
 //
-
 (* ****** ****** *)
 
 val fact10 =

@@ -455,8 +455,7 @@ else let
   , xtvs, t2ps) = ti3e
   val
   test =
-  unify
-  (loc0, targ, t2ps)
+  unify3(loc0, targ, t2ps)
 //
   val () =
   println!

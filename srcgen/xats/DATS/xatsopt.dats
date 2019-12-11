@@ -233,6 +233,8 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 //
 #dynload "./statyp2_util0.dats"
 //
+#dynload "./statyp2_unify.dats"
+//
 #dynload "./staexp2_print.dats"
 #dynload "./statyp2_print.dats"
 #dynload "./dynexp2_print.dats"

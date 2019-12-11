@@ -458,11 +458,6 @@ x0.node() of
   , fid, "; ", f3as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
-| D3Eflat(d3e1) =>
-  (
-   fprint!(out, "D3Eflat(", d3e1, ")")
-  )
-//
 | D3Eaddr(d3e1) =>
   (
    fprint!(out, "D3Eaddr(", d3e1, ")")
@@ -476,6 +471,15 @@ x0.node() of
   fprint!
   ( out
   , "D3Eanno(", d3e1, "; ", s2e2, ")")
+//
+| D3Eflat(d3e1) =>
+  (
+   fprint!(out, "D3Eflat(", d3e1, ")")
+  )
+| D3Etalf(d3e1) =>
+  (
+   fprint!(out, "D3Etalf(", d3e1, ")")
+  )
 //
 | D3Elcast(d3e1, lab2) =>
   fprint!

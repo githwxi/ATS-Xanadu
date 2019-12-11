@@ -118,6 +118,7 @@ staexp2_util2.dats \
 staexp2_s2cst.dats \
 staexp2_print.dats \
 statyp2_util0.dats \
+statyp2_unify.dats \
 statyp2_print.dats \
 dynexp2_print.dats \
 nmspace.dats \
