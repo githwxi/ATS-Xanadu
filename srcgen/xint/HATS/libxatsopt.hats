@@ -7,6 +7,9 @@ ERR =
 (* ****** ****** *)
 //
 #staload
+LAB =
+"./../../xats/SATS/label0.sats"
+#staload
 STM =
 "./../../xats/SATS/stamp0.sats"
 #staload

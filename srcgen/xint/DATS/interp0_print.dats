@@ -51,6 +51,9 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 overload
+fprint with $LAB.fprint_label
+//
+overload
 fprint with $D2E.fprint_d2var
 overload
 fprint with $D2E.fprint_d2con
@@ -98,8 +101,8 @@ case+ x0 of
 | IR0Vstr(s0) =>
   fprint!(out, "IR0Vstr(", s0, ")")
 //
-| IR0Vlft(r0) =>
-  fprint!(out, "IR0Vlft(", !r0, ")")
+| IR0Vlft(x0) =>
+  fprint!(out, "IR0Vlft(", x0, ")")
 //
 | IR0Vcon(d2c, arg) =>
   fprint!
@@ -130,6 +133,31 @@ case+ x0 of
   fprint!(out, "IR0Vnone1(", ire1, ")")
 //
 ) (* end of [fprint_ir0val] *)
+//
+(* ****** ****** *)
+//
+implement
+print_ir0lval(x0) = 
+fprint_ir0lval(stdout_ref, x0)
+implement
+prerr_ir0lval(x0) = 
+fprint_ir0lval(stderr_ref, x0)
+//
+implement
+fprint_ir0lval
+  (out, x0) =
+(
+case+ x0 of
+| IR0LVref(r0) =>
+  fprint!
+  ( out
+  , "IR0LVref(", ref_get_ptr(r0), ")")
+| IR0LVproj
+  (x1, lab, idx) =>
+  fprint!
+  ( out
+  , "IR0LVproj(", x1, "; ", lab, "; ", idx, "; ")
+) (* end of [fprint_ir0lval] *)
 //
 (* ****** ****** *)
 
