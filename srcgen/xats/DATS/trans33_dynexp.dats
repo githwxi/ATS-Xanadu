@@ -308,7 +308,10 @@ macdef d33exp_fix_up = d23exp_fix_up
 macdef d33exp_sapp_up = d23exp_sapp_up
 macdef d33exp_tapp_up = d23exp_tapp_up
 //
+(*
 macdef d33exp_proj_up = d23exp_proj_up
+*)
+//
 macdef d33exp_tuple_up = d23exp_tuple_up
 //
 (* ****** ****** *)
@@ -704,7 +707,10 @@ case- opt3 of
 None() =>
 let
 val-
-list_cons(d3e1, _) = d3es
+list_cons
+(d3e1, _) = d3es
+val
+d3e1 = trans33_dexp(d3e1)
 in
   d33exp_proj_up(loc0, d3e1, lab0)
 end // end of [None]

@@ -1214,6 +1214,64 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+d33exp_proj_up
+( loc0
+, d3e1, lab2) =
+let
+//
+val t2p1 = d3e1.type()
+val opt2 =
+t2ype_projize(t2p1, lab2)
+//
+// (*
+val () =
+println!
+("d33exp_proj_up: d3e1 = ", d3e1)
+val () =
+println!
+("d33exp_proj_up: lab2 = ", lab2)
+// *)
+//
+in
+//
+case+ opt2 of
+|
+~None_vt() =>
+let
+  val t2p2 = t2ype_new(loc0)
+in
+  d33exp_make_node
+  (loc0, t2p2, D3Elcast(d3e1, lab2))
+end
+|
+~Some_vt(it2p2) =>
+let
+  val (i0, t2p2) = it2p2
+in
+//
+case+
+d3e1.node() of
+| D3Eflat(d3el) =>
+  let
+    val tprj = t2ype_lft(t2p2)
+  in
+    d33exp_make_node
+    (loc0, tprj, D3Eproj(d3el, lab2, i0))
+  end
+//
+| _ (* non-D3Eflat *) => 
+  (
+    d33exp_make_node
+    (loc0, t2p2, D3Eproj(d3e1, lab2, i0))
+  )
+//
+end
+//
+end // end of [d33exp_proj_up]
+
+(* ****** ****** *)
+
+implement
 d33exp_assgn_up
 ( loc0
 , d3e1, d3e2) =
