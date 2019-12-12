@@ -31,7 +31,7 @@ case+ vlk of
 *)
 | VLKprval() => jstr("VLKprval")
 //
-) (* end of [fprint_valkind] *)
+) (* end of [jsonize_valkind] *)
 end
 
 implement
@@ -53,7 +53,7 @@ case+ fnk of
 //
 | FNKcastfn() => jsonize("FNKcastfn")
 //
-) (* end of [fprint_funkind] *)
+) (* end of [jsonize_funkind] *)
 end
 
 
@@ -68,7 +68,7 @@ case+ knd of
 | IMPfun() => jsonize("IMPfun")
 | IMPtmp() => jsonize("IMPtmp")
 | IMPgen() => jsonize("IMPgen")
-) (* end of [fprint_impkind] *)
+) (* end of [jsonize_impkind] *)
 end
 
 

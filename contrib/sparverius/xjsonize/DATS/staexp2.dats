@@ -100,7 +100,6 @@ case+ s2tb of
 | T2BASdat(dat) =>
   jsonify("T2BASabs", "dat", jsonize(dat))
 | T2BASimp(knd, sym) =>
-  (* fprint!(out, "T2BASimp(", knd, "; ", sym, ")") *)
   jsonify("T2BASimp", ("knd", "sym"), (jsonize(knd), jsonize(sym)))
 )
 
@@ -155,12 +154,12 @@ case+ knd of
   jsonify("TYRECflt0")
 (*
 | TYRECflt1(stm) =>
-  fprint!(out, "TYRECflt1(", stm, ")")
+  jsonize("TYRECflt1", "stm", jsonize(stm))
 *)
 | TYRECflt2(nam) =>
   jsonify("TYRECflt2", "nam", jsonize(nam))
 //
-) (* end of [fprint_tyrec] *)
+) (* end of [jsonize_tyrec] *)
 
 
 
@@ -192,26 +191,14 @@ s2e0.node() of
   jsonify("S2Estr", "s0", jsonize(s0))
 //
 | S2Ecst(s2c) =>
-  jsonify("S2Ecst", "s2c", jsonize(s2c))
-(*
-  fprint!
-  (out, "S2Ecst(", s2c, "; ", s2c.sort(), ")")
-*)
+  jsonify("S2Ecst", "s2c", jsonize(s2c.sort())) // s2c
 | S2Evar(s2v) =>
-  jsonify("S2Evar", "s2v", jsonize(s2v))
-(*
-  fprint!
-  (out, "S2Evar(", s2v, "; ", s2v.sort(), ")")
-*)
+  jsonify("S2Evar", "s2v", jsonize(s2v.sort()))
 //
 | S2Extv(xtv) =>
   let
-(*
-    val s2e = "..."
-*)
     val s2e = s2xtv_get_sexp(xtv)
   in
-    (* fprint!(out, "S2Extv(", s2e, ")") *)
     jsonify("S2Extv", "xtv", jsonize(s2e))
   end
 //
@@ -324,12 +311,6 @@ s2e0.node() of
       jsonize(s2t)
     )
   )
-(*
-  fprint!
-  ( out
-  , "S2Ecast("
-  , loc, "; ", s2e, "; ", s2t, ")")
-*)
 //
 | S2Emet
   (s2es, body) =>
@@ -369,7 +350,7 @@ s2e0.node() of
 //
 (*
 | S2Elist(s2es) =>
-  fprint!(out, "S2Elist(", s2es, ")")
+  jsonify("S2Elist", "s2es", jsonize(s2es))
 *)
 //
 | S2Etyrec
@@ -457,4 +438,4 @@ case+ x0 of
 | EFFS2EXPsome(s2f, s2e) =>
   jsonify("EFFS2EXPsome", ("s2f", "s2e"), (jsonize(s2f), jsonize(s2e)))
 *)
-) (* end of [fprint_effs2expopt] *)
+) (* end of [jsonize_effs2expopt] *)

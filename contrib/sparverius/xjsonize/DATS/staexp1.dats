@@ -49,13 +49,12 @@ case+ x0.node() of
 //
 (*
 | S1Ttype(knd) =>
-  fprint!(out, "S1Ttype", knd, ")")
+  jsonify("S1Ttype", "knd", jsonize(knd))
 *)
 //
 (*
 | S1Tapp(s1t0, s1ts) =>
-  fprint!
-  (out, "S1Tapp(", s1t0, "; ", s1ts, ")")
+  jsonify("S1Tapp", ("s1t0", "s1ts"), (jsonize(s1t0), jsonize(s1ts)))
 *)
 //
 | S1Tapp1
@@ -100,70 +99,78 @@ jsonize_s1exp
 case+ x0.node() of
 //
 | S1Eid(sid) =>
-  jsonize("S1Eid")
+  jsonify("S1Eid", "sid", jsonize(sid))
 //
 | S1Eint(tok) =>
-  jsonize("S1Eint")
+  jsonify("S1Eint", "tok", jsonize(tok))
 | S1Echr(tok) =>
-  jsonize("S1Echr")
+  jsonify("S1Echr", "tok", jsonize(tok))
 | S1Eflt(tok) =>
-  jsonize("S1Eflt")
+  jsonify("S1Eflt", "tok", jsonize(tok))
 | S1Estr(tok) =>
-  jsonize("S1Estr")
+  jsonify("S1Estr", "tok", jsonize(tok))
 //
 | S1Eapp() =>
-  jsonize("S1Eapp")
+  jsonify("S1Eapp")
 //
 | S1Eapp1
   (s1e0, s1e1) =>
-  jsonize("S1Eapp1")
+  jsonify("S1Eapp1", ("s1e0", "s1e1"), (jsonize(s1e0), jsonize(s1e1)))
 | S1Eapp2
   (s1e0, s1e1, s1e2) =>
-  jsonize("S1Eapp2")
+  jsonify("S1Eapp2", ("s1e0", "s1e1", "s1e2"), (jsonize(s1e0), jsonize(s1e1), jsonize(s1e2)))
 //
 | S1Ebs0() =>
-  jsonize("S1Ebs0")
+  jsonify("S1Ebs0")
 | S1Ebs1(s1e) =>
-  jsonize("S1Ebs1")
+  jsonify("S1Ebs1", "s1e", jsonize(s1e))
 //
 | S1Eimp(s1es) =>
-  jsonize("S1Eimp")
+  jsonify("S1Eimp", "s1es", jsonize("..."))
 //
 (*
 | S1Eapp(s1e0, s1es) =>
+  jsonify("S1Eimp", ("s1e0", "s1es"), (jsonize(s1e0), jsonize(s1es)))
 *)
 //
 | S1Elist(s1es) =>
-  jsonize("S1Elist")
+  jsonify("S1Elist", "s1es", jsonize("..."))
 | S1Elist(s1es1, s1es2) =>
-  jsonize("S1Elist")
+  jsonify("S1Elist", ("s1es1", "s1es2"), (jsonize("..."), jsonize("...")))
 //
 | S1Etuple(k0, s1es) =>
-  jsonize("S1Etuple")
+  jsonify("S1Etuple", ("k0", "s1es"), (jsonize(k0), jsonize("...")))
 | S1Etuple(k0, s1es1, s1es2) =>
-  jsonize("S1Etuple")
+  jsonify("S1Etuple", ("k0", "s1es1", "s1es2"), (jsonize(k0), jsonize("..."), jsonize("...")
+  ))
 //
 | S1Erecord(k0, ls1es) =>
-  jsonize("S1Erecord")
+  jsonify("S1Erecord", ("k0", "ls1es"), (jsonize(k0), jsonize("...")))
 | S1Erecord(k0, ls1es1, ls1es2) =>
-  jsonize("S1Erecord")
+  jsonify("S1Erecord", ("k0", "ls1es1", "ls1es2"), (jsonize(k0), jsonize("..."), jsonize("...")))
 //
 | S1Eforall(s1qs) =>
-  jsonize("S1Eforall")
+  jsonify("S1Eforall", "s1qs", jsonize("..."))
 | S1Eexists(k0, s1qs) =>
-  jsonize("S1Eexists")
+  jsonify("S1Eexists", ("k0", "s1qs"), (jsonize(k0), jsonize("...")))
 //
 | S1Elam(arg, res, s1e) =>
-  jsonize("S1Elam")
+  jsonify("S1Elam", ("arg", "res", "s1e"),
+    (
+      jsonize("..."), //jsonize(arg),
+      jsonize("..."), //jsonize(res),
+      jsonize(s1e)
+    )
+  )
 //
 | S1Eanno(s1e, s1t) =>
-  jsonize("S1Eanno")
+  jsonify("S1Eanno", ("s1e", "s1t"), (jsonize(s1e), jsonize(s1t)))
 //
 | S1Equal(tok, s1e) =>
-  jsonize("S1Equal")
+  jsonify("S1Equal", ("tok", "s1e"), (jsonize(tok), jsonize(s1e)))
 //
 | S1Enone(loc) =>
-  jsonize("S1Enone")
+  jsonify("S1Enone", "loc", jsonize("..."))
 //
 ) (* jsonize_s0exp *)
 

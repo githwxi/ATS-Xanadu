@@ -29,6 +29,154 @@
 #staload "./../SATS/dynexp1.sats"
 
 
+implement
+jsonize_q1arg
+  (x0) =
+(
+//
+case+ x0.node() of
+(*
+| Q1ARGnone(tok) =>
+  jsonify("Q1ARGnone", "tok", jsonize(tok))
+*)
+| Q1ARGsome(tok, opt) =>
+  jsonify("Q1ARGsome", ("tok", "opt"),
+    (
+      jsonize(tok),
+      jsonize("...") //jsonize_option<sort1>(opt)
+    )
+  )
+//
+) (* end of [jsonize_q1arg] *)
+
+implement
+jsonize_a1typ
+  (x0) =
+(
+//
+case+ x0.node() of
+| A1TYPsome(s1e, opt) =>
+  jsonify("A1TYPsome", ("s1e", "opt"),
+    (
+      jsonize(s1e),
+      jsonize("...") // jsonize_option<token>(opt)
+    )
+  )
+//
+) (* end of [jsonize_a1typ] *)
+
+
+
+local
+//
+fun
+jsonize_a1typlstopt
+(opt: a1typlstopt): jsonval =
+(
+case+ opt of
+| None() => jsonify("None")
+| Some(a1ts) => jsonval_labval1("Some", jsonize("..."))// jsonize_list<a1typ>(a1ts))
+)
+//
+overload jsonize with jsonize_a1typlstopt of 100
+//
+in (* in-of-local *)
+
+implement
+jsonize_d1arg
+  (x0) =
+(
+//
+case+ x0.node() of
+//
+| D1ARGsome_sta(s1qs) =>
+  jsonify("D1ARGsome_sta", "s1qs", jsonize("...")(* jsonize(s1qs) *))
+//
+| D1ARGsome_dyn1(tok) =>
+  jsonify("D1ARGsome_dyn1", "tok", jsonize(tok))
+| D1ARGsome_dyn2(arg0, opt1) =>
+  jsonify("D1ARGsome_dyn2", ("arg0", "opt1"),
+    (
+      jsonize("..."), //jsonize(arg0),
+      jsonize("...") //jsonize(opt1)
+    )
+  )
+//
+) (* end of [jsonize_d1arg] *)
+
+end // end of [local]
+
+
+
+implement
+jsonize_f1arg
+  (x0) =
+(
+//
+case+
+x0.node() of
+(*
+| F1ARGnone(tok) =>
+  jsonify("F1ARGnone", "tok", jsonize(tok))
+*)
+| F1ARGsome_dyn(d1p0) =>
+  jsonify("F1ARGsome_dyn", "d1p0", jsonize(d1p0))
+| F1ARGsome_sta(s1qs) =>
+  jsonify("F1ARGsome_sta", "s1qs", jsonize("..."))
+| F1ARGsome_met(s1es) =>
+  jsonify("F1ARGsome_met", "s1es", jsonize("..."))
+//
+) (* end of [jsonize_f1arg] *)
+
+(* ****** ****** *)
+
+implement
+jsonize_sq1arg
+  (x0) =
+(
+//
+case+
+x0.node() of
+| SQ1ARGnone(tok) =>
+  jsonify("SQ1ARGnone", "tok", jsonize(tok))
+| SQ1ARGsome(q1as) =>
+  jsonify("SQ1ARGsome", "q1as", jsonize("..."))
+//
+) (* end of [jsonize_sq1arg] *)
+
+(* ****** ****** *)
+
+implement
+jsonize_ti1arg
+  (x0) =
+(
+//
+case+
+x0.node() of
+| TI1ARGnone(tok) =>
+  jsonify("TI1ARGnone", "tok", jsonize(tok))
+| TI1ARGsome(s1es) =>
+  jsonify("TI1ARGsome", "s1es", jsonize("..."))
+//
+) (* end of [jsonize_ti1arg] *)
+
+(* ****** ****** *)
+
+implement
+jsonize_tq1arg
+  (x0) =
+(
+//
+case+
+x0.node() of
+| TQ1ARGnone(tok) =>
+  jsonify("TQ1ARGnone", "tok", jsonize(tok))
+| TQ1ARGsome(q1as) =>
+  jsonify("TQ1ARGsome", "q1as", jsonize("..."))
+//
+) (* end of [jsonize_tq1arg] *)
+
+
 
 implement jsonize_val<d1exp> = jsonize_d1exp
 implement jsonize_val<d1ecl> = jsonize_d1ecl
@@ -161,48 +309,65 @@ case+ x0.node() of
 }
 
 
+implement jsonize_val<d1exp> = jsonize_d1exp
+implement jsonize_val<v1aldecl> = jsonize_v1aldecl
+(* implement jsonize_val<g1exp> = jsonize_g1exp *)
+
+(* implement jsonize_val<g1marg> = jsonize_g1marg *)
+(* implement jsonize_val<s1marg> = jsonize_s1marg *)
+(* implement jsonize_val<t1marg> = jsonize_t1marg *)
+
+
 implement
 jsonize_d1ecl
-  (x0) = jsonize("...")
-(*
+  (x0) =
 (
 case+ x0.node() of
 //
 | D1Cnone() =>
-  fprint!(out, "D1Cnone(", ")")
+  jsonify("D1Cnone")
 | D1Cnone(d0c) =>
-  fprint!(out, "D1Cnone(", d0c, ")")
+  jsonify("D1Cnone", "d0c", jsonize(d0c))
 //
 | D1Cstatic(knd, d1c) =>
-  fprint!
-  (out, "D1Cstatic(", knd, "; ", d1c, ")")
+  jsonify("D1Cstatic", ("knd", "d1c"), (jsonize(knd), jsonize(d1c)))
 //
 | D1Cextern(knd, d1c) =>
-  fprint!
-  (out, "D1Cextern(", knd, "; ", d1c, ")")
+  jsonify("D1Cextern", ("knd", "d1c"), (jsonize(knd), jsonize(d1c)))
 //
 | D1Cdefine
   (tok, sym, arg, def) =>
-  fprint!
-  ( out
-  , "D1Cdefine("
-  , tok, "; ", sym, "; ", arg, "; ", def, ")")
+  jsonify("D1Cdefine", ("tok", "sym", "arg", "def"),
+    (
+      jsonize(tok),
+      jsonize(sym),
+      jsonize("..."), //jsonize_list<g1marg>(arg),
+      jsonize("...")  //jsonize_option<g1exp>(def)
+    )
+  )
 | D1Cmacdef
   (tok, sym, arg, def) =>
-  fprint!
-  ( out
-  , "D1Cmacdef("
-  , tok, "; ", sym, "; ", arg, "; ", def, ")")
+  jsonify("D1Cmacdef", ("tok", "sym", "arg", "def"),
+    (
+      jsonize(tok),
+      jsonize(sym),
+      jsonize("..."), //jsonize_list<g1marg>(arg),
+      jsonize_option<d1exp>(def)
+    )
+  )
 //
 | D1Cinclude
   (tok, src, knd, opt, body) =>
   (
-  fprint!
-  ( out
-  , "D1Cinclude("
-  , tok, "; "
-  , src, "; " // src: d1exp
-  , knd, "; ", opt, "; ", body, ")")
+  jsonify("D1Cinclude", ("tok", "src", "knd", "opt", "body"),
+    (
+      jsonize(tok),
+      jsonize(src),
+      jsonize(knd),
+      jsonize("..."),
+      jsonize(body)
+    )
+  )
   ) where
   {
     val body =
@@ -213,16 +378,13 @@ case+ x0.node() of
   }
 //
 | D1Cstaload
-  ( tok, src
-  , knd, opt, flag, body) =>
+  ( tok, src, knd, opt, flag, body) =>
   (
-  fprint!
-  ( out
-  , "D1Cstaload("
-  , tok, "; "
-  , src, "; " // src: d1exp
-  , knd, "; " // knd: stadyn
-  , opt, "; ", flag, "; ", body, ")")
+  jsonify("D1Cstaload",
+    ("tok", "src", "knd", "opt", "flag", "body"),
+    (jsonize(tok), jsonize(src), jsonize(knd),
+      jsonize("..."), jsonize(flag), jsonize(body))
+  )
   ) where
   {
     val body =
@@ -233,103 +395,156 @@ case+ x0.node() of
   }
 //
 | D1Cabssort(tok, tid) =>
-  fprint!
-  (out, "D1Cabssort(", tok, "; ", tid, ")")
+  jsonify("D1Cabssort", ("tok", "tid"), (jsonize(tok), jsonize(tid)))
 //
 | D1Cstacst0
   (tok, sid, tmas, s0t) =>
-  fprint!
-  ( out
-  , "D1Cstacst0("
-  , tok, "; ", sid, "; ", tmas, "; ", s0t, ")")
+  jsonify("D1Cstacst0", ("tok", "sid", "tmas", "s0t"),
+    (
+      jsonize(tok),
+      jsonize(sid),
+      jsonize("..."), //jsonize_list<t1marg>(tmas),
+      jsonize(s0t)
+    )
+  )
 //
 | D1Csortdef
   (knd, tok, def) =>
-  fprint!
-  ( out
-  , "D1Csortdef(", knd, "; ", tok, "; ", def, ")")
+  jsonify("D1Csortdef", ("knd", "tok", "def"),
+    (jsonize(knd), jsonize(tok), jsonize("..."))
+  )
 //
 | D1Csexpdef
-  ( knd, sid
-  , arg, res, def) =>
-  fprint!
-  ( out, "D1Csexpdef("
-  , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
+  ( knd, sid, arg, res, def) =>
+  jsonify("D1Csexpdef", ("knd", "sid", "arg", "res", "def"),
+    (
+      jsonize(knd),
+      jsonize(sid),
+      jsonize("..."), //jsonize_list<s1marg>(arg),
+      jsonize("..."),
+      jsonize(def)
+    )
+  )
 //
 | D1Cabstype
   (knd, sid, arg, res, def) =>
-  fprint!
-  ( out, "D1Cabstype("
-  , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
+  jsonify("D1Cabstype", ("knd", "sid", "arg", "res", "def"),
+    (
+      jsonize(knd),
+      jsonize(sid),
+      jsonize("..."), //jsonize(arg),
+      jsonize("..."), //jsonize(res),
+      jsonize(def)
+    )
+  )
 //
 | D1Cabsimpl
   (tok, sqid, smas, res0, def1) =>
-  fprint!
-  ( out, "D1Cabsimpl("
-  , tok, "; ", sqid, "; ", smas, "; ", res0, "; ", def1, ")")
+  jsonify("D1Cabsimpl", ("tok", "sqid", "smas", "res0", "def1"),
+    (jsonize(tok),
+    jsonize(sqid),
+    jsonize("..."), //jsonize(smas),
+    jsonize("..."), //jsonize(res0),
+    jsonize(def1))
+  )
 //
 | D1Cvaldecl
   (tok, mods, d1cs) =>
-  fprint!
-  ( out
-  , "D1Cvaldecl(", tok, "; ", mods, "; ", d1cs, ")")
+  jsonify("D1Cvaldecl", ("tok", "mods", "d1cs"),
+    (jsonize(tok), jsonize(mods),
+    jsonize("...") //jsonize_list<v1aldecl>(d1cs)
+    )
+  )
 //
-| D1Cvardecl(tok, d1cs) =>
-  (
-    fprint!(out, "D1Cvardecl(", tok, "; ", d1cs, ")")
+| D1Cvardecl(tok, mopt, d1cs) =>
+  jsonify("D1Cvardecl", ("tok", "mopt", "d1cs"),
+    (
+      jsonize(tok),
+      jsonize(mopt),
+      jsonize("...") //jsonize_list<v1ardecl>(d1cs)
+    )
   )
 //
 | D1Cfundecl
   (tok, mopt, tqas, d1cs) =>
-  fprint!
-  ( out
-  , "D1Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d1cs, ")")
+  jsonify("D1Cfundecl", ("tok", "mopt", "tqas", "d1cs"),
+    (jsonize(tok), jsonize(mopt),
+      jsonize("..."), // jsonize(tqas),
+      jsonize("...") //jsonize(d1cs)
+    )
+  )
 //
 | D1Cimpdecl
-  ( tok, mopt, sqas, tqas
-  , dqid, tias, f1as, res0, teq1, d1e2) =>
-  fprint!
-  ( out
-  , "D1Cimpdecl("
-  , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
-  , dqid, "; ", tias, "; ", f1as, "; ", res0, "; ", teq1, "; ", d1e2, ")")
+  (tok, mopt, sqas, tqas, dqid, tias, f1as, res0, teq1, d1e2) =>
+  jsonify("D1Cimpdecl",
+    ("tok", "mopt", "sqas", "tqas", "dqid", "tias", "f1as", "res0", "teq1", "d1e2"),
+    (
+      jsonize(tok),
+      jsonize(mopt),
+      jsonize("..."), //jsonize(sqas),
+      jsonize("..."), //jsonize(tqas),
+      jsonize(dqid),
+      jsonize("..."), //jsonize(tias),
+      jsonize("..."), //jsonize(f1as),
+      jsonize("..."), //jsonize(res0),
+      jsonize("..."), //jsonize(teq1),
+      jsonize(d1e2)
+    )
+  )
 //
 | D1Csymload
   (knd, sym, dqid, tint) =>
-  fprint!
-  ( out, "D1Csymload("
-  , knd, "; ", sym, "; ", dqid, "; ", tint, ")")
+  jsonify("D1Csymload", ("knd", "sym", "dqid", "tint"),
+    (jsonize(knd), jsonize(sym), jsonize(dqid),
+    jsonize("...") //jsonize(tint)
+    )
+  )
 //
 | D1Cdatasort
   (knd, d1tsts) =>
-  fprint!
-  ( out, "D1Cdatasort(", knd, "; ", d1tsts, ")" )
+  jsonify("D1Cdatasort", ("knd", "d1tsts"),
+    (jsonize(knd),
+    jsonize("...") //jsonize(d1tsts)
+    )
+  )
 //
 | D1Cdatatype
   (knd, d1typs, wopt) =>
-  fprint!
-  ( out
-  , "D1Cdatatype(", knd, "; ", d1typs, "; ", wopt, ")")
+  jsonify("D1Cdatatype", ("knd", "d1typs", "wopt"),
+    (
+      jsonize(knd),
+      jsonize("..."), //jsonize(d1typs),
+      jsonize(wopt)
+    )
+  )
 //
 | D1Cdynconst
   (tok, tqas, d1cs) =>
-  fprint!
-  (out, "D1Cdynconst(", tok, "; ", tqas, "; ", d1cs, ")")
+  jsonify("D1Cdynconst", ("tok", "tqas", "d1cs"),
+    (jsonize(tok),
+    jsonize("..."), //jsonize(tqas),
+    jsonize("...") //jsonize(d1cs)
+    )
+  )
 //
 | D1Clocal
   (d1cs_head, d1cs_body) =>
-  fprint!
-  (out, "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
+  jsonify("D1Clocal", ("d1cs_head", "d1cs_body"),
+    (
+      jsonize("..."), //jsonize(d1cs_head),
+      jsonize("...") //jsonize(d1cs_body))
+    )
+  )
 //
-| D1Ctokerr(d0c0) => fprint!(out, "D1Ctokerr(", d0c0, ")")
+| D1Ctokerr(d0c0) =>
+  jsonify("D1Ctokerr", "d0c0", jsonize(d0c0))
 //
 (*
 | _(*rest-of-d1ecl*) =>
-    fprint!(out, "fprint_d1ecl: D1C...: not-yet-implemented")
+    jsonize!(out, "jsonize_d1ecl: D1C...: not-yet-implemented")
 *)
 //
 ) (* end of [jsonize_d1ecl] *)
-*)
 
 
 local
@@ -394,7 +609,7 @@ x0.node() of
 | D1Pnone((*void*)) =>
   jsonify("D1Pnone")
 //
-) (* end of [fprint_d1pat] *)
+) (* end of [jsonize_d1pat] *)
 
 end // end of [local]
 
@@ -410,4 +625,165 @@ case+ x0 of
   jsonify("F1UNARROWdflt")
 | F1UNARROWlist(s1es) =>
   jsonify("F1UNARROWlist", "s1es", jsonize_list<s1exp>(s1es))
-) (* end of [fprint_f1unarrow] *)
+) (* end of [jsonize_f1unarrow] *)
+
+
+implement
+jsonize_teqd1expopt
+  (x0) =
+(
+case+ x0 of
+| TEQD1EXPnone() =>
+  jsonify("TEQD1EXPnone")
+
+| TEQD1EXPsome(tok, d1e) =>
+  jsonify("TEQD1EXPsome", ("tok", "d1e"), (jsonize(tok), jsonize(d1e)))
+)
+
+
+implement
+jsonize_wths1expopt
+  (x0) =
+(
+case+ x0 of
+| WTHS1EXPnone() =>
+  jsonify("WTHS1EXPnone")
+| WTHS1EXPsome(tok, s1e) =>
+  jsonify("WTHS1EXPsome", ("tok", "s1e"), (jsonize(tok), jsonize(s1e)))
+)
+
+implement
+jsonize_d1gua
+  (x0) =
+(
+case+
+x0.node() of
+| D1GUAexp(d1e) =>
+  jsonify("D1GUAexp", "d1e", jsonize(d1e))
+| D1GUAmat(d1e, d1p) =>
+  jsonify("D1GUAexp", ("d1e", "d1p"), (jsonize(d1e), jsonize(d1p)))
+) (* end of [jsonize_d1gua] *)
+
+
+implement
+jsonize_d1clau
+  (x0) =
+(
+case+
+x0.node() of
+| D1CLAUgpat(d1gp) =>
+  jsonify("D1CLAUgpat", "d1gp", jsonize(d1gp))
+| D1CLAUclau(d1gp, d0e0) =>
+  jsonify("D1CLAUclau", ("d1gp", "d0e0"), (jsonize(d1gp), jsonize(d0e0)))
+) (* end of [jsonize_d1clau] *)
+
+implement
+jsonize_d1gpat
+  (x0) =
+(
+case+
+x0.node() of
+| D1GPATpat(d1p) =>
+  jsonify("D1GPATpat", "d1p", jsonize(d1p))
+| D1GPATgua(d1p, d1gs) =>
+  jsonify("D1GPATgua", ("d1p", "d1gs"), (jsonize(d1p), jsonize("...")))
+) (* end of [jsonize_d1gpat] *)
+
+
+implement
+jsonize_abstdf1
+  (x0) =
+(
+case+ x0 of
+| ABSTDF1some() =>
+  jsonify("ABSTDF1some")
+| ABSTDF1lteq(s0e) =>
+  jsonify("ABSTDF1lteq", "s0e", jsonize(s0e))
+| ABSTDF1eqeq(s0e) =>
+  jsonify("ABSTDF1eqeq", "s0e", jsonize(s0e))
+) (* end of [jsonize_abstdf1] *)
+
+
+implement
+jsonize_wd1eclseq
+  (x0) =
+(
+case+ x0 of
+| WD1CSnone() =>
+  jsonify("WD1CSnone")
+| WD1CSsome(d1cs) =>
+  jsonify("WD1CSsome", "d1cs", jsonize("..."))
+) (* end of [jsonize_wd1eclseq] *)
+
+
+implement
+jsonize_v1aldecl
+  (x0) = let
+//
+val+V1ALDECL(rcd) = x0
+//
+in
+  jsonify("V1ALDECL", ("pat", "def", "wtp"),
+    (
+      jsonize(rcd.pat),
+      jsonize("..."), // jsonize(rcd.def),
+      jsonize(rcd.wtp)
+    )
+  )
+end // end of [jsonize_v1aldecl]
+
+
+implement
+jsonize_v1ardecl
+  (x0) = let
+//
+val+V1ARDECL(rcd) = x0
+//
+in
+  jsonify("V1ARDECL", ("nam", "wth", "res", "ini"),
+    (
+      jsonize(rcd.nam),
+      jsonize("..."), // jsonize(rcd.wth),
+      jsonize("..."), // jsonize(rcd.res),
+      jsonize(rcd.ini)
+    )
+  )
+end // end of [jsonize_v1ardecl]
+
+
+implement
+jsonize_f1undecl
+  (x0) = let
+//
+val+F1UNDECL(rcd) = x0
+//
+in
+  jsonify("F1UNDECL", ("nam", "arg", "res", "def", "wtp"),
+    (
+      jsonize(rcd.nam),
+      jsonize("..."), // jsonize(rcd.arg),
+      jsonize("..."), // jsonize(rcd.res),
+      jsonize("..."), // jsonize(rcd.def),
+      jsonize(rcd.wtp)
+    )
+  )
+end // end of [jsonize_f1undecl]
+
+
+implement
+jsonize_d1cstdecl
+  (x0) = let
+//
+val+D1CSTDECL(rcd) = x0
+//
+in
+  jsonify(
+    "D1CSTDEC", ("nam", "arg", "res", "def"),
+    (
+      jsonize(rcd.nam),
+      jsonize("..."), // jsonize(rcd.arg),
+      jsonize("..."), // jsonize(rcd.res),
+      jsonize(rcd.def)
+    )
+  )
+end // end of [jsonize_d1cstdecl]

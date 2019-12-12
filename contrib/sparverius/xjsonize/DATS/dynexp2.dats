@@ -612,7 +612,7 @@ case- x0.node() of
 | D2Cnone1(d1csrc) =>
   jsonify("D2Csortdef", "d1csrc", jsonize(d1csrc))
 //
-) (* end of [fprint_d2ecl] *)
+) (* end of [jsonize_d2ecl] *)
 
 end // end of [local]
 
@@ -707,7 +707,7 @@ IMPLD2CST2(dqid, d2cs, opt2) =>
       jsonize(dqid), jsonize_list<d2cst>(d2cs), jsonize_option<d2cst>(opt2)
     )
   )
-) // end of [fprint_impld2cst]
+) // end of [jsonize_impld2cst]
 
 end
 

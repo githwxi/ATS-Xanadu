@@ -46,14 +46,10 @@ case+
 x0.node() of
 //
 | T2Pbas(sym) =>
-  (* fprint!(out, "T2Pbas(", sym, ")") *)
   jsonify("T2Pbas", "sym", jsonize(sym))
-  (* where val _ = $showtype(sym) end *)
 | T2Pcst(s2c) =>
-  (* fprint!(out, "T2Pcst(", s2c, ")") *)
   jsonify("T2Pcst", "s2c", jsonize(s2c))
 | T2Pvar(s2v) =>
-  (* fprint!(out, "T2Pvar(", s2v, ")") *)
   jsonify("T2Pvar", "s2v", jsonize(s2v))
 //
 | T2Pxtv(xtv) =>
@@ -68,10 +64,6 @@ x0.node() of
     | T2Pnone0() =>
       (
       jsonify("T2Pxtv", "xtv", rst)
-      (* end *)
-      (* fprint! *)
-      (* (out, "T2Pxtv(", stm, ")") *)
-      (* )  *)
       where
       {
         val stm = xtv.stamp((*void*))
@@ -79,7 +71,6 @@ x0.node() of
       }
       )
     | _ (* else *) =>
-      (* fprint!(out, "T2Pxtv(", t2p, ")") *)
       jsonify("T2Pxtv", "xtv", rst)
       where
       {
@@ -133,7 +124,6 @@ x0.node() of
     (jsonize(tnm1), jsonize_list<t2ype>(t2ps))
   )
 | T2Ptyrec(knd1, npf2, lt2ps) =>
-
   jsonify(
     "T2Ptyrec", ("knd1", "npf2", "lt2ps"),
     (
@@ -143,9 +133,9 @@ x0.node() of
     )
   )
 //
-| T2Pnone0() => //fprint!(out, "T2Pnone0(", ")")
+| T2Pnone0() =>
   jsonify("T2Pnone0")
-| T2Pnone1(s2e) => //fprint!(out, "T2Pnone1(", s2e, ")")
+| T2Pnone1(s2e) =>
   jsonify("T2Pnone1", "s2e", jsonize(s2e))
 
 //
@@ -159,7 +149,6 @@ jsonize_labt2ype
   (lt2p) =
 (
 case+ lt2p of
-| TLABELED(l0, t2p) => //fprint!(out, l0, "=", t2p)
+| TLABELED(l0, t2p) =>
   jsonify("TLABELED", ("l0", "t2p"), (jsonize(l0), jsonize(t2p)))
-  (* where val _ = $showtype(l0) end *)
-) (* end of [fprint_labt2ype] *)
+) (* end of [jsonize_labt2ype] *)
