@@ -640,6 +640,10 @@ irv1 =
 interp0_irexp(env0, ire1)
 in
 case- irv1 of
+(*
+|
+IR0Vlft(irvl) =>
+*)
 |
 IR0Vtuple(knd, irvs) => auxlst(irvs, idx2)
 end // end of [auxproj]
@@ -906,6 +910,30 @@ end // end of [aux_fix]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxlst
+( irvs
+: ir0valist
+, i0: int): ir0val =
+(
+case+ irvs of
+|
+list_nil() =>
+IR0Vnone0()
+|
+list_cons
+(irv0, irvs) =>
+(
+if
+(i0 > 0)
+then auxlst(irvs, i0-1) else irv0
+)
+) (* end of [auxlst] *)
+
+in(*in-of-local*)
+
 fun
 aux_flat
 ( env0
@@ -914,23 +942,47 @@ aux_flat
 : ir0exp): ir0val =
 let
 val-
-IR0Eflat(ire1) = ire0.node()
+IR0Eflat
+  (ire1) = ire0.node()
 //
-val
-irv1 = interp0_irexp(env0, ire1)
-//
-(*
-val () =
-println!("aux_flat: irv1 = ", irv1)
-*)
-//
+in
+  aux_flat_main(env0, ire1)
+end
+and
+aux_flat_main
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+(
+case-
+ire0.node() of
+|
+IR0Evar(d2v1) =>
+let
+val irv1 = auxvar(env0, ire0)
 in
 //
 case- irv1 of
 | IR0Vlft(ref) =>
-  let val-Some(irv0) = ref[] in irv0 end
+  let
+  val-Some(irv0) = ref[] in irv0
+  end
 //
+end // end of [IR0Evar]
+|
+IR0Eproj
+(ire1, lab2, idx2) =>
+let
+val irv1 = aux_flat_main(env0, ire1)
+in
+case- irv1 of
+| IR0Vtuple(knd, irvs) => auxlst(irvs, idx2)
 end
+) (* end of [aux_flat_main] *)
+
+end // end of [local]
+
 
 (* ****** ****** *)
 
