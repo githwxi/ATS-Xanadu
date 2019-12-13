@@ -254,6 +254,9 @@ ir0exp_node =
 | IR0Elet of (ir0dclist, ir0exp)
 | IR0Ewhere of (ir0exp, ir0dclist)
 //
+| IR0Eseqn of
+  (ir0explst(*semi*), ir0exp(*last*))
+//
 | IR0Etuple of
   (int(*knd*), int(*npf*), ir0explst)
 //
