@@ -43,7 +43,15 @@ XATS_targetloc "./../../xats"
 (* ****** ****** *)
 
 #staload
+LAB = "{$XATS}/SATS/label0.sats"
+#staload
 D2E = "{$XATS}/SATS/dynexp2.sats"
+#staload
+INT = "{$XATS}/SATS/intrep0.sats"
+
+(* ****** ****** *)
+
+typedef label = $LAB.label
 
 (* ****** ****** *)
 
@@ -52,12 +60,6 @@ typedef d2con = $D2E.d2con
 typedef d2cst = $D2E.d2cst
 
 (* ****** ****** *)
-
-#staload
-INT = "{$XATS}/SATS/intrep0.sats"
-
-(* ****** ****** *)
-
 typedef ir0pat = $INT.ir0pat
 typedef ir0arg = $INT.ir0arg
 typedef ir0exp = $INT.ir0exp
@@ -107,7 +109,7 @@ ir0val =
 | IR0Vcst of d2cst
 *)
 //
-| IR0Vlft of ir0valeft
+| IR0Vlft of ir0lval
 //
 | IR0Vcon of
   (d2con, ir0valist)
@@ -130,13 +132,17 @@ ir0val =
 //
 | IR0Vnone0 of () | IR0Vnone1 of (ir0exp)
 //
+and
+ir0lval =
+| IR0LVref of ref(ir0valopt)
+| IR0LVproj of
+  (ir0lval, label, int(*index*))
+//
 where
 //
 ir0valist = List0(ir0val)
 and
 ir0valopt = Option(ir0val)
-and
-ir0valeft = ref(ir0valopt)
 and
 ir0valfun = (ir0valist -<cloref1> ir0val)
 //
@@ -152,6 +158,19 @@ overload prerr with prerr_ir0val
 fun
 fprint_ir0val: fprint_type(ir0val)
 overload fprint with fprint_ir0val
+//
+(* ****** ****** *)
+//
+fun
+print_ir0lval: print_type ir0lval
+fun
+prerr_ir0lval: prerr_type ir0lval
+overload print with print_ir0lval
+overload prerr with prerr_ir0lval
+//
+fun
+fprint_ir0lval: fprint_type ir0lval
+overload fprint with fprint_ir0lval
 //
 (* ****** ****** *)
 

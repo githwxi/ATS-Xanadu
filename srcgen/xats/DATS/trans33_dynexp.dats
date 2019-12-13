@@ -308,7 +308,12 @@ macdef d33exp_fix_up = d23exp_fix_up
 macdef d33exp_sapp_up = d23exp_sapp_up
 macdef d33exp_tapp_up = d23exp_tapp_up
 //
+(*
 macdef d33exp_proj_up = d23exp_proj_up
+*)
+//
+macdef d33exp_seqn_up = d23exp_seqn_up
+//
 macdef d33exp_tuple_up = d23exp_tuple_up
 //
 (* ****** ****** *)
@@ -704,7 +709,10 @@ case- opt3 of
 None() =>
 let
 val-
-list_cons(d3e1, _) = d3es
+list_cons
+(d3e1, _) = d3es
+val
+d3e1 = trans33_dexp(d3e1)
 in
   d33exp_proj_up(loc0, d3e1, lab0)
 end // end of [None]
@@ -796,6 +804,29 @@ d33exp_make_node
   (loc0, t2p1, D3Ewhere(d3e1, d3cs))
 end
 end (* end of [aux_where] *)
+
+(* ****** ****** *)
+
+fun
+aux_seqn
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Eseqn
+( d3es
+, d3e1) = d3e0.node()
+//
+val
+d3e1 = trans33_dexp(d3e1)
+val
+d3es = trans33_dexplst(d3es)
+//
+in
+  d33exp_seqn_up(loc0, d3es, d3e1)
+end // end of [aux_seqn]
 
 (* ****** ****** *)
 
@@ -1061,9 +1092,7 @@ d3e0.node() of
 | D3Elet _ => aux_let(d3e0)
 | D3Ewhere _ => aux_where(d3e0)
 //
-(*
 | D3Eseqn _ => aux_seqn(d3e0)
-*)
 //
 | D3Eassgn _ => aux_assgn(d3e0)
 //
