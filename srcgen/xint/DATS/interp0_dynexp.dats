@@ -714,6 +714,49 @@ end // end of [aux_where]
 (* ****** ****** *)
 
 fun
+aux_seqn
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+//
+val-
+IR0Eseqn
+( ires
+, ire1) = ire0.node()
+//
+in
+let
+fun
+auxlst
+( env0
+: !intpenv
+, ires
+: ir0explst): void =
+(
+case+ ires of
+| list_nil() => ()
+| list_cons
+  (irea, ires) =>
+  (
+  auxlst(env0, ires)
+  ) where
+  {
+  val-IR0Vnil() = 
+  interp0_irexp(env0, irea)
+  }
+) (* end of [auxlst] *)
+val () =
+  auxlst(env0, ires)
+in
+  interp0_irexp(env0, ire1)
+end
+end // end of [aux_seqn]
+
+(* ****** ****** *)
+
+fun
 aux_tuple
 ( env0
 : !intpenv
@@ -1197,6 +1240,9 @@ ire0.node() of
   (ircs, ire1) => aux_let(env0, ire0)
 | IR0Ewhere
   (ire1, ircs) => aux_where(env0, ire0)
+//
+| IR0Eseqn
+  (ires, ire1) => aux_seqn(env0, ire0)
 //
 | IR0Etuple
   (_, _, ires) => aux_tuple(env0, ire0)

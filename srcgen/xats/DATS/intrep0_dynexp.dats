@@ -363,6 +363,19 @@ d3e0.node() of
     (loc0, IR0Ewhere(ire1, ircs))
   end
 //
+| D3Eseqn
+  ( d3es(*semi*)
+  , d3e1(*last*)) =>
+  let
+  val
+  ire1 = irerase_dexp(d3e1)
+  val
+  ires = irerase_dexplst(d3es)
+  in
+    ir0exp_make_node
+    (loc0, IR0Eseqn(ires, ire1))
+  end
+//
 | D3Etuple
   (knd0, npf1, d3es) =>
   let
