@@ -8,12 +8,12 @@
 ** ATS/Xanadu - Unleashing the Potential of Types!
 ** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
-**
+** 
 ** ATS is free software;  you can  redistribute it and/or modify it under
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-**
+** 
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
@@ -75,10 +75,10 @@ fprint_val<ir0val> = fprint_ir0val
 (* ****** ****** *)
 //
 implement
-print_ir0val(x0) =
+print_ir0val(x0) = 
 fprint_ir0val(stdout_ref, x0)
 implement
-prerr_ir0val(x0) =
+prerr_ir0val(x0) = 
 fprint_ir0val(stderr_ref, x0)
 //
 implement
@@ -137,10 +137,10 @@ case+ x0 of
 (* ****** ****** *)
 //
 implement
-print_ir0lval(x0) =
+print_ir0lval(x0) = 
 fprint_ir0lval(stdout_ref, x0)
 implement
-prerr_ir0lval(x0) =
+prerr_ir0lval(x0) = 
 fprint_ir0lval(stderr_ref, x0)
 //
 implement
