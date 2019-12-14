@@ -197,16 +197,6 @@ jsonize_s2cst
 implement
 jsonize_s2var
   (x0) =
-(*
-jsonval_labval2("s2var", rst, "sort", jsrt) where
-    val lst = $list{labjsonval}(
-      $SYM.labify_symbol(x0.sym()),
-      $STM.labify_stamp(x0.stamp())
-    )
-    val rst = JSONlablist(lst)
-    val jsrt = jsonize(x0.sort())
-  end
-*)
 node("s2var", rst) where
     val lst = $list{labjsonval}(
       $SYM.labify_symbol(x0.sym()),
@@ -217,6 +207,36 @@ node("s2var", rst) where
     (* val jsrt = jsonize(x0.sort()) *)
   end
 
+
+
+local
+
+implement
+jsonize_val<s2txt> = jsonize_s2txt
+implement
+jsonize_val<s2exp> = jsonize_s2exp
+
+in (* in-of-local *)
+
+implement
+jsonize_s2txt
+  (s2tx) =
+(
+case+ s2tx of
+| S2TXTsrt(s2t) =>
+  jsonify("S2TXTsrt", "s2t", jsonize(s2t))
+| S2TXTsub(s2v, s2ps) =>
+  jsonify("S2TXTsub", ("s2v", "s2ps"),
+    (jsonize(s2v), jsonize_list<s2exp>(s2ps))
+  )
+//
+(*
+| S2TXTerr(loc0) => jsonify("S2TXTerr(...)")
+*)
+//
+) (* end of [jsonize_s2txt] *)
+
+end // end of [local]
 
 
 implement
@@ -301,15 +321,10 @@ s2e0.node() of
   )
 | S2Elam
   (s2vs, body) =>
-  jsonify (
-    "S2Elam",
+  jsonify ("S2Elam", ("s2vs", "body"),
     (
-      "s2vs",
-      "body"
-    ),
-    (
-      jsonize("..."),
-      jsonize("...")
+      jsonize_list<s2var>(s2vs),
+      jsonize(body)
     )
   )
 //
@@ -516,6 +531,24 @@ end
 
 end
 
+
+implement
+jsonize_abstdf2
+  (x0) =
+node("abstdf2", res) where
+val res =
+(
+case+ x0 of
+| ABSTDF2none() =>
+  jsonify("ABSTDF2none")
+| ABSTDF2some() =>
+  jsonify("ABSTDF2some")
+| ABSTDF2lteq(s2e) =>
+  jsonify("ABSTDF2lteq", "s2e", jsonize(s2e))
+| ABSTDF2eqeq(s2e) =>
+  jsonify("ABSTDF2eqeq", "s2e", jsonize(s2e))
+)
+end
 
 implement
 jsonize_effs2expopt

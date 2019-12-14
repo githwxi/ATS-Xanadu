@@ -21,6 +21,7 @@
 
 #staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
+#staload "./../SATS/filpath.sats"
 
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
@@ -28,12 +29,20 @@
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 
+#staload _ = "./dynexp0.dats"
 
 implement
 jsonize_val<token> = jsonize_token
 implement
 jsonize_val<sort1> = jsonize_sort1
+implement
+jsonize_val<filpath> = jsonize_filpath
 
+implement
+jsonize_val<d1exp> = jsonize_d1exp
+
+implement
+jsonize_val<dl0abeled(d1exp)> = jsonize_dl0abeled<d1exp>
 
 implement
 jsonize_q1arg
@@ -220,6 +229,7 @@ implement jsonize_val<d1exp> = jsonize_d1exp
 implement jsonize_val<d1ecl> = jsonize_d1ecl
 implement jsonize_val<f1arg> = jsonize_f1arg
 implement jsonize_val<s1exp> = jsonize_s1exp
+implement jsonize_val<d1clau> = jsonize_d1clau
 
 implement
 jsonize_d1exp
@@ -305,7 +315,7 @@ case+ x0.node() of
 //
 | D1Ecase(knd, d1e1, dcls) =>
   jsonify("D1Ecase", ("knd", "d1e1", "dcls"),
-    (jsonize(knd), jsonize(d1e1), jsonize("..."))
+    (jsonize(knd), jsonize(d1e1), jsonize_list<d1clau>(dcls))
   )
 //
 | D1Elam
@@ -336,12 +346,19 @@ case+ x0.node() of
 | D1Erecord(tok, ld1es) =>
   jsonify (
     "D1Erecord", ("tok", "ld1es"),
-    (jsonize(tok), jsonize("...")) // jsonize_list<dl0abeled(d1exp)>(ld1es)
+    (
+      jsonize(tok),
+      jsonize_list<dl0abeled(d1exp)>(ld1es)
+    )
   )
 | D1Erecord(tok, ld1es1, ld1es2) =>
   jsonify (
     "D1Erecord", ("tok", "ld1es1", "ld1es2"),
-    (jsonize(tok), jsonize("..."), jsonize("..."))
+    (
+      jsonize(tok),
+      jsonize_list<dl0abeled(d1exp)>(ld1es1),
+      jsonize_list<dl0abeled(d1exp)>(ld1es2)
+    )
   )
 | D1Eanno(d1e1, s1e2) =>
   jsonify("D1Eanno", ("d1e1", "s1e2"), (jsonize(d1e1), jsonize(s1e2)))
@@ -425,7 +442,7 @@ case+ x0.node() of
       jsonize(tok),
       jsonize(src),
       jsonize(knd),
-      jsonize("..."),
+      jsonize_option<filpath>(opt),
       jsonize(body)
     )
   )
@@ -447,7 +464,7 @@ case+ x0.node() of
       jsonize(tok),
       jsonize(src),
       jsonize(knd),
-      jsonize("..."),
+      jsonize_option<filpath>(opt),
       jsonize(flag),
       jsonize(body)
     )
@@ -682,14 +699,14 @@ x0.node() of
 //
 | D1Precord(tok, ld1ps) =>
   jsonify("D1Precord1", ("tok", "ld1ps"),
-    (jsonize(tok), jsonize("..."))
+    (jsonize(tok), jsonize_list<dl0abeled(d1pat)>(ld1ps))
   )
 | D1Precord(tok, ld1ps1, ld1ps2) =>
   jsonify("D1Precord2", ("tok", "ld1ps1", "ld1ps2"),
     (
       jsonize(tok),
-      jsonize("..."),
-      jsonize("...")
+      jsonize_list<dl0abeled(d1pat)>(ld1ps1),
+      jsonize_list<dl0abeled(d1pat)>(ld1ps2)
     )
   )
 //

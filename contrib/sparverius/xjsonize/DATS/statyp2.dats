@@ -41,6 +41,8 @@ in (* in-of-local *)
 implement
 jsonize_t2ype
   (x0) =
+node("t2ype", res) where
+val res =
 (
 case+
 x0.node() of
@@ -140,6 +142,7 @@ x0.node() of
 
 //
 )
+end
 
 end
 
@@ -147,8 +150,11 @@ end
 implement
 jsonize_labt2ype
   (lt2p) =
+node("labt2ype", res) where
+val res =
 (
 case+ lt2p of
 | TLABELED(l0, t2p) =>
   jsonify("TLABELED", ("l0", "t2p"), (jsonize(l0), jsonize(t2p)))
 ) (* end of [jsonize_labt2ype] *)
+end

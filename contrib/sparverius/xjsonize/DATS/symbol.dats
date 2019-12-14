@@ -14,7 +14,8 @@
 
 implement
 jsonize_symbol(x0) =
-jsonval_labval1("symbol", jsonize(x0.name()))
+  node("symbol", jsonize(x0.name()))
+(* jsonval_labval1("symbol", jsonize(x0.name())) *)
 
 implement
 labify_symbol(x0) = ("symbol", jsonize(x0.name()))

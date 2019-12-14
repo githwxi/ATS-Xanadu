@@ -15,6 +15,7 @@
 
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/label0.sats"
+#staload "./../SATS/filpath.sats"
 
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
@@ -30,6 +31,13 @@
 
 #staload "./../SATS/intrep0.sats"
 
+
+implement
+jsonize_val<filpath> = jsonize_filpath
+
+
+implement
+jsonize_val<ir0pat> = jsonize_ir0pat
 
 implement
 jsonize_ir0pat
@@ -52,10 +60,12 @@ case+ x0.node() of
   jsonify("IR0Pvar", "d2v", jsonize(d2v))
 //
 | IR0Pcapp(d2c0, irps) =>
-  jsonify("IR0Pcapp", ("d2c0", "irps"), (jsonize(d2c0), jsonize("...")))
+  jsonify("IR0Pcapp", ("d2c0", "irps"), (jsonize(d2c0), jsonize_list<ir0pat>(irps)))
 //
 | IR0Ptuple(knd, irps) =>
-  jsonify("IR0Ptuple", ("knd", "irps"), (jsonize(knd), jsonize("...")))
+  jsonify("IR0Ptuple", ("knd", "irps"),
+    (jsonize(knd), jsonize_list<ir0pat>(irps))
+  )
 //
 | IR0Pnone0() =>
   jsonify("IR0Pnone0")
@@ -83,6 +93,7 @@ end // end of [jsonize_ir0arg]
 local
 
 implement jsonize_val<ir0exp> = jsonize_ir0exp
+implement jsonize_val<ir0clau> = jsonize_ir0clau
 implement jsonize_val<ir0dcl> = jsonize_ir0dcl
 implement jsonize_val<t2ype> = jsonize_t2ype
 implement jsonize_val<ir0arg> = jsonize_ir0arg
@@ -172,7 +183,7 @@ x0.node() of
   (knd0, npf1, ires) =>
   jsonify(
     "IR0Etuple", ("knd0", "npf1", "ires"),
-    (jsonize("..."), jsonize(npf1), jsonize_list<ir0exp>(ires))
+    (jsonize(knd0), jsonize(npf1), jsonize_list<ir0exp>(ires))
   )
 | IR0Eassgn(irel, irer) =>
   jsonify("IR0Eassgn", ("irel", "irer"), (jsonize(irel), jsonize(irer)))
@@ -181,13 +192,13 @@ x0.node() of
   (ire1, ire2, opt3) =>
   jsonify("IR0Eif0",
     ("ire1", "ire2", "opt3"),
-    (jsonize(ire1), jsonize(ire2), jsonize("..."))
+    (jsonize(ire1), jsonize(ire2), jsonize_option<ir0exp>(opt3))
   )
 //
 | IR0Ecase
   (knd0, ire1, ircls) =>
   jsonify("IR0Ecase", ("knd0", "ire1", "ircls"),
-    (jsonize("..."), jsonize("..."), jsonize("..."))
+    (jsonize(knd0), jsonize(ire1), jsonize_list<ir0clau>(ircls))
   )
 //
 | IR0Elam
@@ -199,7 +210,12 @@ x0.node() of
 | IR0Efix
   (knd0, d2v0, farg, body) =>
   jsonify("IR0Efix", ("knd0", "d2v0", "farg", "body"),
-    (jsonize("..."), jsonize("..."), jsonize("..."), jsonize("..."))
+    (
+      jsonize(knd0),
+      jsonize(d2v0),
+      jsonize_list<ir0arg>(farg),
+      jsonize(body)
+    )
   )
 //
 | IR0Eaddr(ire1) =>
@@ -257,7 +273,9 @@ x0.node() of
   jsonify("IR0CLAUpat", "ir0gp", jsonize(ir0gp))
 //
 | IR0CLAUexp(ir0gp, d0e0) =>
-  jsonify("IR0CLAUpat", ("ir0gp", "d0e0"), (jsonize("..."), jsonize("...")))
+  jsonify("IR0CLAUpat", ("ir0gp", "d0e0"),
+    (jsonize(ir0gp), jsonize(d0e0))
+  )
 //
 ) (* end of [jsonize_ir0clau] *)
 end
@@ -312,7 +330,13 @@ case+ x0.node() of
 | IR0Cinclude
   (tok, src, knd, fopt, body) =>
   jsonify("IR0Cinclude", ("tok", "src", "knd", "fopt", "body"),
-    (jsonize(tok), jsonize(src), jsonize(knd), jsonize("..."), jbody)
+    (
+      jsonize(tok),
+      jsonize(src),
+      jsonize(knd),
+      jsonize_option<filpath>(fopt),
+      jbody
+    )
   ) where
     val jbody = (
       case+ body of
@@ -323,17 +347,19 @@ case+ x0.node() of
 //
 | IR0Clocal
   (head, body) =>
-  jsonify("IR0Clocal", ("head", "body"), (jsonize("..."), jsonize("...")))
+  jsonify("IR0Clocal", ("head", "body"),
+    (jsonize_list<ir0dcl>(head), jsonize_list<ir0dcl>(body))
+  )
 //
 | IR0Cvardecl
   (knd, mopt, irds) =>
   jsonify("IR0Cvardecl", ("knd", "mopt", "irds"),
-    (jsonize(knd), jsonize("..."), jsonize_list<ir0vardecl>(irds))
+    (jsonize(knd), jsonize(mopt), jsonize_list<ir0vardecl>(irds))
   )
 | IR0Cvaldecl
   (knd, mopt, irds) =>
   jsonify("IR0Cvaldecl", ("knd", "mopt", "irds"),
-    (jsonize(knd), jsonize("..."), jsonize_list<ir0valdecl>(irds))
+    (jsonize(knd), jsonize(mopt), jsonize_list<ir0valdecl>(irds))
   )
 //
 | IR0Cfundecl

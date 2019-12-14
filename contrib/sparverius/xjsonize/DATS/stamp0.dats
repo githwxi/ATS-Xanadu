@@ -21,16 +21,9 @@
 
 implement
 jsonize_stamp(x0) =
-(
-(*
-  jsonval_labval2("node", nd, "val", vl) where
-  {
-    val nd = jstr("stamp")
-    val vl = jsonize(tostring_uint(stamp2uint(x0)))
-  }
-*)
-jsonval_labval1("stamp", jsonize(tostring_uint(stamp2uint(x0))))
-)
+node("stamp", jsonize(tostring_uint(stamp2uint(x0))))
+(* jsonval_labval1("stamp", jsonize(tostring_uint(stamp2uint(x0)))) *)
+
 
 implement
 labify_stamp(x0) = ("stamp", jsonize(tostring_uint(stamp2uint(x0))))

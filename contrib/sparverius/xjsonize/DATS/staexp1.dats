@@ -18,8 +18,10 @@
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/label0.sats"
 #staload "./../SATS/lexing.sats"
+#staload "./../SATS/locinfo.sats"
 
 #staload "./../SATS/staexp1.sats"
+#staload _ = "./staexp0.dats"
 
 #staload SYM_J = "./../SATS/symbol.sats"
 overload jsonize with $SYM_J.jsonize_symbol
@@ -27,6 +29,9 @@ overload jsonize with $SYM_J.jsonize_symbol
 
 implement
 jsonize_val<s1exp> = jsonize_s1exp
+implement
+jsonize_val<sl0abled(s1exp)> = jsonize_sl0abled<s1exp>
+
 
 implement
 jsonize_val<token> = jsonize_token
@@ -214,7 +219,9 @@ case+ x0.node() of
 | S1RTDEFsort(s1t) =>
   jsonify("S1RTDEFsort", "s1t", jsonize(s1t))
 | S1RTDEFsbst(s1a0, s1es) =>
-  jsonify("S1RTDEFsbst(", ("s1a0", "s1es"), (jsonize(s1a0), jsonize_list<s1exp>(s1es)))
+  jsonify("S1RTDEFsbst(", ("s1a0", "s1es"),
+    (jsonize(s1a0), jsonize_list<s1exp>(s1es))
+  )
 ) (* end of [jsonize_s1rtdef] *)
 end
 
@@ -231,7 +238,9 @@ x0.node() of
   jsonify("S1ARGnone()")
 *)
 | S1ARGsome(tok, opt) =>
-  jsonify("S1ARGsome(", ("tok", "opt"), (jsonize(tok), jsonize_option<sort1>(opt)))
+  jsonify("S1ARGsome(", ("tok", "opt"),
+    (jsonize(tok), jsonize_option<sort1>(opt))
+  )
 ) (* jsonize_s1arg *)
 end
 
@@ -277,7 +286,9 @@ x0.node() of
   jsonify("T1ARGnone")
 *)
 | T1ARGsome(tok, opt) =>
-  jsonify("T1ARGsome", ("tok", "opt"), (jsonize(tok), jsonize_option<token>(opt)))
+  jsonify("T1ARGsome", ("tok", "opt"),
+    (jsonize(tok), jsonize_option<token>(opt))
+  )
 ) (* jsonize_t1arg *)
 end
 
@@ -317,7 +328,9 @@ case+ x0.node() of
 | S1QUAprop(s1e) =>
   jsonify("S1QUAprop(", "s1e", jsonize(s1e))
 | S1QUAvars(ids, opt) =>
-  jsonify("S1QUAvars(", ("ids", "opt"), (jsonize_list<token>(ids), jsonize_option<sort1>(opt)))
+  jsonify("S1QUAvars(", ("ids", "opt"),
+    (jsonize_list<token>(ids), jsonize_option<sort1>(opt))
+  )
 )
 end
 
@@ -341,6 +354,10 @@ local
 
 implement
 jsonize_val<s1exp> = jsonize_s1exp
+implement
+jsonize_val<s1marg> = jsonize_s1marg
+implement
+jsonize_val<s1qua> = jsonize_s1qua
 
 in (* in-of-local *)
 
@@ -372,7 +389,9 @@ case+ x0.node() of
   jsonify("S1Eapp1", ("s1e0", "s1e1"), (jsonize(s1e0), jsonize(s1e1)))
 | S1Eapp2
   (s1e0, s1e1, s1e2) =>
-  jsonify("S1Eapp2", ("s1e0", "s1e1", "s1e2"), (jsonize(s1e0), jsonize(s1e1), jsonize(s1e2)))
+  jsonify("S1Eapp2", ("s1e0", "s1e1", "s1e2"),
+    (jsonize(s1e0), jsonize(s1e1), jsonize(s1e2))
+  )
 //
 | S1Ebs0() =>
   jsonify("S1Ebs0")
@@ -380,7 +399,7 @@ case+ x0.node() of
   jsonify("S1Ebs1", "s1e", jsonize(s1e))
 //
 | S1Eimp(s1es) =>
-  jsonify("S1Eimp", "s1es", jsonize("..."))
+  jsonify("S1Eimp", "s1es", jsonize_list<s1exp>(s1es))
 //
 (*
 | S1Eapp(s1e0, s1es) =>
@@ -388,31 +407,46 @@ case+ x0.node() of
 *)
 //
 | S1Elist(s1es) =>
-  jsonify("S1Elist", "s1es", jsonize("..."))
+  jsonify("S1Elist", "s1es", jsonize_list<s1exp>(s1es))
 | S1Elist(s1es1, s1es2) =>
-  jsonify("S1Elist", ("s1es1", "s1es2"), (jsonize("..."), jsonize("...")))
+  jsonify("S1Elist", ("s1es1", "s1es2"),
+    (jsonize_list<s1exp>(s1es1), jsonize_list<s1exp>(s1es2))
+  )
 //
 | S1Etuple(k0, s1es) =>
-  jsonify("S1Etuple", ("k0", "s1es"), (jsonize(k0), jsonize("...")))
+  jsonify("S1Etuple", ("k0", "s1es"),
+    (jsonize(k0), jsonize_list<s1exp>(s1es))
+  )
 | S1Etuple(k0, s1es1, s1es2) =>
-  jsonify("S1Etuple", ("k0", "s1es1", "s1es2"), (jsonize(k0), jsonize("..."), jsonize("...")
-  ))
+  jsonify("S1Etuple", ("k0", "s1es1", "s1es2"),
+    (jsonize(k0), jsonize_list<s1exp>(s1es1), jsonize_list<s1exp>(s1es2))
+  )
 //
 | S1Erecord(k0, ls1es) =>
-  jsonify("S1Erecord", ("k0", "ls1es"), (jsonize(k0), jsonize("...")))
+  jsonify("S1Erecord", ("k0", "ls1es"),
+    (jsonize(k0), jsonize_list<sl0abled(s1exp)>(ls1es))
+  )
 | S1Erecord(k0, ls1es1, ls1es2) =>
-  jsonify("S1Erecord", ("k0", "ls1es1", "ls1es2"), (jsonize(k0), jsonize("..."), jsonize("...")))
+  jsonify("S1Erecord", ("k0", "ls1es1", "ls1es2"),
+    (
+      jsonize(k0),
+      jsonize_list<sl0abled(s1exp)>(ls1es1),
+      jsonize_list<sl0abled(s1exp)>(ls1es2)
+    )
+  )
 //
 | S1Eforall(s1qs) =>
-  jsonify("S1Eforall", "s1qs", jsonize("..."))
+  jsonify("S1Eforall", "s1qs", jsonize_list<s1qua>(s1qs))
 | S1Eexists(k0, s1qs) =>
-  jsonify("S1Eexists", ("k0", "s1qs"), (jsonize(k0), jsonize("...")))
+  jsonify("S1Eexists", ("k0", "s1qs"),
+    (jsonize(k0), jsonize_list<s1qua>(s1qs))
+  )
 //
 | S1Elam(arg, res, s1e) =>
   jsonify("S1Elam", ("arg", "res", "s1e"),
     (
-      jsonize("..."), //jsonize(arg),
-      jsonize("..."), //jsonize(res),
+      jsonize_list<s1marg>(arg),
+      jsonize_option<sort1>(res),
       jsonize(s1e)
     )
   )
@@ -424,7 +458,7 @@ case+ x0.node() of
   jsonify("S1Equal", ("tok", "s1e"), (jsonize(tok), jsonize(s1e)))
 //
 | S1Enone(loc) =>
-  jsonify("S1Enone", "loc", jsonize("..."))
+  jsonify("S1Enone", "loc", jsonize(loc))
 //
 ) (* jsonize_s0exp *)
 end

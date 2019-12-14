@@ -38,6 +38,7 @@ symbol.sats \
 label0.sats \
 locinfo.sats \
 lexing.sats \
+filpath.sats \
 dynexp0.sats \
 staexp0.sats \
 dynexp1.sats \
@@ -58,6 +59,7 @@ symbol.dats \
 label0.dats \
 locinfo.dats \
 lexing_token.dats \
+filpath.dats \
 staexp0.dats \
 dynexp0.dats \
 staexp1.dats \

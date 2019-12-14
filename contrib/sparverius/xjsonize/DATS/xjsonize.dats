@@ -49,6 +49,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexing.sats"
 #staload "./../SATS/stamp0.sats"
 #staload "./../SATS/symbol.sats"
+#staload "./../SATS/filpath.sats"
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 #staload "./../SATS/staexp1.sats"
@@ -66,6 +67,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* #staload _ = "./label0.dats" *)
 (* #staload _ = "./locinfo.dats" *)
 (* #staload _ = "./lexing_token.dats" *)
+(* #staload _ =  "./filpath.dats" *)
 (* #staload _ = "./staexp0.dats" *)
 (* #staload _ = "./dynexp0.dats" *)
 (* #staload _ = "./stamp0.dats" *)
@@ -86,6 +88,7 @@ UN = "prelude/SATS/unsafe.sats"
 #dynload "./label0.dats"
 #dynload "./locinfo.dats"
 #dynload "./lexing_token.dats"
+#dynload "./filpath.dats"
 #dynload "./staexp0.dats"
 #dynload "./dynexp0.dats"
 #dynload "./staexp1.dats"

@@ -16,7 +16,7 @@
 
 implement jsonize_filpath
   (x) =
-  jsonval_labval1("fpath", jsonize(full1))
+  node("filpath", jsonize(full1))
 where
   val full1 = filpath_get_full1(x)
 end

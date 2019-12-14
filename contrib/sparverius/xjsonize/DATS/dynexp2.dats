@@ -22,6 +22,7 @@
 #staload "./../SATS/locinfo.sats"
 
 #staload "./../SATS/label0.sats"
+#staload "./../SATS/filpath.sats"
 
 #staload "./../SATS/dynexp0.sats"
 #staload "./../SATS/staexp0.sats"
@@ -44,6 +45,8 @@ overload jsonize with $STM_J.jsonize_stamp
 
 implement
 jsonize_val<s2exp> = jsonize_s2exp
+implement
+jsonize_val<filpath> = jsonize_filpath
 
 
 implement
@@ -440,7 +443,7 @@ case- x0.node() of
       jsonize(tok),
       jsonize(src),
       jsonize(knd),
-      jsonize("..."), (* jsonize_option<filpath>(fopt), *)
+      jsonize_option<filpath>(fopt),
       jsonize(body)
     ) where
 
@@ -465,7 +468,7 @@ case- x0.node() of
       jsonize(tok),
       jsonize(src),
       jsonize(knd),
-      jsonize("..."),
+      jsonize_option<filpath>(fopt),
       jsonize(flag),
       jsonize(body)
     ) where
@@ -479,7 +482,12 @@ case- x0.node() of
   )
 //
 | D2Clocal(head, body) =>
-  jsonify("D2Clocal", ("head", "body"), (jsonize("..."), jsonize("...")))
+  jsonify("D2Clocal", ("head", "body"),
+    (
+      jsonize_list<d2ecl>(head),
+      jsonize_list<d2ecl>(body)
+    )
+  )
 //
 | D2Cabssort(d1c) =>
   jsonify("D2Cabssort", "d1c", jsonize("..."))
@@ -488,13 +496,15 @@ case- x0.node() of
   jsonify("D2Cstacst0", ("s2c", "s2t"), (jsonize(s2c), jsonize(s2t)))
 //
 | D2Csortdef(sym, s2tx) =>
-  jsonify("D2Csortdef", ("sym", "s2tx"), (jsonize(sym), jsonize("...")))
+  jsonify("D2Csortdef", ("sym", "s2tx"),
+    (jsonize(sym), jsonize(s2tx))
+  )
 //
 | D2Csexpdef(s2c, s2e) =>
   jsonify("D2Csexpdef", ("s2c", "s2e"), (jsonize(s2c), jsonize(s2e)))
 //
 | D2Cabstype(s2c, df2) =>
-  jsonify("D2Cabstype", ("s2c", "df2"), (jsonize(s2c), jsonize("...")))
+  jsonify("D2Cabstype", ("s2c", "df2"), (jsonize(s2c), jsonize(df2)))
 //
 | D2Cabsimpl
   (knd, sqid, def0) =>
@@ -521,7 +531,7 @@ case- x0.node() of
     (
       jsonize(tok),
       jsonize(sym0),
-      jsonize(dpi1) (* jsonize("...") *)
+      jsonize(dpi1)
     )
   )
 //
@@ -535,7 +545,7 @@ case- x0.node() of
     (
       jsonize(knd),
       jsonize(mopt),
-      jsonize_list<v2aldecl>(v2ds) (* jsonize("...") *)
+      jsonize_list<v2aldecl>(v2ds)
     )
   )
 
@@ -558,7 +568,11 @@ case- x0.node() of
 | D2Cvardecl(knd, mopt, v2ds) =>
   jsonify(
     "D2Cvardecl", ("knd", "mopt", "v2ds"),
-    (jsonize(knd), jsonize(mopt), jsonize("..."))
+    (
+      jsonize(knd),
+      jsonize(mopt),
+      jsonize_list<v2ardecl>(v2ds)
+    )
   )
 //
 | D2Cimpdecl1
@@ -704,7 +718,6 @@ implement
 jsonize_ti2arg
   (x0) =
 (
-  (* jsonify("ti2arg", "s2es", jsonize("...")) *)
   (* jsonval_labval1("ti2arg", jsonize_list<s2exp>(x0.s2es())) *)
   node("ti2arg", jsonize_list<s2exp>(x0.s2es()))
 ) (* end of [jsonize_ti2arg] *)
@@ -741,6 +754,9 @@ IMPLD2CST2(dqid, d2cs, opt2) =>
 end
 
 implement
+jsonize_val<s2cst> = jsonize_s2cst
+
+implement
 jsonize_impls2cst
   (x0) =
 node("impls2cst", res) where
@@ -748,10 +764,16 @@ val res =
 (
 case+ x0 of
 | IMPLS2CST1(sqid, s2cs) =>
-  jsonify("IMPLS2CST1", ("sqid", "s2cs"), (jsonize("..."), jsonize("...")))
+  jsonify("IMPLS2CST1", ("sqid", "s2cs"),
+    (jsonize(sqid), jsonize_list<s2cst>(s2cs))
+  )
 | IMPLS2CST2(sqid, s2cs, opt2) =>
   jsonify("IMPLS2CST2", ("sqid", "s2cs", "opt2"),
-    (jsonize("..."), jsonize("..."), jsonize("..."))
+    (
+      jsonize(sqid),
+      jsonize_list<s2cst>(s2cs),
+      jsonize_option<s2cst>(opt2)
+    )
   )
 ) // end of [jsonize_impls2cst]
 end

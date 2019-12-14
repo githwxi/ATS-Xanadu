@@ -20,6 +20,9 @@
 
 
 implement
+jsonize_val<token> = jsonize_token
+
+implement
 jsonize_t0int
   (x0) =
 (
@@ -72,10 +75,8 @@ jsonize_i0dnt
 (
 case+ x0.node() of
 | I0DNTnone(tok) =>
-  (* fprint!(out, "I0DNTnone(", tok, ")") *)
   jsonify("I0DNTnone", "tok", jsonize(tok))
 | I0DNTsome(tok) =>
-  (* fprint!(out, "I0DNTsome(", tok, ")") *)
   jsonify("I0DNTsome", "tok", jsonize(tok))
 )
 
@@ -157,29 +158,17 @@ case+ x0.node() of
   jsonify("GOEint", "int", jsonize(int))
 //
 | G0Eapps(s0ts) =>
-  (* fprint!(out, "G0Eapps(", s0ts, ")") *)
-  jsonify("GOEapps", "s0ts", rst) where
-    (* val rst = jsonize_list<() *)
-    (* val rst = jnul() where val _ = $showtype(s0ts) end *)
-    val rst = jsonize_list<g0exp>(s0ts)
-  end
+  jsonify("GOEapps", "s0ts", jsonize_list<g0exp>(s0ts))
 //
 | G0Elist(t0, g0es, t1) =>
-  (* fprint! *)
-  (* (out, "G0Elist(", t0, "; ", g0es, "; ", t1, ")") *)
-  jsonify("GOElist", ("t0", "g0es", "t1"), rst) where
-    val jt0 = jsonize(t0)
-    val jg0es = jsonize_list<g0exp>(g0es)
-    val jt1 = jsonize(t1)
-    val rst = (jt0, jg0es, jt1)
-  end
+  jsonify("GOElist", ("t0", "g0es", "t1"),
+    (jsonize(t0), jsonize_list<g0exp>(g0es), jsonize(t1))
+  )
 //
 | G0Enone(tok) =>
-  (* fprint!( out, "G0Enone(", tok, ")" ) *)
   jsonify("G0Enone", "tok", jsonize(tok))
-  // end of [G0Enone]
 //
-) (* end of [fprint_g0exp] *)
+) (* end of [jsonize_g0exp] *)
 
 end
 
@@ -250,7 +239,8 @@ case+ x0.node() of
 
 end // end of [local]
 
-
+implement
+jsonize_val<sort0> = jsonize_sort0
 
 implement
 jsonize_s0rtcon
@@ -258,9 +248,10 @@ jsonize_s0rtcon
 (
 case+ x0.node() of
 | S0RTCON(sid, opt) =>
-  (* fprint!(out, "S0RTCON(", sid, ", ", opt, ")") *)
-  jsonify("S0RTCON", ("sid", "opt"), (jsonize(sid), jsonize("...")))
-) (* end of [fprint_s0rtcon] *)
+  jsonify("S0RTCON", ("sid", "opt"),
+    (jsonize(sid), jsonize_option<sort0>(opt))
+  )
+) (* end of [jsonize_s0rtcon] *)
 
 
 local
@@ -275,8 +266,6 @@ jsonize_d0tsort
 (
 case+ x0.node() of
 | D0TSORT(tid, tok, s0cs) =>
-  (* fprint! *)
-  (* (out, "D0TSORT(", tid, "; ", tok, "; ", s0cs, ")") *)
   jsonify("D0RTCON", ("tid", "tok", "s0cs"), (
       jsonize(tid),
       jsonize(tok),
@@ -287,6 +276,9 @@ case+ x0.node() of
 
 end
 
+
+implement
+jsonize_val<s0exp> = jsonize_s0exp
 
 
 implement
@@ -303,7 +295,7 @@ case+ x0.node() of
       jsonize(tbeg),
       jsonize(s0a0),
       jsonize(tbar),
-      jstr("..."),
+      jsonize_list<s0exp>(s0es),
       jsonize(tend)
     )
   end
@@ -319,8 +311,14 @@ x0.node() of
 | S0ARGnone(tok) =>
   jsonify("S0ARGnone", "tok", jsonize(tok))
 | S0ARGsome(sid, opt) =>
-  jsonify("S0ARGsome", ("sid", "opt"), (jsonize(sid), jsonize("...")))
+  jsonify("S0ARGsome", ("sid", "opt"),
+    (jsonize(sid), jsonize_option<sort0>(opt))
+  )
 ) (* jsonize_s0arg *)
+
+
+implement
+jsonize_val<s0arg> = jsonize_s0arg
 
 implement
 jsonize_s0marg
@@ -336,7 +334,7 @@ x0.node() of
   jsonify("S0MARGlist", ("tbeg", "s0as", "tend"),
     (
       jsonize(tbeg),
-      jstr("..."),
+      jsonize_list<s0arg>(s0as),
       jsonize(tend)
     )
   )
@@ -350,8 +348,14 @@ jsonize_t0arg
 case+
 x0.node() of
 | T0ARGsome(tid, opt) =>
-  jsonify("T0ARGsome", ("sid", "opt"), (jsonize(tid), jsonize("...")))
+  jsonify("T0ARGsome", ("sid", "opt"),
+    (jsonize(tid), jsonize_option<token>(opt))
+  )
 ) (* jsonize_t0arg *)
+
+
+implement
+jsonize_val<t0arg> = jsonize_t0arg
 
 implement
 jsonize_t0marg
@@ -362,16 +366,17 @@ x0.node() of
 | T0MARGnone(tok) =>
   jsonify("T0MARGnone", "tok", jsonize(tok))
 | T0MARGlist(tbeg, t0as, tend) =>
-  jsonify("T0MARGlist", ("tbeg", "s0as", "tend"),
+  jsonify("T0MARGlist", ("tbeg", "t0as", "tend"),
     (
       jsonize(tbeg),
-      jstr("..."),
+      jsonize_list<t0arg>(t0as),
       jsonize(tend)
     )
   )
 ) (* jsonize_t0marg *)
 
-
+implement
+jsonize_val<i0dnt> = jsonize_i0dnt
 
 implement
 jsonize_s0qua
@@ -381,8 +386,13 @@ case+ x0.node() of
 | S0QUAprop(s0e) =>
   jsonify("S0QUAprop", "s0e", jsonize(s0e))
 | S0QUAvars(ids, opt) =>
-  jsonify("S0QUAprop", ("ids", "opt"), (jstr("..."),jstr("...")))
+  jsonify("S0QUAprop", ("ids", "opt"),
+    (jsonize_list<i0dnt>(ids), jsonize_option<sort0>(opt))
+  )
 )
+
+implement
+jsonize_val<s0qua> = jsonize_s0qua
 
 
 implement
@@ -395,11 +405,14 @@ case+ x0.node() of
 | S0UNIsome(tbeg, s0qs, tend) =>
   jsonify("S0UNIsome", ("tbeg", "s0qs", "tend"), (
       jsonize(tbeg),
-      jstr("..."),
+      jsonize_list<s0qua>(s0qs),
       jsonize(tend)
     )
   )
 )
+
+implement
+jsonize_val<sl0abled(s0exp)> = jsonize_sl0abled<s0exp>
 
 
 implement
@@ -410,6 +423,8 @@ jsonize_sl0abled
 val+SL0ABLED(l0, t0, x1) = x0
 //
 in
+node("sl0abled", res) where
+val res =
   jsonify("SL0ABLED", ("l0", "t0", "x1"), rst) where
     val rst = (
       jsonize(l0),
@@ -417,7 +432,9 @@ in
       jsonize_val<a>(x1)
     )
   end
-end // end of [fprint_sl0abled]
+end
+
+end // end of [jsonize_sl0abled]
 
 
 
@@ -457,21 +474,18 @@ case+ x0.node() of
   )
 //
 | S0Eint(i0) =>
-  (* fprint!(out, "S0Eint(", i0, ")") *)
   jsonify("S0Eint", "i0", jsonize(i0))
 | S0Echr(c0) =>
   jsonify("S0Echr", "c0", jsonize(c0))
 | S0Eflt(f0) =>
   jsonify("S0Eflt", "f0", jsonize(f0))
 | S0Estr(s0) =>
-  (* fprint!(out, "S0Estr(", s0, ")") *)
   jsonify("S0Estr", "s0", jsonize(s0))
 //
 | S0Eapps(s0es) =>
   jsonify("S0Eapps", "s0es", jsonize_list<s0exp>(s0es))
 //
 | S0Eimp(tbeg, s0es, tend) =>
-  (* jsonify("S0Eimp", "s0es", jsonize_list<s0exp>(s0es))// *)
   jsonify(
     "S0Eimp", (
       "tbeg",
@@ -485,9 +499,6 @@ case+ x0.node() of
   )
 | S0Eparen
   (tbeg, s0es, tend) =>
-  (* fprint! *)
-  (* ( out *)
-  (* , "S0Eparen(", tbeg, "; ", s0es, "; ", tend, ")") *)
   jsonify(
     "S0Eparen", (
       "tbeg",
@@ -502,9 +513,6 @@ case+ x0.node() of
 
 //
 | S0Eforall(tbeg, s0qs, tend) =>
-  (* fprint! *)
-  (* ( out *)
-  (* , "S0Eforall(", tbeg, "; ", s0qs, "; ", tend, ")") *)
   jsonify(
     "S0Eforall", (
       "tbeg",
@@ -512,7 +520,7 @@ case+ x0.node() of
       "tend"
     ), (
       jsonize(tbeg),
-      jsonize("..."), //jsonize_list<s0exp>(s0es),
+      jsonize_list<s0qua>(s0qs),
       jsonize(tend)
     )
   )
@@ -525,7 +533,7 @@ case+ x0.node() of
       "tend"
     ), (
       jsonize(tbeg),
-      jsonize("..."), //jsonize_list<s0exp>(s0es),
+      jsonize_list<s0qua>(s0qs),
       jsonize(tend)
     )
   )
@@ -540,7 +548,7 @@ case+ x0.node() of
       "tend"
     ), (
       jsonize(tbeg),
-      jsonize("..."),
+      jsonize_option<token>(topt),
       jsonize_list<s0exp>(s0es),
       jsonize(tend)
     )
@@ -555,8 +563,8 @@ case+ x0.node() of
       "tend"
     ), (
       jsonize(tbeg),
-      jsonize("..."),
-      jsonize("..."), (* jsonize_list<sl0abled>(s0es) *)
+      jsonize_option<token>(topt),
+      jsonize_list<sl0abled(s0exp)>(s0es),
       jsonize(tend)
     )
   )
@@ -576,16 +584,12 @@ case+ x0.node() of
     ), (
       jsonize(tbeg),
       jsonize_list<s0marg>(arg0),
-      jsonize("..."), //jsonize(res1),
+      jsonize_option<sort0>(res1),
       jsonize(tok1),
       jsonize(s0e0),
-      jsonize("...") //jsonize(tend)
+      jsonize_option<token>(tend)
     )
   )
-  where
-    (* val _ = showtype(res1) *)
-    (* val _ = showtype(tend) *)
-  end
 //
 | S0Eanno
   (s0e, ann) =>
@@ -672,7 +676,7 @@ case+ x0 of
       "tok2"
     ), (
       jsonize(tok1),
-      jsonize("..."), (* jsonize_list<labs0exp>(ls0es) *)
+      jsonize_list<labs0exp>(ls0es),
       jsonize(tok2)
     )
   )
@@ -693,16 +697,15 @@ case+ x0 of
   jsonify("EFFS0EXPsome", "s0e", jsonize(s0e))
 (*
 | EFFS0EXPsome(s0f, s0e) =>
-  fprint!
-  ( out
-  , "EFFS0EXPsome(", s0f, "; ", s0e, ")")
+  jsonify("EFFS0EXPsome", ("s0f", "s0e"), (jsonize(s0f), jsonize(s0e)))
 *)
-) (* end of [fprint_effs0expopt] *)
+) (* end of [jsonize_effs0expopt] *)
 
 
 
 implement jsonize_val<t0marg> = jsonize_t0marg
 implement jsonize_val<d0atcon> = jsonize_d0atcon
+implement jsonize_val<sort0> = jsonize_sort0
 
 implement
 jsonize_d0atype
@@ -721,8 +724,8 @@ case+ x0.node() of
     ),
     (
       jsonize(tid),
-      jsonize_list<t0marg>(arg), //jsonize(arg),
-      jsonize("..."), // jsonize(res),
+      jsonize_list<t0marg>(arg),
+      jsonize_option<sort0>(res),
       jsonize(teq),
       jsonize_list<d0atcon>(d0cs)
     )
@@ -755,13 +758,10 @@ case+ x0.node() of
       jsonize_list<s0uni>(s0us),
       jsonize(dcon),
       jsonize_list<s0exp>(s0is),
-      jsonize("...")
+      jsonize_option<s0exp>(argopt)
     )
   )
   where
-    (* val _ = $showtype(s0us) *)
-    (* val _ = $showtype(s0is) *)
-    (* val _ = $showtype(argopt) *)
     val jargopt = (
       case+ argopt of
       | None() => jsonify("None")
