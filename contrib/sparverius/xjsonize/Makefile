@@ -6,6 +6,7 @@
 
 CC=gcc
 SED=sed
+CP=cp
 RMF=rm -f
 
 ######
@@ -103,6 +104,15 @@ $(OBJSATS) $(OBJDATS) ; \
 $(PATSCC) -cleanaft -o xjsonize \
 $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 #
+######
+
+libxjsonize: \
+$(OBJSATS) $(OBJDATS) \
+BUILD/libxjsonize_dats.o ; \
+($(AR) -r $@.a $^ && $(CP) -f $@.a ./../../../lib)
+BUILD/libxjsonize_dats.o: \
+DATS/xjsonize.dats; $(PATSCC) -DATS _LIBXJSONIZE_ -o $@ -c $<
+
 ######
 
 BUILD/%_sats.c: \
