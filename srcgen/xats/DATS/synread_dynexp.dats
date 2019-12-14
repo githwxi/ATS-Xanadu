@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -64,7 +64,7 @@ _(*TMP*) = "./../DATS/synread_staexp.dats"
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0pid
   (id0) =
 (
@@ -84,7 +84,7 @@ id0.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0pat
   (d0p0) = let
 //
@@ -142,7 +142,7 @@ end // end of [synread_d0pat]
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0patlst
   (d0ps) =
 (
@@ -156,7 +156,7 @@ list_foreach$fwork<d0pat><env>(d0p, env) = synread_d0pat(d0p)
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0pat_RPAREN
   (dend) =
 (
@@ -179,7 +179,7 @@ case+ dend of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0eid
   (id0) =
 (
@@ -199,7 +199,7 @@ id0.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_dq0eid
   (qid) =
 (
@@ -217,7 +217,7 @@ case+ qid of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0exp
   (d0e0) = let
 //
@@ -307,7 +307,7 @@ d0e0.node() of
   , arrw, body, topt) =>
   {
 (*
-    val () = 
+    val () =
       synread_LAM(tok)
 *)
 //
@@ -328,7 +328,7 @@ d0e0.node() of
   , arrw, body, topt) =>
   {
 (*
-    val () = 
+    val () =
       synread_FIX(tok)
 *)
     val () =
@@ -355,7 +355,7 @@ end // end of [synread_d0exp]
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0expopt
   (opt0) =
 (
@@ -367,7 +367,7 @@ case+ opt0 of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0explst
   (d0es) =
 (
@@ -381,7 +381,7 @@ list_foreach$fwork<d0exp><env>(d0e, env) = synread_d0exp(d0e)
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0exp_THEN
   (d0e0) =
 (
@@ -394,7 +394,7 @@ case+ d0e0 of
 ) (* end of [synread_d0exp_THEN] *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0exp_ELSE
   (d0e0) =
 (
@@ -411,7 +411,7 @@ case+ d0e0 of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0exp_RPAREN
   (dend) =
 (
@@ -442,7 +442,7 @@ case+ dend of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0ecl
   (d0c0) = let
 //
@@ -534,7 +534,7 @@ d0c0.node() of
       synread_SEXPDEF(tok)
     // end of [val]
 *)
-    val () = synread_EQ(teq)  
+    val () = synread_EQ(teq)
     val () = synread_s0eid(sid)
     val () = synread_s0exp(def)
     val () = synread_sort0opt(res)
@@ -614,7 +614,7 @@ end // end of [synread_d0ecl]
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0eclist
   (d0cs) =
 (
@@ -628,9 +628,9 @@ list_foreach$fwork<d0ecl><env>(d0c, env) = synread_d0ecl(d0c)
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_d0eclseq_WHERE
-  (d0cs) = 
+  (d0cs) =
 let
 val+
 d0eclseq_WHERE
@@ -679,7 +679,7 @@ end // end of [synread_d0eclseq_WHERE]
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_f0unarrow
   (arrw) =
 (
@@ -723,7 +723,7 @@ case+ arrw of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_f0arglst
   (f0as) =
 (
@@ -773,7 +773,7 @@ f0a0.node() of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_q0arglst
   (q0as) =
 (
@@ -800,7 +800,7 @@ q0a0.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_tq0arglst
   (tqas) =
 (
@@ -839,7 +839,7 @@ tq0a.node() of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_wths0expopt
   (wopt) =
 (
@@ -851,7 +851,7 @@ case+ wopt of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_teqd0expopt
   (topt) =
 (
@@ -863,7 +863,7 @@ case+ topt of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_v0aldeclist
   (v0ds) =
 (
@@ -887,7 +887,7 @@ list_foreach$fwork<v0aldecl><env>
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_v0ardeclist
   (v0ds) =
 (
@@ -921,7 +921,7 @@ list_foreach$fwork<v0ardecl><env>
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_f0undeclist
   (f0ds) =
 (
@@ -952,7 +952,7 @@ list_foreach$fwork<f0undecl><env>
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_precopt(opt) =
 (
 case+ opt of
@@ -972,7 +972,7 @@ case+ opt of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_precmod
   (opt) =
 (
@@ -990,7 +990,7 @@ case+ opt of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_signint
   (sint) =
 (
@@ -1100,10 +1100,12 @@ then
 prerrln!
 ("synread_main: there are some synerrs!")
 //
+(*
 val () =
 (
 $raise(XATSOPT_SYNERR_EXN(*void*))
 ) : void
+*)
 //
 } (* end of [then] *)
 else

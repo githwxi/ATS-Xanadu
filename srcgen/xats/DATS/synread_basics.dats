@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -117,7 +117,7 @@ synerr_add(xerr) = ()
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_INT1
   (tok) =
 (
@@ -138,7 +138,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_CHAR
   (tok) =
 (
@@ -209,7 +209,7 @@ string_last
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_STRING
   (tok) =
 (
@@ -243,7 +243,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_EQ
   (tok) =
 (
@@ -264,7 +264,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LT
   (tok) =
 (
@@ -285,7 +285,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_GT
   (tok) =
 (
@@ -306,7 +306,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LTGT
   (tok) =
 (
@@ -327,7 +327,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LT_GT
 (tbeg, tend) =
 (
@@ -359,7 +359,7 @@ tbeg.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_BAR
   (tok) =
 (
@@ -380,7 +380,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_CLN
   (tok) =
 (
@@ -401,7 +401,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_DOT
   (tok) =
 (
@@ -422,7 +422,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_SMCLN
   (tok) =
 (
@@ -443,7 +443,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_EQLT
   (tok) =
 (
@@ -464,7 +464,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_EQGT
   (tok) =
 (
@@ -485,7 +485,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_MSLT
   (tok) =
 (
@@ -507,7 +507,7 @@ tok.node() of
 
 (*
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_MSGT
   (tok) =
 (
@@ -529,7 +529,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LPAREN
   (tok) =
 (
@@ -550,7 +550,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_RPAREN
   (tok) =
 (
@@ -571,7 +571,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LBRACE
   (tok) =
 (
@@ -592,7 +592,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_RBRACE
   (tok) =
 (
@@ -613,7 +613,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LBRACK
   (tok) =
 (
@@ -634,7 +634,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_RBRACK
   (tok) =
 (
@@ -655,7 +655,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_EXISTS
   (tok) =
 (
@@ -676,7 +676,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LAM
   (tok) =
 (
@@ -697,7 +697,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_ENDLAM_opt
   (opt) =
 (
@@ -723,7 +723,7 @@ case+ opt of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LET
   (tok) =
 (
@@ -744,7 +744,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_ENDLET
   (tok) =
 ( case+
@@ -764,7 +764,7 @@ synread_ENDLET
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_WHERE
   (tok) =
 (
@@ -785,7 +785,7 @@ tok.node() of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_ENDWHERE
   (tok) =
 (
@@ -804,7 +804,7 @@ tok.node() of
 )
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_ENDWHERE_opt
   (opt) =
 (
@@ -816,7 +816,7 @@ case+ opt of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_WITH
   (tok) =
 (
@@ -837,7 +837,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_LOCAL
   (tok) =
 (
@@ -858,7 +858,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_ENDLOCAL
   (tok) =
 ( case+
@@ -878,7 +878,7 @@ synread_ENDLOCAL
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_TUPLE
   (tok) =
 (
@@ -899,7 +899,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_RECORD
   (tok) =
 (
@@ -920,7 +920,7 @@ tok.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_IDENT_qual
   (tok) =
 (
@@ -942,7 +942,7 @@ tok.node() of
 
 (*
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_SORTDEF
   (tok) =
 (
@@ -965,7 +965,7 @@ tok.node() of
 
 (*
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_SEXPDEF
   (tok) =
 (

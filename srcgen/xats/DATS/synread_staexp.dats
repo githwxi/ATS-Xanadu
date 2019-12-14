@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -57,7 +57,7 @@ _(*TMP*) = "./../DATS/synread_basics.dats"
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_t0int
   (int) =
 (
@@ -77,7 +77,7 @@ int.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_t0chr
   (chr) =
 (
@@ -100,7 +100,7 @@ chr.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_t0flt
   (flt) =
 (
@@ -120,7 +120,7 @@ flt.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_t0str
   (str) =
 (
@@ -140,7 +140,7 @@ str.node() of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_i0dnt
   (id0) =
 (
@@ -160,7 +160,7 @@ id0.node() of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_l0abl
   (lab) =
 (
@@ -180,7 +180,7 @@ lab.node() of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0ymb
   (sym) =
 (
@@ -210,7 +210,7 @@ sym.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0tid
   (id0) =
 (
@@ -230,7 +230,7 @@ id0.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0eid
   (id0) =
 (
@@ -250,7 +250,7 @@ id0.node() of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_sq0eid
   (qid) =
 (
@@ -268,7 +268,7 @@ case+ qid of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_i0dntlst
   (i0ds) =
 (
@@ -282,7 +282,7 @@ list_foreach$fwork<i0dnt><env>(id0, env) = synread_i0dnt(id0)
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_sort0
   (s0t0) = let
 //
@@ -333,7 +333,7 @@ end // end of [synread_sort0]
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_sort0opt
   (opt0) =
 (
@@ -343,7 +343,7 @@ case+ opt0 of
 )
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_sort0lst
   (s0ts) =
 (
@@ -357,7 +357,7 @@ list_foreach$fwork<sort0><env>(s0t, env) = synread_sort0(s0t)
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0arg
   (s0a0) = let
 //
@@ -392,7 +392,7 @@ end // end of [synread_s0arg]
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0marg
   (s0ma) = let
 //
@@ -430,7 +430,7 @@ end // end of [synread_s0marg]
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0arglst
   (s0es) =
 (
@@ -442,7 +442,7 @@ list_foreach$fwork<s0arg><env>(s0e, env) = synread_s0arg(s0e)
 } (* end of [synread_s0arglst] *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0marglst
   (s0es) =
 (
@@ -456,7 +456,7 @@ list_foreach$fwork<s0marg><env>(s0e, env) = synread_s0marg(s0e)
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0qua
   (s0q0) =
 (
@@ -474,7 +474,7 @@ s0q0.node() of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0qualst
   (s0qs) =
 (
@@ -488,7 +488,7 @@ list_foreach$fwork<s0qua><env>(s0q, env) = synread_s0qua(s0q)
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0exp
   (s0e0) = let
 //
@@ -640,7 +640,7 @@ end // end of [synread_s0exp]
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0expopt
   (opt0) =
 (
@@ -650,7 +650,7 @@ case+ opt0 of
 )
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0explst
   (s0es) =
 (
@@ -664,7 +664,7 @@ list_foreach$fwork<s0exp><env>(s0e, env) = synread_s0exp(s0e)
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_labs0exp
   (ls0e) =
 (
@@ -677,7 +677,7 @@ case+ ls0e of
 )
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_labs0explst
   (ls0es) =
 (
@@ -691,7 +691,7 @@ list_foreach$fwork<labs0exp><env>(ls0e, env) = synread_labs0exp(ls0e)
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0exp_RPAREN
   (tend) =
 (
@@ -709,7 +709,7 @@ case+ tend of
 )
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_labs0exp_RBRACE
   (tend) =
 (
@@ -729,7 +729,7 @@ case+ tend of
 (* ****** ****** *)
 //
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_effs0expopt
   (opt0) =
 (
@@ -741,7 +741,7 @@ case+ opt0 of
 (* ****** ****** *)
 
 implement
-//{}(*tmp*)
+{}(*tmp*)
 synread_s0rtdef
   (def0) =
 (
