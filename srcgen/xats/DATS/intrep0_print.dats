@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -243,21 +243,21 @@ x0.node() of
   fprint!
   ( out
   , "IR0Etcst("
-  , d2c1, "; ", ti3a, "; ", ti2s, ")")
+  , d2c1, "; ", ti3a, "; [", ti2s, "])")
 | IR0Etimp
   ( ire1
   , targ, irc2, tsub) =>
   fprint!
   ( out
   , "IR0Etimp("
-  , ire1, "; ", targ, "; ", irc2, "; ", tsub)
+  , ire1, "; [", targ, "]; ", irc2, "; [", tsub, "])")
 //
 | IR0Edapp
   (irf0, npf1, ires) =>
   fprint!
   ( out
   , "IR0Edapp("
-  , irf0, "; ", npf1, "; ", ires, ")")
+  , irf0, "; ", npf1, "; [", ires, "])")
 //
 | IR0Eproj
   (ire1, lab2, idx2) =>
@@ -286,7 +286,7 @@ x0.node() of
   fprint!
   ( out
   , "IR0Etuple("
-  , knd0, "; ", npf1, "; ", ires, ")")
+  , knd0, "; ", npf1, "; [", ires, "])")
 //
 | IR0Eassgn(irel, irer) =>
   fprint!
@@ -309,13 +309,13 @@ x0.node() of
   (knd0, farg, body) =>
   fprint!
   ( out, "IR0Elam("
-  , knd0, "; ", farg, "; ", body, ")")
+  , knd0, "; [", farg, "]; ", body, ")")
 | IR0Efix
   (knd0, d2v0, farg, body) =>
   fprint!
   ( out, "IR0Efix("
   , knd0, "; "
-  , d2v0, "; ", farg, "; ", body, ")")
+  , d2v0, "; [", farg, "]; ", body, ")")
 //
 | IR0Eaddr(ire1) =>
   (
