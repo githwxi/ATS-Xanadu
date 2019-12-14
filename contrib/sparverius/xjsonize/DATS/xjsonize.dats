@@ -80,6 +80,16 @@ UN = "prelude/SATS/unsafe.sats"
 (* #staload _ = "./dynexp3.dats" *)
 (* #staload _ = "./intrep0.dats" *)
 
+#ifdef
+_LIBXJSONIZE_
+#then
+#define
+ATS_MAINATSFLAG 1
+#define
+ATS_DYNLOADNAME "libxjsonize_dynloadall"
+#endif // #ifdef
+
+
 
 #dynload "./json.dats"
 #dynload "./basics.dats"
@@ -102,6 +112,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#ifdef
+_LIBXJSONIZE_
+#then
+#else
 implement
 main0(argc, argv) =
 (
@@ -112,6 +126,7 @@ then interp0_main0(argc, argv)
 else prerrln! ("Hello from ATS3(xinterp)!")
 // end of [if]
 ) (* end of [main] *)
+#endif // ifdef(_LIBXJSONIZE_)
 //
 (* ****** ****** *)
 
