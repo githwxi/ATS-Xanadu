@@ -243,21 +243,21 @@ x0.node() of
   fprint!
   ( out
   , "IR0Etcst("
-  , d2c1, "; ", ti3a, "; [", ti2s, "])")
+  , d2c1, "; ", ti3a, "; ", ti2s, ")")
 | IR0Etimp
   ( ire1
   , targ, irc2, tsub) =>
   fprint!
   ( out
   , "IR0Etimp("
-  , ire1, "; [", targ, "]; ", irc2, "; [", tsub, "])")
+  , ire1, "; ", targ, "; ", irc2, "; ", tsub, ")")
 //
 | IR0Edapp
   (irf0, npf1, ires) =>
   fprint!
   ( out
   , "IR0Edapp("
-  , irf0, "; ", npf1, "; [", ires, "])")
+  , irf0, "; ", npf1, "; ", ires, ")")
 //
 | IR0Eproj
   (ire1, lab2, idx2) =>
@@ -286,7 +286,7 @@ x0.node() of
   fprint!
   ( out
   , "IR0Etuple("
-  , knd0, "; ", npf1, "; [", ires, "])")
+  , knd0, "; ", npf1, "; ", ires, ")")
 //
 | IR0Eassgn(irel, irer) =>
   fprint!
@@ -309,13 +309,13 @@ x0.node() of
   (knd0, farg, body) =>
   fprint!
   ( out, "IR0Elam("
-  , knd0, "; [", farg, "]; ", body, ")")
+  , knd0, "; ", farg, "; ", body, ")")
 | IR0Efix
   (knd0, d2v0, farg, body) =>
   fprint!
   ( out, "IR0Efix("
   , knd0, "; "
-  , d2v0, "; [", farg, "]; ", body, ")")
+  , d2v0, "; ", farg, "; ", body, ")")
 //
 | IR0Eaddr(ire1) =>
   (
