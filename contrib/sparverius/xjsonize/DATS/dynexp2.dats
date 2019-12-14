@@ -18,11 +18,14 @@
 #staload "./../SATS/json.sats"
 #staload _ = "./json.dats"
 
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/locinfo.sats"
+
+#staload "./../SATS/label0.sats"
+
 #staload "./../SATS/dynexp0.sats"
 #staload "./../SATS/staexp0.sats"
-#staload "./../SATS/lexing.sats"
 #staload "./../SATS/dynexp1.sats"
-#staload "./../SATS/label0.sats"
 
 #staload "./../SATS/dynexp2.sats"
 
@@ -40,39 +43,18 @@ overload jsonize with $STM_J.jsonize_stamp
 
 
 implement
+jsonize_val<s2exp> = jsonize_s2exp
+
+
+implement
 jsonize_val<d2con> = jsonize_d2con
 
 implement
 jsonize_d2con
   (x0) =
 (
-(*
-  labval2(nd,vl) where
-  {
-    val nd = jstr("d2con")
-    val sym = $SYM_J.jsonize_symbol(x0.sym())
-    val stamp = $STM_J.jsonize_stamp(x0.stamp())
-    val vl = list_cons(sym, list_sing(stamp))
-    val vl = JSONlist(vl)
-  }
-*)
-(*
-  jsonval_labval1("d2con", rst) where
-  {
-    val sym = $SYM_J.jsonize_symbol(x0.sym())
-    val stamp = $STM_J.jsonize_stamp(x0.stamp())
-    val rst = JSONlist($list{jsonval}(sym, stamp))
-  }
-*)
-
-(*
-  jsonval_conarg2("d2con", sym, stamp) where
-    val sym = $SYM_J.jsonize_symbol(x0.sym())
-    val stamp = $STM_J.jsonize_stamp(x0.stamp())
-  end
-*)
-  jsonval_labval1("d2con", rst) where
-  (* labval2(jsonize("d2con"), rst) where *)
+  (* jsonval_labval1("d2con", rst) where *)
+  node("d2con", rst) where
     val lst = $list{labjsonval}($SYM_J.labify_symbol(x0.sym()), $STM_J.labify_stamp(x0.stamp()))
     val rst = JSONlablist(lst)
   end
@@ -86,18 +68,10 @@ implement
 jsonize_d2cst
   (x0) =
 (
-(*
-  labval2(nd, vl) where
-  {
-    val nd = jstr("d2cst")
-    val sym = $SYM_J.jsonize_symbol(x0.sym())
-    val stamp = $STM_J.jsonize_stamp(x0.stamp())
-    val vl = list_cons(sym, list_sing(stamp))
-    val vl = JSONlist(vl)
-  }
-*)
-  jsonval_labval1("d2cst", rst) where
-  (* labval2(jsonize("d2var"), rst) where *)
+  (* jsonval_labval1("d2cst", rst) where *)
+  (* node("d2cst", rst) where *)
+  node2("d2cst", jsonize(x0.loc()), rst) where
+  (* rst where *)
     val lst = $list{labjsonval}(
       $SYM_J.labify_symbol(x0.sym()), $STM_J.labify_stamp(x0.stamp())
     )
@@ -115,20 +89,10 @@ jsonize_val<d2var> = jsonize_d2var
 implement
 jsonize_d2var
   (x0) =
-(*
-(
-  labval2(nd, vl) where
-  {
-    val nd = jstr("d2var")
-    val sym = $SYM_J.jsonize_symbol(x0.sym())
-    val stamp = $STM_J.jsonize_stamp(x0.stamp())
-    val vl = list_cons(sym, list_sing(stamp))
-    val vl = JSONlist(vl)
-  }
-)
-*)
-  jsonval_labval1("d2var", rst) where
-  (* labval2(jsonize("d2var"), rst) where *)
+  (* jsonval_labval1("d2var", rst) where *)
+  (* node("d2var", rst) where *)
+  node2("d2var", jsonize(x0.loc()), rst) where
+  (* rst where *)
     val lst = $list{labjsonval}(
       $SYM_J.labify_symbol(x0.sym()), $STM_J.labify_stamp(x0.stamp())
     )
@@ -138,11 +102,26 @@ jsonize_d2var
 
 implement
 jsonize_val<f2arg> = jsonize_f2arg
+implement
+jsonize_val<d2pat> = jsonize_d2pat
+implement
+jsonize_val<s2var> = jsonize_s2var
+implement
+jsonize_val<s2exp> = jsonize_s2exp
+
 
 implement
 jsonize_f2arg
-  (x0) = let
+  (x0) =
+(* jsonval_labval1("f2arg", rst) where *)
+(* res where *)
+(* node("f2arg", res) where *)
+node2("f2arg", jsonize(x0.loc()), res) where
+(*
+let
 in
+*)
+val res =
 (
 //
 case+
@@ -152,11 +131,20 @@ x0.node() of
   jsonize("F2ARGnone", "tok", jsonize(tok))
 *)
 | F2ARGsome_met(s2es) =>
-  jsonify("F2ARGsome_met", "s2es", jsonize("..."))
+  jsonify("F2ARGsome_met", "s2es", jsonize_list<s2exp>(s2es))
 | F2ARGsome_dyn(npf, d2ps) =>
-  jsonify("F2ARGsome_dyn", ("npf", "d2ps"), (jsonize(npf), jsonize("...")))
+  jsonify("F2ARGsome_dyn", ("npf", "d2ps"),
+    (jsonval_labval1("npf", jsonize(npf)),
+      jsonize_list<d2pat>(d2ps)
+    )
+  )
 | F2ARGsome_sta(s2vs, s2ps) =>
-  jsonify("F2ARGsome_sta", ("s2vs", "s2ps"), (jsonize("..."), jsonize("...")))
+  jsonify("F2ARGsome_sta", ("s2vs", "s2ps"),
+    (
+      jsonize_list<s2var>(s2vs),
+      jsonize_list<s2exp>(s2ps)
+    )
+  )
 )
 end
 
@@ -175,8 +163,10 @@ jsonize_val<d2pitm> = jsonize_d2pitm
 implement
 jsonize_d2pat
   (x0) =
+(* jsonval_labval1("d2pat", res) where *)
 // labval2(jsonize("d2pat"), res) where
-res where
+(* res where *)
+node("d2pat", res) where
 val res =
 (
 case- x0.node() of
@@ -209,12 +199,12 @@ case- x0.node() of
   )
 | D2Pdapp(d2f0, npf0, d2ps) =>
   jsonify("D2Pdapp", ("d2f0", "npf0", "d2ps"),
-    (jsonize(d2f0), jsonize(npf0), jsonize_list<d2pat>(d2ps))
+    (jsonize(d2f0), jsonval_labval1("npf", jsonize(npf0)), jsonize_list<d2pat>(d2ps))
   )
 //
 | D2Ptuple(knd, npf, d2ps) =>
   jsonify("D2Ptuple", ("knd", "npf", "d2ps"),
-    (jsonize(knd), jsonize(npf), jsonize_list<d2pat>(d2ps))
+    (jsonize(knd), jsonval_labval1("npf", jsonize(npf)), jsonize_list<d2pat>(d2ps))
   )
 //
 | D2Panno(d2p1, s2e2) =>
@@ -249,8 +239,9 @@ jsonize_val<effs2expopt> = jsonize_effs2expopt
 implement
 jsonize_d2exp
   (x0) =
-// jsonify("d2exp", res) where
-res where
+(* jsonval_labval1("d2exp", res) where *)
+(* res where *)
+node("d2exp", res) where
 val res =
 (
 case- x0.node() of
@@ -296,7 +287,7 @@ case- x0.node() of
   (d2f0, npf0, d2as) =>
   jsonify(
     "D2Edapp", ("d2f0", "npf0", "d2as"),
-    (jsonize(d2f0), jsonize(npf0), jsonize_list<d2exp>(d2as)))
+    (jsonize(d2f0), jsonval_labval1("npf", jsonize(npf0)), jsonize_list<d2exp>(d2as)))
 //
 | D2Elet
   (d2cs, d2e2) =>
@@ -313,7 +304,7 @@ case- x0.node() of
 | D2Etuple
   (knd, npf, d2es) =>
   jsonify("D2Etuple", ("knd", "npf", "d2es"),
-    (jsonize(knd), jsonize(npf), jsonize_list<d2exp>(d2es)))
+    (jsonize(knd), jsonval_labval1("npf", jsonize(npf)), jsonize_list<d2exp>(d2es)))
 //
 | D2Eassgn
   (d2e1, d2e2) =>
@@ -330,7 +321,7 @@ case- x0.node() of
       (
         jsonize(lab0),
         jsonize_list<d2pitm>(dpis),
-        jsonize(npf2),
+        jsonval_labval1("npf", jsonize(npf2)),
         jsonize_list<d2exp>(d2es)
       )
     )
@@ -388,6 +379,9 @@ end // end of where
 
 
 
+
+
+
 local
 
 implement
@@ -399,20 +393,40 @@ jsonize_val<v2ardecl> = jsonize_v2ardecl
 implement
 jsonize_val<f2undecl> = jsonize_f2undecl
 
+implement
+jsonize_val<f2arg> = jsonize_f2arg
+implement
+jsonize_val<ti2arg> = jsonize_ti2arg
+implement
+jsonize_val<tq2arg> = jsonize_tq2arg
+implement
+jsonize_val<sq2arg> = jsonize_sq2arg
+
+overload jsonize with jsonize_loc_t of 1
+
 in (* in-of-local *)
 
 implement
 jsonize_d2ecl
   (x0) =
+(* jsonval_labval1("d2ecl", res) where *)
+(* res where *)
+(* node("d2ecl", res) where *)
+node2("d2ecl", jsonize(x0.loc()), res) where
+(*
+val _ = $showtype(x0.loc())
+val _ = $showtype((x0.loc()).beg_ntot())
+*)
+val res =
 (
 case- x0.node() of
 //
 | D2Cstatic
   (tok, d2c) =>
-  jsonify("D2static", "d2c", jsonize(d2c))
+  jsonify("D2Cstatic", "d2c", jsonize(d2c))
 | D2Cextern
   (tok, d2c) =>
-  jsonify("D2extern", ("tok", "d2c"), (jsonize(tok), jsonize(d2c)))
+  jsonify("D2Cextern", ("tok", "d2c"), (jsonize(tok), jsonize(d2c)))
 //
 | D2Cinclude
   ( tok
@@ -491,7 +505,7 @@ case- x0.node() of
     ),
     (
       jsonize(knd),
-      jsonize("..."),
+      jsonize(sqid),
       jsonize(def0)
     )
   )
@@ -507,7 +521,7 @@ case- x0.node() of
     (
       jsonize(tok),
       jsonize(sym0),
-      jsonize("...")
+      jsonize(dpi1) (* jsonize("...") *)
     )
   )
 //
@@ -521,7 +535,7 @@ case- x0.node() of
     (
       jsonize(knd),
       jsonize(mopt),
-      jsonize("...")
+      jsonize_list<v2aldecl>(v2ds) (* jsonize("...") *)
     )
   )
 
@@ -535,8 +549,8 @@ case- x0.node() of
     (
       jsonize(knd),
       jsonize(mopt),
-      jsonize("..."),
-      jsonize("...")
+      jsonize_list<tq2arg>(tqas),
+      jsonize_list<f2undecl>(f2ds)
     )
   )
 
@@ -556,15 +570,15 @@ case- x0.node() of
       "knd", "mopt", "sqas", "tqas", "dqid", "tias", "f2as", "res0", "d2e1"
     ),
     (
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("...")
+      jsonize(knd),
+      jsonize(mopt),
+      jsonize_list<sq2arg>(sqas),
+      jsonize_list<tq2arg>(tqas),
+      jsonize(dqid),
+      jsonize_list<ti2arg>(tias),
+      jsonize_list<f2arg>(f2as),
+      jsonize(res0),
+      jsonize(d2e1)
     )
   )
 | D2Cimpdecl2
@@ -576,15 +590,15 @@ case- x0.node() of
       "knd", "mopt", "sqas", "tqas", "dqid", "tias", "f2as", "res0", "d2e1"
     ),
     (
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("...")
+      jsonize(knd),
+      jsonize(mopt),
+      jsonize_list<sq2arg>(sqas),
+      jsonize_list<tq2arg>(tqas),
+      jsonize(dqid),
+      jsonize_list<ti2arg>(tias),
+      jsonize_list<f2arg>(f2as),
+      jsonize(res0),
+      jsonize(d2e1)
     )
   )
 //
@@ -601,9 +615,9 @@ case- x0.node() of
       "knd", "tqas", "d2cs"
     ),
     (
-      jsonize("..."),
-      jsonize("..."),
-      jsonize("...")
+      jsonize(knd),
+      jsonize_list<tq2arg>(tqas),
+      jsonize_list<d2cst>(d2cs)
     )
   )
 //
@@ -613,6 +627,7 @@ case- x0.node() of
   jsonify("D2Csortdef", "d1csrc", jsonize(d1csrc))
 //
 ) (* end of [jsonize_d2ecl] *)
+end
 
 end // end of [local]
 
@@ -621,6 +636,9 @@ end // end of [local]
 implement
 jsonize_d2itm
   (x0) =
+(* jsonval_labval1("d2itm", res) where *)
+node("d2itm", res) where
+val res =
 (
 case+ x0 of
 //
@@ -637,10 +655,15 @@ case+ x0 of
   jsonify("D2ITMsym", ("sym", "dpis"), (jsonize(sym), jsonize_list<d2pitm>(dpis)))
 //
 ) (* end of [jsonize_d2itm] *)
+end
 
 implement
 jsonize_d2pitm
   (x0) =
+(* jsonval_labval1("d2pitm", res) where *)
+(* res where *)
+node("d2pitm", res) where
+val res =
 (
 case+ x0 of
 | D2PITMnone(dqid) =>
@@ -648,7 +671,7 @@ case+ x0 of
 | D2PITMsome(pval, d2i0) =>
   jsonify("D2PITMsome", ("pval", "d2i0"), (jsonize(pval), jsonize(d2i0)))
 ) (* end of [jsonize_d2pitm] *)
-
+end
 
 local
 
@@ -661,26 +684,29 @@ implement
 jsonize_sq2arg
   (x0) =
 (
-  jsonval_labval1("sq2arg", jsonize_list<s2var>(x0.s2vs()))
+  (* jsonval_labval1("sq2arg", jsonize_list<s2var>(x0.s2vs())) *)
+  node("sq2arg", jsonize_list<s2var>(x0.s2vs()))
 ) (* end of [jsonize_sq2arg] *)
 
-end
 
 
 implement
 jsonize_tq2arg
   (x0) =
 (
-  jsonval_labval1("tq2arg", jsonize(x0))
+  (* jsonval_labval1("tq2arg", jsonize_list<s2var>(x0.s2vs())) *)
+  node("tq2arg", jsonize_list<s2var>(x0.s2vs()))
 ) (* end of [jsonize_tq2arg] *)
 
+end
 
 implement
 jsonize_ti2arg
   (x0) =
 (
-  jsonify("ti2arg", "s2es", jsonize("..."))
-  (* where val _ = $showtype(x0.s2es()) end *)
+  (* jsonify("ti2arg", "s2es", jsonize("...")) *)
+  (* jsonval_labval1("ti2arg", jsonize_list<s2exp>(x0.s2es())) *)
+  node("ti2arg", jsonize_list<s2exp>(x0.s2es()))
 ) (* end of [jsonize_ti2arg] *)
 
 
@@ -694,6 +720,10 @@ in
 implement
 jsonize_impld2cst
   (x0) =
+(* jsonval_labval1("impld2cst", res) where *)
+(* res where *)
+node("impld2cst", res) where
+val res =
 (
 case+ x0 of
 |
@@ -708,6 +738,23 @@ IMPLD2CST2(dqid, d2cs, opt2) =>
     )
   )
 ) // end of [jsonize_impld2cst]
+end
+
+implement
+jsonize_impls2cst
+  (x0) =
+node("impls2cst", res) where
+val res =
+(
+case+ x0 of
+| IMPLS2CST1(sqid, s2cs) =>
+  jsonify("IMPLS2CST1", ("sqid", "s2cs"), (jsonize("..."), jsonize("...")))
+| IMPLS2CST2(sqid, s2cs, opt2) =>
+  jsonify("IMPLS2CST2", ("sqid", "s2cs", "opt2"),
+    (jsonize("..."), jsonize("..."), jsonize("..."))
+  )
+) // end of [jsonize_impls2cst]
+end
 
 end
 
@@ -715,6 +762,10 @@ end
 implement
 jsonize_d2clau
   (x0) =
+(* jsonval_labval1("d2clau", res) where *)
+(* res where *)
+node("d2clau", res) where
+val res =
 (
 case+
 x0.node() of
@@ -723,10 +774,15 @@ x0.node() of
 | D2CLAUexp(d2gp, d0e0) =>
   jsonify("D2CLAUexp", ("d2gp", "d0e0"), (jsonize(d2gp), jsonize(d0e0)))
 )
+end
 
 implement
 jsonize_d2gpat
   (x0) =
+(* jsonval_labval1("d2gpat", res) where *)
+(* res where *)
+node("d2gpat", res) where
+val res =
 (
 case+
 x0.node() of
@@ -735,3 +791,71 @@ x0.node() of
 | D2GPATgua(d2p, d2gs) =>
   jsonify("D2GPATgua", ("d2p", "d2gs"), (jsonize(d2p), jsonize("...")))
 )
+end
+
+implement
+jsonize_v2aldecl
+  (x0) = let
+//
+val+V2ALDECL(rcd) = x0
+//
+in
+  node("v2aldecl", res) where
+  (* node2("v2arlecl", jsonize(rcd.loc), res) where *)
+  val res =
+  jsonify("V2ALDECL", ("pat", "def", "wtp"),
+    (
+      jsonize(rcd.pat),
+      jsonize_option<d2exp>(rcd.def),
+      jsonize_option<s2exp>(rcd.wtp)
+    )
+  )
+  end
+end // end of [jsonize_v2aldecl]
+
+
+implement
+jsonize_v2ardecl
+  (x0) = let
+//
+val+V2ARDECL(rcd) = x0
+//
+in
+  node("v2ardecl", res) where
+  (* node2("v2ardecl", jsonize(rcd.loc), res) where *)
+  val res =
+  jsonify(
+  "V2ARDECL", ("d2v", "wth", "res", "ini"),
+    (
+      jsonize(rcd.d2v),
+      jsonize_option<d2var>(rcd.wth),
+      jsonize_option<s2exp>(rcd.res),
+      jsonize_option<d2exp>(rcd.ini)
+    )
+  )
+  end
+end // end of [jsonize_v2ardecl]
+
+
+implement
+jsonize_f2undecl
+  (x0) = let
+//
+val+F2UNDECL(rcd) = x0
+//
+in
+  node("f2undecl", res) where
+  (* node2("f2undecl", jsonize(rcd.loc), res) where *)
+  val res =
+  jsonify("F2UNDECL", ("nam", "d2c", "arg", "res", "def", "wtp"),
+    (
+      jsonize(rcd.nam),
+      jsonize(rcd.d2c),
+      jsonize_list<f2arg>(rcd.arg),
+      jsonize(rcd.res),
+      jsonize_option<d2exp>(rcd.def),
+      jsonize_option<s2exp>(rcd.wtp)
+    )
+  )
+  end
+end // end of [jsonize_f2undecl]

@@ -52,7 +52,8 @@ case+ l0 of
 
 implement
 jsonize_label
-  (l0) = labval2(jsonize("label"), rst) where
+  (l0) = //labval2(jsonize("label"), rst) where
+  jsonval_labval1("label", rst) where
 val rst =
 (
   case+ label_get_int(l0) of

@@ -101,7 +101,10 @@ UN = "prelude/SATS/unsafe.sats"
 
 #staload _ = "./json.dats"
 
+implement jsonize_val<d0ecl> = jsonize_d0ecl
+implement jsonize_val<d1ecl> = jsonize_d1ecl
 implement jsonize_val<d2ecl> = jsonize_d2ecl
+
 
 (* #dynload "./json.dats" *)
 (* #dynload "./basics.dats" *)
@@ -770,6 +773,13 @@ println!
 ("process_fpath: d0cs = ", d0cs)
 *)
 //
+val () = println!("\n\n", "JSONIZED", "\n\n")
+val json = jsonize_list<d0ecl>(d0cs)
+val () = fprint_jsonval(stdout_ref, json)
+val () = println!()
+
+
+
 val () = synread_main(d0cs)
 //
 val
@@ -779,6 +789,10 @@ val () =
 println!
 ("process_fpath: d1cs = ", d1cs)
 *)
+val () = println!("\n\n", "JSONIZED", "\n\n")
+val json = jsonize_list<d1ecl>(d1cs)
+val () = fprint_jsonval(stdout_ref, json)
+val () = println!()
 //
 val () = t1xread_main(d1cs)
 //

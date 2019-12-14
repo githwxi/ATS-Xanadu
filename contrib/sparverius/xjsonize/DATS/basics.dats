@@ -18,7 +18,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 implement
 jsonize_valkind
-  (vlk) = lab("valkind", res) where
+  (vlk) = node("valkind", res) where
 val res =
 (
 //
@@ -36,7 +36,7 @@ end
 
 implement
 jsonize_funkind
-  (fnk) = lab("funkind", res) where
+  (fnk) = node("funkind", res) where
 val res =
 (
 //
@@ -59,7 +59,7 @@ end
 
 implement
 jsonize_impkind
-  (knd) = lab("impkind", res) where
+  (knd) = node("impkind", res) where
 val res =
 (
 case+ knd of
@@ -74,13 +74,13 @@ end
 
 implement
 jsonize_funclo2
-  (fc2) = lab("impkind", res) where
+  (fc2) = node("funclo2", res) where
 val res =
 (
 case+ fc2 of
 | FC2fun() =>
-  jsonize("FC2fun()")
+  jsonize("FC2fun")
 | FC2clo(knd) =>
-  lab("FC2clo", jsonize(knd))(* jsonize("FC2clo(", knd, ")") *)
+  jsonify("FC2clo", "knd", jsonize(knd))
 )
 end

@@ -25,6 +25,84 @@
 overload jsonize with $SYM_J.jsonize_symbol
 
 
+implement
+jsonize_val<s1exp> = jsonize_s1exp
+
+implement
+jsonize_val<token> = jsonize_token
+
+
+local
+
+implement
+jsonize_val<g1exp> = jsonize_g1exp
+
+in (* in-of-local *)
+
+implement
+jsonize_g1exp
+  (x0) =
+node("g1exp", res) where
+val res =
+(
+case+ x0.node() of
+//
+| G1Eid(tok) =>
+  jsonify("G1Eid", "tok", jsonize(tok))
+//
+| G1Eint(int) =>
+  jsonify("G1Eint", "int", jsonize(int))
+//
+| G1Eapp() =>
+  jsonify("G1Eapp")
+//
+| G1Eapp1
+  (g1e0, g1e1) =>
+  jsonify("G1Eapp1", ("g1e0", "g1e1"), (jsonize(g1e0), jsonize(g1e1)))
+| G1Eapp2
+  (g1e0, g1e1, g1e2) =>
+  jsonify("G1Eapp2", ("g1e0", "g1e1", "g1e2"),
+    (jsonize(g1e0), jsonize(g1e1), jsonize(g1e2))
+  )
+//
+| G1Elist(g1es) =>
+  jsonify("G1Elist", "g1es", jsonize_list<g1exp>(g1es))
+//
+| G1Enone(loc) =>
+  jsonify("G1Enone")
+//
+) (* end of [jsonize_g1exp] *)
+end
+
+end // end of [local]
+
+
+local
+
+implement
+jsonize_val<g1arg> = jsonize_token
+
+in(* in-of-local *)
+
+implement
+jsonize_g1marg
+  (x0) =
+node("g1marg", res) where
+val res =
+(
+case+
+x0.node() of
+| G1MARGsarg(g1as) =>
+  jsonify("G1MARGsarg", "g1as", jsonize_list<g1arg>(g1as))
+| G1MARGdarg(g1as) =>
+  jsonify("G1MARGdarg", "g1as", jsonize_list<g1arg>(g1as))
+) (* end of [jsonize_g1marg] *)
+end
+
+end // end of [local]
+
+
+
 local
 
 implement
@@ -35,6 +113,8 @@ in (* in-of-local *)
 implement
 jsonize_sort1
   (x0) =
+node("sort1", res) where
+val res =
 (
 case+ x0.node() of
 //
@@ -80,9 +160,181 @@ case+ x0.node() of
   jsonify("S1Tnone")
 //
 ) (* end of [jsonize_sort1] *)
+end
 
 end // end of [local]
 
+
+implement
+jsonize_val<sort1> = jsonize_sort1
+implement
+jsonize_val<s1rtcon> = jsonize_s1rtcon
+
+
+implement
+jsonize_s1rtcon
+  (x0) =
+node("s1rtcon", res) where
+val res =
+(
+case+ x0.node() of
+| S1RTCON(sid, opt) =>
+  jsonify("S1RTCON", ("sid", "opt"),
+    (
+      jsonize(sid),
+      jsonize_option<sort1>(opt)
+    )
+  )
+) (* end of [jsonize_s1rtcon] *)
+end
+
+
+
+implement
+jsonize_d1tsort
+  (x0) =
+node("d1sort", res) where
+val res =
+(
+case+ x0.node() of
+| D1TSORT(tid, s1cs) =>
+  jsonify("D1TSORT", ("tid", "s1cs"),
+    (jsonize(tid), jsonize_list<s1rtcon>(s1cs))
+  )
+) (* end of [jsonize_d1tsort] *)
+end
+
+implement
+jsonize_s1rtdef
+  (x0) =
+node("s1rtdef", res) where
+val res =
+(
+case+ x0.node() of
+| S1RTDEFsort(s1t) =>
+  jsonify("S1RTDEFsort", "s1t", jsonize(s1t))
+| S1RTDEFsbst(s1a0, s1es) =>
+  jsonify("S1RTDEFsbst(", ("s1a0", "s1es"), (jsonize(s1a0), jsonize_list<s1exp>(s1es)))
+) (* end of [jsonize_s1rtdef] *)
+end
+
+implement
+jsonize_s1arg
+  (x0) =
+node("s1arg", res) where
+val res =
+(
+case+
+x0.node() of
+(*
+| S1ARGnone() =>
+  jsonify("S1ARGnone()")
+*)
+| S1ARGsome(tok, opt) =>
+  jsonify("S1ARGsome(", ("tok", "opt"), (jsonize(tok), jsonize_option<sort1>(opt)))
+) (* jsonize_s1arg *)
+end
+
+local
+
+implement
+jsonize_val<s1arg> = jsonize_s1arg
+
+in (* in-of-local *)
+
+implement
+jsonize_s1marg
+  (x0) =
+node("s1marg", res) where
+val res =
+(
+case+
+x0.node() of
+(*
+| S1MARGnone _ => ...
+| S1MARGsing _ => ...
+*)
+| S1MARGlist(s1as) =>
+  jsonify("S1MARGlist", "s1as", jsonize_list<s1arg>(s1as))
+) (* jsonize_s1marg *)
+end
+
+end // end of [local]
+
+
+implement jsonize_val<t1arg> = jsonize_t1arg
+
+implement
+jsonize_t1arg
+  (x0) =
+node("t1arg", res) where
+val res =
+(
+case+
+x0.node() of
+(*
+| T1ARGnone() =>
+  jsonify("T1ARGnone")
+*)
+| T1ARGsome(tok, opt) =>
+  jsonify("T1ARGsome", ("tok", "opt"), (jsonize(tok), jsonize_option<token>(opt)))
+) (* jsonize_t1arg *)
+end
+
+local
+
+implement
+jsonize_val<t1arg> = jsonize_t1arg
+
+in (* in-of-local *)
+
+implement
+jsonize_t1marg
+  (x0) =
+node("t1marg", res) where
+val res =
+(
+case+
+x0.node() of
+(*
+| T1MARGnone _ => ...
+*)
+| T1MARGlist(t1as) =>
+  jsonify("T1MARGlist", "t1as", jsonize_list<t1arg>(t1as))
+) (* jsonize_t1marg *)
+end
+
+end // end of [local]
+
+
+implement
+jsonize_s1qua
+  (x0) =
+node("", res) where
+val res =
+(
+case+ x0.node() of
+| S1QUAprop(s1e) =>
+  jsonify("S1QUAprop(", "s1e", jsonize(s1e))
+| S1QUAvars(ids, opt) =>
+  jsonify("S1QUAvars(", ("ids", "opt"), (jsonize_list<token>(ids), jsonize_option<sort1>(opt)))
+)
+end
+
+implement
+jsonize_val<s1qua> = jsonize_s1qua
+
+implement
+jsonize_s1uni
+  (x0) =
+node("s1uni", res) where
+val res =
+(
+case+ x0.node() of
+| S1UNIsome(s1qs) =>
+  jsonify("S1UNIsome", "s1qs", jsonize_list<s1qua>(s1qs))
+)
+end
 
 
 local
@@ -95,6 +347,8 @@ in (* in-of-local *)
 implement
 jsonize_s1exp
   (x0) =
+node("", res) where
+val res =
 (
 case+ x0.node() of
 //
@@ -173,5 +427,70 @@ case+ x0.node() of
   jsonify("S1Enone", "loc", jsonize("..."))
 //
 ) (* jsonize_s0exp *)
+end
 
 end // end of [local]
+
+
+implement
+jsonize_effs1expopt
+  (x0) =
+node("effs1expopt", res) where
+val res =
+(
+case+ x0 of
+| EFFS1EXPnone() =>
+  jsonify("EFFS1EXPnone")
+| EFFS1EXPsome(s1e) =>
+  jsonify("EFFS1EXPsome", "s1e", jsonize(s1e))
+(*
+| EFFS1EXPsome(s1f, s1e) =>
+  jsonify("EFFS1EXPsome", ("s1f", "s1e"), (jsonize(s1f), jsonize(s1e)))
+*)
+) (* end of [jsonize_effs1expopt] *)
+end
+
+implement
+jsonize_val<t1marg> = jsonize_t1marg
+implement
+jsonize_val<d1atcon> = jsonize_d1atcon
+implement
+jsonize_val<s1uni> = jsonize_s1uni
+
+implement
+jsonize_d1atype
+  (x0) =
+node("d1atype", res) where
+val res =
+(
+case+ x0.node() of
+| D1ATYPE(tok, arg, res, d1cs) =>
+  jsonify("D1ATYPE", ("tok", "arg", "res", "d1cs"),
+    (
+      jsonize(tok),
+      jsonize_list<t1marg>(arg),
+      jsonize_option<sort1>(res),
+      jsonize_list<d1atcon>(d1cs)
+    )
+  )
+) (* end of [jsonize_d1atype] *)
+end
+
+implement
+jsonize_d1atcon
+  (x0) =
+node("d1atcon", res) where
+val res =
+(
+case+ x0.node() of
+| D1ATCON(s1us, tok, s1is, argopt) =>
+  jsonify("D1ATCON", ("s1us", "tok", "s1is", "argopt"),
+    (
+      jsonize_list<s1uni>(s1us),
+      jsonize(tok),
+      jsonize_list<s1exp>(s1is),
+      jsonize_option<s1exp>(argopt)
+    )
+  )
+) (* end of [jsonize_d1atcon] *)
+end

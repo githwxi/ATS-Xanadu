@@ -8,8 +8,10 @@ UN = "prelude/SATS/unsafe.sats"
 implement
 jsonval_int (i) = JSONint (i)
 
-(* implement *)
-(* jsonval_intinf (i) = JSONintinf (i) *)
+(*
+implement
+jsonval_intinf (i) = JSONintinf (i)
+*)
 
 implement
 jsonval_bool (b) = JSONbool (b)
@@ -87,6 +89,24 @@ jsonval_labval8
 ) = JSONlablist
 (
   (l1, x1) :: (l2, x2) :: (l3, x3) :: (l4, x4) :: (l5, x5) :: (l6, x6) :: (l7, x7) :: (l8, x8) :: list_nil
+)
+implement
+jsonval_labval9
+(
+  l1, x1, l2, x2, l3, x3, l4, x4, l5, x5, l6, x6, l7, x7, l8, x8, l9, x9
+) = JSONlablist
+(
+  (l1, x1) :: (l2, x2) :: (l3, x3) :: (l4, x4) :: (l5, x5) :: (l6, x6) :: (l7, x7) :: (l8, x8)
+   :: (l9, x9) :: list_nil
+)
+implement
+jsonval_labval10
+(
+  l1, x1, l2, x2, l3, x3, l4, x4, l5, x5, l6, x6, l7, x7, l8, x8, l9, x9, l10, x10
+) = JSONlablist
+(
+  (l1, x1) :: (l2, x2) :: (l3, x3) :: (l4, x4) :: (l5, x5) :: (l6, x6) :: (l7, x7) :: (l8, x8)
+  :: (l9, x9) :: (l10, x10) :: list_nil
 )
 //
 (* ****** ****** *)
@@ -206,12 +226,14 @@ case+ x0 of
 | JSONnul () => prstr "{}"
 //
 | JSONint (i) => fprint_int (out, i)
-(* | JSONintinf (i) => *)
-(*   { *)
-(*     val () = fprint_char (out, '"') *)
-(*     val () = $INTINF.fprint_intinf (out, i) *)
-(*     val () = fprint_char (out, '"') *)
-(*   } *)
+(*
+| JSONintinf (i) =>
+  {
+    val () = fprint_char (out, '"')
+    val () = $INTINF.fprint_intinf (out, i)
+    val () = fprint_char (out, '"')
+  }
+*)
 //
 | JSONbool (b) => fprint_bool (out, b)
 | JSONfloat (d) => fprint_double (out, d)
@@ -333,6 +355,13 @@ end // end of [fprint_labjsonvalist]
 
 (* ****** ****** *)
 
+implement
+print_jsonval(x) = fprint_jsonval(stdout_ref, x)
+implement
+prerr_jsonval(x) = fprint_jsonval(stderr_ref, x)
+
+implement fprint_val<jsonval> = fprint_jsonval
+
 
 (* ****** ****** *)
 //
@@ -418,7 +447,6 @@ implement jsonize_val<double>(x) = jsonize_double(x)
 
 implement{a} jsonize_list(xs) = JSONlist(res) where
 {
-  (* val _ = $showtype(xs) *)
   val xys = list_map<a><jsonval>(xs) where
   {
     implement list_map$fopr<a><jsonval>(x) = jsonize_val<a>(x)
@@ -454,238 +482,345 @@ implement(a:t@ype) jsonize_list<a>(xs) = JSONlist(res) where
 }
 *)
 
-(* implement(a:t@ype) jsonize_val<List(a)>(xs) = jsonize_list<a>(xs) *)
+(*
+implement(a:t@ype) jsonize_val<List(a)>(xs) = jsonize_list<a>(xs)
+*)
 
 implement listj(x) = JSONlist(list_sing(x))
 
 implement listj2(x, y) = JSONlist(cons(x, cons(y, nil())))
 
 
-implement labval2(x, y) = jsonval_labval2("node", x, "val", y)
+implement node(x, y) =
+  jsonval_labval1(x, y)
+  (* jsonval_labval2("node", jsonize(x), "json", y) *)
+  (* jsonval_labval2("node", jsonize(x), "val", y) *)
 
+
+implement node2(x, y, z) =
+  jsonval_labval1(x, z)
+  (* jsonval_labval3("name", jsonize(x), "loc", y, "node", z) *)
+  (* jsonval_labval2("node", jsonize(x), "json", z) *)
 
 implement jsonify0(guard_name) = JSONstring(guard_name)
 
-
 implement jsonify1(guard_name, name, json) =
-jsonval_labval1(guard_name, rst) where
-  val rst = jsonval_labval1(name, json)
-  val rst = json
-end
+  jsonval_labval1(guard_name, json)
+(*
+jsonval_labval1(guard_name, jsonval_labval1(name, json))
+*)
+
+
+fun jsontyp(xs: jsonval): string =
+(
+  case+ xs of
+    | JSONnul() => "JSONnul"
+    | JSONint(int) => "JSONint"
+    | JSONbool(bool) => "JSONbool"
+    | JSONfloat(double) => "JSONfloat"
+    | JSONstring(string) => "JSONstring"
+    | JSONlist(jsonvalist) => "JSONlist"
+    | JSONlablist(labjsonvalist) => "JSONlablist"
+    | JSONoption(jsonvalopt) => "JSONoption"
+)
+
+#define JSON_OUTPUT 0
 
 implement jsonify2(guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval2 (
-    names.0, json.0,
-    names.1, json.1
+  val rst =
+  (
+    case JSON_OUTPUT of
+    | 0 => JSONlist($list{jsonval}(json.0, json.1))
+    | 1 =>
+      (
+        jsonval_labval2 (
+          names.0, json.0,
+          names.1, json.1
+        )
+      )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1)
+      ))
+    )
   )
-*)
-
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1)
-  )
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1))
 end
 
 implement jsonify3(guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval3 (
-    names.0, json.0,
-    names.1, json.1,
-    names.2, json.2
-  )
-*)
-
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1),
-    (names.2, json.2)
-  )
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2))
-end
+  val rst =
+  (
+    case JSON_OUTPUT of
+    |
+    0 => (
+      JSONlist($list{jsonval}(json.0, json.1, json.2))
+    )
+    | 1 => (
+      jsonval_labval3 (
+        names.0, json.0,
+        names.1, json.1,
+        names.2, json.2
+      )
+    )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1),
+        (names.2, json.2)
+      ))
+    )
+  )end
 
 implement jsonify4(guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval4 (
-    names.0, json.0,
-    names.1, json.1,
-    names.2, json.2,
-    names.3, json.3
+  val rst =
+  (
+    case JSON_OUTPUT of
+    | 0 => (
+      JSONlist($list{jsonval}(json.0, json.1, json.2, json.3))
+    )
+    | 1 => (
+      jsonval_labval4 (
+        names.0, json.0,
+        names.1, json.1,
+        names.2, json.2,
+        names.3, json.3
+      )
+    )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1),
+        (names.2, json.2),
+        (names.3, json.3)
+      ))
+    )
   )
-*)
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1),
-    (names.2, json.2),
-    (names.3, json.3)
-  )
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3))
 end
 
 implement jsonify5 (guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval5 (
-    names.0, json.0,
-    names.1, json.1,
-    names.2, json.2,
-    names.3, json.3,
-    names.4, json.4
+  val rst =
+  (
+    case JSON_OUTPUT of
+    | 0 => (
+      JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4))
+    )
+    | 1 => (
+      jsonval_labval5 (
+        names.0, json.0,
+        names.1, json.1,
+        names.2, json.2,
+        names.3, json.3,
+        names.4, json.4
+      )
+    )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1),
+        (names.2, json.2),
+        (names.3, json.3),
+        (names.4, json.4)
+      ))
+    )
   )
-*)
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1),
-    (names.2, json.2),
-    (names.3, json.3),
-    (names.4, json.4)
-  )
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4))
 end
 
 implement jsonify6 (guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval6 (
-    names.0, json.0,
-    names.1, json.1,
-    names.2, json.2,
-    names.3, json.3,
-    names.4, json.4,
-    names.5, json.5
+  val rst =
+  (
+    case JSON_OUTPUT of
+    | 0 => (
+      JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5))
+    )
+    | 1 => (
+      jsonval_labval6 (
+        names.0, json.0,
+        names.1, json.1,
+        names.2, json.2,
+        names.3, json.3,
+        names.4, json.4,
+        names.5, json.5
+      )
+    )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1),
+        (names.2, json.2),
+        (names.3, json.3),
+        (names.4, json.4),
+        (names.5, json.5)
+      ))
+    )
   )
-*)
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1),
-    (names.2, json.2),
-    (names.3, json.3),
-    (names.4, json.4),
-    (names.5, json.5)
-  )
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5))
 end
 
 implement jsonify7 (guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval7 (
-    names.0, json.0,
-    names.1, json.1,
-    names.2, json.2,
-    names.3, json.3,
-    names.4, json.4,
-    names.5, json.5,
-    names.6, json.6
+  val rst =
+  (
+    case JSON_OUTPUT of
+    | 0 => (
+      JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5, json.6))
+    )
+    | 1 => (
+      jsonval_labval7 (
+        names.0, json.0,
+        names.1, json.1,
+        names.2, json.2,
+        names.3, json.3,
+        names.4, json.4,
+        names.5, json.5,
+        names.6, json.6
+      )
+    )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1),
+        (names.2, json.2),
+        (names.3, json.3),
+        (names.4, json.4),
+        (names.5, json.5),
+        (names.6, json.6)
+      ))
+    )
   )
-*)
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1),
-    (names.2, json.2),
-    (names.3, json.3),
-    (names.4, json.4),
-    (names.5, json.5),
-    (names.6, json.6)
-  )
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5, json.6))
 end
 
 implement jsonify8 (guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval8 (
-    names.0, json.0,
-    names.1, json.1,
-    names.2, json.2,
-    names.3, json.3,
-    names.4, json.4,
-    names.5, json.5,
-    names.6, json.6,
-    names.7, json.7
+  val rst =
+  (
+    case JSON_OUTPUT of
+    | 0 => (
+      JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5, json.6, json.7))
+    )
+    | 1 => (
+      jsonval_labval8 (
+        names.0, json.0,
+        names.1, json.1,
+        names.2, json.2,
+        names.3, json.3,
+        names.4, json.4,
+        names.5, json.5,
+        names.6, json.6,
+        names.7, json.7
+      )
+    )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1),
+        (names.2, json.2),
+        (names.3, json.3),
+        (names.4, json.4),
+        (names.5, json.5),
+        (names.6, json.6),
+        (names.7, json.7)
+      ))
+    )
   )
-*)
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1),
-    (names.2, json.2),
-    (names.3, json.3),
-    (names.4, json.4),
-    (names.5, json.5),
-    (names.6, json.6),
-    (names.7, json.7)
-  )
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5, json.6, json.7))
 end
 
 implement jsonify9 (guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval8 (
-    names.0, json.0,
-    names.1, json.1,
-    names.2, json.2,
-    names.3, json.3,
-    names.4, json.4,
-    names.5, json.5,
-    names.6, json.6,
-    names.7, json.7
+  val rst =
+  (
+    case JSON_OUTPUT of
+    | 0 => (
+      JSONlist($list{jsonval}(
+        json.0,
+        json.1,
+        json.2,
+        json.3,
+        json.4,
+        json.5,
+        json.6,
+        json.7,
+        json.8
+      ))
+    )
+    | 1 => (
+      jsonval_labval9 (
+        names.0, json.0,
+        names.1, json.1,
+        names.2, json.2,
+        names.3, json.3,
+        names.4, json.4,
+        names.5, json.5,
+        names.6, json.6,
+        names.7, json.7,
+        names.8, json.8
+      )
+    )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1),
+        (names.2, json.2),
+        (names.3, json.3),
+        (names.4, json.4),
+        (names.5, json.5),
+        (names.6, json.6),
+        (names.7, json.7),
+        (names.8, json.8)
+      ))
+    )
   )
-*)
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1),
-    (names.2, json.2),
-    (names.3, json.3),
-    (names.4, json.4),
-    (names.5, json.5),
-    (names.6, json.6),
-    (names.7, json.7),
-    (names.8, json.8)
-  )
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5, json.6, json.7, json.8))
 end
 
 implement jsonify10 (guard_name, names, json) =
 jsonval_labval1(guard_name, rst) where
-(*
-  val rst = jsonval_labval8 (
-    names.0, json.0,
-    names.1, json.1,
-    names.2, json.2,
-    names.3, json.3,
-    names.4, json.4,
-    names.5, json.5,
-    names.6, json.6,
-    names.7, json.7
+  val rst =
+  (
+    case JSON_OUTPUT of
+    | 0 => (
+        JSONlist($list{jsonval}(
+          json.0,
+          json.1,
+          json.2,
+          json.3,
+          json.4,
+          json.5,
+          json.6,
+          json.7,
+          json.8,
+          json.9
+        ))
+      )
+    | 1 => (
+      jsonval_labval10 (
+        names.0, json.0,
+        names.1, json.1,
+        names.2, json.2,
+        names.3, json.3,
+        names.4, json.4,
+        names.5, json.5,
+        names.6, json.6,
+        names.7, json.7,
+        names.8, json.8,
+        names.9, json.9
+      )
+    )
+    | _ => (
+      JSONlablist($list{labjsonval}(
+        (names.0, json.0),
+        (names.1, json.1),
+        (names.2, json.2),
+        (names.3, json.3),
+        (names.4, json.4),
+        (names.5, json.5),
+        (names.6, json.6),
+        (names.7, json.7),
+        (names.8, json.8),
+        (names.9, json.9)
+      ))
+    )
   )
-*)
-  val lst = $list{labjsonval}(
-    (names.0, json.0),
-    (names.1, json.1),
-    (names.2, json.2),
-    (names.3, json.3),
-    (names.4, json.4),
-    (names.5, json.5),
-    (names.6, json.6),
-    (names.7, json.7),
-    (names.8, json.8),
-    (names.9, json.9)
-)
-  val rst = JSONlablist(lst)
-  val rst = JSONlist($list{jsonval}(json.0, json.1, json.2, json.3, json.4, json.5, json.6, json.7, json.8, json.9))
 end
-
-(* implement jsonify(guard_name: string, args: List(@(string, json))): jsonval =  *)

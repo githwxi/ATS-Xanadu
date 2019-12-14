@@ -764,7 +764,7 @@ case+ x0.node() of
     (* val _ = $showtype(argopt) *)
     val jargopt = (
       case+ argopt of
-      | None() => jsonize("None")
+      | None() => jsonify("None")
       | Some(x) => jsonize(x)
     )
   end

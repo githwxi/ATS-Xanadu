@@ -115,6 +115,35 @@ jsonval_labval8
 , l8: string, x8: jsonval
 ) : jsonval // end of [jsonval_labval8]
 //
+fun
+jsonval_labval9
+(
+  l1: string, x1: jsonval
+, l2: string, x2: jsonval
+, l3: string, x3: jsonval
+, l4: string, x4: jsonval
+, l5: string, x5: jsonval
+, l6: string, x6: jsonval
+, l7: string, x7: jsonval
+, l8: string, x8: jsonval
+, l9: string, x9: jsonval
+) : jsonval // end of [jsonval_labval8]
+//
+fun
+jsonval_labval10
+(
+  l1: string, x1: jsonval
+, l2: string, x2: jsonval
+, l3: string, x3: jsonval
+, l4: string, x4: jsonval
+, l5: string, x5: jsonval
+, l6: string, x6: jsonval
+, l7: string, x7: jsonval
+, l8: string, x8: jsonval
+, l9: string, x9: jsonval
+, l10: string, x10: jsonval
+) : jsonval // end of [jsonval_labval8]
+//
 (* ****** ****** *)
 //
 fun
@@ -160,6 +189,14 @@ fun fprint_labjsonvalist
 overload fprint with fprint_jsonval
 overload fprint with fprint_jsonvalist
 overload fprint with fprint_labjsonvalist
+
+
+fun print_jsonval(x: jsonval): void
+fun prerr_jsonval(x: jsonval): void
+
+overload print with print_jsonval
+overload prerr with prerr_jsonval
+
 //
 (*
 fun print_jsonval(x: jsonval): void
@@ -244,6 +281,8 @@ fun listj2(x: jsonval, y: jsonval): jsonval
 
 
 fun labval2(x: jsonval, y: jsonval): jsonval
+fun node(x: string, y: jsonval): jsonval
+fun node2(x: string, y: jsonval, z: jsonval): jsonval
 
 
 fun fprintf {ts:types} (

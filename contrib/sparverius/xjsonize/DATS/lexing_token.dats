@@ -7,6 +7,8 @@
 #staload _ = "./json.dats"
 
 #staload "./../SATS/lexing.sats"
+#staload "./../SATS/locinfo.sats"
+#staload "./../SATS/basics.sats"
 
 #staload SYM_J = "./../SATS/symbol.sats"
 
@@ -15,7 +17,9 @@ overload jsonize with $SYM_J.jsonize_symbol
 
 implement
 jsonize_tnode(tnd) = //labval2(jsonize("tnode"), res) where
-jsonval_labval1("tnode", res) where
+//jsonval_labval1("tnode", res) where
+(* res where *)
+node("tnode", res) where
 val res =
 (
 case+ tnd of
@@ -26,79 +30,86 @@ case+ tnd of
 | T_EOL() => jsonize("EOL")
 //
 | T_BLANK(x) =>
-  labval2(jsonize("BLANK"), jnul()) // x, ")")
+  jsonify("BLANK", "x", jsonize(x))
 //
 | T_CLNLT(x) =>
-  labval2(jsonize("CLNLT"), jnul()) // x, ")")
+  jsonify("CLNLT", "x", jsonize(x))
 | T_DOTLT(x) =>
-  labval2(jsonize("DOTLT"), jnul()) // x, ")")
+  jsonify("DOTLT", "x", jsonize(x))
 //
 | T_IDENT_alp(x) =>
-  labval2(jsonize("IDENT_alp"), jnul()) // x, ")")
+  jsonify("IDENT_alp", "x", jsonize(x))
 | T_IDENT_sym(x) =>
-  labval2(jsonize("IDENT_sym"), jnul()) // x, ")")
+  jsonify("IDENT_sym", "x", jsonize(x))
 //
 | T_IDENT_srp(x) =>
-  labval2(jsonize("IDENT_srp"), jnul()) // x, ")")
+  jsonify("IDENT_srp", "x", jsonize(x))
 | T_IDENT_dlr(x) =>
-  labval2(jsonize("IDENT_dlr"), jnul()) // x, ")")
+  jsonify("IDENT_dlr", "x", jsonize(x))
 //
 | T_IDENT_qual(x) =>
-  labval2(jsonize("IDENT_qual"), jnul()) // x, ")")
+  jsonify("IDENT_qual", "x", jsonize(x))
 //
 | T_INT1(rep) =>
-  labval2(jsonize("INT1"), jnul()) // rep, ")")
+  jsonify("INT1", "rep", jsonize(rep))
 | T_INT2(base, rep) =>
-  labval2(jsonize("INT3"), jnul()) // base, ", ", rep, ")")
+  jsonify("INT3", ("base", "rep"), (jsonize(base), jsonize(rep)))
 | T_INT3(base, rep, k0(*sfx*)) =>
-  labval2(jsonize("INT3"), jnul()) // base, ", ", rep, ", ", k0, ")")
+  jsonify("INT3", ("base", "rep", "k0"),
+    (jsonize(base), jsonize(rep), jsonize(k0)))
 //
 | T_FLOAT1(rep) =>
-  labval2(jsonize("FLOAT1"), jnul()) // rep, ")")
+  jsonify("FLOAT1", "rep", jsonize(rep))
 | T_FLOAT2(base, rep) =>
-  labval2(jsonize("FLOAT2"), jnul()) // base, ", ", rep, ")")
+  jsonify("FLOAT2", ("base", "rep"), (jsonize(base), jsonize(rep)))
+
 | T_FLOAT3(base, rep, k0(*sfx*)) =>
-  labval2(jsonize("FLOAT3"), jnul()) // base, ", ", rep, ", ", k0, ")")
+  jsonify("FLOAT3", ("base", "rep", "k0"),
+    (jsonize(base), jsonize(rep), jsonize(k0)))
 //
 (*
 | T_CHAR(chr) =>
   let
     val chr = int2char0(chr)
   in
-    labval2(jsonize("CHAR"), jnul()) // chr, ")")
+    jsonify("CHAR"), jnul()) // chr, ")")
   end
 *)
 | T_CHAR_nil(rep) =>
-  labval2(jsonize("CHAR_nil"), jnul()) // rep, ")")
+  jsonify("CHAR_nil", "rep", jsonize(rep))
 | T_CHAR_char(rep) =>
-  labval2(jsonize("CHAR_char"), jnul()) // rep, ")")
+  jsonify("CHAR_char", "rep", jsonize(rep))
 | T_CHAR_slash(rep) =>
-  labval2(jsonize("CHAR_slash"), jnul()) // rep, ")")
+  jsonify("CHAR_slash", "rep", jsonize(rep))
 //
 | T_STRING_closed(str) =>
-  labval2(jsonize("STRING_closed"), jnul()) // str, ")")
+  jsonify("STRING_closed", "str", jsonize(str))
 | T_STRING_unclsd(str) =>
-  labval2(jsonize("STRING_unclsd"), jnul()) // str, ")")
+  jsonify("STRING_unclsd", "str", jsonize(str))
 //
 (*
-| T_CDATA(cdata, asz) => labval2(jsonize("CDATA(...)")
+| T_CDATA(cdata, asz) => jsonify(("CDATA(...)")
 *)
 //
 | T_SPECHAR(c) =>
-  labval2(jsonize("SPECHAR"), jnul()) // int2char0(c), ")")
+  jsonify("SPECHAR", "c", jsonize(int2char0(c)))
 //
 | T_COMMENT_line
     (init, content) =>
-    labval2(jsonize("T_COMMENT_line"), jnul()) // init, "; ", "...)")
+    jsonify("T_COMMENT_line", ("init", "content"),
+      (jsonize(init), jsonize(content)))
 | T_COMMENT_rest
     (init, content) =>
-    labval2(jsonize("T_COMMENT_rest"), jnul()) // init, "; ", "...)")
+    jsonify("T_COMMENT_rest", ("init", "content"),
+      (jsonize(init), jsonize(content)))
 | T_COMMENT_cblock
     (level, content) =>
-    labval2(jsonize("T_COMMENT_cblock"), jnul()) // level, "; ", "...)")
+    jsonify("T_COMMENT_cblock", ("level", "content"),
+      (jsonize(level), jsonize(content)))
 | T_COMMENT_mlblock
     (level, content) =>
-    labval2(jsonize("T_COMMENT_mlblock"), jnul()) // level, "; ", "...)")
+    jsonify("T_COMMENT_mlblock", ("level", "content"),
+      (jsonize(level), jsonize(content)))
 //
 | T_AT() => jsonize("AT")
 //
@@ -145,12 +156,12 @@ case+ tnd of
 | T_RBRACK() => jsonize("RBRACK")
 //
 | T_EXISTS(knd) =>
-  labval2(jsonize("EXISTS"), jnul()) // knd, ")")
+  jsonify("EXISTS", "knd", jsonize(knd))
 //
 | T_TUPLE(knd) =>
-  labval2(jsonize("TUPLE"), jnul()) // knd, ")")
+  jsonify("TUPLE", "knd", jsonize(knd))
 | T_RECORD(knd) =>
-  labval2(jsonize("RECORD"), jnul()) // knd, ")")
+  jsonify("RECORD", "knd", jsonize(knd))
 (*
 | T_STRUCT() => jsonize("STRUCT")
 *)
@@ -162,101 +173,101 @@ case+ tnd of
 | T_OP() => jsonize("OP")
 //
 | T_OP_par() =>
-  jsonize("OP_par()")
+  jsonify("OP_par")
 | T_OP_sym(id) =>
-  labval2(jsonize("OP_sym"), jnul()) // id, ")")
+  jsonify("OP_sym", "id",jsonize(id))
 //
-| T_IN() => jsonize("IN")
+| T_IN() => jsonify("IN")
 //
-| T_AND() => jsonize("AND")
-| T_END() => jsonize("END")
+| T_AND() => jsonify("AND")
+| T_END() => jsonify("END")
 //
-| T_IF() => jsonize("IF")
-| T_SIF() => jsonize("SIF")
-| T_THEN() => jsonize("THEN")
-| T_ELSE() => jsonize("ELSE")
+| T_IF() => jsonify("IF")
+| T_SIF() => jsonify("SIF")
+| T_THEN() => jsonify("THEN")
+| T_ELSE() => jsonify("ELSE")
 //
-| T_WHEN() => jsonize("WHEN")
-| T_WITH() => jsonize("WITH")
+| T_WHEN() => jsonify("WHEN")
+| T_WITH() => jsonify("WITH")
 //
 | T_CASE(k0) =>
-  labval2(jsonize("CASE"), jnul()) // k0, ")")
+  jsonify("CASE", "k0", jsonize(k0))
 //
-| T_SCASE() => jsonize("SCASE()")
+| T_SCASE() => jsonify("SCASE")
 //
-| T_ENDIF() => jsonize("ENDIF")
-| T_ENDSIF() => jsonize("ENDSIF")
-| T_ENDCASE() => jsonize("ENDCASE")
-| T_ENDSCASE() => jsonize("ENDSCASE")
+| T_ENDIF() => jsonify("ENDIF")
+| T_ENDSIF() => jsonify("ENDSIF")
+| T_ENDCASE() => jsonify("ENDCASE")
+| T_ENDSCASE() => jsonify("ENDSCASE")
 //
 | T_LAM(knd) =>
-  labval2(jsonize("LAM"), jnul()) // knd, ")")
+  jsonify("LAM", "knd", jsonize(knd))
 | T_FIX(knd) =>
-  labval2(jsonize("FIX"), jnul()) // knd, ")")
+  jsonify("FIX", "knd", jsonize(knd))
 //
-| T_LET() => jsonize("LET")
-| T_WHERE() => jsonize("WHERE")
-| T_LOCAL() => jsonize("LOCAL")
+| T_LET() => jsonify("LET")
+| T_WHERE() => jsonify("WHERE")
+| T_LOCAL() => jsonify("LOCAL")
 //
-| T_ENDLAM() => jsonize("ENDLAM")
-| T_ENDLET() => jsonize("ENDLET")
-| T_ENDWHERE() => jsonize("ENDWHERE")
-| T_ENDLOCAL() => jsonize("ENDLOCAL")
+| T_ENDLAM() => jsonify("ENDLAM")
+| T_ENDLET() => jsonify("ENDLET")
+| T_ENDWHERE() => jsonify("ENDWHERE")
+| T_ENDLOCAL() => jsonify("ENDLOCAL")
 //
 | T_VAL(vlk) =>
-  labval2(jsonize("VAL"), jnul()) // vlk, ")")
-| T_VAR() => jsonize("VAR")
+  jsonify("VAL", "vlk", jsonize(vlk))
+| T_VAR() => jsonify("VAR")
 //
 | T_FUN(fnk) =>
-  labval2(jsonize("FUN"), jnul()) // fnk, ")")
+  jsonify("FUN", "fnk", jsonize(fnk))
 //
 | T_IMPLMNT(knd) =>
-  labval2(jsonize("IMPLMNT"), jnul()) // knd, ")")
+  jsonify("IMPLMNT", "knd", jsonize(knd))
 //
 | T_ABSSORT() =>
-  jsonize("ABSSORT")
+  jsonify("ABSSORT")
 //
 | T_SORTDEF() =>
-  labval2(jsonize("SORTDEF"), jnul()) // ")")
+  jsonify("SORTDEF")
 //
 | T_SEXPDEF(srt) =>
-  labval2(jsonize("SEXPDEF"), jnul()) // srt, ")")
+  jsonify("SEXPDEF", "srt", jsonize(srt))
 //
 | T_ABSTYPE(srt) =>
-  labval2(jsonize("ABSTYPE"), jnul()) // srt, ")")
+  jsonify("ABSTYPE", "srt", jsonize(srt))
 //
 | T_ABSIMPL() =>
-  jsonize("ABSIMPL")
+  jsonify("ABSIMPL")
 | T_ABSOPEN() =>
-  jsonize("ABSOPEN")
+  jsonify("ABSOPEN")
 //
 | T_DATASORT() =>
-  jsonize("DATASORT")
+  jsonify("DATASORT")
 | T_DATATYPE(srt) =>
-  labval2(jsonize("DATATYPE"), jnul()) // srt, ")")
+  jsonify("DATATYPE", "srt", jsonize(srt))
 //
 | T_WITHTYPE(srt) =>
-  labval2(jsonize("WITHTYPE"), jnul()) // srt, ")")
+  jsonify("WITHTYPE", "srt", jsonize(srt))
 //
 | T_SRP_NONFIX() =>
-  jsonize("#NONFIX")
+  jsonify("#NONFIX")
 | T_SRP_FIXITY(knd) =>
-  labval2(jsonize("#FIXIXTY"), jnul()) // knd, ")")
+  jsonify("#FIXIXTY", "knd", jsonize(knd))
 //
-| T_SRP_STACST() => jsonize("#STACST")
+| T_SRP_STACST() => jsonify("#STACST")
 //
-| T_SRP_STATIC() => jsonize("#STATIC")
-| T_SRP_EXTERN() => jsonize("#EXTERN")
+| T_SRP_STATIC() => jsonify("#STATIC")
+| T_SRP_EXTERN() => jsonify("#EXTERN")
 //
-| T_SRP_DEFINE() => jsonize("#DEFINE")
-| T_SRP_MACDEF() => jsonize("#MACDEF")
+| T_SRP_DEFINE() => jsonify("#DEFINE")
+| T_SRP_MACDEF() => jsonify("#MACDEF")
 //
-| T_SRP_INCLUDE() => jsonize("#INCLUDE")
+| T_SRP_INCLUDE() => jsonify("#INCLUDE")
 //
-| T_SRP_STALOAD() => jsonize("#STALOAD")
-| T_SRP_DYNLOAD() => jsonize("#DYNLOAD")
+| T_SRP_STALOAD() => jsonify("#STALOAD")
+| T_SRP_DYNLOAD() => jsonify("#DYNLOAD")
 //
-| T_SRP_SYMLOAD() => jsonize("#SYMLOAD")
+| T_SRP_SYMLOAD() => jsonify("#SYMLOAD")
 //
 ) (* end of [jsonize_tnode] *)
 end
@@ -264,4 +275,15 @@ end
 implement
 jsonize_token(tok) =
   (* labval2(jsonize("token"), jsonize_tnode(tok.node())) *)
-  jsonval_labval1("token", jsonize_tnode(tok.node()))
+  (* jsonval_labval1("token", jsonize_tnode(tok.node())) *)
+  (* jsonify("token", ("loc", "tok"), (jsonize(tok.loc()), jsonize_tnode(tok.node()))) *)
+(*
+  node("token", JSONlist(
+    $list{jsonval}(
+      jsonize_location(tok.loc()),
+      jsonize_tnode(tok.node())
+    )
+  ))
+*)
+
+node2("token", jsonize_location(tok.loc()), jsonize_tnode(tok.node()))

@@ -46,7 +46,8 @@ x0.node() of
   jsonify("Q0ARGnone", "tok", jsonize(tok))
 *)
 | Q0ARGsome(sid, opt) =>
-  jsonify("Q0ARGsome", ("sid", "opt"), (jsonize(sid), jsonize_option<sort0>(opt)))
+  jsonify("Q0ARGsome", ("sid", "opt"),
+    (jsonize(sid), jsonize_option<sort0>(opt)))
 //
 ) (* end of [jsonize_q0arg] *)
 
@@ -604,6 +605,8 @@ implement jsonize_val<i0dnt>(x) = jsonize_i0dnt(x)
 implement
 jsonize_decmodopt
   (x0) =
+node("decmodopt", res) where
+val res =
 (
 case+ x0 of
 //
@@ -622,7 +625,7 @@ case+ x0 of
     val rst = (jsonize(tok), jsonize(tbeg), xys, jsonize(tend))
   end
 )
-
+end
 
 implement
 jsonize_teqd0expopt

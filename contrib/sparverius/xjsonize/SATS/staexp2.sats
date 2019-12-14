@@ -6,6 +6,9 @@
 fun
 jsonize_sort2: jsonize_type(sort2)
 overload jsonize with jsonize_sort2
+fun
+labify_sort2: labify_type(sort2)
+overload labify with labify_sort2
 
 fun
 jsonize_t2bas: jsonize_type(t2bas)

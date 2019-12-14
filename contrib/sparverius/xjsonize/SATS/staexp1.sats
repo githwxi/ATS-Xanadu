@@ -3,7 +3,7 @@
 
 #staload "./json.sats"
 
-(*
+
 fun
 jsonize_g1exp : jsonize_type(g1exp)
 overload jsonize with jsonize_g1exp
@@ -11,13 +11,11 @@ overload jsonize with jsonize_g1exp
 fun
 jsonize_g1marg : jsonize_type(g1marg)
 overload jsonize with jsonize_g1marg
-*)
 
 fun
 jsonize_sort1 : jsonize_type(sort1)
 overload jsonize with jsonize_sort1
 
-(*
 fun
 jsonize_s1rtcon : jsonize_type(s1rtcon)
 overload jsonize with jsonize_s1rtcon
@@ -53,13 +51,12 @@ overload jsonize with jsonize_s1qua
 fun
 jsonize_s1uni : jsonize_type(s1uni)
 overload jsonize with jsonize_s1uni
-*)
 
 fun
 jsonize_s1exp : jsonize_type(s1exp)
 overload jsonize with jsonize_s1exp
 
-(*
+
 fun
 jsonize_effs1expopt : jsonize_type(effs1expopt)
 overload jsonize with jsonize_effs1expopt
@@ -71,4 +68,3 @@ overload jsonize with jsonize_d1atcon
 fun
 jsonize_d1atype : jsonize_type(d1atype)
 overload jsonize with jsonize_d1atype
-*)

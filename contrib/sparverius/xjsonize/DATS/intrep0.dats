@@ -34,6 +34,8 @@
 implement
 jsonize_ir0pat
   (x0) =
+node("ir0pat", res) where
+val res =
 (
 case+ x0.node() of
 //
@@ -61,7 +63,7 @@ case+ x0.node() of
   jsonify("IR0Pnone1", "d3p", jsonize("..."))
 //
 ) // end of [jsonize_ir0pat]
-
+end
 
 implement jsonize_val<ir0pat>(x) = jsonize_ir0pat(x)
 
@@ -71,7 +73,10 @@ jsonize_ir0arg
 let
   val+IR0ARGsome(npf, irps) = x0
 in
+node("ir0arg", res) where
+val res =
   jsonify("IR0ARGsome", ("npf", "irps"), (jsonize(npf), jsonize_list<ir0pat>(irps)))
+end
 end // end of [jsonize_ir0arg]
 
 
@@ -88,10 +93,10 @@ in
 //
 implement
 jsonize_ir0exp(x0) =
-(*
-  jsonval_labval1("ir0exp", res) where
-*)
-res where val res =
+(* jsonval_labval1("ir0exp", res) where *)
+(* res where val res = *)
+node("ir0exp", res) where
+val res =
 (
 case+
 x0.node() of
@@ -160,6 +165,9 @@ x0.node() of
       (jsonize(ire1), jsonize_list<ir0dcl>(irds))
   )
 //
+| IR0Eseqn
+  (ires, ire1) =>
+  jsonify("IR0Eseqn", ("ires", "ire1"), (jsonize_list<ir0exp>(ires), jsonize(ire1)))
 | IR0Etuple
   (knd0, npf1, ires) =>
   jsonify(
@@ -219,6 +227,8 @@ end // end of local
 implement
 jsonize_ir0gua
   (x0) =
+node("ir0gua", res) where
+val res =
 (
 case+
 x0.node() of
@@ -232,11 +242,13 @@ x0.node() of
     )
   )
 ) (* end of [jsonize_ir0gua] *)
-
+end
 
 implement
 jsonize_ir0clau
   (x0) =
+node("ir0clau", res) where
+val res =
 (
 case+
 x0.node() of
@@ -248,13 +260,15 @@ x0.node() of
   jsonify("IR0CLAUpat", ("ir0gp", "d0e0"), (jsonize("..."), jsonize("...")))
 //
 ) (* end of [jsonize_ir0clau] *)
-
+end
 
 implement jsonize_val<ir0gua> = jsonize_ir0gua
 
 implement
 jsonize_ir0gpat
   (x0) =
+node("ir0gpat", res) where
+val res =
 (
 case+
 x0.node() of
@@ -270,7 +284,7 @@ x0.node() of
   )
 //
 ) (* end of [jsonize_ir0gpat] *)
-
+end
 
 implement jsonize_val<ir0dcl> = jsonize_ir0dcl
 implement jsonize_val<ir0fundecl> = jsonize_ir0fundecl
@@ -283,6 +297,8 @@ implement jsonize_val<ir0vardecl> = jsonize_ir0vardecl
 
 implement
 jsonize_ir0dcl(x0) =
+node("ir0dcl", res) where
+val res =
 (
 case+ x0.node() of
 //
@@ -356,7 +372,7 @@ case+ x0.node() of
   jsonify("IR0Cnone1", "d3cl", jsonize("..."))
 //
 ) // end of [jsonize_ir0dcl]
-
+end
 
 implement jsonize_val<ir0exp> = jsonize_ir0exp
 
@@ -367,10 +383,13 @@ jsonize_ir0vardecl
 val+IR0VARDECL(rcd) = x0
 //
 in
+node("ir0vardecl", res) where
+val res =
   jsonify (
     "IR0VARDECL", ("d2v", "ini"),
     (jsonize(rcd.d2v), jsonize_option<ir0exp>(rcd.ini))
   )
+end
 end // end of [jsonize_ir0vardecl]
 
 
@@ -381,6 +400,8 @@ jsonize_ir0valdecl
 val+IR0VALDECL(rcd) = x0
 //
 in
+node("ir0valdecl", res) where
+val res =
   jsonify("IR0VALDECL", ("pat", "def"), (
       jsonize(rcd.pat),
       defopt
@@ -392,6 +413,7 @@ in
       | Some(x) => jsonize(x)
     )
   end
+end
 end // end of [jsonize_ir0valdecl]
 
 
@@ -404,6 +426,8 @@ jsonize_ir0fundecl
 val+IR0FUNDECL(rcd) = x0
 //
 in
+node("ir0fundecl", res) where
+val res =
   jsonify(
     "IR0FUNDECL", ("nam", "d2c", "a2g", "a3g", "def"),
     (jsonize(rcd.nam), jsonize(rcd.d2c),  jsonize_list<f2arg>(rcd.a2g), ja3g, jdef)
@@ -420,4 +444,5 @@ in
       | Some(x) => jsonize_list<f2arg>(rcd.a2g)
     )
   end
+end
 end // end of [jsonize_ir0fundecl]
