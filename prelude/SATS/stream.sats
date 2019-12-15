@@ -27,81 +27,10 @@
 
 (* ****** ****** *)
 //
-// For linear lists
-//
-(* ****** ****** *)
-//
-// Author: Hongwei Xi
-// Start Time: September, 2019
-// Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
-//
-fun<>
-list_vt_nil?
-{a:vtype}{n:int}
-(xs: !list_vt(a, n)): bool(n = 0)
-fun<>
-list_vt_cons?
-{a:vtype}{n:int}
-(xs: !list_vt(a, n)): bool(n > 0)
-//
-#symload
-iseqz with list_vt_nil?
-#symload
-isneqz with list_vt_cons?
-//
-(* ****** ****** *)
-//
-fun
-<a:vtype>
-list_vt_length
-{n:int}
-(xs: !list_vt(a, n)): int(n)
-//
-#symload
-length with list_vt_length
-//
-(* ****** ****** *)
-//
-fun
-<a:vtype>
-list_vt_reverse
-{n:int}
-(xs: list_vt(a, n)): list_vt(a, n)
-//
-#symload
-reverse with list_vt_reverse
-//
-(* ****** ****** *)
-//
-fun
-<a:vtype>
-list_vt_copy
-{n:int}
-(xs: !list_vt(a, n)): list_vt(a, n)
-fun
-<a:vtype>
-list_vt_rcopy
-{n:int}
-(xs: !list_vt(a, n)): list_vt(a, n)
-//
-#symload copy with list_vt_copy
-#symload rcopy with list_vt_rcopy
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-<n:i0>
-list_vt_tabulate(int(n)): list_vt(a, n)
-fun
-<a:vtype>
-list_vt_tabulate_cref
-{n:nat}
-( n0: int(n)
-, f0: nintlt(n) -<cref> a): list_vt(a, n)
+// For functional streams
 //
 (* ****** ****** *)
 
-(* end of [list_vt.sats] *)
+(* ****** ****** *)
+
+(* end of [stream.sats] *)

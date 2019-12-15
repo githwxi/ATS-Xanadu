@@ -27,7 +27,7 @@
 
 (* ****** ****** *)
 //
-// For generic ordering
+// For functional lists
 //
 (* ****** ****** *)
 //
