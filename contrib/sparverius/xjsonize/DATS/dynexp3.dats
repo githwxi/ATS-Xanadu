@@ -87,6 +87,8 @@ jsonize_val<d3exp> = jsonize_d3exp
 implement
 jsonize_d3pat
   (x0) =
+node("d3pat", res) where
+val res = 
 (
 case- x0.node() of
 //
@@ -145,11 +147,14 @@ case- x0.node() of
   jsonify("D3Pnone2", "d2psrc", jsonize(d2psrc))
 //
 ) (* end of [jsonize_d3pat] *)
+end
 
 
 implement
 jsonize_f3arg
   (x0) =
+node("f3arg", res) where
+val res = 
 (
 //
 case+
@@ -179,11 +184,13 @@ x0.node() of
   )
 //
 ) (* end of [jsonize_f3arg] *)
-
+end
 
 implement
 jsonize_d3exp
   (x0) =
+node("d3exp", res) where
+val res = 
 (
 case+
 x0.node() of
@@ -453,11 +460,13 @@ x0.node() of
   jsonify("D3Enone2", "d3esrc", jsonize(d3esrc))
 //
 )
-
+end
 
 implement
 jsonize_d3gua
   (x0) =
+node("d3gua", res) where
+val res = 
 (
 case+
 x0.node() of
@@ -466,11 +475,13 @@ x0.node() of
 | D3GUAmat(d3e, d3p) =>
   jsonify("D3GUAmat", ("d3e", "d3p"), (jsonize(d3e), jsonize(d3p)))
 ) (* end of [jsonize_d3gua] *)
-
+end
 
 implement
 jsonize_d3clau
   (x0) =
+node("d3clau", res) where
+val res = 
 (
 case+
 x0.node() of
@@ -482,11 +493,13 @@ x0.node() of
   jsonify("D3CLAUexp", ("d3gp", "d0e0"), (jsonize(d3gp), jsonize(d0e0)))
 //
 ) (* end of [jsonize_d3clau] *)
-
+end
 
 implement
 jsonize_d3gpat
   (x0) =
+node("d3gpat", res) where
+val res = 
 (
 case+
 x0.node() of
@@ -503,7 +516,7 @@ x0.node() of
   )
 //
 ) (* end of [jsonize_d3gpat] *)
-
+end
 
 local
 
@@ -514,6 +527,8 @@ in
 implement
 jsonize_ti3arg
   (x0) =
+node("ti3arg", res) where
+val res = 
 (
 case+ x0 of
 | TI3ARGnone() =>
@@ -521,6 +536,7 @@ case+ x0 of
 | TI3ARGsome(t2ps) =>
   jsonify("TI3ARGnone", "t2ps", jsonize_list<t2ype>(t2ps))
 )
+end
 
 end
 
@@ -541,6 +557,8 @@ in(*in-of-local*)
 implement
 jsonize_d3ecl
   (x0) =
+node("d3ecl", res) where
+val res = 
 (
 //
 case+
@@ -672,6 +690,7 @@ x0.node() of
 | D3Cnone1(d3csrc) =>
   jsonify("D3Cnone1", "d3csrc", jsonize(d3csrc))
 )
+end
 //
 end // end of [local]
 
@@ -679,6 +698,8 @@ end // end of [local]
 implement
 jsonize_t2pcast
   (x0) =
+node("t2pcats", res) where
+val res = 
 (
 case+ x0 of
 | T2PCASTnone() =>
@@ -686,7 +707,7 @@ case+ x0 of
 | T2PCASTsome(t2p1, t2p2) =>
   jsonify("T2PCASTsome", ("t2p1", "t2p2"), (jsonize(t2p1), jsonize(t2p2)))
 ) (* end of [jsonize_t2pcast] *)
-
+end
 
 implement
 jsonize_v3aldecl
@@ -695,6 +716,8 @@ jsonize_v3aldecl
 val+V3ALDECL(rcd) = x0
 //
 in
+node("v3aldecl", res) where
+val res = 
   jsonify("V3ALDECL@{", ("pat", "def", "wtp"), 
     (
       jsonize(rcd.pat), 
@@ -702,6 +725,7 @@ in
       jsonize_option<s2exp>(rcd.wtp)
     )
   )
+end
 end // end of [jsonize_v3aldecl]
 
 
@@ -712,6 +736,8 @@ jsonize_v3ardecl
 val+V3ARDECL(rcd) = x0
 //
 in
+node("v3ardecl", res) where
+val res = 
   jsonify("V3ARDECL", ("d2v", "wth", "res", "ini"), 
     (
       jsonize(rcd.d2v), 
@@ -720,6 +746,7 @@ in
       jsonize_option<d3exp>(rcd.ini)
     )
   )
+end
 end // end of [jsonize_v3ardecl]
 
 
@@ -730,6 +757,8 @@ jsonize_f3undecl
 val+F3UNDECL(rcd) = x0
 //
 in
+node("f3undecl", res) where
+val res = 
   jsonify("F3UNDECL@{", ("nam", "d2c", "arg", "res", "def", "ctp", "wtp"), 
     (
       jsonize(rcd.nam), 
@@ -741,4 +770,5 @@ in
       jsonize_option<s2exp>(rcd.wtp)
     )
   )
+end
 end // end of [jsonize_f3undecl]
