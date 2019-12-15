@@ -715,12 +715,19 @@ d2exp_node =
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
 //
-| D2Eaddr of d2exp(*l-value*)
 (*
 | D2Eflat of d2exp(*l-value*)
 *)
 //
+| D2Eaddr of d2exp(*l-value*)
+| D2Eeval of d2exp(*ptr/lazy*)
 | D2Efold of d2exp(*open-con*)
+//
+// HX: for lazy-evaluation
+| D2Elazy of
+  (d2exp(*eval*)) // nonlin
+| D2Ellazy of
+  (d2exp(*eval*), d2expopt(*free*)) // linear
 //
 | D2Eanno of (d2exp(*applst*), s2exp(*type*))
 //

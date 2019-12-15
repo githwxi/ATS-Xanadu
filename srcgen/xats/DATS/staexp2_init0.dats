@@ -178,4 +178,13 @@ s2cstref_make_name("the_string_ctype")
 
 (* ****** ****** *)
 
+implement
+the_lazy_ctype =
+s2cstref_make_name("the_lazy_ctype")
+implement
+the_llazy_ctype =
+s2cstref_make_name("the_llazy_ctype")
+
+(* ****** ****** *)
+
 (* end of [xats_staexp2_init0.dats] *)

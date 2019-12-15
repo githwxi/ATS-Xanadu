@@ -862,7 +862,7 @@ end // end of [aux_assgn]
 and
 aux_assgn_proj
 ( irvr: ir0val
-, irlv: ir0lval) : void =
+, irlv: ir0lftval) : void =
 let
 val
 irvs = auxlst_up(irlv)
@@ -922,7 +922,7 @@ list_cons
 fun
 auxlst_up
 ( irlv
-: ir0lval): ir0valist =
+: ir0lftval): ir0valist =
 (
 case+ irlv of
 | IR0LVref(r0) =>
@@ -952,11 +952,9 @@ case+ irlv of
 //
 fun
 auxlst_dn
-( irvr
-: ir0val
-, irvs
-: ir0valist
-, irlv: ir0lval): void =
+( irvr: ir0val
+, irvs: ir0valist
+, irlv: ir0lftval): void =
 (
 case+ irlv of
 | IR0LVref(r0) =>
@@ -1095,6 +1093,61 @@ IR0Vfix
 }
 end // end of [aux_fix]
 
+(* ****** ****** *)
+//
+fun
+aux_eval
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+let
+//
+val-
+IR0Eeval
+(knd0, ire1) = ire0.node()
+//
+val
+irv1 = interp0_irexp(env0, ire1)
+//
+in
+//
+case- irv1 of
+|
+IR0Vlazy(r0) =>
+(
+case+ r0[] of
+//
+| IR0LVval(irv2) => irv2
+//
+| IR0LVexp(ire2) =>
+  let
+    val
+    irv2 =
+    interp0_irexp(env0, ire2)
+  in
+    r0[] := IR0LVval(irv2); irv2
+  end // end of [IR0LVexp]
+//
+)
+//
+end // end of [aux_eval]
+//
+(* ****** ****** *)
+//
+fun
+aux_lazy
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+let
+//
+val-
+IR0Elazy(ire1) = ire0.node()
+//
+in
+  IR0Vlazy(ref(IR0LVexp(ire1)))
+end
+//
 (* ****** ****** *)
 
 local
@@ -1262,6 +1315,10 @@ ire0.node() of
 | IR0Efix
     (_, _, _, _) => aux_fix(env0, ire0)
   // IR0Efix
+//
+| IR0Eeval(_, _) => aux_eval(env0, ire0)
+//
+| IR0Elazy(ire1) => aux_lazy(env0, ire0)
 //
 | IR0Eflat(ire1) => aux_flat(env0, ire0)
 | IR0Etalf(ire1) => aux_talf(env0, ire0)

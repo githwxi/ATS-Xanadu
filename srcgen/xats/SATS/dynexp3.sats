@@ -356,6 +356,15 @@ d3exp_node =
 | D3Eaddr of d3exp(*l-value*)
 | D3Efold of d3exp(*open-con*)
 //
+| D3Eeval of
+  (int(*kind*), d3exp)
+//
+// HX: for lazy-evaluation
+| D3Elazy of
+  (d3exp(*eval*)) // nonlin
+| D3Ellazy of
+  (d3exp(*eval*), d3expopt(*free*)) // linear
+//
 | D3Eanno of (d3exp, s2exp)
 //
 | D3Eflat of d3exp(*l-value*)

@@ -276,6 +276,12 @@ ir0exp_node =
   (int(*knd*), d2var, ir0arglst, ir0exp)
 //
 | IR0Eaddr of (ir0exp(*l-value*))
+| IR0Efold of (ir0exp(*l-value*))
+//
+| IR0Eeval of
+  (int(*knd*), ir0exp(*l-value*))
+//
+| IR0Elazy of (ir0exp(* thunk *))
 //
 | IR0Eflat of (ir0exp(*l-value*))
 | IR0Etalf of (ir0exp(*IR0Eflat*))
