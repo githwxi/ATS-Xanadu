@@ -60,6 +60,7 @@ typedef d2con = $D2E.d2con
 typedef d2cst = $D2E.d2cst
 
 (* ****** ****** *)
+
 typedef ir0pat = $INT.ir0pat
 typedef ir0arg = $INT.ir0arg
 typedef ir0exp = $INT.ir0exp
@@ -142,8 +143,8 @@ ir0lftval =
 //
 and
 ir0lazval =
-| IR0LVval of ir0val(* value *)
-| IR0LVexp of ir0exp(* thunk *)
+| IR0LVval of ir0val(*value*)
+| IR0LVexp of (ir0env, ir0exp) // thunk
 //
 where
 //
@@ -192,12 +193,12 @@ ir0env_make_nil(): ir0env
 fun
 intpenv_make_nil(): intpenv
 fun
-intpenv_make_fun(ir0env): intpenv
+intpenv_make_fenv(ir0env): intpenv
 //
 (* ****** ****** *)
 //
 fun
-intpenv_take_env(!intpenv): ir0env
+intpenv_take_fenv(!intpenv): ir0env
 //
 (* ****** ****** *)
 //
@@ -218,7 +219,7 @@ intpenv_push_let1(!intpenv): void
 fun
 intpenv_free_nil(env: intpenv): void
 fun
-intpenv_free_fun(env: intpenv): void
+intpenv_free_fenv(env: intpenv): void
 //
 (* ****** ****** *)
 
