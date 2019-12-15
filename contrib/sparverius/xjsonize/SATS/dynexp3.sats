@@ -7,7 +7,11 @@ fun
 jsonize_ti3arg : jsonize_type(ti3arg)
 overload jsonize with jsonize_ti3arg
 
-(*
+fun
+jsonize_d3pat : jsonize_type(d3pat)
+overload jsonize with jsonize_d3pat
+
+
 fun
 jsonize_f3arg : jsonize_type(f3arg)
 overload jsonize with jsonize_f3arg
@@ -47,4 +51,3 @@ overload jsonize with jsonize_f3undecl
 fun
 jsonize_d3ecl : jsonize_type(d3ecl)
 overload jsonize with jsonize_d3ecl
-*)

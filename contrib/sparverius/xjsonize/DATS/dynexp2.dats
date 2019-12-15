@@ -247,7 +247,7 @@ jsonize_d2exp
 node("d2exp", res) where
 val res =
 (
-case- x0.node() of
+case+ x0.node() of
 //
 | D2Eint(tok) =>
   jsonify("D2Eint", "tok", jsonize(tok))
@@ -364,10 +364,22 @@ case- x0.node() of
     )
   )
 //
+(*
+| D2Eflat(d2e1) =>
+  fprint!(out, "D2Eflat(", d2e1, ")")
+*)
+//
 | D2Eaddr(d2e1) =>
   jsonify("D2Eaddr", "d2e1", jsonize(d2e1))
+| D2Eeval(d2e1) =>
+  jsonify("D2Eeval", "d2e1", jsonize(d2e1))
 | D2Efold(d2e1) =>
   jsonify("D2Efold", "d2e1", jsonize(d2e1))
+//
+| D2Elazy(d2e1) =>
+  jsonify("D2Elazy", "d2e1", jsonize(d2e1))
+| D2Ellazy(d2e1, opt2) =>
+  jsonify("D2Ellazy", ("d2e1", "opt2"), (jsonize(d2e1), jsonize_option<d2exp>(opt2)))
 //
 | D2Eanno(d2e1, s2e2) =>
   jsonify("D2Eanno", ("d2e1", "s2e2"), (jsonize(d2e1), jsonize(s2e2)))

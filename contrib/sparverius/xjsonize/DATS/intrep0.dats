@@ -220,6 +220,15 @@ x0.node() of
 //
 | IR0Eaddr(ire1) =>
   jsonify("IR0Eaddr", "ire1", jsonize(ire1))
+| IR0Efold(ire1) =>
+  jsonify("IR0Efold", "ire1", jsonize(ire1))
+//
+| IR0Eeval
+  (knd0, ire1) =>
+  jsonify("IR0Eeval", ("knd0", "ire1"), (jsonize(knd0), jsonize(ire1)))
+//
+| IR0Elazy(ire1) =>
+  jsonify("IR0Elazy", "ire1", jsonize(ire1))
 | IR0Eflat(ire1) =>
   jsonify("IR0Eflat", "ire1", jsonize(ire1))
 | IR0Etalf(ire1) =>
