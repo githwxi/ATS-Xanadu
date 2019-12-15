@@ -1015,7 +1015,7 @@ d3e1 = trans33_dexp(d3e1)
 val t2p0 =
 let
 val t2p1 = d3e1.type()
-val t2p1 = t2ype_eval(t2p1)
+val t2p1 = hnfize(t2p1)
 in
 //
 let
@@ -1046,9 +1046,8 @@ end // end of [let]
 end // end of [val]
 //
 in
-  d33exp_make_node
-    (loc0, t2p0, D3Eeval(knd0, d3e1))
-  // end of [d33exp_make_node]
+d33exp_make_node
+(loc0, t2p0, D3Eeval(knd0, d3e1(*eval*)))
 end // end of [aux_eval]
 
 (* ****** ****** *)
@@ -1195,6 +1194,8 @@ d3e0.node() of
 | D3Eaddr(d3e1) => aux_addr(d3e0)
 | D3Eeval(_, _) => aux_eval(d3e0)
 | D3Efold(d3e1) => aux_fold(d3e0)
+//
+| D3Elazy(d3e1) => aux_lazy(d3e0)
 //
 | D3Eanno
     (d3e1, s2e2) => aux_anno(d3e0)

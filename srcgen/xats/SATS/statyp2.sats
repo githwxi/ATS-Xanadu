@@ -173,12 +173,10 @@ val
 the_t2ype_string: t2ype
 //
 (* ****** ****** *)
-
-val
-the_t2ype_lazy: t2ype
-val
-the_t2ype_llazy: t2ype
-
+//
+val the_t2ype_lazy: t2ype
+val the_t2ype_llazy: t2ype
+//
 (* ****** ****** *)
 //
 fun
@@ -341,6 +339,8 @@ t2ype_tyrec
 fun
 t2ype_un_p2tr
 (t2p0: t2ype): Option_vt(t2ype)
+//
+(* ****** ****** *)
 //
 fun
 t2ype_un_lazy

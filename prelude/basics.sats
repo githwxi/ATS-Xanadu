@@ -705,8 +705,7 @@ strmcon_vt(a:vtype+) =
 //
 where
 vtypedef
-stream_vt
-(a:vtype) = lazy_vt(strmcon_vt(a))
+stream_vt(a:vtype) = lazy_vt(strmcon_vt(a))
 //
 (* ****** ****** *)
 //

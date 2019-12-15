@@ -1229,31 +1229,16 @@ s2cstref_equ_s2exp(s2cstref, s2exp): bool
 //
 (* ****** ****** *)
 //
-// HX-2019-09-09:
-// types for the constants
-//
-val the_void_ctype : s2cstref
-//
-val the_p1tr_ctype : s2cstref
-val the_p2tr_ctype : s2cstref
-//
-val the_sint_ctype : s2cstref
-val the_uint_ctype : s2cstref
-//
-val the_bool_ctype : s2cstref
-val the_char_ctype : s2cstref
-//
-val the_sfloat_ctype : s2cstref
-val the_dfloat_ctype : s2cstref
-//
-val the_string_ctype : s2cstref
+// HX:
+// various static constants
+// declare in prelude/basics.sats
 //
 (* ****** ****** *)
 //
-val
-the_lazy_ctype: s2cstref//nonlin
-val
-the_llazy_ctype: s2cstref//linear
+val the_p2tr_tbox : s2cstref
+//
+val the_lazy_t0_x0 : s2cstref // (t0) -> x0
+val the_lazy_vt_vx : s2cstref // (vt) -> vx
 //
 (* ****** ****** *)
 
@@ -1281,6 +1266,32 @@ val the_mod_i0_i0 : s2cstref // : (int, int) -> int
 //
 val the_ndiv_i0_i0 : s2cstref // : (int, int) -> int
 val the_idiv_i0_i0 : s2cstref // : (int, int) -> int
+//
+(* ****** ****** *)
+//
+// HX-2019-09-09:
+// types for the constants
+//
+val the_void_ctype : s2cstref
+//
+val the_p1tr_ctype : s2cstref
+val the_p2tr_ctype : s2cstref
+//
+val the_sint_ctype : s2cstref
+val the_uint_ctype : s2cstref
+//
+val the_bool_ctype : s2cstref
+val the_char_ctype : s2cstref
+//
+val the_sfloat_ctype : s2cstref
+val the_dfloat_ctype : s2cstref
+//
+val the_string_ctype : s2cstref
+//
+(* ****** ****** *)
+//
+val the_lazy_ctype : s2cstref//nonlin
+val the_llazy_ctype : s2cstref//linear
 //
 (* ****** ****** *)
 
