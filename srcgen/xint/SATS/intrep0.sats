@@ -38,28 +38,30 @@
 //
 (* ****** ****** *)
 //
-#staload"./basics.sats"
-//
-#staload"./label0.sats"
-#staload"./filpath.sats"
-#staload"./locinfo.sats"
+#define
+XATS_targetloc "./../../xats"
 //
 (* ****** ****** *)
 //
-#staload
-LEX = "./lexing.sats"
+#staload "{$XATS}/SATS/basics.sats"
 //
-typedef token = $LEX.token
+#staload "{$XATS}/SATS/label0.sats"
+#staload "{$XATS}/SATS/filpath.sats"
+#staload "{$XATS}/SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
-#staload D1E = "./dynexp1.sats"
+#staload LEX = "{$XATS}/SATS/lexing.sats"
 //
-#staload S2E = "./staexp2.sats"
-#staload S2T = "./statyp2.sats"
-#staload D2E = "./dynexp2.sats"
+(* ****** ****** *)
 //
-#staload D3E = "./dynexp3.sats"
+#staload D1E = "{$XATS}/SATS/dynexp1.sats"
+//
+#staload S2E = "{$XATS}/SATS/staexp2.sats"
+#staload S2T = "{$XATS}/SATS/statyp2.sats"
+#staload D2E = "{$XATS}/SATS/dynexp2.sats"
+//
+#staload D3E = "{$XATS}/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 
@@ -145,6 +147,10 @@ typedef ir0gpatlst = List0(ir0gpat)
 
 (* ****** ****** *)
 //
+typedef token = $LEX.token
+//
+(* ****** ****** *)
+
 datatype
 ir0pat_node =
 //

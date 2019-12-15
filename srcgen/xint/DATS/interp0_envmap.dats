@@ -49,8 +49,22 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#include
-"./../HATS/libxatsopt.hats"
+#define
+XATS_targetloc "./../../xats"
+
+(* ****** ****** *)
+//
+#staload
+LAB = "{$XATS}/SATS/label0.sats"
+#staload
+STM = "{$XATS}/SATS/stamp0.sats"
+#staload
+SYM = "{$XATS}/SATS/symbol.sats"
+//
+#staload
+D2E = "{$XATS}/SATS/dynexp2.sats"
+#staload
+T12 = "{$XATS}/SATS/trans12.sats"
 //
 (* ****** ****** *)
 
@@ -62,9 +76,23 @@ with $D2E.eq_d2var_d2var
 overload
 print with $D2E.print_d2cst
 
+overload
+.stamp with $D2E.d2cst_get_stamp
+overload
+.stamp with $D2E.d2var_get_stamp
+
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/interp0.sats"
+//
+(* ****** ****** *)
+
+#staload
+_(*TMP*) =
+"./../../xats/DATS/dynexp2_print.dats"
+
+(* ****** ****** *)
 //
 implement
 fprint_val<ir0val> = fprint_ir0val
@@ -749,7 +777,7 @@ println!
 val
 sym = $SYM.symbol_make(nam)
 val
-opt = the_dexpenv_find(sym)
+opt = $T12.the_dexpenv_find(sym)
 //
 in
 //

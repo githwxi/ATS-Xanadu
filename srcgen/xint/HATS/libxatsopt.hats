@@ -1,42 +1,15 @@
 (* ****** ****** *)
 //
 #staload
-ERR =
-"./../../xats/SATS/xerrory.sats"
-//
-(* ****** ****** *)
-//
-#staload
-LAB =
 "./../../xats/SATS/label0.sats"
 #staload
-STM =
 "./../../xats/SATS/stamp0.sats"
 #staload
-SYM =
 "./../../xats/SATS/symbol.sats"
 //
 (* ****** ****** *)
 //
 #staload
-FP0 =
-"./../../xats/SATS/filpath.sats"
-//
-  typedef
-  fpath_t = $FP0.filpath
-  macdef
-  dirbase =
-  $FP0.filpath_dirbase
-  macdef
-  fpath_make = $FP0.filpath_make
-//
-(* ****** ****** *)
-//
-#staload
-GLO =
-"./../../xats/SATS/global.sats"
-#staload
-FS0 =
 "./../../xats/SATS/filsrch.sats"
 //
 (* ****** ****** *)
@@ -48,10 +21,18 @@ FS0 =
 "./../../xats/SATS/parsing.sats"
 //
 #staload
+"./../../xats/SATS/staexp0.sats"
+#staload
+"./../../xats/SATS/dynexp0.sats"
+#staload
 "./../../xats/SATS/synread.sats"
 //
 #staload
 "./../../xats/SATS/trans01.sats"
+#staload
+"./../../xats/SATS/staexp1.sats"
+#staload
+"./../../xats/SATS/dynexp1.sats"
 #staload
 "./../../xats/SATS/t1xread.sats"
 //
@@ -71,8 +52,29 @@ FS0 =
 #staload
 "./../../xats/SATS/trans3t.sats"
 //
+(* ****** ****** *)
+//
 #staload
-"./../../xats/SATS/intrep0.sats"
+GLO =
+"./../../xats/SATS/global.sats"
+//
+#staload
+ERR =
+"./../../xats/SATS/xerrory.sats"
+//
+(* ****** ****** *)
+//
+#staload
+FP0 =
+"./../../xats/SATS/filpath.sats"
+//
+  typedef
+  fpath_t = $FP0.filpath
+  macdef
+  dirbase =
+  $FP0.filpath_dirbase
+  macdef
+  fpath_make = $FP0.filpath_make
 //
 (* ****** ****** *)
 //
@@ -80,11 +82,6 @@ FS0 =
 "./../../xats/SATS/staexp2.sats"
 #staload D2E =
 "./../../xats/SATS/dynexp2.sats"
-//
-(* ****** ****** *)
-//
-#staload IR0 =
-"./../../xats/SATS/intrep0.sats"
 //
 (* ****** ****** *)
 //
@@ -115,12 +112,6 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
 "./../../xats/DATS/dynexp3_print.dats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) =
-"./../../xats/DATS/intrep0_print.dats"
 //
 (* ****** ****** *)
 //

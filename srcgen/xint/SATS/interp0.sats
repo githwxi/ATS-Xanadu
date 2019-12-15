@@ -46,8 +46,6 @@ XATS_targetloc "./../../xats"
 LAB = "{$XATS}/SATS/label0.sats"
 #staload
 D2E = "{$XATS}/SATS/dynexp2.sats"
-#staload
-INT = "{$XATS}/SATS/intrep0.sats"
 
 (* ****** ****** *)
 
@@ -58,6 +56,10 @@ typedef label = $LAB.label
 typedef d2var = $D2E.d2var
 typedef d2con = $D2E.d2con
 typedef d2cst = $D2E.d2cst
+
+(* ****** ****** *)
+
+#staload INT = "./intrep0.sats"
 
 (* ****** ****** *)
 

@@ -80,8 +80,6 @@ FS0 = "./../SATS/filsrch.sats"
 //
 #staload "./../SATS/trans3t.sats"
 //
-#staload "./../SATS/intrep0.sats"
-//
 (* ****** ****** *)
 //
 #staload
@@ -111,12 +109,6 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
   "./../DATS/dynexp3_print.dats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) =
-  "./../DATS/intrep0_print.dats"
 //
 (* ****** ****** *)
 //
@@ -262,10 +254,6 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 //
 #dynload "./trans3t_envmap.dats"
 #dynload "./trans3t_dynexp.dats"
-//
-#dynload "./intrep0.dats"
-#dynload "./intrep0_print.dats"
-#dynload "./intrep0_dynexp.dats"
 //
 (* ****** ****** *)
 //
@@ -988,12 +976,6 @@ val () =
 (
   the_dexpenv_println((*void*))
 )
-//
-val
-irdcs = irerase_declist(d3cs)
-val () =
-println!
-("process_fpath: irdcs = ", irdcs)
 //
 } (* end of [then] *)
 else
