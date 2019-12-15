@@ -462,14 +462,16 @@ x0.node() of
   (
    fprint!(out, "D3Eaddr(", d3e1, ")")
   )
-| D3Eeval(d3e1) =>
-  (
-   fprint!(out, "D3Eeval(", d3e1, ")")
-  )
 | D3Efold(d3e1) =>
   (
    fprint!(out, "D3Efold(", d3e1, ")")
   )
+//
+| D3Eeval
+  (knd, d3e1) =>
+  fprint!
+  ( out
+  , "D3Eeval(", knd, "; ", d3e1, ")")
 //
 | D3Elazy(d3e1) =>
   (

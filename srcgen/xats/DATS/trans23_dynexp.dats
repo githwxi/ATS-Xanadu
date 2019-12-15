@@ -1248,7 +1248,8 @@ end // end of [let]
 end // end of [val]
 //
 in
-d23exp_make_node(loc0, t2p0, D3Eeval(d3e1))
+  d23exp_make_node
+  (loc0, t2p0, D3Eeval(0(*knd*), d3e1))
 end // end of [aux_eval]
 
 (* ****** ****** *)
@@ -1387,6 +1388,7 @@ d2e0.node() of
 *)
 //
 | D2Eaddr(d2e1) => aux_addr(d2e0)
+| D2Eeval(d2e1) => aux_eval(d2e0)
 | D2Efold(d2e1) => aux_fold(d2e0)
 //
 | D2Elazy(d2e1) => aux_lazy(d2e0)

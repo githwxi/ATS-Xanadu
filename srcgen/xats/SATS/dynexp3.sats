@@ -354,8 +354,10 @@ d3exp_node =
   , effs2expopt, f1unarrow, d3exp(*body*))
 //
 | D3Eaddr of d3exp(*l-value*)
-| D3Eeval of d3exp(*ptr/lazy*)
 | D3Efold of d3exp(*open-con*)
+//
+| D3Eeval of
+  (int(*kind*), d3exp)
 //
 // HX: for lazy-evaluation
 | D3Elazy of
