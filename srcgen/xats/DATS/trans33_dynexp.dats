@@ -1193,7 +1193,7 @@ d3e0.node() of
 | D3Eflat(d3e1) => aux_flat(d3e0)
 *)
 | D3Eaddr(d3e1) => aux_addr(d3e0)
-//
+| D3Eeval(_, _) => aux_eval(d3e0)
 | D3Efold(d3e1) => aux_fold(d3e0)
 //
 | D3Eanno

@@ -1096,13 +1096,57 @@ end // end of [aux_fix]
 (* ****** ****** *)
 //
 fun
+aux_eval
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+let
+//
+val-
+IR0Eeval
+(knd0, ire1) = ire0.node()
+//
+val
+irv1 = interp0_irexp(env0, ire1)
+//
+in
+//
+case- irv1 of
+|
+IR0Vlazy(r0) =>
+(
+case+ r0[] of
+//
+| IR0LVval(irv2) => irv2
+//
+| IR0LVexp(ire2) =>
+  let
+    val
+    irv2 =
+    interp0_irexp(env0, ire2)
+  in
+    r0[] := IR0LVval(irv2); irv2
+  end // end of [IR0LVexp]
+//
+)
+//
+end // end of [aux_eval]
+//
+(* ****** ****** *)
+//
+fun
 aux_lazy
 ( env0
 : !intpenv
-, ire1: ir0exp): ir0val =
-(
+, ire0: ir0exp): ir0val =
+let
+//
+val-
+IR0Elazy(ire1) = ire0.node()
+//
+in
   IR0Vlazy(ref(IR0LVexp(ire1)))
-)
+end
 //
 (* ****** ****** *)
 
@@ -1271,6 +1315,8 @@ ire0.node() of
 | IR0Efix
     (_, _, _, _) => aux_fix(env0, ire0)
   // IR0Efix
+//
+| IR0Eeval(_, _) => aux_eval(env0, ire0)
 //
 | IR0Elazy(ire1) => aux_lazy(env0, ire0)
 //
