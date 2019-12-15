@@ -421,6 +421,15 @@ d3e0.node() of
     d3exp_make_node(loc0, t2p0, D3Efold(d3e1))
   end // end of [D3Efold]
 //
+| D3Eeval
+  ( knd0, d3e1 ) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, D3Eeval(knd0, d3e1))
+  end // end of [D3Eaddr]
+//
 | D3Elazy(d3e1) =>
   let
     val d3e1 =
