@@ -1219,7 +1219,7 @@ d3e1 = trans23_dexp(d2e1)
 val t2p0 =
 let
 val t2p1 = d3e1.type()
-val t2p1 = t2ype_eval(t2p1)
+val t2p1 = hnfize(t2p1)
 in
 //
 let

@@ -330,7 +330,7 @@ x0.node() of
   (knd0, ire1) =>
   fprint!
   ( out
-  , "IR0Elazy(", knd0, "; ", ire1, ")")
+  , "IR0Eeval(", knd0, "; ", ire1, ")")
 //
 | IR0Elazy(ire1) =>
   (

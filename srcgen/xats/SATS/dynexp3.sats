@@ -357,7 +357,7 @@ d3exp_node =
 | D3Efold of d3exp(*open-con*)
 //
 | D3Eeval of
-  (int(*kind*), d3exp)
+  (int(*kind*), d3exp(*eval*))
 //
 // HX: for lazy-evaluation
 | D3Elazy of
