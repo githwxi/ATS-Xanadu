@@ -60,11 +60,9 @@ fprint with $D2E.fprint_d2con
 overload
 fprint with $D2E.fprint_d2cst
 //
-overload
-fprint with $IR0.fprint_ir0exp
-//
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/interp0.sats"
 //
 (* ****** ****** *)

@@ -67,7 +67,10 @@ overload = with $D2E.eq_d2cst_d2cst
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/interp0.sats"
+//
+(* ****** ****** *)
 //
 implement
 fprint_val<ir0val> = fprint_ir0val

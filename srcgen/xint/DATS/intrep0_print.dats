@@ -40,23 +40,13 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
-//
-#staload "./../SATS/label0.sats"
-//
-#staload "./../SATS/lexing.sats"
-//
-#staload "./../SATS/dynexp0.sats"
-//
-#staload "./../SATS/dynexp1.sats"
-//
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp2.sats"
-//
-#staload "./../SATS/dynexp3.sats"
+#include
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
+//
+#staload $S2T; #staload $S2E
+#staload $D2E; #staload $D3E
 //
 #staload "./../SATS/intrep0.sats"
 //

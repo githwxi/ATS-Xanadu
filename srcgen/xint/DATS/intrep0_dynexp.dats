@@ -39,17 +39,17 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
-#staload "./../SATS/lexing.sats"
-
+//
+#include
+"./../HATS/libxatsopt.hats"
+//
 (* ****** ****** *)
-
-#staload "./../SATS/dynexp3.sats"
-
-(* ****** ****** *)
-
+//
+#staload $S2T; #staload $S2E
+#staload $D2E; #staload $D3E
+//
 #staload "./../SATS/intrep0.sats"
-
+//
 (* ****** ****** *)
 
 local

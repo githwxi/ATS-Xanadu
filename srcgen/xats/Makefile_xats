@@ -68,7 +68,6 @@ trans23.sats \
 trans33.sats \
 t3xread.sats \
 trans3t.sats \
-intrep0.sats \
 
 SRCDATS := \
 basics.dats \
@@ -137,9 +136,6 @@ trans33_dynexp.dats \
 t3xread_dynexp.dats \
 trans3t_envmap.dats \
 trans3t_dynexp.dats \
-intrep0.dats \
-intrep0_print.dats \
-intrep0_dynexp.dats \
 
 ######
 
