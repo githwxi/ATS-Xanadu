@@ -59,6 +59,9 @@ with $D2E.eq_d2cst_d2cst
 overload =
 with $D2E.eq_d2var_d2var
 
+overload
+print with $D2E.print_d2cst
+
 (* ****** ****** *)
 //
 #staload "./../SATS/interp0.sats"
@@ -127,7 +130,7 @@ INTPENV(0, intplst_nil())
 (* ****** ****** *)
 
 fun
-intplst_make_fun
+intplst_make_fenv
 (kxs: ir0env): intplst =
 (
 auxlst
@@ -152,10 +155,10 @@ case+ kxs of
   }
 ) (* end of [auxlst] *)
 //
-} (* end of [intplst_make_env] *)
+} (* end of [intplst_make_fenv] *)
 
 fun
-intplst_take_env
+intplst_take_fenv
 (env: !intplst): ir0env =
 (
 list_vt2t
@@ -191,18 +194,19 @@ case+ env of
 (* ****** ****** *)
 
 implement
-intpenv_make_fun(kxs) =
+intpenv_make_fenv
+  (kxs) =
 INTPENV
 (
 1(*level*)
 ,
-intplst_make_fun(kxs)
+intplst_make_fenv(kxs)
 )
 //
 implement
-intpenv_take_env(env) =
+intpenv_take_fenv(env) =
 (
-  intplst_take_env(xs)
+  intplst_take_fenv(xs)
 ) where
 {
   val+INTPENV(l0, xs) = env
@@ -339,7 +343,7 @@ val+~INTPENV(l0, xs) = env0
 (* ****** ****** *)
 //
 implement
-intpenv_free_fun
+intpenv_free_fenv
   (env) =
 ( auxlst(xs) ) where
 {
@@ -357,7 +361,7 @@ case- xs of
 //
 val+~INTPENV(l0, xs) = env
 //
-} (* end of [intpenv_free_fun] *)
+} (* end of [intpenv_free_fenv] *)
 //
 (* ****** ****** *)
 
@@ -598,6 +602,16 @@ implement
 the_d2cstdef_insert
   (k0, x0) =
 {
+//
+(*
+val () =
+println!
+("the_d2cstdef_insert: k0 = ", k0)
+val () =
+println!
+("the_d2cstdef_insert: x0 = ", x0)
+*)
+//
 val-
 ~None_vt() =
 hashtbl_insert<key,itm>(the_d2cstdef_map, k0, x0)
