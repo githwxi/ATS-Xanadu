@@ -1,4 +1,8 @@
 
+val x = $lazy(0)
+
+////
+
 #extern
 fun
 foo1:

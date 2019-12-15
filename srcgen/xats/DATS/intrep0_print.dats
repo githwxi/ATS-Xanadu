@@ -322,6 +322,11 @@ x0.node() of
     fprint!(out, "IR0Eaddr(", ire1, ")")
   )
 //
+| IR0Elazy(ire1) =>
+  (
+    fprint!(out, "IR0Elazy(", ire1, ")")
+  )
+//
 | IR0Eflat(ire1) =>
   (
     fprint!(out, "IR0Eflat(", ire1, ")")

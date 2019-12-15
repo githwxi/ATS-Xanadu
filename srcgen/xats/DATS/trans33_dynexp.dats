@@ -1017,6 +1017,27 @@ end // end of [aux_fold]
 (* ****** ****** *)
 
 fun
+aux_lazy
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Elazy(d3e1) = d3e0.node()
+//
+val d3e1 = trans33_dexp(d3e1)
+//
+val t2p0 =
+t2ype_app1(the_t2ype_lazy, d3e1.type())
+//
+in
+d33exp_make_node(loc0, t2p0, D3Elazy(d3e1))
+end // end of [aux_lazy]
+
+(* ****** ****** *)
+
+fun
 aux_anno
 ( d3e0
 : d3exp): d3exp = let
