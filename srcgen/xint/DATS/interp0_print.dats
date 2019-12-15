@@ -127,6 +127,9 @@ case+ x0 of
   (fenv, d2v0, iras, ire1, ires) =>
   fprint!(out, "IR0Vfixs(", "...", ")")
 //
+| IR0Vlazy(irlz) =>
+  fprint!(out, "IR0Vlazy(", "...", ")")
+//
 | IR0Vnone0() =>
   fprint!(out, "IR0Vnone0(", ")")
 | IR0Vnone1(ire1) =>
@@ -137,27 +140,26 @@ case+ x0 of
 (* ****** ****** *)
 //
 implement
-print_ir0lval(x0) = 
-fprint_ir0lval(stdout_ref, x0)
+print_ir0lftval(x0) = 
+fprint_ir0lftval(stdout_ref, x0)
 implement
-prerr_ir0lval(x0) = 
-fprint_ir0lval(stderr_ref, x0)
+prerr_ir0lftval(x0) = 
+fprint_ir0lftval(stderr_ref, x0)
 //
 implement
-fprint_ir0lval
+fprint_ir0lftval
   (out, x0) =
 (
 case+ x0 of
 | IR0LVref(r0) =>
   fprint!
-  ( out
-  , "IR0LVref(", ref_get_ptr(r0), ")")
+  (out, "IR0LVref(", ref_get_ptr(r0), ")")
 | IR0LVproj
   (x1, lab, idx) =>
   fprint!
   ( out
   , "IR0LVproj(", x1, "; ", lab, "; ", idx, "; ")
-) (* end of [fprint_ir0lval] *)
+) (* end of [fprint_ir0lftval] *)
 //
 (* ****** ****** *)
 

@@ -109,10 +109,10 @@ ir0val =
 | IR0Vcst of d2cst
 *)
 //
-| IR0Vlft of ir0lval
+| IR0Vlft of ir0lftval
 //
 | IR0Vcon of
-  (d2con, ir0valist)
+    (d2con, ir0valist)
 //
 | IR0Vfun of ir0valfun
 //
@@ -130,13 +130,20 @@ ir0val =
 | IR0Vfixs of
   (ir0env, d2var, ir0arglst, ir0exp, ir0explst)
 //
+| IR0Vlazy of ref(ir0lazval)
+//
 | IR0Vnone0 of () | IR0Vnone1 of (ir0exp)
 //
 and
-ir0lval =
+ir0lftval =
 | IR0LVref of ref(ir0valopt)
 | IR0LVproj of
-  (ir0lval, label, int(*index*))
+  (ir0lftval, label, int(*index*))
+//
+and
+ir0lazval =
+| IR0LVval of ir0val(* value *)
+| IR0LVexp of ir0exp(* thunk *)
 //
 where
 //
@@ -162,15 +169,15 @@ overload fprint with fprint_ir0val
 (* ****** ****** *)
 //
 fun
-print_ir0lval: print_type ir0lval
+print_ir0lftval(ir0lftval): void
 fun
-prerr_ir0lval: prerr_type ir0lval
-overload print with print_ir0lval
-overload prerr with prerr_ir0lval
+prerr_ir0lftval(ir0lftval): void
+fun
+fprint_ir0lftval: fprint_type ir0lftval
 //
-fun
-fprint_ir0lval: fprint_type ir0lval
-overload fprint with fprint_ir0lval
+overload print with print_ir0lftval
+overload prerr with prerr_ir0lftval
+overload fprint with fprint_ir0lftval
 //
 (* ****** ****** *)
 

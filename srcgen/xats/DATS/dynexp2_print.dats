@@ -478,15 +478,24 @@ case- x0.node() of
   , fid, "; ", f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
-| D2Eaddr(d2e1) =>
-  fprint!(out, "D2Eaddr(", d2e1, ")")
 (*
 | D2Eflat(d2e1) =>
   fprint!(out, "D2Eflat(", d2e1, ")")
 *)
 //
+| D2Eaddr(d2e1) =>
+  fprint!(out, "D2Eaddr(", d2e1, ")")
+| D2Eeval(d2e1) =>
+  fprint!(out, "D2Eeval(", d2e1, ")")
 | D2Efold(d2e1) =>
   fprint!(out, "D2Efold(", d2e1, ")")
+//
+| D2Elazy(d2e1) =>
+  fprint!
+  (out, "D2Elazy(", d2e1, ")")
+| D2Ellazy(d2e1, opt2) =>
+  fprint!
+  (out, "D2Ellazy(", d2e1, "; ", opt2, ")")
 //
 | D2Eanno(d2e1, s2e2) =>
   fprint!

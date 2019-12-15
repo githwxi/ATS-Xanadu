@@ -173,6 +173,13 @@ val
 the_t2ype_string: t2ype
 //
 (* ****** ****** *)
+
+val
+the_t2ype_lazy: t2ype
+val
+the_t2ype_llazy: t2ype
+
+(* ****** ****** *)
 //
 fun
 print_t2ype: print_type(t2ype)
@@ -328,6 +335,19 @@ t2ype_tyrec
 ( s2t0: sort2
 , knd1: tyrec
 , npf2: int, ltps: labt2ypelst): t2ype
+//
+(* ****** ****** *)
+//
+fun
+t2ype_un_p2tr
+(t2p0: t2ype): Option_vt(t2ype)
+//
+fun
+t2ype_un_lazy
+(t2p0: t2ype): Option_vt(t2ype)
+fun
+t2ype_un_llazy
+(t2p0: t2ype): Option_vt(t2ype)
 //
 (* ****** ****** *)
 //
