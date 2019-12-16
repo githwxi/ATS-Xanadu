@@ -1,5 +1,47 @@
+#symload
+nil with list_nil
+#symload
+cons with list_cons
 
-val x = $lazy(0)
+val xs =
+cons(1, cons(2, nil()))
+
+////
+
+#extern
+fun
+<xs:type>
+<x0:type>
+<r0:type>
+g_foldl
+( xs: xs
+, r0: r0
+, f0: (r0, x0) -<cref> r0): r0
+
+impltmp
+{x0:type
+,r0:type}
+g_foldl<list(x0)><x0><r0>(xs, r0, f0) =
+(
+loop(xs, r0)
+) where
+{
+fun
+loop(xs, r0) =
+(
+case+ xs of
+| list_nil
+  () => r0
+| list_cons
+  (x0, xs) => loop(xs, f0(r0, x0))
+)
+}
+
+val xs =
+cons(1, cons(2, nil()))
+
+val res =
+g_foldl(xs, 0, lam(r0, x0) =<cref> x0 + r0)
 
 ////
 
@@ -111,43 +153,6 @@ g_mul<int>(r, i) = r * (i+1)
 
 ////
 val () = let val () = () in end
-
-////
-
-#extern
-fun
-<xs:type>
-<x0:type>
-<r0:type>
-g_foldl
-( xs: xs
-, r0: r0
-, f0: (r0, x0) -<cref> r0): r0
-
-impltmp
-{x0:type
-,r0:type}
-g_foldl<list(x0)><x0><r0>(xs, r0, f0) =
-(
-loop(xs, r0)
-) where
-{
-fun
-loop(xs, r0) =
-(
-case+ xs of
-| list_nil
-  () => r0
-| list_cons
-  (x0, xs) => loop(xs, f0(r0, x0))
-)
-}
-
-val xs =
-cons(1, cons(2, nil()))
-
-val res =
-g_foldl(xs, 0, lam(r0, x0) =<cref> x0 + r0)
 
 ////
 

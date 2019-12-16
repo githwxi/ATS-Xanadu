@@ -227,6 +227,7 @@ d3e0.node() of
 | D3Econ1 _ => ()
 | D3Ecst1 _ => ()
 //
+| D3Efcst _ => ()
 | D3Etcst _ => ()
 //
 | D3Esap1

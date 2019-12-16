@@ -17,7 +17,7 @@ is now regarded as the predecessor of ATS.
 ATS is stratified. In ATS, there are both a static component (statics)
 and a dynamic component (dynamics), containing static terms and dynamic
 terms, respectively. In the following presentation, I may also use 'term'
-and 'expression' exchangeably.
+and 'expression' interchangeably.
 
 While types are static terms, not all the static terms are types.
 And sorts are introduced to classify static terms. For instance, some
