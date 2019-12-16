@@ -33,10 +33,6 @@
 //
 (* ****** ****** *)
 //
-// HX-2019-11-02: level-1 interpreter
-//
-(* ****** ****** *)
-//
 %{^
 //
 extern
@@ -79,7 +75,6 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
-#staload "./../SATS/intrep0.sats"
 (* #staload "./../SATS/trans01.sats" *)
 
 
@@ -99,33 +94,15 @@ UN = "prelude/SATS/unsafe.sats"
 #staload _ = "./staexp2.dats"
 #staload _ = "./dynexp2.dats"
 #staload _ = "./dynexp3.dats"
-#staload _ = "./intrep0.dats"
 
 #staload _ = "./json.dats"
+
+#staload "./../SATS/jsonize0.sats"
+
 
 implement jsonize_val<d0ecl> = jsonize_d0ecl
 implement jsonize_val<d1ecl> = jsonize_d1ecl
 implement jsonize_val<d2ecl> = jsonize_d2ecl
-
-
-(* #dynload "./json.dats" *)
-(* #dynload "./basics.dats" *)
-(* #dynload "./stamp0.dats" *)
-(* #dynload "./symbol.dats" *)
-(* #dynload "./label0.dats" *)
-(* #dynload "./locinfo.dats" *)
-(* #dynload "./lexing_token.dats" *)
-(* #dynload "./staexp0.dats" *)
-(* #dynload "./dynexp0.dats" *)
-(* #dynload "./staexp1.dats" *)
-(* #dynload "./dynexp1.dats" *)
-(* #dynload "./statyp2.dats" *)
-(* #dynload "./staexp2.dats" *)
-(* #dynload "./dynexp2.dats" *)
-(* #dynload "./dynexp3.dats" *)
-(* #dynload "./intrep0.dats" *)
-
-#staload "./../SATS/interp0.sats"
 //
 
 (* ****** ****** *)
@@ -806,7 +783,7 @@ val () = println!("\n\n", "JSONIZED", "\n\n")
 val json = jsonize_list<d2ecl>(d2cs)
 val () = fprint_jsonval(stdout_ref, json)
 val () = println!()
-(*
+
 (*
 val () =
 println!
@@ -817,6 +794,15 @@ val () = t2xread_main(d2cs)
 //
 val
 d3cs = trans23_declist(d2cs)
+
+
+
+val () = println!("\n\n", "JSONIZED", "\n\n")
+val json = jsonize_list<d3ecl>(d3cs)
+val () = fprint_jsonval(stdout_ref, json)
+val () = println!()
+
+
 (*
 val () =
 println!
@@ -833,6 +819,13 @@ val () = t3xread_main(d3cs)
 //
 val
 d3cs = trans3t_program(d3cs)
+
+val () = println!("\n\n", "JSONIZED", "\n\n")
+val json = jsonize_list<d3ecl>(d3cs)
+val () = fprint_jsonval(stdout_ref, json)
+val () = println!()
+
+(*
 (*
 val () =
 println!
@@ -871,17 +864,6 @@ println!
 ("process_fpath: irdcls = ", irdcls)
 *)
 //
-(* val () = *)
-(* interp0_program(irdcls) *)
-
-(* val () = println!("process_fpath: jsonized d2varmap = ") *)
-(* val xys = interp0_jsonize_d2varmap() *)
-(* val () = fprint_jsonval(stdout_ref, xys) *)
-
-(* val () = fprint_newline(stdout_ref) *)
-
-(* val () = *)
-(* interp0_fprint_d2varmap(stdout_ref) *)
 *)
 
 
@@ -1291,7 +1273,7 @@ end // end of [process_cmdline2]
 in (* in-of-local *)
 
 implement
-interp0_main0
+jsonize0_main0
   (argc, argv) = let
 //
 val
@@ -1347,4 +1329,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xint_interp0.dats] *)
+(* end of [jsonize0.dats] *)

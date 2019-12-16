@@ -58,8 +58,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/interp0.sats"
+#staload "./../SATS/jsonize0.sats"
 (* #staload "./../SATS/trans01.sats" *)
 
 (* #staload _ = "./json.dats" *)
@@ -78,7 +77,6 @@ UN = "prelude/SATS/unsafe.sats"
 (* #staload _ = "./staexp2.dats" *)
 (* #staload _ = "./dynexp2.dats" *)
 (* #staload _ = "./dynexp3.dats" *)
-(* #staload _ = "./intrep0.dats" *)
 
 #ifdef
 _LIBXJSONIZE_
@@ -107,8 +105,7 @@ ATS_DYNLOADNAME "libxjsonize_dynloadall"
 #dynload "./staexp2.dats"
 #dynload "./dynexp2.dats"
 #dynload "./dynexp3.dats"
-#dynload "./intrep0.dats"
-#dynload "./interp0.dats"
+#dynload "./jsonize0.dats"
 //
 (* ****** ****** *)
 //
@@ -122,8 +119,8 @@ main0(argc, argv) =
 //
 if
 (argc >= 2)
-then interp0_main0(argc, argv)
-else prerrln! ("Hello from ATS3(xinterp)!")
+then jsonize0_main0(argc, argv)
+else prerrln! ("Hello from ATS3(xjsonize)!")
 // end of [if]
 ) (* end of [main] *)
 #endif // ifdef(_LIBXJSONIZE_)

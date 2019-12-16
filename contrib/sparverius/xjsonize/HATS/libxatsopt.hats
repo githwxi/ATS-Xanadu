@@ -72,9 +72,6 @@ FS0 =
 #staload
 "./../../../../srcgen/xats/SATS/trans3t.sats"
 //
-#staload
-"./../../../../srcgen/xats/SATS/intrep0.sats"
-//
 (* ****** ****** *)
 //
 #staload S2E =
@@ -84,16 +81,6 @@ FS0 =
 //
 (* ****** ****** *)
 //
-#staload IR0 =
-"./../../../../srcgen/xats/SATS/intrep0.sats"
-//
-(* ****** ****** *)
-//
-(*
-#staload
-_(*TMP*) =
-"./../../../../srcgen/xats/DATS/json.dats"
-*)
 #staload
 _(*TMP*) =
 "./../../../../srcgen/xats/DATS/staexp0_print.dats"
@@ -121,12 +108,6 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
 "./../../../../srcgen/xats/DATS/dynexp3_print.dats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) =
-"./../../../../srcgen/xats/DATS/intrep0_print.dats"
 //
 (* ****** ****** *)
 //

@@ -49,8 +49,7 @@ staexp2.sats \
 dynexp2.sats \
 dynexp3.sats \
 fixity.sats \
-intrep0.sats \
-interp0.sats \
+jsonize0.sats \
 
 SRCDATS := \
 json.dats \
@@ -69,16 +68,7 @@ statyp2.dats \
 staexp2.dats \
 dynexp2.dats \
 dynexp3.dats \
-intrep0.dats \
-interp0.dats \
-
-# SRCSATS := \
-# interp0.sats
-# SRCDATS := \
-# interp0.dats \
-# interp0_print.dats \
-# interp0_envmap.dats \
-# interp0_dynexp.dats \
+jsonize0.dats \
 
 ######
 
