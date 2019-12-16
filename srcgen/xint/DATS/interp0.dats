@@ -62,8 +62,14 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/interp0.sats"
 //
+(* ****** ****** *)
+
+#staload
+_(*TMP*) = "./intrep0_print.dats"
+
 (* ****** ****** *)
 //
 #staload

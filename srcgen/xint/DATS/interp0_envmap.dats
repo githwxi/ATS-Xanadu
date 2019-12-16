@@ -49,8 +49,22 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#include
-"./../HATS/libxatsopt.hats"
+#define
+XATS_targetloc "./../../xats"
+
+(* ****** ****** *)
+//
+#staload
+LAB = "{$XATS}/SATS/label0.sats"
+#staload
+STM = "{$XATS}/SATS/stamp0.sats"
+#staload
+SYM = "{$XATS}/SATS/symbol.sats"
+//
+#staload
+D2E = "{$XATS}/SATS/dynexp2.sats"
+#staload
+T12 = "{$XATS}/SATS/trans12.sats"
 //
 (* ****** ****** *)
 
@@ -59,9 +73,26 @@ with $D2E.eq_d2cst_d2cst
 overload =
 with $D2E.eq_d2var_d2var
 
+overload
+print with $D2E.print_d2cst
+
+overload
+.stamp with $D2E.d2cst_get_stamp
+overload
+.stamp with $D2E.d2var_get_stamp
+
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/interp0.sats"
+//
+(* ****** ****** *)
+
+#staload
+_(*TMP*) =
+"./../../xats/DATS/dynexp2_print.dats"
+
+(* ****** ****** *)
 //
 implement
 fprint_val<ir0val> = fprint_ir0val
@@ -127,7 +158,7 @@ INTPENV(0, intplst_nil())
 (* ****** ****** *)
 
 fun
-intplst_make_fun
+intplst_make_fenv
 (kxs: ir0env): intplst =
 (
 auxlst
@@ -152,10 +183,10 @@ case+ kxs of
   }
 ) (* end of [auxlst] *)
 //
-} (* end of [intplst_make_env] *)
+} (* end of [intplst_make_fenv] *)
 
 fun
-intplst_take_env
+intplst_take_fenv
 (env: !intplst): ir0env =
 (
 list_vt2t
@@ -191,18 +222,19 @@ case+ env of
 (* ****** ****** *)
 
 implement
-intpenv_make_fun(kxs) =
+intpenv_make_fenv
+  (kxs) =
 INTPENV
 (
 1(*level*)
 ,
-intplst_make_fun(kxs)
+intplst_make_fenv(kxs)
 )
 //
 implement
-intpenv_take_env(env) =
+intpenv_take_fenv(env) =
 (
-  intplst_take_env(xs)
+  intplst_take_fenv(xs)
 ) where
 {
   val+INTPENV(l0, xs) = env
@@ -339,7 +371,7 @@ val+~INTPENV(l0, xs) = env0
 (* ****** ****** *)
 //
 implement
-intpenv_free_fun
+intpenv_free_fenv
   (env) =
 ( auxlst(xs) ) where
 {
@@ -357,7 +389,7 @@ case- xs of
 //
 val+~INTPENV(l0, xs) = env
 //
-} (* end of [intpenv_free_fun] *)
+} (* end of [intpenv_free_fenv] *)
 //
 (* ****** ****** *)
 
@@ -598,6 +630,16 @@ implement
 the_d2cstdef_insert
   (k0, x0) =
 {
+//
+(*
+val () =
+println!
+("the_d2cstdef_insert: k0 = ", k0)
+val () =
+println!
+("the_d2cstdef_insert: x0 = ", x0)
+*)
+//
 val-
 ~None_vt() =
 hashtbl_insert<key,itm>(the_d2cstdef_map, k0, x0)
@@ -735,7 +777,7 @@ println!
 val
 sym = $SYM.symbol_make(nam)
 val
-opt = the_dexpenv_find(sym)
+opt = $T12.the_dexpenv_find(sym)
 //
 in
 //

@@ -67,7 +67,10 @@ overload = with $D2E.eq_d2cst_d2cst
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/interp0.sats"
+//
+(* ****** ****** *)
 //
 implement
 fprint_val<ir0val> = fprint_ir0val
@@ -180,10 +183,10 @@ val
 opt =
 interp0_search_d2var(env0, d2v)
 //
-// (*
+(*
 val () =
 println!("auxvar: d2v = ", d2v)
-// *)
+*)
 //
 in
 case- opt of ~Some_vt(irv) => irv
@@ -462,7 +465,7 @@ let
 //
 val
 fenv =
-intpenv_take_env(env0)
+intpenv_take_fenv(env0)
 //
 val-
 list_cons(irfd0, xs) = irfds
@@ -498,7 +501,7 @@ list_cons _ =>
 let
 val
 fenv =
-intpenv_take_env(env0)
+intpenv_take_fenv(env0)
 in
   IR0Vlam(fenv, iras, body)
 end
@@ -1065,7 +1068,7 @@ in
 ) where
 {
   val
-  fenv = intpenv_take_env(env0)
+  fenv = intpenv_take_fenv(env0)
 }
 end // end of [aux_lam]
 
@@ -1089,7 +1092,7 @@ IR0Vfix
 ) where
 {
   val
-  fenv = intpenv_take_env(env0)
+  fenv = intpenv_take_fenv(env0)
 }
 end // end of [aux_fix]
 
@@ -1119,13 +1122,18 @@ case+ r0[] of
 //
 | IR0LVval(irv2) => irv2
 //
-| IR0LVexp(ire2) =>
+| IR0LVexp(fenv, ire2) =>
   let
+    val env0 =
+    intpenv_make_fenv(fenv)
     val
     irv2 =
     interp0_irexp(env0, ire2)
   in
-    r0[] := IR0LVval(irv2); irv2
+    r0[] := IR0LVval(irv2);
+    let
+    val () = intpenv_free_fenv(env0) in irv2
+    end
   end // end of [IR0LVexp]
 //
 )
@@ -1144,8 +1152,11 @@ let
 val-
 IR0Elazy(ire1) = ire0.node()
 //
+val
+fenv = intpenv_take_fenv(env0)
+//
 in
-  IR0Vlazy(ref(IR0LVexp(ire1)))
+  IR0Vlazy(ref(IR0LVexp(fenv, ire1)))
 end
 //
 (* ****** ****** *)
@@ -1259,11 +1270,11 @@ interp0_irexp
   (env0, ire0) =
 let
 //
-// (*
+(*
 val () =
 println!
 ("interp0_irexp: ire0 = ", ire0)
-// *)
+*)
 //
 in
 //
@@ -1393,7 +1404,7 @@ IR0Vlam
 ( fenv
 , iras, body) = irf0
 val env0 =
-intpenv_make_fun(fenv)
+intpenv_make_fenv(fenv)
 in
 let
   val-
@@ -1417,12 +1428,12 @@ let
     ) where
     {
       val
-      fenv = intpenv_take_env(env0)
+      fenv = intpenv_take_fenv(env0)
     }
   ) : ir0val // end of [val]
 in
   let
-  val () = intpenv_free_fun(env0) in irv0
+  val () = intpenv_free_fenv(env0) in irv0
   end
 end // end of [let]
 //
@@ -1440,7 +1451,7 @@ IR0Vfix
 , d2v0
 , iras, body) = irf0
 val env0 =
-intpenv_make_fun(fenv)
+intpenv_make_fenv(fenv)
 val ((*void*)) =
 intpenv_bind_fix(env0, irf0)
 in
@@ -1466,12 +1477,12 @@ let
     ) where
     {
       val
-      fenv = intpenv_take_env(env0)
+      fenv = intpenv_take_fenv(env0)
     }
   ) : ir0val // end of [val]
 in
   let
-  val () = intpenv_free_fun(env0) in irv0
+  val () = intpenv_free_fenv(env0) in irv0
   end
 end // end of [let]
 //
@@ -1491,7 +1502,7 @@ IR0Vfixs
 , body, irdfs) = irf0
 //
 val env0 =
-intpenv_make_fun(fenv)
+intpenv_make_fenv(fenv)
 val ((*void*)) =
 intpenv_bind_fixs(env0, irf0)
 //
@@ -1518,12 +1529,12 @@ let
     ) where
     {
       val
-      fenv = intpenv_take_env(env0)
+      fenv = intpenv_take_fenv(env0)
     }
   ) : ir0val // end of [val]
 in
   let
-  val () = intpenv_free_fun(env0) in irv0
+  val () = intpenv_free_fenv(env0) in irv0
   end
 end // end of [let]
 //
@@ -2157,7 +2168,7 @@ IR0Elam
 (knd, iras, body) =>
 let
 val fenv =
-intpenv_take_env(env0)
+intpenv_take_fenv(env0)
 in
 IR0Vfix(fenv, nam, iras, body)
 end // end of [IR0Elam]
@@ -2195,7 +2206,7 @@ end
 list_cons _ =>
 let
 val fenv =
-intpenv_take_env(env0)
+intpenv_take_fenv(env0)
 val irv0 =
 IR0Vfix(fenv, nam, iras, body)
 in
@@ -2425,7 +2436,7 @@ case+ xs of
   let
 //
   val fenv =
-  intpenv_take_env(env0)
+  intpenv_take_fenv(env0)
 //
   val irdfs = auxfixs(irfds)
 //
@@ -2464,7 +2475,7 @@ list_nil() =>
 let
 //
 val fenv =
-intpenv_take_env(env0)
+intpenv_take_fenv(env0)
 val d2c0 =
 (
 case+ id2c of

@@ -315,7 +315,9 @@ println!
 //
 in
 //
-if test then d3p0 else d3pat_cast(d3p0, t2p0)
+if
+test
+then d3p0 else d3pat_tcast(d3p0, t2p0)
 //
 end // end of [d3pat_dn]
 

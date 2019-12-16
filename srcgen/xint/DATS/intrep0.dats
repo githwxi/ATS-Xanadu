@@ -32,19 +32,13 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload
-"./../SATS/locinfo.sats"
-
+//
+#include
+"./../HATS/libxatsopt.hats"
+//
 (* ****** ****** *)
 
-#staload
-"./../SATS/dynexp3.sats"
-
-(* ****** ****** *)
-
-#staload
-"./../SATS/intrep0.sats"
+#staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
 
