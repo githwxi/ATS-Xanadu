@@ -131,7 +131,7 @@ d3p0.node() of
     (loc0, ": T3XERR(d3pat): D3Psym0: dpis = ", dpis);
   end
 //
-| D3Pcast(d3p1, t2p2) =>
+| D3Ptcast(d3p1, t2p2) =>
   let
 //
     val
@@ -145,12 +145,11 @@ d3p0.node() of
   in
 //
     println!
-    (loc0, ": T3XERR(d3pat): D3Pcast: d3p1 = ", d3p1);
-//
+    (loc0, ": T3XERR(d3pat): D3Ptcast: d3p1 = ", d3p1);
     println!
-    (loc0, ": T3XERR(d3pat): D3Pcast: t2p1 = ", t2p1);
+    (loc0, ": T3XERR(d3pat): D3Ptcast: t2p1 = ", t2p1);
     println!
-    (loc0, ": T3XERR(d3pat): D3Pcast: t2p2 = ", t2p2);
+    (loc0, ": T3XERR(d3pat): D3Ptcast: t2p2 = ", t2p2);
 //
   end
 //
@@ -310,13 +309,22 @@ d3e0.node() of
 //
 | D3Eaddr(d3e1) =>
   {
-    val () =
-    t3xread_d3exp<>(d3e1)
+    val () = t3xread_d3exp<>(d3e1)
   }
 | D3Efold(d3e1) =>
   {
-    val () =
-    t3xread_d3exp<>(d3e1)
+    val () = t3xread_d3exp<>(d3e1)
+  }
+//
+| D3Eeval
+  ( knd0, d3e1 ) =>
+  {
+    val () = t3xread_d3exp<>(d3e1)
+  }
+//
+| D3Elazy(d3e1) =>
+  {
+    val () = t3xread_d3exp<>(d3e1)
   }
 //
 | D3Elcast(d3e1, lab2) =>

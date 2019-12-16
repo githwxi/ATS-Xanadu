@@ -23,7 +23,7 @@ two-layered approach to type-checking was taken: ML-like type-checking
 first and dependent type-checking second.  This approach was later
 abandoned in the design of ATS. Instead, there is only dependent
 type-checking in ATS1 and ATS2. In ATS3, DML's two-layered approach is
-to adopted. In particular, a program in ATS3 that passes ML-like
+to be adopted. In particular, a program in ATS3 that passes ML-like
 type-checking can be compiled and executed. So one can skip dependent
 type-checking in ATS3 if one so chooses. In this way, the learning
 curve is expected to be greatly leveled. But there is much more than

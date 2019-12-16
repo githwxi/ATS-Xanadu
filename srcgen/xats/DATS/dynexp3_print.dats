@@ -231,9 +231,9 @@ case- x0.node() of
   fprint!
   (out, "D3Panno(", d3p1, "; ", s2e2, ")")
 //
-| D3Pcast(d3p1, t2p2) =>
+| D3Ptcast(d3p1, t2p2) =>
   fprint!
-  (out, "D3Pcast(", d3p1, "; ", t2p2, ")")
+  (out, "D3Ptcast(", d3p1, "; ", t2p2, ")")
 //
 | D3Pnone0() => fprint!(out, "D3Pnone0(", ")")
 | D3Pnone1(d1psrc) => fprint!(out, "D3Pnone1(", d1psrc, ")")

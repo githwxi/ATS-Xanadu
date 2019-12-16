@@ -118,7 +118,7 @@ d3pat_node =
 //
 | D3Panno of (d3pat, s2exp) // no s2xtv in anno
 //
-| D3Pcast of (d3pat, t2ype) // HX: error indication?
+| D3Ptcast of (d3pat, t2ype) // HX: error indication?
 //
 | D3Pnone0 of ()
 | D3Pnone1 of (d2pat) | D3Pnone2 of (d3pat)
@@ -199,7 +199,7 @@ d3pat_anno
 (* ****** ****** *)
 //
 fun
-d3pat_cast
+d3pat_tcast
 (d3p0: d3pat, t2p0: t2ype): d3pat
 //
 (* ****** ****** *)
