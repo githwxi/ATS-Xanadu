@@ -68,15 +68,16 @@ case+ s2t0 of
 | S2Tfun() =>
   jsonify("S2Tfun")
 | S2Tfun(s2ts, s2t1) =>
-  jsonify("S2fun",
+  jsonify("S2Tfun",
     ("s2ts", "s2t1"),
     (
       jsonize_list<sort2>(s2ts),
       jsonize(s2t1)
     )
   )
+  (* where val _ = $showtype(s2t1) end *)
 | S2Tapp(s2t1, s2ts) =>
-  jsonify("S2app",
+  jsonify("S2Tapp",
     ("s2t1", "s2ts"),
     (
       jsonize(s2t1),
@@ -295,9 +296,10 @@ s2e0.node() of
   jsonify("S2Estr", "s0", jsonize(s0))
 //
 | S2Ecst(s2c) =>
-  jsonify("S2Ecst", "s2c", jsonize(s2c.sort())) // s2c
+  jsonify("S2Ecst", "s2c", jsonize(s2c)) //jsonize(s2c.sort())) // s2c
+  (* where val _ = $showtype(s2c) end *)
 | S2Evar(s2v) =>
-  jsonify("S2Evar", "s2v", jsonize(s2v.sort()))
+  jsonify("S2Evar", "s2v", jsonize(s2v))
 //
 | S2Extv(xtv) =>
   let
