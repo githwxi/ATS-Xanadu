@@ -137,31 +137,37 @@ D3Etcst
 , ti3a
 , ti2s) = d3e0.node()
 //
+(*
 val () =
 println!
 ("auxtcst: d2c0 = ", d2c0)
+*)
 //
 val-
 TI3ARGsome(targ) = ti3a
 //
+(*
 val () =
 println!
 ("auxtcst: ti3a = ", ti3a)
 val () =
 println!
 ("auxtcst: targ = ", targ)
+*)
 //
 local
 //
 val s2vs = env0.s2vs()
 val t2ps = env0.t2ps()
 //
+(*
 val () =
 println!
 ("auxtcst: s2vs = ", s2vs)
 val () =
 println!
 ("auxtcst: t2ps = ", t2ps)
+*)
 //
 in
 val
@@ -172,9 +178,11 @@ targ =
 t2ypelst_substs(targ, s2vs, t2ps)
 end
 //
+(*
 val () =
 println!
 ("auxtcst: targ(1) = ", targ)
+*)
 //
 val d3e0 =
 d3exp_make_node
@@ -222,12 +230,14 @@ trans3t_dexp
 val loc0 = d3e0.loc()
 val t2p0 = d3e0.type()
 //
+(*
 val () =
 println!
 ("trans3t_dexp: d3e0 = ", d3e0)
 val () =
 println!
 ("trans3t_dexp: t2p0 = ", t2p0)
+*)
 //
 in
 //

@@ -467,15 +467,15 @@ optn_vt_i0_vx
 (*
 #symload nil with optn_nil
 #symload cons with optn_cons
-#symload nil with optn_vt_nil
-#symload cons with optn_vt_cons
+#symload nil_vt with optn_vt_nil
+#symload cons_vt with optn_vt_cons
 *)
-//
+(*
 #symload none with optn_nil
 #symload some with optn_cons
-//
 #symload none_vt with optn_vt_nil
 #symload some_vt with optn_vt_cons
+*)
 //
 (* ****** ****** *)
 //
@@ -534,15 +534,9 @@ list_vt_i0_vx
 (*
 #symload nil with list_nil
 #symload cons with list_cons
-#symload nil with list_vt_nil
-#symload cons with list_vt_cons
-*)
-//
-#symload nil with list_nil
-#symload cons with list_cons
-//
 #symload nil_vt with list_vt_nil
 #symload cons_vt with list_vt_cons
+*)
 //
 (* ****** ****** *)
 //
@@ -706,6 +700,15 @@ strmcon_vt(a:vtype+) =
 where
 vtypedef
 stream_vt(a:vtype) = lazy_vt(strmcon_vt(a))
+//
+(* ****** ****** *)
+//
+(*
+#symload nil with strmcon_nil
+#symload cons with strmcon_cons
+#symload nil_vt with strmcon_vt_nil
+#symload cons_vt with strmcon_vt_cons
+*)
 //
 (* ****** ****** *)
 //
