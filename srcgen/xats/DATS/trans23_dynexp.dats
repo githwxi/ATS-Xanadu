@@ -1325,11 +1325,11 @@ trans23_dexp
 val
 loc0 = d2e0.loc()
 //
-// (*
+(*
 val () =
 println!
 ("trans23_dexp: d2e0 = ", d2e0)
-// *)
+*)
 //
 in
 //
