@@ -1,0 +1,36 @@
+BUILD/json_sats.o : 
+BUILD/basics_sats.o : SATS/json.sats
+BUILD/stamp0_sats.o : SATS/json.sats
+BUILD/symbol_sats.o : SATS/json.sats
+BUILD/label0_sats.o : SATS/json.sats
+BUILD/locinfo_sats.o : SATS/json.sats
+BUILD/lexing_sats.o : SATS/json.sats
+BUILD/filpath_sats.o : SATS/json.sats
+BUILD/dynexp0_sats.o : SATS/json.sats
+BUILD/staexp0_sats.o : SATS/json.sats
+BUILD/dynexp1_sats.o : SATS/json.sats
+BUILD/staexp1_sats.o : SATS/json.sats
+BUILD/statyp2_sats.o : SATS/json.sats
+BUILD/staexp2_sats.o : SATS/json.sats
+BUILD/dynexp2_sats.o : SATS/json.sats
+BUILD/dynexp3_sats.o : SATS/json.sats
+BUILD/fixity_sats.o : SATS/json.sats
+BUILD/jsonize0_sats.o : 
+BUILD/json_dats.o : SATS/json.sats
+BUILD/basics_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/basics.sats
+BUILD/stamp0_dats.o : SATS/stamp0.sats SATS/json.sats DATS/json.dats
+BUILD/symbol_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/symbol.sats
+BUILD/label0_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/json.sats DATS/json.dats SATS/label0.sats SATS/symbol.sats
+BUILD/locinfo_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/locinfo.sats
+BUILD/lexing_token_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/lexing.sats SATS/locinfo.sats SATS/basics.sats SATS/symbol.sats
+BUILD/filpath_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/filpath.sats
+BUILD/staexp0_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/json.sats DATS/json.dats SATS/dynexp0.sats SATS/staexp0.sats SATS/label0.sats SATS/lexing.sats
+BUILD/dynexp0_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/dynexp0.sats SATS/staexp0.sats SATS/lexing.sats
+BUILD/staexp1_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/json.sats DATS/json.dats SATS/dynexp0.sats SATS/staexp0.sats SATS/label0.sats SATS/lexing.sats SATS/locinfo.sats SATS/staexp1.sats DATS/staexp0.dats SATS/symbol.sats
+BUILD/dynexp1_dats.o : SATS/json.sats DATS/json.dats SATS/json.sats DATS/json.dats SATS/label0.sats SATS/lexing.sats SATS/filpath.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats DATS/dynexp0.dats
+BUILD/statyp2_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/staexp2.sats SATS/statyp2.sats SATS/symbol.sats SATS/locinfo.sats SATS/stamp0.sats SATS/label0.sats
+BUILD/staexp2_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/json.sats DATS/json.dats SATS/basics.sats SATS/dynexp0.sats SATS/staexp0.sats SATS/label0.sats SATS/lexing.sats SATS/staexp1.sats SATS/staexp2.sats SATS/symbol.sats SATS/locinfo.sats SATS/stamp0.sats SATS/label0.sats
+BUILD/dynexp2_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/json.sats DATS/json.dats SATS/lexing.sats SATS/locinfo.sats SATS/label0.sats SATS/filpath.sats SATS/dynexp0.sats SATS/staexp0.sats SATS/dynexp1.sats SATS/dynexp2.sats SATS/staexp2.sats SATS/symbol.sats SATS/stamp0.sats
+BUILD/dynexp3_dats.o : HATS/libxatsopt.hats SATS/json.sats DATS/json.dats SATS/json.sats DATS/json.dats SATS/lexing.sats SATS/label0.sats SATS/filpath.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/statyp2.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/dynexp3.sats
+BUILD/jsonize0_dats.o : HATS/libxatsopt.hats SATS/json.sats SATS/basics.sats SATS/fixity.sats SATS/label0.sats SATS/locinfo.sats SATS/lexing.sats SATS/stamp0.sats SATS/symbol.sats SATS/filpath.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/statyp2.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/dynexp3.sats DATS/json.dats DATS/basics.dats DATS/label0.dats DATS/locinfo.dats DATS/lexing_token.dats DATS/stamp0.dats DATS/symbol.dats DATS/filpath.dats DATS/staexp0.dats DATS/dynexp0.dats DATS/staexp1.dats DATS/dynexp1.dats DATS/statyp2.dats DATS/staexp2.dats DATS/dynexp2.dats DATS/dynexp3.dats DATS/json.dats SATS/jsonize0.sats
+BUILD/xjsonize_dats.o : SATS/json.sats SATS/basics.sats SATS/fixity.sats SATS/label0.sats SATS/locinfo.sats SATS/lexing.sats SATS/stamp0.sats SATS/symbol.sats SATS/filpath.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/statyp2.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/jsonize0.sats
