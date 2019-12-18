@@ -1151,6 +1151,21 @@ d1e.node() of
   )
 | _(* non-D1Eid *) => false
 )
+fun
+isLLAZY
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+| D1Eid(tok) =>
+  (
+  case+
+  tok.node() of
+  | T_IDENT_dlr(x) => (x = "$llazy")
+  | _(* non-T_IDENT_dlr *) => false
+  )
+| _(* non-D1Eid *) => false
+)
 //
 in
 //
@@ -1199,6 +1214,15 @@ ifcase
   in
     d2exp_make_node
     (d1e0.loc(), D2Elazy(d2e2))
+  end
+| isLLAZY(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+    val opt3 = None(*void*)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Ellazy(d2e2, opt3))
   end
 //
 | _ (* else *) =>

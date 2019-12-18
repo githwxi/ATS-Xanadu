@@ -356,22 +356,29 @@ d3exp_node =
 | D3Eaddr of d3exp(*l-value*)
 | D3Efold of d3exp(*open-con*)
 //
-| D3Eeval of
-  (int(*kind*), d3exp(*eval*))
-//
 // HX: for lazy-evaluation
 | D3Elazy of
   (d3exp(*eval*)) // nonlin
 | D3Ellazy of
-  (d3exp(*eval*), d3expopt(*free*)) // linear
-//
-| D3Eanno of (d3exp, s2exp)
+  ( d3exp(*eval*)
+  , d3expopt(*free*)) // linear
 //
 | D3Eflat of d3exp(*l-value*)
 | D3Etalf of d3exp(*D3Eflat*)
 //
-| D3Elcast of (d3exp, label)
-| D3Etcast of (d3exp, t2ype)
+// HX-2019-12-18:
+// kind=0: undecided
+// kind=1: derefence
+// kind=2: lazy-eval
+// kind=3: llazy-eval
+//
+| D3Eeval of
+  (int(*kind*), d3exp(*source*))
+//
+| D3Eanno of (d3exp, s2exp(*anno*))
+//
+| D3Elcast of (d3exp, label(*given*))
+| D3Etcast of (d3exp, t2ype(*given*))
 //
 | D3Enone0 of ()
 | D3Enone1 of (d2exp) | D3Enone2 of (d3exp)

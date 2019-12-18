@@ -467,12 +467,6 @@ x0.node() of
    fprint!(out, "D3Efold(", d3e1, ")")
   )
 //
-| D3Eeval
-  (knd, d3e1) =>
-  fprint!
-  ( out
-  , "D3Eeval(", knd, "; ", d3e1, ")")
-//
 | D3Elazy(d3e1) =>
   (
    fprint!(out, "D3Elazy(", d3e1, ")")
@@ -482,11 +476,6 @@ x0.node() of
   (out
   , "D3Ellazy(", d3e1, "; ", opt2, ")")
 //
-| D3Eanno(d3e1, s2e2) =>
-  fprint!
-  ( out
-  , "D3Eanno(", d3e1, "; ", s2e2, ")")
-//
 | D3Eflat(d3e1) =>
   (
    fprint!(out, "D3Eflat(", d3e1, ")")
@@ -495,6 +484,16 @@ x0.node() of
   (
    fprint!(out, "D3Etalf(", d3e1, ")")
   )
+| D3Eeval
+  (knd, d3e1) =>
+  fprint!
+  ( out
+  , "D3Eeval(", knd, "; ", d3e1, ")")
+//
+| D3Eanno(d3e1, s2e2) =>
+  fprint!
+  ( out
+  , "D3Eanno(", d3e1, "; ", s2e2, ")")
 //
 | D3Elcast(d3e1, lab2) =>
   fprint!
