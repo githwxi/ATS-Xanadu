@@ -55,18 +55,18 @@ synread.sats \
 staexp1.sats \
 dynexp1.sats \
 trans01.sats \
-t1xread.sats \
+tread01.sats \
 effect.sats \
 staexp2.sats \
 statyp2.sats \
 dynexp2.sats \
 nmspace.sats \
 trans12.sats \
-t2xread.sats \
+tread12.sats \
 dynexp3.sats \
 trans23.sats \
 trans33.sats \
-t3xread.sats \
+tread23.sats \
 trans3t.sats \
 
 SRCDATS := \
@@ -105,8 +105,8 @@ trans01_basics.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
-t1xread_staexp.dats \
-t1xread_dynexp.dats \
+tread01_staexp.dats \
+tread01_dynexp.dats \
 effect.dats \
 staexp2.dats \
 statyp2.dats \
@@ -125,15 +125,15 @@ trans12_basics.dats \
 trans12_envmap.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
-t2xread_staexp.dats \
-t2xread_dynexp.dats \
+tread12_staexp.dats \
+tread12_dynexp.dats \
 dynexp3.dats \
 dynexp3_print.dats \
 trans23_util0.dats \
 trans23_dynexp.dats \
 trans33_util0.dats \
 trans33_dynexp.dats \
-t3xread_dynexp.dats \
+tread23_dynexp.dats \
 trans3t_envmap.dats \
 trans3t_dynexp.dats \
 

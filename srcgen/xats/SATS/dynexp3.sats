@@ -371,7 +371,6 @@ d3exp_node =
 // kind=1: derefence
 // kind=2: lazy-eval
 // kind=3: llazy-eval
-//
 | D3Eeval of
   (int(*kind*), d3exp(*source*))
 //

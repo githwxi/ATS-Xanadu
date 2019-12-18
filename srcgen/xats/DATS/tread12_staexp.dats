@@ -49,29 +49,29 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
 //
-#staload "./../SATS/t2xread.sats"
+#staload "./../SATS/tread12.sats"
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_sort2
+tread12_sort2
   (s2t0) = ((*void*))
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_s2txt
+tread12_s2txt
   (s2tx) =
 (
 case+ s2tx of
 | S2TXTsrt(s2t) =>
-  t2xread_sort2<>(s2t)
+  tread12_sort2<>(s2t)
 | S2TXTsub(s2v, s2ps) =>
   {
-    val () = t2xread_s2var<>(s2v)
-    val () = t2xread_s2explst<>(s2ps)
+    val () = tread12_s2var<>(s2v)
+    val () = tread12_s2explst<>(s2ps)
   }
 //
 (*
@@ -91,29 +91,29 @@ case+ s2tx of
 //
 implement
 {}(*tmp*)
-t2xread_s2cst
+tread12_s2cst
   (s2c0) = ((*void*))
 implement
 {}(*tmp*)
-t2xread_s2cstlst
+tread12_s2cstlst
   (s2cs) = ((*void*))
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_s2var
+tread12_s2var
   (s2v0) = ((*void*))
 implement
 {}(*tmp*)
-t2xread_s2varlst
+tread12_s2varlst
   (s2vs) = ((*void*))
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t2xread_s2exp(s2e0) = let
+tread12_s2exp(s2e0) = let
 //
 (*
 val loc0 = s2e0.loc()
@@ -122,7 +122,7 @@ val loc0 = s2e0.loc()
 (*
 val () =
 println!
-("t2xread_s2exp: s2e0 = ", s2e0)
+("tread12_s2exp: s2e0 = ", s2e0)
 *)
 //
 in
@@ -138,51 +138,51 @@ s2e0.node() of
 //
 | S2Eapp(s2e1, s2es) =>
   {
-    val () = t2xread_s2exp<>(s2e1)
-    val () = t2xread_s2explst<>(s2es)  
+    val () = tread12_s2exp<>(s2e1)
+    val () = tread12_s2explst<>(s2es)  
   }
 //
 | S2Etop(knd0, s2e1) =>
   {
-    val () = t2xread_s2exp<>(s2e1)
+    val () = tread12_s2exp<>(s2e1)
   }
 //
 | S2Earg(knd0, s2e1) =>
   {
-    val () = t2xread_s2exp<>(s2e1)
+    val () = tread12_s2exp<>(s2e1)
   }
 | S2Eatx(s2e1, s2e2) =>
   {
-    val () = t2xread_s2exp<>(s2e1)
-    val () = t2xread_s2exp<>(s2e2)
+    val () = tread12_s2exp<>(s2e1)
+    val () = tread12_s2exp<>(s2e2)
   }
 //
 | S2Efun
   (fc0, npf, s2es, s2e1) =>
   {
-    val () = t2xread_s2exp<>(s2e1)
-    val () = t2xread_s2explst<>(s2es)
+    val () = tread12_s2exp<>(s2e1)
+    val () = tread12_s2explst<>(s2es)
   }
 //
 | S2Eexi(s2vs, s2ps, s2e1) =>
   {
-    val () = t2xread_s2exp<>(s2e1)
-    val () = t2xread_s2explst<>(s2ps)
+    val () = tread12_s2exp<>(s2e1)
+    val () = tread12_s2explst<>(s2ps)
   }
 | S2Euni(s2vs, s2ps, s2e1) =>
   {
-    val () = t2xread_s2exp<>(s2e1)
-    val () = t2xread_s2explst<>(s2ps)
+    val () = tread12_s2exp<>(s2e1)
+    val () = tread12_s2explst<>(s2ps)
   }
 //
 | S2Elam(s2vs, s2e1) =>
   {
-    val () = t2xread_s2exp<>(s2e1)
+    val () = tread12_s2exp<>(s2e1)
   }
 //
 | S2Etyrec(knd, npf, ls2es) =>
   {
-    val () = t2xread_labs2explst<>(ls2es)
+    val () = tread12_labs2explst<>(ls2es)
   }
 //
 | S2Ecimp
@@ -192,7 +192,7 @@ s2e0.node() of
     val () =
     t2xerr_add(T2XERRs2exp(s2e0))
 //
-    val () = t2xread_s2exp<>(s2e1)
+    val () = tread12_s2exp<>(s2e1)
 //
     val () =
     prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
@@ -205,7 +205,7 @@ s2e0.node() of
     val () =
     t2xerr_add(T2XERRs2exp(s2e0))
 //
-    val () = t2xread_s2exp<>(s2e1)
+    val () = tread12_s2exp<>(s2e1)
 //
     val () =
     prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
@@ -218,7 +218,7 @@ s2e0.node() of
     val () =
     t2xerr_add(T2XERRs2exp(s2e0))
 //
-    val () = t2xread_s2exp<>(s2e1)
+    val () = tread12_s2exp<>(s2e1)
 //
     val () =
     prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
@@ -232,8 +232,8 @@ s2e0.node() of
     val () =
     t2xerr_add(T2XERRs2exp(s2e0))
 //
-    val () = t2xread_s2exp<>(s2e1)
-    val () = t2xread_sort2<>(s2t2)
+    val () = tread12_s2exp<>(s2e1)
+    val () = tread12_sort2<>(s2t2)
 //
     val () =
     prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
@@ -254,78 +254,78 @@ s2e0.node() of
 //
 | _(*rest-of-s2exp*) => () // HX: yet-to-be-implemented
 //
-end // end of [t2xread_s2exp]
+end // end of [tread12_s2exp]
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_s2expopt(opt) =
+tread12_s2expopt(opt) =
 (
 case+ opt of
 | None() => ()
 | Some(s2e) =>
-  t2xread_s2exp<>(s2e)
+  tread12_s2exp<>(s2e)
 )
 //
 implement
 {}(*tmp*)
-t2xread_s2explst(s2es) =
+tread12_s2explst(s2es) =
 (
 list_foreach<s2exp>(s2es)
 ) where
 {
 implement(env)
-list_foreach$fwork<s2exp><env>(s2e, env) = t2xread_s2exp<>(s2e)
-} (* end of [t2xread_s2explst] *)
+list_foreach$fwork<s2exp><env>(s2e, env) = tread12_s2exp<>(s2e)
+} (* end of [tread12_s2explst] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_labs2exp(ls2e) =
+tread12_labs2exp(ls2e) =
 let
 val+
 SLABELED(lab, s2e) = ls2e
 in
-  t2xread_s2exp<>(s2e)
-end // end of [t2xread_labs2exp]
+  tread12_s2exp<>(s2e)
+end // end of [tread12_labs2exp]
 //
 implement
 {}(*tmp*)
-t2xread_labs2explst(ls2es) =
+tread12_labs2explst(ls2es) =
 (
 list_foreach<labs2exp>(ls2es)
 ) where
 {
 implement(env)
-list_foreach$fwork<labs2exp><env>(ls2e, env) = t2xread_labs2exp<>(ls2e)
-} (* end of [t2xread_labs2explst] *)
+list_foreach$fwork<labs2exp><env>(ls2e, env) = tread12_labs2exp<>(ls2e)
+} (* end of [tread12_labs2explst] *)
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t2xread_abstdf2(df2) =
+tread12_abstdf2(df2) =
 (
 case+ df2 of
 | ABSTDF2none() => ()
 | ABSTDF2some() => ()
-| ABSTDF2lteq(s2e) => t2xread_s2exp<>(s2e)
-| ABSTDF2eqeq(s2e) => t2xread_s2exp<>(s2e)
+| ABSTDF2lteq(s2e) => tread12_s2exp<>(s2e)
+| ABSTDF2eqeq(s2e) => tread12_s2exp<>(s2e)
 )
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_effs2expopt(opt) =
+tread12_effs2expopt(opt) =
 (
 case+ opt of
 | EFFS2EXPnone() => ()
-| EFFS2EXPsome(s2e) => t2xread_s2exp<>(s2e)
+| EFFS2EXPsome(s2e) => tread12_s2exp<>(s2e)
 )
 //
 (* ****** ****** *)
 
-(* end of [xats_t2xread_staexp.dats] *)
+(* end of [xats_tread12_staexp.dats] *)

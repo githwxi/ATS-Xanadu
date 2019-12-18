@@ -58,7 +58,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 //
-#staload "./../SATS/t3xread.sats"
+#staload "./../SATS/tread23.sats"
 //
 (* ****** ****** *)
 
@@ -77,7 +77,7 @@ _(*TMP*) = "./../DATS/dynexp3_print.dats"
 //
 implement
 {}(*tmp*)
-t3xread_d3pat
+tread23_d3pat
   (d3p0) = let
 //
 val loc0 = d3p0.loc((*void*))
@@ -96,9 +96,9 @@ d3p0.node() of
   (d3f1, npf2, d3ps) =>
   {
     val () =
-    t3xread_d3pat<>(d3f1)
+    tread23_d3pat<>(d3f1)
     val () =
-    t3xread_d3patlst<>(d3ps)
+    tread23_d3patlst<>(d3ps)
   }
 //
 | D3Pnone0() => ()
@@ -107,13 +107,13 @@ d3p0.node() of
   (knd, npf, d3ps) =>
   {
     val () =
-    t3xread_d3patlst<>(d3ps)
+    tread23_d3patlst<>(d3ps)
   }
 //
 | D3Panno(d3p1, t2p2) =>
   {
     val () =
-    t3xread_d3pat<>(d3p1)
+    tread23_d3pat<>(d3p1)
   }
 //
 | D3Psym0(sym0, dpis) =>
@@ -138,7 +138,7 @@ d3p0.node() of
     t2p1 = d3p1.type()
 //
     val () =
-    t3xread_d3pat<>(d3p1)
+    tread23_d3pat<>(d3p1)
 //
     val () =
     t3xerr_add(T3XERRd3pat(d3p0))
@@ -164,38 +164,38 @@ d3p0.node() of
 //
 | _(* rest-of-d3pat *) =>
   {
-    val () = println!(loc0, ": t3xread_d3pat(", d3p0, ")")
+    val () = println!(loc0, ": tread23_d3pat(", d3p0, ")")
   }
 //
-end // end of [t3xread_d3pat]
+end // end of [tread23_d3pat]
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t3xread_d3patopt(opt) =
+tread23_d3patopt(opt) =
 (
 case+ opt of
 | None() => ()
-| Some(d3p) => t3xread_d3pat<>(d3p)
+| Some(d3p) => tread23_d3pat<>(d3p)
 )
 //
 implement
 {}(*tmp*)
-t3xread_d3patlst(d3ps) =
+tread23_d3patlst(d3ps) =
 (
 list_foreach<d3pat>(d3ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3pat><env>(d3p, env) = t3xread_d3pat<>(d3p)
-} (* end of [t3xread_d3patlst] *)
+list_foreach$fwork<d3pat><env>(d3p, env) = tread23_d3pat<>(d3p)
+} (* end of [tread23_d3patlst] *)
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t3xread_d3exp
+tread23_d3exp
   (d3e0) = let
 //
 val
@@ -205,10 +205,10 @@ t2p0 = t2ype_hnfize(d3e0.type())
 (*
 val () =
 println!
-("t3xread_d3exp: d3e0 = ", d3e0)
+("tread23_d3exp: d3e0 = ", d3e0)
 val () =
 println!
-("t3xread_d3exp: t2p0 = ", t2p0)
+("tread23_d3exp: t2p0 = ", t2p0)
 *)
 //
 in
@@ -234,50 +234,50 @@ d3e0.node() of
   (d3e1, s2e2) =>
   {
     val () =
-    t3xread_d3exp<>(d3e1)
+    tread23_d3exp<>(d3e1)
   }
 //
 | D3Edapp
   (d3f1, npf2, d3es) =>
   {
     val () =
-    t3xread_d3exp<>(d3f1)
+    tread23_d3exp<>(d3f1)
     val () =
-    t3xread_d3explst<>(d3es)
+    tread23_d3explst<>(d3es)
   }
 //
 | D3Elet(d3cs, d3e1) =>
   {
     val () =
-    t3xread_d3eclist<>(d3cs)
-    val () = t3xread_d3exp<>(d3e1)
+    tread23_d3eclist<>(d3cs)
+    val () = tread23_d3exp<>(d3e1)
   }
 | D3Ewhere(d3e1, d3cs) =>
   {
     val () =
-    t3xread_d3eclist<>(d3cs)
-    val () = t3xread_d3exp<>(d3e1)
+    tread23_d3eclist<>(d3cs)
+    val () = tread23_d3exp<>(d3e1)
   }
 //
 | D3Eassgn(d3e1, d3e2) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
-    val () = t3xread_d3exp<>(d3e2)
+    val () = tread23_d3exp<>(d3e1)
+    val () = tread23_d3exp<>(d3e2)
   }
 //
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
-    val () = t3xread_d3exp<>(d3e2)
-    val () = t3xread_d3expopt<>(opt3)
+    val () = tread23_d3exp<>(d3e1)
+    val () = tread23_d3exp<>(d3e2)
+    val () = tread23_d3expopt<>(opt3)
   }
 //
 | D3Ecase
   (knd0, d3e1, d3cs) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
-    val () = t3xread_d3claulst<>(d3cs)
+    val () = tread23_d3exp<>(d3e1)
+    val () = tread23_d3claulst<>(d3cs)
   }
 //
 | D3Econ2(d2cs) =>
@@ -310,22 +310,22 @@ d3e0.node() of
 //
 | D3Eaddr(d3e1) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
+    val () = tread23_d3exp<>(d3e1)
   }
 | D3Efold(d3e1) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
+    val () = tread23_d3exp<>(d3e1)
   }
 //
 | D3Eeval
   ( knd0, d3e1 ) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
+    val () = tread23_d3exp<>(d3e1)
   }
 //
 | D3Elazy(d3e1) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
+    val () = tread23_d3exp<>(d3e1)
   }
 //
 | D3Elcast(d3e1, lab2) =>
@@ -335,7 +335,7 @@ d3e0.node() of
     t2p1 = d3e1.type()
 //
     val () =
-    t3xread_d3exp<>(d3e1)
+    tread23_d3exp<>(d3e1)
 //
     val () =
     t3xerr_add(T3XERRd3exp(d3e0))
@@ -355,7 +355,7 @@ d3e0.node() of
     t2p1 = d3e1.type()
 //
     val () =
-    t3xread_d3exp<>(d3e1)
+    tread23_d3exp<>(d3e1)
 //
     val () =
     t3xerr_add(T3XERRd3exp(d3e0))
@@ -381,56 +381,56 @@ d3e0.node() of
 //
 | _(* rest-of-d3exp *) =>
   {
-    val () = println!(loc0, ": t3xread_d3exp(", d3e0, ")")
+    val () = println!(loc0, ": tread23_d3exp(", d3e0, ")")
   }
 //
-end // end of [t3xread_d3exp]
+end // end of [tread23_d3exp]
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t3xread_d3expopt(opt) =
+tread23_d3expopt(opt) =
 (
 case+ opt of
 | None() => ()
-| Some(d3e) => t3xread_d3exp<>(d3e)
+| Some(d3e) => tread23_d3exp<>(d3e)
 )
 //
 implement
 {}(*tmp*)
-t3xread_d3explst(d3es) =
+tread23_d3explst(d3es) =
 (
 list_foreach<d3exp>(d3es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3exp><env>(d3e, env) = t3xread_d3exp<>(d3e)
-} (* end of [t3xread_d3explst] *)
+list_foreach$fwork<d3exp><env>(d3e, env) = tread23_d3exp<>(d3e)
+} (* end of [tread23_d3explst] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t3xread_d3gua
+tread23_d3gua
   (d3g0) =
 (
 case+
 d3g0.node() of
 | D3GUAexp(d3e1) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
+    val () = tread23_d3exp<>(d3e1)
   }
 | D3GUAmat(d3e1, d3p2) =>
   {
-    val () = t3xread_d3exp<>(d3e1)
-    val () = t3xread_d3pat<>(d3p2)
+    val () = tread23_d3exp<>(d3e1)
+    val () = tread23_d3pat<>(d3p2)
   }
 )
 //
 implement
 {}(*tmp*)
-t3xread_d3clau
+tread23_d3clau
   (d3cl) =
 (
 case+
@@ -438,60 +438,60 @@ d3cl.node() of
 | D3CLAUpat(dgp1) =>
   {
     val () =
-    t3xread_d3gpat<>(dgp1)
+    tread23_d3gpat<>(dgp1)
   }
 | D3CLAUexp(dgp1, d3e2) =>
   {
     val () =
-    t3xread_d3gpat<>(dgp1)
-    val () = t3xread_d3exp<>(d3e2)
+    tread23_d3gpat<>(dgp1)
+    val () = tread23_d3exp<>(d3e2)
   }
 )
 implement
 {}(*tmp*)
-t3xread_d3gpat
+tread23_d3gpat
   (dgp0) =
 (
 case+
 dgp0.node() of
 | D3GPATpat(d3p1) =>
   {
-    val () = t3xread_d3pat<>(d3p1)
+    val () = tread23_d3pat<>(d3p1)
   }
 | D3GPATgua(d3p1, d3gs) =>
   {
-    val () = t3xread_d3pat<>(d3p1)
-    val () = t3xread_d3gualst<>(d3gs)
+    val () = tread23_d3pat<>(d3p1)
+    val () = tread23_d3gualst<>(d3gs)
   }
 )
 //
 implement
 {}(*tmp*)
-t3xread_d3gualst(d3gs) =
+tread23_d3gualst(d3gs) =
 (
 list_foreach<d3gua>(d3gs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3gua><env>(d3g, env) = t3xread_d3gua<>(d3g)
-} (* end of [t3xread_d3gualst] *)
+list_foreach$fwork<d3gua><env>(d3g, env) = tread23_d3gua<>(d3g)
+} (* end of [tread23_d3gualst] *)
 //
 implement
 {}(*tmp*)
-t3xread_d3claulst(d3cs) =
+tread23_d3claulst(d3cs) =
 (
 list_foreach<d3clau>(d3cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3clau><env>(d3cl, env) = t3xread_d3clau<>(d3cl)
-} (* end of [t3xread_d3claulst] *)
+list_foreach$fwork<d3clau><env>(d3cl, env) = tread23_d3clau<>(d3cl)
+} (* end of [tread23_d3claulst] *)
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t3xread_d3ecl(d3cl) =
+tread23_d3ecl(d3cl) =
 let
 //
 val loc0 = d3cl.loc()
@@ -499,7 +499,7 @@ val loc0 = d3cl.loc()
 (*
 val () =
 println!
-("t3xread_d3ecl: d3cl = ", d3cl)
+("tread23_d3ecl: d3cl = ", d3cl)
 *)
 //
 in
@@ -511,43 +511,43 @@ d3cl.node() of
 //
 | D3Cstatic(tok, d3c1) =>
   {
-    val () = t3xread_d3ecl<>(d3c1)
+    val () = tread23_d3ecl<>(d3c1)
   }
 | D3Cextern(tok, d3c1) =>
   {
-    val () = t3xread_d3ecl<>(d3c1)
+    val () = tread23_d3ecl<>(d3c1)
   }
 //
 | D3Cvaldecl
   (knd, mopt, v3ds) =>
   {
-    val () = t3xread_v3aldeclist<>(v3ds)
+    val () = tread23_v3aldeclist<>(v3ds)
 (*
     val () =
     println!
-    ("t3xread_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
+    ("tread23_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
 *)
   }
 //
 | D3Cvardecl
   (knd, mopt, v3ds) =>
   {
-    val () = t3xread_v3ardeclist<>(v3ds)
+    val () = tread23_v3ardeclist<>(v3ds)
 (*
     val () =
     println!
-    ("t3xread_d3ecl: D3Cvardecl: v3ds = ", v3ds)
+    ("tread23_d3ecl: D3Cvardecl: v3ds = ", v3ds)
 *)
   }
 //
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>
   {
-    val () = t3xread_f3undeclist<>(f3ds)
+    val () = tread23_f3undeclist<>(f3ds)
 (*
     val () =
     println!
-    ("t3xread_d3ecl: D3Cfundecl: f3ds = ", f3ds)
+    ("tread23_d3ecl: D3Cfundecl: f3ds = ", f3ds)
 *)
   }
 //
@@ -558,14 +558,14 @@ d3cl.node() of
   , f3as, res0, d3e0) =>
   {
     val () =
-    t3xread_f3arglst<>(f3as)
+    tread23_f3arglst<>(f3as)
 (*
     val () =
-    t3xread_ti3arg<>(ti3a)
+    tread23_ti3arg<>(ti3a)
     val () =
-    t3xread_ti2arglst<>(ti2s)
+    tread23_ti2arglst<>(ti2s)
 *)
-    val () = t3xread_d3exp<>(d3e0)
+    val () = tread23_d3exp<>(d3e0)
   }
 | D3Cimpdecl2
   ( tok, mopt
@@ -574,14 +574,14 @@ d3cl.node() of
   , f3as, res0, d3e0) =>
   {
     val () =
-    t3xread_f3arglst<>(f3as)
+    tread23_f3arglst<>(f3as)
 (*
     val () =
-    t3xread_ti3arg<>(ti3a)
+    tread23_ti3arg<>(ti3a)
     val () =
-    t3xread_ti2arglst<>(ti2s)
+    tread23_ti2arglst<>(ti2s)
 *)
-    val () = t3xread_d3exp<>(d3e0)
+    val () = tread23_d3exp<>(d3e0)
 //
     val-
     IMPLD2CST2
@@ -603,35 +603,35 @@ d3cl.node() of
 (*
     val () =
     println!
-    ("t3xread_d3ecl: D3Cimpdecl: d3cl = ", d3cl)
+    ("tread23_d3ecl: D3Cimpdecl: d3cl = ", d3cl)
 *)
   }
 //
 | _(* rest-of-d3ecl *) =>
   {
-    val () = println!(loc0, ": t3xread_d3ecl(", d3cl, ")")
+    val () = println!(loc0, ": tread23_d3ecl(", d3cl, ")")
   }
 //
-end // end of [t3xread_d3ecl]
+end // end of [tread23_d3ecl]
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t3xread_d3eclist(d3cs) =
+tread23_d3eclist(d3cs) =
 (
 list_foreach<d3ecl>(d3cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3ecl><env>(d3c, env) = t3xread_d3ecl<>(d3c)
-} (* end of [t3xread_d3eclist] *)
+list_foreach$fwork<d3ecl><env>(d3c, env) = tread23_d3ecl<>(d3c)
+} (* end of [tread23_d3eclist] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t3xread_f3arg
+tread23_f3arg
   (f3a0) =
 (
 case+
@@ -642,7 +642,7 @@ f3a0.node() of
 | F3ARGsome_dyn
   (npf, d3ps) =>
   {
-    val () = t3xread_d3patlst<>(d3ps)
+    val () = tread23_d3patlst<>(d3ps)
   }
 //
 | F3ARGnone2(f2a) =>
@@ -664,72 +664,72 @@ f3a0.node() of
     (loc0, ": T3XERR(f3arg): F3ARGnone3: f3a = ", f3a)
   end
 //
-) (* end of [t3xread_f3arg] *)
+) (* end of [tread23_f3arg] *)
 //
 implement
 {}(*tmp*)
-t3xread_f3arglst(f3as) =
+tread23_f3arglst(f3as) =
 (
 list_foreach<f3arg>(f3as)
 ) where
 {
 implement(env)
-list_foreach$fwork<f3arg><env>(f3a, env) = t3xread_f3arg<>(f3a)
-} (* end of [t3xread_f3arglst] *)
+list_foreach$fwork<f3arg><env>(f3a, env) = tread23_f3arg<>(f3a)
+} (* end of [tread23_f3arglst] *)
 //
 implement
 {}(*tmp*)
-t3xread_f3arglstopt(opt0) =
+tread23_f3arglstopt(opt0) =
 (
-case+ opt0 of None() => () | Some(f3as) => t3xread_f3arglst<>(f3as)
+case+ opt0 of None() => () | Some(f3as) => tread23_f3arglst<>(f3as)
 )
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t3xread_v3aldecl
+tread23_v3aldecl
   (v3d0) =
 {
   val () =
-  t3xread_d3pat<>(rcd.pat)
+  tread23_d3pat<>(rcd.pat)
   val () =
-  t3xread_d3expopt<>(rcd.def)
+  tread23_d3expopt<>(rcd.def)
 (*
   val () =
-  t3xread_s2expopt<>(rcd.wth)
+  tread23_s2expopt<>(rcd.wth)
 *)
 } where
 {
 //
   val+V3ALDECL(rcd) = v3d0
 //
-} (* end of [t3xread_v3aldecl] *)
+} (* end of [tread23_v3aldecl] *)
 //
 implement
 {}(*tmp*)
-t3xread_v3aldeclist(v3ds) =
+tread23_v3aldeclist(v3ds) =
 (
 list_foreach<v3aldecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3aldecl><env>(v3ds, env) = t3xread_v3aldecl<>(v3ds)
-} (* end of [t3xread_v3aldeclist] *)
+list_foreach$fwork<v3aldecl><env>(v3ds, env) = tread23_v3aldecl<>(v3ds)
+} (* end of [tread23_v3aldeclist] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t3xread_v3ardecl
+tread23_v3ardecl
   (v3d0) =
 {
 (*
   val () =
-  t3xread_d2var(rcd.d2v)
+  tread23_d2var(rcd.d2v)
 *)
   val () =
-  t3xread_d3expopt(rcd.ini)
+  tread23_d3expopt(rcd.ini)
 } where
 {
   val+V3ARDECL(rcd) = v3d0
@@ -737,43 +737,43 @@ t3xread_v3ardecl
 //
 implement
 {}(*tmp*)
-t3xread_v3ardeclist(v3ds) =
+tread23_v3ardeclist(v3ds) =
 (
 list_foreach<v3ardecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3ardecl><env>(v3ds, env) = t3xread_v3ardecl<>(v3ds)
-} (* end of [t3xread_v3ardeclist] *)
+list_foreach$fwork<v3ardecl><env>(v3ds, env) = tread23_v3ardecl<>(v3ds)
+} (* end of [tread23_v3ardeclist] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t3xread_f3undecl
+tread23_f3undecl
   (f3d0) =
 {
   val () =
-  t3xread_d3expopt(rcd.def)
+  tread23_d3expopt(rcd.def)
   val () =
-  t3xread_f3arglstopt(rcd.a3g)
+  tread23_f3arglstopt(rcd.a3g)
 } where
 {
 //
   val+F3UNDECL(rcd) = f3d0
 //
-} (* end of [t3xread_f3undecl] *)
+} (* end of [tread23_f3undecl] *)
 //
 implement
 {}(*tmp*)
-t3xread_f3undeclist(f3ds) =
+tread23_f3undeclist(f3ds) =
 (
 list_foreach<f3undecl>(f3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f3undecl><env>(f3ds, env) = t3xread_f3undecl<>(f3ds)
-} (* end of [t3xread_f3undeclist] *)
+list_foreach$fwork<f3undecl><env>(f3ds, env) = tread23_f3undecl<>(f3ds)
+} (* end of [tread23_f3undeclist] *)
 //
 (* ****** ****** *)
 
@@ -800,7 +800,7 @@ end // end of [t3xerr_add]
 in (* in-of-local *)
 
 implement
-t3xread_main(d3cs) = let
+tread23_main(d3cs) = let
 //
 local
 //
@@ -818,7 +818,7 @@ the_t3xerrlst_set<>(xs) = the_t3xerrlst[] := xs
 end // end of [local]
 //
 val () =
-t3xread_d3eclist<>(d3cs)
+tread23_d3eclist<>(d3cs)
 val
 xerrs = the_t3xerrlst_get<>()
 val
@@ -833,20 +833,20 @@ then
 //
 val () =
 prerrln!
-("t3xread_main: nxerr = ", nxerr)
+("tread23_main: nxerr = ", nxerr)
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("t3xread_main: there is one t3xerr!")
+("tread23_main: there is one t3xerr!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("t3xread_main: there are some t3xerrs!")
+("tread23_main: there are some t3xerrs!")
 //
 val () =
 (
@@ -859,14 +859,14 @@ else
 //
 val () =
 prerrln!
-("t3xread_main: there are no t3xerrs!")
+("tread23_main: there are no t3xerrs!")
 //
 } (* end of [else] *)
 //
-end // end of [t3xread_main]
+end // end of [tread23_main]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_t3xread_dynexp.dats] *)
+(* end of [xats_tread23_dynexp.dats] *)

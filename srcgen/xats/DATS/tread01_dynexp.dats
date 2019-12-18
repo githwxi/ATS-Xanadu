@@ -52,70 +52,70 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 //
-#staload "./../SATS/t1xread.sats"
+#staload "./../SATS/tread01.sats"
 //
 (* ****** ****** *)
 
 #staload
-_(*TMP*) = "./../DATS/t1xread_staexp.dats"
+_(*TMP*) = "./../DATS/tread01_staexp.dats"
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t1xread_d1pat(d1p0) = ()
+tread01_d1pat(d1p0) = ()
 //
 implement
 {}(*tmp*)
-t1xread_d1patlst(d1ps) =
+tread01_d1patlst(d1ps) =
 (
 list_foreach<d1pat>(d1ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1pat><env>(d1p, env) = t1xread_d1pat<>(d1p)
-} (* end of [t1xread_d1patlst] *)
+list_foreach$fwork<d1pat><env>(d1p, env) = tread01_d1pat<>(d1p)
+} (* end of [tread01_d1patlst] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t1xread_d1exp(d1e0) = ()
+tread01_d1exp(d1e0) = ()
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t1xread_d1expopt(opt0) =
+tread01_d1expopt(opt0) =
 (
 case+ opt0 of
 | None() => ()
-| Some(d1e) => t1xread_d1exp<>(d1e)
-) (* end of [t1xread_d1expopt] *)
+| Some(d1e) => tread01_d1exp<>(d1e)
+) (* end of [tread01_d1expopt] *)
 //
 implement
 {}(*tmp*)
-t1xread_d1explst(d1es) =
+tread01_d1explst(d1es) =
 (
 list_foreach<d1exp>(d1es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1exp><env>(d1e, env) = t1xread_d1exp<>(d1e)
-} (* end of [t1xread_d1explst] *)
+list_foreach$fwork<d1exp><env>(d1e, env) = tread01_d1exp<>(d1e)
+} (* end of [tread01_d1explst] *)
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t1xread_d1ecl(d1c0) = let
+tread01_d1ecl(d1c0) = let
 //
 val loc0 = d1c0.loc((*void*))
 //
 (*
 val () =
 println!
-("t1xread_d1ecl: d1c0 = ", d1c0)
+("tread01_d1ecl: d1c0 = ", d1c0)
 *)
 //
 in
@@ -126,95 +126,95 @@ d1c0.node() of
 | D1Cfundecl
   (knd, mopt, tqas, f1ds) =>
   {
-    val () = t1xread_f1undeclist<>(f1ds)
+    val () = tread01_f1undeclist<>(f1ds)
   }
 //
 | _(* rest-of-d1ecl *) =>
   (
-    prerrln!(loc0, ": t1xread_d1ecl: d1c0 = ", d1c0)
+    prerrln!(loc0, ": tread01_d1ecl: d1c0 = ", d1c0)
   )
 //
-end // end of [t1xread_d1ecl]
+end // end of [tread01_d1ecl]
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t1xread_d1eclist(d1cs) =
+tread01_d1eclist(d1cs) =
 (
 list_foreach<d1ecl>(d1cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1ecl><env>(d1c, env) = t1xread_d1ecl<>(d1c)
-} (* end of [t1xread_d1eclist] *)
+list_foreach$fwork<d1ecl><env>(d1c, env) = tread01_d1ecl<>(d1c)
+} (* end of [tread01_d1eclist] *)
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t1xread_wths1expopt
+tread01_wths1expopt
   (opt0) =
 (
 case+ opt0 of
 | WTHS1EXPnone() => ()
-| WTHS1EXPsome(tok, s1e) => t1xread_s1exp<>(s1e)
+| WTHS1EXPsome(tok, s1e) => tread01_s1exp<>(s1e)
 )
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t1xread_f1arg(f1a0) =
+tread01_f1arg(f1a0) =
 (
 case+
 f1a0.node() of
-| F1ARGsome_dyn(d1p0) => t1xread_d1pat<>(d1p0)
-| F1ARGsome_sta(s1qs) => t1xread_s1qualst<>(s1qs)
-| F1ARGsome_met(s1es) => t1xread_s1explst<>(s1es)
-) (* end of [t1xread_f1arg] *)
+| F1ARGsome_dyn(d1p0) => tread01_d1pat<>(d1p0)
+| F1ARGsome_sta(s1qs) => tread01_s1qualst<>(s1qs)
+| F1ARGsome_met(s1es) => tread01_s1explst<>(s1es)
+) (* end of [tread01_f1arg] *)
 //
 implement
 {}(*tmp*)
-t1xread_f1arglst(f1as) =
+tread01_f1arglst(f1as) =
 (
 list_foreach<f1arg>(f1as)
 ) where
 {
 implement(env)
-list_foreach$fwork<f1arg><env>(f1a, env) = t1xread_f1arg<>(f1a)
-} (* end of [t1xread_f1arglst] *)
+list_foreach$fwork<f1arg><env>(f1a, env) = tread01_f1arg<>(f1a)
+} (* end of [tread01_f1arglst] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t1xread_f1undecl
+tread01_f1undecl
   (f1d0) =
 {
   val () =
-  t1xread_d1expopt(rcd.def)
+  tread01_d1expopt(rcd.def)
   val () =
-  t1xread_f1arglst(rcd.arg)
+  tread01_f1arglst(rcd.arg)
   val () =
-  t1xread_wths1expopt(rcd.wtp)
+  tread01_wths1expopt(rcd.wtp)
 } where
 {
 //
   val+F1UNDECL(rcd) = f1d0
 //
-} (* end of [t1xread_f1undecl] *)
+} (* end of [tread01_f1undecl] *)
 //
 implement
 {}(*tmp*)
-t1xread_f1undeclist(f1ds) =
+tread01_f1undeclist(f1ds) =
 (
 list_foreach<f1undecl>(f1ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f1undecl><env>(f1ds, env) = t1xread_f1undecl<>(f1ds)
-} (* end of [t1xread_f1undeclist] *)
+list_foreach$fwork<f1undecl><env>(f1ds, env) = tread01_f1undecl<>(f1ds)
+} (* end of [tread01_f1undeclist] *)
 //
 (* ****** ****** *)
 
@@ -241,7 +241,7 @@ end // end of [t1xerr_add]
 in (* in-of-local *)
 
 implement
-t1xread_main(d1cs) = let
+tread01_main(d1cs) = let
 //
 local
 //
@@ -259,7 +259,7 @@ the_t1xerrlst_set<>(xs) = the_t1xerrlst[] := xs
 end // end of [local]
 //
 val () =
-t1xread_d1eclist<>(d1cs)
+tread01_d1eclist<>(d1cs)
 val
 xerrs = the_t1xerrlst_get()
 val
@@ -274,20 +274,20 @@ then
 //
 val () =
 prerrln!
-("t1xread_main: nxerr = ", nxerr)
+("tread01_main: nxerr = ", nxerr)
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("t1xread_main: there is one t1xerr!")
+("tread01_main: there is one t1xerr!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("t1xread_main: there are some t1xerrs!")
+("tread01_main: there are some t1xerrs!")
 //
 val () =
 (
@@ -300,14 +300,14 @@ else
 //
 val () =
 prerrln!
-("t1xread_main: there are no t1xerrs!")
+("tread01_main: there are no t1xerrs!")
 //
 } (* end of [else] *)
 //
-end // end of [t1xread_main]
+end // end of [tread01_main]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_t1xread_dynexp.dats] *)
+(* end of [xats_tread01_dynexp.dats] *)
