@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2019
+// Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -39,107 +39,140 @@
 (* ****** ****** *)
 
 #staload "./staexp2.sats"
-#staload "./statyp2.sats"
 #staload "./dynexp2.sats"
-#staload "./dynexp3.sats"
 
 (* ****** ****** *)
 //
 typedef
-t3xreader
+treader12
 (a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
 //
-datatype t3xerr =
+datatype t2xerr =
 //
-| T3XERRd3pat of (d3pat)
-| T3XERRd3exp of (d3exp)
+| T2XERRsort2 of (sort2)
 //
-| T3XERRf3arg of (f3arg)
-| T3XERRd3ecl of (d3ecl)
+| T2XERRs2txt of (s2txt)
+| T2XERRs2exp of (s2exp)
+| T2XERRd2pat of (d2pat)
+| T2XERRd2exp of (d2exp)
+| T2XERRd2ecl of (d2ecl)
 //
 typedef
-t3xerrlst = List0(t3xerr)
+t2xerrlst = List0(t2xerr)
 //
 (* ****** ****** *)
 //
 fun{}
-t3xerr_add(t3xerr): void
+t2xerr_add(t2xerr): void
 //
 (* ****** ****** *)
 //
 fun
-t3xread_main(d3eclist): void
+tread12_main(d2eclist): void
 //
 (* ****** ****** *)
 //
 fun{}
-t3xread_d3pat: t3xreader(d3pat)
+tread12_sort2: treader12(sort2)
 fun{}
-t3xread_d3patopt: t3xreader(d3patopt)
-fun{}
-t3xread_d3patlst: t3xreader(d3patlst)
+tread12_s2txt: treader12(s2txt)
 //
 (* ****** ****** *)
 //
 fun{}
-t3xread_d3exp: t3xreader(d3exp)
+tread12_s2cst: treader12(s2cst)
 fun{}
-t3xread_d3expopt: t3xreader(d3expopt)
+tread12_s2cstlst: treader12(s2cstlst)
+//
 fun{}
-t3xread_d3explst: t3xreader(d3explst)
+tread12_s2var: treader12(s2var)
+fun{}
+tread12_s2varlst: treader12(s2varlst)
+//
+fun{}
+tread12_s2exp: treader12(s2exp)
+fun{}
+tread12_s2expopt: treader12(s2expopt)
+fun{}
+tread12_s2explst: treader12(s2explst)
+//
+fun{}
+tread12_labs2exp: treader12(labs2exp)
+fun{}
+tread12_labs2explst: treader12(labs2explst)
 //
 (* ****** ****** *)
 
 fun{}
-t3xread_d3gua: t3xreader(d3gua)
+tread12_abstdf2: treader12(abstdf2)
+
+(* ****** ****** *)
+
 fun{}
-t3xread_d3clau: t3xreader(d3clau)
-fun{}
-t3xread_d3gpat: t3xreader(d3gpat)
-fun{}
-t3xread_d3gualst: t3xreader(d3gualst)
-fun{}
-t3xread_d3claulst: t3xreader(d3claulst)
+tread12_effs2expopt: treader12(effs2expopt)
 
 (* ****** ****** *)
 //
 fun{}
-t3xread_d3ecl: t3xreader(d3ecl)
+tread12_d2cst: treader12(d2cst)
 fun{}
-t3xread_d3eclist: t3xreader(d3eclist)
+tread12_d2cstlst: treader12(d2cstlst)
+//
+(* ****** ****** *)
+//
+fun{}
+tread12_d2pat: treader12(d2pat)
+fun{}
+tread12_d2patopt: treader12(d2patopt)
+fun{}
+tread12_d2patlst: treader12(d2patlst)
+//
+(* ****** ****** *)
+//
+fun{}
+tread12_d2exp: treader12(d2exp)
+fun{}
+tread12_d2expopt: treader12(d2expopt)
+fun{}
+tread12_d2explst: treader12(d2explst)
 //
 (* ****** ****** *)
 
 fun{}
-t3xread_f3arg: t3xreader(f3arg)
+tread12_dsapparg: treader12(s2explst)
 fun{}
-t3xread_f3arglst: t3xreader(f3arglst)
+tread12_dtapparg: treader12(s2explst)
+
+(* ****** ****** *)
+//
 fun{}
-t3xread_f3arglstopt: t3xreader(f3arglstopt)
+tread12_d2ecl: treader12(d2ecl)
+fun{}
+tread12_d2eclist: treader12(d2eclist)
+//
+(* ****** ****** *)
+
+fun{}
+tread12_f2arg: treader12(f2arg)
+fun{}
+tread12_f2arglst: treader12(f2arglst)
 
 (* ****** ****** *)
 
 fun{}
-t3xread_v3aldecl: t3xreader(v3aldecl)
+tread12_tq2arg: treader12(tq2arg)
 fun{}
-t3xread_v3aldeclist: t3xreader(v3aldeclist)
+tread12_tq2arglst: treader12(tq2arglst)
 
 (* ****** ****** *)
 
 fun{}
-t3xread_v3ardecl: t3xreader(v3ardecl)
+tread12_f2undecl: treader12(f2undecl)
 fun{}
-t3xread_v3ardeclist: t3xreader(v3ardeclist)
+tread12_f2undeclist: treader12(f2undeclist)
 
 (* ****** ****** *)
 
-fun{}
-t3xread_f3undecl: t3xreader(f3undecl)
-fun{}
-t3xread_f3undeclist: t3xreader(f3undeclist)
-
-(* ****** ****** *)
-
-(* end of [xats_t3xread.sats] *)
+(* end of [xats_tread12.sats] *)

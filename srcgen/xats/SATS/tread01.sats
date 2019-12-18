@@ -37,142 +37,87 @@
 #staload "./dynexp1.sats"
 
 (* ****** ****** *)
-
-#staload "./staexp2.sats"
-#staload "./dynexp2.sats"
-
-(* ****** ****** *)
 //
 typedef
-t2xreader
+treader01
 (a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
-//
-datatype t2xerr =
-//
-| T2XERRsort2 of (sort2)
-//
-| T2XERRs2txt of (s2txt)
-| T2XERRs2exp of (s2exp)
-| T2XERRd2pat of (d2pat)
-| T2XERRd2exp of (d2exp)
-| T2XERRd2ecl of (d2ecl)
-//
+
+datatype t1xerr =
+| T1XERRd1ecl of (d1ecl)
+
 typedef
-t2xerrlst = List0(t2xerr)
-//
+t1xerrlst = List0(t1xerr)
+
 (* ****** ****** *)
 //
 fun{}
-t2xerr_add(t2xerr): void
+t1xerr_add(t1xerr): void
 //
 (* ****** ****** *)
 //
 fun
-t2xread_main(d2eclist): void
+tread01_main(d1eclist): void
 //
 (* ****** ****** *)
 //
 fun{}
-t2xread_sort2: t2xreader(sort2)
+tread01_s1exp: treader01(s1exp)
 fun{}
-t2xread_s2txt: t2xreader(s2txt)
+tread01_s1expopt: treader01(s1expopt)
+fun{}
+tread01_s1explst: treader01(s1explst)
 //
 (* ****** ****** *)
 //
 fun{}
-t2xread_s2cst: t2xreader(s2cst)
+tread01_s1qua: treader01(s1qua)
 fun{}
-t2xread_s2cstlst: t2xreader(s2cstlst)
-//
-fun{}
-t2xread_s2var: t2xreader(s2var)
-fun{}
-t2xread_s2varlst: t2xreader(s2varlst)
-//
-fun{}
-t2xread_s2exp: t2xreader(s2exp)
-fun{}
-t2xread_s2expopt: t2xreader(s2expopt)
-fun{}
-t2xread_s2explst: t2xreader(s2explst)
-//
-fun{}
-t2xread_labs2exp: t2xreader(labs2exp)
-fun{}
-t2xread_labs2explst: t2xreader(labs2explst)
-//
-(* ****** ****** *)
-
-fun{}
-t2xread_abstdf2: t2xreader(abstdf2)
-
-(* ****** ****** *)
-
-fun{}
-t2xread_effs2expopt: t2xreader(effs2expopt)
-
-(* ****** ****** *)
-//
-fun{}
-t2xread_d2cst: t2xreader(d2cst)
-fun{}
-t2xread_d2cstlst: t2xreader(d2cstlst)
+tread01_s1qualst: treader01(s1qualst)
 //
 (* ****** ****** *)
 //
 fun{}
-t2xread_d2pat: t2xreader(d2pat)
+tread01_d1pat: treader01(d1pat)
 fun{}
-t2xread_d2patopt: t2xreader(d2patopt)
-fun{}
-t2xread_d2patlst: t2xreader(d2patlst)
+tread01_d1patlst: treader01(d1patlst)
 //
 (* ****** ****** *)
 //
 fun{}
-t2xread_d2exp: t2xreader(d2exp)
+tread01_d1exp: treader01(d1exp)
 fun{}
-t2xread_d2expopt: t2xreader(d2expopt)
+tread01_d1expopt: treader01(d1expopt)
 fun{}
-t2xread_d2explst: t2xreader(d2explst)
+tread01_d1explst: treader01(d1explst)
+//
+(* ****** ****** *)
+//
+fun{}
+tread01_d1ecl: treader01(d1ecl)
+fun{}
+tread01_d1eclist: treader01(d1eclist)
+//
+(* ****** ****** *)
+//
+fun{}
+tread01_wths1expopt: treader01(wths1expopt)
 //
 (* ****** ****** *)
 
 fun{}
-t2xread_dsapparg: t2xreader(s2explst)
+tread01_f1arg: treader01(f1arg)
 fun{}
-t2xread_dtapparg: t2xreader(s2explst)
-
-(* ****** ****** *)
-//
-fun{}
-t2xread_d2ecl: t2xreader(d2ecl)
-fun{}
-t2xread_d2eclist: t2xreader(d2eclist)
-//
-(* ****** ****** *)
-
-fun{}
-t2xread_f2arg: t2xreader(f2arg)
-fun{}
-t2xread_f2arglst: t2xreader(f2arglst)
+tread01_f1arglst: treader01(f1arglst)
 
 (* ****** ****** *)
 
 fun{}
-t2xread_tq2arg: t2xreader(tq2arg)
+tread01_f1undecl: treader01(f1undecl)
 fun{}
-t2xread_tq2arglst: t2xreader(tq2arglst)
+tread01_f1undeclist: treader01(f1undeclist)
 
 (* ****** ****** *)
 
-fun{}
-t2xread_f2undecl: t2xreader(f2undecl)
-fun{}
-t2xread_f2undeclist: t2xreader(f2undeclist)
-
-(* ****** ****** *)
-
-(* end of [xats_t2xread.sats] *)
+(* end of [xats_tread01.sats] *)

@@ -53,7 +53,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 //
-#staload "./../SATS/t2xread.sats"
+#staload "./../SATS/tread12.sats"
 //
 (* ****** ****** *)
 
@@ -62,13 +62,13 @@ _(*TMP*) = "./../DATS/staexp2_print.dats"
 #staload
 _(*TMP*) = "./../DATS/dynexp2_print.dats"
 #staload
-_(*TMP*) = "./../DATS/t2xread_staexp.dats"
+_(*TMP*) = "./../DATS/tread12_staexp.dats"
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_d2cst
+tread12_d2cst
   (d2c0) = let
 //
 val
@@ -76,28 +76,28 @@ loc0 = d2c0.loc((*void*))
 val
 s2e0 = d2cst_get_sexp(d2c0)
 //
-val () = t2xread_s2exp(s2e0)
+val () = tread12_s2exp(s2e0)
 //
 in
   // nothing
-end // end of [t2xread_d2cst]
+end // end of [tread12_d2cst]
 //
 implement
 {}(*tmp*)
-t2xread_d2cstlst(d2cs) =
+tread12_d2cstlst(d2cs) =
 (
 list_foreach<d2cst>(d2cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2cst><env>(d2c, env) = t2xread_d2cst<>(d2c)
-} (* end of [t2xread_d2cstlst] *)
+list_foreach$fwork<d2cst><env>(d2c, env) = tread12_d2cst<>(d2c)
+} (* end of [tread12_d2cstlst] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_d2pat
+tread12_d2pat
   (d2p0) = let
 //
 val loc0 = d2p0.loc((*void*))
@@ -123,49 +123,49 @@ d2p0.node() of
   (knd, npf, d2ps) =>
   {
     val () =
-    t2xread_d2patlst<>(d2ps)
+    tread12_d2patlst<>(d2ps)
   }
 //
 | D2Panno(d2p1, s2e2) =>
   {
-    val () = t2xread_s2exp<>(s2e2)
-    val () = t2xread_d2pat<>(d2p1)
+    val () = tread12_s2exp<>(s2e2)
+    val () = tread12_d2pat<>(d2p1)
   }
 //
 | _(* rest-of-d2pat *) =>
   (
-    prerrln!(loc0, ": t2xread_d2pat: d2p0 = ", d2p0)
+    prerrln!(loc0, ": tread12_d2pat: d2p0 = ", d2p0)
   )
 //
-end // end of [t2xread_d2pat]
+end // end of [tread12_d2pat]
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_d2patopt(opt) =
+tread12_d2patopt(opt) =
 (
 case+ opt of
 | None() => ()
-| Some(d2p) => t2xread_d2pat<>(d2p)
+| Some(d2p) => tread12_d2pat<>(d2p)
 )
 //
 implement
 {}(*tmp*)
-t2xread_d2patlst(d2ps) =
+tread12_d2patlst(d2ps) =
 (
 list_foreach<d2pat>(d2ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2pat><env>(d2p, env) = t2xread_d2pat<>(d2p)
-} (* end of [t2xread_d2patlst] *)
+list_foreach$fwork<d2pat><env>(d2p, env) = tread12_d2pat<>(d2p)
+} (* end of [tread12_d2patlst] *)
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t2xread_d2exp
+tread12_d2exp
   (d2e0) = let
 //
 val
@@ -192,64 +192,64 @@ d2e0.node() of
 | D2Esapp
   (d2e1, s2es) =>
   {
-    val () = t2xread_d2exp<>(d2e1)
-    val () = t2xread_dsapparg<>(s2es)
+    val () = tread12_d2exp<>(d2e1)
+    val () = tread12_dsapparg<>(s2es)
   }
 | D2Etapp
   (d2e1, s2es) =>
   {
-    val () = t2xread_d2exp<>(d2e1)
-    val () = t2xread_dtapparg<>(s2es)
+    val () = tread12_d2exp<>(d2e1)
+    val () = tread12_dtapparg<>(s2es)
   }
 | D2Edapp
   (d2e1, npf, d2es) =>
   {
-    val () = t2xread_d2exp<>(d2e1)
-    val () = t2xread_d2explst<>(d2es)
+    val () = tread12_d2exp<>(d2e1)
+    val () = tread12_d2explst<>(d2es)
   }
 //
 | D2Elet(d2cs, d2e1) =>
   {
     val () =
-    t2xread_d2eclist<>(d2cs)
-    val () = t2xread_d2exp<>(d2e1)
+    tread12_d2eclist<>(d2cs)
+    val () = tread12_d2exp<>(d2e1)
   }
 | D2Ewhere(d2e1, d2cs) =>
   {
     val () =
-    t2xread_d2eclist<>(d2cs)
-    val () = t2xread_d2exp<>(d2e1)
+    tread12_d2eclist<>(d2cs)
+    val () = tread12_d2exp<>(d2e1)
   }
 //
 | D2Eassgn(d2e1, d2e2) =>
   {
-    val () = t2xread_d2exp<>(d2e1)
-    val () = t2xread_d2exp<>(d2e2)
+    val () = tread12_d2exp<>(d2e1)
+    val () = tread12_d2exp<>(d2e2)
   }
 //
 | D2Eif0
   (d2e1, d2e2, opt3) =>
   {
-    val () = t2xread_d2exp<>(d2e1)
-    val () = t2xread_d2exp<>(d2e2)
-    val () = t2xread_d2expopt<>(opt3)
+    val () = tread12_d2exp<>(d2e1)
+    val () = tread12_d2exp<>(d2e2)
+    val () = tread12_d2expopt<>(opt3)
   }
 //
 | D2Eaddr(d2e1) =>
   {
     val () =
-    t2xread_d2exp<>(d2e1)
+    tread12_d2exp<>(d2e1)
   }
 | D2Efold(d2e1) =>
   {
     val () =
-    t2xread_d2exp<>(d2e1)
+    tread12_d2exp<>(d2e1)
   }
 //
 | D2Eanno(d2e1, s2e2) =>
   {
-    val () = t2xread_d2exp<>(d2e1)
-    val () = t2xread_s2exp<>(s2e2)
+    val () = tread12_d2exp<>(d2e1)
+    val () = tread12_s2exp<>(s2e2)
   }
 //
 | D2Enone0() => ((*void*))
@@ -264,38 +264,38 @@ d2e0.node() of
 //
 | _(* rest-of-d2exp *) =>
   (
-    prerrln!(loc0, ": t2xread_d2exp: d2e0 = ", d2e0)
+    prerrln!(loc0, ": tread12_d2exp: d2e0 = ", d2e0)
   )
 //
-end // end of [t2xread_d2exp]
+end // end of [tread12_d2exp]
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_d2expopt(opt) =
+tread12_d2expopt(opt) =
 (
 case+ opt of
 | None() => ()
-| Some(d2e) => t2xread_d2exp<>(d2e)
+| Some(d2e) => tread12_d2exp<>(d2e)
 )
 //
 implement
 {}(*tmp*)
-t2xread_d2explst(d2es) =
+tread12_d2explst(d2es) =
 (
 list_foreach<d2exp>(d2es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2exp><env>(d2e, env) = t2xread_d2exp<>(d2e)
-} (* end of [t2xread_d2explst] *)
+list_foreach$fwork<d2exp><env>(d2e, env) = tread12_d2exp<>(d2e)
+} (* end of [tread12_d2explst] *)
 //
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t2xread_dsapparg
+tread12_dsapparg
   (s2es) =
 (
   auxlst(s2es)
@@ -320,15 +320,15 @@ case+ s2es of
     case+
     s2e0.node() of
     | S2Eany(knd) => ()
-    | _(*non-S2Eany*) => t2xread_s2exp<>(s2e0)
+    | _(*non-S2Eany*) => tread12_s2exp<>(s2e0)
     )
   }
 ) (* end of [auxlst] *)
-} (* end of [t2xread_dsapparg] *)
+} (* end of [tread12_dsapparg] *)
 
 implement
 {}(*tmp*)
-t2xread_dtapparg
+tread12_dtapparg
   (s2es) =
 (
   auxlst(s2es)
@@ -353,17 +353,17 @@ case+ s2es of
     case+
     s2e0.node() of
     | S2Eany(knd) => ()
-    | _(*non-S2Eany*) => t2xread_s2exp<>(s2e0)
+    | _(*non-S2Eany*) => tread12_s2exp<>(s2e0)
     )
   }
 ) (* end of [auxlst] *)
-} (* end of [t2xread_dtapparg] *)
+} (* end of [tread12_dtapparg] *)
 
 (* ****** ****** *)
 
 implement
 {}(*tmp*)
-t2xread_d2ecl(d2cl) =
+tread12_d2ecl(d2cl) =
 let
 //
 val loc0 = d2cl.loc()
@@ -371,7 +371,7 @@ val loc0 = d2cl.loc()
 (*
 val () =
 println!
-("t2xread_d2ecl: d2cl = ", d2cl)
+("tread12_d2ecl: d2cl = ", d2cl)
 *)
 //
 in
@@ -383,13 +383,13 @@ d2cl.node() of
   (tok, d2c1) =>
   {
     val () =
-    t2xread_d2ecl<>(d2c1)
+    tread12_d2ecl<>(d2c1)
   }
 | D2Cextern
   (tok, d2c1) =>
   {
     val () =
-    t2xread_d2ecl<>(d2c1)
+    tread12_d2ecl<>(d2c1)
   }
 //
 | D2Cinclude
@@ -402,15 +402,15 @@ d2cl.node() of
     | None() => ()
     | Some(d2cs) =>
       (
-        t2xread_d2eclist<>(d2cs)
+        tread12_d2eclist<>(d2cs)
       )
     )
   }
 //
 | D2Cstacst0(s2c, s2t) =>
   {
-    val () = t2xread_s2cst<>(s2c)
-    val () = t2xread_sort2<>(s2t)
+    val () = tread12_s2cst<>(s2c)
+    val () = tread12_sort2<>(s2t)
   }
 //
 | D2Csexpdef(s2c, def) =>
@@ -425,15 +425,15 @@ d2cl.node() of
     def = unsome(def)
 *)
 //
-    val () = t2xread_s2exp<>(def)
+    val () = tread12_s2exp<>(def)
 //
 (*
     val () =
     println!
-    ("t2xread_d2ecl: D2Cs2expdef: s2c = ", s2c)
+    ("tread12_d2ecl: D2Cs2expdef: s2c = ", s2c)
     val () =
     println!
-    ("t2xread_d2ecl: D2Cs2expdef: s2c.def = ", def)
+    ("tread12_d2ecl: D2Cs2expdef: s2c.def = ", def)
 *)
 //
   }
@@ -441,18 +441,18 @@ d2cl.node() of
 | D2Cabstype(s2c, df2) =>
   {
 //
-    val () = t2xread_abstdf2<>(df2)
+    val () = tread12_abstdf2<>(df2)
 //
 (*
     val () =
     println!
-    ("t2xread_d2ecl: D2Cabstype: s2c = ", s2c)
+    ("tread12_d2ecl: D2Cabstype: s2c = ", s2c)
     val () =
     println!
-    ("t2xread_d2ecl: D2Cabstype: s2c.def = ", df2)  
+    ("tread12_d2ecl: D2Cabstype: s2c.def = ", df2)  
     val () =
     println!
-    ("t2xread_d2ecl: D2Cabstype: s2c.sort = ", s2c.sort())
+    ("tread12_d2ecl: D2Cabstype: s2c.sort = ", s2c.sort())
 *)
 //
   }
@@ -461,18 +461,18 @@ d2cl.node() of
   (knd, scs, def) =>
   {
 //
-    val () = t2xread_s2exp<>(def)
+    val () = tread12_s2exp<>(def)
 //
 (*
     val () =
     println!
-    ("t2xread_d2ecl: D2Cabsimpl: scs = ", scs)
+    ("tread12_d2ecl: D2Cabsimpl: scs = ", scs)
     val () =
     println!
-    ("t2xread_d2ecl: D2Cabsimpl: def = ", def)
+    ("tread12_d2ecl: D2Cabsimpl: def = ", def)
     val () =
     println!
-    ("t2xread_d2ecl: D2Cabsimpl: def.sort = ", def.sort())
+    ("tread12_d2ecl: D2Cabsimpl: def.sort = ", def.sort())
 *)
 //
   }
@@ -494,58 +494,58 @@ d2cl.node() of
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
   {
-    val () = t2xread_tq2arglst<>(tqas)
-    val () = t2xread_f2undeclist<>(f2ds)
+    val () = tread12_tq2arglst<>(tqas)
+    val () = tread12_f2undeclist<>(f2ds)
 (*
     val () =
     println!
-    ("t2xread_d2ecl: D2Cfundecl: tqas = ", tqas)
+    ("tread12_d2ecl: D2Cfundecl: tqas = ", tqas)
     val () =
     println!
-    ("t2xread_d2ecl: D2Cfundecl: f2ds = ", f2ds)
+    ("tread12_d2ecl: D2Cfundecl: f2ds = ", f2ds)
 *)
   }
 //
 | D2Cdynconst
   (knd, tqas, d2cs) =>
   {
-    val () = t2xread_d2cstlst<>(d2cs)
-    val () = t2xread_tq2arglst<>(tqas)
+    val () = tread12_d2cstlst<>(d2cs)
+    val () = tread12_tq2arglst<>(tqas)
 (*
     val () =
     println!
-    ("t2xread_d2ecl: D2Cdynconst: tqas = ", tqas)
+    ("tread12_d2ecl: D2Cdynconst: tqas = ", tqas)
     val () =
     println!
-    ("t2xread_d2ecl: D2Cdynconst: d2cs = ", d2cs)
+    ("tread12_d2ecl: D2Cdynconst: d2cs = ", d2cs)
 *)
   }
 //
 | _(* rest-of-d2ecl *) =>
   (
-    prerrln!(loc0, ": t2xread_d2ecl: d2cl = ", d2cl)
+    prerrln!(loc0, ": tread12_d2ecl: d2cl = ", d2cl)
   )
 //
-end // end of [t2xread_d2ecl]
+end // end of [tread12_d2ecl]
 
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_d2eclist(d2cs) =
+tread12_d2eclist(d2cs) =
 (
 list_foreach<d2ecl>(d2cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2ecl><env>(d2c, env) = t2xread_d2ecl<>(d2c)
-} (* end of [t2xread_d2eclist] *)
+list_foreach$fwork<d2ecl><env>(d2c, env) = tread12_d2ecl<>(d2c)
+} (* end of [tread12_d2eclist] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_f2arg
+tread12_f2arg
   (f2a0) =
 (
 case+
@@ -553,86 +553,86 @@ f2a0.node() of
 | F2ARGsome_dyn
   (npf, d2ps) =>
   {
-    val () = t2xread_d2patlst<>(d2ps)
+    val () = tread12_d2patlst<>(d2ps)
   }
 | F2ARGsome_sta
   (s2vs, s2ps) =>
   {
-    val () = t2xread_s2varlst<>(s2vs)
-    val () = t2xread_s2explst<>(s2ps)
+    val () = tread12_s2varlst<>(s2vs)
+    val () = tread12_s2explst<>(s2ps)
   }
 //
 | F2ARGsome_met(s2es) =>
   {
-    val () = t2xread_s2explst<>(s2es)
+    val () = tread12_s2explst<>(s2es)
   }
 )
 //
 implement
 {}(*tmp*)
-t2xread_f2arglst(f2as) =
+tread12_f2arglst(f2as) =
 (
 list_foreach<f2arg>(f2as)
 ) where
 {
 implement(env)
-list_foreach$fwork<f2arg><env>(f2a, env) = t2xread_f2arg<>(f2a)
-} (* end of [t2xread_f2arglst] *)
+list_foreach$fwork<f2arg><env>(f2a, env) = tread12_f2arg<>(f2a)
+} (* end of [tread12_f2arglst] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_tq2arg
+tread12_tq2arg
   (tq2a) =
 (
-  t2xread_s2varlst(tq2a.s2vs())
+  tread12_s2varlst(tq2a.s2vs())
 )
 //
 implement
 {}(*tmp*)
-t2xread_tq2arglst(tqas) =
+tread12_tq2arglst(tqas) =
 (
 list_foreach<tq2arg>(tqas)
 ) where
 {
 implement(env)
-list_foreach$fwork<tq2arg><env>(tq2a, env) = t2xread_tq2arg<>(tq2a)
-} (* end of [t2xread_tq2arglst] *)
+list_foreach$fwork<tq2arg><env>(tq2a, env) = tread12_tq2arg<>(tq2a)
+} (* end of [tread12_tq2arglst] *)
 //
 (* ****** ****** *)
 //
 implement
 {}(*tmp*)
-t2xread_f2undecl
+tread12_f2undecl
   (f2d0) =
 {
   val () =
-  t2xread_d2expopt<>(rcd.def)
+  tread12_d2expopt<>(rcd.def)
   val () =
-  t2xread_f2arglst<>(rcd.arg)
+  tread12_f2arglst<>(rcd.arg)
   val () =
-  t2xread_effs2expopt<>(rcd.res)
+  tread12_effs2expopt<>(rcd.res)
 //
-  val () = t2xread_s2expopt<>(rcd.wtp)
+  val () = tread12_s2expopt<>(rcd.wtp)
 //
 } where
 {
 //
   val+F2UNDECL(rcd) = f2d0
 //
-} (* end of [t2xread_f2undecl] *)
+} (* end of [tread12_f2undecl] *)
 //
 implement
 {}(*tmp*)
-t2xread_f2undeclist(f2ds) =
+tread12_f2undeclist(f2ds) =
 (
 list_foreach<f2undecl>(f2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f2undecl><env>(f2ds, env) = t2xread_f2undecl<>(f2ds)
-} (* end of [t2xread_f2undeclist] *)
+list_foreach$fwork<f2undecl><env>(f2ds, env) = tread12_f2undecl<>(f2ds)
+} (* end of [tread12_f2undeclist] *)
 //
 (* ****** ****** *)
 
@@ -659,7 +659,7 @@ end // end of [t2xerr_add]
 in (* in-of-local *)
 
 implement
-t2xread_main(d2cs) = let
+tread12_main(d2cs) = let
 //
 local
 //
@@ -677,7 +677,7 @@ the_t2xerrlst_set<>(xs) = the_t2xerrlst[] := xs
 end // end of [local]
 //
 val () =
-t2xread_d2eclist<>(d2cs)
+tread12_d2eclist<>(d2cs)
 val
 xerrs = the_t2xerrlst_get<>()
 val
@@ -692,20 +692,20 @@ then
 //
 val () =
 prerrln!
-("t2xread_main: nxerr = ", nxerr)
+("tread12_main: nxerr = ", nxerr)
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("t2xread_main: there is one t2xerr!")
+("tread12_main: there is one t2xerr!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("t2xread_main: there are some t2xerrs!")
+("tread12_main: there are some t2xerrs!")
 //
 val () =
 (
@@ -718,14 +718,14 @@ else
 //
 val () =
 prerrln!
-("t2xread_main: there are no t2xerrs!")
+("tread12_main: there are no t2xerrs!")
 //
 } (* end of [else] *)
 //
-end // end of [t2xread_main]
+end // end of [tread12_main]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_t2xread_dynexp.dats] *)
+(* end of [xats_tread12_dynexp.dats] *)
