@@ -446,7 +446,16 @@ d3e0.node() of
     trans3t_dexp(env0, d3e1)
   in
     d3exp_make_node(loc0, t2p0, D3Elazy(d3e1))
-  end // end of [D3Eaddr]
+  end // end of [D3Elazy]
+| D3Ellazy(d3e1, opt2) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+    val opt2 =
+    trans3t_dexpopt(env0, opt2)
+  in
+    d3exp_make_node(loc0, t2p0, D3Ellazy(d3e1, opt2))
+  end // end of [D3Ellazy]
 //
 end // end of [trans3t_dexp]
 

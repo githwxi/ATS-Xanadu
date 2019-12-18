@@ -1225,6 +1225,16 @@ in
 let
 val
 opt2 =
+t2ype_un_p2tr(t2p1)
+in
+case+ opt2 of
+|
+~Some_vt(t2p2) => t2p2
+|
+~None_vt((*void*)) =>
+let
+val
+opt2 =
 t2ype_un_lazy(t2p1)
 in
 case+ opt2 of
@@ -1235,13 +1245,14 @@ case+ opt2 of
 let
 val
 opt2 =
-t2ype_un_p2tr(t2p1)
+t2ype_un_llazy(t2p1)
 in
 case+ opt2 of
 |
 ~Some_vt(t2p2) => t2p2
 |
 ~None_vt((*void*)) => t2ype_new(loc0)
+end // end of [let]
 end // end of [let]
 end // end of [let]
 //
@@ -1292,6 +1303,39 @@ t2ype_app1(the_t2ype_lazy, d3e1.type())
 in
 d23exp_make_node(loc0, t2p0, D3Elazy(d3e1))
 end // end of [aux_lazy]
+
+fun
+aux_llazy
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ellazy
+( d2e1
+, opt2(*free*)) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+val opt2 =
+(
+case+ opt2 of
+| None() =>
+  None(*void*)
+| Some(d2e2) =>
+  let
+  val t2p2 = the_t2ype_void
+  in
+  Some(trans23_dexp_dn(d2e2, t2p2))
+  end
+) : d3expopt // end-of-val]
+//
+val t2p0 =
+t2ype_app1(the_t2ype_llazy, d3e1.type())
+//
+in
+d23exp_make_node(loc0, t2p0, D3Ellazy(d3e1, opt2))
+end // end of [aux_llazy]
 
 (* ****** ****** *)
 
@@ -1391,10 +1435,16 @@ d2e0.node() of
 | D2Eeval(d2e1) => aux_eval(d2e0)
 | D2Efold(d2e1) => aux_fold(d2e0)
 //
-| D2Elazy(d2e1) => aux_lazy(d2e0)
+| D2Elazy
+    (d2e1) => aux_lazy(d2e0)
+  // nonlin lazy-evaluation
+| D2Ellazy
+    (d2e1, opt2) => aux_llazy(d2e0)
+  // linear lazy-evaluation
 //
 | D2Eanno
     (d2e1, s2e2) => aux_anno(d2e0)
+  // type-annotation ascription
 //
 | _ (*rest-of-d2exp*) => d3exp_none1_0(d2e0)
 //
