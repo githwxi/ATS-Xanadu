@@ -1,6 +1,8 @@
-#The Concrete Syntax of Xanadu
+The Concrete Syntax of Xanadu
+=============================
 
-##Author: Hongwei Xi (gmhwxi@gmail.com)
+Author: Hongwei Xi (gmhwxi@gmail.com)
+-------------------------------------
 
 Xanadu is a programming language in the ATS family.  It is sometimes
 referred to as ATS/Xanadu or simply ATS3.
@@ -35,7 +37,7 @@ six letters can be used as well.
 
 ###Bools
 
-The two boolean values are written as *true* and **false*.
+The two boolean values are written as *true* and *false*.
 
 ###Chars
 
