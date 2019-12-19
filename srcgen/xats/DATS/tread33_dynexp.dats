@@ -121,14 +121,14 @@ d3p0.node() of
     val
     t2p0 = d3p0.type()
     val () =
-    t3xerr_add(T3XERRd3pat(d3p0))
+    trerr33_add(TRERR33d3pat(d3p0))
   in
     println!
-    (loc0, ": T3XERR(d3pat): D3Psym0: sym0 = ", sym0);
+    (loc0, ": TRERR33(d3pat): D3Psym0: sym0 = ", sym0);
     println!
-    (loc0, ": T3XERR(d3pat): D3Psym0: t2p0 = ", t2p0);
+    (loc0, ": TRERR33(d3pat): D3Psym0: t2p0 = ", t2p0);
     println!
-    (loc0, ": T3XERR(d3pat): D3Psym0: dpis = ", dpis);
+    (loc0, ": TRERR33(d3pat): D3Psym0: dpis = ", dpis);
   end
 //
 | D3Ptcast(d3p1, t2p2) =>
@@ -141,25 +141,25 @@ d3p0.node() of
     tread33_d3pat<>(d3p1)
 //
     val () =
-    t3xerr_add(T3XERRd3pat(d3p0))
+    trerr33_add(TRERR33d3pat(d3p0))
   in
 //
     println!
-    (loc0, ": T3XERR(d3pat): D3Ptcast: d3p1 = ", d3p1);
+    (loc0, ": TRERR33(d3pat): D3Ptcast: d3p1 = ", d3p1);
     println!
-    (loc0, ": T3XERR(d3pat): D3Ptcast: t2p1 = ", t2p1);
+    (loc0, ": TRERR33(d3pat): D3Ptcast: t2p1 = ", t2p1);
     println!
-    (loc0, ": T3XERR(d3pat): D3Ptcast: t2p2 = ", t2p2);
+    (loc0, ": TRERR33(d3pat): D3Ptcast: t2p2 = ", t2p2);
 //
   end
 //
 | D3Pnone1(d3p1) =>
   let
     val () =
-    t3xerr_add(T3XERRd3pat(d3p0))
+    trerr33_add(TRERR33d3pat(d3p0))
   in
     println!
-    (loc0, ": T3XERR(d3pat): D3Pnone1: d3p1 = ", d3p1);
+    (loc0, ": TRERR33(d3pat): D3Pnone1: d3p1 = ", d3p1);
   end // end of [D3Pnone1]
 //
 | _(* rest-of-d3pat *) =>
@@ -285,12 +285,12 @@ d3e0.node() of
     val
     t2p0 = d3e0.type()
     val () =
-    t3xerr_add(T3XERRd3exp(d3e0))
+    trerr33_add(TRERR33d3exp(d3e0))
   in
     println!
-    (loc0, ": T3XERR(d3exp): D3Econ2: d2cs = ", d2cs);
+    (loc0, ": TRERR33(d3exp): D3Econ2: d2cs = ", d2cs);
     println!
-    (loc0, ": T3XERR(d3exp): D3Econ2: t2p0 = ", t2p0);
+    (loc0, ": TRERR33(d3exp): D3Econ2: t2p0 = ", t2p0);
   end
 //
 | D3Esym0(sym0, dpis) =>
@@ -298,14 +298,14 @@ d3e0.node() of
     val
     t2p0 = d3e0.type()
     val () =
-    t3xerr_add(T3XERRd3exp(d3e0))
+    trerr33_add(TRERR33d3exp(d3e0))
   in
     println!
-    (loc0, ": T3XERR(d3exp): D3Esym0: sym0 = ", sym0);
+    (loc0, ": TRERR33(d3exp): D3Esym0: sym0 = ", sym0);
     println!
-    (loc0, ": T3XERR(d3exp): D3Esym0: t2p0 = ", t2p0);
+    (loc0, ": TRERR33(d3exp): D3Esym0: t2p0 = ", t2p0);
     println!
-    (loc0, ": T3XERR(d3exp): D3Esym0: dpis = ", dpis);
+    (loc0, ": TRERR33(d3exp): D3Esym0: dpis = ", dpis);
   end
 //
 | D3Eaddr(d3e1) =>
@@ -338,14 +338,14 @@ d3e0.node() of
     tread33_d3exp<>(d3e1)
 //
     val () =
-    t3xerr_add(T3XERRd3exp(d3e0))
+    trerr33_add(TRERR33d3exp(d3e0))
   in
 //
     println!
-    (loc0, ": T3XERR(d3exp): D3Elcast: d3e1 = ", d3e1);
+    (loc0, ": TRERR33(d3exp): D3Elcast: d3e1 = ", d3e1);
 //
-    println!(loc0, ": T3XERR(d3exp): D3Elcast: t2p1 = ", t2p1);
-    println!(loc0, ": T3XERR(d3exp): D3Elcast: lab2 = ", lab2);
+    println!(loc0, ": TRERR33(d3exp): D3Elcast: t2p1 = ", t2p1);
+    println!(loc0, ": TRERR33(d3exp): D3Elcast: lab2 = ", lab2);
 //
   end
 | D3Etcast(d3e1, t2p2) =>
@@ -358,14 +358,14 @@ d3e0.node() of
     tread33_d3exp<>(d3e1)
 //
     val () =
-    t3xerr_add(T3XERRd3exp(d3e0))
+    trerr33_add(TRERR33d3exp(d3e0))
   in
 //
     println!
-    (loc0, ": T3XERR(d3exp): D3Etcast: d3e1 = ", d3e1);
+    (loc0, ": TRERR33(d3exp): D3Etcast: d3e1 = ", d3e1);
 //
-    println!(loc0, ": T3XERR(d3exp): D3Etcast: t2p1 = ", t2p1);
-    println!(loc0, ": T3XERR(d3exp): D3Etcast: t2p2 = ", t2p2);
+    println!(loc0, ": TRERR33(d3exp): D3Etcast: t2p1 = ", t2p1);
+    println!(loc0, ": TRERR33(d3exp): D3Etcast: t2p2 = ", t2p2);
 //
   end
 //
@@ -374,9 +374,9 @@ d3e0.node() of
 | D3Enone1(_) =>
   let
     val () =
-    t3xerr_add(T3XERRd3exp(d3e0))
+    trerr33_add(TRERR33d3exp(d3e0))
   in
-    println!(loc0, ": T3XERR(d3exp): ", d3e0);
+    println!(loc0, ": TRERR33(d3exp): ", d3e0);
   end // end of [D1Enone1]
 //
 | _(* rest-of-d3exp *) =>
@@ -592,11 +592,11 @@ d3cl.node() of
     | Some _ => ()
     | None _ => let
         val () =
-        t3xerr_add(T3XERRd3ecl(d3cl))
+        trerr33_add(TRERR33d3ecl(d3cl))
       in
       println!
       ( loc0
-      , ": T3XERR(d3ecl): D3Cimpdecl: id2c = "
+      , ": TRERR33(d3ecl): D3Cimpdecl: id2c = "
       , id2c )
       end // end of [None()]
     )
@@ -649,19 +649,19 @@ f3a0.node() of
   let
     val loc0 = f3a0.loc()
     val ((*void*)) =
-    t3xerr_add(T3XERRf3arg(f3a0))
+    trerr33_add(TRERR33f3arg(f3a0))
   in
     println!
-    (loc0, ": T3XERR(f3arg): F3ARGnone2: f2a = ", f2a)
+    (loc0, ": TRERR33(f3arg): F3ARGnone2: f2a = ", f2a)
   end
 | F3ARGnone3(f3a) =>
   let
     val loc0 = f3a0.loc()
     val ((*void*)) =
-    t3xerr_add(T3XERRf3arg(f3a0))
+    trerr33_add(TRERR33f3arg(f3a0))
   in
     println!
-    (loc0, ": T3XERR(f3arg): F3ARGnone3: f3a = ", f3a)
+    (loc0, ": TRERR33(f3arg): F3ARGnone3: f3a = ", f3a)
   end
 //
 ) (* end of [tread33_f3arg] *)
@@ -781,21 +781,21 @@ local
 
 extern
 fun{}
-the_t3xerrlst_get(): t3xerrlst
+the_trerr33lst_get(): trerr33lst
 extern
 fun{}
-the_t3xerrlst_set(t3xerrlst): void
+the_trerr33lst_set(trerr33lst): void
 
 implement
 {}(*tmp*)
-t3xerr_add(xerr) = let
+trerr33_add(xerr) = let
 //
 val
-xerrs = the_t3xerrlst_get<>()
+xerrs = the_trerr33lst_get<>()
 //
 in
-  the_t3xerrlst_set<>(list_cons(xerr, xerrs))
-end // end of [t3xerr_add]
+  the_trerr33lst_set<>(list_cons(xerr, xerrs))
+end // end of [trerr33_add]
 
 in (* in-of-local *)
 
@@ -805,24 +805,24 @@ tread33_main(d3cs) = let
 local
 //
 val
-the_t3xerrlst =
-ref<t3xerrlst>(list_nil)
+the_trerr33lst =
+ref<trerr33lst>(list_nil)
 //
 in(*in-of-local*)
 val () =
-$tempenver(the_t3xerrlst)
+$tempenver(the_trerr33lst)
 implement
-the_t3xerrlst_get<>() = the_t3xerrlst[]
+the_trerr33lst_get<>() = the_trerr33lst[]
 implement
-the_t3xerrlst_set<>(xs) = the_t3xerrlst[] := xs
+the_trerr33lst_set<>(xs) = the_trerr33lst[] := xs
 end // end of [local]
 //
 val () =
 tread33_d3eclist<>(d3cs)
 val
-xerrs = the_t3xerrlst_get<>()
+xerrs = the_trerr33lst_get<>()
 val
-nxerr = list_length<t3xerr>(xerrs)
+nxerr = list_length<trerr33>(xerrs)
 //
 in
 //
@@ -833,24 +833,30 @@ then
 //
 val () =
 prerrln!
-("tread33_main: nxerr = ", nxerr)
+("\
+tread33_main: \
+nxerr = ", nxerr)
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("tread33_main: there is one t3xerr!")
+("\
+tread33_main: \
+there is one trerr33!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("tread33_main: there are some t3xerrs!")
+("\
+tread33_main: \
+there are some trerr33s!")
 //
 val () =
 (
-$raise(XATSOPT_T3XERR_EXN(*void*))
+$raise(XATSOPT_TRERR33_EXN(*void*))
 ) : void
 //
 } (* end of [then] *)
@@ -859,7 +865,9 @@ else
 //
 val () =
 prerrln!
-("tread33_main: there are no t3xerrs!")
+("\
+tread33_main: \
+there are none of trerr33-errors!")
 //
 } (* end of [else] *)
 //

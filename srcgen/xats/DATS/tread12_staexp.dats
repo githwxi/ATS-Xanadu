@@ -78,10 +78,10 @@ case+ s2tx of
 | S2TXTerr(loc0) =>
   {
     val () =
-    t2xerr_add(T2XERRs2txt(s2tx))
+    trerr12_add(TRERR12s2txt(s2tx))
 //
     val () =
-    prerrln!(loc0, ": T2XERR(s2txt): ", s2tx);
+    prerrln!(loc0, ": TRERR12(s2txt): ", s2tx);
   }
 *)
 //
@@ -190,12 +190,13 @@ s2e0.node() of
   {
 //
     val () =
-    t2xerr_add(T2XERRs2exp(s2e0))
+    trerr12_add<>
+    (TRERR12s2exp(s2e0))
 //
     val () = tread12_s2exp<>(s2e1)
 //
     val () =
-    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+    prerrln!(loc0, ": TRERR12(s2exp): ", s2e0);
 //
   }
 | S2Ecprf
@@ -203,12 +204,13 @@ s2e0.node() of
   {
 //
     val () =
-    t2xerr_add(T2XERRs2exp(s2e0))
+    trerr12_add<>
+    (TRERR12s2exp(s2e0))
 //
     val () = tread12_s2exp<>(s2e1)
 //
     val () =
-    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+    prerrln!(loc0, ": TRERR12(s2exp): ", s2e0);
 //
   }
 | S2Ectcd
@@ -216,12 +218,13 @@ s2e0.node() of
   {
 //
     val () =
-    t2xerr_add(T2XERRs2exp(s2e0))
+    trerr12_add<>
+    (TRERR12s2exp(s2e0))
 //
     val () = tread12_s2exp<>(s2e1)
 //
     val () =
-    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+    prerrln!(loc0, ": TRERR12(s2exp): ", s2e0);
 //
   }
 //
@@ -230,13 +233,14 @@ s2e0.node() of
   {
 //
     val () =
-    t2xerr_add(T2XERRs2exp(s2e0))
+    trerr12_add<>
+    (TRERR12s2exp(s2e0))
 //
     val () = tread12_s2exp<>(s2e1)
     val () = tread12_sort2<>(s2t2)
 //
     val () =
-    prerrln!(loc0, ": T2XERR(s2exp): ", s2e0);
+    prerrln!(loc0, ": TRERR12(s2exp): ", s2e0);
 //
   }
 //
@@ -245,10 +249,10 @@ s2e0.node() of
   {
 //
     val () =
-    t2xerr_add(T2XERRs2exp(s2e0))
+    trerr12_add<>(TRERR12s2exp(s2e0))
 //
     val () =
-    prerrln!(s1e.loc(), ": T2XERR(s2exp): ", s2e0);
+    prerrln!(s1e.loc(), ": TRERR12(s2exp): ", s2e0);
 //
   }
 //

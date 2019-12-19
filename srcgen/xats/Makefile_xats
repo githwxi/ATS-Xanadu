@@ -9,6 +9,7 @@ MV=mv
 CP=cp
 CC=gcc
 SED=sed
+MVF=mv -f
 RMF=rm -f
 
 ######
@@ -65,9 +66,11 @@ trans12.sats \
 tread12.sats \
 dynexp3.sats \
 trans23.sats \
+tread23.sats \
 trans33.sats \
 tread33.sats \
 trans3t.sats \
+tread3t.sats \
 
 SRCDATS := \
 basics.dats \
@@ -131,11 +134,13 @@ dynexp3.dats \
 dynexp3_print.dats \
 trans23_util0.dats \
 trans23_dynexp.dats \
+tread23_dynexp.dats \
 trans33_util0.dats \
 trans33_dynexp.dats \
 tread33_dynexp.dats \
 trans3t_envmap.dats \
 trans3t_dynexp.dats \
+tread3t_dynexp.dats \
 
 ######
 
@@ -159,7 +164,7 @@ $(PATSCC) -cleanaft \
 libxatsopt: \
 $(OBJSATS) $(OBJDATS) \
 BUILD/libxatsopt_dats.o ; \
-($(AR) -r $@.a $^ && $(CP) -f $@.a ./../../lib)
+($(AR) -r $@.a $^ && $(MVF) $@.a ./../../lib)
 BUILD/libxatsopt_dats.o: \
 DATS/xatsopt.dats; $(PATSCC) -DATS _LIBXATSOPT_ -o $@ -c $<
 

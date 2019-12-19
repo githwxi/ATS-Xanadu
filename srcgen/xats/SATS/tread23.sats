@@ -28,48 +28,50 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: September, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+#staload "./staexp1.sats"
+#staload "./dynexp1.sats"
+
+(* ****** ****** *)
+
+#staload "./staexp2.sats"
+#staload "./statyp2.sats"
+#staload "./dynexp2.sats"
+#staload "./dynexp3.sats"
+
+(* ****** ****** *)
 //
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
+typedef
+treader23
+(a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
 //
-exception
-XATSOPT_FIXITY_EXN of ((*void*))
+datatype trerr23 =
+//
+| TRERR23d3pat of (d3pat)
+| TRERR23d3exp of (d3exp)
+//
+| TRERR23f3arg of (f3arg)
+| TRERR23d3ecl of (d3ecl)
+//
+typedef
+trerr23lst = List0(trerr23)
 //
 (* ****** ****** *)
 //
-exception
-XATSOPT_SYNERR_EXN of ((*void*))
+fun{}
+trerr23_add(trerr23): void
 //
 (* ****** ****** *)
 //
-exception
-XATSOPT_TRERR01_EXN of ((*void*))
-exception
-XATSOPT_TRERR12_EXN of ((*void*))
-exception
-XATSOPT_TRERR23_EXN of ((*void*))
-exception
-XATSOPT_TRERR33_EXN of ((*void*))
-exception
-XATSOPT_TRERR3T_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort((*void*)):<!exn> void
-fun abort_interr((*void*)):<!exn> void
+fun
+tread23_main(d3eclist): void
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+(* end of [xats_tread23.sats] *)
