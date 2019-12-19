@@ -3,7 +3,7 @@ The Concrete Syntax of Xanadu
 
 ### Author: Hongwei Xi (gmhwxi@gmail.com)
 
-<hr></hr>
+<hr size=1></hr>
 
 Xanadu is a programming language in the ATS family.  It is sometimes
 referred to as ATS/Xanadu or simply ATS3.
