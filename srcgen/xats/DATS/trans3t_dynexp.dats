@@ -457,6 +457,14 @@ d3e0.node() of
     d3exp_make_node(loc0, t2p0, D3Ellazy(d3e1, opt2))
   end // end of [D3Ellazy]
 //
+| D3Eanno(d3e1, s2e2) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, D3Eanno(d3e1, s2e2))
+  end  
+//
 end // end of [trans3t_dexp]
 
 end // end of [local]
