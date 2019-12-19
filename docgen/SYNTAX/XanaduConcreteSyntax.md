@@ -54,11 +54,9 @@ same way as in C.
 A string in Xanadu can essentially be written in the same was as in C.
 For instance, here are some examples of string constants:
 
-<table>
-  <tr>
-  <td><code>"Hello, world!\n"</code></td>
-  </tr>
-</table>
+- <code>"abcde"</code>
+- <code>"\"abcde\""</code>
+- <code>"Hello, world!\n"</code>
 
 Identifiers and Keywords
 ------------------------
