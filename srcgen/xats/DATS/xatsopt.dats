@@ -74,9 +74,9 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tread12.sats"
 //
 #staload "./../SATS/trans23.sats"
-#staload "./../SATS/trans33.sats"
 //
-#staload "./../SATS/tread23.sats"
+#staload "./../SATS/trans33.sats"
+#staload "./../SATS/tread33.sats"
 //
 #staload "./../SATS/trans3t.sats"
 //
@@ -248,9 +248,9 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./trans23_util0.dats"
 #dynload "./trans33_util0.dats"
 #dynload "./trans23_dynexp.dats"
-#dynload "./trans33_dynexp.dats"
 //
-#dynload "./tread23_dynexp.dats"
+#dynload "./trans33_dynexp.dats"
+#dynload "./tread33_dynexp.dats"
 //
 #dynload "./trans3t_envmap.dats"
 #dynload "./trans3t_dynexp.dats"
@@ -910,41 +910,76 @@ println!
 val () = synread_main(d0cs)
 //
 val
+d1cs =
+let
+val
 d1cs = trans01_declist(d0cs)
+in
+d1cs where
+{
+  val () = tread01_main(d1cs)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d1cs = ", d1cs)
 *)
 //
-val () = tread01_main(d1cs)
-//
+val
+d2cs =
+let
 val
 d2cs = trans12_declist(d1cs)
+in
+d2cs where
+{
+  val () = tread12_main(d2cs)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d2cs = ", d2cs)
 *)
 //
-val () = tread12_main(d2cs)
 //
 val
+d3cs =
+let
+val
 d3cs = trans23_declist(d2cs)
+in
+d3cs where
+{
+(*
+  val () = tread23_main(d3cs)
+*)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
 *)
-val () = tread23_main(d3cs)
 //
 val
+d3cs =
+let
+val
 d3cs = trans33_declist(d3cs)
-// (*
+in
+d3cs where
+{
+  val () = tread33_main(d3cs)
+}
+end // end of [val]
+(*
 val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
-// *)
+*)
+//
 val
 d3cs = trans3t_program(d3cs)
 // (*

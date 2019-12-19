@@ -46,7 +46,7 @@
 (* ****** ****** *)
 //
 typedef
-treader23
+treader33
 (a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
@@ -70,76 +70,76 @@ t3xerr_add(t3xerr): void
 (* ****** ****** *)
 //
 fun
-tread23_main(d3eclist): void
+tread33_main(d3eclist): void
 //
 (* ****** ****** *)
 //
 fun{}
-tread23_d3pat: treader23(d3pat)
+tread33_d3pat: treader33(d3pat)
 fun{}
-tread23_d3patopt: treader23(d3patopt)
+tread33_d3patopt: treader33(d3patopt)
 fun{}
-tread23_d3patlst: treader23(d3patlst)
+tread33_d3patlst: treader33(d3patlst)
 //
 (* ****** ****** *)
 //
 fun{}
-tread23_d3exp: treader23(d3exp)
+tread33_d3exp: treader33(d3exp)
 fun{}
-tread23_d3expopt: treader23(d3expopt)
+tread33_d3expopt: treader33(d3expopt)
 fun{}
-tread23_d3explst: treader23(d3explst)
+tread33_d3explst: treader33(d3explst)
 //
 (* ****** ****** *)
 
 fun{}
-tread23_d3gua: treader23(d3gua)
+tread33_d3gua: treader33(d3gua)
 fun{}
-tread23_d3clau: treader23(d3clau)
+tread33_d3clau: treader33(d3clau)
 fun{}
-tread23_d3gpat: treader23(d3gpat)
+tread33_d3gpat: treader33(d3gpat)
 fun{}
-tread23_d3gualst: treader23(d3gualst)
+tread33_d3gualst: treader33(d3gualst)
 fun{}
-tread23_d3claulst: treader23(d3claulst)
+tread33_d3claulst: treader33(d3claulst)
 
 (* ****** ****** *)
 //
 fun{}
-tread23_d3ecl: treader23(d3ecl)
+tread33_d3ecl: treader33(d3ecl)
 fun{}
-tread23_d3eclist: treader23(d3eclist)
+tread33_d3eclist: treader33(d3eclist)
 //
 (* ****** ****** *)
 
 fun{}
-tread23_f3arg: treader23(f3arg)
+tread33_f3arg: treader33(f3arg)
 fun{}
-tread23_f3arglst: treader23(f3arglst)
+tread33_f3arglst: treader33(f3arglst)
 fun{}
-tread23_f3arglstopt: treader23(f3arglstopt)
+tread33_f3arglstopt: treader33(f3arglstopt)
 
 (* ****** ****** *)
 
 fun{}
-tread23_v3aldecl: treader23(v3aldecl)
+tread33_v3aldecl: treader33(v3aldecl)
 fun{}
-tread23_v3aldeclist: treader23(v3aldeclist)
+tread33_v3aldeclist: treader33(v3aldeclist)
 
 (* ****** ****** *)
 
 fun{}
-tread23_v3ardecl: treader23(v3ardecl)
+tread33_v3ardecl: treader33(v3ardecl)
 fun{}
-tread23_v3ardeclist: treader23(v3ardeclist)
+tread33_v3ardeclist: treader33(v3ardeclist)
 
 (* ****** ****** *)
 
 fun{}
-tread23_f3undecl: treader23(f3undecl)
+tread33_f3undecl: treader33(f3undecl)
 fun{}
-tread23_f3undeclist: treader23(f3undeclist)
+tread33_f3undeclist: treader33(f3undeclist)
 
 (* ****** ****** *)
 
-(* end of [xats_tread23.sats] *)
+(* end of [xats_tread33.sats] *)
