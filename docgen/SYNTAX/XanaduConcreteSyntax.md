@@ -3,7 +3,7 @@ The Concrete Syntax of Xanadu
 
 ### Author: Hongwei Xi (gmhwxi@gmail.com)
 
-<hr size=1></hr>
+___________________
 
 Xanadu is a programming language in the ATS family.  It is sometimes
 referred to as ATS/Xanadu or simply ATS3.
@@ -39,13 +39,26 @@ these six letters can be used as well.
 
 ### Bools
 
-The two boolean values are written as *true* and *false*.
+The two boolean values are written as *true* and *false*. In the statics,
+one can write *tt* and *ff* for *true* and *false*, respectively.
 
 ### Chars
 
 ### Floats
 
+A floating point number in Xanadu can essentially be written in the
+same way as in C.
+
 ### Strings
+
+A string in Xanadu can essentially be written in the same was as in C.
+For instance, here are some examples of string constants:
+
+<table>
+  <tr>
+  <td><code>"Hello, world!\n"</code></td>
+  </tr>
+</table>
 
 Identifiers and Keywords
 ------------------------
