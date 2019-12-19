@@ -3,6 +3,8 @@ The Concrete Syntax of Xanadu
 
 ### Author: Hongwei Xi (gmhwxi@gmail.com)
 
+-----------------------------
+
 Xanadu is a programming language in the ATS family.  It is sometimes
 referred to as ATS/Xanadu or simply ATS3.
 
@@ -23,7 +25,7 @@ Primitive Constants
 There are currently in Xanadu the following kinds of primitive
 constants: ints (for intergers), bools (for booleans), chars (for
 characters), floating point numbers, and strings (of characters).
-It is planned to support strings of various unicode in the future.
+It is planned to support strings of various unicodes in the future.
 
 ### Ints
 
@@ -31,9 +33,9 @@ Each integer is represented as a non-empty sequence of digits. It is
 assumed by default that the base of a representation is 10 unless the
 first digit is 0, which indicates that the base is 8. For using base
 16, one need to start a representation with either 0x or 0X. Note that
-hexdecimal digits of values from 10 to 15 are represented as letters
-*a*, *b*, *c*, *d*, *e*, and *f*. And the uppercase of each of these
-six letters can be used as well.
+the hexdecimal digits of values from 10 to 15 are represented as
+letters *a*, *b*, *c*, *d*, *e*, and *f*. And the uppercase of each of
+these six letters can be used as well.
 
 ### Bools
 
