@@ -114,9 +114,9 @@ d2p0.node() of
 | D2Pnone1(_) =>
   let
     val () =
-    t2xerr_add(T2XERRd2pat(d2p0))
+    trerr12_add(TRERR12d2pat(d2p0))
   in
-    prerrln!(loc0, ": T2XERR(d2pat): ", d2p0);
+    prerrln!(loc0, ": TRERR12(d2pat): ", d2p0);
   end // end of [D2Pnone1]
 //
 | D2Ptuple
@@ -257,9 +257,9 @@ d2e0.node() of
 | D2Enone1(_) =>
   let
     val () =
-    t2xerr_add(T2XERRd2exp(d2e0))
+    trerr12_add(TRERR12d2exp(d2e0))
   in
-    prerrln!(loc0, ": T2XERR(d2exp): ", d2e0);
+    prerrln!(loc0, ": TRERR12(d2exp): ", d2e0);
   end // end of [D1Enone1]
 //
 | _(* rest-of-d2exp *) =>
@@ -484,9 +484,9 @@ d2cl.node() of
   | D2PITMnone(dqid) =>
     let
     val () =
-    t2xerr_add(T2XERRd2ecl(d2cl))
+    trerr12_add(TRERR12d2ecl(d2cl))
     in
-      prerrln!(loc0, ": T2XERR(d2ecl): ", d2cl);
+      prerrln!(loc0, ": TRERR12(d2ecl): ", d2cl);
     end // end of [D2PITMnone]
   | D2PITMsome(_, _) => ((*void*))
   )
@@ -640,21 +640,21 @@ local
 
 extern
 fun{}
-the_t2xerrlst_get(): t2xerrlst
+the_trerr12lst_get(): trerr12lst
 extern
 fun{}
-the_t2xerrlst_set(t2xerrlst): void
+the_trerr12lst_set(trerr12lst): void
 
 implement
 {}(*tmp*)
-t2xerr_add(xerr) = let
+trerr12_add(xerr) = let
 //
 val
-xerrs = the_t2xerrlst_get<>()
+xerrs = the_trerr12lst_get<>()
 //
 in
-  the_t2xerrlst_set<>(list_cons(xerr, xerrs))
-end // end of [t2xerr_add]
+  the_trerr12lst_set<>(list_cons(xerr, xerrs))
+end // end of [trerr12_add]
 
 in (* in-of-local *)
 
@@ -664,24 +664,24 @@ tread12_main(d2cs) = let
 local
 //
 val
-the_t2xerrlst =
-ref<t2xerrlst>(list_nil)
+the_trerr12lst =
+ref<trerr12lst>(list_nil)
 //
 in(*in-of-local*)
 val () =
-$tempenver(the_t2xerrlst)
+$tempenver(the_trerr12lst)
 implement
-the_t2xerrlst_get<>() = the_t2xerrlst[]
+the_trerr12lst_get<>() = the_trerr12lst[]
 implement
-the_t2xerrlst_set<>(xs) = the_t2xerrlst[] := xs
+the_trerr12lst_set<>(xs) = the_trerr12lst[] := xs
 end // end of [local]
 //
 val () =
 tread12_d2eclist<>(d2cs)
 val
-xerrs = the_t2xerrlst_get<>()
+xerrs = the_trerr12lst_get<>()
 val
-nxerr = list_length<t2xerr>(xerrs)
+nxerr = list_length<trerr12>(xerrs)
 //
 in
 //
@@ -692,24 +692,30 @@ then
 //
 val () =
 prerrln!
-("tread12_main: nxerr = ", nxerr)
+("\
+tread12_main: \
+nxerr = ", nxerr)
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("tread12_main: there is one t2xerr!")
+("\
+tread12_main: \
+there is one trerr12-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("tread12_main: there are some t2xerrs!")
+("\
+tread12_main: \
+there are some trerr12-errors!")
 //
 val () =
 (
-$raise(XATSOPT_T2XERR_EXN(*void*))
+$raise(XATSOPT_TRERR12_EXN(*void*))
 ) : void
 //
 } (* end of [then] *)
@@ -718,7 +724,9 @@ else
 //
 val () =
 prerrln!
-("tread12_main: there are no t2xerrs!")
+("\
+tread12_main: \
+there are none of trerr12-errors!")
 //
 } (* end of [else] *)
 //

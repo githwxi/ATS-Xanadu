@@ -222,21 +222,21 @@ local
 
 extern
 fun{}
-the_t1xerrlst_get(): t1xerrlst
+the_trerr01lst_get(): trerr01lst
 extern
 fun{}
-the_t1xerrlst_set(t1xerrlst): void
+the_trerr01lst_set(trerr01lst): void
 
 implement
 {}(*tmp*)
-t1xerr_add(xerr) = let
+trerr01_add(xerr) = let
 //
 val
-xerrs = the_t1xerrlst_get()
+xerrs = the_trerr01lst_get()
 //
 in
-  the_t1xerrlst_set(list_cons(xerr, xerrs))
-end // end of [t1xerr_add]
+  the_trerr01lst_set(list_cons(xerr, xerrs))
+end // end of [trerr01_add]
 
 in (* in-of-local *)
 
@@ -246,24 +246,24 @@ tread01_main(d1cs) = let
 local
 //
 val
-the_t1xerrlst =
-ref<t1xerrlst>(list_nil)
+the_trerr01lst =
+ref<trerr01lst>(list_nil)
 //
 in(*in-of-local*)
 val () =
-$tempenver(the_t1xerrlst)
+$tempenver(the_trerr01lst)
 implement
-the_t1xerrlst_get<>() = the_t1xerrlst[]
+the_trerr01lst_get<>() = the_trerr01lst[]
 implement
-the_t1xerrlst_set<>(xs) = the_t1xerrlst[] := xs
+the_trerr01lst_set<>(xs) = the_trerr01lst[] := xs
 end // end of [local]
 //
 val () =
 tread01_d1eclist<>(d1cs)
 val
-xerrs = the_t1xerrlst_get()
+xerrs = the_trerr01lst_get()
 val
-nxerr = list_length<t1xerr>(xerrs)
+nxerr = list_length<trerr01>(xerrs)
 //
 in
 //
@@ -281,17 +281,21 @@ if
 (nxerr = 1)
 then
 prerrln!
-("tread01_main: there is one t1xerr!")
+("\
+tread01_main: \
+there is one trans01-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("tread01_main: there are some t1xerrs!")
+("\
+tread01_main: \
+there are some trans01-errors!")
 //
 val () =
 (
-$raise(XATSOPT_T1XERR_EXN(*void*))
+$raise(XATSOPT_TRERR01_EXN(*void*))
 ) : void
 //
 } (* end of [then] *)
@@ -300,7 +304,9 @@ else
 //
 val () =
 prerrln!
-("tread01_main: there are no t1xerrs!")
+("\
+tread01_main: \
+there are none of trans01-errors!")
 //
 } (* end of [else] *)
 //

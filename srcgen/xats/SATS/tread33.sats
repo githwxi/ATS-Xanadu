@@ -51,21 +51,21 @@ treader33
 //
 (* ****** ****** *)
 //
-datatype t3xerr =
+datatype trerr33 =
 //
-| T3XERRd3pat of (d3pat)
-| T3XERRd3exp of (d3exp)
+| TRERR33d3pat of (d3pat)
+| TRERR33d3exp of (d3exp)
 //
-| T3XERRf3arg of (f3arg)
-| T3XERRd3ecl of (d3ecl)
+| TRERR33f3arg of (f3arg)
+| TRERR33d3ecl of (d3ecl)
 //
 typedef
-t3xerrlst = List0(t3xerr)
+trerr33lst = List0(trerr33)
 //
 (* ****** ****** *)
 //
 fun{}
-t3xerr_add(t3xerr): void
+trerr33_add(trerr33): void
 //
 (* ****** ****** *)
 //

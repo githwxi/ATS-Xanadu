@@ -49,23 +49,23 @@ treader12
 //
 (* ****** ****** *)
 //
-datatype t2xerr =
+datatype trerr12 =
 //
-| T2XERRsort2 of (sort2)
+| TRERR12sort2 of (sort2)
 //
-| T2XERRs2txt of (s2txt)
-| T2XERRs2exp of (s2exp)
-| T2XERRd2pat of (d2pat)
-| T2XERRd2exp of (d2exp)
-| T2XERRd2ecl of (d2ecl)
+| TRERR12s2txt of (s2txt)
+| TRERR12s2exp of (s2exp)
+| TRERR12d2pat of (d2pat)
+| TRERR12d2exp of (d2exp)
+| TRERR12d2ecl of (d2ecl)
 //
 typedef
-t2xerrlst = List0(t2xerr)
+trerr12lst = List0(trerr12)
 //
 (* ****** ****** *)
 //
 fun{}
-t2xerr_add(t2xerr): void
+trerr12_add(trerr12): void
 //
 (* ****** ****** *)
 //

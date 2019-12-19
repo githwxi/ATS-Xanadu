@@ -44,16 +44,17 @@ treader01
 //
 (* ****** ****** *)
 
-datatype t1xerr =
-| T1XERRd1ecl of (d1ecl)
+datatype
+trerr01 =
+| TRERR01d1ecl of (d1ecl)
 
 typedef
-t1xerrlst = List0(t1xerr)
+trerr01lst = List0(trerr01)
 
 (* ****** ****** *)
 //
 fun{}
-t1xerr_add(t1xerr): void
+trerr01_add(trerr01): void
 //
 (* ****** ****** *)
 //
