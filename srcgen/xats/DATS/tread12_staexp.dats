@@ -239,8 +239,14 @@ s2e0.node() of
     val () = tread12_s2exp<>(s2e1)
     val () = tread12_sort2<>(s2t2)
 //
+    val
+    s2t1 = s2e1.sort((*void*))
     val () =
-    prerrln!(loc0, ": TRERR12(s2exp): ", s2e0);
+    prerrln!(loc0, ": TRERR12(s2exp): s2e0 = ", s2e0);
+    val () =
+    prerrln!(loc0, ": TRERR12(s2exp): s2t1 = ", s2t1);
+    val () =
+    prerrln!(loc0, ": TRERR12(s2exp): s2t2 = ", s2t2);
 //
   }
 //

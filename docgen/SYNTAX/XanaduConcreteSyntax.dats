@@ -20,6 +20,14 @@ val _ = false: bool(ff)
 
 (* ****** ****** *)
 
+(* Chars *)
+
+val _ = 'a'
+val _ = '\n'
+val _ = '\123'
+
+(* ****** ****** *)
+
 (* Strings *)
 
 val _ = "abcde"

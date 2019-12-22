@@ -299,6 +299,11 @@ case- x0.node() of
 | D2Pcon2(d2cs) =>
   fprint!(out, "D2Pcon2(", d2cs, ")")
 //
+| D2Pflat(d2p1) =>
+  fprint!(out, "D2Pflat(", d2p1, ")")
+| D2Pfree(d2p1) =>
+  fprint!(out, "D2Pfree(", d2p1, ")")
+//
 | D2Psym0(sym, d2pis) =>
   (
   fprint!(out, "D2Psym0(", sym, ")");
