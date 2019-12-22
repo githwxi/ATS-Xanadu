@@ -131,6 +131,42 @@ trenv23_dvar_dn
 local
 
 fun
+auxflat
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Pflat(d2p1) = d2p0.node()
+//
+val d3p1 = trans23_dpat(d2p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pflat(d3p1))
+end // end of [auxflat]
+
+fun
+auxfree
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Pfree(d2p1) = d2p0.node()
+//
+val d3p1 = trans23_dpat(d2p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pfree(d3p1))
+end // end of [auxfree]
+
+(* ****** ****** *)
+
+fun
 auxsym0
 ( d2p0
 : d2pat): d3pat = let
@@ -138,14 +174,15 @@ auxsym0
 val
 loc0 = d2p0.loc()
 val-
-D2Psym0(d1p, dpis) = d2p0.node()
+D2Psym0
+(d1p1, dpis) = d2p0.node()
 //
 val
 t2p0 = t2ype_new(loc0)
 //
 in
   d3pat_make_node
-  (loc0, t2p0, D3Psym0(d1p, dpis))
+  (loc0, t2p0, D3Psym0(d1p1, dpis))
 end // end of [auxsym0]
 
 fun
@@ -255,12 +292,16 @@ d2p0.node() of
     d3pat_con(loc0, d2c0)
   )
 //
+| D2Pflat _ => auxflat(d2p0)
+| D2Pfree _ => auxfree(d2p0)
+//
 | D2Psym0 _ => auxsym0(d2p0)
+//
 | D2Pdapp _ => auxdapp(d2p0)
 //
 | D2Ptuple _ => aux_tuple(d2p0)
 //
-| D2Panno(d2e1, s2e2) => aux_anno(d2p0)
+| D2Panno(_, _) => aux_anno(d2p0)
 //
 | _(* else *) =>
   let
