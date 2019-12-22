@@ -492,16 +492,23 @@ d2pat_node =
 | D2Pcon1 of (d2con)
 | D2Pcon2 of (d2conlst)
 //
+| D2Pflat of (d2pat) // @
+| D2Pfree of (d2pat) // ~
+//
 | D2Psym0 of
   (d1pat(*sym*), d2pitmlst)
 //
-| D2Psapp of (d2pat, s2varlst)
-| D2Pdapp of (d2pat, int(*npf*), d2patlst)
+| D2Psapp of
+  (d2pat, s2varlst(*sarg*))
+| D2Pdapp of
+  ( d2pat
+  , int(*npf*), d2patlst(*darg*))
 //
 | D2Ptuple of
   (int(*knd*), int(*npf*), d2patlst)
 //
-| D2Panno of (d2pat, s2exp) // no s2xtv in anno
+| D2Panno of
+  (d2pat, s2exp) // no s2xtv in anno
 //
 | D2Pnone0 of () | D2Pnone1 of (d1pat)
 //

@@ -767,7 +767,7 @@ s2exp_make_node
   (
   if
   funclo2_islin(fc2)
-  then the_sort2_tbox else the_sort2_vtbox
+  then the_sort2_vtbox else the_sort2_tbox
   ) : sort2 // end of [val]
 } (* end of [s2exp_fun_full] *)
 //
