@@ -4,7 +4,7 @@ xs =
 list_vt_cons(0, list_vt_nil())
 
 val
-~list_vt_cons(x0, xs) = xs
+~list_vt_cons(x0, ys) = xs
 
 ////
 
