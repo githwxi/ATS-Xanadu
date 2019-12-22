@@ -1,10 +1,15 @@
+#symload nil with list_nil
+#symload cons with list_cons
+#symload nil_vt with list_vt_nil
+#symload cons_vt with list_vt_cons
 
 val
 xs =
-list_vt_cons(0, list_vt_nil())
-
+cons_vt(0, nil_vt())
 val
-~list_vt_cons(x0, ys) = xs
+~cons_vt(x0, ys) = xs
+val
+@cons_vt(x0, ys) = xs
 
 ////
 
