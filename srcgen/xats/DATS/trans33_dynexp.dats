@@ -74,6 +74,42 @@ fprint_val<ti2arg> = fprint_ti2arg
 local
 
 fun
+auxflat
+( d3p0
+: d3pat): d3pat = let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pflat(d3p1) = d3p0.node()
+//
+val d3p1 = trans33_dpat(d3p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pflat(d3p1))
+end // end of [auxflat]
+
+fun
+auxfree
+( d3p0
+: d3pat): d3pat = let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pfree(d3p1) = d3p0.node()
+//
+val d3p1 = trans33_dpat(d3p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pfree(d3p1))
+end // end of [auxfree]
+
+(* ****** ****** *)
+
+fun
 auxsym0
 ( d3p0
 : d3pat): d3pat =
@@ -188,6 +224,9 @@ d3p0.node() of
 | D3Pany _ => d3p0
 //
 | D3Pvar _ => d3p0
+//
+| D3Pflat _ => auxflat(d3p0)
+| D3Pfree _ => auxfree(d3p0)
 //
 | D3Psym0 _ => auxsym0(d3p0)
 //
