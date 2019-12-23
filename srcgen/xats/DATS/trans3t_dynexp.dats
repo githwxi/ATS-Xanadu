@@ -230,14 +230,14 @@ trans3t_dexp
 val loc0 = d3e0.loc()
 val t2p0 = d3e0.type()
 //
-(*
+// (*
 val () =
 println!
 ("trans3t_dexp: d3e0 = ", d3e0)
 val () =
 println!
 ("trans3t_dexp: t2p0 = ", t2p0)
-*)
+// *)
 //
 in
 //
@@ -795,22 +795,6 @@ aux_vardecl
 
 (* ****** ****** *)
 
-local
-
-fun
-auxd3cl
-( env0
-: !implenv
-, d3cl: d3ecl): d3ecl =
-(
-  d3cl
-) where
-{
- // HX: yet-to-be-done
-}
-
-in(*in-of-local*)
-
 fun
 aux_fundecl
 ( env0
@@ -820,7 +804,6 @@ let
 //
 val
 loc0 = d3cl.loc()
-//
 val-
 D3Cfundecl
 ( knd
@@ -833,7 +816,7 @@ case+ tqas of
 |
 list_nil _ =>
 (
-  auxd3cl(env0, d3cl)
+  trans3t_fundecl(env0, d3cl)
 )
 |
 list_cons _ =>
@@ -864,8 +847,6 @@ end
 end // end of [list_cons]
 //
 end // end of [aux_fundecl]
-
-end // end of [local]
 
 (* ****** ****** *)
 //
@@ -1100,14 +1081,9 @@ end // end of [trans3t_declist]
 
 (* ****** ****** *)
 
-local
-
-fun
-aux_fundecl
-( env0
-: !implenv
-, d3cl: d3ecl): d3ecl =
-let
+implement
+trans3t_fundecl
+  (env0, d3cl) = let
 //
 val-
 D3Cfundecl
@@ -1138,6 +1114,10 @@ val def = rcd.def
 val wtp = rcd.wtp
 val ctp = rcd.ctp
 //
+val ( ) =
+println!
+("trans3t_fundecl: d2c = ", d2c)
+//
 val def =
 (
 case+ def of
@@ -1146,7 +1126,6 @@ case+ def of
 | Some(d3e0) =>
   Some(trans3t_dexp(env0, d3e0))
 ) : d3expopt // end-of-val
-//
 //
 in
 F3UNDECL(
@@ -1189,7 +1168,20 @@ d3ecl_make_node
 ( d3cl.loc()
 , D3Cfundecl(tok0, mopt, tqas, f3ds)
 )
-end // end of [aux_fundecl]
+end // end of [trans3t__fundecl]
+
+(* ****** ****** *)
+
+local
+
+fun
+aux_fundecl
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl =
+(
+trans3t_fundecl(env0, d3cl)
+) (* end of [aux_fundecl] *)
 
 (* ****** ****** *)
 

@@ -134,10 +134,9 @@ case+ xs of
   strmcon_nil()
 | strmcon_cons(x0, xs) =>
   if
-  filter$test(x0)
+  filter$test<x0>(x0)
   then
-  strmcon_cons
-  (x0, auxmain(xs)) else auxloop($eval(xs))
+  strmcon_cons(x0, auxmain(xs)) else auxloop($eval(xs))
 )
 } (* end of [stream_filter] *)
 
@@ -167,10 +166,9 @@ case+ xs of
   strmcon_vt_nil()
 | strmcon_cons(x0, xs) =>
   if
-  filter$test(x0)
+  filter$test<x0>(x0)
   then
-  strmcon_vt_cons
-  (x0, auxmain(xs)) else auxloop($eval(xs))
+  strmcon_vt_cons(x0, auxmain(xs)) else auxloop($eval(xs))
 )
 } (* end of [stream_filter_vt] *)
 

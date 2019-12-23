@@ -207,6 +207,13 @@ trans3t_declist
 (* ****** ****** *)
 //
 fun
+trans3t_fundecl
+( env0
+: !implenv, d3cl: d3ecl): d3ecl
+//
+(* ****** ****** *)
+//
+fun
 trans3t_timp
 ( env0
 : !implenv, d3cl: d3ecl): d3ecl
