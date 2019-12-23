@@ -76,5 +76,19 @@ fun
 stream_map_vt(stream(x0)): stream_vt(y0)
 //
 (* ****** ****** *)
+//
+(*
+stream_filter: filter$test
+stream_filter_vt: filter$test
+*)
+//
+fun
+<x0:type>
+stream_filter(stream(x0)): stream(x0)
+fun
+<x0:type>
+stream_filter_vt(stream(x0)): stream_vt(x0)
+//
+(* ****** ****** *)
 
 (* end of [stream.sats] *)
