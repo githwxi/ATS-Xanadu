@@ -110,4 +110,70 @@ case+ $eval(xs) of
 
 (* ****** ****** *)
 
+impltmp
+<x0>(*tmp*)
+stream_filter
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain(xs) =
+$lazy
+(auxloop($eval(xs)))
+and
+auxloop
+( xs
+: strmcon(x0)
+)
+: strmcon(x0) =
+(
+case+ xs of
+| strmcon_nil() =>
+  strmcon_nil()
+| strmcon_cons(x0, xs) =>
+  if
+  filter$test(x0)
+  then
+  strmcon_cons
+  (x0, auxmain(xs)) else auxloop($eval(xs))
+)
+} (* end of [stream_filter] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0>(*tmp*)
+stream_filter_vt
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain(xs) =
+$lazy
+(auxloop($eval(xs)))
+and
+auxloop
+( xs
+: strmcon(x0)
+)
+: strmcon_vt(x0) =
+(
+case+ xs of
+| strmcon_nil() =>
+  strmcon_vt_nil()
+| strmcon_cons(x0, xs) =>
+  if
+  filter$test(x0)
+  then
+  strmcon_vt_cons
+  (x0, auxmain(xs)) else auxloop($eval(xs))
+)
+} (* end of [stream_filter_vt] *)
+
+(* ****** ****** *)
+
 (* end of [stream.dats] *)
