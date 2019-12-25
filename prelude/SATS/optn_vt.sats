@@ -27,7 +27,7 @@
 
 (* ****** ****** *)
 //
-// For options
+// For linear options
 //
 (* ****** ****** *)
 //
@@ -36,29 +36,15 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-fun<>
-optn_none?
-{a:type}{b:bool}
-(xs: optn(a, b)): bool(b=ff)
-fun<>
-optn_some?
-{a:type}{b:bool}
-(xs: optn(a, b)): bool(b=tt)
-//
-#symload iseqz with optn_none?
-#symload isneqz with optn_some?
-//
-(* ****** ****** *)
 
 fun
-<a:t0>
-optn_length
+<a:vt>
+optn_vt_length
 {b:bool}
-(xs: optn(a, b)): int(b2i(b))
+(xs: !optn_vt(a, b)): int(b2i(b))
 
-#symload length with optn_length
+#symload length with optn_vt_length
 
 (* ****** ****** *)
 
-(* end of [optn.sats] *)
+(* end of [optn_vt.sats] *)
