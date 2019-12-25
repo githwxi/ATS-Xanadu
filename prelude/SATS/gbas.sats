@@ -63,13 +63,13 @@ g_nequal(!a, !a): void
 
 fun
 <x0:t0><y0:vt>
-map$fopr(x0: x0): y0
+map$fopr(x0: x0): (y0)
 fun
 <x0:vt><y0:vt>
-map0$fopr(x0: x0): y0
+map0$fopr(x0: x0): (y0)
 fun
 <x0:vt><y0:vt>
-map1$fopr(x0: !x0): y0
+map1$fopr(x0: !x0): (y0)
 
 (* ****** ****** *)
 
@@ -82,6 +82,18 @@ filter0$test(x0: x0): bool
 fun
 <x0:vt>
 filter1$test(x0: !x0): bool
+
+(* ****** ****** *)
+
+fun
+<x0:t0><y0:vt>
+mapopt$fopr(x0): optn_vt(y0)
+fun
+<x0:vt><y0:vt>
+mapopt0$fopr(x0): optn_vt(y0)
+fun
+<x0:vt><y0:vt>
+mapopt1$fopr(x0: !x0): optn_vt(y0)
 
 (* ****** ****** *)
 
