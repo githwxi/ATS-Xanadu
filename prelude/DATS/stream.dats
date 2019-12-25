@@ -152,7 +152,7 @@ stream_filter_vt
 {
 fnx
 auxmain(xs) =
-$lazy
+$llazy
 (auxloop($eval(xs)))
 and
 auxloop
@@ -171,6 +171,66 @@ case+ xs of
   strmcon_vt_cons(x0, auxmain(xs)) else auxloop($eval(xs))
 )
 } (* end of [stream_filter_vt] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0><y0>
+stream_mapopt
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain(xs) =
+$lazy
+(auxloop($eval(xs)))
+and
+auxloop(xs) =
+(
+case+ xs of
+| strmcon_nil() =>
+  strmcon_nil()
+| strmcon_cons(x0, xs) =>
+  let
+    val opt = mapopt$fopr(x0)
+  in
+    case+ opt of
+    | ~optn_vt_nil() => auxloop(xs)
+    | ~optn_vt_cons(y0) => strmcon_cons(y0, auxmain(xs))
+  end // end of [strmcon_cons]
+)
+} (* end of [stream_mapopt] *)
+
+impltmp
+<x0><y0>
+stream_mapopt_vt
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain(xs) =
+$llazy
+(auxloop($eval(xs)))
+and
+auxloop(xs) =
+(
+case+ xs of
+| strmcon_nil() =>
+  strmcon_vt_nil()
+| strmcon_cons(x0, xs) =>
+  let
+    val opt = mapopt$fopr(x0)
+  in
+    case+ opt of
+    | ~optn_vt_nil() => auxloop(xs)
+    | ~optn_vt_cons(y0) => strmcon_vt_cons(y0, auxmain(xs))
+  end // end of [strmcon_cons]
+)
+} (* end of [stream_mapopt_vt] *)
 
 (* ****** ****** *)
 
