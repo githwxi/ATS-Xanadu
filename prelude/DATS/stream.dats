@@ -197,7 +197,7 @@ case+ xs of
     val opt = mapopt$fopr(x0)
   in
     case+ opt of
-    | ~optn_vt_nil() => auxloop(xs)
+    | ~optn_vt_nil() => auxloop($eval(xs))
     | ~optn_vt_cons(y0) => strmcon_cons(y0, auxmain(xs))
   end // end of [strmcon_cons]
 )
@@ -226,7 +226,7 @@ case+ xs of
     val opt = mapopt$fopr(x0)
   in
     case+ opt of
-    | ~optn_vt_nil() => auxloop(xs)
+    | ~optn_vt_nil() => auxloop($eval(xs))
     | ~optn_vt_cons(y0) => strmcon_vt_cons(y0, auxmain(xs))
   end // end of [strmcon_cons]
 )
