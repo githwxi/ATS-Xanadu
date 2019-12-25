@@ -27,68 +27,59 @@
 
 (* ****** ****** *)
 //
-// For functional streams
+// For functional lin-streams
 //
 (* ****** ****** *)
 
 fun
-<a:t0>
-stream_nil(): stream(a)
+<a:vt>
+stream_vt_nil(): stream_vt(a)
 fun
-<a:t0>
-stream_cons
-(x0: a, xs: stream(a)): stream(a)
+<a:vt>
+stream_vt_cons
+(x0: a, xs: stream_vt(a)): stream_vt(a)
 
 (* ****** ****** *)
 
 fun
-<a:t0>
-stream_sing(x0: a): stream(a)
+<a:vt>
+stream_vt_sing(x0: a): stream_vt(a)
 fun
-<a:t0>
-stream_pair(x0: a, y0: a): stream(a)
+<a:vt>
+stream_vt_pair(x0: a, y0: a): stream_vt(a)
 
 (* ****** ****** *)
 //
 fun
-<a:t0>
-stream_extend
-(xs: stream(a), x0: a): stream(a)
+<a:vt>
+stream_vt_extend
+(xs: stream_vt(a), x0: a): stream_vt(a)
 fun
-<a:t0>
-stream_append
-(xs: stream(a), ys: stream(a)): stream(a)
+<a:vt>
+stream_vt_append
+(xs: stream_vt(a), ys: stream_vt(a)): stream_vt(a)
 //
 (* ****** ****** *)
 //
 (*
-stream_map: map$fopr
-stream_map_vt: map$fopr
+stream_vt_map0: map0$fopr
 *)
 //
 fun
-<x0:t0>
-<y0:t0>
-stream_map(stream(x0)): stream(y0)
-fun
-<x0:t0>
+<x0:vt>
 <y0:vt>
-stream_map_vt(stream(x0)): stream_vt(y0)
+stream_vt_map0(stream_vt(x0)): stream_vt(y0)
 //
 (* ****** ****** *)
 //
 (*
-stream_filter: filter$test
-stream_filter_vt: filter$test
+stream_vt_filter: filter0$test
 *)
 //
 fun
-<x0:t0>
-stream_filter(stream(x0)): stream(x0)
-fun
-<x0:t0>
-stream_filter_vt(stream(x0)): stream_vt(x0)
+<x0:vt>
+stream_vt_filter0(stream_vt(x0)): stream_vt(x0)
 //
 (* ****** ****** *)
 
-(* end of [stream.sats] *)
+(* end of [stream_vt.sats] *)
