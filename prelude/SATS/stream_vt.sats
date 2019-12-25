@@ -81,5 +81,15 @@ fun
 stream_vt_filter0(stream_vt(x0)): stream_vt(x0)
 //
 (* ****** ****** *)
+//
+(*
+stream_vt_mapopt: mapopt0$fopr
+*)
+fun
+<x0:vt>
+<y0:vt>
+stream_vt_mapopt0(stream_vt(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
 
 (* end of [stream_vt.sats] *)
