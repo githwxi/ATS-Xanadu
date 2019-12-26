@@ -86,12 +86,28 @@ fprint_val<f3arg> = fprint_f3arg
 
 (* ****** ****** *)
 //
+fn
+t2ype_subst_svarlst
+( t2p0: t2ype
+, s2vs: s2varlst
+, tsub: t2ypelst): t2ype =
+(
+case+ s2vs of
+| list_nil _ => t2p0
+| list_cons _ =>
+  t2ype_subst_svarlst(t2p0, s2vs, tsub)
+)
+//
+(* ****** ****** *)
+//
 fun
 d23exp_make_node
 ( loc0: loc_t
 , t2p0: t2ype
 , d3en: d3exp_node) =
-d3exp_make_node(loc0, t2p0, d3en)
+(
+  d3exp_make_node(loc0, t2p0, d3en)
+)
 //
 (* ****** ****** *)
 //
@@ -2262,7 +2278,7 @@ case+ s2vs of
   case+ ti3a of
   | TI3ARGnone() => tfun
   | TI3ARGsome(t2ps) =>
-    t2ype_substs(tfun, s2vs, t2ps)
+    t2ype_subst_svarlst(tfun, s2vs, t2ps)
   )
 //
 end

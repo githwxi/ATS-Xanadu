@@ -125,4 +125,35 @@ case+ xs of
 
 (* ****** ****** *)
 
+impltmp
+<x0><y0>
+stream_vt_mapopt0
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain(xs) =
+$llazy
+(auxloop($eval(xs)))
+and
+auxloop(xs) =
+(
+case+ xs of
+| strmcon_vt_nil() =>
+  strmcon_vt_nil()
+| strmcon_vt_cons(x0, xs) =>
+  let
+    val opt = mapopt0$fopr(x0)
+  in
+    case+ opt of
+    | ~optn_vt_nil() => auxloop($eval(xs))
+    | ~optn_vt_cons(y0) => strmcon_vt_cons(y0, auxmain(xs))
+  end // end of [strmcon_cons]
+)
+} (* end of [stream_vt_mapopt0] *)
+
+(* ****** ****** *)
+
 (* end of [stream_vt.dats] *)
