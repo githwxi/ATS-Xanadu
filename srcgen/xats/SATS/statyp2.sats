@@ -383,17 +383,24 @@ t2ype_revars
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 t2ype_subst
+  (t2yp0: t2ype): t2ype
+fun{}
+t2ype_subst$var
+  (t2ype, flag: &int >> _): t2ype
+//
+fun
+t2ype_subst_svar
 ( t2p0: t2ype
 , s2v0: s2var, tsub: t2ype): t2ype
 fun
-t2ype_substs
+t2ype_subst_svarlst
 ( t2p0: t2ype
 , s2vs: s2varlst, tsub: t2ypelst): t2ype
 //
 fun
-t2ypelst_substs
+t2ypelst_subst_svarlst
 ( t2ps: t2ypelst
 , s2vs: s2varlst, tsub: t2ypelst): t2ypelst
 //

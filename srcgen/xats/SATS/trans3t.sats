@@ -134,6 +134,15 @@ implenv_push_tsub
 //
 (* ****** ****** *)
 //
+fun
+t2ype_subst_implenv
+(t2ype, env0: !implenv): t2ype
+fun
+t2ypelst_subst_implenv
+(t2ypelst, env0: !implenv): t2ypelst
+//
+(* ****** ****** *)
+//
 datatype
 ti3env =
 | TI3ENV of

@@ -1986,7 +1986,7 @@ case+ s2vs of
   case+ ti3a of
   | TI3ARGnone() => tfun
   | TI3ARGsome(t2ps) =>
-    t2ype_substs(tfun, s2vs, t2ps)
+    t2ype_subst_svarlst(tfun, s2vs, t2ps)
   )
 end
 ) : t2ype // end-of-val
