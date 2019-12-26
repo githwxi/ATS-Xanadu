@@ -734,19 +734,21 @@ t2ype_subst$var<>
 val-
 T2Pvar(s2v0) = t2p0.node()
 //
-fun
+fnx
 auxvtss1
 ( vtss
 : List0(svtplst)
 , flag: &int >> int): t2ype =
 (
 case+ vtss of
-| list_nil
-  ((*void*)) => t2p0
-| list_cons
-  (vts1, vtss) =>
-  auxvtss2
-  (vts1.0, vts1.1, vtss, flag)
+|
+list_nil
+((*void*)) => t2p0
+|
+list_cons
+(vts1, vtss) =>
+auxvtss2
+(vts1.0, vts1.1, vtss, flag)
 )
 and
 auxvtss2
@@ -757,30 +759,29 @@ auxvtss2
 , flag: &int >> int): t2ype =
 (
 case+ s2vs of
-| list_nil
-  ((*void*)) =>
-  auxvtss1(vtss, flag)
-| list_cons
-  (s2v1, s2vs) =>
-  let
-    val-
-    list_cons
-    (t2p1, t2ps) = t2ps
-  in
-    if
-    s2v0 = s2v1
-    then (flag := flag+1; t2p1)
-    else auxvtss2(s2vs, t2ps, vtss, flag)
-  end
+|
+list_nil
+((*void*)) =>
+auxvtss1(vtss, flag)
+|
+list_cons
+(s2v1, s2vs) =>
+let
+  val-
+  list_cons
+  (t2p1, t2ps) = t2ps
+in
+  if
+  s2v0 = s2v1
+  then (flag := flag+1; t2p1)
+  else
+  auxvtss2(s2vs, t2ps, vtss, flag)
+end
 ) (* end of [auxvtss2] *)
 //
 } (* end of [t2ype_subst$var] *)
 //
 } (* end of [t2ype_subst_implenv] *)
-
-(* ****** ****** *)
-
-end // end of [local]
 
 (* ****** ****** *)
 //
@@ -815,6 +816,10 @@ list_map$fopr<t2ype><t2ype>
 //
 } (* end of [t2ypelst_subst_svarlst] *)
 //
+(* ****** ****** *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 (* end of [xats_trans3t_envmap.dats] *)
