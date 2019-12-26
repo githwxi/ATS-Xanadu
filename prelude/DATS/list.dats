@@ -64,7 +64,7 @@ loop
 ( xs
 : list(a, m)
 , r0
-: &(?list(a)) >> list(a, m+n)): void =
+: &(?list(a) >> list(a, m+n))): void =
 (
 case+ xs of
 | list_nil() =>

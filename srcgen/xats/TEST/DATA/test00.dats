@@ -12,6 +12,9 @@ typedef v0 = [j:int] int(j)
 typedef tup0 = @(uint(0), uint(1))
 typedef tup1 = $(uint(0), uint(1))
 
+typedef tup2 = $(uint(0), uint(1))
+typedef tup3 = $lin(uint(0), uint(1))
+
 typedef frec0 =
 bool(xy=0) -> @{x=int, y=int(1), z=bool}
 typedef frec1 =
