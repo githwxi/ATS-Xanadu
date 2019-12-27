@@ -84,8 +84,12 @@ Keywords
 Xanadu supports a rich set of programming features, making use of
 quite a few keywords.
 
+The following keywords are for forming expressions:
+
 - <code>$addr</code>:
-  for taking the address of a left-value
+  for taking the address of a left-value; for instance,
+  `$addr(x)` refers to the address of some variable `x`, which
+  is often written as `&x` in C.
 - <code>$fold</code>:
   for folding an unfolded value of some linear datatype (i.e., datavtype)
 - <code>$lazy</code>:
@@ -98,6 +102,15 @@ quite a few keywords.
 - <code>$tup_t</code>: for forming a boxed tuple containing no linear components
 - <code>$tup_vt</code>: for forming a boxed tuple that may contain linear components
   
+The following keywords are for forming declarations:
+
+- <code>fun</code>
+- <code>val</code>
+- <code>var</code>
+- <code>stacst</code>
+- <code>sexpdef</code>
+- <code>typedef</code>
+
 Identifiers
 -----------
 
