@@ -87,20 +87,27 @@ quite a few keywords.
 The following keywords are for forming expressions:
 
 - <code>$addr</code>:
-  for taking the address of a left-value; for instance,
+  for taking the address of a left-value. As an example,
   `$addr(x)` refers to the address of some variable `x`, which
   is often written as `&x` in C.
 - <code>$fold</code>:
-  for folding an unfolded value of some linear datatype (i.e., datavtype)
+  for folding an unfolded value of some linear datatype (i.e., datavtype).
+  This is a new concept in Xanadu, which does not have a counterpart in commonly
+  used programming languages.
 - <code>$lazy</code>:
-  for forming a lazy-value (representing suspended computation)
+  for forming a lazy-value (representing suspended computation). Note that Xanadu
+  is a call-by-value language that supports lazy-evaluation.
 - <code>$llazy</code>:
-  for forming a linear lazy-value (representing suspended computation)
+  for forming a linear lazy-value (representing suspended computation). Linear
+  lazy-evaluation is an extremely useful feature in Xanadu, which seems to have not
+  been supported elsewhere.
 - <code>$raise</code>:
-  for raising a run-time exception (which may be caught by a handler)
-- <code>$tup</code>: for forming a boxed tuple like $tup_t or $tup_vt
-- <code>$tup_t</code>: for forming a boxed tuple containing no linear components
-- <code>$tup_vt</code>: for forming a boxed tuple that may contain linear components
+  for raising a run-time exception (which may be caught by a handler). Xanadu supports
+  the use of exceptions for changing control-flow in program execution.
+- <code>$tup</code>:
+  for forming a boxed tuple. Note that $tup$ is resolved to either $tup_t or $tup_vt.
+- <code>$tup_t</code>: for forming a boxed tuple containing no linear components.
+- <code>$tup_vt</code>: for forming a boxed tuple that may contain linear components.
   
 The following keywords are for forming declarations:
 
