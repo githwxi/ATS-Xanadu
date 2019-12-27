@@ -1213,13 +1213,43 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+fun
+tyrec_kind
+(t2p1: t2ype): int =
+(
+case+
+t2p1.node() of
+|
+T2Ptyrec
+(tknd, _, _) =>
+(
+case+ tknd of
+| TYRECbox0() => 1
+| TYRECbox1() => 1
+//
+| TYRECflt0() => 0
+(*
+| TYRECflt1(_) => 0
+*)
+| TYRECflt2(_) => 0
+)
+| _ (*non-T2Ptyrec*) => 1(*boxed*)
+) (* end of [tyrec_kind] *)
+
+in(*in-of-local*)
+
 implement
 d33exp_proj_up
 ( loc0
 , d3e1, lab2) =
 let
 //
-val t2p1 = d3e1.type()
+val t2p1 =
+d3e1.type()
+val knd1 =
+tyrec_kind(t2p1)
 val opt2 =
 t2ype_projize(t2p1, lab2)
 //
@@ -1227,6 +1257,12 @@ t2ype_projize(t2p1, lab2)
 val () =
 println!
 ("d33exp_proj_up: d3e1 = ", d3e1)
+val () =
+println!
+("d33exp_proj_up: t2p1 = ", t2p1)
+val () =
+println!
+("d33exp_proj_up: knd1 = ", knd1)
 val () =
 println!
 ("d33exp_proj_up: lab2 = ", lab2)
@@ -1249,9 +1285,30 @@ let
   val (i0, t2p2) = it2p2
 in
 //
+if
+(knd1 > 0)
+then
+(
+// HX: boxed
+  d33exp_make_node
+  (loc0, t2p2, D3Eproj(d3e1, lab2, i0))
+)
+else
+(
+// HX: unboxed
 case+
 d3e1.node() of
+//
 | D3Eflat(d3el) =>
+  let
+    val tprj = t2ype_lft(t2p2)
+  in
+    d33exp_make_node
+    (loc0, tprj, D3Eproj(d3el, lab2, i0))
+  end
+//
+// HX: deref
+| D3Eeval(1, d3el) =>
   let
     val tprj = t2ype_lft(t2p2)
   in
@@ -1264,10 +1321,11 @@ d3e1.node() of
     d33exp_make_node
     (loc0, t2p2, D3Eproj(d3e1, lab2, i0))
   )
+) (* end of [else] *)
 //
 end
 //
-end // end of [d33exp_proj_up]
+end (* d33exp_proj_up *) end // end of [local]
 
 (* ****** ****** *)
 
