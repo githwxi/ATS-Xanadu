@@ -60,13 +60,19 @@ as follows:
 
 ### Floats
 
-A float-value in Xanadu can essentially be written in the
-same way as in C.
+A float-value in Xanadu can essentially be written in the same way as
+in C. Please find some examples of float-values as follows:
 
+- <code>0.01</code>
+- <code>1E-2</code>
+- <code>1000</code>
+- <code>1.0E3</code>
+- <code>3.1415926</code>
+  
 ### Strings
 
 A string in Xanadu can essentially be written in the same way as in C.
-For instance, here are some examples of string constants:
+Please find some examples of string constants as follows:
 
 - <code>"abcde"</code>
 - <code>"\\"abcde\\""</code>
