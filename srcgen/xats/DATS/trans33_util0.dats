@@ -1248,6 +1248,9 @@ let
 //
 val t2p1 =
 d3e1.type()
+val t2p1 =
+hnfize(t2p1)
+//
 val knd1 =
 tyrec_kind(t2p1)
 val opt2 =
