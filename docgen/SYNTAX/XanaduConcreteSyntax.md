@@ -94,6 +94,10 @@ The following keywords are for forming expressions:
   for folding an unfolded value of some linear datatype (i.e., datavtype).
   This is a new concept in Xanadu, which does not have a counterpart in commonly
   used programming languages.
+- <code>$free</code>:
+  for freeing an unfolded value of some linear datatype (i.e., datavtype).
+  This is a new concept in Xanadu, which does not have a counterpart in commonly
+  used programming languages.
 - <code>$lazy</code>:
   for forming a lazy-value (representing suspended computation). Note that Xanadu
   is a call-by-value language that supports lazy-evaluation.
@@ -107,16 +111,23 @@ The following keywords are for forming expressions:
 - <code>$tup</code>:
   for forming a boxed tuple. Note that $tup$ is resolved to either $tup_t or $tup_vt.
 - <code>$tup_t</code>: for forming a boxed tuple containing no linear components.
-- <code>$tup_vt</code>: for forming a boxed tuple that may contain linear components.
+- <code>$tup_vt</code>:
+  for forming a boxed tuple that may contain linear components. The formed tuple is
+  linear even if there are no linear components in it.
   
-The following keywords are for forming declarations:
+Some of the commonly used keywords for forming declarations are listed as follows:
 
-- <code>fun</code>
+- <code>fun</code>:
+  for introducing a function-declaration.
+  Some of its variants are: `fn`, `fn0`, `fn1`, and `fnx`.
 - <code>val</code>
+  for introduction a value-declaration (or val-declaration for short).
 - <code>var</code>
-- <code>stacst</code>
-- <code>sexpdef</code>
-- <code>typedef</code>
+  for introduction a variable-declaration (or var-declaration for short).
+- <code>stacst</code>: for introducing a static constant of some (predicative) sort.
+- <code>sexpdef</code>: for introducing a name for a static expression (of any sort).
+- <code>typedef</code>:
+  for introducing a name for a static expression of some (impredicative) sort (such as types, props, and views).
 
 Identifiers
 -----------
