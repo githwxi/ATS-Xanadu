@@ -788,7 +788,9 @@ implement
 t2ype_projize
 (t2p0, lab1) =
 let
+(*
 val t2p0 = hnfize(t2p0)
+*)
 in
 //
 case+
