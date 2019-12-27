@@ -51,14 +51,49 @@ same way as in C.
 
 ### Strings
 
-A string in Xanadu can essentially be written in the same was as in C.
+A string in Xanadu can essentially be written in the same way as in C.
 For instance, here are some examples of string constants:
 
 - <code>"abcde"</code>
 - <code>"\\"abcde\\""</code>
 - <code>"Hello, world!\\n"</code>
 
-Identifiers and Keywords
-------------------------
+Keywords
+--------
+
+Xanadu supports a rich set of programming features, making use of
+quite a few keywords.
+
+- <code>$addr</code>:
+  for taking the address of a left-value
+- <code>$fold</code>:
+  for folding an unfolded value of some linear datatype (i.e., datavtype)
+- <code>$lazy</code>:
+  for forming a lazy-value (representing suspended computation)
+- <code>$llazy</code>:
+  for forming a linear lazy-value (representing suspended computation)
 
 
+Identifiers
+-----------
+
+Fixity-Delarations
+------------------
+
+Stacst-Delarations
+------------------
+
+Staexp-Delarations
+------------------
+
+Value-Delarations
+------------------
+
+Variable-Delarations
+--------------------
+
+Function Delarations
+--------------------
+
+Implement-Delarations
+---------------------
