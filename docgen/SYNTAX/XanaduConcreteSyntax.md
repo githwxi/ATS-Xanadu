@@ -92,8 +92,12 @@ quite a few keywords.
   for forming a lazy-value (representing suspended computation)
 - <code>$llazy</code>:
   for forming a linear lazy-value (representing suspended computation)
-
-
+- <code>$raise</code>:
+  for raising a run-time exception (which may be caught by a handler)
+- <code>$tup</code>: for forming a boxed tuple like $tup_t or $tup_vt
+- <code>$tup_t</code>: for forming a boxed tuple containing no linear components
+- <code>$tup_vt</code>: for forming a boxed tuple that may contain linear components
+  
 Identifiers
 -----------
 
