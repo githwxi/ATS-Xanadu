@@ -127,11 +127,27 @@ Some of the commonly used keywords for forming declarations are listed as follow
 - <code>stacst</code>: for introducing a static constant of some (predicative) sort.
 - <code>sexpdef</code>: for introducing a name for a static expression (of any sort).
 - <code>typedef</code>:
-  for introducing a name for a static expression of some (impredicative) sort (such as types, props, and views).
+  for introducing a name for a static expression of some (impredicative) sort (such as
+  types, props, and views).
 
 Identifiers
 -----------
 
+An identifer is a sequence of chars such that the first char is a
+letter and the rest are either letters or digits, where a letter is
+either from the English alphabet or equals `_` (underscore), `'`
+(apostrophe) or `$` (dollar sign). Also neither `'` nor `$` can appear
+as the first letter of an identifier.  Please find some examples of
+indentifiers as follows:
+
+- <code>xyz</code>
+- <code>xyz'</code>
+- <code>x1yz</code>
+- <code>xyz1</code>
+- <code>_x'y'z_</code>
+- <code>some_variable</code>
+- <code>_$some$variable_</code>
+    
 Fixity-Delarations
 ------------------
 
