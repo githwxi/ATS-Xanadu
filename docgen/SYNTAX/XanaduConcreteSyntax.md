@@ -171,11 +171,26 @@ Function Delarations
 In Xanadu, there are (regular) functions and there are function
 templates.  We often use the word `function` to refer to either a
 regular function (that is not a template) or a function template.
+
 Here is an example of a function declaration:
 
 ```
 fun
-fact(x: int): int = if x > 0 then x * fact(x-1) else 1
+fact(x: int): int =
+if x > 0 then x * fact(x-1) else 1
+```
+
+Here is an example of a function template declaration:
+
+```
+fun
+<a:type>
+length(xs: list(a)): int =
+(
+  case xs of
+  | list_nil() => 0
+  | list_cons(_, xs) => 1 + length(xs)
+)
 ```
 
 Implement-Delarations
