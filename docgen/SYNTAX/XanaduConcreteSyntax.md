@@ -193,5 +193,9 @@ length(xs: list(a)): int =
 )
 ```
 
+For those familiar with ATS2 (i.e., ATS/Postiats), please note that
+the syntax `<a:type>` following the keyword `fun` corresponds to the
+syntax `{a:t@ype}` in ATS2.
+
 Implement-Delarations
 ---------------------
