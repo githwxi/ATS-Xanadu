@@ -46,4 +46,11 @@ val _$some$variable_ = 0
 
 (* ****** ****** *)
 
+#extern
+fun fact(x: int): int
+implfun
+fact(x) = if x > 0 then x * f(x-1) else 1
+
+(* ****** ****** *)
+
 (* end of [XanaduConcreteSyntax.dats] *)
