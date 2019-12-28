@@ -136,17 +136,17 @@ Identifiers
 An identifer is a sequence of chars such that the first char is a
 letter and the rest are either letters or digits, where a letter is
 either from the English alphabet or equals `_` (underscore), `'`
-(apostrophe) or `$` (dollar sign). Also neither `'` nor `$` can appear
-as the first letter of an identifier.  Please find some examples of
-indentifiers as follows:
+(apostrophe) or `$` (dollar sign). Note that neither `'` nor `$` can
+appear as the first letter of an identifier.  Please find some
+examples of indentifiers as follows:
 
 - <code>xyz</code>
 - <code>xyz'</code>
 - <code>x1yz</code>
 - <code>xyz1</code>
-- <code>_x'y'z_</code>
+- <code>\_x'y'z\_</code>
 - <code>some_variable</code>
-- <code>_$some$variable_</code>
+- <code>\_$some$variable\_</code>
     
 Fixity-Delarations
 ------------------
