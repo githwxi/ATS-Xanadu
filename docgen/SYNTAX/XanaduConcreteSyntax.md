@@ -147,26 +147,34 @@ find some examples of indentifiers as follows:
 - <code>\_X'Y'Z\_</code>
 - <code>some_variable</code>
 - <code>\_$some$variable\_</code>
-    
-Fixity-Delarations
+
+Static Expressions
+------------------
+
+Dynamic Expressions
+------------------
+
+Fixity Delarations
 ------------------
 
 Xanadu supports prefix, infix, and postfix operators.
 
-Stacst-Delarations
-------------------
 
-Staexp-Delarations
-------------------
+Static Declarations
+-------------------
 
-Value-Delarations
-------------------
+### Stacst-Delarations
 
-Variable-Delarations
+### Staexp-Delarations
+
+Dynamic Declarations
 --------------------
 
-Function Delarations
---------------------
+### Value-Delarations
+
+### Variable-Delarations
+
+### Function Delarations
 
 In Xanadu, there are (regular) functions and there are function
 templates.  We often use the word `function` to refer to either a
