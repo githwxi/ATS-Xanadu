@@ -194,8 +194,32 @@ length(xs: list(a)): int =
 ```
 
 For those familiar with ATS2 (i.e., ATS/Postiats), please note that
-the syntax `<a:type>` following the keyword `fun` corresponds to the
+the syntax `<a:type>` (following the keyword `fun`) corresponds to the
 syntax `{a:t@ype}` in ATS2.
 
 Implement-Delarations
 ---------------------
+
+An implement-declaration implements a previously declared dynamic constant.
+For instance, the following declaration introduces a name `fact` for a function
+of the type `int -> int`:
+
+```
+fun fact(x: int): int
+```
+
+The name `fact` is not associated with a definition at the point where
+it is declared. Instead, an implement-declaration for `fact` can be given
+elsewhere as follows:
+
+  
+```
+implfun
+fact(x) = if x > 0 then x * f(x-1) else 1
+```
+
+### Documenting, Documenting, Documenting, ...
+
+Xanadu is a rich programming language, and its concrete syntax is large and
+complex. I expect that the process of documenting Xanadu will be going on for
+quite a long time. Please contribute generously to this process.
