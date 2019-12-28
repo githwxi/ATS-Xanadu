@@ -136,20 +136,22 @@ Identifiers
 An identifer is a sequence of chars such that the first char is a
 letter and the rest are either letters or digits, where a letter is
 either from the English alphabet or equals `_` (underscore), `'`
-(apostrophe) or `$` (dollar sign). Note that neither `'` nor `$` can
-appear as the first letter of an identifier.  Please find some
-examples of indentifiers as follows:
+(apostrophe) or `$` (dollar sign). Note that neither the char `'` nor
+the char `$` can appear as the first letter of an identifier.  Please
+find some examples of indentifiers as follows:
 
 - <code>xyz</code>
 - <code>xyz'</code>
 - <code>x1yz</code>
 - <code>xyz1</code>
-- <code>\_x'y'z\_</code>
+- <code>\_X'Y'Z\_</code>
 - <code>some_variable</code>
 - <code>\_$some$variable\_</code>
     
 Fixity-Delarations
 ------------------
+
+Xanadu supports prefix, infix, and postfix operators.
 
 Stacst-Delarations
 ------------------
@@ -165,6 +167,16 @@ Variable-Delarations
 
 Function Delarations
 --------------------
+
+In Xanadu, there are (regular) functions and there are function
+templates.  We often use the word `function` to refer to either a
+regular function (that is not a template) or a function template.
+Here is an example of a function declaration:
+
+```
+fun
+fact(x: int): int = if x > 0 then x * fact(x-1) else 1
+```
 
 Implement-Delarations
 ---------------------

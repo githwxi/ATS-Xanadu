@@ -36,4 +36,14 @@ val _ = "Hello, world!\n"
 
 (* ****** ****** *)
 
+val xyz = 0
+val xyz' = 0
+val x1yz = 0
+val xyz1 = 0
+val _X'Y'Z_ = 0
+val some_variable = 0
+val _$some$variable_ = 0
+
+(* ****** ****** *)
+
 (* end of [XanaduConcreteSyntax.dats] *)
