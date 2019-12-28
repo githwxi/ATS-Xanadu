@@ -228,6 +228,7 @@ fact(x) = if x > 0 then x * f(x-1) else 1
 
 ## Documenting, Documenting, Documenting, ...
 
-Xanadu is a rich programming language, and its concrete syntax is large and
-complex. I expect that the process of documenting Xanadu will be going on for
-quite a long time. Please contribute generously to this process.
+Xanadu is a feature-rich programming language, and its concrete syntax
+is large and complex. I expect that the process of documenting Xanadu
+will be going on for quite a long time. Please contribute amply and
+generously to this process.
