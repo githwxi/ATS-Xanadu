@@ -51,6 +51,21 @@ UN="prelude/SATS/unsafe.sats"
 #staload "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
+//
+implement
+t2ype_isdat
+  (t2p0) =
+(
+case+
+t2p0.node() of
+| T2Pcst(s2c0) =>
+  s2cst_isdat(s2c0)
+| T2Papp(t2pf, _) =>
+  t2ype_isdat(t2pf)
+| _ (*rest-of-t2ype*) => false
+)
+//
+(* ****** ****** *)
 
 local
 

@@ -1276,12 +1276,26 @@ in
 case+ opt2 of
 |
 ~None_vt() =>
+(
+if
+t2ype_isdat(t2p1)
+then
+(
+let
+  val t2p2 = t2ype_new(loc0)
+in
+  d33exp_make_node
+  (loc0, t2p2, D3Epcon(d3e1, lab2))
+end
+)
+else
 let
   val t2p2 = t2ype_new(loc0)
 in
   d33exp_make_node
   (loc0, t2p2, D3Elcast(d3e1, lab2))
 end
+)
 |
 ~Some_vt(it2p2) =>
 let

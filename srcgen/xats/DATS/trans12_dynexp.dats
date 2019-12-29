@@ -4258,6 +4258,9 @@ in
 //
 the_dexpenv_add_conlst(d2cs) where
 {
+//
+val () = s2cst_set_dconlst(s2c0, d2cs)
+//
 (*
 val () =
 println!

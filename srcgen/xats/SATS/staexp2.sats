@@ -1169,6 +1169,9 @@ overload unsome with s2cstnul_unsome
 //
 (* ****** ****** *)
 //
+// HX:
+// dynarray-based
+//
 fun
 s2cst_get_abs
 (s2c: s2cst): abstdf2
@@ -1177,6 +1180,9 @@ stamp_s2cst_abs
 (s2c: s2cst, abs: abstdf2): void
 //
 (* ****** ****** *)
+//
+// HX:
+// dynarray-based
 //
 fun
 s2cst_get_sexp(s2cst): s2exp
@@ -1188,6 +1194,9 @@ overload .sexp with s2cst_get_sexp
 //
 (* ****** ****** *)
 //
+// HX:
+// dynarray-based
+//
 fun
 s2cst_get_type(s2cst): t2ype
 //
@@ -1196,6 +1205,15 @@ stamp_s2cst_type
 (s2c: s2cst, def: t2ype): void
 //
 overload .type with s2cst_get_type
+//
+(* ****** ****** *)
+//
+// HX-2019-12-18:
+// hashtable-based
+// implemented in dynexp2.dats
+//
+fun
+s2cst_isdat(s2c0: s2cst): bool
 //
 (* ****** ****** *)
 

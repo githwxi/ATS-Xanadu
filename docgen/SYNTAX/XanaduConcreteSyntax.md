@@ -117,11 +117,12 @@ The following keywords are for forming expressions:
   
 Some of the commonly used keywords for forming declarations are listed as follows:
 
-- <code>fun</code>:
-  for introducing a function-declaration.
+- <code>fun</code>: for
+  introducing a function-declaration (or fun-declaration for short).
   Some of its variants are: `fn`, `fn0`, `fn1`, and `fnx`.
 - <code>val</code>
   for introduction a value-declaration (or val-declaration for short).
+  Some of its variants are: `val+` and `val-`.
 - <code>var</code>
   for introduction a variable-declaration (or var-declaration for short).
 - <code>stacst</code>: for introducing a static constant of some (predicative) sort.
@@ -133,9 +134,9 @@ Some of the commonly used keywords for forming declarations are listed as follow
 Identifiers
 -----------
 
-An identifer is a sequence of chars such that the first char is a
-letter and the rest are either letters or digits, where a letter is
-either from the English alphabet or equals `_` (underscore), `'`
+An identifer is a non-empty sequence of chars such that the first char
+is a letter and the rest are either letters or digits, where a letter
+is either from the English alphabet or equals `_` (underscore), `'`
 (apostrophe) or `$` (dollar sign). Note that neither the char `'` nor
 the char `$` can appear as the first letter of an identifier.  Please
 find some examples of indentifiers as follows:
@@ -148,17 +149,47 @@ find some examples of indentifiers as follows:
 - <code>some_variable</code>
 - <code>\_$some$variable\_</code>
 
+There may be restrictions to be imposed on the use of the char `$` in
+an identifier.
+
 Static Expressions
 ------------------
 
+There are many forms of static expressions in Xanadu.
+
 Dynamic Expressions
 ------------------
+
+There are many forms of dynamic expressions in Xanadu.
 
 Fixity Delarations
 ------------------
 
 Xanadu supports prefix, infix, and postfix operators.
 
+### Infix-declarations
+
+An infix operator is binary and it may
+be non-associative, left-associative or right-associative. Such an operator
+is supposed to be placed between its two arguments.
+
+The keywords `#infix`, `#infixl`, and `#infixr` are for initiating
+infix-declarations.
+  
+### Prefix-declarations
+
+A prefix operator is unary and it is supposed to be placed immediately before
+its argument.
+
+### Postfix-declarations
+
+A postfix operator is unary and it is supposed to be placed immediately after
+its argument.
+
+### Nonfix-declarations
+
+A nonfix-declaration is introduced to eliminate the fixity status previously assigned
+to an identifier.
 
 Static Declarations
 -------------------

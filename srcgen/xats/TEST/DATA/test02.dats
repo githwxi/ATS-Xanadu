@@ -1,3 +1,10 @@
+val xs =
+list_cons
+(1, list_nil())
+val x0 = xs.list_cons$1
+
+////
+
 #symload nil with list_nil
 #symload cons with list_cons
 #symload nil_vt with list_vt_nil

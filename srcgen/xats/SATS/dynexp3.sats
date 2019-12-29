@@ -317,9 +317,11 @@ d3exp_node =
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
 //
+| D3Epcon of
+  (d3exp(*con*), label(*proj*))
 | D3Eproj of
-  ( d3exp(*rcd*)
-  , label(*proj*), int(*index*))
+  (d3exp(*rcd*),
+   label(*proj*), int(*index*))
 //
 | D3Elet of
   (d3eclist, d3exp(*sequence*))
