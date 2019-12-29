@@ -168,9 +168,15 @@ and `#infixr` are for initiating infix-declarations.
 
 A prefix operator is unary and it is supposed to be placed immediately
 before its argument. The keyword `#prefix` is for initiating
-prefix-declarations.
+prefix-declarations. Some examples of prefix-declarations are given as follows:
 
+- `#prefix -` 
+- `#prefix ~ of 51` 
+- `#prefix @ of 71` 
 
+Note that `~` is given a precedence value of 51 and `@` a precedence
+value of 71. The default precedence value for `-` is `0`.
+  
 ### Postfix-declarations
 
 A postfix operator is unary and it is supposed to be placed
