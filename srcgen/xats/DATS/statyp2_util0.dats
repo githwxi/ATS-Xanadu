@@ -626,14 +626,23 @@ let
 val-
 T2Pcst(s2c0) = t2p0.node()
 //
-val def0 = s2cst_get_type(s2c0)
+val
+def0 = s2cst_get_type(s2c0)
 //
 in
 //
 case+
 def0.node() of
+//
 | T2Pnone0() => t2p0
-| _(* else *) => t2ype_hnfize(def0)
+//
+| _(* else *) => 
+  (
+    t2ype_hnfize(def0)
+  ) where
+  {
+    val () = flag := flag + 1
+  }
 //
 end // end of [auxcst]
 

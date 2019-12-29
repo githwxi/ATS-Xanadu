@@ -284,7 +284,8 @@ elsewhere as follows:
   
 ```
 implfun
-fact(x) = if x > 0 then x * f(x-1) else 1
+fact(x) =
+if x > 0 then x * fact(x-1) else 1
 ```
 
 ## Documenting, Documenting, Documenting, ...

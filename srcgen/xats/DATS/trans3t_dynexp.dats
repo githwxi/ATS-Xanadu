@@ -238,6 +238,8 @@ d3e0.node() of
 | D3Eflt _ => d3e0
 | D3Estr _ => d3e0
 //
+| D3Etop _ => d3e0
+//
 | D3Evar _ => d3e0
 //
 | D3Econ1 _ => d3e0
