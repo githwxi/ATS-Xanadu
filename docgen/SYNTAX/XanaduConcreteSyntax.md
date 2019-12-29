@@ -185,8 +185,8 @@ initiating nonfix-declarations. For instance, the following
 declarations removes the fixity status of the identifiers following
 the keyword `#nonfix`:
 
--- `#nonfix foo`
--- `#nonfix bar baz`
+- `#nonfix foo`
+- `#nonfix bar baz`
 
 Static Expressions
 ------------------
