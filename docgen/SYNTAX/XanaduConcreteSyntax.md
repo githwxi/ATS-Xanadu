@@ -152,6 +152,42 @@ find some examples of indentifiers as follows:
 There may be restrictions to be imposed on the use of the char `$` in
 an identifier.
 
+Fixity Delarations
+------------------
+
+Xanadu supports prefix, infix, and postfix operators.
+
+### Infix-declarations
+
+An infix operator is binary and it may be non-associative,
+left-associative or right-associative. Such an operator is supposed to
+be placed between its two arguments. The keywords `#infix`, `#infixl`,
+and `#infixr` are for initiating infix-declarations.
+  
+### Prefix-declarations
+
+A prefix operator is unary and it is supposed to be placed immediately
+before its argument. The keyword `#prefix` is for initiating
+prefix-declarations.
+
+
+### Postfix-declarations
+
+A postfix operator is unary and it is supposed to be placed
+immediately after its argument. The keyword `#postfix` is for
+initiating postfix-declarations.
+
+### Nonfix-declarations
+
+A nonfix-declaration is introduced to remove the fixity status
+previously assigned to an identifier.  The keyword `#nonfix` is for
+initiating nonfix-declarations. For instance, the following
+declarations removes the fixity status of the identifiers following
+the keyword `#nonfix`:
+
+-- `#nonfix foo`
+-- `#nonfix bar baz`
+
 Static Expressions
 ------------------
 
@@ -161,35 +197,6 @@ Dynamic Expressions
 ------------------
 
 There are many forms of dynamic expressions in Xanadu.
-
-Fixity Delarations
-------------------
-
-Xanadu supports prefix, infix, and postfix operators.
-
-### Infix-declarations
-
-An infix operator is binary and it may
-be non-associative, left-associative or right-associative. Such an operator
-is supposed to be placed between its two arguments.
-
-The keywords `#infix`, `#infixl`, and `#infixr` are for initiating
-infix-declarations.
-  
-### Prefix-declarations
-
-A prefix operator is unary and it is supposed to be placed immediately before
-its argument.
-
-### Postfix-declarations
-
-A postfix operator is unary and it is supposed to be placed immediately after
-its argument.
-
-### Nonfix-declarations
-
-A nonfix-declaration is introduced to eliminate the fixity status previously assigned
-to an identifier.
 
 Static Declarations
 -------------------
