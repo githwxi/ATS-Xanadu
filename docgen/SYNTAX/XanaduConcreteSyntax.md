@@ -162,8 +162,20 @@ Xanadu supports prefix, infix, and postfix operators.
 An infix operator is binary and it may be non-associative,
 left-associative or right-associative. Such an operator is supposed to
 be placed between its two arguments. The keywords `#infix`, `#infixl`,
-and `#infixr` are for initiating infix-declarations.
-  
+and `#infixr` are for initiating infix-declarations. Also, `#infix0` is
+the same as `#infix`. Please find some examples of infix-declarations as
+follows:
+
+- #infixl + -
+- #infixl * /
+- #infix0 < > of 40
+- #infix0 = != of 30
+
+These declarations state that `+` and `-` are left-associative infix
+operators; `*` and `/` are right-associative infix operators; '<' and
+'>' are non-associative operations of precedence value 40; and '=' and
+'!=' are non-associative operations of precedence value 30.
+
 ### Prefix-declarations
 
 A prefix operator is unary and it is supposed to be placed immediately
