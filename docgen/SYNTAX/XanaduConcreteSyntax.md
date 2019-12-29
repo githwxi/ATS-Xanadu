@@ -172,9 +172,9 @@ follows:
 - #infix0 = != of 30
 
 These declarations state that `+` and `-` are left-associative infix
-operators; `*` and `/` are right-associative infix operators; '<' and
-'>' are non-associative operations of precedence value 40; and '=' and
-'!=' are non-associative operations of precedence value 30.
+operators; `*` and `/` are right-associative infix operators; `<` and
+`>` are non-associative operations of precedence value 40; and `=` and
+`!=` are non-associative operations of precedence value 30.
 
 ### Prefix-declarations
 
