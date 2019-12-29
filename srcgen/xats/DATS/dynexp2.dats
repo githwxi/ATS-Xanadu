@@ -264,6 +264,23 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+s2cst_isdat
+  (s2c0) =
+let
+val
+opt =
+s2cst_get_dconlst(s2c0)
+in
+//
+case+ opt of
+| ~None_vt() => false
+| ~Some_vt(d2cs) => true
+//
+end // end of [s2cst_isdat]
+
+(* ****** ****** *)
+
 local
 
 typedef
@@ -1187,6 +1204,90 @@ case+ arg of
 )
 //
 } (* end of [f2undecl_get_s2exp] *)
+
+(* ****** ****** *)
+
+local
+//
+#staload
+"libats/SATS/hashfun.sats"
+#staload
+"libats/SATS/hashtbl_chain.sats"
+//
+#staload _(*anon*) = "libats/DATS/qlist.dats"
+//
+#staload _(*anon*) = "libats/DATS/hashfun.dats"
+#staload _(*anon*) = "libats/DATS/linmap_list.dats"
+#staload _(*anon*) = "libats/DATS/hashtbl_chain.dats"
+//
+typedef key = uint
+typedef itm = d2conlst
+//
+vtypedef hashtbl = hashtbl(key, itm)
+//
+val
+theCap = 1*1024
+val
+theHashtbl = 
+hashtbl_make_nil<key,itm>(i2sz(theCap))
+val
+theHashtbl = $UN.castvwtp0{ptr}(theHashtbl)
+//
+in (* in of local *)
+
+(* ****** ****** *)
+//
+implement
+hash_key<key>(key) =
+$UN.cast
+(inthash_jenkins($UN.cast(key)))
+//
+implement
+gequal_val_val<key>(x, y) = (x = y)
+//
+(* ****** ****** *)
+
+implement
+s2cst_get_dconlst
+  (s2c) = let
+//
+val key =
+  $STM.stamp2uint(s2c.stamp())
+val tbl =
+  $UN.castvwtp0{hashtbl}(theHashtbl)
+//
+val ans =
+(
+  hashtbl_search_opt<key,itm>(tbl, key)
+)
+//
+in
+  let prval () = $UN.cast2void(tbl) in ans end
+//
+end // end of [s2cst_get_dconlst]
+
+(* ****** ****** *)
+
+implement
+s2cst_set_dconlst
+  (s2c, d2cs) =
+{
+//
+val key =
+  $STM.stamp2uint(s2c.stamp())
+val tbl =
+  $UN.castvwtp0{hashtbl}(theHashtbl)
+//
+val-~None_vt() =
+(
+  hashtbl_insert_opt<key,itm>(tbl, key, d2cs)
+)
+//
+prval ((*void*)) = $UN.cast2void(tbl)
+//
+} (* end of [s2cst_set_dconlst] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 

@@ -229,6 +229,11 @@ t2ype_node =
 (* ****** ****** *)
 //
 fun
+t2ype_isdat(t2ype): bool
+//
+(* ****** ****** *)
+//
+fun
 t2ype_get_sort(t2ype): sort2
 fun
 t2ype_get_node(t2ype): t2ype_node

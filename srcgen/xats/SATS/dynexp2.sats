@@ -175,14 +175,38 @@ overload .s2vs with tq2arglst_get_s2vs
 //
 (* ****** ****** *)
 //
-abstype d2con_tbox = ptr
-typedef d2con = d2con_tbox
+abstype
+d2con_tbox = ptr
+typedef
+d2con = d2con_tbox
 //
-typedef d2conlst = List0(d2con)
-typedef d2conopt = Option(d2con)
+typedef
+d2conlst = List0(d2con)
+typedef
+d2conopt = Option(d2con)
 //
-vtypedef d2conlst_vt = List0_vt(d2con)
-vtypedef d2conopt_vt = Option_vt(d2con)
+vtypedef
+d2conlst_vt = List0_vt(d2con)
+vtypedef
+d2conopt_vt = Option_vt(d2con)
+//
+(* ****** ****** *)
+//
+// HX:
+// hashtable-based
+//
+(*
+// HX-2019-12-28:
+// it is in staexp2.sats
+fun
+s2cst_isdat(s2c0: s2cst): bool
+*)
+fun
+s2cst_get_dconlst
+(s2c0: s2cst): Option_vt(d2conlst)
+fun
+s2cst_set_dconlst
+(s2c0: s2cst, d2cs: d2conlst): void
 //
 (* ****** ****** *)
 //

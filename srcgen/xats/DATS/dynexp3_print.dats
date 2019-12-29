@@ -381,6 +381,11 @@ x0.node() of
   ( out, "D3Edapp("
   , d3e1, "; ", npf2, "; ", d3es, ")")
 //
+| D3Epcon
+  (d3e1, lab2) =>
+  fprint!
+  ( out
+  , "D3Epcon(", d3e1, "; ", lab2, ")")
 | D3Eproj
   (d3e1, lab2, idx2) =>
   fprint!
