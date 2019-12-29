@@ -219,8 +219,8 @@ fprint!
 (out, sym, "(", stamp, ")");
 (*
 fprint!(out, "; tqas= ", x0.tqas());
-fprint!(out, "; sexp= ", x0.sexp())
-fprint!(out, "; type= ", x0.type())
+fprint!(out, "; sexp= ", x0.sexp());
+fprint!(out, "; type= ", x0.type());
 *)
 ) where
 {

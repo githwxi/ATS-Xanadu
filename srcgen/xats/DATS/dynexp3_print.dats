@@ -356,7 +356,8 @@ x0.node() of
   fprint!
   ( out
   , "D3Etimp("
-  , d2e1, "; ", tsub1, "; ", d2c2, "; ", tsub2, ")")
+  , d2e1, "; "
+  , tsub1, "; ", d2c2, "; ", tsub2, ")")
 //
 | D3Esap0
   (d3e1, s2es) =>
