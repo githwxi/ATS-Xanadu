@@ -174,15 +174,20 @@ prefix-declarations. Some examples of prefix-declarations are given as follows:
 - `#prefix ~ of 51` 
 - `#prefix @ of 71` 
 
-Note that `~` is given a precedence value of 51 and `@` a precedence
-value of 71. The default precedence value for `-` is `0`.
+Note that `~` is hereby given a precedence value of 51 and `@` a
+precedence value of 71. The default precedence value for `-` is `0`.
   
 ### Postfix-declarations
 
 A postfix operator is unary and it is supposed to be placed
 immediately after its argument. The keyword `#postfix` is for
-initiating postfix-declarations.
+initiating postfix-declarations. Here is a postfix-declaration:
 
+- `#postfix sz of 99`
+
+For instance, one may interpret `sz` as a cast operator from 32-bit
+int-values to 64-bit size-values.
+  
 ### Nonfix-declarations
 
 A nonfix-declaration is introduced to remove the fixity status
