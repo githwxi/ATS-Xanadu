@@ -230,7 +230,7 @@ gseq_cons
   (x0, xs) = list_cons(x0, xs)
 //
 (* ****** ****** *)
-
+//
 impltmp
 {x0:type}
 gseq_nil?
@@ -239,28 +239,28 @@ impltmp
 {x0:type}
 gseq_cons?
 <x0,list(x0)>(xs) = list_cons?(xs)
-
+//
 (* ****** ****** *)
-
+//
 impltmp
 {x0:type}
 gseq_length
 <x0,list(x0)>(xs) = list_length<x0>(xs)
-
+//
 (* ****** ****** *)
-
+//
 impltmp
 {x0:type}
 gseq_forall
 <x0,list(x0)>(xs) = list_forall<x0>(xs)
-
+//
 (* ****** ****** *)
-
+//
 impltmp
 {x0:type}
 gseq_foreach
 <x0,list(x0)>(xs) = list_foreach<x0>(xs)
-
+//
 (* ****** ****** *)
 //
 impltmp
