@@ -108,9 +108,9 @@ app of 70 // app_prcdv
 (* ****** ****** *)
 //
 #infixr @ of 40 (*flat*)
-#prefix @ of 71 (*uflat*)
+#prefix @ of 69 (*uflat*)
 //
-#infixr :: of 40 (*cons*)
+#infixr :: of 40 (* cons *)
 //
 (* ****** ****** *)
 //

@@ -72,6 +72,84 @@ fprint_val<ti2arg> = fprint_ti2arg
 (* ****** ****** *)
 
 local
+//
+fun
+auxd3p1
+( d3p1
+: d3pat): void =
+(
+case+
+d3p1.node() of
+|
+D3Pvar(d2v1) =>
+let
+  val
+  t2p1 = d2v1.type()
+in
+  d2v1.type(t2ype_lft(t2p1))
+end
+|
+_(*non-D3Pvar*) => ((*void*))
+)
+and
+auxd3ps
+( npf1
+: int
+, d3ps
+: d3patlst): void =
+(
+case+ d3ps of
+|
+list_nil() => ()
+|
+list_cons(d3p1, d3ps) =>
+(
+  if
+  (npf1 > 0)
+  then
+  auxd3ps(npf1-1, d3ps)
+  else
+  (
+  auxd3ps(npf1-1, d3ps)
+  ) where
+  {
+    val () = auxd3p1(d3p1)
+  }
+) (* end of [list_cons] *)
+)
+//
+in
+//
+fun
+d3pat_leftize
+(d3p0: d3pat): void =
+(
+case+
+d3p0.node() of
+|
+D3Pdapp
+( d3f0
+, npf1, d3ps) =>
+let
+  val () = 
+  d3pat_leftize(d3f0)
+in
+  auxd3ps(npf1, d3ps)
+end // end of [D3Pdapp]
+|
+D3Panno(d3p1, _) =>
+(
+  d3pat_leftize(d3p1)
+)
+|
+_(* rest-of-d3pat *) => ()
+)
+//
+end (* end of [d3pat_leftize] *)
+
+(* ****** ****** *)
+
+local
 
 fun
 auxflat
@@ -83,12 +161,17 @@ loc0 = d3p0.loc()
 val-
 D3Pflat(d3p1) = d3p0.node()
 //
-val d3p1 = trans33_dpat(d3p1)
+val
+d3p1 = trans33_dpat(d3p1)
+//
+val () = d3pat_leftize(d3p1)
 //
 in
   d3pat_make_node
   (loc0, d3p1.type(), D3Pflat(d3p1))
 end // end of [auxflat]
+
+(* ****** ****** *)
 
 fun
 auxfree
