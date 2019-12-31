@@ -1,3 +1,8 @@
+var x0 = 0
+val p0 = &(x0)
+
+////
+
 val xs =
 list_cons
 (1, list_nil())
