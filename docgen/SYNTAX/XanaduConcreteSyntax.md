@@ -88,8 +88,13 @@ The following keywords are for forming expressions:
 
 - <code>$addr</code>:
   for taking the address of a left-value. As an example,
-  `$addr(x)` refers to the address of some variable `x`, which
-  is often written as `&x` in C.
+  `$addr(x0)` refers to the address of some variable `x0`, which
+  is often written as `&x0` in C. One can also write `&` for `$addr`.
+- <code>$eval</code>:
+  for evaluating expressions of specific type. For instance,
+  `$eval(x0)` returns the value stored at a given address `x0`;
+  `$eval(xs)` forces the evaluation of a lazy-value `xs` (representing
+  some suspended computation); etc. One can also write `!` for `$eval`.
 - <code>$fold</code>:
   for folding an unfolded value of some linear datatype (i.e., datavtype).
   This is a new concept in Xanadu, which does not have a counterpart in commonly
