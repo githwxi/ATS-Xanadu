@@ -174,6 +174,11 @@ the_t2ype_string: t2ype
 //
 (* ****** ****** *)
 //
+val the_t2ype_lazy: t2ype
+val the_t2ype_llazy: t2ype
+//
+(* ****** ****** *)
+//
 fun
 print_t2ype: print_type(t2ype)
 fun
@@ -220,6 +225,11 @@ t2ype_node =
   (tyrec(*knd*), int(*npf*), labt2ypelst)
 //
 | T2Pnone0 of ((*void*)) | T2Pnone1 of (s2exp)
+//
+(* ****** ****** *)
+//
+fun
+t2ype_isdat(t2ype): bool
 //
 (* ****** ****** *)
 //
@@ -332,6 +342,21 @@ t2ype_tyrec
 (* ****** ****** *)
 //
 fun
+t2ype_un_p2tr
+(t2p0: t2ype): Option_vt(t2ype)
+//
+(* ****** ****** *)
+//
+fun
+t2ype_un_lazy
+(t2p0: t2ype): Option_vt(t2ype)
+fun
+t2ype_un_llazy
+(t2p0: t2ype): Option_vt(t2ype)
+//
+(* ****** ****** *)
+//
+fun
 t2ype_hnfize(t2p0: t2ype): t2ype
 //
 overload hnfize with t2ype_hnfize
@@ -363,17 +388,24 @@ t2ype_revars
 //
 (* ****** ****** *)
 //
-fun
+fun{}
 t2ype_subst
+  (t2yp0: t2ype): t2ype
+fun{}
+t2ype_subst$var
+  (t2ype, flag: &int >> _): t2ype
+//
+fun
+t2ype_subst_svar
 ( t2p0: t2ype
 , s2v0: s2var, tsub: t2ype): t2ype
 fun
-t2ype_substs
+t2ype_subst_svarlst
 ( t2p0: t2ype
 , s2vs: s2varlst, tsub: t2ypelst): t2ype
 //
 fun
-t2ypelst_substs
+t2ypelst_subst_svarlst
 ( t2ps: t2ypelst
 , s2vs: s2varlst, tsub: t2ypelst): t2ypelst
 //

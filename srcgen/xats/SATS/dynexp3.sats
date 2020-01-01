@@ -107,6 +107,9 @@ d3pat_node =
 | D3Pcon1 of (d2con)
 | D3Pcon2 of (d2conlst)
 //
+| D3Pflat of (d3pat) // @
+| D3Pfree of (d3pat) // ~
+//
 | D3Psym0 of
   (d1pat(*sym*), d2pitmlst)
 //
@@ -118,7 +121,7 @@ d3pat_node =
 //
 | D3Panno of (d3pat, s2exp) // no s2xtv in anno
 //
-| D3Pcast of (d3pat, t2ype) // HX: error indication?
+| D3Ptcast of (d3pat, t2ype) // HX: error indication?
 //
 | D3Pnone0 of ()
 | D3Pnone1 of (d2pat) | D3Pnone2 of (d3pat)
@@ -199,7 +202,7 @@ d3pat_anno
 (* ****** ****** *)
 //
 fun
-d3pat_cast
+d3pat_tcast
 (d3p0: d3pat, t2p0: t2ype): d3pat
 //
 (* ****** ****** *)
@@ -314,9 +317,11 @@ d3exp_node =
 | D3Edapp of
   (d3exp, int(*npf*), d3explst)
 //
+| D3Epcon of
+  (d3exp(*con*), label(*proj*))
 | D3Eproj of
-  ( d3exp(*rcd*)
-  , label(*proj*), int(*index*))
+  (d3exp(*rcd*),
+   label(*proj*), int(*index*))
 //
 | D3Elet of
   (d3eclist, d3exp(*sequence*))
@@ -356,13 +361,28 @@ d3exp_node =
 | D3Eaddr of d3exp(*l-value*)
 | D3Efold of d3exp(*open-con*)
 //
-| D3Eanno of (d3exp, s2exp)
+// HX: for lazy-evaluation
+| D3Elazy of
+  (d3exp(*eval*)) // nonlin
+| D3Ellazy of
+  ( d3exp(*eval*)
+  , d3expopt(*free*)) // linear
 //
 | D3Eflat of d3exp(*l-value*)
 | D3Etalf of d3exp(*D3Eflat*)
 //
-| D3Elcast of (d3exp, label)
-| D3Etcast of (d3exp, t2ype)
+// HX-2019-12-18:
+// kind=0: undecided
+// kind=1: derefence
+// kind=2: lazy-eval
+// kind=3: llazy-eval
+| D3Eeval of
+  (int(*kind*), d3exp(*source*))
+//
+| D3Eanno of (d3exp, s2exp(*anno*))
+//
+| D3Elcast of (d3exp, label(*given*))
+| D3Etcast of (d3exp, t2ype(*given*))
 //
 | D3Enone0 of ()
 | D3Enone1 of (d2exp) | D3Enone2 of (d3exp)

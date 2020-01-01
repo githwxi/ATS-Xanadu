@@ -28,146 +28,118 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
+// Start Time: September, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
-// This one was
-// there at the very beginning of ATS
-//
-(* ****** ****** *)
-//
-(*
-HX-2018-10:
-fixity declarations
-#include "prelude/xparam.hats"
-*)
-//
 (* ****** ****** *)
 
-#if
-VERBOSE_FIXITY
-#then
-#print \
-"Loading [fixity.ats] starts!\n"
-#endif // end of [VERBOSE_FIXITY]
+#staload "./staexp1.sats"
+#staload "./dynexp1.sats"
 
 (* ****** ****** *)
 
-(*
-#infixl
-app of 70 // app_prcdv
-*)
+#staload "./staexp2.sats"
+#staload "./statyp2.sats"
+#staload "./dynexp2.sats"
+#staload "./dynexp3.sats"
 
 (* ****** ****** *)
 //
-#prefix
-! of 69 (* stadyn *)
-#prefix
-& of 69 (* stadyn *)
-#prefix
-? of 69 (* static *)
-#prefix
-?! of 69 (* static *)
+typedef
+treader33
+(a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
 //
-// HX-2015-08-04:
-// mostly following the Fortran convention
+datatype trerr33 =
 //
-#infixr ** of 61 (*exp*)
+| TRERR33d3pat of (d3pat)
+| TRERR33d3exp of (d3exp)
 //
-(* ****** ****** *)
+| TRERR33f3arg of (f3arg)
+| TRERR33d3ecl of (d3ecl)
 //
-// multiplicative
-//
-#infixl * / % mod of 60
-//
-(*
-#infixl nmul ndiv nmod of 60
-*)
-//
-(* ****** ****** *)
-
-#prefix ~ of 51 (*negative*)
-
-(* ****** ****** *)
-//
-#infixl + - of 50 (*additive*)
-//
-#prefix + of +(+1) (* uplus *)
-#prefix - of -(+1) (* uminus *)
-//
-(*
-#infixr (+) ++ // concatenative
-*)
-//
-(* ****** ****** *)
-
-#infixl asl asr of 41
-#infixl lsl lsr of 41 
-
-(* ****** ****** *)
-//
-#infixr @ of 40 (*flat*)
-#prefix @ of 69 (*uflat*)
-//
-#infixr :: of 40 (* cons *)
+typedef
+trerr33lst = List0(trerr33)
 //
 (* ****** ****** *)
 //
-#infix0 < > <= >= of 40
+fun{}
+trerr33_add(trerr33): void
 //
-#infix0 = != == !== of 30
+(* ****** ****** *)
+//
+fun
+tread33_main(d3eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
+tread33_d3pat: treader33(d3pat)
+fun{}
+tread33_d3patopt: treader33(d3patopt)
+fun{}
+tread33_d3patlst: treader33(d3patlst)
+//
+(* ****** ****** *)
+//
+fun{}
+tread33_d3exp: treader33(d3exp)
+fun{}
+tread33_d3expopt: treader33(d3expopt)
+fun{}
+tread33_d3explst: treader33(d3explst)
 //
 (* ****** ****** *)
 
-#infixl || of 20
-#infixl && of ||(+1)
+fun{}
+tread33_d3gua: treader33(d3gua)
+fun{}
+tread33_d3clau: treader33(d3clau)
+fun{}
+tread33_d3gpat: treader33(d3gpat)
+fun{}
+tread33_d3gualst: treader33(d3gualst)
+fun{}
+tread33_d3claulst: treader33(d3claulst)
 
-#infixl andalso land of &&
-#infixl orelse xor lor lxor of ||
+(* ****** ****** *)
+//
+fun{}
+tread33_d3ecl: treader33(d3ecl)
+fun{}
+tread33_d3eclist: treader33(d3eclist)
+//
+(* ****** ****** *)
+
+fun{}
+tread33_f3arg: treader33(f3arg)
+fun{}
+tread33_f3arglst: treader33(f3arglst)
+fun{}
+tread33_f3arglstopt: treader33(f3arglstopt)
 
 (* ****** ****** *)
 
-#infixr -> of 10
+fun{}
+tread33_v3aldecl: treader33(v3aldecl)
+fun{}
+tread33_v3aldeclist: treader33(v3aldeclist)
 
 (* ****** ****** *)
 
-#infix0 := of 0 // HX: assign
-#infix0 :=: of 0 // HX: exchange
+fun{}
+tread33_v3ardecl: treader33(v3ardecl)
+fun{}
+tread33_v3ardeclist: treader33(v3ardeclist)
 
 (* ****** ****** *)
 
-#infixl << of 0 (* asl/lsl *)
-#infixr >> of 0 (* asr/lsr *)
+fun{}
+tread33_f3undecl: treader33(f3undecl)
+fun{}
+tread33_f3undeclist: treader33(f3undeclist)
 
 (* ****** ****** *)
 
-(*
-#prefix ++ -- // inc and dec
-#prefix !++ --! // getinc and decget
-#infixr =++ --= // setinc and decset
-*)
-
-(* ****** ****** *)
-
-(*
-#infix0 :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
-#infix0 :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
-*)
-
-(* ****** ****** *)
-
-#prefix ignoret of 0 // ignoring a funcall return
-
-(* ****** ****** *)
-
-#if
-VERBOSE_FIXITY
-#then
-#print \
-"Loading [fixity.ats] is done!\n"
-#endif // end of [VERBOSE_FIXITY]
-
-(* ****** ****** *)
-
-(* end of [fixity.sats] *)
+(* end of [xats_tread33.sats] *)

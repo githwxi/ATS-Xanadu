@@ -45,6 +45,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/statyp2.sats"
+#staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 
@@ -53,6 +54,16 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans23.sats"
 #staload "./../SATS/trans33.sats"
 #staload "./../SATS/trans3t.sats"
+
+(* ****** ****** *)
+
+#staload
+_(*TMP*) = "./statyp2_util0.dats"
+
+(* ****** ****** *)
+
+implement
+fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
 //
@@ -66,14 +77,6 @@ datavtype implist =
 //
 | implist_cons of
   (d3ecl, ti3env, implist)
-//
-(* ****** ****** *)
-//
-datavtype implenv =
-| IMPLENV of
-  (List0_vt(svtplst), implist)
-//
-where svtplst = @(s2varlst, t2ypelst)
 //
 (* ****** ****** *)
 //
@@ -249,7 +252,7 @@ case- ys of
    (implist_cons(d3cl, ti3e, xs), ys)
  )
 ) (* end of [auxlst3] *)
-} (* where *) // implenv_pop_loc12
+} (* where *) // implist_pop_loc12
 //
 (* ****** ****** *)
 
@@ -459,6 +462,12 @@ else let
 //
   val () =
   println!
+  ("implist_find_timp: targ = ", targ)
+  val () =
+  println!
+  ("implist_find_timp: t2ps = ", t2ps)
+  val () =
+  println!
   ("implist_find_timp: test = ", test)
 //
 in
@@ -492,10 +501,17 @@ end // end-of-let // end-of-val
 (* ****** ****** *)
 
 local
-
-absimpl
-implenv_vtype = implenv
-
+//
+datavtype implenv =
+|
+IMPLENV of
+(List0_vt(svtplst), implist)
+//
+where
+svtplst = @(s2varlst, t2ypelst)
+//
+absimpl implenv_vtype = implenv
+//
 in(*in-of-local*)
 
 (* ****** ****** *)
@@ -685,13 +701,120 @@ val () =
 //
 implement
 implenv_find_timp
-(env0, d2c0, t2ps) = let
+(env0, d2c0, targ) = let
 //
 val+IMPLENV(us, xs) = env0
 //
 in
-  implist_find_timp(xs, d2c0, t2ps)
+  implist_find_timp(xs, d2c0, targ)
 end // end of [implenv_find_timp]
+//
+(* ****** ****** *)
+
+implement
+t2ype_subst_implenv
+  (t2p0, env0) =
+(
+  t2ype_subst(t2p0)
+) where
+{
+//
+val+
+IMPLENV(us, xs) = env0
+val us =
+$UN.castvwtp1{List0(svtplst)}(us)
+//
+implement
+t2ype_subst$var<>
+  (t2p0, flag) =
+(
+  auxvtss1(us, flag)
+) where
+{
+val-
+T2Pvar(s2v0) = t2p0.node()
+//
+fnx
+auxvtss1
+( vtss
+: List0(svtplst)
+, flag: &int >> int): t2ype =
+(
+case+ vtss of
+|
+list_nil
+((*void*)) => t2p0
+|
+list_cons
+(vts1, vtss) =>
+auxvtss2
+(vts1.0, vts1.1, vtss, flag)
+)
+and
+auxvtss2
+( s2vs: s2varlst
+, t2ps: t2ypelst
+, vtss
+: List0(svtplst)
+, flag: &int >> int): t2ype =
+(
+case+ s2vs of
+|
+list_nil
+((*void*)) =>
+auxvtss1(vtss, flag)
+|
+list_cons
+(s2v1, s2vs) =>
+let
+  val-
+  list_cons
+  (t2p1, t2ps) = t2ps
+in
+  if
+  s2v0 = s2v1
+  then (flag := flag+1; t2p1)
+  else
+  auxvtss2(s2vs, t2ps, vtss, flag)
+end
+) (* end of [auxvtss2] *)
+//
+} (* end of [t2ype_subst$var] *)
+//
+} (* end of [t2ype_subst_implenv] *)
+
+(* ****** ****** *)
+//
+implement
+t2ypelst_subst_implenv
+  (t2ps, env0) =
+list_vt2t
+(
+list_map<t2ype><t2ype>(t2ps)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<t2ype><t2ype>
+  (t2p0) =
+  (t2p0) where
+{
+//
+  val env0 =
+  $UN.castvwtp0{implenv}(env0)
+  val t2p0 =
+  t2ype_subst_implenv(t2p0, env0)
+//
+  prval
+  ((*void*)) = $UN.cast2void(env0)
+//
+} (* list_map$fopr<t2ype><t2ype> *)
+//
+} (* end of [t2ypelst_subst_svarlst] *)
 //
 (* ****** ****** *)
 

@@ -134,6 +134,15 @@ implenv_push_tsub
 //
 (* ****** ****** *)
 //
+fun
+t2ype_subst_implenv
+(t2ype, env0: !implenv): t2ype
+fun
+t2ypelst_subst_implenv
+(t2ypelst, env0: !implenv): t2ypelst
+//
+(* ****** ****** *)
+//
 datatype
 ti3env =
 | TI3ENV of
@@ -204,6 +213,13 @@ trans3t_declist
 ( env0
 : !implenv, d3cs: d3eclist): d3eclist
 
+(* ****** ****** *)
+//
+fun
+trans3t_fundecl
+( env0
+: !implenv, d3cl: d3ecl): d3ecl
+//
 (* ****** ****** *)
 //
 fun

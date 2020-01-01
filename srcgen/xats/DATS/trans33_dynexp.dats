@@ -72,6 +72,125 @@ fprint_val<ti2arg> = fprint_ti2arg
 (* ****** ****** *)
 
 local
+//
+fun
+auxd3p1
+( d3p1
+: d3pat): void =
+(
+case+
+d3p1.node() of
+|
+D3Pvar(d2v1) =>
+let
+  val
+  t2p1 = d2v1.type()
+in
+  d2v1.type(t2ype_lft(t2p1))
+end
+|
+_(*non-D3Pvar*) => ((*void*))
+)
+and
+auxd3ps
+( npf1
+: int
+, d3ps
+: d3patlst): void =
+(
+case+ d3ps of
+|
+list_nil() => ()
+|
+list_cons(d3p1, d3ps) =>
+(
+  if
+  (npf1 > 0)
+  then
+  auxd3ps(npf1-1, d3ps)
+  else
+  (
+  auxd3ps(npf1-1, d3ps)
+  ) where
+  {
+    val () = auxd3p1(d3p1)
+  }
+) (* end of [list_cons] *)
+)
+//
+in
+//
+fun
+d3pat_leftize
+(d3p0: d3pat): void =
+(
+case+
+d3p0.node() of
+|
+D3Pdapp
+( d3f0
+, npf1, d3ps) =>
+let
+  val () = 
+  d3pat_leftize(d3f0)
+in
+  auxd3ps(npf1, d3ps)
+end // end of [D3Pdapp]
+|
+D3Panno(d3p1, _) =>
+(
+  d3pat_leftize(d3p1)
+)
+|
+_(* rest-of-d3pat *) => ()
+)
+//
+end (* end of [d3pat_leftize] *)
+
+(* ****** ****** *)
+
+local
+
+fun
+auxflat
+( d3p0
+: d3pat): d3pat = let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pflat(d3p1) = d3p0.node()
+//
+val
+d3p1 = trans33_dpat(d3p1)
+//
+val () = d3pat_leftize(d3p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pflat(d3p1))
+end // end of [auxflat]
+
+(* ****** ****** *)
+
+fun
+auxfree
+( d3p0
+: d3pat): d3pat = let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pfree(d3p1) = d3p0.node()
+//
+val d3p1 = trans33_dpat(d3p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pfree(d3p1))
+end // end of [auxfree]
+
+(* ****** ****** *)
 
 fun
 auxsym0
@@ -188,6 +307,9 @@ d3p0.node() of
 | D3Pany _ => d3p0
 //
 | D3Pvar _ => d3p0
+//
+| D3Pflat _ => auxflat(d3p0)
+| D3Pfree _ => auxfree(d3p0)
 //
 | D3Psym0 _ => auxsym0(d3p0)
 //
@@ -997,6 +1119,74 @@ end // end of [aux_addr]
 (* ****** ****** *)
 
 fun
+aux_eval
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Eeval
+(k0, d3e1) = d3e0.node()
+//
+var
+knd0: int = k0
+val
+d3e1 = trans33_dexp(d3e1)
+//
+val t2p0 =
+let
+val t2p1 = d3e1.type()
+val t2p1 = hnfize(t2p1)
+in
+//
+let
+val
+opt2 =
+t2ype_un_p2tr(t2p1)
+in
+case+ opt2 of
+|
+~Some_vt(t2p2) =>
+ (knd0 := 1; t2p2)
+|
+~None_vt((*void*)) =>
+let
+val
+opt2 =
+t2ype_un_lazy(t2p1)
+in
+case+ opt2 of
+|
+~Some_vt(t2p2) =>
+ (knd0 := 2; t2p2)
+|
+~None_vt((*void*)) =>
+let
+val
+opt2 =
+t2ype_un_llazy(t2p1)
+in
+case+ opt2 of
+|
+~Some_vt(t2p2) =>
+ (knd0 := 3; t2p2)
+|
+~None_vt((*void*)) => t2ype_new(loc0)
+end // end of [let]
+end // end of [let]
+end // end of [let]
+//
+end // end of [val]
+//
+in
+d33exp_make_node
+(loc0, t2p0, D3Eeval(knd0, d3e1(*eval*)))
+end // end of [aux_eval]
+
+(* ****** ****** *)
+
+fun
 aux_fold
 ( d3e0
 : d3exp): d3exp = let
@@ -1013,6 +1203,60 @@ val t2p0 = the_t2ype_void(*void*)
 in
 d33exp_make_node(loc0, t2p0, D3Efold(d3e1))
 end // end of [aux_fold]
+
+(* ****** ****** *)
+
+fun
+aux_lazy
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Elazy(d3e1) = d3e0.node()
+//
+val d3e1 = trans33_dexp(d3e1)
+//
+val t2p0 =
+t2ype_app1(the_t2ype_lazy, d3e1.type())
+//
+in
+d33exp_make_node(loc0, t2p0, D3Elazy(d3e1))
+end // end of [aux_lazy]
+
+fun
+aux_llazy
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Ellazy
+( d3e1
+, opt2(*free*)) = d3e0.node()
+//
+val d3e1 = trans33_dexp(d3e1)
+val opt2 =
+(
+case+ opt2 of
+| None() =>
+  None(*void*)
+| Some(d3e2) =>
+  let
+  val t2p2 = the_t2ype_void
+  in
+  Some(trans33_dexp_dn(d3e2, t2p2))
+  end
+) : d3expopt // end-of-val]
+//
+val t2p0 =
+t2ype_app1(the_t2ype_llazy, d3e1.type())
+//
+in
+d33exp_make_node(loc0, t2p0, D3Ellazy(d3e1, opt2))
+end // end of [aux_llazy]
 
 (* ****** ****** *)
 
@@ -1115,11 +1359,19 @@ d3e0.node() of
 | D3Eflat(d3e1) => aux_flat(d3e0)
 *)
 | D3Eaddr(d3e1) => aux_addr(d3e0)
-//
+| D3Eeval(_, _) => aux_eval(d3e0)
 | D3Efold(d3e1) => aux_fold(d3e0)
+//
+| D3Elazy
+    (d3e1) => aux_lazy(d3e0)
+  // nonlin lazy-evaluation
+| D3Ellazy
+    (d3e1, opt2) => aux_llazy(d3e0)
+  // linear lazy-evaluation
 //
 | D3Eanno
     (d3e1, s2e2) => aux_anno(d3e0)
+  // type-annotation ascription
 //
 | D3Enone0 _ => d3e0
 | D3Enone1 _ => d3e0
@@ -1817,7 +2069,7 @@ case+ s2vs of
   case+ ti3a of
   | TI3ARGnone() => tfun
   | TI3ARGsome(t2ps) =>
-    t2ype_substs(tfun, s2vs, t2ps)
+    t2ype_subst_svarlst(tfun, s2vs, t2ps)
   )
 end
 ) : t2ype // end-of-val

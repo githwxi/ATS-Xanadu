@@ -306,8 +306,60 @@ D1Papp1
 ( d1p1
 , d1p2) = d1p0.node()
 //
+fun
+isFLAT
+(d1p: d1pat): bool =
+(
+case+
+d1p.node() of
+| D1Pid(tok) =>
+  (
+  case+
+  tok.node() of
+  | T_IDENT_sym(x) => (x = "@")
+  | _(* non-T_IDENT_sym *) => false
+  )
+| _(* non-D1Pid *) => false
+)
+fun
+isFREE
+(d1p: d1pat): bool =
+(
+case+
+d1p.node() of
+| D1Pid(tok) =>
+  (
+  case+
+  tok.node() of
+  | T_IDENT_sym(x) => (x = "~")
+  | _(* non-T_IDENT_sym *) => false
+  )
+| _(* non-D1Pid *) => false
+)
+//
 in
 //
+ifcase
+//
+| isFLAT(d1p1) =>
+  let
+    val d2p2 =
+    trans12_dpat(d1p2)
+  in
+    d2pat_make_node
+    (d1p0.loc(), D2Pflat(d2p2))
+  end
+| isFREE(d1p1) =>
+  let
+    val d2p2 =
+    trans12_dpat(d1p2)
+  in
+    d2pat_make_node
+    (d1p0.loc(), D2Pfree(d2p2))
+  end
+//
+| _ (* else *) =>
+(
 case+
 d1p2.node() of
 //
@@ -322,6 +374,7 @@ d1p2.node() of
   end // end of [D1Psqarg]
 //
 | _(*rest-of-d1pat*) => auxapp1_0_(d1p0)
+)
 //
 end // end of [auxapp1]
 
@@ -1072,6 +1125,44 @@ D1Eapp1
 ( d1e1
 , d1e2) = d1e0.node()
 //
+fun
+isAMP
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+| D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_sym(x) => (x = "&")
+|
+_(*non-T_IDENT_sym*) => false
+)
+|
+_(* non-D1Eid-d1exp *) => false
+)
+fun
+isBANG
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_sym(x) => (x = "!")
+|
+_(* non-T_IDENT_sym *) => (false)
+)
+|
+_(* non-D1Eid-d1exp *) => (false)
+)
+//
 (*
 fun
 isFLAT
@@ -1080,13 +1171,16 @@ isFLAT
 case+
 d1e.node() of
 | D1Eid(tok) =>
-  (
-  case+
-  tok.node() of
-  | T_IDENT_sym(x) => (x = "@")
-  | _(* non-T_IDENT_sym *) => false
-  )
-| _(* non-D1Eid *) => false
+(
+case+
+tok.node() of
+|
+T_IDENT_sym(x) => (x = "@")
+|
+_(*non-T_IDENT_sym*) => false
+)
+|
+_(* non-D1Eid-d1exp *) => false
 )
 *)
 //
@@ -1096,34 +1190,118 @@ isADDR
 (
 case+
 d1e.node() of
-| D1Eid(tok) =>
-  (
-  case+
-  tok.node() of
-  | T_IDENT_dlr(x) => (x = "$addr")
-  | _(* non-T_IDENT_dlr *) => false
-  )
-| _(* non-D1Eid *) => false
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_dlr(x) => (x = "$addr")
+|
+_(* non-T_IDENT_dlr *) => (false)
 )
+|
+_(* non-D1Eid-d1exp *) => (false)
+)
+fun
+isEVAL
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_dlr(x) => (x = "$eval")
+|
+_(* non-T_IDENT_dlr *) => (false)
+)
+|
+_(* non-D1Eid-d1exp *) => (false)
+)
+//
 fun
 isFOLD
 (d1e: d1exp): bool =
 (
 case+
 d1e.node() of
-| D1Eid(tok) =>
-  (
-  case+
-  tok.node() of
-  | T_IDENT_dlr(x) => (x = "$fold")
-  | _(* non-T_IDENT_dlr *) => false
-  )
-| _(* non-D1Eid *) => false
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_dlr(x) => (x = "$fold")
+|
+_(* non-T_IDENT_dlr *) => (false)
+)
+|
+_(* non-D1Eid-d1exp *) => (false)
+)
+//
+fun
+isLAZY
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_dlr(x) => (x = "$lazy")
+|
+_(* non-T_IDENT_dlr *) => (false)
+)
+|
+_(* non-D1Eid-d1exp *) => (false)
+)
+fun
+isLLAZY
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_dlr(x) => (x = "$llazy")
+|
+_(* non-T_IDENT_dlr *) => (false)
+)
+|
+_(* non-D1Eid-d1exp *) => (false)
 )
 //
 in
 //
 ifcase
+//
+| isAMP(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Eaddr(d2e2))
+  end
+| isBANG(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Eeval(d2e2))
+  end
 //
 (*
 | isFLAT(d1e1) =>
@@ -1144,6 +1322,14 @@ ifcase
     d2exp_make_node
     (d1e0.loc(), D2Eaddr(d2e2))
   end
+| isEVAL(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Eeval(d2e2))
+  end
 | isFOLD(d1e1) =>
   let
     val d2e2 =
@@ -1151,6 +1337,24 @@ ifcase
   in
     d2exp_make_node
     (d1e0.loc(), D2Efold(d2e2))
+  end
+//
+| isLAZY(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Elazy(d2e2))
+  end
+| isLLAZY(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+    val opt3 = None(*void*)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Ellazy(d2e2, opt3))
   end
 //
 | _ (* else *) =>
@@ -2425,14 +2629,14 @@ case+ arg of
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
 //
-(*
+// (*
 val () =
 println!
 ("aux_sexpdef: knd = ", knd)
 val () =
 println!
 ("aux_sexpdef: s2e0 = ", s2e0)
-*)
+// *)
 //
 val
 s2t0 =
@@ -2472,6 +2676,22 @@ auxck2
 ( s2tf: sort2
 , s2t1: sort2): s2exp =
 (
+let
+//
+(*
+val () =
+println!
+("\
+aux_sexpdef: \
+auxck2: s2tf = ", s2tf)
+val () =
+println!
+("\
+aux_sexpdef: \
+auxck2: s2t1 = ", s2t1)
+*)
+//
+in
 case+ s2tf of
 //
 | S2Tfun
@@ -2501,9 +2721,10 @@ case+ s2tf of
       | _ (* non-S2Tfun *) => s2tf
     )
   }
-) (* auxck2 *)
+end // end-of-let
+) (* end of auxck2 *)
 //
-} (* end of [val] *)
+} (* end of [where] *) // end of [val]
 //
 //
 val
@@ -4116,6 +4337,9 @@ in
 //
 the_dexpenv_add_conlst(d2cs) where
 {
+//
+val () = s2cst_set_dconlst(s2c0, d2cs)
+//
 (*
 val () =
 println!

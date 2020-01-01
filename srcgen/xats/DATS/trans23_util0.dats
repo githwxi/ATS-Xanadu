@@ -144,7 +144,7 @@ case+ tqas of
   val
   t2p0 =
   (
-  t2ype_substs(t2p0, s2vs, tsub)
+  t2ype_subst_svarlst(t2p0, s2vs, tsub)
   ) where
   {
     val s2vs = $UN.list_vt2t(s2vs)
@@ -242,7 +242,7 @@ case+ tqas of
   val
   t2p0 =
   (
-  t2ype_substs(t2p0, s2vs, tsub)
+  t2ype_subst_svarlst(t2p0, s2vs, tsub)
   ) where
   {
     val s2vs = $UN.list_vt2t(s2vs)
@@ -315,7 +315,9 @@ println!
 //
 in
 //
-if test then d3p0 else d3pat_cast(d3p0, t2p0)
+if
+test
+then d3p0 else d3pat_tcast(d3p0, t2p0)
 //
 end // end of [d3pat_dn]
 
@@ -529,7 +531,7 @@ t2p0.node() of
   auxtsub(s2vs, s2es)
   val t2p1 =
   (
-  t2ype_substs(t2p1, s2vs, tsub)
+  t2ype_subst_svarlst(t2p1, s2vs, tsub)
   ) where
   {
     val tsub = $UN.list_vt2t(tsub)
@@ -873,15 +875,14 @@ val t2p0 =
 let
   val t2p0 = d2c0.type()
 in
-  t2ype_substs(t2p0, s2vs, tsub)
+  t2ype_subst_svarlst(t2p0, s2vs, tsub)
 end
 //
 in
 d23exp_make_node
 ( loc0
 , t2p0
-, D3Etcst
-  (d2c0, TI3ARGsome(tsub), ti2s))
+, D3Etcst(d2c0, TI3ARGsome(tsub), ti2s))
 end
 //
 end // end of [d23exp_tapp_up]

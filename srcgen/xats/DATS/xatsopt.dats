@@ -68,19 +68,17 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/synread.sats"
 //
 #staload "./../SATS/trans01.sats"
-#staload "./../SATS/t1xread.sats"
+#staload "./../SATS/tread01.sats"
 //
 #staload "./../SATS/trans12.sats"
-#staload "./../SATS/t2xread.sats"
+#staload "./../SATS/tread12.sats"
 //
 #staload "./../SATS/trans23.sats"
-#staload "./../SATS/trans33.sats"
 //
-#staload "./../SATS/t3xread.sats"
+#staload "./../SATS/trans33.sats"
+#staload "./../SATS/tread33.sats"
 //
 #staload "./../SATS/trans3t.sats"
-//
-#staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
 //
@@ -111,12 +109,6 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
   "./../DATS/dynexp3_print.dats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) =
-  "./../DATS/intrep0_print.dats"
 //
 (* ****** ****** *)
 //
@@ -215,8 +207,8 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./trans01_staexp.dats"
 #dynload "./trans01_dynexp.dats"
 //
-#dynload "./t1xread_staexp.dats"
-#dynload "./t1xread_dynexp.dats"
+#dynload "./tread01_staexp.dats"
+#dynload "./tread01_dynexp.dats"
 //
 #dynload "./effect.dats"
 //
@@ -246,8 +238,8 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./trans12_staexp.dats"
 #dynload "./trans12_dynexp.dats"
 //
-#dynload "./t2xread_staexp.dats"
-#dynload "./t2xread_dynexp.dats"
+#dynload "./tread12_staexp.dats"
+#dynload "./tread12_dynexp.dats"
 //
 #dynload "./dynexp3.dats"
 //
@@ -255,17 +247,16 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 //
 #dynload "./trans23_util0.dats"
 #dynload "./trans33_util0.dats"
-#dynload "./trans23_dynexp.dats"
-#dynload "./trans33_dynexp.dats"
 //
-#dynload "./t3xread_dynexp.dats"
+#dynload "./trans23_dynexp.dats"
+#dynload "./tread23_dynexp.dats"
+//
+#dynload "./trans33_dynexp.dats"
+#dynload "./tread33_dynexp.dats"
 //
 #dynload "./trans3t_envmap.dats"
 #dynload "./trans3t_dynexp.dats"
-//
-#dynload "./intrep0.dats"
-#dynload "./intrep0_print.dats"
-#dynload "./intrep0_dynexp.dats"
+#dynload "./tread3t_dynexp.dats"
 //
 (* ****** ****** *)
 //
@@ -922,40 +913,75 @@ println!
 val () = synread_main(d0cs)
 //
 val
+d1cs =
+let
+val
 d1cs = trans01_declist(d0cs)
+in
+d1cs where
+{
+  val () = tread01_main(d1cs)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d1cs = ", d1cs)
 *)
 //
-val () = t1xread_main(d1cs)
-//
+val
+d2cs =
+let
 val
 d2cs = trans12_declist(d1cs)
+in
+d2cs where
+{
+  val () = tread12_main(d2cs)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d2cs = ", d2cs)
 *)
 //
-val () = t2xread_main(d2cs)
 //
 val
+d3cs =
+let
+val
 d3cs = trans23_declist(d2cs)
-// (*
+in
+d3cs where
+{
+(*
+  val () = tread23_main(d3cs)
+*)
+}
+end // end of [val]
+(*
 val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
-// *)
+*)
+//
+val
+d3cs =
+let
 val
 d3cs = trans33_declist(d3cs)
-// (*
+in
+d3cs where
+{
+  val () = tread33_main(d3cs)
+}
+end // end of [val]
+(*
 val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
-// *)
-val () = t3xread_main(d3cs)
+*)
 //
 val
 d3cs = trans3t_program(d3cs)
@@ -988,12 +1014,6 @@ val () =
 (
   the_dexpenv_println((*void*))
 )
-//
-val
-irdcs = irerase_declist(d3cs)
-val () =
-println!
-("process_fpath: irdcs = ", irdcs)
 //
 } (* end of [then] *)
 else
@@ -1702,6 +1722,23 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/list.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/stream.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/optn_vt.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/list_vt.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/stream_vt.sats")
 //
 (*
 val () =

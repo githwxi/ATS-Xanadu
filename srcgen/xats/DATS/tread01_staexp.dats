@@ -28,48 +28,70 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: September, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-exception
-XATSOPT_FIXITY_EXN of ((*void*))
+#staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
-exception
-XATSOPT_SYNERR_EXN of ((*void*))
+#staload "./../SATS/lexing.sats"
+#staload "./../SATS/staexp1.sats"
+//
+#staload "./../SATS/tread01.sats"
 //
 (* ****** ****** *)
 //
-exception
-XATSOPT_TRERR01_EXN of ((*void*))
-exception
-XATSOPT_TRERR12_EXN of ((*void*))
-exception
-XATSOPT_TRERR23_EXN of ((*void*))
-exception
-XATSOPT_TRERR33_EXN of ((*void*))
-exception
-XATSOPT_TRERR3T_EXN of ((*void*))
+implement
+{}(*tmp*)
+tread01_s1exp(s1e0) = ()
+//
+implement
+{}(*tmp*)
+tread01_s1expopt(opt0) =
+(
+case+ opt0 of
+| None() => ()
+| Some(s1e) => tread01_s1exp<>(s1e)
+)
+//
+implement
+{}(*tmp*)
+tread01_s1explst(s1es) =
+(
+list_foreach<s1exp>(s1es)
+) where
+{
+implement(env)
+list_foreach$fwork<s1exp><env>(s1e, env) = tread01_s1exp<>(s1e)
+} (* end of [tread01_s1explst] *)
 //
 (* ****** ****** *)
 //
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
+implement
+{}(*tmp*)
+tread01_s1qua(s1q0) = ()
 //
-fun abort((*void*)):<!exn> void
-fun abort_interr((*void*)):<!exn> void
+implement
+{}(*tmp*)
+tread01_s1qualst(s1qs) =
+(
+list_foreach<s1qua>(s1qs)
+) where
+{
+implement(env)
+list_foreach$fwork<s1qua><env>(s1q, env) = tread01_s1qua<>(s1q)
+} (* end of [tread01_s1qualst] *)
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+(* end of [xats_tread01_staexp.dats] *)
