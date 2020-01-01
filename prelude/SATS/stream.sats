@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,49 +27,83 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: August, 2018
-// Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
-//
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_FIXITY_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_SYNERR_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_TRERR01_EXN of ((*void*))
-exception
-XATSOPT_TRERR12_EXN of ((*void*))
-exception
-XATSOPT_TRERR23_EXN of ((*void*))
-exception
-XATSOPT_TRERR33_EXN of ((*void*))
-exception
-XATSOPT_TRERR3T_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort((*void*)):<!exn> void
-fun abort_interr((*void*)):<!exn> void
+// For functional streams
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+fun
+<a:t0>
+stream_nil(): stream(a)
+fun
+<a:t0>
+stream_cons
+(x0: a, xs: stream(a)): stream(a)
+
+(* ****** ****** *)
+
+fun
+<a:t0>
+stream_sing(x0: a): stream(a)
+fun
+<a:t0>
+stream_pair(x0: a, y0: a): stream(a)
+
+(* ****** ****** *)
+//
+fun
+<a:t0>
+stream_extend
+(xs: stream(a), x0: a): stream(a)
+fun
+<a:t0>
+stream_append
+(xs: stream(a), ys: stream(a)): stream(a)
+//
+(* ****** ****** *)
+//
+(*
+stream_map: map$fopr
+stream_map_vt: map$fopr
+*)
+//
+fun
+<x0:t0>
+<y0:t0>
+stream_map(stream(x0)): stream(y0)
+fun
+<x0:t0>
+<y0:vt>
+stream_map_vt(stream(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+(*
+stream_filter: filter$test
+stream_filter_vt: filter$test
+*)
+//
+fun
+<x0:t0>
+stream_filter(stream(x0)): stream(x0)
+fun
+<x0:t0>
+stream_filter_vt(stream(x0)): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+(*
+stream_mapopt: mapopt$fopr
+stream_mapopt_vt: mapopt$fopr
+*)
+fun
+<x0:t0>
+<y0:t0>
+stream_mapopt(stream(x0)): stream(y0)
+fun
+<x0:t0>
+<y0:vt>
+stream_mapopt_vt(stream(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+
+(* end of [stream.sats] *)

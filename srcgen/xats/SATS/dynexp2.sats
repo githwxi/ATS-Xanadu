@@ -175,14 +175,38 @@ overload .s2vs with tq2arglst_get_s2vs
 //
 (* ****** ****** *)
 //
-abstype d2con_tbox = ptr
-typedef d2con = d2con_tbox
+abstype
+d2con_tbox = ptr
+typedef
+d2con = d2con_tbox
 //
-typedef d2conlst = List0(d2con)
-typedef d2conopt = Option(d2con)
+typedef
+d2conlst = List0(d2con)
+typedef
+d2conopt = Option(d2con)
 //
-vtypedef d2conlst_vt = List0_vt(d2con)
-vtypedef d2conopt_vt = Option_vt(d2con)
+vtypedef
+d2conlst_vt = List0_vt(d2con)
+vtypedef
+d2conopt_vt = Option_vt(d2con)
+//
+(* ****** ****** *)
+//
+// HX:
+// hashtable-based
+//
+(*
+// HX-2019-12-28:
+// it is in staexp2.sats
+fun
+s2cst_isdat(s2c0: s2cst): bool
+*)
+fun
+s2cst_get_dconlst
+(s2c0: s2cst): Option_vt(d2conlst)
+fun
+s2cst_set_dconlst
+(s2c0: s2cst, d2cs: d2conlst): void
 //
 (* ****** ****** *)
 //
@@ -492,16 +516,23 @@ d2pat_node =
 | D2Pcon1 of (d2con)
 | D2Pcon2 of (d2conlst)
 //
+| D2Pflat of (d2pat) // @
+| D2Pfree of (d2pat) // ~
+//
 | D2Psym0 of
   (d1pat(*sym*), d2pitmlst)
 //
-| D2Psapp of (d2pat, s2varlst)
-| D2Pdapp of (d2pat, int(*npf*), d2patlst)
+| D2Psapp of
+  (d2pat, s2varlst(*sarg*))
+| D2Pdapp of
+  ( d2pat
+  , int(*npf*), d2patlst(*darg*))
 //
 | D2Ptuple of
   (int(*knd*), int(*npf*), d2patlst)
 //
-| D2Panno of (d2pat, s2exp) // no s2xtv in anno
+| D2Panno of
+  (d2pat, s2exp) // no s2xtv in anno
 //
 | D2Pnone0 of () | D2Pnone1 of (d1pat)
 //
@@ -715,12 +746,19 @@ d2exp_node =
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
 //
-| D2Eaddr of d2exp(*l-value*)
 (*
 | D2Eflat of d2exp(*l-value*)
 *)
 //
+| D2Eaddr of d2exp(*l-value*)
+| D2Eeval of d2exp(*ptr/lazy*)
 | D2Efold of d2exp(*open-con*)
+//
+// HX: for lazy-evaluation
+| D2Elazy of
+  (d2exp(*eval*)) // nonlin
+| D2Ellazy of
+  (d2exp(*eval*), d2expopt(*free*)) // linear
 //
 | D2Eanno of (d2exp(*applst*), s2exp(*type*))
 //

@@ -248,7 +248,7 @@ t2p1.node() of
       t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
     }
     val t2p1 =
-    t2ype_substs
+    t2ype_subst_svarlst
     (t2p1, s2vs, $UN.list_vt2t(tsub))
     val ((*void*)) = list_vt_free(tsub)
   }
@@ -275,7 +275,7 @@ t2p1.node() of
         t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
       }
       val t2p2 =
-      t2ype_substs
+      t2ype_subst_svarlst
       (t2p2, s2vs, $UN.list_vt2t(tsub))
       val ((*void*)) = list_vt_free(tsub)
     }

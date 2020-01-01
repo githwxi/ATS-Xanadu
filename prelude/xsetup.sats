@@ -64,5 +64,12 @@ typedef the_dfloat_ctype = dfloat
 typedef the_string_ctype = string0
 //
 (* ****** ****** *)
+//
+typedef
+the_lazy_ctype(a:t0) = lazy(a)
+typedef
+the_llazy_ctype(a:vt) = lazy_vt(a)
+//
+(* ****** ****** *)
 
 (* end of [xsetup.sats] *)

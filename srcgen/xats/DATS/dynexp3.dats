@@ -186,12 +186,12 @@ end // end of [let]
 (* ****** ****** *)
 
 implement
-d3pat_cast
+d3pat_tcast
 (d3p0, t2p0) =
 (
 d3pat_make_node
 ( loc0
-, t2p0, D3Pcast(d3p0, t2p0))
+, t2p0, D3Ptcast(d3p0, t2p0))
 ) where
 {
   val loc0 = d3p0.loc((*void*))

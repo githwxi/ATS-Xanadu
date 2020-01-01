@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,49 +27,69 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: August, 2018
-// Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
-//
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_FIXITY_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_SYNERR_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_TRERR01_EXN of ((*void*))
-exception
-XATSOPT_TRERR12_EXN of ((*void*))
-exception
-XATSOPT_TRERR23_EXN of ((*void*))
-exception
-XATSOPT_TRERR33_EXN of ((*void*))
-exception
-XATSOPT_TRERR3T_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort((*void*)):<!exn> void
-fun abort_interr((*void*)):<!exn> void
+// For functional lin-streams
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+fun
+<a:vt>
+stream_vt_nil(): stream_vt(a)
+fun
+<a:vt>
+stream_vt_cons
+(x0: a, xs: stream_vt(a)): stream_vt(a)
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+stream_vt_sing(x0: a): stream_vt(a)
+fun
+<a:vt>
+stream_vt_pair(x0: a, y0: a): stream_vt(a)
+
+(* ****** ****** *)
+//
+fun
+<a:vt>
+stream_vt_extend
+(xs: stream_vt(a), x0: a): stream_vt(a)
+fun
+<a:vt>
+stream_vt_append
+(xs: stream_vt(a), ys: stream_vt(a)): stream_vt(a)
+//
+(* ****** ****** *)
+//
+(*
+stream_vt_map0: map0$fopr
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+stream_vt_map0(stream_vt(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+(*
+stream_vt_filter: filter0$test
+*)
+//
+fun
+<x0:vt>
+stream_vt_filter0(stream_vt(x0)): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+(*
+stream_vt_mapopt: mapopt0$fopr
+*)
+fun
+<x0:vt>
+<y0:vt>
+stream_vt_mapopt0(stream_vt(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+
+(* end of [stream_vt.sats] *)

@@ -28,48 +28,97 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
-//
+
+#staload "./staexp1.sats"
+#staload "./dynexp1.sats"
+
 (* ****** ****** *)
 //
-exception
-XATSOPT_FIXITY_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_SYNERR_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_TRERR01_EXN of ((*void*))
-exception
-XATSOPT_TRERR12_EXN of ((*void*))
-exception
-XATSOPT_TRERR23_EXN of ((*void*))
-exception
-XATSOPT_TRERR33_EXN of ((*void*))
-exception
-XATSOPT_TRERR3T_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort((*void*)):<!exn> void
-fun abort_interr((*void*)):<!exn> void
+typedef
+treader01
+(a:t@ype) = (a) -> void
 //
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+datatype
+trerr01 =
+| TRERR01d1ecl of (d1ecl)
+
+typedef
+trerr01lst = List0(trerr01)
+
+(* ****** ****** *)
+//
+fun{}
+trerr01_add(trerr01): void
+//
+(* ****** ****** *)
+//
+fun
+tread01_main(d1eclist): void
+//
+(* ****** ****** *)
+//
+fun{}
+tread01_s1exp: treader01(s1exp)
+fun{}
+tread01_s1expopt: treader01(s1expopt)
+fun{}
+tread01_s1explst: treader01(s1explst)
+//
+(* ****** ****** *)
+//
+fun{}
+tread01_s1qua: treader01(s1qua)
+fun{}
+tread01_s1qualst: treader01(s1qualst)
+//
+(* ****** ****** *)
+//
+fun{}
+tread01_d1pat: treader01(d1pat)
+fun{}
+tread01_d1patlst: treader01(d1patlst)
+//
+(* ****** ****** *)
+//
+fun{}
+tread01_d1exp: treader01(d1exp)
+fun{}
+tread01_d1expopt: treader01(d1expopt)
+fun{}
+tread01_d1explst: treader01(d1explst)
+//
+(* ****** ****** *)
+//
+fun{}
+tread01_d1ecl: treader01(d1ecl)
+fun{}
+tread01_d1eclist: treader01(d1eclist)
+//
+(* ****** ****** *)
+//
+fun{}
+tread01_wths1expopt: treader01(wths1expopt)
+//
+(* ****** ****** *)
+
+fun{}
+tread01_f1arg: treader01(f1arg)
+fun{}
+tread01_f1arglst: treader01(f1arglst)
+
+(* ****** ****** *)
+
+fun{}
+tread01_f1undecl: treader01(f1undecl)
+fun{}
+tread01_f1undeclist: treader01(f1undeclist)
+
+(* ****** ****** *)
+
+(* end of [xats_tread01.sats] *)

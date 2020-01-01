@@ -130,6 +130,19 @@ the_sort2_none = S2Tnone0((*void*))
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+the_p2tr_tbox =
+s2cstref_make_name("p2tr_tbox")
+//
+implement
+the_lazy_t0_x0 =
+s2cstref_make_name("lazy_t0_x0")
+implement
+the_lazy_vt_vx =
+s2cstref_make_name("lazy_vt_vx")
+//
+(* ****** ****** *)
 
 implement
 the_tt_b0 =
@@ -141,8 +154,25 @@ s2cstref_make_name("the_ff_b0")
 (* ****** ****** *)
 
 implement
+the_add_i0_i0 =
+s2cstref_make_name("the_add_i0_i0")
+implement
+the_sub_i0_i0 =
+s2cstref_make_name("the_sub_i0_i0")
+implement
+the_mul_i0_i0 =
+s2cstref_make_name("the_mul_i0_i0")
+implement
+the_div_i0_i0 =
+s2cstref_make_name("the_div_i0_i0")
+
+(* ****** ****** *)
+
+implement
 the_void_ctype =
 s2cstref_make_name("the_void_ctype")
+
+(* ****** ****** *)
 
 implement
 the_p1tr_ctype =
@@ -151,12 +181,16 @@ implement
 the_p2tr_ctype =
 s2cstref_make_name("the_p2tr_ctype")
 
+(* ****** ****** *)
+
 implement
 the_sint_ctype =
 s2cstref_make_name("the_sint_ctype")
 implement
 the_uint_ctype =
 s2cstref_make_name("the_uint_ctype")
+
+(* ****** ****** *)
 
 implement
 the_bool_ctype =
@@ -165,6 +199,8 @@ implement
 the_char_ctype =
 s2cstref_make_name("the_char_ctype")
 
+(* ****** ****** *)
+
 implement
 the_sfloat_ctype =
 s2cstref_make_name("the_sfloat_ctype")
@@ -172,9 +208,20 @@ implement
 the_dfloat_ctype =
 s2cstref_make_name("the_dfloat_ctype")
 
+(* ****** ****** *)
+
 implement
 the_string_ctype =
 s2cstref_make_name("the_string_ctype")
+
+(* ****** ****** *)
+
+implement
+the_lazy_ctype =
+s2cstref_make_name("the_lazy_ctype")
+implement
+the_llazy_ctype =
+s2cstref_make_name("the_llazy_ctype")
 
 (* ****** ****** *)
 

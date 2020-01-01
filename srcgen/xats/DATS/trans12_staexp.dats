@@ -1485,11 +1485,11 @@ if
 isarrw(s1e1)
 then let
 //
-  var npf
-    : int = ~1
+var npf
+  : int = ~1
 //
-  val s2es =
-  (
+val s2es =
+(
   case+
   s1e2.node() of
   | S1Elist(xs) =>
@@ -1506,9 +1506,9 @@ then let
   | _(*non-S1Elist*) =>
     list_sing
     (trans12_sexp_ci(s1e2))
-  ) : s2explst // end-of-val
+) : s2explst // end-of-val
 //
-  val s2e3 = trans12_sexp_ci(s1e3)
+val s2e3 = trans12_sexp_ci(s1e3)
 //
 in
   s2exp_fun_all(npf, s2es, s2e3)
@@ -1565,7 +1565,11 @@ s1e1.node() of
     val s2e2 =
     trans12_sexp_ci(s1e2)
     val s2e3 =
+    trans12_sexp_ci(s1e3)
+(*
+    val s2e3 =
     trans12_sexp_ck(s1e3, s2e2.sort())
+*)
     in
       s2exp_atx(s2e2, s2e3)
     end
@@ -1934,31 +1938,36 @@ implement
 trans12_sexp_ck
   (s1e0, s2t0) = let
 //
-(*
+// (*
 val () =
 println!
 ("trans12_sexp_ck: s1e0 = ", s1e0)
 val () =
 println!
-("trans12_sexp_ck: s1t0 = ", s1t0)
-*)
+("trans12_sexp_ck: s2t0 = ", s2t0)
+// *)
 //
 in
 //
 case+
 s1e0.node() of
-| _(*rest-of-s1exp*) =>
-  let
-    val s2e0 =
-    trans12_sexp(s1e0)
-  in
-    if
-    s2e0.sort() <= s2t0
-      then s2e0
-      else
-      s2exp_cast(s1e0.loc(), s2e0, s2t0)
-    // end of [if]
-  end
+|
+_(*rest-of-s1exp*) =>
+let
+val s2e0 =
+trans12_sexp(s1e0)
+val ((*void*)) =
+println!
+("\
+trans12_sexp_ck: \
+s2e0.sort() = ", s2e0.sort())
+in
+  if
+  s2e0.sort() <= s2t0
+  then s2e0
+  else
+  s2exp_cast(s1e0.loc(), s2e0, s2t0)
+end // end of [let]
 //
 end // end of [trans12_sexp_ck]
 

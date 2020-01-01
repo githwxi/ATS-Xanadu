@@ -51,6 +51,21 @@ UN="prelude/SATS/unsafe.sats"
 #staload "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
+//
+implement
+t2ype_isdat
+  (t2p0) =
+(
+case+
+t2p0.node() of
+| T2Pcst(s2c0) =>
+  s2cst_isdat(s2c0)
+| T2Papp(t2pf, _) =>
+  t2ype_isdat(t2pf)
+| _ (*rest-of-t2ype*) => false
+)
+//
+(* ****** ****** *)
 
 local
 
@@ -139,6 +154,11 @@ XATS_DFLOAT_T = symbol("xats_dfloat_t")
 val
 XATS_STRING_T = symbol("xats_string_t")
 //
+val
+XATS_LAZY_T = symbol("xats_lazy_t")
+val
+XATS_LLAZY_VT = symbol("xats_llazy_vt")
+//
 end // end of [local]
 
 (* ****** ****** *)
@@ -163,31 +183,61 @@ val s2ts = list_sing(the_sort2_vtflt)
 val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
 }
 //
+(* ****** ****** *)
+//
 implement
 the_t2ype_sint =
-t2ype_make_name(the_sort2_tflt, XATS_SINT_T)
+t2ype_make_name
+(the_sort2_tflt, XATS_SINT_T)
 implement
 the_t2ype_uint =
-t2ype_make_name(the_sort2_tflt, XATS_UINT_T)
+t2ype_make_name
+(the_sort2_tflt, XATS_UINT_T)
 //
 implement
 the_t2ype_bool =
-t2ype_make_name(the_sort2_tflt, XATS_BOOL_T)
+t2ype_make_name
+(the_sort2_tflt, XATS_BOOL_T)
 //
 implement
 the_t2ype_char =
-t2ype_make_name(the_sort2_tflt, XATS_CHAR_T)
+t2ype_make_name
+(the_sort2_tflt, XATS_CHAR_T)
 //
 implement
 the_t2ype_sfloat =
-t2ype_make_name(the_sort2_tflt, XATS_SFLOAT_T)
+t2ype_make_name
+(the_sort2_tflt, XATS_SFLOAT_T)
 implement
 the_t2ype_dfloat =
-t2ype_make_name(the_sort2_tflt, XATS_DFLOAT_T)
+t2ype_make_name
+(the_sort2_tflt, XATS_DFLOAT_T)
 //
 implement
 the_t2ype_string =
-t2ype_make_name(the_sort2_tbox, XATS_STRING_T)
+t2ype_make_name
+(the_sort2_tbox, XATS_STRING_T)
+//
+(* ****** ****** *)
+
+implement
+the_t2ype_lazy =
+(
+t2ype_make_name(s2t0, XATS_LAZY_T)
+) where
+{
+val s2ts = list_sing(the_sort2_tflt)
+val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
+}
+implement
+the_t2ype_llazy =
+(
+t2ype_make_name(s2t0, XATS_LLAZY_VT)
+) where
+{
+val s2ts = list_sing(the_sort2_vtflt)
+val s2t0 = S2Tfun(s2ts, the_sort2_vtbox)
+}
 
 (* ****** ****** *)
 
@@ -389,6 +439,11 @@ ifcase
 | sym=XATS_STRING_T =>
   the_string_ctype.type()
 //
+| sym=XATS_LAZY_T =>
+  the_lazy_ctype.type((*void*))
+| sym=XATS_LLAZY_VT =>
+  the_llazy_ctype.type((*void*))
+//
 | _(*unrecognized base type*) => t2p0
 //
 end // end of [t2bas_eval]
@@ -497,6 +552,95 @@ case+ knd1 of
   )
 ) (* end of [t2ype_tyrec] *)
 
+(* ****** ****** *)
+
+implement
+t2ype_un_p2tr
+  (t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Papp(t2pf, t2ps) =>
+(
+case+
+t2pf.node() of
+| T2Pcst(s2c1) =>
+  if
+  s2c1 =
+  the_p2tr_tbox.scst()  
+  then
+  let
+  val-
+  list_cons
+  (t2pa, _) = t2ps in Some_vt(t2pa)
+  end
+  else None_vt(*void*)
+| _ (* non-T2Pbas *) => None_vt(*void*)
+)
+| _ (* non-T2Papp *) => None_vt(*void*)
+) (* end of [t2ype_un_p2tr] *)
+
+(* ****** ****** *)
+//
+implement
+t2ype_un_lazy
+  (t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Papp(t2pf, t2ps) =>
+(
+case+
+t2pf.node() of
+| T2Pcst(s2c1) =>
+(
+  if
+  s2c1 =
+  the_lazy_t0_x0.scst()
+  then
+  let
+  val-
+  list_cons
+  (t2pa, _) = t2ps in Some_vt(t2pa)
+  end
+  else None_vt(*void*)
+)
+| _ (* non-T2Pbas *) => None_vt(*void*)
+)
+| _ (* non-T2Papp *) => None_vt(*void*)
+)
+//
+implement
+t2ype_un_llazy
+  (t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Papp(t2pf, t2ps) =>
+(
+case+
+t2pf.node() of
+| T2Pcst(s2c1) =>
+(
+  if
+  s2c1 =
+  the_lazy_vt_vx.scst()
+  then
+  let
+  val-
+  list_cons
+  (t2pa, _) = t2ps in Some_vt(t2pa)
+  end
+  else None_vt(*void*)
+)
+| _ (* non-T2Pbas *) => None_vt(*void*)
+)
+| _ (* non-T2Papp *) => None_vt(*void*)
+)
+//
 (* ****** ****** *)
 
 local

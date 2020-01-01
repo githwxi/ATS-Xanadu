@@ -105,7 +105,8 @@ end // end of [local]
 
 extern
 fun
-symbol_insert(symbol): void
+symbol_insert
+(sym: symbol): void
 extern
 fun
 symbol_search
@@ -138,6 +139,8 @@ end // end of [theStamp_getinc]
 (* ****** ****** *)
 
 in (* in-of-local *)
+
+(* ****** ****** *)
 
 implement
 symbol_make(name) = let
@@ -203,6 +206,8 @@ symbol_isnot_nil
 local
 //
 #staload
+"libats/SATS/hashfun.sats"
+#staload
 "libats/SATS/hashtbl_chain.sats"
 //
 #staload _(*anon*) = "libats/DATS/qlist.dats"
@@ -226,6 +231,30 @@ theHashtbl = $UN.castvwtp0{ptr}(theHashtbl)
 //
 in (* in of local *)
 
+(* ****** ****** *)
+
+implement
+hash_key<key>(key) =
+string_hash_multiplier
+(31UL, 618033989UL(*seed*), key)
+
+(* ****** ****** *)
+
+implement
+symbol_search
+  (key, res) = let
+//
+val tbl =
+  $UN.castvwtp0{hashtbl}(theHashtbl)
+val ans =
+  hashtbl_search<key,itm>(tbl, key, res)
+//
+in
+let prval () = $UN.cast2void(tbl) in ans end
+end // end of [symbol_search]
+
+(* ****** ****** *)
+
 implement
 symbol_insert
   (sym) = let
@@ -247,19 +276,6 @@ in
 end // end of [symbol_insert]
 
 (* ****** ****** *)
-
-implement
-symbol_search
-  (name, res) = let
-//
-val tbl =
-  $UN.castvwtp0{hashtbl}(theHashtbl)
-val ans =
-  hashtbl_search<key,itm>(tbl, name, res)
-//
-in
-  let prval ((*void*)) = $UN.cast2void(tbl) in ans end
-end // end of [symbol_search]
 
 end // end of [local]
 

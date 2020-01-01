@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,49 +27,24 @@
 
 (* ****** ****** *)
 //
+// For linear options
+//
+(* ****** ****** *)
+//
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: September, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-exception
-FatalErrorExn of ()
-exception
-FatalErrorExn_interr of ()
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_FIXITY_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_SYNERR_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-exception
-XATSOPT_TRERR01_EXN of ((*void*))
-exception
-XATSOPT_TRERR12_EXN of ((*void*))
-exception
-XATSOPT_TRERR23_EXN of ((*void*))
-exception
-XATSOPT_TRERR33_EXN of ((*void*))
-exception
-XATSOPT_TRERR3T_EXN of ((*void*))
-//
-(* ****** ****** *)
-//
-// HX:
-// raising FatalErrorException
-// raising FatalErrorException_interr
-//
-fun abort((*void*)):<!exn> void
-fun abort_interr((*void*)):<!exn> void
-//
+
+fun
+<a:vt>
+optn_vt_length
+{b:bool}
+(xs: !optn_vt(a, b)): int(b2i(b))
+
+#symload length with optn_vt_length
+
 (* ****** ****** *)
 
-(* end of [xats_xerrory.sats] *)
+(* end of [optn_vt.sats] *)

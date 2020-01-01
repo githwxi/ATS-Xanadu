@@ -276,7 +276,7 @@ p1tr_tbox
 (l:addr) <= p1tr_k
 abstype
 p2tr_tbox
-(l:addr, a:vtype) <= p2tr_k
+(x:vtype, l:addr) <= p2tr_k
 //
 typedef
 p1tr0 = [l:a0] p1tr_tbox(l)
@@ -284,14 +284,14 @@ typedef
 p1tr1(l: a0) = p1tr_tbox(l)
 //
 typedef
-p2tr0(a: vt) = [l:a0] p2tr_tbox(l, a)
+p2tr0(x: vt) = [l:a0] p2tr_tbox(x, l)
 typedef
-p2tr1(a: vt, l: a0) = p2tr_tbox(l, a)
+p2tr1(x: vt, l: a0) = p2tr_tbox(x, l)
 //
 typedef p1tr = p1tr0
 typedef p1tr(l:a0) = p1tr1(l)
-typedef p2tr(a:vt) = p2tr0(a)
-typedef p2tr(l:a0, a:vt) = p2tr1(l, a)
+typedef p2tr(x:vt) = p2tr0(x)
+typedef p2tr(x:vt, l:a0) = p2tr1(x, l)
 //
 (* ****** ****** *)
 
@@ -467,15 +467,15 @@ optn_vt_i0_vx
 (*
 #symload nil with optn_nil
 #symload cons with optn_cons
-#symload nil with optn_vt_nil
-#symload cons with optn_vt_cons
+#symload nil_vt with optn_vt_nil
+#symload cons_vt with optn_vt_cons
 *)
-//
+(*
 #symload none with optn_nil
 #symload some with optn_cons
-//
 #symload none_vt with optn_vt_nil
 #symload some_vt with optn_vt_cons
+*)
 //
 (* ****** ****** *)
 //
@@ -534,15 +534,9 @@ list_vt_i0_vx
 (*
 #symload nil with list_nil
 #symload cons with list_cons
-#symload nil with list_vt_nil
-#symload cons with list_vt_cons
-*)
-//
-#symload nil with list_nil
-#symload cons with list_cons
-//
 #symload nil_vt with list_vt_nil
 #symload cons_vt with list_vt_cons
+*)
 //
 (* ****** ****** *)
 //
@@ -705,8 +699,16 @@ strmcon_vt(a:vtype+) =
 //
 where
 vtypedef
-stream_vt
-(a:vtype) = lazy_vt(strmcon_vt(a))
+stream_vt(a:vtype) = lazy_vt(strmcon_vt(a))
+//
+(* ****** ****** *)
+//
+(*
+#symload nil with strmcon_nil
+#symload cons with strmcon_cons
+#symload nil_vt with strmcon_vt_nil
+#symload cons_vt with strmcon_vt_cons
+*)
 //
 (* ****** ****** *)
 //

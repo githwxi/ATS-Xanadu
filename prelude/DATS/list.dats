@@ -64,7 +64,7 @@ loop
 ( xs
 : list(a, m)
 , r0
-: &(?list(a)) >> list(a, m+n)): void =
+: &(?list(a) >> list(a, m+n))): void =
 (
 case+ xs of
 | list_nil() =>
@@ -230,7 +230,7 @@ gseq_cons
   (x0, xs) = list_cons(x0, xs)
 //
 (* ****** ****** *)
-
+//
 impltmp
 {x0:type}
 gseq_nil?
@@ -239,28 +239,28 @@ impltmp
 {x0:type}
 gseq_cons?
 <x0,list(x0)>(xs) = list_cons?(xs)
-
+//
 (* ****** ****** *)
-
+//
 impltmp
 {x0:type}
 gseq_length
 <x0,list(x0)>(xs) = list_length<x0>(xs)
-
+//
 (* ****** ****** *)
-
+//
 impltmp
 {x0:type}
 gseq_forall
 <x0,list(x0)>(xs) = list_forall<x0>(xs)
-
+//
 (* ****** ****** *)
-
+//
 impltmp
 {x0:type}
 gseq_foreach
 <x0,list(x0)>(xs) = list_foreach<x0>(xs)
-
+//
 (* ****** ****** *)
 //
 impltmp

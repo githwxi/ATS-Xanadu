@@ -1819,8 +1819,10 @@ case+ tnd of
     val topt =
     ( if
       (k0 <= 1)
-      then None()
-      else Some(p_LPAREN(buf, err))
+      then
+      None((*void*))
+      else
+      Some(p_LPAREN(buf, err))
     ) : tokenopt // end of [val]
     val s0es =
       p_s0expseq_COMMA(buf, err)

@@ -1,6 +1,0 @@
-BUILD/interp0_sats.o : 
-BUILD/interp0_dats.o : SATS/interp0.sats
-BUILD/interp0_print_dats.o : HATS/libxatsopt.hats SATS/interp0.sats
-BUILD/interp0_envmap_dats.o : SATS/interp0.sats
-BUILD/interp0_dynexp_dats.o : SATS/interp0.sats
-BUILD/xinterp_dats.o : SATS/interp0.sats

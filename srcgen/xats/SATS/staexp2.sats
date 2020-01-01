@@ -1169,6 +1169,9 @@ overload unsome with s2cstnul_unsome
 //
 (* ****** ****** *)
 //
+// HX:
+// dynarray-based
+//
 fun
 s2cst_get_abs
 (s2c: s2cst): abstdf2
@@ -1177,6 +1180,9 @@ stamp_s2cst_abs
 (s2c: s2cst, abs: abstdf2): void
 //
 (* ****** ****** *)
+//
+// HX:
+// dynarray-based
 //
 fun
 s2cst_get_sexp(s2cst): s2exp
@@ -1188,6 +1194,9 @@ overload .sexp with s2cst_get_sexp
 //
 (* ****** ****** *)
 //
+// HX:
+// dynarray-based
+//
 fun
 s2cst_get_type(s2cst): t2ype
 //
@@ -1196,6 +1205,15 @@ stamp_s2cst_type
 (s2c: s2cst, def: t2ype): void
 //
 overload .type with s2cst_get_type
+//
+(* ****** ****** *)
+//
+// HX-2019-12-18:
+// hashtable-based
+// implemented in dynexp2.dats
+//
+fun
+s2cst_isdat(s2c0: s2cst): bool
 //
 (* ****** ****** *)
 
@@ -1229,24 +1247,16 @@ s2cstref_equ_s2exp(s2cstref, s2exp): bool
 //
 (* ****** ****** *)
 //
-// HX-2019-09-09:
-// types for the constants
+// HX:
+// various static constants
+// declare in prelude/basics.sats
 //
-val the_void_ctype : s2cstref
+(* ****** ****** *)
 //
-val the_p1tr_ctype : s2cstref
-val the_p2tr_ctype : s2cstref
+val the_p2tr_tbox : s2cstref
 //
-val the_sint_ctype : s2cstref
-val the_uint_ctype : s2cstref
-//
-val the_bool_ctype : s2cstref
-val the_char_ctype : s2cstref
-//
-val the_sfloat_ctype : s2cstref
-val the_dfloat_ctype : s2cstref
-//
-val the_string_ctype : s2cstref
+val the_lazy_t0_x0 : s2cstref // (t0) -> x0
+val the_lazy_vt_vx : s2cstref // (vt) -> vx
 //
 (* ****** ****** *)
 
@@ -1274,6 +1284,32 @@ val the_mod_i0_i0 : s2cstref // : (int, int) -> int
 //
 val the_ndiv_i0_i0 : s2cstref // : (int, int) -> int
 val the_idiv_i0_i0 : s2cstref // : (int, int) -> int
+//
+(* ****** ****** *)
+//
+// HX-2019-09-09:
+// types for the constants
+//
+val the_void_ctype : s2cstref
+//
+val the_p1tr_ctype : s2cstref
+val the_p2tr_ctype : s2cstref
+//
+val the_sint_ctype : s2cstref
+val the_uint_ctype : s2cstref
+//
+val the_bool_ctype : s2cstref
+val the_char_ctype : s2cstref
+//
+val the_sfloat_ctype : s2cstref
+val the_dfloat_ctype : s2cstref
+//
+val the_string_ctype : s2cstref
+//
+(* ****** ****** *)
+//
+val the_lazy_ctype : s2cstref//nonlin
+val the_llazy_ctype : s2cstref//linear
 //
 (* ****** ****** *)
 

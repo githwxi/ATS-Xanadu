@@ -86,12 +86,28 @@ fprint_val<f3arg> = fprint_f3arg
 
 (* ****** ****** *)
 //
+fn
+t2ype_subst_svarlst
+( t2p0: t2ype
+, s2vs: s2varlst
+, tsub: t2ypelst): t2ype =
+(
+case+ s2vs of
+| list_nil _ => t2p0
+| list_cons _ =>
+  t2ype_subst_svarlst(t2p0, s2vs, tsub)
+)
+//
+(* ****** ****** *)
+//
 fun
 d23exp_make_node
 ( loc0: loc_t
 , t2p0: t2ype
 , d3en: d3exp_node) =
-d3exp_make_node(loc0, t2p0, d3en)
+(
+  d3exp_make_node(loc0, t2p0, d3en)
+)
 //
 (* ****** ****** *)
 //
@@ -131,6 +147,42 @@ trenv23_dvar_dn
 local
 
 fun
+auxflat
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Pflat(d2p1) = d2p0.node()
+//
+val d3p1 = trans23_dpat(d2p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pflat(d3p1))
+end // end of [auxflat]
+
+fun
+auxfree
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Pfree(d2p1) = d2p0.node()
+//
+val d3p1 = trans23_dpat(d2p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pfree(d3p1))
+end // end of [auxfree]
+
+(* ****** ****** *)
+
+fun
 auxsym0
 ( d2p0
 : d2pat): d3pat = let
@@ -138,14 +190,15 @@ auxsym0
 val
 loc0 = d2p0.loc()
 val-
-D2Psym0(d1p, dpis) = d2p0.node()
+D2Psym0
+(d1p1, dpis) = d2p0.node()
 //
 val
 t2p0 = t2ype_new(loc0)
 //
 in
   d3pat_make_node
-  (loc0, t2p0, D3Psym0(d1p, dpis))
+  (loc0, t2p0, D3Psym0(d1p1, dpis))
 end // end of [auxsym0]
 
 fun
@@ -255,12 +308,16 @@ d2p0.node() of
     d3pat_con(loc0, d2c0)
   )
 //
+| D2Pflat _ => auxflat(d2p0)
+| D2Pfree _ => auxfree(d2p0)
+//
 | D2Psym0 _ => auxsym0(d2p0)
+//
 | D2Pdapp _ => auxdapp(d2p0)
 //
 | D2Ptuple _ => aux_tuple(d2p0)
 //
-| D2Panno(d2e1, s2e2) => aux_anno(d2p0)
+| D2Panno(_, _) => aux_anno(d2p0)
 //
 | _(* else *) =>
   let
@@ -1203,6 +1260,69 @@ end // end of [aux_addr]
 (* ****** ****** *)
 
 fun
+aux_eval
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eeval
+(d2e1) = d2e0.node()
+//
+val
+d3e1 = trans23_dexp(d2e1)
+//
+val t2p0 =
+let
+val t2p1 = d3e1.type()
+val t2p1 = hnfize(t2p1)
+in
+//
+let
+val
+opt2 =
+t2ype_un_p2tr(t2p1)
+in
+case+ opt2 of
+|
+~Some_vt(t2p2) => t2p2
+|
+~None_vt((*void*)) =>
+let
+val
+opt2 =
+t2ype_un_lazy(t2p1)
+in
+case+ opt2 of
+|
+~Some_vt(t2p2) => t2p2
+|
+~None_vt((*void*)) =>
+let
+val
+opt2 =
+t2ype_un_llazy(t2p1)
+in
+case+ opt2 of
+|
+~Some_vt(t2p2) => t2p2
+|
+~None_vt((*void*)) => t2ype_new(loc0)
+end // end of [let]
+end // end of [let]
+end // end of [let]
+//
+end // end of [val]
+//
+in
+  d23exp_make_node
+  (loc0, t2p0, D3Eeval(0(*knd*), d3e1))
+end // end of [aux_eval]
+
+(* ****** ****** *)
+
+fun
 aux_fold
 ( d2e0
 : d2exp): d3exp = let
@@ -1219,6 +1339,60 @@ val t2p0 = the_t2ype_void(*void*)
 in
 d23exp_make_node(loc0, t2p0, D3Efold(d3e1))
 end // end of [aux_fold]
+
+(* ****** ****** *)
+
+fun
+aux_lazy
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Elazy(d2e1) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+//
+val t2p0 =
+t2ype_app1(the_t2ype_lazy, d3e1.type())
+//
+in
+d23exp_make_node(loc0, t2p0, D3Elazy(d3e1))
+end // end of [aux_lazy]
+
+fun
+aux_llazy
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ellazy
+( d2e1
+, opt2(*free*)) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+val opt2 =
+(
+case+ opt2 of
+| None() =>
+  None(*void*)
+| Some(d2e2) =>
+  let
+  val t2p2 = the_t2ype_void
+  in
+  Some(trans23_dexp_dn(d2e2, t2p2))
+  end
+) : d3expopt // end-of-val]
+//
+val t2p0 =
+t2ype_app1(the_t2ype_llazy, d3e1.type())
+//
+in
+d23exp_make_node(loc0, t2p0, D3Ellazy(d3e1, opt2))
+end // end of [aux_llazy]
 
 (* ****** ****** *)
 
@@ -1252,11 +1426,11 @@ trans23_dexp
 val
 loc0 = d2e0.loc()
 //
-// (*
+(*
 val () =
 println!
 ("trans23_dexp: d2e0 = ", d2e0)
-// *)
+*)
 //
 in
 //
@@ -1315,10 +1489,19 @@ d2e0.node() of
 *)
 //
 | D2Eaddr(d2e1) => aux_addr(d2e0)
+| D2Eeval(d2e1) => aux_eval(d2e0)
 | D2Efold(d2e1) => aux_fold(d2e0)
+//
+| D2Elazy
+    (d2e1) => aux_lazy(d2e0)
+  // nonlin lazy-evaluation
+| D2Ellazy
+    (d2e1, opt2) => aux_llazy(d2e0)
+  // linear lazy-evaluation
 //
 | D2Eanno
     (d2e1, s2e2) => aux_anno(d2e0)
+  // type-annotation ascription
 //
 | _ (*rest-of-d2exp*) => d3exp_none1_0(d2e0)
 //
@@ -2095,7 +2278,7 @@ case+ s2vs of
   case+ ti3a of
   | TI3ARGnone() => tfun
   | TI3ARGsome(t2ps) =>
-    t2ype_substs(tfun, s2vs, t2ps)
+    t2ype_subst_svarlst(tfun, s2vs, t2ps)
   )
 //
 end

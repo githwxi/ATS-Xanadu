@@ -27,7 +27,7 @@
 
 (* ****** ****** *)
 //
-// For generic ordering
+// For options
 //
 (* ****** ****** *)
 //
@@ -52,7 +52,7 @@ optn_some?
 (* ****** ****** *)
 
 fun
-<a:type>
+<a:t0>
 optn_length
 {b:bool}
 (xs: optn(a, b)): int(b2i(b))
