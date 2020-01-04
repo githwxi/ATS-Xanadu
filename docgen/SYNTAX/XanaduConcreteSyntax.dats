@@ -36,6 +36,10 @@ val _ = 1000
 val _ = 1.0E3
 val _ = 3.1415926
 
+val d0 = 1.0 : double
+val f0 = 1.0f : float
+val ld = 1.0l : ldouble
+
 (* ****** ****** *)
 
 (* Strings *)

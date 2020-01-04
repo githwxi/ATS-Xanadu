@@ -607,6 +607,9 @@ $extype("xats_sfloat_t")
 typedef
 dfloat_k =
 $extype("xats_dfloat_t")
+typedef
+dfloat_k =
+$extype("xats_ldfloat_t")
 //
 abstype
 gfloat_type(a:type) <= a
@@ -615,11 +618,15 @@ typedef
 sfloat = gfloat_type(sfloat_k)
 typedef
 dfloat = gfloat_type(dfloat_k)
+typedef
+ldfloat = gfloat_type(ldfloat_k)
 //
 typedef
 float = sfloat // single precision
 typedef
 double = dfloat // double precision
+typedef
+ldouble = ldfloat // double precision
 //
 (* ****** ****** *)
 //
