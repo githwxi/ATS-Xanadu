@@ -108,16 +108,7 @@ case+
 d2p0.node() of
 //
 | D2Pany() => ()
-//
-| D2Pnone0() => ((*void*))
-//
-| D2Pnone1(_) =>
-  let
-    val () =
-    trerr12_add(TRERR12d2pat(d2p0))
-  in
-    prerrln!(loc0, ": TRERR12(d2pat): ", d2p0);
-  end // end of [D2Pnone1]
+| D2Pvar(d2v) => ()
 //
 | D2Ptuple
   (knd, npf, d2ps) =>
@@ -131,6 +122,16 @@ d2p0.node() of
     val () = tread12_s2exp<>(s2e2)
     val () = tread12_d2pat<>(d2p1)
   }
+//
+| D2Pnone0() => ((*void*))
+//
+| D2Pnone1(_) =>
+  let
+    val () =
+    trerr12_add(TRERR12d2pat(d2p0))
+  in
+    prerrln!(loc0, ": TRERR12(d2pat): ", d2p0);
+  end // end of [D2Pnone1]
 //
 | _(* rest-of-d2pat *) =>
   (

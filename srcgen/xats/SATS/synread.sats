@@ -64,6 +64,9 @@ tkind =
 | K_CHAR of ()
 | K_STRING of ()
 //
+| K_AS of ()
+| K_OF of ()
+//
 | K_LAM of ()
 | K_ENDLAM of ()
 //
@@ -73,6 +76,7 @@ tkind =
 | K_WHERE of ()
 | K_ENDWHERE of ()
 //
+| K_WHEN of ()
 | K_WITH of ()
 //
 | K_LOCAL of ()
@@ -407,6 +411,13 @@ synread_EXISTS: synreader(token)
 (* ****** ****** *)
 //
 fun//{}
+synread_AS: synreader(token)
+fun//{}
+synread_OF: synreader(token)
+//
+(* ****** ****** *)
+//
+fun//{}
 synread_LAM: synreader(token)
 fun//{}
 synread_FIX: synreader(token)
@@ -438,6 +449,8 @@ synread_ENDWHERE_opt: synreader(tokenopt)
 //
 (* ****** ****** *)
 //
+fun//{}
+synread_WHEN: synreader(token)
 fun//{}
 synread_WITH: synreader(token)
 //
@@ -482,6 +495,35 @@ synread_signint: synreader(signint)
 //
 fun//{}
 synread_s0rtdef: synreader(s0rtdef)
+//
+(* ****** ****** *)
+
+fun//{}
+synread_d0gua: synreader(d0gua)
+fun//{}
+synread_d0gualst: synreader(d0gualst)
+
+(* ****** ****** *)
+
+fun//{}
+synread_d0clau: synreader(d0clau) 
+fun//{}
+synread_d0gpat: synreader(d0gpat) 
+fun//{}
+synread_d0claulst: synreader(d0claulst) 
+
+(* ****** ****** *)
+//
+fun//{}
+synread_d0arglst: synreader(d0arglst)
+//
+fun//{}
+synread_a0typlst: synreader(a0typlst)
+fun//{}
+synread_a0typlstopt: synreader(a0typlstopt)
+//
+fun//{}
+synread_d0cstdeclist: synreader(d0cstdeclist)
 //
 (* ****** ****** *)
 

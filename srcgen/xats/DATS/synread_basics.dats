@@ -677,6 +677,46 @@ tok.node() of
 
 implement
 //{}(*tmp*)
+synread_AS
+  (tok) =
+(
+case+
+tok.node() of
+| T_AS _ => ()
+| _(*non-AS*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_AS, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(AS): ", tok)
+  end // end of [let]
+) (* end of [synread_AS] *)
+
+implement
+//{}(*tmp*)
+synread_OF
+  (tok) =
+(
+case+
+tok.node() of
+| T_OF _ => ()
+| _(*non-OF*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_OF, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(OF): ", tok)
+  end // end of [let]
+) (* end of [synread_OF] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
 synread_LAM
   (tok) =
 (
@@ -813,6 +853,27 @@ case+ opt of
 | Some(tok) => synread_ENDWHERE(tok)
 ) (* end of [synread_ENDWHERE_opt] *)
 //
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_WHEN
+  (tok) =
+(
+case+
+tok.node() of
+| T_WHEN _ => ()
+| _(*non-WHEN*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_WHEN(), tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(WHEN): ", tok)
+  end // end of [let]
+) (* end of [synread_WHEN] *)
+
 (* ****** ****** *)
 
 implement
