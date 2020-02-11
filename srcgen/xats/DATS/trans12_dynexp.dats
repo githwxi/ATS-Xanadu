@@ -2629,14 +2629,14 @@ case+ arg of
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
 //
-// (*
+(*
 val () =
 println!
 ("aux_sexpdef: knd = ", knd)
 val () =
 println!
 ("aux_sexpdef: s2e0 = ", s2e0)
-// *)
+*)
 //
 val
 s2t0 =
@@ -3785,12 +3785,14 @@ auxsvs
 , svs1: s2varlst): void =
 (
 let
+(*
 val () =
 println!
 ("auxsvs: svs0 = ", svs0)
 val () =
 println!
 ("auxsvs: svs1 = ", svs1)
+*)
 in
 case+ svs0 of
 | list_nil() => ()
@@ -3847,12 +3849,14 @@ auxsexp_f1as
 , f1as: f1arglst): f2arglst =
 (
 let
+(*
 val () =
 println!
 ("auxsexp_f1as: s2e0 = ", s2e0)
 val () =
 println!
 ("auxsexp_f1as: f1as = ", f1as)
+*)
 in
 case+ f1as of
 | list_nil() =>
@@ -4500,6 +4504,7 @@ val ((*void*)) =
 //
 the_sexpenv_popfree(pf0|(*void*))
 //
+(*
 val () =
 println!
 ("aux_dcstdecl: d1cl = ", d1cl)
@@ -4509,6 +4514,7 @@ println!
 val () =
 println!
 ("aux_dcstdecl: s2e0 = ", s2e0)
+*)
 //
 in
   d2cst_make_idtp(rcd.nam, tqas, s2e0)
@@ -4753,11 +4759,11 @@ trans12_decl
 val
 loc0 = d1cl.loc()
 //
-// (*
+(*
 val () =
 println!
 ("trans12_decl: d1cl = ", d1cl)
-// *)
+*)
 //
 in (* in-of-let *)
 //

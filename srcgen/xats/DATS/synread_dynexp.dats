@@ -301,6 +301,22 @@ d0e0.node() of
     synread_d0exp_ELSE(d0e3)
   }
 //
+| D0Ecase
+  ( tbeg, d0e1, tmid
+  , topt, dcls, tend) =>
+  {
+(*
+    val () =
+    synread_CASE(tbeg)
+*)
+    val () =
+    synread_d0exp(d0e1)
+//
+    val () = synread_OF(tmid)
+//
+    val () = synread_d0claulst(dcls)
+  }
+//
 | D0Elam
   ( tok
   , arg0, res0
@@ -438,6 +454,105 @@ case+ dend of
     val () = synread_d0explst(d0es)
   }
 )
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_d0gua
+  (d0g0) =
+(
+case+
+d0g0.node() of
+| D0GUAexp(d0e1) =>
+  {
+    val () =
+    synread_d0exp(d0e1)
+  }
+| D0GUAmat
+  (d0e1, tmid, d0p2) =>
+  {
+//
+    val () =
+    synread_d0exp(d0e1)
+//
+    val () = synread_AS(tmid)
+    val () = synread_d0pat(d0p2)
+//
+  }
+)
+//
+implement
+//{}(*tmp*)
+synread_d0gualst
+  (d0gs) =
+(
+list_foreach<d0gua>(d0gs)
+) where
+{
+implement(env)
+list_foreach$fwork<d0gua><env>(d0g, env) = synread_d0gua(d0g)
+} (* end of [synread_d0gualst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_d0clau
+  (d0cl) =
+(
+case+
+d0cl.node() of
+| D0CLAUgpat(d0gp) =>
+  {
+    val () =
+    synread_d0gpat(d0gp)
+  }
+| D0CLAUclau
+  (d0gp, tmid, d0e1) =>
+  {
+//
+    val () =
+    synread_d0gpat(d0gp)
+//
+    val () = synread_EQGT(tmid)
+    val () = synread_d0exp(d0e1)
+//
+  }
+)
+//
+implement
+//{}(*tmp*)
+synread_d0gpat
+  (d0gp) =
+(
+case+
+d0gp.node() of
+| D0GPATpat(d0p1) =>
+  {
+    val () = synread_d0pat(d0p1)
+  }
+| D0GPATgua
+  (d0p1, tmid, d0gs) =>
+  {
+    val () =
+    synread_d0pat(d0p1)
+    val () = synread_WHEN(tmid)
+    val () = synread_d0gualst(d0gs)
+  }
+)
+//
+implement
+//{}(*tmp*)
+synread_d0claulst
+  (dcls) =
+(
+list_foreach<d0clau>(dcls)
+) where
+{
+implement(env)
+list_foreach$fwork<d0clau><env>(dcl, env) = synread_d0clau(dcl)
+} (* end of [synread_d0claulst] *)
 //
 (* ****** ****** *)
 
@@ -586,6 +701,17 @@ d0c0.node() of
     val () = synread_WITH(twth)
     val () = synread_s0ymb(sym0)
     val () = synread_dq0eid(dqid)
+  }
+//
+| D0Cdynconst
+  (tok, tqas, d0cs) =>
+  {
+(*
+    val () =
+    synread_FUN(tok)
+*)
+    val () = synread_tq0arglst(tqas)
+    val () = synread_d0cstdeclist(d0cs)
   }
 //
 | D0Cnone(tok) =>
@@ -1029,6 +1155,97 @@ case+ sint of
 
 (* ****** ****** *)
 
+implement
+//{}(*tmp*)
+synread_a0typlst
+  (atps) =
+(
+list_foreach<a0typ>(atps)
+) where
+{
+implement(env)
+list_foreach$fwork<a0typ><env>
+  (atp, env) =
+(
+case+
+atp.node() of
+| A0TYPsome(s0e, tok) =>
+  {
+    val () = synread_s0exp(s0e)
+  }
+)
+}
+
+implement
+synread_a0typlstopt
+  (opt0) =
+(
+case+ opt0 of
+| None() => ()
+| Some(atps) => synread_a0typlst(atps)
+)
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_d0arglst
+  (d0as) =
+(
+list_foreach<d0arg>(d0as)
+) where
+{
+implement(env)
+list_foreach$fwork<d0arg><env>
+  (d0a, env) =
+(
+case+
+d0a.node() of
+| D0ARGnone(tok) => ()
+| D0ARGsome_sta
+  (tbeg, s0qs, tend) =>
+  synread_s0qualst(s0qs)
+| D0ARGsome_dyn1
+  (sid) => synread_s0eid(sid)
+| D0ARGsome_dyn2
+  (tbeg, atps, opt2, tend) =>
+  {
+    val () = synread_a0typlst(atps)
+    val () = synread_a0typlstopt(opt2)
+  }
+)
+} (* end of [synread_d0arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_d0cstdeclist
+  (d0cs) =
+(
+list_foreach<d0cstdecl>(d0cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d0cstdecl><env>
+  (d0c, env) =
+let
+val+
+D0CSTDECL(rcd) = d0c
+in
+let
+val () = synread_d0pid(rcd.nam)
+val () = synread_d0arglst(rcd.arg)
+val () = synread_effs0expopt(rcd.res)
+val () = synread_teqd0expopt(rcd.def)
+in
+  // nothing
+end // end of [let]
+end // end of [let]
+}
+//
+(* ****** ****** *)
+
 local
 
 extern
@@ -1098,7 +1315,9 @@ if
 (nxerr > 1)
 then
 prerrln!
-("synread_main: there are some synerrs!")
+(
+"synread_main: there are some synerrs!"
+)
 //
 val () =
 (
