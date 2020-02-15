@@ -62,52 +62,52 @@ _(*TMP*) = "./../DATS/tread01_staexp.dats"
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_d1pat(d1p0) = ()
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_d1patlst(d1ps) =
 (
 list_foreach<d1pat>(d1ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1pat><env>(d1p, env) = tread01_d1pat<>(d1p)
+list_foreach$fwork<d1pat><env>(d1p, env) = tread01_d1pat(d1p)
 } (* end of [tread01_d1patlst] *)
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_d1exp(d1e0) = ()
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_d1expopt(opt0) =
 (
 case+ opt0 of
 | None() => ()
-| Some(d1e) => tread01_d1exp<>(d1e)
+| Some(d1e) => tread01_d1exp(d1e)
 ) (* end of [tread01_d1expopt] *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_d1explst(d1es) =
 (
 list_foreach<d1exp>(d1es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1exp><env>(d1e, env) = tread01_d1exp<>(d1e)
+list_foreach$fwork<d1exp><env>(d1e, env) = tread01_d1exp(d1e)
 } (* end of [tread01_d1explst] *)
 //
 (* ****** ****** *)
 
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_d1ecl(d1c0) = let
 //
 val loc0 = d1c0.loc((*void*))
@@ -129,15 +129,15 @@ d1c0.node() of
   , tqas, f1ds) =>
   {
     val () =
-    tread01_f1undeclist<>(f1ds)
+    tread01_f1undeclist(f1ds)
   }
 //
 | D1Cdynconst
   (knd, tqas, d1cs) =>
   {
+    val () = tread01_tq1arglst(tqas)
 (*
-    val () = tread01_tq1arglst<>(tqas)
-    val () = tread01_d1cstdeclist<>(d1cs)
+    val () = tread01_d1cstdeclist(d1cs)
 *)
   }
 //
@@ -151,56 +151,107 @@ end // end of [tread01_d1ecl]
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_d1eclist(d1cs) =
 (
 list_foreach<d1ecl>(d1cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1ecl><env>(d1c, env) = tread01_d1ecl<>(d1c)
+list_foreach$fwork<d1ecl><env>(d1c, env) = tread01_d1ecl(d1c)
 } (* end of [tread01_d1eclist] *)
 //
 (* ****** ****** *)
 
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_wths1expopt
   (opt0) =
 (
 case+ opt0 of
 | WTHS1EXPnone() => ()
-| WTHS1EXPsome(tok, s1e) => tread01_s1exp<>(s1e)
+| WTHS1EXPsome(tok, s1e) => tread01_s1exp(s1e)
 )
 
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_f1arg(f1a0) =
 (
 case+
 f1a0.node() of
-| F1ARGsome_dyn(d1p0) => tread01_d1pat<>(d1p0)
-| F1ARGsome_sta(s1qs) => tread01_s1qualst<>(s1qs)
-| F1ARGsome_met(s1es) => tread01_s1explst<>(s1es)
+| F1ARGsome_dyn(d1p0) => tread01_d1pat(d1p0)
+| F1ARGsome_sta(s1qs) => tread01_s1qualst(s1qs)
+| F1ARGsome_met(s1es) => tread01_s1explst(s1es)
 ) (* end of [tread01_f1arg] *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_f1arglst(f1as) =
 (
 list_foreach<f1arg>(f1as)
 ) where
 {
 implement(env)
-list_foreach$fwork<f1arg><env>(f1a, env) = tread01_f1arg<>(f1a)
+list_foreach$fwork<f1arg><env>(f1a, env) = tread01_f1arg(f1a)
 } (* end of [tread01_f1arglst] *)
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
+tread01_q1arg(q1a0) =
+(
+case+
+q1a0.node() of
+(*
+| Q1ARGnone(tok) => ()
+*)
+| Q1ARGsome(sid, opt) =>
+  {
+    val () = tread01_sort1opt(opt)
+  }
+)
+//
+implement
+//{}(*tmp*)
+tread01_q1arglst(q1as) =
+(
+list_foreach<q1arg>(q1as)
+) where
+{
+implement(env)
+list_foreach$fwork<q1arg><env>(q1a, env) = tread01_q1arg(q1a)
+} (* end of [tread01_tq1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_tq1arg(tq1a) =
+(
+case+
+tq1a.node() of
+| TQ1ARGnone(tok) => ()
+| TQ1ARGsome(q1as) => tread01_q1arglst(q1as)
+)
+//
+implement
+//{}(*tmp*)
+tread01_tq1arglst(tqas) =
+(
+list_foreach<tq1arg>(tqas)
+) where
+{
+implement(env)
+list_foreach$fwork<tq1arg><env>(tqa, env) = tread01_tq1arg(tqa)
+} (* end of [tread01_tq1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 tread01_f1undecl
   (f1d0) =
 {
@@ -218,14 +269,14 @@ tread01_f1undecl
 } (* end of [tread01_f1undecl] *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_f1undeclist(f1ds) =
 (
 list_foreach<f1undecl>(f1ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f1undecl><env>(f1ds, env) = tread01_f1undecl<>(f1ds)
+list_foreach$fwork<f1undecl><env>(f1ds, env) = tread01_f1undecl(f1ds)
 } (* end of [tread01_f1undeclist] *)
 //
 (* ****** ****** *)
@@ -244,10 +295,10 @@ implement
 trerr01_add(xerr) = let
 //
 val
-xerrs = the_trerr01lst_get()
+xerrs = the_trerr01lst_get<>()
 //
 in
-  the_trerr01lst_set(list_cons(xerr, xerrs))
+  the_trerr01lst_set<>(list_cons(xerr, xerrs))
 end // end of [trerr01_add]
 
 in (* in-of-local *)
@@ -271,9 +322,9 @@ the_trerr01lst_set<>(xs) = the_trerr01lst[] := xs
 end // end of [local]
 //
 val () =
-tread01_d1eclist<>(d1cs)
+tread01_d1eclist(d1cs)
 val
-xerrs = the_trerr01lst_get()
+xerrs = the_trerr01lst_get<>()
 val
 nxerr = list_length<trerr01>(xerrs)
 //

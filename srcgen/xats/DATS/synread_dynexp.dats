@@ -1174,7 +1174,7 @@ atp.node() of
     val () = synread_s0exp(s0e)
   }
 )
-}
+} (* end of [synread_a0typlst] *)
 
 implement
 synread_a0typlstopt
@@ -1320,9 +1320,7 @@ prerrln!
 )
 //
 val () =
-(
-$raise(XATSOPT_SYNERR_EXN(*void*))
-) : void
+($raise(XATSOPT_SYNERR_EXN(*void*))): void
 //
 } (* end of [then] *)
 else
