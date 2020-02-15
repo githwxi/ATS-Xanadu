@@ -124,9 +124,21 @@ case+
 d1c0.node() of
 //
 | D1Cfundecl
-  (knd, mopt, tqas, f1ds) =>
+  ( knd
+  , mopt
+  , tqas, f1ds) =>
   {
-    val () = tread01_f1undeclist<>(f1ds)
+    val () =
+    tread01_f1undeclist<>(f1ds)
+  }
+//
+| D1Cdynconst
+  (knd, tqas, d1cs) =>
+  {
+(*
+    val () = tread01_tq1arglst<>(tqas)
+    val () = tread01_d1cstdeclist<>(d1cs)
+*)
   }
 //
 | _(* rest-of-d1ecl *) =>
