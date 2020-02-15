@@ -62,61 +62,78 @@ fun
 tread01_main(d1eclist): void
 //
 (* ****** ****** *)
+
+fun//{}
+tread01_sort1: treader01(sort1)
+fun//{}
+tread01_sort1opt: treader01(sort1opt)
+
+(* ****** ****** *)
 //
-fun{}
+fun//{}
 tread01_s1exp: treader01(s1exp)
-fun{}
+fun//{}
 tread01_s1expopt: treader01(s1expopt)
-fun{}
+fun//{}
 tread01_s1explst: treader01(s1explst)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread01_s1qua: treader01(s1qua)
-fun{}
+fun//{}
 tread01_s1qualst: treader01(s1qualst)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread01_d1pat: treader01(d1pat)
-fun{}
+fun//{}
 tread01_d1patlst: treader01(d1patlst)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread01_d1exp: treader01(d1exp)
-fun{}
+fun//{}
 tread01_d1expopt: treader01(d1expopt)
-fun{}
+fun//{}
 tread01_d1explst: treader01(d1explst)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread01_d1ecl: treader01(d1ecl)
-fun{}
+fun//{}
 tread01_d1eclist: treader01(d1eclist)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread01_wths1expopt: treader01(wths1expopt)
 //
 (* ****** ****** *)
-
-fun{}
+//
+fun//{}
 tread01_f1arg: treader01(f1arg)
-fun{}
+fun//{}
 tread01_f1arglst: treader01(f1arglst)
-
+//
+fun//{}
+tread01_q1arg: treader01(q1arg)
+fun//{}
+tread01_q1arglst: treader01(q1arglst)
+//
+fun//{}
+tread01_tq1arg: treader01(tq1arg)
+fun//{}
+tread01_tq1arglst: treader01(tq1arglst)
+//
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread01_f1undecl: treader01(f1undecl)
-fun{}
+fun//{}
 tread01_f1undeclist: treader01(f1undeclist)
 
 (* ****** ****** *)
