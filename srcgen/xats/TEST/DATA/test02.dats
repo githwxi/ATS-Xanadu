@@ -319,3 +319,7 @@ implement map$fopr(cs) = permute(xs)
 {
 implement filter$test(cs) = word?(cs)
 }
+
+(* ****** ****** *)
+
+(* end of [test02.dats] *)
