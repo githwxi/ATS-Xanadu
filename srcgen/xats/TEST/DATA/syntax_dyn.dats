@@ -3,7 +3,7 @@ fun
 list_length
 (xs) =
 (
-case+ xs
+case+ xs of
 | nil() => 0
 | cons(x, xs) => 1+list_length(xs)
 )
