@@ -1290,9 +1290,9 @@ implement
 trans33_dexp
   (d3e0) = let
 //
-(*
 val loc0 = d3e0.loc()
-*)
+val t2p0 = d3e0.type()
+//
 (*
 val ((*void*)) =
 println!
@@ -1373,8 +1373,30 @@ d3e0.node() of
     (d3e1, s2e2) => aux_anno(d3e0)
   // type-annotation ascription
 //
-| D3Enone0 _ => d3e0
-| D3Enone1 _ => d3e0
+| D3Elcast(d3e1, lab2) =>
+  let
+    val d3e1 =
+    trans33_dexp(d3e1)
+  in
+    d3exp_make_node
+    (loc0, t2p0, D3Elcast(d3e1, lab2))
+  end  
+(*
+| D3Elcast(d3e1, lab2) => d3e0 (* HX: lab2: missing label *)
+*)
+| D3Etcast(d3e1, t2p2) =>
+  let
+    val d3e1 =
+    trans33_dexp(d3e1)
+  in
+    d3exp_make_node
+    (loc0, t2p0, D3Etcast(d3e1, t2p2))
+  end  
+(*
+| D3Etcast(d3e1, t2p2) => d3e0 (* HX: t2p2: expected type *)
+*)
+//
+| D3Enone0 _ => d3e0 | D3Enone1 _ => d3e0
 //
 | _ (* rest-of-d3exp *) => d3e0
 //
