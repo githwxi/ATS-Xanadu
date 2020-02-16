@@ -74,11 +74,13 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tread12.sats"
 //
 #staload "./../SATS/trans23.sats"
+#staload "./../SATS/tread23.sats"
 //
 #staload "./../SATS/trans33.sats"
 #staload "./../SATS/tread33.sats"
 //
 #staload "./../SATS/trans3t.sats"
+#staload "./../SATS/tread3t.sats"
 //
 (* ****** ****** *)
 //
@@ -946,7 +948,6 @@ println!
 ("process_fpath: d2cs = ", d2cs)
 *)
 //
-//
 val
 d3cs =
 let
@@ -955,9 +956,7 @@ d3cs = trans23_declist(d2cs)
 in
 d3cs where
 {
-(*
   val () = tread23_main(d3cs)
-*)
 }
 end // end of [val]
 (*
@@ -984,7 +983,17 @@ println!
 *)
 //
 val
+d3cs =
+let
+val
 d3cs = trans3t_program(d3cs)
+in
+d3cs where
+{
+  val () = tread3t_main(d3cs)
+}
+end // end of [val]
+//
 // (*
 val () =
 println!
