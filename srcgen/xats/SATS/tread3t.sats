@@ -64,7 +64,7 @@ trerr3tlst = List0(trerr3t)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 trerr3t_add(trerr3t): void
 //
 (* ****** ****** *)
