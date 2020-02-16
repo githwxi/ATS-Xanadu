@@ -109,12 +109,6 @@ implement K_LBRACE = K_SYMBOL(LBRACE_symbol)
 implement K_RBRACE = K_SYMBOL(RBRACE_symbol)
 //
 (* ****** ****** *)
-//
-implement
-{}(*tmp*)
-synerr_add(xerr) = ()
-//
-(* ****** ****** *)
 
 implement
 //{}(*tmp*)

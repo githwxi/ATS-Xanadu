@@ -64,7 +64,7 @@ trerr33lst = List0(trerr33)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 trerr33_add(trerr33): void
 //
 (* ****** ****** *)
@@ -74,70 +74,70 @@ tread33_main(d3eclist): void
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread33_d3pat: treader33(d3pat)
-fun{}
+fun//{}
 tread33_d3patopt: treader33(d3patopt)
-fun{}
+fun//{}
 tread33_d3patlst: treader33(d3patlst)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread33_d3exp: treader33(d3exp)
-fun{}
+fun//{}
 tread33_d3expopt: treader33(d3expopt)
-fun{}
+fun//{}
 tread33_d3explst: treader33(d3explst)
 //
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread33_d3gua: treader33(d3gua)
-fun{}
+fun//{}
 tread33_d3clau: treader33(d3clau)
-fun{}
+fun//{}
 tread33_d3gpat: treader33(d3gpat)
-fun{}
+fun//{}
 tread33_d3gualst: treader33(d3gualst)
-fun{}
+fun//{}
 tread33_d3claulst: treader33(d3claulst)
 
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread33_d3ecl: treader33(d3ecl)
-fun{}
+fun//{}
 tread33_d3eclist: treader33(d3eclist)
 //
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread33_f3arg: treader33(f3arg)
-fun{}
+fun//{}
 tread33_f3arglst: treader33(f3arglst)
-fun{}
+fun//{}
 tread33_f3arglstopt: treader33(f3arglstopt)
 
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread33_v3aldecl: treader33(v3aldecl)
-fun{}
+fun//{}
 tread33_v3aldeclist: treader33(v3aldeclist)
 
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread33_v3ardecl: treader33(v3ardecl)
-fun{}
+fun//{}
 tread33_v3ardeclist: treader33(v3ardeclist)
 
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread33_f3undecl: treader33(f3undecl)
-fun{}
+fun//{}
 tread33_f3undeclist: treader33(f3undeclist)
 
 (* ****** ****** *)

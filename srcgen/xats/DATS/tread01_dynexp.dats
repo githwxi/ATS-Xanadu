@@ -283,28 +283,25 @@ list_foreach$fwork<f1undecl><env>(f1ds, env) = tread01_f1undecl(f1ds)
 
 local
 
-extern
-fun{}
+static
+fun//{}
 the_trerr01lst_get(): trerr01lst
 extern
-fun{}
+fun//{}
 the_trerr01lst_set(trerr01lst): void
 
 implement
-{}(*tmp*)
+//{}(*tmp*)
 trerr01_add(xerr) = let
 //
 val
-xerrs = the_trerr01lst_get<>()
+xerrs = the_trerr01lst_get()
 //
 in
-  the_trerr01lst_set<>(list_cons(xerr, xerrs))
+  the_trerr01lst_set(list_cons(xerr, xerrs))
 end // end of [trerr01_add]
 
 in (* in-of-local *)
-
-implement
-tread01_main(d1cs) = let
 //
 local
 //
@@ -313,18 +310,19 @@ the_trerr01lst =
 ref<trerr01lst>(list_nil)
 //
 in(*in-of-local*)
-val () =
-$tempenver(the_trerr01lst)
 implement
-the_trerr01lst_get<>() = the_trerr01lst[]
+the_trerr01lst_get() = the_trerr01lst[]
 implement
-the_trerr01lst_set<>(xs) = the_trerr01lst[] := xs
+the_trerr01lst_set(xs) = the_trerr01lst[] := xs
 end // end of [local]
+//
+implement
+tread01_main(d1cs) = let
 //
 val () =
 tread01_d1eclist(d1cs)
 val
-xerrs = the_trerr01lst_get<>()
+xerrs = the_trerr01lst_get()
 val
 nxerr = list_length<trerr01>(xerrs)
 //

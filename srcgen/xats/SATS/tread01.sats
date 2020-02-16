@@ -53,7 +53,7 @@ trerr01lst = List0(trerr01)
 
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 trerr01_add(trerr01): void
 //
 (* ****** ****** *)
