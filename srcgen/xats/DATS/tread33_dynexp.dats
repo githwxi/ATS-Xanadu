@@ -76,7 +76,7 @@ _(*TMP*) = "./../DATS/dynexp3_print.dats"
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3pat
   (d3p0) = let
 //
@@ -96,9 +96,9 @@ d3p0.node() of
   (d3f1, npf2, d3ps) =>
   {
     val () =
-    tread33_d3pat<>(d3f1)
+    tread33_d3pat(d3f1)
     val () =
-    tread33_d3patlst<>(d3ps)
+    tread33_d3patlst(d3ps)
   }
 //
 | D3Pnone0() => ()
@@ -107,13 +107,13 @@ d3p0.node() of
   (knd, npf, d3ps) =>
   {
     val () =
-    tread33_d3patlst<>(d3ps)
+    tread33_d3patlst(d3ps)
   }
 //
 | D3Panno(d3p1, t2p2) =>
   {
     val () =
-    tread33_d3pat<>(d3p1)
+    tread33_d3pat(d3p1)
   }
 //
 | D3Psym0(sym0, dpis) =>
@@ -138,7 +138,7 @@ d3p0.node() of
     t2p1 = d3p1.type()
 //
     val () =
-    tread33_d3pat<>(d3p1)
+    tread33_d3pat(d3p1)
 //
     val () =
     trerr33_add(TRERR33d3pat(d3p0))
@@ -172,29 +172,29 @@ end // end of [tread33_d3pat]
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3patopt(opt) =
 (
 case+ opt of
 | None() => ()
-| Some(d3p) => tread33_d3pat<>(d3p)
+| Some(d3p) => tread33_d3pat(d3p)
 )
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3patlst(d3ps) =
 (
 list_foreach<d3pat>(d3ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3pat><env>(d3p, env) = tread33_d3pat<>(d3p)
+list_foreach$fwork<d3pat><env>(d3p, env) = tread33_d3pat(d3p)
 } (* end of [tread33_d3patlst] *)
 //
 (* ****** ****** *)
 
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3exp
   (d3e0) = let
 //
@@ -234,50 +234,50 @@ d3e0.node() of
   (d3e1, s2e2) =>
   {
     val () =
-    tread33_d3exp<>(d3e1)
+    tread33_d3exp(d3e1)
   }
 //
 | D3Edapp
   (d3f1, npf2, d3es) =>
   {
     val () =
-    tread33_d3exp<>(d3f1)
+    tread33_d3exp(d3f1)
     val () =
-    tread33_d3explst<>(d3es)
+    tread33_d3explst(d3es)
   }
 //
 | D3Elet(d3cs, d3e1) =>
   {
     val () =
-    tread33_d3eclist<>(d3cs)
-    val () = tread33_d3exp<>(d3e1)
+    tread33_d3eclist(d3cs)
+    val () = tread33_d3exp(d3e1)
   }
 | D3Ewhere(d3e1, d3cs) =>
   {
     val () =
-    tread33_d3eclist<>(d3cs)
-    val () = tread33_d3exp<>(d3e1)
+    tread33_d3eclist(d3cs)
+    val () = tread33_d3exp(d3e1)
   }
 //
 | D3Eassgn(d3e1, d3e2) =>
   {
-    val () = tread33_d3exp<>(d3e1)
-    val () = tread33_d3exp<>(d3e2)
+    val () = tread33_d3exp(d3e1)
+    val () = tread33_d3exp(d3e2)
   }
 //
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   {
-    val () = tread33_d3exp<>(d3e1)
-    val () = tread33_d3exp<>(d3e2)
-    val () = tread33_d3expopt<>(opt3)
+    val () = tread33_d3exp(d3e1)
+    val () = tread33_d3exp(d3e2)
+    val () = tread33_d3expopt(opt3)
   }
 //
 | D3Ecase
   (knd0, d3e1, d3cs) =>
   {
-    val () = tread33_d3exp<>(d3e1)
-    val () = tread33_d3claulst<>(d3cs)
+    val () = tread33_d3exp(d3e1)
+    val () = tread33_d3claulst(d3cs)
   }
 //
 | D3Econ2(d2cs) =>
@@ -310,22 +310,22 @@ d3e0.node() of
 //
 | D3Eaddr(d3e1) =>
   {
-    val () = tread33_d3exp<>(d3e1)
+    val () = tread33_d3exp(d3e1)
   }
 | D3Efold(d3e1) =>
   {
-    val () = tread33_d3exp<>(d3e1)
+    val () = tread33_d3exp(d3e1)
   }
 //
 | D3Eeval
   ( knd0, d3e1 ) =>
   {
-    val () = tread33_d3exp<>(d3e1)
+    val () = tread33_d3exp(d3e1)
   }
 //
 | D3Elazy(d3e1) =>
   {
-    val () = tread33_d3exp<>(d3e1)
+    val () = tread33_d3exp(d3e1)
   }
 //
 | D3Elcast(d3e1, lab2) =>
@@ -335,7 +335,7 @@ d3e0.node() of
     t2p1 = d3e1.type()
 //
     val () =
-    tread33_d3exp<>(d3e1)
+    tread33_d3exp(d3e1)
 //
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
@@ -355,7 +355,7 @@ d3e0.node() of
     t2p1 = d3e1.type()
 //
     val () =
-    tread33_d3exp<>(d3e1)
+    tread33_d3exp(d3e1)
 //
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
@@ -389,29 +389,29 @@ end // end of [tread33_d3exp]
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3expopt(opt) =
 (
 case+ opt of
 | None() => ()
-| Some(d3e) => tread33_d3exp<>(d3e)
+| Some(d3e) => tread33_d3exp(d3e)
 )
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3explst(d3es) =
 (
 list_foreach<d3exp>(d3es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3exp><env>(d3e, env) = tread33_d3exp<>(d3e)
+list_foreach$fwork<d3exp><env>(d3e, env) = tread33_d3exp(d3e)
 } (* end of [tread33_d3explst] *)
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3gua
   (d3g0) =
 (
@@ -419,17 +419,17 @@ case+
 d3g0.node() of
 | D3GUAexp(d3e1) =>
   {
-    val () = tread33_d3exp<>(d3e1)
+    val () = tread33_d3exp(d3e1)
   }
 | D3GUAmat(d3e1, d3p2) =>
   {
-    val () = tread33_d3exp<>(d3e1)
-    val () = tread33_d3pat<>(d3p2)
+    val () = tread33_d3exp(d3e1)
+    val () = tread33_d3pat(d3p2)
   }
 )
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3clau
   (d3cl) =
 (
@@ -438,17 +438,17 @@ d3cl.node() of
 | D3CLAUpat(dgp1) =>
   {
     val () =
-    tread33_d3gpat<>(dgp1)
+    tread33_d3gpat(dgp1)
   }
 | D3CLAUexp(dgp1, d3e2) =>
   {
     val () =
-    tread33_d3gpat<>(dgp1)
-    val () = tread33_d3exp<>(d3e2)
+    tread33_d3gpat(dgp1)
+    val () = tread33_d3exp(d3e2)
   }
 )
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3gpat
   (dgp0) =
 (
@@ -456,41 +456,41 @@ case+
 dgp0.node() of
 | D3GPATpat(d3p1) =>
   {
-    val () = tread33_d3pat<>(d3p1)
+    val () = tread33_d3pat(d3p1)
   }
 | D3GPATgua(d3p1, d3gs) =>
   {
-    val () = tread33_d3pat<>(d3p1)
-    val () = tread33_d3gualst<>(d3gs)
+    val () = tread33_d3pat(d3p1)
+    val () = tread33_d3gualst(d3gs)
   }
 )
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3gualst(d3gs) =
 (
 list_foreach<d3gua>(d3gs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3gua><env>(d3g, env) = tread33_d3gua<>(d3g)
+list_foreach$fwork<d3gua><env>(d3g, env) = tread33_d3gua(d3g)
 } (* end of [tread33_d3gualst] *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3claulst(d3cs) =
 (
 list_foreach<d3clau>(d3cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3clau><env>(d3cl, env) = tread33_d3clau<>(d3cl)
+list_foreach$fwork<d3clau><env>(d3cl, env) = tread33_d3clau(d3cl)
 } (* end of [tread33_d3claulst] *)
 //
 (* ****** ****** *)
 
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3ecl(d3cl) =
 let
 //
@@ -511,17 +511,17 @@ d3cl.node() of
 //
 | D3Cstatic(tok, d3c1) =>
   {
-    val () = tread33_d3ecl<>(d3c1)
+    val () = tread33_d3ecl(d3c1)
   }
 | D3Cextern(tok, d3c1) =>
   {
-    val () = tread33_d3ecl<>(d3c1)
+    val () = tread33_d3ecl(d3c1)
   }
 //
 | D3Cvaldecl
   (knd, mopt, v3ds) =>
   {
-    val () = tread33_v3aldeclist<>(v3ds)
+    val () = tread33_v3aldeclist(v3ds)
 (*
     val () =
     println!
@@ -532,7 +532,7 @@ d3cl.node() of
 | D3Cvardecl
   (knd, mopt, v3ds) =>
   {
-    val () = tread33_v3ardeclist<>(v3ds)
+    val () = tread33_v3ardeclist(v3ds)
 (*
     val () =
     println!
@@ -543,7 +543,7 @@ d3cl.node() of
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>
   {
-    val () = tread33_f3undeclist<>(f3ds)
+    val () = tread33_f3undeclist(f3ds)
 (*
     val () =
     println!
@@ -558,14 +558,14 @@ d3cl.node() of
   , f3as, res0, d3e0) =>
   {
     val () =
-    tread33_f3arglst<>(f3as)
+    tread33_f3arglst(f3as)
 (*
     val () =
-    tread33_ti3arg<>(ti3a)
+    tread33_ti3arg(ti3a)
     val () =
-    tread33_ti2arglst<>(ti2s)
+    tread33_ti2arglst(ti2s)
 *)
-    val () = tread33_d3exp<>(d3e0)
+    val () = tread33_d3exp(d3e0)
   }
 | D3Cimpdecl2
   ( tok, mopt
@@ -574,14 +574,14 @@ d3cl.node() of
   , f3as, res0, d3e0) =>
   {
     val () =
-    tread33_f3arglst<>(f3as)
+    tread33_f3arglst(f3as)
 (*
     val () =
-    tread33_ti3arg<>(ti3a)
+    tread33_ti3arg(ti3a)
     val () =
-    tread33_ti2arglst<>(ti2s)
+    tread33_ti2arglst(ti2s)
 *)
-    val () = tread33_d3exp<>(d3e0)
+    val () = tread33_d3exp(d3e0)
 //
     val-
     IMPLD2CST2
@@ -617,20 +617,20 @@ end // end of [tread33_d3ecl]
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_d3eclist(d3cs) =
 (
 list_foreach<d3ecl>(d3cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3ecl><env>(d3c, env) = tread33_d3ecl<>(d3c)
+list_foreach$fwork<d3ecl><env>(d3c, env) = tread33_d3ecl(d3c)
 } (* end of [tread33_d3eclist] *)
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_f3arg
   (f3a0) =
 (
@@ -642,7 +642,7 @@ f3a0.node() of
 | F3ARGsome_dyn
   (npf, d3ps) =>
   {
-    val () = tread33_d3patlst<>(d3ps)
+    val () = tread33_d3patlst(d3ps)
   }
 //
 | F3ARGnone2(f2a) =>
@@ -667,37 +667,37 @@ f3a0.node() of
 ) (* end of [tread33_f3arg] *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_f3arglst(f3as) =
 (
 list_foreach<f3arg>(f3as)
 ) where
 {
 implement(env)
-list_foreach$fwork<f3arg><env>(f3a, env) = tread33_f3arg<>(f3a)
+list_foreach$fwork<f3arg><env>(f3a, env) = tread33_f3arg(f3a)
 } (* end of [tread33_f3arglst] *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_f3arglstopt(opt0) =
 (
-case+ opt0 of None() => () | Some(f3as) => tread33_f3arglst<>(f3as)
+case+ opt0 of None() => () | Some(f3as) => tread33_f3arglst(f3as)
 )
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_v3aldecl
   (v3d0) =
 {
   val () =
-  tread33_d3pat<>(rcd.pat)
+  tread33_d3pat(rcd.pat)
   val () =
-  tread33_d3expopt<>(rcd.def)
+  tread33_d3expopt(rcd.def)
 (*
   val () =
-  tread33_s2expopt<>(rcd.wth)
+  tread33_s2expopt(rcd.wth)
 *)
 } where
 {
@@ -707,20 +707,20 @@ tread33_v3aldecl
 } (* end of [tread33_v3aldecl] *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_v3aldeclist(v3ds) =
 (
 list_foreach<v3aldecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3aldecl><env>(v3ds, env) = tread33_v3aldecl<>(v3ds)
+list_foreach$fwork<v3aldecl><env>(v3ds, env) = tread33_v3aldecl(v3ds)
 } (* end of [tread33_v3aldeclist] *)
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_v3ardecl
   (v3d0) =
 {
@@ -736,20 +736,20 @@ tread33_v3ardecl
 }
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_v3ardeclist(v3ds) =
 (
 list_foreach<v3ardecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3ardecl><env>(v3ds, env) = tread33_v3ardecl<>(v3ds)
+list_foreach$fwork<v3ardecl><env>(v3ds, env) = tread33_v3ardecl(v3ds)
 } (* end of [tread33_v3ardeclist] *)
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_f3undecl
   (f3d0) =
 {
@@ -765,14 +765,14 @@ tread33_f3undecl
 } (* end of [tread33_f3undecl] *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread33_f3undeclist(f3ds) =
 (
 list_foreach<f3undecl>(f3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f3undecl><env>(f3ds, env) = tread33_f3undecl<>(f3ds)
+list_foreach$fwork<f3undecl><env>(f3ds, env) = tread33_f3undecl(f3ds)
 } (* end of [tread33_f3undeclist] *)
 //
 (* ****** ****** *)
@@ -780,27 +780,24 @@ list_foreach$fwork<f3undecl><env>(f3ds, env) = tread33_f3undecl<>(f3ds)
 local
 
 extern
-fun{}
+fun//{}
 the_trerr33lst_get(): trerr33lst
 extern
-fun{}
+fun//{}
 the_trerr33lst_set(trerr33lst): void
 
 implement
-{}(*tmp*)
+//{}(*tmp*)
 trerr33_add(xerr) = let
 //
 val
-xerrs = the_trerr33lst_get<>()
+xerrs = the_trerr33lst_get()
 //
 in
-  the_trerr33lst_set<>(list_cons(xerr, xerrs))
+  the_trerr33lst_set(list_cons(xerr, xerrs))
 end // end of [trerr33_add]
 
 in (* in-of-local *)
-
-implement
-tread33_main(d3cs) = let
 //
 local
 //
@@ -809,18 +806,19 @@ the_trerr33lst =
 ref<trerr33lst>(list_nil)
 //
 in(*in-of-local*)
-val () =
-$tempenver(the_trerr33lst)
 implement
-the_trerr33lst_get<>() = the_trerr33lst[]
+the_trerr33lst_get() = the_trerr33lst[]
 implement
-the_trerr33lst_set<>(xs) = the_trerr33lst[] := xs
+the_trerr33lst_set(xs) = the_trerr33lst[] := xs
 end // end of [local]
 //
+implement
+tread33_main(d3cs) = let
+//
 val () =
-tread33_d3eclist<>(d3cs)
+tread33_d3eclist(d3cs)
 val
-xerrs = the_trerr33lst_get<>()
+xerrs = the_trerr33lst_get()
 val
 nxerr = list_length<trerr33>(xerrs)
 //

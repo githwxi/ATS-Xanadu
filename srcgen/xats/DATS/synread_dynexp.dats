@@ -1248,15 +1248,15 @@ end // end of [let]
 
 local
 
-extern
-fun{}
+static
+fun//{}
 the_synerrlst_get(): synerrlst
 extern
-fun{}
+fun//{}
 the_synerrlst_set(synerrlst): void
 
 implement
-{}(*tmp*)
+//{}(*tmp*)
 synerr_add(xerr) = let
 //
 val
@@ -1267,9 +1267,6 @@ in
 end // end of [synerr_add]
 
 in (* in-of-local *)
-
-implement
-synread_main(d0cs) = let
 //
 local
 //
@@ -1278,13 +1275,14 @@ the_synerrlst =
 ref<synerrlst>(list_nil)
 //
 in(*in-of-local*)
-val () =
-$tempenver(the_synerrlst)
 implement
-the_synerrlst_get<>() = the_synerrlst[]
+the_synerrlst_get() = the_synerrlst[]
 implement
-the_synerrlst_set<>(xs) = the_synerrlst[] := xs
+the_synerrlst_set(xs) = the_synerrlst[] := xs
 end // end of [local]
+//
+implement
+synread_main(d0cs) = let
 //
 val () =
 synread_d0eclist(d0cs)

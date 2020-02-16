@@ -64,7 +64,7 @@ trerr23lst = List0(trerr23)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 trerr23_add(trerr23): void
 //
 (* ****** ****** *)

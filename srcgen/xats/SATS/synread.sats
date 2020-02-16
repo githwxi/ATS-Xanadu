@@ -141,7 +141,7 @@ synerrlst = List0(synerr)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 synerr_add(synerr): void
 //
 (* ****** ****** *)
