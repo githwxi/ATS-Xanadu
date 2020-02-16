@@ -15,9 +15,9 @@ expected that various extensions to Xanadu will be built in the future
 that compile back to Xanadu itself.
 
 The concrete syntax of Xanadu has its root in ML, and its design is
-also influenced by C and Lisp. In this document, please find an informal
-presentation of the concrete syntax of Xanadu, which primarily relies on
-code examples for illustration.
+also influenced by C and Lisp. In this document, please find an
+informal and partial presentation of the concrete syntax of Xanadu,
+which primarily relies on code examples for illustration.
 
 Primitive Constants
 -------------------
@@ -35,9 +35,9 @@ assumed by default that the base of a representation is 10 unless the
 first digit is 0, which indicates that the base is 8. For using base
 16, one needs to start a representation with either 0x or 0X. Note
 that the hexdecimal digits of values from 10 to 15 are represented as
-letters *a*, *b*, *c*, *d*, *e*, and *f*. And the uppercase of each of
-these six letters can be used as well. Please find some integer
-representations as follows:
+letters *a*, *b*, *c*, *d*, *e*, and *f*, respectively. And the
+uppercase of each of these six letters can be used as well. Please
+find some integer representations as follows:
 
 - <code>01234567</code>
 - <code>123456789</code>
@@ -112,9 +112,9 @@ The following keywords are for forming expressions:
   been supported elsewhere.
 - <code>$raise</code>:
   for raising a run-time exception (which may be caught by a handler). Xanadu supports
-  the use of exceptions for changing control-flow in program execution.
+  the use of exceptions for altering control-flow in program execution.
 - <code>$tup</code>:
-  for forming a boxed tuple. Note that $tup$ is resolved to either $tup_t or $tup_vt.
+  for forming a boxed tuple. Note that $tup is resolved to either $tup_t or $tup_vt.
 - <code>$tup_t</code>: for forming a boxed tuple containing no linear components.
 - <code>$tup_vt</code>:
   for forming a boxed tuple that may contain linear components. The formed tuple is
