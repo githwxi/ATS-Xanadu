@@ -1375,6 +1375,62 @@ end // end of [d33exp_assgn_up]
 
 (* ****** ****** *)
 
+implement
+ti3env_reset(ti3e) =
+let
+val+
+TI3ENV(_, xtvs, _) = ti3e
+in (* in-of-let *)
+(
+list_foreach<t2xtv>(xtvs)
+) where
+{
+implement
+(env)(*tmp*)
+list_foreach$fwork<t2xtv><env>
+  (xtv, env) = xtv.type(the_t2ype_none0)
+}
+end // end of [ti3env_reset]
+
+(* ****** ****** *)
+
+implement
+ti3env_get_s2vs
+( ti3e ) =
+( s2vs ) where
+{
+val+
+TI3ENV(s2vs, _, _) = ti3e
+} (* end of [ti3env_get_s2vs] *)
+
+implement
+ti3env_get_targ
+( ti3e ) =
+( targ ) where
+{
+val+
+TI3ENV(_, _, targ) = ti3e
+} (* end of [ti3env_get_targ] *)
+
+implement
+ti3env_get_tsub
+( ti3e ) =
+let
+val+
+TI3ENV(_, xtvs, _) = ti3e
+in
+list_vt2t
+(
+list_map<t2xtv><t2ype>(xtvs)
+) where
+{
+implement
+list_map$fopr<t2xtv><t2ype>(xtv) = xtv.type()
+}
+end (* end of [ti3env_get_tsub] *)
+
+(* ****** ****** *)
+
 local
 //
 #staload

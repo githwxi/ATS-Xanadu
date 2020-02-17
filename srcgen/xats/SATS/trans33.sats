@@ -50,6 +50,7 @@
 //
 (* ****** ****** *)
 
+typedef s2var = $S2E.s2var
 typedef s2exp = $S2E.s2exp
 typedef t2ype = $S2T.t2ype
 typedef t2xtv = $S2T.t2xtv
@@ -87,6 +88,7 @@ typedef d2pitmlst = $D2E.d2pitmlst
 //
 (* ****** ****** *)
 
+typedef s2varlst = $S2E.s2varlst
 typedef s2explst = $S2E.s2explst
 typedef t2ypelst = $S2T.t2ypelst
 typedef t2xtvlst = $S2T.t2xtvlst
@@ -326,6 +328,29 @@ fun
 d33exp_assgn_up
 ( loc0: loc_t
 , d3el: d3exp(*l-value*), d3er: d3exp): d3exp
+//
+(* ****** ****** *)
+//
+datatype
+ti3env =
+| TI3ENV of
+  (s2varlst, t2xtvlst, t2ypelst)
+//
+(* ****** ****** *)
+//
+fun
+ti3env_reset(ti3env): void
+//
+fun
+ti3env_get_s2vs(ti3env): s2varlst
+fun
+ti3env_get_targ(ti3env): t2ypelst
+fun
+ti3env_get_tsub(ti3env): t2ypelst
+//
+overload .s2vs with ti3env_get_s2vs
+overload .targ with ti3env_get_targ
+overload .tsub with ti3env_get_tsub
 //
 (* ****** ****** *)
 //

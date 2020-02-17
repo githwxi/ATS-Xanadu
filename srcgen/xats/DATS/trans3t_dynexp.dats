@@ -55,6 +55,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/trans33.sats"
 #staload "./../SATS/trans3t.sats"
 
 (* ****** ****** *)
