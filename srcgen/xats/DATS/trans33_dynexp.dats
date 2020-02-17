@@ -52,9 +52,16 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/trans12.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
@@ -1639,6 +1646,54 @@ end // end of [aux_include]
 (* ****** ****** *)
 
 fun
+aux_staload
+( d3cl
+: d3ecl): d3ecl = let
+//
+val
+loc0 = d3cl.loc()
+val-
+D3Cstaload
+( tok, src
+, knd, flag
+, fopt, mopt) = d3cl.node()
+//
+val () =
+(
+case+ mopt of
+|
+None() => ()
+|
+Some(menv) =>
+let
+val dopt =
+fmodenv_get_d3eclist(menv)
+in
+case- dopt of
+|
+Some(d3cs) =>
+(
+fmodenv_set_d3eclist
+( menv
+, $UN.cast(trans33_declist(d3cs)))
+) where
+{
+  val d3cs = $UN.cast{d3eclist}(d3cs)
+}
+end
+)
+//
+in
+//
+d3ecl_make_node
+( loc0
+, D3Cstaload(tok, src, knd, flag, fopt, mopt))
+//
+end // end of [aux_staload]
+
+(* ****** ****** *)
+
+fun
 aux_valdecl
 ( d3cl
 : d3ecl): d3ecl =
@@ -2163,6 +2218,7 @@ d3cl.node() of
   }
 //
 | D3Cinclude _ => aux_include(d3cl)
+| D3Cstaload _ => aux_staload(d3cl)
 //
 | D3Clocal
   (d3cs1, d3cs2) => let
