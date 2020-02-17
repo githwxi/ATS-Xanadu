@@ -149,6 +149,11 @@ t2ypelst_subst_implenv
 (* ****** ****** *)
 //
 fun
+implenv_add_staload
+( env0
+: !implenv
+, d3cl: d3ecl): void
+fun
 implenv_add_impdecl3
 ( env0
 : !implenv
