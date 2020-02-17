@@ -682,6 +682,26 @@ x0.node() of
     | Some _ => "Some(<d3cls>)"): string
   }
 //
+| D3Cstaload
+  ( tok
+  , src, knd
+  , fopt, flag, body) =>
+  (
+  fprint!
+  ( out
+  , "D3Cstaload("
+  , "src= ", src, "; "
+  , "knd= ", knd, "; "
+  , fopt, "; ", flag, "; ", body, ")")
+  ) where
+  {
+    val body =
+    (
+    case+ body of
+    | None _ => "None()"
+    | Some _ => "Some(<fmodenv>)"): string
+  }
+//
 | D3Clocal(head, body) =>
   fprint!
   ( out

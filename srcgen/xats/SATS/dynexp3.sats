@@ -693,6 +693,13 @@ d3ecl_node =
   , filpathopt
   , d3eclistopt) // file inclusion
 //
+| D3Cstaload of
+  ( token
+  , d1exp // src
+  , int(*knd*) // sta/dyn: 0/1
+  , filpathopt
+  , int(*shared*), fmodenvopt)
+//
 | D3Clocal of
   (d3eclist(*head*), d3eclist(*body*))
 //
