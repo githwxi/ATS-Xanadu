@@ -359,6 +359,14 @@ abstype t3imptbl = ptr
 typedef
 t3imptblopt = Option(t3imptbl)
 //
+(* ****** ****** *)
+//
+datatype implist =
+| implist_nil of ()
+| implist_cons of (d3ecl, ti3env, implist)
+//
+(* ****** ****** *)
+//
 fun
 fmodenv_get_t3imptbl
   (menv: $S2E.fmodenv): t3imptblopt

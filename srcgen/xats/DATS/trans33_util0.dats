@@ -1459,7 +1459,7 @@ local
 #staload _(*anon*) = "libats/DATS/hashtbl_chain.dats"
 //
 typedef key = uint
-typedef itm = d3eclist
+typedef itm = implist
 //
 vtypedef hashtbl = hashtbl(key, itm)
 //
@@ -1476,25 +1476,33 @@ implement
 gequal_val_val<key>(x, y) = (x = y)
 //
 (* ****** ****** *)
-
+//
 implement
 t3imptbl_make_d3eclist
   (d3cs) =
 let
 //
 fun
-auxd3c
+auxdcl
 ( htbl
 : !hashtbl
-, d3c0: d3ecl): void =
+, d3cl: d3ecl): void =
 let
 val-
 D3Cimpdecl3
-( _, _, _, _
-, id2c
-, _, _, _, _, _) = d3c0.node()
+( tok0, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s
+, f3as, res1, body) = d3cl.node()
 in
+//
+if
+iseqz(ti2s)
+then
+((*function*))
+else
 (
+// template
 case+ id2c of
 |
 IMPLD2CST1
@@ -1504,7 +1512,7 @@ val-
 list_cons
 (d2c1, d2cs) = d2cs
 in
-  auxins(htbl, d2c1, d3c0)
+  auxins(htbl, d2c1, d3cl)
 end
 |
 IMPLD2CST2
@@ -1512,50 +1520,137 @@ IMPLD2CST2
 (
 case+ opt3 of
 | None() => ()
-| Some(d2c1) =>
-  auxins(htbl, d2c1, d3c0)
+| Some(d2c1) => auxins(htbl, d2c1, d3cl)
 )
 )
-end // end of [auxd3c]
+end // end of [auxdcl]
 //
 and
 auxins
 ( htbl
 : !hashtbl
 , d2c1: d2cst
-, d3c0: d3ecl): void =
+, d3cl: d3ecl): void =
 let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cimpdecl3
+( tok0, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s
+, f3as, res1, body) = d3cl.node()
 //
 (*
 val () =
 println!("auxins: d2c1 = ", d2c1)
 val () =
-println!("auxins: d3c0 = ", d3c0)
+println!("auxins: d3cl = ", d3cl)
 *)
 //
+val t2ps =
+(
+case- ti3a of 
+|
+TI3ARGsome(t2ps) => t2ps
+) : t2ypelst // end-of-val
+//
+val s2vs =
+(
+  auxs2vs_make(sqas, tqas)
+)
+val xtvs =
+list_vt2t
+(
+  list_map<s2var><t2xtv>(s2vs)
+) where
+{
+implement
+list_map$fopr<
+  s2var><t2xtv>(s2v) = t2xtv_new(loc0)
+} (* end of [val xtvs] *)
+val tsub =
+(
+  auxtsub_make(s2vs, xtvs)
+)
+//
+val t2ps =
+let
+val tsub = $UN.list_vt2t(tsub)
+in
+t2ypelst_subst_svarlst(t2ps, s2vs, tsub)
+end // end of [val]
+//
+val
+((*freed*)) = list_vt_free(tsub)
+//
+val ti3e = TI3ENV(s2vs, xtvs, t2ps)
+//
 val key =
-stamp2uint(d2c1.stamp())
+  stamp2uint(d2c1.stamp())
 val opt =
-hashtbl_search_opt<key,itm>(htbl, key)
+  hashtbl_search_opt<key,itm>(htbl, key)
+//
 in
 //
 case+ opt of
 |
 ~None_vt() =>
 let
-val itm = list_sing(d3c0)
+val itm0 =
+implist_cons
+(d3cl, ti3e, implist_nil())
 in   
-hashtbl_insert_any<key,itm>(htbl, key, itm)
+hashtbl_insert_any<key,itm>(htbl, key, itm0)
 end
 |
-~Some_vt(d3cs) =>
+~Some_vt(itm0) =>
 let
-val itm = list_cons(d3c0, d3cs)
+val itm1 =
+implist_cons(d3cl, ti3e, itm0)
 in   
-hashtbl_insert_any<key,itm>(htbl, key, itm)
+hashtbl_insert_any<key,itm>(htbl, key, itm1)
 end
 //
 end // end of [auxins]
+//
+and
+auxtsub_make
+( s2vs
+: s2varlst
+, xtvs
+: t2xtvlst): t2ypelst_vt =
+(
+case+ s2vs of
+| list_nil() =>
+  list_vt_nil()
+| list_cons(s2v0, s2vs) =>
+  let
+  val-
+  list_cons(xtv0, xtvs) = xtvs
+  val s2t0 = s2v0.sort()
+  val t2p0 =
+  t2ype_srt_xtv(s2t0, xtv0)
+  in
+    list_vt_cons
+    (t2p0, auxtsub_make(s2vs, xtvs))
+  end
+) (* end of [auxtsub_make] *)
+and
+auxs2vs_make
+( sqas
+: sq2arglst
+, tqas
+: tq2arglst): s2varlst =
+let
+  val s2vs = sqas.s2vs()
+in
+  case s2vs of
+  | list_nil _ => tqas.s2vs()
+  | list_cons _ => s2vs + tqas.s2vs()
+end // end of [auxs2vs_make]
 //
 fun
 auxlst1
@@ -1572,15 +1667,15 @@ and
 auxlst2
 ( htbl
 : !hashtbl
-, d3c0: d3ecl
+, d3cl: d3ecl
 , d3cs: d3eclist): void =
 (
 case+
-d3c0.node() of
+d3cl.node() of
 | D3Cimpdecl3 _ =>
   let
   val () =
-  auxd3c(htbl, d3c0) in auxlst1(htbl, d3cs)
+  auxdcl(htbl, d3cl) in auxlst1(htbl, d3cs)
   end
 | _(*non-D3Cimpdecl3*) => auxlst1(htbl, d3cs)
 )
