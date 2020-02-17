@@ -149,7 +149,7 @@ t2ypelst_subst_implenv
 (* ****** ****** *)
 //
 fun
-implenv_add_d3ecl
+implenv_add_impdecl3
 ( env0
 : !implenv
 , d3cl: d3ecl
@@ -228,6 +228,15 @@ trans3t_timp
 ( env0
 : !implenv, d3cl: d3ecl): d3ecl
 //
+fun
+staload_find_timp
+( d3cl
+: d3ecl
+, d2c0
+: d2cst
+, t2ps
+: t2ypelst)
+: Option_vt@(d3ecl, s2varlst, t2ypelst)
 fun
 implenv_find_timp
 ( env0

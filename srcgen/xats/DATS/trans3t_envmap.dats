@@ -66,8 +66,16 @@ implement
 fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
+
+implement
+staload_find_timp
+( d3cl
+, d2c0, targ) = None_vt()
+
+(* ****** ****** *)
 //
-datavtype implist =
+datavtype
+implist =
 //
 | implist_nil of ()
 //
@@ -75,7 +83,9 @@ datavtype implist =
 | implist_loc1 of implist
 | implist_loc2 of implist
 //
-| implist_cons of
+| implist_cons1 of
+  (d3ecl, implist)
+| implist_cons2 of
   (d3ecl, ti3env, implist)
 //
 (* ****** ****** *)
@@ -101,8 +111,8 @@ auxlst
 : implist): implist =
 case- xs of
 | ~implist_let1(xs) => xs
-| ~implist_cons
-   (d3cl, ti3e, xs) => auxlst(xs)
+| ~implist_cons1(d3cl, xs) => auxlst(xs)
+| ~implist_cons2(d3cl, ti3e, xs) => auxlst(xs)
 }
 //
 (* ****** ****** *)
@@ -139,11 +149,18 @@ case- xs of
 ~implist_loc2
    (xs) => auxlst2(xs, ys)
 |
-~implist_cons
+~implist_cons1
+   (d3cl, xs) =>
+ (
+   auxlst1
+   (xs, implist_cons1(d3cl, ys))
+ )
+|
+~implist_cons2
    (d3cl, ti3e, xs) =>
  (
    auxlst1
-   (xs, implist_cons(d3cl, ti3e, ys))
+   (xs, implist_cons2(d3cl, ti3e, ys))
  )
 )
 and
@@ -156,7 +173,9 @@ auxlst2
 case- xs of
 | ~implist_loc1
    (xs) => auxlst3(xs, ys)
-| ~implist_cons
+| ~implist_cons1
+   (d3cl, xs) => auxlst2(xs, ys)
+| ~implist_cons2
    (d3cl, ti3e, xs) => auxlst2(xs, ys)
 )
 and
@@ -170,10 +189,16 @@ case- ys of
 |
 ~implist_nil() => xs
 |
-~implist_cons(d3cl, ti3e, ys) =>
+~implist_cons1(d3cl, ys) =>
  (
    auxlst3
-   (implist_cons(d3cl, ti3e, xs), ys)
+   (implist_cons1(d3cl, xs), ys)
+ )
+|
+~implist_cons2(d3cl, ti3e, ys) =>
+ (
+   auxlst3
+   (implist_cons2(d3cl, ti3e, xs), ys)
  )
 ) (* end of [auxlst3] *)
 } (* where *) // implist_pop_loc12
@@ -195,7 +220,9 @@ case+ xs of
 ~implist_loc2(xs) => implist_free(xs)
 //
 |
-~implist_cons(_, _, xs) => implist_free(xs)
+~implist_cons1(_, xs) => implist_free(xs)
+|
+~implist_cons2(_, _, xs) => implist_free(xs)
 //
 ) (* end of [implist_free] *)
 
@@ -259,7 +286,7 @@ case+ xtvs of
 ) (* end of [auxrst] *)
 //
 fun
-auxd2c
+auxfnd
 ( d2c0: d2cst
 , d3cl: d3ecl): bool =
 (
@@ -319,7 +346,7 @@ case+ opt3 of
 | Some(d2c1) => (d2c0 = d2c1)
 )
 )
-) (* end of [auxd2c] *)
+) (* end of [auxfnd] *)
 //
 fun
 auxlst
@@ -349,13 +376,36 @@ implist_loc2
   (xs) => auxlst(xs, xarg)
 //
 |
-implist_cons
-(d3cl, ti3e, xs) =>
+implist_cons1
+  (d3cl, xs) =>
+let
+//
+val () =
+println!
+("implist_find_timp: d2c0 = ", d2c0)
+val () =
+println!
+("implist_find_timp: d3cl = ", d3cl)
+//
+  val ans =
+  staload_find_timp(d3cl, d2c0, targ)
+//
+in
+case+ ans of
+|
+ Some_vt _ => ans
+|
+~None_vt((*~found*)) => auxlst(xs, xarg) 
+end
+//
+|
+implist_cons2
+  (d3cl, ti3e, xs) =>
 let
 //
   val
   found =
-  auxd2c(d2c0, d3cl)
+  auxfnd(d2c0, d3cl)
 //
   val () =
   println!
@@ -376,23 +426,23 @@ found // d2c0: found
 )
 then auxlst(xs, xarg)
 else let
-  val+
-  TI3ENV
-  ( s2vs
-  , xtvs, t2ps) = ti3e
-  val
-  test =
-  unify3(loc0, targ, t2ps)
+val+
+TI3ENV
+( s2vs
+, xtvs, t2ps) = ti3e
+val
+test =
+unify3(loc0, targ, t2ps)
 //
-  val () =
-  println!
-  ("implist_find_timp: targ = ", targ)
-  val () =
-  println!
-  ("implist_find_timp: t2ps = ", t2ps)
-  val () =
-  println!
-  ("implist_find_timp: test = ", test)
+val () =
+println!
+("implist_find_timp: targ = ", targ)
+val () =
+println!
+("implist_find_timp: t2ps = ", t2ps)
+val () =
+println!
+("implist_find_timp: test = ", test)
 //
 in
   if
@@ -553,7 +603,7 @@ end // end of [implenv_pop_loc12]
 (* ****** ****** *)
 
 implement
-implenv_add_d3ecl
+implenv_add_impdecl3
 ( env0
 , d3cl, ti3e) =
 ( fold@(env0) ) where
@@ -562,9 +612,9 @@ implenv_add_d3ecl
 val+
 @IMPLENV(us, xs) = env0
 val () =
-(xs := implist_cons(d3cl, ti3e, xs))
+(xs := implist_cons2(d3cl, ti3e, xs))
 //
-} (* end of [implenv_add_d3ecl] *)
+} (* end of [implenv_add_impdecl3] *)
 
 (* ****** ****** *)
 //

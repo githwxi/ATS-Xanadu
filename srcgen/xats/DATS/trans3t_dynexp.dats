@@ -745,6 +745,14 @@ end // end of [aux_include]
 (* ****** ****** *)
 
 fun
+aux_staload
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl = d3cl
+
+(* ****** ****** *)
+
+fun
 aux_valdecl
 ( env0
 : !implenv
@@ -866,7 +874,7 @@ val ti3e = TI3ENV(s2vs, xtvs, t2ps)
 in
 let
 val () =
-implenv_add_d3ecl(env0, d3cl, ti3e) in d3cl
+implenv_add_impdecl3(env0, d3cl, ti3e) in d3cl
 end
 end // end of [list_cons]
 //
@@ -983,7 +991,8 @@ in
 t2ypelst_subst_svarlst(t2ps, s2vs, tsub)
 end // end of [val]
 //
-val ((*freed*)) = list_vt_free(tsub)
+val
+((*freed*)) = list_vt_free(tsub)
 //
 val ti3e = TI3ENV(s2vs, xtvs, t2ps)
 //
@@ -991,7 +1000,7 @@ in
 //
 let
 val () =
-implenv_add_d3ecl(env0, d3cl, ti3e) in d3cl
+implenv_add_impdecl3(env0, d3cl, ti3e) in d3cl
 end
 //
 end // end of [aux_impdecl3_tmp]
@@ -1039,6 +1048,11 @@ d3cl.node() of
     val d3cl =
     aux_include(env0, d3cl) in d3cl
   end // end of [D3Cinclude]
+| D3Cstaload _ =>
+  let
+    val d3cl =
+    aux_staload(env0, d3cl) in d3cl
+  end // end of [D3Cstaload]
 //
 | D3Clocal
   (d3cs1, d3cs2) =>
