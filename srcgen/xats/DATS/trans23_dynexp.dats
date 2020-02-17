@@ -1733,6 +1733,22 @@ end // end of [aux_include]
 (* ****** ****** *)
 
 fun
+aux_staload
+( d2cl
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2cl.loc()
+val-
+D2Cstaload _ = d2cl.node()
+//
+in
+d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
+end // end of [aux_staload]
+
+(* ****** ****** *)
+
+fun
 aux_valdecl
 ( d2cl
 : d2ecl): d3ecl = let
@@ -2440,14 +2456,8 @@ d2cl.node() of
     (loc0, D3Cextern(tok, d3c))
   end
 //
-| D2Cstaload _ =>
-  let
-    val node = D3Cd2ecl(d2cl)
-  in
-    d3ecl_make_node(loc0, node)
-  end
-//
 | D2Cinclude _ => aux_include(d2cl)
+| D2Cstaload _ => aux_staload(d2cl)
 //
 | D2Clocal
   (d2cs1, d2cs2) => let
