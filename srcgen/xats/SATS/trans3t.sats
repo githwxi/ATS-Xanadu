@@ -78,6 +78,10 @@ typedef d3gualst = $D3E.d3gualst
 typedef d3claulst = $D3E.d3claulst
 //
 (* ****** ****** *)
+
+#staload T33 = "./trans33.sats"
+
+(* ****** ****** *)
 //
 absvtype implenv_vtype = ptr
 vtypedef implenv = implenv_vtype
@@ -130,7 +134,8 @@ fun
 implenv_push_tsub
 ( env0
 : !implenv
-, s2vs: s2varlst, tsub: t2ypelst): void
+, s2vs: s2varlst
+, tsub: t2ypelst): void
 //
 (* ****** ****** *)
 //
@@ -143,16 +148,12 @@ t2ypelst_subst_implenv
 //
 (* ****** ****** *)
 //
-datatype
-ti3env =
-| TI3ENV of
-  (s2varlst, t2xtvlst, t2ypelst)
-//
 fun
 implenv_add_d3ecl
 ( env0
 : !implenv
-, d3cl: d3ecl, ti3e: ti3env): void
+, d3cl: d3ecl
+, ti3e: $T33.ti3env): void
 //
 (* ****** ****** *)
 //
