@@ -1672,15 +1672,14 @@ in
 case- dopt of
 |
 Some(d3cs) =>
-(
-fmodenv_set_d3eclist
-( menv
-, $UN.cast(trans33_declist(d3cs)))
-) where
-{
-  val d3cs = $UN.cast{d3eclist}(d3cs)
-}
+let
+val
+d3cs =
+trans33_declist($UN.cast(d3cs))
+in
+fmodenv_set_d3eclist(menv, $UN.cast(d3cs))
 end
+end // end of [Some]
 )
 //
 in
