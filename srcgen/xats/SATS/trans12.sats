@@ -352,6 +352,29 @@ fmodenv_get_d2eclist(fmodenv): d2eclist
 //
 (* ****** ****** *)
 //
+abstype d3eclist = ptr
+abstype t3imptbl = ptr
+typedef d3eclistopt = Option(d3eclist)
+typedef t3imptblopt = Option(t3imptbl)
+//
+(* ****** ****** *)
+//
+fun
+fmodenv_get_d3eclist
+  (env: fmodenv): d3eclistopt
+fun
+fmodenv_set_d3eclist
+  (menv: fmodenv, htbl: d3eclist): void
+//
+fun
+fmodenv_get_t3imptbl
+  (env: fmodenv): t3imptblopt
+fun
+fmodenv_set_t3imptbl
+  (menv: fmodenv, htbl: t3imptbl): void
+//
+(* ****** ****** *)
+//
 fun
 the_nmspace_open
   (menv: fmodenv): void

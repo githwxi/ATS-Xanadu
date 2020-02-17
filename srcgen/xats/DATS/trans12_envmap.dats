@@ -387,6 +387,9 @@ the_dexpenv_restore((*void*)): d2imap
 
 local
 
+absimpl
+t3imptbl = ptr
+
 vtypedef
 fmodenv_struct =
 @{
@@ -397,6 +400,9 @@ fmodenv_struct =
 , s2itm= s2imap
 , d2itm= d2imap
 , d2ecl= d2eclist
+//
+, d3ecl= d3eclistopt(*hashtbl*)
+, t3imp= t3imptblopt(*hashtbl*)
 //
 } // end of [fmodenv_struct]
 
@@ -424,9 +430,12 @@ prval () = mfree_gc_v_elim(pfgc)
   val () = p0->d2itm := d2is
   val () = p0->d2ecl := d2cs
 //
+  val () = p0->d3ecl := None()
+  val () = p0->t3imp := None()
+//
 in
 //
-  ref_make_viewptr(pfat | p0)
+ref_make_viewptr{fmodenv_struct}(pfat | p0)
 //
 end // end of [fmodenv_make]
 
@@ -512,6 +521,40 @@ fmodenv_get_d2eclist
 {
   val (vbox(pf0)|p0) = ref_get_viewptr(menv)
 } (* end of [fmodenv_get_d2eclist] *)
+
+(* ****** ****** *)
+
+implement
+fmodenv_get_d3eclist
+  (menv) =
+  (p0 -> d3ecl) where
+{
+  val (vbox(pf0)|p0) = ref_get_viewptr(menv)
+} (* end of [fmodenv_get_d3eclist] *)
+implement
+fmodenv_set_d3eclist
+  (menv, htbl) =
+  (p0 -> d3ecl := Some(htbl)) where
+{
+  val (vbox(pf0)|p0) = ref_get_viewptr(menv)
+} (* end of [fmodenv_set_d3eclist] *)
+
+(* ****** ****** *)
+
+implement
+fmodenv_get_t3imptbl
+  (menv) =
+  (p0 -> t3imp) where
+{
+  val (vbox(pf0)|p0) = ref_get_viewptr(menv)
+} (* end of [fmodenv_get_t3imptbl] *)
+implement
+fmodenv_set_t3imptbl
+  (menv, htbl) =
+  (p0 -> t3imp := Some(htbl)) where
+{
+  val (vbox(pf0)|p0) = ref_get_viewptr(menv)
+} (* end of [fmodenv_set_t3imptbl] *)
 
 (* ****** ****** *)
 
