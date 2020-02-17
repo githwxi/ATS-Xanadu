@@ -44,6 +44,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/stamp0.sats"
 #staload "./../SATS/label0.sats"
 #staload "./../SATS/symbol.sats"
 
@@ -1426,10 +1427,79 @@ t3imptbl_make_d3eclist
 let
 //
 fun
-auxd3c0
+auxd3c
 ( htbl
 : !hashtbl
-, d3c0: d3ecl): void = ()
+, d3c0: d3ecl): void =
+let
+val-
+D3Cimpdecl3
+( _, _, _, _
+, id2c
+, _, _, _, _, _) = d3c0.node()
+in
+(
+case+ id2c of
+|
+IMPLD2CST1
+(dqid, d2cs) =>
+let
+val-
+list_cons
+(d2c1, d2cs) = d2cs
+in
+  auxins(htbl, d2c1, d3c0)
+end
+|
+IMPLD2CST2
+(dqid, d2cs, opt3) =>
+(
+case+ opt3 of
+| None() => ()
+| Some(d2c1) =>
+  auxins(htbl, d2c1, d3c0)
+)
+)
+end // end of [auxd3c]
+//
+and
+auxins
+( htbl
+: !hashtbl
+, d2c1: d2cst
+, d3c0: d3ecl): void =
+let
+//
+(*
+val () =
+println!("auxins: d2c1 = ", d2c1)
+val () =
+println!("auxins: d3c0 = ", d3c0)
+*)
+//
+val key =
+stamp2uint(d2c1.stamp())
+val opt =
+hashtbl_search_opt<key,itm>(htbl, key)
+in
+//
+case+ opt of
+|
+~None_vt() =>
+let
+val itm = list_sing(d3c0)
+in   
+hashtbl_insert_any<key,itm>(htbl, key, itm)
+end
+|
+~Some_vt(d3cs) =>
+let
+val itm = list_cons(d3c0, d3cs)
+in   
+hashtbl_insert_any<key,itm>(htbl, key, itm)
+end
+//
+end // end of [auxins]
 //
 fun
 auxlst1
@@ -1454,7 +1524,7 @@ d3c0.node() of
 | D3Cimpdecl3 _ =>
   let
   val () =
-  auxd3c0(htbl, d3c0) in auxlst1(htbl, d3cs)
+  auxd3c(htbl, d3c0) in auxlst1(htbl, d3cs)
   end
 | _(*non-D3Cimpdecl3*) => auxlst1(htbl, d3cs)
 )
