@@ -328,5 +328,19 @@ d33exp_assgn_up
 , d3el: d3exp(*l-value*), d3er: d3exp): d3exp
 //
 (* ****** ****** *)
+//
+abstype t3imptbl = ptr
+//
+typedef
+t3imptblopt = Option(t3imptbl)
+//
+fun
+fmodenv_get_t3imptbl
+  (menv: $S2E.fmodenv): t3imptblopt
+//
+fun
+t3imptbl_make_d3eclist(d3cs: d3eclist): t3imptbl
+//
+(* ****** ****** *)
 
 (* end of [xats_trans33.sats] *)
