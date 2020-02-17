@@ -748,7 +748,11 @@ fun
 aux_staload
 ( env0
 : !implenv
-, d3cl: d3ecl): d3ecl = d3cl
+, d3cl: d3ecl): d3ecl =
+let
+val () =
+implenv_add_staload(env0, d3cl) in d3cl
+end // end of [aux_staload]
 
 (* ****** ****** *)
 
