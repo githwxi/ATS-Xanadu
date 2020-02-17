@@ -1374,4 +1374,108 @@ end // end of [d33exp_assgn_up]
 
 (* ****** ****** *)
 
+local
+//
+#staload
+T12 =
+"./../SATS/trans12.sats"
+//
+in
+implement
+fmodenv_get_t3imptbl(menv) =
+$UN.cast($T12.fmodenv_get_t3imptbl(menv))
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+#staload
+"libats/SATS/hashfun.sats"
+#staload
+"libats/SATS/hashtbl_chain.sats"
+//
+#staload _(*anon*) = "libats/DATS/qlist.dats"
+//
+#staload _(*anon*) = "libats/DATS/hashfun.dats"
+#staload _(*anon*) = "libats/DATS/linmap_list.dats"
+#staload _(*anon*) = "libats/DATS/hashtbl_chain.dats"
+//
+typedef key = uint
+typedef itm = d3eclist
+//
+vtypedef hashtbl = hashtbl(key, itm)
+//
+in (* in of local *)
+
+(* ****** ****** *)
+//
+implement
+hash_key<key>(key) =
+$UN.cast
+(inthash_jenkins($UN.cast(key)))
+//
+implement
+gequal_val_val<key>(x, y) = (x = y)
+//
+(* ****** ****** *)
+
+implement
+t3imptbl_make_d3eclist
+  (d3cs) =
+let
+//
+fun
+auxd3c0
+( htbl
+: !hashtbl
+, d3c0: d3ecl): void = ()
+//
+fun
+auxlst1
+( htbl: !hashtbl
+, d3cs: d3eclist): void =
+(
+case+ d3cs of
+| list_nil() => ()
+| list_cons
+  (d3c0, d3cs) => 
+  auxlst2(htbl, d3c0, d3cs)
+)
+and
+auxlst2
+( htbl
+: !hashtbl
+, d3c0: d3ecl
+, d3cs: d3eclist): void =
+(
+case+
+d3c0.node() of
+| D3Cimpdecl3 _ =>
+  let
+  val () =
+  auxd3c0(htbl, d3c0) in auxlst1(htbl, d3cs)
+  end
+| _(*non-D3Cimpdecl3*) => auxlst1(htbl, d3cs)
+)
+//
+val
+mycap = i2sz(1*1024)
+val
+mytbl = 
+hashtbl_make_nil<key,itm>(mycap)
+//
+in
+let
+val () =
+auxlst1(mytbl, d3cs) in $UN.castvwtp0{t3imptbl}(mytbl)
+end
+end // end of [t3imptbl_make_d3eclist]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [trans33_util0.dats] *)

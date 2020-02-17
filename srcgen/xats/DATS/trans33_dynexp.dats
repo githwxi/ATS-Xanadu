@@ -1674,10 +1674,14 @@ case- dopt of
 Some(d3cs) =>
 let
 val
-d3cs =
-trans33_declist($UN.cast(d3cs))
+d3cs = $UN.cast(d3cs)
+val
+d3cs = trans33_declist(d3cs)
+val
+htbl = t3imptbl_make_d3eclist(d3cs)
 in
-fmodenv_set_d3eclist(menv, $UN.cast(d3cs))
+fmodenv_set_d3eclist(menv, $UN.cast(d3cs));
+fmodenv_set_t3imptbl(menv, $UN.cast(htbl));
 end
 end // end of [Some]
 )
