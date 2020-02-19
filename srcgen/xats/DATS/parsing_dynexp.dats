@@ -2176,12 +2176,14 @@ in
   case+
   tok1.node() of
 //
+(*
   | T_END() =>
     let
     val () =
       buf.incby1() in endwhere_cons1(tok1)
     // end of [val]
     end
+*)
 //
   | T_RBRACE() =>
     let
@@ -2190,6 +2192,7 @@ in
     in
       case+
       tok2.node() of
+(*
       | T_END() =>
         let
           val () = buf.incby1()
@@ -2197,6 +2200,7 @@ in
           endwhere_cons2(tok1, Some(tok2))
         // end of [val]
         end
+*)
       | T_ENDWHERE() =>
         let
           val () = buf.incby1()
