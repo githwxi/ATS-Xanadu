@@ -1476,6 +1476,29 @@ implement
 gequal_val_val<key>(x, y) = (x = y)
 //
 (* ****** ****** *)
+
+implement
+t3imptbl_find_implist
+  (tbl, d2c) = let
+//
+val key =
+stamp2uint(d2c.stamp())
+//
+val tbl =
+$UN.castvwtp0{hashtbl}(tbl)
+val opt =
+hashtbl_search_opt(tbl, key)
+prval () = $UN.cast2void(tbl)
+//
+in
+//
+case+ opt of
+| ~Some_vt(imps) => imps
+| ~None_vt((*void*)) => implist_nil()
+//
+end // end of [t3imptbl_find_implist]
+
+(* ****** ****** *)
 //
 implement
 t3imptbl_make_d3eclist

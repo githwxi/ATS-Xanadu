@@ -67,10 +67,168 @@ fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
 
+local
+
+val
+loc0 = the_location_dummy
+
+fun
+fxtvs
+( vs
+: t2xtvlst
+)
+: t2ypelst =
+list_vt2t
+(
+list_map<t2xtv><t2ype>(vs)
+) where
+{
+//
+implement
+list_map$fopr<t2xtv><t2ype>
+  (xtv) = t2ype_eval(xtv.type())
+//
+}
+//
+fun
+auxrst // reset
+( xtvs
+: t2xtvlst): void =
+(
+case+ xtvs of
+| list_nil
+  ((*void*)) => ()
+| list_cons
+  (xtv0, xtvs) =>
+  ( auxrst(xtvs) ) where
+  {
+    val () =
+    xtv0.type(the_t2ype_none0(*void*))
+  }
+) (* end of [auxrst] *)
+
+fun
+auximps
+( d2c0
+: d2cst
+, imps
+: implist
+, targ
+: t2ypelst)
+: Option_vt
+  @(d3ecl
+  , s2varlst, t2ypelst) =
+let
+//
+fun
+auxlst
+( xs: implist
+, xarg: t2xtvlst
+)
+:
+Option_vt
+@(d3ecl
+, s2varlst, t2ypelst) =
+(
+case+ xs of
+|
+implist_nil() =>
+  None_vt(*void*)
+|
+implist_cons
+(d3cl, ti3e, xs) =>
+let
+//
+val () =
+println!
+("staload_find_timp: d3cl = ", d3cl)
+//
+val+
+TI3ENV
+( s2vs
+, xtvs, t2ps) = ti3e
+val
+test =
+unify3(loc0, targ, t2ps)
+//
+val () =
+println!
+("staload_find_timp: t2ps = ", t2ps)
+val () =
+println!
+("staload_find_timp: test = ", test)
+//
+in
+  if
+  test
+  then
+  let
+  val t2ps = fxtvs(xtvs)
+  in
+    auxrst(xtvs); // reset
+    Some_vt@(d3cl, s2vs, t2ps)
+  end
+  else
+  (auxrst(xarg); auxlst(xs, xarg))
+end // end of [auxlst]
+)
+//
+val () =
+println!
+("staload_find_timp: d2c0 = ", d2c0)
+//
+in
+(
+let
+val () = list_vt_free(xarg) in opt0
+end
+) where
+{
+  val xarg = t2ypelst_get_xtvs(targ)
+  val opt0 = auxlst(imps, $UN.list_vt2t(xarg))
+}
+//
+end // end of [auximps]
+
+in (* in-of-local *)
+
 implement
 staload_find_timp
 ( d3cl
-, d2c0, targ) = None_vt()
+, d2c0, targ) = let
+//
+val-
+D3Cstaload
+( tok, src
+, knd, fopt
+, flag, mopt) = d3cl.node()
+//
+in
+//
+case+ mopt of
+|
+None() =>
+None_vt()
+|
+Some(menv) => let
+  val
+  hopt =
+  fmodenv_get_t3imptbl(menv)
+in
+case- hopt of
+| Some(htbl) =>
+  (
+    auximps(d2c0, imps, targ)
+  ) where
+  {
+    val imps =
+    t3imptbl_find_implist(htbl, d2c0)
+  }
+end // end of [Some]
+//
+end // end of [staload_find_timp]
+
+end // end of [local]
 
 (* ****** ****** *)
 //
@@ -285,8 +443,8 @@ case+ xtvs of
 //
 fun
 auxfnd
-( d2c0: d2cst
-, d3cl: d3ecl): bool =
+( d3cl: d3ecl
+, d2c0: d2cst): bool =
 (
 case-
 d3cl.node() of
@@ -378,15 +536,19 @@ impllst_cons1
   (d3cl, xs) =>
 let
 //
+val
+ans =
+staload_find_timp(d3cl, d2c0, targ)
+//
+val () =
+println!
+("impllst_find_timp: d3cl = ", d3cl)
 val () =
 println!
 ("impllst_find_timp: d2c0 = ", d2c0)
 val () =
 println!
-("impllst_find_timp: d3cl = ", d3cl)
-//
-  val ans =
-  staload_find_timp(d3cl, d2c0, targ)
+("impllst_find_timp: targ = ", targ)
 //
 in
 case+ ans of
@@ -401,26 +563,27 @@ impllst_cons2
   (d3cl, ti3e, xs) =>
 let
 //
-  val
-  found =
-  auxfnd(d2c0, d3cl)
+val
+fnd = auxfnd(d3cl, d2c0)
+val () =
+println!
+("impllst_find_timp: fnd = ", fnd)
 //
-  val () =
-  println!
-  ("impllst_find_timp: d2c0 = ", d2c0)
-  val () =
-  println!
-  ("impllst_find_timp: d3cl = ", d3cl)
-  val () =
-  println!
-  ("impllst_find_timp: found = ", found)
+val () =
+println!
+("impllst_find_timp: d3cl = ", d3cl)
+val () =
+println!
+("impllst_find_timp: d2c0 = ", d2c0)
+val () =
+println!
+("impllst_find_timp: targ = ", targ)
 //
 in
 //
 if
-not
 (
-found // d2c0: found
+~fnd // d2c0: ~found
 )
 then auxlst(xs, xarg)
 else let
@@ -432,9 +595,6 @@ val
 test =
 unify3(loc0, targ, t2ps)
 //
-val () =
-println!
-("impllst_find_timp: targ = ", targ)
 val () =
 println!
 ("impllst_find_timp: t2ps = ", t2ps)

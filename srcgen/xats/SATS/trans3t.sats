@@ -239,7 +239,7 @@ staload_find_timp
 : d3ecl
 , d2c0
 : d2cst
-, t2ps
+, targ
 : t2ypelst)
 : Option_vt@(d3ecl, s2varlst, t2ypelst)
 fun
@@ -248,7 +248,7 @@ implenv_find_timp
 : !implenv
 , d2c0
 : d2cst
-, t2ps
+, targ
 : t2ypelst)
 : Option_vt@(d3ecl, s2varlst, t2ypelst)
 //

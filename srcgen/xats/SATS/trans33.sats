@@ -372,6 +372,9 @@ fmodenv_get_t3imptbl
   (menv: $S2E.fmodenv): t3imptblopt
 //
 fun
+t3imptbl_find_implist
+(htbl: t3imptbl, d2c0: d2cst): implist
+fun
 t3imptbl_make_d3eclist(d3cs: d3eclist): t3imptbl
 //
 (* ****** ****** *)
