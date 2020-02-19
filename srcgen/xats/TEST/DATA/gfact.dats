@@ -1,12 +1,21 @@
 (* ****** ****** *)
-
+//
 #staload
 "prelude/DATS/gnum.dats"
 #staload
 "prelude/DATS/gord.dats"
 #staload
 "prelude/DATS/gint.dats"
-
+//
+(*
+#include
+"prelude/DATS/gnum.dats"
+#include
+"prelude/DATS/gord.dats"
+#include
+"prelude/DATS/gint.dats"
+*)
+//
 (* ****** ****** *)
 
 fun
