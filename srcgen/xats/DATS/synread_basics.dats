@@ -775,8 +775,6 @@ tok.node() of
   end // end of [let]
 ) (* end of [synread_LET] *)
 
-(* ****** ****** *)
-
 implement
 //{}(*tmp*)
 synread_ENDLET
@@ -794,6 +792,45 @@ synread_ENDLET
       prerrln!(": SYNERR(ENDLET): ", tok)
     end // end of [let]
 ) (* end of [synread_ENDLET] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_TRY
+  (tok) =
+(
+case+
+tok.node() of
+| T_TRY _ => ()
+| _(*non-TRY*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_TRY(), tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(TRY): ", tok)
+  end // end of [let]
+) (* end of [synread_TRY] *)
+
+implement
+//{}(*tmp*)
+synread_ENDTRY
+  (tok) =
+( case+
+  tok.node() of
+  | T_END _ => ()
+  | T_ENDTRY _ => ()
+  | _(*non-ENDTRY*) => let
+      val () =
+      synerr_add
+      (SYNERRtoken(K_ENDTRY, tok))
+    in
+      prerr(tok.loc());
+      prerrln!(": SYNERR(ENDTRY): ", tok)
+    end // end of [let]
+) (* end of [synread_ENDTRY] *)
 
 (* ****** ****** *)
 

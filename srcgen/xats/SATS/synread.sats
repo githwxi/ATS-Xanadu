@@ -73,6 +73,9 @@ tkind =
 | K_LET of ()
 | K_ENDLET of ()
 //
+| K_TRY of ()
+| K_ENDTRY of ()
+//
 | K_WHERE of ()
 | K_ENDWHERE of ()
 //
@@ -437,6 +440,13 @@ fun//{}
 synread_LET: synreader(token)
 fun//{}
 synread_ENDLET: synreader(token)
+//
+(* ****** ****** *)
+//
+fun//{}
+synread_TRY: synreader(token)
+fun//{}
+synread_ENDTRY: synreader(token)
 //
 (* ****** ****** *)
 //

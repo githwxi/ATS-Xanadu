@@ -1081,6 +1081,32 @@ end // end of [aux_fix]
 
 (* ****** ****** *)
 
+fun
+aux_try
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Etry
+( tok0
+, d3e1, dcls) = d3e0.node()
+//
+val d3e1 =
+  trans33_dexp(d3e1)
+//
+val tres = d3e1.type()
+val dcls =
+  trans33_dclaulst_dn(dcls, tres)
+//
+in
+d33exp_make_node
+(loc0, tres, D3Etry(tok0, d3e1, dcls))
+end (* end of [aux_try] *)
+
+(* ****** ****** *)
+
 (*
 fun
 aux_flat
@@ -1381,6 +1407,9 @@ d3e0.node() of
 | D3Efix
   (_, _, _, _, _, _) => aux_fix(d3e0)
   // D3Efix
+//
+| D3Etry
+  (tok0, d3e1, dcls) => aux_try(d3e0)
 //
 (*
 | D3Eflat(d3e1) => aux_flat(d3e0)

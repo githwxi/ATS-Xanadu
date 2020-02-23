@@ -1240,8 +1240,9 @@ d0e0.node() of
     FXITMatm(d1e0) where
     {
       val d1e0 =
-        d1exp_make_node
+      d1exp_make_node
         (loc0, D1Ecase(knd, d1e1, d1cs))
+      // end of [val]
     }
   end // end of [D0Ecase]
 //
@@ -1365,16 +1366,16 @@ d0e0.node() of
   in
     FXITMatm(d1e0) where
     {
-      val d1e0 =
-      d1exp_make_node
-      ( loc0
-      , D1Efix
-        (knd, fid, arg, res, farrw, fbody))
+    val d1e0 =
+    d1exp_make_node
+    ( loc0
+    , D1Efix
+      (knd, fid, arg, res, farrw, fbody))
     }
   end // end of [D1Efix]
 //
 | D0Etry
-  ( knd, d0e1, twth
+  ( tbeg, d0e1, twth
   , tbar, d0cs, tend) => let
     val d1e1 = trans01_dexp(d0e1)
     val d1cs = trans01_dclaulst(d0cs)
@@ -1383,7 +1384,7 @@ d0e0.node() of
     {
       val d1e0 =
         d1exp_make_node
-        (loc0, D1Etry(knd, d1e1, d1cs))
+        (loc0, D1Etry(tbeg, d1e1, d1cs))
     }
   end // end of [D0Etry]
 //
@@ -1407,7 +1408,6 @@ d0e0.node() of
     {
       val d1e0 =
       d1exp_make_node(loc0, D1Equal(tok1, d1e2))
-      // end of [val]
     }
   end // end of [D0Equal]
 //

@@ -1565,50 +1565,6 @@ case+ tnd of
     }
   end 
 //
-| T_TRY() => let
-//
-    val () = buf.incby1()
-//
-    val d0e1 =
-      p_appd0exp(buf, err)
-    // end of [val]
-//
-    val tok2 = p_WITH(buf, err)
-    val tbar = popt_BAR(buf, err)
-    val d0cs = p_d0clauseq_BAR(buf, err)
-    val tend = popt_ENDTRY(buf, err)
-//
-    val loc_res = let
-      val loc = tok.loc()
-    in
-      case+ tend of
-      | None() =>
-        (
-        case+ d0cs of
-        | list_nil() =>
-          (
-            case+ tbar of
-            | None() => loc + tok2.loc()
-            | Some(tok) => loc + tok.loc()
-          )
-        | list_cons(_, _) =>
-          let
-            val d0c =
-              list_last(d0cs) in loc + d0c.loc()
-            // end of [val]
-          end // end of [list_cons]
-        )
-      | Some(tok) => loc + tok.loc()
-    end : loc_t // end of [let] // end of [val]
-//
-  in
-    err := e0;
-    d0exp_make_node
-    ( loc_res
-    , D0Etry(tok, d0e1, tok2, tbar, d0cs, tend))
-    // end of [d0exp_make_node]
-  end // end of [T_TRY]
-//
 | _ (* error *) =>
   ( err := e0 + 1;
     d0exp_make_node(tok.loc(), D0Enone(tok))
@@ -1930,6 +1886,32 @@ case+ tnd of
     ( loc_res
     , D0Elet(tok, d0cs, topt, d0es, tok2))
   end // end of [T_LET]
+//
+| T_TRY() => let
+//
+    val () = buf.incby1()
+//
+    val d0e1 =
+      p_appd0exp(buf, err)
+    // end of [val]
+//
+    val tok2 =
+      p_WITH(buf, err)
+    val tbar =
+      popt_BAR(buf, err)
+    val d0cs =
+      p_d0clauseq_BAR(buf, err)
+    val tend = p_ENDTRY(buf, err)
+//
+    val loc_res = tok.loc()+tend.loc()
+//
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Etry
+      (tok, d0e1, tok2, tbar, d0cs, tend))
+  end // end of [T_TRY]
 //
 | T_DOT() => let
     val () =

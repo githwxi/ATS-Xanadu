@@ -503,7 +503,7 @@ d0exp_node =
   ( token
   , d0exp
   , token(*WITH*)
-  , tokenopt(*BAR*), d0claulst, tokenopt(*END*))
+  , tokenopt(*BAR*), d0claulst, token(*END*))
 //
 | D0Eanno of (d0exp, s0exp)
 //

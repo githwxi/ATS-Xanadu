@@ -246,6 +246,21 @@ d3e0.node() of
     tread33_d3explst(d3es)
   }
 //
+| D3Eif0
+  (d3e1, d3e2, opt3) =>
+  {
+  val () = tread33_d3exp(d3e1)
+  val () = tread33_d3exp(d3e2)
+  val () = tread33_d3expopt(opt3)
+  }
+//
+| D3Ecase
+  (knd0, d3e1, d3cs) =>
+  {
+  val () = tread33_d3exp(d3e1)
+  val () = tread33_d3claulst(d3cs)
+  }
+//
 | D3Elet(d3cs, d3e1) =>
   {
     val () =
@@ -265,16 +280,8 @@ d3e0.node() of
     val () = tread33_d3exp(d3e2)
   }
 //
-| D3Eif0
-  (d3e1, d3e2, opt3) =>
-  {
-    val () = tread33_d3exp(d3e1)
-    val () = tread33_d3exp(d3e2)
-    val () = tread33_d3expopt(opt3)
-  }
-//
-| D3Ecase
-  (knd0, d3e1, d3cs) =>
+| D3Etry
+  (tok0, d3e1, d3cs) =>
   {
     val () = tread33_d3exp(d3e1)
     val () = tread33_d3claulst(d3cs)

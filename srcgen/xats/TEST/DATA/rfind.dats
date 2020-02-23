@@ -7,18 +7,23 @@ excptcon
 
 (* ****** ****** *)
 
+val exn = Found0()
+
+(* ****** ****** *)
+////
+
 fun
 rfind
 ( xs
 : list(int), x0: int): bool =
-(
 try
 let
 val () =
 auxlst(xs) in false
-end with ~TRUE() => true
-)
-where
+end
+with
+| ~Found0() => true
+end where
 {
 fun
 auxlst
