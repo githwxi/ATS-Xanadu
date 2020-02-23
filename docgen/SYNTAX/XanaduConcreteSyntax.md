@@ -233,8 +233,8 @@ put in any contexts.
 A let-expression starts with the keyword `let` and ends with the
 keyword `end` (or `endlet` if one likes); what is between these two
 keywords consists of a sequence of declarations and a sequence of
-dynamic expressions separated by the keyword `in`. Please find some
-examples of let-expressions as follows:
+dynamic expressions, which are separated by the keyword `in`. Please
+find some examples of let-expressions as follows:
 
 ```
 let
@@ -252,6 +252,27 @@ endlet
 ```
 
 ### Try-expressions
+
+A try-expression starts with the keyword `try` and ends with the
+keyword `end` (or `endtry` if one likes); what is between these two
+keywords consists of a dynamic expression and a sequence of pattern
+matching clauses, which are separated by the keyword `with`. Please
+find some examples of try-expressions as follows:
+
+```
+try
+let
+val () = loop(xs) in true
+endlet
+with
+| ~TRUE() => true | ~FALSE() => false
+endtry
+```
+
+```
+try auxlst(xs); false with ~TRUE() => true end
+```
+
 
 Static Declarations
 -------------------
