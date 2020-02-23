@@ -1,16 +1,13 @@
 (* ****** ****** *)
 
 excptcon
-| Found0 of ()
-| Found1 of int
-| Found2 of string
+| TRUEexn of ()
 
 (* ****** ****** *)
 
-val exn = Found0()
+val exn = TRUEexn()
 
 (* ****** ****** *)
-////
 
 fun
 rfind
@@ -22,7 +19,7 @@ val () =
 auxlst(xs) in false
 end
 with
-| ~Found0() => true
+| ~TRUEexn() => true
 end where
 {
 fun
@@ -35,7 +32,7 @@ case+ xs of
   let
   val () = auxlst(xs)
   in
-    if x0 = x1 then $raise Found0()
+    if x0 = x1 then $raise TRUEexn()
   end
 )
 } (* end of [rfind] *)

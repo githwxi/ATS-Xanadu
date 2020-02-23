@@ -1320,16 +1320,16 @@ d0e0.node() of
 | D0Elam
   ( knd//lam|lam@
   , arg, res
-  , farrw, fbody, tfini) => let
+  , arrw, body, tend) => let
 //
     val arg =
       trans01_farglst(arg)
     val res =
       trans01_effsexpopt(res)
-    val farrw =
-      trans01_funarrow(farrw)
+    val arrw =
+      trans01_funarrow(arrw)
 //
-    val fbody = trans01_dexp(fbody)
+    val body = trans01_dexp(body)
 //
   in
     FXITMatm(d1e0) where
@@ -1338,14 +1338,14 @@ d0e0.node() of
       d1exp_make_node
       ( loc0
       , D1Elam
-        (knd, arg, res, farrw, fbody))
+        (knd, arg, res, arrw, body))
     }
   end // end of [D1Elam]
 //
 | D0Efix
   ( knd//fix|fix@
   , fid, arg, res
-  , farrw, fbody, tfini) => let
+  , arrw, body, tend) => let
 //
     val fid =
     (
@@ -1358,10 +1358,10 @@ d0e0.node() of
       trans01_farglst(arg)
     val res =
       trans01_effsexpopt(res)
-    val farrw =
-      trans01_funarrow(farrw)
+    val arrw =
+      trans01_funarrow(arrw)
 //
-    val fbody = trans01_dexp(fbody)
+    val body = trans01_dexp(body)
 //
   in
     FXITMatm(d1e0) where
@@ -1370,7 +1370,7 @@ d0e0.node() of
     d1exp_make_node
     ( loc0
     , D1Efix
-      (knd, fid, arg, res, farrw, fbody))
+      (knd, fid, arg, res, arrw, body))
     }
   end // end of [D1Efix]
 //
