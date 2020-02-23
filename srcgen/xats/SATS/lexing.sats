@@ -234,6 +234,8 @@ tnode =
 //
   | T_DATASORT of ()
 //
+  | T_EXCPTCON of ()
+//
   | T_DATATYPE of int(*kind*)
 //
   | T_WITHTYPE of int(*kind*)

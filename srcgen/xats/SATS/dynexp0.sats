@@ -1074,11 +1074,15 @@ for skipping error
   , s0ymb, token, dq0eid, t0intopt)
 //
 | D0Cdatasort of
-    (token(*datasort*), d0tsortlst)
+    (token(*DATASORT*), d0tsortlst)
   // D0Cdatasort
 //
+| D0Cexcptcon of
+    (token(*EXCPTCON*), d0atconlst)
+  // D0Cexcptcon
+//
 | D0Cdatatype of
-    (token(*datatype*), d0atypelst, wd0eclseq)
+    (token(*DATATYPE*), d0atypelst, wd0eclseq)
   // D0Cdatatype
 //
 | D0Cdynconst of

@@ -1344,6 +1344,26 @@ end // end of [aux_fold]
 (* ****** ****** *)
 
 fun
+aux_raise
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eraise(d2e1) = d2e0.node()
+//
+val t2p0 = t2ype_new(loc0)
+val t2p1 = the_t2ype_excptn
+val d3e1 = trans23_dexp_dn(d2e1, t2p1)
+//
+in
+d23exp_make_node(loc0, t2p0, D3Eraise(d3e1))
+end // end of [aux_raise]
+
+(* ****** ****** *)
+
+fun
 aux_lazy
 ( d2e0
 : d2exp): d3exp = let
@@ -1492,6 +1512,10 @@ d2e0.node() of
 | D2Eaddr(d2e1) => aux_addr(d2e0)
 | D2Eeval(d2e1) => aux_eval(d2e0)
 | D2Efold(d2e1) => aux_fold(d2e0)
+//
+| D2Eraise
+    (d2e1) => aux_raise(d2e0)
+  // raising lin-exception
 //
 | D2Elazy
     (d2e1) => aux_lazy(d2e0)

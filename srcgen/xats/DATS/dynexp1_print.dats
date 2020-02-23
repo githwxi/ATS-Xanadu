@@ -113,11 +113,16 @@ fprint_val<s1marg> = fprint_s1marg
 implement
 fprint_val<t1marg> = fprint_t1marg
 
+(* ****** ****** *)
+//
 implement
 fprint_val<d1tsort> = fprint_d1tsort
+//
+implement
+fprint_val<d1atcon> = fprint_d1atcon
 implement
 fprint_val<d1atype> = fprint_d1atype
-
+//
 (* ****** ****** *)
 //
 implement
@@ -700,9 +705,9 @@ fprint_d1ecl
 (
 case+ x0.node() of
 //
-| D1Cnone() =>
+| D1Cnone0() =>
   fprint!(out, "D1Cnone(", ")")
-| D1Cnone(d0c) =>
+| D1Cnone1(d0c) =>
   fprint!(out, "D1Cnone(", d0c, ")")
 //
 | D1Cstatic(knd, d1c) =>
@@ -834,15 +839,18 @@ case+ x0.node() of
   , knd, "; ", sym, "; ", dqid, "; ", tint, ")")
 //
 | D1Cdatasort
-  (knd, d1tsts) =>
-  fprint!
-  ( out, "D1Cdatasort(", knd, "; ", d1tsts, ")" )
+  (knd, dsrts) =>
+  fprint!(out, "D1Cdatasort(", knd, "; ", dsrts, ")")
+//
+| D1Cexcptcon
+  (knd, dcons) =>
+  fprint!(out, "D1Cexcptcon(", knd, "; ", dcons, ")")
 //
 | D1Cdatatype
-  (knd, d1typs, wopt) =>
+  (knd, dtyps, wopt) =>
   fprint!
   ( out
-  , "D1Cdatatype(", knd, "; ", d1typs, "; ", wopt, ")")
+  , "D1Cdatatype(", knd, "; ", dtyps, "; ", wopt, ")")
 //
 | D1Cdynconst
   (tok, tqas, d1cs) =>

@@ -69,6 +69,10 @@ typedef the_string_ctype = string0
 //
 (* ****** ****** *)
 //
+typedef the_excptn_ctype = excptn_vt
+//
+(* ****** ****** *)
+//
 typedef
 the_lazy_ctype(a:t0) = lazy(a)
 typedef

@@ -447,14 +447,14 @@ d1ecl_none0
 (loc) =
 d1ecl_make_node
 ( loc
-, D1Cnone()
+, D1Cnone0()
 )
 implement
 d1ecl_none1
 (d0c) =
 d1ecl_make_node
 ( loc
-, D1Cnone(d0c)
+, D1Cnone1(d0c)
 ) where
 {
   val loc = d0c.loc()

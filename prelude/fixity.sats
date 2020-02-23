@@ -157,6 +157,10 @@ app of 70 // app_prcdv
 
 (* ****** ****** *)
 
+#prefix $raise of 0 // raising an excetion
+
+(* ****** ****** *)
+
 #prefix ignoret of 0 // ignoring a funcall return
 
 (* ****** ****** *)

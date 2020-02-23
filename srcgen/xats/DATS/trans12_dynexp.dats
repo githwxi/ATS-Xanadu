@@ -1282,6 +1282,26 @@ _(* non-T_IDENT_dlr *) => (false)
 _(* non-D1Eid-d1exp *) => (false)
 )
 //
+fun
+isRAISE
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid(tok) =>
+(
+case+
+tok.node() of
+|
+T_IDENT_dlr(x) => (x = "$raise")
+|
+_(* non-T_IDENT_dlr *) => (false)
+)
+|
+_(* non-D1Eid-d1exp *) => (false)
+)
+//
 in
 //
 ifcase
@@ -1355,6 +1375,15 @@ ifcase
   in
     d2exp_make_node
     (d1e0.loc(), D2Ellazy(d2e2, opt3))
+  end
+//
+| isRAISE(d1e1) =>
+  let
+    val d2e2 =
+    trans12_dexp(d1e2)
+  in
+    d2exp_make_node
+    (d1e0.loc(), D2Eraise(d2e2))
   end
 //
 | _ (* else *) =>
@@ -4241,8 +4270,8 @@ case+ s1cs of
 //
 in
 let
-  val+
-  D1TSORT(tok, s1cs) = d1t0.node() in loop(s1cs)
+val+
+D1TSORT(tok, s1cs) = d1t0.node() in loop(s1cs)
 end
 end // end of [auxd1t]
 and
@@ -4258,14 +4287,42 @@ case+ d1ts of
     val-
     list_cons
     (s2t0, s2ts) = s2ts
-    val () = auxd1t(d1t0, s2t0) in auxd1ts(d1ts, s2ts)
+    val () =
+    auxd1t(d1t0, s2t0) in auxd1ts(d1ts, s2ts)
   end // end of [auxd1ts]
 ) (* end of [auxd1ts] *)
 }
 //
 in
-  d2ecl_make_node(loc0, D2Cdatasort(d1cl))
+  d2ecl_make_node(loc0, D2Cdatasort(d1cl, s2ts))
 end // end of [aux_datasort]
+
+(* ****** ****** *)
+
+fun
+aux_excptcon
+( d1cl
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1cl.loc()
+val-
+D1Cexcptcon
+(knd, d1cs) = d1cl.node()
+//
+val s2c0 =
+the_excptn_ctype.scst()
+val svss = list_nil(*void*)
+val d2cs =
+trans12_datconlst(s2c0, svss, d1cs)
+//
+in
+let val () =
+the_dexpenv_add_conlst(d2cs)
+in
+  d2ecl_make_node(loc0, D2Cexcptcon(d1cl, d2cs))
+end
+end // end of [aux_excptcon]
 
 (* ****** ****** *)
 
@@ -4295,7 +4352,7 @@ val () =
 aux2_datypelst(s2cs, d1ts)
 //
 in
-  d2ecl_make_node(loc0, D2Cdatatype(d1cl))
+  d2ecl_make_node(loc0, D2Cdatatype(d1cl, s2cs))
 end // end of [aux_datatype]
 
 and
@@ -4770,8 +4827,8 @@ in (* in-of-let *)
 case-
 d1cl.node() of
 //
-| D1Cnone() => d2ecl_none1(d1cl)
-| D1Cnone(_) => d2ecl_none1(d1cl)
+| D1Cnone0() => d2ecl_none1(d1cl)
+| D1Cnone1(_) => d2ecl_none1(d1cl)
 //
 | D1Cstatic
   (tok, d1c) =>
@@ -4816,6 +4873,7 @@ d1cl.node() of
 //
 | D1Cdatasort _ => aux_datasort(d1cl)
 //
+| D1Cexcptcon _ => aux_excptcon(d1cl)
 | D1Cdatatype _ => aux_datatype(d1cl)
 //
 | D1Cdynconst _ => aux_dynconst(d1cl)

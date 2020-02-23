@@ -985,6 +985,10 @@ case+ x0.node() of
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")
 //
+| D0Cexcptcon(tok, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cexcptcon(", tok, "; ", d0cs, ")")
 | D0Cdatatype(tok, d0cs, wopt) =>
   fprint!
   ( out

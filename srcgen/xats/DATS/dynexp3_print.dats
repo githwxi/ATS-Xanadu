@@ -478,6 +478,11 @@ x0.node() of
    fprint!(out, "D3Efold(", d3e1, ")")
   )
 //
+| D3Eraise(d3e1) =>
+  (
+  fprint!(out, "D3Eraise(", d3e1, ")")
+  )
+//
 | D3Elazy(d3e1) =>
   (
    fprint!(out, "D3Elazy(", d3e1, ")")

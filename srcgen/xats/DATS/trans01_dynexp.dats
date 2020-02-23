@@ -2160,6 +2160,7 @@ case+ xs of
     case- tok.node() of
     | T_IDENT_alp(nam) => nam
     | T_IDENT_sym(nam) => nam
+    | T_IDENT_dlr(nam) => nam
     ) : string // end of [val]
     val sym = $SYM.symbol_make(nam)
   in
@@ -2175,7 +2176,7 @@ in
   let
     val () = loop(ids1)
   in
-    d1ecl_make_node(loc0, D1Cnone(d0cl))
+    d1ecl_make_node(loc0, D1Cnone1(d0cl))
   end
 end // end of [aux_fixity]
 
@@ -2194,23 +2195,25 @@ loop
 (xs: i0dntlst): void =
 (
 case+ xs of
-| list_nil() => ()
-| list_cons (x0, xs) => let
-    val-
-    I0DNTsome(tok) = x0.node()
-    val nam =
-    (
-    case- tok.node() of
-    | T_IDENT_alp(nam) => nam
-    | T_IDENT_sym(nam) => nam
-    ) : string // end of [val]
-    val sym = $SYM.symbol_make(nam)
-  in
-    loop(xs) where
-    {
-      val () =
-      the_fxtyenv_insert(sym, $FIX.FIXTYnon)
-    }
+|
+list_nil() => ()
+|
+list_cons (x0, xs) => let
+  val-
+  I0DNTsome(tok) = x0.node()
+  val nam =
+  (
+  case- tok.node() of
+  | T_IDENT_alp(nam) => nam
+  | T_IDENT_sym(nam) => nam
+  ) : string // end of [val]
+  val sym = $SYM.symbol_make(nam)
+in
+  loop(xs) where
+  {
+  val () =
+  the_fxtyenv_insert(sym, $FIX.FIXTYnon)
+  }
   end
 ) (* end of [loop] *)
 //
@@ -2218,7 +2221,7 @@ in
   let
     val () = loop(ids1)
   in
-    d1ecl_make_node(loc0, D1Cnone(d0cl))
+    d1ecl_make_node(loc0, D1Cnone1(d0cl))
   end
 end // end of [aux_nonfix]
 
@@ -3039,6 +3042,26 @@ d0t0.node() of
 (* ****** ****** *)
 
 fun
+aux_excptcon
+( d0cl
+: d0ecl): d1ecl = let
+//
+val loc0 = d0cl.loc()
+//
+val-
+D0Cexcptcon
+  (knd, d0cs) = d0cl.node()
+//
+val
+d1cs = trans01_datconlst(d0cs)
+//
+in
+  d1ecl_make_node(loc0, D1Cexcptcon(knd, d1cs))
+end // end of [aux_excptcon]
+
+(* ****** ****** *)
+
+fun
 aux_datatype
 ( d0cl
 : d0ecl): d1ecl = let
@@ -3191,6 +3214,7 @@ d0cl.node() of
 //
 | D0Cdatasort _ => aux_datasort(d0cl)
 //
+| D0Cexcptcon _ => aux_excptcon(d0cl)
 | D0Cdatatype _ => aux_datatype(d0cl)
 //
 | D0Cdynconst _ => aux_dynconst(d0cl)

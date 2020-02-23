@@ -1307,6 +1307,10 @@ val the_dfloat_ctype : s2cstref
 val the_string_ctype : s2cstref
 //
 (* ****** ****** *)
+
+val the_excptn_ctype : s2cstref
+
+(* ****** ****** *)
 //
 val the_lazy_ctype : s2cstref//nonlin
 val the_llazy_ctype : s2cstref//linear

@@ -159,6 +159,9 @@ XATS_LAZY_T = symbol("xats_lazy_t")
 val
 XATS_LLAZY_VT = symbol("xats_llazy_vt")
 //
+val
+XATS_EXCPTN_VT = symbol("xats_excptn_vt")
+//
 end // end of [local]
 
 (* ****** ****** *)
@@ -239,6 +242,13 @@ val s2ts = list_sing(the_sort2_vtflt)
 val s2t0 = S2Tfun(s2ts, the_sort2_vtbox)
 }
 
+(* ****** ****** *)
+//
+implement
+the_t2ype_excptn =
+t2ype_make_name
+(the_sort2_vtbox, XATS_EXCPTN_VT)
+//
 (* ****** ****** *)
 
 implement
@@ -443,6 +453,9 @@ ifcase
   the_lazy_ctype.type((*void*))
 | sym=XATS_LLAZY_VT =>
   the_llazy_ctype.type((*void*))
+//
+| sym=XATS_EXCPTN_VT =>
+  the_excptn_ctype.type((*void*))
 //
 | _(*unrecognized base type*) => t2p0
 //
