@@ -532,10 +532,10 @@ x0.node() of
   , "D1Efix(", knd, "; ", fid, "; "
   , farg, "; ", tres, "; ", arrw, "; ", body, ")")
 //
-| D1Etry(knd, d1e1, dcls) =>
+| D1Etry(tok, d1e1, dcls) =>
   fprint!
   ( out
-  , "D1Etry(", knd, "; ", d1e1, "; ", dcls , ")")
+  , "D1Etry(", tok, "; ", d1e1, "; ", dcls , ")")
 //
 | D1Eanno(d1e1, s1e2) =>
   (

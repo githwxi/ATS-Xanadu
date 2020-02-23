@@ -258,33 +258,6 @@ d0e0.node() of
     synread_d0exp_RPAREN(dend)
   }
 //
-| D0Elet
-  (tbeg, d0cs, topt, d0es, tend) =>
-  {
-//
-    val () =
-    synread_d0eclist(d0cs)
-//
-    val () =
-    (
-    case+ topt of
-    | None() =>
-      synread_d0explst(d0es)
-    | Some(tok) =>
-      synread_d0explst(d0es)
-    ) : void // end of [val]
-//
-    val () = synread_ENDLET(tend)
-//
-  }
-| D0Ewhere(d0e1, d0cs) =>
-  {
-    val () =
-    synread_d0exp(d0e1)
-    val () =
-    synread_d0eclseq_WHERE(d0cs)
-  }
-//
 | D0Eif0
   ( tbeg(*IF*)
   , d0e1, d0e2, d0e3, topt) =>
@@ -315,6 +288,40 @@ d0e0.node() of
     val () = synread_OF(tmid)
 //
     val () = synread_d0claulst(dcls)
+  }
+//
+| D0Elet
+  ( tbeg, d0cs
+  , topt, d0es, tend) =>
+  {
+//
+(*
+    val () =
+    synread_LET(tbeg)
+*)
+//
+    val () =
+    synread_d0eclist(d0cs)
+//
+    val () =
+    (
+    case+ topt of
+    | None() =>
+      synread_d0explst(d0es)
+    | Some(tok) =>
+      synread_d0explst(d0es)
+    ) : void // end of [val]
+//
+    val () = synread_ENDLET(tend)
+//
+  }
+//
+| D0Ewhere(d0e1, d0cs) =>
+  {
+    val () =
+    synread_d0exp(d0e1)
+    val () =
+    synread_d0eclseq_WHERE(d0cs)
   }
 //
 | D0Elam
@@ -371,9 +378,14 @@ d0e0.node() of
     val () =
     synread_d0exp(d0e1)
 //
-    val () = synread_WITH(tmid)
+    val () =
+      synread_WITH(tmid)
 //
-    val () = synread_d0claulst(dcls)
+    val () =
+      synread_d0claulst(dcls)
+//
+    val () = synread_ENDTRY(tend)
+//
   }
 //
 | _(* rest-of-d0exp *) =>

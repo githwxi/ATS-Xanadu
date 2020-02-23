@@ -1055,19 +1055,19 @@ val
 loc0 = d2e0.loc()
 val-
 D2Ecase
-( knd1
-, d2e2, d2cs) = d2e0.node()
+( knd0
+, d2e1, d2cs) = d2e0.node()
 //
-val d3e2 = trans23_dexp(d2e2)
+val d3e1 = trans23_dexp(d2e1)
 //
-val targ = d3e2.type()
+val targ = d3e1.type()
 val tres = t2ype_new(loc0)
 val d3cs =
   trans23_dclaulst_dn(d2cs, targ, tres)
 //
 in
 d23exp_make_node
-  (loc0, tres, D3Ecase(knd1, d3e2, d3cs))
+  (loc0, tres, D3Ecase(knd0, d3e1, d3cs))
 end (* end of [aux_case] *)
 
 (* ****** ****** *)
@@ -1206,6 +1206,34 @@ x0.node() of
 | F3ARGsome_met(s2es) => aux_fix_f3as(xs, tres, flag)
 ) (* end of [list_cons] *)
 ) (* end of [aux_fix_f3as] *)
+
+(* ****** ****** *)
+
+fun
+aux_try
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Etry
+( tok0
+, d2e1, d2cs) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+//
+val tres = d3e1.type()
+val targ = the_t2ype_excptn(*void*)
+val d3cs =
+  trans23_dclaulst_dn(d2cs, targ, tres)
+//
+in
+//
+d23exp_make_node
+  (loc0, tres, D3Etry(tok0, d3e1, d3cs))
+//
+end (* end of [aux_try] *)
 
 (* ****** ****** *)
 
@@ -1504,6 +1532,9 @@ d2e0.node() of
   (_, _, _, _, _) => aux_lam(d2e0)
 | D2Efix
   (_, _, _, _, _, _) => aux_fix(d2e0)
+//
+| D2Etry
+  (tok0, d2e1, dcls) => aux_try(d2e0)
 //
 (*
 | D2Eflat(d2e1) => aux_flat(d2e0)
