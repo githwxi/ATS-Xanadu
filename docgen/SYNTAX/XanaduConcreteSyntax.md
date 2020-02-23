@@ -224,7 +224,34 @@ There are many forms of static expressions in Xanadu.
 Dynamic Expressions
 ------------------
 
-There are many forms of dynamic expressions in Xanadu.
+There are many forms of dynamic expressions in Xanadu.  A dynamic
+expression is atomic if it cannot result in parsing ambiguities when
+put in any contexts.
+
+### Let-expressions
+
+A let-expression starts with the keyword `let` and ends with the
+keyword `end` (or `endlet` if one likes); what is between these two
+keywords consists of a sequence of declarations and a sequence of
+dynamic expressions separated by the keyword `in`. Please find some
+examples of let-expressions as follows:
+
+```
+let
+val x = 1
+fun f(y:int): int = x + y in f(x) * f(x+1) end
+```
+
+```
+let
+val PI = 3.14
+fun
+area
+(rad: double): double = PI * rad * rad in area(10.0)
+endlet
+```
+
+### Try-expressions
 
 Static Declarations
 -------------------
