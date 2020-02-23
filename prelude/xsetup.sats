@@ -69,14 +69,14 @@ typedef the_string_ctype = string0
 //
 (* ****** ****** *)
 //
-typedef the_excptn_ctype = excptn_vt
+typedef
+the_lazy_ctype(a:t0) = lazy(a)
+vtypedef
+the_llazy_ctype(a:vt) = lazy_vt(a)
 //
 (* ****** ****** *)
 //
-typedef
-the_lazy_ctype(a:t0) = lazy(a)
-typedef
-the_llazy_ctype(a:vt) = lazy_vt(a)
+vtypedef the_excptn_ctype = excptn_vt
 //
 (* ****** ****** *)
 
