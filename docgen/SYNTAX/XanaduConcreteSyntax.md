@@ -230,6 +230,7 @@ put in any contexts.
 
 ### Let-expressions
 
+Let-expressions are atomic.
 A let-expression starts with the keyword `let` and ends with the
 keyword `end` (or `endlet` if one likes); what is between these two
 keywords consists of a sequence of declarations and a sequence of
@@ -239,7 +240,7 @@ find some examples of let-expressions as follows:
 ```
 let
 val x = 1
-fun f(y:int): int = x + y in f(x) * f(x+1) end
+fun f(y:int): int = x + y in f(x) * f(x+1) endlet
 ```
 
 ```
@@ -248,11 +249,12 @@ val PI = 3.14
 fun
 area
 (rad: double): double = PI * rad * rad in area(10.0)
-endlet
+end
 ```
 
 ### Try-expressions
 
+Try-expressions are atomic.
 A try-expression starts with the keyword `try` and ends with the
 keyword `end` (or `endtry` if one likes); what is between these two
 keywords consists of a dynamic expression and a sequence of pattern
