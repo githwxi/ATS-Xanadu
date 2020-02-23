@@ -499,6 +499,12 @@ d0exp_node =
   , f0arglst(*arglst*)
   , effs0expopt, f0unarrow, d0exp, tokenopt)
 //
+| D0Etry of
+  ( token
+  , d0exp
+  , token(*WITH*)
+  , tokenopt(*BAR*), d0claulst, tokenopt(*END*))
+//
 | D0Eanno of (d0exp, s0exp)
 //
 | D0Equal of (token, d0exp) // qualified

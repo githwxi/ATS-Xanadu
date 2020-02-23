@@ -358,6 +358,10 @@ d3exp_node =
   , f3arglst(*arg*)
   , effs2expopt, f1unarrow, d3exp(*body*))
 //
+| D3Etry of
+    (token(*TRY*), d3exp(*val*), d3claulst)
+  // D3Etry
+//
 | D3Eaddr of d3exp(*l-value*)
 | D3Efold of d3exp(*open-con*)
 //

@@ -1373,6 +1373,20 @@ d0e0.node() of
     }
   end // end of [D1Efix]
 //
+| D0Etry
+  ( knd, d0e1, twth
+  , tbar, d0cs, tend) => let
+    val d1e1 = trans01_dexp(d0e1)
+    val d1cs = trans01_dclaulst(d0cs)
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+        d1exp_make_node
+        (loc0, D1Etry(knd, d1e1, d1cs))
+    }
+  end // end of [D0Etry]
+//
 | D0Eanno(d0e1, s0e2) =>
   let
     val d1e1 = trans01_dexp(d0e1)

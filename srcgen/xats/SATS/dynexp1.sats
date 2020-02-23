@@ -573,6 +573,11 @@ d1exp_node =
   , f1arglst(*arg*)
   , effs1expopt, f1unarrow, d1exp(*body*))
 //
+| D1Etry of
+  ( token(*TRY*)
+  , d1exp(*value*), d1claulst(*clauses*))
+  // D1Etry
+//
 | D1Eanno of
   (d1exp, s1exp(*anno*)) // HX: type-annotation
 //

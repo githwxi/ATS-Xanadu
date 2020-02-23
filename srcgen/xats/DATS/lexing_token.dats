@@ -271,11 +271,13 @@ case+ tnd of
   fprint!(out, "FIX(", knd, ")")
 //
 | T_LET() => fprint(out, "LET")
+| T_TRY() => fprint(out, "TRY")
 | T_WHERE() => fprint(out, "WHERE")
 | T_LOCAL() => fprint(out, "LOCAL")
 //
 | T_ENDLAM() => fprint(out, "ENDLAM")
 | T_ENDLET() => fprint(out, "ENDLET")
+| T_ENDTRY() => fprint(out, "ENDTRY")
 | T_ENDWHERE() => fprint(out, "ENDWHERE")
 | T_ENDLOCAL() => fprint(out, "ENDLOCAL")
 //
@@ -531,11 +533,13 @@ case+ tnd of
   fprint!(out, "fix(", knd, ")")
 //
 | T_LET() => fprint(out, "let")
+| T_TRY() => fprint(out, "try")
 | T_WHERE() => fprint(out, "where")
 | T_LOCAL() => fprint(out, "local")
 //
 | T_ENDLAM() => fprint(out, "endlam")
 | T_ENDLET() => fprint(out, "endlet")
+| T_ENDTRY() => fprint(out, "endtry")
 | T_ENDWHERE() => fprint(out, "endwhere")
 | T_ENDLOCAL() => fprint(out, "endlocal")
 //

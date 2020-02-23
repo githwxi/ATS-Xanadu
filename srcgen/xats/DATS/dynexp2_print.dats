@@ -486,6 +486,12 @@ case- x0.node() of
   , fid, "; ", f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
+| D2Etry
+  (knd, d2e1, d2cls) =>
+  fprint!
+  ( out, "D2Etry("
+  , knd, "; ", d2e1, "; ", d2cls, ")")
+//
 (*
 | D2Eflat(d2e1) =>
   fprint!(out, "D2Eflat(", d2e1, ")")

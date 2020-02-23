@@ -360,6 +360,22 @@ d0e0.node() of
 //
   }
 //
+| D0Etry
+  ( tbeg, d0e1, tmid
+  , topt, dcls, tend) =>
+  {
+(*
+    val () =
+    synread_TRY(tbeg)
+*)
+    val () =
+    synread_d0exp(d0e1)
+//
+    val () = synread_WITH(tmid)
+//
+    val () = synread_d0claulst(dcls)
+  }
+//
 | _(* rest-of-d0exp *) =>
   (
     prerrln!

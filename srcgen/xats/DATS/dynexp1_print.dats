@@ -529,8 +529,13 @@ x0.node() of
   (knd, fid, farg, tres, arrw, body) =>
   fprint!
   ( out
-  , "D1Efix(", knd, "; "
-  , fid, "; ", farg, "; ", tres, "; ", arrw, "; ", body, ")")
+  , "D1Efix(", knd, "; ", fid, "; "
+  , farg, "; ", tres, "; ", arrw, "; ", body, ")")
+//
+| D1Etry(knd, d1e1, dcls) =>
+  fprint!
+  ( out
+  , "D1Etry(", knd, "; ", d1e1, "; ", dcls , ")")
 //
 | D1Eanno(d1e1, s1e2) =>
   (
