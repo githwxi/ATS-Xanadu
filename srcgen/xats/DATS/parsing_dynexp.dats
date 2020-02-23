@@ -1454,8 +1454,8 @@ case+ tnd of
   in
     err := e0;
     d0exp_make_node
-      (loc_res, D0Eif0(tok, d0e1, d0e2, d0e3, topt))
-    // d0exp_make_node
+    ( loc_res
+    , D0Eif0(tok, d0e1, d0e2, d0e3, topt))
   end // end of [T_IF]
 //
 | T_CASE _ => let
@@ -1564,6 +1564,50 @@ case+ tnd of
       ) : loc_t // end of [val]
     }
   end 
+//
+| T_TRY() => let
+//
+    val () = buf.incby1()
+//
+    val d0e1 =
+      p_appd0exp(buf, err)
+    // end of [val]
+//
+    val tok2 = p_WITH(buf, err)
+    val tbar = popt_BAR(buf, err)
+    val d0cs = p_d0clauseq_BAR(buf, err)
+    val tend = popt_ENDTRY(buf, err)
+//
+    val loc_res = let
+      val loc = tok.loc()
+    in
+      case+ tend of
+      | None() =>
+        (
+        case+ d0cs of
+        | list_nil() =>
+          (
+            case+ tbar of
+            | None() => loc + tok2.loc()
+            | Some(tok) => loc + tok.loc()
+          )
+        | list_cons(_, _) =>
+          let
+            val d0c =
+              list_last(d0cs) in loc + d0c.loc()
+            // end of [val]
+          end // end of [list_cons]
+        )
+      | Some(tok) => loc + tok.loc()
+    end : loc_t // end of [let] // end of [val]
+//
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Etry(tok, d0e1, tok2, tbar, d0cs, tend))
+    // end of [d0exp_make_node]
+  end // end of [T_TRY]
 //
 | _ (* error *) =>
   ( err := e0 + 1;

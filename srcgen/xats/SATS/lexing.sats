@@ -199,12 +199,14 @@ tnode =
   | T_FIX of int
     // 'fix=lam1' and 'fix@=fix0'
 //
-  | T_LET of () // 'end'
+  | T_LET of () // 'let'
+  | T_TRY of () // 'try'
   | T_WHERE of () // 'where'
   | T_LOCAL of () // 'local'
 //
   | T_ENDLAM of () // 'endlam'
   | T_ENDLET of () // 'endlet'
+  | T_ENDTRY of () // 'endtry'
   | T_ENDWHERE of () // 'endwhere'
   | T_ENDLOCAL of () // 'endlocal'
 //
