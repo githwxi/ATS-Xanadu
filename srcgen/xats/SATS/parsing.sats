@@ -102,6 +102,7 @@ STAEXP0 = "./staexp0.sats"
   typedef d0tsort = $STAEXP0.d0tsort
   typedef s0rtdef = $STAEXP0.s0rtdef
 //
+  typedef d0atcon = $STAEXP0.d0atcon
   typedef d0atype = $STAEXP0.d0atype
 //
   typedef labs0exp = $STAEXP0.labs0exp
@@ -111,6 +112,7 @@ STAEXP0 = "./staexp0.sats"
   typedef s0qualst = $STAEXP0.s0qualst
   typedef s0unilst = $STAEXP0.s0unilst
   typedef d0tsortlst = $STAEXP0.d0tsortlst
+  typedef d0atconlst = $STAEXP0.d0atconlst
   typedef d0atypelst = $STAEXP0.d0atypelst
 //
   typedef effs0expopt = $STAEXP0.effs0expopt
@@ -490,10 +492,17 @@ d0atype ::=
 | s0eid s0marg EQ d0atconseq_BAR
 *)
 //
-fun p_d0atype: parser(d0atype)
-fun p_d0atypeseq_AND: parser(d0atypelst)
+fun
+p_d0atcon: parser(d0atcon)
+fun
+p_d0atype: parser(d0atype)
+fun
+p_d0atconseq_BAR: parser(d0atconlst)
+fun
+p_d0atypeseq_AND: parser(d0atypelst)
 //
-fun p_WHERE_sexpdefseq: parser(d0eclist)
+fun
+p_WHERE_sexpdefseq: parser(d0eclist)
 //
 (* ****** ****** *)
 

@@ -308,6 +308,10 @@ case+ tnd of
 //
 | T_DATASORT() =>
   fprint!(out, "DATASORT")
+//
+| T_EXCPTCON() =>
+  fprint!(out, "EXCPTCON")
+//
 | T_DATATYPE(srt) =>
   fprint!(out, "DATATYPE(", srt, ")")
 //
@@ -564,6 +568,10 @@ case+ tnd of
 //
 | T_DATASORT() =>
   fprint!(out, "datasort")
+//
+| T_EXCPTCON() =>
+  fprint!(out, "excptcon")
+//
 | T_DATATYPE(knd) =>
   fprint!(out, "datatype(", knd, ")")
 //

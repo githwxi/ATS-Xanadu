@@ -798,8 +798,8 @@ overload fprint with fprint_d1cstdecl
 datatype
 d1ecl_node =
 //
-| D1Cnone of ()
-| D1Cnone of (d0ecl)
+| D1Cnone0 of ()
+| D1Cnone1 of (d0ecl)
 //
 (*
 | D1Cfixity of (d0ecl)
@@ -892,6 +892,10 @@ d1ecl_node =
 | D1Cdatasort of
     (token(*datasort*), d1tsortlst)
   // D1Cdatasort
+//
+| D1Cexcptcon of
+    (token(*excptcon*), d1atconlst)
+  // D1Cexcptcon
 //
 // dataprop/dataview // proofs
 // datatype/datavtype // programs

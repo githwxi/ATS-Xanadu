@@ -754,6 +754,8 @@ d2exp_node =
 | D2Eeval of d2exp(*ptr/lazy*)
 | D2Efold of d2exp(*open-con*)
 //
+| D2Eraise of d2exp(*lin-exn*)
+//
 // HX: for lazy-evaluation
 | D2Elazy of
   (d2exp(*eval*)) // nonlin
@@ -1129,8 +1131,10 @@ d2ecl_node =
   , sq2arglst, tq2arglst
   , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
 //
-| D2Cdatasort of (d1ecl)
-| D2Cdatatype of (d1ecl)
+| D2Cdatasort of (d1ecl, sort2lst)
+//
+| D2Cexcptcon of (d1ecl, d2conlst)
+| D2Cdatatype of (d1ecl, s2cstlst)
 //
 | D2Cdynconst of
   (token(*kind*), tq2arglst, d2cstlst)

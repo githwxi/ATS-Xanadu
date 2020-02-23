@@ -353,6 +353,9 @@ val () = myins("absvtflt", T_ABSVTFLT_)
 val () = myins("absimpl", T_ABSIMPL)
 val () = myins("absopen", T_ABSOPEN)
 //
+val () = myins("#excptn", T_EXCPTCON)
+val () = myins("excptcon", T_EXCPTCON)
+//
 val () = myins("datasort", T_DATASORT)
 //
 val () = myins("dataprop", T_DATAPROP_)

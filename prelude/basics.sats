@@ -678,14 +678,21 @@ vtypedef stropt_vt(n:int) = stropt1_vt(n)
 //
 (* ****** ****** *)
 //
+// HX:
+// For exceptions:
+//
+absvtype excptn_vt <= ptr
+//
+(* ****** ****** *)
+//
 abstype
 lazy_t0_x0(a: type+) <= ptr
 typedef
 lazy(a:type) = lazy_t0_x0(a)
 //
-abstype
+absvtype
 lazy_vt_vx(a: vtype+) <= ptr
-typedef
+vtypedef
 lazy_vt(a:vtype) = lazy_vt_vx(a)
 //
 (* ****** ****** *)

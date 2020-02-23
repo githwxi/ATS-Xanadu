@@ -174,6 +174,11 @@ the_t2ype_string: t2ype
 //
 (* ****** ****** *)
 //
+val
+the_t2ype_excptn: t2ype
+//
+(* ****** ****** *)
+//
 val the_t2ype_lazy: t2ype
 val the_t2ype_llazy: t2ype
 //

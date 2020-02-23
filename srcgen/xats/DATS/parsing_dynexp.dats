@@ -3627,6 +3627,35 @@ abstype ::=
     // d0ecl_make_node
   end
 //
+| T_EXCPTCON() => let
+    val () = buf.incby1()
+    val opt = popt_BAR(buf, err)
+//
+    val d0cs =
+      p_d0atconseq_BAR(buf, err)
+    // end of [val d0cs]
+//
+    val loc_res =
+    (
+    case+ d0cs of
+    | list_nil() =>
+      (
+      case+ opt of
+      | None() => tok.loc()
+      | Some(tok) => tok.loc()
+      )
+    | list_cons _ => let
+        val d0c =
+        list_last(d0cs) in tok.loc() + d0c.loc()
+      end // end of [list_cons]
+    ) : loc_t // end of [val loc_res]
+//
+  in
+    err := e0;
+    d0ecl_make_node
+      (loc_res, D0Cexcptcon(tok, d0cs))
+    // end of [d0ecl_make_node]
+  end
 | T_DATATYPE(k0) => let
     val () = buf.incby1()
     val d0cs =
