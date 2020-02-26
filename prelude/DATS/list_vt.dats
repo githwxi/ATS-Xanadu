@@ -10,6 +10,26 @@
 *)
 
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_vt_length
+  {n}(xs) = let
+( loop(xs, 0) ) where
+{
+fun
+loop
+{i,j:nat|i+j==n}.<i>.
+( xs
+: !list_vt(a, i), j: int(j)): int(n) =
+(
+case+ xs of
+| list_vt_nil() => j
+| list_vt_cons(_, xs) => loop(xs, j+1)
+)
+} endwhr // end of [length_vt_length]
+
+(* ****** ****** *)
 //
 (*
 HX-2019-10:

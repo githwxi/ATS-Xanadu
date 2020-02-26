@@ -4,6 +4,12 @@
 *)
 (* ****** ****** *)
 
+#staload
+UN =
+"prelude/SATS/unsafe.sats"
+
+(* ****** ****** *)
+
 impltmp
 <x0,xs>
 gseq_length(xs) =
@@ -29,7 +35,7 @@ test =
 gseq_forall<x0,xs>(xs) where
 {
 impltmp
-forall$test(x0) =
+forall$test<x0>(x0) =
 let
 val () = foreach$work(x0) in true
 end
@@ -62,7 +68,7 @@ val r1 =
 gseq_foldl<x0,xs>(xs, $addr(r0))
 //
 in
-  cptr_set(r1, list_vt_nil()); castlin(r0)
+  cptr_set(r1, list_vt_nil()); $UN.castlin(r0)
 end // end of [gseq_map_list]
 
 (* ****** ****** *)
@@ -87,6 +93,24 @@ gseq_foldl<x0,xs>
 }
 //
 end // end of [gseq_maprev_list]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_add(xs) =
+let
+//
+typedef r0 = x0
+//
+implement
+foldl$fopr
+<x0><r0>
+(r0, x0) = g_add(r0, x0)
+//
+in
+  gseq_foldl<x0,xs><r0>(xs, g_0<r0>())
+end // end of [gseq_add]
 
 (* ****** ****** *)
 
