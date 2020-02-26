@@ -3,6 +3,22 @@
 ** for g-sequences
 *)
 (* ****** ****** *)
+//
+(*
+//
+// HX-2020-02-26:
+// this idea is abandoned!!!
+//
+absprop
+gseq_prop
+(x0: tflt, xs: tflt)
+propdef
+gseq
+( x0: tflt
+, xs: tflt) = gseq_prop(x0, xs)
+*)
+//
+(* ****** ****** *)
 
 fun
 <x0:tflt
@@ -37,8 +53,6 @@ fun
 <x0:tflt
 ,xs:tflt>
 gseq_forall(xs): bool
-#symload
-forall with gseq_forall
 
 (* ****** ****** *)
 
@@ -46,26 +60,18 @@ fun
 <x0:tflt
 ,xs:tflt>
 gseq_foreach(xs): void
-#symload
-foreach with gseq_foreach
 
 (* ****** ****** *)
 //
 fun
 <x0:tflt
 ,xs:tflt>
-gseq_listize
-  (xs: xs): list_vt(x0)
-#symload
-listize with gseq_listize
+gseq_listize(xs): list_vt(x0)
 //
 fun
 <x0:tflt
 ,xs:tflt>
-gseq_streamize
-  (xs: xs): stream_vt(x0)
-#symload
-streamize with gseq_streamize
+gseq_streamize(xs): stream_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -78,19 +84,13 @@ fun
 <x0:tflt
 ,xs:tflt>
 <y0:vtflt>
-gseq_map_list
-  (xs: xs): list_vt(y0)
-#symload
-map_list with gseq_map_list
+gseq_map_list(xs): list_vt(y0)
 fun
 <x0:tflt
 ,xs:tflt>
 <y0:vtflt>
-gseq_maprev_list
-  (xs: xs): list_vt(y0)
-#symload
-maprev_list with gseq_maprev_list
-
+gseq_maprev_list(xs): list_vt(y0)
+//
 (* ****** ****** *)
 //
 (*
@@ -108,9 +108,6 @@ fun
 ,xs:tflt>
 <r0:vtflt>
 gseq_foldr(xs, r0): r0
-//
-#symload foldl with gseq_foldl
-#symload foldr with gseq_foldr
 //
 (* ****** ****** *)
 //
