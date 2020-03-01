@@ -307,7 +307,26 @@ case+
 t2p0.node() of
 //
 | T2Pbas _ => t2p0
-| T2Pcst _ => t2p0
+//
+|
+T2Pcst(s2c1) =>
+let
+val t2p1 =
+s2cst_get_type(s2c1)
+in
+//
+case+
+t2p1.node() of
+| T2Pnone0() => t2p0
+| _(*defined*) =>
+  (
+    auxt2p0(t2p1, flag)
+  ) where
+  {
+  val () = (flag := flag + 1)
+  }
+//
+end // end of [T2Pcst]
 //
 |
 T2Pvar(s2v1) =>

@@ -471,6 +471,15 @@ t2p0.node() of
   (
     t2bas_eval(t2p0)
   )
+| T2Pcst(s2c) => let
+    val
+    t2p1 = s2c.type()
+  in
+    case+ t2p1.node() of
+    | T2Pnone0() => t2p0
+    | _ (*else*) => t2ype_eval(t2p1)
+  end
+
 | T2Pxtv(xtv) => let
     val
     t2p1 = xtv.type()

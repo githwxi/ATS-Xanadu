@@ -238,9 +238,9 @@ s2cst_get_abs
   val cp = dynarray_getref_at(A0, i0)
   prval ((*void*)) = $UN.cast2void(A0)
 in
-  if
-  isneqz(cp)
-  then $UN.cptr_get(cp) else ABSTDF2none()
+if
+isneqz(cp)
+then $UN.cptr_get(cp) else ABSTDF2none()
 end // end of [s2cst_get_abs]
 
 (* ****** ****** *)
@@ -289,6 +289,7 @@ in (* in-of-local *)
 implement
 s2cst_get_sexp
   (s2c) = let
+//
   val s0 =
   s2c.stamp()
   val i0 =
@@ -299,10 +300,12 @@ s2cst_get_sexp
   $UN.castvwtp0{dynarray}(theDynarr)
   val cp = dynarray_getref_at(A0, i0)
   prval ((*void*)) = $UN.cast2void(A0)
+//
 in
-  if
-  isneqz(cp)
+//
+if isneqz(cp)
   then $UN.cptr_get(cp) else the_s2exp_none0
+//
 end // end of [s2cst_get_sexp]
 
 (* ****** ****** *)
@@ -351,6 +354,7 @@ in (* in-of-local *)
 implement
 s2cst_get_type
   (s2c) = let
+//
   val s0 =
   s2c.stamp()
   val i0 =
@@ -361,10 +365,12 @@ s2cst_get_type
   $UN.castvwtp0{dynarray}(theDynarr)
   val cp = dynarray_getref_at(A0, i0)
   prval ((*void*)) = $UN.cast2void(A0)
+//
 in
-  if
-  isneqz(cp)
+//
+if isneqz(cp)
   then $UN.cptr_get(cp) else the_t2ype_none0
+//
 end // end of [s2cst_get_type]
 
 (* ****** ****** *)
