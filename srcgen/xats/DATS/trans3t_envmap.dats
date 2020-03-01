@@ -166,10 +166,16 @@ in
   test
   then
   let
-  val t2ps = fxtvs(xtvs)
+  val tsub = fxtvs(xtvs)
+(*
+  val
+  ((*void*)) =
+  println!
+  ("staload_find_timp: tsub = ", tsub)
+*)
   in
     auxrst(xtvs); // reset
-    Some_vt@(d3cl, s2vs, t2ps)
+    Some_vt@(d3cl, s2vs, tsub)
   end
   else
   ( auxrst(xtvs); // reset
@@ -612,10 +618,16 @@ in
   test
   then
   let
-  val t2ps = fxtvs(xtvs)
+  val tsub = fxtvs(xtvs)
+// (*
+  val
+  ((*void*)) =
+  println!
+  ("impllst_find_timp: tsub = ", tsub)
+// *)
   in
     auxrst(xtvs); // reset
-    Some_vt@(d3cl, s2vs, t2ps)
+    Some_vt@(d3cl, s2vs, tsub)
   end
   else
   ( auxrst(xtvs); // reset
