@@ -22,7 +22,7 @@ val p0 = $addr(r0)
 //
 val () =
 (
-gseq_foreach<x0,xs>(xs)
+  gseq_foreach<x0,xs>(xs)
 ) where
 {
 impltmp
@@ -51,9 +51,8 @@ gseq_foldl
 {
 typedef r0 = nint
 implement
-foldl$fopr
-<x0><r0>(r0, x0) = r0 + 1
-} (* gseq_length/fold *)
+foldl$fopr<x0><r0>(r0, x0) = r0 + 1
+} (* gseq_length/foldl *)
 
 (* ****** ****** *)
 
@@ -68,7 +67,7 @@ gseq_forall<x0,xs>(xs) where
 impltmp
 forall$test<x0>(x0) =
 let
-val () = foreach$work(x0) in true
+val () = foreach$work<x0>(x0) in true
 end
 }
 in
@@ -98,7 +97,7 @@ list_vt_cons
 val p1 = $addr(r1.1)
 //
 in
-p2tr_set<r0>
+$UN.p2tr_set<r0>
 (p0, $UN.castlin(r1)); (p1)
 end // foldl$fopr
 //
@@ -107,14 +106,14 @@ val r1 =
 gseq_foldl<x0,xs>(xs, $addr(r0))
 //
 in
-  p2tr_set(p1, list_vt_nil()); $UN.castlin(r0)
+$UN.p2tr_set(p1, list_vt_nil()); $UN.castlin(r0)
 end // end of [gseq_map_list]
 
 (* ****** ****** *)
 
 impltmp
 <x0,xs><y0>
-gseq_maprev_list
+gseq_map_rlist
   (xs) = let
 //
 typedef r0 = list_vt(y0)
@@ -131,7 +130,28 @@ gseq_foldl<x0,xs>
   list_vt_cons(map$fopr(x0), r0)
 }
 //
-end // end of [gseq_maprev_list]
+end // end of [gseq_map_rlist]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_copy_list(xs) =
+(
+  gseq_map_list<x0,xs><x0>(xs)
+) where
+{
+  impltmp map$fopr<x0><x0>(x0) = x0
+}
+impltmp
+<x0,xs>
+gseq_copy_rlist(xs) =
+(
+  gseq_map_rlist<x0,xs><x0>(xs)
+) where
+{
+  impltmp map$fopr<x0><x0>(x0) = x0
+}
 
 (* ****** ****** *)
 
