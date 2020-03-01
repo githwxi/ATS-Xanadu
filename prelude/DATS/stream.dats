@@ -9,7 +9,6 @@
 "./../SATS/stream.sats"
 *)
 
-
 (* ****** ****** *)
 //
 impltmp
