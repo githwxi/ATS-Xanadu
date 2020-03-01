@@ -77,7 +77,6 @@ gseq_streamize(xs): stream_vt(x0)
 //
 (*
 gseq_map: map$fopr
-gseq_maprev: map$fopr
 *)
 //
 fun
@@ -89,8 +88,19 @@ fun
 <x0:tflt
 ,xs:tflt>
 <y0:vtflt>
-gseq_maprev_list(xs): list_vt(y0)
+gseq_map_rlist(xs): list_vt(y0)
 //
+(* ****** ****** *)
+
+fun
+<x0:tflt
+,xs:tflt>
+gseq_copy_list(xs): list_vt(x0)
+fun
+<x0:tflt
+,xs:tflt>
+gseq_copy_rlist(xs): list_vt(x0)
+
 (* ****** ****** *)
 //
 (*

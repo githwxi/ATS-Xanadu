@@ -153,6 +153,9 @@ unify3(loc0, targ, t2ps)
 //
 val () =
 println!
+("staload_find_timp: targ = ", targ)
+val () =
+println!
 ("staload_find_timp: t2ps = ", t2ps)
 val () =
 println!
@@ -169,7 +172,9 @@ in
     Some_vt@(d3cl, s2vs, t2ps)
   end
   else
-  (auxrst(xarg); auxlst(xs, xarg))
+  ( auxrst(xtvs); // reset
+    auxrst(xarg); auxlst(xs, xarg)
+  ) (* end of [else] *) // end-of-if
 end // end of [auxlst]
 )
 //
@@ -613,7 +618,9 @@ in
     Some_vt@(d3cl, s2vs, t2ps)
   end
   else
-  (auxrst(xarg); auxlst(xs, xarg))
+  ( auxrst(xtvs); // reset
+    auxrst(xarg); auxlst(xs, xarg)
+  ) (* end of [else] *) // end-of-if
 end // end of [else]
 //
 end // end of [impllst_cons]
@@ -860,7 +867,7 @@ implement
 t2ype_subst_implenv
   (t2p0, env0) =
 (
-  t2ype_subst(t2p0)
+  t2ype_subst<>(t2p0)
 ) where
 {
 //
