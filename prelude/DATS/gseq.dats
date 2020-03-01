@@ -28,14 +28,16 @@ gseq_foreach<x0,xs>(xs)
 impltmp
 foreach$work<x0>(x0) =
 let
-val r0 = p2tr_get<r0>(p0)
+val r0 = $UN.p2tr_get<r0>(p0)
 in
-p2tr_set<r0>
-(p0, foldl$fopr<x0><r0>(r0, x0))
+//
+$UN.p2tr_set<r0>
+  (p0, foldl$fopr<x0><r0>(r0, x0))
+//
 end // end of [foreach$work]
 }
 //
-} (* end of [gseq_foldl] *)
+} (* end of [gseq_foldl/foreach] *)
 
 (* ****** ****** *)
 
@@ -51,7 +53,7 @@ typedef r0 = nint
 implement
 foldl$fopr
 <x0><r0>(r0, x0) = r0 + 1
-} (* gseq_length *)
+} (* gseq_length/fold *)
 
 (* ****** ****** *)
 
@@ -71,7 +73,7 @@ end
 }
 in
   // nothing
-end // end of [gseq_foreach]
+end // end of [gseq_foreach/forall]
 
 (* ****** ****** *)
 
@@ -147,7 +149,7 @@ foldl$fopr
 //
 in
   gseq_foldl<x0,xs><r0>(xs, g_0<r0>())
-end // end of [gseq_add]
+end // end of [gseq_add/foldl]
 
 (* ****** ****** *)
 
@@ -165,7 +167,7 @@ foldl$fopr
 //
 in
   gseq_foldl<x0,xs><r0>(xs, g_1<r0>())
-end // end of [gseq_mul]
+end // end of [gseq_mul/foldl]
 
 (* ****** ****** *)
 
