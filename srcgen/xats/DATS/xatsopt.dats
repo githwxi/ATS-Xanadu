@@ -1703,6 +1703,19 @@ the_prelude_load
 val () =
 the_prelude_load
 ( XATSHOME
+, 0(*static*), "prelude/SATS/bool.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/char.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gint.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
 , 0(*static*), "prelude/SATS/gbas.sats")
 val () =
 the_prelude_load
@@ -1712,11 +1725,6 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/gord.sats")
-//
-val () =
-the_prelude_load
-( XATSHOME
-, 0(*static*), "prelude/SATS/gint.sats")
 //
 val () =
 the_prelude_load
