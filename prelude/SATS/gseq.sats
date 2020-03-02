@@ -30,7 +30,7 @@ fun
 gseq_cons(x0, xs): xs
 
 (* ****** ****** *)
-
+//
 fun
 <x0:tflt
 ,xs:tflt>
@@ -39,7 +39,31 @@ fun
 <x0:tflt
 ,xs:tflt>
 gseq_cons?(xs): bool
-
+//
+(*
+fun
+<x0:tflt
+,xs:tflt>
+gseq_is_nil(xs): bool
+fun
+<x0:tflt
+,xs:tflt>
+gseq_is_cons(xs): bool
+*)
+//
+(* ****** ****** *)
+//
+fun
+<x0:tflt
+,xs:tflt>
+gseq_uncons_exn
+  (xs: &xs >> xs): x0
+fun
+<x0:tflt
+,xs:tflt>
+gseq_uncons_opt
+  (xs: &xs >> xs): optn_vt(x0)
+//
 (* ****** ****** *)
 
 fun

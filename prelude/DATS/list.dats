@@ -12,6 +12,18 @@
 (* ****** ****** *)
 //
 impltmp
+{x0:type}
+gseq_nil
+<x0,list(x0)>() = list_nil()
+impltmp
+{x0:type}
+gseq_cons
+<x0,list(x0)>
+  (x0, xs) = list_cons(x0, xs)
+//
+(* ****** ****** *)
+//
+impltmp
 <>(*tmp*)
 list_nil?
   (xs) =
@@ -30,8 +42,17 @@ case+ xs of
 | list_cons(_, _) => (true)
 )
 //
+impltmp
+{a:type}
+gseq_nil?
+<a,list(a)>(xs)=list_nil? <a> (xs)
+impltmp
+{a:type}
+gseq_cons?
+<a,list(a)>(xs)=list_cons? <a> (xs)
+//
 (* ****** ****** *)
-
+//
 impltmp
 <a>(*tmp*)
 list_length
@@ -51,7 +72,12 @@ case+ xs of
 | list_cons(_, xs) => loop(xs, j0+1)
 )
 } (* end of [list_length] *)
-
+//
+impltmp
+{a:type}
+gseq_length
+<a,list(a)>(xs) = list_length<a>(xs)
+//
 (* ****** ****** *)
 //
 impltmp
@@ -192,11 +218,23 @@ list_cons(x0, xs) =>
 ) where
 {
   val y0 = map$fopr(x0)
-  val ys = list_vt_cons{y0}(y0, ys)
+  val ys =
+  list_vt_cons{y0}(y0, ys)
 }
 ) (* end of [loop] *)
 //
 } (* end of [list_maprev_vt] *)
+//
+(* ****** ****** *)
+//
+impltmp
+{a:type}
+gseq_map_list
+<a,list(a)>(xs) = list_map_vt<a>(xs)
+impltmp
+{a:type}
+gseq_maprev_list
+<a,list(a)>(xs) = list_maprev_vt<a>(xs)
 //
 (* ****** ****** *)
 //
@@ -216,65 +254,6 @@ tabulate$fopr<a><n>(i0) = f0(i0)
 in
   list_tabulate<a><n>(n0)
 end // end of [list_tabulate_cref]
-//
-(* ****** ****** *)
-//
-impltmp
-{x0:type}
-gseq_nil
-<x0,list(x0)>() = list_nil()
-impltmp
-{x0:type}
-gseq_cons
-<x0,list(x0)>
-  (x0, xs) = list_cons(x0, xs)
-//
-(* ****** ****** *)
-//
-impltmp
-{x0:type}
-gseq_nil?
-<x0,list(x0)>(xs) = list_nil?(xs)
-impltmp
-{x0:type}
-gseq_cons?
-<x0,list(x0)>(xs) = list_cons?(xs)
-//
-(* ****** ****** *)
-//
-impltmp
-{x0:type}
-gseq_length
-<x0,list(x0)>(xs) = list_length<x0>(xs)
-//
-(* ****** ****** *)
-//
-impltmp
-{x0:type}
-gseq_forall
-<x0,list(x0)>(xs) = list_forall<x0>(xs)
-//
-(* ****** ****** *)
-//
-impltmp
-{x0:type}
-gseq_foreach
-<x0,list(x0)>(xs) = list_foreach<x0>(xs)
-//
-(* ****** ****** *)
-//
-impltmp
-{x0:type
-,xs:type
-,y0:type}
-gseq_map_list
-<x0,list(x0)><y0>(xs) = list_map_vt<x0><y0>(xs)
-impltmp
-{x0:type
-,xs:type
-,y0:type}
-gseq_maprev_list
-<x0,list(x0)><y0>(xs) = list_maprev_vt<x0><y0>(xs)
 //
 (* ****** ****** *)
 
