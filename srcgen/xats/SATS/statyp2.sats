@@ -250,8 +250,12 @@ overload .node with t2ype_get_node
 //
 fun
 t2bas_eval(t2p: t2ype): t2ype
+//
 fun
 t2ype_eval(t2p: t2ype): t2ype
+//
+fun
+t2ype_evalrec(t2p: t2ype): t2ype
 //
 (* ****** ****** *)
 //

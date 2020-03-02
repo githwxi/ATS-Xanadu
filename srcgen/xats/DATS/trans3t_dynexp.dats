@@ -1001,7 +1001,7 @@ list_vt2t
 ) where
 {
 implement
-list_map$fopr<s2var><t2xtv>(s2v) = t2xtv_new(loc0)
+list_map$fopr<s2var><t2xtv>(_) = t2xtv_new(loc0)
 } (* end of [val xtvs] *)
 val tsub =
 (
@@ -1023,8 +1023,8 @@ val ti3e = TI3ENV(s2vs, xtvs, t2ps)
 in
 //
 let
-val () =
-implenv_add_impdecl3(env0, d3cl, ti3e) in d3cl
+  val () =
+  implenv_add_impdecl3(env0, d3cl, ti3e) in d3cl
 end
 //
 end // end of [aux_impdecl3_tmp]
