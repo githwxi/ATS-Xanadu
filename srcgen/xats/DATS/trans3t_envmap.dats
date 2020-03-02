@@ -216,9 +216,11 @@ implist_cons
 (d3cl, ti3e, xs) =>
 let
 //
+(*
 val () =
 println!
 ("staload_find_timp: d3cl = ", d3cl)
+*)
 //
 val+
 TI3ENV
@@ -228,6 +230,7 @@ val
 test =
 unify3(LOC0, targ, t2ps)
 //
+(*
 val () =
 println!
 ("staload_find_timp: targ = ", targ)
@@ -237,6 +240,7 @@ println!
 val () =
 println!
 ("staload_find_timp: test = ", test)
+*)
 //
 in
   if
@@ -266,9 +270,11 @@ in
 end // end of [auxlst]
 )
 //
+(*
 val () =
 println!
 ("staload_find_timp: d2c0 = ", d2c0)
+*)
 //
 in
 (
@@ -612,16 +618,6 @@ val
 ans =
 staload_find_timp(d3cl, d2c0, targ)
 //
-val () =
-println!
-("impllst_find_timp: d3cl = ", d3cl)
-val () =
-println!
-("impllst_find_timp: d2c0 = ", d2c0)
-val () =
-println!
-("impllst_find_timp: targ = ", targ)
-//
 in
 case+ ans of
 |
@@ -637,10 +633,13 @@ let
 //
 val
 fnd = auxfnd(d3cl, d2c0)
+(*
 val () =
 println!
 ("impllst_find_timp: fnd = ", fnd)
+*)
 //
+(*
 val () =
 println!
 ("impllst_find_timp: d3cl = ", d3cl)
@@ -650,6 +649,7 @@ println!
 val () =
 println!
 ("impllst_find_timp: targ = ", targ)
+*)
 //
 in
 //
@@ -667,12 +667,14 @@ val
 test =
 unify3(LOC0, targ, t2ps)
 //
+(*
 val () =
 println!
 ("impllst_find_timp: t2ps = ", t2ps)
 val () =
 println!
 ("impllst_find_timp: test = ", test)
+*)
 //
 in
   if
@@ -683,12 +685,12 @@ in
   val () = auxrst(xarg)
   val tsub =
   ti3env_redo(d3cl, ti3e, targ)
-// (*
+(*
   val
   ((*void*)) =
   println!
   ("impllst_find_timp: tsub = ", tsub)
-// *)
+*)
   in
     auxrst(xtvs); // reset
     Some_vt@(d3cl, s2vs, tsub)
