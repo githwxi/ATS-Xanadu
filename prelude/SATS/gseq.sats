@@ -151,5 +151,21 @@ fun
 <x0:tflt,xs:tflt>gseq_mul(xs): x0
 //
 (* ****** ****** *)
+//
+fun
+<x0:tflt
+,xs:tflt>
+gseq_append(xs1: xs, xs2: xs): xs
+//
+fun
+<x0:tflt
+,xs:tflt>
+gseq_reverse(xs: xs): xs
+fun
+<x0:tflt
+,xs:tflt>
+gseq_rappend(xs1: xs, xs2: xs): xs
+//
+(* ****** ****** *)
 
 (* end of [gseq.sats] *)
