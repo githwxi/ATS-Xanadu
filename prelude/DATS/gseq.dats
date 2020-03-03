@@ -293,5 +293,36 @@ in
 end // end of [gseq_mul/foldl]
 
 (* ****** ****** *)
+//
+impltmp
+<x0,xs>
+gseq_append(xs1, xs2) =
+(
+gseq_foldr<x0,xs>(xs1, xs2)
+) where
+{
+impltmp
+<x0><xs>
+foldr(x0, r0) = gseq_cons<x0,xs>(x0, r0)
+}
+//
+impltmp
+<x0,xs>
+gseq_reverse(xs) =
+gseq_rappend<x0,xs>
+(xs, gseq_nil<x0,xs>())
+impltmp
+<x0,xs>
+gseq_rappend(xs1, xs2) =
+(
+gseq_foldl<x0,xs>(xs1, xs2)
+) where
+{
+impltmp
+<x0><xs>
+foldl(r0, x0) = gseq_cons<x0,xs>(x0, r0)
+}
+//
+(* ****** ****** *)
 
 (* end of [gseq.dats] *)
