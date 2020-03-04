@@ -217,6 +217,30 @@ case+ opt of
 end // end of [s2cst_isdat]
 
 (* ****** ****** *)
+
+implement
+d2cst_iscast(d2c0) =
+let
+val
+knd = d2cst_get_kind(d2c0)
+in
+//
+case+ knd of
+|
+T_FUN(fnk) =>
+(
+case+ fnk of
+| FNKcastfn() => true
+| _(*non-FNKcastfn*) => false
+)
+(*
+  | T_VAL(vlk) => false
+*)
+| _ (* rest-of-tnode *) => false
+//
+end // end of [d2cst_iscast]
+
+(* ****** ****** *)
 //
 implement
 eq_d2con_d2con
