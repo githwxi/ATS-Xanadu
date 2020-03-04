@@ -156,6 +156,16 @@ gseq_listize
 {
   impltmp map$fopr<x0><x0>(x0) = x0
 }
+impltmp
+<x0,xs>
+gseq_rlistize
+  (xs) =
+(
+  gseq_map_rlist<x0,xs><x0>(xs)
+) where
+{
+  impltmp map$fopr<x0><x0>(x0) = x0
+}
 
 (* ****** ****** *)
 
@@ -244,7 +254,7 @@ impltmp
 <x0,xs>
 gseq_copy_list(xs) =
 (
-gseq_map_list<x0,xs><x0>(xs)
+  gseq_map_list<x0,xs><x0>(xs)
 ) where
 {
   impltmp map$fopr<x0><x0>(x0) = x0
@@ -298,6 +308,37 @@ end // end of [gseq_mul/foldl]
 (* ****** ****** *)
 
 impltmp
+<x0,xs><r0>
+gseq_foldr
+(xs, r0) = r0 where
+{
+//
+var r0: r0 = r0
+//
+val p0 = $addr(r0)
+//
+val () =
+(
+  gseq_rforeach<x0,xs>(xs)
+) where
+{
+impltmp
+rforeach$work<x0>(x0) =
+let
+val r0 = $UN.p2tr_get<r0>(p0)
+in
+//
+$UN.p2tr_set<r0>
+  (p0, foldr$fopr<x0><r0>(x0, r0))
+//
+end // end of [rforeach$work]
+}
+//
+} (* end of [gseq_foldr/rforeach] *)
+
+(* ****** ****** *)
+
+impltmp
 <x0,xs>
 gseq_rforall(xs) =
 let
@@ -310,7 +351,7 @@ in
 {
 impltmp
 forall0$test<x0>
-  (x0) = rforall0$test<x0>(x0)
+  (x0) = rforall$test<x0>(x0)
 }
 end // end of
 // [gseq_rforall/list_vt_forall]
@@ -339,12 +380,15 @@ impltmp
 <x0,xs>
 gseq_append(xs1, xs2) =
 (
-gseq_foldr<x0,xs>(xs1, xs2)
+gseq_foldr<x0,xs><r0>(xs1, xs2)
 ) where
 {
+//
+typedef r0 = xs
+//
 impltmp
-<x0><xs>
-foldr$fopr(x0, r0) = gseq_cons<x0,xs>(x0, r0)
+foldr$fopr
+<x0><r0>(x0, r0) = gseq_cons<x0,xs>(x0, r0)
 }
 //
 impltmp
@@ -356,12 +400,15 @@ impltmp
 <x0,xs>
 gseq_rappend(xs1, xs2) =
 (
-gseq_foldl<x0,xs>(xs1, xs2)
+gseq_foldl<x0,xs><r0>(xs1, xs2)
 ) where
 {
+//
+typedef r0 = xs
+//
 impltmp
-<x0><xs>
-foldl$fopr(r0, x0) = gseq_cons<x0,xs>(x0, r0)
+foldl$fopr
+<x0><xs>(r0, x0) = gseq_cons<x0,xs>(x0, r0)
 }
 //
 (* ****** ****** *)

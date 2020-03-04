@@ -49,5 +49,67 @@ in
 end // end of [list_vt_tabulate_cref]
 //
 (* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_vt_forall0
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+( xs
+: list_vt(a)): bool =
+(
+case+ xs of
+|
+~list_vt_nil() => true
+|
+~list_vt_cons(x0, xs) =>
+let
+val
+test =
+forall0$test<a>(x0)
+in
+//
+if
+test
+then loop(xs)
+else
+let
+val () =
+list_vt_free(xs) in false
+end // end of [else]
+//
+end // end of [list_vt_cons]
+)
+} (* end of [list_vt_forall0] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_vt_foreach0
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+( xs
+: list_vt(a)): bool =
+(
+case+ xs of
+|
+~list_vt_nil() => true
+|
+~list_vt_cons(x0, xs) =>
+let
+val () =
+foreach0$work<a>(x0) in loop(xs)
+end // end of [list_vt_cons]
+)
+} (* end of [list_vt_foreach0] *)
+//
+(* ****** ****** *)
 
 (* end of [list_vt.dats] *)

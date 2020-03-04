@@ -103,5 +103,16 @@ list_vt_tabulate_cref
 , f0: nintlt(n) -<cref> a): list_vt(a, n)
 //
 (* ****** ****** *)
+//
+fun
+<x0:type>
+list_vt_forall0
+{n:int}(xs: list_vt(x0, n)): bool
+fun
+<x0:type>
+list_vt_foreach0
+{n:int}(xs: list_vt(x0, n)): void
+//
+(* ****** ****** *)
 
 (* end of [list_vt.sats] *)
