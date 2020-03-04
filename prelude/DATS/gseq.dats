@@ -177,14 +177,17 @@ end
 )
 
 (* ****** ****** *)
-
+//
 impltmp
 <x0,xs><y0>
 gseq_map_list
   (xs) = let
 //
-typedef r0 =
-p2tr(list_vt(x0))
+typedef
+ys =
+list_vt(y0)
+typedef
+r0 = p2tr(ys)
 //
 impltmp
 foldl$fopr
@@ -199,19 +202,19 @@ list_vt_cons
 val p1 = $addr(r1.1)
 //
 in
-$UN.p2tr_set<r0>
+$UN.p2tr_set<ys>
 (p0, $UN.castlin(r1)); (p1)
 end // foldl$fopr
 //
 var r0: list_vt(y0)
-val r1 =
-gseq_foldl<x0,xs>(xs, $addr(r0))
+val pz =
+gseq_foldl<x0,xs><r0>(xs, $addr(r0))
 //
 in
-$UN.p2tr_set
-(p1, list_vt_nil()); $UN.castlin(r0)
+$UN.p2tr_set<ys>
+(pz, list_vt_nil()); $UN.castlin(r0)
 end // end of [gseq_map_list/foldl]
-
+//
 (* ****** ****** *)
 
 impltmp

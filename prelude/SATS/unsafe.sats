@@ -78,7 +78,7 @@ p2tr_set(p0: p2tr(a), x0: a): void
 (* ****** ****** *)
 
 fun
-<x0,xs>
+<x0:t0,xs:t0>
 gseq_uncons(xs: &xs >> xs): x0
 
 (* ****** ****** *)
