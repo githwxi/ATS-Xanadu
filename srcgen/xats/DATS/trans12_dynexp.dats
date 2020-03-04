@@ -4548,8 +4548,8 @@ val
 the_dexpenv_add_cstlst(d2cs)
 //
 in
-  d2ecl_make_node
-  (loc0, D2Cdynconst(knd, tqas, d2cs))
+d2ecl_make_node
+(loc0, D2Cdynconst(knd, tqas, d2cs))
 end // end of [aux_dynconst]
 
 and
@@ -4561,7 +4561,6 @@ aux_dcstdecl
 //
 val+D1CSTDECL(rcd) = d1cl
 //
-//
 val (pf0|()) =
 the_sexpenv_pushnil((*void*))
 //
@@ -4571,7 +4570,7 @@ auxarg1
 (d1cl, 0, rcd.arg, rcd.res)
 val ((*void*)) =
 //
-the_sexpenv_popfree(pf0|(*void*))
+the_sexpenv_popfree( pf0 | (*void*) )
 //
 (*
 val () =
@@ -4599,11 +4598,8 @@ val sid =
 sexpid_sym(tok0)
 val s1e0 =
 s1exp_make_node
-(
-tok0.loc(), S1Eid(sid)
-)
-in
-  trans12_sexp_ci(s1e0)
+( tok0.loc()
+, S1Eid(sid)) in trans12_sexp_ci(s1e0)
 end // end of [auxsid]
 
 and

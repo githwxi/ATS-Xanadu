@@ -147,12 +147,15 @@ overload subsort with subsort_int_int
 
 datatype
 dctkind =
+//
 | DCKfun of ()
 | DCKval of ()
 | DCKpraxi of ()
 | DCKprfun of ()
 | DCKprval of ()
 | DCKcastfn of ()
+//
+| DCKunknown of ()
 // end of [dcstkind]
 
 (* ****** ****** *)

@@ -151,6 +151,17 @@ fun
 <x0:tflt,xs:tflt>gseq_mul(xs): x0
 //
 (* ****** ****** *)
+
+fun
+<x0:tflt
+,xs:tflt>
+gseq_rforall(xs): bool
+fun
+<x0:tflt
+,xs:tflt>
+gseq_rforeach(xs): void
+
+(* ****** ****** *)
 //
 fun
 <x0:tflt

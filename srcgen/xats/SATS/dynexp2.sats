@@ -1107,17 +1107,26 @@ d2ecl_node =
 | D2Cabsimpl of (d1ecl)
 *)
 | D2Cabsimpl of
-  ( token(*kind*), impls2cst, s2exp(*def*))
+  ( token(*abskind*)
+  , impls2cst, s2exp(*definition*))
 //
 | D2Csymload of
   ( token(*symload*)
-  , sym_t(*loaded*), d2pitm(*loading*))
+  , sym_t(* loaded *), d2pitm(* loading *))
+//
+| D2Cdatasort of (d1ecl, sort2lst)
+//
+| D2Cexcptcon of (d1ecl, d2conlst)
+| D2Cdatatype of (d1ecl, s2cstlst)
+//
+| D2Cdynconst of
+  (token(*dctkind*), tq2arglst, d2cstlst)
 //
 | D2Cvaldecl of
-  (token(*knd*), decmodopt, v2aldeclist)
+  (token(*valknd*), decmodopt, v2aldeclist)
 //
 | D2Cvardecl of
-  (token(*knd*), decmodopt, v2ardeclist)
+  (token(*varknd*), decmodopt, v2ardeclist)
 //
 | D2Cfundecl of
   ( token(*funkind*)
@@ -1133,14 +1142,6 @@ d2ecl_node =
   , decmodopt
   , sq2arglst, tq2arglst
   , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
-//
-| D2Cdatasort of (d1ecl, sort2lst)
-//
-| D2Cexcptcon of (d1ecl, d2conlst)
-| D2Cdatatype of (d1ecl, s2cstlst)
-//
-| D2Cdynconst of
-  (token(*kind*), tq2arglst, d2cstlst)
 //
 // end of [d2ecl_node]
 //

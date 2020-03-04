@@ -712,6 +712,27 @@ case- x0.node() of
   , "D2Csymload("
   , tok, "; ", sym0, "; ", dpi1, ")")
 //
+| D2Cdatasort(d1cl, s2ts) =>
+  fprint!
+  ( out
+  , "D2Cdatasort(", d1cl, "; ", s2ts, ")")
+//
+| D2Cexcptcon(d1cl, d2cs) =>
+  fprint!
+  ( out
+  , "D2Cexcptcon(", d1cl, "; ", d2cs, ")")
+| D2Cdatatype(d1cl, s2cs) =>
+  fprint!
+  ( out
+  , "D2Cdatatype(", d1cl, "; ", s2cs, ")")
+//
+| D2Cdynconst
+  (knd, tqas, d2cs) =>
+  fprint!
+  ( out
+  , "D2Cynconst("
+  , knd, "; ", tqas, "; ", d2cs, ")")
+//
 | D2Cvaldecl
   (knd, mopt, v2ds) =>
   fprint!
@@ -750,26 +771,6 @@ case- x0.node() of
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
-//
-| D2Cdatasort(d1cl, s2ts) =>
-  fprint!
-  ( out
-  , "D2Cdatasort(", d1cl, "; ", s2ts, ")")
-//
-| D2Cexcptcon(d1cl, d2cs) =>
-  fprint!
-  ( out
-  , "D2Cexcptcon(", d1cl, "; ", d2cs, ")")
-| D2Cdatatype(d1cl, s2cs) =>
-  fprint!
-  ( out
-  , "D2Cdatatype(", d1cl, "; ", s2cs, ")")
-//
-| D2Cdynconst
-  (knd, tqas, d2cs) =>
-  fprint!
-  ( out
-  , "D2Cynconst(", knd, "; ", tqas, "; ", d2cs, ")")
 //
 ) (* end of [fprint_d2ecl] *)
 
