@@ -139,4 +139,28 @@ tabulate$fopr(i0: nintlt(n)): (a)
 //
 (* ****** ****** *)
 
+fun
+<x0:t0>
+rforall$test(x0: x0): bool
+fun
+<x0:vt>
+rforall0$test(x0: x0): bool
+fun
+<x0:vt>
+rforall1$test(x0: !x0): bool
+
+(* ****** ****** *)
+
+fun
+<x0:t0>
+rforeach$work(x0: x0): void
+fun
+<x0:vt>
+rforeach0$work(x0: x0): void
+fun
+<x0:vt>
+rforeach1$work(x0: !x0): void
+
+(* ****** ****** *)
+
 (* end of [gbas.sats] *)

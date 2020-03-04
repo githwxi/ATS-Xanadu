@@ -293,6 +293,44 @@ in
 end // end of [gseq_mul/foldl]
 
 (* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_rforall(xs) =
+let
+val xs =
+gseq_rlistize<x0,xs>(xs)
+in
+(
+  list_vt_forall0<x0>(xs)
+) where
+{
+impltmp
+forall0$test<x0>
+  (x0) = rforall0$test<x0>(x0)
+}
+end // end of
+// [gseq_rforall/list_vt_forall]
+
+impltmp
+<x0,xs>
+gseq_rforeach(xs) =
+let
+val
+test =
+gseq_rforall<x0,xs>(xs) where
+{
+impltmp
+rforall$test<x0>(x0) =
+let
+val () = rforeach$work<x0>(x0) in true
+end
+}
+in
+  // nothing
+end // end of [gseq_rforeach/rforall]
+
+(* ****** ****** *)
 //
 impltmp
 <x0,xs>
@@ -303,7 +341,7 @@ gseq_foldr<x0,xs>(xs1, xs2)
 {
 impltmp
 <x0><xs>
-foldr(x0, r0) = gseq_cons<x0,xs>(x0, r0)
+foldr$fopr(x0, r0) = gseq_cons<x0,xs>(x0, r0)
 }
 //
 impltmp
@@ -320,7 +358,7 @@ gseq_foldl<x0,xs>(xs1, xs2)
 {
 impltmp
 <x0><xs>
-foldl(r0, x0) = gseq_cons<x0,xs>(x0, r0)
+foldl$fopr(r0, x0) = gseq_cons<x0,xs>(x0, r0)
 }
 //
 (* ****** ****** *)

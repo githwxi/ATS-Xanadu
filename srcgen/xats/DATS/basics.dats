@@ -167,6 +167,32 @@ if
 (* ****** ****** *)
 
 implement
+fprint_dctkind
+  (out, knd) =
+(
+//
+case+ knd of
+| DCKfun() =>
+  fprint(out, "DCKfun")
+| DCKval() =>
+  fprint(out, "DCKval")
+| DCKpraxi() =>
+  fprint(out, "DCKpraxi")
+| DCKprfun() =>
+  fprint(out, "DCKprfun")
+| DCKprval() =>
+  fprint(out, "DCKprval")
+| DCKcastfn() =>
+  fprint(out, "DCKcastfn")
+//
+| DCKunknown() =>
+  fprint(out, "DCKunknown")
+//
+) (* end of [fprint_dctkind] *)
+
+(* ****** ****** *)
+
+implement
 fprint_valkind
   (out, vlk) =
 (

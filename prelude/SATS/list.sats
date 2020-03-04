@@ -73,12 +73,12 @@ list_append
 //
 fun
 <a:type>
-list_revapp
+list_rappend
 {m,n:int}
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
 //
-#symload revapp with list_revapp
+#symload rappend with list_rappend
 //
 (* ****** ****** *)
 //

@@ -1,3 +1,16 @@
+var x: int = 0
+val p1 = $addr(x)
+val p2 = $addr($eval(p1))
+////
+val xs =
+list_cons
+(1, list_nil())
+val x0 = $addr(xs.1)
+////
+val x0 = $addr(xs.list_cons$1)
+
+////
+
 var x0 = 0
 val p0 = &(x0)
 

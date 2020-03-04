@@ -12,13 +12,13 @@
 (* ****** ****** *)
 //
 impltmp
-{x0:type}
+{a:type}
 gseq_nil
-<x0,list(x0)>() = list_nil()
+<a,list(a)>() = list_nil()
 impltmp
-{x0:type}
+{a:type}
 gseq_cons
-<x0,list(x0)>
+<a,list(a)>
   (x0, xs) = list_cons(x0, xs)
 //
 (* ****** ****** *)
@@ -113,7 +113,7 @@ end (* end of [list_append] *)
 //
 impltmp
 <a>(*tmp*)
-list_revapp
+list_rappend
   (xs, ys) =
 (
   loop(xs, ys)
@@ -132,15 +132,66 @@ case+ xs of
 | list_cons(x0, xs) =>
   loop(xs, list_cons(x0, ys))
 )
-} (* list_revapp *)
+} (* list_rappend *)
 //
 impltmp
 <a>(*tmp*)
 list_reverse
   (xs) =
 (
-list_revapp<a>(xs, list_nil())
+list_rappend<a>(xs, list_nil())
 ) (* list_reverse *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_forall(xs) =
+  (loop(xs)) where
+{
+fun
+loop
+(xs: list(a)): bool =
+(
+case+ xs of
+| list_nil() => true
+| list_cons(x0, xs) =>
+  if
+  forall$test<a>(x0)
+  then loop(xs) else false
+)
+}
+//
+impltmp
+{a:type}
+gseq_forall
+<a,list(a)>(xs) = list_forall<a>(xs)
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_foreach(xs) =
+  (loop(xs)) where
+{
+fun
+loop
+(xs: list(a)): void =
+(
+case+ xs of
+| list_nil() => ()
+| list_cons(x0, xs) =>
+  let
+  val () =
+  foreach$work<a>(x0) in loop(xs)
+  end
+)
+}
+//
+impltmp
+{a:type}
+gseq_foreach
+<a,list(a)>(xs) = list_foreach<a>(xs)
 //
 (* ****** ****** *)
 //
