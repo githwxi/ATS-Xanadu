@@ -48,6 +48,7 @@ filpathopt = $FP0.filpathopt
 //
 #staload
 LEX = "./lexing.sats"
+typedef tnode = $LEX.tnode
 typedef token = $LEX.token
 //
 (* ****** ****** *)
@@ -268,6 +269,15 @@ overload .sym with d2var_get_sym
 (* ****** ****** *)
 //
 fun
+d2cst_iscast(d2cst): bool
+fun
+d2cst_get_kind(d2cst): tnode
+fun
+d2var_get_kind(d2var): tnode
+//
+(* ****** ****** *)
+//
+fun
 d2con_get_sexp(d2con): s2exp
 fun
 d2con_get_type(d2con): t2ype
@@ -351,23 +361,34 @@ overload = with eq_d2var_d2var
 (* ****** ****** *)
 //
 fun
+d2cst_make_dvar
+(d2v: d2var): d2cst
+//
+fun
 d2con_make_idtp
-(id: token, s2e: s2exp): d2con
+(id0: token, s2e: s2exp): d2con
 //
 fun
 d2cst_make_idtp
-( id: token
+( id0: token
+, knd: tnode
 , tqas: tq2as, s2e0: s2exp): d2cst
-//
 fun
-d2cst_make_dvar(d2v: d2var): d2cst
+stamp_d2cst_kind(d2cst, tnode): void
 //
 (* ****** ****** *)
 //
 fun
 d2var_new1(tok: token): d2var
 fun
-d2var_new2(loc_t, sym_t): d2var
+d2var_new2
+(loc: loc_t, id0: sym_t): d2var
+//
+fun
+d2var_make_idvk
+(loc_t, sym_t, knd: tnode): d2var
+fun
+stamp_d2var_kind(d2var, tnode): void
 //
 (* ****** ****** *)
 //

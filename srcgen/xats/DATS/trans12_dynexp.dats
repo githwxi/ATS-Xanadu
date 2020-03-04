@@ -4538,7 +4538,7 @@ end // end of [local]
 //
 val
 d2cs =
-aux_dcstdeclist(tqas, d1cs)
+aux_dcstdeclist(knd, tqas, d1cs)
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
@@ -4554,7 +4554,9 @@ end // end of [aux_dynconst]
 
 and
 aux_dcstdecl
-( tqas
+( knd
+: token
+, tqas
 : tq2arglst
 , d1cl
 : d1cstdecl): d2cst = let
@@ -4575,6 +4577,9 @@ the_sexpenv_popfree( pf0 | (*void*) )
 (*
 val () =
 println!
+("aux_dcstdecl: knd = ", knd)
+val () =
+println!
 ("aux_dcstdecl: d1cl = ", d1cl)
 val () =
 println!
@@ -4585,7 +4590,12 @@ println!
 *)
 //
 in
-  d2cst_make_idtp(rcd.nam, tqas, s2e0)
+let
+val nam = rcd.nam
+val knd = knd.node()
+in
+d2cst_make_idtp(nam, knd, tqas, s2e0)
+end
 end // end of [aux_dcstdecl]
 
 and
@@ -4800,7 +4810,9 @@ end
 
 and
 aux_dcstdeclist
-( tqas
+( knd
+: token
+, tqas
 : tq2arglst
 , d1cs
 : d1cstdeclist): d2cstlst =
@@ -4810,7 +4822,7 @@ list_map<d1cstdecl><d2cst>(d1cs)
 ) where
 {
 implement
-list_map$fopr<d1cstdecl><d2cst>(d1c) = aux_dcstdecl(tqas, d1c)
+list_map$fopr<d1cstdecl><d2cst>(d1c) = aux_dcstdecl(knd, tqas, d1c)
 } (* end of [aux_dcstdeclist] *)
 
 (* ****** ****** *)
