@@ -231,6 +231,11 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 //
 #dynload "./staexp2_print.dats"
 #dynload "./statyp2_print.dats"
+//
+#dynload "./dynexp2_d2con.dats"
+#dynload "./dynexp2_d2cst.dats"
+#dynload "./dynexp2_d2var.dats"
+//
 #dynload "./dynexp2_print.dats"
 //
 #dynload "./nmspace.dats"
