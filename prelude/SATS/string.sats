@@ -27,8 +27,8 @@
 
 (* ****** ****** *)
 //
-// For characters
-// that is, sint8 and uint8
+// For C-strings, that is,
+// char sequence ending with 0
 //
 (* ****** ****** *)
 //
@@ -38,32 +38,44 @@
 //
 (* ****** ****** *)
 //
-fun<>
-char_eqz?
-{c:char}(char(c)): bool(c=0)
-fun<>
-char_neqz?
-{c:char}(char(c)): bool(c>0)
+// For gseq-operations
 //
-#symload eqz? with char_eqz?
-#symload neqz? with char_neqz?
+(* ****** ****** *)
+//
+typedef cgtz =
+[c:char|c > 0]char(c)
+//
+(* ****** ****** *)
+//
+castfn
+string_ptrof
+  (string): p2tr(char)
+//
+#symload ptrof with string
 //
 (* ****** ****** *)
 //
 fun<>
-eq_char_char
-{c1,c2:char}
-( c1: char(c1)
-, c2: char(c2)): bool(c1=c2)
+string_nil(): string(0)
 fun<>
-neq_char_char
-{c1,c2:char}
-( c1: char(c1)
-, c2: char(c2)): bool(c1!=c2)
+string_cons{n:int}
+( c0: cgtz
+, cs: string(n)): string(n+1)
 //
-#symload = with eq_char_char
-#symload != with neq_char_char
+(* ****** ****** *)
+//
+fun<>
+string_nil?(cs: string): bool
+fun<>
+string_cons?(cs: string): bool
+//
+(* ****** ****** *)
+//
+fun<>
+string_forall(cs: string): bool
+fun<>
+string_rforall(cs: string): bool
 //
 (* ****** ****** *)
 
-(* end of [char.sats] *)
+(* end of [string.sats] *)

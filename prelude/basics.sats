@@ -49,9 +49,9 @@ abssort true
 (*
 abssort int
 // [int] is built-in
-abssort bool
+abssort bool//tt,ff
 // [bool] is built-in
-abssort char
+abssort char//[0,256)
 // [char] is built-in
 *)
 //
@@ -297,6 +297,8 @@ typedef p2tr(x:vt, l:a0) = p2tr1(x, l)
 
 typedef
 bool_k = $extype("xats_bool_t")
+typedef
+char_k = $extype("xats_char_t")
 
 typedef
 sint_k = $extype("xats_sint_t")
@@ -337,6 +339,19 @@ fbool = bool1(ff) // singleton
 //
 typedef bool = bool0
 typedef bool(b:bool) = bool1(b)
+//
+(* ****** ****** *)
+//
+abstype
+char_type(char) <= char_k
+//
+typedef
+char0 = [c:c0] char_type(c)
+typedef
+char1(c:char) = char_type(c)
+//
+typedef char = char0
+typedef char(c:char) = char1(c)
 //
 (* ****** ****** *)
 //

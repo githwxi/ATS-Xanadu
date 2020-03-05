@@ -10,6 +10,10 @@ UN =
 
 (* ****** ****** *)
 //
+// For 1-seq-operations
+//
+(* ****** ****** *)
+//
 impltmp
 <x0,xs>
 gseq_nil?(xs) =
@@ -588,6 +592,14 @@ impltmp
 foldl$fopr
 <x0><xs>(r0, x0) = gseq_cons<x0,xs>(x0, r0)
 }
+//
+(* ****** ****** *)
+//
+// For x2-seq-operations
+//
+(* ****** ****** *)
+//
+// For z2-seq-operations
 //
 (* ****** ****** *)
 
