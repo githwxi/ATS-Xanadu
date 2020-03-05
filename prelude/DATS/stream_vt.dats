@@ -144,13 +144,20 @@ case+ xs of
 | strmcon_vt_nil() =>
   strmcon_vt_nil()
 | strmcon_vt_cons(x0, xs) =>
-  let
-    val opt = mapopt0$fopr(x0)
-  in
-    case+ opt of
-    | ~optn_vt_nil() => auxloop($eval(xs))
-    | ~optn_vt_cons(y0) => strmcon_vt_cons(y0, auxmain(xs))
-  end // end of [strmcon_cons]
+  ( if
+    filter$test1<x0>(x0)
+    then
+    let
+    val y0 =
+    map$fopr0<x0><y0>(x0)
+    in
+      strmcon_vt_cons(y0, auxmain(xs))
+    end (* then *)
+    else
+    let
+    val () = g_free<x0>(x0) in auxloop($eval(xs))
+    end (* else *)
+  ) // end of [strmcon_vt_cons]
 )
 } (* end of [stream_vt_mapopt0] *)
 
