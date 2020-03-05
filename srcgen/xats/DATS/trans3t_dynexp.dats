@@ -251,6 +251,16 @@ d3e0.node() of
   auxtcst(env0, d3e0)
 | D3Etimp _ => (d3e0)
 //
+| D3Esap1(d3e1, s2es) =>
+  let
+  val d3e1 =
+  trans3t_dexp(env0, d3e1)
+  in
+  d3exp_make_node
+  ( loc0
+  , t2p0, D3Esap1(d3e1, s2es))
+  end // end of [D3Esap1]
+//
 | D3Edapp
   (d3f0, npf1, d3es) =>
   let
