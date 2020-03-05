@@ -754,8 +754,18 @@ fun
 <a1:v0>
 <a2:v0>
 pfexch
-(pf1: !a0 >> a1, pf2: !a2 >> a1): void
+(pf1: !a0>>a1, pf2: !a2>>a1): void
 *)
+//
+(* ****** ****** *)
+//
+// HX-2020-03-05:
+// For out-of-range subscripting
+excptcon SubscriptExn of ((*void*))
+// For indicating the failure of
+exception AssertExn of () // an assertion
+// For indicating something expected
+exception NotFoundExn of () // to be found but not
 //
 (* ****** ****** *)
 
