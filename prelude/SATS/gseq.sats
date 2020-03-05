@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-** for g-sequences
+** For gseq-operations
 *)
 (* ****** ****** *)
 //
@@ -231,6 +231,64 @@ fun
 <x0:tflt
 ,xs:tflt>
 gseq_rappend(xs1: xs, xs2: xs): xs
+//
+(* ****** ****** *)
+//
+// For gseq2-operations
+//
+(* ****** ****** *)
+//
+fun
+<x0:tflt
+,xs:tflt>
+<y0:tflt
+,ys:tflt>
+<r0:vtflt>
+gseq_z2foldl
+  ( xs: xs
+  , ys: ys, r0: r0): r0
+fun
+<x0:tflt
+,xs:tflt>
+<y0:tflt
+,ys:tflt>
+<r0:vtflt>
+gseq_z2foldr
+  ( xs: xs
+  , ys: ys, r0: r0): r0
+//
+fun
+<x0:tflt
+,xs:tflt>
+<y0:tflt
+,ys:tflt>
+gseq_z2forall
+  (xs: xs, ys: ys): bool
+fun
+<x0:tflt
+,xs:tflt>
+<y0:tflt
+,ys:tflt>
+gseq_z2foreach
+  (xs: xs, ys: ys): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:tflt
+,xs:tflt>
+<y0:tflt
+,ys:tflt>
+gseq_z2map_list
+  (xs: xs, ys: ys): list_vt(r0)
+fun
+<x0:tflt
+,xs:tflt>
+<y0:tflt
+,ys:tflt>
+<r0:vtflt>
+gseq_z2map_rlist
+  (xs: xs, ys: ys): list_vt(r0)
 //
 (* ****** ****** *)
 

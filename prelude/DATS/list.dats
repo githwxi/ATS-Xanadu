@@ -294,46 +294,43 @@ gseq_cons
 <a,list(a)>
   (x0, xs) = list_cons(x0, xs)
 //
+(* ****** ****** *)
+//
 impltmp
 {a:type}
 gseq_nil?
-<a,list(a)>(xs)=list_nil? <a> (xs)
+<a,list(a)> = list_nil? <a>
 impltmp
 {a:type}
 gseq_cons?
-<a,list(a)>(xs)=list_cons? <a> (xs)
+<a,list(a)> = list_cons? <a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:type}
-gseq_length
-<a,list(a)>(xs) = list_length<a>(xs)
+gseq_length<a,list(a)> = list_length<a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:type}
-gseq_forall
-<a,list(a)>(xs) = list_forall<a>(xs)
+gseq_forall<a,list(a)> = list_forall<a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:type}
-gseq_foreach
-<a,list(a)>(xs) = list_foreach<a>(xs)
+gseq_foreach<a,list(a)> = list_foreach<a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:type}
-gseq_map_list
-<a,list(a)>(xs) = list_map_vt<a>(xs)
+gseq_map_list<a,list(a)> = list_map_vt<a>
 impltmp
 {a:type}
-gseq_map_rlist
-<a,list(a)>(xs) = list_maprev_vt<a>(xs)
+gseq_map_rlist<a,list(a)> = list_maprev_vt<a>
 //
 (* ****** ****** *)
 

@@ -249,5 +249,32 @@ gint_mod_uint_uint
 #symload % with gint_mod_uint_uint of 220
 //
 (* ****** ****** *)
+//
+// For gseq-operations
+//
+(* ****** ****** *)
+//
+fun<>
+sint_nil?(ub: sint): bool
+fun<>
+uint_nil?(ub: uint): bool
+fun<>
+sint_cons?(ub: sint): bool
+fun<>
+uint_cons?(ub: uint): bool
+//
+(* ****** ****** *)
+//
+fun<>
+sint_forall(ub: sint): bool
+fun<>
+uint_forall(ub: uint): bool
+//
+fun<>
+sint_rforall(ub: sint): bool
+fun<>
+uint_rforall(ub: uint): bool
+//
+(* ****** ****** *)
 
 (* end of [gint.sats] *)

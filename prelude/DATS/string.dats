@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,43 +27,60 @@
 
 (* ****** ****** *)
 //
-// For characters
-// that is, sint8 and uint8
-//
-(* ****** ****** *)
-//
 // Author: Hongwei Xi
 // Start Time: March, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-fun<>
-char_eqz?
-{c:char}(char(c)): bool(c=0)
-fun<>
-char_neqz?
-{c:char}(char(c)): bool(c>0)
-//
-#symload eqz? with char_eqz?
-#symload neqz? with char_neqz?
-//
-(* ****** ****** *)
-//
-fun<>
-eq_char_char
-{c1,c2:char}
-( c1: char(c1)
-, c2: char(c2)): bool(c1=c2)
-fun<>
-neq_char_char
-{c1,c2:char}
-( c1: char(c1)
-, c2: char(c2)): bool(c1!=c2)
-//
-#symload = with eq_char_char
-#symload != with neq_char_char
-//
+
+implement<>
+string_forall
+  (cs) =
+(
+  loop(ptrof(cs))
+) where
+{
+fun
+loop
+( p0
+: p2tr(char)): bool
+let
+val c0 = !p0
+in(*in-of-let*)
+if
+eqz?(c0)
+then true else
+(
+if
+forall$test<x0>(c0)
+then loop(succ(p0)) else false
+)
+end // end of [loop]
+} (* end of [string_forall] *)
+
 (* ****** ****** *)
 
-(* end of [char.sats] *)
+local
+//
+typedef x0 = cgtz
+typedef xs = string
+//
+in (* in-of-local *)
+
+impltmp
+gseq_nil? <x0,xs> = string_nil? <>
+impltmp
+gseq_cons? <x0,xs> = string_cons? <>
+
+(* ****** ****** *)
+
+impltmp
+gseq_forall<x0,xs> = string_forall<>
+impltmp
+gseq_forall<x0,xs> = string_rforall<>
+
+end // end of [local]
+
+(* ****** ****** *)
+
+(* end of [string.dats] *)
