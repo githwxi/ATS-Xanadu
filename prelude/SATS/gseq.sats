@@ -56,6 +56,37 @@ gseq_is_cons(xs): bool
 fun
 <x0:tflt
 ,xs:tflt>
+gseq_head_exn(xs): x0
+fun
+<x0:tflt
+,xs:tflt>
+gseq_tail_exn(xs): xs
+//
+fun
+<x0:tflt
+,xs:tflt>
+gseq_head_opt(xs): optn_vt(x0)
+fun
+<x0:tflt
+,xs:tflt>
+gseq_tail_opt(xs): optn_vt(xs)
+//
+(* ****** ****** *)
+//
+fun
+<x0:tflt
+,xs:tflt>
+gseq_last_exn(xs): x0
+fun
+<x0:tflt
+,xs:tflt>
+gseq_last_opt(xs): optn_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:tflt
+,xs:tflt>
 gseq_uncons_exn
   (xs: &xs >> xs): x0
 fun
@@ -72,14 +103,29 @@ fun
 gseq_length(xs): nint
 
 (* ****** ****** *)
+//
+(*
+gseq_foldl: foldl$fopr
+gseq_foldr: foldr$fopr
+*)
+//
+fun
+<x0:tflt
+,xs:tflt>
+<r0:vtflt>
+gseq_foldl(xs, r0): r0
+fun
+<x0:tflt
+,xs:tflt>
+<r0:vtflt>
+gseq_foldr(xs, r0): r0
+//
+(* ****** ****** *)
 
 fun
 <x0:tflt
 ,xs:tflt>
 gseq_forall(xs): bool
-
-(* ****** ****** *)
-
 fun
 <x0:tflt
 ,xs:tflt>
@@ -126,29 +172,31 @@ fun
 gseq_copy_rlist(xs): list_vt(x0)
 
 (* ****** ****** *)
-//
-(*
-gseq_foldl: foldl$fopr
-gseq_foldr: foldr$fopr
-*)
-//
+
 fun
 <x0:tflt
 ,xs:tflt>
-<r0:vtflt>
-gseq_foldl(xs, r0): r0
+gseq_filter_list(xs): list_vt(x0)
 fun
 <x0:tflt
 ,xs:tflt>
-<r0:vtflt>
-gseq_foldr(xs, r0): r0
-//
+gseq_filter_rlist(xs): list_vt(x0)
+
 (* ****** ****** *)
 //
 fun
-<x0:tflt,xs:tflt>gseq_add(xs): x0
+<x0:tflt
+,xs:tflt>gseq_add(xs): x0
 fun
-<x0:tflt,xs:tflt>gseq_mul(xs): x0
+<x0:tflt
+,xs:tflt>gseq_mul(xs): x0
+//
+fun
+<x0:tflt
+,xs:tflt>gseq_max2(xs, x0): x0
+fun
+<x0:tflt
+,xs:tflt>gseq_min2(xs, x0): x0
 //
 (* ****** ****** *)
 //
