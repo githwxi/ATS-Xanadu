@@ -1752,6 +1752,10 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/stream.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/string.sats")
 //
 val () =
 the_prelude_load
