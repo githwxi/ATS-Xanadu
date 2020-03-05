@@ -83,7 +83,7 @@ stream_vt_filter0(stream_vt(x0)): stream_vt(x0)
 (* ****** ****** *)
 //
 (*
-stream_vt_mapopt: mapopt0$fopr
+stream_vt_mapopt: map + filter
 *)
 fun
 <x0:vt>
