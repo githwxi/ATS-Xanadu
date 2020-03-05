@@ -203,20 +203,19 @@ case+ xs of
 | strmcon_nil() =>
   strmcon_nil()
 | strmcon_cons(x0, xs) =>
-  ( if
-    filter$test<x0>(x0)
-    then
-    let
-    val y0 =
-    map$fopr<x0><y0>(x0)
-    in
-      strmcon_cons(y0, auxmain(xs))
-    end (* then *)
-    else
-    (
-      auxloop($eval(xs)) // tail-call
-    ) (* end of [else] *)
-  ) // end of [strmcon_cons]
+  let
+    val
+    opt =
+    mapopt$fopr<x0><y0>(x0)
+  in
+    case+ opt of
+    |
+    ~optn_vt_nil() =>
+     auxloop($eval(xs)) // tail-call
+    |
+    ~optn_vt_cons(y0) =>
+     strmcon_cons(y0, auxmain(xs))
+  end // end of [strmcon_cons]
 )
 } (* end of [stream_mapopt] *)
 
@@ -241,20 +240,19 @@ case+ xs of
 | strmcon_nil() =>
   strmcon_vt_nil()
 | strmcon_cons(x0, xs) =>
-  ( if
-    filter$test<x0>(x0)
-    then
-    let
-    val y0 =
-    map$fopr<x0><y0>(x0)
-    in
-    strmcon_vt_cons(y0, auxmain(xs))
-    end (* then *)
-    else
-    (
-      auxloop($eval(xs)) // tail-call
-    ) (* end of [else] *)
-  ) // end of [strmcon_cons]
+  let
+    val
+    opt =
+    mapopt$fopr<x0><y0>(x0)
+  in
+    case+ opt of
+    |
+    ~optn_vt_nil() =>
+     auxloop($eval(xs)) // tail-call
+    |
+    ~optn_vt_cons(y0) =>
+     strmcon_vt_cons(y0, auxmain(xs))
+  end // end of [strmcon_cons]
 )
 } (* end of [stream_mapopt_vt] *)
 

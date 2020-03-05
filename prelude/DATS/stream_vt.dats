@@ -58,8 +58,8 @@ fun
 append(xs, ys) =
 $llazy
 (
-case+ $eval(xs) of
-| ~strmcon_vt_nil() => $eval(ys)
+case+ !xs of
+| ~strmcon_vt_nil() => !ys
 | ~strmcon_vt_cons(x0, xs) =>
    strmcon_vt_cons(x0, append(xs, ys))
 )
@@ -79,7 +79,7 @@ fun
 auxmain(xs) =
 $llazy
 (
-case+ $eval(xs) of
+case+ !xs of
 | ~strmcon_vt_nil() =>
    strmcon_vt_nil()
 | ~strmcon_vt_cons(x0, xs) =>
@@ -110,16 +110,16 @@ auxloop
 (
 case+ xs of
 |
-~strmcon_vt_nil() =>
- strmcon_vt_nil()
+~ strmcon_vt_nil() =>
+  strmcon_vt_nil()
 |
-~strmcon_vt_cons(x0, xs) =>
-(
- if
- filter0$test<x0>(x0)
- then
- strmcon_vt_cons(x0, auxmain(xs)) else auxloop($eval(xs))
-)
+~ strmcon_vt_cons(x0, xs) =>
+( if
+  filter0$test<x0>(x0)
+  then
+  strmcon_vt_cons
+  (x0, auxmain(xs)) else auxloop(!xs)
+) (* end of [strmcom_vt_cons] *)
 )
 } (* end of [stream_vt_filter0] *)
 
@@ -141,23 +141,24 @@ and
 auxloop(xs) =
 (
 case+ xs of
-| strmcon_vt_nil() =>
+|
+~ strmcon_vt_nil() =>
   strmcon_vt_nil()
-| strmcon_vt_cons(x0, xs) =>
-  ( if
-    filter$test1<x0>(x0)
-    then
-    let
-    val y0 =
-    map$fopr0<x0><y0>(x0)
-    in
-      strmcon_vt_cons(y0, auxmain(xs))
-    end (* then *)
-    else
-    let
-    val () = g_free<x0>(x0) in auxloop($eval(xs))
-    end (* else *)
-  ) // end of [strmcon_vt_cons]
+|
+~ strmcon_vt_cons(x0, xs) =>
+  let
+    val
+    opt =
+    mapopt0$fopr<x0><y0>(x0)
+  in
+    case+ opt of
+    |
+    ~optn_vt_nil() =>
+     auxloop($eval(xs)) // tail-call
+    |
+    ~optn_vt_cons(y0) =>
+     strmcon_vt_cons(y0, auxmain(xs))
+  end // end of [strmcon_vt_cons]
 )
 } (* end of [stream_vt_mapopt0] *)
 
