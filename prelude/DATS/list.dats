@@ -267,6 +267,25 @@ end // end of [list_tabulate_cref]
 //
 impltmp
 {a:type}
+$UN.gseq_head
+<a,list(a)>(xs) = xs.0
+impltmp
+{a:type}
+$UN.gseq_tail
+<a,list(a)>(xs) = xs.1
+impltmp
+{a:type}
+$UN.gseq_uncons
+<a,list(a)>(xs) =
+let
+val x0 = xs.0
+val () = xs := xs.1 in x0
+end
+//
+(* ****** ****** *)
+//
+impltmp
+{a:type}
 gseq_nil
 <a,list(a)>() = list_nil()
 impltmp
