@@ -758,15 +758,5 @@ pfexch
 *)
 //
 (* ****** ****** *)
-//
-// HX-2020-03-05:
-// For out-of-range subscripting
-excptcon SubscriptExn of ((*void*))
-// For indicating the failure of
-exception AssertExn of () // an assertion
-// For indicating something expected
-exception NotFoundExn of () // to be found but not
-//
-(* ****** ****** *)
 
 (* end of [basics.sats] *)
