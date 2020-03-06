@@ -34,7 +34,7 @@
 (* ****** ****** *)
 
 implement<>
-string_forall
+gseq_forall_string
   (cs) =
 (
   loop(ptrof(cs))
@@ -56,7 +56,7 @@ forall$test<x0>(c0)
 then loop(succ(p0)) else false
 )
 end // end of [loop]
-} (* end of [string_forall] *)
+} (* end of [gseq_forall_string] *)
 
 (* ****** ****** *)
 
@@ -68,16 +68,16 @@ typedef xs = string
 in (* in-of-local *)
 
 impltmp
-gseq_nil? <x0,xs> = string_nil? <>
+gseq_nil? <x0,xs> = gseq_nilq_string<>
 impltmp
-gseq_cons? <x0,xs> = string_cons? <>
+gseq_cons? <x0,xs> = gseq_consq_string<>
 
 (* ****** ****** *)
 
 impltmp
-gseq_forall<x0,xs> = string_forall<>
+gseq_forall<x0,xs> = gseq_forall_string<>
 impltmp
-gseq_forall<x0,xs> = string_rforall<>
+gseq_rforall<x0,xs> = gseq_rforall_string<>
 
 end // end of [local]
 
