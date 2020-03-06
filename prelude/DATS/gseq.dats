@@ -148,6 +148,47 @@ end // end of [foreach$work]
 
 impltmp
 <x0,xs>
+gseq_print(xs) =
+{
+val () =
+gseq_print$beg<x0,xs>()
+val () =
+(
+  gseq_iforeach<x0,xs>(xs)
+) where
+{
+//
+impltmp
+iforeach<x0>(i0, x0) =
+(
+  g_print<x0>(x0)
+) where
+{
+  val () =
+  if
+  (i0 > 0)
+  then gseq_print$sep<x0,xs>()
+} (* where *)
+//
+} (* where *)
+val () =
+gseq_print$end<x0,xs>()
+} (* end of [gseq_print] *)
+
+impltmp
+<x0,xs>
+gseq_print$beg() = print("(")
+impltmp
+<x0,xs>
+gseq_print$end() = print("(")
+impltmp
+<x0,xs>
+gseq_print$sep() = print(",")
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
 gseq_length(xs) =
 (
 gseq_foldl

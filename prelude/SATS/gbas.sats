@@ -54,6 +54,12 @@ g_copy(x: !(a)): (a)
 
 fun
 <a:vtype>
+g_print(x: !(a)): void
+
+(* ****** ****** *)
+
+fun
+<a:vtype>
 g_equal(!a, !a): void
 fun
 <a:vtype>
