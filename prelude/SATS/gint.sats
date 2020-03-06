@@ -39,25 +39,34 @@
 //
 fun
 <k:type>
+gint_print(x: gint(k)): void
+//
+#symload
+print with gint_print of 100
+//
+(* ****** ****** *)
+//
+fun
+<k:type>
 gint_lt
 {i,j:int}
 ( x: gint(k, i)
 , y: gint(k, j)): bool(i < j)
-#symload < with gint_lt of 200
+#symload < with gint_lt of 100
 fun
 <k:type>
 gint_gt
 {i,j:int}
 ( x: gint(k, i)
 , y: gint(k, j)): bool(i > j)
-#symload > with gint_gt of 200
+#symload > with gint_gt of 100
 fun
 <k:type>
 gint_eq
 {i,j:int}
 ( x: gint(k, i)
 , y: gint(k, j)): bool(i = j)
-#symload = with gint_eq of 200
+#symload = with gint_eq of 100
 //
 fun
 <k:type>
@@ -65,21 +74,21 @@ gint_lte
 {i,j:int}
 ( x: gint(k, i)
 , y: gint(k, j)): bool(i <= j)
-#symload <= with gint_lte of 200
+#symload <= with gint_lte of 100
 fun
 <k:type>
 gint_gte
 {i,j:int}
 ( x: gint(k, i)
 , y: gint(k, j)): bool(i >= j)
-#symload >= with gint_gte of 200
+#symload >= with gint_gte of 100
 fun
 <k:type>
 gint_neq
 {i,j:int}
 ( x: gint(k, i)
 , y: gint(k, j)): bool(i != j)
-#symload != with gint_neq of 200
+#symload != with gint_neq of 100
 //
 (* ****** ****** *)
 
@@ -89,7 +98,7 @@ gint_cmp
 {i,j:int}
 ( x: gint(k, i)
 , y: gint(k, j)): sint(sgn(i-j))
-#symload cmp with gint_cmp of 200
+#symload cmp with gint_cmp of 100
 
 (* ****** ****** *)
 //
@@ -124,11 +133,25 @@ gint_mod
 ( x: gint(k, i)
 , y: gint(k, j)): gint(k, mod(i,j))
 //
-#symload + with gint_add of 200
-#symload - with gint_sub of 200
-#symload * with gint_mul of 200
-#symload / with gint_div of 200
-#symload % with gint_mod of 200
+#symload + with gint_add of 100
+#symload - with gint_sub of 100
+#symload * with gint_mul of 100
+#symload / with gint_div of 100
+#symload % with gint_mod of 100
+//
+(* ****** ****** *)
+//
+fun//<>
+gint_print_sint
+  (x: sint): void = $ext()
+fun//<>
+gint_print_uint
+  (y: uint): void = $ext()
+//
+#symload
+print with gint_print_sint of 110
+#symload
+print with gint_print_uint of 110
 //
 (* ****** ****** *)
 //
@@ -137,39 +160,39 @@ gint_lt_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): bool(i<j) = $ext()
-#symload < with gint_lt_sint_sint of 220
+#symload < with gint_lt_sint_sint of 120
 fun//<>
 gint_gt_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): bool(i>j) = $ext()
-#symload > with gint_gt_sint_sint of 220
+#symload > with gint_gt_sint_sint of 120
 fun//<>
 gint_eq_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): bool(i=j) = $ext()
-#symload = with gint_eq_sint_sint of 220
+#symload = with gint_eq_sint_sint of 120
 //
 fun//<>
 gint_lte_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): bool(i<=j) = $ext()
-#symload <= with gint_lte_sint_sint of 220
+#symload <= with gint_lte_sint_sint of 120
 fun//<>
 gint_gte_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): bool(i>=j) = $ext()
-#symload >= with gint_gte_sint_sint of 220
+#symload >= with gint_gte_sint_sint of 120
 //
 fun//<>
 gint_neq_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): bool(i!=j) = $ext()
-#symload != with gint_neq_sint_sint of 220
+#symload != with gint_neq_sint_sint of 120
 //
 (* ****** ****** *)
 //
@@ -178,7 +201,7 @@ gint_cmp_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): sint(sgn(i-j)) = $ext()
-#symload cmp with gint_cmp_sint_sint of 220
+#symload cmp with gint_cmp_sint_sint of 120
 //
 (* ****** ****** *)
 
@@ -208,11 +231,11 @@ gint_mod_sint_sint
 ( x: sint(i)
 , y: sint(j)): sint(mod(i,j)) = $ext()
 //
-#symload + with gint_add_sint_sint of 220
-#symload - with gint_sub_sint_sint of 220
-#symload * with gint_mul_sint_sint of 220
-#symload / with gint_div_sint_sint of 220
-#symload % with gint_mod_sint_sint of 220
+#symload + with gint_add_sint_sint of 120
+#symload - with gint_sub_sint_sint of 120
+#symload * with gint_mul_sint_sint of 120
+#symload / with gint_div_sint_sint of 120
+#symload % with gint_mod_sint_sint of 120
 //
 (* ****** ****** *)
 
@@ -242,11 +265,11 @@ gint_mod_uint_uint
 ( x: uint(i)
 , y: uint(j)): uint(mod(i,j)) = $ext()
 //
-#symload + with gint_add_uint_uint of 220
-#symload - with gint_sub_uint_uint of 220
-#symload * with gint_mul_uint_uint of 220
-#symload / with gint_div_uint_uint of 220
-#symload % with gint_mod_uint_uint of 220
+#symload + with gint_add_uint_uint of 120
+#symload - with gint_sub_uint_uint of 120
+#symload * with gint_mul_uint_uint of 120
+#symload / with gint_div_uint_uint of 120
+#symload % with gint_mod_uint_uint of 120
 //
 (* ****** ****** *)
 //
@@ -255,25 +278,38 @@ gint_mod_uint_uint
 (* ****** ****** *)
 //
 fun<>
-sint_nil?(ub: sint): bool
+gseq_nilq_sint(ub: sint): bool
 fun<>
-uint_nil?(ub: uint): bool
+gseq_nilq_uint(ub: uint): bool
 fun<>
-sint_cons?(ub: sint): bool
+gseq_consq_sint(ub: sint): bool
 fun<>
-uint_cons?(ub: uint): bool
+gseq_consq_uint(ub: uint): bool
+//
+#symload nil? with gseq_nilq_sint of 110
+#symload nil? with gseq_nilq_uint of 110
+#symload cons? with gseq_consq_sint of 110
+#symload cons? with gseq_consq_uint of 110
 //
 (* ****** ****** *)
 //
 fun<>
-sint_forall(ub: sint): bool
+gseq_forall_sint(ub: sint): bool
 fun<>
-uint_forall(ub: uint): bool
+gseq_forall_uint(ub: uint): bool
+//
+#symload forall with gseq_forall_sint of 110
+#symload forall with gseq_forall_uint of 110
+//
+(* ****** ****** *)
 //
 fun<>
-sint_rforall(ub: sint): bool
+gseq_rforall_sint(ub: sint): bool
 fun<>
-uint_rforall(ub: uint): bool
+gseq_rforall_uint(ub: uint): bool
+//
+#symload rforall with gseq_rforall_sint of 110
+#symload rforall with gseq_rforall_uint of 110
 //
 (* ****** ****** *)
 
