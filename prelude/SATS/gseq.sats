@@ -100,6 +100,25 @@ gseq_uncons_opt
 fun
 <x0:tflt
 ,xs:tflt>
+gseq_print(xs): void
+fun
+<x0:tflt
+,xs:tflt>
+gseq_print$beg((*void*)): void
+fun
+<x0:tflt
+,xs:tflt>
+gseq_print$end((*void*)): void
+fun
+<x0:tflt
+,xs:tflt>
+gseq_print$sep((*void*)): void
+
+(* ****** ****** *)
+
+fun
+<x0:tflt
+,xs:tflt>
 gseq_length(xs): nint
 
 (* ****** ****** *)
