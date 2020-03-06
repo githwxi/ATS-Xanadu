@@ -33,6 +33,9 @@
 //
 (* ****** ****** *)
 
+impltmp<>
+g_print_bool(b0) = bool_print(b0)
+
 (* ****** ****** *)
 
 (* end of [bool.dats] *)
