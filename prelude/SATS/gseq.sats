@@ -253,7 +253,22 @@ gseq_rappend(xs1: xs, xs2: xs): xs
 //
 (* ****** ****** *)
 //
-// For gseq2-operations
+// For gseq-i-operations
+//
+(* ****** ****** *)
+//
+fun
+<x0:tflt
+,xs:tflt>
+gseq_iforall(xs): bool
+fun
+<x0:tflt
+,xs:tflt>
+gseq_iforeach(xs): void
+//
+(* ****** ****** *)
+//
+// For 2-gseq-operations
 //
 (* ****** ****** *)
 //

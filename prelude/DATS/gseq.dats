@@ -10,7 +10,7 @@ UN =
 
 (* ****** ****** *)
 //
-// For 1-seq-operations
+// For 1-gseq-operations
 //
 (* ****** ****** *)
 //
@@ -635,12 +635,60 @@ foldl$fopr
 }
 //
 (* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_iforall(xs) =
+let
 //
-// For x2-seq-operations
+var i0: nint = 0
+val p0 = $addr(i0)
+//
+val
+test =
+gseq_forall<x0,xs>(xs) where
+{
+impltmp
+forall$test<x0>(x0) =
+let
+val i0 =
+$UN.p2tr_get<nint>(p0)
+val () =
+$UN.p2tr_set<nint>(p0):=succ(i0)
+val () = iforall$work<x0>(i0, x0) in true
+end
+}
+in
+  // nothing
+end // end of [gseq_iforall/forall]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_iforeach(xs) =
+let
+val
+test =
+gseq_iforall<x0,xs>(xs) where
+{
+impltmp
+iforall$test<x0>(i0, x0) =
+let
+val () = iforeach$work<x0>(i0, x0) in true
+end
+}
+in
+  // nothing
+end // end of [gseq_iforeach/iforall]
+
+(* ****** ****** *)
+//
+// For x2-gseq-operations
 //
 (* ****** ****** *)
 //
-// For z2-seq-operations
+// For z2-gseq-operations
 //
 (* ****** ****** *)
 
