@@ -56,25 +56,26 @@ string_ptrof
 (* ****** ****** *)
 //
 fun<>
-string_nil(): string(0)
+gseq_nil_string
+((*void*)): string(0)
 fun<>
-string_cons{n:int}
+gseq_cons_string{n:int}
 ( c0: cgtz
 , cs: string(n)): string(n+1)
 //
 (* ****** ****** *)
 //
 fun<>
-string_nil?(cs: string): bool
+gseq_nilq_string(cs: string): bool
 fun<>
-string_cons?(cs: string): bool
+gseq_consq_string(cs: string): bool
 //
 (* ****** ****** *)
 //
 fun<>
-string_forall(cs: string): bool
+gseq_forall_string(cs: string): bool
 fun<>
-string_rforall(cs: string): bool
+gseq_rforallstring(cs: string): bool
 //
 (* ****** ****** *)
 
