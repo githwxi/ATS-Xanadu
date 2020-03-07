@@ -83,7 +83,7 @@ macdef
 T_PRAXI_ = T_FUN(FNKpraxi)
 //
 macdef
-T_CASTFN_ = T_FUN(FNKcastfn)
+T_FCAST_ = T_FUN(FNKfcast)
 //
 (* ****** ****** *)
 //
@@ -313,7 +313,7 @@ val () = myins("prfn1", T_PRFN1_)
 val () = myins("prfun", T_PRFUN_)
 val () = myins("praxi", T_PRAXI_)
 //
-val () = myins("castfn", T_CASTFN_)
+val () = myins("fcast", T_FCAST_)
 //
 val () = myins("val", T_VAL_)
 val () = myins("prval", T_PRVAL_)

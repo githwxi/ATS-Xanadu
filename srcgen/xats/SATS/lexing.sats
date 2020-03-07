@@ -212,7 +212,7 @@ tnode =
 //
   | T_FUN of (funkind)
     // fn0, fnx, fn1, fun,
-    // prfn0, prfn1, prfun, praxi, castfn
+    // prfn0, prfn1, prfun, praxi, fcast
   | T_VAL of (valkind)
     // val, val+, val-, prval
 //

@@ -37,18 +37,18 @@
 //
 (* ****** ****** *)
 //
-castfn
+fcast
 cast{a0:t0}{a1:t0}(a0): (a1)
-castfn
+fcast
 castlin{a0:vt}{a1:vt}(a0): (a1)
 //
 (* ****** ****** *)
 //
-castfn
+fcast
 optn_vt2t
 {a:t0}{b:b0}
 (xs: !optn_vt(a, b)): optn(a, b)
-castfn
+fcast
 list_vt2t
 {a:t0}{n:i0}
 (xs: !list_vt(a, n)): list(a, n)

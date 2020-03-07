@@ -182,8 +182,8 @@ case+ knd of
   fprint(out, "DCKprfun")
 | DCKprval() =>
   fprint(out, "DCKprval")
-| DCKcastfn() =>
-  fprint(out, "DCKcastfn")
+| DCKfcast() =>
+  fprint(out, "DCKfcast")
 //
 | DCKunknown() =>
   fprint(out, "DCKunknown")
@@ -258,7 +258,7 @@ case+ fnk of
 | FNKprfun() => fprint(out, "FNKprfun")
 | FNKpraxi() => fprint(out, "FNKpraxi")
 //
-| FNKcastfn() => fprint(out, "FNKcastfn")
+| FNKfcast() => fprint(out, "FNKfcast")
 //
 ) (* end of [fprint_funkind] *)
 
