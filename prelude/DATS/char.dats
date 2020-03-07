@@ -33,8 +33,8 @@
 //
 (* ****** ****** *)
 
-impltmp<>
-g_print_char(c0) = char_print(c0)
+impltmp
+g_print<char> = char_print
 
 (* ****** ****** *)
 

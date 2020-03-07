@@ -124,16 +124,21 @@ gint_mod<sik> = gint_mod_sint_sint
 // For gseq-operations
 //
 (* ****** ****** *)
-
+//
 impltmp<>
-gseq_nilq_sint(xs) = (xs <= 0)
+gint_nilq_sint(xs) = (xs <= 0)
 impltmp<>
-gseq_consq_sint(xs) = (xs >= 1)
-
+gint_consq_sint(xs) = (xs >= 1)
+//
+impltmp<>
+gint_nilq_uint(xs) = (xs <= 0u)
+impltmp<>
+gint_consq_uint(xs) = (xs >= 1u)
+//
 (* ****** ****** *)
 
 impltmp<>
-gseq_forall_sint
+gint_forall_sint
   (xs) =
 ( loop(0) ) where
 {
@@ -148,12 +153,12 @@ forall$test<x0,xs>(x0)
   then loop(succ(x0)) else false
 ) (* then *)
 else true // end of [else]
-} (* end of [gseq_forall_sint] *)
+} (* end of [gint_forall_sint] *)
 //
 (* ****** ****** *)
 //
 impltmp<>
-gseq_rforall_sint
+gint_rforall_sint
   (xs) =
 ( loop(xs) ) where
 {
@@ -169,7 +174,7 @@ if
 rforall$test<x0,xs>(xs) then loop(xs) else false
 end
 else true // end of [else]
-} (* end of [gseq_rforall_sint] *)
+} (* end of [gint_rforall_sint] *)
 //
 (* ****** ****** *)
 
@@ -183,9 +188,9 @@ in(*in-of-local*)
 (* ****** ****** *)
 //
 impltmp
-gseq_nil? <x0,xs> = gint_nilq_sint<>
+gseq_nilq<x0,xs> = gint_nilq_sint<>
 impltmp
-gseq_cons? <x0,xs> = gint_consq_sint<>
+gseq_consq<x0,xs> = gint_consq_sint<>
 //
 (* ****** ****** *)
 //
