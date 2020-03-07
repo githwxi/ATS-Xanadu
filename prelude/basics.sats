@@ -509,7 +509,7 @@ optn1_vt(a:type, b: bool) = optn_vt(a, b)
 //
 (* ****** ****** *)
 //
-castfn
+fcast
 optn_vt2t
 {a:t0}{b:b0}
 (optn_vt(a, b)): optn(a, b)
@@ -609,7 +609,7 @@ vtypedef listbtwe_vt
 //
 (* ****** ****** *)
 //
-castfn
+fcast
 list_vt2t
 {a:t0}{n:i0}
 (list_vt(a, n)): list(a, n)

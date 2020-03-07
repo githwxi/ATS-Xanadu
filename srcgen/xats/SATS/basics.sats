@@ -153,7 +153,7 @@ dctkind =
 | DCKpraxi of ()
 | DCKprfun of ()
 | DCKprval of ()
-| DCKcastfn of ()
+| DCKfcast of ()
 //
 | DCKunknown of ()
 // end of [dcstkind]
@@ -198,7 +198,7 @@ funkind =
 //
 | FNKpraxi // proof axiom
 //
-| FNKcastfn // casting fun
+| FNKfcast // casting fun
 //
 // end of [funkind]
 //

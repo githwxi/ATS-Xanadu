@@ -230,8 +230,8 @@ case+ knd of
 T_FUN(fnk) =>
 (
 case+ fnk of
-| FNKcastfn() => true
-| _(*non-FNKcastfn*) => false
+| FNKfcast() => true
+| _(*non-FNKfcast*) => false
 )
 (*
   | T_VAL(vlk) => false
