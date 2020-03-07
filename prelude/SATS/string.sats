@@ -51,6 +51,11 @@ string_ptrof
 //
 (* ****** ****** *)
 //
+fun//<>
+string_print(string): void
+//
+(* ****** ****** *)
+//
 fun<>
 string_nil
 ((*void*)): string(0)
