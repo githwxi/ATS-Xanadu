@@ -38,10 +38,6 @@
 //
 (* ****** ****** *)
 //
-// For gseq-operations
-//
-(* ****** ****** *)
-//
 typedef cgtz =
 [c:char|c > 0]char(c)
 //
@@ -56,26 +52,31 @@ string_ptrof
 (* ****** ****** *)
 //
 fun<>
-gseq_nil_string
+string_nil
 ((*void*)): string(0)
 fun<>
-gseq_cons_string{n:int}
+string_cons
+  {n:int}
 ( c0: cgtz
 , cs: string(n)): string(n+1)
 //
 (* ****** ****** *)
 //
 fun<>
-gseq_nilq_string(cs: string): bool
+string_nilq
+  {n:int}
+  (cs: string(n)): bool(n=0)
 fun<>
-gseq_consq_string(cs: string): bool
+string_consq
+  {n:int}
+  (cs: string(n)): bool(n>0)
 //
 (* ****** ****** *)
 //
 fun<>
-gseq_forall_string(cs: string): bool
+string_forall(cs: string): bool
 fun<>
-gseq_rforallstring(cs: string): bool
+string_rforall(cs: string): bool
 //
 (* ****** ****** *)
 

@@ -33,8 +33,8 @@
 //
 (* ****** ****** *)
 
-impltmp<>
-g_print_bool(b0) = bool_print(b0)
+impltmp
+g_print<bool> = bool_print
 
 (* ****** ****** *)
 

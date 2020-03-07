@@ -278,38 +278,39 @@ gint_mod_uint_uint
 (* ****** ****** *)
 //
 fun<>
-gseq_nilq_sint(ub: sint): bool
+gint_nilq_sint(ub: sint): bool
 fun<>
-gseq_nilq_uint(ub: uint): bool
-fun<>
-gseq_consq_sint(ub: sint): bool
-fun<>
-gseq_consq_uint(ub: uint): bool
-//
-#symload nil? with gseq_nilq_sint of 110
-#symload nil? with gseq_nilq_uint of 110
-#symload cons? with gseq_consq_sint of 110
-#symload cons? with gseq_consq_uint of 110
-//
-(* ****** ****** *)
+gint_consq_sint(ub: sint): bool
 //
 fun<>
-gseq_forall_sint(ub: sint): bool
+gint_nilq_uint(ub: uint): bool
 fun<>
-gseq_forall_uint(ub: uint): bool
+gint_consq_uint(ub: uint): bool
 //
-#symload forall with gseq_forall_sint of 110
-#symload forall with gseq_forall_uint of 110
+#symload nil? with gint_nilq_sint of 110
+#symload nil? with gint_nilq_uint of 110
+#symload cons? with gint_consq_sint of 110
+#symload cons? with gint_consq_uint of 110
 //
 (* ****** ****** *)
 //
 fun<>
-gseq_rforall_sint(ub: sint): bool
+gint_forall_sint(ub: sint): bool
 fun<>
-gseq_rforall_uint(ub: uint): bool
+gint_forall_uint(ub: uint): bool
 //
-#symload rforall with gseq_rforall_sint of 110
-#symload rforall with gseq_rforall_uint of 110
+#symload forall with gint_forall_sint of 110
+#symload forall with gint_forall_uint of 110
+//
+(* ****** ****** *)
+//
+fun<>
+gint_rforall_sint(ub: sint): bool
+fun<>
+gint_rforall_uint(ub: uint): bool
+//
+#symload rforall with gint_rforall_sint of 110
+#symload rforall with gint_rforall_uint of 110
 //
 (* ****** ****** *)
 

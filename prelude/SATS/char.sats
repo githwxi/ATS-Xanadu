@@ -39,11 +39,11 @@
 (* ****** ****** *)
 //
 fun<>
-char_eqz?
+char_eqzq
 {c:char}
 (c0: char(c)): bool(c=0)
 fun<>
-char_neqz?
+char_neqzq
 {c:char}
 (c0: char(c)): bool(c>0)
 //
@@ -62,10 +62,7 @@ char_nequal
 
 fun//<>
 char_print(c0: char): void
-fun<>
-g_print_char(c0: char): void
-#symload
-print with g_char_print of 110
+#symload print with char_print of 110
 
 (* ****** ****** *)
 

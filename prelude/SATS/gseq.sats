@@ -34,11 +34,11 @@ gseq_cons(x0, xs): xs
 fun
 <x0:tflt
 ,xs:tflt>
-gseq_nil?(xs): bool
+gseq_nilq(xs): bool
 fun
 <x0:tflt
 ,xs:tflt>
-gseq_cons?(xs): bool
+gseq_consq(xs): bool
 //
 (*
 fun

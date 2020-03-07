@@ -61,10 +61,8 @@ bool_mul
 (* ****** ****** *)
 
 fun//<>
-bool_print(bool): void
-fun<>
-g_print_bool(b0: bool): void
-#symload print with g_print_bool of 110
+bool_print(b0: bool): void
+#symload print with bool_print of 110
 
 (* ****** ****** *)
 

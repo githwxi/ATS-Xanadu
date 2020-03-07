@@ -38,16 +38,16 @@
 (* ****** ****** *)
 //
 fun<>
-list_nil?
+list_nilq
 {a:type}{n:int}
 (xs: list(a, n)): bool(n = 0)
 fun<>
-list_cons?
+list_consq
 {a:type}{n:int}
 (xs: list(a, n)): bool(n > 0)
 //
-#symload iseqz with list_nil?
-#symload isneqz with list_cons?
+#symload eqzq with list_nilq
+#symload neqzq with list_consq
 //
 (* ****** ****** *)
 //
