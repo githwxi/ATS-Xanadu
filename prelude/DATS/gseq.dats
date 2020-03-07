@@ -177,13 +177,13 @@ gseq_print$end<x0,xs>()
 
 impltmp
 <x0,xs>
-gseq_print$beg() = print("(")
+gseq_print$beg() = string_print("(")
 impltmp
 <x0,xs>
-gseq_print$end() = print("(")
+gseq_print$end() = string_print(")")
 impltmp
 <x0,xs>
-gseq_print$sep() = print(",")
+gseq_print$sep() = string_print(",")
 
 (* ****** ****** *)
 
@@ -199,7 +199,7 @@ gseq_foldl
 typedef r0 = nint
 //
 implement
-foldl$fopr<x0><r0>(r0, x0) = r0 + 1
+foldl$fopr<x0><r0>(r0, x0) = succ(r0)
 //
 } (* gseq_length/foldl *)
 
