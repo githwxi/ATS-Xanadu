@@ -69,18 +69,12 @@ fun
 <a:vt>
 p2tr_set(p0: p2tr(a), x0: a): void
 //
-#symload ptr_get with p1tr_get
-#symload ptr_set with p1tr_set
+#symload ptr_get with p1tr_get of 100
+#symload ptr_set with p1tr_set of 100
 //
-#symload ptr_get with p2tr_get
-#symload ptr_set with p2tr_set
+#symload ptr_get with p2tr_get of 100
+#symload ptr_set with p2tr_set of 100
 //
-(* ****** ****** *)
-
-fun
-<x0:t0,xs:t0>
-gseq_uncons(xs: &xs >> xs): x0
-
 (* ****** ****** *)
 
 (* end of [unsafe.sats] *)

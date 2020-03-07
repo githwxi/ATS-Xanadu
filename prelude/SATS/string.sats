@@ -43,11 +43,13 @@ typedef cgtz =
 //
 (* ****** ****** *)
 //
-castfn
+(*
+fcast
 string_ptrof
-  (string): p2tr(char)
-//
-#symload ptrof with string
+(cs:string): p2tr(char)
+#symload
+ptrof with string_ptrof
+*)
 //
 (* ****** ****** *)
 //
@@ -56,10 +58,10 @@ string_print(string): void
 //
 (* ****** ****** *)
 //
-fun<>
+fun//<>
 string_nil
 ((*void*)): string(0)
-fun<>
+fun//<>
 string_cons
   {n:int}
 ( c0: cgtz
@@ -67,14 +69,23 @@ string_cons
 //
 (* ****** ****** *)
 //
-fun<>
+fun//<>
 string_nilq
   {n:int}
   (cs: string(n)): bool(n=0)
-fun<>
+fun//<>
 string_consq
   {n:int}
   (cs: string(n)): bool(n>0)
+//
+(* ****** ****** *)
+//
+fun//<>
+string_head(string): char
+fun//<>
+string_head_raw(string): cgtz
+fun//<>
+string_tail_raw(string): string
 //
 (* ****** ****** *)
 //

@@ -39,19 +39,22 @@
 //
 fun//<>
 bool_neg
+{b:bool}
 (x: bool(b)): bool(~b)
 //
-#symload ~ with neg_bool of 100
-#symload not with neg_bool of 100
+#symload ~ with bool_neg of 100
+#symload not with bool_neg of 100
 //
 (* ****** ****** *)
 //
 fun//<>
 bool_add
+{b1,b2:bool}
 ( x: bool(b1)
 , y: bool(b2)): bool(b1+b2)
 fun//<>
 bool_mul
+{b1,b2:bool}
 ( x: bool(b1)
 , y: bool(b2)): bool(b1*b2)
 //

@@ -56,6 +56,15 @@ gseq_is_cons(xs): bool
 fun
 <x0:tflt
 ,xs:tflt>
+gseq_head_raw(xs): x0
+fun
+<x0:tflt
+,xs:tflt>
+gseq_tail_raw(xs): xs
+//
+fun
+<x0:tflt
+,xs:tflt>
 gseq_head_exn(xs): x0
 fun
 <x0:tflt
@@ -76,6 +85,10 @@ gseq_tail_opt(xs): optn_vt(xs)
 fun
 <x0:tflt
 ,xs:tflt>
+gseq_last_raw(xs): x0
+fun
+<x0:tflt
+,xs:tflt>
 gseq_last_exn(xs): x0
 fun
 <x0:tflt
@@ -84,6 +97,11 @@ gseq_last_opt(xs): optn_vt(x0)
 //
 (* ****** ****** *)
 //
+fun
+<x0:tflt
+,xs:tflt>
+gseq_uncons_raw
+  (xs: &xs >> xs): x0
 fun
 <x0:tflt
 ,xs:tflt>

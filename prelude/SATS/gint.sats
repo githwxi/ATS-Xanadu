@@ -156,6 +156,32 @@ print with gint_print_uint of 110
 (* ****** ****** *)
 //
 fun//<>
+gint_succ_sint
+{i:int}
+(x: sint(i)): sint(i+1) = $ext()
+fun//<>
+gint_pred_sint
+{i:int}
+(x: sint(i)): sint(i-1) = $ext()
+//
+#symload succ with gint_succ_sint of 110
+#symload pred with gint_pred_sint of 110
+//
+fun//<>
+gint_succ_uint
+{i:int}
+(x: uint(i)): uint(i+1) = $ext()
+fun//<>
+gint_pred_uint
+{i:int|i>0}
+(x: uint(i)): uint(i-1) = $ext()
+//
+#symload succ with gint_succ_uint of 110
+#symload pred with gint_pred_uint of 110
+//
+(* ****** ****** *)
+//
+fun//<>
 gint_lt_sint_sint
 {i,j:int}
 ( x: sint(i)
