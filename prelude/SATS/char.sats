@@ -38,11 +38,11 @@
 //
 (* ****** ****** *)
 //
-fun<>
+fun//<>
 char_eqzq
 {c:char}
 (c0: char(c)): bool(c=0)
-fun<>
+fun//<>
 char_neqzq
 {c:char}
 (c0: char(c)): bool(c>0)

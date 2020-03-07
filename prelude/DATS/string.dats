@@ -39,10 +39,10 @@ UN =
 
 (* ****** ****** *)
 
-implement
+implement<>
 string_nilq(cs) =
 char_eqzq(string_head(cs))
-implement
+implement<>
 string_consq(cs) =
 char_neqzq(string_head(cs))
 

@@ -57,11 +57,10 @@ string_lemma
 // for targeting C-likes
 //
 fcast
-string_ptrof
+string_top2tr
 (cs: string): p2tr(char)
 #symload
-ptrof
-with string_ptrof of 100
+ptrof with string_top2tr
 *)
 //
 (* ****** ****** *)
@@ -82,11 +81,11 @@ string_cons
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 string_nilq
   {n:int}
   (cs: string(n)): bool(n=0)
-fun//<>
+fun<>
 string_consq
   {n:int}
   (cs: string(n)): bool(n>0)
