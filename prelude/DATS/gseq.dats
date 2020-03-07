@@ -16,7 +16,7 @@ UN =
 //
 impltmp
 <x0,xs>
-gseq_nil?(xs) =
+gseq_nilq(xs) =
 (
 gseq_forall<x0,xs>(xs)
 ) where
@@ -27,51 +27,68 @@ forall$test<x0>(_) = false
 //
 impltmp
 <x0,xs>
-gseq_cons?(xs) =
+gseq_consq(xs) =
 bool_neg
-( gseq_nil? <x0,xs> (xs) )
+( gseq_nilq <x0,xs> (xs) )
 //
 (* ****** ****** *)
 //
 impltmp
 <x0,xs>
+gseq_head_raw(xs) =
+  ( x0 ) where
+{
+var xs = xs
+val x0 =
+gseq_uncons_raw<x0,xs>(xs)
+}
+impltmp
+<x0,xs>
+gseq_tail_raw(xs) =
+  ( xs ) where
+{
+var xs = xs
+val x0 =
+gseq_uncons_raw<x0,xs>(xs)
+}
+//
+impltmp
+<x0,xs>
 gseq_head_exn(xs) =
 if
-gseq_cons? <x0,xs> (xs)
+gseq_consq<x0,xs>(xs)
 then
-$UN.gseq_head<x0,xs>(xs)
+gseq_head_raw<x0,xs>(xs)
 else $raise SubscriptExn()
 impltmp
 <x0,xs>
 gseq_tail_exn(xs) =
 if
-gseq_cons? <x0,xs> (xs)
+gseq_consq<x0,xs>(xs)
 then
-$UN.gseq_tail<x0,xs>(xs)
+gseq_tail_raw<x0,xs>(xs)
 else $raise SubscriptExn()
 //
 impltmp
 <x0,xs>
 gseq_head_opt(xs) =
 if
-gseq_cons? <x0,xs> (xs)
+gseq_consq<x0,xs>(xs)
 then
 optn_vt_cons
 (
-$UN.gseq_head<x0,xs>(xs)
-)
-else optn_vt_nil((*void*))
+gseq_head_raw<x0,xs>(xs)
+) else optn_vt_nil((*void*))
 impltmp
 <x0,xs>
 gseq_tail_opt(xs) =
 if
-gseq_cons? <x0,xs> (xs)
+gseq_consq <x0,xs> (xs)
 then
 optn_vt_cons
 (
-$UN.gseq_tail<x0,xs>(xs)
-)
-else optn_vt_nil((*void*))
+gseq_tail_raw<x0,xs>(xs)
+) else optn_vt_nil((*void*))
 //
 (* ****** ****** *)
 //
@@ -99,9 +116,9 @@ gseq_uncons_exn
   (xs) =
 (
 if
-gseq_nil? <x0,xs> (xs)
+gseq_nilq <x0,xs> (xs)
 then $raise SubscriptExn()
-else $UN.gseq_uncons<x0,xs>(xs)
+else gseq_uncons_raw<x0,xs>(xs)
 )
 impltmp
 <x0,xs>
@@ -109,7 +126,7 @@ gseq_uncons_opt
   (xs) =
 (
 if
-gseq_nil? <x0,xs> (xs)
+gseq_nilq <x0,xs> (xs)
 then optn_nil() else optn_cons(x0)
 )
 //
@@ -149,9 +166,10 @@ end // end of [foreach$work]
 impltmp
 <x0,xs>
 gseq_print(xs) =
-{
+let
 val () =
 gseq_print$beg<x0,xs>()
+//
 val () =
 (
   gseq_iforeach<x0,xs>(xs)
@@ -159,7 +177,8 @@ val () =
 {
 //
 impltmp
-iforeach<x0>(i0, x0) =
+iforeach$work<x0>
+  (i0, x0) =
 (
   g_print<x0>(x0)
 ) where
@@ -171,9 +190,11 @@ iforeach<x0>(i0, x0) =
 } (* where *)
 //
 } (* where *)
+//
 val () =
-gseq_print$end<x0,xs>()
-} (* end of [gseq_print] *)
+gseq_print$end<x0,xs>((*void*))
+//
+endlet (* end of [gseq_print] *)
 
 impltmp
 <x0,xs>
@@ -215,16 +236,16 @@ gseq_forall
 fun
 loop(xs: xs): bool =
 if
-gseq_nil?
+gseq_nilq
 <x0,xs>(xs)
 then true else
 let
 var xs = xs
 val x0 =
-$UN.gseq_uncons<x0,xs>(xs)
+gseq_uncons_raw<x0,xs>(xs)
 in
 if
-forall$test<x0,xs>(x0)
+forall$test<x0>(x0)
   then loop(xs) else false
 // end of [if]
 end // end of [else]
@@ -234,7 +255,8 @@ end // end of [else]
 (*
 impltmp
 <x0,xs>
-gseq_forall(xs) =
+gseq_forall
+  (xs) =
 stream_vt_forall0<x0>
 (gseq_streamize<x0,xs>(xs)) where
 {
@@ -291,19 +313,29 @@ gseq_map_rlist<x0,xs><x0>(xs)
 impltmp
 <x0,xs>
 gseq_streamize
-  (xs) = $llazy
+  (xs) =
+(
+  auxseq(xs)
+) where
+{
+fun
+auxseq
+(xs: xs): stream_vt(x0) =
+  $llazy
 (
 if
-gseq_nil?
+gseq_nilq
 <x0,xs>(xs)
 then stream_vt_nil()
 else let
-  var xs = xs
-  val x0 = $UN.gseq_uncons<x0,xs>(xs)
+var xs = xs
+val x0 =
+gseq_uncons_raw<x0,xs>(xs)
 in
-  stream_vt_cons(x0, gseq_streamize(xs))
-end
+stream_vt_cons(x0, auxseq(xs))
+end // end of [else]
 )
+} (* end of [gseq_streamize] *)
 
 (* ****** ****** *)
 //
@@ -644,22 +676,24 @@ let
 var i0: nint = 0
 val p0 = $addr(i0)
 //
-val
-test =
-gseq_forall<x0,xs>(xs) where
-{
+in
+//
+let
 impltmp
 forall$test<x0>(x0) =
-let
+(
+iforall$test<x0>(i0, x0)
+) where
+{
 val i0 =
 $UN.p2tr_get<nint>(p0)
 val () =
-$UN.p2tr_set<nint>(p0):=succ(i0)
-val () = iforall$work<x0>(i0, x0) in true
-end
+$UN.p2tr_set<nint>(p0, succ(i0))
 }
 in
-  // nothing
+  gseq_forall<x0,xs>(xs)
+end (* end of [gseq_forall] *)
+//
 end // end of [gseq_iforall/forall]
 
 (* ****** ****** *)

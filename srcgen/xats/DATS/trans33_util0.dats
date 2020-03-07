@@ -1506,7 +1506,7 @@ t3imptbl_make_d3eclist
 let
 //
 fun
-auxdcl
+auxdcl0
 ( htbl
 : !hashtbl
 , d3cl: d3ecl): void =
@@ -1535,7 +1535,7 @@ val-
 list_cons
 (d2c1, d2cs) = d2cs
 in
-  auxins(htbl, d2c1, d3cl)
+  auxins0(htbl, d2c1, d3cl)
 end
 |
 IMPLD2CST2
@@ -1543,13 +1543,13 @@ IMPLD2CST2
 (
 case+ opt3 of
 | None() => ()
-| Some(d2c1) => auxins(htbl, d2c1, d3cl)
+| Some(d2c1) => auxins0(htbl, d2c1, d3cl)
 )
 )
-end // end of [auxdcl]
+end // end of [auxdcl0]
 //
 and
-auxins
+auxins0
 ( htbl
 : !hashtbl
 , d2c1: d2cst
@@ -1568,9 +1568,9 @@ D3Cimpdecl3
 //
 (*
 val () =
-println!("auxins: d2c1 = ", d2c1)
+println!("auxins0: d2c1 = ", d2c1)
 val () =
-println!("auxins: d3cl = ", d3cl)
+println!("auxins0: d3cl = ", d3cl)
 *)
 //
 val t2ps =
@@ -1637,7 +1637,7 @@ in
 hashtbl_insert_any<key,itm>(htbl, key, itm1)
 end
 //
-end // end of [auxins]
+end // end of [auxins0]
 //
 and
 auxtsub_make
@@ -1695,10 +1695,16 @@ auxlst2
 (
 case+
 d3cl.node() of
+| D3Clocal
+  (head, body) =>
+  let
+  val () =
+  auxlst1(htbl, body) in auxlst1(htbl, d3cs)
+  end
 | D3Cimpdecl3 _ =>
   let
   val () =
-  auxdcl(htbl, d3cl) in auxlst1(htbl, d3cs)
+  auxdcl0(htbl, d3cl) in auxlst1(htbl, d3cs)
   end
 | _(*non-D3Cimpdecl3*) => auxlst1(htbl, d3cs)
 )

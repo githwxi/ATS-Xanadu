@@ -56,6 +56,9 @@ xatsopt_strrchr
 (* ****** ****** *)
 //
 fun
+xatsopt_chrunq // '<char>' -> <char>
+(source: string): char = "ext#xatsopt_chrunq"
+fun
 xatsopt_strunq // "<string>" -> <string>
 (source: string): string = "ext#xatsopt_strunq"
 //
