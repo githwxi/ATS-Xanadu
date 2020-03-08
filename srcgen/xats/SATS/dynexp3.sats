@@ -372,7 +372,7 @@ d3exp_node =
   (d3exp(*eval*)) // nonlin
 | D3Ellazy of
   ( d3exp(*eval*)
-  , d3expopt(*free*)) // linear
+  , d3explst(*frees*)) // linear
 //
 | D3Eflat of d3exp(*l-value*)
 | D3Etalf of d3exp(*D3Eflat*)

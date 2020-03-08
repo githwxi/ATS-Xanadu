@@ -478,14 +478,14 @@ d3e0.node() of
   in
     d3exp_make_node(loc0, t2p0, D3Elazy(d3e1))
   end // end of [D3Elazy]
-| D3Ellazy(d3e1, opt2) =>
+| D3Ellazy(d3e1, d3es) =>
   let
     val d3e1 =
     trans3t_dexp(env0, d3e1)
-    val opt2 =
-    trans3t_dexpopt(env0, opt2)
+    val d3es =
+    trans3t_dexplst(env0, d3es)
   in
-    d3exp_make_node(loc0, t2p0, D3Ellazy(d3e1, opt2))
+    d3exp_make_node(loc0, t2p0, D3Ellazy(d3e1, d3es))
   end // end of [D3Ellazy]
 //
 | D3Eanno(d3e1, s2e2) =>

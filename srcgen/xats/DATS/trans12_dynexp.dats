@@ -1366,16 +1366,23 @@ ifcase
   in
     d2exp_make_node
     (d1e0.loc(), D2Elazy(d2e2))
-  end
+  end // end of [isLAZY]
 | isLLAZY(d1e1) =>
   let
     val d2e2 =
     trans12_dexp(d1e2)
-    val opt3 = None(*void*)
   in
+    case+
+    d2e2.node() of
+    |
+    D2Eseqn(d2es, d2e2) =>
     d2exp_make_node
-    (d1e0.loc(), D2Ellazy(d2e2, opt3))
-  end
+    (d1e0.loc(), D2Ellazy(d2e2, d2es))
+    |
+    _(*non-D2Eseqn*) =>
+    d2exp_make_node
+    (d1e0.loc(), D2Ellazy(d2e2, list_nil))
+  end // end of [isLLAZY]
 //
 | isRAISE(d1e1) =>
   let

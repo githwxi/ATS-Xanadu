@@ -1420,27 +1420,21 @@ loc0 = d2e0.loc()
 val-
 D2Ellazy
 ( d2e1
-, opt2(*free*)) = d2e0.node()
+, d2es ) = d2e0.node()
 //
 val d3e1 = trans23_dexp(d2e1)
-val opt2 =
-(
-case+ opt2 of
-| None() =>
-  None(*void*)
-| Some(d2e2) =>
-  let
+val d3es =
+let
   val t2p2 = the_t2ype_void
-  in
-  Some(trans23_dexp_dn(d2e2, t2p2))
-  end
-) : d3expopt // end-of-val]
+in
+  trans23_dexplst_dn(d2es, t2p2)
+end
 //
 val t2p0 =
 t2ype_app1(the_t2ype_llazy, d3e1.type())
 //
 in
-d23exp_make_node(loc0, t2p0, D3Ellazy(d3e1, opt2))
+d23exp_make_node(loc0, t2p0, D3Ellazy(d3e1, d3es))
 end // end of [aux_llazy]
 
 (* ****** ****** *)
@@ -1583,6 +1577,23 @@ println!
 in
   d23exp_dn(trans23_dexp(d2e0), t2p0)
 end // end of [trans23_dexp_dn]
+//
+(* ****** ****** *)
+//
+implement
+trans23_dexplst_dn
+  (d2es, t2p0) =
+(
+list_vt2t
+(
+list_map<d2exp><d3exp>(d2es)
+)
+) where
+{
+implement
+list_map$fopr<d2exp><d3exp>
+  (d2e) = trans23_dexp_dn(d2e, t2p0)
+}
 //
 (* ****** ****** *)
 

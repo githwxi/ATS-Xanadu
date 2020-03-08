@@ -493,10 +493,11 @@ x0.node() of
   (
    fprint!(out, "D3Elazy(", d3e1, ")")
   )
-| D3Ellazy(d3e1, opt2) =>
+| D3Ellazy
+  (d3e1, d3es(*frees*)) =>
   fprint!
   (out
-  , "D3Ellazy(", d3e1, "; ", opt2, ")")
+  , "D3Ellazy(", d3e1, "; ", d3es, ")")
 //
 | D3Eflat(d3e1) =>
   (

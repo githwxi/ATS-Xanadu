@@ -509,9 +509,10 @@ case- x0.node() of
 //
 | D2Elazy(d2e1) =>
   fprint!(out, "D2Elazy(", d2e1, ")")
-| D2Ellazy(d2e1, opt2) =>
+| D2Ellazy
+  (d2e1, d2es(*frees*)) =>
   fprint!
-  (out, "D2Ellazy(", d2e1, "; ", opt2, ")")
+  (out, "D2Ellazy(", d2e1, "; ", d2es, ")")
 //
 | D2Eanno(d2e1, s2e2) =>
   fprint!
