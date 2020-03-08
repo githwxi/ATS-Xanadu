@@ -65,15 +65,15 @@ ptrof with string_top2tr
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 string_print(string): void
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 string_nil
   ((*void*)): string(0)
-fun//<>
+fun<>
 string_cons
   {n:int}
 ( c0: cgtz
@@ -92,11 +92,11 @@ string_consq
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 string_head(string): char
-fun//<>
+fun<>
 string_head_raw(string): cgtz
-fun//<>
+fun<>
 string_tail_raw(string): string
 //
 (* ****** ****** *)

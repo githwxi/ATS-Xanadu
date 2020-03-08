@@ -38,32 +38,32 @@
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 g_self(x: a): a
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 g_free(x: a): void
 fun
-<a:vtype>
+<a:vt>
 g_copy(x: !(a)): (a)
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 g_print(x: !(a)): void
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 g_equal(!a, !a): void
 fun
-<a:vtype>
-g_nequal(!a, !a): void
+<a:vt>
+g_noteq(!a, !a): void
 
 (* ****** ****** *)
 
