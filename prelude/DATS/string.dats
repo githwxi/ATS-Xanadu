@@ -90,12 +90,17 @@ in (* in-of-local *)
 impltmp
 g_print<xs> = string_print
 //
+(*
+impltmp
+g_print<xs>(xs) =
+gseq_print<xs,x0>(xs)
 impltmp
 gseq_print$beg<x0,xs>() = ()
 impltmp
 gseq_print$end<x0,xs>() = ()
 impltmp
 gseq_print$sep<x0,xs>() = ()
+*)
 //
 (* ****** ****** *)
 

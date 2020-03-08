@@ -38,32 +38,32 @@
 (* ****** ****** *)
 
 fun
-<a:type>
+<a:t0>
 g_eq(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_neq(a, a): bool
 
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_lt(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_gt(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_eq(a, a): bool
 //
 fun
-<a:type>
+<a:t0>
 g_lte(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_gte(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_neq(a, a): bool
 //
 #symload < with g_lt of 000
@@ -77,7 +77,7 @@ g_neq(a, a): bool
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_cmp(a, a): sint
 //
 #symload cmp with g_cmp of 000
@@ -85,26 +85,26 @@ g_cmp(a, a): sint
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_ltz(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_gtz(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_eqz(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_ltez(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_gtez(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_neqz(x: a): bool
 //
 fun
-<a:type>
+<a:t0>
 g_cmpz(x: a): sint
 //
 (* ****** ****** *)
@@ -122,10 +122,10 @@ g_cmpz(x: a): sint
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_max(x: a, y: a): (a)
 fun
-<a:type>
+<a:t0>
 g_min(x: a, y: a): (a)
 //
 #symload max with g_max of 000

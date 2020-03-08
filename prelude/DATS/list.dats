@@ -33,6 +33,29 @@ case+ xs of
 (* ****** ****** *)
 //
 impltmp
+{a:type}
+g_print<list(a)>(xs) =
+let
+val () =
+gseq_print<a,list(a)>(xs)
+end
+//
+impltmp
+{a:type}
+gseq_print$beg
+< a, list(a) >() = string_print("(")
+impltmp
+{a:type}
+gseq_print$end
+< a, list(a) >() = string_print(")")
+impltmp
+{a:type}
+gseq_print$sep
+< a, list(a) >() = string_print(",")
+//
+(* ****** ****** *)
+//
+impltmp
 <a>(*tmp*)
 list_length
   (xs) =

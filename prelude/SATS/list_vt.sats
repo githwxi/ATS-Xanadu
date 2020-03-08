@@ -38,56 +38,48 @@
 (* ****** ****** *)
 //
 fun<>
-list_vt_nil?
-{a:vtype}{n:int}
+list_vt_nilq
+{a:vt}{n:int}
 (xs: !list_vt(a, n)): bool(n = 0)
 fun<>
-list_vt_cons?
-{a:vtype}{n:int}
+list_vt_consq
+{a:vt}{n:int}
 (xs: !list_vt(a, n)): bool(n > 0)
 //
-#symload
-iseqz with list_vt_nil?
-#symload
-isneqz with list_vt_cons?
-//
 (* ****** ****** *)
 //
 fun
-<a:vtype>
-list_vt_length
+<a:vt>
+list_vt_free
 {n:int}
-(xs: !list_vt(a, n)): int(n)
-//
-#symload
-length with list_vt_length
-//
-(* ****** ****** *)
+(xs: list_vt(a, n)): void
 //
 fun
-<a:vtype>
-list_vt_reverse
-{n:int}
-(xs: list_vt(a, n)): list_vt(a, n)
-//
-#symload
-reverse with list_vt_reverse
-//
-(* ****** ****** *)
-//
-fun
-<a:vtype>
+<a:vt>
 list_vt_copy
 {n:int}
 (xs: !list_vt(a, n)): list_vt(a, n)
 fun
-<a:vtype>
+<a:vt>
 list_vt_rcopy
 {n:int}
 (xs: !list_vt(a, n)): list_vt(a, n)
 //
-#symload copy with list_vt_copy
-#symload rcopy with list_vt_rcopy
+(* ****** ****** *)
+//
+fun
+<a:vt>
+list_vt_length
+{n:int}
+(xs: !list_vt(a, n)): sint(n)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+list_vt_reverse
+{n:int}
+(xs: list_vt(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 //
@@ -96,7 +88,7 @@ fun
 <n:i0>
 list_vt_tabulate(int(n)): list_vt(a, n)
 fun
-<a:vtype>
+<a:vt>
 list_vt_tabulate_cref
 {n:nat}
 ( n0: int(n)
@@ -105,11 +97,11 @@ list_vt_tabulate_cref
 (* ****** ****** *)
 //
 fun
-<x0:type>
+<x0:vt>
 list_vt_forall0
 {n:int}(xs: list_vt(x0, n)): bool
 fun
-<x0:type>
+<x0:vt>
 list_vt_foreach0
 {n:int}(xs: list_vt(x0, n)): void
 //
