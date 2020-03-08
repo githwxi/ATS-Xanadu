@@ -125,17 +125,26 @@ dtsel_fixty = FIXTYpos(dtsel_prcdv)
 //
 (* ****** ****** *)
 //
+(*
+implement
+raise_prcdv =
+pred(prcdv2int(app_prcdv))
+//
+implement
+raise_fixty = FIXTYpre(raise_prcdv)
+*)
+//
+(* ****** ****** *)
+//
 implement
 forall_prcdv = (0)
 implement
 exists_prcdv = (0)
 //
 implement
-forall_fixty =
-FIXTYpre(forall_prcdv)
+forall_fixty = FIXTYpre(forall_prcdv)
 implement
-exists_fixty =
-FIXTYpre(exists_prcdv)
+exists_fixty = FIXTYpre(exists_prcdv)
 //
 (* ****** ****** *)
 

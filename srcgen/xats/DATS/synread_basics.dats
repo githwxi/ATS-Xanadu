@@ -109,12 +109,6 @@ implement K_LBRACE = K_SYMBOL(LBRACE_symbol)
 implement K_RBRACE = K_SYMBOL(RBRACE_symbol)
 //
 (* ****** ****** *)
-//
-implement
-{}(*tmp*)
-synerr_add(xerr) = ()
-//
-(* ****** ****** *)
 
 implement
 //{}(*tmp*)
@@ -677,6 +671,46 @@ tok.node() of
 
 implement
 //{}(*tmp*)
+synread_AS
+  (tok) =
+(
+case+
+tok.node() of
+| T_AS _ => ()
+| _(*non-AS*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_AS, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(AS): ", tok)
+  end // end of [let]
+) (* end of [synread_AS] *)
+
+implement
+//{}(*tmp*)
+synread_OF
+  (tok) =
+(
+case+
+tok.node() of
+| T_OF _ => ()
+| _(*non-OF*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_OF, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(OF): ", tok)
+  end // end of [let]
+) (* end of [synread_OF] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
 synread_LAM
   (tok) =
 (
@@ -741,8 +775,6 @@ tok.node() of
   end // end of [let]
 ) (* end of [synread_LET] *)
 
-(* ****** ****** *)
-
 implement
 //{}(*tmp*)
 synread_ENDLET
@@ -760,6 +792,45 @@ synread_ENDLET
       prerrln!(": SYNERR(ENDLET): ", tok)
     end // end of [let]
 ) (* end of [synread_ENDLET] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_TRY
+  (tok) =
+(
+case+
+tok.node() of
+| T_TRY _ => ()
+| _(*non-TRY*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_TRY(), tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(TRY): ", tok)
+  end // end of [let]
+) (* end of [synread_TRY] *)
+
+implement
+//{}(*tmp*)
+synread_ENDTRY
+  (tok) =
+( case+
+  tok.node() of
+  | T_END _ => ()
+  | T_ENDTRY _ => ()
+  | _(*non-ENDTRY*) => let
+      val () =
+      synerr_add
+      (SYNERRtoken(K_ENDTRY, tok))
+    in
+      prerr(tok.loc());
+      prerrln!(": SYNERR(ENDTRY): ", tok)
+    end // end of [let]
+) (* end of [synread_ENDTRY] *)
 
 (* ****** ****** *)
 
@@ -813,6 +884,27 @@ case+ opt of
 | Some(tok) => synread_ENDWHERE(tok)
 ) (* end of [synread_ENDWHERE_opt] *)
 //
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_WHEN
+  (tok) =
+(
+case+
+tok.node() of
+| T_WHEN _ => ()
+| _(*non-WHEN*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_WHEN(), tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(WHEN): ", tok)
+  end // end of [let]
+) (* end of [synread_WHEN] *)
+
 (* ****** ****** *)
 
 implement

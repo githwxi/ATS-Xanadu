@@ -49,9 +49,9 @@ abssort true
 (*
 abssort int
 // [int] is built-in
-abssort bool
+abssort bool//tt,ff
 // [bool] is built-in
-abssort char
+abssort char//[0,256)
 // [char] is built-in
 *)
 //
@@ -297,6 +297,8 @@ typedef p2tr(x:vt, l:a0) = p2tr1(x, l)
 
 typedef
 bool_k = $extype("xats_bool_t")
+typedef
+char_k = $extype("xats_char_t")
 
 typedef
 sint_k = $extype("xats_sint_t")
@@ -337,6 +339,19 @@ fbool = bool1(ff) // singleton
 //
 typedef bool = bool0
 typedef bool(b:bool) = bool1(b)
+//
+(* ****** ****** *)
+//
+abstype
+char_type(char) <= char_k
+//
+typedef
+char0 = [c:c0] char_type(c)
+typedef
+char1(c:char) = char_type(c)
+//
+typedef char = char0
+typedef char(c:char) = char1(c)
 //
 (* ****** ****** *)
 //
@@ -494,7 +509,7 @@ optn1_vt(a:type, b: bool) = optn_vt(a, b)
 //
 (* ****** ****** *)
 //
-castfn
+fcast
 optn_vt2t
 {a:t0}{b:b0}
 (optn_vt(a, b)): optn(a, b)
@@ -594,7 +609,7 @@ vtypedef listbtwe_vt
 //
 (* ****** ****** *)
 //
-castfn
+fcast
 list_vt2t
 {a:t0}{n:i0}
 (list_vt(a, n)): list(a, n)
@@ -607,6 +622,9 @@ $extype("xats_sfloat_t")
 typedef
 dfloat_k =
 $extype("xats_dfloat_t")
+typedef
+dfloat_k =
+$extype("xats_ldfloat_t")
 //
 abstype
 gfloat_type(a:type) <= a
@@ -615,11 +633,15 @@ typedef
 sfloat = gfloat_type(sfloat_k)
 typedef
 dfloat = gfloat_type(dfloat_k)
+typedef
+ldfloat = gfloat_type(ldfloat_k)
 //
 typedef
 float = sfloat // single precision
 typedef
 double = dfloat // double precision
+typedef
+ldouble = ldfloat // double precision
 //
 (* ****** ****** *)
 //
@@ -671,14 +693,21 @@ vtypedef stropt_vt(n:int) = stropt1_vt(n)
 //
 (* ****** ****** *)
 //
+// HX:
+// For exceptions:
+//
+absvtype excptn_vt <= ptr
+//
+(* ****** ****** *)
+//
 abstype
 lazy_t0_x0(a: type+) <= ptr
 typedef
 lazy(a:type) = lazy_t0_x0(a)
 //
-abstype
+absvtype
 lazy_vt_vx(a: vtype+) <= ptr
-typedef
+vtypedef
 lazy_vt(a:vtype) = lazy_vt_vx(a)
 //
 (* ****** ****** *)
@@ -725,7 +754,7 @@ fun
 <a1:v0>
 <a2:v0>
 pfexch
-(pf1: !a0 >> a1, pf2: !a2 >> a1): void
+(pf1: !a0>>a1, pf2: !a2>>a1): void
 *)
 //
 (* ****** ****** *)

@@ -77,28 +77,25 @@ _(*TMP*) = "./../DATS/dynexp3_print.dats"
 
 local
 
-extern
-fun{}
+static
+fun//{}
 the_trerr3tlst_get(): trerr3tlst
 extern
-fun{}
+fun//{}
 the_trerr3tlst_set(trerr3tlst): void
 
 implement
-{}(*tmp*)
+//{}(*tmp*)
 trerr3t_add(xerr) = let
 //
 val
-xerrs = the_trerr3tlst_get<>()
+xerrs = the_trerr3tlst_get()
 //
 in
-  the_trerr3tlst_set<>(list_cons(xerr, xerrs))
+  the_trerr3tlst_set(list_cons(xerr, xerrs))
 end // end of [trerr3t_add]
 
 in (* in-of-local *)
-
-implement
-tread3t_main(d3cs) = let
 //
 local
 //
@@ -107,20 +104,22 @@ the_trerr3tlst =
 ref<trerr3tlst>(list_nil)
 //
 in(*in-of-local*)
-val () =
-$tempenver(the_trerr3tlst)
 implement
-the_trerr3tlst_get<>() = the_trerr3tlst[]
+the_trerr3tlst_get() = the_trerr3tlst[]
 implement
-the_trerr3tlst_set<>(xs) = the_trerr3tlst[] := xs
+the_trerr3tlst_set(xs) = the_trerr3tlst[] := xs
 end // end of [local]
+//
+implement
+tread3t_main(d3cs) = let
 //
 (*
 val () =
 tread3t_d3eclist<>(d3cs)
 *)
+//
 val
-xerrs = the_trerr3tlst_get<>()
+xerrs = the_trerr3tlst_get()
 val
 nxerr = list_length<trerr3t>(xerrs)
 //

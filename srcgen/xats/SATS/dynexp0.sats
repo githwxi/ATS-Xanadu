@@ -499,6 +499,12 @@ d0exp_node =
   , f0arglst(*arglst*)
   , effs0expopt, f0unarrow, d0exp, tokenopt)
 //
+| D0Etry of
+  ( token
+  , d0exp
+  , token(*WITH*)
+  , tokenopt(*BAR*), d0claulst, token(*END*))
+//
 | D0Eanno of (d0exp, s0exp)
 //
 | D0Equal of (token, d0exp) // qualified
@@ -1074,11 +1080,15 @@ for skipping error
   , s0ymb, token, dq0eid, t0intopt)
 //
 | D0Cdatasort of
-    (token(*datasort*), d0tsortlst)
+    (token(*DATASORT*), d0tsortlst)
   // D0Cdatasort
 //
+| D0Cexcptcon of
+    (token(*EXCPTCON*), d0atconlst)
+  // D0Cexcptcon
+//
 | D0Cdatatype of
-    (token(*datatype*), d0atypelst, wd0eclseq)
+    (token(*DATATYPE*), d0atypelst, wd0eclseq)
   // D0Cdatatype
 //
 | D0Cdynconst of

@@ -171,6 +171,8 @@ trans23_dexpseq: d2explst -> d3explst
 //
 fun
 trans23_dexp_dn: (d2exp, t2ype) -> d3exp
+fun
+trans23_dexplst_dn: (d2explst, t2ype) -> d3explst
 //
 (* ****** ****** *)
 //

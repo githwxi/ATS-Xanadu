@@ -38,98 +38,98 @@
 (* ****** ****** *)
 
 fun
-<a:type>
+<a:t0>
 g_eq(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_neq(a, a): bool
 
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_lt(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_gt(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_eq(a, a): bool
 //
 fun
-<a:type>
+<a:t0>
 g_lte(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_gte(a, a): bool
 fun
-<a:type>
+<a:t0>
 g_neq(a, a): bool
 //
-#symload < with g_lt of 000
-#symload > with g_gt of 000
-#symload = with g_eq of 000
+#symload < with g_lt of 100
+#symload > with g_gt of 100
+#symload = with g_eq of 100
 //
-#symload <= with g_lte of 000
-#symload >= with g_gte of 000
-#symload != with g_neq of 000
+#symload <= with g_lte of 100
+#symload >= with g_gte of 100
+#symload != with g_neq of 100
 //
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_cmp(a, a): sint
 //
-#symload cmp with g_cmp of 000
+#symload cmp with g_cmp of 100
 //
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_ltz(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_gtz(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_eqz(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_ltez(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_gtez(x: a): bool
 fun
-<a:type>
+<a:t0>
 g_neqz(x: a): bool
 //
 fun
-<a:type>
+<a:t0>
 g_cmpz(x: a): sint
 //
 (* ****** ****** *)
 //
-#symload ltz with g_ltz of 000
-#symload gtz with g_gtz of 000
-#symload eqz with g_eqz of 000
+#symload ltz with g_ltz of 100
+#symload gtz with g_gtz of 100
+#symload eqz with g_eqz of 100
 //
-#symload ltez with g_ltez of 000
-#symload gtez with g_gtez of 000
-#symload neqz with g_neqz of 000
+#symload ltez with g_ltez of 100
+#symload gtez with g_gtez of 100
+#symload neqz with g_neqz of 100
 //
-#symload cmpz with g_cmpz of 000
+#symload cmpz with g_cmpz of 100
 //
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_max(x: a, y: a): (a)
 fun
-<a:type>
+<a:t0>
 g_min(x: a, y: a): (a)
 //
-#symload max with g_max of 000
-#symload min with g_min of 000
+#symload max with g_max of 100
+#symload min with g_min of 100
 //
 (* ****** ****** *)
 

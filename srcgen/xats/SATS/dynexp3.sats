@@ -358,15 +358,21 @@ d3exp_node =
   , f3arglst(*arg*)
   , effs2expopt, f1unarrow, d3exp(*body*))
 //
+| D3Etry of
+    (token(*TRY*), d3exp(*val*), d3claulst)
+  // D3Etry
+//
 | D3Eaddr of d3exp(*l-value*)
 | D3Efold of d3exp(*open-con*)
+//
+| D3Eraise of d3exp(*lin-exn*)
 //
 // HX: for lazy-evaluation
 | D3Elazy of
   (d3exp(*eval*)) // nonlin
 | D3Ellazy of
   ( d3exp(*eval*)
-  , d3expopt(*free*)) // linear
+  , d3explst(*frees*)) // linear
 //
 | D3Eflat of d3exp(*l-value*)
 | D3Etalf of d3exp(*D3Eflat*)
@@ -692,6 +698,13 @@ d3ecl_node =
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , d3eclistopt) // file inclusion
+//
+| D3Cstaload of
+  ( token
+  , d1exp // src
+  , int(*knd*) // sta/dyn: 0/1
+  , filpathopt
+  , int(*shared*), fmodenvopt)
 //
 | D3Clocal of
   (d3eclist(*head*), d3eclist(*body*))
