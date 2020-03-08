@@ -229,7 +229,7 @@ fun
 xint_gint_sub_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): sint( i+j ) = $ext()
+, y: sint(j)): sint( i-j ) = $ext()
 impltmp
 gint_sub_sint_sint<> = xint_gint_sub_sint_sint
 //
@@ -238,7 +238,7 @@ fun
 xint_gint_mul_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): sint( i+j ) = $ext()
+, y: sint(j)): sint( i*j ) = $ext()
 impltmp
 gint_mul_sint_sint<> = xint_gint_mul_sint_sint
 #extern
@@ -246,7 +246,7 @@ fun
 xint_gint_div_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): sint( i+j ) = $ext()
+, y: sint(j)): sint( i/j ) = $ext()
 impltmp
 gint_div_sint_sint<> = xint_gint_div_sint_sint
 #extern
@@ -254,7 +254,7 @@ fun
 xint_gint_mod_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): sint( i+j ) = $ext()
+, y: sint(j)): sint(mod(i,j)) = $ext()
 impltmp
 gint_mod_sint_sint<> = xint_gint_mod_sint_sint
 //

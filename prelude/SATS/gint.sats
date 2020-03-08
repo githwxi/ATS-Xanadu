@@ -220,7 +220,7 @@ fun<>
 gint_cmp_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): sint(sgn(i-j)) = $ext()
+, y: sint(j)): sint(sgn(i-j)) // = $ext()
 #symload cmp with gint_cmp_sint_sint of 120
 //
 (* ****** ****** *)
@@ -229,27 +229,27 @@ fun<>
 gint_add_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): sint(i+j) = $ext()
+, y: sint(j)): sint(i+j) // = $ext()
 fun<>
 gint_sub_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): sint(i-j) = $ext()
+, y: sint(j)): sint(i-j) // = $ext()
 fun<>
 gint_mul_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): sint(i*j) = $ext()
+, y: sint(j)): sint(i*j) // = $ext()
 fun<>
 gint_div_sint_sint
 {i,j:int | j != 0}
 ( x: sint(i)
-, y: sint(j)): sint(i/j) = $ext()
+, y: sint(j)): sint(i/j) // = $ext()
 fun<>
 gint_mod_sint_sint
 {i,j:int | j >= 1}
 ( x: sint(i)
-, y: sint(j)): sint(mod(i,j)) = $ext()
+, y: sint(j)): sint(mod(i,j)) // = $ext()
 //
 #symload + with gint_add_sint_sint of 120
 #symload - with gint_sub_sint_sint of 120
@@ -263,27 +263,27 @@ fun<>
 gint_add_uint_uint
 {i,j:int}
 ( x: uint(i)
-, y: uint(j)): uint(i+j) = $ext()
+, y: uint(j)): uint(i+j) // = $ext()
 fun<>
 gint_sub_uint_uint
 {i,j:int | i >= j}
 ( x: uint(i)
-, y: uint(j)): uint(i-j) = $ext()
+, y: uint(j)): uint(i-j) // = $ext()
 fun<>
 gint_mul_uint_uint
 {i,j:int}
 ( x: uint(i)
-, y: uint(j)): uint(i*j) = $ext()
+, y: uint(j)): uint(i*j) // = $ext()
 fun<>
 gint_div_uint_uint
 {i,j:int | j >= 1}
 ( x: uint(i)
-, y: uint(j)): uint(i/j) = $ext()
+, y: uint(j)): uint(i/j) // = $ext()
 fun<>
 gint_mod_uint_uint
 {i,j:int | j >= 1}
 ( x: uint(i)
-, y: uint(j)): uint(mod(i,j)) = $ext()
+, y: uint(j)): uint(mod(i,j)) // = $ext()
 //
 #symload + with gint_add_uint_uint of 120
 #symload - with gint_sub_uint_uint of 120

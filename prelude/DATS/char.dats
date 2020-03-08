@@ -34,7 +34,7 @@
 (* ****** ****** *)
 
 impltmp
-g_print<char> = char_print
+g_print<char> = char_print<>
 
 (* ****** ****** *)
 
