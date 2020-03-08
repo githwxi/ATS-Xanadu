@@ -49,6 +49,12 @@ fun
 stream_vt_pair(x0: a, y0: a): stream_vt(a)
 
 (* ****** ****** *)
+
+fun
+<a:vt>
+stream_vt_free(xs: stream_vt(a)): void
+
+(* ****** ****** *)
 //
 fun
 <a:vt>

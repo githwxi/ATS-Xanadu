@@ -784,7 +784,7 @@ d2exp_node =
 | D2Elazy of
   (d2exp(*eval*)) // nonlin
 | D2Ellazy of
-  (d2exp(*eval*), d2expopt(*free*)) // linear
+  (d2exp(*eval*), d2explst(*frees*)) // linear
 //
 | D2Eanno of (d2exp(*applst*), s2exp(*type*))
 //

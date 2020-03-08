@@ -252,7 +252,6 @@ end // end of [else]
 } (* end of [gseq_forall/uncons] *)
 *)
 //
-(*
 impltmp
 <x0,xs>
 gseq_forall
@@ -263,7 +262,6 @@ stream_vt_forall0<x0>
 implement
 forall0$test<x0>(x0) = forall$test<x0>(x0)
 } (* end of [gseq_forall/streamize] *)
-*)
 //
 (* ****** ****** *)
 
@@ -769,6 +767,9 @@ end // end of [gseq_iforeach/iforall]
 //
 // For z2-gseq-operations
 //
+(* ****** ****** *)
+
+
 (* ****** ****** *)
 
 (* end of [gseq.dats] *)

@@ -327,6 +327,8 @@ gseq_z2foldr
   ( xs: xs
   , ys: ys, r0: r0): r0
 //
+(* ****** ****** *)
+//
 fun
 <x0:t0
 ,xs:t0>

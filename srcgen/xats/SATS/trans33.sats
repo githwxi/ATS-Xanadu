@@ -222,15 +222,19 @@ trans33_dpatlst_dn
 (* ****** ****** *)
 //
 fun
-trans33_dexp: d3exp -> d3exp 
-fun
-trans33_dexp_dn
-(d3e0: d3exp, t2p0: t2ype): d3exp 
+trans33_dexp: d3exp -> d3exp
 //
 fun
 trans33_dexpopt: d3expopt -> d3expopt
 fun
 trans33_dexplst: d3explst -> d3explst
+//
+fun
+trans33_dexp_dn
+(d3e0: d3exp, t2p0: t2ype): d3exp
+fun
+trans33_dexplst_dn
+(d3es: d3explst, t2p0: t2ype): d3explst
 //
 (* ****** ****** *)
 //

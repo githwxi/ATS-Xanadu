@@ -1269,10 +1269,13 @@ loc0 = d3e0.loc()
 val-
 D3Elazy(d3e1) = d3e0.node()
 //
-val d3e1 = trans33_dexp(d3e1)
+val
+d3e1 = trans33_dexp(d3e1)
 //
-val t2p0 =
-t2ype_app1(the_t2ype_lazy, d3e1.type())
+val
+t2p0 =
+t2ype_app1
+(the_t2ype_lazy, d3e1.type())
 //
 in
 d33exp_make_node(loc0, t2p0, D3Elazy(d3e1))
@@ -1288,27 +1291,25 @@ loc0 = d3e0.loc()
 val-
 D3Ellazy
 ( d3e1
-, opt2(*free*)) = d3e0.node()
+, d3es ) = d3e0.node()
 //
-val d3e1 = trans33_dexp(d3e1)
-val opt2 =
-(
-case+ opt2 of
-| None() =>
-  None(*void*)
-| Some(d3e2) =>
-  let
+val
+d3e1 = trans33_dexp(d3e1)
+val
+d3es =
+let
   val t2p2 = the_t2ype_void
-  in
-  Some(trans33_dexp_dn(d3e2, t2p2))
-  end
-) : d3expopt // end-of-val]
+in
+  trans33_dexplst_dn(d3es, t2p2)
+end
 //
-val t2p0 =
-t2ype_app1(the_t2ype_llazy, d3e1.type())
+val
+t2p0 =
+t2ype_app1
+(the_t2ype_llazy, d3e1.type())
 //
 in
-d33exp_make_node(loc0, t2p0, D3Ellazy(d3e1, opt2))
+d33exp_make_node(loc0, t2p0, D3Ellazy(d3e1, d3es))
 end // end of [aux_llazy]
 
 (* ****** ****** *)
@@ -1324,15 +1325,14 @@ val-
 D3Eanno
 (d3e1, s2e2) = d3e0.node()
 //
-val t2p2 = d3e0.type()
+val t2p0 = d3e0.type()
 (*
 val t2p2 = s2exp_erase(s2e2)
 *)
-val d3e1 = trans33_dexp_dn(d3e1, t2p2)
+val d3e1 = trans33_dexp_dn(d3e1, t2p0)
 //
 in
-d33exp_make_node
-(loc0, d3e1.type(), D3Eanno(d3e1, s2e2))
+d33exp_make_node(loc0, t2p0, D3Eanno(d3e1, s2e2))
 end // end of [aux_anno]
 
 (* ****** ****** *)
@@ -1474,6 +1474,23 @@ trans33_dexp_dn
 ) where
 {
   val d3e0 = trans33_dexp(d3e0)
+}
+//
+(* ****** ****** *)
+//
+implement
+trans33_dexplst_dn
+  (d3es, t2p0) =
+(
+list_vt2t
+(
+list_map<d3exp><d3exp>(d3es)
+)
+) where
+{
+implement
+list_map$fopr<d3exp><d3exp>
+  (d3e) = trans33_dexp_dn(d3e, t2p0)
 }
 //
 (* ****** ****** *)
