@@ -116,5 +116,39 @@ impltmp
 char_print<> = xint_char_print
 //
 (* ****** ****** *)
+//
+// prelude/string.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_string_print
+(x0: string): void = $ext()
+impltmp
+string_print<> = xint_string_print
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_string_head
+(x0: string): char = $ext()
+impltmp
+string_head<> = xint_string_head
+//
+#extern
+fun
+xint_string_head_raw
+(x0: string): char = $ext()
+fun
+xint_string_tail_raw
+(x0: string): string = $ext()
+impltmp
+string_head_raw<> = xint_string_head_raw
+impltmp
+string_tail_raw<> = xint_string_tail_raw
+//
+(* ****** ****** *)
 
 (* end of [runtime.dats] *)
