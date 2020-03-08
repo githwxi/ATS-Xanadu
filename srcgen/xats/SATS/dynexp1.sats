@@ -573,6 +573,11 @@ d1exp_node =
   , f1arglst(*arg*)
   , effs1expopt, f1unarrow, d1exp(*body*))
 //
+| D1Etry of
+  ( token(*TRY*)
+  , d1exp(*value*), d1claulst(*clauses*))
+  // D1Etry
+//
 | D1Eanno of
   (d1exp, s1exp(*anno*)) // HX: type-annotation
 //
@@ -798,8 +803,8 @@ overload fprint with fprint_d1cstdecl
 datatype
 d1ecl_node =
 //
-| D1Cnone of ()
-| D1Cnone of (d0ecl)
+| D1Cnone0 of ()
+| D1Cnone1 of (d0ecl)
 //
 (*
 | D1Cfixity of (d0ecl)
@@ -892,6 +897,10 @@ d1ecl_node =
 | D1Cdatasort of
     (token(*datasort*), d1tsortlst)
   // D1Cdatasort
+//
+| D1Cexcptcon of
+    (token(*excptcon*), d1atconlst)
+  // D1Cexcptcon
 //
 // dataprop/dataview // proofs
 // datatype/datavtype // programs

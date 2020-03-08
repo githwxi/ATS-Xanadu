@@ -217,6 +217,12 @@ s2cstref_make_name("the_string_ctype")
 (* ****** ****** *)
 
 implement
+the_excptn_ctype =
+s2cstref_make_name("the_excptn_ctype")
+
+(* ****** ****** *)
+
+implement
 the_lazy_ctype =
 s2cstref_make_name("the_lazy_ctype")
 implement

@@ -147,12 +147,15 @@ overload subsort with subsort_int_int
 
 datatype
 dctkind =
+//
 | DCKfun of ()
 | DCKval of ()
 | DCKpraxi of ()
 | DCKprfun of ()
 | DCKprval of ()
-| DCKcastfn of ()
+| DCKfcast of ()
+//
+| DCKunknown of ()
 // end of [dcstkind]
 
 (* ****** ****** *)
@@ -195,7 +198,7 @@ funkind =
 //
 | FNKpraxi // proof axiom
 //
-| FNKcastfn // casting fun
+| FNKfcast // casting fun
 //
 // end of [funkind]
 //

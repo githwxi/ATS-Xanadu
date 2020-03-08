@@ -469,6 +469,12 @@ x0.node() of
   , fid, "; ", f3as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
+| D3Etry
+  (tok0, d3e1, dcls) =>
+  fprint!
+  ( out, "D3Etry("
+  , tok0, "; ", d3e1, "; ", dcls, ")")
+//
 | D3Eaddr(d3e1) =>
   (
    fprint!(out, "D3Eaddr(", d3e1, ")")
@@ -478,14 +484,20 @@ x0.node() of
    fprint!(out, "D3Efold(", d3e1, ")")
   )
 //
+| D3Eraise(d3e1) =>
+  (
+  fprint!(out, "D3Eraise(", d3e1, ")")
+  )
+//
 | D3Elazy(d3e1) =>
   (
    fprint!(out, "D3Elazy(", d3e1, ")")
   )
-| D3Ellazy(d3e1, opt2) =>
+| D3Ellazy
+  (d3e1, d3es(*frees*)) =>
   fprint!
   (out
-  , "D3Ellazy(", d3e1, "; ", opt2, ")")
+  , "D3Ellazy(", d3e1, "; ", d3es, ")")
 //
 | D3Eflat(d3e1) =>
   (
@@ -680,6 +692,26 @@ x0.node() of
     case+ body of
     | None _ => "None()"
     | Some _ => "Some(<d3cls>)"): string
+  }
+//
+| D3Cstaload
+  ( tok
+  , src, knd
+  , fopt, flag, body) =>
+  (
+  fprint!
+  ( out
+  , "D3Cstaload("
+  , "src= ", src, "; "
+  , "knd= ", knd, "; "
+  , fopt, "; ", flag, "; ", body, ")")
+  ) where
+  {
+    val body =
+    (
+    case+ body of
+    | None _ => "None()"
+    | Some _ => "Some(<fmodenv>)"): string
   }
 //
 | D3Clocal(head, body) =>

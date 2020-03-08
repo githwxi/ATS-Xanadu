@@ -1240,8 +1240,9 @@ d0e0.node() of
     FXITMatm(d1e0) where
     {
       val d1e0 =
-        d1exp_make_node
+      d1exp_make_node
         (loc0, D1Ecase(knd, d1e1, d1cs))
+      // end of [val]
     }
   end // end of [D0Ecase]
 //
@@ -1319,16 +1320,16 @@ d0e0.node() of
 | D0Elam
   ( knd//lam|lam@
   , arg, res
-  , farrw, fbody, tfini) => let
+  , arrw, body, tend) => let
 //
     val arg =
       trans01_farglst(arg)
     val res =
       trans01_effsexpopt(res)
-    val farrw =
-      trans01_funarrow(farrw)
+    val arrw =
+      trans01_funarrow(arrw)
 //
-    val fbody = trans01_dexp(fbody)
+    val body = trans01_dexp(body)
 //
   in
     FXITMatm(d1e0) where
@@ -1337,14 +1338,14 @@ d0e0.node() of
       d1exp_make_node
       ( loc0
       , D1Elam
-        (knd, arg, res, farrw, fbody))
+        (knd, arg, res, arrw, body))
     }
   end // end of [D1Elam]
 //
 | D0Efix
   ( knd//fix|fix@
   , fid, arg, res
-  , farrw, fbody, tfini) => let
+  , arrw, body, tend) => let
 //
     val fid =
     (
@@ -1357,21 +1358,35 @@ d0e0.node() of
       trans01_farglst(arg)
     val res =
       trans01_effsexpopt(res)
-    val farrw =
-      trans01_funarrow(farrw)
+    val arrw =
+      trans01_funarrow(arrw)
 //
-    val fbody = trans01_dexp(fbody)
+    val body = trans01_dexp(body)
 //
   in
     FXITMatm(d1e0) where
     {
-      val d1e0 =
-      d1exp_make_node
-      ( loc0
-      , D1Efix
-        (knd, fid, arg, res, farrw, fbody))
+    val d1e0 =
+    d1exp_make_node
+    ( loc0
+    , D1Efix
+      (knd, fid, arg, res, arrw, body))
     }
   end // end of [D1Efix]
+//
+| D0Etry
+  ( tbeg, d0e1, twth
+  , tbar, d0cs, tend) => let
+    val d1e1 = trans01_dexp(d0e1)
+    val d1cs = trans01_dclaulst(d0cs)
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+        d1exp_make_node
+        (loc0, D1Etry(tbeg, d1e1, d1cs))
+    }
+  end // end of [D0Etry]
 //
 | D0Eanno(d0e1, s0e2) =>
   let
@@ -1393,7 +1408,6 @@ d0e0.node() of
     {
       val d1e0 =
       d1exp_make_node(loc0, D1Equal(tok1, d1e2))
-      // end of [val]
     }
   end // end of [D0Equal]
 //
@@ -2160,6 +2174,7 @@ case+ xs of
     case- tok.node() of
     | T_IDENT_alp(nam) => nam
     | T_IDENT_sym(nam) => nam
+    | T_IDENT_dlr(nam) => nam
     ) : string // end of [val]
     val sym = $SYM.symbol_make(nam)
   in
@@ -2175,7 +2190,7 @@ in
   let
     val () = loop(ids1)
   in
-    d1ecl_make_node(loc0, D1Cnone(d0cl))
+    d1ecl_make_node(loc0, D1Cnone1(d0cl))
   end
 end // end of [aux_fixity]
 
@@ -2194,23 +2209,25 @@ loop
 (xs: i0dntlst): void =
 (
 case+ xs of
-| list_nil() => ()
-| list_cons (x0, xs) => let
-    val-
-    I0DNTsome(tok) = x0.node()
-    val nam =
-    (
-    case- tok.node() of
-    | T_IDENT_alp(nam) => nam
-    | T_IDENT_sym(nam) => nam
-    ) : string // end of [val]
-    val sym = $SYM.symbol_make(nam)
-  in
-    loop(xs) where
-    {
-      val () =
-      the_fxtyenv_insert(sym, $FIX.FIXTYnon)
-    }
+|
+list_nil() => ()
+|
+list_cons (x0, xs) => let
+  val-
+  I0DNTsome(tok) = x0.node()
+  val nam =
+  (
+  case- tok.node() of
+  | T_IDENT_alp(nam) => nam
+  | T_IDENT_sym(nam) => nam
+  ) : string // end of [val]
+  val sym = $SYM.symbol_make(nam)
+in
+  loop(xs) where
+  {
+  val () =
+  the_fxtyenv_insert(sym, $FIX.FIXTYnon)
+  }
   end
 ) (* end of [loop] *)
 //
@@ -2218,7 +2235,7 @@ in
   let
     val () = loop(ids1)
   in
-    d1ecl_make_node(loc0, D1Cnone(d0cl))
+    d1ecl_make_node(loc0, D1Cnone1(d0cl))
   end
 end // end of [aux_nonfix]
 
@@ -3039,6 +3056,26 @@ d0t0.node() of
 (* ****** ****** *)
 
 fun
+aux_excptcon
+( d0cl
+: d0ecl): d1ecl = let
+//
+val loc0 = d0cl.loc()
+//
+val-
+D0Cexcptcon
+  (knd, d0cs) = d0cl.node()
+//
+val
+d1cs = trans01_datconlst(d0cs)
+//
+in
+  d1ecl_make_node(loc0, D1Cexcptcon(knd, d1cs))
+end // end of [aux_excptcon]
+
+(* ****** ****** *)
+
+fun
 aux_datatype
 ( d0cl
 : d0ecl): d1ecl = let
@@ -3191,6 +3228,7 @@ d0cl.node() of
 //
 | D0Cdatasort _ => aux_datasort(d0cl)
 //
+| D0Cexcptcon _ => aux_excptcon(d0cl)
 | D0Cdatatype _ => aux_datatype(d0cl)
 //
 | D0Cdynconst _ => aux_dynconst(d0cl)

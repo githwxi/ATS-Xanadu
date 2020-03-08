@@ -37,18 +37,18 @@
 //
 (* ****** ****** *)
 //
-castfn
+fcast
 cast{a0:t0}{a1:t0}(a0): (a1)
-castfn
+fcast
 castlin{a0:vt}{a1:vt}(a0): (a1)
 //
 (* ****** ****** *)
 //
-castfn
+fcast
 optn_vt2t
 {a:t0}{b:b0}
 (xs: !optn_vt(a, b)): optn(a, b)
-castfn
+fcast
 list_vt2t
 {a:t0}{n:i0}
 (xs: !list_vt(a, n)): list(a, n)
@@ -69,11 +69,11 @@ fun
 <a:vt>
 p2tr_set(p0: p2tr(a), x0: a): void
 //
-#symload ptr_get with p1tr_get
-#symload ptr_set with p1tr_set
+#symload ptr_get with p1tr_get of 100
+#symload ptr_set with p1tr_set of 100
 //
-#symload ptr_get with p2tr_get
-#symload ptr_set with p2tr_set
+#symload ptr_get with p2tr_get of 100
+#symload ptr_set with p2tr_set of 100
 //
 (* ****** ****** *)
 

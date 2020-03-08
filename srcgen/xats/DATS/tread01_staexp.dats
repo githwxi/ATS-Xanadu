@@ -52,44 +52,59 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
+tread01_sort1(s1t0) = ()
+//
+implement
+//{}(*tmp*)
+tread01_sort1opt(opt0) =
+(
+case+ opt0 of
+| None() => ()
+| Some(s1t0) => tread01_sort1(s1t0)
+)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 tread01_s1exp(s1e0) = ()
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_s1expopt(opt0) =
 (
 case+ opt0 of
 | None() => ()
-| Some(s1e) => tread01_s1exp<>(s1e)
+| Some(s1e0) => tread01_s1exp(s1e0)
 )
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_s1explst(s1es) =
 (
 list_foreach<s1exp>(s1es)
 ) where
 {
 implement(env)
-list_foreach$fwork<s1exp><env>(s1e, env) = tread01_s1exp<>(s1e)
+list_foreach$fwork<s1exp><env>(s1e, env) = tread01_s1exp(s1e)
 } (* end of [tread01_s1explst] *)
 //
 (* ****** ****** *)
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_s1qua(s1q0) = ()
 //
 implement
-{}(*tmp*)
+//{}(*tmp*)
 tread01_s1qualst(s1qs) =
 (
 list_foreach<s1qua>(s1qs)
 ) where
 {
 implement(env)
-list_foreach$fwork<s1qua><env>(s1q, env) = tread01_s1qua<>(s1q)
+list_foreach$fwork<s1qua><env>(s1q, env) = tread01_s1qua(s1q)
 } (* end of [tread01_s1qualst] *)
 //
 (* ****** ****** *)

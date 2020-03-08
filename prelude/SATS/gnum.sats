@@ -38,31 +38,31 @@
 (* ****** ****** *)
 
 fun
-<a:type>
+<a:t0>
 g_0((*void*)): (a)
 fun
-<a:type>
+<a:t0>
 g_1((*void*)): (a)
 fun
-<a:type>
+<a:t0>
 g_2((*void*)): (a)
 
 (* ****** ****** *)
 
 fun
-<a:type>
+<a:t0>
 g_i(i0: sint): (a)
 fun
-<a:type>
+<a:t0>
 g_u(u0: uint): (a)
 
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_pred(x: a): a
 fun
-<a:type>
+<a:t0>
 g_succ(x: a): a
 //
 #symload
@@ -73,10 +73,10 @@ succ with g_succ of 000
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_add(x: a, y: a): a
 fun
-<a:type>
+<a:t0>
 g_sub(x: a, y: a): a
 //
 #symload + with g_add of 000
@@ -85,13 +85,13 @@ g_sub(x: a, y: a): a
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 g_mul(x: a, y: a): a
 fun
-<a:type>
+<a:t0>
 g_div(x: a, y: a): a
 fun
-<a:type>
+<a:t0>
 g_mod(x: a, y: a): a
 //
 #symload * with g_mul of 000

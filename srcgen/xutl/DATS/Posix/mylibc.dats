@@ -62,6 +62,20 @@ xatsopt_memcpy
 (* ****** ****** *)
 //
 implement
+xatsopt_chrunq(src) =
+(
+  $UN.ptr0_get<char>(p1)
+) where
+{
+  val p0 = string2ptr(src)
+  val n0 = g1ofg0(length(src))
+  val () = assertloc(n0 >= 2)
+  val p1 = ptr0_succ<char>(p0)
+} (* end of [xatsopt_chrunq] *)
+//
+(* ****** ****** *)
+//
+implement
 xatsopt_strunq(src) =
 let
 //

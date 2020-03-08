@@ -199,18 +199,20 @@ tnode =
   | T_FIX of int
     // 'fix=lam1' and 'fix@=fix0'
 //
-  | T_LET of () // 'end'
+  | T_LET of () // 'let'
+  | T_TRY of () // 'try'
   | T_WHERE of () // 'where'
   | T_LOCAL of () // 'local'
 //
   | T_ENDLAM of () // 'endlam'
   | T_ENDLET of () // 'endlet'
+  | T_ENDTRY of () // 'endtry'
   | T_ENDWHERE of () // 'endwhere'
   | T_ENDLOCAL of () // 'endlocal'
 //
   | T_FUN of (funkind)
     // fn0, fnx, fn1, fun,
-    // prfn0, prfn1, prfun, praxi, castfn
+    // prfn0, prfn1, prfun, praxi, fcast
   | T_VAL of (valkind)
     // val, val+, val-, prval
 //
@@ -233,6 +235,8 @@ tnode =
   | T_ABSOPEN of ()
 //
   | T_DATASORT of ()
+//
+  | T_EXCPTCON of ()
 //
   | T_DATATYPE of int(*kind*)
 //

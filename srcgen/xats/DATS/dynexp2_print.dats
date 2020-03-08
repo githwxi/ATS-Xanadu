@@ -93,6 +93,9 @@ $FP0.fprint_filpath_full2
 (* ****** ****** *)
 //
 implement
+fprint_val<sort2> = fprint_sort2
+//
+implement
 fprint_val<s2cst> = fprint_s2cst
 implement
 fprint_val<s2var> = fprint_s2var
@@ -483,6 +486,12 @@ case- x0.node() of
   , fid, "; ", f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
+| D2Etry
+  (knd, d2e1, d2cls) =>
+  fprint!
+  ( out, "D2Etry("
+  , knd, "; ", d2e1, "; ", d2cls, ")")
+//
 (*
 | D2Eflat(d2e1) =>
   fprint!(out, "D2Eflat(", d2e1, ")")
@@ -495,12 +504,15 @@ case- x0.node() of
 | D2Efold(d2e1) =>
   fprint!(out, "D2Efold(", d2e1, ")")
 //
+| D2Eraise(d2e1) =>
+  fprint!(out, "D2Eraise(", d2e1, ")")
+//
 | D2Elazy(d2e1) =>
+  fprint!(out, "D2Elazy(", d2e1, ")")
+| D2Ellazy
+  (d2e1, d2es(*frees*)) =>
   fprint!
-  (out, "D2Elazy(", d2e1, ")")
-| D2Ellazy(d2e1, opt2) =>
-  fprint!
-  (out, "D2Ellazy(", d2e1, "; ", opt2, ")")
+  (out, "D2Ellazy(", d2e1, "; ", d2es, ")")
 //
 | D2Eanno(d2e1, s2e2) =>
   fprint!
@@ -606,6 +618,12 @@ fprint_d2ecl
 (
 case- x0.node() of
 //
+| D2Cnone0() =>
+  fprint!(out, "D2Cnone0(", ")")
+| D2Cnone1(d1csrc) =>
+  fprint!
+  (out, "D2Cnone1(", d1csrc, ")")
+//
 | D2Cstatic
   (tok, d2c) =>
   fprint!(out, "D2Cstatic(", d2c, ")")
@@ -695,6 +713,27 @@ case- x0.node() of
   , "D2Csymload("
   , tok, "; ", sym0, "; ", dpi1, ")")
 //
+| D2Cdatasort(d1cl, s2ts) =>
+  fprint!
+  ( out
+  , "D2Cdatasort(", d1cl, "; ", s2ts, ")")
+//
+| D2Cexcptcon(d1cl, d2cs) =>
+  fprint!
+  ( out
+  , "D2Cexcptcon(", d1cl, "; ", d2cs, ")")
+| D2Cdatatype(d1cl, s2cs) =>
+  fprint!
+  ( out
+  , "D2Cdatatype(", d1cl, "; ", s2cs, ")")
+//
+| D2Cdynconst
+  (knd, tqas, d2cs) =>
+  fprint!
+  ( out
+  , "D2Cynconst("
+  , knd, "; ", tqas, "; ", d2cs, ")")
+//
 | D2Cvaldecl
   (knd, mopt, v2ds) =>
   fprint!
@@ -733,23 +772,6 @@ case- x0.node() of
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
-//
-| D2Cdatasort(d1c) =>
-  fprint!(out, "D2Cdatasort(", d1c, ")")
-| D2Cdatatype(d1c) =>
-  fprint!(out, "D2Cdatatype(", d1c, ")")
-//
-| D2Cdynconst
-  (knd, tqas, d2cs) =>
-  fprint!
-  ( out
-  , "D2Cynconst("
-  , knd, "; ", tqas, "; ", d2cs, ")")
-//
-| D2Cnone0() =>
-  fprint!(out, "D2Cnone0(", ")")
-| D2Cnone1(d1csrc) =>
-  fprint!(out, "D2Cnone1(", d1csrc, ")")
 //
 ) (* end of [fprint_d2ecl] *)
 

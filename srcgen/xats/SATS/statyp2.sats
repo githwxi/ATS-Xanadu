@@ -174,6 +174,11 @@ the_t2ype_string: t2ype
 //
 (* ****** ****** *)
 //
+val
+the_t2ype_excptn: t2ype
+//
+(* ****** ****** *)
+//
 val the_t2ype_lazy: t2ype
 val the_t2ype_llazy: t2ype
 //
@@ -245,8 +250,12 @@ overload .node with t2ype_get_node
 //
 fun
 t2bas_eval(t2p: t2ype): t2ype
+//
 fun
 t2ype_eval(t2p: t2ype): t2ype
+//
+fun
+t2ype_evalrec(t2p: t2ype): t2ype
 //
 (* ****** ****** *)
 //

@@ -555,10 +555,7 @@ case+ x0.node() of
   , d0cs, "; ", topt, "; ", d0es, "; ", tok2, ")")
 //
 | D0Ewhere(d0e1, d0cs) =>
-  fprint!
-  ( out
-  , "D0Ewhere(", d0e1, "; ", d0cs, ")")
-//
+  fprint!(out, "D0Ewhere(", d0e1, "; ", d0cs, ")")
 //
 | D0Ebrack
   (tbeg, d0es, tend) =>
@@ -572,25 +569,36 @@ case+ x0.node() of
   , "D0Edtsel(", tdot, "; ", lab1, "; ", arg2, ")")
 //
 | D0Elam
-  (tok0, arg1, res2, farrw, fbody, tend) =>
+  ( tok0
+  , arg1, res2
+  , arrw, body, tend) =>
   fprint!
   ( out
   , "D0Elam(", tok0, "; "
-  , arg1, "; ", res2, "; ", farrw, "; ", fbody, "; ", tend, ")")
+  , arg1, "; ", res2, "; ", arrw, "; ", body, "; ", tend, ")")
 | D0Efix
-  (tok0, fid0, arg1, res2, farrw, fbody, tend) =>
+  ( tok0, fid0
+  , arg1, res2
+  , arrw, body, tend) =>
   fprint!
   ( out
-  , "D0Efix(", tok0, "; "
-  , fid0, "; ", arg1, "; ", res2, "; ", farrw, "; ", fbody, "; ", tend, ")")
+  , "D0Efix(", tok0, "; ", fid0, "; "
+  , arg1, "; ", res2, "; ", arrw, "; ", body, "; ", tend, ")")
+//
+| D0Etry
+  (tok0, d0e1, twth, tbar, d0cs, tend) =>
+  fprint!
+  ( out
+  , "D0Etry(", tok0, "; "
+  , d0e1, "; ", twth, "; ", tbar, "; ", "...", "; ", tend, ")")
 //
 | D0Eanno
-  (d0e, ann) =>
-  fprint!(out, "D0Eanno(", d0e, "; ", ann, ")")
+  (d0e1, s0e2) =>
+  fprint!(out, "D0Eanno(", d0e1, "; ", s0e2, ")")
 //
 | D0Equal
-  (tok, d0e) =>
-  fprint!(out, "D0Equal(", tok, "; ", d0e, ")")
+  (tok0, d0e1) =>
+  fprint!(out, "D0Equal(", tok0, "; ", d0e1, ")")
 //
 | D0Enone(tok) => fprint!(out, "D0Enone(", tok, ")")
 //
@@ -985,6 +993,10 @@ case+ x0.node() of
 | D0Cdatasort(tok, d0cs) =>
   fprint!(out, "D0Cdatasort(", tok, "; ", d0cs, ")")
 //
+| D0Cexcptcon(tok, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cexcptcon(", tok, "; ", d0cs, ")")
 | D0Cdatatype(tok, d0cs, wopt) =>
   fprint!
   ( out

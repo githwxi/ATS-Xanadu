@@ -83,7 +83,7 @@ macdef
 T_PRAXI_ = T_FUN(FNKpraxi)
 //
 macdef
-T_CASTFN_ = T_FUN(FNKcastfn)
+T_FCAST_ = T_FUN(FNKfcast)
 //
 (* ****** ****** *)
 //
@@ -289,15 +289,17 @@ val () = myins("lam", T_LAM(0))
 val () = myins("fix", T_FIX(0))
 //
 val () = myins("let", T_LET)
+val () = myins("try", T_TRY)
 val () = myins("where", T_WHERE)
 val () = myins("local", T_LOCAL)
 //
 val () = myins("endlam", T_ENDLAM)
 val () = myins("endlet", T_ENDLET)
-val () = myins("endloc", T_ENDLOCAL)
+val () = myins("endtry", T_ENDTRY)
 val () = myins("endwhr", T_ENDWHERE)
-val () = myins("endlocal", T_ENDLOCAL)
 val () = myins("endwhere", T_ENDWHERE)
+val () = myins("endloc", T_ENDLOCAL)
+val () = myins("endlocal", T_ENDLOCAL)
 //
 val () = myins("fn", T_FN_)
 val () = myins("fn0", T_FN0_)
@@ -311,7 +313,7 @@ val () = myins("prfn1", T_PRFN1_)
 val () = myins("prfun", T_PRFUN_)
 val () = myins("praxi", T_PRAXI_)
 //
-val () = myins("castfn", T_CASTFN_)
+val () = myins("fcast", T_FCAST_)
 //
 val () = myins("val", T_VAL_)
 val () = myins("prval", T_PRVAL_)
@@ -352,6 +354,9 @@ val () = myins("absvtflt", T_ABSVTFLT_)
 //
 val () = myins("absimpl", T_ABSIMPL)
 val () = myins("absopen", T_ABSOPEN)
+//
+val () = myins("#excptn", T_EXCPTCON)
+val () = myins("excptcon", T_EXCPTCON)
 //
 val () = myins("datasort", T_DATASORT)
 //

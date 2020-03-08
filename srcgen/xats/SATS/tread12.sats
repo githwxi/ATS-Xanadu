@@ -64,7 +64,7 @@ trerr12lst = List0(trerr12)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 trerr12_add(trerr12): void
 //
 (* ****** ****** *)
@@ -74,103 +74,103 @@ tread12_main(d2eclist): void
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread12_sort2: treader12(sort2)
-fun{}
+fun//{}
 tread12_s2txt: treader12(s2txt)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread12_s2cst: treader12(s2cst)
-fun{}
+fun//{}
 tread12_s2cstlst: treader12(s2cstlst)
 //
-fun{}
+fun//{}
 tread12_s2var: treader12(s2var)
-fun{}
+fun//{}
 tread12_s2varlst: treader12(s2varlst)
 //
-fun{}
+fun//{}
 tread12_s2exp: treader12(s2exp)
-fun{}
+fun//{}
 tread12_s2expopt: treader12(s2expopt)
-fun{}
+fun//{}
 tread12_s2explst: treader12(s2explst)
 //
-fun{}
+fun//{}
 tread12_labs2exp: treader12(labs2exp)
-fun{}
+fun//{}
 tread12_labs2explst: treader12(labs2explst)
 //
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread12_abstdf2: treader12(abstdf2)
 
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread12_effs2expopt: treader12(effs2expopt)
 
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread12_d2cst: treader12(d2cst)
-fun{}
+fun//{}
 tread12_d2cstlst: treader12(d2cstlst)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread12_d2pat: treader12(d2pat)
-fun{}
+fun//{}
 tread12_d2patopt: treader12(d2patopt)
-fun{}
+fun//{}
 tread12_d2patlst: treader12(d2patlst)
 //
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread12_d2exp: treader12(d2exp)
-fun{}
+fun//{}
 tread12_d2expopt: treader12(d2expopt)
-fun{}
+fun//{}
 tread12_d2explst: treader12(d2explst)
 //
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread12_dsapparg: treader12(s2explst)
-fun{}
+fun//{}
 tread12_dtapparg: treader12(s2explst)
 
 (* ****** ****** *)
 //
-fun{}
+fun//{}
 tread12_d2ecl: treader12(d2ecl)
-fun{}
+fun//{}
 tread12_d2eclist: treader12(d2eclist)
 //
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread12_f2arg: treader12(f2arg)
-fun{}
+fun//{}
 tread12_f2arglst: treader12(f2arglst)
 
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread12_tq2arg: treader12(tq2arg)
-fun{}
+fun//{}
 tread12_tq2arglst: treader12(tq2arglst)
 
 (* ****** ****** *)
 
-fun{}
+fun//{}
 tread12_f2undecl: treader12(f2undecl)
-fun{}
+fun//{}
 tread12_f2undeclist: treader12(f2undeclist)
 
 (* ****** ****** *)

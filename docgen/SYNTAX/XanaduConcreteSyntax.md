@@ -15,9 +15,9 @@ expected that various extensions to Xanadu will be built in the future
 that compile back to Xanadu itself.
 
 The concrete syntax of Xanadu has its root in ML, and its design is
-also influenced by C and Lisp. In this document, please find an informal
-presentation of the concrete syntax of Xanadu, which primarily relies on
-code examples for illustration.
+also influenced by C and Lisp. In this document, please find an
+informal and partial presentation of the concrete syntax of Xanadu,
+which primarily relies on code examples for illustration.
 
 Primitive Constants
 -------------------
@@ -35,9 +35,9 @@ assumed by default that the base of a representation is 10 unless the
 first digit is 0, which indicates that the base is 8. For using base
 16, one needs to start a representation with either 0x or 0X. Note
 that the hexdecimal digits of values from 10 to 15 are represented as
-letters *a*, *b*, *c*, *d*, *e*, and *f*. And the uppercase of each of
-these six letters can be used as well. Please find some integer
-representations as follows:
+letters *a*, *b*, *c*, *d*, *e*, and *f*, respectively. And the
+uppercase of each of these six letters can be used as well. Please
+find some integer representations as follows:
 
 - <code>01234567</code>
 - <code>123456789</code>
@@ -112,9 +112,9 @@ The following keywords are for forming expressions:
   been supported elsewhere.
 - <code>$raise</code>:
   for raising a run-time exception (which may be caught by a handler). Xanadu supports
-  the use of exceptions for changing control-flow in program execution.
+  the use of exceptions for altering control-flow in program execution.
 - <code>$tup</code>:
-  for forming a boxed tuple. Note that $tup$ is resolved to either $tup_t or $tup_vt.
+  for forming a boxed tuple. Note that $tup is resolved to either $tup_t or $tup_vt.
 - <code>$tup_t</code>: for forming a boxed tuple containing no linear components.
 - <code>$tup_vt</code>:
   for forming a boxed tuple that may contain linear components. The formed tuple is
@@ -224,7 +224,70 @@ There are many forms of static expressions in Xanadu.
 Dynamic Expressions
 ------------------
 
-There are many forms of dynamic expressions in Xanadu.
+There are many forms of dynamic expressions in Xanadu.  A dynamic
+expression is atomic if it cannot result in parsing ambiguities when
+put in any contexts.
+
+### Let-expressions
+
+Let-expressions are atomic.
+A let-expression starts with the keyword `let` and ends with the
+keyword `end` (or `endlet` if one likes); what is between these two
+keywords consists of a sequence of declarations and a sequence of
+dynamic expressions, which are separated by the keyword `in`. Please
+find some examples of let-expressions as follows:
+
+```
+let
+val x = 1
+fun f(y:int): int = x + y in f(x) * f(x+1) endlet
+```
+
+```
+let
+val PI = 3.14
+fun
+area
+(rad: double): double = PI * rad * rad in area(10.0)
+end
+```
+
+### Try-expressions
+
+Try-expressions are atomic.
+A try-expression starts with the keyword `try` and ends with the
+keyword `end` (or `endtry` if one likes); what is between these two
+keywords consists of a dynamic expression and a sequence of pattern
+matching clauses, which are separated by the keyword `with`. Please
+find some examples of try-expressions as follows:
+
+```
+try
+let
+val () = loop(xs) in true
+endlet
+with
+| ~TRUE() => true | ~FALSE() => false
+endtry
+```
+
+```
+try auxlst(xs); false with ~TRUE() => true end
+```
+
+### Lazy-expressions
+
+A lazy expression starts with the keyword `$lazy` followed by an
+atomic expression.
+
+### Llazy-expressions
+
+A llazy (that is, linearly lazy) expression starts with the keyword
+`$llazy` followed by an atomic expression such that the atomic expression
+represents a sequence of expressions where the last one is the suspended
+computation and those before the last one are for freeing the resources contained
+in the suspended computation.
+
 
 Static Declarations
 -------------------

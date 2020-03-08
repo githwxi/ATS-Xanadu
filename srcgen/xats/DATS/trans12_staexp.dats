@@ -1938,14 +1938,14 @@ implement
 trans12_sexp_ck
   (s1e0, s2t0) = let
 //
-// (*
+(*
 val () =
 println!
 ("trans12_sexp_ck: s1e0 = ", s1e0)
 val () =
 println!
 ("trans12_sexp_ck: s2t0 = ", s2t0)
-// *)
+*)
 //
 in
 //
@@ -1956,11 +1956,15 @@ _(*rest-of-s1exp*) =>
 let
 val s2e0 =
 trans12_sexp(s1e0)
+//
+(*
 val ((*void*)) =
 println!
 ("\
 trans12_sexp_ck: \
 s2e0.sort() = ", s2e0.sort())
+*)
+//
 in
   if
   s2e0.sort() <= s2t0

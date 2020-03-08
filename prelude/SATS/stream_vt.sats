@@ -49,6 +49,12 @@ fun
 stream_vt_pair(x0: a, y0: a): stream_vt(a)
 
 (* ****** ****** *)
+
+fun
+<a:vt>
+stream_vt_free(xs: stream_vt(a)): void
+
+(* ****** ****** *)
 //
 fun
 <a:vt>
@@ -58,6 +64,15 @@ fun
 <a:vt>
 stream_vt_append
 (xs: stream_vt(a), ys: stream_vt(a)): stream_vt(a)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+stream_vt_forall0(stream_vt(x0)): bool
+fun
+<x0:vt>
+stream_vt_foreach0(stream_vt(x0)): void
 //
 (* ****** ****** *)
 //
@@ -83,7 +98,7 @@ stream_vt_filter0(stream_vt(x0)): stream_vt(x0)
 (* ****** ****** *)
 //
 (*
-stream_vt_mapopt: mapopt0$fopr
+stream_vt_mapopt: map + filter
 *)
 fun
 <x0:vt>

@@ -48,6 +48,7 @@ filpathopt = $FP0.filpathopt
 //
 #staload
 LEX = "./lexing.sats"
+typedef tnode = $LEX.tnode
 typedef token = $LEX.token
 //
 (* ****** ****** *)
@@ -268,6 +269,15 @@ overload .sym with d2var_get_sym
 (* ****** ****** *)
 //
 fun
+d2cst_iscast(d2cst): bool
+fun
+d2cst_get_kind(d2cst): tnode
+fun
+d2var_get_kind(d2var): tnode
+//
+(* ****** ****** *)
+//
+fun
 d2con_get_sexp(d2con): s2exp
 fun
 d2con_get_type(d2con): t2ype
@@ -351,23 +361,34 @@ overload = with eq_d2var_d2var
 (* ****** ****** *)
 //
 fun
+d2cst_make_dvar
+(d2v: d2var): d2cst
+//
+fun
 d2con_make_idtp
-(id: token, s2e: s2exp): d2con
+(id0: token, s2e: s2exp): d2con
 //
 fun
 d2cst_make_idtp
-( id: token
+( id0: token
+, knd: tnode
 , tqas: tq2as, s2e0: s2exp): d2cst
-//
 fun
-d2cst_make_dvar(d2v: d2var): d2cst
+stamp_d2cst_kind(d2cst, tnode): void
 //
 (* ****** ****** *)
 //
 fun
 d2var_new1(tok: token): d2var
 fun
-d2var_new2(loc_t, sym_t): d2var
+d2var_new2
+(loc: loc_t, id0: sym_t): d2var
+//
+fun
+d2var_make_idvk
+(loc_t, sym_t, knd: tnode): d2var
+fun
+stamp_d2var_kind(d2var, tnode): void
 //
 (* ****** ****** *)
 //
@@ -745,6 +766,9 @@ d2exp_node =
   , f2arglst(*arg*)
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
+| D2Etry of
+  (token(*TRY*), d2exp(*val*), d2claulst)
+  // D2Etry
 //
 (*
 | D2Eflat of d2exp(*l-value*)
@@ -754,11 +778,13 @@ d2exp_node =
 | D2Eeval of d2exp(*ptr/lazy*)
 | D2Efold of d2exp(*open-con*)
 //
+| D2Eraise of d2exp(*lin-exn*)
+//
 // HX: for lazy-evaluation
 | D2Elazy of
   (d2exp(*eval*)) // nonlin
 | D2Ellazy of
-  (d2exp(*eval*), d2expopt(*free*)) // linear
+  (d2exp(*eval*), d2explst(*frees*)) // linear
 //
 | D2Eanno of (d2exp(*applst*), s2exp(*type*))
 //
@@ -1102,17 +1128,26 @@ d2ecl_node =
 | D2Cabsimpl of (d1ecl)
 *)
 | D2Cabsimpl of
-  ( token(*kind*), impls2cst, s2exp(*def*))
+  ( token(*abskind*)
+  , impls2cst, s2exp(*definition*))
 //
 | D2Csymload of
   ( token(*symload*)
-  , sym_t(*loaded*), d2pitm(*loading*))
+  , sym_t(* loaded *), d2pitm(* loading *))
+//
+| D2Cdatasort of (d1ecl, sort2lst)
+//
+| D2Cexcptcon of (d1ecl, d2conlst)
+| D2Cdatatype of (d1ecl, s2cstlst)
+//
+| D2Cdynconst of
+  (token(*dctkind*), tq2arglst, d2cstlst)
 //
 | D2Cvaldecl of
-  (token(*knd*), decmodopt, v2aldeclist)
+  (token(*valknd*), decmodopt, v2aldeclist)
 //
 | D2Cvardecl of
-  (token(*knd*), decmodopt, v2ardeclist)
+  (token(*varknd*), decmodopt, v2ardeclist)
 //
 | D2Cfundecl of
   ( token(*funkind*)
@@ -1128,12 +1163,6 @@ d2ecl_node =
   , decmodopt
   , sq2arglst, tq2arglst
   , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
-//
-| D2Cdatasort of (d1ecl)
-| D2Cdatatype of (d1ecl)
-//
-| D2Cdynconst of
-  (token(*kind*), tq2arglst, d2cstlst)
 //
 // end of [d2ecl_node]
 //

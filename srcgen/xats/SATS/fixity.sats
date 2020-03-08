@@ -114,6 +114,10 @@ val imp_prcdv : prcdv
 val brack_prcdv : prcdv
 val dtsel_prcdv : prcdv
 //
+(*
+val raise_prcdv : prcdv
+*)
+//
 val forall_prcdv : prcdv
 and exists_prcdv : prcdv
 //
@@ -146,6 +150,10 @@ val imp_fixty : fixty
 //
 val brack_fixty : fixty
 val dtsel_fixty : fixty
+//
+(*
+val raise_fixty : fixty
+*)
 //
 val forall_fixty : fixty
 and exists_fixty : fixty
