@@ -117,6 +117,149 @@ char_print<> = xint_char_print
 //
 (* ****** ****** *)
 //
+// prelude/gint.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gint_print_sint
+  (x0: sint): void = $ext()
+impltmp
+gint_print_sint<> = xint_gint_print_sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gint_succ_sint
+{i:int}
+(x0: sint(i)): sint(i+1) = $ext()
+#extern
+fun
+xint_gint_pred_sint
+{i:int}
+(x0: sint(i)): sint(i-1) = $ext()
+impltmp
+gint_succ_sint<> = xint_gint_succ_sint
+impltmp
+gint_pred_sint<> = xint_gint_pred_sint
+//
+(* ****** ****** *)
+
+#extern
+fun
+xint_gint_lt_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): bool(i<j) = $ext()
+impltmp
+gint_lt_sint_sint<> = xint_gint_lt_sint_sint
+
+#extern
+fun
+xint_gint_gt_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): bool(i>j) = $ext()
+impltmp
+gint_gt_sint_sint<> = xint_gint_gt_sint_sint
+
+#extern
+fun
+xint_gint_eq_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): bool(i=j) = $ext()
+impltmp
+gint_eq_sint_sint<> = xint_gint_eq_sint_sint
+
+#extern
+fun
+xint_gint_lte_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): bool(i<=j) = $ext()
+impltmp
+gint_lte_sint_sint<> = xint_gint_lte_sint_sint
+
+#extern
+fun
+xint_gint_gte_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): bool(i>=j) = $ext()
+impltmp
+gint_gte_sint_sint<> = xint_gint_gte_sint_sint
+
+#extern
+fun
+xint_gint_neq_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): bool(i!=j) = $ext()
+impltmp
+gint_neq_sint_sint<> = xint_gint_neq_sint_sint
+
+(* ****** ****** *)
+
+#extern
+fun
+xint_gint_cmp_sint_sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint(sgn(i-j)) = $ext()
+impltmp
+gint_cmp_sint_sint<> = xint_gint_cmp_sint_sint
+
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gint_add_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): sint( i+j ) = $ext()
+impltmp
+gint_add_sint_sint<> = xint_gint_add_sint_sint
+#extern
+fun
+xint_gint_sub_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): sint( i+j ) = $ext()
+impltmp
+gint_sub_sint_sint<> = xint_gint_sub_sint_sint
+//
+#extern
+fun
+xint_gint_mul_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): sint( i+j ) = $ext()
+impltmp
+gint_mul_sint_sint<> = xint_gint_mul_sint_sint
+#extern
+fun
+xint_gint_div_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): sint( i+j ) = $ext()
+impltmp
+gint_div_sint_sint<> = xint_gint_div_sint_sint
+#extern
+fun
+xint_gint_mod_sint_sint
+{i,j:int}
+( x: sint(i)
+, y: sint(j)): sint( i+j ) = $ext()
+impltmp
+gint_mod_sint_sint<> = xint_gint_mod_sint_sint
+//
+(* ****** ****** *)
+//
 // prelude/string.sats
 //
 (* ****** ****** *)
