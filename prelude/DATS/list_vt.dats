@@ -10,6 +10,34 @@
 *)
 
 (* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_vt_free
+  {n}(xs) = let
+( loop(xs) ) where
+{
+fun
+loop
+{n:nat}.<n>.
+(xs: list_vt(a, n)): void =
+(
+case+ xs of
+|
+~ list_vt_nil() => ()
+|
+~ list_vt_cons(x0, xs) =>
+  let
+  val () = g_free<a>(x0) in loop(xs)
+  end
+) (* end of [loop] *)
+} (* end of [list_vt_free] *)
+//
+impltmp
+<a>(*tmp*)
+g_free<list_vt(a)> = list_vt_free<a>
+//
+(* ****** ****** *)
 
 impltmp
 <a>(*tmp*)
