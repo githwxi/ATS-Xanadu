@@ -67,6 +67,15 @@ stream_vt_append
 //
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+stream_vt_forall0(stream_vt(x0)): bool
+fun
+<x0:vt>
+stream_vt_foreach0(stream_vt(x0)): void
+//
+(* ****** ****** *)
+//
 (*
 stream_vt_map0: map0$fopr
 *)

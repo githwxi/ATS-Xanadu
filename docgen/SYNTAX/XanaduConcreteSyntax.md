@@ -275,6 +275,19 @@ endtry
 try auxlst(xs); false with ~TRUE() => true end
 ```
 
+### Lazy-expressions
+
+A lazy expression starts with the keyword `$lazy` followed by an
+atomic expression.
+
+### Llazy-expressions
+
+A llazy (that is, linearly lazy) expression starts with the keyword
+`$llazy` followed by an atomic expression such that the atomic expression
+represents a sequence of expressions where the last one is the suspended
+computation and those before the last one are for freeing the resources contained
+in the suspended computation.
+
 
 Static Declarations
 -------------------
