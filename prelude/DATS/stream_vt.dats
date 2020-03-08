@@ -22,7 +22,7 @@ stream_vt_cons
 (
 $llazy
 (
-g_free(xs);
+$free(xs);
 strmcon_vt_cons{x0}(x0, xs))
 )
 //
@@ -70,8 +70,8 @@ fun
 append(xs, ys) =
 $llazy
 (
-g_free(xs);
-g_free(ys);
+$free(xs);
+$free(ys);
 case+ !xs of
 | ~strmcon_vt_nil() => !ys
 | ~strmcon_vt_cons(x0, xs) =>
@@ -123,7 +123,7 @@ auxmain
 $llazy
 (
 //
-g_free(xs);
+$free(xs);
 //
 case+ !xs of
 |
@@ -153,7 +153,7 @@ auxmain
 : stream_vt(x0) =
 $llazy
 (
-g_free(xs);
+$free(xs);
 auxloop($eval(xs)))
 and
 auxloop
@@ -195,7 +195,7 @@ auxmain
 : stream_vt(y0) =
 $llazy
 (
-g_free(xs);
+$free(xs);
 auxloop($eval(xs)))
 and
 auxloop
