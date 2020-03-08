@@ -141,12 +141,10 @@ gint_mod
 //
 (* ****** ****** *)
 //
-fun//<>
-gint_print_sint
-  (x: sint): void = $ext()
-fun//<>
-gint_print_uint
-  (y: uint): void = $ext()
+fun<>
+gint_print_sint(x: sint): void
+fun<>
+gint_print_uint(y: uint): void
 //
 #symload
 print with gint_print_sint of 110
@@ -155,74 +153,70 @@ print with gint_print_uint of 110
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 gint_succ_sint
-{i:int}
-(x: sint(i)): sint(i+1) = $ext()
-fun//<>
+{i:int}(x: sint(i)): sint(i+1)
+fun<>
 gint_pred_sint
-{i:int}
-(x: sint(i)): sint(i-1) = $ext()
+{i:int}(x: sint(i)): sint(i-1)
 //
 #symload succ with gint_succ_sint of 110
 #symload pred with gint_pred_sint of 110
 //
-fun//<>
+fun<>
 gint_succ_uint
-{i:int}
-(x: uint(i)): uint(i+1) = $ext()
-fun//<>
+{i:int}(x: uint(i)): uint(i+1)
+fun<>
 gint_pred_uint
-{i:int|i>0}
-(x: uint(i)): uint(i-1) = $ext()
+{i:int|i>0}(x: uint(i)): uint(i-1)
 //
 #symload succ with gint_succ_uint of 110
 #symload pred with gint_pred_uint of 110
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 gint_lt_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i<j) = $ext()
+, y: sint(j)): bool(i<j) // = $ext()
 #symload < with gint_lt_sint_sint of 120
-fun//<>
+fun<>
 gint_gt_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i>j) = $ext()
+, y: sint(j)): bool(i>j) // = $ext()
 #symload > with gint_gt_sint_sint of 120
-fun//<>
+fun<>
 gint_eq_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i=j) = $ext()
+, y: sint(j)): bool(i=j) // = $ext()
 #symload = with gint_eq_sint_sint of 120
 //
-fun//<>
+fun<>
 gint_lte_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i<=j) = $ext()
+, y: sint(j)): bool(i<=j) // = $ext()
 #symload <= with gint_lte_sint_sint of 120
-fun//<>
+fun<>
 gint_gte_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i>=j) = $ext()
+, y: sint(j)): bool(i>=j) // = $ext()
 #symload >= with gint_gte_sint_sint of 120
 //
-fun//<>
+fun<>
 gint_neq_sint_sint
 {i,j:int}
 ( x: sint(i)
-, y: sint(j)): bool(i!=j) = $ext()
+, y: sint(j)): bool(i!=j) // = $ext()
 #symload != with gint_neq_sint_sint of 120
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 gint_cmp_sint_sint
 {i,j:int}
 ( x: sint(i)
@@ -231,27 +225,27 @@ gint_cmp_sint_sint
 //
 (* ****** ****** *)
 
-fun//<>
+fun<>
 gint_add_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): sint(i+j) = $ext()
-fun//<>
+fun<>
 gint_sub_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): sint(i-j) = $ext()
-fun//<>
+fun<>
 gint_mul_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): sint(i*j) = $ext()
-fun//<>
+fun<>
 gint_div_sint_sint
 {i,j:int | j != 0}
 ( x: sint(i)
 , y: sint(j)): sint(i/j) = $ext()
-fun//<>
+fun<>
 gint_mod_sint_sint
 {i,j:int | j >= 1}
 ( x: sint(i)
@@ -265,27 +259,27 @@ gint_mod_sint_sint
 //
 (* ****** ****** *)
 
-fun//<>
+fun<>
 gint_add_uint_uint
 {i,j:int}
 ( x: uint(i)
 , y: uint(j)): uint(i+j) = $ext()
-fun//<>
+fun<>
 gint_sub_uint_uint
 {i,j:int | i >= j}
 ( x: uint(i)
 , y: uint(j)): uint(i-j) = $ext()
-fun//<>
+fun<>
 gint_mul_uint_uint
 {i,j:int}
 ( x: uint(i)
 , y: uint(j)): uint(i*j) = $ext()
-fun//<>
+fun<>
 gint_div_uint_uint
 {i,j:int | j >= 1}
 ( x: uint(i)
 , y: uint(j)): uint(i/j) = $ext()
-fun//<>
+fun<>
 gint_mod_uint_uint
 {i,j:int | j >= 1}
 ( x: uint(i)
