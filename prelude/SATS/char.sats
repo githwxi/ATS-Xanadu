@@ -38,29 +38,29 @@
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 char_eqzq
 {c:char}
 (c0: char(c)): bool(c=0)
-fun//<>
+fun<>
 char_neqzq
 {c:char}
 (c0: char(c)): bool(c>0)
 //
-fun//<>
+fun<>
 char_equal
 {c1,c2:char}
 ( c1: char(c1)
 , c2: char(c2)): bool(c1=c2)
-fun//<>
-char_nequal
+fun<>
+char_noteq
 {c1,c2:char}
 ( c1: char(c1)
 , c2: char(c2)): bool(c1!=c2)
 //
 (* ****** ****** *)
 
-fun//<>
+fun<>
 char_print(c0: char): void
 #symload print with char_print of 110
 

@@ -37,7 +37,7 @@
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 bool_neg
 {b:bool}
 (x: bool(b)): bool(~b)
@@ -47,12 +47,12 @@ bool_neg
 //
 (* ****** ****** *)
 //
-fun//<>
+fun<>
 bool_add
 {b1,b2:bool}
 ( x: bool(b1)
 , y: bool(b2)): bool(b1+b2)
-fun//<>
+fun<>
 bool_mul
 {b1,b2:bool}
 ( x: bool(b1)
@@ -63,7 +63,7 @@ bool_mul
 //
 (* ****** ****** *)
 
-fun//<>
+fun<>
 bool_print(b0: bool): void
 #symload print with bool_print of 110
 
