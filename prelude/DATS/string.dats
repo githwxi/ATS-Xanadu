@@ -88,7 +88,7 @@ in (* in-of-local *)
 (* ****** ****** *)
 //
 impltmp
-g_print<xs> = string_print
+g_print<xs> = string_print<>
 //
 (*
 impltmp

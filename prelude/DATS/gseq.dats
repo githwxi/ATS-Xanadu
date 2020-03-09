@@ -167,6 +167,7 @@ impltmp
 <x0,xs>
 gseq_print(xs) =
 let
+//
 val () =
 gseq_print$beg<x0,xs>()
 //
