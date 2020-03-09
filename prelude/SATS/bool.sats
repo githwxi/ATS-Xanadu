@@ -42,8 +42,9 @@ bool_neg
 {b:bool}
 (x: bool(b)): bool(~b)
 //
-#symload ~ with bool_neg of 100
-#symload not with bool_neg of 100
+#symload ~ with bool_neg of 110
+#symload neg with bool_neg of 110
+#symload not with bool_neg of 110
 //
 (* ****** ****** *)
 //
@@ -58,8 +59,8 @@ bool_mul
 ( x: bool(b1)
 , y: bool(b2)): bool(b1*b2)
 //
-#symload + with bool_add of 100
-#symload * with bool_mul of 100
+#symload + with bool_add of 110
+#symload * with bool_mul of 110
 //
 (* ****** ****** *)
 

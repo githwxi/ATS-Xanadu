@@ -215,6 +215,12 @@ fun
 <y0:vt>
 gseq_map_rlist(xs): list_vt(y0)
 //
+fun
+<x0:t0
+,xs:t0>
+<y0:vt>
+gseq_map_stream(xs): stream_vt(y0)
+//
 (* ****** ****** *)
 
 fun
@@ -301,6 +307,17 @@ fun
 <x0:t0
 ,xs:t0>
 gseq_iforeach(xs): void
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_indexof
+(xs: xs, x0: x0): sint // ~1: ~found
+fun
+<x0:t0
+,xs:t0>
+gseq_rindexof
+(xs: xs, x0: x0): sint // ~1: ~found
 //
 (* ****** ****** *)
 //

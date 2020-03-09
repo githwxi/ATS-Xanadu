@@ -60,10 +60,10 @@ g_print(x: !(a)): void
 
 fun
 <a:vt>
-g_equal(!a, !a): void
+g_equal(!a, !a): bool
 fun
 <a:vt>
-g_noteq(!a, !a): void
+g_noteq(!a, !a): bool
 
 (* ****** ****** *)
 

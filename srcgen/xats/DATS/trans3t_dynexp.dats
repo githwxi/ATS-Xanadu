@@ -846,18 +846,67 @@ case+ v3ds of
 } (* end of [aux_valdecl] *)
 
 (* ****** ****** *)
-
+//
 fun
 aux_vardecl
 ( env0
 : !implenv
 , d3cl: d3ecl): d3ecl =
-(
-  d3cl
-) where
+let
+//
+val-
+D3Cvardecl
+( knd
+, mopt
+, v3ds) = d3cl.node()
+//
+val v3ds = auxv3ds(env0, v3ds)
+//
+in
+d3ecl_make_node
+(d3cl.loc(), D3Cvardecl(knd, mopt, v3ds))
+end where
 {
- // HX: yet-to-be-done
-}
+//
+fun
+auxv3d0
+( env0
+: !implenv
+, v3d0
+: v3ardecl): v3ardecl =
+let
+//
+val+V3ARDECL(rcd) = v3d0
+//
+val loc = rcd.loc
+val d2v = rcd.d2v
+val wth = rcd.wth
+val res = rcd.res
+val ini = rcd.ini
+//
+val ini = trans3t_dexpopt(env0, ini)
+//
+in
+V3ARDECL
+@{loc=loc
+, d2v=d2v, wth=wth, res=res, ini=ini}
+end // end of [auxv3d0]
+//
+fun
+auxv3ds
+( env0
+: !implenv
+, v3ds
+: v3ardeclist): v3ardeclist =
+(
+case+ v3ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons(auxv3d0(env0, x0), auxv3ds(env0, xs))
+)
+//
+} (* end of [aux_vardecl] *)
 
 (* ****** ****** *)
 
