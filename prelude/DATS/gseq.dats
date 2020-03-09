@@ -445,6 +445,24 @@ list_vt_cons(map$fopr<x0><y0>(x0), r0)
 end // end of [gseq_map_rlist/foldl]
 
 (* ****** ****** *)
+
+impltmp
+<x0,xs><y0>
+gseq_map_stream(xs) =
+let
+val xs =
+gseq_streamize<x0,xs>(xs)
+in(*in-of-let*)
+(
+stream_vt_map0<x0><y0>(xs)
+) where
+{
+impltmp
+map0$fopr<x0><y0> = map$fopr<x0><y0>
+}
+end // end of [gseq_map_stream/streamize]
+
+(* ****** ****** *)
 //
 impltmp
 <x0,xs>
@@ -761,6 +779,36 @@ in
 end // end of [gseq_iforeach/iforall]
 
 (* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_indexof
+  (xs, x0) = let
+//
+var i0: sint = -1
+val p0 = $addr(i0)
+//
+impltmp
+iforall$test<x0>
+  (i1, x1) =
+if
+g_equal<x0>(x0, x1)
+then
+let
+val () =
+$UN.p2tr_set<sint>(p0, i1)
+in
+  false // HX: found
+end // then
+else true // else // end-of-if
+//
+in
+let
+val yn = gseq_iforall<x0,xs>(xs) in i0
+end
+end // end of [gseq_indexof/iforall]
+
+(* ****** ****** *)
 //
 // For x2-gseq-operations
 //
@@ -768,9 +816,6 @@ end // end of [gseq_iforeach/iforall]
 //
 // For z2-gseq-operations
 //
-(* ****** ****** *)
-
-
 (* ****** ****** *)
 
 (* end of [gseq.dats] *)

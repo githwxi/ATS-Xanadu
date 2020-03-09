@@ -60,15 +60,27 @@ g_u(u0: uint): (a)
 //
 fun
 <a:t0>
-g_pred(x: a): a
+g_neg(x: a): a
 fun
 <a:t0>
 g_succ(x: a): a
+fun
+<a:t0>
+g_pred(x: a): a
 //
 #symload
-pred with g_pred of 000
+pred with g_neg of 100
 #symload
-succ with g_succ of 000
+succ with g_succ of 100
+#symload
+pred with g_pred of 100
+//
+#symload
+succ with g_succ of 100
+#symload
+pred with g_pred of 100
+//
+#symload - with g_neg of 100
 //
 (* ****** ****** *)
 //
@@ -79,8 +91,8 @@ fun
 <a:t0>
 g_sub(x: a, y: a): a
 //
-#symload + with g_add of 000
-#symload - with g_sub of 000
+#symload + with g_add of 100
+#symload - with g_sub of 100
 //
 (* ****** ****** *)
 //
@@ -94,9 +106,9 @@ fun
 <a:t0>
 g_mod(x: a, y: a): a
 //
-#symload * with g_mul of 000
-#symload / with g_div of 000
-#symload % with g_mod of 000
+#symload * with g_mul of 100
+#symload / with g_div of 100
+#symload % with g_mod of 100
 //
 (* ****** ****** *)
 

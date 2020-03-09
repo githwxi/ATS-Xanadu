@@ -46,101 +46,6 @@ print with gint_print of 100
 //
 (* ****** ****** *)
 //
-fun
-<k:type>
-gint_lt
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): bool(i < j)
-#symload < with gint_lt of 100
-fun
-<k:type>
-gint_gt
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): bool(i > j)
-#symload > with gint_gt of 100
-fun
-<k:type>
-gint_eq
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): bool(i = j)
-#symload = with gint_eq of 100
-//
-fun
-<k:type>
-gint_lte
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): bool(i <= j)
-#symload <= with gint_lte of 100
-fun
-<k:type>
-gint_gte
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): bool(i >= j)
-#symload >= with gint_gte of 100
-fun
-<k:type>
-gint_neq
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): bool(i != j)
-#symload != with gint_neq of 100
-//
-(* ****** ****** *)
-
-fun
-<k:type>
-gint_cmp
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): sint(sgn(i-j))
-#symload cmp with gint_cmp of 100
-
-(* ****** ****** *)
-//
-fun
-<k:type>
-gint_add
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): gint(k, i+j)
-fun
-<k:type>
-gint_sub
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): gint(k, i-j)
-fun
-<k:type>
-gint_mul
-{i,j:int}
-( x: gint(k, i)
-, y: gint(k, j)): gint(k, i*j)
-fun
-<k:type>
-gint_div
-{i,j:int | j != 0}
-( x: gint(k, i)
-, y: gint(k, j)): gint(k, i/j)
-fun
-<k:type>
-gint_mod
-{i,j:int | j >= 1}
-( x: gint(k, i)
-, y: gint(k, j)): gint(k, mod(i,j))
-//
-#symload + with gint_add of 100
-#symload - with gint_sub of 100
-#symload * with gint_mul of 100
-#symload / with gint_div of 100
-#symload % with gint_mod of 100
-//
-(* ****** ****** *)
-//
 fun<>
 gint_print_sint(x: sint): void
 fun<>
@@ -152,6 +57,11 @@ print with gint_print_sint of 110
 print with gint_print_uint of 110
 //
 (* ****** ****** *)
+//
+fun<>
+gint_neg_sint
+{i:int}(x: sint(i)): sint(-i)
+#symload - with gint_neg_sint of 110
 //
 fun<>
 gint_succ_sint

@@ -32,6 +32,22 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+impltmp
+char_noteq<>
+  (c1, c2) =
+(
+  not(char_equal<>(c1, c2))
+)
+//
+(* ****** ****** *)
+
+impltmp
+g_equal<char> = char_equal<>
+impltmp
+g_noteq<char> = char_noteq<>
+
+(* ****** ****** *)
 
 impltmp
 g_print<char> = char_print<>

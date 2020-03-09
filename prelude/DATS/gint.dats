@@ -68,6 +68,15 @@ g_u<uint>(u) = u // g_u: uint -> a
 (* ****** ****** *)
 
 impltmp
+g_neg<sint> = gint_neg_sint<>
+impltmp
+g_succ<sint> = gint_succ_sint<>
+impltmp
+g_pred<sint> = gint_pred_sint<>
+
+(* ****** ****** *)
+
+impltmp
 g_lt<sint> = gint_lt_sint_sint<>
 impltmp
 g_gt<sint> = gint_gt_sint_sint<>
@@ -98,53 +107,24 @@ g_div<sint> = gint_div_sint_sint<>
 
 (* ****** ****** *)
 //
-impltmp
-gint_lt<sik> = gint_lt_sint_sint<>
-impltmp
-gint_gt<sik> = gint_gt_sint_sint<>
-impltmp
-gint_eq<sik> = gint_eq_sint_sint<>
-//
-impltmp
-gint_lte<sik> = gint_lte_sint_sint<>
-impltmp
-gint_gte<sik> = gint_gte_sint_sint<>
-impltmp
-gint_neq<sik> = gint_neq_sint_sint<>
-//
-(* ****** ****** *)
-//
-impltmp
-gint_add<sik> = gint_add_sint_sint<>
-impltmp
-gint_sub<sik> = gint_sub_sint_sint<>
-impltmp
-gint_mul<sik> = gint_mul_sint_sint<>
-impltmp
-gint_div<sik> = gint_div_sint_sint<>
-impltmp
-gint_mod<sik> = gint_mod_sint_sint<>
-//
-(* ****** ****** *)
-//
 // For gseq-operations
 //
 (* ****** ****** *)
 //
-impltmp<>
-gint_nilq_sint(xs) = (xs <= 0)
-impltmp<>
-gint_consq_sint(xs) = (xs >= 1)
+impltmp
+gint_nilq_sint<>(xs) = (xs <= 0)
+impltmp
+gint_consq_sint<>(xs) = (xs >= 1)
 //
-impltmp<>
-gint_nilq_uint(xs) = (xs <= 0u)
-impltmp<>
-gint_consq_uint(xs) = (xs >= 1u)
+impltmp
+gint_nilq_uint<>(xs) = (xs <= 0u)
+impltmp
+gint_consq_uint<>(xs) = (xs >= 1u)
 //
 (* ****** ****** *)
 
-impltmp<>
-gint_forall_sint
+impltmp
+gint_forall_sint<>
   (xs) =
 ( loop(0) ) where
 {
@@ -163,8 +143,8 @@ else true // end of [else]
 //
 (* ****** ****** *)
 //
-impltmp<>
-gint_rforall_sint
+impltmp
+gint_rforall_sint<>
   (xs) =
 ( loop(xs) ) where
 {

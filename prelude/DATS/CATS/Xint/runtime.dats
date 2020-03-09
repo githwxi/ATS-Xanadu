@@ -84,7 +84,7 @@ char_neqzq<> = xint_char_neqzq
 //
 #extern
 fun
-char_equal
+xint_char_equal
 {c1,c2:char}
 ( c1
 : char(c1)
@@ -93,7 +93,7 @@ char_equal
 ) : bool(c1=c2) = $ext()
 #extern
 fun
-char_nequal
+xint_char_noteq
 {c1,c2:char}
 ( c1
 : char(c1)
@@ -129,6 +129,14 @@ impltmp
 gint_print_sint<> = xint_gint_print_sint
 //
 (* ****** ****** *)
+//
+#extern
+fun
+xint_gint_neg_sint
+{i:int}
+(x0: sint(i)): sint(-i) = $ext()
+impltmp
+gint_neg_sint<> = xint_gint_neg_sint
 //
 #extern
 fun

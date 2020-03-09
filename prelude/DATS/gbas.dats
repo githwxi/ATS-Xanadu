@@ -10,26 +10,26 @@
 (* ****** ****** *)
 
 impltmp
-{a:tflt1}
+{a:vt}
 g_self<a>(x) = x
 
 (* ****** ****** *)
 
 impltmp
-{a:tflt0}
+{a:t0}
 g_free<a>(x) = ()
 
 (* ****** ****** *)
 
 impltmp
-{a:tflt0}
+{a:t0}
 g_copy<a>(x) = (x)
 
 (* ****** ****** *)
 //
 impltmp
-{a:tflt1}
-g_nequal<a>
+{a:vt}
+g_noteq<a>
   (x, y) =
 (
   not(g_equal<a>(x, y))
@@ -42,7 +42,7 @@ g_nequal<a>
 (* ****** ****** *)
 
 impltmp
-{a:tflt1}
+{a:vt}
 g_free<list_vt(a)>
   (xs) =
 ( loop(xs) ) where
@@ -77,12 +77,12 @@ else optn_vt_nil((*void*))
 //
 impltmp
 <x0><y0>
-mapopt$fopr0(x0) =
+mapopt0$fopr(x0) =
 if
-filter$test1<x0>(x0)
+filter1$test<x0>(x0)
 then
 optn_vt_cons
-(map$fopr0<x0><y0>(x0))
+(map0$fopr<x0><y0>(x0))
 else
 let
 val () = g_free<x0>(x0)
@@ -92,12 +92,12 @@ end
 //
 impltmp
 <x0><y0>
-mapopt$fopr1(x0) =
+mapopt1$fopr(x0) =
 if
-filter$test1<x0>(x0)
+filter1$test<x0>(x0)
 then
 optn_vt_cons
-(map$fopr1<x0><y0>(x0))
+(map1$fopr<x0><y0>(x0))
 else optn_vt_nil((*void*))
 //
 (* ****** ****** *)
