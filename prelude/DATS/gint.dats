@@ -56,68 +56,74 @@ typedef ullik = ullint_k
 (* ****** ****** *)
 
 impltmp
-g_i<sint>(i) = i
-impltmp
-g_u<uint>(u) = u
+g_print<sint> = gint_print_sint<>
 
 (* ****** ****** *)
 
 impltmp
-g_lt<sint> = gint_lt_sint_sint
+g_i<sint>(i) = i // g_i: sint -> a
 impltmp
-g_gt<sint> = gint_gt_sint_sint
-impltmp
-g_eq<sint> = gint_eq_sint_sint
-impltmp
-g_lte<sint> = gint_lte_sint_sint
-impltmp
-g_gte<sint> = gint_gte_sint_sint
-impltmp
-g_neq<sint> = gint_neq_sint_sint
+g_u<uint>(u) = u // g_u: uint -> a
 
 (* ****** ****** *)
 
 impltmp
-g_cmp<sint> = gint_cmp_sint_sint
+g_lt<sint> = gint_lt_sint_sint<>
+impltmp
+g_gt<sint> = gint_gt_sint_sint<>
+impltmp
+g_eq<sint> = gint_eq_sint_sint<>
+impltmp
+g_lte<sint> = gint_lte_sint_sint<>
+impltmp
+g_gte<sint> = gint_gte_sint_sint<>
+impltmp
+g_neq<sint> = gint_neq_sint_sint<>
 
 (* ****** ****** *)
 
 impltmp
-g_add<sint> = gint_add_sint_sint
-impltmp
-g_sub<sint> = gint_sub_sint_sint
-impltmp
-g_mul<sint> = gint_mul_sint_sint
-impltmp
-g_div<sint> = gint_div_sint_sint
+g_cmp<sint> = gint_cmp_sint_sint<>
 
 (* ****** ****** *)
 
 impltmp
-gint_lt<sik> = gint_lt_sint_sint
+g_add<sint> = gint_add_sint_sint<>
 impltmp
-gint_gt<sik> = gint_gt_sint_sint
+g_sub<sint> = gint_sub_sint_sint<>
 impltmp
-gint_eq<sik> = gint_eq_sint_sint
+g_mul<sint> = gint_mul_sint_sint<>
 impltmp
-gint_lte<sik> = gint_lte_sint_sint
-impltmp
-gint_gte<sik> = gint_gte_sint_sint
-impltmp
-gint_neq<sik> = gint_neq_sint_sint
+g_div<sint> = gint_div_sint_sint<>
 
 (* ****** ****** *)
 //
 impltmp
-gint_add<sik> = gint_add_sint_sint
+gint_lt<sik> = gint_lt_sint_sint<>
 impltmp
-gint_sub<sik> = gint_sub_sint_sint
+gint_gt<sik> = gint_gt_sint_sint<>
 impltmp
-gint_mul<sik> = gint_mul_sint_sint
+gint_eq<sik> = gint_eq_sint_sint<>
+//
 impltmp
-gint_div<sik> = gint_div_sint_sint
+gint_lte<sik> = gint_lte_sint_sint<>
 impltmp
-gint_mod<sik> = gint_mod_sint_sint
+gint_gte<sik> = gint_gte_sint_sint<>
+impltmp
+gint_neq<sik> = gint_neq_sint_sint<>
+//
+(* ****** ****** *)
+//
+impltmp
+gint_add<sik> = gint_add_sint_sint<>
+impltmp
+gint_sub<sik> = gint_sub_sint_sint<>
+impltmp
+gint_mul<sik> = gint_mul_sint_sint<>
+impltmp
+gint_div<sik> = gint_div_sint_sint<>
+impltmp
+gint_mod<sik> = gint_mod_sint_sint<>
 //
 (* ****** ****** *)
 //
