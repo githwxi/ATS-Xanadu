@@ -358,6 +358,13 @@ fun
 ,xs:t0>
 <y0:t0
 ,ys:t0>
+gseq_z2forcmp
+  (xs: xs, ys: ys): sint
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
 gseq_z2foreach
   (xs: xs, ys: ys): void
 //

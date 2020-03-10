@@ -246,14 +246,48 @@ fun
 <r0:vt>
 z2foldr$fopr(x0, y0, r0): r0
 //
+(* ****** ****** *)
+//
 fun
 <x0:t0
 ,y0:t0>
 z2forall$test(x0, y0): bool
 fun
+<x0:vt
+,y0:vt>
+z2forall0$test(x0, y0): bool
+fun
+<x0:vt
+,y0:vt>
+z2forall1$test(!x0, !y0): bool
+//
+fun
+<x0:t0
+,y0:t0>
+z2forcmp$fcmp(x0, y0): sint
+fun
+<x0:vt
+,y0:vt>
+z2forcmp0$fcmp(x0, y0): sint
+fun
+<x0:vt
+,y0:vt>
+z2forcmp1$fcmp(!x0, !y0): sint
+//
+fun
 <x0:t0
 ,y0:t0>
 z2foreach$work(x0, y0): void
+fun
+<x0:vt
+,y0:vt>
+z2foreach0$work(x0, y0): void
+fun
+<x0:vt
+,y0:vt>
+z2foreach1$work(!x0, !y0): void
+//
+(* ****** ****** *)
 //
 #symload
 zfoldl$fopr with z2foldl$fopr
