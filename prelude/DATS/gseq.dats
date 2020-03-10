@@ -804,9 +804,38 @@ else true // else // end-of-if
 //
 in
 let
-val yn = gseq_iforall<x0,xs>(xs) in i0
+val yn =
+gseq_iforall<x0,xs>(xs) in i0
 end
 end // end of [gseq_indexof/iforall]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_rindexof
+  (xs, x0) = let
+//
+var i0: sint = -1
+val p0 = $addr(i0)
+//
+impltmp
+iforeach$work<x0>
+  (i1, x1) =
+if
+g_equal<x0>(x0, x1)
+then
+let
+val () =
+$UN.p2tr_set<sint>(p0, i1)
+end // then // end of [if]
+//
+in
+let
+val () =
+gseq_iforeach<x0,xs>(xs) in i0
+end
+end // end of [gseq_rindexof/iforeach]
 
 (* ****** ****** *)
 //
@@ -816,6 +845,71 @@ end // end of [gseq_indexof/iforall]
 //
 // For z2-gseq-operations
 //
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_z2forall
+  (xs, ys) =
+(
+stream_vt_forall0<x0,y0>
+(
+gseq_streamize<x0,xs>(xs)
+,
+gseq_streamize<y0,ys>(ys))
+) where
+{
+impltmp
+z2forall0$test<x0,y0>
+  (x0, y0) =
+  z2forall$test<x0,y0>(x0, y0)
+} (* end of [gseq_z2forall] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_z2forcmp
+  (xs, ys) =
+(
+stream_vt_z2forcmp<x0,y0>
+(
+gseq_streamize<x0,xs>(xs)
+,
+gseq_streamize<y0,ys>(ys))
+) where
+{
+impltmp
+z2forcmp0$fcmp<x0,y0>
+  (x0, y0) =
+  z2forcmp$fcmp<x0,y0>(x0, y0)
+} (* end of [gseq_z2forcmp] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_z2foreach(xs) =
+let
+val
+test =
+gseq_z2forall<x0,xs><y0,ys>
+  (xs, ys) where
+{
+impltmp
+z2forall$test<x0,y0>(x0, y0) =
+let
+val () =
+z2foreach$work<x0,y0>(x0, y0) in true
+end
+}
+in
+  // nothing
+end // end of [gseq_z2foreach/z2forall]
+
 (* ****** ****** *)
 
 (* end of [gseq.dats] *)

@@ -227,5 +227,112 @@ case+ xs of
 } (* end of [stream_vt_mapopt0] *)
 
 (* ****** ****** *)
+//
+// For z2-gseq-operations
+//
+(* ****** ****** *)
+
+impltmp
+<x0,y0>
+stream_vt_z2forall
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+fun
+loop
+( xs
+: stream_vt(x0)
+, ys
+: stream_vt(x0)): bool =
+(
+case+ !xs of
+|
+~ strmcon_vt_nil
+  () =>
+  ($free(ys); true)
+~ strmcon_vt_cons
+  (x0, xs) =>
+  (
+  case+ !ys of
+  |
+  ~ strmcon_vt_nil
+    () =>
+    ($free(xs); true)
+  |
+  ~ strmcon_vt_cons
+    (y0, ys) =>
+    let
+    val
+    test =
+    z2forall0$test<x0,y0>(x0, y0)
+    in
+      if
+      test
+      then loop(xs, ys) else false
+    end // end of [strmcon_vt_cons]
+   )
+) (* end of [loop] *)
+} (* end of [stream_vt_z2forall] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,y0>
+stream_vt_z2forcmp
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+fun
+loop
+( xs
+: stream_vt(x0)
+, ys
+: stream_vt(x0)): sint =
+(
+case+ !xs of
+|
+~ strmcon_vt_nil
+  () =>
+  (
+  case+ !ys of
+  |
+  ~ stream_vt_nil
+    () => 0
+  |
+  ~ stream_vt_ccons
+    (y0, ys) =>
+    (
+    g_free<y0>(y0); $free(ys); -1
+    )
+  )
+~ strmcon_vt_cons
+  (x0, xs) =>
+  (
+  case+ !ys of
+  |
+  ~ strmcon_vt_nil
+    () =>
+    ($free(xs); 1)
+  |
+  ~ strmcon_vt_cons
+    (y0, ys) =>
+    let
+    val
+    sgn =
+    z2forall0$fcmp<x0,y0>(x0, y0)
+    in
+      if
+      (sgn = 0)
+      then loop(xs, ys) else (sgn)
+    end // end of [strmcon_vt_cons]
+   )
+) (* end of [loop] *)
+} (* end of [stream_vt_z2forcmp] *)
+
+(* ****** ****** *)
 
 (* end of [stream_vt.dats] *)
