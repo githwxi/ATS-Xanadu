@@ -165,6 +165,19 @@ end // end of [foreach$work]
 
 impltmp
 <x0,xs>
+gseq_cmp(xs) =
+(
+  gseq_z2forcmp<x0,xs>(xs)
+) where
+{
+  impltmp
+  z2forcmp$fcmp<x0,x0> = g_cmp<x0>
+} (* end of [gseq_cmp/z2forcmp] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
 gseq_print(xs) =
 let
 //
