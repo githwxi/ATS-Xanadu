@@ -118,7 +118,14 @@ gseq_uncons_opt
 fun
 <x0:t0
 ,xs:t0>
-gseq_print(xs): void
+gseq_cmp(xs: xs): sint
+
+(* ****** ****** *)
+
+fun
+<x0:t0
+,xs:t0>
+gseq_print(xs: xs): void
 fun
 <x0:t0
 ,xs:t0>

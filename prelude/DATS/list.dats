@@ -34,17 +34,7 @@ case+ xs of
 
 impltmp
 {a:type}
-g_cmp<list(a),list(a)>(xs, ys) =
-(
-gseq_z2forcmp<x0,xs><y0,ys>(xs, ys)
-) where
-{
-  typedef x0 = a
-  typedef y0 = a
-  typedef xs = list(a)
-  typedef ys = list(a)
-  impltmp z2forcmp<x0,y0> = g_cmp<a>
-}
+g_cmp<list(a)> = gseq_cmp<a,list(a)>
 
 (* ****** ****** *)
 //
