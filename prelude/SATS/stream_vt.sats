@@ -106,5 +106,18 @@ fun
 stream_vt_mapopt0(stream_vt(x0)): stream_vt(y0)
 //
 (* ****** ****** *)
+//
+fun
+<x0:vt
+,y0:vt>
+stream_vt_z2forall
+  (xs: stream_vt(x0), ys: stream_vt(y0)): bool
+fun
+<x0:vt
+,y0:vt>
+stream_vt_z2forcmp
+  (xs: stream_vt(x0), ys: stream_vt(y0)): sint
+//
+(* ****** ****** *)
 
 (* end of [stream_vt.sats] *)

@@ -323,7 +323,7 @@ case+ !xs of
     let
     val
     sgn =
-    z2forall0$fcmp<x0,y0>(x0, y0)
+    z2forcmp0$fcmp<x0,y0>(x0, y0)
     in
       if
       (sgn = 0)
