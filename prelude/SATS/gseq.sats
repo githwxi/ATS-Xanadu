@@ -118,7 +118,7 @@ gseq_uncons_opt
 fun
 <x0:t0
 ,xs:t0>
-gseq_cmp(xs: xs): sint
+gseq_cmp(xs, xs): sint
 
 (* ****** ****** *)
 
