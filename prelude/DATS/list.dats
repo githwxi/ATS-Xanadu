@@ -13,7 +13,7 @@
 //
 impltmp
 <>(*tmp*)
-list_nil?
+list_nilq
   (xs) =
 (
 case+ xs of
@@ -22,7 +22,7 @@ case+ xs of
 )
 impltmp
 <>(*tmp*)
-list_cons?
+list_consq
   (xs) =
 (
 case+ xs of
@@ -31,15 +31,31 @@ case+ xs of
 )
 //
 (* ****** ****** *)
-
+//
+impltmp
+<a:type>
+list_head_raw(xs) = xs.0
+impltmp
+<a:type>
+list_tail_raw(xs) = xs.1
+//
 impltmp
 {a:type}
+gseq_head_raw<a,list(a)> = list_head_raw<a>
+impltmp
+{a:type}
+gseq_tail_raw<a,list(a)> = list_tail_raw<a>
+//
+(* ****** ****** *)
+
+impltmp
+{a:t0}
 g_cmp<list(a)> = gseq_cmp<a,list(a)>
 
 (* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:t0}
 g_print<list(a)>(xs) =
 let
 val () =
@@ -47,15 +63,15 @@ gseq_print<a,list(a)>(xs)
 end
 //
 impltmp
-{a:type}
+{a:t0}
 gseq_print$beg
 < a, list(a) >() = string_print("(")
 impltmp
-{a:type}
+{a:t0}
 gseq_print$end
 < a, list(a) >() = string_print(")")
 impltmp
-{a:type}
+{a:t0}
 gseq_print$sep
 < a, list(a) >() = string_print(",")
 //
@@ -295,15 +311,15 @@ end // end of [list_tabulate_cref]
 (* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:t0}
 $UN.gseq_head
 <a,list(a)>(xs) = xs.0
 impltmp
-{a:type}
+{a:t0}
 $UN.gseq_tail
 <a,list(a)>(xs) = xs.1
 impltmp
-{a:type}
+{a:t0}
 $UN.gseq_uncons
 <a,list(a)>(xs) =
 let
@@ -314,11 +330,11 @@ end
 (* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:t0}
 gseq_nil
 <a,list(a)>() = list_nil()
 impltmp
-{a:type}
+{a:t0}
 gseq_cons
 <a,list(a)>
   (x0, xs) = list_cons(x0, xs)
@@ -326,39 +342,39 @@ gseq_cons
 (* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:t0}
 gseq_nil?
 <a,list(a)> = list_nil? <a>
 impltmp
-{a:type}
+{a:t0}
 gseq_cons?
 <a,list(a)> = list_cons? <a>
 //
 (* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:t0}
 gseq_length<a,list(a)> = list_length<a>
 //
 (* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:t0}
 gseq_forall<a,list(a)> = list_forall<a>
 //
 (* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:t0}
 gseq_foreach<a,list(a)> = list_foreach<a>
 //
 (* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:t0}
 gseq_map_list<a,list(a)> = list_map_vt<a>
 impltmp
-{a:type}
+{a:t0}
 gseq_map_rlist<a,list(a)> = list_maprev_vt<a>
 //
 (* ****** ****** *)
