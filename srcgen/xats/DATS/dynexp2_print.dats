@@ -503,6 +503,8 @@ case- x0.node() of
   fprint!(out, "D2Eeval(", d2e1, ")")
 | D2Efold(d2e1) =>
   fprint!(out, "D2Efold(", d2e1, ")")
+| D2Efree(d2e1) =>
+  fprint!(out, "D2Efree(", d2e1, ")")
 //
 | D2Eraise(d2e1) =>
   fprint!(out, "D2Eraise(", d2e1, ")")

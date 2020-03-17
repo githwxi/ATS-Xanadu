@@ -43,14 +43,14 @@ char_noteq<>
 (* ****** ****** *)
 
 impltmp
-g_equal<char> = char_equal<>
-impltmp
-g_noteq<char> = char_noteq<>
+g_cmp<char> = char_cmp<>
 
 (* ****** ****** *)
 
 impltmp
-g_cmp<char> = char_cmp<>
+g_equal<char> = char_equal<>
+impltmp
+g_noteq<char> = char_noteq<>
 
 (* ****** ****** *)
 

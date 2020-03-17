@@ -479,9 +479,14 @@ x0.node() of
   (
    fprint!(out, "D3Eaddr(", d3e1, ")")
   )
+//
 | D3Efold(d3e1) =>
   (
    fprint!(out, "D3Efold(", d3e1, ")")
+  )
+| D3Efree(d3e1) =>
+  (
+   fprint!(out, "D3Efree(", d3e1, ")")
   )
 //
 | D3Eraise(d3e1) =>

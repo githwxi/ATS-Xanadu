@@ -363,7 +363,9 @@ d3exp_node =
   // D3Etry
 //
 | D3Eaddr of d3exp(*l-value*)
+//
 | D3Efold of d3exp(*open-con*)
+| D3Efree of d3exp(*free-con*)
 //
 | D3Eraise of d3exp(*lin-exn*)
 //
