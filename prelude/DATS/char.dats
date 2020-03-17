@@ -50,6 +50,11 @@ g_noteq<char> = char_noteq<>
 (* ****** ****** *)
 
 impltmp
+g_cmp<char> = char_cmp<>
+
+(* ****** ****** *)
+
+impltmp
 g_print<char> = char_print<>
 
 (* ****** ****** *)

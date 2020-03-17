@@ -61,6 +61,14 @@ char_noteq
 (* ****** ****** *)
 
 fun<>
+char_cmp
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): sint(sgn(c1-c2))
+
+(* ****** ****** *)
+
+fun<>
 char_print(c0: char): void
 #symload print with char_print of 110
 
