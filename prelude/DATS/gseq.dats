@@ -35,25 +35,6 @@ bool_neg
 //
 impltmp
 <x0,xs>
-gseq_head_raw(xs) =
-  ( x0 ) where
-{
-var xs = xs
-val x0 =
-gseq_uncons_raw<x0,xs>(xs)
-}
-impltmp
-<x0,xs>
-gseq_tail_raw(xs) =
-  ( xs ) where
-{
-var xs = xs
-val x0 =
-gseq_uncons_raw<x0,xs>(xs)
-}
-//
-impltmp
-<x0,xs>
 gseq_head_exn(xs) =
 if
 gseq_consq<x0,xs>(xs)
@@ -89,6 +70,21 @@ optn_vt_cons
 (
 gseq_tail_raw<x0,xs>(xs)
 ) else optn_vt_nil((*void*))
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+gseq_uncons_raw(xs) =
+(
+  xs := tl; hd
+) where
+{
+val hd =
+  gseq_head_raw<x0,xs>(xs)
+val tl =
+  gseq_tail_raw<x0,xs>(xs)
+}
 //
 (* ****** ****** *)
 //
@@ -165,9 +161,11 @@ end // end of [foreach$work]
 
 impltmp
 <x0,xs>
-gseq_cmp(xs) =
+gseq_cmp
+(xs1, xs2) =
 (
-  gseq_z2forcmp<x0,xs>(xs)
+gseq_z2forcmp
+<x0,xs><x0,xs>(xs1, xs2)
 ) where
 {
   impltmp
@@ -338,13 +336,13 @@ auxseq
 if
 gseq_nilq
 <x0,xs>(xs)
-then stream_vt_nil()
+then strmcon_vt_nil()
 else let
 var xs = xs
 val x0 =
 gseq_uncons_raw<x0,xs>(xs)
 in
-stream_vt_cons(x0, auxseq(xs))
+strmcon_vt_cons(x0, auxseq(xs))
 end // end of [else]
 )
 } (* end of [gseq_streamize] *)
