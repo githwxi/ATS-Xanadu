@@ -110,6 +110,16 @@ char_noteq<> = xint_char_noteq
 //
 #extern
 fun
+xint_char_cmp
+( c1: char
+, c2: char): sint = $ext()
+impltmp
+char_cmp<> = xint_char_cmp
+//
+(* ****** ****** *)
+//
+#extern
+fun
 xint_char_print
 (c0: char): void = $ext()
 impltmp

@@ -309,6 +309,7 @@ case+ !xs of
     g_free<y0>(y0); $free(ys); -1
     )
   )
+|
 ~ strmcon_vt_cons
   (x0, xs) =>
   (
