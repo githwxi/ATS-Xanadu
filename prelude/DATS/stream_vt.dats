@@ -23,7 +23,7 @@ stream_vt_cons
 $llazy
 (
 $free(xs);
-strmcon_vt_cons{x0}(x0, xs))
+strmcon_vt_cons{a}(x0, xs))
 )
 //
 (* ****** ****** *)
@@ -291,7 +291,7 @@ loop
 ( xs
 : stream_vt(x0)
 , ys
-: stream_vt(x0)): sint =
+: stream_vt(y0)): sint =
 (
 case+ !xs of
 |
@@ -300,10 +300,10 @@ case+ !xs of
   (
   case+ !ys of
   |
-  ~ stream_vt_nil
+  ~ strmcon_vt_nil
     () => 0
   |
-  ~ stream_vt_ccons
+  ~ strmcon_vt_cons
     (y0, ys) =>
     (
     g_free<y0>(y0); $free(ys); -1
@@ -316,7 +316,9 @@ case+ !xs of
   |
   ~ strmcon_vt_nil
     () =>
-    ($free(xs); 1)
+    (
+    g_free<x0>(x0); $free(xs);  1
+    )
   |
   ~ strmcon_vt_cons
     (y0, ys) =>
@@ -327,7 +329,8 @@ case+ !xs of
     in
       if
       (sgn = 0)
-      then loop(xs, ys) else (sgn)
+      then loop(xs, ys)
+      else ($free(xs); $free(ys); sgn)
     end // end of [strmcon_vt_cons]
    )
 ) (* end of [loop] *)

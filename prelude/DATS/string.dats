@@ -49,20 +49,6 @@ char_neqzq(string_head(cs))
 (* ****** ****** *)
 
 impltmp<>
-string_uncons_raw
-  (cs) =
-let
-val hd =
-string_head_raw<>(cs)
-val tl =
-string_tail_raw<>(cs)
-in
-  cs := tl; hd
-end // end of [string_uncons_raw]
-
-(* ****** ****** *)
-
-impltmp<>
 string_forall
   (xs) =
 ( loop(xs) ) where
@@ -132,6 +118,13 @@ gseq_consq<x0,xs> = string_consq<>
 
 impltmp
 gseq_forall<x0,xs> = string_forall<>
+
+(* ****** ****** *)
+
+impltmp
+gseq_head_raw<x0,xs> = string_head_raw<>
+impltmp
+gseq_tail_raw<x0,xs> = string_tail_raw<>
 
 (* ****** ****** *)
 
