@@ -777,6 +777,7 @@ d2exp_node =
 | D2Eaddr of d2exp(*l-value*)
 | D2Eeval of d2exp(*ptr/lazy*)
 | D2Efold of d2exp(*open-con*)
+| D2Efree of d2exp(*free-con*)
 //
 | D2Eraise of d2exp(*lin-exn*)
 //
