@@ -53,6 +53,36 @@ list_consq
 //
 fun
 <a:type>
+list_head
+{i:pos}(list(a, i)): a
+fun
+<a:type>
+list_head_raw(xs: list(a)): a
+fun
+<a:type>
+list_head_exn(xs: list(a)): a
+fun
+<a:type>
+list_head_opt(xs: list(a)): opt_vt(a)
+//
+fun
+<a:type>
+list_tail
+{i:pos}(list(a, i)): list(a, i-1)
+fun
+<a:type>
+list_tail_raw(xs: list(a)): list(a)
+fun
+<a:type>
+list_tail_exn(xs: list(a)): list(a)
+fun
+<a:type>
+list_tail_opt(xs: list(a)): opt_vt(list(a))
+//
+(* ****** ****** *)
+//
+fun
+<a:type>
 list_length
 {n:int}(xs: list(a, n)): int(n)
 //
