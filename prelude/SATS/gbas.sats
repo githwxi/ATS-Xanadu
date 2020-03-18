@@ -54,6 +54,20 @@ g_copy(x: !(a)): (a)
 
 fun
 <a:vt>
+g_input(): a
+fun
+<a:vt>
+g_input_exn
+((*void*)): a
+fun
+<a:vt>
+g_input_opt
+((*void*)): optn_vt(a)
+
+(* ****** ****** *)
+
+fun
+<a:vt>
 g_print(x: !(a)): void
 
 (* ****** ****** *)
