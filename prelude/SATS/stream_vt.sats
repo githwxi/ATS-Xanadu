@@ -55,6 +55,26 @@ fun
 stream_vt_free(xs: stream_vt(a)): void
 
 (* ****** ****** *)
+
+fun
+<a:vt>
+stream_vt_drop
+(xs: stream_vt(a), n0: sint): stream_vt(a)
+fun
+<a:vt>
+stream_vt_take
+(xs: stream_vt(a), n0: sint): stream_vt(a)
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+stream_vt_listize(stream_vt(a)): list_vt(a)
+fun
+<a:vt>
+stream_vt_rlistize(stream_vt(a)): list_vt(a)
+
+(* ****** ****** *)
 //
 fun
 <a:vt>
