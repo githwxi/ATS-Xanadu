@@ -233,7 +233,8 @@ loop{i:nat}.<i>.
 (
 case+ xs of
 |
-list_nil() => ()
+list_nil() =>
+(r0 := list_vt_nil())
 |
 list_cons(x0, xs) =>
 let
