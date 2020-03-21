@@ -2739,7 +2739,14 @@ ifcase
 | (knd=VIEWSORT) =>
   auxck2(s2t0, the_sort2_view)
 | (knd=TFLTSORT) =>
+(*
+//
+// HX-2020-03-21:
+// TYPEDEF = VTYPEDEF
+//
   auxck2(s2t0, the_sort2_tflt)
+*)
+  auxck2(s2t0, the_sort2_vtflt)
 | (knd=VTFLTSORT) =>
   auxck2(s2t0, the_sort2_vtflt)
 | _(* SEXPDEF *) =>
