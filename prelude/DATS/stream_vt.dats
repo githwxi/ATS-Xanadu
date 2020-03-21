@@ -42,7 +42,7 @@ stream_vt_cons(x0, stream_vt_sing(y0))
 //
 impltmp
 <a>(*tmp*)
-stream_vt_free = $free(xs)
+stream_vt_free(xs) = $free(xs)
 //
 impltmp
 <a>(*tmp*)
@@ -395,7 +395,8 @@ case+ !xs of
     in
       if
       test
-      then loop(xs, ys) else false
+      then loop(xs, ys)
+      else (g_free(xs); g_free(ys); false)
     end // end of [strmcon_vt_cons]
    )
 ) (* end of [loop] *)
@@ -450,13 +451,13 @@ case+ !xs of
     (y0, ys) =>
     let
     val
-    sgn =
+    sign =
     z2forcmp0$fcmp<x0,y0>(x0, y0)
     in
       if
-      (sgn = 0)
+      (sign = 0)
       then loop(xs, ys)
-      else (g_free(xs); g_free(ys); sgn)
+      else (g_free(xs); g_free(ys); sign)
     end // end of [strmcon_vt_cons]
    )
 ) (* end of [loop] *)
