@@ -42,7 +42,7 @@ g_free<list_vt(a)> = list_vt_free<a>
 impltmp
 <a>(*tmp*)
 list_vt_length
-  {n}(xs) = let
+  {n}(xs) =
 ( loop(xs, 0) ) where
 {
 fun
@@ -56,6 +56,46 @@ case+ xs of
 | list_vt_cons(_, xs) => loop(xs, j+1)
 )
 } endwhr // end of [length_vt_length]
+
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_vt_reverse(xs) =
+list_vt_rappend<a>(xs, list_vt_nil())
+
+implement
+<a>(*tmp*)
+list_vt_rappend
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+//
+fun
+loop
+{m,n:nat} .<m>.
+( xs0
+: list_vt(a, m)
+, ys0
+: list_vt(a, n)
+) : list_vt(a, m+n) =
+(
+case+ xs0 of
+|
+~ list_vt_nil() => ys0
+|
+@ list_vt_cons(_, _) =>
+  let
+    val xs1 = xs0.1
+    val ( ) = xs0.1 := ys0
+  in
+    $fold(xs0); loop(xs1, xs0)
+  end // end of [list_vt_cons]
+) (* end of [loop] *)
+//
+} end (* end of [list_vt_rappend] *)
 
 (* ****** ****** *)
 //

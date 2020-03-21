@@ -29,14 +29,14 @@
 //
 // HX-2020-03-21:
 // It is time to start a code diary:
-// This is really just a potpourri of my own code for all sorts of uses. Please
-// use it for whatever purpose you see fit.
+// This is really just a potpourri of my own code for all sorts of uses.
+// Please use it for whatever purpose you see fit.
 //
 (* ****** ****** *)
 //
 // HX-2020-03-21:
-// Zoe has started learning programming in Python.
-// One of her exercises is to reverse the digits of a four digit number
+// Zoe has started learning programming in Python. Maybe in ATS later :)
+// One of her exercises is to reverse the digits of a four digit number.
 //
 (* ****** ****** *)
 //
@@ -47,24 +47,43 @@ gint_digitize$base
 #extern
 fun<>
 gint_digitize_sint
-{n:nat}(sint(n)): list_vt(sint)
+{n:nat}
+(n0: sint(n)): list_vt(sint)
 //
+(* ****** ****** *)
+//
+#extern
+fun<>
+gint_rdigitize$base
+  ((*void*)): sintgt(0)
+#extern
+fun<>
+gint_rdigitize_sint
+{n:nat}
+(n0: sint(n)): stream_vt(sint)
+//
+(* ****** ****** *)
 #symload
 digitize with gint_digitize_sint
+#symload
+rdigitize with gint_rdigitize_sint
+(* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
 gint_digitize$base((*void*)) = 10
+impltmp
+<>(*tmp*)
+gint_rdigitize$base((*void*)) = 10
 //
+(* ****** ****** *)
+
 impltmp
 <>(*tmp*)
 gint_digitize_sint
   (n0) =
 (
-list_vt_reverse
-(
-loop(n0, list_vt_nil()
-)
+loop(n0, list_vt_nil())
 ) where
 {
 //
@@ -87,14 +106,51 @@ if
 (n0 = 0)
 then (r0)
 else let
-  val d0 = n0 % b0
+  val d0 =
+  gint_mod_sint_sint(n0, b0)
 in
 loop(n0 / b0, list_vt_cons(d0, r0))
 end
 )
 //
 } (* end of [gint_digitize_sint] *)
+
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+gint_rdigitize_sint
+  (n0) =
+( auxmain(n0) ) where
+{
 //
+val
+b0 =
+gint_rdigitize$base<>()
+//
+typedef
+digitseq = stream_vt(sint)
+//
+fun
+auxmain
+{n:nat}
+( n0
+: sint(n)): digitseq =
+$llazy
+(
+if
+(n0 = 0)
+then strmcon_vt_nil()
+else let
+val d0 =
+gint_mod_sint_sint(n0, b0)
+in
+strmcon_vt_cons(d0, auxmain(n0/b0))
+end // end of [else] // end-of-if
+)
+//
+} (* end of [gint_rdigitize_sint] *)
+
 (* ****** ****** *)
 
 (* end of [mygist.dats] *)
