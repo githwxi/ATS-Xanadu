@@ -44,14 +44,17 @@
 fun<>
 gint_digitize$base
   ((*void*)): sintgt(0)
-impltmp
-<>(*tmp*)
-gint_digitize$base((*void*)) = 10
-//
 #extern
 fun<>
 gint_digitize_sint
 {n:nat}(sint(n)): list_vt(sint)
+//
+#symload
+digitize with gint_digitize_sint
+//
+impltmp
+<>(*tmp*)
+gint_digitize$base((*void*)) = 10
 //
 impltmp
 <>(*tmp*)
@@ -64,16 +67,21 @@ loop(n0, list_vt_nil()
 )
 ) where
 {
+//
 val
 b0 =
 gint_digitize$base<>()
+//
+typedef
+digitseq = list_vt(sint)
+//
 fun
 loop
 {n:nat}
 ( n0
 : sint(n)
 , r0
-: list_vt(sint)): list_vt(sint) =
+: digitseq): digitseq =
 (
 if
 (n0 = 0)
@@ -84,6 +92,7 @@ in
 loop(n0 / b0, list_vt_cons(d0, r0))
 end
 )
+//
 } (* end of [gint_digitize_sint] *)
 //
 (* ****** ****** *)
