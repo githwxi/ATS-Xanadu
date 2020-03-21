@@ -11,11 +11,16 @@ For testing gint_rdigitize
 /githwxi/DATS/mygist.dats"
 
 (* ****** ****** *)
-//
-val ds1 = digitize(31415926)
-//
+
+val bs =
+digitize(16)
+where
+impltmp digitize$base<>() = 2
+endwhr // end of [val]
+
 (* ****** ****** *)
 //
+val ds1 = digitize(31415926)
 val ds2 =
 stream_vt_listize(rdigitize(31415926))
 //

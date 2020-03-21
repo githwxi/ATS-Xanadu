@@ -42,8 +42,9 @@
 //
 #extern
 fun<>
-gint_digitize$base
+digitize$base
   ((*void*)): sintgt(0)
+//
 #extern
 fun<>
 gint_digitize_sint
@@ -54,8 +55,9 @@ gint_digitize_sint
 //
 #extern
 fun<>
-gint_rdigitize$base
+rdigitize$base
   ((*void*)): sintgt(0)
+//
 #extern
 fun<>
 gint_rdigitize_sint
@@ -63,18 +65,20 @@ gint_rdigitize_sint
 (n0: sint(n)): stream_vt(sint)
 //
 (* ****** ****** *)
+//
 #symload
 digitize with gint_digitize_sint
 #symload
 rdigitize with gint_rdigitize_sint
+//
 (* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
-gint_digitize$base((*void*)) = 10
+digitize$base((*void*)) = 10
 impltmp
 <>(*tmp*)
-gint_rdigitize$base((*void*)) = 10
+rdigitize$base((*void*)) = 10
 //
 (* ****** ****** *)
 
@@ -88,8 +92,7 @@ loop(n0, list_vt_nil())
 {
 //
 val
-b0 =
-gint_digitize$base<>()
+b0 = digitize$base<>()
 //
 typedef
 digitseq = list_vt(sint)
@@ -125,8 +128,7 @@ gint_rdigitize_sint
 {
 //
 val
-b0 =
-gint_rdigitize$base<>()
+b0 = rdigitize$base<>()
 //
 typedef
 digitseq = stream_vt(sint)
