@@ -315,6 +315,8 @@ fun
 ,xs:t0>
 gseq_iforeach(xs): void
 //
+(* ****** ****** *)
+//
 fun
 <x0:t0
 ,xs:t0>
@@ -325,6 +327,33 @@ fun
 ,xs:t0>
 gseq_rindexof
 (xs: xs, x0: x0): sint // ~1: ~found
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_idropif(xs: xs): xs
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_itakeif_list(xs): list_vt(x0)
+fun
+<x0:t0
+,xs:t0>
+gseq_itakeif_rlist(xs): list_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_ifilter_list(xs): list_vt(x0)
+fun
+<x0:t0
+,xs:t0>
+gseq_ifilter_rlist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //

@@ -213,6 +213,42 @@ fun
 iforeach1$work(nint, !x0): void
 
 (* ****** ****** *)
+
+fun
+<x0:t0>
+idropif$test(nint, x0): bool
+fun
+<x0:vt>
+idropif0$test(nint, x0): bool
+fun
+<x0:vt>
+idropif1$test(nint, !x0): bool
+
+(* ****** ****** *)
+
+fun
+<x0:t0>
+itakeif$test(nint, x0): bool
+fun
+<x0:vt>
+itakeif0$test(nint, x0): bool
+fun
+<x0:vt>
+itakeif1$test(nint, !x0): bool
+
+(* ****** ****** *)
+
+fun
+<x0:t0>
+ifilter$test(nint, x0): bool
+fun
+<x0:vt>
+ifilter0$test(nint, x0): bool
+fun
+<x0:vt>
+ifilter1$test(nint, !x0): bool
+
+(* ****** ****** *)
 //
 // For 2-gseq-operations
 //

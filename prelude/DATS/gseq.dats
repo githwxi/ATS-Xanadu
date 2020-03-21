@@ -849,6 +849,45 @@ end
 end // end of [gseq_rindexof/iforeach]
 
 (* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_idropif
+  (xs) =
+( loop(xs, 0) ) where
+{
+//
+fun
+loop
+( xs: xs
+, i0: nint): xs =
+if
+gseq_nilq<x0,xs>(xs)
+then
+(
+  gseq_nil<x0,xs>()
+)
+else
+let
+val x0 =
+gseq_head_raw<x0,xs>(xs)
+in
+if
+idropif$test<x0>(i0, x0)
+then
+(
+  loop(xs, succ(i0))
+) where
+{
+val xs =
+gseq_tail_raw<x0,xs>(xs)
+} (* end of [then] *)
+else xs // end-of-else
+endlet (* end of [loop] *)
+//
+} (* end of [gseq_idropif] *)
+
+(* ****** ****** *)
 //
 // For x2-gseq-operations
 //

@@ -30,6 +30,13 @@
 // For functional lin-streams
 //
 (* ****** ****** *)
+//
+fun
+<a:t0>
+stream_vt2t
+(stream_vt(a)): stream(a)
+//
+(* ****** ****** *)
 
 fun
 <a:vt>
