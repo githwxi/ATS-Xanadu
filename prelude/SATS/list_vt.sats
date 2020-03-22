@@ -99,6 +99,12 @@ list_vt_rappend10
 {m,n:int}
 ( xs: !list_vt(a, m)
 , ys: ~list_vt(a, n)): list_vt(a, m+n)
+fun
+<a:vt>
+list_vt_rappend11
+{m,n:int}
+( xs: !list_vt(a, m)
+, ys: !list_vt(a, n)): list_vt(a, m+n)
 //
 (* ****** ****** *)
 //
