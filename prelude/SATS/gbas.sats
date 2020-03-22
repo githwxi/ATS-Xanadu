@@ -284,6 +284,14 @@ xforall$test with x2forall$test
 xforeach$work with x2foreach$work
 //
 (* ****** ****** *)
+
+fun
+<x0:t0
+,y0:t0>
+<z0:vt>
+z2map$fopr(x0, y0): (z0)
+
+(* ****** ****** *)
 //
 fun
 <x0:t0

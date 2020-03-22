@@ -419,17 +419,17 @@ fun
 ,xs:t0>
 <y0:t0
 ,ys:t0>
-<r0:vt>
+<z0:vt>
 gseq_z2map_list
-  (xs: xs, ys: ys): list_vt(r0)
+  (xs: xs, ys: ys): list_vt(z0)
 fun
 <x0:t0
 ,xs:t0>
 <y0:t0
 ,ys:t0>
-<r0:vt>
+<z0:vt>
 gseq_z2map_rlist
-  (xs: xs, ys: ys): list_vt(r0)
+  (xs: xs, ys: ys): list_vt(z0)
 //
 (* ****** ****** *)
 

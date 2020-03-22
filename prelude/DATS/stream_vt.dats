@@ -359,7 +359,7 @@ case+ xs of
 
 impltmp
 <x0,y0>
-stream_vt_z2forall
+stream_vt_z2forall0
   (xs, ys) =
 (
   loop(xs, ys)
@@ -370,13 +370,14 @@ loop
 ( xs
 : stream_vt(x0)
 , ys
-: stream_vt(x0)): bool =
+: stream_vt(y0)): bool =
 (
 case+ !xs of
 |
 ~ strmcon_vt_nil
   () =>
   (g_free(ys); true)
+|
 ~ strmcon_vt_cons
   (x0, xs) =>
   (
@@ -400,13 +401,13 @@ case+ !xs of
     end // end of [strmcon_vt_cons]
    )
 ) (* end of [loop] *)
-} (* end of [stream_vt_z2forall] *)
+} (* end of [stream_vt_z2forall0] *)
 
 (* ****** ****** *)
 
 impltmp
 <x0,y0>
-stream_vt_z2forcmp
+stream_vt_z2forcmp0
   (xs, ys) =
 (
   loop(xs, ys)
@@ -461,7 +462,7 @@ case+ !xs of
     end // end of [strmcon_vt_cons]
    )
 ) (* end of [loop] *)
-} (* end of [stream_vt_z2forcmp] *)
+} (* end of [stream_vt_z2forcmp0] *)
 
 (* ****** ****** *)
 
