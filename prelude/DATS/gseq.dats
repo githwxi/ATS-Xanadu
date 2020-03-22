@@ -77,7 +77,9 @@ impltmp
 <x0,xs>
 gseq_uncons_raw(xs) =
 (
-  xs := tl; hd
+let
+  val () = xs := tl in hd
+end
 ) where
 {
 val hd =
@@ -247,7 +249,7 @@ gseq_drop
 ) where
 {
 impltmp idropif$test<x0>(i0, _) = i0 < n0
-}
+} (* gseq_drop/idropif *)
 
 (* ****** ****** *)
 //
@@ -337,9 +339,7 @@ impltmp
 <x0,xs>
 gseq_streamize
   (xs) =
-(
-  auxseq(xs)
-) where
+( auxseq(xs) ) where
 {
 fun
 auxseq
@@ -351,13 +351,14 @@ gseq_nilq
 <x0,xs>(xs)
 then strmcon_vt_nil()
 else let
-var xs = xs
 val x0 =
-gseq_uncons_raw<x0,xs>(xs)
+gseq_head_raw<x0,xs>(xs)
+val xs =
+gseq_tail_raw<x0,xs>(xs)
 in
 strmcon_vt_cons(x0, auxseq(xs))
 end // end of [else]
-)
+) (* end of [auxseq] *)
 } (* end of [gseq_streamize] *)
 
 (* ****** ****** *)
@@ -912,21 +913,54 @@ endlet (* end of [loop] *)
 
 impltmp
 <x0,xs>
+<y0,ys><r0>
+gseq_z2foldl
+(xs, ys, r0) = r0 where
+{
+//
+var r0: r0 = r0
+//
+val p0 = $addr(r0)
+//
+val () =
+(
+  gseq_z2foreach
+  <x0,xs><y0,ys>(xs, ys)
+) where
+{
+impltmp
+z2foreach$work<x0,y0>
+  (x0, y0) =
+let
+val r0 = $UN.p2tr_get<r0>(p0)
+in
+//
+$UN.p2tr_set<r0>
+( p0
+, z2foldl$fopr<x0,y0><r0>(r0, x0, y0))
+//
+end // end of [z2foreach$work]
+}
+//
+} (* end of [gseq_z2foldl/z2foreach] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
 <y0,ys>
 gseq_z2forall
   (xs, ys) =
 (
-stream_vt_forall0<x0,y0>
+stream_vt_z2forall0<x0,y0>
 (
-gseq_streamize<x0,xs>(xs)
+  gseq_streamize<x0,xs>(xs)
 ,
-gseq_streamize<y0,ys>(ys))
+  gseq_streamize<y0,ys>(ys))
 ) where
 {
 impltmp
-z2forall0$test<x0,y0>
-  (x0, y0) =
-  z2forall$test<x0,y0>(x0, y0)
+z2forall0$test<x0,y0> = z2forall$test<x0,y0>
 } (* end of [gseq_z2forall] *)
 
 (* ****** ****** *)
@@ -945,9 +979,7 @@ gseq_streamize<y0,ys>(ys))
 ) where
 {
 impltmp
-z2forcmp0$fcmp<x0,y0>
-  (x0, y0) =
-  z2forcmp$fcmp<x0,y0>(x0, y0)
+z2forcmp0$fcmp<x0,y0> = z2forcmp$fcmp<x0,y0>
 } (* end of [gseq_z2forcmp] *)
 
 (* ****** ****** *)
@@ -955,7 +987,8 @@ z2forcmp0$fcmp<x0,y0>
 impltmp
 <x0,xs>
 <y0,ys>
-gseq_z2foreach(xs) =
+gseq_z2foreach
+  (xs, ys) =
 let
 val
 test =
@@ -973,6 +1006,48 @@ in
   // nothing
 end // end of [gseq_z2foreach/z2forall]
 
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+<y0,ys><z0>
+gseq_z2map_list
+  (xs, ys) = let
+//
+typedef
+zz =
+list_vt(z0)
+typedef
+r0 = p2tr(zz)
+//
+impltmp
+z2foldl$fopr
+<x0,y0><r0>
+(p0, x0, y0) =
+let
+//
+val z0 =
+z2map$fopr
+<x0,y0><z0>(x0, y0)
+val r1 = 
+list_vt_cons(z0, _ )
+val p1 = $addr(r1.1)
+//
+in
+$UN.p2tr_set<zz>
+(p0, $UN.castlin(r1)); (p1)
+end // z2foldl$fopr
+//
+var r0: zz
+val pz =
+gseq_z2foldl
+<x0,xs><y0,ys><r0>(xs, ys, $addr(r0))
+//
+in
+  $UN.p2tr_set<zz>
+  (pz, list_vt_nil()); $UN.castlin(r0)
+end // end of [gseq_z2map_list/z2foldl]
+//
 (* ****** ****** *)
 
 (* end of [gseq.dats] *)
