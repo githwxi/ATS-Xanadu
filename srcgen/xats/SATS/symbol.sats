@@ -67,12 +67,6 @@ val DOT_symbol : symbol // symbol(".")
 val SMCLN_symbol : symbol // symbol(";")
 //
 (* ****** ****** *)
-
-val CBV_symbol : symbol // symbol("!")
-val CBR_symbol : symbol // symbol("&")
-val AXT_symbol : symbol // symbol(">>")
-
-(* ****** ****** *)
 //
 val ADD_symbol : symbol // SYMBOL("+")
 val SUB_symbol : symbol // SYMBOL("-")
@@ -98,6 +92,13 @@ val CLNEQ_symbol : symbol // SYMBOL(":=")
 *)
 val BANGEQ_symbol : symbol // SYMBOL("!=")
 //
+(* ****** ****** *)
+
+val CBV0_symbol : symbol // symbol("~")
+val CBV1_symbol : symbol // symbol("!")
+val CBRF_symbol : symbol // symbol("&")
+val AXCG_symbol : symbol // symbol(">>")
+
 (* ****** ****** *)
 //
 val EQLT_symbol : symbol // SYMBOL("=<")

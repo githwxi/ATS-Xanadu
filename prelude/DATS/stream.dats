@@ -16,7 +16,7 @@
 //
 impltmp
 <a>(*tmp*)
-stream_vt2t(xs)
+stream_vt2t(xs) =
 (
 auxmain
 ($UN.castlin(xs))
@@ -32,6 +32,7 @@ val xs =
 $UN.castlin{stream_vt(a)}(xs)
 val r0 = !xs
 in
+//
 case+ xs0 of
 |
 ~ strmcon_vt_nil
@@ -44,7 +45,8 @@ case+ xs0 of
   $UN.castlin{p1tr}(xs)
   val () =
   ( r0.1 := auxmain(xs) )
-  in $UN.castlin{stream(a)}(r0)) end
+  in $UN.castlin{stream(a)}(r0) end
+//
 end // end of [let]
 )
 } (* end of [stream_vt2t] *)

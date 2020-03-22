@@ -302,6 +302,8 @@ case- x0.node() of
 | D2Pcon2(d2cs) =>
   fprint!(out, "D2Pcon2(", d2cs, ")")
 //
+| D2Pbang(d2p1) =>
+  fprint!(out, "D2Pbang(", d2p1, ")")
 | D2Pflat(d2p1) =>
   fprint!(out, "D2Pflat(", d2p1, ")")
 | D2Pfree(d2p1) =>

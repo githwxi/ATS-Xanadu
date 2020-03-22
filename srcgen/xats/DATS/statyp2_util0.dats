@@ -151,7 +151,7 @@ s2e0.node() of
 | S2Earg(knd, s2e1) =>
   (
     if
-    (knd = 0)
+    (knd >= 0)
     then
     s2exp_erase(s2e1)
     else

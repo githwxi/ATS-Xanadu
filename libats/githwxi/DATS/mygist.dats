@@ -154,5 +154,116 @@ end // end of [else] // end-of-if
 } (* end of [gint_rdigitize_sint] *)
 
 (* ****** ****** *)
+//
+// HX-2020-03-22: list_permutize!!!
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<a:type>
+stream_vt_mcons
+( x0: a
+, xss
+: stream_vt(list(a))
+)
+: stream_vt(list(a))
+//
+impltmp
+stream_vt_mcons
+  (x0, xss) =
+(
+stream_vt_map0(xss)
+) where
+{
+impltmp
+map0$fopr
+<list(a)>
+<list(a)>(xs) = list_cons(x0, xs)
+}
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<a:type>
+list_permutize
+  (xs: list(a)): stream_vt(list(a))
+//
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_permutize
+  (xs) =
+(
+  auxmain0(xs)
+) where
+{
+typedef rs =
+stream_vt(list(a))
+//
+fun
+rapp2
+( xs
+: list(a)
+, ys
+: !list_vt(a)): list(a) =
+(
+case+ ys of
+| list_vt_nil() => xs
+| list_vt_cons(y0, ys) =>
+  rapp2(list_cons(y0, xs), ys)
+)
+//
+fun
+auxmain0
+( xs: list(a))
+: stream_vt(list(a)) =
+$llazy
+(
+case+ xs of
+| list_nil() =>
+  (
+  strmcon_vt_sing(list_nil())
+  )
+| list_cons(x0, xs) =>
+  $eval
+  (
+  auxmain1(x0, xs, list_vt_nil())
+  )
+)
+and
+auxmain1
+( x0: a
+, xs: list(a)
+, ys: list_vt(a))
+: stream_vt(list(a)) =
+$llazy
+let
+val
+xss =
+(
+stream_vt_mcons
+(x0, auxmain0(rapp2(ys, xs)))
+)
+in
+//
+case+ xs of
+|
+list_nil() =>
+let val () = g_free(ys) in xss end
+|
+list_cons(x1, xs) =>
+let
+  val ys = list_vt_cons(x0, ys)
+in
+  stream_vt_append(xss, auxmain1(x1, xs, ys))
+end // end of [list_cons]
+//
+end // end-of-let // end of [auxmain1]
+} endwhr (* end of [list_permutize] *)
+
+(* ****** ****** *)
 
 (* end of [mygist.dats] *)

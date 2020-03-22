@@ -107,6 +107,7 @@ d3pat_node =
 | D3Pcon1 of (d2con)
 | D3Pcon2 of (d2conlst)
 //
+| D3Pbang of (d3pat) // !
 | D3Pflat of (d3pat) // @
 | D3Pfree of (d3pat) // ~
 //

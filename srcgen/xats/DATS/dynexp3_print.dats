@@ -204,6 +204,8 @@ case- x0.node() of
   fprint!
   (out, "D3Pcon2(", d2cs, ")")
 //
+| D3Pbang(d3p1) =>
+  fprint!(out, "D3Pbang(", d3p1, ")")
 | D3Pflat(d3p1) =>
   fprint!(out, "D3Pflat(", d3p1, ")")
 | D3Pfree(d3p1) =>
