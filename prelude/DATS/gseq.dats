@@ -237,6 +237,19 @@ foldl$fopr<x0><r0>(r0, x0) = succ(r0)
 } (* gseq_length/foldl *)
 
 (* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_drop
+  (xs, n0) =
+(
+  gseq_idropif(xs)
+) where
+{
+impltmp idropif$test<x0>(i0, _) = i0 < n0
+}
+
+(* ****** ****** *)
 //
 (*
 impltmp
