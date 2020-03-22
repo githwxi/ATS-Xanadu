@@ -2026,6 +2026,10 @@ d2p0.node() of
 | D2Pvar(d2v) =>
   the_dexpenv_add_var(d2v)
 //
+| D2Pbang(d2p1) =>
+  {
+    val () = auxd2p0(d2p1)
+  }
 | D2Pflat(d2p1) =>
   {
     val () = auxd2p0(d2p1)
