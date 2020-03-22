@@ -147,6 +147,14 @@ fun
 gseq_length(xs): nint
 
 (* ****** ****** *)
+
+fun
+<x0:t0
+,xs:t0>
+gseq_drop
+(xs: xs, n0: sint): xs
+
+(* ****** ****** *)
 //
 (*
 gseq_foldl: foldl$fopr
