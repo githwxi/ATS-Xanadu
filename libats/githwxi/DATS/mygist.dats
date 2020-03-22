@@ -156,6 +156,7 @@ end // end of [else] // end-of-if
 (* ****** ****** *)
 //
 // HX-2020-03-22: list_permutize!!!
+// This is a classic example for FP.
 //
 (* ****** ****** *)
 //
@@ -170,6 +171,7 @@ stream_vt_mcons
 : stream_vt(list(a))
 //
 impltmp
+<a>(*tmp*)
 stream_vt_mcons
   (x0, xss) =
 (
@@ -200,8 +202,6 @@ list_permutize
   auxmain0(xs)
 ) where
 {
-typedef rs =
-stream_vt(list(a))
 //
 fun
 rapp2
@@ -211,8 +211,10 @@ rapp2
 : !list_vt(a)): list(a) =
 (
 case+ ys of
-| list_vt_nil() => xs
-| list_vt_cons(y0, ys) =>
+|
+! list_vt_nil() => xs
+|
+~ list_vt_cons(y0, ys) =>
   rapp2(list_cons(y0, xs), ys)
 )
 //
@@ -224,17 +226,35 @@ $llazy
 (
 case+ xs of
 | list_nil() =>
-  (
-  strmcon_vt_sing(list_nil())
-  )
-| list_cons(x0, xs) =>
-  $eval
-  (
-  auxmain1(x0, xs, list_vt_nil())
-  )
-)
+  strmcon_vt_sing(xs)
+| list_cons(_, _) =>
+  $eval(auxmain1(xs))
+) // end of [auxmain0]
+//
 and
 auxmain1
+( xs: list(a))
+: stream_vt(list(a)) =
+$llazy
+(
+let
+val-
+list_cons(x0, xs1) = xs
+in
+case+ xs1 of
+| list_nil() =>
+  strmcon_vt_sing(xs)
+| list_cons(_, _) =>
+  let
+    val
+    ys2 = list_vt_nil()
+  in
+    $eval(auxmain2(x0, xs1, ys2))
+  end
+end // end of [auxmain1]
+//
+and
+auxmain2
 ( x0: a
 , xs: list(a)
 , ys: list_vt(a))
@@ -245,23 +265,24 @@ val
 xss =
 (
 stream_vt_mcons
-(x0, auxmain0(rapp2(ys, xs)))
+(x0, auxmain1(rapp2(xs, ys)))
 )
 in
 //
 case+ xs of
 |
 list_nil() =>
-let val () = g_free(ys) in xss end
+let val () = g_free(ys) in !xss end
 |
 list_cons(x1, xs) =>
 let
   val ys = list_vt_cons(x0, ys)
 in
-  stream_vt_append(xss, auxmain1(x1, xs, ys))
+  !(stream_vt_append(xss, auxmain2(x1, xs, ys)))
 end // end of [list_cons]
 //
-end // end-of-let // end of [auxmain1]
+end // end-of-let // end of [auxmain2]
+//
 } endwhr (* end of [list_permutize] *)
 
 (* ****** ****** *)
