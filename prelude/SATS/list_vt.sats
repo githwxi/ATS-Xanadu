@@ -57,7 +57,7 @@ list_vt_consq
 //
 fun
 <a:vt>
-list_vt_free(xs: list_vt(a)): void
+list_vt_free(xs: ~list_vt(a)): void
 //
 (* ****** ****** *)
 //
@@ -93,6 +93,12 @@ list_vt_rappend
 {m,n:int}
 ( xs: list_vt(a, m)
 , ys: list_vt(a, n)): list_vt(a, m+n)
+fun
+<a:vt>
+list_vt_rappend10
+{m,n:int}
+( xs: !list_vt(a, m)
+, ys: ~list_vt(a, n)): list_vt(a, m+n)
 //
 (* ****** ****** *)
 //
@@ -111,12 +117,10 @@ list_vt_tabulate_cref
 //
 fun
 <x0:vt>
-list_vt_forall0
-{n:int}(xs: list_vt(x0, n)): bool
+list_vt_forall0(xs: list_vt(x0)): bool
 fun
 <x0:vt>
-list_vt_foreach0
-{n:int}(xs: list_vt(x0, n)): void
+list_vt_foreach0(xs: list_vt(x0)): void
 //
 (* ****** ****** *)
 

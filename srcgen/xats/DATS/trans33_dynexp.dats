@@ -159,6 +159,25 @@ end (* end of [d3pat_leftize] *)
 local
 
 fun
+auxbang
+( d3p0
+: d3pat): d3pat = let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pbang(d3p1) = d3p0.node()
+//
+val d3p1 = trans33_dpat(d3p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pbang(d3p1))
+end // end of [auxbang]
+
+(* ****** ****** *)
+
+fun
 auxflat
 ( d3p0
 : d3pat): d3pat = let
@@ -315,6 +334,7 @@ d3p0.node() of
 //
 | D3Pvar _ => d3p0
 //
+| D3Pbang _ => auxbang(d3p0)
 | D3Pflat _ => auxflat(d3p0)
 | D3Pfree _ => auxfree(d3p0)
 //

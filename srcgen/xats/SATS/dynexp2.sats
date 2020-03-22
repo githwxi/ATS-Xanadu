@@ -537,6 +537,7 @@ d2pat_node =
 | D2Pcon1 of (d2con)
 | D2Pcon2 of (d2conlst)
 //
+| D2Pbang of (d2pat) // !
 | D2Pflat of (d2pat) // @
 | D2Pfree of (d2pat) // ~
 //

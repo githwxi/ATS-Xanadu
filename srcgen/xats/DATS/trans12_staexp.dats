@@ -900,30 +900,43 @@ case- s2i0 of
 (* ****** ****** *)
 
 fun
-iscbv
+isCBV0
 ( s1e
 : s1exp): bool =
 (
 case+
 s1e.node() of
 | S1Eid(sid) =>
-  sid = $SYM.CBV_symbol
+  sid = $SYM.CBV0_symbol
 | _(*non-S1Eid*) => false
 )
 fun
-iscbr
+isCBV1
 ( s1e
 : s1exp): bool =
 (
 case+
 s1e.node() of
 | S1Eid(sid) =>
-  sid = $SYM.CBR_symbol
+  sid = $SYM.CBV1_symbol
+| _(*non-S1Eid*) => false
+)
+fun
+isCBRF
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.CBRF_symbol
 | _(*non-S1Eid*) => false
 )
 
+(* ****** ****** *)
+
 fun
-istop0
+isTOP0
 ( s1e
 : s1exp): bool =
 (
@@ -934,7 +947,7 @@ s1e.node() of
 | _(*non-S1Eid*) => false
 )
 fun
-istop1
+isTOP1
 ( s1e
 : s1exp): bool =
 (
@@ -976,14 +989,16 @@ s1e1.node() of
 | S1Eexists _ => auxapp1_exi_(s1e0)
 //
 | _ when
-    iscbv(s1e1) => auxapp1_cbv_(s1e0)
+    isCBV0(s1e1) => auxapp1_cbv0_(s1e0)
 | _ when
-    iscbr(s1e1) => auxapp1_cbr_(s1e0)
+    isCBV1(s1e1) => auxapp1_cbv1_(s1e0)
+| _ when
+    isCBRF(s1e1) => auxapp1_cbrf_(s1e0)
 //
 | _ when
-    istop0(s1e1) => auxapp1_top0_(s1e0)
+    isTOP0(s1e1) => auxapp1_top0_(s1e0)
 | _ when
-    istop1(s1e1) => auxapp1_top1_(s1e0)
+    isTOP1(s1e1) => auxapp1_top1_(s1e0)
 //
 | _ when
     isextp(s1e1) => auxapp1_extp_(s1e0)
@@ -1248,7 +1263,7 @@ end // end of [auxapp1_exi_]
 (* ****** ****** *)
 
 and
-auxapp1_cbv_
+auxapp1_cbv0_
 ( s1e0
 : s1exp): s2exp = let
 //
@@ -1259,9 +1274,9 @@ S1Eapp1
 in
 s2exp_arg
 (0(*cbv*), trans12_sexp_ci(s1e2))
-end // [auxapp1_cbv_]
+end // [auxapp1_cbv0_]
 and
-auxapp1_cbr_
+auxapp1_cbv1_
 ( s1e0
 : s1exp): s2exp = let
 //
@@ -1271,8 +1286,21 @@ S1Eapp1
 //
 in
 s2exp_arg
-(1(*cbr*), trans12_sexp_ci(s1e2))
-end // [auxapp1_cbr_]
+(1(*cbv*), trans12_sexp_ci(s1e2))
+end // [auxapp1_cbv1_]
+and
+auxapp1_cbrf_
+( s1e0
+: s1exp): s2exp = let
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+in
+s2exp_arg
+(~1(*cbrf*), trans12_sexp_ci(s1e2))
+end // [auxapp1_cbrf_]
 
 (* ****** ****** *)
 
@@ -1380,18 +1408,18 @@ end // end of [auxapp1_extp_]
 (* ****** ****** *)
 
 fun
-isatx
+isAXCG
 ( s1e
 : s1exp): bool =
 (
 case+
 s1e.node() of
 | S1Eid(sid) =>
-  sid = $SYM.AXT_symbol
+  sid = $SYM.AXCG_symbol
 | _(*non-S1Eid*) => false
 )
 fun
-isarrw
+isARRW
 ( s1e
 : s1exp): bool =
 (
@@ -1482,7 +1510,7 @@ S1Eapp2
 in
 //
 if
-isarrw(s1e1)
+isARRW(s1e1)
 then let
 //
 var npf
@@ -1560,7 +1588,7 @@ s1e1.node() of
 | _(*non-S1Eimp*) =>
   (
   ifcase
-  | isatx(s1e1) =>
+  | isAXCG(s1e1) =>
     let
     val s2e2 =
     trans12_sexp_ci(s1e2)
@@ -1573,7 +1601,7 @@ s1e1.node() of
     in
       s2exp_atx(s2e2, s2e3)
     end
-  | _(* else *) =>
+  | _ (* else *) =>
     let
     val
     s2e1 =

@@ -325,15 +325,6 @@ SMCLN_symbol = symbol_make(";")
 (* ****** ****** *)
 
 implement
-CBV_symbol = symbol_make("!")
-implement
-CBR_symbol = symbol_make("&")
-implement
-AXT_symbol = symbol_make(">>")
-
-(* ****** ****** *)
-
-implement
 ADD_symbol = symbol_make("+")
 implement
 SUB_symbol = symbol_make("-")
@@ -368,6 +359,17 @@ CLNEQ_symbol = symbol_make(":=")
 *)
 implement
 BANGEQ_symbol = symbol_make("!=")
+//
+(* ****** ****** *)
+//
+implement
+CBV0_symbol = symbol_make("!")
+implement
+CBV1_symbol = symbol_make("!")
+implement
+CBRF_symbol = symbol_make("&")
+implement
+AXCG_symbol = symbol_make(">>")
 //
 (* ****** ****** *)
 //

@@ -307,6 +307,21 @@ D1Papp1
 , d1p2) = d1p0.node()
 //
 fun
+isBANG
+(d1p: d1pat): bool =
+(
+case+
+d1p.node() of
+| D1Pid(tok) =>
+  (
+  case+
+  tok.node() of
+  | T_IDENT_sym(x) => (x = "!")
+  | _(* non-T_IDENT_sym *) => false
+  )
+| _(* non-D1Pid *) => false
+)
+fun
 isFLAT
 (d1p: d1pat): bool =
 (
@@ -341,6 +356,14 @@ in
 //
 ifcase
 //
+| isBANG(d1p1) =>
+  let
+    val d2p2 =
+    trans12_dpat(d1p2)
+  in
+    d2pat_make_node
+    (d1p0.loc(), D2Pbang(d2p2))
+  end
 | isFLAT(d1p1) =>
   let
     val d2p2 =

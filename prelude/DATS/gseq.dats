@@ -131,37 +131,6 @@ then optn_nil() else optn_cons(x0)
 (* ****** ****** *)
 
 impltmp
-<x0,xs><r0>
-gseq_foldl
-(xs, r0) = r0 where
-{
-//
-var r0: r0 = r0
-//
-val p0 = $addr(r0)
-//
-val () =
-(
-  gseq_foreach<x0,xs>(xs)
-) where
-{
-impltmp
-foreach$work<x0>(x0) =
-let
-val r0 = $UN.p2tr_get<r0>(p0)
-in
-//
-$UN.p2tr_set<r0>
-  (p0, foldl$fopr<x0><r0>(r0, x0))
-//
-end // end of [foreach$work]
-}
-//
-} (* end of [gseq_foldl/foreach] *)
-
-(* ****** ****** *)
-
-impltmp
 <x0,xs>
 gseq_cmp
 (xs1, xs2) =
@@ -233,8 +202,8 @@ gseq_foldl
 //
 typedef r0 = nint
 //
-implement
-foldl$fopr<x0><r0>(r0, x0) = succ(r0)
+impltmp
+foldl$fopr<x0><r0>(r0, _) = succ(r0)
 //
 } (* gseq_length/foldl *)
 
@@ -248,8 +217,40 @@ gseq_drop
   gseq_idropif(xs)
 ) where
 {
-impltmp idropif$test<x0>(i0, _) = i0 < n0
+  impltmp
+  idropif$test<x0>(i0, _) = i0 < n0
 } (* gseq_drop/idropif *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs><r0>
+gseq_foldl
+(xs, r0) = r0 where
+{
+//
+var r0: r0 = r0
+//
+val p0 = $addr(r0)
+//
+val () =
+(
+  gseq_foreach<x0,xs>(xs)
+) where
+{
+impltmp
+foreach$work<x0>(x0) =
+let
+val r0 = $UN.p2tr_get<r0>(p0)
+in
+//
+$UN.p2tr_set<r0>
+  (p0, foldl$fopr<x0><r0>(r0, x0))
+//
+end // end of [foreach$work]
+}
+//
+} (* end of [gseq_foldl/foreach] *)
 
 (* ****** ****** *)
 //
@@ -286,8 +287,8 @@ gseq_forall
 stream_vt_forall0<x0>
 (gseq_streamize<x0,xs>(xs)) where
 {
-implement
-forall0$test<x0>(x0) = forall$test<x0>(x0)
+  impltmp
+  forall0$test<x0> = forall$test<x0>
 } (* end of [gseq_forall/streamize] *)
 //
 (* ****** ****** *)
@@ -584,7 +585,7 @@ let
 //
 typedef r0 = x0
 //
-implement
+impltmp
 foldl$fopr
 <x0><r0>
 (r0, x0) = g_add<x0>(r0, x0)
@@ -602,7 +603,7 @@ let
 //
 typedef r0 = x0
 //
-implement
+impltmp
 foldl$fopr
 <x0><r0>
 (r0, x0) = g_mul<x0>(r0, x0)
@@ -620,7 +621,7 @@ gseq_max2
 //
 typedef r0 = x0
 //
-implement
+impltmp
 foldl$fopr
 <x0><r0>
 (r0, x0) = g_max<x0>(r0, x0)
@@ -638,7 +639,7 @@ gseq_min2
 //
 typedef r0 = x0
 //
-implement
+impltmp
 foldl$fopr
 <x0><r0>
 (r0, x0) = g_min<x0>(r0, x0)
@@ -971,11 +972,11 @@ impltmp
 gseq_z2forcmp
   (xs, ys) =
 (
-stream_vt_z2forcmp<x0,y0>
+stream_vt_z2forcmp0<x0,y0>
 (
-gseq_streamize<x0,xs>(xs)
+  gseq_streamize<x0,xs>(xs)
 ,
-gseq_streamize<y0,ys>(ys))
+  gseq_streamize<y0,ys>(ys))
 ) where
 {
 impltmp

@@ -52,8 +52,10 @@ loop
 : !list_vt(a, i), j: int(j)): int(n) =
 (
 case+ xs of
-| list_vt_nil() => j
-| list_vt_cons(_, xs) => loop(xs, j+1)
+|
+! list_vt_nil() => j
+|
+! list_vt_cons(_, xs) => loop(xs, j+1)
 )
 } endwhr // end of [length_vt_length]
 
@@ -63,6 +65,8 @@ impltmp
 <a>(*tmp*)
 list_vt_reverse(xs) =
 list_vt_rappend<a>(xs, list_vt_nil())
+
+(* ****** ****** *)
 
 implement
 <a>(*tmp*)
@@ -96,6 +100,40 @@ case+ xs0 of
 ) (* end of [loop] *)
 //
 } end (* end of [list_vt_rappend] *)
+
+(* ****** ****** *)
+
+implement
+<a>(*tmp*)
+list_vt_rappend10
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+//
+fun
+loop
+{m,n:nat} .<m>.
+( xs0
+: !list_vt(a, m)
+, ys0
+: ~list_vt(a, n)
+) : list_vt(a, m+n) =
+(
+case+ xs0 of
+|
+! list_vt_nil() => ys0
+|
+! list_vt_cons(x0, xs1) =>
+  let
+    val x0 = g_copy<a>(x0)
+  in
+    loop(xs1, list_vt_cons(x0, ys0))
+  end // end of [list_vt_cons]
+) (* end of [loop] *)
+//
+} end (* end of [list_vt_rappend10] *)
 
 (* ****** ****** *)
 //

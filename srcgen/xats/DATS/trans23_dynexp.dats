@@ -148,6 +148,23 @@ trenv23_dvar_dn
 local
 
 fun
+auxbang
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Pbang(d2p1) = d2p0.node()
+//
+val d3p1 = trans23_dpat(d2p1)
+//
+in
+  d3pat_make_node
+  (loc0, d3p1.type(), D3Pbang(d3p1))
+end // end of [auxbang]
+
+fun
 auxflat
 ( d2p0
 : d2pat): d3pat = let
@@ -309,6 +326,7 @@ d2p0.node() of
     d3pat_con(loc0, d2c0)
   )
 //
+| D2Pbang _ => auxbang(d2p0)
 | D2Pflat _ => auxflat(d2p0)
 | D2Pfree _ => auxfree(d2p0)
 //

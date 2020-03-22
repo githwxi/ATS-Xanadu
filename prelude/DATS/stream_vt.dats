@@ -35,8 +35,19 @@ stream_vt_sing(x0) =
 stream_vt_cons(x0, stream_vt_nil())
 impltmp
 <a>(*tmp*)
+strmcon_vt_sing(x0) =
+strmcon_vt_cons(x0, stream_vt_nil())
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
 stream_vt_pair(x0, y0) =
 stream_vt_cons(x0, stream_vt_sing(y0))
+impltmp
+<a>(*tmp*)
+strmcon_vt_pair(x0, y0) =
+strmcon_vt_cons(x0, stream_vt_sing(y0))
 //  
 (* ****** ****** *)
 //
@@ -48,6 +59,22 @@ impltmp
 <a>(*tmp*)
 g_free<stream_vt(a)> = stream_vt_free<a>
 //
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+stream_vt_length(xs) =
+(
+stream_vt_foldl0<a><nint>(xs, 0)
+) where
+{
+//
+impltmp
+foldl0$fopr<a><nint>(x0, r0) =
+let val () = g_free<a>(x0) in succ(r0) end
+//
+} (* end of [stream_vt_length] *)
+
 (* ****** ****** *)
 
 impltmp
@@ -69,9 +96,11 @@ if
 then xs else
 (
 case+ !xs of
-| ~strmcon_vt_nil() => stream_vt_nil()
-| ~strmcon_vt_cons(x0, xs) =>
-   (g_free<a>(x0); auxloop(xs, pred(n0)))
+|
+~ strmcon_vt_nil() => stream_vt_nil()
+|
+~ strmcon_vt_cons(x0, xs) =>
+  (g_free<a>(x0); auxloop(xs, pred(n0)))
 )
 } (* end of [stream_vt_drop] *)
 
@@ -103,9 +132,14 @@ then
 else
 (
 case+ !xs of
-| ~strmcon_vt_nil() => strmcon_vt_nil()
-| ~strmcon_vt_cons(x0, xs) =>
-   strmcon_vt_cons(x0, auxmain(xs, pred(n0)))
+//
+|
+~ strmcon_vt_nil() => strmcon_vt_nil()
+//
+|
+~ strmcon_vt_cons(x0, xs) =>
+  strmcon_vt_cons(x0, auxmain(xs, pred(n0)))
+//
 ) (* else *)
 )
 } (* end of [stream_vt_take] *)
@@ -207,27 +241,83 @@ case+ !xs of
 (* ****** ****** *)
 
 impltmp
+<a><r0>
+stream_vt_foldl0
+  (xs, r0) = r0 where
+{
+//
+var r0: r0 = r0
+//
+val p0 = $addr(r0)
+//
+val () =
+(
+  stream_vt_foreach0<a>(xs)
+) where
+{
+impltmp
+foreach$work<x0>(x0) =
+let
+val r0 = $UN.p2tr_get<r0>(p0)
+in
+//
+$UN.p2tr_set<r0>
+  (p0, foldl$fopr<x0><r0>(r0, x0))
+//
+end // end of [foreach$work]
+}
+//
+} (* end of [stream_foldl0/foreach0] *)
+
+(* ****** ****** *)
+
+impltmp
 <a>(*tmp*)
-stream_vt_foreach0
+stream_vt_forall0
   (xs) =
 ( loop(xs) ) where
 {
 fun
 loop
 ( xs
-: stream_vt(a)): void =
+: stream_vt(a)): bool =
 (
 case+ !xs of
 |
-~ strmcon_vt_nil() => ()
+~ strmcon_vt_nil() => true
 |
 ~ strmcon_vt_cons(x0, xs) =>
   let
-  val () = foreach0<a>(x0) in loop(xs)
+  val
+  test = forall0$test<a>(x0)
+  in
+  if
+  test
+  then loop(xs) else (g_free(xs); false)
   end
 ) (* end of [loop] *)
-} (* end of [stream_vt_foreach0] *)
-)
+} (* end of [stream_vt_forall0] *)
+
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+stream_vt_foreach0
+  (xs) =
+let
+val
+test =
+stream_vt_forall0<a>(xs) where
+{
+impltmp
+forall0$test<a>(x0) =
+let
+val () = foreach0$work<x0>(x0) in true
+end
+}
+in
+  // nothing
+end // end of [stream_vt_foreach0/forall0]
 
 (* ****** ****** *)
 
