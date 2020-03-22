@@ -365,7 +365,7 @@ BANGEQ_symbol = symbol_make("!=")
 implement
 CBV0_symbol = symbol_make("!")
 implement
-CBV1_symbol = symbol_make("!")
+CBV1_symbol = symbol_make("~")
 implement
 CBRF_symbol = symbol_make("&")
 implement
