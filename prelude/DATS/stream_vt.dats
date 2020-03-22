@@ -8,7 +8,10 @@
 #staload
 "./../SATS/stream_vt.sats"
 *)
-
+(* ****** ****** *)
+#staload
+UN =
+"prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 impltmp
@@ -70,7 +73,7 @@ stream_vt_foldl0<a><nint>(xs, 0)
 {
 //
 impltmp
-foldl0$fopr<a><nint>(x0, r0) =
+foldl0$fopr<a><nint>(r0, x0) =
 let val () = g_free<a>(x0) in succ(r0) end
 //
 } (* end of [stream_vt_length] *)
@@ -256,15 +259,15 @@ val () =
 ) where
 {
 impltmp
-foreach$work<x0>(x0) =
+foreach0$work<a>(x0) =
 let
 val r0 = $UN.p2tr_get<r0>(p0)
 in
 //
 $UN.p2tr_set<r0>
-  (p0, foldl$fopr<x0><r0>(r0, x0))
+  (p0, foldl0$fopr<a><r0>(r0, x0))
 //
-end // end of [foreach$work]
+end // end of [foreach0$work]
 }
 //
 } (* end of [stream_foldl0/foreach0] *)
@@ -303,8 +306,8 @@ case+ !xs of
 impltmp
 <a>(*tmp*)
 stream_vt_foreach0
-  (xs) =
-let
+  (xs) = let
+//
 val
 test =
 stream_vt_forall0<a>(xs) where
@@ -312,9 +315,10 @@ stream_vt_forall0<a>(xs) where
 impltmp
 forall0$test<a>(x0) =
 let
-val () = foreach0$work<x0>(x0) in true
+val () = foreach0$work<a>(x0) in true
 end
 }
+//
 in
   // nothing
 end // end of [stream_vt_foreach0/forall0]
@@ -346,7 +350,12 @@ case+ !xs of
   strmcon_vt_nil((*void*))
 |
 ~ strmcon_vt_cons(x0, xs) =>
-  strmcon_vt_cons(map0$fopr(x0), auxmain(xs))
+  let
+    val y0 =
+    map0$fopr<x0><y0>(x0)
+  in
+    strmcon_vt_cons(y0, auxmain(xs))
+  end
 )
 } (* end of [stream_vt_map0] *)
 

@@ -149,9 +149,28 @@ fun
 <r0:vt>
 foldl$fopr(r0: r0, x0: x0): r0
 fun
+<x0:vt>
+<r0:vt>
+foldl0$fopr(r0: r0, x0: x0): r0
+fun
+<x0:vt>
+<r0:vt>
+foldl1$fopr(r0: r0, x0: !x0): r0
+//
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 <r0:vt>
 foldr$fopr(x0: x0, r0: r0): r0
+fun
+<x0:vt>
+<r0:vt>
+foldr0$fopr(x0: x0, r0: r0): r0
+fun
+<x0:vt>
+<r0:vt>
+foldr1$fopr(x0: !x0, r0: r0): r0
 //
 (* ****** ****** *)
 //
