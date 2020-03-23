@@ -238,7 +238,8 @@ list_nil() =>
 |
 list_cons(x0, xs) =>
 let
-val y0 = map$fopr(x0)
+val y0 =
+map$fopr<x0><y0>(x0)
 val () =
 (r0 := list_vt_cons(y0, _))
 in
@@ -286,7 +287,8 @@ list_cons(x0, xs) =>
   loop(xs, ys)
 ) where
 {
-  val y0 = map$fopr(x0)
+  val y0 =
+  map$fopr<x0><y0>(x0)
   val ys =
   list_vt_cons{y0}(y0, ys)
 }

@@ -2453,7 +2453,7 @@ ifcase
 )
 //
 in
-d1csopt where
+d0csopt where
 {
 val
 ( pf1
@@ -2462,7 +2462,7 @@ val
 ( pf2
 | ()) = the_dirpathlst_push(dp0)
 //
-val d1csopt =
+val d0csopt =
 parse_from_filpath_toplevel(knd, fp0)
 //
 val () = the_filpathlst_pout(pf1|(*void*))

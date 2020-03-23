@@ -308,6 +308,45 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+fun
+aux_parse
+( knd: int
+, fp0: filpath)
+: Option_vt(d0eclist) =
+let
+//
+val
+dp0 =
+$FP0.dirpath_make
+(
+$FP0.filpath_get_dirname(fp0)
+)
+//
+val
+( pf1
+| ()) =
+$FP0.the_filpathlst_push(fp0)
+val
+( pf2
+| ()) =
+$FP0.the_dirpathlst_push(dp0)
+//
+val
+d0csopt =
+parse_from_filpath_toplevel(knd, fp0)
+//
+val () =
+$FP0.the_filpathlst_pout(pf1|(*void*))
+val () =
+$FP0.the_dirpathlst_pout(pf2|(*void*))
+in
+  d0csopt
+end // end of [aux_parse]
+
+in(* in-of-local *)
+
 implement
 trans01_staload_from_filpath
   (knd, fp0) = let
@@ -326,28 +365,28 @@ println!
 end
 val
 ((*void*)) =
-(
+let
+  val knd =
+  (
+  case+ opt of
+  | None_vt _ => 0 | Some_vt _ => 1
+  ) : int // end of [val]
+in
 println!
-("trans01_staload_from_filpath: opt = ", opt)
-) where
-{
-  val opt =
-  (case+ opt of None_vt _ => 0 | Some_vt _ => 1): int
-}
+("trans01_staload_from_filpath: knd = ", knd)
+end
 //
 in
 //
 case+ opt of
-| @Some_vt(d1cs) => 
-    (1, opt) where
-  {
-    val () = fold@(opt)
-  }
+| @Some_vt(d1cs) =>
+  let
+    prval () =
+    fold@(opt) in (1, opt) 
+  end
 | ~None_vt((*void*)) =>
   let
-    val opt =
-    parse_from_filpath_toplevel
-      (knd, fp0)
+    val opt = aux_parse(knd, fp0)
   in
     case+ opt of
     | ~None_vt() =>
@@ -363,10 +402,13 @@ case+ opt of
           trans01_declist(d0cs)
         val ((*void*)) =
           trans01_staload_add(fp0, d1cs)
+	// end of [val]
       }
   end
 //
 end // end of [trans01_staload_from_filpath]
+
+end // end of [local]
 
 (* ****** ****** *)
 
