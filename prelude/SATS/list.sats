@@ -52,37 +52,37 @@ list_consq
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_head
 {i:pos}(list(a, i)): a
 fun
-<a:type>
+<a:t0>
 list_head_raw(xs: list(a)): a
 fun
-<a:type>
+<a:t0>
 list_head_exn(xs: list(a)): a
 fun
-<a:type>
+<a:t0>
 list_head_opt(xs: list(a)): opt_vt(a)
 //
 fun
-<a:type>
+<a:t0>
 list_tail
 {i:pos}(list(a, i)): list(a, i-1)
 fun
-<a:type>
+<a:t0>
 list_tail_raw(xs: list(a)): list(a)
 fun
-<a:type>
+<a:t0>
 list_tail_exn(xs: list(a)): list(a)
 fun
-<a:type>
+<a:t0>
 list_tail_opt(xs: list(a)): opt_vt(list(a))
 //
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_length
 {n:int}(xs: list(a, n)): int(n)
 //
@@ -91,7 +91,7 @@ list_length
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_append
 {m,n:int}
 ( xs: list(a, m)
@@ -102,7 +102,7 @@ list_append
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_rappend
 {m,n:int}
 ( xs: list(a, m)
@@ -113,7 +113,7 @@ list_rappend
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_reverse
 {n:int}(list(a, n)): list(a, n)
 //
@@ -122,11 +122,11 @@ list_reverse
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_copy_vt
 {n:int}(list(a, n)): list_vt(a, n)
 fun
-<a:type>
+<a:t0>
 list_rcopy_vt
 {n:int}(list(a, n)): list_vt(a, n)
 //
@@ -136,11 +136,11 @@ list_rcopy_vt
 (* ****** ****** *)
 
 fun
-<x0:type>
+<x0:t0>
 list_forall
 {n:int}(xs: list(x0, n)): bool
 fun
-<x0:type>
+<x0:t0>
 list_foreach
 {n:int}(xs: list(x0, n)): void
 
@@ -152,13 +152,13 @@ list_map_vt: map$for
 *)
 //
 fun
-<x0:type>
-<y0:type>
+<x0:t0>
+<y0:t0>
 list_map
 {n:int}(xs: list(x0, n)): list(y0, n)
 fun
-<x0:type>
-<y0:vtype>
+<x0:t0>
+<y0:vt>
 list_map_vt
 {n:int}(xs: list(x0, n)): list_vt(y0, n)
 //
@@ -170,13 +170,13 @@ list_maprev_vt: map$for
 *)
 //
 fun
-<x0:type>
-<y0:type>
+<x0:t0>
+<y0:t0>
 list_maprev
 {n:int}(xs: list(x0, n)): list(y0, n)
 fun
-<x0:type>
-<y0:vtype>
+<x0:t0>
+<y0:vt>
 list_maprev_vt
 {n:int}(xs: list(x0, n)): list_vt(y0, n)
 //
@@ -187,7 +187,7 @@ fun
 <n:i0>
 list_tabulate(int(n)): list(a, n)
 fun
-<a:type>
+<a:t0>
 list_tabulate_cref
 {n:nat}
 ( n0: int(n)
