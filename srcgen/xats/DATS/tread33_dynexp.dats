@@ -116,19 +116,21 @@ d3p0.node() of
     tread33_d3pat(d3p1)
   }
 //
-| D3Psym0(sym0, dpis) =>
+| D3Psym0(sym1, dpis) =>
   let
     val
     t2p0 = d3p0.type()
     val () =
     trerr33_add(TRERR33d3pat(d3p0))
   in
-    println!
-    (loc0, ": TRERR33(d3pat): D3Psym0: sym0 = ", sym0);
-    println!
-    (loc0, ": TRERR33(d3pat): D3Psym0: t2p0 = ", t2p0);
-    println!
-    (loc0, ": TRERR33(d3pat): D3Psym0: dpis = ", dpis);
+    prerrln!
+    (loc0, ": TRERR33(D3Psym0): unresolved symbol");
+    prerrln!
+    (loc0, ": TRERR33(D3Psym0): the symbol: ", sym1);
+    prerrln!
+    (loc0, ": TRERR33(D3Psym0): the inferred type: ", t2p0);
+    prerrln!
+    (loc0, ": TRERR33(D3Psym0): the possible solutions: ", dpis);
   end
 //
 | D3Ptcast(d3p1, t2p2) =>
@@ -136,20 +138,22 @@ d3p0.node() of
 //
     val
     t2p1 = d3p1.type()
-//
     val () =
     tread33_d3pat(d3p1)
-//
     val () =
     trerr33_add(TRERR33d3pat(d3p0))
+//
   in
 //
-    println!
-    (loc0, ": TRERR33(d3pat): D3Ptcast: d3p1 = ", d3p1);
-    println!
-    (loc0, ": TRERR33(d3pat): D3Ptcast: t2p1 = ", t2p1);
-    println!
-    (loc0, ": TRERR33(d3pat): D3Ptcast: t2p2 = ", t2p2);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Ptcast): d3p1 = ", d3p1);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Ptcast): the expected type: ", t2p2);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Ptcast): the inferred type: ", t2p1);
 //
   end
 //
@@ -158,13 +162,14 @@ d3p0.node() of
     val () =
     trerr33_add(TRERR33d3pat(d3p0))
   in
-    println!
-    (loc0, ": TRERR33(d3pat): D3Pnone1: d3p1 = ", d3p1);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Pnone1): the d3pat-error: ", d3p1);
   end // end of [D3Pnone1]
 //
 | _(* rest-of-d3pat *) =>
   {
-    val () = println!(loc0, ": tread33_d3pat(", d3p0, ")")
+    val () = prerrln!(loc0, ": tread33_d3pat(", d3p0, ")")
   }
 //
 end // end of [tread33_d3pat]
@@ -192,6 +197,104 @@ list_foreach$fwork<d3pat><env>(d3p, env) = tread33_d3pat(d3p)
 } (* end of [tread33_d3patlst] *)
 //
 (* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+
+fun
+aux_D3Eif0
+(d3e0: d3exp): void =
+let
+//
+val-
+D3Eif0
+( d3e1
+, d3e2, opt3) = d3e0.node()
+//
+val () =
+(
+case+
+d3e1.node() of
+|
+D3Etcast(d3e1, _) =>
+{
+//
+val () =
+prerrln!
+( d3e1.loc()
+, ": TRERR33(D3Eif0:test): a boolean is expected")
+//
+}
+| _ (* else *) => ((*void*))
+) (* end of [val] *)
+//
+val () =
+(
+case+
+d3e2.node() of
+|
+D3Etcast(d3e2, t2p2) =>
+{
+//
+val () =
+prerrln!
+( d3e2.loc()
+, ": TRERR33(D3Eif0): then: type-mismatch")
+//
+val () =
+prerrln!
+( d3e2.loc()
+, ": TRERR33(D3Eif0): then: the expected type: ", t2p2)
+val () =
+prerrln!
+( d3e2.loc()
+, ": TRERR33(D3Eif0): then: the inferred type: ", d3e2.type())
+//
+}
+| _ (* else *) => ((*void*))
+) (* end of [val] *)
+//
+val () =
+(
+case+ opt3 of
+|
+None() => ()
+|
+Some(d3e3) =>
+(
+case+
+d3e3.node() of
+|
+D3Etcast(d3e3, t2p3) =>
+{
+//
+val () =
+prerrln!
+( d3e3.loc()
+, ": TRERR33(D3Eif0): else: type-mismatch")
+//
+val () =
+prerrln!
+( d3e3.loc()
+, ": TRERR33(D3Eif0): else: the expected type: ", t2p3)
+val () =
+prerrln!
+( d3e3.loc()
+, ": TRERR33(D3Eif0): else: the inferred type: ", d3e3.type())
+//
+}
+| _ (* else *) => ((*void*))
+)
+) (* end of [val] *)
+//
+in
+  // nothing
+end // end of [aux_D3Eif0]
+
+(* ****** ****** *)
+
+in(*in-of-local*)
 
 implement
 //{}(*tmp*)
@@ -249,9 +352,13 @@ d3e0.node() of
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   {
+//
+  val () = aux_D3Eif0(d3e0)
+//
   val () = tread33_d3exp(d3e1)
   val () = tread33_d3exp(d3e2)
   val () = tread33_d3expopt(opt3)
+//
   }
 //
 | D3Ecase
@@ -294,25 +401,27 @@ d3e0.node() of
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
   in
-    println!
-    (loc0, ": TRERR33(d3exp): D3Econ2: d2cs = ", d2cs);
-    println!
-    (loc0, ": TRERR33(d3exp): D3Econ2: t2p0 = ", t2p0);
+    prerrln!
+    (loc0, ": TRERR33(D3Econ2): d2cs = ", d2cs);
+    prerrln!
+    (loc0, ": TRERR33(D3Econ2): t2p0 = ", t2p0);
   end
 //
-| D3Esym0(sym0, dpis) =>
+| D3Esym0(sym1, dpis) =>
   let
     val
     t2p0 = d3e0.type()
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
   in
-    println!
-    (loc0, ": TRERR33(d3exp): D3Esym0: sym0 = ", sym0);
-    println!
-    (loc0, ": TRERR33(d3exp): D3Esym0: t2p0 = ", t2p0);
-    println!
-    (loc0, ": TRERR33(d3exp): D3Esym0: dpis = ", dpis);
+    prerrln!
+    (loc0, ": TRERR33(D3Esym0): unresolved symbol");
+    prerrln!
+    (loc0, ": TRERR33(D3Esym0): the symbol: ", sym1);
+    prerrln!
+    (loc0, ": TRERR33(D3Esym0): the inferred type: ", t2p0);
+    prerrln!
+    (loc0, ": TRERR33(D3Esym0): the possible solutions: ", dpis);
   end
 //
 | D3Eaddr(d3e1) =>
@@ -340,19 +449,22 @@ d3e0.node() of
 //
     val
     t2p1 = d3e1.type()
-//
     val () =
     tread33_d3exp(d3e1)
-//
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
+//
   in
 //
-    println!
-    (loc0, ": TRERR33(d3exp): D3Elcast: d3e1 = ", d3e1);
-//
-    println!(loc0, ": TRERR33(d3exp): D3Elcast: t2p1 = ", t2p1);
-    println!(loc0, ": TRERR33(d3exp): D3Elcast: lab2 = ", lab2);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Elcast): the d3exp: ", d3e1);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Elcast): the missing label: ", lab2);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Elcast): the inferred type = ", t2p1);
 //
   end
 | D3Etcast(d3e1, t2p2) =>
@@ -360,20 +472,21 @@ d3e0.node() of
 //
     val
     t2p1 = d3e1.type()
-//
     val () =
     tread33_d3exp(d3e1)
-//
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
+//
   in
-//
-    println!
-    (loc0, ": TRERR33(d3exp): D3Etcast: d3e1 = ", d3e1);
-//
-    println!(loc0, ": TRERR33(d3exp): D3Etcast: t2p1 = ", t2p1);
-    println!(loc0, ": TRERR33(d3exp): D3Etcast: t2p2 = ", t2p2);
-//
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Etcast): the d3exp: ", d3e1);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Etcast): the expected type: ", t2p2);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Etcast): the inferred type: ", t2p1);
   end
 //
 | D3Enone0() => ((*void*))
@@ -383,15 +496,19 @@ d3e0.node() of
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
   in
-    println!(loc0, ": TRERR33(d3exp): ", d3e0);
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Enone1): the d3exp-error: ", d3e0);
   end // end of [D1Enone1]
 //
 | _(* rest-of-d3exp *) =>
   {
-    val () = println!(loc0, ": tread33_d3exp(", d3e0, ")")
+    val () = prerrln!(loc0, ": tread33_d3exp(", d3e0, ")")
   }
 //
 end // end of [tread33_d3exp]
+
+end // end of [local]
 
 (* ****** ****** *)
 //
@@ -601,7 +718,7 @@ d3cl.node() of
         val () =
         trerr33_add(TRERR33d3ecl(d3cl))
       in
-      println!
+      prerrln!
       ( loc0
       , ": TRERR33(d3ecl): D3Cimpdecl: id2c = "
       , id2c )
@@ -658,7 +775,7 @@ f3a0.node() of
     val ((*void*)) =
     trerr33_add(TRERR33f3arg(f3a0))
   in
-    println!
+    prerrln!
     (loc0, ": TRERR33(f3arg): F3ARGnone2: f2a = ", f2a)
   end
 | F3ARGnone3(f3a) =>
@@ -667,7 +784,7 @@ f3a0.node() of
     val ((*void*)) =
     trerr33_add(TRERR33f3arg(f3a0))
   in
-    println!
+    prerrln!
     (loc0, ": TRERR33(f3arg): F3ARGnone3: f3a = ", f3a)
   end
 //

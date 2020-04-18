@@ -73,5 +73,12 @@ fun
 tread23_main(d3eclist): void
 //
 (* ****** ****** *)
+//
+fun//{}
+tread23_d3ecl: treader23(d3ecl)
+fun//{}
+tread23_d3eclist: treader23(d3eclist)
+//
+(* ****** ****** *)
 
 (* end of [xats_tread23.sats] *)

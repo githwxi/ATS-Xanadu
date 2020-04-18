@@ -106,7 +106,7 @@ print_sort2(x0) =
 fprint_sort2(stdout_ref, x0) 
 implement
 prerr_sort2(x0) =
-fprint_sort2(stdout_ref, x0) 
+fprint_sort2(stderr_ref, x0) 
 
 local
 
@@ -222,7 +222,7 @@ print_s2cst(x0) =
 fprint_s2cst(stdout_ref, x0) 
 implement
 prerr_s2cst(x0) =
-fprint_s2cst(stdout_ref, x0) 
+fprint_s2cst(stderr_ref, x0) 
 //
 implement
 fprint_s2cst
@@ -248,7 +248,7 @@ print_s2var(x0) =
 fprint_s2var(stdout_ref, x0) 
 implement
 prerr_s2var(x0) =
-fprint_s2var(stdout_ref, x0) 
+fprint_s2var(stderr_ref, x0) 
 //
 implement
 fprint_s2var
@@ -274,7 +274,7 @@ print_s2eff(x0) =
 fprint_s2eff(stdout_ref, x0) 
 implement
 prerr_s2eff(x0) =
-fprint_s2eff(stdout_ref, x0) 
+fprint_s2eff(stderr_ref, x0) 
 *)
 (*
 local
@@ -370,7 +370,7 @@ print_s2txt(x0) =
 fprint_s2txt(stdout_ref, x0) 
 implement
 prerr_s2txt(x0) =
-fprint_s2txt(stdout_ref, x0) 
+fprint_s2txt(stderr_ref, x0) 
 
 local
 
@@ -404,7 +404,7 @@ print_tyrec(x0) =
 fprint_tyrec(stdout_ref, x0) 
 implement
 prerr_tyrec(x0) =
-fprint_tyrec(stdout_ref, x0) 
+fprint_tyrec(stderr_ref, x0) 
 
 implement
 fprint_tyrec
@@ -435,7 +435,7 @@ print_s2exp(x0) =
 fprint_s2exp(stdout_ref, x0) 
 implement
 prerr_s2exp(x0) =
-fprint_s2exp(stdout_ref, x0) 
+fprint_s2exp(stderr_ref, x0) 
 
 local
 
@@ -585,7 +585,7 @@ print_labs2exp(x0) =
 fprint_labs2exp(stdout_ref, x0) 
 implement
 prerr_labs2exp(x0) =
-fprint_labs2exp(stdout_ref, x0) 
+fprint_labs2exp(stderr_ref, x0) 
 //
 implement
 fprint_labs2exp
@@ -602,7 +602,7 @@ print_s2itm(x0) =
 fprint_s2itm(stdout_ref, x0) 
 implement
 prerr_s2itm(x0) =
-fprint_s2itm(stdout_ref, x0) 
+fprint_s2itm(stderr_ref, x0) 
 //
 implement
 fprint_s2itm

@@ -1357,6 +1357,27 @@ end // end of [aux_anno]
 
 (* ****** ****** *)
 
+fun
+aux_tcast
+( d3e0
+: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Etcast
+(d3e1, t2p2) = d3e0.node()
+//
+in
+let
+val
+d3e1 =
+trans33_dexp(d3e1) in d33exp_tcastize(d3e1, t2p2)
+end
+end // end of [aux_tcast]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -1464,14 +1485,9 @@ d3e0.node() of
 (*
 | D3Elcast(d3e1, lab2) => d3e0 (* HX: lab2: missing label *)
 *)
-| D3Etcast(d3e1, t2p2) =>
-  let
-    val d3e1 =
-    trans33_dexp(d3e1)
-  in
-    d3exp_make_node
-    (loc0, t2p0, D3Etcast(d3e1, t2p2))
-  end  
+| D3Etcast
+    (d3e1, t2p2) => aux_tcast(d3e0)
+  // type-cast: indication of type-error
 (*
 | D3Etcast(d3e1, t2p2) => d3e0 (* HX: t2p2: expected type *)
 *)

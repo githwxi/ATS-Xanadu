@@ -294,7 +294,8 @@ t2ype_f3arg_elim
 //
 fun
 d33exp_dn
-(d3e0: d3exp, t2p0: t2ype): d3exp
+  (d3e0: d3exp, t2p0: t2ype): d3exp
+//
 fun
 d33explst_dn
 ( loc0: loc_t
@@ -331,7 +332,7 @@ d33exp_proj_up
 fun
 d33exp_assgn_up
 ( loc0: loc_t
-, d3el: d3exp(*l-value*), d3er: d3exp): d3exp
+, d3el: d3exp(*l-val*), d3er: d3exp): d3exp
 //
 (* ****** ****** *)
 //
@@ -355,6 +356,12 @@ ti3env_get_tsub(ti3env): t2ypelst
 overload .s2vs with ti3env_get_s2vs
 overload .targ with ti3env_get_targ
 overload .tsub with ti3env_get_tsub
+//
+(* ****** ****** *)
+//
+fun
+d33exp_tcastize
+(d3e1: d3exp, t2p2: t2ype(*tcast*)): d3exp
 //
 (* ****** ****** *)
 //

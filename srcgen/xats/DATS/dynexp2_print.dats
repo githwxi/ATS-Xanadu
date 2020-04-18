@@ -163,7 +163,7 @@ print_d2con(x0) =
 fprint_d2con(stdout_ref, x0)
 implement
 prerr_d2con(x0) =
-fprint_d2con(stdout_ref, x0)
+fprint_d2con(stderr_ref, x0)
 //
 implement
 fprint_d2con
@@ -187,7 +187,7 @@ print_d2cst(x0) =
 fprint_d2cst(stdout_ref, x0)
 implement
 prerr_d2cst(x0) =
-fprint_d2cst(stdout_ref, x0)
+fprint_d2cst(stderr_ref, x0)
 //
 implement
 fprint_d2cst
@@ -212,7 +212,7 @@ print_d2var(x0) =
 fprint_d2var(stdout_ref, x0)
 implement
 prerr_d2var(x0) =
-fprint_d2var(stdout_ref, x0)
+fprint_d2var(stderr_ref, x0)
 //
 implement
 fprint_d2var
@@ -788,7 +788,7 @@ print_d2itm(x0) =
 fprint_d2itm(stdout_ref, x0)
 implement
 prerr_d2itm(x0) =
-fprint_d2itm(stdout_ref, x0)
+fprint_d2itm(stderr_ref, x0)
 //
 implement
 fprint_d2itm
@@ -830,7 +830,7 @@ print_sq2arg(x0) =
 fprint_sq2arg(stdout_ref, x0)
 implement
 prerr_sq2arg(x0) =
-fprint_sq2arg(stdout_ref, x0)
+fprint_sq2arg(stderr_ref, x0)
 //
 implement
 fprint_sq2arg
@@ -846,7 +846,7 @@ print_tq2arg(x0) =
 fprint_tq2arg(stdout_ref, x0)
 implement
 prerr_tq2arg(x0) =
-fprint_tq2arg(stdout_ref, x0)
+fprint_tq2arg(stderr_ref, x0)
 //
 implement
 fprint_tq2arg
@@ -862,7 +862,7 @@ print_ti2arg(x0) =
 fprint_ti2arg(stdout_ref, x0)
 implement
 prerr_ti2arg(x0) =
-fprint_ti2arg(stdout_ref, x0)
+fprint_ti2arg(stderr_ref, x0)
 //
 implement
 fprint_ti2arg

@@ -287,7 +287,7 @@ print_d3exp(x0) =
 fprint_d3exp(stdout_ref, x0) 
 implement
 prerr_d3exp(x0) =
-fprint_d3exp(stdout_ref, x0) 
+fprint_d3exp(stderr_ref, x0) 
 //
 implement
 fprint_d3exp
@@ -628,7 +628,7 @@ print_ti3arg(x0) =
 fprint_ti3arg(stdout_ref, x0) 
 implement
 prerr_ti3arg(x0) =
-fprint_ti3arg(stdout_ref, x0) 
+fprint_ti3arg(stderr_ref, x0) 
 //
 implement
 fprint_ti3arg
@@ -648,7 +648,7 @@ print_d3ecl(x0) =
 fprint_d3ecl(stdout_ref, x0) 
 implement
 prerr_d3ecl(x0) =
-fprint_d3ecl(stdout_ref, x0) 
+fprint_d3ecl(stderr_ref, x0) 
 //
 local
 
