@@ -101,9 +101,9 @@ gseq_uncons_opt<x0,xs>(xs)
 in
 //
 case+ opt of
-| ~optn_vt_nil() =>
-   $raise SubscriptExn()
-| ~optn_vt_cons(x0) => x0
+| optn_vt_nil() =>
+  $raise SubscriptExn()
+| optn_vt_cons(x0) => x0
 //
 end // end of [gseq_uncons_exn]
 *)
@@ -398,13 +398,13 @@ loop
 (
 case+ xx of
 |
-~ list_vt_nil() => xs
+list_vt_nil() => xs
 |
-~ list_vt_cons(x0, xx) =>
-  loop(xx, gseq_cons<x0,xs>(x0, xs))
+list_vt_cons(x0, xx) =>
+loop(xx, gseq_cons<x0,xs>(x0, xs))
 )
 in
-loop(xx, gseq_nil<x0,xs>())
+  loop(xx, gseq_nil<x0,xs>())
 end // end of [gseq_unrlist_vt]
 //
 (* ****** ****** *)

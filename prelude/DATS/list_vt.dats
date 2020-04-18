@@ -24,12 +24,12 @@ loop
 (
 case+ xs of
 |
-~ list_vt_nil() => ()
+list_vt_nil() => ()
 |
-~ list_vt_cons(x0, xs) =>
-  let
+list_vt_cons(x0, xs) =>
+let
   val () = g_free<a>(x0) in loop(xs)
-  end
+end
 ) (* end of [loop] *)
 } (* end of [list_vt_free] *)
 //
@@ -244,13 +244,12 @@ loop
 (
 case+ xs of
 |
-~list_vt_nil() => true
+list_vt_nil() => true
 |
-~list_vt_cons(x0, xs) =>
+list_vt_cons(x0, xs) =>
 let
 val
-test =
-forall0$test<a>(x0)
+test = forall0$test<a>(x0)
 in
 //
 if
@@ -259,8 +258,7 @@ then loop(xs)
 else
 let
 val () =
-list_vt_free(xs) in false
-end // end of [else]
+list_vt_free(xs) in false end
 //
 end // end of [list_vt_cons]
 )
@@ -281,9 +279,9 @@ loop
 (
 case+ xs of
 |
-~list_vt_nil() => true
+list_vt_nil() => true
 |
-~list_vt_cons(x0, xs) =>
+list_vt_cons(x0, xs) =>
 let
 val () =
 foreach0$work<a>(x0) in loop(xs)
@@ -307,18 +305,18 @@ loop{i:nat}.<i>.
 (
 case+ xs of
 |
-~ list_vt_nil() =>
-  (r0 := list_vt_nil())
+list_vt_nil() =>
+(r0 := list_vt_nil())
 |
-~ list_vt_cons(x0, xs) =>
-  let
+list_vt_cons(x0, xs) =>
+let
   val y0 =
   map0$fopr<x0><y0>(x0)
   val () =
   (r0 := list_vt_cons(y0, _))
-  in
+in
     loop(xs, r0.1); $fold(r0)
-  end
+end
 ) (* end of [loop] *)
 //
 in
@@ -347,18 +345,20 @@ loop
 ( xs
 : list_vt(x0, i)
 , ys
-: list_vt(y0, j)): list_vt(y0, i+j) =
+: list_vt(y0, j))
+: list_vt(y0, i+j) =
 (
 case+ xs of
 |
-~ list_vt_nil() => ys
+list_vt_nil() => ys
 |
-~ list_vt_cons(x0, xs) =>
-  let
-  val y0 = map0for<x0><y0>(x0)
-  in
-    loop(xs, list_vt_cons(y0, ys))
-  end
+list_vt_cons(x0, xs) =>
+let
+  val y0 =
+  map0$fopr<x0><y0>(x0)
+in
+  loop(xs, list_vt_cons(y0, ys))
+end
 )
 //
 } (* end of [list_vt_maprev0] *)
