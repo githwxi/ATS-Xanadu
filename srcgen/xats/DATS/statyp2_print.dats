@@ -81,7 +81,7 @@ print_t2ype(x0) =
 fprint_t2ype(stdout_ref, x0) 
 implement
 prerr_t2ype(x0) =
-fprint_t2ype(stdout_ref, x0) 
+fprint_t2ype(stderr_ref, x0) 
 //
 local
 
@@ -171,7 +171,7 @@ print_labt2ype(x0) =
 fprint_labt2ype(stdout_ref, x0) 
 implement
 prerr_labt2ype(x0) =
-fprint_labt2ype(stdout_ref, x0) 
+fprint_labt2ype(stderr_ref, x0) 
 //
 implement
 fprint_labt2ype

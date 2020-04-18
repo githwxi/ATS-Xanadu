@@ -75,6 +75,48 @@ _(*TMP*) = "./../DATS/dynexp3_print.dats"
 
 (* ****** ****** *)
 
+implement
+//{}(*tmp*)
+tread23_d3ecl(d3cl) =
+let
+//
+val loc0 = d3cl.loc()
+//
+(*
+val () =
+println!
+("tread23_d3ecl: d3cl = ", d3cl)
+*)
+//
+in
+//
+case+
+d3cl.node() of
+//
+| _(* rest-of-d3ecl *) =>
+  {
+    val () = println!(loc0, ": tread23_d3ecl(", d3cl, ")")
+  }
+//
+end // end of [tread23_d3ecl]
+
+(* ****** ****** *)
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread23_d3eclist(d3cs) =
+(
+list_foreach<d3ecl>(d3cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d3ecl><env>(d3c, env) = tread23_d3ecl(d3c)
+} (* end of [tread23_d3eclist] *)
+//
+(* ****** ****** *)
+
 local
 
 static
@@ -115,8 +157,12 @@ tread23_main(d3cs) = let
 //
 (*
 val () =
-tread23_d3eclist<>(d3cs)
+println!("tread23_main")
 *)
+//
+val () =
+tread23_d3eclist(d3cs)
+//
 val
 xerrs = the_trerr23lst_get()
 val

@@ -1431,6 +1431,47 @@ end (* end of [ti3env_get_tsub] *)
 
 (* ****** ****** *)
 
+implement
+d33exp_tcastize
+  (d3e1, t2p2) =
+let
+val loc1 = d3e1.loc()
+in
+//
+case+
+d3e1.node() of
+//
+|
+D3Eif0
+(de11, de12, opt3) =>
+let
+val
+t2p1 = d3e1.type()
+val
+de12 =
+d33exp_tcastize(de12, t2p2)
+val
+opt3 =
+(
+case+ opt3 of
+| None() => None()
+| Some(de13) =>
+  Some(d33exp_tcastize(de13, t2p2))
+) : d3expopt // end of [val]
+in
+  d33exp_make_node
+  ( loc1
+  , t2p1, D3Eif0(de11, de12, opt3))
+end
+//
+| _ (* else *) =>
+  d33exp_make_node
+  (loc1, t2p2, D3Etcast(d3e1, t2p2))
+//
+end // end of [d33exp_tcastize]
+
+(* ****** ****** *)
+
 local
 //
 #staload
