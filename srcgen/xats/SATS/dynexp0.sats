@@ -505,9 +505,20 @@ d0exp_node =
   , token(*WITH*)
   , tokenopt(*BAR*), d0claulst, token(*END*))
 //
-| D0Eanno of (d0exp, s0exp)
+(*
+| D0Elexn of
+  (token(*break/continue*))
+| D0Efrlp of
+  ( token
+  , d0exp(*semi*), d0exp(*body*))
+| D0Ewhlp of
+  ( token
+  , d0exp(*test*), d0exp(*body*))
+*)
 //
-| D0Equal of (token, d0exp) // qualified
+| D0Eanno of (d0exp, s0exp(*anno*))
+//
+| D0Equal of (token(*qual*), d0exp) // qualified
 //
 | D0Enone of (token) // HX: for error indication
 // end of [d0exp_node]

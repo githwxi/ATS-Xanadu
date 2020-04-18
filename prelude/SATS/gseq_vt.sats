@@ -40,12 +40,25 @@ glseq_is_cons(!xs): bool
 fun
 <x0:vt
 ,xs:vt>
-glseq_length0(xs): nint
+glseq_length0(~xs): nint
 fun
 <x0:vt
 ,xs:vt>
 glseq_length1(!xs): nint
 //
+(* ****** ****** *)
+
+fun
+<x0:vt
+,xs:vt>
+glseq_drop0
+(xs: ~xs, n0: sint): xs
+fun
+<x0:vt
+,xs:vt>
+glseq_drop1
+(xs: !xs, n0: sint): xs
+
 (* ****** ****** *)
 
 (* end of [gseq_vt.sats] *)

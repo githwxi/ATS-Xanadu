@@ -82,6 +82,12 @@ g_noteq(!a, !a): bool
 (* ****** ****** *)
 
 fun
+<x0:t0>
+dropif$test(x0): bool
+
+(* ****** ****** *)
+
+fun
 <x0:t0><y0:vt>
 map$fopr(x0: x0): (y0)
 fun
