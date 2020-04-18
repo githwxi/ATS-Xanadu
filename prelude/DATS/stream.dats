@@ -36,7 +36,8 @@ in
 case+ xs0 of
 |
 ~ strmcon_vt_nil
-  () => strmcon_nil((*void*))
+  () =>
+  strmcon_nil((*void*))
 |
 @ strmcon_vt_cons
   (x0, xs) =>
@@ -251,12 +252,10 @@ case+ xs of
     mapopt$fopr<x0><y0>(x0)
   in
     case+ opt of
-    |
-    ~optn_vt_nil() =>
-     auxloop($eval(xs)) // tail-call
-    |
-    ~optn_vt_cons(y0) =>
-     strmcon_cons(y0, auxmain(xs))
+    | optn_vt_nil() =>
+      auxloop($eval(xs)) // tail
+    | optn_vt_cons(y0) =>
+      strmcon_cons(y0, auxmain(xs))
   end // end of [strmcon_cons]
 )
 } (* end of [stream_mapopt] *)
@@ -288,12 +287,10 @@ case+ xs of
     mapopt$fopr<x0><y0>(x0)
   in
     case+ opt of
-    |
-    ~optn_vt_nil() =>
-     auxloop($eval(xs)) // tail-call
-    |
-    ~optn_vt_cons(y0) =>
-     strmcon_vt_cons(y0, auxmain(xs))
+    | optn_vt_nil() =>
+      auxloop($eval(xs)) // tail
+    | optn_vt_cons(y0) =>
+      strmcon_vt_cons(y0, auxmain(xs))
   end // end of [strmcon_cons]
 )
 } (* end of [stream_mapopt_vt] *)

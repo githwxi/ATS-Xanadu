@@ -52,12 +52,12 @@ loop(xs: list_vt(a)): void =
 (
 case+ xs of
 |
-~list_vt_nil() => ()
+list_vt_nil() => ()
 |
-~list_vt_cons(x0, xs) =>
- let
-   val () = g_free<a>(x0) in loop(xs)
- end
+list_vt_cons(x0, xs) =>
+let
+  val () = g_free<a>(x0) in loop(xs)
+end
 )
 } (* end of [g_free<list_vt>] *)
 

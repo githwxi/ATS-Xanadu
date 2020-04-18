@@ -100,9 +100,9 @@ then xs else
 (
 case+ !xs of
 |
-~ strmcon_vt_nil() => stream_vt_nil()
+strmcon_vt_nil() => stream_vt_nil()
 |
-~ strmcon_vt_cons(x0, xs) =>
+strmcon_vt_cons(x0, xs) =>
   (g_free<a>(x0); auxloop(xs, pred(n0)))
 )
 } (* end of [stream_vt_drop] *)
@@ -137,11 +137,11 @@ else
 case+ !xs of
 //
 |
-~ strmcon_vt_nil() => strmcon_vt_nil()
+strmcon_vt_nil() => strmcon_vt_nil()
 //
 |
-~ strmcon_vt_cons(x0, xs) =>
-  strmcon_vt_cons(x0, auxmain(xs, pred(n0)))
+strmcon_vt_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs, pred(n0)))
 //
 ) (* else *)
 )
@@ -164,16 +164,16 @@ loop
 (
 case+ !xs of
 |
-~ strmcon_vt_nil() =>
-  (r0 := list_vt_nil())
+strmcon_vt_nil() =>
+(r0 := list_vt_nil())
 |
-~ strmcon_vt_cons(x0, xs) =>
-  let
+strmcon_vt_cons(x0, xs) =>
+let
   val () =
   (r0 := list_vt_cons(x0, _))
-  in
+in
     loop(xs, r0.1); $fold(r0)
-  end
+end
 ) (* end of [loop] *)
 //
 in
@@ -199,13 +199,13 @@ loop
 (
 case+ !xs of
 |
-~ strmcon_vt_nil() => r0
+strmcon_vt_nil() => r0
 |
-~ strmcon_vt_cons(x0, xs) =>
-  let
-  val r0 =
-  list_vt_cons(x0, r0) in loop(xs, r0)
-  end
+strmcon_vt_cons(x0, xs) =>
+let
+val r0 =
+list_vt_cons(x0, r0) in loop(xs, r0)
+end
 )
 } (* end of [stream_vt_rlistize] *)
 
@@ -235,9 +235,9 @@ $llazy
 g_free(xs);
 g_free(ys);
 case+ !xs of
-| ~strmcon_vt_nil() => !ys
-| ~strmcon_vt_cons(x0, xs) =>
-   strmcon_vt_cons(x0, append(xs, ys))
+| strmcon_vt_nil() => !ys
+| strmcon_vt_cons(x0, xs) =>
+  strmcon_vt_cons(x0, append(xs, ys))
 )
 } (* end of [stream_vt_append] *)
 
@@ -287,17 +287,17 @@ loop
 (
 case+ !xs of
 |
-~ strmcon_vt_nil() => true
+strmcon_vt_nil() => true
 |
-~ strmcon_vt_cons(x0, xs) =>
-  let
+strmcon_vt_cons(x0, xs) =>
+let
   val
   test = forall0$test<a>(x0)
-  in
+in
   if
   test
   then loop(xs) else (g_free(xs); false)
-  end
+end
 ) (* end of [loop] *)
 } (* end of [stream_vt_forall0] *)
 
@@ -346,16 +346,16 @@ g_free(xs);
 //
 case+ !xs of
 |
-~ strmcon_vt_nil() =>
-  strmcon_vt_nil((*void*))
+strmcon_vt_nil() =>
+strmcon_vt_nil((*void*))
 |
-~ strmcon_vt_cons(x0, xs) =>
-  let
-    val y0 =
-    map0$fopr<x0><y0>(x0)
-  in
-    strmcon_vt_cons(y0, auxmain(xs))
-  end
+strmcon_vt_cons(x0, xs) =>
+let
+  val y0 =
+  map0$fopr<x0><y0>(x0)
+in
+  strmcon_vt_cons(y0, auxmain(xs))
+end
 )
 } (* end of [stream_vt_map0] *)
 
@@ -388,10 +388,12 @@ auxloop
 (
 case+ xs of
 |
-~ strmcon_vt_nil() =>
-  strmcon_vt_nil()
+strmcon_vt_nil
+  () =>
+strmcon_vt_nil()
 |
-~ strmcon_vt_cons(x0, xs) =>
+strmcon_vt_cons
+  (x0, xs) =>
 ( if
   filter0$test<x0>(x0)
   then
@@ -430,23 +432,21 @@ auxloop
 (
 case+ xs of
 |
-~ strmcon_vt_nil() =>
-  strmcon_vt_nil()
+strmcon_vt_nil() =>
+strmcon_vt_nil()
 |
-~ strmcon_vt_cons(x0, xs) =>
-  let
-    val
-    opt =
-    mapopt0$fopr<x0><y0>(x0)
-  in
-    case+ opt of
-    |
-    ~optn_vt_nil() =>
-     auxloop($eval(xs)) // tail-call
-    |
-    ~optn_vt_cons(y0) =>
-     strmcon_vt_cons(y0, auxmain(xs))
-  end // end of [strmcon_vt_cons]
+strmcon_vt_cons(x0, xs) =>
+let
+  val
+  opt =
+  mapopt0$fopr<x0><y0>(x0)
+in
+  case+ opt of
+  | optn_vt_nil() =>
+    auxloop($eval(xs)) // tail-call
+  | optn_vt_cons(y0) =>
+    strmcon_vt_cons(y0, auxmain(xs))
+end // end of [strmcon_vt_cons]
 )
 } (* end of [stream_vt_mapopt0] *)
 
@@ -473,32 +473,28 @@ loop
 (
 case+ !xs of
 |
-~ strmcon_vt_nil
-  () =>
-  (g_free(ys); true)
+strmcon_vt_nil() =>
+(g_free(ys); true)
 |
-~ strmcon_vt_cons
-  (x0, xs) =>
-  (
+strmcon_vt_cons(x0, xs) =>
+(
   case+ !ys of
   |
-  ~ strmcon_vt_nil
-    () =>
-    (g_free(xs); true)
+  strmcon_vt_nil() =>
+  (g_free(xs); true)
   |
-  ~ strmcon_vt_cons
-    (y0, ys) =>
-    let
+  strmcon_vt_cons(y0, ys) =>
+  let
     val
     test =
     z2forall0$test<x0,y0>(x0, y0)
-    in
+  in
       if
       test
       then loop(xs, ys)
       else (g_free(xs); g_free(ys); false)
-    end // end of [strmcon_vt_cons]
-   )
+  end // end of [strmcon_vt_cons]
+)
 ) (* end of [loop] *)
 } (* end of [stream_vt_z2forall0] *)
 
@@ -521,34 +517,24 @@ loop
 (
 case+ !xs of
 |
-~ strmcon_vt_nil
-  () =>
-  (
+strmcon_vt_nil() =>
+(
   case+ !ys of
-  |
-  ~ strmcon_vt_nil
-    () => 0
-  |
-  ~ strmcon_vt_cons
-    (y0, ys) =>
+  | strmcon_vt_nil() => 0
+  | strmcon_vt_cons(y0, ys) =>
     (
-    g_free(y0); g_free(ys); -1
+      g_free(y0); g_free(ys); -1
     )
-  )
+)
 |
-~ strmcon_vt_cons
-  (x0, xs) =>
-  (
+strmcon_vt_cons(x0, xs) =>
+(
   case+ !ys of
-  |
-  ~ strmcon_vt_nil
-    () =>
+  | strmcon_vt_nil() =>
     (
-    g_free(x0); g_free(xs);  1
+      g_free(x0); g_free(xs);  1
     )
-  |
-  ~ strmcon_vt_cons
-    (y0, ys) =>
+  | strmcon_vt_cons(y0, ys) =>
     let
     val
     sign =
@@ -559,7 +545,7 @@ case+ !xs of
       then loop(xs, ys)
       else (g_free(xs); g_free(ys); sign)
     end // end of [strmcon_vt_cons]
-   )
+)
 ) (* end of [loop] *)
 } (* end of [stream_vt_z2forcmp0] *)
 
