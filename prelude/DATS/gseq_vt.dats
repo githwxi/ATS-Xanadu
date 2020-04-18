@@ -30,5 +30,17 @@ len = glseq_length1(xs) in g_free<xs>(xs); len
 end // end of [glseq_length0]
 //
 (* ****** ****** *)
+//
+(*
+impltmp
+<x0,xs>
+glseq_drop0(xs) =
+let
+  val
+  res = glseq_drop1(xs) in g_free<xs>(xs); res
+end // end of [glseq_drop0]
+*)
+//
+(* ****** ****** *)
 
 (* end of [gseq_vt.dats] *)
