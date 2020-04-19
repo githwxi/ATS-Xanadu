@@ -306,7 +306,8 @@ list_nchoose1
 (
 let
 val
-m0 = "length(xs)"
+m0 =
+list_length(xs)
 in
 if
 (m0 < n0)
