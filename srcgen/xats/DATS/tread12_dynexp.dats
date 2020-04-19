@@ -130,7 +130,11 @@ d2p0.node() of
     val () =
     trerr12_add(TRERR12d2pat(d2p0))
   in
-    prerrln!(loc0, ": TRERR12(d2pat): ", d2p0);
+    prerrln!
+    ( loc0, ": ***TRERR12***");
+    prerrln!
+    ( loc0
+    , ": TRERR12(D2Pnone1): d3pat-error", d2p0);
   end // end of [D2Pnone1]
 //
 | _(* rest-of-d2pat *) =>
@@ -278,7 +282,11 @@ d2e0.node() of
     val () =
     trerr12_add(TRERR12d2exp(d2e0))
   in
-    prerrln!(loc0, ": TRERR12(d2exp): ", d2e0);
+    prerrln!
+    ( loc0, ": ***TRERR12***");
+    prerrln!
+    ( loc0
+    , ": TRERR12(D2Enone1): d3exp-error: ", d2e0);
   end // end of [D1Enone1]
 //
 | _(* rest-of-d2exp *) =>
