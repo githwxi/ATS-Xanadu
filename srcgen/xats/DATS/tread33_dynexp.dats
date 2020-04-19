@@ -75,6 +75,13 @@ _(*TMP*) = "./../DATS/dynexp3_print.dats"
 
 (* ****** ****** *)
 //
+overload
+print with pprint_t2ype of 10
+overload
+prerr with pprerr_t2ype of 10
+//
+(* ****** ****** *)
+//
 implement
 //{}(*tmp*)
 tread33_d3pat
@@ -146,7 +153,6 @@ d3p0.node() of
     trerr33_add(TRERR33d3pat(d3p0))
 //
   in
-//
     prerrln!
     ( loc0, ": ***TRERR33***" );
     prerrln!
@@ -158,7 +164,6 @@ d3p0.node() of
     prerrln!
     ( loc0
     , ": TRERR33(D3Ptcast): the inferred type: ", t2p1);
-//
   end
 //
 | D3Pnone1(d3p1) =>

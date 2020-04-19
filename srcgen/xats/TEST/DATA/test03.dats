@@ -6,8 +6,8 @@
 (* ****** ****** *)
 
 fun
-fact(n0: int) =
-if n0 > 0 then n0 * fact(pred(n0)) else "1"
+fact(n0: int): int =
+if n0 > 0 then n0 * fact(pred(n0)) else 1
 
 (* ****** ****** *)
 

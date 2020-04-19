@@ -74,6 +74,13 @@ _(*TMP*) = "./../DATS/dynexp2_print.dats"
 _(*TMP*) = "./../DATS/dynexp3_print.dats"
 
 (* ****** ****** *)
+//
+overload
+print with pprint_t2ype of 10
+overload
+prerr with pprerr_t2ype of 10
+//
+(* ****** ****** *)
 
 local
 
