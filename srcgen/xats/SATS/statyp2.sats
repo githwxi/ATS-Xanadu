@@ -133,19 +133,6 @@ labt2ypelst = List0(labt2ype)
 //
 (* ****** ****** *)
 //
-fun
-print_labt2ype: print_type(labt2ype)
-fun
-prerr_labt2ype: prerr_type(labt2ype)
-fun
-fprint_labt2ype: fprint_type(labt2ype)
-//
-overload print with print_labt2ype
-overload prerr with prerr_labt2ype
-overload fprint with fprint_labt2ype
-//
-(* ****** ****** *)
-//
 val
 the_t2ype_void: t2ype
 //
@@ -194,6 +181,31 @@ fprint_t2ype: fprint_type(t2ype)
 overload print with print_t2ype
 overload prerr with prerr_t2ype
 overload fprint with fprint_t2ype
+//
+(* ****** ****** *)
+//
+fun
+print_labt2ype: print_type(labt2ype)
+fun
+prerr_labt2ype: prerr_type(labt2ype)
+fun
+fprint_labt2ype: fprint_type(labt2ype)
+//
+overload print with print_labt2ype
+overload prerr with prerr_labt2ype
+overload fprint with fprint_labt2ype
+//
+(* ****** ****** *)
+//
+fun
+pprint_t2ype: print_type(t2ype)
+fun
+pprerr_t2ype: prerr_type(t2ype)
+//
+fun
+fpprint_t2ype: fprint_type(t2ype)
+fun
+fpprint_labt2ype: fprint_type(labt2ype)
 //
 (* ****** ****** *)
 //
