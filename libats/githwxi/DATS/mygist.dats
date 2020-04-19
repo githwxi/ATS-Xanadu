@@ -338,7 +338,7 @@ case+ xs of
 | list_cons(x0, xs) => !
   stream_vt_append<list(a)>
   (
-  stream_vt_mcons
+  stream_vt_mcons<a>
   (x0, auxmain(xs, m0-1, n0-1)), auxmain(xs, m0-1, n0)
   ) (* end of [list_cons] *)
 )

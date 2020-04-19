@@ -329,14 +329,16 @@ val
 loc0 = d3e0.loc((*void*))
 val
 t2p0 = t2ype_hnfize(d3e0.type())
-(*
+//
+// (*
 val () =
 println!
 ("tread33_d3exp: d3e0 = ", d3e0)
 val () =
 println!
 ("tread33_d3exp: t2p0 = ", t2p0)
-*)
+// *)
+//
 //
 in
 //
@@ -470,6 +472,11 @@ d3e0.node() of
 | D3Elazy(d3e1) =>
   {
     val () = tread33_d3exp(d3e1)
+  }
+| D3Ellazy(d3e1, d3es) =>
+  {
+    val () = tread33_d3exp(d3e1)
+    val () = tread33_d3explst(d3es)
   }
 //
 | D3Elcast(d3e1, lab2) =>
@@ -652,11 +659,11 @@ let
 //
 val loc0 = d3cl.loc()
 //
-(*
+// (*
 val () =
 println!
 ("tread33_d3ecl: d3cl = ", d3cl)
-*)
+// *)
 //
 in
 //
@@ -710,7 +717,7 @@ d3cl.node() of
 | D3Cimpdecl1
   ( tok, mopt
   , sqas, tqas
-  , id2c, ti2s, ti3a
+  , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
   {
     val () =
@@ -726,7 +733,7 @@ d3cl.node() of
 | D3Cimpdecl2
   ( tok, mopt
   , sqas, tqas
-  , id2c, ti2s, ti3a
+  , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
   {
     val () =
@@ -752,14 +759,38 @@ d3cl.node() of
       in
       prerrln!
       ( loc0
-      , ": TRERR33(d3ecl): D3Cimpdecl: id2c = "
-      , id2c )
+      , ": TRERR33(D3Cimpdecl2): id2c = ", id2c )
       end // end of [None()]
     )
 (*
     val () =
     println!
-    ("tread33_d3ecl: D3Cimpdecl: d3cl = ", d3cl)
+    ("tread33_d3ecl: D3Cimpdecl2: d3cl = ", d3cl)
+*)
+  }
+//
+| D3Cimpdecl3
+  ( tok, mopt
+  , sqas, tqas
+  , id2c, ti3a, ti2s
+  , f3as, res0, d3e0) =>
+  {
+//
+    val () =
+    tread33_f3arglst(f3as)
+//
+(*
+    val () =
+    tread33_ti3arg(ti3a)
+    val () =
+    tread33_ti2arglst(ti2s)
+*)
+    val () = tread33_d3exp(d3e0)
+//
+(*
+    val () =
+    println!
+    ("tread33_d3ecl: D3Cimpdecl3: d3cl = ", d3cl)
 *)
   }
 //
