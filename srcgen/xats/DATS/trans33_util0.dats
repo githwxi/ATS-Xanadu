@@ -1431,6 +1431,44 @@ end (* end of [ti3env_get_tsub] *)
 
 (* ****** ****** *)
 
+local
+
+fun
+aux_d3clau
+( d3cl
+: d3clau
+, t2p2: t2ype): d3clau =
+let
+val
+loc0 = d3cl.loc()
+in
+case+
+d3cl.node() of
+| D3CLAUpat _ => d3cl
+| D3CLAUexp(dgp1, d3e2) =>
+  let
+  val d3e2 =
+  d33exp_tcastize(d3e2, t2p2)
+  in
+  d3clau_make_node(loc0, D3CLAUexp(dgp1, d3e2))
+  end
+end
+fun
+aux_d3claulst
+( dcls
+: d3claulst
+, t2p2: t2ype): d3claulst =
+list_vt2t
+(
+list_map<d3clau><d3clau>(dcls)
+) where
+{
+implement
+list_map$fopr<d3clau><d3clau>(d3cl) = aux_d3clau(d3cl, t2p2)
+} (* end of [aux_d3claulst] *)
+
+in(*in-of-local*)
+
 implement
 d33exp_tcastize
   (d3e1, t2p2) =
@@ -1464,11 +1502,27 @@ in
   , t2p1, D3Eif0(de11, de12, opt3))
 end
 //
+|
+D3Ecase
+(knd0, de11, dcls) =>
+let
+val
+t2p1 = d3e1.type()
+val
+dcls = aux_d3claulst(dcls, t2p2)
+in
+  d33exp_make_node
+  ( loc1
+  , t2p1, D3Ecase(knd0, de11, dcls))
+end
+//
 | _ (* else *) =>
   d33exp_make_node
   (loc1, t2p2, D3Etcast(d3e1, t2p2))
 //
 end // end of [d33exp_tcastize]
+
+end // end of [local]
 
 (* ****** ****** *)
 
