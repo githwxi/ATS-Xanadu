@@ -551,4 +551,10 @@ strmcon_vt_cons(x0, xs) =>
 
 (* ****** ****** *)
 
+impltmp
+{x0:vt}
+glseq_streamize0<x0,stream_vt(x0)>(xs) = xs
+
+(* ****** ****** *)
+
 (* end of [stream_vt.dats] *)

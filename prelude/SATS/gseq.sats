@@ -197,6 +197,11 @@ gseq_listize(xs): list_vt(x0)
 fun
 <x0:t0
 ,xs:t0>
+gseq_rlistize(xs): list_vt(x0)
+//
+fun
+<x0:t0
+,xs:t0>
 gseq_streamize(xs): stream_vt(x0)
 //
 (* ****** ****** *)
@@ -289,13 +294,6 @@ fun
 <x0:t0
 ,xs:t0>
 gseq_rforeach(xs): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0
-,xs:t0>
-gseq_rlistize(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //

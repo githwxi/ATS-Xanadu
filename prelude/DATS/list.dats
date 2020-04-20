@@ -354,12 +354,23 @@ gseq_cons
 //
 impltmp
 {a:t0}
-gseq_nil?
-<a,list(a)> = list_nil? <a>
+gseq_nilq
+<a,list(a)> = list_nilq<a>
 impltmp
 {a:t0}
-gseq_cons?
-<a,list(a)> = list_cons? <a>
+gseq_consq
+<a,list(a)> = list_consq<a>
+//
+(* ****** ****** *)
+//
+impltmp
+{a:vt}
+gseq_uncons_raw
+<a,list_vt(a)>(xs) =
+let
+  val x0 = xs.0
+  val () = xs := xs.1 in x0
+end
 //
 (* ****** ****** *)
 //

@@ -29,7 +29,7 @@ impltmp
 <x0,xs>
 gseq_consq(xs) =
 bool_neg
-( gseq_nilq <x0,xs> (xs) )
+( gseq_nilq<x0,xs>(xs) )
 //
 (* ****** ****** *)
 //
@@ -64,7 +64,7 @@ impltmp
 <x0,xs>
 gseq_tail_opt(xs) =
 if
-gseq_consq <x0,xs> (xs)
+gseq_consq<x0,xs>(xs)
 then
 optn_vt_cons
 (
