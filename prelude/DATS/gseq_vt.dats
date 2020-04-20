@@ -21,14 +21,6 @@ impltmp
 glseq_length1<x0,xs> = gseq_length<x0,xs>
 *)
 //
-impltmp
-<x0,xs>
-glseq_length0(xs) =
-let
-val
-len = glseq_length1(xs) in g_free<xs>(xs); len
-end // end of [glseq_length0]
-//
 (* ****** ****** *)
 //
 (*
@@ -36,10 +28,23 @@ impltmp
 <x0,xs>
 glseq_drop0(xs) =
 let
-  val
-  res = glseq_drop1(xs) in g_free<xs>(xs); res
+val
+res = glseq_drop1(xs) in g_free<xs>(xs); res
 end // end of [glseq_drop0]
 *)
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+glseq_listize0(xs) =
+stream_vt_listize<x0>
+(glseq_streamize0<x0,xs>(xs))
+impltmp
+<x0,xs>
+glseq_rlistize0(xs) =
+stream_vt_rlistize<x0>
+(glseq_streamize0<x0,xs>(xs))
 //
 (* ****** ****** *)
 
