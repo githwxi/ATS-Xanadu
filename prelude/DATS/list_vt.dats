@@ -384,6 +384,11 @@ end
 
 (* ****** ****** *)
 //
+// For glseq-operations
+//
+(* ****** ****** *)
+//
+//
 impltmp
 {x0:vt}
 glseq_nilq1
@@ -421,11 +426,31 @@ val () = xs := xs.1 in x0 end
 
 impltmp
 {x0:vt}
-glseq_listize0<x0,list_vt(x0)>(xs) = xs
+glseq_listize0
+<x0,list_vt(x0)>(xs) = xs
 impltmp
 {x0:vt}
-glseq_rlistize0<x0,list_vt(x0)>(xs) = list_vt_reverse(xs)
+glseq_rlistize0
+<x0,list_vt(x0)>(xs) = list_vt_reverse(xs)
 
+(* ****** ****** *)
+//
+impltmp
+{a:vt}
+glseq_forall0<a,list(a)> = list_vt_forall0<a>
+impltmp
+{a:vt}
+glseq_foreach0<a,list(a)> = list_vt_foreach0<a>
+//
+(* ****** ****** *)
+//
+impltmp
+{a:vt}
+glseq_map0_list<a,list_vt(a)> = list_map0_vt<a>
+impltmp
+{a:vt}
+glseq_map0_rlist<a,list_vt(a)> = list_maprev0_vt<a>
+//
 (* ****** ****** *)
 
 (* end of [list_vt.dats] *)

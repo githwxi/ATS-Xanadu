@@ -39,42 +39,6 @@ impltmp
 <a:type>
 list_tail_raw(xs) = xs.1
 //
-impltmp
-{a:type}
-gseq_head_raw<a,list(a)> = list_head_raw<a>
-impltmp
-{a:type}
-gseq_tail_raw<a,list(a)> = list_tail_raw<a>
-//
-(* ****** ****** *)
-
-impltmp
-{a:t0}
-g_cmp<list(a)> = gseq_cmp<a,list(a)>
-
-(* ****** ****** *)
-//
-impltmp
-{a:t0}
-g_print<list(a)>(xs) =
-let
-val () =
-gseq_print<a,list(a)>(xs)
-end
-//
-impltmp
-{a:t0}
-gseq_print$beg
-< a, list(a) >() = string_print("(")
-impltmp
-{a:t0}
-gseq_print$end
-< a, list(a) >() = string_print(")")
-impltmp
-{a:t0}
-gseq_print$sep
-< a, list(a) >() = string_print(",")
-//
 (* ****** ****** *)
 //
 impltmp
@@ -181,10 +145,6 @@ case+ xs of
 )
 }
 //
-impltmp
-{a:type}
-gseq_forall<a,list(a)> = list_forall<a>
-//
 (* ****** ****** *)
 //
 impltmp
@@ -205,10 +165,6 @@ case+ xs of
   end
 )
 }
-//
-impltmp
-{a:type}
-gseq_foreach<a,list(a)> = list_foreach<a>
 //
 (* ****** ****** *)
 //
@@ -373,6 +329,47 @@ let
 end
 //
 (* ****** ****** *)
+
+//
+impltmp
+{a:type}
+gseq_head_raw
+<a,list(a)> = list_head_raw<a>
+impltmp
+{a:type}
+gseq_tail_raw
+<a,list(a)> = list_tail_raw<a>
+//
+(* ****** ****** *)
+//
+impltmp
+{a:t0}
+g_cmp<list(a)> = gseq_cmp<a,list(a)>
+
+(* ****** ****** *)
+//
+impltmp
+{a:t0}
+g_print<list(a)>(xs) =
+let
+val () =
+gseq_print<a,list(a)>(xs)
+end // end of [g_fprint]
+//
+impltmp
+{a:t0}
+gseq_print$beg
+<a,list(a)>() = string_print("(")
+impltmp
+{a:t0}
+gseq_print$end
+<a,list(a)>() = string_print(")")
+impltmp
+{a:t0}
+gseq_print$sep
+<a,list(a)>() = string_print(",")
+//
+(* ****** ****** *)
 //
 impltmp
 {a:t0}
@@ -383,9 +380,6 @@ gseq_length<a,list(a)> = list_length<a>
 impltmp
 {a:t0}
 gseq_forall<a,list(a)> = list_forall<a>
-//
-(* ****** ****** *)
-//
 impltmp
 {a:t0}
 gseq_foreach<a,list(a)> = list_foreach<a>
