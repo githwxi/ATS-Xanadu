@@ -10,6 +10,35 @@ UN =
 
 (* ****** ****** *)
 //
+impltmp
+<x0,xs>
+glseq_uncons_exn
+  (xs) =
+if
+glseq_nilq1<x0,xs>(xs)
+then let
+val
+() = g_free<xs>(xs)
+in
+$raise SubscriptExn()
+end // end of [then]
+else
+glseq_uncons_raw<x0,xs>(xs)
+//
+impltmp
+<x0,xs>
+glseq_uncons_opt
+  (xs) =
+if
+glseq_nilq1<x0,xs>(xs)
+then
+optn_none((*void*))
+else
+optn_some
+(glseq_uncons_raw<x0,xs>(xs))
+//
+(* ****** ****** *)
+//
 (*
 impltmp
 {x0:t0
