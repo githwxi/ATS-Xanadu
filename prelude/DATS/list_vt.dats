@@ -334,7 +334,7 @@ let
   val () =
   (r0 := list_vt_cons(y0, _))
 in
-    loop(xs, r0.1); $fold(r0)
+  loop(xs, r0.1); $fold(r0)
 end
 ) (* end of [loop] *)
 //
@@ -423,7 +423,7 @@ val x0 = xs.0
 val () = xs := xs.1 in x0 end
 
 (* ****** ****** *)
-
+//
 impltmp
 {x0:vt}
 glseq_listize0
@@ -432,24 +432,24 @@ impltmp
 {x0:vt}
 glseq_rlistize0
 <x0,list_vt(x0)>(xs) = list_vt_reverse(xs)
-
-(* ****** ****** *)
-//
-impltmp
-{a:vt}
-glseq_forall0<a,list(a)> = list_vt_forall0<a>
-impltmp
-{a:vt}
-glseq_foreach0<a,list(a)> = list_vt_foreach0<a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:vt}
-glseq_map0_list<a,list_vt(a)> = list_map0_vt<a>
+glseq_forall0<a,list_vt(a)> = list_vt_forall0<a>
 impltmp
 {a:vt}
-glseq_map0_rlist<a,list_vt(a)> = list_maprev0_vt<a>
+glseq_foreach0<a,list_vt(a)> = list_vt_foreach0<a>
+//
+(* ****** ****** *)
+//
+impltmp
+{a:vt}
+glseq_map0_list<a,list_vt(a)> = list_vt_map0<a>
+impltmp
+{a:vt}
+glseq_map0_rlist<a,list_vt(a)> = list_vt_maprev0<a>
 //
 (* ****** ****** *)
 
