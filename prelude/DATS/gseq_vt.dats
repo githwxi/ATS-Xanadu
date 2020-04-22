@@ -39,31 +39,6 @@ optn_some
 //
 (* ****** ****** *)
 //
-(*
-impltmp
-{x0:t0
-;xs:t0}
-glseq_length0<x0,xs> = gseq_length<x0,xs>
-impltmp
-{x0:t0
-;xs:t0}
-glseq_length1<x0,xs> = gseq_length<x0,xs>
-*)
-//
-(* ****** ****** *)
-//
-(*
-impltmp
-<x0,xs>
-glseq_drop0(xs) =
-let
-val
-res = glseq_drop1(xs) in g_free<xs>(xs); res
-end // end of [glseq_drop0]
-*)
-//
-(* ****** ****** *)
-//
 impltmp
 <x0,xs>
 glseq_listize0(xs) =
@@ -74,6 +49,35 @@ impltmp
 glseq_rlistize0(xs) =
 stream_vt_rlistize<x0>
 (glseq_streamize0<x0,xs>(xs))
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+glseq_forall0
+  (xs) =
+stream_vt_forall0<x0>
+(glseq_streamize<x0,xs>(xs))
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+glseq_foreach0(xs) =
+let
+val
+test =
+glseq_forall0<x0,xs>(xs) where
+{
+impltmp
+forall0$test<x0>(x0) =
+let
+val () = foreach0$work<x0>(x0) in true
+end
+}
+in
+  // nothing
+end // end of [glseq_foreach0/forall0]
 //
 (* ****** ****** *)
 
