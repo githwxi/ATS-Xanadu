@@ -84,6 +84,43 @@ prerr with pprerr_t2ype of 10
 
 implement
 //{}(*tmp*)
+tread3t_d3pat(d3p0) = ()
+implement
+//{}(*tmp*)
+tread3t_d3patlst(d3ps) = ()
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread3t_d3exp(d3e0) = ()
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread3t_d3expopt(opt) =
+(
+case+ opt of
+| None() => ()
+| Some(d3e) => tread3t_d3exp(d3e)
+)
+//
+implement
+//{}(*tmp*)
+tread3t_d3explst(d3es) =
+(
+list_foreach<d3exp>(d3es)
+) where
+{
+implement(env)
+list_foreach$fwork<d3exp><env>(d3e, env) = tread3t_d3exp(d3e)
+} (* end of [tread3t_d3explst] *)
+//
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
 tread3t_d3ecl(d3cl) =
 let
 //
@@ -99,6 +136,28 @@ in
 //
 case+
 d3cl.node() of
+//
+| D3Cd2ecl(d2c) => ()
+//
+| D3Cstatic(tok, d3c1) =>
+  {
+    val () = tread3t_d3ecl(d3c1)
+  }
+| D3Cextern(tok, d3c1) =>
+  {
+    val () = tread3t_d3ecl(d3c1)
+  }
+//
+| D3Cvaldecl
+  (knd, mopt, v3ds) =>
+  {
+    val () = tread3t_v3aldeclist(v3ds)
+(*
+    val () =
+    println!
+    ("tread3t_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
+*)
+  }
 //
 | _(* rest-of-d3ecl *) =>
   {
@@ -119,6 +178,39 @@ list_foreach<d3ecl>(d3cs)
 implement(env)
 list_foreach$fwork<d3ecl><env>(d3c, env) = tread3t_d3ecl(d3c)
 } (* end of [tread3t_d3eclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread3t_v3aldecl
+  (v3d0) =
+{
+  val () =
+  tread3t_d3pat(rcd.pat)
+  val () =
+  tread3t_d3expopt(rcd.def)
+(*
+  val () =
+  tread3t_s2expopt(rcd.wth)
+*)
+} where
+{
+//
+  val+V3ALDECL(rcd) = v3d0
+//
+} (* end of [tread3t_v3aldecl] *)
+//
+implement
+//{}(*tmp*)
+tread3t_v3aldeclist(v3ds) =
+(
+list_foreach<v3aldecl>(v3ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v3aldecl><env>(v3ds, env) = tread3t_v3aldecl(v3ds)
+} (* end of [tread3t_v3aldeclist] *)
 //
 (* ****** ****** *)
 
