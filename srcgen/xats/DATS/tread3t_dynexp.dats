@@ -93,7 +93,159 @@ tread3t_d3patlst(d3ps) = ()
 
 implement
 //{}(*tmp*)
-tread3t_d3exp(d3e0) = ()
+tread3t_d3exp
+  (d3e0) = let
+//
+val
+loc0 = d3e0.loc((*void*))
+//
+// (*
+val () =
+println!
+("tread33_d3exp: d3e0 = ", d3e0)
+// *)
+//
+//
+in
+//
+case+
+d3e0.node() of
+//
+| D3Eint _ => ()
+| D3Ebtf _ => ()
+| D3Echr _ => ()
+| D3Eflt _ => ()
+| D3Estr _ => ()
+//
+| D3Evar _ => ()
+//
+| D3Econ1 _ => ()
+| D3Ecst1 _ => ()
+//
+| D3Efcst _ => ()
+| D3Etcst _ => ()
+//
+| D3Esap1
+  (d3e1, s2e2) =>
+  {
+    val () =
+    tread3t_d3exp(d3e1)
+  }
+//
+| D3Edapp
+  (d3f1, npf2, d3es) =>
+  {
+    val () =
+    tread3t_d3exp(d3f1)
+    val () =
+    tread3t_d3explst(d3es)
+  }
+//
+| D3Eif0
+  (d3e1, d3e2, opt3) =>
+  {
+//
+  val () = tread3t_d3exp(d3e1)
+  val () = tread3t_d3exp(d3e2)
+  val () = tread3t_d3expopt(opt3)
+//
+  }
+//
+| D3Ecase
+  (knd0, d3e1, d3cs) =>
+  {
+  val () = tread3t_d3exp(d3e1)
+(*
+  val () = tread3t_d3claulst(d3cs)
+*)
+  }
+//
+| D3Elet(d3cs, d3e1) =>
+  {
+    val () =
+    tread3t_d3eclist(d3cs)
+    val () = tread3t_d3exp(d3e1)
+  }
+| D3Ewhere(d3e1, d3cs) =>
+  {
+    val () =
+    tread3t_d3eclist(d3cs)
+    val () = tread3t_d3exp(d3e1)
+  }
+//
+| D3Eassgn(d3e1, d3e2) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+    val () = tread3t_d3exp(d3e2)
+  }
+//
+| D3Etry
+  (tok0, d3e1, d3cs) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+(*
+    val () = tread3t_d3claulst(d3cs)
+*)
+  }
+//
+| D3Econ2(d2cs) => ()
+//
+| D3Esym0(sym1, dpis) => ()
+//
+| D3Eaddr(d3e1) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+  }
+| D3Efold(d3e1) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+  }
+//
+| D3Eeval
+  ( knd0, d3e1 ) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+  }
+//
+| D3Elazy(d3e1) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+  }
+| D3Ellazy(d3e1, d3es) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+    val () = tread3t_d3explst(d3es)
+  }
+//
+| D3Elcast(d3e1, lab2) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+  }
+| D3Etcast(d3e1, t2p2) =>
+  {
+    val () = tread3t_d3exp(d3e1)
+  }
+//
+| D3Enone0() => ((*void*))
+//
+| D3Enone1(_) =>
+  let
+    val () =
+    trerr3t_add(TRERR3Td3exp(d3e0))
+  in
+    prerrln!
+    (loc0, ": ***TRERR3T***");
+    prerrln!
+    ( loc0
+    , ": TRERR3T(D3Enone1): the d3exp-error: ", d3e0);
+  end // end of [D1Enone1]
+//
+| _(* rest-of-d3exp *) =>
+  {
+    val () = prerrln!(loc0, ": tread3t_d3exp(", d3e0, ")")
+  }
+//
+end // end of [tread3t_d3exp]
 
 (* ****** ****** *)
 //
