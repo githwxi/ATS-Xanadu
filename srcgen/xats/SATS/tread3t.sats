@@ -73,5 +73,12 @@ fun
 tread3t_main(d3eclist): void
 //
 (* ****** ****** *)
+//
+fun//{}
+tread3t_d3ecl: treader3t(d3ecl)
+fun//{}
+tread3t_d3eclist: treader3t(d3eclist)
+//
+(* ****** ****** *)
 
 (* end of [xats_tread3t.sats] *)

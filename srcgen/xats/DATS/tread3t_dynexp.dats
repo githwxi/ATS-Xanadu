@@ -82,6 +82,46 @@ prerr with pprerr_t2ype of 10
 //
 (* ****** ****** *)
 
+implement
+//{}(*tmp*)
+tread3t_d3ecl(d3cl) =
+let
+//
+val loc0 = d3cl.loc()
+//
+// (*
+val () =
+println!
+("tread3t_d3ecl: d3cl = ", d3cl)
+// *)
+//
+in
+//
+case+
+d3cl.node() of
+//
+| _(* rest-of-d3ecl *) =>
+  {
+    val () = println!(loc0, ": tread3t_d3ecl(", d3cl, ")")
+  }
+//
+end // end of [tread3t_d3ecl]
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread3t_d3eclist(d3cs) =
+(
+list_foreach<d3ecl>(d3cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d3ecl><env>(d3c, env) = tread3t_d3ecl(d3c)
+} (* end of [tread3t_d3eclist] *)
+//
+(* ****** ****** *)
+
 local
 
 static
@@ -120,10 +160,8 @@ end // end of [local]
 implement
 tread3t_main(d3cs) = let
 //
-(*
 val () =
-tread3t_d3eclist<>(d3cs)
-*)
+tread3t_d3eclist(d3cs)
 //
 val
 xerrs = the_trerr3tlst_get()
