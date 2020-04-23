@@ -75,10 +75,47 @@ tread3t_main(d3eclist): void
 (* ****** ****** *)
 //
 fun//{}
+tread3t_d3pat: treader3t(d3pat)
+fun//{}
+tread3t_d3patlst: treader3t(d3patlst)
+//
+(* ****** ****** *)
+//
+fun//{}
+tread3t_d3exp: treader3t(d3exp)
+fun//{}
+tread3t_d3explst: treader3t(d3explst)
+fun//{}
+tread3t_d3expopt: treader3t(d3expopt)
+//
+(* ****** ****** *)
+//
+fun//{}
 tread3t_d3ecl: treader3t(d3ecl)
 fun//{}
 tread3t_d3eclist: treader3t(d3eclist)
 //
+(* ****** ****** *)
+
+fun//{}
+tread3t_v3aldecl: treader3t(v3aldecl)
+fun//{}
+tread3t_v3aldeclist: treader3t(v3aldeclist)
+
+(* ****** ****** *)
+
+fun//{}
+tread3t_v3ardecl: treader3t(v3ardecl)
+fun//{}
+tread3t_v3ardeclist: treader3t(v3ardeclist)
+
+(* ****** ****** *)
+
+fun//{}
+tread3t_f3undecl: treader3t(f3undecl)
+fun//{}
+tread3t_f3undeclist: treader3t(f3undeclist)
+
 (* ****** ****** *)
 
 (* end of [xats_tread3t.sats] *)
