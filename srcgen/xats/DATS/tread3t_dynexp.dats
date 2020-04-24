@@ -107,24 +107,27 @@ D3Etcst
 , ti2s) = d3e0.node()
 //
 val () =
+trerr3t_add(TRERR3Td3exp(d3e0))
+//
+val () =
 prerrln!
-( loc0, ": ***TRERR33***")
+( loc0, ": ***TRERR3T***")
 val () =
 prerrln!
 ( loc0
-, ": TRERR33(D3Etcst): unimplemented")
+, ": TRERR3T(D3Etcst): unimplemented")
 val () =
 prerrln!
 ( loc0
-, ": TRERR33(D3Etcst): template name = ", d2c0)
+, ": TRERR3T(D3Etcst): template name = ", d2c0)
 val () =
 prerrln!
 ( loc0
-, ": TRERR33(D3Etcst): template argexps = ", ti3a)
+, ": TRERR3T(D3Etcst): template argexps = ", ti3a)
 val () =
 prerrln!
 ( loc0
-, ": TRERR33(D3Etcst): template argvars = ", ti2s)
+, ": TRERR3T(D3Etcst): template argvars = ", ti2s)
 in
   // nothing
 end // end of [auxtcst]
@@ -277,7 +280,7 @@ loc0 = d3e0.loc((*void*))
 // (*
 val () =
 println!
-("tread33_d3exp: d3e0 = ", d3e0)
+("tread3t_d3exp: d3e0 = ", d3e0)
 // *)
 //
 //
