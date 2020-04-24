@@ -490,4 +490,30 @@ d3ecl_make_node
 //
 (* ****** ****** *)
 
+implement
+v3aldecl_get_loc(v3d0) =
+let
+val+V3ALDECL(rcd) = v3d0 in rcd.loc end
+
+(* ****** ****** *)
+
+implement
+v3ardecl_get_loc(v3d0) =
+let
+val+V3ARDECL(rcd) = v3d0 in rcd.loc end
+
+(* ****** ****** *)
+//
+implement
+f3undecl_get_loc(f3d0) =
+let
+val+F3UNDECL(rcd) = f3d0 in rcd.loc end
+//
+implement
+f3undecl_get_d2c(f3d0) =
+let
+val+F3UNDECL(rcd) = f3d0 in rcd.d2c end
+//
+(* ****** ****** *)
+
 (* end of [xats_dynexp3.dats] *)

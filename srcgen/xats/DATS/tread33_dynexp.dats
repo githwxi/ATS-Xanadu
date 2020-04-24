@@ -359,6 +359,40 @@ d3e0.node() of
 | D3Efcst _ => ()
 | D3Etcst _ => ()
 //
+| D3Econ2(d2cs) =>
+  let
+    val
+    t2p0 = d3e0.type()
+    val () =
+    trerr33_add(TRERR33d3exp(d3e0))
+  in
+    prerrln!
+    (loc0, ": ***TRERR33***");
+    prerrln!
+    (loc0, ": TRERR33(D3Econ2): d2cs = ", d2cs);
+    prerrln!
+    (loc0, ": TRERR33(D3Econ2): t2p0 = ", t2p0);
+  end
+//
+| D3Esym0(sym1, dpis) =>
+  let
+    val
+    t2p0 = d3e0.type()
+    val () =
+    trerr33_add(TRERR33d3exp(d3e0))
+  in
+    prerrln!
+    (loc0, ": ***TRERR33***");
+    prerrln!
+    (loc0, ": TRERR33(D3Esym0): unresolved symbol");
+    prerrln!
+    (loc0, ": TRERR33(D3Esym0): the symbol: ", sym1);
+    prerrln!
+    (loc0, ": TRERR33(D3Esym0): the inferred type: ", t2p0);
+    prerrln!
+    (loc0, ": TRERR33(D3Esym0): the possible solutions: ", dpis);
+  end
+//
 | D3Esap1
   (d3e1, s2e2) =>
   {
@@ -420,40 +454,6 @@ d3e0.node() of
     val () = tread33_d3claulst(d3cs)
   }
 //
-| D3Econ2(d2cs) =>
-  let
-    val
-    t2p0 = d3e0.type()
-    val () =
-    trerr33_add(TRERR33d3exp(d3e0))
-  in
-    prerrln!
-    (loc0, ": ***TRERR33***");
-    prerrln!
-    (loc0, ": TRERR33(D3Econ2): d2cs = ", d2cs);
-    prerrln!
-    (loc0, ": TRERR33(D3Econ2): t2p0 = ", t2p0);
-  end
-//
-| D3Esym0(sym1, dpis) =>
-  let
-    val
-    t2p0 = d3e0.type()
-    val () =
-    trerr33_add(TRERR33d3exp(d3e0))
-  in
-    prerrln!
-    (loc0, ": ***TRERR33***");
-    prerrln!
-    (loc0, ": TRERR33(D3Esym0): unresolved symbol");
-    prerrln!
-    (loc0, ": TRERR33(D3Esym0): the symbol: ", sym1);
-    prerrln!
-    (loc0, ": TRERR33(D3Esym0): the inferred type: ", t2p0);
-    prerrln!
-    (loc0, ": TRERR33(D3Esym0): the possible solutions: ", dpis);
-  end
-//
 | D3Eaddr(d3e1) =>
   {
     val () = tread33_d3exp(d3e1)
@@ -502,6 +502,7 @@ d3e0.node() of
     ( loc0
     , ": TRERR33(D3Elcast): the inferred type = ", t2p1);
   end
+//
 | D3Etcast(d3e1, t2p2) =>
   let
 //
@@ -526,7 +527,7 @@ d3e0.node() of
     , ": TRERR33(D3Etcast): the inferred type: ", t2p1);
   end
 //
-| D3Enone0() => ((*void*))
+| D3Enone0( ) => ((*void*))
 //
 | D3Enone1(_) =>
   let

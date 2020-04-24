@@ -91,6 +91,181 @@ tread3t_d3patlst(d3ps) = ()
 
 (* ****** ****** *)
 
+local
+
+fun
+auxtcst
+(d3e0: d3exp): void =
+let
+//
+val loc0 = d3e0.loc()
+//
+val-
+D3Etcst
+( d2c0
+, ti3a
+, ti2s) = d3e0.node()
+//
+val () =
+prerrln!
+( loc0, ": ***TRERR33***")
+val () =
+prerrln!
+( loc0
+, ": TRERR33(D3Etcst): unimplemented")
+val () =
+prerrln!
+( loc0
+, ": TRERR33(D3Etcst): template name = ", d2c0)
+val () =
+prerrln!
+( loc0
+, ": TRERR33(D3Etcst): template argexps = ", ti3a)
+val () =
+prerrln!
+( loc0
+, ": TRERR33(D3Etcst): template argvars = ", ti2s)
+in
+  // nothing
+end // end of [auxtcst]
+
+(* ****** ****** *)
+
+fun
+auxtimp
+(d3e0: d3exp): void =
+let
+//
+val-
+D3Etimp
+( tcst
+, targ
+, timp
+, tsub) = d3e0.node()
+//
+in
+//
+case-
+timp.node() of
+|
+D3Cfundecl _ => auxtimp2f(d3e0)
+|
+D3Cimpdecl3 _ => auxtimp2i(d3e0)
+//
+end // end of [auxtimp]
+//
+and
+auxtimp2f
+(d3e0: d3exp): void =
+let
+//
+val
+loc0 = d3e0.loc()
+//
+val-
+D3Etimp
+( tcst
+, targ
+, timp
+, tsub) = d3e0.node()
+//
+val-
+D3Etcst
+(d2c0, _, _) = tcst.node()
+//
+val-
+D3Cfundecl
+( knd0, mopt
+, tqas, f3ds) = timp.node()
+//
+in
+//
+auxf3ds(f3ds) where
+{
+//
+fun
+auxf3d0
+( f3d0
+: f3undecl): void =
+let
+val
+loc1 = f3d0.loc()
+val+
+F3UNDECL(rcd) = f3d0
+in
+//
+case+
+rcd.def of
+|
+Some(d3e0) => tread3t_d3exp(d3e0)
+|
+None((*void*)) =>
+let
+val () =
+trerr3t_add
+(TRERR3Td3exp_timp2f(d3e0, f3d0))
+in
+prerrln!
+(loc0, ": ***TRERR3T***");
+prerrln!
+( loc0
+, ": TRERR3T(D3Etimp): undefined: ", rcd.d2c);
+prerrln!
+( loc0
+, ": TRERR3T(D3Etimp): ", loc1, ": f3d0 = ", f3d0);
+end // end of [None]
+//
+end // end of [auxf3d0]
+//
+fun
+auxf3ds
+( f3ds
+: f3undeclist): void =
+let
+val-
+list_cons
+(f3d0, f3ds) = f3ds
+in
+case+ f3ds of
+|
+list_nil() => auxf3d0(f3d0)
+|
+list_cons _ =>
+if
+(d2c0=f3d0.d2c())
+then auxf3d0(f3d0) else auxf3ds(f3ds)
+end
+} (* end of [auxf3ds] *)
+//
+end // end of [auxtimp2f]
+//
+and
+auxtimp2i
+(d3e0: d3exp): void =
+let
+//
+val-
+D3Etimp
+( tcst
+, targ
+, timp
+, tsub) = d3e0.node()
+//
+val-
+D3Cimpdecl3
+( knd0, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s
+, f3as, res1, def2) = timp.node()
+//
+in
+  tread3t_d3exp(def2)
+end // end of [auxtimp2i]
+
+(* ****** ****** *)
+
+in(* in-of-local *)
+
 implement
 //{}(*tmp*)
 tread3t_d3exp
@@ -106,7 +281,7 @@ println!
 // *)
 //
 //
-in
+in(*in-of-let*)
 //
 case+
 d3e0.node() of
@@ -122,8 +297,20 @@ d3e0.node() of
 | D3Econ1 _ => ()
 | D3Ecst1 _ => ()
 //
+| D3Econ2 _ => ()
+//
+| D3Esym0 _ => ()
+//
 | D3Efcst _ => ()
-| D3Etcst _ => ()
+//
+| D3Etcst _ =>
+  (
+    auxtcst(d3e0)
+  )
+| D3Etimp _ =>
+  (
+    auxtimp(d3e0)
+  )
 //
 | D3Esap1
   (d3e1, s2e2) =>
@@ -188,10 +375,6 @@ d3e0.node() of
 *)
   }
 //
-| D3Econ2(d2cs) => ()
-//
-| D3Esym0(sym1, dpis) => ()
-//
 | D3Eaddr(d3e1) =>
   {
     val () = tread3t_d3exp(d3e1)
@@ -246,6 +429,8 @@ d3e0.node() of
   }
 //
 end // end of [tread3t_d3exp]
+
+end // end of [local]
 
 (* ****** ****** *)
 //
