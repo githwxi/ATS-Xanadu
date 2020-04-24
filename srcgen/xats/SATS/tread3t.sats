@@ -59,6 +59,8 @@ datatype trerr3t =
 | TRERR3Tf3arg of (f3arg)
 | TRERR3Td3ecl of (d3ecl)
 //
+| TRERR3Td3exp_timp2f of (d3exp, f3undecl)
+//
 typedef
 trerr3tlst = List0(trerr3t)
 //

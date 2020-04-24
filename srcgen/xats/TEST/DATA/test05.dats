@@ -5,6 +5,12 @@
 /Xint/runtime.dats"
 (* ****** ****** *)
 
+#extern
+fun
+<a:type>
+gfact(x: a): a
+
+val res = gfact<int>(10)
 
 (* ****** ****** *)
 

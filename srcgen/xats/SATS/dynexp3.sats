@@ -604,6 +604,13 @@ v3aldeclist = List0(v3aldecl)
 (* ****** ****** *)
 //
 fun
+v3aldecl_get_loc(v3aldecl): loc_t
+//
+overload .loc with v3aldecl_get_loc
+//
+(* ****** ****** *)
+//
+fun
 print_v3aldecl: print_type(v3aldecl)
 fun
 prerr_v3aldecl: prerr_type(v3aldecl)
@@ -628,6 +635,13 @@ V3ARDECL of @{
 //
 typedef
 v3ardeclist = List0(v3ardecl)
+//
+(* ****** ****** *)
+//
+fun
+v3ardecl_get_loc(v3ardecl): loc_t
+//
+overload .loc with v3ardecl_get_loc
 //
 (* ****** ****** *)
 //
@@ -664,8 +678,11 @@ f3undeclist = List0(f3undecl)
 //
 fun
 f3undecl_get_loc(f3undecl): loc_t
+fun
+f3undecl_get_d2c(f3undecl): d2cst
 //
 overload .loc with f3undecl_get_loc
+overload .d2c with f3undecl_get_d2c
 //
 (* ****** ****** *)
 //
