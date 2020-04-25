@@ -125,7 +125,12 @@ gseq_uncons_opt
 (
 if
 gseq_nilq<x0,xs>(xs)
-then optn_nil() else optn_cons(x0)
+then
+  optn_vt_nil((*void*))
+else
+  optn_vt_cons
+  (gseq_uncons_raw<x0,xs>(xs))
+// end of [if]
 )
 //
 (* ****** ****** *)
@@ -384,7 +389,7 @@ gseq_unlist(xx) =
 let
 //
 val xx =
-list_reverse_vt<x0>(xx)
+list_rcopy_vt<x0>(xx)
 //
 in
 gseq_unrlist_vt<x0,xs>(xx)
@@ -448,7 +453,7 @@ val p1 = $addr(r1.1)
 //
 in
 $UN.p2tr_set<yy>
-(p0, $UN.castlin(r1)); (p1)
+(p0, $UN.castlin01(r1)); (p1)
 end // foldl$fopr
 //
 var r0: yy
@@ -457,7 +462,7 @@ gseq_foldl<x0,xs><r0>(xs, $addr(r0))
 //
 in
 $UN.p2tr_set<yy>
-(pz, list_vt_nil()); $UN.castlin(r0)
+(pz, list_vt_nil()); $UN.castlin01(r0)
 end // end of [gseq_map_list/foldl]
 //
 (* ****** ****** *)
@@ -551,7 +556,7 @@ val p1 = $addr(r1.1)
 //
 in
 $UN.p2tr_set<xx>
-(p0, $UN.castlin(r1)); (p1)
+(p0, $UN.castlin01(r1)); (p1)
 end
 else p0 // end of [foldl$fopr]
 //
@@ -561,7 +566,7 @@ gseq_foldl<x0,xs><r0>(xs, $addr(r0))
 //
 in
 $UN.p2tr_set<xx>
-(pz, list_vt_nil()); $UN.castlin(r0)
+(pz, list_vt_nil()); $UN.castlin01(r0)
 end // end of [gseq_filter_list/foldl]
 
 (* ****** ****** *)
@@ -1050,7 +1055,7 @@ val p1 = $addr(r1.1)
 //
 in
 $UN.p2tr_set<zz>
-(p0, $UN.castlin(r1)); (p1)
+(p0, $UN.castlin01(r1)); (p1)
 end // z2foldl$fopr
 //
 var r0: zz
@@ -1060,7 +1065,7 @@ gseq_z2foldl
 //
 in
   $UN.p2tr_set<zz>
-  (pz, list_vt_nil()); $UN.castlin(r0)
+  (pz, list_vt_nil()); $UN.castlin01(r0)
 end // end of [gseq_z2map_list/z2foldl]
 //
 (* ****** ****** *)

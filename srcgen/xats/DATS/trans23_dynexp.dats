@@ -710,8 +710,19 @@ loc0 = d2e0.loc()
 val-
 D2Econ1(d2c0) = d2e0.node()
 //
-val node = D3Econ1(d2c0)
-val t2p0 = d2c0.type((*void*))
+val
+node = D3Econ1(d2c0)
+val
+t2p0 = d2c0.type((*void*))
+//
+(*
+val () =
+println!("auxcon1: loc0 = ", loc0)
+val () =
+println!("auxcon1: d2e0 = ", d2e0)
+val () =
+println!("auxcon1: t2p0 = ", t2p0)
+*)
 //
 in
 d23exp_make_node(loc0, t2p0, node)
@@ -733,7 +744,7 @@ t2ype_tq2as_elim2
 (loc0, d2c0.type(), d2c0.tqas())
 //
 val
-tias = list_nil()
+tias = list_nil(*void*)
 //
 in
 //
