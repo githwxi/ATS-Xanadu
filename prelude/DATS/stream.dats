@@ -10,6 +10,12 @@
 *)
 
 (* ****** ****** *)
+
+#staload
+UN =
+"prelude/SATS/unsafe.sats"
+
+(* ****** ****** *)
 //
 // HX-2020-03-21
 // This is a bit wild!
@@ -19,7 +25,7 @@ impltmp
 stream_vt2t(xs) =
 (
 auxmain
-($UN.castlin(xs))
+($UN.castlin01(xs))
 ) where
 {
 fun
@@ -29,11 +35,11 @@ $lazy
 (
 let
 val xs =
-$UN.castlin{stream_vt(a)}(xs)
+$UN.castlin10{stream_vt(a)}(xs)
 val r0 = !xs
 in
 //
-case+ xs0 of
+case+ r0 of
 |
 ~ strmcon_vt_nil
   () =>
@@ -43,10 +49,10 @@ case+ xs0 of
   (x0, xs) =>
   let
   val xs =
-  $UN.castlin{p1tr}(xs)
+  $UN.castlin10{p1tr}(xs)
   val () =
   ( r0.1 := auxmain(xs) )
-  in $UN.castlin{stream(a)}(r0) end
+  in $UN.castlin10{strmcom(a)}(r0) end
 //
 end // end of [let]
 )

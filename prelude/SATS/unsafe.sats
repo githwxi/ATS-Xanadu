@@ -38,9 +38,14 @@
 (* ****** ****** *)
 //
 fcast
-cast{a0:t0}{a1:t0}(a0): (a1)
+cast01{a0:t0}{a1:t0}(a0): (a1)
 fcast
-castlin{a0:vt}{a1:vt}(a0): (a1)
+cast10{a1:t0}{a0:t0}(a0): (a1)
+//
+fcast
+castlin01{a0:vt}{a1:vt}(a0): (a1)
+fcast
+castlin10{a1:vt}{a0:vt}(a0): (a1)
 //
 (* ****** ****** *)
 //
