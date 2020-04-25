@@ -70,7 +70,8 @@ tread23.sats \
 trans33.sats \
 tread33.sats \
 trans3t.sats \
-tread3t.sats \
+trans3x.sats \
+tread3x.sats \
 
 SRCDATS := \
 basics.dats \
@@ -143,7 +144,8 @@ trans33_dynexp.dats \
 tread33_dynexp.dats \
 trans3t_envmap.dats \
 trans3t_dynexp.dats \
-tread3t_dynexp.dats \
+trans3x_dynexp.dats \
+tread3x_dynexp.dats \
 
 ######
 

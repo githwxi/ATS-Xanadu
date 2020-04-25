@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,96 +28,78 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2019
+// Start Time: October, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./staexp1.sats"
-#staload "./dynexp1.sats"
-
+//
+#staload "./basics.sats"
+//
 (* ****** ****** *)
 
-#staload "./staexp2.sats"
-#staload "./statyp2.sats"
-#staload "./dynexp2.sats"
-#staload "./dynexp3.sats"
+#staload "./label0.sats"
+#staload "./locinfo.sats"
 
 (* ****** ****** *)
 //
-typedef
-treader3t
-(a:t@ype) = (a) -> void
+#staload S2E = "./staexp2.sats"
+#staload S2T = "./statyp2.sats"
+#staload D2E = "./dynexp2.sats"
+//
+#staload D3E = "./dynexp3.sats"
 //
 (* ****** ****** *)
-//
-datatype trerr3t =
-//
-| TRERR3Td3pat of (d3pat)
-| TRERR3Td3exp of (d3exp)
-//
-| TRERR3Tf3arg of (f3arg)
-| TRERR3Td3ecl of (d3ecl)
-//
-| TRERR3Td3exp_timp2f of (d3exp, f3undecl)
-//
-typedef
-trerr3tlst = List0(trerr3t)
-//
+
+typedef s2var = $S2E.s2var
+typedef s2exp = $S2E.s2exp
+typedef t2xtv = $S2T.t2xtv
+typedef t2ype = $S2T.t2ype
+typedef s2varlst = $S2E.s2varlst
+typedef s2explst = $S2E.s2explst
+typedef t2xtvlst = $S2T.t2xtvlst
+typedef t2ypelst = $S2T.t2ypelst
+
 (* ****** ****** *)
 //
-fun//{}
-trerr3t_add(trerr3t): void
+typedef d2cst = $D2E.d2cst
+//
+typedef d3exp = $D3E.d3exp
+typedef d3ecl = $D3E.d3ecl
+//
+typedef d3gua = $D3E.d3gua
+typedef d3gpat = $D3E.d3gpat
+typedef d3clau = $D3E.d3clau
+//
+typedef d3expopt = $D3E.d3expopt
+typedef d3explst = $D3E.d3explst
+typedef d3eclist = $D3E.d3eclist
+//
+typedef d3gualst = $D3E.d3gualst
+typedef d3claulst = $D3E.d3claulst
 //
 (* ****** ****** *)
 //
 fun
-tread3t_main(d3eclist): void
+trans3x_program
+  (d3cls: d3eclist): d3eclist
 //
 (* ****** ****** *)
 //
-fun//{}
-tread3t_d3pat: treader3t(d3pat)
-fun//{}
-tread3t_d3patlst: treader3t(d3patlst)
+fun
+trans3x_dexp: d3exp -> d3exp 
+fun
+trans3x_dexplst: d3explst -> d3explst
+fun
+trans3x_dexpopt: d3expopt -> d3expopt
 //
 (* ****** ****** *)
 //
-fun//{}
-tread3t_d3exp: treader3t(d3exp)
-fun//{}
-tread3t_d3explst: treader3t(d3explst)
-fun//{}
-tread3t_d3expopt: treader3t(d3expopt)
-//
-(* ****** ****** *)
-//
-fun//{}
-tread3t_d3ecl: treader3t(d3ecl)
-fun//{}
-tread3t_d3eclist: treader3t(d3eclist)
+fun
+trans3x_decl: d3ecl -> d3ecl 
+fun
+trans3x_declist: d3eclist -> d3eclist
 //
 (* ****** ****** *)
 
-fun//{}
-tread3t_v3aldecl: treader3t(v3aldecl)
-fun//{}
-tread3t_v3aldeclist: treader3t(v3aldeclist)
+(* end of [xats_trans3x.sats] *)
 
-(* ****** ****** *)
-
-fun//{}
-tread3t_v3ardecl: treader3t(v3ardecl)
-fun//{}
-tread3t_v3ardeclist: treader3t(v3ardeclist)
-
-(* ****** ****** *)
-
-fun//{}
-tread3t_f3undecl: treader3t(f3undecl)
-fun//{}
-tread3t_f3undeclist: treader3t(f3undeclist)
-
-(* ****** ****** *)
-
-(* end of [xats_tread3t.sats] *)
