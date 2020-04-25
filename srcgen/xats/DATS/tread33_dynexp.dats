@@ -409,6 +409,15 @@ d3e0.node() of
     tread33_d3explst(d3es)
   }
 //
+| D3Epcon
+  (d3e1, lab2) =>
+  {
+(*
+  val () = aux_D3Epcon(d3e0)
+*)
+  val () = tread33_d3exp(d3e1)
+  }
+//
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   {
@@ -439,6 +448,20 @@ d3e0.node() of
     val () =
     tread33_d3eclist(d3cs)
     val () = tread33_d3exp(d3e1)
+  }
+//
+| D3Eseqn(d3es, d3e1) =>
+  {
+    val () =
+    tread33_d3explst(d3es)
+    val () = tread33_d3exp(d3e1)
+  }
+//
+| D3Etuple
+    (knd0, npf1, d3es) =>
+  {
+    val () =
+    tread33_d3explst(d3es)
   }
 //
 | D3Eassgn(d3e1, d3e2) =>
@@ -477,6 +500,15 @@ d3e0.node() of
   {
     val () = tread33_d3exp(d3e1)
     val () = tread33_d3explst(d3es)
+  }
+//
+| D3Eflat(d3e1) =>
+  {
+    val () = tread33_d3exp(d3e1)
+  }
+| D3Etalf(d3e1) =>
+  {
+    val () = tread33_d3exp(d3e1)
   }
 //
 | D3Elcast(d3e1, lab2) =>
