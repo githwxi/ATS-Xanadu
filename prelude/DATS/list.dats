@@ -277,6 +277,7 @@ end // end of [list_tabulate_cref]
 //
 (* ****** ****** *)
 //
+(*
 impltmp
 {a:t0}
 $UN.gseq_head
@@ -293,6 +294,7 @@ let
 val x0 = xs.0
 val () = xs := xs.1 in x0
 end
+*)
 //
 (* ****** ****** *)
 //
