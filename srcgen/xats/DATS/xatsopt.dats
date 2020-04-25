@@ -80,7 +80,8 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tread33.sats"
 //
 #staload "./../SATS/trans3t.sats"
-#staload "./../SATS/tread3t.sats"
+#staload "./../SATS/trans3x.sats"
+#staload "./../SATS/tread3x.sats"
 //
 (* ****** ****** *)
 //
@@ -263,7 +264,9 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 //
 #dynload "./trans3t_envmap.dats"
 #dynload "./trans3t_dynexp.dats"
-#dynload "./tread3t_dynexp.dats"
+//
+#dynload "./trans3x_dynexp.dats"
+#dynload "./tread3x_dynexp.dats"
 //
 (* ****** ****** *)
 //
@@ -992,10 +995,12 @@ d3cs =
 let
 val
 d3cs = trans3t_program(d3cs)
+val
+d3cs = trans3x_program(d3cs)
 in
 d3cs where
 {
-  val () = tread3t_main(d3cs)
+  val () = tread3x_main(d3cs)
 }
 end // end of [val]
 //

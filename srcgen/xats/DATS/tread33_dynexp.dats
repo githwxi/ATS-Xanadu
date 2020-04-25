@@ -518,6 +518,9 @@ d3e0.node() of
     (loc0, ": ***TRERR33***");
     prerrln!
     ( loc0
+    , ": TRERR33(D3Etcast): type-mismatch");
+    prerrln!
+    ( loc0
     , ": TRERR33(D3Etcast): the d3exp: ", d3e1);
     prerrln!
     ( loc0

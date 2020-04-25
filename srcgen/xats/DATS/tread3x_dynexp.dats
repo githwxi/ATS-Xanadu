@@ -58,7 +58,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 //
-#staload "./../SATS/tread3t.sats"
+#staload "./../SATS/tread3x.sats"
 //
 (* ****** ****** *)
 
@@ -84,10 +84,10 @@ prerr with pprerr_t2ype of 10
 
 implement
 //{}(*tmp*)
-tread3t_d3pat(d3p0) = ()
+tread3x_d3pat(d3p0) = ()
 implement
 //{}(*tmp*)
-tread3t_d3patlst(d3ps) = ()
+tread3x_d3patlst(d3ps) = ()
 
 (* ****** ****** *)
 
@@ -107,27 +107,27 @@ D3Etcst
 , ti2s) = d3e0.node()
 //
 val () =
-trerr3t_add(TRERR3Td3exp(d3e0))
+trerr3x_add(TRERR3Xd3exp(d3e0))
 //
 val () =
 prerrln!
-( loc0, ": ***TRERR3T***")
+( loc0, ": ***TRERR3X***")
 val () =
 prerrln!
 ( loc0
-, ": TRERR3T(D3Etcst): unimplemented")
+, ": TRERR3X(D3Etcst): unimplemented")
 val () =
 prerrln!
 ( loc0
-, ": TRERR3T(D3Etcst): template name = ", d2c0)
+, ": TRERR3X(D3Etcst): template name = ", d2c0)
 val () =
 prerrln!
 ( loc0
-, ": TRERR3T(D3Etcst): template argexps = ", ti3a)
+, ": TRERR3X(D3Etcst): template argexps = ", ti3a)
 val () =
 prerrln!
 ( loc0
-, ": TRERR3T(D3Etcst): template argvars = ", ti2s)
+, ": TRERR3X(D3Etcst): template argvars = ", ti2s)
 in
   // nothing
 end // end of [auxtcst]
@@ -200,22 +200,22 @@ in
 case+
 rcd.def of
 |
-Some(d3e0) => tread3t_d3exp(d3e0)
+Some(d3e0) => tread3x_d3exp(d3e0)
 |
 None((*void*)) =>
 let
 val () =
-trerr3t_add
-(TRERR3Td3exp_timp2f(d3e0, f3d0))
+trerr3x_add
+(TRERR3Xd3exp_timp2f(d3e0, f3d0))
 in
 prerrln!
-(loc0, ": ***TRERR3T***");
+(loc0, ": ***TRERR3X***");
 prerrln!
 ( loc0
-, ": TRERR3T(D3Etimp): undefined: ", rcd.d2c);
+, ": TRERR3X(D3Etimp): undefined: ", rcd.d2c);
 prerrln!
 ( loc0
-, ": TRERR3T(D3Etimp): ", loc1, ": f3d0 = ", f3d0);
+, ": TRERR3X(D3Etimp): ", loc1, ": f3d0 = ", f3d0);
 end // end of [None]
 //
 end // end of [auxf3d0]
@@ -262,7 +262,7 @@ D3Cimpdecl3
 , f3as, res1, def2) = timp.node()
 //
 in
-  tread3t_d3exp(def2)
+  tread3x_d3exp(def2)
 end // end of [auxtimp2i]
 
 (* ****** ****** *)
@@ -271,7 +271,7 @@ in(* in-of-local *)
 
 implement
 //{}(*tmp*)
-tread3t_d3exp
+tread3x_d3exp
   (d3e0) = let
 //
 val
@@ -280,7 +280,7 @@ loc0 = d3e0.loc((*void*))
 // (*
 val () =
 println!
-("tread3t_d3exp: d3e0 = ", d3e0)
+("tread3x_d3exp: d3e0 = ", d3e0)
 // *)
 //
 //
@@ -319,97 +319,97 @@ d3e0.node() of
   (d3e1, s2e2) =>
   {
     val () =
-    tread3t_d3exp(d3e1)
+    tread3x_d3exp(d3e1)
   }
 //
 | D3Edapp
   (d3f1, npf2, d3es) =>
   {
     val () =
-    tread3t_d3exp(d3f1)
+    tread3x_d3exp(d3f1)
     val () =
-    tread3t_d3explst(d3es)
+    tread3x_d3explst(d3es)
   }
 //
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   {
 //
-  val () = tread3t_d3exp(d3e1)
-  val () = tread3t_d3exp(d3e2)
-  val () = tread3t_d3expopt(opt3)
+  val () = tread3x_d3exp(d3e1)
+  val () = tread3x_d3exp(d3e2)
+  val () = tread3x_d3expopt(opt3)
 //
   }
 //
 | D3Ecase
   (knd0, d3e1, d3cs) =>
   {
-  val () = tread3t_d3exp(d3e1)
+  val () = tread3x_d3exp(d3e1)
 (*
-  val () = tread3t_d3claulst(d3cs)
+  val () = tread3x_d3claulst(d3cs)
 *)
   }
 //
 | D3Elet(d3cs, d3e1) =>
   {
     val () =
-    tread3t_d3eclist(d3cs)
-    val () = tread3t_d3exp(d3e1)
+    tread3x_d3eclist(d3cs)
+    val () = tread3x_d3exp(d3e1)
   }
 | D3Ewhere(d3e1, d3cs) =>
   {
     val () =
-    tread3t_d3eclist(d3cs)
-    val () = tread3t_d3exp(d3e1)
+    tread3x_d3eclist(d3cs)
+    val () = tread3x_d3exp(d3e1)
   }
 //
 | D3Eassgn(d3e1, d3e2) =>
   {
-    val () = tread3t_d3exp(d3e1)
-    val () = tread3t_d3exp(d3e2)
+    val () = tread3x_d3exp(d3e1)
+    val () = tread3x_d3exp(d3e2)
   }
 //
 | D3Etry
   (tok0, d3e1, d3cs) =>
   {
-    val () = tread3t_d3exp(d3e1)
+    val () = tread3x_d3exp(d3e1)
 (*
-    val () = tread3t_d3claulst(d3cs)
+    val () = tread3x_d3claulst(d3cs)
 *)
   }
 //
 | D3Eaddr(d3e1) =>
   {
-    val () = tread3t_d3exp(d3e1)
+    val () = tread3x_d3exp(d3e1)
   }
 | D3Efold(d3e1) =>
   {
-    val () = tread3t_d3exp(d3e1)
+    val () = tread3x_d3exp(d3e1)
   }
 //
 | D3Eeval
   ( knd0, d3e1 ) =>
   {
-    val () = tread3t_d3exp(d3e1)
+    val () = tread3x_d3exp(d3e1)
   }
 //
 | D3Elazy(d3e1) =>
   {
-    val () = tread3t_d3exp(d3e1)
+    val () = tread3x_d3exp(d3e1)
   }
 | D3Ellazy(d3e1, d3es) =>
   {
-    val () = tread3t_d3exp(d3e1)
-    val () = tread3t_d3explst(d3es)
+    val () = tread3x_d3exp(d3e1)
+    val () = tread3x_d3explst(d3es)
   }
 //
 | D3Elcast(d3e1, lab2) =>
   {
-    val () = tread3t_d3exp(d3e1)
+    val () = tread3x_d3exp(d3e1)
   }
 | D3Etcast(d3e1, t2p2) =>
   {
-    val () = tread3t_d3exp(d3e1)
+    val () = tread3x_d3exp(d3e1)
   }
 //
 | D3Enone0() => ((*void*))
@@ -417,21 +417,21 @@ d3e0.node() of
 | D3Enone1(_) =>
   let
     val () =
-    trerr3t_add(TRERR3Td3exp(d3e0))
+    trerr3x_add(TRERR3Xd3exp(d3e0))
   in
     prerrln!
-    (loc0, ": ***TRERR3T***");
+    (loc0, ": ***TRERR3X***");
     prerrln!
     ( loc0
-    , ": TRERR3T(D3Enone1): the d3exp-error: ", d3e0);
+    , ": TRERR3X(D3Enone1): the d3exp-error: ", d3e0);
   end // end of [D1Enone1]
 //
 | _(* rest-of-d3exp *) =>
   {
-    val () = prerrln!(loc0, ": tread3t_d3exp(", d3e0, ")")
+    val () = prerrln!(loc0, ": tread3x_d3exp(", d3e0, ")")
   }
 //
-end // end of [tread3t_d3exp]
+end // end of [tread3x_d3exp]
 
 end // end of [local]
 
@@ -439,29 +439,29 @@ end // end of [local]
 //
 implement
 //{}(*tmp*)
-tread3t_d3expopt(opt) =
+tread3x_d3expopt(opt) =
 (
 case+ opt of
 | None() => ()
-| Some(d3e) => tread3t_d3exp(d3e)
+| Some(d3e) => tread3x_d3exp(d3e)
 )
 //
 implement
 //{}(*tmp*)
-tread3t_d3explst(d3es) =
+tread3x_d3explst(d3es) =
 (
 list_foreach<d3exp>(d3es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3exp><env>(d3e, env) = tread3t_d3exp(d3e)
-} (* end of [tread3t_d3explst] *)
+list_foreach$fwork<d3exp><env>(d3e, env) = tread3x_d3exp(d3e)
+} (* end of [tread3x_d3explst] *)
 //
 (* ****** ****** *)
 
 implement
 //{}(*tmp*)
-tread3t_d3ecl(d3cl) =
+tread3x_d3ecl(d3cl) =
 let
 //
 val loc0 = d3cl.loc()
@@ -469,7 +469,7 @@ val loc0 = d3cl.loc()
 // (*
 val () =
 println!
-("tread3t_d3ecl: d3cl = ", d3cl)
+("tread3x_d3ecl: d3cl = ", d3cl)
 // *)
 //
 in
@@ -481,76 +481,76 @@ d3cl.node() of
 //
 | D3Cstatic(tok, d3c1) =>
   {
-    val () = tread3t_d3ecl(d3c1)
+    val () = tread3x_d3ecl(d3c1)
   }
 | D3Cextern(tok, d3c1) =>
   {
-    val () = tread3t_d3ecl(d3c1)
+    val () = tread3x_d3ecl(d3c1)
   }
 //
 | D3Cvaldecl
   (knd, mopt, v3ds) =>
   {
-    val () = tread3t_v3aldeclist(v3ds)
+    val () = tread3x_v3aldeclist(v3ds)
 (*
     val () =
     println!
-    ("tread3t_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
+    ("tread3x_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
 *)
   }
 //
 | _(* rest-of-d3ecl *) =>
   {
-    val () = println!(loc0, ": tread3t_d3ecl(", d3cl, ")")
+    val () = println!(loc0, ": tread3x_d3ecl(", d3cl, ")")
   }
 //
-end // end of [tread3t_d3ecl]
+end // end of [tread3x_d3ecl]
 
 (* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread3t_d3eclist(d3cs) =
+tread3x_d3eclist(d3cs) =
 (
 list_foreach<d3ecl>(d3cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3ecl><env>(d3c, env) = tread3t_d3ecl(d3c)
-} (* end of [tread3t_d3eclist] *)
+list_foreach$fwork<d3ecl><env>(d3c, env) = tread3x_d3ecl(d3c)
+} (* end of [tread3x_d3eclist] *)
 //
 (* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread3t_v3aldecl
+tread3x_v3aldecl
   (v3d0) =
 {
   val () =
-  tread3t_d3pat(rcd.pat)
+  tread3x_d3pat(rcd.pat)
   val () =
-  tread3t_d3expopt(rcd.def)
+  tread3x_d3expopt(rcd.def)
 (*
   val () =
-  tread3t_s2expopt(rcd.wth)
+  tread3x_s2expopt(rcd.wth)
 *)
 } where
 {
 //
   val+V3ALDECL(rcd) = v3d0
 //
-} (* end of [tread3t_v3aldecl] *)
+} (* end of [tread3x_v3aldecl] *)
 //
 implement
 //{}(*tmp*)
-tread3t_v3aldeclist(v3ds) =
+tread3x_v3aldeclist(v3ds) =
 (
 list_foreach<v3aldecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3aldecl><env>(v3ds, env) = tread3t_v3aldecl(v3ds)
-} (* end of [tread3t_v3aldeclist] *)
+list_foreach$fwork<v3aldecl><env>(v3ds, env) = tread3x_v3aldecl(v3ds)
+} (* end of [tread3x_v3aldeclist] *)
 //
 (* ****** ****** *)
 
@@ -558,47 +558,47 @@ local
 
 static
 fun//{}
-the_trerr3tlst_get(): trerr3tlst
+the_trerr3xlst_get(): trerr3xlst
 extern
 fun//{}
-the_trerr3tlst_set(trerr3tlst): void
+the_trerr3xlst_set(trerr3xlst): void
 
 implement
 //{}(*tmp*)
-trerr3t_add(xerr) = let
+trerr3x_add(xerr) = let
 //
 val
-xerrs = the_trerr3tlst_get()
+xerrs = the_trerr3xlst_get()
 //
 in
-  the_trerr3tlst_set(list_cons(xerr, xerrs))
-end // end of [trerr3t_add]
+  the_trerr3xlst_set(list_cons(xerr, xerrs))
+end // end of [trerr3x_add]
 
 in (* in-of-local *)
 //
 local
 //
 val
-the_trerr3tlst =
-ref<trerr3tlst>(list_nil)
+the_trerr3xlst =
+ref<trerr3xlst>(list_nil)
 //
 in(*in-of-local*)
 implement
-the_trerr3tlst_get() = the_trerr3tlst[]
+the_trerr3xlst_get() = the_trerr3xlst[]
 implement
-the_trerr3tlst_set(xs) = the_trerr3tlst[] := xs
+the_trerr3xlst_set(xs) = the_trerr3xlst[] := xs
 end // end of [local]
 //
 implement
-tread3t_main(d3cs) = let
+tread3x_main(d3cs) = let
 //
 val () =
-tread3t_d3eclist(d3cs)
+tread3x_d3eclist(d3cs)
 //
 val
-xerrs = the_trerr3tlst_get()
+xerrs = the_trerr3xlst_get()
 val
-nxerr = list_length<trerr3t>(xerrs)
+nxerr = list_length<trerr3x>(xerrs)
 //
 in
 //
@@ -610,7 +610,7 @@ then
 val () =
 prerrln!
 ("\
-tread3t_main: \
+tread3x_main: \
 nxerr = ", nxerr)
 //
 val () =
@@ -619,20 +619,20 @@ if
 then
 prerrln!
 ("\
-tread3t_main: \
-there is one trerr3t-error!")
+tread3x_main: \
+there is one trerr3x-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
 ("\
-tread3t_main: \
-there are some trerr3t-errors!")
+tread3x_main: \
+there are some trerr3x-errors!")
 //
 val () =
 (
-$raise(XATSOPT_TRERR3T_EXN(*void*))
+$raise(XATSOPT_TRERR3X_EXN(*void*))
 ) : void
 //
 } (* end of [then] *)
@@ -642,15 +642,15 @@ else
 val () =
 prerrln!
 ("\
-tread3t_main: \
-there are none of trerr3t-errors!")
+tread3x_main: \
+there are none of trerr3x-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread3t_main]
+end // end of [tread3x_main]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_tread3t_dynexp.dats] *)
+(* end of [xats_tread3x_dynexp.dats] *)

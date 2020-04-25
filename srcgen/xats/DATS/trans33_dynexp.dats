@@ -2363,16 +2363,16 @@ end // end of [local]
 
 implement
 trans33_declist
-  (d3cs) =
-list_vt2t(d3cs) where
+  (dcls) =
+list_vt2t(dcls) where
 {
 val
-d3cs =
+dcls =
 list_map<d3ecl><d3ecl>
-  (d3cs) where
+  (dcls) where
 {
 implement
-list_map$fopr<d3ecl><d3ecl>(d3c) = trans33_decl(d3c)
+list_map$fopr<d3ecl><d3ecl>(dcl) = trans33_decl(dcl)
 }
 } (* end of [trans33_declist] *)
 
