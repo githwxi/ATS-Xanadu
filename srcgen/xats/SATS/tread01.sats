@@ -110,6 +110,8 @@ tread01_d1eclist: treader01(d1eclist)
 (* ****** ****** *)
 //
 fun//{}
+tread01_teqd1expopt: treader01(teqd1expopt)
+fun//{}
 tread01_wths1expopt: treader01(wths1expopt)
 //
 (* ****** ****** *)
@@ -129,6 +131,20 @@ tread01_tq1arg: treader01(tq1arg)
 fun//{}
 tread01_tq1arglst: treader01(tq1arglst)
 //
+(* ****** ****** *)
+
+fun//{}
+tread01_v1aldecl: treader01(v1aldecl)
+fun//{}
+tread01_v1aldeclist: treader01(v1aldeclist)
+
+(* ****** ****** *)
+
+fun//{}
+tread01_v1ardecl: treader01(v1ardecl)
+fun//{}
+tread01_v1ardeclist: treader01(v1ardeclist)
+
 (* ****** ****** *)
 
 fun//{}

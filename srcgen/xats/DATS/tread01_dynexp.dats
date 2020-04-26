@@ -123,6 +123,27 @@ in
 case+
 d1c0.node() of
 //
+| D1Cstatic
+  (tok, d1c1) =>
+  {
+    val () =
+    tread01_d1ecl(d1c1)
+  }
+| D1Cextern
+  (tok, d1c1) =>
+  {
+    val () =
+    tread01_d1ecl(d1c1)
+  }
+//
+| D1Cvaldecl
+  ( knd
+  , mopt, v1ds) =>
+  {
+    val () =
+    tread01_v1aldeclist(v1ds)
+  }
+//
 | D1Cfundecl
   ( knd
   , mopt
@@ -162,7 +183,17 @@ list_foreach$fwork<d1ecl><env>(d1c, env) = tread01_d1ecl(d1c)
 } (* end of [tread01_d1eclist] *)
 //
 (* ****** ****** *)
-
+//
+implement
+//{}(*tmp*)
+tread01_teqd1expopt
+  (opt0) =
+(
+case+ opt0 of
+| TEQD1EXPnone() => ()
+| TEQD1EXPsome(tok, d1e) => tread01_d1exp(d1e)
+)
+//
 implement
 //{}(*tmp*)
 tread01_wths1expopt
@@ -172,7 +203,7 @@ case+ opt0 of
 | WTHS1EXPnone() => ()
 | WTHS1EXPsome(tok, s1e) => tread01_s1exp(s1e)
 )
-
+//
 (* ****** ****** *)
 //
 implement
@@ -247,6 +278,66 @@ list_foreach<tq1arg>(tqas)
 implement(env)
 list_foreach$fwork<tq1arg><env>(tqa, env) = tread01_tq1arg(tqa)
 } (* end of [tread01_tq1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_v1aldecl
+  (v1d0) =
+{
+  val () =
+  tread01_d1pat(rcd.pat)
+  val () =
+  tread01_d1expopt(rcd.def)
+  val () =
+  tread01_wths1expopt(rcd.wtp)
+} where
+{
+//
+  val+V1ALDECL(rcd) = v1d0
+//
+} (* end of [tread01_v1aldecl] *)
+//
+implement
+//{}(*tmp*)
+tread01_v1aldeclist(v1ds) =
+(
+list_foreach<v1aldecl>(v1ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v1aldecl><env>(v1d, env) = tread01_v1aldecl(v1d)
+} (* end of [tread01_v1aldeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_v1ardecl
+  (v1d0) =
+{
+  val () =
+  tread01_s1expopt(rcd.res)
+  val () =
+  tread01_teqd1expopt(rcd.ini)
+} where
+{
+//
+  val+V1ARDECL(rcd) = v1d0
+//
+} (* end of [tread01_v1ardecl] *)
+//
+implement
+//{}(*tmp*)
+tread01_v1ardeclist(v1ds) =
+(
+list_foreach<v1ardecl>(v1ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v1ardecl><env>(v1d, env) = tread01_v1ardecl(v1d)
+} (* end of [tread01_v1ardeclist] *)
 //
 (* ****** ****** *)
 //
