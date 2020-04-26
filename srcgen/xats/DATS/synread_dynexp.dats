@@ -690,9 +690,9 @@ d0cl.node() of
 *)
     val () = synread_EQ(teq)  
     val () = synread_s0eid(sid)
-    val () = synread_s0exp(def)
-    val () = synread_sort0opt(res)
     val () = synread_s0marglst(arg)
+    val () = synread_sort0opt(res)
+    val () = synread_s0exp(def)
   }
 //
 | D0Cvaldecl
