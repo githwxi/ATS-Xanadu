@@ -158,7 +158,7 @@ in
 end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //
-} end (* end of [list_vt_rappend] *)
+} (* end of [list_vt_rappend] *)
 
 (* ****** ****** *)
 
@@ -186,13 +186,13 @@ list_vt_nil() => ys0
 | !
 list_vt_cons(x0, xs1) =>
 let
-  val x0 = g_copy<a>(x0)
+val x0 = g_copy<a>(x0)
 in
-  loop(xs1, list_vt_cons(x0, ys0))
+loop(xs1, list_vt_cons(x0, ys0))
 end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //
-} end (* end of [list_vt_rappend10] *)
+} (* end of [list_vt_rappend10] *)
 
 (* ****** ****** *)
 
@@ -221,13 +221,13 @@ list_vt_nil() =>
 | !
 list_vt_cons(x0, xs1) =>
 let
-  val x0 = g_copy<a>(x0)
+val x0 = g_copy<a>(x0)
 in
-  loop(xs1, list_vt_cons(x0, ys0))
+loop(xs1, list_vt_cons(x0, ys0))
 end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //
-} end (* end of [list_vt_rappend11] *)
+} (* end of [list_vt_rappend11] *)
 
 (* ****** ****** *)
 //
@@ -294,11 +294,11 @@ list_vt_foreach0
 fun
 loop
 ( xs
-: list_vt(a)): bool =
+: list_vt(a)): void =
 (
 case+ xs of
 | ~
-list_vt_nil() => true
+list_vt_nil() => ()
 | ~
 list_vt_cons(x0, xs) =>
 let

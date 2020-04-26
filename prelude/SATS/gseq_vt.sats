@@ -94,5 +94,51 @@ fun
 glseq_streamize0(~xs): stream_vt(x0)
 //
 (* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
+glseq_forall0(~xs): bool
+fun
+<x0:vt
+,xs:vt>
+glseq_forall1(!xs): bool
+//
+fun
+<x0:vt
+,xs:vt>
+glseq_foreach0(~xs): void
+fun
+<x0:vt
+,xs:vt>
+glseq_foreach1(!xs): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_map0_list(~xs): list_vt(y0)
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_map1_list(!xs): list_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_map0_rlist(~xs): list_vt(y0)
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_map1_rlist(!xs): list_vt(y0)
+//
+(* ****** ****** *)
 
 (* end of [gseq_vt.sats] *)
