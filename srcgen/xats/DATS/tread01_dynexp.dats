@@ -276,7 +276,7 @@ list_foreach<f1undecl>(f1ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f1undecl><env>(f1ds, env) = tread01_f1undecl(f1ds)
+list_foreach$fwork<f1undecl><env>(f1d, env) = tread01_f1undecl(f1d)
 } (* end of [tread01_f1undeclist] *)
 //
 (* ****** ****** *)

@@ -169,6 +169,20 @@ tread12_tq2arglst: treader12(tq2arglst)
 (* ****** ****** *)
 
 fun//{}
+tread12_v2aldecl: treader12(v2aldecl)
+fun//{}
+tread12_v2aldeclist: treader12(v2aldeclist)
+
+(* ****** ****** *)
+
+fun//{}
+tread12_v2ardecl: treader12(v2ardecl)
+fun//{}
+tread12_v2ardeclist: treader12(v2ardeclist)
+
+(* ****** ****** *)
+
+fun//{}
 tread12_f2undecl: treader12(f2undecl)
 fun//{}
 tread12_f2undeclist: treader12(f2undeclist)

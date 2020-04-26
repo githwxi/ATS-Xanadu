@@ -99,6 +99,22 @@ d3p0.node() of
 //
 | D3Pcon1 _ => ()
 //
+| D3Pbang(d3p1) =>
+  {
+    val () =
+    tread33_d3pat(d3p1)
+  }
+| D3Pflat(d3p1) =>
+  {
+    val () =
+    tread33_d3pat(d3p1)
+  }
+| D3Pfree(d3p1) =>
+  {
+    val () =
+    tread33_d3pat(d3p1)
+  }
+//
 | D3Pdapp
   (d3f1, npf2, d3ps) =>
   {
@@ -942,7 +958,7 @@ list_foreach<v3aldecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3aldecl><env>(v3ds, env) = tread33_v3aldecl(v3ds)
+list_foreach$fwork<v3aldecl><env>(v3d, env) = tread33_v3aldecl(v3d)
 } (* end of [tread33_v3aldeclist] *)
 //
 (* ****** ****** *)
@@ -971,7 +987,7 @@ list_foreach<v3ardecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3ardecl><env>(v3ds, env) = tread33_v3ardecl(v3ds)
+list_foreach$fwork<v3ardecl><env>(v3d, env) = tread33_v3ardecl(v3d)
 } (* end of [tread33_v3ardeclist] *)
 //
 (* ****** ****** *)
@@ -1000,7 +1016,7 @@ list_foreach<f3undecl>(f3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f3undecl><env>(f3ds, env) = tread33_f3undecl(f3ds)
+list_foreach$fwork<f3undecl><env>(f3d, env) = tread33_f3undecl(f3d)
 } (* end of [tread33_f3undeclist] *)
 //
 (* ****** ****** *)
