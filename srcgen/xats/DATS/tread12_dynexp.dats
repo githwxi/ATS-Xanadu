@@ -583,6 +583,65 @@ list_foreach$fwork<d2ecl><env>(d2c, env) = tread12_d2ecl(d2c)
 //
 implement
 //{}(*tmp*)
+tread12_f2arg
+  (f2a0) =
+(
+case+
+f2a0.node() of
+| F2ARGsome_dyn
+  (npf, d2ps) =>
+  {
+    val () = tread12_d2patlst(d2ps)
+  }
+| F2ARGsome_sta
+  (s2vs, s2ps) =>
+  {
+    val () = tread12_s2varlst(s2vs)
+    val () = tread12_s2explst(s2ps)
+  }
+//
+| F2ARGsome_met(s2es) =>
+  {
+    val () = tread12_s2explst(s2es)
+  }
+)
+//
+implement
+//{}(*tmp*)
+tread12_f2arglst(f2as) =
+(
+list_foreach<f2arg>(f2as)
+) where
+{
+implement(env)
+list_foreach$fwork<f2arg><env>(f2a, env) = tread12_f2arg(f2a)
+} (* end of [tread12_f2arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread12_tq2arg
+  (tq2a) =
+(
+  tread12_s2varlst(tq2a.s2vs())
+)
+//
+implement
+//{}(*tmp*)
+tread12_tq2arglst(tqas) =
+(
+list_foreach<tq2arg>(tqas)
+) where
+{
+implement(env)
+list_foreach$fwork<tq2arg><env>(tq2a, env) = tread12_tq2arg(tq2a)
+} (* end of [tread12_tq2arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 tread12_v2aldecl
   (v2d0) =
 {
@@ -643,65 +702,6 @@ list_foreach<v2ardecl>(v2ds)
 implement(env)
 list_foreach$fwork<v2ardecl><env>(v2d, env) = tread12_v2ardecl(v2d)
 } (* end of [tread12_v2ardeclist] *)
-//
-(* ****** ****** *)
-//
-implement
-//{}(*tmp*)
-tread12_f2arg
-  (f2a0) =
-(
-case+
-f2a0.node() of
-| F2ARGsome_dyn
-  (npf, d2ps) =>
-  {
-    val () = tread12_d2patlst(d2ps)
-  }
-| F2ARGsome_sta
-  (s2vs, s2ps) =>
-  {
-    val () = tread12_s2varlst(s2vs)
-    val () = tread12_s2explst(s2ps)
-  }
-//
-| F2ARGsome_met(s2es) =>
-  {
-    val () = tread12_s2explst(s2es)
-  }
-)
-//
-implement
-//{}(*tmp*)
-tread12_f2arglst(f2as) =
-(
-list_foreach<f2arg>(f2as)
-) where
-{
-implement(env)
-list_foreach$fwork<f2arg><env>(f2a, env) = tread12_f2arg(f2a)
-} (* end of [tread12_f2arglst] *)
-//
-(* ****** ****** *)
-//
-implement
-//{}(*tmp*)
-tread12_tq2arg
-  (tq2a) =
-(
-  tread12_s2varlst(tq2a.s2vs())
-)
-//
-implement
-//{}(*tmp*)
-tread12_tq2arglst(tqas) =
-(
-list_foreach<tq2arg>(tqas)
-) where
-{
-implement(env)
-list_foreach$fwork<tq2arg><env>(tq2a, env) = tread12_tq2arg(tq2a)
-} (* end of [tread12_tq2arglst] *)
 //
 (* ****** ****** *)
 //
