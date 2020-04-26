@@ -2631,7 +2631,32 @@ d2cl.node() of
     d3ecl_make_node(loc0, node)
   end
 //
+| D2Cabsimpl _ =>
+  let
+    val node = D3Cd2ecl(d2cl)
+  in
+    d3ecl_make_node(loc0, node)
+  end
 | D2Csymload _ =>
+  let
+    val node = D3Cd2ecl(d2cl)
+  in
+    d3ecl_make_node(loc0, node)
+  end
+//
+| D2Cdatasort _ =>
+  let
+    val node = D3Cd2ecl(d2cl)
+  in
+    d3ecl_make_node(loc0, node)
+  end
+| D2Cexcptcon _ =>
+  let
+    val node = D3Cd2ecl(d2cl)
+  in
+    d3ecl_make_node(loc0, node)
+  end
+| D2Cdatatype _ =>
   let
     val node = D3Cd2ecl(d2cl)
   in

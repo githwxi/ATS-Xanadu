@@ -124,10 +124,12 @@ val () =
 prerrln!
 ( loc0
 , ": TRERR3X(D3Etcst): template argexps = ", ti3a)
+(*
 val () =
 prerrln!
 ( loc0
 , ": TRERR3X(D3Etcst): template argvars = ", ti2s)
+*)
 in
   // nothing
 end // end of [auxtcst]
@@ -277,11 +279,11 @@ tread3x_d3exp
 val
 loc0 = d3e0.loc((*void*))
 //
-// (*
+(*
 val () =
 println!
 ("tread3x_d3exp: d3e0 = ", d3e0)
-// *)
+*)
 //
 //
 in(*in-of-let*)
@@ -331,6 +333,15 @@ d3e0.node() of
     tread3x_d3explst(d3es)
   }
 //
+| D3Epcon
+  (d3e1, lab2) =>
+  {
+(*
+  val () = aux_D3Epcon(d3e0)
+*)
+  val () = tread3x_d3exp(d3e1)
+  }
+//
 | D3Eif0
   (d3e1, d3e2, opt3) =>
   {
@@ -363,6 +374,20 @@ d3e0.node() of
     val () = tread3x_d3exp(d3e1)
   }
 //
+| D3Eseqn(d3es, d3e1) =>
+  {
+    val () =
+    tread3x_d3explst(d3es)
+    val () = tread3x_d3exp(d3e1)
+  }
+//
+| D3Etuple
+    (knd0, npf1, d3es) =>
+  {
+    val () =
+    tread3x_d3explst(d3es)
+  }
+//
 | D3Eassgn(d3e1, d3e2) =>
   {
     val () = tread3x_d3exp(d3e1)
@@ -382,7 +407,12 @@ d3e0.node() of
   {
     val () = tread3x_d3exp(d3e1)
   }
+//
 | D3Efold(d3e1) =>
+  {
+    val () = tread3x_d3exp(d3e1)
+  }
+| D3Efree(d3e1) =>
   {
     val () = tread3x_d3exp(d3e1)
   }
@@ -399,8 +429,17 @@ d3e0.node() of
   }
 | D3Ellazy(d3e1, d3es) =>
   {
+  val () = tread3x_d3exp(d3e1)
+  val () = tread3x_d3explst(d3es)
+  }
+//
+| D3Eflat(d3e1) =>
+  {
     val () = tread3x_d3exp(d3e1)
-    val () = tread3x_d3explst(d3es)
+  }
+| D3Etalf(d3e1) =>
+  {
+    val () = tread3x_d3exp(d3e1)
   }
 //
 | D3Elcast(d3e1, lab2) =>
@@ -466,13 +505,13 @@ let
 //
 val loc0 = d3cl.loc()
 //
-// (*
+(*
 val () =
 println!
 ("tread3x_d3ecl: d3cl = ", d3cl)
-// *)
+*)
 //
-in
+in(*in-of-let*)
 //
 case+
 d3cl.node() of
@@ -487,6 +526,24 @@ d3cl.node() of
   {
     val () = tread3x_d3ecl(d3c1)
   }
+//
+| D3Cinclude
+  ( tok
+  , src, knd
+  , fopt, body) =>
+  {
+    val () =
+    (
+    case+ body of
+    | None() => ()
+    | Some(d3cs) =>
+      (
+        tread3x_d3eclist(d3cs)
+      )
+    )
+  }
+//
+| D3Cstaload _ => ()
 //
 | D3Cvaldecl
   (knd, mopt, v3ds) =>
@@ -514,7 +571,32 @@ d3cl.node() of
   (knd, mopt, tq2s, f3ds) =>
   {
     val () = tread3x_f3undeclist(f3ds)
+(*
+    val () =
+    println!
+    ("tread3x_d3ecl: D3Cfundecl: f3ds = ", f3ds)
+*)
   }
+//
+| D3Cimpdecl3
+  ( tok, mopt
+  , sqas, tqas
+  , id2c, ti3a, ti2s
+  , f3as, res0, d3e0) =>
+  (
+    if
+    iseqz(ti2s)
+    then
+    {
+      val () = tread3x_d3exp(d3e0) // non-temp
+    }
+    else
+    {
+(*
+      val () = tread3x_d3exp(d3e0) // template
+*)
+    }
+  )
 //
 | _(* rest-of-d3ecl *) =>
   {

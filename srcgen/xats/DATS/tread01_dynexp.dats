@@ -136,6 +136,23 @@ d1c0.node() of
     tread01_d1ecl(d1c1)
   }
 //
+| D1Cinclude
+  ( tok
+  , src, knd
+  , fopt, body) =>
+  {
+    val () =
+    (
+    case+ body of
+    | None() => ()
+    | Some(d1cs) =>
+      (
+        tread01_d1eclist(d1cs)
+      )
+    )
+  }
+| D1Cstaload _ => ()
+//
 | D1Cvaldecl
   ( knd
   , mopt, v1ds) =>

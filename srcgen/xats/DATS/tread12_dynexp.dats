@@ -421,7 +421,8 @@ d2cl.node() of
 //
 | D2Cinclude
   ( tok
-  , src, knd, fopt, body) =>
+  , src, knd
+  , fopt, body) =>
   {
     val () =
     (
@@ -433,6 +434,8 @@ d2cl.node() of
       )
     )
   }
+//
+| D2Cstaload _ => ()
 //
 | D2Cstacst0(s2c, s2t) =>
   {
