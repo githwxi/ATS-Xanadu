@@ -518,6 +518,17 @@ d2cl.node() of
   | D2PITMsome(_, _) => ((*void*))
   )
 //
+| D2Cvaldecl
+  (knd, mopt, v2ds) =>
+  {
+    val () = tread12_v2aldeclist(v2ds)
+  }
+| D2Cvardecl
+  (knd, mopt, v2ds) =>
+  {
+    val () = tread12_v2ardeclist(v2ds)
+  }
+//
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
   {
@@ -567,6 +578,71 @@ list_foreach<d2ecl>(d2cs)
 implement(env)
 list_foreach$fwork<d2ecl><env>(d2c, env) = tread12_d2ecl(d2c)
 } (* end of [tread12_d2eclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread12_v2aldecl
+  (v2d0) =
+{
+//
+  val () =
+  tread12_d2pat(rcd.pat)
+//
+  val () =
+  tread12_d2expopt(rcd.def)
+  val () =
+  tread12_s2expopt(rcd.wtp)
+//
+} where
+{
+//
+  val+V2ALDECL(rcd) = v2d0
+//
+} (* end of [tread12_v2aldecl] *)
+//
+implement
+//{}(*tmp*)
+tread12_v2aldeclist(v2ds) =
+(
+list_foreach<v2aldecl>(v2ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v2aldecl><env>(v2d, env) = tread12_v2aldecl(v2d)
+} (* end of [tread12_v2aldeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread12_v2ardecl
+  (v2d0) =
+{
+//
+  val () =
+  tread12_d2expopt(rcd.ini)
+  val () =
+  tread12_s2expopt(rcd.res)
+//
+} where
+{
+//
+  val+V2ARDECL(rcd) = v2d0
+//
+} (* end of [tread12_v2ardecl] *)
+//
+implement
+//{}(*tmp*)
+tread12_v2ardeclist(v2ds) =
+(
+list_foreach<v2ardecl>(v2ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v2ardecl><env>(v2d, env) = tread12_v2ardecl(v2d)
+} (* end of [tread12_v2ardeclist] *)
 //
 (* ****** ****** *)
 //
@@ -634,14 +710,16 @@ implement
 tread12_f2undecl
   (f2d0) =
 {
+//
   val () =
   tread12_d2expopt(rcd.def)
+  val () =
+  tread12_s2expopt(rcd.wtp)
+//
   val () =
   tread12_f2arglst(rcd.arg)
   val () =
   tread12_effs2expopt(rcd.res)
-//
-  val () = tread12_s2expopt(rcd.wtp)
 //
 } where
 {
@@ -658,7 +736,7 @@ list_foreach<f2undecl>(f2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f2undecl><env>(f2ds, env) = tread12_f2undecl(f2ds)
+list_foreach$fwork<f2undecl><env>(f2d, env) = tread12_f2undecl(f2d)
 } (* end of [tread12_f2undeclist] *)
 //
 (* ****** ****** *)
