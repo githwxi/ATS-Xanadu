@@ -510,6 +510,12 @@ d3cl.node() of
 *)
   }
 //
+| D3Cfundecl
+  (knd, mopt, tq2s, f3ds) =>
+  {
+    val () = tread3x_f3undeclist(f3ds)
+  }
+//
 | _(* rest-of-d3ecl *) =>
   {
     val () = println!(loc0, ": tread3x_d3ecl(", d3cl, ")")
@@ -593,6 +599,37 @@ list_foreach<v3ardecl>(v3ds)
 implement(env)
 list_foreach$fwork<v3ardecl><env>(v3d, env) = tread3x_v3ardecl(v3d)
 } (* end of [tread3x_v3ardeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread3x_f3undecl
+  (f3d0) =
+{
+  val () =
+  tread3x_d3expopt(rcd.def)
+(*
+  val () =
+  tread3x_s2expopt(rcd.wtp)
+*)
+} where
+{
+//
+  val+F3UNDECL(rcd) = f3d0
+//
+} (* end of [tread3x_f3undecl] *)
+//
+implement
+//{}(*tmp*)
+tread3x_f3undeclist(f3ds) =
+(
+list_foreach<f3undecl>(f3ds)
+) where
+{
+implement(env)
+list_foreach$fwork<f3undecl><env>(f3d, env) = tread3x_f3undecl(f3d)
+} (* end of [tread3x_f3undeclist] *)
 //
 (* ****** ****** *)
 
