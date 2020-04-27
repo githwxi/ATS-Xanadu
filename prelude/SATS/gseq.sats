@@ -213,11 +213,17 @@ gseq_unlist(list(x0)): (xs)
 fun
 <x0:t0
 ,xs:t0>
+gseq_unrlist(list(x0)): (xs)
+//
+fun
+<x0:t0
+,xs:t0>
 gseq_unlist_vt(list_vt(x0)): (xs)
 fun
 <x0:t0
 ,xs:t0>
 gseq_unrlist_vt(list_vt(x0)): (xs)
+//
 fun
 <x0:t0
 ,xs:t0>
