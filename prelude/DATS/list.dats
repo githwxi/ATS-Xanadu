@@ -272,6 +272,17 @@ in
 end // end of [list_tabulate_cref]
 //
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_mergesort(xs) =
+list_vt2t(list_mergesort_vt<a>(xs))
+impltmp
+<a>(*tmp*)
+list_mergesort_vt(xs) =
+list_vt_mergesort<a>(list_copy_vt<a>(xs))
+
+(* ****** ****** *)
 //
 // For gseq-operations
 //
@@ -331,7 +342,6 @@ let
 end
 //
 (* ****** ****** *)
-
 //
 impltmp
 {a:type}

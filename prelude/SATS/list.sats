@@ -194,5 +194,16 @@ list_tabulate_cref
 , f0: nintlt(n) -<cref> a): list(a, n)
 //
 (* ****** ****** *)
+//
+fun
+<a:t0>
+list_mergesort
+  {n:int}(xs: list(a, n)): list(a, n)
+fun
+<a:t0>
+list_mergesort_vt
+  {n:int}(xs: list(a, n)): list_vt(a, n)
+//
+(* ****** ****** *)
 
 (* end of [list.sats] *)

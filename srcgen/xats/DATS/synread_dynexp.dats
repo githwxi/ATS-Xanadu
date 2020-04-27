@@ -685,8 +685,7 @@ d0cl.node() of
   {
 (*
     val () =
-      synread_SEXPDEF(tok)
-    // end of [val]
+    synread_SEXPDEF(tok)
 *)
     val () = synread_EQ(teq)  
     val () = synread_s0eid(sid)
@@ -747,7 +746,7 @@ d0cl.node() of
   {
 (*
     val () =
-    synread_FUN(tok)
+    synread_FUN/VAL(tok)
 *)
     val () = synread_tq0arglst(tqas)
     val () = synread_d0cstdeclist(d0cs)
