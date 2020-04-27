@@ -435,7 +435,7 @@ else
 let
 val zs = ys.1
 in 
-  ys := list_vt_nil(); zs
+  ys.1 := list_vt_nil(); zs
 end // end of [else]
 )
 //
