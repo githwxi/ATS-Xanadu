@@ -142,5 +142,12 @@ list_vt_maprev0
 {n:int}(xs: list_vt(x0, n)): list_vt(y0, n)
 
 (* ****** ****** *)
+//
+fun
+<a:vt>
+list_vt_mergesort
+  {n:int}(xs: list_vt(a, n)): list_vt(a, n)
+//
+(* ****** ****** *)
 
 (* end of [list_vt.sats] *)
