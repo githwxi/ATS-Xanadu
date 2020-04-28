@@ -36,27 +36,50 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#staload
+"./../SATS/gios.sats"
+#staload
+"xatslib/libc/DATS/stdio.dats"
+//
+(* ****** ****** *)
 
-#extern
-fun<>
-fgetc_ref
-(filr: FILEref): int
-#extern
-fun<>
-fgetc_ptr
-(filp: !FILEptr1): int
+impltmp
+<>(*tmp*)
+g_inp_char() =
+fgetc_ref(g_stdin<>())
 
 (* ****** ****** *)
 
-#extern
-fun<>
-fputc_ref
-(char: int, filr: FILEref): int
-#extern
-fun<>
-fputc_ptr
-(char: int, filp: !FILEptr1): int
+impltmp
+<>(*tmp*)
+g_inp_chars() =
+(
+  auxmain(g_stdin<>())
+) where
+{
+//
+fun
+auxmain
+(
+fr: FILEref
+) : stream_vt(int) =
+$llazy
+(
+let
+val c0 = fgetc_ref(fr)
+in
+  if
+  (c0 >= 0)
+  then
+  strmcon_vt_cons(c0, auxmain(fr))
+  else
+  strmcon_nil((*void*))
+end // end of [let]
+)
+//
+} (* end of [g_inp_chars] *)
 
 (* ****** ****** *)
 
-(* end of [stdio.dats] *)
+(* end of [gios.dats] *)

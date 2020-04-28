@@ -227,6 +227,11 @@ sortdef pos = {a:int | a >= 1}
 sortdef neg = {a:int | a <= -1}
 
 (* ****** ****** *)
+
+sortdef agtz = {l:addr | l > 0}
+sortdef agez = {l:addr | l >= 0}
+
+(* ****** ****** *)
 //
 // impredicative sorts
 //
@@ -756,6 +761,18 @@ fun
 pfexch
 (pf1: !a0>>a1, pf2: !a2>>a1): void
 *)
+//
+(* ****** ****** *)
+//
+abstype
+FILEref_tbox <= ptr
+absvtype
+FILEptr_vtbox(l:addr) <= ptr
+//
+typedef FILEref = FILEref_tbox
+sexpdef FILEptr = FILEref_vtbox
+vtypedef FILEptr0 = [l:addr] FILEptr(l)
+vtypedef FILEptr1 = [l:agtz] FILEptr(l)
 //
 (* ****** ****** *)
 
