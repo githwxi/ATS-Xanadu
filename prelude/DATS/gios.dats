@@ -70,11 +70,11 @@ let
 val c0 = fgetc_ref(fr)
 in
   if
-  (c0 >= 0)
+  (c0 < 0) // EOF
   then
-  strmcon_vt_cons(c0, auxmain(fr))
-  else
   strmcon_nil((*void*))
+  else
+  strmcon_vt_cons(c0, auxmain(fr))
 end // end of [let]
 )
 //
