@@ -40,7 +40,8 @@
 #staload
 "./../SATS/gios.sats"
 #staload
-"xatslib/libc/DATS/stdio.dats"
+"./../..\
+/xatslib/libc/DATS/stdio.dats"
 //
 (* ****** ****** *)
 
@@ -72,7 +73,7 @@ in
   if
   (c0 < 0) // EOF
   then
-  strmcon_nil((*void*))
+  strmcon_vt_nil((*void*))
   else
   strmcon_vt_cons(c0, auxmain(fr))
 end // end of [let]
