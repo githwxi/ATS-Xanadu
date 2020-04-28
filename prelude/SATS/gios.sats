@@ -41,6 +41,8 @@ fun<>
 g_stdin(): FILEref
 fun<>
 g_stdout(): FILEref
+fun<>
+g_stderr(): FILEref
 
 (* ****** ****** *)
 

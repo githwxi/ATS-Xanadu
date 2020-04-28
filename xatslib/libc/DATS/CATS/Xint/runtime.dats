@@ -4,7 +4,35 @@
 *)
 (* ****** ****** *)
 //
-// prelude/bool.sats
+(*
+prelude/gios.sats
+*)
+//
+(* ****** ****** *)
+
+#staload
+"./../../stdio.dats"
+
+(* ****** ****** *)
+//
+#extern
+fun
+xint_g_stdin
+((*void*)): FILEref
+impltmp
+g_stdin<> = xint_g_stdin
+#extern
+fun
+xint_g_stdout
+((*void*)): FILEref
+impltmp
+g_stdout<> = xint_g_stdout
+#extern
+fun
+xint_g_stderr
+((*void*)): FILEref
+impltmp
+g_stderr<> = xint_g_stderr
 //
 (* ****** ****** *)
 //
@@ -13,7 +41,7 @@ fun
 xint_fgetc_ref
 (fr: FILEref): int
 impltmp
-fgetc_ref<> = xint_getc_ref
+fgetc_ref<> = xint_fgetc_ref
 //
 (* ****** ****** *)
 //
