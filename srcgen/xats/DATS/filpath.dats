@@ -107,12 +107,21 @@ implement
 dirpath_get_name(dir) = dir
 //
 (* ****** ****** *)
-
+//
+implement
+print_dirpath(dir) =
+fprint_dirpath(stdout_ref, dir)
+implement
+prerr_dirpath(dir) =
+fprint_dirpath(stderr_ref, dir)
+//
+(* ****** ****** *)
+//
 implement
 fprint_dirpath(out, dir) = fprint!(out, dir)
 implement
 fprintln_dirpath(out, dir) = fprintln!(out, dir)
-
+//
 (* ****** ****** *)
 
 end // end of [local]
@@ -578,6 +587,9 @@ prerr_filpath_full1
 (
 fprint_filpath_full1(stderr_ref, fp0)
 )
+//
+(* ****** ****** *)
+//
 implement
 fprint_filpath_full1
   (out, fp0) =
@@ -612,6 +624,9 @@ prerr_filpath_full2
 (
 fprint_filpath_full2(stderr_ref, fp0)
 )
+//
+(* ****** ****** *)
+//
 implement
 fprint_filpath_full2
   (out, fp0) =
