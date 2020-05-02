@@ -51,10 +51,10 @@ MAP = "./../SATS/symmap.sats"
 ENV = "./../SATS/symenv.sats"
 //
 (* ****** ****** *)
-
+//
 #staload
 FP0 = "./../SATS/filpath.sats"
-
+//
 (* ****** ****** *)
 
 #staload "./../SATS/parsing.sats"
@@ -310,11 +310,25 @@ end // end of [local]
 
 local
 
+overload
+print with
+$FP0.print_dirpath
+(*
+overload
+print with
+$FP0.print_filpath_full1
+*)
+// (*
+overload
+print with
+$FP0.print_filpath_full2
+// *)
+
 fun
 aux_parse
 ( knd: int
 , fp0: filpath)
-: Option_vt(d0eclist) =
+: Option_vt(d1eclist) =
 let
 //
 val
@@ -337,12 +351,21 @@ val
 d0csopt =
 parse_from_filpath_toplevel(knd, fp0)
 //
-val () =
-$FP0.the_filpathlst_pout(pf1|(*void*))
-val () =
-$FP0.the_dirpathlst_pout(pf2|(*void*))
+val
+d1csopt =
+(
+case+ d0csopt of
+|
+~None_vt() => None_vt()
+|
+~Some_vt(d0cs) => Some_vt(trans01_declist(d0cs))
+) : Option_vt(d1eclist)
+//
+val () = $FP0.the_filpathlst_pout(pf1|(*void*))
+val () = $FP0.the_dirpathlst_pout(pf2|(*void*))
+//
 in
-  d0csopt
+  d1csopt
 end // end of [aux_parse]
 
 in(* in-of-local *)
@@ -389,21 +412,18 @@ case+ opt of
     val opt = aux_parse(knd, fp0)
   in
     case+ opt of
-    | ~None_vt() =>
+    | None_vt() =>
       (
-        (0, None_vt())
+        (0, opt)
       )
-    | ~Some_vt(d0cs) =>
+    | Some_vt(d1cs) =>
       (
-        (0, Some_vt(d1cs))
+        (0, opt)
       ) where
       {
-        val d1cs =
-          trans01_declist(d0cs)
         val ((*void*)) =
-          trans01_staload_add(fp0, d1cs)
-	// end of [val]
-      }
+        trans01_staload_add(fp0, d1cs)
+      } (* end of [Some_vt] *)
   end
 //
 end // end of [trans01_staload_from_filpath]

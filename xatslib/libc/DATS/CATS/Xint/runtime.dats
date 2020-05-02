@@ -4,8 +4,13 @@
 *)
 (* ****** ****** *)
 //
+(*
 #staload
 "./../../stdio.dats"
+*)
+#staload
+"xatslib\
+/libc/DATS/stdio.dats"
 //
 (* ****** ****** *)
 //

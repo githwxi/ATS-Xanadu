@@ -84,6 +84,10 @@ overload .name with dirpath_get_name
 fun
 the_dirpath_get((*void*)): dirpath
 //
+fun
+print_dirpath: print_type(dirpath)
+fun
+prerr_dirpath: prerr_type(dirpath)
 //
 fun
 fprint_dirpath: fprint_type(dirpath)

@@ -2453,7 +2453,7 @@ ifcase
 )
 //
 in
-d0csopt where
+d1csopt where
 {
 val
 ( pf1
@@ -2462,26 +2462,28 @@ val
 ( pf2
 | ()) = the_dirpathlst_push(dp0)
 //
-val d0csopt =
+val
+d0csopt =
 parse_from_filpath_toplevel(knd, fp0)
+val
+d1csopt =
+(
+case+ d0csopt of
+|
+~None_vt() => None_vt()
+|
+~Some_vt(d0cs) => Some_vt(trans01_declist(d0cs))
+) : Option_vt(d1eclist)
 //
 val () = the_filpathlst_pout(pf1|(*void*))
 val () = the_dirpathlst_pout(pf2|(*void*))
 //
 }  
 end // end of [Some_vt]
-) : Option_vt(d0eclist)
-//
-val opt2 =
-(
-case+ opt2 of
-|
-~None_vt() => None()
-|
-~Some_vt(d0cs) => Some(trans01_declist(d0cs))
-) : d1eclistopt
+) : Option_vt(d1eclist)
 //
 val opt1 = option_vt2t(opt1)
+val opt2 = option_vt2t(opt2)
 //
 in
   d1ecl_make_node

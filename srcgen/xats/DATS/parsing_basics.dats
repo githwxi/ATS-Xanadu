@@ -775,16 +775,16 @@ ifcase
 filpath_is_stdin(fp0) =>
 Some_vt(d0cs) where
 {
-  val
-  d0cs =
-  parse_from_stdin_toplevel(stadyn)
+val
+d0cs =
+parse_from_stdin_toplevel(stadyn)
 }
 | _(* filename:given *) =>
 let
 //
 val fnm = fp0.full1()
 val opt =
-  fileref_open_opt(fnm, file_mode_r)
+fileref_open_opt(fnm, file_mode_r)
 //
 in
 //
