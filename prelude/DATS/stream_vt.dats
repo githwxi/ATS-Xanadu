@@ -3,11 +3,12 @@
 ** for lin-streams
 *)
 (* ****** ****** *)
-
+//
 (*
 #staload
 "./../SATS/stream_vt.sats"
 *)
+//
 (* ****** ****** *)
 #staload
 UN =

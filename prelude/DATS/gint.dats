@@ -50,9 +50,9 @@ typedef ullik = ullint_k
 ** for generics
 *)
 (* ****** ****** *)
-
+(*
 #staload "./../SATS/gint.sats"
-
+*)
 (* ****** ****** *)
 
 impltmp
