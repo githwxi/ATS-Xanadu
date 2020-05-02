@@ -33,6 +33,13 @@
 //
 (* ****** ****** *)
 
+(*
+#staload
+"./../SATS/string.sats"
+*)
+
+(* ****** ****** *)
+
 #staload
 UN =
 "prelude/SATS/unsafe.sats"

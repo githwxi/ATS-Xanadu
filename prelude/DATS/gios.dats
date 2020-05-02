@@ -37,11 +37,17 @@
 //
 (* ****** ****** *)
 //
+(*
 #staload
 "./../SATS/gios.sats"
+*)
+//
+(* ****** ****** *)
+//
 #staload
 "./../..\
-/xatslib/libc/DATS/stdio.dats"
+/xatslib\
+/libc/DATS/stdio.dats"
 //
 (* ****** ****** *)
 

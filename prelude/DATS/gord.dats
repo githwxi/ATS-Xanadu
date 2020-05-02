@@ -3,10 +3,10 @@
 ** for generics
 *)
 (* ****** ****** *)
-
+(*
 #staload
 "./../SATS/gord.sats"
-
+*)
 (* ****** ****** *)
 
 impltmp

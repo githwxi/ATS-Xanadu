@@ -3,6 +3,13 @@
 ** for gl-sequences
 *)
 (* ****** ****** *)
+//
+(*
+#staload
+"./../SATS/gseq_vt.sats"
+*)
+//
+(* ****** ****** *)
 
 #staload
 UN =
