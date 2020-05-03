@@ -81,8 +81,436 @@ end // end of [local]
 
 (* ****** ****** *)
 
+#define CNUL '\000'
+
+(* ****** ****** *)
+//
+(*
+** HX-2020-05-02:
+** This one is full of hacks
+*)
+//
 implement
-fpath_normalize(fp) = fp
+fpath_normalize
+  (fp0) =
+let
+//
+val () =
+println!
+("fpath_normalize: fp0 = ", fp0)
+//
+val
+fp1 = aux0(fp1)
+//
+val () =
+println!
+("fpath_normalize: fp1 = ", fp1)
+in
+  fp1
+end where
+{
+//
+vtypedef
+dirs =
+List0_vt(Strptr1)
+//
+val
+fp1 = string2ptr(fp0)
+//
+val
+DSP = theDirSep_get()
+val
+CDR = theCurDir_get()
+val
+PDR = theParDir_get()
+//
+//
+fun
+getc
+(p0: ptr): char =
+$UN.ptr0_get<char>(p0)
+fun
+putc
+( p0: ptr
+, c0: char): ptr =
+(
+  ptr0_succ<char>(p0)
+) where
+{
+val () =
+$UN.ptr0_set<char>(p0, c0)
+}
+//
+fun
+gets
+( p0: ptr
+, p1: ptr): Strptr1 =
+let
+//
+val
+bsz =
+ptr0_diff<char>(p1, p0)
+val
+bsz = $UN.cast{Size}(bsz)
+val
+( pfat
+, pfgc | q0) = malloc_gc(bsz+1)
+//
+fun
+loop
+( p0: ptr
+, q0: ptr): void =
+if
+p0 < p1
+then
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+val () =
+$UN.ptr0_set<char>(q0, c0)
+in
+  loop
+  ( ptr0_succ<char>(p0)
+  , ptr0_succ<char>(q0))
+end
+else
+(
+  $UN.ptr0_set<char>(q0, CNUL)
+)
+//
+in
+let
+val () = loop(p0, q0)
+in
+$UN.castvwtp0(@(pfat, pfgc | q0))
+end
+end // end of [gets]
+//
+fun
+puts
+( p0: ptr
+, cs: string): ptr =
+(
+loop
+( p0
+, string2ptr(cs))
+) where
+{
+//
+fun
+loop
+( p0: ptr
+, q0: ptr): ptr =
+let
+val c0 = getc(q0)
+in
+if
+iseqz(c0)
+then p0 else
+let
+val p1 = putc(p0, c0)
+val q1 =
+ptr0_succ<char>(q0) in loop(p1, q1)
+end
+end // end of [loop]
+//
+} (* end of [puts] *)
+//
+fun
+isDSP
+( c0
+: char): bool =
+( c0 = DSP )
+fun
+isCDR
+( dir
+: !Strptr1): bool =
+(
+CDR =
+$UN.strptr2string(dir))
+fun
+isPDR
+( dir
+: !Strptr1): bool =
+(
+PDR =
+$UN.strptr2string(dir))
+//
+//
+val
+isabs = isDSP(getc(fp1))
+//
+fun
+dirln
+( dir
+: !Strptr1): Size =
+string_length
+($UN.strptr2string(dir))
+//
+fun
+aux0
+(p0: ptr): string =
+if
+isabs
+then
+let
+  val
+  p0 =
+  ptr0_succ<char>(p0)
+  val npar = 0
+  val dirs = list_vt_nil()
+in
+  aux1(p0, p0, npar, dirs)
+end // then
+else
+let
+  val npar = 0
+  val dirs = list_vt_nil()
+in
+  aux1(p0, p0, npar, dirs)
+end // else
+// end of [aux0]
+//
+and
+aux1
+( p0: ptr
+, p1: ptr
+, npar: int
+, dirs: dirs
+) : string =
+let
+val c1 = getc(p1)
+in
+//
+if
+iseqz(c1)
+then
+(
+aux3(p0, p1, npar, dirs)
+)
+else
+(
+if
+isDSP(c1)
+then
+aux2(p0, p1, npar, dirs)
+else
+let
+  val p1 =
+  ptr0_succ<char>(p1)
+in
+  aux1(p0, p1, npar, dirs)
+end
+)
+//
+end // end of [aux1]
+//
+and
+aux2
+( p0: ptr
+, p1: ptr
+, npar: int
+, dirs: dirs
+) : string =
+let
+val
+dir0 = gets(p0, p1)
+//
+val p0 =
+ptr0_succ<char>(p1)
+//
+in
+if
+isCDR(dir0)
+then
+let
+val dirs =
+(
+case+ dirs of
+|
+list_vt_nil() =>
+(
+if
+isabs
+then
+let
+val () =
+strptr_free(dir0) in dirs
+end
+else
+(
+ list_vt_cons(dir0, dirs)
+) // end of [if]
+)
+|
+list_vt_cons _ =>
+let
+val () =
+strptr_free(dir0) in dirs
+end
+) : dirs // end of [val]
+in
+  aux1(p0, p0, npar, dirs)
+end
+else
+(
+if
+isPDR(dir0)
+then
+(
+case+ dirs of
+| ~
+list_vt_nil() =>
+let
+  val () =
+  strptr_free(dir0)
+  val npar = npar + 1
+  val dirs = list_vt_nil()
+in
+  aux1(p0, p0, npar, dirs)
+end
+| ~
+list_vt_cons(dir1, dirs) =>
+let
+  val () =
+  strptr_free(dir0)
+  val () =
+  strptr_free(dir1)
+in
+  aux1(p0, p0, npar, dirs)
+end
+)
+else
+aux1
+( p0, p0
+, npar, list_vt_cons(dir0, dirs))
+)
+end
+//
+and
+aux3
+( p0: ptr
+, p1: ptr
+, npar: int
+, dirs: dirs
+) : string =
+let
+val
+base = gets(p0, p1)
+val
+dirs =
+list_vt_reverse(dirs)
+in
+  aux4(npar, dirs, base)
+end
+//
+and
+aux4
+( npar: int
+, dirs: dirs
+, base: Strptr1
+) : string =
+let
+//
+val n0 =
+dirln(base)
+val n0 =
+(
+  loop1(n0, dirs)
+) where
+{
+fun
+loop1
+( n0: Size
+, xs: !dirs): Size =
+(
+case+ xs of
+| list_vt_nil() => succ(n0)
+| list_vt_cons(x0, xs) =>
+  loop1(n0+succ(dirln(x0)), xs)
+)
+}
+//
+local
+val
+npar =
+$UN.cast{Size}(npar)
+in
+val n0 =
+n0 + npar*string_length(PDR)
+end
+//
+val n0 = $UN.cast{Size}(n0)
+val n0 =
+(
+if isabs
+then succ(n0) else n0): Size
+//
+val
+( pfat
+, pfgc | q0) = malloc_gc(n0)
+//
+val q1 =
+(
+if isabs
+then putc(q0, DSP) else q0): ptr
+//
+val q1 =
+loop2(q1, npar) where
+{
+fun
+loop2
+( q1: ptr
+, npar: int): ptr =
+if
+(npar <= 0)
+then q1 else
+let
+val q1 =
+puts(q1, PDR) in loop2(q1, npar-1)
+end // end of [if]
+}
+//
+val q1 =
+loop3(q1, dirs) where
+{
+fun
+loop3
+( q1: ptr
+, dirs: dirs): ptr =
+(
+case+ dirs of
+| ~list_vt_nil() => q1
+| ~list_vt_cons(dir0, dirs) =>
+   let
+   val
+   dir1 =
+   $UN.strptr2string(dir0)
+   val q1 = puts(q1, dir1)
+   val () = strptr_free(dir0)
+   in
+   let
+   val q1 =
+   putc(q1, DSP) in loop3(q1, dirs)
+   end
+   end
+)
+}
+//
+local
+val base =
+$UN.strptr2string(base)
+in
+val q1 = puts(q1, base)
+end
+val q1 = putc(q1, CNUL)
+val () = strptr_free(base)
+//
+in
+  $UN.castvwtp0((pfat, pfgc | q0))
+end // end of [aux4]
+//
+} (* end of [fpath_normalize] *)
 
 (* ****** ****** *)
 
