@@ -55,6 +55,11 @@ FP0 = "./../SATS/filpath.sats"
   $FP0.filpath_dirbase
   macdef
   fpath_make = $FP0.filpath_make
+  macdef
+  dpath_make = $FP0.dirpath_make
+  macdef
+  fpath_dname = $FP0.filpath_get_dirname
+
 //
 #staload
 GLO = "./../SATS/global.sats"
@@ -1635,10 +1640,8 @@ println!
 //
 implement
 the_prelude_load
-(XATSHOME, stadyn, given) = let
-//
-  val
-  d1cs = trans01_declist(d0cs)
+(XATSHOME, stadyn, given) =
+let
 //
   val
   (pf0|()) =
@@ -1655,37 +1658,56 @@ val () =
 println!
 ("the_prelude_load: ", given)
 //
-  val fname =
-    dirbase(XATSHOME, given)
-  val fpath =
-    fpath_make(given, fname)  
+  val
+  fname =
+  dirbase(XATSHOME, given)
+  val
+  fpath =
+  fpath_make(given, fname)  
+  val
+  dpath =
+  dpath_make(fpath_dname(fpath))
 //
   val
-  (pf0 | ()) =
+  (pf1 | ()) =
   $FP0.the_filpathlst_push(fpath)
+  val
+  (pf2 | ()) =
+  $FP0.the_dirpathlst_push(dpath)
 //
   val d0cs = let
     val
     opt =
-    fileref_open_opt(fname, file_mode_r)
+    fileref_open_opt
+    (fname, file_mode_r)
   in
     case+ opt of
-    | ~None_vt() =>
-       list_nil(*void*)
-    | ~Some_vt(filr) =>
-      (
-        fileref_close(filr); d0cs
-      ) where
-      {
-        val
-        d0cs =
-        parse_from_fileref_toplevel(stadyn, filr)
-      } (* end of [Some_vt] *)
+    |
+    ~None_vt() =>
+     (
+     list_nil(*void*)
+     ) // None_vt
+    |
+    ~Some_vt(filr) =>
+     let
+       val
+       d0cs =
+       parse_from_fileref_toplevel
+         (stadyn, filr)
+       val () = fileref_close(filr)
+     in
+       d0cs
+     end // end of [Some_vt]
    end : d0eclist // end-of-let
+//
+  val d1cs = trans01_declist(d0cs)
 //
   val
   ((*popped*)) =
-  $FP0.the_filpathlst_pout(pf0 | (*none*))
+  $FP0.the_filpathlst_pout(pf1 | (*none*))
+  val
+  ((*popped*)) =
+  $FP0.the_dirpathlst_pout(pf2 | (*none*))
 //
 } (* end of [the_prelude_load] *)
 //
