@@ -86,8 +86,10 @@ end // end of [local]
 (* ****** ****** *)
 //
 (*
-** HX-2020-05-02:
-** This one is full of hacks
+HX-2020-05-02:
+This one is full of hacks.
+Note that the front dot in
+a path is not removed.
 *)
 //
 implement
@@ -494,7 +496,7 @@ case+ dirs of
    putc(q1, DSP) in loop3(q1, dirs)
    end
    end
-)
+) (* end of [loop3] *)
 }
 //
 local
@@ -518,6 +520,8 @@ local
 
 absimpl
 dirpath_type = string
+
+(* ****** ****** *)
 
 in (*in-of-local*)
 
