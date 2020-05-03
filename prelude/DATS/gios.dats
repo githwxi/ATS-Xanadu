@@ -87,5 +87,45 @@ end // end of [let]
 } (* end of [g_inp_chars] *)
 
 (* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+g_inp_line_list() =
+list_vt2t{char}(g_inp_lline_list<>())
+//
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+g_inp_lline_list() =
+let
+//
+val EOL = '\n'
+//
+fun
+loop
+( cs
+: list_vt(char)): list_vt(char) =
+let
+val c0 = g_inp_char<>()
+in
+  if
+  (c0 >= 0)
+  then
+  let
+  val c0 = char(c0)
+  in
+  if
+  (c0 = EOL)
+  then cs else loop(list_vt_cons(c0, cs))
+  end
+  else cs // end of [else]
+end
+//
+in
+  list_vt_reverse<char>(loop(list_vt_nil()))
+end // end of [g_inp_lline_list]
+
+(* ****** ****** *)
 
 (* end of [gios.dats] *)

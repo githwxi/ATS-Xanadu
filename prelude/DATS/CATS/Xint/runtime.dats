@@ -62,6 +62,28 @@ bool_print<> = xint_bool_print
 //
 #extern
 fun
+xint_char_make_sint
+( c0
+: sint): char = $ext()
+#extern
+fun
+xint_char_make_uint
+( c0
+: uint): char = $ext()
+//
+impltmp
+<>(*tmp*)
+char_make_sint(c0) =
+xint_char_make_sint(c0)
+impltmp
+<>(*tmp*)
+char_make_uint(c0) =
+xint_char_make_uint(c0)
+//
+(* ****** ****** *)
+//
+#extern
+fun
 xint_char_eqzq
 {c:char}
 ( c0

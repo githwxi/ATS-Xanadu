@@ -39,6 +39,20 @@
 (* ****** ****** *)
 //
 fun<>
+char_make_sint
+(code: sint): char
+fun<>
+char_make_uint
+(code: uint): char
+//
+#symload
+char with char_make_sint of 00
+#symload
+char with char_make_uint of 00
+//
+(* ****** ****** *)
+//
+fun<>
 char_eqzq
 {c:char}
 (c0: char(c)): bool(c=0)

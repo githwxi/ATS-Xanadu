@@ -2658,7 +2658,8 @@ val opt2 = option_vt2t(opt2)
 in
 //
 d1ecl_make_node
-(loc0, D1Cstaload(tok, src, knd, opt1, flag, opt2))
+( loc0
+, D1Cstaload(tok, src, knd, opt1, flag, opt2))
 //
 end // end of [aux_staload]
 
