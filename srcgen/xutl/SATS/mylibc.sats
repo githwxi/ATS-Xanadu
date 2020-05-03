@@ -65,6 +65,12 @@ xatsopt_strunq // "<string>" -> <string>
 (* ****** ****** *)
 //
 fun
+xatsopt_chrunq2 // '<slashed>' -> <slashed>
+(source: string): char = "ext#xatsopt_chrunq2"
+//
+(* ****** ****** *)
+//
+fun
 xatsopt_strbtwe
 (p0: ptr, p1: ptr): string = "ext#xatsopt_strbtwe"
 //
