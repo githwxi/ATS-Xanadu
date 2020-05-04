@@ -78,11 +78,11 @@ trans3x_dexp
 //
 val loc0 = d3e0.loc()
 //
-in
+in(*in-of-let*)
 //
 case+
 d3e0.node() of
-| _ (*rest-of-d3exp*) => d3e0 // HX: yet-to-be-handled
+| _(*rest-of-d3exp*) => d3e0 // yet-to-be-handled
 //
 end // end of [trans3x_dexp]
 //
@@ -125,7 +125,7 @@ in(* in-of-let *)
 //
 case+
 d3cl.node() of
-| _ (*rest-of-d3ecl*) => d3cl // HX: yet-to-be-handled
+| _(*rest-of-d3ecl*) => d3cl // yet-to-be-handled
 //
 end // end of [trans3x_decl]
 //

@@ -102,4 +102,3 @@ trans3x_declist: d3eclist -> d3eclist
 (* ****** ****** *)
 
 (* end of [xats_trans3x.sats] *)
-

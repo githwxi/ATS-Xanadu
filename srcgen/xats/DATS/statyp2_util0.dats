@@ -1142,4 +1142,41 @@ list_map<labs2exp><labt2ype>(ls2es)
 
 (* ****** ****** *)
 
+local
+
+fun
+auxt2p0
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+(
+case+
+t2p0.node() of
+//
+| _ (*rest-of-t2ype*) => t2p0
+//
+)
+
+in(*in-of-local*)
+
+implement
+t2ype_normize
+  (t2p0) = let
+//
+(*
+val () =
+println!
+("t2ype_normize: t2p0 = ", t2p0)
+*)
+//
+in
+//
+  let
+    var flag: int = 0 in auxt2p0(t2p0, flag)
+  end
+//
+end (* end of [t2ype_normize] *) end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_statyp2_util0.dats] *)
