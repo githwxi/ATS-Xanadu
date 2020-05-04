@@ -443,5 +443,12 @@ labs2explst_erase
   (ls2es: labs2explst): labt2ypelst
 //
 (* ****** ****** *)
+//
+fun
+t2ype_normize(t2p0: t2ype): t2ype
+//
+overload normize with t2ype_normize
+//
+(* ****** ****** *)
 
 (* end of [xats_statyp2.sats] *)
