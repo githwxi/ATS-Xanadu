@@ -1247,13 +1247,14 @@ d33exp_proj_up
 , d3e1, lab2) =
 let
 //
-val t2p1 =
-d3e1.type()
-val t2p1 =
-whnfize(t2p1)
+val
+t2p1 = d3e1.type()
+val
+t2p1 = whnfize(t2p1)
 //
-val knd1 =
-tyrec_kind(t2p1)
+val
+knd1 = tyrec_kind(t2p1)
+//
 val opt2 =
 t2ype_projize(t2p1, lab2)
 //

@@ -344,7 +344,7 @@ tread33_d3exp
 val
 loc0 = d3e0.loc((*void*))
 val
-t2p0 = t2ype_whnfize(d3e0.type())
+t2p0 = whnfize(d3e0.type())
 //
 // (*
 val () =

@@ -1244,7 +1244,12 @@ t2p1.node() of
   if
   fini=flag
   then t2p0
-  else t2ype_make_node(t2p0.sort(), T2Papp(t2p1, t2ps))
+  else
+  let
+    val s2t0 = t2p0.sort()
+  in
+    t2ype_make_node(s2t0, T2Papp(t2p1, t2ps))
+  end
 //
 end // end of [auxapp]
 
@@ -1278,6 +1283,41 @@ t2p0.node() of
 | T2Plft _ =>
   auxlft(t2p0, flag)
 *)
+//
+| T2Pfun
+  (fc2, npf, t2ps, t2p1) =>
+  let
+  val
+  s2t0 = t2p0.sort()
+  val
+  fc2 = auxt2p0(fc2, flag)
+  val
+  t2ps = auxt2ps(t2ps, flag)
+  val
+  t2p1 = auxt2p0(t2p1, flag)
+  in
+    t2ype_make_node
+    (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
+  end
+//
+| T2Puni(s2vs, t2p1) =>
+  let
+  val
+  s2t0 = t2p0.sort()
+  val
+  t2p1 = auxt2p0(t2p1, flag)
+  in
+    t2ype_make_node(s2t0, T2Puni(s2vs, t2p1))
+  end
+| T2Pexi(s2vs, t2p1) =>
+  let
+  val
+  s2t0 = t2p0.sort()
+  val
+  t2p1 = auxt2p0(t2p1, flag)
+  in
+    t2ype_make_node(s2t0, T2Pexi(s2vs, t2p1))
+  end
 //
 | _ (*rest-of-t2ype*) => t2p0
 //
