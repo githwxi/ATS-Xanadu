@@ -75,7 +75,7 @@ unify3_t2ype_t2ype
 (loc0, t2p1, t2p2) =
 let
 implement
-unify_eval<>(t2p0) = hnfize(t2p0)
+unify_eval<>(t2p0) = whnfize(t2p0)
 in
 unify_t2ype_t2ype<>(loc0, t2p1, t2p2)
 end // end of [unify3_t2ype_t2ype]
@@ -90,7 +90,7 @@ unify3_t2ypelst_t2ypelst
   (loc0, tps1, tps2) =
 let
 implement
-unify_eval<>(t2p0) = hnfize(t2p0)
+unify_eval<>(t2p0) = whnfize(t2p0)
 in
 unify_t2ypelst_t2ypelst<>(loc0, tps1, tps2)
 end // end of [unify3_t2ypelst_t2ypelst]
@@ -843,7 +843,7 @@ F3ARGsome_sta
 , s2ps) = f3a0.node()
 //
 val
-t2p0 = t2ype_hnfize(tfun)
+t2p0 = t2ype_whnfize(tfun)
 //
 in
 //
@@ -953,7 +953,7 @@ F3ARGsome_dyn
 val
 loc0 = f3a0.loc()
 val
-t2p0 = t2ype_hnfize(tfun)
+t2p0 = t2ype_whnfize(tfun)
 //
 in
 //
@@ -996,7 +996,7 @@ d33exp_make_node
 , t2p0: t2ype
 , d3en: d3exp_node) =
 let
-val t2p0 = hnfize(t2p0)
+val t2p0 = whnfize(t2p0)
 val d3e0 =
 d3exp_make_node(loc0, t2p0, d3en)
 in
@@ -1105,7 +1105,7 @@ auxcbrf
 , d3es
 : d3explst): d3explst =
 let
-val tfun = hnfize(tfun)
+val tfun = whnfize(tfun)
 in
 case+
 tfun.node() of
@@ -1151,7 +1151,7 @@ let
 val
 fini = flag
 val
-t2p1 = hnfize(t2p1)
+t2p1 = whnfize(t2p1)
 val
 d3e1 =
 (
@@ -1250,7 +1250,7 @@ let
 val t2p1 =
 d3e1.type()
 val t2p1 =
-hnfize(t2p1)
+whnfize(t2p1)
 //
 val knd1 =
 tyrec_kind(t2p1)

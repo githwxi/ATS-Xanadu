@@ -87,7 +87,7 @@ fun
 myeval
 (t2p0: t2ype): t2ype =
 let
-val t2p0 = hnfize(t2p0)
+val t2p0 = whnfize(t2p0)
 in
 case
 t2p0.node() of
@@ -513,7 +513,7 @@ auxmain
 ( t2p0
 : t2ype): d3exp = let
 //
-val t2p0 = hnfize(t2p0)
+val t2p0 = whnfize(t2p0)
 //
 in
 //
@@ -1519,7 +1519,7 @@ F2ARGsome_sta
 val
 loc0 = f2a0.loc()
 val
-t2p0 = t2ype_hnfize(tfun)
+t2p0 = t2ype_whnfize(tfun)
 //
 in
 //
@@ -1632,7 +1632,7 @@ F2ARGsome_dyn
 val
 loc0 = f2a0.loc()
 val
-t2p0 = t2ype_hnfize(tfun)
+t2p0 = t2ype_whnfize(tfun)
 //
 in
 //
