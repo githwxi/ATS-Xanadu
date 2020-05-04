@@ -84,6 +84,19 @@ xint_char_make_uint(c0)
 //
 #extern
 fun
+xint_sint_make_char
+( c0
+: char): sint = $ext()
+//
+impltmp
+<>(*tmp*)
+sint_make_char(c0) =
+xint_sint_make_char(c0)
+//
+(* ****** ****** *)
+//
+#extern
+fun
 xint_char_eqzq
 {c:char}
 ( c0

@@ -53,6 +53,15 @@ char with char_make_uint of 00
 (* ****** ****** *)
 //
 fun<>
+sint_make_char
+(char: char): sint
+//
+#symload
+sint with sint_make_char of 00
+//
+(* ****** ****** *)
+//
+fun<>
 char_eqzq
 {c:char}
 (c0: char(c)): bool(c=0)
