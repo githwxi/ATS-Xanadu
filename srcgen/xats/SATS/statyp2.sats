@@ -378,9 +378,9 @@ t2ype_un_llazy
 (* ****** ****** *)
 //
 fun
-t2ype_hnfize(t2p0: t2ype): t2ype
+t2ype_whnfize(t2p0: t2ype): t2ype
 //
-overload hnfize with t2ype_hnfize
+overload whnfize with t2ype_whnfize
 //
 (* ****** ****** *)
 

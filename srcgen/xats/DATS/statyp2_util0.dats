@@ -911,7 +911,7 @@ def0.node() of
 //
 | _(* else *) => 
   (
-    t2ype_hnfize(def0)
+    t2ype_whnfize(def0)
   ) where
   {
     val () = flag := flag + 1
@@ -939,7 +939,7 @@ in
   | T2Pnone0() => t2p0
   | _ (*non-T2Pnone0*) =>
     (
-      t2ype_hnfize(t2p1)
+      t2ype_whnfize(t2p1)
     ) where
     {
       val () = flag := flag + 1
@@ -973,10 +973,10 @@ t2p1.node() of
   let
     val () = flag := flag + 1
   in
-    t2ype_hnfize
+    t2ype_whnfize
     (
     t2ype_subst_svarlst(t2p2, s2vs, t2ps)
-    ) (* t2ype_hnfize *)
+    ) (* t2ype_whnfize *)
   end
 | _ (*non-T2Plam*) =>
   if
@@ -1044,13 +1044,13 @@ case+ t2ps of
 in (* in-of-local *)
 
 implement
-t2ype_hnfize
+t2ype_whnfize
   (t2p0) = let
 //
 (*
 val () =
 println!
-("t2ype_hnfize: t2p0 = ", t2p0)
+("t2ype_whnfize: t2p0 = ", t2p0)
 *)
 //
 in
@@ -1059,7 +1059,7 @@ in
     var flag: int = 0 in auxt2p0(t2p0, flag)
   end
 //
-end (* end of [t2ype_hnfize] *) end // end of [local]
+end (* end of [t2ype_whnfize] *) end // end of [local]
 
 (* ****** ****** *)
 
@@ -1068,7 +1068,7 @@ t2ype_projize
 (t2p0, lab1) =
 let
 (*
-val t2p0 = hnfize(t2p0)
+val t2p0 = whnfize(t2p0)
 *)
 in
 //
@@ -1238,7 +1238,7 @@ t2p1.node() of
     t2ype_normize
     (
     t2ype_subst_svarlst(t2p2, s2vs, t2ps)
-    ) (* t2ype_hnfize *)
+    ) (* t2ype_whnfize *)
   end
 | _ (*non-T2Plam*) =>
   if

@@ -436,7 +436,7 @@ d33exp_make_node
 , t2p0: t2ype
 , d3en: d3exp_node) =
 let
-val t2p0 = hnfize(t2p0)
+val t2p0 = whnfize(t2p0)
 val d3e0 =
 d3exp_make_node(loc0, t2p0, d3en)
 in
@@ -1190,7 +1190,7 @@ d3e1 = trans33_dexp(d3e1)
 val t2p0 =
 let
 val t2p1 = d3e1.type()
-val t2p1 = hnfize(t2p1)
+val t2p1 = whnfize(t2p1)
 in
 //
 let
