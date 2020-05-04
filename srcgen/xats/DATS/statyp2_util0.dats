@@ -930,25 +930,21 @@ T2Pxtv
 (xtv0) = t2p0.node()
 in
 //
-case+
-t2p0.node() of
-| T2Pxtv(xtv) =>
-  let
+let
   val
-  t2p1 = xtv.type()
-  in
-    case+
-    t2p1.node() of
-    | T2Pnone0() => t2p0
-    | _ (*non-T2Pnone0*) =>
-      (
-        t2ype_hnfize(t2p1)
-      ) where
-      {
-        val () = flag := flag + 1
-      }
-  end
-| _(* non-T2Pxtv *) => (t2p0)
+  t2p1 = xtv0.type()
+in
+  case+
+  t2p1.node() of
+  | T2Pnone0() => t2p0
+  | _ (*non-T2Pnone0*) =>
+    (
+      t2ype_hnfize(t2p1)
+    ) where
+    {
+      val () = flag := flag + 1
+    }
+end
 //
 end // end of [auxxtv]
 
@@ -967,6 +963,7 @@ val fini = flag
 //
 val t2p1 = auxt2p0(t2p1, flag)
 val t2ps = auxt2ps(t2ps, flag)
+//
 in
 //
 case+
@@ -1006,8 +1003,10 @@ t2p0.node() of
 //
 | T2Pcst _ =>
   auxcst(t2p0, flag)
+//
 | T2Pxtv _ =>
   auxxtv(t2p0, flag)
+//
 | T2Papp _ =>
   auxapp(t2p0, flag)
 //
@@ -1145,6 +1144,111 @@ list_map<labs2exp><labt2ype>(ls2es)
 local
 
 fun
+auxbas
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val
+t2p0 = t2bas_eval(t2p0)
+in
+//
+case+
+t2p0.node() of
+| T2Pbas _ => t2p0
+| _(*non-T2Pbas*) =>
+  (
+    auxt2p0(t2p0, flag)
+  ) where
+  {
+    val () = flag := flag + 1
+  }
+//
+end // end of [auxbas]
+
+and
+auxvar
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val-
+T2Pvar
+(s2v0) = t2p0.node() in t2p0
+end // end of [auxvar]
+
+and
+auxxtv
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val-
+T2Pxtv
+(xtv0) = t2p0.node()
+in
+//
+let
+  val
+  t2p1 = xtv0.type()
+in
+  case+
+  t2p1.node() of
+  | T2Pnone0() => t2p0
+  | _ (*non-T2Pnone0*) =>
+    let
+      val
+      t2p1 =
+      t2ype_normize(t2p1)
+    in
+      xtv0.type(t2p1); t2p1
+    end where
+    {
+      val () = flag := flag + 1
+    }
+end
+//
+end // end of [auxxtv]
+
+and
+auxapp
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+//
+val-
+T2Papp
+(t2p1, t2ps) = t2p0.node()
+//
+val fini = flag
+//
+val t2p1 = auxt2p0(t2p1, flag)
+val t2ps = auxt2ps(t2ps, flag)
+//
+in
+//
+case+
+t2p1.node() of
+| T2Plam
+  (s2vs, t2p2) =>
+  let
+    val () = flag := flag + 1
+  in
+    t2ype_normize
+    (
+    t2ype_subst_svarlst(t2p2, s2vs, t2ps)
+    ) (* t2ype_hnfize *)
+  end
+| _ (*non-T2Plam*) =>
+  if
+  fini=flag
+  then t2p0
+  else t2ype_make_node(t2p0.sort(), T2Papp(t2p1, t2ps))
+//
+end // end of [auxapp]
+
+and
 auxt2p0
 ( t2p0: t2ype
 , flag
@@ -1153,8 +1257,52 @@ auxt2p0
 case+
 t2p0.node() of
 //
+| T2Pbas _ =>
+  auxbas(t2p0, flag)
+//
+| T2Pvar _ =>
+  auxvar(t2p0, flag)
+//
+(*
+| T2Pcst _ =>
+  auxcst(t2p0, flag)
+*)
+//
+| T2Pxtv _ =>
+  auxxtv(t2p0, flag)
+//
+| T2Papp _ =>
+  auxapp(t2p0, flag)
+//
+(*
+| T2Plft _ =>
+  auxlft(t2p0, flag)
+*)
+//
 | _ (*rest-of-t2ype*) => t2p0
 //
+)
+
+and
+auxt2ps
+( t2ps
+: t2ypelst
+, flag
+: &int >> int): t2ypelst =
+(
+case+ t2ps of
+| list_nil() =>
+  list_nil()
+| list_cons(t2p1, t2ps2) =>
+  let
+  val fini = flag
+  val t2p1 = auxt2p0(t2p1, flag)
+  val t2ps2 = auxt2ps(t2ps2, flag)
+  in
+    if
+    fini = flag
+    then t2ps else list_cons(t2p1, t2ps2)
+  end
 )
 
 in(*in-of-local*)
