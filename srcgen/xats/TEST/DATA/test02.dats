@@ -1,3 +1,9 @@
+(*
+HX-2020-05-05:
+Should it be supported?
+val () = (1).demo<int>()
+*)
+////
 var x: int = 0
 val p1 = $addr(x)
 val p2 = $addr($eval(p1))
