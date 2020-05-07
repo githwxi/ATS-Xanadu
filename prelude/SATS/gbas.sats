@@ -181,6 +181,12 @@ foldr1$fopr(x0: !x0, r0: r0): r0
 (* ****** ****** *)
 //
 fun
+<x0:t0>
+sieve$test(x1: x0, x2: x0): bool
+//
+(* ****** ****** *)
+//
+fun
 <a:vt>
 <n:i0>
 tabulate$fopr(i0: nintlt(n)): (a)

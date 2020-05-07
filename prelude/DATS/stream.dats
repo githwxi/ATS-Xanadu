@@ -303,4 +303,66 @@ case+ xs of
 
 (* ****** ****** *)
 
+impltmp
+<x0:t0>
+stream_sieve
+  (xs) =
+( auxmain(xs) ) where
+{
+fun
+auxmain
+( xs
+: stream(x0)): stream(x0) =
+$lazy
+(
+case+ !xs of
+| strmcon_nil() =>
+  strmcon_nil()
+| strmcon_cons(x1, xs) =>
+  let
+  val xs = 
+  stream_filter<x0>(xs)
+  in
+  strmcon_cons(x1, auxmain(xs))
+  end where
+  {
+  impltmp
+  filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
+  }
+)
+} (* stream_sieve *)
+
+(* ****** ****** *)
+
+impltmp
+<x0:t0>
+stream_sieve_vt
+  (xs) =
+( auxmain(xs) ) where
+{
+fun
+auxmain
+( xs
+: stream(x0)): stream_vt(x0) =
+$llazy
+(
+case+ !xs of
+| strmcon_nil() =>
+  strmcon_vt_nil()
+| strmcon_cons(x1, xs) =>
+  let
+  val xs = 
+  stream_filter<x0>(xs)
+  in
+  strmcon_vt_cons(x1, auxmain(xs))
+  end where
+  {
+  impltmp
+  filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
+  }
+)
+} (* stream_sieve_vt *)
+
+(* ****** ****** *)
+
 (* end of [stream.dats] *)
