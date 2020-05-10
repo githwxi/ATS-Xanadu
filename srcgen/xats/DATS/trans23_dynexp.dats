@@ -2624,16 +2624,6 @@ d2cl.node() of
     // d3ecl_make_node
   end
 //
-| D2Cabsopen(tok, sqid) =>
-  d3ecl_make_node
-  (loc0, D3Cabsopen(tok, sqid))
-| D2Cabsimpl(tok, sqid, def0) =>
-  d3ecl_make_node
-  (loc0, D3Cabsimpl(tok, sqid, def0))
-//
-| D2Csymload _ =>
-  d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
-//
 | D2Cvaldecl _ => aux_valdecl(d2cl)
 | D2Cvardecl _ => aux_vardecl(d2cl)
 //
@@ -2650,6 +2640,16 @@ d2cl.node() of
   d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
 | D2Cdatatype _ =>
   d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
+//
+| D2Csymload _ =>
+  d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
+//
+| D2Cabstype _ =>
+  d3ecl_make_node(loc0, D3Cabstype(d2cl))
+| D2Cabsopen _ =>
+  d3ecl_make_node(loc0, D3Cabsopen(d2cl))
+| D2Cabsimpl _ =>
+  d3ecl_make_node(loc0, D3Cabsimpl(d2cl))
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2cl)
 //

@@ -729,12 +729,9 @@ d3ecl_node =
 | D3Clocal of
   (d3eclist(*head*), d3eclist(*body*))
 //
-| D3Cabsopen of
-  ( token(*absopen*), impls2cst )
-| D3Cabsimpl of
-  ( token(*abskind*)
-  , impls2cst, s2exp(*definition*))
-//
+| D3Cabstype of d2ecl(*D2Cabstype*)
+| D3Cabsopen of d2ecl(*D2Cabsopen*)
+| D3Cabsimpl of d2ecl(*D2Cabsimpl*)
 //
 | D3Cvaldecl of
   (token(*knd*), decmodopt, v3aldeclist)
