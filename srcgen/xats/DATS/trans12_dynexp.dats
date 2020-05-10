@@ -3883,7 +3883,7 @@ fun
 auxdyn
 (s2e0: s2exp): s2exp =
 let
-  val s2e0 = hnfize(s2e0)
+  val s2e0 = whnfize(s2e0)
 in (* in-of-let *)
   case+
   s2e0.node() of
@@ -3900,7 +3900,7 @@ auxsta
 ( s2e0: s2exp
 , svs1: s2varlst): s2exp =
 let
-  val s2e0 = hnfize(s2e0)
+  val s2e0 = whnfize(s2e0)
 in
   case+
   s2e0.node() of
