@@ -1061,6 +1061,9 @@ for skipping error
   ( token
   , s0eid, t0marglst, sort0opt, abstdf0)
 //
+| D0Cabsopen of
+  ( token(*ABSOPEN*), sq0eid(*qualid*) )
+//
 | D0Cabsimpl of
   ( token
   , sq0eid

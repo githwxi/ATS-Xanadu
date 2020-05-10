@@ -804,6 +804,11 @@ case+ x0.node() of
   ( out, "D1Cabstype("
   , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
 //
+| D1Cabsopen(tok, sqid) =>
+  fprint!
+  ( out
+  , "D1Cabsopen(", tok, "; ", sqid, ")")
+//
 | D1Cabsimpl
   (tok, sqid, smas, res0, def1) =>
   fprint!
