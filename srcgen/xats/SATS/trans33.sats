@@ -116,6 +116,11 @@ vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
 
 (* ****** ****** *)
 //
+absvtype abstenv_vtype = ptr
+vtypedef abstenv = abstenv_vtype
+//
+(* ****** ****** *)
+//
 fun
 t2ype_get_xtvs
 (t2p0: t2ype): List0_vt(t2xtv)

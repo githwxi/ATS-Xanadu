@@ -264,6 +264,7 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./trans23_dynexp.dats"
 #dynload "./tread23_dynexp.dats"
 //
+#dynload "./trans33_envmap.dats"
 #dynload "./trans33_dynexp.dats"
 #dynload "./tread33_dynexp.dats"
 //
