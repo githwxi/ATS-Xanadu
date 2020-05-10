@@ -853,8 +853,34 @@ end (* t2ype_evalrec *) end // end of [local]
 
 (* ****** ****** *)
 
-local
-
+implement
+{}(*tmp*)
+t2ype_whnfz
+  (t2p0) = let
+//
+var flag: int = 0
+//
+(*
+val () =
+println!
+("t2ype_whnfz: t2p0 = ", t2p0)
+*)
+//
+in
+//
+let
+val
+t2p0 =
+auxt2p0(t2p0, flag)
+(*
+val () =
+println!
+("t2ype_whnfz: t2p0(res) = ", t2p0)
+*)
+in t2p0 end // end of [let]
+//
+end where
+{
 fun
 auxbas
 ( t2p0: t2ype
@@ -894,30 +920,9 @@ auxcst
 ( t2p0: t2ype
 , flag
 : &int >> int): t2ype =
-let
-//
-val-
-T2Pcst(s2c0) = t2p0.node()
-//
-val
-def0 = s2cst_get_type(s2c0)
-//
-in
-//
-case+
-def0.node() of
-//
-| T2Pnone0() => t2p0
-//
-| _(* else *) => 
-  (
-    t2ype_whnfize(def0)
-  ) where
-  {
-    val () = flag := flag + 1
-  }
-//
-end // end of [auxcst]
+(
+  t2ype_whnfz$cst(t2p0, flag)
+)
 
 and
 auxxtv
@@ -939,7 +944,7 @@ in
   | T2Pnone0() => t2p0
   | _ (*non-T2Pnone0*) =>
     (
-      t2ype_whnfize(t2p1)
+      auxt2p0(t2p1, flag)
     ) where
     {
       val () = flag := flag + 1
@@ -970,14 +975,14 @@ case+
 t2p1.node() of
 | T2Plam
   (s2vs, t2p2) =>
-  let
+  (
+    auxt2p0(t2p0, flag)
+  ) where
+  {
     val () = flag := flag + 1
-  in
-    t2ype_whnfize
-    (
+    val t2p0 =
     t2ype_subst_svarlst(t2p2, s2vs, t2ps)
-    ) (* t2ype_whnfize *)
-  end
+  } (* auxt2p0 *)
 | _ (*non-T2Plam*) =>
   if
   fini=flag
@@ -1017,8 +1022,8 @@ t2p0.node() of
 //
 | _ (*rest-of-t2ype*) => t2p0
 //
-)
-
+) (* end of [auxt2p0] *)
+//
 and
 auxt2ps
 ( t2ps
@@ -1039,28 +1044,48 @@ case+ t2ps of
     fini = flag
     then t2ps else list_cons(t2p1, t2ps2)
   end
-)
-
-in (* in-of-local *)
-
-implement
-t2ype_whnfize
-  (t2p0) = let
+) (* end of [auxt2ps] *)
 //
-(*
-val () =
-println!
-("t2ype_whnfize: t2p0 = ", t2p0)
-*)
+} (* end of [t2ype_whnfz] *)
+
+(* ****** ****** *)
+//
+implement
+t2ype_whnfize(t2p0) =
+(
+  t2ype_whnfz<>(t2p0)
+) where
+{
+//
+implement
+t2ype_whnfz$cst<>
+  (t2p0, flag) =
+let
+//
+val-
+T2Pcst(s2c0) = t2p0.node()
+//
+val
+def0 = s2cst_get_type(s2c0)
 //
 in
 //
-  let
-    var flag: int = 0 in auxt2p0(t2p0, flag)
-  end
+case+
+def0.node() of
 //
-end (* end of [t2ype_whnfize] *) end // end of [local]
-
+|
+T2Pnone0() => t2p0
+//
+| _(* else *) => 
+let
+val () =
+flag := flag + 1 in t2ype_whnfize(def0)
+end
+//
+end // t2ype_whnfz$cst
+//
+} (* end of [t2ype_whnfize] *)
+//
 (* ****** ****** *)
 
 implement

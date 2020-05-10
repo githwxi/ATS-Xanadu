@@ -377,6 +377,15 @@ t2ype_un_llazy
 //
 (* ****** ****** *)
 //
+fun{}
+t2ype_whnfz
+  (t2p0: t2ype): t2ype
+fun{}
+t2ype_whnfz$cst
+  (t2ype, flag: &int >> _): t2ype
+//
+(* ****** ****** *)
+//
 fun
 t2ype_whnfize(t2p0: t2ype): t2ype
 //

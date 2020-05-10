@@ -140,6 +140,7 @@ trans23_util0.dats \
 trans23_dynexp.dats \
 tread23_dynexp.dats \
 trans33_util0.dats \
+trans33_envmap.dats \
 trans33_dynexp.dats \
 tread33_dynexp.dats \
 trans3t_envmap.dats \
