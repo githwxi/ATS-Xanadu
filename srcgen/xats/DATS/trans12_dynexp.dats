@@ -3010,8 +3010,10 @@ ifcase
 //
 | (knd=PROPSORT) => the_sort2_prop
 | (knd=VIEWSORT) => the_sort2_view
+//
 | (knd=TBOXSORT) => the_sort2_tbox
 | (knd=TFLTSORT) => the_sort2_tflt
+//
 | (knd=VTBOXSORT) => the_sort2_vtbox
 | (knd=VTFLTSORT) => the_sort2_vtflt
 //

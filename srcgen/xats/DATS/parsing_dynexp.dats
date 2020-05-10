@@ -2654,7 +2654,7 @@ case+ tnd of
     ABSTDF0eqeq
     (tok, p_s0exp(buf, err))    
   end
-| _(*non-eq-eqeq*) => ABSTDF0some()
+| _(*non-lteq-eqeq*) => ABSTDF0some()
 //
 end // end of [p_abstdf0]
 
