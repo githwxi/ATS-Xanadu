@@ -869,6 +869,9 @@ d1ecl_node =
   , token(*s0eid*)
   , t1marglst, sort1opt, abstdf1)
 //
+| D1Cabsopen of
+  (token(*ABSOPEN*), sq0eid(*qualid*))
+  // D1Cabsopen
 | D1Cabsimpl of
   ( token(*kind*)
   , sq0eid, s1marglst, sort1opt, s1exp)

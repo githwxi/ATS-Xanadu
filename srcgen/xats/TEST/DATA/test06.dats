@@ -5,7 +5,13 @@
 /Xint/runtime.dats"
 (* ****** ****** *)
 
-absvtbox myint2
+abstype
+myint2_type <= $(int, int)
+typedef myint2 = myint2_type
+
+(* ****** ****** *)
+
+absopen myint2_type
 
 (* ****** ****** *)
 

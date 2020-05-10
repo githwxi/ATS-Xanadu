@@ -683,32 +683,38 @@ case- x0.node() of
 | D2Cabssort(d1c) =>
   fprint!(out, "D2Cabssort(", d1c, ")")
 //
-| D2Cstacst0(s2c, s2t) =>
+| D2Cstacst0(s2c, s2t0) =>
   fprint!
   ( out
-  , "D2Cstacst0(", s2c, "; ", s2t, ")")
+  , "D2Cstacst0(", s2c, "; ", s2t0, ")")
 //
 | D2Csortdef(sym, s2tx) =>
   fprint!
   ( out
   , "D2Csortdef(", sym, "; ", s2tx, ")")
 //
-| D2Csexpdef(s2c, s2e) =>
+| D2Csexpdef(s2c, def0) =>
   fprint!
   ( out
-  , "D2Csexpdef(", s2c, "; ", s2e, ")")
+  , "D2Csexpdef(", s2c, "; ", def0, ")")
 //
-| D2Cabstype(s2c, df2) =>
+| D2Cabstype(s2c, def0) =>
   fprint!
   ( out
-  , "D2Cabstype(", s2c, "; ", df2, ")")
+  , "D2Cabstype(", s2c, "; ", def0, ")")
 //
+| D2Cabsopen
+  (tok, sqid) =>
+  fprint!
+  ( out
+  , "D2Cabsopen("
+  , tok(*absopen*), "; ", sqid, ")")
 | D2Cabsimpl
   (knd, sqid, def0) =>
   fprint!
   ( out
   , "D2Cabsimpl("
-  , knd, "; ", sqid, "; ", def0, ")")
+  , knd(*abskind*), "; ", sqid, "; ", def0, ")")
 //
 | D2Csymload
   (tok, sym0, dpi1) =>

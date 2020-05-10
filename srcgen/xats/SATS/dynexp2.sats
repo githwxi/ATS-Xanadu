@@ -1126,9 +1126,8 @@ d2ecl_node =
 *)
 | D2Cabstype of (s2cst, abstdf2)
 //
-(*
-| D2Cabsimpl of (d1ecl)
-*)
+| D2Cabsopen of
+  ( token(*absopen*), impls2cst )
 | D2Cabsimpl of
   ( token(*abskind*)
   , impls2cst, s2exp(*definition*))

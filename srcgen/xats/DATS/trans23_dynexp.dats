@@ -2624,44 +2624,15 @@ d2cl.node() of
     // d3ecl_make_node
   end
 //
-| D2Csexpdef _ =>
-  let
-    val node = D3Cd2ecl(d2cl)
-  in
-    d3ecl_make_node(loc0, node)
-  end
+| D2Cabsopen(tok, sqid) =>
+  d3ecl_make_node
+  (loc0, D3Cabsopen(tok, sqid))
+| D2Cabsimpl(tok, sqid, def0) =>
+  d3ecl_make_node
+  (loc0, D3Cabsimpl(tok, sqid, def0))
 //
-| D2Cabsimpl _ =>
-  let
-    val node = D3Cd2ecl(d2cl)
-  in
-    d3ecl_make_node(loc0, node)
-  end
 | D2Csymload _ =>
-  let
-    val node = D3Cd2ecl(d2cl)
-  in
-    d3ecl_make_node(loc0, node)
-  end
-//
-| D2Cdatasort _ =>
-  let
-    val node = D3Cd2ecl(d2cl)
-  in
-    d3ecl_make_node(loc0, node)
-  end
-| D2Cexcptcon _ =>
-  let
-    val node = D3Cd2ecl(d2cl)
-  in
-    d3ecl_make_node(loc0, node)
-  end
-| D2Cdatatype _ =>
-  let
-    val node = D3Cd2ecl(d2cl)
-  in
-    d3ecl_make_node(loc0, node)
-  end
+  d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
 //
 | D2Cvaldecl _ => aux_valdecl(d2cl)
 | D2Cvardecl _ => aux_vardecl(d2cl)
@@ -2670,6 +2641,15 @@ d2cl.node() of
 //
 | D2Cimpdecl1 _ => aux_impdecl1(d2cl)
 | D2Cimpdecl2 _ => aux_impdecl2(d2cl)
+//
+| D2Csexpdef _ =>
+  d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
+| D2Cdatasort _ =>
+  d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
+| D2Cexcptcon _ =>
+  d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
+| D2Cdatatype _ =>
+  d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2cl)
 //

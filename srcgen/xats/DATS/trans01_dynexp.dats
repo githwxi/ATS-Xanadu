@@ -2858,6 +2858,27 @@ end // end of [aux_abstype]
 (* ****** ****** *)
 
 fun
+aux_absopen
+( d0cl
+: d0ecl): d1ecl = let
+//
+val loc0 = d0cl.loc()
+//
+val-
+D0Cabsopen
+(tok, sqid) = d0cl.node()
+//
+in
+//
+d1ecl_make_node
+(loc0, D1Cabsopen(tok, sqid)
+) (* d1ecl_make_node *)
+//
+end // end of [aux_absopen]
+
+(* ****** ****** *)
+
+fun
 aux_absimpl
 ( d0cl
 : d0ecl): d1ecl = let
@@ -3219,6 +3240,7 @@ d0cl.node() of
 | D0Csexpdef _ => aux_sexpdef(d0cl)
 //
 | D0Cabstype _ => aux_abstype(d0cl)
+| D0Cabsopen _ => aux_absopen(d0cl)
 | D0Cabsimpl _ => aux_absimpl(d0cl)
 //
 | D0Cvaldecl _ => aux_valdecl(d0cl)

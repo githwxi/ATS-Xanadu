@@ -2642,17 +2642,25 @@ val tnd = tok.node()
 in
 //
 case+ tnd of
-| T_IDENT_sym("<=") => let
+(*
+| T_IDENT_sym("=") => let
     val () = buf.incby1()
   in
-    ABSTDF0lteq
-    (tok, p_s0exp(buf, err))
+    ABSTDF0eqeq
+    (tok, p_s0exp(buf, err))    
   end
+*)
 | T_IDENT_sym("==") => let
     val () = buf.incby1()
   in
     ABSTDF0eqeq
     (tok, p_s0exp(buf, err))    
+  end
+| T_IDENT_sym("<=") => let
+    val () = buf.incby1()
+  in
+    ABSTDF0lteq
+    (tok, p_s0exp(buf, err))
   end
 | _(*non-lteq-eqeq*) => ABSTDF0some()
 //
@@ -3605,6 +3613,21 @@ abstype ::=
     d0ecl_make_node
     ( loc_res
     , D0Cabstype(tok, sid, tmas, anno, tdef) )
+  end
+//
+| T_ABSOPEN() => let
+//
+    val () = buf.incby1()
+//
+    val
+    sqid = p_sq0eid(buf, err)
+    val
+    loc_res = loc + sqid.loc()
+//
+  in
+    err := e0;
+    d0ecl_make_node
+    (loc_res, D0Cabsopen(tok, sqid))
   end
 //
 | T_ABSIMPL() => let

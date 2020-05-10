@@ -949,6 +949,11 @@ case+ x0.node() of
   ( out, "D0Cabstype("
   , tok, "; ", sid, "; ", arg, "; ", res, "; ", tdef, ")")
 //
+| D0Cabsopen(tok, sqid) =>
+  fprint!
+  ( out
+  , "D0Cabsopen(", tok, "; ", sqid, ")")
+//
 | D0Cabsimpl
   (tok, sqid, smas, res0, teq1, def2) =>
   fprint!
