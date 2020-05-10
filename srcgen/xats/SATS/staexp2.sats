@@ -1131,9 +1131,9 @@ s2explst_revar_vt
 (* ****** ****** *)
 //
 fun
-s2exp_hnfize(s2e0: s2exp): s2exp
+s2exp_whnfize(s2e0: s2exp): s2exp
 //
-overload hnfize with s2exp_hnfize
+overload whnfize with s2exp_whnfize
 //
 (* ****** ****** *)
 //

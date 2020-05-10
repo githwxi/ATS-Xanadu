@@ -551,10 +551,12 @@ list_map$fopr<s2exp><s2exp>
 } (* end of [s2explst_revar_vt] *)
 //
 (* ****** ****** *)
-
-implement
-s2exp_hnfize(s2e0) = s2e0
-
+//
+// HX-2020-05-10:
+// It is yet to be implemented!!!
+//
+implement s2exp_whnfize(s2e0) = s2e0
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2_util1.dats] *)
