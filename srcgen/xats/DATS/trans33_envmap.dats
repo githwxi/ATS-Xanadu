@@ -40,4 +40,25 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
+
+(* ****** ****** *)
+//
+datavtype
+abstlst =
+//
+| abstlst_nil of ()
+//
+| abstlst_let1 of abstlst
+| abstlst_loc1 of abstlst
+| abstlst_loc2 of abstlst
+//
+| abstlst_open of (d3ecl, t2ype, abstlst)
+| abstlst_impl of (d3ecl, t2ype, abstlst)
+//
+(* ****** ****** *)
+
 (* end of [trans33_envmap.dats] *)

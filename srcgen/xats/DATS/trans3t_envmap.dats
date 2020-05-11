@@ -725,7 +725,7 @@ IMPLENV of
 (List0_vt(svtplst), impllst)
 //
 where
-svtplst = @(s2varlst, t2ypelst)
+svtplst=(s2varlst, t2ypelst)
 //
 absimpl implenv_vtype = implenv
 //
