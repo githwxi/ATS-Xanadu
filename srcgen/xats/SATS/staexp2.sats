@@ -993,8 +993,8 @@ datatype
 abstdf2 =
 | ABSTDF2none of () // nonabs
 | ABSTDF2some of () // unspecified
-| ABSTDF2lteq of s2exp // erasure
-| ABSTDF2eqeq of s2exp // definition
+| ABSTDF2lteq of t2ype // erasure
+| ABSTDF2eqeq of (s2exp, t2ype) // definition
 //
 fun
 print_abstdf2: print_type(abstdf2)
@@ -1173,11 +1173,11 @@ overload unsome with s2cstnul_unsome
 // dynarray-based
 //
 fun
-s2cst_get_abs
+s2cst_get_abst
 (s2c: s2cst): abstdf2
 fun
-stamp_s2cst_abs
-(s2c: s2cst, abs: abstdf2): void
+stamp_s2cst_abst
+(s2c: s2cst, abst: abstdf2): void
 //
 (* ****** ****** *)
 //

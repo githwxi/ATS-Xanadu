@@ -70,6 +70,7 @@ fprint with $LAB.fprint_label
 
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 
 (* ****** ****** *)
 
@@ -327,10 +328,11 @@ case+ x0 of
   fprint!(out, "ABSTDF2none(", ")")
 | ABSTDF2some() =>
   fprint!(out, "ABSTDF2some(", ")")
-| ABSTDF2lteq(s2e) =>
-  fprint!(out, "ABSTDF2lteq(", s2e, ")")
-| ABSTDF2eqeq(s2e) =>
-  fprint!(out, "ABSTDF2eqeq(", s2e, ")")
+| ABSTDF2lteq(t2p) =>
+  fprint!(out, "ABSTDF2lteq(", t2p, ")")
+| ABSTDF2eqeq(s2e, t2p) =>
+  fprint!
+  (out, "ABSTDF2eqeq(", s2e, "; ", t2p, ")")
 )
 //
 (* ****** ****** *)

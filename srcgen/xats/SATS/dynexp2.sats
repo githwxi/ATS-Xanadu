@@ -1170,9 +1170,10 @@ d2ecl_node =
 (*
 and
 abstdf2 =
-  | ABSTDF2nil of () // unspecified
-  | ABSTDF2lteq of s2exp // erasure
-  | ABSTDF2eqeq of s2exp // definition
+| ABSTDF2none of () // nonabs
+| ABSTDF2some of () // unspecified
+| ABSTDF2lteq of s2exp // erasure
+| ABSTDF2eqeq of s2exp // definition
 *)
 //
 and

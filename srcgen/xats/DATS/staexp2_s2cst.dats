@@ -173,7 +173,7 @@ in
 ) where
 {
 val () = stamp_s2cst(s2c0)
-val () = stamp_s2cst_abs(s2c0, abs0)
+val () = stamp_s2cst_abst(s2c0, abs0)
 val () = stamp_s2cst_sexp(s2c0, def1)
 val () = stamp_s2cst_type(s2c0, def2)
 }
@@ -225,7 +225,7 @@ theDynarr = $UN.castvwtp0{ptr}(theDynarr)
 in (* in-of-local *)
 
 implement
-s2cst_get_abs
+s2cst_get_abst
   (s2c) = let
   val s0 =
   s2c.stamp()
@@ -241,12 +241,12 @@ in
 if
 isneqz(cp)
 then $UN.cptr_get(cp) else ABSTDF2none()
-end // end of [s2cst_get_abs]
+end // end of [s2cst_get_abst]
 
 (* ****** ****** *)
 
 implement
-stamp_s2cst_abs
+stamp_s2cst_abst
   (s2c, abs) = let
   val s0 =
   s2c.stamp()
@@ -262,7 +262,7 @@ stamp_s2cst_abs
   prval ((*void*)) = $UN.cast2void(A0)
 in
   // nothing
-end // end of [stamp_s2cst_abs]
+end // end of [stamp_s2cst_abst]
 
 end // end of [local]
 
