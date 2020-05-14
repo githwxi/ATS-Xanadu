@@ -122,9 +122,39 @@ vtypedef abstenv = abstenv_vtype
 (* ****** ****** *)
 //
 fun
+abstenv_add_let1
+  (env0: !abstenv): void
+fun
+abstenv_pop_let1
+  (env0: !abstenv): void
+//
+fun
+abstenv_add_loc1
+  (env0: !abstenv): void
+fun
+abstenv_add_loc2
+  (env0: !abstenv): void
+fun
+abstenv_pop_loc12
+  (env0: !abstenv): void
+//
+(* ****** ****** *)
+//
+fun
 abstenv_make_nil(): abstenv
 fun
 abstenv_free_nil(abstenv): void
+//
+(* ****** ****** *)
+//
+fun
+abstenv_push_open
+( env0:
+! abstenv, d3cl: d3ecl): void
+fun
+abstenv_push_impl
+( env0:
+! abstenv, d3cl: d3ecl): void
 //
 (* ****** ****** *)
 //

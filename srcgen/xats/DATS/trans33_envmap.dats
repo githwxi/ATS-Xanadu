@@ -77,6 +77,79 @@ abstenv_vtype = abstenv
 in(*in-of-local*)
 
 (* ****** ****** *)
+
+implement
+abstenv_add_let1
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@ABSTENV(xs) = env
+val () =
+(xs := abstlst_let1(xs))
+//
+} (* end of [abstenv_add_let1] *)
+
+(* ****** ****** *)
+
+implement
+abstenv_add_loc1
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@ABSTENV(xs) = env
+val () =
+(xs := abstlst_loc1(xs))
+//
+} (* end of [abstenv_add_loc1] *)
+
+implement
+abstenv_add_loc2
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@ABSTENV(xs) = env
+val () =
+(xs := abstlst_loc2(xs))
+//
+} (* end of [abstenv_add_loc2] *)
+
+(* ****** ****** *)
+
+implement
+abstenv_pop_let1
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@ABSTENV(xs) = env
+val () =
+(xs := abstlst_pop_let1(xs))
+//
+} where
+{
+//
+fun
+abstlst_pop_let1
+(xs: abstlst): abstlst =
+(
+case- xs of
+| ~abstlst_let1(xs) => xs
+| ~abstlst_open
+   (_, _, xs) => abstlst_pop_let1(xs)
+| ~abstlst_impl
+   (_, _, xs) => abstlst_pop_let1(xs)
+) (* end of [abstlst_pop_let1] *)
+//
+} (* end of [abstenv_pop_let1] *)
+
+(* ****** ****** *)
 //
 implement
 abstenv_make_nil
