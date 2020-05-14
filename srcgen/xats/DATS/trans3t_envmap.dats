@@ -426,12 +426,15 @@ auxlst2
 : impllst): impllst =
 (
 case- xs of
-| ~impllst_loc1
-   (xs) => auxlst3(xs, ys)
-| ~impllst_cons1
-   (d3cl, xs) => auxlst2(xs, ys)
-| ~impllst_cons2
-   (d3cl, ti3e, xs) => auxlst2(xs, ys)
+|
+~impllst_loc1
+ (xs) => auxlst3(xs, ys)
+|
+~impllst_cons1
+ (d3cl, xs) => auxlst2(xs, ys)
+|
+~impllst_cons2
+ (d3cl, ti3e, xs) => auxlst2(xs, ys)
 )
 and
 auxlst3
