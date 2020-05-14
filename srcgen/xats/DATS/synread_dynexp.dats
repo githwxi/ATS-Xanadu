@@ -1320,7 +1320,8 @@ the_synerrlst_set(xs) = the_synerrlst[] := xs
 end // end of [local]
 //
 implement
-synread_main(d0cs) = let
+synread_program(d0cs) =
+let
 //
 val () =
 synread_d0eclist(d0cs)
@@ -1329,7 +1330,7 @@ xerrs = the_synerrlst_get()
 val
 nxerr = list_length<synerr>(xerrs)
 //
-in
+in(* in-of-let *)
 //
 if
 (nxerr > 0)

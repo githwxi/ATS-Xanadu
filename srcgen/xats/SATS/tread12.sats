@@ -70,7 +70,8 @@ trerr12_add(trerr12): void
 (* ****** ****** *)
 //
 fun
-tread12_main(d2eclist): void
+tread12_program
+  (prog: d2eclist): void
 //
 (* ****** ****** *)
 //

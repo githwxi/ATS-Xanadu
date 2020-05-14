@@ -94,8 +94,8 @@ case+ s2vs of
 
 implement
 trans3t_program
-  (d3cls) =
-  (d3cls) where
+  (prog0) =
+  (prog1) where
 {
 //
 val
@@ -108,8 +108,8 @@ implenv_push_tsub
 , list_nil(), list_nil())
 //
 val
-d3cls =
-trans3t_declist(env0, d3cls)
+prog1 =
+trans3t_declist(env0, prog0)
 //
 val () =
 (

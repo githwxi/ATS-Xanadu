@@ -46,8 +46,16 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
+
+#staload "./../SATS/trans33.sats"
+
+(* ****** ****** *)
 //
 datavtype
+abstenv =
+ABSTENV of abstlst
+//
+and
 abstlst =
 //
 | abstlst_nil of ()
@@ -59,6 +67,38 @@ abstlst =
 | abstlst_open of (d3ecl, t2ype, abstlst)
 | abstlst_impl of (d3ecl, t2ype, abstlst)
 //
+(* ****** ****** *)
+
+local
+
+absimpl
+abstenv_vtype = abstenv
+
+in(*in-of-local*)
+
+(* ****** ****** *)
+//
+implement
+abstenv_make_nil
+  ((*void*)) =
+(
+ABSTENV(abstlst_nil())
+)
+//
+(* ****** ****** *)
+//
+implement
+abstenv_free_nil
+  (env0) =
+{
+val- ~ABSTENV(lst0) = env0
+val- ~abstlst_nil() = lst0
+}
+//
+(* ****** ****** *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 (* end of [trans33_envmap.dats] *)

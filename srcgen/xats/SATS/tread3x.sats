@@ -72,7 +72,8 @@ trerr3x_add(trerr3x): void
 (* ****** ****** *)
 //
 fun
-tread3x_main(d3eclist): void
+tread3x_program
+  (prog: d3eclist): void
 //
 (* ****** ****** *)
 //

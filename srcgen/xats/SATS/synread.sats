@@ -150,7 +150,8 @@ synerr_add(synerr): void
 (* ****** ****** *)
 //
 fun
-synread_main(d0eclist): void
+synread_program
+  (prog: d0eclist): void
 //
 (* ****** ****** *)
 //

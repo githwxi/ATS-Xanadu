@@ -76,7 +76,15 @@ typedef effs2expopt = $S2E.effs2expopt
 (* ****** ****** *)
 //
 typedef d2var = $D2E.d2var
+typedef d2con = $D2E.d2con
 typedef d2cst = $D2E.d2cst
+typedef d2itm = $D2E.d2itm
+//
+typedef d2conlst = $D2E.d2conlst
+typedef d2cstlst = $D2E.d2cstlst
+typedef d2itmlst = $D2E.d2itmlst
+//
+(* ****** ****** *)
 //
 typedef d2pat = $D2E.d2pat
 typedef d2exp = $D2E.d2exp
@@ -91,6 +99,11 @@ typedef d2eclist = $D2E.d2eclist
 //
 (* ****** ****** *)
 
+typedef d2pitm = $D2E.d2pitm
+typedef d2pitmlst = $D2E.d2pitmlst
+
+(* ****** ****** *)
+
 typedef tq2arg = $D2E.tq2arg
 typedef ti2arg = $D2E.ti2arg
 typedef ti3arg = $D3E.ti3arg
@@ -98,23 +111,19 @@ typedef tq2arglst = $D2E.tq2arglst
 typedef ti2arglst = $D2E.ti2arglst
 
 (* ****** ****** *)
-
-typedef d2pitmlst = $D2E.d2pitmlst
-
-(* ****** ****** *)
-
+//
 typedef d3pat = $D3E.d3pat
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
-
+//
 typedef d3patlst = $D3E.d3patlst
 typedef f3arglst = $D3E.f3arglst
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
-
+//
 typedef d3explstopt = $D3E.d3explstopt
-
+//
 (* ****** ****** *)
 
 typedef d2gua = $D2E.d2gua
@@ -130,6 +139,12 @@ typedef d2gualst = $D2E.d2gualst
 typedef d3gualst = $D3E.d3gualst
 typedef d2claulst = $D2E.d2claulst
 typedef d3claulst = $D3E.d3claulst
+
+(* ****** ****** *)
+
+vtypedef d2conopt_vt = $D2E.d2conopt_vt
+vtypedef d2cstopt_vt = $D2E.d2cstopt_vt
+vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
 
 (* ****** ****** *)
 //
@@ -224,6 +239,92 @@ overload unify2 with unify2_t2ype_t2ype
 (* ****** ****** *)
 //
 fun
+unify2_d2con_t2ype
+(loc0: loc_t,
+ d2c1: d2con, t2p2: t2ype): bool
+//
+fun
+unify2_d2var_t2ype
+(loc0: loc_t,
+ d2v1: d2var, t2p2: t2ype): bool
+//
+fun
+unify2_d2cst_t2ype
+(loc0: loc_t,
+ d2c1: d2cst, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+fun
+t2ype_get_xtvs
+(t2p0: t2ype): List0_vt(t2xtv)
+fun
+t2ypelst_get_xtvs
+(t2ps: t2ypelst): List0_vt(t2xtv)
+//
+(* ****** ****** *)
+//
+fun
+match2_t2ype_t2ype
+(t2p1: t2ype, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+fun
+match2_d2con_t2ype
+(d2c1: d2con, t2p2: t2ype): bool
+fun
+match2_d2var_t2ype
+(d2v1: d2var, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+(*
+fun
+tplft_elim(t2p0: t2ype): t2ype
+*)
+fun
+match2_d2cst_t2ype
+(d2c1: d2cst, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+overload match2 with match2_d2var_t2ype
+overload match2 with match2_d2con_t2ype
+overload match2 with match2_d2cst_t2ype
+//
+(* ****** ****** *)
+//
+fun
+match2_d2itm_t2ype
+( d2i1
+: d2itm, t2p2: t2ype): d2itmopt_vt
+//
+overload match2 with match2_d2itm_t2ype
+//
+(* ****** ****** *)
+//
+fun
+match2_d2conlst_t2ype
+( d2cs
+: d2conlst, t2p2: t2ype): d2conopt_vt
+fun
+match2_d2cstlst_t2ype
+( d2cs
+: d2cstlst, t2p2: t2ype): d2cstopt_vt
+//
+fun
+match2_d2pconlst_t2ype
+( dpis
+: d2pitmlst, t2p2: t2ype): d2itmopt_vt
+fun
+match2_d2pitmlst_t2ype
+( dpis
+: d2pitmlst, t2p2: t2ype): d2itmopt_vt
+//
+(* ****** ****** *)
+//
+fun
 t2ype_tq2as_elim
 ( loc0: loc_t
 , t2p0: t2ype
@@ -258,33 +359,41 @@ d3pat_tuple_up
 //
 (* ****** ****** *)
 //
+// HX: for processing dynexpressions
+//
+(* ****** ****** *)
+//
 fun
 d23exp_dn
-(d3e0: d3exp, t2p0: t2ype): d3exp
+( d3e0: d3exp
+, t2p0: t2ype ) : d3exp
 fun
 d23explst_dn
 ( loc0: loc_t
-, d3es: d3explst, t2ps: t2ypelst): d3explst
+, d3es: d3explst
+, t2ps: t2ypelst ) : d3explst
 //
 (* ****** ****** *)
-
+//
 fun
 d23exp_sapp_up
 ( loc0: loc_t
-, d3f0: d3exp, s2es: s2explst): d3exp
+, d3f0: d3exp
+, s2es: s2explst(*sargs*)): d3exp
 fun
 d23exp_tapp_up
 ( loc0: loc_t
-, d2f0: d2exp, s2es: s2explst): d3exp
-
+, d2f0: d2exp
+, s2es: s2explst(*targs*)): d3exp
+//
 (* ****** ****** *)
-
+//
 fun
 d23exp_dapp_up
 ( loc0: loc_t
 , d3f0: d3exp
 , npf0: int, d3es: d3explst): d3exp
-
+//
 (* ****** ****** *)
 //
 fun

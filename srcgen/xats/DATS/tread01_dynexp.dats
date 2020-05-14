@@ -425,10 +425,11 @@ the_trerr01lst_set(xs) = the_trerr01lst[] := xs
 end // end of [local]
 //
 implement
-tread01_main(d1cs) = let
+tread01_program(prog) =
+let
 //
 val () =
-tread01_d1eclist(d1cs)
+tread01_d1eclist(prog)
 val
 xerrs = the_trerr01lst_get()
 val

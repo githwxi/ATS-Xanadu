@@ -153,7 +153,8 @@ the_trerr23lst_set(xs) = the_trerr23lst[] := xs
 end // end of [local]
 //
 implement
-tread23_main(d3cs) = let
+tread23_program(prog) =
+let
 //
 (*
 val () =
@@ -161,7 +162,7 @@ println!("tread23_main")
 *)
 //
 val () =
-tread23_d3eclist(d3cs)
+tread23_d3eclist(prog)
 //
 val
 xerrs = the_trerr23lst_get()
