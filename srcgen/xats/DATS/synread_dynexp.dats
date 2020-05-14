@@ -1339,22 +1339,22 @@ then
 //
 val () =
 prerrln!
-("synread_main: nxerr = ", nxerr)
+("\
+synread_program: \
+nxerr = ", nxerr )
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("synread_main: there is one synerr!")
+("synread_program: there is one syntax0-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-(
-"synread_main: there are some synerrs!"
-)
+("synread_program: there are some syntax0-errors!")
 //
 val () =
 ($raise(XATSOPT_SYNERR_EXN(*void*))): void
@@ -1365,11 +1365,11 @@ else
 //
 val () =
 prerrln!
-("synread_main: there are no synerrs!")
+("synread_program: there are none of syntax0-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [synread_main]
+end // end of [synread_program]
 
 end // end of [local]
 

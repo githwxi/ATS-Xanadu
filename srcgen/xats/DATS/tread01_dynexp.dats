@@ -444,7 +444,9 @@ then
 //
 val () =
 prerrln!
-("tread01_main: nxerr = ", nxerr)
+("\
+tread01_program: \
+nxerr = ", nxerr )
 //
 val () =
 if
@@ -452,7 +454,7 @@ if
 then
 prerrln!
 ("\
-tread01_main: \
+tread01_program: \
 there is one trans01-error!")
 val () =
 if
@@ -460,7 +462,7 @@ if
 then
 prerrln!
 ("\
-tread01_main: \
+tread01_program: \
 there are some trans01-errors!")
 //
 val () =
@@ -475,12 +477,12 @@ else
 val () =
 prerrln!
 ("\
-tread01_main: \
+tread01_program: \
 there are none of trans01-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread01_main]
+end // end of [tread01_program]
 
 end // end of [local]
 

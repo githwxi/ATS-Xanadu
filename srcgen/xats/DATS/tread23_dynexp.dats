@@ -158,7 +158,7 @@ let
 //
 (*
 val () =
-println!("tread23_main")
+println!("tread23_program")
 *)
 //
 val () =
@@ -179,8 +179,8 @@ then
 val () =
 prerrln!
 ("\
-tread23_main: \
-nxerr = ", nxerr)
+tread23_program: \
+nxerr = ", nxerr )
 //
 val () =
 if
@@ -188,16 +188,16 @@ if
 then
 prerrln!
 ("\
-tread23_main: \
-there is one trerr23-error!")
+tread23_program: \
+there is one trans23-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
 ("\
-tread23_main: \
-there are some trerr23-errors!")
+tread23_program: \
+there are some trans23-errors!")
 //
 val () =
 (
@@ -211,12 +211,12 @@ else
 val () =
 prerrln!
 ("\
-tread23_main: \
-there are none of trerr23-errors!")
+tread23_program: \
+there are none of trans23-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread23_main]
+end // end of [tread23_program]
 
 end // end of [local]
 

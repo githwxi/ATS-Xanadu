@@ -772,8 +772,8 @@ then
 val () =
 prerrln!
 ("\
-tread3x_main: \
-nxerr = ", nxerr)
+tread3x_program: \
+nxerr = ", nxerr )
 //
 val () =
 if
@@ -781,16 +781,16 @@ if
 then
 prerrln!
 ("\
-tread3x_main: \
-there is one trerr3x-error!")
+tread3x_program: \
+there is one trans3x-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
 ("\
-tread3x_main: \
-there are some trerr3x-errors!")
+tread3x_program: \
+there are some trans3x-errors!")
 //
 val () =
 (
@@ -804,12 +804,12 @@ else
 val () =
 prerrln!
 ("\
-tread3x_main: \
-there are none of trerr3x-errors!")
+tread3x_program: \
+there are none of trans3x-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread3x_main]
+end // end of [tread3x_program]
 
 end // end of [local]
 
