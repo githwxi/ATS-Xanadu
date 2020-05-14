@@ -150,6 +150,97 @@ case- xs of
 } (* end of [abstenv_pop_let1] *)
 
 (* ****** ****** *)
+
+implement
+abstenv_pop_loc12
+  (env) = let
+//
+val+
+@ABSTENV(xs) = env
+val () =
+(xs := abstlst_pop_loc12(xs))
+//
+in
+  fold@(env) // nothing
+end where
+{
+fun
+abstlst_pop_loc12
+(xs: abstlst): abstlst =
+(
+auxlst1(xs, abstlst_nil())
+)
+and
+auxlst1
+( xs
+: abstlst
+, ys
+: abstlst): abstlst =
+(
+case- xs of
+|
+~abstlst_loc2
+   (xs) => auxlst2(xs, ys)
+|
+~abstlst_open
+   (d3cl, t2p1, xs) =>
+ (
+   auxlst1
+   (xs, abstlst_open(d3cl, t2p1, ys))
+ )
+|
+~abstlst_impl
+   (d3cl, t2p1, xs) =>
+ (
+   auxlst1
+   (xs, abstlst_impl(d3cl, t2p1, ys))
+ )
+)
+and
+auxlst2
+( xs
+: abstlst
+, ys
+: abstlst): abstlst =
+(
+case- xs of
+|
+~abstlst_loc1
+ (xs) => auxlst3(xs, ys)
+|
+~abstlst_open
+ (d3cl, t2p1, xs) => auxlst2(xs, ys)
+|
+~abstlst_impl
+ (d3cl, t2p1, xs) => auxlst2(xs, ys)
+)
+and
+auxlst3
+( xs
+: abstlst
+, ys
+: abstlst): abstlst =
+(
+case- ys of
+|
+~abstlst_nil() => xs
+|
+~abstlst_open(d3cl, t2p1, ys) =>
+ (
+   auxlst3
+   (abstlst_open(d3cl, t2p1, xs), ys)
+ )
+|
+~abstlst_impl(d3cl, t2p1, ys) =>
+ (
+   auxlst3
+   (abstlst_impl(d3cl, t2p1, xs), ys)
+ )
+) (* end of [auxlst3] *)
+//
+} (* end of [implenv_pop_loc12] *)
+
+(* ****** ****** *)
 //
 implement
 abstenv_make_nil
