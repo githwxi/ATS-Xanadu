@@ -68,7 +68,10 @@ fprint_val<t2ype> = fprint_t2ype
 //
 implement
 trans3x_program
-  (dcls) = trans3x_declist(dcls)
+  (prog) =
+(
+  trans3x_declist(prog)
+)
 //
 (* ****** ****** *)
 //

@@ -59,7 +59,8 @@ trerr01_add(trerr01): void
 (* ****** ****** *)
 //
 fun
-tread01_main(d1eclist): void
+tread01_program
+  (prog: d1eclist): void
 //
 (* ****** ****** *)
 

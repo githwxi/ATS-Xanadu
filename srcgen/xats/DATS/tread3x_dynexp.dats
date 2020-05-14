@@ -751,7 +751,8 @@ the_trerr3xlst_set(xs) = the_trerr3xlst[] := xs
 end // end of [local]
 //
 implement
-tread3x_main(d3cs) = let
+tread3x_program(d3cs) =
+let
 //
 val () =
 tread3x_d3eclist(d3cs)

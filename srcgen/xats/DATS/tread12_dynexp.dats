@@ -780,10 +780,11 @@ the_trerr12lst_set(xs) = the_trerr12lst[] := xs
 end // end of [local]
 //
 implement
-tread12_main(d2cs) = let
+tread12_program(prog) =
+let
 //
 val () =
-tread12_d2eclist(d2cs)
+tread12_d2eclist(prog)
 val
 xerrs = the_trerr12lst_get()
 val

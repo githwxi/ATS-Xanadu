@@ -122,157 +122,127 @@ vtypedef abstenv = abstenv_vtype
 (* ****** ****** *)
 //
 fun
-t2ype_get_xtvs
-(t2p0: t2ype): List0_vt(t2xtv)
+abstenv_make_nil(): abstenv
 fun
-t2ypelst_get_xtvs
-(t2ps: t2ypelst): List0_vt(t2xtv)
+abstenv_free_nil(abstenv): void
 //
 (* ****** ****** *)
 //
 fun
-unify2_d2con_t2ype
-(loc0: loc_t,
- d2c1: d2con, t2p2: t2ype): bool
+t2ype_whnfize_env
+( env0
+: !abstenv, t2p0: t2ype): t2ype
 //
-fun
-unify2_d2var_t2ype
-(loc0: loc_t,
- d2v1: d2var, t2p2: t2ype): bool
-//
-fun
-unify2_d2cst_t2ype
-(loc0: loc_t,
- d2c1: d2cst, t2p2: t2ype): bool
+overload
+whnfize_env with t2ype_whnfize_env
 //
 (* ****** ****** *)
 //
 fun
-match2_t2ype_t2ype
-(t2p1: t2ype, t2p2: t2ype): bool
+trans33_program
+  (dcls: d3eclist): d3eclist
 //
 (* ****** ****** *)
 //
 fun
-match2_d2con_t2ype
-(d2c1: d2con, t2p2: t2ype): bool
-fun
-match2_d2var_t2ype
-(d2v1: d2var, t2p2: t2ype): bool
-//
-(* ****** ****** *)
-//
-(*
-fun
-tplft_elim(t2p0: t2ype): t2ype
-*)
-fun
-match2_d2cst_t2ype
-(d2c1: d2cst, t2p2: t2ype): bool
-//
-(* ****** ****** *)
-//
-overload match2 with match2_d2var_t2ype
-overload match2 with match2_d2con_t2ype
-overload match2 with match2_d2cst_t2ype
-//
-(* ****** ****** *)
-//
-fun
-match2_d2itm_t2ype
-( d2i1
-: d2itm, t2p2: t2ype): d2itmopt_vt
-//
-overload match2 with match2_d2itm_t2ype
-//
-(* ****** ****** *)
-//
-fun
-match2_d2conlst_t2ype
-( d2cs
-: d2conlst, t2p2: t2ype): d2conopt_vt
-fun
-match2_d2cstlst_t2ype
-( d2cs
-: d2cstlst, t2p2: t2ype): d2cstopt_vt
-//
-overload match2 with match2_d2conlst_t2ype
-overload match2 with match2_d2cstlst_t2ype
-//
-(* ****** ****** *)
-//
-fun
-match2_d2pconlst_t2ype
-( dpis
-: d2pitmlst, t2p2: t2ype): d2itmopt_vt
-fun
-match2_d2pitmlst_t2ype
-( dpis
-: d2pitmlst, t2p2: t2ype): d2itmopt_vt
-//
-(* ****** ****** *)
-//
-fun
-trans33_dpat: d3pat -> d3pat
+trans33_dpat
+( env0
+: !abstenv, d3p0: d3pat): d3pat
 fun
 trans33_dpat_dn
-(d3p0: d3pat, t2p0: t2ype): d3pat
+( env0
+: !abstenv
+, d3p0: d3pat, t2p0: t2ype): d3pat
 //
 fun
-trans33_dpatlst: d3patlst -> d3patlst
+trans33_dpatlst
+( env0
+: !abstenv, d3ps: d3patlst): d3patlst
 fun
 trans33_dpatlst_dn
-(ps: d3patlst, ts: t2ypelst): d3patlst
+( env0
+: !abstenv
+, d3ps: d3patlst, t2ps: t2ypelst): d3patlst
 //
 (* ****** ****** *)
 //
 fun
-trans33_dexp: d3exp -> d3exp
+trans33_dexp
+( env0
+: !abstenv, d3e0: d3exp): d3exp
 //
 fun
-trans33_dexpopt: d3expopt -> d3expopt
+trans33_dexpopt
+( env0
+: !abstenv, opt0: d3expopt): d3expopt
 fun
-trans33_dexplst: d3explst -> d3explst
+trans33_dexplst
+( env0
+: !abstenv, d3es: d3explst): d3explst
+//
+(* ****** ****** *)
 //
 fun
 trans33_dexp_dn
-(d3e0: d3exp, t2p0: t2ype): d3exp
+( env0
+: !abstenv
+, d3e0: d3exp, t2p0: t2ype): d3exp
 fun
 trans33_dexplst_dn
-(d3es: d3explst, t2p0: t2ype): d3explst
+( env0
+: !abstenv
+, d3es: d3explst, t2p0: t2ype): d3explst
 //
 (* ****** ****** *)
 //
 fun
-trans33_dgua: d3gua -> d3gua
+trans33_dgua
+( env0
+: !abstenv, d3g0: d3gua): d3gua
 fun
-trans33_dgualst: d3gualst -> d3gualst
+trans33_dgualst
+( env0
+: !abstenv, d3gs: d3gualst): d3gualst
 //
 (* ****** ****** *)
 //
 fun
-trans33_dgpat: d3gpat -> d3gpat
+trans33_dgpat
+( env0
+: !abstenv, d3gp: d3gpat): d3gpat
 //
 fun
 trans33_dclau_dn
-(d3cl: d3clau, tres: t2ype): d3clau
+( env0
+: !abstenv
+, d3cl: d3clau, tres: t2ype): d3clau
 fun
 trans33_dclaulst_dn
-(dcls: d3claulst, tres: t2ype): d3claulst
+( env0
+: !abstenv
+, dcls: d3claulst, tres: t2ype): d3claulst
 //
-(* ****** ****** *)
-
-fun
-trans33_farg: f3arg -> f3arg
-fun
-trans33_farglst: f3arglst -> f3arglst
-
 (* ****** ****** *)
 //
 fun
-trans33_decl: d3ecl -> d3ecl 
+trans33_farg
+( env0
+: !abstenv, f3a0: f3arg): f3arg
 fun
-trans33_declist: d3eclist -> d3eclist
+trans33_farglst
+( env0
+: !abstenv, f3as: f3arglst): f3arglst
+//
+(* ****** ****** *)
+//
+fun
+trans33_decl
+( env0
+: !abstenv, d3cl: d3ecl): d3ecl 
+fun
+trans33_declist
+( env0
+: !abstenv, dcls: d3eclist): d3eclist
 //
 (* ****** ****** *)
 //
@@ -285,66 +255,118 @@ unify3_t2ypelst_t2ypelst
 ( loc0: loc_t
 , tps1: t2ypelst, tps2: t2ypelst): bool
 //
-overload unify3 with unify3_t2ype_t2ype
-overload unify3 with unify3_t2ypelst_t2ypelst
+fun
+unify3_env_t2ype_t2ype
+( loc0: loc_t
+, env0: !abstenv
+, t2p1: t2ype, t2p2: t2ype): bool
+fun
+unify3_env_t2ypelst_t2ypelst
+( loc0: loc_t
+, env0: !abstenv
+, tps1: t2ypelst, tps2: t2ypelst): bool
+//
+overload
+unify3 with unify3_t2ype_t2ype
+overload
+unify3 with unify3_t2ypelst_t2ypelst
+overload
+unify3_env with unify3_env_t2ype_t2ype
+overload
+unify3_env with unify3_env_t2ypelst_t2ypelst
 //
 (* ****** ****** *)
 //
 fun
 t2ype_f3arg_elim
 ( loc0: loc_t
-, t2p0: t2ype, f3as: f3arglst): (f3arglst, t2ype)
+, env0: !abstenv
+, t2p0: t2ype
+, f3as: f3arglst): (f3arglst, t2ype)
+//
+(* ****** ****** *)
+//
+// HX: for processing dynexpressions
 //
 (* ****** ****** *)
 //
 fun
 d33exp_dn
-  (d3e0: d3exp, t2p0: t2ype): d3exp
+( env0: !abstenv
+, d3e0: d3exp, t2p0: t2ype): d3exp
 //
 fun
 d33explst_dn
 ( loc0: loc_t
+, env0: !abstenv
 , d3es: d3explst, t2ps: t2ypelst): d3explst
 //
 (* ****** ****** *)
-(*
+//
 fun
 d33exp_sapp_up
 ( loc0: loc_t
+, env0: !abstenv
 , d3f0: d3exp, s2es: s2explst): d3exp
 fun
 d33exp_tapp_up
 ( loc0: loc_t
+, env0: !abstenv
 , d2f0: d2exp, s2es: s2explst): d3exp
-*)
+//
 (* ****** ****** *)
 //
 fun
 d33exp_dapp_up
-( loc0: loc_t
-, d3f0: d3exp
-, npf0: int, d3es: d3explst): d3exp
+( loc0
+: loc_t
+, env0
+: !abstenv
+, d3f0: d3exp(*fun*)
+, npf0: int
+, d3es: d3explst(*args*)): d3exp
 //
 (* ****** ****** *)
 //
 fun
 d33exp_proj_up
 ( loc0: loc_t
-, d3e1: d3exp, label: label): d3exp
+, env0: !abstenv
+, d3e1: d3exp, lab2: label): d3exp
 //
 (* ****** ****** *)
 //
 fun
 d33exp_assgn_up
 ( loc0: loc_t
-, d3el: d3exp(*l-val*), d3er: d3exp): d3exp
+, env0: !abstenv
+, d3el: d3exp, d3er: d3exp): d3exp
+//
+(* ****** ****** *)
+//
+fun
+d33exp_if0_up
+( loc0: loc_t
+, env0: !abstenv
+, d3e1: d3exp(*cond*)
+, d3e2: d3exp(*then*)
+, opt3: d3expopt(*else*)): d3exp
+//
+(* ****** ****** *)
+//
+fun
+d33exp_tcastize
+( env0: !abstenv
+, d3e1: d3exp, t2p2: t2ype): d3exp
 //
 (* ****** ****** *)
 //
 datatype
 ti3env =
-| TI3ENV of
-  (s2varlst, t2xtvlst, t2ypelst)
+|
+TI3ENV of
+( s2varlst(*tmpvars*)
+, t2xtvlst, t2ypelst)
 //
 (* ****** ****** *)
 //
@@ -361,12 +383,6 @@ ti3env_get_tsub(ti3env): t2ypelst
 overload .s2vs with ti3env_get_s2vs
 overload .targ with ti3env_get_targ
 overload .tsub with ti3env_get_tsub
-//
-(* ****** ****** *)
-//
-fun
-d33exp_tcastize
-(d3e1: d3exp, t2p2: t2ype(*tcast*)): d3exp
 //
 (* ****** ****** *)
 //

@@ -1051,7 +1051,8 @@ case+ t2ps of
 (* ****** ****** *)
 //
 implement
-t2ype_whnfize(t2p0) =
+t2ype_whnfize
+  (t2p0) =
 (
   t2ype_whnfz<>(t2p0)
 ) where

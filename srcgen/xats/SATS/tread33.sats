@@ -70,7 +70,8 @@ trerr33_add(trerr33): void
 (* ****** ****** *)
 //
 fun
-tread33_main(d3eclist): void
+tread33_program
+  (prog: d3eclist): void
 //
 (* ****** ****** *)
 //

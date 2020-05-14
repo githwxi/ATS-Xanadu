@@ -1057,10 +1057,11 @@ the_trerr33lst_set(xs) = the_trerr33lst[] := xs
 end // end of [local]
 //
 implement
-tread33_main(d3cs) = let
+tread33_program(prog) =
+let
 //
 val () =
-tread33_d3eclist(d3cs)
+tread33_d3eclist(prog)
 //
 val
 xerrs = the_trerr33lst_get()
