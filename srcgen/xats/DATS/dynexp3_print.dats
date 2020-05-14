@@ -728,10 +728,19 @@ x0.node() of
 //
 | D3Cabstype(d2cl) =>
   fprint!(out, "D3Cabstype(", d2cl, ")")
-| D3Cabsopen(d2cl) =>
-  fprint!(out, "D3Cabsopen(", d2cl, ")")
-| D3Cabsimpl(d2cl) =>
-  fprint!(out, "D3Cabsimpl(", d2cl, ")")
+//
+| D3Cabsopen
+  (tok, sqid) =>
+  fprint!
+  ( out
+  , "D3Cabsopen("
+  , tok(*absopen*), "; ", sqid, ")")
+| D3Cabsimpl
+  (knd, sqid, def0) =>
+  fprint!
+  ( out
+  , "D3Cabsimpl("
+  , knd(*abskind*), "; ", sqid, "; ", def0, ")")
 //
 | D3Cvaldecl
   (knd, mopt, v3ds) =>

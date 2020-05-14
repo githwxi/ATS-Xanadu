@@ -2866,9 +2866,23 @@ case+ def of
 | ABSTDF1some() =>
   ABSTDF2some((*void*))
 | ABSTDF1lteq(s1e) =>
-  ABSTDF2lteq(auxfck(arg, s1e, res))
+  (
+    ABSTDF2lteq(t2p)
+  ) where
+  {
+    val s2e =
+    auxfck(arg, s1e, res)
+    val t2p = s2exp_erase(s2e)
+  }
 | ABSTDF1eqeq(s1e) =>
-  ABSTDF2eqeq(auxfck(arg, s1e, res))
+  (
+    ABSTDF2eqeq(s2e, t2p)
+  ) where
+  {
+    val s2e =
+    auxfck(arg, s1e, res)
+    val t2p = s2exp_erase(s2e)
+  }
 ) where
 {
 fun
@@ -3052,7 +3066,7 @@ s2cst_make_idst(sid, s2t0)
 val () =
 stamp_s2cst(s2c0)
 val () =
-stamp_s2cst_abs(s2c0, def0)
+stamp_s2cst_abst(s2c0, def0)
 //
 val () = the_sexpenv_add_cst(s2c0)
 //
@@ -3084,42 +3098,44 @@ auxsqid
 val s2cs =
 (
 case+ sqid of
-| SQ0EIDnone(id0) =>
-  let
-    val-
-    I0DNTsome
-      (tok) = id0.node()
-    // end of [val]
-    val sym = sexpid_sym(tok)
-    val opt = the_sexpenv_find(sym)
-  in
-    case+ opt of
-    | ~None_vt() =>
-       list_nil()
-    | ~Some_vt(s2i) =>
-      ( case+ s2i of
-        | S2ITMcst(s2cs) => s2cs | _ => list_nil()
-      ) (* end of [Some_vt] *)
-  end
-| SQ0EIDsome(qua, id0) =>
-  let
-    val-
-    I0DNTsome
-      (tok) = id0.node()
-    // end of [val]
-    val sym = sexpid_sym(tok)
-    val opt = the_sexpenv_qfind(qua, sym)
-  in
-    case+ opt of
-    | ~None_vt() =>
-       list_nil()
-    | ~Some_vt(s2i) =>
-      ( case+ s2i of
-        | S2ITMcst(s2cs) => s2cs | _ => list_nil()
-      ) (* end of [Some_vt] *)
-  end
-) : s2cstlst // end of [val]
-} (* end of [auxsqid] *)
+|
+SQ0EIDnone(id0) =>
+let
+val-
+I0DNTsome
+  (tok) = id0.node()
+// end of [val]
+val sym = sexpid_sym(tok)
+val opt = the_sexpenv_find(sym)
+in
+case+ opt of
+| ~None_vt() =>
+   list_nil(*void*)
+| ~Some_vt(s2i) =>
+  ( case+ s2i of
+    | S2ITMcst(s2cs) => s2cs | _ => list_nil()
+  ) (* end of [Some_vt] *)
+end
+|
+SQ0EIDsome(qua, id0) =>
+let
+  val-
+  I0DNTsome
+    (tok) = id0.node()
+  // end of [val]
+  val sym = sexpid_sym(tok)
+  val opt = the_sexpenv_qfind(qua, sym)
+in
+  case+ opt of
+  | ~None_vt() =>
+     list_nil(*void*)
+  | ~Some_vt(s2i) =>
+    ( case+ s2i of
+      | S2ITMcst(s2cs) => s2cs | _ => list_nil()
+    ) (* end of [Some_vt] *)
+end
+) : s2cstlst // end-of-val
+} (* where *) (* end of [auxsqid] *)
 
 fun
 auxsmas

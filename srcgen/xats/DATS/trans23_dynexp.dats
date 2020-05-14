@@ -1901,6 +1901,99 @@ end // end of [aux_staload]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxfind
+( s2cs
+: s2cstlst
+)
+: s2cstopt =
+(
+case+ s2cs of
+|
+list_nil
+((*void*)) => None()
+|
+list_cons
+(s2c0, s2cs) =>
+let
+val
+def0 =
+s2cst_get_abst(s2c0)
+in
+case+ def0 of
+|
+ABSTDF2none // nonabs
+((*void*)) => auxfind(s2cs)
+| _(*abstype*) => Some(s2c0)
+end
+) (* end of [auxfind] *)
+fun
+auxis2c
+( is2c
+: impls2cst
+)
+: impls2cst =
+(
+case+ is2c of
+|
+IMPLS2CST2 _ => is2c
+|
+IMPLS2CST1(sqid, s2cs) =>
+(
+IMPLS2CST2
+(sqid, s2cs, auxfind(s2cs))
+)
+) (* end of [auxis2c] *)
+
+in(* in-of-local *)
+
+fun
+aux_absopen
+( d2cl
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2cl.loc()
+val-
+D2Cabsopen
+( tok
+, is2c ) = d2cl.node()
+//
+val is2c = auxis2c(is2c)
+//
+in
+  d3ecl_make_node
+  (loc0, D3Cabsopen(tok, is2c))
+end // end of [aux_absopen]
+
+fun
+aux_absimpl
+( d2cl
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2cl.loc()
+val-
+D2Cabsimpl
+( tok
+, is2c
+, def0) = d2cl.node()
+//
+val is2c = auxis2c(is2c)
+//
+in
+  d3ecl_make_node
+  (loc0, D3Cabsimpl(tok, is2c, def0))
+end // end of [aux_absimpl]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 fun
 aux_valdecl
 ( d2cl
@@ -2624,6 +2717,9 @@ d2cl.node() of
     // d3ecl_make_node
   end
 //
+| D2Cabsopen _ => aux_absopen(d2cl)
+| D2Cabsimpl _ => aux_absimpl(d2cl)
+//
 | D2Cvaldecl _ => aux_valdecl(d2cl)
 | D2Cvardecl _ => aux_vardecl(d2cl)
 //
@@ -2646,10 +2742,6 @@ d2cl.node() of
 //
 | D2Cabstype _ =>
   d3ecl_make_node(loc0, D3Cabstype(d2cl))
-| D2Cabsopen _ =>
-  d3ecl_make_node(loc0, D3Cabsopen(d2cl))
-| D2Cabsimpl _ =>
-  d3ecl_make_node(loc0, D3Cabsimpl(d2cl))
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2cl)
 //

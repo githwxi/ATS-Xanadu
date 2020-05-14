@@ -107,6 +107,11 @@ tread12_labs2explst: treader12(labs2explst)
 (* ****** ****** *)
 
 fun//{}
+tread12_t2ype: treader12(t2ype)
+
+(* ****** ****** *)
+
+fun//{}
 tread12_abstdf2: treader12(abstdf2)
 
 (* ****** ****** *)

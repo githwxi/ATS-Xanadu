@@ -2066,6 +2066,55 @@ end // end of [aux_staload]
 
 (* ****** ****** *)
 
+local
+
+in(*in-of-local*)
+
+(* ****** ****** *)
+
+fun
+aux_absopen
+( env0:
+! abstenv
+, d3cl: d3ecl): d3ecl =
+(
+  d3cl
+) where
+{
+//
+val-
+D3Cabsopen
+( tok
+, is2c ) = d3cl.node()
+//
+} // end of [aux_absopen]
+
+(* ****** ****** *)
+
+fun
+aux_absimpl
+( env0:
+! abstenv
+, d3cl: d3ecl): d3ecl =
+(
+  d3cl
+) where
+{
+//
+val-
+D3Cabsimpl
+( tok
+, is2c
+, def0 ) = d3cl.node()
+//
+} // end of [aux_absimpl]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 fun
 aux_valdecl
 ( env0:
@@ -2669,6 +2718,10 @@ D3Cextern
     d3ecl_make_node(loc0, D3Clocal(head, body))
   end
   end
+//
+| D3Cabstype _ => d3cl
+| D3Cabsopen _ => aux_absopen(env0, d3cl)
+| D3Cabsimpl _ => aux_absimpl(env0, d3cl)
 //
 | D3Cvaldecl _ => aux_valdecl(env0, d3cl)
 //
