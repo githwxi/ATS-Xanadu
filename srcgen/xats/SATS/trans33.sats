@@ -51,6 +51,7 @@
 (* ****** ****** *)
 
 typedef s2var = $S2E.s2var
+typedef s2cst = $S2E.s2cst
 typedef s2exp = $S2E.s2exp
 typedef t2ype = $S2T.t2ype
 typedef t2xtv = $S2T.t2xtv
@@ -144,6 +145,8 @@ fun
 abstenv_make_nil(): abstenv
 fun
 abstenv_free_nil(abstenv): void
+fun
+abstenv_free_all(abstenv): void
 //
 (* ****** ****** *)
 //
@@ -159,9 +162,17 @@ abstenv_push_impl
 (* ****** ****** *)
 //
 fun
+abstenv_find
+( env0:
+! abstenv
+, s2c0: s2cst): Option_vt(t2ype)
+//
+(* ****** ****** *)
+//
+fun
 t2ype_whnfize_env
-( env0
-: !abstenv, t2p0: t2ype): t2ype
+( env0:
+! abstenv, t2p0: t2ype): t2ype
 //
 overload
 whnfize_env with t2ype_whnfize_env

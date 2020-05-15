@@ -6,7 +6,7 @@
 (* ****** ****** *)
 
 abstype
-myint2_type <= $(int, int)
+myint2_type == $(int, int)
 typedef myint2 = myint2_type
 
 (* ****** ****** *)

@@ -102,9 +102,33 @@ end // end of [local]
 (* ****** ****** *)
 //
 local
+//
 #staload
 "./statyp2_util0.dats"
+//
+fun
+t2ype_eval_env
+( env0:
+! abstenv
+, t2p0: t2ype): t2ype =
+let
+//
+  val-
+  T2Pcst
+  (s2c0) = t2p0.node()
+//
+  val
+  opt0 =
+  abstenv_find(env0, s2c0)
+//
 in
+  case+ opt0 of
+  | ~None_vt() => t2p0
+  | ~Some_vt(t2p1) =>
+     t2ype_whnfize_env(env0, t2p1)
+end // end of [t2ype_eval_env]
+//
+in(*in-of-local*)
 //
 implement
 t2ype_whnfize_env
@@ -113,6 +137,10 @@ t2ype_whnfize_env
   t2ype_whnfz<>(t2p0)
 ) where
 {
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
 //
 implement
 t2ype_whnfz$cst<>
@@ -131,12 +159,32 @@ case+
 def0.node() of
 //
 |
-T2Pnone0() => t2p0
+T2Pnone0() =>
+let
+val
+env0 =
+$UN.castvwtp0{abstenv}(env0)
+val
+t2p0 = t2ype_eval_env(env0, t2p0)
+in
+let
+prval () = $UN.cast2void(env0) in t2p0
+end
+end
 //
 | _(* else *) => 
 let
 val () =
-flag := flag + 1 in t2ype_whnfize(def0)
+(flag := flag + 1)
+val
+env0 =
+$UN.castvwtp0{abstenv}(env0)
+val
+t2p0 = t2ype_whnfize_env(env0, def0)
+in
+let
+prval () = $UN.cast2void(env0) in t2p0
+end
 end
 //
 end // t2ype_whnfz$cst
