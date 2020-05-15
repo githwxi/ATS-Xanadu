@@ -64,8 +64,10 @@ abstlst =
 | abstlst_loc1 of abstlst
 | abstlst_loc2 of abstlst
 //
-| abstlst_open of (d3ecl, t2ype, abstlst)
-| abstlst_impl of (d3ecl, t2ype, abstlst)
+| abstlst_open of
+  (d3ecl, s2cst, t2ype, abstlst)
+| abstlst_impl of
+  (d3ecl, s2cst, t2ype, abstlst)
 //
 (* ****** ****** *)
 
@@ -142,9 +144,9 @@ abstlst_pop_let1
 case- xs of
 | ~abstlst_let1(xs) => xs
 | ~abstlst_open
-   (_, _, xs) => abstlst_pop_let1(xs)
+   (_, _, _, xs) => abstlst_pop_let1(xs)
 | ~abstlst_impl
-   (_, _, xs) => abstlst_pop_let1(xs)
+   (_, _, _, xs) => abstlst_pop_let1(xs)
 ) (* end of [abstlst_pop_let1] *)
 //
 } (* end of [abstenv_pop_let1] *)
@@ -183,17 +185,19 @@ case- xs of
    (xs) => auxlst2(xs, ys)
 |
 ~abstlst_open
-   (d3cl, t2p1, xs) =>
+   (d3cl, s2c0, t2p1, xs) =>
  (
    auxlst1
-   (xs, abstlst_open(d3cl, t2p1, ys))
+   ( xs
+   , abstlst_open(d3cl, s2c0, t2p1, ys))
  )
 |
 ~abstlst_impl
-   (d3cl, t2p1, xs) =>
+   (d3cl, s2c0, t2p1, xs) =>
  (
    auxlst1
-   (xs, abstlst_impl(d3cl, t2p1, ys))
+   ( xs
+   , abstlst_impl(d3cl, s2c0, t2p1, ys))
  )
 )
 and
@@ -209,10 +213,10 @@ case- xs of
  (xs) => auxlst3(xs, ys)
 |
 ~abstlst_open
- (d3cl, t2p1, xs) => auxlst2(xs, ys)
+ (d3cl, _, _, xs) => auxlst2(xs, ys)
 |
 ~abstlst_impl
- (d3cl, t2p1, xs) => auxlst2(xs, ys)
+ (d3cl, _, _, xs) => auxlst2(xs, ys)
 )
 and
 auxlst3
@@ -225,16 +229,24 @@ case- ys of
 |
 ~abstlst_nil() => xs
 |
-~abstlst_open(d3cl, t2p1, ys) =>
+~abstlst_open
+ (d3cl, s2c0, t2p1, ys) =>
  (
-   auxlst3
-   (abstlst_open(d3cl, t2p1, xs), ys)
+   auxlst3(xs, ys) where
+   {
+   val xs =
+   abstlst_open(d3cl, s2c0, t2p1, xs)
+   }
  )
 |
-~abstlst_impl(d3cl, t2p1, ys) =>
+~abstlst_impl
+ (d3cl, s2c0, t2p1, ys) =>
  (
-   auxlst3
-   (abstlst_impl(d3cl, t2p1, xs), ys)
+   auxlst3(xs, ys) where
+   {
+   val xs =
+   abstlst_impl(d3cl, s2c0, t2p1, xs)
+   }
  )
 ) (* end of [auxlst3] *)
 //
@@ -259,6 +271,93 @@ val- ~ABSTENV(lst0) = env0
 val- ~abstlst_nil() = lst0
 }
 //
+(* ****** ****** *)
+
+implement
+abstenv_push_open
+( env0, d3cl ) =
+let
+val+
+@ABSTENV(xs) = env0
+//
+val () =
+(
+case+ opt0 of
+|
+None() => ()
+|
+Some(s2c0) =>
+let
+val
+def0 =
+s2cst_get_abst(s2c0)
+in
+case+ def0 of
+|
+ABSTDF2eqeq(_, t2p0) =>
+(
+  xs :=
+  abstlst_open
+  (d3cl, s2c0, t2p0, xs)
+)
+| _ (*non-ABSTDF2eqeq *) => ()
+end
+) (* end of [val] *)
+//
+in
+  fold@(env0) // nothing
+end where
+{
+val-
+D3Cabsopen
+( tok
+, is2c) = d3cl.node()
+val-
+IMPLS2CST2
+(sqid, s2cs, opt0) = is2c
+} (* end of [abstenv_push_open] *)
+
+(* ****** ****** *)
+
+implement
+abstenv_push_impl
+( env0, d3cl ) =
+let
+val+
+@ABSTENV(xs) = env0
+//
+val () =
+(
+case+ opt0 of
+|
+None() => ()
+|
+Some(s2c0) =>
+let
+val
+t2p0 =
+s2exp_erase(def0)
+in
+  xs :=
+  abstlst_impl
+  (d3cl, s2c0, t2p0, xs)
+end
+) (* end of [val] *)
+//
+in
+  fold@(env0) // nothing
+end where
+{
+val-
+D3Cabsimpl
+( tok
+, is2c
+, def0) = d3cl.node()
+val-
+IMPLS2CST2
+(sqid, s2cs, opt0) = is2c
+} (* end of [abstenv_push_impl] *)
+
 (* ****** ****** *)
 
 end // end of [local]

@@ -2081,12 +2081,8 @@ aux_absopen
   d3cl
 ) where
 {
-//
-val-
-D3Cabsopen
-( tok
-, is2c ) = d3cl.node()
-//
+val () =
+abstenv_push_open(env0, d3cl)
 } // end of [aux_absopen]
 
 (* ****** ****** *)
@@ -2100,13 +2096,8 @@ aux_absimpl
   d3cl
 ) where
 {
-//
-val-
-D3Cabsimpl
-( tok
-, is2c
-, def0 ) = d3cl.node()
-//
+val () =
+abstenv_push_impl(env0, d3cl)
 } // end of [aux_absimpl]
 
 (* ****** ****** *)
