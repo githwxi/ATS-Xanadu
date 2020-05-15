@@ -92,7 +92,7 @@ val
 prog1 =
 trans33_declist(env0, prog0)
 //
-val () = abstenv_free_nil(env0)
+val () = abstenv_free_all(env0)
 //
 } (* end of [trans33_program] *)
 

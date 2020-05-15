@@ -267,9 +267,37 @@ implement
 abstenv_free_nil
   (env0) =
 {
-val- ~ABSTENV(lst0) = env0
-val- ~abstlst_nil() = lst0
+val-
+~ABSTENV(lst0) = env0
+val-
+~abstlst_nil() = lst0
 }
+//
+implement
+abstenv_free_all
+  (env0) =
+let
+val-
+~ABSTENV(lst0) = env0
+in
+  abstlst_free_all(lst0)
+end where
+{
+fun
+abstlst_free_all
+  (xs: abstlst): void =
+(
+case- xs of
+|
+~abstlst_nil() => ()
+|
+~abstlst_open
+ (_, _, _, xs) => abstlst_free_all(xs)
+|
+~abstlst_impl
+ (_, _, _, xs) => abstlst_free_all(xs)
+)
+} (* end of [abstlst_free_all] *)
 //
 (* ****** ****** *)
 
@@ -308,13 +336,17 @@ in
   fold@(env0) // nothing
 end where
 {
+//
+val () =
+println!
+(
+"abstenv_push_open: d3cl = ", d3cl
+)
+//
 val-
-D3Cabsopen
-( tok
-, is2c) = d3cl.node()
+D3Cabsopen(tok, is2c) = d3cl.node()
 val-
-IMPLS2CST2
-(sqid, s2cs, opt0) = is2c
+IMPLS2CST2(sqid, s2cs, opt0) = is2c
 } (* end of [abstenv_push_open] *)
 
 (* ****** ****** *)
@@ -348,15 +380,87 @@ in
   fold@(env0) // nothing
 end where
 {
+//
+val () =
+println!
+("abstenv_push_impl: d3cl = ", d3cl)
+//
 val-
 D3Cabsimpl
-( tok
-, is2c
-, def0) = d3cl.node()
+(tok, is2c, def0) = d3cl.node()
+//
 val-
-IMPLS2CST2
-(sqid, s2cs, opt0) = is2c
+IMPLS2CST2(sqid, s2cs, opt0) = is2c
 } (* end of [abstenv_push_impl] *)
+
+(* ****** ****** *)
+
+implement
+abstenv_find
+(env0, s2c0) =
+let
+//
+val () =
+println!
+("abstenv_find: s2c0 = ", s2c0)
+//
+val+
+@ABSTENV(xs) = env0
+val opt0 =
+abstlst_find(xs, s2c0)
+in
+let
+prval () = fold@(env0) in opt0 end
+end where
+{
+fun
+abstlst_find
+( xs:
+! abstlst
+, s2c0: s2cst
+)
+: Option_vt(t2ype) =
+let
+val () =
+println!
+("abstlst_find: s2c0 = ", s2c0)
+in
+case+ xs of
+//
+|
+abstlst_nil() => None_vt((*void*))
+//
+|
+abstlst_let1(xs) => abstlst_find(xs, s2c0)
+|
+abstlst_loc1(xs) => abstlst_find(xs, s2c0)
+|
+abstlst_loc2(xs) => abstlst_find(xs, s2c0)
+//
+|
+abstlst_open
+(d3cl, s2c1, t2p1, xs) =>
+let
+  val () =
+  println!("abstlst_find: s2c1 = ", s2c1)
+in
+  if
+  (s2c0 = s2c1)
+  then Some_vt(t2p1) else abstlst_find(xs, s2c0)
+end
+|
+abstlst_impl
+(d3cl, s2c1, t2p1, xs) =>
+let
+  val () =
+  println!("abstlst_find: s2c1 = ", s2c1)
+in
+  if
+  (s2c0 = s2c1)
+  then Some_vt(t2p1) else abstlst_find(xs, s2c0)
+end
+end (* abstlst_find] *)
+} (* end of [abstenv_find] *)
 
 (* ****** ****** *)
 
