@@ -1053,9 +1053,7 @@ D3Elet
 //
 val () =
 abstenv_add_let1(env0)
-//
-val
-d3cs =
+val d3cs =
 trans33_declist(env0, d3cs)
 //
 in
@@ -1089,8 +1087,9 @@ D3Ewhere
 ( d3e1
 , d3cs) = d3e0.node()
 //
-val
-d3cs =
+val () =
+abstenv_add_let1(env0)
+val d3cs =
 trans33_declist(env0, d3cs)
 //
 in
@@ -1098,9 +1097,12 @@ let
 val
 d3e1 =
 trans33_dexp(env0, d3e1)
+val
+t2p1 = d3e1.type((*void*))
+val () = abstenv_pop_let1(env0)
 in
 d33exp_make_node
-(loc0, d3e1.type(), D3Ewhere(d3e1, d3cs))
+(loc0, t2p1, D3Ewhere(d3e1, d3cs))
 end
 end (* end of [aux_where] *)
 
