@@ -6,19 +6,31 @@
 (* ****** ****** *)
 
 abstype
+myint1_type
+typedef myint1 = myint1_type
+
+fun
+myint1_fst
+(xx: myint1): int =
+( xx.0 ) where
+{
+absimpl myint1_type = $(int)
+}
+
+(* ****** ****** *)
+
+abstype
 myint2_type == $(int, int)
 typedef myint2 = myint2_type
 
-(* ****** ****** *)
-
-absopen myint2_type
-
-(* ****** ****** *)
+fun
+myint2_fst
+(xx: myint2): int =
+let absopen myint2_type in xx.0 end
 
 fun
-myint2_fst(xx: myint2): int = xx.0
-fun
-myint2_snd(xx: myint2): int = xx.1
+myint2_snd(xx: myint2): int =
+let absopen myint2_type in xx.1 end
 
 (* ****** ****** *)
 
