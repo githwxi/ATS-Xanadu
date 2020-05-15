@@ -735,7 +735,7 @@ d3ecl_node =
   ( token(*absopen*), impls2cst )
 | D3Cabsimpl of
   ( token(*abskind*)
-  , impls2cst, s2exp(*definition*))
+  , impls2cst, s2exp(*definition*) )
 //
 | D3Cvaldecl of
   (token(*knd*), decmodopt, v3aldeclist)
