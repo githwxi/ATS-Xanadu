@@ -139,6 +139,8 @@ case+ x0.node() of
 //
 | G1Eint(int) =>
   fprint!(out, "G1Eint(", int, ")")
+| G1Estr(str) =>
+  fprint!(out, "G1Estr(", str, ")")
 //
 | G1Eapp() =>
   fprint!(out, "G1Eapp()")

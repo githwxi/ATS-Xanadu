@@ -5,8 +5,12 @@
 /Xint/runtime.dats"
 (* ****** ****** *)
 
+#define X "foo"
+
+(* ****** ****** *)
+
 #if
-X = 0
+X = "foo"
 #then
 
 fun foo(x: int) = x + x

@@ -424,8 +424,12 @@ typedef t0marglst = List0(t0marg)
 //
 datatype
 g0exp_node =
+//
 | G0Eid of (g0eid)
+//
 | G0Eint of (t0int)
+| G0Estr of (t0str)
+//
 | G0Eapps of g0explst
 | G0Elist of
   (token, g0explst, token) (*temp*)
