@@ -3216,8 +3216,6 @@ in
 case+
 d0cl.node() of
 //
-| D0Cnone _ => d1ecl_none1(d0cl)
-//
 | D0Cfixity _ => aux_fixity(d0cl)
 | D0Cnonfix _ => aux_nonfix(d0cl)
 //
@@ -3258,6 +3256,16 @@ d0cl.node() of
 //
 | D0Cdynconst _ => aux_dynconst(d0cl)
 //
+| D0Clocal
+  ( tbeg, head
+  , topt, body, tend) =>
+  let
+    val head = trans01_declist(head)
+    val body = trans01_declist(body)
+  in
+    d1ecl_make_node(loc0, D1Clocal(head, body))
+  end // end of [D0Clocal]
+//
 | D0Celse(tok1) =>
   (
   d1ecl_make_node(loc0, D1Celse(tok1))
@@ -3274,14 +3282,8 @@ d0cl.node() of
     d1ecl_make_node
     (loc0, D1Cifdec(tok1, test, topt))
   end
-| D0Clocal
-  (tbeg, d0cs1, topt, d0cs2, tend) =>
-  let
-    val d1cs1 = trans01_declist(d0cs1)
-    val d1cs2 = trans01_declist(d0cs2)
-  in
-    d1ecl_make_node(loc0, D1Clocal(d1cs1, d1cs2))
-  end // end of [D0Clocal]
+//
+| D0Cnone _ => d1ecl_none1(d0cl)
 //
 | D0Ctokerr _ =>
   (
