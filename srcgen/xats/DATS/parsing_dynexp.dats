@@ -4067,6 +4067,7 @@ abstype ::=
     val () = buf.incby1()
     val g0e1 = p_g0exp(buf, err)
     val topt = popt_SRP_THEN(buf, err)
+//
     val loc_res =
     (
     case+ topt of
