@@ -1311,8 +1311,21 @@ synread_ifguardlst
 {
 //
 fun
+auxerr
+(x0: d0ecl): void =
+{
+val () =
+synerr_add(SYNERRifgua(x0))
+val () =
+prerr(x0.loc())
+val () =
+prerrln!(": SYNERR(ifgua): ", x0)
+} (* end of [auxerr] *)
+//
+fun
 auxfree
-(xs: d0eclist_vt): void =
+( xs
+: d0eclist_vt): void =
 (
 case+ xs of
 |
@@ -1320,10 +1333,8 @@ case+ xs of
 |
 ~list_vt_cons(x0, xs) =>
  let
-   val () =
-   synerr_add
-   (SYNERRifgua(x0)) in auxfree(xs)
-  end
+ val () = auxerr(x0) in auxfree(xs)
+ end
 )
 //
 fun
@@ -1383,35 +1394,33 @@ case+ ys of
 | @
 list_vt_nil() =>
 let
-  val () =
-  synerr_add(SYNERRifgua(x0))
+  val () = auxerr(x0)
 in
   let prval () = fold@(ys) in ys end
 end
 | @
 list_vt_cons(y0, _) =>
 (
-  case+
-  y0.node() of
-  | D0Cifdec _ =>
-    let
+case+
+y0.node() of
+| D0Cifdec _ =>
+  let
     prval () = fold@(ys)
-    in
-      list_vt_cons(x0, ys)
-    end
-  | D0Celsif _ =>
-    let
+  in
+    list_vt_cons(x0, ys)
+  end
+| D0Celsif _ =>
+  let
     prval () = fold@(ys)
-    in
-      list_vt_cons(x0, ys)
-    end
-  | _(* non-D0Cifdec *) => 
-    let
-      val () =
-      synerr_add(SYNERRifgua(x0))
-    in
+  in
+    list_vt_cons(x0, ys)
+  end
+| _(* non-D0Cifdec *) => 
+  let
+    val () = auxerr(x0)
+  in
     let prval () = fold@(ys) in ys end
-    end
+  end
 )
 ) (* end of [aux_else] *)
 //
@@ -1435,35 +1444,33 @@ case+ ys of
 | @
 list_vt_nil() =>
 let
-  val () =
-  synerr_add(SYNERRifgua(x0))
+  val () = auxerr(x0)
 in
   let prval () = fold@(ys) in ys end
 end
 | @
 list_vt_cons(y0, _) =>
 (
-  case+
-  y0.node() of
-  | D0Cifdec _ =>
-    let
+case+
+y0.node() of
+| D0Cifdec _ =>
+  let
     prval () = fold@(ys)
-    in
-      list_vt_cons(x0, ys)
-    end
-  | D0Celsif _ =>
-    let
+  in
+    list_vt_cons(x0, ys)
+  end
+| D0Celsif _ =>
+  let
     prval () = fold@(ys)
-    in
-      list_vt_cons(x0, ys)
-    end
-  | _(* non-D0Cifdec *) => 
-    let
-      val () =
-      synerr_add(SYNERRifgua(x0))
-    in
-    let prval () = fold@(ys) in ys end
-    end
+  in
+    list_vt_cons(x0, ys)
+  end
+| _(* non-D0Cifdec *) => 
+  let
+    val () = auxerr(x0)
+  in
+  let prval () = fold@(ys) in ys end
+  end
 )
 ) (* end of [aux_elsif] *)
 //
@@ -1477,32 +1484,27 @@ aux_endif
 case+ ys of
 | ~
 list_vt_nil() =>
-(
-  list_vt_nil()
-) where
-{
-  val () = synerr_add(SYNERRifgua(x0))
-}
+let
+  val () =
+  auxerr(x0) in list_vt_nil()
+end
 | ~
 list_vt_cons(y0, ys) =>
 (
-  case+ y0.node() of
-  | D0Celse _ =>
-    (
-      aux_endif(x0, ys)
-    )
-  | D0Cifdec(tok, _, _) => ys
-  | D0Celsif _ =>
-    (
-      aux_endif(x0, ys)
-    )
-  | _(* non-D0Cifdec *) => 
-    (
-      list_vt_cons(y0, ys)
-    ) where
-    {
-      val () = synerr_add(SYNERRifgua(x0))
-    }
+case+ y0.node() of
+| D0Celse _ =>
+  (
+    aux_endif(x0, ys)
+  )
+//
+| D0Cifdec _ => ys
+| D0Celsif _ => aux_endif(x0, ys)
+//
+| _(* non-D0Cifdec *) => 
+  let
+  val () =
+  auxerr(x0) in list_vt_cons(y0, ys)
+  end
 )
 ) (* end of [aux_endif] *)
 //

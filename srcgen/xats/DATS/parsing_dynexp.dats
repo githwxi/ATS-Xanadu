@@ -4079,6 +4079,23 @@ abstype ::=
     err := e0;
     d0ecl_make_node(loc_res, D0Cifdec(tok, g0e1, topt))
   end // end of [SRP_IFDEC(knd)]
+| T_SRP_ELSIF(knd) => let
+//
+    val () = buf.incby1()
+    val g0e1 = p_g0exp(buf, err)
+    val topt = popt_SRP_THEN(buf, err)
+//
+    val loc_res =
+    (
+    case+ topt of
+    | None() => tok.loc()
+    | Some(tok2) => tok.loc() + tok2.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Celsif(tok, g0e1, topt))
+  end // end of [SRP_IFDEC(knd)]
 //
 | _ (* errorcase *) =>
   let
