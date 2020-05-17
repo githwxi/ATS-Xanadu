@@ -11,9 +11,9 @@ X = 0
 
 fun foo(x: int) = x + x
 
-#else
+#elsif
 
-fun bar(x: int) = x + x
+fun bar(x: int) = x * x
 
 #endif // #endif
 

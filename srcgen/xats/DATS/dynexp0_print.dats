@@ -1025,7 +1025,7 @@ case+ x0.node() of
 | D0Cendif(tok) =>
   fprint!(out, "D0Cendif(", tok, ")")
 | D0Cifdec(tok, g0e1, topt) =>
-  fprint!(out, "D0Cifdef(", tok, "; ", g0e1, "; ", topt, ")")
+  fprint!(out, "D0Cifdec(", tok, "; ", g0e1, "; ", topt, ")")
 | D0Celsif(tok, g0e1, topt) =>
   fprint!(out, "D0Celsif(", tok, "; ", g0e1, "; ", topt, ")")
 //
