@@ -245,7 +245,7 @@ tnode =
   | T_SRP_THEN of ()
   | T_SRP_ELSE of ()
   | T_SRP_IFDEC of int(*kind*)
-  | T_SRP_ELSIF of ()
+  | T_SRP_ELSIF of int(*kind*)
   | T_SRP_ENDIF of ()
 //
   | T_SRP_NONFIX of ()

@@ -878,7 +878,10 @@ case+ x0.node() of
   fprint!(out, "D1Cendif(", tok, ")")
 | D1Cifdec(tok, g1e1, topt) =>
   fprint!
-  (out, "D1Cifdef(", tok, "; ", g1e1, "; ", topt, ")")
+  (out, "D1Cifdec(", tok, "; ", g1e1, "; ", topt, ")")
+| D1Celsif(tok, g1e1, topt) =>
+  fprint!
+  (out, "D1Celsif(", tok, "; ", g1e1, "; ", topt, ")")
 //
 | D1Ctokerr(d0c0) => fprint!(out, "D1Ctokerr(", d0c0, ")")
 //

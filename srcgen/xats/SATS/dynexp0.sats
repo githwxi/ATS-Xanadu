@@ -1120,7 +1120,8 @@ for skipping synerr:
 //
 | D0Celse of (token) // opt
 | D0Cendif of (token) // req
-| D0Cifdec of (token, g0exp, tokenopt) // # if(gexp) #then ...
+| D0Cifdec of (token, g0exp, tokenopt) // # if(gexp) ...
+| D0Celsif of (token, g0exp, tokenopt) // # elsif(gexp) ...
 //
 // end of [d0ecl_node]
 //

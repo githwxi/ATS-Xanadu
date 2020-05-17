@@ -3282,6 +3282,14 @@ d0cl.node() of
     d1ecl_make_node
     (loc0, D1Cifdec(tok1, test, topt))
   end
+| D0Celsif
+  (tok1, test, topt) =>
+  let
+  val test = trans01_gexp(test)
+  in
+    d1ecl_make_node
+    (loc0, D1Celsif(tok1, test, topt))
+  end
 //
 | D0Cnone _ => d1ecl_none1(d0cl)
 //

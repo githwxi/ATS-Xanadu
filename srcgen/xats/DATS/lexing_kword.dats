@@ -204,9 +204,9 @@ T_SRP_IFDEF_ = T_SRP_IFDEC(2)
 macdef
 T_SRP_IFNDEF_ = T_SRP_IFDEC(3)
 macdef
-T_SRP_ELSIF_ = T_SRP_IFDEC(4)
+T_SRP_ELSIF_ = T_SRP_ELSIF(0)
 macdef
-T_SRP_ELSIFN_ = T_SRP_IFDEC(5)
+T_SRP_ELSIFN_ = T_SRP_ELSIF(1)
 
 (* ****** ****** *)
 //

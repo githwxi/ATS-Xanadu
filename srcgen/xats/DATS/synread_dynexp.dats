@@ -1311,23 +1311,6 @@ synread_ifguardlst
 {
 //
 fun
-elsifq
-(tok: token): bool =
-let
-val-
-T_SRP_IFDEC(knd) = tok.node()
-in
-if
-(knd = 4(*ELSIF*))
-then true else
-(
-if
-(knd = 5(*ELSIFN*)) then true else false
-)
-end // end of [elsifq]
-
-//
-fun
 auxfree
 (xs: d0eclist_vt): void =
 (
@@ -1370,9 +1353,12 @@ x0.node() of
 | D0Cifdec _ =>
   auxmain(xs, ys) where
   {
-    val ys =
-      list_vt_cons(x0, ys)
-    // end of [val]
+    val ys = aux_ifdec(x0, ys)
+  }
+| D0Celsif _ =>
+  auxmain(xs, ys) where
+  {
+    val ys = aux_elsif(x0, ys)
   }
 | D0Cendif _ =>
   auxmain(xs, ys) where
@@ -1413,6 +1399,12 @@ list_vt_cons(y0, _) =>
     in
       list_vt_cons(x0, ys)
     end
+  | D0Celsif _ =>
+    let
+    prval () = fold@(ys)
+    in
+      list_vt_cons(x0, ys)
+    end
   | _(* non-D0Cifdec *) => 
     let
       val () =
@@ -1421,7 +1413,59 @@ list_vt_cons(y0, _) =>
     let prval () = fold@(ys) in ys end
     end
 )
+) (* end of [aux_else] *)
+//
+and
+aux_ifdec
+( x0
+: d0ecl
+, ys
+: d0eclist_vt
 )
+: d0eclist_vt = list_vt_cons(x0, ys)
+//
+and
+aux_elsif
+( x0
+: d0ecl
+, ys
+: d0eclist_vt) : d0eclist_vt =
+(
+case+ ys of
+| @
+list_vt_nil() =>
+let
+  val () =
+  synerr_add(SYNERRifgua(x0))
+in
+  let prval () = fold@(ys) in ys end
+end
+| @
+list_vt_cons(y0, _) =>
+(
+  case+
+  y0.node() of
+  | D0Cifdec _ =>
+    let
+    prval () = fold@(ys)
+    in
+      list_vt_cons(x0, ys)
+    end
+  | D0Celsif _ =>
+    let
+    prval () = fold@(ys)
+    in
+      list_vt_cons(x0, ys)
+    end
+  | _(* non-D0Cifdec *) => 
+    let
+      val () =
+      synerr_add(SYNERRifgua(x0))
+    in
+    let prval () = fold@(ys) in ys end
+    end
+)
+) (* end of [aux_elsif] *)
 //
 and
 aux_endif
@@ -1447,10 +1491,11 @@ list_vt_cons(y0, ys) =>
     (
       aux_endif(x0, ys)
     )
-  | D0Cifdec(tok, _, _) =>
-    if
-    elsifq(tok)
-    then aux_endif(x0, ys) else ys
+  | D0Cifdec(tok, _, _) => ys
+  | D0Celsif _ =>
+    (
+      aux_endif(x0, ys)
+    )
   | _(* non-D0Cifdec *) => 
     (
       list_vt_cons(y0, ys)
