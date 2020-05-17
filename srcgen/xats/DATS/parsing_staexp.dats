@@ -214,6 +214,8 @@ case+ tnd of
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
 //
+| T_EQ((*void*)) => true
+//
 | T_BSLASH((*void*)) => true
 //
 | _ (* non-identifier *) => false
@@ -242,10 +244,39 @@ tok.node() of
     val () = buf.incby1()
   }
 //
+|
+T_EQ() =>
+i0dnt_some(tok) where
+{
+val () = buf.incby1()
+val loc = tok.loc((*void*))
+val tnd = T_IDENT_EQ(*void*)
+val tok = token_make_node(loc, tnd)
+}
+//
+|
+T_LT() =>
+i0dnt_some(tok) where
+{
+val () = buf.incby1()
+val loc = tok.loc((*void*))
+val tnd = T_IDENT_LT(*void*)
+val tok = token_make_node(loc, tnd)
+}
+|
+T_GT() =>
+i0dnt_some(tok) where
+{
+val () = buf.incby1()
+val loc = tok.loc((*void*))
+val tnd = T_IDENT_GT(*void*)
+val tok = token_make_node(loc, tnd)
+}
+//
 | T_BSLASH() =>
   i0dnt_some(tok) where
   {
-    val () = buf.incby1()
+    val () = buf.incby1() // backslash
   }
 //
 | _ (* non-identifier *) =>
@@ -462,7 +493,7 @@ in
   | T_BSLASH() =>
     i0dnt_some(tok) where
     {
-      val () = buf.incby1()
+      val () = buf.incby1() // backslash
     }
 //
 (*
