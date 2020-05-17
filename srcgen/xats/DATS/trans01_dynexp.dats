@@ -3258,6 +3258,22 @@ d0cl.node() of
 //
 | D0Cdynconst _ => aux_dynconst(d0cl)
 //
+| D0Celse(tok1) =>
+  (
+  d1ecl_make_node(loc0, D1Celse(tok1))
+  )
+| D0Cendif(tok1) =>
+  (
+  d1ecl_make_node(loc0, D1Cendif(tok1))
+  )
+| D0Cifdec
+  (tok1, test, topt) =>
+  let
+  val test = trans01_gexp(test)
+  in
+    d1ecl_make_node
+    (loc0, D1Cifdec(tok1, test, topt))
+  end
 | D0Clocal
   (tbeg, d0cs1, topt, d0cs2, tend) =>
   let

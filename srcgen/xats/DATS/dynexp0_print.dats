@@ -1019,6 +1019,13 @@ case+ x0.node() of
   ( out, "D0Clocal("
   , tbeg, "; ", d0cs0, "; ", topt, "; ", d0cs1, "; ", tend, ")")
 //
+| D0Celse(tok) =>
+  fprint!(out, "D0Celse(", tok, ")")
+| D0Cendif(tok) =>
+  fprint!(out, "D0Cendif(", tok, ")")
+| D0Cifdec(tok, g0e1, topt) =>
+  fprint!(out, "D0Cifdef(", tok, "; ", g0e1, "; ", topt, ")")
+//
 (*
 | _(*rest-of-d1ecl*) =>
     fprint!(out, "fprint_d1ecl: D0C...: not-yet-implemented")

@@ -916,6 +916,10 @@ d1ecl_node =
 //
 | D1Clocal of (d1eclist(*head*), d1eclist(*body*))
 //
+| D1Celse of (token) // opt
+| D1Cendif of (token) // req
+| D1Cifdec of (token, g1exp, tokenopt)
+//
 | D1Ctokerr of (d0ecl) // HX: for error indication
 //
 and

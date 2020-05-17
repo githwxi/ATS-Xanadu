@@ -993,15 +993,21 @@ d0ecl_node =
 indicating error
 *)
 | D0Cnone of token
+//
 (*
-for skipping error
+HX-2019:
+for skipping synerr:
 *)
-| D0Ctokerr of token // error
+| D0Ctokerr of (token)
+//
+(*
+| D0Cthen of (token) // opt
+*)
 //
 // HX: delete fixity
 //
 | D0Cnonfix of
-  (token, i0dntlst)
+    (token, i0dntlst)
 //
 // HX: attach fixity
 //
@@ -1102,15 +1108,19 @@ for skipping error
   // D0Cexcptcon
 //
 | D0Cdatatype of
-    (token(*DATATYPE*), d0atypelst, wd0eclseq)
+  (token(*DATATYPE*), d0atypelst, wd0eclseq)
   // D0Cdatatype
 //
 | D0Cdynconst of
-    (token(*dyncstkind*), tq0arglst, d0cstdeclist)
+  (token(*dyncstkind*), tq0arglst, d0cstdeclist)
 //
 | D0Clocal of
-    ( token(*LOCAL*)
-    , d0eclist, tokenopt(*IN*), d0eclist, token(*END*))
+  ( token(*LOCAL*)
+  , d0eclist, tokenopt(*IN*), d0eclist, token(*END*))
+//
+| D0Celse of (token) // opt
+| D0Cendif of (token) // req
+| D0Cifdec of (token, g0exp, tokenopt) // # if(gexp) #then ...
 //
 // end of [d0ecl_node]
 //

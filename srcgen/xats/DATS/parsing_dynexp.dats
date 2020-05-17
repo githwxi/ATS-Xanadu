@@ -3883,7 +3883,7 @@ abstype ::=
               val loc_arg = (list_last(gmas)).loc()
             }
         )
-      | D0MDEFsome(opt, g0e) => gid.loc() + g0e.loc()
+      | D0MDEFsome(opt, def) => gid.loc() + def.loc()
     ) : loc_t // end of [val]
 //
   in
@@ -4041,6 +4041,43 @@ abstype ::=
     err := e0;
     d0ecl_make_node(loc_res, D0Cfixity(tok, ids, opt2))
   end // end of [FIXITY(knd)]
+//
+//
+| T_SRP_ELSE() => let
+//
+    val () = buf.incby1()
+    val loc_res = tok.loc()
+//
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Celse(tok))
+  end
+| T_SRP_ENDIF() => let
+//
+    val () = buf.incby1()
+    val loc_res = tok.loc()
+//
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cendif(tok))
+  end
+//  
+| T_SRP_IFDEC(knd) => let
+//
+    val () = buf.incby1()
+    val g0e1 = p_g0exp(buf, err)
+    val topt = popt_SRP_THEN(buf, err)
+    val loc_res =
+    (
+    case+ topt of
+    | None() => tok.loc()
+    | Some(tok2) => tok.loc() + tok2.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cifdec(tok, g0e1, topt))
+  end // end of [SRP_IFDEC(knd)]
 //
 | _ (* errorcase *) =>
   let
