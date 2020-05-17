@@ -1016,7 +1016,8 @@ case+ x0.node() of
 | D0Clocal
   (tbeg, d0cs0, topt, d0cs1, tend) =>
   fprint!
-  ( out, "D0Clocal("
+  ( out
+  , "D0Clocal("
   , tbeg, "; ", d0cs0, "; ", topt, "; ", d0cs1, "; ", tend, ")")
 //
 | D0Celse(tok) =>
@@ -1025,6 +1026,8 @@ case+ x0.node() of
   fprint!(out, "D0Cendif(", tok, ")")
 | D0Cifdec(tok, g0e1, topt) =>
   fprint!(out, "D0Cifdef(", tok, "; ", g0e1, "; ", topt, ")")
+| D0Celsif(tok, g0e1, topt) =>
+  fprint!(out, "D0Celsif(", tok, "; ", g0e1, "; ", topt, ")")
 //
 (*
 | _(*rest-of-d1ecl*) =>

@@ -326,8 +326,8 @@ case+ tnd of
   fprint!(out, "#ELSE(", ")")
 | T_SRP_IFDEC(knd) =>
   fprint!(out, "#IFDEC(", knd, ")")
-| T_SRP_ELSIF() =>
-  fprint!(out, "#ELSIF(", ")")
+| T_SRP_ELSIF(knd) =>
+  fprint!(out, "#ELSIF(", knd, ")")
 | T_SRP_ENDIF() =>
   fprint!(out, "#ENDIF(", ")")
 //
@@ -599,8 +599,8 @@ case+ tnd of
   fprint!(out, "#else(", ")")
 | T_SRP_IFDEC(knd) =>
   fprint!(out, "#ifdec(", knd, ")")
-| T_SRP_ELSIF() =>
-  fprint!(out, "#elsif(", ")")
+| T_SRP_ELSIF(knd) =>
+  fprint!(out, "#elsif(", knd, ")")
 | T_SRP_ENDIF() =>
   fprint!(out, "#endif(", ")")
 //
