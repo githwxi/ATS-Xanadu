@@ -126,6 +126,7 @@ datatype synerr =
 | SYNERRd0eid of (i0dnt)
 //
 | SYNERRd0ecl of (d0ecl)
+| SYNERRifgua of (d0ecl)
 //
 | SYNERRf0arg of (f0arg)
 | SYNERRq0arg of (q0arg)
@@ -305,6 +306,9 @@ fun//{}
 synread_d0ecl: synreader(d0ecl)
 fun//{}
 synread_d0eclist: synreader(d0eclist)
+//
+fun//{}
+synread_ifguardlst: synreader(d0eclist)
 //
 (* ****** ****** *)
 

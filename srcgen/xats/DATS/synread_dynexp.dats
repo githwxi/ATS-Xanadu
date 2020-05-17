@@ -1283,6 +1283,170 @@ end // end of [let]
 }
 //
 (* ****** ****** *)
+//
+implement
+synread_ifguardlst
+  (d0cs) =
+(
+  auxmain
+  (d0cs, list_vt_nil())
+) where
+{
+//
+fun
+elsifq
+(tok: token): bool =
+let
+val-
+T_SRP_IFDEC(knd) = tok.node()
+in
+if
+(knd = 4(*ELSIF*))
+then true else
+(
+if
+(knd = 5(*ELSIFN*)) then true else false
+)
+end // end of [elsifq]
+
+//
+fun
+auxfree
+(xs: d0eclist_vt): void =
+(
+case+ xs of
+|
+~list_vt_nil() => ()
+|
+~list_vt_cons(x0, xs) =>
+ let
+   val () =
+   synerr_add
+   (SYNERRifgua(x0)) in auxfree(xs)
+  end
+)
+//
+fun
+auxmain
+( xs
+: d0eclist
+, ys
+: d0eclist_vt): void =
+(
+//
+case+ xs of
+|
+list_nil() =>
+(
+  auxfree(ys)
+)
+|
+list_cons(x0, xs) =>
+(
+case+
+x0.node() of
+| D0Celse _ =>
+  auxmain(xs, ys) where
+  {
+    val ys = aux_else(x0, ys)
+  }
+| D0Cifdec _ =>
+  auxmain(xs, ys) where
+  {
+    val ys =
+      list_vt_cons(x0, ys)
+    // end of [val]
+  }
+| D0Cendif _ =>
+  auxmain(xs, ys) where
+  {
+    val ys = aux_endif(x0, ys)
+  }
+//
+| _(*non-ifguard*) => auxmain(xs, ys)
+//
+) (* list_cons *)
+//
+) (* end of [auxmain] *)
+//
+and
+aux_else
+( x0
+: d0ecl
+, ys
+: d0eclist_vt): d0eclist_vt =
+(
+case+ ys of
+| @
+list_vt_nil() =>
+let
+  val () =
+  synerr_add(SYNERRifgua(x0))
+in
+  let prval () = fold@(ys) in ys end
+end
+| @
+list_vt_cons(y0, _) =>
+(
+  case+
+  y0.node() of
+  | D0Cifdec _ =>
+    let
+    prval () = fold@(ys)
+    in
+      list_vt_cons(x0, ys)
+    end
+  | _(* non-D0Cifdec *) => 
+    let
+      val () =
+      synerr_add(SYNERRifgua(x0))
+    in
+    let prval () = fold@(ys) in ys end
+    end
+)
+)
+//
+and
+aux_endif
+( x0
+: d0ecl
+, ys
+: d0eclist_vt): d0eclist_vt =
+(
+case+ ys of
+| ~
+list_vt_nil() =>
+(
+  list_vt_nil()
+) where
+{
+  val () = synerr_add(SYNERRifgua(x0))
+}
+| ~
+list_vt_cons(y0, ys) =>
+(
+  case+ y0.node() of
+  | D0Celse _ =>
+    (
+      aux_endif(x0, ys)
+    )
+  | D0Cifdec(tok, _, _) =>
+    if
+    elsifq(tok)
+    then aux_endif(x0, ys) else ys
+  | _(* non-D0Cifdec *) => 
+    (
+      list_vt_cons(y0, ys)
+    ) where
+    {
+      val () = synerr_add(SYNERRifgua(x0))
+    }
+)
+) (* end of [aux_endif] *)
+//
+} (* end of [synread_ifguardlst] *)
+//
+(* ****** ****** *)
 
 local
 
@@ -1325,6 +1489,9 @@ let
 //
 val () =
 synread_d0eclist(d0cs)
+val () =
+synread_ifguardlst(d0cs)
+//
 val
 xerrs = the_synerrlst_get()
 val
