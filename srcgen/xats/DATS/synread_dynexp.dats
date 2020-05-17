@@ -302,6 +302,8 @@ d0e0.node() of
 //
     val () =
     synread_d0eclist(d0cs)
+    val () =
+    synread_ifguardlst(d0cs)
 //
     val () =
     (
@@ -752,6 +754,19 @@ d0cl.node() of
     val () = synread_d0cstdeclist(d0cs)
   }
 //
+| D0Clocal
+  ( tbeg, head
+  , topt, body, tend) =>
+  {
+//
+    val () = synread_d0eclist(head)
+    val () = synread_ifguardlst(head)
+//
+    val () = synread_d0eclist(body)
+    val () = synread_ifguardlst(body)
+//
+  }
+//
 | D0Cnone(tok) =>
   let
     val () =
@@ -804,6 +819,8 @@ d0eclseq_WHERE
 //
 val () =
 synread_d0eclist(d0cs)
+val () =
+synread_ifguardlst(d0cs)
 //
 (*
 val () =
