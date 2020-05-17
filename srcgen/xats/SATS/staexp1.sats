@@ -77,7 +77,10 @@ datatype
 g1exp_node =
 //
 | G1Eid of (sym_t)
+//
 | G1Eint of (token)
+| G1Estr of (token)
+//
 | G1Eapp of ((*void*))
 //
 | G1Eapp1 of

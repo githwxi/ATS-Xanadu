@@ -344,6 +344,8 @@ case+ x0.node() of
 //
 | G0Eint(int) =>
   fprint!(out, "G0Eint(", int, ")")
+| G0Estr(str) =>
+  fprint!(out, "G0Estr(", str, ")")
 //
 | G0Eapps(s0ts) =>
   fprint!(out, "G0Eapps(", s0ts, ")")

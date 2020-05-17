@@ -640,6 +640,17 @@ case+ tnd of
     err := e0;
     g0exp_make_node(loc, G0Eint(i0))
   end // end of [t_t0int]
+//
+| _ when t_t0str(tnd) =>
+  let
+    val x0 =
+    p_t0str(buf, err)
+    val loc = x0.loc()
+  in
+    err := e0;
+    g0exp_make_node(loc, G0Estr(x0))
+  end // end of [t_t0int]
+//
 | T_LPAREN() => let
     val () = buf.incby1()
     val g0es =

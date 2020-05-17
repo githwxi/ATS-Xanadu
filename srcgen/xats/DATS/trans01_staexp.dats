@@ -453,6 +453,21 @@ in
   FXITMatm
   (g1exp_make_node(loc, G1Eint(tok)))
 end // end of [auxint]
+fun
+auxstr
+( str
+: t0str)
+: g1eitm = let
+//
+val loc = str.loc()
+//
+val-
+T0STRsome(tok) = str.node()
+//
+in
+  FXITMatm
+  (g1exp_make_node(loc, G1Estr(tok)))
+end // end of [auxstr]
 
 fun
 auxitm
@@ -480,6 +495,7 @@ g0e0.node() of
 | G0Eid(gid) => auxgid(gid)
 //
 | G0Eint(int) => auxint(int)
+| G0Estr(str) => auxstr(str)
 //
 | G0Eapps(g0es) =>
   FXITMatm(g1e0) where
