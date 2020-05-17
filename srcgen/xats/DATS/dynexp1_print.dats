@@ -872,6 +872,14 @@ case+ x0.node() of
   fprint!
   (out, "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
 //
+| D1Celse(tok) =>
+  fprint!(out, "D1Celse(", tok, ")")
+| D1Cendif(tok) =>
+  fprint!(out, "D1Cendif(", tok, ")")
+| D1Cifdec(tok, g1e1, topt) =>
+  fprint!
+  (out, "D1Cifdef(", tok, "; ", g1e1, "; ", topt, ")")
+//
 | D1Ctokerr(d0c0) => fprint!(out, "D1Ctokerr(", d0c0, ")")
 //
 (*

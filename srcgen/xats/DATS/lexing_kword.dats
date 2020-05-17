@@ -194,6 +194,21 @@ macdef
 T_RECORD4_ = T_RECORD(4)
 
 (* ****** ****** *)
+
+macdef
+T_SRP_IFEXP_ = T_SRP_IFDEC(0)
+macdef
+T_SRP_IFNEXP_ = T_SRP_IFDEC(1)
+macdef
+T_SRP_IFDEF_ = T_SRP_IFDEC(2)
+macdef
+T_SRP_IFNDEF_ = T_SRP_IFDEC(3)
+macdef
+T_SRP_ELSIF_ = T_SRP_IFDEC(4)
+macdef
+T_SRP_ELSIFN_ = T_SRP_IFDEC(5)
+
+(* ****** ****** *)
 //
 macdef
 T_INFIX_ = T_SRP_FIXITY(INFIX)
@@ -404,15 +419,26 @@ val () = myins("$delay_t")
 val () = myins("$delay_vt")
 //
 *)
-(*
 //
-val () = myins("#if")
-val () = myins("#ifdef")
-val () = myins("#ifundef")
+val () =
+  myins("#if", T_SRP_IFEXP_)
+val () =
+  myins("#ifn", T_SRP_IFNEXP_)
 //
-val () = myins("#define")
+val () =
+  myins("#ifdef", T_SRP_IFDEF_)
+val () =
+  myins("#ifndef", T_SRP_IFNDEF_)
 //
-*)
+val () =
+  myins("#elsif", T_SRP_ELSIF_)
+val () =
+  myins("#elsifn", T_SRP_ELSIFN_)
+//
+val () = myins("#then", T_SRP_THEN)
+val () = myins("#else", T_SRP_ELSE)
+//
+val () = myins("#endif", T_SRP_ENDIF)
 //
 val () = myins("#infix", T_INFIX_)
 val () = myins("#infix0", T_INFIX_)
