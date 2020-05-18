@@ -815,6 +815,8 @@ d3cl.node() of
         trerr33_add(TRERR33d3ecl(d3cl))
       in
       prerrln!
+      (loc0, ": ***TRERR33***");
+      prerrln!
       ( loc0
       , ": TRERR33(D3Cimpdecl2): id2c = ", id2c )
       end // end of [None()]

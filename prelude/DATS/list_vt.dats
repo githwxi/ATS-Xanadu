@@ -10,6 +10,12 @@
 *)
 
 (* ****** ****** *)
+
+#staload
+UN =
+"prelude/SATS/unsafe.sats"
+
+(* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
@@ -108,15 +114,119 @@ list_vt_length
 {
 fun
 loop
-{i,j:nat|i+j==n}.<i>.
-( xs
-: !list_vt(a, i), j: int(j)): int(n) =
+{i,j:nat
+|i+j==n}.<i>.
+( xs:
+! list_vt(a,i)
+, ln: int( j )): int(n) =
 (
 case+ xs of
-| !list_vt_nil() => j
-| !list_vt_cons(_, xs) => loop(xs, j+1)
+| !
+list_vt_nil() => ln
+| !
+list_vt_cons(_, xs) => loop(xs, ln+1)
 )
 } endwhr // end of [length_vt_length]
+
+(* ****** ****** *)
+
+implement
+<a>(*tmp*)
+list_vt_append
+  (xs, ys) =
+(
+let
+var xs = xs
+val () = loop(xs, ys) in xs
+end
+) where
+{
+//
+fun
+loop
+{m,n:nat} .<m>.
+( xs:
+& list_vt(a, m) >>
+  list_vt(a, m+n)
+, ys:
+~ list_vt(a, n)) : void =
+(
+case+ xs of
+| ~
+list_vt_nil() => xs := ys
+| @
+list_vt_cons(_, _) =>
+let
+  val () = loop(xs.1, ys)
+in
+  let prval () = $fold(xs) in () end
+end // end of [list_vt_cons]
+) (* end of [loop] *)
+//
+} (* end of [list_vt_append] *)
+
+(* ****** ****** *)
+
+implement
+<a>(*tmp*)
+list_vt_concat(xss) =
+let
+var
+res:
+list_vt(a) = list_vt_nil()
+val () = auxmain(xss, &res) in res
+end where
+{
+//
+fun
+auxnext
+( res
+: p2tr(list_vt(a))
+)
+: p2tr(list_vt(a)) =
+let
+val xs0 =
+$UN.p2tr_get(res)
+in
+//
+case+ xs0 of
+|
+list_vt_nil() =>
+let
+val
+xs0 =
+$UN.delinear(xs0) in res end
+|
+list_vt_cons(_, _) =>
+let
+val
+res = &(xs0.1)
+val
+xs0 =
+$UN.delinear(xs0) in auxnext(res) end
+//
+end // end of [auxnext]
+fun
+auxmain
+( xss
+: list_vt
+  (list_vt(a))
+, res
+: p2tr(list_vt(a))): void =
+(
+case+ xss of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(xs0, xss) =>
+let
+  val () =
+  $UN.p2tr_set(res, xs0)
+  val res = auxnext(res) in auxmain(xss, res)
+end // end of [let]
+)
+//
+} (* end of [list_vt_concat] *)
 
 (* ****** ****** *)
 

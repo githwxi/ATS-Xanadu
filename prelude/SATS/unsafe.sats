@@ -42,6 +42,10 @@ cast01{a0:t0}{a1:t0}(a0): (a1)
 fcast
 cast10{a1:t0}{a0:t0}(a0): (a1)
 //
+(* ****** ****** *)
+//
+fcast
+delinear{a0:vt}(a0): (?a0)
 fcast
 castlin01{a0:vt}{a1:vt}(a0): (a1)
 fcast

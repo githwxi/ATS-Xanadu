@@ -30,6 +30,11 @@
 // For functional streams
 //
 (* ****** ****** *)
+//
+#symload nil with strmcon_nil
+#symload cons with strmcon_cons
+//
+(* ****** ****** *)
 
 fun
 <a:t0>

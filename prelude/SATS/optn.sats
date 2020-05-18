@@ -36,29 +36,35 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+#symload none with optn_nil
+#symload some with optn_cons
+
+(* ****** ****** *)
 //
 fun<>
-optn_none?
-{a:type}{b:bool}
+optn_nilq
+{a:t0}{b:b0}
 (xs: optn(a, b)): bool(b=ff)
 fun<>
-optn_some?
-{a:type}{b:bool}
+optn_consq
+{a:t0}{b:b0}
 (xs: optn(a, b)): bool(b=tt)
 //
-#symload iseqz with optn_none?
-#symload isneqz with optn_some?
+#symload nilq with optn_nilq
+#symload eqzq with optn_nilq
+#symload consq with optn_consq
+#symload neqzq with optn_consq
 //
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
 optn_length
-{b:bool}
+{b:b0}
 (xs: optn(a, b)): int(b2i(b))
-
 #symload length with optn_length
-
+//
 (* ****** ****** *)
 
 (* end of [optn.sats] *)

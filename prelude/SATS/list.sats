@@ -36,6 +36,11 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+#symload nil with list_nil
+#symload cons with list_cons
+
+(* ****** ****** *)
 //
 fun<>
 list_nilq
@@ -46,7 +51,9 @@ list_consq
 {a:type}{n:int}
 (xs: list(a, n)): bool(n > 0)
 //
+#symload nilq with list_nilq
 #symload eqzq with list_nilq
+#symload consq with list_consq
 #symload neqzq with list_consq
 //
 (* ****** ****** *)
