@@ -63,6 +63,15 @@ gint_neg_sint
 {i:int}(x: sint(i)): sint(-i)
 #symload - with gint_neg_sint of 110
 //
+(* ****** ****** *)
+//
+fun
+gint_abs_sint
+{i:int}(x: sint(i)): sint(abs(i))
+#symload abs with gint_abs_sint of 110
+//
+(* ****** ****** *)
+//
 fun<>
 gint_succ_sint
 {i:int}(x: sint(i)): sint(i+1)

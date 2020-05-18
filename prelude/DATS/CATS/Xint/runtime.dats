@@ -179,9 +179,23 @@ gint_print_sint<> = xint_gint_print_sint
 fun
 xint_gint_neg_sint
 {i:int}
-(x0: sint(i)): sint(-i) = $ext()
+( x0
+: sint(i)): sint(-i) = $ext()
 impltmp
 gint_neg_sint<> = xint_gint_neg_sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gint_abs_sint
+{i:int}
+( x0
+: sint(i)): sint(abs(i)) = $ext()
+impltmp
+gint_abs_sint<> = xint_gint_abs_sint
+//
+(* ****** ****** *)
 //
 #extern
 fun

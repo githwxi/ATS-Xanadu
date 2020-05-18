@@ -126,6 +126,29 @@ list_rappend<a>(xs, list_nil())
 ) (* list_reverse *)
 //
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_copy_vt
+  (xs) =
+(
+list_map_vt<a><a>(xs)
+) where
+{
+impltmp map$fopr<a><a>(x0) = x0
+}
+impltmp
+<a>(*tmp*)
+list_rcopy_vt
+  (xs) =
+(
+list_maprev_vt<a><a>(xs)
+) where
+{
+impltmp map$fopr<a><a>(x0) = x0
+}
+
+(* ****** ****** *)
 //
 impltmp
 <a>(*tmp*)

@@ -31,10 +31,17 @@
 //
 (* ****** ****** *)
 //
+#symload
+nil_vt with strmcon_nil_vt
+#symload
+cons_vt with strmcon_cons_vt
+//
+(* ****** ****** *)
+//
 fun
 <a:t0>
 stream_vt2t
-(stream_vt(a)): stream(a)
+(xs: stream_vt(a)): stream(a)
 //
 (* ****** ****** *)
 
