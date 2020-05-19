@@ -40,6 +40,13 @@ case+ xs of
 //
 impltmp
 <a>(*tmp*)
+list_vt_sing(x0) =
+list_vt_cons(x0, list_vt_nil())
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
 list_vt_free
   {n}(xs) = let
 ( loop(xs) ) where

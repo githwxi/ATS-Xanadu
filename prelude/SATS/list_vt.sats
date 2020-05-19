@@ -51,6 +51,12 @@ list_vt2t
 
 (* ****** ****** *)
 //
+fun
+<a:vt>
+list_vt_sing(x: a): list_vt(a, 1)
+//
+(* ****** ****** *)
+//
 fun<>
 list_vt_nilq
 {a:vt}{n:int}
@@ -103,7 +109,6 @@ list_vt_append
 fun
 <a:vt>
 list_vt_concat
-{m,n:int}
 ( xss
 : list_vt(list_vt(a))): list_vt(a)
 //
