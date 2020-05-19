@@ -5,6 +5,10 @@
 /Xint/runtime.dats"
 (* ****** ****** *)
 
+typedef
+bool_neg = bool(~tt)
+
+////
 #define X "foo"
 
 (* ****** ****** *)

@@ -40,7 +40,6 @@
 fun
 <k:type>
 gint_print(x: gint(k)): void
-//
 #symload
 print with gint_print of 100
 //
@@ -81,6 +80,8 @@ gint_pred_sint
 //
 #symload succ with gint_succ_sint of 110
 #symload pred with gint_pred_sint of 110
+//
+(* ****** ****** *)
 //
 fun<>
 gint_succ_uint
@@ -136,11 +137,61 @@ gint_neq_sint_sint
 (* ****** ****** *)
 //
 fun<>
+gint_lt_uint_uint
+{i,j:int}
+( x: uint(i)
+, y: uint(j)): bool(i<j) // = $ext()
+#symload < with gint_lt_uint_uint of 120
+fun<>
+gint_gt_uint_uint
+{i,j:int}
+( x: uint(i)
+, y: uint(j)): bool(i>j) // = $ext()
+#symload > with gint_gt_uint_uint of 120
+fun<>
+gint_eq_uint_uint
+{i,j:int}
+( x: uint(i)
+, y: uint(j)): bool(i=j) // = $ext()
+#symload = with gint_eq_uint_uint of 120
+//
+fun<>
+gint_lte_uint_uint
+{i,j:int}
+( x: uint(i)
+, y: uint(j)): bool(i<=j) // = $ext()
+#symload <= with gint_lte_uint_uint of 120
+fun<>
+gint_gte_uint_uint
+{i,j:int}
+( x: uint(i)
+, y: uint(j)): bool(i>=j) // = $ext()
+#symload >= with gint_gte_uint_uint of 120
+//
+fun<>
+gint_neq_uint_uint
+{i,j:int}
+( x: uint(i)
+, y: uint(j)): bool(i!=j) // = $ext()
+#symload != with gint_neq_uint_uint of 120
+//
+(* ****** ****** *)
+//
+fun<>
 gint_cmp_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): sint(sgn(i-j)) // = $ext()
 #symload cmp with gint_cmp_sint_sint of 120
+//
+(* ****** ****** *)
+//
+fun<>
+gint_cmp_uint_uint
+{i,j:int}
+( x: uint(i)
+, y: uint(j)): uint(sgn(i-j)) // = $ext()
+#symload cmp with gint_cmp_uint_uint of 120
 //
 (* ****** ****** *)
 

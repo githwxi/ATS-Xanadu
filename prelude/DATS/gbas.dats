@@ -32,7 +32,7 @@ impltmp
 g_noteq<a>
   (x, y) =
 (
-  not(g_equal<a>(x, y))
+not(g_equal<a>(x, y))
 )
 //
 (* ****** ****** *)
@@ -47,8 +47,10 @@ g_free<list_vt(a)>
   (xs) =
 ( loop(xs) ) where
 {
-fun`
-loop(xs: list_vt(a)): void =
+fun
+loop
+( xs
+: ~list_vt(a)): void =
 (
 case+ xs of
 |
