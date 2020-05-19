@@ -824,16 +824,17 @@ D3Esym0
 //
 val
 t2p0 = d3e0.type()
-(*
+// (*
 val () =
 println!
 ("auxsym0: d3e0 = ", d3e0)
 val () =
 println!
 ("auxsym0: t2p0 = ", t2p0)
-*)
+// *)
 //
-val opt0 =
+val
+opt0 =
 match2_d2pitmlst_t2ype(dpis, t2p0)
 //
 in(* in-of-let *)

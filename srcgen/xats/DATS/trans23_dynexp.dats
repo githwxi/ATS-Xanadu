@@ -808,13 +808,14 @@ auxsym0
 val
 loc0 = d2e0.loc()
 val-
-D2Esym0(d1e, dpis) = d2e0.node()
+D2Esym0
+(d1e1, dpis) = d2e0.node()
 //
 val t2p0 = t2ype_new(loc0)
 //
 in
 d23exp_make_node
-  (loc0, t2p0, D3Esym0(d1e, dpis))
+  (loc0, t2p0, D3Esym0(d1e1, dpis))
 end // end of [auxsym0]
 
 (* ****** ****** *)

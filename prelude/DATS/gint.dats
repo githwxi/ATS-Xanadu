@@ -116,10 +116,12 @@ gint_nilq_sint<>(xs) = (xs <= 0)
 impltmp
 gint_consq_sint<>(xs) = (xs >= 1)
 //
+(*
 impltmp
 gint_nilq_uint<>(xs) = (xs <= 0u)
 impltmp
 gint_consq_uint<>(xs) = (xs >= 1u)
+*)
 //
 (* ****** ****** *)
 
@@ -128,6 +130,10 @@ gint_forall_sint<>
   (xs) =
 ( loop(0) ) where
 {
+//
+typedef x0 = sint
+typedef xs = sint
+//
 fun
 loop(x0: sint): bool =
 if
@@ -148,6 +154,10 @@ gint_rforall_sint<>
   (xs) =
 ( loop(xs) ) where
 {
+//
+typedef x0 = sint
+typedef xs = sint
+//
 fun
 loop(xs: sint): bool =
 if

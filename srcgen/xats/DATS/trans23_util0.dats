@@ -366,14 +366,14 @@ val t2p1 = tplft_elim(t2p1)
 val t2p2 = tplft_elim(t2p2)
 *)
 //
-(*
+// (*
 val () =
 println!
 ("match2_d2cst_t2ype: t2p1 = ", t2p1)
 val () =
 println!
 ("match2_d2cst_t2ype: t2p2 = ", t2p2)
-*)
+// *)
 //
 in
   match2_t2ype_t2ype(t2p1, t2p2)
@@ -386,14 +386,14 @@ implement
 match2_d2itm_t2ype
   (d2i1, t2p2) = let
 //
-(*
+// (*
 val () =
 println!
 ("match2_d2itm_t2ype: d2i1 = ", d2i1)
 val () =
 println!
 ("match2_d2itm_t2ype: t2p2 = ", t2p2)
-*)
+// *)
 //
 in
   case+ d2i1 of
@@ -451,7 +451,7 @@ auxcst
 ( loop(d2cs) ) where
 {
 //
-  val-D2ITMcst(d2cs) =  d2i1
+val-D2ITMcst(d2cs) = d2i1
 //
 fun
 loop
@@ -650,12 +650,12 @@ auxmat
   match2(d2i0, t2p2)
 ) where
 {
-(*
+// (*
 val () =
 println!("auxmat: d2i0 = ", d2i0)
 val () =
 println!("auxmat: t2p0 = ", t2p2)
-*)
+// *)
 }
 //
 fun

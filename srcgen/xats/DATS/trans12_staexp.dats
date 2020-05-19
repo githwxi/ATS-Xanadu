@@ -636,24 +636,29 @@ s1exp_get_eff(s1e0) = S2EFFall()
 implement
 s1exp_get_s2cstlst
   (s1e0) =
-(
+let
+val () =
+println!
+("s1exp_get_s2cstlst: s1e0 = ", s1e0)
+in
 case+
 s1e0.node() of
-| S1Eid(sid) => let
-    val
-    opt =
-    the_sexpenv_find(sid)
-  in
-    case+ opt of
-    | ~None_vt() => list_nil()
-    | ~Some_vt(s2i) =>
-      (
-        case+ s2i of
-        | S2ITMcst(s2cs) => s2cs | _ => list_nil()
-      )
-  end // end of [S1Eid]
+|
+S1Eid(sid) => let
+  val
+  opt =
+  the_sexpenv_find(sid)
+in
+  case+ opt of
+  | ~None_vt() => list_nil()
+  | ~Some_vt(s2i) =>
+    (
+     case+ s2i of
+     | S2ITMcst(s2cs) => s2cs | _ => list_nil()
+    )
+end // end of [S1Eid]
 | _(*rest-of-s1exp*) => list_nil()
-)
+end // end of [s1exp_get_s2cstlst]
 
 (* ****** ****** *)
 
@@ -834,10 +839,10 @@ auxid0
 : s1exp): s2exp = let
 //
 val-
-S1Eid(sid) = s1e0.node()
+S1Eid
+(sid) = s1e0.node()
 //
-val
-knd = isany(sid)
+val knd = isany(sid)
 //
 in
 //
@@ -1267,39 +1272,66 @@ auxapp1_cbv0_
 ( s1e0
 : s1exp): s2exp = let
 //
+val CBV0 = 0 // !
+//
 val-
 S1Eapp1
 (s1e1, s1e2) = s1e0.node()
 //
+val s2e2 =
+  trans12_sexp(s1e2)
+val s2t2 = s2e2.sort()
+//
 in
+if
+sort2_is_impred(s2t2)
+then
 s2exp_arg
-(0(*cbv*), trans12_sexp_ci(s1e2))
+(CBV0, s2e2) else auxapp1_a_(s1e0)
 end // [auxapp1_cbv0_]
 and
 auxapp1_cbv1_
 ( s1e0
 : s1exp): s2exp = let
 //
+val CBV1 = 1 // ~
+//
 val-
 S1Eapp1
 (s1e1, s1e2) = s1e0.node()
 //
+val s2e2 =
+  trans12_sexp(s1e2)
+val s2t2 = s2e2.sort()
+//
 in
+if
+sort2_is_impred(s2t2)
+then
 s2exp_arg
-(1(*cbv*), trans12_sexp_ci(s1e2))
+(CBV1, s2e2) else auxapp1_a_(s1e0)
 end // [auxapp1_cbv1_]
 and
 auxapp1_cbrf_
 ( s1e0
 : s1exp): s2exp = let
 //
+val CBRF = ~1 // &
+//
 val-
 S1Eapp1
 (s1e1, s1e2) = s1e0.node()
 //
+val s2e2 =
+  trans12_sexp(s1e2)
+val s2t2 = s2e2.sort()
+//
 in
+if
+sort2_is_impred(s2t2)
+then
 s2exp_arg
-(~1(*cbrf*), trans12_sexp_ci(s1e2))
+(CBRF, s2e2) else auxapp1_a_(s1e0)
 end // [auxapp1_cbrf_]
 
 (* ****** ****** *)
@@ -1755,7 +1787,8 @@ val-
 S1Etuple
 (knd, s1es) = s1e0.node()
 //
-val s2es = trans12_sexplst_ci(s1es)
+val s2es =
+trans12_sexplst_ci(s1es)
 //
 in
   s2exp_tuple1(knd, s2es)
