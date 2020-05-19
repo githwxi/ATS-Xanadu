@@ -957,6 +957,33 @@ in
 case+
 d3f0.node() of
 |
+D3Esym0 _ =>
+let
+//
+val
+d3es =
+trans33_dexplst(env0, d3es)
+//
+val
+d3f0 =
+let
+val tres =
+t2ype_new(loc0)
+val targ =
+d3explst_get_type(d3es)
+val tfun =
+t2ype_fun0
+(loc0, npf1, targ, tres)
+in
+  d23exp_dn(d3f0, tfun)
+end // end of [val]
+val
+d3f0 = trans33_dexp(env0, d3f0)
+//
+in
+d33exp_dapp_up(loc0, env0, d3f0, npf1, d3es)
+end
+|
 D3Edtsel _ =>
 (
   auxdapp2(env0, d3e0)
