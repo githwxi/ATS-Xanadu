@@ -194,6 +194,8 @@ d2e0.node() of
 | D2Econ2(d2cs) => ()
 | D2Ecst2(d2cs) => ()
 //
+| D2Esym0(_, _) => ()
+//
 | D2Esapp
   (d2e1, s2es) =>
   {
@@ -545,6 +547,57 @@ d2cl.node() of
     println!
     ("tread12_d2ecl: D2Cfundecl: f2ds = ", f2ds)
 *)
+  }
+//
+| D2Cimpdecl1
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, ti2s
+  , f2as, res1, d2e2) =>
+  {
+(*
+    val () =
+    tread12_sq2arglst(sqas)
+*)
+    val () =
+    tread12_tq2arglst(tqas)
+(*
+    val () =
+    tread12_ti2arglst(ti2s)
+*)
+//
+    val () =
+      tread12_f2arglst(f2as)
+    // end of [val]
+//
+    val () =
+    tread12_effs2expopt(res1)
+    val () = tread12_d2exp(d2e2)
+  }
+| D2Cimpdecl2
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, ti2s
+  , f2as, res1, d2e2) =>
+  {
+(*
+    val () =
+    tread12_sq2arglst(sqas)
+*)
+    val () =
+    tread12_tq2arglst(tqas)
+(*
+    val () =
+    tread12_ti2arglst(ti2s)
+*)
+//
+    val () =
+      tread12_f2arglst(f2as)
+    // end of [val]
+//
+    val () =
+    tread12_effs2expopt(res1)
+    val () = tread12_d2exp(d2e2)
   }
 //
 | D2Cdynconst
