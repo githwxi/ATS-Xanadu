@@ -39,9 +39,9 @@ glseq_uncons_opt
 if
 glseq_nilq1<x0,xs>(xs)
 then
-optn_none((*void*))
+optn_vt_nil((*void*))
 else
-optn_some
+optn_vt_cons
 (glseq_uncons_raw<x0,xs>(xs))
 //
 (* ****** ****** *)
@@ -64,7 +64,7 @@ impltmp
 glseq_forall0
   (xs) =
 stream_vt_forall0<x0>
-(glseq_streamize<x0,xs>(xs))
+(glseq_streamize0<x0,xs>(xs))
 //
 (* ****** ****** *)
 //
