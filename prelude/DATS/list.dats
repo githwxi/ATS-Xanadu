@@ -315,7 +315,8 @@ loop(xs, list_vt_nil((*void*)))
 {
 //
 fun
-loop{i:nat}.<i>.
+loop
+{i,j:nat}.<i>.
 ( xs
 : list(x0, i)
 , ys

@@ -95,6 +95,35 @@ glseq_streamize0(~xs): stream_vt(x0)
 //
 (* ****** ****** *)
 //
+(*
+glseq_foldl: foldl$fopr
+glseq_foldr: foldr$fopr
+*)
+//
+fun
+<x0:vt
+,xs:vt>
+<r0:vt>
+glseq_foldl0(~xs, r0): r0
+fun
+<x0:vt
+,xs:vt>
+<r0:vt>
+glseq_foldl1(!xs, r0): r0
+//
+fun
+<x0:vt
+,xs:vt>
+<r0:vt>
+glseq_foldr0(~xs, r0): r0
+fun
+<x0:vt
+,xs:vt>
+<r0:vt>
+glseq_foldr1(!xs, r0): r0
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt
 ,xs:vt>

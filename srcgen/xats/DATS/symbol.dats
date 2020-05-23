@@ -388,6 +388,13 @@ MSGT_symbol = symbol_make("->")
 (* ****** ****** *)
 //
 implement
+DOTLT_symbol = symbol_make(".<")
+implement
+GTDOT_symbol = symbol_make(">.")
+//
+(* ****** ****** *)
+//
+implement
 WCARD_symbol = symbol_make("_")
 //
 implement
