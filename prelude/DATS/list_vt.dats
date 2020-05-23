@@ -48,7 +48,7 @@ list_vt_cons(x0, list_vt_nil())
 impltmp
 <a>(*tmp*)
 list_vt_free
-  {n}(xs) = let
+  {n}(xs) =
 ( loop(xs) ) where
 {
 fun
@@ -122,7 +122,7 @@ list_vt_length
 fun
 loop
 {i,j:nat
-|i+j==n}.<i>.
+|i+j = n}.<i>.
 ( xs:
 ! list_vt(a,i)
 , ln: int( j )): int(n) =
@@ -404,6 +404,35 @@ end // end of [list_vt_cons]
 //
 impltmp
 <a>(*tmp*)
+list_vt_forall1
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+( xs
+: !list_vt(a)): bool =
+(
+case+ xs of
+| !
+list_vt_nil() => true
+| !
+list_vt_cons(x0, xs) =>
+let
+val
+test = forall1$test<a>(x0)
+in
+//
+if test then loop(xs) else false
+//
+end // end of [list_vt_cons]
+)
+} (* end of [list_vt_forall1] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
 list_vt_foreach0
   (xs) =
   (loop(xs)) where
@@ -424,6 +453,31 @@ foreach0$work<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
 } (* end of [list_vt_foreach0] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_vt_foreach1
+  (xs) =
+  (loop(xs)) where
+{
+fun
+loop
+( xs
+: list_vt(a)): void =
+(
+case+ xs of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(x0, xs) =>
+let
+val () =
+foreach1$work<a>(x0) in loop(xs)
+end // end of [list_vt_cons]
+)
+} (* end of [list_vt_foreach1] *)
 //
 (* ****** ****** *)
 //
@@ -659,10 +713,23 @@ glseq_rlistize0
 //
 impltmp
 {a:vt}
-glseq_forall0<a,list_vt(a)> = list_vt_forall0<a>
+glseq_forall0
+<a,list_vt(a)> = list_vt_forall0<a>
 impltmp
 {a:vt}
-glseq_foreach0<a,list_vt(a)> = list_vt_foreach0<a>
+glseq_forall1
+<a,list_vt(a)> = list_vt_forall1<a>
+//
+(* ****** ****** *)
+//
+impltmp
+{a:vt}
+glseq_foreach0
+<a,list_vt(a)> = list_vt_foreach0<a>
+impltmp
+{a:vt}
+glseq_foreach1
+<a,list_vt(a)> = list_vt_foreach1<a>
 //
 (* ****** ****** *)
 //

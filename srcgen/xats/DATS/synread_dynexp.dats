@@ -964,15 +964,15 @@ f0a0.node() of
     (tbeg, s0qs, tend) =>
   {
     val () = synread_LBRACE(tbeg)
-    val () = synread_RBRACE(tend)
     val () = synread_s0qualst(s0qs)
+    val () = synread_RBRACE(tend)
   }
 | F0ARGsome_met
     (tbeg, s0es, tend) =>
   {
-    val () = synread_LBRACE(tbeg)
-    val () = synread_RBRACE(tend)
+    val () = synread_DOTLT( tbeg )
     val () = synread_s0explst(s0es)
+    val () = synread_GTDOT( tend )
   }
 //
 ) (* list_foreach$fwork *)

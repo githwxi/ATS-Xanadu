@@ -157,10 +157,19 @@ list_vt_tabulate_cref
 //
 fun
 <x0:vt>
-list_vt_forall0(xs: list_vt(x0)): bool
+list_vt_forall0(xs: ~list_vt(x0)): bool
 fun
 <x0:vt>
-list_vt_foreach0(xs: list_vt(x0)): void
+list_vt_forall1(xs: !list_vt(x0)): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_foreach0(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_foreach1(xs: !list_vt(x0)): void
 //
 (* ****** ****** *)
 //

@@ -399,6 +399,13 @@ fun//{}
 synread_MSGT: synreader(token)
 *)
 //
+//
+fun//{}
+synread_DOTLT: synreader(token)
+fun//{}
+synread_GTDOT: synreader(token)
+//
+//
 fun//{}
 synread_LPAREN: synreader(token)
 fun//{}

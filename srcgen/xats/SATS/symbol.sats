@@ -108,6 +108,11 @@ val MSLT_symbol : symbol // symbol("-<")
 val MSGT_symbol : symbol // symbol("->")
 //
 (* ****** ****** *)
+
+val DOTLT_symbol : symbol // symbol(".<")
+val GTDOT_symbol : symbol // symbol(">.")
+
+(* ****** ****** *)
 //
 val WCARD_symbol : symbol // symbol("_")
 //

@@ -74,6 +74,9 @@ and K_MSLT: tkind
 and K_MSGT: tkind
 *)
 //
+and K_DOTLT: tkind
+and K_GTDOT: tkind
+//
 and K_LPAREN: tkind
 and K_RPAREN: tkind
 and K_LBRACE: tkind
@@ -100,6 +103,9 @@ implement K_MSLT = K_SYMBOL(MSLT_symbol)
 (*
 implement K_MSGT = K_SYMBOL(MSGT_symbol)
 *)
+//
+implement K_DOTLT = K_SYMBOL(DOTLT_symbol)
+implement K_GTDOT = K_SYMBOL(GTDOT_symbol)
 //
 implement K_LPAREN = K_SYMBOL(LPAREN_symbol)
 implement K_RPAREN = K_SYMBOL(RPAREN_symbol)
@@ -519,6 +525,46 @@ tok.node() of
   end // end of [let]
 ) (* end of [synread_MSGT] *)
 *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_DOTLT
+  (tok) =
+(
+case+
+tok.node() of
+| T_DOTLT _ => ()
+| _(*non-DOTLT*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_DOTLT, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(DOTLT): ", tok)
+  end // end of [let]
+) (* end of [synread_DOTLT] *)
+
+implement
+//{}(*tmp*)
+synread_GTDOT
+  (tok) =
+(
+case+
+tok.node() of
+| T_GTDOT() => ()
+| _(*non-GTDOT*) =>
+  let
+    val () =
+    synerr_add
+    (SYNERRtoken(K_GTDOT, tok))
+  in
+    prerrln!
+    (tok.loc(), ": SYNERR(GTDOT): ", tok)
+  end // end of [let]
+) (* end of [synread_GTDOT] *)
 
 (* ****** ****** *)
 

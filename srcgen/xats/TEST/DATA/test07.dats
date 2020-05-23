@@ -9,6 +9,13 @@
 
 (* ****** ****** *)
 
+#macdef
+sq(x) = (x * x)
+#macdef
+cb(x) = (x * x * x)
+
+(* ****** ****** *)
+
 #if
 X = "foo"
 #then
