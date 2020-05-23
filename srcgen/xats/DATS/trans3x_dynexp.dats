@@ -79,13 +79,17 @@ implement
 trans3x_dexp
   (d3e0) = let
 //
-val loc0 = d3e0.loc()
+val
+loc0 = d3e0.loc()
+val () =
+println!
+("trans3x_dexp: d3e0 = ", d3e0)
 //
 in(*in-of-let*)
 //
 case+
 d3e0.node() of
-| _(*rest-of-d3exp*) => d3e0 // yet-to-be-handled
+| _ (* rest-of-d3exp *) => d3e0 // yet-to-be-handled
 //
 end // end of [trans3x_dexp]
 //
