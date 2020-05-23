@@ -535,7 +535,7 @@ synread_DOTLT
 (
 case+
 tok.node() of
-| T_DOTLT _ => ()
+| T_DOTLT(_) => ()
 | _(*non-DOTLT*) =>
   let
     val () =
@@ -554,7 +554,7 @@ synread_GTDOT
 (
 case+
 tok.node() of
-| T_GTDOT() => ()
+| T_GTDOT( ) => ()
 | _(*non-GTDOT*) =>
   let
     val () =
