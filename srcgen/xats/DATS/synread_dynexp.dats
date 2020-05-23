@@ -696,6 +696,19 @@ d0cl.node() of
     val () = synread_s0exp(def)
   }
 //
+| D0Csymload
+  ( tok, sym0
+  , twth, dqid, topt) =>
+  {
+(*
+    val () =
+    synread_SYMLOAD(tok)
+*)
+    val () = synread_WITH(twth)
+    val () = synread_s0ymb(sym0)
+    val () = synread_dq0eid(dqid)
+  }
+//
 | D0Cvaldecl
   (tok, mopt, v0ds) =>
   {
@@ -731,16 +744,28 @@ d0cl.node() of
     synread_f0undeclist(f0ds)
   }
 //
-| D0Csymload
-  (tok, sym0, twth, dqid, topt) =>
+| D0Cimpdecl
+  ( tok, mopt
+  , sqas, tqas
+  , dqid, tias, f0as
+  , res0, teq1, body) =>
   {
 (*
     val () =
-    synread_SYMLOAD(tok)
+    synread_sq0arglst(sqas)
 *)
-    val () = synread_WITH(twth)
-    val () = synread_s0ymb(sym0)
-    val () = synread_dq0eid(dqid)
+    val () =
+    synread_tq0arglst(tqas)
+(*
+    val () =
+    synread_ti0arglst(tias)
+*)
+    val () =
+      synread_f0arglst(f0as)
+    val () =
+    synread_effs0expopt(res0)
+    val () = synread_EQ(teq1)
+    val () = synread_d0exp(body)
   }
 //
 | D0Cdynconst
@@ -750,8 +775,10 @@ d0cl.node() of
     val () =
     synread_FUN/VAL(tok)
 *)
-    val () = synread_tq0arglst(tqas)
-    val () = synread_d0cstdeclist(d0cs)
+    val () =
+      synread_tq0arglst(tqas)
+    val () =
+      synread_d0cstdeclist(d0cs)
   }
 //
 | D0Clocal
