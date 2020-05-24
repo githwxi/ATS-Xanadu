@@ -87,7 +87,8 @@ i0cmd_node =
 //
   | CMDcmnt of (string)
 //
-  | CMDmove_val of (t0var, i0val)
+  | CMDmove_val of (t0var, i0val) // tmp := i0v
+  | CMDmove_ref of (t0var, i0val) // tmp := ref(i0v)
 //
 (* ****** ****** *)
 
