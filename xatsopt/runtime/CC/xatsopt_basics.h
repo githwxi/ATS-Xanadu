@@ -42,12 +42,20 @@
 //
 // HX: boolean values
 //
-#define xatsopt_bool_true 1
-#define xatsopt_bool_false 0
+#define XATS_BOOL_TRUE 1
+#define XATS_BOOL_FALSE 0
 //
 /* ****** ****** */
 
-#define xatsopt_ptr0_null ((void*)0)
+#define XATS_PTR0_NULL ((void*)0)
+
+/* ****** ****** */
+
+#define XATS_STRUCT struct
+
+/* ****** ****** */
+
+#define XATS_ABSIMPL(flag) void *flag = (void*)0
 
 /* ****** ****** */
 

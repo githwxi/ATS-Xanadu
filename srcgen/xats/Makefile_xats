@@ -73,6 +73,7 @@ trans3t.sats \
 trans3x.sats \
 tread3x.sats \
 intrep0.sats \
+xcomp3i.sats \
 
 SRCDATS := \
 basics.dats \
