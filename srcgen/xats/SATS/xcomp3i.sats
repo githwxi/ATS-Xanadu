@@ -39,62 +39,35 @@
 
 #staload "./staexp2.sats"
 #staload "./statyp2.sats"
-#staload "./dynexp2.sats"
 
 (* ****** ****** *)
 
-abstype t0var_type
-typedef t0var = t0var_type
+#staload "./dynexp3.sats"
 
 (* ****** ****** *)
 
-abstype t0lab_type
-abstype f0lab_type
-typedef t0lab = t0lab_type
-typedef f0lab = f0lab_type
+#staload "./intrep0.sats"
 
 (* ****** ****** *)
 
-abstype i0val_type
-abstype i0cmd_type
-typedef i0val = i0val_type
-typedef i0cmd = i0cmd_type
-
-(* ****** ****** *)
-
-typedef i0valist = List0(i0val)
-typedef i0valopt = Option(i0val)
+absvtype compenv_vtype
+vtypedef compenv = compenv_vtype
 
 (* ****** ****** *)
 //
-datatype
-i0val_node =
-//
-| I0Vtmp of t0var // tmp variables
-//
-| I0Vcst of d2cst // dyn constants
-| I0Venv of d2var // for environvals
-//
-| I0Vint of (int)
-| I0Vintrep of (string)
-//
-| I0Vbool of bool
-| I0Vchar of char
-| I0Vstring of (string)
+fun
+xcomp3i_dexp
+( env0
+: !compenv, d3e0: d3exp): i0val
+fun
+xcomp3i_dexpopt
+( env0
+: !compenv, opt0: d3expopt): i0valopt
+fun
+xcomp3i_dexplst
+( env0
+: !compenv, d3es: d3explst): i0valist
 //
 (* ****** ****** *)
 
-datatype
-i0cmd_node =
-//
-  | CMDflab of (f0lab)
-  | CMDtlab of (t0lab)
-//
-  | CMDcmnt of (string)
-//
-  | CMDmove_val of (t0var, i0val) // tmp := i0v
-  | CMDmove_ref of (t0var, i0val) // tmp := ref(i0v)
-//
-(* ****** ****** *)
-
-(* end of [intrep0.sats] *)
+(* end of [xcomp3i.sats] *)
