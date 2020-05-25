@@ -637,9 +637,11 @@ implement
 s1exp_get_s2cstlst
   (s1e0) =
 let
+(*
 val () =
 println!
 ("s1exp_get_s2cstlst: s1e0 = ", s1e0)
+*)
 in
 case+
 s1e0.node() of
