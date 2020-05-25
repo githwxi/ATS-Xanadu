@@ -40,6 +40,7 @@
 #staload "./staexp2.sats"
 #staload "./statyp2.sats"
 #staload "./dynexp2.sats"
+#staload "./dynexp3.sats"
 
 (* ****** ****** *)
 
@@ -70,30 +71,35 @@ typedef i0valopt = Option(i0val)
 datatype
 i0val_node =
 //
+| I0Vint of token
+| I0Vbtf of token
+| I0Vchr of token
+| I0Vflt of token
+| I0Vstr of token
+//
 | I0Vtmp of t0var // tmp variables
 //
+| I0Varg of d2var
 | I0Vcst of d2cst // dyn constants
-| I0Venv of d2var // for environvals
+| I0Venv of d2var // for env variables
+| I0Vvar of
+    (d2var, i0val) // for local variables
+  // end of [I0Vvar]
 //
-| I0Vint of (int)
-| I0Vintrep of (string)
-//
-| I0Vbool of bool
-| I0Vchar of char
-| I0Vstring of (string)
+| I0Verror of (d3exp) // for error indication
 //
 (* ****** ****** *)
 
 datatype
 i0cmd_node =
 //
-  | CMDflab of (f0lab)
-  | CMDtlab of (t0lab)
+| CMDflab of (f0lab)
+| CMDtlab of (t0lab)
 //
-  | CMDcmnt of (string)
+| CMDcmnt of (string)
 //
-  | CMDmove_val of (t0var, i0val) // tmp := i0v
-  | CMDmove_ref of (t0var, i0val) // tmp := ref(i0v)
+| CMDmove_val of (t0var, i0val) // tmp := i0v
+| CMDmove_ref of (t0var, i0val) // tmp := ref(i0v)
 //
 (* ****** ****** *)
 
