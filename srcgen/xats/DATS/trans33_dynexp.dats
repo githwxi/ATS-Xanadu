@@ -85,14 +85,13 @@ trans33_program
 {
 //
 val
-env0 =
-abstenv_make_nil()
+env0 = abstenv_make_nil()
 //
 val
 prog1 =
 trans33_declist(env0, prog0)
 //
-val () = abstenv_free_all(env0)
+val () = abstenv_free_top(env0)
 //
 } (* end of [trans33_program] *)
 

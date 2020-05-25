@@ -68,16 +68,26 @@ fprint_val<t2ype> = fprint_t2ype
 //
 implement
 trans3x_program
-  (prog) =
-(
-  trans3x_declist(prog)
-)
+  (prog0) =
+  (prog1) where
+{
+//
+val
+env0 = dvarenv_make_nil()
+//
+val
+prog1 =
+trans3x_declist(env0, prog0)
+//
+val () = dvarenv_free_top(env0)
+//
+} (* end of [trans3x_program] *)
 //
 (* ****** ****** *)
 //
 implement
 trans3x_dexp
-  (d3e0) = let
+(env0, d3e0) = let
 //
 val
 loc0 = d3e0.loc()
@@ -97,34 +107,48 @@ end // end of [trans3x_dexp]
 
 implement
 trans3x_dexpopt
-  (opt) =
+(env0, opt) =
 (
 case+ opt of
 | None() => None()
-| Some(d3e) => Some(trans3x_dexp(d3e))
+| Some(d3e) =>
+  Some(trans3x_dexp(env0, d3e))
 ) (* end of [trans3x_dexpopt] *)
+
+(* ****** ****** *)
 
 implement
 trans3x_dexplst
-  (d3es) =
-list_vt2t(d3es) where
-{
+  (env0, d3es) = let
+//
 val
-d3es =
-list_map<d3exp><d3exp>
-  (d3es) where
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+in
+list_vt2t
+(
+list_map<d3exp><d3exp>(d3es)
+) where
 {
 implement
-list_map$fopr<d3exp><d3exp>(d3e) = trans3x_dexp(d3e)
+list_map$fopr<d3exp><d3exp>(d3e0) =
+let
+val env0 =
+$UN.castvwtp0{dvarenv}(env0)
+val d3e0 = trans3x_dexp(env0, d3e0)
+in
+let prval () = $UN.cast2void(env0) in d3e0 end
+end
 }
-} (* end of [trans3x_dexplst] *)
+end // end of [trans3x_dexplst]
 
 (* ****** ****** *)
 //
 //
 implement
 trans3x_decl
-  (d3cl) = let
+(env0, d3cl) = let
 //
 val loc0 = d3cl.loc()
 //
@@ -140,18 +164,29 @@ end // end of [trans3x_decl]
 //
 implement
 trans3x_declist
-  (dcls) =
-list_vt2t(dcls) where
-{
+  (env0, dcls) = let
+//
 val
-dcls =
-list_map<d3ecl><d3ecl>
-  (dcls) where
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+in
+list_vt2t
+(
+list_map<d3ecl><d3ecl>(dcls)
+) where
 {
 implement
-list_map$fopr<d3ecl><d3ecl>(dcl) = trans3x_decl(dcl)
+list_map$fopr<d3ecl><d3ecl>(d3cl) =
+let
+val env0 =
+$UN.castvwtp0{dvarenv}(env0)
+val d3cl = trans3x_decl(env0, d3cl)
+in
+let prval () = $UN.cast2void(env0) in d3cl end
+end
 }
-} (* end of [trans3x_declist] *)
+end // end of [trans3x_declist]
 //
 (* ****** ****** *)
 

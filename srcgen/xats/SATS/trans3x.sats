@@ -85,19 +85,41 @@ trans3x_program
 //
 (* ****** ****** *)
 //
-fun
-trans3x_dexp: d3exp -> d3exp 
-fun
-trans3x_dexplst: d3explst -> d3explst
-fun
-trans3x_dexpopt: d3expopt -> d3expopt
+absvtype dvarenv_vtype = ptr
+vtypedef dvarenv = dvarenv_vtype
 //
 (* ****** ****** *)
 //
 fun
-trans3x_decl: d3ecl -> d3ecl 
+dvarenv_make_nil(): dvarenv
 fun
-trans3x_declist: d3eclist -> d3eclist
+dvarenv_free_top(dvarenv): void
+//
+(* ****** ****** *)
+//
+fun
+trans3x_dexp
+( env0
+: !dvarenv, d3e0: d3exp): d3exp 
+fun
+trans3x_dexplst
+( env0
+: !dvarenv, d3es: d3explst): d3explst
+fun
+trans3x_dexpopt
+( env0
+: !dvarenv, d3es: d3expopt): d3expopt 
+//
+(* ****** ****** *)
+//
+fun
+trans3x_decl
+( env0
+: !dvarenv, d3c0: d3ecl): d3ecl
+fun
+trans3x_declist
+( env0
+: !dvarenv, d3cs: d3eclist): d3eclist
 //
 (* ****** ****** *)
 

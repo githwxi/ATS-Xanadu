@@ -147,6 +147,7 @@ trans33_dynexp.dats \
 tread33_dynexp.dats \
 trans3t_envmap.dats \
 trans3t_dynexp.dats \
+trans3x_envmap.dats \
 trans3x_dynexp.dats \
 tread3x_dynexp.dats \
 
