@@ -70,4 +70,4 @@ xcomp3i_dexplst
 //
 (* ****** ****** *)
 
-(* end of [xcomp3i.sats] *)
+(* end of [xats_xcomp3i.sats] *)

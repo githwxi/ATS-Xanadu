@@ -270,6 +270,7 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./trans3t_envmap.dats"
 #dynload "./trans3t_dynexp.dats"
 //
+#dynload "./trans3x_envmap.dats"
 #dynload "./trans3x_dynexp.dats"
 #dynload "./tread3x_dynexp.dats"
 //

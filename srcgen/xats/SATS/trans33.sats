@@ -144,9 +144,7 @@ abstenv_pop_loc12
 fun
 abstenv_make_nil(): abstenv
 fun
-abstenv_free_nil(abstenv): void
-fun
-abstenv_free_all(abstenv): void
+abstenv_free_top(abstenv): void
 //
 (* ****** ****** *)
 //

@@ -264,17 +264,7 @@ ABSTENV(abstlst_nil())
 (* ****** ****** *)
 //
 implement
-abstenv_free_nil
-  (env0) =
-{
-val-
-~ABSTENV(lst0) = env0
-val-
-~abstlst_nil() = lst0
-}
-//
-implement
-abstenv_free_all
+abstenv_free_top
   (env0) =
 let
 val-
@@ -470,4 +460,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [trans33_envmap.dats] *)
+(* end of [xats_trans33_envmap.dats] *)

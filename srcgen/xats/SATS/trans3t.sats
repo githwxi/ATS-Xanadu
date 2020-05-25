@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2019
+// Start Time: March, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -81,6 +81,12 @@ typedef d3claulst = $D3E.d3claulst
 
 #staload T33 = "./trans33.sats"
 
+(* ****** ****** *)
+//
+fun
+trans3t_program
+  (d3cls: d3eclist): d3eclist
+//
 (* ****** ****** *)
 //
 absvtype implenv_vtype = ptr
@@ -159,12 +165,6 @@ implenv_add_impdecl3
 : !implenv
 , d3cl: d3ecl
 , ti3e: $T33.ti3env): void
-//
-(* ****** ****** *)
-//
-fun
-trans3t_program
-  (d3cls: d3eclist): d3eclist
 //
 (* ****** ****** *)
 
