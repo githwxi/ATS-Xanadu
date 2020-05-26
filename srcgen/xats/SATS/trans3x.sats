@@ -91,6 +91,25 @@ vtypedef dvarenv = dvarenv_vtype
 (* ****** ****** *)
 //
 fun
+dvarenv_add_let1
+  (env0: !dvarenv): void
+fun
+dvarenv_pop_let1
+  (env0: !dvarenv): void
+//
+fun
+dvarenv_add_loc1
+  (env0: !dvarenv): void
+fun
+dvarenv_add_loc2
+  (env0: !dvarenv): void
+fun
+dvarenv_pop_loc12
+  (env0: !dvarenv): void
+//
+(* ****** ****** *)
+//
+fun
 dvarenv_make_nil(): dvarenv
 fun
 dvarenv_free_top(dvarenv): void

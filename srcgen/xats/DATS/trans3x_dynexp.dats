@@ -84,13 +84,20 @@ val () = dvarenv_free_top(env0)
 } (* end of [trans3x_program] *)
 //
 (* ****** ****** *)
-//
+
+local
+
+in(*in-of-local*)
+
 implement
 trans3x_dexp
 (env0, d3e0) = let
 //
 val
 loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
 val () =
 println!
 ("trans3x_dexp: d3e0 = ", d3e0)
@@ -99,10 +106,33 @@ in(*in-of-let*)
 //
 case+
 d3e0.node() of
+//
+| D3Elet(d3cs, d3e1) =>
+  let
+//
+    val () =
+    dvarenv_add_let1(env0)
+//
+    val
+    d3cs =
+    trans3x_declist(env0, d3cs)
+    val
+    d3e1 = trans3x_dexp(env0, d3e1)
+//
+    val () =
+    dvarenv_pop_let1(env0)
+//
+  in
+    d3exp_make_node
+    (loc0, t2p0, D3Elet(d3cs, d3e1))
+  end
+//
 | _ (* rest-of-d3exp *) => d3e0 // yet-to-be-handled
 //
 end // end of [trans3x_dexp]
-//
+
+end // end of [local]
+
 (* ****** ****** *)
 
 implement

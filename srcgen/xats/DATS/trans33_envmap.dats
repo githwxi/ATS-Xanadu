@@ -258,7 +258,7 @@ implement
 abstenv_make_nil
   ((*void*)) =
 (
-ABSTENV(abstlst_nil())
+  ABSTENV(abstlst_nil())
 )
 //
 (* ****** ****** *)

@@ -80,7 +80,7 @@ dvarstk =
 | dvarstk_nil of ()
 //
 | dvarstk_lam0 of dvarstk
-| dvarstk_fix0 of dvarstk
+| dvarstk_fix0 of (d2var, dvarstk)
 //
 | dvarstk_let1 of dvarstk
 | dvarstk_loc1 of dvarstk
@@ -99,12 +99,55 @@ dvarenv_vtype = dvarenv
 in(*in-of-local*)
 
 (* ****** ****** *)
+
+implement
+dvarenv_add_let1
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@DVARENV(xs) = env
+val () =
+(xs := dvarstk_let1(xs))
+//
+} (* end of [dvarenv_add_let1] *)
+
+(* ****** ****** *)
+
+implement
+dvarenv_pop_let1
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@DVARENV(xs) = env
+val () =
+(xs := dvarstk_pop_let1(xs))
+//
+} where
+{
+//
+fun
+dvarstk_pop_let1
+(xs: dvarstk): dvarstk =
+(
+case- xs of
+| ~dvarstk_let1(xs) => xs
+| ~dvarstk_dpat
+   (_, xs) => dvarstk_pop_let1(xs)
+) (* end of [dvarstk_pop_let1] *)
+//
+} (* end of [dvarenv_pop_let1] *)
+
+(* ****** ****** *)
 //
 implement
 dvarenv_make_nil
   ((*void*)) =
 (
-DVARENV(dvarstk_nil())
+  DVARENV(dvarstk_nil())
 )
 //
 (* ****** ****** *)
