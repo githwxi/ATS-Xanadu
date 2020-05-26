@@ -175,7 +175,22 @@ end // end of [trans3x_dexplst]
 
 (* ****** ****** *)
 //
-//
+local
+
+fun
+aux_valdecl
+( env0:
+! dvarenv
+, d3cl: d3ecl): d3ecl = d3cl
+
+fun
+aux_vardecl
+( env0:
+! dvarenv
+, d3cl: d3ecl): d3ecl = d3cl
+
+in(*in-of-local*)
+
 implement
 trans3x_decl
 (env0, d3cl) = let
@@ -186,9 +201,47 @@ in(* in-of-let *)
 //
 case+
 d3cl.node() of
+//
+|
+D3Cinclude _ => d3cl
+|
+D3Cstaload _ => d3cl
+//
+|
+D3Clocal
+(head, body) => let
+  val () =
+  dvarenv_add_loc1(env0)
+  val
+  head =
+  trans3x_declist(env0, head)
+//
+  val () =
+  dvarenv_add_loc2(env0)
+  val
+  body =
+  trans3x_declist(env0, body)
+//
+in
+let
+  val () = dvarenv_pop_loc12(env0)
+in
+  d3ecl_make_node(loc0, D3Clocal(head, body))
+end
+end
+//
+|
+D3Cvaldecl _ =>
+aux_valdecl(env0, d3cl)
+|
+D3Cvardecl _ =>
+aux_vardecl(env0, d3cl)
+//
 | _(*rest-of-d3ecl*) => d3cl // yet-to-be-handled
 //
 end // end of [trans3x_decl]
+
+end // end of [local]
 //
 (* ****** ****** *)
 //
