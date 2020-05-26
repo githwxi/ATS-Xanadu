@@ -83,8 +83,10 @@ dvarstk =
 | dvarstk_fix0 of (d2var, dvarstk)
 //
 | dvarstk_let1 of dvarstk
+(*
 | dvarstk_loc1 of dvarstk
 | dvarstk_loc2 of dvarstk
+*)
 //
 | dvarstk_dpat of (d3pat, dvarstk)
 | dvarstk_farg of (f3arg, dvarstk)
@@ -116,6 +118,40 @@ val () =
 (* ****** ****** *)
 
 implement
+dvarenv_add_loc1
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@DVARENV(xs) = env
+(*
+val () =
+(xs := dvarstk_loc1(xs))
+*)
+//
+} (* end of [dvarenv_add_loc1] *)
+
+(* ****** ****** *)
+
+implement
+dvarenv_add_loc2
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@DVARENV(xs) = env
+(*
+val () =
+(xs := dvarstk_loc2(xs))
+*)
+//
+} (* end of [dvarenv_add_loc2] *)
+
+(* ****** ****** *)
+
+implement
 dvarenv_pop_let1
   (env) =
 ( fold@(env) ) where
@@ -123,23 +159,41 @@ dvarenv_pop_let1
 //
 val+
 @DVARENV(xs) = env
-val () =
-(xs := dvarstk_pop_let1(xs))
+val () = (xs := auxstk(xs))
 //
 } where
 {
 //
 fun
-dvarstk_pop_let1
+auxstk
 (xs: dvarstk): dvarstk =
 (
 case- xs of
-| ~dvarstk_let1(xs) => xs
-| ~dvarstk_dpat
-   (_, xs) => dvarstk_pop_let1(xs)
-) (* end of [dvarstk_pop_let1] *)
+|
+~dvarstk_let1(xs) => xs
+|
+~dvarstk_dpat(_, xs) => auxstk(xs)
+) (* end of [auxstk] *)
 //
 } (* end of [dvarenv_pop_let1] *)
+
+(* ****** ****** *)
+
+implement
+dvarenv_pop_loc12
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@DVARENV(xs) = env
+val () = (xs := auxstk(xs))
+//
+} where
+{
+fun
+auxstk(xs: dvarstk): dvarstk = xs
+} (* end of [dvarenv_pop_loc12] *)
 
 (* ****** ****** *)
 //
@@ -155,25 +209,27 @@ dvarenv_make_nil
 implement
 dvarenv_free_top
   (env0) =
-let
+(
+  auxstk(stk0)
+) where
+{
+//
 val-
 ~DVARENV(stk0) = env0
-in
-  dvarstk_free_all(stk0)
-end where
-{
+//
 fun
-dvarstk_free_all
-  (xs: dvarstk): void =
+auxstk
+(xs: dvarstk): void =
 (
 case- xs of
 |
 ~dvarstk_nil() => ()
 |
-~dvarstk_dpat(_, xs) => dvarstk_free_all(xs)
+~dvarstk_dpat(_, xs) => auxstk(xs)
 |
-~dvarstk_farg(_, xs) => dvarstk_free_all(xs)
+~dvarstk_farg(_, xs) => auxstk(xs)
 )
+//
 } (* end of [dvarstk_free_all] *)
 //
 (* ****** ****** *)
