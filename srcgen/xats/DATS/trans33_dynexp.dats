@@ -2171,8 +2171,7 @@ val def =
 (
 case+ def of
 |
-None() =>
-None()
+None() => None()
 |
 Some(d3e0) =>
 let
