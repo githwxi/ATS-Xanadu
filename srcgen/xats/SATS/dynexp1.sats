@@ -894,8 +894,9 @@ d1ecl_node =
   , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)
 //
 | D1Csymload of
-  ( token(*symload*)
-  , s0ymb, dq0eid, t0intopt)
+  ( token(*#symload*)
+  , s0ymb(*overloaded*)
+  , dq0eid, t0intopt(*precedence*))
 //
 | D1Cdatasort of
     (token(*datasort*), d1tsortlst)

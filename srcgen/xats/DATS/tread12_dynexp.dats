@@ -182,6 +182,7 @@ case+
 d2e0.node() of
 //
 | D2Eint(tok) => ()
+| D2Ebtf(tok) => ()
 | D2Echr(tok) => ()
 | D2Eflt(tok) => ()
 | D2Estr(tok) => ()
@@ -265,10 +266,39 @@ d2e0.node() of
     val () =
     tread12_d2exp(d2e1)
   }
+| D2Eeval(d2e1) =>
+  {
+    val () =
+    tread12_d2exp(d2e1)
+  }
 | D2Efold(d2e1) =>
   {
     val () =
     tread12_d2exp(d2e1)
+  }
+| D2Efree(d2e1) =>
+  {
+    val () =
+    tread12_d2exp(d2e1)
+  }
+//
+| D2Eraise(d2e1) =>
+  {
+    val () =
+    tread12_d2exp(d2e1)
+  }
+//
+| D2Elazy(d2e1) =>
+  {
+    val () =
+    tread12_d2exp(d2e1)
+  }
+| D2Ellazy(d2e1, d2es) =>
+  {
+    val () =
+    tread12_d2exp(d2e1)
+    val () =
+    tread12_d2explst(d2es)
   }
 //
 | D2Eanno(d2e1, s2e2) =>

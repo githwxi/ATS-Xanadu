@@ -249,6 +249,52 @@ case- xs of
 //
 (* ****** ****** *)
 
+implement
+tr3xenv_dvar_locq
+  (env0, d2v0) =
+(
+  auxstk(stk0)
+) where
+{
+//
+val-
+TR3XENV(stk0) = env0
+//
+fun
+auxstk
+(xs: !tr3xstk): bool =
+(
+case- xs of
+|
+tr3xstk_nil() => false
+|
+tr3xstk_lam0 _ => false
+|
+tr3xstk_fix0 _ => false
+|
+tr3xstk_let1(xs) => auxstk(xs)
+|
+tr3xstk_dpat(d3p0, xs) =>
+(
+if test then true else auxstk(xs)
+) where
+{
+  val test = d3pat_memq_dvar(d3p0, d2v0)
+}
+|
+tr3xstk_farg(f3a0, xs) =>
+(
+if test then true else auxstk(xs)
+) where
+{
+  val test = f3arg_memq_dvar(f3a0, d2v0)
+}
+)
+//
+} (* end of [tr3xstk_free_all] *)
+//
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)

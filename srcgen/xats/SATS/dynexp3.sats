@@ -209,6 +209,15 @@ d3pat_tcast
 (* ****** ****** *)
 //
 fun
+d3pat_memq_dvar
+(d3p0: d3pat, d2v0: d2var): bool
+fun
+d3patlst_memq_dvar
+(d3ps: d3patlst, d2v0: d2var): bool
+//
+(* ****** ****** *)
+//
+fun
 d3pat_make_node
 ( loc0: loc_t
 , t2p0: t2ype, node: d3pat_node): d3pat
@@ -274,6 +283,14 @@ overload print with print_f3arg
 overload prerr with prerr_f3arg
 overload fprint with fprint_f3arg
 //
+(* ****** ****** *)
+//
+fun
+f3arg_memq_dvar
+(f3a0: f3arg, d2v0: d2var): bool
+//
+(* ****** ****** *)
+//
 fun
 f3arg_make_node
 (loc: loc_t, node: f3arg_node): f3arg
@@ -292,6 +309,8 @@ d3exp_node =
 | D3Etop of (token)
 //
 | D3Evar of (d2var)
+| D3Evloc of (d2var) // local
+| D3Evenv of (d2var) // environent
 //
 | D3Econ1 of (d2con)
 | D3Ecst1 of (d2cst)

@@ -245,6 +245,36 @@ d0e0.node() of
     synread_d0explst(d0es)
   }
 //
+| D0Esqarg
+  (tbeg, s0es, tend) =>
+  {
+(*
+    val () =
+    synread_LBRACE(tbeg)
+*)
+    val () =
+    synread_RBRACE(tend)
+    val () =
+    synread_s0explst(s0es)
+  }
+| D0Etqarg
+  (tbeg, s0es, tend) =>
+  {
+(*
+    val () =
+    synread_LT(tbeg)
+*)
+    val () =
+    synread_s0explst(s0es)
+    val () =
+    (
+    case+
+    tend.node() of
+    | T_LTGT() => ()
+    | _(*else*) => synread_GT(tend)
+    ) : void // end of [val]
+  }
+//
 | D0Eparen
   (tbeg, d0es, dend) =>
   {

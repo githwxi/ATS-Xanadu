@@ -127,6 +127,13 @@ fun
 tr3xenv_free_top(tr3xenv): void
 //
 (* ****** ****** *)
+
+fun
+tr3xenv_dvar_locq
+( env0
+: !tr3xenv, d2v0: d2var): bool
+
+(* ****** ****** *)
 //
 fun
 trans3x_dexp
