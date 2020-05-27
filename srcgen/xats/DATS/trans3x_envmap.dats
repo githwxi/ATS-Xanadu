@@ -71,181 +71,181 @@ fprint_val<t2ype> = fprint_t2ype
 (* ****** ****** *)
 //
 datavtype
-dvarenv =
-DVARENV of dvarstk
+tr3xenv =
+TR3XENV of tr3xlst
 //
 and
-dvarstk =
+tr3xlst =
 //
-| dvarstk_nil of ()
+| tr3xlst_nil of ()
 //
-| dvarstk_lam0 of dvarstk
-| dvarstk_fix0 of (d2var, dvarstk)
+| tr3xlst_lam0 of tr3xlst
+| tr3xlst_fix0 of (d2var, tr3xlst)
 //
-| dvarstk_let1 of dvarstk
+| tr3xlst_let1 of tr3xlst
 (*
-| dvarstk_loc1 of dvarstk
-| dvarstk_loc2 of dvarstk
+| tr3xlst_loc1 of tr3xlst
+| tr3xlst_loc2 of tr3xlst
 *)
 //
-| dvarstk_dpat of (d3pat, dvarstk)
-| dvarstk_farg of (f3arg, dvarstk)
+| tr3xlst_dpat of (d3pat, tr3xlst)
+| tr3xlst_farg of (f3arg, tr3xlst)
 //
 (* ****** ****** *)
 
 local
 
 absimpl
-dvarenv_vtype = dvarenv
+tr3xenv_vtype = tr3xenv
 
 in(*in-of-local*)
 
 (* ****** ****** *)
 
 implement
-dvarenv_add_let1
+tr3xenv_add_let1
   (env) =
 ( fold@(env) ) where
 {
 //
 val+
-@DVARENV(xs) = env
+@TR3XENV(xs) = env
 val () =
-(xs := dvarstk_let1(xs))
+(xs := tr3xlst_let1(xs))
 //
-} (* end of [dvarenv_add_let1] *)
+} (* end of [tr3xenv_add_let1] *)
 
 (* ****** ****** *)
 
 implement
-dvarenv_add_loc1
+tr3xenv_add_loc1
   (env) =
 ( fold@(env) ) where
 {
 //
 val+
-@DVARENV(xs) = env
+@TR3XENV(xs) = env
 (*
 val () =
-(xs := dvarstk_loc1(xs))
+(xs := tr3xlst_loc1(xs))
 *)
 //
-} (* end of [dvarenv_add_loc1] *)
+} (* end of [tr3xenv_add_loc1] *)
 
 (* ****** ****** *)
 
 implement
-dvarenv_add_loc2
+tr3xenv_add_loc2
   (env) =
 ( fold@(env) ) where
 {
 //
 val+
-@DVARENV(xs) = env
+@TR3XENV(xs) = env
 (*
 val () =
-(xs := dvarstk_loc2(xs))
+(xs := tr3xlst_loc2(xs))
 *)
 //
-} (* end of [dvarenv_add_loc2] *)
+} (* end of [tr3xenv_add_loc2] *)
 
 (* ****** ****** *)
 
 implement
-dvarenv_pop_let1
+tr3xenv_pop_let1
   (env) =
 ( fold@(env) ) where
 {
 //
 val+
-@DVARENV(xs) = env
-val () = (xs := auxstk(xs))
+@TR3XENV(xs) = env
+val () = (xs := auxlst(xs))
 //
 } where
 {
 //
 fun
-auxstk
-(xs: dvarstk): dvarstk =
+auxlst
+(xs: tr3xlst): tr3xlst =
 (
 case- xs of
 |
-~dvarstk_let1(xs) => xs
+~tr3xlst_let1(xs) => xs
 |
-~dvarstk_dpat(_, xs) => auxstk(xs)
-) (* end of [auxstk] *)
+~tr3xlst_dpat(_, xs) => auxlst(xs)
+) (* end of [auxlst] *)
 //
-} (* end of [dvarenv_pop_let1] *)
+} (* end of [tr3xenv_pop_let1] *)
 
 (* ****** ****** *)
 
 implement
-dvarenv_pop_loc12
+tr3xenv_pop_loc12
   (env) =
 ( fold@(env) ) where
 {
 //
 val+
-@DVARENV(xs) = env
-val () = (xs := auxstk(xs))
+@TR3XENV(xs) = env
+val () = (xs := auxlst(xs))
 //
 } where
 {
 fun
-auxstk(xs: dvarstk): dvarstk = xs
-} (* end of [dvarenv_pop_loc12] *)
+auxlst(xs: tr3xlst): tr3xlst = xs
+} (* end of [tr3xenv_pop_loc12] *)
 
 (* ****** ****** *)
 //
 implement
-dvarenv_make_nil
+tr3xenv_make_nil
   ((*void*)) =
 (
-  DVARENV(dvarstk_nil())
+  TR3XENV(tr3xlst_nil())
 )
 //
 (* ****** ****** *)
 
 implement
-dvarenv_add_dpat
+tr3xenv_add_dpat
   (env, d3p) =
 ( fold@(env) ) where
 {
 //
 val+
-@DVARENV(xs) = env
+@TR3XENV(xs) = env
 val () =
-(xs := dvarstk_dpat(d3p, xs))
+(xs := tr3xlst_dpat(d3p, xs))
 //
-} (* end of [dvarenv_add_dpat] *)
+} (* end of [tr3xenv_add_dpat] *)
 
 (* ****** ****** *)
 //
 implement
-dvarenv_free_top
+tr3xenv_free_top
   (env0) =
 (
-  auxstk(stk0)
+  auxlst(lst0)
 ) where
 {
 //
 val-
-~DVARENV(stk0) = env0
+~TR3XENV(lst0) = env0
 //
 fun
-auxstk
-(xs: dvarstk): void =
+auxlst
+(xs: tr3xlst): void =
 (
 case- xs of
 |
-~dvarstk_nil() => ()
+~tr3xlst_nil() => ()
 |
-~dvarstk_dpat(_, xs) => auxstk(xs)
+~tr3xlst_dpat(_, xs) => auxlst(xs)
 |
-~dvarstk_farg(_, xs) => auxstk(xs)
+~tr3xlst_farg(_, xs) => auxlst(xs)
 )
 //
-} (* end of [dvarstk_free_all] *)
+} (* end of [tr3xlst_free_all] *)
 //
 (* ****** ****** *)
 
