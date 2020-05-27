@@ -87,6 +87,26 @@ val () = tr3xenv_free_top(env0)
 
 local
 
+typedef
+d3end = d3exp_node
+
+fun
+auxvar
+( env0:
+! tr3xenv
+, d3en: d3end): d3end =
+let
+val-
+D3Evar(d2v0) = d3en
+val
+locq =
+tr3xenv_dvar_locq(env0, d2v0)
+in
+if
+locq
+then D3Evloc(d2v0) else D3Evenv(d2v0)
+end
+
 in(*in-of-local*)
 
 implement
@@ -99,6 +119,9 @@ loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 val
+dend = d3e0.node()
+//
+val
 t2p0 = t2ype_normize(t2p0)
 //
 val () =
@@ -107,30 +130,65 @@ println!
 //
 in(*in-of-let*)
 //
-case+
-d3e0.node() of
+case+ dend of
 //
-| D3Elet(d3cs, d3e1) =>
-  let
+|
+D3Eint(int) =>
+d3exp_make_node
+(loc0, t2p0, D3Eint(int))
+|
+D3Ebtf(btf) =>
+d3exp_make_node
+(loc0, t2p0, D3Ebtf(btf))
+|
+D3Echr(chr) =>
+d3exp_make_node
+(loc0, t2p0, D3Echr(chr))
+|
+D3Eflt(flt) =>
+d3exp_make_node
+(loc0, t2p0, D3Eflt(flt))
+|
+D3Estr(str) =>
+d3exp_make_node
+(loc0, t2p0, D3Estr(str))
 //
-    val () =
-    tr3xenv_add_let1(env0)
+|
+D3Evar _ =>
+let
+val
+dend = auxvar(env0, dend)
+in
+d3exp_make_node(loc0, t2p0, dend)
+end
 //
-    val
-    d3cs =
-    trans3x_declist(env0, d3cs)
-    val
-    d3e1 = trans3x_dexp(env0, d3e1)
+|
+D3Elet(d3cs, d3e1) =>
+let
 //
-    val () =
-    tr3xenv_pop_let1(env0)
+  val () =
+  tr3xenv_add_let1(env0)
 //
-  in
-    d3exp_make_node
+  val
+  d3cs =
+  trans3x_declist(env0, d3cs)
+  val
+  d3e1 = trans3x_dexp(env0, d3e1)
+//
+  val () =
+  tr3xenv_pop_let1(env0)
+//
+in
+  d3exp_make_node
     (loc0, t2p0, D3Elet(d3cs, d3e1))
-  end
+  // d3exp_make_node
+end
 //
-| _ (* rest-of-d3exp *) => d3e0 // yet-to-be-handled
+| d3en(*else*) =>
+  let
+  val d3e0 =
+  d3exp_make_node(loc0, t2p0, d3en) in d3e0
+  end
 //
 end // end of [trans3x_dexp]
 

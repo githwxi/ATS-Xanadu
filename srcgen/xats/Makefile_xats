@@ -138,6 +138,7 @@ tread12_staexp.dats \
 tread12_dynexp.dats \
 dynexp3.dats \
 dynexp3_print.dats \
+dynexp3_util0.dats \
 trans23_util0.dats \
 trans23_dynexp.dats \
 tread23_dynexp.dats \

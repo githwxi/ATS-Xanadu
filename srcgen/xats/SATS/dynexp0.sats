@@ -1096,16 +1096,15 @@ for skipping synerr:
   , effs0expopt, token(*EQ*), d0exp(*body*))
 //
 | D0Csymload of
-  ( token(*SYMLOAD*)
-  , s0ymb, token, dq0eid, t0intopt)
+  ( token(*symload*)
+  , s0ymb(*overloaded*)
+  , token(*WITH*), dq0eid, t0intopt(*precedence*))
 //
 | D0Cdatasort of
-    (token(*DATASORT*), d0tsortlst)
-  // D0Cdatasort
+  (token(*DATASORT*), d0tsortlst)
 //
 | D0Cexcptcon of
-    (token(*EXCPTCON*), d0atconlst)
-  // D0Cexcptcon
+  (token(*EXCPTCON*), d0atconlst)
 //
 | D0Cdatatype of
   (token(*DATATYPE*), d0atypelst, wd0eclseq)

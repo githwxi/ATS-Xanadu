@@ -153,6 +153,16 @@ d1c0.node() of
   }
 | D1Cstaload _ => ()
 //
+| D1Csymload
+  ( tok
+  , sym1, dqid, prec) =>
+  {
+(*
+    val () =
+    tread01_dq0eid(dqid)
+*)
+  }
+//
 | D1Cvaldecl
   ( knd
   , mopt, v1ds) =>
