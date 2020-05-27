@@ -53,21 +53,21 @@ UN = "prelude/SATS/unsafe.sats"
 //
 datavtype
 abstenv =
-ABSTENV of abstlst
+ABSTENV of abststk
 //
 and
-abstlst =
+abststk =
 //
-| abstlst_nil of ()
+| abststk_nil of ()
 //
-| abstlst_let1 of abstlst
-| abstlst_loc1 of abstlst
-| abstlst_loc2 of abstlst
+| abststk_let1 of abststk
+| abststk_loc1 of abststk
+| abststk_loc2 of abststk
 //
-| abstlst_open of
-  (d3ecl, s2cst, t2ype, abstlst)
-| abstlst_impl of
-  (d3ecl, s2cst, t2ype, abstlst)
+| abststk_open of
+  (d3ecl, s2cst, t2ype, abststk)
+| abststk_impl of
+  (d3ecl, s2cst, t2ype, abststk)
 //
 (* ****** ****** *)
 
@@ -89,7 +89,7 @@ abstenv_add_let1
 val+
 @ABSTENV(xs) = env
 val () =
-(xs := abstlst_let1(xs))
+(xs := abststk_let1(xs))
 //
 } (* end of [abstenv_add_let1] *)
 
@@ -104,7 +104,7 @@ abstenv_add_loc1
 val+
 @ABSTENV(xs) = env
 val () =
-(xs := abstlst_loc1(xs))
+(xs := abststk_loc1(xs))
 //
 } (* end of [abstenv_add_loc1] *)
 
@@ -117,7 +117,7 @@ abstenv_add_loc2
 val+
 @ABSTENV(xs) = env
 val () =
-(xs := abstlst_loc2(xs))
+(xs := abststk_loc2(xs))
 //
 } (* end of [abstenv_add_loc2] *)
 
@@ -131,23 +131,27 @@ abstenv_pop_let1
 //
 val+
 @ABSTENV(xs) = env
+//
 val () =
-(xs := abstlst_pop_let1(xs))
+(xs := auxstk(xs))
 //
 } where
 {
 //
 fun
-abstlst_pop_let1
-(xs: abstlst): abstlst =
+auxstk
+(xs: abststk): abststk =
 (
 case- xs of
-| ~abstlst_let1(xs) => xs
-| ~abstlst_open
-   (_, _, _, xs) => abstlst_pop_let1(xs)
-| ~abstlst_impl
-   (_, _, _, xs) => abstlst_pop_let1(xs)
-) (* end of [abstlst_pop_let1] *)
+//
+| ~abststk_let1(xs) => xs
+//
+| ~abststk_open
+   (_, _, _, xs) => auxstk(xs)
+| ~abststk_impl
+   (_, _, _, xs) => auxstk(xs)
+//
+) (* end of [abststk_pop_let1] *)
 //
 } (* end of [abstenv_pop_let1] *)
 
@@ -159,96 +163,99 @@ abstenv_pop_loc12
 //
 val+
 @ABSTENV(xs) = env
+//
 val () =
-(xs := abstlst_pop_loc12(xs))
+(xs := auxstk0(xs))
 //
 in
   fold@(env) // nothing
 end where
 {
 fun
-abstlst_pop_loc12
-(xs: abstlst): abstlst =
+auxstk0
+(xs: abststk): abststk =
 (
-auxlst1(xs, abstlst_nil())
+auxstk1(xs, abststk_nil())
 )
 and
-auxlst1
+auxstk1
 ( xs
-: abstlst
+: abststk
 , ys
-: abstlst): abstlst =
-(
-case- xs of
-|
-~abstlst_loc2
-   (xs) => auxlst2(xs, ys)
-|
-~abstlst_open
-   (d3cl, s2c0, t2p1, xs) =>
- (
-   auxlst1
-   ( xs
-   , abstlst_open(d3cl, s2c0, t2p1, ys))
- )
-|
-~abstlst_impl
-   (d3cl, s2c0, t2p1, xs) =>
- (
-   auxlst1
-   ( xs
-   , abstlst_impl(d3cl, s2c0, t2p1, ys))
- )
-)
-and
-auxlst2
-( xs
-: abstlst
-, ys
-: abstlst): abstlst =
+: abststk): abststk =
 (
 case- xs of
 |
-~abstlst_loc1
- (xs) => auxlst3(xs, ys)
+~abststk_loc2
+   (xs) => auxstk2(xs, ys)
 |
-~abstlst_open
- (d3cl, _, _, xs) => auxlst2(xs, ys)
+~abststk_open
+   (d3cl, s2c0, t2p1, xs) =>
+ (
+   auxstk1
+   ( xs
+   , abststk_open
+     (d3cl, s2c0, t2p1, ys))
+ )
 |
-~abstlst_impl
- (d3cl, _, _, xs) => auxlst2(xs, ys)
+~abststk_impl
+   (d3cl, s2c0, t2p1, xs) =>
+ (
+   auxstk1
+   ( xs
+   , abststk_impl
+     (d3cl, s2c0, t2p1, ys))
+ )
 )
 and
-auxlst3
+auxstk2
 ( xs
-: abstlst
+: abststk
 , ys
-: abstlst): abstlst =
+: abststk): abststk =
+(
+case- xs of
+|
+~abststk_loc1
+ (xs) => auxstk3(xs, ys)
+|
+~abststk_open
+ (d3cl, _, _, xs) => auxstk2(xs, ys)
+|
+~abststk_impl
+ (d3cl, _, _, xs) => auxstk2(xs, ys)
+)
+and
+auxstk3
+( xs
+: abststk
+, ys
+: abststk): abststk =
 (
 case- ys of
 |
-~abstlst_nil() => xs
+~abststk_nil() => xs
 |
-~abstlst_open
+~abststk_open
  (d3cl, s2c0, t2p1, ys) =>
  (
-   auxlst3(xs, ys) where
+   auxstk3(xs, ys) where
    {
    val xs =
-   abstlst_open(d3cl, s2c0, t2p1, xs)
+   abststk_open(d3cl, s2c0, t2p1, xs)
    }
  )
 |
-~abstlst_impl
+~abststk_impl
  (d3cl, s2c0, t2p1, ys) =>
  (
-   auxlst3(xs, ys) where
+   auxstk3(xs, ys) where
    {
    val xs =
-   abstlst_impl(d3cl, s2c0, t2p1, xs)
+   abststk_impl(d3cl, s2c0, t2p1, xs)
    }
  )
-) (* end of [auxlst3] *)
+) (* end of [auxstk3] *)
 //
 } (* end of [implenv_pop_loc12] *)
 
@@ -258,7 +265,7 @@ implement
 abstenv_make_nil
   ((*void*)) =
 (
-  ABSTENV(abstlst_nil())
+  ABSTENV(abststk_nil())
 )
 //
 (* ****** ****** *)
@@ -266,28 +273,29 @@ abstenv_make_nil
 implement
 abstenv_free_top
   (env0) =
-let
-val-
-~ABSTENV(lst0) = env0
-in
-  abstlst_free_all(lst0)
-end where
+(
+  auxstk(stk0)
+) where
 {
+//
+val-
+~ABSTENV(stk0) = env0
+//
 fun
-abstlst_free_all
-  (xs: abstlst): void =
+auxstk
+(xs: abststk): void =
 (
 case- xs of
 |
-~abstlst_nil() => ()
+~abststk_nil() => ()
 |
-~abstlst_open
- (_, _, _, xs) => abstlst_free_all(xs)
+~abststk_open
+ (_, _, _, xs) => auxstk(xs)
 |
-~abstlst_impl
- (_, _, _, xs) => abstlst_free_all(xs)
+~abststk_impl
+ (_, _, _, xs) => auxstk(xs)
 )
-} (* end of [abstlst_free_all] *)
+} (* end of [abststk_free_all] *)
 //
 (* ****** ****** *)
 
@@ -315,7 +323,7 @@ case+ def0 of
 ABSTDF2eqeq(_, t2p0) =>
 (
   xs :=
-  abstlst_open
+  abststk_open
   (d3cl, s2c0, t2p0, xs)
 )
 | _ (*non-ABSTDF2eqeq *) => ()
@@ -361,7 +369,7 @@ t2p0 =
 s2exp_erase(def0)
 in
   xs :=
-  abstlst_impl
+  abststk_impl
   (d3cl, s2c0, t2p0, xs)
 end
 ) (* end of [val] *)
@@ -399,59 +407,59 @@ println!
 val+
 @ABSTENV(xs) = env0
 val opt0 =
-abstlst_find(xs, s2c0)
+abststk_find(xs, s2c0)
 in
 let
 prval () = fold@(env0) in opt0 end
 end where
 {
 fun
-abstlst_find
+abststk_find
 ( xs:
-! abstlst
+! abststk
 , s2c0: s2cst
 )
 : Option_vt(t2ype) =
 let
 val () =
 println!
-("abstlst_find: s2c0 = ", s2c0)
+("abststk_find: s2c0 = ", s2c0)
 in
 case+ xs of
 //
 |
-abstlst_nil() => None_vt((*void*))
+abststk_nil() => None_vt((*void*))
 //
 |
-abstlst_let1(xs) => abstlst_find(xs, s2c0)
+abststk_let1(xs) => abststk_find(xs, s2c0)
 |
-abstlst_loc1(xs) => abstlst_find(xs, s2c0)
+abststk_loc1(xs) => abststk_find(xs, s2c0)
 |
-abstlst_loc2(xs) => abstlst_find(xs, s2c0)
+abststk_loc2(xs) => abststk_find(xs, s2c0)
 //
 |
-abstlst_open
+abststk_open
 (d3cl, s2c1, t2p1, xs) =>
 let
   val () =
-  println!("abstlst_find: s2c1 = ", s2c1)
+  println!("abststk_find: s2c1 = ", s2c1)
 in
   if
   (s2c0 = s2c1)
-  then Some_vt(t2p1) else abstlst_find(xs, s2c0)
+  then Some_vt(t2p1) else abststk_find(xs, s2c0)
 end
 |
-abstlst_impl
+abststk_impl
 (d3cl, s2c1, t2p1, xs) =>
 let
   val () =
-  println!("abstlst_find: s2c1 = ", s2c1)
+  println!("abststk_find: s2c1 = ", s2c1)
 in
   if
   (s2c0 = s2c1)
-  then Some_vt(t2p1) else abstlst_find(xs, s2c0)
+  then Some_vt(t2p1) else abststk_find(xs, s2c0)
 end
-end (* abstlst_find] *)
+end (* abststk_find] *)
 } (* end of [abstenv_find] *)
 
 (* ****** ****** *)
