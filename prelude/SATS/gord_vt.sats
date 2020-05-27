@@ -97,7 +97,7 @@ fun
 gl_max00(x: a, y: a): (a)
 fun
 <a:vtype>
-gl_max11(x: !a, y: !): (a)
+gl_max11(x: !a, y: !a): (a)
 
 
 (* ****** ****** *)
