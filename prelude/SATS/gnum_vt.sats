@@ -51,22 +51,46 @@ gl_2((*void*)): (a)
 
 fun
 <a:vtype>
-gl_add00(x: a, y: a): a
+gl_add00(x: ~a, y: ~a): a
 fun
 <a:vtype>
-gl_sub00(x: a, y: a): a
+gl_add11(x: !a, y: !a): a
 
 (* ****** ****** *)
 
 fun
 <a:vtype>
-gl_mul00(x: a, y: a): a
+gl_sub00(x: ~a, y: ~a): a
 fun
 <a:vtype>
-gl_div00(x: a, y: a): a
+gl_sub11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
 fun
 <a:vtype>
-gl_mod00(x: a, y: a): a
+gl_mul00(x: ~a, y: ~a): a
+fun
+<a:vtype>
+gl_mul11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vtype>
+gl_div00(x: ~a, y: ~a): a
+fun
+<a:vtype>
+gl_div11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vtype>
+gl_mod00(x: ~a, y: ~a): a
+fun
+<a:vtype>
+gl_mod11(x: !a, y: !a): a
 
 (* ****** ****** *)
 

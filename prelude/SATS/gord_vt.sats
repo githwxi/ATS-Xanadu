@@ -39,14 +39,14 @@
 
 fun
 <a:vtype>
-gl_eq00(a, a): bool
+gl_eq00(~a, ~a): bool
 fun
 <a:vtype>
-gl_eq11(a, a): bool
+gl_eq11(!a, !a): bool
 
 fun
 <a:vtype>
-gl_neq00(a, a): bool
+gl_neq00(~a, ~a): bool
 fun
 <a:vtype>
 gl_neq11(!a, !a): bool
@@ -55,28 +55,28 @@ gl_neq11(!a, !a): bool
 
 fun
 <a:vtype>
-gl_lt00(a, a): bool
+gl_lt00(~a, ~a): bool
 fun
 <a:vtype>
 gl_lt11(!a, !a): bool
 
 fun
 <a:vtype>
-gl_gt00(a, a): bool
+gl_gt00(~a, ~a): bool
 fun
 <a:vtype>
 gl_gt11(!a, !a): bool
 
 fun
 <a:vtype>
-gl_lte00(a, a): bool
+gl_lte00(~a, ~a): bool
 fun
 <a:vtype>
 gl_lte11(!a, !a): bool
 
 fun
 <a:vtype>
-gl_gte00(a, a): bool
+gl_gte00(~a, ~a): bool
 fun
 <a:vtype>
 gl_gte11(!a, !a): bool
@@ -85,7 +85,7 @@ gl_gte11(!a, !a): bool
 
 fun
 <a:vtype>
-gl_cmp00(a, a): sint
+gl_cmp00(~a, ~a): sint
 fun
 <a:vtype>
 gl_cmp11(!a, !a): sint
@@ -94,7 +94,7 @@ gl_cmp11(!a, !a): sint
 
 fun
 <a:vtype>
-gl_max00(x: a, y: a): (a)
+gl_max00(x: ~a, y: ~a): (a)
 fun
 <a:vtype>
 gl_max11(x: !a, y: !a): (a)
@@ -104,7 +104,7 @@ gl_max11(x: !a, y: !a): (a)
 
 fun
 <a:vtype>
-gl_min00(x: a, y: a): (a)
+gl_min00(x: ~a, y: ~a): (a)
 fun
 <a:vtype>
 gl_min11(x: !a, y: !a): (a)
