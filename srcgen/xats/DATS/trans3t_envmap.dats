@@ -332,164 +332,164 @@ end // end of [local]
 (* ****** ****** *)
 //
 datavtype
-impllst =
+implstk =
 //
-| impllst_nil of ()
+| implstk_nil of ()
 //
-| impllst_let1 of impllst
-| impllst_loc1 of impllst
-| impllst_loc2 of impllst
+| implstk_let1 of implstk
+| implstk_loc1 of implstk
+| implstk_loc2 of implstk
 //
-| impllst_cons1 of (d3ecl, impllst)
-| impllst_cons2 of (d3ecl, ti3env, impllst)
+| implstk_cons1 of (d3ecl, implstk)
+| implstk_cons2 of (d3ecl, ti3env, implstk)
 //
 (* ****** ****** *)
 //
 fun
-impllst_add_let1
+implstk_add_let1
 ( xs
-: impllst
+: implstk
 )
-: impllst = impllst_let1(xs)
+: implstk = implstk_let1(xs)
 //
 (* ****** ****** *)
 //
 fun
-impllst_pop_let1
+implstk_pop_let1
 ( xs
-: impllst): impllst =
+: implstk): implstk =
 ( auxlst(xs) ) where
 {
 fun
 auxlst
 ( xs
-: impllst): impllst =
+: implstk): implstk =
 case- xs of
-| ~impllst_let1(xs) => xs
-| ~impllst_cons1(d3cl, xs) => auxlst(xs)
-| ~impllst_cons2(d3cl, ti3e, xs) => auxlst(xs)
+| ~implstk_let1(xs) => xs
+| ~implstk_cons1(d3cl, xs) => auxlst(xs)
+| ~implstk_cons2(d3cl, ti3e, xs) => auxlst(xs)
 }
 //
 (* ****** ****** *)
 //
 fun
-impllst_add_loc1
+implstk_add_loc1
 ( xs
-: impllst): impllst = impllst_loc1(xs)
+: implstk): implstk = implstk_loc1(xs)
 fun
-impllst_add_loc2
+implstk_add_loc2
 ( xs
-: impllst): impllst = impllst_loc2(xs)
+: implstk): implstk = implstk_loc2(xs)
 //
 (* ****** ****** *)
 //
 fun
-impllst_pop_loc12
+implstk_pop_loc12
 ( xs
-: impllst): impllst =
+: implstk): implstk =
 (
 auxlst1
-(xs, impllst_nil())
+(xs, implstk_nil())
 ) where
 {
 fun
 auxlst1
 ( xs
-: impllst
+: implstk
 , ys
-: impllst): impllst =
+: implstk): implstk =
 (
 case- xs of
 |
-~impllst_loc2
+~implstk_loc2
    (xs) => auxlst2(xs, ys)
 |
-~impllst_cons1
+~implstk_cons1
    (d3cl, xs) =>
  (
    auxlst1
-   (xs, impllst_cons1(d3cl, ys))
+   (xs, implstk_cons1(d3cl, ys))
  )
 |
-~impllst_cons2
+~implstk_cons2
    (d3cl, ti3e, xs) =>
  (
    auxlst1
-   (xs, impllst_cons2(d3cl, ti3e, ys))
+   (xs, implstk_cons2(d3cl, ti3e, ys))
  )
 )
 and
 auxlst2
 ( xs
-: impllst
+: implstk
 , ys
-: impllst): impllst =
+: implstk): implstk =
 (
 case- xs of
 |
-~impllst_loc1
+~implstk_loc1
  (xs) => auxlst3(xs, ys)
 |
-~impllst_cons1
+~implstk_cons1
  (d3cl, xs) => auxlst2(xs, ys)
 |
-~impllst_cons2
+~implstk_cons2
  (d3cl, ti3e, xs) => auxlst2(xs, ys)
 )
 and
 auxlst3
 ( xs
-: impllst
+: implstk
 , ys
-: impllst): impllst =
+: implstk): implstk =
 (
 case- ys of
 |
-~impllst_nil() => xs
+~implstk_nil() => xs
 |
-~impllst_cons1(d3cl, ys) =>
+~implstk_cons1(d3cl, ys) =>
  (
    auxlst3
-   (impllst_cons1(d3cl, xs), ys)
+   (implstk_cons1(d3cl, xs), ys)
  )
 |
-~impllst_cons2(d3cl, ti3e, ys) =>
+~implstk_cons2(d3cl, ti3e, ys) =>
  (
    auxlst3
-   (impllst_cons2(d3cl, ti3e, xs), ys)
+   (implstk_cons2(d3cl, ti3e, xs), ys)
  )
 ) (* end of [auxlst3] *)
-} (* where *) // impllst_pop_loc12
+} (* where *) // implstk_pop_loc12
 //
 (* ****** ****** *)
 
 fun
-impllst_free
-(xs: impllst): void =
+implstk_free
+(xs: implstk): void =
 (
 case+ xs of
 |
-~impllst_nil() => ()
+~implstk_nil() => ()
 |
-~impllst_let1(xs) => impllst_free(xs)
+~implstk_let1(xs) => implstk_free(xs)
 |
-~impllst_loc1(xs) => impllst_free(xs)
+~implstk_loc1(xs) => implstk_free(xs)
 |
-~impllst_loc2(xs) => impllst_free(xs)
+~implstk_loc2(xs) => implstk_free(xs)
 //
 |
-~impllst_cons1(_, xs) => impllst_free(xs)
+~implstk_cons1(_, xs) => implstk_free(xs)
 |
-~impllst_cons2(_, _, xs) => impllst_free(xs)
+~implstk_cons2(_, _, xs) => implstk_free(xs)
 //
-) (* end of [impllst_free] *)
+) (* end of [implstk_free] *)
 
 (* ****** ****** *)
 
 fun
-impllst_find_timp
+implstk_find_timp
 ( xs
-: !impllst
+: !implstk
 , d2c0: d2cst
 , targ: t2ypelst
 )
@@ -587,7 +587,7 @@ case+ opt3 of
 //
 fun
 auxlst
-( xs: !impllst
+( xs: !implstk
 , xarg: t2xtvlst
 )
 :
@@ -598,22 +598,22 @@ Option_vt
 case+ xs of
 //
 |
-impllst_nil() =>
+implstk_nil() =>
   None_vt((*void*))
-// impllst_nil
+// implstk_nil
 //
 |
-impllst_let1
+implstk_let1
   (xs) => auxlst(xs, xarg)
 |
-impllst_loc1
+implstk_loc1
   (xs) => auxlst(xs, xarg)
 |
-impllst_loc2
+implstk_loc2
   (xs) => auxlst(xs, xarg)
 //
 |
-impllst_cons1
+implstk_cons1
   (d3cl, xs) =>
 let
 //
@@ -630,7 +630,7 @@ case+ ans of
 end
 //
 |
-impllst_cons2
+implstk_cons2
   (d3cl, ti3e, xs) =>
 let
 //
@@ -639,19 +639,19 @@ fnd = auxfnd(d3cl, d2c0)
 (*
 val () =
 println!
-("impllst_find_timp: fnd = ", fnd)
+("implstk_find_timp: fnd = ", fnd)
 *)
 //
 (*
 val () =
 println!
-("impllst_find_timp: d3cl = ", d3cl)
+("implstk_find_timp: d3cl = ", d3cl)
 val () =
 println!
-("impllst_find_timp: d2c0 = ", d2c0)
+("implstk_find_timp: d2c0 = ", d2c0)
 val () =
 println!
-("impllst_find_timp: targ = ", targ)
+("implstk_find_timp: targ = ", targ)
 *)
 //
 in
@@ -673,10 +673,10 @@ unify3(LOC0, targ, t2ps)
 (*
 val () =
 println!
-("impllst_find_timp: t2ps = ", t2ps)
+("implstk_find_timp: t2ps = ", t2ps)
 val () =
 println!
-("impllst_find_timp: test = ", test)
+("implstk_find_timp: test = ", test)
 *)
 //
 in
@@ -692,7 +692,7 @@ in
   val
   ((*void*)) =
   println!
-  ("impllst_find_timp: tsub = ", tsub)
+  ("implstk_find_timp: tsub = ", tsub)
 *)
   in
     auxrst(xtvs); // reset
@@ -704,7 +704,7 @@ in
   ) (* end of [else] *) // end-of-if
 end // end of [else]
 //
-end // end of [impllst_cons]
+end // end of [implstk_cons]
 //
 ) (* end of [auxlst] *)
 //
@@ -716,7 +716,7 @@ val
 xarg = $UN.list_vt2t(xarg) in auxlst(xs, xarg)
 end // end-of-let // end-of-val
 //
-} (* end of [impllst_find_timp] *)
+} (* end of [implstk_find_timp] *)
 
 (* ****** ****** *)
 
@@ -725,7 +725,7 @@ local
 datavtype implenv =
 |
 IMPLENV of
-(List0_vt(svtplst), impllst)
+(List0_vt(svtplst), implstk)
 //
 where
 svtplst=(s2varlst, t2ypelst)
@@ -782,7 +782,7 @@ implenv_add_let1
 val+
 @IMPLENV(us, xs) = env
 val () =
-(xs := impllst_add_let1(xs))
+(xs := implstk_add_let1(xs))
 //
 } (* end of [implenv_add_let1] *)
 
@@ -797,7 +797,7 @@ implenv_pop_let1
 val+
 @IMPLENV(us, xs) = env
 val () =
-(xs := impllst_pop_let1(xs))
+(xs := implstk_pop_let1(xs))
 //
 } (* end of [implenv_pop_let1] *)
 
@@ -812,7 +812,7 @@ implenv_add_loc1
 val+
 @IMPLENV(us, xs) = env
 val () =
-(xs := impllst_add_loc1(xs))
+(xs := implstk_add_loc1(xs))
 //
 } (* end of [implenv_add_loc1] *)
 
@@ -827,7 +827,7 @@ implenv_add_loc2
 val+
 @IMPLENV(us, xs) = env
 val () =
-(xs := impllst_add_loc2(xs))
+(xs := implstk_add_loc2(xs))
 //
 } (* end of [implenv_add_loc2] *)
 
@@ -840,7 +840,7 @@ implenv_pop_loc12
 val+
 @IMPLENV(us, xs) = env
 val () =
-(xs := impllst_pop_loc12(xs))
+(xs := implstk_pop_loc12(xs))
 //
 in
   fold@(env) // nothing
@@ -857,7 +857,7 @@ implenv_add_staload
 val+
 @IMPLENV(us, xs) = env0
 val () =
-(xs := impllst_cons1(d3cl, xs))
+(xs := implstk_cons1(d3cl, xs))
 //
 } (* end of [implenv_add_impdecl3] *)
 
@@ -871,7 +871,7 @@ implenv_add_impdecl3
 val+
 @IMPLENV(us, xs) = env0
 val () =
-(xs := impllst_cons2(d3cl, ti3e, xs))
+(xs := implstk_cons2(d3cl, ti3e, xs))
 //
 } (* end of [implenv_add_impdecl3] *)
 
@@ -880,7 +880,7 @@ val () =
 implement
 implenv_make_nil() =
 IMPLENV
-(list_vt_nil(), impllst_nil())
+(list_vt_nil(), implstk_nil())
 //
 (* ****** ****** *)
 //
@@ -893,7 +893,7 @@ val+
 //
 in
 let
-val-~list_vt_nil() = us in impllst_free(xs)
+val-~list_vt_nil() = us in implstk_free(xs)
 end
 end // end of [implenv_free_nil]
 //
@@ -939,7 +939,7 @@ implenv_find_timp
 val+IMPLENV(us, xs) = env0
 //
 in
-  impllst_find_timp(xs, d2c0, targ)
+implstk_find_timp(xs, d2c0, targ)
 end // end of [implenv_find_timp]
 //
 (* ****** ****** *)
