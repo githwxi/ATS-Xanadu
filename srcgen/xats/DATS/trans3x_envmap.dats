@@ -79,10 +79,6 @@ tr3xstk =
 //
 | tr3xstk_nil of ()
 //
-| tr3xstk_lam0 of
-  (f3arg, tr3xstk)
-| tr3xstk_fix0 of
-  (d2var, f3arg, tr3xstk)
 //
 | tr3xstk_let1 of tr3xstk
 (*
@@ -91,7 +87,9 @@ tr3xstk =
 *)
 //
 | tr3xstk_dpat of (d3pat, tr3xstk)
-| tr3xstk_farg of (f3arg, tr3xstk)
+//
+| tr3xstk_lam0 of (f3arg, tr3xstk)
+| tr3xstk_fix0 of (d2var, f3arg, tr3xstk)
 //
 (* ****** ****** *)
 
@@ -112,8 +110,15 @@ tr3xenv_add_let1
 //
 val+
 @TR3XENV(xs) = env
+//
 val () =
-(xs := tr3xstk_let1(xs))
+(
+case+ xs of
+|
+tr3xstk_nil() => ()
+| _(* non-nil *) =>
+   (xs := tr3xstk_let1(xs))
+)
 //
 } (* end of [tr3xenv_add_let1] *)
 
@@ -129,7 +134,13 @@ val+
 @TR3XENV(xs) = env
 (*
 val () =
-(xs := tr3xstk_loc1(xs))
+(
+case+ xs of
+|
+tr3xstk_nil() => ()
+| _(* non-nil *) =>
+   (xs := tr3xstk_loc1(xs))
+)
 *)
 //
 } (* end of [tr3xenv_add_loc1] *)
@@ -146,7 +157,13 @@ val+
 @TR3XENV(xs) = env
 (*
 val () =
-(xs := tr3xstk_loc2(xs))
+(
+case+ xs of
+|
+tr3xstk_nil() => ()
+| _(* non-nil *) =>
+   (xs := tr3xstk_loc2(xs))
+)
 *)
 //
 } (* end of [tr3xenv_add_loc2] *)
@@ -161,7 +178,15 @@ tr3xenv_pop_let1
 //
 val+
 @TR3XENV(xs) = env
-val () = (xs := auxstk(xs))
+//
+val () =
+(
+case+ xs of
+|
+tr3xstk_nil() => ()
+| _(* non-nil *) =>
+   (xs := auxstk(xs))
+)
 //
 } where
 {
@@ -193,9 +218,63 @@ val () = (xs := auxstk(xs))
 //
 } where
 {
-fun
-auxstk(xs: tr3xstk): tr3xstk = xs
+fun // HX-2020-05-26: 
+auxstk // it does nothing!
+(xs: tr3xstk): tr3xstk = xs
 } (* end of [tr3xenv_pop_loc12] *)
+
+(* ****** ****** *)
+
+implement
+tr3xenv_add_dpat
+  (env, d3p) =
+( fold@(env) ) where
+{
+//
+val+
+@TR3XENV(xs) = env
+//
+val () =
+(
+case+ xs of
+|
+tr3xstk_nil() => ()
+| _ (* else *) =>
+  (xs := tr3xstk_dpat(d3p, xs))
+)
+//
+} (* end of [tr3xenv_add_dpat] *)
+
+(* ****** ****** *)
+
+implement
+tr3xenv_add_lam0
+  (env, f3a) =
+( fold@(env) ) where
+{
+//
+val+
+@TR3XENV(xs) = env
+//
+val () =
+(xs := tr3xstk_lam0(f3a, xs))
+//
+} (* end of [tr3xenv_add_lam0] *)
+
+implement
+tr3xenv_add_fix0
+( env
+, d2f, f3a) =
+( fold@(env) ) where
+{
+//
+val+
+@TR3XENV(xs) = env
+//
+val () =
+(xs := tr3xstk_fix0(d2f, f3a, xs))
+//
+} (* end of [tr3xenv_add_fix0] *)
 
 (* ****** ****** *)
 //
@@ -207,24 +286,9 @@ tr3xenv_make_nil
 )
 //
 (* ****** ****** *)
-
-implement
-tr3xenv_add_dpat
-  (env, d3p) =
-( fold@(env) ) where
-{
-//
-val+
-@TR3XENV(xs) = env
-val () =
-(xs := tr3xstk_dpat(d3p, xs))
-//
-} (* end of [tr3xenv_add_dpat] *)
-
-(* ****** ****** *)
 //
 implement
-tr3xenv_free_top
+tr3xenv_free_nil
   (env0) =
 (
   auxstk(stk0)
@@ -238,16 +302,43 @@ fun
 auxstk
 (xs: tr3xstk): void =
 (
-case- xs of
-|
-~tr3xstk_nil() => ()
-|
-~tr3xstk_dpat(_, xs) => auxstk(xs)
-|
-~tr3xstk_farg(_, xs) => auxstk(xs)
+case- xs of ~tr3xstk_nil() => ()
 )
 //
-} (* end of [tr3xstk_free_all] *)
+} (* end of [tr3xstk_free_top] *)
+//
+(* ****** ****** *)
+//
+implement
+tr3xenv_nilq
+  (env0) =
+(
+not(tr3xenv_consq(env0))
+)
+//
+implement
+tr3xenv_consq
+  (env0) =
+(
+  auxstk(stk0)
+) where
+{
+//
+val-
+TR3XENV(stk0) = env0
+//
+fun
+auxstk
+(xs: !tr3xstk): bool =
+(
+case+ xs of
+|
+tr3xstk_nil() => false
+|
+_ (* end-of-tr3xstk *) => true
+)
+//
+} (* end of [tr3xstk_nilq] *)
 //
 (* ****** ****** *)
 
@@ -260,7 +351,7 @@ fun
 auxstk0
 (xs: !tr3xstk): int =
 (
-case- xs of
+case+ xs of
 |
 tr3xstk_nil() => ~1
 |

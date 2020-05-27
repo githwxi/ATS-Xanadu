@@ -67,6 +67,8 @@ typedef d2var = $D2E.d2var
 typedef d2cst = $D2E.d2cst
 //
 typedef d3pat = $D3E.d3pat
+typedef f3arg = $D3E.f3arg
+//
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 //
@@ -115,6 +117,19 @@ tr3xenv_pop_loc12
 (* ****** ****** *)
 //
 fun
+tr3xenv_add_lam0
+( env0
+: !tr3xenv, f3a1: f3arg): void
+//
+fun
+tr3xenv_add_fix0
+( env0
+: !tr3xenv
+, d2f0: d2var, f3a1: f3arg): void
+//
+(* ****** ****** *)
+//
+fun
 tr3xenv_add_dpat
 ( env0
 : !tr3xenv, d3p1: d3pat): void
@@ -124,15 +139,21 @@ tr3xenv_add_dpat
 fun
 tr3xenv_make_nil(): tr3xenv
 fun
-tr3xenv_free_top(tr3xenv): void
+tr3xenv_free_nil(tr3xenv): void
 //
 (* ****** ****** *)
-
+//
+fun
+tr3xenv_nilq
+  (env0: !tr3xenv): bool
+fun
+tr3xenv_consq
+  (env0: !tr3xenv): bool
+//
 fun
 tr3xenv_dvar_kind
-( env0
-: !tr3xenv, d2v0: d2var): int
-
+(env0: !tr3xenv, d2v0: d2var): int
+//
 (* ****** ****** *)
 //
 fun

@@ -79,7 +79,7 @@ val
 prog1 =
 trans3x_declist(env0, prog0)
 //
-val () = tr3xenv_free_top(env0)
+val () = tr3xenv_free_nil(env0)
 //
 } (* end of [trans3x_program] *)
 //
