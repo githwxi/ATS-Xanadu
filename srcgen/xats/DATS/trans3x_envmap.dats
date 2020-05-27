@@ -205,6 +205,21 @@ dvarenv_make_nil
 )
 //
 (* ****** ****** *)
+
+implement
+dvarenv_add_dpat
+  (env, d3p) =
+( fold@(env) ) where
+{
+//
+val+
+@DVARENV(xs) = env
+val () =
+(xs := dvarstk_dpat(d3p, xs))
+//
+} (* end of [dvarenv_add_dpat] *)
+
+(* ****** ****** *)
 //
 implement
 dvarenv_free_top

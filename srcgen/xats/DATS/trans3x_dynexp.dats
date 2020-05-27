@@ -181,7 +181,84 @@ fun
 aux_valdecl
 ( env0:
 ! dvarenv
-, d3cl: d3ecl): d3ecl = d3cl
+, d3cl: d3ecl): d3ecl =
+let
+//
+val-
+D3Cvaldecl
+( knd
+, mopt
+, v3ds) = d3cl.node()
+//
+fun
+auxv3d0
+( env0:
+! dvarenv
+, v3d0
+: v3aldecl
+)
+: v3aldecl =
+let
+val+
+V3ALDECL(rcd) = v3d0
+//
+val loc = rcd.loc
+val pat = rcd.pat
+val def = rcd.def
+val wtp = rcd.wtp
+//
+val () =
+dvarenv_add_dpat(env0, pat)
+//
+val def =
+(
+case+ def of
+|
+None() => None()
+|
+Some(d3e0) =>
+Some(trans3x_dexp(env0, d3e0))
+) : d3expopt // end-of-val
+//
+in
+V3ALDECL
+(@{loc=loc,pat=pat,def=def,wtp=wtp})
+end // end of [auxv3d0]
+and
+auxv3ds
+( env0:
+! dvarenv
+, v3ds
+: v3aldeclist
+)
+: v3aldeclist =
+list_vt2t
+(
+list_map<v3aldecl><v3aldecl>(v3ds)
+) where
+{
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+implement
+list_map$fopr<v3aldecl><v3aldecl>
+  (v3d0) =
+let
+val env0 =
+$UN.castvwtp0{dvarenv}(env0)
+val v3d0 = auxv3d0(env0, v3d0)
+in
+let prval () = $UN.cast2void(env0) in v3d0
+end
+end
+} (* end of [auxv3ds] *)
+//
+val v3ds = auxv3ds(env0, v3ds)
+//
+in
+  d3ecl_make_node
+  (d3cl.loc(), D3Cvaldecl(knd, mopt, v3ds))
+end // end of [aux_valdecl]
 
 fun
 aux_vardecl

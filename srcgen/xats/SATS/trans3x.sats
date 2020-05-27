@@ -61,8 +61,12 @@ typedef t2ypelst = $S2T.t2ypelst
 
 (* ****** ****** *)
 //
+typedef d2con = $D2E.d2con
+typedef d2var = $D2E.d2var
+//
 typedef d2cst = $D2E.d2cst
 //
+typedef d3pat = $D3E.d3pat
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 //
@@ -93,9 +97,6 @@ vtypedef dvarenv = dvarenv_vtype
 fun
 dvarenv_add_let1
   (env0: !dvarenv): void
-fun
-dvarenv_pop_let1
-  (env0: !dvarenv): void
 //
 fun
 dvarenv_add_loc1
@@ -103,9 +104,20 @@ dvarenv_add_loc1
 fun
 dvarenv_add_loc2
   (env0: !dvarenv): void
+//
+fun
+dvarenv_pop_let1
+  (env0: !dvarenv): void
 fun
 dvarenv_pop_loc12
   (env0: !dvarenv): void
+//
+(* ****** ****** *)
+//
+fun
+dvarenv_add_dpat
+( env0
+: !dvarenv, d3p1: d3pat): void
 //
 (* ****** ****** *)
 //
