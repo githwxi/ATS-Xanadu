@@ -79,8 +79,10 @@ tr3xstk =
 //
 | tr3xstk_nil of ()
 //
-| tr3xstk_lam0 of tr3xstk
-| tr3xstk_fix0 of (d2var, tr3xstk)
+| tr3xstk_lam0 of
+  (f3arg, tr3xstk)
+| tr3xstk_fix0 of
+  (d2var, f3arg, tr3xstk)
 //
 | tr3xstk_let1 of tr3xstk
 (*
@@ -250,48 +252,64 @@ case- xs of
 (* ****** ****** *)
 
 implement
-tr3xenv_dvar_locq
+tr3xenv_dvar_kind
   (env0, d2v0) =
-(
-  auxstk(stk0)
-) where
-{
-//
-val-
-TR3XENV(stk0) = env0
+let
 //
 fun
-auxstk
-(xs: !tr3xstk): bool =
+auxstk0
+(xs: !tr3xstk): int =
 (
 case- xs of
 |
-tr3xstk_nil() => false
+tr3xstk_nil() => ~1
 |
-tr3xstk_lam0 _ => false
+tr3xstk_let1(xs) => auxstk0(xs)
+//
 |
-tr3xstk_fix0 _ => false
-|
-tr3xstk_let1(xs) => auxstk(xs)
-|
-tr3xstk_dpat(d3p0, xs) =>
-(
-if test then true else auxstk(xs)
+tr3xstk_lam0
+  (f3a0, xs) =>
+( if
+  test then 0 else auxstk0(xs)
 ) where
-{
-  val test = d3pat_memq_dvar(d3p0, d2v0)
+{ val
+  test = f3arg_memq_dvar(f3a0, d2v0)
 }
 |
-tr3xstk_farg(f3a0, xs) =>
+tr3xstk_fix0
+  (d2v1, f3a0, xs) =>
 (
-if test then true else auxstk(xs)
+if
+(d2v0 = d2v1) then 0 else
+(
+(
+if test then 0 else auxstk0(xs)
 ) where
-{
-  val test = f3arg_memq_dvar(f3a0, d2v0)
+{ val
+  test = f3arg_memq_dvar(f3a0, d2v0)
 }
 )
+)
+|
+tr3xstk_dpat(d3p0, xs) =>
+( if
+  test then 0 else auxstk0(xs)
+) where
+{ val
+  test = d3pat_memq_dvar(d3p0, d2v0)
+}
+) (* end of [auxstk0] *) 
 //
-} (* end of [tr3xstk_free_all] *)
+and
+auxstk1
+(xs: !tr3xstk): int = ~1
+//
+in
+let
+val-
+TR3XENV(stk0) = env0 in auxstk0(stk0)
+end
+end (* end of [tr3xenv_dvar_kind] *)
 //
 (* ****** ****** *)
 

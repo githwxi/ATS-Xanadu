@@ -99,12 +99,13 @@ let
 val-
 D3Evar(d2v0) = d3en
 val
-locq =
-tr3xenv_dvar_locq(env0, d2v0)
+vknd =
+tr3xenv_dvar_kind(env0, d2v0)
 in
-if
-locq
-then D3Evloc(d2v0) else D3Evenv(d2v0)
+ifcase
+| vknd = 0 => D3Evloc(d2v0)
+| vknd = 1 => D3Evenv(d2v0)
+| _(* else *) => D3Evtop(d2v0)
 end
 
 in(*in-of-local*)

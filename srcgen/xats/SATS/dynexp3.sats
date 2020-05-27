@@ -310,7 +310,8 @@ d3exp_node =
 //
 | D3Evar of (d2var)
 | D3Evloc of (d2var) // local
-| D3Evenv of (d2var) // environent
+| D3Evenv of (d2var) // environ.
+| D3Evtop of (d2var) // top-level
 //
 | D3Econ1 of (d2con)
 | D3Ecst1 of (d2cst)

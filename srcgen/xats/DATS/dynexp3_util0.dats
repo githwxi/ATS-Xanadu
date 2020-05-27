@@ -148,10 +148,14 @@ f3arg_memq_dvar
 (
 case+
 f3a0.node() of
-| F3ARGsome_dyn
-  (npf, d3ps) =>
-  d3patlst_memq_dvar(d3ps, d2v0)
-| _ (* rest-of-f3arg *) => (false)
+//
+|
+F3ARGsome_dyn
+(npf, d3ps) =>
+d3patlst_memq_dvar(d3ps, d2v0)
+//
+| _ (* rest-of-f3arg *) => false
+//
 ) where
 {
 //
