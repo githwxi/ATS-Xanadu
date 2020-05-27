@@ -73,13 +73,13 @@ trans3x_program
 {
 //
 val
-env0 = dvarenv_make_nil()
+env0 = tr3xenv_make_nil()
 //
 val
 prog1 =
 trans3x_declist(env0, prog0)
 //
-val () = dvarenv_free_top(env0)
+val () = tr3xenv_free_top(env0)
 //
 } (* end of [trans3x_program] *)
 //
@@ -95,8 +95,11 @@ trans3x_dexp
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
+val
+t2p0 = t2ype_normize(t2p0)
 //
 val () =
 println!
@@ -111,7 +114,7 @@ d3e0.node() of
   let
 //
     val () =
-    dvarenv_add_let1(env0)
+    tr3xenv_add_let1(env0)
 //
     val
     d3cs =
@@ -120,7 +123,7 @@ d3e0.node() of
     d3e1 = trans3x_dexp(env0, d3e1)
 //
     val () =
-    dvarenv_pop_let1(env0)
+    tr3xenv_pop_let1(env0)
 //
   in
     d3exp_make_node
@@ -165,7 +168,7 @@ implement
 list_map$fopr<d3exp><d3exp>(d3e0) =
 let
 val env0 =
-$UN.castvwtp0{dvarenv}(env0)
+$UN.castvwtp0{tr3xenv}(env0)
 val d3e0 = trans3x_dexp(env0, d3e0)
 in
 let prval () = $UN.cast2void(env0) in d3e0 end
@@ -180,7 +183,7 @@ local
 fun
 aux_valdecl
 ( env0:
-! dvarenv
+! tr3xenv
 , d3cl: d3ecl): d3ecl =
 let
 //
@@ -193,7 +196,7 @@ D3Cvaldecl
 fun
 auxv3d0
 ( env0:
-! dvarenv
+! tr3xenv
 , v3d0
 : v3aldecl
 )
@@ -208,7 +211,7 @@ val def = rcd.def
 val wtp = rcd.wtp
 //
 val () =
-dvarenv_add_dpat(env0, pat)
+tr3xenv_add_dpat(env0, pat)
 //
 val def =
 (
@@ -227,7 +230,7 @@ end // end of [auxv3d0]
 and
 auxv3ds
 ( env0:
-! dvarenv
+! tr3xenv
 , v3ds
 : v3aldeclist
 )
@@ -245,7 +248,7 @@ list_map$fopr<v3aldecl><v3aldecl>
   (v3d0) =
 let
 val env0 =
-$UN.castvwtp0{dvarenv}(env0)
+$UN.castvwtp0{tr3xenv}(env0)
 val v3d0 = auxv3d0(env0, v3d0)
 in
 let prval () = $UN.cast2void(env0) in v3d0
@@ -263,7 +266,7 @@ end // end of [aux_valdecl]
 fun
 aux_vardecl
 ( env0:
-! dvarenv
+! tr3xenv
 , d3cl: d3ecl): d3ecl = d3cl
 
 in(*in-of-local*)
@@ -288,20 +291,20 @@ D3Cstaload _ => d3cl
 D3Clocal
 (head, body) => let
   val () =
-  dvarenv_add_loc1(env0)
+  tr3xenv_add_loc1(env0)
   val
   head =
   trans3x_declist(env0, head)
 //
   val () =
-  dvarenv_add_loc2(env0)
+  tr3xenv_add_loc2(env0)
   val
   body =
   trans3x_declist(env0, body)
 //
 in
 let
-  val () = dvarenv_pop_loc12(env0)
+  val () = tr3xenv_pop_loc12(env0)
 in
   d3ecl_make_node(loc0, D3Clocal(head, body))
 end
@@ -340,7 +343,7 @@ implement
 list_map$fopr<d3ecl><d3ecl>(d3cl) =
 let
 val env0 =
-$UN.castvwtp0{dvarenv}(env0)
+$UN.castvwtp0{tr3xenv}(env0)
 val d3cl = trans3x_decl(env0, d3cl)
 in
 let prval () = $UN.cast2void(env0) in d3cl end

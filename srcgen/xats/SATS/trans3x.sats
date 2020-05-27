@@ -89,68 +89,68 @@ trans3x_program
 //
 (* ****** ****** *)
 //
-absvtype dvarenv_vtype = ptr
-vtypedef dvarenv = dvarenv_vtype
+absvtype tr3xenv_vtype = ptr
+vtypedef tr3xenv = tr3xenv_vtype
 //
 (* ****** ****** *)
 //
 fun
-dvarenv_add_let1
-  (env0: !dvarenv): void
+tr3xenv_add_let1
+  (env0: !tr3xenv): void
 //
 fun
-dvarenv_add_loc1
-  (env0: !dvarenv): void
+tr3xenv_add_loc1
+  (env0: !tr3xenv): void
 fun
-dvarenv_add_loc2
-  (env0: !dvarenv): void
+tr3xenv_add_loc2
+  (env0: !tr3xenv): void
 //
 fun
-dvarenv_pop_let1
-  (env0: !dvarenv): void
+tr3xenv_pop_let1
+  (env0: !tr3xenv): void
 fun
-dvarenv_pop_loc12
-  (env0: !dvarenv): void
+tr3xenv_pop_loc12
+  (env0: !tr3xenv): void
 //
 (* ****** ****** *)
 //
 fun
-dvarenv_add_dpat
+tr3xenv_add_dpat
 ( env0
-: !dvarenv, d3p1: d3pat): void
+: !tr3xenv, d3p1: d3pat): void
 //
 (* ****** ****** *)
 //
 fun
-dvarenv_make_nil(): dvarenv
+tr3xenv_make_nil(): tr3xenv
 fun
-dvarenv_free_top(dvarenv): void
+tr3xenv_free_top(tr3xenv): void
 //
 (* ****** ****** *)
 //
 fun
 trans3x_dexp
 ( env0
-: !dvarenv, d3e0: d3exp): d3exp 
+: !tr3xenv, d3e0: d3exp): d3exp 
 fun
 trans3x_dexplst
 ( env0
-: !dvarenv, d3es: d3explst): d3explst
+: !tr3xenv, d3es: d3explst): d3explst
 fun
 trans3x_dexpopt
 ( env0
-: !dvarenv, d3es: d3expopt): d3expopt 
+: !tr3xenv, d3es: d3expopt): d3expopt 
 //
 (* ****** ****** *)
 //
 fun
 trans3x_decl
 ( env0
-: !dvarenv, d3c0: d3ecl): d3ecl
+: !tr3xenv, d3c0: d3ecl): d3ecl
 fun
 trans3x_declist
 ( env0
-: !dvarenv, d3cs: d3eclist): d3eclist
+: !tr3xenv, d3cs: d3eclist): d3eclist
 //
 (* ****** ****** *)
 
