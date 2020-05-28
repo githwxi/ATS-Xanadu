@@ -85,14 +85,10 @@ typedef d3claulst = $D3E.d3claulst
 //
 (* ****** ****** *)
 //
-fun
-trans3x_program
-  (d3cls: d3eclist): d3eclist
-//
-(* ****** ****** *)
-//
-absvtype tr3xenv_vtype = ptr
-vtypedef tr3xenv = tr3xenv_vtype
+absvtype
+tr3xenv_vtype = ptr
+vtypedef
+tr3xenv = tr3xenv_vtype
 //
 (* ****** ****** *)
 //
@@ -123,8 +119,8 @@ tr3xenv_add_lam0
 //
 fun
 tr3xenv_add_fix0
-( env0
-: !tr3xenv, d2f1: d2var): void
+( env0:
+! tr3xenv, d2f1: d2var): void
 //
 fun
 tr3xenv_pop_lam0(!tr3xenv): void
@@ -161,28 +157,34 @@ tr3xenv_dvar_kind
 (* ****** ****** *)
 //
 fun
+trans3x_program
+  (d3cls: d3eclist): d3eclist
+//
+(* ****** ****** *)
+//
+fun
 trans3x_dexp
-( env0
-: !tr3xenv, d3e0: d3exp): d3exp 
+( env0:
+! tr3xenv, d3e0: d3exp): d3exp 
 fun
 trans3x_dexplst
-( env0
-: !tr3xenv, d3es: d3explst): d3explst
+( env0:
+! tr3xenv, d3es: d3explst): d3explst
 fun
 trans3x_dexpopt
-( env0
-: !tr3xenv, d3es: d3expopt): d3expopt 
+( env0:
+! tr3xenv, opt0: d3expopt): d3expopt 
 //
 (* ****** ****** *)
 //
 fun
 trans3x_decl
-( env0
-: !tr3xenv, d3c0: d3ecl): d3ecl
+( env0:
+! tr3xenv, d3c0: d3ecl): d3ecl
 fun
 trans3x_declist
-( env0
-: !tr3xenv, d3cs: d3eclist): d3eclist
+( env0:
+! tr3xenv, d3cs: d3eclist): d3eclist
 //
 (* ****** ****** *)
 

@@ -83,14 +83,10 @@ typedef d3claulst = $D3E.d3claulst
 
 (* ****** ****** *)
 //
-fun
-trans3t_program
-  (d3cls: d3eclist): d3eclist
-//
-(* ****** ****** *)
-//
-absvtype implenv_vtype = ptr
-vtypedef implenv = implenv_vtype
+absvtype
+implenv_vtype = ptr
+vtypedef
+implenv = implenv_vtype
 //
 (* ****** ****** *)
 //
@@ -165,6 +161,12 @@ implenv_add_impdecl3
 : !implenv
 , d3cl: d3ecl
 , ti3e: $T33.ti3env): void
+//
+(* ****** ****** *)
+//
+fun
+trans3t_program
+  (d3cls: d3eclist): d3eclist
 //
 (* ****** ****** *)
 
