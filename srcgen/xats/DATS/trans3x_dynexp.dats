@@ -108,6 +108,77 @@ ifcase
 | _(* else *) => D3Evtop(d2v0)
 end
 
+fun
+aux_lam
+( env0:
+! tr3xenv
+, d3en: d3end): d3end =
+let
+val-
+D3Elam
+( knd
+, f3as
+, res1, arrw, body) = d3en
+//
+val body =
+aux_f3as_body(env0, f3as, body)
+//
+in
+  D3Elam
+  (knd, f3as, res1, arrw, body)
+end // end of [aux_lam]
+and
+aux_fix
+( env0:
+! tr3xenv
+, d3en: d3end): d3end =
+let
+val-
+D3Efix
+( knd
+, d2v0
+, f3as
+, res1, arrw, body) = d3en
+//
+val () =
+tr3xenv_add_fix0(env0, d2v0)
+val body =
+aux_f3as_body(env0, f3as, body)
+//
+in
+let
+val () =
+tr3xenv_pop_fix0(env0)
+in
+D3Efix
+(knd, d2v0, f3as, res1, arrw, body)
+end
+end // end of [aux_fix]
+and
+aux_f3as_body
+( env0
+: !tr3xenv
+, f3as
+: f3arglst, body: d3exp): d3exp =
+(
+case+ f3as of
+|
+list_nil() =>
+trans3x_dexp(env0, body)
+|
+list_cons(f3a0, f3as) =>
+let
+val () =
+tr3xenv_add_lam0(env0, f3a0)
+val body =
+aux_f3as_body(env0, f3as, body)
+in
+let
+val () = tr3xenv_pop_lam0(env0) in body
+end
+end // end of [aux_f3as_body]
+)
+
 in(*in-of-local*)
 
 implement
@@ -184,6 +255,13 @@ in
     (loc0, t2p0, D3Elet(d3cs, d3e1))
   // d3exp_make_node
 end
+//
+| D3Elam _ =>
+  let
+  val dend = aux_lam(env0, dend)
+  val d3e0 =
+  d3exp_make_node(loc0, t2p0, dend) in d3e0
+  end
 //
 | d3en(*else*) =>
   let

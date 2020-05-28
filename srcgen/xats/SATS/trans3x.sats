@@ -124,8 +124,12 @@ tr3xenv_add_lam0
 fun
 tr3xenv_add_fix0
 ( env0
-: !tr3xenv
-, d2f0: d2var, f3a1: f3arg): void
+: !tr3xenv, d2f1: d2var): void
+//
+fun
+tr3xenv_pop_lam0(!tr3xenv): void
+fun
+tr3xenv_pop_fix0(!tr3xenv): void
 //
 (* ****** ****** *)
 //

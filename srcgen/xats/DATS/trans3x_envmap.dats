@@ -89,7 +89,7 @@ tr3xstk =
 | tr3xstk_dpat of (d3pat, tr3xstk)
 //
 | tr3xstk_lam0 of (f3arg, tr3xstk)
-| tr3xstk_fix0 of (d2var, f3arg, tr3xstk)
+| tr3xstk_fix0 of (d2var, tr3xstk)
 //
 (* ****** ****** *)
 
@@ -263,8 +263,7 @@ val () =
 
 implement
 tr3xenv_add_fix0
-( env
-, d2f, f3a) =
+  (env, d2f) =
 ( fold@(env) ) where
 {
 //
@@ -272,9 +271,64 @@ val+
 @TR3XENV(xs) = env
 //
 val () =
-(xs := tr3xstk_fix0(d2f, f3a, xs))
+(xs := tr3xstk_fix0(d2f, xs))
 //
 } (* end of [tr3xenv_add_fix0] *)
+
+(* ****** ****** *)
+
+implement
+tr3xenv_pop_lam0
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@TR3XENV(xs) = env
+//
+val () = (xs := auxstk(xs))
+//
+} where
+{
+//
+fun
+auxstk
+(xs: tr3xstk): tr3xstk =
+(
+case- xs of
+|
+~tr3xstk_lam0(_, xs) => xs
+|
+~tr3xstk_let1(xs) => auxstk(xs)
+|
+~tr3xstk_dpat(_, xs) => auxstk(xs)
+) (* end of [auxstk] *)
+//
+} (* end of [tr3xenv_pop_lam0] *)
+
+implement
+tr3xenv_pop_fix0
+  (env) =
+( fold@(env) ) where
+{
+//
+val+
+@TR3XENV(xs) = env
+//
+val () = (xs := auxstk(xs))
+//
+} where
+{
+//
+fun
+auxstk
+(xs: tr3xstk): tr3xstk =
+(
+case- xs of
+| ~tr3xstk_fix0(_, xs) => xs
+) (* end of [auxstk] *)
+//
+} (* end of [tr3xenv_pop_fix0] *)
 
 (* ****** ****** *)
 //
@@ -368,19 +422,12 @@ tr3xstk_lam0
 }
 |
 tr3xstk_fix0
-  (d2v1, f3a0, xs) =>
-(
-if
-(d2v0 = d2v1) then 0 else
-(
-(
-if test then 0 else auxstk0(xs)
-) where
-{ val
-  test = f3arg_memq_dvar(f3a0, d2v0)
-}
-)
-)
+  (d2v1, xs) =>
+let
+val test = (d2v0 = d2v1)
+in
+  if test then 0 else auxstk0(xs)
+end
 |
 tr3xstk_dpat(d3p0, xs) =>
 ( if
