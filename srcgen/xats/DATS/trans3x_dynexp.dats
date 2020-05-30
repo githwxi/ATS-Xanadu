@@ -235,20 +235,60 @@ d3exp_make_node(loc0, t2p0, dend)
 end
 //
 |
+D3Esap0
+(d3f1, s2es) =>
+let
+val
+d3f1 = trans3x_dexp(env0, d3f1)
+in
+d3exp_make_node
+(loc0, t2p0, D3Esap0(d3f1, s2es))
+end
+|
+D3Esap1
+(d3f1, s2es) =>
+let
+val
+d3f1 = trans3x_dexp(env0, d3f1)
+in
+d3exp_make_node
+(loc0, t2p0, D3Esap1(d3f1, s2es))
+end
+//
+|
+D3Etapp
+(d2f1, s2es) =>
+(
+d3exp_make_node
+(loc0, t2p0, D3Etapp(d2f1, s2es))
+)
+|
+D3Edapp
+(d3f1, npf2, d3es) =>
+let
+val
+d3f1 = trans3x_dexp(env0, d3f1)
+val
+d3es = trans3x_dexplst(env0, d3es)
+in
+d3exp_make_node
+( loc0
+, t2p0, D3Edapp(d3f1, npf2, d3es))
+end
+|
 D3Elet(d3cs, d3e1) =>
 let
 //
-  val () =
-  tr3xenv_add_let1(env0)
+val () =
+tr3xenv_add_let1(env0)
 //
-  val
-  d3cs =
-  trans3x_declist(env0, d3cs)
-  val
-  d3e1 = trans3x_dexp(env0, d3e1)
+val
+d3cs =
+trans3x_declist(env0, d3cs)
+val
+d3e1 = trans3x_dexp(env0, d3e1)
 //
-  val () =
-  tr3xenv_pop_let1(env0)
+val () = tr3xenv_pop_let1(env0)
 //
 in
   d3exp_make_node
@@ -256,18 +296,20 @@ in
   // d3exp_make_node
 end
 //
-| D3Elam _ =>
-  let
-  val dend = aux_lam(env0, dend)
-  val d3e0 =
-  d3exp_make_node(loc0, t2p0, dend) in d3e0
-  end
+|
+D3Elam _ =>
+let
+val dend = aux_lam(env0, dend)
+val d3e0 =
+d3exp_make_node(loc0, t2p0, dend) in d3e0
+end
 //
-| d3en(*else*) =>
-  let
-  val d3e0 =
-  d3exp_make_node(loc0, t2p0, d3en) in d3e0
-  end
+|
+d3en(*else*) =>
+let
+val d3e0 =
+d3exp_make_node(loc0, t2p0, d3en) in d3e0
+end
 //
 end // end of [trans3x_dexp]
 

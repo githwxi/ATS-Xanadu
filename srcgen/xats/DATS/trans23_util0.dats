@@ -1290,10 +1290,12 @@ case+ opt of
 ~None_vt() =>
 (
 d23exp_make_node
-(loc0, t2p0, D3Etapp(d2f0, s2es))
+( loc0
+, t2p0, D3Etapp(d2f0, s2es))
 ) where
 {
-  val t2p0 = t2ype_new(d2f0.loc())
+  val
+  t2p0 = t2ype_new(d2f0.loc())
 }
 |
 ~Some_vt(d2c0) =>
