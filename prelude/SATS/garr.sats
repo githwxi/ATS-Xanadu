@@ -70,12 +70,12 @@ array_length(!array(a, n)): int(n)
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 arref_get_at
 {n:int}
 (A0: arref(a, n), i0: nintlt(n)): a
 fun
-<a:t0>
+<a:vt>
 arref_set_at
 {n:int}
 ( A0:
@@ -87,12 +87,12 @@ arref_set_at
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 array_get_at
 {n:int}
 (A0: !array(a, n), i0: nintlt(n)): a
 fun
-<a:t0>
+<a:vt>
 array_set_at
 {n:int}
 ( A0:
@@ -101,6 +101,14 @@ array_set_at
 #symload sub with array_get_at
 #symload sub with array_set_at
 //
+(* ****** ****** *)
+
+fun
+<a:vt>
+arref_streamize
+{n:int}
+(A0: arref(a, n)): stream_vt(a)
+
 (* ****** ****** *)
 //
 fun
