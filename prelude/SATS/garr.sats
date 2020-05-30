@@ -105,10 +105,21 @@ array_set_at
 //
 fun
 <x0:t0>
-arref_forall{n:int}(xs: arref(x0, n)): bool
+arref_forall
+{n:int}(A0: arref(x0, n)): bool
+fun
+<x0:vt>
+arref_forall1
+{n:int}(A0: arref(x0, n)): bool
+//
 fun
 <x0:t0>
-arref_foreach{n:int}(xs: arref(x0, n)): void
+arref_foreach
+{n:int}(A0: arref(x0, n)): void
+fun
+<x0:vt>
+arref_foreach1
+{n:int}(A0: arref(x0, n)): void
 //
 (* ****** ****** *)
 
