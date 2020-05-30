@@ -288,6 +288,9 @@ overload fprint with fprint_f3arg
 fun
 f3arg_memq_dvar
 (f3a0: f3arg, d2v0: d2var): bool
+fun
+f3arglst_memq_dvar
+(f3as: f3arglst, d2v0: d2var): bool
 //
 (* ****** ****** *)
 //

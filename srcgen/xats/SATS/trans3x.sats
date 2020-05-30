@@ -76,6 +76,9 @@ typedef d3gua = $D3E.d3gua
 typedef d3gpat = $D3E.d3gpat
 typedef d3clau = $D3E.d3clau
 //
+typedef d3patlst = $D3E.d3patlst
+typedef f3arglst = $D3E.f3arglst
+//
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
@@ -112,20 +115,20 @@ tr3xenv_pop_loc12
 //
 (* ****** ****** *)
 //
-fun
-tr3xenv_add_lam0
-( env0
-: !tr3xenv, f3a1: f3arg): void
 //
 fun
-tr3xenv_add_fix0
+tr3xenv_add_fix1
 ( env0:
 ! tr3xenv, d2f1: d2var): void
+fun
+tr3xenv_add_lams
+( env0
+: !tr3xenv, f3as: f3arglst): void
 //
 fun
-tr3xenv_pop_lam0(!tr3xenv): void
+tr3xenv_pop_fix1(!tr3xenv): void
 fun
-tr3xenv_pop_fix0(!tr3xenv): void
+tr3xenv_pop_lams(!tr3xenv): void
 //
 (* ****** ****** *)
 //
