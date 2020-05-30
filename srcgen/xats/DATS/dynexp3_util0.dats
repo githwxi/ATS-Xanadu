@@ -168,4 +168,20 @@ println!("f3arg_memq_dvar: d3v0 = ", d2v0)
 
 (* ****** ****** *)
 
+implement
+f3arglst_memq_dvar
+  (f3as, d2v0) =
+(
+case+ f3as of
+| list_nil() => false
+| list_cons(f3a0, f3as) =>
+  ( if
+    f3arg_memq_dvar(f3a0, d2v0)
+    then true
+    else f3arglst_memq_dvar(f3as, d2v0)
+  ) (* end of [list_cons] *)
+)
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp3_util0.dats] *)
