@@ -51,43 +51,65 @@ array(a:vt,n:int) = array_vt_i0_vx(a,n)
 
 (* ****** ****** *)
 
-fun
-<a:t0>
-<n:int>
-arref_length(arref(a, n)): int(n)
-fun
-<a:t0>
-<n:int>
-array_length(!array(a, n)): int(n)
+fcast
+array2ref
+{a:vt}{n:i0}
+(A0: array(a, n)): arref(a, n)
 
 (* ****** ****** *)
 
 fun
+<a:vt>
+<n:int>
+arref_length(arref(a, n)): int(n)
+fun
+<a:vt>
+<n:int>
+array_length(!array(a, n)): int(n)
+
+(* ****** ****** *)
+//
+fun
 <a:t0>
 arref_get_at
 {n:int}
-(A0: arref(a, n), i0: nintLt(n)): a
+(A0: arref(a, n), i0: nintlt(n)): a
 fun
 <a:t0>
 arref_set_at
 {n:int}
 ( A0:
-  arref(a, n), i0: nintLt(n), x0: a): void
-
+  arref(a, n), i0: nintlt(n), x0: a): void
+//
+#symload sub with arref_get_at
+#symload sub with arref_set_at
+//
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
 array_get_at
 {n:int}
-(A0: !array(a, n), i0: nintLt(n)): a
+(A0: !array(a, n), i0: nintlt(n)): a
 fun
 <a:t0>
 array_set_at
 {n:int}
 ( A0:
-! array(a, n), i0: nintLt(n), x0: a): void
-
+! array(a, n), i0: nintlt(n), x0: a): void
+//
+#symload sub with array_get_at
+#symload sub with array_set_at
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+arref_forall{n:int}(xs: arref(x0, n)): bool
+fun
+<x0:t0>
+arref_foreach{n:int}(xs: arref(x0, n)): void
+//
 (* ****** ****** *)
 
 (* end of [garr.sats] *)
