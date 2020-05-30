@@ -10,6 +10,37 @@
 (* ****** ****** *)
 
 impltmp
+<a:vtype>
+arref_streamize
+  {n}(A0) =
+(
+  auxmain(0(*i0*))
+) where
+{
+//
+val n0 =
+arref_length<a><n>(A0)
+//
+fun
+auxmain
+{i:nat
+|i<=n}
+(i0: sint(i)): stream_vt(a) =
+$llazy
+(
+if
+(i0 >= n0)
+then
+strmcon_vt_nil((*void*))
+else
+strmcon_vt_cons
+(sub(A0, i0), auxmain(succ(i0)))
+) (* end of [auxmain] *)
+} (* end of [arref_streamize] *)
+
+(* ****** ****** *)
+
+impltmp
 <a:type>
 arref_forall
   (A0) =
@@ -87,6 +118,24 @@ val () = foreach1$work<a>(sub(A0, i0))
 }
 //
 } (* end of [arref_foreach1] *)
+
+(* ****** ****** *)
+
+impltmp
+{a:t0}{n:i0}
+gseq_length
+<a,arref(a,n)> = arref_length<a><n>
+
+(* ****** ****** *)
+
+impltmp
+{a:t0}{n:i0}
+gseq_forall
+<a,arref(a,n)> = arref_forall<a><n>
+impltmp
+{a:t0}{n:i0}
+gseq_foreach
+<a,arref(a,n)> = arref_foreach<a><n>
 
 (* ****** ****** *)
 
