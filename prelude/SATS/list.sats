@@ -36,11 +36,6 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#symload nil with list_nil
-#symload cons with list_cons
-
-(* ****** ****** *)
 //
 fun<>
 list_nilq
@@ -50,11 +45,6 @@ fun<>
 list_consq
 {a:type}{n:int}
 (xs: list(a, n)): bool(n > 0)
-//
-#symload nilq with list_nilq
-#symload eqzq with list_nilq
-#symload consq with list_consq
-#symload neqzq with list_consq
 //
 (* ****** ****** *)
 //
@@ -70,7 +60,7 @@ fun
 list_head_exn(xs: list(a)): a
 fun
 <a:t0>
-list_head_opt(xs: list(a)): opt_vt(a)
+list_head_opt(xs: list(a)): optn_vt(a)
 //
 fun
 <a:t0>
@@ -84,7 +74,7 @@ fun
 list_tail_exn(xs: list(a)): list(a)
 fun
 <a:t0>
-list_tail_opt(xs: list(a)): opt_vt(list(a))
+list_tail_opt(xs: list(a)): optn_vt(list(a))
 //
 (* ****** ****** *)
 //
@@ -92,8 +82,6 @@ fun
 <a:t0>
 list_length
 {n:int}(xs: list(a, n)): int(n)
-//
-#symload length with list_length
 //
 (* ****** ****** *)
 //
@@ -103,8 +91,6 @@ list_append
 {m,n:int}
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
-//
-#symload append with list_append
 //
 (* ****** ****** *)
 //
@@ -126,8 +112,6 @@ list_rappend
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
 //
-#symload rappend with list_rappend
-//
 (* ****** ****** *)
 //
 fun
@@ -137,16 +121,12 @@ list_rappend_vt
 ( xs: list(a, m)
 , ys: list_vt(a, n)): list_vt(a, m+n)
 //
-#symload rappend with list_rappend_vt
-//
 (* ****** ****** *)
 //
 fun
 <a:t0>
 list_reverse
 {n:int}(list(a, n)): list(a, n)
-//
-#symload reverse with list_reverse
 //
 (* ****** ****** *)
 //
@@ -158,9 +138,6 @@ fun
 <a:t0>
 list_rcopy_vt
 {n:int}(list(a, n)): list_vt(a, n)
-//
-#symload copy_vt with list_copy_vt
-#symload rcopy_vt with list_rcopy_vt
 //
 (* ****** ****** *)
 
@@ -233,6 +210,66 @@ fun
 list_mergesort_vt
   {n:int}(xs: list(a, n)): list_vt(a, n)
 //
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for list
+//
+(* ****** ****** *)
+//
+#symload
+nil with list_nil of 000
+#symload
+cons with list_cons of 000
+
+(* ****** ****** *)
+//
+#symload nilq with list_nilq of 1000
+#symload eqzq with list_nilq of 1000
+#symload consq with list_consq of 1000
+#symload neqzq with list_consq of 1000
+//
+(* ****** ****** *)
+
+#symload head with list_head of 1000
+#symload tail with list_tail of 1000
+
+(* ****** ****** *)
+//
+#symload length with list_length of 1000
+//
+#symload append with list_append of 1000
+//
+#symload concat with list_concat of 1000
+//
+(* ****** ****** *)
+//
+#symload reverse with list_reverse of 1000
+#symload rappend with list_rappend of 1000
+#symload rappend with list_rappend_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload copy_vt with list_copy_vt of 1000
+#symload rcopy_vt with list_rcopy_vt of 1000
+//
+(* ****** ****** *)
+
+#symload forall with list_forall of 1000
+#symload foreach with list_foreach of 1000
+
+(* ****** ****** *)
+
+#symload map with list_map of 1000
+#symload map_vt with list_map_vt of 1000
+#symload maprev with list_maprev of 1000
+#symload maprev_vt with list_maprev_vt of 1000
+
+(* ****** ****** *)
+
+#symload mergesort with list_mergesort of 1000
+#symload mergesort_vt with list_mergesort_vt of 1000
+
 (* ****** ****** *)
 
 (* end of [list.sats] *)

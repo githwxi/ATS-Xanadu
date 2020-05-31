@@ -30,11 +30,6 @@
 // For functional streams
 //
 (* ****** ****** *)
-//
-#symload nil with strmcon_nil
-#symload cons with strmcon_cons
-//
-(* ****** ****** *)
 
 fun
 <a:t0>
@@ -54,6 +49,12 @@ fun
 stream_pair(x0: a, y0: a): stream(a)
 
 (* ****** ****** *)
+
+fun
+<a:t0>
+stream_length(stream(a)): nint
+
+(* ****** ****** *)
 //
 fun
 <a:t0>
@@ -63,6 +64,9 @@ fun
 <a:t0>
 stream_append
 (xs: stream(a), ys: stream(a)): stream(a)
+fun
+<a:t0>
+stream_concat(stream(stream(a))): stream(a)
 //
 (* ****** ****** *)
 //
@@ -117,6 +121,48 @@ stream_sieve(stream(x0)): stream(x0)
 fun
 <x0:t0>
 stream_sieve_vt(stream(x0)): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for stream
+//
+(* ****** ****** *)
+//
+#symload nil with strmcon_nil
+#symload cons with strmcon_cons
+//
+(* ****** ****** *)
+
+#symload length with stream_length of 1000
+
+(* ****** ****** *)
+
+#symload extend with stream_extend of 1000
+#symload append with stream_append of 1000
+#symload concat with stream_concat of 1000
+
+(* ****** ****** *)
+//
+#symload forall with stream_forall of 1000
+#symload foreach with stream_foreach of 1000
+//
+(* ****** ****** *)
+//
+#symload filter with stream_filter of 1000
+#symload filter_vt with stream_filter_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload map with stream_map of 1000
+#symload map_vt with stream_map_vt of 1000
+#symload mapopt with stream_mapopt of 1000
+#symload mapopt_vt with stream_mapopt_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload sieve with stream_sieve of 1000
+#symload sieve_vt with stream_sieve_vt of 1000
 //
 (* ****** ****** *)
 

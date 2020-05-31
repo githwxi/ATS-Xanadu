@@ -78,11 +78,18 @@ fun
 <a:vt>
 p2tr_set(p0: p2tr(a), x0: a): void
 //
-#symload ptr_get with p1tr_get of 100
-#symload ptr_set with p1tr_set of 100
+(* ****** ****** *)
 //
-#symload ptr_get with p2tr_get of 100
-#symload ptr_set with p2tr_set of 100
+// HX-2020-05-30:
+// symbol overloading for unsafe
+//
+(* ****** ****** *)
+//
+#symload ptr_get with p1tr_get of 1000
+#symload ptr_set with p1tr_set of 1000
+//
+#symload ptr_get with p2tr_get of 1000
+#symload ptr_set with p2tr_set of 1000
 //
 (* ****** ****** *)
 

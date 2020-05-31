@@ -48,10 +48,10 @@ UN =
 
 impltmp<>
 string_nilq(cs) =
-char_eqzq(string_head(cs))
+char_eqzq(string_head_opt(cs))
 impltmp<>
 string_consq(cs) =
-char_neqzq(string_head(cs))
+char_neqzq(string_head_opt(cs))
 
 (* ****** ****** *)
 

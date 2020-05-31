@@ -342,10 +342,12 @@ string_print<> = xint_string_print
 //
 #extern
 fun
-xint_string_head
+xint_string_head_opt
 (x0: string): char = $ext()
 impltmp
-string_head<> = xint_string_head
+string_head_opt<> = xint_string_head_opt
+//
+(* ****** ****** *)
 //
 #extern
 fun

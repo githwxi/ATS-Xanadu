@@ -81,9 +81,6 @@ arref_set_at
 ( A0:
   arref(a, n), i0: nintlt(n), x0: a): void
 //
-#symload sub with arref_get_at
-#symload sub with arref_set_at
-//
 (* ****** ****** *)
 //
 fun
@@ -97,9 +94,6 @@ array_set_at
 {n:int}
 ( A0:
 ! array(a, n), i0: nintlt(n), x0: a): void
-//
-#symload sub with array_get_at
-#symload sub with array_set_at
 //
 (* ****** ****** *)
 
@@ -128,6 +122,24 @@ fun
 <x0:vt>
 arref_foreach1
 {n:int}(A0: arref(x0, n)): void
+//
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for garr
+//
+(* ****** ****** *)
+
+#symload
+length with arref_length of 1000
+
+(* ****** ****** *)
+//
+#symload sub with arref_get_at of 1000
+#symload sub with arref_set_at of 1000
+//
+#symload sub with array_get_at of 1000
+#symload sub with array_set_at of 1000
 //
 (* ****** ****** *)
 

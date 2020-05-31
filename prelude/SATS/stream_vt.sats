@@ -31,13 +31,6 @@
 //
 (* ****** ****** *)
 //
-#symload
-nil_vt with strmcon_nil_vt
-#symload
-cons_vt with strmcon_cons_vt
-//
-(* ****** ****** *)
-//
 fun
 <a:t0>
 stream_vt2t
@@ -177,6 +170,27 @@ fun
 ,y0:vt>
 stream_vt_z2forcmp0
   (xs: stream_vt(x0), ys: stream_vt(y0)): sint
+//
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for stream_vt
+//
+(* ****** ****** *)
+//
+#symload
+nil_vt with strmcon_vt_nil
+#symload
+cons_vt with strmcon_vt_cons
+//
+(* ****** ****** *)
+//
+#symload length with stream_vt_length of 1000
+//
+(* ****** ****** *)
+//
+#symload listize with stream_vt_listize of 1000
+#symload rlistize with stream_vt_rlistize of 1000
 //
 (* ****** ****** *)
 
