@@ -113,32 +113,32 @@ g_cmpz(x: a): sint
 //
 (* ****** ****** *)
 //
-#symload < with g_lt of 102
-#symload > with g_gt of 102
-#symload = with g_eq of 102
+#symload < with g_lt of 0102
+#symload > with g_gt of 0102
+#symload = with g_eq of 0102
 //
-#symload <= with g_lte of 102
-#symload >= with g_gte of 102
-#symload != with g_neq of 102
+#symload <= with g_lte of 0102
+#symload >= with g_gte of 0102
+#symload != with g_neq of 0102
 //
-#symload cmp with g_cmp of 102
-//
-(* ****** ****** *)
-//
-#symload max with g_max of 102
-#symload min with g_min of 102
+#symload cmp with g_cmp of 0102
 //
 (* ****** ****** *)
 //
-#symload ltz with g_ltz of 101
-#symload gtz with g_gtz of 101
-#symload eqz with g_eqz of 101
+#symload max with g_max of 0102
+#symload min with g_min of 0102
 //
-#symload ltez with g_ltez of 101
-#symload gtez with g_gtez of 101
-#symload neqz with g_neqz of 101
+(* ****** ****** *)
 //
-#symload cmpz with g_cmpz of 101
+#symload ltz with g_ltz of 0101
+#symload gtz with g_gtz of 0101
+#symload eqz with g_eqz of 0101
+//
+#symload ltez with g_ltez of 0101
+#symload gtez with g_gtez of 0101
+#symload neqz with g_neqz of 0101
+//
+#symload cmpz with g_cmpz of 0101
 //
 (* ****** ****** *)
 

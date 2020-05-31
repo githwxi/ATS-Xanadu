@@ -10,6 +10,13 @@
 *)
 
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_sing(x0) =
+list_cons(x0, list_nil())
+
+(* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
@@ -65,8 +72,18 @@ case+ xs of
 //
 impltmp
 <a>(*tmp*)
+list_extend
+(xs, x0) = let
+val ys =
+list_sing<a>(x0) in
+  list_append<a>(xs, ys)
+end // end of [list_extend]
+//
+impltmp
+<a>(*tmp*)
 list_append
-{m,n}(xs, ys) = let
+{m,n}
+(xs, ys) = let
 fun
 loop
 {m:nat} .<m>.
@@ -88,7 +105,7 @@ case+ xs of
 )
 in
 let
-  var r0: list(a) in loop(xs, r0); r0
+var r0: list(a) in loop(xs, r0); r0
 end
 end (* end of [list_append] *)
 //

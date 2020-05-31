@@ -90,6 +90,11 @@ list_vt_length
 //
 fun
 <a:vt>
+list_vt_extend
+{n:int}
+(list_vt(a,n), a): list_vt(a,n+1)
+fun
+<a:vt>
 list_vt_append
 {m,n:int}
 ( list_vt(a, m)

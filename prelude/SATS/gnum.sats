@@ -97,22 +97,22 @@ g_mod(x: a, y: a): a
 (* ****** ****** *)
 //
 #symload
-pred with g_neg of 101
+pred with g_neg of 0101
 #symload
-succ with g_succ of 101
+succ with g_succ of 0101
 #symload
-pred with g_pred of 101
+pred with g_pred of 0101
 //
 (* ****** ****** *)
 //
-#symload - with g_neg of 101
+#symload - with g_neg of 0101
 //
-#symload + with g_add of 102
-#symload - with g_sub of 102
+#symload + with g_add of 0102
+#symload - with g_sub of 0102
 //
-#symload * with g_mul of 102
-#symload / with g_div of 102
-#symload % with g_mod of 102
+#symload * with g_mul of 0102
+#symload / with g_div of 0102
+#symload % with g_mod of 0102
 //
 (* ****** ****** *)
 
