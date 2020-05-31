@@ -38,24 +38,69 @@
 (* ****** ****** *)
 
 abstbox
-a1ref_t0_i0_x0(a:vt, n:int)
+a0ref_vt_x0(a:vt)
+absvtbox
+a0ptr_vt_vx(a:vt)
+typedef
+a0ref(a:vt) = a0ref_vt_x0(a)
+vtypedef
+a0ptr(a:vt) = a0ptr_vt_vx(a)
+
+(* ****** ****** *)
+//
+abstbox
+a1ref_vt_i0_x0(a:vt, n:int)
 absvtbox
 a1ptr_vt_i0_vx(a:vt, n:int)
-
-(* ****** ****** *)
-
 typedef
-a1ref(a:vt,n:int) = a1ref_t0_i0_x0(a,n)
+a1ref(a:vt,n:int) = a1ref_vt_i0_x0(a,n)
 vtypedef
 a1ptr(a:vt,n:int) = a1ptr_vt_i0_vx(a,n)
-
+//
 (* ****** ****** *)
 
+fcast
+a0ptr2ref
+{a:vt}
+(A0: a0ptr(a)): a0ref(a)
 fcast
 a1ptr2ref
 {a:vt}{n:i0}
 (A0: a1ptr(a, n)): a1ref(a, n)
 
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ref_get(A0: a0ref(a)): a
+fun
+<a:vt>
+a0ref_set(A0: a0ref(a), x0: a): void
+//
+fun
+<a:vt>
+a0ptr_get(A0: a0ptr(a)): a
+fun
+<a:vt>
+a0ptr_set(A0: a0ptr(a), x0: a): void
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ref_make(x0: a): a0ref(a)
+//
+fun
+<a:vt>
+a0ptr_make(x0: a): a0ptr(a)
+fun
+<a:vt>
+a0ptr_free(A0: a0ptr(a)): void
+//
+(* ****** ****** *)
+//
+// HX: 1-dimensional
+//
 (* ****** ****** *)
 
 fun
@@ -129,9 +174,23 @@ a1ref_foreach1
 // symbol overloading for garr
 //
 (* ****** ****** *)
+//
+#symload
+get with a0ref_get of 1000
+#symload
+set with a0ref_set of 1000
+//
+#symload
+get with a0ptr_get of 1000
+#symload
+set with a0ptr_set of 1000
+//
+(* ****** ****** *)
 
 #symload
 length with a1ref_length of 1000
+#symload
+length with a1ptr_length of 1000
 
 (* ****** ****** *)
 //

@@ -39,7 +39,7 @@ strmcon_vt_cons
 } (* end of [a1ref_streamize] *)
 
 (* ****** ****** *)
-
+//
 impltmp
 <a:type>
 a1ref_forall
@@ -51,6 +51,7 @@ a1ref_forall1<a>(A0)
 impltmp
 forall1$test<a> = forall$test<a>
 }
+//
 impltmp
 <a:vtype>
 a1ref_forall1
@@ -77,9 +78,9 @@ if test then loop(succ(i0)) else false
 end else false // end of [if]
 //
 } (* end of [a1ref_forall1] *)
-
+//
 (* ****** ****** *)
-
+//
 impltmp
 <a:type>
 a1ref_foreach
@@ -91,6 +92,7 @@ a1ref_foreach1<a>(A0)
 impltmp
 foreach1$work<a> = foreach$work<a>
 }
+//
 impltmp
 <a:vtype>
 a1ref_foreach1
@@ -118,7 +120,7 @@ val () = foreach1$work<a>(sub(A0, i0))
 }
 //
 } (* end of [a1ref_foreach1] *)
-
+//
 (* ****** ****** *)
 
 impltmp
