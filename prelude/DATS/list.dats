@@ -17,6 +17,33 @@ list_sing(x0) =
 list_cons(x0, list_nil())
 
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_make_nval
+  (n0, x0) =
+(
+loop(n0, list_nil())
+) where
+{
+fun
+loop
+{i,j:nat}.<i>.
+( i0
+: int(i)
+, xs
+: list(a, j)): list(a, i+j) =
+(
+if
+(i0 > 0)
+then
+loop
+( pred(i0)
+, list_cons(x0, xs)) else xs
+)
+} (* end of [list_make_nval] *)
+
+(* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
