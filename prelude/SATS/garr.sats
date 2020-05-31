@@ -99,6 +99,20 @@ a0ptr_set(A0: a0ptr(a), x0: a): void
 //
 (* ****** ****** *)
 //
+fun<>
+a0ref_print$beg(): void
+fun<>
+a0ref_print$end(): void
+//
+fun
+<a:vt>
+a0ref_print(A0: a0ref(a)): void
+fun
+<a:vt>
+a0ptr_print(A0: !a0ptr(a)): void
+//
+(* ****** ****** *)
+//
 // HX: 1-dimensional
 //
 (* ****** ****** *)
@@ -205,6 +219,13 @@ a0ref with a0ref_make of 1000
 #symload
 a0ptr with a0ptr_make of 1000
 //
+(* ****** ****** *)
+
+#symload
+print with a0ref_print of 1000
+#symload
+print with a0ptr_print of 1000
+
 (* ****** ****** *)
 (*
 #symload

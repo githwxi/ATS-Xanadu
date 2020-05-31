@@ -19,9 +19,35 @@ a0ptr2ref
 //
 impltmp
 <a:vtype>
-a1ref_make(sz, x0) =
+a0ref_print(A0) =
+let
+val x0 =
+a0ref_get<a>(A0)
+val () =
+a0ref_print$beg<>()
+val () =
+let
+val () =
+g_print<a>(x0) in g_free<a>(x0)
+end
+val () =
+a0ref_print$end<>()
+end
+//
+impltmp
+<>(*tmp*)
+a0ref_print$beg() = string_print("[")
+impltmp
+<>(*tmp*)
+a0ref_print$end() = string_print("]")
+//
+(* ****** ****** *)
+//
+impltmp
+<a:vtype>
+a1ref_make_nval(asz, ini) =
 a1ptr2ref
-(a1ptr_make<a>(sz, x0))
+(a1ptr_make_nval<a>(asz, ini))
 //
 (* ****** ****** *)
 

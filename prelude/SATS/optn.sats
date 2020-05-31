@@ -46,12 +46,33 @@ optn_consq
 {a:t0}{b:b0}
 (xs: optn(a, b)): bool(b=tt)
 //
+(* ****** ****** *)
 //
 fun
 <a:t0>
 optn_length
 {b:b0}
 (xs: optn(a, b)): int(b2i(b))
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+optn_forall
+{b:b0}(xs: optn(a, b)): bool
+fun
+<a:t0>
+optn_foreach
+{b:b0}(xs: optn(a, b)): void
+//
+fun
+<a:t0>
+optn_rforall
+{b:b0}(xs: optn(a, b)): bool
+fun
+<a:t0>
+optn_rforeach
+{b:b0}(xs: optn(a, b)): void
 //
 (* ****** ****** *)
 //
@@ -73,6 +94,13 @@ optn_length
 (* ****** ****** *)
 
 #symload length with optn_length of 1000
+
+(* ****** ****** *)
+
+#symload forall with optn_forall of 1000
+#symload foreach with optn_foreach of 1000
+#symload rforall with optn_rforall of 1000
+#symload rforeach with optn_rforeach of 1000
 
 (* ****** ****** *)
 
