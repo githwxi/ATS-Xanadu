@@ -136,7 +136,17 @@ list_vt_cons(_, xs) => loop(xs, ln+1)
 } endwhr // end of [length_vt_length]
 
 (* ****** ****** *)
-
+//
+implement
+<a>(*tmp*)
+list_vt_extend
+  (xs, x0) =
+let
+val ys =
+list_vt_sing<a>(x0) in
+list_vt_append<a>(xs, ys)
+end // list_vt_extend
+//
 implement
 <a>(*tmp*)
 list_vt_append
@@ -171,7 +181,7 @@ end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //
 } (* end of [list_vt_append] *)
-
+//
 (* ****** ****** *)
 
 implement
