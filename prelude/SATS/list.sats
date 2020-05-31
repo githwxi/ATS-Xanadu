@@ -42,6 +42,14 @@ fun
 list_sing(x: a): list(a, 1)
 //
 (* ****** ****** *)
+
+fun
+<a:t0>
+list_make_nval
+{n:nat}
+(n: int(n), x: a): list(a, n)
+
+(* ****** ****** *)
 //
 fun<>
 list_nilq

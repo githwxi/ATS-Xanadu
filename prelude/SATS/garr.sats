@@ -72,6 +72,19 @@ a1ptr2ref
 //
 fun
 <a:vt>
+a0ref_make(x0: a): a0ref(a)
+//
+fun
+<a:vt>
+a0ptr_make(x0: a): a0ptr(a)
+fun
+<a:vt>
+a0ptr_free(A0: a0ptr(a)): void
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
 a0ref_get(A0: a0ref(a)): a
 fun
 <a:vt>
@@ -86,23 +99,25 @@ a0ptr_set(A0: a0ptr(a), x0: a): void
 //
 (* ****** ****** *)
 //
-fun
-<a:vt>
-a0ref_make(x0: a): a0ref(a)
-//
-fun
-<a:vt>
-a0ptr_make(x0: a): a0ptr(a)
-fun
-<a:vt>
-a0ptr_free(A0: a0ptr(a)): void
-//
-(* ****** ****** *)
-//
 // HX: 1-dimensional
 //
 (* ****** ****** *)
-
+//
+fun
+<a:vt>
+a1ref_make_nval
+{n:nat}
+( asz
+: int(n), ini: a): a1ref(a, n)
+fun
+<a:vt>
+a1ptr_make_nval
+{n:nat}
+( asz
+: int(n), ini: a): a1ptr(a, n)
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
 <n:int>
@@ -111,7 +126,7 @@ fun
 <a:vt>
 <n:int>
 a1ptr_length(!a1ptr(a, n)): int(n)
-
+//
 (* ****** ****** *)
 //
 fun
@@ -185,13 +200,18 @@ get with a0ptr_get of 1000
 #symload
 set with a0ptr_set of 1000
 //
+#symload
+a0ref with a0ref_make of 1000
+#symload
+a0ptr with a0ptr_make of 1000
+//
 (* ****** ****** *)
-
+(*
 #symload
 length with a1ref_length of 1000
 #symload
 length with a1ptr_length of 1000
-
+*)
 (* ****** ****** *)
 //
 #symload sub with a1ref_get_at of 1000
@@ -200,6 +220,11 @@ length with a1ptr_length of 1000
 #symload sub with a1ptr_get_at of 1000
 #symload sub with a1ptr_set_at of 1000
 //
+(* ****** ****** *)
+
+#symload a1ref with a1ref_make_nval of 1000
+#symload a1ptr with a1ptr_make_nval of 1000
+
 (* ****** ****** *)
 
 (* end of [garr.sats] *)

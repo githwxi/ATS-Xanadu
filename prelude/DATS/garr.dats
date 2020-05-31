@@ -8,6 +8,22 @@
 "./../SATS/garr.sats"
 *)
 (* ****** ****** *)
+//
+impltmp
+<a:vtype>
+a0ref_make(x0) =
+a0ptr2ref
+(a0ptr_make<a>(x0))
+//
+(* ****** ****** *)
+//
+impltmp
+<a:vtype>
+a1ref_make(sz, x0) =
+a1ptr2ref
+(a1ptr_make<a>(sz, x0))
+//
+(* ****** ****** *)
 
 impltmp
 <a:vtype>
