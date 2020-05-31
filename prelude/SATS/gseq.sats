@@ -283,6 +283,28 @@ fun
 <x0:t0
 ,xs:t0>gseq_mul(xs): x0
 //
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_max_exn(xs): x0
+fun
+<x0:t0
+,xs:t0>
+gseq_min_exn(xs): x0
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_max_opt(xs): optn_vt(x0)
+fun
+<x0:t0
+,xs:t0>
+gseq_min_opt(xs): optn_vt(x0)
+//
+(* ****** ****** *)
+//
 fun
 <x0:t0
 ,xs:t0>gseq_max2(xs, x0): x0
@@ -478,14 +500,38 @@ length with gseq_length of 0100
 (* ****** ****** *)
 //
 #symload foldl with gseq_foldl of 0100
-#symload foldr with gseq_foldr of 0100
-//
 #symload forall with gseq_forall of 0100
 #symload foreach with gseq_foreach of 0100
 //
+(* ****** ****** *)
+//
+#symload max2 with gseq_max2 of 0100
+#symload min2 with gseq_min2 of 0100
+//
+#symload max_exn with gseq_max_exn of 0100
+#symload min_exn with gseq_min_exn of 0100
+//
+#symload max_opt with gseq_max_opt of 0100
+#symload min_opt with gseq_min_opt of 0100
+//
+(* ****** ****** *)
+//
+#symload foldr with gseq_foldr of 0100
 #symload rforall with gseq_rforall of 0100
 #symload rforeach with gseq_rforeach of 0100
 //
+(* ****** ****** *)
+
+#symload listize with gseq_listize of 0100
+#symload rlistize with gseq_rlistize of 0100
+#symload streamize with gseq_streamize of 0100
+
+(* ****** ****** *)
+
+#symload map_list with gseq_map_list of 0100
+#symload map_rlist with gseq_map_rlist of 0100
+#symload map_stream with gseq_map_stream of 0100
+
 (* ****** ****** *)
 
 (* end of [gseq.sats] *)

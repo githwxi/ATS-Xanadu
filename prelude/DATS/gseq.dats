@@ -639,7 +639,77 @@ in
 end // end of [gseq_mul/foldl]
 
 (* ****** ****** *)
-
+//
+impltmp
+<x0,xs>
+gseq_max_exn
+  (xs) =
+(
+if
+gseq_nilq<x0,xs>(xs)
+then
+$raise SubscriptExn()
+else
+gseq_max2
+( gseq_tail_raw<x0,xs>(xs)
+, gseq_head_raw<x0,xs>(xs))
+) (* end of [gseq_max_exn] *)
+//
+impltmp
+<x0,xs>
+gseq_min_exn
+  (xs) =
+(
+if
+gseq_nilq<x0,xs>(xs)
+then
+$raise SubscriptExn()
+else
+gseq_min2
+( gseq_tail_raw<x0,xs>(xs)
+, gseq_head_raw<x0,xs>(xs))
+) (* end of [gseq_min_exn] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+gseq_max_opt
+  (xs) =
+(
+if
+gseq_nilq<x0,xs>(xs)
+then
+optn_vt_nil((*void*))
+else
+optn_vt_cons
+(
+gseq_max2
+( gseq_tail_raw<x0,xs>(xs)
+, gseq_head_raw<x0,xs>(xs))
+)
+) (* end of [gseq_max_opt] *)
+//
+impltmp
+<x0,xs>
+gseq_min_opt
+  (xs) =
+(
+if
+gseq_nilq<x0,xs>(xs)
+then
+optn_vt_nil((*void*))
+else
+optn_vt_cons
+(
+gseq_min2
+( gseq_tail_raw<x0,xs>(xs)
+, gseq_head_raw<x0,xs>(xs))
+)
+) (* end of [gseq_min_opt] *)
+//
+(* ****** ****** *)
+//
 impltmp
 <x0,xs>
 gseq_max2
@@ -655,9 +725,7 @@ foldl$fopr
 in
   gseq_foldl<x0,xs><r0>(xs, x0)
 end // end of [gseq_max2/foldl]
-
-(* ****** ****** *)
-
+//
 impltmp
 <x0,xs>
 gseq_min2
@@ -673,7 +741,7 @@ foldl$fopr
 in
   gseq_foldl<x0,xs><r0>(xs, x0)
 end // end of [gseq_min2/foldl]
-
+//
 (* ****** ****** *)
 
 impltmp
