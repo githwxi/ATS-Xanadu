@@ -11,7 +11,7 @@
 
 impltmp
 <a:vtype>
-arref_streamize
+a1ref_streamize
   {n}(A0) =
 (
   auxmain(0(*i0*))
@@ -19,7 +19,7 @@ arref_streamize
 {
 //
 val n0 =
-arref_length<a><n>(A0)
+a1ref_length<a><n>(A0)
 //
 fun
 auxmain
@@ -36,16 +36,16 @@ else
 strmcon_vt_cons
 (sub(A0, i0), auxmain(succ(i0)))
 ) (* end of [auxmain] *)
-} (* end of [arref_streamize] *)
+} (* end of [a1ref_streamize] *)
 
 (* ****** ****** *)
 
 impltmp
 <a:type>
-arref_forall
+a1ref_forall
   (A0) =
 (
-arref_forall1<a>(A0)
+a1ref_forall1<a>(A0)
 ) where
 {
 impltmp
@@ -53,7 +53,7 @@ forall1$test<a> = forall$test<a>
 }
 impltmp
 <a:vtype>
-arref_forall1
+a1ref_forall1
   {n}(A0) =
 (
   loop(0(*i0*))
@@ -61,7 +61,7 @@ arref_forall1
 {
 //
 val n0 =
-arref_length<a><n>(A0)
+a1ref_length<a><n>(A0)
 //
 fun
 loop
@@ -76,16 +76,16 @@ in
 if test then loop(succ(i0)) else false
 end else false // end of [if]
 //
-} (* end of [arref_forall1] *)
+} (* end of [a1ref_forall1] *)
 
 (* ****** ****** *)
 
 impltmp
 <a:type>
-arref_foreach
+a1ref_foreach
   (A0) =
 (
-arref_foreach1<a>(A0)
+a1ref_foreach1<a>(A0)
 ) where
 {
 impltmp
@@ -93,7 +93,7 @@ foreach1$work<a> = foreach$work<a>
 }
 impltmp
 <a:vtype>
-arref_foreach1
+a1ref_foreach1
   {n}(A0) =
 (
   loop(0(*i0*))
@@ -101,7 +101,7 @@ arref_foreach1
 {
 //
 val n0 =
-arref_length<a><n>(A0)
+a1ref_length<a><n>(A0)
 //
 fun
 loop
@@ -117,25 +117,25 @@ loop(succ(i0))
 val () = foreach1$work<a>(sub(A0, i0))
 }
 //
-} (* end of [arref_foreach1] *)
+} (* end of [a1ref_foreach1] *)
 
 (* ****** ****** *)
 
 impltmp
 {a:t0}{n:i0}
 gseq_length
-<a,arref(a,n)> = arref_length<a><n>
+<a,a1ref(a,n)> = a1ref_length<a><n>
 
 (* ****** ****** *)
 
 impltmp
 {a:t0}{n:i0}
 gseq_forall
-<a,arref(a,n)> = arref_forall<a><n>
+<a,a1ref(a,n)> = a1ref_forall<a><n>
 impltmp
 {a:t0}{n:i0}
 gseq_foreach
-<a,arref(a,n)> = arref_foreach<a><n>
+<a,a1ref(a,n)> = a1ref_foreach<a><n>
 
 (* ****** ****** *)
 
