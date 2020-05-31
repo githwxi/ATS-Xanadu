@@ -38,90 +38,90 @@
 (* ****** ****** *)
 
 abstbox
-arref_t0_i0_x0(a:vt, n:int)
+a1ref_t0_i0_x0(a:vt, n:int)
 absvtbox
-array_vt_i0_vx(a:vt, n:int)
+a1ptr_vt_i0_vx(a:vt, n:int)
 
 (* ****** ****** *)
 
 typedef
-arref(a:vt,n:int) = arref_t0_i0_x0(a,n)
+a1ref(a:vt,n:int) = a1ref_t0_i0_x0(a,n)
 vtypedef
-array(a:vt,n:int) = array_vt_i0_vx(a,n)
+a1ptr(a:vt,n:int) = a1ptr_vt_i0_vx(a,n)
 
 (* ****** ****** *)
 
 fcast
-array2ref
+a1ptr2ref
 {a:vt}{n:i0}
-(A0: array(a, n)): arref(a, n)
+(A0: a1ptr(a, n)): a1ref(a, n)
 
 (* ****** ****** *)
 
 fun
 <a:vt>
 <n:int>
-arref_length(arref(a, n)): int(n)
+a1ref_length(a1ref(a, n)): int(n)
 fun
 <a:vt>
 <n:int>
-array_length(!array(a, n)): int(n)
+a1ptr_length(!a1ptr(a, n)): int(n)
 
 (* ****** ****** *)
 //
 fun
 <a:vt>
-arref_get_at
+a1ref_get_at
 {n:int}
-(A0: arref(a, n), i0: nintlt(n)): a
+(A0: a1ref(a, n), i0: nintlt(n)): a
 fun
 <a:vt>
-arref_set_at
+a1ref_set_at
 {n:int}
 ( A0:
-  arref(a, n), i0: nintlt(n), x0: a): void
+  a1ref(a, n), i0: nintlt(n), x0: a): void
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-array_get_at
+a1ptr_get_at
 {n:int}
-(A0: !array(a, n), i0: nintlt(n)): a
+(A0: !a1ptr(a, n), i0: nintlt(n)): a
 fun
 <a:vt>
-array_set_at
+a1ptr_set_at
 {n:int}
 ( A0:
-! array(a, n), i0: nintlt(n), x0: a): void
+! a1ptr(a, n), i0: nintlt(n), x0: a): void
 //
 (* ****** ****** *)
 
 fun
 <a:vt>
-arref_streamize
+a1ref_streamize
 {n:int}
-(A0: arref(a, n)): stream_vt(a)
+(A0: a1ref(a, n)): stream_vt(a)
 
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-arref_forall
-{n:int}(A0: arref(x0, n)): bool
+a1ref_forall
+{n:int}(A0: a1ref(x0, n)): bool
 fun
 <x0:vt>
-arref_forall1
-{n:int}(A0: arref(x0, n)): bool
+a1ref_forall1
+{n:int}(A0: a1ref(x0, n)): bool
 //
 fun
 <x0:t0>
-arref_foreach
-{n:int}(A0: arref(x0, n)): void
+a1ref_foreach
+{n:int}(A0: a1ref(x0, n)): void
 fun
 <x0:vt>
-arref_foreach1
-{n:int}(A0: arref(x0, n)): void
+a1ref_foreach1
+{n:int}(A0: a1ref(x0, n)): void
 //
 (* ****** ****** *)
 //
@@ -131,15 +131,15 @@ arref_foreach1
 (* ****** ****** *)
 
 #symload
-length with arref_length of 1000
+length with a1ref_length of 1000
 
 (* ****** ****** *)
 //
-#symload sub with arref_get_at of 1000
-#symload sub with arref_set_at of 1000
+#symload sub with a1ref_get_at of 1000
+#symload sub with a1ref_set_at of 1000
 //
-#symload sub with array_get_at of 1000
-#symload sub with array_set_at of 1000
+#symload sub with a1ptr_get_at of 1000
+#symload sub with a1ptr_set_at of 1000
 //
 (* ****** ****** *)
 

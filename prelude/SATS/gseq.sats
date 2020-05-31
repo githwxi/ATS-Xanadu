@@ -471,16 +471,16 @@ tail_exn with gseq_tail_exn of 0100
 #symload length with gseq_length of 0100
 
 (* ****** ****** *)
-
+//
 #symload foldl with gseq_foldl of 0100
+#symload foldr with gseq_foldr of 0100
+//
 #symload forall with gseq_forall of 0100
 #symload foreach with gseq_foreach of 0100
-
-(* ****** ****** *)
-
+//
 #symload rforall with gseq_rforall of 0100
 #symload rforeach with gseq_rforeach of 0100
-
+//
 (* ****** ****** *)
 
 (* end of [gseq.sats] *)
