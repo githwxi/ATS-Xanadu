@@ -131,7 +131,7 @@ gint_forall_sint<>
 ( loop(0) ) where
 {
 //
-typedef x0 = sint
+typedef x0 = nint
 typedef xs = sint
 //
 fun
@@ -155,7 +155,7 @@ gint_rforall_sint<>
 ( loop(xs) ) where
 {
 //
-typedef x0 = sint
+typedef x0 = nint
 typedef xs = sint
 //
 fun
@@ -176,7 +176,7 @@ else true // end of [else]
 
 local
 //
-typedef x0 = sint
+typedef x0 = nint
 typedef xs = sint
 //
 in(*in-of-local*)
@@ -191,7 +191,7 @@ gseq_consq<x0,xs> = gint_consq_sint<>
 (* ****** ****** *)
 //
 impltmp
-gseq_forall<x0,xs> = gseq_forall_sint<>
+gseq_forall<x0,xs> = gint_forall_sint<>
 impltmp
 gseq_rforall<x0,xs> = gint_rforall_sint<>
 //

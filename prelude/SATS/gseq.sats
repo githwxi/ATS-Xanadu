@@ -458,6 +458,8 @@ consq with gseq_consq of 0100
 head with gseq_head_exn of 0100
 #symload
 head_exn with gseq_head_exn of 0100
+#symload
+head_opt with gseq_head_opt of 0100
 
 (* ****** ****** *)
 
@@ -465,10 +467,13 @@ head_exn with gseq_head_exn of 0100
 tail with gseq_tail_exn of 0100
 #symload
 tail_exn with gseq_tail_exn of 0100
+#symload
+tail_opt with gseq_tail_opt of 0100
 
 (* ****** ****** *)
 
-#symload length with gseq_length of 0100
+#symload
+length with gseq_length of 0100
 
 (* ****** ****** *)
 //
