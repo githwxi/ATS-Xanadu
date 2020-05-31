@@ -45,19 +45,11 @@ fun<>
 char_make_uint
 (code: uint): char
 //
-#symload
-char with char_make_sint of 00
-#symload
-char with char_make_uint of 00
-//
 (* ****** ****** *)
 //
 fun<>
 sint_make_char
 (char: char): sint
-//
-#symload
-sint with sint_make_char of 00
 //
 (* ****** ****** *)
 //
@@ -93,8 +85,28 @@ char_cmp
 
 fun<>
 char_print(c0: char): void
-#symload print with char_print of 110
 
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for char
+//
+(* ****** ****** *)
+//
+#symload
+char with char_make_sint of 1000
+#symload
+char with char_make_uint of 1000
+//
+(* ****** ****** *)
+//
+#symload
+sint with sint_make_char of 1000
+//
+(* ****** ****** *)
+//
+#symload print with char_print of 1000
+//
 (* ****** ****** *)
 
 (* end of [char.sats] *)

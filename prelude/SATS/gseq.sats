@@ -441,5 +441,46 @@ gseq_z2map_rlist
   (xs: xs, ys: ys): list_vt(z0)
 //
 (* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for gseq
+//
+(* ****** ****** *)
+
+#symload
+nilq with gseq_nilq of 100
+#symload
+consq with gseq_consq of 100
+
+(* ****** ****** *)
+
+#symload
+head with gseq_head_exn of 100
+#symload
+head_exn with gseq_head_exn of 100
+
+(* ****** ****** *)
+
+#symload
+tail with gseq_tail_exn of 100
+#symload
+tail_exn with gseq_tail_exn of 100
+
+(* ****** ****** *)
+
+#symload length with gseq_length of 100
+
+(* ****** ****** *)
+
+#symload foldl with gseq_foldl of 100
+#symload forall with gseq_forall of 100
+#symload foreach with gseq_foreach of 100
+
+(* ****** ****** *)
+
+#symload rforall with gseq_rforall of 100
+#symload rforeach with gseq_rforeach of 100
+
+(* ****** ****** *)
 
 (* end of [gseq.sats] *)

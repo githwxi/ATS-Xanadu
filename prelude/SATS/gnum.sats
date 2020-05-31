@@ -68,20 +68,6 @@ fun
 <a:t0>
 g_pred(x: a): a
 //
-#symload
-pred with g_neg of 100
-#symload
-succ with g_succ of 100
-#symload
-pred with g_pred of 100
-//
-#symload
-succ with g_succ of 100
-#symload
-pred with g_pred of 100
-//
-#symload - with g_neg of 100
-//
 (* ****** ****** *)
 //
 fun
@@ -90,9 +76,6 @@ g_add(x: a, y: a): a
 fun
 <a:t0>
 g_sub(x: a, y: a): a
-//
-#symload + with g_add of 100
-#symload - with g_sub of 100
 //
 (* ****** ****** *)
 //
@@ -106,9 +89,30 @@ fun
 <a:t0>
 g_mod(x: a, y: a): a
 //
-#symload * with g_mul of 100
-#symload / with g_div of 100
-#symload % with g_mod of 100
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for gnum
+//
+(* ****** ****** *)
+//
+#symload
+pred with g_neg of 101
+#symload
+succ with g_succ of 101
+#symload
+pred with g_pred of 101
+//
+(* ****** ****** *)
+//
+#symload - with g_neg of 101
+//
+#symload + with g_add of 102
+#symload - with g_sub of 102
+//
+#symload * with g_mul of 102
+#symload / with g_div of 102
+#symload % with g_mod of 102
 //
 (* ****** ****** *)
 

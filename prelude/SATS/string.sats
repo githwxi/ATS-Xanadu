@@ -93,12 +93,32 @@ string_consq
 (* ****** ****** *)
 //
 fun<>
-string_head(string): char
+string_head
+{n:pos}(string(n)): cgtz
+fun<>
+string_tail
+{n:pos}(string(n)): string(n-1)
+//
+(* ****** ****** *)
+//
+fun<>
+string_head_exn(string): cgtz
+fun<>
+string_head_opt(string): char
 fun<>
 string_head_raw(string): cgtz
+//
+(* ****** ****** *)
+//
 fun<>
 string_tail_raw(string): string
 //
+(* ****** ****** *)
+
+fun<>
+string_length
+{n:int}(cs: string(n)): int(n)
+
 (* ****** ****** *)
 //
 fun<>
@@ -106,6 +126,35 @@ string_forall(cs: string): bool
 fun<>
 string_rforall(cs: string): bool
 //
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for string
+//
+(* ****** ****** *)
+//
+#symload
+nilq with string_nilq of 1000
+#symload
+consq with string_consq of 1000
+//
+(* ****** ****** *)
+//
+#symload head with string_head of 1000
+//
+(* ****** ****** *)
+//
+#symload print with string_print of 1000
+//
+(* ****** ****** *)
+//
+#symload length with string_length of 1000
+//
+(* ****** ****** *)
+
+#symload forall with string_forall of 1000
+#symload foreach with string_foreach of 1000
+
 (* ****** ****** *)
 
 (* end of [string.sats] *)

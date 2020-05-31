@@ -36,11 +36,6 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#symload none with optn_nil
-#symload some with optn_cons
-
-(* ****** ****** *)
 //
 fun<>
 optn_nilq
@@ -51,20 +46,34 @@ optn_consq
 {a:t0}{b:b0}
 (xs: optn(a, b)): bool(b=tt)
 //
-#symload nilq with optn_nilq
-#symload eqzq with optn_nilq
-#symload consq with optn_consq
-#symload neqzq with optn_consq
-//
-(* ****** ****** *)
 //
 fun
 <a:t0>
 optn_length
 {b:b0}
 (xs: optn(a, b)): int(b2i(b))
-#symload length with optn_length
 //
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for optn
+//
+(* ****** ****** *)
+
+#symload none with optn_nil
+#symload some with optn_cons
+
+(* ****** ****** *)
+
+#symload nilq with optn_nilq of 1000
+#symload eqzq with optn_nilq of 1000
+#symload consq with optn_consq of 1000
+#symload neqzq with optn_consq of 1000
+//
+(* ****** ****** *)
+
+#symload length with optn_length of 1000
+
 (* ****** ****** *)
 
 (* end of [optn.sats] *)

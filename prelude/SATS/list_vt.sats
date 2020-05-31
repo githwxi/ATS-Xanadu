@@ -37,13 +37,6 @@
 //
 (* ****** ****** *)
 
-#symload
-nil_vt with list_vt_nil
-#symload
-cons_vt with list_vt_cons
-
-(* ****** ****** *)
-
 fcast
 list_vt2t
 {a:t0}{n:i0}
@@ -102,8 +95,6 @@ list_vt_append
 ( list_vt(a, m)
 , list_vt(a, n)): list_vt(a, m+n)
 //
-#symload append with list_vt_append
-//
 (* ****** ****** *)
 //
 fun
@@ -111,8 +102,6 @@ fun
 list_vt_concat
 ( xss
 : list_vt(list_vt(a))): list_vt(a)
-//
-#symload concat with list_vt_concat
 //
 (* ****** ****** *)
 //
@@ -191,6 +180,27 @@ fun
 list_vt_mergesort
   {n:int}(xs: list_vt(a, n)): list_vt(a, n)
 //
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for list
+//
+(* ****** ****** *)
+
+#symload
+nil_vt with list_vt_nil of 000
+#symload
+cons_vt with list_vt_cons of 000
+
+(* ****** ****** *)
+//
+#symload append with list_vt_append of 1000
+#symload concat with list_vt_concat of 1000
+//
+(* ****** ****** *)
+
+#symload mergesort with list_vt_mergesort of 1000
+
 (* ****** ****** *)
 
 (* end of [list_vt.sats] *)
