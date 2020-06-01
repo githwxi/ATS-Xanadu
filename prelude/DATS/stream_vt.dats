@@ -106,12 +106,16 @@ loop(xs, 0(*i0*))
 typedef
 xs = stream_vt(a)
 fun
-loop(xs: xs, i0: nint): void =
+loop
+( xs: xs
+, i0: nint): void =
 (
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
+(
 stream_vt_print$end<>()
+)
 | ~
 strmcon_vt_cons(x0, xs) =>
 let
@@ -121,7 +125,7 @@ if
 then
 stream_vt_print$sep<>()
 val () =
-g_print0<a>(x0) in loop(xs, i0+1)
+g_print0<a>(x0) in loop(xs, succ(i0))
 end // end of [strmcon_vt_cons]
 )
 } (* end of [stream_vt_print_all] *)
@@ -166,7 +170,7 @@ val () =
 stream_vt_print$rst<>()
 //
 in
-stream_vt_print$end<>()
+  stream_vt_print$end<>()
 end // end of [then]
 else
 let
@@ -176,7 +180,7 @@ if
 then
 stream_vt_print$sep<>()
 val () =
-g_print0<a>(x0) in loop(xs, n0+1)
+g_print0<a>(x0) in loop(xs, succ(i0))
 end // end of [else]
 ) (* strmcon_vt_cons *)
 } (* end of [stream_vt_print_len] *)

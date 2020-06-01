@@ -152,7 +152,7 @@ if
 then
 stream_print$sep<>()
 val () =
-g_print<a>(x0) in loop(xs, i0+1)
+g_print<a>(x0) in loop(xs, succ(i0))
 end // end of [strmcon_cons]
 )
 } (* end of [stream_print_all] *)
@@ -170,7 +170,9 @@ loop(xs, 0(*i0*))
 typedef
 xs = stream(a)
 fun
-loop(xs: xs, i0: nint): void =
+loop
+( xs: xs
+, i0: nint): void =
 (
 case+ !xs of
 |
@@ -200,7 +202,7 @@ if
 then
 stream_print$sep<>()
 val () =
-g_print0<a>(x0) in loop(xs, n0+1)
+g_print0<a>(x0) in loop(xs, succ(i0))
 end // end of [else]
 ) (* strmcon_cons *)
 } (* end of [stream_print_len] *)
