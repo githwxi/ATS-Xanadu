@@ -87,6 +87,8 @@ fun<>
 stream_vt_print$end(): void
 fun<>
 stream_vt_print$sep(): void
+fun<>
+stream_vt_print$rst(): void
 //
 fun
 <a:vt>
@@ -210,6 +212,10 @@ nil_vt with strmcon_vt_nil
 #symload
 cons_vt with strmcon_vt_cons
 //
+(* ****** ****** *)
+//
+#symload print with stream_vt_print of 1000
+
 (* ****** ****** *)
 //
 #symload length with stream_vt_length of 1000
