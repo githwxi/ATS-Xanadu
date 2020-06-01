@@ -226,7 +226,7 @@ length1 with list_vt_length of 1000
 //
 #symload extend with list_vt_extend of 1000
 (*
-#symload extend0 with list_vt_extend of 1000
+#symload extend00 with list_vt_extend of 1000
 *)
 //
 #symload append with list_vt_append of 1000
