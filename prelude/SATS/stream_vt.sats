@@ -40,38 +40,63 @@ stream_vt2t
 
 fun
 <a:vt>
-stream_vt_free(stream_vt(a)): void
-
-(* ****** ****** *)
-
-fun
-<a:vt>
 stream_vt_nil(): stream_vt(a)
 fun
 <a:vt>
 stream_vt_cons
-(x0: a, xs: stream_vt(a)): stream_vt(a)
+( x0: a
+, xs: stream_vt(a)): stream_vt(a)
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-stream_vt_sing(x0: a): stream_vt(a)
+stream_vt_sing(a): stream_vt(a)
 fun
 <a:vt>
-strmcon_vt_sing(x0: a): strmcon_vt(a)
+strmcon_vt_sing(a): strmcon_vt(a)
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-stream_vt_pair
-(x0: a, y0: a): stream_vt(a)
+stream_vt_pair(a, a): stream_vt(a)
 fun
 <a:vt>
-strmcon_vt_pair
-(x0: a, y0: a): strmcon_vt(a)
+strmcon_vt_pair(a, a): strmcon_vt(a)
 
+(* ****** ****** *)
+
+fun
+<a:vt>
+stream_vt_free(stream_vt(a)): void
+
+(* ****** ****** *)
+//
+fun
+<a:vt>
+stream_vt_print
+  (xs: stream_vt(a)): void
+//
+fun<>
+stream_vt_print$len(): sint
+//
+fun<>
+stream_vt_print$beg(): void
+fun<>
+stream_vt_print$end(): void
+fun<>
+stream_vt_print$sep(): void
+//
+fun
+<a:vt>
+stream_vt_print_all
+  (xs: stream_vt(a)): void
+fun
+<a:vt>
+stream_vt_print_len
+(xs: stream_vt(a), len: nint): void
+//
 (* ****** ****** *)
 
 fun
