@@ -676,9 +676,9 @@ end // list_vt_cons
 //
 //
 impltmp
-{x0:vt}
+{a:vt}
 glseq_nilq1
-<x0,list_vt(x0)>(xs) =
+<a,list_vt(a)>(xs) =
 (
 case+ xs of
 | !
@@ -687,9 +687,9 @@ list_vt_nil() => true
 list_vt_cons(_, _) => false
 )
 impltmp
-{x0:vt}
+{a:vt}
 glseq_consq1
-<x0,list_vt(x0)>(xs) =
+<a,list_vt(a)>(xs) =
 (
 case+ xs of
 | !
@@ -701,9 +701,9 @@ list_vt_cons(_, _) => (true)
 (* ****** ****** *)
 
 impltmp
-{x0:vt}
+{a:vt}
 glseq_uncons_raw
-<x0,list_vt(x0)>(xs) =
+<a,list_vt(a)>(xs) =
 let
 val x0 = xs.0
 val () = xs := xs.1 in x0 end
@@ -711,13 +711,13 @@ val () = xs := xs.1 in x0 end
 (* ****** ****** *)
 //
 impltmp
-{x0:vt}
+{a:vt}
 glseq_listize0
-<x0,list_vt(x0)>(xs) = xs
+<a,list_vt(a)>(xs) = xs
 impltmp
-{x0:vt}
+{a:vt}
 glseq_rlistize0
-<x0,list_vt(x0)>(xs) = list_vt_reverse(xs)
+<a,list_vt(a)>(xs) = list_vt_reverse(xs)
 //
 (* ****** ****** *)
 //

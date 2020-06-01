@@ -193,19 +193,61 @@ list_vt_mergesort
 (* ****** ****** *)
 
 #symload
-nil_vt with list_vt_nil of 000
+nil_vt with list_vt_nil
 #symload
-cons_vt with list_vt_cons of 000
+cons_vt with list_vt_cons
 
 (* ****** ****** *)
+//
+#symload
+nilq with list_vt_nilq of 1000
+(*
+#symload
+nilq1 with list_vt_nilq of 1000
+*)
+//
+#symload
+consq with list_vt_consq of 1000
+(*
+#symload
+consq1 with list_vt_consq of 1000
+*)
+//
+(* ****** ****** *)
+//
+#symload
+length with list_vt_length of 1000
+(*
+#symload
+length1 with list_vt_length of 1000
+*)
+//
+(* ****** ****** *)
+//
+#symload extend with list_vt_extend of 1000
+(*
+#symload extend0 with list_vt_extend of 1000
+*)
 //
 #symload append with list_vt_append of 1000
-#symload concat with list_vt_concat of 1000
+(*
+#symload append00 with list_vt_append of 1000
+*)
 //
 (* ****** ****** *)
-
+//
+#symload concat with list_vt_concat of 1000
+(*
+#symload concat0 with list_vt_concat of 1000
+*)
+//
+(* ****** ****** *)
+//
 #symload mergesort with list_vt_mergesort of 1000
-
+(*
+#symload mergesort0 with list_vt_mergesort of 1000
+*)
+//
 (* ****** ****** *)
 
 (* end of [list_vt.sats] *)

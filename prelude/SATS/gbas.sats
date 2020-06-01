@@ -45,7 +45,7 @@ g_self(x: a): a
 
 fun
 <a:vt>
-g_free(x: a): void
+g_free(x: ~a): void
 fun
 <a:vt>
 g_copy(x: !(a)): (a)

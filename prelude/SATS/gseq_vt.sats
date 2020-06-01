@@ -18,11 +18,11 @@ glseq_cons(x0, xs): xs
 fun
 <x0:vt
 ,xs:vt>
-glseq_nilq1(!xs): bool
+glseq_nilq(!xs): bool
 fun
 <x0:vt
 ,xs:vt>
-glseq_consq1(!xs): bool
+glseq_consq(!xs): bool
 //
 (*
 fun
@@ -167,6 +167,55 @@ fun
 ,xs:vt>
 <y0:vt>
 glseq_map1_rlist(!xs): list_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_map0_stream(~xs): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+// HX-2020-05-31:
+// symbol overloading for gseq_vt
+//
+(* ****** ****** *)
+
+#symload nilq with glseq_nilq of 0100
+#symload consq with glseq_consq of 0100
+
+(* ****** ****** *)
+
+#symload length0 with glseq_length0 of 0100
+#symload length1 with glseq_length1 of 0100
+
+(* ****** ****** *)
+//
+(*
+#symload listize with glseq_listize0 of 0100
+#symload rlistize with glseq_rlistize0 of 0100
+*)
+//
+#symload listize0 with glseq_listize0 of 0100
+#symload rlistize0 with glseq_rlistize0 of 0100
+//
+#symload streamize with glseq_streamize0 of 0100
+#symload streamize0 with glseq_streamize0 of 0100
+//
+(* ****** ****** *)
+//
+#symload map0_list with gseq_map0_list of 0100
+#symload map1_list with gseq_map1_list of 0100
+//
+#symload map0_rlist with gseq_map0_rlist of 0100
+#symload map1_rlist with gseq_map1_rlist of 0100
+//
+#symload map0_stream with gseq_map0_stream of 0100
+(*
+#symload map1_stream with gseq_map1_stream of 0100
+*)
 //
 (* ****** ****** *)
 
