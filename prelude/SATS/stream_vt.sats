@@ -65,10 +65,12 @@ strmcon_vt_sing(x0: a): strmcon_vt(a)
 
 fun
 <a:vt>
-stream_vt_pair(x0: a, y0: a): stream_vt(a)
+stream_vt_pair
+(x0: a, y0: a): stream_vt(a)
 fun
 <a:vt>
-strmcon_vt_pair(x0: a, y0: a): strmcon_vt(a)
+strmcon_vt_pair
+(x0: a, y0: a): strmcon_vt(a)
 
 (* ****** ****** *)
 
@@ -92,11 +94,11 @@ stream_vt_take
 fun
 <a:vt>
 stream_vt_listize
-  (xs: stream_vt(a)): list_vt(a)
+(xs: stream_vt(a)): list_vt(a)
 fun
 <a:vt>
 stream_vt_rlistize
-  (xs: stream_vt(a)): list_vt(a)
+(xs: stream_vt(a)): list_vt(a)
 //
 (* ****** ****** *)
 //
