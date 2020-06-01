@@ -43,11 +43,39 @@ stream_cons
 
 fun
 <a:t0>
-stream_sing(x0: a): stream(a)
+stream_sing(a): stream(a)
 fun
 <a:t0>
-stream_pair(x0: a, y0: a): stream(a)
+stream_pair(a, a): stream(a)
 
+(* ****** ****** *)
+//
+fun
+<a:t0>
+stream_print
+  (xs: stream(a)): void
+//
+fun<>
+stream_print$len(): sint
+//
+fun<>
+stream_print$beg(): void
+fun<>
+stream_print$end(): void
+fun<>
+stream_print$sep(): void
+fun<>
+stream_print$rst(): void
+//
+fun
+<a:t0>
+stream_print_all
+  (xs: stream(a)): void
+fun
+<a:t0>
+stream_print_len
+(xs: stream(a), len: nint): void
+//
 (* ****** ****** *)
 
 fun

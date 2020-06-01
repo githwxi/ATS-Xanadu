@@ -100,10 +100,11 @@ impltmp
 stream_vt_print_all
   (xs) =
 (
-  loop(xs, 0(*i0*))
+loop(xs, 0(*i0*))
 ) where
 {
-typedef xs = stream_vt(a)
+typedef
+xs = stream_vt(a)
 fun
 loop(xs: xs, i0: nint): void =
 (
@@ -132,10 +133,11 @@ impltmp
 stream_vt_print_len
   (xs, n0) =
 (
-  loop(xs, 0(*i0*))
+loop(xs, 0(*i0*))
 ) where
 {
-typedef xs = stream_vt(a)
+typedef
+xs = stream_vt(a)
 fun
 loop(xs: xs, i0: nint): void =
 (
@@ -149,6 +151,12 @@ if
 (i0 >= n0)
 then
 let
+//
+val () =
+g_free<a>(x0)
+val () =
+stream_vt_free<a>(xs)
+//
 val () =
 if
 (n0 > 0)
@@ -156,6 +164,7 @@ then
 stream_vt_print$sep<>()
 val () =
 stream_vt_print$rst<>()
+//
 in
 stream_vt_print$end<>()
 end // end of [then]
