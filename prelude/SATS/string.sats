@@ -47,6 +47,28 @@ prfun
 string_lemma
 {n:int}
 (string(n)): [n>=0] void
+prfun
+stropt_lemma
+{n:int}
+(stropt(n)): [n>=0] void
+
+(* ****** ****** *)
+
+fcast
+string_vt2t
+{n:int}
+(cs: string_vt(n)): string(n)
+fcast
+stropt_vt2t
+{n:int}
+(cs: stropt_vt(n)): stropt(n)
+
+(* ****** ****** *)
+
+absvtype
+strptr_i0_vx(n:int) <= ptr
+vtypedef
+strptr(n:int) = strptr_i0_vx(n)
 
 (* ****** ****** *)
 //
@@ -111,6 +133,13 @@ string_head_raw(string): cgtz
 (* ****** ****** *)
 //
 fun<>
+string_tail_exn
+  (cs: string): string
+fun<>
+string_tail_opt
+  (cs: string): optn_vt(string)
+//
+fun<>
 string_tail_raw(string): string
 //
 (* ****** ****** *)
@@ -127,6 +156,40 @@ fun<>
 string_rforall(cs: string): bool
 //
 (* ****** ****** *)
+
+fcast
+string_some
+{n:int}
+(cs: string(n)): stropt(n+1)
+fcast
+stropt_unsome
+{n:pos}
+(cs: stropt(n)): string(n-1)
+
+(* ****** ****** *)
+//
+fun<>
+strptr_make
+{n:nat}
+(bsz: int(n)): strptr(n)
+//
+fun<>
+strptr_set_at
+{n:int}
+{i:nat|i < n}
+( p0: !strptr(n)
+, i0: int(i), c0: cgtz): void
+//
+(* ****** ****** *)
+//
+fun<>
+string_make_list
+(cs: list(cgtz, n)): string(n)
+fun<>
+string_vt_make_list
+(cs: list(cgtz, n)): string(n)
+//
+(* ****** ****** *)
 //
 // HX-2020-05-30:
 // symbol overloading for string
@@ -141,6 +204,7 @@ consq with string_consq of 1000
 (* ****** ****** *)
 //
 #symload head with string_head of 1000
+#symload tail with string_tail of 1000
 //
 (* ****** ****** *)
 //

@@ -420,19 +420,34 @@ let
 //
 fun
 loop
-(xx: list_vt(x0), xs: xs): xs =
+( xx
+: list_vt(x0), xs: xs): xs =
 (
 case+ xx of
-|
+| ~
 list_vt_nil() => xs
-|
+| ~
 list_vt_cons(x0, xx) =>
-loop(xx, gseq_cons<x0,xs>(x0, xs))
+loop
+(xx, gseq_cons<x0,xs>(x0, xs))
 )
 in
   loop(xx, gseq_nil<x0,xs>())
 end // end of [gseq_unrlist_vt]
 //
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_unstream_vt
+  (xx) =
+(
+  gseq_unrlist_vt<x0,xs>(xs)
+) where
+{
+val xx = stream_vt_rlistize<x0>(xx)
+} // end of [gseq_unstream_vt]
+
 (* ****** ****** *)
 //
 impltmp
