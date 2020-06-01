@@ -435,7 +435,7 @@ typedef
 nsize = [i:int | i >= 0] ssize(i)
 
 (* ****** ****** *)
-
+//
 typedef
 sintlt(n:int) = [i:int | i < n] sint(i)
 typedef
@@ -444,14 +444,21 @@ typedef
 sintlte(n:int) = [i:int | i <= n] sint(i)
 typedef
 sintgte(n:int) = [i:int | i >= n] sint(i)
-
-(* ****** ****** *)
-
+//
 typedef
 nintlt(n:int) = [i:nat | i < n] sint(i)
 typedef
 nintlte(n:int) = [i:nat | i <= n] sint(i)
-
+//
+typedef
+sintbtw
+(m:int
+,n:int) = [i:int | m <= i; i < n] sint(i)
+typedef
+sintbtwe
+(m:int
+,n:int) = [i:int | m <= i; i <= n] sint(i)
+//
 (* ****** ****** *)
 
 datatype

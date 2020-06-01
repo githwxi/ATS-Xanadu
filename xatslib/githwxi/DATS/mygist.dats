@@ -452,5 +452,118 @@ end // list_cons
 } endwhr (* end of [list_nchoose2] *)
 
 (* ****** ****** *)
+//
+// HX-2020-05-31:
+// typical integer streams
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+sint_from_up
+{i:int}
+(i0: sint(i)):
+stream_vt(sintgte(i))
+#extern
+fun<>
+sint_from_dn
+{i:int}
+(i0: sint(i)):
+stream_vt(sintlte(i))
+//
+impltmp
+<>(*tmp*)
+sint_from_up
+  (i0) =
+( auxmain(i0) ) where
+{
+fun
+auxmain
+{i:int}
+( i0
+: sintgte(i))
+: stream_vt(sintgte(i)) =
+$llazy
+(
+strmcon_vt_cons(i0, auxmain(succ(i0)))
+)
+}
+//
+impltmp
+<>(*tmp*)
+sint_from_dn
+  (i0) =
+( auxmain(i0) ) where
+{
+fun
+auxmain
+{i:int}
+( i0
+: sintgte(i))
+: stream_vt(sintlte(i)) =
+$llazy
+(
+strmcon_vt_cons(i0, auxmain(pred(i0)))
+)
+}
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+sint_fromto_up
+{i,j:int}
+( i0: sint(i)
+, j0: sint(j)): stream_vt(sintbtw(i, j))
+#extern
+fun<>
+sint_fromto_dn
+{i,j:int}
+( i0: sint(i)
+, j0: sint(j)): stream_vt(sintbtwe(j+1, i))
+//
+impltmp
+<>(*tmp*)
+sint_fromto_up
+  (i0, j0) =
+( auxmain(i0) ) where
+{
+fun
+auxmain
+{i:int}
+( i0
+: sintgte(i))
+: stream_vt(sintgte(i)) =
+$llazy
+(
+if
+(i0 >= j0)
+then strmcon_vt_nil()
+else strmcon_vt_cons(i0, auxmain(succ(i0)))
+)
+}
+//
+impltmp
+<>(*tmp*)
+sint_fromto_dn
+  (i0, j0) =
+( auxmain(i0) ) where
+{
+fun
+auxmain
+{i:int}
+( i0
+: sintgte(i))
+: stream_vt(sintgte(i)) =
+$llazy
+(
+if
+(i0 <= j0)
+then strmcon_vt_nil()
+else strmcon_vt_cons(i0, auxmain(pred(i0)))
+)
+}
+//
+(* ****** ****** *)
 
 (* end of [mygist.dats] *)
