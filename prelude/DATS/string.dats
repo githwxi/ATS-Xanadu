@@ -48,11 +48,38 @@ UN =
 
 impltmp<>
 string_nilq(cs) =
-char_eqzq(string_head_opt(cs))
+char_eqzq
+(string_head_opt(cs))
 impltmp<>
 string_consq(cs) =
-char_neqzq(string_head_opt(cs))
+char_neqzq
+(string_head_opt(cs))
 
+(* ****** ****** *)
+
+impltmp<>
+string_head(cs) =
+(string_head_raw(cs))
+impltmp<>
+string_tail(cs) =
+(string_tail_raw(cs))
+
+(* ****** ****** *)
+//
+(*
+impltmp<>
+string_head_opt(cs) = ...
+*)
+//
+impltmp<>
+string_tail_opt(cs) =
+if
+nilq(cs)
+then
+optn_vt_nil()
+else
+optn_vt_cons(string_tail_raw(cs))
+//
 (* ****** ****** *)
 
 impltmp<>
@@ -82,6 +109,56 @@ loop
 // end of [if]
 end // end of [else]
 } (* end of [string_forall/uncons] *)
+
+(* ****** ****** *)
+
+impltmp<>
+string_make_list
+  (cs) =
+(
+string_vt2t
+(string_vt_make_list<>(cs))
+)
+
+(* ****** ****** *)
+
+impltmp<>
+string_vt_make_list
+  (cs) =
+let
+val p0 =
+strptr_make<>(len)
+in
+  loop(p0, 0(*i0*), cs)
+end where
+{
+//
+val
+len = string_length<>(cs)
+//
+fun
+loop
+{i:nat
+|i<=n}.<n-i>.
+( p0
+: strptr(n)
+, i0: int(i)
+, cs
+: list(cgtz, n-i)): void =
+(
+case+ cs of
+| list_nil() => ()
+| list_cons(c0, cs) =>
+  (
+    loop(p0, succ(i0), cs)
+  ) where
+  {
+    val () =
+    strptr_set_at<>(p0, i0, c0)
+  }
+)
+//
+} (* end of [string_make_list] *)
 
 (* ****** ****** *)
 

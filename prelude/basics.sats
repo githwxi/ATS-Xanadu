@@ -118,11 +118,11 @@ add_b0_b0: (b0, b0) -> bool
 #stacst
 mul_b0_b0: (b0, b0) -> bool
 //
-sexpdef + = add_i0_i0 // overloading
-sexpdef * = mul_i0_i0 // overloading
+sexpdef + = add_b0_b0 // overloading
+sexpdef * = mul_b0_b0 // overloading
 (*
-sexpdef add = add_i0_i0 // overloading
-sexpdef mul = mul_i0_i0 // overloading
+sexpdef add = add_b0_b0 // overloading
+sexpdef mul = mul_b0_b0 // overloading
 *)
 //
 (* ****** ****** *)
@@ -148,6 +148,16 @@ sexpdef = = eq_b0_b0 // overloading
 sexpdef <= = lte_b0_b0 // overloading
 sexpdef >= = gte_b0_b0 // overloading
 sexpdef != = neq_b0_b0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+eq_c0_c0: (c0, c0) -> bool
+#stacst
+eq_c0_i0: (c0, i0) -> bool
+//
+sexpdef = = eq_c0_c0 // overloading
+sexpdef = = eq_c0_i0 // overloading
 //
 (* ****** ****** *)
 //
