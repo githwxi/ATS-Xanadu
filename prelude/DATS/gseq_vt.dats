@@ -22,7 +22,7 @@ impltmp
 glseq_uncons_exn
   (xs) =
 if
-glseq_nilq1<x0,xs>(xs)
+glseq_nilq<x0,xs>(xs)
 then let
 val
 () = g_free<xs>(xs)
@@ -37,7 +37,7 @@ impltmp
 glseq_uncons_opt
   (xs) =
 if
-glseq_nilq1<x0,xs>(xs)
+glseq_nilq<x0,xs>(xs)
 then
 optn_vt_nil((*void*))
 else
