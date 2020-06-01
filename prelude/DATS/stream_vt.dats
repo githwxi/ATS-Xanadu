@@ -86,6 +86,8 @@ impltmp<>
 stream_vt_print$end<>() = string_print(")")
 impltmp<>
 stream_vt_print$sep<>() = string_print(",")
+impltmp<>
+stream_vt_print$rst<>() = string_print("...")
 //
 impltmp
 {a:vt}
@@ -152,6 +154,8 @@ if
 (n0 > 0)
 then
 stream_vt_print$sep<>()
+val () =
+stream_vt_print$rst<>()
 in
 stream_vt_print$end<>()
 end // end of [then]
