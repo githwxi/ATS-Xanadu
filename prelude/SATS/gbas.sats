@@ -68,17 +68,25 @@ g_input_opt
 
 fun
 <a:vt>
-g_print(x: !(a)): void
-
-(* ****** ****** *)
-
-fun
-<a:vt>
 g_equal(!a, !a): bool
 fun
-<a:vt>
+<x0:vt>
 g_noteq(!a, !a): bool
 
+(* ****** ****** *)
+//
+fun
+<a:vt>
+g_print(x: !a): void
+fun
+<a:vt>
+g_print0(x: ~a): void
+(*
+fun
+<a:vt>
+g_print1(x: !a): void
+*)
+//
 (* ****** ****** *)
 
 fun

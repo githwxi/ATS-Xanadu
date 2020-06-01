@@ -64,6 +64,111 @@ impltmp
 g_free<stream_vt(a)> = stream_vt_free<a>
 //
 (* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+stream_vt_print(xs) =
+let
+val len = 
+stream_vt_print$len<>()
+in
+if
+(len < 0)
+then stream_vt_print_all(xs)
+else stream_vt_print_len(xs, len)
+end
+//
+impltmp<>
+stream_vt_print$len<>() = 3
+impltmp<>
+stream_vt_print$beg<>() = string_print("(")
+impltmp<>
+stream_vt_print$end<>() = string_print(")")
+impltmp<>
+stream_vt_print$sep<>() = string_print(",")
+//
+impltmp
+{a:vt}
+g_print0<stream_vt(a)> = stream_vt_print<a>
+//
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+stream_vt_print_all
+  (xs) =
+(
+  loop(xs, 0(*i0*))
+) where
+{
+typedef xs = stream_vt(a)
+fun
+loop(xs: xs, i0: nint): void =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+stream_vt_print$end<>()
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+val () =
+if
+(i0 > 0)
+then
+stream_vt_print$sep<>()
+val () =
+g_print0<a>(x0) in loop(xs, i0+1)
+end // end of [strmcon_vt_cons]
+)
+} (* end of [stream_vt_print_all] *)
+
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+stream_vt_print_len
+  (xs, n0) =
+(
+  loop(xs, 0(*i0*))
+) where
+{
+typedef xs = stream_vt(a)
+fun
+loop(xs: xs, i0: nint): void =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+stream_vt_print$end<>()
+| ~
+strmcon_vt_cons(x0, xs) =>
+if
+(i0 >= n0)
+then
+let
+val () =
+if
+(n0 > 0)
+then
+stream_vt_print$sep<>()
+in
+stream_vt_print$end<>()
+end // end of [then]
+else
+let
+val () =
+if
+(n0 > 0)
+then
+stream_vt_print$sep<>()
+val () =
+g_print0<a>(x0) in loop(xs, n0+1)
+end // end of [else]
+) (* strmcon_vt_cons *)
+} (* end of [stream_vt_print_len] *)
+
+(* ****** ****** *)
 
 impltmp
 <a>(*tmp*)

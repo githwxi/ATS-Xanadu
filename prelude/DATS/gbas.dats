@@ -37,6 +37,16 @@ not(g_equal<a>(x, y))
 //
 (* ****** ****** *)
 //
+impltmp
+{a:v0}
+g_print0<a>(x) =
+let
+val () =
+g_print<a>(x) in g_free<a>(x)
+end // end of [g_print0]
+//
+(* ****** ****** *)
+//
 // HX: for list_vt
 //
 (* ****** ****** *)
