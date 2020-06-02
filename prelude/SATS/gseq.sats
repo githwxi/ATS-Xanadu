@@ -535,6 +535,7 @@ length with gseq_length of 0100
 (* ****** ****** *)
 
 #symload iforall with gseq_iforall of 0100
+#symload iforeach with gseq_iforeach of 0100
 
 (* ****** ****** *)
 
