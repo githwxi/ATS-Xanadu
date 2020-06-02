@@ -79,6 +79,14 @@ case+ xs of
 )
 impltmp
 <a>(*tmp*)
+optn_ristize(xs) =
+(
+case+ xs of
+| optn_nil() => list_vt_nil()
+| optn_cons(x0) => list_vt_sing(x0)
+)
+impltmp
+<a>(*tmp*)
 optn_streamize(xs) =
 $llazy
 (

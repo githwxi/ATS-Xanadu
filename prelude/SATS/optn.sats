@@ -75,16 +75,22 @@ optn_rforeach
 {b:b0}(xs: optn(a, b)): void
 //
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
 optn_listize
-{b:b0}(optn(a, b)): list_vt(a)
+{b:b0}
+(optn(a, b)): list_vt(a, b2i(b))
+fun
+<a:t0>
+optn_rlistize
+{b:b0}
+(optn(a, b)): list_vt(a, b2i(b))
 fun
 <a:t0>
 optn_streamize
-{b:b0}(optn(a, b)): stream_vt(a)
-
+{b:b0}(xs: optn(a, b)): stream_vt(a)
+//
 (* ****** ****** *)
 //
 // HX-2020-05-30:
@@ -110,12 +116,16 @@ optn_streamize
 
 #symload forall with optn_forall of 1000
 #symload foreach with optn_foreach of 1000
+
+(* ****** ****** *)
+
 #symload rforall with optn_rforall of 1000
 #symload rforeach with optn_rforeach of 1000
 
 (* ****** ****** *)
 
 #symload listize with optn_listize of 1000
+#symload rlistize with optn_rlistize of 1000
 #symload streamize with optn_streamize of 1000
 
 (* ****** ****** *)
