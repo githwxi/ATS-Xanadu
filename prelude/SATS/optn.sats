@@ -88,8 +88,7 @@ optn_rlistize
 (optn(a, b)): list_vt(a, b2i(b))
 fun
 <a:t0>
-optn_streamize
-{b:b0}(xs: optn(a, b)): stream_vt(a)
+optn_streamize(optn(a)): stream_vt(a)
 //
 (* ****** ****** *)
 //

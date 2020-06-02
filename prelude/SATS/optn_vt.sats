@@ -47,12 +47,40 @@ optn_vt_consq
 (xs: !optn_vt(a, b)): bool(b=tt)
 //
 (* ****** ****** *)
+
+fun
+<a:vt>
+optn_vt_free(~optn_vt(a)): void
+
+(* ****** ****** *)
 //
 fun
 <a:vt>
 optn_vt_length
 {b:bool}
 (xs: !optn_vt(a, b)): int(b2i(b))
+fun
+<a:vt>
+optn_vt_length0
+{b:bool}
+(xs: ~optn_vt(a, b)): int(b2i(b))
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+optn_vt_listize
+{b:b0}
+(~optn_vt(a, b)): list_vt(a, b2i(b))
+fun
+<a:vt>
+optn_vt_rlistize
+{b:b0}
+(~optn_vt(a, b)): list_vt(a, b2i(b))
+fun
+<a:vt>
+optn_vt_streamize0
+{b:b0}(xs: ~optn_vt(a, b)): stream_vt(a)
 //
 (* ****** ****** *)
 //
@@ -68,14 +96,26 @@ some_vt with optn_vt_cons
 
 (* ****** ****** *)
 //
-#symload nilq with optn_vt_nilq of 1000
-#symload eqzq with optn_vt_nilq of 1000
-#symload consq with optn_vt_consq of 1000
-#symload neqzq with optn_vt_consq of 1000
+#symload
+nilq with optn_vt_nilq of 1000
+#symload
+eqzq with optn_vt_nilq of 1000
+#symload
+consq with optn_vt_consq of 1000
+#symload
+neqzq with optn_vt_consq of 1000
 //
 (* ****** ****** *)
 
-#symload length with optn_vt_length of 1000
+#symload
+length with optn_vt_length of 1000
+#symload
+length0 with optn_vt_length0 of 1000
+
+(* ****** ****** *)
+
+#symload
+streamize0 with optn_vt_streamize0 of 1000
 
 (* ****** ****** *)
 
