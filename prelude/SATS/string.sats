@@ -185,7 +185,8 @@ string_vt_set_at
 //
 fun<>
 string_head
-{n:pos}(string(n)): cgtz
+{n:pos}
+(cs: string(n)): cgtz
 //
 fun<>
 string_head_exn(string): cgtz
@@ -198,7 +199,8 @@ string_head_raw(string): cgtz
 //
 fun<>
 string_tail
-{n:pos}(string(n)): string(n-1)
+{n:pos}
+(cs: string(n)): string(n-1)
 //
 fun<>
 string_tail_exn
@@ -215,6 +217,9 @@ string_tail_raw(string): string
 fun<>
 string_length
 {n:int}(string(n)): int(n)
+fun<>
+string_vt_length
+{n:int}(!string_vt(n)): int(n)
 
 (* ****** ****** *)
 //
@@ -309,7 +314,10 @@ print0 with string_vt_print0 of 1000
 //
 (* ****** ****** *)
 //
-#symload length with string_length of 1000
+#symload
+length with string_length of 1000
+#symload
+length with string_vt_length of 1000
 //
 (* ****** ****** *)
 
