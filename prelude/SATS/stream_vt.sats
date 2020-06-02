@@ -137,6 +137,10 @@ fun
 <a:vt>
 stream_vt_append
 (stream_vt(a), stream_vt(a)): stream_vt(a)
+fun
+<a:vt>
+stream_vt_concat
+(xss: stream_vt(stream_vt(a))): stream_vt(a)
 //
 (* ****** ****** *)
 //

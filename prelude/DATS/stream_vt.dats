@@ -358,11 +358,38 @@ $llazy
 g_free(xs);
 g_free(ys);
 case+ !xs of
-| strmcon_vt_nil() => !ys
-| strmcon_vt_cons(x0, xs) =>
-  strmcon_vt_cons(x0, append(xs, ys))
+| ~
+strmcon_vt_nil() => !ys
+| ~
+strmcon_vt_cons(x0, xs) =>
+strmcon_vt_cons(x0, append(xs, ys))
 )
 } (* end of [stream_vt_append] *)
+
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+stream_vt_concat
+  (xss) =
+(
+  concat(xss)
+) where
+{
+fun
+concat(xss) =
+$llazy
+(
+g_free(xss);
+case+ !xss of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(xs0, xss) => !
+(stream_vt_append<a>(xs0, concat(xss)))
+)
+} (* end of [stream_vt_concat] *)
 
 (* ****** ****** *)
 
