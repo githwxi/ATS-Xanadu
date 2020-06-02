@@ -261,6 +261,8 @@ sub_i0_i0: (i0, i0) -> i0
 mul_i0_i0: (i0, i0) -> i0
 #stacst
 div_i0_i0: (i0, i0) -> i0
+#stacst
+mod_i0_i0: (i0, i0) -> i0
 //
 sexpdef + = add_a0_i0 // overloading
 sexpdef + = add_c0_i0 // overloading
@@ -272,6 +274,7 @@ sexpdef - = sub_i0_i0 // overloading
 //
 sexpdef * = mul_i0_i0 // overloading
 sexpdef / = div_i0_i0 // overloading
+sexpdef % = mod_i0_i0 // overloading
 //
 (*
 //
@@ -286,6 +289,8 @@ sexpdef sub = sub_i0_i0 // overloading
 sexpdef mul = mul_i0_i0 // overloading
 sexpdef div = div_i0_i0 // overloading
 *)
+//
+sexpdef mod = mod_i0_i0 // overloading
 //
 (* ****** ****** *)
 //

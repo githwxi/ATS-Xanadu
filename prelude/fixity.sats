@@ -79,7 +79,7 @@ app of 70 // app_prcdv
 //
 // multiplicative
 //
-#infixl * / % mod of 60
+#infixl * / % of 60
 //
 (*
 #infixl nmul ndiv nmod of 60
