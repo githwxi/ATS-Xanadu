@@ -90,12 +90,12 @@ impltmp
 <x0,xs>
 glseq_listize0(xs) =
 stream_vt_listize<x0>
-(glseq_streamize0<x0,xs>(xs))
+(glseq_streamize<x0,xs>(xs))
 impltmp
 <x0,xs>
 glseq_rlistize0(xs) =
 stream_vt_rlistize<x0>
-(glseq_streamize0<x0,xs>(xs))
+(glseq_streamize<x0,xs>(xs))
 //
 (* ****** ****** *)
 
@@ -135,7 +135,7 @@ impltmp
 glseq_forall0
   (xs) =
 stream_vt_forall0<x0>
-(glseq_streamize0<x0,xs>(xs))
+(glseq_streamize<x0,xs>(xs))
 //
 (* ****** ****** *)
 //

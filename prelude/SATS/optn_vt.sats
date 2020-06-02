@@ -69,17 +69,17 @@ optn_vt_length0
 //
 fun
 <a:vt>
-optn_vt_listize
+optn_vt_listize0
 {b:b0}
 (~optn_vt(a, b)): list_vt(a, b2i(b))
 fun
 <a:vt>
-optn_vt_rlistize
+optn_vt_rlistize0
 {b:b0}
 (~optn_vt(a, b)): list_vt(a, b2i(b))
 fun
 <a:vt>
-optn_vt_streamize0
+optn_vt_streamize
 {b:b0}(xs: ~optn_vt(a, b)): stream_vt(a)
 //
 (* ****** ****** *)
@@ -115,7 +115,14 @@ length0 with optn_vt_length0 of 1000
 (* ****** ****** *)
 
 #symload
-streamize0 with optn_vt_streamize0 of 1000
+listize with optn_vt_listize0 of 1000
+#symload
+rlistize with optn_vt_rlistize0 of 1000
+
+(* ****** ****** *)
+
+#symload
+streamize with optn_vt_streamize of 1000
 
 (* ****** ****** *)
 

@@ -85,6 +85,11 @@ fun
 list_vt_length
 {n:int}
 (xs: !list_vt(a, n)): sint(n)
+fun
+<a:vt>
+list_vt_length0
+{n:int}
+(xs: ~list_vt(a, n)): sint(n)
 //
 (* ****** ****** *)
 //
@@ -169,14 +174,34 @@ list_vt_foreach1(xs: !list_vt(x0)): void
 //
 fun
 <x0:vt>
+list_vt_listize0
+{n:int}
+(~list_vt(x0, n)): list_vt(x0, n)
+fun
+<x0:vt>
+list_vt_rlistize0
+{n:int}
+(~list_vt(x0, n)): list_vt(x0, n)
+//
+fun
+<x0:vt>
+list_vt_streamize
+( xs: ~list_vt(x0) ): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 <y0:vt>
 list_vt_map0
-{n:int}(xs: list_vt(x0, n)): list_vt(y0, n)
+{n:int}
+(xs: list_vt(x0, n)): list_vt(y0, n)
 fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev0
-{n:int}(xs: list_vt(x0, n)): list_vt(y0, n)
+{n:int}
+(xs: list_vt(x0, n)): list_vt(y0, n)
 
 (* ****** ****** *)
 //
@@ -221,18 +246,13 @@ length with list_vt_length of 1000
 #symload
 length1 with list_vt_length of 1000
 *)
+#symload
+length0 with list_vt_length0 of 1000
 //
 (* ****** ****** *)
 //
 #symload extend with list_vt_extend of 1000
-(*
-#symload extend00 with list_vt_extend of 1000
-*)
-//
 #symload append with list_vt_append of 1000
-(*
-#symload append00 with list_vt_append of 1000
-*)
 //
 (* ****** ****** *)
 //
@@ -241,6 +261,23 @@ length1 with list_vt_length of 1000
 #symload concat0 with list_vt_concat of 1000
 *)
 //
+(* ****** ****** *)
+//
+#symload listize with list_listize of 1000
+#symload rlistize with list_rlistize of 1000
+//
+#symload streamize with list_streamize of 1000
+//
+(* ****** ****** *)
+
+#symload forall0 with list_vt_forall0 of 1000
+#symload forall1 with list_vt_forall1 of 1000
+
+(* ****** ****** *)
+
+#symload foreach0 with list_vt_foreach0 of 1000
+#symload foreach1 with list_vt_foreach1 of 1000
+
 (* ****** ****** *)
 //
 #symload mergesort with list_vt_mergesort of 1000
