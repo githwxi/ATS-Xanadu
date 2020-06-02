@@ -35,7 +35,7 @@ impltmp
 optn_length(xs) =
 (
 case+ xs of
-| optn_nil() => 0 | optn_cons(x0) => 1
+| none() => 0 | some(x0) => 1
 )
 //
 (* ****** ****** *)
@@ -79,7 +79,7 @@ case+ xs of
 )
 impltmp
 <a>(*tmp*)
-optn_ristize(xs) =
+optn_rlistize(xs) =
 (
 case+ xs of
 | optn_nil() => list_vt_nil()

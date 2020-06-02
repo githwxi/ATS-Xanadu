@@ -40,13 +40,13 @@
 fcast
 list_vt2t
 {a:t0}{n:i0}
-(xs: list_vt(a, n)): list(a, n)
+(xs: list_vt(a,n)): list(a,n)
 
 (* ****** ****** *)
 //
 fun
 <a:vt>
-list_vt_sing(x: a): list_vt(a, 1)
+list_vt_sing(x: a): list_vt(a,1)
 //
 (* ****** ****** *)
 //
