@@ -212,7 +212,7 @@ impltmp
 gint_pred_sint<> = xint_gint_pred_sint
 //
 (* ****** ****** *)
-
+//
 #extern
 fun
 xint_gint_lt_sint_sint
@@ -223,7 +223,7 @@ xint_gint_lt_sint_sint
 : sint(j)): bool(i<j) // = $ext()
 impltmp
 gint_lt_sint_sint<> = xint_gint_lt_sint_sint
-
+//
 #extern
 fun
 xint_gint_gt_sint_sint
@@ -234,7 +234,7 @@ xint_gint_gt_sint_sint
 : sint(j)): bool(i>j) // = $ext()
 impltmp
 gint_gt_sint_sint<> = xint_gint_gt_sint_sint
-
+//
 #extern
 fun
 xint_gint_eq_sint_sint
@@ -245,7 +245,7 @@ xint_gint_eq_sint_sint
 : sint(j)): bool(i=j) // = $ext()
 impltmp
 gint_eq_sint_sint<> = xint_gint_eq_sint_sint
-
+//
 #extern
 fun
 xint_gint_lte_sint_sint
@@ -256,7 +256,7 @@ xint_gint_lte_sint_sint
 : sint(j)): bool(i<=j) // = $ext()
 impltmp
 gint_lte_sint_sint<> = xint_gint_lte_sint_sint
-
+//
 #extern
 fun
 xint_gint_gte_sint_sint
@@ -267,7 +267,7 @@ xint_gint_gte_sint_sint
 : sint(j)): bool(i>=j) // = $ext()
 impltmp
 gint_gte_sint_sint<> = xint_gint_gte_sint_sint
-
+//
 #extern
 fun
 xint_gint_neq_sint_sint
@@ -278,7 +278,7 @@ xint_gint_neq_sint_sint
 : sint(j)): bool(i!=j) // = $ext()
 impltmp
 gint_neq_sint_sint<> = xint_gint_neq_sint_sint
-
+//
 (* ****** ****** *)
 
 #extern
@@ -388,9 +388,20 @@ string_tail_raw<> = xint_string_tail_raw
 fun
 xint_strptr_make
 {n:nat}
-(len: int(n)): strptr(n) // = $ext()
+(len: int(n)): strptr(n)
 impltmp
-strptr_make<>(len) = xint_strptr_make(len)
+strptr_make<> = xint_strptr_make
+//
+#extern
+fun
+xint_strptr_set_at
+{n:nat}
+{i:int|i<n}
+( p0:
+! strptr(n)
+, i0: int(i), c0: cgtz): void
+impltmp
+strptr_set_at<> = xint_strptr_set_at
 //
 (* ****** ****** *)
 

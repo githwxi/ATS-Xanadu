@@ -115,13 +115,17 @@ string_consq
 (* ****** ****** *)
 //
 fun<>
-string_head
-{n:pos}(string(n)): cgtz
-fun<>
-string_tail
-{n:pos}(string(n)): string(n-1)
+string_get_at
+{n:int}
+{i:nat|i < n}
+( cs:
+  string(n), i0: int(i)): cgtz
 //
 (* ****** ****** *)
+//
+fun<>
+string_head
+{n:pos}(string(n)): cgtz
 //
 fun<>
 string_head_exn(string): cgtz
@@ -133,11 +137,15 @@ string_head_raw(string): cgtz
 (* ****** ****** *)
 //
 fun<>
+string_tail
+{n:pos}(string(n)): string(n-1)
+//
+fun<>
 string_tail_exn
-  (cs: string): string
+(cs: string): string
 fun<>
 string_tail_opt
-  (cs: string): optn_vt(string)
+(cs: string): optn_vt(string)
 //
 fun<>
 string_tail_raw(string): string
@@ -146,14 +154,29 @@ string_tail_raw(string): string
 
 fun<>
 string_length
-{n:int}(cs: string(n)): int(n)
+{n:int}(string(n)): int(n)
 
 (* ****** ****** *)
 //
 fun<>
-string_forall(cs: string): bool
+string_forall(string): bool
 fun<>
-string_rforall(cs: string): bool
+string_rforall(string): bool
+//
+(* ****** ****** *)
+//
+fun<>
+string_listize
+{n:int}
+(string(n)): list_vt(cgtz,n)
+fun<>
+string_rlistize
+{n:int}
+(string(n)): list_vt(cgtz,n)
+//
+fun<>
+string_streamize
+(cs: string): stream_vt(cgtz)
 //
 (* ****** ****** *)
 
@@ -170,14 +193,14 @@ stropt_unsome
 //
 fun<>
 strptr_make
-{n:nat}
-(bsz: int(n)): strptr(n)
+{n:nat}(bsz: int(n)): strptr(n)
 //
 fun<>
 strptr_set_at
 {n:int}
 {i:nat|i < n}
-( p0: !strptr(n)
+( p0:
+! strptr(n)
 , i0: int(i), c0: cgtz): void
 //
 (* ****** ****** *)
@@ -204,21 +227,42 @@ nilq with string_nilq of 1000
 consq with string_consq of 1000
 //
 (* ****** ****** *)
+
+#symload
+sub with string_get_at of 1000
+
+(* ****** ****** *)
 //
-#symload head with string_head of 1000
-#symload tail with string_tail of 1000
+#symload
+head with string_head of 1000
+#symload
+tail with string_tail of 1000
 //
 (* ****** ****** *)
 //
-#symload print with string_print of 1000
+#symload
+print with string_print of 1000
 //
 (* ****** ****** *)
 //
-#symload length with string_length of 1000
+#symload
+length with string_length of 1000
 //
 (* ****** ****** *)
 
-#symload forall with string_forall of 1000
+#symload
+forall with string_forall of 1000
+#symload
+rforall with string_rforall of 1000
+
+(* ****** ****** *)
+
+#symload
+listize with string_listize of 1000
+#symload
+rlistize with string_rlistize of 1000
+#symload
+streamize with string_streamize of 1000
 
 (* ****** ****** *)
 
