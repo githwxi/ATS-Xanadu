@@ -87,14 +87,29 @@ stream_length(stream(a)): nint
 fun
 <a:t0>
 stream_extend
-(xs: stream(a), x0: a): stream(a)
+(stream(a), a): stream(a)
 fun
 <a:t0>
 stream_append
-(xs: stream(a), ys: stream(a)): stream(a)
+(stream(a), stream(a)): stream(a)
+//
+(* ****** ****** *)
+//
 fun
 <a:t0>
-stream_concat(stream(stream(a))): stream(a)
+stream_concat
+(xss: stream(stream(a))): stream(a)
+//
+(* ****** ****** *)
+//
+fun
+<x:t0>
+stream_forall(xs: stream(x0)): bool
+(*
+fun
+<x0:t0>
+stream_foreach(xs: stream(x0)): void
+*)
 //
 (* ****** ****** *)
 //
@@ -173,7 +188,9 @@ stream_sieve_vt(stream(x0)): stream_vt(x0)
 (* ****** ****** *)
 //
 #symload forall with stream_forall of 1000
+(*
 #symload foreach with stream_foreach of 1000
+*)
 //
 (* ****** ****** *)
 //

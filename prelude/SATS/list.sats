@@ -102,7 +102,7 @@ list_length
 fun
 <a:t0>
 list_extend
-{n:int}
+{m:int}
 (list(a, m), a): list(a, m+1)
 fun
 <a:t0>

@@ -184,9 +184,11 @@ strptr_set_at
 //
 fun<>
 string_make_list
+{n:int}
 (cs: list(cgtz, n)): string(n)
 fun<>
 string_vt_make_list
+{n:int}
 (cs: list(cgtz, n)): string(n)
 //
 (* ****** ****** *)
@@ -217,7 +219,6 @@ consq with string_consq of 1000
 (* ****** ****** *)
 
 #symload forall with string_forall of 1000
-#symload foreach with string_foreach of 1000
 
 (* ****** ****** *)
 
