@@ -267,6 +267,33 @@ case+ $eval(xs) of
 (* ****** ****** *)
 
 impltmp
+<a>(*tmp*)
+stream_forall
+  (xs) =
+( loop(xs) ) where
+{
+fun
+loop
+( xs
+: stream(a)): bool =
+(
+case+ !xs of
+|
+strmcon_nil() => true
+|
+strmcon_cons(x0, xs) =>
+let
+  val
+  test = forall$test<a>(x0)
+in
+if test then loop(xs) else false
+end
+) (* end of [loop] *)
+} (* end of [stream_forall] *)
+
+(* ****** ****** *)
+
+impltmp
 <x0><y0>
 stream_map
   (xs) =

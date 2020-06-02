@@ -107,16 +107,19 @@ sexpdef ff = ff_b0 // overloading
 (* ****** ****** *)
 //
 #stacst
-neg_b0: (b0) -> bool
+neg_b0:
+( b0 ) -> bool
 sexpdef ~ = neg_b0 // overloading
 (*
 sexpdef neg = neg_b0 // overloading
 *)
 //
 #stacst
-add_b0_b0: (b0, b0) -> bool
+add_b0_b0:
+(b0, b0) -> bool
 #stacst
-mul_b0_b0: (b0, b0) -> bool
+mul_b0_b0:
+(b0, b0) -> bool
 //
 sexpdef + = add_b0_b0 // overloading
 sexpdef * = mul_b0_b0 // overloading
@@ -128,18 +131,24 @@ sexpdef mul = mul_b0_b0 // overloading
 (* ****** ****** *)
 //
 #stacst
-lt_b0_b0: (b0, b0) -> bool
+lt_b0_b0:
+(b0, b0) -> bool
 #stacst
-gt_b0_b0: (b0, b0) -> bool
+gt_b0_b0:
+(b0, b0) -> bool
 #stacst
-eq_b0_b0: (b0, b0) -> bool
+eq_b0_b0:
+(b0, b0) -> bool
 //
 #stacst
-lte_b0_b0: (b0, b0) -> bool
+lte_b0_b0:
+(b0, b0) -> bool
 #stacst
-gte_b0_b0: (b0, b0) -> bool
+gte_b0_b0:
+(b0, b0) -> bool
 #stacst
-neq_b0_b0: (b0, b0) -> bool
+neq_b0_b0:
+(b0, b0) -> bool
 //
 sexpdef < = lt_b0_b0 // overloading
 sexpdef > = gt_b0_b0 // overloading
@@ -152,12 +161,62 @@ sexpdef != = neq_b0_b0 // overloading
 (* ****** ****** *)
 //
 #stacst
-eq_c0_c0: (c0, c0) -> bool
+lt_c0_c0:
+(c0, c0) -> bool // c0: [0, 256)
 #stacst
-eq_c0_i0: (c0, i0) -> bool
+gt_c0_c0:
+(c0, c0) -> bool // c0: [0, 256)
+#stacst
+eq_c0_c0:
+(c0, c0) -> bool // c0: [0, 256)
 //
+#stacst
+lte_c0_c0:
+(c0, c0) -> bool // c0: [0, 256)
+#stacst
+gte_c0_c0:
+(c0, c0) -> bool // c0: [0, 256)
+#stacst
+neq_c0_c0:
+(c0, c0) -> bool // c0: [0, 256)
+//
+sexpdef < = lt_c0_c0 // overloading
+sexpdef > = gt_c0_c0 // overloading
 sexpdef = = eq_c0_c0 // overloading
+//
+sexpdef <= = lte_c0_c0 // overloading
+sexpdef >= = gte_c0_c0 // overloading
+sexpdef != = neq_c0_c0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+lt_c0_i0:
+(c0, i0) -> bool // c0: [0, 256)
+#stacst
+gt_c0_i0:
+(c0, i0) -> bool // c0: [0, 256)
+#stacst
+eq_c0_i0:
+(c0, i0) -> bool // c0: [0, 256)
+//
+#stacst
+lte_c0_i0:
+(c0, i0) -> bool // c0: [0, 256)
+#stacst
+gte_c0_i0:
+(c0, i0) -> bool // c0: [0, 256)
+#stacst
+neq_c0_i0:
+(c0, i0) -> bool // c0: [0, 256)
+//
+sexpdef < = lt_c0_i0 // overloading
+sexpdef > = gt_c0_i0 // overloading
 sexpdef = = eq_c0_i0 // overloading
+//
+sexpdef <= = lte_c0_i0 // overloading
+sexpdef >= = gte_c0_i0 // overloading
+sexpdef != = neq_c0_i0 // overloading
 //
 (* ****** ****** *)
 //
@@ -185,22 +244,45 @@ sexpdef pred = pred_i0 // overloading
 (* ****** ****** *)
 //
 #stacst
-add_i0_i0: (int, int) -> int
+add_a0_i0: (a0, i0) -> a0
 #stacst
-sub_i0_i0: (int, int) -> int
+add_c0_i0: (c0, i0) -> c0
 #stacst
-mul_i0_i0: (int, int) -> int
-#stacst
-div_i0_i0: (int, int) -> int
+add_i0_i0: (i0, i0) -> i0
 //
+#stacst
+sub_a0_a0: (a0, a0) -> i0
+#stacst
+sub_c0_c0: (c0, c0) -> i0
+#stacst
+sub_i0_i0: (i0, i0) -> i0
+//
+#stacst
+mul_i0_i0: (i0, i0) -> i0
+#stacst
+div_i0_i0: (i0, i0) -> i0
+//
+sexpdef + = add_a0_i0 // overloading
+sexpdef + = add_c0_i0 // overloading
 sexpdef + = add_i0_i0 // overloading
+//
+sexpdef - = sub_a0_a0 // overloading
+sexpdef - = sub_c0_c0 // overloading
 sexpdef - = sub_i0_i0 // overloading
+//
 sexpdef * = mul_i0_i0 // overloading
 sexpdef / = div_i0_i0 // overloading
 //
 (*
+//
+sexpdef add = add_a0_i0 // overloading
+sexpdef add = add_c0_i0 // overloading
 sexpdef add = add_i0_i0 // overloading
+//
+sexpdef sub = sub_a0_a0 // overloading
+sexpdef sub = sub_c0_c0 // overloading
 sexpdef sub = sub_i0_i0 // overloading
+//
 sexpdef mul = mul_i0_i0 // overloading
 sexpdef div = div_i0_i0 // overloading
 *)
@@ -208,18 +290,18 @@ sexpdef div = div_i0_i0 // overloading
 (* ****** ****** *)
 //
 #stacst
-lt_i0_i0: (int, int) -> bool
+lt_i0_i0: (i0, i0) -> b0
 #stacst
-gt_i0_i0: (int, int) -> bool
+gt_i0_i0: (i0, i0) -> b0
 #stacst
-eq_i0_i0: (int, int) -> bool
+eq_i0_i0: (i0, i0) -> b0
 //
 #stacst
-lte_i0_i0: (int, int) -> bool
+lte_i0_i0: (i0, i0) -> b0
 #stacst
-gte_i0_i0: (int, int) -> bool
+gte_i0_i0: (i0, i0) -> b0
 #stacst
-neq_i0_i0: (int, int) -> bool
+neq_i0_i0: (i0, i0) -> b0
 //
 sexpdef < = lt_i0_i0 // overloading
 sexpdef > = gt_i0_i0 // overloading
