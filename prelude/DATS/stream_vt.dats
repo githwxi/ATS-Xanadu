@@ -333,6 +333,12 @@ end
 } (* end of [stream_vt_rlistize] *)
 
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+stream_vt_streamize(xs) = xs
+
+(* ****** ****** *)
 //
 impltmp
 <a>(*tmp*)
@@ -367,7 +373,7 @@ strmcon_vt_cons(x0, append(xs, ys))
 } (* end of [stream_vt_append] *)
 
 (* ****** ****** *)
-
+//
 impltmp
 <a>(*tmp*)
 stream_vt_concat
@@ -390,7 +396,31 @@ strmcon_vt_cons(xs0, xss) => !
 (stream_vt_append<a>(xs0, concat(xss)))
 )
 } (* end of [stream_vt_concat] *)
-
+impltmp
+<x0,xs>
+stream_vt_gconcat
+  (xss) =
+(
+  concat(xss)
+) where
+{
+fun
+concat(xss) =
+$llazy
+(
+g_free(xss);
+case+ !xss of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(xs0, xss) => !
+(
+stream_vt_append<x0>
+(glseq_streamize0<x0,xs>(xs0), concat(xss)))
+)
+} (* end of [stream_vt_gconcat] *)
+//
 (* ****** ****** *)
 
 impltmp
@@ -602,7 +632,7 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 //
-// For z2-gseq-operations
+// For z2-glseq-operations
 //
 (* ****** ****** *)
 
@@ -700,11 +730,24 @@ strmcon_vt_cons(x0, xs) =>
 } (* end of [stream_vt_z2forcmp0] *)
 
 (* ****** ****** *)
-
+//
+// HX-2020-06-02: for glseq-operations
+//
+(* ****** ****** *)
+//
 impltmp
 {x0:vt}
-glseq_streamize0<x0,stream_vt(x0)>(xs) = xs
-
+glseq_listize0
+<x0,stream_vt(x0)> = stream_vt_listize<x0>
+impltmp
+{x0:vt}
+glseq_rlistize0
+<x0,stream_vt(x0)> = stream_vt_rlistize<x0>
+impltmp
+{x0:vt}
+glseq_streamize
+<x0,stream_vt(x0)> = stream_vt_streamize<x0>
+//
 (* ****** ****** *)
 
 (* end of [stream_vt.dats] *)

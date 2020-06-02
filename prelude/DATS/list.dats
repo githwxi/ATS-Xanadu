@@ -301,6 +301,35 @@ case+ xs of
 (* ****** ****** *)
 //
 impltmp
+<a>(*tmp*)
+list_listize = list_copy_vt<a>
+impltmp
+<a>(*tmp*)
+list_rlistize = list_rcopy_vt<a>
+//
+impltmp
+<a>(*tmp*)
+list_streamize
+  (xs) =
+( auxmain(xs) ) where
+{
+fun
+auxmain(xs) =
+$llazy
+(
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_nil()
+|
+list_cons(x0, xs)
+strmcon_vt_cons(xs, auxmain(xs))
+)
+} (* end of [list_streamize] *)
+//
+(* ****** ****** *)
+//
+impltmp
 <x0><y0>
 list_map(xs) =
 (

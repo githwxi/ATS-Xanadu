@@ -126,6 +126,10 @@ fun
 <a:vt>
 stream_vt_rlistize
 (xs: stream_vt(a)): list_vt(a)
+fun
+<a:vt>
+stream_vt_streamize
+(xs: stream_vt(a)): stream_vt(a)
 //
 (* ****** ****** *)
 //
@@ -141,6 +145,10 @@ fun
 <a:vt>
 stream_vt_concat
 (xss: stream_vt(stream_vt(a))): stream_vt(a)
+fun
+<x0:vt
+,xs:vt>
+stream_vt_gconcat(stream_vt(xs)): stream_vt(x0)
 //
 (* ****** ****** *)
 //

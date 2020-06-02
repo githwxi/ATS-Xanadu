@@ -91,7 +91,7 @@ glseq_rlistize0(~xs): list_vt(x0)
 fun
 <x0:vt
 ,xs:vt>
-glseq_streamize0(~xs): stream_vt(x0)
+glseq_streamize(~xs): stream_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -201,8 +201,7 @@ glseq_map0_stream(~xs): stream_vt(y0)
 #symload listize0 with glseq_listize0 of 0100
 #symload rlistize0 with glseq_rlistize0 of 0100
 //
-#symload streamize with glseq_streamize0 of 0100
-#symload streamize0 with glseq_streamize0 of 0100
+#symload streamize with glseq_streamize of 0100
 //
 (* ****** ****** *)
 //
