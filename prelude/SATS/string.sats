@@ -189,7 +189,7 @@ string_make_list
 fun<>
 string_vt_make_list
 {n:int}
-(cs: list(cgtz, n)): string(n)
+(cs: list(cgtz, n)): string_vt(n)
 //
 (* ****** ****** *)
 //

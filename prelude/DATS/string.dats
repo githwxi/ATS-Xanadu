@@ -124,17 +124,20 @@ string_vt2t
 
 impltmp<>
 string_vt_make_list
-  (cs) =
+  {n}(cs) =
 let
+val n0 =
+list_length<>(cs)
 val p0 =
-strptr_make<>(len)
+strptr_make<>(n0)
 in
-  loop(p0, 0(*i0*), cs)
+$UN.cast01(p0) where
+{
+val i0 = 0
+val () = loop(p0, i0, cs)
+}
 end where
 {
-//
-val
-len = string_length<>(cs)
 //
 fun
 loop
