@@ -466,9 +466,9 @@ loop
 : stream_vt(a)): bool =
 (
 case+ !xs of
-|
+| ~
 strmcon_vt_nil() => true
-|
+| ~
 strmcon_vt_cons(x0, xs) =>
 let
   val
@@ -525,10 +525,10 @@ $llazy
 g_free(xs);
 //
 case+ !xs of
-|
+| ~
 strmcon_vt_nil() =>
 strmcon_vt_nil((*void*))
-|
+| ~
 strmcon_vt_cons(x0, xs) =>
 let
   val y0 =
@@ -567,11 +567,11 @@ auxloop
 : strmcon_vt(x0) =
 (
 case+ xs of
-|
+| ~
 strmcon_vt_nil
   () =>
 strmcon_vt_nil()
-|
+| ~
 strmcon_vt_cons
   (x0, xs) =>
 ( if
@@ -611,10 +611,10 @@ auxloop
 : strmcon_vt(y0) =
 (
 case+ xs of
-|
+| ~
 strmcon_vt_nil() =>
 strmcon_vt_nil()
-|
+| ~
 strmcon_vt_cons(x0, xs) =>
 let
   val
@@ -652,27 +652,27 @@ loop
 : stream_vt(y0)): bool =
 (
 case+ !xs of
-|
+| ~
 strmcon_vt_nil() =>
 (g_free(ys); true)
-|
+| ~
 strmcon_vt_cons(x0, xs) =>
 (
   case+ !ys of
-  |
+  | ~
   strmcon_vt_nil() =>
   (g_free(xs); true)
-  |
+  | ~
   strmcon_vt_cons(y0, ys) =>
   let
     val
     test =
     z2forall0$test<x0,y0>(x0, y0)
   in
-      if
-      test
-      then loop(xs, ys)
-      else (g_free(xs); g_free(ys); false)
+    if
+    test
+    then loop(xs, ys)
+    else (g_free(xs); g_free(ys); false)
   end // end of [strmcon_vt_cons]
 )
 ) (* end of [loop] *)
@@ -696,35 +696,39 @@ loop
 : stream_vt(y0)): sint =
 (
 case+ !xs of
-|
+| ~
 strmcon_vt_nil() =>
 (
   case+ !ys of
-  | strmcon_vt_nil() => 0
-  | strmcon_vt_cons(y0, ys) =>
-    (
-      g_free(y0); g_free(ys); -1
-    )
+  | ~
+  strmcon_vt_nil() => 0
+  | ~
+  strmcon_vt_cons(y0, ys) =>
+  (
+    g_free(y0); g_free(ys); -1
+  )
 )
-|
+| ~
 strmcon_vt_cons(x0, xs) =>
 (
   case+ !ys of
-  | strmcon_vt_nil() =>
-    (
-      g_free(x0); g_free(xs);  1
-    )
-  | strmcon_vt_cons(y0, ys) =>
-    let
+  | ~
+  strmcon_vt_nil() =>
+  (
+    g_free(x0); g_free(xs);  1
+  )
+  | ~
+  strmcon_vt_cons(y0, ys) =>
+  let
     val
     sign =
     z2forcmp0$fcmp<x0,y0>(x0, y0)
-    in
-      if
-      (sign = 0)
-      then loop(xs, ys)
-      else (g_free(xs); g_free(ys); sign)
-    end // end of [strmcon_vt_cons]
+  in
+    if
+    (sign = 0)
+    then loop(xs, ys)
+    else (g_free(xs); g_free(ys); sign)
+  end // end of [strmcon_vt_cons]
 )
 ) (* end of [loop] *)
 } (* end of [stream_vt_z2forcmp0] *)

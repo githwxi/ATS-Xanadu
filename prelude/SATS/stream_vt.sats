@@ -235,7 +235,7 @@ cons_vt with strmcon_vt_cons
 #symload length0 with stream_vt_length of 1000
 //
 (* ****** ****** *)
-
+//
 #symload extend with stream_vt_extend of 1000
 (*
 #symload extend00 with stream_vt_extend of 1000
@@ -244,6 +244,11 @@ cons_vt with strmcon_vt_cons
 (*
 #symload append00 with stream_vt_append of 1000
 *)
+//
+(* ****** ****** *)
+
+#symload concat with stream_vt_concat of 1000
+#symload gconcat with stream_vt_gconcat of 1000
 
 (* ****** ****** *)
 //
