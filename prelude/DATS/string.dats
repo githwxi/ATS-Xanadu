@@ -161,7 +161,7 @@ case+ cs of
   }
 )
 //
-} (* end of [string_make_list] *)
+} (* end of [string_vt_make_list] *)
 
 (* ****** ****** *)
 

@@ -394,6 +394,16 @@ strptr_make<> = xint_strptr_make
 //
 #extern
 fun
+xint_string_get_at
+{n:nat}
+{i:int|i<n}
+( p0:
+  string(n)
+, i0: int(i)): cgtz
+impltmp
+string_get_at<> = xint_string_get_at
+#extern
+fun
 xint_strptr_set_at
 {n:nat}
 {i:int|i<n}
