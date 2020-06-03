@@ -1146,26 +1146,27 @@ d3cl.node() of
   end // end of [D3Cstaload]
 //
 | D3Clocal
-  (d3cs1, d3cs2) =>
+  (head, body) =>
   let
 //
     val () =
     implenv_add_loc1(env0)
     val
-    d3cs1 =
-    trans3t_declist(env0, d3cs1)
+    head =
+    trans3t_declist(env0, head)
 //
     val () =
     implenv_add_loc2(env0)
     val
-    d3cs1 =
-    trans3t_declist(env0, d3cs2)
-//
-    val () =
-    implenv_pop_loc12(env0)
+    body =
+    trans3t_declist(env0, body)
 //
   in
-    d3ecl_make_node(loc0, D3Clocal(d3cs1, d3cs2))
+    let
+    val () =
+    implenv_pop_loc12(env0) in
+    d3ecl_make_node(loc0, D3Clocal(head, body))
+    end
   end
 //
 | D3Cvaldecl _ => aux_valdecl(env0, d3cl)

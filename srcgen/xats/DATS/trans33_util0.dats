@@ -534,7 +534,8 @@ in
 //
 if
 test
-then d3e0 else d3exp_tcast(d3e0, t2p0)
+then d3e0
+else d33exp_tcastize(env0, d3e0, t2p0)
 //
 end // end of [d33exp_dn]
 
