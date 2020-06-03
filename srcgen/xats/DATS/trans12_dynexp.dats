@@ -5012,17 +5012,19 @@ d1cl.node() of
 | D1Cdynconst _ => aux_dynconst(d1cl)
 //
 | D1Clocal
-  (d1cs1, d1cs2) => let
+  (head, body) => let
     val
-    (pf1|()) = the_trans12_pushnil()
-    val d2cs1 = trans12_declist(d1cs1)
+    (pf1|()) =
+    the_trans12_pushnil()
+    val head = trans12_declist(head)
     val
-    (pf2|()) = the_trans12_pushnil()
-    val d2cs2 = trans12_declist(d1cs2)
+    (pf2|()) =
+    the_trans12_pushnil()
+    val body = trans12_declist(body)
     val ((*void*)) =
     the_trans12_locjoin(pf1, pf2 | (*none*))
   in
-    d2ecl_make_node(loc0, D2Clocal(d2cs1, d2cs2))
+    d2ecl_make_node(loc0, D2Clocal(head, body))
   end // end of [D1Clocal]
 //
 | _(*rest-of-D1ECL*) => d2ecl_none1(d1cl)

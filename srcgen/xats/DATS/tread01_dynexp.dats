@@ -183,11 +183,19 @@ d1c0.node() of
 | D1Cdynconst
   (knd, tqas, d1cs) =>
   {
-    val () = tread01_tq1arglst(tqas)
+    val () =
+    tread01_tq1arglst(tqas)
 (*
-    val () = tread01_d1cstdeclist(d1cs)
+    val () =
+    tread01_d1cstdeclist(d1cs)
 *)
   }
+//
+| D1Clocal(head, body) =>
+  {
+    val () = tread01_d1eclist(head)
+    val () = tread01_d1eclist(body)
+  } (* end of [D1Clocal] *)
 //
 | _(* rest-of-d1ecl *) =>
   (
