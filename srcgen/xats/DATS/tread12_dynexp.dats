@@ -645,6 +645,12 @@ d2cl.node() of
 *)
   }
 //
+| D2Clocal(head, body) =>
+  {
+    val () = tread12_d2eclist(head)
+    val () = tread12_d2eclist(body)
+  } (* end of [D2Clocal] *)
+//
 | _(* rest-of-d2ecl *) =>
   (
     prerrln!(loc0, ": tread12_d2ecl: d2cl = ", d2cl)
