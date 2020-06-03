@@ -582,6 +582,7 @@ case+ t2ps1 of
 
 (*
 implement
+{}(*tmp*)
 unify_labt2ype_labt2ype
 (loc0, lt2p1, lt2p2) =
 let
@@ -591,42 +592,11 @@ in
 //
 if
 (l1 = l2)
-then unify(loc0, t2p1, t2p2) else false
+then
+unify_t2ype_t2ype<>(loc0, t2p1, t2p2)
+else false // else // end of [if]
 //
 end // end of [unify_labt2ype_labt2ype]
-*)
-
-(* ****** ****** *)
-
-(*
-implement
-unify_labt2ypelst_labt2ypelst
-(loc0, ltps1, ltps2) =
-(
-case+ ltps1 of
-| list_nil() =>
-  (
-  case+ ltps2 of
-  | list_nil() => true
-  | list_cons _ => false
-  )
-| list_cons(lt2p1, ltps1) =>
-  (
-  case+ ltps2 of
-  | list_nil() => false
-  | list_cons(lt2p2, ltps2) =>
-    let
-      val
-      test1 =
-      unify(loc0, lt2p1, lt2p2)
-      val
-      test2 =
-      unify(loc0, ltps1, ltps2)
-    in
-      if test1 then test2 else false
-    end
-  )
-) (* end of [unify_labt2ypelst_labt2ypelst] *)
 *)
 
 (* ****** ****** *)

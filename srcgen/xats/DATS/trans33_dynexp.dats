@@ -1662,24 +1662,22 @@ D3Ecase _ => aux_case(env0, d3e0)
 //
 | D3Elcast
   (d3e1, lab2) =>
-  let
-    val d3e1 =
+  let // HX: for abstype-handling!
+    val
+    d3e1 =
     trans33_dexp(env0, d3e1)
-  in
-    d3exp_make_node
-    (loc0, t2p0, D3Elcast(d3e1, lab2))
+    val
+    de30 =
+    d33exp_proj_up
+    (loc0, env0, d3e1, lab2) in d3e0
   end // end of [D3Elcast]
-(*
-| D3Elcast
-  (d3e1, lab2) => d3e0 // lab2: missing
-*)
+//
 | D3Etcast
-  (d3e1, t2p2) => aux_tcast(env0, d3e0)
-  // type-cast: indication of type-error
-(*
-| D3Etcast
-  (d3e1, t2p2) => d3e0 // t2p2: expected
-*)
+  (d3e1, t2p2) =>
+  let
+  val
+  d3e1 = // HX: for abstype-handling!
+  trans33_dexp(env0, d3e1) in d3e1 end
 //
 | D3Enone0 _ => d3e0
 | D3Enone1 _ => d3e0
