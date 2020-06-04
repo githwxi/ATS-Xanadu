@@ -464,6 +464,13 @@ gseq_z2map_rlist
 //
 (* ****** ****** *)
 //
+fun
+<x0:t0
+,xs:t0>
+gseq_permutize(xs: xs): stream_vt(xs)
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for gseq
 //

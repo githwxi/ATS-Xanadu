@@ -215,6 +215,13 @@ gseq_tail_raw<x0,xs> = string_tail_raw<>
 
 (* ****** ****** *)
 
+impltmp
+gseq_unlist<x0,xs> = string_make_list
+impltmp
+gseq_unlist_vt<x0,xs> = string_make_list_vt
+
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)

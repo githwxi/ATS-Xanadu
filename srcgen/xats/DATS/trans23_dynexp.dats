@@ -123,25 +123,25 @@ in
 end
 )
 implement
-trenv23_dvar_dn
+trenv23_dvar_dntp
   (d2v0, t2p0) =
 (
   d2var_set_type(d2v0, t2p0)
 ) where
 {
 (*
-  val t2p1 = d2v0.type()
-  val-T2Pnone0() = t2p1.node()
+val t2p1 = d2v0.type()
+val-T2Pnone0() = t2p1.node()
 *)
 (*
-  val () =
-  println!
-  ("trenv23_dvar_dn: d2v0 = ", d2v0)
-  val () =
-  println!
-  ("trenv23_dvar_dn: t2p0 = ", t2p0)
+val () =
+println!
+("trenv23_dvar_dntp: d2v0 = ", d2v0)
+val () =
+println!
+("trenv23_dvar_dntp: t2p0 = ", t2p0)
 *)
-} (* end of [trenv23_dvar_dn] *)
+} (* end of [trenv23_dvar_dntp] *)
 //
 (* ****** ****** *)
 //
@@ -269,12 +269,12 @@ aux_anno
 ) where
 {
 //
-  val-
-  D2Panno
-  (d2p1, s2e2) = d2p0.node()
+val-
+D2Panno
+(d2p1, s2e2) = d2p0.node()
 //
-  val t2p2 = s2exp_erase(s2e2)
-  val d3p1 = trans23_dpat_dn(d2p1, t2p2)
+val t2p2 = s2exp_erase(s2e2)
+val d3p1 = trans23_dpat_dntp(d2p1, t2p2)
 } (* end of [aux_anno] *)
 
 (* ****** ****** *)
@@ -369,7 +369,7 @@ list_map$fopr<d2pat><d3pat> = trans23_dpat
 (* ****** ****** *)
 
 implement
-trans23_dpat_dn
+trans23_dpat_dntp
   (d2p0, t2p0) =
 (
 case+
@@ -382,22 +382,22 @@ d2p0.node() of
   ) where
   {
     val () =
-    trenv23_dvar_dn(d2v0, t2p0)
+    trenv23_dvar_dntp(d2v0, t2p0)
   }
 | D2Panno
   (d2p1, s2e2) =>
   (
-    d3pat_dn(d3p1, t2p2)
+    d3pat_dntp(d3p1, t2p2)
   ) where
   {
     val t2p2 =
     s2exp_erase(s2e2)
     val d3p1 =
-    trans23_dpat_dn(d2p1, t2p0)
+    trans23_dpat_dntp(d2p1, t2p0)
   }
 | _(* else *) =>
   (
-    d3pat_dn(d3p0, t2p0)
+    d3pat_dntp(d3p0, t2p0)
   ) where
   {
     val d3p0 = trans23_dpat(d2p0)
@@ -408,18 +408,18 @@ d2p0.node() of
   val loc0 = d2p0.loc((*void*))
 //
 (*
-  val ((*void*)) =
-  println!("trans23_dpat_dn: d2p0 = ", d2p0)
-  val ((*void*)) =
-  println!("trans23_dpat_dn: t2p0 = ", t2p0)
+val ((*void*)) =
+println!("trans23_dpat_dntp: d2p0 = ", d2p0)
+val ((*void*)) =
+println!("trans23_dpat_dntp: t2p0 = ", t2p0)
 *)
 //
-} // end-of-where // end of [trans23_dpat_dn]
+} // end-of-where // end of [trans23_dpat_dntp]
 
 (* ****** ****** *)
 //
 implement
-trans23_dpatlst_dn
+trans23_dpatlst_dntp
   (d2ps, t2ps) =
 (
   auxlst(d2ps, t2ps)
@@ -446,7 +446,7 @@ case+ d2ps of
       val t2p0 =
       the_t2ype_none0
       val d3p0 =
-      trans23_dpat_dn(d2p0, t2p0)
+      trans23_dpat_dntp(d2p0, t2p0)
       val d3ps = auxlst(d2ps, t2ps)
     }
   | list_cons
@@ -456,12 +456,12 @@ case+ d2ps of
     ) where
     {
       val d3p0 =
-      trans23_dpat_dn(d2p0, t2p0)
+      trans23_dpat_dntp(d2p0, t2p0)
       val d3ps = auxlst(d2ps, t2ps)
     }    
   )
 ) (* end of [auxlst] *)
-} (* end of [trans23_dpatlst_dn] *)
+} (* end of [trans23_dpatlst_dntp] *)
 //
 (* ****** ****** *)
 
@@ -1093,7 +1093,7 @@ val d3e1 = trans23_dexp(d2e1)
 val targ = d3e1.type()
 val tres = t2ype_new(loc0)
 val d3cs =
-  trans23_dclaulst_dn(d2cs, targ, tres)
+trans23_dclaulst_dntp(d2cs, targ, tres)
 //
 in
 d23exp_make_node
@@ -1124,17 +1124,19 @@ val
 body =
 (
 case+ res0 of
-| EFFS2EXPnone() =>
-  (
-    trans23_dexp(body)
-  )
-| EFFS2EXPsome(s2e0) =>
-  let
-    val
-    t2p0 = s2exp_erase(s2e0)
-  in
-    trans23_dexp_dn(body, t2p0)
-  end
+|
+EFFS2EXPnone() =>
+(
+  trans23_dexp(body)
+)
+|
+EFFS2EXPsome(s2e0) =>
+let
+  val
+  t2p0 = s2exp_erase(s2e0)
+in
+  trans23_dexp_dntp(body, t2p0)
+end
 ) : d3exp // end-of-val
 //
 in
@@ -1184,7 +1186,7 @@ val
 tfun = aux_fix_f3as(f3as, tres, 0)
 }
 //
-val body = trans23_dexp_dn(body, tres)
+val body = trans23_dexp_dntp(body, tres)
 //
 in
 d23exp_fix_up
@@ -1256,7 +1258,7 @@ val d3e1 = trans23_dexp(d2e1)
 val tres = d3e1.type()
 val targ = the_t2ype_excptn(*void*)
 val d3cs =
-  trans23_dclaulst_dn(d2cs, targ, tres)
+trans23_dclaulst_dntp(d2cs, targ, tres)
 //
 in
 //
@@ -1281,7 +1283,7 @@ D2Eflat(d2e1) = d2e0.node()
 (*
 val t2p0 = t2ype_new(loc0)
 val t2p1 = t2ype_lft(t2p0)
-val d3e1 = trans23_dexp_dn(d2e1, t2p1)
+val d3e1 = trans23_dexp_dntp(d2e1, t2p1)
 *)
 //
 val d3e1 = trans23_dexp(d2e1)
@@ -1433,7 +1435,7 @@ D2Eraise(d2e1) = d2e0.node()
 //
 val t2p0 = t2ype_new(loc0)
 val t2p1 = the_t2ype_excptn
-val d3e1 = trans23_dexp_dn(d2e1, t2p1)
+val d3e1 = trans23_dexp_dntp(d2e1, t2p1)
 //
 in
 d23exp_make_node(loc0, t2p0, D3Eraise(d3e1))
@@ -1477,7 +1479,7 @@ val d3es =
 let
   val t2p2 = the_t2ype_void
 in
-  trans23_dexplst_dn(d2es, t2p2)
+  trans23_dexplst_dntp(d2es, t2p2)
 end
 //
 val t2p0 =
@@ -1500,8 +1502,10 @@ val-
 D2Eanno
 (d2e1, s2e2) = d2e0.node()
 //
-val t2p2 = s2exp_erase(s2e2)
-val d3e1 = trans23_dexp_dn(d2e1, t2p2)
+val t2p2 =
+s2exp_erase(s2e2)
+val d3e1 =
+trans23_dexp_dntp(d2e1, t2p2)
 //
 in
 d23exp_make_node
@@ -1612,26 +1616,26 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-trans23_dexp_dn
+trans23_dexp_dntp
   (d2e0, t2p0) = let
 //
 (*
 val () =
 println!
-("trans23_dexp_dn: d2e0 = ", d2e0)
+("trans23_dexp_dntp: d2e0 = ", d2e0)
 val () =
 println!
-("trans23_dexp_dn: t2p0 = ", t2p0)
+("trans23_dexp_dntp: t2p0 = ", t2p0)
 *)
 //
 in
-  d23exp_dn(trans23_dexp(d2e0), t2p0)
-end // end of [trans23_dexp_dn]
+  d23exp_dntp(trans23_dexp(d2e0), t2p0)
+end // end of [trans23_dexp_dntp]
 //
 (* ****** ****** *)
 //
 implement
-trans23_dexplst_dn
+trans23_dexplst_dntp
   (d2es, t2p0) =
 (
 list_vt2t
@@ -1642,7 +1646,8 @@ list_map<d2exp><d3exp>(d2es)
 {
 implement
 list_map$fopr<d2exp><d3exp>
-  (d2e) = trans23_dexp_dn(d2e, t2p0)
+  (d2e) =
+  trans23_dexp_dntp(d2e, t2p0)
 }
 //
 (* ****** ****** *)
@@ -1652,8 +1657,10 @@ trans23_dexpopt
   (opt) =
 (
 case+ opt of
-| None() => None()
-| Some(d2e) => Some(trans23_dexp(d2e))
+|
+None() => None()
+|
+Some(d2e) => Some(trans23_dexp(d2e))
 ) (* end of [trans23_dexpopt] *)
 
 implement
@@ -1683,7 +1690,7 @@ list_map<d2exp><d3exp>(d2es)
 {
 implement
 list_map$fopr<d2exp><d3exp>(d2e) =
-trans23_dexp_dn(d2e, the_t2ype_void(*void*))
+trans23_dexp_dntp(d2e, the_t2ype_void(*void*))
 } (* end of [trans23_dexpseq] *)
 //
 (* ****** ****** *)
@@ -1699,7 +1706,7 @@ d2g0.node() of
 | D2GUAexp(d2e1) =>
   let
     val d3e1 =
-    trans23_dexp_dn
+    trans23_dexp_dntp
     (d2e1, the_t2ype_bool)
   in
     d3gua_make_node(loc0, D3GUAexp(d3e1))
@@ -1709,7 +1716,7 @@ d2g0.node() of
     val d3e1 =
     trans23_dexp(d2e1)
     val d3p2 =
-    trans23_dpat_dn(d2p2, d3e1.type())
+    trans23_dpat_dntp(d2p2, d3e1.type())
   in
     d3gua_make_node(loc0, D3GUAmat(d3e1, d3p2))
   end
@@ -1733,7 +1740,7 @@ list_map<d2gua><d3gua>
 (* ****** ****** *)
 
 implement
-trans23_dclau_dn
+trans23_dclau_dntp
 ( d2cl
 , targ, tres) = let
 //
@@ -1747,7 +1754,7 @@ d2cl.node() of
   let
   val
   dgpt =
-  trans23_dgpat_dn(dgpt, targ)
+  trans23_dgpat_dntp(dgpt, targ)
   in
     d3clau_make_node(loc0, D3CLAUpat(dgpt))
   end
@@ -1755,19 +1762,19 @@ d2cl.node() of
   let
   val
   dgpt =
-  trans23_dgpat_dn(dgpt, targ)
+  trans23_dgpat_dntp(dgpt, targ)
   val
-  d3e1 = trans23_dexp_dn(d2e1, tres)
+  d3e1 = trans23_dexp_dntp(d2e1, tres)
   in
     d3clau_make_node(loc0, D3CLAUexp(dgpt, d3e1))
   end
 //
-end // end of [trans23_dclau_dn]
+end // end of [trans23_dclau_dntp]
 
 (* ****** ****** *)
 
 implement
-trans23_dgpat_dn
+trans23_dgpat_dntp
   (dgpt, targ) = let
 //
 val loc0 = dgpt.loc()
@@ -1776,40 +1783,44 @@ in
 //
 case+
 dgpt.node() of
-| D2GPATpat(d2p0) =>
-  let
-  val
-  d3p0 = trans23_dpat_dn(d2p0, targ)
-  in
-    d3gpat_make_node(loc0, D3GPATpat(d3p0))
-  end
-| D2GPATgua(d2p0, d2gs) =>
-  let
+|
+D2GPATpat(d2p0) =>
+let
   val
   d3p0 =
-  trans23_dpat_dn(d2p0, targ)
-  val
-  d3gs = trans23_dgualst(d2gs)
+  trans23_dpat_dntp(d2p0, targ)
+in
+  d3gpat_make_node(loc0, D3GPATpat(d3p0))
+end
+|
+D2GPATgua(d2p0, d2gs) =>
+let
+  val d3p0 =
+  trans23_dpat_dntp(d2p0, targ)
+in
+  let
+  val d3gs = trans23_dgualst(d2gs)
   in
-    d3gpat_make_node(loc0, D3GPATgua(d3p0, d3gs))
+  d3gpat_make_node(loc0, D3GPATgua(d3p0, d3gs))
   end
+end
 //
-end // end of [trans23_dgpat_dn]
+end // end of [trans23_dgpat_dntp]
 
 (* ****** ****** *)
 //
 implement
-trans23_dclaulst_dn
+trans23_dclaulst_dntp
 (d2cls, targ, tres) =
 list_vt2t
 (
   list_map<d2clau><d3clau>(d2cls)
 ) where
 {
-  implement
-  list_map$fopr<d2clau><d3clau>
-    (d2cl) = trans23_dclau_dn( d2cl, targ, tres )
-} (* end of [trans23_dclaulst_dn] *)
+implement
+list_map$fopr<d2clau><d3clau>
+  (d2cl) = trans23_dclau_dntp(d2cl, targ, tres)
+} (* end of [trans23_dclaulst_dntp] *)
 //
 (* ****** ****** *)
 
@@ -2042,7 +2053,7 @@ case+ wtp of
   trans23_dpat(pat)
 | Some(s2e) =>
   (
-  trans23_dpat_dn(pat, t2p)
+  trans23_dpat_dntp(pat, t2p)
   ) where
   {
     val t2p = s2exp_erase(s2e)
@@ -2058,7 +2069,7 @@ case+ def of
   let
   val tres = pat.type()
   in
-  Some(trans23_dexp_dn(d2e0, tres))
+  Some(trans23_dexp_dntp(d2e0, tres))
   end
 ) : d3expopt // end-of-val
 //
@@ -2141,7 +2152,7 @@ None((*void*))
 |
 Some(d3e) =>
 Some
-(trans23_dexp_dn(d3e, tres))
+(trans23_dexp_dntp(d3e, tres))
 ) where // end of [val]
 {
 val
@@ -2437,7 +2448,7 @@ case+ def of
 | None() =>
   None()
 | Some(d2e0) =>
-  Some(trans23_dexp_dn(d2e0, agtp.1))
+  Some(trans23_dexp_dntp(d2e0, agtp.1))
 ) : d3expopt // end-of-val
 //
 in
@@ -2573,17 +2584,17 @@ d3e0 =
 case+ res0 of
 | EFFS2EXPnone() =>
   (
-    trans23_dexp_dn(d2e0, tres)
+    trans23_dexp_dntp(d2e0, tres)
   )
 | EFFS2EXPsome(s2e0) =>
   (
-    d23exp_dn(d3e0, tres)
+    d23exp_dntp(d3e0, tres)
   ) where
   {
     val
     t2p0 = s2exp_erase(s2e0)
     val
-    d3e0 = trans23_dexp_dn(d2e0, t2p0)
+    d3e0 = trans23_dexp_dntp(d2e0, t2p0)
   }
 ) : d3exp // end of [val]
 //
@@ -2638,7 +2649,8 @@ case+ res0 of
 ) : t2ype (* end-of-val *)
 //
 val
-d3e0 = trans23_dexp_dn(d2e0, tres)
+d3e0 =
+trans23_dexp_dntp(d2e0, tres)
 //
 (*
 val () =

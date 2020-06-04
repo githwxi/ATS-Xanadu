@@ -50,6 +50,14 @@ list_vt_sing(x: a): list_vt(a,1)
 //
 (* ****** ****** *)
 //
+fun
+<a:vt>
+list_vt_make_nval
+{n:nat}
+(n0: int(n), x0: a): list_vt(a,n)
+//
+(* ****** ****** *)
+//
 fun<>
 list_vt_nilq
 {a:vt}{n:int}
@@ -207,8 +215,16 @@ list_vt_maprev0
 //
 fun
 <a:vt>
+list_vt_permutize
+{n:int}
+(!list_vt(a,n)): stream_vt(list_vt(a,n))
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
 list_vt_mergesort
-  {n:int}(xs: list_vt(a, n)): list_vt(a, n)
+{n:int}(xs: ~list_vt(a,n)): list_vt(a,n)
 //
 (* ****** ****** *)
 //
