@@ -250,6 +250,19 @@ strptr_make
 {n:nat}(bsz: int(n)): strptr(n)
 //
 (* ****** ****** *)
+
+fun<>
+string_copy
+{n:int}(string(n)): string(n)
+fun<>
+string_copy_vt
+{n:int}(string(n)): string_vt(n)
+fun<>
+string_vt_copy
+{n:int}
+(cs: !string_vt(n)): string_vt(n)
+
+(* ****** ****** *)
 //
 fun<>
 string_make_list

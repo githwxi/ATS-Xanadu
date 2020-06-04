@@ -17,13 +17,22 @@ list_sing(x0) =
 list_cons(x0, list_nil())
 
 (* ****** ****** *)
-
+//
 impltmp
 <a>(*tmp*)
 list_make_nval
   (n0, x0) =
 (
-loop(n0, list_nil())
+list_vt2t
+(list_make_nval_vt<a>(n0, x0))
+)
+//
+impltmp
+<a>(*tmp*)
+list_make_nval_vt
+  (n0, x0) =
+(
+loop(n0, list_vt_nil())
 ) where
 {
 fun
@@ -32,17 +41,18 @@ loop
 ( i0
 : int(i)
 , xs
-: list(a, j)): list(a, i+j) =
+: list_vt(a, j))
+: list_vt(a, i+j) =
 (
 if
 (i0 > 0)
 then
 loop
 ( pred(i0)
-, list_cons(x0, xs)) else xs
+, list_vt_cons(x0, xs)) else xs
 )
-} (* end of [list_make_nval] *)
-
+} (* end of [list_make_nval_vt] *)
+//
 (* ****** ****** *)
 //
 impltmp
@@ -322,8 +332,8 @@ case+ xs of
 list_nil() =>
 strmcon_vt_nil()
 |
-list_cons(x0, xs)
-strmcon_vt_cons(xs, auxmain(xs))
+list_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs))
 )
 } (* end of [list_streamize] *)
 //

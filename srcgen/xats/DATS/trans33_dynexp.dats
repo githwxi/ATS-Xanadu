@@ -415,10 +415,10 @@ end // end of [trans33_dpatlst]
 (* ****** ****** *)
 //
 implement
-trans33_dpat_dn
+trans33_dpat_dntp
 (env0, d3p0, t2p0) =
 (
-  d3pat_dn(d3p0, t2p0)
+  d3pat_dntp(d3p0, t2p0)
 ) where
 {
 val
@@ -428,8 +428,8 @@ d3p0 = trans33_dpat(env0, d3p0)
 (* ****** ****** *)
 //
 implement
-trans33_dpatlst_dn
-(env0, d3ps, t2ps) =
+trans33_dpatlst_dntp
+( env0, d3ps, t2ps ) =
 (
 auxlst(env0, d3ps, t2ps)
 ) where
@@ -460,7 +460,7 @@ case+ t2ps of
     val t2p0 =
     the_t2ype_none0
     val d3p0 =
-    trans33_dpat_dn(env0, d3p0, t2p0)
+    trans33_dpat_dntp(env0, d3p0, t2p0)
     val d3ps = auxlst(env0, d3ps, t2ps)
   }
 | list_cons
@@ -470,12 +470,12 @@ case+ t2ps of
   ) where
   {
     val d3p0 =
-    trans33_dpat_dn(env0, d3p0, t2p0)
+    trans33_dpat_dntp(env0, d3p0, t2p0)
     val d3ps = auxlst(env0, d3ps, t2ps)
   }    
 ) (* list_cons *)
 ) (* end of [auxlst] *)
-} (* end of [trans33_dpatlst_dn] *)
+} (* end of [trans33_dpatlst_dntp] *)
 //
 (* ****** ****** *)
 //
@@ -510,7 +510,7 @@ d33exp_if0_up
 let
 //
 val d3e1 =
-d33exp_dn
+d33exp_dntp
 ( env0
 , d3e1, the_t2ype_bool)
 //
@@ -522,15 +522,17 @@ case+ opt3 of
 ) : t2ype // end of [val]
 //
 val d3e2 =
-d33exp_dn(env0, d3e2, tres)
+d33exp_dntp(env0, d3e2, tres)
 //
 val opt3 =
 (
 case+ opt3 of
-| None() => None()
-| Some(d3e3) =>
-  Some
-  (d33exp_dn(env0, d3e3, tres))
+|
+None() => None()
+|
+Some(d3e3) =>
+Some
+(d33exp_dntp(env0, d3e3, tres))
 ) : d3expopt // end of [val]
 //
 in
@@ -974,13 +976,14 @@ val tfun =
 t2ype_fun0
 (loc0, npf1, targ, tres)
 in
-  d23exp_dn(d3f0, tfun)
+  d23exp_dntp(d3f0, tfun)
 end // end of [val]
 val
 d3f0 = trans33_dexp(env0, d3f0)
 //
 in
-d33exp_dapp_up(loc0, env0, d3f0, npf1, d3es)
+  d33exp_dapp_up
+  (loc0, env0, d3f0, npf1, d3es)
 end
 |
 D3Edtsel _ =>
@@ -1220,7 +1223,7 @@ D3Ecase
 val tres = t2ype_new(loc0)
 val d3e1 = trans33_dexp(env0, d3e1)
 val dcls =
-trans33_dclaulst_dn(env0, dcls, tres)
+trans33_dclaulst_dntp(env0, dcls, tres)
 //
 in
 d33exp_make_node
@@ -1305,7 +1308,7 @@ trans33_dexp(env0, d3e1)
 //
 val tres = d3e1.type()
 val dcls =
-trans33_dclaulst_dn(env0, dcls, tres)
+trans33_dclaulst_dntp(env0, dcls, tres)
 //
 in
 //
@@ -1506,7 +1509,7 @@ d3es =
 let
   val t2p2 = the_t2ype_void
 in
-  trans33_dexplst_dn(env0, d3es, t2p2)
+  trans33_dexplst_dntp(env0, d3es, t2p2)
 end
 //
 val
@@ -1537,7 +1540,7 @@ val t2p0 = d3e0.type()
 val t2p2 = s2exp_erase(s2e2)
 *)
 val d3e1 =
-trans33_dexp_dn(env0, d3e1, t2p0)
+trans33_dexp_dntp(env0, d3e1, t2p0)
 //
 in
 d33exp_make_node(loc0, t2p0, D3Eanno(d3e1, s2e2))
@@ -1689,10 +1692,10 @@ end (* trans33_dexp *) end // end of [local]
 (* ****** ****** *)
 //
 implement
-trans33_dexp_dn
+trans33_dexp_dntp
 (env0, d3e0, t2p0) =
 (
-  d33exp_dn(env0, d3e0, t2p0)
+  d33exp_dntp(env0, d3e0, t2p0)
 ) where
 {
   val d3e0 = trans33_dexp(env0, d3e0)
@@ -1746,8 +1749,8 @@ end // list_map$fopr
 (* ****** ****** *)
 //
 implement
-trans33_dexplst_dn
-(env0, d3es, t2p0) =
+trans33_dexplst_dntp
+( env0, d3es, t2p0 ) =
 (
 list_vt2t
 (
@@ -1770,14 +1773,14 @@ env0 =
 $UN.castvwtp0{abstenv}(env0)
 val
 d3e0 =
-trans33_dexp_dn(env0, d3e0, t2p0)
+trans33_dexp_dntp(env0, d3e0, t2p0)
 //
 in
 let
 prval () = $UN.cast2void(env0) in d3e0
 end
 end // list_map$fopr
-} (* end of [trans33_dexplst_dn] *)
+} (* end of [trans33_dexplst_dntp] *)
 //
 (* ****** ****** *)
 //
@@ -1877,7 +1880,7 @@ end // end of [trans33_d3gpat]
 (* ****** ****** *)
 
 implement
-trans33_dclau_dn
+trans33_dclau_dntp
 (env0, d3cl, tres) =
 let
 val loc0 = d3cl.loc()
@@ -1907,15 +1910,15 @@ D3CLAUexp(d3gp, d3e2) =>
   trans33_dgpat(env0, d3gp)
   val
   d3e2 =
-  trans33_dexp_dn(env0, d3e2, tres)
+  trans33_dexp_dntp(env0, d3e2, tres)
 }
-end // end of [trans33_dclau_dn]
+end // end of [trans33_dclau_dntp]
 
 (* ****** ****** *)
 //
 implement
-trans33_dclaulst_dn
-(env0, dcls, tres) =
+trans33_dclaulst_dntp
+( env0, dcls, tres ) =
 (
 list_vt2t
 (
@@ -1938,7 +1941,7 @@ $UN.castvwtp0{abstenv}(env0)
 //
 val
 d3cl =
-trans33_dclau_dn(env0, d3cl, tres)
+trans33_dclau_dntp(env0, d3cl, tres)
 //
 in
 let
@@ -2176,7 +2179,7 @@ let
 val tres = pat.type()
 in
 Some
-(trans33_dexp_dn(env0, d3e0, tres))
+(trans33_dexp_dntp(env0, d3e0, tres))
 end
 ) : d3expopt // end-of-val
 //
@@ -2277,7 +2280,7 @@ None((*void*))
 |
 Some(d3e) =>
 Some
-(trans33_dexp_dn(env0, d3e, tres))
+(trans33_dexp_dntp(env0, d3e, tres))
 ) where // end of [val]
 {
 val
@@ -2640,7 +2643,7 @@ t2ype_f3arg_elim
 //
 val
 d3e0 =
-trans33_dexp_dn(env0, d3e0, tres)
+trans33_dexp_dntp(env0, d3e0, tres)
 //
 in
 d3ecl_make_node

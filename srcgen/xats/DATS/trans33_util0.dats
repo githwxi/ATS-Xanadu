@@ -478,8 +478,9 @@ T2Puni
 T2Pfun
 (_, _, t2ps, t2p0) =>
 let
-  val d3ps =
-  trans33_dpatlst_dn(env0, d3ps, t2ps)
+val
+d3ps =
+trans33_dpatlst_dntp(env0, d3ps, t2ps)
 in
   tfun := t2p0;
   f3arg_make_node
@@ -518,7 +519,7 @@ end // end of [d33exp_make_node]
 (* ****** ****** *)
 
 implement
-d33exp_dn
+d33exp_dntp
 ( env0
 , d3e0, t2p0) = let
 //
@@ -537,12 +538,12 @@ test
 then d3e0
 else d33exp_tcastize(env0, d3e0, t2p0)
 //
-end // end of [d33exp_dn]
+end // end of [d33exp_dntp]
 
 (* ****** ****** *)
 
 implement
-d33explst_dn
+d33explst_dntp
 ( loc0
 , env0
 , d3es, t2ps) = let
@@ -610,13 +611,13 @@ list_cons _ =>
     (t2p0, t2ps) = t2ps
     val
     d3e0 =
-    d33exp_dn(env0, d3e0, t2p0)
+    d33exp_dntp(env0, d3e0, t2p0)
   in
     list_cons(d3e0, auxd3es(d3es))
   end
 )
 //
-end (* end of [d33explst_dn] *)
+end (* end of [d33explst_dntp] *)
 
 (* ****** ****** *)
 
@@ -755,7 +756,7 @@ val tfun = // the default
   (loc0, npf0, targ, tres)
 )
 //
-val d3f0 = d33exp_dn(env0, d3f0, tfun)
+val d3f0 = d33exp_dntp(env0, d3f0, tfun)
 //
 in
 //
@@ -921,7 +922,7 @@ t2p2 =
 d3e2.type((*void*))
 val
 d3e1 =
-d33exp_dn(env0, d3e1, t2p2)
+d33exp_dntp(env0, d3e1, t2p2)
 //
 in
 let

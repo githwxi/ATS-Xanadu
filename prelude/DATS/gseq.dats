@@ -401,6 +401,17 @@ list_rcopy_vt<x0>(xx)
 in
 gseq_unrlist_vt<x0,xs>(xx)
 end // end of [gseq_unlist]
+//
+impltmp
+<x0,xs>
+gseq_unrlist(xx) =
+let
+  val xx =
+  list_copy_vt<x0>(xx)
+in
+gseq_unrlist_vt<x0,xs>(xx)
+end // end of [gseq_unrlist]
+//
 impltmp
 <x0,xs>
 gseq_unlist_vt(xx) =
@@ -445,7 +456,7 @@ gseq_unstream_vt
   gseq_unrlist_vt<x0,xs>(xs)
 ) where
 {
-val xx = stream_vt_rlistize<x0>(xx)
+val xs = stream_vt_rlistize<x0>(xx)
 } // end of [gseq_unstream_vt]
 
 (* ****** ****** *)
@@ -1158,6 +1169,29 @@ in
   (pz, list_vt_nil()); $UN.castlin01(r0)
 end // end of [gseq_z2map_list/z2foldl]
 //
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_permutize
+  (xs) = let
+//
+val y0 =
+gseq_listize<x0,xs>(xs)
+val ys =
+list_vt_permutize<x0>(y0)
+val () = list_vt_free(y0)
+//
+in
+(
+  stream_vt_map0<y0><xs>(ys)
+) where
+{
+  typedef y0 = list_vt(x0)
+  impltmp map$fopr<y0><xs> = gseq_unlist_vt<x0,xs>
+}
+end // end of [gseq_permutize]
+
 (* ****** ****** *)
 
 (* end of [gseq.dats] *)

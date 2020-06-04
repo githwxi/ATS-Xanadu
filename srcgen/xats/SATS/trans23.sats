@@ -151,21 +151,21 @@ vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
 fun
 trenv23_dvar: d2var -> void
 fun
-trenv23_dvar_dn
-  (d2v0: d2var, t2p0: t2ype): void
+trenv23_dvar_dntp
+(d2v0: d2var, t2p0: t2ype): void
 //
 (* ****** ****** *)
 //
 fun
 trans23_dpat: d2pat -> d3pat
 fun
-trans23_dpat_dn
+trans23_dpat_dntp
 (d2p0: d2pat, t2p0: t2ype): d3pat
 //
 fun
 trans23_dpatlst: d2patlst -> d3patlst
 fun
-trans23_dpatlst_dn
+trans23_dpatlst_dntp
 (ps: d2patlst, ts: t2ypelst): d3patlst
 //
 (* ****** ****** *)
@@ -185,14 +185,16 @@ fun
 trans23_dexpseq: d2explst -> d3explst
 //
 fun
-trans23_dexp_dn: (d2exp, t2ype) -> d3exp
+trans23_dexp_dntp
+(d2e0: d2exp, t2p0: t2ype): d3exp
 fun
-trans23_dexplst_dn: (d2explst, t2ype) -> d3explst
+trans23_dexplst_dntp
+(d2es: d2explst, t2p0: t2ype): d3explst
 //
 (* ****** ****** *)
 //
 fun
-trans23_dexp_dn
+trans23_dexp_dntp
   (d2e0: d2exp, t2p0: t2ype): (d3exp)
 //
 (* ****** ****** *)
@@ -205,17 +207,17 @@ trans23_dgualst: d2gualst -> d3gualst
 (* ****** ****** *)
 //
 fun
-trans23_dgpat_dn
+trans23_dgpat_dntp
 ( dgpt
 : d2gpat
 , targ: t2ype(*guard*)): d3gpat
 fun
-trans23_dclau_dn
+trans23_dclau_dntp
 ( d2c0
 : d2clau
 , targ: t2ype(*guard*), tres: t2ype): d3clau
 fun
-trans23_dclaulst_dn
+trans23_dclaulst_dntp
 ( d2cs
 : d2claulst
 , targ: t2ype(*guard*), tres: t2ype): d3claulst
@@ -338,7 +340,7 @@ t2ype_tq2as_elim2
 (* ****** ****** *)
 //
 fun
-d3pat_dn
+d3pat_dntp
 (d3p0: d3pat, t2p0: t2ype): d3pat
 //
 (* ****** ****** *)
@@ -364,11 +366,11 @@ d3pat_tuple_up
 (* ****** ****** *)
 //
 fun
-d23exp_dn
+d23exp_dntp
 ( d3e0: d3exp
 , t2p0: t2ype ) : d3exp
 fun
-d23explst_dn
+d23explst_dntp
 ( loc0: loc_t
 , d3es: d3explst
 , t2ps: t2ypelst ) : d3explst

@@ -188,7 +188,7 @@ trans33_dpat
 ( env0
 : !abstenv, d3p0: d3pat): d3pat
 fun
-trans33_dpat_dn
+trans33_dpat_dntp
 ( env0
 : !abstenv
 , d3p0: d3pat, t2p0: t2ype): d3pat
@@ -198,7 +198,7 @@ trans33_dpatlst
 ( env0
 : !abstenv, d3ps: d3patlst): d3patlst
 fun
-trans33_dpatlst_dn
+trans33_dpatlst_dntp
 ( env0
 : !abstenv
 , d3ps: d3patlst, t2ps: t2ypelst): d3patlst
@@ -222,12 +222,12 @@ trans33_dexplst
 (* ****** ****** *)
 //
 fun
-trans33_dexp_dn
+trans33_dexp_dntp
 ( env0
 : !abstenv
 , d3e0: d3exp, t2p0: t2ype): d3exp
 fun
-trans33_dexplst_dn
+trans33_dexplst_dntp
 ( env0
 : !abstenv
 , d3es: d3explst, t2p0: t2ype): d3explst
@@ -251,12 +251,12 @@ trans33_dgpat
 : !abstenv, d3gp: d3gpat): d3gpat
 //
 fun
-trans33_dclau_dn
+trans33_dclau_dntp
 ( env0
 : !abstenv
 , d3cl: d3clau, tres: t2ype): d3clau
 fun
-trans33_dclaulst_dn
+trans33_dclaulst_dntp
 ( env0
 : !abstenv
 , dcls: d3claulst, tres: t2ype): d3claulst
@@ -330,12 +330,12 @@ t2ype_f3arg_elim
 (* ****** ****** *)
 //
 fun
-d33exp_dn
+d33exp_dntp
 ( env0: !abstenv
 , d3e0: d3exp, t2p0: t2ype): d3exp
 //
 fun
-d33explst_dn
+d33explst_dntp
 ( loc0: loc_t
 , env0: !abstenv
 , d3es: d3explst, t2ps: t2ypelst): d3explst

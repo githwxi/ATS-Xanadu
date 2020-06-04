@@ -48,6 +48,11 @@ fun
 list_make_nval
 {n:nat}
 (n: int(n), x: a): list(a, n)
+fun
+<a:t0>
+list_make_nval_vt
+{n:nat}
+(n: int(n), x: a): list_vt(a, n)
 
 (* ****** ****** *)
 //

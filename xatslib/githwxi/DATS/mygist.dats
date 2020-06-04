@@ -205,17 +205,17 @@ list_permutize
 //
 fun
 rapp2
-( xs
-: list(a)
-, ys
-: !list_vt(a)): list(a) =
+( xs:
+  list(a)
+, ys:
+~ list_vt(a)): list(a) =
 (
 case+ ys of
-|
-! list_vt_nil() => xs
-|
-~ list_vt_cons(y0, ys) =>
-  rapp2(list_cons(y0, xs), ys)
+| ~
+list_vt_nil() => xs
+| ~
+list_vt_cons(y0, ys) =>
+rapp2(list_cons(y0, xs), ys)
 )
 //
 fun
@@ -259,6 +259,8 @@ auxmain2
 , ys: list_vt(a))
 : stream_vt(list(a)) =
 $llazy
+(
+g_free<a>(ys);
 let
 val
 xss =
@@ -281,6 +283,7 @@ in
 end // end of [list_cons]
 //
 end // end-of-let // end of [auxmain2]
+)
 //
 } endwhr (* end of [list_permutize] *)
 

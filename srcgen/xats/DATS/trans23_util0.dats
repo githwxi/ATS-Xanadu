@@ -928,16 +928,16 @@ case+ svs1 of
 (* ****** ****** *)
 
 implement
-d3pat_dn
+d3pat_dntp
 (d3p0, t2p0) = let
 //
 (*
 val () =
 println!
-("d3pat_dn: d3p0 = ", d3p0)
+("d3pat_dntp: d3p0 = ", d3p0)
 val () =
 println!
-("d3pat_dn: t2p0 = ", t2p0)
+("d3pat_dntp: t2p0 = ", t2p0)
 *)
 //
 val loc0 = d3p0.loc()
@@ -947,7 +947,7 @@ unify2(loc0, d3p0.type(), t2p0)
 (*
 val () =
 println!
-("d3pat_dn: test = ", test)
+("d3pat_dntp: test = ", test)
 *)
 //
 in
@@ -956,7 +956,7 @@ if
 test
 then d3p0 else d3pat_tcast(d3p0, t2p0)
 //
-end // end of [d3pat_dn]
+end // end of [d3pat_dntp]
 
 (* ****** ****** *)
 
@@ -979,7 +979,7 @@ val tfun = // is FC2fun!
   (loc0, npf0, targ, tres)
 )
 //
-val d3f0 = d3pat_dn(d3f0, tfun)
+val d3f0 = d3pat_dntp(d3f0, tfun)
 //
 in
 //
@@ -1052,15 +1052,13 @@ d3exp_make_node(loc0, t2p0, d3en)
 (* ****** ****** *)
 
 implement
-d23exp_dn
+d23exp_dntp
 (d3e0, t2p0) = let
 //
 val
 test =
-(
-  unify2
-  (d3e0.loc(), d3e0.type(), t2p0)
-)
+unify2
+(d3e0.loc(), d3e0.type(), t2p0)
 //
 in
 //
@@ -1068,12 +1066,12 @@ if
 test
 then d3e0 else d3exp_tcast(d3e0, t2p0)
 //
-end // end of [d23exp_dn]
+end // end of [d23exp_dntp]
 
 (* ****** ****** *)
 
 implement
-d23explst_dn
+d23explst_dntp
 (loc0, d3es, t2ps) = let
 //
 fun
@@ -1084,15 +1082,17 @@ auxt2ps
 : d3explst =
 (
 case+ t2ps of
-| list_nil() =>
-  list_nil()
-| list_cons(t2p0, t2ps) =>
-  let
-    val d3e0 =
-    d3exp_none0_1(loc0, t2p0)
-  in
-    list_cons(d3e0, auxt2ps(t2ps))
-  end
+|
+list_nil() =>
+list_nil()
+|
+list_cons(t2p0, t2ps) =>
+let
+  val d3e0 =
+  d3exp_none0_1(loc0, t2p0)
+in
+  list_cons(d3e0, auxt2ps(t2ps))
+end
 )
 fun
 auxd3es
@@ -1102,41 +1102,51 @@ auxd3es
 : d3explst =
 (
 case+ d3es of
-| list_nil() =>
-  list_nil()
-| list_cons(d3e0, d3es) =>
-  let
-    val d3e0 =
-    d3exp_none2_0(d3e0)
-  in
-    list_cons(d3e0, auxd3es(d3es))
-  end
+|
+list_nil() =>
+list_nil()
+|
+list_cons(d3e0, d3es) =>
+let
+  val d3e0 =
+  d3exp_none2_0(d3e0)
+in
+  list_cons(d3e0, auxd3es(d3es))
+end
 )
 //
 in (* in-of-let *)
 //
 case+ d3es of
-| list_nil() => auxt2ps(t2ps)
-| list_cons _ =>
-  (
-  case+ t2ps of
-  | list_nil() => auxd3es(d3es)
-  | list_cons _ =>
-    let
-      val+
-      list_cons
-      (d3e0, d3es) = d3es
-      val+
-      list_cons
-      (t2p0, t2ps) = t2ps
-      val
-      d3e0 = d23exp_dn(d3e0, t2p0)
-    in
-      list_cons(d3e0, auxd3es(d3es))
-    end
-  )
+|
+list_nil() => auxt2ps(t2ps)
+|
+list_cons _ =>
+(
+case+ t2ps of
+|
+list_nil() => auxd3es(d3es)
+|
+list_cons _ =>
+let
+  val+
+  list_cons
+  (d3e0, d3es) = d3es
+  val+
+  list_cons
+  (t2p0, t2ps) = t2ps
+in
+  let
+  val
+  d3e0 =
+  d23exp_dntp(d3e0, t2p0)
+  in
+  list_cons(d3e0, auxd3es(d3es))
+  end
+end
+)
 //
-end (* end of [d23explst_dn] *)
+end (* end of [d23explst_dntp] *)
 
 (* ****** ****** *)
 
@@ -1552,7 +1562,7 @@ val tfun = // the default
   (loc0, npf0, targ, tres)
 )
 //
-val d3f0 = d23exp_dn(d3f0, tfun)
+val d3f0 = d23exp_dntp(d3f0, tfun)
 //
 in
 //
@@ -1664,7 +1674,7 @@ val t2p0 =
 val t2p1 =
   d3e1.type((*void*))
 val d3e2 =
-  d23exp_dn(d3e2, t2p1)
+  d23exp_dntp(d3e2, t2p1)
 in
   d23exp_make_node
   (loc0, t2p0, D3Eassgn(d3e1, d3e2))
@@ -1692,7 +1702,7 @@ d23exp_if0_up
 let
 //
 val d3e1 =
-d23exp_dn
+d23exp_dntp
 (d3e1, the_t2ype_bool)
 val tres =
 (
@@ -1702,13 +1712,13 @@ case+ opt3 of
 ) : t2ype // end of [val]
 //
 val d3e2 =
-d23exp_dn(d3e2, tres)
+d23exp_dntp(d3e2, tres)
 val opt3 =
 (
 case+ opt3 of
 | None() => None()
 | Some(d3e3) =>
-  Some(d23exp_dn(d3e3, tres))
+  Some(d23exp_dntp(d3e3, tres))
 ) : d3expopt // end of [val]
 //
 in
@@ -2304,7 +2314,7 @@ t2p0.node() of
   (_, _, t2ps, t2p0) =>
   let
     val d3ps =
-    trans23_dpatlst_dn(d2ps, t2ps)
+    trans23_dpatlst_dntp(d2ps, t2ps)
   in
     tfun := t2p0;
     f3arg_make_node

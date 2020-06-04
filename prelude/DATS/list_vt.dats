@@ -16,6 +16,38 @@ UN =
 "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_vt_make_nval
+  (n0, x0) = let
+//
+fun
+loop{i:nat}.<i>.
+( i0
+: int(i)
+, r0
+: &(?list_vt(a)) >> list_vt(a, i)
+) : void =
+if
+(i0 = 0)
+then
+(r0 := list_vt_nil())
+else let
+  val x1 = g_copy<a>(x0)
+  val () =
+  (r0 := list_vt_cons(x1, _))
+in
+  loop(pred(i0), r0.1); $fold(r0)
+end // end of [else]
+//
+in
+let
+var r0: list_vt(a) in loop(n0, r0); r0
+end
+end (* end of [list_vt_make_nval] *)
+
+(* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
@@ -566,15 +598,46 @@ end
 (* ****** ****** *)
 
 impltmp
-<a:vt>
-list_vt_mergesort
-  (xs) =
-(
+<a>(*tmp*)
+list_vt_permutize
+  (xs) = let
+//
+typedef
+xs = list_vt(a)
+typedef
+xs(n:int) = list_vt(a, n)
+//
+fun
 auxmain
-( xs
-, list_vt_length<a>(xs))
-) where
-{
+( xs: xs(n)
+, n0: int(n))
+: stream_vt(xs(n)) =
+if
+(n >= 2)
+then let
+val
+ys = list_vt_nil()
+in
+  auxmain2(xs, ys)
+end
+else stream_vt_sing(xs)
+//
+and
+auxmain2
+{m,n:int}
+( xs: xs(m)
+, ys: xs(n))
+//
+in
+auxmain(xs, list_vt_length<a>(xs))
+end (* end of [list_vt_permutize] *)
+
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_vt_mergesort
+  (xs) = let
 //
 typedef
 xs = list_vt(a)
@@ -666,7 +729,9 @@ end // list_vt_cons
 ) (* list_vt_cons] *)
 ) (* end of [merge] *)
 //
-} (* end of [list_vt_mergesort] *)
+in
+  auxmain(xs, list_vt_length<a>(xs))
+end (* end of [list_vt_mergesort] *)
 
 (* ****** ****** *)
 //
@@ -674,29 +739,14 @@ end // list_vt_cons
 //
 (* ****** ****** *)
 //
-//
 impltmp
 {a:vt}
-glseq_nilq1
-<a,list_vt(a)>(xs) =
-(
-case+ xs of
-| !
-list_vt_nil() => true
-| !
-list_vt_cons(_, _) => false
-)
+glseq_nilq
+<a,list_vt(a)> = list_vt_nilq
 impltmp
 {a:vt}
-glseq_consq1
-<a,list_vt(a)>(xs) =
-(
-case+ xs of
-| !
-list_vt_nil() => false
-| !
-list_vt_cons(_, _) => (true)
-)
+glseq_consq
+<a,list_vt(a)> = list_vt_consq
 //
 (* ****** ****** *)
 
@@ -717,7 +767,8 @@ glseq_listize0
 impltmp
 {a:vt}
 glseq_rlistize0
-<a,list_vt(a)>(xs) = list_vt_reverse(xs)
+<a,list_vt(a)>(xs) =
+list_vt_reverse<a>( xs )
 //
 (* ****** ****** *)
 //
