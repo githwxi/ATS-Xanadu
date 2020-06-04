@@ -480,7 +480,7 @@ T2Pfun
 let
 val
 d3ps =
-trans33_dpatlst_dntp(env0, d3ps, t2ps)
+trans33_dpatlst_dnts(env0, d3ps, t2ps)
 in
   tfun := t2p0;
   f3arg_make_node

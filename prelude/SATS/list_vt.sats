@@ -215,16 +215,16 @@ list_vt_maprev0
 //
 fun
 <a:vt>
-list_vt_permutize
-{n:int}
-(!list_vt(a,n)): stream_vt(list_vt(a,n))
+list_vt_mergesort
+{n:int}(~list_vt(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-list_vt_mergesort
-{n:int}(xs: ~list_vt(a,n)): list_vt(a,n)
+list_vt_permutize
+{n:int}
+(~list_vt(a,n)): stream_vt(list_vt(a,n))
 //
 (* ****** ****** *)
 //
@@ -277,6 +277,10 @@ length0 with list_vt_length0 of 1000
 #symload concat0 with list_vt_concat of 1000
 *)
 //
+(* ****** ****** *)
+
+#symload rappend with list_vt_rappend of 1000
+
 (* ****** ****** *)
 //
 #symload listize with list_listize of 1000

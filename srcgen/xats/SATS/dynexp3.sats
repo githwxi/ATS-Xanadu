@@ -691,7 +691,7 @@ F3UNDECL of @{
 , a2g= f2arglst
 , a3g= f3arglstopt
 , res= effs2expopt
-, def= d3expopt
+, def= d3expopt, rtp= t2ype
 , wtp= s2expopt, ctp= t2pcast
 }
 //

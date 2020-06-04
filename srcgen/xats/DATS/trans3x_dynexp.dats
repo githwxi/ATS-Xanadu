@@ -494,6 +494,7 @@ val a3g = rcd.a3g
 val res = rcd.res
 val d2c = rcd.d2c
 val def = rcd.def
+val rtp = rcd.rtp
 val wtp = rcd.wtp
 val ctp = rcd.ctp
 //
@@ -521,7 +522,7 @@ F3UNDECL
  loc=loc
 ,nam=nam,d2c=d2c
 ,a2g=a2g,a3g=a3g
-,res=res,def=def,wtp=wtp,ctp=ctp}
+,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
 end // end of [auxf3d0]
 //
 and

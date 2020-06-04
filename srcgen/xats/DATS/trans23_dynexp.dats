@@ -2262,39 +2262,41 @@ aux0_f3as
 , flag: int): t2ype =
 (
 case+ f3as of
-| list_nil() => tres
-| list_cons(x0, xs) =>
-  (
-  case-
-  x0.node() of
-  | F3ARGsome_dyn
-    (npf, d3ps) =>
-    let
-    val fc2 =
-    ( if
-      flag = 0
-      then
-      FC2fun(*void*)
-      else
-      FC2cloref(*void*)
-    ) : funclo2 // end-of-val
-    val t2ps =
-    d3patlst_get_type(d3ps)
-    val tres =
-    aux0_f3as(xs, tres, flag+1)
-    in
-    t2ype_fun2(fc2, npf, t2ps, tres)
-    end
-  | F3ARGsome_sta
-    (s2vs, s2ps) =>
-    let
-      val
-      tres =
-      aux0_f3as
-      (xs,tres,flag) in t2ype_uni(s2vs, tres)
-    end
-  | F3ARGsome_met(s2es) => aux0_f3as(xs, tres, flag)
-  )
+|
+list_nil() => tres
+|
+list_cons(x0, xs) =>
+(
+case-
+x0.node() of
+| F3ARGsome_dyn
+  (npf, d3ps) =>
+  let
+  val fc2 =
+  ( if
+    flag = 0
+    then
+    FC2fun(*void*)
+    else
+    FC2cloref(*void*)
+  ) : funclo2 // end-of-val
+  val t2ps =
+  d3patlst_get_type(d3ps)
+  val tres =
+  aux0_f3as(xs, tres, flag+1)
+  in
+  t2ype_fun2(fc2, npf, t2ps, tres)
+  end
+| F3ARGsome_sta
+  (s2vs, s2ps) =>
+  let
+    val
+    tres =
+    aux0_f3as
+    (xs,tres,flag) in t2ype_uni(s2vs, tres)
+  end
+| F3ARGsome_met(s2es) => aux0_f3as(xs, tres, flag)
+)
 )
 and
 aux0_d2ps
@@ -2305,12 +2307,12 @@ list_vt2t
   list_map<d2pat><t2ype>(d2ps)
 ) where
 {
-  implement
-  list_map$fopr<d2pat><t2ype>(d2p) =
-  (
-  case+ d2p.node() of
-  | D2Panno(_, s2e) => s2exp_erase(s2e) | _ => the_t2ype_none0
-  )
+implement
+list_map$fopr<d2pat><t2ype>(d2p) =
+(
+case+ d2p.node() of
+| D2Panno(_, s2e) => s2exp_erase(s2e) | _ => the_t2ype_none0
+)
 } (* end of [auxd2ps] *)
 //
 fun
@@ -2337,32 +2339,37 @@ val a3g =
 (
 if
 ishdr(f2d0)
-then None(*void*)
+then
+None(*void*)
 else
-Some(trans23_farglst(a2g))
+Some
+(trans23_farglst(a2g))
 ) : f3arglstopt // end-of-val
 //
 val tres =
 (
 case+ res of
-| EFFS2EXPnone
-  () => t2ype_new(loc0)
-| EFFS2EXPsome
-  (s2e0) => s2exp_erase(s2e0)
-) : t2ype // end-of-val
+|
+EFFS2EXPnone
+() => t2ype_new(loc0)
+|
+EFFS2EXPsome
+(s2e0) => s2exp_erase(s2e0)): t2ype
 //
 in (*in-of-let*)
 //
 case+ a3g of
-| None _ => (a3g, tres)
-| Some _ =>
-  let
-    val
-    tfun =
-    aux0_tfun(a3g, tres)
-  in
-    d2var_set_type(nam, tfun); (a3g, tres)
-  end
+|
+None _ => (a3g, tres)
+|
+Some _ =>
+let
+  val
+  tfun =
+  aux0_tfun(a3g, tres)
+in
+  d2var_set_type(nam, tfun); (a3g, tres)
+end
 //
 end
 and
@@ -2442,13 +2449,15 @@ case+ wtp of
 ) (* Some *)
 ) : t2pcast // end-of-val
 //
+val rtp = agtp.1
+//
 val def =
 (
 case+ def of
 | None() =>
   None()
-| Some(d2e0) =>
-  Some(trans23_dexp_dntp(d2e0, agtp.1))
+| Some(d2e) =>
+  Some(trans23_dexp_dntp(d2e, rtp))
 ) : d3expopt // end-of-val
 //
 in
@@ -2456,7 +2465,8 @@ F3UNDECL(
 @{
  loc=loc
 ,nam=nam,d2c=d2c
-,a2g=a2g,a3g=a3g,res=res,def=def,wtp=wtp,ctp=ctp}
+,a2g=a2g,a3g=a3g
+,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
 ) (* F3UNDECL *)
 end // end of [let]
 and
