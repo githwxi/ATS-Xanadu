@@ -599,43 +599,6 @@ end
 
 impltmp
 <a>(*tmp*)
-list_vt_permutize
-  (xs) = let
-//
-typedef
-xs = list_vt(a)
-typedef
-xs(n:int) = list_vt(a, n)
-//
-fun
-auxmain
-( xs: xs(n)
-, n0: int(n))
-: stream_vt(xs(n)) =
-if
-(n >= 2)
-then let
-val
-ys = list_vt_nil()
-in
-  auxmain2(xs, ys)
-end
-else stream_vt_sing(xs)
-//
-and
-auxmain2
-{m,n:int}
-( xs: xs(m)
-, ys: xs(n))
-//
-in
-auxmain(xs, list_vt_length<a>(xs))
-end (* end of [list_vt_permutize] *)
-
-(* ****** ****** *)
-
-impltmp
-<a>(*tmp*)
 list_vt_mergesort
   (xs) = let
 //
@@ -643,7 +606,7 @@ typedef
 xs = list_vt(a)
 //
 fun
-auxmain
+amain
 (xs: xs, n0: nint): xs =
 if
 (n0 <= 1)
@@ -661,8 +624,8 @@ val n2 = n0 / 2
 val n1 = n0 - n2
 var ys = xs
 val zs = split(ys, n1)
-val ys = auxmain(ys, n1)
-val zs = auxmain(zs, n2)
+val ys = amain(ys, n1)
+val zs = amain(zs, n2)
 }
 //
 and
@@ -705,33 +668,119 @@ list_vt_cons(z0, zs1) =>
 let
 val sgn = g_cmp<a>(y0, z0)
 in
-  if
-  (sgn <= 0)
-  then
-  let
-  val nd = ys
-  val ys = ys1
-  val () = $fold(zs)
-  in
-    xs := nd;
-    merge(ys, zs, xs.1); $fold(xs)
-  end
-  else
-  let
-  val nd = zs
-  val zs = zs1
-  val () = $fold(ys)
-  in
-    xs := nd;
-    merge(ys, zs, xs.1); $fold(xs)
-  end
+if
+(sgn <= 0)
+then
+let
+val nd = ys
+val ys = ys1
+val () = $fold(zs)
+in
+  xs := nd;
+  merge(ys, zs, xs.1); $fold(xs)
+end
+else
+let
+val nd = zs
+val zs = zs1
+val () = $fold(ys)
+in
+  xs := nd;
+  merge(ys, zs, xs.1); $fold(xs)
+end
 end // list_vt_cons
 ) (* list_vt_cons] *)
 ) (* end of [merge] *)
 //
 in
-  auxmain(xs, list_vt_length<a>(xs))
+  amain(xs, list_vt_length<a>(xs))
 end (* end of [list_vt_mergesort] *)
+
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_vt_permutize
+  (xs) = let
+//
+typedef
+xs(n:int) = list_vt(a, n)
+//
+fun
+auxmain1
+{n:int}
+( xs: xs(n)
+, n0: int(n))
+: stream_vt(xs(n)) =
+if
+n0 >= 2
+then let
+val
+ys = list_vt_nil()
+in
+auxmain2(xs, ys, n0, 0)
+end
+else stream_vt_sing(xs)
+//
+and
+auxmain2
+{i,j:int
+|i+j >= 2}
+( xs: xs(i)
+, ys: xs(j)
+, i0: int(i)
+, j0: int(j))
+: stream_vt(xs(i+j)) =
+$llazy
+(
+case+ xs of
+| ~
+list_vt_nil() =>
+(
+strmcon_vt_nil()
+) where
+{
+val () =
+list_vt_free<a>(ys)
+}
+| ~
+list_vt_cons(x0, xs) =>
+let
+val n0 = i0+j0
+val n1 = pred(n0)
+val res1 =
+auxmain1(xy, n1) where
+{
+val xy =
+list_vt_rappend11(ys, xs)
+}
+val res1 =
+stream_vt_map0
+<xs(n1)><xs(n0)>(res1) where
+{
+sexpdef n0 = i+j
+sexpdef n1 = n0-1
+impltmp
+map0$fopr
+<xs(n1)><xs(n0)>(xx) = list_vt_cons(x0, xx)
+}
+in
+  let
+  val
+  ys =
+  list_vt_cons(x0, ys)
+  val
+  res2 =
+  auxmain2(xs, ys, i0-1, j0+1)
+  in
+  !(stream_vt_append(res1, res2))
+  end
+end
+) (* end of [auxmain2] *)
+//
+in
+auxmain1(xs, list_vt_length<a>(xs))
+end (* end of [list_vt_permutize] *)
 
 (* ****** ****** *)
 //

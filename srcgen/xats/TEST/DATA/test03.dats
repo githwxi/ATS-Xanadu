@@ -5,6 +5,12 @@
 /Xint/runtime.dats"
 (* ****** ****** *)
 
+(*
+fun K(): int = true
+*)
+
+(* ****** ****** *)
+
 fun
 fact(n0: int): int =
 if

@@ -428,7 +428,7 @@ d3p0 = trans33_dpat(env0, d3p0)
 (* ****** ****** *)
 //
 implement
-trans33_dpatlst_dntp
+trans33_dpatlst_dnts
 ( env0, d3ps, t2ps ) =
 (
 auxlst(env0, d3ps, t2ps)
@@ -452,30 +452,32 @@ list_cons
 (d3p0, d3ps) =>
 (
 case+ t2ps of
-| list_nil() =>
-  (
-    list_cons(d3p0, d3ps)
-  ) where
-  {
-    val t2p0 =
-    the_t2ype_none0
-    val d3p0 =
-    trans33_dpat_dntp(env0, d3p0, t2p0)
-    val d3ps = auxlst(env0, d3ps, t2ps)
-  }
-| list_cons
-  (t2p0, t3ps) =>
-  (
-    list_cons(d3p0, d3ps)
-  ) where
-  {
-    val d3p0 =
-    trans33_dpat_dntp(env0, d3p0, t2p0)
-    val d3ps = auxlst(env0, d3ps, t2ps)
-  }    
+|
+list_nil() =>
+(
+  list_cons(d3p0, d3ps)
+) where
+{
+  val t2p0 =
+  the_t2ype_none0
+  val d3p0 =
+  trans33_dpat_dntp(env0, d3p0, t2p0)
+  val d3ps = auxlst(env0, d3ps, t2ps)
+}
+|
+list_cons
+(t2p0, t2ps) =>
+(
+  list_cons(d3p0, d3ps)
+) where
+{
+  val d3p0 =
+  trans33_dpat_dntp(env0, d3p0, t2p0)
+  val d3ps = auxlst(env0, d3ps, t2ps)
+}    
 ) (* list_cons *)
 ) (* end of [auxlst] *)
-} (* end of [trans33_dpatlst_dntp] *)
+} (* end of [trans33_dpatlst_dnts] *)
 //
 (* ****** ****** *)
 //
@@ -1747,6 +1749,19 @@ end // list_map$fopr
 } (* end of [trans33_dexplst] *)
 //
 (* ****** ****** *)
+
+implement
+trans33_dexpopt_dntp
+( env0, opt0, t2p0 ) =
+(
+case+ opt0 of
+| None() => None()
+| Some(d3e0) =>
+  Some
+  (trans33_dexp_dntp(env0, d3e0, t2p0))
+) (* end of [trans33_dexpopt_dntp] *)
+
+(* ****** ****** *)
 //
 implement
 trans33_dexplst_dntp
@@ -2354,20 +2369,27 @@ val nam = rcd.nam
 val a2g = rcd.a2g
 val a3g = rcd.a3g
 val res = rcd.res
+val rtp = rcd.rtp
 val d2c = rcd.d2c
 val def = rcd.def
+val rtp = rcd.rtp
 val wtp = rcd.wtp
 val ctp = rcd.ctp
 //
-val a3g =
+val
+a3g =
 (
 case+ a3g of
-| None() => None()
-| Some(f3as) =>
-  Some(trans33_farglst(env0, f3as))
+|
+None() => None()
+|
+Some(f3as) =>
+Some
+(trans33_farglst(env0, f3as))
 ) : f3arglstopt
-val def =
-trans33_dexpopt(env0, def)
+val
+def =
+trans33_dexpopt_dntp(env0, def, rtp)
 //
 in
 F3UNDECL(
@@ -2375,7 +2397,7 @@ F3UNDECL(
  loc=loc
 ,nam=nam,d2c=d2c
 ,a2g=a2g,a3g=a3g
-,res=res,def=def,wtp=wtp,ctp=ctp}
+,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
 ) (* F3UNDECL *)
 end // end of [auxf3d0]
 and

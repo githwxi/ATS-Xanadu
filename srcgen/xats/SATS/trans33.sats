@@ -198,7 +198,7 @@ trans33_dpatlst
 ( env0
 : !abstenv, d3ps: d3patlst): d3patlst
 fun
-trans33_dpatlst_dntp
+trans33_dpatlst_dnts
 ( env0
 : !abstenv
 , d3ps: d3patlst, t2ps: t2ypelst): d3patlst
@@ -226,6 +226,11 @@ trans33_dexp_dntp
 ( env0
 : !abstenv
 , d3e0: d3exp, t2p0: t2ype): d3exp
+fun
+trans33_dexpopt_dntp
+( env0
+: !abstenv
+, opt0: d3expopt, t2p0: t2ype): d3expopt
 fun
 trans33_dexplst_dntp
 ( env0

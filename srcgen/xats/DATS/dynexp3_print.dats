@@ -907,7 +907,8 @@ in
   , "a2g=", rcd.a2g, ", "
   , "res=", rcd.res, ", "
   , "def=", rcd.def, ", "
-  , "ctp=", rcd.ctp, ", ", "wtp=", rcd.wtp, "}")
+  , "rtp=", rcd.rtp, ", "
+  , "wtp=", rcd.wtp, ", ", "ctp=", rcd.ctp, "}")
 end // end of [fprint_f3undecl]
 
 (* ****** ****** *)
