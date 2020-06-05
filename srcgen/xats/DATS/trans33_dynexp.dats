@@ -2443,13 +2443,20 @@ aux_impdecl1
 ! abstenv
 , d3cl: d3ecl): d3ecl =
 let
+//
 val-
 D3Cimpdecl1
 ( knd
 , mopt
 , sqas, tqas
-, id2c, ti3a, tias
-, f3as, res0, d3e0) = d3cl.node()
+, id2c
+, ti3a, tias
+, f3as
+, res0, d3e0) = d3cl.node()
+//
+val () =
+println!
+("aux_impdecl1: id2c = ", id2c)
 //
 val
 f3as =
@@ -2485,20 +2492,20 @@ in
 //
 (
 case+ opt0 of
-|
-~None_vt() =>
- IMPLD2CST2(dqid, d2cs, None())
-|
-~Some_vt(x0) =>
- IMPLD2CST2(dqid, d2cs, Some(x0))
+| ~
+None_vt() =>
+IMPLD2CST2(dqid, d2cs, None())
+| ~
+Some_vt(x0) =>
+IMPLD2CST2(dqid, d2cs, Some(x0))
 ) where
 {
-  val
-  opt0 =
-  match2_d2cstlst_t2ype(d2cs, tfun)
+val
+opt0 =
+match2_d2cstlst_t2ype(d2cs, tfun)
 }
 //
-end // end of [auxid3c]
+end // end of [auxid2c]
 
 fun
 auxtfun
@@ -2511,9 +2518,11 @@ auxtfun
 , flag: int): t2ype =
 (
 case+ f3as of
-| list_nil() => tres
-| list_cons(x0, xs) =>
-  (
+|
+list_nil() => tres
+|
+list_cons(x0, xs) =>
+(
   case-
   x0.node() of
   | F3ARGsome_dyn
@@ -2546,7 +2555,7 @@ case+ f3as of
       (d3cl,xs,tres,flag) in t2ype_uni(s2vs,tres)
     end
   | F3ARGsome_met(s2es) => auxtfun(d3cl, xs, tres, flag)
-  )
+)
 ) (* end of [auxtfun] *)
 
 in (* in-of-local *)
@@ -2557,13 +2566,21 @@ aux_impdecl2
 ! abstenv
 , d3cl: d3ecl): d3ecl =
 let
+//
 val-
 D3Cimpdecl2
 ( knd
 , mopt
 , sqas, tqas
-, id2c, ti3a, tias
-, f3as, res0, d3e0) = d3cl.node()
+, id2c
+, ti3a, tias
+, f3as
+, res0, d3e0) = d3cl.node()
+//
+//
+val () =
+println!
+("aux_impdecl2: id2c = ", id2c)
 //
 val
 tres = d3e0.type()
@@ -2575,11 +2592,9 @@ tfun =
 auxtfun(d3cl, f3as, tres, 0)
 //
 val
-id2c =
-auxid2c(id2c, tfun)
+id2c = auxid2c(id2c, tfun)
 val-
-IMPLD2CST2
-(dqid, d2cs, d2ct) = id2c
+IMPLD2CST2(dqid, d2cs, d2ct) = id2c
 //
 in
 //
@@ -2587,17 +2602,13 @@ case+
 d2ct of
 |
 None() =>
-let
-val
-d3e0 = trans33_dexp(env0, d3e0)
-in
 d3ecl_make_node
 ( d3cl.loc()
 , D3Cimpdecl2
   ( knd, mopt
   , sqas, tqas
-  , id2c, ti3a, tias, f3as, res0, d3e0))
-end // IMPLD3CSTnone
+  , id2c, ti3a, tias, f3as, res0, d3e0)
+) (* None *)
 //
 |
 Some(d2c0) =>
@@ -2607,23 +2618,24 @@ val
 loc0 =
 (
 case- id2c of
-| IMPLD2CST2
-  (dqid, _, _) =>
-  let
-  val loc1 = dqid.loc()
-  in
-  case+ tias of
-  | list_nil
-    ((*void*)) => loc1
-  | list_cons _ =>
-    (
-      loc1 + ti2a.loc()
-    ) where
-    {
-      val
-      ti2a = list_last(tias)
-    } (* list_cons *)
-  end
+|
+IMPLD2CST2
+(dqid, _, _) =>
+let
+val
+loc1 = dqid.loc()
+in
+case+ tias of
+| list_nil
+  ((*void*)) => loc1
+| list_cons _ =>
+  (
+    loc1 + ti2a.loc()
+  ) where
+  {
+    val ti2a = list_last(tias)
+  } (* list_cons *)
+end
 ) : loc_t // end of [val]
 //
 (*
@@ -2646,14 +2658,16 @@ val s2vs = d2cst_get_s2vs(d2c0)
 //
 in
 case+ s2vs of
-| list_nil _ => tfun
-| list_cons _ =>
-  (
+|
+list_nil _ => tfun
+|
+list_cons _ =>
+(
   case+ ti3a of
   | TI3ARGnone() => tfun
   | TI3ARGsome(t2ps) =>
     t2ype_subst_svarlst(tfun, s2vs, t2ps)
-  )
+)
 end
 ) : t2ype // end-of-val
 //
