@@ -765,16 +765,16 @@ map0$fopr
 <xs(n1)><xs(n0)>(xx) = list_vt_cons(x0, xx)
 }
 in
-  let
+let
   val
   ys =
   list_vt_cons(x0, ys)
   val
   res2 =
   auxmain2(xs, ys, i0-1, j0+1)
-  in
+in
   !(stream_vt_append(res1, res2))
-  end
+end
 end
 ) (* end of [auxmain2] *)
 //

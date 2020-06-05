@@ -467,6 +467,11 @@ gseq_z2map_rlist
 fun
 <x0:t0
 ,xs:t0>
+gseq_mergesort(xs: xs): (xs)
+//
+fun
+<x0:t0
+,xs:t0>
 gseq_permutize(xs: xs): stream_vt(xs)
 //
 (* ****** ****** *)

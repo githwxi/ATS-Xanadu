@@ -1173,6 +1173,22 @@ end // end of [gseq_z2map_list/z2foldl]
 
 impltmp
 <x0,xs>
+gseq_mergesort
+  (xs) = let
+//
+val xx =
+gseq_listize<x0,xs>(xs)
+val xx =
+list_vt_mergesort<x0>(xx)
+//
+in
+  gseq_unlist_vt<x0,xs>(xx)
+end // end of [gseq_mergesort]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
 gseq_permutize
   (xs) = let
 //
