@@ -2520,11 +2520,12 @@ val
 loc0 =
 (
 case- id2c of
-| IMPLD2CST1
-  (dqid, _) =>
-  let
+|
+IMPLD2CST1
+(dqid, _) =>
+let
   val loc1 = dqid.loc()
-  in
+in
   case+ tias of
   | list_nil
     ((*void*)) => loc1
@@ -2536,7 +2537,7 @@ case- id2c of
       val
       ti2a = list_last(tias)
     } (* list_cons *)
-  end
+end
 ) : loc_t // end of [val]
 //
 val
@@ -2556,17 +2557,21 @@ val s2vs = d2cst_get_s2vs(d2c0)
 in
 //
 case+ s2vs of
-| list_nil _ => tfun
-| list_cons _ =>
-  (
-  case+ ti3a of
-  | TI3ARGnone() => tfun
-  | TI3ARGsome(t2ps) =>
-    t2ype_subst_svarlst(tfun, s2vs, t2ps)
-  )
+|
+list_nil _ => tfun
+|
+list_cons _ =>
+(
+case+ ti3a of
+|
+TI3ARGnone() => tfun
+|
+TI3ARGsome(t2ps) =>
+t2ype_subst_svarlst(tfun, s2vs, t2ps)
+)
 //
 end
-) : t2ype
+) : t2ype // end of [val tfun]
 //
 (*
 val () =

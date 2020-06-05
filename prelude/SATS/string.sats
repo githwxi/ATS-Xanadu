@@ -275,6 +275,17 @@ string_vt_make_list
 //
 (* ****** ****** *)
 //
+fun<>
+string_make_list_vt
+{n:int}
+(cs: list_vt(cgtz, n)): string(n)
+fun<>
+string_vt_make_list_vt
+{n:int}
+(cs: list_vt(cgtz, n)): string_vt(n)
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for string
 //

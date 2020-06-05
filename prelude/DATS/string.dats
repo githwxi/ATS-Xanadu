@@ -119,26 +119,33 @@ string_make_list
 string_vt2t
 (string_vt_make_list<>(cs))
 )
+impltmp<>
+string_make_list_vt
+  (cs) =
+(
+string_vt2t
+(string_vt_make_list_vt<>(cs))
+)
 
 (* ****** ****** *)
 
 impltmp<>
 string_vt_make_list
   {n}(cs) =
-let
-val n0 =
-list_length<>(cs)
-val p0 =
-strptr_make<>(n0)
-in
-$UN.cast01(p0) where
-{
-val i0 = 0
-val () = loop(p0, i0, cs)
-}
-end where
+(
+  $UN.cast01(p0)
+) where
 {
 //
+val n0 =
+length(cs)
+val p0 =
+strptr_make<>(n0)
+val () =
+loop(p0, 0(*i0*), cs)
+//
+} where
+{
 fun
 loop
 {i:nat
@@ -162,6 +169,52 @@ case+ cs of
 )
 //
 } (* end of [string_vt_make_list] *)
+
+(* ****** ****** *)
+
+impltmp<>
+string_vt_make_list_vt
+  {n}(cs) =
+(
+  $UN.cast01(p0)
+) where
+{
+//
+val n0 =
+length(cs)
+val p0 =
+strptr_make<>(n0)
+val () =
+loop(p0, 0(*i0*), cs)
+//
+} where
+{
+fun
+loop
+{i:nat
+|i<=n}.<n-i>.
+( p0
+: strptr(n)
+, i0: int(i)
+, cs
+: list_vt
+  (cgtz, n-i)): void =
+(
+case+ cs of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(c0, cs) =>
+  (
+    loop(p0, succ(i0), cs)
+  ) where
+  {
+    val () =
+    strptr_set_at<>(p0, i0, c0)
+  }
+)
+//
+} (* end of [string_vt_make_list_vt] *)
 
 (* ****** ****** *)
 
