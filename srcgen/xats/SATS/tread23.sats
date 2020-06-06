@@ -76,6 +76,13 @@ tread23_program
 (* ****** ****** *)
 //
 fun//{}
+tread23_d3exp: treader23(d3exp)
+fun//{}
+tread23_d3explst: treader23(d3explst)
+//
+(* ****** ****** *)
+//
+fun//{}
 tread23_d3ecl: treader23(d3ecl)
 fun//{}
 tread23_d3eclist: treader23(d3eclist)
