@@ -960,8 +960,7 @@ in
 case+
 d3f0.node() of
 |
-D3Esym0 _ =>
-let
+D3Esym0 _ => let
 //
 val
 d3es =
@@ -993,8 +992,7 @@ D3Edtsel _ =>
   auxdapp2(env0, d3e0)
 )
 |
-_(* else *) =>
-let
+_(* else *) => let
 val
 d3f0 = trans33_dexp(env0, d3f0)
 val
