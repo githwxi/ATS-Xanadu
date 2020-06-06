@@ -563,6 +563,7 @@ synread_d0clau
 (
 case+
 d0cl.node() of
+//
 | D0CLAUgpat(d0gp) =>
   {
     val () =
@@ -614,6 +615,31 @@ implement(env)
 list_foreach$fwork<d0clau><env>(dcl, env) = synread_d0clau(dcl)
 } (* end of [synread_d0claulst] *)
 //
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_abstdf0
+  (def) =
+(
+case+ def of
+| ABSTDF0some() => ()
+| ABSTDF0lteq(tok, s0e) =>
+  {
+(*
+    val () = synread_LTEQ(tok)
+*)
+    val () = synread_s0exp(s0e)
+  }
+| ABSTDF0eqeq(tok, s0e) =>
+  {
+(*
+    val () = synread_EQEQ(tok)
+*)
+    val () = synread_s0exp(s0e)
+  }
+) (* end of [synread_abstdf0] *)
+
 (* ****** ****** *)
 
 implement
@@ -698,7 +724,6 @@ d0cl.node() of
     val () = synread_sort0(s0t0)
   }
 //
-//
 | D0Csortdef
   (tok, tid, teq, def) =>
   {
@@ -715,15 +740,53 @@ d0cl.node() of
   ( tok, sid
   , arg, res, teq, def) =>
   {
+//
 (*
     val () =
     synread_SEXPDEF(tok)
 *)
-    val () = synread_EQ(teq)  
-    val () = synread_s0eid(sid)
-    val () = synread_s0marglst(arg)
-    val () = synread_sort0opt(res)
+//
+    val () =
+      synread_EQ(teq)  
+    val () =
+      synread_s0eid(sid)
+    val () =
+      synread_s0marglst(arg)
+    val () =
+      synread_sort0opt(res)
+//
     val () = synread_s0exp(def)
+//
+  }
+//
+| D0Cabstype
+  ( tok, sid
+  , arg, res, def) =>
+  {
+//
+(*
+    val () =
+    synread_ABSTYPE(tok)
+*)
+//
+    val () =
+      synread_s0eid(sid)
+    val () =
+      synread_t0marglst(arg)
+    val () =
+      synread_sort0opt(res)
+//
+    val () = synread_abstdf0(def)
+//
+  }
+//
+| D0Cabsopen(tok, sqid) =>
+  {
+(*
+    val () =
+    synread_ABSOPEN(tok)
+*)
+    val () = synread_sq0eid(sqid)
   }
 //
 | D0Csymload
