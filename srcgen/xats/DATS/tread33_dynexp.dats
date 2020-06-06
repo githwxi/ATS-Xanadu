@@ -346,15 +346,14 @@ loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 //
-// (*
+(*
 val () =
 println!
 ("tread33_d3exp: d3e0 = ", d3e0)
 val () =
 println!
 ("tread33_d3exp: t2p0 = ", t2p0)
-// *)
-//
+*)
 //
 in
 //
@@ -722,11 +721,11 @@ let
 //
 val loc0 = d3cl.loc()
 //
-// (*
+(*
 val () =
 println!
 ("tread33_d3ecl: d3cl = ", d3cl)
-// *)
+*)
 //
 in
 //

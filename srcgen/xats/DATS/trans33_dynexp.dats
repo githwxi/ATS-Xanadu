@@ -827,14 +827,14 @@ D3Esym0
 //
 val
 t2p0 = d3e0.type()
-// (*
+(*
 val () =
 println!
 ("auxsym0: d3e0 = ", d3e0)
 val () =
 println!
 ("auxsym0: t2p0 = ", t2p0)
-// *)
+*)
 //
 val
 opt0 =
@@ -2452,9 +2452,11 @@ D3Cimpdecl1
 , f3as
 , res0, d3e0) = d3cl.node()
 //
+(*
 val () =
 println!
 ("aux_impdecl1: id2c = ", id2c)
+*)
 //
 val
 f3as =
@@ -2575,10 +2577,11 @@ D3Cimpdecl2
 , f3as
 , res0, d3e0) = d3cl.node()
 //
-//
+(*
 val () =
 println!
 ("aux_impdecl2: id2c = ", id2c)
+*)
 //
 val
 tres = d3e0.type()

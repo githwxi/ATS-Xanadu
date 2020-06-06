@@ -380,11 +380,13 @@ val opt =
 val
 ((*void*)) =
 let
-  val fp0 =
-  $FP0.filpath_get_full1(fp0)
+  val
+  fp0 = $FP0.filpath_get_full1(fp0)
 in
+(*
 println!
 ("trans01_staload_from_filpath: fp0 = ", fp0)
+*)
 end
 val
 ((*void*)) =
@@ -395,8 +397,10 @@ let
   | None_vt _ => 0 | Some_vt _ => 1
   ) : int // end of [val]
 in
+(*
 println!
 ("trans01_staload_from_filpath: knd = ", knd)
+*)
 end
 //
 in

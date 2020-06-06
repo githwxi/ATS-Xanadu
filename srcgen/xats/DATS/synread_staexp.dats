@@ -432,26 +432,118 @@ end // end of [synread_s0marg]
 implement
 //{}(*tmp*)
 synread_s0arglst
-  (s0es) =
+  (s0as) =
 (
-list_foreach<s0arg>(s0es)
+list_foreach<s0arg>(s0as)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0arg><env>(s0e, env) = synread_s0arg(s0e)
+list_foreach$fwork<s0arg><env>(s0a, env) = synread_s0arg(s0a)
 } (* end of [synread_s0arglst] *)
 //
 implement
 //{}(*tmp*)
 synread_s0marglst
-  (s0es) =
+  (smas) =
 (
-list_foreach<s0marg>(s0es)
+list_foreach<s0marg>(smas)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0marg><env>(s0e, env) = synread_s0marg(s0e)
+list_foreach$fwork<s0marg><env>(sma, env) = synread_s0marg(sma)
 } (* end of [synread_s0marglst] *)
+//
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_t0arg
+  (t0a0) = let
+//
+val loc0 = t0a0.loc()
+//
+(*
+val () =
+println!
+("synread_t0arg: t0a0 = ", t0a0)
+*)
+//
+in
+//
+case+
+t0a0.node() of
+| T0ARGsome
+  (s0t, opt) =>
+  {
+    val () = synread_sort0(s0t)
+(*
+    val () = synread_tokenopt(opt)
+*)
+  }
+//
+end // end of [synread_t0arg]
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_t0marg
+  (t0ma) = let
+//
+val loc0 = t0ma.loc()
+//
+(*
+val () =
+println!
+("synread_t0marg: t0ma = ", t0ma)
+*)
+//
+in
+//
+case+
+t0ma.node() of
+| T0MARGlist
+  (tbeg, t0as, tend) =>
+  {
+    val () = synread_LPAREN(tbeg)
+    val () = synread_RPAREN(tend)
+    val () = synread_t0arglst(t0as)
+  }
+| T0MARGnone(tok) =>
+  let
+    val () =
+    synerr_add(SYNERRt0marg(t0ma))
+  in
+    prerrln!(loc0, ": SYNERR(t0marg): ", tok);
+  end // end of [T0MARGnone]
+//
+end // end of [synread_t0marg]
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_t0arglst
+  (t0as) =
+(
+list_foreach<t0arg>(t0as)
+) where
+{
+implement(env)
+list_foreach$fwork<t0arg><env>(t0a, env) = synread_t0arg(t0a)
+} (* end of [synread_t0arglst] *)
+//
+implement
+//{}(*tmp*)
+synread_t0marglst
+  (tmas) =
+(
+list_foreach<t0marg>(tmas)
+) where
+{
+implement(env)
+list_foreach$fwork<t0marg><env>(tma, env) = synread_t0marg(tma)
+} (* end of [synread_t0marglst] *)
 //
 (* ****** ****** *)
 //

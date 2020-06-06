@@ -2398,15 +2398,20 @@ D0Cinclude
 //
 val out = stdout_ref
 //
+(*
 val (_) =
 fprintln!(out, "trans01: ")
 val (_) =
 fprintln!(out, "aux_include: ")
 val (_) =
 fprintln!(out, "the_filepath: ")
+*)
 val (_) = $FP0.the_filpath_fprint(out)
+//
+(*
 val (_) =
 fprintln!(out, "the_filepathlst: ")
+*)
 val (_) = $FP0.the_filpathlst_fprint(out)
 //
 // *)

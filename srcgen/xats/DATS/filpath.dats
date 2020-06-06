@@ -97,16 +97,20 @@ fpath_normalize
   (fp0) =
 let
 //
+(*
 val () =
 println!
 ("fpath_normalize: fp0 = ", fp0)
+*)
 //
 val
 fp1 = aux0(fp1)
 //
+(*
 val () =
 println!
 ("fpath_normalize: fp1 = ", fp1)
+*)
 in
   fp1
 end where

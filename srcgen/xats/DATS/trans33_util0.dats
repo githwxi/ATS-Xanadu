@@ -816,7 +816,7 @@ val
 opt2 =
 t2ype_projize(t2p1, lab2)
 //
-// (*
+(*
 val () =
 println!
 ("d33exp_proj_up: d3e1 = ", d3e1)
@@ -829,7 +829,7 @@ println!
 val () =
 println!
 ("d33exp_proj_up: lab2 = ", lab2)
-// *)
+*)
 //
 in
 //
