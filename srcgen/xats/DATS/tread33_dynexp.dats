@@ -342,9 +342,9 @@ tread33_d3exp
   (d3e0) = let
 //
 val
-loc0 = d3e0.loc((*void*))
+loc0 = d3e0.loc()
 val
-t2p0 = whnfize(d3e0.type())
+t2p0 = d3e0.type()
 //
 // (*
 val () =
@@ -378,7 +378,7 @@ d3e0.node() of
 | D3Econ2(d2cs) =>
   let
     val
-    t2p0 = d3e0.type()
+    t2p0 = whnfize(t2p0)
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
   in
@@ -393,7 +393,7 @@ d3e0.node() of
 | D3Esym0(sym1, dpis) =>
   let
     val
-    t2p0 = d3e0.type()
+    t2p0 = whnfize(t2p0)
     val () =
     trerr33_add(TRERR33d3exp(d3e0))
   in
@@ -537,6 +537,9 @@ d3e0.node() of
 //
     val
     t2p1 = d3e1.type()
+    val
+    t2p1 = whnfize(t2p1)
+//
     val () =
     tread33_d3exp(d3e1)
     val () =
@@ -561,6 +564,9 @@ d3e0.node() of
 //
     val
     t2p1 = d3e1.type()
+    val
+    t2p1 = whnfize(t2p0)
+//
     val () =
     tread33_d3exp(d3e1)
     val () =

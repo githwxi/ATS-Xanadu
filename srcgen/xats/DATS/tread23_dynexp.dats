@@ -75,6 +75,50 @@ _(*TMP*) = "./../DATS/dynexp3_print.dats"
 
 (* ****** ****** *)
 
+local
+
+in(*in-of-local*)
+
+implement
+//{}(*tmp*)
+tread23_d3exp
+  (d3e0) = let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+// (*
+val () =
+println!
+("tread23_d3exp: d3e0 = ", d3e0)
+val () =
+println!
+("tread23_d3exp: t2p0 = ", t2p0)
+// *)
+//
+//
+in
+end // end of [tread23_d3exp]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread23_d3explst(d3es) =
+(
+list_foreach<d3exp>(d3es)
+) where
+{
+implement(env)
+list_foreach$fwork<d3exp><env>(d3e, env) = tread23_d3exp(d3e)
+} (* end of [tread23_d3explst] *)
+
+(* ****** ****** *)
+
 implement
 //{}(*tmp*)
 tread23_d3ecl(d3cl) =

@@ -245,13 +245,19 @@ d3e0.node() of
 //
 | D3Econ1 _ => d3e0
 //
+| D3Esym0 _ => d3e0
+//
 | D3Efcst _ => d3e0
+//
+| D3Esap0 _ => d3e0
+| D3Etapp _ => d3e0
 //
 | D3Etcst _ =>
   auxtcst(env0, d3e0)
 | D3Etimp _ => (d3e0)
 //
-| D3Esap1(d3e1, s2es) =>
+| D3Esap1
+  (d3e1, s2es) =>
   let
   val d3e1 =
   trans3t_dexp(env0, d3e1)
