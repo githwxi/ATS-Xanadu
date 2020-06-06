@@ -725,10 +725,13 @@ local
 datavtype implenv =
 |
 IMPLENV of
-(List0_vt(svtplst), implstk)
+( implstk
+, List0_vt(d3exp)
+, List0_vt(t3sub)
+)
 //
 where
-svtplst=(s2varlst, t2ypelst)
+t3sub=(s2varlst, t2ypelst)
 //
 absimpl implenv_vtype = implenv
 //
@@ -741,7 +744,8 @@ implenv_get_s2vs
   (env) = let
 //
 val+
-@IMPLENV(us, xs) = env
+@IMPLENV
+(xs, ts, us) = env
 //
 in
 let
@@ -758,7 +762,8 @@ implenv_get_t2ps
   (env) = let
 //
 val+
-@IMPLENV(us, xs) = env
+@IMPLENV
+(xs, ts, us) = env
 //
 in
 let
@@ -780,7 +785,8 @@ implenv_add_let1
 {
 //
 val+
-@IMPLENV(us, xs) = env
+@IMPLENV
+(xs, ts, us) = env
 val () =
 (xs := implstk_add_let1(xs))
 //
@@ -795,7 +801,8 @@ implenv_pop_let1
 {
 //
 val+
-@IMPLENV(us, xs) = env
+@IMPLENV
+(xs, ts, us) = env
 val () =
 (xs := implstk_pop_let1(xs))
 //
@@ -810,7 +817,8 @@ implenv_add_loc1
 {
 //
 val+
-@IMPLENV(us, xs) = env
+@IMPLENV
+(xs, ts, us) = env
 val () =
 (xs := implstk_add_loc1(xs))
 //
@@ -825,7 +833,8 @@ implenv_add_loc2
 {
 //
 val+
-@IMPLENV(us, xs) = env
+@IMPLENV
+(xs, ts, us) = env
 val () =
 (xs := implstk_add_loc2(xs))
 //
@@ -838,7 +847,8 @@ implenv_pop_loc12
   (env) = let
 //
 val+
-@IMPLENV(us, xs) = env
+@IMPLENV
+(xs, ts, us) = env
 val () =
 (xs := implstk_pop_loc12(xs))
 //
@@ -855,7 +865,8 @@ implenv_add_staload
 {
 //
 val+
-@IMPLENV(us, xs) = env0
+@IMPLENV
+(xs, ts, us) = env0
 val () =
 (xs := implstk_cons1(d3cl, xs))
 //
@@ -869,7 +880,8 @@ implenv_add_impdecl3
 {
 //
 val+
-@IMPLENV(us, xs) = env0
+@IMPLENV
+(xs, ts, us) = env0
 val () =
 (xs := implstk_cons2(d3cl, ti3e, xs))
 //
@@ -879,8 +891,14 @@ val () =
 //
 implement
 implenv_make_nil() =
-IMPLENV
-(list_vt_nil(), implstk_nil())
+(
+IMPLENV(xs, ts, us)
+) where
+{
+val xs = implstk_nil()
+val ts = list_vt_nil() // temp. instances
+val us = list_vt_nil() // template substs
+}
 //
 (* ****** ****** *)
 //
@@ -889,10 +907,11 @@ implenv_free_nil(env0) =
 let
 //
 val+
-~IMPLENV(us, xs) = env0
+~IMPLENV(xs, ts, us) = env0
 //
 in
 let
+val-~list_vt_nil() = ts
 val-~list_vt_nil() = us in implstk_free(xs)
 end
 end // end of [implenv_free_nil]
@@ -911,7 +930,8 @@ end
 {
 //
 val+
-@IMPLENV(us, xs) = env0
+@IMPLENV
+(xs, ts, us) = env0
 //
 val-~list_vt_cons(_, us1) = us
 //
@@ -923,7 +943,7 @@ implenv_push_tsub
 ( fold@(env0) ) where
 {
 val+
-@IMPLENV(us, xs) = env0
+@IMPLENV(xs, ts, us) = env0
 val () =
 (us :=
  list_vt_cons(@(s2vs, t2ps), us))
@@ -936,7 +956,8 @@ implement
 implenv_find_timp
 (env0, d2c0, targ) = let
 //
-val+IMPLENV(us, xs) = env0
+val+
+IMPLENV(xs, ts, us) = env0
 //
 in
 implstk_find_timp(xs, d2c0, targ)
@@ -953,9 +974,10 @@ t2ype_subst_implenv
 {
 //
 val+
-IMPLENV(us, xs) = env0
+IMPLENV
+(xs, ts, us) = env0
 val us =
-$UN.castvwtp1{List0(svtplst)}(us)
+$UN.castvwtp1{List0(t3sub)}(us)
 //
 implement
 t2ype_subst$var<>
@@ -970,7 +992,7 @@ T2Pvar(s2v0) = t2p0.node()
 fnx
 auxvtss1
 ( vtss
-: List0(svtplst)
+: List0(t3sub)
 , flag: &int >> int): t2ype =
 (
 case+ vtss of
@@ -988,7 +1010,7 @@ auxvtss2
 ( s2vs: s2varlst
 , t2ps: t2ypelst
 , vtss
-: List0(svtplst)
+: List0(t3sub)
 , flag: &int >> int): t2ype =
 (
 case+ s2vs of
