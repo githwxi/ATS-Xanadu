@@ -38,7 +38,8 @@ print!(...) =
 $if
 $iseqz($darg)
 then ((*void*))
-else (print($hd($darg)); print!($tl($darg)))
+else
+(print($hd($darg)); print!($tl($darg)))
 #macdef
 println!(...) =
 $if
@@ -46,7 +47,8 @@ $nilq($darg)
 then print_newline()
 else
 let
-val () = print($hd($darg)) in print!($tl($darg))
+val () =
+print($hd($darg)) in print!($tl($darg))
 end
 
 (* ****** ****** *)
