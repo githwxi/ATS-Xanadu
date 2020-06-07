@@ -581,16 +581,14 @@ in
 case-
 x0.node() of
 |
-D3Etimp
-( d3e1, targ
-, d3c2, tsub) =>
-let
-val-
 D3Etcst
 ( d2c1
-, ti3a, ti2s) = d3e1.node()
+, ti3a, ti2s) =>
+let
+val-
+TI3ARGsome(targ) = ti3a
 in
-fprintln!(out, d2c1, "<", targ, ">")
+fprint!(out, d2c1, "<", targ, ">")
 end
 //
 end (* end of [fprint_t3imp] *)
