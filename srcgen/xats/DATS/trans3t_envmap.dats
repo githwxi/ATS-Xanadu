@@ -810,7 +810,13 @@ val+
 (xs, ts, us) = env
 //
 val
-d3es = list_vt_copy(ts)
+d3es =
+list_vt_map<d3exp><t3imp>(ts)
+where
+{
+implement
+list_vt_map$fopr<d3exp><t3imp>(t0) = t3imp(t0)
+}
 //
 in
   fold@(env); list_vt2t(d3es)
