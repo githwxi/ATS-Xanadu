@@ -112,8 +112,33 @@ d2p0.node() of
 //
 | D2Pvar(d2v) => ()
 //
+| D2Pbang(d2p1) =>
+  {
+    val () =
+    tread12_d2pat(d2p1)
+  }
+| D2Pflat(d2p1) =>
+  {
+    val () =
+    tread12_d2pat(d2p1)
+  }
+| D2Pfree(d2p1) =>
+  {
+    val () =
+    tread12_d2pat(d2p1)
+  }
+//
+| D2Pdapp
+  (d2f0, npf1, d2ps) =>
+  {
+    val () =
+    tread12_d2pat(d2f0)
+    val () =
+    tread12_d2patlst(d2ps)
+  }
+//
 | D2Ptuple
-  (knd, npf, d2ps) =>
+  (knd0, npf1, d2ps) =>
   {
     val () =
     tread12_d2patlst(d2ps)
