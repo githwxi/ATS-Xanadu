@@ -232,32 +232,6 @@ trans23_declist: d2eclist -> d3eclist
 (* ****** ****** *)
 //
 fun
-unify2_t2ype_t2ype
-( loc0: loc_t
-, t2p1: t2ype, t2p2: t2ype): bool
-//
-overload unify2 with unify2_t2ype_t2ype
-//
-(* ****** ****** *)
-//
-fun
-unify2_d2con_t2ype
-(loc0: loc_t,
- d2c1: d2con, t2p2: t2ype): bool
-//
-fun
-unify2_d2var_t2ype
-(loc0: loc_t,
- d2v1: d2var, t2p2: t2ype): bool
-//
-fun
-unify2_d2cst_t2ype
-(loc0: loc_t,
- d2c1: d2cst, t2p2: t2ype): bool
-//
-(* ****** ****** *)
-//
-fun
 t2ype_get_xtvs
 (t2p0: t2ype): List0_vt(t2xtv)
 fun
@@ -267,17 +241,61 @@ t2ypelst_get_xtvs
 (* ****** ****** *)
 //
 fun
+t2ype_tq2as_elim
+( loc0: loc_t
+, t2p0: t2ype
+, tqas: tq2arglst): t2ype
+fun
+t2ype_tq2as_elim2
+( loc0: loc_t
+, t2p0: t2ype
+, tqas: tq2arglst): (ti3arg, t2ype)
+//
+(* ****** ****** *)
+//
+fun
+unify2_t2ype_t2ype
+( loc0: loc_t
+, t2p1: t2ype, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+fun
+unify2_d2var_t2ype
+( loc0: loc_t
+, d2v1: d2var, t2p2: t2ype): bool
+//
+fun
+unify2_d2con_t2ype
+( loc0: loc_t
+, d2c1: d2con, t2p2: t2ype): bool
+//
+fun
+unify2_d2cst_t2ype
+( loc0: loc_t
+, d2c1: d2cst, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+overload unify2 with unify2_t2ype_t2ype
+overload unify2 with unify2_d2var_t2ype
+overload unify2 with unify2_d2con_t2ype
+overload unify2 with unify2_d2cst_t2ype
+//
+(* ****** ****** *)
+//
+fun
 match2_t2ype_t2ype
-(t2p1: t2ype, t2p2: t2ype): bool
+( t2p1: t2ype, t2p2: t2ype ): bool
 //
 (* ****** ****** *)
 //
 fun
 match2_d2con_t2ype
-(d2c1: d2con, t2p2: t2ype): bool
+( d2c1: d2con, t2p2: t2ype ): bool
 fun
 match2_d2var_t2ype
-(d2v1: d2var, t2p2: t2ype): bool
+( d2v1: d2var, t2p2: t2ype ): bool
 //
 (* ****** ****** *)
 //
@@ -287,13 +305,7 @@ tplft_elim(t2p0: t2ype): t2ype
 *)
 fun
 match2_d2cst_t2ype
-(d2c1: d2cst, t2p2: t2ype): bool
-//
-(* ****** ****** *)
-//
-overload match2 with match2_d2var_t2ype
-overload match2 with match2_d2con_t2ype
-overload match2 with match2_d2cst_t2ype
+( d2c1: d2cst, t2p2: t2ype ): bool
 //
 (* ****** ****** *)
 //
@@ -301,8 +313,6 @@ fun
 match2_d2itm_t2ype
 ( d2i1
 : d2itm, t2p2: t2ype): d2itmopt_vt
-//
-overload match2 with match2_d2itm_t2ype
 //
 (* ****** ****** *)
 //
@@ -326,22 +336,17 @@ match2_d2pitmlst_t2ype
 //
 (* ****** ****** *)
 //
-fun
-t2ype_tq2as_elim
-( loc0: loc_t
-, t2p0: t2ype
-, tqas: tq2arglst): t2ype
-fun
-t2ype_tq2as_elim2
-( loc0: loc_t
-, t2p0: t2ype
-, tqas: tq2arglst): (ti3arg, t2ype)
+overload match2 with match2_t2ype_t2ype
+overload match2 with match2_d2var_t2ype
+overload match2 with match2_d2con_t2ype
+overload match2 with match2_d2cst_t2ype
+overload match2 with match2_d2itm_t2ype
 //
 (* ****** ****** *)
 //
 fun
 d3pat_dntp
-(d3p0: d3pat, t2p0: t2ype): d3pat
+( d3p0: d3pat, t2p0: t2ype ): d3pat
 //
 (* ****** ****** *)
 

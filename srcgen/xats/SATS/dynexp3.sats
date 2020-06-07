@@ -328,7 +328,14 @@ d3exp_node =
 //
 | D3Etcst of
   ( d2cst
-  , ti3arg, ti2arglst(*sess*))
+  , ti3arg(*s2es*)
+  , ti2arglst(*sess*))
+| D3Etnfd of
+  ( d3exp(*tcst*)
+  , d3explst (*path*) )
+| D3Etrec of
+  ( d3exp(*tcst*)
+  , d3explst (*path*) )
 | D3Etimp of
   ( d3exp(*tcst*), t2ypelst(*targ*)
   , d3ecl(*impl*), t2ypelst(*tsub*)

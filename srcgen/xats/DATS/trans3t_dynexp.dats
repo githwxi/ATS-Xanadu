@@ -103,9 +103,7 @@ env0 =
 implenv_make_nil()
 //
 val () =
-implenv_push_tsub
-( env0
-, list_nil(), list_nil())
+implenv_push_init(env0)
 //
 val
 prog1 =
@@ -113,7 +111,7 @@ trans3t_declist(env0, prog0)
 //
 val () =
 (
-  implenv_pop0_tsub(env0)
+  implenv_pop0_init(env0)
 )
 //
 val () = implenv_free_nil(env0)
@@ -173,34 +171,63 @@ println!
 ("auxtcst: targ(1) = ", targ)
 *)
 //
-val d3e0 =
+val
+d3e0 =
 d3exp_make_node
 ( loc0
 , t2p0
 , D3Etcst
-  (d2c0, TI3ARGsome(targ), ti2s))
+  ( d2c0
+  , TI3ARGsome(targ), ti2s)
+) (* end of [val] *)
 //
-val opt0 =
-implenv_find_timp(env0, d2c0, targ)
+val
+recq =
+implenv_path_recq(env0, d3e0)
+//
+in
+//
+if
+recq
+then
+let
+  val tpth = env0.path()
+in
+d3exp_make_node
+(loc0, t2p0, D3Etrec(d3e0, tpth))
+end // end of [then]
+else
+let
+//
+val
+opt0 =
+implenv_find_timp
+(env0, d2c0, targ)
 //
 in
 //
 case+ opt0 of
 |
-~None_vt() => d3e0
+~None_vt() =>
+let
+  val tpth = env0.path()
+in
+d3exp_make_node
+(loc0, t2p0, D3Etnfd(d3e0, tpth))
+end
 |
 ~Some_vt
 @(d3cl, s2vs, tsub) =>
 let
 //
 val () =
-implenv_push_tsub
-(env0, s2vs, tsub)
+implenv_push_timp
+(env0, d3e0, s2vs, tsub)
 //
 val
 d3cl = trans3t_timp(env0, d3cl)
 //
-val () = implenv_pop0_tsub(env0)
+val () = implenv_pop0_timp(env0)
 //
 in
   d3exp_make_node
@@ -208,6 +235,8 @@ in
   , D3Etimp(d3e0, targ, d3cl, tsub)
  )
 end
+//
+end // end of [else]
 //
 end // end of [auxtcst]
 

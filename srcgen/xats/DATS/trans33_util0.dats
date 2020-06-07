@@ -100,6 +100,87 @@ end // end of [unify3_t2ypelst_t2ypelst]
 end // end of [local]
 //
 (* ****** ****** *)
+
+implement
+match3_t2ype_t2ype
+(t2p1, t2p2) = let
+//
+val
+loc0 =
+the_location_dummy
+//
+val
+xtvs =
+t2ype_get_xtvs(t2p2)
+val
+test =
+unify3(loc0, t2p1, t2p2)
+//
+fun
+reset
+(xtv0: t2xtv): void =
+(xtv0.type(the_t2ype_none0))
+fun
+auxlst
+( xtvs
+: List_vt(t2xtv)): void =
+(
+case+ xtvs of
+|
+~list_vt_nil() => ()
+|
+~list_vt_cons(x0, xs) =>
+ let
+ val () = reset(x0) in auxlst(xs)
+ end
+)
+//
+in
+let
+val () = auxlst(xtvs) in test end
+end // end of [match3_t2ype_t2ype]
+
+(* ****** ****** *)
+//
+implement
+match3_t2ypelst_t2ypelst
+  (xs, ys) =
+(
+  auxlst(xs, ys)
+) where
+{
+fun
+auxlst
+( xs: t2ypelst
+, ys: t2ypelst): bool =
+(
+case+ xs of
+|
+list_nil() =>
+(
+case+ ys of
+|
+list_nil _ => true
+|
+list_cons _ => false
+)
+|
+list_cons(x0, xs) =>
+(
+case+ ys of
+|
+list_nil() => false
+|
+list_cons(y0, ys) =>
+if
+match3(x0, y0)
+then auxlst(xs, ys) else false
+)
+) (* end of [auxmat] *)
+//
+} (* match3_t2ypelst_t2ypelst *)
+//
+(* ****** ****** *)
 //
 local
 //

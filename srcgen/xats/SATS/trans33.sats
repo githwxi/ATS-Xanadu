@@ -291,6 +291,20 @@ trans33_declist
 (* ****** ****** *)
 //
 fun
+match3_t2ype_t2ype
+(t2p1: t2ype, t2p2: t2ype): bool
+fun
+match3_t2ypelst_t2ypelst
+(tps1: t2ypelst, tps2: t2ypelst): bool
+//
+overload
+match3 with match3_t2ype_t2ype
+overload
+match3 with match3_t2ypelst_t2ypelst
+//
+(* ****** ****** *)
+//
+fun
 unify3_t2ype_t2ype
 ( loc0: loc_t
 , t2p1: t2ype, t2p2: t2ype): bool
@@ -298,6 +312,13 @@ fun
 unify3_t2ypelst_t2ypelst
 ( loc0: loc_t
 , tps1: t2ypelst, tps2: t2ypelst): bool
+//
+overload
+unify3 with unify3_t2ype_t2ype
+overload
+unify3 with unify3_t2ypelst_t2ypelst
+//
+(* ****** ****** *)
 //
 fun
 unify3_env_t2ype_t2ype
@@ -310,10 +331,6 @@ unify3_env_t2ypelst_t2ypelst
 , env0: !abstenv
 , tps1: t2ypelst, tps2: t2ypelst): bool
 //
-overload
-unify3 with unify3_t2ype_t2ype
-overload
-unify3 with unify3_t2ypelst_t2ypelst
 overload
 unify3_env with unify3_env_t2ype_t2ype
 overload
