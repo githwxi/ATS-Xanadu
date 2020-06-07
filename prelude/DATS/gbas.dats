@@ -51,41 +51,13 @@ not(g_equal<a>(x, y))
 (* ****** ****** *)
 //
 impltmp
-{a:v0}
-g_print0<a>(x) =
-let
-val () =
-g_print<a>(x) in g_free<a>(x)
-end // end of [g_print0]
-//
-(* ****** ****** *)
-//
-// HX: for list_vt
-//
-(* ****** ****** *)
-
-impltmp
 {a:vt}
-g_free<list_vt(a)>
-  (xs) =
-( loop(xs) ) where
+g_print0<a>(x) =
+( g_free<a>(x) ) where
 {
-fun
-loop
-( xs
-: ~list_vt(a)): void =
-(
-case+ xs of
-|
-list_vt_nil() => ()
-|
-list_vt_cons(x0, xs) =>
-let
-  val () = g_free<a>(x0) in loop(xs)
-end
-)
-} (* end of [g_free<list_vt>] *)
-
+  val () = g_print<a>(x)
+} (* end of [g_print0] *)
+//
 (* ****** ****** *)
 //
 impltmp
@@ -94,9 +66,17 @@ mapopt$fopr(x0) =
 if
 filter$test<x0>(x0)
 then
-optn_vt_cons
-(map$fopr<x0><y0>(x0))
-else optn_vt_nil((*void*))
+(
+  optn_vt_cons(y0)
+) where
+{
+  val y0 =
+  map$fopr<x0><y0>(x0)
+}
+else
+(
+  optn_vt_nil((*void*))
+)
 //
 (* ****** ****** *)
 //
@@ -106,8 +86,13 @@ mapopt0$fopr(x0) =
 if
 filter1$test<x0>(x0)
 then
-optn_vt_cons
-(map0$fopr<x0><y0>(x0))
+(
+  optn_vt_cons(y0)
+) where
+{
+  val y0 =
+  map0$fopr<x0><y0>(x0)
+}
 else
 let
 val () = g_free<x0>(x0)
@@ -121,9 +106,17 @@ mapopt1$fopr(x0) =
 if
 filter1$test<x0>(x0)
 then
-optn_vt_cons
-(map1$fopr<x0><y0>(x0))
-else optn_vt_nil((*void*))
+(
+  optn_vt_cons(y0)
+) where
+{
+  val y0 =
+  map1$fopr<x0><y0>(x0)
+}
+else
+(
+  optn_vt_nil((*void*))
+)
 //
 (* ****** ****** *)
 

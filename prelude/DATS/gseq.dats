@@ -280,6 +280,23 @@ end // end of [foreach$work]
 
 (* ****** ****** *)
 //
+impltmp
+<x0,xs>
+gseq_exists
+  (xs) = let
+//
+  impltmp
+  forall$test<x0>(x0) =
+  not(exists$test<x0>(x0))
+//
+in
+  if
+  gseq_forall
+  <x0,xs>(xs) then false else true
+end // end of [gseq_exists/forall]
+//
+(* ****** ****** *)
+//
 (*
 impltmp
 <x0,xs>

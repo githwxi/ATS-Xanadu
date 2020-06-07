@@ -286,6 +286,23 @@ string_vt_make_list_vt
 //
 (* ****** ****** *)
 //
+fun<>
+string_make_cfun
+{n:nat}
+( n0
+: int(n)
+, f0
+: nintlt(n) -<cfun> cgtz): string(n)
+fun<>
+string_vt_make_cfun
+{n:nat}
+( n0
+: int(n)
+, f0
+: nintlt(n) -<cfun> cgtz): string_vt(n)
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for string
 //
