@@ -64,7 +64,7 @@ typedef t2ypelst = $S2T.t2ypelst
 typedef d2cst = $D2E.d2cst
 //
 typedef d3exp = $D3E.d3exp
-typedef t3imp = $D3E.t3imp
+typedef t3cst = $D3E.t3cst
 //
 typedef d3ecl = $D3E.d3ecl
 //
@@ -75,7 +75,7 @@ typedef d3clau = $D3E.d3clau
 typedef d3expopt = $D3E.d3expopt
 //
 typedef d3explst = $D3E.d3explst
-typedef t3implst = $D3E.t3implst
+typedef t3cstlst = $D3E.t3cstlst
 //
 typedef d3eclist = $D3E.d3eclist
 //
@@ -100,7 +100,7 @@ HX: copy the path out!
 *)
 fun
 implenv_get_path
-  (!implenv): t3implst
+  (!implenv): t3cstlst
 overload
 .path with implenv_get_path
 //
