@@ -178,7 +178,12 @@ fun
 gseq_foldr(xs, r0): r0
 //
 (* ****** ****** *)
-
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_exists(xs): bool
+//
 fun
 <x0:t0
 ,xs:t0>
@@ -187,7 +192,7 @@ fun
 <x0:t0
 ,xs:t0>
 gseq_foreach(xs): void
-
+//
 (* ****** ****** *)
 //
 fun

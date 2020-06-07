@@ -157,15 +157,16 @@ loop
 : list(cgtz, n-i)): void =
 (
 case+ cs of
-| list_nil() => ()
-| list_cons(c0, cs) =>
-  (
-    loop(p0, succ(i0), cs)
-  ) where
-  {
-    val () =
-    strptr_set_at<>(p0, i0, c0)
-  }
+|
+list_nil() => ()
+|
+list_cons(c0, cs) =>
+(
+  loop(p0, succ(i0), cs)
+) where
+{
+val () = strptr_set_at<>(p0, i0, c0)
+}
 )
 //
 } (* end of [string_vt_make_list] *)
@@ -205,16 +206,64 @@ case+ cs of
 list_vt_nil() => ()
 | ~
 list_vt_cons(c0, cs) =>
-  (
-    loop(p0, succ(i0), cs)
-  ) where
-  {
-    val () =
-    strptr_set_at<>(p0, i0, c0)
-  }
+(
+  loop(p0, succ(i0), cs)
+) where
+{
+val () = strptr_set_at<>(p0, i0, c0)
+}
 )
 //
 } (* end of [string_vt_make_list_vt] *)
+
+(* ****** ****** *)
+
+impltmp<>
+string_make_cfun
+{n}
+( n0, f0 ) =
+(
+string_vt2t
+(string_vt_make_cfun<>(n0, f0))
+)
+impltmp<>
+string_vt_make_cfun
+{n}
+( n0, f0 ) =
+(
+  $UN.cast01(p0)
+) where
+{
+//
+val p0 =
+strptr_make<>(n0)
+//
+val i0 = 0
+val () = loop(p0, i0)
+//
+} where
+{
+fun
+loop
+{i:nat
+|i<=n}.<n-i>.
+( p0
+: strptr(n)
+, i0: int(i)): void =
+(
+if
+(i0 < n0)
+then
+(
+  loop(p0, succ(i0))
+) where
+{
+val c0 = f0(i0)
+val () = strptr_set_at<>(p0, i0, c0)
+}
+)
+//
+} (* end of [string_vt_make_cfun] *)
 
 (* ****** ****** *)
 

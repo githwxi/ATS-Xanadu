@@ -142,6 +142,12 @@ mapopt1$fopr(x0: !x0): optn_vt(y0)
 
 fun
 <x0:t0>
+exists$test(x0: x0): bool
+
+(* ****** ****** *)
+
+fun
+<x0:t0>
 forall$test(x0: x0): bool
 fun
 <x0:vt>
