@@ -473,7 +473,7 @@ d3e0.node() of
   }
 //
 | D3Etuple
-    (knd0, npf1, d3es) =>
+  (knd0, npf1, d3es) =>
   {
     val () =
     tread33_d3explst(d3es)
@@ -483,6 +483,24 @@ d3e0.node() of
   {
     val () = tread33_d3exp(d3e1)
     val () = tread33_d3exp(d3e2)
+  }
+//
+| D3Elam
+  (knd0, f3as,
+   tres, arrw, body) =>
+  {
+    val () =
+    tread33_f3arglst(f3as)
+    val () = tread33_d3exp(body)
+  }
+| D3Efix
+  (knd0,
+   d2v0, f3as,
+   tres, arrw, body) =>
+  {
+    val () =
+    tread33_f3arglst(f3as)
+    val () = tread33_d3exp(body)
   }
 //
 | D3Etry

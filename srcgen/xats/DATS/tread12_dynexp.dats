@@ -107,7 +107,9 @@ in
 case+
 d2p0.node() of
 //
+| D2Pnil() => ()
 | D2Pany() => ()
+//
 | D2Pvar(d2v) => ()
 //
 | D2Ptuple
@@ -252,6 +254,30 @@ d2e0.node() of
     val () = tread12_d2exp(d2e2)
   }
 //
+| D2Elam
+  (knd0, f2as,
+   tres, arrw, body) =>
+  {
+//
+    val () =
+    tread12_f2arglst(f2as)
+//
+    val () = tread12_d2exp(body)
+//
+  }
+| D2Efix
+  (knd0,
+   d2v0, f2as,
+   tres, arrw, body) =>
+  {
+//
+    val () =
+    tread12_f2arglst(f2as)
+//
+    val () = tread12_d2exp(body)
+//
+  }
+//
 | D2Etry
   (knd0, d2e1, dcls) =>
   {
@@ -263,42 +289,34 @@ d2e0.node() of
 //
 | D2Eaddr(d2e1) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
+    val () = tread12_d2exp(d2e1)
   }
 | D2Eeval(d2e1) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
+    val () = tread12_d2exp(d2e1)
   }
 | D2Efold(d2e1) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
+    val () = tread12_d2exp(d2e1)
   }
 | D2Efree(d2e1) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
+    val () = tread12_d2exp(d2e1)
   }
 //
 | D2Eraise(d2e1) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
+    val () = tread12_d2exp(d2e1)
   }
 //
 | D2Elazy(d2e1) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
+    val () = tread12_d2exp(d2e1)
   }
 | D2Ellazy(d2e1, d2es) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
-    val () =
-    tread12_d2explst(d2es)
+    val () = tread12_d2exp(d2e1)
+    val () = tread12_d2explst(d2es)
   }
 //
 | D2Eanno(d2e1, s2e2) =>
