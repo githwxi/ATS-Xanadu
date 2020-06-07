@@ -27,6 +27,19 @@ g_copy<a>(x) = (x)
 
 (* ****** ****** *)
 //
+(*
+HX-2020-06-06:
+Please do see
+the circular beauty :)
+*)
+//
+impltmp
+{a:vt}
+g_equal<a>
+  (x, y) =
+(
+not(g_noteq<a>(x, y))
+)
 impltmp
 {a:vt}
 g_noteq<a>
