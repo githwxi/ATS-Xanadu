@@ -359,6 +359,17 @@ x0.node() of
   , "D3Etcst("
   , d2c1, "; ", ti3a, "; ", ti2s, ")")
 //
+| D3Etnfd
+  (d2e1, d3es) =>
+  fprint!
+  ( out
+  , "D3Etnfd(", d2e1, "; ", d3es, ")")
+| D3Etrec
+  (d2e1, d3es) =>
+  fprint!
+  ( out
+  , "D3Etrec(", d2e1, "; ", d3es, ")")
+//
 | D3Etimp
   (d2e1, tsub1, d2c2, tsub2) =>
   fprint!

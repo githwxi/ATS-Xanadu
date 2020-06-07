@@ -71,6 +71,67 @@ implement
 fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
+
+fun
+implist_path_recq
+( d3e0
+: d3exp
+, d3es
+: d3explst ): bool =
+let
+//
+val-
+D3Etcst
+( d2c0
+, ti3a
+, ti2s) = d3e0.node()
+//
+val-
+TI3ARGsome(targ) = ti3a
+//
+fun
+auxd3e1
+( d3e1
+: d3exp): bool =
+let
+//
+val-
+D3Etcst
+( d2c1
+, ti3a
+, ti2s) = d3e1.node()
+//
+in
+//
+if
+(d2c0=d2c1)
+then
+let
+val-
+TI3ARGsome
+ ( t2ps ) = ti3a in match3(targ, t2ps)
+end else false
+//
+end // end of [auxd3e1]
+and
+auxd3es
+( d3es
+: d3explst): bool =
+(
+case+ d3es of
+|
+list_nil() => false
+|
+list_cons
+(d3e1, d3es) =>
+if auxd3e1(d3e1) then true else auxd3es(d3es)
+)
+//
+in
+  auxd3es(d3es)
+end // end of [implist_path_recq]
+
+(* ****** ****** *)
 //
 local
 fun
@@ -155,7 +216,8 @@ implement
 list_map$fopr<t2ype><t2ype>(x) = t2ype_evalrec(x)
 }
 //
-val-true =
+val-
+true =
 unify3
 (LOC0, targ, $UN.list_vt2t(t2ps))
 //
@@ -740,6 +802,23 @@ in(*in-of-local*)
 (* ****** ****** *)
 
 implement
+implenv_get_path
+  (env) = let
+//
+val+
+@IMPLENV
+(xs, ts, us) = env
+//
+val
+d3es = list_vt_copy(ts)
+//
+in
+  fold@(env); list_vt2t(d3es)
+end // end of [implenv_get_path]
+
+(* ****** ****** *)
+
+implement
 implenv_get_s2vs
   (env) = let
 //
@@ -919,10 +998,58 @@ end // end of [implenv_free_nil]
 (* ****** ****** *)
 
 implement
-implenv_pop0_tsub
+implenv_pop0_init
+  (env0) =
+(
+//
+let
+val-
+list_nil() = u0.0
+val-
+list_nil() = u0.1
+//
+val () =
+(us := us1) in fold@(env0) end
+//
+) where
+{
+//
+val+
+@IMPLENV
+(xs, ts, us) = env0
+//
+val-~list_vt_cons(u0, us1) = us
+//
+} (* end of [implenv_pop0_init] *)
+
+implement
+implenv_push_init
+  (env0) =
+( fold@(env0) ) where
+{
+val
+s2vs = list_nil()
+val
+t2ps = list_nil()
+val+
+@IMPLENV
+(xs, ts, us) = env0
+//
+val u0 = (s2vs, t2ps)
+val () =
+(us := list_vt_cons(u0, us))
+//
+} (* end of [implenv_push_init] *)
+
+(* ****** ****** *)
+
+implement
+implenv_pop0_timp
   (env0) =
 (
 let
+val () =
+(ts := ts1)
 val () =
 (us := us1) in fold@(env0)
 end
@@ -933,22 +1060,38 @@ val+
 @IMPLENV
 (xs, ts, us) = env0
 //
+val-~list_vt_cons(_, ts1) = ts
 val-~list_vt_cons(_, us1) = us
 //
-} (* end of [implenv_pop0_tsub] *)
+} (* end of [implenv_pop0_timp] *)
 
 implement
-implenv_push_tsub
-(env0, s2vs, t2ps) =
-( fold@(env0) ) where
+implenv_push_timp
+( env0
+, d3e0, s2vs, t2ps) =
+(
+  fold@(env0)
+) where
 {
-val+
-@IMPLENV(xs, ts, us) = env0
-val () =
-(us :=
- list_vt_cons(@(s2vs, t2ps), us))
 //
-} (* end of [implenv_push_tsub] *)
+val+
+@IMPLENV
+(xs, ts, us) = env0
+//
+val t0 = d3e0
+val () =
+(ts := list_vt_cons(t0, ts))
+//
+val u0 = (s2vs, t2ps)
+val () =
+(us := list_vt_cons(u0, us))
+//
+} where
+{
+val () =
+println!
+("implenv_push_timp: d3e0 = ", d3e0)
+} (* end of [implenv_push_timp] *)
 
 (* ****** ****** *)
 //
@@ -963,6 +1106,23 @@ in
 implstk_find_timp(xs, d2c0, targ)
 end // end of [implenv_find_timp]
 //
+(* ****** ****** *)
+
+implement
+implenv_path_recq
+  ( env0, d3e0 ) = let
+//
+val+
+IMPLENV(xs, ts, us) = env0
+//
+in
+let
+val d3es = $UN.list_vt2t(ts)
+in
+  implist_path_recq(d3e0, d3es)
+end
+end // end of [implenv_find_timp]
+
 (* ****** ****** *)
 
 implement
