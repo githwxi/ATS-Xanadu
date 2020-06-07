@@ -59,15 +59,15 @@ typedef f3arglstopt = Option(f3arglst)
 (* ****** ****** *)
 //
 abstbox d3exp_tbox = ptr
-abstbox t3imp_tbox = ptr
+abstbox t3cst_tbox = ptr
 //
 typedef d3exp = d3exp_tbox
 typedef d3explst = List0(d3exp)
 typedef d3expopt = Option(d3exp)
 typedef d3explstopt = Option(d3explst)
 //
-typedef t3imp = t3imp_tbox
-typedef t3implst = List0(t3imp)
+typedef t3cst = t3cst_tbox
+typedef t3cstlst = List0(t3cst)
 //
 (* ****** ****** *)
 //
@@ -337,10 +337,10 @@ d3exp_node =
 //
 | D3Etnfd of
   ( d3exp(*tcst*)
-  , t3implst (*path*) )
+  , t3cstlst (*path*) )
 | D3Etrec of
   ( d3exp(*tcst*)
-  , t3implst (*path*) )
+  , t3cstlst (*path*) )
 //
 | D3Etimp of
   ( d3exp(*tcst*), t2ypelst(*targ*)
@@ -436,11 +436,11 @@ d3exp_node =
 (* ****** ****** *)
 //
 castfn
-d3exp2t3imp : d3exp -> t3imp
+d3exp2t3cst : d3exp -> t3cst
 castfn
-t3imp2d3exp : t3imp -> d3exp
-overload t3imp with d3exp2t3imp
-overload d3exp with t3imp2d3exp
+t3cst2d3exp : t3cst -> d3exp
+overload t3cst with d3exp2t3cst
+overload d3exp with t3cst2d3exp
 //
 (* ****** ****** *)
 //
@@ -613,15 +613,15 @@ d3exp_tcast
 (* ****** ****** *)
 //
 fun
-print_t3imp: print_type(t3imp)
+print_t3cst: print_type(t3cst)
 fun
-prerr_t3imp: prerr_type(t3imp)
+prerr_t3cst: prerr_type(t3cst)
 fun
-fprint_t3imp: fprint_type(t3imp)
+fprint_t3cst: fprint_type(t3cst)
 //
-overload print with print_t3imp
-overload prerr with prerr_t3imp
-overload fprint with fprint_t3imp
+overload print with print_t3cst
+overload prerr with prerr_t3cst
+overload fprint with fprint_t3cst
 //
 (* ****** ****** *)
 
