@@ -355,7 +355,7 @@ in
 end // end of [gseq_foreach/forall]
 
 (* ****** ****** *)
-
+//
 impltmp
 <x0,xs>
 gseq_listize
@@ -376,7 +376,7 @@ gseq_map_rlist<x0,xs><x0>(xs)
 {
   impltmp map$fopr<x0><x0>(x0) = x0
 }
-
+//
 (* ****** ****** *)
 
 impltmp
@@ -817,6 +817,24 @@ end // end of [rforeach$work]
 } (* end of [gseq_foldr/rforeach] *)
 
 (* ****** ****** *)
+//
+impltmp
+<x0,xs>
+gseq_rexists
+  (xs) = let
+//
+  impltmp
+  rforall$test<x0>(x0) =
+  not(rexists$test<x0>(x0))
+//
+in
+if
+gseq_rforall
+<x0,xs>(xs) then false else true
+end
+// end of [gseq_rexists/rforall]
+//
+(* ****** ****** *)
 
 impltmp
 <x0,xs>
@@ -831,10 +849,12 @@ in
 {
 impltmp
 forall0$test<x0>
-  (x0) = rforall$test<x0>(x0)
+(  x0  ) = rforall$test<x0>(x0)
 }
 end // end of
 // [gseq_rforall/list_vt_forall]
+
+(* ****** ****** *)
 
 impltmp
 <x0,xs>
@@ -888,8 +908,30 @@ typedef r0 = xs
 //
 impltmp
 foldl$fopr
-<x0><xs>(r0, x0) = gseq_cons<x0,xs>(x0, r0)
+<x0><xs>(r0, x0) =
+let
+  val r0 =
+  gseq_cons<x0,xs>(x0, r0) in r0
+end
 }
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+gseq_iexists
+  (xs) = let
+//
+impltmp
+iforall$test<x0>(i0, x0) =
+not(iexists$test<x0>(i0, x0))
+//
+in
+if
+gseq_iforall
+<x0,xs>(xs) then false else true
+end
+// end of [gseq_rexists/rforall]
 //
 (* ****** ****** *)
 
