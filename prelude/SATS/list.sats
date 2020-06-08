@@ -252,6 +252,14 @@ list_mergesort_vt
 //
 (* ****** ****** *)
 //
+fun
+<a:t0>
+list_subsetize_vt
+{n:int}
+(xs: list(a, n)): stream_vt(listlte_vt(a, n))
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for list
 //
