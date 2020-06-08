@@ -35,6 +35,11 @@ gtree_node_childlst
 //
 (* ****** ****** *)
 //
+(*
+HX-2020-06:
+For depth-first search
+*)
+//
 #extern
 fun
 <nx:vt>
@@ -107,6 +112,107 @@ end
 ) (* list_vt_cons *)
 ) (* list_vt_cons *)
 } (* end of [gtree_dfs_streamize_list] *)
+
+(* ****** ****** *)
+//
+(*
+HX-2020-06:
+For breadth-first search
+*)
+//
+#extern
+fun
+<nx:vt>
+gtree_bfs_streamize
+  (x0: nx): stream_vt(nx)
+#extern
+fun
+<nx:vt>
+gtree_bfs_streamize_list
+  (xs: list_vt(nx)): stream_vt(nx)
+//
+(* ****** ****** *)
+//
+impltmp
+<nx>(*tmp*)
+gtree_bfs_streamize(x0) =
+let
+val xs =
+list_vt_sing(x0) in
+gtree_bfs_streamize_list(xs)
+end // end of [gtree_bfs_streamize]
+//
+(* ****** ****** *)
+
+impltmp
+<nx>(*tmp*)
+gtree_bfs_streamize_list
+  (xs) =
+(
+let
+val xss =
+list_vt_sing(xs)
+in
+auxmain(xss, list_vt_nil())
+end
+) where
+{
+typedef
+nxs = list_vt(nx)
+fun
+auxmain
+( xss
+: list_vt(nxs)
+, yss
+: list_vt(nxs)
+) : stream_vt(nx) =
+$llazy
+(
+g_free(xss);
+g_free(yss);
+case+ xss of
+| ~
+list_vt_nil
+( (*void*) ) =>
+(
+case+ yss of
+| ~
+list_vt_nil() =>
+strmcon_vt_nil()
+| _ =>
+let
+val xss =
+list_vt_reverse(yss)
+in !
+(auxmain(xss, list_vt_nil()))
+end
+)
+| @
+list_vt_cons
+( xs0, xss1 ) =>
+(
+case+ xs0 of
+| ~
+list_vt_nil() =>
+let
+val xss1 = xss1
+in
+$free(xss); !(auxmain(xss1, yss))
+end
+| ~
+list_vt_cons(x0, xs1) =>
+let
+val () = (xss.0 := xs1)
+val xs0 =
+gtree_node_childlst<nx>(x0)
+in
+$fold(xss);
+strmcon_vt_cons
+(x0, auxmain(xss, list_vt_cons(xs0, yss)))
+end
+) (* list_vt_cons *)
+) (* list_vt_cons *)
+} (* end of [gtree_bfs_streamize_list] *)
 
 (* ****** ****** *)
 
