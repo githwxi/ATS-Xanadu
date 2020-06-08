@@ -139,23 +139,21 @@ fun
 mapopt1$fopr(x0: !x0): optn_vt(y0)
 //
 (* ****** ****** *)
-
+//
 fun
 <x0:t0>
 exists$test(x0: x0): bool
-
-(* ****** ****** *)
-
 fun
 <x0:t0>
 forall$test(x0: x0): bool
+//
 fun
 <x0:vt>
 forall0$test(x0: x0): bool
 fun
 <x0:vt>
 forall1$test(x0: !x0): bool
-
+//
 (* ****** ****** *)
 
 fun
@@ -212,17 +210,21 @@ fun
 tabulate$fopr(i0: nintlt(n)): (a)
 //
 (* ****** ****** *)
-
+//
+fun
+<x0:t0>
+rexists$test(x0: x0): bool
 fun
 <x0:t0>
 rforall$test(x0: x0): bool
+//
 fun
 <x0:vt>
 rforall0$test(x0: x0): bool
 fun
 <x0:vt>
 rforall1$test(x0: !x0): bool
-
+//
 (* ****** ****** *)
 
 fun
@@ -240,17 +242,21 @@ rforeach1$work(x0: !x0): void
 // For gseq-i-operations
 //
 (* ****** ****** *)
-
+//
+fun
+<x0:t0>
+iexists$test(nint, x0): bool
 fun
 <x0:t0>
 iforall$test(nint, x0): bool
+//
 fun
 <x0:vt>
 iforall0$test(nint, x0): void
 fun
 <x0:vt>
 iforall1$test(nint, !x0): void
-
+//
 (* ****** ****** *)
 
 fun

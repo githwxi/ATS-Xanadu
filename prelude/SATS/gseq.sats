@@ -322,6 +322,11 @@ fun
 fun
 <x0:t0
 ,xs:t0>
+gseq_rexists(xs): bool
+//
+fun
+<x0:t0
+,xs:t0>
 gseq_rforall(xs): bool
 fun
 <x0:t0
@@ -349,6 +354,11 @@ gseq_rappend(xs1: xs, xs2: xs): xs
 // For gseq-i-operations
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_iexists(xs): bool
 //
 fun
 <x0:t0
