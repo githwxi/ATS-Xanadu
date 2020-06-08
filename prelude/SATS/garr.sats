@@ -185,7 +185,7 @@ a1ref_forall
 {n:int}(A0: a1ref(x0, n)): bool
 fun
 <x0:vt>
-a1ref_forall1
+a1ref_forall0
 {n:int}(A0: a1ref(x0, n)): bool
 //
 fun
@@ -194,7 +194,7 @@ a1ref_foreach
 {n:int}(A0: a1ref(x0, n)): void
 fun
 <x0:vt>
-a1ref_foreach1
+a1ref_foreach0
 {n:int}(A0: a1ref(x0, n)): void
 //
 (* ****** ****** *)

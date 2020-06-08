@@ -9,6 +9,12 @@
 *)
 (* ****** ****** *)
 //
+(*
+**HX: 0-dimensional
+*)
+//
+(* ****** ****** *)
+//
 impltmp
 <a:vtype>
 a0ref_make(x0) =
@@ -41,6 +47,10 @@ impltmp
 <>(*tmp*)
 a0ref_print$end() = string_print("]")
 //
+(* ****** ****** *)
+(*
+**HX: 1-dimensional
+*)
 (* ****** ****** *)
 //
 impltmp
@@ -87,16 +97,16 @@ impltmp
 a1ref_forall
   (A0) =
 (
-a1ref_forall1<a>(A0)
+a1ref_forall0<a>(A0)
 ) where
 {
 impltmp
-forall1$test<a> = forall$test<a>
+forall0$test<a> = forall$test<a>
 }
 //
 impltmp
 <a:vtype>
-a1ref_forall1
+a1ref_forall0
   {n}(A0) =
 (
   loop(0(*i0*))
@@ -112,14 +122,16 @@ loop
 |i<=n}(i0: sint(i)): bool =
 if
 (i0 < n0)
-then let
-val test =
-forall1$test<a>(sub(A0, i0))
+then
+let
+val
+test =
+forall0$test<a>(sub(A0, i0))
 in
 if test then loop(succ(i0)) else false
 end else false // end of [if]
 //
-} (* end of [a1ref_forall1] *)
+} (* end of [a1ref_forall0] *)
 //
 (* ****** ****** *)
 //
@@ -128,16 +140,16 @@ impltmp
 a1ref_foreach
   (A0) =
 (
-a1ref_foreach1<a>(A0)
+a1ref_foreach0<a>(A0)
 ) where
 {
 impltmp
-foreach1$work<a> = foreach$work<a>
+foreach0$work<a> = foreach$work<a>
 }
 //
 impltmp
 <a:vtype>
-a1ref_foreach1
+a1ref_foreach0
   {n}(A0) =
 (
   loop(0(*i0*))
@@ -155,13 +167,18 @@ if
 (i0 < n0)
 then
 (
-loop(succ(i0))
+  loop(succ(i0))
 ) where
 {
-val () = foreach1$work<a>(sub(A0, i0))
+  val () =
+  foreach0$work<a>(sub(A0, i0))
 }
 //
-} (* end of [a1ref_foreach1] *)
+} (* end of [a1ref_foreach0] *)
+//
+(* ****** ****** *)
+//
+// For gseq-operations
 //
 (* ****** ****** *)
 
