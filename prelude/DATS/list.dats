@@ -447,13 +447,66 @@ end // end of [list_tabulate_cref]
 
 impltmp
 <a>(*tmp*)
-list_mergesort(xs) =
+list_mergesort
+  (xs) =
 list_vt2t(list_mergesort_vt<a>(xs))
 impltmp
 <a>(*tmp*)
-list_mergesort_vt(xs) =
+list_mergesort_vt
+  (xs) =
 list_vt_mergesort<a>(list_copy_vt<a>(xs))
 
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_subsetize_vt
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+//
+typedef
+xs(n:int) =
+listlte_vt(a, n)
+//
+fun
+auxmain
+{n:int}
+( xs
+: list(a, n))
+: stream_vt(xs(n)) =
+$llazy
+(
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_sing
+(list_vt_nil())
+|
+list_cons(x0, xs) =>
+let
+val res1 =
+auxmain(xs)
+val res2 =
+auxmain(xs)
+val res2 =
+stream_vt_map0(res2) where
+{
+sexpdef n0 = n
+sexpdef n1 = pred(n)
+impltmp
+map0$fopr
+<xs(n1)><xs(n0)>
+(xs) = list_vt_cons(x0, xs)
+}
+in !
+(stream_vt_append<xs(n)>(res1, res2))
+end
+)
+} (* end of [list_subsetize_vt] *)
+//
 (* ****** ****** *)
 //
 // For gseq-operations

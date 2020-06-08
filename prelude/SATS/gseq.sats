@@ -484,6 +484,8 @@ fun
 ,xs:t0>
 gseq_mergesort(xs: xs): (xs)
 //
+(* ****** ****** *)
+//
 fun
 <x0:t0
 ,xs:t0>
