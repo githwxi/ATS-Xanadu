@@ -178,12 +178,25 @@ a1ptr_set_at
 ! a1ptr(a, n), i0: nintlt(n), x0: a): void
 //
 (* ****** ****** *)
+//
+fun<>
+a1ref_print$beg(): void
+fun<>
+a1ref_print$end(): void
+//
+fun
+<a:vt>
+a1ref_print(A0: a1ref(a)): void
+fun
+<a:vt>
+a1ptr_print(A0: !a1ptr(a)): void
+//
+(* ****** ****** *)
 
 fun
 <a:vt>
 a1ref_streamize
-{n:int}
-(A0: a1ref(a, n)): stream_vt(a)
+{n:int}(A0: a1ref(a, n)): stream_vt(a)
 
 (* ****** ****** *)
 //

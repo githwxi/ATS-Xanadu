@@ -60,6 +60,15 @@ a1ptr2ref
 (a1ptr_make_nval<a>(asz, ini))
 //
 (* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+a1ref_print$beg() = string_print("[")
+impltmp
+<>(*tmp*)
+a1ref_print$end() = string_print("]")
+//
+(* ****** ****** *)
 
 impltmp
 <a:vtype>
