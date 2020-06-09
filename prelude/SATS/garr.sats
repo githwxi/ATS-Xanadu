@@ -62,11 +62,22 @@ a1ptr(a:vt,n:int) = a1ptr_vt_i0_vx(a,n)
 fcast
 a0ptr2ref
 {a:vt}
-(A0: a0ptr(a)): a0ref(a)
+(a0ptr(a)): a0ref(a)
 fcast
 a1ptr2ref
 {a:vt}{n:i0}
-(A0: a1ptr(a, n)): a1ref(a, n)
+(a1ptr(a, n)): a1ref(a, n)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ptr_alloc
+((*void*)): a0ptr(?a)
+fun
+<a:vt>
+a0ptr_clear
+(!a0ptr(a) >> a0ptr(?a)): void
 //
 (* ****** ****** *)
 //
@@ -122,6 +133,12 @@ fun
 a1ptr_alloc
 {n:nat}
 (asz: int(n)): a1ptr(?a, n)
+fun
+<a:vt>
+a1ptr_clear
+{n:nat}
+( A0:
+! a1ptr(a, n) >> a1ptr(?a, n)): void
 //
 (* ****** ****** *)
 //
