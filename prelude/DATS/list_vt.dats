@@ -397,7 +397,7 @@ Quite an informative example:
 //
 impltmp
 <a>(*tmp*)
-list_vt_tabulate_cref
+list_vt_tabulate_cfr
   {n}(n0, f0) = let
 //
 impltmp
@@ -405,7 +405,7 @@ tabulate$fopr<a><n>(i0) = f0(i0)
 //
 in
   list_vt_tabulate<a><n>(n0)
-end // end of [list_vt_tabulate_cref]
+end // end of [list_vt_tabulate_cfr]
 //
 (* ****** ****** *)
 //

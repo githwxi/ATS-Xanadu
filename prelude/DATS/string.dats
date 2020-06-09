@@ -137,10 +137,9 @@ string_vt_make_list
 ) where
 {
 //
-val n0 =
-length(cs)
 val p0 =
-strptr_make<>(n0)
+strptr_alloc<>
+(list_length(cs))
 val () =
 loop(p0, 0(*i0*), cs)
 //
@@ -181,10 +180,9 @@ string_vt_make_list_vt
 ) where
 {
 //
-val n0 =
-length(cs)
 val p0 =
-strptr_make<>(n0)
+strptr_alloc<>
+(list_vt_length(cs))
 val () =
 loop(p0, 0(*i0*), cs)
 //
@@ -217,26 +215,27 @@ val () = strptr_set_at<>(p0, i0, c0)
 } (* end of [string_vt_make_list_vt] *)
 
 (* ****** ****** *)
-
-impltmp<>
-string_make_cfun
-{n}
-( n0, f0 ) =
+//
+impltmp
+<n>(*tmp*)
+string_tabulate
+( n0 ) =
 (
 string_vt2t
-(string_vt_make_cfun<>(n0, f0))
+(string_vt_tabulate<n>(n0))
 )
-impltmp<>
-string_vt_make_cfun
-{n}
-( n0, f0 ) =
+//
+impltmp
+<n>(*tmp*)
+string_vt_tabulate
+( n0 ) =
 (
   $UN.cast01(p0)
 ) where
 {
 //
 val p0 =
-strptr_make<>(n0)
+strptr_alloc<>(n0)
 //
 val i0 = 0
 val () = loop(p0, i0)
@@ -258,13 +257,40 @@ then
   loop(p0, succ(i0))
 ) where
 {
-val c0 = f0(i0)
+val c0 = tabulate$fopr<cgtz><n>(i0)
 val () = strptr_set_at<>(p0, i0, c0)
 }
 )
 //
-} (* end of [string_vt_make_cfun] *)
+} (* end of [string_vt_tabulate] *)
 
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+string_tabulate_cfr
+{n}
+(n0, f0) =
+(
+string_tabulate<n>(n0)
+) where
+{
+impltmp
+tabulate$fopr<cgtz><n>(i0) = f0(i0)
+}
+impltmp
+<>(*tmp*)
+string_vt_tabulate_cfr
+{n}
+(n0, f0) =
+(
+string_vt_tabulate<n>(n0)
+) where
+{
+impltmp
+tabulate$fopr<cgtz><n>(i0) = f0(i0)
+}
+//
 (* ****** ****** *)
 
 local

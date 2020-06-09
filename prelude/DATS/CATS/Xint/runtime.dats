@@ -386,11 +386,11 @@ string_tail_raw<> = xint_string_tail_raw
 //
 #extern
 fun
-xint_strptr_make
+xint_strptr_alloc
 {n:nat}
 (len: int(n)): strptr(n)
 impltmp
-strptr_make<> = xint_strptr_make
+strptr_alloc<> = xint_strptr_alloc
 //
 #extern
 fun

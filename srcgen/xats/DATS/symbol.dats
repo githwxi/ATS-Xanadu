@@ -486,10 +486,19 @@ LINEAR_symbol = symbol_make("linear")
 *)
 
 (* ****** ****** *)
-
+//
 implement
 CLO_symbol = symbol_make("clo")
-
+implement
+FNP_symbol = symbol_make("fnp")
+implement
+CFP_symbol = symbol_make("cfp")
+implement
+CFR_symbol = symbol_make("cfr")
+implement
+LCFP_symbol = symbol_make("lcfp")
+//
+(*
 implement
 CFLT_symbol = symbol_make("cflt")
 implement
@@ -498,7 +507,8 @@ implement
 CPTR_symbol = symbol_make("cptr")
 implement
 CREF_symbol = symbol_make("cref")
-
+*)
+(*
 implement
 CLOFLT_symbol = symbol_make("cloflt")
 implement
@@ -507,7 +517,8 @@ implement
 CLOPTR_symbol = symbol_make("cloptr")
 implement
 CLOREF_symbol = symbol_make("cloref")
-
+*)
+//
 (* ****** ****** *)
 
 implement

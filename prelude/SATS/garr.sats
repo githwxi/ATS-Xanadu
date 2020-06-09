@@ -58,7 +58,7 @@ vtypedef
 a1ptr(a:vt,n:int) = a1ptr_vt_i0_vx(a,n)
 //
 (* ****** ****** *)
-
+//
 fcast
 a0ptr2ref
 {a:vt}
@@ -67,7 +67,7 @@ fcast
 a1ptr2ref
 {a:vt}{n:i0}
 (A0: a1ptr(a, n)): a1ref(a, n)
-
+//
 (* ****** ****** *)
 //
 fun
@@ -114,6 +114,14 @@ a0ptr_print(A0: !a0ptr(a)): void
 (* ****** ****** *)
 //
 // HX: 1-dimensional
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1ptr_alloc
+{n:nat}
+(asz: int(n)): a1ptr(?a, n)
 //
 (* ****** ****** *)
 //
