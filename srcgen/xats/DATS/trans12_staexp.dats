@@ -45,9 +45,19 @@ SYM = "./../SATS/symbol.sats"
 //
 macdef
 LIN_sym = $SYM.LIN_symbol
+//
 macdef
 CLO_sym = $SYM.CLO_symbol
+macdef
+FNP_sym = $SYM.FNP_symbol
+macdef
+CFP_sym = $SYM.CFP_symbol
+macdef
+CFR_sym = $SYM.CFR_symbol
+macdef
+LCFP_sym = $SYM.LCFP_symbol
 //
+(*
 macdef
 CFLT_sym = $SYM.CFLT_symbol
 macdef
@@ -56,7 +66,9 @@ macdef
 CPTR_sym = $SYM.CPTR_symbol
 macdef
 CREF_sym = $SYM.CREF_symbol
+*)
 //
+(*
 macdef
 CLOFLT_sym = $SYM.CLOFLT_symbol
 macdef
@@ -65,6 +77,7 @@ macdef
 CLOPTR_sym = $SYM.CLOPTR_symbol
 macdef
 CLOREF_sym = $SYM.CLOREF_symbol
+*)
 //
 overload
 = with $SYM.eq_symbol_symbol
@@ -538,9 +551,11 @@ x0.node() of
   (
   ifcase
   | sym =
-    FPTR_sym => true
+    FNP_sym => true
+(*
   | sym =
     FUNPTR_sym => true
+*)
   | _ (* else *) => false
   )
 | _ (*non-S1Eid*) => false
@@ -556,10 +571,12 @@ x0.node() of
   ifcase
   | sym =
     CLO_sym => true
+(*
   | sym =
     CFLT_sym => true
   | sym =
     CLOFLT_sym => true
+*)
   | _ (* else *) => false
   )
 | _ (* non-S1Eid *) => false
@@ -574,9 +591,13 @@ x0.node() of
   (
   ifcase
   | sym =
+    CFP_sym => true
+(*
+  | sym =
     CPTR_sym => true
   | sym =
     CLOPTR_sym => true
+*)
   | _ (* else *) => false
   )
 | _ (*non-S1Eid*) => false
@@ -591,9 +612,12 @@ x0.node() of
   (
   ifcase
   | sym =
+    CFR_sym => true
+(*  | sym =
     CREF_sym => true
   | sym =
     CLOREF_sym => true
+*)
   | _ (* else *) => false
   )
 | _ (*non-S1Eid*) => false

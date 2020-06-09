@@ -175,6 +175,13 @@ val LIN_symbol : symbol // lin
 (* ****** ****** *)
 //
 val CLO_symbol : symbol // clo
+val FNP_symbol : symbol // fnp
+val CFP_symbol : symbol // cfp
+val CFR_symbol : symbol // cfr
+//
+val LCFP_symbol : symbol // lcfp
+//
+(*
 val CFLT_symbol : symbol // cflt
 val FPTR_symbol : symbol // fptr
 val CPTR_symbol : symbol // cptr
@@ -184,6 +191,7 @@ val CLOFLT_symbol : symbol // cloflt
 val FUNPTR_symbol : symbol // funptr
 val CLOPTR_symbol : symbol // cloptr
 val CLOREF_symbol : symbol // cloref
+*)
 //
 (* ****** ****** *)
 

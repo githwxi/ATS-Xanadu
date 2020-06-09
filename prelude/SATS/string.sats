@@ -246,7 +246,7 @@ string_streamize
 (* ****** ****** *)
 //
 fun<>
-strptr_make
+strptr_alloc
 {n:nat}(bsz: int(n)): strptr(n)
 //
 (* ****** ****** *)
@@ -286,20 +286,29 @@ string_vt_make_list_vt
 //
 (* ****** ****** *)
 //
+fun
+<n:i0>
+string_tabulate
+( n0: int(n) ) : string(n)
+fun
+<n:i0>
+string_vt_tabulate
+( n0: int(n) ) : string_vt(n)
+//
 fun<>
-string_make_cfun
+string_tabulate_cfr
 {n:nat}
 ( n0
 : int(n)
 , f0
-: nintlt(n) -<cfun> cgtz): string(n)
+: nintlt(n) -<cfr> cgtz): string(n)
 fun<>
-string_vt_make_cfun
+string_vt_tabulate_cfr
 {n:nat}
 ( n0
 : int(n)
 , f0
-: nintlt(n) -<cfun> cgtz): string_vt(n)
+: nintlt(n) -<cfr> cgtz): string_vt(n)
 //
 (* ****** ****** *)
 //

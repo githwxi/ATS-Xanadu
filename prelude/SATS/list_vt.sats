@@ -155,10 +155,10 @@ fun
 list_vt_tabulate(int(n)): list_vt(a, n)
 fun
 <a:vt>
-list_vt_tabulate_cref
+list_vt_tabulate_cfr
 {n:nat}
 ( n0: int(n)
-, f0: nintlt(n) -<cref> a): list_vt(a, n)
+, f0: nintlt(n) -<cfr> a): list_vt(a, n)
 //
 (* ****** ****** *)
 //

@@ -234,10 +234,10 @@ fun
 list_tabulate(int(n)): list(a, n)
 fun
 <a:t0>
-list_tabulate_cref
+list_tabulate_cfr
 {n:nat}
 ( n0: int(n)
-, f0: nintlt(n) -<cref> a): list(a, n)
+, f0: nintlt(n) -<cfr> a): list(a, n)
 //
 (* ****** ****** *)
 //
