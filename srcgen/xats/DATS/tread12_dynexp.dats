@@ -521,13 +521,11 @@ d2cl.node() of
 | D2Csexpdef(s2c, def) =>
   {
 (*
-    val
-    def =
+    val def =
     s2cst_get_def(s2c)
-    val () =
+    val ( ) =
     assertloc(isneqz(def))
-    val
-    def = unsome(def)
+    val def = unsome(def)
 *)
 //
     val () = tread12_s2exp(def)
@@ -562,22 +560,31 @@ d2cl.node() of
 //
   }
 //
+| D2Cabsopen
+  (knd, is2c) =>
+  {
+(*
+    val () =
+    println!
+    ("tread12_d2ecl: D2Cabsopen: is2c = ", is2c)
+*)
+  }
 | D2Cabsimpl
-  (knd, scs, def) =>
+  (knd, is2c, def1) =>
   {
 //
-    val () = tread12_s2exp(def)
+    val () = tread12_s2exp(def1)
 //
 (*
     val () =
     println!
-    ("tread12_d2ecl: D2Cabsimpl: scs = ", scs)
+    ("tread12_d2ecl: D2Cabsimpl: is2c = ", is2c)
     val () =
     println!
-    ("tread12_d2ecl: D2Cabsimpl: def = ", def)
+    ("tread12_d2ecl: D2Cabsimpl: def1 = ", def1)
     val () =
     println!
-    ("tread12_d2ecl: D2Cabsimpl: def.sort = ", def.sort())
+    ("tread12_d2ecl: D2Cabsimpl: def1.sort = ", def1.sort())
 *)
 //
   }
