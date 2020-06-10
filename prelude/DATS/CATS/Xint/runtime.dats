@@ -437,6 +437,7 @@ xint_a0ptr_alloc
 {a:type}((*void*)): a0ptr(?a)
 //
 impltmp
+{a:type}
 a0ptr_alloc<a>() = xint_a0ptr_alloc()
 //
 (* ****** ****** *)
