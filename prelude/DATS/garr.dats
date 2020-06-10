@@ -8,6 +8,10 @@
 "./../SATS/garr.sats"
 *)
 (* ****** ****** *)
+#staload
+UN =
+"prelude/SATS/unsafe.sats"
+(* ****** ****** *)
 //
 (*
 **HX: 0-dimensional
@@ -16,15 +20,64 @@
 (* ****** ****** *)
 //
 impltmp
-<a:vtype>
+<a:vt>
 a0ref_make(x0) =
 a0ptr2ref
 (a0ptr_make<a>(x0))
 //
 (* ****** ****** *)
+
+impltmp
+<a:vt>
+a0ptr_make(x0) =
+let
+val A0 =
+a0ptr_alloc<a>()
+val p0 =
+$UN.cast10{p2tr(a)}(A0)
+val () =
+$UN.p2tr_set<a>(p0, x0)
+in
+$UN.castlin10{a0ptr(a)}(A0)
+end
+
+(* ****** ****** *)
 //
 impltmp
-<a:vtype>
+<a:vt>
+a0ref_get(A0) =
+let
+val p0 =
+$UN.cast10{p2tr(a)}(A0)
+in
+let
+val x0 =
+$UN.p2tr_get<a>(A0)
+val x1 = g_copy<a>(x0)
+val () =
+$UN.p2tr_ret<a>(p0, x0) in x1
+end
+end
+//
+impltmp
+<a:vt>
+a0ref_set(A0, x1) =
+let
+val p0 =
+$UN.cast10{p2tr(a)}(A0)
+in
+let
+val x0 =
+$UN.p2tr_get(A0)
+val () = g_free<a>(x0)
+val () = p2tr_set<a>(p0, x1) in ()
+end
+end
+//
+(* ****** ****** *)
+//
+impltmp
+<a:vt>
 a0ref_print(A0) =
 let
 val x0 =
@@ -54,7 +107,7 @@ a0ref_print$end() = string_print("]")
 (* ****** ****** *)
 //
 impltmp
-<a:vtype>
+<a:vt>
 a1ref_make_nval(asz, ini) =
 a1ptr2ref
 (a1ptr_make_nval<a>(asz, ini))
@@ -71,7 +124,7 @@ a1ref_print$end() = string_print("]")
 (* ****** ****** *)
 
 impltmp
-<a:vtype>
+<a:vt>
 a1ref_streamize
   {n}(A0) =
 (
@@ -102,7 +155,7 @@ strmcon_vt_cons
 (* ****** ****** *)
 //
 impltmp
-<a:type>
+<a:t0>
 a1ref_forall
   (A0) =
 (
@@ -114,7 +167,7 @@ forall0$test<a> = forall$test<a>
 }
 //
 impltmp
-<a:vtype>
+<a:vt>
 a1ref_forall0
   {n}(A0) =
 (
@@ -145,7 +198,7 @@ end else false // end of [if]
 (* ****** ****** *)
 //
 impltmp
-<a:type>
+<a:t0>
 a1ref_foreach
   (A0) =
 (
@@ -157,7 +210,7 @@ foreach0$work<a> = foreach$work<a>
 }
 //
 impltmp
-<a:vtype>
+<a:vt>
 a1ref_foreach0
   {n}(A0) =
 (

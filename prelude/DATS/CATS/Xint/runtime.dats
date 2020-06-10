@@ -168,7 +168,15 @@ fun
 xint_gint_print_sint
 ( x0 : sint ) : void // = $ext()
 impltmp
-gint_print_sint<> = xint_gint_print_sint
+gint_print_sint<>(i0) =
+xint_gint_print_sint(i0)
+#extern
+fun
+xint_gint_print_uint
+( x0 : uint ) : void // = $ext()
+impltmp
+gint_print_uint<>(u0) =
+xint_gint_print_uint(u0)
 //
 (* ****** ****** *)
 //
@@ -412,6 +420,24 @@ xint_strptr_set_at
 , i0: int(i), c0: cgtz): void
 impltmp
 strptr_set_at<> = xint_strptr_set_at
+//
+(* ****** ****** *)
+//
+// prelude/garr.sats
+// (arrays of various dimensionality)
+//
+(* ****** ****** *)
+//
+// HX-2020-06-10:
+// Please note that
+// [a] is boxed in Xinterp
+//
+fun
+xint_a0ptr_alloc
+{a:type}((*void*)): a0ptr(?a)
+//
+impltmp
+a0ptr_alloc<a>() = xint_a0ptr_alloc()
 //
 (* ****** ****** *)
 

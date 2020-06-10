@@ -117,7 +117,7 @@ val GTDOT_symbol : symbol // symbol(">.")
 val WCARD_symbol : symbol // symbol("_")
 //
 val QMARK_symbol : symbol // symbol("?")
-val QBANG_symbol : symbol // symbol("?!")
+val QMNEG_symbol : symbol // symbol("~")
 //
 (* ****** ****** *)
 

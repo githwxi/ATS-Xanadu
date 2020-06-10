@@ -45,7 +45,7 @@ cast10{a1:t0}{a0:t0}(a0): (a1)
 (* ****** ****** *)
 //
 fcast
-delinear{a0:vt}(a0): (?a0)
+delinear{a0:vt}(a0): (~a0)
 fcast
 castlin01{a0:vt}{a1:vt}(a0): (a1)
 fcast
@@ -70,6 +70,9 @@ p1tr_get(p0: p1tr): a
 fun
 <a:vt>
 p1tr_set(p0: p1tr, x0: a): void
+fun
+<a:vt>
+p1tr_ret(p0: p1tr, x0: a): void
 //
 fun
 <a:vt>
@@ -77,6 +80,9 @@ p2tr_get(p0: p2tr(a)): a
 fun
 <a:vt>
 p2tr_set(p0: p2tr(a), x0: a): void
+fun
+<a:vt>
+p2tr_ret(p0: p2tr(a), x0: a): void
 //
 (* ****** ****** *)
 //

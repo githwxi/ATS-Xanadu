@@ -399,8 +399,13 @@ WCARD_symbol = symbol_make("_")
 //
 implement
 QMARK_symbol = symbol_make("?")
+//
+(*
+HX-2020-06-09:
+it was QBANG: ?!
+*)
 implement
-QBANG_symbol = symbol_make("?!")
+QMNEG_symbol = symbol_make("~")
 //
 (* ****** ****** *)
 

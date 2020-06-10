@@ -695,8 +695,7 @@ s2exp_node =
 | S2Eany of int(*knd*)
 //
 | S2Etop of // HX: knd: 0/1: 
-  (int(*knd*), s2exp) // top/typization
-  // end of [S2Etop]
+  (int(*knd*), s2exp) // ?(s2e)/~(s2e)
 //
 | S2Earg of // HX: knd: 0/1: 
   (int(*knd*), s2exp) // call-by-val/ref
