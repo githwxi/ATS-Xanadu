@@ -38,6 +38,11 @@
 //
 (* ****** ****** *)
 //
+// HX-2020-06-10:
+// Note that string_vt is included
+//
+(* ****** ****** *)
+//
 typedef cgtz =
 [c:char|c > 0]char(c)
 //

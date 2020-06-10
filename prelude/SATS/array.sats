@@ -36,6 +36,11 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+// HX-2020-06-10:
+// Note that array_vt is included
+//
+(* ****** ****** *)
 
 abstbox
 a0ref_vt_x0(a:vt)
@@ -238,7 +243,7 @@ a1ref_foreach0
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for garr
+// symbol overloading for array
 //
 (* ****** ****** *)
 //
@@ -286,4 +291,4 @@ length with a1ptr_length of 1000
 
 (* ****** ****** *)
 
-(* end of [garr.sats] *)
+(* end of [array.sats] *)
