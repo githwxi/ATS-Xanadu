@@ -77,7 +77,7 @@ a0ptr_alloc
 fun
 <a:vt>
 a0ptr_clear
-(!a0ptr(a) >> a0ptr(?a)): void
+(!a0ptr(a) >> a0ptr(~a)): void
 //
 (* ****** ****** *)
 //
@@ -138,7 +138,7 @@ fun
 a1ptr_clear
 {n:nat}
 ( A0:
-! a1ptr(a, n) >> a1ptr(?a, n)): void
+! a1ptr(a, n) >> a1ptr(~a, n)): void
 //
 (* ****** ****** *)
 //

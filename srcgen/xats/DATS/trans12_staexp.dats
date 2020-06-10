@@ -985,7 +985,7 @@ isTOP1
 case+
 s1e.node() of
 | S1Eid(sid) =>
-  sid = $SYM.QBANG_symbol
+  sid = $SYM.QMNEG_symbol
 | _(*non-S1Eid*) => false
 )
 
