@@ -52,7 +52,7 @@ $UN.cast10{p2tr(a)}(A0)
 in
 let
 val x0 =
-$UN.p2tr_get<a>(A0)
+$UN.p2tr_get<a>(p0)
 val x1 = g_copy<a>(x0)
 val () =
 $UN.p2tr_ret<a>(p0, x0) in x1
@@ -68,9 +68,22 @@ $UN.cast10{p2tr(a)}(A0)
 in
 let
 val x0 =
-$UN.p2tr_get(A0)
+$UN.p2tr_get<a>(p0)
 val () = g_free<a>(x0)
-val () = p2tr_set<a>(p0, x1) in ()
+val () =
+$UN.p2tr_set<a>(p0, x1) in ()
+end
+end
+impltmp
+<a:t0>
+a0ref_set(A0, x1) =
+let
+val p0 =
+$UN.cast10{p2tr(a)}(A0)
+in
+let
+val () =
+$UN.p2tr_set<a>(p0, x1) in ()
 end
 end
 //
