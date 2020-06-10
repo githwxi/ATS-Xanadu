@@ -1742,24 +1742,6 @@ the_prelude_load
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/bool.sats")
-val () =
-the_prelude_load
-( XATSHOME
-, 0(*static*), "prelude/SATS/char.sats")
-val () =
-the_prelude_load
-( XATSHOME
-, 0(*static*), "prelude/SATS/gint.sats")
-//
-val () =
-the_prelude_load
-( XATSHOME
-, 0(*static*), "prelude/SATS/gios.sats")
-//
-val () =
-the_prelude_load
-( XATSHOME
 , 0(*static*), "prelude/SATS/gbas.sats")
 val () =
 the_prelude_load
@@ -1778,7 +1760,20 @@ the_prelude_load
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/garr.sats")
+, 0(*static*), "prelude/SATS/bool.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/char.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gint.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gios.sats")
 //
 val () =
 the_prelude_load
@@ -1788,10 +1783,11 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/list.sats")
+//
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/stream.sats")
+, 0(*static*), "prelude/SATS/array.sats")
 val () =
 the_prelude_load
 ( XATSHOME
@@ -1800,11 +1796,9 @@ the_prelude_load
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gnum_vt.sats")
-val () =
-the_prelude_load
-( XATSHOME
-, 0(*static*), "prelude/SATS/gord_vt.sats")
+, 0(*static*), "prelude/SATS/stream.sats")
+//
+// HX: for linear stuff
 //
 val () =
 the_prelude_load
@@ -1819,6 +1813,22 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/list_vt.sats")
+//
+(*
+//
+// HX: array contains array_vt
+// HX: string contains string_vt
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/array_vt.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/string_vt.sats")
+*)
+//
 val () =
 the_prelude_load
 ( XATSHOME

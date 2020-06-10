@@ -5,7 +5,7 @@
 (* ****** ****** *)
 (*
 #staload
-"./../SATS/garr.sats"
+"./../SATS/array.sats"
 *)
 (* ****** ****** *)
 #staload
@@ -262,4 +262,4 @@ gseq_foreach
 
 (* ****** ****** *)
 
-(* end of [garr.dats] *)
+(* end of [array.dats] *)

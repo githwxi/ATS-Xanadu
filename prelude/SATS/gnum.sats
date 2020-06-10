@@ -91,6 +91,68 @@ g_mod(x: a, y: a): a
 //
 (* ****** ****** *)
 //
+// HX:
+// For linear gnums
+//
+(* ****** ****** *)
+
+fun
+<a:vtype>
+gl_0((*void*)): (a)
+fun
+<a:vtype>
+gl_1((*void*)): (a)
+fun
+<a:vtype>
+gl_2((*void*)): (a)
+
+(* ****** ****** *)
+
+fun
+<a:vtype>
+gl_add00(x: ~a, y: ~a): a
+fun
+<a:vtype>
+gl_add11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vtype>
+gl_sub00(x: ~a, y: ~a): a
+fun
+<a:vtype>
+gl_sub11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vtype>
+gl_mul00(x: ~a, y: ~a): a
+fun
+<a:vtype>
+gl_mul11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vtype>
+gl_div00(x: ~a, y: ~a): a
+fun
+<a:vtype>
+gl_div11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vtype>
+gl_mod00(x: ~a, y: ~a): a
+fun
+<a:vtype>
+gl_mod11(x: !a, y: !a): a
+
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for gnum
 //
