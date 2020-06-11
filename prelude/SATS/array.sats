@@ -89,10 +89,10 @@ a0ptr_clear
 fun
 <a:vt>
 a0ref_make(x0: a): a0ref(a)
-//
 fun
 <a:vt>
 a0ptr_make(x0: a): a0ptr(a)
+//
 fun
 <a:vt>
 a0ptr_free(A0: a0ptr(a)): void
@@ -121,13 +121,17 @@ fun<>
 a0ref_print$beg(): void
 fun<>
 a0ref_print$end(): void
+fun<>
+a0ptr_print$beg(): void
+fun<>
+a0ptr_print$end(): void
 //
 fun
 <a:vt>
 a0ref_print(A0: a0ref(a)): void
 fun
 <a:vt>
-a0ptr_print(A0: !a0ptr(a)): void
+a0ptr_print( !a0ptr(a) ): void
 //
 (* ****** ****** *)
 //
@@ -155,6 +159,7 @@ a1ref_make_nval
 {n:nat}
 ( asz
 : int(n), ini: a): a1ref(a, n)
+//
 fun
 <a:vt>
 a1ptr_make_nval
@@ -187,8 +192,6 @@ a1ref_set_at
 ( A0:
   a1ref(a, n), i0: nintlt(n), x0: a): void
 //
-(* ****** ****** *)
-//
 fun
 <a:t0>
 a1ptr_get_at
@@ -207,6 +210,14 @@ fun<>
 a1ref_print$beg(): void
 fun<>
 a1ref_print$end(): void
+fun<>
+a1ref_print$sep(): void
+fun<>
+a1ptr_print$beg(): void
+fun<>
+a1ptr_print$end(): void
+fun<>
+a1ptr_print$sep(): void
 //
 fun
 <a:vt>
@@ -216,12 +227,18 @@ fun
 a1ptr_print(A0: !a1ptr(a)): void
 //
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 a1ref_streamize
-{n:int}(A0: a1ref(a, n)): stream_vt(a)
-
+{n:int}
+(A0: a1ref(a, n)): stream_vt(a)
+fun
+<a:vt>
+a1ptr_streamize
+{n:int}
+(A0: a1ptr(a, n)): stream_vt(a)
+//
 (* ****** ****** *)
 //
 fun
