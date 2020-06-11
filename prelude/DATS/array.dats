@@ -25,8 +25,6 @@ a0ref_make(x0) =
 a0ptr2ref
 (a0ptr_make<a>(x0))
 //
-(* ****** ****** *)
-
 impltmp
 <a:vt>
 a0ptr_make(x0) =
@@ -40,70 +38,16 @@ $UN.p2tr_set<a>(p0, x0)
 in
 $UN.castlin10{a0ptr(a)}(A0)
 end
-
+//
 (* ****** ****** *)
 //
-impltmp
-<a:vt>
-a0ref_get(A0) =
-let
-val p0 =
-$UN.cast10{p2tr(a)}(A0)
-in
-let
-val x0 =
-$UN.p2tr_get<a>(p0)
-val x1 = g_copy<a>(x0)
-val () =
-$UN.p2tr_ret<a>(p0, x0) in x1
-end
-end
-//
-impltmp
-<a:vt>
-a0ref_set(A0, x1) =
-let
-val p0 =
-$UN.cast10{p2tr(a)}(A0)
-in
-let
-val x0 =
-$UN.p2tr_get<a>(p0)
-val () = g_free<a>(x0)
-val () =
-$UN.p2tr_set<a>(p0, x1) in ()
-end
-end
 impltmp
 <a:t0>
-a0ref_set(A0, x1) =
-let
-val p0 =
-$UN.cast10{p2tr(a)}(A0)
-in
-let
-val () =
-$UN.p2tr_set<a>(p0, x1) in ()
-end
-end
-//
-(* ****** ****** *)
-//
-impltmp
-<a:vt>
 a0ref_print(A0) =
 let
-val x0 =
-a0ref_get<a>(A0)
-val () =
-a0ref_print$beg<>()
-val () =
-let
-val () =
-g_print<a>(x0) in g_free<a>(x0)
-end
-val () =
-a0ref_print$end<>()
+val () = a0ref_print$beg<>()
+val () = g_print<a>(get(A0))
+val () = a0ref_print$end<>()
 end
 //
 impltmp
