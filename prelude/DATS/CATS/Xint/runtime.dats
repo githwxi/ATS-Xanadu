@@ -432,10 +432,30 @@ strptr_set_at<> = xint_strptr_set_at
 // Please note that
 // [a] is boxed in Xinterp
 //
+#extern
+fun
+xint_a0ref_get
+{a:type}
+(A0: a0ref(a)): a
+#extern
+fun
+xint_a0ref_set
+{a:type}
+(A0: a0ref(a), x0: a): void
+//
+impltmp
+{a:type}
+a0ref_get<a>
+(A0) = xint_a0ref_get{a}(A0)
+impltmp
+{a:type}
+a0ref_set<a>
+(A0, x0) = xint_a0ref_set{a}(A0, x0)
+//
+#extern
 fun
 xint_a0ptr_alloc
 {a:type}((*void*)): a0ptr(?a)
-//
 impltmp
 {a:type}
 a0ptr_alloc<a>() = xint_a0ptr_alloc()
