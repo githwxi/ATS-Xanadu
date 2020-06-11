@@ -112,20 +112,8 @@ strmcon_vt_cons
 (* ****** ****** *)
 //
 impltmp
-<a:t0>
-a1ref_forall
-  (A0) =
-(
-a1ref_forall0<a>(A0)
-) where
-{
-impltmp
-forall0$test<a> = forall$test<a>
-}
-//
-impltmp
 <a:vt>
-a1ref_forall0
+a1ref_forall
   {n}(A0) =
 (
   loop(0(*i0*))
@@ -145,30 +133,18 @@ then
 let
 val
 test =
-forall0$test<a>(sub(A0, i0))
+forall$test<a>(sub(A0, i0))
 in
 if test then loop(succ(i0)) else false
 end else false // end of [if]
 //
-} (* end of [a1ref_forall0] *)
+} (* end of [a1ref_forall] *)
 //
 (* ****** ****** *)
 //
 impltmp
 <a:t0>
 a1ref_foreach
-  (A0) =
-(
-a1ref_foreach0<a>(A0)
-) where
-{
-impltmp
-foreach0$work<a> = foreach$work<a>
-}
-//
-impltmp
-<a:vt>
-a1ref_foreach0
   {n}(A0) =
 (
   loop(0(*i0*))
@@ -189,25 +165,24 @@ then
   loop(succ(i0))
 ) where
 {
-  val () =
-  foreach0$work<a>(sub(A0, i0))
+  val () = foreach$work<a>(sub(A0, i0))
 }
 //
-} (* end of [a1ref_foreach0] *)
+} (* end of [a1ref_foreach] *)
 //
 (* ****** ****** *)
 //
 // For gseq-operations
 //
 (* ****** ****** *)
-
+//
 impltmp
 {a:t0}{n:i0}
 gseq_length
 <a,a1ref(a,n)> = a1ref_length<a><n>
-
+//
 (* ****** ****** *)
-
+//
 impltmp
 {a:t0}{n:i0}
 gseq_forall
@@ -216,7 +191,7 @@ impltmp
 {a:t0}{n:i0}
 gseq_foreach
 <a,a1ref(a,n)> = a1ref_foreach<a><n>
-
+//
 (* ****** ****** *)
 
 (* end of [array.dats] *)
