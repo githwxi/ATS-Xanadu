@@ -68,12 +68,10 @@ impltmp
 a1ref_make_nval
   (asz, ini) =
 (
-  a1ptr2ref
-  (a1ptr_make_nval<a>(asz, ini))
+a1ptr2ref
+(a1ptr_make_nval<a>(asz, ini))
 )
 //
-(* ****** ****** *)
-
 impltmp
 <a>(*tmp*)
 a1ptr_make_nval
@@ -119,7 +117,77 @@ in
 end // end of [else]
 )
 } (* end of [a1ptr_make_nval] *)
-
+//
+(* ****** ****** *)
+//
+impltmp
+<a:t0>
+a1ref_make_list
+( xs ) =
+( a1ptr2ref
+  (a1ptr_make_list<a>(xs))
+)
+//
+impltmp
+<a:t0>
+a1ptr_make_list
+  {n}(xs) =
+let
+val n0 =
+length(xs)
+val A0 =
+a1ptr_alloc(n0)
+val () =
+gseq_iforeach(xs) where
+{
+impltmp
+iforeach$work<a>(i, x) =
+let
+val i =
+$UN.cast10{nintlt(n)}(i)
+in
+  a1ptr_set_at_raw<a>(A0, i, x)
+end
+}
+in
+  $UN.castlin10{a1ptr(a,n)}(A0)
+end // end of [a1ptr_make_list]
+//
+(* ****** ****** *)
+//
+impltmp
+<a:vt>
+a1ref_make_list_vt
+( xs ) =
+( a1ptr2ref
+  (a1ptr_make_list_vt<a>(xs))
+)
+//
+impltmp
+<a:vt>
+a1ptr_make_list_vt
+  {n}(xs) =
+let
+val n0 =
+length(xs)
+val A0 =
+a1ptr_alloc(n0)
+val () =
+glseq_iforeach0(xs) where
+{
+impltmp
+iforeach0$work<a>(i, x) =
+let
+val i =
+$UN.cast10{nintlt(n)}(i)
+in
+  a1ptr_set_at_raw<a>(A0, i, x)
+end
+}
+in
+  $UN.castlin10{a1ptr(a,n)}(A0)
+end // end of [a1ptr_make_list_vt]
+//
 (* ****** ****** *)
 //
 impltmp
@@ -163,7 +231,7 @@ strmcon_vt_cons
 (* ****** ****** *)
 //
 impltmp
-<a:vt>
+<a:t0>
 a1ref_forall
   {n}(A0) =
 (
@@ -220,6 +288,35 @@ then
 }
 //
 } (* end of [a1ref_foreach] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a:t0>
+a1ref_rforall
+  {n}(A0) =
+(
+loop(length(A0))
+) where
+{
+//
+fun
+loop
+{i:nat
+|i<=n}(i0: sint(i)): bool =
+if
+(i0 > 0)
+then
+let
+val i1 = pred(i0)
+val
+test =
+rforall$test<a>(sub(A0, i1))
+in
+  if test then loop(i1) else false
+end else false // end of [if]
+//
+} (* end of [a1ref_rforall] *)
 //
 (* ****** ****** *)
 //

@@ -170,6 +170,30 @@ a1ptr_make_nval
 (* ****** ****** *)
 //
 fun
+<a:t0>
+a1ref_make_list
+{n:int}
+( xs: list(a, n) ): a1ref(a, n)
+fun
+<a:t0>
+a1ptr_make_list
+{n:int}
+( xs: list(a, n) ): a1ptr(a, n)
+//
+fun
+<a:vt>
+a1ref_make_list_vt
+{n:int}
+(xs: list_vt(a, n)): a1ref(a, n)
+fun
+<a:vt>
+a1ptr_make_list_vt
+{n:int}
+(xs: list_vt(a, n)): a1ptr(a, n)
+//
+(* ****** ****** *)
+//
+fun
 <a:vt>
 <n:int>
 a1ref_length(a1ref(a, n)): int(n)
@@ -284,6 +308,17 @@ fun
 <x0:vt>
 a1ref_foreach0
 {n:int}(A0: a1ref(x0, n)): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+a1ref_rforall
+{n:int}(A0: a1ref(x0, n)): bool
+fun
+<x0:vt>
+a1ref_rforall0
+{n:int}(A0: a1ref(x0, n)): bool
 //
 (* ****** ****** *)
 //

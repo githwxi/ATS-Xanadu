@@ -157,6 +157,39 @@ glseq_map1_list(!xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
+// For gseq-i-operations
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
+glseq_iexists0(~xs): bool
+fun
+<x0:vt
+,xs:vt>
+glseq_iexists1(!xs): bool
+//
+fun
+<x0:vt
+,xs:vt>
+glseq_iforall0(~xs): bool
+fun
+<x0:vt
+,xs:vt>
+glseq_iforall1(!xs): bool
+//
+fun
+<x0:vt
+,xs:vt>
+glseq_iforeach0(~xs): void
+fun
+<x0:vt
+,xs:vt>
+glseq_iforeach1(!xs): void
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt
 ,xs:vt>
