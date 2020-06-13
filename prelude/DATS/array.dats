@@ -65,10 +65,61 @@ a0ref_print$end() = string_print("]")
 //
 impltmp
 <a:vt>
-a1ref_make_nval(asz, ini) =
-a1ptr2ref
-(a1ptr_make_nval<a>(asz, ini))
+a1ref_make_nval
+  (asz, ini) =
+(
+  a1ptr2ref
+  (a1ptr_make_nval<a>(asz, ini))
+)
 //
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+a1ptr_make_nval
+  {n}(n0, x0) =
+(
+let
+val A0 =
+a1ptr_alloc(n0)
+in
+loop(A0, 0(*i0*), x0)
+end
+) where
+{
+fun
+loop
+{i:nat
+|i<=n}.<n-i>.
+( A0
+: a1ptr
+  (?a, n)
+, i0
+: int(i)
+, x0: a): a1ptr(a, n) =
+(
+if
+(i0 < n0)
+then
+let
+val
+i1 =
+succ(i0) in loop(A0, i1, x0)
+end where
+{
+val x1 = g_copy<a>(x0)
+val () =
+a1ptr_set_at_raw<a>(A0, i0, x1)
+} (*end of [then]*)
+else
+let
+val () = g_free<a>(x0)
+in
+  $UN.castlin10{a1ptr(a,n)}(A0)
+end // end of [else]
+)
+} (* end of [a1ptr_make_nval] *)
+
 (* ****** ****** *)
 //
 impltmp

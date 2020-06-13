@@ -184,25 +184,51 @@ fun
 <a:t0>
 a1ref_get_at
 {n:int}
-(A0: a1ref(a, n), i0: nintlt(n)): a
+( A0
+: a1ref(a, n), i0: nintlt(n)): a
+fun
+<a:t0>
+a1ptr_get_at
+{n:int}
+( A0:
+! a1ptr(a, n), i0: nintlt(n)): a
+//
 fun
 <a:t0>
 a1ref_set_at
 {n:int}
 ( A0:
-  a1ref(a, n), i0: nintlt(n), x0: a): void
-//
-fun
-<a:t0>
-a1ptr_get_at
-{n:int}
-(A0: !a1ptr(a, n), i0: nintlt(n)): a
+  a1ref(a, n)
+, i0: nintlt(n), x0: a(*new*)): void
 fun
 <a:t0>
 a1ptr_set_at
 {n:int}
 ( A0:
-! a1ptr(a, n), i0: nintlt(n), x0: a): void
+! a1ptr(a, n)
+, i0: nintlt(n), x0: a(*new*)): void
+fun
+<a:vt>
+a1ptr_set_at_raw
+{n:int}
+( A0:
+! a1ptr(?a, n)
+, i0: nintlt(n), x0: a(*ini*)): void
+//
+fun
+<a:t0>
+a1ref_exch_at
+{n:int}
+( A0:
+  a1ref(a, n)
+, i0: nintlt(n), x0: a(*new*)): a(*old*)
+fun
+<a:vt>
+a1ptr_exch_at
+{n:int}
+( A0:
+! a1ptr(a, n)
+, i0: nintlt(n), x0: a(*new*)): a(*old*)
 //
 (* ****** ****** *)
 //
