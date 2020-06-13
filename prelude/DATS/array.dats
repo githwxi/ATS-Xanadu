@@ -325,20 +325,35 @@ end else false // end of [if]
 (* ****** ****** *)
 //
 impltmp
-{a:t0}{n:i0}
+{a:t0}
+{n:i0}
 gseq_length
 <a,a1ref(a,n)> = a1ref_length<a><n>
 //
 (* ****** ****** *)
 //
 impltmp
-{a:t0}{n:i0}
+{a:t0}
+{n:i0}
 gseq_forall
 <a,a1ref(a,n)> = a1ref_forall<a><n>
 impltmp
-{a:t0}{n:i0}
+{a:t0}
+{n:i0}
 gseq_foreach
 <a,a1ref(a,n)> = a1ref_foreach<a><n>
+//
+(* ****** ****** *)
+//
+impltmp
+{a:t0}
+{n:i0}
+gseq_unlist
+<a,a1ref(a,n)> = a1ref_make_list<a><n>
+impltmp
+{a:vt}{n:i0}
+gseq_unlist_vt
+<a,a1ref(a,n)> = a1ref_make_list_vt<a><n>
 //
 (* ****** ****** *)
 
