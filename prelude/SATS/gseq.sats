@@ -411,7 +411,21 @@ gseq_ifilter_rlist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
-// For 2-gseq-operations
+fun
+<x0:t0
+,xs:t0>
+gseq_mergesort(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_permutize(xs: xs): stream_vt(xs)
+//
+(* ****** ****** *)
+//
+// For z2-gseq-operations
 //
 (* ****** ****** *)
 //
@@ -465,6 +479,23 @@ fun
 ,xs:t0>
 <y0:t0
 ,ys:t0>
+gseq_z2listize
+(xs, ys): list_vt(@(x0, y0))
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+gseq_z2streamize
+(xs, ys): stream_vt(@(x0, y0))
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
 <z0:vt>
 gseq_z2map_list
   (xs: xs, ys: ys): list_vt(z0)
@@ -476,20 +507,6 @@ fun
 <z0:vt>
 gseq_z2map_rlist
   (xs: xs, ys: ys): list_vt(z0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0
-,xs:t0>
-gseq_mergesort(xs: xs): (xs)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0
-,xs:t0>
-gseq_permutize(xs: xs): stream_vt(xs)
 //
 (* ****** ****** *)
 //

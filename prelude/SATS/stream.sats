@@ -103,8 +103,8 @@ stream_concat
 (* ****** ****** *)
 //
 fun
-<x:t0>
-stream_forall(xs: stream(x0)): bool
+<a:t0>
+stream_forall(xs: stream(a)): bool
 (*
 fun
 <x0:t0>
