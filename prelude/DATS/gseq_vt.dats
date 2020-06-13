@@ -141,6 +141,23 @@ stream_vt_forall0<x0>
 //
 impltmp
 <x0,xs>
+glseq_exists0
+  (xs) = let
+//
+  impltmp
+  forall0$test<x0>(x0) =
+  not(exists0$test<x0>(x0))
+//
+in
+  if
+  glseq_forall0
+  <x0,xs>(xs) then false else true
+end // end of [glseq_exists0/forall0]
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
 glseq_foreach0(xs) =
 let
 val
@@ -176,7 +193,7 @@ in
 end // end of [glseq_foreach1/forall1]
 //
 (* ****** ****** *)
-
+//
 impltmp
 <x0,xs>
 glseq_iforall0(xs) =
@@ -201,12 +218,40 @@ $UN.p2tr_set<nint>(p0, succ(i0))
 }
 in
   glseq_forall0<x0,xs>(xs)
-end (* end of [glseq_forall] *)
+end (* end of [glseq_forall0] *)
 //
 end // end of [glseq_iforall0/forall0]
-
+//
+impltmp
+<x0,xs>
+glseq_iforall1(xs) =
+let
+//
+var i0: nint = 0
+val p0 = $addr(i0)
+//
+in
+//
+let
+impltmp
+forall1$test<x0>(x0) =
+(
+iforall1$test<x0>(i0, x0)
+) where
+{
+val i0 =
+$UN.p2tr_get<nint>(p0)
+val () =
+$UN.p2tr_set<nint>(p0, succ(i0))
+}
+in
+  glseq_forall1<x0,xs>(xs)
+end (* end of [glseq_forall1] *)
+//
+end // end of [glseq_iforall1/forall1]
+//
 (* ****** ****** *)
-
+//
 impltmp
 <x0,xs>
 glseq_iforeach0(xs) =
@@ -218,13 +263,33 @@ glseq_iforall0<x0,xs>(xs) where
 impltmp
 iforall0$test<x0>(i0, x0) =
 let
-val () = iforeach0$work<x0>(i0, x0) in true
+  val () =
+  iforeach0$work<x0>(i0, x0) in true
 end
 }
 in
   // nothing
 end // end of [glseq_iforeach0/iforall0]
-
+//
+impltmp
+<x0,xs>
+glseq_iforeach1(xs) =
+let
+val
+test =
+glseq_iforall1<x0,xs>(xs) where
+{
+impltmp
+iforall1$test<x0>(i0, x0) =
+let
+  val () =
+  iforeach1$work<x0>(i0, x0) in true
+end
+}
+in
+  // nothing
+end // end of [glseq_iforeach1/iforall1]
+//
 (* ****** ****** *)
 
 (* end of [gseq_vt.dats] *)
