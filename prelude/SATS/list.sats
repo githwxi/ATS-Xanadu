@@ -100,7 +100,7 @@ list_tail_opt(xs: list(a)): optn_vt(list(a))
 fun
 <a:t0>
 list_length
-{n:int}(xs: list(a, n)): int(n)
+{n:int}(list(a, n)): int(n)
 //
 (* ****** ****** *)
 //
