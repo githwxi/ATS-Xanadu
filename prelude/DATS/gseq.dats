@@ -1090,6 +1090,19 @@ endlet (* end of [loop] *)
 // For z2-gseq-operations
 //
 (* ****** ****** *)
+//
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_z2streamize
+  (xs, ys) =
+(
+stream_vt_zip2<x0,y0>
+( gseq_streamize<x0,xs>(xs)
+, gseq_streamize<y0,ys>(ys))
+)
+//
+(* ****** ****** *)
 
 impltmp
 <x0,xs>

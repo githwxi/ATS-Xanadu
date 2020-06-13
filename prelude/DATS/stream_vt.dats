@@ -638,6 +638,53 @@ end // end of [strmcon_vt_cons]
 
 impltmp
 <x0,y0>
+stream_vt_zip2
+  (xs, ys) =
+(
+  auxmain(xs, ys)
+) where
+{
+fun
+auxmain
+( xs
+: stream_vt(x0)
+, ys
+: stream_vt(y0))
+: stream_vt(@(x0, y0)) =
+$llazy
+(
+g_free(xs);
+g_free(ys);
+case+ !xs of
+//
+| ~
+strmcon_vt_nil
+((*void*)) =>
+(g_free(ys); strmcon_vt_nil())
+//
+| ~
+strmcon_vt_cons
+( x0, xs ) =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil
+((*void*)) =>
+( g_free(x0)
+; g_free(xs); strmcon_vt_nil())
+| ~
+strmcon_vt_cons
+( y0, ys ) =>
+strmcon_vt_cons((x0, y0), auxmain(xs, ys))
+) (* strmcon_vt_cons *)
+//
+)
+} (* end of [stream_vt_zip2] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,y0>
 stream_vt_z2forall0
   (xs, ys) =
 (

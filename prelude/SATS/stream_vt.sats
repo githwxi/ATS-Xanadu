@@ -201,6 +201,17 @@ stream_vt_mapopt0
 //
 (* ****** ****** *)
 //
+// For 2-gseq-operations
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,y0:vt>
+stream_vt_zip2
+( xs: stream_vt(x0)
+, ys: stream_vt(y0)): stream_vt(@(x0, y0))
+//
 fun
 <x0:vt
 ,y0:vt>
