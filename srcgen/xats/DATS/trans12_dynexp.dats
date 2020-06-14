@@ -3240,226 +3240,6 @@ end // end of [local]
 (* ****** ****** *)
 
 fun
-aux_valdecl
-( d1cl
-: d1ecl): d2ecl =
-aux_valdecl_nrc(d1cl)
-
-and
-aux_valdecl_nrc
-( d1cl
-: d1ecl): d2ecl = let
-//
-val
-loc0 = d1cl.loc()
-val-
-D1Cvaldecl
-( knd
-, mopt
-, v1ds) = d1cl.node()
-//
-val
-isr =
-decmodopt_rec(mopt)
-val
-isr =
-(
-ifcase
-| isr > 0 => true
-| isr < 0 => false
-| _(* default *) => false
-) : bool // endval
-//
-val d2ps = auxv1ds_d2p(v1ds)
-//
-val ((*void*)) =
-if isr
-then the_trans12_add_patlst(d2ps)
-else ((*void*))
-//
-val v2ds = auxv1ds_d2c(v1ds, d2ps)
-//
-val ((*void*)) =
-if not(isr)
-then the_trans12_add_patlst(d2ps)
-else ((*void*))
-//
-in
-  d2ecl_make_node
-  (loc0, D2Cvaldecl(knd, mopt, v2ds))
-end where
-{
-//
-fun
-auxv1d0_d2p
-( v1d0
-: v1aldecl): d2pat =
-let
-//
-val+
-V1ALDECL(rcd) = v1d0
-//
-in
-  trans12_dpat(rcd.pat)
-end // end of [auxv1d0_d2p]
-fun
-auxv1ds_d2p
-( v1ds
-: v1aldeclist): d2patlst =
-list_vt2t
-(
-list_map<v1aldecl><d2pat>(v1ds)
-) where
-{
-implement
-list_map$fopr<v1aldecl><d2pat>(x0) = auxv1d0_d2p(x0)
-} (* end of [auxv1ds_d2p] *)
-//
-fun
-auxv1d0_d2c
-( v1d0
-: v1aldecl
-, d2p0: d2pat): v2aldecl = let
-//
-val+
-V1ALDECL(rcd) = v1d0
-//
-val def = trans12_dexpopt(rcd.def)
-//
-val wtp =
-(
-case+ rcd.wtp of
-| WTHS1EXPnone
-    ((*void*)) => None()
-| WTHS1EXPsome
-    (tok, s1e) => Some(trans12_sexp(s1e))
-) : s2expopt // end of [val]
-//
-in
-  V2ALDECL
-  (@{loc=rcd.loc,pat=d2p0,def=def,wtp=wtp})
-end // end of [auxv1d0_d2c]
-fun
-auxv1ds_d2c
-( v1ds
-: v1aldeclist
-, d2ps: d2patlst): v2aldeclist =
-(
-case+ v1ds of
-| list_nil() =>
-  list_nil()
-| list_cons(v1d0, v1ds) =>
-  let
-  val-
-  list_cons(d2p0, d2ps) = d2ps
-  in
-    list_cons
-    (auxv1d0_d2c(v1d0, d2p0), auxv1ds_d2c(v1ds, d2ps))
-  end
-) (* end of [auxv1ds_d2c] *)
-//
-} (* end of [aux_valdecl] *)
-
-(* ****** ****** *)
-
-fun
-aux_vardecl
-( d1cl
-: d1ecl): d2ecl = let
-//
-val
-loc0 = d1cl.loc()
-//
-val-
-D1Cvardecl
-( knd
-, mopt
-, v1ds) = d1cl.node()
-//
-val v2ds = auxv1ds(v1ds)
-//
-in
-  d2ecl_make_node
-  (loc0, D2Cvardecl(knd, mopt, v2ds))
-end where
-{
-//
-fun
-auxv1d0
-( v1d0
-: v1ardecl
-)
-: v2ardecl = let
-//
-val+
-V1ARDECL(rcd) = v1d0
-//
-val loc = rcd.loc
-//
-val
-d2v =
-d2var_new1(rcd.nam)
-//
-val wth =
-(
-case+ rcd.wth of
-| None() => None()
-| Some(wth) =>
-  Some(d2var_new1(wth))
-) : d2varopt // end-of-val
-//
-val res =
-(
-case+ rcd.res of
-| None() => None()
-| Some(s1e) =>
-  Some(trans12_sexp(s1e))
-) : s2expopt // end-of-val
-//
-val ini =
-(
-case+ rcd.ini of
-| TEQD1EXPnone
-  ((*void*)) => None()
-| TEQD1EXPsome
-  (teq, d1e) =>
-  Some(trans12_dexp(d1e))
-) : d2expopt // end-of-val
-//
-val () = the_dexpenv_add_var(d2v)
-//
-val () =
-(
-case+ wth of
-| None() => ()
-| Some(d2v) => the_dexpenv_add_var(d2v)
-)
-//
-in
-//
-V2ARDECL
-(@{loc=loc,d2v= d2v,wth=wth,res=res,ini=ini})
-//
-end // end of [auxv1d0]
-//
-and
-auxv1ds
-( v1ds
-: v1ardeclist): v2ardeclist =
-list_vt2t
-(
-list_map<v1ardecl><v2ardecl>(v1ds)
-) where
-{
-implement
-list_map$fopr<v1ardecl><v2ardecl>(v1d) = auxv1d0(v1d)
-} (* end of [auxv1ds] *)
-//
-} (* end of [aux_vardecl] *)
-
-(* ****** ****** *)
-
-fun
 aux_fundecl
 ( d1cl
 : d1ecl): d2ecl = let
@@ -3761,6 +3541,226 @@ case+ d2cs of
 )
 //
 } (* end of [aux_fundecl] *)
+
+(* ****** ****** *)
+
+fun
+aux_valdecl
+( d1cl
+: d1ecl): d2ecl =
+aux_valdecl_nrc(d1cl)
+
+and
+aux_valdecl_nrc
+( d1cl
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1cl.loc()
+val-
+D1Cvaldecl
+( knd
+, mopt
+, v1ds) = d1cl.node()
+//
+val
+isr =
+decmodopt_rec(mopt)
+val
+isr =
+(
+ifcase
+| isr > 0 => true
+| isr < 0 => false
+| _(* default *) => false
+) : bool // endval
+//
+val d2ps = auxv1ds_d2p(v1ds)
+//
+val ((*void*)) =
+if isr
+then the_trans12_add_patlst(d2ps)
+else ((*void*))
+//
+val v2ds = auxv1ds_d2c(v1ds, d2ps)
+//
+val ((*void*)) =
+if not(isr)
+then the_trans12_add_patlst(d2ps)
+else ((*void*))
+//
+in
+  d2ecl_make_node
+  (loc0, D2Cvaldecl(knd, mopt, v2ds))
+end where
+{
+//
+fun
+auxv1d0_d2p
+( v1d0
+: v1aldecl): d2pat =
+let
+//
+val+
+V1ALDECL(rcd) = v1d0
+//
+in
+  trans12_dpat(rcd.pat)
+end // end of [auxv1d0_d2p]
+fun
+auxv1ds_d2p
+( v1ds
+: v1aldeclist): d2patlst =
+list_vt2t
+(
+list_map<v1aldecl><d2pat>(v1ds)
+) where
+{
+implement
+list_map$fopr<v1aldecl><d2pat>(x0) = auxv1d0_d2p(x0)
+} (* end of [auxv1ds_d2p] *)
+//
+fun
+auxv1d0_d2c
+( v1d0
+: v1aldecl
+, d2p0: d2pat): v2aldecl = let
+//
+val+
+V1ALDECL(rcd) = v1d0
+//
+val def = trans12_dexpopt(rcd.def)
+//
+val wtp =
+(
+case+ rcd.wtp of
+| WTHS1EXPnone
+    ((*void*)) => None()
+| WTHS1EXPsome
+    (tok, s1e) => Some(trans12_sexp(s1e))
+) : s2expopt // end of [val]
+//
+in
+  V2ALDECL
+  (@{loc=rcd.loc,pat=d2p0,def=def,wtp=wtp})
+end // end of [auxv1d0_d2c]
+fun
+auxv1ds_d2c
+( v1ds
+: v1aldeclist
+, d2ps: d2patlst): v2aldeclist =
+(
+case+ v1ds of
+| list_nil() =>
+  list_nil()
+| list_cons(v1d0, v1ds) =>
+  let
+  val-
+  list_cons(d2p0, d2ps) = d2ps
+  in
+    list_cons
+    (auxv1d0_d2c(v1d0, d2p0), auxv1ds_d2c(v1ds, d2ps))
+  end
+) (* end of [auxv1ds_d2c] *)
+//
+} (* end of [aux_valdecl] *)
+
+(* ****** ****** *)
+
+fun
+aux_vardecl
+( d1cl
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1cl.loc()
+//
+val-
+D1Cvardecl
+( knd
+, mopt
+, v1ds) = d1cl.node()
+//
+val v2ds = auxv1ds(v1ds)
+//
+in
+  d2ecl_make_node
+  (loc0, D2Cvardecl(knd, mopt, v2ds))
+end where
+{
+//
+fun
+auxv1d0
+( v1d0
+: v1ardecl
+)
+: v2ardecl = let
+//
+val+
+V1ARDECL(rcd) = v1d0
+//
+val loc = rcd.loc
+//
+val
+d2v =
+d2var_new1(rcd.nam)
+//
+val wth =
+(
+case+ rcd.wth of
+| None() => None()
+| Some(wth) =>
+  Some(d2var_new1(wth))
+) : d2varopt // end-of-val
+//
+val res =
+(
+case+ rcd.res of
+| None() => None()
+| Some(s1e) =>
+  Some(trans12_sexp(s1e))
+) : s2expopt // end-of-val
+//
+val ini =
+(
+case+ rcd.ini of
+| TEQD1EXPnone
+  ((*void*)) => None()
+| TEQD1EXPsome
+  (teq, d1e) =>
+  Some(trans12_dexp(d1e))
+) : d2expopt // end-of-val
+//
+val () = the_dexpenv_add_var(d2v)
+//
+val () =
+(
+case+ wth of
+| None() => ()
+| Some(d2v) => the_dexpenv_add_var(d2v)
+)
+//
+in
+//
+V2ARDECL
+(@{loc=loc,d2v= d2v,wth=wth,res=res,ini=ini})
+//
+end // end of [auxv1d0]
+//
+and
+auxv1ds
+( v1ds
+: v1ardeclist): v2ardeclist =
+list_vt2t
+(
+list_map<v1ardecl><v2ardecl>(v1ds)
+) where
+{
+implement
+list_map$fopr<v1ardecl><v2ardecl>(v1d) = auxv1d0(v1d)
+} (* end of [auxv1ds] *)
+//
+} (* end of [aux_vardecl] *)
 
 (* ****** ****** *)
 
@@ -4994,11 +4994,10 @@ d1cl.node() of
 | D1Cabsopen _ => aux_absopen(d1cl)
 | D1Cabsimpl _ => aux_absimpl(d1cl)
 //
-| D1Cvaldecl _ => aux_valdecl(d1cl)
-//
-| D1Cvardecl _ => aux_vardecl(d1cl)
-//
 | D1Cfundecl _ => aux_fundecl(d1cl)
+//
+| D1Cvaldecl _ => aux_valdecl(d1cl)
+| D1Cvardecl _ => aux_vardecl(d1cl)
 //
 | D1Cimpdecl _ => aux_impdecl(d1cl)
 //

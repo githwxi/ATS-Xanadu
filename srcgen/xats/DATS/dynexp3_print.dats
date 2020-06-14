@@ -792,25 +792,23 @@ x0.node() of
   , "D3Cabsimpl("
   , knd(*abskind*), "; ", sqid, "; ", def0, ")")
 //
-| D3Cvaldecl
-  (knd, mopt, v3ds) =>
-  fprint!
-  ( out
-  , "D3Cvaldecl("
-  , knd, "; ", mopt, "; ", v3ds, ")")
-| D3Cvardecl
-  (knd, mopt, v3ds) =>
-  fprint!
-  ( out
-  , "D3Cvardecl("
-  , knd, "; ", mopt, "; ", v3ds, ")")
-//
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>
   fprint!
   ( out
   , "D3Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f3ds, ")")
+//
+| D3Cvaldecl
+  (knd, mopt, v3ds) =>
+  fprint!
+  ( out
+  , "D3Cvaldecl(", knd, "; ", mopt, "; ", v3ds, ")")
+| D3Cvardecl
+  (knd, mopt, v3ds) =>
+  fprint!
+  ( out
+  , "D3Cvardecl(", knd, "; ", mopt, "; ", v3ds, ")")
 //
 | D3Cimpdecl1
   ( knd, mopt

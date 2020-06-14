@@ -744,6 +744,13 @@ case- x0.node() of
   , "D2Cynconst("
   , knd, "; ", tqas, "; ", d2cs, ")")
 //
+| D2Cfundecl
+  (knd, mopt, tqas, f2ds) =>
+  fprint!
+  ( out
+  , "D2Cfundecl("
+  , knd, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
+//
 | D2Cvaldecl
   (knd, mopt, v2ds) =>
   fprint!
@@ -756,13 +763,6 @@ case- x0.node() of
   ( out
   , "D2Cvardecl("
   , knd, "; ", mopt, "; ", v2ds, ")")
-//
-| D2Cfundecl
-  (knd, mopt, tqas, f2ds) =>
-  fprint!
-  ( out
-  , "D2Cfundecl("
-  , knd, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
 //
 | D2Cimpdecl1
   ( knd, mopt, sqas, tqas

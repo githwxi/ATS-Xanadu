@@ -60,7 +60,7 @@ impltmp
 stream_vt_free(xs) = $free(xs)
 //
 impltmp
-<a>(*tmp*)
+{a:vt}
 g_free<stream_vt(a)> = stream_vt_free<a>
 //
 (* ****** ****** *)

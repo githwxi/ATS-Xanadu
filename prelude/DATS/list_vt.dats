@@ -100,7 +100,7 @@ end
 } (* end of [list_vt_free] *)
 //
 impltmp
-<a>(*tmp*)
+{a:vt}(*tmp*)
 g_free<list_vt(a)> = list_vt_free<a>
 //
 (* ****** ****** *)
@@ -436,7 +436,7 @@ then loop(xs)
 else
 let
 val () =
-list_vt_free(xs) in false end
+list_vt_free<a>(xs) in false end
 //
 end // end of [list_vt_cons]
 )

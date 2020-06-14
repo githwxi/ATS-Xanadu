@@ -796,14 +796,15 @@ d3ecl_node =
   ( token(*abskind*)
   , impls2cst, s2exp(*definition*) )
 //
+| D3Cfundecl of
+  ( token(*funknd*)
+  , decmodopt
+  , tq2arglst(*tmpargs*), f3undeclist)
+//
 | D3Cvaldecl of
   (token(*knd*), decmodopt, v3aldeclist)
 | D3Cvardecl of
   (token(*knd*), decmodopt, v3ardeclist)
-//
-| D3Cfundecl of
-  ( token(*funkind*)
-  , decmodopt, tq2arglst(*tmpargs*), f3undeclist)
 //
 | D3Cimpdecl1 of
   ( token(*impkind*)

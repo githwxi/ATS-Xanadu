@@ -957,27 +957,28 @@ case+ x0.node() of
 | D0Cabsimpl
   (tok, sqid, smas, res0, teq1, def2) =>
   fprint!
-  ( out, "D0Cabsimpl("
+  ( out
+  , "D0Cabsimpl("
   , tok, "; ", sqid, "; "
   , smas, "; ", res0, "; ", teq1, "; ", def2, ")")
+//
+| D0Cfundecl
+  (tok, mopt, tqas, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cfundecl("
+  , tok, "; ", mopt, "; ", tqas, "; ", d0cs, ")")
 //
 | D0Cvaldecl
   (tok, mopt, d0cs) =>
   fprint!
   ( out
   , "D0Cvaldecl(", tok, "; ", mopt, "; ", d0cs, ")")
-//
 | D0Cvardecl
   (tok, mopt, d0cs) =>
   fprint!
   ( out
   , "D0Cvardecl(", tok, "; ", mopt, "; ", d0cs, ")")
-//
-| D0Cfundecl
-  (tok, mopt, tqas, d0cs) =>
-  fprint!
-  ( out
-  , "D0Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d0cs, ")")
 //
 | D0Cimpdecl
   ( tok, mopt, sqas, tqas

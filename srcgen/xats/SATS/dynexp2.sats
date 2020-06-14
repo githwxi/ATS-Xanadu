@@ -1144,15 +1144,15 @@ d2ecl_node =
 | D2Cdynconst of
   (token(*dctkind*), tq2arglst, d2cstlst)
 //
-| D2Cvaldecl of
-  (token(*valknd*), decmodopt, v2aldeclist)
-//
-| D2Cvardecl of
-  (token(*varknd*), decmodopt, v2ardeclist)
-//
 | D2Cfundecl of
   ( token(*funkind*)
-  , decmodopt, tq2arglst(*tmpargs*), f2undeclist)
+  , decmodopt
+  , tq2arglst(*tmpargs*), f2undeclist)
+//
+| D2Cvaldecl of
+  (token(*valknd*), decmodopt, v2aldeclist)
+| D2Cvardecl of
+  (token(*varknd*), decmodopt, v2ardeclist)
 //
 | D2Cimpdecl1 of
   ( token(*impkind*)

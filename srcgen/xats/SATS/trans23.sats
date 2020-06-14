@@ -370,6 +370,13 @@ d3pat_tuple_up
 //
 (* ****** ****** *)
 //
+(*
+fun
+d23exp_anno
+( d3e0: d3exp
+, t2p0: t2ype ) : d3exp
+*)
+//
 fun
 d23exp_dntp
 ( d3e0: d3exp

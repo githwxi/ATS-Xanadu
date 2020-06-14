@@ -877,16 +877,16 @@ d1ecl_node =
   , sq0eid, s1marglst, sort1opt, s1exp)
   // D1Cabsimpl
 //
+| D1Cfundecl of
+  ( token(*funkind*)
+  , decmodopt
+  , tq1arglst(*tmpargs*), f1undeclist)
+//
 | D1Cvaldecl of
   ( token(*valkind*)
   , decmodopt(*rec/prf/...*), v1aldeclist)
-//
 | D1Cvardecl of
   ( token(*varkind*), decmodopt, v1ardeclist)
-//
-| D1Cfundecl of
-  ( token(*funkind*)
-  , decmodopt, tq1arglst(*tmpargs*), f1undeclist)
 //
 | D1Cimpdecl of
   ( token(*impkind*)

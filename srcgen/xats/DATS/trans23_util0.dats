@@ -929,7 +929,10 @@ case+ svs1 of
 
 implement
 d3pat_dntp
-(d3p0, t2p0) = let
+(d3p0, t2p1) = let
+//
+val loc0 = d3p0.loc()
+val t2p0 = d3p0.type()
 //
 (*
 val () =
@@ -938,23 +941,24 @@ println!
 val () =
 println!
 ("d3pat_dntp: t2p0 = ", t2p0)
+val () =
+println!
+("d3pat_dntp: t2p1 = ", t2p1)
 *)
 //
-val loc0 = d3p0.loc()
-val test =
-unify2(loc0, d3p0.type(), t2p0)
+val
+test = unify2(loc0, t2p0, t2p1)
 //
 (*
 val () =
-println!
-("d3pat_dntp: test = ", test)
+println!("d3pat_dntp: test = ", test)
 *)
 //
 in
 //
 if
 test
-then d3p0 else d3pat_tcast(d3p0, t2p0)
+then d3p0 else d3pat_tcast(d3p0, t2p1)
 //
 end // end of [d3pat_dntp]
 
@@ -1051,20 +1055,51 @@ d3exp_make_node(loc0, t2p0, d3en)
 //
 (* ****** ****** *)
 
+(*
+implement
+d23exp_anno
+(d3e0, t2p1) =
+let
+val
+loc0 = d3e0.loc()
+val
+d3e0 =
+d23exp_dntp(d3e0, t2p1)
+in
+d23exp_make_node
+(loc0, t2p1, D3Edntp(d3e0, t2p1))
+end // end of [d23exp_anno]
+*)
+
+(* ****** ****** *)
+
 implement
 d23exp_dntp
-(d3e0, t2p0) = let
+(d3e0, t2p1) = let
+//
+val t2p0 = d3e0.type()
+//
+(*
+val () =
+println!
+("d23exp_dntp: d3e0 = ", d3e0)
+val () =
+println!
+("d23exp_dntp: t2p0 = ", t2p0)
+val () =
+println!
+("d23exp_dntp: t2p1 = ", t2p1)
+*)
 //
 val
 test =
-unify2
-(d3e0.loc(), d3e0.type(), t2p0)
+unify2(d3e0.loc(), t2p0, t2p1)
 //
 in
 //
 if
 test
-then d3e0 else d3exp_tcast(d3e0, t2p0)
+then d3e0 else d3exp_tcast(d3e0, t2p1)
 //
 end // end of [d23exp_dntp]
 
@@ -1086,10 +1121,10 @@ case+ t2ps of
 list_nil() =>
 list_nil()
 |
-list_cons(t2p0, t2ps) =>
+list_cons(t2p1, t2ps) =>
 let
   val d3e0 =
-  d3exp_none0_1(loc0, t2p0)
+  d3exp_none0_1(loc0, t2p1)
 in
   list_cons(d3e0, auxt2ps(t2ps))
 end
@@ -1134,15 +1169,15 @@ let
   (d3e0, d3es) = d3es
   val+
   list_cons
-  (t2p0, t2ps) = t2ps
+  (t2p1, t2ps) = t2ps
 in
-  let
+let
   val
   d3e0 =
-  d23exp_dntp(d3e0, t2p0)
-  in
+  d23exp_dntp(d3e0, t2p1)
+in
   list_cons(d3e0, auxd3es(d3es))
-  end
+end
 end
 )
 //
@@ -1701,9 +1736,11 @@ d23exp_if0_up
 , d3e1, d3e2, opt3) =
 let
 //
+val tbtf =
+the_t2ype_bool
 val d3e1 =
-d23exp_dntp
-(d3e1, the_t2ype_bool)
+d23exp_dntp(d3e1, tbtf)
+//
 val tres =
 (
 case+ opt3 of
@@ -1905,7 +1942,8 @@ list_map<tq2arg><ti2arg>(tqas)
 ) where
 {
 implement
-list_map$fopr<tq2arg><ti2arg>(tqa) =
+list_map$fopr<tq2arg><ti2arg>
+  (tqa) =
 let
 val s2es =
 list_map<s2var><s2exp>(tqa.s2vs())
@@ -1913,21 +1951,27 @@ in
   ti2arg_make(tqa.loc(), list_vt2t(s2es))
 end where
 {
-implement
-list_map$fopr<s2var><s2exp>(s2v) = s2exp_var(s2v)
+  implement
+  list_map$fopr<s2var><s2exp>(v) = s2exp_var(v)
 }
 } (* where *)
 //
 in
 case+ tqas of
 |
-list_nil _ => tias
+list_nil() => tias
 |
-list_cons _ =>
+list_cons(_, _) =>
 (
-  case+ tias of
-  | list_nil _ => auxlst(tqas)
-  | list_cons _ => list_append(tias, auxlst(tqas))
+case+ tias of
+| list_nil _ => auxlst(tqas)
+(*
+| list_cons _ => list_append(tias, auxlst(tqas))
+*)
+// HX-2020-06-13:
+// Is this looking more "natural"?
+// Or should this be entirely excluded?
+| list_cons _ => list_append(auxlst(tqas), tias)
 )
 end // end of [join_ti2as_tq2as]
 
@@ -1964,6 +2008,7 @@ in
   auxtias_1(tqas, tias, t2ps)
 end
 end
+//
 and
 auxtias_1
 ( tqas
@@ -1980,42 +2025,49 @@ println!
 *)
 in
 case+ tqas of
+|
+list_nil() =>
+(
+  TI3ARGsome(t2ps)
+) where
+{
+val
+t2ps =
+list_vt2t
+(list_vt_reverse(t2ps))
+}
+|
+list_cons
+(tq2a, tqas) =>
+let
+  val
+  s2vs = tq2a.s2vs()
+in
+case+ tias of
 | list_nil() =>
-  (
-    TI3ARGsome(t2ps)
-  ) where
-  {
-    val t2ps =
-    list_vt2t
-    (list_vt_reverse(t2ps))
-  }
-| list_cons(tq2a, tqas) =>
   let
     val
-    s2vs = tq2a.s2vs()
+    s2es = list_nil()
+    val
+    t2ps =
+    auxtias_2(s2vs, s2es, t2ps)
   in
-    case+ tias of
-    | list_nil() => let
-      val
-      s2es = list_nil()
-      val
-      t2ps =
-      auxtias_2(s2vs, s2es, t2ps)
-      in
-        auxtias_1(tqas, tias, t2ps)
-      end
-    | list_cons
-      (ti20, tias) => let
-      val
-      s2es = ti20.s2es()
-      val
-      t2ps =
-      auxtias_2(s2vs, s2es, t2ps)
-      in
-        auxtias_1(tqas, tias, t2ps)
-      end
+    auxtias_1(tqas, tias, t2ps)
+  end
+| list_cons
+  (ti20, tias) =>
+  let
+    val
+    s2es = ti20.s2es()
+    val
+    t2ps =
+    auxtias_2(s2vs, s2es, t2ps)
+  in
+    auxtias_1(tqas, tias, t2ps)
   end
 end
+end
+//
 and
 auxtias_2
 ( s2vs
@@ -2028,56 +2080,61 @@ auxtias_2
 : List0_vt(t2ype) =
 (
 case+ s2vs of
-| list_nil
-  ((*void*)) => t2ps
-| list_cons
-  (s2v0, s2vs) =>
-  (
-  case+ s2es of
-  | list_nil() => let
-    val s2t0 =
-    s2v0.sort()
-    val t2p0 =
-    t2ype_srt_xtv
-    (s2t0, t2xtv_new(loc0))
-    val
-    t2ps =
-    list_vt_cons(t2p0, t2ps)
+|
+list_nil
+((*void*)) => t2ps
+|
+list_cons
+(s2v0, s2vs) =>
+(
+case+ s2es of
+|
+list_nil() =>
+let
+  val s2t0 =
+  s2v0.sort()
+  val t2p0 =
+  t2ype_srt_xtv
+  (s2t0, t2xtv_new(loc0))
+  val
+  t2ps =
+  list_vt_cons(t2p0, t2ps)
+in
+  auxtias_2(s2vs, s2es, t2ps)
+end
+|
+list_cons
+(s2e0, s2es1) =>
+( case+
+  s2e0.node() of
+  | S2Eany(k0) =>
+    let
+      val s2t0 =
+      s2v0.sort()
+      val t2p0 =
+      t2ype_srt_xtv
+      (s2t0, t2xtv_new(loc0))
+      val t2ps =
+      list_vt_cons(t2p0, t2ps)
     in
+      if
+      (k0 >= 2)
+      then
       auxtias_2(s2vs, s2es, t2ps)
+      else
+      auxtias_2(s2vs, s2es1, t2ps)
     end
-  | list_cons
-    (s2e0, s2es1) =>
-    ( case+
-      s2e0.node() of
-      | S2Eany(k0) =>
-        let
-          val s2t0 =
-          s2v0.sort()
-          val t2p0 =
-          t2ype_srt_xtv
-          (s2t0, t2xtv_new(loc0))
-          val t2ps =
-          list_vt_cons(t2p0, t2ps)
-        in
-          if
-          (k0 >= 2)
-          then
-          auxtias_2(s2vs, s2es, t2ps)
-          else
-          auxtias_2(s2vs, s2es1, t2ps)
-        end
-      | _(*non-S2Eany*) =>
-        let
-          val t2p0 =
-          s2exp_erase(s2e0)
-          val t2ps =
-          list_vt_cons(t2p0, t2ps)
-        in
-          auxtias_2(s2vs, s2es1, t2ps)
-        end
-    )
-  )
+  | _(*non-S2Eany*) =>
+    let
+      val t2p0 =
+      s2exp_erase(s2e0)
+      val t2ps =
+      list_vt_cons(t2p0, t2ps)
+    in
+      auxtias_2(s2vs, s2es1, t2ps)
+    end
+) (* list_cons *)
+) (* end of [list_cons] *)
 ) (* end of [auxtias_2] *)
 //
 } (* end of [d2cst_ti2as_ti3a] *)
