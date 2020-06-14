@@ -3706,7 +3706,8 @@ abstype ::=
     // end of [d0ecl_make_node]
   end
 | T_DATATYPE(k0) => let
-    val () = buf.incby1()
+    val () =
+    buf.incby1()
     val d0cs =
       p_d0atypeseq_AND(buf, err)
     val tok1 = buf.get0()
@@ -3715,7 +3716,8 @@ abstype ::=
     case+
     tok1.node() of
     | T_WHERE() => let
-        val () = buf.incby1()
+        val () =
+        buf.incby1()
         val topt =
         popt_LBRACE(buf, err)
         val wdcs =
