@@ -324,6 +324,20 @@ d3e0.node() of
     tread3x_d3exp(d3e1)
   }
 //
+| D3Etapp
+  (d2e1, s2es) =>
+  let
+    val () =
+    trerr3x_add
+    (TRERR3Xd3exp_tapp(d3e0))
+  in
+    prerrln!
+    (loc0, ": ***TRERR3X***");
+    prerrln!
+    ( loc0
+    , ": TRERR3X(D3Etapp): the d3exp-error: ", d3e0);
+  end
+//
 | D3Edapp
   (d3f1, npf2, d3es) =>
   {

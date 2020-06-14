@@ -622,6 +622,18 @@ impltmp
 gseq_foreach<a,list(a)> = list_foreach<a>
 //
 (* ****** ****** *)
+
+impltmp
+{a:t0}
+gseq_listize<a,list(a)> = list_listize<a>
+impltmp
+{a:t0}
+gseq_rlistize<a,list(a)> = list_rlistize<a>
+impltmp
+{a:t0}
+gseq_streamize<a,list(a)> = list_streamize<a>
+
+(* ****** ****** *)
 //
 impltmp
 {a:t0}

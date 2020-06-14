@@ -59,6 +59,7 @@ datatype trerr3x =
 | TRERR3Xf3arg of (f3arg)
 | TRERR3Xd3ecl of (d3ecl)
 //
+| TRERR3Xd3exp_tapp of (d3exp)
 | TRERR3Xd3exp_timp2f of (d3exp, f3undecl)
 //
 typedef
