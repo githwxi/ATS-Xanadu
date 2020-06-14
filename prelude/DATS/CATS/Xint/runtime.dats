@@ -466,7 +466,7 @@ a0ref_set<a>
 fun
 xint_a1ptr_alloc
 {a:type}{n:int}
-( asz: int(n) ): a0ptr(?a)
+( asz: int(n) ): a1ptr(?a)
 impltmp
 {a:type}
 a1ptr_alloc<a> = xint_a1ptr_alloc

@@ -2917,6 +2917,29 @@ end // end of [aux_absimpl]
 (* ****** ****** *)
 
 fun
+aux_fundecl
+( d0cl
+: d0ecl): d1ecl = let
+//
+val loc0 = d0cl.loc()
+//
+val-
+D0Cfundecl
+( knd
+, mopt, tqas, d0cs) = d0cl.node()
+//
+val tqas = trans01_tqarglst(tqas)
+val d1cs = trans01_fundeclist(d0cs)
+//
+in
+  d1ecl_make_node
+    (loc0, D1Cfundecl(knd, mopt, tqas, d1cs))
+  // d1ecl_make_node
+end // end of [aux_fundecl]
+
+(* ****** ****** *)
+
+fun
 aux_valdecl
 ( d0cl
 : d0ecl): d1ecl = let
@@ -2954,29 +2977,6 @@ in
   d1ecl_make_node
   (loc0, D1Cvardecl(knd, mopt, d1cs))
 end // end of [aux_vardecl]
-
-(* ****** ****** *)
-
-fun
-aux_fundecl
-( d0cl
-: d0ecl): d1ecl = let
-//
-val loc0 = d0cl.loc()
-//
-val-
-D0Cfundecl
-( knd
-, mopt, tqas, d0cs) = d0cl.node()
-//
-val tqas = trans01_tqarglst(tqas)
-val d1cs = trans01_fundeclist(d0cs)
-//
-in
-  d1ecl_make_node
-    (loc0, D1Cfundecl(knd, mopt, tqas, d1cs))
-  // d1ecl_make_node
-end // end of [aux_fundecl]
 
 (* ****** ****** *)
 
@@ -3246,9 +3246,10 @@ d0cl.node() of
 | D0Cabsopen _ => aux_absopen(d0cl)
 | D0Cabsimpl _ => aux_absimpl(d0cl)
 //
+| D0Cfundecl _ => aux_fundecl(d0cl)
+//
 | D0Cvaldecl _ => aux_valdecl(d0cl)
 | D0Cvardecl _ => aux_vardecl(d0cl)
-| D0Cfundecl _ => aux_fundecl(d0cl)
 //
 | D0Cimpdecl _ => aux_impdecl(d0cl)
 //

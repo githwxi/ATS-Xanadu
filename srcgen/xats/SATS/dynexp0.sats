@@ -1076,17 +1076,14 @@ for skipping synerr:
   , s0marglst, sort0opt, token(*EQ*), s0exp)
   // D0Cabsimpl
 //
-| D0Cvaldecl of
-  ( token(*valkind*)
-  , decmodopt, v0aldeclist)
-//
-| D0Cvardecl of
-  ( token(*varkind*)
-  , decmodopt, v0ardeclist)
-//
 | D0Cfundecl of
-  ( token(*funkind*)
+  ( token(*kind*)
   , decmodopt, tq0arglst, f0undeclist)
+//
+| D0Cvaldecl of
+  ( token(*kind*), decmodopt, v0aldeclist)
+| D0Cvardecl of
+  ( token(*kind*), decmodopt, v0ardeclist)
 //
 | D0Cimpdecl of
   ( token(*impkind*)

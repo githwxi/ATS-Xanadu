@@ -831,6 +831,61 @@ end // end of [aux_staload]
 (* ****** ****** *)
 
 fun
+aux_fundecl
+( env0
+: !implenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+val-
+D3Cfundecl
+( knd
+, mopt
+, tqas, f3ds) = d3cl.node()
+//
+in
+//
+case+ tqas of
+|
+list_nil _ =>
+(
+  trans3t_fundecl(env0, d3cl)
+)
+|
+list_cons _ =>
+let
+val s2vs = tqas.s2vs()
+val xtvs =
+list_vt2t
+(
+  list_map<s2var><t2xtv>(s2vs)
+) where
+{
+implement
+list_map$fopr<s2var><t2xtv>(s2v) = t2xtv_new(loc0)
+} (* end of [val xtvs] *)
+val tsub =
+(
+  auxtsub_make(s2vs, xtvs)
+)
+val t2ps = list_vt2t(tsub)
+//
+val ti3e = TI3ENV(s2vs, xtvs, t2ps)
+//
+in
+let
+val () =
+implenv_add_impdecl3(env0, d3cl, ti3e) in d3cl
+end
+end // end of [list_cons]
+//
+end // end of [aux_fundecl]
+
+(* ****** ****** *)
+
+fun
 aux_valdecl
 ( env0
 : !implenv
@@ -951,61 +1006,6 @@ case+ v3ds of
 )
 //
 } (* end of [aux_vardecl] *)
-
-(* ****** ****** *)
-
-fun
-aux_fundecl
-( env0
-: !implenv
-, d3cl: d3ecl): d3ecl =
-let
-//
-val
-loc0 = d3cl.loc()
-val-
-D3Cfundecl
-( knd
-, mopt
-, tqas, f3ds) = d3cl.node()
-//
-in
-//
-case+ tqas of
-|
-list_nil _ =>
-(
-  trans3t_fundecl(env0, d3cl)
-)
-|
-list_cons _ =>
-let
-val s2vs = tqas.s2vs()
-val xtvs =
-list_vt2t
-(
-  list_map<s2var><t2xtv>(s2vs)
-) where
-{
-implement
-list_map$fopr<s2var><t2xtv>(s2v) = t2xtv_new(loc0)
-} (* end of [val xtvs] *)
-val tsub =
-(
-  auxtsub_make(s2vs, xtvs)
-)
-val t2ps = list_vt2t(tsub)
-//
-val ti3e = TI3ENV(s2vs, xtvs, t2ps)
-//
-in
-let
-val () =
-implenv_add_impdecl3(env0, d3cl, ti3e) in d3cl
-end
-end // end of [list_cons]
-//
-end // end of [aux_fundecl]
 
 (* ****** ****** *)
 //
@@ -1205,9 +1205,10 @@ d3cl.node() of
     end
   end
 //
+| D3Cfundecl _ => aux_fundecl(env0, d3cl)
+//
 | D3Cvaldecl _ => aux_valdecl(env0, d3cl)
 | D3Cvardecl _ => aux_vardecl(env0, d3cl)
-| D3Cfundecl _ => aux_fundecl(env0, d3cl)
 //
 | D3Cimpdecl1 _ => d3cl
 | D3Cimpdecl2 _ => d3cl

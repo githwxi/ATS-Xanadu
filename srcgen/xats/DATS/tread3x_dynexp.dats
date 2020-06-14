@@ -559,6 +559,17 @@ d3cl.node() of
 //
 | D3Cstaload _ => ()
 //
+| D3Cfundecl
+  (knd, mopt, tq2s, f3ds) =>
+  {
+    val () = tread3x_f3undeclist(f3ds)
+(*
+    val () =
+    println!
+    ("tread3x_d3ecl: D3Cfundecl: f3ds = ", f3ds)
+*)
+  }
+//
 | D3Cvaldecl
   (knd, mopt, v3ds) =>
   {
@@ -569,7 +580,6 @@ d3cl.node() of
     ("tread3x_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
 *)
   }
-//
 | D3Cvardecl
   (knd, mopt, v3ds) =>
   {
@@ -578,17 +588,6 @@ d3cl.node() of
     val () =
     println!
     ("tread3x_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
-*)
-  }
-//
-| D3Cfundecl
-  (knd, mopt, tq2s, f3ds) =>
-  {
-    val () = tread3x_f3undeclist(f3ds)
-(*
-    val () =
-    println!
-    ("tread3x_d3ecl: D3Cfundecl: f3ds = ", f3ds)
 *)
   }
 //

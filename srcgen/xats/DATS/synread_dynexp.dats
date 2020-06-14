@@ -802,6 +802,19 @@ d0cl.node() of
     val () = synread_dq0eid(dqid)
   }
 //
+| D0Cfundecl
+  (tok, mopt, tqas, f0ds) =>
+  {
+(*
+    val () =
+    synread_FUN(tok)
+*)
+    val () =
+    synread_tq0arglst(tqas)
+    val () =
+    synread_f0undeclist(f0ds)
+  }
+//
 | D0Cvaldecl
   (tok, mopt, v0ds) =>
   {
@@ -822,19 +835,6 @@ d0cl.node() of
 *)
     val () =
     synread_v0ardeclist(v0ds)
-  }
-//
-| D0Cfundecl
-  (tok, mopt, tqas, f0ds) =>
-  {
-(*
-    val () =
-    synread_FUN(tok)
-*)
-    val () =
-    synread_tq0arglst(tqas)
-    val () =
-    synread_f0undeclist(f0ds)
   }
 //
 | D0Cimpdecl

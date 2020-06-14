@@ -549,6 +549,14 @@ d3e0.node() of
     val () = tread33_d3exp(d3e1)
   }
 //
+(*
+| D3Eanno
+  ( d3e1, s2e2 ) =>
+  {
+    val () = tread33_d3exp(d3e1)
+  }
+*)
+//
 | D3Elcast(d3e1, lab2) =>
   let
 //
@@ -761,6 +769,17 @@ d3cl.node() of
     val () = tread33_d3ecl(d3c1)
   }
 //
+| D3Cfundecl
+  (knd, mopt, tqas, f3ds) =>
+  {
+    val () = tread33_f3undeclist(f3ds)
+(*
+    val () =
+    println!
+    ("tread33_d3ecl: D3Cfundecl: f3ds = ", f3ds)
+*)
+  }
+//
 | D3Cvaldecl
   (knd, mopt, v3ds) =>
   {
@@ -771,7 +790,6 @@ d3cl.node() of
     ("tread33_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
 *)
   }
-//
 | D3Cvardecl
   (knd, mopt, v3ds) =>
   {
@@ -780,17 +798,6 @@ d3cl.node() of
     val () =
     println!
     ("tread33_d3ecl: D3Cvardecl: v3ds = ", v3ds)
-*)
-  }
-//
-| D3Cfundecl
-  (knd, mopt, tqas, f3ds) =>
-  {
-    val () = tread33_f3undeclist(f3ds)
-(*
-    val () =
-    println!
-    ("tread33_d3ecl: D3Cfundecl: f3ds = ", f3ds)
 *)
   }
 //
@@ -908,8 +915,9 @@ f3a0.node() of
 //
 | F3ARGsome_sta _ => ()
 | F3ARGsome_met _ => ()
+//
 | F3ARGsome_dyn
-  (npf, d3ps) =>
+  ( npf1, d3ps ) =>
   {
     val () = tread33_d3patlst(d3ps)
   }

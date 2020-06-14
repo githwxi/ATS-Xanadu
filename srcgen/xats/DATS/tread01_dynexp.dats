@@ -163,14 +163,6 @@ d1c0.node() of
 *)
   }
 //
-| D1Cvaldecl
-  ( knd
-  , mopt, v1ds) =>
-  {
-    val () =
-    tread01_v1aldeclist(v1ds)
-  }
-//
 | D1Cfundecl
   ( knd
   , mopt
@@ -178,6 +170,14 @@ d1c0.node() of
   {
     val () =
     tread01_f1undeclist(f1ds)
+  }
+//
+| D1Cvaldecl
+  ( knd
+  , mopt, v1ds) =>
+  {
+    val () =
+    tread01_v1aldeclist(v1ds)
   }
 //
 | D1Cdynconst

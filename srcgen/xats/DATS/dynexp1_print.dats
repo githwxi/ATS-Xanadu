@@ -795,43 +795,46 @@ case+ x0.node() of
   ( knd, sid
   , arg, res, def) =>
   fprint!
-  ( out, "D1Csexpdef("
+  ( out
+  , "D1Csexpdef("
   , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
 //
 | D1Cabstype
   (knd, sid, arg, res, def) =>
   fprint!
-  ( out, "D1Cabstype("
+  ( out
+  , "D1Cabstype("
   , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
 //
 | D1Cabsopen(tok, sqid) =>
   fprint!
-  ( out
-  , "D1Cabsopen(", tok, "; ", sqid, ")")
+  (out, "D1Cabsopen(", tok, "; ", sqid, ")")
 //
 | D1Cabsimpl
   (tok, sqid, smas, res0, def1) =>
   fprint!
-  ( out, "D1Cabsimpl("
-  , tok, "; ", sqid, "; ", smas, "; ", res0, "; ", def1, ")")
+  ( out
+  , "D1Cabsimpl("
+  , tok, "; ", sqid
+  , "; ", smas, "; ", res0, "; ", def1, ")")
+//
+| D1Cfundecl
+  (tok, mopt, tqas, d1cs) =>
+  fprint!
+  ( out
+  , "D1Cfundecl("
+  , tok, "; ", mopt, "; ", tqas, "; ", d1cs, ")")
 //
 | D1Cvaldecl
   (tok, mopt, d1cs) =>
   fprint!
   ( out
   , "D1Cvaldecl(", tok, "; ", mopt, "; ", d1cs, ")")
-//
 | D1Cvardecl
   (tok, mopt, d1cs) =>
   fprint!
   ( out
   , "D1Cvardecl(", tok, "; ", mopt, "; ", d1cs, ")")
-//
-| D1Cfundecl
-  (tok, mopt, tqas, d1cs) =>
-  fprint!
-  ( out
-  , "D1Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d1cs, ")")
 //
 | D1Cimpdecl
   ( tok, mopt, sqas, tqas

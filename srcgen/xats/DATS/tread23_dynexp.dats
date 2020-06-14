@@ -137,6 +137,17 @@ in
 case+
 d3cl.node() of
 //
+| D3Cd2ecl(d2c) => ()
+//
+| D3Cstatic(tok, d3c1) =>
+  {
+    val () = tread23_d3ecl(d3c1)
+  }
+| D3Cextern(tok, d3c1) =>
+  {
+    val () = tread23_d3ecl(d3c1)
+  }
+//
 | _(* rest-of-d3ecl *) =>
   {
     val () = println!(loc0, ": tread23_d3ecl(", d3cl, ")")

@@ -127,6 +127,17 @@ glseq_foldr1(!xs, r0): r0
 fun
 <x0:vt
 ,xs:vt>
+glseq_exists0(~xs): bool
+fun
+<x0:vt
+,xs:vt>
+glseq_exists1(!xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
 glseq_forall0(~xs): bool
 fun
 <x0:vt

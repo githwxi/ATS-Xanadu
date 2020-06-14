@@ -2007,197 +2007,6 @@ end // end of [local]
 (* ****** ****** *)
 
 fun
-aux_valdecl
-( d2cl
-: d2ecl): d3ecl = let
-//
-val
-loc0 = d2cl.loc()
-val-
-D2Cvaldecl
-( knd
-, mopt
-, v2ds) = d2cl.node()
-//
-val
-v3ds = auxv2ds(d2cl, v2ds)
-//
-in
-  d3ecl_make_node
-  (loc0, D3Cvaldecl(knd, mopt, v3ds))
-end where
-{
-//
-fun
-auxv2d0
-( d2cl
-: d2ecl
-, v2d0
-: v2aldecl
-) : v3aldecl = let
-//
-val
-loc0 = d2cl.loc()
-val+
-V2ALDECL(rcd) = v2d0
-//
-val loc = rcd.loc
-val pat = rcd.pat
-val def = rcd.def
-val wtp = rcd.wtp
-//
-val pat =
-(
-case+ wtp of
-| None() =>
-  trans23_dpat(pat)
-| Some(s2e) =>
-  (
-  trans23_dpat_dntp(pat, t2p)
-  ) where
-  {
-    val t2p = s2exp_erase(s2e)
-  }
-) : d3pat // end of [val]
-//
-val def =
-(
-case+ def of
-| None() =>
-  None()
-| Some(d2e0) =>
-  let
-  val tres = pat.type()
-  in
-  Some(trans23_dexp_dntp(d2e0, tres))
-  end
-) : d3expopt // end-of-val
-//
-in
-V3ALDECL
-(@{
-loc=loc,pat=pat,def=def,wtp=wtp})
-end // end of [auxv2d0]
-//
-fun
-auxv2ds
-( d2cl: d2ecl
-, v2ds
-: v2aldeclist
-)
-: v3aldeclist =
-(
-case+ v2ds of
-| list_nil() =>
-  list_nil()
-| list_cons(x0, xs) =>
-  list_cons
-  (auxv2d0(d2cl, x0), auxv2ds(d2cl, xs))
-)
-//
-} (* end of [aux_valdecl] *)
-
-(* ****** ****** *)
-
-fun
-aux_vardecl
-( d2cl
-: d2ecl): d3ecl = let
-//
-val
-loc0 = d2cl.loc()
-val-
-D2Cvardecl
-( knd
-, mopt
-, v2ds) = d2cl.node()
-//
-val
-v3ds = auxv2ds(d2cl, v2ds)
-//
-in
-//
-d3ecl_make_node
-(loc0, D3Cvardecl(knd, mopt, v3ds))
-//
-end where
-{
-//
-fun
-auxv2d0
-( d2cl
-: d2ecl
-, v2d0
-: v2ardecl
-) : v3ardecl = let
-//
-val
-loc0 = d2cl.loc()
-val+
-V2ARDECL(rcd) = v2d0
-//
-val loc = rcd.loc
-val d2v = rcd.d2v
-val wth = rcd.wth
-val res = rcd.res
-val ini = rcd.ini
-//
-val
-ini =
-(
-case+ ini of
-|
-None() =>
-None((*void*))
-|
-Some(d3e) =>
-Some
-(trans23_dexp_dntp(d3e, tres))
-) where // end of [val]
-{
-val
-tres =
-(
-case+ res of
-|
-Some(s2e) => s2exp_erase(s2e)
-|
-None((*void*)) => t2ype_new(loc0)
-) : t2ype (* end-of-val: tres *)
-//
-val () =
-d2var_set_type(d2v, t2ype_lft(tres))
-//
-}
-//
-in
-V3ARDECL(
-@{
-loc=loc,d2v=d2v,wth=wth,res=res,ini=ini}
-) (* V3ARDECL *)
-end // end of [auxv2d0]
-//
-fun
-auxv2ds
-( d2cl: d2ecl
-, v2ds
-: v2ardeclist
-)
-: v3ardeclist =
-(
-case+ v2ds of
-| list_nil() =>
-  list_nil()
-| list_cons(x0, xs) =>
-  list_cons
-  (auxv2d0(d2cl, x0), auxv2ds(d2cl, xs))
-)
-//
-} (* end of [aux_vardecl] *)
-
-(* ****** ****** *)
-
-fun
 aux_fundecl
 ( d2cl
 : d2ecl): d3ecl = let
@@ -2497,6 +2306,197 @@ case+ f2ds of
 (* ****** ****** *)
 
 fun
+aux_valdecl
+( d2cl
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2cl.loc()
+val-
+D2Cvaldecl
+( knd
+, mopt
+, v2ds) = d2cl.node()
+//
+val
+v3ds = auxv2ds(d2cl, v2ds)
+//
+in
+  d3ecl_make_node
+  (loc0, D3Cvaldecl(knd, mopt, v3ds))
+end where
+{
+//
+fun
+auxv2d0
+( d2cl
+: d2ecl
+, v2d0
+: v2aldecl
+) : v3aldecl = let
+//
+val
+loc0 = d2cl.loc()
+val+
+V2ALDECL(rcd) = v2d0
+//
+val loc = rcd.loc
+val pat = rcd.pat
+val def = rcd.def
+val wtp = rcd.wtp
+//
+val pat =
+(
+case+ wtp of
+| None() =>
+  trans23_dpat(pat)
+| Some(s2e) =>
+  (
+  trans23_dpat_dntp(pat, t2p)
+  ) where
+  {
+    val t2p = s2exp_erase(s2e)
+  }
+) : d3pat // end of [val]
+//
+val def =
+(
+case+ def of
+| None() =>
+  None()
+| Some(d2e0) =>
+  let
+  val tres = pat.type()
+  in
+  Some(trans23_dexp_dntp(d2e0, tres))
+  end
+) : d3expopt // end-of-val
+//
+in
+V3ALDECL
+(@{
+loc=loc,pat=pat,def=def,wtp=wtp})
+end // end of [auxv2d0]
+//
+fun
+auxv2ds
+( d2cl: d2ecl
+, v2ds
+: v2aldeclist
+)
+: v3aldeclist =
+(
+case+ v2ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons
+  (auxv2d0(d2cl, x0), auxv2ds(d2cl, xs))
+)
+//
+} (* end of [aux_valdecl] *)
+
+(* ****** ****** *)
+
+fun
+aux_vardecl
+( d2cl
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2cl.loc()
+val-
+D2Cvardecl
+( knd
+, mopt
+, v2ds) = d2cl.node()
+//
+val
+v3ds = auxv2ds(d2cl, v2ds)
+//
+in
+//
+d3ecl_make_node
+(loc0, D3Cvardecl(knd, mopt, v3ds))
+//
+end where
+{
+//
+fun
+auxv2d0
+( d2cl
+: d2ecl
+, v2d0
+: v2ardecl
+) : v3ardecl = let
+//
+val
+loc0 = d2cl.loc()
+val+
+V2ARDECL(rcd) = v2d0
+//
+val loc = rcd.loc
+val d2v = rcd.d2v
+val wth = rcd.wth
+val res = rcd.res
+val ini = rcd.ini
+//
+val
+ini =
+(
+case+ ini of
+|
+None() =>
+None((*void*))
+|
+Some(d3e) =>
+Some
+(trans23_dexp_dntp(d3e, tres))
+) where // end of [val]
+{
+val
+tres =
+(
+case+ res of
+|
+Some(s2e) => s2exp_erase(s2e)
+|
+None((*void*)) => t2ype_new(loc0)
+) : t2ype (* end-of-val: tres *)
+//
+val () =
+d2var_set_type(d2v, t2ype_lft(tres))
+//
+}
+//
+in
+V3ARDECL(
+@{
+loc=loc,d2v=d2v,wth=wth,res=res,ini=ini}
+) (* V3ARDECL *)
+end // end of [auxv2d0]
+//
+fun
+auxv2ds
+( d2cl: d2ecl
+, v2ds
+: v2ardeclist
+)
+: v3ardeclist =
+(
+case+ v2ds of
+| list_nil() =>
+  list_nil()
+| list_cons(x0, xs) =>
+  list_cons
+  (auxv2d0(d2cl, x0), auxv2ds(d2cl, xs))
+)
+//
+} (* end of [aux_vardecl] *)
+
+(* ****** ****** *)
+
+fun
 aux_impdecl1
 ( d2cl
 : d2ecl): d3ecl = let
@@ -2580,17 +2580,14 @@ println!
 *)
 //
 val
-(f3as
-,tres) =
+(f3as,tres) =
 t2ype_f2arg_elim(loc0, tfun, f2as)
 //
 (*
 val () =
-println!
-("aux_impdecl1: f3as = ", f3as)
+println!("aux_impdecl1: f3as = ", f3as)
 val () =
-println!
-("aux_impdecl1: tres = ", tres)
+println!("aux_impdecl1: tres = ", tres)
 *)
 //
 val
@@ -2599,8 +2596,12 @@ d3e0 =
 case+ res0 of
 | EFFS2EXPnone() =>
   (
-    trans23_dexp_dntp(d2e0, tres)
-  )
+    d23exp_dntp(d3e0, tres)
+  ) where
+  {
+    val
+    d3e0 = trans23_dexp(d2e0)
+  }
 | EFFS2EXPsome(s2e0) =>
   (
     d23exp_dntp(d3e0, tres)
@@ -2609,7 +2610,8 @@ case+ res0 of
     val
     t2p0 = s2exp_erase(s2e0)
     val
-    d3e0 = trans23_dexp_dntp(d2e0, t2p0)
+    d3e0 =
+    trans23_dexp_dntp(d2e0, t2p0)
   }
 ) : d3exp // end of [val]
 //
@@ -2748,10 +2750,10 @@ d2cl.node() of
 | D2Cabsopen _ => aux_absopen(d2cl)
 | D2Cabsimpl _ => aux_absimpl(d2cl)
 //
+| D2Cfundecl _ => aux_fundecl(d2cl)
+//
 | D2Cvaldecl _ => aux_valdecl(d2cl)
 | D2Cvardecl _ => aux_vardecl(d2cl)
-//
-| D2Cfundecl _ => aux_fundecl(d2cl)
 //
 | D2Cimpdecl1 _ => aux_impdecl1(d2cl)
 | D2Cimpdecl2 _ => aux_impdecl2(d2cl)

@@ -1144,7 +1144,22 @@ d33exp_tcastize
 ( env0
 , d3e1, t2p2) =
 let
+//
 val loc1 = d3e1.loc()
+//
+(*
+val t2p1 = d3e1.type()
+val () =
+println!
+("d33exp_tcastize: d3e1 = ", d3e1)
+val () =
+println!
+("d33exp_tcastize: t2p1 = ", t2p1)
+val () =
+println!
+("d33exp_tcastize: t2p2 = ", t2p2)
+*)
+//
 in
 //
 case+
@@ -1163,9 +1178,10 @@ val
 opt3 =
 (
 case+ opt3 of
-| None() => None()
-| Some(de13) =>
-  Some
+| None() =>
+  None((*void*))
+| Some
+  (de13) => Some
   (
   d33exp_tcastize(env0, de13, t2p2)
   )
@@ -1285,7 +1301,8 @@ auxdcl0
 let
 val-
 D3Cimpdecl3
-( tok0, mopt
+( tok0
+, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res1, body) = d3cl.node()
@@ -1333,7 +1350,8 @@ loc0 = d3cl.loc()
 //
 val-
 D3Cimpdecl3
-( tok0, mopt
+( tok0
+, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res1, body) = d3cl.node()
