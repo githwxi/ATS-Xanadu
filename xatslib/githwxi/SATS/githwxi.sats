@@ -36,5 +36,32 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+datatype
+gval_tbox =
+//
+| GVint of int
+| GVbtf of bool
+| GVchr of char
+| GVflt of double
+| GVstr of string
+//
+| {a:tbox}
+  GVbx0 of ( a )
+| {a:tbox}
+  GVbx1 of (int, a)
+//
+| GVlst of gvalist
+//
+| GVfun of
+  (gvalist) -<cfr> gval
+//
+where
+{
+typedef gval = gval_tbox
+typedef gvalist = list(gval)
+}
+//
+(* ****** ****** *)
 
 (* end of [githwxi.sats] *)
