@@ -814,8 +814,8 @@ d3cl.node() of
     tread33_ti3arg(ti3a)
     val () =
     tread33_ti2arglst(ti2s)
-*)
     val () = tread33_d3exp(d3e0)
+*)
   }
 | D3Cimpdecl2
   ( tok, mopt
@@ -865,15 +865,16 @@ d3cl.node() of
   , f3as, res0, d3e0) =>
   {
 //
-    val () =
-    tread33_f3arglst(f3as)
-//
 (*
     val () =
     tread33_ti3arg(ti3a)
+*)
     val () =
     tread33_ti2arglst(ti2s)
-*)
+//
+    val () =
+    tread33_f3arglst(f3as)
+//
     val () = tread33_d3exp(d3e0)
 //
 (*
@@ -902,6 +903,77 @@ list_foreach<d3ecl>(d3cs)
 implement(env)
 list_foreach$fwork<d3ecl><env>(d3c, env) = tread33_d3ecl(d3c)
 } (* end of [tread33_d3eclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread33_ti2arg
+  (ti2a) =
+(
+auxs2es(ti2a.s2es())
+) where
+{
+//
+fun
+auxs2e0
+(s2e0: s2exp): void =
+(
+case+
+s2e0.node() of
+|
+S2Ecast _ => auxcast(s2e0)
+| _ (* non-S2Ecast *) => ()
+)
+//
+and
+auxcast
+(s2e0: s2exp): void =
+let
+val-
+S2Ecast
+( loc0
+, s2e1
+, s2t2) = s2e0.node()
+//
+val () =
+trerr33_add
+( TRERR33ti2arg(ti2a) )
+//
+in
+prerrln!
+(loc0, ": ***TRERR33***");
+prerrln!
+(loc0, ": TRERR33(ti2arg): ti2a = ", ti2a);
+end // end of [auxs2e0]
+//
+and
+auxs2es
+(s2es: s2explst): void =
+(
+case+ s2es of
+|
+list_nil() => ()
+|
+list_cons(s2e0, s2es) =>
+let
+  val () =
+  auxs2e0(s2e0) in auxs2es(s2es)
+end
+)
+//
+} (* end of [tread33_ti2arg] *)
+//
+implement
+//{}(*tmp*)
+tread33_ti2arglst(tias) =
+(
+list_foreach<ti2arg>(tias)
+) where
+{
+implement(env)
+list_foreach$fwork<ti2arg><env>(tia, env) = tread33_ti2arg(tia)
+} (* end of [tread33_ti2arglst] *)
 //
 (* ****** ****** *)
 //
