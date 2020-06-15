@@ -266,18 +266,28 @@ d2e0.node() of
 *)
   }
 //
-| D2Elet(d2cs, d2e1) =>
+| D2Elet
+  (d2cs, d2e1) =>
   {
     val () =
     tread12_d2eclist(d2cs)
     val () = tread12_d2exp(d2e1)
   }
-| D2Ewhere(d2e1, d2cs) =>
+| D2Ewhere
+  (d2e1, d2cs) =>
   {
     val () =
     tread12_d2eclist(d2cs)
     val () = tread12_d2exp(d2e1)
   }
+//
+| D2Eseqn(d2es, d2e1) =>
+  {
+    val () =
+    tread12_d2explst(d2es)
+    val () = tread12_d2exp(d2e1)
+  }
+//
 //
 | D2Eassgn(d2e1, d2e2) =>
   {
@@ -286,8 +296,8 @@ d2e0.node() of
   }
 //
 | D2Elam
-  (knd0, f2as,
-   tres, arrw, body) =>
+  ( knd0, f2as,
+    tres, arrw, body) =>
   {
 //
     val () =
@@ -297,9 +307,9 @@ d2e0.node() of
 //
   }
 | D2Efix
-  (knd0,
-   d2v0, f2as,
-   tres, arrw, body) =>
+  ( knd0,
+    d2v0, f2as,
+    tres, arrw, body) =>
   {
 //
     val () =
@@ -310,7 +320,7 @@ d2e0.node() of
   }
 //
 | D2Etry
-  (knd0, d2e1, dcls) =>
+  ( knd0, d2e1, dcls ) =>
   {
   val () = tread12_d2exp(d2e1)
 (*
