@@ -94,10 +94,10 @@ fun
 auxvar
 ( env0:
 ! tr3xenv
-, d3en: d3end): d3end =
+, dend: d3end): d3end =
 let
 val-
-D3Evar(d2v0) = d3en
+D3Evar(d2v0) = dend
 val
 vknd =
 tr3xenv_dvar_kind(env0, d2v0)

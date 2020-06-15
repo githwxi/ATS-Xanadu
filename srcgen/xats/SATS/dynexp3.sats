@@ -316,6 +316,10 @@ d3exp_node =
 | D3Etop of (token)
 //
 | D3Evar of (d2var)
+//
+(*
+HX: for trans3x:
+*)
 | D3Evloc of (d2var) // local
 | D3Evenv of (d2var) // environ.
 | D3Evtop of (d2var) // top-level
