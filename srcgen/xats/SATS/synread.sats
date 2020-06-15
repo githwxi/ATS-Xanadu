@@ -257,6 +257,11 @@ synread_labs0exp_RBRACE: synreader(labs0exp_RBRACE)
 (* ****** ****** *)
 
 fun//{}
+synread_f0unarrow: synreader(f0unarrow)
+
+(* ****** ****** *)
+
+fun//{}
 synread_effs0expopt: synreader(effs0expopt)
 
 (* ****** ****** *)
@@ -322,40 +327,6 @@ synread_d0eclist: synreader(d0eclist)
 fun//{}
 synread_ifguardlst: synreader(d0eclist)
 //
-(* ****** ****** *)
-
-fun//{}
-synread_d0eclseq_WHERE: synreader(d0eclseq_WHERE)
-
-(* ****** ****** *)
-
-fun//{}
-synread_f0unarrow: synreader(f0unarrow)
-
-(* ****** ****** *)
-//
-fun//{}
-synread_f0arglst: synreader(f0arglst)
-fun//{}
-synread_q0arglst: synreader(q0arglst)
-fun//{}
-synread_tq0arglst: synreader(tq0arglst)
-//
-fun//{}
-synread_wths0expopt: synreader(wths0expopt)
-//
-fun//{}
-synread_teqd0expopt: synreader(teqd0expopt)
-//
-(* ****** ****** *)
-
-fun//{}
-synread_v0aldeclist: synreader(v0aldeclist)
-fun//{}
-synread_v0ardeclist: synreader(v0ardeclist)
-fun//{}
-synread_f0undeclist: synreader(f0undeclist)
-
 (* ****** ****** *)
 //
 fun//{}
@@ -564,6 +535,35 @@ synread_a0typlstopt: synreader(a0typlstopt)
 fun//{}
 synread_d0cstdeclist: synreader(d0cstdeclist)
 //
+(* ****** ****** *)
+//
+fun//{}
+synread_f0arglst: synreader(f0arglst)
+fun//{}
+synread_q0arglst: synreader(q0arglst)
+fun//{}
+synread_tq0arglst: synreader(tq0arglst)
+//
+fun//{}
+synread_wths0expopt: synreader(wths0expopt)
+//
+fun//{}
+synread_teqd0expopt: synreader(teqd0expopt)
+//
+(* ****** ****** *)
+
+fun//{}
+synread_v0aldeclist: synreader(v0aldeclist)
+fun//{}
+synread_v0ardeclist: synreader(v0ardeclist)
+fun//{}
+synread_f0undeclist: synreader(f0undeclist)
+
+(* ****** ****** *)
+
+fun//{}
+synread_d0eclseq_WHERE: synreader(d0eclseq_WHERE)
+
 (* ****** ****** *)
 
 (* end of [xats_synread.sats] *)

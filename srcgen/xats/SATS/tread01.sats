@@ -72,6 +72,28 @@ tread01_sort1opt: treader01(sort1opt)
 (* ****** ****** *)
 //
 fun//{}
+tread01_s1arg: treader01(s1arg)
+fun//{}
+tread01_s1marg: treader01(s1marg)
+fun//{}
+tread01_s1arglst: treader01(s1arglst)
+fun//{}
+tread01_s1marglst: treader01(s1marglst)
+//
+(* ****** ****** *)
+//
+fun//{}
+tread01_t1arg: treader01(t1arg)
+fun//{}
+tread01_t1marg: treader01(t1marg)
+fun//{}
+tread01_t1arglst: treader01(t1arglst)
+fun//{}
+tread01_t1marglst: treader01(t1marglst)
+//
+(* ****** ****** *)
+//
+fun//{}
 tread01_s1exp: treader01(s1exp)
 fun//{}
 tread01_s1expopt: treader01(s1expopt)
@@ -108,6 +130,11 @@ tread01_d1ecl: treader01(d1ecl)
 fun//{}
 tread01_d1eclist: treader01(d1eclist)
 //
+(* ****** ****** *)
+
+fun//{}
+tread01_abstdf1: treader01(abstdf1)
+
 (* ****** ****** *)
 //
 fun//{}

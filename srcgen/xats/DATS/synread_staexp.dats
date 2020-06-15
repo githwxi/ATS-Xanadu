@@ -361,8 +361,6 @@ implement
 synread_s0arg
   (s0a0) = let
 //
-val loc0 = s0a0.loc()
-//
 (*
 val () =
 println!
@@ -381,6 +379,8 @@ s0a0.node() of
   }
 | S0ARGnone(tok) =>
   let
+    val
+    loc0 = s0a0.loc()
     val () =
     synerr_add(SYNERRs0arg(s0a0))
   in
@@ -395,8 +395,6 @@ implement
 //{}(*tmp*)
 synread_s0marg
   (s0ma) = let
-//
-val loc0 = s0ma.loc()
 //
 (*
 val () =
@@ -419,6 +417,8 @@ s0ma.node() of
   }
 | S0MARGnone(tok) =>
   let
+    val
+    loc0 = s0ma.loc()
     val () =
     synerr_add(SYNERRs0marg(s0ma))
   in
@@ -460,8 +460,6 @@ implement
 synread_t0arg
   (t0a0) = let
 //
-val loc0 = t0a0.loc()
-//
 (*
 val () =
 println!
@@ -490,8 +488,6 @@ implement
 synread_t0marg
   (t0ma) = let
 //
-val loc0 = t0ma.loc()
-//
 (*
 val () =
 println!
@@ -511,6 +507,8 @@ t0ma.node() of
   }
 | T0MARGnone(tok) =>
   let
+    val
+    loc0 = t0ma.loc()
     val () =
     synerr_add(SYNERRt0marg(t0ma))
   in

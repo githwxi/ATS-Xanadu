@@ -110,7 +110,10 @@ d2p0.node() of
 | D2Pnil() => ()
 | D2Pany() => ()
 //
-| D2Pvar(d2v) => ()
+| D2Pvar(d2v1) => ()
+//
+| D2Pcon1(d2c1) => ()
+| D2Pcon2(d2cs) => ()
 //
 | D2Pbang(d2p1) =>
   {
@@ -127,6 +130,9 @@ d2p0.node() of
     val () =
     tread12_d2pat(d2p1)
   }
+//
+| D2Psym0
+  ( d1p1, dpis ) => ()
 //
 | D2Pdapp
   (d2f0, npf1, d2ps) =>
