@@ -2580,8 +2580,9 @@ println!
 *)
 //
 val
-(f3as,tres) =
-t2ype_f2arg_elim(loc0, tfun, f2as)
+(
+f3as,tres
+) = t2ype_f2arg_elim(loc0, tfun, f2as)
 //
 (*
 val () =

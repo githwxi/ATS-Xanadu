@@ -78,16 +78,21 @@ then stream_vt_print_all(xs)
 else stream_vt_print_len(xs, len)
 end
 //
-impltmp<>
-stream_vt_print$len<>() = 3
-impltmp<>
-stream_vt_print$beg<>() = string_print("(")
-impltmp<>
-stream_vt_print$end<>() = string_print(")")
-impltmp<>
-stream_vt_print$sep<>() = string_print(",")
-impltmp<>
-stream_vt_print$rst<>() = string_print("...")
+impltmp
+<>(*tmp*)
+stream_vt_print$len() = 3
+impltmp
+<>(*tmp*)
+stream_vt_print$beg() = string_print("(")
+impltmp
+<>(*tmp*)
+stream_vt_print$end() = string_print(")")
+impltmp
+<>(*tmp*)
+stream_vt_print$sep() = string_print(",")
+impltmp
+<>(*tmp*)
+stream_vt_print$rst() = string_print("...")
 //
 impltmp
 {a:vt}
