@@ -59,6 +59,8 @@ datatype trerr33 =
 | TRERR33f3arg of (f3arg)
 | TRERR33d3ecl of (d3ecl)
 //
+| TRERR33ti2arg of (ti2arg)
+//
 typedef
 trerr33lst = List0(trerr33)
 //
@@ -111,6 +113,15 @@ tread33_d3ecl: treader33(d3ecl)
 fun//{}
 tread33_d3eclist: treader33(d3eclist)
 //
+(* ****** ****** *)
+
+fun//{}
+tread33_ti3arg: treader33(ti3arg)
+fun//{}
+tread33_ti2arg: treader33(ti2arg)
+fun//{}
+tread33_ti2arglst: treader33(ti2arglst)
+
 (* ****** ****** *)
 
 fun//{}

@@ -7,7 +7,7 @@ impltmp
 foo(x) = ( x:a )
 
 impltmp
-{a:t0}
+{a:vt}
 foo<a>(x, y) = ( x, y )
 
 (* ****** ****** *)
