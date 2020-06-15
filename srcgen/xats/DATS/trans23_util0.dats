@@ -1929,9 +1929,8 @@ end // end of [d23exp_fix_up]
 (* ****** ****** *)
 
 implement
-join_ti2as_tq2as
-  (tias, tqas) =
-let
+join_tq2as_tias
+(  tqas, tias  ) = let
 //
 fun
 auxlst
@@ -1951,8 +1950,8 @@ in
   ti2arg_make(tqa.loc(), list_vt2t(s2es))
 end where
 {
-  implement
-  list_map$fopr<s2var><s2exp>(v) = s2exp_var(v)
+implement
+list_map$fopr<s2var><s2exp>(v) = s2exp_var(v)
 }
 } (* where *)
 //
@@ -1973,7 +1972,112 @@ case+ tias of
 // Or should this be entirely excluded?
 | list_cons _ => list_append(auxlst(tqas), tias)
 )
-end // end of [join_ti2as_tq2as]
+end // end of [join_tq2as_tias]
+
+(* ****** ****** *)
+
+implement
+d2cst_ti2as_dnst
+(  d2c0, tias  ) = let
+//
+fun
+auxone
+( x0: ti2arg
+, y0: tq2arg): ti2arg =
+let
+val
+loc0 = x0.loc()
+val
+s2es =
+auxcks
+( loc0
+, x0.s2es(), y0.s2vs())
+in
+  ti2arg_make(loc0, s2es)
+end
+//
+and
+auxck0
+( loc0
+: loc_t
+, s2e0
+: s2exp
+, s2v0
+: s2var): s2exp =
+let
+val
+s2t0 = s2e0.sort()
+and
+s2t1 = s2v0.sort()
+in
+if
+s2t0 <= s2t1
+then s2e0 else
+s2exp_cast(loc0, s2e0, s2t1)
+end // end of [auxck0]
+//
+and
+auxcks
+( loc0
+: loc_t
+, s2es
+: s2explst
+, s2vs
+: s2varlst): s2explst =
+(
+case+ s2vs of
+|
+list_nil() => s2es
+|
+list_cons(s2v0, s2vs) =>
+(
+case+ s2es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(s2e0, s2es) =>
+let
+  val s2e0 =
+  auxck0(loc0, s2e0, s2v0)
+in
+  list_cons
+  (s2e0, auxcks(loc0, s2es, s2vs))
+end
+)
+) (* end of [auxcks] *)
+//
+and
+auxlst
+( xs
+: ti2arglst
+, ys
+: tq2arglst): ti2arglst =
+(
+case+ ys of
+|
+list_nil
+((*void*)) => xs
+|
+list_cons
+( y0, ys ) =>
+(
+case+ xs of
+|
+list_nil
+((*void*)) => list_nil()
+|
+list_cons
+( x0, xs ) =>
+list_cons
+(auxone(x0, y0), auxlst(xs, ys))
+)
+)
+//
+in
+  auxlst(tias, d2c0.tqas((*void*)))
+end // end of [d2cst_ti2as_dnst]
 
 (* ****** ****** *)
 

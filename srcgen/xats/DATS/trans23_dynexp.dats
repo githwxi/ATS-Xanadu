@@ -2542,7 +2542,10 @@ end
 //
 val
 tias =
-join_ti2as_tq2as(tias, tqas)
+join_tq2as_tias(tqas, tias)
+val
+tias =
+d2cst_ti2as_dnst(d2c0, tias)
 val
 ti3a =
 d2cst_ti2as_ti3a(loc0,d2c0,tias)
@@ -2643,15 +2646,16 @@ D2Cimpdecl2
 , mopt
 , sqas, tqas
 , id2c, tias
-, f2as, res0
-, d2e0(*body*)) = d2cl.node()
+, f2as
+, res0, d2e0) = d2cl.node()
 //
 // HX: [ti3a] is to be
 val // computed in trans33
 ti3a = TI3ARGnone((*void*))
+//
 val
 tias =
-join_ti2as_tq2as(tias, tqas)
+join_tq2as_tias(tqas, tias)
 //
 val
 f3as = trans23_farglst(f2as)

@@ -192,13 +192,13 @@ gseq_print$end<x0,xs>((*void*))
 endlet (* end of [gseq_print] *)
 
 impltmp
-<>(*tmp*)
+<x0,xs>
 gseq_print$beg() = string_print("(")
 impltmp
-<>(*tmp*)
+<x0,xs>
 gseq_print$end() = string_print(")")
 impltmp
-<>(*tmp*)
+<x0,xs>
 gseq_print$sep() = string_print(",")
 
 (* ****** ****** *)
