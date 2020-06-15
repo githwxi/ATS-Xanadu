@@ -1,28 +1,14 @@
-absvtype vt
-
-#extern
-fun
-<a:type>
-foo1(x: a): a
-#extern
-fun
-<a:type>
-<b:type>
-foo2(x: a): b
-
-#symload
-foo with foo1 of 10
-#symload
-foo with foo2 of 20
-
+(* ****** ****** *)
+#staload "./xdebug.sats"
 (* ****** ****** *)
 
 impltmp
-<a>
-foo1(x) = ( x )
+<a:t0>
+foo(x) = ( x:a )
+
 impltmp
 {a:t0}
-foo2<a><(a,a)>(x) = ( x, x )
+foo<a>(x, y) = ( x, y )
 
 (* ****** ****** *)
 

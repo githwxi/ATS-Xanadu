@@ -3483,28 +3483,30 @@ auxd2vs_rec
 ) : d2cstlst =
 (
 case+ d2vs of
-| list_nil() =>
-  list_nil()
-| list_cons(d2v0, d2vs) =>
-  let
-    val-
-    list_cons
-    (f1d0, f1ds) = f1ds
-    val
-    d2c0 =
-    d2cst_make_dvar(d2v0)
-    val () =
-    if
-    isr
-    then the_dexpenv_add_var(d2v0)
-    val () =
-    if
-    ishdr(f1d0)
-    then the_dexpenv_add_cst(d2c0)
-  in
-    list_cons
-    (d2c0, auxd2vs_rec(isr, d2vs, f1ds))
-  end
+|
+list_nil() =>
+list_nil()
+|
+list_cons(d2v0, d2vs) =>
+let
+  val-
+  list_cons
+  (f1d0, f1ds) = f1ds
+  val
+  d2c0 =
+  d2cst_make_dvar(d2v0)
+  val () =
+  if
+  isr
+  then the_dexpenv_add_var(d2v0)
+  val () =
+  if
+  ishdr(f1d0)
+  then the_dexpenv_add_cst(d2c0)
+in
+  list_cons
+  (d2c0, auxd2vs_rec(isr, d2vs, f1ds))
+end
 )
 //
 fun
@@ -3515,29 +3517,31 @@ auxd2vs_nrc
 ) : void =
 (
 case+ d2cs of
-| list_nil() => ()
-| list_cons(d2c0, d2cs) =>
+|
+list_nil() => ()
+|
+list_cons(d2c0, d2cs) =>
+let
+  val-
+  list_cons
+  (f1d0, f1ds) = f1ds
+in
+  if
+  ishdr(f1d0)
+  then
+  (
+    auxd2vs_nrc(isr, d2cs, f1ds)
+  ) (* end of [then] *)
+  else
+  (
   let
-    val-
-    list_cons
-    (f1d0, f1ds) = f1ds
+  val () =
+    the_dexpenv_add_cst(d2c0)
   in
-    if
-    ishdr(f1d0)
-    then
-    (
-      auxd2vs_nrc(isr, d2cs, f1ds)
-    ) (* end of [then] *)
-    else
-    (
-    let
-    val () =
-      the_dexpenv_add_cst(d2c0)
-    in
-      auxd2vs_nrc(isr, d2cs, f1ds)
-    end
-    ) (* end of [else] *)
+    auxd2vs_nrc(isr, d2cs, f1ds)
   end
+  ) (* end of [else] *)
+end
 )
 //
 } (* end of [aux_fundecl] *)

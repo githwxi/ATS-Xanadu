@@ -2621,10 +2621,9 @@ case+ res0 of
 //
 in
 d3ecl_make_node
-(
-d2cl.loc()
+( d2cl.loc()
 ,
-D3Cimpdecl1
+  D3Cimpdecl1
   ( knd, mopt
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0)

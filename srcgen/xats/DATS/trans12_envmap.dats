@@ -75,6 +75,18 @@ FP0 = "./../SATS/filpath.sats"
 
 (* ****** ****** *)
 
+implement
+fprint_val<d2var>
+(out, d2v) = fprint_d2var(out, d2v)
+implement
+fprint_val<d2con>
+(out, d2c) = fprint_d2con(out, d2c)
+implement
+fprint_val<d2cst>
+(out, d2c) = fprint_d2cst(out, d2c)
+
+(* ****** ****** *)
+
 local
 
 val r0 = ref<int>(0)
@@ -1413,17 +1425,26 @@ val opt = the_dexpenv_find(sym)
 //
 val d2cs =
 (
-  case+ opt of
-  | ~None_vt() =>
-    (
-      list_nil((*void*))
-    )
-  | ~Some_vt(d2i) =>
-    (
-    case+ d2i of
-    | D2ITMcst(cs) => cs | _ => list_nil()
-    )
+case+ opt of
+| ~
+None_vt() =>
+(
+  list_nil((*void*))
+)
+| ~
+Some_vt(d2i) =>
+(
+case+ d2i of
+| D2ITMcst(xs) => xs | _ => list_nil()
+)
 ) : d2cstlst // end of [val]
+//
+val () =
+println!
+("the_dexpenv_add_cst: d2c = ", d2c)
+val () =
+println!
+("the_dexpenv_add_cst: d2cs = ", d2cs)
 //
 val d2i0 = D2ITMcst(list_cons(d2c, d2cs))
 //
@@ -1438,15 +1459,15 @@ the_dexpenv_add_conlst
   foreach(d2cs)
 ) where
 {
-  fun
-  foreach
-  (d2cs: d2conlst): void =
-  (
-  case+ d2cs of
-  | list_nil() => ()
-  | list_cons(d2c0, d2cs) =>
-    (the_dexpenv_add_con(d2c0); foreach(d2cs))
-  )
+fun
+foreach
+(d2cs: d2conlst): void =
+(
+case+ d2cs of
+| list_nil() => ()
+| list_cons(d2c0, d2cs) =>
+  (the_dexpenv_add_con(d2c0); foreach(d2cs))
+)
 } (* end of [the_dexpenv_add_conlst] *)
 
 (* ****** ****** *)

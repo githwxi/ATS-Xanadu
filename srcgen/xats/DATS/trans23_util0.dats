@@ -1981,22 +1981,6 @@ d2cst_ti2as_dnst
 (  d2c0, tias  ) = let
 //
 fun
-auxone
-( x0: ti2arg
-, y0: tq2arg): ti2arg =
-let
-val
-loc0 = x0.loc()
-val
-s2es =
-auxcks
-( loc0
-, x0.s2es(), y0.s2vs())
-in
-  ti2arg_make(loc0, s2es)
-end
-//
-and
 auxck0
 ( loc0
 : loc_t
@@ -2047,6 +2031,22 @@ in
 end
 )
 ) (* end of [auxcks] *)
+//
+fun
+auxone
+( x0: ti2arg
+, y0: tq2arg): ti2arg =
+let
+val
+loc0 = x0.loc()
+val
+s2es =
+auxcks
+( loc0
+, x0.s2es(), y0.s2vs())
+in
+  ti2arg_make(loc0, s2es)
+end
 //
 and
 auxlst
