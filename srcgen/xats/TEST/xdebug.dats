@@ -15,10 +15,16 @@ foo with foo1 of 10
 #symload
 foo with foo2 of 20
 
+(* ****** ****** *)
+
 impltmp
-{a:type
-,b:type}
-foo2<a><b>(x) = (x:b)
+<a>
+foo1(x) = ( x )
+impltmp
+{a:t0}
+foo2<a><(a,a)>(x) = ( x, x )
+
+(* ****** ****** *)
 
 ////
 impltmp

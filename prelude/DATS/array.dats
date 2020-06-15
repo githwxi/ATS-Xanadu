@@ -349,11 +349,11 @@ impltmp
 {a:t0}
 {n:i0}
 gseq_unlist
-<a,a1ref(a,n)> = a1ref_make_list<a><n>
+<a,a1ref(a,n)>(xs) = a1ref_make_list<a>(xs)
 impltmp
-{a:vt}{n:i0}
+{a:t0}{n:i0}
 gseq_unlist_vt
-<a,a1ref(a,n)> = a1ref_make_list_vt<a><n>
+<a,a1ref(a,n)>(xs) = a1ref_make_list_vt<a>(xs)
 //
 (* ****** ****** *)
 

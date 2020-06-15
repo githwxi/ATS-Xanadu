@@ -897,7 +897,7 @@ s2exp_none1_s2t
 //
 fun
 s2exp_make_node
-  (s2t0: sort2, node: s2exp_node): s2exp
+(s2t0: sort2, node: s2exp_node): s2exp
 //
 (* ****** ****** *)
 //

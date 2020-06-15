@@ -558,9 +558,9 @@ gseq_consq
 (* ****** ****** *)
 //
 impltmp
-{a:vt}
+{a:t0}
 gseq_uncons_raw
-<a,list_vt(a)>(xs) =
+<a,list(a)>(xs) =
 let
   val x0 = xs.0
   val () = xs := xs.1 in x0

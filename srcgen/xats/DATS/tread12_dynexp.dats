@@ -647,12 +647,12 @@ d2cl.node() of
 *)
 //
     val () =
-      tread12_f2arglst(f2as)
-    // end of [val]
+    tread12_f2arglst( f2as )
 //
     val () =
     tread12_effs2expopt(res1)
     val () = tread12_d2exp(d2e2)
+//
   }
 | D2Cimpdecl2
   ( knd, mopt

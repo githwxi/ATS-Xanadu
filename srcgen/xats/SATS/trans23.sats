@@ -490,14 +490,18 @@ d23exp_fix_up
 (* ****** ****** *)
 //
 fun
-join_ti2as_tq2as
-( tias: ti2arglst
-, tqas: tq2arglst): ti2arglst
+join_tq2as_tias
+( tqas: tq2arglst
+, tias: ti2arglst): ti2arglst
+fun
+d2cst_ti2as_dnst
+( d2c0: d2cst
+, tias: ti2arglst): ti2arglst
 //
 fun
 d2cst_ti2as_ti3a
 ( loc0: loc_t
-, d2c0: d2cst, tias: ti2arglst): ti3arg
+, d2c0: d2cst, tias: ti2arglst): ti3arg(*t2ype*)
 //
 (* ****** ****** *)
 //

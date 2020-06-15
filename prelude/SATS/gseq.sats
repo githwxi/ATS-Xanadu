@@ -121,18 +121,24 @@ fun
 gseq_cmp(xs, xs): sint
 
 (* ****** ****** *)
-//
+
 fun
 <x0:t0
 ,xs:t0>
 gseq_print(xs: xs): void
-fun<>
+fun
+<x0:t0
+,xs:t0>
 gseq_print$beg((*void*)): void
-fun<>
+fun
+<x0:t0
+,xs:t0>
 gseq_print$end((*void*)): void
-fun<>
+fun
+<x0:t0
+,xs:t0>
 gseq_print$sep((*void*)): void
-//
+
 (* ****** ****** *)
 
 fun
