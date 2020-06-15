@@ -2704,6 +2704,9 @@ tias =
 join_ti2as_tq2as(tias, tqas)
 *)
 val
+tias =
+d2cst_ti2as_dnst(d2c0, tias)
+val
 ti3a =
 d2cst_ti2as_ti3a(loc0,d2c0,tias)
 val
