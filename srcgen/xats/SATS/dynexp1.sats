@@ -62,7 +62,6 @@ filpathopt = $FP0.filpathopt
 typedef decmodopt = decmodopt
 //
 (* ****** ****** *)
-
 //
 abstype d1pat_tbox = ptr
 typedef d1pat = d1pat_tbox

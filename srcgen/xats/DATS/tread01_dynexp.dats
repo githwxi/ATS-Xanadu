@@ -155,13 +155,38 @@ d1c0.node() of
 //
 | D1Csymload
   ( tok
-  , sym1, dqid, prec) =>
+  , sym1
+  , dqid, prec) =>
   {
 (*
     val () =
     tread01_dq0eid(dqid)
 *)
   }
+//
+| D1Cabstype
+  ( knd
+  , sid0, tmas
+  , res1, def2) =>
+  {
+//
+(*
+    val () =
+    tread01_s0eid(sid0)
+*)
+    val () =
+    tread01_sort1opt(res1)
+    val () =
+    tread01_t1marglst(tmas)
+//
+    val () =
+      tread01_abstdf1(def2)
+    // end of [val]
+//
+  }
+//
+| D1Cabsopen _ => ()
+| D1Cabsimpl _ => ()
 //
 | D1Cfundecl
   ( knd
@@ -217,6 +242,19 @@ implement(env)
 list_foreach$fwork<d1ecl><env>(d1c, env) = tread01_d1ecl(d1c)
 } (* end of [tread01_d1eclist] *)
 //
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread01_abstdf1
+  (def) =
+(
+case+ def of
+| ABSTDF1some() => ()
+| ABSTDF1lteq(s1e) => tread01_s1exp(s1e)
+| ABSTDF1eqeq(s1e) => tread01_s1exp(s1e)
+) (* end of [tread01_abstdf0] *)
+
 (* ****** ****** *)
 //
 implement
