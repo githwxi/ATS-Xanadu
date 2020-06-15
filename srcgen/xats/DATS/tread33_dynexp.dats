@@ -549,13 +549,13 @@ d3e0.node() of
     val () = tread33_d3exp(d3e1)
   }
 //
-(*
+// (*
 | D3Eanno
   ( d3e1, s2e2 ) =>
   {
     val () = tread33_d3exp(d3e1)
   }
-*)
+// *)
 //
 | D3Elcast(d3e1, lab2) =>
   let
@@ -590,7 +590,7 @@ d3e0.node() of
     val
     t2p1 = d3e1.type()
     val
-    t2p1 = whnfize(t2p0)
+    t2p1 = whnfize(t2p1)
 //
     val () =
     tread33_d3exp(d3e1)

@@ -118,6 +118,182 @@ list_foreach$fwork<d3exp><env>(d3e, env) = tread23_d3exp(d3e)
 } (* end of [tread23_d3explst] *)
 
 (* ****** ****** *)
+//
+extern
+fun
+d2cst_tiarglst_artck
+( d2c0: d2cst
+, ti2s: ti2arglst): List0(int)
+//
+implement
+d2cst_tiarglst_artck
+  (d2c0, ti2s) =
+(
+let
+val
+tqas = d2c0.tqas()
+in
+  auxmain(tqas, ti2s)
+end
+) where
+{
+fun
+auxmain
+( xs
+: tq2arglst
+, ys
+: ti2arglst): List0(int) =
+(
+case+ xs of
+|
+list_nil() =>
+(
+case+ ys of
+| list_nil
+  () => list_nil()
+| list_cons
+  (y0, ys) => list_sing(2)
+)
+|
+list_cons(x0, xs) =>
+(
+case+ ys of
+| list_nil
+  () => list_nil()
+| list_cons
+  (y0, ys) =>
+  let
+  val sgn =
+  compare
+  ( length(x0.s2vs())
+  , length(y0.s2es()))
+  in
+    list_cons(sgn, auxmain(xs, ys))
+  end
+)
+)
+} (* end of [d2cst_tiarglst_artck] *)
+//
+(* ****** ****** *)
+
+local
+
+fun
+aux_impdecl1
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cimpdecl1
+( knd
+, mopt
+, sqas, tqas
+, id2c
+, ti3a, ti2s
+, f3as
+, res0, d3e0) = d3cl.node()
+//
+val-
+IMPLD2CST1
+(dqid, d2cs) = id2c
+val-list_cons(d2c0, _) = d2cs
+//
+in
+//
+let
+//
+val
+cmps =
+d2cst_tiarglst_artck
+(d2c0, ti2s)
+//
+val
+errck =
+let
+fun
+loop
+( xs
+: List0(int)): bool =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => false
+|
+list_cons
+( x0, xs ) =>
+if x0 = 0 then loop(xs) else true
+)
+in
+  loop(cmps)
+end // end of [val errck]
+//
+in
+//
+let
+//
+fun
+auxerr
+( i0
+: int
+, xs
+: List0(int)): void =
+(
+case+ xs of
+|
+list_nil() => ()
+|
+list_cons(x0, xs) =>
+(
+  auxerr(i0+1, xs)
+) where
+{
+//
+val () =
+if i0 > 0 then prerr(",")
+//
+val () =
+if x0 < 0 then prerr("-")
+val () =
+if x0 > 0 then prerr("+")
+val () =
+if x0 = 0 then prerr("0")
+//
+} (* end of [list_cons] *)
+)
+//
+in
+//
+if
+errck
+then
+{
+//
+val () =
+trerr23_add(TRERR23d3ecl(d3cl))
+//
+val () =
+prerrln!(loc0, ": ***TRERR23***")
+val () =
+prerrln!(loc0, ": TRERR23(D3Cimpdecl1): d2c0 = ", d2c0)
+val () =
+( prerr!
+  (loc0, ": TRERR23(D3Cimpdecl1): tmp-arity mismatch: "); auxerr(0, cmps); prerrln!()
+)
+//
+}
+// end of [if]
+end // end-of-let
+//
+end // end-of-let
+
+end // end of [aux_impdecl1]
+
+in(*in-of-local*)
 
 implement
 //{}(*tmp*)
@@ -126,36 +302,44 @@ let
 //
 val loc0 = d3cl.loc()
 //
-(*
+// (*
 val () =
 println!
 ("tread23_d3ecl: d3cl = ", d3cl)
-*)
+// *)
 //
-in
+in(*in-of-let*)
 //
 case+
 d3cl.node() of
 //
-| D3Cd2ecl(d2c) => ()
+|
+D3Cd2ecl(d2c) => ()
 //
-| D3Cstatic(tok, d3c1) =>
-  {
-    val () = tread23_d3ecl(d3c1)
-  }
-| D3Cextern(tok, d3c1) =>
-  {
-    val () = tread23_d3ecl(d3c1)
-  }
+|
+D3Cstatic(tok, d3c1) =>
+{
+  val () = tread23_d3ecl(d3c1)
+}
+|
+D3Cextern(tok, d3c1) =>
+{
+  val () = tread23_d3ecl(d3c1)
+}
 //
-| _(* rest-of-d3ecl *) =>
-  {
-    val () = println!(loc0, ": tread23_d3ecl(", d3cl, ")")
-  }
+|
+D3Cimpdecl1 _ => aux_impdecl1(d3cl)
+//
+|
+_(* rest-of-d3ecl *) =>
+{
+  val () =
+  println!(loc0, ": tread23_d3ecl(", d3cl, ")")
+}
 //
 end // end of [tread23_d3ecl]
 
-(* ****** ****** *)
+end // end of [local]
 
 (* ****** ****** *)
 //

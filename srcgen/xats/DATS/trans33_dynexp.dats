@@ -2682,15 +2682,17 @@ val
 loc1 = dqid.loc()
 in
 case+ tias of
-| list_nil
-  ((*void*)) => loc1
-| list_cons _ =>
-  (
-    loc1 + ti2a.loc()
-  ) where
-  {
-    val ti2a = list_last(tias)
-  } (* list_cons *)
+|
+list_nil
+((*void*)) => loc1
+|
+list_cons _ =>
+(
+  loc1 + ti2a.loc()
+) where
+{
+  val ti2a = list_last(tias)
+} (* list_cons *)
 end
 ) : loc_t // end of [val]
 //

@@ -7,7 +7,8 @@ foo1(x: a): a
 #extern
 fun
 <a:type>
-foo2(x: a): a
+<b:type>
+foo2(x: a): b
 
 #symload
 foo with foo1 of 10
@@ -15,8 +16,9 @@ foo with foo1 of 10
 foo with foo2 of 20
 
 impltmp
-{a:type}
-foo2<(a)>(x) = (x : a)
+{a:type
+,b:type}
+foo2<a><b>(x) = (x:b)
 
 ////
 impltmp

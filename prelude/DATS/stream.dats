@@ -109,16 +109,21 @@ then stream_print_all(xs)
 else stream_print_len(xs, len)
 end
 //
-impltmp<>
-stream_print$len<>() = 3
-impltmp<>
-stream_print$beg<>() = string_print("(")
-impltmp<>
-stream_print$end<>() = string_print(")")
-impltmp<>
-stream_print$sep<>() = string_print(",")
-impltmp<>
-stream_print$rst<>() = string_print("...")
+impltmp
+<>(*tmp*)
+stream_print$len() = 3
+impltmp
+<>(*tmp*)
+stream_print$beg() = string_print("(")
+impltmp
+<>(*tmp*)
+stream_print$end() = string_print(")")
+impltmp
+<>(*tmp*)
+stream_print$sep() = string_print(",")
+impltmp
+<>(*tmp*)
+stream_print$rst() = string_print("...")
 //
 impltmp
 {a:t0}

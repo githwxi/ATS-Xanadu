@@ -12,7 +12,7 @@
 (* ****** ****** *)
 //
 impltmp
-<a>(*tmp*)
+<>(*tmp*)
 optn_vt_nilq(xs) =
 (
 case+ xs of
@@ -23,7 +23,7 @@ optn_vt_cons(x0) => false
 )
 //
 impltmp
-<a>(*tmp*)
+<>(*tmp*)
 optn_vt_consq(xs) =
 (
 case+ xs of
@@ -65,7 +65,7 @@ case+ xs of
 
 impltmp
 <a>(*tmp*)
-optn_vt_listize(xs) =
+optn_vt_listize0(xs) =
 (
 case+ xs of
 | ~
@@ -75,7 +75,7 @@ optn_vt_cons(x0) => list_vt_sing(x0)
 )
 impltmp
 <a>(*tmp*)
-optn_vt_rlistize(xs) =
+optn_vt_rlistize0(xs) =
 (
 case+ xs of
 | ~
@@ -85,7 +85,7 @@ optn_vt_cons(x0) => list_vt_sing(x0)
 )
 impltmp
 <a>(*tmp*)
-optn_vt_streamize0(xs) =
+optn_vt_streamize(xs) =
 $llazy
 (
 g_free(xs);
