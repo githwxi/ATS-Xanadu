@@ -314,6 +314,8 @@ x0.node() of
 //
 | D3Evar(d2v1) =>
   fprint!(out, "D3Evar(", d2v1, ")")
+| D3Evarg(d2v1) =>
+  fprint!(out, "D3Evarg(", d2v1, ")")
 | D3Evloc(d2v1) =>
   fprint!(out, "D3Evloc(", d2v1, ")")
 | D3Evenv(d2v1) =>

@@ -188,7 +188,21 @@ loc0 = d3p0.loc()
 val-
 D3Pbang(d3p1) = d3p0.node()
 //
-val d3p1 = trans33_dpat(env0, d3p1)
+val
+d3p1 = trans33_dpat(env0, d3p1)
+//
+val () =
+(
+case+
+d3p1.node() of
+| D3Pvar(d2v1) =>
+  let
+    val t2p1 = d2v1.type()
+  in
+    d2v1.type(t2ype_lft(t2p1))
+  end
+| _ (*non-D3Pvar*) => ((*void*))
+)
 //
 in
   d3pat_make_node
