@@ -47,45 +47,27 @@
 (* ****** ****** *)
 
 #staload "./intrep0.sats"
-#staload "./xcomp3i.sats"
 
 (* ****** ****** *)
 
-local
+absvtype compenv_vtype
+vtypedef compenv = compenv_vtype
 
-
-in(*in-of-local*)
-
-implement
+(* ****** ****** *)
+//
+fun
 xcomp3i_dexp
-(env0, d3e0) = let
+( env0
+: !compenv, d3e0: d3exp): d0rep
+fun
+xcomp3i_dexpopt
+( env0
+: !compenv, opt0: d3expopt): d0repopt
+fun
+xcomp3i_dexplst
+( env0
+: !compenv, d3es: d3explst): d0replst
 //
-val
-loc0 = d3e0.loc()
-val () =
-println!
-("xcomp3i_dexp: loc0 = ", loc0)
-val () =
-println!
-("xcomp3i_dexp: d3e0 = ", d3e0)
-//
-in
-//
-case+
-d3e0.node()
-|
-D3Eint _ =>
-auxint(env0, d3e0)
-|
-D3Ebtf _ =>
-auxbtf(env0, d3e0)
-//
-| _(* rest-of-d3exp *) => i0val_error(d3e0)
-//
-end // end of [xcomp3i_dexp]
-
-end // end of [local]
-
 (* ****** ****** *)
 
-(* end of [xats_xcomp3i_dynexp.dats] *)
+(* end of [xats_tcomp3i.sats] *)
