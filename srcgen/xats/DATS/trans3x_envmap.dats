@@ -270,6 +270,10 @@ tr3xenv_add_lams
 val+
 @TR3XENV(xs) = env
 //
+val
+f3as =
+list_vt2t
+(list_reverse(f3as))
 val () =
 (xs := tr3xstk_lams(f3as, xs))
 //
@@ -396,6 +400,14 @@ _ (* end-of-tr3xstk *) => true
 //
 (* ****** ****** *)
 
+#define VARG 0 // arg. vars
+#define VLOC 0 // local vars
+#define VENV 1 // environ. vars
+#define VFIX 2 // fixed binding
+#define VTOP 2 // top-level vars
+
+(* ****** ****** *)
+
 implement
 tr3xenv_dvar_kind
   (env0, d2v0) =
@@ -407,41 +419,116 @@ auxstk0
 (
 case+ xs of
 |
-tr3xstk_nil() => ~1
-|
-tr3xstk_let1(xs) => auxstk0(xs)
+tr3xstk_let1
+  (xs) => auxstk0(xs)
 //
 |
-tr3xstk_fix1
-  (d2f1, xs) =>
-let
-val test = (d2v0 = d2f1)
-in
-  if test then 0 else auxstk0(xs)
-end
+tr3xstk_dpat(d3p0, xs) =>
+( if
+  test
+  then VLOC else auxstk0(xs)
+) where
+{ val
+  test =
+  d3pat_memq_dvar(d3p0, d2v0)
+}
 |
 tr3xstk_lams
-  (f3as, xs) =>
+( f3as, xs ) =>
+(
+  aux0(f3as, xs)
+) where
+{
+fun
+aux0
+( f3as
+: f3arglst
+, xs: !tr3xstk): int =
+(
+case+ f3as of
+|
+list_nil
+() => auxstk0(xs)
+|
+list_cons
+(f3a0, f3as) =>
+(
+case+
+f3a0.node() of
+|
+F3ARGsome_dyn
+( npf, d3ps ) =>
 ( if
-  test then 0 else auxstk0(xs)
+  test
+  then VLOC else aux1(f3as, xs)
+) where
+{
+  val test =
+  d3patlst_memq_dvar(d3ps, d2v0)
+}
+//
+| _(* else *) => aux0(f3as, xs)
+//
+)
+)
+and
+aux1
+( f3as
+: f3arglst
+, xs: !tr3xstk): int =
+( if
+  test
+  then VENV else auxstk1(xs)
+) where
+{
+  val
+  test =
+  f3arglst_memq_dvar(f3as, d2v0)
+}
+} (* end of [tr3xstk_lams] *)
+//
+| _ (* for non-locals *) => (~1)
+) (* end of [auxstk0] *) 
+//
+and
+auxstk1
+(xs: !tr3xstk): int =
+(
+case+ xs of
+|
+tr3xstk_let1
+  (xs) => auxstk1(xs)
+|
+tr3xstk_dpat(d3p0, xs) =>
+( if
+  test
+  then VENV else auxstk1(xs)
+) where
+{ val
+  test =
+  d3pat_memq_dvar(d3p0, d2v0)
+}
+//
+|
+tr3xstk_fix1(d2f0, xs) =>
+( if
+  (d2f0 = d2v0)
+  then VFIX else auxstk1(xs)
+)
+|
+tr3xstk_lams(f3as, xs) =>
+( if
+  test
+  then VENV else auxstk1(xs)
 ) where
 { val
   test =
   f3arglst_memq_dvar(f3as, d2v0)
 }
-|
-tr3xstk_dpat(d3p0, xs) =>
-( if
-  test then 0 else auxstk0(xs)
-) where
-{ val
-  test = d3pat_memq_dvar(d3p0, d2v0)
-}
-) (* end of [auxstk0] *) 
 //
-and
-auxstk1
-(xs: !tr3xstk): int = ~1
+| _ (* for top-levels *) => VTOP
+//
+)
 //
 in
 let
