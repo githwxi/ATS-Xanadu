@@ -320,10 +320,8 @@ d3exp_node =
 (*
 HX-2020-06: for trans3x:
 *)
-| D3Evarg of (d2var) // argv
-| D3Evloc of (d2var) // local
-| D3Evenv of (d2var) // environ.
-| D3Evtop of (d2var) // top-level
+| D3Evknd of
+  (int(*knd*), d2var)
 //
 | D3Econ1 of (d2con)
 | D3Ecst1 of (d2cst)

@@ -98,27 +98,26 @@ auxvar
 let
 val-
 D3Evar(d2v0) = dend
-val
-vknd =
-tr3xenv_dvar_kind(env0, d2v0)
 in
-ifcase
-| vknd = 0 => D3Evloc(d2v0)
-| vknd = 1 => D3Evenv(d2v0)
-| _(* else *) => D3Evtop(d2v0)
+D3Evknd(knd, d2v0) where
+{
+val
+knd =
+tr3xenv_dvar_kind(env0, d2v0)
+}
 end
 
 fun
 aux_lam
 ( env0:
 ! tr3xenv
-, d3en: d3end): d3end =
+, dend: d3end): d3end =
 let
 val-
 D3Elam
 ( knd
 , f3as
-, res1, arrw, body) = d3en
+, res1, arrw, body) = dend
 //
 val body =
 aux_f3as_body(env0, f3as, body)
@@ -127,18 +126,19 @@ in
   D3Elam
   (knd, f3as, res1, arrw, body)
 end // end of [aux_lam]
+//
 and
 aux_fix
 ( env0:
 ! tr3xenv
-, d3en: d3end): d3end =
+, dend: d3end): d3end =
 let
 val-
 D3Efix
 ( knd
 , d2v0
 , f3as
-, res1, arrw, body) = d3en
+, res1, arrw, body) = dend
 //
 val () =
 tr3xenv_add_fix1(env0, d2v0)
@@ -274,21 +274,32 @@ end
 |
 D3Elet(d3cs, d3e1) =>
 let
-//
 val () =
 tr3xenv_add_let1(env0)
-//
 val
 d3cs =
 trans3x_declist(env0, d3cs)
 val
 d3e1 = trans3x_dexp(env0, d3e1)
-//
 val () = tr3xenv_pop_let1(env0)
-//
 in
   d3exp_make_node
   (loc0, t2p0, D3Elet(d3cs, d3e1))
+end
+|
+D3Ewhere(d3e1, d3cs) =>
+let
+val () =
+tr3xenv_add_let1(env0)
+val
+d3cs =
+trans3x_declist(env0, d3cs)
+val
+d3e1 = trans3x_dexp(env0, d3e1)
+val () = tr3xenv_pop_let1(env0)
+in
+  d3exp_make_node
+  (loc0, t2p0, D3Ewhere(d3e1, d3cs))
 end
 //
 |
@@ -303,21 +314,29 @@ val opt3 =
 trans3x_dexpopt(env0, opt3)
 in
 d3exp_make_node
-(loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
+( loc0
+, t2p0, D3Eif0(d3e1, d3e2, opt3))
 end
 |
 D3Elam _ =>
 let
 val dend = aux_lam(env0, dend)
-val d3e0 =
-d3exp_make_node(loc0, t2p0, dend) in d3e0
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end
+|
+D3Efix _ =>
+let
+val dend = aux_fix(env0, dend)
+in
+  d3exp_make_node(loc0, t2p0, dend)
 end
 //
 |
-d3en(*else*) =>
+dend(*else*) =>
 let
 val d3e0 =
-d3exp_make_node(loc0, t2p0, d3en) in d3e0
+d3exp_make_node(loc0, t2p0, dend) in d3e0
 end
 //
 end // end of [trans3x_dexp]
