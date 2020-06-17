@@ -297,6 +297,8 @@ d3e0.node() of
 | D3Eflt _ => ()
 | D3Estr _ => ()
 //
+| D3Etop _ => ()
+//
 | D3Evar _ => ()
 | D3Evknd _ => ()
 //
