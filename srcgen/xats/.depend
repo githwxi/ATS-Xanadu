@@ -36,7 +36,7 @@ BUILD/trans3t_sats.o : SATS/basics.sats SATS/label0.sats SATS/locinfo.sats SATS/
 BUILD/trans3x_sats.o : SATS/basics.sats SATS/label0.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats
 BUILD/tread3x_sats.o : SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats
 BUILD/intrep0_sats.o : SATS/basics.sats
-BUILD/tcomp3i_sats.o : SATS/basics.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp3.sats SATS/intrep0.sats
+BUILD/tcomp30_sats.o : SATS/basics.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp3.sats SATS/intrep0.sats
 BUILD/basics_dats.o : SATS/basics.sats
 BUILD/stamp0_dats.o : SATS/stamp0.sats
 BUILD/symbol_dats.o : SATS/symbol.sats
