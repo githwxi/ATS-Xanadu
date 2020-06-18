@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May 24, 2020
+// Start Time: June 17, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -37,16 +37,21 @@
 
 (* ****** ****** *)
 //
-abstype s0rep_tbox = ptr
-abstype d0rep_tbox = ptr
+abstype h0typ_tbox = ptr
+abstype h0exp_tbox = ptr
 //
-typedef s0rep = s0rep_tbox
-typedef d0rep = d0rep_tbox
+typedef h0typ = h0typ_tbox
+typedef h0exp = h0exp_tbox
 //
 (* ****** ****** *)
 
-typedef d0replst = List0(d0rep)
-typedef d0repopt = Option(d0rep)
+typedef h0typlst = List0(h0typ)
+typedef h0typopt = Option(h0typ)
+
+(* ****** ****** *)
+
+typedef h0explst = List0(h0exp)
+typedef h0expopt = Option(h0exp)
 
 (* ****** ****** *)
 

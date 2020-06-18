@@ -56,18 +56,18 @@ vtypedef compenv = compenv_vtype
 (* ****** ****** *)
 //
 fun
-xcomp3i_dexp
+tcomp30_dexp
 ( env0
-: !compenv, d3e0: d3exp): d0rep
+: !compenv, d3e0: d3exp): h0exp
 fun
-xcomp3i_dexpopt
+tcomp30_dexpopt
 ( env0
-: !compenv, opt0: d3expopt): d0repopt
+: !compenv, opt0: d3expopt): h0expopt
 fun
-xcomp3i_dexplst
+tcomp30_dexplst
 ( env0
-: !compenv, d3es: d3explst): d0replst
+: !compenv, d3es: d3explst): h0explst
 //
 (* ****** ****** *)
 
-(* end of [xats_tcomp3i.sats] *)
+(* end of [xats_tcomp30.sats] *)
