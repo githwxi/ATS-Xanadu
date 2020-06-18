@@ -36,18 +36,32 @@
 #staload "./basics.sats"
 
 (* ****** ****** *)
+
+abstype htvar_tbox = ptr
+typedef htvar = htvar_tbox
+
+(* ****** ****** *)
 //
 abstype h0typ_tbox = ptr
-abstype h0exp_tbox = ptr
 //
 typedef h0typ = h0typ_tbox
-typedef h0exp = h0exp_tbox
-//
-(* ****** ****** *)
-
 typedef h0typlst = List0(h0typ)
 typedef h0typopt = Option(h0typ)
-
+//
+(* ****** ****** *)
+//
+abstype hdvar_tbox = ptr
+abstype hdcon_tbox = ptr
+abstype hdcst_tbox = ptr
+typedef hdvar = hdvar_tbox
+typedef hdcon = hdcst_tbox
+typedef hdcst = hdcst_tbox
+//
+(* ****** ****** *)
+//
+abstype h0exp_tbox = ptr
+typedef h0exp = h0exp_tbox
+//
 (* ****** ****** *)
 
 typedef h0explst = List0(h0exp)

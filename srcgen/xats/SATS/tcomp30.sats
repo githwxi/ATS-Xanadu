@@ -43,30 +43,16 @@
 (* ****** ****** *)
 
 #staload "./dynexp3.sats"
-
-(* ****** ****** *)
-
 #staload "./intrep0.sats"
-
-(* ****** ****** *)
-
-absvtype compenv_vtype
-vtypedef compenv = compenv_vtype
 
 (* ****** ****** *)
 //
 fun
-tcomp30_dexp
-( env0
-: !compenv, d3e0: d3exp): h0exp
+tcomp30_dexp(d3e0: d3exp): h0exp
 fun
-tcomp30_dexpopt
-( env0
-: !compenv, opt0: d3expopt): h0expopt
+tcomp30_dexpopt(d3expopt): h0expopt
 fun
-tcomp30_dexplst
-( env0
-: !compenv, d3es: d3explst): h0explst
+tcomp30_dexplst(d3explst): h0explst
 //
 (* ****** ****** *)
 
