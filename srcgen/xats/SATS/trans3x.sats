@@ -133,6 +133,11 @@ tr3xenv_pop_lams(!tr3xenv): void
 (* ****** ****** *)
 //
 fun
+tr3xenv_add_dvar
+( env0
+: !tr3xenv, d2v1: d2var): void
+//
+fun
 tr3xenv_add_dpat
 ( env0
 : !tr3xenv, d3p1: d3pat): void

@@ -86,6 +86,7 @@ tr3xstk =
 | tr3xstk_loc2 of tr3xstk
 *)
 //
+| tr3xstk_dvar of (d2var, tr3xstk)
 | tr3xstk_dpat of (d3pat, tr3xstk)
 //
 | tr3xstk_fix1 of (d2var, tr3xstk)
@@ -199,6 +200,8 @@ case- xs of
 |
 ~tr3xstk_let1(xs) => xs
 |
+~tr3xstk_dvar(_, xs) => auxstk(xs)
+|
 ~tr3xstk_dpat(_, xs) => auxstk(xs)
 ) (* end of [auxstk] *)
 //
@@ -222,6 +225,28 @@ fun // HX-2020-05-26:
 auxstk // it does nothing!
 (xs: tr3xstk): tr3xstk = xs
 } (* end of [tr3xenv_pop_loc12] *)
+
+(* ****** ****** *)
+
+implement
+tr3xenv_add_dvar
+  (env, d2v) =
+( fold@(env) ) where
+{
+//
+val+
+@TR3XENV(xs) = env
+//
+val () =
+(
+case+ xs of
+|
+tr3xstk_nil() => ()
+| _ (* else *) =>
+  (xs := tr3xstk_dvar(d2v, xs))
+)
+//
+} (* end of [tr3xenv_add_dvar] *)
 
 (* ****** ****** *)
 
@@ -329,6 +354,8 @@ case- xs of
 |
 ~tr3xstk_let1(xs) => auxstk(xs)
 |
+~tr3xstk_dvar(_, xs) => auxstk(xs)
+|
 ~tr3xstk_dpat(_, xs) => auxstk(xs)
 ) (* end of [auxstk] *)
 //
@@ -423,14 +450,21 @@ tr3xstk_let1
   (xs) => auxstk0(xs)
 //
 |
-tr3xstk_dpat(d3p0, xs) =>
+tr3xstk_dvar(d2v1, xs) =>
+( if
+  test
+  then VLOC else auxstk0(xs)
+) where
+{ val test = (d2v0 = d2v1) }
+|
+tr3xstk_dpat(d3p1, xs) =>
 ( if
   test
   then VLOC else auxstk0(xs)
 ) where
 { val
   test =
-  d3pat_memq_dvar(d3p0, d2v0)
+  d3pat_memq_dvar(d3p1, d2v0)
 }
 |
 tr3xstk_lams
@@ -499,14 +533,21 @@ case+ xs of
 tr3xstk_let1
   (xs) => auxstk1(xs)
 |
-tr3xstk_dpat(d3p0, xs) =>
+tr3xstk_dvar(d2v1, xs) =>
+( if
+  test
+  then VENV else auxstk1(xs)
+) where
+{ val test = (d2v0 = d2v1) }
+|
+tr3xstk_dpat(d3p1, xs) =>
 ( if
   test
   then VENV else auxstk1(xs)
 ) where
 { val
   test =
-  d3pat_memq_dvar(d3p0, d2v0)
+  d3pat_memq_dvar(d3p1, d2v0)
 }
 //
 |
