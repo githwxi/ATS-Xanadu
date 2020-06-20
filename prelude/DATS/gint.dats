@@ -28,22 +28,21 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2018
+// Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
+(*
 typedef sik = sint_k
 typedef uik = uint_k
-
 typedef slik = slint_k
 typedef ulik = ulint_k
-
 typedef ssik = ssize_k
 typedef usik = usize_k
-
 typedef sllik = sllint_k
 typedef ullik = ullint_k
+*)
 
 (* ****** ****** *)
 (*
@@ -56,14 +55,14 @@ typedef ullik = ullint_k
 (* ****** ****** *)
 
 impltmp
-g_print<sint> = gint_print_sint<>
+g_i<sint>(i) = i // g_i: sint -> a
+impltmp
+g_u<uint>(u) = u // g_u: uint -> a
 
 (* ****** ****** *)
 
 impltmp
-g_i<sint>(i) = i // g_i: sint -> a
-impltmp
-g_u<uint>(u) = u // g_u: uint -> a
+g_print<sint> = gint_print_sint<>
 
 (* ****** ****** *)
 

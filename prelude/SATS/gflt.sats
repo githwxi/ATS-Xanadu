@@ -38,7 +38,117 @@
 //
 (* ****** ****** *)
 
+fun<>
+sfloat_cast_sint(sint): sflt
+fun<>
+sfloat_cast_uint(uint): sflt
 
+(* ****** ****** *)
+
+fun<>
+dfloat_cast_sint(sint): dflt
+fun<>
+dfloat_cast_uint(uint): dflt
+
+(* ****** ****** *)
+//
+fun<>
+gflt_print_sflt( sflt ): void
+fun<>
+gflt_print_dflt( dflt ): void
+//
+(* ****** ****** *)
+//
+fun<>
+gflt_neg_sflt( f0: sflt ): sflt
+fun<>
+gflt_neg_dflt( f0: dflt ): dflt
+//
+(* ****** ****** *)
+//
+fun<>
+gflt_abs_sflt( f0: sflt ): sflt
+fun<>
+gflt_abs_dflt( f0: dflt ): dflt
+//
+(* ****** ****** *)
+//
+fun<>
+gflt_succ_sflt( f0: sflt ): sflt
+fun<>
+gflt_succ_dflt( f0: dflt ): dflt
+//
+fun<>
+gflt_pred_sflt( f0: sflt ): sflt
+fun<>
+gflt_pred_dflt( f0: dflt ): dflt
+//
+(* ****** ****** *)
+//
+fun<>
+gflt_lt_sflt_sflt(sflt, sflt): bool
+fun<>
+gflt_gt_sflt_sflt(sflt, sflt): bool
+fun<>
+gflt_eq_sflt_sflt(sflt, sflt): bool
+//
+fun<>
+gflt_lte_sflt_sflt(sflt, sflt): bool
+fun<>
+gflt_gte_sflt_sflt(sflt, sflt): bool
+fun<>
+gflt_neq_sflt_sflt(sflt, sflt): bool
+//
+(* ****** ****** *)
+//
+fun<>
+gflt_lt_dflt_dflt(dflt, dflt): bool
+fun<>
+gflt_gt_dflt_dflt(dflt, dflt): bool
+fun<>
+gflt_eq_dflt_dflt(dflt, dflt): bool
+//
+fun<>
+gflt_lte_dflt_dflt(dflt, dflt): bool
+fun<>
+gflt_gte_dflt_dflt(dflt, dflt): bool
+fun<>
+gflt_neq_dflt_dflt(dflt, dflt): bool
+//
+(* ****** ****** *)
+//
+fun<>
+gflt_cmp_sflt_sflt(sflt, sflt): sint
+//
+fun<>
+gflt_cmp_dflt_dflt(dflt, dflt): sint
+//
+(* ****** ****** *)
+//
+fun<>
+gflt_add_sflt_sflt(sflt, sflt): sflt
+fun<>
+gflt_sub_sflt_sflt(sflt, sflt): sflt
+fun<>
+gflt_mul_sflt_sflt(sflt, sflt): sflt
+fun<>
+gflt_div_sflt_sflt(sflt, sflt): sflt
+fun<>
+gflt_mod_sflt_sflt(sflt, sflt): sflt
+//
+(* ****** ****** *)
+//
+fun<>
+gflt_add_dflt_dflt(dflt, dflt): dflt
+fun<>
+gflt_sub_dflt_dflt(dflt, dflt): dflt
+fun<>
+gflt_mul_dflt_dflt(dflt, dflt): dflt
+fun<>
+gflt_div_dflt_dflt(dflt, dflt): dflt
+fun<>
+gflt_mod_dflt_dflt(dflt, dflt): dflt
+//
 (* ****** ****** *)
 
 (* end of [gflt.sats] *)
