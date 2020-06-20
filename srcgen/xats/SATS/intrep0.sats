@@ -37,7 +37,9 @@
 
 (* ****** ****** *)
 
+abstype htcst_tbox = ptr
 abstype htvar_tbox = ptr
+typedef htcst = htcst_tbox
 typedef htvar = htvar_tbox
 
 (* ****** ****** *)
