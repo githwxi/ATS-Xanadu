@@ -28,73 +28,22 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: June 17, 2020
+// Start Time: June, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./basics.sats"
-
-(* ****** ****** *)
-
-#staload "./symbol.sats"
-
-(* ****** ****** *)
-
-abstype htcst_tbox = ptr
-abstype htvar_tbox = ptr
-typedef htcst = htcst_tbox
-typedef htvar = htvar_tbox
-
-(* ****** ****** *)
 //
-abstype h0typ_tbox = ptr
-//
-typedef h0typ = h0typ_tbox
-typedef h0typlst = List0(h0typ)
-typedef h0typopt = Option(h0typ)
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-abstype hdvar_tbox = ptr
-abstype hdcon_tbox = ptr
-abstype hdcst_tbox = ptr
-typedef hdvar = hdvar_tbox
-typedef hdcon = hdcst_tbox
-typedef hdcst = hdcst_tbox
+#staload "./../SATS/stamp0.sats"
 //
-(* ****** ****** *)
-//
-abstype h0exp_tbox = ptr
-typedef h0exp = h0exp_tbox
-typedef h0explst = List0(h0exp)
-typedef h0expopt = Option(h0exp)
-//
-(* ****** ****** *)
-//
-abstype h0dcl_tbox = ptr
-typedef h0dcl = h0dcl_tbox
-typedef h0dclist = List0(h0dcl)
-typedef h0dclopt = Option(h0dcl)
-//
-(* ****** ****** *)
-//
-datatype
-h0typ_node =
-// externally named
-| H0Tbas of sym_t // type
-//
-| H0Tcst of htcst // constant
-| H0Tvar of htvar // variable
-//
-(* ****** ****** *)
-//
-datatype
-h0exp_node =
-// externally named
-| H0Eexp of hdcst // constant
-| H0Evar of hdvar // variable
+#staload "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
 
-(* end of [xats_intrep0.sats] *)
+(* end of [xats_intrep0_h0typ.dats] *)
