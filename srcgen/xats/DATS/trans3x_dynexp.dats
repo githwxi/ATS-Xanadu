@@ -87,8 +87,12 @@ val () = tr3xenv_free_nil(env0)
 
 local
 
+(* ****** ****** *)
+
 typedef
 d3end = d3exp_node
+
+(* ****** ****** *)
 
 fun
 auxvar
@@ -151,7 +155,8 @@ val () =
 tr3xenv_pop_fix1(env0)
 in
 D3Efix
-(knd, d2v0, f3as, res1, arrw, body)
+( knd
+, d2v0, f3as, res1, arrw, body)
 end
 end // end of [aux_fix]
 and
@@ -175,7 +180,11 @@ end
 end // end of [aux_f3as_body]
 )
 
+(* ****** ****** *)
+
 in(*in-of-local*)
+
+(* ****** ****** *)
 
 implement
 trans3x_dexp
@@ -263,9 +272,11 @@ D3Edapp
 (d3f1, npf2, d3es) =>
 let
 val
-d3f1 = trans3x_dexp(env0, d3f1)
+d3f1 =
+trans3x_dexp(env0, d3f1)
 val
-d3es = trans3x_dexplst(env0, d3es)
+d3es =
+trans3x_dexplst(env0, d3es)
 in
 d3exp_make_node
 ( loc0
@@ -341,6 +352,8 @@ end
 //
 end // end of [trans3x_dexp]
 
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)
@@ -378,7 +391,9 @@ val env0 =
 $UN.castvwtp0{tr3xenv}(env0)
 val d3e0 = trans3x_dexp(env0, d3e0)
 in
-let prval () = $UN.cast2void(env0) in d3e0 end
+let
+prval () = $UN.cast2void(env0) in d3e0
+end
 end
 }
 end // end of [trans3x_dexplst]
@@ -596,14 +611,107 @@ val v3ds = auxv3ds(env0, v3ds)
 in
   d3ecl_make_node
   (loc0, D3Cvaldecl(knd, mopt, v3ds))
-end // end of [aux_valdecl]
+end // end-of-let // end of [aux_valdecl]
 
 (* ****** ****** *)
 
 fun
 aux_vardecl
 ( env0:
-! tr3xenv, d3cl: d3ecl): d3ecl = d3cl
+! tr3xenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+val-
+D3Cvardecl
+( knd
+, mopt
+, v3ds) = d3cl.node()
+//
+fun
+auxv3d0
+( env0:
+! tr3xenv
+, v3d0
+: v3ardecl
+)
+: v3ardecl =
+let
+val+
+V3ARDECL(rcd) = v3d0
+//
+val loc = rcd.loc
+val d2v = rcd.d2v
+val wth = rcd.wth
+val res = rcd.res
+val ini = rcd.ini
+//
+val () =
+tr3xenv_add_dvar(env0, d2v)
+val () =
+(
+case+ wth of
+|
+None() => ()
+|
+Some(d2v) =>
+tr3xenv_add_dvar(env0, d2v)
+)
+//
+val ini =
+(
+case+ ini of
+|
+None() => None()
+|
+Some(d3e0) =>
+Some(trans3x_dexp(env0, d3e0))
+) : d3expopt // end-of-val
+//
+in
+V3ARDECL
+@{
+ loc=loc
+,d2v=d2v,wth=wth,res=res,ini=ini}
+end // end of [auxv3d0]
+and
+auxv3ds
+( env0:
+! tr3xenv
+, v3ds
+: v3ardeclist
+)
+: v3ardeclist =
+list_vt2t
+(
+list_map<v3ardecl><v3ardecl>(v3ds)
+) where
+{
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+implement
+list_map$fopr<v3ardecl><v3ardecl>
+  (v3d0) =
+let
+  val env0 =
+  $UN.castvwtp0{tr3xenv}(env0)
+  val v3d0 = auxv3d0(env0, v3d0)
+in
+let
+prval () = $UN.cast2void(env0) in v3d0
+end
+end
+} (* end of [auxv3ds] *)
+//
+val v3ds = auxv3ds(env0, v3ds)
+//
+in
+  d3ecl_make_node
+  (loc0, D3Cvardecl(knd, mopt, v3ds))
+end // end-of-let // end of [aux_vardecl]
 
 (* ****** ****** *)
 
