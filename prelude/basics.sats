@@ -738,18 +738,18 @@ abstype
 gfloat_type(a:type) <= a
 //
 typedef
-sfloat = gfloat_type(sfloat_k)
+sflt = gfloat_type(sfloat_k)
 typedef
-dfloat = gfloat_type(dfloat_k)
+dflt = gfloat_type(dfloat_k)
 typedef
-ldfloat = gfloat_type(ldfloat_k)
+ldflt = gfloat_type(ldfloat_k)
 //
 typedef
-float = sfloat // single precision
+float = sflt // single precision
 typedef
-double = dfloat // double precision
+double = dflt // double precision
 typedef
-ldouble = ldfloat // double precision
+ldouble = ldflt // double precision
 //
 (* ****** ****** *)
 //
