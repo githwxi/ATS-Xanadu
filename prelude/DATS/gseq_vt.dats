@@ -16,6 +16,27 @@ UN =
 "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
+
+impltmp
+<x0,xs>
+glseq_copy(xs) =
+glseq_unlist_vt<x0,xs>
+(glseq_listize1<x0,xs>(xs))
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+glseq_free(xs) =
+(
+glseq_foreach0<x0,xs>(xs)
+) where
+{
+impltmp
+foreach0$work<x0> = g_free<x0>
+}
+
+(* ****** ****** *)
 //
 impltmp
 <x0,xs>
@@ -86,16 +107,39 @@ foldl1$fopr
 
 (* ****** ****** *)
 //
+(*
 impltmp
 <x0,xs>
 glseq_listize0(xs) =
 stream_vt_listize<x0>
 (glseq_streamize<x0,xs>(xs))
+*)
+(*
 impltmp
 <x0,xs>
 glseq_rlistize0(xs) =
 stream_vt_rlistize<x0>
 (glseq_streamize<x0,xs>(xs))
+*)
+//
+impltmp
+<x0,xs>
+glseq_listize0(xs) =
+(
+glseq_map0_list<x0><x0>(xs)
+) where
+{
+impltmp map0$fopr<x0><x0>(x0) = x0
+}
+impltmp
+<x0,xs>
+glseq_rlistize0(xs) =
+(
+glseq_map0_rlist<x0><x0>(xs)
+) where
+{
+impltmp map0$fopr<x0><x0>(x0) = x0
+}
 //
 (* ****** ****** *)
 
@@ -127,6 +171,82 @@ end // end of [foreach0$work]
 }
 //
 } (* end of [glseq_foldl0/foreach0] *)
+
+(* ****** ****** *)
+//
+impltmp
+<x0,xs><y0>
+glseq_map0_list
+  (xs) = let
+//
+typedef
+yy =
+list_vt(y0)
+typedef
+r0 = p2tr(yy)
+//
+impltmp
+foldl0$fopr
+<x0><r0>(p0, x0) =
+let
+//
+val y0 =
+map0$fopr<x0><y0>(x0)
+val r1 = 
+list_vt_cons( y0, _ )
+val p1 = $addr( r1.1 )
+//
+in
+$UN.p2tr_set<yy>
+(p0, $UN.castlin01(r1)); (p1)
+end // foldl$fopr
+//
+var r0: yy
+val pz =
+glseq_foldl0<x0,xs><r0>(xs, $addr(r0))
+//
+in
+$UN.p2tr_set<yy>
+(pz, list_vt_nil()); $UN.castlin01(r0)
+end // end of [glseq_map0_list/foldl]
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs><y0>
+glseq_map0_rlist
+  (xs) = let
+//
+typedef r0 = list_vt(y0)
+//
+in
+//
+glseq_foldl0
+<x0,xs>< r0 >
+(xs, list_vt_nil()) where
+{
+impltmp
+foldl0$fopr
+< x0 >< r0 >
+(r0, x0) =
+list_vt_cons(map0$fopr<x0><y0>(x0), r0)
+}
+//
+end // end of [glseq_map0_rlist/foldl0]
+//
+(* ****** ****** *)
+
+impltmp
+<x0,xs><y0>
+glseq_map0_stream(xs) =
+let
+val xs =
+glseq_streamize<x0,xs>(xs)
+in(*in-of-let*)
+(
+  stream_vt_map0<x0><y0>(xs)
+)
+end // end of [glseq_map0_stream/streamize]
 
 (* ****** ****** *)
 //
@@ -194,6 +314,10 @@ end // end of [glseq_foreach1/forall1]
 //
 (* ****** ****** *)
 //
+// For gseq-i-operations
+//
+(* ****** ****** *)
+//
 impltmp
 <x0,xs>
 glseq_iforall0(xs) =
@@ -249,6 +373,38 @@ in
 end (* end of [glseq_forall1] *)
 //
 end // end of [glseq_iforall1/forall1]
+//
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+glseq_iexists0
+  (xs) = let
+//
+  impltmp
+  iforall0$test<x0>(i0, x0) =
+  not(iexists0$test<x0>(i0, x0))
+//
+in
+  if
+  glseq_iforall0
+  <x0,xs>(xs) then false else true
+end // end of [glseq_iexists0/iforall0]
+//
+impltmp
+<x0,xs>
+glseq_iexists1
+  (xs) = let
+//
+  impltmp
+  iforall1$test<x0>(i0, x0) =
+  not(iexists1$test<x0>(i0, x0))
+//
+in
+  if
+  glseq_iforall1
+  <x0,xs>(xs) then false else true
+end // end of [glseq_iexists1/iforall1]
 //
 (* ****** ****** *)
 //

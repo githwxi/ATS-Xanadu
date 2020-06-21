@@ -28,12 +28,23 @@ glseq_consq(!xs): bool
 fun
 <x0:vt
 ,xs:vt>
-glseq_is_nil1(!xs): bool
+glseq_nilq1(!xs): bool
 fun
 <x0:vt
 ,xs:vt>
-glseq_is_cons1(!xs): bool
+glseq_consq1(!xs): bool
 *)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
+glseq_copy(!xs): (xs)
+fun
+<x0:vt
+,xs:vt>
+glseq_free(~xs): void
 //
 (* ****** ****** *)
 //
@@ -86,12 +97,46 @@ glseq_listize0(~xs): list_vt(x0)
 fun
 <x0:vt
 ,xs:vt>
+glseq_listize1(!xs): list_vt(x0)
+//
+fun
+<x0:vt
+,xs:vt>
 glseq_rlistize0(~xs): list_vt(x0)
+fun
+<x0:vt
+,xs:vt>
+glseq_rlistize1(!xs): list_vt(x0)
 //
 fun
 <x0:vt
 ,xs:vt>
 glseq_streamize(~xs): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:vt>
+glseq_unlist(xs: list(x0)): (xs)
+fun
+<x0:vt
+,xs:vt>
+glseq_unlist_vt(list_vt(x0)): (xs)
+//
+fun
+<x0:t0
+,xs:vt>
+glseq_unrlist(xs: list(x0)): (xs)
+fun
+<x0:vt
+,xs:vt>
+glseq_unrlist_vt(list_vt(x0)): (xs)
+//
+fun
+<x0:vt
+,xs:vt>
+glseq_unstream_vt(stream_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //
@@ -168,6 +213,43 @@ glseq_map1_list(!xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_map0_rlist(~xs): list_vt(y0)
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_map1_rlist(!xs): list_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_map0_stream(~xs): stream_vt(y0)
+//
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_mapopt0_stream(~xs): stream_vt(y0)
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_maplst0_stream(~xs): stream_vt(y0)
+fun
+<x0:vt
+,xs:vt>
+<y0:vt>
+glseq_mapstrm0_stream(~xs): stream_vt(y0)
+//
+(* ****** ****** *)
+//
 // For gseq-i-operations
 //
 (* ****** ****** *)
@@ -198,27 +280,6 @@ fun
 <x0:vt
 ,xs:vt>
 glseq_iforeach1(!xs): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt
-,xs:vt>
-<y0:vt>
-glseq_map0_rlist(~xs): list_vt(y0)
-fun
-<x0:vt
-,xs:vt>
-<y0:vt>
-glseq_map1_rlist(!xs): list_vt(y0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt
-,xs:vt>
-<y0:vt>
-glseq_map0_stream(~xs): stream_vt(y0)
 //
 (* ****** ****** *)
 //
