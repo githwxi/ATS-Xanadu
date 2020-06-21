@@ -605,17 +605,6 @@ overload fprint with fprint_d3exp
 (* ****** ****** *)
 //
 fun
-d3exp_talf(d3e0: d3exp): d3exp
-//
-(* ****** ****** *)
-//
-fun
-d3exp_tcast
-(d3e0: d3exp, t2p0: t2ype): d3exp
-//
-(* ****** ****** *)
-//
-fun
 print_t3cst: print_type(t3cst)
 fun
 prerr_t3cst: prerr_type(t3cst)
@@ -625,6 +614,17 @@ fprint_t3cst: fprint_type(t3cst)
 overload print with print_t3cst
 overload prerr with prerr_t3cst
 overload fprint with fprint_t3cst
+//
+(* ****** ****** *)
+//
+fun
+d3exp_talf(d3e0: d3exp): d3exp
+//
+(* ****** ****** *)
+//
+fun
+d3exp_tcast
+(d3e0: d3exp, t2p0: t2ype): d3exp
 //
 (* ****** ****** *)
 

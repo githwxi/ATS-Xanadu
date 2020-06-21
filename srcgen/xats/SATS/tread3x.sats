@@ -59,6 +59,10 @@ datatype trerr3x =
 | TRERR3Xf3arg of (f3arg)
 | TRERR3Xd3ecl of (d3ecl)
 //
+| TRERR3Xd3exp_tcst of (d3exp)
+| TRERR3Xd3exp_tnfd of (d3exp)
+| TRERR3Xd3exp_trec of (d3exp)
+//
 | TRERR3Xd3exp_tapp of (d3exp)
 | TRERR3Xd3exp_timp2f of (d3exp, f3undecl)
 //
@@ -91,6 +95,19 @@ fun//{}
 tread3x_d3explst: treader3x(d3explst)
 fun//{}
 tread3x_d3expopt: treader3x(d3expopt)
+//
+(* ****** ****** *)
+//
+fun//{}
+tread3x_d3gua: treader3x(d3gua)
+fun//{}
+tread3x_d3gpat: treader3x(d3gpat)
+fun//{}
+tread3x_d3clau: treader3x(d3clau)
+fun//{}
+tread3x_d3gualst: treader3x(d3gualst)
+fun//{}
+tread3x_d3claulst: treader3x(d3claulst)
 //
 (* ****** ****** *)
 //
