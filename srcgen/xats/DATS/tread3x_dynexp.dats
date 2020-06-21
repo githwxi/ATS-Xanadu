@@ -93,6 +93,8 @@ tread3x_d3patlst(d3ps) = ()
 
 local
 
+(* ****** ****** *)
+
 fun
 auxtcst
 (d3e0: d3exp): void =
@@ -107,7 +109,8 @@ D3Etcst
 , ti2s) = d3e0.node()
 //
 val () =
-trerr3x_add(TRERR3Xd3exp(d3e0))
+trerr3x_add
+(TRERR3Xd3exp_tcst(d3e0))
 //
 val () =
 prerrln!
@@ -133,6 +136,126 @@ prerrln!
 in
   // nothing
 end // end of [auxtcst]
+
+(* ****** ****** *)
+
+fun
+auxtnfd
+(d3e0: d3exp): void =
+let
+//
+val
+loc0 = d3e0.loc()
+//
+val-
+D3Etnfd
+( d3e1
+, path ) = d3e0.node()
+//
+in
+(
+  auxtcst(d3e1)
+) where
+{
+val () =
+trerr3x_add
+(TRERR3Xd3exp_tnfd(d3e0))
+//
+val () =
+prerrln!
+(loc0, ": ***TRERR3X***")
+val () =
+prerrln!
+( loc0
+, ": TRERR3X(D3Etnfd): temp-missing")
+val () =
+prerrln!
+( loc0
+, ": TRERR3X(D3Etnfd): d3e1 = ", d3e1)
+val () =
+let
+fun
+auxlst
+( xs
+: t3cstlst
+) : void =
+(
+case+ xs of
+|
+list_nil() => ()
+|
+list_cons(x1, xs) => let
+val p1 =
+d3exp(x1)
+val () =
+prerrln!
+( p1.loc()
+, ": TRERR3X(D3Etnfd): temp-search: ", x1)
+in auxlst(xs) end
+)
+in auxlst(path) end
+} (* end of [where] *)
+end // end of [auxtnfd]
+
+(* ****** ****** *)
+
+fun
+auxtrec
+(d3e0: d3exp): void =
+let
+//
+val
+loc0 = d3e0.loc()
+//
+val-
+D3Etrec
+( d3e1
+, path ) = d3e0.node()
+//
+in
+(
+  auxtcst(d3e1)
+) where
+{
+val () =
+trerr3x_add
+(TRERR3Xd3exp_trec(d3e0))
+//
+val () =
+prerrln!
+(loc0, ": ***TRERR3X***")
+val () =
+prerrln!
+( loc0
+, ": TRERR3X(D3Etrec): temp-looping")
+val () =
+prerrln!
+( loc0
+, ": TRERR3X(D3Etnfd): d3e1 = ", d3e1)
+val () =
+let
+fun
+auxlst
+( xs
+: t3cstlst
+) : void =
+(
+case+ xs of
+|
+list_nil() => ()
+|
+list_cons(x1, xs) => let
+val p1 =
+d3exp(x1)
+val () =
+prerrln!
+( p1.loc()
+, ": TRERR3X(D3Etnfd): temp-search: ", x1)
+in auxlst(xs) end
+)
+in auxlst(path) end
+} (* end of [where] *)
+end // end of [auxtrec]
 
 (* ****** ****** *)
 
@@ -312,19 +435,28 @@ d3e0.node() of
 | D3Efcst _ => ()
 //
 | D3Etcst _ =>
-  (
-    auxtcst(d3e0)
-  )
+  {
+  val () = auxtcst(d3e0)
+  }
+| D3Etnfd _ =>
+  {
+  val () = auxtnfd(d3e0)
+  }
+| D3Etrec _ =>
+  {
+  val () = auxtrec(d3e0)
+  }
+//
 | D3Etimp _ =>
-  (
-    auxtimp(d3e0)
-  )
+  {
+  val () = auxtimp(d3e0)
+  }
 //
 | D3Esap1
   (d3e1, s2e2) =>
   {
     val () =
-    tread3x_d3exp(d3e1)
+    tread3x_d3exp( d3e1 )
   }
 //
 | D3Etapp
@@ -363,19 +495,22 @@ d3e0.node() of
   (d3e1, d3e2, opt3) =>
   {
 //
-  val () = tread3x_d3exp(d3e1)
-  val () = tread3x_d3exp(d3e2)
-  val () = tread3x_d3expopt(opt3)
+  val () =
+    tread3x_d3exp(d3e1)
+  val () =
+    tread3x_d3exp(d3e2)
+  val () =
+    tread3x_d3expopt( opt3 )
 //
   }
 //
 | D3Ecase
   (knd0, d3e1, d3cs) =>
   {
-  val () = tread3x_d3exp(d3e1)
-(*
-  val () = tread3x_d3claulst(d3cs)
-*)
+    val () =
+    tread3x_d3exp( d3e1 )
+    val () =
+    tread3x_d3claulst( d3cs )
   }
 //
 | D3Elet(d3cs, d3e1) =>
@@ -512,6 +647,85 @@ list_foreach<d3exp>(d3es)
 implement(env)
 list_foreach$fwork<d3exp><env>(d3e, env) = tread3x_d3exp(d3e)
 } (* end of [tread3x_d3explst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread3x_d3gua
+  (d3g0) =
+(
+case+
+d3g0.node() of
+| D3GUAexp(d3e1) =>
+  {
+    val () = tread3x_d3exp(d3e1)
+  }
+| D3GUAmat(d3e1, d3p2) =>
+  {
+    val () = tread3x_d3exp(d3e1)
+    val () = tread3x_d3pat(d3p2)
+  }
+)
+//
+implement
+//{}(*tmp*)
+tread3x_d3clau
+  (d3cl) =
+(
+case+
+d3cl.node() of
+| D3CLAUpat(dgp1) =>
+  {
+    val () =
+    tread3x_d3gpat(dgp1)
+  }
+| D3CLAUexp(dgp1, d3e2) =>
+  {
+    val () =
+    tread3x_d3gpat(dgp1)
+    val () = tread3x_d3exp(d3e2)
+  }
+)
+implement
+//{}(*tmp*)
+tread3x_d3gpat
+  (dgp0) =
+(
+case+
+dgp0.node() of
+| D3GPATpat(d3p1) =>
+  {
+    val () = tread3x_d3pat(d3p1)
+  }
+| D3GPATgua(d3p1, d3gs) =>
+  {
+    val () = tread3x_d3pat(d3p1)
+    val () = tread3x_d3gualst(d3gs)
+  }
+)
+//
+implement
+//{}(*tmp*)
+tread3x_d3gualst(d3gs) =
+(
+list_foreach<d3gua>(d3gs)
+) where
+{
+implement(env)
+list_foreach$fwork<d3gua><env>(d3g, env) = tread3x_d3gua(d3g)
+} (* end of [tread3x_d3gualst] *)
+//
+implement
+//{}(*tmp*)
+tread3x_d3claulst(d3cs) =
+(
+list_foreach<d3clau>(d3cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d3clau><env>(d3cl, env) = tread3x_d3clau(d3cl)
+} (* end of [tread3x_d3claulst] *)
 //
 (* ****** ****** *)
 
