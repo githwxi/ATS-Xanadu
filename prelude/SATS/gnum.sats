@@ -163,7 +163,12 @@ gl_mod11(x: !a, y: !a): a
 (* ****** ****** *)
 //
 #symload
-pred with g_neg of 0101
+neg with g_neg of 0101
+#symload
+abs with g_abs of 0101
+//
+(* ****** ****** *)
+//
 #symload
 succ with g_succ of 0101
 #symload
