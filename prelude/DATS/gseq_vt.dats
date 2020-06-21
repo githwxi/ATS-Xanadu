@@ -313,6 +313,45 @@ in
 end // end of [glseq_foreach1/forall1]
 //
 (* ****** ****** *)
+
+impltmp
+<x0,xs>
+glseq_append00
+  (xs1, xs2) =
+(
+glseq_foldr0
+<x0,xs>< xs >(xs1, xs2)
+) where
+{
+impltmp
+foldr0$fopr
+< x0><xs >
+( x0, r0 ) = glseq_cons<x0,xs>(x0, r0)
+} (* end of [glseq_append00/foldr0] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+glseq_reverse0(xs) =
+glseq_rappend00
+(xs, glseq_nil<x0,xs>())
+impltmp
+<x0,xs>
+glseq_rappend00
+  (xs1, xs2) =
+(
+glseq_foldl0
+<x0,xs>< xs >(xs1, xs2)
+) where
+{
+impltmp
+foldl0$fopr
+< x0><xs >
+( r0, x0 ) = glseq_cons<x0,xs>(x0, r0)
+} (* end of [glseq_rappend00/foldl0] *)
+
+(* ****** ****** *)
 //
 // For gseq-i-operations
 //

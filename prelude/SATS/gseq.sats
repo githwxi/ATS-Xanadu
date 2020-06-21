@@ -338,7 +338,8 @@ gseq_rforeach(xs): void
 fun
 <x0:t0
 ,xs:t0>
-gseq_append(xs1: xs, xs2: xs): xs
+gseq_append
+(xs1: xs, xs2: xs): xs
 //
 fun
 <x0:t0
