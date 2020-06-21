@@ -63,6 +63,10 @@ fun
 g_neg(x: a): a
 fun
 <a:t0>
+g_abs(x: a): a
+//
+fun
+<a:t0>
 g_succ(x: a): a
 fun
 <a:t0>

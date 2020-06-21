@@ -39,16 +39,16 @@
 (* ****** ****** *)
 
 fun<>
-sfloat_cast_sint(sint): sflt
+gflt_i_sflt(sint): sflt
 fun<>
-sfloat_cast_uint(uint): sflt
+gflt_u_sflt(uint): sflt
 
 (* ****** ****** *)
 
 fun<>
-dfloat_cast_sint(sint): dflt
+gflt_i_dflt(sint): dflt
 fun<>
-dfloat_cast_uint(uint): dflt
+gflt_u_dflt(uint): dflt
 
 (* ****** ****** *)
 //
