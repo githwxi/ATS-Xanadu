@@ -356,6 +356,127 @@ gint_mod_sint_sint<> = xint_gint_mod_sint_sint
 //
 (* ****** ****** *)
 //
+// prelude/gflt.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gflt_i_dflt
+( x0: sint ): dflt // = $ext()
+impltmp
+gflt_i_dflt<> = xint_gflt_i_dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gflt_neg_dflt
+  ( x0: dflt ): dflt // = $ext()
+impltmp
+gflt_neg_dflt<> = xint_gflt_neg_dflt
+//
+#extern
+fun
+xint_gflt_abs_dflt
+  ( x0: dflt ): dflt // = $ext()
+impltmp
+gflt_abs_dflt<> = xint_gflt_abs_dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gflt_succ_dflt
+  ( x0: dflt ): dflt // = $ext()
+impltmp
+gflt_succ_dflt<> = xint_gflt_succ_dflt
+#extern
+fun
+xint_gflt_pred_dflt
+  ( x0: dflt ): dflt // = $ext()
+impltmp
+gflt_pred_dflt<> = xint_gflt_pred_dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gflt_lt_dflt_dflt
+( x0: dflt, y0: dflt ): bool // = $ext()
+#extern
+fun
+xint_gflt_gt_dflt_dflt
+( x0: dflt, y0: dflt ): bool // = $ext()
+#extern
+fun
+xint_gflt_eq_dflt_dflt
+( x0: dflt, y0: dflt ): bool // = $ext()
+#extern
+fun
+xint_gflt_lte_dflt_dflt
+( x0: dflt, y0: dflt ): bool // = $ext()
+#extern
+fun
+xint_gflt_gte_dflt_dflt
+( x0: dflt, y0: dflt ): bool // = $ext()
+#extern
+fun
+xint_gflt_neq_dflt_dflt
+( x0: dflt, y0: dflt ): bool // = $ext()
+//
+impltmp
+gflt_lt_dflt_dflt<> = xint_gflt_lt_dflt_dflt
+impltmp
+gflt_gt_dflt_dflt<> = xint_gflt_gt_dflt_dflt
+impltmp
+gflt_eq_dflt_dflt<> = xint_gflt_eq_dflt_dflt
+impltmp
+gflt_lte_dflt_dflt<> = xint_gflt_lte_dflt_dflt
+impltmp
+gflt_gte_dflt_dflt<> = xint_gflt_gte_dflt_dflt
+impltmp
+gflt_neq_dflt_dflt<> = xint_gflt_neq_dflt_dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gflt_cmp_dflt_dflt
+( x0: dflt, y0: dflt ): sint // = $ext()
+impltmp
+gflt_cmp_dflt_dflt<> = xint_gflt_cmp_dflt_dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+xint_gflt_add_dflt_dflt
+( x0: dflt, y0: dflt ): dflt // = $ext()
+#extern
+fun
+xint_gflt_sub_dflt_dflt
+( x0: dflt, y0: dflt ): dflt // = $ext()
+#extern
+fun
+xint_gflt_mul_dflt_dflt
+( x0: dflt, y0: dflt ): dflt // = $ext()
+#extern
+fun
+xint_gflt_div_dflt_dflt
+( x0: dflt, y0: dflt ): dflt // = $ext()
+//
+impltmp
+gflt_add_dflt_dflt<> = xint_gflt_add_dflt_dflt
+impltmp
+gflt_sub_dflt_dflt<> = xint_gflt_sub_dflt_dflt
+impltmp
+gflt_mul_dflt_dflt<> = xint_gflt_mul_dflt_dflt
+impltmp
+gflt_div_dflt_dflt<> = xint_gflt_div_dflt_dflt
+//
+(* ****** ****** *)
+//
 // prelude/string.sats
 //
 (* ****** ****** *)

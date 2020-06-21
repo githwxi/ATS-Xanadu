@@ -42,14 +42,14 @@
 (* ****** ****** *)
 //
 impltmp
-g_i<sflt> = sfloat_cast_sint<>
+g_i<sflt> = gflt_i_sflt<>
 impltmp
-g_u<sflt> = sfloat_cast_uint<>
+g_u<sflt> = gflt_u_sflt<>
 //
 impltmp
-g_i<dflt> = dfloat_cast_sint<>
+g_i<dflt> = gflt_i_dflt<>
 impltmp
-g_u<dflt> = dfloat_cast_uint<>
+g_u<dflt> = gflt_u_dflt<>
 //
 (* ****** ****** *)
 
@@ -64,6 +64,11 @@ impltmp
 g_neg<sflt> = gflt_neg_sflt<>
 impltmp
 g_neg<dflt> = gflt_neg_dflt<>
+//
+impltmp
+g_abs<sflt> = gflt_abs_sflt<>
+impltmp
+g_abs<dflt> = gflt_abs_dflt<>
 //
 impltmp
 g_succ<sflt> = gflt_succ_sflt<>
