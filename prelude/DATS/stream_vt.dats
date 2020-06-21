@@ -384,33 +384,61 @@ impltmp
 stream_vt_concat
   (xss) =
 (
-  concat(xss)
+  auxmain0(xss)
 ) where
 {
-fun
-concat(xss) =
+fnx
+auxmain0(xss) =
 $llazy
 (
 g_free(xss);
+auxloop2(xss)
+)
+and
+auxmain1(xss, xs0) =
+$llazy
+(
+g_free(xss);
+g_free(xs0);
+(
+case+ !xs0 of
+| ~
+strmcon_vt_nil() => auxloop2(xss)
+| ~
+strmcon_vt_cons(x0, xs1) =>
+strmcon_vt_cons(x0, auxmain1(xss, xs1))
+)
+)
+and
+auxloop2(xss) =
+(
 case+ !xss of
 | ~
 strmcon_vt_nil() =>
 strmcon_vt_nil()
 | ~
-strmcon_vt_cons(xs0, xss) => !
-(stream_vt_append<a>(xs0, concat(xss)))
+strmcon_vt_cons(xs0, xss) =>
+(
+case+ !xs0 of
+| ~
+strmcon_vt_nil() => auxloop2(xss)
+| ~
+strmcon_vt_cons(x0, xs1) =>
+strmcon_vt_cons(x0, auxmain1(xss, xs1))
+)
 )
 } (* end of [stream_vt_concat] *)
+//
 impltmp
 <x0,xs>
 stream_vt_gconcat
   (xss) =
 (
-  concat(xss)
+  gconcat(xss)
 ) where
 {
 fun
-concat(xss) =
+gconcat(xss) =
 $llazy
 (
 g_free(xss);
@@ -422,7 +450,7 @@ strmcon_vt_nil()
 strmcon_vt_cons(xs0, xss) => !
 (
 stream_vt_append<x0>
-(glseq_streamize0<x0,xs>(xs0), concat(xss)))
+(glseq_streamize0<x0,xs>(xs0), gconcat(xss)))
 )
 } (* end of [stream_vt_gconcat] *)
 //
@@ -634,6 +662,145 @@ in
 end // end of [strmcon_vt_cons]
 )
 } (* end of [stream_vt_mapopt0] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0><y0>
+stream_vt_maplst0
+  (xs) =
+(
+  auxmain0(xs)
+) where
+{
+fnx
+auxmain0
+( xs
+: stream_vt(x0)
+)
+: stream_vt(y0) =
+$llazy
+(
+g_free(xs);
+auxloop2($eval(xs)))
+//
+and
+auxmain1
+( xs
+: stream_vt(x0)
+, ys: list_vt(y0)
+) : stream_vt(y0) =
+$llazy
+(
+g_free(xs);
+g_free(ys);
+case+ ys of
+| ~
+list_vt_nil() =>
+auxloop2($eval(xs))
+| ~
+list_vt_cons(y0, ys) =>
+strmcon_vt_cons(y0, auxmain1(xs, ys))
+)
+//
+and
+auxloop2
+( xs
+: strmcon_vt(x0)
+)
+: strmcon_vt(y0) =
+(
+case+ xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+  val
+  ys =
+  maplst0$fopr<x0><y0>(x0)
+in
+  case+ ys of
+  | ~
+  list_vt_nil() =>
+  auxloop2($eval(xs)) // tail-call
+  | ~
+  list_vt_cons(y0, ys) =>
+  strmcon_vt_cons(y0, auxmain1(xs, ys))
+end // end of [strmcon_vt_cons]
+)
+} (* end of [stream_vt_maplst0] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0><y0>
+stream_vt_mapstrm0
+  (xs) =
+(
+  auxmain0(xs)
+) where
+{
+fnx
+auxmain0
+( xs
+: stream_vt(x0)
+)
+: stream_vt(y0) =
+$llazy
+(
+g_free(xs);
+auxloop2($eval(xs)))
+//
+and
+auxmain1
+( xs
+: stream_vt(x0)
+, ys
+: stream_vt(y0)
+) : stream_vt(y0) =
+$llazy
+(
+g_free(xs);
+g_free(ys);
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+auxloop2($eval(xs))
+| ~
+strmcon_vt_cons(y0, ys) =>
+strmcon_vt_cons(y0, auxmain1(xs, ys))
+)
+//
+and
+auxloop2
+( xs
+: strmcon_vt(x0)
+)
+: strmcon_vt(y0) =
+(
+case+ xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+  val
+  ys =
+  mapstrm0$fopr<x0><y0>(x0)
+in
+  case+ !ys of
+  | ~
+  strmcon_vt_nil() =>
+  auxloop2($eval(xs)) // tail-call
+  | ~
+  strmcon_vt_cons(y0, ys) =>
+  strmcon_vt_cons(y0, auxmain1(xs, ys))
+end // end of [strmcon_vt_cons]
+)
+} (* end of [stream_vt_mapstrm0] *)
 
 (* ****** ****** *)
 //

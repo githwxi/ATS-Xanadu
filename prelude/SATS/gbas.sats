@@ -109,7 +109,7 @@ fun
 map1$fopr(x0: !x0): (y0)
 
 (* ****** ****** *)
-
+//
 fun
 <x0:t0>
 filter$test(x0: x0): bool
@@ -119,7 +119,7 @@ filter0$test(x0: ~x0): bool
 fun
 <x0:vt>
 filter1$test(x0: !x0): bool
-
+//
 (* ****** ****** *)
 //
 // HX-2020-03-05:
@@ -128,7 +128,7 @@ filter1$test(x0: !x0): bool
 fun
 <x0:t0>
 <y0:vt>
-mapopt$fopr(x0): optn_vt(y0)
+mapopt$fopr(x0: x0): optn_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
@@ -137,6 +137,36 @@ fun
 <x0:vt>
 <y0:vt>
 mapopt1$fopr(x0: !x0): optn_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+maplst$fopr(x0: x0): list_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+maplst0$fopr(x0: ~x0): list_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+maplst1$fopr(x0: !x0): list_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+mapstrm$fopr(x0: x0): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrm0$fopr(x0: ~x0): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrm1$fopr(x0: !x0): stream_vt(y0)
 //
 (* ****** ****** *)
 //

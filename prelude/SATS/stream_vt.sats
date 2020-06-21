@@ -199,6 +199,17 @@ fun
 stream_vt_mapopt0
   (xs: stream_vt(x0)): stream_vt(y0)
 //
+fun
+<x0:vt>
+<y0:vt>
+stream_vt_maplst0
+  (xs: stream_vt(x0)): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+stream_vt_mapstrm0
+  (xs: stream_vt(x0)): stream_vt(y0)
+//
 (* ****** ****** *)
 //
 // For 2-gseq-operations
