@@ -616,13 +616,11 @@ d3cl.node() of
     iseqz(ti2s)
     then
     {
-      val () = tread3x_d3exp(d3e0) // ntmp
+      val () = tread3x_d3exp(d3e0) // non-tmp
     }
     else
     {
-(*
-      val () = tread3x_d3exp(d3e0) // temp
-*)
+      val () = tread3x_d3exp(d3e0) // template
     }
   )
 //

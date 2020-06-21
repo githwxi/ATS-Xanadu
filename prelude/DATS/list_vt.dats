@@ -99,10 +99,6 @@ end
 ) (* end of [loop] *)
 } (* end of [list_vt_free] *)
 //
-impltmp
-{a:vt}(*tmp*)
-g_free<list_vt(a)> = list_vt_free<a>
-//
 (* ****** ****** *)
 
 impltmp
@@ -137,6 +133,8 @@ let
 var r0: list_vt(a) in loop(xs, r0); r0
 end
 end // end of [list_vt_copy]
+//
+(* ****** ****** *)
 
 impltmp
 <a>(*tmp*)
@@ -524,6 +522,38 @@ end // end of [list_vt_cons]
 (* ****** ****** *)
 //
 impltmp
+<a>(*tmp*)
+list_vt_listize0(xs) = xs
+impltmp
+<a>(*tmp*)
+list_vt_rlistize0(xs) =
+  list_vt_reverse< a >( xs )
+//
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_vt_streamize(xs) =
+let
+fun
+auxmain
+( xs
+: list_vt(a)): stream_vt(a) =
+$llazy
+(
+g_free(xs);
+case+ xs of
+| ~
+list_vt_nil() => strmcon_vt_nil()
+| ~
+list_vt_cons(x0, xs) =>
+  strmcon_vt_cons(x0, auxmain(xs))
+)
+in auxmain(xs) end // list_vt_streamize
+
+(* ****** ****** *)
+//
+impltmp
 <x0><y0>
 list_vt_map0(xs) = let
 //
@@ -798,6 +828,27 @@ glseq_consq
 <a,list_vt(a)> = list_vt_consq
 //
 (* ****** ****** *)
+//
+impltmp
+{a:vt}(*tmp*)
+g_free
+<list_vt(a)> = list_vt_free<a>
+//
+impltmp
+{a:vt}(*tmp*)
+g_copy
+<list_vt(a)> = list_vt_copy<a>
+//
+impltmp
+{a:vt}
+glseq_copy
+<a,list_vt(a)> = list_vt_copy<a>
+impltmp
+{a:vt}
+glseq_free
+<a,list_vt(a)> = list_vt_free<a>
+//
+(* ****** ****** *)
 
 impltmp
 {a:vt}
@@ -819,6 +870,14 @@ glseq_rlistize0
 <a,list_vt(a)>(xs) =
 list_vt_reverse<a>( xs )
 //
+(* ****** ****** *)
+
+impltmp
+{a:vt}
+glseq_streamize
+<a,list_vt(a)>(xs) =
+list_vt_streamize<a>( xs )
+
 (* ****** ****** *)
 //
 impltmp

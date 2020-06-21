@@ -491,8 +491,7 @@ r0 = p2tr(yy)
 //
 impltmp
 foldl$fopr
-<x0><r0>
-(p0, x0) =
+<x0><r0>(p0, x0) =
 let
 //
 val y0 =
@@ -532,8 +531,8 @@ gseq_foldl
 {
 impltmp
 foldl$fopr
-<x0><r0>
-(r0, x0) =
+ <x0><r0>
+( r0, x0 ) =
 list_vt_cons(map$fopr<x0><y0>(x0), r0)
 }
 //
