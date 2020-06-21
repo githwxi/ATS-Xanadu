@@ -282,6 +282,12 @@ rforeach1$work(x0: !x0): void
 fun
 <x0:t0>
 iexists$test(nint, x0): bool
+fun
+<x0:vt>
+iexists0$test(nint, ~x0): bool
+fun
+<x0:vt>
+iexists1$test(nint, !x0): bool
 //
 fun
 <x0:t0>

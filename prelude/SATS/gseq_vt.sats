@@ -203,6 +203,23 @@ glseq_foreach1(!xs): void
 fun
 <x0:vt
 ,xs:vt>
+glseq_append00
+(xs1: xs, xs2: xs): xs
+//
+fun
+<x0:vt
+,xs:vt>
+glseq_reverse0(xs: xs): xs
+fun
+<x0:vt
+,xs:vt>
+glseq_rappend00(xs1: xs, xs2: xs): xs
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,xs:vt>
 <y0:vt>
 glseq_map0_list(~xs): list_vt(y0)
 fun
