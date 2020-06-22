@@ -861,12 +861,25 @@ d0cl.node() of
     val () = synread_d0exp(body)
   }
 //
+| D0Cexcptcon
+  (tok, d0cs) =>
+  {
+(*
+    val () =
+    synread_EXCEPTION(tok)
+*)
+    val () =
+      synread_d0atconlst(d0cs)
+    // end of [val]
+  }
+//
 | D0Cdynconst
   (tok, tqas, d0cs) =>
   {
 (*
     val () =
-    synread_FUN/VAL(tok)
+      synread_FUN/VAL(tok)
+    // end of [val]
 *)
     val () =
       synread_tq0arglst(tqas)
