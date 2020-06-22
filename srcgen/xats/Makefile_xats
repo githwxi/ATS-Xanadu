@@ -151,6 +151,7 @@ trans3t_dynexp.dats \
 trans3x_envmap.dats \
 trans3x_dynexp.dats \
 tread3x_dynexp.dats \
+intrep0_print.dats \
 intrep0_statyp.dats \
 intrep0_dynexp.dats \
 

@@ -275,6 +275,7 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./trans3x_dynexp.dats"
 #dynload "./tread3x_dynexp.dats"
 //
+#dynload "./intrep0_print.dats"
 #dynload "./intrep0_statyp.dats"
 #dynload "./intrep0_dynexp.dats"
 //
