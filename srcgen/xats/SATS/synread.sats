@@ -121,6 +121,8 @@ datatype synerr =
 | SYNERRs0marg of (s0marg)
 | SYNERRt0marg of (t0marg)
 //
+| SYNERRs0uni of (s0uni)
+//
 | SYNERRs0exp of (s0exp)
 //
 | SYNERRd0pid of (i0dnt)
@@ -234,6 +236,13 @@ synread_s0qualst: synreader(s0qualst)
 (* ****** ****** *)
 //
 fun//{}
+synread_s0uni: synreader(s0uni)
+fun//{}
+synread_s0unilst: synreader(s0unilst)
+//
+(* ****** ****** *)
+//
+fun//{}
 synread_s0exp: synreader(s0exp)
 fun//{}
 synread_s0explst: synreader(s0explst)
@@ -263,6 +272,13 @@ synread_f0unarrow: synreader(f0unarrow)
 
 fun//{}
 synread_effs0expopt: synreader(effs0expopt)
+
+(* ****** ****** *)
+
+fun//{}
+synread_d0atcon: synreader(d0atcon)
+fun//{}
+synread_d0atconlst: synreader(d0atconlst)
 
 (* ****** ****** *)
 //

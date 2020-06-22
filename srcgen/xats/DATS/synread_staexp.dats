@@ -561,8 +561,6 @@ s0q0.node() of
   }
 )
 //
-(* ****** ****** *)
-//
 implement
 //{}(*tmp*)
 synread_s0qualst
@@ -574,6 +572,50 @@ list_foreach<s0qua>(s0qs)
 implement(env)
 list_foreach$fwork<s0qua><env>(s0q, env) = synread_s0qua(s0q)
 } (* end of [synread_s0qualst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_s0uni
+  (s0u0) =
+(
+case+
+s0u0.node() of
+| S0UNIsome
+  ( tbeg
+  , s0qs, tend) =>
+  {
+(*
+    val () =
+    synread_LBRACE(tbeg)
+*)
+    val () =
+    synread_s0qualst(s0qs)
+    val () = synread_RBRACE(tend)
+  }
+| S0UNInone(tok) =>
+  let
+    val
+    loc0 = s0u0.loc()
+    val () =
+    synerr_add(SYNERRs0uni(s0u0))
+  in
+    prerrln!(loc0, ": SYNERR(s0uni): ", tok);
+  end // end of [S0UNInone]
+)
+//
+implement
+//{}(*tmp*)
+synread_s0unilst
+  (s0us) =
+(
+list_foreach<s0uni>(s0us)
+) where
+{
+implement(env)
+list_foreach$fwork<s0uni><env>(s0u, env) = synread_s0uni(s0u)
+} (* end of [synread_s0unilst] *)
 //
 (* ****** ****** *)
 
@@ -873,6 +915,39 @@ def0.node() of
   } (* end of [S0RTDEFsbst] *)
 )
 
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_d0atcon
+  (d0c0) =
+(
+case+
+d0c0.node() of
+|
+D0ATCON
+( s0us
+, name, s0es, args) =>
+{
+val () = synread_d0eid(name) // dyncon
+val () = synread_s0unilst(s0us) // quanty
+val () = synread_s0explst(s0es) // indexes
+val () = synread_s0expopt(args) // arguments
+}
+)
+//
+implement
+//{}(*tmp*)
+synread_d0atconlst
+  (d0cs) =
+(
+list_foreach<d0atcon>(d0cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d0atcon><env>(d0c, env) = synread_d0atcon(d0c)
+} (* end of [synread_d0atconlst] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_synread_staexp.dats] *)
