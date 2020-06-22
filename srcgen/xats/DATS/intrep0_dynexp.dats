@@ -41,13 +41,34 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/stamp0.sats"
-//
 #staload "./../SATS/symbol.sats"
+#staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 //
+(* ****** ****** *)
+
+local
+
+typedef
+hdvar_struct = @{
+//
+  hdvar_loc= loc_t // loc
+, hdvar_sym= sym_t // name
+, hdvar_type= h0typ // type
+, hdvar_stamp= stamp // unicity
+//
+} (* end of [hdvar_tbox] *)
+
+in(* in-of-local *)
+
+absimpl
+hdvar_tbox = ref(hdvar_struct)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 (* end of [xats_intrep0_h0typ.dats] *)
