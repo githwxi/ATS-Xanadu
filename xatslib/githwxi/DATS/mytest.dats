@@ -46,31 +46,54 @@ mytest_arg = rand<a0>
 (* ****** ****** *)
 
 impltmp
-<r0:vt>
+{r0:vt}
 mytest_fun
 <()-<fnp>r0>(f0) = f0()
 impltmp
-<r0:vt>
+{r0:vt}
 mytest_fun
 <()-<cfr>r0>(f0) = f0()
 
 (* ****** ****** *)
 //
 impltmp
-<a1:vt>
-<r0:vt>
+{a1:vt}
+{r0:vt}
 mytest_fun
 <(a1)-<fnp>r0>(f0) =
 let
 val x1 = mytest_arg<a1>() in f0(x1)
 end
 impltmp
-<a1:vt>
-<r0:vt>
+{a1:vt}
+{r0:vt}
 mytest_fun
 <(a1)-<cfr>r0>(f0) =
 let
 val x1 = mytest_arg<a1>() in f0(x1)
+end
+//
+(* ****** ****** *)
+//
+impltmp
+{a1:vt
+,a2:vt}
+{r0:vt}
+mytest_fun
+<(a1,a2)-<fnp>r0>(f0) =
+let
+val x1 = mytest_arg<a1>()
+val x2 = mytest_arg<a2>() in f0(x1, x2)
+end
+impltmp
+{a1:vt
+,a2:vt}
+{r0:vt}
+mytest_fun
+<(a1,a2)-<cfr>r0>(f0) =
+let
+val x1 = mytest_arg<a1>()
+val x2 = mytest_arg<a2>() in f0(x1, x2)
 end
 //
 (* ****** ****** *)

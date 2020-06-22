@@ -44,10 +44,26 @@ rand((*void*)): a0
 (* ****** ****** *)
 //
 fun<>
-rand_nint0(): nint
+rand_nint(): nint
 fun<>
-rand_nint1
-{n:pos}(int(n)): intlt(n)
+rand_nint$limit(): sint
+fun<>
+rand_nint_limit
+{n:pos}(l0: int(n)): nintlt(n)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+rand_list(): list_vt(a)
+fun
+<a:t0>
+rand_list$length(): nint
+//
+fun
+<a:t0>
+rand_list_length
+{n:nat}(ln: int(n)): list_vt(a, n)
 //
 (* ****** ****** *)
 
