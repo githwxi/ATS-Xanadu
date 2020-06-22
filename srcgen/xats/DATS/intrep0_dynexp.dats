@@ -45,5 +45,9 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+//
+(* ****** ****** *)
 
 (* end of [xats_intrep0_h0typ.dats] *)

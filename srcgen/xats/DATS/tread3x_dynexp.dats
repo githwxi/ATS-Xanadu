@@ -250,7 +250,7 @@ d3exp(x1)
 val () =
 prerrln!
 ( p1.loc()
-, ": TRERR3X(D3Etnfd): temp-search: ", x1)
+, ": TRERR3X(D3Etrec): temp-search: ", x1)
 in auxlst(xs) end
 )
 in auxlst(path) end
