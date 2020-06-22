@@ -40,6 +40,13 @@
 #staload "./symbol.sats"
 
 (* ****** ****** *)
+//
+abstype h0srt_tbox = ptr
+//
+typedef h0srt = h0srt_tbox
+typedef h0srtlst = List0(h0srt)
+//
+(* ****** ****** *)
 
 abstype htcst_tbox = ptr
 abstype htvar_tbox = ptr
