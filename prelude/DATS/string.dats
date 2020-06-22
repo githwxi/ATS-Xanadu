@@ -292,6 +292,12 @@ tabulate$fopr<cgtz><n>(i0) = f0(i0)
 }
 //
 (* ****** ****** *)
+//
+// HX:
+// For implementing
+// some gseq_operations
+//
+(* ****** ****** *)
 
 local
 //

@@ -56,8 +56,7 @@ rand_nint_limit
 fun
 <a:t0>
 rand_list(): list_vt(a)
-fun
-<a:t0>
+fun<>
 rand_list$length(): nint
 //
 fun

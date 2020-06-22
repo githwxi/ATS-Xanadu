@@ -261,6 +261,13 @@ fun<>
 gint_rforall_uint(ub: uint): bool
 //
 (* ****** ****** *)
+
+fun
+<a:vt>
+gint_map_list_nint
+{n:nat}(n0: sint(n)): list_vt(a, n)
+
+(* ****** ****** *)
 //
 // HX-2020-05-30:
 // symbol overloading for gint
