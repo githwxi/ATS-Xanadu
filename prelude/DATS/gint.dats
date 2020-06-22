@@ -173,6 +173,53 @@ else true // end of [else]
 //
 (* ****** ****** *)
 
+impltmp
+<y0:vt>
+gint_map_list_nint
+  (xs) = let
+//
+typedef
+x0 = nint
+//
+fun
+loop{i:nat}.<i>.
+( xs
+: sint(i)
+, r0
+: &(?list_vt(y0)) >> list_vt(y0, i)
+) : void =
+(
+if
+(xs = 0)
+then
+(r0 := list_vt_nil())
+else
+let
+val x0 = xs
+val xs = pred(xs)
+val y0 =
+map$fopr<x0><y0>(x0)
+val () =
+(r0 := list_vt_cons(y0, _))
+in
+  loop(xs, r0.1); $fold(r0)
+end // else
+) (* end of [loop] *)
+//
+in
+let
+var r0: list_vt(y0) in loop(xs, r0); r0
+end
+end (* end of [gint_map_list_nint] *)
+
+(* ****** ****** *)
+//
+// HX:
+// For implementing
+// some gseq_operations
+//
+(* ****** ****** *)
+
 local
 //
 typedef x0 = nint
