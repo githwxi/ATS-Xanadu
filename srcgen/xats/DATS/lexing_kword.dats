@@ -393,11 +393,6 @@ val () = myins("with")
 //
 *)
 //
-val () = myins("withtype", T_WITHTYPE_)
-val () = myins("withprop", T_WITHPROP_)
-val () = myins("withview", T_WITHVIEW_)
-val () = myins("withvtype", T_WITHVTYPE_)
-//
 val () = myins("$tup"   , T_TUPLE2_)
 val () = myins("$tup_t" , T_TUPLE3_)
 val () = myins("$tup_vt", T_TUPLE4_)
@@ -419,6 +414,11 @@ val () = myins("$delay_t")
 val () = myins("$delay_vt")
 //
 *)
+//
+val () = myins("withtype", T_WITHTYPE_)
+val () = myins("withprop", T_WITHPROP_)
+val () = myins("withview", T_WITHVIEW_)
+val () = myins("withvtype", T_WITHVTYPE_)
 //
 val () =
   myins("#if", T_SRP_IFEXP_)

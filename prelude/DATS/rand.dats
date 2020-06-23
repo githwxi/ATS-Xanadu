@@ -94,6 +94,56 @@ rand_nint$limit() = 1024
 (* ****** ****** *)
 //
 impltmp
+{a0:vt
+,a1:vt}
+rand<(a0,a1)>() =
+let
+val x0 =
+rand<a0>()
+val x1 =
+rand<a1>() in @(x0, x1)
+end
+impltmp
+{a0:vt
+,a1:vt}
+rand<$(a0,a1)>() =
+let
+val x0 =
+rand<a0>()
+val x1 =
+rand<a1>() in $(x0, x1)
+end
+//
+impltmp
+{a0:vt
+,a1:vt
+,a2:vt}
+rand<(a0,a1,a2)>() =
+let
+val x0 =
+rand<a0>()
+val x1 =
+rand<a1>()
+val x2 =
+rand<a2>() in @(x0, x1, x2)
+end
+impltmp
+{a0:vt
+,a1:vt
+,a2:vt}
+rand<$(a0,a1,a2)>() =
+let
+val x0 =
+rand<a0>()
+val x1 =
+rand<a1>()
+val x2 =
+rand<a2>() in $(x0, x1, x2)
+end
+//
+(* ****** ****** *)
+//
+impltmp
 <a>(*tmp*)
 rand_list() =
 rand_list_length<a>
