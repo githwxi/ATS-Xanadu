@@ -44,6 +44,18 @@ rand((*void*)): a0
 (* ****** ****** *)
 //
 fun<>
+rand_seed
+((*void*)): uint
+fun<>
+rand_set_nil
+((*void*)): void
+fun<>
+rand_set_seed
+( seed : uint ) : void
+//
+(* ****** ****** *)
+//
+fun<>
 rand_nint(): nint
 fun<>
 rand_nint$limit(): sintgt(0)
