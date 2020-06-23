@@ -38,6 +38,18 @@
 (* ****** ****** *)
 
 impltmp
+<>(*tmp*)
+rand_set_nil() =
+let
+val
+seed = rand_seed<>()
+in
+rand_set_seed<>(seed)
+end
+
+(* ****** ****** *)
+
+impltmp
 rand<bool>() =
 let
 val tf =
@@ -62,6 +74,23 @@ char_make_sint
   then n0 else n0-256 )
 end
 
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+rand_nint() =
+rand_nint_limit<>
+(rand_nint$limit<>())
+//
+(*
+HX-2020-06-22:
+the default [1024]
+is randomly chosen
+*)
+impltmp
+<>(*tmp*)
+rand_nint$limit() = 1024
+//
 (* ****** ****** *)
 //
 impltmp

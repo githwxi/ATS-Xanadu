@@ -652,5 +652,15 @@ a1ptr_set_at_raw<a>
 xint_a1ptr_set_at_raw{a}(A0, i0, x0)
 //
 (* ****** ****** *)
+//
+#extern
+fun
+xint_rand_nint_limit
+{n:pos}(limit: int(n)): nintlt(n)
+//
+impltmp
+rand_nint_limit<> = xint_rand_nint_limit
+//
+(* ****** ****** *)
 
 (* end of [runtime.dats] *)
