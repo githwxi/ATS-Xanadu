@@ -142,7 +142,7 @@ case+ xs of
 )
 in
 let
-var r0: list(a) in loop(xs, r0); r0
+  var r0: list(a) in loop(xs, r0); r0
 end
 end (* end of [list_append] *)
 //
