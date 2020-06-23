@@ -41,7 +41,24 @@ mytest_fun(fx: f0): r0
 
 impltmp
 <a0:vt>
-mytest_arg = rand<a0>
+mytest_arg
+(
+// argless
+) =
+( arg ) where
+{
+val
+arg = rand<a0>()
+//
+(*
+val () =
+println!
+("mytest_arg: arg = ", arg)
+*)
+//
+} (* end of [where] *)
+//
+end // end of [mytest_arg]
 
 (* ****** ****** *)
 
@@ -136,6 +153,31 @@ end // end of [mytest_fun_asso]
 fun
 <f0:t0>
 mytest_fun_comm(fx: f0): bool
+//
+impltmp
+{a0:t0}
+{r0:vt}
+mytest_fun_comm
+<(a0,a0)-<fnp>r0>
+  (f0) = let
+//
+val x1 =
+mytest_arg<a0>()
+val x2 =
+mytest_arg<a0>() in f0(x1, x2) = f0(x2, x1)
+end // end of [mytest_fun_comm]
+impltmp
+{a0:t0}
+{r0:vt}
+mytest_fun_comm
+<(a0,a0)-<cfr>r0>
+  (f0) = let
+//
+val x1 =
+mytest_arg<a0>()
+val x2 =
+mytest_arg<a0>() in f0(x1, x2) = f0(x2, x1)
+end // end of [mytest_fun_comm]
 //
 (* ****** ****** *)
 
