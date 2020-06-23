@@ -37,6 +37,14 @@
 //
 (* ****** ****** *)
 
+(*
+impltmp
+<>(*tmp*)
+rand_seed() = 0u
+*)
+
+(* ****** ****** *)
+
 impltmp
 <>(*tmp*)
 rand_set_nil() =
@@ -151,7 +159,7 @@ rand_list_length<a>
 //
 impltmp
 {a:t0}
-rand<list_vt(a)>() =
+rand<list(a)>() =
 list_vt2t(rand_list<a>())
 impltmp
 {a:vt}

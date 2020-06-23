@@ -37,10 +37,16 @@
 //
 (* ****** ****** *)
 
+(*
+//
+// HX:
+// declared in basics.sats
+//
 fcast
 list_vt2t
 {a:t0}{n:i0}
 (xs: list_vt(a,n)): list(a,n)
+*)
 
 (* ****** ****** *)
 //

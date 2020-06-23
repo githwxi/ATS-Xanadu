@@ -791,6 +791,40 @@ loc0 = d2e0.loc()
 val-
 D2Ecst2(d2cs) = d2e0.node()
 //
+(*
+val () =
+prd2cs(d2cs) where
+{
+fun
+prd2cs
+( d2cs
+: d2cstlst): void =
+(
+case+ d2cs of
+|
+list_nil
+((*void*)) => ()
+|
+list_cons
+(d2c0, d2cs) =>
+prd2cs(d2cs) where
+{
+val
+loc0 = d2c0.loc()
+val () =
+println!("auxcst2: loc0 = ", loc0)
+val () =
+println!("auxcst2: d2c0 = ", d2c0)
+}
+)
+} (* prd2cs(d2cs) *)
+*)
+//
+(*
+val () =
+println!("auxcst2: d2cs = ", d2cs)
+*)
+//
 val node = D3Ecst2(d2cs)
 val t2p0 = t2ype_new(loc0)
 //
