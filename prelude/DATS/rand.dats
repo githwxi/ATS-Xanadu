@@ -71,6 +71,10 @@ rand_list_length<a>
 (rand_list$length<>())
 //
 impltmp
+{a:t0}
+rand<list_vt(a)>() =
+list_vt2t(rand_list<a>())
+impltmp
 {a:vt}
 rand<list_vt(a)> = rand_list<a>
 //
@@ -109,6 +113,9 @@ rand_string() =
 rand_string_length<>
 (rand_string$length<>())
 //
+impltmp
+rand<string>() =
+string_vt2t(rand_string<>())
 impltmp
 rand<string_vt> = rand_string<>
 //
