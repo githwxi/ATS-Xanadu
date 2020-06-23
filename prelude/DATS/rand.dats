@@ -44,15 +44,19 @@ rand_nint_limit<>
 (rand_nint$limit<>())
 
 (* ****** ****** *)
-
+//
 impltmp
 <a>(*tmp*)
 rand_list() =
 rand_list_length<a>
 (rand_list$length<>())
-
+//
+impltmp
+{a:vt}
+rand<list(a)> = rand_list<a>
+//
 (* ****** ****** *)
-
+//
 impltmp
 <a>(*tmp*)
 rand_list_length
@@ -64,7 +68,7 @@ rand_list_length
   impltmp
   map$fopr<int><a>(_) = rand<a>()
 }
-
+//
 (* ****** ****** *)
 
 (* end of [rand.sats] *)
