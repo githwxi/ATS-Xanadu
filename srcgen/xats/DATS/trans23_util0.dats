@@ -1003,8 +1003,12 @@ val
 tknd =
 (
 ifcase
-| knd1 = 0 => TYRECflt0(*void*)
-| _(*else*) => TYRECbox0(*void*)
+| knd1 = 0 => TYRECflt0(*void*) // @(...)
+| knd1 = 1 => TYRECbox1(*void*) // $(...)
+| knd1 = 2 => TYRECbox1(*void*) // $tup(...)
+| knd1 = 3 => TYRECbox0(*void*) // $tup_t(...)
+| knd1 = 4 => TYRECbox1(*void*) // $tup_vt(...)
+| _(*else*) => TYRECbox1(*void*) // HX: deadcode
 ) : tyrec // end of [val]
 //
 val
@@ -1656,8 +1660,12 @@ val
 tknd =
 (
 ifcase
-| knd1 = 0 => TYRECflt0(*void*)
-| _(*else*) => TYRECbox0(*void*)
+| knd1 = 0 => TYRECflt0(*void*) // @(...)
+| knd1 = 1 => TYRECbox1(*void*) // $(...)
+| knd1 = 2 => TYRECbox1(*void*) // $tup(...)
+| knd1 = 3 => TYRECbox0(*void*) // $tup_t(...)
+| knd1 = 4 => TYRECbox1(*void*) // $tup_vt(...)
+| _(*else*) => TYRECbox1(*void*) // HX: deadcode
 ) : tyrec // end of [val]
 //
 val

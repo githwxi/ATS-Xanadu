@@ -922,40 +922,31 @@ implement
 s2exp_tuple1
 (knd, s2es) = let
 //
-val
-islin =
-s2explst_islin(s2es)
-//
 val s2t0 =
 (
 if
+(knd = 0)
+then
+(
+let
+val
+islin =
+s2explst_islin(s2es)
+in
+if
 islin
-then
-(
-if
-knd = 0
 then the_sort2_vtflt
-else the_sort2_vtbox
+else (the_sort2_tflt)
+end
 )
-else
-(
-if
-knd = 0
-then
-the_sort2_tflt else the_sort2_tbox
-)
+else (the_sort2_vtbox)
 ) : sort2 // end of [val]
 //
 val knd =
 (
 if
-islin
-then
-(if knd = 0
- then TYRECflt0 else TYRECbox1)
-else
-(if knd = 0
- then TYRECflt0 else TYRECbox0)
+(knd = 0)
+then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 val
@@ -972,6 +963,13 @@ implement
 s2exp_tuple2
 (knd, s2es1, s2es2) = let
 //
+//
+val s2t0 =
+(
+if
+(knd = 0)
+then
+let
 val
 islin =
 s2explst_islin(s2es1)
@@ -981,35 +979,18 @@ islin =
 if islin then islin
 else s2explst_islin(s2es2)
 ) : bool // end of [val]
-//
-val s2t0 =
-(
+in
 if
 islin
-then
-(
-if
-knd = 0
 then the_sort2_vtflt
-else the_sort2_vtbox
-)
-else
-(
-if
-knd = 0
-then
-the_sort2_tflt else the_sort2_tbox
-)
+else (the_sort2_tflt)
+end
+else (the_sort2_vtbox)
 ) : sort2 // end of [val]
 //
 val knd =
 (
-if
-islin
-then
-(if knd = 0 then TYRECflt0 else TYRECbox1)
-else
-(if knd = 0 then TYRECflt0 else TYRECbox0)
+if knd = 0 then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 val
