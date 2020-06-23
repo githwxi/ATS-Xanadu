@@ -38,10 +38,29 @@
 (* ****** ****** *)
 
 impltmp
-<>(*tmp*)
-rand_nint() =
-rand_nint_limit<>
-(rand_nint$limit<>())
+rand<bool>() =
+let
+val tf =
+rand_nint_limit(2)
+in
+if
+(tf > 0)
+then true else false
+end
+
+(* ****** ****** *)
+
+impltmp
+rand<char>() =
+let
+val n0 =
+rand_nint_limit(256)
+in
+char_make_sint
+( if
+  (n0<128)
+  then n0 else n0-256 )
+end
 
 (* ****** ****** *)
 //
@@ -53,7 +72,20 @@ rand_list_length<a>
 //
 impltmp
 {a:vt}
-rand<list(a)> = rand_list<a>
+rand<list_vt(a)> = rand_list<a>
+//
+(* ****** ****** *)
+//
+(*
+HX-2020-06-22:
+the default [16]
+is randomly chosen
+*)
+//
+impltmp
+<>(*tmp*)
+rand_list$length() =
+(rand_nint_limit<>(16))
 //
 (* ****** ****** *)
 //
@@ -62,13 +94,24 @@ impltmp
 rand_list_length
 ( ln ) =
 (
-  gint_map_list_nint<a>(ln)
+gint_map_list_nint<a>(ln)
 ) where
 {
-  impltmp
-  map$fopr<int><a>(_) = rand<a>()
+impltmp
+map$fopr<int><a>(_) = rand<a>()
 }
 //
 (* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+rand_string() =
+rand_string_length<>
+(rand_string$length<>())
+//
+impltmp
+rand<string_vt> = rand_string<>
+//
+(* ****** ****** *)
 
-(* end of [rand.sats] *)
+(* end of [rand.dats] *)
