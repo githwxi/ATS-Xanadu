@@ -68,6 +68,8 @@ LOC0 the_location_dummy
 (* ****** ****** *)
 
 implement
+fprint_val<t2xtv> = fprint_t2xtv
+implement
 fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
@@ -292,6 +294,10 @@ val
 test =
 unify3(LOC0, targ, t2ps)
 //
+val () =
+println!
+("staload_find_timp: xtvs = ", xtvs)
+//
 (*
 val () =
 println!
@@ -311,6 +317,7 @@ in
   let
 //
   val () = auxrst(xarg)
+//
   val tsub =
   ti3env_redo(d3cl, ti3e, targ)
 //

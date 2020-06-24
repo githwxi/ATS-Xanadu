@@ -35,7 +35,7 @@ BUILD/tread33_sats.o : SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SAT
 BUILD/trans3t_sats.o : SATS/basics.sats SATS/label0.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/trans33.sats
 BUILD/trans3x_sats.o : SATS/basics.sats SATS/label0.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats
 BUILD/tread3x_sats.o : SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats
-BUILD/intrep0_sats.o : SATS/basics.sats SATS/symbol.sats
+BUILD/intrep0_sats.o : SATS/basics.sats SATS/stamp0.sats SATS/symbol.sats
 BUILD/tcomp30_sats.o : SATS/basics.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp3.sats SATS/intrep0.sats
 BUILD/basics_dats.o : SATS/basics.sats
 BUILD/stamp0_dats.o : SATS/stamp0.sats
@@ -91,7 +91,7 @@ BUILD/dynexp2_d2cst_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/lexing.sats 
 BUILD/dynexp2_d2var_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/lexing.sats SATS/trans01.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats
 BUILD/dynexp2_print_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/locinfo.sats SATS/filpath.sats SATS/label0.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats
 BUILD/nmspace_dats.o : SATS/nmspace.sats
-BUILD/trans12_basics_dats.o : SATS/symbol.sats SATS/lexing.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/trans12.sats
+BUILD/trans12_basics_dats.o : SATS/symbol.sats SATS/lexing.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/trans12.sats
 BUILD/trans12_envmap_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/filpath.sats SATS/lexing.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/trans01.sats SATS/trans12.sats
 BUILD/trans12_staexp_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/basics.sats SATS/lexing.sats SATS/staexp0.sats SATS/staexp1.sats SATS/staexp2.sats SATS/trans01.sats SATS/trans12.sats
 BUILD/trans12_dynexp_dats.o : SATS/symbol.sats SATS/symmap.sats SATS/symenv.sats SATS/nmspace.sats SATS/basics.sats SATS/label0.sats SATS/lexing.sats SATS/locinfo.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/trans01.sats SATS/trans12.sats
@@ -112,7 +112,9 @@ BUILD/trans3t_dynexp_dats.o : SATS/basics.sats SATS/locinfo.sats SATS/staexp2.sa
 BUILD/trans3x_envmap_dats.o : SATS/locinfo.sats SATS/statyp2.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/trans3x.sats DATS/statyp2_util0.dats
 BUILD/trans3x_dynexp_dats.o : SATS/basics.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/trans3x.sats
 BUILD/tread3x_dynexp_dats.o : SATS/label0.sats SATS/xerrory.sats SATS/locinfo.sats SATS/lexing.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp1.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/tread3x.sats DATS/staexp2_print.dats DATS/statyp2_print.dats DATS/dynexp1_print.dats DATS/dynexp2_print.dats DATS/dynexp3_print.dats
-BUILD/intrep0_print_dats.o : SATS/stamp0.sats SATS/symbol.sats
-BUILD/intrep0_statyp_dats.o : SATS/stamp0.sats SATS/symbol.sats
-BUILD/intrep0_dynexp_dats.o : SATS/stamp0.sats SATS/symbol.sats
+BUILD/intrep0_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/locinfo.sats SATS/intrep0.sats
+BUILD/intrep0_print_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/intrep0.sats
+BUILD/intrep0_jsoniz_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/intrep0.sats
+BUILD/intrep0_statyp_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/locinfo.sats SATS/intrep0.sats
+BUILD/intrep0_dynexp_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/locinfo.sats SATS/intrep0.sats
 BUILD/xatsopt_dats.o : SATS/xerrory.sats SATS/filpath.sats SATS/global.sats SATS/filsrch.sats SATS/parsing.sats SATS/synread.sats SATS/trans01.sats SATS/tread01.sats SATS/trans12.sats SATS/tread12.sats SATS/trans23.sats SATS/tread23.sats SATS/trans33.sats SATS/tread33.sats SATS/trans3t.sats SATS/trans3x.sats SATS/tread3x.sats DATS/staexp0_print.dats DATS/dynexp0_print.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats DATS/staexp2_print.dats DATS/statyp2_print.dats DATS/dynexp2_print.dats DATS/dynexp3_print.dats DATS/trans12_envmap.dats ../xutl/DATS/cblist.dats ../xutl/DATS/Posix/cblist.dats ../xutl/DATS/Posix/mylibc.dats

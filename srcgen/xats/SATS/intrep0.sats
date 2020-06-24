@@ -37,12 +37,12 @@
 
 (* ****** ****** *)
 
+#staload "./stamp0.sats"
 #staload "./symbol.sats"
 
 (* ****** ****** *)
 
-typedef
-xerrptr = ptr
+typedef xerrptr = ptr
 
 (* ****** ****** *)
 
@@ -51,6 +51,13 @@ abstype htvar_tbox = ptr
 typedef htcst = htcst_tbox
 typedef htvar = htvar_tbox
 
+(* ****** ****** *)
+//
+fun
+htcst_stamp_new(): stamp
+fun
+htvar_stamp_new(): stamp
+//
 (* ****** ****** *)
 //
 abstype h0typ_tbox = ptr
@@ -67,6 +74,15 @@ abstype hdcst_tbox = ptr
 typedef hdvar = hdvar_tbox
 typedef hdcon = hdcst_tbox
 typedef hdcst = hdcst_tbox
+//
+(* ****** ****** *)
+//
+fun
+hdvar_stamp_new(): stamp
+fun
+hdcon_stamp_new(): stamp
+fun
+hdcst_stamp_new(): stamp
 //
 (* ****** ****** *)
 //

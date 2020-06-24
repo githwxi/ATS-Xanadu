@@ -72,7 +72,30 @@ _(*TMP*) = "./../DATS/staexp2_print.dats"
 (* ****** ****** *)
 //
 implement
+fprint_val<t2xtv> = fprint_t2xtv
+implement
 fprint_val<t2ype> = fprint_t2ype
+//
+(* ****** ****** *)
+//
+implement
+print_t2xtv(x0) =
+fprint_t2xtv(stdout_ref, x0) 
+implement
+prerr_t2xtv(x0) =
+fprint_t2xtv(stderr_ref, x0) 
+//
+implement
+fprint_t2xtv(out, x0) =
+(
+let
+val t2p = x0.type()
+val stm = x0.stamp()
+in
+fprint!
+(out, "X(", stm, ")", "[", t2p, "]")
+end
+)
 //
 (* ****** ****** *)
 //
