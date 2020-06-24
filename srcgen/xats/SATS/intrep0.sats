@@ -40,12 +40,10 @@
 #staload "./symbol.sats"
 
 (* ****** ****** *)
-//
-abstype h0srt_tbox = ptr
-//
-typedef h0srt = h0srt_tbox
-typedef h0srtlst = List0(h0srt)
-//
+
+typedef
+xerrptr = ptr
+
 (* ****** ****** *)
 
 abstype htcst_tbox = ptr
@@ -87,12 +85,62 @@ typedef h0dclopt = Option(h0dcl)
 (* ****** ****** *)
 //
 datatype
+h0srt =
+//
+| HSTid0 of (sym_t)
+//
+(*
+| HSTtup of
+  (h0srtlst) // HX: not in use
+*)
+| HSTfun of
+  (h0srtlst, h0srt(*res*)) // fun
+//
+(*
+| HSTapp of
+  ( h0srt(*fun*)
+  , h0srtlst(*arg*)) // HX: not in use
+*)
+//
+| HSTerror of (xerrptr) // HX: for errors
+//
+where h0srtlst = List0(h0srt)
+
+(* ****** ****** *)
+
+fun
+print_h0srt: h0srt -> void
+fun
+prerr_h0srt: h0srt -> void
+fun
+fprint_h0srt: fprint_type(h0srt)
+//
+overload print with print_h0srt
+overload prerr with prerr_h0srt
+overload fprint with fprint_h0srt
+//
+(* ****** ****** *)
+//
+datatype
 h0typ_node =
 // externally named
 | H0Tbas of sym_t // type
 //
 | H0Tcst of htcst // constant
 | H0Tvar of htvar // variable
+//
+(* ****** ****** *)
+//
+fun
+print_h0typ: h0typ -> void
+fun
+prerr_h0typ: h0typ -> void
+fun
+fprint_h0typ: fprint_type(h0typ)
+//
+overload print with print_h0typ
+overload prerr with prerr_h0typ
+overload fprint with fprint_h0typ
 //
 (* ****** ****** *)
 //
@@ -105,6 +153,58 @@ h0exp_node =
 | H0Elet of (h0dclist, h0exp)
 //
 | H0Eif0 of (h0exp, h0exp, h0expopt)
+//
+(* ****** ****** *)
+//
+fun
+print_hdvar: hdvar -> void
+fun
+prerr_hdvar: hdvar -> void
+fun
+fprint_hdvar: fprint_type(hdvar)
+//
+overload print with print_hdvar
+overload prerr with prerr_hdvar
+overload fprint with fprint_hdvar
+//
+(* ****** ****** *)
+//
+fun
+print_hdcon: hdcon -> void
+fun
+prerr_hdcon: hdcon -> void
+fun
+fprint_hdcon: fprint_type(hdcon)
+//
+overload print with print_hdcon
+overload prerr with prerr_hdcon
+overload fprint with fprint_hdcon
+//
+(* ****** ****** *)
+//
+fun
+print_hdcst: hdcst -> void
+fun
+prerr_hdcst: hdcst -> void
+fun
+fprint_hdcst: fprint_type(hdcst)
+//
+overload print with print_hdcst
+overload prerr with prerr_hdcst
+overload fprint with fprint_hdcst
+//
+(* ****** ****** *)
+//
+fun
+print_h0exp: h0exp -> void
+fun
+prerr_h0exp: h0exp -> void
+fun
+fprint_h0exp: fprint_type(h0exp)
+//
+overload print with print_h0exp
+overload prerr with prerr_h0exp
+overload fprint with fprint_h0exp
 //
 (* ****** ****** *)
 
