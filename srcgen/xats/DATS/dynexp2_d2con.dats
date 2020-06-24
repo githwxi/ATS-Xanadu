@@ -59,16 +59,20 @@ UN = "prelude/SATS/unsafe.sats"
 
 local
 
-absimpl
-d2con_tbox = $rec{
+typedef
+d2con_struct = @{
 //
   d2con_loc= loc_t // loc
 , d2con_sym= sym_t // name
+, d2con_tag= tag_t // sexp
 , d2con_sexp= s2exp // sexp
 , d2con_type= t2ype // type
 , d2con_stamp= stamp // unicity
 //
 } (* end of [d2con_tbox] *)
+
+absimpl
+d2con_tbox=ref(d2con_struct)
 
 in (* in-of-local *)
 
@@ -76,9 +80,11 @@ implement
 d2con_make_idtp
   (tok, s2e1) =
 (
-$rec{
+ref<d2con_struct>
+@{
   d2con_loc= loc
 , d2con_sym= sym
+, d2con_tag= (~1)
 , d2con_sexp= s2e1
 , d2con_type= t2p2
 , d2con_stamp= stamp
@@ -97,6 +103,8 @@ $rec{
   val () =
   println!("d2con_make_idtp: sym = ", sym)
   val () =
+  println!("d2con_make_idtp: tag = ", tag)
+  val () =
   println!("d2con_make_idtp: s2e1 = ", s2e1)
   val () =
   println!("d2con_make_idtp: t2p2 = ", t2p2)
@@ -107,15 +115,24 @@ $rec{
 } (* d2con_make_idtp *)
 
 implement
-d2con_get_loc(x0) = x0.d2con_loc
+d2con_get_loc(x0) = x0->d2con_loc
 implement
-d2con_get_sym(x0) = x0.d2con_sym
+d2con_get_sym(x0) = x0->d2con_sym
+//
 implement
-d2con_get_sexp(x0) = x0.d2con_sexp
+d2con_get_tag(x0) = x0->d2con_tag
 implement
-d2con_get_type(x0) = x0.d2con_type
+d2con_set_tag
+(x0, tag) = (x0->d2con_tag := tag)
+//
 implement
-d2con_get_stamp(x0) = x0.d2con_stamp
+d2con_get_sexp(x0) = x0->d2con_sexp
+//
+implement
+d2con_get_type(x0) = x0->d2con_type
+//
+implement
+d2con_get_stamp(x0) = x0->d2con_stamp
 
 end // end of [local]
 

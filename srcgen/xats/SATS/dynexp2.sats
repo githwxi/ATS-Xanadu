@@ -203,10 +203,10 @@ fun
 s2cst_isdat(s2c0: s2cst): bool
 *)
 fun
-s2cst_get_dconlst
+s2cst_get_d2conlst
 (s2c0: s2cst): Option_vt(d2conlst)
 fun
-s2cst_set_dconlst
+s2cst_set_d2conlst
 (s2c0: s2cst, d2cs: d2conlst): void
 //
 (* ****** ****** *)
@@ -265,6 +265,23 @@ d2var_get_sym: d2var -> sym_t
 overload .sym with d2con_get_sym
 overload .sym with d2cst_get_sym
 overload .sym with d2var_get_sym
+//
+(* ****** ****** *)
+//
+typedef tag_t = int
+//
+fun
+d2con_get_tag: d2con -> tag_t
+fun
+d2con_set_tag
+(d2c: d2con, tag: tag_t): void
+//
+overload .tag with d2con_get_tag
+(*
+// HX:
+// This is a bit risky!
+overload .tag with d2con_set_tag
+*)
 //
 (* ****** ****** *)
 //
