@@ -174,7 +174,7 @@ typedef s1expopt = Option(s1exp)
 datatype
 sort1_node =
 //
-  | S1Tid of sym_t
+  | S1Tid0 of sym_t
 //
   | S1Tint of token
 //

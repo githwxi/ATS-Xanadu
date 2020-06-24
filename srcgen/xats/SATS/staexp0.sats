@@ -498,7 +498,7 @@ g0marg_make_node
 datatype
 sort0_node =
 //
-| S0Tid of (s0tid)
+| S0Tid0 of (s0tid)
 //
 | S0Tint of (t0int)
 //

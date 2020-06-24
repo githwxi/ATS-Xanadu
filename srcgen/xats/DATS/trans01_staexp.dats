@@ -673,7 +673,7 @@ ifcase
 ) : fixtyopt_vt // end of [val]
 //
 val s1t0 =
-sort1_make_node(loc, S1Tid(sym))
+sort1_make_node(loc, S1Tid0(sym))
 //
 in
 //
@@ -727,7 +727,7 @@ in
 case+
 s0t0.node() of
 //
-| S0Tid(tid) => auxtid(tid)
+| S0Tid0(tid) => auxtid(tid)
 //
 | S0Tint(int) => auxint(int)
 //

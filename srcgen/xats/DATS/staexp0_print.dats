@@ -419,8 +419,8 @@ fprint_sort0
 (
 case+ x0.node() of
 //
-| S0Tid(tid) =>
-  fprint!(out, "S0Tid(", tid, ")")
+| S0Tid0(tid) =>
+  fprint!(out, "S0Tid0(", tid, ")")
 //
 | S0Tint(int) =>
   fprint!(out, "S0Tint(", int, ")")

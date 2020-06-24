@@ -1681,17 +1681,19 @@ auxlst
 , i0: int): labt2ypelst =
 (
 case+ d3es of
-| list_nil() =>
-  list_nil((*void*))
-| list_cons(d3e0, d3es) =>
-  let
-    val l0 =
-    label_make_int(i0)
-    val lt2p0 =
-    TLABELED(l0, d3e0.type())
-  in
-    list_cons(lt2p0, auxlst(d3es, i0+1))
-  end // end of [list_cons]
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(d3e0, d3es) =>
+let
+val l0 =
+label_make_int(i0)
+val lt2p0 =
+TLABELED(l0, d3e0.type())
+in
+list_cons(lt2p0, auxlst(d3es, i0+1))
+end // end of [list_cons]
 )
 } (* end of [val] *)
 //
