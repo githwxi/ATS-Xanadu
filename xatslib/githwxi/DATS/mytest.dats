@@ -123,8 +123,8 @@ mytest_fun_asso(fx: f0): bool
 impltmp
 {a0:t0}
 mytest_fun_asso
-<(a0,a0)-<fnp>a0>
-  (f0) = let
+<(a0, a0)-<fnp>a0>
+ (  f0  ) = let
 //
 val x1 = mytest_arg<a0>()
 val x2 = mytest_arg<a0>()
@@ -158,8 +158,8 @@ impltmp
 {a0:t0}
 {r0:vt}
 mytest_fun_comm
-<(a0,a0)-<fnp>r0>
-  (f0) = let
+<(a0, a0)-<fnp>r0>
+ (  f0  ) = let
 //
 val x1 =
 mytest_arg<a0>()
@@ -170,8 +170,8 @@ impltmp
 {a0:t0}
 {r0:vt}
 mytest_fun_comm
-<(a0,a0)-<cfr>r0>
-  (f0) = let
+<(a0, a0)-<cfr>r0>
+ (  f0  ) = let
 //
 val x1 =
 mytest_arg<a0>()
