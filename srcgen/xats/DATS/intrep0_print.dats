@@ -51,9 +51,22 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 implement
+fprint_val<htvar> = fprint_htvar
+implement
 fprint_val<h0srt> = fprint_h0srt
 implement
 fprint_val<h0typ> = fprint_h0typ
+
+(* ****** ****** *)
+
+implement
+fprint_val<hdvar> = fprint_hdvar
+implement
+fprint_val<hdcon> = fprint_hdcon
+implement
+fprint_val<hdcst> = fprint_hdcst
+implement
+fprint_val<h0exp> = fprint_h0exp
 
 (* ****** ****** *)
 //
