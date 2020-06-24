@@ -333,6 +333,8 @@ typedef
 t2xtv_struct = @{
   t2xtv_loc= loc_t
 ,
+  t2xtv_sort= sort2
+,
   t2xtv_type= t2ype
 ,
   t2xtv_stamp= stamp
@@ -350,12 +352,15 @@ ref<t2xtv_struct>
 @{
   t2xtv_loc= loc0
 ,
+  t2xtv_sort= s2t0
+,
   t2xtv_type= t2p0
 ,
   t2xtv_stamp=stamp
 }
 ) where
 {
+val s2t0 = the_sort2_none
 val t2p0 = the_t2ype_none0
 val stamp = t2xtv_stamp_new()
 } (* end of [t2xtv_new0] *)

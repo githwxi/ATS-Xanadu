@@ -102,6 +102,7 @@ typedef t2xtvlst = List0(t2xtv)
 //
 fun
 t2xtv_get_loc(t2xtv): loc_t
+//
 fun
 t2xtv_get_type(t2xtv): t2ype
 fun
@@ -122,6 +123,19 @@ overload .type with t2xtv_get_type
 overload .type with t2xtv_set_type
 //
 overload .stamp with t2xtv_get_stamp
+//
+(* ****** ****** *)
+//
+fun
+print_t2xtv: print_type(t2xtv)
+fun
+prerr_t2xtv: prerr_type(t2xtv)
+fun
+fprint_t2xtv: fprint_type(t2xtv)
+//
+overload print with print_t2xtv
+overload prerr with prerr_t2xtv
+overload fprint with fprint_t2xtv
 //
 (* ****** ****** *)
 //
