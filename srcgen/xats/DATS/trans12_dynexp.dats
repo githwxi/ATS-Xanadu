@@ -4500,47 +4500,44 @@ aux2_datype
 , d1t0: d1atype): void =
 let
 //
-val+
-D1ATYPE
-(
-_(*tok*), tmas
-,
-_(*res*), d1cs
-) = d1t0.node((*void*))
-//
-val svss =
-aux2_tmarglst(tmas)
-//
-val (pf0|()) =
-the_sexpenv_pushnil()
-//
-val () =
-the_sexpenv_add_varlstlst(svss)
-//
-val d2cs =
-trans12_datconlst(s2c0, svss, d1cs)
-//
-val ((*void*)) =
-the_sexpenv_popfree(pf0|(*void*))
-//
-in
-//
-the_dexpenv_add_conlst(d2cs) where
-{
-//
-val () = s2cst_set_dconlst(s2c0, d2cs)
-//
 (*
 val () =
 println!
-("trans12_datype: aux2_datype: s2c0 = ", s2c0)
+("aux2_datype: s2c0 = ", s2c0)
 val () =
 println!
-("trans12_datype: aux2_datype: d2cs = ", d2cs)
+("aux2_datype: d2cs = ", d2cs)
 *)
-}  
+in
+  the_dexpenv_add_conlst(d2cs)
+end where
+{
 //
-end // end of [aux2_datype]
+val+
+D1ATYPE
+( knd0, tmas
+, res1, d1cs) = d1t0.node()
+//
+val svss = aux2_tmarglst(tmas)
+//
+val
+(pf0|()) =
+the_sexpenv_pushnil()
+val (  ) =
+the_sexpenv_add_varlstlst(svss)
+val d2cs =
+trans12_datconlst
+(s2c0, svss, d1cs(*d1atconlst*))
+val (  ) =
+the_sexpenv_popfree(pf0|(*void*))
+val (  ) =
+s2cst_set_d2conlst
+(s2c0(*datype*), d2cs(*d2conlst*))
+val () =
+trans12_tag_d2conlst
+(s2c0(*datype*), d2cs(*d2conlst*))
+//
+} (* end of [aux2_datype] *)
 
 and
 aux2_tmarg
@@ -4586,9 +4583,11 @@ aux2_tmarglst
 (xs: t1marglst): s2varlstlst =
 (
 case+ xs of
-| list_nil() => list_nil()
-| list_cons(x0, xs) =>
-  list_cons(aux2_tmarg(x0), aux2_tmarglst(xs))
+|
+list_nil() => list_nil()
+|
+list_cons(x0, xs) =>
+list_cons(aux2_tmarg(x0), aux2_tmarglst(xs))
 )
 
 and
@@ -4597,15 +4596,19 @@ aux2_datypelst
 , d1ts: d1atypelst): void =
 (
 case+ s2cs of
-| list_nil() => ()
-| list_cons(s2c0, s2cs) =>
+|
+list_nil() => ()
+|
+list_cons(s2c0, s2cs) =>
+let
+  val-
+  list_cons(d1t0, d1ts) = d1ts
+in
   let
-    val-
-    list_cons
-    (d1t0, d1ts) = d1ts
-  in
-    aux2_datype(s2c0, d1t0); aux2_datypelst(s2cs, d1ts)
-  end // end of [let]
+  val () =
+  aux2_datype(s2c0, d1t0) in aux2_datypelst(s2cs, d1ts)
+  end
+end // end of [let]
 ) (* end of [aux2_datatypelst] *)
 
 (* ****** ****** *)
@@ -5340,7 +5343,8 @@ list_map<d1atcon><d2con>(d1cs)
 {
 //
 implement
-list_map$fopr<d1atcon><d2con>(d1c) = trans12_datcon(s2c0, svss, d1c)
+list_map$fopr<
+  d1atcon><d2con>(d1c) = trans12_datcon(s2c0, svss, d1c)
 //
 } (* end of [trans12_datconlst] *)
 

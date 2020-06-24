@@ -206,7 +206,7 @@ let
 //
 val
 opt =
-s2cst_get_dconlst(s2c0)
+s2cst_get_d2conlst(s2c0)
 //
 in
 //
@@ -950,7 +950,7 @@ gequal_val_val<key>(x, y) = (x = y)
 (* ****** ****** *)
 
 implement
-s2cst_get_dconlst
+s2cst_get_d2conlst
   (s2c) = let
 //
 val key =
@@ -966,12 +966,12 @@ val ans =
 in
   let prval () = $UN.cast2void(tbl) in ans end
 //
-end // end of [s2cst_get_dconlst]
+end // end of [s2cst_get_d2conlst]
 
 (* ****** ****** *)
 
 implement
-s2cst_set_dconlst
+s2cst_set_d2conlst
   (s2c, d2cs) =
 {
 //
@@ -987,7 +987,7 @@ val-~None_vt() =
 //
 prval ((*void*)) = $UN.cast2void(tbl)
 //
-} (* end of [s2cst_set_dconlst] *)
+} (* end of [s2cst_set_d2conlst] *)
 
 end // end of [local]
 

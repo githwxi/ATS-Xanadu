@@ -864,6 +864,10 @@ trans12_datconlst
 ( s2c0: s2cst
 , s2varlstlst, d1atconlst): d2conlst
 //
+fun
+trans12_tag_d2conlst
+(s2c0: s2cst, d2cs: d2conlst): void
+//
 (* ****** ****** *)
 //
 fun
