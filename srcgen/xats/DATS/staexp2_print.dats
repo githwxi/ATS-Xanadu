@@ -122,10 +122,10 @@ fprint_sort2
 (
 case+ s2t0 of
 //
-| S2Tid(id) =>
-  fprint!(out, "S2Tid(", id, ")")
-| S2Tint(i0) =>
-  fprint!(out, "S2Tint(", i0, ")")
+| S2Tid0(id0) =>
+  fprint!(out, "S2Tid0(", id0, ")")
+| S2Tint(int) =>
+  fprint!(out, "S2Tint(", int, ")")
 //
 | S2Tbas(s2tb) =>
   fprint!(out, "S2Tbas(", s2tb, ")")

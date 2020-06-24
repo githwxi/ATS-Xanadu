@@ -217,14 +217,13 @@ fprint_sort1
 (
 case+ x0.node() of
 //
-| S1Tid(id) =>
-  fprint!(out, "S1Tid(", id, ")")
+| S1Tid0(id0) =>
+  fprint!(out, "S1Tid0(", id0, ")")
 //
 | S1Tint(int) =>
   fprint!(out, "S1Tint(", int, ")")
 //
-| S1Tapp() =>
-  fprint!(out, "S1Tapp()")
+| S1Tapp() => fprint!(out, "S1Tapp()")
 //
 (*
 | S1Ttype(knd) =>

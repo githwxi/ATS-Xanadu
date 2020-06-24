@@ -114,7 +114,7 @@ typedef t2xtv = t2xtv_tbox
 datatype
 sort2 =
 //
-| S2Tid of sym_t (* base sort *)
+| S2Tid0 of sym_t (* base sort *)
 | S2Tint of (int) (* base sort *)
 //
 | S2Tbas of (t2bas) (* base sort *)

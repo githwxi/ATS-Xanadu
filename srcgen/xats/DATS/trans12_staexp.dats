@@ -130,7 +130,7 @@ auxid0
 : sort1): sort2 = let
 //
 val-
-S1Tid(tid) = s1t0.node()
+S1Tid0(tid) = s1t0.node()
 val
 opt = the_sortenv_find(tid)
 //
@@ -138,7 +138,7 @@ in
 //
 case+ opt of
 //
-| ~None_vt() => S2Tid(tid)
+| ~None_vt() => S2Tid0(tid)
 //
 | ~Some_vt(s2t) =>
   (
@@ -163,9 +163,9 @@ isplus
 (
 case+
 s1t.node() of
-| S1Tid(tid) =>
+| S1Tid0(tid) =>
   tid = $SYM.ADD_symbol
-| _(*non-S1Tid*) => false
+| _(*non-S1Tid0*) => false
 )
 fun
 ismnus
@@ -174,9 +174,9 @@ ismnus
 (
 case+
 s1t.node() of
-| S1Tid(tid) =>
+| S1Tid0(tid) =>
   tid = $SYM.SUB_symbol
-| _(*non-S1Tid*) => false
+| _(*non-S1Tid0*) => false
 )
 fun
 isarrw
@@ -185,9 +185,9 @@ isarrw
 (
 case+
 s1t.node() of
-| S1Tid(tid) =>
+| S1Tid0(tid) =>
   tid = $SYM.MSGT_symbol
-| _(*non-S1Tid*) => false
+| _(*non-S1Tid0*) => false
 )
 
 (* ****** ****** *)
@@ -326,7 +326,7 @@ in
 case+
 s1t0.node() of
 //
-| S1Tid _ => auxid0(s1t0)
+| S1Tid0 _ => auxid0(s1t0)
 //
 | S1Tint(int) =>
   S2Tint(token2sint(int))
@@ -442,7 +442,7 @@ auxid0
 ) : s2txt = let
 //
 val-
-S1Tid(tid) = s1t0.node()
+S1Tid0(tid) = s1t0.node()
 //
 val
 opt = the_sortenv_find(tid)
@@ -450,11 +450,14 @@ opt = the_sortenv_find(tid)
 in
 //
 case+ opt of
-| ~Some_vt(tx) => tx
-| ~None_vt((*void*)) =>
-  let
-   val s2t = S2Tid(tid) in S2TXTsrt(s2t)
-  end
+| ~
+Some_vt(tx) => tx
+| ~
+None_vt((*void*)) =>
+let
+val s2t =
+S2Tid0(tid) in S2TXTsrt(s2t)
+end
 //
 end // end of [auxid0]
 //
@@ -463,9 +466,9 @@ in
 case+
 s1t0.node() of
 //
-| S1Tid _ => auxid0(s1t0)
+| S1Tid0 _ => auxid0(s1t0)
 //
-| _(*non-S1Tid*) =>
+| _(*non-S1Tid0*) =>
   (
     S2TXTsrt(trans12_sort(s1t0))
   )

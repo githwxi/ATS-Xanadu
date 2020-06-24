@@ -50,6 +50,19 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+datatype
+h0srt =
+//
+| HSTid0 of (sym_t)
+//
+| HSTtup of
+  (h0srtlst) // HX: tuple not yet in use
+| HSTfun of
+  (h0srtlst(*arg*), h0srt(*res*)) // fun
+| HSTapp of (h0srt(*fun*), h0srtlst(*arg*))
+
+(* ****** ****** *)
+
 local
 
 typedef

@@ -896,7 +896,7 @@ case+ tnd of
     val id = p_s0tid(buf, err)
   in
     err := e0;
-    sort0_make_node(id.loc(), S0Tid(id))
+    sort0_make_node(id.loc(), S0Tid0(id))
   end // end of [t_s0tid]
 | _ (* error *) =>
   let
@@ -937,7 +937,7 @@ case+ tnd of
     val id = p_s0tid(buf, err)
   in
     err := e0;
-    sort0_make_node(id.loc(), S0Tid(id))
+    sort0_make_node(id.loc(), S0Tid0(id))
   end // end of [t_s0tid]
 //
 | _ when t_t0int(tnd) =>

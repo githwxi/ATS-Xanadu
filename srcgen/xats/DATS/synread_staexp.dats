@@ -298,7 +298,7 @@ in
 //
 case+
 s0t0.node() of
-| S0Tid(id0) =>
+| S0Tid0(id0) =>
   synread_s0tid(id0)
 //
 | S0Tint(int) =>
