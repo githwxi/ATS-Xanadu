@@ -132,6 +132,19 @@ h0typ_node =
 (* ****** ****** *)
 //
 fun
+print_htvar: htvar -> void
+fun
+prerr_htvar: htvar -> void
+fun
+fprint_htvar: fprint_type(htvar)
+//
+overload print with print_htvar
+overload prerr with prerr_htvar
+overload fprint with fprint_htvar
+//
+(* ****** ****** *)
+//
+fun
 print_h0typ: h0typ -> void
 fun
 prerr_h0typ: h0typ -> void
@@ -147,8 +160,9 @@ overload fprint with fprint_h0typ
 datatype
 h0exp_node =
 // externally named
-| H0Ecst of hdcst // constant
 | H0Evar of hdvar // variable
+| H0Econ of hdcon // cnstrctr
+| H0Ecst of hdcst // constant
 //
 | H0Elet of (h0dclist, h0exp)
 //
