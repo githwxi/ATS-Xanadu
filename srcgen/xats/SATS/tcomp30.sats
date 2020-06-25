@@ -40,6 +40,8 @@
 (* ****** ****** *)
 //
 fun
+tcomp30_sort(s2t0: sort2): h0srt
+fun
 tcomp30_type(t2p0: t2ype): h0typ
 //
 (* ****** ****** *)

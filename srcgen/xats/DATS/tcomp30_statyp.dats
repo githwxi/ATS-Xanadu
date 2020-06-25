@@ -48,6 +48,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
@@ -55,6 +56,64 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/tcomp30.sats"
 
 (* ****** ****** *)
+
+implement
+tcomp30_sort
+  (s2t0) = let
+//
+(*
+val () =
+println!
+("tcomp30_sort: s2t0 = ", s2t0)
+*)
+//
+in
+//
+case+ s2t0 of
+| _(*rest-of-sort2*) =>
+  HSTerror($UN.cast{ptr}(s2t0))
+//
+end // end of [tcomp30_sort]
+//
+(* ****** ****** *)
+
+implement
+tcomp30_type
+  (t2p0) = let
+//
+val s2t0 = t2p0.sort()
+//
+(*
+val () =
+println!
+("tcomp30_type: t2p0 = ", t2p0)
+val () =
+println!
+("tcomp30_type: s2t0 = ", s2t0)
+*)
+//
+val hst0 = tcomp30_sort(s2t0)
+//
+(*
+val () =
+println!
+("tcomp30_type: hst0 = ", hst0)
+*)
+//
+in
+//
+case+
+t2p0.node() of
+|
+_(*rest-of-t2ype*) =>
+let
+val errp =
+$UN.cast{ptr}(t2p0)
+in
+h0typ_make_node(hst0, H0Terror(errp))
+end // end of [rest]
+//
+end // end of [tcomp30_type]
 
 (* ****** ****** *)
 

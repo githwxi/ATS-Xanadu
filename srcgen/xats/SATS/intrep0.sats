@@ -145,6 +145,8 @@ h0typ_node =
 | H0Tcst of htcst // constant
 | H0Tvar of htvar // variable
 //
+| H0Terror of (xerrptr) // HX: for errors
+//
 (* ****** ****** *)
 //
 fun
@@ -170,6 +172,20 @@ fprint_h0typ: fprint_type(h0typ)
 overload print with print_h0typ
 overload prerr with prerr_h0typ
 overload fprint with fprint_h0typ
+//
+(* ****** ****** *)
+//
+fun
+h0typ_get_sort(h0typ): h0srt
+fun
+h0typ_get_node(h0typ): h0typ_node
+//
+overload .sort with h0typ_get_sort
+overload .node with h0typ_get_node
+//
+fun
+h0typ_make_node
+(hst: h0srt, htn: h0typ_node): h0typ
 //
 (* ****** ****** *)
 //

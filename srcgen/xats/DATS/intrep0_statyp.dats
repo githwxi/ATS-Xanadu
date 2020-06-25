@@ -71,4 +71,33 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+h0typ_tbox = $rec
+{ 
+  h0typ_sort= h0srt
+, h0typ_node= h0typ_node
+} (* absimpl *)
+
+in (* in-of-local *)
+//
+implement
+h0typ_get_sort
+  (h2t) = h2t.h0typ_sort
+implement
+h0typ_get_node
+  (h2t) = h2t.h0typ_node
+//
+implement
+h0typ_make_node
+  (s2t0, node) = $rec
+{
+  h0typ_sort= s2t0, h0typ_node= node
+}
+//
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_intrep0_statyp.dats] *)
