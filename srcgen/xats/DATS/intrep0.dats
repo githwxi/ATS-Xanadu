@@ -56,6 +56,38 @@ LOC = "./../SATS/locinfo.sats"
 local
 
 val
+stamper =
+$STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+htcst_stamp_new() =
+$STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper =
+$STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+htvar_stamp_new() =
+$STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
 stamper = $STM.stamper_new()
 
 in (* in-of-local *)
