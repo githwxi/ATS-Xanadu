@@ -117,4 +117,5 @@ BUILD/intrep0_print_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/intrep0.sats
 BUILD/intrep0_jsoniz_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/intrep0.sats
 BUILD/intrep0_statyp_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/locinfo.sats SATS/intrep0.sats
 BUILD/intrep0_dynexp_dats.o : SATS/stamp0.sats SATS/symbol.sats SATS/locinfo.sats SATS/intrep0.sats
+BUILD/tcomp30_dynexp_dats.o : SATS/basics.sats SATS/locinfo.sats SATS/intrep0.sats SATS/tcomp30.sats
 BUILD/xatsopt_dats.o : SATS/xerrory.sats SATS/filpath.sats SATS/global.sats SATS/filsrch.sats SATS/parsing.sats SATS/synread.sats SATS/trans01.sats SATS/tread01.sats SATS/trans12.sats SATS/tread12.sats SATS/trans23.sats SATS/tread23.sats SATS/trans33.sats SATS/tread33.sats SATS/trans3t.sats SATS/trans3x.sats SATS/tread3x.sats DATS/staexp0_print.dats DATS/dynexp0_print.dats DATS/staexp1_print.dats DATS/dynexp1_print.dats DATS/staexp2_print.dats DATS/statyp2_print.dats DATS/dynexp2_print.dats DATS/dynexp3_print.dats DATS/trans12_envmap.dats ../xutl/DATS/cblist.dats ../xutl/DATS/Posix/cblist.dats ../xutl/DATS/Posix/mylibc.dats
