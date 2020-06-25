@@ -67,14 +67,8 @@ fprint with $SYM.fprint_symbol
 (* ****** ****** *)
 //
 #staload
-_(*TMP*) = "./../DATS/staexp2_print.dats"
-//
-(* ****** ****** *)
-//
-implement
-fprint_val<t2xtv> = fprint_t2xtv
-implement
-fprint_val<t2ype> = fprint_t2ype
+_(*TMP*) =
+  "./../DATS/staexp2_print.dats"
 //
 (* ****** ****** *)
 //
@@ -86,16 +80,18 @@ prerr_t2xtv(x0) =
 fprint_t2xtv(stderr_ref, x0) 
 //
 implement
-fprint_t2xtv(out, x0) =
-(
-let
+fprint_t2xtv
+  (out, x0) = let
+//
+val s2t = x0.sort()
 val t2p = x0.type()
 val stm = x0.stamp()
+//
 in
 fprint!
-(out, "X(", stm, ")", "[", t2p, "]")
+( out
+, "X(", stm, ")", "[", t2p, " : ", s2t, "]")
 end
-)
 //
 (* ****** ****** *)
 //
@@ -117,6 +113,8 @@ fprint_labt2ype(stderr_ref, x0)
 //
 local
 
+implement
+fprint_val<t2ype> = fprint_t2ype
 implement
 fprint_val<labt2ype> = fprint_labt2ype
 

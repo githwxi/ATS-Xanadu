@@ -755,11 +755,15 @@ case+ s2vs of
   list_vt_nil()
 | list_cons(s2v0, s2vs) =>
   let
+//
   val-
-  list_cons(xtv0, xtvs) = xtvs
+  list_cons
+  (xtv0, xtvs) = xtvs
+//
   val s2t0 = s2v0.sort()
   val t2p0 =
-  t2ype_srt_xtv(s2t0, xtv0)
+  t2ype_new_srt_xtv(s2t0, xtv0)
+//
   in
     list_vt_cons
     (t2p0, auxtsub_make(s2vs, xtvs))
@@ -860,11 +864,13 @@ val s2vs = tqas.s2vs()
 val xtvs =
 list_vt2t
 (
-  list_map<s2var><t2xtv>(s2vs)
+list_map<s2var><t2xtv>(s2vs)
 ) where
 {
 implement
-list_map$fopr<s2var><t2xtv>(s2v) = t2xtv_new(loc0)
+list_map$fopr<
+  s2var><t2xtv>(s2v) =
+  t2xtv_new_srt( loc0, s2v.sort() )
 } (* end of [val xtvs] *)
 val tsub =
 (
@@ -1104,7 +1110,9 @@ list_vt2t
 ) where
 {
 implement
-list_map$fopr<s2var><t2xtv>(_) = t2xtv_new(loc0)
+list_map$fopr<
+  s2var><t2xtv>(s2v) =
+  t2xtv_new_srt( loc0, s2v.sort() )
 } (* end of [val xtvs] *)
 val tsub =
 (
