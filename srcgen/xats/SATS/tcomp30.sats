@@ -33,18 +33,15 @@
 //
 (* ****** ****** *)
 
-#staload "./basics.sats"
-
-(* ****** ****** *)
-
-#staload "./staexp2.sats"
 #staload "./statyp2.sats"
-
-(* ****** ****** *)
-
 #staload "./dynexp3.sats"
 #staload "./intrep0.sats"
 
+(* ****** ****** *)
+//
+fun
+tcomp30_type(t2p0: t2ype): h0typ
+//
 (* ****** ****** *)
 //
 fun

@@ -32,10 +32,6 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#staload "./basics.sats"
-//
-(* ****** ****** *)
 
 #staload "./label0.sats"
 #staload "./locinfo.sats"
