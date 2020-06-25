@@ -810,12 +810,8 @@ list_nil() =>
 list_cons(s2v1, svs1) =>
 let
   val
-  s2t1 = s2v1.sort()
-  val
-  xtv1 = t2xtv_new(loc0)
-  val
   t2px =
-  t2ype_srt_xtv(s2t1, xtv1)
+  t2ype_new_loc_var(loc0, s2v1)
   val
   svs2 = list_vt_cons(s2v1, svs2)
   val
@@ -902,26 +898,24 @@ auxinst2
 ) : (t2ypelst, t2ype) =
 (
 case+ svs1 of
-| list_nil() =>
-  (
-    auxinst1(tqas, svs2, tsub)
-  )
-| list_cons(s2v1, svs1) =>
-  let
-    val
-    s2t1 = s2v1.sort()
-    val
-    xtv1 = t2xtv_new(loc0)
-    val
-    t2px =
-    t2ype_srt_xtv(s2t1, xtv1)
-    val
-    svs2 = list_vt_cons(s2v1, svs2)
-    val
-    tsub = list_vt_cons(t2px, tsub)
-  in
-    auxinst2(svs1, tqas, svs2, tsub)
-  end
+|
+list_nil() =>
+(
+  auxinst1(tqas, svs2, tsub)
+)
+|
+list_cons(s2v1, svs1) =>
+let
+  val
+  t2px =
+  t2ype_new_loc_var(loc0, s2v1)
+  val
+  svs2 = list_vt_cons(s2v1, svs2)
+  val
+  tsub = list_vt_cons(t2px, tsub)
+in
+  auxinst2(svs1, tqas, svs2, tsub)
+end
 ) (* end of [auxinst2] *)
 } (* end of [t2ype_tq2as_elim2] *)
 //
@@ -1271,51 +1265,51 @@ auxtsub
 : List0_vt(t2ype) =
 (
 case+ s2vs of
-| list_nil
-  ((*void*)) =>
+|
+list_nil
+((*void*)) =>
   list_vt_nil()
+|
+list_cons
+(s2v0, s2vs) =>
+(
+case+ s2es of
+| list_nil() =>
+  let
+  val
+  t2p0 = the_t2ype_none0
+  in
+    list_vt_cons
+    (t2p0, auxtsub(s2vs, s2es))
+  end
 | list_cons
-  (s2v0, s2vs) =>
+  (s2e0, s2es1) =>
   (
-    case+ s2es of
-    | list_nil() =>
-      let
-      val
-      t2p0 = the_t2ype_none0
-      in
-        list_vt_cons
-        (t2p0, auxtsub(s2vs, s2es))
-      end
-    | list_cons
-      (s2e0, s2es1) =>
-      (
-      case+
-      s2e0.node() of
-      | S2Eany(k0) =>
-        let
-          val s2t0 =
-          s2v0.sort()
-          val t2p0 =
-          t2ype_srt_xtv
-          (s2t0, t2xtv_new(loc0))
-        in
-          if
-          (k0 >= 2)
-          then
-          list_vt_cons
-          (t2p0, auxtsub(s2vs, s2es))
-          else
-          list_vt_cons
-          (t2p0, auxtsub(s2vs, s2es1))
-        end
-      | _(*non-S2Eany*) =>
-        let
-          val t2p0 = s2exp_erase(s2e0)
-        in
-          list_vt_cons(t2p0, auxtsub(s2vs, s2es))
-        end
-      )
+  case+
+  s2e0.node() of
+  | S2Eany(k0) =>
+    let
+    val
+    t2p0 =
+    t2ype_new_loc_var(loc0, s2v0)
+    in
+      if
+      (k0 >= 2)
+      then
+      list_vt_cons
+      (t2p0, auxtsub(s2vs, s2es))
+      else
+      list_vt_cons
+      (t2p0, auxtsub(s2vs, s2es1))
+    end
+  | _(*non-S2Eany*) =>
+    let
+      val t2p0 = s2exp_erase(s2e0)
+    in
+      list_vt_cons(t2p0, auxtsub(s2vs, s2es))
+    end
   )
+)
 ) (* end of [auxtsub] *)
 } // where // end of [auxmain]
 //
@@ -1487,13 +1481,11 @@ case+ s2es of
 |
 list_nil() =>
 let
-  val s2t0 =
-  s2v0.sort()
-  val t2p0 =
-  t2ype_srt_xtv
-  (s2t0, t2xtv_new(loc0))
-  val tsub =
-  list_vt_cons(t2p0, tsub)
+val
+t2p0 =
+t2ype_new_loc_var(loc0, s2v0)
+val
+tsub = list_vt_cons(t2p0, tsub)
 in
   auxs2vs(loc0, s2vs, s2es, tsub)
 end
@@ -1503,13 +1495,11 @@ list_cons(s2e0, s2es1) =>
   s2e0.node() of
   | S2Eany(k0) =>
     let
-      val s2t0 =
-      s2v0.sort()
-      val t2p0 =
-      t2ype_srt_xtv
-      (s2t0, t2xtv_new(loc0))
-      val tsub =
-      list_vt_cons(t2p0, tsub)
+      val
+      t2p0 =
+      t2ype_new_loc_var(loc0, s2v0)
+      val
+      tsub = list_vt_cons(t2p0, tsub)
     in
       if
       (k0 >= 2)
@@ -2205,48 +2195,42 @@ case+ s2es of
 |
 list_nil() =>
 let
-  val s2t0 =
-  s2v0.sort()
-  val t2p0 =
-  t2ype_srt_xtv
-  (s2t0, t2xtv_new(loc0))
-  val
-  t2ps =
-  list_vt_cons(t2p0, t2ps)
+val
+t2p0 =
+t2ype_new_loc_var(loc0, s2v0)
+val
+t2ps = list_vt_cons(t2p0, t2ps)
 in
-  auxtias_2(s2vs, s2es, t2ps)
+  auxtias_2( s2vs, s2es, t2ps )
 end
 |
 list_cons
 (s2e0, s2es1) =>
-( case+
-  s2e0.node() of
-  | S2Eany(k0) =>
-    let
-      val s2t0 =
-      s2v0.sort()
-      val t2p0 =
-      t2ype_srt_xtv
-      (s2t0, t2xtv_new(loc0))
-      val t2ps =
-      list_vt_cons(t2p0, t2ps)
-    in
-      if
-      (k0 >= 2)
-      then
-      auxtias_2(s2vs, s2es, t2ps)
-      else
-      auxtias_2(s2vs, s2es1, t2ps)
-    end
-  | _(*non-S2Eany*) =>
-    let
-      val t2p0 =
-      s2exp_erase(s2e0)
-      val t2ps =
-      list_vt_cons(t2p0, t2ps)
-    in
-      auxtias_2(s2vs, s2es1, t2ps)
-    end
+(
+case+
+s2e0.node() of
+| S2Eany(k0) =>
+  let
+  val
+  t2p0 =
+  t2ype_new_loc_var(loc0, s2v0)
+  val
+  t2ps = list_vt_cons(t2p0, t2ps)
+  in
+  if
+  (k0 >= 2)
+  then auxtias_2(s2vs, s2es, t2ps)
+  else auxtias_2(s2vs, s2es1, t2ps)
+  end
+| _(*non-S2Eany*) =>
+  let
+  val
+  t2p0 = s2exp_erase(s2e0)
+  val
+  t2ps = list_vt_cons(t2p0, t2ps)
+  in
+    auxtias_2( s2vs, s2es1, t2ps )
+  end
 ) (* list_cons *)
 ) (* end of [list_cons] *)
 ) (* end of [auxtias_2] *)

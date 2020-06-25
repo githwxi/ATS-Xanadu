@@ -2,9 +2,24 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+#staload _ =
+"prelude/DATS/gbas.dats"
+
+(* ****** ****** *)
+abstype T0
+absvtype VT
+(* ****** ****** *)
+
+fun
+foo_t0(x0: T0): void = g_free(x0)
+fun
+foo_vt(x0: VT): void = g_free(x0)
+
+(* ****** ****** *)
+////
 impltmp
 {a:t0}
-rand<list_vt(a)>() =
+rand<list(a)>() =
 list_vt2t(rand_list<a>())
 
 (* ****** ****** *)

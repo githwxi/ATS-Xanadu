@@ -229,58 +229,69 @@ auxtp0
 (
 case+
 t2p1.node() of
-| T2Pexi(s2vs, t2p1) =>
+|
+T2Pexi(s2vs, t2p1) =>
+(
+  auxtp0(t2p1, t2p2)
+)
+|
+T2Puni(s2vs, t2p1) =>
+(
+  auxtp0(t2p1, t2p2)
+) where
+{
+  val tsub =
+  (
+  list_map<s2var><t2ype>(s2vs)
+  ) where
+  {
+    implement
+    list_map$fopr<s2var><t2ype>(s2v) =
+    let
+    val s2t = s2v.sort()
+    in
+    t2ype_new_srt_xtv(s2t, t2xtv_new_srt(loc0, s2t))
+    end
+  }
+  val t2p1 =
+  t2ype_subst_svarlst
+  (t2p1, s2vs, $UN.list_vt2t(tsub))
+  val ((*void*)) = list_vt_free(tsub)
+}
+//
+|
+_ (* non-quantifier *) =>
+(
+case+ t2p2.node() of
+| T2Puni(s2vs, t2p2) =>
   (
     auxtp0(t2p1, t2p2)
   )
-| T2Puni(s2vs, t2p1) =>
+| T2Pexi(s2vs, t2p2) =>
   (
     auxtp0(t2p1, t2p2)
   ) where
   {
     val tsub =
     (
-    list_map<s2var><t2ype>(s2vs)
+      list_map<s2var><t2ype>(s2vs)
     ) where
     {
       implement
       list_map$fopr<s2var><t2ype>(s2v) =
-      t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
+      let
+      val s2t = s2v.sort()
+      in
+      t2ype_new_srt_xtv(s2t, t2xtv_new_srt(loc0, s2t))
+      end
     }
-    val t2p1 =
+    val t2p2 =
     t2ype_subst_svarlst
-    (t2p1, s2vs, $UN.list_vt2t(tsub))
+    (t2p2, s2vs, $UN.list_vt2t(tsub))
     val ((*void*)) = list_vt_free(tsub)
   }
-//
-| _ (* non-quantifier *) =>
-  (
-  case+ t2p2.node() of
-  | T2Puni(s2vs, t2p2) =>
-    (
-      auxtp0(t2p1, t2p2)
-    )
-  | T2Pexi(s2vs, t2p2) =>
-    (
-      auxtp0(t2p1, t2p2)
-    ) where
-    {
-      val tsub =
-      (
-      list_map<s2var><t2ype>(s2vs)
-      ) where
-      {
-        implement
-        list_map$fopr<s2var><t2ype>(s2v) =
-        t2ype_srt_xtv(s2v.sort(), t2xtv_new(loc0))
-      }
-      val t2p2 =
-      t2ype_subst_svarlst
-      (t2p2, s2vs, $UN.list_vt2t(tsub))
-      val ((*void*)) = list_vt_free(tsub)
-    }
-  | _ (* non-quantifier *) => auxtp1(t2p1, t2p2)
-  )
+| _ (* non-quantifier *) => auxtp1(t2p1, t2p2)
+)
 //
 )
 and

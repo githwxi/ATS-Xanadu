@@ -153,12 +153,17 @@ list_map$fopr<t2xtv><t2ype>
   (xtv) =
 (
 let
-val t2p = xtv.type()
+val
+t2p = xtv.type()
 in
-  case+
-  t2p.node() of
-  | T2Pnone0() => t2ype_xtv(xtv)
-  | _(*solved*) => t2ype_eval(t2p)
+case+ t2p.node() of
+//
+|
+T2Pnone0() =>
+t2ype_new_xtv(xtv)
+//
+| _(*solved*) => t2ype_eval(t2p)
+//
 end
 )
 //
@@ -179,8 +184,12 @@ implement
 list_map$fopr<t2xtv><t2xtv>
   (xtv) =
 let
-  val xtv2 = t2xtv_new(LOC0)
-  val t2p2 = t2ype_xtv(xtv2)
+val s2t2 = xtv.sort()
+val
+xtv2 =
+t2xtv_new_srt(LOC0, s2t2)
+val
+t2p2 = t2ype_new_xtv(xtv2)
 in
 let
 val () = xtv.type(t2p2) in xtv2
@@ -226,6 +235,41 @@ unify3
 val ((*void*)) = list_vt_free(t2ps)
 //
 } (* end of [ti3env_redo] *) end // end of [local]
+
+(* ****** ****** *)
+
+fun
+t2xtvlst_srtck
+( xtvs
+: t2xtvlst
+, test: bool): bool =
+(
+if
+not(test)
+then false else
+(
+case+ xtvs of
+|
+list_nil() => true
+|
+list_cons(xtv0, xtvs) =>
+let
+  val test = ftest(xtv0)
+in
+  t2xtvlst_srtck(xtvs, test)
+end
+)
+) where
+{
+fun
+ftest
+(xtv0: t2xtv): bool =
+let
+val t2p0 = xtv0.type()
+in
+  t2p0.sort() <= xtv0.sort()
+end
+} (* end of [t2xtvlst_srtck] *)
 
 (* ****** ****** *)
 
@@ -293,12 +337,14 @@ TI3ENV
 val
 test =
 unify3(LOC0, targ, t2ps)
+val
+test =
+t2xtvlst_srtck(xtvs, test)
 //
+(*
 val () =
 println!
 ("staload_find_timp: xtvs = ", xtvs)
-//
-(*
 val () =
 println!
 ("staload_find_timp: targ = ", targ)
@@ -738,8 +784,14 @@ TI3ENV
 val
 test =
 unify3(LOC0, targ, t2ps)
+val
+test =
+t2xtvlst_srtck(xtvs, test)
 //
 (*
+val () =
+println!
+("implstk_find_timp: xtvs = ", xtvs)
 val () =
 println!
 ("implstk_find_timp: t2ps = ", t2ps)
