@@ -253,5 +253,15 @@ overload prerr with prerr_h0exp
 overload fprint with fprint_h0exp
 //
 (* ****** ****** *)
+//
+datatype
+h0dcl_node =
+// externally named
+| H0Cinclude
+//
+| H0Clocal of
+  (h0dclist(*head*), h0dclist(*body*))
+//
+(* ****** ****** *)
 
 (* end of [xats_intrep0.sats] *)

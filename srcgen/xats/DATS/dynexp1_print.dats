@@ -736,6 +736,12 @@ case+ x0.node() of
   , "D1Cmacdef("
   , tok, "; ", sym, "; ", arg, "; ", def, ")")
 //
+| D1Clocal
+  (d1cs_head, d1cs_body) =>
+  fprint!
+  ( out
+  , "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
+//
 | D1Cinclude
   (tok, src, knd, opt, body) =>
   (
@@ -869,11 +875,6 @@ case+ x0.node() of
   (tok, tqas, d1cs) =>
   fprint!
   (out, "D1Cdynconst(", tok, "; ", tqas, "; ", d1cs, ")")
-//
-| D1Clocal
-  (d1cs_head, d1cs_body) =>
-  fprint!
-  (out, "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
 //
 | D1Celse(tok) =>
   fprint!(out, "D1Celse(", tok, ")")

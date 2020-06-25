@@ -1035,6 +1035,12 @@ for skipping synerr:
   , g0marglst(*arg*), d0macdef(*d0exp*))
   // end of [D0Cmacdef]
 //
+| D0Clocal of
+  ( token(*LOCAL*)
+  , d0eclist(*head*)
+  , tokenopt(*IN*)
+  , d0eclist(*body*), token(*END*))
+//
 | D0Cinclude of
     (token(*INCLUDE*), d0exp)
   // HX: for file inclusion
@@ -1109,10 +1115,6 @@ for skipping synerr:
 //
 | D0Cdynconst of
   (token(*dyncstkind*), tq0arglst, d0cstdeclist)
-//
-| D0Clocal of
-  ( token(*LOCAL*)
-  , d0eclist, tokenopt(*IN*), d0eclist, token(*END*))
 //
 | D0Celse of (token) // opt
 | D0Cendif of (token) // req

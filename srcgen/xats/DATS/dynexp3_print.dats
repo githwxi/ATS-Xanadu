@@ -729,6 +729,11 @@ x0.node() of
   (tok, d3c) =>
   fprint!(out, "D3Cextern(", d3c, ")")
 //
+| D3Clocal(head, body) =>
+  fprint!
+  ( out
+  , "D3Clocal(", head, "; ", body, ")")
+//
 | D3Cinclude
   ( tok
   , src, knd
@@ -768,11 +773,6 @@ x0.node() of
     | None _ => "None()"
     | Some _ => "Some(<fmodenv>)"): string
   }
-//
-| D3Clocal(head, body) =>
-  fprint!
-  ( out
-  , "D3Clocal(", head, "; ", body, ")")
 //
 | D3Cabstype(d2cl) =>
   fprint!(out, "D3Cabstype(", d2cl, ")")
