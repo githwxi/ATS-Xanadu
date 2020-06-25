@@ -281,6 +281,7 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./intrep0_statyp.dats"
 #dynload "./intrep0_dynexp.dats"
 //
+#dynload "./tcomp30_statyp.dats"
 #dynload "./tcomp30_dynexp.dats"
 //
 (* ****** ****** *)
