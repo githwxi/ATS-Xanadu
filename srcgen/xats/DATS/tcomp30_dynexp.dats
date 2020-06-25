@@ -48,6 +48,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/dynexp3.sats"
 #staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
@@ -55,6 +56,86 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/tcomp30.sats"
 
 (* ****** ****** *)
+
+implement
+tcomp30_dexp
+  (d3e0) =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+(*
+val () =
+println!
+("tcomp30_dexp: d3e0 = ", d3e0)
+val () =
+println!
+("tcomp30_dexp: t2p0 = ", t2p0)
+*)
+val
+h0t0 = tcomp30_type(t2p0)
+//
+in
+//
+case+
+d3e0.node() of
+|
+_(* rest-of_d3exp *) =>
+let
+val
+hend =
+H0Eerror($UN.cast{ptr}(d3e0))
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [let]
+//
+end // end of [tcomp30_dexp]
+
+(* ****** ****** *)
+//
+implement
+tcomp30_dexpopt
+  (opt0) =
+(
+case+ opt0 of
+| None() => None()
+| Some(d3e) => Some(tcomp30_dexp(d3e))
+)
+//
+implement
+tcomp30_dexplst
+  (d3es) =
+list_vt2t(d3es) where
+{
+val
+d3es =
+list_map<d3exp><h0exp>
+  (d3es) where
+{
+  implement
+  list_map$fopr<d3exp><h0exp>(d3e) = tcomp30_dexp(d3e)
+}
+} (* end of [tcomp30_dexplst] *)
+//
+(* ****** ****** *)
+
+implement
+tcomp30_declist
+  (d3cs) =
+list_vt2t(d3cs) where
+{
+val
+d3cs =
+list_map<d3ecl><h0dcl>
+  (d3cs) where
+{
+  implement
+  list_map$fopr<d3ecl><h0dcl>(d3c) = tcomp30_decl(d3c)
+}
+} (* end of [tcomp30_declist] *)
 
 (* ****** ****** *)
 

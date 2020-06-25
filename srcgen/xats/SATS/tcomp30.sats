@@ -54,5 +54,12 @@ fun
 tcomp30_dexplst(d3explst): h0explst
 //
 (* ****** ****** *)
+//
+fun
+tcomp30_decl(d3c0: d3ecl): h0dcl
+fun
+tcomp30_declist(d3eclist): h0dclist
+//
+(* ****** ****** *)
 
 (* end of [xats_tcomp30.sats] *)
