@@ -39,6 +39,7 @@
 
 #staload "./stamp0.sats"
 #staload "./symbol.sats"
+#staload "./locinfo.sats"
 
 (* ****** ****** *)
 
@@ -200,6 +201,8 @@ h0exp_node =
 //
 | H0Eif0 of (h0exp, h0exp, h0expopt)
 //
+| H0Eerror of (xerrptr) // HX: for errors
+//
 (* ****** ****** *)
 //
 fun
@@ -251,6 +254,12 @@ fprint_h0exp: fprint_type(h0exp)
 overload print with print_h0exp
 overload prerr with prerr_h0exp
 overload fprint with fprint_h0exp
+//
+(* ****** ****** *)
+//
+fun
+h0exp_make_node
+(loc_t, h0typ, h0exp_node): h0exp
 //
 (* ****** ****** *)
 //
