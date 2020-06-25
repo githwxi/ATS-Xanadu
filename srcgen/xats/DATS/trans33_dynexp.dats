@@ -2826,16 +2826,6 @@ D3Cextern
   d3c1 = trans33_decl(env0, d3c1)
 }
 //
-| D3Cinclude _ =>
-  let
-  val d3cl =
-  aux_include(env0, d3cl) in d3cl
-  end
-| D3Cstaload _ => let
-  val d3cl =
-  aux_staload(env0, d3cl) in d3cl
-  end
-//
 | D3Clocal
   (head, body) => let
     val () =
@@ -2856,6 +2846,16 @@ D3Cextern
   in
     d3ecl_make_node(loc0, D3Clocal(head, body))
   end
+  end
+//
+| D3Cinclude _ =>
+  let
+  val d3cl =
+  aux_include(env0, d3cl) in d3cl
+  end
+| D3Cstaload _ => let
+  val d3cl =
+  aux_staload(env0, d3cl) in d3cl
   end
 //
 | D3Cabstype _ => d3cl

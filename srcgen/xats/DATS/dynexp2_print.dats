@@ -635,6 +635,11 @@ case- x0.node() of
   (tok, d2c) =>
   fprint!(out, "D2Cextern(", d2c, ")")
 //
+| D2Clocal(head, body) =>
+  fprint!
+  ( out
+  , "D2Clocal(", head, "; ", body, ")")
+//
 | D2Cinclude
   ( tok
   , src, knd
@@ -674,11 +679,6 @@ case- x0.node() of
     | None _ => "None()"
     | Some _ => "Some(<fmodenv>)"): string
   }
-//
-| D2Clocal(head, body) =>
-  fprint!
-  ( out
-  , "D2Clocal(", head, "; ", body, ")")
 //
 | D2Cabssort(d1c) =>
   fprint!(out, "D2Cabssort(", d1c, ")")

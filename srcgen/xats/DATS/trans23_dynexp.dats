@@ -2770,20 +2770,19 @@ d2cl.node() of
     (loc0, D3Cextern(tok, d3c))
   end
 //
-| D2Cinclude _ => aux_include(d2cl)
-| D2Cstaload _ => aux_staload(d2cl)
-//
 | D2Clocal
-  (d2cs1, d2cs2) => let
+  (head, body) => let
     val
-    d3cs1 = trans23_declist(d2cs1)
+    head = trans23_declist(head)
     val
-    d3cs2 = trans23_declist(d2cs2)
+    body = trans23_declist(body)
   in
     d3ecl_make_node
-      (loc0, D3Clocal(d3cs1, d3cs2))
-    // d3ecl_make_node
+    ( loc0, D3Clocal(head, body) )
   end
+//
+| D2Cinclude _ => aux_include(d2cl)
+| D2Cstaload _ => aux_staload(d2cl)
 //
 | D2Cabsopen _ => aux_absopen(d2cl)
 | D2Cabsimpl _ => aux_absimpl(d2cl)

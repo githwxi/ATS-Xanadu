@@ -405,6 +405,48 @@ local
 (* ****** ****** *)
 
 fun
+aux_include
+( env0:
+! tr3xenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cinclude
+( tok
+, src, knd
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+(
+case+ dopt of
+| None() =>
+  None((*void*))
+| Some(d3cs) =>
+  Some(trans3x_declist(env0, d3cs))
+) : d3eclistopt // end-of-val
+//
+in
+//
+d3ecl_make_node
+( loc0
+, D3Cinclude(tok, src, knd, fopt, dopt))
+end // end of [aux_include]
+
+(* ****** ****** *)
+
+fun
+aux_staload
+( env0:
+! tr3xenv
+, d3cl: d3ecl): d3ecl = d3cl
+
+(* ****** ****** *)
+
+fun
 aux_fundecl
 ( env0:
 ! tr3xenv
@@ -728,12 +770,6 @@ in(* in-of-let *)
 case+
 d3cl.node() of
 //
-|
-D3Cinclude _ => d3cl
-|
-D3Cstaload _ => d3cl
-//
-|
 D3Clocal
 (head, body) => let
   val () =
@@ -750,11 +786,16 @@ D3Clocal
 //
 in
 let
-  val () = tr3xenv_pop_loc12(env0)
+val () = tr3xenv_pop_loc12(env0)
 in
-  d3ecl_make_node(loc0, D3Clocal(head, body))
+d3ecl_make_node(loc0, D3Clocal(head, body))
 end
 end
+//
+|
+D3Cinclude _ => aux_include(env0, d3cl)
+|
+D3Cstaload _ => aux_staload(env0, d3cl)
 //
 |
 D3Cfundecl _ => aux_fundecl(env0, d3cl)

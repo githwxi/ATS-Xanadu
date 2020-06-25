@@ -3230,6 +3230,19 @@ d0cl.node() of
 | D0Cdefine _ => aux_define(d0cl)
 | D0Cmacdef _ => aux_macdef(d0cl)
 //
+| D0Clocal
+  ( tbeg, head
+  , topt, body, tend) =>
+  let
+    val
+    head = trans01_declist(head)
+    val
+    body = trans01_declist(body)
+  in
+    d1ecl_make_node
+    ( loc0, D1Clocal(head, body) )
+  end // end of [D0Clocal]
+//
 | D0Cinclude _ => aux_include(d0cl)
 //
 | D0Cstaload _ => aux_staload(d0cl)
@@ -3261,16 +3274,6 @@ d0cl.node() of
 | D0Cdatatype _ => aux_datatype(d0cl)
 //
 | D0Cdynconst _ => aux_dynconst(d0cl)
-//
-| D0Clocal
-  ( tbeg, head
-  , topt, body, tend) =>
-  let
-    val head = trans01_declist(head)
-    val body = trans01_declist(body)
-  in
-    d1ecl_make_node(loc0, D1Clocal(head, body))
-  end // end of [D0Clocal]
 //
 | D0Celse(tok1) =>
   (

@@ -4985,6 +4985,22 @@ d1cl.node() of
     d2ecl_make_node(loc0, D2Cextern(tok, d2c))
   end
 //
+| D1Clocal
+  (head, body) => let
+    val
+    (pf1|()) =
+    the_trans12_pushnil()
+    val head = trans12_declist(head)
+    val
+    (pf2|()) =
+    the_trans12_pushnil()
+    val body = trans12_declist(body)
+    val ((*void*)) =
+    the_trans12_locjoin(pf1, pf2 | (*none*))
+  in
+    d2ecl_make_node(loc0, D2Clocal(head, body))
+  end // end of [D1Clocal]
+//
 | D1Cinclude _ => aux_include(d1cl)
 //
 | D1Cstaload _ => aux_staload(d1cl)
@@ -5016,22 +5032,6 @@ d1cl.node() of
 | D1Cdatatype _ => aux_datatype(d1cl)
 //
 | D1Cdynconst _ => aux_dynconst(d1cl)
-//
-| D1Clocal
-  (head, body) => let
-    val
-    (pf1|()) =
-    the_trans12_pushnil()
-    val head = trans12_declist(head)
-    val
-    (pf2|()) =
-    the_trans12_pushnil()
-    val body = trans12_declist(body)
-    val ((*void*)) =
-    the_trans12_locjoin(pf1, pf2 | (*none*))
-  in
-    d2ecl_make_node(loc0, D2Clocal(head, body))
-  end // end of [D1Clocal]
 //
 | _(*rest-of-D1ECL*) => d2ecl_none1(d1cl)
 //

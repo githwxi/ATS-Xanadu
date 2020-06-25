@@ -906,6 +906,14 @@ case+ x0.node() of
   ( out, "D0Cmacdef("
   , gid, "; ", gmas, "; ", mdef, ")")
 //
+| D0Clocal
+  (tbeg, d0cs0, topt, d0cs1, tend) =>
+  fprint!
+  ( out
+  , "D0Clocal("
+  , tbeg, "; ", d0cs0, "; "
+  , topt, "; ", d0cs1, "; ", tend, ")")
+//
 | D0Cinclude(tok, d0e) =>
   fprint!
   (out, "D0Cinclude(", tok, "; ", d0e, ")")
@@ -1013,13 +1021,6 @@ case+ x0.node() of
   fprint!
   ( out
   , "D0Cdynconst(", tok, "; ", tqas, "; ", d0cs, ")")
-//
-| D0Clocal
-  (tbeg, d0cs0, topt, d0cs1, tend) =>
-  fprint!
-  ( out
-  , "D0Clocal("
-  , tbeg, "; ", d0cs0, "; ", topt, "; ", d0cs1, "; ", tend, ")")
 //
 | D0Celse(tok) =>
   fprint!(out, "D0Celse(", tok, ")")
