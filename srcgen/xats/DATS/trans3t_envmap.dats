@@ -266,8 +266,24 @@ ftest
 (xtv0: t2xtv): bool =
 let
 val t2p0 = xtv0.type()
+val s2t1 = t2p0.sort()
 in
-  t2p0.sort() <= xtv0.sort()
+case+ s2t1 of
+|
+S2Tnone0() => true
+|
+_(*non-S2Tnone0*) =>
+let
+val
+s2t0 =
+xtv0.sort()
+in
+  case+ s2t0 of
+  |
+  S2Tnone0() => true
+  |
+  _(*non-S2Tnone0*) => (s2t1 <= s2t0)
+end
 end
 } (* end of [t2xtvlst_srtck] *)
 
@@ -341,10 +357,11 @@ val
 test =
 t2xtvlst_srtck(xtvs, test)
 //
-(*
 val () =
 println!
 ("staload_find_timp: xtvs = ", xtvs)
+//
+(*
 val () =
 println!
 ("staload_find_timp: targ = ", targ)
