@@ -156,6 +156,14 @@ auxt2p0
 case+
 t2p0.node() of
 //
+(*
+|
+T2Pbas _ => xtvs
+|
+T2Pcst _ => xtvs
+|
+T2Pvar _ => xtvs
+*)
 |
 T2Pxtv(xtv) =>
 let
@@ -169,6 +177,11 @@ t2p1.node() of
 end
 //
 |
+T2Plft(t2p1) =>
+(
+  auxt2p0(t2p1, xtvs)
+)
+|
 T2Papp
 (t2p1, t2ps) =>
 (
@@ -178,6 +191,10 @@ T2Papp
   val
   xtvs = auxt2p0(t2p1, xtvs)
 }
+//
+(*
+| T2Pfc2 _ => xtvs
+*)
 //
 |
 T2Pfun
@@ -211,7 +228,7 @@ T2Ptyext
 T2Ptyrec
 (_, _, ltps) => auxlt2ps(ltps, xtvs)
 //
-| _ (* rest-of-t2ype *) => xtvs
+| _ (*  rest-of-t2ype  *) => ( xtvs )
 //
 )
 and
@@ -280,6 +297,11 @@ implement
 match2_t2ype_t2ype
   (t2p1, t2p2) = let
 //
+(*
+HX-2020-06:
+[t2p1] is assumed containing no xtvs
+*)
+//
 val
 loc0 =
 the_location_dummy
@@ -301,18 +323,19 @@ auxlst
 : List_vt(t2xtv)): void =
 (
 case+ xtvs of
-|
-~list_vt_nil() => ()
-|
-~list_vt_cons(x0, xs) =>
- let
- val () = reset(x0) in auxlst(xs)
- end
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(x0, xs) =>
+let
+val () = reset(x0) in auxlst(xs)
+end
 )
 //
 in
 let
-val () = auxlst(xtvs) in test end
+  val () = auxlst(xtvs) in test
+end
 end // end of [match2_t2ype_t2ype]
 
 (* ****** ****** *)
