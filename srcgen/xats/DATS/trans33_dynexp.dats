@@ -732,12 +732,21 @@ loc0 = d3e0.loc()
 val-
 D3Ecst1(d2c1) = d3e0.node()
 //
-val
-t2p0 = d3e0.type()
 (*
 val () =
 println!
-("auxcst1: t2p0 = ", t2p0)
+("auxcst1: d3e0 = ", d3e0)
+*)
+val
+t2p0 = d3e0.type((*void*))
+//
+(*
+val () =
+println!
+("auxcst1: d2e0.t2p0 = ", t2p0)
+val () =
+println!
+("auxcst1: d2c1.type = ", d2c1.type())
 *)
 //
 in
@@ -1607,11 +1616,14 @@ trans33_dexp
 val loc0 = d3e0.loc()
 val t2p0 = d3e0.type()
 //
-(*
-val ((*void*)) =
+// (*
+val () =
 println!
 ("trans33_dexp: d3e0 = ", d3e0)
-*)
+val () =
+println!
+("trans33_dexp: t2p0 = ", t2p0)
+// *)
 //
 in
 //

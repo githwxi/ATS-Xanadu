@@ -1,6 +1,16 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+
+fun
+foo
+{a0:tx}
+(x0:a0) = x0
+val foo10 = foo(10)
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
 #staload _ =
 "prelude/DATS/gbas.dats"
 (* ****** ****** *)
