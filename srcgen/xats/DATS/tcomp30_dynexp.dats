@@ -56,6 +56,20 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/tcomp30.sats"
 
 (* ****** ****** *)
+//
+implement
+tcomp30_program
+  (prog0) =
+  (prog1) where
+{
+//
+val
+prog1 =
+tcomp30_declist(prog0)
+//
+} (* end of [tcomp30_program] *)
+//
+(* ****** ****** *)
 
 implement
 tcomp30_dexp
@@ -89,7 +103,7 @@ val
 hend =
 H0Eerror($UN.cast{ptr}(d3e0))
 in
-  h0exp_make_node(loc0, h0t0, hend)
+h0exp_make_node(loc0, h0t0, hend)
 end // end of [let]
 //
 end // end of [tcomp30_dexp]
@@ -120,6 +134,38 @@ list_map<d3exp><h0exp>
 }
 } (* end of [tcomp30_dexplst] *)
 //
+(* ****** ****** *)
+
+implement
+tcomp30_decl
+  (d3cl) =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+(*
+val () =
+println!
+("tcomp30_decl: d3cl = ", d3cl)
+*)
+//
+in
+//
+case+
+d3cl.node() of
+|
+_(* rest-of_d3exp *) =>
+let
+val
+node =
+H0Cerror($UN.cast{ptr}(d3cl))
+in
+  h0dcl_make_node( loc0, node )
+end // end of [let]
+//
+end // end of [tcomp30_decl]
+
 (* ****** ****** *)
 
 implement

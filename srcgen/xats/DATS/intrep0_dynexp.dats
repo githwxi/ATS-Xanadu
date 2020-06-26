@@ -71,4 +71,67 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+//
+absimpl
+h0exp_tbox = $rec
+{ h0exp_loc= loc_t
+, h0exp_type= h0typ
+, h0exp_node= h0exp_node
+} (* end of [absimpl] *)
+//
+in (* in-of-local *)
+//
+implement
+h0exp_get_loc
+  (h0e) = h0e.h0exp_loc
+//
+implement
+h0exp_get_type
+  (h0e) = h0e.h0exp_type
+//
+implement
+h0exp_get_node
+  (h0e) = h0e.h0exp_node
+//
+implement
+h0exp_make_node
+(
+loc0, h0t0, node
+) = $rec
+{ h0exp_loc= loc0
+, h0exp_type= h0t0, h0exp_node= node
+} (* h0exp_make_node *)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+h0dcl_tbox = $rec
+{ h0dcl_loc= loc_t
+, h0dcl_node= h0dcl_node
+} (* end of [absimpl] *)
+//
+in (* in-of-local *)
+//
+implement
+h0dcl_get_loc
+(dcl) = dcl.h0dcl_loc
+implement
+h0dcl_get_node
+(dcl) = dcl.h0dcl_node
+//
+implement
+h0dcl_make_node
+(loc0, node) = $rec
+{ h0dcl_loc= loc0, h0dcl_node= node
+} (* h0dcl_make_node *)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_intrep0_h0typ.dats] *)
