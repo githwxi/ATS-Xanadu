@@ -88,6 +88,8 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/trans3x.sats"
 #staload "./../SATS/tread3x.sats"
 //
+#staload "./../SATS/tcomp30.sats"
+//
 (* ****** ****** *)
 //
 #staload
@@ -117,6 +119,12 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
   "./../DATS/dynexp3_print.dats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) =
+  "./../DATS/intrep0_print.dats"
 //
 (* ****** ****** *)
 //
@@ -1021,35 +1029,29 @@ val () = tread3x_program(d3cs)
 }
 end // end of [val]
 //
-// (*
+(*
 val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
-// *)
+*)
+//
+val
+h0cs = tcomp30_program(d3cs)
 //
 val () =
 println!
-("process_fpath: the_sortenv =")
-val () =
-(
-  the_sortenv_println((*void*))
-)
+("process_fpath: h0cs = ", h0cs)
 //
-val () =
-println!
-("process_fpath: the_sexpenv =")
-val () =
-(
-  the_sexpenv_println((*void*))
-)
+(* ****** ****** *)
 //
-val () =
-println!
-("process_fpath: the_dexpenv =")
-val () =
-(
-  the_dexpenv_println((*void*))
-)
+val () = println!("the_sortenv =")
+val () = the_sortenv_println((*void*))
+//
+val () = println!("the_sexpenv =")
+val () = the_sexpenv_println((*void*))
+//
+val () = println!("the_dexpenv =")
+val () = the_dexpenv_println((*void*))
 //
 } (* end of [then] *)
 else

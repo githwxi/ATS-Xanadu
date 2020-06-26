@@ -65,8 +65,16 @@ implement
 fprint_val<hdcon> = fprint_hdcon
 implement
 fprint_val<hdcst> = fprint_hdcst
+
+(* ****** ****** *)
+
 implement
 fprint_val<h0exp> = fprint_h0exp
+
+(* ****** ****** *)
+
+implement
+fprint_val<h0dcl> = fprint_h0dcl
 
 (* ****** ****** *)
 //
@@ -90,8 +98,8 @@ fprint!
 ( out
 , "HSTfun(", arg, "; ", res, ")")
 |
-HSTerror(xerrptr) =>
-fprint!(out, "HSTerror(", xerrptr, ")")
+HSTerror(_) =>
+fprint!(out, "HSTerror(", "...", ")")
 )
 //
 (* ****** ****** *)
@@ -106,7 +114,12 @@ fprint_h0typ(stderr_ref, x0)
 implement
 fprint_h0typ(out, x0) =
 (
-case+ x0 of
+case+
+x0.node() of
+//
+| H0Terror(_) =>
+  fprint!(out, "H0Terror(", "...", ")")
+//
 | _(* H0T... *) => fprint!(out, "H0T...(...)")
 )
 //
@@ -122,8 +135,34 @@ fprint_h0exp(stderr_ref, x0)
 implement
 fprint_h0exp(out, x0) =
 (
-case+ x0 of
+case+
+x0.node() of
+//
+| H0Eerror(_) =>
+  fprint!(out, "H0Eerror(", "...", ")")
+//
 | _(* H0E... *) => fprint!(out, "H0E...(...)")
+)
+//
+(* ****** ****** *)
+//
+implement
+print_h0dcl(x0) =
+fprint_h0dcl(stdout_ref, x0)
+implement
+prerr_h0dcl(x0) =
+fprint_h0dcl(stderr_ref, x0)
+//
+implement
+fprint_h0dcl(out, x0) =
+(
+case+
+x0.node() of
+//
+| H0Cerror(_) =>
+  fprint!(out, "H0Cerror(", "...", ")")
+//
+| _(* H0C... *) => fprint!(out, "H0C...(...)")
 )
 //
 (* ****** ****** *)

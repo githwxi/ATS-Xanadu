@@ -304,6 +304,19 @@ overload .node with h0dcl_get_node
 (* ****** ****** *)
 //
 fun
+print_h0dcl: h0dcl -> void
+fun
+prerr_h0dcl: h0dcl -> void
+fun
+fprint_h0dcl: fprint_type(h0dcl)
+//
+overload print with print_h0dcl
+overload prerr with prerr_h0dcl
+overload fprint with fprint_h0dcl
+//
+(* ****** ****** *)
+//
+fun
 h0dcl_make_node
 (loc0: loc_t, hdcl: h0dcl_node): h0dcl
 //
