@@ -213,6 +213,35 @@ end
 end (* end of [gint_map_list_nint] *)
 
 (* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+gint_streamize_nint
+  (n0) =
+(
+  auxmain(n0, 0)
+) where
+{
+fun
+auxmain
+{n:int
+;i:nat
+|i <= n}
+( n0: int(n)
+, i0: int(i))
+: stream_vt(nintlt(n)) =
+$llazy
+(
+if
+(i0 >= n0)
+then
+strmcon_vt_nil()
+else
+strmcon_vt_cons(i0, auxmain(n0, succ(i0)))
+)
+} (* end of [gint_streamize_nint] *)
+
+(* ****** ****** *)
 //
 // HX:
 // For implementing
