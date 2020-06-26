@@ -71,7 +71,7 @@ in
 //
 case+ s2t0 of
 | _(*rest-of-sort2*) =>
-  HSTerror($UN.cast{ptr}(s2t0))
+  HSTnone1($UN.cast{ptr}(s2t0))
 //
 end // end of [tcomp30_sort]
 //
@@ -107,10 +107,10 @@ t2p0.node() of
 |
 _(*rest-of-t2ype*) =>
 let
-val errp =
+val data =
 $UN.cast{ptr}(t2p0)
 in
-h0typ_make_node(hst0, H0Terror(errp))
+h0typ_make_node(hst0, H0Tnone1(data))
 end // end of [rest]
 //
 end // end of [tcomp30_type]

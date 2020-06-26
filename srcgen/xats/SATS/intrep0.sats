@@ -43,7 +43,7 @@
 
 (* ****** ****** *)
 
-typedef xerrptr = ptr
+typedef dataptr = ptr
 
 (* ****** ****** *)
 
@@ -119,7 +119,7 @@ h0srt =
   , h0srtlst(*arg*)) // HX: not in use
 *)
 //
-| HSTerror of (xerrptr) // HX: for errors
+| HSTnone1 of (dataptr) // HX: for errors
 //
 where h0srtlst = List0(h0srt)
 
@@ -146,7 +146,7 @@ h0typ_node =
 | H0Tcst of htcst // constant
 | H0Tvar of htvar // variable
 //
-| H0Terror of (xerrptr) // HX: for errors
+| H0Tnone1 of (dataptr) // HX: for errors
 //
 (* ****** ****** *)
 //
@@ -240,7 +240,7 @@ h0exp_node =
 //
 | H0Eif0 of (h0exp, h0exp, h0expopt)
 //
-| H0Eerror of (xerrptr) // HX: for errors
+| H0Enone1 of (dataptr) // HX: for errors
 //
 (* ****** ****** *)
 //
@@ -287,7 +287,7 @@ h0dcl_node =
 | H0Clocal of
   (h0dclist(*head*), h0dclist(*body*))
 //
-| H0Cerror of (xerrptr) // HX: for errors
+| H0Cnone1 of (dataptr) // HX: for errors
 //
 (* ****** ****** *)
 //

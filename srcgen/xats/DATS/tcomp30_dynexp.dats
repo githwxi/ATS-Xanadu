@@ -101,7 +101,7 @@ _(* rest-of_d3exp *) =>
 let
 val
 hend =
-H0Eerror($UN.cast{ptr}(d3e0))
+H0Enone1($UN.cast{ptr}(d3e0))
 in
 h0exp_make_node(loc0, h0t0, hend)
 end // end of [let]
@@ -129,8 +129,8 @@ d3es =
 list_map<d3exp><h0exp>
   (d3es) where
 {
-  implement
-  list_map$fopr<d3exp><h0exp>(d3e) = tcomp30_dexp(d3e)
+implement
+list_map$fopr<d3exp><h0exp>(d3e) = tcomp30_dexp(d3e)
 }
 } (* end of [tcomp30_dexplst] *)
 //
@@ -159,7 +159,7 @@ _(* rest-of_d3exp *) =>
 let
 val
 node =
-H0Cerror($UN.cast{ptr}(d3cl))
+H0Cnone1($UN.cast{ptr}(d3cl))
 in
   h0dcl_make_node( loc0, node )
 end // end of [let]
@@ -178,8 +178,8 @@ d3cs =
 list_map<d3ecl><h0dcl>
   (d3cs) where
 {
-  implement
-  list_map$fopr<d3ecl><h0dcl>(d3c) = tcomp30_decl(d3c)
+implement
+list_map$fopr<d3ecl><h0dcl>(d3c) = tcomp30_decl(d3c)
 }
 } (* end of [tcomp30_declist] *)
 
