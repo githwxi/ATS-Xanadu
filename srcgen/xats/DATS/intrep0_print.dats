@@ -98,8 +98,8 @@ fprint!
 ( out
 , "HSTfun(", arg, "; ", res, ")")
 |
-HSTerror(_) =>
-fprint!(out, "HSTerror(", "...", ")")
+HSTnone1(_) =>
+fprint!(out, "HSTnone1(", "...", ")")
 )
 //
 (* ****** ****** *)
@@ -117,8 +117,8 @@ fprint_h0typ(out, x0) =
 case+
 x0.node() of
 //
-| H0Terror(_) =>
-  fprint!(out, "H0Terror(", "...", ")")
+| H0Tnone1(_) =>
+  fprint!(out, "H0Tnone1(", "...", ")")
 //
 | _(* H0T... *) => fprint!(out, "H0T...(...)")
 )
@@ -138,8 +138,8 @@ fprint_h0exp(out, x0) =
 case+
 x0.node() of
 //
-| H0Eerror(_) =>
-  fprint!(out, "H0Eerror(", "...", ")")
+| H0Enone1(_) =>
+  fprint!(out, "H0Enone1(", "...", ")")
 //
 | _(* H0E... *) => fprint!(out, "H0E...(...)")
 )
@@ -159,8 +159,8 @@ fprint_h0dcl(out, x0) =
 case+
 x0.node() of
 //
-| H0Cerror(_) =>
-  fprint!(out, "H0Cerror(", "...", ")")
+| H0Cnone1(_) =>
+  fprint!(out, "H0Cnone1(", "...", ")")
 //
 | _(* H0C... *) => fprint!(out, "H0C...(...)")
 )
