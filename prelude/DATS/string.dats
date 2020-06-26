@@ -74,12 +74,40 @@ string_head_opt(cs) = ...
 impltmp<>
 string_tail_opt(cs) =
 if
-nilq(cs)
+string_nilq(cs)
 then
-optn_vt_nil()
+optn_vt_nil((*void*))
 else
 optn_vt_cons(string_tail_raw(cs))
 //
+(* ****** ****** *)
+
+impltmp<>
+string_length
+  (xs) =
+(
+  loop(xs, 0)
+) where
+{
+//
+fun
+loop
+{i,j:nat}.<i>.
+( xs
+: string(i)
+, j0: sint(j)): sint(i+j) =
+let
+val
+test = string_nilq(xs)
+in
+if
+test
+then j0 else
+loop(string_tail(xs), succ(j0))
+end
+// end of [if]
+} (* end of [string_length] *)
+
 (* ****** ****** *)
 
 impltmp<>
