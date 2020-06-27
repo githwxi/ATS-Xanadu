@@ -16,6 +16,21 @@ UN =
 "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_vt_sing(x0) =
+list_vt_cons(x0, list_vt_nil())
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_vt_pair(x0, x1) =
+list_vt_cons(x0,
+list_vt_cons(x1, list_vt_nil()))
+//
+(* ****** ****** *)
 
 impltmp
 <a>(*tmp*)
@@ -67,13 +82,6 @@ case+ xs of
 | !list_vt_nil() => false
 | !list_vt_cons(_, _) => (true)
 )
-//
-(* ****** ****** *)
-//
-impltmp
-<a>(*tmp*)
-list_vt_sing(x0) =
-list_vt_cons(x0, list_vt_nil())
 //
 (* ****** ****** *)
 //
