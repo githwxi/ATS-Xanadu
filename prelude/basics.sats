@@ -74,7 +74,9 @@ sortdef b0 = bool
 sortdef c0 = char
 //
 sortdef p0 = prop
+sortdef pf = prop
 sortdef v0 = view
+sortdef vw = view
 sortdef t0 = type
 sortdef tx = tbox
 sortdef x0 = tbox

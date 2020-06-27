@@ -645,41 +645,61 @@ gseq_foldl
 end // end of [gseq_filter_rlist/foldl]
 
 (* ****** ****** *)
-
+//
 impltmp
 <x0,xs>
 gseq_add(xs) =
-let
+(
+gseq_map_add(xs)
+) where
+{
+  impltmp map$fopr<x0><x0>(x0) = x0
+}
 //
-typedef r0 = x0
+impltmp
+<x0,xs><y0>
+gseq_map_add(xs) =
+let
 //
 impltmp
 foldl$fopr
-<x0><r0>
-(r0, x0) = g_add<x0>(r0, x0)
+<x0><y0>
+(r0, x0) =
+g_add<y0>
+(r0, map$fopr<x0><y0>(x0))
 //
 in
-  gseq_foldl<x0,xs><r0>(xs, g_0<r0>())
-end // end of [gseq_add/foldl]
-
+gseq_foldl<x0,xs><y0>(xs, g_0<y0>())
+end // end of [gseq_map_add/foldl]
+//
 (* ****** ****** *)
-
+//
 impltmp
 <x0,xs>
 gseq_mul(xs) =
-let
+(
+gseq_map_mul(xs)
+) where
+{
+  impltmp map$fopr<x0><x0>(x0) = x0
+}
 //
-typedef r0 = x0
+impltmp
+<x0,xs><y0>
+gseq_map_mul(xs) =
+let
 //
 impltmp
 foldl$fopr
-<x0><r0>
-(r0, x0) = g_mul<x0>(r0, x0)
+<x0><y0>
+(r0, x0) =
+g_mul<y0>
+(r0, map$fopr<x0><y0>(x0))
 //
 in
-  gseq_foldl<x0,xs><r0>(xs, g_1<r0>())
-end // end of [gseq_mul/foldl]
-
+gseq_foldl<x0,xs><y0>(xs, g_1<y0>())
+end // end of [gseq_map_mul/foldl]
+//
 (* ****** ****** *)
 //
 impltmp
