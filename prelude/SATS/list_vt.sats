@@ -53,6 +53,9 @@ list_vt2t
 fun
 <a:vt>
 list_vt_sing(x: a): list_vt(a,1)
+fun
+<a:vt>
+list_vt_pair(a, a): list_vt(a,2)
 //
 (* ****** ****** *)
 //
