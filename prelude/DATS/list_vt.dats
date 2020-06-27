@@ -648,22 +648,21 @@ amain
 (xs: xs, n0: nint): xs =
 if
 (n0 <= 1)
-then xs
-else
+then xs else
 (
 let
-var xs: xs
+  var xs: xs
 in
   merge(ys, zs, xs); xs
 end
 ) where
 {
-val n2 = n0 / 2
-val n1 = n0 - n2
-var ys = xs
-val zs = split(ys, n1)
-val ys = amain(ys, n1)
-val zs = amain(zs, n2)
+  val n2 = n0 / 2
+  val n1 = n0 - n2
+  var ys = xs
+  val zs = split(ys, n1)
+  val ys = amain(ys, n1)
+  val zs = amain(zs, n2)
 }
 //
 and
@@ -700,7 +699,7 @@ list_vt_cons(y0, ys1) =>
 case+ zs of
 | ~
 list_vt_nil() =>
- ($fold(ys); xs := ys)
+($fold(ys); xs := ys)
 | @
 list_vt_cons(z0, zs1) =>
 let
