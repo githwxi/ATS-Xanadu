@@ -287,6 +287,14 @@ fun
 fun
 <x0:t0
 ,xs:t0>gseq_mul(xs): x0
+fun
+<x0:t0
+,xs:t0>
+<y0:t0>gseq_map_add(xs): y0
+fun
+<x0:t0
+,xs:t0>
+<y0:t0>gseq_map_mul(xs): y0
 //
 (* ****** ****** *)
 //
@@ -382,6 +390,29 @@ fun
 ,xs:t0>
 gseq_rindexof
 (xs: xs, x0: x0): sint // ~1: ~found
+//
+(* ****** ****** *)
+//
+(*
+gseq_imap: imap$fopr
+*)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:vt>
+gseq_imap_list(xs): list_vt(y0)
+fun
+<x0:t0
+,xs:t0>
+<y0:vt>
+gseq_imap_rlist(xs): list_vt(y0)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:vt>
+gseq_imap_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
 //

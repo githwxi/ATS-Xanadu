@@ -91,12 +91,6 @@ g_print1(x: !a): void
 
 fun
 <x0:t0>
-dropif$test(x0): bool
-
-(* ****** ****** *)
-
-fun
-<x0:t0>
 <y0:vt>
 map$fopr(x0: x0): (y0)
 fun
@@ -107,6 +101,12 @@ fun
 <x0:vt>
 <y0:vt>
 map1$fopr(x0: !x0): (y0)
+
+(* ****** ****** *)
+
+fun
+<x0:t0>
+dropif$test(x0: x0): bool
 
 (* ****** ****** *)
 //
@@ -278,38 +278,19 @@ rforeach1$work(x0: !x0): void
 // For gseq-i-operations
 //
 (* ****** ****** *)
-//
-fun
-<x0:t0>
-iexists$test(nint, x0): bool
-fun
-<x0:vt>
-iexists0$test(nint, ~x0): bool
-fun
-<x0:vt>
-iexists1$test(nint, !x0): bool
-//
-fun
-<x0:t0>
-iforall$test(nint, x0): bool
-fun
-<x0:vt>
-iforall0$test(nint, ~x0): bool
-fun
-<x0:vt>
-iforall1$test(nint, !x0): bool
-//
-(* ****** ****** *)
 
 fun
 <x0:t0>
-iforeach$work(nint, x0): void
+<y0:vt>
+imap$fopr(nint, x0): (y0)
 fun
 <x0:vt>
-iforeach0$work(nint, ~x0): void
+<y0:vt>
+imap0$fopr(nint, ~x0): (y0)
 fun
 <x0:vt>
-iforeach1$work(nint, !x0): void
+<y0:vt>
+imap1$fopr(nint, !x0): (y0)
 
 (* ****** ****** *)
 
@@ -346,6 +327,40 @@ ifilter0$test(nint, ~x0): bool
 fun
 <x0:vt>
 ifilter1$test(nint, !x0): bool
+
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+iexists$test(nint, x0): bool
+fun
+<x0:vt>
+iexists0$test(nint, ~x0): bool
+fun
+<x0:vt>
+iexists1$test(nint, !x0): bool
+//
+fun
+<x0:t0>
+iforall$test(nint, x0): bool
+fun
+<x0:vt>
+iforall0$test(nint, ~x0): bool
+fun
+<x0:vt>
+iforall1$test(nint, !x0): bool
+//
+(* ****** ****** *)
+
+fun
+<x0:t0>
+iforeach$work(nint, x0): void
+fun
+<x0:vt>
+iforeach0$work(nint, ~x0): void
+fun
+<x0:vt>
+iforeach1$work(nint, !x0): void
 
 (* ****** ****** *)
 //
