@@ -554,6 +554,28 @@ d3e0.node() of
     val () = tread3x_d3exp(d3e2)
   }
 //
+| D3Elam
+  (knd0, f3as,
+   tres, arrw, body) =>
+  {
+(*
+    val () =
+    tread3x_f3arglst(f3as)
+*)
+    val () = tread3x_d3exp(body)
+  }
+| D3Efix
+  (knd0,
+   d2v0, f3as,
+   tres, arrw, body) =>
+  {
+(*
+    val () =
+    tread3x_f3arglst(f3as)
+*)
+    val () = tread3x_d3exp(body)
+  }
+//
 | D3Etry
   (tok0, d3e1, d3cs) =>
   {

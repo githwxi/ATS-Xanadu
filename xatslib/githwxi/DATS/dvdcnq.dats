@@ -72,7 +72,7 @@ dvdcnq_solve_try
 fun
 <inp:vt>
 <out:vt>
-dvdcnq_solve_cmb(rs: list_vt(out)): out
+dvdcnq_solved_cmb(rs: list_vt(out)): out
 //
 (* ****** ****** *)
 
@@ -84,6 +84,7 @@ let
 val xr =
 dvdcnq_solve_try<inp><out>(x0)
 in
+//
 case+ xr of
 | ~
 either_r(r0) => r0
@@ -96,8 +97,9 @@ val rs =
 dvdcnq_conquer<inp><out>(xs)
 //
 in
-  dvdcnq_solve_cmb<inp><out>(rs)
+  dvdcnq_solved_cmb<inp><out>(rs)
 end
+//
 end // end of [dvdcnq_solve]
 
 (* ****** ****** *)
