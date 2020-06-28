@@ -298,6 +298,10 @@ fun
 d2con_get_sexp(d2con): s2exp
 fun
 d2con_get_type(d2con): t2ype
+fun
+d2con_get_tqas(d2con): tq2as
+fun
+d2con_get_s2vs(d2con): s2varlst
 //
 fun
 d2cst_get_sexp(d2cst): s2exp
@@ -331,6 +335,7 @@ d2var_set_tqas(d2var, tq2as): void
 //
 overload .sexp with d2con_get_sexp
 overload .type with d2con_get_type
+overload .tqas with d2con_get_tqas
 //
 overload .sexp with d2cst_get_sexp
 overload .type with d2cst_get_type
@@ -383,13 +388,14 @@ d2cst_make_dvar
 //
 fun
 d2con_make_idtp
-(id0: token, s2e: s2exp): d2con
+( id0: token
+, tqas: tq2as, s2e1: s2exp): d2con
 //
 fun
 d2cst_make_idtp
 ( id0: token
 , knd: tnode
-, tqas: tq2as, s2e0: s2exp): d2cst
+, tqas: tq2as, s2e1: s2exp): d2cst
 fun
 stamp_d2cst_kind(d2cst, tnode): void
 //

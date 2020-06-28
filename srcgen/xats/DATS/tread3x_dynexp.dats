@@ -432,12 +432,16 @@ d3e0.node() of
 //
 | D3Esym0 _ => ()
 //
+| D3Efcon _ => ()
 | D3Efcst _ => ()
+//
+| D3Etcon _ => ()
 //
 | D3Etcst _ =>
   {
   val () = auxtcst(d3e0)
   }
+//
 | D3Etnfd _ =>
   {
   val () = auxtnfd(d3e0)

@@ -249,14 +249,14 @@ trans3t_dexp
 val loc0 = d3e0.loc()
 val t2p0 = d3e0.type()
 //
-(*
+// (*
 val () =
 println!
 ("trans3t_dexp: d3e0 = ", d3e0)
 val () =
 println!
 ("trans3t_dexp: t2p0 = ", t2p0)
-*)
+// *)
 //
 in
 //
@@ -274,16 +274,20 @@ d3e0.node() of
 | D3Evar _ => d3e0
 //
 | D3Econ1 _ => d3e0
+| D3Ecst1 _ => d3e0
 //
 | D3Esym0 _ => d3e0
 //
+| D3Efcon _ => d3e0
 | D3Efcst _ => d3e0
 //
 | D3Esap0 _ => d3e0
 | D3Etapp _ => d3e0
 //
+| D3Etcon _ => d3e0
 | D3Etcst _ =>
   auxtcst(env0, d3e0)
+//
 | D3Etimp _ => (d3e0)
 //
 | D3Esap1

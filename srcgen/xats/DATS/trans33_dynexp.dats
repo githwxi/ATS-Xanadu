@@ -634,6 +634,7 @@ d2var_up
 {
 val t2p1 = d2v1.type((*void*))
 }
+(*
 fun
 d2con_up
 ( loc0: loc_t
@@ -645,6 +646,30 @@ d2con_up
 {
 val t2p1 = d2c1.type((*void*))
 }
+*)
+fun
+d2con_up
+( loc0: loc_t
+, d2c1: d2con): d3exp =
+let
+val
+ti2s = list_nil()
+val
+(ti3a, t2p1) =
+t2ype_tq2as_elim2
+(loc0, d2c1.type(), d2c1.tqas())
+in
+case+ ti3a of
+|
+TI3ARGnone _ =>
+d33exp_make_node
+(loc0, t2p1, D3Efcon(d2c1))
+|
+TI3ARGsome _ =>
+d33exp_make_node
+(loc0, t2p1, D3Etcon(d2c1, ti3a, ti2s))
+end // end of [d2con_up]
+//
 fun
 d2cst_up
 ( loc0: loc_t

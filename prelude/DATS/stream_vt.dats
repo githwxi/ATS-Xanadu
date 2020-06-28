@@ -28,7 +28,7 @@ $llazy
 (
 g_free(x0);
 g_free(xs);
-strmcon_vt_cons{a}(x0, xs))
+strmcon_vt_cons(x0, xs) )
 )
 //
 (* ****** ****** *)

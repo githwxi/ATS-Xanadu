@@ -418,7 +418,7 @@ list_cons(x0, xs) =>
   val y0 =
   map$fopr<x0><y0>(x0)
   val ys =
-  list_vt_cons{y0}(y0, ys)
+  list_vt_cons( y0, ys )
 }
 ) (* end of [loop] *)
 //

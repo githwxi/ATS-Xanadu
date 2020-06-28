@@ -103,6 +103,7 @@ end // end of [local]
 
 (* ****** ****** *)
 //
+(*
 implement
 unify2_d2con_t2ype
   (loc0, d2c1, t2p2) =
@@ -110,6 +111,21 @@ let
 val t2p1 = d2c1.type()
 in
 unify2_t2ype_t2ype(loc0, t2p1, t2p2)
+end
+*)
+//
+implement
+unify2_d2con_t2ype
+  (loc0, d2c1, t2p2) =
+let
+//
+val tqas = d2c1.tqas()
+val t2p1 = d2c1.type()
+val t2p1 =
+  t2ype_tq2as_elim(loc0, t2p1, tqas)
+//
+in
+  unify2_t2ype_t2ype(loc0, t2p1, t2p2)
 end
 //
 (* ****** ****** *)
@@ -340,6 +356,7 @@ end // end of [match2_t2ype_t2ype]
 
 (* ****** ****** *)
 //
+(*
 implement
 match2_d2con_t2ype
   (d2c1, t2p2) =
@@ -348,6 +365,29 @@ let
 in
   match2_t2ype_t2ype(t2p1, t2p2)
 end
+*)
+//
+implement
+match2_d2con_t2ype
+  (d2c1, t2p2) =
+let
+//
+val
+loc0 =
+the_location_dummy
+val t2p1 = d2c1.type()
+val tqas = d2c1.tqas()
+//
+val
+t2p1 =
+t2ype_tq2as_elim(loc0, t2p1, tqas)
+//
+in
+let
+in
+  match2_t2ype_t2ype(t2p1, t2p2)
+end
+end // end of [match2_d2con_t2ype]
 //
 (* ****** ****** *)
 //
@@ -358,7 +398,7 @@ let
   val t2p1 = d2v1.type()
 in
   match2_t2ype_t2ype(t2p1, t2p2)
-end
+end // end of [match2_d2var_t2ype]
 //
 (* ****** ****** *)
 
@@ -1348,12 +1388,12 @@ d23exp_tapp_up
 , d2f0, s2es ) =
 let
 val
-opt = auxtcst(d2f0)
+opt = auxtfhd(d2f0)
 in
 //
 case+ opt of
-|
-~None_vt() =>
+| ~
+TFHDnone() =>
 (
 d23exp_make_node
 ( loc0
@@ -1363,8 +1403,87 @@ d23exp_make_node
   val
   t2p0 = t2ype_new(d2f0.loc())
 }
-|
-~Some_vt(d2c0) =>
+| ~
+TFHDdcon
+( d2c0 ) => auxtcon(loc0, d2f0, d2c0)
+| ~
+TFHDdcst
+( d2c0 ) => auxtcst(loc0, d2f0, d2c0)
+//
+end where
+{
+//
+datavtype
+tfhdopt =
+| TFHDnone of ()
+| TFHDdcon of d2con
+| TFHDdcst of d2cst
+//
+fun
+auxtfhd
+( d2f0
+: d2exp
+)
+: tfhdopt =
+(
+case+
+d2f0.node() of
+//
+| D2Econ1
+  (d2c0) => TFHDdcon(d2c0)
+| D2Ecst1
+  (d2c0) => TFHDdcst(d2c0)
+//
+| D2Etapp
+  (d2f0, _) => auxtfhd(d2f0)
+//
+| _ (*else*) => TFHDnone(*void*)
+//
+)
+//
+fun
+auxtcon
+( loc0: loc_t
+, d2f0: d2exp
+, d2c0: d2con): d3exp =
+let
+//
+val ti2a =
+ti2arg_make(loc0, s2es)
+val ti2s =
+auxtarg
+(d2f0, list_sing(ti2a))
+//
+val tqas = d2c0.tqas()
+val sess = list_vt_sing(s2es)
+val sess = auxd2f0(d2f0, sess)
+//
+val tsub = list_vt_nil()
+val tsub =
+auxtqas(loc0, tqas, sess, tsub)
+val tsub =
+list_vt2t(list_vt_reverse(tsub))
+//
+val s2vs = d2con_get_s2vs(d2c0)
+val t2p0 =
+let
+  val t2p0 = d2c0.type()
+in
+t2ype_subst_svarlst(t2p0, s2vs, tsub)
+end
+//
+in
+d23exp_make_node
+( loc0
+, t2p0
+, D3Etcon(d2c0, TI3ARGsome(tsub), ti2s))
+end
+//
+and
+auxtcst
+( loc0: loc_t
+, d2f0: d2exp
+, d2c0: d2cst): d3exp =
 let
 //
 val ti2a =
@@ -1398,26 +1517,7 @@ d23exp_make_node
 , D3Etcst(d2c0, TI3ARGsome(tsub), ti2s))
 end
 //
-end where
-{
-//
-fun
-auxtcst
-( d2f0
-: d2exp
-)
-: d2cstopt_vt =
-(
-case+
-d2f0.node() of
-| D2Ecst1
-  (d2c0) => Some_vt(d2c0)
-| D2Etapp
-  (d2f0, _) => auxtcst(d2f0)
-| _ (*else*) => None_vt(*void*)
-)
-//
-fun
+and
 auxtarg
 ( d2f0
 : d2exp
@@ -1441,7 +1541,7 @@ d2f0.node() of
 | _ (* non-D2Etapp *) => ti2s
 )
 //
-fun
+and
 auxd2f0
 ( d2f0
 : d2exp
@@ -1465,7 +1565,7 @@ D2Etapp
 | _(*non-D2Etapp*) => sess
 )
 //
-fun
+and
 auxtq2a
 ( loc0
 : loc_t
@@ -1545,7 +1645,7 @@ list_cons(s2e0, s2es1) =>
 ) (* list_cons *)
 ) (* end of [auxs2vs] *)
 //
-fun
+and
 auxtqas
 ( loc0
 : loc_t

@@ -195,12 +195,6 @@ d3pat_chr
 (* ****** ****** *)
 
 fun
-d3pat_con
-(loc0: loc_t, d2c0: d2con): d3pat
-
-(* ****** ****** *)
-
-fun
 d3pat_anno
 (d3p0: d3pat, s2e0: s2exp): d3pat
 
@@ -331,8 +325,13 @@ HX-2020-06: for trans3x:
 | D3Esym0 of
   (d1exp(*sym*), d2pitmlst)
 //
+| D3Efcon of (d2con)
 | D3Efcst of (d2cst)
 //
+| D3Etcon of
+  ( d2con
+  , ti3arg(*s2es*)
+  , ti2arglst(*sess*))
 | D3Etcst of
   ( d2cst
   , ti3arg(*s2es*)

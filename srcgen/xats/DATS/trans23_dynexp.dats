@@ -147,6 +147,31 @@ println!
 //
 local
 
+(* ****** ****** *)
+
+fun
+auxcon1
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Pcon1(d2c1) = d2p0.node()
+//
+val
+t2p0 =
+t2ype_tq2as_elim
+( loc0
+, d2c1.type(), d2c1.tqas())
+//
+in
+  d3pat_make_node
+  ( loc0, t2p0, D3Pcon1(d2c1) )
+end // end of [auxcon1]
+
+(* ****** ****** *)
+
 fun
 auxbang
 ( d2p0
@@ -321,10 +346,7 @@ d2p0.node() of
     d3pat_btf(loc0, tok0)
   )
 //
-| D2Pcon1(d2c0) =>
-  (
-    d3pat_con(loc0, d2c0)
-  )
+| D2Pcon1 _ => auxcon1(d2p0)
 //
 | D2Pbang _ => auxbang(d2p0)
 | D2Pflat _ => auxflat(d2p0)
@@ -700,6 +722,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
+(*
 fun
 auxcon1
 ( d2e0
@@ -727,6 +750,39 @@ println!("auxcon1: t2p0 = ", t2p0)
 in
 d23exp_make_node(loc0, t2p0, node)
 end // end of [auxcon1]
+*)
+
+fun
+auxcon1
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Econ1(d2c0) = d2e0.node()
+//
+val
+(ti3a, t2p0) =
+t2ype_tq2as_elim2
+(loc0, d2c0.type(), d2c0.tqas())
+//
+val
+tias = list_nil(*void*)
+//
+in(*in-of-let*)
+//
+case+ ti3a of
+|
+TI3ARGnone _ =>
+d23exp_make_node
+(loc0, t2p0, D3Efcon(d2c0))
+|
+TI3ARGsome _ => 
+d23exp_make_node
+(loc0, t2p0, D3Etcon(d2c0, ti3a, tias))
+//
+end // end of [auxcon1]
 
 fun
 auxcst1
@@ -746,7 +802,7 @@ t2ype_tq2as_elim2
 val
 tias = list_nil(*void*)
 //
-in
+in(*in-of-let*)
 //
 case+ ti3a of
 |
