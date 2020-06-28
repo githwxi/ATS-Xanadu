@@ -539,6 +539,40 @@ end // end of [stream_vt_foreach0/forall0]
 (* ****** ****** *)
 
 impltmp
+<a>(*tmp*)
+stream_vt_sortedq0
+  (xs) =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() => true
+| ~
+strmcon_vt_cons(x0, xs) => loop(x0, xs)
+) where
+{
+fun
+loop
+( x0: a
+, xs: stream_vt(a)): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+let val () = g_free<a>(x0) in true end
+| ~
+strmcon_vt_cons(x1, xs) =>
+if
+(x0 <= x1)
+then
+(g_free(x0); loop(x1, xs))
+else
+(g_free(x0); g_free(x1); $free(xs); false)
+)
+} (* end of [stream_vt_sortedq0] *)
+
+(* ****** ****** *)
+
+impltmp
 <x0><y0>
 stream_vt_map0
   (xs) =
