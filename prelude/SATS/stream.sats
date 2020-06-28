@@ -144,8 +144,10 @@ stream_filter_vt(stream(x0)): stream_vt(x0)
 (* ****** ****** *)
 //
 (*
-stream_mapopt: mapopt$fopr
-stream_mapopt_vt: mapopt$fopr
+stream_mapopt:
+filter$fopr, map$fopr
+stream_mapopt_vt:
+filter$fopr, map$fopr
 *)
 fun
 <x0:t0>

@@ -457,6 +457,40 @@ stream_vt_append<x0>
 (* ****** ****** *)
 
 impltmp
+<a>(*tmp*)
+stream_vt_sortedq
+  (xs) =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() => true
+| ~
+strmcon_vt_cons(x0, xs) => loop(x0, xs)
+) where
+{
+fun
+loop
+( x0: a
+, xs: stream_vt(a)): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+let val () = g_free<a>(x0) in true end
+| ~
+strmcon_vt_cons(x1, xs) =>
+if
+(x0 <= x1)
+then
+(g_free(x0); loop(x1, xs))
+else
+(g_free(x0); g_free(x1); g_free(xs); false)
+)
+} (* end of [stream_vt_sortedq] *)
+
+(* ****** ****** *)
+
+impltmp
 <a><r0>
 stream_vt_foldl0
   (xs, r0) = r0 where
@@ -535,40 +569,6 @@ end
 in
   // nothing
 end // end of [stream_vt_foreach0/forall0]
-
-(* ****** ****** *)
-
-impltmp
-<a>(*tmp*)
-stream_vt_sortedq0
-  (xs) =
-(
-case+ !xs of
-| ~
-strmcon_vt_nil() => true
-| ~
-strmcon_vt_cons(x0, xs) => loop(x0, xs)
-) where
-{
-fun
-loop
-( x0: a
-, xs: stream_vt(a)): bool =
-(
-case+ !xs of
-| ~
-strmcon_vt_nil() =>
-let val () = g_free<a>(x0) in true end
-| ~
-strmcon_vt_cons(x1, xs) =>
-if
-(x0 <= x1)
-then
-(g_free(x0); loop(x1, xs))
-else
-(g_free(x0); g_free(x1); $free(xs); false)
-)
-} (* end of [stream_vt_sortedq0] *)
 
 (* ****** ****** *)
 
@@ -684,15 +684,36 @@ strmcon_vt_nil()
 | ~
 strmcon_vt_cons(x0, xs) =>
 let
+(*
   val
   opt =
   mapopt0$fopr<x0><y0>(x0)
+*)
+  val
+  opt = filter1$test<x0>(x0)
 in
+(*
   case+ opt of
   | optn_vt_nil() =>
     auxloop($eval(xs)) // tail-call
   | optn_vt_cons(y0) =>
     strmcon_vt_cons(y0, auxmain(xs))
+*)
+  if
+  opt
+  then
+  let
+    val y0 =
+    map0$fopr<x0><y0>(x0)
+  in
+    strmcon_vt_cons(y0, auxmain(xs))
+  end
+  else
+  let
+    val () =
+    g_free(x0) in auxloop($eval(xs))
+  end
+//
 end // end of [strmcon_vt_cons]
 )
 } (* end of [stream_vt_mapopt0] *)
@@ -701,7 +722,7 @@ end // end of [strmcon_vt_cons]
 
 impltmp
 <x0><y0>
-stream_vt_maplst0
+stream_vt_maplist0
   (xs) =
 (
   auxmain0(xs)
@@ -753,7 +774,7 @@ strmcon_vt_cons(x0, xs) =>
 let
   val
   ys =
-  maplst0$fopr<x0><y0>(x0)
+  maplist0$fopr<x0><y0>(x0)
 in
   case+ ys of
   | ~
@@ -764,7 +785,7 @@ in
   strmcon_vt_cons(y0, auxmain1(xs, ys))
 end // end of [strmcon_vt_cons]
 )
-} (* end of [stream_vt_maplst0] *)
+} (* end of [stream_vt_maplist0] *)
 
 (* ****** ****** *)
 
@@ -838,17 +859,116 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 //
+// For glseq-i-operations
+//
+(* ****** ****** *)
+
+impltmp
+<x0><y0>
+stream_vt_imap0
+  (xs) =
+(
+auxmain(0(*i0*), xs)
+) where
+{
+fun
+auxmain
+( i0: nint
+, xs
+: stream_vt(x0)
+)
+: stream_vt(y0) =
+$llazy
+(
+//
+g_free(xs);
+//
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil((*void*))
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+  val y0 =
+  imap0$fopr<x0><y0>(i0, x0)
+in
+  strmcon_vt_cons
+  (y0, auxmain(succ(i0), xs))
+end
+)
+} (* end of [stream_vt_imap0] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0><y0>
+stream_vt_imapopt0
+  (xs) =
+(
+auxmain(0(*i0*), xs)
+) where
+{
+fnx
+auxmain
+( i0: nint
+, xs
+: stream_vt(x0)
+)
+: stream_vt(y0) =
+$llazy
+(
+g_free(xs);
+auxloop(i0, $eval(xs)))
+and
+auxloop
+( i0: nint
+, xs
+: strmcon_vt(x0)
+)
+: strmcon_vt(y0) =
+(
+case+ xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+  val i1 = succ(i0)
+  val
+  opt = ifilter1$test<x0>(i0, x0)
+in
+  if
+  opt
+  then
+  let
+    val y0 =
+    imap0$fopr<x0><y0>(i0, x0)
+  in
+    strmcon_vt_cons(y0, auxmain(i1, xs))
+  end
+  else
+  let
+    val () =
+    g_free(x0) in auxloop(i1, $eval(xs))
+  end
+//
+end // end of [strmcon_vt_cons]
+)
+} (* end of [stream_vt_imapopt0] *)
+
+(* ****** ****** *)
+//
 // For z2-glseq-operations
 //
 (* ****** ****** *)
 
 impltmp
 <x0,y0>
-stream_vt_zip2
-  (xs, ys) =
-(
-  auxmain(xs, ys)
-) where
+stream_vt_z2streamize
+( xs, ys ) =
+auxmain(xs, ys) where
 {
 fun
 auxmain

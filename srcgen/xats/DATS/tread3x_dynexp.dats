@@ -231,7 +231,7 @@ prerrln!
 val () =
 prerrln!
 ( loc0
-, ": TRERR3X(D3Etnfd): d3e1 = ", d3e1)
+, ": TRERR3X(D3Etrec): d3e1 = ", d3e1)
 val () =
 let
 fun

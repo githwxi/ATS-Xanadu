@@ -424,15 +424,32 @@ case+ xs of
   strmcon_nil()
 | strmcon_cons(x0, xs) =>
   let
+(*
     val
     opt =
     mapopt$fopr<x0><y0>(x0)
+*)
+    val
+    opt =
+    filter$test<x0>(x0)
   in
+(*
     case+ opt of
     | optn_vt_nil() =>
       auxloop($eval(xs)) // tail
     | optn_vt_cons(y0) =>
       strmcon_cons(y0, auxmain(xs))
+*)
+    if
+    opt
+    then
+    let
+      val y0 =
+      map$fopr<x0><y0>(x0)
+    in
+      strmcon_cons(y0, auxmain(xs))
+    end
+    else auxloop($eval(xs))
   end // end of [strmcon_cons]
 )
 } (* end of [stream_mapopt] *)
@@ -459,15 +476,32 @@ case+ xs of
   strmcon_vt_nil()
 | strmcon_cons(x0, xs) =>
   let
+(*
     val
     opt =
     mapopt$fopr<x0><y0>(x0)
+*)
+    val
+    opt =
+    filter$test<x0>(x0)
   in
+(*
     case+ opt of
     | optn_vt_nil() =>
       auxloop($eval(xs)) // tail
     | optn_vt_cons(y0) =>
       strmcon_vt_cons(y0, auxmain(xs))
+*)
+    if
+    opt
+    then
+    let
+      val y0 =
+      map$fopr<x0><y0>(x0)
+    in
+      strmcon_vt_cons(y0, auxmain(xs))
+    end
+    else auxloop($eval(xs))
   end // end of [strmcon_cons]
 )
 } (* end of [stream_mapopt_vt] *)
