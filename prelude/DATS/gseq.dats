@@ -554,7 +554,29 @@ stream_vt_map0<x0><y0>(xs)
 impltmp
 map0$fopr<x0><y0> = map$fopr<x0><y0>
 }
-end // end of [gseq_map_stream/streamize]
+end // end of
+// [gseq_map_stream/streamize]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs><y0>
+gseq_mapopt_stream(xs) =
+let
+val xs =
+gseq_streamize<x0,xs>(xs)
+in(*in-of-let*)
+let
+impltmp
+map0$fopr
+<x0><y0> = map$fopr<x0><y0>
+impltmp
+filter1$test<x0> = filter$test<x0>
+in
+  stream_vt_mapopt0<x0><y0>(xs)
+end
+end // end of
+// [gseq_mapopt_stream/streamize]
 
 (* ****** ****** *)
 //
@@ -643,6 +665,21 @@ gseq_foldl
 }
 //
 end // end of [gseq_filter_rlist/foldl]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+gseq_filter_stream
+  (xs) =
+(
+stream_vt_filter0
+(gseq_streamize<x0,xs>(xs))
+) where
+{
+impltmp
+filter0$test<x0> = filter$test<x0>
+} (* end of [gseq_filter_stream] *)
 
 (* ****** ****** *)
 //
@@ -813,7 +850,7 @@ let
   val xs =
   gseq_streamize<x0,xs>(xs)
 in
-  stream_vt_sortedq0<x0,xs>(xs)
+  stream_vt_sortedq<x0,xs>(xs)
 end // end of [gseq_sortedq]
 
 (* ****** ****** *)
@@ -1002,6 +1039,52 @@ end // gseq_concat_stream
 //
 (* ****** ****** *)
 //
+// For gseq-i-operations
+//
+(* ****** ****** *)
+
+impltmp
+<x0,xs><y0>
+gseq_imap_stream(xs) =
+let
+val xs =
+gseq_streamize<x0,xs>(xs)
+in(*in-of-let*)
+(
+stream_vt_imap0<x0><y0>(xs)
+) where
+{
+impltmp
+imap0$fopr
+<x0><y0> = imap$fopr<x0><y0>
+}
+end // end of
+// [gseq_imap_stream/streamize]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs><y0>
+gseq_imapopt_stream(xs) =
+let
+val xs =
+gseq_streamize<x0,xs>(xs)
+in(*in-of-let*)
+(
+stream_vt_imapopt0<x0><y0>(xs)
+) where
+{
+impltmp
+imap0$fopr
+<x0><y0> = imap$fopr<x0><y0>
+impltmp
+ifilter1$test<x0> = ifilter$test<x0>
+}
+end // end of
+// [gseq_imap_stream/streamize]
+
+(* ****** ****** *)
+//
 impltmp
 <x0,xs>
 gseq_iexists
@@ -1179,13 +1262,30 @@ endlet (* end of [loop] *)
 impltmp
 <x0,xs>
 <y0,ys>
+gseq_z2listize
+  (xs, ys) =
+let
+val
+xys =
+gseq_z2streamize
+<x0,xs><y0,ys>(xs, ys)
+in
+stream_vt_listize<(x0,y0)>(xys)
+end
+//
+impltmp
+<x0,xs>
+<y0,ys>
 gseq_z2streamize
   (xs, ys) =
-(
-stream_vt_zip2<x0,y0>
-( gseq_streamize<x0,xs>(xs)
-, gseq_streamize<y0,ys>(ys))
-)
+let
+val xs =
+gseq_streamize<x0,xs>(xs)
+val ys =
+gseq_streamize<y0,ys>(ys)
+in
+stream_vt_z2streamize<x0,y0>(xs, ys)
+end
 //
 (* ****** ****** *)
 
@@ -1327,6 +1427,11 @@ in
 end // end of [gseq_z2map_list/z2foldl]
 //
 (* ****** ****** *)
+//
+// HX:
+// Miscellaneous gseq-operations
+//
+(* ****** ****** *)
 
 impltmp
 <x0,xs>
@@ -1363,6 +1468,285 @@ in
   impltmp map0$fopr<y0><xs> = gseq_unlist_vt<x0,xs>
 }
 end // end of [gseq_permutize]
+
+(* ****** ****** *)
+//
+// For x2-gseq-operations
+//
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys><z0>
+gseq_x2map_stream
+  (xs, ys) =
+(
+stream_vt_concat<z0>(zss)
+) where
+{
+//
+typedef
+zs = stream_vt(z0)
+//
+val
+zss =
+let
+//
+impltmp
+map$fopr<x0><zs>(x0) =
+let
+impltmp
+map$fopr<y0><z0>(y0) =
+x2map$fopr<x0,y0>(x0, y0)
+in
+gseq_map_stream<y0,ys><z0>(ys)
+end
+//
+in
+gseq_map_stream<x0,xs><zs>(xs)
+end
+//
+} (* end of [gseq_x2map_stream] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys><z0>
+gseq_x2mapopt_stream
+  (xs, ys) =
+(
+stream_vt_concat<z0>(zss)
+) where
+{
+//
+typedef
+zs = stream_vt(z0)
+//
+val
+zss =
+let
+//
+impltmp
+map$fopr<x0><zs>(x0) =
+let
+impltmp
+map$fopr
+<y0><z0>(y0) =
+x2map$fopr<x0,y0>(x0, y0)
+impltmp
+filter$test<y0>(y0) =
+x2filter$test<x0,y0>(x0, y0)
+in
+gseq_mapopt_stream<y0,ys><z0>(ys)
+end
+//
+in
+  gseq_map_stream<x0,xs><zs>( xs )
+end
+//
+} (* end of [gseq_x2mapopt_stream] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_x2streamize
+  (xs, ys) =
+let
+impltmp
+x2map$fopr<x0,y0>(x0, y0) = (x0, y0)
+in
+gseq_x2map_stream<x0,xs><y0,ys>(xs, ys)
+end // end of [gseq_x2streamize]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_x2foreach_row
+(xs, ys) =
+(
+gseq_foreach<x0,xs>(xs)
+) where
+{
+//
+impltmp
+foreach$work<x0>(x0) =
+let
+//
+val () =
+x2foreach_row$beg<>()
+//
+val () =
+(
+gseq_foreach<y0,ys>(ys)
+) where
+{
+impltmp
+foreach$work<y0>(y0) =
+x2foreach_row$work<x0,y0>(x0, y0)
+}
+//
+val () = x2foreach_row$end<>()
+//
+end // end of [let]
+//
+} (* end of [gseq_x2foreach_row] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_x2foreach_col
+(xs, ys) =
+let
+impltmp
+x2foreach_row$beg<>() =
+x2foreach_col$beg<>()
+impltmp
+x2foreach_row$end<>() =
+x2foreach_col$end<>()
+impltmp
+x2foreach_row$work<y0,x0>(y0, x0) =
+x2foreach_col$work<x0,y0>(x0, y0)
+in
+gseq_x2foreach_row<y0,ys><x0,xs>(ys, xs)
+end (* end of [gseq_x2foreach_col] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys><z0>
+gseq_x2imap_stream
+  (xs, ys) =
+(
+stream_vt_concat<z0>(zss)
+) where
+{
+//
+typedef
+zs = stream_vt(z0)
+//
+val
+zss =
+let
+//
+impltmp
+imap$fopr<x0><zs>(i, x0) =
+let
+impltmp
+imap$fopr
+<y0><z0>(j, y0) =
+x2imap$fopr<x0,y0>(i, x0, j, y0)
+in
+gseq_imap_stream<y0,ys><z0>(ys)
+end
+//
+in
+  gseq_imap_stream<x0,xs><zs>( xs )
+end
+//
+} (* end of [gseq_x2imap_stream] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys><z0>
+gseq_x2imapopt_stream
+  (xs, ys) =
+(
+stream_vt_concat<z0>(zss)
+) where
+{
+//
+typedef
+zs = stream_vt(z0)
+//
+val
+zss =
+let
+//
+impltmp
+imap$fopr<x0><zs>(i, x0) =
+let
+impltmp
+imap$fopr
+<y0><z0>(j, y0) =
+x2imap$fopr<x0,y0>(i, x0, j, y0)
+impltmp
+ifilter$test<y0>(j, y0) =
+x2ifilter$test<x0,y0>(i, x0, j, y0)
+in
+gseq_imapopt_stream<y0,ys><z0>(ys)
+end
+//
+in
+  gseq_imap_stream<x0,xs><zs>( xs )
+end
+//
+} (* end of [gseq_x2imapopt_stream] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_x2iforeach_row
+(xs, ys) =
+(
+gseq_iforeach<x0,xs>(xs)
+) where
+{
+//
+impltmp
+iforeach$work<x0>(i, x0) =
+let
+//
+val () =
+x2iforeach_row$beg<>(i)
+//
+val () =
+(
+gseq_iforeach<y0,ys>(ys)
+) where
+{
+impltmp
+iforeach$work<y0>(j, y0) =
+x2iforeach_row$work<x0,y0>(i, x0, j, y0)
+}
+//
+val () = x2iforeach_row$end<>(i)
+//
+end // end of [let]
+//
+} (* end of [gseq_x2iforeach_row] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs>
+<y0,ys>
+gseq_x2iforeach_col
+(xs, ys) =
+let
+impltmp
+x2iforeach_row$beg<>(i) =
+x2iforeach_col$beg<>(i)
+impltmp
+x2iforeach_row$end<>(i) =
+x2iforeach_col$end<>(i)
+impltmp
+x2iforeach_row$work<y0,x0>(j, y0, i, x0) =
+x2iforeach_col$work<x0,y0>(i, x0, j, y0)
+in
+gseq_x2iforeach_row<y0,ys><x0,xs>(ys, xs)
+end (* end of [gseq_x2foreach_col] *)
 
 (* ****** ****** *)
 

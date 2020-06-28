@@ -62,7 +62,7 @@ g_print0<a>(x) =
 //
 impltmp
 <x0><y0>
-mapopt$fopr(x0) =
+mapoptn$fopr(x0) =
 if
 filter$test<x0>(x0)
 then
@@ -82,7 +82,7 @@ else
 //
 impltmp
 <x0><y0>
-mapopt0$fopr(x0) =
+mapoptn0$fopr(x0) =
 if
 filter1$test<x0>(x0)
 then
@@ -102,7 +102,7 @@ end
 //
 impltmp
 <x0><y0>
-mapopt1$fopr(x0) =
+mapoptn1$fopr(x0) =
 if
 filter1$test<x0>(x0)
 then
@@ -118,6 +118,15 @@ else
   optn_vt_nil((*void*))
 )
 //
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+x2foreach_row$beg() = ((*void*))
+impltmp
+<>(*tmp*)
+x2foreach_row$end() = ((*void*))
+
 (* ****** ****** *)
 
 (* end of [gbas.dats] *)

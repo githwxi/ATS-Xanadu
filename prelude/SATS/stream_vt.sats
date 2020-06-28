@@ -145,10 +145,20 @@ fun
 <a:vt>
 stream_vt_concat
 (xss: stream_vt(stream_vt(a))): stream_vt(a)
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt
 ,xs:vt>
-stream_vt_gconcat(stream_vt(xs)): stream_vt(x0)
+stream_vt_gconcat
+  (xss: stream_vt(xs)): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+stream_vt_sortedq(stream_vt(a)): bool
 //
 (* ****** ****** *)
 //
@@ -164,12 +174,6 @@ stream_vt_forall0(stream_vt(x0)): bool
 fun
 <x0:vt>
 stream_vt_foreach0(stream_vt(x0)): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-stream_vt_sortedq0(stream_vt(x0)): bool
 //
 (* ****** ****** *)
 //
@@ -197,7 +201,7 @@ stream_vt_filter0
 (* ****** ****** *)
 //
 (*
-stream_vt_mapopt: map + filter
+stream_vt_mapopt: filter+map
 *)
 fun
 <x0:vt>
@@ -205,11 +209,20 @@ fun
 stream_vt_mapopt0
   (xs: stream_vt(x0)): stream_vt(y0)
 //
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 <y0:vt>
-stream_vt_maplst0
+stream_vt_mapoptn0
   (xs: stream_vt(x0)): stream_vt(y0)
+//
+fun
+<x0:vt>
+<y0:vt>
+stream_vt_maplist0
+  (xs: stream_vt(x0)): stream_vt(y0)
+//
 fun
 <x0:vt>
 <y0:vt>
@@ -218,27 +231,56 @@ stream_vt_mapstrm0
 //
 (* ****** ****** *)
 //
-// For 2-gseq-operations
+// For glseq-i-operations
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+stream_vt_imap0
+  (xs: stream_vt(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+stream_vt_ifilter0
+  (xs: stream_vt(x0)): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+stream_vt_imapopt0
+  (xs: stream_vt(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+// For z2-glseq-operations
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt
 ,y0:vt>
-stream_vt_zip2
-( xs: stream_vt(x0)
-, ys: stream_vt(y0)): stream_vt(@(x0, y0))
-//
-fun
-<x0:vt
-,y0:vt>
 stream_vt_z2forall0
-  (xs: stream_vt(x0), ys: stream_vt(y0)): bool
+  ( xs: stream_vt(x0)
+  , ys: stream_vt(y0)): bool
 fun
 <x0:vt
 ,y0:vt>
 stream_vt_z2forcmp0
-  (xs: stream_vt(x0), ys: stream_vt(y0)): sint
+  ( xs: stream_vt(x0)
+  , ys: stream_vt(y0)): sint
+//
+fun
+<x0:vt
+,y0:vt>
+stream_vt_z2streamize
+( xs: stream_vt(x0)
+, ys: stream_vt(y0)): stream_vt(@(x0, y0))
 //
 (* ****** ****** *)
 //

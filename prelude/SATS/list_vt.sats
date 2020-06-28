@@ -288,14 +288,15 @@ length0 with list_vt_length0 of 1000
 //
 (* ****** ****** *)
 
+#symload reverse with list_vt_reverse of 1000
 #symload rappend with list_vt_rappend of 1000
 
 (* ****** ****** *)
 //
-#symload listize with list_listize of 1000
-#symload rlistize with list_rlistize of 1000
+#symload listize with list_vt_listize of 1000
+#symload rlistize with list_vt_rlistize of 1000
 //
-#symload streamize with list_streamize of 1000
+#symload streamize with list_vt_streamize of 1000
 //
 (* ****** ****** *)
 

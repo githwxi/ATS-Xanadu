@@ -122,36 +122,33 @@ filter1$test(x0: !x0): bool
 //
 (* ****** ****** *)
 //
-// HX-2020-03-05:
-// Using filter + map together
-//
 fun
 <x0:t0>
 <y0:vt>
-mapopt$fopr(x0: x0): optn_vt(y0)
+mapoptn$fopr(x0: x0): optn_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapopt0$fopr(x0: ~x0): optn_vt(y0)
+mapoptn0$fopr(x0: ~x0): optn_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapopt1$fopr(x0: !x0): optn_vt(y0)
+mapoptn1$fopr(x0: !x0): optn_vt(y0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:vt>
-maplst$fopr(x0: x0): list_vt(y0)
+maplist$fopr(x0: x0): list_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-maplst0$fopr(x0: ~x0): list_vt(y0)
+maplist0$fopr(x0: ~x0): list_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-maplst1$fopr(x0: !x0): list_vt(y0)
+maplist1$fopr(x0: !x0): list_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -364,38 +361,7 @@ iforeach1$work(nint, !x0): void
 
 (* ****** ****** *)
 //
-// For 2-gseq-operations
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0
-,y0:t0>
-<r0:vt>
-x2foldl$fopr(r0, x0, y0): r0
-fun
-<x0:t0
-,y0:t0>
-<r0:vt>
-x2foldr$fopr(x0, y0, r0): r0
-//
-fun
-<x0:t0
-,y0:t0>
-x2forall$test(x0, y0): bool
-fun
-<x0:t0
-,y0:t0>
-x2foreach$work(x0, y0): void
-//
-#symload
-xfoldl$fopr with x2foldl$fopr
-#symload
-xfoldr$fopr with x2foldr$fopr
-#symload
-xforall$test with x2forall$test
-#symload
-xforeach$work with x2foreach$work
+// For z2-gseq-operations
 //
 (* ****** ****** *)
 
@@ -461,14 +427,81 @@ z2foreach1$work(!x0, !y0): void
 //
 (* ****** ****** *)
 //
-#symload
-zfoldl$fopr with z2foldl$fopr
-#symload
-zfoldr$fopr with z2foldr$fopr
-#symload
-zforall$test with z2forall$test
-#symload
-zforeach$work with z2foreach$work
+// For x2-gseq-operations
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,y0:t0>
+<z0:vt>
+x2map$fopr(x0, y0): z0
+//
+fun
+<x0:t0
+,y0:t0>
+<z0:vt>
+x2filter$test
+  (x0: x0, y0: y0): bool
+//
+(* ****** ****** *)
+//
+fun<>
+x2foreach_row$beg(): void
+fun<>
+x2foreach_row$end(): void
+fun
+<x0:t0
+,y0:t0>
+x2foreach_row$work(x0, y0): void
+//
+(* ****** ****** *)
+//
+fun<>
+x2foreach_col$beg(): void
+fun<>
+x2foreach_col$end(): void
+fun
+<x0:t0
+,y0:t0>
+x2foreach_col$work(x0, y0): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,y0:t0>
+<z0:vt>
+x2imap$fopr
+  (nint, x0, nint, y0): z0
+fun
+<x0:t0
+,y0:t0>
+<z0:vt>
+x2ifilter$test
+  (nint, x0, nint, y0): bool
+//
+(* ****** ****** *)
+//
+fun<>
+x2iforeach_row$beg(nint): void
+fun<>
+x2iforeach_row$end(nint): void
+fun
+<x0:t0
+,y0:t0>
+x2iforeach_row$work(nint, x0, nint, y0): void
+//
+(* ****** ****** *)
+//
+fun<>
+x2iforeach_col$beg(nint): void
+fun<>
+x2iforeach_col$end(nint): void
+fun
+<x0:t0
+,y0:t0>
+x2iforeach_col$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
 

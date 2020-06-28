@@ -278,7 +278,19 @@ fun
 <x0:t0
 ,xs:t0>
 gseq_filter_rlist(xs): list_vt(x0)
+fun
+<x0:t0
+,xs:t0>
+gseq_filter_stream(xs): stream_vt(x0)
 
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:vt>
+gseq_mapopt_stream(xs): stream_vt(y0)
+//
 (* ****** ****** *)
 //
 fun
@@ -428,18 +440,27 @@ fun
 <x0:t0
 ,xs:t0>
 <y0:vt>
-gseq_imap_list(xs): list_vt(y0)
+gseq_imap_list
+  (xs: xs): list_vt(y0)
 fun
 <x0:t0
 ,xs:t0>
 <y0:vt>
-gseq_imap_rlist(xs): list_vt(y0)
+gseq_imap_rlist
+  (xs: xs): list_vt(y0)
 //
 fun
 <x0:t0
 ,xs:t0>
 <y0:vt>
-gseq_imap_stream(xs): stream_vt(y0)
+gseq_imap_stream
+  (xs: xs): stream_vt(y0)
+fun
+<x0:t0
+,xs:t0>
+<y0:vt>
+gseq_imapopt_stream
+  (xs: xs): stream_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -567,6 +588,114 @@ fun
 gseq_z2map_rlist
   (xs: xs, ys: ys): list_vt(z0)
 //
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+<z0:vt>
+gseq_z2map_stream
+  (xs: xs, ys: ys): stream_vt(z0)
+//
+(* ****** ****** *)
+//
+// For x2-gseq-operations
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+<z0:vt>
+gseq_x2map_list
+(xs, ys): list_vt(z0)
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+<z0:vt>
+gseq_x2map_stream
+(xs, ys): stream_vt(z0)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+<z0:vt>
+gseq_x2mapopt_stream
+(xs, ys): stream_vt(z0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+gseq_x2streamize
+(xs, ys): stream_vt(@(x0,y0))
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+gseq_x2foreach_row(xs, ys): void
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+gseq_x2foreach_col(xs, ys): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+<z0:vt>
+gseq_x2imap_list
+(xs, ys): list_vt(z0)
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+<z0:vt>
+gseq_x2imap_stream
+(xs, ys): stream_vt(z0)
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+<z0:vt>
+gseq_x2imapopt_stream
+(xs, ys): stream_vt(z0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+gseq_x2iforeach_row(xs, ys): void
+fun
+<x0:t0
+,xs:t0>
+<y0:t0
+,ys:t0>
+gseq_x2iforeach_col(xs, ys): void
+//
 (* ****** ****** *)
 //
 // HX-2020-05-30:
@@ -659,6 +788,22 @@ concat_stream with gseq_concat_stream of 0100
 
 #symload iforall with gseq_iforall of 0100
 #symload iforeach with gseq_iforeach of 0100
+
+(* ****** ****** *)
+
+#symload z2listize with gseq_z2listize of 0100
+#symload z2streamize with gseq_z2streamize of 0100
+
+(* ****** ****** *)
+
+#symload
+x2foreach_row with gseq_x2foreach_row of 0100
+#symload
+x2foreach_col with gseq_x2foreach_col of 0100
+#symload
+x2iforeach_row with gseq_x2iforeach_row of 0100
+#symload
+x2iforeach_col with gseq_x2iforeach_col of 0100
 
 (* ****** ****** *)
 
