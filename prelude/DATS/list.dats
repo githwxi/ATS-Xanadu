@@ -350,13 +350,18 @@ impltmp
 <x0><y0>
 list_map_vt(xs) = let
 //
+typedef
+ys = list_vt(y0)
+typedef
+ys(i:int) = list_vt(y0, i)
+//
 fun
-loop{i:nat}.<i>.
-( xs
-: list(x0, i)
-, r0
-: &(?list_vt(y0)) >> list_vt(y0, i)
-) : void =
+loop
+{i:nat}.<i>.
+( xs:
+  list(x0, i)
+, r0:
+& (?ys) >> ys(i)): void =
 (
 case+ xs of
 |

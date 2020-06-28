@@ -296,7 +296,6 @@ cons with list_cons of 000
 //
 #symload reverse with list_reverse of 1000
 #symload rappend with list_rappend of 1000
-#symload rappend with list_rappend_vt of 1000
 //
 (* ****** ****** *)
 //
