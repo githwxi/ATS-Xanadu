@@ -174,18 +174,6 @@ end // end of [let]
 (* ****** ****** *)
 
 implement
-d3pat_con
-(loc0, d2c0) =
-let
-val t2p0 = d2c0.type()
-in
-d3pat_make_node
-(loc0, t2p0, D3Pcon1(d2c0))
-end // end of [let]
-
-(* ****** ****** *)
-
-implement
 d3pat_tcast
 (d3p0, t2p0) =
 (

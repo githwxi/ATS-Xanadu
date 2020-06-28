@@ -64,7 +64,8 @@ d2con_struct = @{
 //
   d2con_loc= loc_t // loc
 , d2con_sym= sym_t // name
-, d2con_tag= tag_t // sexp
+, d2con_tag= tag_t // tag
+, d2con_tqas= tq2as // tqas
 , d2con_sexp= s2exp // sexp
 , d2con_type= t2ype // type
 , d2con_stamp= stamp // unicity
@@ -78,13 +79,15 @@ in (* in-of-local *)
 
 implement
 d2con_make_idtp
-  (tok, s2e1) =
+( tok
+, tqas, s2e1) =
 (
 ref<d2con_struct>
 @{
   d2con_loc= loc
 , d2con_sym= sym
 , d2con_tag= (~1)
+, d2con_tqas= tqas
 , d2con_sexp= s2e1
 , d2con_type= t2p2
 , d2con_stamp= stamp
@@ -126,6 +129,9 @@ d2con_set_tag
 (x0, tag) = (x0->d2con_tag := tag)
 //
 implement
+d2con_get_tqas(x0) = x0->d2con_tqas
+//
+implement
 d2con_get_sexp(x0) = x0->d2con_sexp
 //
 implement
@@ -135,6 +141,61 @@ implement
 d2con_get_stamp(x0) = x0->d2con_stamp
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+d2con_get_s2vs
+  (d2c0) =
+(
+let
+val s2vs =
+auxlst
+(d2c0.tqas(), list_vt_nil())
+in
+list_vt2t(list_vt_reverse(s2vs))
+end
+) where
+{
+fun
+auxlst
+( tqas
+: tq2arglst
+, s2vs
+: List0_vt(s2var)
+)
+: List0_vt(s2var) =
+(
+case+ tqas of
+|
+list_nil() => s2vs
+|
+list_cons
+(t2qa, tqas) =>
+(
+  auxlst(tqas, s2vs)
+) where
+{
+  val s2vs =
+  revapp(t2qa.s2vs(), s2vs)
+}
+)
+and
+revapp
+( xs
+: s2varlst
+, ys
+: s2varlst_vt
+)
+: s2varlst_vt =
+(
+case+ xs of
+| list_nil() => ys
+| list_cons(x0, xs) =>
+  revapp(xs, list_vt_cons(x0, ys))
+)
+//
+} (* end of [d2con_get_s2vs] *)
 
 (* ****** ****** *)
 

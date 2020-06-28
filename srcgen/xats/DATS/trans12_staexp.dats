@@ -2340,12 +2340,14 @@ val
 res =
 (
 case+ res of
-| None() => the_sort2_tbox
-| Some(s1t) => trans12_sort(s1t)
+|
+None() => the_sort2_tbox
+|
+Some(s1t) => trans12_sort(s1t)
 ) : sort2 // end of [val]
 //
-  val
-  s2t0 = auxmargs(arg, res)
+val
+s2t0 = auxmargs(arg, res)
 //
 in
   s2cst_make_idst(sid, s2t0)
@@ -2355,7 +2357,7 @@ end where
 val+
 D1ATYPE
 ( sid, arg
-, res, d1cs) = d1t.node()
+, res, d1cs) = d1t.node((*void*))
 //
 fun
 auxargs
@@ -2364,22 +2366,25 @@ auxargs
 ) : sort2lst =
 (
 case+ xs of
-| list_nil() =>
-  (
-  list_nil(*void*)
-  )
-| list_cons(x0, xs) =>
-  (
-  case+ x0.node() of
-  | T1ARGsome(s1t, _) =>
-    list_cons
-    (trans12_sort(s1t), auxargs(xs))
-  )
+|
+list_nil() =>
+(
+list_nil(*void*)
+)
+|
+list_cons(x0, xs) =>
+(
+case+ x0.node() of
+| T1ARGsome(s1t, _) =>
+  list_cons
+  (trans12_sort(s1t), auxargs(xs))
+)
 ) (* end of [auxargs] *)
 //
 fun
 auxmargs
-( xs: t1marglst
+( xs
+: t1marglst
 , res: sort2): sort2 =
 (
 case+ xs of

@@ -1008,21 +1008,43 @@ the_sexpenv_add_varlst
 } (* end of [the_sexpenv_add_varlst] *)
 
 implement
+the_sexpenv_add_tqalst
+  (tqas) =
+(
+  foreach(tqas)
+) where
+{
+fun
+foreach
+(tqas: tq2arglst): void =
+(
+case+ tqas of
+| list_nil() => ()
+| list_cons(tqa0, tqas) =>
+  let
+  val s2vs = tqa0.s2vs()
+  in
+  (the_sexpenv_add_varlst(s2vs); foreach(tqas))
+  end
+)
+} (* end of [the_sexpenv_add_tqalst] *)
+
+implement
 the_sexpenv_add_varlstlst
   (svss) =
 (
   foreach(svss)
 ) where
 {
-  fun
-  foreach
-  (svss: s2varlstlst): void =
-  (
-  case+ svss of
-  | list_nil() => ()
-  | list_cons(s2vs, svss) =>
-    (the_sexpenv_add_varlst(s2vs); foreach(svss))
-  )
+fun
+foreach
+(svss: s2varlstlst): void =
+(
+case+ svss of
+| list_nil() => ()
+| list_cons(s2vs, svss) =>
+  (the_sexpenv_add_varlst(s2vs); foreach(svss))
+)
 } (* end of [the_sexpenv_add_varlstlst] *)
 
 (* ****** ****** *)

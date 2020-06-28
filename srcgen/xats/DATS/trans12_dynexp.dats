@@ -3246,6 +3246,7 @@ aux_fundecl
 //
 val
 loc0 = d1cl.loc()
+//
 val-
 D1Cfundecl
 ( knd
@@ -3275,28 +3276,10 @@ trans12_tqarglst(tqas)
 //
 val
 (pf0|()) =
-the_sexpenv_pushnil((*void*))
+the_sexpenv_pushnil( )
 //
-val
-((*void*)) =
-( loop(tqas) ) where
-{
-fun
-loop
-(xs: tq2arglst): void =
-(
-case+ xs of
-| list_nil() => ()
-| list_cons(x0, xs) =>
-  (
-    loop(xs)
-  ) where
-  {
-    val () =
-    the_sexpenv_add_varlst(x0.s2vs())
-  }
-) (* end of [loop] *)
-} (* end of [local] *)
+val () =
+the_sexpenv_add_tqalst(tqas)
 //
 val d2vs =
 let
@@ -3307,11 +3290,13 @@ loop
 (d2vs: d2varlst): void =
 (
 case+ d2vs of
-| list_nil() => ()
-| list_cons(d2v0, d2vs) =>
-  let
-  val () = d2v0.tqas(tqas) in loop(d2vs)
-  end
+|
+list_nil() => ()
+|
+list_cons(d2v0, d2vs) =>
+let
+val () = d2v0.tqas(tqas) in loop(d2vs)
+end
 )
 in (*in-of-let*)
 let
@@ -5074,27 +5059,29 @@ auxarg
 ) : s2explst =
 (
 case+ opt of
-| None() =>
-  list_nil()
-| Some(s1e0) =>
+|
+None() =>
+list_nil()
+|
+Some(s1e0) =>
+(
+case+
+s1e0.node() of
+| S1Elist(s1es) =>
+  trans12_sexplst(s1es)
+| S1Elist(xs1, xs2) =>
   (
-  case+
-  s1e0.node() of
-  | S1Elist(s1es) =>
-    trans12_sexplst(s1es)
-  | S1Elist(xs1, xs2) =>
-    (
-      s2es1 + s2es2
-    ) where
-    {
-      val () = (npf := length(xs1))
-      val s2es1 = trans12_sexplst(xs1)
-      val s2es2 = trans12_sexplst(xs2)
-    }
-  | _(*non-S1Elist*) =>
+    s2es1 + s2es2
+  ) where
+  {
+    val () = (npf := length(xs1))
+    val s2es1 = trans12_sexplst(xs1)
+    val s2es2 = trans12_sexplst(xs2)
+  }
+| _(*non-S1Elist*) =>
     list_sing(trans12_sexp(s1e0))
-  )
 )
+) (* end of [auxarg] *)
 
 fun
 auxind
@@ -5119,8 +5106,9 @@ list_map<s2var><s2exp>(s2vs)
 ) where
 {
 implement
-list_map$fopr<s2var><s2exp>(s2v) = s2exp_var(s2v)
-}
+list_map$fopr<
+  s2var><s2exp>(s2v) = s2exp_var(s2v)
+} (* end of [auxsvs] *)
 
 and
 auxsvss
@@ -5129,10 +5117,11 @@ auxsvss
 ) : s2explstlst =
 (
 case+ svss of
-| list_nil() => list_nil()
+| list_nil() =>
+  list_nil()
 | list_cons(s2vs, svss) =>
   list_cons(auxsvs(s2vs), auxsvss(svss))
-)
+) (* end of [auxsvss] *)
 
 and
 auxs1is
@@ -5181,22 +5170,28 @@ auxres
 ) : s2exp =
 (
 case+ sess of
-| list_nil() => s2e0
-| list_cons
-    (s2es, sess) =>
-  (
-    auxres(loc0, s2e0, sess)
-  ) where
-  {
-    val s2e0 = s2exp_apps(loc0, s2e0, s2es)
-  }
-)
+|
+list_nil() => s2e0
+|
+list_cons
+(s2es, sess) =>
+(
+  auxres(loc0, s2e0, sess)
+) where
+{
+  val
+  s2e0 =
+  s2exp_apps(loc0, s2e0, s2es)
+}
+) (* end of [auxres] *)
 
 in (* in-of-local *)
 
 implement
 trans12_datcon
-(s2c0, svss, d1cl) =
+( s2c0
+, tqas
+, svss, d1cl) =
 let
 //
 val (pf0|()) =
@@ -5205,16 +5200,8 @@ val s2e0 = auxuni(s1us)
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
 //
-val s2e0 =
-(
-s2exp_uni(s2us, s2ps, s2e0)
-) where
-{
-  val s2ps = list_nil(*void*)
-}
-//
 in
-  d2con_make_idtp(tok0, s2e0)
+d2con_make_idtp(tok0, tqas, s2e0)
 end where
 {
 //
@@ -5222,10 +5209,9 @@ val+
 D1ATCON
 ( s1us
 , tok0
-, s1is, argopt) = d1cl.node()
-//
-val
-loc0 = tok0.loc()
+, s1is
+, argopt) =
+d1cl.node((*void*))
 //
 (*
 val () =
@@ -5233,45 +5219,7 @@ println!
 ("trans12_datcon: tok0 = ", tok0)
 *)
 //
-val
-s2us =
-list_vt2t
-(list_vt_reverse(s2us)) where
-{
-fun
-loop1
-( svss
-: s2varlstlst
-, s2us
-: s2varlst_vt): s2varlst_vt =
-(
-case+ svss of
-| list_nil() => s2us
-| list_cons(s2vs, svss) =>
-  loop1(svss, loop2(s2vs, s2us))
-)
-and
-loop2
-( s2vs
-: s2varlst
-, s2us
-: s2varlst_vt): s2varlst_vt =
-(
-case+ s2vs of
-| list_nil() => s2us
-| list_cons(x0, s2vs) =>
-  if
-  s2var_is_nil(x0)
-  then
-  loop2(s2vs, s2us)
-  else
-  loop2(s2vs, list_vt_cons(x0, s2us))
-)
-//
-val
-s2us = loop1(svss, list_vt_nil(*void*))
-//
-} (* end of [val] *)
+val loc0 = tok0.loc()
 //
 (*
 val () =
@@ -5333,6 +5281,66 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxs2vs
+( s2vs
+: s2varlst): s2varlst =
+(
+case+
+s2vs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(x0, s2vs) =>
+(
+if
+s2var_is_nil(x0)
+then auxs2vs(s2vs)
+else
+list_cons(x0, auxs2vs(s2vs))
+)
+) (* end of [auxs2vs] *)
+
+fun
+auxtqas
+( s2c0
+: s2cst
+, svss
+: s2varlstlst): tq2arglst =
+(
+case+
+svss of
+|
+list_nil() => list_nil()
+|
+list_cons
+(s2vs, svss) =>
+(
+case s2vs of
+|
+list_nil _ =>
+(
+  auxtqas(s2c0, svss)
+)
+|
+list_cons _ =>
+let
+val
+s2vs = auxs2vs(s2vs)
+val
+tqa0 =
+tq2arg_make(s2c0.loc(), s2vs)
+in
+list_cons(tqa0, auxtqas(s2c0, svss))  
+end // end of [let]
+)
+) (* end of [auxtqas] *)
+
+in(*in-of-local*)
+
 implement
 trans12_datconlst
 (s2c0, svss, d1cs) =
@@ -5342,11 +5350,16 @@ list_map<d1atcon><d2con>(d1cs)
 ) where
 {
 //
+val tqas = auxtqas(s2c0, svss)
+//
 implement
 list_map$fopr<
-  d1atcon><d2con>(d1c) = trans12_datcon(s2c0, svss, d1c)
+  d1atcon><d2con>(d1c) =
+  trans12_datcon(s2c0, tqas, svss, d1c)
 //
 } (* end of [trans12_datconlst] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
