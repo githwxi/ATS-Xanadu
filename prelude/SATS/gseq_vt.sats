@@ -327,15 +327,15 @@ glseq_iforeach1(!xs): void
 //
 (* ****** ****** *)
 //
-#symload map0_list with gseq_map0_list of 0100
-#symload map1_list with gseq_map1_list of 0100
+#symload map0_list with glseq_map0_list of 0100
+#symload map1_list with glseq_map1_list of 0100
 //
-#symload map0_rlist with gseq_map0_rlist of 0100
-#symload map1_rlist with gseq_map1_rlist of 0100
+#symload map0_rlist with glseq_map0_rlist of 0100
+#symload map1_rlist with glseq_map1_rlist of 0100
 //
-#symload map0_stream with gseq_map0_stream of 0100
+#symload map0_stream with glseq_map0_stream of 0100
 (*
-#symload map1_stream with gseq_map1_stream of 0100
+#symload map1_stream with glseq_map1_stream of 0100
 *)
 //
 (* ****** ****** *)

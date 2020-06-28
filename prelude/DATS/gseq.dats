@@ -807,6 +807,18 @@ end // end of [gseq_min2/foldl]
 (* ****** ****** *)
 
 impltmp
+<x0,xs>
+gseq_sortedq(xs) =
+let
+  val xs =
+  gseq_streamize<x0,xs>(xs)
+in
+  stream_vt_sortedq0<x0,xs>(xs)
+end // end of [gseq_sortedq]
+
+(* ****** ****** *)
+
+impltmp
 <x0,xs><r0>
 gseq_foldr
 (xs, r0) = r0 where

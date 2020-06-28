@@ -320,10 +320,19 @@ gseq_min_opt(xs): optn_vt(x0)
 //
 fun
 <x0:t0
-,xs:t0>gseq_max2(xs, x0): x0
+,xs:t0>
+gseq_max2(xs, x0): x0
 fun
 <x0:t0
-,xs:t0>gseq_min2(xs, x0): x0
+,xs:t0>
+gseq_min2(xs, x0): x0
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,xs:t0>
+gseq_sortedq(xs): bool
 //
 (* ****** ****** *)
 //
@@ -610,6 +619,10 @@ length with gseq_length of 0100
 #symload max_opt with gseq_max_opt of 0100
 #symload min_opt with gseq_min_opt of 0100
 //
+(* ****** ****** *)
+
+#symload sortedq with gseq_sortedq of 0100
+
 (* ****** ****** *)
 //
 #symload foldr with gseq_foldr of 0100

@@ -100,6 +100,19 @@ impltmp
 rand_nint$limit() = 1024
 //
 (* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+rand<sint>() =
+let
+val
+limit =
+rand_nint$limit<>()
+in
+rand_nint_limit<>(2*limit)-limit
+end // end of [rand<sint>]
+
+(* ****** ****** *)
 //
 impltmp
 {a0:vt

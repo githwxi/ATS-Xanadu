@@ -167,6 +167,12 @@ stream_vt_foreach0(stream_vt(x0)): void
 //
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+stream_vt_sortedq0(stream_vt(x0)): bool
+//
+(* ****** ****** *)
+//
 (*
 stream_vt_map0: map0$fopr
 *)
