@@ -277,6 +277,32 @@ fun
 a1ptr_print(A0: !a1ptr(a)): void
 //
 (* ****** ****** *)
+
+fun
+<a:t0>
+a1ref_listize
+{n:int}
+(A0: a1ref(a, n)): list_vt(a,n)
+fun
+<a:vt>
+a1ref_listize0
+{n:int}
+(A0: a1ref(a, n)): list_vt(a,n)
+
+(* ****** ****** *)
+
+fun
+<a:t0>
+a1ref_rlistize
+{n:int}
+(A0: a1ref(a, n)): list_vt(a,n)
+fun
+<a:vt>
+a1ref_rlistize0
+{n:int}
+(A0: a1ref(a, n)): list_vt(a,n)
+
+(* ****** ****** *)
 //
 fun
 <a:vt>
@@ -369,6 +395,12 @@ length with a1ptr_length of 1000
 #symload a1ref with a1ref_make_nval of 1000
 #symload a1ptr with a1ptr_make_nval of 1000
 
+(* ****** ****** *)
+#symload listize with a1ref_listize
+#symload listize0 with a1ref_listize0
+(* ****** ****** *)
+#symload rlistize with a1ref_rlistize
+#symload rlistize0 with a1ref_rlistize0
 (* ****** ****** *)
 
 (* end of [array.sats] *)

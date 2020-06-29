@@ -131,7 +131,7 @@ This part covers type inference (involving only ML-style algebraic
 types) and template resolution (this is, replacing template instances
 with proper template-free code).  There is currently a rudimentary
 interpreter available for interpreting programs constructed in ATS3. I
-have also being implementing a template-based prelude library for
+have also been implementing a template-based prelude library for
 ATS3.
 
 Part 2:
