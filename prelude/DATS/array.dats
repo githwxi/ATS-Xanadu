@@ -200,6 +200,64 @@ a1ref_print$end() = string_print("]")
 (* ****** ****** *)
 
 impltmp
+<a:t0>
+a1ref_rlistize
+  {n}(A0) = let
+//
+var
+res:
+?list_vt(a) =
+list_vt_nil()
+val p0 = $addr(res)
+//
+val n0 =
+a1ref_length(A0)
+val n1 = pred(n0)
+//
+impltmp
+x1forint$work<n>(i0) =
+let
+  val j0 = n1 - i0
+in
+$UN.p2tr_list_vt_cons(p0, sub(A0, j0))
+end
+//
+in
+let
+val () =
+g_x1forint<n>(n0) in $UN.castlin10(res)
+end
+end // end of [a1ref_listize]
+
+(* ****** ****** *)
+
+impltmp
+<a:t0>
+a1ref_rlistize
+  {n}(A0) = let
+//
+var
+res:
+?list_vt(a) =
+list_vt_nil()
+val p0 = $addr(res)
+//
+val n0 = a1ref_length(A0)
+//
+impltmp
+x1forint$work<n>(i0) =
+$UN.p2tr_list_vt_cons(p0, sub(A0, i0))
+//
+in
+let
+val () =
+g_x1forint<n>(n0) in $UN.castlin10(res)
+end
+end // end of [a1ref_rlistize]
+
+(* ****** ****** *)
+
+impltmp
 <a:vt>
 a1ref_streamize
   {n}(A0) =
@@ -336,12 +394,26 @@ impltmp
 {a:t0}
 {n:i0}
 gseq_forall
-<a,a1ref(a,n)> = a1ref_forall<a><n>
+<a,a1ref(a,n)> = a1ref_forall<a>{n}
 impltmp
 {a:t0}
 {n:i0}
 gseq_foreach
-<a,a1ref(a,n)> = a1ref_foreach<a><n>
+<a,a1ref(a,n)> = a1ref_foreach<a>{n}
+//
+(* ****** ****** *)
+//
+impltmp
+{a:t0}
+{n:i0}
+gseq_listize
+<a,a1ref(a,n)> = a1ref_listize<a>{n}
+//
+impltmp
+{a:t0}
+{n:i0}
+gseq_rlistize
+<a,a1ref(a,n)> = a1ref_rlistize<a>{n}
 //
 (* ****** ****** *)
 //
