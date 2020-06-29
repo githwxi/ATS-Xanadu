@@ -1797,6 +1797,11 @@ the_prelude_load
 val () =
 the_prelude_load
 ( XATSHOME
+, 0(*static*), "prelude/SATS/xfor.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
 , 0(*static*), "prelude/SATS/optn.sats")
 val () =
 the_prelude_load
