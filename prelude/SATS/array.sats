@@ -100,10 +100,10 @@ a0ptr_free(A0: a0ptr(a)): void
 (* ****** ****** *)
 //
 fun
-<a:t0>
-a0ref_get(A0: a0ref(a)): a
+<a:vt>
+a0ref_get(A0: a0ref(a)): ~a
 fun
-<a:t0>
+<a:vt>
 a0ref_set(A0: a0ref(a), x0: a): void
 //
 fun
@@ -205,27 +205,27 @@ a1ptr_length(!a1ptr(a, n)): int(n)
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 a1ref_get_at
 {n:int}
 ( A0
-: a1ref(a, n), i0: nintlt(n)): a
+: a1ref(a, n), i0: nintlt(n)): ~a
 fun
-<a:t0>
+<a:vt>
 a1ptr_get_at
 {n:int}
 ( A0:
-! a1ptr(a, n), i0: nintlt(n)): a
+! a1ptr(a, n), i0: nintlt(n)): ~a
 //
 fun
-<a:t0>
+<a:vt>
 a1ref_set_at
 {n:int}
 ( A0:
   a1ref(a, n)
 , i0: nintlt(n), x0: a(*new*)): void
 fun
-<a:t0>
+<a:vt>
 a1ptr_set_at
 {n:int}
 ( A0:
@@ -240,7 +240,7 @@ a1ptr_set_at_raw
 , i0: nintlt(n), x0: a(*ini*)): void
 //
 fun
-<a:t0>
+<a:vt>
 a1ref_exch_at
 {n:int}
 ( A0:
