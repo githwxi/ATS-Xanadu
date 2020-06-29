@@ -406,16 +406,29 @@ gseq_concat_stream(xss: xz): stream_vt(x0)
 fun
 <x0:t0
 ,xs:t0>
-gseq_iexists(xs): bool
+<r0:vt>
+gseq_ifoldl(xs, r0): r0
+fun
+<x0:t0
+,xs:t0>
+<r0:vt>
+gseq_ifoldr(xs, r0): r0
+//
+(* ****** ****** *)
 //
 fun
 <x0:t0
 ,xs:t0>
-gseq_iforall(xs): bool
+gseq_iexists(xs: xs): bool
+//
 fun
 <x0:t0
 ,xs:t0>
-gseq_iforeach(xs): void
+gseq_iforall(xs: xs): bool
+fun
+<x0:t0
+,xs:t0>
+gseq_iforeach(xs: xs): void
 //
 (* ****** ****** *)
 //

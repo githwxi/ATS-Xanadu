@@ -243,8 +243,8 @@ gseq_dropif
   gseq_idropif(xs)
 ) where
 {
-  impltmp
-  idropif$test<x0>(_, x0) = dropif$test<x0>(x0)
+impltmp
+idropif$test<x0>(_, x0) = dropif$test<x0>(x0)
 } (* gseq_drop/dropif *)
 
 (* ****** ****** *)
@@ -1042,46 +1042,74 @@ end // gseq_concat_stream
 // For gseq-i-operations
 //
 (* ****** ****** *)
-
+//
 impltmp
-<x0,xs><y0>
-gseq_imap_stream(xs) =
-let
-val xs =
-gseq_streamize<x0,xs>(xs)
-in(*in-of-let*)
+<x0,xs>
+gseq_idropif
+  (xs) =
+( loop(xs, 0) ) where
+{
+//
+fun
+loop
+( xs: xs
+, i0: nint): xs =
+if
+gseq_nilq<x0,xs>(xs)
+then
 (
-stream_vt_imap0<x0><y0>(xs)
+  gseq_nil<x0,xs>()
+)
+else
+let
+val x0 =
+gseq_head_raw<x0,xs>(xs)
+in
+if
+idropif$test<x0>(i0, x0)
+then
+(
+  loop(xs, succ(i0))
 ) where
 {
-impltmp
-imap0$fopr
-<x0><y0> = imap$fopr<x0><y0>
-}
-end // end of
-// [gseq_imap_stream/streamize]
-
+val xs =
+gseq_tail_raw<x0,xs>(xs)
+} (* end of [then] *)
+else xs // end-of-else
+endlet (* end of [loop] *)
+//
+} (* end of [gseq_idropif] *)
+//
 (* ****** ****** *)
 
 impltmp
-<x0,xs><y0>
-gseq_imapopt_stream(xs) =
-let
-val xs =
-gseq_streamize<x0,xs>(xs)
-in(*in-of-let*)
+<x0,xs><r0>
+gseq_ifoldl
+(xs, r0) = r0 where
+{
+//
+var r0: r0 = r0
+//
+val p0 = $addr(r0)
+//
+val () =
 (
-stream_vt_imapopt0<x0><y0>(xs)
+  gseq_iforeach<x0,xs>(xs)
 ) where
 {
 impltmp
-imap0$fopr
-<x0><y0> = imap$fopr<x0><y0>
-impltmp
-ifilter1$test<x0> = ifilter$test<x0>
+iforeach$work<x0>(i0, x0) =
+let
+val r0 = $UN.p2tr_get<r0>(p0)
+in
+//
+$UN.p2tr_set<r0>
+(p0, ifoldl$fopr<x0><r0>(r0, i0, x0))
+//
+end // end of [iforeach$work]
 }
-end // end of
-// [gseq_imap_stream/streamize]
+//
+} (* end of [gseq_ifoldl/iforeach] *)
 
 (* ****** ****** *)
 //
@@ -1211,48 +1239,113 @@ end
 end // end of [gseq_rindexof/iforeach]
 
 (* ****** ****** *)
+//
+impltmp
+<x0,xs><y0>
+gseq_imap_list
+  (xs) = let
+//
+typedef
+yy =
+list_vt(y0)
+typedef
+r0 = p2tr(yy)
+//
+impltmp
+ifoldl$fopr
+<x0><r0>
+(p0, i0, x0) =
+let
+//
+val y0 =
+imap$fopr
+<x0><y0>(i0, x0)
+val r1 = 
+list_vt_cons(y0, _ )
+val p1 = $addr(r1.1)
+//
+in
+$UN.p2tr_set<yy>
+(p0, $UN.castlin01(r1)); (p1)
+end // foldl$fopr
+//
+var r0: yy
+val pz =
+gseq_ifoldl<x0,xs><r0>(xs, $addr(r0))
+//
+in
+$UN.p2tr_set<yy>
+(pz, list_vt_nil()); $UN.castlin01(r0)
+end // end of [gseq_imap_list/ifoldl]
+//
+(* ****** ****** *)
 
 impltmp
-<x0,xs>
-gseq_idropif
-  (xs) =
-( loop(xs, 0) ) where
-{
+<x0,xs><y0>
+gseq_imap_rlist
+  (xs) = let
 //
-fun
-loop
-( xs: xs
-, i0: nint): xs =
-if
-gseq_nilq<x0,xs>(xs)
-then
-(
-  gseq_nil<x0,xs>()
-)
-else
-let
-val x0 =
-gseq_head_raw<x0,xs>(xs)
+typedef r0 = list_vt(y0)
+//
 in
-if
-idropif$test<x0>(i0, x0)
-then
-(
-  loop(xs, succ(i0))
-) where
-{
-val xs =
-gseq_tail_raw<x0,xs>(xs)
-} (* end of [then] *)
-else xs // end-of-else
-endlet (* end of [loop] *)
 //
-} (* end of [gseq_idropif] *)
+gseq_ifoldl
+<x0,xs><r0>
+(xs, list_vt_nil()) where
+{
+impltmp
+ifoldl$fopr
+ <x0><r0>
+( r0, i0, x0 ) =
+list_vt_cons
+  ( imap$fopr<x0><y0>(i0, x0), r0 )
+// list_vt_cons
+}
+//
+end // end of [gseq_imap_rlist/ifoldl]
 
 (* ****** ****** *)
-//
-// For x2-gseq-operations
-//
+
+impltmp
+<x0,xs><y0>
+gseq_imap_stream(xs) =
+let
+val xs =
+gseq_streamize<x0,xs>(xs)
+in(*in-of-let*)
+(
+stream_vt_imap0<x0><y0>(xs)
+) where
+{
+impltmp
+imap0$fopr
+<x0><y0> = imap$fopr<x0><y0>
+}
+end // end of
+// [gseq_imap_stream/streamize]
+
+(* ****** ****** *)
+
+impltmp
+<x0,xs><y0>
+gseq_imapopt_stream(xs) =
+let
+val xs =
+gseq_streamize<x0,xs>(xs)
+in(*in-of-let*)
+(
+stream_vt_imapopt0<x0><y0>(xs)
+) where
+{
+impltmp
+imap0$fopr
+<x0><y0> = imap$fopr<x0><y0>
+impltmp
+ifilter1$test<x0> = ifilter$test<x0>
+}
+end // end of
+// [gseq_imap_stream/streamize]
+
 (* ****** ****** *)
 //
 // For z2-gseq-operations

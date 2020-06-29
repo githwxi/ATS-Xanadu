@@ -28,7 +28,7 @@ if
 (i1 < n1)
 then
 (
-  loop(succ(i1), n1)
+loop(succ(i1), n1)
 ) where
 {
 val () = x1forint$work<n1>(i1)
@@ -85,7 +85,7 @@ impltmp
 x2forint$work<n2,n3>
   (i2, i3) =
 (
-x3forint$work<n1,n2>(i1, i2, i3)
+x3forint$work<n1,n2,n3>(i1, i2, i3)
 )
 }
 in
