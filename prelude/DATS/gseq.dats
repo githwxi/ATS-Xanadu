@@ -847,10 +847,10 @@ impltmp
 <x0,xs>
 gseq_sortedq(xs) =
 let
-  val xs =
-  gseq_streamize<x0,xs>(xs)
+val xs =
+gseq_streamize<x0,xs>(xs)
 in
-  stream_vt_sortedq<x0,xs>(xs)
+  stream_vt_sortedq<x0>(xs)
 end // end of [gseq_sortedq]
 
 (* ****** ****** *)

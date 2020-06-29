@@ -66,13 +66,13 @@ rand_nint_limit
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 rand_list(): list_vt(a)
 fun<>
 rand_list$length(): nint
 //
 fun
-<a:t0>
+<a:vt>
 rand_list_length
 {n:nat}(ln: int(n)): list_vt(a,n)
 //

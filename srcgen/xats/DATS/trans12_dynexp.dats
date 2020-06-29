@@ -1138,6 +1138,210 @@ end // end of [auxstr]
 
 (* ****** ****** *)
 
+local
+//
+vtypedef
+tq2argopt =
+Option_vt(tq2arg)
+//
+fun
+auxtqa0
+( d2e0
+: d2exp
+)
+: tq2argopt =
+(
+  auxtqa0_dn(d2e0, 0)
+)
+//
+and
+auxtqa0_up
+( tqas
+: tq2arglst
+, i0: int
+)
+: tq2argopt =
+(
+case+ tqas of
+|
+list_nil() =>
+(
+  None_vt()
+)
+|
+list_cons(tqa0, tqas) =>
+(
+if i0 <= 0
+then Some_vt(tqa0)
+else auxtqa0_up(tqas, i0-1)
+)
+) (* end of [auxtqa0_up] *)
+//
+and
+auxtqa0_dn
+( d2e0
+: d2exp
+, i0: int
+) : tq2argopt =
+(
+case+
+d2e0.node() of
+//
+|
+D2Ecst1(d2c1) =>
+(
+  auxtqa0_up(tqas, i0)
+) where
+{
+  val tqas = d2c1.tqas()
+}
+//
+|
+D2Econ1(d2c1) =>
+(
+  auxtqa0_up(tqas, i0)
+) where
+{
+  val tqas = d2c1.tqas()
+}
+//
+|
+D2Etapp(d2e1, _) =>
+(
+  auxtqa0_dn(d2e1, i0+1)
+)
+//
+| _ (* else *) => None_vt()
+//
+) (* end of [auxtqa0_dn] *)
+
+in(*in-of-local*)
+
+fun
+auxtapp_s2es
+( d2e1
+: d2exp
+, s2es
+: s2explst
+)
+: s2explst =
+let
+//
+val
+loc0 = d2e1.loc()
+val
+opt0 = auxtqa0(d2e1)
+//
+in
+//
+case+ opt0 of
+//
+|
+~None_vt() => 
+(
+  auxlst(s2es)
+) where
+{
+fun
+auxlst
+( s2es
+: s2explst
+)
+: s2explst =
+(
+case+ s2es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(s2e1, s2es) =>
+(
+  list_cons
+  (s2e1, auxlst(s2es))
+) where
+{
+val
+s2e1 = s2exp_none2(loc0, s2e1)
+}
+) (* end of [auxlst] *)
+} (* end of [None_vt] *)
+//
+|
+~Some_vt(tqa0) =>
+(
+  auxlst(s2vs, s2es)
+) where
+{
+//
+val s2vs = tqa0.s2vs()
+//
+fun
+auxlst
+( s2vs
+: s2varlst
+, s2es
+: s2explst): s2explst =
+(
+case s2vs of
+|
+list_nil() =>
+(
+case+ s2es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(s2e1, s2es) =>
+let
+val
+s2e1 = s2exp_none2(loc0, s2e1)
+in
+list_cons(s2e1, auxlst(s2vs, s2es))
+end
+) (* end of [list_nil] *)
+|
+list_cons(s2v0, s2vs) =>
+(
+case+ s2es of
+|
+list_nil() =>
+let
+val s2e1 =
+s2exp_none0()
+in
+list_cons
+(s2e1, auxlst(s2vs, s2es))
+end
+|
+list_cons
+(s2e1, s2es) =>
+let
+//
+val s2t0 = s2v0.sort()
+val s2t1 = s2e1.sort()
+//
+val s2e1 =
+(
+if
+(s2t1 <= s2t0)
+then s2e1
+else
+s2exp_cast
+(loc0, s2e1, s2t0)): s2exp
+in
+list_cons(s2e1, auxlst(s2vs, s2es))
+end
+) (* end of [list_cons] *)
+)
+}
+//
+end // end of [auxtapp_s2es]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 fun
 auxapp1
 ( d1e0
@@ -1461,10 +1665,15 @@ d1e2.node() of
 //
 | D1Etqarg(s1es) =>
   let
+//
     val d2e1 =
     trans12_dexp(d1e1)
     val s2es =
     trans12_sexplst(s1es)
+//
+    val s2es =
+    auxtapp_s2es(d2e1, s2es)
+//
   in
     d2exp_tapp(d1e0.loc(), d2e1, s2es)
   end // end of [D1Etqarg]

@@ -554,11 +554,11 @@ gseq_cons
 impltmp
 {a:t0}
 gseq_nilq
-<a,list(a)> = list_nilq<a>
+<a,list(a)> = list_nilq{a}
 impltmp
 {a:t0}
 gseq_consq
-<a,list(a)> = list_consq<a>
+<a,list(a)> = list_consq{a}
 //
 (* ****** ****** *)
 //

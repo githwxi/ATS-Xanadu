@@ -574,8 +574,19 @@ s2e0.node() of
 //
 | S2Enone0() =>
   fprint!(out, "S2Enone0(", ")")
-| S2Enone1(s1esrc) =>
-  fprint!(out, "S2Enone1(", s1esrc, ")")
+| S2Enone1(loc, s1e) =>
+  fprint!( out, "S2Enone1(", s1e, ")" )
+(*
+  fprint!
+  (out, "S2Enone1(", loc, "; ", s1e, ")")
+*)
+| S2Enone2(loc, s2e) =>
+  fprint!( out, "S2Enone2(", s2e, ")" )
+(*
+  fprint!
+  (out, "S2Enone2(", loc, "; ", s2e, ")")
+*)
+//
 ) (* end of [fprint_s2exp] *)
 
 end // end of [local]

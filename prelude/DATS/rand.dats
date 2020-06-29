@@ -102,7 +102,6 @@ rand_nint$limit() = 1024
 (* ****** ****** *)
 
 impltmp
-<>(*tmp*)
 rand<sint>() =
 let
 val

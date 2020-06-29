@@ -99,8 +99,7 @@ else
 ) where
 {
   val () = g_free<x0>(x0)
-}  
-end (* [mapoptn0$fopr] *)
+} (* end of [mapoptn0$fopr] *)
 //
 impltmp
 <x0><y0>
@@ -118,8 +117,7 @@ then
 else
 (
   optn_vt_nil((*void*))
-)
-end (* [mapoptn1$fopr] *)
+) (* end of [mapoptn1$fopr] *)
 
 (* ****** ****** *)
 //

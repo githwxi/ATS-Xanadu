@@ -252,14 +252,24 @@ s2e0.node() of
   }
 //
 | S2Enone0() => ()
-| S2Enone1(s1e) =>
+| S2Enone1(loc, s1e) =>
   {
 //
     val () =
     trerr12_add(TRERR12s2exp(s2e0))
 //
     val () =
-    prerrln!(s1e.loc(), ": TRERR12(s2exp): ", s2e0);
+    prerrln!(loc, ": TRERR12(s2exp): ", s2e0);
+//
+  }
+| S2Enone2(loc, s2e) =>
+  {
+//
+    val () =
+    trerr12_add(TRERR12s2exp(s2e0))
+//
+    val () =
+    prerrln!(loc, ": TRERR12(s2exp): ", s2e0);
 //
   }
 //
