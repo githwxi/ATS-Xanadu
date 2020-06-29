@@ -509,6 +509,74 @@ case+ xs of
 (* ****** ****** *)
 
 impltmp
+<x0><y0>
+stream_mapoptn
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain(xs) =
+$lazy
+(auxloop($eval(xs)))
+and
+auxloop(xs) =
+(
+case+ xs of
+| strmcon_nil() =>
+  strmcon_nil()
+| strmcon_cons(x0, xs) =>
+  let
+    val
+    opt =
+    mapoptn$fopr<x0><y0>(x0)
+  in
+    case+ opt of
+    | optn_vt_nil() =>
+      auxloop($eval(xs)) // tail
+    | optn_vt_cons(y0) =>
+      strmcon_cons(y0, auxmain(xs))
+)
+} (* end of [stream_mapoptn] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0><y0>
+stream_mapoptn_vt
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain(xs) =
+$llazy
+(auxloop($eval(xs)))
+and
+auxloop(xs) =
+(
+case+ xs of
+| strmcon_nil() =>
+  strmcon_vt_nil()
+| strmcon_cons(x0, xs) =>
+  let
+    val
+    opt =
+    mapoptn$fopr<x0><y0>(x0)
+  in
+    case+ opt of
+    | optn_vt_nil() =>
+      auxloop($eval(xs)) // tail
+    | optn_vt_cons(y0) =>
+      strmcon_vt_cons(y0, auxmain(xs))
+)
+} (* end of [stream_mapoptn_vt] *)
+
+(* ****** ****** *)
+
+impltmp
 <x0:t0>
 stream_sieve
   (xs) =

@@ -162,6 +162,17 @@ stream_mapopt_vt(stream(x0)): stream_vt(y0)
 //
 fun
 <x0:t0>
+<y0:t0>
+stream_mapoptn(stream(x0)): stream(y0)
+fun
+<x0:t0>
+<y0:vt>
+stream_mapoptn_vt(stream(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 stream_sieve(stream(x0)): stream(x0)
 fun
 <x0:t0>
