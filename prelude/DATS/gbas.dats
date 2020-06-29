@@ -94,11 +94,13 @@ then
   map0$fopr<x0><y0>(x0)
 }
 else
-let
-val () = g_free<x0>(x0)
-in
+(
   optn_vt_nil((*void*))
-end
+) where
+{
+  val () = g_free<x0>(x0)
+}  
+end (* [mapoptn0$fopr] *)
 //
 impltmp
 <x0><y0>
@@ -117,16 +119,24 @@ else
 (
   optn_vt_nil((*void*))
 )
-//
-(* ****** ****** *)
+end (* [mapoptn1$fopr] *)
 
+(* ****** ****** *)
+//
 impltmp
 <>(*tmp*)
 x2foreach_row$beg() = ((*void*))
 impltmp
 <>(*tmp*)
 x2foreach_row$end() = ((*void*))
-
+//
+impltmp
+<>(*tmp*)
+x2foreach_col$beg() = ((*void*))
+impltmp
+<>(*tmp*)
+x2foreach_col$end() = ((*void*))
+//
 (* ****** ****** *)
 
 (* end of [gbas.dats] *)
