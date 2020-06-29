@@ -86,6 +86,26 @@ p2tr_ret(p0: p2tr(a), x0: a): void
 //
 (* ****** ****** *)
 //
+fun
+<a:t0>
+p2tr_list_nil
+(p0: p2tr(list(a))): void
+fun
+<a:t0>
+p2tr_list_cons
+(p0: p2tr(list(a)), x0: a): void
+//
+fun
+<a:t0>
+p2tr_list_vt_nil
+(p0: p2tr(list_vt(a))): void
+fun
+<a:vt>
+p2tr_list_vt_cons
+(p0: p2tr(list_vt(a)), x0: a): void
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for unsafe
 //

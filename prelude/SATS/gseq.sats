@@ -799,13 +799,30 @@ concat_stream with gseq_concat_stream of 0100
 
 (* ****** ****** *)
 
+#symload ifoldl with gseq_ifoldl of 0100
+
+(* ****** ****** *)
+
 #symload iforall with gseq_iforall of 0100
 #symload iforeach with gseq_iforeach of 0100
 
 (* ****** ****** *)
 
-#symload z2listize with gseq_z2listize of 0100
-#symload z2streamize with gseq_z2streamize of 0100
+#symload
+imap_list with gseq_imap_list of 0100
+#symload
+imap_rlist with gseq_imap_rlist of 0100
+#symload
+imap_stream with gseq_imap_stream of 0100
+#symload
+imapopt_stream with gseq_imapopt_stream of 0100
+
+(* ****** ****** *)
+
+#symload
+z2listize with gseq_z2listize of 0100
+#symload
+z2streamize with gseq_z2streamize of 0100
 
 (* ****** ****** *)
 
