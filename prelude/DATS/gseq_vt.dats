@@ -125,21 +125,22 @@ stream_vt_rlistize<x0>
 impltmp
 <x0,xs>
 glseq_listize0(xs) =
-(
-glseq_map0_list<x0><x0>(xs)
-) where
-{
-impltmp map0$fopr<x0><x0>(x0) = x0
-}
+let
+impltmp
+map0$fopr<x0><x0>(x0) = x0
+in
+glseq_map0_list<x0,xs><x0>(xs)
+end
+//
 impltmp
 <x0,xs>
 glseq_rlistize0(xs) =
-(
-glseq_map0_rlist<x0><x0>(xs)
-) where
-{
-impltmp map0$fopr<x0><x0>(x0) = x0
-}
+let
+impltmp
+map0$fopr<x0><x0>(x0) = x0
+in
+glseq_map0_rlist<x0,xs><x0>(xs)
+end
 //
 (* ****** ****** *)
 

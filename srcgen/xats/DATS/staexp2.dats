@@ -63,8 +63,12 @@ LOC = "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/trans01.sats"
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/trans01.sats"
 
 (* ****** ****** *)
 (*
@@ -1121,16 +1125,29 @@ the_s2exp_none0 =
 implement
 s2exp_none0() =
 s2exp_none0_s2t(S2Tnone0())
+//
 implement
 s2exp_none1(s1e) =
 s2exp_none1_s2t(s1e, S2Tnone0())
+//
+implement
+s2exp_none2(loc, s2e) =
+let
+  val s2t = s2e.sort()
+in
+s2exp_make_node(s2t, S2Enone2(loc, s2e))
+end
 //
 implement
 s2exp_none0_s2t(s2t) =
 s2exp_make_node(s2t, S2Enone0())
 implement
 s2exp_none1_s2t(s1e, s2t) =
-s2exp_make_node(s2t, S2Enone1(s1e))
+let
+val loc = s1e.loc()
+in
+s2exp_make_node(s2t, S2Enone1(loc, s1e))
+end
 //
 (* ****** ****** *)
 

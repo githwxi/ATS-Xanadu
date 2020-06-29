@@ -1448,9 +1448,11 @@ auxtcon
 , d2c0: d2con): d3exp =
 let
 //
-val ti2a =
+val
+ti2a =
 ti2arg_make(loc0, s2es)
-val ti2s =
+val
+ti2s =
 auxtarg
 (d2f0, list_sing(ti2a))
 //
@@ -1486,9 +1488,11 @@ auxtcst
 , d2c0: d2cst): d3exp =
 let
 //
-val ti2a =
+val
+ti2a =
 ti2arg_make(loc0, s2es)
-val ti2s =
+val
+ti2s =
 auxtarg
 (d2f0, list_sing(ti2a))
 //
@@ -1660,35 +1664,37 @@ auxtqas
 : t2ypelst_vt =
 (
 case+ tqas of
-| list_nil
-  ((*void*)) =>
-  let
-  val () =
-  list_vt_free(sess) in tsub
-  end
-| list_cons
-  (tq2a, tqas) =>
-  (
-  case+ sess of
-  |
-  ~list_vt_nil() =>
-   let
-   val s2es = list_nil()
-   val sess = list_vt_nil()
-   val tsub =
-   auxtq2a(loc0, tq2a, s2es, tsub)
-   in
-     auxtqas(loc0, tqas, sess, tsub)
-   end
-  |
-  ~list_vt_cons(s2es, sess) =>
-   let
-     val tsub =
-     auxtq2a(loc0, tq2a, s2es, tsub)
-   in
-     auxtqas(loc0, tqas, sess, tsub)
-   end
-   )
+|
+list_nil
+((*void*)) =>
+let
+val () =
+list_vt_free(sess) in tsub
+end
+|
+list_cons
+(tq2a, tqas) =>
+(
+case+ sess of
+| ~
+list_vt_nil() =>
+let
+  val s2es = list_nil()
+  val sess = list_vt_nil()
+  val tsub =
+  auxtq2a(loc0, tq2a, s2es, tsub)
+in
+  auxtqas(loc0, tqas, sess, tsub)
+end
+| ~
+list_vt_cons(s2es, sess) =>
+let
+  val tsub =
+  auxtq2a(loc0, tq2a, s2es, tsub)
+in
+  auxtqas(loc0, tqas, sess, tsub)
+end
+)
 ) (* end of [auxtqas] *)
 //
 } (* end of [d23exp_tapp_up] *)

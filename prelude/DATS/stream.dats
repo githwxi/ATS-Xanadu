@@ -537,6 +537,7 @@ case+ xs of
       auxloop($eval(xs)) // tail
     | optn_vt_cons(y0) =>
       strmcon_cons(y0, auxmain(xs))
+  end
 )
 } (* end of [stream_mapoptn] *)
 
@@ -571,6 +572,7 @@ case+ xs of
       auxloop($eval(xs)) // tail
     | optn_vt_cons(y0) =>
       strmcon_vt_cons(y0, auxmain(xs))
+  end
 )
 } (* end of [stream_mapoptn_vt] *)
 

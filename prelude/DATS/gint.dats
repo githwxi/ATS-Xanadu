@@ -140,7 +140,7 @@ if
 then
 (
 if
-forall$test<x0,xs>(x0)
+forall$test<x0>(x0)
   then loop(succ(x0)) else false
 ) (* then *)
 else true // end of [else]
@@ -166,7 +166,7 @@ let
 val xs = pred(xs)
 in
 if
-rforall$test<x0,xs>(xs) then loop(xs) else false
+rforall$test<x0>(xs) then loop(xs) else false
 end
 else true // end of [else]
 } (* end of [gint_rforall_sint] *)
