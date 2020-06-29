@@ -722,6 +722,54 @@ end // end of [strmcon_vt_cons]
 
 impltmp
 <x0><y0>
+stream_vt_mapoptn0
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain
+( xs
+: stream_vt(x0)
+)
+: stream_vt(y0) =
+$llazy
+(
+g_free(xs);
+auxloop($eval(xs)))
+and
+auxloop
+( xs
+: strmcon_vt(x0)
+)
+: strmcon_vt(y0) =
+(
+case+ xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+  val
+  opt =
+  mapoptn0$fopr<x0><y0>(x0)
+in
+  case+ opt of
+  | optn_vt_nil() =>
+    auxloop($eval(xs)) // tail-call
+  | optn_vt_cons(y0) =>
+    strmcon_vt_cons(y0, auxmain(xs))
+//
+end // end of [strmcon_vt_cons]
+)
+} (* end of [stream_vt_mapoptn0] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0><y0>
 stream_vt_maplist0
   (xs) =
 (
