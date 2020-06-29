@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-** For x-for-loops
+** For forint-loops
 *)
 (* ****** ****** *)
 //
@@ -13,7 +13,8 @@
 
 impltmp
 <n1>(*tmp*)
-x1for( n1 ) =
+g_x1forint
+( n1 ) =
 loop(0, n1) where
 {
 fun
@@ -30,71 +31,72 @@ then
   loop(succ(i1), n1)
 ) where
 {
-val () = x1for$work<n1>(i1)
+val () = x1forint$work<n1>(i1)
 }
 else ( (* else *) )
-} (* end of [x1for] *)
+} (* end of [g_x1forint] *)
 
 (* ****** ****** *)
 
 impltmp
 <n1,n2>
-x2for(n1,n2) =
+g_x2forint
+( n1, n2 ) =
 let
 fun
 loop1
 ( i1
 : nintlt(n1)) =
 (
-  x1for<n2>( n2 )
+  g_x1forint<n2>( n2 )
 ) where
 {
 impltmp
-x1for$work<n2>
+x1forint$work<n2>
   (i2) =
 (
-  x2for$work<n1,n2>(i1, i2)
+  x2forint$work<n1,n2>(i1, i2)
 )
 }
 in
 (
-  x1for<n1>( n1 )
+  g_x1forint<n1>( n1 )
 ) where
 {
-  impltmp x1for$work<n1> = loop1
+  impltmp x1forint$work<n1> = loop1
 }
-end (* end of [x2for] *)
+end (* end of [x2forint] *)
 
 (* ****** ****** *)
 
 impltmp
 <n1,n2,n3>
-x3for(n1,n2,n3) =
+g_x3forint(n1,n2,n3) =
 let
 fun
 loop1
 ( i1
 : nintlt(n1)) =
 (
-  x2for<n2,n3>(n2,n3)
+  g_x2forint<n2,n3>(n2,n3)
 ) where
 {
 impltmp
-x2for$work<n2,n3>
+x2forint$work<n2,n3>
   (i2, i3) =
 (
-x3for$work<n1,n2>(i1, i2, i3)
+x3forint$work<n1,n2>(i1, i2, i3)
 )
 }
 in
 (
-  x1for<n1>( n1 )
+  g_x1forint<n1>( n1 )
 ) where
 {
-  impltmp x1for$work<n1> = loop1
+  impltmp x1forint$work<n1> = loop1
 }
-end (* end of [x3for] *)
+end (* end of [x3forint] *)
 
 (* ****** ****** *)
 
-(* end of [xfor.dats] *)
+(* end of [gfor.dats] *)
