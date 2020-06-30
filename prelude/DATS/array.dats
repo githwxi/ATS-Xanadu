@@ -201,7 +201,7 @@ a1ref_print$end() = string_print("]")
 
 impltmp
 <a:t0>
-a1ref_rlistize
+a1ref_listize
   {n}(A0) = let
 //
 var

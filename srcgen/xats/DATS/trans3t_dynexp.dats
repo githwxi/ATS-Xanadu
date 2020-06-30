@@ -281,7 +281,6 @@ d3e0.node() of
 | D3Efcon _ => d3e0
 | D3Efcst _ => d3e0
 //
-| D3Esap0 _ => d3e0
 | D3Etapp _ => d3e0
 //
 | D3Etcon _ => d3e0
@@ -290,6 +289,16 @@ d3e0.node() of
 //
 | D3Etimp _ => (d3e0)
 //
+| D3Esap0
+  (d3e1, s2es) =>
+  let
+  val d3e1 =
+  trans3t_dexp(env0, d3e1)
+  in
+  d3exp_make_node
+  ( loc0
+  , t2p0, D3Esap0(d3e1, s2es))
+  end // end of [D3Esap0]
 | D3Esap1
   (d3e1, s2es) =>
   let

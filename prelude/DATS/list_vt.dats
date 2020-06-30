@@ -703,7 +703,8 @@ list_vt_nil() =>
 | @
 list_vt_cons(z0, zs1) =>
 let
-val sgn = g_cmp00<a>(y0, z0)
+val
+sgn = gl_cmp00<a>(y0, z0)
 in
 if
 (sgn <= 0)
