@@ -456,6 +456,12 @@ d3e0.node() of
   val () = auxtimp(d3e0)
   }
 //
+| D3Esap0
+  (d3e1, s2e2) =>
+  {
+    val () =
+    tread3x_d3exp( d3e1 )
+  }
 | D3Esap1
   (d3e1, s2e2) =>
   {

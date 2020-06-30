@@ -854,16 +854,20 @@ s2exp_uni
 , s2ps: s2explst, s2e0: s2exp): s2exp
 //
 fun
-s2exp_list1(s2explst): s2exp
+s2exp_list1
+(s2es: s2explst): s2exp
 fun
-s2exp_list2(s2explst, s2explst): s2exp
+s2exp_list2
+(s2explst, s2explst): s2exp
 //
 fun
 s2exp_tuple1
-(knd: int, s2es: s2explst): s2exp
+(knd: int
+, s2es: s2explst): s2exp
 fun
 s2exp_tuple2
-(knd: int, s2explst, s2explst): s2exp
+(knd: int
+, s2explst, s2explst): s2exp
 //
 fun
 s2exp_record1
@@ -901,6 +905,17 @@ s2exp_none0_s2t
 fun
 s2exp_none1_s2t
   (s1e: s1exp, s2t: sort2): s2exp
+//
+(* ****** ****** *)
+//
+fun
+s2exp_sqcast
+( loc0: loc_t
+, s2e1: s2exp, s2t2: sort2): s2exp
+fun
+s2exp_tqcast
+( loc0: loc_t
+, s2e1: s2exp, s2t2: sort2): s2exp
 //
 (* ****** ****** *)
 //

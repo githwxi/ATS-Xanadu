@@ -2,8 +2,10 @@
 
 fun
 <a:type>
-foo(x: a): a
+foo1(x: a): a
 and
-foo(x: a, y: a): (a, a)
+foo2
+{n1:t0
+;n2:t0}(x: a, y: n1, z: n2): (a, a)
 
 (* ****** ****** *)

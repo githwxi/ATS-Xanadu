@@ -1239,11 +1239,11 @@ case+ opt0 of
 |
 ~None_vt() => 
 (
-  auxlst(s2es)
+  auxover(s2es)
 ) where
 {
 fun
-auxlst
+auxover
 ( s2es
 : s2explst
 )
@@ -1258,26 +1258,26 @@ list_cons
 (s2e1, s2es) =>
 (
   list_cons
-  (s2e1, auxlst(s2es))
+  (s2e1, auxover(s2es))
 ) where
 {
 val
 s2e1 = s2exp_none2(loc0, s2e1)
 }
-) (* end of [auxlst] *)
+) (* end of [auxover] *)
 } (* end of [None_vt] *)
 //
 |
 ~Some_vt(tqa0) =>
 (
-  auxlst(s2vs, s2es)
+  auxstck(s2vs, s2es)
 ) where
 {
 //
 val s2vs = tqa0.s2vs()
 //
 fun
-auxlst
+auxstck
 ( s2vs
 : s2varlst
 , s2es
@@ -1297,7 +1297,7 @@ let
 val
 s2e1 = s2exp_none2(loc0, s2e1)
 in
-list_cons(s2e1, auxlst(s2vs, s2es))
+list_cons(s2e1, auxstck(s2vs, s2es))
 end
 ) (* end of [list_nil] *)
 |
@@ -1306,35 +1306,27 @@ list_cons(s2v0, s2vs) =>
 case+ s2es of
 |
 list_nil() =>
-let
-val s2e1 =
-s2exp_none0()
-in
-list_cons
-(s2e1, auxlst(s2vs, s2es))
-end
+list_sing(s2e1) where
+{
+val k0 = 2 (*many*)
+val s2e1 = s2exp_any(k0)
+}
 |
 list_cons
 (s2e1, s2es) =>
 let
 //
-val s2t0 = s2v0.sort()
-val s2t1 = s2e1.sort()
-//
-val s2e1 =
-(
-if
-(s2t1 <= s2t0)
-then s2e1
-else
-s2exp_cast
-(loc0, s2e1, s2t0)): s2exp
+val
+s2t0 = s2v0.sort()
+val
+s2e1 =
+s2exp_tqcast(loc0, s2e1, s2t0)
 in
-list_cons(s2e1, auxlst(s2vs, s2es))
+list_cons(s2e1, auxstck(s2vs, s2es))
 end
 ) (* end of [list_cons] *)
-)
-}
+) (* end of [ auxstck ] *)
+} (* end of [ Some_vt ] *)
 //
 end // end of [auxtapp_s2es]
 
@@ -3007,36 +2999,37 @@ auxck2: s2t1 = ", s2t1)
 *)
 //
 in
+//
 case+ s2tf of
 //
-| S2Tfun
-  (_, s2tf) => auxck2(s2tf, s2t1)
+|
+S2Tfun
+(_, s2tf) => auxck2(s2tf, s2t1)
 //
-| _(*non-S2Efun*) =>
-  (
+|
+_(*non-S2Efun*) =>
+(
   if
-  s2tf <= s2t1
-    then s2e0
-    else
-    let
-      val
-      s2t0 = auxst0(s2t0)
-    in
-      s2exp_cast(loc0, s2e0, s2t0)
-    end
-  // end of [if]
-  ) where
-  {
-    fun
-    auxst0(s2tf: sort2): sort2 =
-    (
-      case+ s2tf of
-      | S2Tfun(s2ts, s2tf) =>
-        S2Tfun(s2ts, auxst0(s2tf))
-      | _ (* non-S2Tfun *) => s2tf
-    )
-  }
+  (s2tf <= s2t1)
+  then s2e0 else let
+    val
+    s2t0 = auxst0(s2t0)
+  in
+    s2exp_cast(loc0, s2e0, s2t0)
+  end
+) where
+{
+  fun
+  auxst0(s2tf: sort2): sort2 =
+  (
+    case+ s2tf of
+    | S2Tfun(s2ts, s2tf) =>
+      S2Tfun(s2ts, auxst0(s2tf))
+    | _ (* non-S2Tfun *) => s2tf
+  )
+}
 end // end-of-let
+//
 ) (* end of auxck2 *)
 //
 } (* end of [where] *) // end of [val]
@@ -4978,6 +4971,7 @@ d1a0.node() of
 |
 D1ARGsome_sta(s1qs) =>
 let
+//
   var s2vs_
     : s2varlst_vt =
     list_vt_nil(*void*)
@@ -4986,11 +4980,24 @@ let
     list_vt_nil(*void*)
   val ((*void*)) =
   trans12_squalst(s1qs, s2vs_, s2ps_)
-  val s2vs = list_vt2t(s2vs_)
-  val s2ps = list_vt2t(s2ps_)
-  val s2e0 = auxarg1(d1cl, nfc0+0, d1as, res0)
+//
 in
-  s2exp_uni(s2vs, s2ps, s2e0)
+let
+val
+s2vs =
+list_vt2t
+(list_vt_reverse(s2vs_))
+val
+s2ps =
+list_vt2t
+(list_vt_reverse(s2ps_))
+val
+s2e0 =
+auxarg1
+( d1cl
+, nfc0+0
+, d1as, res0) in s2exp_uni(s2vs, s2ps, s2e0)
+end
 end // end of [D1ARGsome_sta]
 |
 D1ARGsome_dyn1(tok0) =>
@@ -5475,9 +5482,9 @@ case+ s1us of
   in
     let
       val s2vs =
-        list_vt2t(list_vt_reverse(s2vs_))
+      list_vt2t(list_vt_reverse(s2vs_))
       val s2ps =
-        list_vt2t(list_vt_reverse(s2ps_))
+      list_vt2t(list_vt_reverse(s2ps_))
     in
       s2exp_uni(s2vs, s2ps, auxuni(s1us))
     end // end of [let]
