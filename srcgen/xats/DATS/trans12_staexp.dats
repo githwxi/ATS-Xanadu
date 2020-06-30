@@ -118,6 +118,8 @@ NMS = "./../SATS/nmspace.sats"
 (* ****** ****** *)
 
 implement
+fprint_val<s1qua> = fprint_s1qua
+implement
 fprint_val<s2exp> = fprint_s2exp
 
 (* ****** ****** *)
@@ -1217,6 +1219,12 @@ S1Eapp1
 val-
 S1Eforall(s1qs) = s1e1.node()
 //
+(*
+val () =
+println!
+("auxapp1_uni_: s1qs = ", s1qs)
+*)
+//
 var s2vs_
   : s2varlst_vt = list_vt_nil()
 var s2ps_
@@ -1240,9 +1248,11 @@ in
 //
   let
     val s2vs =
-    list_vt2t(list_vt_reverse(s2vs_))
+    list_vt2t
+    (list_vt_reverse(s2vs_))
     val s2ps =
-    list_vt2t(list_vt_reverse(s2ps_))
+    list_vt2t
+    (list_vt_reverse(s2ps_))
   in
     s2exp_uni(s2vs, s2ps, s2e2(*body*))
   end

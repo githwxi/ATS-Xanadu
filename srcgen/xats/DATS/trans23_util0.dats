@@ -70,6 +70,15 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+implement
+fprint_val<s2var> = fprint_s2var
+implement
+fprint_val<s2exp> = fprint_s2exp
+implement
+fprint_val<t2ype> = fprint_t2ype
+
+(* ****** ****** *)
+
 local
 #staload
 "./statyp2_unify.dats"
@@ -1251,6 +1260,15 @@ d23exp_sapp_up
 ( loc0
 , d3f0, s2es ) = let
 //
+(*
+val () =
+println!
+("d23exp_sapp_up: d3f0 = ", d3f0)
+val () =
+println!
+("d23exp_sapp_up: s2es = ", s2es)
+*)
+//
 fun
 auxmain
 ( t2p0
@@ -1260,21 +1278,20 @@ val t2p0 = whnfize(t2p0)
 //
 in
 //
-if
-auxtest(s2es)
-then
-(
 case+
 t2p0.node() of
 | T2Puni
   (s2vs, t2p1) =>
   let
 //
-  val tsub =
+  val
+  tsub =
   auxtsub(s2vs, s2es)
-  val t2p1 =
+  val
+  t2p1 =
   (
-  t2ype_subst_svarlst(t2p1, s2vs, tsub)
+  t2ype_subst_svarlst
+  ( t2p1, s2vs, tsub(*t2ypelst*) )
   ) where
   {
     val tsub = $UN.list_vt2t(tsub)
@@ -1293,32 +1310,81 @@ t2p0.node() of
   d23exp_make_node
     (loc0, t2p0, D3Esap0(d3f0, s2es))
   // d23exp_make_node
-) (* end of [then] *)
-else
-(
-  d23exp_make_node
-    (loc0, t2p0, D3Esap0(d3f0, s2es))
-  // d23exp_make_node
-) (* end of [else] *)
+//
 end where
 {
+//
+(*
+fun
+auxs2es
+( s2vs
+: s2varlst
+, s2es
+: s2explst): s2explst =
+(
+case s2vs of
+|
+list_nil() =>
+(
+case+ s2es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(s2e1, s2es) =>
+let
+val s2e1 =
+s2exp_none2(loc0, s2e1)
+in
+list_cons
+(s2e1, auxs2es(s2vs, s2es))
+end
+)
+|
+list_cons(s2v0, s2vs) =>
+(
+case+ s2es of
+|
+list_nil() =>
+list_sing(s2e1) where
+{
+val k0 = 2 (*many*)
+val s2e1 = s2exp_any(k0)
+}
+|
+list_cons(s2e1, s2es) =>
+let
+val
+s2t0 = s2v0.sort()
+val
+s2e1 =
+s2exp_sqcast(loc0, s2e1, s2t0)
+in
+list_cons(s2e1, auxs2es(s2vs, s2es))
+end // end of [list_cons]
+)
+) (* end of [auxs2es] *)
+*)
+//
 fun
 auxtest
 ( s2es
 : s2explst): bool =
 (
 case+ s2es of
-| list_nil() => false
-| list_cons(s2e0, s2es) =>
-  let
-    val
-    s2t0 = s2e0.sort()
-  in
-    if
-    sort2_is_impred(s2t0)
-    then true else auxtest(s2es)
-  end
-)
+|
+list_nil() => false
+|
+list_cons(s2e0, s2es) =>
+let
+  val s2t0 = s2e0.sort()
+in
+  if
+  sort2_is_impred(s2t0)
+  then true else auxtest(s2es)
+end
+) (* end of [auxtest] *)
+//
 fun
 auxtsub
 ( s2vs
@@ -1331,49 +1397,66 @@ case+ s2vs of
 |
 list_nil
 ((*void*)) =>
+(
   list_vt_nil()
+)
 |
 list_cons
 (s2v0, s2vs) =>
 (
 case+ s2es of
-| list_nil() =>
-  let
-  val
-  t2p0 = the_t2ype_none0
-  in
-    list_vt_cons
-    (t2p0, auxtsub(s2vs, s2es))
-  end
-| list_cons
-  (s2e0, s2es1) =>
-  (
+|
+list_nil() =>
+(*
+let
+val
+t2p0 = the_t2ype_none0
+in
+  list_vt_cons
+  (t2p0, auxtsub(s2vs, s2es))
+end
+*)
+let
+val
+t2p0 =
+t2ype_new_loc_var(loc0, s2v0)
+in
+  list_vt_cons
+  (t2p0, auxtsub(s2vs, s2es))
+end
+|
+list_cons
+(s2e0, s2es1) =>
+(
   case+
   s2e0.node() of
-  | S2Eany(k0) =>
-    let
-    val
-    t2p0 =
-    t2ype_new_loc_var(loc0, s2v0)
-    in
-      if
-      (k0 >= 2)
-      then
-      list_vt_cons
-      (t2p0, auxtsub(s2vs, s2es))
-      else
-      list_vt_cons
-      (t2p0, auxtsub(s2vs, s2es1))
-    end
-  | _(*non-S2Eany*) =>
-    let
-      val t2p0 = s2exp_erase(s2e0)
-    in
-      list_vt_cons(t2p0, auxtsub(s2vs, s2es))
-    end
-  )
+  |
+  S2Eany(k0) =>
+  let
+  val
+  t2p0 =
+  t2ype_new_loc_var(loc0, s2v0)
+  in
+    if
+    (k0 >= 2)
+    then
+    list_vt_cons
+    (t2p0, auxtsub(s2vs, s2es))
+    else
+    list_vt_cons
+    (t2p0, auxtsub(s2vs, s2es1))
+  end
+  |
+  _(*non-S2Eany*) =>
+  let
+    val t2p0 = s2exp_erase(s2e0)
+  in
+    list_vt_cons(t2p0, auxtsub(s2vs, s2es))
+  end
+)
 )
 ) (* end of [auxtsub] *)
+//
 } // where // end of [auxmain]
 //
 in
@@ -1392,6 +1475,7 @@ opt = auxtfhd(d2f0)
 in
 //
 case+ opt of
+//
 | ~
 TFHDnone() =>
 (
@@ -1403,6 +1487,7 @@ d23exp_make_node
   val
   t2p0 = t2ype_new(d2f0.loc())
 }
+//
 | ~
 TFHDdcon
 ( d2c0 ) => auxtcon(loc0, d2f0, d2c0)
@@ -2118,15 +2203,9 @@ auxck0
 , s2v0
 : s2var): s2exp =
 let
-val
-s2t0 = s2e0.sort()
-and
-s2t1 = s2v0.sort()
+val s2t0 = s2v0.sort()
 in
-if
-s2t0 <= s2t1
-then s2e0 else
-s2exp_cast(loc0, s2e0, s2t1)
+s2exp_tqcast(loc0, s2e0, s2t0)
 end // end of [auxck0]
 //
 and
@@ -2152,11 +2231,11 @@ list_nil()
 list_cons
 (s2e0, s2es) =>
 let
-  val s2e0 =
-  auxck0(loc0, s2e0, s2v0)
+val s2e0 =
+auxck0(loc0, s2e0, s2v0)
 in
-  list_cons
-  (s2e0, auxcks(loc0, s2es, s2vs))
+list_cons
+(s2e0, auxcks(loc0, s2es, s2vs))
 end
 )
 ) (* end of [auxcks] *)

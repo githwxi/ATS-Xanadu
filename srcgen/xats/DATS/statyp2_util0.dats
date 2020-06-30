@@ -85,9 +85,29 @@ val
 impred =
 sort2_is_impred(s2t0)
 //
+(*
+val () =
+println!
+("s2exp_erase: s2e0 = ", s2e0)
+*)
+//
+(*
 fun
 auxs2vs
-(s2vs
+( s2vs
+: s2varlst): s2varlst = s2vs
+*)
+//
+// HX-2020-06-30:
+// This version can interfere
+// annotated static arguments
+// Here is a possible solution:
+// 1: Impredicatives precede Predicatives
+// 2: Impredicatives and Predicatives do not mix
+//
+fun
+auxs2vs
+( s2vs
 : s2varlst
 )
 : s2varlst =
