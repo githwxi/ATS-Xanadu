@@ -734,7 +734,7 @@ typedef
 dfloat_k =
 $extype("xats_dfloat_t")
 typedef
-dfloat_k =
+ldfloat_k =
 $extype("xats_ldfloat_t")
 //
 abstype
