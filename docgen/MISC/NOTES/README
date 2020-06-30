@@ -159,6 +159,18 @@ Cheers!
 
 ######
 
+From statyp2_util0.dats:
+//
+// HX-2020-06-30:
+// This version can interfere
+// annotated static arguments
+// Here is a possible solution:
+// 1: Impredicatives precede Predicatives
+// 2: Impredicatives and Predicatives do not mix
+//
+
+######
+
 (* ###### ###### ###### ###### ###### *)
 
 ############ end of [README] ############

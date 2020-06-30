@@ -1324,8 +1324,9 @@ val the_uint_ctype : s2cstref
 val the_bool_ctype : s2cstref
 val the_char_ctype : s2cstref
 //
-val the_sfloat_ctype : s2cstref
-val the_dfloat_ctype : s2cstref
+val the_sflt_ctype : s2cstref
+val the_dflt_ctype : s2cstref
+val the_ldflt_ctype : s2cstref
 //
 val the_string_ctype : s2cstref
 //

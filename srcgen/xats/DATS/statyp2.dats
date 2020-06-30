@@ -147,9 +147,11 @@ and
 XATS_CHAR_T = symbol("xats_char_t")
 //
 val
-XATS_SFLOAT_T = symbol("xats_sfloat_t")
+XATS_SFLT_T = symbol("xats_sflt_t")
 and
-XATS_DFLOAT_T = symbol("xats_dfloat_t")
+XATS_DFLT_T = symbol("xats_dflt_t")
+and
+XATS_LDFLT_T = symbol("xats_ldflt_t")
 //
 val
 XATS_STRING_T = symbol("xats_string_t")
@@ -208,13 +210,17 @@ t2ype_make_name
 (the_sort2_tflt, XATS_CHAR_T)
 //
 implement
-the_t2ype_sfloat =
+the_t2ype_sflt =
 t2ype_make_name
-(the_sort2_tflt, XATS_SFLOAT_T)
+(the_sort2_tflt, XATS_SFLT_T)
 implement
-the_t2ype_dfloat =
+the_t2ype_dflt =
 t2ype_make_name
-(the_sort2_tflt, XATS_DFLOAT_T)
+(the_sort2_tflt, XATS_DFLT_T)
+implement
+the_t2ype_ldflt =
+t2ype_make_name
+(the_sort2_tflt, XATS_LDFLT_T)
 //
 implement
 the_t2ype_string =
@@ -482,10 +488,12 @@ ifcase
 | sym=XATS_CHAR_T =>
   the_char_ctype.type()
 //
-| sym=XATS_SFLOAT_T =>
-  the_sfloat_ctype.type()
-| sym=XATS_DFLOAT_T =>
-  the_dfloat_ctype.type()
+| sym=XATS_SFLT_T =>
+  the_sflt_ctype.type()
+| sym=XATS_DFLT_T =>
+  the_dflt_ctype.type()
+| sym=XATS_LDFLT_T =>
+  the_ldflt_ctype.type()
 //
 | sym=XATS_STRING_T =>
   the_string_ctype.type()

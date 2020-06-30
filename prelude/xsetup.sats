@@ -55,12 +55,12 @@ typedef the_char_ctype = char0
 (* ****** ****** *)
 //
 // single precision
-typedef the_sfloat_ctype = sflt
+typedef the_sflt_ctype = sflt
 // double precision
-typedef the_dfloat_ctype = dflt
+typedef the_dflt_ctype = dflt
 (*
 // ldouble precision
-typedef the_ldfloat_ctype = ldflt
+typedef the_ldflt_ctype = ldflt
 *)
 //
 (* ****** ****** *)
