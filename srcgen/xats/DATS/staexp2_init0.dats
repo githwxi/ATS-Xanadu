@@ -202,11 +202,14 @@ s2cstref_make_name("the_char_ctype")
 (* ****** ****** *)
 
 implement
-the_sfloat_ctype =
-s2cstref_make_name("the_sfloat_ctype")
+the_sflt_ctype =
+s2cstref_make_name("the_sflt_ctype")
 implement
-the_dfloat_ctype =
-s2cstref_make_name("the_dfloat_ctype")
+the_dflt_ctype =
+s2cstref_make_name("the_dflt_ctype")
+implement
+the_ldflt_ctype =
+s2cstref_make_name("the_ldflt_ctype")
 
 (* ****** ****** *)
 

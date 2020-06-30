@@ -171,9 +171,11 @@ val
 the_t2ype_char: t2ype
 //
 val
-the_t2ype_sfloat: t2ype
+the_t2ype_sflt: t2ype
 and
-the_t2ype_dfloat: t2ype
+the_t2ype_dflt: t2ype
+and
+the_t2ype_ldflt: t2ype
 //
 val
 the_t2ype_string: t2ype

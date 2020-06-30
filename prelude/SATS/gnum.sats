@@ -60,6 +60,15 @@ g_u(u0: uint): (a)
 //
 fun
 <a:t0>
+g_sf(f0: sflt): (a)
+fun
+<a:t0>
+g_df(f0: dflt): (a)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
 g_neg(x: a): a
 fun
 <a:t0>
