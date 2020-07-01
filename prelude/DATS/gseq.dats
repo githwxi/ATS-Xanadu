@@ -1020,7 +1020,7 @@ impltmp
 gseq_concat_stream
   (xss) = let
 //
-typedef
+vwtpdef
 ys = stream_vt(x0)
 //
 val
@@ -1578,7 +1578,7 @@ stream_vt_concat<z0>(zss)
 ) where
 {
 //
-typedef
+vwtpdef
 zs = stream_vt(z0)
 //
 val
@@ -1613,7 +1613,7 @@ stream_vt_concat<z0>(zss)
 ) where
 {
 //
-typedef
+vwtpdef
 zs = stream_vt(z0)
 //
 val
@@ -1722,7 +1722,7 @@ stream_vt_concat<z0>(zss)
 ) where
 {
 //
-typedef
+vwtpdef
 zs = stream_vt(z0)
 //
 val
@@ -1758,7 +1758,7 @@ stream_vt_concat<z0>(zss)
 ) where
 {
 //
-typedef
+vwtpdef
 zs = stream_vt(z0)
 //
 val

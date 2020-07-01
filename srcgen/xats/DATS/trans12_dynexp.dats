@@ -2957,7 +2957,9 @@ T_SEXPDEF(knd) = knd.node()
 in
 //
 ifcase
+//
 | (knd < 0) => s2e0
+//
 | (knd=PROPSORT) =>
   auxck2(s2t0, the_sort2_prop)
 | (knd=VIEWSORT) =>
@@ -2980,22 +2982,6 @@ auxck2
 ( s2tf: sort2
 , s2t1: sort2): s2exp =
 (
-let
-//
-(*
-val () =
-println!
-("\
-aux_sexpdef: \
-auxck2: s2tf = ", s2tf)
-val () =
-println!
-("\
-aux_sexpdef: \
-auxck2: s2t1 = ", s2t1)
-*)
-//
-in
 //
 case+ s2tf of
 //
@@ -3010,9 +2996,9 @@ _(*non-S2Efun*) =>
   (s2tf <= s2t1)
   then s2e0 else let
     val
-    s2t0 = auxst0(s2t0)
+    s2t1 = auxst0(s2t1)
   in
-    s2exp_cast(loc0, s2e0, s2t0)
+    s2exp_cast(loc0, s2e0, s2t1)
   end
 ) where
 {
@@ -3025,9 +3011,19 @@ _(*non-S2Efun*) =>
     | _ (* non-S2Tfun *) => s2tf
   )
 }
-end // end-of-let
+) where
+{
 //
-) (* end of auxck2 *)
+(*
+val () =
+println!
+("aux_sexpdef: auxck2: s2tf = ", s2tf)
+val () =
+println!
+("aux_sexpdef: auxck2: s2t1 = ", s2t1)
+*)
+//
+} (* end of auxck2 *)
 //
 } (* end of [where] *) // end of [val]
 //

@@ -615,12 +615,12 @@ implement
 s2exp_cast
 (loc, s2e, s2t) = let
 //
-(*
+// (*
 val () =
 println!("s2exp_cast: s2e = ", s2e)
 val () =
 println!("s2exp_cast: s2t = ", s2t)
-*)
+// *)
 //
 in
   s2exp_make_node(s2t, S2Ecast(loc, s2e, s2t))
