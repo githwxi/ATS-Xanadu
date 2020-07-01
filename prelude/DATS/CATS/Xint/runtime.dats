@@ -620,7 +620,7 @@ xint_a1ptr_set_at
 #extern
 fun
 xint_a1ptr_set_at_raw
-{a:vtype}{n:int}
+{a:vwtp}{n:int}
 ( A0:
 ! a1ptr(?a, n), i0: nintlt(n), x0: a): void
 //
