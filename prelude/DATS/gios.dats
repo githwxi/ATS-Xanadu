@@ -59,7 +59,7 @@ fgetc_ref(g_stdin<>())
 
 impltmp
 <>(*tmp*)
-g_inp_chars() =
+g_inp_cstream() =
 (
   auxmain(g_stdin<>())
 ) where

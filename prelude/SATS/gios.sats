@@ -49,7 +49,7 @@ g_stderr(): FILEref
 fun<>
 g_inp_char(): sint
 fun<>
-g_inp_chars(): stream_vt(int)
+g_inp_cstream(): stream_vt(int)
 
 (* ****** ****** *)
 
