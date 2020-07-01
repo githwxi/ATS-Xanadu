@@ -44,23 +44,23 @@
 
 abstbox
 a0ref_vt_x0(a:vt)
-absvtbox
+absvtbx
 a0ptr_vt_vx(a:vt)
 typedef
 a0ref(a:vt) = a0ref_vt_x0(a)
-vtypedef
+vwtpdef
 a0ptr(a:vt) = a0ptr_vt_vx(a)
 
 (* ****** ****** *)
 //
 abstbox
-a1ref_vt_i0_x0(a:vt, n:int)
-absvtbox
-a1ptr_vt_i0_vx(a:vt, n:int)
+a1ref_vt_i0_x0(a:vt, n:i0)
+absvtbx
+a1ptr_vt_i0_vx(a:vt, n:i0)
 typedef
-a1ref(a:vt,n:int) = a1ref_vt_i0_x0(a,n)
-vtypedef
-a1ptr(a:vt,n:int) = a1ptr_vt_i0_vx(a,n)
+a1ref(a:vt,n:i0) = a1ref_vt_i0_x0(a,n)
+vwtpdef
+a1ptr(a:vt,n:i0) = a1ptr_vt_i0_vx(a,n)
 //
 (* ****** ****** *)
 //
@@ -172,34 +172,34 @@ a1ptr_make_nval
 fun
 <a:t0>
 a1ref_make_list
-{n:int}
+{n:i0}
 ( xs: list(a, n) ): a1ref(a, n)
 fun
 <a:t0>
 a1ptr_make_list
-{n:int}
+{n:i0}
 ( xs: list(a, n) ): a1ptr(a, n)
 //
 fun
 <a:vt>
 a1ref_make_list_vt
-{n:int}
+{n:i0}
 (xs: list_vt(a, n)): a1ref(a, n)
 fun
 <a:vt>
 a1ptr_make_list_vt
-{n:int}
+{n:i0}
 (xs: list_vt(a, n)): a1ptr(a, n)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-<n:int>
+<n:i0>
 a1ref_length(a1ref(a, n)): int(n)
 fun
 <a:vt>
-<n:int>
+<n:i0>
 a1ptr_length(!a1ptr(a, n)): int(n)
 //
 (* ****** ****** *)
@@ -207,34 +207,34 @@ a1ptr_length(!a1ptr(a, n)): int(n)
 fun
 <a:vt>
 a1ref_get_at
-{n:int}
+{n:i0}
 ( A0
 : a1ref(a, n), i0: nintlt(n)): ~a
 fun
 <a:vt>
 a1ptr_get_at
-{n:int}
+{n:i0}
 ( A0:
 ! a1ptr(a, n), i0: nintlt(n)): ~a
 //
 fun
 <a:vt>
 a1ref_set_at
-{n:int}
+{n:i0}
 ( A0:
   a1ref(a, n)
 , i0: nintlt(n), x0: a(*new*)): void
 fun
 <a:vt>
 a1ptr_set_at
-{n:int}
+{n:i0}
 ( A0:
 ! a1ptr(a, n)
 , i0: nintlt(n), x0: a(*new*)): void
 fun
 <a:vt>
 a1ptr_set_at_raw
-{n:int}
+{n:i0}
 ( A0:
 ! a1ptr(?a, n)
 , i0: nintlt(n), x0: a(*ini*)): void
@@ -242,14 +242,14 @@ a1ptr_set_at_raw
 fun
 <a:vt>
 a1ref_exch_at
-{n:int}
+{n:i0}
 ( A0:
   a1ref(a, n)
 , i0: nintlt(n), x0: a(*new*)): a(*old*)
 fun
 <a:vt>
 a1ptr_exch_at
-{n:int}
+{n:i0}
 ( A0:
 ! a1ptr(a, n)
 , i0: nintlt(n), x0: a(*new*)): a(*old*)
@@ -281,12 +281,12 @@ a1ptr_print(A0: !a1ptr(a)): void
 fun
 <a:t0>
 a1ref_listize
-{n:int}
+{n:i0}
 (A0: a1ref(a, n)): list_vt(a,n)
 fun
 <a:vt>
 a1ref_listize0
-{n:int}
+{n:i0}
 (A0: a1ref(a, n)): list_vt(a,n)
 
 (* ****** ****** *)
@@ -294,12 +294,12 @@ a1ref_listize0
 fun
 <a:t0>
 a1ref_rlistize
-{n:int}
+{n:i0}
 (A0: a1ref(a, n)): list_vt(a,n)
 fun
 <a:vt>
 a1ref_rlistize0
-{n:int}
+{n:i0}
 (A0: a1ref(a, n)): list_vt(a,n)
 
 (* ****** ****** *)
@@ -307,12 +307,12 @@ a1ref_rlistize0
 fun
 <a:vt>
 a1ref_streamize
-{n:int}
+{n:i0}
 (A0: a1ref(a, n)): stream_vt(a)
 fun
 <a:vt>
 a1ptr_streamize
-{n:int}
+{n:i0}
 (A0: a1ptr(a, n)): stream_vt(a)
 //
 (* ****** ****** *)
@@ -320,31 +320,31 @@ a1ptr_streamize
 fun
 <x0:t0>
 a1ref_forall
-{n:int}(A0: a1ref(x0, n)): bool
+{n:i0}(A0: a1ref(x0, n)): bool
 fun
 <x0:vt>
 a1ref_forall0
-{n:int}(A0: a1ref(x0, n)): bool
+{n:i0}(A0: a1ref(x0, n)): bool
 //
 fun
 <x0:t0>
 a1ref_foreach
-{n:int}(A0: a1ref(x0, n)): void
+{n:i0}(A0: a1ref(x0, n)): void
 fun
 <x0:vt>
 a1ref_foreach0
-{n:int}(A0: a1ref(x0, n)): void
+{n:i0}(A0: a1ref(x0, n)): void
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 a1ref_rforall
-{n:int}(A0: a1ref(x0, n)): bool
+{n:i0}(A0: a1ref(x0, n)): bool
 fun
 <x0:vt>
 a1ref_rforall0
-{n:int}(A0: a1ref(x0, n)): bool
+{n:i0}(A0: a1ref(x0, n)): bool
 //
 (* ****** ****** *)
 //

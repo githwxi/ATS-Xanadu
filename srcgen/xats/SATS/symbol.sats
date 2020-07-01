@@ -161,12 +161,18 @@ val PROP_symbol : symbol // prop sort
 val VIEW_symbol : symbol // view sort
 //
 val TBOX_symbol : symbol // tbox sort
+(*
 val TFLT_symbol : symbol // tflt sort
-val TYPE_symbol : symbol // tflt sort
+*)
+val TYPE_symbol : symbol // type sort
 //
+val VTBX_symbol : symbol // vtbx sort
+val VWTP_symbol : symbol // vwtp sort
+(*
 val VTBOX_symbol : symbol // vtbox sort
 val VTFLT_symbol : symbol // vtflt sort
 val VTYPE_symbol : symbol // vtflt sort
+*)
 //
 (* ****** ****** *)
 

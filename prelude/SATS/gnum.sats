@@ -110,58 +110,58 @@ g_mod(x: a, y: a): a
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_0((*void*)): (a)
 fun
-<a:vtype>
+<a:vt>
 gl_1((*void*)): (a)
 fun
-<a:vtype>
+<a:vt>
 gl_2((*void*)): (a)
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_add00(x: ~a, y: ~a): a
 fun
-<a:vtype>
+<a:vt>
 gl_add11(x: !a, y: !a): a
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_sub00(x: ~a, y: ~a): a
 fun
-<a:vtype>
+<a:vt>
 gl_sub11(x: !a, y: !a): a
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_mul00(x: ~a, y: ~a): a
 fun
-<a:vtype>
+<a:vt>
 gl_mul11(x: !a, y: !a): a
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_div00(x: ~a, y: ~a): a
 fun
-<a:vtype>
+<a:vt>
 gl_div11(x: !a, y: !a): a
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_mod00(x: ~a, y: ~a): a
 fun
-<a:vtype>
+<a:vt>
 gl_mod11(x: !a, y: !a): a
 
 (* ****** ****** *)

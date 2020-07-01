@@ -11,11 +11,11 @@
 //
 absprop
 gseq_prop
-(x0: tflt, xs: tflt)
+(x0: t0, xs: t0)
 propdef
 gseq
-( x0: tflt
-, xs: tflt) = gseq_prop(x0, xs)
+( x0: t0
+, xs: t0) = gseq_prop(x0, xs)
 *)
 //
 (* ****** ****** *)

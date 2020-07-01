@@ -2201,12 +2201,12 @@ s2tx_view = S2TXTsrt(the_sort2_view)
 val
 s2tx_tbox = S2TXTsrt(the_sort2_tbox)
 val
-s2tx_tflt = S2TXTsrt(the_sort2_tflt)
+s2tx_type = S2TXTsrt(the_sort2_type)
 //
 val
-s2tx_vtbox = S2TXTsrt(the_sort2_vtbox)
+s2tx_vtbx = S2TXTsrt(the_sort2_vtbx)
 val
-s2tx_vtflt = S2TXTsrt(the_sort2_vtflt)
+s2tx_vwtp = S2TXTsrt(the_sort2_vwtp)
 //
 in (* in-of-local *)
 //
@@ -2226,17 +2226,23 @@ the_sortenv_padd($SYM.VIEW_symbol, s2tx_view)
 //
 val () =
 the_sortenv_padd($SYM.TBOX_symbol, s2tx_tbox)
+(*
 val () =
 the_sortenv_padd($SYM.TFLT_symbol, s2tx_tflt)
+*)
 val () =
-the_sortenv_padd($SYM.TYPE_symbol, s2tx_tflt)
+the_sortenv_padd($SYM.TYPE_symbol, s2tx_type)
 //
 val () =
-the_sortenv_padd($SYM.VTBOX_symbol, s2tx_vtbox)
+the_sortenv_padd($SYM.VTBX_symbol, s2tx_vtbx)
+val () =
+the_sortenv_padd($SYM.VWTP_symbol, s2tx_vwtp)
+(*
 val () =
 the_sortenv_padd($SYM.VTFLT_symbol, s2tx_vtflt)
 val () =
 the_sortenv_padd($SYM.VTYPE_symbol, s2tx_vtflt)
+*)
 //
 end // end of [local]
 

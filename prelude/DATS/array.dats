@@ -94,7 +94,7 @@ loop
   (?a, n)
 , i0
 : int(i)
-, x0: a): a1ptr(a, n) =
+, x0:(a)): a1ptr(a, n) =
 (
 if
 (i0 < n0)

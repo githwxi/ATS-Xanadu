@@ -48,7 +48,7 @@ dvdcnq_conquer
 //
 (* ****** ****** *)
 
-datavtype
+datavwtp
 either
 (i: vt, o: vt) =
 | either_l of (i) | either_r of (o)

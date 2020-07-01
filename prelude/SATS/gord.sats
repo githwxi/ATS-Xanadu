@@ -114,74 +114,74 @@ g_cmpz(x: a): sint
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_eq00(~a, ~a): bool
 fun
-<a:vtype>
+<a:vt>
 gl_eq11(!a, !a): bool
 
 fun
-<a:vtype>
+<a:vt>
 gl_neq00(~a, ~a): bool
 fun
-<a:vtype>
+<a:vt>
 gl_neq11(!a, !a): bool
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_lt00(~a, ~a): bool
 fun
-<a:vtype>
+<a:vt>
 gl_lt11(!a, !a): bool
 
 fun
-<a:vtype>
+<a:vt>
 gl_gt00(~a, ~a): bool
 fun
-<a:vtype>
+<a:vt>
 gl_gt11(!a, !a): bool
 
 fun
-<a:vtype>
+<a:vt>
 gl_lte00(~a, ~a): bool
 fun
-<a:vtype>
+<a:vt>
 gl_lte11(!a, !a): bool
 
 fun
-<a:vtype>
+<a:vt>
 gl_gte00(~a, ~a): bool
 fun
-<a:vtype>
+<a:vt>
 gl_gte11(!a, !a): bool
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_cmp00(~a, ~a): sint
 fun
-<a:vtype>
+<a:vt>
 gl_cmp11(!a, !a): sint
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_max00(x: ~a, y: ~a): (a)
 fun
-<a:vtype>
+<a:vt>
 gl_max11(x: !a, y: !a): (a)
 
 (* ****** ****** *)
 
 fun
-<a:vtype>
+<a:vt>
 gl_min00(x: ~a, y: ~a): (a)
 fun
-<a:vtype>
+<a:vt>
 gl_min11(x: !a, y: !a): (a)
 
 (* ****** ****** *)

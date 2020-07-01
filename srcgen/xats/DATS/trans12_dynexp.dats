@@ -2962,17 +2962,14 @@ ifcase
   auxck2(s2t0, the_sort2_prop)
 | (knd=VIEWSORT) =>
   auxck2(s2t0, the_sort2_view)
-| (knd=TFLTSORT) =>
 (*
-//
-// HX-2020-03-21:
-// TYPEDEF = VTYPEDEF
-//
+| (knd=TFLTSORT) =>
   auxck2(s2t0, the_sort2_tflt)
 *)
-  auxck2(s2t0, the_sort2_vtflt)
-| (knd=VTFLTSORT) =>
-  auxck2(s2t0, the_sort2_vtflt)
+| (knd=TYPESORT) =>
+  auxck2(s2t0, the_sort2_type)
+| (knd=VWTPSORT) =>
+  auxck2(s2t0, the_sort2_vwtp)
 | _(* SEXPDEF *) =>
   let val () = assertloc(false) in s2e0 end
 //
@@ -3228,10 +3225,13 @@ ifcase
 | (knd=VIEWSORT) => the_sort2_view
 //
 | (knd=TBOXSORT) => the_sort2_tbox
+(*
 | (knd=TFLTSORT) => the_sort2_tflt
+*)
+| (knd=TYPESORT) => the_sort2_type
 //
-| (knd=VTBOXSORT) => the_sort2_vtbox
-| (knd=VTFLTSORT) => the_sort2_vtflt
+| (knd=VTBXSORT) => the_sort2_vtbx
+| (knd=VWTPSORT) => the_sort2_vwtp
 //
 | _(* SEXPDEF *) =>
   let
@@ -3242,7 +3242,7 @@ ifcase
 *)
 //
     val () =
-    assertloc(false) in the_sort2_vtflt
+    assertloc(false) in the_sort2_vwtp
   end
 //
 end // end-of-let
