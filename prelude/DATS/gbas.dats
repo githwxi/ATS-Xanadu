@@ -49,6 +49,10 @@ not(g_equal<a>(x, y))
 )
 //
 (* ****** ****** *)
+impltmp
+{a:vt}
+g_equal<a> = gl_eq11<a>
+(* ****** ****** *)
 //
 impltmp
 {a:vt}

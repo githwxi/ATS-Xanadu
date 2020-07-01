@@ -36,15 +36,6 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-fun
-<a:t0>
-g_eq(a, a): bool
-fun
-<a:t0>
-g_neq(a, a): bool
-
-(* ****** ****** *)
 //
 fun
 <a:t0>
