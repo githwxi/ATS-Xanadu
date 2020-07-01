@@ -58,7 +58,7 @@ println!
 //
 } (* end of [where] *)
 //
-end // end of [mytest_arg]
+endwhr // end of [mytest_arg]
 
 (* ****** ****** *)
 

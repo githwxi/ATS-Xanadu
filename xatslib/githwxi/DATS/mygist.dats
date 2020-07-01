@@ -130,7 +130,7 @@ gint_rdigitize_sint
 val
 b0 = rdigitize$base<>()
 //
-typedef
+vwtpdef
 digitseq = stream_vt(sint)
 //
 fun
@@ -162,7 +162,7 @@ end // end of [else] // end-of-if
 //
 #extern
 fun
-<a:type>
+<a:t0>
 stream_vt_mcons
 ( x0: a
 , xss
@@ -188,7 +188,7 @@ map0$fopr
 //
 #extern
 fun
-<a:type>
+<a:t0>
 list_permutize
   (xs: list(a)): stream_vt(list(a))
 //
@@ -260,7 +260,7 @@ auxmain2
 : stream_vt(list(a)) =
 $llazy
 (
-g_free<a>(ys);
+g_free(ys);
 let
 val
 xss =
@@ -296,13 +296,13 @@ end // end-of-let // end of [auxmain2]
 //
 #extern
 fun
-<a:type>
+<a:t0>
 list_nchoose1
 (xs: list(a), n0: nint): stream_vt(list(a))
 //
 #extern
 fun
-<a:type>
+<a:t0>
 list_nchoose2
 (xs: list(a), n0: nint): stream_vt@(list(a), list(a))
 //
