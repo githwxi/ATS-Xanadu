@@ -2056,24 +2056,22 @@ _(*rest-of-s1exp*) =>
 let
 val s2e0 =
 trans12_sexp(s1e0)
+val s2t1 = s2e0.sort()
 //
 (*
 val ((*void*)) =
 println!
-("\
-trans12_sexp_ck: \
-s2e0.sort() = ", s2e0.sort())
+("trans12_sexp_ck: s2t1 = ", s2t1)
 *)
 //
 in
-  if
-  s2e0.sort() <= s2t0
-  then s2e0
-  else
-  s2exp_cast(s1e0.loc(), s2e0, s2t0)
+if
+s2t1 <= s2t0
+then s2e0 else
+s2exp_cast(s1e0.loc(), s2e0, s2t0)
 end // end of [let]
 //
-end // end of [trans12_sexp_ck]
+end (* end of [trans12_sexp_ck] *)
 
 (* ****** ****** *)
 

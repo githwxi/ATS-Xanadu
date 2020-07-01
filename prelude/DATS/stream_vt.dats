@@ -108,7 +108,7 @@ stream_vt_print_all
 loop(xs, 0(*i0*))
 ) where
 {
-typedef
+vwtpdef
 xs = stream_vt(a)
 fun
 loop
@@ -145,7 +145,7 @@ stream_vt_print_len
 loop(xs, 0(*i0*))
 ) where
 {
-typedef
+vwtpdef
 xs = stream_vt(a)
 fun
 loop(xs: xs, i0: nint): void =
@@ -217,7 +217,7 @@ stream_vt_drop
 ) where
 {
 //
-typedef xs = stream_vt(a)
+vwtpdef xs = stream_vt(a)
 //
 fun
 auxloop
@@ -246,7 +246,7 @@ stream_vt_take
 ) where
 {
 //
-typedef xs = stream_vt(a)
+vwtpdef xs = stream_vt(a)
 //
 fun
 auxmain
