@@ -15,12 +15,12 @@ fun
 <a1:vt>
 gfun_not_fnp1
 ( f0
-: fnp1(a1,bool): cfr1(a1,bool)
+: fnp1(a1,bool)): cfr1(a1,bool)
 fun
 <a1:vt>
 gfun_not_cfr1
 ( f0
-: cfr1(a1,bool): cfr1(a1,bool)
+: cfr1(a1,bool)): cfr1(a1,bool)
 
 (* ****** ****** *)
 
@@ -32,7 +32,7 @@ gfun_not_cfr1
 fun
 <x0:t0
 ,xs:t0>
-gfun_memq_gseq(xs): cfr(x0,bool)
+gfun_memq_gseq(xs): cfr1(x0,bool)
 
 (* ****** ****** *)
 
