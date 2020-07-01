@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-** For x-for-loops
+** For forint-loops
 *)
 (* ****** ****** *)
 //
