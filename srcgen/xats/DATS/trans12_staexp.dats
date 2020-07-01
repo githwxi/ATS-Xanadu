@@ -1438,7 +1438,7 @@ s1e2.node() of
 ) : s1explst // end of [val]
 //
 val
-s2t0 = the_sort2_tflt
+s2t0 = the_sort2_type
 val
 tnm1 =
 (
@@ -1465,7 +1465,7 @@ in
 s2e0 where
 {
   val s2e0 =
-  s2exp_tyext(the_sort2_tflt, tnm1, s2es)
+  s2exp_tyext(the_sort2_type, tnm1, s2es)
 (*
   val ((*void*)) =
   println!("trans12_sexp: ")

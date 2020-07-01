@@ -48,9 +48,9 @@ SYM = "./../SATS/symbol.sats"
 macdef
 VIEW = $SYM.VIEW_symbol
 macdef
-VTBOX = $SYM.VTBOX_symbol
+VTBX = $SYM.VTBX_symbol
 macdef
-VTFLT = $SYM.VTFLT_symbol
+VWTP = $SYM.VWTP_symbol
 //
 overload
 = with $STM.eq_stamp_stamp
@@ -329,10 +329,10 @@ case+ s2t0 of
     ifcase
     | sym=VIEW =>
       the_sort2_prop
-    | sym=VTBOX =>
+    | sym=VTBX =>
       the_sort2_tbox
-    | sym=VTFLT =>
-      the_sort2_tflt
+    | sym=VWTP =>
+      the_sort2_type
     | _ (* else *) => s2t0
     )
     ) where

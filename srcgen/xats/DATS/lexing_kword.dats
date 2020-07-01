@@ -123,19 +123,26 @@ T_IMPLEMENT_ = T_IMPLMNT(IMPgen)
 //
 macdef
 T_SEXPDEF_ = T_SEXPDEF(~1)
+//
 macdef
 T_PROPDEF_ = T_SEXPDEF(PROPSORT)
 macdef
 T_VIEWDEF_ = T_SEXPDEF(VIEWSORT)
+//
 macdef
-T_TYPEDEF_ = T_SEXPDEF(TFLTSORT)
+T_TBOXDEF_ = T_SEXPDEF(TBOXSORT)
+macdef
+T_TFLTDEF_ = T_SEXPDEF(TFLTSORT)
+macdef
+T_TYPEDEF_ = T_SEXPDEF(TYPESORT)
+macdef
+T_VWTPDEF_ = T_SEXPDEF(VWTPSORT)
+(*
 macdef
 T_VTYPEDEF_ = T_SEXPDEF(VTFLTSORT)
+*)
 //
 (* ****** ****** *)
-//
-macdef
-T_ABSTYPE_ = T_ABSTYPE(TFLTSORT)
 //
 macdef
 T_ABSPROP_ = T_ABSTYPE(PROPSORT)
@@ -146,13 +153,21 @@ macdef
 T_ABSTBOX_ = T_ABSTYPE(TBOXSORT)
 macdef
 T_ABSTFLT_ = T_ABSTYPE(TFLTSORT)
+macdef
+T_ABSTYPE_ = T_ABSTYPE(TYPESORT)
 //
+macdef
+T_ABSVTBX_ = T_ABSTYPE(VTBXSORT)
+macdef
+T_ABSVWTP_ = T_ABSTYPE(VWTPSORT)
+(*
 macdef
 T_ABSVTYPE_ = T_ABSTYPE(VTFLTSORT)
 macdef
 T_ABSVTBOX_ = T_ABSTYPE(VTBOXSORT)
 macdef
 T_ABSVTFLT_ = T_ABSTYPE(VTFLTSORT)
+*)
 //
 (* ****** ****** *)
 //
@@ -162,9 +177,13 @@ macdef
 T_DATAVIEW_ = T_DATATYPE(VIEWSORT)
 //
 macdef
-T_DATATYPE_ = T_DATATYPE(TFLTSORT)
+T_DATATYPE_ = T_DATATYPE(TYPESORT)
+macdef
+T_DATAVWTP_ = T_DATATYPE(VWTPSORT)
+(*
 macdef
 T_DATAVTYPE_ = T_DATATYPE(VTFLTSORT)
+*)
 //
 (* ****** ****** *)
 //
@@ -173,9 +192,13 @@ T_WITHPROP_ = T_WITHTYPE(PROPSORT)
 macdef
 T_WITHVIEW_ = T_WITHTYPE(VIEWSORT)
 macdef
-T_WITHTYPE_ = T_WITHTYPE(TFLTSORT)
+T_WITHTYPE_ = T_WITHTYPE(TYPESORT)
+macdef
+T_WITHVWTP_ = T_WITHTYPE(VWTPSORT)
+(*
 macdef
 T_WITHVTYPE_ = T_WITHTYPE(VTFLTSORT)
+*)
 //
 (* ****** ****** *)
 
@@ -355,22 +378,40 @@ val () = myins("sortdef", T_SORTDEF)
 val () = myins("sexpdef", T_SEXPDEF_)
 val () = myins("propdef", T_PROPDEF_)
 val () = myins("viewdef", T_VIEWDEF_)
+//
+val () = myins("tboxdef", T_TBOXDEF_)
 val () = myins("typedef", T_TYPEDEF_)
+val () = myins("vwtpdef", T_VWTPDEF_)
+(*
 val () = myins("vtypedef", T_VTYPEDEF_)
+*)
 //
 val () = myins("abstype", T_ABSTYPE_)
 val () = myins("absprop", T_ABSPROP_)
 val () = myins("absview", T_ABSVIEW_)
 val () = myins("abstbox", T_ABSTBOX_)
+(*
 val () = myins("abstflt", T_ABSTFLT_)
+*)
+//
+val () = myins("absvwtp", T_ABSVWTP_)
+val () = myins("absvtbx", T_ABSVTBX_)
+(*
+val () = myins("absvwtx", T_ABSVTBX_)
+val () = myins("absvwtf", T_ABSVTBX_)
+*)
+(*
 val () = myins("absvtype", T_ABSVTYPE_)
 val () = myins("absvtbox", T_ABSVTBOX_)
 val () = myins("absvtflt", T_ABSVTFLT_)
+*)
 //
 val () = myins("absimpl", T_ABSIMPL)
 val () = myins("absopen", T_ABSOPEN)
 //
+(*
 val () = myins("#excptn", T_EXCPTCON)
+*)
 val () = myins("excptcon", T_EXCPTCON)
 //
 val () = myins("datasort", T_DATASORT)
@@ -378,7 +419,10 @@ val () = myins("datasort", T_DATASORT)
 val () = myins("dataprop", T_DATAPROP_)
 val () = myins("dataview", T_DATAVIEW_)
 val () = myins("datatype", T_DATATYPE_)
+val () = myins("datavwtp", T_DATAVWTP_)
+(*
 val () = myins("datavtype", T_DATAVTYPE_)
+*)
 //
 (*
 //
@@ -418,7 +462,10 @@ val () = myins("$delay_vt")
 val () = myins("withtype", T_WITHTYPE_)
 val () = myins("withprop", T_WITHPROP_)
 val () = myins("withview", T_WITHVIEW_)
+val () = myins("withvwtp", T_WITHVWTP_)
+(*
 val () = myins("withvtype", T_WITHVTYPE_)
+*)
 //
 val () =
   myins("#if", T_SRP_IFEXP_)

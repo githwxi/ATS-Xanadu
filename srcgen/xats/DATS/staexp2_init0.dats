@@ -80,16 +80,29 @@ s2tb_view =
 val
 s2tb_tbox =
   T2BASimp(TBOXSORT, $SYM.TBOX_symbol)
+(*
 val
 s2tb_tflt =
-  T2BASimp(TFLTSORT, $SYM.TFLT_symbol)
+  T2BASimp(TBOXSORT, $SYM.TFLT_symbol)
+*)
+val
+s2tb_type =
+  T2BASimp(TYPESORT, $SYM.TYPE_symbol)
 //
+val
+s2tb_vtbx =
+  T2BASimp(VTBXSORT, $SYM.VTBX_symbol)
+val
+s2tb_vwtp =
+  T2BASimp(VWTPSORT, $SYM.VWTP_symbol)
+(*
 val
 s2tb_vtbox =
   T2BASimp(VTBOXSORT, $SYM.VTBOX_symbol)
 val
 s2tb_vtflt =
   T2BASimp(VTFLTSORT, $SYM.VTFLT_symbol)
+*)
 //
 in // in of [local]
 //
@@ -117,12 +130,22 @@ the_sort2_view = S2Tbas(s2tb_view)
 //
 implement
 the_sort2_tbox = S2Tbas(s2tb_tbox)
+(*
 implement
 the_sort2_tflt = S2Tbas(s2tb_tflt)
+*)
+implement
+the_sort2_type = S2Tbas(s2tb_type)
+implement
+the_sort2_vtbx = S2Tbas(s2tb_vtbx)
+implement
+the_sort2_vwtp = S2Tbas(s2tb_vwtp)
+(*
 implement
 the_sort2_vtbox = S2Tbas(s2tb_vtbox)
 implement
 the_sort2_vtflt = S2Tbas(s2tb_vtflt)
+*)
 //
 implement
 the_sort2_none = S2Tnone0((*void*))

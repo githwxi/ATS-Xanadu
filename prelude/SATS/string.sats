@@ -85,9 +85,9 @@ stropt_unsome
 
 (* ****** ****** *)
 
-absvtype
+absvwtp
 strptr_i0_vx(n:int) <= ptr
-vtypedef
+vwtpdef
 strptr(n:int) = strptr_i0_vx(n)
 
 (* ****** ****** *)

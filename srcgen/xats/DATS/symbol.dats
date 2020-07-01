@@ -469,17 +469,25 @@ VIEW_symbol = symbol_make("view")
 //
 implement
 TBOX_symbol = symbol_make("tbox")
+(*
 implement
 TFLT_symbol = symbol_make("tflt")
+*)
 implement
 TYPE_symbol = symbol_make("type")
 //
+implement
+VTBX_symbol = symbol_make("vtbx")
+implement
+VWTP_symbol = symbol_make("vwtp")
+(*
 implement
 VTBOX_symbol = symbol_make("vtbox")
 implement
 VTFLT_symbol = symbol_make("vtflt")
 implement
 VTYPE_symbol = symbol_make("vtype")
+*)
 //
 (* ****** ****** *)
 

@@ -171,7 +171,7 @@ end // end of [local]
 implement
 the_t2ype_void =
 t2ype_make_name
-(the_sort2_tflt, XATS_VOID_T)
+(the_sort2_type, XATS_VOID_T)
 //
 implement
 the_t2ype_p1tr =
@@ -184,7 +184,7 @@ the_t2ype_p2tr =
 t2ype_make_name(s2t0, XATS_P2TR_T)
 ) where
 {
-val s2ts = list_sing(the_sort2_vtflt)
+val s2ts = list_sing(the_sort2_vwtp)
 val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
 }
 //
@@ -193,34 +193,34 @@ val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
 implement
 the_t2ype_sint =
 t2ype_make_name
-(the_sort2_tflt, XATS_SINT_T)
+(the_sort2_type, XATS_SINT_T)
 implement
 the_t2ype_uint =
 t2ype_make_name
-(the_sort2_tflt, XATS_UINT_T)
+(the_sort2_type, XATS_UINT_T)
 //
 implement
 the_t2ype_bool =
 t2ype_make_name
-(the_sort2_tflt, XATS_BOOL_T)
+(the_sort2_type, XATS_BOOL_T)
 //
 implement
 the_t2ype_char =
 t2ype_make_name
-(the_sort2_tflt, XATS_CHAR_T)
+(the_sort2_type, XATS_CHAR_T)
 //
 implement
 the_t2ype_sflt =
 t2ype_make_name
-(the_sort2_tflt, XATS_SFLT_T)
+(the_sort2_type, XATS_SFLT_T)
 implement
 the_t2ype_dflt =
 t2ype_make_name
-(the_sort2_tflt, XATS_DFLT_T)
+(the_sort2_type, XATS_DFLT_T)
 implement
 the_t2ype_ldflt =
 t2ype_make_name
-(the_sort2_tflt, XATS_LDFLT_T)
+(the_sort2_type, XATS_LDFLT_T)
 //
 implement
 the_t2ype_string =
@@ -235,7 +235,7 @@ the_t2ype_lazy =
 t2ype_make_name(s2t0, XATS_LAZY_T)
 ) where
 {
-val s2ts = list_sing(the_sort2_tflt)
+val s2ts = list_sing(the_sort2_type)
 val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
 }
 implement
@@ -244,8 +244,8 @@ the_t2ype_llazy =
 t2ype_make_name(s2t0, XATS_LLAZY_VT)
 ) where
 {
-val s2ts = list_sing(the_sort2_vtflt)
-val s2t0 = S2Tfun(s2ts, the_sort2_vtbox)
+val s2ts = list_sing(the_sort2_vwtp)
+val s2t0 = S2Tfun(s2ts, the_sort2_vtbx)
 }
 
 (* ****** ****** *)
@@ -253,7 +253,7 @@ val s2t0 = S2Tfun(s2ts, the_sort2_vtbox)
 implement
 the_t2ype_excptn =
 t2ype_make_name
-(the_sort2_vtbox, XATS_EXCPTN_VT)
+(the_sort2_vtbx, XATS_EXCPTN_VT)
 //
 (* ****** ****** *)
 

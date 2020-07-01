@@ -590,7 +590,7 @@ val () =
 println!("s2exp_ctcd: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_tflt
+val s2t = the_sort2_type
 //
 in
   s2exp_make_node(s2t, S2Ectcd(loc, s2e))
@@ -605,7 +605,7 @@ val () =
 println!("s2exp_cimp: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_tflt
+val s2t = the_sort2_type
 //
 in
   s2exp_make_node(s2t, S2Ecimp(loc, s2e))
@@ -771,7 +771,7 @@ s2exp_make_node
   (
   if
   funclo2_islin(fc2)
-  then the_sort2_vtbox else the_sort2_tbox
+  then the_sort2_vtbx else the_sort2_tbox
   ) : sort2 // end of [val]
 } (* end of [s2exp_fun_full] *)
 //
@@ -878,9 +878,9 @@ s2exp_list1
   if
   lin
   then
-  the_sort2_vtflt
+    the_sort2_vwtp
   else
-    the_sort2_tflt(*~lin*)
+    the_sort2_type(*~lin*)
   // end of [if]
   ) : sort2 // end of [val]
   val ls2es =
@@ -904,12 +904,12 @@ s2exp_list2
   if
   islin
   then
-  the_sort2_vtflt else
+  the_sort2_vwtp else
   (
-    if
-    s2explst_islin(s2es2)
-    then
-    the_sort2_vtflt else the_sort2_tflt(*~lin*)
+  if
+  s2explst_islin(s2es2)
+  then
+  the_sort2_vwtp else the_sort2_type
   )
   ) : sort2 // end of [val]
   val npf = list_length(s2es1)
@@ -939,11 +939,11 @@ s2explst_islin(s2es)
 in
 if
 islin
-then the_sort2_vtflt
-else (the_sort2_tflt)
+then (the_sort2_vwtp)
+else (the_sort2_type)
 end
 )
-else (the_sort2_vtbox)
+else (the_sort2_vtbx)
 ) : sort2 // end of [val]
 //
 val knd =
@@ -986,10 +986,10 @@ else s2explst_islin(s2es2)
 in
 if
 islin
-then the_sort2_vtflt
-else (the_sort2_tflt)
+then (the_sort2_vwtp)
+else (the_sort2_type)
 end
-else (the_sort2_vtbox)
+else (the_sort2_vtbx)
 ) : sort2 // end of [val]
 //
 val knd =
@@ -1024,15 +1024,15 @@ then
 (
 if
 knd = 0
-then the_sort2_vtflt
-else the_sort2_vtbox
+then (the_sort2_vwtp)
+else (the_sort2_vtbx)
 )
 else
 (
 if
 knd = 0
 then
-the_sort2_tflt else the_sort2_tbox
+the_sort2_type else the_sort2_tbox
 )
 ) : sort2 // end of [val]
 //
@@ -1077,15 +1077,15 @@ then
 (
 if
 knd = 0
-then the_sort2_vtflt
-else the_sort2_vtbox
+then (the_sort2_vwtp)
+else (the_sort2_vtbx)
 )
 else
 (
 if
 knd = 0
 then
-the_sort2_tflt else the_sort2_tbox
+the_sort2_type else the_sort2_tbox
 )
 ) : sort2 // end of [val]
 //

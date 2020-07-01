@@ -181,13 +181,23 @@ the_sort2_view : sort2
 //
 val
 the_sort2_tbox : sort2
+(*
 val
 the_sort2_tflt : sort2
+*)
+val
+the_sort2_type : sort2
 //
+val
+the_sort2_vtbx : sort2
+val
+the_sort2_vwtp : sort2
+(*
 val
 the_sort2_vtbox : sort2
 val
 the_sort2_vtflt : sort2
+*)
 //
 (* ****** ****** *)
 
