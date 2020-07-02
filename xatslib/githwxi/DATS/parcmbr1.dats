@@ -529,5 +529,41 @@ parcmbr_seq2map
 )
 //
 (* ****** ****** *)
+//
+#extern
+fun
+<tok:t0>
+<res:vt>
+parcmbr_lazy
+(
+LP:
+lazy
+(parser(tok,res))
+)
+: parser(tok,res)
+//
+impltmp
+<tok><res>
+parcmbr_lazy(LP) = parser
+(lam(inp) => parser_apply(!LP, inp))
+//
+#extern
+fun
+<tok:t0>
+<res:vt>
+parcmbr_thunk
+(
+FP:
+() -<cfr>
+parser(tok,res)
+)
+: parser(tok,res)
+//
+impltmp
+<tok><res>
+parcmbr_thunk(FP) = parser
+(lam(inp) => parser_apply(FP(), inp))
+//
+(* ****** ****** *)
 
 (* end of [parcmbr1.dats] *)
