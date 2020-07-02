@@ -245,7 +245,17 @@ end
 )
 //
 (* ****** ****** *)
-//
+
+#extern
+fun
+<tok:t0>
+<res:vt>
+parcmbr_alt2
+(
+P1: parser(tok, res)
+,
+P2: parser(tok, res)
+) : parser(tok, res)
 #extern
 fun
 <tok:t0>
@@ -257,6 +267,17 @@ P1: parser(tok,res1)
 ,
 P2: parser(tok,res2)
 ) : parser(tok, (res1, res2))
+
+(* ****** ****** *)
+//
+#symload || with parcmbr_alt2
+#symload && with parcmbr_seq2
+//
+#symload alt with parcmbr_alt2
+#symload seq with parcmbr_seq2
+//
+(* ****** ****** *)
+//
 #extern
 fun
 <tok:t0>
@@ -271,6 +292,30 @@ P2: parser(tok,res2)
 ,
 f0: (res1,res2) -<cfr> res3): parser(tok, res3)
 //
+(* ****** ****** *)
+
+impltmp
+parcmbr_alt2
+(P1, P2) = parser
+(
+lam(inp) =>
+let
+val
+(
+inp, opt) =
+parser_apply(P1, inp)
+in
+//
+case+ opt of
+| ~none_vt() =>
+  (
+    parser_apply(P2, inp)
+  )
+| !some_vt(res) => (inp, opt)
+//
+end
+) (* end of [parcmbr_alt2] *)
+
 (* ****** ****** *)
 
 impltmp
@@ -480,7 +525,7 @@ parcmbr_seq2map
 ( P0
 , parcmbr_repeat0(P0)
 , lam(x0, xs) => list_vt_cons(x0, xs)
-) (* parcmbr_seqmap2 *)
+) (* end of [parcmbr_repeat1] *)
 )
 //
 (* ****** ****** *)
