@@ -109,6 +109,30 @@ end
 } (* end of [string_length] *)
 
 (* ****** ****** *)
+//
+impltmp<>
+string_append
+  (xs, ys) =
+(
+string_vt2t
+(string_append_vt(xs, y))
+)
+//
+impltmp<>
+string_append_vt
+  (xs, ys) =
+let
+//
+val zs =
+list_vt_append<cgtz>
+( string_listize<>(xs)
+, string_listize<>(ys))
+//
+in
+string_vt_make_list_vt<>(zs)
+end // end of [string_append_vt]
+//
+(* ****** ****** *)
 
 impltmp<>
 string_forall

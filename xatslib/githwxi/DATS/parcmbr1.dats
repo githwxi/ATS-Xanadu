@@ -182,32 +182,67 @@ parser(lam(inp) => input_getok(inp))
 fun
 <tok:t0>
 <res:vt>
-parcmbr_satisfy
+parcmbr_sat
 ( P0
 : parser(tok,res)
-, test
+, f0
 : res -<cfr> bool): parser(tok, res)
 //
 impltmp
 <tok><res>
-parcmbr_satisfy
-(P0, test) = parser
+parcmbr_sat
+(P0, f0) = parser
 (
 lam(inp0) =>
 let
 val
 (
-inp1, opt0) = papply(P0, inp0)
+inp1, opt0) =
+parser_apply(P0, inp0)
 in
 case+ opt0 of
 | ~none_vt() => (inp0, none_vt())
 | ~some_vt(res0) =>
   if
-  test(res0)
+  f0(res0)
   then
   (inp1, some_vt(res0)) else (inp0, none_vt())
 end // end-of-lam
-) (* end of [parcmbr_satisfy] *)
+) (* end of [parcmbr_sat] *)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<tok:t0>
+<res1:vt>
+<res2:vt>
+parcmbr_map
+( P0
+: parser(tok,res1)
+, f0
+: res1 -<cfr> res2): parser(tok, res2)
+//
+impltmp
+<tok>
+<res1>
+<res2>
+parcmbr_map
+  (P0, f0) = parser
+(
+lam(inp) =>
+let
+val
+(inp, opt) =
+parser_apply(P0, inp)
+in
+case+ opt of
+| ~
+none_vt() => (inp, none_vt())
+| ~
+some_vt(res) => (inp, some_vt(f0(res)))
+end
+)
 //
 (* ****** ****** *)
 //
@@ -234,7 +269,7 @@ P1: parser(tok,res1)
 ,
 P2: parser(tok,res2)
 ,
-f3: (res1,res2) -<cfr> res3): parser(tok, res3)
+f0: (res1,res2) -<cfr> res3): parser(tok, res3)
 //
 (* ****** ****** *)
 
@@ -255,7 +290,7 @@ impltmp
 ,res2>
 <res3>
 parcmbr_seq2map
-  (P1, P2, f3) = parser
+  (P1, P2, f0) = parser
 (
 lam(inp0) =>
 (
@@ -280,7 +315,7 @@ case opt2 of
 | ~
 none_vt() => (inp0, none_vt())
 | ~
-some_vt(res2) => (inp2, some_vt(f3(res1, res2)))
+some_vt(res2) => (inp2, some_vt(f0(res1, res2)))
 end // end of [let]
 end // end of [let]
 )
@@ -361,7 +396,8 @@ auxrep
 (inp, nrs) =
 let
 val
-(inp, opt) = papply(P0, inp)
+(inp, opt) =
+parser_apply(P0, inp)
 in
 case+ opt of
 | ~
@@ -418,7 +454,8 @@ auxrep
 (inp, rez) =
 let
 val
-(inp, opt) = papply(P0, inp)
+(inp, opt) =
+parser_apply(P0, inp)
 in
 case+ opt of
 | ~
