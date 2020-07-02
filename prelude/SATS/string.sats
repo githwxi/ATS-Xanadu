@@ -229,6 +229,25 @@ string_vt_length
 (* ****** ****** *)
 //
 fun<>
+string_append
+{m,n:int}
+( string(m)
+, string(n)): string(m+n)
+fun<>
+string_append_vt
+{m,n:int}
+( string(m)
+, string(n)): string_vt(m+n)
+//
+fun<>
+string_vt_append
+{m,n:int}
+( !string_vt(m)
+, !string_vt(n)): string_vt(m+n)
+//
+(* ****** ****** *)
+//
+fun<>
 string_forall(string): bool
 fun<>
 string_rforall(string): bool
@@ -373,6 +392,13 @@ print0 with string_vt_print0 of 1000
 length with string_length of 1000
 #symload
 length with string_vt_length of 1000
+//
+(* ****** ****** *)
+//
+#symload
+append with string_append of 1000
+#symload
+append with string_vt_append of 1000
 //
 (* ****** ****** *)
 
