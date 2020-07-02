@@ -53,6 +53,8 @@ treader23
 //
 datatype trerr23 =
 //
+| TRERR23s2exp of (s2exp)
+//
 | TRERR23d3pat of (d3pat)
 | TRERR23d3exp of (d3exp)
 //

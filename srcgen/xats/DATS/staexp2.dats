@@ -1151,30 +1151,14 @@ end
 //
 (* ****** ****** *)
 //
-implement
-s2exp_sqcast
-(loc0, s2e1, s2t2) =
-(
-case+
-s2e1.node() of
-|
-S2Eany(k0) => s2e1
-|
-_ (* non-S2Eany *) =>
-let
-val s2t1 = s2e1.sort()
-in
-if
-(
-s2t1 <= s2t2
-) then (s2e1)
-  else s2exp_cast(loc0, s2e1, s2t2)
-// end of [if]
-end
-) (* end of [s2exp_sqcast] *)
+(*
+HX-2020-07-01:
+the following 3 sort-cast
+functions are the same for now
+*)
 //
 implement
-s2exp_tqcast
+s2exp_abscast
 (loc0, s2e1, s2t2) =
 (
 case+
@@ -1193,7 +1177,53 @@ s2t1 <= s2t2
   else s2exp_cast(loc0, s2e1, s2t2)
 // end of [if]
 end
-) (* end of [s2exp_tqcast] *)
+) (* end of [s2exp_abscast] *)
+//
+(*
+implement
+s2exp_sqacast
+(loc0, s2e1, s2t2) =
+(
+case+
+s2e1.node() of
+|
+S2Eany(k0) => s2e1
+|
+_ (* non-S2Eany *) =>
+let
+val s2t1 = s2e1.sort()
+in
+if
+(
+s2t1 <= s2t2
+) then (s2e1)
+  else s2exp_cast(loc0, s2e1, s2t2)
+// end of [if]
+end
+) (* end of [s2exp_sqacast] *)
+*)
+//
+implement
+s2exp_tqacast
+(loc0, s2e1, s2t2) =
+(
+case+
+s2e1.node() of
+|
+S2Eany(k0) => s2e1
+|
+_ (* non-S2Eany *) =>
+let
+val s2t1 = s2e1.sort()
+in
+if
+(
+s2t1 <= s2t2
+) then (s2e1)
+  else s2exp_cast(loc0, s2e1, s2t2)
+// end of [if]
+end
+) (* end of [s2exp_tqacast] *)
 //
 (* ****** ****** *)
 

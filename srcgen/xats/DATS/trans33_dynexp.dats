@@ -2907,8 +2907,8 @@ D3Cextern
 | D3Cimpdecl1 _ => aux_impdecl1(env0, d3cl)
 | D3Cimpdecl2 _ => aux_impdecl2(env0, d3cl)
 //
-| D3Cnone0 _ => d3cl
-| D3Cnone1 _ => d3cl
+| D3Cnone0 _(*...*) => d3cl
+| D3Cnone1 _(*...*) => d3cl
 //
 | _ (* rest-of-d3ecl *) => d3cl // HX: YTBI
 //

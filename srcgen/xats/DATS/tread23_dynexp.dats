@@ -178,6 +178,71 @@ case+ ys of
 
 local
 
+(* ****** ****** *)
+
+fun
+tread23_s2exp
+(s2e0: s2exp): void =
+(
+case+
+s2e0.node() of
+|
+S2Ecast
+(loc0, s2e1, s2t2) =>
+{
+val () =
+trerr23_add
+(TRERR23s2exp(s2e0))
+//
+val
+s2t1 = s2e1.sort((*void*))
+val () =
+prerrln!
+( loc0
+, ": TRERR23(s2exp): s2e0 = ", s2e0);
+val () =
+prerrln!
+( loc0
+, ": TRERR23(s2exp): s2t1 = ", s2t1);
+val () =
+prerrln!
+( loc0
+, ": TRERR23(s2exp): s2t2 = ", s2t2);
+//
+}
+| _ (* non-S2Ecast *) => ((*tread12-checked*))
+)
+
+(* ****** ****** *)
+
+fun
+aux_absopen
+( d3cl
+: d3ecl): void = ()
+
+(* ****** ****** *)
+
+fun
+aux_absimpl
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cabsimpl
+( knd
+, is2c
+, def1) = d3cl.node()
+//
+in
+  tread23_s2exp(def1)
+end // end of [aux_absimpl]
+
+(* ****** ****** *)
+
 fun
 aux_impdecl1
 ( d3cl
@@ -208,8 +273,7 @@ let
 //
 val
 cmps =
-d2cst_tiarglst_artck
-(d2c0, ti2s)
+d2cst_tiarglst_artck(d2c0, ti2s)
 //
 val
 errck =
@@ -326,6 +390,11 @@ D3Cextern(tok, d3c1) =>
 {
   val () = tread23_d3ecl(d3c1)
 }
+//
+|
+D3Cabsopen _ => aux_absopen(d3cl)
+|
+D3Cabsimpl _ => aux_absimpl(d3cl)
 //
 |
 D3Cimpdecl1 _ => aux_impdecl1(d3cl)

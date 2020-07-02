@@ -2081,13 +2081,28 @@ val-
 D2Cabsimpl
 ( tok
 , is2c
-, def0) = d2cl.node()
+, def1) = d2cl.node()
 //
 val is2c = auxis2c(is2c)
 //
+val def1 =
+(
+case- is2c of
+|
+IMPLS2CST2
+(sqid, s2cs, opt0) =>
+(
+  case+ opt0 of
+  | None() => def1
+  | Some(s2c0) =>
+    s2exp_abscast
+    (loc0, def1, s2c0.sort())
+)
+) : s2exp // end of [val]
+//
 in
   d3ecl_make_node
-  (loc0, D3Cabsimpl(tok, is2c, def0))
+  (loc0, D3Cabsimpl(tok, is2c, def1))
 end // end of [aux_absimpl]
 
 (* ****** ****** *)

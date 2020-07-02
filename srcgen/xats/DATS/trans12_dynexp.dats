@@ -129,8 +129,10 @@ list_isnot_sing
 implement
 {x}(*tmp*)
 list_isnot_sing (xs) =
+(
   case+ xs of
   | list_sing(x) => false | _ =>> true
+)
 // end of [list_isnot_sing]
 //
 (* ****** ****** *)
@@ -1320,7 +1322,7 @@ val
 s2t0 = s2v0.sort()
 val
 s2e1 =
-s2exp_tqcast(loc0, s2e1, s2t0)
+s2exp_tqacast(loc0, s2e1, s2t0)
 in
 list_cons(s2e1, auxstck(s2vs, s2es))
 end
@@ -3307,30 +3309,36 @@ val sym = sexpid_sym(tok)
 val opt = the_sexpenv_find(sym)
 in
 case+ opt of
-| ~None_vt() =>
-   list_nil(*void*)
-| ~Some_vt(s2i) =>
-  ( case+ s2i of
-    | S2ITMcst(s2cs) => s2cs | _ => list_nil()
-  ) (* end of [Some_vt] *)
+| ~
+None_vt() =>
+list_nil(*void*)
+| ~
+Some_vt(s2i) =>
+(
+case+ s2i of
+| S2ITMcst(s2cs) => s2cs | _ => list_nil()
+) (* end of [Some_vt] *)
 end
 |
 SQ0EIDsome(qua, id0) =>
 let
-  val-
-  I0DNTsome
-    (tok) = id0.node()
-  // end of [val]
-  val sym = sexpid_sym(tok)
-  val opt = the_sexpenv_qfind(qua, sym)
+val-
+I0DNTsome
+  (tok) = id0.node()
+// end of [val]
+val sym = sexpid_sym(tok)
+val opt = the_sexpenv_qfind(qua, sym)
 in
-  case+ opt of
-  | ~None_vt() =>
-     list_nil(*void*)
-  | ~Some_vt(s2i) =>
-    ( case+ s2i of
-      | S2ITMcst(s2cs) => s2cs | _ => list_nil()
-    ) (* end of [Some_vt] *)
+case+ opt of
+| ~
+None_vt() =>
+list_nil(*void*)
+| ~
+Some_vt(s2i) =>
+(
+case+ s2i of
+| S2ITMcst(s2cs) => s2cs | _ => list_nil()
+) (* end of [Some_vt] *)
 end
 ) : s2cstlst // end-of-val
 } (* where *) (* end of [auxsqid] *)
@@ -3343,17 +3351,19 @@ auxsmas
 : s1marglst)
 : s2varlstlst = let
 //
-val svss =
+val
+svss =
 (
 list_map<s1marg><s2vs>(smas)
 ) where
 {
 implement
-list_map$fopr<s1marg><s2vs>(sma) = trans12_smarg(sma)
+list_map$fopr<
+  s1marg><s2vs>(sma) = trans12_smarg(sma)
 } (* end of [svss] *)
 //
 in
-  list_vt2t{s2varlst}(svss)
+  list_vt2t{ s2varlst }(svss)
 end // end of [auxsmas]
 
 fun
@@ -3416,7 +3426,8 @@ D1Cabsimpl
 ( knd
 , sqid
 , smas
-, res1, s1e2) = d1cl.node()
+, res1
+, s1e2) = d1cl.node()
 //
 val sqid = auxsqid(sqid)
 val svss = auxsmas(sqid, smas)
@@ -3424,7 +3435,8 @@ val svss = auxsmas(sqid, smas)
 val (pf0|()) =
 the_sexpenv_pushnil()
 //
-val s2e2 = auxlams(svss, res1, s1e2)
+val s2e2 =
+auxlams(svss, res1, s1e2)
 //
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
