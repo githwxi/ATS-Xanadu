@@ -510,6 +510,14 @@ d2cl.node() of
     tread12_d2ecl(d2c1)
   }
 //
+| D2Clocal(head, body) =>
+  {
+    val () =
+    tread12_d2eclist(head)
+    val () =
+    tread12_d2eclist(body)
+  } (* end of [D2Clocal] *)
+//
 | D2Cinclude
   ( tok
   , src, knd
@@ -710,12 +718,6 @@ d2cl.node() of
     ("tread12_d2ecl: D2Cdynconst: d2cs = ", d2cs)
 *)
   }
-//
-| D2Clocal(head, body) =>
-  {
-    val () = tread12_d2eclist(head)
-    val () = tread12_d2eclist(body)
-  } (* end of [D2Clocal] *)
 //
 | _(* rest-of-d2ecl *) =>
   (

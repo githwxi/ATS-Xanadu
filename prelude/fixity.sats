@@ -123,8 +123,9 @@ app of 70 // app_prcdv
 #infixl || of 20
 #infixl && of ||(+1)
 
-#infixl andalso land of &&
-#infixl orelse xor lor lxor of ||
+#infixl xor lxor of ||
+#infixl lor orelse of ||
+#infixl land andalso of &&
 
 (* ****** ****** *)
 
@@ -137,8 +138,8 @@ app of 70 // app_prcdv
 
 (* ****** ****** *)
 
-#infixl << of 0 (* asl/lsl *)
-#infixr >> of 0 (* asr/lsr *)
+#infixl << of 0 (* HX: asl/lsl *)
+#infixr >> of 0 (* HX: asr/lsr *)
 
 (* ****** ****** *)
 

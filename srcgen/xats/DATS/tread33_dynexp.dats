@@ -769,16 +769,25 @@ in
 case+
 d3cl.node() of
 //
-| D3Cd2ecl(d2c) => ()
+|
+D3Cd2ecl(d2c) => ()
 //
-| D3Cstatic(tok, d3c1) =>
-  {
-    val () = tread33_d3ecl(d3c1)
-  }
-| D3Cextern(tok, d3c1) =>
-  {
-    val () = tread33_d3ecl(d3c1)
-  }
+|
+D3Cstatic(tok, d3c1) =>
+{
+  val () = tread33_d3ecl(d3c1)
+}
+|
+D3Cextern(tok, d3c1) =>
+{
+  val () = tread33_d3ecl(d3c1)
+}
+|
+D3Clocal(head, body) =>
+{
+val () = tread33_d3eclist(head)
+val () = tread33_d3eclist(body)
+} (* end of [D3Clocal] *)
 //
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>

@@ -392,6 +392,13 @@ D3Cextern(tok, d3c1) =>
 }
 //
 |
+D3Clocal(head, body) =>
+{
+val () = tread23_d3eclist(head)
+val () = tread23_d3eclist(body)
+} (* end of [D3Clocal] *)
+//
+|
 D3Cabsopen _ => aux_absopen(d3cl)
 |
 D3Cabsimpl _ => aux_absimpl(d3cl)
