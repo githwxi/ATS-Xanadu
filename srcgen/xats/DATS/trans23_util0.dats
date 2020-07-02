@@ -2205,7 +2205,7 @@ auxck0
 let
 val s2t0 = s2v0.sort()
 in
-s2exp_tqcast(loc0, s2e0, s2t0)
+s2exp_tqacast(loc0, s2e0, s2t0)
 end // end of [auxck0]
 //
 and

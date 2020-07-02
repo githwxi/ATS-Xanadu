@@ -919,11 +919,17 @@ s2exp_none1_s2t
 (* ****** ****** *)
 //
 fun
-s2exp_sqcast
+s2exp_abscast
 ( loc0: loc_t
 , s2e1: s2exp, s2t2: sort2): s2exp
+(*
 fun
-s2exp_tqcast
+s2exp_sqacast
+( loc0: loc_t
+, s2e1: s2exp, s2t2: sort2): s2exp
+*)
+fun
+s2exp_tqacast
 ( loc0: loc_t
 , s2e1: s2exp, s2t2: sort2): s2exp
 //

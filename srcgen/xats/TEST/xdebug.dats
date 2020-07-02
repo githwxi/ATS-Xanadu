@@ -2,6 +2,11 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+abstype xyz(a:i0)
+absimpl xyz(a:i0) = sint(a)
+
+(* ****** ****** *)
+////
 (*
 val x1 = foo1<_>(10)
 *)

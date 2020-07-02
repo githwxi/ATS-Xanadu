@@ -52,6 +52,18 @@ input_ungetok
 (inp: input(tok), tok: tok): input(tok)
 //
 (* ****** ****** *)
+
+local
+
+absimpl
+input =
+lam(tok) => stream(tok)
+
+in
+
+end // end of [local]
+
+(* ****** ****** *)
 //
 #extern
 fun
