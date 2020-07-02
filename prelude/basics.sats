@@ -815,12 +815,12 @@ absvwtp excptn_vt <= ptr
 //
 (* ****** ****** *)
 //
-abstype
+abstbox
 lazy_t0_x0(a: type+) <= ptr
 typedef
 lazy(a:type) = lazy_t0_x0(a)
 //
-absvwtp
+absvtbx
 lazy_vt_vx(a: vwtp+) <= ptr
 vwtpdef
 lazy_vt(a:vwtp) = lazy_vt_vx(a)

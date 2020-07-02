@@ -34,33 +34,75 @@ for testing type-inference :)
 //
 (* ****** ****** *)
 //
-abstbox input(tok:t0)
-abstbox parser(tok:t0,res:vt)
+abstbox
+input_tbox(tok:t0)
+abstbox
+parser_tbox(tok:t0,res:vt)
+//
+sexpdef input = input_tbox
+sexpdef parser = parser_tbox
 //
 (* ****** ****** *)
 //
 #extern
 fun
 <tok:t0>
+input_make
+( xs
+: stream(tok)): input(tok)
+#extern
+fun
+<tok:t0>
 input_getok
-(inp: input(tok)):
-(input(tok), optn_vt(tok))
+( inp
+: input(tok))
+: (input(tok), optn_vt(tok))
+//
+(*
 #extern
 fun
 <tok:t0>
 input_ungetok
 (inp: input(tok), tok: tok): input(tok)
+*)
 //
 (* ****** ****** *)
 
 local
-
+//
 absimpl
-input =
-lam(tok) => stream(tok)
-
+input_tbox
+(tok:t0) = stream(tok)
+//
 in
-
+//
+impltmp
+<tok>
+input_make(xs) = xs
+//
+impltmp
+<tok>
+input_getok
+  (xs) =
+(
+case+ !xs of
+|
+strmcon_nil
+() => (xs, none_vt())
+|
+strmcon_cons
+(x0, xs) => (xs, some_vt(x0))
+)
+//
+(*impltmp
+<tok>
+input_ungetok
+  (xs, x0) =
+(
+  $lazy(strmcon_cons(x0, xs))
+)
+*)
+//
 end // end of [local]
 
 (* ****** ****** *)
@@ -71,7 +113,7 @@ fun
 <res:vt>
 parser_make
 (
-P0:
+cfr:
 input(tok)
 -<cfr>
 ( input(tok)
@@ -92,43 +134,80 @@ parser_apply
 //
 (* ****** ****** *)
 
+local
+//
+absimpl
+parser_tbox
+( tok:t0
+, res:vt) =
+(input(tok))
+-<cfr>
+(input(tok), optn_vt(res))
+//
+in
+//
+impltmp
+<tok><res>
+parser_make(cfr) = cfr
+impltmp
+<tok><res>
+parser_apply(cfr, inp) = cfr(inp)
+//
+end // end of [local]
+
+(* ****** ****** *)
+//
 #extern
 fun
 <tok:t0>
-parcmbr_getok
+parcmbr_input
+(xs: stream(tok)): input(tok)
+impltmp
+<tok>
+parcmbr_input(xs) = input_make(xs)
+//
+#extern
+fun
+<tok:t0>
+parcmbr_token
 ((*void*)): parser(tok,tok)
 impltmp
 <tok>
-parcmbr_getok() =
+parcmbr_token() =
 parser(lam(inp) => input_getok(inp))
-
+//
 (* ****** ****** *)
 
 #extern
 fun
 <tok:t0>
 <res:vt>
-parcmbr_test
+parcmbr_satisfy
 ( P0
 : parser(tok,res)
 , test
-: res -<cfr> bool): parser(tok, bool)
+: res -<cfr> bool): parser(tok, res)
 //
 impltmp
 <tok><res>
-parcmbr_test
+parcmbr_satisfy
 (P0, test) = parser
 (
-lam(inp) =>
+lam(inp0) =>
 let
 val
-(inp, res) = papply(P0, inp)
+(
+inp1, opt0) = papply(P0, inp0)
 in
-case+ res of
-| ~none_vt() => (inp, none_vt())
-| ~some_vt(res) => (inp, some_vt(test(res)))
+case+ opt0 of
+| ~none_vt() => (inp0, none_vt())
+| ~some_vt(res0) =>
+  if
+  test(res0)
+  then
+  (inp1, some_vt(res0)) else (inp0, none_vt())
 end // end-of-lam
-) (* end of [parcmbr_test] *)
+) (* end of [parcmbr_satisfy] *)
 //
 (* ****** ****** *)
 //
@@ -157,6 +236,142 @@ P2: parser(tok,res2)
 ,
 f3: (res1,res2) -<cfr> res3): parser(tok, res3)
 //
+(* ****** ****** *)
+
+impltmp
+<tok>
+<res1
+,res2>
+parcmbr_seq2
+  (P1, P2) =
+parcmbr_seq2map
+(P1, P2, lam(x1, x2) => (x1, x2))
+
+(* ****** ****** *)
+
+impltmp
+<tok>
+<res1
+,res2>
+<res3>
+parcmbr_seq2map
+  (P1, P2, f3) = parser
+(
+lam(inp0) =>
+(
+let
+val
+(
+inp1, opt1) =
+parser_apply(P1, inp0)
+in
+case+ opt1 of
+| ~
+none_vt() => (inp0, none_vt())
+| ~
+some_vt(res1) =>
+let
+val
+(
+inp2, opt2) =
+parser_apply(P2, inp1)
+in
+case opt2 of
+| ~
+none_vt() => (inp0, none_vt())
+| ~
+some_vt(res2) => (inp2, some_vt(f3(res1, res2)))
+end // end of [let]
+end // end of [let]
+)
+) (* end of [parcmbr_seq2map] *)
+
+(* ****** ****** *)
+
+#extern
+fun
+<tok:t0>
+<res1:vt
+,res2:vt>
+parcmbr_seq2get0
+(
+P1: parser(tok,res1)
+,
+P2: parser(tok,res2)
+) : parser(tok, res1)
+#extern
+fun
+<tok:t0>
+<res1:vt
+,res2:vt>
+parcmbr_seq2get1
+(
+P1: parser(tok,res1)
+,
+P2: parser(tok,res2)
+) : parser(tok, res2)
+
+#symload << with parcmbr_seq2get0
+#symload >> with parcmbr_seq2get1
+
+(* ****** ****** *)
+
+impltmp
+<tok>
+<res1
+,res2>
+parcmbr_seq2get0
+(P1, P2) = 
+parcmbr_seq2map
+(P1, P2, lam(res1, res2) => res1)
+impltmp
+<tok>
+<res1
+,res2>
+parcmbr_seq2get1
+(P1, P2) = 
+parcmbr_seq2map
+(P1, P2, lam(res1, res2) => res2)
+
+(* ****** ****** *)
+
+#extern
+fun
+<tok:t0>
+<res:vt>
+parcmbr_ignore
+(
+P0: parser(tok,res)
+) : parser(tok,nint)
+impltmp
+<tok><res>
+parcmbr_ignore
+  (P0) = parser_make
+(
+let
+val nrs = 0
+in
+lam(inp) => auxrep(inp, nrs)
+end
+) where
+{
+//
+fun
+auxrep
+(inp, nrs) =
+let
+val
+(inp, opt) = papply(P0, inp)
+in
+case+ opt of
+| ~
+none_vt() => (inp, some_vt(nrs))
+| ~
+some_vt(_) => auxrep(inp, succ(nrs))
+end
+//
+} (* end of [parcmbr_ignore] *)
+
 (* ****** ****** *)
 //
 typedef
