@@ -170,6 +170,31 @@ From statyp2_util0.dats:
 //
 
 ######
+//
+// HX-2020-07-03:
+//
+fun
+<a:t0>
+foo(x: a): void
+//
+impltmp
+{a}
+foo(x) = ...
+//
+impltmp
+<a>
+FOO2<a> => foo(x) = ...
+//
+impltmp
+{a:t0}
+FOO2<a> = false
+impltmp
+FOO2<int> = (true)
+//
+val () = foo<int>(100)
+val () = foo<string>("100")
+//
+######
 
 (* ###### ###### ###### ###### ###### *)
 
