@@ -90,5 +90,16 @@ fun//{}
 tread23_d3eclist: treader23(d3eclist)
 //
 (* ****** ****** *)
+//
+// HX-2020-07-02:
+// The following functions is expected
+// to be CONTRIBUTED.
+//
+(* ****** ****** *)
+//
+fun//{}
+tread23_d3ecl_D3Clocal: treader23(d3ecl)
+//
+(* ****** ****** *)
 
 (* end of [xats_tread23.sats] *)
