@@ -177,7 +177,7 @@ parcmbr_token() =
 parser(lam(inp) => input_getok(inp))
 //
 (* ****** ****** *)
-
+//
 #extern
 fun
 <tok:t0>
@@ -221,7 +221,7 @@ parcmbr_map
 ( P0
 : parser(tok,res1)
 , f0
-: res1 -<cfr> res2): parser(tok, res2)
+: res1 -<cfr> res2): parser(tok,res2)
 //
 impltmp
 <tok>

@@ -1023,7 +1023,7 @@ val
 xerrs = the_trerr3xlst_get()
 //
 in
-  the_trerr3xlst_set(list_cons(xerr, xerrs))
+the_trerr3xlst_set(list_cons(xerr, xerrs))
 end // end of [trerr3x_add]
 
 in (* in-of-local *)
