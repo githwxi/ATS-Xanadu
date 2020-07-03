@@ -153,5 +153,19 @@ fun//{}
 tread33_f3undeclist: treader33(f3undeclist)
 
 (* ****** ****** *)
+//
+// HX-2020-07-02:
+// The following functions is expected
+// to be CONTRIBUTED.
+//
+(* ****** ****** *)
+//
+fun//{}
+tread33_d3exp_D3Elcast: treader33(d3exp)
+//
+fun//{}
+tread33_d3exp_D3Etcast: treader33(d3exp)
+//
+(* ****** ****** *)
 
 (* end of [xats_tread33.sats] *)

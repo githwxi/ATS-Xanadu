@@ -394,8 +394,11 @@ D3Cextern(tok, d3c1) =>
 |
 D3Clocal(head, body) =>
 {
+(*
 val () = tread23_d3eclist(head)
 val () = tread23_d3eclist(body)
+*)
+val () = tread23_d3ecl_D3Clocal(d3cl)
 } (* end of [D3Clocal] *)
 //
 |
@@ -449,7 +452,7 @@ val
 xerrs = the_trerr23lst_get()
 //
 in
-  the_trerr23lst_set(list_cons(xerr, xerrs))
+the_trerr23lst_set(list_cons(xerr, xerrs))
 end // end of [trerr23_add]
 
 in (* in-of-local *)

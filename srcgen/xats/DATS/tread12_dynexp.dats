@@ -918,7 +918,7 @@ val
 xerrs = the_trerr12lst_get()
 //
 in
-  the_trerr12lst_set(list_cons(xerr, xerrs))
+the_trerr12lst_set(list_cons(xerr, xerrs))
 end // end of [trerr12_add]
 
 in (* in-of-local *)
