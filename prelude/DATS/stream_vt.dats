@@ -429,6 +429,24 @@ strmcon_vt_cons(x0, auxmain1(xss, xs1))
 )
 } (* end of [stream_vt_concat] *)
 //
+(* ****** ****** *)
+//
+impltmp
+<x0,xs>
+stream_vt_gappend
+  (xs1, xs2) = let
+//
+val xs1 =
+gseq_streamize<x0,xs>(xs1)
+val xs2 =
+gseq_streamize<x0,xs>(xs2)
+//
+in
+stream_vt_append<x0>(xs1, xs2)
+end
+//
+(* ****** ****** *)
+//
 impltmp
 <x0,xs>
 stream_vt_gconcat

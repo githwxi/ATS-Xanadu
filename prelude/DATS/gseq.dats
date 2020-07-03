@@ -1033,6 +1033,26 @@ in
 stream_vt_append<x0>(xs1, xs2)
 end // gseq_append_stream
 //
+(* ****** ****** *)
+//
+implement
+<cz>(*tmp*)
+gseq_concat_string
+  (css) = let
+//
+typedef c0 = cgtz
+typedef cs = string
+//
+val css =
+gseq_streamize<cs,cz>(css)
+//
+in
+string_vt_make_stream_vt<>
+(stream_vt_gconcat<c0,cs>(css))
+end // end of [gseq_concat_string]
+//
+(* ****** ****** *)
+//
 impltmp
 <x0,xs,xz>
 gseq_concat_stream
@@ -1053,7 +1073,7 @@ end
 //
 in
   stream_vt_concat<x0>(  xss  )
-end // gseq_concat_stream
+end // end of [gseq_concat_stream]
 //
 (* ****** ****** *)
 //

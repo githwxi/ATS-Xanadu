@@ -310,6 +310,15 @@ string_vt_make_list_vt
 //
 (* ****** ****** *)
 //
+fun<>
+string_make_stream_vt
+  (cs: stream_vt(cgtz)): string
+fun<>
+string_vt_make_stream_vt
+  (cs: stream_vt(cgtz)): string_vt
+//
+(* ****** ****** *)
+//
 fun
 <n:i0>
 string_tabulate

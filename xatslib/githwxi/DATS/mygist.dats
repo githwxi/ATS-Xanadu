@@ -568,5 +568,26 @@ else strmcon_vt_cons(i0, auxmain(pred(i0)))
 }
 //
 (* ****** ****** *)
+//
+// HX-2020-07-03:
+// for concatenating strings
+//
+(* ****** ****** *)
+(*
+(*
+HX: the code has moved into prelude/gseq.dats
+*)
+implement
+<cz:type>
+gseq_concat_string(cz) =
+let
+typedef c0 = cgtz
+typedef cs = string
+in
+string_vt_make_stream_vt<>
+(stream_vt_gconcat<c0,cs>(gseq_streamize<cs,cz>(cz)))
+end // end of [gseq_concat_string]
+*)
+(* ****** ****** *)
 
 (* end of [mygist.dats] *)
