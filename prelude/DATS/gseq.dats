@@ -944,6 +944,7 @@ end // end of [gseq_rforeach/rforall]
 
 (* ****** ****** *)
 //
+(*
 impltmp
 <x0,xs>
 gseq_append
@@ -960,7 +961,24 @@ impltmp
 foldr$fopr
 <x0><r0>(x0, r0) =
 gseq_cons<x0,xs>(x0, r0)
-}
+} (* end of [gseq_append] *)
+*)
+impltmp
+<x0,xs>
+gseq_append
+(xs, ys) = let
+//
+val
+xs =
+gseq_listize<x0,xs>(xs)
+val
+ys =
+gseq_listize<x0,xs>(ys)
+//
+in
+gseq_unlist_vt<x0,xs>
+(list_vt_append<x0>(xs, ys))
+end (* end of [gseq_append] *)
 //
 impltmp
 <x0,xs,xz>
