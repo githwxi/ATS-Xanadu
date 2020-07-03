@@ -8,7 +8,7 @@
 //
 #staload
 GITHWXI =
-"./GITHWXI/my_tread23_dynexp.dats"
+"./githwxi/my_tread23_dynexp.dats"
 //
 (* ****** ****** *)
 
