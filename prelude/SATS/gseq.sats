@@ -391,6 +391,13 @@ fun
 ,xs:t0>
 gseq_append_stream
 (xs1: xs, xs2: xs): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<cz:t0>
+gseq_concat_string(css: cz): string_vt
+//
 fun
 <x0:t0
 ,xs:t0
@@ -796,6 +803,8 @@ length with gseq_length of 0100
 append_stream with gseq_append_stream of 0100
 #symload
 concat_stream with gseq_concat_stream of 0100
+#symload
+concat_string with gseq_concat_string of 0100
 
 (* ****** ****** *)
 
