@@ -536,5 +536,16 @@ end // end of [tread23_program]
 end // end of [local]
 
 (* ****** ****** *)
+//
+//
+// HX-2020-07-02:
+// For contributed code
+//
+(* ****** ****** *)
+
+#include
+"./CONTRIB/tread23_dynexp.dats"
+
+(* ****** ****** *)
 
 (* end of [xats_tread23_dynexp.dats] *)
