@@ -2625,8 +2625,12 @@ val
 opt1 =
 (
 case+ opt of
-| ~None_vt() => None_vt()
-| ~Some_vt(fnm) => filsrch_combined(fnm)
+| ~
+None_vt() =>
+None_vt()
+| ~
+Some_vt(fnm) =>
+filsrch_combined(fnm)
 ) : Option_vt(filpath)
 //
 var
