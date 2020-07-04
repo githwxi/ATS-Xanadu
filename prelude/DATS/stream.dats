@@ -75,12 +75,12 @@ $lazy(strmcon_cons(x0, xs))
 impltmp
 {a:type}
 gseq_nil
-<a,stream(a)>
+<stream(a)><a>
 ((*void*)) = stream_nil<a>()
 impltmp
 {a:type}
 gseq_cons
-<a,stream(a)>
+<stream(a)><a>
  (x0, xs) = stream_cons<a>(x0, xs)
 //
 (* ****** ****** *)

@@ -522,15 +522,15 @@ end
 impltmp
 {a:t0}
 $UN.gseq_head
-<a,list(a)>(xs) = xs.0
+<list(a)><a>(xs) = xs.0
 impltmp
 {a:t0}
 $UN.gseq_tail
-<a,list(a)>(xs) = xs.1
+<list(a)><a>(xs) = xs.1
 impltmp
 {a:t0}
 $UN.gseq_uncons
-<a,list(a)>(xs) =
+<list(a)><a>(xs) =
 let
 val x0 = xs.0
 val () = xs := xs.1 in x0
@@ -542,11 +542,11 @@ end
 impltmp
 {a:t0}
 gseq_nil
-<a,list(a)>() = list_nil()
+<list(a)><a>() = list_nil()
 impltmp
 {a:t0}
 gseq_cons
-<a,list(a)>
+<list(a)><a>
   (x0, xs) = list_cons(x0, xs)
 //
 (* ****** ****** *)
@@ -554,18 +554,18 @@ gseq_cons
 impltmp
 {a:t0}
 gseq_nilq
-<a,list(a)> = list_nilq{a}
+<list(a)><a> = list_nilq{a}
 impltmp
 {a:t0}
 gseq_consq
-<a,list(a)> = list_consq{a}
+<list(a)><a> = list_consq{a}
 //
 (* ****** ****** *)
 //
 impltmp
 {a:t0}
 gseq_uncons_raw
-<a,list(a)>(xs) =
+<list(a)><a>(xs) =
 let
   val x0 = xs.0
   val () = xs := xs.1 in x0
@@ -576,17 +576,17 @@ end
 impltmp
 {a:type}
 gseq_head_raw
-<a,list(a)> = list_head_raw<a>
+<list(a)><a> = list_head_raw<a>
 impltmp
 {a:type}
 gseq_tail_raw
-<a,list(a)> = list_tail_raw<a>
+<list(a)><a> = list_tail_raw<a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:t0}
-g_cmp<list(a)> = gseq_cmp<a,list(a)>
+g_cmp<list(a)> = gseq_cmp<list(a)><a>
 
 (* ****** ****** *)
 //
@@ -595,58 +595,89 @@ impltmp
 g_print<list(a)>(xs) =
 let
 val () =
-gseq_print<a,list(a)>(xs)
+gseq_print<list(a)><a>(xs)
 end // end of [g_fprint]
 //
 impltmp
 {a:t0}
 gseq_print$beg
-<a,list(a)>() = string_print("(")
+<list(a)><a>() = string_print("(")
 impltmp
 {a:t0}
 gseq_print$end
-<a,list(a)>() = string_print(")")
+<list(a)><a>() = string_print(")")
 impltmp
 {a:t0}
 gseq_print$sep
-<a,list(a)>() = string_print(",")
+<list(a)><a>() = string_print(",")
 //
 (* ****** ****** *)
 //
 impltmp
 {a:t0}
-gseq_length<a,list(a)> = list_length<a>
+gseq_length<list(a)><a> = list_length<a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:t0}
-gseq_forall<a,list(a)> = list_forall<a>
+gseq_forall<list(a)><a> = list_forall<a>
 impltmp
 {a:t0}
-gseq_foreach<a,list(a)> = list_foreach<a>
+gseq_foreach<list(a)><a> = list_foreach<a>
 //
 (* ****** ****** *)
 
 impltmp
 {a:t0}
-gseq_listize<a,list(a)> = list_listize<a>
+gseq_listize<list(a)><a> = list_listize<a>
 impltmp
 {a:t0}
-gseq_rlistize<a,list(a)> = list_rlistize<a>
+gseq_rlistize<list(a)><a> = list_rlistize<a>
 impltmp
 {a:t0}
-gseq_streamize<a,list(a)> = list_streamize<a>
+gseq_streamize<list(a)><a> = list_streamize<a>
 
 (* ****** ****** *)
 //
 impltmp
 {a:t0}
-gseq_map_list<a,list(a)> = list_map_vt<a>
+gseq_map_list<list(a)><a> = list_map_vt<a>
 impltmp
 {a:t0}
-gseq_map_rlist<a,list(a)> = list_maprev_vt<a>
+gseq_map_rlist<list(a)><a> = list_maprev_vt<a>
 //
+(* ****** ****** *)
+//
+// For gseq-operations
+//
+(* ****** ****** *)
+
+(*
+impltmp
+{a:t0}{n:i0}
+gseqn_nilq<list(a,n)><a><n> = list_nilq<>
+impltmp
+{a:t0}{n:i0}
+gseqn_consq<list(a,n)><a><n> = list_consq<>
+*)
+
+(* ****** ****** *)
+(*
+impltmp
+{a:t0}{n:i0}
+gseqn_head<list(a,n)><a><n> = list_head<a>
+impltmp
+{a:t0}{n:i0}
+gseqn_tail
+<list(a,n)><a><n><list(a,n-1)> = list_tail<a>
+*)
+(* ****** ****** *)
+(*
+impltmp
+{a:t0}{n:i0}
+gseqn_length<list(a,n)><a><n> = list_length<a>
+*)
 (* ****** ****** *)
 
 (* end of [list.dats] *)

@@ -11,152 +11,152 @@
 //
 absprop
 gseq_prop
-(x0: t0, xs: t0)
+(xs: t0, x0: t0)
 propdef
 gseq
-( x0: t0
-, xs: t0) = gseq_prop(x0, xs)
+( xs: t0
+, x0: t0) = gseq_prop(x0, xs)
 *)
 //
 (* ****** ****** *)
 
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_nil(): xs
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_cons(x0, xs): xs
 
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_nilq(xs): bool
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_consq(xs): bool
 //
 (*
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_is_nil(xs): bool
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_is_cons(xs): bool
 *)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_head_raw(xs): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_tail_raw(xs): xs
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_head_exn(xs): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_tail_exn(xs): xs
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_head_opt(xs): optn_vt(x0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_tail_opt(xs): optn_vt(xs)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_last_raw(xs): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_last_exn(xs): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_last_opt(xs): optn_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_uncons_raw
   (xs: &xs >> xs): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_uncons_exn
   (xs: &xs >> xs): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_uncons_opt
   (xs: &xs >> xs): optn_vt(x0)
 //
 (* ****** ****** *)
 
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_cmp(xs, xs): sint
 
 (* ****** ****** *)
 
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_print(xs: xs): void
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_print$beg((*void*)): void
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_print$end((*void*)): void
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_print$sep((*void*)): void
 
 (* ****** ****** *)
 
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_length(xs): nint
 
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_drop
 (xs: xs, n0: sint): xs
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_dropif(xs: xs): xs
 //
 (* ****** ****** *)
@@ -167,71 +167,71 @@ gseq_foldr: foldr$fopr
 *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <r0:vt>
 gseq_foldl(xs, r0): r0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <r0:vt>
 gseq_foldr(xs, r0): r0
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_exists(xs): bool
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_forall(xs): bool
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_foreach(xs): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_listize(xs): list_vt(x0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_rlistize(xs): list_vt(x0)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_streamize(xs): stream_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_unlist(list(x0)): (xs)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_unrlist(list(x0)): (xs)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_unlist_vt(list_vt(x0)): (xs)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_unrlist_vt(list_vt(x0)): (xs)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_unstream_vt(stream_vt(x0)): (xs)
 //
 (* ****** ****** *)
@@ -241,154 +241,154 @@ gseq_map: map$fopr
 *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_map_list(xs): list_vt(y0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_map_rlist(xs): list_vt(y0)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_map_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
 
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_copy_list(xs): list_vt(x0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_copy_rlist(xs): list_vt(x0)
 
 (* ****** ****** *)
 
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_filter_list(xs): list_vt(x0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_filter_rlist(xs): list_vt(x0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_filter_stream(xs): stream_vt(x0)
 
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_mapopt_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>gseq_add(xs): x0
+<xs:t0>
+<x0:t0>gseq_add(xs): x0
 fun
-<x0:t0
-,xs:t0>gseq_mul(xs): x0
+<xs:t0>
+<x0:t0>gseq_mul(xs): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:t0>gseq_map_add(xs): y0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:t0>gseq_map_mul(xs): y0
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_max_exn(xs): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_min_exn(xs): x0
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_max_opt(xs): optn_vt(x0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_min_opt(xs): optn_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_max2(xs, x0): x0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_min2(xs, x0): x0
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_sortedq(xs): bool
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_rexists(xs): bool
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_rforall(xs): bool
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_rforeach(xs): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_append
 (xs1: xs, xs2: xs): xs
 fun
-<x0:t0
-,xs:t0
-,xz:t0>
+<xz:t0>
+<xs:t0>
+<x0:t0>
 gseq_concat(xss: xz): xs
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_reverse(xs: xs): xs
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_rappend(xs1: xs, xs2: xs): xs
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_append_stream
 (xs1: xs, xs2: xs): stream_vt(x0)
 //
@@ -399,9 +399,9 @@ fun
 gseq_concat_string(css: cz): string_vt
 //
 fun
-<x0:t0
-,xs:t0
-,xz:t0>
+<xz:t0>
+<xs:t0>
+<x0:t0>
 gseq_concat_stream(xss: xz): stream_vt(x0)
 //
 (* ****** ****** *)
@@ -411,42 +411,42 @@ gseq_concat_stream(xss: xz): stream_vt(x0)
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <r0:vt>
 gseq_ifoldl(xs, r0): r0
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <r0:vt>
 gseq_ifoldr(xs, r0): r0
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_iexists(xs: xs): bool
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_iforall(xs: xs): bool
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_iforeach(xs: xs): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_indexof
 (xs: xs, x0: x0): sint // ~1: ~found
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_rindexof
 (xs: xs, x0: x0): sint // ~1: ~found
 //
@@ -457,27 +457,27 @@ gseq_imap: imap$fopr
 *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_imap_list
   (xs: xs): list_vt(y0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_imap_rlist
   (xs: xs): list_vt(y0)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_imap_stream
   (xs: xs): stream_vt(y0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_imapopt_stream
   (xs: xs): stream_vt(y0)
@@ -485,42 +485,42 @@ gseq_imapopt_stream
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_idropif(xs: xs): xs
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_itakeif_list(xs): list_vt(x0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_itakeif_rlist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_ifilter_list(xs): list_vt(x0)
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_ifilter_rlist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_mergesort(xs: xs): (xs)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gseq_permutize(xs: xs): stream_vt(xs)
 //
 (* ****** ****** *)
@@ -530,19 +530,19 @@ gseq_permutize(xs: xs): stream_vt(xs)
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <r0:vt>
 gseq_z2foldl
   ( xs: xs
   , ys: ys, r0: r0): r0
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <r0:vt>
 gseq_z2foldr
   ( xs: xs
@@ -551,68 +551,68 @@ gseq_z2foldr
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_z2forall
   (xs: xs, ys: ys): bool
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_z2forcmp
   (xs: xs, ys: ys): sint
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_z2foreach
   (xs: xs, ys: ys): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_z2listize
 (xs, ys): list_vt(@(x0, y0))
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_z2streamize
 (xs, ys): stream_vt(@(x0, y0))
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_z2map_list
   (xs: xs, ys: ys): list_vt(z0)
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_z2map_rlist
   (xs: xs, ys: ys): list_vt(z0)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_z2map_stream
   (xs: xs, ys: ys): stream_vt(z0)
@@ -624,27 +624,27 @@ gseq_z2map_stream
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2map_list
 (xs, ys): list_vt(z0)
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2map_stream
 (xs, ys): stream_vt(z0)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2mapopt_stream
 (xs, ys): stream_vt(z0)
@@ -652,51 +652,51 @@ gseq_x2mapopt_stream
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_x2streamize
 (xs, ys): stream_vt(@(x0,y0))
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_x2foreach_row(xs, ys): void
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_x2foreach_col(xs, ys): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2imap_list
 (xs, ys): list_vt(z0)
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2imap_stream
 (xs, ys): stream_vt(z0)
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2imapopt_stream
 (xs, ys): stream_vt(z0)
@@ -704,16 +704,16 @@ gseq_x2imapopt_stream
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_x2iforeach_row(xs, ys): void
 fun
-<x0:t0
-,xs:t0>
-<y0:t0
+<xs:t0
 ,ys:t0>
+<x0:t0
+,y0:t0>
 gseq_x2iforeach_col(xs, ys): void
 //
 (* ****** ****** *)

@@ -829,11 +829,11 @@ end (* end of [list_vt_permutize] *)
 impltmp
 {a:vt}
 glseq_nilq
-<a,list_vt(a)> = list_vt_nilq
+<list_vt(a)><a> = list_vt_nilq
 impltmp
 {a:vt}
 glseq_consq
-<a,list_vt(a)> = list_vt_consq
+<list_vt(a)><a> = list_vt_consq
 //
 (* ****** ****** *)
 //
@@ -850,18 +850,18 @@ g_copy
 impltmp
 {a:vt}
 glseq_copy
-<a,list_vt(a)> = list_vt_copy<a>
+<list_vt(a)><a> = list_vt_copy<a>
 impltmp
 {a:vt}
 glseq_free
-<a,list_vt(a)> = list_vt_free<a>
+<list_vt(a)><a> = list_vt_free<a>
 //
 (* ****** ****** *)
 
 impltmp
 {a:vt}
 glseq_uncons_raw
-<a,list_vt(a)>(xs) =
+<list_vt(a)><a>(xs) =
 let
 val x0 = xs.0
 val () = xs := xs.1 in x0 end
@@ -871,11 +871,11 @@ val () = xs := xs.1 in x0 end
 impltmp
 {a:vt}
 glseq_listize0
-<a,list_vt(a)>(xs) = xs
+<list_vt(a)><a>(xs) = xs
 impltmp
 {a:vt}
 glseq_rlistize0
-<a,list_vt(a)>(xs) =
+<list_vt(a)><a>(xs) =
 list_vt_reverse<a>( xs )
 //
 (* ****** ****** *)
@@ -883,7 +883,7 @@ list_vt_reverse<a>( xs )
 impltmp
 {a:vt}
 glseq_streamize
-<a,list_vt(a)>(xs) =
+<list_vt(a)><a>(xs) =
 list_vt_streamize<a>( xs )
 
 (* ****** ****** *)
@@ -891,31 +891,31 @@ list_vt_streamize<a>( xs )
 impltmp
 {a:vt}
 glseq_forall0
-<a,list_vt(a)> = list_vt_forall0<a>
+<list_vt(a)><a> = list_vt_forall0<a>
 impltmp
 {a:vt}
 glseq_forall1
-<a,list_vt(a)> = list_vt_forall1<a>
+<list_vt(a)><a> = list_vt_forall1<a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:vt}
 glseq_foreach0
-<a,list_vt(a)> = list_vt_foreach0<a>
+<list_vt(a)><a> = list_vt_foreach0<a>
 impltmp
 {a:vt}
 glseq_foreach1
-<a,list_vt(a)> = list_vt_foreach1<a>
+<list_vt(a)><a> = list_vt_foreach1<a>
 //
 (* ****** ****** *)
 //
 impltmp
 {a:vt}
-glseq_map0_list<a,list_vt(a)> = list_vt_map0<a>
+glseq_map0_list<list_vt(a)><a> = list_vt_map0<a>
 impltmp
 {a:vt}
-glseq_map0_rlist<a,list_vt(a)> = list_vt_maprev0<a>
+glseq_map0_rlist<list_vt(a)><a> = list_vt_maprev0<a>
 //
 (* ****** ****** *)
 

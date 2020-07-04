@@ -115,7 +115,7 @@ string_append
   (xs, ys) =
 (
 string_vt2t
-(string_append_vt(xs, y))
+(string_append_vt(xs, ys))
 )
 //
 impltmp<>
@@ -361,7 +361,7 @@ in (* in-of-local *)
 (* ****** ****** *)
 
 impltmp
-g_cmp<xs> = gseq_cmp<x0,xs>
+g_cmp<xs> = gseq_cmp<xs><x0>
 
 (* ****** ****** *)
 //
@@ -373,38 +373,38 @@ impltmp
 g_print<xs>(xs) =
 gseq_print<xs,x0>(xs)
 impltmp
-gseq_print$beg<x0,xs>() = ()
+gseq_print$beg<xs><x0>() = ()
 impltmp
-gseq_print$end<x0,xs>() = ()
+gseq_print$end<xs><x0>() = ()
 impltmp
-gseq_print$sep<x0,xs>() = ()
+gseq_print$sep<xs><x0>() = ()
 *)
 //
 (* ****** ****** *)
 
 impltmp
-gseq_nilq<x0,xs> = string_nilq<>
+gseq_nilq<xs><x0> = string_nilq<>
 impltmp
-gseq_consq<x0,xs> = string_consq<>
+gseq_consq<xs><x0> = string_consq<>
 
 (* ****** ****** *)
 
 impltmp
-gseq_forall<x0,xs> = string_forall<>
+gseq_forall<xs><x0> = string_forall<>
 
 (* ****** ****** *)
 
 impltmp
-gseq_head_raw<x0,xs> = string_head_raw<>
+gseq_head_raw<xs><x0> = string_head_raw<>
 impltmp
-gseq_tail_raw<x0,xs> = string_tail_raw<>
+gseq_tail_raw<xs><x0> = string_tail_raw<>
 
 (* ****** ****** *)
 
 impltmp
-gseq_unlist<x0,xs> = string_make_list
+gseq_unlist<xs><x0> = string_make_list
 impltmp
-gseq_unlist_vt<x0,xs> = string_make_list_vt
+gseq_unlist_vt<xs><x0> = string_make_list_vt
 
 (* ****** ****** *)
 

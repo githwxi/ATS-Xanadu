@@ -1978,6 +1978,11 @@ trans01_dcstdecl
   (d0cl) = let
 //
 (*
+val
+loc0 = d0cl.loc()
+val () =
+println!
+("trans01_dcstdecl: loc0 = ", loc0)
 val () =
 println!
 ("trans01_dcstdecl: d0cl = ", d0cl)

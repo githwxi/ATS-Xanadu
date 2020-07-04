@@ -149,22 +149,21 @@ stream_vt_concat
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 stream_vt_gappend
-  (xs1: stream_vt(xs),
-   xs2: stream_vt(xs)): stream_vt(x0)
+  (xs1: xs, xs2: xs): stream_vt(x0)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 stream_vt_gconcat
   (xss: stream_vt(xs)): stream_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-<a:vt>
-stream_vt_sortedq(stream_vt(a)): bool
+<x0:vt>
+stream_vt_sortedq(stream_vt(x0)): bool
 //
 (* ****** ****** *)
 //

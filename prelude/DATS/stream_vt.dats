@@ -432,14 +432,14 @@ strmcon_vt_cons(x0, auxmain1(xss, xs1))
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 stream_vt_gappend
   (xs1, xs2) = let
 //
 val xs1 =
-gseq_streamize<x0,xs>(xs1)
+glseq_streamize<xs><x0>(xs1)
 val xs2 =
-gseq_streamize<x0,xs>(xs2)
+glseq_streamize<xs><x0>(xs2)
 //
 in
 stream_vt_append<x0>(xs1, xs2)
@@ -448,7 +448,7 @@ end
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 stream_vt_gconcat
   (xss) =
 (
@@ -468,7 +468,7 @@ strmcon_vt_nil()
 strmcon_vt_cons(xs0, xss) => !
 (
 stream_vt_append<x0>
-(glseq_streamize0<x0,xs>(xs0), gconcat(xss)))
+(glseq_streamize0<xs><x0>(xs0), gconcat(xss)))
 )
 } (* end of [stream_vt_gconcat] *)
 //
@@ -1181,15 +1181,15 @@ strmcon_vt_cons(x0, xs) =>
 impltmp
 {x0:vt}
 glseq_listize0
-<x0,stream_vt(x0)> = stream_vt_listize<x0>
+<stream_vt(x0)><x0> = stream_vt_listize<x0>
 impltmp
 {x0:vt}
 glseq_rlistize0
-<x0,stream_vt(x0)> = stream_vt_rlistize<x0>
+<stream_vt(x0)><x0> = stream_vt_rlistize<x0>
 impltmp
 {x0:vt}
 glseq_streamize
-<x0,stream_vt(x0)> = stream_vt_streamize<x0>
+<stream_vt(x0)><x0> = stream_vt_streamize<x0>
 //
 (* ****** ****** *)
 

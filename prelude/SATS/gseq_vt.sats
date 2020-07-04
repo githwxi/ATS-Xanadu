@@ -5,137 +5,137 @@
 (* ****** ****** *)
 
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_nil(): xs
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_cons(x0, xs): xs
 
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_nilq(!xs): bool
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_consq(!xs): bool
 //
 (*
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_nilq1(!xs): bool
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_consq1(!xs): bool
 *)
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_copy(!xs): (xs)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_free(~xs): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_uncons_raw
   (xs: &xs >> xs): x0
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_uncons_exn
   (xs: &xs >> xs): x0
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_uncons_opt
   (xs: &xs >> xs): optn_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_length0(~xs): nint
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_length1(!xs): nint
 //
 (* ****** ****** *)
 
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_drop0
 (xs: ~xs, n0: sint): xs
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_drop1
 (xs: !xs, n0: sint): xs
 
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_listize0(~xs): list_vt(x0)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_listize1(!xs): list_vt(x0)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_rlistize0(~xs): list_vt(x0)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_rlistize1(!xs): list_vt(x0)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_streamize(~xs): stream_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,xs:vt>
+<xs:vt>
+<x0:t0>
 glseq_unlist(xs: list(x0)): (xs)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_unlist_vt(list_vt(x0)): (xs)
 //
 fun
-<x0:t0
-,xs:vt>
+<xs:vt>
+<x0:t0>
 glseq_unrlist(xs: list(x0)): (xs)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_unrlist_vt(list_vt(x0)): (xs)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_unstream_vt(stream_vt(x0)): (xs)
 //
 (* ****** ****** *)
@@ -146,122 +146,122 @@ glseq_foldr: foldr$fopr
 *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <r0:vt>
 glseq_foldl0(~xs, r0): r0
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <r0:vt>
 glseq_foldl1(!xs, r0): r0
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <r0:vt>
 glseq_foldr0(~xs, r0): r0
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <r0:vt>
 glseq_foldr1(!xs, r0): r0
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_exists0(~xs): bool
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_exists1(!xs): bool
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_forall0(~xs): bool
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_forall1(!xs): bool
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_foreach0(~xs): void
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_foreach1(!xs): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_append00
 (xs1: xs, xs2: xs): xs
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_reverse0(xs: xs): xs
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_rappend00(xs1: xs, xs2: xs): xs
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <y0:vt>
 glseq_map0_list(~xs): list_vt(y0)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <y0:vt>
 glseq_map1_list(!xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <y0:vt>
 glseq_map0_rlist(~xs): list_vt(y0)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <y0:vt>
 glseq_map1_rlist(!xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <y0:vt>
 glseq_map0_stream(~xs): stream_vt(y0)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <y0:vt>
 glseq_mapopt0_stream(~xs): stream_vt(y0)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <y0:vt>
 glseq_maplst0_stream(~xs): stream_vt(y0)
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 <y0:vt>
 glseq_mapstrm0_stream(~xs): stream_vt(y0)
 //
@@ -272,30 +272,30 @@ glseq_mapstrm0_stream(~xs): stream_vt(y0)
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_iexists0(~xs): bool
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_iexists1(!xs): bool
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_iforall0(~xs): bool
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_iforall1(!xs): bool
 //
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_iforeach0(~xs): void
 fun
-<x0:vt
-,xs:vt>
+<xs:vt>
+<x0:vt>
 glseq_iforeach1(!xs): void
 //
 (* ****** ****** *)

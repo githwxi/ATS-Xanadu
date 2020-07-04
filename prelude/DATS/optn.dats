@@ -99,16 +99,16 @@ case+ xs of
 
 impltmp
 {a:t0}
-gseq_forall<a,optn(a)> = optn_forall<a>
+gseq_forall<optn(a)><a> = optn_forall<a>
 impltmp
 {a:t0}
-gseq_foreach<a,optn(a)> = optn_foreach<a>
+gseq_foreach<optn(a)><a> = optn_foreach<a>
 impltmp
 {a:t0}
-gseq_rforall<a,optn(a)> = optn_rforall<a>
+gseq_rforall<optn(a)><a> = optn_rforall<a>
 impltmp
 {a:t0}
-gseq_rforeach<a,optn(a)> = optn_rforeach<a>
+gseq_rforeach<optn(a)><a> = optn_rforeach<a>
 
 (* ****** ****** *)
 
