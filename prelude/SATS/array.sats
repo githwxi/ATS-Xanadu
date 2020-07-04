@@ -57,10 +57,20 @@ abstbox
 a1ref_vt_i0_x0(a:vt, n:i0)
 absvtbx
 a1ptr_vt_i0_vx(a:vt, n:i0)
+//
 typedef
-a1ref(a:vt,n:i0) = a1ref_vt_i0_x0(a,n)
+a1ref(
+a:vt,n:i0) = a1ref_vt_i0_x0(a,n)
 vwtpdef
-a1ptr(a:vt,n:i0) = a1ptr_vt_i0_vx(a,n)
+a1ptr(
+a:vt,n:i0) = a1ptr_vt_i0_vx(a,n)
+//
+(* ****** ****** *)
+//
+typedef
+a1refsz(a:vt) = [n:i0] a1ref(a, n)
+vwtpdef
+a1ptrsz(a:vt) = [n:i0] a1ptr(a, n)
 //
 (* ****** ****** *)
 //
@@ -384,23 +394,31 @@ length with a1ptr_length of 1000
 *)
 (* ****** ****** *)
 //
-#symload sub with a1ref_get_at of 1000
-#symload sub with a1ref_set_at of 1000
+#symload
+sub with a1ref_get_at of 1000
+#symload
+sub with a1ref_set_at of 1000
 //
-#symload sub with a1ptr_get_at of 1000
-#symload sub with a1ptr_set_at of 1000
+#symload
+sub with a1ptr_get_at of 1000
+#symload
+sub with a1ptr_set_at of 1000
 //
 (* ****** ****** *)
-
-#symload a1ref with a1ref_make_nval of 1000
-#symload a1ptr with a1ptr_make_nval of 1000
-
+#symload
+a1ref with a1ref_make_nval of 1000
+#symload
+a1ptr with a1ptr_make_nval of 1000
 (* ****** ****** *)
-#symload listize with a1ref_listize
-#symload listize0 with a1ref_listize0
+#symload
+listize with a1ref_listize of 1000
+#symload
+listize0 with a1ref_listize0 of 1000
 (* ****** ****** *)
-#symload rlistize with a1ref_rlistize
-#symload rlistize0 with a1ref_rlistize0
+#symload
+rlistize with a1ref_rlistize of 1000
+#symload
+rlistize0 with a1ref_rlistize0 of 1000
 (* ****** ****** *)
 
 (* end of [array.sats] *)

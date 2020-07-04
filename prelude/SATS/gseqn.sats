@@ -86,12 +86,77 @@ fun
 <xs:t0>
 <x0:t0>
 <ln:i0>
-gseqn_unlist(xs: list(x0, ln)): (xs)
+gseqn_unlist(list(x0, ln)): (xs)
 fun
 <xs:t0>
 <x0:t0>
 <ln:i0>
-gseqn_unrlist(xs: list(x0, ln)): (xs)
+gseqn_unrlist(list(x0, ln)): (xs)
+
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<ln:i0>
+gseqn_map_list(xs): list_vt(y0, ln)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<ln:i0>
+gseqn_map_rlist(xs): list_vt(y0, ln)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<ln:i0>
+gseqn_map_array(xs): a1ptr( y0, ln )
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<ln:i0>
+gseqn_map_rarray(xs): a1ptr( y0, ln )
+//
+(* ****** ****** *)
+
+(*
+//
+(*
+HX-2020-07-04:
+Is this interesting?
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+<rz:vt>
+<ln:i0>
+gseqn_foldl(xs, r0): rz
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+<ln:i0>
+gseqn_foldl_nil{ln=0}(xs, r0): r0
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+<rz:vt>
+<r1:vt>
+<ln:i0>
+gseqn_foldl_cons{ln>0}(xs, r0): rz
+(*
+foldl$foprn<int(i)><x0><int(i+1)>{i<n}(r, _) = r + 1
+*)
+*)
 
 (* ****** ****** *)
 

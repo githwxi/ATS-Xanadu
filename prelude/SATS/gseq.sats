@@ -251,12 +251,23 @@ fun
 <y0:vt>
 gseq_map_rlist(xs): list_vt(y0)
 //
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_array(xs): a1ptrsz(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_rarray(xs): a1ptrsz(y0)
+(* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
 gseq_map_stream(xs): stream_vt(y0)
-//
 (* ****** ****** *)
 
 fun
