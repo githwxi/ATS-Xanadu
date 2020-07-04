@@ -18,18 +18,18 @@ UN =
 (* ****** ****** *)
 
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_copy(xs) =
-glseq_unlist_vt<x0,xs>
-(glseq_listize1<x0,xs>(xs))
+glseq_unlist_vt<xs><x0>
+(glseq_listize1<xs><x0>(xs))
 
 (* ****** ****** *)
 
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_free(xs) =
 (
-glseq_foreach0<x0,xs>(xs)
+glseq_foreach0<xs><x0>(xs)
 ) where
 {
 impltmp
@@ -39,11 +39,11 @@ foreach0$work<x0> = g_free<x0>
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_uncons_exn
   (xs) =
 if
-glseq_nilq<x0,xs>(xs)
+glseq_nilq<xs><x0>(xs)
 then let
 val
 () = g_free<xs>(xs)
@@ -51,28 +51,28 @@ in
 $raise SubscriptExn()
 end // end of [then]
 else
-glseq_uncons_raw<x0,xs>(xs)
+glseq_uncons_raw<xs><x0>(xs)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_uncons_opt
   (xs) =
 if
-glseq_nilq<x0,xs>(xs)
+glseq_nilq<xs><x0>(xs)
 then
 optn_vt_nil((*void*))
 else
 optn_vt_cons
-(glseq_uncons_raw<x0,xs>(xs))
+(glseq_uncons_raw<xs><x0>(xs))
 //
 (* ****** ****** *)
 
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_length0(xs) =
 (
 glseq_foldl0
-<x0,xs><r0>(xs, 0)
+<xs><x0><r0>(xs, 0)
 ) where
 {
 //
@@ -89,11 +89,11 @@ end
 } (* glseq_length0/foldl0 *)
 
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_length1(xs) =
 (
 glseq_foldl1
-<x0,xs><r0>(xs, 0)
+<xs><x0><r0>(xs, 0)
 ) where
 {
 //
@@ -109,43 +109,43 @@ foldl1$fopr
 //
 (*
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_listize0(xs) =
 stream_vt_listize<x0>
-(glseq_streamize<x0,xs>(xs))
+(glseq_streamize<xs><x0>(xs))
 *)
 (*
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_rlistize0(xs) =
 stream_vt_rlistize<x0>
-(glseq_streamize<x0,xs>(xs))
+(glseq_streamize<xs><x0>(xs))
 *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_listize0(xs) =
 let
 impltmp
 map0$fopr<x0><x0>(x0) = x0
 in
-glseq_map0_list<x0,xs><x0>(xs)
+glseq_map0_list<xs><x0><x0>(xs)
 end
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_rlistize0(xs) =
 let
 impltmp
 map0$fopr<x0><x0>(x0) = x0
 in
-glseq_map0_rlist<x0,xs><x0>(xs)
+glseq_map0_rlist<xs><x0><x0>(xs)
 end
 //
 (* ****** ****** *)
 
 impltmp
-<x0,xs><r0>
+<xs><x0><r0>
 glseq_foldl0
 (xs, r0) = r0 where
 {
@@ -156,7 +156,7 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  glseq_foreach0<x0,xs>(xs)
+  glseq_foreach0<xs><x0>(xs)
 ) where
 {
 impltmp
@@ -176,7 +176,7 @@ end // end of [foreach0$work]
 (* ****** ****** *)
 //
 impltmp
-<x0,xs><y0>
+<xs><x0><y0>
 glseq_map0_list
   (xs) = let
 //
@@ -204,7 +204,7 @@ end // foldl$fopr
 //
 var r0: yy
 val pz =
-glseq_foldl0<x0,xs><r0>(xs, $addr(r0))
+glseq_foldl0<xs><x0><r0>(xs, $addr(r0))
 //
 in
 $UN.p2tr_set<yy>
@@ -214,7 +214,7 @@ end // end of [glseq_map0_list/foldl]
 (* ****** ****** *)
 //
 impltmp
-<x0,xs><y0>
+<xs><x0><y0>
 glseq_map0_rlist
   (xs) = let
 //
@@ -223,7 +223,7 @@ typedef r0 = list_vt(y0)
 in
 //
 glseq_foldl0
-<x0,xs>< r0 >
+<xs><x0>< r0 >
 (xs, list_vt_nil()) where
 {
 impltmp
@@ -238,11 +238,11 @@ end // end of [glseq_map0_rlist/foldl0]
 (* ****** ****** *)
 
 impltmp
-<x0,xs><y0>
+<xs><x0><y0>
 glseq_map0_stream(xs) =
 let
 val xs =
-glseq_streamize<x0,xs>(xs)
+glseq_streamize<xs><x0>(xs)
 in(*in-of-let*)
 (
   stream_vt_map0<x0><y0>(xs)
@@ -252,16 +252,16 @@ end // end of [glseq_map0_stream/streamize]
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_forall0
   (xs) =
 stream_vt_forall0<x0>
-(glseq_streamize<x0,xs>(xs))
+(glseq_streamize<xs><x0>(xs))
 //
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_exists0
   (xs) = let
 //
@@ -272,18 +272,18 @@ glseq_exists0
 in
   if
   glseq_forall0
-  <x0,xs>(xs) then false else true
+  <xs><x0>(xs) then false else true
 end // end of [glseq_exists0/forall0]
 //
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_foreach0(xs) =
 let
 val
 test =
-glseq_forall0<x0,xs>(xs) where
+glseq_forall0<xs><x0>(xs) where
 {
 impltmp
 forall0$test<x0>(x0) =
@@ -296,12 +296,12 @@ in
 end // end of [glseq_foreach0/forall0]
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_foreach1(xs) =
 let
 val
 test =
-glseq_forall1<x0,xs>(xs) where
+glseq_forall1<xs><x0>(xs) where
 {
 impltmp
 forall1$test<x0>(x0) =
@@ -316,40 +316,40 @@ end // end of [glseq_foreach1/forall1]
 (* ****** ****** *)
 
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_append00
   (xs1, xs2) =
 (
 glseq_foldr0
-<x0,xs>< xs >(xs1, xs2)
+<xs><x0>< xs >(xs1, xs2)
 ) where
 {
 impltmp
 foldr0$fopr
 < x0><xs >
-( x0, r0 ) = glseq_cons<x0,xs>(x0, r0)
+( x0, r0 ) = glseq_cons<xs><x0>(x0, r0)
 } (* end of [glseq_append00/foldr0] *)
 
 (* ****** ****** *)
 
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_reverse0(xs) =
 glseq_rappend00
-(xs, glseq_nil<x0,xs>())
+(xs, glseq_nil<xs><x0>())
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_rappend00
   (xs1, xs2) =
 (
 glseq_foldl0
-<x0,xs>< xs >(xs1, xs2)
+<xs><x0>< xs >(xs1, xs2)
 ) where
 {
 impltmp
 foldl0$fopr
 < x0><xs >
-( r0, x0 ) = glseq_cons<x0,xs>(x0, r0)
+( r0, x0 ) = glseq_cons<xs><x0>(x0, r0)
 } (* end of [glseq_rappend00/foldl0] *)
 
 (* ****** ****** *)
@@ -359,7 +359,7 @@ foldl0$fopr
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_iforall0(xs) =
 let
 //
@@ -381,13 +381,13 @@ val () =
 $UN.p2tr_set<nint>(p0, succ(i0))
 }
 in
-  glseq_forall0<x0,xs>(xs)
+  glseq_forall0<xs><x0>(xs)
 end (* end of [glseq_forall0] *)
 //
 end // end of [glseq_iforall0/forall0]
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_iforall1(xs) =
 let
 //
@@ -409,7 +409,7 @@ val () =
 $UN.p2tr_set<nint>(p0, succ(i0))
 }
 in
-  glseq_forall1<x0,xs>(xs)
+  glseq_forall1<xs><x0>(xs)
 end (* end of [glseq_forall1] *)
 //
 end // end of [glseq_iforall1/forall1]
@@ -417,7 +417,7 @@ end // end of [glseq_iforall1/forall1]
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_iexists0
   (xs) = let
 //
@@ -428,11 +428,11 @@ glseq_iexists0
 in
   if
   glseq_iforall0
-  <x0,xs>(xs) then false else true
+  <xs><x0>(xs) then false else true
 end // end of [glseq_iexists0/iforall0]
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_iexists1
   (xs) = let
 //
@@ -443,18 +443,18 @@ glseq_iexists1
 in
   if
   glseq_iforall1
-  <x0,xs>(xs) then false else true
+  <xs><x0>(xs) then false else true
 end // end of [glseq_iexists1/iforall1]
 //
 (* ****** ****** *)
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_iforeach0(xs) =
 let
 val
 test =
-glseq_iforall0<x0,xs>(xs) where
+glseq_iforall0<xs><x0>(xs) where
 {
 impltmp
 iforall0$test<x0>(i0, x0) =
@@ -468,12 +468,12 @@ in
 end // end of [glseq_iforeach0/iforall0]
 //
 impltmp
-<x0,xs>
+<xs><x0>
 glseq_iforeach1(xs) =
 let
 val
 test =
-glseq_iforall1<x0,xs>(xs) where
+glseq_iforall1<xs><x0>(xs) where
 {
 impltmp
 iforall1$test<x0>(i0, x0) =
