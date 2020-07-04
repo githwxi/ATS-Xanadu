@@ -386,7 +386,7 @@ impltmp
 {a:t0}
 {n:i0}
 gseq_length
-<a,a1ref(a,n)> = a1ref_length<a><n>
+<a1ref(a,n)><a> = a1ref_length<a><n>
 //
 (* ****** ****** *)
 //
@@ -394,12 +394,12 @@ impltmp
 {a:t0}
 {n:i0}
 gseq_forall
-<a,a1ref(a,n)> = a1ref_forall<a>{n}
+<a1ref(a,n)><a> = a1ref_forall<a>{n}
 impltmp
 {a:t0}
 {n:i0}
 gseq_foreach
-<a,a1ref(a,n)> = a1ref_foreach<a>{n}
+<a1ref(a,n)><a> = a1ref_foreach<a>{n}
 //
 (* ****** ****** *)
 //
@@ -407,13 +407,13 @@ impltmp
 {a:t0}
 {n:i0}
 gseq_listize
-<a,a1ref(a,n)> = a1ref_listize<a>{n}
+<a1ref(a,n)><a> = a1ref_listize<a>{n}
 //
 impltmp
 {a:t0}
 {n:i0}
 gseq_rlistize
-<a,a1ref(a,n)> = a1ref_rlistize<a>{n}
+<a1ref(a,n)><a> = a1ref_rlistize<a>{n}
 //
 (* ****** ****** *)
 //
@@ -421,11 +421,11 @@ impltmp
 {a:t0}
 {n:i0}
 gseq_unlist
-<a,a1ref(a,n)>(xs) = a1ref_make_list<a>(xs)
+<a1ref(a,n)><a>(xs) = a1ref_make_list<a>(xs)
 impltmp
 {a:t0}{n:i0}
 gseq_unlist_vt
-<a,a1ref(a,n)>(xs) = a1ref_make_list_vt<a>(xs)
+<a1ref(a,n)><a>(xs) = a1ref_make_list_vt<a>(xs)
 //
 (* ****** ****** *)
 
