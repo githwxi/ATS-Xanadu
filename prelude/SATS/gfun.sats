@@ -30,8 +30,8 @@ gfun_not_cfr1
 (* ****** ****** *)
 
 fun
-<x0:t0
-,xs:t0>
+<xs:t0>
+<x0:t0>
 gfun_memq_gseq(xs): cfr1(x0,bool)
 
 (* ****** ****** *)

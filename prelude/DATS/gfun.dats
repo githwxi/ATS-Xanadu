@@ -25,10 +25,10 @@ lam(x1) => not(f0(x1))
 (* ****** ****** *)
 
 impltmp
-<x0,xs>
+<xs><x0>
 gfun_memq_gseq(xs) =
 lam(x0) =>
-gseq_indexof<x0,xs>(xs, x0) >= 0
+gseq_indexof<xs><x0>(xs, x0) >= 0
 
 (* ****** ****** *)
 
