@@ -1178,12 +1178,12 @@ list_vt2t
 list_map<labs2exp><labt2ype>(ls2es)
 ) where
 {
-  implement
-  list_map$fopr<labs2exp><labt2ype>(ls2e) =
-  let
-  val+SLABELED(l0, s2e) = ls2e in TLABELED(l0, s2exp_erase(s2e))
-  end
-}
+implement
+list_map$fopr<labs2exp><labt2ype>(ls2e) =
+let
+val+SLABELED(l0, s2e) = ls2e in TLABELED(l0, s2exp_erase(s2e))
+end
+} (* end of [labs2explst_erase] *)
 
 (* ****** ****** *)
 
@@ -1235,24 +1235,24 @@ T2Pxtv
 in
 //
 let
-  val
-  t2p1 = xtv0.type()
+val
+t2p1 = xtv0.type()
 in
-  case+
-  t2p1.node() of
-  | T2Pnone0() => t2p0
-  | _ (*non-T2Pnone0*) =>
-    let
-      val
-      t2p1 =
-      t2ype_normize(t2p1)
-    in
-      xtv0.type(t2p1); t2p1
-    end where
-    {
-      val () = flag := flag + 1
-    }
-end
+case+
+t2p1.node() of
+| T2Pnone0() => t2p0
+| _ (*non-T2Pnone0*) =>
+  let
+    val
+    t2p1 =
+    t2ype_normize(t2p1)
+  in
+    xtv0.type(t2p1); t2p1
+  end where
+  {
+    val () = flag := flag + 1
+  }
+end // end of [let]
 //
 end // end of [auxxtv]
 
@@ -1276,26 +1276,28 @@ in
 //
 case+
 t2p1.node() of
-| T2Plam
-  (s2vs, t2p2) =>
-  let
-    val () = flag := flag + 1
-  in
-    t2ype_normize
-    (
-    t2ype_subst_svarlst(t2p2, s2vs, t2ps)
-    ) (* t2ype_whnfize *)
-  end
-| _ (*non-T2Plam*) =>
-  if
-  fini=flag
-  then t2p0
-  else
-  let
-    val s2t0 = t2p0.sort()
-  in
-    t2ype_make_node(s2t0, T2Papp(t2p1, t2ps))
-  end
+|
+T2Plam
+(s2vs, t2p2) =>
+let
+  val () = flag := flag + 1
+in
+  t2ype_normize
+  (
+  t2ype_subst_svarlst(t2p2, s2vs, t2ps)
+  ) (* t2ype_whnfize *)
+end
+|
+_ (*non-T2Plam*) =>
+if
+fini=flag
+then t2p0
+else
+let
+  val s2t0 = t2p0.sort()
+in
+t2ype_make_node(s2t0, T2Papp(t2p1, t2ps))
+end
 //
 end // end of [auxapp]
 
@@ -1330,9 +1332,10 @@ t2p0.node() of
   auxlft(t2p0, flag)
 *)
 //
-| T2Pfun
-  (fc2, npf, t2ps, t2p1) =>
-  let
+|
+T2Pfun
+(fc2, npf, t2ps, t2p1) =>
+let
   val
   s2t0 = t2p0.sort()
   val
@@ -1341,29 +1344,31 @@ t2p0.node() of
   t2ps = auxt2ps(t2ps, flag)
   val
   t2p1 = auxt2p0(t2p1, flag)
-  in
-    t2ype_make_node
-    (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
-  end
+in
+  t2ype_make_node
+  (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
+end
 //
-| T2Puni(s2vs, t2p1) =>
-  let
+|
+T2Puni(s2vs, t2p1) =>
+let
   val
   s2t0 = t2p0.sort()
   val
   t2p1 = auxt2p0(t2p1, flag)
-  in
-    t2ype_make_node(s2t0, T2Puni(s2vs, t2p1))
-  end
-| T2Pexi(s2vs, t2p1) =>
-  let
+in
+t2ype_make_node(s2t0, T2Puni(s2vs, t2p1))
+end
+|
+T2Pexi(s2vs, t2p1) =>
+let
   val
   s2t0 = t2p0.sort()
   val
   t2p1 = auxt2p0(t2p1, flag)
-  in
-    t2ype_make_node(s2t0, T2Pexi(s2vs, t2p1))
-  end
+in
+t2ype_make_node(s2t0, T2Pexi(s2vs, t2p1))
+end
 //
 | _ (*rest-of-t2ype*) => t2p0
 //
@@ -1377,18 +1382,20 @@ auxt2ps
 : &int >> int): t2ypelst =
 (
 case+ t2ps of
-| list_nil() =>
-  list_nil()
-| list_cons(t2p1, t2ps2) =>
-  let
+|
+list_nil() =>
+list_nil()
+|
+list_cons(t2p1, t2ps2) =>
+let
   val fini = flag
   val t2p1 = auxt2p0(t2p1, flag)
   val t2ps2 = auxt2ps(t2ps2, flag)
-  in
-    if
-    fini = flag
-    then t2ps else list_cons(t2p1, t2ps2)
-  end
+in
+if
+fini = flag
+then t2ps else list_cons(t2p1, t2ps2)
+end
 )
 
 in(*in-of-local*)
@@ -1405,11 +1412,17 @@ println!
 //
 in
 //
-  let
-    var flag: int = 0 in auxt2p0(t2p0, flag)
-  end
+let
+  var
+  flag: int = 0 in auxt2p0(t2p0, flag)
+end
 //
 end (* end of [t2ype_normize] *) end // end of [local]
+
+(* ****** ****** *)
+
+implement
+t2ype_syndffy(t2p1, t2p2) = list_nil()
 
 (* ****** ****** *)
 

@@ -143,8 +143,24 @@ datatype synerr =
 //
 | SYNERRsignint_opr of (token) // sign: + or -
 //
+(* ****** ****** *)
+//
+datatype
+synpth =
+| synpth_nil of ()
+| synpth_cons of (int, synpth)
+datatype
+syndff(syn:type) =
+| syndff01 of (synpth, syn)
+| syndff10 of (synpth, syn)
+| syndff11 of (synpth, syn, syn)
+//
+(* ****** ****** *)
+//
 typedef
 synerrlst = List0(synerr)
+typedef
+syndfflst(a:type) = List0(syndff(a))
 //
 (* ****** ****** *)
 //

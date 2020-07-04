@@ -176,10 +176,10 @@ d3p0.node() of
     , ": TRERR33(D3Ptcast): d3p1 = ", d3p1);
     prerrln!
     ( loc0
-    , ": TRERR33(D3Ptcast): the expected type: ", t2p2);
+    , ": TRERR33(D3Ptcast): the inferred type: ", t2p1);
     prerrln!
     ( loc0
-    , ": TRERR33(D3Ptcast): the inferred type: ", t2p1);
+    , ": TRERR33(D3Ptcast): the expected type: ", t2p2);
   end
 //
 | D3Pnone1(d3p1) =>
@@ -271,6 +271,9 @@ D3Etcast(d3e2, t2p2) =>
 //
 val
 loc2 = d3e2.loc()
+val
+t2pi = d3e2.type()
+//
 val () =
 prerrln!
 ( loc2, ": ***TRERR33***")
@@ -281,11 +284,11 @@ prerrln!
 val () =
 prerrln!
 ( loc2
-, ": TRERR33(D3Eif0): then: the expected type: ", t2p2)
+, ": TRERR33(D3Eif0): then: the inferred type: ", t2pi)
 val () =
 prerrln!
 ( loc2
-, ": TRERR33(D3Eif0): then: the inferred type: ", d3e2.type())
+, ": TRERR33(D3Eif0): then: the expected type: ", t2p2)
 //
 }
 | _ (* else *) => ((*void*))
@@ -307,6 +310,9 @@ D3Etcast(d3e3, t2p3) =>
 //
 val
 loc3 = d3e3.loc()
+val
+t2pi = d3e3.type()
+//
 val () =
 prerrln!
 ( loc3, ": ***TRERR33***")
@@ -317,11 +323,11 @@ prerrln!
 val () =
 prerrln!
 ( loc3
-, ": TRERR33(D3Eif0): else: the expected type: ", t2p3)
+, ": TRERR33(D3Eif0): else: the inferred type: ", t2pi)
 val () =
 prerrln!
 ( loc3
-, ": TRERR33(D3Eif0): else: the inferred type: ", d3e3.type())
+, ": TRERR33(D3Eif0): else: the expected type: ", t2p3)
 //
 }
 | _ (* else *) => ((*void*))
