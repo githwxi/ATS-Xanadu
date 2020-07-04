@@ -38,6 +38,12 @@
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
+extern
+castfn
+UN_string_vt2t
+{l:agz}
+(cs: !strptr(l)):<> String0
+//
 (* ****** ****** *)
 //
 #staload
@@ -97,20 +103,20 @@ fpath_normalize
   (fp0) =
 let
 //
-(*
+// (*
 val () =
 println!
 ("fpath_normalize: fp0 = ", fp0)
-*)
+// *)
 //
 val
 fp1 = aux0(fp1)
 //
-(*
+// (*
 val () =
 println!
 ("fpath_normalize: fp1 = ", fp1)
-*)
+// *)
 in
   fp1
 end where
@@ -250,8 +256,18 @@ fun
 dirln
 ( dir
 : !Strptr1): Size =
+let
+//
+val () =
+println!
+(
+"dirln = "
+, UN_string_vt2t(dir))
+//
+in
 string_length
 ($UN.strptr2string(dir))
+end
 //
 fun
 aux0
@@ -443,7 +459,9 @@ npar =
 $UN.cast{Size}(npar)
 in
 val n0 =
-n0 + npar*string_length(PDR)
+n0 +
+npar *
+succ(string_length(PDR))
 end
 //
 val n0 = $UN.cast{Size}(n0)
@@ -473,7 +491,9 @@ if
 then q1 else
 let
 val q1 =
-puts(q1, PDR) in loop2(q1, npar-1)
+puts(q1, PDR)
+val q1 =
+putc(q1, DSP) in loop2(q1, npar-1)
 end // end of [if]
 }
 //
@@ -860,14 +880,19 @@ in (* in-of-local *)
 //
 implement
 filpath_dirbase_vt
-  (dir, base) = let
+  (dir0, base) = let
+//
+val () =
+println!("filpath_dirbase_vt: dir0 = ", dir0)
+val () =
+println!("filpath_dirbase_vt: base = ", base)
 //
 val
-dir = g1ofg0(dir)
+dir0 = g1ofg0(dir0)
 val
 base = g1ofg0(base)
 //
-val n1 = length(dir)
+val n1 = length(dir0)
 val n2 = length(base)
 //
 val sep = theDirSep_get()
@@ -876,7 +901,7 @@ val sepd =
 (
 if
 (n1 > 0)
-then (dir[n1-1] = sep) else false
+then (dir0[n1-1] = sep) else false
 ) : bool // end of [val]
 //
 val n12 = 
@@ -884,7 +909,7 @@ val n12 =
 if sepd then (n1+n2+1) else (n1+n2+2)
 ) : Size_t // end of [val]
 //
-val dir = $UN.cast{charptr}(dir)
+val dir0 = $UN.cast{charptr}(dir0)
 val base = $UN.cast{charptr}(base)
 //
 in
@@ -895,7 +920,7 @@ then let
   val
   (pf,fpf|p0) = malloc_gc(n12)
   val _(*n12*) =
-  $extfcall(int, "sprintf", p0, "%s%s", dir, base)
+  $extfcall(int, "sprintf", p0, "%s%s", dir0, base)
 in
   $UN.castvwtp0((pf, fpf | p0))
 end // end of [then]
@@ -903,7 +928,7 @@ else let
   val
   (pf, fpf | p0) = malloc_gc(n12)
   val _(*n12*) =
-  $extfcall(int, "sprintf", p0, "%s/%s", dir, base)
+  $extfcall(int, "sprintf", p0, "%s/%s", dir0, base)
 in
   $UN.castvwtp0((pf, fpf | p0))
 end // end of [then]

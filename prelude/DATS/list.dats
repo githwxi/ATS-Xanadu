@@ -8,6 +8,10 @@
 #staload
 "./../SATS/list.sats"
 *)
+(*
+#staload
+"./../SATS/gseq.sats"
+*)
 
 (* ****** ****** *)
 
@@ -649,21 +653,22 @@ gseq_map_rlist<list(a)><a> = list_maprev_vt<a>
 //
 (* ****** ****** *)
 //
-// For gseq-operations
+(*
+For gseqn-operations
+*)
+#staload "./../SATS/gseqn.sats"
 //
 (* ****** ****** *)
 
-(*
 impltmp
 {a:t0}{n:i0}
 gseqn_nilq<list(a,n)><a><n> = list_nilq<>
 impltmp
 {a:t0}{n:i0}
 gseqn_consq<list(a,n)><a><n> = list_consq<>
-*)
 
 (* ****** ****** *)
-(*
+
 impltmp
 {a:t0}{n:i0}
 gseqn_head<list(a,n)><a><n> = list_head<a>
@@ -671,13 +676,13 @@ impltmp
 {a:t0}{n:i0}
 gseqn_tail
 <list(a,n)><a><n><list(a,n-1)> = list_tail<a>
-*)
+
 (* ****** ****** *)
-(*
+
 impltmp
 {a:t0}{n:i0}
 gseqn_length<list(a,n)><a><n> = list_length<a>
-*)
+
 (* ****** ****** *)
 
 (* end of [list.dats] *)
