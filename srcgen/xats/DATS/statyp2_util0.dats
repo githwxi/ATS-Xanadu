@@ -1422,7 +1422,293 @@ end (* end of [t2ype_normize] *) end // end of [local]
 (* ****** ****** *)
 
 implement
-t2ype_diffize(t2p1, t2p2) = list_nil()
+t2ype_diffize
+(t2p1, t2p2) = let
+//
+vtypedef
+dfflst =
+List0_vt(t2ypedff)
+//
+fun
+auxins
+( x0
+: t2ype
+, y0
+: t2ype
+, ps
+: synpth
+, dffs
+: dfflst): dfflst =
+(
+  list_vt_cons(dff0, dffs)
+) where
+{
+  val
+  dff0 = T2Pdff11(ps, x0, y0)
+}
+//
+fun
+auxone
+( x0
+: t2ype
+, y0
+: t2ype
+, ps
+: synpth
+, dffs
+: dfflst): dfflst =
+let
+val x0 = whnfize(x0)
+val y0 = whnfize(y0)
+in
+case+
+( x0.node()
+, y0.node()) of
+//
+|
+( T2Pbas(sym1)
+, T2Pbas(sym2)) =>
+if
+(sym1 = sym2)
+then dffs else
+auxins(x0, y0, ps, dffs)
+//
+|
+( T2Pcst(s2c1)
+, T2Pcst(s2c2)) =>
+if
+(s2c1 = s2c2)
+then dffs else
+auxins(x0, y0, ps, dffs)
+//
+|
+( T2Pvar(s2v1)
+, T2Pvar(s2v2)) =>
+if
+(s2v1 = s2v2)
+then dffs else
+auxins(x0, y0, ps, dffs)
+//
+|
+( T2Pfc2(fc21)
+, T2Pfc2(fc22)) =>
+if
+funclo2_equal
+(fc21 , fc22)
+then dffs else
+auxins(x0, y0, ps, dffs)
+//
+|
+(T2Papp _, T2Papp _) =>
+(
+  auxapp(x0, y0, ps, dffs)
+)
+//
+|
+(T2Pfun _, T2Pfun _) =>
+(
+  auxfun(x0, y0, ps, dffs)
+)
+//
+|
+( T2Pnone0()
+, T2Pnone0() ) => dffs
+//
+|
+(_(*else*), _(*else*)) =>
+(
+  auxins(x0, y0, ps, dffs)
+)
+end // end of [auxone]
+//
+and
+auxlst
+( xs
+: t2ypelst
+, ys
+: t2ypelst
+, p0: int
+, ps: synpth
+, dffs
+: dfflst): dfflst =
+(
+case+ xs of
+|
+list_nil() =>
+(
+case- ys of
+|
+list_nil() => dffs
+|
+list_cons(y0, ys) =>
+let
+val
+dff0 =
+T2Pdff01(ps, y0) where
+{
+val ps = list_cons(p0, ps)
+}
+val
+dffs =
+list_vt_cons(dff0, dffs)
+in
+  auxlst(xs, ys, p0+1, ps, dffs)
+end
+)
+|
+list_cons(x0, xs) =>
+(
+case- ys of
+|
+list_nil() =>
+let
+val
+dff0 =
+T2Pdff10(ps, x0) where
+{
+val ps = list_cons(p0, ps)
+}
+val
+dffs =
+list_vt_cons(dff0, dffs)
+in
+  auxlst(xs, ys, p0+1, ps, dffs)
+end
+|
+list_cons(y0, ys) =>
+let
+val
+dffs =
+auxone
+(x0, y0, ps, dffs) where
+{
+  val ps = list_cons(p0, ps)
+}
+in
+  auxlst(xs, ys, p0+1, ps, dffs)
+end
+)
+) (* end of [auxlst] *)
+//
+and
+auxapp
+( x0
+: t2ype
+, y0
+: t2ype
+, ps
+: synpth
+, dffs
+: dfflst): dfflst =
+let
+val-
+T2Papp
+(x1, xs) = x0.node()
+val-
+T2Papp
+(y1, ys) = y0.node()
+//
+val p0 = 0 and p1 = 1
+//
+val dffs =
+let
+val ps =
+list_cons(p0, ps)
+in
+  auxone(x1, y1, ps, dffs)
+end
+in
+let
+val ps =
+list_cons(p1, ps)
+in
+  auxlst(xs, ys, 0, ps, dffs)
+end
+end (* end of T2Papp *)
+//
+and
+auxfun
+( x0
+: t2ype
+, y0
+: t2ype
+, ps
+: synpth
+, dffs
+: dfflst): dfflst =
+let
+//
+val-
+T2Pfun
+( fc21
+, npf1
+, xs, x1) = x0.node()
+val-
+T2Pfun
+( fc22
+, npf2
+, ys, y1) = y0.node()
+//
+val p0 = 0 and p1 = 1
+val p2 = 2 and p3 = 3
+//
+val dffs =
+let
+  val ps =
+  list_cons(p0, ps)
+in
+  auxone
+  (fc21, fc22, ps, dffs)
+end
+//
+val dffs =
+let
+  val ps =
+  list_cons(p1, ps)
+in
+  auxnpf
+  (npf1, npf2, ps, dffs)
+end
+//
+val dffs =
+let
+val ps = list_cons(p2, ps)
+in
+  auxlst(xs, ys, 0, ps, dffs)
+end
+//
+in
+  let
+  val ps = list_cons(p3, ps)
+  in
+    auxone( x1, y1, ps, dffs )
+  end
+end // end of [auxfun]
+//
+and
+auxnpf
+( n1: int
+, n2: int
+, ps: synpth
+, dffs: dfflst): dfflst =
+(
+  if
+  (n1 = n2)
+  then dffs else
+  list_vt_cons(dff0, dffs)
+) where
+{
+val dff0 = T2Pdff11_npf(ps, n1, n2)
+} (* end of [val dffs] *)
+//
+in
+list_vt2t
+(
+list_vt_reverse
+(
+auxone
+(t2p1, t2p2, list_nil(), list_vt_nil())))
+end // end of [t2ype_diffize]
 
 (* ****** ****** *)
 
