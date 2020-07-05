@@ -494,17 +494,23 @@ overload normize with t2ype_normize
 //
 (* ****** ****** *)
 //
+(*
 typedef
 synpth = $SYNRD.synpth
+*)
+typedef synpth = List0(int)
 //
 datatype
 t2ypedff =
 |
-t2ypedff01 of (synpth, t2ype)
+T2Pdff01 of (synpth, t2ype)
 |
-t2ypedff10 of (synpth, t2ype)
+T2Pdff10 of (synpth, t2ype)
 |
-t2ypedff11 of (synpth, t2ype, t2ype)
+T2Pdff11 of (synpth, t2ype, t2ype)
+//
+|
+T2Pdff11_npf of (synpth, int, int)
 //
 typedef t2ypedfflst = List0(t2ypedff)
 //

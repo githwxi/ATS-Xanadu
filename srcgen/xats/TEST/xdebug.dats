@@ -2,6 +2,10 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+val x = 10: bool
+
+(* ****** ****** *)
+////
 abstype xyz(a:i0)
 absimpl xyz(a:i0) = sint(a)
 

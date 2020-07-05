@@ -714,6 +714,12 @@ t2pf.node() of
 )
 //
 (* ****** ****** *)
+//
+// HX-2020-07-04:
+// Please put the code below
+// that requires initialization
+//
+(* ****** ****** *)
 
 local
 val
