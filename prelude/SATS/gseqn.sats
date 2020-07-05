@@ -129,7 +129,7 @@ gseqn_map_rarray(xs): a1ptr( y0, ln )
 //
 (*
 HX-2020-07-04:
-Is this interesting?
+Is this interesting?!
 *)
 //
 fun
@@ -154,10 +154,36 @@ fun
 <ln:i0>
 gseqn_foldl_cons{ln>0}(xs, r0): rz
 (*
-foldl$foprn<int(i)><x0><int(i+1)>{i<n}(r, _) = r + 1
+foldl$foprn
+<int(i)><x0><int(i+1)>{i<n}(r, _) = r + 1
 *)
 *)
 
+(* ****** ****** *)
+//
+// For z2-gseqn-operations
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+<ln:i0>
+gseqn_z2map_list
+  (xs: xs, ys: ys): list_vt(z0, ln)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+<ln:i0>
+gseqn_z2map_rlist
+  (xs: xs, ys: ys): list_vt(z0, ln)
+//
 (* ****** ****** *)
 
 (* end of [gseqn.sats] *)
