@@ -531,7 +531,12 @@ d3e0.node() of
   {
     val () = tread33_d3exp(d3e1)
   }
+//
 | D3Efold(d3e1) =>
+  {
+    val () = tread33_d3exp(d3e1)
+  }
+| D3Efree(d3e1) =>
   {
     val () = tread33_d3exp(d3e1)
   }
