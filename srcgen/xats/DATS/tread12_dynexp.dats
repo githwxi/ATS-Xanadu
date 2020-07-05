@@ -243,11 +243,25 @@ d2e0.node() of
   val () = tread12_dtapparg(s2es)
   }
 | D2Edapp
-  (d2e1, npf, d2es) =>
+  (d2e1, npf2, d2es) =>
   {
   val () = tread12_d2exp(d2e1)
   val () = tread12_d2explst(d2es)
   }
+//
+| D2Edtsel
+  (lab1,
+   dpis, npf2, opt3) =>
+  {
+    val () =
+    (
+    case+ opt3 of
+    | None() => ()
+    | Some(d2es) =>
+        tread12_d2explst(d2es)
+      // end of [Some]
+    )
+  } (* end of [D2Edtsel] *)
 //
 | D2Eif0
   (d2e1, d2e2, opt3) =>
@@ -281,15 +295,24 @@ d2e0.node() of
     val () = tread12_d2exp(d2e1)
   }
 //
-| D2Eseqn(d2es, d2e1) =>
+| D2Eseqn
+  (d2es, d2e1) =>
   {
     val () =
     tread12_d2explst(d2es)
     val () = tread12_d2exp(d2e1)
   }
 //
+| D2Etuple
+  (knd0,
+   npf1, d2es) =>
+  {
+    val () =
+    tread12_d2explst(d2es)
+  }
 //
-| D2Eassgn(d2e1, d2e2) =>
+| D2Eassgn
+  (d2e1, d2e2) =>
   {
     val () = tread12_d2exp(d2e1)
     val () = tread12_d2exp(d2e2)
