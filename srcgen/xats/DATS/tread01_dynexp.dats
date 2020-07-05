@@ -164,6 +164,26 @@ d1c0.node() of
 *)
   }
 //
+| D1Csexpdef
+  ( knd
+  , sid0, smas
+  , res1, def2) =>
+  {
+(*
+    val () =
+    tread01_s0eid(sid0)
+*)
+    val () =
+    tread01_s1marglst(smas)
+//
+    val () =
+      tread01_sort1opt(res1)
+    // end of [val]
+//
+    val () = tread01_s1exp(def2)
+//
+  }
+//
 | D1Cabstype
   ( knd
   , sid0, tmas
@@ -174,14 +194,15 @@ d1c0.node() of
     val () =
     tread01_s0eid(sid0)
 *)
-    val () =
-    tread01_sort1opt(res1)
+//
     val () =
     tread01_t1marglst(tmas)
 //
     val () =
-      tread01_abstdf1(def2)
+      tread01_sort1opt(res1)
     // end of [val]
+//
+    val () = tread01_abstdf1(def2)
 //
   }
 //
@@ -203,6 +224,39 @@ d1c0.node() of
   {
     val () =
     tread01_v1aldeclist(v1ds)
+  }
+| D1Cvardecl
+  ( knd
+  , mopt, v1ds) =>
+  {
+    val () =
+    tread01_v1ardeclist(v1ds)
+  }
+//
+| D1Cimpdecl
+  ( knd, mopt
+  , sqas, tqas
+  , dqid, ti1s
+  , f1as, res1, teq2, body) =>
+  {
+    val () =
+    tread01_sq1arglst(sqas)
+    val () =
+    tread01_tq1arglst(tqas)
+//
+    val () =
+    tread01_ti1arglst(ti1s)
+//
+    val () =
+      tread01_f1arglst(f1as)
+    // end of [val]
+//
+    val () =
+      tread01_effs1expopt(res1)
+    // end of [val]
+//
+    val () = tread01_d1exp(body)
+//
   }
 //
 | D1Cdynconst
@@ -327,7 +381,30 @@ list_foreach<q1arg>(q1as)
 {
 implement(env)
 list_foreach$fwork<q1arg><env>(q1a, env) = tread01_q1arg(q1a)
-} (* end of [tread01_tq1arglst] *)
+} (* end of [tread01_q1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_sq1arg(sq1a) =
+(
+case+
+sq1a.node() of
+| SQ1ARGnone(tok) => ()
+| SQ1ARGsome(q1as) => tread01_q1arglst(q1as)
+)
+//
+implement
+//{}(*tmp*)
+tread01_sq1arglst(sqas) =
+(
+list_foreach<sq1arg>(sqas)
+) where
+{
+implement(env)
+list_foreach$fwork<sq1arg><env>(sqa, env) = tread01_sq1arg(sqa)
+} (* end of [tread01_sq1arglst] *)
 //
 (* ****** ****** *)
 //
@@ -351,6 +428,29 @@ list_foreach<tq1arg>(tqas)
 implement(env)
 list_foreach$fwork<tq1arg><env>(tqa, env) = tread01_tq1arg(tqa)
 } (* end of [tread01_tq1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_ti1arg(ti1a) =
+(
+case+
+ti1a.node() of
+| TI1ARGnone(tok) => ()
+| TI1ARGsome(s1es) => tread01_s1explst(s1es)
+)
+//
+implement
+//{}(*tmp*)
+tread01_ti1arglst(tias) =
+(
+list_foreach<ti1arg>(tias)
+) where
+{
+implement(env)
+list_foreach$fwork<ti1arg><env>(tia, env) = tread01_ti1arg(tia)
+} (* end of [tread01_ti1arglst] *)
 //
 (* ****** ****** *)
 //

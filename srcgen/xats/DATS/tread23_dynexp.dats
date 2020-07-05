@@ -341,9 +341,11 @@ val () =
 trerr23_add(TRERR23d3ecl(d3cl))
 //
 val () =
-prerrln!(loc0, ": ***TRERR23***")
+prerrln!
+(loc0, ": ***TRERR23***")
 val () =
-prerrln!(loc0, ": TRERR23(D3Cimpdecl1): d2c0 = ", d2c0)
+prerrln!
+(loc0, ": TRERR23(D3Cimpdecl1): d2c0 = ", d2c0)
 val () =
 ( prerr!
   (loc0, ": TRERR23(D3Cimpdecl1): tmp-arity mismatch: "); auxerr(0, cmps); prerrln!()

@@ -266,5 +266,16 @@ list_foreach$fwork<s1qua><env>(s1q, env) = tread01_s1qua(s1q)
 } (* end of [tread01_s1qualst] *)
 //
 (* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_effs1expopt(opt) =
+(
+case+ opt of
+| EFFS1EXPnone() => ()
+| EFFS1EXPsome(s1e) => tread01_s1exp(s1e)
+)
+//
+(* ****** ****** *)
 
 (* end of [xats_tread01_staexp.dats] *)
