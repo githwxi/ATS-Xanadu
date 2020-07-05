@@ -355,15 +355,16 @@ d2e0.node() of
   {
     val () = tread12_d2exp(d2e1)
   }
-| D2Eeval(d2e1) =>
-  {
-    val () = tread12_d2exp(d2e1)
-  }
 | D2Efold(d2e1) =>
   {
     val () = tread12_d2exp(d2e1)
   }
 | D2Efree(d2e1) =>
+  {
+    val () = tread12_d2exp(d2e1)
+  }
+//
+| D2Eeval(d2e1) =>
   {
     val () = tread12_d2exp(d2e1)
   }

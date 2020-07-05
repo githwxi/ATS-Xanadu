@@ -615,6 +615,11 @@ d3e0.node() of
     val () = tread3x_d3exp(d3e1)
   }
 //
+| D3Eraise(d3e1) =>
+  {
+    val () = tread3x_d3exp(d3e1)
+  }
+//
 | D3Elazy(d3e1) =>
   {
     val () = tread3x_d3exp(d3e1)
