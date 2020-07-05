@@ -108,6 +108,11 @@ fun//{}
 tread01_s1qualst: treader01(s1qualst)
 //
 (* ****** ****** *)
+
+fun//{}
+tread01_effs1expopt: treader01(effs1expopt)
+
+(* ****** ****** *)
 //
 fun//{}
 tread01_d1pat: treader01(d1pat)
@@ -155,9 +160,21 @@ fun//{}
 tread01_q1arglst: treader01(q1arglst)
 //
 fun//{}
+tread01_sq1arg: treader01(sq1arg)
+fun//{}
+tread01_sq1arglst: treader01(sq1arglst)
+//
+fun//{}
 tread01_tq1arg: treader01(tq1arg)
 fun//{}
 tread01_tq1arglst: treader01(tq1arglst)
+//
+(* ****** ****** *)
+//
+fun//{}
+tread01_ti1arg: treader01(ti1arg)
+fun//{}
+tread01_ti1arglst: treader01(ti1arglst)
 //
 (* ****** ****** *)
 

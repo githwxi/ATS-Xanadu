@@ -627,17 +627,6 @@ d2cl.node() of
   | D2PITMsome(_, _) => ((*void*))
   )
 //
-| D2Cvaldecl
-  (knd, mopt, v2ds) =>
-  {
-    val () = tread12_v2aldeclist(v2ds)
-  }
-| D2Cvardecl
-  (knd, mopt, v2ds) =>
-  {
-    val () = tread12_v2ardeclist(v2ds)
-  }
-//
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
   {
@@ -651,6 +640,17 @@ d2cl.node() of
     println!
     ("tread12_d2ecl: D2Cfundecl: f2ds = ", f2ds)
 *)
+  }
+//
+| D2Cvaldecl
+  (knd, mopt, v2ds) =>
+  {
+    val () = tread12_v2aldeclist(v2ds)
+  }
+| D2Cvardecl
+  (knd, mopt, v2ds) =>
+  {
+    val () = tread12_v2ardeclist(v2ds)
   }
 //
 | D2Cimpdecl1
