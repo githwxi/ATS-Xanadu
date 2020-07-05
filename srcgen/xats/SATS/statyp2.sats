@@ -43,16 +43,13 @@
 #staload
   LAB = "./label0.sats"
 //
-typedef sym_t = $SYM.sym_t
-typedef label = $LAB.label
+  typedef sym_t = $SYM.sym_t
+  typedef label = $LAB.label
 //
 (* ****** ****** *)
 //
-#staload SRD = "./synread.sats"
-typedef
-syndff(a:type) = $SRD.syndff(a)
-typedef
-syndfflst(a:type) = $SRD.syndfflst(a)
+#staload
+  SYNRD = "./synread.sats"
 //
 (* ****** ****** *)
 
@@ -497,9 +494,23 @@ overload normize with t2ype_normize
 //
 (* ****** ****** *)
 //
+typedef
+synpth = $SYNRD.synpth
+//
+datatype
+t2ypedff =
+|
+t2ypedff01 of (synpth, t2ype)
+|
+t2ypedff10 of (synpth, t2ype)
+|
+t2ypedff11 of (synpth, t2ype, t2ype)
+//
+typedef t2ypedfflst = List0(t2ypedff)
+//
 fun
-t2ype_syndffy
-(t2p1: t2ype, t2p2: t2ype): syndfflst(t2ype)
+t2ype_diffize
+(t2p1: t2ype, t2p2: t2ype): t2ypedfflst
 //
 (* ****** ****** *)
 
