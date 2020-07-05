@@ -1422,7 +1422,7 @@ end (* end of [t2ype_normize] *) end // end of [local]
 (* ****** ****** *)
 
 implement
-t2ype_syndffy(t2p1, t2p2) = list_nil()
+t2ype_diffize(t2p1, t2p2) = list_nil()
 
 (* ****** ****** *)
 

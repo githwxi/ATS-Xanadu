@@ -25,13 +25,6 @@ UN = "prelude/SATS/unsafe.sats"
 #staload
 "./../../../SATS/tread33.sats"
 (* ****** ****** *)
-
-typedef
-t2ypedff = syndff(t2ype)
-typedef
-t2ypedfflst = syndfflst(t2ype)
-
-(* ****** ****** *)
 //
 extern
 fun{}
@@ -164,7 +157,7 @@ prerrln!
 in
 let
 val dffs =
-t2ype_syndffy
+t2ype_diffize
 (t2p1, t2p2) in my_tread33_prerr_t2ypedfflst<>(dffs)
 end
 end // end of [my_tread33_d3exp_D3Etcast]
