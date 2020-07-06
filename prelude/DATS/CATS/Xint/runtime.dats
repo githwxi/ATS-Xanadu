@@ -556,28 +556,28 @@ strptr_set_at<> = xint_strptr_set_at
 #extern
 fun
 xint_a0ptr_alloc
-{a:type}((*void*)): a0ptr(?a)
+{a:vt}((*void*)): a0ptr(?a)
 impltmp
-{a:type}
+{a:vt}
 a0ptr_alloc<a> = xint_a0ptr_alloc
 //
 #extern
 fun
 xint_a0ref_get
-{a:type}
-(A0: a0ref(a)): a
+{a:vt}
+(A0: a0ref(a)): ~a
 #extern
 fun
 xint_a0ref_set
-{a:type}
+{a:vt}
 (A0: a0ref(a), x0: a): void
 //
 impltmp
-{a:type}
+{a:vt}
 a0ref_get<a>
 (A0) = xint_a0ref_get{a}(A0)
 impltmp
-{a:type}
+{a:vt}
 a0ref_set<a>
 (A0, x0) = xint_a0ref_set{a}(A0, x0)
 //
@@ -586,67 +586,87 @@ a0ref_set<a>
 #extern
 fun
 xint_a1ptr_alloc
-{a:type}{n:int}
+{a:vt}{n:int}
 ( asz: int(n) ): a1ptr(?a)
 impltmp
-{a:type}
+{a:vt}
 a1ptr_alloc<a> = xint_a1ptr_alloc
 //
 #extern
 fun
-xint_a1ref_get_at
-{a:type}{n:int}
+xint_a1ref_head_raw
+{a:vt}{n:int}
 ( A0
-: a1ref(a, n), i0: nintlt(n)): a
+: a1ref(a, n) ): ~a
 #extern
 fun
-xint_a1ptr_get_at
-{a:type}{n:int}
-( A0:
-! a1ptr(a, n), i0: nintlt(n)): a
+xint_a1ref_tail_raw
+{a:vt}{n:int}
+( A0
+: a1ref(a, n) ): a1ref(a, n-1)
 //
 #extern
 fun
-xint_a1ref_set_at
-{a:type}{n:int}
+xint_a1ref_get_at_raw
+{a:vt}{n:int}
 ( A0
-: a1ref(a, n), i0: nintlt(n), x0: a): void
+: a1ref(a, n), i0: int): ~a
 #extern
 fun
-xint_a1ptr_set_at
-{a:type}{n:int}
+xint_a1ptr_get_at_raw
+{a:vt}{n:int}
 ( A0:
-! a1ptr(a, n), i0: nintlt(n), x0: a): void
+! a1ptr(a, n), i0: int): ~a
+//
+#extern
+fun
+xint_a1ref_set_at_raw
+{a:vt}{n:int}
+( A0
+: a1ref(a, n), i0: int, x0: a): void
 #extern
 fun
 xint_a1ptr_set_at_raw
-{a:vwtp}{n:int}
+{a:vt}{n:int}
 ( A0:
-! a1ptr(?a, n), i0: nintlt(n), x0: a): void
+! a1ptr(a, n), i0: nintlt(n), x0: a): void
+//
+(* ****** ****** *)
 //
 impltmp
-{a:type}
+{a:vt}
+a1ref_head<a>
+(A0) =
+xint_a1ref_head_raw{a}(A0)
+impltmp
+{a:vt}
+a1ref_tail<a>
+(A0) =
+xint_a1ref_tail_raw{a}(A0)
+//
+impltmp
+{a:vt}
 a1ref_get_at<a>
 (A0, i0) =
-xint_a1ref_get_at{a}(A0, i0)
+xint_a1ref_get_at_raw{a}(A0, i0)
 impltmp
-{a:type}
+{a:vt}
 a1ptr_get_at<a>
 (A0, i0) =
-xint_a1ptr_get_at{a}(A0, i0)
+xint_a1ptr_get_at_raw{a}(A0, i0)
 //
 impltmp
-{a:type}
+{a:vt}
 a1ref_set_at<a>
 (A0, i0, x0) =
-xint_a1ref_set_at{a}(A0, i0, x0)
+xint_a1ref_set_at_raw{a}(A0, i0, x0)
 impltmp
-{a:type}
+{a:vt}
 a1ptr_set_at<a>
 (A0, i0, x0) =
-xint_a1ptr_set_at{a}(A0, i0, x0)
+xint_a1ptr_set_at_raw{a}(A0, i0, x0)
 impltmp
-{a:type}
+{a:vt}
 a1ptr_set_at_raw<a>
 (A0, i0, x0) =
 xint_a1ptr_set_at_raw{a}(A0, i0, x0)

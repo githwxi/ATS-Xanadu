@@ -202,6 +202,19 @@ a1ptr_make_list_vt
 (xs: list_vt(a, n)): a1ptr(a, n)
 //
 (* ****** ****** *)
+
+fun
+<a:vt>
+a1ref_head
+{n:i0|n>0}
+(A0: a1ref(a, n)): ~a
+fun
+<a:vt>
+a1ref_tail
+{n:i0|n>0}
+(A0: a1ref(a, n)): a1ref(a, n-1)
+
+(* ****** ****** *)
 //
 fun
 <a:vt>
@@ -384,6 +397,13 @@ a0ptr with a0ptr_make of 1000
 print with a0ref_print of 1000
 #symload
 print with a0ptr_print of 1000
+
+(* ****** ****** *)
+
+#symload
+head with a1ref_head of 1000
+#symload
+tail with a1ref_tail of 1000
 
 (* ****** ****** *)
 (*
