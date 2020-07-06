@@ -161,6 +161,24 @@ foldl$foprn
 
 (* ****** ****** *)
 //
+// For gseqn-i-operations
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ln:i0>
+gseqn_iforalln(xs: xs): bool
+//
+fun
+<xs:t0>
+<x0:t0>
+<ln:i0>
+gseqn_iforeachn(xs: xs): void
+//
+(* ****** ****** *)
+//
 // For z2-gseqn-operations
 //
 (* ****** ****** *)
