@@ -348,6 +348,14 @@ fun
 iforall1$test(nint, !x0): bool
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<ln:i0>
+iforalln$test
+  (i0: nint(ln), x0: x0): bool
+//
+(* ****** ****** *)
 
 fun
 <x0:t0>
@@ -359,6 +367,14 @@ fun
 <x0:vt>
 iforeach1$work(nint, !x0): void
 
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<ln:i0>
+iforeachn$work
+  (i0: nint(ln), x0: x0): void
+//
 (* ****** ****** *)
 //
 fun
