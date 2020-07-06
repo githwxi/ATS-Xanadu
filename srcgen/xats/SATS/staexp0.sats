@@ -706,10 +706,8 @@ s0marg_make_node
 //
 datatype
 t0arg_node =
-(*
-  | T0ARGnone of token
-*)
-  | T0ARGsome of (sort0, tokenopt)
+| T0ARGnone of token
+| T0ARGsome of (sort0, tokenopt)
 //
 datatype
 t0marg_node =

@@ -569,6 +569,9 @@ fprint_t0arg
 (
 case+
 x0.node() of
+| T0ARGnone(tok) =>
+  fprint!
+  (out, "T0ARGnone(", tok, ")")
 | T0ARGsome(s0t, opt) =>
   fprint!
   (out

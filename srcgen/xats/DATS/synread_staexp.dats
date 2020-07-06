@@ -478,6 +478,15 @@ t0a0.node() of
     val () = synread_tokenopt(opt)
 *)
   }
+| T0ARGnone(tok) =>
+  let
+    val
+    loc0 = t0a0.loc()
+    val () =
+    synerr_add(SYNERRt0arg(t0a0))
+  in
+    prerrln!(loc0, ": SYNERR(t0arg): ", tok);
+  end // end of [T0ARGnone]
 //
 end // end of [synread_t0arg]
 

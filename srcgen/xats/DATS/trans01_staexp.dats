@@ -944,8 +944,11 @@ loc0 = t0a0.loc()
 val
 t1a0_node =
 (
-case+
+case-
 t0a0.node() of
+(*
+| T0ARGnone(tok) => ...
+*)
 | T0ARGsome
   (s0t, opt) =>
   T1ARGsome(s1t, opt) where

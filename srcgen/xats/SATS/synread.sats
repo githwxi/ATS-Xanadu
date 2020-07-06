@@ -118,6 +118,7 @@ datatype synerr =
 | SYNERRsort0 of (sort0)
 //
 | SYNERRs0arg of (s0arg)
+| SYNERRt0arg of (t0arg)
 | SYNERRs0marg of (s0marg)
 | SYNERRt0marg of (t0marg)
 //
