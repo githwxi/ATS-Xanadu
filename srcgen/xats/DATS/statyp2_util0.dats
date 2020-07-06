@@ -1546,6 +1546,7 @@ val
 dff0 =
 T2Pdff01(ps, y0) where
 {
+val y0 = whnfize(y0)
 val ps = list_cons(p0, ps)
 }
 val
@@ -1566,6 +1567,7 @@ val
 dff0 =
 T2Pdff10(ps, x0) where
 {
+val x0 = whnfize(x0)
 val ps = list_cons(p0, ps)
 }
 val
