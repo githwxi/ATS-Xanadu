@@ -874,6 +874,21 @@ pfexch
 //
 (* ****** ****** *)
 //
+absview
+a0ptr_view(a:vt,l:a0)
+sexpdef @ = a0ptr_view
+//
+absview
+a1ptr_view(a:vt,l:a0,n:i0)
+sexpdef arrvw = a1ptr_view
+//
+#stacst
+sizeof_vt_i0: (vt) -> i0
+sexpdef sz = sizeof_vt_i0
+sexpdef size = sizeof_vt_i0
+//
+(* ****** ****** *)
+//
 abstype
 FILEref_tbox <= ptr
 absvwtp
