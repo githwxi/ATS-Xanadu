@@ -27,7 +27,7 @@
 
 (* ****** ****** *)
 //
-// For functional lists
+// For pure arrays in C
 //
 (* ****** ****** *)
 //

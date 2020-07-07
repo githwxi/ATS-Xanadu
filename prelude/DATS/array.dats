@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-** for generics
+HX: for pure C-arrays
 *)
 (* ****** ****** *)
 (*
