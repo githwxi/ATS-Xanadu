@@ -33,12 +33,14 @@
 //
 (* ****** ****** *)
 //
-#define SYSTEM_IS_UNIX_LIKE 1
+// For defining
+// various system-wise parameters
 //
 (* ****** ****** *)
 //
+#define SYSTEM_IS_POSIX_LIKE 1
 #define SYSTEM_IS_WINDOWS_LIKE 0
 //
 (* ****** ****** *)
 
-(* end of [sysparam.hats] *)
+(* end of [xatsopt.hats] *)

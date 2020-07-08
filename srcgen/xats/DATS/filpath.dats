@@ -65,10 +65,10 @@ SYM = "./../SATS/symbol.sats"
 local
 //
 #include
-"./../sysparam.hats"
+"./../HATS/xatsopt.hats"
 //
 #if
-SYSTEM_IS_UNIX_LIKE
+SYSTEM_IS_POSIX_LIKE
 #then
 //
 val theDirSep: char = '/'
