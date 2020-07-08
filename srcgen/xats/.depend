@@ -46,7 +46,7 @@ BUILD/label0_dats.o : SATS/label0.sats SATS/symbol.sats
 BUILD/fixity_dats.o : SATS/xerrory.sats SATS/fixity.sats SATS/locinfo.sats
 BUILD/global_dats.o : ../xutl/SATS/mylibc.sats SATS/global.sats
 BUILD/xerrory_dats.o : SATS/xerrory.sats
-BUILD/filpath_dats.o : ../xutl/SATS/mylibc.sats SATS/symbol.sats SATS/filpath.sats sysparam.hats
+BUILD/filpath_dats.o : ../xutl/SATS/mylibc.sats SATS/symbol.sats SATS/filpath.sats HATS/xatsopt.hats
 BUILD/filsrch_dats.o : ../xutl/SATS/mylibc.sats SATS/filpath.sats SATS/filsrch.sats
 BUILD/locinfo_dats.o : SATS/filpath.sats SATS/locinfo.sats
 BUILD/lexbuf_dats.o : ../xutl/SATS/cblist.sats ../xutl/SATS/mylibc.sats SATS/lexbuf.sats
