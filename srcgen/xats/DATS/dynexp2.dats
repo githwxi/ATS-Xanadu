@@ -334,7 +334,10 @@ d2pat_make_node(loc0, D2Pcon2(d2cs))
 implement
 d2pat_sym0
 (loc0, d1p0, dpis) =
-d2pat_make_node(loc0, D2Psym0(d1p0, dpis))
+(
+  d2pat_make_node
+  (loc0, D2Psym0(d1p0, dpis))
+)
 //
 (* ****** ****** *)
 //
@@ -348,10 +351,10 @@ d2pat_sapp
 //
 implement
 d2pat_dapp
-(loc0, d2f0, npf0, d2ps) =
+(loc0, d2f0, npf1, d2ps) =
 (
   d2pat_make_node
-  (loc0, D2Pdapp(d2f0, npf0, d2ps))
+  (loc0, D2Pdapp(d2f0, npf1, d2ps))
 )
 //
 (* ****** ****** *)

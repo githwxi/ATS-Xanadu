@@ -137,6 +137,103 @@ list_isnot_sing (xs) =
 //
 (* ****** ****** *)
 
+fun
+d2exp_dap0
+(d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.loc()
+in
+  d2exp_make_node
+  (loc0, D2Edap0(d2e0))
+end
+
+(* ****** ****** *)
+//
+fun
+my_d2exp_dapp
+( loc0
+: loc_t
+, d2f0
+: d2exp
+, npf1: int
+, d2as
+: d2explst): d2exp =
+(
+case+
+d2f0.node() of
+|
+D2Edap0(d2f0) =>
+d2exp_dapp(loc0, d2f0, npf1, d2as)
+|
+_ (*non-D2Edap0*) =>
+d2exp_dapp(loc0, d2f0, npf1, d2as)
+)
+//
+(* ****** ****** *)
+
+fun
+my_d2exp_con1
+( loc0
+: loc_t
+, d2c0
+: d2con): d2exp =
+let  
+val
+narg = d2c0.narg()
+val
+d2e0 = d2exp_con1(loc0, d2c0)
+in
+if
+(narg>0)
+then d2e0 else d2exp_dap0(d2e0)
+end // end of [my_d2exp_con1]
+
+(* ****** ****** *)
+//
+fun
+my_d2exp_sapp
+( loc0
+: loc_t
+, d2e1
+: d2exp
+, s2es
+: s2explst): d2exp =
+(
+case-
+d2e1.node() of
+| D2Edap0(d2e1) =>
+  d2exp_dap0
+  (
+  d2exp_sapp(loc0, d2e1, s2es)
+  )
+| _ (* non-D2Edap0 *) =>
+  d2exp_sapp(loc0, d2e1, s2es)
+)
+//
+(* ****** ****** *)
+//
+fun
+my_d2exp_tapp
+( loc0
+: loc_t
+, d2e1
+: d2exp
+, s2es
+: s2explst): d2exp =
+(
+case-
+d2e1.node() of
+| D2Edap0(d2e1) =>
+  d2exp_dap0
+  (
+  d2exp_tapp(loc0, d2e1, s2es)
+  )
+| _ (* non-D2Edap0 *) =>
+  d2exp_tapp(loc0, d2e1, s2es)
+)
+//
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
@@ -1042,7 +1139,12 @@ list_isnot_sing(d2cs)
 then
 d2exp_con2(loc0, d2cs)
 else
-d2exp_con1(loc0, d2cs.head())
+let
+val
+d2c0 = d2cs.head()
+in
+my_d2exp_con1(loc0, d2c0)
+end // end of [if]
 //
 ) where
 {
@@ -1649,16 +1751,21 @@ d1e2.node() of
 //
 | D1Esqarg(s1es) =>
   let
+    val
+    loc0 = d1e0.loc()
     val d2e1 =
     trans12_dexp(d1e1)
     val s2es =
     trans12_sexplst(s1es)
   in
-    d2exp_sapp(d1e0.loc(), d2e1, s2es)
+    my_d2exp_sapp(loc0, d2e1, s2es)
   end // end of [D1Esqarg]
 //
 | D1Etqarg(s1es) =>
   let
+//
+    val
+    loc0 = d1e0.loc()
 //
     val d2e1 =
     trans12_dexp(d1e1)
@@ -1669,7 +1776,7 @@ d1e2.node() of
     auxtapp_s2es(d2e1, s2es)
 //
   in
-    d2exp_tapp(d1e0.loc(), d2e1, s2es)
+    my_d2exp_tapp(loc0, d2e1, s2es)
   end // end of [D1Etqarg]
 //
 | _(*rest-of-d1exp*) => auxapp1_0_(d1e0)
@@ -1702,26 +1809,29 @@ val d2es =
 (
 case+
 d1e2.node() of
-| D1Elist(d1es) =>
-  trans12_dexplst(d1es)
-| D1Elist(d1es1, d1es2) =>
-  (
-    d2es1 + d2es2
-  ) where
-  {
-    val d2es1 = trans12_dexplst(d1es1)
-    val d2es2 = trans12_dexplst(d1es2)
-  }
-| _(* non-D2Elist *) =>
-  let
-    val d2e2 =
-    trans12_dexp(d1e2) in list_sing(d2e2)
-  end
+|
+D1Elist(d1es) =>
+trans12_dexplst(d1es)
+|
+D1Elist(d1es1, d1es2) =>
+(
+  d2es1 + d2es2
+) where
+{
+  val d2es1 = trans12_dexplst(d1es1)
+  val d2es2 = trans12_dexplst(d1es2)
+}
+|
+_(* non-D2Elist *) =>
+let
+  val d2e2 =
+  trans12_dexp(d1e2) in list_sing(d2e2)
+end
 ) : d2explst // end of [val]
 //
 in
 //
-  d2exp_dapp(d1e0.loc(), d2e1, npf, d2es)
+my_d2exp_dapp(d1e0.loc(), d2e1, npf, d2es)
 //
 end // end of [auxapp1_0_]
 
@@ -2167,7 +2277,12 @@ list_isnot_sing(d2cs)
 then
 d2exp_con2(loc0, d2cs)
 else
-d2exp_con1(loc0, d2cs.head())
+let
+val
+d2c0 = d2cs.head()
+in
+my_d2exp_con1(loc0, d2c0)
+end // end of [if]
 //
 ) where
 {

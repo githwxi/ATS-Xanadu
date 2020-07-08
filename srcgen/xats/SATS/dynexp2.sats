@@ -295,6 +295,10 @@ d2var_get_kind(d2var): tnode
 (* ****** ****** *)
 //
 fun
+d2con_get_narg(d2con): int
+//
+(* ****** ****** *)
+fun
 d2con_get_sexp(d2con): s2exp
 fun
 d2con_get_type(d2con): t2ype
@@ -332,6 +336,8 @@ fun
 d2var_set_tqas(d2var, tq2as): void
 //
 (* ****** ****** *)
+//
+overload .narg with d2con_get_narg
 //
 overload .sexp with d2con_get_sexp
 overload .type with d2con_get_type
@@ -750,6 +756,8 @@ d2exp_node =
 //
 | D2Esapp of (d2exp, s2explst)
 | D2Etapp of (d2exp, s2explst)
+//
+| D2Edap0 of (d2exp)
 | D2Edapp of (d2exp, int(*npf*), d2explst)
 //
 | D2Elet of (d2eclist, d2exp)
@@ -971,7 +979,7 @@ fun
 d2exp_dapp
 ( loc0: loc_t
 , d2f0: d2exp(*fun*)
-, npf0: int, d2as: d2explst): d2exp
+, npf1: int, d2as: d2explst): d2exp
 //
 (* ****** ****** *)
 //

@@ -406,11 +406,14 @@ case- x0.node() of
   fprint!
   ( out
   , "D2Etapp(", d2f0, "; ", s2as, ")")
+//
+| D2Edap0(d2f0) =>
+  fprint!(out, "D2Edap0(", d2f0, ")")
 | D2Edapp
-  (d2f0, npf0, d2as) =>
+  (d2f0, npf1, d2as) =>
   fprint!
   ( out, "D2Edapp("
-  , d2f0, "; ", npf0, "; ", d2as, ")")
+  , d2f0, "; ", npf1, "; ", d2as, ")")
 //
 | D2Elet
   (d2cs, d2e2) =>

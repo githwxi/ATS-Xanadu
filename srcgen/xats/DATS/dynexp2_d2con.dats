@@ -145,6 +145,36 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+d2con_get_narg
+  (d2c0) =
+(
+auxmain(d2c0.type())
+) where
+{
+fun
+auxmain
+(t2p0
+: t2ype): int =
+(
+case+ t2p0.node() of
+|
+T2Pfun
+( fc2
+, npf
+, t2ps
+, t2p1) =>
+  list_length<t2ype>(t2ps)
+|
+T2Puni
+(s2vs, t2p1) => auxmain(t2p1)
+//
+| _ (* non-T2Pfun *) => (0) // HX: deadcode?
+)
+} (* end of [d2con_get_narg] *)
+
+(* ****** ****** *)
+
+implement
 d2con_get_s2vs
   (d2c0) =
 (
