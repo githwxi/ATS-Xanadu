@@ -70,7 +70,8 @@ trerr12_add(trerr12): void
 (* ****** ****** *)
 //
 fun
-tread12_main(d2eclist): void
+tread12_program
+  (prog: d2eclist): void
 //
 (* ****** ****** *)
 //
@@ -103,6 +104,11 @@ tread12_labs2exp: treader12(labs2exp)
 fun//{}
 tread12_labs2explst: treader12(labs2explst)
 //
+(* ****** ****** *)
+
+fun//{}
+tread12_t2ype: treader12(t2ype)
+
 (* ****** ****** *)
 
 fun//{}
@@ -165,6 +171,20 @@ fun//{}
 tread12_tq2arg: treader12(tq2arg)
 fun//{}
 tread12_tq2arglst: treader12(tq2arglst)
+
+(* ****** ****** *)
+
+fun//{}
+tread12_v2aldecl: treader12(v2aldecl)
+fun//{}
+tread12_v2aldeclist: treader12(v2aldeclist)
+
+(* ****** ****** *)
+
+fun//{}
+tread12_v2ardecl: treader12(v2ardecl)
+fun//{}
+tread12_v2ardeclist: treader12(v2ardeclist)
 
 (* ****** ****** *)
 

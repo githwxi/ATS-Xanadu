@@ -63,8 +63,12 @@ LOC = "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/trans01.sats"
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/trans01.sats"
 
 (* ****** ****** *)
 (*
@@ -586,7 +590,7 @@ val () =
 println!("s2exp_ctcd: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_tflt
+val s2t = the_sort2_type
 //
 in
   s2exp_make_node(s2t, S2Ectcd(loc, s2e))
@@ -601,7 +605,7 @@ val () =
 println!("s2exp_cimp: s2e = ", s2e)
 *)
 //
-val s2t = the_sort2_tflt
+val s2t = the_sort2_type
 //
 in
   s2exp_make_node(s2t, S2Ecimp(loc, s2e))
@@ -611,12 +615,12 @@ implement
 s2exp_cast
 (loc, s2e, s2t) = let
 //
-(*
+// (*
 val () =
 println!("s2exp_cast: s2e = ", s2e)
 val () =
 println!("s2exp_cast: s2t = ", s2t)
-*)
+// *)
 //
 in
   s2exp_make_node(s2t, S2Ecast(loc, s2e, s2t))
@@ -767,7 +771,7 @@ s2exp_make_node
   (
   if
   funclo2_islin(fc2)
-  then the_sort2_vtbox else the_sort2_tbox
+  then the_sort2_vtbx else the_sort2_tbox
   ) : sort2 // end of [val]
 } (* end of [s2exp_fun_full] *)
 //
@@ -874,9 +878,9 @@ s2exp_list1
   if
   lin
   then
-  the_sort2_vtflt
+    the_sort2_vwtp
   else
-    the_sort2_tflt(*~lin*)
+    the_sort2_type(*~lin*)
   // end of [if]
   ) : sort2 // end of [val]
   val ls2es =
@@ -900,12 +904,12 @@ s2exp_list2
   if
   islin
   then
-  the_sort2_vtflt else
+  the_sort2_vwtp else
   (
-    if
-    s2explst_islin(s2es2)
-    then
-    the_sort2_vtflt else the_sort2_tflt(*~lin*)
+  if
+  s2explst_islin(s2es2)
+  then
+  the_sort2_vwtp else the_sort2_type
   )
   ) : sort2 // end of [val]
   val npf = list_length(s2es1)
@@ -922,40 +926,31 @@ implement
 s2exp_tuple1
 (knd, s2es) = let
 //
-val
-islin =
-s2explst_islin(s2es)
-//
 val s2t0 =
 (
 if
+(knd = 0)
+then
+(
+let
+val
+islin =
+s2explst_islin(s2es)
+in
+if
 islin
-then
-(
-if
-knd = 0
-then the_sort2_vtflt
-else the_sort2_vtbox
+then (the_sort2_vwtp)
+else (the_sort2_type)
+end
 )
-else
-(
-if
-knd = 0
-then
-the_sort2_tflt else the_sort2_tbox
-)
+else (the_sort2_vtbx)
 ) : sort2 // end of [val]
 //
 val knd =
 (
 if
-islin
-then
-(if knd = 0
- then TYRECflt0 else TYRECbox1)
-else
-(if knd = 0
- then TYRECflt0 else TYRECbox0)
+(knd = 0)
+then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 val
@@ -972,6 +967,13 @@ implement
 s2exp_tuple2
 (knd, s2es1, s2es2) = let
 //
+//
+val s2t0 =
+(
+if
+(knd = 0)
+then
+let
 val
 islin =
 s2explst_islin(s2es1)
@@ -981,35 +983,18 @@ islin =
 if islin then islin
 else s2explst_islin(s2es2)
 ) : bool // end of [val]
-//
-val s2t0 =
-(
+in
 if
 islin
-then
-(
-if
-knd = 0
-then the_sort2_vtflt
-else the_sort2_vtbox
-)
-else
-(
-if
-knd = 0
-then
-the_sort2_tflt else the_sort2_tbox
-)
+then (the_sort2_vwtp)
+else (the_sort2_type)
+end
+else (the_sort2_vtbx)
 ) : sort2 // end of [val]
 //
 val knd =
 (
-if
-islin
-then
-(if knd = 0 then TYRECflt0 else TYRECbox1)
-else
-(if knd = 0 then TYRECflt0 else TYRECbox0)
+if knd = 0 then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 val
@@ -1039,15 +1024,15 @@ then
 (
 if
 knd = 0
-then the_sort2_vtflt
-else the_sort2_vtbox
+then (the_sort2_vwtp)
+else (the_sort2_vtbx)
 )
 else
 (
 if
 knd = 0
 then
-the_sort2_tflt else the_sort2_tbox
+the_sort2_type else the_sort2_tbox
 )
 ) : sort2 // end of [val]
 //
@@ -1092,15 +1077,15 @@ then
 (
 if
 knd = 0
-then the_sort2_vtflt
-else the_sort2_vtbox
+then (the_sort2_vwtp)
+else (the_sort2_vtbx)
 )
 else
 (
 if
 knd = 0
 then
-the_sort2_tflt else the_sort2_tbox
+the_sort2_type else the_sort2_tbox
 )
 ) : sort2 // end of [val]
 //
@@ -1140,16 +1125,105 @@ the_s2exp_none0 =
 implement
 s2exp_none0() =
 s2exp_none0_s2t(S2Tnone0())
+//
 implement
 s2exp_none1(s1e) =
 s2exp_none1_s2t(s1e, S2Tnone0())
+//
+implement
+s2exp_none2(loc, s2e) =
+let
+  val s2t = s2e.sort()
+in
+s2exp_make_node(s2t, S2Enone2(loc, s2e))
+end
 //
 implement
 s2exp_none0_s2t(s2t) =
 s2exp_make_node(s2t, S2Enone0())
 implement
 s2exp_none1_s2t(s1e, s2t) =
-s2exp_make_node(s2t, S2Enone1(s1e))
+let
+val loc = s1e.loc()
+in
+s2exp_make_node(s2t, S2Enone1(loc, s1e))
+end
+//
+(* ****** ****** *)
+//
+(*
+HX-2020-07-01:
+the following 3 sort-cast
+functions are the same for now
+*)
+//
+implement
+s2exp_abscast
+(loc0, s2e1, s2t2) =
+(
+case+
+s2e1.node() of
+|
+S2Eany(k0) => s2e1
+|
+_ (* non-S2Eany *) =>
+let
+val s2t1 = s2e1.sort()
+in
+if
+(
+s2t1 <= s2t2
+) then (s2e1)
+  else s2exp_cast(loc0, s2e1, s2t2)
+// end of [if]
+end
+) (* end of [s2exp_abscast] *)
+//
+(*
+implement
+s2exp_sqacast
+(loc0, s2e1, s2t2) =
+(
+case+
+s2e1.node() of
+|
+S2Eany(k0) => s2e1
+|
+_ (* non-S2Eany *) =>
+let
+val s2t1 = s2e1.sort()
+in
+if
+(
+s2t1 <= s2t2
+) then (s2e1)
+  else s2exp_cast(loc0, s2e1, s2t2)
+// end of [if]
+end
+) (* end of [s2exp_sqacast] *)
+*)
+//
+implement
+s2exp_tqacast
+(loc0, s2e1, s2t2) =
+(
+case+
+s2e1.node() of
+|
+S2Eany(k0) => s2e1
+|
+_ (* non-S2Eany *) =>
+let
+val s2t1 = s2e1.sort()
+in
+if
+(
+s2t1 <= s2t2
+) then (s2e1)
+  else s2exp_cast(loc0, s2e1, s2t2)
+// end of [if]
+end
+) (* end of [s2exp_tqacast] *)
 //
 (* ****** ****** *)
 

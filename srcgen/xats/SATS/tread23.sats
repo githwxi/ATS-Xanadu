@@ -53,6 +53,8 @@ treader23
 //
 datatype trerr23 =
 //
+| TRERR23s2exp of (s2exp)
+//
 | TRERR23d3pat of (d3pat)
 | TRERR23d3exp of (d3exp)
 //
@@ -70,7 +72,33 @@ trerr23_add(trerr23): void
 (* ****** ****** *)
 //
 fun
-tread23_main(d3eclist): void
+tread23_program
+  (prog: d3eclist): void
+//
+(* ****** ****** *)
+//
+fun//{}
+tread23_d3exp: treader23(d3exp)
+fun//{}
+tread23_d3explst: treader23(d3explst)
+//
+(* ****** ****** *)
+//
+fun//{}
+tread23_d3ecl: treader23(d3ecl)
+fun//{}
+tread23_d3eclist: treader23(d3eclist)
+//
+(* ****** ****** *)
+//
+// HX-2020-07-02:
+// The following functions is expected
+// to be CONTRIBUTED.
+//
+(* ****** ****** *)
+//
+fun//{}
+tread23_d3ecl_D3Clocal: treader23(d3ecl)
 //
 (* ****** ****** *)
 

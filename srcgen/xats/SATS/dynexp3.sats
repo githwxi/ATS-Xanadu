@@ -59,11 +59,15 @@ typedef f3arglstopt = Option(f3arglst)
 (* ****** ****** *)
 //
 abstbox d3exp_tbox = ptr
+abstbox t3cst_tbox = ptr
 //
 typedef d3exp = d3exp_tbox
 typedef d3explst = List0(d3exp)
 typedef d3expopt = Option(d3exp)
 typedef d3explstopt = Option(d3explst)
+//
+typedef t3cst = t3cst_tbox
+typedef t3cstlst = List0(t3cst)
 //
 (* ****** ****** *)
 //
@@ -107,6 +111,7 @@ d3pat_node =
 | D3Pcon1 of (d2con)
 | D3Pcon2 of (d2conlst)
 //
+| D3Pbang of (d3pat) // !
 | D3Pflat of (d3pat) // @
 | D3Pfree of (d3pat) // ~
 //
@@ -190,12 +195,6 @@ d3pat_chr
 (* ****** ****** *)
 
 fun
-d3pat_con
-(loc0: loc_t, d2c0: d2con): d3pat
-
-(* ****** ****** *)
-
-fun
 d3pat_anno
 (d3p0: d3pat, s2e0: s2exp): d3pat
 
@@ -204,6 +203,15 @@ d3pat_anno
 fun
 d3pat_tcast
 (d3p0: d3pat, t2p0: t2ype): d3pat
+//
+(* ****** ****** *)
+//
+fun
+d3pat_memq_dvar
+(d3p0: d3pat, d2v0: d2var): bool
+fun
+d3patlst_memq_dvar
+(d3ps: d3patlst, d2v0: d2var): bool
 //
 (* ****** ****** *)
 //
@@ -236,6 +244,7 @@ overload fprint with fprint_ti3arg
 //
 datatype
 f3arg_node =
+//
 (*
 | F3ARGnone of (token)
 *)
@@ -272,6 +281,17 @@ overload print with print_f3arg
 overload prerr with prerr_f3arg
 overload fprint with fprint_f3arg
 //
+(* ****** ****** *)
+//
+fun
+f3arg_memq_dvar
+(f3a0: f3arg, d2v0: d2var): bool
+fun
+f3arglst_memq_dvar
+(f3as: f3arglst, d2v0: d2var): bool
+//
+(* ****** ****** *)
+//
 fun
 f3arg_make_node
 (loc: loc_t, node: f3arg_node): f3arg
@@ -291,6 +311,12 @@ d3exp_node =
 //
 | D3Evar of (d2var)
 //
+(*
+HX-2020-06: for trans3x:
+*)
+| D3Evknd of
+  (int(*knd*), d2var)
+//
 | D3Econ1 of (d2con)
 | D3Ecst1 of (d2cst)
 | D3Econ2 of (d2conlst)
@@ -299,11 +325,25 @@ d3exp_node =
 | D3Esym0 of
   (d1exp(*sym*), d2pitmlst)
 //
+| D3Efcon of (d2con)
 | D3Efcst of (d2cst)
 //
+| D3Etcon of
+  ( d2con
+  , ti3arg(*s2es*)
+  , ti2arglst(*sess*))
 | D3Etcst of
   ( d2cst
-  , ti3arg, ti2arglst(*sess*))
+  , ti3arg(*s2es*)
+  , ti2arglst(*sess*))
+//
+| D3Etnfd of
+  ( d3exp(*tcst*)
+  , t3cstlst (*path*) )
+| D3Etrec of
+  ( d3exp(*tcst*)
+  , t3cstlst (*path*) )
+//
 | D3Etimp of
   ( d3exp(*tcst*), t2ypelst(*targ*)
   , d3ecl(*impl*), t2ypelst(*tsub*)
@@ -363,7 +403,9 @@ d3exp_node =
   // D3Etry
 //
 | D3Eaddr of d3exp(*l-value*)
+//
 | D3Efold of d3exp(*open-con*)
+| D3Efree of d3exp(*free-con*)
 //
 | D3Eraise of d3exp(*lin-exn*)
 //
@@ -392,6 +434,15 @@ d3exp_node =
 //
 | D3Enone0 of ()
 | D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
+//
+(* ****** ****** *)
+//
+castfn
+d3exp2t3cst : d3exp -> t3cst
+castfn
+t3cst2d3exp : t3cst -> d3exp
+overload t3cst with d3exp2t3cst
+overload d3exp with t3cst2d3exp
 //
 (* ****** ****** *)
 //
@@ -553,6 +604,19 @@ overload fprint with fprint_d3exp
 (* ****** ****** *)
 //
 fun
+print_t3cst: print_type(t3cst)
+fun
+prerr_t3cst: prerr_type(t3cst)
+fun
+fprint_t3cst: fprint_type(t3cst)
+//
+overload print with print_t3cst
+overload prerr with prerr_t3cst
+overload fprint with fprint_t3cst
+//
+(* ****** ****** *)
+//
+fun
 d3exp_talf(d3e0: d3exp): d3exp
 //
 (* ****** ****** *)
@@ -601,6 +665,13 @@ v3aldeclist = List0(v3aldecl)
 (* ****** ****** *)
 //
 fun
+v3aldecl_get_loc(v3aldecl): loc_t
+//
+overload .loc with v3aldecl_get_loc
+//
+(* ****** ****** *)
+//
+fun
 print_v3aldecl: print_type(v3aldecl)
 fun
 prerr_v3aldecl: prerr_type(v3aldecl)
@@ -629,6 +700,13 @@ v3ardeclist = List0(v3ardecl)
 (* ****** ****** *)
 //
 fun
+v3ardecl_get_loc(v3ardecl): loc_t
+//
+overload .loc with v3ardecl_get_loc
+//
+(* ****** ****** *)
+//
+fun
 print_v3ardecl: print_type(v3ardecl)
 fun
 prerr_v3ardecl: prerr_type(v3ardecl)
@@ -650,7 +728,7 @@ F3UNDECL of @{
 , a2g= f2arglst
 , a3g= f3arglstopt
 , res= effs2expopt
-, def= d3expopt
+, def= d3expopt, rtp= t2ype
 , wtp= s2expopt, ctp= t2pcast
 }
 //
@@ -661,8 +739,11 @@ f3undeclist = List0(f3undecl)
 //
 fun
 f3undecl_get_loc(f3undecl): loc_t
+fun
+f3undecl_get_d2c(f3undecl): d2cst
 //
 overload .loc with f3undecl_get_loc
+overload .d2c with f3undecl_get_d2c
 //
 (* ****** ****** *)
 //
@@ -692,6 +773,9 @@ d3ecl_node =
 | D3Cextern of
   (token(*EXTERN*), d3ecl)
 //
+| D3Clocal of
+  (d3eclist(*head*), d3eclist(*body*))
+//
 | D3Cinclude of
   ( token
   , d1exp // src
@@ -706,17 +790,23 @@ d3ecl_node =
   , filpathopt
   , int(*shared*), fmodenvopt)
 //
-| D3Clocal of
-  (d3eclist(*head*), d3eclist(*body*))
+| D3Cabstype of
+  ( d2ecl(*D2Cabstype*) )
+| D3Cabsopen of
+  ( token(*absopen*), impls2cst )
+| D3Cabsimpl of
+  ( token(*abskind*)
+  , impls2cst, s2exp(*definition*) )
+//
+| D3Cfundecl of
+  ( token(*funknd*)
+  , decmodopt
+  , tq2arglst(*tmpargs*), f3undeclist)
 //
 | D3Cvaldecl of
   (token(*knd*), decmodopt, v3aldeclist)
 | D3Cvardecl of
   (token(*knd*), decmodopt, v3ardeclist)
-//
-| D3Cfundecl of
-  ( token(*funkind*)
-  , decmodopt, tq2arglst(*tmpargs*), f3undeclist)
 //
 | D3Cimpdecl1 of
   ( token(*impkind*)

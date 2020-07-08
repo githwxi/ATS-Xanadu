@@ -66,6 +66,13 @@ $(XATSOPT) -d $(PRELUDE)/DATS/gord.dats
 
 ######
 
+garr_sats:; \
+$(XATSOPT) -s $(PRELUDE)/SATS/garr.sats 
+garr_dats:; \
+$(XATSOPT) -d $(PRELUDE)/DATS/garr.dats
+
+######
+
 gseq_sats:; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq.sats 
 gseq_dats:; \

@@ -203,10 +203,10 @@ fun
 s2cst_isdat(s2c0: s2cst): bool
 *)
 fun
-s2cst_get_dconlst
+s2cst_get_d2conlst
 (s2c0: s2cst): Option_vt(d2conlst)
 fun
-s2cst_set_dconlst
+s2cst_set_d2conlst
 (s2c0: s2cst, d2cs: d2conlst): void
 //
 (* ****** ****** *)
@@ -268,6 +268,23 @@ overload .sym with d2var_get_sym
 //
 (* ****** ****** *)
 //
+typedef tag_t = int
+//
+fun
+d2con_get_tag: d2con -> tag_t
+fun
+d2con_set_tag
+(d2c: d2con, tag: tag_t): void
+//
+overload .tag with d2con_get_tag
+(*
+// HX:
+// This is a bit risky!
+overload .tag with d2con_set_tag
+*)
+//
+(* ****** ****** *)
+//
 fun
 d2cst_iscast(d2cst): bool
 fun
@@ -278,9 +295,17 @@ d2var_get_kind(d2var): tnode
 (* ****** ****** *)
 //
 fun
+d2con_get_narg(d2con): int
+//
+(* ****** ****** *)
+fun
 d2con_get_sexp(d2con): s2exp
 fun
 d2con_get_type(d2con): t2ype
+fun
+d2con_get_tqas(d2con): tq2as
+fun
+d2con_get_s2vs(d2con): s2varlst
 //
 fun
 d2cst_get_sexp(d2cst): s2exp
@@ -312,8 +337,11 @@ d2var_set_tqas(d2var, tq2as): void
 //
 (* ****** ****** *)
 //
+overload .narg with d2con_get_narg
+//
 overload .sexp with d2con_get_sexp
 overload .type with d2con_get_type
+overload .tqas with d2con_get_tqas
 //
 overload .sexp with d2cst_get_sexp
 overload .type with d2cst_get_type
@@ -366,13 +394,14 @@ d2cst_make_dvar
 //
 fun
 d2con_make_idtp
-(id0: token, s2e: s2exp): d2con
+( id0: token
+, tqas: tq2as, s2e1: s2exp): d2con
 //
 fun
 d2cst_make_idtp
 ( id0: token
 , knd: tnode
-, tqas: tq2as, s2e0: s2exp): d2cst
+, tqas: tq2as, s2e1: s2exp): d2cst
 fun
 stamp_d2cst_kind(d2cst, tnode): void
 //
@@ -537,6 +566,7 @@ d2pat_node =
 | D2Pcon1 of (d2con)
 | D2Pcon2 of (d2conlst)
 //
+| D2Pbang of (d2pat) // !
 | D2Pflat of (d2pat) // @
 | D2Pfree of (d2pat) // ~
 //
@@ -545,6 +575,8 @@ d2pat_node =
 //
 | D2Psapp of
   (d2pat, s2varlst(*sarg*))
+//
+| D2Pdap0 of (d2pat)
 | D2Pdapp of
   ( d2pat
   , int(*npf*), d2patlst(*darg*))
@@ -726,6 +758,8 @@ d2exp_node =
 //
 | D2Esapp of (d2exp, s2explst)
 | D2Etapp of (d2exp, s2explst)
+//
+| D2Edap0 of (d2exp)
 | D2Edapp of (d2exp, int(*npf*), d2explst)
 //
 | D2Elet of (d2eclist, d2exp)
@@ -777,6 +811,7 @@ d2exp_node =
 | D2Eaddr of d2exp(*l-value*)
 | D2Eeval of d2exp(*ptr/lazy*)
 | D2Efold of d2exp(*open-con*)
+| D2Efree of d2exp(*free-con*)
 //
 | D2Eraise of d2exp(*lin-exn*)
 //
@@ -946,7 +981,7 @@ fun
 d2exp_dapp
 ( loc0: loc_t
 , d2f0: d2exp(*fun*)
-, npf0: int, d2as: d2explst): d2exp
+, npf1: int, d2as: d2explst): d2exp
 //
 (* ****** ****** *)
 //
@@ -1124,9 +1159,8 @@ d2ecl_node =
 *)
 | D2Cabstype of (s2cst, abstdf2)
 //
-(*
-| D2Cabsimpl of (d1ecl)
-*)
+| D2Cabsopen of
+  ( token(*absopen*), impls2cst )
 | D2Cabsimpl of
   ( token(*abskind*)
   , impls2cst, s2exp(*definition*))
@@ -1143,15 +1177,15 @@ d2ecl_node =
 | D2Cdynconst of
   (token(*dctkind*), tq2arglst, d2cstlst)
 //
-| D2Cvaldecl of
-  (token(*valknd*), decmodopt, v2aldeclist)
-//
-| D2Cvardecl of
-  (token(*varknd*), decmodopt, v2ardeclist)
-//
 | D2Cfundecl of
   ( token(*funkind*)
-  , decmodopt, tq2arglst(*tmpargs*), f2undeclist)
+  , decmodopt
+  , tq2arglst(*tmpargs*), f2undeclist)
+//
+| D2Cvaldecl of
+  (token(*valknd*), decmodopt, v2aldeclist)
+| D2Cvardecl of
+  (token(*varknd*), decmodopt, v2ardeclist)
 //
 | D2Cimpdecl1 of
   ( token(*impkind*)
@@ -1169,9 +1203,10 @@ d2ecl_node =
 (*
 and
 abstdf2 =
-  | ABSTDF2nil of () // unspecified
-  | ABSTDF2lteq of s2exp // erasure
-  | ABSTDF2eqeq of s2exp // definition
+| ABSTDF2none of () // nonabs
+| ABSTDF2some of () // unspecified
+| ABSTDF2lteq of s2exp // erasure
+| ABSTDF2eqeq of s2exp // definition
 *)
 //
 and

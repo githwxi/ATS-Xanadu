@@ -43,8 +43,13 @@
 #staload
   LAB = "./label0.sats"
 //
-typedef sym_t = $SYM.sym_t
-typedef label = $LAB.label
+  typedef sym_t = $SYM.sym_t
+  typedef label = $LAB.label
+//
+(* ****** ****** *)
+//
+#staload
+  SYNRD = "./synread.sats"
 //
 (* ****** ****** *)
 
@@ -102,6 +107,10 @@ typedef t2xtvlst = List0(t2xtv)
 //
 fun
 t2xtv_get_loc(t2xtv): loc_t
+//
+fun
+t2xtv_get_sort(t2xtv): sort2
+//
 fun
 t2xtv_get_type(t2xtv): t2ype
 fun
@@ -118,10 +127,25 @@ overload = with eq_t2xtv_t2xtv
 //
 overload .loc with t2xtv_get_loc
 //
+overload .sort with t2xtv_get_sort
+//
 overload .type with t2xtv_get_type
 overload .type with t2xtv_set_type
 //
 overload .stamp with t2xtv_get_stamp
+//
+(* ****** ****** *)
+//
+fun
+print_t2xtv: print_type(t2xtv)
+fun
+prerr_t2xtv: prerr_type(t2xtv)
+fun
+fprint_t2xtv: fprint_type(t2xtv)
+//
+overload print with print_t2xtv
+overload prerr with prerr_t2xtv
+overload fprint with fprint_t2xtv
 //
 (* ****** ****** *)
 //
@@ -130,19 +154,6 @@ labt2ype =
 | TLABELED of (label, t2ype)
 where
 labt2ypelst = List0(labt2ype)
-//
-(* ****** ****** *)
-//
-fun
-print_labt2ype: print_type(labt2ype)
-fun
-prerr_labt2ype: prerr_type(labt2ype)
-fun
-fprint_labt2ype: fprint_type(labt2ype)
-//
-overload print with print_labt2ype
-overload prerr with prerr_labt2ype
-overload fprint with fprint_labt2ype
 //
 (* ****** ****** *)
 //
@@ -165,9 +176,11 @@ val
 the_t2ype_char: t2ype
 //
 val
-the_t2ype_sfloat: t2ype
+the_t2ype_sflt: t2ype
 and
-the_t2ype_dfloat: t2ype
+the_t2ype_dflt: t2ype
+and
+the_t2ype_ldflt: t2ype
 //
 val
 the_t2ype_string: t2ype
@@ -194,6 +207,31 @@ fprint_t2ype: fprint_type(t2ype)
 overload print with print_t2ype
 overload prerr with prerr_t2ype
 overload fprint with fprint_t2ype
+//
+(* ****** ****** *)
+//
+fun
+print_labt2ype: print_type(labt2ype)
+fun
+prerr_labt2ype: prerr_type(labt2ype)
+fun
+fprint_labt2ype: fprint_type(labt2ype)
+//
+overload print with print_labt2ype
+overload prerr with prerr_labt2ype
+overload fprint with fprint_labt2ype
+//
+(* ****** ****** *)
+//
+fun
+pprint_t2ype: print_type(t2ype)
+fun
+pprerr_t2ype: prerr_type(t2ype)
+//
+fun
+fpprint_t2ype: fprint_type(t2ype)
+fun
+fpprint_labt2ype: fprint_type(labt2ype)
 //
 (* ****** ****** *)
 //
@@ -303,14 +341,22 @@ t2ype_app2
 //
 fun
 t2xtv_stamp_new(): stamp
+//
 fun
 t2xtv_new(loc0: loc_t): t2xtv
 fun
+t2xtv_new_srt
+(loc0: loc_t, s2t: sort2): t2xtv
+//
+fun
 t2ype_new(loc0: loc_t): t2ype
 fun
-t2ype_xtv(xtv0: t2xtv): t2ype
+t2ype_new_xtv(xtv0: t2xtv): t2ype
 fun
-t2ype_srt_xtv
+t2ype_new_loc_var
+(loc0: loc_t, s2v0: s2var): t2ype
+fun
+t2ype_new_srt_xtv
 (s2t0: sort2, xtv0: t2xtv): t2ype
 //
 (* ****** ****** *)
@@ -365,10 +411,19 @@ t2ype_un_llazy
 //
 (* ****** ****** *)
 //
-fun
-t2ype_hnfize(t2p0: t2ype): t2ype
+fun{}
+t2ype_whnfz
+  (t2p0: t2ype): t2ype
+fun{}
+t2ype_whnfz$cst
+  (t2ype, flag: &int >> _): t2ype
 //
-overload hnfize with t2ype_hnfize
+(* ****** ****** *)
+//
+fun
+t2ype_whnfize(t2p0: t2ype): t2ype
+//
+overload whnfize with t2ype_whnfize
 //
 (* ****** ****** *)
 
@@ -431,5 +486,39 @@ labs2explst_erase
   (ls2es: labs2explst): labt2ypelst
 //
 (* ****** ****** *)
+//
+fun
+t2ype_normize(t2p0: t2ype): t2ype
+//
+overload normize with t2ype_normize
+//
+(* ****** ****** *)
+//
+(*
+typedef
+synpth = $SYNRD.synpth
+*)
+typedef synpth = List0(int)
+//
+datatype
+t2ypedff =
+|
+T2Pdff01 of (synpth, t2ype)
+|
+T2Pdff10 of (synpth, t2ype)
+|
+T2Pdff11 of (synpth, t2ype, t2ype)
+//
+|
+T2Pdff11_npf of (synpth, int, int)
+//
+typedef t2ypedfflst = List0(t2ypedff)
+//
+fun
+t2ype_diffize
+(t2p1: t2ype, t2p2: t2ype): t2ypedfflst
+//
+(* ****** ****** *)
 
 (* end of [xats_statyp2.sats] *)
+

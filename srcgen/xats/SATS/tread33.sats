@@ -59,6 +59,8 @@ datatype trerr33 =
 | TRERR33f3arg of (f3arg)
 | TRERR33d3ecl of (d3ecl)
 //
+| TRERR33ti2arg of (ti2arg)
+//
 typedef
 trerr33lst = List0(trerr33)
 //
@@ -70,7 +72,8 @@ trerr33_add(trerr33): void
 (* ****** ****** *)
 //
 fun
-tread33_main(d3eclist): void
+tread33_program
+  (prog: d3eclist): void
 //
 (* ****** ****** *)
 //
@@ -113,6 +116,15 @@ tread33_d3eclist: treader33(d3eclist)
 (* ****** ****** *)
 
 fun//{}
+tread33_ti3arg: treader33(ti3arg)
+fun//{}
+tread33_ti2arg: treader33(ti2arg)
+fun//{}
+tread33_ti2arglst: treader33(ti2arglst)
+
+(* ****** ****** *)
+
+fun//{}
 tread33_f3arg: treader33(f3arg)
 fun//{}
 tread33_f3arglst: treader33(f3arglst)
@@ -140,6 +152,20 @@ tread33_f3undecl: treader33(f3undecl)
 fun//{}
 tread33_f3undeclist: treader33(f3undeclist)
 
+(* ****** ****** *)
+//
+// HX-2020-07-02:
+// The following functions is expected
+// to be CONTRIBUTED.
+//
+(* ****** ****** *)
+//
+fun//{}
+tread33_d3exp_D3Elcast: treader33(d3exp)
+//
+fun//{}
+tread33_d3exp_D3Etcast: treader33(d3exp)
+//
 (* ****** ****** *)
 
 (* end of [xats_tread33.sats] *)

@@ -453,6 +453,21 @@ in
   FXITMatm
   (g1exp_make_node(loc, G1Eint(tok)))
 end // end of [auxint]
+fun
+auxstr
+( str
+: t0str)
+: g1eitm = let
+//
+val loc = str.loc()
+//
+val-
+T0STRsome(tok) = str.node()
+//
+in
+  FXITMatm
+  (g1exp_make_node(loc, G1Estr(tok)))
+end // end of [auxstr]
 
 fun
 auxitm
@@ -480,6 +495,7 @@ g0e0.node() of
 | G0Eid(gid) => auxgid(gid)
 //
 | G0Eint(int) => auxint(int)
+| G0Estr(str) => auxstr(str)
 //
 | G0Eapps(g0es) =>
   FXITMatm(g1e0) where
@@ -657,7 +673,7 @@ ifcase
 ) : fixtyopt_vt // end of [val]
 //
 val s1t0 =
-sort1_make_node(loc, S1Tid(sym))
+sort1_make_node(loc, S1Tid0(sym))
 //
 in
 //
@@ -711,7 +727,7 @@ in
 case+
 s0t0.node() of
 //
-| S0Tid(tid) => auxtid(tid)
+| S0Tid0(tid) => auxtid(tid)
 //
 | S0Tint(int) => auxint(int)
 //
@@ -928,8 +944,11 @@ loc0 = t0a0.loc()
 val
 t1a0_node =
 (
-case+
+case-
 t0a0.node() of
+(*
+| T0ARGnone(tok) => ...
+*)
 | T0ARGsome
   (s0t, opt) =>
   T1ARGsome(s1t, opt) where

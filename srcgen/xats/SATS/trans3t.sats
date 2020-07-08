@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,12 +28,8 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2019
+// Start Time: March, 2020
 // Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
-//
-#staload "./basics.sats"
 //
 (* ****** ****** *)
 
@@ -64,6 +60,8 @@ typedef t2ypelst = $S2T.t2ypelst
 typedef d2cst = $D2E.d2cst
 //
 typedef d3exp = $D3E.d3exp
+typedef t3cst = $D3E.t3cst
+//
 typedef d3ecl = $D3E.d3ecl
 //
 typedef d3gua = $D3E.d3gua
@@ -71,7 +69,10 @@ typedef d3gpat = $D3E.d3gpat
 typedef d3clau = $D3E.d3clau
 //
 typedef d3expopt = $D3E.d3expopt
+//
 typedef d3explst = $D3E.d3explst
+typedef t3cstlst = $D3E.t3cstlst
+//
 typedef d3eclist = $D3E.d3eclist
 //
 typedef d3gualst = $D3E.d3gualst
@@ -83,10 +84,21 @@ typedef d3claulst = $D3E.d3claulst
 
 (* ****** ****** *)
 //
-absvtype implenv_vtype = ptr
-vtypedef implenv = implenv_vtype
+absvtype
+implenv_vtype = ptr
+vtypedef
+implenv = implenv_vtype
 //
 (* ****** ****** *)
+//
+(*
+HX: copy the path out!
+*)
+fun
+implenv_get_path
+  (!implenv): t3cstlst
+overload
+.path with implenv_get_path
 //
 fun
 implenv_get_s2vs
@@ -128,14 +140,28 @@ implenv_free_nil(implenv): void
 (* ****** ****** *)
 //
 fun
-implenv_pop0_tsub
+implenv_pop0_init
 (env0: !implenv): void
 fun
-implenv_push_tsub
+implenv_push_init
+(env0: !implenv): void
+//
+fun
+implenv_pop0_timp
+(env0: !implenv): void
+fun
+implenv_push_timp
 ( env0
 : !implenv
+, d3e0: d3exp
 , s2vs: s2varlst
 , tsub: t2ypelst): void
+//
+(* ****** ****** *)
+//
+fun
+implenv_path_recq
+(env0: !implenv, d3e0: d3exp): bool
 //
 (* ****** ****** *)
 //

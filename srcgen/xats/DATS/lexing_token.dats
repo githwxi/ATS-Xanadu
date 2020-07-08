@@ -320,6 +320,17 @@ case+ tnd of
 | T_WITHTYPE(srt) =>
   fprint!(out, "WITHTYPE(", srt, ")")
 //
+| T_SRP_THEN() =>
+  fprint!(out, "#THEN(", ")")
+| T_SRP_ELSE() =>
+  fprint!(out, "#ELSE(", ")")
+| T_SRP_ENDIF() =>
+  fprint!(out, "#ENDIF(", ")")
+| T_SRP_IFDEC(knd) =>
+  fprint!(out, "#IFDEC(", knd, ")")
+| T_SRP_ELSIF(knd) =>
+  fprint!(out, "#ELSIF(", knd, ")")
+//
 | T_SRP_NONFIX() =>
   fprint!(out, "#NONFIX")
 | T_SRP_FIXITY(knd) =>
@@ -581,6 +592,17 @@ case+ tnd of
 //
 | T_WITHTYPE(knd) =>
   fprint!(out, "withtype(", knd, ")")
+//
+| T_SRP_THEN() =>
+  fprint!(out, "#then(", ")")
+| T_SRP_ELSE() =>
+  fprint!(out, "#else(", ")")
+| T_SRP_ENDIF() =>
+  fprint!(out, "#endif(", ")")
+| T_SRP_IFDEC(knd) =>
+  fprint!(out, "#ifdec(", knd, ")")
+| T_SRP_ELSIF(knd) =>
+  fprint!(out, "#elsif(", knd, ")")
 //
 | T_SRP_NONFIX() =>
   fprint!(out, "#nonfix")

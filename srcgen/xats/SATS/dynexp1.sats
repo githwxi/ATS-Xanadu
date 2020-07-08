@@ -62,7 +62,6 @@ filpathopt = $FP0.filpathopt
 typedef decmodopt = decmodopt
 //
 (* ****** ****** *)
-
 //
 abstype d1pat_tbox = ptr
 typedef d1pat = d1pat_tbox
@@ -869,21 +868,24 @@ d1ecl_node =
   , token(*s0eid*)
   , t1marglst, sort1opt, abstdf1)
 //
+| D1Cabsopen of
+  (token(*ABSOPEN*), sq0eid(*qualid*))
+  // D1Cabsopen
 | D1Cabsimpl of
   ( token(*kind*)
   , sq0eid, s1marglst, sort1opt, s1exp)
   // D1Cabsimpl
 //
+| D1Cfundecl of
+  ( token(*funkind*)
+  , decmodopt
+  , tq1arglst(*tmpargs*), f1undeclist)
+//
 | D1Cvaldecl of
   ( token(*valkind*)
   , decmodopt(*rec/prf/...*), v1aldeclist)
-//
 | D1Cvardecl of
   ( token(*varkind*), decmodopt, v1ardeclist)
-//
-| D1Cfundecl of
-  ( token(*funkind*)
-  , decmodopt, tq1arglst(*tmpargs*), f1undeclist)
 //
 | D1Cimpdecl of
   ( token(*impkind*)
@@ -891,8 +893,9 @@ d1ecl_node =
   , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)
 //
 | D1Csymload of
-  ( token(*symload*)
-  , s0ymb, dq0eid, t0intopt)
+  ( token(*#symload*)
+  , s0ymb(*overloaded*)
+  , dq0eid, t0intopt(*precedence*))
 //
 | D1Cdatasort of
     (token(*datasort*), d1tsortlst)
@@ -912,6 +915,11 @@ d1ecl_node =
   (token(*dyncstkind*), tq1arglst, d1cstdeclist)
 //
 | D1Clocal of (d1eclist(*head*), d1eclist(*body*))
+//
+| D1Celse of (token) // opt
+| D1Cendif of (token) // req
+| D1Cifdec of (token, g1exp, tokenopt) // #if(exp)
+| D1Celsif of (token, g1exp, tokenopt) // #elsif(exp)
 //
 | D1Ctokerr of (d0ecl) // HX: for error indication
 //

@@ -736,6 +736,12 @@ case+ x0.node() of
   , "D1Cmacdef("
   , tok, "; ", sym, "; ", arg, "; ", def, ")")
 //
+| D1Clocal
+  (d1cs_head, d1cs_body) =>
+  fprint!
+  ( out
+  , "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
+//
 | D1Cinclude
   (tok, src, knd, opt, body) =>
   (
@@ -795,38 +801,46 @@ case+ x0.node() of
   ( knd, sid
   , arg, res, def) =>
   fprint!
-  ( out, "D1Csexpdef("
+  ( out
+  , "D1Csexpdef("
   , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
 //
 | D1Cabstype
   (knd, sid, arg, res, def) =>
   fprint!
-  ( out, "D1Cabstype("
+  ( out
+  , "D1Cabstype("
   , knd, "; ", sid, "; ", arg, "; ", res, "; ", def, ")")
+//
+| D1Cabsopen(tok, sqid) =>
+  fprint!
+  (out, "D1Cabsopen(", tok, "; ", sqid, ")")
 //
 | D1Cabsimpl
   (tok, sqid, smas, res0, def1) =>
   fprint!
-  ( out, "D1Cabsimpl("
-  , tok, "; ", sqid, "; ", smas, "; ", res0, "; ", def1, ")")
+  ( out
+  , "D1Cabsimpl("
+  , tok, "; ", sqid
+  , "; ", smas, "; ", res0, "; ", def1, ")")
+//
+| D1Cfundecl
+  (tok, mopt, tqas, d1cs) =>
+  fprint!
+  ( out
+  , "D1Cfundecl("
+  , tok, "; ", mopt, "; ", tqas, "; ", d1cs, ")")
 //
 | D1Cvaldecl
   (tok, mopt, d1cs) =>
   fprint!
   ( out
   , "D1Cvaldecl(", tok, "; ", mopt, "; ", d1cs, ")")
-//
 | D1Cvardecl
   (tok, mopt, d1cs) =>
   fprint!
   ( out
   , "D1Cvardecl(", tok, "; ", mopt, "; ", d1cs, ")")
-//
-| D1Cfundecl
-  (tok, mopt, tqas, d1cs) =>
-  fprint!
-  ( out
-  , "D1Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d1cs, ")")
 //
 | D1Cimpdecl
   ( tok, mopt, sqas, tqas
@@ -862,10 +876,16 @@ case+ x0.node() of
   fprint!
   (out, "D1Cdynconst(", tok, "; ", tqas, "; ", d1cs, ")")
 //
-| D1Clocal
-  (d1cs_head, d1cs_body) =>
+| D1Celse(tok) =>
+  fprint!(out, "D1Celse(", tok, ")")
+| D1Cendif(tok) =>
+  fprint!(out, "D1Cendif(", tok, ")")
+| D1Cifdec(tok, g1e1, topt) =>
   fprint!
-  (out, "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
+  (out, "D1Cifdec(", tok, "; ", g1e1, "; ", topt, ")")
+| D1Celsif(tok, g1e1, topt) =>
+  fprint!
+  (out, "D1Celsif(", tok, "; ", g1e1, "; ", topt, ")")
 //
 | D1Ctokerr(d0c0) => fprint!(out, "D1Ctokerr(", d0c0, ")")
 //

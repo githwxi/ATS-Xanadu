@@ -12,13 +12,104 @@
 (* ****** ****** *)
 //
 impltmp
+<>(*tmp*)
+optn_nilq(xs) =
+(
+case+ xs of
+| optn_nil() => true
+| optn_cons(x0) => false
+)
+impltmp
+<>(*tmp*)
+optn_consq(xs) =
+(
+case+ xs of
+| optn_nil() => false
+| optn_cons(x0) => (true)
+)
+//
+(* ****** ****** *)
+//
+impltmp
 <a>(*tmp*)
 optn_length(xs) =
 (
 case+ xs of
-| optn_none _ => 0 | optn_some _ => 1
+| none() => 0 | some(x0) => 1
 )
 //
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+optn_forall(xs) =
+(
+case+ xs of
+| optn_nil() => true
+| optn_cons(x0) => forall$test<a>(x0)
+)
+//
+impltmp
+<a>(*tmp*)
+optn_foreach(xs) =
+(
+case+ xs of
+| optn_nil() => ()
+| optn_cons(x0) => foreach$work<a>(x0)
+)
+//
+impltmp
+<a>(*tmp*)
+optn_rforall(xs) =
+(
+case+ xs of
+| optn_nil() => true
+| optn_cons(x0) => rforall$test<a>(x0)
+)
+//
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+optn_listize(xs) =
+(
+case+ xs of
+| optn_nil() => list_vt_nil()
+| optn_cons(x0) => list_vt_sing(x0)
+)
+impltmp
+<a>(*tmp*)
+optn_rlistize(xs) =
+(
+case+ xs of
+| optn_nil() => list_vt_nil()
+| optn_cons(x0) => list_vt_sing(x0)
+)
+impltmp
+<a>(*tmp*)
+optn_streamize(xs) =
+$llazy
+(
+case+ xs of
+| optn_nil() => strmcon_vt_nil()
+| optn_cons(x0) => strmcon_vt_sing(x0)
+)
+
+(* ****** ****** *)
+
+impltmp
+{a:t0}
+gseq_forall<optn(a)><a> = optn_forall<a>
+impltmp
+{a:t0}
+gseq_foreach<optn(a)><a> = optn_foreach<a>
+impltmp
+{a:t0}
+gseq_rforall<optn(a)><a> = optn_rforall<a>
+impltmp
+{a:t0}
+gseq_rforeach<optn(a)><a> = optn_rforeach<a>
+
 (* ****** ****** *)
 
 (* end of [optn.dats] *)

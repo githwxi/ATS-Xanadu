@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -85,9 +85,29 @@ val
 impred =
 sort2_is_impred(s2t0)
 //
+(*
+val () =
+println!
+("s2exp_erase: s2e0 = ", s2e0)
+*)
+//
+(*
 fun
 auxs2vs
-(s2vs
+( s2vs
+: s2varlst): s2varlst = s2vs
+*)
+//
+// HX-2020-06-30:
+// This version can interfere
+// annotated static arguments
+// Here is a possible solution:
+// 1: Impredicatives precede Predicatives
+// 2: Impredicatives and Predicatives do not mix
+//
+fun
+auxs2vs
+( s2vs
 : s2varlst
 )
 : s2varlst =
@@ -151,7 +171,7 @@ s2e0.node() of
 | S2Earg(knd, s2e1) =>
   (
     if
-    (knd = 0)
+    (knd >= 0)
     then
     s2exp_erase(s2e1)
     else
@@ -853,8 +873,34 @@ end (* t2ype_evalrec *) end // end of [local]
 
 (* ****** ****** *)
 
-local
-
+implement
+{}(*tmp*)
+t2ype_whnfz
+  (t2p0) = let
+//
+var flag: int = 0
+//
+(*
+val () =
+println!
+("t2ype_whnfz: t2p0 = ", t2p0)
+*)
+//
+in
+//
+let
+val
+t2p0 =
+auxt2p0(t2p0, flag)
+(*
+val () =
+println!
+("t2ype_whnfz: t2p0(res) = ", t2p0)
+*)
+in t2p0 end // end of [let]
+//
+end where
+{
 fun
 auxbas
 ( t2p0: t2ype
@@ -894,30 +940,9 @@ auxcst
 ( t2p0: t2ype
 , flag
 : &int >> int): t2ype =
-let
-//
-val-
-T2Pcst(s2c0) = t2p0.node()
-//
-val
-def0 = s2cst_get_type(s2c0)
-//
-in
-//
-case+
-def0.node() of
-//
-| T2Pnone0() => t2p0
-//
-| _(* else *) => 
-  (
-    t2ype_hnfize(def0)
-  ) where
-  {
-    val () = flag := flag + 1
-  }
-//
-end // end of [auxcst]
+(
+  t2ype_whnfz$cst(t2p0, flag)
+)
 
 and
 auxxtv
@@ -930,25 +955,21 @@ T2Pxtv
 (xtv0) = t2p0.node()
 in
 //
-case+
-t2p0.node() of
-| T2Pxtv(xtv) =>
-  let
+let
   val
-  t2p1 = xtv.type()
-  in
-    case+
-    t2p1.node() of
-    | T2Pnone0() => t2p0
-    | _ (*non-T2Pnone0*) =>
-      (
-        t2ype_hnfize(t2p1)
-      ) where
-      {
-        val () = flag := flag + 1
-      }
-  end
-| _(* non-T2Pxtv *) => (t2p0)
+  t2p1 = xtv0.type()
+in
+  case+
+  t2p1.node() of
+  | T2Pnone0() => t2p0
+  | _ (*non-T2Pnone0*) =>
+    (
+      auxt2p0(t2p1, flag)
+    ) where
+    {
+      val () = flag := flag + 1
+    }
+end
 //
 end // end of [auxxtv]
 
@@ -967,20 +988,21 @@ val fini = flag
 //
 val t2p1 = auxt2p0(t2p1, flag)
 val t2ps = auxt2ps(t2ps, flag)
+//
 in
 //
 case+
 t2p1.node() of
 | T2Plam
   (s2vs, t2p2) =>
-  let
+  (
+    auxt2p0(t2p0, flag)
+  ) where
+  {
     val () = flag := flag + 1
-  in
-    t2ype_hnfize
-    (
+    val t2p0 =
     t2ype_subst_svarlst(t2p2, s2vs, t2ps)
-    ) (* t2ype_hnfize *)
-  end
+  } (* auxt2p0 *)
 | _ (*non-T2Plam*) =>
   if
   fini=flag
@@ -1006,8 +1028,10 @@ t2p0.node() of
 //
 | T2Pcst _ =>
   auxcst(t2p0, flag)
+//
 | T2Pxtv _ =>
   auxxtv(t2p0, flag)
+//
 | T2Papp _ =>
   auxapp(t2p0, flag)
 //
@@ -1018,8 +1042,8 @@ t2p0.node() of
 //
 | _ (*rest-of-t2ype*) => t2p0
 //
-)
-
+) (* end of [auxt2p0] *)
+//
 and
 auxt2ps
 ( t2ps
@@ -1040,28 +1064,49 @@ case+ t2ps of
     fini = flag
     then t2ps else list_cons(t2p1, t2ps2)
   end
-)
-
-in (* in-of-local *)
-
-implement
-t2ype_hnfize
-  (t2p0) = let
+) (* end of [auxt2ps] *)
 //
-(*
-val () =
-println!
-("t2ype_hnfize: t2p0 = ", t2p0)
-*)
+} (* end of [t2ype_whnfz] *)
+
+(* ****** ****** *)
+//
+implement
+t2ype_whnfize
+  (t2p0) =
+(
+  t2ype_whnfz<>(t2p0)
+) where
+{
+//
+implement
+t2ype_whnfz$cst<>
+  (t2p0, flag) =
+let
+//
+val-
+T2Pcst(s2c0) = t2p0.node()
+//
+val
+def0 = s2cst_get_type(s2c0)
 //
 in
 //
-  let
-    var flag: int = 0 in auxt2p0(t2p0, flag)
-  end
+case+
+def0.node() of
 //
-end (* end of [t2ype_hnfize] *) end // end of [local]
-
+|
+T2Pnone0() => t2p0
+//
+| _(* else *) => 
+let
+val () =
+flag := flag + 1 in t2ype_whnfize(def0)
+end
+//
+end // t2ype_whnfz$cst
+//
+} (* end of [t2ype_whnfize] *)
+//
 (* ****** ****** *)
 
 implement
@@ -1069,7 +1114,7 @@ t2ype_projize
 (t2p0, lab1) =
 let
 (*
-val t2p0 = hnfize(t2p0)
+val t2p0 = whnfize(t2p0)
 *)
 in
 //
@@ -1133,12 +1178,539 @@ list_vt2t
 list_map<labs2exp><labt2ype>(ls2es)
 ) where
 {
-  implement
-  list_map$fopr<labs2exp><labt2ype>(ls2e) =
+implement
+list_map$fopr<labs2exp><labt2ype>(ls2e) =
+let
+val+SLABELED(l0, s2e) = ls2e in TLABELED(l0, s2exp_erase(s2e))
+end
+} (* end of [labs2explst_erase] *)
+
+(* ****** ****** *)
+
+local
+
+fun
+auxbas
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val
+t2p0 = t2bas_eval(t2p0)
+in
+//
+case+
+t2p0.node() of
+| T2Pbas _ => t2p0
+| _(*non-T2Pbas*) =>
+  (
+    auxt2p0(t2p0, flag)
+  ) where
+  {
+    val () = flag := flag + 1
+  }
+//
+end // end of [auxbas]
+
+and
+auxvar
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val-
+T2Pvar
+(s2v0) = t2p0.node() in t2p0
+end // end of [auxvar]
+
+and
+auxxtv
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+val-
+T2Pxtv
+(xtv0) = t2p0.node()
+in
+//
+let
+val
+t2p1 = xtv0.type()
+in
+case+
+t2p1.node() of
+| T2Pnone0() => t2p0
+| _ (*non-T2Pnone0*) =>
   let
-  val+SLABELED(l0, s2e) = ls2e in TLABELED(l0, s2exp_erase(s2e))
-  end
+    val
+    t2p1 =
+    t2ype_normize(t2p1)
+  in
+    xtv0.type(t2p1); t2p1
+  end where
+  {
+    val () = flag := flag + 1
+  }
+end // end of [let]
+//
+end // end of [auxxtv]
+
+and
+auxapp
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+//
+val-
+T2Papp
+(t2p1, t2ps) = t2p0.node()
+//
+val fini = flag
+//
+val t2p1 = auxt2p0(t2p1, flag)
+val t2ps = auxt2ps(t2ps, flag)
+//
+in
+//
+case+
+t2p1.node() of
+|
+T2Plam
+(s2vs, t2p2) =>
+let
+  val () = flag := flag + 1
+in
+  t2ype_normize
+  (
+  t2ype_subst_svarlst(t2p2, s2vs, t2ps)
+  ) (* t2ype_whnfize *)
+end
+|
+_ (*non-T2Plam*) =>
+if
+fini=flag
+then t2p0
+else
+let
+  val s2t0 = t2p0.sort()
+in
+t2ype_make_node(s2t0, T2Papp(t2p1, t2ps))
+end
+//
+end // end of [auxapp]
+
+and
+auxt2p0
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+(
+case+
+t2p0.node() of
+//
+| T2Pbas _ =>
+  auxbas(t2p0, flag)
+//
+| T2Pvar _ =>
+  auxvar(t2p0, flag)
+//
+(*
+| T2Pcst _ =>
+  auxcst(t2p0, flag)
+*)
+//
+| T2Pxtv _ =>
+  auxxtv(t2p0, flag)
+//
+| T2Papp _ =>
+  auxapp(t2p0, flag)
+//
+(*
+| T2Plft _ =>
+  auxlft(t2p0, flag)
+*)
+//
+|
+T2Pfun
+(fc2, npf, t2ps, t2p1) =>
+let
+  val
+  s2t0 = t2p0.sort()
+  val
+  fc2 = auxt2p0(fc2, flag)
+  val
+  t2ps = auxt2ps(t2ps, flag)
+  val
+  t2p1 = auxt2p0(t2p1, flag)
+in
+  t2ype_make_node
+  (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
+end
+//
+|
+T2Puni(s2vs, t2p1) =>
+let
+  val
+  s2t0 = t2p0.sort()
+  val
+  t2p1 = auxt2p0(t2p1, flag)
+in
+t2ype_make_node(s2t0, T2Puni(s2vs, t2p1))
+end
+|
+T2Pexi(s2vs, t2p1) =>
+let
+  val
+  s2t0 = t2p0.sort()
+  val
+  t2p1 = auxt2p0(t2p1, flag)
+in
+t2ype_make_node(s2t0, T2Pexi(s2vs, t2p1))
+end
+//
+| _ (*rest-of-t2ype*) => t2p0
+//
+)
+
+and
+auxt2ps
+( t2ps
+: t2ypelst
+, flag
+: &int >> int): t2ypelst =
+(
+case+ t2ps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(t2p1, t2ps2) =>
+let
+  val fini = flag
+  val t2p1 = auxt2p0(t2p1, flag)
+  val t2ps2 = auxt2ps(t2ps2, flag)
+in
+if
+fini = flag
+then t2ps else list_cons(t2p1, t2ps2)
+end
+)
+
+in(*in-of-local*)
+
+implement
+t2ype_normize
+  (t2p0) = let
+//
+(*
+val () =
+println!
+("t2ype_normize: t2p0 = ", t2p0)
+*)
+//
+in
+//
+let
+  var
+  flag: int = 0 in auxt2p0(t2p0, flag)
+end
+//
+end (* end of [t2ype_normize] *) end // end of [local]
+
+(* ****** ****** *)
+
+implement
+t2ype_diffize
+(t2p1, t2p2) = let
+//
+vtypedef
+dfflst =
+List0_vt(t2ypedff)
+//
+fun
+auxins
+( x0
+: t2ype
+, y0
+: t2ype
+, ps
+: synpth
+, dffs
+: dfflst): dfflst =
+(
+  list_vt_cons(dff0, dffs)
+) where
+{
+  val
+  dff0 = T2Pdff11(ps, x0, y0)
 }
+//
+fun
+auxone
+( x0
+: t2ype
+, y0
+: t2ype
+, ps
+: synpth
+, dffs
+: dfflst): dfflst =
+let
+val x0 = whnfize(x0)
+val y0 = whnfize(y0)
+in
+case+
+( x0.node()
+, y0.node()) of
+//
+|
+( T2Pbas(sym1)
+, T2Pbas(sym2)) =>
+if
+(sym1 = sym2)
+then dffs else
+auxins(x0, y0, ps, dffs)
+//
+|
+( T2Pcst(s2c1)
+, T2Pcst(s2c2)) =>
+if
+(s2c1 = s2c2)
+then dffs else
+auxins(x0, y0, ps, dffs)
+//
+|
+( T2Pvar(s2v1)
+, T2Pvar(s2v2)) =>
+if
+(s2v1 = s2v2)
+then dffs else
+auxins(x0, y0, ps, dffs)
+//
+|
+( T2Pfc2(fc21)
+, T2Pfc2(fc22)) =>
+if
+funclo2_equal
+(fc21 , fc22)
+then dffs else
+auxins(x0, y0, ps, dffs)
+//
+|
+(T2Papp _, T2Papp _) =>
+(
+  auxapp(x0, y0, ps, dffs)
+)
+//
+|
+(T2Pfun _, T2Pfun _) =>
+(
+  auxfun(x0, y0, ps, dffs)
+)
+//
+|
+( T2Pnone0()
+, T2Pnone0() ) => dffs
+//
+|
+(_(*else*), _(*else*)) =>
+(
+  auxins(x0, y0, ps, dffs)
+)
+end // end of [auxone]
+//
+and
+auxlst
+( xs
+: t2ypelst
+, ys
+: t2ypelst
+, p0: int
+, ps: synpth
+, dffs
+: dfflst): dfflst =
+(
+case+ xs of
+|
+list_nil() =>
+(
+case- ys of
+|
+list_nil() => dffs
+|
+list_cons(y0, ys) =>
+let
+val
+dff0 =
+T2Pdff01(ps, y0) where
+{
+val y0 = whnfize(y0)
+val ps = list_cons(p0, ps)
+}
+val
+dffs =
+list_vt_cons(dff0, dffs)
+in
+  auxlst(xs, ys, p0+1, ps, dffs)
+end
+)
+|
+list_cons(x0, xs) =>
+(
+case- ys of
+|
+list_nil() =>
+let
+val
+dff0 =
+T2Pdff10(ps, x0) where
+{
+val x0 = whnfize(x0)
+val ps = list_cons(p0, ps)
+}
+val
+dffs =
+list_vt_cons(dff0, dffs)
+in
+  auxlst(xs, ys, p0+1, ps, dffs)
+end
+|
+list_cons(y0, ys) =>
+let
+val
+dffs =
+auxone
+(x0, y0, ps, dffs) where
+{
+  val ps = list_cons(p0, ps)
+}
+in
+  auxlst(xs, ys, p0+1, ps, dffs)
+end
+)
+) (* end of [auxlst] *)
+//
+and
+auxapp
+( x0
+: t2ype
+, y0
+: t2ype
+, ps
+: synpth
+, dffs
+: dfflst): dfflst =
+let
+val-
+T2Papp
+(x1, xs) = x0.node()
+val-
+T2Papp
+(y1, ys) = y0.node()
+//
+val p0 = 0 and p1 = 1
+//
+val dffs =
+let
+val ps =
+list_cons(p0, ps)
+in
+  auxone(x1, y1, ps, dffs)
+end
+in
+let
+val ps =
+list_cons(p1, ps)
+in
+  auxlst(xs, ys, 0, ps, dffs)
+end
+end (* end of T2Papp *)
+//
+and
+auxfun
+( x0
+: t2ype
+, y0
+: t2ype
+, ps
+: synpth
+, dffs
+: dfflst): dfflst =
+let
+//
+val-
+T2Pfun
+( fc21
+, npf1
+, xs, x1) = x0.node()
+val-
+T2Pfun
+( fc22
+, npf2
+, ys, y1) = y0.node()
+//
+val p0 = 0 and p1 = 1
+val p2 = 2 and p3 = 3
+//
+val dffs =
+let
+  val ps =
+  list_cons(p0, ps)
+in
+  auxone
+  (fc21, fc22, ps, dffs)
+end
+//
+val dffs =
+let
+  val ps =
+  list_cons(p1, ps)
+in
+  auxnpf
+  (npf1, npf2, ps, dffs)
+end
+//
+val dffs =
+let
+val ps = list_cons(p2, ps)
+in
+  auxlst(xs, ys, 0, ps, dffs)
+end
+//
+in
+  let
+  val ps = list_cons(p3, ps)
+  in
+    auxone( x1, y1, ps, dffs )
+  end
+end // end of [auxfun]
+//
+and
+auxnpf
+( n1: int
+, n2: int
+, ps: synpth
+, dffs: dfflst): dfflst =
+(
+  if
+  (n1 = n2)
+  then dffs else
+  list_vt_cons(dff0, dffs)
+) where
+{
+val dff0 = T2Pdff11_npf(ps, n1, n2)
+} (* end of [val dffs] *)
+//
+in
+list_vt2t
+(
+list_vt_reverse
+(
+auxone
+(t2p1, t2p2, list_nil(), list_vt_nil())))
+end // end of [t2ype_diffize]
 
 (* ****** ****** *)
 

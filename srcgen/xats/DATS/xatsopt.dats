@@ -55,6 +55,11 @@ FP0 = "./../SATS/filpath.sats"
   $FP0.filpath_dirbase
   macdef
   fpath_make = $FP0.filpath_make
+  macdef
+  dpath_make = $FP0.dirpath_make
+  macdef
+  fpath_dname = $FP0.filpath_get_dirname
+
 //
 #staload
 GLO = "./../SATS/global.sats"
@@ -80,7 +85,10 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tread33.sats"
 //
 #staload "./../SATS/trans3t.sats"
-#staload "./../SATS/tread3t.sats"
+#staload "./../SATS/trans3x.sats"
+#staload "./../SATS/tread3x.sats"
+//
+#staload "./../SATS/tcomp30.sats"
 //
 (* ****** ****** *)
 //
@@ -111,6 +119,12 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
   "./../DATS/dynexp3_print.dats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) =
+  "./../DATS/intrep0_print.dats"
 //
 (* ****** ****** *)
 //
@@ -251,19 +265,32 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./dynexp3.dats"
 //
 #dynload "./dynexp3_print.dats"
+#dynload "./dynexp3_util0.dats"
 //
 #dynload "./trans23_util0.dats"
-#dynload "./trans33_util0.dats"
-//
 #dynload "./trans23_dynexp.dats"
 #dynload "./tread23_dynexp.dats"
 //
+#dynload "./trans33_util0.dats"
+#dynload "./trans33_envmap.dats"
 #dynload "./trans33_dynexp.dats"
 #dynload "./tread33_dynexp.dats"
 //
 #dynload "./trans3t_envmap.dats"
 #dynload "./trans3t_dynexp.dats"
-#dynload "./tread3t_dynexp.dats"
+//
+#dynload "./trans3x_envmap.dats"
+#dynload "./trans3x_dynexp.dats"
+#dynload "./tread3x_dynexp.dats"
+//
+#dynload "./intrep0.dats"
+#dynload "./intrep0_print.dats"
+#dynload "./intrep0_jsoniz.dats"
+#dynload "./intrep0_statyp.dats"
+#dynload "./intrep0_dynexp.dats"
+//
+#dynload "./tcomp30_statyp.dats"
+#dynload "./tcomp30_dynexp.dats"
 //
 (* ****** ****** *)
 //
@@ -917,7 +944,8 @@ println!
 ("process_fpath: d0cs = ", d0cs)
 *)
 //
-val () = synread_main(d0cs)
+val () =
+synread_program(d0cs)
 //
 val
 d1cs =
@@ -927,7 +955,7 @@ d1cs = trans01_declist(d0cs)
 in
 d1cs where
 {
-  val () = tread01_main(d1cs)
+val () = tread01_program(d1cs)
 }
 end // end of [val]
 (*
@@ -944,7 +972,7 @@ d2cs = trans12_declist(d1cs)
 in
 d2cs where
 {
-  val () = tread12_main(d2cs)
+val () = tread12_program(d2cs)
 }
 end // end of [val]
 (*
@@ -961,7 +989,7 @@ d3cs = trans23_declist(d2cs)
 in
 d3cs where
 {
-  val () = tread23_main(d3cs)
+val () = tread23_program(d3cs)
 }
 end // end of [val]
 (*
@@ -974,11 +1002,11 @@ val
 d3cs =
 let
 val
-d3cs = trans33_declist(d3cs)
+d3cs = trans33_program(d3cs)
 in
 d3cs where
 {
-  val () = tread33_main(d3cs)
+val () = tread33_program(d3cs)
 }
 end // end of [val]
 (*
@@ -992,42 +1020,38 @@ d3cs =
 let
 val
 d3cs = trans3t_program(d3cs)
+val
+d3cs = trans3x_program(d3cs)
 in
 d3cs where
 {
-  val () = tread3t_main(d3cs)
+val () = tread3x_program(d3cs)
 }
 end // end of [val]
 //
-// (*
+(*
 val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
-// *)
+*)
+//
+val
+h0cs = tcomp30_program(d3cs)
 //
 val () =
 println!
-("process_fpath: the_sortenv =")
-val () =
-(
-  the_sortenv_println((*void*))
-)
+("process_fpath: h0cs = ", h0cs)
 //
-val () =
-println!
-("process_fpath: the_sexpenv =")
-val () =
-(
-  the_sexpenv_println((*void*))
-)
+(* ****** ****** *)
 //
-val () =
-println!
-("process_fpath: the_dexpenv =")
-val () =
-(
-  the_dexpenv_println((*void*))
-)
+val () = println!("the_sortenv =")
+val () = the_sortenv_println((*void*))
+//
+val () = println!("the_sexpenv =")
+val () = the_sexpenv_println((*void*))
+//
+val () = println!("the_dexpenv =")
+val () = the_dexpenv_println((*void*))
 //
 } (* end of [then] *)
 else
@@ -1630,10 +1654,8 @@ println!
 //
 implement
 the_prelude_load
-(XATSHOME, stadyn, given) = let
-//
-  val
-  d1cs = trans01_declist(d0cs)
+(XATSHOME, stadyn, given) =
+let
 //
   val
   (pf0|()) =
@@ -1650,37 +1672,56 @@ val () =
 println!
 ("the_prelude_load: ", given)
 //
-  val fname =
-    dirbase(XATSHOME, given)
-  val fpath =
-    fpath_make(given, fname)  
+  val
+  fname =
+  dirbase(XATSHOME, given)
+  val
+  fpath =
+  fpath_make(given, fname)  
+  val
+  dpath =
+  dpath_make(fpath_dname(fpath))
 //
   val
-  (pf0 | ()) =
+  (pf1 | ()) =
   $FP0.the_filpathlst_push(fpath)
+  val
+  (pf2 | ()) =
+  $FP0.the_dirpathlst_push(dpath)
 //
   val d0cs = let
     val
     opt =
-    fileref_open_opt(fname, file_mode_r)
+    fileref_open_opt
+    (fname, file_mode_r)
   in
     case+ opt of
-    | ~None_vt() =>
-       list_nil(*void*)
-    | ~Some_vt(filr) =>
-      (
-        fileref_close(filr); d0cs
-      ) where
-      {
-        val
-        d0cs =
-        parse_from_fileref_toplevel(stadyn, filr)
-      } (* end of [Some_vt] *)
+    |
+    ~None_vt() =>
+     (
+     list_nil(*void*)
+     ) // None_vt
+    |
+    ~Some_vt(filr) =>
+     let
+       val
+       d0cs =
+       parse_from_fileref_toplevel
+         (stadyn, filr)
+       val () = fileref_close(filr)
+     in
+       d0cs
+     end // end of [Some_vt]
    end : d0eclist // end-of-let
+//
+  val d1cs = trans01_declist(d0cs)
 //
   val
   ((*popped*)) =
-  $FP0.the_filpathlst_pout(pf0 | (*none*))
+  $FP0.the_filpathlst_pout(pf1 | (*none*))
+  val
+  ((*popped*)) =
+  $FP0.the_dirpathlst_pout(pf2 | (*none*))
 //
 } (* end of [the_prelude_load] *)
 //
@@ -1712,19 +1753,6 @@ the_prelude_load
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/bool.sats")
-val () =
-the_prelude_load
-( XATSHOME
-, 0(*static*), "prelude/SATS/char.sats")
-val () =
-the_prelude_load
-( XATSHOME
-, 0(*static*), "prelude/SATS/gint.sats")
-//
-val () =
-the_prelude_load
-( XATSHOME
 , 0(*static*), "prelude/SATS/gbas.sats")
 val () =
 the_prelude_load
@@ -1738,7 +1766,41 @@ the_prelude_load
 val () =
 the_prelude_load
 ( XATSHOME
+, 0(*static*), "prelude/SATS/gfor.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gfun.sats")
+val () =
+the_prelude_load
+( XATSHOME
 , 0(*static*), "prelude/SATS/gseq.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/bool.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/char.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gint.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gflt.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gios.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/rand.sats")
 //
 val () =
 the_prelude_load
@@ -1748,14 +1810,27 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/list.sats")
+//
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/stream.sats")
+, 0(*static*), "prelude/SATS/array.sats")
 val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/string.sats")
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/stream.sats")
+//
+// HX: for linear stuff
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/gseq_vt.sats")
 //
 val () =
 the_prelude_load
@@ -1765,6 +1840,22 @@ val () =
 the_prelude_load
 ( XATSHOME
 , 0(*static*), "prelude/SATS/list_vt.sats")
+//
+(*
+//
+// HX: array contains array_vt
+// HX: string contains string_vt
+//
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/array_vt.sats")
+val () =
+the_prelude_load
+( XATSHOME
+, 0(*static*), "prelude/SATS/string_vt.sats")
+*)
+//
 val () =
 the_prelude_load
 ( XATSHOME

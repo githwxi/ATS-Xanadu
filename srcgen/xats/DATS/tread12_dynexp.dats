@@ -107,11 +107,44 @@ in
 case+
 d2p0.node() of
 //
+| D2Pnil() => ()
 | D2Pany() => ()
-| D2Pvar(d2v) => ()
+//
+| D2Pvar(d2v1) => ()
+//
+| D2Pcon1(d2c1) => ()
+| D2Pcon2(d2cs) => ()
+//
+| D2Pbang(d2p1) =>
+  {
+    val () =
+    tread12_d2pat(d2p1)
+  }
+| D2Pflat(d2p1) =>
+  {
+    val () =
+    tread12_d2pat(d2p1)
+  }
+| D2Pfree(d2p1) =>
+  {
+    val () =
+    tread12_d2pat(d2p1)
+  }
+//
+| D2Psym0
+  ( d1p1, dpis ) => ()
+//
+| D2Pdapp
+  (d2f0, npf1, d2ps) =>
+  {
+    val () =
+    tread12_d2pat(d2f0)
+    val () =
+    tread12_d2patlst(d2ps)
+  }
 //
 | D2Ptuple
-  (knd, npf, d2ps) =>
+  (knd0, npf1, d2ps) =>
   {
     val () =
     tread12_d2patlst(d2ps)
@@ -130,7 +163,11 @@ d2p0.node() of
     val () =
     trerr12_add(TRERR12d2pat(d2p0))
   in
-    prerrln!(loc0, ": TRERR12(d2pat): ", d2p0);
+    prerrln!
+    ( loc0, ": ***TRERR12***");
+    prerrln!
+    ( loc0
+    , ": TRERR12(D2Pnone1): d3pat-error", d2p0);
   end // end of [D2Pnone1]
 //
 | _(* rest-of-d2pat *) =>
@@ -178,6 +215,7 @@ case+
 d2e0.node() of
 //
 | D2Eint(tok) => ()
+| D2Ebtf(tok) => ()
 | D2Echr(tok) => ()
 | D2Eflt(tok) => ()
 | D2Estr(tok) => ()
@@ -189,6 +227,8 @@ d2e0.node() of
 //
 | D2Econ2(d2cs) => ()
 | D2Ecst2(d2cs) => ()
+//
+| D2Esym0(_, _) => ()
 //
 | D2Esapp
   (d2e1, s2es) =>
@@ -203,11 +243,25 @@ d2e0.node() of
   val () = tread12_dtapparg(s2es)
   }
 | D2Edapp
-  (d2e1, npf, d2es) =>
+  (d2e1, npf2, d2es) =>
   {
   val () = tread12_d2exp(d2e1)
   val () = tread12_d2explst(d2es)
   }
+//
+| D2Edtsel
+  (lab1,
+   dpis, npf2, opt3) =>
+  {
+    val () =
+    (
+    case+ opt3 of
+    | None() => ()
+    | Some(d2es) =>
+        tread12_d2explst(d2es)
+      // end of [Some]
+    )
+  } (* end of [D2Edtsel] *)
 //
 | D2Eif0
   (d2e1, d2e2, opt3) =>
@@ -226,27 +280,70 @@ d2e0.node() of
 *)
   }
 //
-| D2Elet(d2cs, d2e1) =>
+| D2Elet
+  (d2cs, d2e1) =>
   {
     val () =
     tread12_d2eclist(d2cs)
     val () = tread12_d2exp(d2e1)
   }
-| D2Ewhere(d2e1, d2cs) =>
+| D2Ewhere
+  (d2e1, d2cs) =>
   {
     val () =
     tread12_d2eclist(d2cs)
     val () = tread12_d2exp(d2e1)
   }
 //
-| D2Eassgn(d2e1, d2e2) =>
+| D2Eseqn
+  (d2es, d2e1) =>
+  {
+    val () =
+    tread12_d2explst(d2es)
+    val () = tread12_d2exp(d2e1)
+  }
+//
+| D2Etuple
+  (knd0,
+   npf1, d2es) =>
+  {
+    val () =
+    tread12_d2explst(d2es)
+  }
+//
+| D2Eassgn
+  (d2e1, d2e2) =>
   {
     val () = tread12_d2exp(d2e1)
     val () = tread12_d2exp(d2e2)
   }
 //
+| D2Elam
+  ( knd0, f2as,
+    tres, arrw, body) =>
+  {
+//
+    val () =
+    tread12_f2arglst(f2as)
+//
+    val () = tread12_d2exp(body)
+//
+  }
+| D2Efix
+  ( knd0,
+    d2v0, f2as,
+    tres, arrw, body) =>
+  {
+//
+    val () =
+    tread12_f2arglst(f2as)
+//
+    val () = tread12_d2exp(body)
+//
+  }
+//
 | D2Etry
-  (knd0, d2e1, dcls) =>
+  ( knd0, d2e1, dcls ) =>
   {
   val () = tread12_d2exp(d2e1)
 (*
@@ -256,13 +353,35 @@ d2e0.node() of
 //
 | D2Eaddr(d2e1) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
+    val () = tread12_d2exp(d2e1)
   }
 | D2Efold(d2e1) =>
   {
-    val () =
-    tread12_d2exp(d2e1)
+    val () = tread12_d2exp(d2e1)
+  }
+| D2Efree(d2e1) =>
+  {
+    val () = tread12_d2exp(d2e1)
+  }
+//
+| D2Eeval(d2e1) =>
+  {
+    val () = tread12_d2exp(d2e1)
+  }
+//
+| D2Eraise(d2e1) =>
+  {
+    val () = tread12_d2exp(d2e1)
+  }
+//
+| D2Elazy(d2e1) =>
+  {
+    val () = tread12_d2exp(d2e1)
+  }
+| D2Ellazy(d2e1, d2es) =>
+  {
+    val () = tread12_d2exp(d2e1)
+    val () = tread12_d2explst(d2es)
   }
 //
 | D2Eanno(d2e1, s2e2) =>
@@ -278,7 +397,11 @@ d2e0.node() of
     val () =
     trerr12_add(TRERR12d2exp(d2e0))
   in
-    prerrln!(loc0, ": TRERR12(d2exp): ", d2e0);
+    prerrln!
+    ( loc0, ": ***TRERR12***");
+    prerrln!
+    ( loc0
+    , ": TRERR12(D2Enone1): d3exp-error: ", d2e0);
   end // end of [D1Enone1]
 //
 | _(* rest-of-d2exp *) =>
@@ -411,9 +534,18 @@ d2cl.node() of
     tread12_d2ecl(d2c1)
   }
 //
+| D2Clocal(head, body) =>
+  {
+    val () =
+    tread12_d2eclist(head)
+    val () =
+    tread12_d2eclist(body)
+  } (* end of [D2Clocal] *)
+//
 | D2Cinclude
   ( tok
-  , src, knd, fopt, body) =>
+  , src, knd
+  , fopt, body) =>
   {
     val () =
     (
@@ -426,6 +558,8 @@ d2cl.node() of
     )
   }
 //
+| D2Cstaload _ => ()
+//
 | D2Cstacst0(s2c, s2t) =>
   {
     val () = tread12_s2cst(s2c)
@@ -435,13 +569,11 @@ d2cl.node() of
 | D2Csexpdef(s2c, def) =>
   {
 (*
-    val
-    def =
+    val def =
     s2cst_get_def(s2c)
-    val () =
+    val ( ) =
     assertloc(isneqz(def))
-    val
-    def = unsome(def)
+    val def = unsome(def)
 *)
 //
     val () = tread12_s2exp(def)
@@ -476,22 +608,31 @@ d2cl.node() of
 //
   }
 //
+| D2Cabsopen
+  (knd, is2c) =>
+  {
+(*
+    val () =
+    println!
+    ("tread12_d2ecl: D2Cabsopen: is2c = ", is2c)
+*)
+  }
 | D2Cabsimpl
-  (knd, scs, def) =>
+  (knd, is2c, def1) =>
   {
 //
-    val () = tread12_s2exp(def)
+    val () = tread12_s2exp(def1)
 //
 (*
     val () =
     println!
-    ("tread12_d2ecl: D2Cabsimpl: scs = ", scs)
+    ("tread12_d2ecl: D2Cabsimpl: is2c = ", is2c)
     val () =
     println!
-    ("tread12_d2ecl: D2Cabsimpl: def = ", def)
+    ("tread12_d2ecl: D2Cabsimpl: def1 = ", def1)
     val () =
     println!
-    ("tread12_d2ecl: D2Cabsimpl: def.sort = ", def.sort())
+    ("tread12_d2ecl: D2Cabsimpl: def1.sort = ", def1.sort())
 *)
 //
   }
@@ -523,6 +664,68 @@ d2cl.node() of
     println!
     ("tread12_d2ecl: D2Cfundecl: f2ds = ", f2ds)
 *)
+  }
+//
+| D2Cvaldecl
+  (knd, mopt, v2ds) =>
+  {
+    val () = tread12_v2aldeclist(v2ds)
+  }
+| D2Cvardecl
+  (knd, mopt, v2ds) =>
+  {
+    val () = tread12_v2ardeclist(v2ds)
+  }
+//
+| D2Cimpdecl1
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, ti2s
+  , f2as, res1, d2e2) =>
+  {
+(*
+    val () =
+    tread12_sq2arglst(sqas)
+*)
+    val () =
+    tread12_tq2arglst(tqas)
+(*
+    val () =
+    tread12_ti2arglst(ti2s)
+*)
+//
+    val () =
+    tread12_f2arglst( f2as )
+//
+    val () =
+    tread12_effs2expopt(res1)
+    val () = tread12_d2exp(d2e2)
+//
+  }
+| D2Cimpdecl2
+  ( knd, mopt
+  , sqas, tqas
+  , id2c, ti2s
+  , f2as, res1, d2e2) =>
+  {
+(*
+    val () =
+    tread12_sq2arglst(sqas)
+*)
+    val () =
+    tread12_tq2arglst(tqas)
+(*
+    val () =
+    tread12_ti2arglst(ti2s)
+*)
+//
+    val () =
+      tread12_f2arglst(f2as)
+    // end of [val]
+//
+    val () =
+    tread12_effs2expopt(res1)
+    val () = tread12_d2exp(d2e2)
   }
 //
 | D2Cdynconst
@@ -623,17 +826,84 @@ list_foreach$fwork<tq2arg><env>(tq2a, env) = tread12_tq2arg(tq2a)
 //
 implement
 //{}(*tmp*)
+tread12_v2aldecl
+  (v2d0) =
+{
+//
+  val () =
+  tread12_d2pat(rcd.pat)
+//
+  val () =
+  tread12_d2expopt(rcd.def)
+  val () =
+  tread12_s2expopt(rcd.wtp)
+//
+} where
+{
+//
+  val+V2ALDECL(rcd) = v2d0
+//
+} (* end of [tread12_v2aldecl] *)
+//
+implement
+//{}(*tmp*)
+tread12_v2aldeclist(v2ds) =
+(
+list_foreach<v2aldecl>(v2ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v2aldecl><env>(v2d, env) = tread12_v2aldecl(v2d)
+} (* end of [tread12_v2aldeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread12_v2ardecl
+  (v2d0) =
+{
+//
+  val () =
+  tread12_d2expopt(rcd.ini)
+  val () =
+  tread12_s2expopt(rcd.res)
+//
+} where
+{
+//
+  val+V2ARDECL(rcd) = v2d0
+//
+} (* end of [tread12_v2ardecl] *)
+//
+implement
+//{}(*tmp*)
+tread12_v2ardeclist(v2ds) =
+(
+list_foreach<v2ardecl>(v2ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v2ardecl><env>(v2d, env) = tread12_v2ardecl(v2d)
+} (* end of [tread12_v2ardeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 tread12_f2undecl
   (f2d0) =
 {
+//
   val () =
   tread12_d2expopt(rcd.def)
+  val () =
+  tread12_s2expopt(rcd.wtp)
+//
   val () =
   tread12_f2arglst(rcd.arg)
   val () =
   tread12_effs2expopt(rcd.res)
-//
-  val () = tread12_s2expopt(rcd.wtp)
 //
 } where
 {
@@ -650,7 +920,7 @@ list_foreach<f2undecl>(f2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f2undecl><env>(f2ds, env) = tread12_f2undecl(f2ds)
+list_foreach$fwork<f2undecl><env>(f2d, env) = tread12_f2undecl(f2d)
 } (* end of [tread12_f2undeclist] *)
 //
 (* ****** ****** *)
@@ -672,7 +942,7 @@ val
 xerrs = the_trerr12lst_get()
 //
 in
-  the_trerr12lst_set(list_cons(xerr, xerrs))
+the_trerr12lst_set(list_cons(xerr, xerrs))
 end // end of [trerr12_add]
 
 in (* in-of-local *)
@@ -691,10 +961,11 @@ the_trerr12lst_set(xs) = the_trerr12lst[] := xs
 end // end of [local]
 //
 implement
-tread12_main(d2cs) = let
+tread12_program(prog) =
+let
 //
 val () =
-tread12_d2eclist(d2cs)
+tread12_d2eclist(prog)
 val
 xerrs = the_trerr12lst_get()
 val
@@ -710,8 +981,8 @@ then
 val () =
 prerrln!
 ("\
-tread12_main: \
-nxerr = ", nxerr)
+tread12_program: \
+nxerr = ", nxerr )
 //
 val () =
 if
@@ -719,16 +990,16 @@ if
 then
 prerrln!
 ("\
-tread12_main: \
-there is one trerr12-error!")
+tread12_program: \
+there is one trans12-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
 ("\
-tread12_main: \
-there are some trerr12-errors!")
+tread12_program: \
+there are some trans12-errors!")
 //
 val () =
 (
@@ -742,12 +1013,12 @@ else
 val () =
 prerrln!
 ("\
-tread12_main: \
-there are none of trerr12-errors!")
+tread12_program: \
+there are none of trans12-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread12_main]
+end // end of [tread12_program]
 
 end // end of [local]
 

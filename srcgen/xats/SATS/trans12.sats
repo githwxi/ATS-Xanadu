@@ -451,6 +451,8 @@ the_sexpenv_add_cstlst(s2cs: s2cstlst): void
 fun
 the_sexpenv_add_varlst(s2vs: s2varlst): void
 fun
+the_sexpenv_add_tqalst(tqas: tq2arglst): void
+fun
 the_sexpenv_add_varlstlst(svss: s2varlstlst): void
 //
 fun
@@ -858,11 +860,16 @@ trans12_datypelst
 fun
 trans12_datcon
 ( s2c0: s2cst
+, tqas: tq2arglst
 , s2varlstlst, d1atcon): d2con
 fun
 trans12_datconlst
 ( s2c0: s2cst
 , s2varlstlst, d1atconlst): d2conlst
+//
+fun
+trans12_tag_d2conlst
+(s2c0: s2cst, d2cs: d2conlst): void
 //
 (* ****** ****** *)
 //

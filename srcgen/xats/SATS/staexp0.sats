@@ -424,8 +424,12 @@ typedef t0marglst = List0(t0marg)
 //
 datatype
 g0exp_node =
+//
 | G0Eid of (g0eid)
+//
 | G0Eint of (t0int)
+| G0Estr of (t0str)
+//
 | G0Eapps of g0explst
 | G0Elist of
   (token, g0explst, token) (*temp*)
@@ -494,7 +498,7 @@ g0marg_make_node
 datatype
 sort0_node =
 //
-| S0Tid of (s0tid)
+| S0Tid0 of (s0tid)
 //
 | S0Tint of (t0int)
 //
@@ -702,10 +706,8 @@ s0marg_make_node
 //
 datatype
 t0arg_node =
-(*
-  | T0ARGnone of token
-*)
-  | T0ARGsome of (sort0, tokenopt)
+| T0ARGnone of token
+| T0ARGsome of (sort0, tokenopt)
 //
 datatype
 t0marg_node =

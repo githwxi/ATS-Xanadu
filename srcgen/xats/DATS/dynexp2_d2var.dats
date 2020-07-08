@@ -53,7 +53,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#define ND2VAR 1*1024
+#define ND2VAR 4*1024
 
 (* ****** ****** *)
 

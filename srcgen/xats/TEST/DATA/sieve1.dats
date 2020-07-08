@@ -1,8 +1,8 @@
 (* ****** ****** *)
 
 #staload
-"./../xanadu\
-/prelude/DATS/stream.dats"
+"prelude\
+/DATS/CATS/Xint/runtime.dats"
 
 (* ****** ****** *)
 

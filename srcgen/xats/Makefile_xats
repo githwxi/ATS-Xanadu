@@ -70,7 +70,10 @@ tread23.sats \
 trans33.sats \
 tread33.sats \
 trans3t.sats \
-tread3t.sats \
+trans3x.sats \
+tread3x.sats \
+intrep0.sats \
+tcomp30.sats \
 
 SRCDATS := \
 basics.dats \
@@ -135,15 +138,26 @@ tread12_staexp.dats \
 tread12_dynexp.dats \
 dynexp3.dats \
 dynexp3_print.dats \
+dynexp3_util0.dats \
 trans23_util0.dats \
 trans23_dynexp.dats \
 tread23_dynexp.dats \
 trans33_util0.dats \
+trans33_envmap.dats \
 trans33_dynexp.dats \
 tread33_dynexp.dats \
 trans3t_envmap.dats \
 trans3t_dynexp.dats \
-tread3t_dynexp.dats \
+trans3x_envmap.dats \
+trans3x_dynexp.dats \
+tread3x_dynexp.dats \
+intrep0.dats \
+intrep0_print.dats \
+intrep0_jsoniz.dats \
+intrep0_statyp.dats \
+intrep0_dynexp.dats \
+tcomp30_statyp.dats \
+tcomp30_dynexp.dats \
 
 ######
 

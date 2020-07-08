@@ -245,6 +245,36 @@ d0e0.node() of
     synread_d0explst(d0es)
   }
 //
+| D0Esqarg
+  (tbeg, s0es, tend) =>
+  {
+(*
+    val () =
+    synread_LBRACE(tbeg)
+*)
+    val () =
+    synread_RBRACE(tend)
+    val () =
+    synread_s0explst(s0es)
+  }
+| D0Etqarg
+  (tbeg, s0es, tend) =>
+  {
+(*
+    val () =
+    synread_LT(tbeg)
+*)
+    val () =
+    synread_s0explst(s0es)
+    val () =
+    (
+    case+
+    tend.node() of
+    | T_LTGT() => ()
+    | _(*else*) => synread_GT(tend)
+    ) : void // end of [val]
+  }
+//
 | D0Eparen
   (tbeg, d0es, dend) =>
   {
@@ -302,6 +332,8 @@ d0e0.node() of
 //
     val () =
     synread_d0eclist(d0cs)
+    val () =
+    synread_ifguardlst(d0cs)
 //
     val () =
     (
@@ -531,6 +563,7 @@ synread_d0clau
 (
 case+
 d0cl.node() of
+//
 | D0CLAUgpat(d0gp) =>
   {
     val () =
@@ -586,54 +619,93 @@ list_foreach$fwork<d0clau><env>(dcl, env) = synread_d0clau(dcl)
 
 implement
 //{}(*tmp*)
+synread_abstdf0
+  (def) =
+(
+case+ def of
+| ABSTDF0some() => ()
+| ABSTDF0lteq(tok, s0e) =>
+  {
+(*
+    val () = synread_LTEQ(tok)
+*)
+    val () = synread_s0exp(s0e)
+  }
+| ABSTDF0eqeq(tok, s0e) =>
+  {
+(*
+    val () = synread_EQEQ(tok)
+*)
+    val () = synread_s0exp(s0e)
+  }
+) (* end of [synread_abstdf0] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
 synread_d0ecl
-  (d0c0) = let
+  (d0cl) = let
 //
-val loc0 = d0c0.loc((*void*))
+val loc0 = d0cl.loc((*void*))
 //
 (*
 val () =
 println!
-("synread_d0ecl: d0c0 = ", d0c0)
+("synread_d0ecl: loc0 = ", loc0)
+val () =
+println!
+("synread_d0ecl: d0cl = ", d0cl)
 *)
 //
 in
 //
 case+
-d0c0.node() of
+d0cl.node() of
 //
 | D0Cnonfix
   (tok, ids) =>
   {
-    val () =
-    synread_i0dntlst(ids)
+  val () =
+  synread_i0dntlst(ids)
   }
 //
 | D0Cfixity
   (tok, ids, opt) =>
   {
-    val () =
-    synread_i0dntlst(ids)
+  val () =
+  synread_i0dntlst(ids)
 //
-    val () =
-    (
-      synread_precopt(opt)
-    ) (* end of [val] *)
+  val () =
+  (
+    synread_precopt(opt)
+  ) (* end of [val] *)
   }
 //
 | D0Cstatic
-  (tok, d0c) =>
+  (tok, dcl1) =>
   {
-    val () = synread_d0ecl(d0c)
+    val () =
+    (
+      synread_d0ecl(dcl1)
+    )
   }
 | D0Cextern
-  (tok, d0c) =>
+  (tok, dcl1) =>
   {
-    val () = synread_d0ecl(d0c)
+    val () =
+    (
+      synread_d0ecl(dcl1)
+    )
   }
 //
+| D0Cinclude
+  (tok, d0e(*src*)) => ()
+| D0Cstaload
+  (tok, d0e(*src*)) => ()
+//
 | D0Cabssort
-  (tok, tid) =>
+  (tok, tid(*name*)) =>
   {
 (*
     val () =
@@ -655,7 +727,6 @@ d0c0.node() of
     val () = synread_sort0(s0t0)
   }
 //
-//
 | D0Csortdef
   (tok, tid, teq, def) =>
   {
@@ -672,16 +743,79 @@ d0c0.node() of
   ( tok, sid
   , arg, res, teq, def) =>
   {
+//
 (*
     val () =
-      synread_SEXPDEF(tok)
-    // end of [val]
+    synread_SEXPDEF(tok)
 *)
-    val () = synread_EQ(teq)  
-    val () = synread_s0eid(sid)
+//
+    val () =
+      synread_EQ(teq)  
+    val () =
+      synread_s0eid(sid)
+    val () =
+      synread_s0marglst(arg)
+    val () =
+      synread_sort0opt(res)
+//
     val () = synread_s0exp(def)
-    val () = synread_sort0opt(res)
-    val () = synread_s0marglst(arg)
+//
+  }
+//
+| D0Cabstype
+  ( tok, sid
+  , arg, res, def) =>
+  {
+//
+(*
+    val () =
+    synread_ABSTYPE(tok)
+*)
+//
+    val () =
+      synread_s0eid(sid)
+    val () =
+      synread_t0marglst(arg)
+    val () =
+      synread_sort0opt(res)
+//
+    val () = synread_abstdf0(def)
+//
+  }
+//
+| D0Cabsopen(tok, sqid) =>
+  {
+(*
+    val () =
+    synread_ABSOPEN(tok)
+*)
+    val () = synread_sq0eid(sqid)
+  }
+//
+| D0Csymload
+  ( tok, sym0
+  , twth, dqid, topt) =>
+  {
+(*
+    val () =
+    synread_SYMLOAD(tok)
+*)
+    val () = synread_WITH(twth)
+    val () = synread_s0ymb(sym0)
+    val () = synread_dq0eid(dqid)
+  }
+//
+| D0Cfundecl
+  (tok, mopt, tqas, f0ds) =>
+  {
+(*
+    val () =
+    synread_FUN(tok)
+*)
+    val () =
+    synread_tq0arglst(tqas)
+    val () =
+    synread_f0undeclist(f0ds)
   }
 //
 | D0Cvaldecl
@@ -706,29 +840,40 @@ d0c0.node() of
     synread_v0ardeclist(v0ds)
   }
 //
-| D0Cfundecl
-  (tok, mopt, tqas, f0ds) =>
+| D0Cimpdecl
+  ( tok, mopt
+  , sqas, tqas
+  , dqid, tias, f0as
+  , res0, teq1, body) =>
   {
 (*
     val () =
-    synread_FUN(tok)
+    synread_sq0arglst(sqas)
 *)
     val () =
     synread_tq0arglst(tqas)
+(*
     val () =
-    synread_f0undeclist(f0ds)
+    synread_ti0arglst(tias)
+*)
+    val () =
+      synread_f0arglst(f0as)
+    val () =
+    synread_effs0expopt(res0)
+    val () = synread_EQ(teq1)
+    val () = synread_d0exp(body)
   }
 //
-| D0Csymload
-  (tok, sym0, twth, dqid, topt) =>
+| D0Cexcptcon
+  (tok, d0cs) =>
   {
 (*
     val () =
-    synread_SYMLOAD(tok)
+    synread_EXCEPTION(tok)
 *)
-    val () = synread_WITH(twth)
-    val () = synread_s0ymb(sym0)
-    val () = synread_dq0eid(dqid)
+    val () =
+      synread_d0atconlst(d0cs)
+    // end of [val]
   }
 //
 | D0Cdynconst
@@ -736,31 +881,47 @@ d0c0.node() of
   {
 (*
     val () =
-    synread_FUN(tok)
+      synread_FUN/VAL(tok)
+    // end of [val]
 *)
-    val () = synread_tq0arglst(tqas)
-    val () = synread_d0cstdeclist(d0cs)
+    val () =
+      synread_tq0arglst(tqas)
+    val () =
+      synread_d0cstdeclist(d0cs)
+  }
+//
+| D0Clocal
+  ( tbeg, head
+  , topt, body, tend) =>
+  {
+//
+    val () = synread_d0eclist(head)
+    val () = synread_ifguardlst(head)
+//
+    val () = synread_d0eclist(body)
+    val () = synread_ifguardlst(body)
+//
   }
 //
 | D0Cnone(tok) =>
   let
     val () =
-    synerr_add(SYNERRd0ecl(d0c0))
+    synerr_add(SYNERRd0ecl(d0cl))
   in
-    prerrln!(loc0, ": SYNERR(d0ecl): ", d0c0);
+    prerrln!(loc0, ": SYNERR(d0ecl): ", d0cl);
   end // end of [D0Cnone]
 //
 | D0Ctokerr(tok) =>
   let
     val () =
-    synerr_add(SYNERRd0ecl(d0c0))
+    synerr_add(SYNERRd0ecl(d0cl))
   in
-    prerrln!(loc0, ": SYNERR(d0ecl): ", d0c0);
+    prerrln!(loc0, ": SYNERR(d0ecl): ", d0cl);
   end // end of [D0Cnone]
 //
 | _(* rest-of-d0ecl *) =>
   (
-    prerrln!(loc0, ": synread_d0ecl: d0c0 = ", d0c0)
+    prerrln!(loc0, ": synread_d0ecl: d0cl = ", d0cl)
   )
 //
 end // end of [synread_d0ecl]
@@ -794,6 +955,8 @@ d0eclseq_WHERE
 //
 val () =
 synread_d0eclist(d0cs)
+val () =
+synread_ifguardlst(d0cs)
 //
 (*
 val () =
@@ -910,15 +1073,15 @@ f0a0.node() of
     (tbeg, s0qs, tend) =>
   {
     val () = synread_LBRACE(tbeg)
-    val () = synread_RBRACE(tend)
     val () = synread_s0qualst(s0qs)
+    val () = synread_RBRACE(tend)
   }
 | F0ARGsome_met
     (tbeg, s0es, tend) =>
   {
-    val () = synread_LBRACE(tbeg)
-    val () = synread_RBRACE(tend)
+    val () = synread_DOTLT( tbeg )
     val () = synread_s0explst(s0es)
+    val () = synread_GTDOT( tend )
   }
 //
 ) (* list_foreach$fwork *)
@@ -1273,6 +1436,217 @@ end // end of [let]
 }
 //
 (* ****** ****** *)
+//
+implement
+synread_ifguardlst
+  (d0cs) =
+(
+  auxmain
+  (d0cs, list_vt_nil())
+) where
+{
+//
+fun
+auxerr
+(x0: d0ecl): void =
+{
+val () =
+synerr_add(SYNERRifgua(x0))
+val () =
+prerr(x0.loc())
+val () =
+prerrln!(": SYNERR(ifgua): ", x0)
+} (* end of [auxerr] *)
+//
+fun
+auxfree
+( xs
+: d0eclist_vt): void =
+(
+case+ xs of
+|
+~list_vt_nil() => ()
+|
+~list_vt_cons(x0, xs) =>
+ let
+ val () = auxerr(x0) in auxfree(xs)
+ end
+)
+//
+fun
+auxmain
+( xs
+: d0eclist
+, ys
+: d0eclist_vt): void =
+(
+//
+case+ xs of
+|
+list_nil() =>
+(
+  auxfree(ys)
+)
+|
+list_cons(x0, xs) =>
+(
+case+
+x0.node() of
+| D0Celse _ =>
+  auxmain(xs, ys) where
+  {
+    val ys = aux_else(x0, ys)
+  }
+| D0Cifdec _ =>
+  auxmain(xs, ys) where
+  {
+    val ys = aux_ifdec(x0, ys)
+  }
+| D0Celsif _ =>
+  auxmain(xs, ys) where
+  {
+    val ys = aux_elsif(x0, ys)
+  }
+| D0Cendif _ =>
+  auxmain(xs, ys) where
+  {
+    val ys = aux_endif(x0, ys)
+  }
+//
+| _(*non-ifguard*) => auxmain(xs, ys)
+//
+) (* list_cons *)
+//
+) (* end of [auxmain] *)
+//
+and
+aux_else
+( x0
+: d0ecl
+, ys
+: d0eclist_vt): d0eclist_vt =
+(
+case+ ys of
+| @
+list_vt_nil() =>
+let
+  val () = auxerr(x0)
+in
+  let prval () = fold@(ys) in ys end
+end
+| @
+list_vt_cons(y0, _) =>
+(
+case+
+y0.node() of
+| D0Cifdec _ =>
+  let
+    prval () = fold@(ys)
+  in
+    list_vt_cons(x0, ys)
+  end
+| D0Celsif _ =>
+  let
+    prval () = fold@(ys)
+  in
+    list_vt_cons(x0, ys)
+  end
+| _(* non-D0Cifdec *) => 
+  let
+    val () = auxerr(x0)
+  in
+    let prval () = fold@(ys) in ys end
+  end
+)
+) (* end of [aux_else] *)
+//
+and
+aux_ifdec
+( x0
+: d0ecl
+, ys
+: d0eclist_vt
+)
+: d0eclist_vt = list_vt_cons(x0, ys)
+//
+and
+aux_elsif
+( x0
+: d0ecl
+, ys
+: d0eclist_vt) : d0eclist_vt =
+(
+case+ ys of
+| @
+list_vt_nil() =>
+let
+  val () = auxerr(x0)
+in
+  let prval () = fold@(ys) in ys end
+end
+| @
+list_vt_cons(y0, _) =>
+(
+case+
+y0.node() of
+| D0Cifdec _ =>
+  let
+    prval () = fold@(ys)
+  in
+    list_vt_cons(x0, ys)
+  end
+| D0Celsif _ =>
+  let
+    prval () = fold@(ys)
+  in
+    list_vt_cons(x0, ys)
+  end
+| _(* non-D0Cifdec *) => 
+  let
+    val () = auxerr(x0)
+  in
+  let prval () = fold@(ys) in ys end
+  end
+)
+) (* end of [aux_elsif] *)
+//
+and
+aux_endif
+( x0
+: d0ecl
+, ys
+: d0eclist_vt): d0eclist_vt =
+(
+case+ ys of
+| ~
+list_vt_nil() =>
+let
+  val () =
+  auxerr(x0) in list_vt_nil()
+end
+| ~
+list_vt_cons(y0, ys) =>
+(
+case+ y0.node() of
+| D0Celse _ =>
+  (
+    aux_endif(x0, ys)
+  )
+//
+| D0Cifdec _ => ys
+| D0Celsif _ => aux_endif(x0, ys)
+//
+| _(* non-D0Cifdec *) => 
+  let
+  val () =
+  auxerr(x0) in list_vt_cons(y0, ys)
+  end
+)
+) (* end of [aux_endif] *)
+//
+} (* end of [synread_ifguardlst] *)
+//
+(* ****** ****** *)
 
 local
 
@@ -1310,16 +1684,20 @@ the_synerrlst_set(xs) = the_synerrlst[] := xs
 end // end of [local]
 //
 implement
-synread_main(d0cs) = let
+synread_program(d0cs) =
+let
 //
 val () =
 synread_d0eclist(d0cs)
+val () =
+synread_ifguardlst(d0cs)
+//
 val
 xerrs = the_synerrlst_get()
 val
 nxerr = list_length<synerr>(xerrs)
 //
-in
+in(* in-of-let *)
 //
 if
 (nxerr > 0)
@@ -1328,22 +1706,22 @@ then
 //
 val () =
 prerrln!
-("synread_main: nxerr = ", nxerr)
+("\
+synread_program: \
+nxerr = ", nxerr )
 //
 val () =
 if
 (nxerr = 1)
 then
 prerrln!
-("synread_main: there is one synerr!")
+("synread_program: there is one syntax0-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-(
-"synread_main: there are some synerrs!"
-)
+("synread_program: there are some syntax0-errors!")
 //
 val () =
 ($raise(XATSOPT_SYNERR_EXN(*void*))): void
@@ -1354,11 +1732,11 @@ else
 //
 val () =
 prerrln!
-("synread_main: there are no synerrs!")
+("synread_program: there are none of syntax0-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [synread_main]
+end // end of [synread_program]
 
 end // end of [local]
 

@@ -298,7 +298,7 @@ in
 //
 case+
 s0t0.node() of
-| S0Tid(id0) =>
+| S0Tid0(id0) =>
   synread_s0tid(id0)
 //
 | S0Tint(int) =>
@@ -361,8 +361,6 @@ implement
 synread_s0arg
   (s0a0) = let
 //
-val loc0 = s0a0.loc()
-//
 (*
 val () =
 println!
@@ -381,6 +379,8 @@ s0a0.node() of
   }
 | S0ARGnone(tok) =>
   let
+    val
+    loc0 = s0a0.loc()
     val () =
     synerr_add(SYNERRs0arg(s0a0))
   in
@@ -395,8 +395,6 @@ implement
 //{}(*tmp*)
 synread_s0marg
   (s0ma) = let
-//
-val loc0 = s0ma.loc()
 //
 (*
 val () =
@@ -419,6 +417,8 @@ s0ma.node() of
   }
 | S0MARGnone(tok) =>
   let
+    val
+    loc0 = s0ma.loc()
     val () =
     synerr_add(SYNERRs0marg(s0ma))
   in
@@ -432,26 +432,125 @@ end // end of [synread_s0marg]
 implement
 //{}(*tmp*)
 synread_s0arglst
-  (s0es) =
+  (s0as) =
 (
-list_foreach<s0arg>(s0es)
+list_foreach<s0arg>(s0as)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0arg><env>(s0e, env) = synread_s0arg(s0e)
+list_foreach$fwork<s0arg><env>(s0a, env) = synread_s0arg(s0a)
 } (* end of [synread_s0arglst] *)
 //
 implement
 //{}(*tmp*)
 synread_s0marglst
-  (s0es) =
+  (smas) =
 (
-list_foreach<s0marg>(s0es)
+list_foreach<s0marg>(smas)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0marg><env>(s0e, env) = synread_s0marg(s0e)
+list_foreach$fwork<s0marg><env>(sma, env) = synread_s0marg(sma)
 } (* end of [synread_s0marglst] *)
+//
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_t0arg
+  (t0a0) = let
+//
+(*
+val () =
+println!
+("synread_t0arg: t0a0 = ", t0a0)
+*)
+//
+in
+//
+case+
+t0a0.node() of
+| T0ARGsome
+  (s0t, opt) =>
+  {
+    val () = synread_sort0(s0t)
+(*
+    val () = synread_tokenopt(opt)
+*)
+  }
+| T0ARGnone(tok) =>
+  let
+    val
+    loc0 = t0a0.loc()
+    val () =
+    synerr_add(SYNERRt0arg(t0a0))
+  in
+    prerrln!(loc0, ": SYNERR(t0arg): ", tok);
+  end // end of [T0ARGnone]
+//
+end // end of [synread_t0arg]
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_t0marg
+  (t0ma) = let
+//
+(*
+val () =
+println!
+("synread_t0marg: t0ma = ", t0ma)
+*)
+//
+in
+//
+case+
+t0ma.node() of
+| T0MARGlist
+  (tbeg, t0as, tend) =>
+  {
+    val () = synread_LPAREN(tbeg)
+    val () = synread_RPAREN(tend)
+    val () = synread_t0arglst(t0as)
+  }
+| T0MARGnone(tok) =>
+  let
+    val
+    loc0 = t0ma.loc()
+    val () =
+    synerr_add(SYNERRt0marg(t0ma))
+  in
+    prerrln!(loc0, ": SYNERR(t0marg): ", tok);
+  end // end of [T0MARGnone]
+//
+end // end of [synread_t0marg]
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_t0arglst
+  (t0as) =
+(
+list_foreach<t0arg>(t0as)
+) where
+{
+implement(env)
+list_foreach$fwork<t0arg><env>(t0a, env) = synread_t0arg(t0a)
+} (* end of [synread_t0arglst] *)
+//
+implement
+//{}(*tmp*)
+synread_t0marglst
+  (tmas) =
+(
+list_foreach<t0marg>(tmas)
+) where
+{
+implement(env)
+list_foreach$fwork<t0marg><env>(tma, env) = synread_t0marg(tma)
+} (* end of [synread_t0marglst] *)
 //
 (* ****** ****** *)
 //
@@ -471,8 +570,6 @@ s0q0.node() of
   }
 )
 //
-(* ****** ****** *)
-//
 implement
 //{}(*tmp*)
 synread_s0qualst
@@ -484,6 +581,50 @@ list_foreach<s0qua>(s0qs)
 implement(env)
 list_foreach$fwork<s0qua><env>(s0q, env) = synread_s0qua(s0q)
 } (* end of [synread_s0qualst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_s0uni
+  (s0u0) =
+(
+case+
+s0u0.node() of
+| S0UNIsome
+  ( tbeg
+  , s0qs, tend) =>
+  {
+(*
+    val () =
+    synread_LBRACE(tbeg)
+*)
+    val () =
+    synread_s0qualst(s0qs)
+    val () = synread_RBRACE(tend)
+  }
+| S0UNInone(tok) =>
+  let
+    val
+    loc0 = s0u0.loc()
+    val () =
+    synerr_add(SYNERRs0uni(s0u0))
+  in
+    prerrln!(loc0, ": SYNERR(s0uni): ", tok);
+  end // end of [S0UNInone]
+)
+//
+implement
+//{}(*tmp*)
+synread_s0unilst
+  (s0us) =
+(
+list_foreach<s0uni>(s0us)
+) where
+{
+implement(env)
+list_foreach$fwork<s0uni><env>(s0u, env) = synread_s0uni(s0u)
+} (* end of [synread_s0unilst] *)
 //
 (* ****** ****** *)
 
@@ -783,6 +924,39 @@ def0.node() of
   } (* end of [S0RTDEFsbst] *)
 )
 
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_d0atcon
+  (d0c0) =
+(
+case+
+d0c0.node() of
+|
+D0ATCON
+( s0us
+, name, s0es, args) =>
+{
+val () = synread_d0eid(name) // dyncon
+val () = synread_s0unilst(s0us) // quanty
+val () = synread_s0explst(s0es) // indexes
+val () = synread_s0expopt(args) // arguments
+}
+)
+//
+implement
+//{}(*tmp*)
+synread_d0atconlst
+  (d0cs) =
+(
+list_foreach<d0atcon>(d0cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d0atcon><env>(d0c, env) = synread_d0atcon(d0c)
+} (* end of [synread_d0atconlst] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_synread_staexp.dats] *)

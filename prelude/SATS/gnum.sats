@@ -60,15 +60,26 @@ g_u(u0: uint): (a)
 //
 fun
 <a:t0>
-g_pred(x: a): a
+g_sf(f0: sflt): (a)
+fun
+<a:t0>
+g_df(f0: dflt): (a)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+g_neg(x: a): a
+fun
+<a:t0>
+g_abs(x: a): a
+//
 fun
 <a:t0>
 g_succ(x: a): a
-//
-#symload
-pred with g_pred of 000
-#symload
-succ with g_succ of 000
+fun
+<a:t0>
+g_pred(x: a): a
 //
 (* ****** ****** *)
 //
@@ -78,9 +89,6 @@ g_add(x: a, y: a): a
 fun
 <a:t0>
 g_sub(x: a, y: a): a
-//
-#symload + with g_add of 000
-#symload - with g_sub of 000
 //
 (* ****** ****** *)
 //
@@ -94,9 +102,97 @@ fun
 <a:t0>
 g_mod(x: a, y: a): a
 //
-#symload * with g_mul of 000
-#symload / with g_div of 000
-#symload % with g_mod of 000
+(* ****** ****** *)
+//
+// HX:
+// For linear gnums
+//
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_0((*void*)): (a)
+fun
+<a:vt>
+gl_1((*void*)): (a)
+fun
+<a:vt>
+gl_2((*void*)): (a)
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_add00(x: ~a, y: ~a): a
+fun
+<a:vt>
+gl_add11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_sub00(x: ~a, y: ~a): a
+fun
+<a:vt>
+gl_sub11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_mul00(x: ~a, y: ~a): a
+fun
+<a:vt>
+gl_mul11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_div00(x: ~a, y: ~a): a
+fun
+<a:vt>
+gl_div11(x: !a, y: !a): a
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_mod00(x: ~a, y: ~a): a
+fun
+<a:vt>
+gl_mod11(x: !a, y: !a): a
+
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for gnum
+//
+(* ****** ****** *)
+//
+#symload
+neg with g_neg of 0101
+#symload
+abs with g_abs of 0101
+//
+(* ****** ****** *)
+//
+#symload
+succ with g_succ of 0101
+#symload
+pred with g_pred of 0101
+//
+(* ****** ****** *)
+//
+#symload - with g_neg of 0101
+//
+#symload + with g_add of 0102
+#symload - with g_sub of 0102
+//
+#symload * with g_mul of 0102
+#symload / with g_div of 0102
+#symload % with g_mod of 0102
 //
 (* ****** ****** *)
 

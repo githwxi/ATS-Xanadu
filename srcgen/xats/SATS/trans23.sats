@@ -32,10 +32,6 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#staload "./basics.sats"
-//
-(* ****** ****** *)
 
 #staload "./label0.sats"
 #staload "./locinfo.sats"
@@ -76,7 +72,15 @@ typedef effs2expopt = $S2E.effs2expopt
 (* ****** ****** *)
 //
 typedef d2var = $D2E.d2var
+typedef d2con = $D2E.d2con
 typedef d2cst = $D2E.d2cst
+typedef d2itm = $D2E.d2itm
+//
+typedef d2conlst = $D2E.d2conlst
+typedef d2cstlst = $D2E.d2cstlst
+typedef d2itmlst = $D2E.d2itmlst
+//
+(* ****** ****** *)
 //
 typedef d2pat = $D2E.d2pat
 typedef d2exp = $D2E.d2exp
@@ -91,6 +95,11 @@ typedef d2eclist = $D2E.d2eclist
 //
 (* ****** ****** *)
 
+typedef d2pitm = $D2E.d2pitm
+typedef d2pitmlst = $D2E.d2pitmlst
+
+(* ****** ****** *)
+
 typedef tq2arg = $D2E.tq2arg
 typedef ti2arg = $D2E.ti2arg
 typedef ti3arg = $D3E.ti3arg
@@ -98,23 +107,19 @@ typedef tq2arglst = $D2E.tq2arglst
 typedef ti2arglst = $D2E.ti2arglst
 
 (* ****** ****** *)
-
-typedef d2pitmlst = $D2E.d2pitmlst
-
-(* ****** ****** *)
-
+//
 typedef d3pat = $D3E.d3pat
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
-
+//
 typedef d3patlst = $D3E.d3patlst
 typedef f3arglst = $D3E.f3arglst
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
-
+//
 typedef d3explstopt = $D3E.d3explstopt
-
+//
 (* ****** ****** *)
 
 typedef d2gua = $D2E.d2gua
@@ -132,25 +137,31 @@ typedef d2claulst = $D2E.d2claulst
 typedef d3claulst = $D3E.d3claulst
 
 (* ****** ****** *)
+
+vtypedef d2conopt_vt = $D2E.d2conopt_vt
+vtypedef d2cstopt_vt = $D2E.d2cstopt_vt
+vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
+
+(* ****** ****** *)
 //
 fun
 trenv23_dvar: d2var -> void
 fun
-trenv23_dvar_dn
-  (d2v0: d2var, t2p0: t2ype): void
+trenv23_dvar_dntp
+(d2v0: d2var, t2p0: t2ype): void
 //
 (* ****** ****** *)
 //
 fun
 trans23_dpat: d2pat -> d3pat
 fun
-trans23_dpat_dn
+trans23_dpat_dntp
 (d2p0: d2pat, t2p0: t2ype): d3pat
 //
 fun
 trans23_dpatlst: d2patlst -> d3patlst
 fun
-trans23_dpatlst_dn
+trans23_dpatlst_dntp
 (ps: d2patlst, ts: t2ypelst): d3patlst
 //
 (* ****** ****** *)
@@ -170,14 +181,16 @@ fun
 trans23_dexpseq: d2explst -> d3explst
 //
 fun
-trans23_dexp_dn: (d2exp, t2ype) -> d3exp
+trans23_dexp_dntp
+(d2e0: d2exp, t2p0: t2ype): d3exp
 fun
-trans23_dexplst_dn: (d2explst, t2ype) -> d3explst
+trans23_dexplst_dntp
+(d2es: d2explst, t2p0: t2ype): d3explst
 //
 (* ****** ****** *)
 //
 fun
-trans23_dexp_dn
+trans23_dexp_dntp
   (d2e0: d2exp, t2p0: t2ype): (d3exp)
 //
 (* ****** ****** *)
@@ -190,17 +203,17 @@ trans23_dgualst: d2gualst -> d3gualst
 (* ****** ****** *)
 //
 fun
-trans23_dgpat_dn
+trans23_dgpat_dntp
 ( dgpt
 : d2gpat
 , targ: t2ype(*guard*)): d3gpat
 fun
-trans23_dclau_dn
+trans23_dclau_dntp
 ( d2c0
 : d2clau
 , targ: t2ype(*guard*), tres: t2ype): d3clau
 fun
-trans23_dclaulst_dn
+trans23_dclaulst_dntp
 ( d2cs
 : d2claulst
 , targ: t2ype(*guard*), tres: t2ype): d3claulst
@@ -215,11 +228,11 @@ trans23_declist: d2eclist -> d3eclist
 (* ****** ****** *)
 //
 fun
-unify2_t2ype_t2ype
-( loc0: loc_t
-, t2p1: t2ype, t2p2: t2ype): bool
-//
-overload unify2 with unify2_t2ype_t2ype
+t2ype_get_xtvs
+(t2p0: t2ype): List0_vt(t2xtv)
+fun
+t2ypelst_get_xtvs
+(t2ps: t2ypelst): List0_vt(t2xtv)
 //
 (* ****** ****** *)
 //
@@ -237,8 +250,99 @@ t2ype_tq2as_elim2
 (* ****** ****** *)
 //
 fun
-d3pat_dn
-(d3p0: d3pat, t2p0: t2ype): d3pat
+unify2_t2ype_t2ype
+( loc0: loc_t
+, t2p1: t2ype, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+fun
+unify2_d2var_t2ype
+( loc0: loc_t
+, d2v1: d2var, t2p2: t2ype): bool
+//
+fun
+unify2_d2con_t2ype
+( loc0: loc_t
+, d2c1: d2con, t2p2: t2ype): bool
+//
+fun
+unify2_d2cst_t2ype
+( loc0: loc_t
+, d2c1: d2cst, t2p2: t2ype): bool
+//
+(* ****** ****** *)
+//
+overload unify2 with unify2_t2ype_t2ype
+overload unify2 with unify2_d2var_t2ype
+overload unify2 with unify2_d2con_t2ype
+overload unify2 with unify2_d2cst_t2ype
+//
+(* ****** ****** *)
+//
+fun
+match2_t2ype_t2ype
+( t2p1: t2ype, t2p2: t2ype ): bool
+//
+(* ****** ****** *)
+//
+fun
+match2_d2con_t2ype
+( d2c1: d2con, t2p2: t2ype ): bool
+fun
+match2_d2var_t2ype
+( d2v1: d2var, t2p2: t2ype ): bool
+//
+(* ****** ****** *)
+//
+(*
+fun
+tplft_elim(t2p0: t2ype): t2ype
+*)
+fun
+match2_d2cst_t2ype
+( d2c1: d2cst, t2p2: t2ype ): bool
+//
+(* ****** ****** *)
+//
+fun
+match2_d2itm_t2ype
+( d2i1
+: d2itm, t2p2: t2ype): d2itmopt_vt
+//
+(* ****** ****** *)
+//
+fun
+match2_d2conlst_t2ype
+( d2cs
+: d2conlst, t2p2: t2ype): d2conopt_vt
+fun
+match2_d2cstlst_t2ype
+( d2cs
+: d2cstlst, t2p2: t2ype): d2cstopt_vt
+//
+fun
+match2_d2pconlst_t2ype
+( dpis
+: d2pitmlst, t2p2: t2ype): d2itmopt_vt
+fun
+match2_d2pitmlst_t2ype
+( dpis
+: d2pitmlst, t2p2: t2ype): d2itmopt_vt
+//
+(* ****** ****** *)
+//
+overload match2 with match2_t2ype_t2ype
+overload match2 with match2_d2var_t2ype
+overload match2 with match2_d2con_t2ype
+overload match2 with match2_d2cst_t2ype
+overload match2 with match2_d2itm_t2ype
+//
+(* ****** ****** *)
+//
+fun
+d3pat_dntp
+( d3p0: d3pat, t2p0: t2ype ): d3pat
 //
 (* ****** ****** *)
 
@@ -258,33 +362,48 @@ d3pat_tuple_up
 //
 (* ****** ****** *)
 //
-fun
-d23exp_dn
-(d3e0: d3exp, t2p0: t2ype): d3exp
-fun
-d23explst_dn
-( loc0: loc_t
-, d3es: d3explst, t2ps: t2ypelst): d3explst
+// HX: for processing dynexpressions
 //
 (* ****** ****** *)
-
+//
+(*
+fun
+d23exp_anno
+( d3e0: d3exp
+, t2p0: t2ype ) : d3exp
+*)
+//
+fun
+d23exp_dntp
+( d3e0: d3exp
+, t2p0: t2ype ) : d3exp
+fun
+d23explst_dntp
+( loc0: loc_t
+, d3es: d3explst
+, t2ps: t2ypelst ) : d3explst
+//
+(* ****** ****** *)
+//
 fun
 d23exp_sapp_up
 ( loc0: loc_t
-, d3f0: d3exp, s2es: s2explst): d3exp
+, d3f0: d3exp
+, s2es: s2explst(*sargs*)): d3exp
 fun
 d23exp_tapp_up
 ( loc0: loc_t
-, d2f0: d2exp, s2es: s2explst): d3exp
-
+, d2f0: d2exp
+, s2es: s2explst(*targs*)): d3exp
+//
 (* ****** ****** *)
-
+//
 fun
 d23exp_dapp_up
 ( loc0: loc_t
 , d3f0: d3exp
 , npf0: int, d3es: d3explst): d3exp
-
+//
 (* ****** ****** *)
 //
 fun
@@ -367,14 +486,18 @@ d23exp_fix_up
 (* ****** ****** *)
 //
 fun
-join_ti2as_tq2as
-( tias: ti2arglst
-, tqas: tq2arglst): ti2arglst
+join_tq2as_tias
+( tqas: tq2arglst
+, tias: ti2arglst): ti2arglst
+fun
+d2cst_ti2as_dnst
+( d2c0: d2cst
+, tias: ti2arglst): ti2arglst
 //
 fun
 d2cst_ti2as_ti3a
 ( loc0: loc_t
-, d2c0: d2cst, tias: ti2arglst): ti3arg
+, d2c0: d2cst, tias: ti2arglst): ti3arg(*t2ype*)
 //
 (* ****** ****** *)
 //

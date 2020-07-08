@@ -2642,19 +2642,27 @@ val tnd = tok.node()
 in
 //
 case+ tnd of
-| T_IDENT_sym("<=") => let
+(*
+| T_IDENT_sym("=") => let
     val () = buf.incby1()
   in
-    ABSTDF0lteq
-    (tok, p_s0exp(buf, err))
+    ABSTDF0eqeq
+    (tok, p_s0exp(buf, err))    
   end
+*)
 | T_IDENT_sym("==") => let
     val () = buf.incby1()
   in
     ABSTDF0eqeq
     (tok, p_s0exp(buf, err))    
   end
-| _(*non-eq-eqeq*) => ABSTDF0some()
+| T_IDENT_sym("<=") => let
+    val () = buf.incby1()
+  in
+    ABSTDF0lteq
+    (tok, p_s0exp(buf, err))
+  end
+| _(*non-lteq-eqeq*) => ABSTDF0some()
 //
 end // end of [p_abstdf0]
 
@@ -3607,6 +3615,21 @@ abstype ::=
     , D0Cabstype(tok, sid, tmas, anno, tdef) )
   end
 //
+| T_ABSOPEN() => let
+//
+    val () = buf.incby1()
+//
+    val
+    sqid = p_sq0eid(buf, err)
+    val
+    loc_res = loc + sqid.loc()
+//
+  in
+    err := e0;
+    d0ecl_make_node
+    (loc_res, D0Cabsopen(tok, sqid))
+  end
+//
 | T_ABSIMPL() => let
 //
     val () = buf.incby1()
@@ -3683,7 +3706,8 @@ abstype ::=
     // end of [d0ecl_make_node]
   end
 | T_DATATYPE(k0) => let
-    val () = buf.incby1()
+    val () =
+    buf.incby1()
     val d0cs =
       p_d0atypeseq_AND(buf, err)
     val tok1 = buf.get0()
@@ -3692,7 +3716,8 @@ abstype ::=
     case+
     tok1.node() of
     | T_WHERE() => let
-        val () = buf.incby1()
+        val () =
+        buf.incby1()
         val topt =
         popt_LBRACE(buf, err)
         val wdcs =
@@ -3860,7 +3885,7 @@ abstype ::=
               val loc_arg = (list_last(gmas)).loc()
             }
         )
-      | D0MDEFsome(opt, g0e) => gid.loc() + g0e.loc()
+      | D0MDEFsome(opt, def) => gid.loc() + def.loc()
     ) : loc_t // end of [val]
 //
   in
@@ -4018,6 +4043,61 @@ abstype ::=
     err := e0;
     d0ecl_make_node(loc_res, D0Cfixity(tok, ids, opt2))
   end // end of [FIXITY(knd)]
+//
+//
+| T_SRP_ELSE() => let
+//
+    val () = buf.incby1()
+    val loc_res = tok.loc()
+//
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Celse(tok))
+  end
+| T_SRP_ENDIF() => let
+//
+    val () = buf.incby1()
+    val loc_res = tok.loc()
+//
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cendif(tok))
+  end
+//  
+| T_SRP_IFDEC(knd) => let
+//
+    val () = buf.incby1()
+    val g0e1 = p_g0exp(buf, err)
+    val topt = popt_SRP_THEN(buf, err)
+//
+    val loc_res =
+    (
+    case+ topt of
+    | None() => tok.loc()
+    | Some(tok2) => tok.loc() + tok2.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Cifdec(tok, g0e1, topt))
+  end // end of [SRP_IFDEC(knd)]
+| T_SRP_ELSIF(knd) => let
+//
+    val () = buf.incby1()
+    val g0e1 = p_g0exp(buf, err)
+    val topt = popt_SRP_THEN(buf, err)
+//
+    val loc_res =
+    (
+    case+ topt of
+    | None() => tok.loc()
+    | Some(tok2) => tok.loc() + tok2.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    d0ecl_make_node(loc_res, D0Celsif(tok, g0e1, topt))
+  end // end of [SRP_IFDEC(knd)]
 //
 | _ (* errorcase *) =>
   let

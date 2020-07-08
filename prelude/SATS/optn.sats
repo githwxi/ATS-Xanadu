@@ -38,26 +38,94 @@
 (* ****** ****** *)
 //
 fun<>
-optn_none?
-{a:type}{b:bool}
+optn_nilq
+{a:t0}{b:b0}
 (xs: optn(a, b)): bool(b=ff)
 fun<>
-optn_some?
-{a:type}{b:bool}
+optn_consq
+{a:t0}{b:b0}
 (xs: optn(a, b)): bool(b=tt)
 //
-#symload iseqz with optn_none?
-#symload isneqz with optn_some?
-//
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
 optn_length
-{b:bool}
+{b:b0}
 (xs: optn(a, b)): int(b2i(b))
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+optn_forall
+{b:b0}(xs: optn(a, b)): bool
+fun
+<a:t0>
+optn_foreach
+{b:b0}(xs: optn(a, b)): void
+//
+fun
+<a:t0>
+optn_rforall
+{b:b0}(xs: optn(a, b)): bool
+fun
+<a:t0>
+optn_rforeach
+{b:b0}(xs: optn(a, b)): void
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+optn_listize
+{b:b0}
+(optn(a, b)): list_vt(a, b2i(b))
+fun
+<a:t0>
+optn_rlistize
+{b:b0}
+(optn(a, b)): list_vt(a, b2i(b))
+fun
+<a:t0>
+optn_streamize(optn(a)): stream_vt(a)
+//
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for optn
+//
+(* ****** ****** *)
 
-#symload length with optn_length
+#symload none with optn_nil
+#symload some with optn_cons
+
+(* ****** ****** *)
+
+#symload nilq with optn_nilq of 1000
+#symload eqzq with optn_nilq of 1000
+#symload consq with optn_consq of 1000
+#symload neqzq with optn_consq of 1000
+//
+(* ****** ****** *)
+
+#symload length with optn_length of 1000
+
+(* ****** ****** *)
+
+#symload forall with optn_forall of 1000
+#symload foreach with optn_foreach of 1000
+
+(* ****** ****** *)
+
+#symload rforall with optn_rforall of 1000
+#symload rforeach with optn_rforeach of 1000
+
+(* ****** ****** *)
+
+#symload listize with optn_listize of 1000
+#symload rlistize with optn_rlistize of 1000
+#symload streamize with optn_streamize of 1000
 
 (* ****** ****** *)
 

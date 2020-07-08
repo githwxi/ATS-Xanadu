@@ -65,6 +65,164 @@ case+ opt0 of
 )
 //
 (* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread01_s1arg
+  (s1a0) = let
+//
+(*
+//
+val loc0 = s1a0.loc()
+//
+val () =
+println!
+("tread01_s1arg: s1a0 = ", s1a0)
+*)
+//
+in
+//
+case+
+s1a0.node() of
+| S1ARGsome
+  (id0, opt) =>
+  {
+(*
+    val () = tread01_s1eid(id0)
+*)
+    val () = tread01_sort1opt(opt)
+  }
+end // end of [tread01_s1arg]
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread01_s1marg
+  (s1ma) = let
+//
+(*
+val () =
+println!
+("tread01_s1marg: s1ma = ", s1ma)
+*)
+//
+in
+//
+case+
+s1ma.node() of
+| S1MARGlist(s1as) =>
+  {
+    val () = tread01_s1arglst(s1as)
+  }
+//
+end // end of [tread01_s1marg]
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_s1arglst
+  (s1as) =
+(
+list_foreach<s1arg>(s1as)
+) where
+{
+implement(env)
+list_foreach$fwork<s1arg><env>(s1a, env) = tread01_s1arg(s1a)
+} (* end of [tread01_s1arglst] *)
+//
+implement
+//{}(*tmp*)
+tread01_s1marglst
+  (smas) =
+(
+list_foreach<s1marg>(smas)
+) where
+{
+implement(env)
+list_foreach$fwork<s1marg><env>(sma, env) = tread01_s1marg(sma)
+} (* end of [tread01_s1marglst] *)
+//
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread01_t1arg
+  (t1a0) = let
+//
+(*
+val () =
+println!
+("tread01_t1arg: t1a0 = ", t1a0)
+*)
+//
+in
+//
+case+
+t1a0.node() of
+| T1ARGsome
+  (s0t, opt) =>
+  {
+    val () = tread01_sort1(s0t)
+(*
+    val () = tread01_tokenopt(opt)
+*)
+  }
+//
+end // end of [tread01_t1arg]
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_t1marg
+  (t1ma) = let
+//
+(*
+val () =
+println!
+("tread01_t1marg: t1ma = ", t1ma)
+*)
+//
+in
+//
+case+
+t1ma.node() of
+| T1MARGlist(t1as) =>
+  {
+    val () = tread01_t1arglst(t1as)
+  }
+//
+end // end of [tread01_t1marg]
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_t1arglst
+  (t1as) =
+(
+list_foreach<t1arg>(t1as)
+) where
+{
+implement(env)
+list_foreach$fwork<t1arg><env>(t1a, env) = tread01_t1arg(t1a)
+} (* end of [tread01_t1arglst] *)
+//
+implement
+//{}(*tmp*)
+tread01_t1marglst
+  (tmas) =
+(
+list_foreach<t1marg>(tmas)
+) where
+{
+implement(env)
+list_foreach$fwork<t1marg><env>(tma, env) = tread01_t1marg(tma)
+} (* end of [tread01_t1marglst] *)
+//
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)
@@ -106,6 +264,17 @@ list_foreach<s1qua>(s1qs)
 implement(env)
 list_foreach$fwork<s1qua><env>(s1q, env) = tread01_s1qua(s1q)
 } (* end of [tread01_s1qualst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_effs1expopt(opt) =
+(
+case+ opt of
+| EFFS1EXPnone() => ()
+| EFFS1EXPsome(s1e) => tread01_s1exp(s1e)
+)
 //
 (* ****** ****** *)
 
