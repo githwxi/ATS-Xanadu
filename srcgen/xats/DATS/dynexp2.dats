@@ -206,7 +206,7 @@ let
 //
 val
 opt =
-s2cst_get_dconlst(s2c0)
+s2cst_get_d2conlst(s2c0)
 //
 in
 //
@@ -334,7 +334,10 @@ d2pat_make_node(loc0, D2Pcon2(d2cs))
 implement
 d2pat_sym0
 (loc0, d1p0, dpis) =
-d2pat_make_node(loc0, D2Psym0(d1p0, dpis))
+(
+  d2pat_make_node
+  (loc0, D2Psym0(d1p0, dpis))
+)
 //
 (* ****** ****** *)
 //
@@ -348,10 +351,10 @@ d2pat_sapp
 //
 implement
 d2pat_dapp
-(loc0, d2f0, npf0, d2ps) =
+(loc0, d2f0, npf1, d2ps) =
 (
   d2pat_make_node
-  (loc0, D2Pdapp(d2f0, npf0, d2ps))
+  (loc0, D2Pdapp(d2f0, npf1, d2ps))
 )
 //
 (* ****** ****** *)
@@ -950,7 +953,7 @@ gequal_val_val<key>(x, y) = (x = y)
 (* ****** ****** *)
 
 implement
-s2cst_get_dconlst
+s2cst_get_d2conlst
   (s2c) = let
 //
 val key =
@@ -966,12 +969,12 @@ val ans =
 in
   let prval () = $UN.cast2void(tbl) in ans end
 //
-end // end of [s2cst_get_dconlst]
+end // end of [s2cst_get_d2conlst]
 
 (* ****** ****** *)
 
 implement
-s2cst_set_dconlst
+s2cst_set_d2conlst
   (s2c, d2cs) =
 {
 //
@@ -987,7 +990,7 @@ val-~None_vt() =
 //
 prval ((*void*)) = $UN.cast2void(tbl)
 //
-} (* end of [s2cst_set_dconlst] *)
+} (* end of [s2cst_set_d2conlst] *)
 
 end // end of [local]
 

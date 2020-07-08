@@ -59,26 +59,35 @@ UN = "prelude/SATS/unsafe.sats"
 
 local
 
-absimpl
-d2con_tbox = $rec{
+typedef
+d2con_struct = @{
 //
   d2con_loc= loc_t // loc
 , d2con_sym= sym_t // name
+, d2con_tag= tag_t // tag
+, d2con_tqas= tq2as // tqas
 , d2con_sexp= s2exp // sexp
 , d2con_type= t2ype // type
 , d2con_stamp= stamp // unicity
 //
 } (* end of [d2con_tbox] *)
 
+absimpl
+d2con_tbox=ref(d2con_struct)
+
 in (* in-of-local *)
 
 implement
 d2con_make_idtp
-  (tok, s2e1) =
+( tok
+, tqas, s2e1) =
 (
-$rec{
+ref<d2con_struct>
+@{
   d2con_loc= loc
 , d2con_sym= sym
+, d2con_tag= (~1)
+, d2con_tqas= tqas
 , d2con_sexp= s2e1
 , d2con_type= t2p2
 , d2con_stamp= stamp
@@ -97,6 +106,8 @@ $rec{
   val () =
   println!("d2con_make_idtp: sym = ", sym)
   val () =
+  println!("d2con_make_idtp: tag = ", tag)
+  val () =
   println!("d2con_make_idtp: s2e1 = ", s2e1)
   val () =
   println!("d2con_make_idtp: t2p2 = ", t2p2)
@@ -107,17 +118,114 @@ $rec{
 } (* d2con_make_idtp *)
 
 implement
-d2con_get_loc(x0) = x0.d2con_loc
+d2con_get_loc(x0) = x0->d2con_loc
 implement
-d2con_get_sym(x0) = x0.d2con_sym
+d2con_get_sym(x0) = x0->d2con_sym
+//
 implement
-d2con_get_sexp(x0) = x0.d2con_sexp
+d2con_get_tag(x0) = x0->d2con_tag
 implement
-d2con_get_type(x0) = x0.d2con_type
+d2con_set_tag
+(x0, tag) = (x0->d2con_tag := tag)
+//
 implement
-d2con_get_stamp(x0) = x0.d2con_stamp
+d2con_get_tqas(x0) = x0->d2con_tqas
+//
+implement
+d2con_get_sexp(x0) = x0->d2con_sexp
+//
+implement
+d2con_get_type(x0) = x0->d2con_type
+//
+implement
+d2con_get_stamp(x0) = x0->d2con_stamp
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+d2con_get_narg
+  (d2c0) =
+(
+auxmain(d2c0.type())
+) where
+{
+fun
+auxmain
+(t2p0
+: t2ype): int =
+(
+case+ t2p0.node() of
+|
+T2Pfun
+( fc2
+, npf
+, t2ps
+, t2p1) =>
+  list_length<t2ype>(t2ps)
+|
+T2Puni
+(s2vs, t2p1) => auxmain(t2p1)
+//
+| _ (* non-T2Pfun *) => (0) // HX: deadcode?
+)
+} (* end of [d2con_get_narg] *)
+
+(* ****** ****** *)
+
+implement
+d2con_get_s2vs
+  (d2c0) =
+(
+let
+val s2vs =
+auxlst
+(d2c0.tqas(), list_vt_nil())
+in
+list_vt2t(list_vt_reverse(s2vs))
+end
+) where
+{
+fun
+auxlst
+( tqas
+: tq2arglst
+, s2vs
+: List0_vt(s2var)
+)
+: List0_vt(s2var) =
+(
+case+ tqas of
+|
+list_nil() => s2vs
+|
+list_cons
+(t2qa, tqas) =>
+(
+  auxlst(tqas, s2vs)
+) where
+{
+  val s2vs =
+  revapp(t2qa.s2vs(), s2vs)
+}
+)
+and
+revapp
+( xs
+: s2varlst
+, ys
+: s2varlst_vt
+)
+: s2varlst_vt =
+(
+case+ xs of
+| list_nil() => ys
+| list_cons(x0, xs) =>
+  revapp(xs, list_vt_cons(x0, ys))
+)
+//
+} (* end of [d2con_get_s2vs] *)
 
 (* ****** ****** *)
 

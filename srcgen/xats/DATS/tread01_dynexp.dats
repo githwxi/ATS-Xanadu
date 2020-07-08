@@ -123,6 +123,92 @@ in
 case+
 d1c0.node() of
 //
+| D1Cstatic
+  (tok, d1c1) =>
+  {
+    val () =
+    tread01_d1ecl(d1c1)
+  }
+| D1Cextern
+  (tok, d1c1) =>
+  {
+    val () =
+    tread01_d1ecl(d1c1)
+  }
+//
+| D1Cinclude
+  ( tok
+  , src, knd
+  , fopt, body) =>
+  {
+    val () =
+    (
+    case+ body of
+    | None() => ()
+    | Some(d1cs) =>
+      (
+        tread01_d1eclist(d1cs)
+      )
+    )
+  }
+| D1Cstaload _ => ()
+//
+| D1Csymload
+  ( tok
+  , sym1
+  , dqid, prec) =>
+  {
+(*
+    val () =
+    tread01_dq0eid(dqid)
+*)
+  }
+//
+| D1Csexpdef
+  ( knd
+  , sid0, smas
+  , res1, def2) =>
+  {
+(*
+    val () =
+    tread01_s0eid(sid0)
+*)
+    val () =
+    tread01_s1marglst(smas)
+//
+    val () =
+      tread01_sort1opt(res1)
+    // end of [val]
+//
+    val () = tread01_s1exp(def2)
+//
+  }
+//
+| D1Cabstype
+  ( knd
+  , sid0, tmas
+  , res1, def2) =>
+  {
+//
+(*
+    val () =
+    tread01_s0eid(sid0)
+*)
+//
+    val () =
+    tread01_t1marglst(tmas)
+//
+    val () =
+      tread01_sort1opt(res1)
+    // end of [val]
+//
+    val () = tread01_abstdf1(def2)
+//
+  }
+//
+| D1Cabsopen _ => ()
+| D1Cabsimpl _ => ()
+//
 | D1Cfundecl
   ( knd
   , mopt
@@ -132,14 +218,63 @@ d1c0.node() of
     tread01_f1undeclist(f1ds)
   }
 //
+| D1Cvaldecl
+  ( knd
+  , mopt, v1ds) =>
+  {
+    val () =
+    tread01_v1aldeclist(v1ds)
+  }
+| D1Cvardecl
+  ( knd
+  , mopt, v1ds) =>
+  {
+    val () =
+    tread01_v1ardeclist(v1ds)
+  }
+//
+| D1Cimpdecl
+  ( knd, mopt
+  , sqas, tqas
+  , dqid, ti1s
+  , f1as, res1, teq2, body) =>
+  {
+    val () =
+    tread01_sq1arglst(sqas)
+    val () =
+    tread01_tq1arglst(tqas)
+//
+    val () =
+    tread01_ti1arglst(ti1s)
+//
+    val () =
+      tread01_f1arglst(f1as)
+    // end of [val]
+//
+    val () =
+      tread01_effs1expopt(res1)
+    // end of [val]
+//
+    val () = tread01_d1exp(body)
+//
+  }
+//
 | D1Cdynconst
   (knd, tqas, d1cs) =>
   {
-    val () = tread01_tq1arglst(tqas)
+    val () =
+    tread01_tq1arglst(tqas)
 (*
-    val () = tread01_d1cstdeclist(d1cs)
+    val () =
+    tread01_d1cstdeclist(d1cs)
 *)
   }
+//
+| D1Clocal(head, body) =>
+  {
+    val () = tread01_d1eclist(head)
+    val () = tread01_d1eclist(body)
+  } (* end of [D1Clocal] *)
 //
 | _(* rest-of-d1ecl *) =>
   (
@@ -165,6 +300,29 @@ list_foreach$fwork<d1ecl><env>(d1c, env) = tread01_d1ecl(d1c)
 
 implement
 //{}(*tmp*)
+tread01_abstdf1
+  (def) =
+(
+case+ def of
+| ABSTDF1some() => ()
+| ABSTDF1lteq(s1e) => tread01_s1exp(s1e)
+| ABSTDF1eqeq(s1e) => tread01_s1exp(s1e)
+) (* end of [tread01_abstdf0] *)
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_teqd1expopt
+  (opt0) =
+(
+case+ opt0 of
+| TEQD1EXPnone() => ()
+| TEQD1EXPsome(tok, d1e) => tread01_d1exp(d1e)
+)
+//
+implement
+//{}(*tmp*)
 tread01_wths1expopt
   (opt0) =
 (
@@ -172,7 +330,7 @@ case+ opt0 of
 | WTHS1EXPnone() => ()
 | WTHS1EXPsome(tok, s1e) => tread01_s1exp(s1e)
 )
-
+//
 (* ****** ****** *)
 //
 implement
@@ -223,7 +381,30 @@ list_foreach<q1arg>(q1as)
 {
 implement(env)
 list_foreach$fwork<q1arg><env>(q1a, env) = tread01_q1arg(q1a)
-} (* end of [tread01_tq1arglst] *)
+} (* end of [tread01_q1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_sq1arg(sq1a) =
+(
+case+
+sq1a.node() of
+| SQ1ARGnone(tok) => ()
+| SQ1ARGsome(q1as) => tread01_q1arglst(q1as)
+)
+//
+implement
+//{}(*tmp*)
+tread01_sq1arglst(sqas) =
+(
+list_foreach<sq1arg>(sqas)
+) where
+{
+implement(env)
+list_foreach$fwork<sq1arg><env>(sqa, env) = tread01_sq1arg(sqa)
+} (* end of [tread01_sq1arglst] *)
 //
 (* ****** ****** *)
 //
@@ -247,6 +428,89 @@ list_foreach<tq1arg>(tqas)
 implement(env)
 list_foreach$fwork<tq1arg><env>(tqa, env) = tread01_tq1arg(tqa)
 } (* end of [tread01_tq1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_ti1arg(ti1a) =
+(
+case+
+ti1a.node() of
+| TI1ARGnone(tok) => ()
+| TI1ARGsome(s1es) => tread01_s1explst(s1es)
+)
+//
+implement
+//{}(*tmp*)
+tread01_ti1arglst(tias) =
+(
+list_foreach<ti1arg>(tias)
+) where
+{
+implement(env)
+list_foreach$fwork<ti1arg><env>(tia, env) = tread01_ti1arg(tia)
+} (* end of [tread01_ti1arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_v1aldecl
+  (v1d0) =
+{
+  val () =
+  tread01_d1pat(rcd.pat)
+  val () =
+  tread01_d1expopt(rcd.def)
+  val () =
+  tread01_wths1expopt(rcd.wtp)
+} where
+{
+//
+  val+V1ALDECL(rcd) = v1d0
+//
+} (* end of [tread01_v1aldecl] *)
+//
+implement
+//{}(*tmp*)
+tread01_v1aldeclist(v1ds) =
+(
+list_foreach<v1aldecl>(v1ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v1aldecl><env>(v1d, env) = tread01_v1aldecl(v1d)
+} (* end of [tread01_v1aldeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_v1ardecl
+  (v1d0) =
+{
+  val () =
+  tread01_s1expopt(rcd.res)
+  val () =
+  tread01_teqd1expopt(rcd.ini)
+} where
+{
+//
+  val+V1ARDECL(rcd) = v1d0
+//
+} (* end of [tread01_v1ardecl] *)
+//
+implement
+//{}(*tmp*)
+tread01_v1ardeclist(v1ds) =
+(
+list_foreach<v1ardecl>(v1ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v1ardecl><env>(v1d, env) = tread01_v1ardecl(v1d)
+} (* end of [tread01_v1ardeclist] *)
 //
 (* ****** ****** *)
 //
@@ -276,7 +540,7 @@ list_foreach<f1undecl>(f1ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f1undecl><env>(f1ds, env) = tread01_f1undecl(f1ds)
+list_foreach$fwork<f1undecl><env>(f1d, env) = tread01_f1undecl(f1d)
 } (* end of [tread01_f1undeclist] *)
 //
 (* ****** ****** *)
@@ -317,10 +581,11 @@ the_trerr01lst_set(xs) = the_trerr01lst[] := xs
 end // end of [local]
 //
 implement
-tread01_main(d1cs) = let
+tread01_program(prog) =
+let
 //
 val () =
-tread01_d1eclist(d1cs)
+tread01_d1eclist(prog)
 val
 xerrs = the_trerr01lst_get()
 val
@@ -335,7 +600,9 @@ then
 //
 val () =
 prerrln!
-("tread01_main: nxerr = ", nxerr)
+("\
+tread01_program: \
+nxerr = ", nxerr )
 //
 val () =
 if
@@ -343,7 +610,7 @@ if
 then
 prerrln!
 ("\
-tread01_main: \
+tread01_program: \
 there is one trans01-error!")
 val () =
 if
@@ -351,7 +618,7 @@ if
 then
 prerrln!
 ("\
-tread01_main: \
+tread01_program: \
 there are some trans01-errors!")
 //
 val () =
@@ -366,12 +633,12 @@ else
 val () =
 prerrln!
 ("\
-tread01_main: \
+tread01_program: \
 there are none of trans01-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread01_main]
+end // end of [tread01_program]
 
 end // end of [local]
 

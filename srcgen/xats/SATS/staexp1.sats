@@ -77,7 +77,10 @@ datatype
 g1exp_node =
 //
 | G1Eid of (sym_t)
+//
 | G1Eint of (token)
+| G1Estr of (token)
+//
 | G1Eapp of ((*void*))
 //
 | G1Eapp1 of
@@ -171,7 +174,7 @@ typedef s1expopt = Option(s1exp)
 datatype
 sort1_node =
 //
-  | S1Tid of sym_t
+  | S1Tid0 of sym_t
 //
   | S1Tint of token
 //

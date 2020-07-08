@@ -37,6 +37,25 @@
 //
 (* ****** ****** *)
 //
+fun
+<a:t0>
+list_sing(x: a): list(a, 1)
+//
+(* ****** ****** *)
+
+fun
+<a:t0>
+list_make_nval
+{n:nat}
+(n: int(n), x: a): list(a, n)
+fun
+<a:t0>
+list_make_nval_vt
+{n:nat}
+(n: int(n), x: a): list_vt(a, n)
+
+(* ****** ****** *)
+//
 fun<>
 list_nilq
 {a:type}{n:int}
@@ -46,74 +65,131 @@ list_consq
 {a:type}{n:int}
 (xs: list(a, n)): bool(n > 0)
 //
-#symload eqzq with list_nilq
-#symload neqzq with list_consq
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_head
+{i:pos}(list(a, i)): a
+fun
+<a:t0>
+list_head_raw(xs: list(a)): a
+fun
+<a:t0>
+list_head_exn(xs: list(a)): a
+fun
+<a:t0>
+list_head_opt(xs: list(a)): optn_vt(a)
+//
+fun
+<a:t0>
+list_tail
+{i:pos}(list(a, i)): list(a, i-1)
+fun
+<a:t0>
+list_tail_raw(xs: list(a)): list(a)
+fun
+<a:t0>
+list_tail_exn(xs: list(a)): list(a)
+fun
+<a:t0>
+list_tail_opt(xs: list(a)): optn_vt(list(a))
 //
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_length
-{n:int}(xs: list(a, n)): int(n)
-//
-#symload length with list_length
+{n:int}(list(a, n)): int(n)
 //
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
+list_extend
+{m:int}
+(list(a, m), a): list(a, m+1)
+fun
+<a:t0>
 list_append
 {m,n:int}
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
 //
-#symload append with list_append
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_concat
+(xss: list(list(a))): list(a)
+fun
+<a:t0>
+list_concat_vt
+(xss: list(list(a))): list_vt(a)
 //
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_rappend
 {m,n:int}
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
 //
-#symload rappend with list_rappend
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_rappend_vt
+{m,n:int}
+( xs: list(a, m)
+, ys: list_vt(a, n)): list_vt(a, m+n)
 //
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_reverse
 {n:int}(list(a, n)): list(a, n)
 //
-#symload reverse with list_reverse
-//
 (* ****** ****** *)
 //
 fun
-<a:type>
+<a:t0>
 list_copy_vt
 {n:int}(list(a, n)): list_vt(a, n)
 fun
-<a:type>
+<a:t0>
 list_rcopy_vt
 {n:int}(list(a, n)): list_vt(a, n)
-//
-#symload copy_vt with list_copy_vt
-#symload rcopy_vt with list_rcopy_vt
 //
 (* ****** ****** *)
 
 fun
-<x0:type>
+<x0:t0>
 list_forall
 {n:int}(xs: list(x0, n)): bool
 fun
-<x0:type>
+<x0:t0>
 list_foreach
 {n:int}(xs: list(x0, n)): void
 
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_listize
+{n:int}
+(xs: list(x0, n)): list_vt(x0, n)
+fun
+<x0:t0>
+list_rlistize
+{n:int}
+(xs: list(x0, n)): list_vt(x0, n)
+fun
+<x0:t0>
+list_streamize(list(x0)): stream_vt(x0)
+//
 (* ****** ****** *)
 //
 (*
@@ -122,13 +198,13 @@ list_map_vt: map$for
 *)
 //
 fun
-<x0:type>
-<y0:type>
+<x0:t0>
+<y0:t0>
 list_map
 {n:int}(xs: list(x0, n)): list(y0, n)
 fun
-<x0:type>
-<y0:vtype>
+<x0:t0>
+<y0:vt>
 list_map_vt
 {n:int}(xs: list(x0, n)): list_vt(y0, n)
 //
@@ -140,13 +216,13 @@ list_maprev_vt: map$for
 *)
 //
 fun
-<x0:type>
-<y0:type>
+<x0:t0>
+<y0:t0>
 list_maprev
 {n:int}(xs: list(x0, n)): list(y0, n)
 fun
-<x0:type>
-<y0:vtype>
+<x0:t0>
+<y0:vt>
 list_maprev_vt
 {n:int}(xs: list(x0, n)): list_vt(y0, n)
 //
@@ -157,12 +233,98 @@ fun
 <n:i0>
 list_tabulate(int(n)): list(a, n)
 fun
-<a:type>
-list_tabulate_cref
+<a:t0>
+list_tabulate_cfr
 {n:nat}
 ( n0: int(n)
-, f0: nintlt(n) -<cref> a): list(a, n)
+, f0: nintlt(n) -<cfr> a): list(a, n)
 //
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_mergesort
+  {n:int}(xs: list(a, n)): list(a, n)
+fun
+<a:t0>
+list_mergesort_vt
+  {n:int}(xs: list(a, n)): list_vt(a, n)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_subsetize_vt
+{n:int}
+(xs: list(a, n)): stream_vt(listlte_vt(a, n))
+//
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for list
+//
+(* ****** ****** *)
+//
+#symload
+nil with list_nil of 000
+#symload
+cons with list_cons of 000
+//
+(* ****** ****** *)
+//
+#symload nilq with list_nilq of 1000
+#symload eqzq with list_nilq of 1000
+#symload consq with list_consq of 1000
+#symload neqzq with list_consq of 1000
+//
+(* ****** ****** *)
+
+#symload head with list_head of 1000
+#symload tail with list_tail of 1000
+
+(* ****** ****** *)
+//
+#symload length with list_length of 1000
+//
+(* ****** ****** *)
+//
+#symload append with list_append of 1000
+//
+#symload concat with list_concat of 1000
+//
+(* ****** ****** *)
+//
+#symload reverse with list_reverse of 1000
+#symload rappend with list_rappend of 1000
+//
+(* ****** ****** *)
+//
+#symload copy_vt with list_copy_vt of 1000
+#symload rcopy_vt with list_rcopy_vt of 1000
+//
+(* ****** ****** *)
+
+#symload forall with list_forall of 1000
+#symload foreach with list_foreach of 1000
+
+(* ****** ****** *)
+
+#symload listize with list_listize of 1000
+#symload rlistize with list_rlistize of 1000
+#symload streamize with list_streamize of 1000
+
+(* ****** ****** *)
+
+#symload map with list_map of 1000
+#symload map_vt with list_map_vt of 1000
+#symload maprev with list_maprev of 1000
+#symload maprev_vt with list_maprev_vt of 1000
+
+(* ****** ****** *)
+
+#symload mergesort with list_mergesort of 1000
+#symload mergesort_vt with list_mergesort_vt of 1000
+
 (* ****** ****** *)
 
 (* end of [list.sats] *)

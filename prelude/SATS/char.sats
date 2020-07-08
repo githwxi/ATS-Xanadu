@@ -39,6 +39,21 @@
 (* ****** ****** *)
 //
 fun<>
+char_make_sint
+(code: sint): char
+fun<>
+char_make_uint
+(code: uint): char
+//
+(* ****** ****** *)
+//
+fun<>
+sint_make_char
+(char: char): sint
+//
+(* ****** ****** *)
+//
+fun<>
 char_eqzq
 {c:char}
 (c0: char(c)): bool(c=0)
@@ -61,9 +76,37 @@ char_noteq
 (* ****** ****** *)
 
 fun<>
-char_print(c0: char): void
-#symload print with char_print of 110
+char_cmp
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): sint(sgn(c1-c2))
 
+(* ****** ****** *)
+
+fun<>
+char_print(c0: char): void
+
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for char
+//
+(* ****** ****** *)
+//
+#symload
+char with char_make_sint of 1000
+#symload
+char with char_make_uint of 1000
+//
+(* ****** ****** *)
+//
+#symload
+sint with sint_make_char of 1000
+//
+(* ****** ****** *)
+//
+#symload print with char_print of 1000
+//
 (* ****** ****** *)
 
 (* end of [char.sats] *)

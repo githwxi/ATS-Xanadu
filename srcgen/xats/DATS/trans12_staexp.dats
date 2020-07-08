@@ -45,9 +45,19 @@ SYM = "./../SATS/symbol.sats"
 //
 macdef
 LIN_sym = $SYM.LIN_symbol
+//
 macdef
 CLO_sym = $SYM.CLO_symbol
+macdef
+FNP_sym = $SYM.FNP_symbol
+macdef
+CFP_sym = $SYM.CFP_symbol
+macdef
+CFR_sym = $SYM.CFR_symbol
+macdef
+LCFP_sym = $SYM.LCFP_symbol
 //
+(*
 macdef
 CFLT_sym = $SYM.CFLT_symbol
 macdef
@@ -56,7 +66,9 @@ macdef
 CPTR_sym = $SYM.CPTR_symbol
 macdef
 CREF_sym = $SYM.CREF_symbol
+*)
 //
+(*
 macdef
 CLOFLT_sym = $SYM.CLOFLT_symbol
 macdef
@@ -65,6 +77,7 @@ macdef
 CLOPTR_sym = $SYM.CLOPTR_symbol
 macdef
 CLOREF_sym = $SYM.CLOREF_symbol
+*)
 //
 overload
 = with $SYM.eq_symbol_symbol
@@ -105,6 +118,8 @@ NMS = "./../SATS/nmspace.sats"
 (* ****** ****** *)
 
 implement
+fprint_val<s1qua> = fprint_s1qua
+implement
 fprint_val<s2exp> = fprint_s2exp
 
 (* ****** ****** *)
@@ -117,7 +132,7 @@ auxid0
 : sort1): sort2 = let
 //
 val-
-S1Tid(tid) = s1t0.node()
+S1Tid0(tid) = s1t0.node()
 val
 opt = the_sortenv_find(tid)
 //
@@ -125,7 +140,7 @@ in
 //
 case+ opt of
 //
-| ~None_vt() => S2Tid(tid)
+| ~None_vt() => S2Tid0(tid)
 //
 | ~Some_vt(s2t) =>
   (
@@ -150,9 +165,9 @@ isplus
 (
 case+
 s1t.node() of
-| S1Tid(tid) =>
+| S1Tid0(tid) =>
   tid = $SYM.ADD_symbol
-| _(*non-S1Tid*) => false
+| _(*non-S1Tid0*) => false
 )
 fun
 ismnus
@@ -161,9 +176,9 @@ ismnus
 (
 case+
 s1t.node() of
-| S1Tid(tid) =>
+| S1Tid0(tid) =>
   tid = $SYM.SUB_symbol
-| _(*non-S1Tid*) => false
+| _(*non-S1Tid0*) => false
 )
 fun
 isarrw
@@ -172,9 +187,9 @@ isarrw
 (
 case+
 s1t.node() of
-| S1Tid(tid) =>
+| S1Tid0(tid) =>
   tid = $SYM.MSGT_symbol
-| _(*non-S1Tid*) => false
+| _(*non-S1Tid0*) => false
 )
 
 (* ****** ****** *)
@@ -313,7 +328,7 @@ in
 case+
 s1t0.node() of
 //
-| S1Tid _ => auxid0(s1t0)
+| S1Tid0 _ => auxid0(s1t0)
 //
 | S1Tint(int) =>
   S2Tint(token2sint(int))
@@ -429,7 +444,7 @@ auxid0
 ) : s2txt = let
 //
 val-
-S1Tid(tid) = s1t0.node()
+S1Tid0(tid) = s1t0.node()
 //
 val
 opt = the_sortenv_find(tid)
@@ -437,11 +452,14 @@ opt = the_sortenv_find(tid)
 in
 //
 case+ opt of
-| ~Some_vt(tx) => tx
-| ~None_vt((*void*)) =>
-  let
-   val s2t = S2Tid(tid) in S2TXTsrt(s2t)
-  end
+| ~
+Some_vt(tx) => tx
+| ~
+None_vt((*void*)) =>
+let
+val s2t =
+S2Tid0(tid) in S2TXTsrt(s2t)
+end
 //
 end // end of [auxid0]
 //
@@ -450,9 +468,9 @@ in
 case+
 s1t0.node() of
 //
-| S1Tid _ => auxid0(s1t0)
+| S1Tid0 _ => auxid0(s1t0)
 //
-| _(*non-S1Tid*) =>
+| _(*non-S1Tid0*) =>
   (
     S2TXTsrt(trans12_sort(s1t0))
   )
@@ -538,9 +556,11 @@ x0.node() of
   (
   ifcase
   | sym =
-    FPTR_sym => true
+    FNP_sym => true
+(*
   | sym =
     FUNPTR_sym => true
+*)
   | _ (* else *) => false
   )
 | _ (*non-S1Eid*) => false
@@ -556,10 +576,12 @@ x0.node() of
   ifcase
   | sym =
     CLO_sym => true
+(*
   | sym =
     CFLT_sym => true
   | sym =
     CLOFLT_sym => true
+*)
   | _ (* else *) => false
   )
 | _ (* non-S1Eid *) => false
@@ -574,9 +596,13 @@ x0.node() of
   (
   ifcase
   | sym =
+    CFP_sym => true
+(*
+  | sym =
     CPTR_sym => true
   | sym =
     CLOPTR_sym => true
+*)
   | _ (* else *) => false
   )
 | _ (*non-S1Eid*) => false
@@ -591,9 +617,12 @@ x0.node() of
   (
   ifcase
   | sym =
+    CFR_sym => true
+(*  | sym =
     CREF_sym => true
   | sym =
     CLOREF_sym => true
+*)
   | _ (* else *) => false
   )
 | _ (*non-S1Eid*) => false
@@ -636,24 +665,31 @@ s1exp_get_eff(s1e0) = S2EFFall()
 implement
 s1exp_get_s2cstlst
   (s1e0) =
-(
+let
+(*
+val () =
+println!
+("s1exp_get_s2cstlst: s1e0 = ", s1e0)
+*)
+in
 case+
 s1e0.node() of
-| S1Eid(sid) => let
-    val
-    opt =
-    the_sexpenv_find(sid)
-  in
-    case+ opt of
-    | ~None_vt() => list_nil()
-    | ~Some_vt(s2i) =>
-      (
-        case+ s2i of
-        | S2ITMcst(s2cs) => s2cs | _ => list_nil()
-      )
-  end // end of [S1Eid]
+|
+S1Eid(sid) => let
+  val
+  opt =
+  the_sexpenv_find(sid)
+in
+  case+ opt of
+  | ~None_vt() => list_nil()
+  | ~Some_vt(s2i) =>
+    (
+     case+ s2i of
+     | S2ITMcst(s2cs) => s2cs | _ => list_nil()
+    )
+end // end of [S1Eid]
 | _(*rest-of-s1exp*) => list_nil()
-)
+end // end of [s1exp_get_s2cstlst]
 
 (* ****** ****** *)
 
@@ -834,10 +870,10 @@ auxid0
 : s1exp): s2exp = let
 //
 val-
-S1Eid(sid) = s1e0.node()
+S1Eid
+(sid) = s1e0.node()
 //
-val
-knd = isany(sid)
+val knd = isany(sid)
 //
 in
 //
@@ -900,30 +936,43 @@ case- s2i0 of
 (* ****** ****** *)
 
 fun
-iscbv
+isCBV0
 ( s1e
 : s1exp): bool =
 (
 case+
 s1e.node() of
 | S1Eid(sid) =>
-  sid = $SYM.CBV_symbol
+  sid = $SYM.CBV0_symbol
 | _(*non-S1Eid*) => false
 )
 fun
-iscbr
+isCBV1
 ( s1e
 : s1exp): bool =
 (
 case+
 s1e.node() of
 | S1Eid(sid) =>
-  sid = $SYM.CBR_symbol
+  sid = $SYM.CBV1_symbol
+| _(*non-S1Eid*) => false
+)
+fun
+isCBRF
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid(sid) =>
+  sid = $SYM.CBRF_symbol
 | _(*non-S1Eid*) => false
 )
 
+(* ****** ****** *)
+
 fun
-istop0
+isTOP0
 ( s1e
 : s1exp): bool =
 (
@@ -934,14 +983,14 @@ s1e.node() of
 | _(*non-S1Eid*) => false
 )
 fun
-istop1
+isTOP1
 ( s1e
 : s1exp): bool =
 (
 case+
 s1e.node() of
 | S1Eid(sid) =>
-  sid = $SYM.QBANG_symbol
+  sid = $SYM.QMNEG_symbol
 | _(*non-S1Eid*) => false
 )
 
@@ -976,14 +1025,16 @@ s1e1.node() of
 | S1Eexists _ => auxapp1_exi_(s1e0)
 //
 | _ when
-    iscbv(s1e1) => auxapp1_cbv_(s1e0)
+    isCBV0(s1e1) => auxapp1_cbv0_(s1e0)
 | _ when
-    iscbr(s1e1) => auxapp1_cbr_(s1e0)
+    isCBV1(s1e1) => auxapp1_cbv1_(s1e0)
+| _ when
+    isCBRF(s1e1) => auxapp1_cbrf_(s1e0)
 //
 | _ when
-    istop0(s1e1) => auxapp1_top0_(s1e0)
+    isTOP0(s1e1) => auxapp1_top0_(s1e0)
 | _ when
-    istop1(s1e1) => auxapp1_top1_(s1e0)
+    isTOP1(s1e1) => auxapp1_top1_(s1e0)
 //
 | _ when
     isextp(s1e1) => auxapp1_extp_(s1e0)
@@ -1168,6 +1219,12 @@ S1Eapp1
 val-
 S1Eforall(s1qs) = s1e1.node()
 //
+(*
+val () =
+println!
+("auxapp1_uni_: s1qs = ", s1qs)
+*)
+//
 var s2vs_
   : s2varlst_vt = list_vt_nil()
 var s2ps_
@@ -1191,9 +1248,11 @@ in
 //
   let
     val s2vs =
-    list_vt2t(list_vt_reverse(s2vs_))
+    list_vt2t
+    (list_vt_reverse(s2vs_))
     val s2ps =
-    list_vt2t(list_vt_reverse(s2ps_))
+    list_vt2t
+    (list_vt_reverse(s2ps_))
   in
     s2exp_uni(s2vs, s2ps, s2e2(*body*))
   end
@@ -1248,31 +1307,71 @@ end // end of [auxapp1_exi_]
 (* ****** ****** *)
 
 and
-auxapp1_cbv_
+auxapp1_cbv0_
 ( s1e0
 : s1exp): s2exp = let
+//
+val CBV0 = 0 // !
 //
 val-
 S1Eapp1
 (s1e1, s1e2) = s1e0.node()
 //
+val s2e2 =
+  trans12_sexp(s1e2)
+val s2t2 = s2e2.sort()
+//
 in
+if
+sort2_is_impred(s2t2)
+then
 s2exp_arg
-(0(*cbv*), trans12_sexp_ci(s1e2))
-end // [auxapp1_cbv_]
+(CBV0, s2e2) else auxapp1_a_(s1e0)
+end // [auxapp1_cbv0_]
 and
-auxapp1_cbr_
+auxapp1_cbv1_
 ( s1e0
 : s1exp): s2exp = let
+//
+val CBV1 = 1 // ~
 //
 val-
 S1Eapp1
 (s1e1, s1e2) = s1e0.node()
 //
+val s2e2 =
+  trans12_sexp(s1e2)
+val s2t2 = s2e2.sort()
+//
 in
+if
+sort2_is_impred(s2t2)
+then
 s2exp_arg
-(1(*cbr*), trans12_sexp_ci(s1e2))
-end // [auxapp1_cbr_]
+(CBV1, s2e2) else auxapp1_a_(s1e0)
+end // [auxapp1_cbv1_]
+and
+auxapp1_cbrf_
+( s1e0
+: s1exp): s2exp = let
+//
+val CBRF = ~1 // &
+//
+val-
+S1Eapp1
+(s1e1, s1e2) = s1e0.node()
+//
+val s2e2 =
+  trans12_sexp(s1e2)
+val s2t2 = s2e2.sort()
+//
+in
+if
+sort2_is_impred(s2t2)
+then
+s2exp_arg
+(CBRF, s2e2) else auxapp1_a_(s1e0)
+end // [auxapp1_cbrf_]
 
 (* ****** ****** *)
 
@@ -1339,7 +1438,7 @@ s1e2.node() of
 ) : s1explst // end of [val]
 //
 val
-s2t0 = the_sort2_tflt
+s2t0 = the_sort2_type
 val
 tnm1 =
 (
@@ -1366,7 +1465,7 @@ in
 s2e0 where
 {
   val s2e0 =
-  s2exp_tyext(the_sort2_tflt, tnm1, s2es)
+  s2exp_tyext(the_sort2_type, tnm1, s2es)
 (*
   val ((*void*)) =
   println!("trans12_sexp: ")
@@ -1380,18 +1479,18 @@ end // end of [auxapp1_extp_]
 (* ****** ****** *)
 
 fun
-isatx
+isAXCG
 ( s1e
 : s1exp): bool =
 (
 case+
 s1e.node() of
 | S1Eid(sid) =>
-  sid = $SYM.AXT_symbol
+  sid = $SYM.AXCG_symbol
 | _(*non-S1Eid*) => false
 )
 fun
-isarrw
+isARRW
 ( s1e
 : s1exp): bool =
 (
@@ -1482,7 +1581,7 @@ S1Eapp2
 in
 //
 if
-isarrw(s1e1)
+isARRW(s1e1)
 then let
 //
 var npf
@@ -1560,7 +1659,7 @@ s1e1.node() of
 | _(*non-S1Eimp*) =>
   (
   ifcase
-  | isatx(s1e1) =>
+  | isAXCG(s1e1) =>
     let
     val s2e2 =
     trans12_sexp_ci(s1e2)
@@ -1573,7 +1672,7 @@ s1e1.node() of
     in
       s2exp_atx(s2e2, s2e3)
     end
-  | _(* else *) =>
+  | _ (* else *) =>
     let
     val
     s2e1 =
@@ -1727,7 +1826,8 @@ val-
 S1Etuple
 (knd, s1es) = s1e0.node()
 //
-val s2es = trans12_sexplst_ci(s1es)
+val s2es =
+trans12_sexplst_ci(s1es)
 //
 in
   s2exp_tuple1(knd, s2es)
@@ -1956,24 +2056,22 @@ _(*rest-of-s1exp*) =>
 let
 val s2e0 =
 trans12_sexp(s1e0)
+val s2t1 = s2e0.sort()
 //
 (*
 val ((*void*)) =
 println!
-("\
-trans12_sexp_ck: \
-s2e0.sort() = ", s2e0.sort())
+("trans12_sexp_ck: s2t1 = ", s2t1)
 *)
 //
 in
-  if
-  s2e0.sort() <= s2t0
-  then s2e0
-  else
-  s2exp_cast(s1e0.loc(), s2e0, s2t0)
+if
+s2t1 <= s2t0
+then s2e0 else
+s2exp_cast(s1e0.loc(), s2e0, s2t0)
 end // end of [let]
 //
-end // end of [trans12_sexp_ck]
+end (* end of [trans12_sexp_ck] *)
 
 (* ****** ****** *)
 
@@ -2250,12 +2348,14 @@ val
 res =
 (
 case+ res of
-| None() => the_sort2_tbox
-| Some(s1t) => trans12_sort(s1t)
+|
+None() => the_sort2_tbox
+|
+Some(s1t) => trans12_sort(s1t)
 ) : sort2 // end of [val]
 //
-  val
-  s2t0 = auxmargs(arg, res)
+val
+s2t0 = auxmargs(arg, res)
 //
 in
   s2cst_make_idst(sid, s2t0)
@@ -2265,7 +2365,7 @@ end where
 val+
 D1ATYPE
 ( sid, arg
-, res, d1cs) = d1t.node()
+, res, d1cs) = d1t.node((*void*))
 //
 fun
 auxargs
@@ -2274,22 +2374,25 @@ auxargs
 ) : sort2lst =
 (
 case+ xs of
-| list_nil() =>
-  (
-  list_nil(*void*)
-  )
-| list_cons(x0, xs) =>
-  (
-  case+ x0.node() of
-  | T1ARGsome(s1t, _) =>
-    list_cons
-    (trans12_sort(s1t), auxargs(xs))
-  )
+|
+list_nil() =>
+(
+list_nil(*void*)
+)
+|
+list_cons(x0, xs) =>
+(
+case+ x0.node() of
+| T1ARGsome(s1t, _) =>
+  list_cons
+  (trans12_sort(s1t), auxargs(xs))
+)
 ) (* end of [auxargs] *)
 //
 fun
 auxmargs
-( xs: t1marglst
+( xs
+: t1marglst
 , res: sort2): sort2 =
 (
 case+ xs of

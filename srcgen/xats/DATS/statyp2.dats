@@ -147,9 +147,11 @@ and
 XATS_CHAR_T = symbol("xats_char_t")
 //
 val
-XATS_SFLOAT_T = symbol("xats_sfloat_t")
+XATS_SFLT_T = symbol("xats_sflt_t")
 and
-XATS_DFLOAT_T = symbol("xats_dfloat_t")
+XATS_DFLT_T = symbol("xats_dflt_t")
+and
+XATS_LDFLT_T = symbol("xats_ldflt_t")
 //
 val
 XATS_STRING_T = symbol("xats_string_t")
@@ -169,7 +171,7 @@ end // end of [local]
 implement
 the_t2ype_void =
 t2ype_make_name
-(the_sort2_tflt, XATS_VOID_T)
+(the_sort2_type, XATS_VOID_T)
 //
 implement
 the_t2ype_p1tr =
@@ -182,7 +184,7 @@ the_t2ype_p2tr =
 t2ype_make_name(s2t0, XATS_P2TR_T)
 ) where
 {
-val s2ts = list_sing(the_sort2_vtflt)
+val s2ts = list_sing(the_sort2_vwtp)
 val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
 }
 //
@@ -191,30 +193,34 @@ val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
 implement
 the_t2ype_sint =
 t2ype_make_name
-(the_sort2_tflt, XATS_SINT_T)
+(the_sort2_type, XATS_SINT_T)
 implement
 the_t2ype_uint =
 t2ype_make_name
-(the_sort2_tflt, XATS_UINT_T)
+(the_sort2_type, XATS_UINT_T)
 //
 implement
 the_t2ype_bool =
 t2ype_make_name
-(the_sort2_tflt, XATS_BOOL_T)
+(the_sort2_type, XATS_BOOL_T)
 //
 implement
 the_t2ype_char =
 t2ype_make_name
-(the_sort2_tflt, XATS_CHAR_T)
+(the_sort2_type, XATS_CHAR_T)
 //
 implement
-the_t2ype_sfloat =
+the_t2ype_sflt =
 t2ype_make_name
-(the_sort2_tflt, XATS_SFLOAT_T)
+(the_sort2_type, XATS_SFLT_T)
 implement
-the_t2ype_dfloat =
+the_t2ype_dflt =
 t2ype_make_name
-(the_sort2_tflt, XATS_DFLOAT_T)
+(the_sort2_type, XATS_DFLT_T)
+implement
+the_t2ype_ldflt =
+t2ype_make_name
+(the_sort2_type, XATS_LDFLT_T)
 //
 implement
 the_t2ype_string =
@@ -229,7 +235,7 @@ the_t2ype_lazy =
 t2ype_make_name(s2t0, XATS_LAZY_T)
 ) where
 {
-val s2ts = list_sing(the_sort2_tflt)
+val s2ts = list_sing(the_sort2_type)
 val s2t0 = S2Tfun(s2ts, the_sort2_tbox)
 }
 implement
@@ -238,8 +244,8 @@ the_t2ype_llazy =
 t2ype_make_name(s2t0, XATS_LLAZY_VT)
 ) where
 {
-val s2ts = list_sing(the_sort2_vtflt)
-val s2t0 = S2Tfun(s2ts, the_sort2_vtbox)
+val s2ts = list_sing(the_sort2_vwtp)
+val s2t0 = S2Tfun(s2ts, the_sort2_vtbx)
 }
 
 (* ****** ****** *)
@@ -247,7 +253,7 @@ val s2t0 = S2Tfun(s2ts, the_sort2_vtbox)
 implement
 the_t2ype_excptn =
 t2ype_make_name
-(the_sort2_vtbox, XATS_EXCPTN_VT)
+(the_sort2_vtbx, XATS_EXCPTN_VT)
 //
 (* ****** ****** *)
 
@@ -333,6 +339,8 @@ typedef
 t2xtv_struct = @{
   t2xtv_loc= loc_t
 ,
+  t2xtv_sort= sort2
+,
   t2xtv_type= t2ype
 ,
   t2xtv_stamp= stamp
@@ -344,11 +352,24 @@ t2xtv_tbox=ref(t2xtv_struct)
 in (*in-of-local*)
 //
 implement
-t2xtv_new(loc0) =
+t2xtv_new
+  (loc0) =
+let
+val
+s2t0 = the_sort2_none
+in
+t2xtv_new_srt(loc0, s2t0)
+end // end of [t2xtv_new]
+//
+implement
+t2xtv_new_srt
+  (loc0, s2t0) =
 (
 ref<t2xtv_struct>
 @{
   t2xtv_loc= loc0
+,
+  t2xtv_sort= s2t0
 ,
   t2xtv_type= t2p0
 ,
@@ -358,11 +379,16 @@ ref<t2xtv_struct>
 {
 val t2p0 = the_t2ype_none0
 val stamp = t2xtv_stamp_new()
-} (* end of [t2xtv_new0] *)
+} (* end of [t2xtv_new_srt] *)
 //
 implement
 t2xtv_get_loc
   (xtv) = xtv->t2xtv_loc
+//
+implement
+t2xtv_get_sort
+  (xtv) = xtv->t2xtv_sort
+//
 implement
 t2xtv_get_type
   (xtv) = xtv->t2xtv_type
@@ -389,27 +415,48 @@ end // end of [local]
 //
 implement
 t2ype_new(loc0) =
-t2ype_xtv(t2xtv_new(loc0))
+let
+val
+xtv =
+t2xtv_new(loc0)
+in
+  t2ype_new_xtv(xtv)
+end
 //
 implement
-t2ype_xtv(xtv0) = let
+t2ype_new_xtv
+  (xtv0) = let
 //
 val node = T2Pxtv(xtv0)
 val s2t0 = the_sort2_none
 //
 in
   t2ype_make_node(s2t0, node)
-end // end of [t2ype_xtv]
+end // end of [t2ype_new_xtv]
 //
 implement
-t2ype_srt_xtv
+t2ype_new_loc_var
+  (loc0, s2v0) = let
+//
+val
+s2t0 = s2v0.sort()
+val
+xtv0 =
+t2xtv_new_srt(loc0, s2t0)
+//
+in
+t2ype_new_srt_xtv(s2t0, xtv0)
+end
+//
+implement
+t2ype_new_srt_xtv
   (s2t0, xtv0) = let
 //
 val node = T2Pxtv(xtv0)
 //
 in
-  t2ype_make_node(s2t0, node)
-end // end of [t2ype_srt_xtv]
+  t2ype_make_node( s2t0, node )
+end // end of [t2ype_new_srt_xtv]
 //
 (* ****** ****** *)
 //
@@ -441,10 +488,12 @@ ifcase
 | sym=XATS_CHAR_T =>
   the_char_ctype.type()
 //
-| sym=XATS_SFLOAT_T =>
-  the_sfloat_ctype.type()
-| sym=XATS_DFLOAT_T =>
-  the_dfloat_ctype.type()
+| sym=XATS_SFLT_T =>
+  the_sflt_ctype.type()
+| sym=XATS_DFLT_T =>
+  the_dflt_ctype.type()
+| sym=XATS_LDFLT_T =>
+  the_ldflt_ctype.type()
 //
 | sym=XATS_STRING_T =>
   the_string_ctype.type()
@@ -663,6 +712,12 @@ t2pf.node() of
 )
 | _ (* non-T2Papp *) => None_vt(*void*)
 )
+//
+(* ****** ****** *)
+//
+// HX-2020-07-04:
+// Please put the code below
+// that requires initialization
 //
 (* ****** ****** *)
 

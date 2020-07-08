@@ -1,0 +1,201 @@
+(* ###### ###### ###### ###### ###### *)
+
+#
+# ATS-Xanadu:
+# Implementing ATS3 in ATS2
+#
+
+(* ###### ###### ###### ###### ###### *)
+
+HX-2018-04-07: Let us get started!!!
+
+(* ###### ###### ###### ###### ###### *)
+
+HX-2018-08-01:
+
+What is ATS3?
+
+There are many aspects in terms of what
+ATS3 is.
+
+1. Static debugging:
+   Dependent types, Linear Types
+
+2. Dynamic semantics:
+   C + templates (of style of C++)
+
+3. Extensive support for meta-programming
+
+(* ###### ###### ###### ###### ###### *)
+
+Structure of xatsopt
+
+srcgen:
+srcgen/util:
+for system-dependent stuff
+srcgen/xats:
+for system-independent stuff
+
+prelude: for libats-prelude
+
+(* ###### ###### ###### ###### ###### *)
+
+HX-2018-10-12:
+
+I have been teaching ATS2 at Boston University for about 5 years
+The biggest problem I see is the VERY steep learning curve associated
+with ATS2.  Very few students were able to ever overcome it to reach
+the point where they could truly start enjoying the power of
+(advanced) type-checking.
+
+When I designed DML (the predecessor of ATS) nearly 20 years ago, I
+employed a two-layered approach to type-checking: ML-like
+type-checking first and dependent type-checking second. I abandoned
+this approach in ATS. Instead, there is only dependent type-checking
+in ATS1 and ATS2. In ATS3, I plan to follow DML's two-layered
+approach. In particular, a program in ATS3 that passes ML-like
+type-checking can be compiled and executed. So one can skip dependent
+type-checking in ATS3 if one so chooses. In this way, the learning
+curve is expected to be greatly leveled. But there is much more than
+just leveling the learning curve.
+
+ML-like types are algebraic (involving no explicit quantifiers). Such
+types are so much friendlier than dependent types (which often involve
+explicit quantifiers) for supporting type-based meta-programming. I
+feel I have finally got a chance to properly address the template
+selection problem that can cause so much annoyance in ATS2 (due to the
+use of dependent types for template selection).
+
+In short, ATS3 adds an extra layer to ATS2 for supporting ML-like
+algebraic type-checking.  Type-based meta-programming in ATS3 solely
+uses algebraic types (while ATS2 uses dependent types). ATS3 may be
+initially compiled to ATS2 so as to get it going quickly.
+
+(* ###### ###### ###### ###### ###### *)
+
+HX-2019-05:
+Started ATS-Temptory
+One crucial lesson learned:
+By default, template implementation should not be recursive!!!
+
+(* ###### ###### ###### ###### ###### *)
+
+HX-2020-06-29:
+
+Before I take a break, I would like to give you an update on the
+implementation of ATS3.
+
+To put things into some sort of perspective, let me first say a few
+words on the motivation behind ATS3.
+
+Advised by Prof. Frank Pfenning, I did my PhD thesis on PROGRAM
+VERIFICATION during my years at CMU, designing and implementing DML
+(Dependently Typed ML), a programming language that extends ML with a
+restricted form of dependent types. These days such dependent types
+are often referred to as DML-style dependent types in the literature
+(in contrast to Martin-Lof's dependent types that were originally
+invented for creating a type-theoretic foundation for Mathematics).
+By the way, please note that DML is considered the predecessor of ATS.
+
+As you can see, there are two words in PROGRAM VERIFICATION. One must
+talk about program construction when talking about program
+verification. Originally, the kind of programs I intended to verify
+were supposedly written in an ML-like language. But it soon (even
+before 2008) became very clear to me that such a language badly lacks
+meta-programming support. And I immediately started to improvise. I
+first added some support for templates into ATS1 and then strengthened
+it in ATS2.  Unfortunately, the kind of support for templates in ATS2
+was in direct conflict with the support for dependent types. The
+original primary motivation for ATS3 was to eliminate this (crippling)
+conflict.
+
+Up to ATS2, I mostly did language implementation for the purpose of
+experimenting with a variety of programming features. At this point, I
+no longer feel that I have time and/or energy to continue
+experimenting. Compared to ATS2, I re-designed the implementation of
+ATS3 to make it much more modular so as to better support future
+changes and additions. I intend for ATS3 to eventually become a language
+of production quality.
+
+ATS3 is implemented in ATS2. There are three big components planned
+for ATS3: program construction (Part I), program compilation (Part 2),
+and program verification (Part 3).
+
+######
+
+Part 1:
+
+At this moment, I have nearly finished Part I.
+
+This part covers type inference (involving only ML-style algebraic
+types) and template resolution (this is, replacing template instances
+with proper template-free code).  There is currently a rudimentary
+interpreter available for interpreting programs constructed in ATS3. I
+have also been implementing a template-based prelude library for
+ATS3.
+
+Part 2:
+
+I will soon be starting to work on Part 2 after taking a break, hoping
+to finish something that can be tested at the end of the Summer.
+
+Part 3:
+
+This part essentially does type-checking involving linear types and
+dependent types. Hopefully, I will be able to get a running implementation
+by the Spring next year.
+
+######
+
+Based on what I have experimented so far, I find the current support
+for templates in ATS3 to be a game-changing programming feature that
+can greatly increase one's programming productivity. I am a bit amazed
+by it :) If you think that the templates in C++ are powerful, then you
+will find that the templates in ATS3 are even more powerful in many
+aspects. Actually, not only just more powerful but also a great deal
+safer. Keep tuned.
+
+Cheers!
+
+######
+
+From statyp2_util0.dats:
+//
+// HX-2020-06-30:
+// This version can interfere
+// annotated static arguments
+// Here is a possible solution:
+// 1: Impredicatives precede Predicatives
+// 2: Impredicatives and Predicatives do not mix
+//
+
+######
+//
+// HX-2020-07-03:
+//
+fun
+<a:t0>
+foo(x: a): void
+//
+impltmp
+{a}
+foo(x) = ...
+//
+impltmp
+<a>
+FOO2<a> => foo(x) = ...
+//
+impltmp
+{a:t0}
+FOO2<a> = false
+impltmp
+FOO2<int> = (true)
+//
+val () = foo<int>(100)
+val () = foo<string>("100")
+//
+######
+
+(* ###### ###### ###### ###### ###### *)
+
+############ end of [README] ############

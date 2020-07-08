@@ -55,12 +55,12 @@ typedef the_char_ctype = char0
 (* ****** ****** *)
 //
 // single precision
-typedef the_sfloat_ctype = sfloat
+typedef the_sflt_ctype = sflt
 // double precision
-typedef the_dfloat_ctype = dfloat
+typedef the_dflt_ctype = dflt
 (*
 // ldouble precision
-typedef the_ldfloat_ctype = ldfloat
+typedef the_ldflt_ctype = ldflt
 *)
 //
 (* ****** ****** *)
@@ -71,12 +71,12 @@ typedef the_string_ctype = string0
 //
 typedef
 the_lazy_ctype(a:t0) = lazy(a)
-vtypedef
+vwtpdef
 the_llazy_ctype(a:vt) = lazy_vt(a)
 //
 (* ****** ****** *)
 //
-vtypedef the_excptn_ctype = excptn_vt
+vwtpdef the_excptn_ctype = excptn_vt
 //
 (* ****** ****** *)
 

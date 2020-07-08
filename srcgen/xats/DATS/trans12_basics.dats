@@ -51,6 +51,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
@@ -273,6 +274,34 @@ tok.node() of
 //
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+trans12_tag_d2conlst
+  (s2c0, d2cs) =
+(
+  auxlst(d2cs, 0(*i0*))
+) where
+{
+//
+fun
+auxlst
+( d2cs
+: d2conlst, i0: int): void =
+(
+case+ d2cs of
+| list_nil() => ()
+| list_cons(d2c1, d2cs) =>
+  (
+    auxlst(d2cs, i0 + 1)
+  ) where
+  {
+    val () = d2con_set_tag(d2c1, i0)
+  }
+) (* end of [auxlst] *)
+//
+} (* end of [trans12_tag_d2conlst] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_trans12_basics.dats] *)

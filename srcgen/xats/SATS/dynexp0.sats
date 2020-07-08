@@ -505,9 +505,20 @@ d0exp_node =
   , token(*WITH*)
   , tokenopt(*BAR*), d0claulst, token(*END*))
 //
-| D0Eanno of (d0exp, s0exp)
+(*
+| D0Elexn of
+  (token(*break/continue*))
+| D0Efrlp of
+  ( token
+  , d0exp(*semi*), d0exp(*body*))
+| D0Ewhlp of
+  ( token
+  , d0exp(*test*), d0exp(*body*))
+*)
 //
-| D0Equal of (token, d0exp) // qualified
+| D0Eanno of (d0exp, s0exp(*anno*))
+//
+| D0Equal of (token(*qual*), d0exp) // qualified
 //
 | D0Enone of (token) // HX: for error indication
 // end of [d0exp_node]
@@ -982,15 +993,21 @@ d0ecl_node =
 indicating error
 *)
 | D0Cnone of token
+//
 (*
-for skipping error
+HX-2019:
+for skipping synerr:
 *)
-| D0Ctokerr of token // error
+| D0Ctokerr of (token)
+//
+(*
+| D0Cthen of (token) // opt
+*)
 //
 // HX: delete fixity
 //
 | D0Cnonfix of
-  (token, i0dntlst)
+    (token, i0dntlst)
 //
 // HX: attach fixity
 //
@@ -1017,6 +1034,12 @@ for skipping error
   , g0eid(*fun*)
   , g0marglst(*arg*), d0macdef(*d0exp*))
   // end of [D0Cmacdef]
+//
+| D0Clocal of
+  ( token(*LOCAL*)
+  , d0eclist(*head*)
+  , tokenopt(*IN*)
+  , d0eclist(*body*), token(*END*))
 //
 | D0Cinclude of
     (token(*INCLUDE*), d0exp)
@@ -1050,23 +1073,23 @@ for skipping error
   ( token
   , s0eid, t0marglst, sort0opt, abstdf0)
 //
+| D0Cabsopen of
+  ( token(*ABSOPEN*), sq0eid(*qualid*) )
+//
 | D0Cabsimpl of
   ( token
   , sq0eid
   , s0marglst, sort0opt, token(*EQ*), s0exp)
   // D0Cabsimpl
 //
-| D0Cvaldecl of
-  ( token(*valkind*)
-  , decmodopt, v0aldeclist)
-//
-| D0Cvardecl of
-  ( token(*varkind*)
-  , decmodopt, v0ardeclist)
-//
 | D0Cfundecl of
-  ( token(*funkind*)
+  ( token(*kind*)
   , decmodopt, tq0arglst, f0undeclist)
+//
+| D0Cvaldecl of
+  ( token(*kind*), decmodopt, v0aldeclist)
+| D0Cvardecl of
+  ( token(*kind*), decmodopt, v0ardeclist)
 //
 | D0Cimpdecl of
   ( token(*impkind*)
@@ -1076,27 +1099,27 @@ for skipping error
   , effs0expopt, token(*EQ*), d0exp(*body*))
 //
 | D0Csymload of
-  ( token(*SYMLOAD*)
-  , s0ymb, token, dq0eid, t0intopt)
+  ( token(*symload*)
+  , s0ymb(*overloaded*)
+  , token(*WITH*), dq0eid, t0intopt(*precedence*))
 //
 | D0Cdatasort of
-    (token(*DATASORT*), d0tsortlst)
-  // D0Cdatasort
+  (token(*DATASORT*), d0tsortlst)
 //
 | D0Cexcptcon of
-    (token(*EXCPTCON*), d0atconlst)
-  // D0Cexcptcon
+  (token(*EXCPTCON*), d0atconlst)
 //
 | D0Cdatatype of
-    (token(*DATATYPE*), d0atypelst, wd0eclseq)
+  (token(*DATATYPE*), d0atypelst, wd0eclseq)
   // D0Cdatatype
 //
 | D0Cdynconst of
-    (token(*dyncstkind*), tq0arglst, d0cstdeclist)
+  (token(*dyncstkind*), tq0arglst, d0cstdeclist)
 //
-| D0Clocal of
-    ( token(*LOCAL*)
-    , d0eclist, tokenopt(*IN*), d0eclist, token(*END*))
+| D0Celse of (token) // opt
+| D0Cendif of (token) // req
+| D0Cifdec of (token, g0exp, tokenopt) // # if(gexp) ...
+| D0Celsif of (token, g0exp, tokenopt) // # elsif(gexp) ...
 //
 // end of [d0ecl_node]
 //

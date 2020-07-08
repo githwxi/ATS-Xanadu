@@ -42,9 +42,6 @@ bool_neg
 {b:bool}
 (x: bool(b)): bool(~b)
 //
-#symload ~ with bool_neg of 100
-#symload not with bool_neg of 100
-//
 (* ****** ****** *)
 //
 fun<>
@@ -58,15 +55,34 @@ bool_mul
 ( x: bool(b1)
 , y: bool(b2)): bool(b1*b2)
 //
-#symload + with bool_add of 100
-#symload * with bool_mul of 100
-//
 (* ****** ****** *)
 
 fun<>
 bool_print(b0: bool): void
-#symload print with bool_print of 110
 
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for bool
+//
+(* ****** ****** *)
+//
+#symload
+~ with bool_neg of 1000
+#symload
+neg with bool_neg of 1000
+#symload
+not with bool_neg of 1000
+//
+(* ****** ****** *)
+//
+#symload + with bool_add of 1000
+#symload * with bool_mul of 1000
+//
+(* ****** ****** *)
+//
+#symload print with bool_print of 1000
+//
 (* ****** ****** *)
 
 (* end of [bool.sats] *)

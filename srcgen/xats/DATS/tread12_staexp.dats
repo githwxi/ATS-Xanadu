@@ -48,6 +48,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 //
 #staload "./../SATS/tread12.sats"
 //
@@ -251,14 +252,24 @@ s2e0.node() of
   }
 //
 | S2Enone0() => ()
-| S2Enone1(s1e) =>
+| S2Enone1(loc, s1e) =>
   {
 //
     val () =
     trerr12_add(TRERR12s2exp(s2e0))
 //
     val () =
-    prerrln!(s1e.loc(), ": TRERR12(s2exp): ", s2e0);
+    prerrln!(loc, ": TRERR12(s2exp): ", s2e0);
+//
+  }
+| S2Enone2(loc, s2e) =>
+  {
+//
+    val () =
+    trerr12_add(TRERR12s2exp(s2e0))
+//
+    val () =
+    prerrln!(loc, ": TRERR12(s2exp): ", s2e0);
 //
   }
 //
@@ -316,13 +327,39 @@ list_foreach$fwork<labs2exp><env>(ls2e, env) = tread12_labs2exp(ls2e)
 
 implement
 //{}(*tmp*)
+tread12_t2ype(t2p0) = let
+(*
+val () =
+println!
+("tread12_s2exp: s2e0 = ", s2e0)
+*)
+//
+in
+//
+case+
+t2p0.node() of
+| _(*rest-of-s2exp*) => () // HX: yet-to-be-implemented
+//
+end // end of [tread12_t2ype]
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
 tread12_abstdf2(df2) =
 (
 case+ df2 of
 | ABSTDF2none() => ()
 | ABSTDF2some() => ()
-| ABSTDF2lteq(s2e) => tread12_s2exp(s2e)
-| ABSTDF2eqeq(s2e) => tread12_s2exp(s2e)
+| ABSTDF2lteq(t2p) =>
+  {
+  val () = tread12_t2ype(t2p)
+  }
+| ABSTDF2eqeq(s2e, t2p) =>
+  {
+  val () = tread12_s2exp(s2e)
+  val () = tread12_t2ype(t2p)
+  }
 )
 
 (* ****** ****** *)

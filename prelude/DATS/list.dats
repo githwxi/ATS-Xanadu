@@ -8,12 +8,60 @@
 #staload
 "./../SATS/list.sats"
 *)
+(*
+#staload
+"./../SATS/gseq.sats"
+*)
+
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_sing(x0) =
+list_cons(x0, list_nil())
 
 (* ****** ****** *)
 //
 impltmp
+<a>(*tmp*)
+list_make_nval
+  (n0, x0) =
+(
+list_vt2t
+(list_make_nval_vt<a>(n0, x0))
+)
+//
+impltmp
+<a>(*tmp*)
+list_make_nval_vt
+  (n0, x0) =
+(
+loop(n0, list_vt_nil())
+) where
+{
+fun
+loop
+{i,j:nat}.<i>.
+( i0
+: int(i)
+, xs
+: list_vt(a, j))
+: list_vt(a, i+j) =
+(
+if
+(i0 > 0)
+then
+loop
+( pred(i0)
+, list_vt_cons(x0, xs)) else xs
+)
+} (* end of [list_make_nval_vt] *)
+//
+(* ****** ****** *)
+//
+impltmp
 <>(*tmp*)
-list_nil?
+list_nilq
   (xs) =
 (
 case+ xs of
@@ -22,7 +70,7 @@ case+ xs of
 )
 impltmp
 <>(*tmp*)
-list_cons?
+list_consq
   (xs) =
 (
 case+ xs of
@@ -33,25 +81,11 @@ case+ xs of
 (* ****** ****** *)
 //
 impltmp
-{a:type}
-g_print<list(a)>(xs) =
-let
-val () =
-gseq_print<a,list(a)>(xs)
-end
-//
+<a:type>
+list_head_raw(xs) = xs.0
 impltmp
-{a:type}
-gseq_print$beg
-< a, list(a) >() = string_print("(")
-impltmp
-{a:type}
-gseq_print$end
-< a, list(a) >() = string_print(")")
-impltmp
-{a:type}
-gseq_print$sep
-< a, list(a) >() = string_print(",")
+<a:type>
+list_tail_raw(xs) = xs.1
 //
 (* ****** ****** *)
 //
@@ -79,8 +113,18 @@ case+ xs of
 //
 impltmp
 <a>(*tmp*)
+list_extend
+(xs, x0) = let
+val ys =
+list_sing<a>(x0) in
+  list_append<a>(xs, ys)
+end // end of [list_extend]
+//
+impltmp
+<a>(*tmp*)
 list_append
-{m,n}(xs, ys) = let
+{m,n}
+(xs, ys) = let
 fun
 loop
 {m:nat} .<m>.
@@ -101,10 +145,47 @@ case+ xs of
   end
 )
 in
-  let
-    var r0: list(a) in loop(xs, r0); r0
-  end
+let
+  var r0: list(a) in loop(xs, r0); r0
+end
 end (* end of [list_append] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_concat
+  (xss) =
+(
+list_vt2t
+(list_concat_vt<a>(xss))
+)
+//
+impltmp
+<a>(*tmp*)
+list_concat_vt
+  (xss) =
+(
+let
+val
+res = list_vt_nil()
+in
+list_vt_reverse<a>(auxmain(xss, res))
+end
+) where
+{
+fun
+auxmain
+( xss
+: list(list(a))
+, res: list_vt(a)): list_vt(a) =
+(
+case+ xss of
+| list_nil() => res
+| list_cons(xs, xss) =>
+  auxmain(xss, list_rappend_vt(xs, res))
+)
+} (* end of [list_concat_vt] *)
 //
 (* ****** ****** *)
 //
@@ -131,14 +212,65 @@ case+ xs of
 )
 } (* list_rappend *)
 //
+(* ****** ****** *)
+
+//
+impltmp
+<a>(*tmp*)
+list_rappend_vt
+  (xs, ys) =
+(
+  loop(xs, ys)
+) where
+{
+fun
+loop
+{m,n:nat}.<m>.
+( xs
+: list(a, m)
+, ys
+: list_vt(a, n)): list_vt(a, m+n) =
+(
+case+ xs of
+| list_nil() => ys
+| list_cons(x0, xs) =>
+  loop(xs, list_vt_cons(x0, ys))
+)
+} (* list_rappend_vt *)
+
+(* ****** ****** *)
+//
 impltmp
 <a>(*tmp*)
 list_reverse
   (xs) =
 (
-list_rappend<a>(xs, list_nil())
+  list_rappend<a>(xs, list_nil())
 ) (* list_reverse *)
 //
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_copy_vt
+  (xs) =
+(
+list_map_vt<a><a>(xs)
+) where
+{
+impltmp map$fopr<a><a>(x0) = x0
+}
+impltmp
+<a>(*tmp*)
+list_rcopy_vt
+  (xs) =
+(
+list_maprev_vt<a><a>(xs)
+) where
+{
+impltmp map$fopr<a><a>(x0) = x0
+}
+
 (* ****** ****** *)
 //
 impltmp
@@ -183,6 +315,35 @@ case+ xs of
 (* ****** ****** *)
 //
 impltmp
+<a>(*tmp*)
+list_listize = list_copy_vt<a>
+impltmp
+<a>(*tmp*)
+list_rlistize = list_rcopy_vt<a>
+//
+impltmp
+<a>(*tmp*)
+list_streamize
+  (xs) =
+( auxmain(xs) ) where
+{
+fun
+auxmain(xs) =
+$llazy
+(
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_nil()
+|
+list_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs))
+)
+} (* end of [list_streamize] *)
+//
+(* ****** ****** *)
+//
+impltmp
 <x0><y0>
 list_map(xs) =
 (
@@ -193,21 +354,28 @@ impltmp
 <x0><y0>
 list_map_vt(xs) = let
 //
+typedef
+ys = list_vt(y0)
+typedef
+ys(i:int) = list_vt(y0, i)
+//
 fun
-loop{i:nat}.<i>.
-( xs
-: list(x0, i)
-, r0
-: &(?list_vt(y0)) >> list_vt(y0, i)
-) : void =
+loop
+{i:nat}.<i>.
+( xs:
+  list(x0, i)
+, r0:
+& (?ys) >> ys(i)): void =
 (
 case+ xs of
 |
-list_nil() => ()
+list_nil() =>
+(r0 := list_vt_nil())
 |
 list_cons(x0, xs) =>
 let
-val y0 = map$fopr(x0)
+val y0 =
+map$fopr<x0><y0>(x0)
 val () =
 (r0 := list_vt_cons(y0, _))
 in
@@ -239,7 +407,8 @@ loop(xs, list_vt_nil((*void*)))
 {
 //
 fun
-loop{i:nat}.<i>.
+loop
+{i,j:nat}.<i>.
 ( xs
 : list(x0, i)
 , ys
@@ -255,9 +424,10 @@ list_cons(x0, xs) =>
   loop(xs, ys)
 ) where
 {
-  val y0 = map$fopr(x0)
+  val y0 =
+  map$fopr<x0><y0>(x0)
   val ys =
-  list_vt_cons{y0}(y0, ys)
+  list_vt_cons( y0, ys )
 }
 ) (* end of [loop] *)
 //
@@ -272,7 +442,7 @@ Quite an informative example:
 //
 impltmp
 <a>(*tmp*)
-list_tabulate_cref
+list_tabulate_cfr
   {n}(n0, f0) = let
 //
 impltmp
@@ -280,7 +450,71 @@ tabulate$fopr<a><n>(i0) = f0(i0)
 //
 in
   list_tabulate<a><n>(n0)
-end // end of [list_tabulate_cref]
+end // end of [list_tabulate_cfr]
+//
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_mergesort
+  (xs) =
+list_vt2t(list_mergesort_vt<a>(xs))
+impltmp
+<a>(*tmp*)
+list_mergesort_vt
+  (xs) =
+list_vt_mergesort<a>(list_copy_vt<a>(xs))
+
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_subsetize_vt
+  (xs) =
+(
+  auxmain(xs)
+) where
+{
+//
+typedef
+xs(n:int) =
+listlte_vt(a, n)
+//
+fun
+auxmain
+{n:int}
+( xs
+: list(a, n))
+: stream_vt(xs(n)) =
+$llazy
+(
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_sing
+(list_vt_nil())
+|
+list_cons(x0, xs) =>
+let
+val res1 =
+auxmain(xs)
+val res2 =
+auxmain(xs)
+val res2 =
+stream_vt_map0(res2) where
+{
+sexpdef n0 = n
+sexpdef n1 = pred(n)
+impltmp
+map0$fopr
+<xs(n1)><xs(n0)>
+(xs) = list_vt_cons(x0, xs)
+}
+in !
+(stream_vt_append<xs(n)>(res1, res2))
+end
+)
+} (* end of [list_subsetize_vt] *)
 //
 (* ****** ****** *)
 //
@@ -288,73 +522,167 @@ end // end of [list_tabulate_cref]
 //
 (* ****** ****** *)
 //
+(*
 impltmp
-{a:type}
+{a:t0}
 $UN.gseq_head
-<a,list(a)>(xs) = xs.0
+<list(a)><a>(xs) = xs.0
 impltmp
-{a:type}
+{a:t0}
 $UN.gseq_tail
-<a,list(a)>(xs) = xs.1
+<list(a)><a>(xs) = xs.1
 impltmp
-{a:type}
+{a:t0}
 $UN.gseq_uncons
-<a,list(a)>(xs) =
+<list(a)><a>(xs) =
 let
 val x0 = xs.0
 val () = xs := xs.1 in x0
+end
+*)
+//
+(* ****** ****** *)
+//
+impltmp
+{a:t0}
+gseq_nil
+<list(a)><a>() = list_nil()
+impltmp
+{a:t0}
+gseq_cons
+<list(a)><a>
+  (x0, xs) = list_cons(x0, xs)
+//
+(* ****** ****** *)
+//
+impltmp
+{a:t0}
+gseq_nilq
+<list(a)><a> = list_nilq{a}
+impltmp
+{a:t0}
+gseq_consq
+<list(a)><a> = list_consq{a}
+//
+(* ****** ****** *)
+//
+impltmp
+{a:t0}
+gseq_uncons_raw
+<list(a)><a>(xs) =
+let
+  val x0 = xs.0
+  val () = xs := xs.1 in x0
 end
 //
 (* ****** ****** *)
 //
 impltmp
 {a:type}
-gseq_nil
-<a,list(a)>() = list_nil()
+gseq_head_raw
+<list(a)><a> = list_head_raw<a>
 impltmp
 {a:type}
-gseq_cons
-<a,list(a)>
-  (x0, xs) = list_cons(x0, xs)
+gseq_tail_raw
+<list(a)><a> = list_tail_raw<a>
 //
 (* ****** ****** *)
 //
 impltmp
-{a:type}
-gseq_nil?
-<a,list(a)> = list_nil? <a>
+{a:t0}
+g_cmp<list(a)> = gseq_cmp<list(a)><a>
+
+(* ****** ****** *)
+//
 impltmp
-{a:type}
-gseq_cons?
-<a,list(a)> = list_cons? <a>
+{a:t0}
+g_print<list(a)>(xs) =
+let
+val () =
+gseq_print<list(a)><a>(xs)
+end // end of [g_fprint]
+//
+impltmp
+{a:t0}
+gseq_print$beg
+<list(a)><a>() = string_print("(")
+impltmp
+{a:t0}
+gseq_print$end
+<list(a)><a>() = string_print(")")
+impltmp
+{a:t0}
+gseq_print$sep
+<list(a)><a>() = string_print(",")
 //
 (* ****** ****** *)
 //
 impltmp
-{a:type}
-gseq_length<a,list(a)> = list_length<a>
+{a:t0}
+gseq_length<list(a)><a> = list_length<a>
 //
 (* ****** ****** *)
 //
 impltmp
-{a:type}
-gseq_forall<a,list(a)> = list_forall<a>
+{a:t0}
+gseq_forall<list(a)><a> = list_forall<a>
+impltmp
+{a:t0}
+gseq_foreach<list(a)><a> = list_foreach<a>
 //
+(* ****** ****** *)
+
+impltmp
+{a:t0}
+gseq_listize<list(a)><a> = list_listize<a>
+impltmp
+{a:t0}
+gseq_rlistize<list(a)><a> = list_rlistize<a>
+impltmp
+{a:t0}
+gseq_streamize<list(a)><a> = list_streamize<a>
+
 (* ****** ****** *)
 //
 impltmp
-{a:type}
-gseq_foreach<a,list(a)> = list_foreach<a>
+{a:t0}
+gseq_map_list<list(a)><a> = list_map_vt<a>
+impltmp
+{a:t0}
+gseq_map_rlist<list(a)><a> = list_maprev_vt<a>
 //
 (* ****** ****** *)
 //
-impltmp
-{a:type}
-gseq_map_list<a,list(a)> = list_map_vt<a>
-impltmp
-{a:type}
-gseq_map_rlist<a,list(a)> = list_maprev_vt<a>
+(*
+For gseqn-operations
+*)
+#staload "./../SATS/gseqn.sats"
 //
+(* ****** ****** *)
+
+impltmp
+{a:t0}{n:i0}
+gseqn_nilq<list(a,n)><a><n> = list_nilq<>
+impltmp
+{a:t0}{n:i0}
+gseqn_consq<list(a,n)><a><n> = list_consq<>
+
+(* ****** ****** *)
+
+impltmp
+{a:t0}{n:i0}
+gseqn_head<list(a,n)><a><n> = list_head<a>
+impltmp
+{a:t0}{n:i0}
+gseqn_tail
+<list(a,n)><a><n><list(a,n-1)> = list_tail<a>
+
+(* ****** ****** *)
+
+impltmp
+{a:t0}{n:i0}
+gseqn_length<list(a,n)><a><n> = list_length<a>
+
 (* ****** ****** *)
 
 (* end of [list.dats] *)

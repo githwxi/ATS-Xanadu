@@ -344,6 +344,8 @@ case+ x0.node() of
 //
 | G0Eint(int) =>
   fprint!(out, "G0Eint(", int, ")")
+| G0Estr(str) =>
+  fprint!(out, "G0Estr(", str, ")")
 //
 | G0Eapps(s0ts) =>
   fprint!(out, "G0Eapps(", s0ts, ")")
@@ -417,8 +419,8 @@ fprint_sort0
 (
 case+ x0.node() of
 //
-| S0Tid(tid) =>
-  fprint!(out, "S0Tid(", tid, ")")
+| S0Tid0(tid) =>
+  fprint!(out, "S0Tid0(", tid, ")")
 //
 | S0Tint(int) =>
   fprint!(out, "S0Tint(", int, ")")
@@ -567,6 +569,9 @@ fprint_t0arg
 (
 case+
 x0.node() of
+| T0ARGnone(tok) =>
+  fprint!
+  (out, "T0ARGnone(", tok, ")")
 | T0ARGsome(s0t, opt) =>
   fprint!
   (out

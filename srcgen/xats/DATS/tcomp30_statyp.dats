@@ -27,88 +27,94 @@
 
 (* ****** ****** *)
 //
-// For generic ordering
-//
-(* ****** ****** *)
-//
 // Author: Hongwei Xi
-// Start Time: June, 2019
+// Start Time: September, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
 
-fun
-<a:vtype>
-gl_eq00(a, a): bool
-fun
-<a:vtype>
-gl_eq11(a, a): bool
-
-fun
-<a:vtype>
-gl_neq00(a, a): bool
-fun
-<a:vtype>
-gl_neq11(!a, !a): bool
+#staload "./../SATS/basics.sats"
 
 (* ****** ****** *)
 
-fun
-<a:vtype>
-gl_lt00(a, a): bool
-fun
-<a:vtype>
-gl_lt11(!a, !a): bool
-
-fun
-<a:vtype>
-gl_gt00(a, a): bool
-fun
-<a:vtype>
-gl_gt11(!a, !a): bool
-
-fun
-<a:vtype>
-gl_lte00(a, a): bool
-fun
-<a:vtype>
-gl_lte11(!a, !a): bool
-
-fun
-<a:vtype>
-gl_gte00(a, a): bool
-fun
-<a:vtype>
-gl_gte11(!a, !a): bool
+#staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)
 
-fun
-<a:vtype>
-gl_cmp00(a, a): sint
-fun
-<a:vtype>
-gl_cmp11(!a, !a): sint
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
 
-fun
-<a:vtype>
-gl_max00(x: a, y: a): (a)
-fun
-<a:vtype>
-gl_max11(x: !a, y: !): (a)
-
+#staload "./../SATS/tcomp30.sats"
 
 (* ****** ****** *)
 
-fun
-<a:vtype>
-gl_min00(x: a, y: a): (a)
-fun
-<a:vtype>
-gl_min11(x: !a, y: !a): (a)
+implement
+tcomp30_sort
+  (s2t0) = let
+//
+(*
+val () =
+println!
+("tcomp30_sort: s2t0 = ", s2t0)
+*)
+//
+in
+//
+case+ s2t0 of
+| _(*rest-of-sort2*) =>
+  HSTnone1($UN.cast{ptr}(s2t0))
+//
+end // end of [tcomp30_sort]
+//
+(* ****** ****** *)
+
+implement
+tcomp30_type
+  (t2p0) = let
+//
+val s2t0 = t2p0.sort()
+//
+(*
+val () =
+println!
+("tcomp30_type: t2p0 = ", t2p0)
+val () =
+println!
+("tcomp30_type: s2t0 = ", s2t0)
+*)
+//
+val hst0 = tcomp30_sort(s2t0)
+//
+(*
+val () =
+println!
+("tcomp30_type: hst0 = ", hst0)
+*)
+//
+in
+//
+case+
+t2p0.node() of
+|
+_(*rest-of-t2ype*) =>
+let
+val data =
+$UN.cast{ptr}(t2p0)
+in
+h0typ_make_node(hst0, H0Tnone1(data))
+end // end of [rest]
+//
+end // end of [tcomp30_type]
 
 (* ****** ****** *)
 
-(* end of [gord_vt.sats] *)
+(* end of [xats_tcomp30_statyp.dats] *)

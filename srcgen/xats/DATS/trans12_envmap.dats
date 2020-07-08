@@ -75,6 +75,18 @@ FP0 = "./../SATS/filpath.sats"
 
 (* ****** ****** *)
 
+implement
+fprint_val<d2var>
+(out, d2v) = fprint_d2var(out, d2v)
+implement
+fprint_val<d2con>
+(out, d2c) = fprint_d2con(out, d2c)
+implement
+fprint_val<d2cst>
+(out, d2c) = fprint_d2cst(out, d2c)
+
+(* ****** ****** *)
+
 local
 
 val r0 = ref<int>(0)
@@ -996,21 +1008,43 @@ the_sexpenv_add_varlst
 } (* end of [the_sexpenv_add_varlst] *)
 
 implement
+the_sexpenv_add_tqalst
+  (tqas) =
+(
+  foreach(tqas)
+) where
+{
+fun
+foreach
+(tqas: tq2arglst): void =
+(
+case+ tqas of
+| list_nil() => ()
+| list_cons(tqa0, tqas) =>
+  let
+  val s2vs = tqa0.s2vs()
+  in
+  (the_sexpenv_add_varlst(s2vs); foreach(tqas))
+  end
+)
+} (* end of [the_sexpenv_add_tqalst] *)
+
+implement
 the_sexpenv_add_varlstlst
   (svss) =
 (
   foreach(svss)
 ) where
 {
-  fun
-  foreach
-  (svss: s2varlstlst): void =
-  (
-  case+ svss of
-  | list_nil() => ()
-  | list_cons(s2vs, svss) =>
-    (the_sexpenv_add_varlst(s2vs); foreach(svss))
-  )
+fun
+foreach
+(svss: s2varlstlst): void =
+(
+case+ svss of
+| list_nil() => ()
+| list_cons(s2vs, svss) =>
+  (the_sexpenv_add_varlst(s2vs); foreach(svss))
+)
 } (* end of [the_sexpenv_add_varlstlst] *)
 
 (* ****** ****** *)
@@ -1413,17 +1447,26 @@ val opt = the_dexpenv_find(sym)
 //
 val d2cs =
 (
-  case+ opt of
-  | ~None_vt() =>
-    (
-      list_nil((*void*))
-    )
-  | ~Some_vt(d2i) =>
-    (
-    case+ d2i of
-    | D2ITMcst(cs) => cs | _ => list_nil()
-    )
+case+ opt of
+| ~
+None_vt() =>
+(
+  list_nil((*void*))
+)
+| ~
+Some_vt(d2i) =>
+(
+case+ d2i of
+| D2ITMcst(xs) => xs | _ => list_nil()
+)
 ) : d2cstlst // end of [val]
+//
+val () =
+println!
+("the_dexpenv_add_cst: d2c = ", d2c)
+val () =
+println!
+("the_dexpenv_add_cst: d2cs = ", d2cs)
 //
 val d2i0 = D2ITMcst(list_cons(d2c, d2cs))
 //
@@ -1438,15 +1481,15 @@ the_dexpenv_add_conlst
   foreach(d2cs)
 ) where
 {
-  fun
-  foreach
-  (d2cs: d2conlst): void =
-  (
-  case+ d2cs of
-  | list_nil() => ()
-  | list_cons(d2c0, d2cs) =>
-    (the_dexpenv_add_con(d2c0); foreach(d2cs))
-  )
+fun
+foreach
+(d2cs: d2conlst): void =
+(
+case+ d2cs of
+| list_nil() => ()
+| list_cons(d2c0, d2cs) =>
+  (the_dexpenv_add_con(d2c0); foreach(d2cs))
+)
 } (* end of [the_dexpenv_add_conlst] *)
 
 (* ****** ****** *)
@@ -2026,6 +2069,10 @@ d2p0.node() of
 | D2Pvar(d2v) =>
   the_dexpenv_add_var(d2v)
 //
+| D2Pbang(d2p1) =>
+  {
+    val () = auxd2p0(d2p1)
+  }
 | D2Pflat(d2p1) =>
   {
     val () = auxd2p0(d2p1)
@@ -2154,12 +2201,12 @@ s2tx_view = S2TXTsrt(the_sort2_view)
 val
 s2tx_tbox = S2TXTsrt(the_sort2_tbox)
 val
-s2tx_tflt = S2TXTsrt(the_sort2_tflt)
+s2tx_type = S2TXTsrt(the_sort2_type)
 //
 val
-s2tx_vtbox = S2TXTsrt(the_sort2_vtbox)
+s2tx_vtbx = S2TXTsrt(the_sort2_vtbx)
 val
-s2tx_vtflt = S2TXTsrt(the_sort2_vtflt)
+s2tx_vwtp = S2TXTsrt(the_sort2_vwtp)
 //
 in (* in-of-local *)
 //
@@ -2179,17 +2226,23 @@ the_sortenv_padd($SYM.VIEW_symbol, s2tx_view)
 //
 val () =
 the_sortenv_padd($SYM.TBOX_symbol, s2tx_tbox)
+(*
 val () =
 the_sortenv_padd($SYM.TFLT_symbol, s2tx_tflt)
+*)
 val () =
-the_sortenv_padd($SYM.TYPE_symbol, s2tx_tflt)
+the_sortenv_padd($SYM.TYPE_symbol, s2tx_type)
 //
 val () =
-the_sortenv_padd($SYM.VTBOX_symbol, s2tx_vtbox)
+the_sortenv_padd($SYM.VTBX_symbol, s2tx_vtbx)
+val () =
+the_sortenv_padd($SYM.VWTP_symbol, s2tx_vwtp)
+(*
 val () =
 the_sortenv_padd($SYM.VTFLT_symbol, s2tx_vtflt)
 val () =
 the_sortenv_padd($SYM.VTYPE_symbol, s2tx_vtflt)
+*)
 //
 end // end of [local]
 

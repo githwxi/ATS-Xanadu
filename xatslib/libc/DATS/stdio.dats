@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,47 +27,36 @@
 
 (* ****** ****** *)
 //
-// For generic numbers
+// For generic ordering
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: June, 2019
+// Start Time: April, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-fun
-<a:vtype>
-gl_0((*void*)): (a)
-fun
-<a:vtype>
-gl_1((*void*)): (a)
-fun
-<a:vtype>
-gl_2((*void*)): (a)
+#extern
+fun<>
+fgetc_ref
+(filr: FILEref): int
+#extern
+fun<>
+fgetc_ptr
+(filp: !FILEptr1): int
 
 (* ****** ****** *)
 
-fun
-<a:vtype>
-gl_add00(x: a, y: a): a
-fun
-<a:vtype>
-gl_sub00(x: a, y: a): a
+#extern
+fun<>
+fputc_ref
+(char: int, filr: FILEref): int
+#extern
+fun<>
+fputc_ptr
+(char: int, filp: !FILEptr1): int
 
 (* ****** ****** *)
 
-fun
-<a:vtype>
-gl_mul00(x: a, y: a): a
-fun
-<a:vtype>
-gl_div00(x: a, y: a): a
-fun
-<a:vtype>
-gl_mod00(x: a, y: a): a
-
-(* ****** ****** *)
-
-(* end of [gnum_vt.sats] *)
+(* end of [stdio.dats] *)

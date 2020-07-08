@@ -34,7 +34,7 @@
 (* ****** ****** *)
 
 impltmp
-g_print<bool> = bool_print
+g_print<bool> = bool_print<>
 
 (* ****** ****** *)
 

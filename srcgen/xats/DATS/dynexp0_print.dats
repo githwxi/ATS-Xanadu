@@ -906,6 +906,14 @@ case+ x0.node() of
   ( out, "D0Cmacdef("
   , gid, "; ", gmas, "; ", mdef, ")")
 //
+| D0Clocal
+  (tbeg, d0cs0, topt, d0cs1, tend) =>
+  fprint!
+  ( out
+  , "D0Clocal("
+  , tbeg, "; ", d0cs0, "; "
+  , topt, "; ", d0cs1, "; ", tend, ")")
+//
 | D0Cinclude(tok, d0e) =>
   fprint!
   (out, "D0Cinclude(", tok, "; ", d0e, ")")
@@ -949,30 +957,36 @@ case+ x0.node() of
   ( out, "D0Cabstype("
   , tok, "; ", sid, "; ", arg, "; ", res, "; ", tdef, ")")
 //
+| D0Cabsopen(tok, sqid) =>
+  fprint!
+  ( out
+  , "D0Cabsopen(", tok, "; ", sqid, ")")
+//
 | D0Cabsimpl
   (tok, sqid, smas, res0, teq1, def2) =>
   fprint!
-  ( out, "D0Cabsimpl("
+  ( out
+  , "D0Cabsimpl("
   , tok, "; ", sqid, "; "
   , smas, "; ", res0, "; ", teq1, "; ", def2, ")")
+//
+| D0Cfundecl
+  (tok, mopt, tqas, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cfundecl("
+  , tok, "; ", mopt, "; ", tqas, "; ", d0cs, ")")
 //
 | D0Cvaldecl
   (tok, mopt, d0cs) =>
   fprint!
   ( out
   , "D0Cvaldecl(", tok, "; ", mopt, "; ", d0cs, ")")
-//
 | D0Cvardecl
   (tok, mopt, d0cs) =>
   fprint!
   ( out
   , "D0Cvardecl(", tok, "; ", mopt, "; ", d0cs, ")")
-//
-| D0Cfundecl
-  (tok, mopt, tqas, d0cs) =>
-  fprint!
-  ( out
-  , "D0Cfundecl(", tok, "; ", mopt, "; ", tqas, "; ", d0cs, ")")
 //
 | D0Cimpdecl
   ( tok, mopt, sqas, tqas
@@ -1008,11 +1022,14 @@ case+ x0.node() of
   ( out
   , "D0Cdynconst(", tok, "; ", tqas, "; ", d0cs, ")")
 //
-| D0Clocal
-  (tbeg, d0cs0, topt, d0cs1, tend) =>
-  fprint!
-  ( out, "D0Clocal("
-  , tbeg, "; ", d0cs0, "; ", topt, "; ", d0cs1, "; ", tend, ")")
+| D0Celse(tok) =>
+  fprint!(out, "D0Celse(", tok, ")")
+| D0Cendif(tok) =>
+  fprint!(out, "D0Cendif(", tok, ")")
+| D0Cifdec(tok, g0e1, topt) =>
+  fprint!(out, "D0Cifdec(", tok, "; ", g0e1, "; ", topt, ")")
+| D0Celsif(tok, g0e1, topt) =>
+  fprint!(out, "D0Celsif(", tok, "; ", g0e1, "; ", topt, ")")
 //
 (*
 | _(*rest-of-d1ecl*) =>

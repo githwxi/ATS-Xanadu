@@ -59,7 +59,7 @@ XATSOPT_TRERR23_EXN of ((*void*))
 exception
 XATSOPT_TRERR33_EXN of ((*void*))
 exception
-XATSOPT_TRERR3T_EXN of ((*void*))
+XATSOPT_TRERR3X_EXN of ((*void*))
 //
 (* ****** ****** *)
 //

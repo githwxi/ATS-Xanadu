@@ -214,6 +214,8 @@ case+ tnd of
 | T_IDENT_alp _ => true
 | T_IDENT_sym _ => true
 //
+| T_EQ((*void*)) => true
+//
 | T_BSLASH((*void*)) => true
 //
 | _ (* non-identifier *) => false
@@ -242,10 +244,39 @@ tok.node() of
     val () = buf.incby1()
   }
 //
+|
+T_EQ() =>
+i0dnt_some(tok) where
+{
+val () = buf.incby1()
+val loc = tok.loc((*void*))
+val tnd = T_IDENT_EQ(*void*)
+val tok = token_make_node(loc, tnd)
+}
+//
+|
+T_LT() =>
+i0dnt_some(tok) where
+{
+val () = buf.incby1()
+val loc = tok.loc((*void*))
+val tnd = T_IDENT_LT(*void*)
+val tok = token_make_node(loc, tnd)
+}
+|
+T_GT() =>
+i0dnt_some(tok) where
+{
+val () = buf.incby1()
+val loc = tok.loc((*void*))
+val tnd = T_IDENT_GT(*void*)
+val tok = token_make_node(loc, tnd)
+}
+//
 | T_BSLASH() =>
   i0dnt_some(tok) where
   {
-    val () = buf.incby1()
+    val () = buf.incby1() // backslash
   }
 //
 | _ (* non-identifier *) =>
@@ -462,7 +493,7 @@ in
   | T_BSLASH() =>
     i0dnt_some(tok) where
     {
-      val () = buf.incby1()
+      val () = buf.incby1() // backslash
     }
 //
 (*
@@ -493,17 +524,22 @@ in
 //
 case+
 tok.node() of
-| T_IDENT_qual _ => let
-    val () = buf.incby1()
-  in
-    err := e0;
-    SQ0EIDsome
-      (tok, p_s0eid(buf, err))
-    // SQ0EIDsome
-  end // end of [T_IDENT_qual]
+|
+T_IDENT_qual _ =>
+let
+  val () = buf.incby1()
+in
+  err := e0;
+  SQ0EIDsome
+    (tok, p_s0eid(buf, err))
+  // SQ0EIDsome
+end // end of [T_IDENT_qual]
 //
-| _(*non-IDENT_qual*) =>
-    SQ0EIDnone(p_s0eid(buf, err))
+|
+_(*non-IDENT_qual*) =>
+(
+  SQ0EIDnone(p_s0eid(buf, err))
+)
 //
 end // end of [p_sq0eid]
 //
@@ -609,6 +645,17 @@ case+ tnd of
     err := e0;
     g0exp_make_node(loc, G0Eint(i0))
   end // end of [t_t0int]
+//
+| _ when t_t0str(tnd) =>
+  let
+    val x0 =
+    p_t0str(buf, err)
+    val loc = x0.loc()
+  in
+    err := e0;
+    g0exp_make_node(loc, G0Estr(x0))
+  end // end of [t_t0int]
+//
 | T_LPAREN() => let
     val () = buf.incby1()
     val g0es =
@@ -854,7 +901,7 @@ case+ tnd of
     val id = p_s0tid(buf, err)
   in
     err := e0;
-    sort0_make_node(id.loc(), S0Tid(id))
+    sort0_make_node(id.loc(), S0Tid0(id))
   end // end of [t_s0tid]
 | _ (* error *) =>
   let
@@ -895,7 +942,7 @@ case+ tnd of
     val id = p_s0tid(buf, err)
   in
     err := e0;
-    sort0_make_node(id.loc(), S0Tid(id))
+    sort0_make_node(id.loc(), S0Tid0(id))
   end // end of [t_s0tid]
 //
 | _ when t_t0int(tnd) =>
@@ -1313,33 +1360,41 @@ val mark =
 //
 val tok0 = buf.get1()
 val tok1 = buf.get0()
+val tnd0 = tok0.node()
 //
 in
 //
 case+
 tok1.node() of
 //
-| T_CLN() => let
-    val () =
-    buf.clear_mark(mark)
-    val () = buf.incby1()
-    val s0t = p_sort0(buf, err)
-    val loc_res = tok0.loc() + s0t.loc()
-  in
-    err := e0;
-    t0arg_make_node
-    (loc_res, T0ARGsome(s0t, Some(tok0)))
-  end // end of [CLN]
+|
+T_CLN() when
+t_s0aid(tnd0) =>
+let
+  val () =
+  buf.clear_mark(mark)
+  val () = buf.incby1()
+  val s0t = p_sort0(buf, err)
+  val loc_res = tok0.loc() + s0t.loc()
+in
+  t0arg_make_node
+  (loc_res, T0ARGsome(s0t, Some(tok0)))
+end // end of [CLN]
 //
 | _(*non-COLON*) => let
     val () =
       buf.set_mark(mark)
     // end of [val]
-    val s0t = p_sort0(buf, err)
+    val s0t0 = p_sort0(buf, err)
   in
-    err := e0;
+    if
+    (err > e0)
+    then
     t0arg_make_node
-    (s0t.loc(), T0ARGsome(s0t, None(*void*)))
+    (tok0.loc(), T0ARGnone(tok0))
+    else
+    t0arg_make_node
+    (s0t0.loc(), T0ARGsome(s0t0, None(*void*)))
   end // end of [non-COLON]
 //
 end // end of [p_t0arg]

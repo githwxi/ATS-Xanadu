@@ -36,15 +36,6 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-fun
-<a:t0>
-g_eq(a, a): bool
-fun
-<a:t0>
-g_neq(a, a): bool
-
-(* ****** ****** *)
 //
 fun
 <a:t0>
@@ -66,21 +57,20 @@ fun
 <a:t0>
 g_neq(a, a): bool
 //
-#symload < with g_lt of 100
-#symload > with g_gt of 100
-#symload = with g_eq of 100
-//
-#symload <= with g_lte of 100
-#symload >= with g_gte of 100
-#symload != with g_neq of 100
-//
 (* ****** ****** *)
 //
 fun
 <a:t0>
 g_cmp(a, a): sint
 //
-#symload cmp with g_cmp of 100
+(* ****** ****** *)
+//
+fun
+<a:t0>
+g_max(x: a, y: a): (a)
+fun
+<a:t0>
+g_min(x: a, y: a): (a)
 //
 (* ****** ****** *)
 //
@@ -109,27 +99,115 @@ g_cmpz(x: a): sint
 //
 (* ****** ****** *)
 //
-#symload ltz with g_ltz of 100
-#symload gtz with g_gtz of 100
-#symload eqz with g_eqz of 100
+// HX:
+// For linear gords
 //
-#symload ltez with g_ltez of 100
-#symload gtez with g_gtez of 100
-#symload neqz with g_neqz of 100
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_eq00(~a, ~a): bool
+fun
+<a:vt>
+gl_eq11(!a, !a): bool
+
+fun
+<a:vt>
+gl_neq00(~a, ~a): bool
+fun
+<a:vt>
+gl_neq11(!a, !a): bool
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_lt00(~a, ~a): bool
+fun
+<a:vt>
+gl_lt11(!a, !a): bool
+
+fun
+<a:vt>
+gl_gt00(~a, ~a): bool
+fun
+<a:vt>
+gl_gt11(!a, !a): bool
+
+fun
+<a:vt>
+gl_lte00(~a, ~a): bool
+fun
+<a:vt>
+gl_lte11(!a, !a): bool
+
+fun
+<a:vt>
+gl_gte00(~a, ~a): bool
+fun
+<a:vt>
+gl_gte11(!a, !a): bool
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_cmp00(~a, ~a): sint
+fun
+<a:vt>
+gl_cmp11(!a, !a): sint
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_max00(x: ~a, y: ~a): (a)
+fun
+<a:vt>
+gl_max11(x: !a, y: !a): (a)
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+gl_min00(x: ~a, y: ~a): (a)
+fun
+<a:vt>
+gl_min11(x: !a, y: !a): (a)
+
+(* ****** ****** *)
 //
-#symload cmpz with g_cmpz of 100
+// HX-2020-05-30:
+// symbol overloading for gnum
 //
 (* ****** ****** *)
 //
-fun
-<a:t0>
-g_max(x: a, y: a): (a)
-fun
-<a:t0>
-g_min(x: a, y: a): (a)
+#symload < with g_lt of 0102
+#symload > with g_gt of 0102
+#symload = with g_eq of 0102
 //
-#symload max with g_max of 100
-#symload min with g_min of 100
+#symload <= with g_lte of 0102
+#symload >= with g_gte of 0102
+#symload != with g_neq of 0102
+//
+#symload cmp with g_cmp of 0102
+//
+(* ****** ****** *)
+//
+#symload max with g_max of 0102
+#symload min with g_min of 0102
+//
+(* ****** ****** *)
+//
+#symload ltz with g_ltz of 0101
+#symload gtz with g_gtz of 0101
+#symload eqz with g_eqz of 0101
+//
+#symload ltez with g_ltez of 0101
+#symload gtez with g_gtez of 0101
+#symload neqz with g_neqz of 0101
+//
+#symload cmpz with g_cmpz of 0101
 //
 (* ****** ****** *)
 

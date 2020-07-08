@@ -114,7 +114,7 @@ typedef t2xtv = t2xtv_tbox
 datatype
 sort2 =
 //
-| S2Tid of sym_t (* base sort *)
+| S2Tid0 of sym_t (* base sort *)
 | S2Tint of (int) (* base sort *)
 //
 | S2Tbas of (t2bas) (* base sort *)
@@ -181,13 +181,23 @@ the_sort2_view : sort2
 //
 val
 the_sort2_tbox : sort2
+(*
 val
 the_sort2_tflt : sort2
+*)
+val
+the_sort2_type : sort2
 //
+val
+the_sort2_vtbx : sort2
+val
+the_sort2_vwtp : sort2
+(*
 val
 the_sort2_vtbox : sort2
 val
 the_sort2_vtflt : sort2
+*)
 //
 (* ****** ****** *)
 
@@ -695,8 +705,7 @@ s2exp_node =
 | S2Eany of int(*knd*)
 //
 | S2Etop of // HX: knd: 0/1: 
-  (int(*knd*), s2exp) // top/typization
-  // end of [S2Etop]
+  (int(*knd*), s2exp) // ?(s2e)/~(s2e)
 //
 | S2Earg of // HX: knd: 0/1: 
   (int(*knd*), s2exp) // call-by-val/ref
@@ -739,7 +748,12 @@ s2exp_node =
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
 | S2Enone0 // of () // HX: error or special
-| S2Enone1 of s1exp(*src*) // HX: error indication
+| S2Enone1 of
+    (loc_t, s1exp(*src*)) // HX: error indication
+  // S2Enone1
+| S2Enone2 of
+    (loc_t, s2exp(*src*)) // HX: error indication
+  // S2Enone2
 //
 // end of [s2exp_node]
 //
@@ -850,16 +864,20 @@ s2exp_uni
 , s2ps: s2explst, s2e0: s2exp): s2exp
 //
 fun
-s2exp_list1(s2explst): s2exp
+s2exp_list1
+(s2es: s2explst): s2exp
 fun
-s2exp_list2(s2explst, s2explst): s2exp
+s2exp_list2
+(s2explst, s2explst): s2exp
 //
 fun
 s2exp_tuple1
-(knd: int, s2es: s2explst): s2exp
+(knd: int
+, s2es: s2explst): s2exp
 fun
 s2exp_tuple2
-(knd: int, s2explst, s2explst): s2exp
+(knd: int
+, s2explst, s2explst): s2exp
 //
 fun
 s2exp_record1
@@ -888,6 +906,10 @@ fun
 s2exp_none1(s1e: s1exp): s2exp
 //
 fun
+s2exp_none2
+(loc: loc_t, s2e: s2exp): s2exp
+//
+fun
 s2exp_none0_s2t
   (s2t: sort2): s2exp
 fun
@@ -897,8 +919,25 @@ s2exp_none1_s2t
 (* ****** ****** *)
 //
 fun
+s2exp_abscast
+( loc0: loc_t
+, s2e1: s2exp, s2t2: sort2): s2exp
+(*
+fun
+s2exp_sqacast
+( loc0: loc_t
+, s2e1: s2exp, s2t2: sort2): s2exp
+*)
+fun
+s2exp_tqacast
+( loc0: loc_t
+, s2e1: s2exp, s2t2: sort2): s2exp
+//
+(* ****** ****** *)
+//
+fun
 s2exp_make_node
-  (s2t0: sort2, node: s2exp_node): s2exp
+(s2t0: sort2, node: s2exp_node): s2exp
 //
 (* ****** ****** *)
 //
@@ -993,8 +1032,8 @@ datatype
 abstdf2 =
 | ABSTDF2none of () // nonabs
 | ABSTDF2some of () // unspecified
-| ABSTDF2lteq of s2exp // erasure
-| ABSTDF2eqeq of s2exp // definition
+| ABSTDF2lteq of t2ype // erasure
+| ABSTDF2eqeq of (s2exp, t2ype) // definition
 //
 fun
 print_abstdf2: print_type(abstdf2)
@@ -1131,9 +1170,9 @@ s2explst_revar_vt
 (* ****** ****** *)
 //
 fun
-s2exp_hnfize(s2e0: s2exp): s2exp
+s2exp_whnfize(s2e0: s2exp): s2exp
 //
-overload hnfize with s2exp_hnfize
+overload whnfize with s2exp_whnfize
 //
 (* ****** ****** *)
 //
@@ -1173,11 +1212,11 @@ overload unsome with s2cstnul_unsome
 // dynarray-based
 //
 fun
-s2cst_get_abs
+s2cst_get_abst
 (s2c: s2cst): abstdf2
 fun
-stamp_s2cst_abs
-(s2c: s2cst, abs: abstdf2): void
+stamp_s2cst_abst
+(s2c: s2cst, abst: abstdf2): void
 //
 (* ****** ****** *)
 //
@@ -1301,8 +1340,9 @@ val the_uint_ctype : s2cstref
 val the_bool_ctype : s2cstref
 val the_char_ctype : s2cstref
 //
-val the_sfloat_ctype : s2cstref
-val the_dfloat_ctype : s2cstref
+val the_sflt_ctype : s2cstref
+val the_dflt_ctype : s2cstref
+val the_ldflt_ctype : s2cstref
 //
 val the_string_ctype : s2cstref
 //

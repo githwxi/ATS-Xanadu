@@ -174,18 +174,6 @@ end // end of [let]
 (* ****** ****** *)
 
 implement
-d3pat_con
-(loc0, d2c0) =
-let
-val t2p0 = d2c0.type()
-in
-d3pat_make_node
-(loc0, t2p0, D3Pcon1(d2c0))
-end // end of [let]
-
-(* ****** ****** *)
-
-implement
 d3pat_tcast
 (d3p0, t2p0) =
 (
@@ -487,6 +475,32 @@ d3ecl_make_node
 {
   val loc0 = d2c0.loc((*void*))
 }
+//
+(* ****** ****** *)
+
+implement
+v3aldecl_get_loc(v3d0) =
+let
+val+V3ALDECL(rcd) = v3d0 in rcd.loc end
+
+(* ****** ****** *)
+
+implement
+v3ardecl_get_loc(v3d0) =
+let
+val+V3ARDECL(rcd) = v3d0 in rcd.loc end
+
+(* ****** ****** *)
+//
+implement
+f3undecl_get_loc(f3d0) =
+let
+val+F3UNDECL(rcd) = f3d0 in rcd.loc end
+//
+implement
+f3undecl_get_d2c(f3d0) =
+let
+val+F3UNDECL(rcd) = f3d0 in rcd.d2c end
 //
 (* ****** ****** *)
 

@@ -43,21 +43,73 @@ stream_cons
 
 fun
 <a:t0>
-stream_sing(x0: a): stream(a)
+stream_sing(a): stream(a)
 fun
 <a:t0>
-stream_pair(x0: a, y0: a): stream(a)
+stream_pair(a, a): stream(a)
+
+(* ****** ****** *)
+//
+fun
+<a:t0>
+stream_print
+  (xs: stream(a)): void
+//
+fun<>
+stream_print$len(): sint
+//
+fun<>
+stream_print$beg(): void
+fun<>
+stream_print$end(): void
+fun<>
+stream_print$sep(): void
+fun<>
+stream_print$rst(): void
+//
+fun
+<a:t0>
+stream_print_all
+  (xs: stream(a)): void
+fun
+<a:t0>
+stream_print_len
+(xs: stream(a), len: nint): void
+//
+(* ****** ****** *)
+
+fun
+<a:t0>
+stream_length(stream(a)): nint
 
 (* ****** ****** *)
 //
 fun
 <a:t0>
 stream_extend
-(xs: stream(a), x0: a): stream(a)
+(stream(a), a): stream(a)
 fun
 <a:t0>
 stream_append
-(xs: stream(a), ys: stream(a)): stream(a)
+(stream(a), stream(a)): stream(a)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+stream_concat
+(xss: stream(stream(a))): stream(a)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+stream_forall(xs: stream(a)): bool
+(*
+fun
+<x0:t0>
+stream_foreach(xs: stream(x0)): void
+*)
 //
 (* ****** ****** *)
 //
@@ -92,8 +144,10 @@ stream_filter_vt(stream(x0)): stream_vt(x0)
 (* ****** ****** *)
 //
 (*
-stream_mapopt: mapopt$fopr
-stream_mapopt_vt: mapopt$fopr
+stream_mapopt:
+filter$fopr, map$fopr
+stream_mapopt_vt:
+filter$fopr, map$fopr
 *)
 fun
 <x0:t0>
@@ -103,6 +157,70 @@ fun
 <x0:t0>
 <y0:vt>
 stream_mapopt_vt(stream(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+stream_mapoptn(stream(x0)): stream(y0)
+fun
+<x0:t0>
+<y0:vt>
+stream_mapoptn_vt(stream(x0)): stream_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+stream_sieve(stream(x0)): stream(x0)
+fun
+<x0:t0>
+stream_sieve_vt(stream(x0)): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for stream
+//
+(* ****** ****** *)
+//
+#symload nil with strmcon_nil
+#symload cons with strmcon_cons
+//
+(* ****** ****** *)
+
+#symload length with stream_length of 1000
+
+(* ****** ****** *)
+
+#symload extend with stream_extend of 1000
+#symload append with stream_append of 1000
+#symload concat with stream_concat of 1000
+
+(* ****** ****** *)
+//
+#symload forall with stream_forall of 1000
+(*
+#symload foreach with stream_foreach of 1000
+*)
+//
+(* ****** ****** *)
+//
+#symload filter with stream_filter of 1000
+#symload filter_vt with stream_filter_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload map with stream_map of 1000
+#symload map_vt with stream_map_vt of 1000
+#symload mapopt with stream_mapopt of 1000
+#symload mapopt_vt with stream_mapopt_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload sieve with stream_sieve of 1000
+#symload sieve_vt with stream_sieve_vt of 1000
 //
 (* ****** ****** *)
 

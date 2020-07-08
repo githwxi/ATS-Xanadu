@@ -295,6 +295,11 @@ fun
 popt_ENDFIX: parser(tokenopt)
 //
 (* ****** ****** *)
+
+fun
+popt_SRP_THEN: parser(tokenopt)
+
+(* ****** ****** *)
 //
 fun t_t0int(tnode): bool
 fun t_t0chr(tnode): bool

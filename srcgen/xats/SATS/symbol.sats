@@ -67,12 +67,6 @@ val DOT_symbol : symbol // symbol(".")
 val SMCLN_symbol : symbol // symbol(";")
 //
 (* ****** ****** *)
-
-val CBV_symbol : symbol // symbol("!")
-val CBR_symbol : symbol // symbol("&")
-val AXT_symbol : symbol // symbol(">>")
-
-(* ****** ****** *)
 //
 val ADD_symbol : symbol // SYMBOL("+")
 val SUB_symbol : symbol // SYMBOL("-")
@@ -99,6 +93,13 @@ val CLNEQ_symbol : symbol // SYMBOL(":=")
 val BANGEQ_symbol : symbol // SYMBOL("!=")
 //
 (* ****** ****** *)
+
+val CBV0_symbol : symbol // symbol("~")
+val CBV1_symbol : symbol // symbol("!")
+val CBRF_symbol : symbol // symbol("&")
+val AXCG_symbol : symbol // symbol(">>")
+
+(* ****** ****** *)
 //
 val EQLT_symbol : symbol // SYMBOL("=<")
 val EQGT_symbol : symbol // SYMBOL("=>")
@@ -107,11 +108,16 @@ val MSLT_symbol : symbol // symbol("-<")
 val MSGT_symbol : symbol // symbol("->")
 //
 (* ****** ****** *)
+
+val DOTLT_symbol : symbol // symbol(".<")
+val GTDOT_symbol : symbol // symbol(">.")
+
+(* ****** ****** *)
 //
 val WCARD_symbol : symbol // symbol("_")
 //
 val QMARK_symbol : symbol // symbol("?")
-val QBANG_symbol : symbol // symbol("?!")
+val QMNEG_symbol : symbol // symbol("~")
 //
 (* ****** ****** *)
 
@@ -155,12 +161,18 @@ val PROP_symbol : symbol // prop sort
 val VIEW_symbol : symbol // view sort
 //
 val TBOX_symbol : symbol // tbox sort
+(*
 val TFLT_symbol : symbol // tflt sort
-val TYPE_symbol : symbol // tflt sort
+*)
+val TYPE_symbol : symbol // type sort
 //
+val VTBX_symbol : symbol // vtbx sort
+val VWTP_symbol : symbol // vwtp sort
+(*
 val VTBOX_symbol : symbol // vtbox sort
 val VTFLT_symbol : symbol // vtflt sort
 val VTYPE_symbol : symbol // vtflt sort
+*)
 //
 (* ****** ****** *)
 
@@ -169,6 +181,13 @@ val LIN_symbol : symbol // lin
 (* ****** ****** *)
 //
 val CLO_symbol : symbol // clo
+val FNP_symbol : symbol // fnp
+val CFP_symbol : symbol // cfp
+val CFR_symbol : symbol // cfr
+//
+val LCFP_symbol : symbol // lcfp
+//
+(*
 val CFLT_symbol : symbol // cflt
 val FPTR_symbol : symbol // fptr
 val CPTR_symbol : symbol // cptr
@@ -178,6 +197,7 @@ val CLOFLT_symbol : symbol // cloflt
 val FUNPTR_symbol : symbol // funptr
 val CLOPTR_symbol : symbol // cloptr
 val CLOREF_symbol : symbol // cloref
+*)
 //
 (* ****** ****** *)
 

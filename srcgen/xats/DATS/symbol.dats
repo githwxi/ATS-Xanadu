@@ -325,15 +325,6 @@ SMCLN_symbol = symbol_make(";")
 (* ****** ****** *)
 
 implement
-CBV_symbol = symbol_make("!")
-implement
-CBR_symbol = symbol_make("&")
-implement
-AXT_symbol = symbol_make(">>")
-
-(* ****** ****** *)
-
-implement
 ADD_symbol = symbol_make("+")
 implement
 SUB_symbol = symbol_make("-")
@@ -372,6 +363,17 @@ BANGEQ_symbol = symbol_make("!=")
 (* ****** ****** *)
 //
 implement
+CBV0_symbol = symbol_make("!")
+implement
+CBV1_symbol = symbol_make("~")
+implement
+CBRF_symbol = symbol_make("&")
+implement
+AXCG_symbol = symbol_make(">>")
+//
+(* ****** ****** *)
+//
+implement
 EQLT_symbol = symbol_make("=<")
 implement
 EQGT_symbol = symbol_make("=>")
@@ -386,12 +388,24 @@ MSGT_symbol = symbol_make("->")
 (* ****** ****** *)
 //
 implement
+DOTLT_symbol = symbol_make(".<")
+implement
+GTDOT_symbol = symbol_make(">.")
+//
+(* ****** ****** *)
+//
+implement
 WCARD_symbol = symbol_make("_")
 //
 implement
 QMARK_symbol = symbol_make("?")
+//
+(*
+HX-2020-06-09:
+it was QBANG: ?!
+*)
 implement
-QBANG_symbol = symbol_make("?!")
+QMNEG_symbol = symbol_make("~")
 //
 (* ****** ****** *)
 
@@ -455,17 +469,25 @@ VIEW_symbol = symbol_make("view")
 //
 implement
 TBOX_symbol = symbol_make("tbox")
+(*
 implement
 TFLT_symbol = symbol_make("tflt")
+*)
 implement
 TYPE_symbol = symbol_make("type")
 //
+implement
+VTBX_symbol = symbol_make("vtbx")
+implement
+VWTP_symbol = symbol_make("vwtp")
+(*
 implement
 VTBOX_symbol = symbol_make("vtbox")
 implement
 VTFLT_symbol = symbol_make("vtflt")
 implement
 VTYPE_symbol = symbol_make("vtype")
+*)
 //
 (* ****** ****** *)
 
@@ -477,10 +499,19 @@ LINEAR_symbol = symbol_make("linear")
 *)
 
 (* ****** ****** *)
-
+//
 implement
 CLO_symbol = symbol_make("clo")
-
+implement
+FNP_symbol = symbol_make("fnp")
+implement
+CFP_symbol = symbol_make("cfp")
+implement
+CFR_symbol = symbol_make("cfr")
+implement
+LCFP_symbol = symbol_make("lcfp")
+//
+(*
 implement
 CFLT_symbol = symbol_make("cflt")
 implement
@@ -489,7 +520,8 @@ implement
 CPTR_symbol = symbol_make("cptr")
 implement
 CREF_symbol = symbol_make("cref")
-
+*)
+(*
 implement
 CLOFLT_symbol = symbol_make("cloflt")
 implement
@@ -498,7 +530,8 @@ implement
 CLOPTR_symbol = symbol_make("cloptr")
 implement
 CLOREF_symbol = symbol_make("cloref")
-
+*)
+//
 (* ****** ****** *)
 
 implement

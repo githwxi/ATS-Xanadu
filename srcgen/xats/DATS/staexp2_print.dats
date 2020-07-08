@@ -70,6 +70,7 @@ fprint with $LAB.fprint_label
 
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 
 (* ****** ****** *)
 
@@ -106,7 +107,7 @@ print_sort2(x0) =
 fprint_sort2(stdout_ref, x0) 
 implement
 prerr_sort2(x0) =
-fprint_sort2(stdout_ref, x0) 
+fprint_sort2(stderr_ref, x0) 
 
 local
 
@@ -121,10 +122,10 @@ fprint_sort2
 (
 case+ s2t0 of
 //
-| S2Tid(id) =>
-  fprint!(out, "S2Tid(", id, ")")
-| S2Tint(i0) =>
-  fprint!(out, "S2Tint(", i0, ")")
+| S2Tid0(id0) =>
+  fprint!(out, "S2Tid0(", id0, ")")
+| S2Tint(int) =>
+  fprint!(out, "S2Tint(", int, ")")
 //
 | S2Tbas(s2tb) =>
   fprint!(out, "S2Tbas(", s2tb, ")")
@@ -222,7 +223,7 @@ print_s2cst(x0) =
 fprint_s2cst(stdout_ref, x0) 
 implement
 prerr_s2cst(x0) =
-fprint_s2cst(stdout_ref, x0) 
+fprint_s2cst(stderr_ref, x0) 
 //
 implement
 fprint_s2cst
@@ -248,7 +249,7 @@ print_s2var(x0) =
 fprint_s2var(stdout_ref, x0) 
 implement
 prerr_s2var(x0) =
-fprint_s2var(stdout_ref, x0) 
+fprint_s2var(stderr_ref, x0) 
 //
 implement
 fprint_s2var
@@ -259,10 +260,10 @@ val () =
 fprint!(out, x0.sym())
 val () =
 fprint!(out, "(", x0.stamp(), ")")
-// (*
+(*
 val () =
 fprint!(out, ":(", x0.sort(), ")")
-// *)
+*)
 //
 } (* end of [fprint_s2var] *)
 //
@@ -274,7 +275,7 @@ print_s2eff(x0) =
 fprint_s2eff(stdout_ref, x0) 
 implement
 prerr_s2eff(x0) =
-fprint_s2eff(stdout_ref, x0) 
+fprint_s2eff(stderr_ref, x0) 
 *)
 (*
 local
@@ -327,10 +328,11 @@ case+ x0 of
   fprint!(out, "ABSTDF2none(", ")")
 | ABSTDF2some() =>
   fprint!(out, "ABSTDF2some(", ")")
-| ABSTDF2lteq(s2e) =>
-  fprint!(out, "ABSTDF2lteq(", s2e, ")")
-| ABSTDF2eqeq(s2e) =>
-  fprint!(out, "ABSTDF2eqeq(", s2e, ")")
+| ABSTDF2lteq(t2p) =>
+  fprint!(out, "ABSTDF2lteq(", t2p, ")")
+| ABSTDF2eqeq(s2e, t2p) =>
+  fprint!
+  (out, "ABSTDF2eqeq(", s2e, "; ", t2p, ")")
 )
 //
 (* ****** ****** *)
@@ -370,7 +372,7 @@ print_s2txt(x0) =
 fprint_s2txt(stdout_ref, x0) 
 implement
 prerr_s2txt(x0) =
-fprint_s2txt(stdout_ref, x0) 
+fprint_s2txt(stderr_ref, x0) 
 
 local
 
@@ -404,7 +406,7 @@ print_tyrec(x0) =
 fprint_tyrec(stdout_ref, x0) 
 implement
 prerr_tyrec(x0) =
-fprint_tyrec(stdout_ref, x0) 
+fprint_tyrec(stderr_ref, x0) 
 
 implement
 fprint_tyrec
@@ -435,7 +437,7 @@ print_s2exp(x0) =
 fprint_s2exp(stdout_ref, x0) 
 implement
 prerr_s2exp(x0) =
-fprint_s2exp(stdout_ref, x0) 
+fprint_s2exp(stderr_ref, x0) 
 
 local
 
@@ -572,8 +574,19 @@ s2e0.node() of
 //
 | S2Enone0() =>
   fprint!(out, "S2Enone0(", ")")
-| S2Enone1(s1esrc) =>
-  fprint!(out, "S2Enone1(", s1esrc, ")")
+| S2Enone1(loc, s1e) =>
+  fprint!( out, "S2Enone1(", s1e, ")" )
+(*
+  fprint!
+  (out, "S2Enone1(", loc, "; ", s1e, ")")
+*)
+| S2Enone2(loc, s2e) =>
+  fprint!( out, "S2Enone2(", s2e, ")" )
+(*
+  fprint!
+  (out, "S2Enone2(", loc, "; ", s2e, ")")
+*)
+//
 ) (* end of [fprint_s2exp] *)
 
 end // end of [local]
@@ -585,7 +598,7 @@ print_labs2exp(x0) =
 fprint_labs2exp(stdout_ref, x0) 
 implement
 prerr_labs2exp(x0) =
-fprint_labs2exp(stdout_ref, x0) 
+fprint_labs2exp(stderr_ref, x0) 
 //
 implement
 fprint_labs2exp
@@ -602,7 +615,7 @@ print_s2itm(x0) =
 fprint_s2itm(stdout_ref, x0) 
 implement
 prerr_s2itm(x0) =
-fprint_s2itm(stdout_ref, x0) 
+fprint_s2itm(stderr_ref, x0) 
 //
 implement
 fprint_s2itm

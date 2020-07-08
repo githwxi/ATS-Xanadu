@@ -133,6 +133,8 @@ fprint_val<f3arg> = fprint_f3arg
 //
 implement
 fprint_val<d3exp> = fprint_d3exp
+implement
+fprint_val<t3cst> = fprint_t3cst
 //
 (* ****** ****** *)
 //
@@ -204,6 +206,8 @@ case- x0.node() of
   fprint!
   (out, "D3Pcon2(", d2cs, ")")
 //
+| D3Pbang(d3p1) =>
+  fprint!(out, "D3Pbang(", d3p1, ")")
 | D3Pflat(d3p1) =>
   fprint!(out, "D3Pflat(", d3p1, ")")
 | D3Pfree(d3p1) =>
@@ -285,7 +289,7 @@ print_d3exp(x0) =
 fprint_d3exp(stdout_ref, x0) 
 implement
 prerr_d3exp(x0) =
-fprint_d3exp(stdout_ref, x0) 
+fprint_d3exp(stderr_ref, x0) 
 //
 implement
 fprint_d3exp
@@ -310,6 +314,10 @@ x0.node() of
 //
 | D3Evar(d2v1) =>
   fprint!(out, "D3Evar(", d2v1, ")")
+| D3Evknd(knd, d2v1) =>
+  fprint!
+  ( out
+  , "D3Evknd(", knd, ", ", d2v1, ")")
 //
 | D3Econ1(d2c1) =>
   fprint!(out, "D3Econ1(", d2c1, ")")
@@ -341,15 +349,34 @@ x0.node() of
   end
 // *)
 //
+| D3Efcon(d2c1) =>
+  fprint!(out, "D3Efcon(", d2c1, ")")
 | D3Efcst(d2c1) =>
   fprint!(out, "D3Efcst(", d2c1, ")")
 //
+| D3Etcon
+  (d2c1, ti3a, ti2s) =>
+  fprint!
+  ( out
+  , "D3Etcon("
+  , d2c1, "; ", ti3a, "; ", ti2s, ")")
 | D3Etcst
   (d2c1, ti3a, ti2s) =>
   fprint!
   ( out
   , "D3Etcst("
   , d2c1, "; ", ti3a, "; ", ti2s, ")")
+//
+| D3Etnfd
+  (d2e1, d3es) =>
+  fprint!
+  ( out
+  , "D3Etnfd(", d2e1, "; ", d3es, ")")
+| D3Etrec
+  (d2e1, d3es) =>
+  fprint!
+  ( out
+  , "D3Etrec(", d2e1, "; ", d3es, ")")
 //
 | D3Etimp
   (d2e1, tsub1, d2c2, tsub2) =>
@@ -479,9 +506,14 @@ x0.node() of
   (
    fprint!(out, "D3Eaddr(", d3e1, ")")
   )
+//
 | D3Efold(d3e1) =>
   (
    fprint!(out, "D3Efold(", d3e1, ")")
+  )
+| D3Efree(d3e1) =>
+  (
+   fprint!(out, "D3Efree(", d3e1, ")")
   )
 //
 | D3Eraise(d3e1) =>
@@ -536,6 +568,37 @@ x0.node() of
 //
 )
 //
+(* ****** ****** *)
+//
+implement
+print_t3cst(x0) =
+fprint_t3cst(stdout_ref, x0)
+implement
+prerr_t3cst(x0) =
+fprint_t3cst(stderr_ref, x0)
+//
+implement
+fprint_t3cst
+  (out, x0) =
+let
+val x0 = d3exp(x0)
+in
+//
+case-
+x0.node() of
+|
+D3Etcst
+( d2c1
+, ti3a, ti2s) =>
+let
+val-
+TI3ARGsome(targ) = ti3a
+in
+fprint!(out, d2c1, "<", targ, ">")
+end
+//
+end (* end of [fprint_t3cst] *)
+
 (* ****** ****** *)
 //
 implement
@@ -621,7 +684,7 @@ print_ti3arg(x0) =
 fprint_ti3arg(stdout_ref, x0) 
 implement
 prerr_ti3arg(x0) =
-fprint_ti3arg(stdout_ref, x0) 
+fprint_ti3arg(stderr_ref, x0) 
 //
 implement
 fprint_ti3arg
@@ -641,7 +704,7 @@ print_d3ecl(x0) =
 fprint_d3ecl(stdout_ref, x0) 
 implement
 prerr_d3ecl(x0) =
-fprint_d3ecl(stdout_ref, x0) 
+fprint_d3ecl(stderr_ref, x0) 
 //
 local
 
@@ -673,6 +736,11 @@ x0.node() of
 | D3Cextern
   (tok, d3c) =>
   fprint!(out, "D3Cextern(", d3c, ")")
+//
+| D3Clocal(head, body) =>
+  fprint!
+  ( out
+  , "D3Clocal(", head, "; ", body, ")")
 //
 | D3Cinclude
   ( tok
@@ -714,23 +782,21 @@ x0.node() of
     | Some _ => "Some(<fmodenv>)"): string
   }
 //
-| D3Clocal(head, body) =>
-  fprint!
-  ( out
-  , "D3Clocal(", head, "; ", body, ")")
+| D3Cabstype(d2cl) =>
+  fprint!(out, "D3Cabstype(", d2cl, ")")
 //
-| D3Cvaldecl
-  (knd, mopt, v3ds) =>
+| D3Cabsopen
+  (tok, sqid) =>
   fprint!
   ( out
-  , "D3Cvaldecl("
-  , knd, "; ", mopt, "; ", v3ds, ")")
-| D3Cvardecl
-  (knd, mopt, v3ds) =>
+  , "D3Cabsopen("
+  , tok(*absopen*), "; ", sqid, ")")
+| D3Cabsimpl
+  (knd, sqid, def0) =>
   fprint!
   ( out
-  , "D3Cvardecl("
-  , knd, "; ", mopt, "; ", v3ds, ")")
+  , "D3Cabsimpl("
+  , knd(*abskind*), "; ", sqid, "; ", def0, ")")
 //
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>
@@ -738,6 +804,17 @@ x0.node() of
   ( out
   , "D3Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", f3ds, ")")
+//
+| D3Cvaldecl
+  (knd, mopt, v3ds) =>
+  fprint!
+  ( out
+  , "D3Cvaldecl(", knd, "; ", mopt, "; ", v3ds, ")")
+| D3Cvardecl
+  (knd, mopt, v3ds) =>
+  fprint!
+  ( out
+  , "D3Cvardecl(", knd, "; ", mopt, "; ", v3ds, ")")
 //
 | D3Cimpdecl1
   ( knd, mopt
@@ -878,7 +955,8 @@ in
   , "a2g=", rcd.a2g, ", "
   , "res=", rcd.res, ", "
   , "def=", rcd.def, ", "
-  , "ctp=", rcd.ctp, ", ", "wtp=", rcd.wtp, "}")
+  , "rtp=", rcd.rtp, ", "
+  , "wtp=", rcd.wtp, ", ", "ctp=", rcd.ctp, "}")
 end // end of [fprint_f3undecl]
 
 (* ****** ****** *)
