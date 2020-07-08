@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -38,6 +38,10 @@
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
+(* ****** ****** *)
+
+#include "./../params.hats"
+
 (* ****** ****** *)
 
 #staload "./../SATS/basics.sats"
@@ -249,14 +253,14 @@ trans3t_dexp
 val loc0 = d3e0.loc()
 val t2p0 = d3e0.type()
 //
-// (*
+#if(__XATS_DEBUG__)
 val () =
 println!
 ("trans3t_dexp: d3e0 = ", d3e0)
 val () =
 println!
 ("trans3t_dexp: t2p0 = ", t2p0)
-// *)
+#endif
 //
 in
 //
@@ -551,7 +555,7 @@ d3e0.node() of
     trans3t_dexp(env0, d3e1)
   in
     d3exp_make_node(loc0, t2p0, D3Eanno(d3e1, s2e2))
-  end  
+  end
 //
 | D3Elcast(d3e1, lab2) =>
   let
@@ -559,7 +563,7 @@ d3e0.node() of
     trans3t_dexp(env0, d3e1)
   in
     d3exp_make_node(loc0, t2p0, D3Elcast(d3e1, lab2))
-  end  
+  end
 (*
 | D3Elcast(d3e1, lab2) => d3e0 (* HX: lab2: missing label *)
 *)
@@ -569,7 +573,7 @@ d3e0.node() of
     trans3t_dexp(env0, d3e1)
   in
     d3exp_make_node(loc0, t2p0, D3Etcast(d3e1, t2p2))
-  end  
+  end
 (*
 | D3Etcast(d3e1, t2p2) => d3e0 (* HX: t2p2: expected type *)
 *)
@@ -1106,7 +1110,7 @@ D3Cimpdecl3
 //
 val t2ps =
 (
-case- ti3a of 
+case- ti3a of
 |
 TI3ARGsome(t2ps) =>
 t2ypelst_subst_implenv(t2ps, env0)
@@ -1344,7 +1348,7 @@ case+ f3ds of
   list_nil(*void*)
 | list_cons(f3d0, f3ds) =>
   (
-  list_cons(f3d0, f3ds) 
+  list_cons(f3d0, f3ds)
   ) where
   {
     val

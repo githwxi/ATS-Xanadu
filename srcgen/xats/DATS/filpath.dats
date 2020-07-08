@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -59,6 +59,10 @@ SYM = "./../SATS/symbol.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/filpath.sats"
+
+(* ****** ****** *)
+
+#include "./../params.hats"
 
 (* ****** ****** *)
 
@@ -103,20 +107,21 @@ fpath_normalize
   (fp0) =
 let
 //
-// (*
+#if(__XATS_DEBUG__)
 val () =
 println!
 ("fpath_normalize: fp0 = ", fp0)
-// *)
+#endif
 //
 val
 fp1 = aux0(fp1)
 //
-// (*
+#if(__XATS_DEBUG__)
 val () =
 println!
 ("fpath_normalize: fp1 = ", fp1)
-// *)
+#endif
+//
 in
   fp1
 end where
@@ -258,11 +263,13 @@ dirln
 : !Strptr1): Size =
 let
 //
+#if(__XATS_DEBUG__)
 val () =
 println!
 (
 "dirln = "
 , UN_string_vt2t(dir))
+#endif
 //
 in
 string_length
@@ -882,10 +889,12 @@ implement
 filpath_dirbase_vt
   (dir0, base) = let
 //
+#if(__XATS_DEBUG__)
 val () =
 println!("filpath_dirbase_vt: dir0 = ", dir0)
 val () =
 println!("filpath_dirbase_vt: base = ", base)
+#endif
 //
 val
 dir0 = g1ofg0(dir0)
@@ -904,7 +913,7 @@ if
 then (dir0[n1-1] = sep) else false
 ) : bool // end of [val]
 //
-val n12 = 
+val n12 =
 (
 if sepd then (n1+n2+1) else (n1+n2+2)
 ) : Size_t // end of [val]
