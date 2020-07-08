@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-** 
+**
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-** 
+**
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -38,6 +38,10 @@
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
+(* ****** ****** *)
+
+#include "./../params.hats"
+
 (* ****** ****** *)
 //
 #staload
@@ -1461,12 +1465,14 @@ case+ d2i of
 )
 ) : d2cstlst // end of [val]
 //
+#if(__XATS_DEBUG__)
 val () =
 println!
 ("the_dexpenv_add_cst: d2c = ", d2c)
 val () =
 println!
 ("the_dexpenv_add_cst: d2cs = ", d2cs)
+#endif
 //
 val d2i0 = D2ITMcst(list_cons(d2c, d2cs))
 //
@@ -2086,7 +2092,7 @@ d2p0.node() of
   (d2p1, npf2, d2ps) =>
   {
     val () = auxd2p0(d2p1)
-    val () = auxd2ps(d2ps)  
+    val () = auxd2ps(d2ps)
   }
 //
 | D2Ptuple
