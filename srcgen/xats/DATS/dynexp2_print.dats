@@ -321,6 +321,9 @@ case- x0.node() of
   fprint!
   ( out, "D2Psapp("
   , d2f0, "; ", s2vs, ")")
+//
+| D2Pdap0(d2f0) =>
+  fprint!(out, "D2Pdap0(", d2f0, ")")
 | D2Pdapp(d2f0, npf0, d2ps) =>
   fprint!
   ( out, "D2Pdapp("

@@ -138,6 +138,16 @@ list_isnot_sing (xs) =
 (* ****** ****** *)
 
 fun
+d2pat_dap0
+(d2p0: d2pat): d2pat =
+let
+val loc0 = d2p0.loc()
+in
+  d2pat_make_node
+  (loc0, D2Pdap0(d2p0))
+end
+
+fun
 d2exp_dap0
 (d2e0: d2exp): d2exp =
 let
@@ -147,6 +157,69 @@ in
   (loc0, D2Edap0(d2e0))
 end
 
+(* ****** ****** *)
+//
+fun
+my_d2pat_dapp
+( loc0
+: loc_t
+, d2f0
+: d2pat
+, npf1: int
+, d2as
+: d2patlst): d2pat =
+(
+case+
+d2f0.node() of
+|
+D2Pdap0(d2f0) =>
+d2pat_dapp(loc0, d2f0, npf1, d2as)
+|
+_ (*non-D2Pdap0*) =>
+d2pat_dapp(loc0, d2f0, npf1, d2as)
+)
+//
+(* ****** ****** *)
+
+fun
+my_d2pat_con1
+( loc0
+: loc_t
+, d2c0
+: d2con): d2pat =
+let  
+val
+narg = d2c0.narg()
+val
+d2p0 = d2pat_con1(loc0, d2c0)
+in
+if
+(narg>0)
+then d2p0 else d2pat_dap0(d2p0)
+end // end of [my_d2pat_con1]
+
+(* ****** ****** *)
+//
+fun
+my_d2pat_sapp
+( loc0
+: loc_t
+, d2p1
+: d2pat
+, s2vs
+: s2varlst): d2pat =
+(
+case-
+d2p1.node() of
+| D2Pdap0(d2p1) =>
+  d2pat_dap0
+  (
+  d2pat_sapp(loc0, d2p1, s2vs)
+  )
+| _ (* non-D2Pdap0 *) =>
+  d2pat_sapp(loc0, d2p1, s2vs)
+)
+//
 (* ****** ****** *)
 //
 fun
@@ -353,15 +426,15 @@ let
 in
 //
 if
-list_is_sing(d2cs)
+list_isnot_sing(d2cs)
 then
-(
-d2pat_con1(loc0, d2c0)
-) where
-{
-  val d2c0 = d2cs.head()
-}
-else d2pat_con2(loc0, d2cs)
+d2pat_con2(loc0, d2cs)
+else
+let
+val d2c0 = d2cs.head()
+in
+my_d2pat_con1(loc0, d2c0)
+end // end of [if]
 //
 end // end of [auxid0_d2con]
 
@@ -487,12 +560,16 @@ d1p2.node() of
 //
 | D1Psarg(s1as) =>
   let
+    val
+    loc0 = d1p0.loc()
+//
     val d2p1 =
     trans12_dpat(d1p1)
     val s2vs =
     trans12_sarglst(s1as)
+//
   in
-    d2pat_sapp(d1p0.loc(), d2p1, s2vs)
+    my_d2pat_sapp(loc0, d2p1, s2vs)
   end // end of [D1Psqarg]
 //
 | _(*rest-of-d1pat*) => auxapp1_0_(d1p0)
@@ -544,7 +621,7 @@ d1p2.node() of
 //
 in
 //
-  d2pat_dapp(d1p0.loc(), d2p1, npf, d2ps)
+my_d2pat_dapp(d1p0.loc(), d2p1, npf, d2ps)
 //
 end // end of [auxapp1_0_]
 
