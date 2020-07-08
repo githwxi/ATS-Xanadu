@@ -949,6 +949,28 @@ end // end of [auxtapp]
 (* ****** ****** *)
 
 fun
+auxdap0
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Edap0
+( d2f0) = d2e0.node()
+//
+//
+val npf1 = (~1)
+val d3es = list_nil()
+//
+val
+d3f0 = trans23_dexp(d2f0)
+//
+in
+d23exp_dapp_up(loc0, d3f0, npf1, d3es)
+end (* end of [auxdap0] *)
+
+fun
 auxdapp
 ( d2e0
 : d2exp): d3exp = let
@@ -1644,6 +1666,8 @@ d2e0.node() of
 //
 | D2Esapp _ => auxsapp(d2e0)
 | D2Etapp _ => auxtapp(d2e0)
+//
+| D2Edap0 _ => auxdap0(d2e0)
 | D2Edapp _ => auxdapp(d2e0)
 //
 | D2Elet _ => aux_let(d2e0)
