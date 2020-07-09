@@ -32,16 +32,15 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt.hats"
+(* ****** ****** *)
 //
 #include
 "share/atspre_staload.hats"
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
-(* ****** ****** *)
-
-#include "./../params.hats"
-
 (* ****** ****** *)
 
 #staload "./../SATS/basics.sats"
@@ -253,14 +252,16 @@ trans3t_dexp
 val loc0 = d3e0.loc()
 val t2p0 = d3e0.type()
 //
-#if(__XATS_DEBUG__)
+#if(__XATSOPT_DEBUG__)
+(*
 val () =
 println!
 ("trans3t_dexp: d3e0 = ", d3e0)
 val () =
 println!
 ("trans3t_dexp: t2p0 = ", t2p0)
-#endif
+*)
+#endif//__XATSOPT_DEBUG__
 //
 in
 //
