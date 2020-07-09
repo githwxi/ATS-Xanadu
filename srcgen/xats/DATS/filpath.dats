@@ -32,6 +32,9 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt.hats"
+(* ****** ****** *)
 //
 #include
 "share/atspre_staload.hats"
@@ -62,14 +65,7 @@ SYM = "./../SATS/symbol.sats"
 
 (* ****** ****** *)
 
-#include "./../params.hats"
-
-(* ****** ****** *)
-
 local
-//
-#include
-"./../HATS/xatsopt.hats"
 //
 #if
 SYSTEM_IS_POSIX_LIKE
@@ -104,23 +100,28 @@ a path is not removed.
 //
 implement
 fpath_normalize
-  (fp0) =
-let
+  (fp0) = let
 //
-#if(__XATS_DEBUG__)
+#if(__XATSOPT_DEBUG__)
+//
+(*
 val () =
 println!
 ("fpath_normalize: fp0 = ", fp0)
-#endif
+*)
+//
+#endif//__XATSOPT_DEBUG__
 //
 val
 fp1 = aux0(fp1)
 //
-#if(__XATS_DEBUG__)
+#if(__XATSOPT_DEBUG__)
+(*
 val () =
 println!
 ("fpath_normalize: fp1 = ", fp1)
-#endif
+*)
+#endif//__XATSOPT_DEBUG__
 //
 in
   fp1
@@ -263,13 +264,15 @@ dirln
 : !Strptr1): Size =
 let
 //
-#if(__XATS_DEBUG__)
+#if(__XATSOPT_DEBUG__)
+(*
 val () =
 println!
 (
 "dirln = "
 , UN_string_vt2t(dir))
-#endif
+*)
+#endif//__XATSOPT_DEBUG__
 //
 in
 string_length
@@ -889,12 +892,16 @@ implement
 filpath_dirbase_vt
   (dir0, base) = let
 //
-#if(__XATS_DEBUG__)
+#if(__XATSOPT_DEBUG__)
+(*
 val () =
-println!("filpath_dirbase_vt: dir0 = ", dir0)
+println!
+("filpath_dirbase_vt: dir0 = ", dir0)
 val () =
-println!("filpath_dirbase_vt: base = ", base)
-#endif
+println!
+("filpath_dirbase_vt: base = ", base)
+*)
+#endif//__XATSOPT_DEBUG__
 //
 val
 dir0 = g1ofg0(dir0)
