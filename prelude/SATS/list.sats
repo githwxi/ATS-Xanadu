@@ -70,7 +70,7 @@ list_consq
 fun
 <a:t0>
 list_head
-{i:pos}(list(a, i)): a
+{n:pos}(list(a, n)): a
 fun
 <a:t0>
 list_head_raw(xs: list(a)): a
@@ -84,7 +84,7 @@ list_head_opt(xs: list(a)): optn_vt(a)
 fun
 <a:t0>
 list_tail
-{i:pos}(list(a, i)): list(a, i-1)
+{n:pos}(list(a, i)): list(a, n-1)
 fun
 <a:t0>
 list_tail_raw(xs: list(a)): list(a)

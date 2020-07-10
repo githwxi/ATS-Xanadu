@@ -82,10 +82,25 @@ case+ xs of
 //
 impltmp
 <a:type>
-list_head_raw(xs) = xs.0
+list_head(xs) =
+let
+val+
+list_cons
+(x0, xs) = xs in x0 end
 impltmp
 <a:type>
-list_tail_raw(xs) = xs.1
+list_tail(xs) =
+let
+val+
+list_cons
+(x0, xs) = xs in xs end
+//
+impltmp
+<a:type>
+list_head_raw(xs) = (xs.0)
+impltmp
+<a:type>
+list_tail_raw(xs) = (xs.1)
 //
 (* ****** ****** *)
 //

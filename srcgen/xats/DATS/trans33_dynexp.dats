@@ -1075,24 +1075,105 @@ D3Edtsel
 //
 in
 //
-case- opt3 of
+case+ opt3 of
 |
 None() =>
 let
 val-
-list_cons
-(d3e1, _) = d3es
+list_cons(d3e1, _) = d3es
 val
 d3e1 = trans33_dexp(env0, d3e1)
 in
 d33exp_proj_up(loc0, env0, d3e1, lab0)
 end // end of [None]
-(*
 |
 Some(arg3) =>
-*)
+let
 //
-end // end of [auxdapp2]
+val
+d3es =
+trans33_dexplst(env0, d3es)
+val
+arg3 =
+trans33_dexplst(env0, arg3)
+//
+val
+tres = d3e0.type()
+//
+val-
+list_cons
+(d3e1, _) = d3es
+val
+t2p1 = d3e1.type()
+val
+targ =
+list_cons
+( t2p1
+, d3explst_get_type(arg3))
+//
+val tfun =
+t2ype_fun0(loc0, npf2, targ, tres)
+//
+val opt1 =
+match2_d2pitmlst_t2ype(dpis, tfun)
+//
+in
+//
+case+ opt1 of
+| ~
+None_vt() =>
+let
+val
+opt3 = Some(arg3)
+val
+d3f0 =
+d3exp_make_node
+( d3f0.loc(), d3f0.type()
+, D3Edtsel(lab0, dpis, npf2, opt3))
+in
+  d3exp_make_node
+  ( loc0
+  , tres, D3Edapp(d3f0, npf2, d3es))
+end // end of [None_vt]
+| ~
+Some_vt(d2i0) => let
+//
+val d3f0 =
+(
+  case- d2i0 of
+  | D2ITMvar(d2v1) =>
+  (
+    d2var_up(loc0, d2v1)
+  )
+  | D2ITMcon(d2cs) =>
+  (
+    d2con_up(loc0, d2c1)
+  ) where
+  {
+    val-list_cons(d2c1, _) = d2cs
+  }
+  | D2ITMcst(d2cs) =>
+  (
+    d2cst_up(loc0, d2c1)
+  ) where
+  {
+    val-list_cons(d2c1, _) = d2cs
+  }
+) : d3exp // end of [val d3f0]
+//
+in
+//
+let
+val darg = list_cons(d3e1, arg3)
+in
+d33exp_dapp_up(loc0, env0, d3f0, npf2, darg)
+end
+//
+end // end of [Some_vt]
+//
+end // end of [Some(arg3)]
+//
+end (* end of [ auxdapp2 ] *)
 
 (* ****** ****** *)
 
