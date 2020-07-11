@@ -228,7 +228,21 @@ D3Pflat(d3p1) = d3p0.node()
 val
 d3p1 = trans33_dpat(env0, d3p1)
 //
-val () = d3pat_leftize(d3p1)
+(*
+(*
+HX-2020-07-10:
+Lefitization needs to
+be annotated explicitly;
+in the following patterns,
+[x0] is a val but [xs] is a var:
+//
+@list_cons(x0, !xs) // xs: read-only
+@list_vt_cons(x0, !xs) // xs: writable
+//
+*)
+val
+((*void*)) = d3pat_leftize(d3p1)
+*)
 //
 in
   d3pat_make_node
