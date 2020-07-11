@@ -264,29 +264,6 @@ list_reverse
 ) (* list_reverse *)
 //
 (* ****** ****** *)
-
-impltmp
-<a>(*tmp*)
-list_copy_vt
-  (xs) =
-(
-list_map_vt<a><a>(xs)
-) where
-{
-impltmp map$fopr<a><a>(x0) = x0
-}
-impltmp
-<a>(*tmp*)
-list_rcopy_vt
-  (xs) =
-(
-list_maprev_vt<a><a>(xs)
-) where
-{
-impltmp map$fopr<a><a>(x0) = x0
-}
-
-(* ****** ****** *)
 //
 impltmp
 <a>(*tmp*)
@@ -448,6 +425,29 @@ list_cons(x0, xs) =>
 //
 } (* end of [list_maprev_vt] *)
 //
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+list_copy_vt
+  (xs) =
+(
+list_map_vt<a><a>(xs)
+) where
+{
+impltmp map$fopr<a><a>(x0) = x0
+}
+impltmp
+<a>(*tmp*)
+list_rcopy_vt
+  (xs) =
+(
+list_maprev_vt<a><a>(xs)
+) where
+{
+impltmp map$fopr<a><a>(x0) = x0
+}
+
 (* ****** ****** *)
 //
 (*

@@ -53,6 +53,14 @@ fun
 optn_vt_free(~optn_vt(a)): void
 
 (* ****** ****** *)
+
+fun
+<a:vt>
+optn_vt_copy
+{n:b0}
+(xs: !optn_vt(a,n)): optn_vt(a,n)
+
+(* ****** ****** *)
 //
 fun
 <a:vt>

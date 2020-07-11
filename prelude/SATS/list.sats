@@ -153,17 +153,6 @@ list_reverse
 {n:int}(list(a, n)): list(a, n)
 //
 (* ****** ****** *)
-//
-fun
-<a:t0>
-list_copy_vt
-{n:int}(list(a, n)): list_vt(a, n)
-fun
-<a:t0>
-list_rcopy_vt
-{n:int}(list(a, n)): list_vt(a, n)
-//
-(* ****** ****** *)
 
 fun
 <x0:t0>
@@ -201,12 +190,12 @@ fun
 <x0:t0>
 <y0:t0>
 list_map
-{n:int}(xs: list(x0, n)): list(y0, n)
+{n:int}(list(x0, n)): list(y0, n)
 fun
 <x0:t0>
 <y0:vt>
 list_map_vt
-{n:int}(xs: list(x0, n)): list_vt(y0, n)
+{n:int}(list(x0, n)): list_vt(y0, n)
 //
 (* ****** ****** *)
 //
@@ -219,19 +208,30 @@ fun
 <x0:t0>
 <y0:t0>
 list_maprev
-{n:int}(xs: list(x0, n)): list(y0, n)
+{n:int}(list(x0, n)): list(y0, n)
 fun
 <x0:t0>
 <y0:vt>
 list_maprev_vt
-{n:int}(xs: list(x0, n)): list_vt(y0, n)
+{n:int}(list(x0, n)): list_vt(y0, n)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_copy_vt
+{n:int}(xs: list(a, n)): list_vt(a, n)
+fun
+<a:t0>
+list_rcopy_vt
+{n:int}(xs: list(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
 <n:i0>
-list_tabulate(int(n)): list(a, n)
+list_tabulate(n0: int(n)): list(a, n)
 fun
 <a:t0>
 list_tabulate_cfr

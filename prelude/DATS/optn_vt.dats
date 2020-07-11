@@ -52,6 +52,24 @@ optn_vt_cons(x0) => g_free<a>(x0)
 )
 //
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+optn_vt_copy(xs) =
+(
+case+ xs of
+| !
+optn_vt_nil() =>
+optn_vt_nil()
+| !
+optn_vt_cons(x0) =>
+let
+val x0 =
+g_copy<a>(x0) in optn_vt_cons(x0)
+end
+) (* end of [optn_vt_copy] *)
+
+(* ****** ****** *)
 //
 impltmp
 <a>(*tmp*)

@@ -98,6 +98,43 @@ case+ xs of
 (* ****** ****** *)
 
 impltmp
+<x0><y0>
+optn_map(xs) =
+(
+optn_vt2t(optn_map_vt(xs))
+)
+//
+impltmp
+<x0><y0>
+optn_map_vt(xs) =
+(
+case+ xs of
+|
+optn_nil() =>
+optn_vt_nil()
+|
+optn_cons(x0) =>
+optn_vt_cons(map$fopr<x0><y0>(x0))
+) (* end of [optn_map_vt] *)
+
+(* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+optn_copy_vt(xs) =
+(
+case+ xs of
+| optn_nil() => optn_vt_nil()
+| optn_cons(x0) => optn_vt_cons(x0)
+) (* end of [optn_copy_vt] *)
+
+(* ****** ****** *)
+//
+// For gseq-operations
+//
+(* ****** ****** *)
+
+impltmp
 {a:t0}
 gseq_forall<optn(a)><a> = optn_forall<a>
 impltmp
