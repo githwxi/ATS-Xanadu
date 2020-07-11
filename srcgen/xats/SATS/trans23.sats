@@ -438,6 +438,12 @@ d23exp_assgn_up
 (* ****** ****** *)
 //
 fun
+d23exp_brack_up
+( loc0
+: loc_t
+, dpis
+: d2pitmlst, d2es: d3explst): d3exp
+fun
 d23exp_dtsel_up
 ( loc0: loc_t
 , lab0: label

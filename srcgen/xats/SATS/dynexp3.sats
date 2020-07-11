@@ -375,6 +375,9 @@ HX-2020-06: for trans3x:
 //
 | D3Eassgn of
   (d3exp(*lval*), d3exp(*rval*))
+//
+| D3Ebrack of
+  (d2pitmlst(*[]*), d3explst)
 | D3Edtsel of
   ( label
   , d2pitmlst

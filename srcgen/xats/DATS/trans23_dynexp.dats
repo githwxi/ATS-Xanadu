@@ -1105,7 +1105,25 @@ in
 end // end of [aux_assgn]
 
 (* ****** ****** *)
-
+fun
+aux_brack
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ebrack
+( dpis
+, d2es) = d2e0.node()
+//
+val d3es =
+trans23_dexplst(d2es)
+//
+in
+  d23exp_brack_up(loc0, dpis, d3es)
+end // end of [aux_brack]
+(* ****** ****** *)
 fun
 aux_dtsel
 ( d2e0
@@ -1133,7 +1151,6 @@ case+ arg3 of
 in
 d23exp_dtsel_up(loc0, lab0, dpis, npf2, arg3)
 end // end of [aux_dtsel]
-
 (* ****** ****** *)
 
 fun
@@ -1702,6 +1719,7 @@ d2e0.node() of
 //
 | D2Eassgn _ => aux_assgn(d2e0)
 //
+| D2Ebrack _ => aux_brack(d2e0)
 | D2Edtsel _ => aux_dtsel(d2e0)
 //
 | D2Eif0

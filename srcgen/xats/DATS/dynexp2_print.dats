@@ -447,6 +447,11 @@ case- x0.node() of
   ( out
   , "D2Eassgn(", d2e1, "; ", d2e2, ")")
 //
+| D2Ebrack
+  (dpis, d2es) =>
+  fprint!
+  ( out
+  , "D2Ebrack(", dpis, "; ", d2es, ")")  
 | D2Edtsel
   ( lab0
   , dpis, npf2, arg3) =>
