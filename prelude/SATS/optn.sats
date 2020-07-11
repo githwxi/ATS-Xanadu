@@ -92,6 +92,31 @@ optn_streamize(optn(a)): stream_vt(a)
 //
 (* ****** ****** *)
 //
+(*
+optn_map: map$for
+optn_map_vt: map$for
+*)
+//
+fun
+<x0:t0>
+<y0:t0>
+optn_map
+{n:b0}(optn(x0, n)): optn(y0, n)
+fun
+<x0:t0>
+<y0:vt>
+optn_map_vt
+{n:b0}(optn(x0, n)): optn_vt(y0, n)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+optn_copy_vt
+{n:b0}(xs: optn(a, n)): optn_vt(a, n)
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for optn
 //
@@ -126,6 +151,12 @@ optn_streamize(optn(a)): stream_vt(a)
 #symload listize with optn_listize of 1000
 #symload rlistize with optn_rlistize of 1000
 #symload streamize with optn_streamize of 1000
+
+(* ****** ****** *)
+
+#symload map with optn_map of 1000
+#symload map_vt with optn_map_vt of 1000
+#symload copy_vt with optn_copy_vt of 1000
 
 (* ****** ****** *)
 
