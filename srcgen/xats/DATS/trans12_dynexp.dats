@@ -2224,16 +2224,20 @@ let
 in
 //
 case+ opt of
-| ~None_vt() =>
-  (
-    list_nil()
-  )
-| ~Some_vt(d2i) =>
-  (
-    case+ d2i of
-    | D2ITMsym
-    (_, dpis) => dpis | _ => list_nil()
-  )
+| ~
+None_vt() =>
+(
+  list_nil()
+)
+| ~
+Some_vt(d2i) =>
+(
+case+ d2i of
+|
+D2ITMsym
+(_, dpis) => dpis
+| _ => list_nil(*void*)
+) (* Some_vt *)
 //
 end // end of [auxsym]
 //
@@ -2263,24 +2267,27 @@ val d2es =
 (
 case+
 d1e.node() of
-| D1Elist(d1es1) =>
-  (
-    trans12_dexplst(d1es1)
-  )
-| D1Elist
-  (d1es1, d1es2) =>
-  let
+|
+D1Elist(d1es1) =>
+(
+  trans12_dexplst(d1es1)
+)
+|
+D1Elist
+(d1es1, d1es2) =>
+let
   val () =
   (npf := length(d1es1))
   val d2es1 =
     trans12_dexplst(d1es1)
   val d2es2 =
     trans12_dexplst(d1es2)
-  in
-    list_append(d2es1, d2es2)
-  end
-| _(*non-D1Elist*) =>
-  list_sing(trans12_dexp(d1e))
+in
+  list_append(d2es1, d2es2)
+end
+|
+_(*non-D1Elist*) =>
+list_sing(trans12_dexp(d1e))
 ) : d2explst // end of [val]
 }
 ) : d2explstopt // end of [val]
