@@ -415,14 +415,24 @@ length with a1ptr_length of 1000
 (* ****** ****** *)
 //
 #symload
-sub with a1ref_get_at of 1000
+[] with a1ref_get_at of 1000
 #symload
-sub with a1ref_set_at of 1000
+[] with a1ref_set_at of 1000
+#symload
+get_at with a1ref_get_at of 1000
+#symload
+set_at with a1ref_set_at of 1000
+//
+(* ****** ****** *)
 //
 #symload
-sub with a1ptr_get_at of 1000
+[] with a1ptr_get_at of 1000
 #symload
-sub with a1ptr_set_at of 1000
+[] with a1ptr_set_at of 1000
+#symload
+get_at with a1ptr_get_at of 1000
+#symload
+set_at with a1ptr_set_at of 1000
 //
 (* ****** ****** *)
 #symload

@@ -315,7 +315,9 @@ s0ymb = s0ymb_tbox
 datatype
 s0ymb_node =
 | S0YMBi0dnt of (i0dnt)
+(*
 | S0YMBdtlab of (token, l0abl)
+*)
 | S0YMBbrack of (token, token)
 //
 fun

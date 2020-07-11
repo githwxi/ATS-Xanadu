@@ -218,8 +218,9 @@ impltmp
 x1forint$work<n>(i0) =
 let
   val j0 = n1 - i0
+  val x0 = get_at(A0, j0)
 in
-$UN.p2tr_list_vt_cons(p0, sub(A0, j0))
+  $UN.p2tr_list_vt_cons(p0, x0)
 end
 //
 in
@@ -246,7 +247,11 @@ val n0 = a1ref_length(A0)
 //
 impltmp
 x1forint$work<n>(i0) =
-$UN.p2tr_list_vt_cons(p0, sub(A0, i0))
+let
+  val x0 = get_at(A0, i0)
+in
+  $UN.p2tr_list_vt_cons(p0, x0)
+end
 //
 in
 let
@@ -282,7 +287,7 @@ then
 strmcon_vt_nil((*void*))
 else
 strmcon_vt_cons
-(sub(A0, i0), auxmain(succ(i0)))
+(get_at(A0, i0), auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 } (* end of [a1ref_streamize] *)
 
@@ -310,7 +315,7 @@ then
 let
 val
 test =
-forall$test<a>(sub(A0, i0))
+forall$test<a>(get_at(A0, i0))
 in
 if test then loop(succ(i0)) else false
 end else false // end of [if]
@@ -342,7 +347,8 @@ then
   loop(succ(i0))
 ) where
 {
-  val () = foreach$work<a>(sub(A0, i0))
+  val () =
+  foreach$work<a>(get_at(A0, i0))
 }
 //
 } (* end of [a1ref_foreach] *)
@@ -369,7 +375,7 @@ let
 val i1 = pred(i0)
 val
 test =
-rforall$test<a>(sub(A0, i1))
+rforall$test<a>(get_at(A0, i1))
 in
   if test then loop(i1) else false
 end else false // end of [if]

@@ -4557,6 +4557,7 @@ x0.node() of
     val-
     I0DNTsome(tok) = id.node()
   }
+(*
 | S0YMBdtlab
   (tok, l0) =>
   (
@@ -4566,6 +4567,7 @@ x0.node() of
     val-
     L0ABLsome(lab) = l0.node()
   }
+*)
 | S0YMBbrack
   (tok1, tok2) => $SYM.LRBRACK_symbol
 ) (* end of [auxsym] *)

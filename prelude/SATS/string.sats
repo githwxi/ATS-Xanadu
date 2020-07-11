@@ -161,34 +161,6 @@ string_vt_consq
 (* ****** ****** *)
 //
 fun<>
-string_get_at
-{n:int}
-{i:nat|i < n}
-( cs:
-  string(n), i0: int(i)): cgtz
-fun<>
-strptr_set_at
-{n:int}
-{i:nat|i < n}
-( p0:
-! strptr(n), i0: int(i), c0: cgtz): void
-//
-fun<>
-string_vt_get_at
-{n:int}
-{i:nat|i < n}
-( cs:
-! string_vt(n), i0: int(i)): cgtz
-fun<>
-string_vt_set_at
-{n:int}
-{i:nat|i < n}
-( p0:
-! string_vt(n), i0: int(i), c0: cgtz): void
-//
-(* ****** ****** *)
-//
-fun<>
 string_head
 {n:pos}
 (cs: string(n)): cgtz
@@ -226,6 +198,34 @@ fun<>
 string_vt_length
 {n:int}(!string_vt(n)): int(n)
 
+(* ****** ****** *)
+//
+fun<>
+string_get_at
+{n:int}
+{i:nat|i < n}
+( cs:
+  string(n), i0: int(i)): cgtz
+fun<>
+strptr_set_at
+{n:int}
+{i:nat|i < n}
+( p0:
+! strptr(n), i0: int(i), c0: cgtz): void
+//
+fun<>
+string_vt_get_at
+{n:int}
+{i:nat|i < n}
+( cs:
+! string_vt(n), i0: int(i)): cgtz
+fun<>
+string_vt_set_at
+{n:int}
+{i:nat|i < n}
+( p0:
+! string_vt(n), i0: int(i), c0: cgtz): void
+//
 (* ****** ****** *)
 //
 fun<>
@@ -358,17 +358,27 @@ consq with string_consq of 1000
 (* ****** ****** *)
 //
 #symload
-sub with string_get_at of 1000
+[] with string_get_at of 1000
 #symload
-sub with strptr_set_at of 1000
+[] with strptr_set_at of 1000
+#symload
+get_at with string_get_at of 1000
+#symload
+set_at with strptr_set_at of 1000
 //
 #symload
-sub with string_vt_get_at of 1000
+[] with string_vt_get_at of 1000
 #symload
-sub with string_vt_set_at of 1000
+[] with string_vt_set_at of 1000
+#symload
+get_at with string_vt_get_at of 1000
+#symload
+set_at with string_vt_set_at of 1000
 //
 (* ****** ****** *)
 //
+#symload
+[] with string_head of 1000
 #symload
 head with string_head of 1000
 #symload
