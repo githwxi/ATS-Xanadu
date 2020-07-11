@@ -128,6 +128,33 @@ case+ xs of
 //
 impltmp
 <a>(*tmp*)
+list_get_at
+  (xs, i0) =
+(
+  auxlst(xs, i0)
+) where
+{
+fun
+auxlst
+{n:int}
+( xs
+: list(a, n)
+, i0
+: nintlt(n)): (a) =
+(
+case+ xs of
+|
+list_cons(x0, xs) =>
+if
+(i0 > 0)
+then auxlst(xs, pred(i0)) else x0
+) (* end of [auxlst] *)
+} (* end of [list_get_at] *)
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
 list_extend
 (xs, x0) = let
 val ys =
