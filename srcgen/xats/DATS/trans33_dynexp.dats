@@ -80,6 +80,36 @@ implement
 fprint_val<ti2arg> = fprint_ti2arg
 
 (* ****** ****** *)
+//
+extern
+fun
+list_npf_cons
+{a:type}
+( n0: int
+, x0: a, xs: List(a)): List0(a)
+//
+implement
+list_npf_cons
+(n0, x0, xs) =
+if
+(n0 <= 0)
+then
+let
+prval () =
+lemma_list_param(xs) in list_cons(x0, xs)
+end
+else
+(
+case+ xs of
+|
+list_nil() =>
+list_sing(x0)
+|
+list_cons(x1, xs) =>
+list_cons(x1, list_npf_cons(n0-1, x0, xs))
+) (* end of [else] *)
+//
+(* ****** ****** *)
 
 implement
 trans33_program
@@ -1052,6 +1082,11 @@ in
   (loc0, env0, d3f0, npf1, d3es)
 end
 |
+D3Ebrack _ =>
+(
+  auxdapp1(env0, d3e0)
+)
+|
 D3Edtsel _ =>
 (
   auxdapp2(env0, d3e0)
@@ -1068,6 +1103,114 @@ end
 //
 end // end of [auxdapp]
 
+(* ****** ****** *)
+
+and
+auxdapp1
+( env0:
+! abstenv
+, d3e0: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Edapp
+( d3f0
+, npf1, d3es) = d3e0.node()
+(*
+// HX: npf1 = ~1
+*)
+val-
+D3Ebrack
+( dpis, arg2) = d3f0.node()
+//
+val-
+list_cons
+(d3e1, _) = d3es
+val
+d3e1 =
+trans33_dexp(env0, d3e1)
+val
+arg2 =
+trans33_dexplst(env0, arg2)
+//
+val
+tres = d3e0.type()
+val
+targ =
+list_cons(t2p1, t2ps) where
+{
+val t2p1 = d3e1.type()
+val t2ps = d3explst_get_type(arg2)
+}
+//
+val tfun =
+t2ype_fun0(loc0, npf1, targ, tres)
+//
+val opt1 =
+match2_d2pitmlst_t2ype(dpis, tfun)
+//
+in
+//
+case+ opt1 of
+| ~
+None_vt() =>
+let
+val
+d3es =
+list_sing(d3e1)
+val
+d3f0 =
+d3exp_make_node
+( d3f0.loc()
+, d3f0.type()
+, D3Ebrack(dpis, arg2))
+in
+  d3exp_make_node
+  ( loc0
+  , tres, D3Edapp(d3f0, npf1, d3es))
+end // end of [None_vt]
+| ~
+Some_vt(d2i0) => let
+//
+val d3f0 =
+(
+  case- d2i0 of
+  | D2ITMvar(d2v1) =>
+  (
+    d2var_up(loc0, d2v1)
+  )
+  | D2ITMcon(d2cs) =>
+  (
+    d2con_up(loc0, d2c1)
+  ) where
+  {
+    val-list_cons(d2c1, _) = d2cs
+  }
+  | D2ITMcst(d2cs) =>
+  (
+    d2cst_up(loc0, d2c1)
+  ) where
+  {
+    val-list_cons(d2c1, _) = d2cs
+  }
+) : d3exp // end of [val d3f0]
+//
+in
+//
+let
+val darg = list_cons(d3e1, arg2)
+in
+d33exp_dapp_up(loc0, env0, d3f0, npf1, darg)
+end
+//
+end // end of [Some_vt]
+//
+end (* end of [ auxdapp1 ] *)
+
+(* ****** ****** *)
+
 and
 auxdapp2
 ( env0:
@@ -1081,6 +1224,9 @@ val-
 D3Edapp
 ( d3f0
 , npf1, d3es) = d3e0.node()
+(*
+// HX: npf1 = ~1
+*)
 val-
 D3Edtsel
 ( lab0
@@ -1118,10 +1264,13 @@ val
 tres = d3e0.type()
 val
 targ =
-list_cons(t2p1, t2ps) where
+list_npf_cons
+(npf2, t2p1, t2ps) where
 {
-val t2p1 = d3e1.type()
-val t2ps = d3explst_get_type(arg3)
+val
+t2p1 = d3e1.type()
+val
+t2ps = d3explst_get_type(arg3)
 }
 //
 val tfun =
@@ -1138,6 +1287,8 @@ None_vt() =>
 let
 val
 opt3 = Some(arg3)
+val
+d3es = list_sing(d3e1)
 val
 d3f0 =
 d3exp_make_node
@@ -1177,7 +1328,8 @@ val d3f0 =
 in
 //
 let
-val darg = list_cons(d3e1, arg3)
+val darg =
+list_npf_cons(npf2, d3e1, arg3)
 in
 d33exp_dapp_up(loc0, env0, d3f0, npf2, darg)
 end

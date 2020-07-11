@@ -773,18 +773,17 @@ d2exp_node =
 //
 | D2Eassgn of
   ( d2exp(*l-val*), d2exp(*r-val*) )
-(*
+//
 | D2Ebrack of
-  (d2pitmlst(*sym*), d2explst(*arg*))
-*)
+  (d2pitmlst, d2explst(*arg*))
 | D2Edtsel of
   ( label
   , d2pitmlst
-  , int(*npf*), d2explstopt(*arg*))
+  , int(*npf*), d2explstopt(*arg*) )
 //
 | D2Eif0 of
   ( d2exp(*cond*)
-  , d2exp(*then*), d2expopt(*else*))
+  , d2exp(*then*), d2expopt(*else*) )
   // D2Eif0
 | D2Ecase of
   (int(*knd*), d2exp(*val*), d2claulst)

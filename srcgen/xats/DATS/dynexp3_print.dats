@@ -447,6 +447,11 @@ x0.node() of
   ( out
   , "D3Eassgn(", d3e1, "; ", d3e2, ")")
 //
+| D3Ebrack
+  (dpis, d3es) =>
+  fprint!
+  ( out
+  , "D3Ebrack(", dpis, "; ", d3es, ")")  
 | D3Edtsel
   ( lab0
   , dpis, npf2, arg3) =>

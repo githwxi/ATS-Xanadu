@@ -1930,7 +1930,17 @@ in
 end // end of [d23exp_assgn_up]
 
 (* ****** ****** *)
-
+//
+implement
+d23exp_brack_up
+(loc0, dpis, d3es) =
+let
+  val t2p0 = t2ype_new(loc0)
+in
+d23exp_make_node
+(loc0, t2p0, D3Ebrack(dpis, d3es))
+end // end of [d23exp_brack_up]
+//
 implement
 d23exp_dtsel_up
 ( loc0
@@ -1941,7 +1951,7 @@ in
 d23exp_make_node
 (loc0, t2p0, D3Edtsel(lab0, dpis, npf2, arg3))
 end // end of [d23exp_dtsel_up]
-
+//
 (* ****** ****** *)
 
 implement
