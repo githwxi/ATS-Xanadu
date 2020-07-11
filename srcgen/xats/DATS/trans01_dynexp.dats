@@ -1298,6 +1298,11 @@ d0e0.node() of
       // d1exp_make_node
     ) (* end of [val] *)
   in
+(*
+    HX: postfix
+    $FIX.brack_fixty =
+    FIXTYpos(brack_prcdv)
+*)
     $FIX.FXITMopr(d1e0, $FIX.brack_fixty)
   end
 //
@@ -1314,6 +1319,11 @@ d0e0.node() of
       // d1exp_make_node
     ) (* end of [val] *)
   in
+(*
+    HX: postfix
+    $FIX.dtsel_fixty =
+    FIXTYpos(dtsel_prcdv)
+*)
     $FIX.FXITMopr(d1e0, $FIX.dtsel_fixty)
   end
 //

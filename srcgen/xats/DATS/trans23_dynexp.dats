@@ -1131,7 +1131,7 @@ case+ arg3 of
 ) : d3explstopt // end of [val]
 //
 in
-  d23exp_dtsel_up(loc0, lab0, dpis, npf2, arg3)
+d23exp_dtsel_up(loc0, lab0, dpis, npf2, arg3)
 end // end of [aux_dtsel]
 
 (* ****** ****** *)
