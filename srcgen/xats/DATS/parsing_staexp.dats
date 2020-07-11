@@ -177,6 +177,7 @@ in
 //
 case+
 tok.node() of
+(*
 | T_DOT() => let
     val () = buf.incby1()
     val lab2 = p_l0abl(buf, err)
@@ -186,6 +187,7 @@ tok.node() of
     s0ymb_make_node
     (loc_res, S0YMBdtlab(tok, lab2))
   end // end of [T_DOT]
+*)
 | T_LBRACK() => let
     val () = buf.incby1()
     val tok2 = p_RBRACK(buf, err)

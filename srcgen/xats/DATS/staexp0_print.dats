@@ -262,10 +262,12 @@ x0.node() of
   fprint!
   (out, "S0YMBi0dnt(", id0, ")")
 //
+(*
 | S0YMBdtlab(dot1, lab2) =>
   fprint!
   ( out
   , "S0YMBdtlab(", dot1, "; ", lab2, ")")
+*)
 | S0YMBbrack(tok1, tok2) =>
   fprint!
   ( out

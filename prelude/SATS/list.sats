@@ -106,6 +106,14 @@ list_length
 //
 fun
 <a:t0>
+list_get_at
+{n:int}
+(list(a, n), nintlt(n)): (a)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
 list_extend
 {m:int}
 (list(a, m), a): list(a, m+1)
@@ -278,9 +286,16 @@ cons with list_cons of 000
 #symload neqzq with list_consq of 1000
 //
 (* ****** ****** *)
-
+//
+#symload [] with list_head of 1000
 #symload head with list_head of 1000
+//
 #symload tail with list_tail of 1000
+//
+(* ****** ****** *)
+
+#symload [] with list_get_at of 1000
+#symload get_at with list_get_at of 1000
 
 (* ****** ****** *)
 //

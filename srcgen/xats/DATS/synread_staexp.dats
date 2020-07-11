@@ -191,6 +191,7 @@ sym.node() of
     val () =
     synread_i0dnt(id0)
   }
+(*
 | S0YMBdtlab(tdot, l0ab) =>
   {
     val () =
@@ -198,6 +199,7 @@ sym.node() of
     val () =
     synread_l0abl(l0ab)
   }
+*)
 | S0YMBbrack(tbeg, tend) =>
   {
     val () =
