@@ -161,6 +161,26 @@ id0.node() of
 //
 implement
 //{}(*tmp*)
+synread_qname
+  (tok) =
+(
+case+
+tok.node() of
+| T_IDENT_qual _ => ()
+| _ (*non-qual*) =>
+  let
+    val () =
+    synerr_add(SYNERRqname(tok))
+  in
+    prerr(tok.loc());
+    prerrln!(": SYNERR(qname): ", tok);
+  end // end of [let]
+) (* end of [synread_qname] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 synread_l0abl
   (lab) =
 (
@@ -263,6 +283,7 @@ case+ qid of
   }
 | SQ0EIDsome(tok, id0) =>
   {
+    val () = synread_qname(tok)
     val () = synread_s0eid(id0)
   }
 ) (* end of [synread_sq0eid] *)

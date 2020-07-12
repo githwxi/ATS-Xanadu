@@ -249,6 +249,13 @@ d2e0.node() of
   val () = tread12_d2explst(d2es)
   }
 //
+| D2Ebrack
+  (dpis, d2es) =>
+  {
+    val () =
+      tread12_d2explst(d2es)
+    // end of [val]
+  } (* end of [D2Ebrack] *)
 | D2Edtsel
   (lab1,
    dpis, npf2, opt3) =>

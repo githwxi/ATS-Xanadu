@@ -210,7 +210,8 @@ case+ qid of
   }
 | DQ0EIDsome(tok, id0) =>
   {
-    val () = synread_s0eid(id0)
+    val () = synread_qname(tok)
+    val () = synread_d0eid(id0)
   }
 ) (* end of [synread_dq0eid] *)
 
@@ -356,6 +357,33 @@ d0e0.node() of
     synread_d0eclseq_WHERE(d0cs)
   }
 //
+| D0Ebrack
+  (tbeg, d0es, tend) =>
+  {
+(*
+    val () =
+    synread_LBRACK(tbeg)
+*)
+    val () =
+      synread_RBRACK(tend)
+    val () =
+      synread_d0explst(d0es)
+    // end of [val]
+  }
+| D0Edtsel
+  (tdot, lab1, opt2) =>
+  {
+(*
+    val () =
+    synread_DOT(tbeg)
+*)
+    val () =
+      synread_l0abl(lab1)
+    val () =
+      synread_d0expopt(opt2)
+    // end of [val]
+  }
+//
 | D0Elam
   ( tok
   , arg0, res0
@@ -418,6 +446,12 @@ d0e0.node() of
 //
     val () = synread_ENDTRY(tend)
 //
+  }
+//
+| D0Equal(qtok, d0e1) =>
+  {
+    val () = synread_qname(qtok)
+    val () = synread_d0exp(d0e1)
   }
 //
 | _(* rest-of-d0exp *) =>
