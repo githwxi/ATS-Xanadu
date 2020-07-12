@@ -34,7 +34,14 @@
 (* ****** ****** *)
 
 #staload "./statyp2.sats"
+#staload "./dynexp2.sats"
+
+(* ****** ****** *)
+
 #staload "./dynexp3.sats"
+
+(* ****** ****** *)
+
 #staload "./intrep0.sats"
 
 (* ****** ****** *)
@@ -42,6 +49,15 @@
 fun
 tcomp30_program
 (prog: d3eclist): h0dclist
+
+(* ****** ****** *)
+
+fun
+hdvar_make_dvar(d2var): hdvar
+fun
+hdcon_make_dcon(d2con): hdcon
+fun
+hdcst_make_dcst(d2cst): hdcst
 
 (* ****** ****** *)
 //
