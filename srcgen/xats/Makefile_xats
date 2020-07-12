@@ -156,6 +156,7 @@ intrep0_print.dats \
 intrep0_jsoniz.dats \
 intrep0_statyp.dats \
 intrep0_dynexp.dats \
+tcomp30_util0.dats \
 tcomp30_statyp.dats \
 tcomp30_dynexp.dats \
 

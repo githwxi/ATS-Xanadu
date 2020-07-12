@@ -62,10 +62,26 @@ hdvar_struct = @{
 //
 } (* end of [hdvar_tbox] *)
 
-in(* in-of-local *)
-
 absimpl
 hdvar_tbox = ref(hdvar_struct)
+
+in(* in-of-local *)
+
+implement
+hdvar_make_idtp
+(loc, sym, htp) =
+(
+ref<hdvar_struct>
+@{
+  hdvar_loc=loc
+, hdvar_sym=sym
+, hdvar_type=htp
+, hdvar_stamp=stamp
+}
+) where
+{
+  val stamp = hdvar_stamp_new()
+}
 
 end // end of [local]
 

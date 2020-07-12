@@ -42,6 +42,10 @@
 #staload "./locinfo.sats"
 
 (* ****** ****** *)
+#staload "./staexp2.sats"
+#staload "./statyp2.sats"
+#staload "./dynexp2.sats"
+(* ****** ****** *)
 
 typedef dataptr = ptr
 
@@ -200,6 +204,13 @@ fprint_hdvar: fprint_type(hdvar)
 overload print with print_hdvar
 overload prerr with prerr_hdvar
 overload fprint with fprint_hdvar
+//
+(* ****** ****** *)
+//
+fun
+hdvar_make_idtp
+( loc: loc_t
+, sym: symbol, htp: h0typ): hdvar
 //
 (* ****** ****** *)
 //
