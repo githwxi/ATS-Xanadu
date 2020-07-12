@@ -103,6 +103,8 @@ datatype synerr =
 //
 | SYNERRi0dnt of (i0dnt)
 //
+| SYNERRqname of (token)
+//
 | SYNERRl0abl of (l0abl)
 | SYNERRs0ymb of (s0ymb)
 //
@@ -178,6 +180,11 @@ synread_program
 //
 fun//{}
 synread_i0dnt: synreader(i0dnt)
+//
+(* ****** ****** *)
+//
+fun//{}
+synread_qname: synreader(token)
 //
 (* ****** ****** *)
 //

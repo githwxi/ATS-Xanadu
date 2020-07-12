@@ -32,6 +32,9 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt.hats"
+(* ****** ****** *)
 //
 #include
 "share/atspre_staload.hats"
@@ -201,9 +204,13 @@ dend = d3e0.node()
 val
 t2p0 = t2ype_normize(t2p0)
 //
+#if(__XATSOPT_DEBUG__)
+(*
 val () =
 println!
 ("trans3x_dexp: d3e0 = ", d3e0)
+*)
+#endif//__XATSOPT_DEBUG__
 //
 in(*in-of-let*)
 //
