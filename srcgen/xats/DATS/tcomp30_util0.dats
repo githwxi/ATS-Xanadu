@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2019
+// Start Time: July, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -62,12 +62,15 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 implement
-hdvar_make_dvar(d2v) =
-let
+hdvar_make_dvar
+  (d2v) = let
+//
 val loc = d2v.loc()
 val sym = d2v.sym()
 val t2p = d2v.type()
+//
 val htp = tcomp30_type(t2p)
+//
 in
   hdvar_make_idtp(loc, sym, htp)
 end // end of [hdvar_make_dvar]
