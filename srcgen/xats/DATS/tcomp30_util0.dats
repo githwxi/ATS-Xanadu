@@ -48,7 +48,11 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
@@ -56,6 +60,17 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/tcomp30.sats"
 
 (* ****** ****** *)
+
+implement
+hdvar_make_dvar(d2v) =
+let
+val loc = d2v.loc()
+val sym = d2v.sym()
+val t2p = d2v.type()
+val htp = tcomp30_type(t2p)
+in
+  hdvar_make_idtp(loc, sym, htp)
+end // end of [hdvar_make_dvar]
 
 (* ****** ****** *)
 

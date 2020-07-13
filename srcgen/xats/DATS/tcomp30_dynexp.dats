@@ -97,6 +97,16 @@ in
 case+
 d3e0.node() of
 |
+D3Evar(d2v) =>
+let
+val
+hdv =
+hdvar_make_dvar(d2v)
+in
+  h0exp_make_node
+  (loc0, h0t0, H0Evar(hdv))
+end
+|
 _(* rest-of_d3exp *) =>
 let
 val
