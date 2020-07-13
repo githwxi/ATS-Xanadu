@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2019
+// Start Time: July, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -71,6 +71,37 @@ tcomp30_declist(prog0)
 //
 (* ****** ****** *)
 
+local
+
+fun
+auxvar
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hdv =
+(
+  hdvar_make_dvar(d2v)
+) where
+{
+  val-
+  D3Evar(d2v) = d3e0.node()
+}
+//
+in
+  h0exp_make_node
+  (loc0, h0t0, H0Evar(hdv))
+end
+
+in(*in-of-local*)
+
 implement
 tcomp30_dexp
   (d3e0) =
@@ -89,34 +120,34 @@ val () =
 println!
 ("tcomp30_dexp: t2p0 = ", t2p0)
 *)
-val
-h0t0 = tcomp30_type(t2p0)
 //
 in
 //
 case+
 d3e0.node() of
+//
 |
-D3Evar(d2v) =>
+D3Evar _ => auxvar(d3e0)
+//
+| _(* rest-of_d3exp *) =>
 let
+//
 val
-hdv =
-hdvar_make_dvar(d2v)
-in
-  h0exp_make_node
-  (loc0, h0t0, H0Evar(hdv))
-end
-|
-_(* rest-of_d3exp *) =>
-let
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
 val
 hend =
 H0Enone1($UN.cast{ptr}(d3e0))
+//
 in
 h0exp_make_node(loc0, h0t0, hend)
 end // end of [let]
 //
 end // end of [tcomp30_dexp]
+
+end // end of [local]
 
 (* ****** ****** *)
 //
