@@ -93,6 +93,9 @@ case+ x0 of
 HSTid0(sym) =>
 fprint!(out, "HSTid0(", sym, ")")
 |
+HSTint(int) =>
+fprint!(out, "HSTint(", int, ")")
+|
 HSTfun(arg, res) =>
 fprint!
 ( out

@@ -109,6 +109,7 @@ datatype
 h0srt =
 //
 | HSTid0 of (sym_t)
+| HSTint of ( int )
 //
 (*
 | HSTtup of
