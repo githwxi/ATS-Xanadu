@@ -33,6 +33,7 @@
 //
 (* ****** ****** *)
 
+#staload "./staexp2.sats"
 #staload "./statyp2.sats"
 #staload "./dynexp2.sats"
 
@@ -62,9 +63,20 @@ hdcst_make_dcst(d2cst): hdcst
 (* ****** ****** *)
 //
 fun
-tcomp30_sort(s2t0: sort2): h0srt
+tcomp30_sort
+  (s2t0: sort2): h0srt
 fun
-tcomp30_type(t2p0: t2ype): h0typ
+tcomp30_sortlst
+  (s2ts: sort2lst): h0srtlst
+//
+(* ****** ****** *)
+//
+fun
+tcomp30_type
+  (t2p0: t2ype): h0typ
+fun
+tcomp30_typelst
+  (t2ps: t2ypelst): h0typlst
 //
 (* ****** ****** *)
 //

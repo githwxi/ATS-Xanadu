@@ -48,7 +48,11 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
@@ -70,20 +74,59 @@ println!
 in
 //
 case+ s2t0 of
+//
+| S2Tid0(sym) => HSTid0(sym)
+| S2Tint(int) => HSTint(int)
+//
+| S2Tfun
+  (s2ts, s2t1) =>
+  let
+  val
+  hsts =
+  tcomp30_sortlst(s2ts)
+  in
+  HSTfun
+  (hsts, hst1) where
+  {
+    val
+    hst1 = tcomp30_sort(s2t1)
+  }
+  end // end of [S2Tfun]
+//
 | _(*rest-of-sort2*) =>
-  HSTnone1($UN.cast{ptr}(s2t0))
+  let
+  val
+  data =
+  $UN.cast{ptr}(s2t0) in HSTnone1(data)
+  end
 //
 end // end of [tcomp30_sort]
 //
 (* ****** ****** *)
 
 implement
+tcomp30_sortlst(s2ts) =
+list_vt2t
+(
+list_map<
+  sort2><h0srt>(s2ts) where
+{
+implement
+list_map$fopr<
+  sort2><h0srt>(s2t) = tcomp30_sort(s2t)
+}
+) (* end of [tcomp30_sortlst] *)
+
+(* ****** ****** *)
+
+implement
 tcomp30_type
   (t2p0) = let
 //
+(*
+//
 val s2t0 = t2p0.sort()
 //
-(*
 val () =
 println!
 ("tcomp30_type: t2p0 = ", t2p0)
@@ -91,8 +134,6 @@ val () =
 println!
 ("tcomp30_type: s2t0 = ", s2t0)
 *)
-//
-val hst0 = tcomp30_sort(s2t0)
 //
 (*
 val () =
@@ -107,8 +148,11 @@ t2p0.node() of
 |
 _(*rest-of-t2ype*) =>
 let
-val data =
-$UN.cast{ptr}(t2p0)
+//
+val s2t0 = t2p0.sort()
+val hst0 = tcomp30_sort(s2t0)
+val data = $UN.cast{ptr}(t2p0)
+//
 in
 h0typ_make_node(hst0, H0Tnone1(data))
 end // end of [rest]
