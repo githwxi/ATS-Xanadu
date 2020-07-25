@@ -51,6 +51,17 @@ glseq_free(~xs): void
 fun
 <xs:vt>
 <x0:vt>
+glseq_head_raw(!xs): x0
+fun
+<xs:vt>
+<x0:vt>
+glseq_tail_raw(~xs): xs
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 glseq_uncons_raw
   (xs: &xs >> xs): x0
 fun
