@@ -198,6 +198,13 @@ gseq_foreach(xs): void
 fun
 <xs:t0>
 <x0:t0>
+gseq_memberq(xs, x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_listize(xs): list_vt(x0)
 fun
 <xs:t0>

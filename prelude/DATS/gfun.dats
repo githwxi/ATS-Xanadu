@@ -28,7 +28,7 @@ impltmp
 <xs><x0>
 gfun_memq_gseq(xs) =
 lam(x0) =>
-gseq_indexof<xs><x0>(xs, x0) >= 0
+gseq_memberq<xs><x0>(xs, x0)
 
 (* ****** ****** *)
 
