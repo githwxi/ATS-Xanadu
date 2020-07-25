@@ -191,6 +191,29 @@ string_tail_raw(string): string
 //
 (* ****** ****** *)
 
+(*
+fun<>
+string_get_next
+{n:pos}{l0:addr}
+( pf
+! string(n) @ l0 >>
+  ( string(n) @ l0
+  - string(n-1) @ l1 ) | p0: ptr(l0)
+)
+: #[l1:addr] (string(n-1) @ l1 | ptr(l1))
+fun<>
+string_vt_get_next
+{n:pos}{l0:addr}
+( pf
+! string_vt(n) @ l0 >>
+  ( string_vt(n) @ l0
+  - string_vt(n-1) @ l1 ) | p0: ptr(l0)
+)
+: #[l1:addr] (string_vt(n-1) @ l1 | ptr(l1))
+*)
+
+(* ****** ****** *)
+
 fun<>
 string_length
 {n:int}(string(n)): int(n)
