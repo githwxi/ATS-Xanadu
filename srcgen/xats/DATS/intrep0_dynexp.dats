@@ -185,6 +185,42 @@ end // end of [local]
 local
 //
 absimpl
+h0pat_tbox = $rec
+{ h0pat_loc= loc_t
+, h0pat_type= h0typ
+, h0pat_node= h0pat_node
+} (* end of [absimpl] *)
+//
+in (* in-of-local *)
+//
+implement
+h0pat_get_loc
+  (h0e) = h0e.h0pat_loc
+//
+implement
+h0pat_get_type
+  (h0e) = h0e.h0pat_type
+//
+implement
+h0pat_get_node
+  (h0e) = h0e.h0pat_node
+//
+implement
+h0pat_make_node
+(
+loc0, h0t0, node
+) = $rec
+{ h0pat_loc= loc0
+, h0pat_type= h0t0, h0pat_node= node
+} (* h0pat_make_node *)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
 h0exp_tbox = $rec
 { h0exp_loc= loc_t
 , h0exp_type= h0typ

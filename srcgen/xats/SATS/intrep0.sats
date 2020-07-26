@@ -118,6 +118,13 @@ overload .stamp with hdvar_get_stamp
 //
 (* ****** ****** *)
 //
+abstype h0pat_tbox = ptr
+typedef h0pat = h0pat_tbox
+typedef h0patlst = List0(h0pat)
+typedef h0patopt = Option(h0pat)
+//
+(* ****** ****** *)
+//
 abstype h0exp_tbox = ptr
 typedef h0exp = h0exp_tbox
 typedef h0explst = List0(h0exp)
@@ -276,6 +283,57 @@ fprint_hdcst: fprint_type(hdcst)
 overload print with print_hdcst
 overload prerr with prerr_hdcst
 overload fprint with fprint_hdcst
+//
+(* ****** ****** *)
+//
+datatype
+h0pat_node =
+//
+| H0Pnil of ()
+| H0Pany of () // wildcard
+| H0Pvar of hdvar // variable
+//
+| H0Pfcon of hdcon // cnstrctr
+//
+| H0Pdapp of
+  (h0pat, int(*npf*), h0patlst)
+//
+| H0Pnone1 of (dataptr) // HX: for errors
+//
+(* ****** ****** *)
+//
+fun
+h0pat_get_loc
+( h0e: h0pat ) : loc_t
+fun
+h0pat_get_type
+( h0e: h0pat ) : h0typ
+fun
+h0pat_get_node
+( h0e: h0pat ) : h0pat_node
+//
+overload .loc with h0pat_get_loc
+overload .type with h0pat_get_type
+overload .node with h0pat_get_node
+//
+(* ****** ****** *)
+//
+fun
+print_h0pat: h0pat -> void
+fun
+prerr_h0pat: h0pat -> void
+fun
+fprint_h0pat: fprint_type(h0pat)
+//
+overload print with print_h0pat
+overload prerr with prerr_h0pat
+overload fprint with fprint_h0pat
+//
+(* ****** ****** *)
+//
+fun
+h0pat_make_node
+(loc_t, h0typ, h0pat_node): h0pat
 //
 (* ****** ****** *)
 //
