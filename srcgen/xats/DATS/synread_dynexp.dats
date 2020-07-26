@@ -1286,6 +1286,8 @@ list_foreach$fwork<f0undecl><env>
 //
   val+F0UNDECL(rcd) = f0d
 //
+  val () =
+    synread_d0pid(rcd.nam)
 //
   val () =
     synread_f0arglst(rcd.arg)
