@@ -76,6 +76,11 @@ fprint_val<hdcst> = fprint_hdcst
 (* ****** ****** *)
 
 implement
+fprint_val<h0pat> = fprint_h0pat
+
+(* ****** ****** *)
+
+implement
 fprint_val<h0exp> = fprint_h0exp
 
 (* ****** ****** *)
@@ -198,6 +203,30 @@ fprint!(out, ": ", x0.type());
 {
 val sym = x0.sym() and stamp = x0.stamp()
 } (* end of [fprint_hdvar] *)
+//
+(* ****** ****** *)
+//
+implement
+print_h0pat(x0) =
+fprint_h0pat(stdout_ref, x0)
+implement
+prerr_h0pat(x0) =
+fprint_h0pat(stderr_ref, x0)
+//
+implement
+fprint_h0pat(out, x0) =
+(
+case+
+x0.node() of
+//
+| H0Pvar(hdv) =>
+  fprint!(out, "H0Pvar(", hdv, ")")
+//
+| H0Pnone1(_) =>
+  fprint!(out, "H0Pnone1(", "...", ")")
+//
+| _(* H0P... *) => fprint!(out, "H0P...(...)")
+)
 //
 (* ****** ****** *)
 //
