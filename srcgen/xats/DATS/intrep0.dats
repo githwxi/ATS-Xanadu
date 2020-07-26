@@ -93,20 +93,6 @@ stamper = $STM.stamper_new()
 in (* in-of-local *)
 
 implement
-hdvar_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
 hdcon_stamp_new() = $STM.stamper_getinc(stamper)
 
 end // end of [local]
@@ -122,6 +108,20 @@ in (* in-of-local *)
 
 implement
 hdcst_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+hdvar_stamp_new() = $STM.stamper_getinc(stamper)
 
 end // end of [local]
 

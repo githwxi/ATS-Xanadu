@@ -53,6 +53,94 @@ UN = "prelude/SATS/unsafe.sats"
 local
 
 typedef
+hdcon_struct = @{
+//
+  hdcon_loc= loc_t // loc
+, hdcon_sym= sym_t // name
+, hdcon_type= h0typ // type
+, hdcon_stamp= stamp // unicity
+//
+} (* end of [hdvar_tbox] *)
+
+absimpl
+hdcon_tbox = ref(hdcon_struct)
+
+in(* in-of-local *)
+
+implement
+hdcon_get_sym
+(hdc) = hdc->hdcon_sym
+implement
+hdcon_get_stamp
+(hdc) = hdc->hdcon_stamp
+
+implement
+hdcon_make_idtp
+(loc, sym, htp) =
+(
+ref<hdcon_struct>
+@{
+  hdcon_loc=loc
+, hdcon_sym=sym
+, hdcon_type=htp
+, hdcon_stamp=stamp
+}
+) where
+{
+  val stamp = hdcon_stamp_new()
+}
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+typedef
+hdcst_struct = @{
+//
+  hdcst_loc= loc_t // loc
+, hdcst_sym= sym_t // name
+, hdcst_type= h0typ // type
+, hdcst_stamp= stamp // unicity
+//
+} (* end of [hdvar_tbox] *)
+
+absimpl
+hdcst_tbox = ref(hdcst_struct)
+
+in(* in-of-local *)
+
+implement
+hdcst_get_sym
+(hdc) = hdc->hdcst_sym
+implement
+hdcst_get_stamp
+(hdc) = hdc->hdcst_stamp
+
+implement
+hdcst_make_idtp
+(loc, sym, htp) =
+(
+ref<hdcst_struct>
+@{
+  hdcst_loc=loc
+, hdcst_sym=sym
+, hdcst_type=htp
+, hdcst_stamp=stamp
+}
+) where
+{
+  val stamp = hdcst_stamp_new()
+}
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+typedef
 hdvar_struct = @{
 //
   hdvar_loc= loc_t // loc
@@ -150,4 +238,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_intrep0_h0typ.dats] *)
+(* end of [xats_intrep0_dynexp.dats] *)

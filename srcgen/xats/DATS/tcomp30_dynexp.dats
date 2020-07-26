@@ -93,7 +93,51 @@ end // end of [tcomp30_dvar]
 
 (* ****** ****** *)
 
+implement
+tcomp30_dcon
+  (d2c0) =
+let
+val opt =
+the_dconmap_search_opt(d2c0)
+in
+case+ opt of
+| ~
+Some_vt(hdc1) => hdc1
+| ~
+None_vt((*void*)) =>
+let
+val hdc1 =
+hdcon_make_dcon(d2c0)
+in
+the_dconmap_insert_any(d2c0, hdc1); hdc1
+end
+end // end of [tcomp30_dcon]
+
+implement
+tcomp30_dcst
+  (d2c0) =
+let
+val opt =
+the_dcstmap_search_opt(d2c0)
+in
+case+ opt of
+| ~
+Some_vt(hdc1) => hdc1
+| ~
+None_vt((*void*)) =>
+let
+val hdc1 =
+hdcst_make_dcst(d2c0)
+in
+the_dcstmap_insert_any(d2c0, hdc1); hdc1
+end
+end // end of [tcomp30_dcst]
+
+(* ****** ****** *)
+
 local
+
+(* ****** ****** *)
 
 fun
 auxvar
@@ -120,6 +164,64 @@ hdv1 =
 in
 h0exp_make_node(loc0, h0t0, H0Evar(hdv1))
 end
+
+(* ****** ****** *)
+
+fun
+auxfcon
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hdc1 =
+(
+  tcomp30_dcon(d2c0)
+) where
+{
+  val-
+  D3Efcon(d2c0) = d3e0.node()
+}
+//
+in
+h0exp_make_node(loc0, h0t0, H0Efcon(hdc1))
+end
+
+(* ****** ****** *)
+
+fun
+auxfcst
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hdc1 =
+(
+  tcomp30_dcst(d2c0)
+) where
+{
+  val-
+  D3Efcst(d2c0) = d3e0.node()
+}
+//
+in
+h0exp_make_node(loc0, h0t0, H0Efcst(hdc1))
+end
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 
@@ -149,6 +251,11 @@ d3e0.node() of
 //
 |
 D3Evar _ => auxvar(d3e0)
+//
+|
+D3Efcon _ => auxfcon(d3e0)
+|
+D3Efcst _ => auxfcst(d3e0)
 //
 | _(* rest-of_d3exp *) =>
 let

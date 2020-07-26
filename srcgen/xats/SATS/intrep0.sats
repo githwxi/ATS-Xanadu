@@ -73,21 +73,48 @@ typedef h0typopt = Option(h0typ)
 //
 (* ****** ****** *)
 //
-abstype hdvar_tbox = ptr
 abstype hdcon_tbox = ptr
 abstype hdcst_tbox = ptr
-typedef hdvar = hdvar_tbox
-typedef hdcon = hdcst_tbox
+typedef hdcon = hdcon_tbox
 typedef hdcst = hdcst_tbox
+//
+abstype hdvar_tbox = ptr
+typedef hdvar = hdvar_tbox
 //
 (* ****** ****** *)
 //
 fun
-hdvar_stamp_new(): stamp
-fun
 hdcon_stamp_new(): stamp
 fun
 hdcst_stamp_new(): stamp
+fun
+hdvar_stamp_new(): stamp
+//
+(* ****** ****** *)
+//
+fun
+hdcon_get_sym(hdcon): sym_t
+fun
+hdcst_get_sym(hdcst): sym_t
+fun
+hdvar_get_sym(hdvar): sym_t
+//
+overload .sym with hdcon_get_sym
+overload .sym with hdcst_get_sym
+overload .sym with hdvar_get_sym
+//
+(* ****** ****** *)
+//
+fun
+hdcon_get_stamp(hdcon): stamp
+fun
+hdcst_get_stamp(hdcst): stamp
+fun
+hdvar_get_stamp(hdvar): stamp
+//
+overload .stamp with hdcon_get_stamp
+overload .stamp with hdcst_get_stamp
+overload .stamp with hdvar_get_stamp
 //
 (* ****** ****** *)
 //
@@ -256,10 +283,15 @@ datatype
 h0exp_node =
 // externally named
 | H0Evar of hdvar // variable
-| H0Econ of hdcon // cnstrctr
-| H0Ecst of hdcst // constant
 //
-| H0Elet of (h0dclist, h0exp)
+| H0Efcon of hdcon // cnstrctr
+| H0Efcst of hdcst // constant
+//
+| H0Edapp of
+  (h0exp, int(*npf*), h0explst)
+//
+| H0Elet of
+  (h0dclist, h0exp(*sequence*))
 //
 | H0Eif0 of (h0exp, h0exp, h0expopt)
 //
