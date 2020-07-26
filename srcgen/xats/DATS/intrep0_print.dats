@@ -279,6 +279,13 @@ fprint_h0dcl(out, x0) =
 case+
 x0.node() of
 //
+| H0Cvaldecl _ =>
+  fprint!
+  (out, "H0Cvaldecl(", "...", ")")
+| H0Cvardecl _ =>
+  fprint!
+  (out, "H0Cvardecl(", "...", ")")
+//
 | H0Cnone1(_) =>
   fprint!(out, "H0Cnone1(", "...", ")")
 //

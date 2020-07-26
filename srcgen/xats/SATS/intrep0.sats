@@ -80,6 +80,8 @@ typedef hdcst = hdcst_tbox
 //
 abstype hdvar_tbox = ptr
 typedef hdvar = hdvar_tbox
+typedef hdvarlst = List0(hdvar)
+typedef hdvaropt = Option(hdvar)
 //
 (* ****** ****** *)
 //
@@ -393,12 +395,54 @@ h0exp_make_node
 (* ****** ****** *)
 //
 datatype
+hvaldecl =
+HVALDECL of @{
+  loc= loc_t
+, pat= h0pat
+, def= h0expopt
+(*
+, ctp= t2pcast
+*)
+}
+//
+typedef
+hvaldeclist = List0(hvaldecl)
+//
+(* ****** ****** *)
+//
+datatype
+hvardecl =
+HVARDECL of @{
+  loc= loc_t
+, hdv= hdvar
+, wth= hdvaropt
+, ini= h0expopt
+}
+//
+typedef
+hvardeclist = List0(hvardecl)
+//
+(* ****** ****** *)
+//
+datatype
 h0dcl_node =
 // externally named
 | H0Cinclude
 //
 | H0Clocal of
   (h0dclist(*head*), h0dclist(*body*))
+//
+|
+H0Cvaldecl of
+(token(*knd*), decmodopt, hvaldeclist)
+|
+H0Cvardecl of
+(token(*knd*), decmodopt, hvardeclist)
+(*
+|
+H0Cfundecl of
+(token(*knd*), decmodopt, hfundeclist)
+*)
 //
 | H0Cnone1 of (dataptr) // HX: for errors
 //

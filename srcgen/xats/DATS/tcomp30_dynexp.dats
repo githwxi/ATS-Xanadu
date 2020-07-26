@@ -340,10 +340,63 @@ list_map$fopr<d3exp><h0exp>(d3e) = tcomp30_dexp(d3e)
 //
 (* ****** ****** *)
 
+local
+
+(* ****** ****** *)
+
+fun
+aux_valdecl
+( d3cl
+: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cvaldecl
+( knd
+, mopt
+, v3ds) = d3cl.node()
+//
+val hvds = list_nil()
+//
+in
+h0dcl_make_node
+(loc0, H0Cvaldecl(knd, mopt, hvds))
+end // end of [aux_valdecl]
+
+(* ****** ****** *)
+
+fun
+aux_vardecl
+( d3cl
+: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cvardecl
+( knd
+, mopt
+, v3ds) = d3cl.node()
+//
+val hvds = list_nil()
+//
+in
+h0dcl_make_node
+(loc0, H0Cvardecl(knd, mopt, hvds))
+end // end of [aux_vardecl]
+
+(* ****** ****** *)
+
+in(*in-of-local*)
+
 implement
 tcomp30_decl
-  (d3cl) =
-let
+  (d3cl) = let
 //
 val
 loc0 = d3cl.loc()
@@ -354,21 +407,31 @@ println!
 ("tcomp30_decl: d3cl = ", d3cl)
 *)
 //
-in
+in(*in-of-local*)
 //
 case+
 d3cl.node() of
+//
+| D3Cvaldecl _ =>
+  (
+    aux_valdecl(d3cl)
+  )
+| D3Cvardecl _ =>
+  (
+    aux_vardecl(d3cl)
+  )
+//
 |
 _(* rest-of_d3exp *) =>
 let
 val
 node =
 H0Cnone1($UN.cast{ptr}(d3cl))
-in
-  h0dcl_make_node( loc0, node )
-end // end of [let]
+in h0dcl_make_node(loc0, node) end
 //
 end // end of [tcomp30_decl]
+
+end // end of [local]
 
 (* ****** ****** *)
 
