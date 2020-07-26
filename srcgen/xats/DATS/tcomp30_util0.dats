@@ -88,6 +88,16 @@ local
 "libats/DATS\
 /linmap_avltree.dats"
 
+(* ****** ****** *)
+
+extern
+prfun
+lemma_cptr_param
+{a:vt0p}
+{l:addr}(cp: cptr(a, l)): [l >= null] void
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 (* ****** ****** *)
@@ -137,7 +147,8 @@ linmap_search_ref<key,itm>(map,d2v0)
 //
 in
 let
-prval () = $UN.cast2void(map) in ref
+prval () = $UN.cast2void(map)
+prval () = lemma_cptr_param(ref) in ref
 end
 end // end of [the_dvarmap_search_ref]
 
@@ -247,7 +258,8 @@ linmap_search_ref<key,itm>(map,d2v0)
 //
 in
 let
-prval () = $UN.cast2void(map) in ref
+prval () = $UN.cast2void(map)
+prval () = lemma_cptr_param(ref) in ref
 end
 end // end of [the_dconmap_search_ref]
 
@@ -357,7 +369,8 @@ linmap_search_ref<key,itm>(map,d2v0)
 //
 in
 let
-prval () = $UN.cast2void(map) in ref
+prval () = $UN.cast2void(map)
+prval () = lemma_cptr_param(ref) in ref
 end
 end // end of [the_dcstmap_search_ref]
 
