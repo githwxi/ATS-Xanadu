@@ -76,7 +76,7 @@ tcomp30_dvar
   (d2v0) =
 let
 val opt =
-the_d2vmap_search_opt(d2v0)
+the_dvarmap_search_opt(d2v0)
 in
 case+ opt of
 | ~
@@ -87,7 +87,7 @@ let
 val hdv1 =
 hdvar_make_dvar(d2v0)
 in
-the_d2vmap_insert_any(d2v0, hdv1); hdv1
+the_dvarmap_insert_any(d2v0, hdv1); hdv1
 end
 end // end of [tcomp30_dvar]
 

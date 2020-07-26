@@ -46,20 +46,56 @@
 #staload "./intrep0.sats"
 
 (* ****** ****** *)
+typedef
+cPtr0(a:vt0p) =
+[l:addr | l >= null] cptr(a,l)
+(* ****** ****** *)
 //
 fun
-the_d2vmap_search_ref
+the_dvarmap_search_ref
 (d2v: d2var): cPtr0(hdvar)
 fun
-the_d2vmap_search_opt
+the_dvarmap_search_opt
 (d2v: d2var): Option_vt(hdvar)
 //
 fun
-the_d2vmap_insert_any
+the_dvarmap_insert_any
 (d2v0: d2var, hdv1: hdvar): void
 fun
-the_d2vmap_insert_exn
+the_dvarmap_insert_exn
 (d2v0: d2var, hdv1: hdvar): void
+//
+(* ****** ****** *)
+//
+fun
+the_dconmap_search_ref
+(d2c: d2con): cPtr0(hdcon)
+fun
+the_dconmap_search_opt
+(d2c: d2con): Option_vt(hdcon)
+//
+fun
+the_dconmap_insert_any
+(d2c0: d2con, hdv1: hdcon): void
+fun
+the_dconmap_insert_exn
+(d2c0: d2con, hdv1: hdcon): void
+//
+(* ****** ****** *)
+//
+fun
+the_dcstmap_search_ref
+(d2c: d2cst): cPtr0(hdcst)
+fun
+the_dcstmap_search_opt
+(d2c: d2cst): Option_vt(hdcst)
+//
+fun
+the_dcstmap_insert_any
+(d2c0: d2cst, hdv1: hdcst): void
+fun
+the_dcstmap_insert_exn
+(d2c0: d2cst, hdv1: hdcst): void
 //
 (* ****** ****** *)
 
