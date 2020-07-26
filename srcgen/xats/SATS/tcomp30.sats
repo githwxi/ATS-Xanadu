@@ -46,6 +46,22 @@
 #staload "./intrep0.sats"
 
 (* ****** ****** *)
+//
+fun
+the_d2vmap_search_ref
+(d2v: d2var): cPtr0(hdvar)
+fun
+the_d2vmap_search_opt
+(d2v: d2var): Option_vt(hdvar)
+//
+fun
+the_d2vmap_insert_any
+(d2v0: d2var, hdv1: hdvar): void
+fun
+the_d2vmap_insert_exn
+(d2v0: d2var, hdv1: hdvar): void
+//
+(* ****** ****** *)
 
 fun
 tcomp30_program
@@ -80,6 +96,15 @@ tcomp30_typelst
 //
 (* ****** ****** *)
 //
+fun
+tcomp30_dvar(d2v0: d2var): hdvar
+fun
+tcomp30_dcon(d2c0: d2con): hdcon
+fun
+tcomp30_dcst(d2c0: d2cst): hdcst
+//
+(* ****** ****** *)
+
 fun
 tcomp30_dexp(d3e0: d3exp): h0exp
 fun

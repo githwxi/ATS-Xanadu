@@ -71,6 +71,28 @@ tcomp30_declist(prog0)
 //
 (* ****** ****** *)
 
+implement
+tcomp30_dvar
+  (d2v0) =
+let
+val opt =
+the_d2vmap_search_opt(d2v0)
+in
+case+ opt of
+| ~
+Some_vt(hdv1) => hdv1
+| ~
+None_vt((*void*)) =>
+let
+val hdv1 =
+hdvar_make_dvar(d2v0)
+in
+the_d2vmap_insert_any(d2v0, hdv1); hdv1
+end
+end // end of [tcomp30_dvar]
+
+(* ****** ****** *)
+
 local
 
 fun
@@ -86,18 +108,17 @@ val
 h0t0 = tcomp30_type(t2p0)
 //
 val
-hdv =
+hdv1 =
 (
-  hdvar_make_dvar(d2v)
+  tcomp30_dvar(d2v0)
 ) where
 {
   val-
-  D3Evar(d2v) = d3e0.node()
+  D3Evar(d2v0) = d3e0.node()
 }
 //
 in
-  h0exp_make_node
-  (loc0, h0t0, H0Evar(hdv))
+h0exp_make_node(loc0, h0t0, H0Evar(hdv1))
 end
 
 in(*in-of-local*)
@@ -142,7 +163,7 @@ hend =
 H0Enone1($UN.cast{ptr}(d3e0))
 //
 in
-h0exp_make_node(loc0, h0t0, hend)
+  h0exp_make_node(loc0, h0t0, hend)
 end // end of [let]
 //
 end // end of [tcomp30_dexp]

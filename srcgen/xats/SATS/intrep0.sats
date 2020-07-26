@@ -209,6 +209,17 @@ overload fprint with fprint_hdvar
 (* ****** ****** *)
 //
 fun
+hdcon_make_idtp
+( loc: loc_t
+, sym: symbol, htp: h0typ): hdcon
+fun
+hdcst_make_idtp
+( loc: loc_t
+, sym: symbol, htp: h0typ): hdcst
+//
+(* ****** ****** *)
+//
+fun
 hdvar_make_idtp
 ( loc: loc_t
 , sym: symbol, htp: h0typ): hdvar

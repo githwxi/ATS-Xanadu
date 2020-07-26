@@ -68,6 +68,15 @@ eq_stamp_stamp
 (* ****** ****** *)
 //
 implement
+compare_stamp_stamp
+  (x1, x2) =
+(
+  compare_ptr0_ptr0(x1, x2)
+)
+//
+(* ****** ****** *)
+//
+implement
 print_stamp(x0) =
 fprint_stamp(stdout_ref, x0)
 implement
