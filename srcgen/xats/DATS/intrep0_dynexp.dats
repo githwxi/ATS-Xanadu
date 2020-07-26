@@ -60,7 +60,7 @@ hdcon_struct = @{
 , hdcon_type= h0typ // type
 , hdcon_stamp= stamp // unicity
 //
-} (* end of [hdvar_tbox] *)
+} (* end of [hdcon_tbox] *)
 
 absimpl
 hdcon_tbox = ref(hdcon_struct)
@@ -104,7 +104,7 @@ hdcst_struct = @{
 , hdcst_type= h0typ // type
 , hdcst_stamp= stamp // unicity
 //
-} (* end of [hdvar_tbox] *)
+} (* end of [hdcon_tbox] *)
 
 absimpl
 hdcst_tbox = ref(hdcst_struct)
@@ -154,6 +154,13 @@ absimpl
 hdvar_tbox = ref(hdvar_struct)
 
 in(* in-of-local *)
+
+implement
+hdvar_get_sym
+(hdv) = hdv->hdvar_sym
+implement
+hdvar_get_stamp
+(hdv) = hdv->hdvar_stamp
 
 implement
 hdvar_make_idtp

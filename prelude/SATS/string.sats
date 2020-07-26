@@ -150,6 +150,17 @@ string_consq
 (* ****** ****** *)
 //
 fun<>
+stropt_nilq
+  {n:int}
+  (cs: stropt(n)): bool(n=0)
+fun<>
+stropt_consq
+  {n:int}
+  (cs: stropt(n)): bool(n>0)
+//
+(* ****** ****** *)
+//
+fun<>
 string_vt_nilq
 {n:int}
 (cs: !string_vt(n)): bool(n=0)

@@ -223,6 +223,38 @@ end
 
 (* ****** ****** *)
 
+fun
+auxdapp
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Edapp(h0f0, npf1, h0es)
+) where
+{
+  val-
+  D3Edapp
+  ( d3f0
+  , npf1, d3es) = d3e0.node()
+  val h0f0 = tcomp30_dexp(d3f0)
+  val h0es = tcomp30_dexplst(d3es)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -256,6 +288,9 @@ D3Evar _ => auxvar(d3e0)
 D3Efcon _ => auxfcon(d3e0)
 |
 D3Efcst _ => auxfcst(d3e0)
+//
+|
+D3Edapp _ => auxdapp(d3e0)
 //
 | _(* rest-of_d3exp *) =>
 let
