@@ -792,7 +792,8 @@ decmodopt =
     (token(*COLON*), i0dnt)
   // end of [DECMODsing]
 | DECMODlist of
-    (token(*COLON*), token, i0dntlst(*ids*), token)
+  ( token(*COLON*)
+  , token(*'('*), i0dntlst, token(*')'*))
   // end of [DECMODlist]
 //
 (* ****** ****** *)
