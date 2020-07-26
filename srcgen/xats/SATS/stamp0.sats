@@ -64,7 +64,7 @@ neq_stamp_stamp
 //
 fun
 compare_stamp_stamp
-(x1: stamp, x2: stamp):<> (Sgn)
+(x1: stamp, x2: stamp):<> (int)
 //
 overload < with lt_stamp_stamp
 overload <= with lte_stamp_stamp

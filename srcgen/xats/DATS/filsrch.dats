@@ -127,15 +127,18 @@ let
   val d0 =
   $UN.ptr0_get<char>(q0)
 in
-  if iseqz(d0)
-    then
-    (c0 = theDirSep_get())
-    else
-    (if c0 = d0
-       then
-       loop(ptr0_succ<char>(p0), ptr0_succ<char>(q0))
-       else false
-    ) (* end of [else] *)
+  if
+  iseqz(d0)
+  then
+  (c0 = theDirSep_get())
+  else
+  (
+  if
+  (c0 = d0)
+  then
+  loop(ptr0_succ<char>(p0), ptr0_succ<char>(q0))
+  else false
+  ) (* end of [else] *)
 end
 //
 } (* end of [aux1] *)
