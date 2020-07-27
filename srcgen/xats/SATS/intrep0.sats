@@ -341,8 +341,16 @@ h0pat_make_node
 //
 datatype
 h0exp_node =
-// externally named
-| H0Evar of hdvar // variable
+//
+| H0Eint of token
+| H0Ebtf of token
+| H0Echr of token
+| H0Eflt of token
+| H0Estr of token
+//
+| H0Evar of hdvar
+| H0Evknd of
+  (int(*knd*), hdvar)
 //
 | H0Efcon of hdcon // cnstrctr
 | H0Efcst of hdcst // constant

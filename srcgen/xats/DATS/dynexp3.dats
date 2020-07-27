@@ -109,14 +109,13 @@ list_map$fopr<d3pat><t2ype>(d3p) = d3p.type()
 implement
 d3pat_nil
 (loc0) =
-(
-d3pat_make_node
-(loc0, t2p0, D3Pany())
-) where
-{
+let
 val
 t2p0 = the_t2ype_void
-} (* d3pat_nil *)
+in
+d3pat_make_node
+(loc0, t2p0, D3Pnil())
+end // [d3pat_nil]
 
 (* ****** ****** *)
 

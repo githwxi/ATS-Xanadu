@@ -2,8 +2,15 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+#extern
+fun
+foo(x: int, y: string): void
+
+(* ****** ****** *)
+
 val x = 0
-var y = "0"
+val y = "0"
+val () = foo(x, y)
 
 (* ****** ****** *)
 ////
