@@ -130,12 +130,21 @@ tcomp30_typelst
 (* ****** ****** *)
 //
 fun
-tcomp30_dvar(d2v0: d2var): hdvar
+tcomp30_dvar
+  (d2v0: d2var): hdvar
+fun
+tcomp30_dvaropt
+  (opt0: d2varopt): hdvaropt
+//
+(* ****** ****** *)
 fun
 tcomp30_dcon(d2c0: d2con): hdcon
 fun
 tcomp30_dcst(d2c0: d2cst): hdcst
 //
+(* ****** ****** *)
+fun
+tcomp30_dpat(d3p0: d3pat): h0pat
 (* ****** ****** *)
 
 fun

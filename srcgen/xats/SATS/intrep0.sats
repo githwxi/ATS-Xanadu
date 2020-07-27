@@ -410,6 +410,26 @@ hvaldeclist = List0(hvaldecl)
 //
 (* ****** ****** *)
 //
+fun
+hvaldecl_get_loc(hvaldecl): loc_t
+//
+overload .loc with hvaldecl_get_loc
+//
+(* ****** ****** *)
+//
+fun
+print_hvaldecl: print_type(hvaldecl)
+fun
+prerr_hvaldecl: prerr_type(hvaldecl)
+fun
+fprint_hvaldecl: fprint_type(hvaldecl)
+//
+overload print with print_hvaldecl
+overload prerr with prerr_hvaldecl
+overload fprint with fprint_hvaldecl
+//
+(* ****** ****** *)
+//
 datatype
 hvardecl =
 HVARDECL of @{
@@ -421,6 +441,26 @@ HVARDECL of @{
 //
 typedef
 hvardeclist = List0(hvardecl)
+//
+(* ****** ****** *)
+//
+fun
+hvardecl_get_loc(hvardecl): loc_t
+//
+overload .loc with hvardecl_get_loc
+//
+(* ****** ****** *)
+//
+fun
+print_hvardecl: print_type(hvardecl)
+fun
+prerr_hvardecl: prerr_type(hvardecl)
+fun
+fprint_hvardecl: fprint_type(hvardecl)
+//
+overload print with print_hvardecl
+overload prerr with prerr_hvardecl
+overload fprint with fprint_hvardecl
 //
 (* ****** ****** *)
 //

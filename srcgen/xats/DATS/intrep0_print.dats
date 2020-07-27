@@ -40,16 +40,15 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/stamp0.sats"
-//
 #staload "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
 
-overload
-fprint with fprint_stamp
-overload
-fprint with fprint_symbol
+#staload "./../SATS/lexing.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/dynexp0.sats"
 
 (* ****** ****** *)
 
@@ -88,6 +87,14 @@ fprint_val<h0exp> = fprint_h0exp
 implement
 fprint_val<h0dcl> = fprint_h0dcl
 
+(* ****** ****** *)
+//
+local
+#staload "./../SATS/stamp0.sats"
+in
+overload fprint with fprint_stamp
+end // end of [local]
+//
 (* ****** ****** *)
 //
 implement
@@ -273,24 +280,89 @@ implement
 prerr_h0dcl(x0) =
 fprint_h0dcl(stderr_ref, x0)
 //
+local
+//
+implement
+fprint_val<h0dcl> = fprint_h0dcl
+implement
+fprint_val<hvaldecl> = fprint_hvaldecl
+implement
+fprint_val<hvardecl> = fprint_hvardecl
+//
+in
+//
 implement
 fprint_h0dcl(out, x0) =
 (
 case+
 x0.node() of
 //
-| H0Cvaldecl _ =>
+| H0Cvaldecl
+  (knd, mopt, hvds) =>
   fprint!
-  (out, "H0Cvaldecl(", "...", ")")
-| H0Cvardecl _ =>
+  ( out
+  , "H0Cvaldecl("
+  , knd, "; ", mopt, "; ", hvds, ")")
+| H0Cvardecl
+  (knd, mopt, hvds) =>
   fprint!
-  (out, "H0Cvardecl(", "...", ")")
+  ( out
+  , "H0Cvardecl("
+  , knd, "; ", mopt, "; ", hvds, ")")
 //
 | H0Cnone1(_) =>
   fprint!(out, "H0Cnone1(", "...", ")")
 //
 | _(* H0C... *) => fprint!(out, "H0C...(...)")
 )
+end // end of [local]
+//
+(* ****** ****** *)
+//
+implement
+print_hvaldecl(x0) =
+fprint_hvaldecl(stdout_ref, x0)
+implement
+prerr_hvaldecl(x0) =
+fprint_hvaldecl(stderr_ref, x0)
+//
+implement
+fprint_hvaldecl
+  (out, x0) = let
+//
+val+HVALDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "HVALDECL@{"
+  , ", pat=", rcd.pat
+  , ", def=", rcd.def, "}")
+end // end of [fprint_hvaldecl]
+//
+(* ****** ****** *)
+//
+implement
+print_hvardecl(x0) =
+fprint_hvardecl(stdout_ref, x0)
+implement
+prerr_hvardecl(x0) =
+fprint_hvardecl(stderr_ref, x0)
+//
+implement
+fprint_hvardecl
+  (out, x0) = let
+//
+val+HVARDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "HVARDECL@{"
+  , ", hdv=", rcd.hdv
+  , ", wth=", rcd.wth
+  , ", ini=", rcd.ini, "}")
+end // end of [fprint_hvardecl]
 //
 (* ****** ****** *)
 
