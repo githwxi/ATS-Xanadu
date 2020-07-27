@@ -226,6 +226,12 @@ fprint_h0pat(out, x0) =
 case+
 x0.node() of
 //
+| H0Pnil() =>
+  fprint!(out, "H0Pnil(", ")")
+//
+| H0Pany() =>
+  fprint!(out, "H0Pany(", ")")
+//
 | H0Pvar(hdv) =>
   fprint!(out, "H0Pvar(", hdv, ")")
 //
@@ -250,8 +256,23 @@ fprint_h0exp(out, x0) =
 case+
 x0.node() of
 //
+| H0Eint(int) =>
+  fprint!(out, "H0Eint(", int, ")")
+| H0Ebtf(btf) =>
+  fprint!(out, "H0Ebtf(", btf, ")")
+| H0Echr(chr) =>
+  fprint!(out, "H0Echr(", chr, ")")
+| H0Eflt(flt) =>
+  fprint!(out, "H0Eflt(", flt, ")")
+| H0Estr(str) =>
+  fprint!(out, "H0Estr(", str, ")")
+//
 | H0Evar(hdv) =>
   fprint!(out, "H0Evar(", hdv, ")")
+| H0Evknd(knd, hdv) =>
+  fprint!
+  ( out
+  , "H0Evknd(", knd, "; ", hdv, ")")
 //
 | H0Efcon(hdc) =>
   fprint!(out, "H0Efcon(", hdc, ")")

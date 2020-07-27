@@ -48,6 +48,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp3.sats"
 #staload "./../SATS/intrep0.sats"
 
@@ -151,6 +152,35 @@ local
 (* ****** ****** *)
 
 fun
+auxnil
+(d3p0: d3pat): h0pat =
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+in
+h0pat_make_node(loc0, h0t0, H0Pnil())
+end
+fun
+auxany
+(d3p0: d3pat): h0pat =
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+in
+h0pat_make_node(loc0, h0t0, H0Pany())
+end
+
+(* ****** ****** *)
+
+fun
 auxvar
 (d3p0: d3pat): h0pat =
 let
@@ -203,6 +233,11 @@ case+
 d3p0.node() of
 //
 |
+D3Pnil() => auxnil(d3p0)
+|
+D3Pany() => auxany(d3p0)
+//
+|
 D3Pvar _ => auxvar(d3p0)
 //
 | _(* rest-of_d3pat *) =>
@@ -235,6 +270,103 @@ local
 (* ****** ****** *)
 
 fun
+auxint
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Eint(tok) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Eint(tok))
+end // end of [auxint]
+
+fun
+auxbtf
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Ebtf(tok) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Ebtf(tok))
+end // end of [auxbtf]
+
+fun
+auxchr
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Echr(tok) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Echr(tok))
+end // end of [auxchr]
+
+fun
+auxflt
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Eflt(tok) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Eflt(tok))
+end // end of [auxflt]
+
+fun
+auxstr
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Estr(tok) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Estr(tok))
+end // end of [auxstr]
+
+(* ****** ****** *)
+
+fun
 auxvar
 (d3e0: d3exp): h0exp =
 let
@@ -256,8 +388,36 @@ hdv1 =
   D3Evar(d2v0) = d3e0.node()
 }
 //
+val hend = H0Evar(hdv1)
+//
 in
-h0exp_make_node(loc0, h0t0, H0Evar(hdv1))
+h0exp_make_node(loc0, h0t0, hend)
+end
+
+(* ****** ****** *)
+
+fun
+auxvknd
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Evknd
+(k0, d2v0) = d3e0.node()
+val
+hdv1 = tcomp30_dvar(d2v0)
+//
+val hend = H0Evknd(k0, hdv1)
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
 end
 
 (* ****** ****** *)
@@ -361,7 +521,6 @@ val
 loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
-//
 val () =
 println!
 ("tcomp30_dexp: d3e0 = ", d3e0)
@@ -376,7 +535,20 @@ case+
 d3e0.node() of
 //
 |
+D3Eint _ => auxint(d3e0)
+|
+D3Ebtf _ => auxbtf(d3e0)
+|
+D3Echr _ => auxchr(d3e0)
+|
+D3Eflt _ => auxflt(d3e0)
+|
+D3Estr _ => auxstr(d3e0)
+//
+|
 D3Evar _ => auxvar(d3e0)
+|
+D3Evknd _ => auxvknd(d3e0)
 //
 |
 D3Efcon _ => auxfcon(d3e0)
