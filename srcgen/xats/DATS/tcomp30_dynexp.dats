@@ -32,6 +32,9 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt.hats"
+(* ****** ****** *)
 //
 #include
 "share/atspre_staload.hats"
@@ -496,17 +499,114 @@ hend =
   H0Edapp(h0f0, npf1, h0es)
 ) where
 {
-  val-
-  D3Edapp
-  ( d3f0
-  , npf1, d3es) = d3e0.node()
-  val h0f0 = tcomp30_dexp(d3f0)
-  val h0es = tcomp30_dexplst(d3es)
+val-
+D3Edapp
+( d3f0
+, npf1, d3es) = d3e0.node()
+val h0f0 = tcomp30_dexp(d3f0)
+val h0es = tcomp30_dexplst(d3es)
 }
 //
 in
   h0exp_make_node(loc0, h0t0, hend)
 end
+
+(* ****** ****** *)
+
+fun
+auxseqn
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Eseqn(h0es, h0e1)
+) where
+{
+val-
+D3Eseqn
+(d3es, d3e1) = d3e0.node()
+val
+h0es = tcomp30_dexplst(d3es)
+val h0e1 = tcomp30_dexp(d3e1)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end
+
+(* ****** ****** *)
+
+fun
+aux_let
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Elet(hdcl, h0e1)
+) where
+{
+val-
+D3Elet
+(d3cs, d3e1) = d3e0.node()
+//
+val
+hdcl = tcomp30_declist(d3cs)
+//
+val h0e1 = tcomp30_dexp(d3e1)
+}
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_let]
+
+(* ****** ****** *)
+
+fun
+aux_if0
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Eif0(h0e1, h0e2, opt3)
+) where
+{
+val-
+D3Eif0
+( d3e1
+, d3e2, opt3) = d3e0.node()
+val h0e1 = tcomp30_dexp(d3e1)
+val h0e2 = tcomp30_dexp(d3e2)
+val opt3 = tcomp30_dexpopt(opt3)
+}
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_if0]
 
 (* ****** ****** *)
 
@@ -516,6 +616,7 @@ implement
 tcomp30_dexp
   (d3e0) = let
 //
+#if(__XATSOPT_DEBUG__)
 (*
 val
 loc0 = d3e0.loc()
@@ -528,6 +629,7 @@ val () =
 println!
 ("tcomp30_dexp: t2p0 = ", t2p0)
 *)
+#endif//__XATSOPT_DEBUG__
 //
 in
 //
@@ -557,8 +659,14 @@ D3Efcst _ => auxfcst(d3e0)
 //
 |
 D3Edapp _ => auxdapp(d3e0)
+|
+D3Eseqn _ => auxseqn(d3e0)
 //
-| _(* rest-of_d3exp *) =>
+| D3Elet _ => aux_let(d3e0)
+//
+| D3Eif0 _ => aux_if0(d3e0)
+//
+| _(*rest-of_d3exp*) =>
 let
 //
 val

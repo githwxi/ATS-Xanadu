@@ -4,13 +4,21 @@
 
 #extern
 fun
-foo(x: int, y: string): void
+foo
+( x: int
+, y: string): string
 
 (* ****** ****** *)
 
-val x = 0
-val y = "0"
-val () = foo(x, y)
+val
+x = 0
+val
+y = "0"
+val:prf
+z =
+let
+val z = foo(x, foo(x, y)) in z; 1
+end
 
 (* ****** ****** *)
 ////

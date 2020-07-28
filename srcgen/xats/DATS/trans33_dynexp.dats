@@ -1952,13 +1952,13 @@ D3Elet _ => aux_let(env0, d3e0)
 |
 D3Ewhere _ => aux_where(env0, d3e0)
 //
-| D3Eseqn _ => aux_seqn(env0, d3e0)
+|
+D3Eseqn _ => aux_seqn(env0, d3e0)
 //
 |
 D3Eassgn _ => aux_assgn(env0, d3e0)
 //
-|
-D3Eif0 _ => aux_if0(env0, d3e0)
+| D3Eif0 _ => aux_if0(env0, d3e0)
 //
 |
 D3Ecase _ => aux_case(env0, d3e0)
