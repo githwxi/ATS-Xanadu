@@ -361,6 +361,9 @@ h0exp_node =
 | H0Elet of
   (h0dclist, h0exp(*sequence*))
 //
+| H0Eseqn of
+  (h0explst(*semi*), h0exp(*last*))
+//
 | H0Eif0 of (h0exp, h0exp, h0expopt)
 //
 | H0Enone1 of (dataptr) // HX: for errors

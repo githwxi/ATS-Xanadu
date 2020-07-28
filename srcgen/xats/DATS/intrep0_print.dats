@@ -286,10 +286,28 @@ x0.node() of
   , "H0Edapp("
   , h0f0, "; ", npf1, "; ", h0es, ")")
 //
+| H0Eseqn(h0es, h0e1) =>
+  fprintln!
+  ( out
+  , "H0Eseqn(", h0es, "; ", h0e1, ")")
+//
+| H0Elet(hdcl, h0e1) =>
+  fprintln!
+  (out, "H0Elet(", hdcl, "; ", h0e1, ")")
+//
+| H0Eif0
+  (h0e1, h0e2, opt3) =>
+  fprintln!
+  ( out
+  , "H0Eif0("
+  , h0e1, "; ", h0e2, "; ", opt3, ")")
+//
 | H0Enone1(_) =>
   fprint!(out, "H0Enone1(", "...", ")")
 //
+(*
 | _(* H0E... *) => fprint!(out, "H0E...(...)")
+*)
 )
 //
 (* ****** ****** *)
