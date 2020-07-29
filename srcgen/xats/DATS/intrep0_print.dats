@@ -340,7 +340,7 @@ x0.node() of
   (knd0, fid1, hfas, body) =>
   fprint!
   ( out
-  , "H0Elam("
+  , "H0Efix("
   , knd0, "; ", fid1, "; ", hfas, "; ", body, ")")
 //
 | H0Enone1(_) =>

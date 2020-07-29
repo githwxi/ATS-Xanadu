@@ -707,6 +707,44 @@ end // end of [aux_lam]
 
 (* ****** ****** *)
 
+fun
+aux_fix
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val hend =
+(
+  H0Efix
+  (knd, fid, hfas, body)
+) where
+{
+val-
+D3Efix
+( knd
+, fid
+, f3as, res1
+, arrw, body) = d3e0.node()
+//
+val fid = tcomp30_dvar(fid)
+//
+val
+hfas = tcomp30_farglst(f3as)
+val body = tcomp30_dexp(body)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_fix]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -764,6 +802,7 @@ D3Eseqn _ => auxseqn(d3e0)
 | D3Eif0 _ => aux_if0(d3e0)
 //
 | D3Elam _ => aux_lam(d3e0)
+| D3Efix _ => aux_fix(d3e0)
 //
 | _(*rest-of_d3exp*) =>
 let
