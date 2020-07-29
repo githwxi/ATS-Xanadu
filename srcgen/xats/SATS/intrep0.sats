@@ -57,11 +57,34 @@ typedef htcst = htcst_tbox
 typedef htvar = htvar_tbox
 
 (* ****** ****** *)
+typedef htvarlst = List0(htvar)
+typedef htcstlst = List0(htcst)
+(* ****** ****** *)
 //
 fun
 htcst_stamp_new(): stamp
 fun
 htvar_stamp_new(): stamp
+//
+(* ****** ****** *)
+//
+fun
+htcst_get_sym(htcst): sym_t
+fun
+htvar_get_sym(htvar): sym_t
+//
+overload .sym with htcst_get_sym
+overload .sym with htvar_get_sym
+//
+(* ****** ****** *)
+//
+fun
+htcst_get_stamp(htcst): stamp
+fun
+htvar_get_stamp(htvar): stamp
+//
+overload .stamp with htcst_get_stamp
+overload .stamp with htvar_get_stamp
 //
 (* ****** ****** *)
 //
@@ -173,7 +196,7 @@ h0srt =
 where h0srtlst = List0(h0srt)
 
 (* ****** ****** *)
-
+//
 fun
 print_h0srt: h0srt -> void
 fun
@@ -210,6 +233,10 @@ overload print with print_htvar
 overload prerr with prerr_htvar
 overload fprint with fprint_htvar
 //
+(* ****** ****** *)
+fun
+htvar_make_idst
+(sym: symbol, hst: h0srt): htvar
 (* ****** ****** *)
 //
 fun
@@ -469,6 +496,16 @@ typedef htqarglst = List0(htqarg)
 (* ****** ****** *)
 //
 fun
+htqarg_get_loc(htqarg): loc_t
+fun
+htqarg_get_htvs(htqarg): htvarlst
+//
+overload .loc with htqarg_get_loc
+overload .htvs with htqarg_get_htvs
+//
+(* ****** ****** *)
+//
+fun
 print_htqarg: print_type(htqarg)
 fun
 prerr_htqarg: prerr_type(htqarg)
@@ -478,6 +515,39 @@ fprint_htqarg: fprint_type(htqarg)
 overload print with print_htqarg
 overload prerr with prerr_htqarg
 overload fprint with fprint_htqarg
+//
+(* ****** ****** *)
+fun
+htqarg_make
+(loc0: loc_t, htvs: htvarlst): htqarg
+(* ****** ****** *)
+//
+datatype
+hfundecl =
+HFUNDECL of @{
+  loc= loc_t
+, nam= hdvar
+, hdc= hdcst
+, hag=
+  hfarglstopt
+, def= h0expopt, rtp= h0typ
+} where
+  hfarglstopt = Option(hfarglst)
+//
+typedef hfundeclist = List0(hfundecl)
+//
+(* ****** ****** *)
+//
+fun
+print_hfundecl: print_type(hfundecl)
+fun
+prerr_hfundecl: prerr_type(hfundecl)
+fun
+fprint_hfundecl: fprint_type(hfundecl)
+//
+overload print with print_hfundecl
+overload prerr with prerr_hfundecl
+overload fprint with fprint_hfundecl
 //
 (* ****** ****** *)
 //
@@ -548,35 +618,6 @@ fprint_hvardecl: fprint_type(hvardecl)
 overload print with print_hvardecl
 overload prerr with prerr_hvardecl
 overload fprint with fprint_hvardecl
-//
-(* ****** ****** *)
-//
-datatype
-hfundecl =
-HFUNDECL of @{
-  loc= loc_t
-, nam= hdvar
-, hdc= hdcst
-, arg=
-  hfarglstopt
-, def= h0expopt, rtp= t2ype
-} where
-  hfarglstopt = Option(hfarglst)
-//
-typedef hfundeclist = List0(hfundecl)
-//
-(* ****** ****** *)
-//
-fun
-print_hfundecl: print_type(hfundecl)
-fun
-prerr_hfundecl: prerr_type(hfundecl)
-fun
-fprint_hfundecl: fprint_type(hfundecl)
-//
-overload print with print_hfundecl
-overload prerr with prerr_hfundecl
-overload fprint with fprint_hfundecl
 //
 (* ****** ****** *)
 //

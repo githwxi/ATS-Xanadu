@@ -50,9 +50,11 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)
-
 #staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+
 #staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
@@ -857,7 +859,87 @@ list_map$fopr<d3exp><h0exp>(d3e) = tcomp30_dexp(d3e)
 local
 
 (* ****** ****** *)
+//
+fun
+aux_fundecl
+( d3cl
+: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cfundecl
+( knd
+, mopt
+, tqas
+, f3ds) = d3cl.node()
+//
+fun
+auxf3d0
+( f3d0
+: f3undecl): hfundecl =
+let
+val+
+F3UNDECL(rcd) = f3d0
+//
+val loc = rcd.loc
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a3g = rcd.a3g
+val def = rcd.def
+val rtp = rcd.rtp
+//
+val nam = tcomp30_dvar(nam)
+val hdc = tcomp30_dcst(d2c)
+val hag =
+(
+case+ a3g of
+|
+None() =>
+None()
+|
+Some(f3as) =>
+Some(tcomp30_farglst(f3as))
+) : hfarglstopt // end-of-val
+val rtp = tcomp30_type(rtp)
+val def = tcomp30_dexpopt(def)
+//
+in
+HFUNDECL(
+@{
+ loc=loc,nam=nam
+,hdc=hdc,hag=hag,def=def,rtp=rtp}
+) (* HFUNDECL *)
+end // end of [auxf3d0]
+and
+auxf3ds
+( f3ds
+: f3undeclist
+)
+: hfundeclist =
+list_vt2t
+(
+list_map<f3undecl><hfundecl>(f3ds)
+) where
+{
+implement
+list_map$fopr<
+  f3undecl><hfundecl>(x0) = auxf3d0(x0)
+}
+//
+val tqas =
+tcomp30_tqarglst(tqas)
+//
+val hfds = auxf3ds(f3ds)
+//
+in
+h0dcl_make_node
+(loc0, H0Cfundecl(knd, mopt, tqas, hfds))
+end // end of [aux_fundecl]
 
+(* ****** ****** *)
 fun
 aux_valdecl
 ( d3cl
@@ -993,32 +1075,6 @@ h0dcl_make_node
 end // end of [aux_vardecl]
 
 (* ****** ****** *)
-//
-fun
-aux_fundecl
-( d3cl
-: d3ecl): h0dcl =
-let
-//
-val
-loc0 = d3cl.loc()
-//
-val-
-D3Cfundecl
-( knd
-, mopt
-, tqas
-, f3ds) = d3cl.node()
-//
-val tqas = list_nil()
-val hfds = list_nil()
-//
-in
-h0dcl_make_node
-(loc0, H0Cfundecl(knd, mopt, tqas, hfds))
-end // end of [aux_fundecl]
-
-(* ****** ****** *)
 
 in(*in-of-local*)
 
@@ -1040,6 +1096,11 @@ in(*in-of-local*)
 case+
 d3cl.node() of
 //
+| D3Cfundecl _ =>
+  (
+    aux_fundecl(d3cl)
+  )
+//
 | D3Cvaldecl _ =>
   (
     aux_valdecl(d3cl)
@@ -1047,11 +1108,6 @@ d3cl.node() of
 | D3Cvardecl _ =>
   (
     aux_vardecl(d3cl)
-  )
-//
-| D3Cfundecl _ =>
-  (
-    aux_fundecl(d3cl)
   )
 //
 |
@@ -1083,6 +1139,35 @@ list_map$fopr<d3ecl><h0dcl>(d3c) = tcomp30_decl(d3c)
 }
 } (* end of [tcomp30_declist] *)
 
+(* ****** ****** *)
+//
+implement
+tcomp30_tqarg
+  (tqa0) =
+(
+  htqarg_make(loc0, htvs)
+) where
+{
+val loc0 = tqa0.loc()
+val htvs =
+tcomp30_svarlst(tqa0.s2vs())
+}
+
+implement
+tcomp30_tqarglst
+  (tqas) =
+list_vt2t(tqas) where
+{
+val
+tqas =
+list_map<tq2arg><htqarg>
+  (tqas) where
+{
+implement
+list_map$fopr<tq2arg><htqarg>(tqa) = tcomp30_tqarg(tqa)
+}
+} (* end of [tcomp30_tqarglst] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_tcomp30_dynexp.dats] *)

@@ -857,11 +857,11 @@ fprint_val<d0ecl> = fprint_d0ecl
 implement
 fprint_val<g0marg> = fprint_g0marg
 implement
+fprint_val<f0undecl> = fprint_f0undecl
+implement
 fprint_val<v0aldecl> = fprint_v0aldecl
 implement
 fprint_val<v0ardecl> = fprint_v0ardecl
-implement
-fprint_val<f0undecl> = fprint_f0undecl
 implement
 fprint_val<d0cstdecl> = fprint_d0cstdecl
 

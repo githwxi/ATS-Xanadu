@@ -55,17 +55,38 @@ local
 typedef
 htvar_struct = @{
 //
-  htvar_loc= loc_t // loc
-, htvar_sym= sym_t // name
+  htvar_sym= sym_t // name
 , htvar_sort= h0srt // type
 , htvar_stamp= stamp // unicity
 //
 } (* end of [htvar_tbox] *)
 
-in(* in-of-local *)
-
 absimpl
 htvar_tbox = ref(htvar_struct)
+
+in(* in-of-local *)
+
+implement
+htvar_get_sym
+(htv) = htv->htvar_sym
+implement
+htvar_get_stamp
+(htv) = htv->htvar_stamp
+
+implement
+htvar_make_idst
+(sym, hst) =
+(
+ref<htvar_struct>
+@{
+  htvar_sym=sym
+, htvar_sort=hst
+, htvar_stamp=stamp
+}
+) where
+{
+  val stamp = htvar_stamp_new()
+}
 
 end // end of [local]
 

@@ -52,6 +52,25 @@ cPtr0(a:vt0p) =
 (* ****** ****** *)
 //
 fun
+htvar_make_svar(s2var): htvar
+//
+fun
+the_svarmap_search_ref
+(s2v: s2var): cPtr0(htvar)
+fun
+the_svarmap_search_opt
+(s2v: s2var): Option_vt(htvar)
+//
+fun
+the_svarmap_insert_any
+(s2v0: s2var, htv1: htvar): void
+fun
+the_svarmap_insert_exn
+(s2v0: s2var, htv1: htvar): void
+//
+(* ****** ****** *)
+//
+fun
 hdcon_make_dcon(d2con): hdcon
 fun
 hdcst_make_dcst(d2cst): hdcst
@@ -121,6 +140,15 @@ tcomp30_sortlst
 (* ****** ****** *)
 //
 fun
+tcomp30_svar
+  (s2v0: s2var): htvar
+fun
+tcomp30_svarlst
+  (s2vs: s2varlst): htvarlst
+//
+(* ****** ****** *)
+//
+fun
 tcomp30_type
   (t2p0: t2ype): h0typ
 fun
@@ -152,7 +180,7 @@ tcomp30_dpatlst(d3patlst): h0patlst
 (* ****** ****** *)
 //
 fun
-tcomp30_farg(d3p0: f3arg): hfarg
+tcomp30_farg(f3a0: f3arg): hfarg
 fun
 tcomp30_farglst(f3arglst): hfarglst
 //
@@ -171,6 +199,13 @@ fun
 tcomp30_decl(d3c0: d3ecl): h0dcl
 fun
 tcomp30_declist(d3eclist): h0dclist
+//
+(* ****** ****** *)
+//
+fun
+tcomp30_tqarg(tqa0: tq2arg): htqarg
+fun
+tcomp30_tqarglst(tq2arglst): htqarglst
 //
 (* ****** ****** *)
 

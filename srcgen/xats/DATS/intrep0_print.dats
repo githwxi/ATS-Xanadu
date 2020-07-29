@@ -85,6 +85,9 @@ implement
 fprint_val<h0exp> = fprint_h0exp
 
 (* ****** ****** *)
+implement
+fprint_val<htqarg> = fprint_htqarg
+(* ****** ****** *)
 
 implement
 fprint_val<h0dcl> = fprint_h0dcl
@@ -129,6 +132,28 @@ fprint!(out, "HSTnone1(", "...", ")")
 (* ****** ****** *)
 //
 implement
+print_htvar(x0) =
+fprint_htvar(stdout_ref, x0)
+implement
+prerr_htvar(x0) =
+fprint_htvar(stderr_ref, x0)
+//
+implement
+fprint_htvar(out, x0) =
+(
+fprint!
+(out, sym, "(", stamp, ")");
+(*
+fprint!(out, ": ", x0.sort());
+*)
+) where
+{
+val sym = x0.sym() and stamp = x0.stamp()
+} (* end of [fprint_htvar] *)
+//
+(* ****** ****** *)
+//
+implement
 print_h0typ(x0) =
 fprint_h0typ(stdout_ref, x0)
 implement
@@ -140,6 +165,9 @@ fprint_h0typ(out, x0) =
 (
 case+
 x0.node() of
+//
+| H0Tvar(htv) =>
+  fprint!(out, "H0Tvar(", htv, ")")
 //
 | H0Tnone1(_) =>
   fprint!(out, "H0Tnone1(", "...", ")")
@@ -365,6 +393,8 @@ local
 implement
 fprint_val<h0dcl> = fprint_h0dcl
 implement
+fprint_val<hfundecl> = fprint_hfundecl
+implement
 fprint_val<hvaldecl> = fprint_hvaldecl
 implement
 fprint_val<hvardecl> = fprint_hvardecl
@@ -376,6 +406,13 @@ fprint_h0dcl(out, x0) =
 (
 case+
 x0.node() of
+//
+| H0Cfundecl
+  (knd, mopt, tqas, hfds) =>
+  fprint!
+  ( out
+  , "H0Cfundecl("
+  , knd, "; ", mopt, "; ", tqas, "; ", hfds, ")")
 //
 | H0Cvaldecl
   (knd, mopt, hvds) =>
@@ -396,6 +433,22 @@ x0.node() of
 | _(* H0C... *) => fprint!(out, "H0C...(...)")
 )
 end // end of [local]
+//
+(* ****** ****** *)
+//
+implement
+print_htqarg(x0) =
+fprint_htqarg(stdout_ref, x0)
+implement
+prerr_htqarg(x0) =
+fprint_htqarg(stderr_ref, x0)
+//
+implement
+fprint_htqarg
+  (out, x0) =
+(
+  fprint!(out, "<", x0.htvs(), ">")
+) (* end of [fprint_htqarg] *)
 //
 (* ****** ****** *)
 //
@@ -444,6 +497,42 @@ in
   , ", ini=", rcd.ini, "}")
 end // end of [fprint_hvardecl]
 //
+(* ****** ****** *)
+
+implement
+print_hfundecl(x0) =
+fprint_hfundecl(stdout_ref, x0)
+implement
+prerr_hfundecl(x0) =
+fprint_hfundecl(stderr_ref, x0)
+
+implement
+fprint_hfundecl
+  (out, x0) = let
+//
+val+HFUNDECL(rcd) = x0
+//
+in
+//
+case+
+rcd.hag of
+| None() =>
+  fprint!
+  ( out
+  , "HFUNDECL@{"
+  , "nam=", rcd.nam, ", "
+  , "hdc=", rcd.hdc, ", ", "}")
+| Some(rcd_hag) =>
+  fprint!
+  ( out
+  , "HFUNDECL@{"
+  , "nam=", rcd.nam, ", "
+  , "hdc=", rcd.hdc, ", "
+  , "hag=", rcd_hag, ", "
+  , "def=", rcd.def, ", ", "rtp=", rcd.rtp, ", ", "}")
+//
+end // end of [fprint_hfundecl]
+
 (* ****** ****** *)
 
 (* end of [xats_intrep0_print.dats] *)

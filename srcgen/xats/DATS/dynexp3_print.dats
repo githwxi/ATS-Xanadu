@@ -716,11 +716,11 @@ local
 implement
 fprint_val<d3ecl> = fprint_d3ecl
 implement
+fprint_val<f3undecl> = fprint_f3undecl
+implement
 fprint_val<v3aldecl> = fprint_v3aldecl
 implement
 fprint_val<v3ardecl> = fprint_v3ardecl
-implement
-fprint_val<f3undecl> = fprint_f3undecl
 
 in(*in-of-local*)
 
@@ -814,12 +814,14 @@ x0.node() of
   (knd, mopt, v3ds) =>
   fprint!
   ( out
-  , "D3Cvaldecl(", knd, "; ", mopt, "; ", v3ds, ")")
+  , "D3Cvaldecl("
+  , knd, "; ", mopt, "; ", v3ds, ")")
 | D3Cvardecl
   (knd, mopt, v3ds) =>
   fprint!
   ( out
-  , "D3Cvardecl(", knd, "; ", mopt, "; ", v3ds, ")")
+  , "D3Cvardecl("
+  , knd, "; ", mopt, "; ", v3ds, ")")
 //
 | D3Cimpdecl1
   ( knd, mopt

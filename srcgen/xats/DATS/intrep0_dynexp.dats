@@ -310,4 +310,32 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+htqarg_tbox = $rec
+{
+htqarg_loc= loc_t
+,
+htqarg_htvs= htvarlst
+}
+
+in (* in-of-local *)
+
+implement
+htqarg_make
+(loc, htvs) = $rec
+{
+htqarg_loc= loc, htqarg_htvs= htvs
+}
+
+implement
+htqarg_get_loc(x0) = x0.htqarg_loc
+implement
+htqarg_get_htvs(x0) = x0.htqarg_htvs
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_intrep0_dynexp.dats] *)
