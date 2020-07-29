@@ -22,8 +22,8 @@ end
 
 (* ****** ****** *)
 
-val f = lam(x: int) => foo(x, y)
-val f = fix f(x: int) => foo(x, f(x))
+val f1 = lam(x: int) => foo(x, y)
+val f2 = fix f(x: int) => foo(x, f(x))
 
 (* ****** ****** *)
 ////
