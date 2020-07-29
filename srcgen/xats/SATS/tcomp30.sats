@@ -143,10 +143,21 @@ fun
 tcomp30_dcst(d2c0: d2cst): hdcst
 //
 (* ****** ****** *)
+//
 fun
 tcomp30_dpat(d3p0: d3pat): h0pat
+fun
+tcomp30_dpatlst(d3patlst): h0patlst
+//
 (* ****** ****** *)
-
+//
+fun
+tcomp30_farg(d3p0: f3arg): hfarg
+fun
+tcomp30_farglst(f3arglst): hfarglst
+//
+(* ****** ****** *)
+//
 fun
 tcomp30_dexp(d3e0: d3exp): h0exp
 fun

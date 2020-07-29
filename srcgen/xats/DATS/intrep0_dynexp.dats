@@ -195,15 +195,15 @@ in (* in-of-local *)
 //
 implement
 h0pat_get_loc
-  (h0e) = h0e.h0pat_loc
+  (h0p) = h0p.h0pat_loc
 //
 implement
 h0pat_get_type
-  (h0e) = h0e.h0pat_type
+  (h0p) = h0p.h0pat_type
 //
 implement
 h0pat_get_node
-  (h0e) = h0e.h0pat_node
+  (h0p) = h0p.h0pat_node
 //
 implement
 h0pat_make_node
@@ -213,6 +213,35 @@ loc0, h0t0, node
 { h0pat_loc= loc0
 , h0pat_type= h0t0, h0pat_node= node
 } (* h0pat_make_node *)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+hfarg_tbox = $rec
+{ hfarg_loc= loc_t
+, hfarg_node= hfarg_node
+} (* end of [absimpl] *)
+//
+in (* in-of-local *)
+//
+implement
+hfarg_get_loc
+  (hfa) = hfa.hfarg_loc
+//
+implement
+hfarg_get_node
+  (hfa) = hfa.hfarg_node
+//
+implement
+hfarg_make_node
+(loc0, node) = $rec
+{
+hfarg_loc= loc0, hfarg_node= node
+} (* hfarg_make_node *)
 //
 end // end of [local]
 

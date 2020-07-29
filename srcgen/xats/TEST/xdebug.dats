@@ -21,6 +21,10 @@ val z = foo(x, foo(x, y)) in z; 1
 end
 
 (* ****** ****** *)
+
+val foo = lam(x: int) => foo(x, y)
+
+(* ****** ****** *)
 ////
 val x = A[0]
 

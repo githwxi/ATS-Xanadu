@@ -243,6 +243,10 @@ D3Pany() => auxany(d3p0)
 |
 D3Pvar _ => auxvar(d3p0)
 //
+|
+D3Panno
+(d3p1, _) => tcomp30_dpat(d3p1)
+//
 | _(* rest-of_d3pat *) =>
 let
 //
@@ -266,7 +270,67 @@ end // end of [tcomp30_dpat]
 end // end of [local]
 
 (* ****** ****** *)
+implement
+tcomp30_dpatlst
+  (d3ps) =
+list_vt2t(d3ps) where
+{
+val
+d3ps =
+list_map<d3pat><h0pat>
+  (d3ps) where
+{
+implement
+list_map$fopr<d3pat><h0pat>(d3p) = tcomp30_dpat(d3p)
+}
+} (* end of [tcomp30_dpatlst] *)
+(* ****** ****** *)
 
+implement
+tcomp30_farg
+  (f3a0) =
+let
+val
+loc0 = f3a0.loc()
+in
+case+
+f3a0.node() of
+| F3ARGsome_dyn
+  (npf0, d3ps) =>
+  let
+  val
+  h0ps =
+  tcomp30_dpatlst(d3ps)
+  in
+  hfarg_make_node
+  (loc0, HFARGnpats(npf0, h0ps))
+  end
+| _ (* else *) =>
+  let
+  val
+  hend =
+  $UN.cast{ptr}(f3a0)
+  in
+  hfarg_make_node(loc0, HFARGnone1(hend))
+  end
+end // end of [tcomp30_farg]
+
+(* ****** ****** *)
+implement
+tcomp30_farglst
+  (f3as) =
+list_vt2t(f3as) where
+{
+val
+f3as =
+list_map<f3arg><hfarg>
+  (f3as) where
+{
+implement
+list_map$fopr<f3arg><hfarg>(f3a) = tcomp30_farg(f3a)
+}
+} (* end of [tcomp30_farglst] *)
+(* ****** ****** *)
 
 local
 
@@ -610,6 +674,39 @@ end // end of [aux_if0]
 
 (* ****** ****** *)
 
+fun
+aux_lam
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val hend =
+(
+H0Elam(knd, hfas, body)
+) where
+{
+val-
+D3Elam
+( knd
+, f3as, res1
+, arrw, body) = d3e0.node()
+val
+hfas = tcomp30_farglst(f3as)
+val body = tcomp30_dexp(body)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_lam]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -665,6 +762,8 @@ D3Eseqn _ => auxseqn(d3e0)
 | D3Elet _ => aux_let(d3e0)
 //
 | D3Eif0 _ => aux_if0(d3e0)
+//
+| D3Elam _ => aux_lam(d3e0)
 //
 | _(*rest-of_d3exp*) =>
 let
@@ -855,6 +954,32 @@ h0dcl_make_node
 end // end of [aux_vardecl]
 
 (* ****** ****** *)
+//
+fun
+aux_fundecl
+( d3cl
+: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cfundecl
+( knd
+, mopt
+, tqas
+, f3ds) = d3cl.node()
+//
+val tqas = list_nil()
+val hfds = list_nil()
+//
+in
+h0dcl_make_node
+(loc0, H0Cfundecl(knd, mopt, tqas, hfds))
+end // end of [aux_fundecl]
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 
@@ -883,6 +1008,11 @@ d3cl.node() of
 | D3Cvardecl _ =>
   (
     aux_vardecl(d3cl)
+  )
+//
+| D3Cfundecl _ =>
+  (
+    aux_fundecl(d3cl)
   )
 //
 |
