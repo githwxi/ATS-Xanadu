@@ -76,6 +76,8 @@ fprint_val<hdcst> = fprint_hdcst
 
 implement
 fprint_val<h0pat> = fprint_h0pat
+implement
+fprint_val<hfarg> = fprint_hfarg
 
 (* ****** ****** *)
 
@@ -244,6 +246,32 @@ x0.node() of
 (* ****** ****** *)
 //
 implement
+print_hfarg(x0) =
+fprint_hfarg(stdout_ref, x0)
+implement
+prerr_hfarg(x0) =
+fprint_hfarg(stderr_ref, x0)
+//
+implement
+fprint_hfarg(out, x0) =
+(
+case+
+x0.node() of
+//
+|
+HFARGnpats
+(npf0, h0ps) =>
+fprint!
+( out
+, "HFARGnpats(", npf0, "; ", h0ps, ")")
+//
+| HFARGnone1 _ =>
+  fprint!(out, "HFARGnone1(", "...", ")")
+)
+//
+(* ****** ****** *)
+//
+implement
 print_h0exp(x0) =
 fprint_h0exp(stdout_ref, x0)
 implement
@@ -281,26 +309,39 @@ x0.node() of
 //
 | H0Edapp
   (h0f0, npf1, h0es) =>
-  fprintln!
+  fprint!
   ( out
   , "H0Edapp("
   , h0f0, "; ", npf1, "; ", h0es, ")")
 //
 | H0Eseqn(h0es, h0e1) =>
-  fprintln!
+  fprint!
   ( out
   , "H0Eseqn(", h0es, "; ", h0e1, ")")
 //
 | H0Elet(hdcl, h0e1) =>
-  fprintln!
+  fprint!
   (out, "H0Elet(", hdcl, "; ", h0e1, ")")
 //
 | H0Eif0
   (h0e1, h0e2, opt3) =>
-  fprintln!
+  fprint!
   ( out
   , "H0Eif0("
   , h0e1, "; ", h0e2, "; ", opt3, ")")
+//
+| H0Elam
+  (knd0, hfas, body) =>
+  fprint!
+  ( out
+  , "H0Elam("
+  , knd0, "; ", hfas, "; ", body, ")")
+| H0Efix
+  (knd0, fid1, hfas, body) =>
+  fprint!
+  ( out
+  , "H0Elam("
+  , knd0, "; ", fid1, "; ", hfas, "; ", body, ")")
 //
 | H0Enone1(_) =>
   fprint!(out, "H0Enone1(", "...", ")")

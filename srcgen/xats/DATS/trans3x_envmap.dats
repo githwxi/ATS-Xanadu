@@ -431,7 +431,7 @@ _ (* end-of-tr3xstk *) => true
 #define VLOC 0 // local vars
 #define VENV 1 // environ. vars
 #define VFIX 2 // fixed binding
-#define VTOP 2 // top-level vars
+#define VTOP %(~1) // top-level vars
 
 (* ****** ****** *)
 
@@ -521,7 +521,7 @@ aux1
 }
 } (* end of [tr3xstk_lams] *)
 //
-| _ (* for non-locals *) => (~1)
+| _ (* for non-locals *) => VTOP
 ) (* end of [auxstk0] *) 
 //
 and
