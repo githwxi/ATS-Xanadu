@@ -2,6 +2,12 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+fun
+<a:type>
+foo( x: a ): a = x
+
+(* ****** ****** *)
+////
 #extern
 fun
 foo

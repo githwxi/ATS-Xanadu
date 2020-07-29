@@ -147,6 +147,8 @@ tq2arg_get_s2vs(tq2arg): s2varlst
 overload .loc with tq2arg_get_loc
 overload .s2vs with tq2arg_get_s2vs
 //
+(* ****** ****** *)
+//
 fun
 print_tq2arg: print_type(tq2arg)
 fun

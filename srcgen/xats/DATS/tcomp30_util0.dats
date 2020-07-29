@@ -50,7 +50,11 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
@@ -60,6 +64,21 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/tcomp30.sats"
+
+(* ****** ****** *)
+
+implement
+htvar_make_svar
+  (s2v) = let
+//
+val sym = s2v.sym()
+val s2t = s2v.sort()
+//
+val hst = tcomp30_sort(s2t)
+//
+in
+  htvar_make_idst(sym, hst)
+end // end of [htvar_make_svar]
 
 (* ****** ****** *)
 
@@ -135,6 +154,116 @@ in(*in-of-local*)
 local
 
 typedef
+key = s2var
+and
+itm = htvar
+vtypedef
+svarmap = map(key, itm)
+
+var
+the_svarmap =
+linmap_make_nil<>{key,itm}()
+val
+the_svarmap = addr@the_svarmap
+
+implement
+compare_key_key<key>
+  (k1, k2) = let
+//
+val x1 =
+$effmask_all(k1.stamp())
+and x2 =
+$effmask_all(k2.stamp())
+//
+in compare_stamp_stamp(x1, x2) end
+
+(* ****** ****** *)
+
+in(*in-of-local*)
+
+(* ****** ****** *)
+
+implement
+the_svarmap_search_ref
+  (d2v0) = let
+//
+val
+map =
+$UN.ptr0_get<svarmap>(the_svarmap)
+val ref =
+linmap_search_ref<key,itm>(map,d2v0)
+//
+in
+let
+prval () = $UN.cast2void(map)
+prval () = lemma_cptr_param(ref) in ref
+end
+end // end of [the_svarmap_search_ref]
+
+implement
+the_svarmap_search_opt
+  (d2v0) = let
+//
+val
+ref = the_svarmap_search_ref(d2v0)
+//
+in
+//
+if
+iseqz(ref)
+then None_vt()
+else Some_vt($UN.cptr_get<itm>(ref))
+//
+end // end of [the_svarmap_search_opt]
+
+(* ****** ****** *)
+
+implement
+the_svarmap_insert_any
+  (d2v0, hdv1) = let
+//
+var
+map =
+$UN.ptr0_get<svarmap>(the_svarmap)
+//
+in
+(
+$UN.ptr0_set<svarmap>(the_svarmap, map)
+) where
+{
+val () =
+linmap_insert_any<key,itm>(map, d2v0, hdv1)
+}
+end // end of [the_svarmap_insert_any]
+
+implement
+the_svarmap_insert_exn
+  (d2v0, hdv1) = let
+//
+var
+map =
+$UN.ptr0_get<svarmap>(the_svarmap)
+//
+in
+(
+$UN.ptr0_set<svarmap>(the_svarmap, map)
+) where
+{
+val-
+~None_vt() =
+linmap_insert_opt<key,itm>(map, d2v0, hdv1)
+}
+end // end of [the_svarmap_insert_exn]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+typedef
 key = d2con
 and
 itm = hdcon
@@ -149,8 +278,7 @@ the_dconmap = addr@the_dconmap
 
 implement
 compare_key_key<key>
-  (k1, k2) =
-let
+  (k1, k2) = let
 //
 val x1 =
 $effmask_all(k1.stamp())
@@ -260,8 +388,7 @@ the_dcstmap = addr@the_dcstmap
 
 implement
 compare_key_key<key>
-  (k1, k2) =
-let
+  (k1, k2) = let
 //
 val x1 =
 $effmask_all(k1.stamp())
@@ -371,8 +498,7 @@ the_dvarmap = addr@the_dvarmap
 
 implement
 compare_key_key<key>
-  (k1, k2) =
-let
+  (k1, k2) = let
 //
 val x1 =
 $effmask_all(k1.stamp())

@@ -2514,11 +2514,10 @@ F3UNDECL(rcd) = f3d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
+val d2c = rcd.d2c
 val a2g = rcd.a2g
 val a3g = rcd.a3g
 val res = rcd.res
-val rtp = rcd.rtp
-val d2c = rcd.d2c
 val def = rcd.def
 val rtp = rcd.rtp
 val wtp = rcd.wtp

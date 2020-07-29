@@ -120,6 +120,43 @@ list_map$fopr<
 (* ****** ****** *)
 
 implement
+tcomp30_svar
+  (s2v0) =
+let
+val opt =
+the_svarmap_search_opt(s2v0)
+in
+case+ opt of
+| ~
+Some_vt(hdv1) => hdv1
+| ~
+None_vt((*void*)) =>
+let
+val hdv1 =
+htvar_make_svar(s2v0)
+in
+the_svarmap_insert_any(s2v0, hdv1); hdv1
+end
+end // end of [tcomp30_svar]
+
+(* ****** ****** *)
+
+implement
+tcomp30_svarlst(s2vs) =
+list_vt2t
+(
+list_map<
+  s2var><htvar>(s2vs) where
+{
+implement
+list_map$fopr<
+  s2var><htvar>(s2v) = tcomp30_svar(s2v)
+}
+) (* end of [tcomp30_svarlst] *)
+
+(* ****** ****** *)
+
+implement
 tcomp30_type
   (t2p0) = let
 //
@@ -145,6 +182,15 @@ in
 //
 case+
 t2p0.node() of
+|
+T2Pvar(s2v1) =>
+let
+val s2t0 = t2p0.sort()
+val hst0 = tcomp30_sort(s2t0)
+val htv1 = tcomp30_svar(s2v1)
+in
+h0typ_make_node(hst0, H0Tvar(htv1))
+end
 |
 _(*rest-of-t2ype*) =>
 let
