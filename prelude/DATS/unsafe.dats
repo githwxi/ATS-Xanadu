@@ -32,15 +32,16 @@ end
 //
 impltmp
 <a>(*tmp*)
-$UN.p2tr_list_nil
+$UN.p2tr_set_list_nil
   (p0) =
+(
 $UN.p2tr_set
-<list(a)>
-(p0, list_nil())
+<list(a)>(p0, list_nil())
+)
 //
 impltmp
 <a>(*tmp*)
-$UN.p2tr_list_cons
+$UN.p2tr_set_list_cons
   (p0, x0) =
 let
 typedef
@@ -55,14 +56,15 @@ end
 //
 impltmp
 <a>(*tmp*)
-$UN.p2tr_list_vt_nil
+$UN.p2tr_set_list_vt_nil
   (p0) =
+(
 $UN.p2tr_set
-<list_vt(a)>
-(p0, list_vt_nil())
+<list_vt(a)>(p0, list_vt_nil())
+)
 impltmp
 <a>(*tmp*)
-$UN.p2tr_list_vt_cons
+$UN.p2tr_set_list_vt_cons
   (p0, x0) =
 let
 typedef

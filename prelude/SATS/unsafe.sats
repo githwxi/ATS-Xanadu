@@ -86,22 +86,36 @@ p2tr_ret(p0: p2tr(a), x0: a): void
 //
 (* ****** ****** *)
 //
+(*
+HX-2020-07-29:
+const pointers are read-only
+*)
+//
+fun
+<a:vt>
+cp1tr_get(cp: cp1tr): a
+fun
+<a:vt>
+cp2tr_get(cp: cp2tr(a)): a
+//
+(* ****** ****** *)
+//
 fun
 <a:t0>
-p2tr_list_nil
+p2tr_set_list_nil
 (p0: p2tr(list(a))): void
 fun
 <a:t0>
-p2tr_list_cons
+p2tr_set_list_cons
 (p0: p2tr(list(a)), x0: a): void
 //
 fun
 <a:t0>
-p2tr_list_vt_nil
+p2tr_set_list_vt_nil
 (p0: p2tr(list_vt(a))): void
 fun
 <a:vt>
-p2tr_list_vt_cons
+p2tr_set_list_vt_cons
 (p0: p2tr(list_vt(a)), x0: a): void
 //
 (* ****** ****** *)
@@ -116,6 +130,11 @@ p2tr_list_vt_cons
 //
 #symload ptr_get with p2tr_get of 1000
 #symload ptr_set with p2tr_set of 1000
+//
+(* ****** ****** *)
+//
+#symload cptr_get with cp1tr_get of 1000
+#symload cptr_get with cp2tr_get of 1000
 //
 (* ****** ****** *)
 

@@ -418,6 +418,11 @@ p1tr_k = $extype("xats_p1tr_t")
 typedef
 p2tr_k = $extype("xats_p2tr_t")
 //
+typedef
+cp1tr_k = $extype("xats_cp1tr_t")
+typedef
+cp2tr_k = $extype("xats_cp2tr_t")
+//
 (* ****** ****** *)
 //
 abstype
@@ -441,6 +446,35 @@ typedef p1tr = p1tr0
 typedef p1tr(l:a0) = p1tr1(l)
 typedef p2tr(x:vt) = p2tr0(x)
 typedef p2tr(x:vt, l:a0) = p2tr1(x, l)
+//
+(* ****** ****** *)
+//
+(*
+HX-2020-07-20:
+const pointers are read-only
+*)
+//
+abstype
+cp1tr_tbox
+(l:addr) <= cp1tr_k
+abstype
+cp2tr_tbox
+(x:vwtp, l:addr) <= cp2tr_k
+//
+typedef
+cp1tr0 = [l:a0] cp1tr_tbox(l)
+typedef
+cp1tr1(l: a0) = cp1tr_tbox(l)
+//
+typedef
+cptr0(x: vt) = [l:a0] cptr_tbox(x, l)
+typedef
+cptr1(x: vt, l: a0) = cptr_tbox(x, l)
+//
+typedef cp1tr = cp1tr0
+typedef cp1tr(l:a0) = cp1tr1(l)
+typedef cp2tr(x:vt) = cp2tr0(x)
+typedef cp2tr(x:vt, l:a0) = cp2tr1(x, l)
 //
 (* ****** ****** *)
 
