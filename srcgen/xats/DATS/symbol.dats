@@ -435,24 +435,31 @@ implement
 LRBRACK_symbol = symbol_make("[]")
 
 (* ****** ****** *)
-
+//
 implement
 INT_symbol = symbol_make("int")
+//
 implement
 ADDR_symbol = symbol_make("addr")
 implement
 BOOL_symbol = symbol_make("bool")
 implement
 CHAR_symbol = symbol_make("char")
-
+implement
+CFLT_symbol = symbol_make("cflt")
+implement
+CSTR_symbol = symbol_make("cstr")
+//
 implement
 REAL_symbol = symbol_make("real")
-
+//
+(*
 implement
-FLOAT_symbol = symbol_make("float")
+XFLT_symbol = symbol_make("xflt")
 implement
-STRING_symbol = symbol_make("string")
-
+XSTR_symbol = symbol_make("xstr")
+*)
+//
 (* ****** ****** *)
 
 implement

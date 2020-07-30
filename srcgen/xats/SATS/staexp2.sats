@@ -155,23 +155,31 @@ typedef
 sort2lstopt = Option(sort2lst)
 
 (* ****** ****** *)
-
+//
 val
 the_sort2_int : sort2
+//
 val
 the_sort2_addr : sort2
+//
 val
 the_sort2_bool : sort2
+//
 val
 the_sort2_char : sort2
-
+val
+the_sort2_cstr : sort2
+//
 val
 the_sort2_real : sort2
+//
+(*
 val
-the_sort2_float : sort2
+the_sort2_xflt : sort2
 val
-the_sort2_string : sort2
-
+the_sort2_xstr : sort2
+*)
+//
 (* ****** ****** *)
 //
 val
@@ -208,19 +216,27 @@ the_sort2_none : sort2
 //
 fun
 sort2_is_int(sort2): bool
+//
 fun
 sort2_is_addr(sort2): bool
+//
 fun
 sort2_is_bool(sort2): bool
+//
 fun
 sort2_is_char(sort2): bool
+fun
+sort2_is_cstr(sort2): bool
 //
 fun
 sort2_is_real(sort2): bool
+//
+(*
 fun
-sort2_is_float(sort2): bool
+sort2_is_xflt(sort2): bool
 fun
-sort2_is_string(sort2): bool
+sort2_is_xstr(sort2): bool
+*)
 //
 (* ****** ****** *)
 
@@ -686,16 +702,16 @@ overload fprint with fprint_tyrec
 datatype
 s2exp_node =
 //
-| S2Eint of int // integer
-| S2Echr of char // character
+| S2Eint of (int) // integer
+| S2Echr of (char) // character
 //
 | S2Estr of string // string
 //
-| S2Ecst of s2cst // constant
+| S2Ecst of (s2cst) // constant
 //
-| S2Evar of s2var // variable
+| S2Evar of (s2var) // variable
 //
-| S2Extv of s2xtv // ext-variable
+| S2Extv of (s2xtv) // ext-variable
 //
 | S2Eapp of
   (s2exp, s2explst) // application
@@ -777,10 +793,14 @@ s2exp_chr(c0: char): s2exp
 fun
 s2exp_str(s0: string): s2exp
 //
+(* ****** ****** *)
+//
 fun
 s2exp_cst(s2c: s2cst): s2exp
 fun
 s2exp_var(s2v: s2var): s2exp
+//
+(* ****** ****** *)
 //
 fun
 s2exp_cimp
