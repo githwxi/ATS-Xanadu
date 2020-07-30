@@ -36,6 +36,17 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+typedef
+p1gez = [l:agez] p1tr1(l)
+typedef
+p1gtz = [l:agtz] p1tr1(l)
+typedef
+p2gez(a:vt) = [l:agez] p2tr1(a,l)
+typedef
+p2gtz(a:vt) = [l:agtz] p2tr1(a,l)
+
+(* ****** ****** *)
 typedef
 cp1tr_k = $extype("xats_cp1tr_t")
 typedef
@@ -60,25 +71,67 @@ typedef
 cp1tr1(l: a0) = cp1tr_tbox(l)
 //
 typedef
-cptr0(x: vt) = [l:a0] cptr_tbox(x, l)
+cp2tr0
+(a:vt) =
+[l:a0] cp2tr_tbox(a,l)
 typedef
-cptr1(x: vt, l: a0) = cptr_tbox(x, l)
+cp2tr1
+(a:vt,l:a0) = cp2tr_tbox(a,l)
 //
-typedef cp1tr = cp1tr0
-typedef cp1tr(l:a0) = cp1tr1(l)
-typedef cp2tr(x:vt) = cp2tr0(x)
-typedef cp2tr(x:vt, l:a0) = cp2tr1(x, l)
+typedef
+cp1tr = cp1tr0
+typedef
+cp1tr(l:a0) = cp1tr1(l)
 //
+typedef
+cp2tr(a:vt) = cp2tr0(a)
+typedef
+cp2tr(a:vt, l:a0) = cp2tr1(a,l)
+//
+(* ****** ****** *)
+typedef
+cp1gez = [l:agez] cp1tr1(l)
+typedef
+cp1gtz = [l:agtz] cp1tr1(l)
+(* ****** ****** *)
+typedef
+cp2gez(a:vt) = [l:agez] cp2tr1(a,l)
+typedef
+cp2gtz(a:vt) = [l:agtz] cp2tr1(a,l)
 (* ****** ****** *)
 
 fcast
-{a:vt}
-{l:addr}
 p2tr_constize
+{a:vt}{l:a0}
 (p0: p2tr(a, l)): cp2tr(a, l)
-#symload cp2tr with p2tr_constize of 1000
-#symload const with p2tr_constize of 1000
+#symload
+cp2tr with p2tr_constize of 1000
+#symload
+const with p2tr_constize of 1000
 
+(* ****** ****** *)
+//
+fun
+<a:vt>
+p1gtz_get(p0: p1gtz): a
+fun
+<a:vt>
+p2gtz_get(p0: p2gtz(a)): a
+//
+fun
+<a:vt>
+cp1gtz_get(cp: cp1gtz): a
+fun
+<a:vt>
+cp2gtz_get(cp: cp2gtz(a)): a
+//
+fun
+<a:vt>
+p1gtz_set(p0: p1gtz, x0: a): void
+fun
+<a:vt>
+p2gtz_set(p0: p2gtz(a), x0: a): void
+//
 (* ****** ****** *)
 
 (* end of [gptr.sats] *)
