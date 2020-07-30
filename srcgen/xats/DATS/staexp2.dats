@@ -140,7 +140,7 @@ case+ s2tb of
 ) (* end of [sort2_is_char] *)
 
 (* ****** ****** *)
-
+//
 implement
 sort2_is_real
   (s2t0) =
@@ -154,8 +154,12 @@ case+ s2tb of
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* end of [sort2_is_real] *)
+//
+(* ****** ****** *)
+//
+(*
 implement
-sort2_is_float
+sort2_is_xflt
   (s2t0) =
 (
 case+ s2t0 of
@@ -163,12 +167,14 @@ case+ s2t0 of
 (
 case+ s2tb of
 | T2BASpre(pre) =>
-  (pre = FLOAT_symbol) | _ => false
+  (pre = XFLT_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
-) (* end of [sort2_is_float] *)
+) (* end of [sort2_is_xflt] *)
+*)
+(*
 implement
-sort2_is_string
+sort2_is_xstr
   (s2t0) =
 (
 case+ s2t0 of
@@ -176,11 +182,12 @@ case+ s2t0 of
 (
 case+ s2tb of
 | T2BASpre(pre) =>
-  (pre = STRING_symbol) | _ => false
+  (pre = XSTR_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
-) (* end of [sort2_is_string] *)
-
+) (* end of [sort2_is_xstr] *)
+*)
+//
 (* ****** ****** *)
 
 implement
@@ -544,12 +551,12 @@ end // end of [s2exp_chr]
 (* ****** ****** *)
 
 implement
-s2exp_str(s0) = let
+s2exp_str(cs) = let
   val
-  s2t = the_sort2_string
+  s2t = the_sort2_cstr
 in
-  s2exp_make_node(s2t, S2Estr(s0))
-end // end of [s2exp_str]
+  s2exp_make_node(s2t, S2Estr(cs))
+end // end of [s2exp_cstr]
 
 (* ****** ****** *)
 

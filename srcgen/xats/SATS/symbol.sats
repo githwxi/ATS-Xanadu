@@ -141,14 +141,19 @@ val LRBRACK_symbol : symbol // symbol("[]")
 (* ****** ****** *)
 
 val INT_symbol : symbol // int sort
+
 val ADDR_symbol : symbol // addr sort
 val BOOL_symbol : symbol // bool sort
 val CHAR_symbol : symbol // char sort
+val CFLT_symbol : symbol // cflt sort
+val CSTR_symbol : symbol // cstr sort
 
 val REAL_symbol : symbol // real sort
 
-val FLOAT_symbol : symbol // float sort
-val STRING_symbol : symbol // string sort
+(*
+val XFLT_symbol : symbol // float sort
+val XSTR_symbol : symbol // string sort
+*)
 
 (* ****** ****** *)
 

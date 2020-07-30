@@ -332,6 +332,21 @@ sortdef agez = {l:addr | l >= 0}
 
 (* ****** ****** *)
 //
+#stacst
+sizeof_vt_i0: (vt) -> i0
+sexpdef sz = sizeof_vt_i0
+sexpdef size = sizeof_vt_i0
+//
+(* ****** ****** *)
+//
+#stacst
+offset: (vt, cs) -> int
+//
+sexpdef ofs
+(rcd: vt, lab: cs) = offset(rcd, lab)
+//
+(* ****** ****** *)
+//
 // impredicative sorts
 //
 (*
@@ -354,16 +369,6 @@ abssort vtbox // viewtbox: linear tbox
 abssort vtflt // viewtflt: linear tflt
 *)
 *)
-//
-(* ****** ****** *)
-//
-sortdef type0 = type
-sortdef tbox0 = tbox
-sortdef tflt0 = tflt
-//
-sortdef type1 = vwtp
-sortdef tbox1 = vtbx
-sortdef tflt1 = vwtp
 //
 (* ****** ****** *)
 //
@@ -881,11 +886,6 @@ sexpdef @ = a0ptr_view
 absview
 a1ptr_view(a:vt,l:a0,n:i0)
 sexpdef arrvw = a1ptr_view
-//
-#stacst
-sizeof_vt_i0: (vt) -> i0
-sexpdef sz = sizeof_vt_i0
-sexpdef size = sizeof_vt_i0
 //
 (* ****** ****** *)
 //

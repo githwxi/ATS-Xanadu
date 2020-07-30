@@ -55,20 +55,27 @@ local
 //
 val
 s2tb_int = T2BASpre($SYM.INT_symbol)
+//
 val
 s2tb_addr = T2BASpre($SYM.ADDR_symbol)
+//
 val
 s2tb_bool = T2BASpre($SYM.BOOL_symbol)
+//
 val
 s2tb_char = T2BASpre($SYM.CHAR_symbol)
+val
+s2tb_cstr = T2BASpre($SYM.CSTR_symbol)
 //
 val
 s2tb_real = T2BASpre($SYM.REAL_symbol)
 //
+(*
 val
-s2tb_float = T2BASpre($SYM.FLOAT_symbol)
+s2tb_xflt = T2BASpre($SYM.XFLT_symbol)
 val
-s2tb_string = T2BASpre($SYM.STRING_symbol)
+s2tb_xstr = T2BASpre($SYM.XSTR_symbol)
+*)
 //
 val
 s2tb_prop =
@@ -108,20 +115,27 @@ in // in of [local]
 //
 implement
 the_sort2_int = S2Tbas(s2tb_int)
+//
 implement
 the_sort2_addr = S2Tbas(s2tb_addr)
+//
 implement
 the_sort2_bool = S2Tbas(s2tb_bool)
+//
 implement
 the_sort2_char = S2Tbas(s2tb_char)
+implement
+the_sort2_cstr = S2Tbas(s2tb_cstr)
 //
 implement
 the_sort2_real = S2Tbas(s2tb_real)
 //
+(*
 implement
-the_sort2_float = S2Tbas(s2tb_float)
+the_sort2_xflt = S2Tbas(s2tb_xflt)
 implement
-the_sort2_string = S2Tbas(s2tb_string)
+the_sort2_xstr = S2Tbas(s2tb_xstr)
+*)
 //
 implement
 the_sort2_prop = S2Tbas(s2tb_prop)

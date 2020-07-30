@@ -954,16 +954,34 @@ fprint_f3undecl
 val+F3UNDECL(rcd) = x0
 //
 in
+//
+case+
+rcd.a3g of
+|
+None() =>
+(
   fprint!
   ( out
   , "F3UNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
-  , "a2g=", rcd.a2g, ", "
+  , "a2g=", rcd.a2g, ", ", "}")
+)
+|
+Some(rcd_a3g) =>
+(
+  fprint!
+  ( out
+  , "F3UNDECL@{"
+  , "nam=", rcd.nam, ", "
+  , "d2c=", rcd.d2c, ", "
+  , "a3g=", rcd_a3g, ", "
   , "res=", rcd.res, ", "
   , "def=", rcd.def, ", "
   , "rtp=", rcd.rtp, ", "
   , "wtp=", rcd.wtp, ", ", "ctp=", rcd.ctp, "}")
+)
+//
 end // end of [fprint_f3undecl]
 
 (* ****** ****** *)
