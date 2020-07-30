@@ -285,15 +285,50 @@ sexpdef add = add_a0_i0 // overloading
 sexpdef add = add_c0_i0 // overloading
 sexpdef add = add_i0_i0 // overloading
 //
+*)
+//
+(*
 sexpdef sub = sub_a0_a0 // overloading
 sexpdef sub = sub_c0_c0 // overloading
 sexpdef sub = sub_i0_i0 // overloading
+*)
 //
+(*
 sexpdef mul = mul_i0_i0 // overloading
 sexpdef div = div_i0_i0 // overloading
 *)
 //
 sexpdef mod = mod_i0_i0 // overloading
+//
+(* ****** ****** *)
+//
+#stacst
+lt_a0_a0: (a0, a0) -> b0
+#stacst
+gt_a0_a0: (a0, a0) -> b0
+#stacst
+gt_a0_i0: (a0, i0) -> b0
+#stacst
+eq_a0_a0: (a0, a0) -> b0
+//
+#stacst
+lte_a0_a0: (a0, a0) -> b0
+#stacst
+gte_a0_a0: (a0, a0) -> b0
+#stacst
+gte_a0_i0: (a0, i0) -> b0
+#stacst
+neq_a0_a0: (a0, a0) -> b0
+//
+sexpdef < = lt_a0_a0 // overloading
+sexpdef > = gt_a0_a0 // overloading
+sexpdef > = gt_a0_i0 // overloading
+sexpdef = = eq_a0_a0 // overloading
+//
+sexpdef <= = lte_a0_a0 // overloading
+sexpdef >= = gte_a0_a0 // overloading
+sexpdef >= = gte_a0_i0 // overloading
+sexpdef != = neq_a0_a0 // overloading
 //
 (* ****** ****** *)
 //
@@ -334,16 +369,17 @@ sortdef agez = {l:addr | l >= 0}
 //
 #stacst
 sizeof_vt_i0: (vt) -> i0
-sexpdef sz = sizeof_vt_i0
-sexpdef size = sizeof_vt_i0
+sexpdef
+sz(a:vt) = sizeof_vt_i0(a)
+sexpdef
+size(a:vt) = sizeof_vt_i0(a)
 //
 (* ****** ****** *)
 //
 #stacst
-offset: (vt, cs) -> int
-//
-sexpdef ofs
-(rcd: vt, lab: cs) = offset(rcd, lab)
+offset_vt_cs: (vt,cs) -> int
+sexpdef
+ofs(a:vt,l:cs) = offset_vt_cs(a,l)
 //
 (* ****** ****** *)
 //
