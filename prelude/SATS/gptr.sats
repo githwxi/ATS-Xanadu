@@ -36,7 +36,6 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
 typedef
 p1gez = [l:agez] p1tr1(l)
 typedef
@@ -45,55 +44,11 @@ typedef
 p2gez(a:vt) = [l:agez] p2tr1(a,l)
 typedef
 p2gtz(a:vt) = [l:agtz] p2tr1(a,l)
-
-(* ****** ****** *)
-typedef
-cp1tr_k = $extype("xats_cp1tr_t")
-typedef
-cp2tr_k = $extype("xats_cp2tr_t")
-(* ****** ****** *)
-//
-(*
-HX-2020-07-30:
-const pointers are read-only
-*)
-//
-abstype
-cp1tr_tbox
-(l:addr) <= cp1tr_k
-abstype
-cp2tr_tbox
-(x:vwtp, l:addr) <= cp2tr_k
-//
-typedef
-cp1tr0 = [l:a0] cp1tr_tbox(l)
-typedef
-cp1tr1(l: a0) = cp1tr_tbox(l)
-//
-typedef
-cp2tr0
-(a:vt) =
-[l:a0] cp2tr_tbox(a,l)
-typedef
-cp2tr1
-(a:vt,l:a0) = cp2tr_tbox(a,l)
-//
-typedef
-cp1tr = cp1tr0
-typedef
-cp1tr(l:a0) = cp1tr1(l)
-//
-typedef
-cp2tr(a:vt) = cp2tr0(a)
-typedef
-cp2tr(a:vt, l:a0) = cp2tr1(a,l)
-//
 (* ****** ****** *)
 typedef
 cp1gez = [l:agez] cp1tr1(l)
 typedef
 cp1gtz = [l:agtz] cp1tr1(l)
-(* ****** ****** *)
 typedef
 cp2gez(a:vt) = [l:agez] cp2tr1(a,l)
 typedef
