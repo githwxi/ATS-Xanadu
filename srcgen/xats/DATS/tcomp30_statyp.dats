@@ -105,6 +105,29 @@ end // end of [tcomp30_sort]
 (* ****** ****** *)
 
 implement
+tcomp30_scst
+  (s2c0) = let
+//
+val opt =
+the_scstmap_search_opt(s2c0)
+//
+in
+case+ opt of
+| ~
+Some_vt(htv1) => htv1
+| ~
+None_vt((*void*)) =>
+let
+val htv1 =
+htcst_make_scst(s2c0)
+in
+the_scstmap_insert_any(s2c0, htv1); htv1
+end
+end // end of [tcomp30_scst]
+
+(* ****** ****** *)
+
+implement
 tcomp30_sortlst(s2ts) =
 list_vt2t
 (
@@ -120,22 +143,38 @@ list_map$fopr<
 (* ****** ****** *)
 
 implement
+tcomp30_scstlst(s2cs) =
+list_vt2t
+(
+list_map<
+  s2cst><htcst>(s2cs) where
+{
+implement
+list_map$fopr<
+  s2cst><htcst>(s2c) = tcomp30_scst(s2c)
+}
+) (* end of [tcomp30_scstlst] *)
+
+(* ****** ****** *)
+
+implement
 tcomp30_svar
-  (s2v0) =
-let
+  (s2v0) = let
+//
 val opt =
 the_svarmap_search_opt(s2v0)
+//
 in
 case+ opt of
 | ~
-Some_vt(hdv1) => hdv1
+Some_vt(htv1) => htv1
 | ~
 None_vt((*void*)) =>
 let
-val hdv1 =
+val htv1 =
 htvar_make_svar(s2v0)
 in
-the_svarmap_insert_any(s2v0, hdv1); hdv1
+the_svarmap_insert_any(s2v0, htv1); htv1
 end
 end // end of [tcomp30_svar]
 

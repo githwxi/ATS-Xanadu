@@ -53,6 +53,50 @@ UN = "prelude/SATS/unsafe.sats"
 local
 
 typedef
+htcst_struct = @{
+//
+  htcst_loc= loc_t
+, htcst_sym= sym_t // name
+, htcst_sort= h0srt // type
+, htcst_stamp= stamp // unicity
+//
+} (* end of [htcst_tbox] *)
+
+absimpl
+htcst_tbox = ref(htcst_struct)
+
+in(* in-of-local *)
+
+implement
+htcst_get_sym
+(htc) = htc->htcst_sym
+implement
+htcst_get_stamp
+(htc) = htc->htcst_stamp
+
+implement
+htcst_make_idst
+(loc, sym, hst) =
+(
+ref<htcst_struct>
+@{
+  htcst_loc=loc
+, htcst_sym=sym
+, htcst_sort=hst
+, htcst_stamp=stamp
+}
+) where
+{
+  val stamp = htcst_stamp_new()
+}
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+typedef
 htvar_struct = @{
 //
   htvar_sym= sym_t // name
