@@ -57,8 +57,8 @@ typedef htcst = htcst_tbox
 typedef htvar = htvar_tbox
 
 (* ****** ****** *)
-typedef htvarlst = List0(htvar)
 typedef htcstlst = List0(htcst)
+typedef htvarlst = List0(htvar)
 (* ****** ****** *)
 //
 fun
@@ -210,16 +210,22 @@ overload fprint with fprint_h0srt
 //
 (* ****** ****** *)
 //
-datatype
-h0typ_node =
-// externally named
-| H0Tbas of sym_t // type
+fun
+print_htcst: htcst -> void
+fun
+prerr_htcst: htcst -> void
+fun
+fprint_htcst: fprint_type(htcst)
 //
-| H0Tcst of htcst // constant
-| H0Tvar of htvar // variable
+overload print with print_htcst
+overload prerr with prerr_htcst
+overload fprint with fprint_htcst
 //
-| H0Tnone1 of (dataptr) // HX: for ignores
-//
+(* ****** ****** *)
+fun
+htcst_make_idst
+( loc: loc_t
+, sym: symbol, hst: h0srt): htcst
 (* ****** ****** *)
 //
 fun
@@ -237,6 +243,18 @@ overload fprint with fprint_htvar
 fun
 htvar_make_idst
 (sym: symbol, hst: h0srt): htvar
+(* ****** ****** *)
+//
+datatype
+h0typ_node =
+// externally named
+| H0Tbas of sym_t // type
+//
+| H0Tcst of htcst // constant
+| H0Tvar of htvar // variable
+//
+| H0Tnone1 of (dataptr) // HX: for ignores
+//
 (* ****** ****** *)
 //
 fun

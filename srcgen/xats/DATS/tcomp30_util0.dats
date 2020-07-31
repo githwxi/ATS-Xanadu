@@ -68,6 +68,22 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 implement
+htcst_make_scst
+  (s2c) = let
+//
+val loc = s2c.loc()
+val sym = s2c.sym()
+val s2t = s2c.sort()
+//
+val hst = tcomp30_sort(s2t)
+//
+in
+htcst_make_idst(loc, sym, hst)
+end // end of [htcst_make_scst]
+
+(* ****** ****** *)
+
+implement
 htvar_make_svar
   (s2v) = let
 //
@@ -77,7 +93,7 @@ val s2t = s2v.sort()
 val hst = tcomp30_sort(s2t)
 //
 in
-  htvar_make_idst(sym, hst)
+htvar_make_idst(  sym,  hst  )
 end // end of [htvar_make_svar]
 
 (* ****** ****** *)
@@ -148,6 +164,116 @@ lemma_cptr_param
 (* ****** ****** *)
 
 in(*in-of-local*)
+
+(* ****** ****** *)
+
+local
+
+typedef
+key = s2cst
+and
+itm = htcst
+vtypedef
+scstmap = map(key, itm)
+
+var
+the_scstmap =
+linmap_make_nil<>{key,itm}()
+val
+the_scstmap = addr@the_scstmap
+
+implement
+compare_key_key<key>
+  (k1, k2) = let
+//
+val x1 =
+$effmask_all(k1.stamp())
+and x2 =
+$effmask_all(k2.stamp())
+//
+in compare_stamp_stamp(x1, x2) end
+
+(* ****** ****** *)
+
+in(*in-of-local*)
+
+(* ****** ****** *)
+
+implement
+the_scstmap_search_ref
+  (d2v0) = let
+//
+val
+map =
+$UN.ptr0_get<scstmap>(the_scstmap)
+val ref =
+linmap_search_ref<key,itm>(map,d2v0)
+//
+in
+let
+prval () = $UN.cast2void(map)
+prval () = lemma_cptr_param(ref) in ref
+end
+end // end of [the_scstmap_search_ref]
+
+implement
+the_scstmap_search_opt
+  (d2v0) = let
+//
+val
+ref = the_scstmap_search_ref(d2v0)
+//
+in
+//
+if
+iseqz(ref)
+then None_vt()
+else Some_vt($UN.cptr_get<itm>(ref))
+//
+end // end of [the_scstmap_search_opt]
+
+(* ****** ****** *)
+
+implement
+the_scstmap_insert_any
+  (d2v0, hdv1) = let
+//
+var
+map =
+$UN.ptr0_get<scstmap>(the_scstmap)
+//
+in
+(
+$UN.ptr0_set<scstmap>(the_scstmap, map)
+) where
+{
+val () =
+linmap_insert_any<key,itm>(map, d2v0, hdv1)
+}
+end // end of [the_scstmap_insert_any]
+
+implement
+the_scstmap_insert_exn
+  (d2v0, hdv1) = let
+//
+var
+map =
+$UN.ptr0_get<scstmap>(the_scstmap)
+//
+in
+(
+$UN.ptr0_set<scstmap>(the_scstmap, map)
+) where
+{
+val-
+~None_vt() =
+linmap_insert_opt<key,itm>(map, d2v0, hdv1)
+}
+end // end of [the_scstmap_insert_exn]
+
+(* ****** ****** *)
+
+end // end of [local]
 
 (* ****** ****** *)
 

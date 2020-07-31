@@ -57,9 +57,17 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 implement
-fprint_val<htvar> = fprint_htvar
-implement
 fprint_val<h0srt> = fprint_h0srt
+
+(* ****** ****** *)
+
+implement
+fprint_val<htcst> = fprint_htcst
+implement
+fprint_val<htvar> = fprint_htvar
+
+(* ****** ****** *)
+
 implement
 fprint_val<h0typ> = fprint_h0typ
 
@@ -128,6 +136,28 @@ fprint!
 HSTnone1(_) =>
 fprint!(out, "HSTnone1(", "...", ")")
 )
+//
+(* ****** ****** *)
+//
+implement
+print_htcst(x0) =
+fprint_htcst(stdout_ref, x0)
+implement
+prerr_htcst(x0) =
+fprint_htcst(stderr_ref, x0)
+//
+implement
+fprint_htcst(out, x0) =
+(
+fprint!
+(out, sym, "(", stamp, ")");
+(*
+fprint!(out, ": ", x0.sort());
+*)
+) where
+{
+val sym = x0.sym() and stamp = x0.stamp()
+} (* end of [fprint_htcst] *)
 //
 (* ****** ****** *)
 //

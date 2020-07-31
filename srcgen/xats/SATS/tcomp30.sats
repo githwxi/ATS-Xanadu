@@ -52,6 +52,25 @@ cPtr0(a:vt0p) =
 (* ****** ****** *)
 //
 fun
+htcst_make_scst(s2cst): htcst
+//
+fun
+the_scstmap_search_ref
+(s2v: s2cst): cPtr0(htcst)
+fun
+the_scstmap_search_opt
+(s2v: s2cst): Option_vt(htcst)
+//
+fun
+the_scstmap_insert_any
+(s2v0: s2cst, htc1: htcst): void
+fun
+the_scstmap_insert_exn
+(s2v0: s2cst, htc1: htcst): void
+//
+(* ****** ****** *)
+//
+fun
 htvar_make_svar(s2var): htvar
 //
 fun
@@ -136,6 +155,15 @@ tcomp30_sort
 fun
 tcomp30_sortlst
   (s2ts: sort2lst): h0srtlst
+//
+(* ****** ****** *)
+//
+fun
+tcomp30_scst
+  (s2c0: s2cst): htcst
+fun
+tcomp30_scstlst
+  (s2cs: s2cstlst): htcstlst
 //
 (* ****** ****** *)
 //
