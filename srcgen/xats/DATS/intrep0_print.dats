@@ -43,12 +43,17 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/symbol.sats"
 //
 (* ****** ****** *)
-
+#staload "./../SATS/label0.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing.sats"
-
 (* ****** ****** *)
 
 #staload "./../SATS/dynexp0.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 
 (* ****** ****** *)
 
@@ -196,14 +201,68 @@ fprint_h0typ(out, x0) =
 case+
 x0.node() of
 //
+| H0Tbas(sym) =>
+  fprint!(out, "H0Tsym(", sym, ")")
+//
+| H0Tcst(htc) =>
+  fprint!(out, "H0Tcst(", htc, ")")
+//
 | H0Tvar(htv) =>
   fprint!(out, "H0Tvar(", htv, ")")
+//
+| H0Tfun
+  (npf, h0ts, h0t1) =>
+  fprint!
+  ( out
+  , "H0Tfun("
+  , npf, "; ", h0ts, "; ", h0t1, ")")
+//
+| H0Tapp
+  (h0t1, h0ts) =>
+  fprint!
+  ( out
+  , "H0Tapp(", h0t1, "; ", h0ts, ")")
+| H0Tlam
+  (htvs, h0t1) =>
+  fprint!
+  ( out
+  , "H0Tlam(", htvs, "; ", h0t1, ")")
+//
+| H0Ttyrec
+  (knd0, npf1, lhts) =>
+  fprint!
+  ( out
+  , "H0Ttyrec("
+  , knd0, "; ", npf1, "; ", lhts, ")")  
 //
 | H0Tnone1(_) =>
   fprint!(out, "H0Tnone1(", "...", ")")
 //
+(*
 | _(* H0T... *) => fprint!(out, "H0T...(...)")
-)
+*)
+) where
+{
+  implement
+  fprint_val<labh0typ> = fprint_labh0typ
+}
+//
+(* ****** ****** *)
+//
+implement
+print_labh0typ(lx) =
+fprint_labh0typ(stdout_ref, lx)
+implement
+prerr_labh0typ(lx) =
+fprint_labh0typ(stderr_ref, lx)
+//
+implement
+fprint_labh0typ(out, lx) =
+(
+case+ lx of
+| SLABELED
+  (l0, x0) => fprint!(out, l0, "=", x0)
+) (* end of [fprint_labh0typ] *)
 //
 (* ****** ****** *)
 //

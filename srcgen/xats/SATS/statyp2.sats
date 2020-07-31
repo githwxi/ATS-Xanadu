@@ -90,6 +90,7 @@ typedef s2varlst = List0(s2var)
 typedef s2explst = List0(s2exp)
 typedef t2ypelst = List0(t2ype)
 //
+sexpdef slabeled = $S2E.slabeled
 typedef labs2exp = $S2E.labs2exp
 typedef labs2explst = List0(labs2exp)
 //
@@ -149,14 +150,6 @@ overload fprint with fprint_t2xtv
 //
 (* ****** ****** *)
 //
-datatype
-labt2ype =
-| TLABELED of (label, t2ype)
-where
-labt2ypelst = List0(labt2ype)
-//
-(* ****** ****** *)
-//
 val
 the_t2ype_void: t2ype
 //
@@ -208,6 +201,11 @@ overload print with print_t2ype
 overload prerr with prerr_t2ype
 overload fprint with fprint_t2ype
 //
+(* ****** ****** *)
+typedef
+labt2ype = slabeled(t2ype)
+typedef
+labt2ypelst = List0(labt2ype)
 (* ****** ****** *)
 //
 fun

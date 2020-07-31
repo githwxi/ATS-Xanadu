@@ -297,7 +297,7 @@ case+ ltps of
     auxlt2ps(ltps1, xtvs)
   end where
   {
-    val+TLABELED(l0, t2p0) = lt2p0
+    val+SLABELED(l0, t2p0) = lt2p0
   }
 )
 //
@@ -1097,7 +1097,7 @@ case+ d3ps of
     val l0 =
     label_make_int(i0)
     val lt2p0 =
-    TLABELED(l0, d3p0.type())
+    SLABELED(l0, d3p0.type())
   in
     list_cons(lt2p0, auxlst(d3ps, i0+1))
   end // end of [list_cons]
@@ -1894,7 +1894,7 @@ let
 val l0 =
 label_make_int(i0)
 val lt2p0 =
-TLABELED(l0, d3e0.type())
+SLABELED(l0, d3e0.type())
 in
 list_cons(lt2p0, auxlst(d3es, i0+1))
 end // end of [list_cons]
