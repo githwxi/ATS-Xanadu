@@ -240,11 +240,15 @@ overload prerr with prerr_htvar
 overload fprint with fprint_htvar
 //
 (* ****** ****** *)
+//
 fun
 htvar_make_idst
 (sym: symbol, hst: h0srt): htvar
-(* ****** ****** *)
 //
+(* ****** ****** *)
+typedef labh0typ = slabeled(h0typ)
+typedef labh0typlst = List0(labh0typ)
+(* ****** ****** *)
 datatype
 h0typ_node =
 // externally named
@@ -252,6 +256,17 @@ h0typ_node =
 //
 | H0Tcst of htcst // constant
 | H0Tvar of htvar // variable
+//
+| H0Tfun of
+  ( int(*npf*)
+  , h0typlst(*arg*),h0typ(*res*)
+  ) (* end of H0Tfun *)
+//
+| H0Tapp of (h0typ, h0typlst) // inst
+| H0Tlam of (htvarlst, h0typ) // poly
+//
+| H0Ttyrec of
+  (tyrec(*knd*), int(*npf*), labh0typlst)
 //
 | H0Tnone1 of (dataptr) // HX: for ignores
 //
@@ -267,6 +282,19 @@ fprint_h0typ: fprint_type(h0typ)
 overload print with print_h0typ
 overload prerr with prerr_h0typ
 overload fprint with fprint_h0typ
+//
+(* ****** ****** *)
+//
+fun
+print_labh0typ: labh0typ -> void
+fun
+prerr_labh0typ: labh0typ -> void
+fun
+fprint_labh0typ: fprint_type(labh0typ)
+//
+overload print with print_labh0typ
+overload prerr with prerr_labh0typ
+overload fprint with fprint_labh0typ
 //
 (* ****** ****** *)
 //

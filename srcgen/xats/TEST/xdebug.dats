@@ -4,7 +4,7 @@
 
 fun
 <a:type>
-foo( x: a ): a = x
+foo( x: a ) = (x, x)
 
 (* ****** ****** *)
 ////

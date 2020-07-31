@@ -197,7 +197,7 @@ fprint_labt2ype
   (out, lt2p) =
 (
 case+ lt2p of
-| TLABELED(l0, t2p) => fprint!(out, l0, "=", t2p)
+| SLABELED(l0, t2p) => fprint!(out, l0, "=", t2p)
 ) (* end of [fprint_labt2ype] *)
 //
 end // end of [local]
@@ -305,7 +305,7 @@ fpprint_labt2ype
   (out, lt2p) =
 (
 case+ lt2p of
-| TLABELED(l0, t2p) => fprint!(out, l0, "=", t2p)
+| SLABELED(l0, t2p) => fprint!(out, l0, "=", t2p)
 ) (* end of [fprint_labt2ype] *)
 //
 end // end of [local]

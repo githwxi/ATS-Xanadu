@@ -202,7 +202,8 @@ val
 dend = d3e0.node()
 //
 val
-t2p0 = t2ype_normize(t2p0)
+t2p0 =
+t2ype_normize(t2p0)
 //
 #if(__XATSOPT_DEBUG__)
 (*
@@ -508,6 +509,8 @@ Some
 (aux_f3as_body(env0, f3as, body))
 )
 ) : d3expopt // val
+//
+val rtp = t2ype_normize(rtp) 
 //
 in
 F3UNDECL

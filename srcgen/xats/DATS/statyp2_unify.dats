@@ -131,7 +131,7 @@ case+ ltps of
 | list_nil() => false
 | list_cons(lt2p0, ltps1) =>
   let
-  val+TLABELED(lab, t2p0) = lt2p0
+  val+SLABELED(lab, t2p0) = lt2p0
   in
   if auxt2p0(t2p0) then true else auxlt2ps(ltps1)
   end
@@ -533,8 +533,8 @@ labunify
 ( ltp1: labt2ype
 , ltp2: labt2ype): bool =
 let
-val+TLABELED(l1, t2p1) = ltp1
-val+TLABELED(l2, t2p2) = ltp2
+val+SLABELED(l1, t2p1) = ltp1
+val+SLABELED(l2, t2p2) = ltp2
 in
 //
 if

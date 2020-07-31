@@ -186,6 +186,15 @@ tcomp30_typelst
 (* ****** ****** *)
 //
 fun
+tcomp30_labtype
+  (labt2ype): labh0typ
+fun
+tcomp30_labtypelst
+  (labt2ypelst): labh0typlst
+//
+(* ****** ****** *)
+//
+fun
 tcomp30_dvar
   (d2v0: d2var): hdvar
 fun

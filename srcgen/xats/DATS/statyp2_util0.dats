@@ -515,13 +515,13 @@ case+ ltps of
     val fini = flag
 //
     val+
-    TLABELED(l0, t2p0) = lt2p0
+    SLABELED(l0, t2p0) = lt2p0
     val t2p0 = auxt2p0(t2p0, flag)
     val lt2p0 =
     (
     if
     flag = fini
-    then lt2p0 else TLABELED(l0, t2p0)
+    then lt2p0 else SLABELED(l0, t2p0)
     ) : labt2ype // end of [val]
 //
     val ltps1 = auxlt2ps(ltps1, flag)
@@ -845,13 +845,13 @@ let
   val fini = flag
 //
   val+
-  TLABELED(l0, t2p0) = lt2p0
+  SLABELED(l0, t2p0) = lt2p0
   val t2p0 = auxt2p0(t2p0, flag)
   val lt2p0 =
   (
   if
   flag = fini
-  then lt2p0 else TLABELED(l0, t2p0)
+  then lt2p0 else SLABELED(l0,t2p0)
   ) : labt2ype // end of [val]
 //
   val ltps1 = auxlt2ps(ltps1, flag)
@@ -1145,7 +1145,7 @@ list_nil() => None_vt()
 list_cons(lx0, lxs) =>
 let
   val
-  TLABELED(l0, x0) = lx0
+  SLABELED(l0, x0) = lx0
 in
 if
 (l0 = lab1)
@@ -1181,7 +1181,8 @@ list_map<labs2exp><labt2ype>(ls2es)
 implement
 list_map$fopr<labs2exp><labt2ype>(ls2e) =
 let
-val+SLABELED(l0, s2e) = ls2e in TLABELED(l0, s2exp_erase(s2e))
+val+
+SLABELED(l0, s2e) = ls2e in SLABELED(l0, s2exp_erase(s2e))
 end
 } (* end of [labs2explst_erase] *)
 
