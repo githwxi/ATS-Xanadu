@@ -68,25 +68,38 @@ const with p2tr_constize of 1000
 //
 fun
 <a:vt>
-p1gtz_get(p0: p1gtz): a
+UN_p1gtz_get(p0: p1gtz): a
 fun
 <a:vt>
-p2gtz_get(p0: p2gtz(a)): a
+UN_p2gtz_get(p0: p2gtz(a)): a
 //
 fun
 <a:vt>
-cp1gtz_get(cp: cp1gtz): a
+UN_cp1gtz_get(cp: cp1gtz): a
 fun
 <a:vt>
-cp2gtz_get(cp: cp2gtz(a)): a
+UN_cp2gtz_get(cp: cp2gtz(a)): a
 //
 fun
 <a:vt>
-p1gtz_set(p0: p1gtz, x0: a): void
+UN_p1gtz_set(p0: p1gtz, x0: a): void
 fun
 <a:vt>
-p2gtz_set(p0: p2gtz(a), x0: a): void
+UN_p2gtz_set(p0: p2gtz(a), x0: a): void
 //
 (* ****** ****** *)
 
-(* end of [gptr.sats] *)
+(*
+prfun
+<a:vt>
+array_get_at
+{n:int}
+{i:nat|i<n}
+(array(a, n)@l | int(i))
+:
+(a@(l+i*sz(a)), array(a, n)@l - a@(l+i*sz(a)))
+*)
+
+(* ****** ****** *)
+
+(* end of [CC/gptr.sats] *)
