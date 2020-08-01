@@ -431,10 +431,19 @@ x0.node() of
   , "H0Edapp("
   , h0f0, "; ", npf1, "; ", h0es, ")")
 //
-| H0Eseqn(h0es, h0e1) =>
+| H0Eseqn
+  ( h0es(*semi*)
+  , h0e1(*last*) ) =>
   fprint!
   ( out
   , "H0Eseqn(", h0es, "; ", h0e1, ")")
+//
+| H0Etuple
+  (knd0, npf1, h0es) =>
+  fprint!
+  ( out
+  , "H0Etuple("
+  , knd0, "; ", npf1, "; ", h0es, ")")
 //
 | H0Elet(hdcl, h0e1) =>
   fprint!

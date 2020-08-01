@@ -1343,6 +1343,30 @@ end (* end of [ auxdapp2 ] *)
 (* ****** ****** *)
 
 fun
+aux_seqn
+( env0:
+! abstenv
+, d3e0: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Eseqn
+( d3es
+, d3e1) = d3e0.node()
+//
+val
+d3e1 = trans33_dexp(env0, d3e1)
+val
+d3es = trans33_dexplst(env0, d3es)
+//
+in
+d33exp_seqn_up(loc0, env0, d3es, d3e1)
+end // end of [aux_seqn]
+
+(* ****** ****** *)
+
+fun
 aux_tuple
 ( env0:
 ! abstenv
@@ -1432,30 +1456,6 @@ d33exp_make_node
 (loc0, t2p1, D3Ewhere(d3e1, d3cs))
 end
 end (* end of [aux_where] *)
-
-(* ****** ****** *)
-
-fun
-aux_seqn
-( env0:
-! abstenv
-, d3e0: d3exp): d3exp = let
-//
-val
-loc0 = d3e0.loc()
-val-
-D3Eseqn
-( d3es
-, d3e1) = d3e0.node()
-//
-val
-d3e1 = trans33_dexp(env0, d3e1)
-val
-d3es = trans33_dexplst(env0, d3es)
-//
-in
-d33exp_seqn_up(loc0, env0, d3es, d3e1)
-end // end of [aux_seqn]
 
 (* ****** ****** *)
 
@@ -1945,15 +1945,15 @@ D3Etapp _ => auxtapp(env0, d3e0)
 D3Edapp _ => auxdapp(env0, d3e0)
 //
 |
+D3Eseqn _ => aux_seqn(env0, d3e0)
+//
+|
 D3Etuple _ => aux_tuple(env0, d3e0)
 //
 |
 D3Elet _ => aux_let(env0, d3e0)
 |
 D3Ewhere _ => aux_where(env0, d3e0)
-//
-|
-D3Eseqn _ => aux_seqn(env0, d3e0)
 //
 |
 D3Eassgn _ => aux_assgn(env0, d3e0)
