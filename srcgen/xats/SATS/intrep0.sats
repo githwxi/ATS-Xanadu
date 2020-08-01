@@ -476,16 +476,17 @@ h0exp_node =
 | H0Edapp of
   (h0exp, int(*npf*), h0explst)
 //
-| H0Elet of
-  (h0dclist, h0exp(*sequence*))
-//
 | H0Eseqn of
-  (h0explst(*semi*), h0exp(*last*))
+  (h0explst, h0exp(*last*))
+//
+| H0Etuple of
+  (int(*knd*), int(*npf*), h0explst)
+//
+| H0Elet of
+  (h0dclist, h0exp(*seqn*))
 //
 | H0Eif0 of
-  ( h0exp
-  , h0exp(*then*)
-  , h0expopt(*else*))
+  (h0exp, h0exp, h0expopt(*else*))
 //
 | H0Elam of
   ( token(*knd*)
