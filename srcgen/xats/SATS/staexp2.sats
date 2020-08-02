@@ -664,8 +664,8 @@ slabeled(a:type) =
 datatype
 tyrec =
 //
-| TYRECbox0 (* box *)
-| TYRECbox1 (* box *)
+| TYRECbox0 (* box *) // nonlin
+| TYRECbox1 (* box *) // linear
 //
 | TYRECflt0 (* flat *)
 (*
