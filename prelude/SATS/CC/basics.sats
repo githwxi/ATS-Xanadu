@@ -213,5 +213,27 @@ cp2trn
 ,n:i0,l:a0) = cp2trn_tbox(a,n,l)
 
 (* ****** ****** *)
+fun
+<a:vt>
+UN_p2trn_get_at
+{n:int}
+(p0: p2trn(a, n), i0: nintlt(n)): ( a )
+fun
+<a:vt>
+UN_cp2trn_get_at
+{n:int}
+(cp: cp2trn(a, n), i0: nintlt(n)): ( a )
+(* ****** ****** *)
+fun
+<a:vt>
+UN_p2trn_set_at
+{n:int}
+(p0: p2trn(a, n), i0: nintlt(n), x0: a): void
+fun
+<a:vt>
+UN_p2trn_exch_at
+{n:int}
+(p0: p2trn(a, n), i0: nintlt(n), x0: a): ( a )
+(* ****** ****** *)
 
 (* end of [CC/basics.sats] *)
