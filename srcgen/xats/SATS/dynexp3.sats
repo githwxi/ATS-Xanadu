@@ -221,26 +221,6 @@ d3pat_make_node
 , t2p0: t2ype, node: d3pat_node): d3pat
 //
 (* ****** ****** *)
-
-datatype
-ti3arg =
-| TI3ARGnone of ()
-| TI3ARGsome of t2ypelst
-
-(* ****** ****** *)
-//
-fun
-print_ti3arg: print_type(ti3arg)
-fun
-prerr_ti3arg: prerr_type(ti3arg)
-fun
-fprint_ti3arg: fprint_type(ti3arg)
-//
-overload print with print_ti3arg
-overload prerr with prerr_ti3arg
-overload fprint with fprint_ti3arg
-//
-(* ****** ****** *)
 //
 datatype
 f3arg_node =
@@ -295,6 +275,26 @@ f3arglst_memq_dvar
 fun
 f3arg_make_node
 (loc: loc_t, node: f3arg_node): f3arg
+//
+(* ****** ****** *)
+//
+datatype
+ti3arg =
+| TI3ARGnone of ()
+| TI3ARGsome of t2ypelst
+//
+(* ****** ****** *)
+//
+fun
+print_ti3arg: print_type(ti3arg)
+fun
+prerr_ti3arg: prerr_type(ti3arg)
+fun
+fprint_ti3arg: fprint_type(ti3arg)
+//
+overload print with print_ti3arg
+overload prerr with prerr_ti3arg
+overload fprint with fprint_ti3arg
 //
 (* ****** ****** *)
 

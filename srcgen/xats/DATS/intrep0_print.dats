@@ -389,6 +389,29 @@ fprint!
 (* ****** ****** *)
 //
 implement
+print_htiarg(x0) =
+fprint_htiarg(stdout_ref, x0)
+implement
+prerr_htiarg(x0) =
+fprint_htiarg(stderr_ref, x0)
+//
+implement
+fprint_htiarg(out, x0) =
+(
+case+ x0 of
+//
+| HTIARGnone() =>
+  fprint!
+  (out, "HTIARGnone(", ")")
+| HTIARGsome(h0ts) =>
+  fprint!
+  (out, "HTIARGsome(", h0ts, ")")
+//
+)
+//
+(* ****** ****** *)
+//
+implement
 print_h0exp(x0) =
 fprint_h0exp(stdout_ref, x0)
 implement
@@ -423,6 +446,15 @@ x0.node() of
   fprint!(out, "H0Efcon(", hdc, ")")
 | H0Efcst(hdc) =>
   fprint!(out, "H0Efcst(", hdc, ")")
+//
+| H0Etcon(tia, hdc) =>
+  fprint!
+  ( out
+  , "H0Etcon(", tia, "; ", hdc, ")")
+| H0Etcst(tia, hdc) =>
+  fprint!
+  ( out
+  , "H0Etcst(", tia, "; ", hdc, ")")
 //
 | H0Edapp
   (h0f0, npf1, h0es) =>

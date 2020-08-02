@@ -66,6 +66,36 @@ const with p2tr_constize of 1000
 
 (* ****** ****** *)
 //
+fun<>
+p1tr_eqzq
+{l:a0}
+(p0: p1tr(l)): bool(l=0)
+fun<>
+p1tr_neqzq
+{l:a0}
+(p0: p1tr(l)): bool(l!=0)
+//
+#symload eqzq with p1tr_eqzq of 1000
+#symload neqzq with p1tr_neqzq of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+p2tr_eqzq
+{a:vt}
+{l:a0}
+(p0: p2tr(a, l)): bool(l=0)
+fun<>
+p2tr_neqzq
+{a:vt}
+{l:a0}
+(p0: p2tr(a, l)): bool(l!=0)
+//
+#symload eqzq with p2tr_eqzq of 1000
+#symload neqzq with p2tr_neqzq of 1000
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
 UN_p1gtz_get(p0: p1gtz): a
@@ -102,4 +132,4 @@ array_get_at
 
 (* ****** ****** *)
 
-(* end of [CC/gptr.sats] *)
+(* end of [CC/basics.sats] *)

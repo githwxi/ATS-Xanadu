@@ -334,6 +334,19 @@ list_map$fopr<f3arg><hfarg>(f3a) = tcomp30_farg(f3a)
 } (* end of [tcomp30_farglst] *)
 (* ****** ****** *)
 
+implement
+tcomp30_ti3arg
+  (ti3a) =
+(
+case+ ti3a of
+| TI3ARGnone() =>
+  HTIARGnone()
+| TI3ARGsome(t2ps) =>
+  HTIARGsome(tcomp30_typelst(t2ps))
+)
+
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
@@ -543,6 +556,60 @@ hdc1 =
 //
 in
 h0exp_make_node(loc0, h0t0, H0Efcst(hdc1))
+end
+
+(* ****** ****** *)
+
+fun
+auxtcon
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Etcon
+( d2c0
+, ti3a, ti2s) = d3e0.node()
+//
+val hdc1 = tcomp30_dcon(d2c0)
+val htia = tcomp30_ti3arg(ti3a)
+//
+in
+  h0exp_make_node
+  (loc0, h0t0, H0Etcon(htia, hdc1))
+end
+
+(* ****** ****** *)
+
+fun
+auxtcst
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Etcst
+( d2c0
+, ti3a, ti2s) = d3e0.node()
+//
+val hdc1 = tcomp30_dcst(d2c0)
+val htia = tcomp30_ti3arg(ti3a)
+//
+in
+  h0exp_make_node
+  (loc0, h0t0, H0Etcst(htia, hdc1))
 end
 
 (* ****** ****** *)
@@ -825,6 +892,11 @@ D3Evknd _ => auxvknd(d3e0)
 D3Efcon _ => auxfcon(d3e0)
 |
 D3Efcst _ => auxfcst(d3e0)
+//
+|
+D3Etcon _ => auxtcon(d3e0)
+|
+D3Etcst _ => auxtcst(d3e0)
 //
 |
 D3Edapp _ => auxdapp(d3e0)
