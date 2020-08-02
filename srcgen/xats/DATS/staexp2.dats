@@ -935,7 +935,13 @@ in
 end // end of [s2exp_list2]
 
 (* ****** ****** *)
-
+//
+(*
+HX-2020-07:
+boxed
+tuples are linear
+*)
+//
 implement
 s2exp_tuple1
 (knd, s2es) = let
@@ -957,7 +963,7 @@ then (the_sort2_vwtp)
 else (the_sort2_type)
 end
 )
-else (the_sort2_vtbx)
+else (the_sort2_vtbx) // linear
 ) : sort2 // end of [val]
 //
 val knd =
@@ -971,15 +977,16 @@ val
 ls2es = labs2explst_make_list1(s2es)
 //
 in
-  s2exp_make_node
-  (s2t0, S2Etyrec(knd, ~1(*npf*), ls2es))
+s2exp_make_node
+(s2t0, S2Etyrec(knd, ~1(*npf*), ls2es))
 end // end of [s2exp_tuple1]
 
 (* ****** ****** *)
 
 implement
 s2exp_tuple2
-(knd, s2es1, s2es2) = let
+( knd
+, s2es1, s2es2) = let
 //
 //
 val s2t0 =
@@ -994,8 +1001,10 @@ s2explst_islin(s2es1)
 val
 islin =
 (
-if islin then islin
-else s2explst_islin(s2es2)
+if
+islin
+then islin else
+s2explst_islin(s2es2)
 ) : bool // end of [val]
 in
 if
@@ -1003,7 +1012,7 @@ islin
 then (the_sort2_vwtp)
 else (the_sort2_type)
 end
-else (the_sort2_vtbx)
+else (the_sort2_vtbx) // linear
 ) : sort2 // end of [val]
 //
 val knd =
@@ -1017,7 +1026,7 @@ val
 ls2es = labs2explst_make_list2(s2es1, s2es2)
 //
 in
-  s2exp_make_node(s2t0, S2Etyrec(knd, npf, ls2es))
+s2exp_make_node(s2t0, S2Etyrec(knd, npf, ls2es))
 end // end of [s2exp_tuple2]
 
 (* ****** ****** *)
@@ -1026,40 +1035,27 @@ implement
 s2exp_record1
 (knd, ls2es) = let
 //
-val
-islin =
-labs2explst_islin(ls2es)
-//
 val s2t0 =
 (
 if
+knd = 0
+then
+let
+val
+islin =
+labs2explst_islin(ls2es)
+in
+if
 islin
-then
-(
-if
-knd = 0
 then (the_sort2_vwtp)
-else (the_sort2_vtbx)
-)
-else
-(
-if
-knd = 0
-then
-the_sort2_type else the_sort2_tbox
-)
+else (the_sort2_type)
+end
+else (the_sort2_vtbx) // linear
 ) : sort2 // end of [val]
 //
 val knd =
 (
-if
-islin
-then
-(if knd = 0
- then TYRECflt0 else TYRECbox1)
-else
-(if knd = 0
- then TYRECflt0 else TYRECbox0)
+if knd = 0 then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 in
@@ -1071,53 +1067,45 @@ end // end of [s2exp_record1]
 
 implement
 s2exp_record2
-(knd, ls2es1, ls2es2) = let
+( knd
+, ls2es1, ls2es2) = let
 //
+val s2t0 =
+(
+if
+(knd = 0)
+then
+let
 val
 islin =
 labs2explst_islin(ls2es1)
 val
 islin =
 (
-if islin then islin
-else labs2explst_islin(ls2es2)
-) : bool // end of [val]
-//
-val s2t0 =
-(
 if
 islin
-then
-(
+then islin else
+labs2explst_islin(ls2es2)
+) : bool // end of [val]
+in
 if
-knd = 0
+islin
 then (the_sort2_vwtp)
-else (the_sort2_vtbx)
-)
-else
-(
-if
-knd = 0
-then
-the_sort2_type else the_sort2_tbox
-)
+else (the_sort2_type)
+end
+else (the_sort2_vtbx) // linear
 ) : sort2 // end of [val]
 //
 val knd =
 (
-if
-islin
-then
-(if knd = 0 then TYRECflt0 else TYRECbox1)
-else
-(if knd = 0 then TYRECflt0 else TYRECbox0)
+if knd = 0 then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 val npf = list_length(ls2es1)
 //
 in
-  s2exp_make_node
-  (s2t0, S2Etyrec(knd, npf, ls2es1 + ls2es2))
+s2exp_make_node
+(s2t0, S2Etyrec(knd, npf, ls2es1 + ls2es2))
 end // end of [s2exp_record2]
 
 (* ****** ****** *)
