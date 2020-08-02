@@ -224,6 +224,11 @@ tcomp30_farglst(f3arglst): hfarglst
 (* ****** ****** *)
 //
 fun
+tcomp30_ti3arg(tia: ti3arg): htiarg
+//
+(* ****** ****** *)
+//
+fun
 tcomp30_dexp(d3e0: d3exp): h0exp
 fun
 tcomp30_dexpopt(d3expopt): h0expopt

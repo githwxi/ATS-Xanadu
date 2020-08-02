@@ -456,6 +456,26 @@ fun
 hfarg_make_node
 (loc0: loc_t, node: hfarg_node): hfarg
 (* ****** ****** *)
+
+datatype
+htiarg =
+| HTIARGnone of ()
+| HTIARGsome of h0typlst
+
+(* ****** ****** *)
+//
+fun
+print_htiarg: print_type(htiarg)
+fun
+prerr_htiarg: prerr_type(htiarg)
+fun
+fprint_htiarg: fprint_type(htiarg)
+//
+overload print with print_htiarg
+overload prerr with prerr_htiarg
+overload fprint with fprint_htiarg
+//
+(* ****** ****** *)
 //
 datatype
 h0exp_node =
@@ -472,6 +492,9 @@ h0exp_node =
 //
 | H0Efcon of hdcon // cnstrctr
 | H0Efcst of hdcst // constant
+//
+| H0Etcon of (htiarg, hdcon)
+| H0Etcst of (htiarg, hdcst)
 //
 | H0Edapp of
   (h0exp, int(*npf*), h0explst)

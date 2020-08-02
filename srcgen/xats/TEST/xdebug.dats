@@ -2,6 +2,12 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+fun<>
+fact(x: int): int =
+if x > 0 then x * fact(x-1) else 1
+
+(* ****** ****** *)
+////
 fun
 <a:type>
 foo( x: a ) = (x, x)
