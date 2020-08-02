@@ -45,6 +45,44 @@ p2gez(a:vt) = [l:agez] p2tr1(a,l)
 typedef
 p2gtz(a:vt) = [l:agtz] p2tr1(a,l)
 (* ****** ****** *)
+//
+(*
+HX-2020-07-30:
+const pointers are read-only
+*)
+typedef
+cp1tr_k =
+$extype("xats_cp1tr_t")
+typedef
+cp2tr_k =
+$extype("xats_cp2tr_t")
+(* ****** ****** *)
+abstype
+cp1tr_tbox(l:a0) <= cp1tr_k
+abstype
+cp2tr_tbox(a:vt, l:a0) <= cp2tr_k
+(* ****** ****** *)
+//
+typedef
+cp1tr0 = [l:a0] cp1tr_tbox(l)
+typedef
+cp1tr1(l: a0) = cp1tr_tbox(l)
+//
+typedef
+cp2tr0
+(a:vt) = [l:a0] cp2tr_tbox(a,l)
+typedef
+cp2tr1(a:vt,l:a0) = cp2tr_tbox(a,l)
+//
+typedef
+cp1tr = cp1tr0
+typedef
+cp1tr(l:a0) = cp1tr1(l)
+//
+typedef cp2tr(a:vt) = cp2tr0(a)
+typedef cp2tr(a:vt, l:a0) = cp2tr1(a,l)
+//
+(* ****** ****** *)
 typedef
 cp1gez = [l:agez] cp1tr1(l)
 typedef
@@ -125,10 +163,54 @@ prfun
 array_get_at
 {n:int}
 {i:nat|i<n}
-(array(a, n)@l | int(i))
+(array(a,n)@l | int(i))
 :
 (a@(l+i*sz(a)), array(a, n)@l - a@(l+i*sz(a)))
 *)
+
+(* ****** ****** *)
+//
+(*
+HX-2020-08-02: arrays
+*)
+//
+(* ****** ****** *)
+typedef
+p2trn_k =
+$extype("xats_p2trn_t")
+(* ****** ****** *)
+abstype
+p2trn_tbox
+(a:vt,n:i0,l:a0) <= p2trn_k
+(* ****** ****** *)
+
+typedef
+p2trn
+(a:vt,n:i0) =
+[l:a0] p2trn_tbox(a,n,l)
+typedef
+p2trn
+(a:vt
+,n:i0,l:a0) = p2trn_tbox(a,n,l)
+
+(* ****** ****** *)
+typedef
+p2trn_k =
+$extype("xats_cp2trn_t")
+(* ****** ****** *)
+abstype
+cp2trn_tbox
+(a:vt,n:i0,l:a0) <= cp2trn_k
+(* ****** ****** *)
+
+typedef
+cp2trn
+(a:vt,n:i0) =
+[l:a0] cp2trn_tbox(a,n,l)
+typedef
+cp2trn
+(a:vt
+,n:i0,l:a0) = cp2trn_tbox(a,n,l)
 
 (* ****** ****** *)
 
