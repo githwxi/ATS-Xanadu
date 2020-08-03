@@ -157,9 +157,9 @@ local
 
 extern
 prfun
-lemma_cptr_param
+lemma_p2tr_param
 {a:vt0p}
-{l:addr}(cp: cptr(a, l)): [l >= null] void
+{l:addr}(cp: p2tr(a, l)): [l >= null] void
 
 (* ****** ****** *)
 
@@ -212,7 +212,7 @@ linmap_search_ref<key,itm>(map,d2v0)
 in
 let
 prval () = $UN.cast2void(map)
-prval () = lemma_cptr_param(ref) in ref
+prval () = lemma_p2tr_param(ref) in ref
 end
 end // end of [the_scstmap_search_ref]
 
@@ -228,7 +228,7 @@ in
 if
 iseqz(ref)
 then None_vt()
-else Some_vt($UN.cptr_get<itm>(ref))
+else Some_vt($UN.p2tr_get<itm>(ref))
 //
 end // end of [the_scstmap_search_opt]
 
@@ -322,7 +322,7 @@ linmap_search_ref<key,itm>(map,d2v0)
 in
 let
 prval () = $UN.cast2void(map)
-prval () = lemma_cptr_param(ref) in ref
+prval () = lemma_p2tr_param(ref) in ref
 end
 end // end of [the_svarmap_search_ref]
 
@@ -338,7 +338,7 @@ in
 if
 iseqz(ref)
 then None_vt()
-else Some_vt($UN.cptr_get<itm>(ref))
+else Some_vt($UN.p2tr_get<itm>(ref))
 //
 end // end of [the_svarmap_search_opt]
 
@@ -432,7 +432,7 @@ linmap_search_ref<key,itm>(map,d2v0)
 in
 let
 prval () = $UN.cast2void(map)
-prval () = lemma_cptr_param(ref) in ref
+prval () = lemma_p2tr_param(ref) in ref
 end
 end // end of [the_dconmap_search_ref]
 
@@ -448,7 +448,7 @@ in
 if
 iseqz(ref)
 then None_vt()
-else Some_vt($UN.cptr_get<itm>(ref))
+else Some_vt($UN.p2tr_get<itm>(ref))
 //
 end // end of [the_dconmap_search_opt]
 
@@ -542,7 +542,7 @@ linmap_search_ref<key,itm>(map,d2v0)
 in
 let
 prval () = $UN.cast2void(map)
-prval () = lemma_cptr_param(ref) in ref
+prval () = lemma_p2tr_param(ref) in ref
 end
 end // end of [the_dcstmap_search_ref]
 
@@ -558,7 +558,7 @@ in
 if
 iseqz(ref)
 then None_vt()
-else Some_vt($UN.cptr_get<itm>(ref))
+else Some_vt($UN.p2tr_get<itm>(ref))
 //
 end // end of [the_dcstmap_search_opt]
 
@@ -652,7 +652,7 @@ linmap_search_ref<key,itm>(map,d2v0)
 in
 let
 prval () = $UN.cast2void(map)
-prval () = lemma_cptr_param(ref) in ref
+prval () = lemma_p2tr_param(ref) in ref
 end
 end // end of [the_dvarmap_search_ref]
 
@@ -668,7 +668,7 @@ in
 if
 iseqz(ref)
 then None_vt()
-else Some_vt($UN.cptr_get<itm>(ref))
+else Some_vt($UN.p2tr_get<itm>(ref))
 //
 end // end of [the_dvarmap_search_opt]
 

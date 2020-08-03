@@ -47,8 +47,8 @@
 
 (* ****** ****** *)
 typedef
-cPtr0(a:vt0p) =
-[l:addr | l >= null] cptr(a,l)
+P2tr0(a:vt0p) =
+[l:addr | l >= null] p2tr(a,l)
 (* ****** ****** *)
 //
 fun
@@ -56,7 +56,7 @@ htcst_make_scst(s2cst): htcst
 //
 fun
 the_scstmap_search_ref
-(s2v: s2cst): cPtr0(htcst)
+(s2v: s2cst): P2tr0(htcst)
 fun
 the_scstmap_search_opt
 (s2v: s2cst): Option_vt(htcst)
@@ -75,7 +75,7 @@ htvar_make_svar(s2var): htvar
 //
 fun
 the_svarmap_search_ref
-(s2v: s2var): cPtr0(htvar)
+(s2v: s2var): P2tr0(htvar)
 fun
 the_svarmap_search_opt
 (s2v: s2var): Option_vt(htvar)
@@ -96,7 +96,7 @@ hdcst_make_dcst(d2cst): hdcst
 //
 fun
 the_dconmap_search_ref
-(d2c: d2con): cPtr0(hdcon)
+(d2c: d2con): P2tr0(hdcon)
 fun
 the_dconmap_search_opt
 (d2c: d2con): Option_vt(hdcon)
@@ -110,7 +110,7 @@ the_dconmap_insert_exn
 //
 fun
 the_dcstmap_search_ref
-(d2c: d2cst): cPtr0(hdcst)
+(d2c: d2cst): P2tr0(hdcst)
 fun
 the_dcstmap_search_opt
 (d2c: d2cst): Option_vt(hdcst)
@@ -129,7 +129,7 @@ hdvar_make_dvar(d2var): hdvar
 //
 fun
 the_dvarmap_search_ref
-(d2v: d2var): cPtr0(hdvar)
+(d2v: d2var): P2tr0(hdvar)
 fun
 the_dvarmap_search_opt
 (d2v: d2var): Option_vt(hdvar)
