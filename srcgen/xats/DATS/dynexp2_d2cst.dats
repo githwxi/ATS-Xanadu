@@ -297,7 +297,7 @@ d2cst_get_kind
 in
 //
 if isneqz(cp)
-  then $UN.cptr_get(cp) else $LEX.T_EOF()
+  then $UN.p2tr_get(cp) else $LEX.T_EOF()
 //
 end // end of [d2cst_get_kind]
 

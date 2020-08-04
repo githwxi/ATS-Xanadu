@@ -240,7 +240,7 @@ s2cst_get_abst
 in
 if
 isneqz(cp)
-then $UN.cptr_get(cp) else ABSTDF2none()
+then $UN.p2tr_get(cp) else ABSTDF2none()
 end // end of [s2cst_get_abst]
 
 (* ****** ****** *)
@@ -304,7 +304,7 @@ s2cst_get_sexp
 in
 //
 if isneqz(cp)
-  then $UN.cptr_get(cp) else the_s2exp_none0
+  then $UN.p2tr_get(cp) else the_s2exp_none0
 //
 end // end of [s2cst_get_sexp]
 
@@ -369,7 +369,7 @@ s2cst_get_type
 in
 //
 if isneqz(cp)
-  then $UN.cptr_get(cp) else the_t2ype_none0
+  then $UN.p2tr_get(cp) else the_t2ype_none0
 //
 end // end of [s2cst_get_type]
 

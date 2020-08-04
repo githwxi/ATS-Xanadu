@@ -390,6 +390,18 @@ d33exp_proj_up
 ( loc0: loc_t
 , env0: !abstenv
 , d3e1: d3exp, lab2: label): d3exp
+fun
+d33exp_proj0_up
+( loc0: loc_t
+, env0: !abstenv
+, d3e1: d3exp
+, t2p1: t2ype, lab2: label): d3exp
+fun
+d33exp_proj1_up
+( loc0: loc_t
+, env0: !abstenv
+, d3e1: d3exp
+, t2p1: t2ype, lab2: label): d3exp
 //
 (* ****** ****** *)
 //

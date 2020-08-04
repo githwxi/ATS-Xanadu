@@ -892,27 +892,50 @@ t2p1 =
 whnfize_env(env0, t2p1)
 //
 val
-knd1 = tyrec_kind(t2p1)
-val
-opt2 =
-t2ype_projize(t2p1, lab2)
+opt1 = t2ype_un_p2tr(t2p1)
+//
+in
+case+ opt1 of
+| ~
+None_vt() =>
+d33exp_proj0_up
+(loc0, env0, d3e1, t2p1, lab2)
+| ~
+Some_vt(t2p1) =>
+d33exp_proj1_up
+(loc0, env0, d3e1, t2p1, lab2)
+end // end of [d33exp_proj_up]
+
+(* ****** ****** *)
+
+implement
+d33exp_proj0_up
+( loc0
+, env0
+, d3e1, t2p1, lab2) =
+let
 //
 (*
 val () =
 println!
-("d33exp_proj_up: d3e1 = ", d3e1)
+("d33exp_proj0_up: loc0 = ", loc0)
 val () =
 println!
-("d33exp_proj_up: t2p1 = ", t2p1)
+("d33exp_proj0_up: d3e1 = ", d3e1)
 val () =
 println!
-("d33exp_proj_up: knd1 = ", knd1)
+("d33exp_proj0_up: t2p1 = ", t2p1)
 val () =
 println!
-("d33exp_proj_up: lab2 = ", lab2)
+("d33exp_proj0_up: lab2 = ", lab2)
 *)
 //
-in
+val
+knd1 = tyrec_kind(t2p1)
+val
+opt2 = t2ype_projize(t2p1, lab2)
+//
+in(*in-of-let*)
 //
 case+ opt2 of
 |
@@ -983,7 +1006,64 @@ d3e1.node() of
 //
 end
 //
-end // end of [d33exp_proj_up]
+end // end of [d33exp_proj0_up]
+
+(* ****** ****** *)
+
+implement
+d33exp_proj1_up
+( loc0
+, env0
+, d3e1, t2p1, lab2) =
+let
+//
+// (*
+val () =
+println!
+("d33exp_proj1_up: loc0 = ", loc0)
+val () =
+println!
+("d33exp_proj1_up: d3e1 = ", d3e1)
+val () =
+println!
+("d33exp_proj1_up: t2p1 = ", t2p1)
+val () =
+println!
+("d33exp_proj1_up: lab2 = ", lab2)
+// *)
+//
+(*
+val
+knd1 = tyrec_kind(t2p1)
+*)
+val
+opt2 = t2ype_projize(t2p1, lab2)
+//
+in(*in-of-let*)
+//
+case+ opt2 of
+| ~
+None_vt() =>
+let
+val t2p2 = t2ype_new(loc0)
+val tptr =
+t2ype_app1(the_t2ype_p2tr, t2p2)
+in
+  d33exp_make_node
+  (loc0, t2p2, D3Elcast(d3e1, lab2))
+end // end of [None_vt]
+| ~
+Some_vt(it2p2) =>
+let
+val (i0, t2p2) = it2p2
+val tptr =
+t2ype_app1(the_t2ype_p2tr, t2p2)
+in
+  d33exp_make_node
+  (loc0, tptr, D3Eproj(d3e1, lab2, i0))
+end // end of [Some_vt]
+//
+end // end of [d33exp_proj1_up]
 
 end // end of [local]
 

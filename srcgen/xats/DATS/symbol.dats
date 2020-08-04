@@ -96,7 +96,7 @@ symbol_of_stamp
 in
   if
   isneqz(cp)
-  then Some_vt($UN.cptr_get(cp)) else None_vt()
+  then Some_vt($UN.p2tr_get(cp)) else None_vt()
 end // end of [symbol_of_stamp]
 
 end // end of [local]

@@ -94,7 +94,9 @@ in
 case+
 d3p0.node() of
 //
+| D3Pnil _ => ()
 | D3Pany _ => ()
+//
 | D3Pvar _ => ()
 //
 | D3Pcon1 _ => ()
