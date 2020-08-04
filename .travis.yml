@@ -25,7 +25,7 @@ before_install:
   - export CLANG=clang
 
 install:
-  - $XATSHOME/travis-ci/install-ats2.sh 0.3.13
+  - $XATSHOME/travis-ci/install-ats2.sh 0.4.1
 
 after_install:
   - date
