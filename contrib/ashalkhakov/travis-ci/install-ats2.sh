@@ -23,6 +23,9 @@ ATS2PACKTGZURL_download=\
 ${ATS2LANGURL_srcfg}/files\
 /ats2-lang/ats2-postiats-$ATS2VER/$ATS2PACKTGZ"
 
+ATS2PACKTGZURL_download=\
+"http://ats-lang.sourceforge.net/IMPLEMENT/Postiats/ATS2-Postiats-$ATS2VER.tgz"
+
 ######################################
 #
 # HX-2019-06:
