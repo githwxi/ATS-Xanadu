@@ -741,6 +741,37 @@ in
   h0exp_make_node(loc0, h0t0, hend)
 end // end of [aux_let]
 
+fun
+aux_where
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Elet(hdcl, h0e1)
+) where
+{
+val-
+D3Ewhere
+(d3e1, d3cs) = d3e0.node()
+//
+val
+hdcl = tcomp30_declist(d3cs)
+//
+val h0e1 = tcomp30_dexp(d3e1)
+}
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_where]
+
 (* ****** ****** *)
 
 fun
@@ -908,6 +939,8 @@ D3Eseqn _ => aux_seqn(d3e0)
 D3Etuple _ => aux_tuple(d3e0)
 //
 | D3Elet _ => aux_let(d3e0)
+|
+D3Ewhere _ => aux_where(d3e0)
 //
 | D3Eif0 _ => aux_if0(d3e0)
 //
