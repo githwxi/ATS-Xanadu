@@ -130,6 +130,19 @@ typedef h0expopt = Option(h0exp)
 //
 (* ****** ****** *)
 //
+abstbox h0gua_tbox = ptr
+typedef h0gua = h0gua_tbox
+typedef h0gualst = List0(h0gua)
+//
+abstbox h0gpat_tbox = ptr
+typedef h0gpat = h0gpat_tbox
+//
+abstbox h0clau_tbox = ptr
+typedef h0clau = h0clau_tbox
+typedef h0claulst = List0(h0clau)
+//
+(* ****** ****** *)
+//
 abstbox h0dcl_tbox = ptr
 typedef h0dcl = h0dcl_tbox
 typedef h0dclist = List0(h0dcl)
@@ -510,6 +523,9 @@ h0exp_node =
 //
 | H0Eif0 of
   (h0exp, h0exp, h0expopt(*else*))
+//
+| H0Ecase of
+  (int(*knd*), h0exp(*val*), h0claulst)
 //
 | H0Elam of
   ( token(*knd*)
