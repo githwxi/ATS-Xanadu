@@ -238,6 +238,20 @@ tcomp30_dexplst(d3explst): h0explst
 (* ****** ****** *)
 //
 fun
+tcomp30_dgua(d3g0: d3gua): h0gua
+fun
+tcomp30_dgualst(d3gualst): h0gualst
+//
+fun
+tcomp30_dclau(d3cl: d3clau): h0clau
+fun
+tcomp30_dgpat(d3gp: d3gpat): h0gpat
+fun
+tcomp30_dclaulst(d3claulst): h0claulst
+//
+(* ****** ****** *)
+//
+fun
 tcomp30_decl(d3c0: d3ecl): h0dcl
 fun
 tcomp30_declist(d3eclist): h0dclist
