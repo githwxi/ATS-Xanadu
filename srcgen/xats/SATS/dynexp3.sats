@@ -452,89 +452,6 @@ overload d3exp with t3cst2d3exp
 //
 (* ****** ****** *)
 //
-datatype
-d3gua_node =
-| D3GUAexp of (d3exp)
-| D3GUAmat of (d3exp, d3pat)
-//
-fun
-d3gua_get_loc(d3gua): loc_t
-fun
-d3gua_get_node(d3gua): d3gua_node
-//
-overload .loc with d3gua_get_loc
-overload .node with d3gua_get_node
-//
-fun print_d3gua : (d3gua) -> void
-fun prerr_d3gua : (d3gua) -> void
-fun fprint_d3gua : fprint_type(d3gua)
-//
-overload print with print_d3gua
-overload prerr with prerr_d3gua
-overload fprint with fprint_d3gua
-//
-fun
-d3gua_make_node
-(loc: loc_t, node: d3gua_node): d3gua
-//
-(* ****** ****** *)
-//
-datatype
-d3clau_node =
-| D3CLAUpat of d3gpat
-| D3CLAUexp of (d3gpat, d3exp)
-and
-d3gpat_node =
-| D3GPATpat of (d3pat)
-| D3GPATgua of (d3pat, d3gualst)
-//
-fun
-d3clau_get_loc(d3clau): loc_t
-fun
-d3clau_get_node(d3clau): d3clau_node
-//
-overload .loc with d3clau_get_loc
-overload .node with d3clau_get_node
-//
-fun
-d3gpat_get_loc(d3gpat): loc_t
-fun
-d3gpat_get_node(d3gpat): d3gpat_node
-//
-overload .loc with d3gpat_get_loc
-overload .node with d3gpat_get_node
-//
-fun
-print_d3clau : (d3clau) -> void
-fun
-prerr_d3clau : (d3clau) -> void
-fun
-fprint_d3clau : fprint_type(d3clau)
-//
-overload print with print_d3clau
-overload prerr with prerr_d3clau
-overload fprint with fprint_d3clau
-//
-fun
-print_d3gpat : (d3gpat) -> void
-fun
-prerr_d3gpat : (d3gpat) -> void
-fun
-fprint_d3gpat : fprint_type(d3gpat)
-//
-overload print with print_d3gpat
-overload prerr with prerr_d3gpat
-overload fprint with fprint_d3gpat
-//
-fun
-d3clau_make_node
-(loc: loc_t, node: d3clau_node): d3clau
-fun
-d3gpat_make_node
-(loc: loc_t, node: d3gpat_node): d3gpat
-//
-(* ****** ****** *)
-//
 fun
 d3exp_get_loc(d3exp): loc_t
 fun
@@ -630,6 +547,89 @@ d3exp_talf(d3e0: d3exp): d3exp
 fun
 d3exp_tcast
 (d3e0: d3exp, t2p0: t2ype): d3exp
+//
+(* ****** ****** *)
+//
+datatype
+d3gua_node =
+| D3GUAexp of (d3exp)
+| D3GUAmat of (d3exp, d3pat)
+//
+fun
+d3gua_get_loc(d3gua): loc_t
+fun
+d3gua_get_node(d3gua): d3gua_node
+//
+overload .loc with d3gua_get_loc
+overload .node with d3gua_get_node
+//
+fun print_d3gua : (d3gua) -> void
+fun prerr_d3gua : (d3gua) -> void
+fun fprint_d3gua : fprint_type(d3gua)
+//
+overload print with print_d3gua
+overload prerr with prerr_d3gua
+overload fprint with fprint_d3gua
+//
+fun
+d3gua_make_node
+(loc: loc_t, node: d3gua_node): d3gua
+//
+(* ****** ****** *)
+//
+datatype
+d3clau_node =
+| D3CLAUpat of d3gpat
+| D3CLAUexp of (d3gpat, d3exp)
+and
+d3gpat_node =
+| D3GPATpat of (d3pat)
+| D3GPATgua of (d3pat, d3gualst)
+//
+fun
+d3clau_get_loc(d3clau): loc_t
+fun
+d3clau_get_node(d3clau): d3clau_node
+//
+overload .loc with d3clau_get_loc
+overload .node with d3clau_get_node
+//
+fun
+d3gpat_get_loc(d3gpat): loc_t
+fun
+d3gpat_get_node(d3gpat): d3gpat_node
+//
+overload .loc with d3gpat_get_loc
+overload .node with d3gpat_get_node
+//
+fun
+print_d3clau : (d3clau) -> void
+fun
+prerr_d3clau : (d3clau) -> void
+fun
+fprint_d3clau : fprint_type(d3clau)
+//
+overload print with print_d3clau
+overload prerr with prerr_d3clau
+overload fprint with fprint_d3clau
+//
+fun
+print_d3gpat : (d3gpat) -> void
+fun
+prerr_d3gpat : (d3gpat) -> void
+fun
+fprint_d3gpat : fprint_type(d3gpat)
+//
+overload print with print_d3gpat
+overload prerr with prerr_d3gpat
+overload fprint with fprint_d3gpat
+//
+fun
+d3clau_make_node
+(loc: loc_t, node: d3clau_node): d3clau
+fun
+d3gpat_make_node
+(loc: loc_t, node: d3gpat_node): d3gpat
 //
 (* ****** ****** *)
 

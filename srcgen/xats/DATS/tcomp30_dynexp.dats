@@ -1237,26 +1237,32 @@ in(*in-of-local*)
 case+
 d3cl.node() of
 //
-| D3Cfundecl _ =>
-  (
-    aux_fundecl(d3cl)
-  )
+|
+D3Clocal
+(head, body) => let
+  val
+  head = tcomp30_declist(head)
+  val
+  body = tcomp30_declist(body)
+in
+  h0dcl_make_node
+  ( loc0, H0Clocal(head, body) )
+end
 //
-| D3Cvaldecl _ =>
-  (
-    aux_valdecl(d3cl)
-  )
-| D3Cvardecl _ =>
-  (
-    aux_vardecl(d3cl)
-  )
+|
+D3Cfundecl _ => aux_fundecl(d3cl)
+//
+|
+D3Cvaldecl _ => aux_valdecl(d3cl)
+|
+D3Cvardecl _ => aux_vardecl(d3cl)
 //
 |
 _(* rest-of_d3exp *) =>
 let
-val
-node =
-H0Cnone1($UN.cast{ptr}(d3cl))
+  val
+  node =
+  H0Cnone1($UN.cast{ptr}(d3cl))
 in h0dcl_make_node(loc0, node) end
 //
 end // end of [tcomp30_decl]
