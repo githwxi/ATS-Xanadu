@@ -574,6 +574,89 @@ h0exp_make_node
 //
 (* ****** ****** *)
 //
+datatype
+h0gua_node =
+| H0GUAexp of (h0exp)
+| H0GUAmat of (h0exp, h0pat)
+//
+fun
+h0gua_get_loc(h0gua): loc_t
+fun
+h0gua_get_node(h0gua): h0gua_node
+//
+overload .loc with h0gua_get_loc
+overload .node with h0gua_get_node
+//
+fun print_h0gua : (h0gua) -> void
+fun prerr_h0gua : (h0gua) -> void
+fun fprint_h0gua : fprint_type(h0gua)
+//
+overload print with print_h0gua
+overload prerr with prerr_h0gua
+overload fprint with fprint_h0gua
+//
+fun
+h0gua_make_node
+(loc: loc_t, node: h0gua_node): h0gua
+//
+(* ****** ****** *)
+//
+datatype
+h0clau_node =
+| H0CLAUpat of h0gpat
+| H0CLAUexp of (h0gpat, h0exp)
+and
+h0gpat_node =
+| H0GPATpat of (h0pat)
+| H0GPATgua of (h0pat, h0gualst)
+//
+fun
+h0clau_get_loc(h0clau): loc_t
+fun
+h0clau_get_node(h0clau): h0clau_node
+//
+overload .loc with h0clau_get_loc
+overload .node with h0clau_get_node
+//
+fun
+h0gpat_get_loc(h0gpat): loc_t
+fun
+h0gpat_get_node(h0gpat): h0gpat_node
+//
+overload .loc with h0gpat_get_loc
+overload .node with h0gpat_get_node
+//
+fun
+print_h0clau : (h0clau) -> void
+fun
+prerr_h0clau : (h0clau) -> void
+fun
+fprint_h0clau : fprint_type(h0clau)
+//
+overload print with print_h0clau
+overload prerr with prerr_h0clau
+overload fprint with fprint_h0clau
+//
+fun
+print_h0gpat : (h0gpat) -> void
+fun
+prerr_h0gpat : (h0gpat) -> void
+fun
+fprint_h0gpat : fprint_type(h0gpat)
+//
+overload print with print_h0gpat
+overload prerr with prerr_h0gpat
+overload fprint with fprint_h0gpat
+//
+fun
+h0clau_make_node
+(loc: loc_t, node: h0clau_node): h0clau
+fun
+h0gpat_make_node
+(loc: loc_t, node: h0gpat_node): h0gpat
+//
+(* ****** ****** *)
+//
 abstype htqarg_tbox = ptr
 //
 typedef htqarg = htqarg_tbox
