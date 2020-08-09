@@ -284,6 +284,84 @@ end // end of [local]
 (* ****** ****** *)
 
 local
+
+absimpl
+h0gua_tbox = $rec
+{ h0gua_loc= loc_t
+, h0gua_node= h0gua_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+h0gua_get_loc(x0) = x0.h0gua_loc
+implement
+h0gua_get_node(x0) = x0.h0gua_node
+
+implement
+h0gua_make_node
+  (loc0, node) = $rec
+{
+  h0gua_loc= loc0, h0gua_node= node
+} (* h0gua_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+h0clau_tbox = $rec
+{ h0clau_loc= loc_t
+, h0clau_node= h0clau_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+h0clau_get_loc(x0) = x0.h0clau_loc
+implement
+h0clau_get_node(x0) = x0.h0clau_node
+
+implement
+h0clau_make_node
+  (loc0, node) = $rec
+{
+  h0clau_loc= loc0, h0clau_node= node
+} (* h0clau_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+h0gpat_tbox = $rec
+{ h0gpat_loc= loc_t
+, h0gpat_node= h0gpat_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+h0gpat_get_loc(x0) = x0.h0gpat_loc
+implement
+h0gpat_get_node(x0) = x0.h0gpat_node
+
+implement
+h0gpat_make_node
+  (loc0, node) = $rec
+{
+  h0gpat_loc= loc0, h0gpat_node= node
+} (* h0gpat_make_node *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
 //
 absimpl
 h0dcl_tbox = $rec

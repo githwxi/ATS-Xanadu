@@ -98,6 +98,15 @@ implement
 fprint_val<h0exp> = fprint_h0exp
 
 (* ****** ****** *)
+//
+implement
+fprint_val<h0gua> = fprint_h0gua
+implement
+fprint_val<h0clau> = fprint_h0clau
+implement
+fprint_val<h0gpat> = fprint_h0gpat
+//
+(* ****** ****** *)
 implement
 fprint_val<htqarg> = fprint_htqarg
 (* ****** ****** *)
@@ -488,6 +497,12 @@ x0.node() of
   , "H0Eif0("
   , h0e1, "; ", h0e2, "; ", opt3, ")")
 //
+| H0Ecase
+  (knd0, h0e1, hcls) =>
+  fprint!
+  ( out, "H0Ecase("
+  , knd0, "; ", h0e1, "; ", hcls, ")")
+//
 | H0Elam
   (knd0, hfas, body) =>
   fprint!
@@ -504,10 +519,88 @@ x0.node() of
 | H0Enone1(_) =>
   fprint!(out, "H0Enone1(", "...", ")")
 //
-// (*
+(*
 | _(* H0E... *) => fprint!(out, "H0E...(...)")
-// *)
+*)
 )
+//
+(* ****** ****** *)
+//
+implement
+print_h0gua(x0) =
+fprint_h0gua(stdout_ref, x0)
+implement
+prerr_h0gua(x0) =
+fprint_h0gua(stderr_ref, x0)
+//
+implement
+fprint_h0gua
+  (out, x0) =
+(
+case+
+x0.node() of
+| H0GUAexp(h0e) =>
+  fprint!
+  (out, "H0GUAexp(", h0e, ")")
+| H0GUAmat(h0e, h0p) =>
+  fprint!
+  (out, "H0GUAmat(", h0e, "; ", h0p, ")")
+) (* end of [fprint_h0gua] *)
+//
+(* ****** ****** *)
+//
+implement
+print_h0clau(x0) =
+fprint_h0clau(stdout_ref, x0)
+implement
+prerr_h0clau(x0) =
+fprint_h0clau(stderr_ref, x0)
+//
+implement
+print_h0gpat(x0) =
+fprint_h0gpat(stdout_ref, x0)
+implement
+prerr_h0gpat(x0) =
+fprint_h0gpat(stderr_ref, x0)
+//
+implement
+fprint_h0clau
+  (out, x0) =
+(
+case+
+x0.node() of
+//
+|
+H0CLAUpat(h0gp) =>
+fprint!
+(out, "H0CLAUpat(", h0gp, ")")
+//
+|
+H0CLAUexp(h0gp, d0e0) =>
+fprint!
+( out
+, "H0CLAUexp(", h0gp, "; ", d0e0, ")")
+//
+) (* end of [fprint_h0clau] *)
+//
+implement
+fprint_h0gpat
+  (out, x0) =
+(
+case+
+x0.node() of
+//
+|
+H0GPATpat(h0p) =>
+fprint!
+(out, "H0GPATpat(", h0p, ")")
+//
+|
+H0GPATgua(h0p, h0gs) =>
+fprint!
+(out, "H0GPATgua(", h0p, "; ", h0gs, ")")
+//
+) (* end of [fprint_h0gpat] *)
 //
 (* ****** ****** *)
 //
