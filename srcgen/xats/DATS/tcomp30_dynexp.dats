@@ -342,7 +342,17 @@ h0pat_make_node
 (loc0, h0t0, H0Pfree(h0p1))
 end
 |
-D3Pdapp _ => auxdapp(d3p0)
+D3Psap0
+( d3p1
+, sarg) => tcomp30_dpat(d3p1)
+|
+D3Psap1
+( d3p1
+, sarg) => tcomp30_dpat(d3p1)
+|
+D3Pdapp
+( d3f0
+, npf1, d3ps) => auxdapp(d3p0)
 |
 D3Panno
 (d3p1, _) => tcomp30_dpat(d3p1)
