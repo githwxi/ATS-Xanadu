@@ -56,10 +56,12 @@ typedef token = $LEX.token
 //
 (* ****** ****** *)
 
+typedef s2var = $S2E.s2var
 typedef s2exp = $S2E.s2exp
 typedef t2ype = $S2T.t2ype
 typedef t2xtv = $S2T.t2xtv
 
+typedef s2varlst = $S2E.s2varlst
 typedef s2explst = $S2E.s2explst
 typedef t2ypelst = $S2T.t2ypelst
 
@@ -362,7 +364,15 @@ d3pat_tuple_up
 //
 (* ****** ****** *)
 //
-// HX: for processing dynexpressions
+fun
+d23pat_sapp_up
+( loc0: loc_t
+, d3f0: d3pat, s2es: s2explst): d3pat
+//
+(* ****** ****** *)
+//
+// HX:
+// for processing dynamic expressions
 //
 (* ****** ****** *)
 //
