@@ -136,27 +136,30 @@ list_isnot_sing (xs) =
 // end of [list_isnot_sing]
 //
 (* ****** ****** *)
-
+(*
+HX-2020-07:
+A nullary constructor C can
+be written as C (instead of C())
+*)
+//
 fun
 d2pat_dap0
 (d2p0: d2pat): d2pat =
 let
 val loc0 = d2p0.loc()
 in
-  d2pat_make_node
-  (loc0, D2Pdap0(d2p0))
+d2pat_make_node(loc0, D2Pdap0(d2p0))
 end
-
+//
 fun
 d2exp_dap0
 (d2e0: d2exp): d2exp =
 let
 val loc0 = d2e0.loc()
 in
-  d2exp_make_node
-  (loc0, D2Edap0(d2e0))
+d2exp_make_node(loc0, D2Edap0(d2e0))
 end
-
+//
 (* ****** ****** *)
 //
 fun
@@ -173,10 +176,11 @@ case+
 d2f0.node() of
 |
 D2Pdap0(d2f0) =>
-d2pat_dapp(loc0, d2f0, npf1, d2as)
+  d2pat_dapp(loc0, d2f0, npf1, d2as)
+// end of [D2Pdap0]
 |
 _ (*non-D2Pdap0*) =>
-d2pat_dapp(loc0, d2f0, npf1, d2as)
+  d2pat_dapp(loc0, d2f0, npf1, d2as)
 )
 //
 (* ****** ****** *)
@@ -560,6 +564,7 @@ d1p2.node() of
 //
 | D1Psarg(s1as) =>
   let
+//
     val
     loc0 = d1p0.loc()
 //
@@ -567,6 +572,18 @@ d1p2.node() of
     trans12_dpat(d1p1)
     val s2vs =
     trans12_sarglst(s1as)
+//
+(*
+    val () =
+    println!
+    ("auxapp1: d2p1 = ", d2p1)
+    val () =
+    println!
+    ("auxapp1: s2vs = ", s2vs)
+(*
+// HX: s2vs needs to be re-sorted!
+*)
+*)
 //
   in
     my_d2pat_sapp(loc0, d2p1, s2vs)
@@ -4343,16 +4360,17 @@ auxdyn
 let
   val s2e0 = whnfize(s2e0)
 in (* in-of-let *)
-  case+
-  s2e0.node() of
-  | S2Emet
-    (_, s2e1) => auxdyn(s2e1)
-  | S2Euni
-    (_, _, s2e1) => auxdyn(s2e1)
-  | S2Efun
-    (_, _, s2es, s2e1) => s2e1
-  | _(* non-function *) => s2e0
-end
+case+
+s2e0.node() of
+| S2Emet
+  (_, s2e1) => auxdyn(s2e1)
+| S2Euni
+  (_, _, s2e1) => auxdyn(s2e1)
+| S2Efun
+  (_, _, s2es, s2e1) => s2e1
+| _(* non-function *) => s2e0
+end // end of [auxdyn]
+//
 and
 auxsta
 ( s2e0: s2exp
@@ -4362,23 +4380,28 @@ let
 in
   case+
   s2e0.node() of
+//
   | S2Emet
     (_, s2e1) =>
     (
       auxsta(s2e1, svs1)
     )
+//
   | S2Euni
     (svs0, s2ps, s2e1) =>
-    ( s2e1 ) where
-    {
-      val () = auxsvs(svs0, svs1)
-    }
+    auxsvs(svs0, svs1, s2e1)
+//
   | _(*non-function*) => s2e0
-end
+//
+end // end of [auxsta]
+//
 and
 auxsvs
-( svs0: s2varlst
-, svs1: s2varlst): void =
+( svs0
+: s2varlst
+, svs1
+: s2varlst
+, s2e1: s2exp): s2exp =
 (
 let
 (*
@@ -4391,19 +4414,25 @@ println!
 *)
 in
 case+ svs0 of
-| list_nil() => ()
-| list_cons(sv0, svs0) =>
-  (
-  case+ svs1 of
-  | list_nil() => ()
-  | list_cons(sv1, svs1) =>
-    (
-      auxsvs(svs0, svs1)
-    ) where
-    {
-      val () = sv1.sort(sv0.sort())
-    }
-  )
+|
+list_nil() => s2e1
+|
+list_cons(sv0, svs0) =>
+(
+case+ svs1 of
+| list_nil() => s2e1
+| list_cons(sv1, svs1) =>
+  let
+    val () =
+    sv1.sort(sv0.sort())
+  in
+    s2exp_revar(s2e1, sv0, sv1)
+  end where
+  {
+    val
+    s2e1 = auxsvs(svs0, svs1, s2e1)
+  }
+)
 end
 )
 in
@@ -4455,17 +4484,19 @@ println!
 *)
 in
 case+ f1as of
-| list_nil() =>
-  list_nil()
-| list_cons(f1a0, f1as) =>
-  (
+|
+list_nil() =>
+list_nil()
+|
+list_cons(f1a0, f1as) =>
+(
   list_cons(f2a0, f2as)
-  ) where
-  {
-    val f2a0 = trans12_farg(f1a0)
-    val s2e1 = auxf2a0_sexp(f2a0, s2e0)
-    val f2as = auxsexp_f1as(s2e1, f1as)
-  }
+) where
+{
+  val f2a0 = trans12_farg(f1a0)
+  val s2e1 = auxf2a0_sexp(f2a0, s2e0)
+  val f2as = auxsexp_f1as(s2e1, f1as)
+}
 end
 ) (* end of [auxsexp_f1as] *)
 

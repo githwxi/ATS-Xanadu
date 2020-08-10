@@ -129,7 +129,9 @@ else let
 //
   val buf =
   arrayptr_make_uninitized<uchar>(bsz)
-  val bufp = arrayptr2ptr(buf)
+//
+  val bufp =
+  arrayptr2ptr(buf)
   val nread =
   $extfcall(Size, "fread", bufp, 1, bsz, inp)
 //
