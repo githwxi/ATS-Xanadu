@@ -247,6 +247,49 @@ end // end of [auxsym0]
 (* ****** ****** *)
 
 fun
+auxsapp
+( d2p0
+: d2pat): d3pat = let
+//
+val
+loc0 = d2p0.loc()
+val-
+D2Psapp
+( d2p1
+, s2vs) = d2p0.node()
+//
+val
+d3p1 = trans23_dpat(d2p1)
+//
+val
+s2es = auxs2vs(s2vs) where
+{
+fun
+auxs2vs
+( s2vs
+: s2varlst): s2explst =
+(
+case+ s2vs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(s2v0, s2vs) =>
+let
+  val s2e0 = s2exp_var(s2v0)
+in
+  list_cons(s2e0, auxs2vs(s2vs))
+end
+)
+}
+//
+in
+  d23pat_sapp_up(loc0, d3p1, s2es)
+end // end of [auxsapp]
+
+(* ****** ****** *)
+
+fun
 auxdap0
 ( d2p0
 : d2pat): d3pat = let
@@ -377,6 +420,8 @@ d2p0.node() of
 | D2Pfree _ => auxfree(d2p0)
 //
 | D2Psym0 _ => auxsym0(d2p0)
+//
+| D2Psapp _ => auxsapp(d2p0)
 //
 | D2Pdap0 _ => auxdap0(d2p0)
 | D2Pdapp _ => auxdapp(d2p0)

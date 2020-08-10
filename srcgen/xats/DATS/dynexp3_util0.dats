@@ -81,8 +81,11 @@ d3p0.node() of
 | D3Pflat(d3p1) => auxdpat(d3p1)
 | D3Pfree(d3p1) => auxdpat(d3p1)
 //
-| D3Psapp
+| D3Psap0
   (d3p1, s2vs) => auxdpat(d3p1)
+| D3Psap1
+  (d3p1, s2vs) => auxdpat(d3p1)
+//
 | D3Pdapp(d3p1, npf, d3ps) =>
   (auxdpat(d3p1) || auxd3ps(d3ps))
 //
