@@ -343,10 +343,10 @@ d2pat_sym0
 //
 implement
 d2pat_sapp
-(loc0, d2f0, s2vs) =
+(loc0, d2f0, s2es) =
 (
   d2pat_make_node
-  (loc0, D2Psapp(d2f0, s2vs))
+  (loc0, D2Psapp(d2f0, s2es))
 )
 //
 implement
