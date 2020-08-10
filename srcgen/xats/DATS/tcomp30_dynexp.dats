@@ -167,7 +167,7 @@ t2p0 = d3p0.type()
 val
 h0t0 = tcomp30_type(t2p0)
 in
-h0pat_make_node(loc0, h0t0, H0Pnil())
+h0pat_make_node(loc0, h0t0, H0Pnil)
 end
 fun
 auxany
@@ -180,7 +180,7 @@ t2p0 = d3p0.type()
 val
 h0t0 = tcomp30_type(t2p0)
 in
-h0pat_make_node(loc0, h0t0, H0Pany())
+h0pat_make_node(loc0, h0t0, H0Pany)
 end
 
 (* ****** ****** *)
@@ -207,13 +207,48 @@ hdv1 =
   D3Pvar(d2v0) = d3p0.node()
 }
 //
+val hend = H0Pvar(hdv1)
+//
 in
-h0pat_make_node(loc0, h0t0, H0Pvar(hdv1))
+  h0pat_make_node(loc0, h0t0, hend)
 end
 
 (* ****** ****** *)
 
+fun
+auxdapp
+(d3p0: d3pat): h0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Pdapp
+( d3f0
+, npf1, d3ps) = d3p0.node()
+//
+val
+h0f0 = tcomp30_dpat(d3f0)
+val
+h0ps = tcomp30_dpatlst(d3ps)
+//
+val
+hend = H0Pdapp(h0f0, npf1, h0ps)
+//
 in
+  h0pat_make_node(loc0, h0t0, hend)
+end // end of [auxdapp]
+
+(* ****** ****** *)
+
+in
+
+(* ****** ****** *)
 
 implement
 tcomp30_dpat
@@ -232,7 +267,7 @@ println!
 ("tcomp30_dpat: t2p0 = ", t2p0)
 *)
 //
-in
+in(*in-of-let*)
 //
 case+
 d3p0.node() of
@@ -245,6 +280,69 @@ D3Pany() => auxany(d3p0)
 |
 D3Pvar _ => auxvar(d3p0)
 //
+|
+D3Pcon1(d2c0) =>
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+val
+hdc0 = tcomp30_dcon(d2c0)
+in
+h0pat_make_node
+(loc0, h0t0, H0Pfcon(hdc0))
+end
+//
+|
+D3Pbang(d3p1) =>
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+val
+h0p1 = tcomp30_dpat(d3p1)
+in
+h0pat_make_node
+(loc0, h0t0, H0Pbang(h0p1))
+end
+|
+D3Pflat(d3p1) =>
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+val
+h0p1 = tcomp30_dpat(d3p1)
+in
+h0pat_make_node
+(loc0, h0t0, H0Pflat(h0p1))
+end
+|
+D3Pfree(d3p1) =>
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+val
+h0p1 = tcomp30_dpat(d3p1)
+in
+h0pat_make_node
+(loc0, h0t0, H0Pfree(h0p1))
+end
+|
+D3Pdapp _ => auxdapp(d3p0)
 |
 D3Panno
 (d3p1, _) => tcomp30_dpat(d3p1)
