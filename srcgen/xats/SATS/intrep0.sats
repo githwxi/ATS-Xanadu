@@ -391,6 +391,10 @@ h0pat_node =
 //
 | H0Pfcon of hdcon // cnstrctr
 //
+| H0Pbang of (h0pat)
+| H0Pflat of (h0pat)
+| H0Pfree of (h0pat)
+//
 | H0Pdapp of
   (h0pat, int(*npf*), h0patlst)
 //

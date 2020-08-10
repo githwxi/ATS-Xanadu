@@ -363,10 +363,29 @@ x0.node() of
 | H0Pvar(hdv) =>
   fprint!(out, "H0Pvar(", hdv, ")")
 //
+| H0Pfcon(hdc) =>
+  fprint!(out, "H0Pfcon(", hdc, ")")
+//
+| H0Pbang(h0p) =>
+  fprint!(out, "H0Pbang(", h0p, ")")
+| H0Pflat(h0p) =>
+  fprint!(out, "H0Pflat(", h0p, ")")
+| H0Pfree(h0p) =>
+  fprint!(out, "H0Pfree(", h0p, ")")
+//
+| H0Pdapp
+  (h0f0, npf1, h0ps) =>
+  fprint!
+  ( out
+  , "H0Pdapp("
+  , h0f0, "; ", npf1, "; ", h0ps, ")")
+//
 | H0Pnone1(_) =>
   fprint!(out, "H0Pnone1(", "...", ")")
 //
+(*
 | _(* H0P... *) => fprint!(out, "H0P...(...)")
+*)
 )
 //
 (* ****** ****** *)

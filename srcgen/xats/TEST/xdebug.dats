@@ -2,6 +2,17 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+fun
+<a:type>
+length(xs: list(a)): int =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => 1 + length(xs)
+)
+
+(* ****** ****** *)
+////
 fun<>
 fact(x: int): int =
 if x > 0 then x * fact(x-1) else 1

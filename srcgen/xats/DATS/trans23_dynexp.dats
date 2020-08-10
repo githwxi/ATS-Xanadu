@@ -368,6 +368,9 @@ d2p0.node() of
   )
 //
 | D2Pcon1 _ => auxcon1(d2p0)
+(*
+| D2Pcon2 _ => auxcon2(d2p0)
+*)
 //
 | D2Pbang _ => auxbang(d2p0)
 | D2Pflat _ => auxflat(d2p0)
