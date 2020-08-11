@@ -796,8 +796,11 @@ overload fprint with fprint_hvardecl
 //
 datatype
 h0dcl_node =
-// externally named
-| H0Cinclude
+//
+| H0Cstatic of
+  (token(*STATIC*), h0dcl)
+| H0Cextern of
+  (token(*EXTERN*), h0dcl)
 //
 | H0Clocal of
   ( h0dclist(*head*)

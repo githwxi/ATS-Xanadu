@@ -649,6 +649,22 @@ fprint_h0dcl(out, x0) =
 case+
 x0.node() of
 //
+| H0Cstatic
+  (tok, h0c1) =>
+  fprint!
+  ( out
+  , "H0Cstatic(", tok, "; ", h0c1, ")")
+| H0Cextern
+  (tok, h0c1) =>
+  fprint!
+  ( out
+  , "H0Cextern(", tok, "; ", h0c1, ")")
+//
+| H0Clocal(head, body) =>
+  fprint!
+  ( out
+  , "H0Clocal(", head, "; ", body, ")")
+//
 | H0Cfundecl
   (knd, mopt, tqas, hfds) =>
   fprint!
@@ -672,7 +688,9 @@ x0.node() of
 | H0Cnone1(_) =>
   fprint!(out, "H0Cnone1(", "...", ")")
 //
+(*
 | _(* H0C... *) => fprint!(out, "H0C...(...)")
+*)
 )
 end // end of [local]
 //
