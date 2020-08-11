@@ -2,6 +2,7 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+#extern
 fun
 <a:type>
 length(xs: list(a)): int =

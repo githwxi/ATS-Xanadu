@@ -1510,6 +1510,25 @@ case+
 d3cl.node() of
 //
 |
+D3Cstatic
+(tok, d3c1) => let
+  val
+  h0c1 = tcomp30_decl(d3c1)
+in
+  h0dcl_make_node
+  (loc0, H0Cstatic(tok, h0c1))
+end
+|
+D3Cextern
+(tok, d3c1) => let
+  val
+  h0c1 = tcomp30_decl(d3c1)
+in
+  h0dcl_make_node
+  (loc0, H0Cextern(tok, h0c1))
+end
+//
+|
 D3Clocal
 (head, body) => let
   val
