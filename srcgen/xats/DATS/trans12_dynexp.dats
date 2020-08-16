@@ -4528,6 +4528,9 @@ val
 id2c = auxdqid(dqid)
 //
 val
+stmp = d2cimp_stamp_new()
+//
+val
 sqas = trans12_sqarglst(sqas)
 val
 tqas = trans12_tqarglst(tqas)
@@ -4597,14 +4600,14 @@ then
 d2ecl_make_node
 ( loc0
 , D2Cimpdecl1
-  ( knd, mopt
+  ( knd, mopt, stmp
   , sqas, tqas, id2c, tias, f2as, tres, d2e2)
 ) (* d2ecl_make_node *)
 else
 d2ecl_make_node
 ( loc0
 , D2Cimpdecl2
-  ( knd, mopt
+  ( knd, mopt, stmp
   , sqas, tqas, id2c, tias, f2as, tres, d2e2)
 ) (* d2ecl_make_node *)
 end

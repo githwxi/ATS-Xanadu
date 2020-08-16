@@ -2886,7 +2886,7 @@ let
 val-
 D3Cimpdecl1
 ( knd
-, mopt
+, mopt, stmp
 , sqas, tqas
 , id2c
 , ti3a, tias
@@ -2914,7 +2914,8 @@ d3ecl_make_node
 d3cl.loc()
 ,
 D3Cimpdecl3
-( knd, mopt
+( knd
+, mopt, stmp
 , sqas, tqas
 , id2c, ti3a, tias, f3as, res0, d3e0))
 end // end of [aux_impdecl1]
@@ -2931,7 +2932,7 @@ let
 val-
 D3Cimpdecl2
 ( knd
-, mopt
+, mopt, stmp
 , sqas, tqas
 , id2c
 , ti3a, tias
@@ -2968,7 +2969,8 @@ d3ecl_make_node
 ( d3cl.loc()
 ,
   D3Cimpdecl2
-  ( knd, mopt
+  ( knd
+  , mopt, stmp
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0
   ) (* d3ecl_make_node *)
@@ -3061,7 +3063,8 @@ d3ecl_make_node
 ( d3cl.loc()
 ,
   D3Cimpdecl3
-  ( knd, mopt
+  ( knd
+  , mopt, stmp
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0)
 ) (* d3ecl_make_node *)

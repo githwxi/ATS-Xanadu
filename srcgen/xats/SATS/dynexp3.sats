@@ -818,25 +818,19 @@ d3ecl_node =
 //
 | D3Cimpdecl1 of
   ( token(*impkind*)
-  , decmodopt
-  , sq2arglst
-  , tq2arglst
-  , impld2cst
-  , ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
+  , decmodopt, stamp
+  , sq2arglst, tq2arglst
+  , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 | D3Cimpdecl2 of
   ( token(*impkind*)
-  , decmodopt
-  , sq2arglst
-  , tq2arglst
-  , impld2cst
-  , ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
+  , decmodopt, stamp
+  , sq2arglst, tq2arglst
+  , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 | D3Cimpdecl3 of
   ( token(*impkind*)
-  , decmodopt
-  , sq2arglst
-  , tq2arglst
-  , impld2cst
-  , ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
+  , decmodopt, stamp
+  , sq2arglst, tq2arglst
+  , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
 //

@@ -49,6 +49,13 @@ FP0 = "./../SATS/filpath.sats"
 //
 #staload "./../SATS/basics.sats"
 //
+(* ****** ****** *)
+//
+#staload "./../SATS/stamp0.sats"
+overload fprint with fprint_stamp
+//
+(* ****** ****** *)
+
 #staload "./../SATS/label0.sats"
 //
 #staload "./../SATS/lexing.sats"
@@ -835,38 +842,44 @@ x0.node() of
   , knd, "; ", mopt, "; ", v3ds, ")")
 //
 | D3Cimpdecl1
-  ( knd, mopt
+  ( knd
+  , mopt, stmp
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
   fprint!
   ( out
   , "D3Cimpdecl1("
-  , knd, "; ", mopt, "; "
+  , knd, "; "
+  , mopt, "; ", stmp, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl1] *)
 | D3Cimpdecl2
-  ( knd, mopt
+  ( knd
+  , mopt, stmp
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
   fprint!
   ( out
   , "D3Cimpdecl2("
-  , knd, "; ", mopt, "; "
+  , knd, "; "
+  , mopt, "; ", stmp, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl2] *)
 | D3Cimpdecl3
-  ( knd, mopt
+  ( knd
+  , mopt, stmp
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
   fprint!
   ( out
   , "D3Cimpdecl3("
-  , knd, "; ", mopt, "; "
+  , knd, "; "
+  , mopt, "; ", stmp, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl3] *)

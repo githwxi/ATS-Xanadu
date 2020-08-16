@@ -776,21 +776,25 @@ case- x0.node() of
   , knd, "; ", mopt, "; ", v2ds, ")")
 //
 | D2Cimpdecl1
-  ( knd, mopt, sqas, tqas
+  ( knd
+  , mopt, stmp, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
   , "D2Cimpdecl1("
-  , knd, "; ", mopt, "; "
+  , knd, "; "
+  , mopt, "; ", stmp, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
 | D2Cimpdecl2
-  ( knd, mopt, sqas, tqas
+  ( knd
+  , stmp, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
   , "D2Cimpdecl2("
-  , knd, "; ", mopt, "; "
+  , knd, "; "
+  , mopt, "; ", stmp, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
 //

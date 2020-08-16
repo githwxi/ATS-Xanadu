@@ -381,7 +381,8 @@ D3Etimp
 //
 val-
 D3Cimpdecl3
-( knd0, mopt
+( tok0
+, mopt, stmp
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res1, def2) = timp.node()
@@ -875,7 +876,8 @@ val () = tread3x_d3eclist(body)
   }
 //
 | D3Cimpdecl3
-  ( tok, mopt
+  ( tok0
+  , mopt, stmp
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
