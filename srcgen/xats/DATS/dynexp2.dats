@@ -42,7 +42,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload
 STM = "./../SATS/stamp0.sats"
-overload print with $STM.print_stamp
+overload
+fprint with $STM.fprint_stamp
 //
 (* ****** ****** *)
 
@@ -195,6 +196,20 @@ in (* in-of-local *)
 
 implement
 d2var_stamp_new() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+d2cimp_stamp_new() = $STM.stamper_getinc(stamper)
 
 end // end of [local]
 

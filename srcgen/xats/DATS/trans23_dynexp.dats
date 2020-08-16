@@ -2721,7 +2721,7 @@ aux_impdecl1
 val-
 D2Cimpdecl1
 ( knd
-, mopt
+, mopt, stmp
 , sqas, tqas
 , id2c, tias
 , f2as, res0
@@ -2841,7 +2841,8 @@ d3ecl_make_node
 ( d2cl.loc()
 ,
   D3Cimpdecl1
-  ( knd, mopt
+  ( knd
+  , mopt, stmp
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0)
 ) (* d3ecl_make_node *)
@@ -2859,7 +2860,7 @@ loc0 = d2cl.loc()
 val-
 D2Cimpdecl2
 ( knd
-, mopt
+, mopt, stmp
 , sqas, tqas
 , id2c, tias
 , f2as
@@ -2907,7 +2908,8 @@ in
 {
   val node =
   D3Cimpdecl2
-  ( knd, mopt
+  ( knd
+  , mopt, stmp
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0)
 }

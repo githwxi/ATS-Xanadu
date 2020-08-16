@@ -691,7 +691,7 @@ case+ f3ds of
 } (* D3Cfundecl *)
 |
 D3Cimpdecl3
-( _, _, _, _
+( _, _, _, _, _
 , id2c
 , _, _, _, _, _) =>
 (

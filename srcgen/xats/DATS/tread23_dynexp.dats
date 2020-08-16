@@ -255,7 +255,7 @@ loc0 = d3cl.loc()
 val-
 D3Cimpdecl1
 ( knd
-, mopt
+, mopt, stmp
 , sqas, tqas
 , id2c
 , ti3a, ti2s
