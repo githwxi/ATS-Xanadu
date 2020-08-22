@@ -7,7 +7,7 @@ platform:
 
 environment:
     global:
-        PATSVERSION: 0.3.13
+        PATSVERSION: 0.4.2
         PATSHOME_WIN: '%APPVEYOR_BUILD_FOLDER%/ATS2'
 
     matrix:
