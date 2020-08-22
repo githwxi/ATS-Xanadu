@@ -203,6 +203,24 @@ d3pat_make_node
 
 local
 
+val
+stamper =
+$STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+d3timp_stamp_new
+(
+// argless
+) = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
 absimpl
 f3arg_tbox = $rec{
   f3arg_loc= loc_t

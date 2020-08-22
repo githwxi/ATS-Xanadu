@@ -397,12 +397,13 @@ x0.node() of
   , "D3Etrec(", d2e1, "; ", d3es, ")")
 //
 | D3Etimp
-  (d2e1, tsub1, d2c2, tsub2) =>
+  ( stmp
+  , d2e1, tsub1
+  , d2c2, tsub2) =>
   fprint!
   ( out
-  , "D3Etimp("
-  , d2e1, "; "
-  , tsub1, "; ", d2c2, "; ", tsub2, ")")
+  , "D3Etimp(", stmp, "; "
+  , d2e1, "; ", tsub1, "; ", d2c2, "; ", tsub2, ")")
 //
 | D3Esap0
   (d3e1, s2es) =>
