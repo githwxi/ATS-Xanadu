@@ -22,17 +22,17 @@ TARZX="tar zx"
 WGETQ="wget -q"
 
 ######
-
+#
 ATS2LANGURL_download=\
 "\
 ${ATS2LANGURL_srcfg}/files\
 /ats2-lang/ats2-postiats-$ATS2VER/$ATS2PKGTGZ"
-
+#
 ATS2LANGURL_download=\
 "\
 http://ats-lang.sourceforge.net\
 /IMPLEMENT/Postiats/ATS2-Postiats-gmp-$ATS2VER.tgz"
-
+#
 ######
 
 ATS2HOME=$2 # =${PATS2HOME}
