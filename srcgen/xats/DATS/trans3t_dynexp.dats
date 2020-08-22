@@ -228,6 +228,8 @@ implenv_push_timp
 (env0, d3e0, s2vs, tsub)
 //
 val
+stmp = d3timp_stamp_new()
+val
 d3cl = trans3t_timp(env0, d3cl)
 //
 val () = implenv_pop0_timp(env0)
@@ -235,7 +237,8 @@ val () = implenv_pop0_timp(env0)
 in
   d3exp_make_node
   ( loc0, t2p0
-  , D3Etimp(d3e0, targ, d3cl, tsub)
+  , D3Etimp
+    (stmp, d3e0, targ, d3cl, tsub)
  )
 end
 //

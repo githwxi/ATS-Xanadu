@@ -869,7 +869,7 @@ IMPLENV of
 )
 //
 where
-t3sub=(s2varlst, t2ypelst)
+t3sub = (s2varlst, t2ypelst)
 //
 absimpl implenv_vtype = implenv
 //

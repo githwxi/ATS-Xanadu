@@ -242,9 +242,6 @@ d2cst_stamp_new(): stamp
 fun
 d2var_stamp_new(): stamp
 //
-fun
-d2cimp_stamp_new(): stamp
-//
 (* ****** ****** *)
 //
 fun
@@ -663,6 +660,11 @@ d2pat_tuple
 fun
 d2pat_make_node
 (loc0: loc_t, node: d2pat_node): d2pat
+//
+(* ****** ****** *)
+//
+fun
+d2cimp_stamp_new(): stamp
 //
 (* ****** ****** *)
 //

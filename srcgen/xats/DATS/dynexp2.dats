@@ -201,20 +201,6 @@ end // end of [local]
 
 (* ****** ****** *)
 
-local
-
-val
-stamper = $STM.stamper_new()
-
-in (* in-of-local *)
-
-implement
-d2cimp_stamp_new() = $STM.stamper_getinc(stamper)
-
-end // end of [local]
-
-(* ****** ****** *)
-
 implement
 s2cst_isdat(s2c0) =
 let
@@ -393,6 +379,21 @@ else
 )
 end // end of [d2pat_tuple]
 //
+(* ****** ****** *)
+
+local
+
+val
+stamper = $STM.stamper_new()
+
+in (* in-of-local *)
+
+implement
+d2cimp_stamp_new
+() = $STM.stamper_getinc(stamper)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 local

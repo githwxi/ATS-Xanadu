@@ -350,7 +350,8 @@ for the meaning of knd
   , t3cstlst (*path*) )
 //
 | D3Etimp of
-  ( d3exp(*tcst*), t2ypelst(*targ*)
+  ( stamp
+  , d3exp(*tcst*), t2ypelst(*targ*)
   , d3ecl(*impl*), t2ypelst(*tsub*)
   ) (* end of [D3Etimp] *)
 //
@@ -443,6 +444,11 @@ for the meaning of knd
 | D3Enone0 of ()
 | D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
 //
+(* ****** ****** *)
+
+fun
+d3timp_stamp_new(): stamp
+
 (* ****** ****** *)
 //
 castfn
