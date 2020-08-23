@@ -817,14 +817,23 @@ h0dcl_node =
 |
 H0Cfundecl of
 ( token(*knd*)
-, decmodopt, htqarglst, hfundeclist)
+, decmodopt
+, htqarglst, hfundeclist)
 //
 |
 H0Cvaldecl of
-(token(*knd*), decmodopt, hvaldeclist)
+( token(*knd*)
+, decmodopt, hvaldeclist)
 |
 H0Cvardecl of
-(token(*knd*), decmodopt, hvardeclist)
+( token(*knd*)
+, decmodopt, hvardeclist)
+//
+|
+H0Cimpdecl3 of
+( token(*impkind*)
+, decmodopt
+, stamp, hdcst, hfarglst, h0exp)
 //
 | H0Cnone1 of (dataptr) // HX: for ignores
 //
