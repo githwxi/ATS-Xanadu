@@ -429,10 +429,10 @@ end // end of [tcomp30_farg]
 implement
 tcomp30_farglst
   (f3as) =
-list_vt2t(f3as) where
+list_vt2t(hfas) where
 {
 val
-f3as =
+hfas =
 list_map<f3arg><hfarg>
   (f3as) where
 {
@@ -1440,15 +1440,14 @@ list_map<v3aldecl><hvaldecl>(v3ds)
 ) where
 {
 implement
-list_map$fopr<
-  v3aldecl><hvaldecl>(x0) = auxv3d0(x0)
+list_map$fopr<v3aldecl><hvaldecl>(x0) = auxv3d0(x0)
 }
 //
 val hvds = auxv3ds(v3ds)
 //
 in
-h0dcl_make_node
-(loc0, H0Cvaldecl(knd, mopt, hvds))
+  h0dcl_make_node
+  (loc0, H0Cvaldecl(knd, mopt, hvds))
 end // end of [aux_valdecl]
 
 (* ****** ****** *)
@@ -1510,16 +1509,71 @@ list_map<v3ardecl><hvardecl>(v3ds)
 ) where
 {
 implement
-list_map$fopr<
-  v3ardecl><hvardecl>(x0) = auxv3d0(x0)
+list_map$fopr<v3ardecl><hvardecl>(x0) = auxv3d0(x0)
 }
 //
 val hvds = auxv3ds(v3ds)
 //
 in
-h0dcl_make_node
-(loc0, H0Cvardecl(knd, mopt, hvds))
+  h0dcl_make_node
+  (loc0, H0Cvardecl(knd, mopt, hvds))
 end // end of [aux_vardecl]
+
+(* ****** ****** *)
+
+fun
+aux_impdecl3
+( d3cl
+: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cimpdecl3
+( knd
+, mopt, stmp
+, sqas, tqas
+, id2c, ti3a
+, ti2s, f3as
+, res1, body) = d3cl.node()
+//
+val
+d2c0 =
+(
+case+ id2c of
+|
+IMPLD2CST1(_, d2cs) =>
+let
+  val-
+  list_cons
+  (d2c0, _) = d2cs in d2c0
+end
+|
+IMPLD2CST2
+(_, d2cs, opt0) =>
+let
+val-Some(d2c0) = opt0 in d2c0
+end
+) : d2cst // end-of-val
+//
+val
+hdc0 = tcomp30_dcst(d2c0)
+val
+hfas = tcomp30_farglst(f3as)
+//
+val body = tcomp30_dexp(body)
+//
+val
+hend =
+H0Cimpdecl3
+( knd
+, mopt, stmp
+, hdc0, hfas, body)
+in
+  h0dcl_make_node(loc0, hend(*impdecl*))
+end // end of [aux_impdecl3]
 
 (* ****** ****** *)
 
@@ -1582,6 +1636,8 @@ D3Cvaldecl _ => aux_valdecl(d3cl)
 |
 D3Cvardecl _ => aux_vardecl(d3cl)
 //
+|
+D3Cimpdecl3 _ => aux_impdecl3(d3cl)
 |
 _(* rest-of_d3exp *) =>
 let

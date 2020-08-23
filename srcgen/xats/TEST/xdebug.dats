@@ -1,11 +1,22 @@
 (* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS\
+/Xint/runtime.dats"
+(* ****** ****** *)
+#staload
+"prelude/DATS/gint.dats"
+#staload
+"prelude/DATS/gnum.dats"
+#staload
+"prelude/DATS/gord.dats"
+(* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
 #extern
 fun
-<a:type>
-length(xs: list(a)): int =
+length(xs: list(int)): int =
 (
 case+ xs of
 | list_nil() => 0
