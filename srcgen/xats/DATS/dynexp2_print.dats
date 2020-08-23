@@ -777,13 +777,13 @@ case- x0.node() of
 //
 | D2Cimpdecl1
   ( knd
-  , mopt, stmp, sqas, tqas
+  , stmp, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
   , "D2Cimpdecl1("
   , knd, "; "
-  , mopt, "; ", stmp, "; "
+  , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
 | D2Cimpdecl2
@@ -794,7 +794,7 @@ case- x0.node() of
   ( out
   , "D2Cimpdecl2("
   , knd, "; "
-  , mopt, "; ", stmp, "; "
+  , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
 //

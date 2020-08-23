@@ -1195,12 +1195,14 @@ d2ecl_node =
 //
 | D2Cimpdecl1 of
   ( token(*impkind*)
-  , decmodopt, stamp
+  , stamp(*unicity*)
+  , decmodopt
   , sq2arglst, tq2arglst
   , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
 | D2Cimpdecl2 of
   ( token(*impkind*)
-  , decmodopt, stamp
+  , stamp(*unicity*)
+  , decmodopt
   , sq2arglst, tq2arglst
   , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
 //

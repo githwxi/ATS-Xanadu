@@ -1533,7 +1533,7 @@ loc0 = d3cl.loc()
 val-
 D3Cimpdecl3
 ( knd
-, mopt, stmp
+, stmp, mopt
 , sqas, tqas
 , id2c, ti3a
 , ti2s, f3as
@@ -1569,7 +1569,7 @@ val
 hend =
 H0Cimpdecl3
 ( knd
-, mopt, stmp
+, stmp, mopt
 , hdc0, hfas, body)
 in
   h0dcl_make_node(loc0, hend(*impdecl*))

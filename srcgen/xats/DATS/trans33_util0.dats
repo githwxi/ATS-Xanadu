@@ -1388,7 +1388,7 @@ let
 val-
 D3Cimpdecl3
 ( tok0
-, mopt, stmp
+, stmp, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res1, body) = d3cl.node()
@@ -1437,7 +1437,7 @@ loc0 = d3cl.loc()
 val-
 D3Cimpdecl3
 ( tok0
-, mopt, stmp
+, stmp, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res1, body) = d3cl.node()
