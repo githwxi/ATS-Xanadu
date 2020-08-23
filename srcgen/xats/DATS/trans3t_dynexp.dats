@@ -1045,7 +1045,7 @@ aux_impdecl3
 val-
 D3Cimpdecl3
 ( tok0
-, mopt, stmp
+, stmp, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res1, body) = d3cl.node()
@@ -1079,7 +1079,7 @@ aux_impdecl3_fun
 val-
 D3Cimpdecl3
 ( tok0
-, mopt, stmp
+, stmp, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res1, body) = d3cl.node()
@@ -1094,7 +1094,7 @@ d3cl.loc()
 ,
 D3Cimpdecl3
 ( tok0
-, mopt, stmp
+, stmp, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s, f3as, res1, body)
 )
@@ -1111,7 +1111,7 @@ loc0 = d3cl.loc()
 val-
 D3Cimpdecl3
 ( tok0
-, mopt, stmp
+, stmp, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res1, body) = d3cl.node()
@@ -1399,7 +1399,7 @@ let
 val-
 D3Cimpdecl3
 ( knd
-, mopt, stmp
+, stmp, mopt
 , sqas, tqas
 , id2c, ti3a, ti2s
 , f3as, res0, body) = d3cl.node()
@@ -1411,7 +1411,7 @@ d3ecl_make_node
 ( d3cl.loc()
 , D3Cimpdecl3
   ( knd
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s, f3as, res0, body))
 end // end of [aux_impdecl3]

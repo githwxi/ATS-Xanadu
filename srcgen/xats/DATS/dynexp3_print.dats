@@ -844,7 +844,7 @@ x0.node() of
 //
 | D3Cimpdecl1
   ( knd
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
@@ -852,13 +852,13 @@ x0.node() of
   ( out
   , "D3Cimpdecl1("
   , knd, "; "
-  , mopt, "; ", stmp, "; "
+  , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl1] *)
 | D3Cimpdecl2
   ( knd
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
@@ -866,13 +866,13 @@ x0.node() of
   ( out
   , "D3Cimpdecl2("
   , knd, "; "
-  , mopt, "; ", stmp, "; "
+  , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl2] *)
 | D3Cimpdecl3
   ( knd
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
@@ -880,7 +880,7 @@ x0.node() of
   ( out
   , "D3Cimpdecl3("
   , knd, "; "
-  , mopt, "; ", stmp, "; "
+  , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl3] *)

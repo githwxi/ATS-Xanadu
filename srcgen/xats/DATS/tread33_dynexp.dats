@@ -791,7 +791,7 @@ val () = tread33_d3eclist(body)
 //
 | D3Cimpdecl1
   ( tok
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
@@ -808,7 +808,7 @@ val () = tread33_d3eclist(body)
   }
 | D3Cimpdecl2
   ( tok
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
@@ -850,7 +850,7 @@ val () = tread33_d3eclist(body)
 //
 | D3Cimpdecl3
   ( tok
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>

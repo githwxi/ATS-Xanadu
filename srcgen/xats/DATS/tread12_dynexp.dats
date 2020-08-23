@@ -686,7 +686,7 @@ d2cl.node() of
 //
 | D2Cimpdecl1
   ( knd
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti2s
   , f2as, res1, d2e2) =>
@@ -712,7 +712,7 @@ d2cl.node() of
   }
 | D2Cimpdecl2
   ( knd
-  , mopt, stmp
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti2s
   , f2as, res1, d2e2) =>

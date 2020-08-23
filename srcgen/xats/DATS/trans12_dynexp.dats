@@ -4600,14 +4600,14 @@ then
 d2ecl_make_node
 ( loc0
 , D2Cimpdecl1
-  ( knd, mopt, stmp
+  ( knd, stmp, mopt
   , sqas, tqas, id2c, tias, f2as, tres, d2e2)
 ) (* d2ecl_make_node *)
 else
 d2ecl_make_node
 ( loc0
 , D2Cimpdecl2
-  ( knd, mopt, stmp
+  ( knd, stmp, mopt
   , sqas, tqas, id2c, tias, f2as, tres, d2e2)
 ) (* d2ecl_make_node *)
 end
