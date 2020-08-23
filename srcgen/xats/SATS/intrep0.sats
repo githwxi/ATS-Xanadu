@@ -833,7 +833,8 @@ H0Cvardecl of
 H0Cimpdecl3 of
 ( token(*impkind*)
 , stamp(*unicity*)
-, decmodopt, hdcst, hfarglst, h0exp)
+, decmodopt
+, htvarlst, hdcst, hfarglst, h0exp)
 //
 | H0Cnone1 of (dataptr) // HX: for ignores
 //

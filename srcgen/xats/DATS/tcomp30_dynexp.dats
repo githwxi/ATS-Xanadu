@@ -1539,6 +1539,42 @@ D3Cimpdecl3
 , ti2s, f3as
 , res1, body) = d3cl.node()
 //
+local
+//
+fun
+auxs2vs
+( s2vs
+: s2varlst
+, htvs
+: htvarlst): htvarlst =
+(
+case+ s2vs of
+|
+list_nil() => htvs
+|
+list_cons(s2v1, s2vs) =>
+let
+val
+htv1 = tcomp30_svar(s2v1)
+in
+list_cons
+(htv1, auxs2vs(s2vs, htvs))
+end // end of [list_cons]
+)
+//
+in
+//
+val
+htvs = list_nil()
+val
+htvs =
+auxs2vs(tqas.s2vs(), htvs)
+val
+htvs =
+auxs2vs(sqas.s2vs(), htvs)
+//
+end // end of [local]
+//
 val
 d2c0 =
 (
@@ -1570,7 +1606,7 @@ hend =
 H0Cimpdecl3
 ( knd
 , stmp, mopt
-, hdc0, hfas, body)
+, htvs, hdc0, hfas, body)
 in
   h0dcl_make_node(loc0, hend(*impdecl*))
 end // end of [aux_impdecl3]
