@@ -517,7 +517,7 @@ h0exp_node =
   ( stamp, h0exp )
 | H0Etimp of
   ( stamp
-  , hdcst(*tcst*), h0typlst(*targ*)
+  , h0exp(*tcst*), h0typlst(*targ*)
   , h0dcl(*impl*), h0typlst(*tsub*)
   ) (* end of [H0Etimp] *)
 //

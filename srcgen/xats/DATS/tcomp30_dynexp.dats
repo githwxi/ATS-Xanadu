@@ -723,6 +723,37 @@ end
 (* ****** ****** *)
 
 fun
+auxtimp
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Etimp
+( stmp
+, d3e1, targ
+, d3cl, tsub) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+val targ = tcomp30_typelst(targ)
+//
+val hdcl = tcomp30_decl(d3cl)
+val tsub = tcomp30_typelst(tsub)
+//
+in
+h0exp_make_node
+(loc0, h0t0, H0Etimp(stmp, h0e1, targ, hdcl, tsub))
+end // end of [auxtimp]
+
+(* ****** ****** *)
+
+fun
 auxdapp
 (d3e0: d3exp): h0exp =
 let
@@ -1068,6 +1099,9 @@ D3Efcst _ => auxfcst(d3e0)
 D3Etcon _ => auxtcon(d3e0)
 |
 D3Etcst _ => auxtcst(d3e0)
+//
+|
+D3Etimp _ => auxtimp(d3e0)
 //
 |
 D3Edapp _ => auxdapp(d3e0)
