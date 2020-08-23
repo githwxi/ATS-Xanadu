@@ -490,12 +490,12 @@ x0.node() of
   ( out
   , "H0Etimp(", stmp, "; ", h0e1, ")")
 | H0Etimp
-  (stmp, hdc0, harg, hdcl, hsub) =>
+  (stmp, hdc0, targ, hdcl, tsub) =>
   fprint!
   ( out
   , "H0Etimp("
   , stmp, "; "
-  , hdc0, "; ", harg, "; ", hdcl, "; ", hsub, ")")
+  , hdc0, "; ", targ, "; ", hdcl, "; ", tsub, ")")
 //
 | H0Edapp
   (h0f0, npf1, h0es) =>
