@@ -513,8 +513,10 @@ h0exp_node =
 | H0Etcon of (htiarg, hdcon)
 | H0Etcst of (htiarg, hdcst)
 //
+(*
 | H0Etimp of
   ( stamp, h0exp )
+*)
 | H0Etimp of
   ( stamp
   , h0exp(*tcst*), h0typlst(*targ*)
