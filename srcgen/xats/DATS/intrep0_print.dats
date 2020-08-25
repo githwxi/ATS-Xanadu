@@ -484,11 +484,13 @@ x0.node() of
   ( out
   , "H0Etcst(", tia, "; ", hdc, ")")
 //
+(*
 | H0Etimp
   (stmp, h0e1) =>
   fprint!
   ( out
   , "H0Etimp(", stmp, "; ", h0e1, ")")
+*)
 | H0Etimp
   (stmp, hdc0, targ, hdcl, tsub) =>
   fprint!
