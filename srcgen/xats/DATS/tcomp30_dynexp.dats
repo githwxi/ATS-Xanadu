@@ -1387,6 +1387,7 @@ h0dcl_make_node
 end // end of [aux_fundecl]
 
 (* ****** ****** *)
+
 fun
 aux_valdecl
 ( d3cl

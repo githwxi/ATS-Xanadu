@@ -33,8 +33,8 @@ ML-like types are algebraic (involving no explicit quantifiers). Such
 types are so much friendlier than dependent types (which often involve
 explicit quantifiers) for supporting type-based meta-programming.  It
 seems that a chance has finally arrived to properly address the
-template selection problem that causes so much annoyance in ATS2 (due
-to the very use of dependent types for template selection).
+problem of template instance resolution that causes so much annoyance
+in ATS2 (due to the very use of dependent types for template selection).
 
 In short, ATS3 adds an extra layer to ATS2 for supporting ML-like
 algebraic type-checking. Type-based meta-programming in ATS3 solely
@@ -42,9 +42,11 @@ uses algebraic types (while ATS2 uses dependent types).
 
 ## Installing ATS3
 
+ATS3 is not ready for release yet.
+
 Please see
 [http://www.ats-lang.org/Downloads.html](http://www.ats-lang.org/Downloads.html) for
-instructions.
+instructions after it is officially released.
 
 ## Developing ATS3
 
