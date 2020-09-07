@@ -40,6 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/stamp0.sats"
 #staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)
@@ -73,6 +74,32 @@ implement
 fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
+//
+fun
+d3ecl_get_stamp
+(d3cl: d3ecl): stamp =
+(
+case-
+d3cl.node() of
+|
+D3Cfundecl _ => the_stamp0
+|
+D3Cimpdecl3
+( tok
+, stmp, mopt
+, sqas, tqas
+, id2c, ti3a, ti2s
+, f3as, res1, body) => stmp
+) where
+{
+(*
+val () =
+println!
+("d3ecl_get_stamp: d3cl = ", d3cl)
+*)
+} (* end of [d3ecl_get_stamp] *)
+//
+(* ****** ****** *)
 
 fun
 implist_path_recq
@@ -82,11 +109,24 @@ implist_path_recq
 : d3explst ): bool =
 let
 //
+local
+val-
+D3Etimp
+( stmp
+, d3e0
+, targ
+, d3cl
+, tsub) = d3e0.node()
+in(*in-of-local*)
+val
+stm0 =
+d3ecl_get_stamp(d3cl)
 val-
 D3Etcst
 ( d2c0
 , ti3a
 , ti2s) = d3e0.node()
+end // end of [local]
 //
 val-
 TI3ARGsome(targ) = ti3a
@@ -97,22 +137,34 @@ auxd3e1
 : d3exp): bool =
 let
 //
+local
+val-
+D3Etimp
+( _
+, d3e1
+, targ
+, d3cl
+, tsub) = d3e1.node()
+in(*in-of-local*)
+val
+stm1 =
+d3ecl_get_stamp(d3cl)
 val-
 D3Etcst
 ( d2c1
 , ti3a
 , ti2s) = d3e1.node()
+end // end of [local]
 //
 in
 //
 if
-(d2c0=d2c1)
+stm0=stm1
 then
-let
-val-
-TI3ARGsome
- ( t2ps ) = ti3a in match3(targ, t2ps)
-end else false
+(
+case- ti3a of
+TI3ARGsome(t2ps) =>
+match3(targ, t2ps)) else false
 //
 end // end of [auxd3e1]
 and
@@ -124,8 +176,7 @@ case+ d3es of
 |
 list_nil() => false
 |
-list_cons
-(d3e1, d3es) =>
+list_cons(d3e1, d3es) =>
 if auxd3e1(d3e1) then true else auxd3es(d3es)
 )
 //

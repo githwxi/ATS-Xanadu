@@ -184,22 +184,27 @@ d3exp_make_node
   , TI3ARGsome(targ), ti2s)
 ) (* end of [val] *)
 //
+(*
 val
 recq =
 implenv_path_recq(env0, d3e0)
+*)
 //
 in
 //
+(*
 if
-recq
+recq && false
 then
 let
   val tpth = env0.path()
 in
 d3exp_make_node
-(loc0, t2p0, D3Etrec(d3e0, tpth))
+( loc0
+, t2p0, D3Etrec(d3e0, tpth) )
 end // end of [then]
 else
+*)
 let
 //
 val
@@ -216,31 +221,59 @@ let
   val tpth = env0.path()
 in
 d3exp_make_node
-(loc0, t2p0, D3Etnfd(d3e0, tpth))
+( loc0
+, t2p0, D3Etnfd(d3e0, tpth) )
 end
 |
 ~Some_vt
 @(d3cl, s2vs, tsub) =>
 let
 //
-val () =
-implenv_push_timp
-(env0, d3e0, s2vs, tsub)
-//
 val
 stmp = d3timp_stamp_new()
 val
-d3cl = trans3t_timp(env0, d3cl)
+d3e0_ =
+d3exp_make_node
+( loc0
+, t2p0
+, D3Etimp
+  ( stmp
+  , d3e0, targ, d3cl, tsub)
+)
 //
+val
+recq_ =
+implenv_path_recq(env0, d3e0_)
+//
+in
+if
+recq_
+then
+let
+  val tpth = env0.path()
+in
+d3exp_make_node
+( loc0
+, t2p0, D3Etrec(d3e0_, tpth) )
+end // end of [then]
+else
+let
+val () =
+implenv_push_timp
+(env0, d3e0_(*new*), s2vs, tsub)
+val
+d3cl_ = trans3t_timp(env0, d3cl)
 val () = implenv_pop0_timp(env0)
 //
 in
   d3exp_make_node
-  ( loc0, t2p0
+  ( loc0
+  , t2p0
   , D3Etimp
-    (stmp, d3e0, targ, d3cl, tsub)
+    (stmp, d3e0, targ, d3cl_, tsub)
  )
-end
+end // end of [else]
+end // end of [Some_vt]
 //
 end // end of [else]
 //
@@ -1173,7 +1206,12 @@ implement
 trans3t_decl
   (env0, d3cl) = let
 //
-val loc0 = d3cl.loc()
+val
+loc0 = d3cl.loc()
+//
+val () =
+println!
+("trans3t_decl: d3cl = ", d3cl)
 //
 in(* in-of-let *)
 //

@@ -40,6 +40,10 @@ typedef stamp = stamp_type
 typedef stampopt = Option(stamp)
 //
 (* ****** ****** *)
+
+val the_stamp0 : stamp
+
+(* ****** ****** *)
 //
 fun
 stamp2uint(stamp):<> uint

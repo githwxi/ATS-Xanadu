@@ -50,6 +50,12 @@ stamp_type = ptr
 (* ****** ****** *)
 //
 implement
+the_stamp0 =
+( the_null_ptr )
+//
+(* ****** ****** *)
+//
+implement
 stamp2uint(x0) =
 $UN.cast{uint}
 (
