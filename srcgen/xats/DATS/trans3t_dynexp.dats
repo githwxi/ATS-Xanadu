@@ -194,7 +194,7 @@ in
 //
 (*
 if
-recq && false
+recq // && false
 then
 let
   val tpth = env0.path()
