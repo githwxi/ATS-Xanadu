@@ -605,21 +605,25 @@ implement
 fprint_t3cst
   (out, x0) =
 let
-val x0 = d3exp(x0)
-in
-//
-case-
-x0.node() of
-|
+val
+d3e0 = d3exp(x0)
+val-
+D3Etimp
+( stmp
+, d3e0
+, targ
+, d3cl
+, tsub) = d3e0.node()
+val-
 D3Etcst
 ( d2c1
-, ti3a, ti2s) =>
-let
+, ti3a
+, ti2s) = d3e0.node()
 val-
 TI3ARGsome(targ) = ti3a
 in
-fprint!(out, d2c1, "<", targ, ">")
-end
+//
+  fprint!(out, d2c1, "<", targ, ">")
 //
 end (* end of [fprint_t3cst] *)
 
