@@ -184,7 +184,7 @@ let
 fun
 auxlst
 ( xs
-: t3cstlst
+: t3implst
 ) : void =
 (
 case+ xs of
@@ -244,7 +244,7 @@ let
 fun
 auxlst
 ( xs
-: t3cstlst
+: t3implst
 ) : void =
 (
 case+ xs of
