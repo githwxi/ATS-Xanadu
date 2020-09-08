@@ -675,6 +675,7 @@ abstype htqarg_tbox = ptr
 //
 typedef htqarg = htqarg_tbox
 typedef htqarglst = List0(htqarg)
+typedef htqargopt = Option(htqarg)
 //
 (* ****** ****** *)
 //
@@ -839,7 +840,8 @@ H0Cimpdecl3 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt
-, htvarlst, hdcst, hfarglst, h0exp)
+, htqargopt
+, hdcst, htiarg, hfarglst, h0exp)
 //
 | H0Cnone1 of (dataptr) // HX: for ignores
 //

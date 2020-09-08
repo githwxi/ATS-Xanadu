@@ -88,6 +88,7 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/trans3x.sats"
 #staload "./../SATS/tread3x.sats"
 //
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/tcomp30.sats"
 //
 (* ****** ****** *)
@@ -1039,9 +1040,30 @@ println!
 val
 h0cs = tcomp30_program(d3cs)
 //
+(*
 val () =
 println!
 ("process_fpath: h0cs = ", h0cs)
+*)
+val () =
+println!("process_fpath: h0cs = ")
+val () =
+loop(h0cs) where
+{
+fun
+loop
+(h0cs: h0dclist): void =
+(
+case+ h0cs of
+|
+list_nil() => ((*void*))
+|
+list_cons
+(h0c1, h0cs) => let
+val () = println!(h0c1) in loop(h0cs)
+end
+) (* end-of-loop *)
+} (* end of [val] *)
 //
 (* ****** ****** *)
 //
