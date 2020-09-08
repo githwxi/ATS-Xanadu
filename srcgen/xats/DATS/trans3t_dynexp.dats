@@ -1080,26 +1080,27 @@ D3Cimpdecl3
 ( tok0
 , stmp, mopt
 , sqas, tqas
-, id2c, ti3a, ti2s
-, f3as, res1, body) = d3cl.node()
+, id2c
+, ti3a, ti2s
+, f3as
+, res1, body) = d3cl.node()
 //
 in
 //
+(*
 if
 iseqz(ti2s)
-then aux_impdecl3_fun(env0, d3cl)
-else aux_impdecl3_tmp(env0, d3cl)
-(*
-//
-// HX:
-// It cannot tell by inspecting ti3a
-// whether the implemented dynamic constant
-// is a function or a function template!
+then
+aux_impdecl3_fun(env0, d3cl)
+else
+aux_impdecl3_tmp(env0, d3cl)
+*)
 //
 case+ ti3a of
-| TI3ARGnone _ => aux_impdecl3_fun(env0, d3cl)
-| TI3ARGsome _ => aux_impdecl3_tmp(env0, d3cl)
-*)
+| TI3ARGnone _ =>
+  aux_impdecl3_fun(env0, d3cl)
+| TI3ARGsome _ =>
+  aux_impdecl3_tmp(env0, d3cl)
 //
 end // end of [aux_impdecl3]
 //
