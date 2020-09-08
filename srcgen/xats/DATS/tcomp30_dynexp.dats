@@ -1576,6 +1576,16 @@ auxs2vs(sqas.s2vs(), htvs)
 //
 end // end of [local]
 //
+val htqa =
+(
+case+ htvs of
+|
+list_nil() => None()
+|
+list_cons _ =>
+Some(htqarg_make(loc0, htvs))
+) : htqargopt // end-of-val
+//
 val
 d2c0 =
 (
@@ -1597,6 +1607,10 @@ end
 //
 val
 hdc0 = tcomp30_dcst(d2c0)
+//
+val
+htia = tcomp30_ti3arg(ti3a)
+//
 val
 hfas = tcomp30_farglst(f3as)
 //
@@ -1607,7 +1621,7 @@ hend =
 H0Cimpdecl3
 ( knd
 , stmp, mopt
-, htvs, hdc0, hfas, body)
+, htqa, hdc0, htia, hfas, body)
 in
   h0dcl_make_node(loc0, hend(*impdecl*))
 end // end of [aux_impdecl3]

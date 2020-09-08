@@ -703,13 +703,15 @@ x0.node() of
 | H0Cimpdecl3
   ( knd
   , stmp, mopt
-  , htvs, hdc0, hfas, body) =>
+  , tqas, hdc0, htia, hfas, body) =>
   fprint!
   ( out
   , "H0Cimpdecl3("
   , knd, "; "
-  , stmp, "; ", mopt
-  , "; ", htvs, "; ", hdc0, "; ", hfas, "; ", body, ")")
+  , stmp, "; "
+  , mopt, "; "
+  , tqas, "; "
+  , hdc0, "; ", htia, "; ", hfas, "; ", body, ")")
 //
 | H0Cnone1(_) =>
   fprint!(out, "H0Cnone1(", "...", ")")

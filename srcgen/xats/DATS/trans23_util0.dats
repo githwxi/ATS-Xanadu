@@ -2456,7 +2456,23 @@ implement
 d2cst_ti2as_ti3a
 (loc0, d2c0, tias) =
 (
-auxtias_0(d2c0, tias)
+(*
+HX:
+[tias] is ignored
+for non-temp [d2c0]
+*)
+let
+val
+tqas = d2c0.tqas()
+in
+case+ tqas of
+// non-temp
+| list_nil _ =>
+  TI3ARGnone(*void*)
+// template
+| list_cons _ =>
+  auxtias_0(d2c0, tias)
+end
 ) where
 {
 //
@@ -2518,30 +2534,34 @@ let
   val
   s2vs = tq2a.s2vs()
 in
+//
 case+ tias of
-| list_nil() =>
-  let
-    val
-    s2es = list_nil()
-    val
-    t2ps =
-    auxtias_2(s2vs, s2es, t2ps)
-  in
-    auxtias_1(tqas, tias, t2ps)
-  end
-| list_cons
-  (ti20, tias) =>
-  let
-    val
-    s2es = ti20.s2es()
-    val
-    t2ps =
-    auxtias_2(s2vs, s2es, t2ps)
-  in
-    auxtias_1(tqas, tias, t2ps)
-  end
+|
+list_nil() =>
+let
+  val
+  s2es = list_nil()
+  val
+  t2ps =
+  auxtias_2(s2vs, s2es, t2ps)
+in
+  auxtias_1(tqas, tias, t2ps)
 end
+|
+list_cons
+(ti20, tias) =>
+let
+  val
+  s2es = ti20.s2es()
+  val
+  t2ps =
+  auxtias_2(s2vs, s2es, t2ps)
+in
+  auxtias_1(tqas, tias, t2ps)
 end
+//
+end // end of [list_cons]
+end // end of [auxtias_1]
 //
 and
 auxtias_2
@@ -2580,19 +2600,23 @@ list_cons
 (
 case+
 s2e0.node() of
-| S2Eany(k0) =>
-  let
+|
+S2Eany(k0) =>
+let
   val
   t2p0 =
   t2ype_new_loc_var(loc0, s2v0)
   val
   t2ps = list_vt_cons(t2p0, t2ps)
-  in
+in
   if
   (k0 >= 2)
-  then auxtias_2(s2vs, s2es, t2ps)
-  else auxtias_2(s2vs, s2es1, t2ps)
-  end
+    then
+    auxtias_2(s2vs, s2es, t2ps)
+    else
+    auxtias_2(s2vs, s2es1, t2ps)
+  // end of [if]
+end
 | _(*non-S2Eany*) =>
   let
   val
