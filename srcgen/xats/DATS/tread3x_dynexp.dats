@@ -102,6 +102,10 @@ let
 //
 val loc0 = d3e0.loc()
 //
+val () =
+println!
+("auxtcst: d3e0 = ", d3e0)
+//
 val-
 D3Etimp
 ( stmp
@@ -886,19 +890,20 @@ val () = tread3x_d3eclist(body)
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
   (
-    if
-    iseqz(ti2s)
-    then
+    case+ ti3a of
+    |
+    TI3ARGnone _ => // non-temp
     {
-      val () = tread3x_d3exp(d3e0) // non-tmp
+      val () = tread3x_d3exp(d3e0) // non-temp
     }
-    else
+    |
+    TI3ARGsome _ => // template
     {
 (*
       val () = tread3x_d3exp(d3e0) // template
 *)
     }
-  )
+  ) (* D3Cimpdecl3 *)
 //
 | _(* rest-of-d3ecl *) =>
   {
