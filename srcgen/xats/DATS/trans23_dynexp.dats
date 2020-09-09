@@ -2262,8 +2262,8 @@ let
 val+
 F2UNDECL(rcd) = f2d0
 in
-  case+ rcd.def of
-  | None() => true | Some(d2e) => false
+case+ rcd.def of
+| None() => true | Some(d2e) => false
 end
 //
 fun
@@ -2295,9 +2295,10 @@ list_cons(x0, xs) =>
 (
 case-
 x0.node() of
-| F3ARGsome_dyn
-  (npf, d3ps) =>
-  let
+|
+F3ARGsome_dyn
+( npf, d3ps ) =>
+let
   val fc2 =
   ( if
     flag = 0
@@ -2310,18 +2311,20 @@ x0.node() of
   d3patlst_get_type(d3ps)
   val tres =
   aux0_f3as(xs, tres, flag+1)
-  in
+in
   t2ype_fun2(fc2, npf, t2ps, tres)
-  end
-| F3ARGsome_sta
-  (s2vs, s2ps) =>
-  let
-    val
-    tres =
-    aux0_f3as
-    (xs,tres,flag) in t2ype_uni(s2vs, tres)
-  end
-| F3ARGsome_met(s2es) => aux0_f3as(xs, tres, flag)
+end
+|
+F3ARGsome_sta
+( s2vs, s2ps ) =>
+let
+  val
+  tres =
+  aux0_f3as
+  (xs,tres,flag) in t2ype_uni(s2vs, tres)
+end
+|
+F3ARGsome_met(s2es) => aux0_f3as(xs, tres, flag)
 )
 )
 and
