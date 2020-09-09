@@ -740,8 +740,12 @@ F3UNDECL of @{
 , nam= d2var
 , d2c= d2cst
 , a2g= f2arglst
-, a3g= f3arglstopt
-, res= effs2expopt
+//
+, a3g=
+    f3arglstopt
+, res=
+    effs2expopt
+//
 , def= d3expopt, rtp= t2ype
 , wtp= s2expopt, ctp= t2pcast
 }
