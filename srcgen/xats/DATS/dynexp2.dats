@@ -179,10 +179,22 @@ val
 stamper = $STM.stamper_new()
 
 in (* in-of-local *)
-
+//
 implement
-d2cst_stamp_new() = $STM.stamper_getinc(stamper)
-
+d2cst_stamp_new() =
+stamp where
+{
+  val
+  stamp =
+  $STM.stamper_getinc(stamper)
+(*
+  val () =
+  fprintln!
+  ( stdout_ref
+  , "d2cst_stamp_new: stamp = ", stamp)
+*)
+}
+//
 end // end of [local]
 
 (* ****** ****** *)
