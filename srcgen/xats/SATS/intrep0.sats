@@ -42,7 +42,6 @@
 #staload "./locinfo.sats"
 
 (* ****** ****** *)
-#staload "./staexp2.sats"
 #staload "./statyp2.sats"
 #staload "./dynexp2.sats"
 (* ****** ****** *)
@@ -169,6 +168,17 @@ hdvar_get_sym(hdvar): sym_t
 overload .sym with hdcon_get_sym
 overload .sym with hdcst_get_sym
 overload .sym with hdvar_get_sym
+//
+(* ****** ****** *)
+//
+fun
+hdcon_get_tag(hdcon): tag_t
+fun
+hdcon_set_tag
+  (hdc: hdcon, tag: tag_t): void
+//
+overload .tag with hdcon_get_tag
+overload .tag with hdcon_set_tag
 //
 (* ****** ****** *)
 //

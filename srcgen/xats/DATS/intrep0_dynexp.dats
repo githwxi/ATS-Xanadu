@@ -51,12 +51,25 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 local
-
+//
+(*
+HX-2020-09-13:
+The tag of a constructor is
+nonnegative if the constructor
+is associated with a datatype.
+Otherwise, the tag is set to be
+-1 to indicate the constructor
+is associated with 'exception'.
+*)
+//
+typedef tag_t = int
+//
 typedef
 hdcon_struct = @{
 //
   hdcon_loc= loc_t // loc
 , hdcon_sym= sym_t // name
+, hdcon_tag= tag_t // tag
 , hdcon_type= h0typ // type
 , hdcon_stamp= stamp // unicity
 //
@@ -70,6 +83,15 @@ in(* in-of-local *)
 implement
 hdcon_get_sym
 (hdc) = hdc->hdcon_sym
+//
+implement
+hdcon_get_tag
+(hdc) = hdc->hdcon_tag
+implement
+hdcon_set_tag
+(hdc, tag) =
+(hdc->hdcon_tag := tag)
+//
 implement
 hdcon_get_stamp
 (hdc) = hdc->hdcon_stamp
@@ -82,6 +104,7 @@ ref<hdcon_struct>
 @{
   hdcon_loc=loc
 , hdcon_sym=sym
+, hdcon_tag=(~1)
 , hdcon_type=htp
 , hdcon_stamp=stamp
 }
