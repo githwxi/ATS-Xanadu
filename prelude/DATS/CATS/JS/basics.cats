@@ -60,5 +60,25 @@ JS_gint_mul_sint_sint
   (x1, x2)
 { return (x1 * x2) ; }
 /* ****** ****** */
+function
+JS_gint_div_sint_sint
+  (x1, x2)
+{ 
+  var q0 = x1 / x2;
+  if
+  (q0 >= 0)
+  {
+    return Math.floor(q0) ;
+  }
+  else
+  {
+    return Math.ceil( q0 ) ;
+  }
+}
+function
+JS_gint_mod_sint_int
+  (x1, x2)
+{ return (x1 % x2) ; }
+/* ****** ****** */
 
 /* end of [basics.cats] */
