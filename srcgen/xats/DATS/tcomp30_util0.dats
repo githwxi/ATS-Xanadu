@@ -124,8 +124,13 @@ val t2p = d2c.type()
 //
 val htp = tcomp30_type(t2p)
 //
+val hdc =
+hdcon_make_idtp(loc, sym, htp)
+//
 in
-  hdcon_make_idtp(loc, sym, htp)
+let
+  val () =
+  hdc.tag(d2c.tag()) in hdc end
 end // end of [hdcon_make_dcon]
 
 implement
