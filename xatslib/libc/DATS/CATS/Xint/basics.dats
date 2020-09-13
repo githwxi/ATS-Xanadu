@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-** The runtime for Xinterp
+Basics for Xinterp
 *)
 (* ****** ****** *)
 //
@@ -50,4 +50,4 @@ fputc_ref<> = Xint_fputc_ref
 //
 (* ****** ****** *)
 
-(* end of [runtime.dats] *)
+(* end of [basics.dats] *)
