@@ -174,14 +174,14 @@ fnm0 of
 val
 fknd = auxknd(base)
 //
-// (*
+(*
 val () =
 println!
-("filsrch_combined: base = ", base)
+("//filsrch_combined: base = ", base)
 val () =
 println!
-("filsrch_combined: fknd = ", fknd)
-// *)
+("//filsrch_combined: fknd = ", fknd)
+*)
 //
 in
 //
@@ -223,10 +223,11 @@ xatsopt_is_exist(fname)
 //
 val fname = $UN.strptr2string(fname)
 //
-// (*
+(*
 val ((*void*)) =
-println!("filsrch_dirbase: fname = ", fname)
-// *)
+println!
+("//filsrch_dirbase: fname = ", fname)
+*)
 //
 }
 in(* in-of-let *)
