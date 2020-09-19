@@ -42,12 +42,41 @@ JS_bool_mul
 )
 : bool(b1*b2) // = $ext()
 //
-impltmp bool_add<> = JS_bool_add
-impltmp bool_mul<> = JS_bool_mul
+impltmp
+bool_add<> = JS_bool_add
+impltmp
+bool_mul<> = JS_bool_mul
+//
+(* ****** ****** *)
+//
+#extern
+fun
+JS_bool_print
+(b0: bool): void // = $ext()
+impltmp
+bool_print<> = JS_bool_print
 //
 (* ****** ****** *)
 //
 // prelude/gint.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+JS_gint_print_sint
+( x0: sint ): void // = $ext()
+#extern
+fun
+JS_gint_print_uint
+( x0: uint ): void // = $ext()
+//
+impltmp
+gint_print_sint<> =
+JS_gint_print_sint // [basics.cats]
+impltmp
+gint_print_uint<> =
+JS_gint_print_uint // [basics.cats]
 //
 (* ****** ****** *)
 //
@@ -345,6 +374,21 @@ impltmp
 gflt_mul_dflt_dflt<> = JS_gflt_mul_dflt_dflt
 impltmp
 gflt_div_dflt_dflt<> = JS_gflt_div_dflt_dflt
+//
+(* ****** ****** *)
+//
+// prelude/string.sats
+//
+(* ****** ****** *)
+#extern
+fun
+JS_string_print
+(x0: string): void // = $ext()
+//
+// It is
+// implemented in [basics.cats]
+impltmp
+string_print<> = JS_string_print
 //
 (* ****** ****** *)
 

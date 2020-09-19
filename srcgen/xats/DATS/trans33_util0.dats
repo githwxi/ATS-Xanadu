@@ -1444,6 +1444,8 @@ D3Cimpdecl3
 //
 (*
 val () =
+println!("auxins0: loc0 = ", loc0)
+val () =
 println!("auxins0: d2c1 = ", d2c1)
 val () =
 println!("auxins0: d3cl = ", d3cl)
