@@ -815,10 +815,10 @@ xatsopt_commarg_warning
 {
 //
 val () =
-fprint(out, "WARNING(ATS)")
-val () =
 fprintln!
 ( out
+, "//"
+, "WARNING(ATS)"
 , ": unrecognized command-line argument [", arg, "] is skipped."
 ) (* end of [val] *)
 //
@@ -942,8 +942,7 @@ $FP0.the_filpathlst_pout(pf0 | (*none*))
 //
 (*
 val () =
-println!
-("process_fpath: d0cs = ", d0cs)
+println!("//process_fpath: d0cs = ", d0cs)
 *)
 //
 val () =
@@ -962,8 +961,7 @@ val () = tread01_program(d1cs)
 end // end of [val]
 (*
 val () =
-println!
-("process_fpath: d1cs = ", d1cs)
+println!("//process_fpath: d1cs = ", d1cs)
 *)
 //
 val
@@ -979,8 +977,7 @@ val () = tread12_program(d2cs)
 end // end of [val]
 (*
 val () =
-println!
-("process_fpath: d2cs = ", d2cs)
+println!("//process_fpath: d2cs = ", d2cs)
 *)
 //
 val
@@ -996,8 +993,7 @@ val () = tread23_program(d3cs)
 end // end of [val]
 (*
 val () =
-println!
-("process_fpath: d3cs = ", d3cs)
+println!("//process_fpath: d3cs = ", d3cs)
 *)
 //
 val
@@ -1013,8 +1009,7 @@ val () = tread33_program(d3cs)
 end // end of [val]
 (*
 val () =
-println!
-("process_fpath: d3cs = ", d3cs)
+println!("//process_fpath: d3cs = ", d3cs)
 *)
 //
 val
@@ -1033,23 +1028,14 @@ end // end of [val]
 //
 (*
 val () =
-println!
-("process_fpath: d3cs = ", d3cs)
+println!("//process_fpath: d3cs = ", d3cs)
 *)
 //
 val
 h0cs = tcomp30_program(d3cs)
 //
-(*
 val () =
-println!
-("process_fpath: h0cs = ", h0cs)
-*)
-val () =
-println!("process_fpath: h0cs = ")
-val () =
-loop(h0cs) where
-{
+let
 fun
 loop
 (h0cs: h0dclist): void =
@@ -1060,10 +1046,14 @@ list_nil() => ((*void*))
 |
 list_cons
 (h0c1, h0cs) => let
-val () = println!(h0c1) in loop(h0cs)
+val () =
+println!("//", h0c1) in loop(h0cs)
 end
 ) (* end-of-loop *)
-} (* end of [val] *)
+in
+println!
+("//process_fpath: h0cs = "); loop(h0cs)
+end (* end of [val] *)
 //
 (* ****** ****** *)
 //
@@ -1076,7 +1066,10 @@ val () = the_sexpenv_println((*void*))
 val () = println!("the_dexpenv =")
 val () = the_dexpenv_println((*void*))
 //
+(* ****** ****** *)
+//
 } (* end of [then] *)
+//
 else
 {
 // ~(stadyn >= 0) // not for loading code
@@ -1096,14 +1089,16 @@ in
 fpath_make(given, fname)
 end
 //
+in
+process_fpath(st0, fp0) where
+{
 // (*
 val () =
 println!
-("process_given: arg0 = ", arg0)
+("//process_given: arg0 = ", arg0)
 // *)
+} (* end of [where] *)
 //
-in
-  process_fpath(st0, fp0)
 end // end of [process_given]
 //
 implement
@@ -1152,24 +1147,24 @@ val () =
 case+ key of
 //
 | "-o" =>
-  {
-    val () =
-    (st0.wtk0 := WTKoutput())
-  } (* end of [-o] *)
+{
+  val () =
+  (st0.wtk0 := WTKoutput())
+} (* end of [-o] *)
 | "-s" =>
-  {
-    val () =
-    (st0.ninpfil := 0)
-    val () =
-    (st0.wtk0 := WTKinpsta())
-  } (* end of [-s] *)
+{
+  val () =
+  (st0.ninpfil := 0)
+  val () =
+  (st0.wtk0 := WTKinpsta())
+} (* end of [-s] *)
 | "-d" =>
-  {
-    val () =
-    (st0.ninpfil := 0)
-    val () =
-    (st0.wtk0 := WTKinpdyn())
-  } (* end of [-d] *)
+{
+  val () =
+  (st0.ninpfil := 0)
+  val () =
+  (st0.wtk0 := WTKinpdyn())
+} (* end of [-d] *)
 (*
 | "-dd" =>
   {
@@ -1242,8 +1237,7 @@ case+ key of
 | "-h" =>
   (
     xatsopt_usage
-      (stdout_ref, st0.arg0)
-    // xatsopt_usage
+    ( stdout_ref, st0.arg0 )
   )
 | "-v" =>
   (
@@ -1282,22 +1276,28 @@ case+ key of
   )
 | "--output-w" =>
   {
-    val () = st0.wtk0 := WTKoutput()
-    val () = st0.outmode := file_mode_w
+    val () =
+    (st0.wtk0 := WTKoutput())
+    val () =
+    (st0.outmode := file_mode_w)
   } // end of [--output-w]
 | "--output-a" =>
   {
-    val () = st0.wtk0 := WTKoutput()
-    val () = st0.outmode := file_mode_a
+    val () =
+    (st0.wtk0 := WTKoutput())
+    val () =
+    (st0.outmode := file_mode_a)
   } // end of [--output-a]
 //
 | "--static" =>
   {
-    val () = st0.wtk0 := WTKinpsta()
+    val () =
+    ( st0.wtk0 := WTKinpsta() )
   } // end of [--static]
 | "--dynamic" =>
   {
-    val () = st0.wtk0 := WTKinpdyn()
+    val () =
+    ( st0.wtk0 := WTKinpdyn() )
   } // end of [--dynamic]
 //
 (*
@@ -1369,8 +1369,7 @@ case+ key of
 | "--help" =>
   (
     xatsopt_usage
-      (stdout_ref, st0.arg0)
-    // xatsopt_usage
+    ( stdout_ref, st0.arg0 )
   )
 | "--version" =>
   (
@@ -1431,9 +1430,7 @@ case+ arg0 of
         val () =
         (st0.ninpfil := nif+1)
         val () =
-        (
-          process_given(st0, given)
-        )
+        process_given(st0, given)
       } (* end of [COMMARG(_,_)] *)
   end // end of [isinpwait]
 //
@@ -1470,7 +1467,7 @@ case+ arg0 of
   ) where
   {
     val () =
-    st0.wtk0 := WTKnone()
+    (st0.wtk0 := WTKnone())
     val () =
     xatsopt_commarg_warning(stderr_ref, key)
   } (* end of [COMMARG] *)
@@ -1635,14 +1632,18 @@ the_basics_load
 in (* nothing *) end where
 {
 //
+(*
 val () =
 println!
-("the_basics_load: ", given)
+("//the_basics_load: ", given)
+*)
 //
-  val fname =
-    dirbase(XATSHOME, given)
-  val fpath =
-    fpath_make(given, fname)  
+  val
+  fname =
+  dirbase(XATSHOME, given)
+  val
+  fpath =
+  fpath_make( given, fname )  
 //
   val
   (pf0 | ()) =
@@ -1691,9 +1692,11 @@ let
 in (* nothing *) end where
 {
 //
+(*
 val () =
 println!
-("the_prelude_load: ", given)
+("//the_prelude_load: ", given)
+*)
 //
   val
   fname =
@@ -1762,107 +1765,130 @@ the_fixity_load
 val () =
 the_basics_load
 ( XATSHOME
-, 0(*static*), "prelude/basics.sats")
+, 0(*static*)
+, "prelude/basics.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/xsetup.sats")
+, 0(*static*)
+, "prelude/xsetup.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/excptn.sats")
+, 0(*static*)
+, "prelude/excptn.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gbas.sats")
+, 0(*static*)
+, "prelude/SATS/gbas.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gnum.sats")
+, 0(*static*)
+, "prelude/SATS/gnum.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gord.sats")
+, 0(*static*)
+, "prelude/SATS/gord.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gfor.sats")
+, 0(*static*)
+, "prelude/SATS/gfor.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gfun.sats")
+, 0(*static*)
+, "prelude/SATS/gfun.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gseq.sats")
+, 0(*static*)
+, "prelude/SATS/gseq.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/bool.sats")
+, 0(*static*)
+, "prelude/SATS/bool.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/char.sats")
+, 0(*static*)
+, "prelude/SATS/char.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gint.sats")
+, 0(*static*)
+, "prelude/SATS/gint.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gflt.sats")
+, 0(*static*)
+, "prelude/SATS/gflt.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gios.sats")
+, 0(*static*)
+, "prelude/SATS/gios.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/rand.sats")
+, 0(*static*)
+, "prelude/SATS/rand.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/optn.sats")
+, 0(*static*)
+, "prelude/SATS/optn.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/list.sats")
+, 0(*static*)
+, "prelude/SATS/list.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/array.sats")
+, 0(*static*)
+, "prelude/SATS/array.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/string.sats")
+, 0(*static*)
+, "prelude/SATS/string.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/stream.sats")
+, 0(*static*)
+, "prelude/SATS/stream.sats")
 //
 // HX: for linear stuff
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/gseq_vt.sats")
+, 0(*static*)
+, "prelude/SATS/gseq_vt.sats")
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/optn_vt.sats")
+, 0(*static*)
+, "prelude/SATS/optn_vt.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/list_vt.sats")
+, 0(*static*)
+, "prelude/SATS/list_vt.sats")
 //
 (*
 //
@@ -1872,21 +1898,25 @@ the_prelude_load
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/array_vt.sats")
+, 0(*static*)
+, "prelude/SATS/array_vt.sats")
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/string_vt.sats")
+, 0(*static*)
+, "prelude/SATS/string_vt.sats")
 *)
 //
 val () =
 the_prelude_load
 ( XATSHOME
-, 0(*static*), "prelude/SATS/stream_vt.sats")
+, 0(*static*)
+, "prelude/SATS/stream_vt.sats")
 //
 (*
 val () =
-println! "[the_preludes_load] is finished."
+println!
+("//[the_preludes_load] is finished.")
 *)
 //
 } (* end of [the_preludes_load] *)
