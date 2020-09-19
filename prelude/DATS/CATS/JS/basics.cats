@@ -4,6 +4,68 @@ Basics for Xats2js
 */
 /* ****** ****** */
 //
+function
+JS_assert
+  ( b0 )
+{
+if
+(!b0)
+{
+  // [b0] is false
+  throw new Error();
+} // if-then
+return ; // [b0] is true
+}
+//
+function
+JS_assertloc
+  ( b0, loc )
+{
+if
+(!b0)
+{
+  // [b0] is false
+  throw new Error(loc);
+} // if-then
+return ; // [b0] is true
+}
+function
+JS_assertmsg
+  ( b0, msg )
+{
+if
+(!b0)
+{
+  // [b0] is false
+  throw new Error(msg);
+} // if-then
+return ; // [b0] is true
+}
+//
+/* ****** ****** */
+function
+JS_patckerr0()
+{
+  throw new Error();
+}
+function
+JS_patckerr1(loc)
+{
+  throw new Error(loc);
+}
+/* ****** ****** */
+function
+JS_matcherr0()
+{
+  throw new Error();
+}
+function
+JS_matcherr1(loc)
+{
+  throw new Error(loc);
+}
+/* ****** ****** */
+//
 // prelude/bool.sats
 //
 /* ****** ****** */

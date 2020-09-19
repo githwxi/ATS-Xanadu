@@ -293,7 +293,7 @@ val
 hdc0 = tcomp30_dcon(d2c0)
 in
 h0pat_make_node
-(loc0, h0t0, H0Pfcon(hdc0))
+(loc0, h0t0, H0Pcon(hdc0))
 end
 //
 |
@@ -690,7 +690,7 @@ val htia = tcomp30_ti3arg(ti3a)
 //
 in
   h0exp_make_node
-  (loc0, h0t0, H0Etcon(htia, hdc1))
+  (loc0, h0t0, H0Etcon(hdc1, htia))
 end
 
 (* ****** ****** *)
@@ -717,7 +717,7 @@ val htia = tcomp30_ti3arg(ti3a)
 //
 in
   h0exp_make_node
-  (loc0, h0t0, H0Etcst(htia, hdc1))
+  (loc0, h0t0, H0Etcst(hdc1, htia))
 end
 
 (* ****** ****** *)

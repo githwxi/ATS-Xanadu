@@ -363,8 +363,8 @@ x0.node() of
 | H0Pvar(hdv) =>
   fprint!(out, "H0Pvar(", hdv, ")")
 //
-| H0Pfcon(hdc) =>
-  fprint!(out, "H0Pfcon(", hdc, ")")
+| H0Pcon(hdc) =>
+  fprint!(out, "H0Pcon(", hdc, ")")
 //
 | H0Pbang(h0p) =>
   fprint!(out, "H0Pbang(", h0p, ")")
@@ -475,14 +475,14 @@ x0.node() of
 | H0Efcst(hdc) =>
   fprint!(out, "H0Efcst(", hdc, ")")
 //
-| H0Etcon(tia, hdc) =>
+| H0Etcon(hdc, tia) =>
   fprint!
   ( out
-  , "H0Etcon(", tia, "; ", hdc, ")")
-| H0Etcst(tia, hdc) =>
+  , "H0Etcon(", hdc, "; ", tia, ")")
+| H0Etcst(hdc, tia) =>
   fprint!
   ( out
-  , "H0Etcst(", tia, "; ", hdc, ")")
+  , "H0Etcst(", hdc, "; ", tia, ")")
 //
 (*
 | H0Etimp
