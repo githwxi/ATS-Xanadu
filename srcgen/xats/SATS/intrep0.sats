@@ -399,7 +399,7 @@ h0pat_node =
 | H0Pany of () // wildcard
 | H0Pvar of hdvar // variable
 //
-| H0Pfcon of hdcon // cnstrctr
+| H0Pcon of hdcon // cnstrctr
 //
 | H0Pbang of (h0pat)
 | H0Pflat of (h0pat)
@@ -517,11 +517,11 @@ h0exp_node =
 | H0Evknd of
   (int(*knd*), hdvar)
 //
-| H0Efcon of hdcon // cnstrctr
-| H0Efcst of hdcst // constant
+| H0Efcon of hdcon // cnstr
+| H0Etcon of (hdcon, htiarg)
 //
-| H0Etcon of (htiarg, hdcon)
-| H0Etcst of (htiarg, hdcst)
+| H0Efcst of hdcst // const
+| H0Etcst of (hdcst, htiarg)
 //
 (*
 | H0Etimp of

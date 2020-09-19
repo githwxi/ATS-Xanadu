@@ -369,15 +369,15 @@ x0.node() of
 //
 | D3Efcon(d2c1) =>
   fprint!(out, "D3Efcon(", d2c1, ")")
-| D3Efcst(d2c1) =>
-  fprint!(out, "D3Efcst(", d2c1, ")")
-//
 | D3Etcon
   (d2c1, ti3a, ti2s) =>
   fprint!
   ( out
   , "D3Etcon("
   , d2c1, "; ", ti3a, "; ", ti2s, ")")
+//
+| D3Efcst(d2c1) =>
+  fprint!(out, "D3Efcst(", d2c1, ")")
 | D3Etcst
   (d2c1, ti3a, ti2s) =>
   fprint!
