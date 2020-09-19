@@ -110,7 +110,8 @@ ref<hdcon_struct>
 }
 ) where
 {
-  val stamp = hdcon_stamp_new()
+  val
+  stamp = hdcon_stamp_new()
 }
 
 end // end of [local]
