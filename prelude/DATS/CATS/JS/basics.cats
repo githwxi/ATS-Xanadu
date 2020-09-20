@@ -77,6 +77,26 @@ JS_g_print(obj)
 //
 /* ****** ****** */
 //
+function
+JS_UN_p2tr_get
+  (ptr)
+{
+  var
+  offs = ptr.offs;
+  return ptr.root[offs];
+}
+function
+JS_UN_p2tr_set
+  (ptr, obj)
+{
+  var
+  offs = ptr.offs;
+  ptr.root[offs] = obj;
+  return;
+}
+//
+/* ****** ****** */
+//
 // prelude/bool.sats
 //
 /* ****** ****** */
@@ -207,4 +227,4 @@ JS_string_print
 }
 /* ****** ****** */
 
-/* end of [basics.cats] */
+/* end of [JS_basics.cats] */
