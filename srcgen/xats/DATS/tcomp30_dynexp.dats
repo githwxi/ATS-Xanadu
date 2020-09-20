@@ -1048,6 +1048,90 @@ end // end of [aux_fix]
 
 (* ****** ****** *)
 
+fun
+aux_addr
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Eaddr(h0e1) where
+{
+//
+val-
+D3Eaddr(d3e1) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_addr]
+
+(* ****** ****** *)
+
+fun
+aux_flat
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Eflat(h0e1) where
+{
+//
+val-
+D3Eflat(d3e1) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_flat]
+
+(* ****** ****** *)
+
+fun
+aux_talf
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Etalf(h0e1) where
+{
+//
+val-
+D3Etalf(d3e1) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_talf]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -1122,6 +1206,11 @@ D3Ewhere _ => aux_where(d3e0)
 //
 | D3Elam _ => aux_lam(d3e0)
 | D3Efix _ => aux_fix(d3e0)
+//
+| D3Eaddr _ => aux_addr(d3e0)
+//
+| D3Eflat _ => aux_flat(d3e0)
+| D3Etalf _ => aux_talf(d3e0)
 //
 | _(*rest-of_d3exp*) =>
 let

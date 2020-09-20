@@ -58,6 +58,19 @@ bool_print<> = JS_bool_print
 //
 (* ****** ****** *)
 //
+// prelude/char.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+JS_char_print
+(b0: char): void // = $ext()
+impltmp
+char_print<> = JS_char_print
+//
+(* ****** ****** *)
+//
 // prelude/gint.sats
 //
 (* ****** ****** *)

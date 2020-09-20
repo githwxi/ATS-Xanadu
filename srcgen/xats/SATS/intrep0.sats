@@ -527,11 +527,12 @@ h0exp_node =
 | H0Etimp of
   ( stamp, h0exp )
 *)
-| H0Etimp of
-  ( stamp
-  , h0exp(*tcst*), h0typlst(*targ*)
-  , h0dcl(*impl*), h0typlst(*tsub*)
-  ) (* end of [H0Etimp] *)
+|
+H0Etimp of
+( stamp
+, h0exp(*tcst*), h0typlst(*targ*)
+, h0dcl(*impl*), h0typlst(*tsub*)
+) (* end of [H0Etimp] *)
 //
 | H0Edapp of
   (h0exp, int(*npf*), h0explst)
@@ -545,11 +546,12 @@ h0exp_node =
 | H0Elet of
   (h0dclist, h0exp(*seqn*))
 //
-| H0Eif0 of
-  (h0exp, h0exp, h0expopt(*else*))
-//
-| H0Ecase of
-  (int(*knd*), h0exp(*val*), h0claulst)
+|
+H0Eif0 of
+(h0exp, h0exp, h0expopt(*else*))
+|
+H0Ecase of
+(int(*knd*), h0exp(*val*), h0claulst)
 //
 | H0Elam of
   ( token(*knd*)
@@ -558,6 +560,22 @@ h0exp_node =
   ( token(*knd*)
   , hdvar(*fid*)
   , hfarglst(*arg*), h0exp(*body*))
+//
+| H0Eaddr of h0exp(*l-value*)
+//
+| H0Efold of h0exp(*open-con*)
+| H0Efree of h0exp(*free-con*)
+//
+| H0Eraise of h0exp(*lin-exn*)
+//
+| H0Elazy of
+  (h0exp(*eval*)) // nonlin
+| H0Ellazy of
+  ( h0exp(*eval*)
+  , h0explst(*frees*)) // linear
+//
+| H0Eflat of h0exp(*l-value*)
+| H0Etalf of h0exp(*H0Eflat*)
 //
 | H0Enone1 of (dataptr) // HX: for ignores
 //
