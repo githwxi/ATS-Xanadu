@@ -506,6 +506,15 @@ x0.node() of
   , "H0Edapp("
   , h0f0, "; ", npf1, "; ", h0es, ")")
 //
+| H0Elet
+  ( dcls
+  , h0e1(*scope*)) =>
+  (
+   fprint!
+   ( out
+   , "H0Elet(", dcls, "; ", h0e1, ")")
+  )
+//
 | H0Eseqn
   ( h0es(*semi*)
   , h0e1(*last*) ) =>
@@ -520,9 +529,11 @@ x0.node() of
   , "H0Etuple("
   , knd0, "; ", npf1, "; ", h0es, ")")
 //
-| H0Elet(hdcl, h0e1) =>
+| H0Eassgn
+  (h0e1, h0e2) =>
   fprint!
-  (out, "H0Elet(", hdcl, "; ", h0e1, ")")
+  ( out
+  , "H0Eassgn(", h0e1, "; ", h0e2, ")")
 //
 | H0Eif0
   (h0e1, h0e2, opt3) =>
@@ -588,7 +599,10 @@ x0.node() of
    fprint!(out, "H0Etalf(", h0e1, ")")
   )
 //
-| H0Enone1(_) =>
+| H0Enone0() => // nil/none/null
+  fprint!(out, "H0Enone0(", ")")
+//
+| H0Enone1(_) => // HX: for ignores
   fprint!(out, "H0Enone1(", "...", ")")
 //
 (*

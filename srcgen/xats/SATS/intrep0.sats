@@ -537,14 +537,17 @@ H0Etimp of
 | H0Edapp of
   (h0exp, int(*npf*), h0explst)
 //
+| H0Elet of
+  (h0dclist, h0exp(*seqn*))
+//
 | H0Eseqn of
   (h0explst, h0exp(*last*))
 //
 | H0Etuple of
   (int(*knd*), int(*npf*), h0explst)
 //
-| H0Elet of
-  (h0dclist, h0exp(*seqn*))
+| H0Eassgn of
+  (h0exp(*lval*), h0exp(*rval*))
 //
 |
 H0Eif0 of
@@ -577,6 +580,7 @@ H0Ecase of
 | H0Eflat of h0exp(*l-value*)
 | H0Etalf of h0exp(*H0Eflat*)
 //
+| H0Enone0 of () // HX: nil/none/null
 | H0Enone1 of (dataptr) // HX: for ignores
 //
 (* ****** ****** *)

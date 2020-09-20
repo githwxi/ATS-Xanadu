@@ -76,25 +76,24 @@ JS_g_print(obj)
 }
 //
 /* ****** ****** */
-//
 function
-JS_UN_p2tr_get
-  (ptr)
+JS_new_var0
+  ()
 {
   var
-  offs = ptr.offs;
-  return ptr.root[offs];
+  lvl = {
+    root:[null], offs:0
+  } ; return lvl;
 }
 function
-JS_UN_p2tr_set
-  (ptr, obj)
+JS_new_var1
+  (init)
 {
   var
-  offs = ptr.offs;
-  ptr.root[offs] = obj;
-  return;
+  lvl = {
+    root:[init], offs:0
+  } ; return lvl;
 }
-//
 /* ****** ****** */
 //
 // prelude/bool.sats
@@ -156,6 +155,20 @@ JS_gint_print_uint
 {
   JS_g_print(x0); return;
 }
+/* ****** ****** */
+function
+JS_gint_neg_sint
+  (x0)
+{ return (-x0); }
+/* ****** ****** */
+function
+JS_gint_succ_sint
+  (x0)
+{ return (x0 + 1); }
+function
+JS_gint_pred_sint
+  (x0)
+{ return (x0 - 1); }
 /* ****** ****** */
 function
 JS_gint_lt_sint_sint
@@ -225,6 +238,30 @@ JS_string_print
 {
   JS_g_print(x0); return;
 }
+/* ****** ****** */
+//
+// prelude/unsafe.sats
+//
+/* ****** ****** */
+//
+function
+JS_UN_p2tr_get
+  (lvl0)
+{
+  var
+  offs = lvl0.offs;
+  return lvl0.root[offs];
+}
+function
+JS_UN_p2tr_set
+  (lvl1, obj2)
+{
+  var
+  offs = lvl1.offs;
+  lvl1.root[offs] = obj2;
+  return;
+}
+//
 /* ****** ****** */
 
 /* end of [JS_basics.cats] */
