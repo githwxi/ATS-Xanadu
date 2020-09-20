@@ -1533,9 +1533,9 @@ lexing_COMMENT_cblock
 fun
 loop0
 (buf:
-&lexbuf >> _, lvl: int): tnode =
+&lexbuf >> _, lev: int): tnode =
 if
-(lvl > 0)
+(lev > 0)
 then let
 //
 val i0 = 
@@ -1548,26 +1548,26 @@ in
 //
 ifcase
 | isASTRSK(c0) =>
-  loop1(buf, lvl)
+  loop1(buf, lev)
 | _(* non-ASTRSK *) =>
   (
     if
     (i0 >= 0)
-    then loop0(buf, lvl)
+    then loop0(buf, lev)
     else
     T_COMMENT_cblock
-    (lvl, lexbuf_get_fullseg(buf))
+    (lev, lexbuf_get_fullseg(buf))
   )
 //
 end // end of [then]
 else
 T_COMMENT_cblock
-(0(*lvl*), lexbuf_get_fullseg(buf))
+(0(*lev*), lexbuf_get_fullseg(buf))
 //
 and
 loop1
 (buf:
-&lexbuf >> _, lvl: int): tnode = let
+&lexbuf >> _, lev: int): tnode = let
 //
 val i1 = 
 (
@@ -1578,14 +1578,14 @@ val c1 = int2char0(i1)
 in
 //
 ifcase
-| isSLASH(c1) => loop0(buf, lvl-1)
-| isASTRSK(c1) => loop1(buf, lvl-0)
-| _(*non-ASTRSK-SLASH*) => loop0(buf, lvl)
+| isSLASH(c1) => loop0(buf, lev-1)
+| isASTRSK(c1) => loop1(buf, lev-0)
+| _(*non-ASTRSK-SLASH*) => loop0(buf, lev)
 //
 end // end of [loop1]
 //
 in
-  loop0(buf, 1(*lvl*))
+  loop0(buf, 1(*lev*))
 end // end of [lexing_COMMENT_cblock]
 
 (* ****** ****** *)
@@ -1597,9 +1597,9 @@ lexing_COMMENT_mlblock
 fun
 loop0
 (buf:
-&lexbuf >> _, lvl: int): tnode =
+&lexbuf >> _, lev: int): tnode =
 if
-(lvl > 0)
+(lev > 0)
 then let
 //
 val i0 = 
@@ -1612,28 +1612,28 @@ in
 //
 ifcase
 | isASTRSK(c0) =>
-  loop1(buf, lvl)
+  loop1(buf, lev)
 | isLPAREN(c0) =>
-  loop2(buf, lvl)
+  loop2(buf, lev)
 | _(* non-ASTRSK-LPAREN *) =>
   (
     if
     (i0 >= 0)
-    then loop0(buf, lvl)
+    then loop0(buf, lev)
     else
     T_COMMENT_mlblock
-    (lvl, lexbuf_get_fullseg(buf))
+    (lev, lexbuf_get_fullseg(buf))
   )
 //
 end // end of [then]
 else
 T_COMMENT_mlblock
-(0(*lvl*), lexbuf_get_fullseg(buf))
+(0(*lev*), lexbuf_get_fullseg(buf))
 //
 and
 loop1
 (buf:
-&lexbuf >> _, lvl: int): tnode = let
+&lexbuf >> _, lev: int): tnode = let
 //
 val i1 = 
 (
@@ -1644,16 +1644,16 @@ val c1 = int2char0(i1)
 in
 //
 ifcase
-| isASTRSK(c1) => loop1(buf, lvl-0)
-| isRPAREN(c1) => loop0(buf, lvl-1)
-| _(*non-ASTRSK-LPAREN*) => loop0(buf, lvl)
+| isASTRSK(c1) => loop1(buf, lev-0)
+| isRPAREN(c1) => loop0(buf, lev-1)
+| _(*non-ASTRSK-LPAREN*) => loop0(buf, lev)
 //
 end // end of [loop1]
 //
 and
 loop2
 (buf:
-&lexbuf >> _, lvl: int): tnode = let
+&lexbuf >> _, lev: int): tnode = let
 //
 val i1 = 
 (
@@ -1664,14 +1664,14 @@ val c1 = int2char0(i1)
 in
 //
 ifcase
-| isASTRSK(c1) => loop0(buf, lvl+1)
-| isLPAREN(c1) => loop2(buf, lvl+0)
-| _(*non-ASTRSK-LPAREN*) => loop0(buf, lvl)
+| isASTRSK(c1) => loop0(buf, lev+1)
+| isLPAREN(c1) => loop2(buf, lev+0)
+| _(*non-ASTRSK-LPAREN*) => loop0(buf, lev)
 //
 end // end of [loop2]
 //
 in
-  loop0(buf, 1(*lvl*))
+  loop0(buf, 1(*lev*))
 end // end of [lexing_COMMENT_mlblock]
 
 (* ****** ****** *)

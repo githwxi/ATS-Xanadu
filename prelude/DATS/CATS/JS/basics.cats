@@ -44,6 +44,43 @@ return ; // [b0] is true
 //
 /* ****** ****** */
 function
+JS_new_var0
+  ()
+{
+  var
+  lvl = {
+    root:[null], offs:0
+  } ; return lvl;
+}
+function
+JS_new_var1
+  (init)
+{
+  var
+  lvl = {
+    root:[init], offs:0
+  } ; return lvl;
+}
+/* ****** ****** */
+function
+JS_lval_get
+  (lvl0)
+{
+  var
+  offs = lvl0.offs;
+  return lvl0.root[offs];
+}
+function
+JS_lval_set
+  (lvl0, obj1)
+{
+  var
+  offs = lvl0.offs;
+  lvl0.root[offs] = obj1;
+  return;
+}
+/* ****** ****** */
+function
 JS_patckerr0()
 {
   throw new Error();
@@ -75,25 +112,6 @@ JS_g_print(obj)
   return;
 }
 //
-/* ****** ****** */
-function
-JS_new_var0
-  ()
-{
-  var
-  lvl = {
-    root:[null], offs:0
-  } ; return lvl;
-}
-function
-JS_new_var1
-  (init)
-{
-  var
-  lvl = {
-    root:[init], offs:0
-  } ; return lvl;
-}
 /* ****** ****** */
 //
 // prelude/bool.sats
@@ -246,20 +264,15 @@ JS_string_print
 //
 function
 JS_UN_p2tr_get
-  (lvl0)
+  (ptr)
 {
-  var
-  offs = lvl0.offs;
-  return lvl0.root[offs];
+  return JS_lval_get(ptr);
 }
 function
 JS_UN_p2tr_set
-  (lvl1, obj2)
+  (ptr, obj)
 {
-  var
-  offs = lvl1.offs;
-  lvl1.root[offs] = obj2;
-  return;
+  JS_lval_set(ptr, obj); return;
 }
 //
 /* ****** ****** */
