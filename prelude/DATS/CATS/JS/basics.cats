@@ -81,18 +81,22 @@ JS_g_print(obj)
 //
 /* ****** ****** */
 function
-JS_bool_neg(b0)
+JS_bool_neg
+  (b0)
 { return !b0 ; }
 /* ****** ****** */
 function
-JS_bool_add(b1, b2)
+JS_bool_add
+  (b1, b2)
 { return (b1 || b2); }
 function
-JS_bool_mul(b1, b2)
+JS_bool_mul
+  (b1, b2)
 { return (b1 && b2); }
 /* ****** ****** */
 function
-JS_bool_print(b0)
+JS_bool_print
+  (b0)
 {
 if(b0)
 {
@@ -103,6 +107,17 @@ else
   JS_g_print("false");
 }
 return ; // JS_bool_print
+}
+/* ****** ****** */
+//
+// prelude/char.sats
+//
+/* ****** ****** */
+function
+JS_char_print
+  (c0)
+{
+  JS_g_print(c0); return;
 }
 /* ****** ****** */
 //
@@ -185,7 +200,8 @@ JS_gint_mod_sint_int
 //
 /* ****** ****** */
 function
-JS_string_print(x0)
+JS_string_print
+  (x0)
 {
   JS_g_print(x0); return;
 }

@@ -550,6 +550,44 @@ x0.node() of
   , "H0Efix("
   , knd0, "; ", fid1, "; ", hfas, "; ", body, ")")
 //
+| H0Eaddr(h0e1) =>
+  (
+   fprint!(out, "H0Eaddr(", h0e1, ")")
+  )
+//
+| H0Efold(h0e1) =>
+  (
+   fprint!(out, "H0Efold(", h0e1, ")")
+  )
+| H0Efree(h0e1) =>
+  (
+   fprint!(out, "H0Efree(", h0e1, ")")
+  )
+//
+| H0Eraise(h0e1) =>
+  (
+  fprint!(out, "H0Eraise(", h0e1, ")")
+  )
+//
+| H0Elazy(h0e1) =>
+  (
+   fprint!(out, "H0Elazy(", h0e1, ")")
+  )
+| H0Ellazy
+  (h0e1, h0es(*frees*)) =>
+  fprint!
+  (out
+  , "H0Ellazy(", h0e1, "; ", h0es, ")")
+//
+| H0Eflat(h0e1) =>
+  (
+   fprint!(out, "H0Eflat(", h0e1, ")")
+  )
+| H0Etalf(h0e1) =>
+  (
+   fprint!(out, "H0Etalf(", h0e1, ")")
+  )
+//
 | H0Enone1(_) =>
   fprint!(out, "H0Enone1(", "...", ")")
 //
