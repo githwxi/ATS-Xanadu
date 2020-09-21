@@ -539,11 +539,17 @@ H0Etimp of
 | H0Edapp of
   (h0exp, int(*npf*), h0explst)
 //
+| H0Epcon of
+  (h0exp(*con*), label(*proj*))
+| H0Eproj of
+  (h0exp(*rcd*),
+   label(*proj*), int(*index*))
+//
 | H0Elet of
-  (h0dclist, h0exp(*seqn*))
+  (h0dclist, h0exp(*sequence*))
 //
 | H0Eseqn of
-  (h0explst, h0exp(*last*))
+  (h0explst(*semi*), h0exp(*last*))
 //
 | H0Etuple of
   (int(*knd*), int(*npf*), h0explst)
