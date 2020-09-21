@@ -557,6 +557,27 @@ end // end of [auxstr]
 (* ****** ****** *)
 
 fun
+auxtop
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Etop(tok) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Etop(tok))
+end // end of [auxtop]
+
+(* ****** ****** *)
+
+fun
 auxvar
 (d3e0: d3exp): h0exp =
 let
@@ -1201,6 +1222,9 @@ D3Echr _ => auxchr(d3e0)
 D3Eflt _ => auxflt(d3e0)
 |
 D3Estr _ => auxstr(d3e0)
+//
+|
+D3Etop _ => auxtop(d3e0)
 //
 |
 D3Evar _ => auxvar(d3e0)

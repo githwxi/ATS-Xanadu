@@ -513,6 +513,8 @@ h0exp_node =
 | H0Eflt of token
 | H0Estr of token
 //
+| H0Etop of token
+//
 | H0Evar of hdvar
 | H0Evknd of
   (int(*knd*), hdvar)
