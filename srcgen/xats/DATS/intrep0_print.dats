@@ -510,6 +510,18 @@ x0.node() of
   , "H0Edapp("
   , h0f0, "; ", npf1, "; ", h0es, ")")
 //
+| H0Epcon
+  (h0e1, lab2) =>
+  fprint!
+  ( out
+  , "H0Epcon(", h0e1, "; ", lab2, ")")
+| H0Eproj
+  (h0e1, lab2, idx3) =>
+  fprint!
+  ( out
+  , "H0Eproj("
+  , h0e1, "; ", lab2, "; ", idx3, ")")
+//
 | H0Elet
   ( dcls
   , h0e1(*scope*)) =>

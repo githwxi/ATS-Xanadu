@@ -871,6 +871,69 @@ end // end of [aux_where]
 (* ****** ****** *)
 
 fun
+aux_pcon
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Epcon(h0e1, lab2)
+) where
+{
+val-
+D3Epcon
+(d3e1, lab2) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+//
+} (* where *) // end-of-val
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end
+
+fun
+aux_proj
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+H0Eproj(h0e1, lab2, idx3)
+) where
+{
+val-
+D3Eproj
+( d3e1
+, lab2, idx3) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+//
+} (* where *) // end-of-val
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end
+
+(* ****** ****** *)
+
+fun
 aux_seqn
 (d3e0: d3exp): h0exp =
 let
@@ -1250,6 +1313,11 @@ D3Edapp _ => auxdapp(d3e0)
 | D3Elet _ => aux_let(d3e0)
 |
 D3Ewhere _ => aux_where(d3e0)
+//
+|
+D3Epcon _ => aux_pcon(d3e0)
+|
+D3Eproj _ => aux_proj(d3e0)
 //
 |
 D3Eseqn _ => aux_seqn(d3e0)
