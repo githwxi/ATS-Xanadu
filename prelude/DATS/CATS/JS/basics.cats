@@ -44,6 +44,14 @@ return ; // [b0] is true
 //
 /* ****** ****** */
 function
+JS_lval_err
+  (loc)
+{
+  // non-left-val!
+  throw new Error(loc);
+}
+/* ****** ****** */
+function
 JS_new_var0
   ()
 {
