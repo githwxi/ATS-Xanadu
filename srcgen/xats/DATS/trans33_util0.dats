@@ -988,7 +988,7 @@ d3e1.node() of
     val tprj = t2ype_lft(t2p2)
   in
     d33exp_make_node
-    (loc0, tprj, D3Eproj(d3el, lab2, i0))
+    (loc0, tprj, D3Eplft(d3el, lab2, i0))
   end
 //
 // HX: deref
@@ -997,7 +997,7 @@ d3e1.node() of
     val tprj = t2ype_lft(t2p2)
   in
     d33exp_make_node
-    (loc0, tprj, D3Eproj(d3el, lab2, i0))
+    (loc0, tprj, D3Eplft(d3el, lab2, i0))
   end
 //
 | _ (* non-D3Eflat *) => 

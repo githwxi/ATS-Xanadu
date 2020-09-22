@@ -443,7 +443,17 @@ d3e0.node() of
 *)
   val () = tread33_d3exp(d3e1)
   }
+//
 | D3Epbox
+  (d3e1, lab2, idx2) =>
+  {
+(*
+  val () = aux_D3Epbox(d3e0)
+*)
+  val () = tread33_d3exp(d3e1)
+  }
+//
+| D3Eproj
   (d3e1, lab2, idx2) =>
   {
 (*
@@ -451,11 +461,11 @@ d3e0.node() of
 *)
   val () = tread33_d3exp(d3e1)
   }
-| D3Eproj
+| D3Eplft
   (d3e1, lab2, idx2) =>
   {
 (*
-  val () = aux_D3Eproj(d3e0)
+  val () = aux_D3Eplft(d3e0)
 *)
   val () = tread33_d3exp(d3e1)
   }

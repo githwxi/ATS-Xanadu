@@ -384,6 +384,7 @@ d3e0.node() of
   ( loc0, t2p0
   , D3Epbox(d3e1, lab2, idx2))
   end
+//
 | D3Eproj
   (d3e1, lab2, idx2) =>
   let
@@ -393,7 +394,17 @@ d3e0.node() of
   d3exp_make_node
   ( loc0, t2p0
   , D3Eproj(d3e1, lab2, idx2))
-  end
+  end // end of [D3Eproj]
+| D3Eplft
+  (d3e1, lab2, idx2) =>
+  let
+  val d3e1 =
+  trans3t_dexp(env0, d3e1)
+  in
+  d3exp_make_node
+  ( loc0, t2p0
+  , D3Eplft(d3e1, lab2, idx2))
+  end // end of [D3Eplft]
 //
 | D3Elet(d3cs, d3e1) =>
   let

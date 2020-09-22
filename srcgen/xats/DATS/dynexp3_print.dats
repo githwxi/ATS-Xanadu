@@ -439,11 +439,18 @@ x0.node() of
   ( out
   , "D3Epbox("
   , d3e1, "; ", lab2, "; ", idx2, ")")
+//
 | D3Eproj
   (d3e1, lab2, idx2) =>
   fprint!
   ( out
   , "D3Eproj("
+  , d3e1, "; ", lab2, "; ", idx2, ")")
+| D3Eplft
+  (d3e1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "D3Eplft("
   , d3e1, "; ", lab2, "; ", idx2, ")")
 //
 | D3Elet(d3cs, d3e2) =>
