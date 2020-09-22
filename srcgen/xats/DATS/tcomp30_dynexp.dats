@@ -906,6 +906,39 @@ in
 end
 
 fun
+aux_pbox
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+H0Epbox(h0e1, lab2, idx2)
+) where
+{
+val-
+D3Epbox
+( d3e1
+, lab2, idx2) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+//
+} (* where *) // end-of-val
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end
+
+(* ****** ****** *)
+
+fun
 aux_proj
 (d3e0: d3exp): h0exp =
 let
@@ -921,8 +954,7 @@ h0t0 = tcomp30_type(t2p0)
 val
 hend =
 (
-  H0Eproj
-  (knd0, h0e1, lab2, idx2)
+H0Eproj(h0e1, lab2, idx2)
 ) where
 {
 val-
@@ -932,47 +964,71 @@ D3Eproj
 //
 val h0e1 = tcomp30_dexp(d3e1)
 //
-local
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end
+
 fun
-auxtknd
-( h0t1
-: h0typ): int =
+aux_plft
+(d3e0: d3exp): h0exp =
 let
 //
-(*
-val () =
-println!
-("auxtknd: h0e1 = ", h0e1)
-*)
-val () =
-println!
-("auxtknd: h0t1 = ", h0t1)
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+H0Eplft(h0e1, lab2, idx2)
+) where
+{
+val-
+D3Eplft
+( d3e1
+, lab2, idx2) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+//
+}
 //
 in
-(
-case+
-h0t1.node() of
-|
-H0Ttyrec
-(tknd, _, _) =>
-(
-case+ tknd of
-| TYRECbox0() => 1
-| TYRECbox1() => 1
-| _ (* else *) => 0
-)
-| H0Tlft
-( h0t1 ) => auxtknd(h0t1)
+  h0exp_make_node(loc0, h0t0, hend)
+end
+
+fun
+aux_pptr
+(d3e0: d3exp): h0exp =
+let
 //
-|
-_(*non-H0Ttyrec*) => 1(*boxed*)
-)
-end // end of [let]
-in
-val knd0 = auxtknd(h0e1.type())
-end // end of [local]
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
 //
-} (* where *) // end-of-val
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+H0Epptr(h0e1, lab2, idx2)
+) where
+{
+val-
+D3Epptr
+( d3e1
+, lab2, idx2) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+//
+}
 //
 in
   h0exp_make_node(loc0, h0t0, hend)
@@ -1392,7 +1448,14 @@ D3Ewhere _ => aux_where(d3e0)
 |
 D3Epcon _ => aux_pcon(d3e0)
 |
+D3Epbox _ => aux_pbox(d3e0)
+//
+|
 D3Eproj _ => aux_proj(d3e0)
+|
+D3Eplft _ => aux_plft(d3e0)
+|
+D3Epptr _ => aux_pptr(d3e0)
 //
 |
 D3Eseqn _ => aux_seqn(d3e0)

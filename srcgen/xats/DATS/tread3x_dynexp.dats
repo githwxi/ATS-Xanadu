@@ -520,6 +520,14 @@ d3e0.node() of
   val () = tread3x_d3exp(d3e1)
   }
 //
+| D3Eproj
+  (d3e1, lab2, idx2) =>
+  {
+(*
+  val () = aux_D3Eproj(d3e0)
+*)
+  val () = tread3x_d3exp(d3e1)
+  }
 | D3Eplft
   (d3e1, lab2, idx2) =>
   {
@@ -528,11 +536,11 @@ d3e0.node() of
 *)
   val () = tread3x_d3exp(d3e1)
   }
-| D3Eproj
+| D3Epptr
   (d3e1, lab2, idx2) =>
   {
 (*
-  val () = aux_D3Eproj(d3e0)
+  val () = aux_D3Epptr(d3e0)
 *)
   val () = tread3x_d3exp(d3e1)
   }

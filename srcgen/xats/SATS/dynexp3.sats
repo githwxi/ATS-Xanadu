@@ -375,6 +375,9 @@ for the meaning of knd
 | D3Eplft of
   (d3exp(*flt*),
    label(*proj*), int(*index*))
+| D3Epptr of
+  (d3exp(*ptr*),
+   label(*proj*), int(*index*))
 //
 | D3Elet of
   (d3eclist, d3exp(*sequence*))

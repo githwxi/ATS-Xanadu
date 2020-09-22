@@ -452,6 +452,12 @@ x0.node() of
   ( out
   , "D3Eplft("
   , d3e1, "; ", lab2, "; ", idx2, ")")
+| D3Epptr
+  (d3e1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "D3Epptr("
+  , d3e1, "; ", lab2, "; ", idx2, ")")
 //
 | D3Elet(d3cs, d3e2) =>
   fprint!
