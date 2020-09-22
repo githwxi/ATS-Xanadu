@@ -280,6 +280,8 @@ h0typ_node =
 | H0Tcst of htcst // constant
 | H0Tvar of htvar // variable
 //
+| H0Tlft of h0typ // left-value
+//
 | H0Tfun of
   ( int(*npf*)
   , h0typlst(*arg*),h0typ(*res*)
@@ -540,10 +542,11 @@ H0Etimp of
   (h0exp, int(*npf*), h0explst)
 //
 | H0Epcon of
-  (h0exp(*con*), label(*proj*))
+( h0exp(*con*), label(*proj*) )
 | H0Eproj of
-  (h0exp(*rcd*),
-   label(*proj*), int(*index*))
+( int(*knd*),
+  h0exp(*rcd*),
+  label(*proj*), int(*index*) )
 //
 | H0Elet of
   (h0dclist, h0exp(*sequence*))
@@ -559,7 +562,7 @@ H0Etimp of
 //
 |
 H0Eif0 of
-(h0exp, h0exp, h0expopt(*else*))
+( h0exp, h0exp, h0expopt(*else*) )
 |
 H0Ecase of
 (int(*knd*), h0exp(*val*), h0claulst)

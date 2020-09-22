@@ -11,22 +11,22 @@ UN =
 (* ****** ****** *)
 #extern
 fun
-JS_UN_p2tr_get
+XATS2JS_UN_p2tr_get
 {a:vt}
 (p0: p2tr(a)): a // = $ext()
 impltmp
 <a>(*tmp*)
-$UN.p2tr_get = JS_UN_p2tr_get
+$UN.p2tr_get = XATS2JS_UN_p2tr_get
 (* ****** ****** *)
 #extern
 fun
-JS_UN_p2tr_set
+XATS2JS_UN_p2tr_set
 {a:vt}
 ( p0
 : p2tr(a), x0: a): void // = $ext()
 impltmp
 <a>(*tmp*)
-$UN.p2tr_set = JS_UN_p2tr_set
+$UN.p2tr_set = XATS2JS_UN_p2tr_set
 (* ****** ****** *)
 
-(* end of [JS_unsafe.dats] *)
+(* end of [XATS2JS_unsafe.dats] *)

@@ -197,6 +197,8 @@ list_map$fopr<
 
 local
 
+(* ****** ****** *)
+
 fun
 auxcst
 (t2p0: t2ype): h0typ =
@@ -224,6 +226,24 @@ val htv1 = tcomp30_svar(s2v1)
 in
 h0typ_make_node(hst0, H0Tvar(htv1))
 end
+
+(* ****** ****** *)
+
+fun
+auxlft
+(t2p0: t2ype): h0typ =
+let
+val-
+T2Plft
+(t2p1) = t2p0.node()
+val s2t0 = t2p0.sort()
+val hst0 = tcomp30_sort(s2t0)
+val h2t1 = tcomp30_type(t2p1)
+in
+h0typ_make_node(hst0, H0Tlft(h2t1))
+end
+
+(* ****** ****** *)
 
 fun
 auxfun
@@ -300,15 +320,19 @@ in
 case+
 t2p0.node() of
 //
-| T2Pcst _ =>
-  auxcst(t2p0)
-| T2Pvar _ =>
-  auxvar(t2p0)
-| T2Pfun _ =>
-  auxfun(t2p0)
+|
+T2Pcst _ => auxcst(t2p0)
+|
+T2Pvar _ => auxvar(t2p0)
 //
-| T2Ptyrec _ =>
-  aux_tyrec(t2p0)
+|
+T2Plft _ => auxlft(t2p0)
+//
+|
+T2Pfun _ => auxfun(t2p0)
+//
+|
+T2Ptyrec _ => aux_tyrec(t2p0)
 //
 | _(*rest-of-t2ype*) => let
 //

@@ -443,8 +443,16 @@ d3e0.node() of
 *)
   val () = tread33_d3exp(d3e1)
   }
+| D3Epbox
+  (d3e1, lab2, idx2) =>
+  {
+(*
+  val () = aux_D3Eproj(d3e0)
+*)
+  val () = tread33_d3exp(d3e1)
+  }
 | D3Eproj
-  (d3e1, lab2, idx3) =>
+  (d3e1, lab2, idx2) =>
   {
 (*
   val () = aux_D3Eproj(d3e0)

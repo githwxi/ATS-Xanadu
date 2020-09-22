@@ -1950,8 +1950,7 @@ D3Eseqn _ => aux_seqn(env0, d3e0)
 |
 D3Etuple _ => aux_tuple(env0, d3e0)
 //
-|
-D3Elet _ => aux_let(env0, d3e0)
+| D3Elet _ => aux_let(env0, d3e0)
 |
 D3Ewhere _ => aux_where(env0, d3e0)
 //

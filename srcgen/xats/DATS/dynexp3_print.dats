@@ -433,6 +433,12 @@ x0.node() of
   fprint!
   ( out
   , "D3Epcon(", d3e1, "; ", lab2, ")")
+| D3Epbox
+  (d3e1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "D3Epbox("
+  , d3e1, "; ", lab2, "; ", idx2, ")")
 | D3Eproj
   (d3e1, lab2, idx2) =>
   fprint!

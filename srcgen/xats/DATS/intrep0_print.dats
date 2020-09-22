@@ -219,6 +219,9 @@ x0.node() of
 | H0Tvar(htv) =>
   fprint!(out, "H0Tvar(", htv, ")")
 //
+| H0Tlft(h0t) =>
+  fprint!(out, "H0Tlft(", h0t, ")")
+//
 | H0Tfun
   (npf, h0ts, h0t1) =>
   fprint!
@@ -516,11 +519,14 @@ x0.node() of
   ( out
   , "H0Epcon(", h0e1, "; ", lab2, ")")
 | H0Eproj
-  (h0e1, lab2, idx3) =>
+  ( knd0
+  , h0e1(*rcd*)
+  , lab2, idx2) =>
   fprint!
   ( out
   , "H0Eproj("
-  , h0e1, "; ", lab2, "; ", idx3, ")")
+  , knd0, "; "
+  , h0e1, "; ", lab2, "; ", idx2, ")")
 //
 | H0Elet
   ( dcls
