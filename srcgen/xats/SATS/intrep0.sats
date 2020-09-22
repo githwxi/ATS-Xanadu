@@ -544,17 +544,17 @@ H0Etimp of
 | H0Epcon of
 ( h0exp(*con*), label(*proj*) )
 | H0Epbox of
-( int(*knd*),
-  h0exp(*rcd*),
+( h0exp(*rcd*),
   label(*proj*), int(*index*) )
 //
 | H0Eproj of
-( int(*knd*),
-  h0exp(*rcd*),
+( h0exp(*rcd*),
   label(*proj*), int(*index*) )
 | H0Eplft of
-( int(*knd*),
-  h0exp(*rcd*),
+( h0exp(*rcd*),
+  label(*proj*), int(*index*) )
+| H0Epptr of
+( h0exp(*rcd*),
   label(*proj*), int(*index*) )
 //
 | H0Elet of

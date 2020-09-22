@@ -1039,6 +1039,10 @@ println!
 *)
 //
 (*
+//
+HX-2020-09-22:
+[knd1] should be 0!!!
+//
 val
 knd1 = tyrec_kind(t2p1)
 *)
@@ -1066,7 +1070,7 @@ val tptr =
 t2ype_app1(the_t2ype_p2tr, t2p2)
 in
   d33exp_make_node
-  (loc0, tptr, D3Eproj(d3e1, lab2, i0))
+  (loc0, tptr, D3Epptr(d3e1, lab2, i0))
 end // end of [Some_vt]
 //
 end // end of [d33exp_proj1_up]

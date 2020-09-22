@@ -518,33 +518,31 @@ x0.node() of
   fprint!
   ( out
   , "H0Epcon(", h0e1, "; ", lab2, ")")
+//
 | H0Epbox
-  ( knd0
-  , h0e1(*rcd*)
+  ( h0e1(*rcd*)
   , lab2, idx2) =>
   fprint!
-  ( out
-  , "H0Epbox("
-  , knd0, "; "
+  ( out, "H0Epbox("
   , h0e1, "; ", lab2, "; ", idx2, ")")
 //
 | H0Eproj
-  ( knd0
-  , h0e1(*rcd*)
+  ( h0e1(*rcd*)
   , lab2, idx2) =>
   fprint!
-  ( out
-  , "H0Eproj("
-  , knd0, "; "
+  ( out, "H0Eproj("
   , h0e1, "; ", lab2, "; ", idx2, ")")
 | H0Eplft
-  ( knd0
-  , h0e1(*rcd*)
+  ( h0e1(*rcd*)
   , lab2, idx2) =>
   fprint!
-  ( out
-  , "H0Eplft("
-  , knd0, "; "
+  ( out, "H0Eplft("
+  , h0e1, "; ", lab2, "; ", idx2, ")")
+| H0Epptr
+  ( h0e1(*rcd*)
+  , lab2, idx2) =>
+  fprint!
+  ( out, "H0Epptr("
   , h0e1, "; ", lab2, "; ", idx2, ")")
 //
 | H0Elet

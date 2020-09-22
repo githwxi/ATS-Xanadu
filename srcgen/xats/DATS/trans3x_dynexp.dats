@@ -342,6 +342,19 @@ d3exp_make_node
 , t2p0, D3Eplft(d3e1, lab2, idx2)
 )
 end
+|
+D3Epptr
+( d3e1, lab2, idx2 ) =>
+let
+val
+d3e1 =
+trans3x_dexp(env0, d3e1)
+in
+d3exp_make_node
+( loc0
+, t2p0, D3Epptr(d3e1, lab2, idx2)
+)
+end
 //
 |
 D3Elet
