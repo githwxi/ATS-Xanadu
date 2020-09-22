@@ -3,9 +3,16 @@
 Basics for Xats2js
 */
 /* ****** ****** */
+var
+XATS2JS_top = null
+var
+XATS2JS_none = null
+var
+XATS2JS_void = null
+/* ****** ****** */
 //
 function
-JS_assert
+XATS2JS_assert
   ( b0 )
 {
 if
@@ -18,7 +25,7 @@ return ; // [b0] is true
 }
 //
 function
-JS_assertloc
+XATS2JS_assertloc
   ( b0, loc )
 {
 if
@@ -30,7 +37,7 @@ if
 return ; // [b0] is true
 }
 function
-JS_assertmsg
+XATS2JS_assertmsg
   ( b0, msg )
 {
 if
@@ -44,7 +51,7 @@ return ; // [b0] is true
 //
 /* ****** ****** */
 function
-JS_lval_err
+XATS2JS_lval_err
   (loc)
 {
   // non-left-val!
@@ -52,26 +59,7 @@ JS_lval_err
 }
 /* ****** ****** */
 function
-JS_new_var0
-  ()
-{
-  var
-  lvl = {
-    root:[null], offs:0
-  } ; return lvl;
-}
-function
-JS_new_var1
-  (init)
-{
-  var
-  lvl = {
-    root:[init], offs:0
-  } ; return lvl;
-}
-/* ****** ****** */
-function
-JS_lval_get
+XATS2JS_lval_get
   (lvl0)
 {
   var
@@ -79,7 +67,7 @@ JS_lval_get
   return lvl0.root[offs];
 }
 function
-JS_lval_set
+XATS2JS_lval_set
   (lvl0, obj1)
 {
   var
@@ -89,30 +77,53 @@ JS_lval_set
 }
 /* ****** ****** */
 function
-JS_patckerr0()
+XATS2JS_patckerr0()
 {
   throw new Error();
 }
 function
-JS_patckerr1(loc)
+XATS2JS_patckerr1(loc)
 {
   throw new Error(loc);
 }
 /* ****** ****** */
 function
-JS_matcherr0()
+XATS2JS_matcherr0()
 {
   throw new Error();
 }
 function
-JS_matcherr1(loc)
+XATS2JS_matcherr1(loc)
 {
   throw new Error(loc);
+}
+/* ****** ****** */
+function
+XATS2JS_new_var0
+  ()
+{
+  return {root:[null], offs:0};
+}
+function
+XATS2JS_new_var1
+  (init)
+{
+  return {root:[init], offs:0};
+}
+/* ****** ****** */
+function
+XATS2JS_new_cptr
+  (lvl1, idx2)
+{
+  var
+  con1 =
+  XATS2JS_lval_get(lvl1);
+  return {root:con1, offs:idx2}; 
 }
 /* ****** ****** */
 //
 function
-JS_g_print(obj)
+XATS2JS_g_print(obj)
 {
   var
   rep = obj.toString();
@@ -126,32 +137,32 @@ JS_g_print(obj)
 //
 /* ****** ****** */
 function
-JS_bool_neg
+XATS2JS_bool_neg
   (b0)
 { return !b0 ; }
 /* ****** ****** */
 function
-JS_bool_add
+XATS2JS_bool_add
   (b1, b2)
 { return (b1 || b2); }
 function
-JS_bool_mul
+XATS2JS_bool_mul
   (b1, b2)
 { return (b1 && b2); }
 /* ****** ****** */
 function
-JS_bool_print
+XATS2JS_bool_print
   (b0)
 {
 if(b0)
 {
-  JS_g_print("true");
+  XATS2JS_g_print("true");
 }
 else
 {
-  JS_g_print("false");
+  XATS2JS_g_print("false");
 }
-return ; // JS_bool_print
+return ; // XATS2JS_bool_print
 }
 /* ****** ****** */
 //
@@ -159,10 +170,10 @@ return ; // JS_bool_print
 //
 /* ****** ****** */
 function
-JS_char_print
+XATS2JS_char_print
   (c0)
 {
-  JS_g_print(c0); return;
+  XATS2JS_g_print(c0); return;
 }
 /* ****** ****** */
 //
@@ -170,72 +181,72 @@ JS_char_print
 //
 /* ****** ****** */
 function
-JS_gint_print_sint
+XATS2JS_gint_print_sint
   (x0)
 {
-  JS_g_print(x0); return;
+  XATS2JS_g_print(x0); return;
 }
 function
-JS_gint_print_uint
+XATS2JS_gint_print_uint
   (x0)
 {
-  JS_g_print(x0); return;
+  XATS2JS_g_print(x0); return;
 }
 /* ****** ****** */
 function
-JS_gint_neg_sint
+XATS2JS_gint_neg_sint
   (x0)
 { return (-x0); }
 /* ****** ****** */
 function
-JS_gint_succ_sint
+XATS2JS_gint_succ_sint
   (x0)
 { return (x0 + 1); }
 function
-JS_gint_pred_sint
+XATS2JS_gint_pred_sint
   (x0)
 { return (x0 - 1); }
 /* ****** ****** */
 function
-JS_gint_lt_sint_sint
+XATS2JS_gint_lt_sint_sint
   (x1, x2)
 { return (x1 < x2); }
 function
-JS_gint_gt_sint_sint
+XATS2JS_gint_gt_sint_sint
   (x1, x2)
 { return (x1 > x2); }
 function
-JS_gint_eq_sint_sint
+XATS2JS_gint_eq_sint_sint
   (x1, x2)
 { return (x1 === x2); }
 function
-JS_gint_lte_sint_sint
+XATS2JS_gint_lte_sint_sint
   (x1, x2)
 { return (x1 <= x2); }
 function
-JS_gint_gte_sint_sint
+XATS2JS_gint_gte_sint_sint
   (x1, x2)
 { return (x1 >= x2); }
 function
-JS_gint_neq_sint_sint
+XATS2JS_gint_neq_sint_sint
   (x1, x2)
 { return (x1 !== x2); }
 /* ****** ****** */
 function
-JS_gint_add_sint_sint
+XATS2JS_gint_add_sint_sint
   (x1, x2)
 { return (x1 + x2); }
 function
-JS_gint_sub_sint_sint
+XATS2JS_gint_sub_sint_sint
   (x1, x2)
 { return (x1 - x2); }
 function
-JS_gint_mul_sint_sint
+XATS2JS_gint_mul_sint_sint
   (x1, x2)
 { return (x1 * x2); }
 /* ****** ****** */
 function
-JS_gint_div_sint_sint
+XATS2JS_gint_div_sint_sint
   (x1, x2)
 { 
   var q0 = x1 / x2;
@@ -250,7 +261,7 @@ JS_gint_div_sint_sint
   }
 }
 function
-JS_gint_mod_sint_int
+XATS2JS_gint_mod_sint_int
   (x1, x2)
 { return (x1 % x2); }
 /* ****** ****** */
@@ -259,10 +270,10 @@ JS_gint_mod_sint_int
 //
 /* ****** ****** */
 function
-JS_string_print
+XATS2JS_string_print
   (x0)
 {
-  JS_g_print(x0); return;
+  XATS2JS_g_print(x0); return;
 }
 /* ****** ****** */
 //
@@ -271,18 +282,18 @@ JS_string_print
 /* ****** ****** */
 //
 function
-JS_UN_p2tr_get
+XATS2JS_UN_p2tr_get
   (ptr)
 {
-  return JS_lval_get(ptr);
+  return XATS2JS_lval_get(ptr);
 }
 function
-JS_UN_p2tr_set
+XATS2JS_UN_p2tr_set
   (ptr, obj)
 {
-  JS_lval_set(ptr, obj); return;
+  XATS2JS_lval_set(ptr, obj); return;
 }
 //
 /* ****** ****** */
 
-/* end of [JS_basics.cats] */
+/* end of [XATS2JS_basics.cats] */

@@ -975,7 +975,7 @@ then
 (
 // HX: boxed
   d33exp_make_node
-  (loc0, t2p2, D3Eproj(d3e1, lab2, i0))
+  (loc0, t2p2, D3Epbox(d3e1, lab2, i0))
 )
 else
 (

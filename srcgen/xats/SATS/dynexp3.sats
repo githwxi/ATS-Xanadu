@@ -365,8 +365,11 @@ for the meaning of knd
 //
 | D3Epcon of
   (d3exp(*con*), label(*proj*))
+| D3Epbox of
+  (d3exp(*box*),
+   label(*proj*), int(*index*))
 | D3Eproj of
-  (d3exp(*rcd*),
+  (d3exp(*flt*),
    label(*proj*), int(*index*))
 //
 | D3Elet of

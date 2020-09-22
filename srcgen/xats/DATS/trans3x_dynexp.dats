@@ -288,10 +288,50 @@ trans3x_dexplst(env0, d3es)
 in
 d3exp_make_node
 ( loc0
-, t2p0, D3Edapp(d3f1, npf2, d3es))
+, t2p0, D3Edapp(d3f1, npf2, d3es)
+)
 end
 |
-D3Elet(d3cs, d3e1) =>
+D3Epcon
+(d3e1(*con*), lab2) =>
+let
+val
+d3e1 =
+trans3x_dexp(env0, d3e1)
+in
+d3exp_make_node
+(loc0, t2p0, D3Epcon(d3e1, lab2))
+end
+|
+D3Epbox
+( d3e1, lab2, idx2 ) =>
+let
+val
+d3e1 =
+trans3x_dexp(env0, d3e1)
+in
+d3exp_make_node
+( loc0
+, t2p0, D3Epbox(d3e1, lab2, idx2)
+)
+end
+|
+D3Eproj
+( d3e1, lab2, idx2 ) =>
+let
+val
+d3e1 =
+trans3x_dexp(env0, d3e1)
+in
+d3exp_make_node
+( loc0
+, t2p0, D3Eproj(d3e1, lab2, idx2)
+)
+end
+//
+|
+D3Elet
+(d3cs, d3e1(*seqn*)) =>
 let
 val () =
 tr3xenv_add_let1(env0)
