@@ -600,6 +600,14 @@ H0Ecase of
 | H0Eflat of h0exp(*l-value*)
 | H0Etalf of h0exp(*H0Eflat*)
 //
+// HX-2019-12-18:
+// kind=0: undecided
+// kind=1: derefence
+// kind=2: lazy-eval
+// kind=3: llazy-eval
+| H0Eeval of
+  (int(*kind*), h0exp(*source*))
+//
 | H0Enone0 of () // HX: nil/none/null
 | H0Enone1 of (dataptr) // HX: for ignores
 //
