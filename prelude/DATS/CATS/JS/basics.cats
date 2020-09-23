@@ -120,6 +120,15 @@ XATS2JS_new_cptr
   XATS2JS_lval_get(lvl1);
   return {root:con1, offs:idx2}; 
 }
+function
+XATS2JS_new_tptr
+  (lvl1, idx2)
+{
+  var
+  tup1 =
+  XATS2JS_lval_get(lvl1);
+  return {root:tup1, offs:idx2}; 
+}
 /* ****** ****** */
 //
 function

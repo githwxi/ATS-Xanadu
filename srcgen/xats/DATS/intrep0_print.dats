@@ -638,6 +638,13 @@ x0.node() of
    fprint!(out, "H0Etalf(", h0e1, ")")
   )
 //
+| H0Eeval(knd0, h0e1) =>
+  (
+   fprint!
+   ( out
+   , "H0Eeval(", knd0, "; ", h0e1, ")")
+  )
+//
 | H0Enone0() => // nil/none/null
   fprint!(out, "H0Enone0(", ")")
 //
