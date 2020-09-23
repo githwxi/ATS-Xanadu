@@ -154,8 +154,7 @@ aux_f3as_body(env0, f3as, body)
 //
 in
 let
-val () =
-tr3xenv_pop_fix1(env0)
+val () = tr3xenv_pop_fix1(env0)
 in
 D3Efix
 ( knd
@@ -834,6 +833,62 @@ end // end-of-let // end of [aux_vardecl]
 
 (* ****** ****** *)
 
+fun
+aux_impdecl3
+( env0:
+! tr3xenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cimpdecl3
+( tok0
+, stmp, mopt
+, sqas, tqas
+, id2c
+, ti3a, ti2s
+, f3as
+, res1, body) = d3cl.node()
+//
+local
+fun
+aux_f3as_body
+( env0
+: !tr3xenv
+, f3as
+: f3arglst, body: d3exp): d3exp =
+let
+val () =
+tr3xenv_add_lams(env0, f3as)
+//
+val
+body = trans3x_dexp(env0, body)
+//
+in
+let
+val () = tr3xenv_pop_lams(env0) in body
+end
+end // end of [aux_f3as_body]
+in
+val body =
+aux_f3as_body(env0, f3as, body)
+end // end of [local]
+//
+in
+d3ecl_make_node
+( loc0
+, D3Cimpdecl3
+  ( tok0
+  , stmp, mopt
+  , sqas, tqas
+  , id2c, ti3a, ti2s, f3as, res1, body))
+end // end of [aux_impdecl3]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -881,6 +936,9 @@ D3Cfundecl _ => aux_fundecl(env0, d3cl)
 D3Cvaldecl _ => aux_valdecl(env0, d3cl)
 |
 D3Cvardecl _ => aux_vardecl(env0, d3cl)
+//
+|
+D3Cimpdecl3 _ => aux_impdecl3(env0, d3cl)
 //
 | _(*rest-of-d3ecl*) => d3cl // yet-to-be-handled
 //
