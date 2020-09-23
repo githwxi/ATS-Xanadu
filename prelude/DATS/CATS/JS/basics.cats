@@ -108,36 +108,69 @@ function
 XATS2JS_new_var1
   (init)
 {
-  return {root:[init], offs:0};
+return {root:[init], offs:0};
 }
 /* ****** ****** */
 function
 XATS2JS_new_cptr
   (lvl1, idx2)
 {
-  var
-  con1 =
-  XATS2JS_lval_get(lvl1);
-  return {root:con1, offs:idx2}; 
+var
+con1 =
+XATS2JS_lval_get(lvl1);
+return {root:con1, offs:idx2}; 
 }
 function
 XATS2JS_new_tptr
   (lvl1, idx2)
 {
-  var
-  tup1 =
-  XATS2JS_lval_get(lvl1);
-  return {root:tup1, offs:idx2}; 
+var
+tup1 =
+XATS2JS_lval_get(lvl1);
+return {root:tup1, offs:idx2}; 
 }
+/* ****** ****** */
+
+function
+XATS2JS_new_lazy
+  (thunk)
+{
+return {
+  lztag: 0
+, lzfun: thunk, lzval: null
+}
+} // end of [XATS2JS_new_lazy]
+
+function
+XATS2JS_lazy_eval
+  (lzobj)
+{
+//
+var lzres;
+//
+if
+(lzobj.lztag===0)
+{
+lzres =
+lzobj.lzfun();
+lzobj.lztag = 1;
+lzobj.lzval = lzres;
+} else
+{
+lzres = lzobj.lzval;
+} ;
+return lzres; // lazy_eval
+}
+
 /* ****** ****** */
 //
 function
 XATS2JS_g_print(obj)
 {
-  var
-  rep = obj.toString();
-  process.stdout.write(rep);
-  return;
+var
+rep = obj.toString();
+process.stdout.write(rep);
+return; // XATS2JS_g_print
 }
 //
 /* ****** ****** */
@@ -182,7 +215,8 @@ function
 XATS2JS_char_print
   (c0)
 {
-  XATS2JS_g_print(c0); return;
+  XATS2JS_g_print(c0);
+  return; // char_print
 }
 /* ****** ****** */
 //
@@ -193,13 +227,15 @@ function
 XATS2JS_gint_print_sint
   (x0)
 {
-  XATS2JS_g_print(x0); return;
+  XATS2JS_g_print(x0);
+  return; // gint_print_sint
 }
 function
 XATS2JS_gint_print_uint
   (x0)
 {
-  XATS2JS_g_print(x0); return;
+  XATS2JS_g_print(x0);
+  return; // gint_print_uint
 }
 /* ****** ****** */
 function

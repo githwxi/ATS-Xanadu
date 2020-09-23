@@ -539,26 +539,27 @@ H0Etimp of
 ) (* end of [H0Etimp] *)
 //
 | H0Edapp of
-  (h0exp, int(*npf*), h0explst)
+  ( h0exp//fun
+  , int(*npf*), h0explst(*arg*) )
 //
 | H0Epcon of
-( h0exp(*con*), label(*proj*) )
+  ( h0exp(*con*), label(*proj*) )
 | H0Epbox of
-( h0exp(*rcd*),
-  label(*proj*), int(*index*) )
+  ( h0exp(*rcd*),
+    label(*proj*), int(*index*) )
 //
 | H0Eproj of
-( h0exp(*rcd*),
-  label(*proj*), int(*index*) )
+  ( h0exp(*rcd*),
+    label(*proj*), int(*index*) )
 | H0Eplft of
-( h0exp(*rcd*),
-  label(*proj*), int(*index*) )
+  ( h0exp(*rcd*),
+    label(*proj*), int(*index*) )
 | H0Epptr of
-( h0exp(*rcd*),
-  label(*proj*), int(*index*) )
+  ( h0exp(*rcd*),
+    label(*proj*), int(*index*) )
 //
 | H0Elet of
-  (h0dclist, h0exp(*sequence*))
+  ( h0dclist, h0exp(*sequence*) )
 //
 | H0Eseqn of
   (h0explst(*semi*), h0exp(*last*))
@@ -567,22 +568,24 @@ H0Etimp of
   (int(*knd*), int(*npf*), h0explst)
 //
 | H0Eassgn of
-  (h0exp(*lval*), h0exp(*rval*))
+  (h0exp(*l-val*), h0exp(*r-val*))
 //
 |
 H0Eif0 of
-( h0exp, h0exp, h0expopt(*else*) )
+( h0exp
+, h0exp(*then*), h0expopt(*else*))
 |
 H0Ecase of
-(int(*knd*), h0exp(*val*), h0claulst)
+( int(*knd*)
+, h0exp(*val*), h0claulst(*claues*))
 //
 | H0Elam of
   ( token(*knd*)
-  , hfarglst(*arg*), h0exp(*body*))
+  , hfarglst(*arg*), h0exp(*body*) )
 | H0Efix of
   ( token(*knd*)
   , hdvar(*fid*)
-  , hfarglst(*arg*), h0exp(*body*))
+  , hfarglst(*arg*), h0exp(*body*) )
 //
 | H0Eaddr of h0exp(*l-value*)
 //
@@ -601,12 +604,11 @@ H0Ecase of
 | H0Etalf of h0exp(*H0Eflat*)
 //
 // HX-2019-12-18:
-// kind=0: undecided
-// kind=1: derefence
-// kind=2: lazy-eval
-// kind=3: llazy-eval
-| H0Eeval of
-  (int(*kind*), h0exp(*source*))
+// knd=0: undecided
+// knd=1: derefence
+// knd=2: lazy-eval
+// knd=3: llazy-eval
+| H0Eeval of (int(*knd*), h0exp(*src*))
 //
 | H0Enone0 of () // HX: nil/none/null
 | H0Enone1 of (dataptr) // HX: for ignores
