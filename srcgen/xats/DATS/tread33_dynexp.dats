@@ -469,6 +469,14 @@ d3e0.node() of
 *)
   val () = tread33_d3exp(d3e1)
   }
+| D3Epptr
+  (d3e1, lab2, idx2) =>
+  {
+(*
+  val () = aux_D3Epptr(d3e0)
+*)
+  val () = tread33_d3exp(d3e1)
+  }
 //
 | D3Eif0
   (d3e1, d3e2, opt3) =>
