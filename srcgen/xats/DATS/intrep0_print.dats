@@ -413,6 +413,8 @@ fprint!
 ( out
 , "HFARGnpats(", npf0, "; ", h0ps, ")")
 //
+| HFARGnone0 _ =>
+  fprint!(out, "HFARGnone0(", ")")
 | HFARGnone1 _ =>
   fprint!(out, "HFARGnone1(", "...", ")")
 )

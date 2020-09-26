@@ -1870,7 +1870,7 @@ val () = x2iforeach_row$end<>(i)
 //
 end // end of [let]
 //
-} (* end of [gseq_x2iforeach_row] *)
+} (*where*) // end of [gseq_x2iforeach_row]
 
 (* ****** ****** *)
 
@@ -1891,7 +1891,7 @@ x2iforeach_row$work<y0,x0>(j, y0, i, x0) =
 x2iforeach_col$work<x0,y0>(i, x0, j, y0)
 in
 gseq_x2iforeach_row<ys,xs><y0,x0>(ys, xs)
-end (* end of [gseq_x2foreach_col] *)
+end (* let *) // end of [gseq_x2foreach_col]
 
 (* ****** ****** *)
 

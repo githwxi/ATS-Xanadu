@@ -455,6 +455,8 @@ hfarg_node =
 | HFARGnpats of
   (int(*npf*), h0patlst)
 //
+| HFARGnone0 of ((*nil*))
+//
 | HFARGnone1 of (dataptr) // for ignores
 //
 (* ****** ****** *)

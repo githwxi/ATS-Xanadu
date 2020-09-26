@@ -70,10 +70,27 @@ function
 XATS2JS_lval_set
   (lvl0, obj1)
 {
-  var
-  offs = lvl0.offs;
-  lvl0.root[offs] = obj1;
-  return;
+//
+  var prev = null;
+  var root = null;
+  var offs = lvl0.offs;
+//
+  if
+  (
+  lvl0.hasOwnProperty('prev')
+  )
+  { // flat tuple
+    root = lvl0.root;
+    lvl0.root = root.slice();
+    lvl0.root[ offs ] = obj1;
+    XATS2JS_lval_set
+    ( lvl0.prev, lvl0.root );
+  }
+  else
+  { // boxed tuple
+    lvl0.root[ offs ] = obj1;
+  }
+  return; // XATS2JS_lval_set
 }
 /* ****** ****** */
 function
@@ -102,7 +119,7 @@ function
 XATS2JS_new_var0
   ()
 {
-  return {root:[null], offs:0};
+return {root:[null], offs:0};
 }
 function
 XATS2JS_new_var1
@@ -127,7 +144,16 @@ XATS2JS_new_tptr
 var
 tup1 =
 XATS2JS_lval_get(lvl1);
-return {root:tup1, offs:idx2}; 
+if
+(tup1[0] >= 0)
+return {
+  root:tup1, offs:idx2
+};
+else
+return {
+  prev:lvl1,
+  root:tup1, offs:idx2
+}; // end of [XATS2JS_new_tptr]
 }
 /* ****** ****** */
 
@@ -280,15 +306,22 @@ XATS2JS_gint_neq_sint_sint
 function
 XATS2JS_gint_add_sint_sint
   (x1, x2)
-{ return (x1 + x2); }
+{ return ( x1 + x2 ); }
+/* ****** ****** */
 function
 XATS2JS_gint_sub_sint_sint
   (x1, x2)
-{ return (x1 - x2); }
+{ return ( x1 - x2 ); }
+/* ****** ****** */
 function
 XATS2JS_gint_mul_sint_sint
   (x1, x2)
-{ return (x1 * x2); }
+{ return ( x1 * x2 ); }
+/* ****** ****** */
+function
+XATS2JS_gint_mod_sint_sint
+  (x1, x2)
+{ return ( x1 % x2 ); }
 /* ****** ****** */
 function
 XATS2JS_gint_div_sint_sint
@@ -305,10 +338,6 @@ XATS2JS_gint_div_sint_sint
     return Math.ceil( q0 );
   }
 }
-function
-XATS2JS_gint_mod_sint_int
-  (x1, x2)
-{ return (x1 % x2); }
 /* ****** ****** */
 //
 // prelude/string.sats
