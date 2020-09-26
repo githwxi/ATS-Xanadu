@@ -383,7 +383,14 @@ x0.node() of
   , "H0Pdapp("
   , h0f0, "; ", npf1, "; ", h0ps, ")")
 //
-| H0Pnone1(_) =>
+| H0Ptuple
+  (knd0, npf1, h0ps) =>
+  fprint!
+  ( out
+  , "H0Ptuple("
+  , knd0, "; ", npf1, "; ", h0ps, ")")
+//
+| H0Pnone1(_(*dataptr*)) =>
   fprint!(out, "H0Pnone1(", "...", ")")
 //
 (*

@@ -408,9 +408,14 @@ h0pat_node =
 | H0Pfree of (h0pat)
 //
 | H0Pdapp of
-  (h0pat, int(*npf*), h0patlst)
+  ( h0pat
+  , int(*npf*), h0patlst)
 //
-| H0Pnone1 of (dataptr) // HX: for ignores
+| H0Ptuple of
+  ( int(*knd*)
+  , int(*npf*), h0patlst)
+//
+| H0Pnone1 of ( dataptr ) // HX: for ignores
 //
 (* ****** ****** *)
 //

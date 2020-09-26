@@ -396,6 +396,8 @@ in
   d3pat_tuple_up(loc0, knd0, npf1, d3ps)
 end // end of [aux_tuple]
 
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement

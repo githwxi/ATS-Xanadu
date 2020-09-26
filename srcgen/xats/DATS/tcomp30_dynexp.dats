@@ -251,6 +251,36 @@ end // end of [auxdapp]
 
 (* ****** ****** *)
 
+fun
+aux_tuple
+(d3p0: d3pat): h0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Ptuple
+( knd0
+, npf1
+, d3ps) = d3p0.node()
+//
+val
+h0ps = tcomp30_dpatlst(d3ps)
+//
+val
+hend = H0Ptuple(knd0, npf1, h0ps)
+//
+in
+  h0pat_make_node(loc0, h0t0, hend)
+end // end of [aux_tuple]
+
+(* ****** ****** *)
+
 in
 
 (* ****** ****** *)
@@ -359,8 +389,12 @@ D3Pdapp
 ( d3f0
 , npf1, d3ps) => auxdapp(d3p0)
 |
+D3Ptuple
+( knd0
+, npf1, d3ps) => aux_tuple(d3p0)
+|
 D3Panno
-(d3p1, _) => tcomp30_dpat(d3p1)
+(d3p1, s2e2) => tcomp30_dpat(d3p1)
 //
 | _(* rest-of_d3pat *) =>
 let
