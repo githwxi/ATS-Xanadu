@@ -51,7 +51,7 @@ fun
 g_copy(x: !(a)): (a)
 
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 g_input(): a
@@ -63,16 +63,16 @@ fun
 <a:vt>
 g_input_opt
 ((*void*)): optn_vt(a)
-
+//
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 g_equal(!a, !a): bool
 fun
 <a:vt>
 g_noteq(!a, !a): bool
-
+//
 (* ****** ****** *)
 //
 fun
