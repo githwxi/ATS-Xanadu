@@ -62,35 +62,46 @@ function
 XATS2JS_lval_get
   (lvl0)
 {
-  var
-  offs = lvl0.offs;
-  return lvl0.root[offs];
+//
+var
+root = lvl0.root;
+var
+offs = lvl0.offs;
+//
+if
+(
+lvl0.hasOwnProperty('prev')
+)
+root =
+XATS2JS_lval_get(lvl0.prev);
+//  
+return root[offs]; // JS_lval_get
 }
+/* ****** ****** */
 function
 XATS2JS_lval_set
   (lvl0, obj1)
 {
 //
-  var prev = null;
-  var root = null;
-  var offs = lvl0.offs;
+var root = null;
+var offs = lvl0.offs;
 //
-  if
-  (
-  lvl0.hasOwnProperty('prev')
-  )
-  { // flat tuple
-    root = lvl0.root;
-    lvl0.root = root.slice();
-    lvl0.root[ offs ] = obj1;
-    XATS2JS_lval_set
-    ( lvl0.prev, lvl0.root );
-  }
-  else
-  { // boxed tuple
-    lvl0.root[ offs ] = obj1;
-  }
-  return; // XATS2JS_lval_set
+if
+(
+lvl0.hasOwnProperty('prev')
+)
+{ // flat tuple
+  root =
+  XATS2JS_lval_get(lvl0.prev);
+  root =
+  root.slice(); root[offs] = obj1;
+  XATS2JS_lval_set(lvl0.prev, root);
+}
+else
+{
+  lvl0.root[offs] = obj1; // boxed
+}
+return; // end of [XATS2JS_lval_set]
 }
 /* ****** ****** */
 function
