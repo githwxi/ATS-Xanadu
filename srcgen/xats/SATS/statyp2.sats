@@ -395,6 +395,12 @@ t2ype_tyrec
 (* ****** ****** *)
 //
 fun
+t2ype_un_data
+(t2p0: t2ype): Option_vt(s2cst)
+//
+(* ****** ****** *)
+//
+fun
 t2ype_un_p2tr
 (t2p0: t2ype): Option_vt(t2ype)
 //

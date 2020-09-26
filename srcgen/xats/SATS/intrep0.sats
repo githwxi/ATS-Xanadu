@@ -595,9 +595,30 @@ H0Ecase of
   , hfarglst(*arg*), h0exp(*body*) )
 //
 | H0Eaddr of h0exp(*l-value*)
+| H0Eflat of h0exp(*l-value*)
+| H0Etalf of h0exp(*H0Eflat*)
 //
 | H0Efold of h0exp(*open-con*)
-| H0Efree of h0exp(*free-con*)
+//
+(*
+// HX-2019-12-18:
+// knd=0: general
+// knd=1: ptr-dref
+// knd=2: lazy-eval
+// knd=3: llazy-eval
+*)
+| H0Eeval of
+  (int(*knd*), h0exp(*src*))
+//
+(*
+// HX-2020-09-26:
+// knd=0: general
+// knd=1: ptr-free
+// knd=2: con-free
+// knd=3: llazy-free
+*)
+| H0Efree of
+  (int(*knd*), h0exp(*src*))
 //
 | H0Eraise of h0exp(*lin-exn*)
 //
@@ -606,16 +627,6 @@ H0Ecase of
 | H0Ellazy of
   ( h0exp(*eval*)
   , h0explst(*frees*)) // linear
-//
-| H0Eflat of h0exp(*l-value*)
-| H0Etalf of h0exp(*H0Eflat*)
-//
-// HX-2019-12-18:
-// knd=0: undecided
-// knd=1: derefence
-// knd=2: lazy-eval
-// knd=3: llazy-eval
-| H0Eeval of (int(*knd*), h0exp(*src*))
 //
 | H0Enone0 of () // HX: nil/none/null
 | H0Enone1 of (dataptr) // HX: for ignores

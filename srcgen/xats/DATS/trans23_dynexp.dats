@@ -1520,6 +1520,26 @@ end // end of [aux_addr]
 (* ****** ****** *)
 
 fun
+aux_fold
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Efold(d2e1) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+//
+val t2p0 = the_t2ype_void(*void*)
+//
+in
+d23exp_make_node(loc0, t2p0, D3Efold(d3e1))
+end // end of [aux_fold]
+
+(* ****** ****** *)
+
+fun
 aux_eval
 ( d2e0
 : d2exp): d3exp = let
@@ -1583,26 +1603,6 @@ end // end of [aux_eval]
 (* ****** ****** *)
 
 fun
-aux_fold
-( d2e0
-: d2exp): d3exp = let
-//
-val
-loc0 = d2e0.loc()
-val-
-D2Efold(d2e1) = d2e0.node()
-//
-val d3e1 = trans23_dexp(d2e1)
-//
-val t2p0 = the_t2ype_void(*void*)
-//
-in
-d23exp_make_node(loc0, t2p0, D3Efold(d3e1))
-end // end of [aux_fold]
-
-(* ****** ****** *)
-
-fun
 aux_free
 ( d2e0
 : d2exp): d3exp = let
@@ -1617,7 +1617,8 @@ val d3e1 = trans23_dexp(d2e1)
 val t2p0 = the_t2ype_void(*void*)
 //
 in
-d23exp_make_node(loc0, t2p0, D3Efree(d3e1))
+  d23exp_make_node
+  (loc0, t2p0, D3Efree(0(*knd*), d3e1))
 end // end of [aux_free]
 
 (* ****** ****** *)
@@ -1791,9 +1792,10 @@ d2e0.node() of
 *)
 //
 | D2Eaddr(d2e1) => aux_addr(d2e0)
-| D2Eeval(d2e1) => aux_eval(d2e0)
 //
 | D2Efold(d2e1) => aux_fold(d2e0)
+//
+| D2Eeval(d2e1) => aux_eval(d2e0)
 | D2Efree(d2e1) => aux_free(d2e0)
 //
 | D2Eraise(d2e1) => aux_raise(d2e0)

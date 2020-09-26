@@ -512,10 +512,12 @@ case- x0.node() of
 //
 | D2Eaddr(d2e1) =>
   fprint!(out, "D2Eaddr(", d2e1, ")")
-| D2Eeval(d2e1) =>
-  fprint!(out, "D2Eeval(", d2e1, ")")
+//
 | D2Efold(d2e1) =>
   fprint!(out, "D2Efold(", d2e1, ")")
+//
+| D2Eeval(d2e1) =>
+  fprint!(out, "D2Eeval(", d2e1, ")")
 | D2Efree(d2e1) =>
   fprint!(out, "D2Efree(", d2e1, ")")
 //

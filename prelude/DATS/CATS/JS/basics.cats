@@ -175,8 +175,9 @@ XATS2JS_new_lazy
   (thunk)
 {
 return {
-  lztag: 0
-, lzfun: thunk, lzval: null
+  lztag: 0 // unused
+, lzval: null // saved
+, lzfun: thunk // for eval
 }
 } // end of [XATS2JS_new_lazy]
 
@@ -196,10 +197,59 @@ lzobj.lztag = 1;
 lzobj.lzval = lzres;
 } else
 {
-lzres = lzobj.lzval;
+//
+// HX: tracking
+//
+  lzobj.lztag += 1;
+  lzres = lzobj.lzval;
 } ;
 return lzres; // lazy_eval
+} // end of [XATS2JS_lazy_eval]
+
+/* ****** ****** */
+
+function
+XATS2JS_new_llazy
+  (thunk, frees)
+{
+return {
+  lztag: false // unused
+, lzfun: thunk // for eval
+, lzfrs: frees // for frees
 }
+} // end of [XATS2JS_new_llazy]
+
+function
+XATS2JS_llazy_eval
+  (lzobj)
+{
+//
+if
+(lzobj.lztag)
+{
+  throw new Error();
+}
+//
+  lzobj.lztag = true; // used
+  return lzobj.lzfun(); // eval
+//
+} // end of [XATS2JS_llazy_eval]
+
+function
+XATS2JS_llazy_free
+  (lzobj)
+{
+//
+if
+(lzobj.lztag)
+{
+  throw new Error();
+}
+//
+  lzobj.lztag = true; // used
+  return lzobj.lzfrs(); // free
+//
+} // end of [XATS2JS_llazy_free]
 
 /* ****** ****** */
 //
