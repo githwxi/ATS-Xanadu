@@ -129,6 +129,19 @@ return {root:[init], offs:0};
 }
 /* ****** ****** */
 function
+XATS2JS_new_cofs
+  (lvl1, idx2)
+{
+return {root:lvl1, offs:idx2}; 
+}
+function
+XATS2JS_new_tofs
+  (lvl1, idx2)
+{
+return {root:lvl1, offs:idx2}; 
+}
+/* ****** ****** */
+function
 XATS2JS_new_cptr
   (lvl1, idx2)
 {
