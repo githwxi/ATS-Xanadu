@@ -545,6 +545,14 @@ d3e0.node() of
     (loc0, t2p0, D3Etry(tok0, d3e1, d3cls))
   end
 //
+| D3Eaddr(d3e1) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, D3Eaddr(d3e1))
+  end // end of [D3Eaddr]
+//
 | D3Eflat(d3e1) =>
   let
     val d3e1 =
@@ -560,23 +568,6 @@ d3e0.node() of
     d3exp_make_node(loc0, t2p0, D3Etalf(d3e1))
   end // end of [D3Eflat]
 //
-| D3Eaddr(d3e1) =>
-  let
-    val d3e1 =
-    trans3t_dexp(env0, d3e1)
-  in
-    d3exp_make_node(loc0, t2p0, D3Eaddr(d3e1))
-  end // end of [D3Eaddr]
-//
-| D3Eeval
-  ( knd0, d3e1 ) =>
-  let
-    val d3e1 =
-    trans3t_dexp(env0, d3e1)
-  in
-    d3exp_make_node(loc0, t2p0, D3Eeval(knd0, d3e1))
-  end // end of [D3Eeval]
-//
 | D3Efold(d3e1) =>
   let
     val d3e1 =
@@ -584,12 +575,25 @@ d3e0.node() of
   in
     d3exp_make_node(loc0, t2p0, D3Efold(d3e1))
   end // end of [D3Efold]
-| D3Efree(d3e1) =>
+//
+| D3Eeval
+  ( knd0, d3e1 ) =>
   let
     val d3e1 =
     trans3t_dexp(env0, d3e1)
+    val node = D3Eeval(knd0, d3e1)
   in
-    d3exp_make_node(loc0, t2p0, D3Efree(d3e1))
+    d3exp_make_node(loc0, t2p0, node(*eval*))
+  end // end of [D3Eeval]
+//
+| D3Efree
+  ( knd0, d3e1 ) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+    val node = D3Efree(knd0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, node(*free*))
   end // end of [D3Efree]
 //
 | D3Eraise(d3e1) =>

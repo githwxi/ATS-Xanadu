@@ -418,6 +418,36 @@ in
 end
 //
 |
+D3Eaddr(d3e1) =>
+let
+val d3e1 =
+trans3x_dexp(env0, d3e1)
+val dend = D3Eaddr(d3e1)
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end
+|
+D3Eeval
+(knd0, d3e1) =>
+let
+val d3e1 =
+trans3x_dexp(env0, d3e1)
+val dend = D3Eeval(knd0, d3e1)
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end
+|
+D3Efree
+(knd0, d3e1) =>
+let
+val d3e1 =
+trans3x_dexp(env0, d3e1)
+val dend = D3Efree(knd0, d3e1)
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end
+//
+|
 dend(*else*) =>
 let
 val d3e0 =

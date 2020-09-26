@@ -1641,6 +1641,19 @@ end // end of [aux_addr]
 (* ****** ****** *)
 
 fun
+aux_flat
+( env0:
+! abstenv
+, d3e0: d3exp): d3exp = d3e0
+fun
+aux_talf
+( env0:
+! abstenv
+, d3e0: d3exp): d3exp = d3e0
+
+(* ****** ****** *)
+
+fun
 aux_fold
 ( env0:
 ! abstenv
@@ -1663,19 +1676,6 @@ end // end of [aux_fold]
 (* ****** ****** *)
 
 fun
-aux_flat
-( env0:
-! abstenv
-, d3e0: d3exp): d3exp = d3e0
-fun
-aux_talf
-( env0:
-! abstenv
-, d3e0: d3exp): d3exp = d3e0
-
-(* ****** ****** *)
-
-fun
 aux_eval
 ( env0:
 ! abstenv
@@ -1690,12 +1690,15 @@ D3Eeval
 var
 knd0: int = k0
 val
-d3e1 = trans33_dexp(env0, d3e1)
+d3e1 =
+trans33_dexp(env0, d3e1)
 //
 val t2p0 =
 let
-val t2p1 = d3e1.type()
-val t2p1 = whnfize_env(env0, t2p1)
+val
+t2p1 = d3e1.type()
+val
+t2p1 = whnfize_env(env0, t2p1)
 in
 //
 let
@@ -1727,8 +1730,7 @@ t2ype_un_llazy(t2p1)
 in
 case+ opt2 of
 |
-~Some_vt(t2p2) =>
- (knd0 := 3; t2p2)
+~Some_vt(t2p2) => (knd0 := 3; t2p2)
 |
 ~None_vt((*void*)) => t2ype_new(loc0)
 end // end of [let]
@@ -1741,6 +1743,63 @@ in
 d33exp_make_node
 (loc0, t2p0, D3Eeval(knd0, d3e1(*eval*)))
 end // end of [aux_eval]
+
+(* ****** ****** *)
+
+fun
+aux_free
+( env0:
+! abstenv
+, d3e0: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Efree
+(k0, d3e1) = d3e0.node()
+//
+val
+d3e1 =
+trans33_dexp(env0, d3e1)
+//
+val
+t2p0 = the_t2ype_void(*void*)
+//
+val
+knd0 =
+let
+val
+t2p1 = d3e1.type()
+val
+t2p1 =
+whnfize_env(env0, t2p1)
+val
+opt2 = t2ype_un_p2tr(t2p1)
+in
+case+ opt2 of
+| ~Some_vt _ => 1 | ~None_vt _ =>
+let
+val
+opt2 =
+t2ype_un_data(t2p1)
+in
+case+ opt2 of
+| ~Some_vt _ => 2 | ~None_vt _ =>
+let
+val
+opt2 =
+t2ype_un_llazy(t2p1)
+in
+case+ opt2 of
+| ~Some_vt _ => 3 | ~None_vt _ => k0
+end // end of [let]
+end // end of [let]
+end : int // end of [let]
+//
+in
+d33exp_make_node
+(loc0, t2p0, D3Efree(knd0, d3e1(*free*)))
+end // end of [aux_free]
 
 (* ****** ****** *)
 
@@ -1970,12 +2029,15 @@ D3Ecase _ => aux_case(env0, d3e0)
 | D3Etry _ => aux_try(env0, d3e0)
 //
 | D3Eaddr _ => aux_addr(env0, d3e0)
-| D3Efold _ => aux_fold(env0, d3e0)
 //
 | D3Eflat _ => aux_flat(env0, d3e0)
 | D3Etalf _ => aux_talf(env0, d3e0)
 //
+| D3Efold _ => aux_fold(env0, d3e0)
+//
 | D3Eeval _ => aux_eval(env0, d3e0)
+//
+| D3Efree _ => aux_free(env0, d3e0)
 //
 | D3Eraise _ => aux_raise(env0, d3e0)
 //

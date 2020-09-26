@@ -627,6 +627,29 @@ case+ knd1 of
 (* ****** ****** *)
 
 implement
+t2ype_un_data
+  (t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Papp(t2pf, t2ps) =>
+(
+case+
+t2pf.node() of
+| T2Pcst(s2c1) =>
+  if
+  s2cst_isdat(s2c1)
+  then Some_vt(s2c1)
+  else None_vt(*void*)
+| _ (* non-T2Pbas *) => None_vt(*void*)
+)
+| _ (* non-T2Papp *) => None_vt(*void*)
+) (* end of [t2ype_un_data] *)
+
+(* ****** ****** *)
+
+implement
 t2ype_un_p2tr
   (t2p0) =
 (

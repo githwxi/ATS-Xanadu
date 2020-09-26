@@ -613,31 +613,6 @@ x0.node() of
   (
    fprint!(out, "H0Eaddr(", h0e1, ")")
   )
-//
-| H0Efold(h0e1) =>
-  (
-   fprint!(out, "H0Efold(", h0e1, ")")
-  )
-| H0Efree(h0e1) =>
-  (
-   fprint!(out, "H0Efree(", h0e1, ")")
-  )
-//
-| H0Eraise(h0e1) =>
-  (
-  fprint!(out, "H0Eraise(", h0e1, ")")
-  )
-//
-| H0Elazy(h0e1) =>
-  (
-   fprint!(out, "H0Elazy(", h0e1, ")")
-  )
-| H0Ellazy
-  (h0e1, h0es(*frees*)) =>
-  fprint!
-  (out
-  , "H0Ellazy(", h0e1, "; ", h0es, ")")
-//
 | H0Eflat(h0e1) =>
   (
    fprint!(out, "H0Eflat(", h0e1, ")")
@@ -647,18 +622,40 @@ x0.node() of
    fprint!(out, "H0Etalf(", h0e1, ")")
   )
 //
-| H0Eeval(knd0, h0e1) =>
+| H0Efold(h0e1) =>
   (
-   fprint!
-   ( out
-   , "H0Eeval(", knd0, "; ", h0e1, ")")
+   fprint!(out, "H0Efold(", h0e1, ")")
   )
+//
+| H0Eeval(knd0, h0e1) =>
+  fprint!
+  ( out
+  , "H0Eeval(", knd0, "; ", h0e1, ")")
+| H0Efree(knd0, h0e1) =>
+  fprint!
+  ( out
+  , "H0Efree(", knd0, "; ", h0e1, ")")
+//
+| H0Eraise(h0e1) =>
+  (
+   fprint!(out, "H0Eraise(", h0e1, ")")
+  )
+//
+| H0Elazy(h0e1) =>
+  (
+    fprint!(out, "H0Elazy(", h0e1, ")")
+  )
+| H0Ellazy
+  (h0e1, h0es(*frees*)) =>
+  fprint!
+  ( out
+  , "H0Ellazy(", h0e1, "; ", h0es, ")")
 //
 | H0Enone0() => // nil/none/null
   fprint!(out, "H0Enone0(", ")")
 //
 | H0Enone1(_) => // HX: for ignores
-  fprint!(out, "H0Enone1(", "...", ")")
+  fprint!(out, "H0Enone1(", "**DATA**", ")")
 //
 (*
 | _(* H0E... *) => fprint!(out, "H0E...(...)")

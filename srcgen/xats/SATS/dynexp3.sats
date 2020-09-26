@@ -423,8 +423,19 @@ for the meaning of knd
 //
 | D3Eaddr of d3exp(*l-value*)
 //
+| D3Eflat of d3exp(*l-value*)
+| D3Etalf of d3exp(*D3Eflat*)
+//
 | D3Efold of d3exp(*open-con*)
-| D3Efree of d3exp(*free-con*)
+// HX-2019-12-18:
+// kind=0: undecided
+// kind=1: derefence
+// kind=2: lazy-eval
+// kind=3: llazy-eval
+| D3Eeval of
+  (int(*kind*), d3exp(*src*))
+| D3Efree of
+  (int(*kind*), d3exp(*src*))
 //
 | D3Eraise of d3exp(*lin-exn*)
 //
@@ -434,17 +445,6 @@ for the meaning of knd
 | D3Ellazy of
   ( d3exp(*eval*)
   , d3explst(*frees*)) // linear
-//
-| D3Eflat of d3exp(*l-value*)
-| D3Etalf of d3exp(*D3Eflat*)
-//
-// HX-2019-12-18:
-// kind=0: undecided
-// kind=1: derefence
-// kind=2: lazy-eval
-// kind=3: llazy-eval
-| D3Eeval of
-  (int(*kind*), d3exp(*source*))
 //
 | D3Eanno of (d3exp, s2exp(*anno*))
 //

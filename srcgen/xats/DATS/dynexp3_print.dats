@@ -549,15 +549,31 @@ x0.node() of
   (
    fprint!(out, "D3Eaddr(", d3e1, ")")
   )
+| D3Eflat(d3e1) =>
+  (
+   fprint!(out, "D3Eflat(", d3e1, ")")
+  )
+| D3Etalf(d3e1) =>
+  (
+   fprint!(out, "D3Etalf(", d3e1, ")")
+  )
 //
 | D3Efold(d3e1) =>
   (
    fprint!(out, "D3Efold(", d3e1, ")")
   )
-| D3Efree(d3e1) =>
-  (
-   fprint!(out, "D3Efree(", d3e1, ")")
-  )
+//
+| D3Eeval
+  (knd, d3e1) =>
+  fprint!
+  ( out
+  , "D3Eeval(", knd, "; ", d3e1, ")")
+//
+| D3Efree
+  (knd, d3e1) =>
+  fprint!
+  ( out
+  , "D3Efree(", knd, "; ", d3e1, ")")
 //
 | D3Eraise(d3e1) =>
   (
@@ -573,20 +589,6 @@ x0.node() of
   fprint!
   (out
   , "D3Ellazy(", d3e1, "; ", d3es, ")")
-//
-| D3Eflat(d3e1) =>
-  (
-   fprint!(out, "D3Eflat(", d3e1, ")")
-  )
-| D3Etalf(d3e1) =>
-  (
-   fprint!(out, "D3Etalf(", d3e1, ")")
-  )
-| D3Eeval
-  (knd, d3e1) =>
-  fprint!
-  ( out
-  , "D3Eeval(", knd, "; ", d3e1, ")")
 //
 | D3Eanno(d3e1, s2e2) =>
   fprint!
