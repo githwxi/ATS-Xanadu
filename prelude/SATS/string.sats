@@ -109,10 +109,11 @@ stropt_unsome
 HX-2020-09-27:
 Note that [strptr_vt] and [string_vt] are
 assumed to be of the same representation.
-Actually, the former is a tempory version
-of the latter: A string_vt construction is
-cemented with a call to the cast-function
-UN_string_vt_cast.
+The former is actually a temporary of the
+latter:
+A string_vt construction is cemented with
+a call to the cast-function UN_string_vt_cast,
+which itself is just a no-op.
 *)
 //
 absvwtp

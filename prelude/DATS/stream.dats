@@ -11,6 +11,11 @@
 
 (* ****** ****** *)
 
+abstbox box_tx
+typedef box = box_tx
+
+(* ****** ****** *)
+
 #staload
 UN =
 "prelude/SATS/unsafe.sats"
@@ -30,7 +35,7 @@ auxmain
 {
 fun
 auxmain
-(xs: p1tr): stream(a) =
+(xs: box): stream(a) =
 $lazy
 (
 let
@@ -49,7 +54,7 @@ case+ r0 of
   (x0, xs) =>
   let
   val xs =
-  $UN.castlin10{p1tr}(xs)
+  $UN.castlin10{box}(xs)
   val () =
   ( r0.1 := auxmain(xs) )
   in $UN.castlin10{strmcom(a)}(r0) end
