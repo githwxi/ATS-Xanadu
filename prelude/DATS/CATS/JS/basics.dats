@@ -3,6 +3,10 @@
 Basics for Xats2js
 *)
 (* ****** ****** *)
+#staload
+UN = // for casting
+"prelude/SATS/unsafe.sats"
+(* ****** ****** *)
 //
 // prelude/bool.sats
 //
@@ -60,6 +64,54 @@ bool_print<> = XATS2JS_bool_print
 //
 // prelude/char.sats
 //
+// [char] is a (small) number
+//
+(* ****** ****** *)
+//
+impltmp
+char_make_sint<>
+( i0 ) = $UN.cast01(i0)
+//
+impltmp
+sint_make_char<>
+( c0 ) = $UN.cast01(c0)
+//
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_char_eqzq
+(c0: char): bool // = $ext()
+impltmp
+char_eqzq<> = XATS2JS_char_eqzq
+#extern
+fun
+XATS2JS_char_neqzq
+(c0: char): bool // = $ext()
+impltmp
+char_neqzq<> = XATS2JS_char_neqzq
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_char_cmp
+( c1: char
+, c2: char): sint // = $ext()
+impltmp
+char_cmp<> = XATS2JS_char_cmp
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_char_equal
+( c1: char
+, c2: char): bool // = $ext()
+impltmp
+char_equal<> = XATS2JS_char_equal
+#extern
+fun
+XATS2JS_char_noteq
+( c1: char
+, c2: char): bool // = $ext()
+impltmp
+char_noteq<> = XATS2JS_char_noteq
 (* ****** ****** *)
 //
 #extern
@@ -396,13 +448,45 @@ gflt_div_dflt_dflt<> = XATS2JS_gflt_div_dflt_dflt
 #extern
 fun
 XATS2JS_string_print
-(x0: string): void // = $ext()
-//
-// It is
-// implemented in [basics.cats]
+(cs: string): void // = $ext()
 impltmp
-string_print<> = XATS2JS_string_print
+string_print<> =
+XATS2JS_string_print//basics.cats
 //
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_string_head_opt
+(cs: string): char // = $ext()
+impltmp
+string_head_opt<> =
+XATS2JS_string_head_opt//basics.cats
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_string_head_raw
+(cs: string): char // = $ext()
+impltmp
+string_head_raw<> =
+XATS2JS_string_head_raw//basics.cats
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_string_tail_raw
+(cs: string): string // = $ext()
+impltmp
+string_tail_raw<> =
+XATS2JS_string_tail_raw//basics.cats
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_string_forall_cfr
+( cs: string
+, f0: (cgtz) -<cfr> bool): bool
+impltmp
+string_forall<>(cs) =
+XATS2JS_string_forall_cfr
+(cs, lam(c0) => forall$test<cgtz>(c0))
 (* ****** ****** *)
 
 (* end of [XATS2JS_basics.dats] *)

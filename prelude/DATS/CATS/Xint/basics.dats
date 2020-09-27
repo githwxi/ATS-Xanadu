@@ -1,7 +1,11 @@
 (* ****** ****** *)
 (*
-** The runtime for Xinterp
+Basics for Xinterp
 *)
+(* ****** ****** *)
+#staload
+UN = // for casting
+"prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 // prelude/bool.sats
@@ -478,6 +482,17 @@ gflt_div_dflt_dflt<> = Xint_gflt_div_dflt_dflt
 (* ****** ****** *)
 //
 // prelude/string.sats
+//
+(* ****** ****** *)
+//
+(*
+In Xint,
+string and string_vt are
+of the same representation!!!
+*)
+impltmp
+string_vt2t<>
+( cs ) = $UN.castlin01(cs)
 //
 (* ****** ****** *)
 //

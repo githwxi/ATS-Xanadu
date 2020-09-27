@@ -185,27 +185,31 @@ impltmp<>
 string_vt_make_list
   {n}(cs) =
 (
-  $UN.cast01(p0)
+UN_strptr_vt_cast(p0)
 ) where
 {
 //
 val p0 =
-strptr_alloc<>
+strptr_vt_alloc<>
 (list_length(cs))
 val () =
 loop(p0, 0(*i0*), cs)
 //
 } where
 {
+//
+sexpdef
+strp=strptr1_vt
+//
 fun
 loop
 {i:nat
 |i<=n}.<n-i>.
-( p0
-: strptr(n)
-, i0: int(i)
+( p0: strp(n)
+, i0: sint(i)
 , cs
-: list(cgtz, n-i)): void =
+: list
+  (cgtz, n-i)): void =
 (
 case+ cs of
 |
@@ -216,7 +220,8 @@ list_cons(c0, cs) =>
   loop(p0, succ(i0), cs)
 ) where
 {
-val () = strptr_set_at<>(p0, i0, c0)
+val () =
+strptr_vt_set_at<>(p0, i0, c0)
 }
 )
 //
@@ -228,25 +233,28 @@ impltmp<>
 string_vt_make_list_vt
   {n}(cs) =
 (
-  $UN.cast01(p0)
+UN_strptr_vt_cast(p0)
 ) where
 {
 //
 val p0 =
-strptr_alloc<>
+strptr_vt_alloc<>
 (list_vt_length(cs))
 val () =
 loop(p0, 0(*i0*), cs)
 //
 } where
 {
+//
+sexpdef
+strp=strptr1_vt
+//
 fun
 loop
 {i:nat
 |i<=n}.<n-i>.
-( p0
-: strptr(n)
-, i0: int(i)
+( p0: strp(n)
+, i0: sint(i)
 , cs
 : list_vt
   (cgtz, n-i)): void =
@@ -260,7 +268,8 @@ list_vt_cons(c0, cs) =>
   loop(p0, succ(i0), cs)
 ) where
 {
-val () = strptr_set_at<>(p0, i0, c0)
+val () =
+strptr_vt_set_at<>(p0, i0, c0)
 }
 )
 //
@@ -282,25 +291,28 @@ impltmp
 string_vt_tabulate
 ( n0 ) =
 (
-  $UN.cast01(p0)
+UN_strptr_vt_cast(p0)
 ) where
 {
 //
 val p0 =
-strptr_alloc<>(n0)
+strptr_vt_alloc<>(n0)
 //
 val i0 = 0
 val () = loop(p0, i0)
 //
 } where
 {
+//
+sexpdef
+strp=strptr1_vt
+//
 fun
 loop
 {i:nat
 |i<=n}.<n-i>.
-( p0
-: strptr(n)
-, i0: int(i)): void =
+( p0: strp(n)
+, i0: sint(i)): void =
 (
 if
 (i0 < n0)
@@ -309,8 +321,10 @@ then
   loop(p0, succ(i0))
 ) where
 {
-val c0 = tabulate$fopr<cgtz><n>(i0)
-val () = strptr_set_at<>(p0, i0, c0)
+val c0 =
+tabulate$fopr<cgtz><n>(i0)
+val () =
+strptr_vt_set_at<>(p0, i0, c0)
 }
 )
 //
@@ -402,9 +416,9 @@ gseq_tail_raw<xs><x0> = string_tail_raw<>
 (* ****** ****** *)
 
 impltmp
-gseq_unlist<xs><x0> = string_make_list
+gseq_unlist<xs><x0> = string_make_list<>
 impltmp
-gseq_unlist_vt<xs><x0> = string_make_list_vt
+gseq_unlist_vt<xs><x0> = string_make_list_vt<>
 
 (* ****** ****** *)
 

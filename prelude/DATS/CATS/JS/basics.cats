@@ -10,6 +10,27 @@ XATS2JS_none = null
 var
 XATS2JS_void = null
 /* ****** ****** */
+function
+XATS2JS_char
+  ( cs )
+{
+// cs: singleton
+return x0.charCodeAt();
+}
+function
+XATS2JS_string
+  ( cs )
+{
+return cs; // x0: string
+}
+/* ****** ****** */
+function
+XATS2JS_fcast
+  ( x0 )
+{
+return x0; // obj: object
+}  
+/* ****** ****** */
 //
 function
 XATS2JS_assert
@@ -312,11 +333,50 @@ return ; // XATS2JS_bool_print
 //
 /* ****** ****** */
 function
+XATS2JS_char_eqzq
+  (c0)
+{
+return (0===c0); // eqzq
+}
+function
+XATS2JS_char_neqzq
+  (c0)
+{
+return (0!==c0); // neqzq
+}
+/* ****** ****** */
+function
+XATS2JS_char_cmp
+  (c1, c2)
+{
+if
+(c1 < c2)
+return (-1);
+else
+return (c1 <= c2 ? 0 : 1);
+}
+/* ****** ****** */
+function
+XATS2JS_char_equal
+  (c1, c2)
+{
+return (c1===c2); // equal
+}
+function
+XATS2JS_char_noteq
+  (c1, c2)
+{
+return (c1!==c2); // noteq
+}
+/* ****** ****** */
+function
 XATS2JS_char_print
   (c0)
 {
-  XATS2JS_g_print(c0);
-  return; // char_print
+// c0: number
+XATS2JS_g_print
+(String.fromCharCode(c0));
+return; // XATS2JS_char_print
 }
 /* ****** ****** */
 //
@@ -327,55 +387,88 @@ function
 XATS2JS_gint_print_sint
   (x0)
 {
-  XATS2JS_g_print(x0);
-  return; // gint_print_sint
+XATS2JS_g_print(x0);
+return; // gint_print_sint
 }
 function
 XATS2JS_gint_print_uint
   (x0)
 {
-  XATS2JS_g_print(x0);
-  return; // gint_print_uint
+XATS2JS_g_print(x0);
+return; // gint_print_uint
+}
+/* ****** ****** */
+function
+XATS2JS_gint_abs_sint
+  (x0)
+{
+if
+(x0 >= 0)
+{
+  return x0; // abs
+}
+else
+{
+  return -x0; // abs
+}
 }
 /* ****** ****** */
 function
 XATS2JS_gint_neg_sint
   (x0)
-{ return (-x0); }
+{
+return (-x0); // neg
+}
 /* ****** ****** */
 function
 XATS2JS_gint_succ_sint
   (x0)
-{ return (x0 + 1); }
+{
+return (x0 + 1); // +1
+}
 function
 XATS2JS_gint_pred_sint
   (x0)
-{ return (x0 - 1); }
+{
+return (x0 - 1); // -1
+}
 /* ****** ****** */
 function
 XATS2JS_gint_lt_sint_sint
   (x1, x2)
-{ return (x1 < x2); }
+{
+return (x1 < x2); // lt
+}
 function
 XATS2JS_gint_gt_sint_sint
   (x1, x2)
-{ return (x1 > x2); }
+{
+return (x1 > x2); // gt
+}
 function
 XATS2JS_gint_eq_sint_sint
   (x1, x2)
-{ return (x1 === x2); }
+{
+return (x1 === x2); // eq
+}
 function
 XATS2JS_gint_lte_sint_sint
   (x1, x2)
-{ return (x1 <= x2); }
+{
+return (x1 <= x2); // lte
+}
 function
 XATS2JS_gint_gte_sint_sint
   (x1, x2)
-{ return (x1 >= x2); }
+{
+return (x1 >= x2); // gte
+}
 function
 XATS2JS_gint_neq_sint_sint
   (x1, x2)
-{ return (x1 !== x2); }
+{
+return (x1 !== x2); // neq
+}
 /* ****** ****** */
 function
 XATS2JS_gint_cmp_sint_sint
@@ -391,28 +484,38 @@ return (x1 <= x2 ? 0 : 1);
 function
 XATS2JS_gint_add_sint_sint
   (x1, x2)
-{ return ( x1 + x2 ); }
+{
+   return (x1 + x2); // add
+}
 /* ****** ****** */
 function
 XATS2JS_gint_sub_sint_sint
   (x1, x2)
-{ return ( x1 - x2 ); }
+{
+  return (x1 - x2); // sub
+}
 /* ****** ****** */
 function
 XATS2JS_gint_mul_sint_sint
   (x1, x2)
-{ return ( x1 * x2 ); }
+{
+  return (x1 * x2); // mul
+}
 /* ****** ****** */
 function
 XATS2JS_gint_mod_sint_sint
   (x1, x2)
-{ return ( x1 % x2 ); }
+{
+  return (x1 % x2); // mod
+}
 /* ****** ****** */
 function
 XATS2JS_gint_div_sint_sint
   (x1, x2)
 { 
+//
   var q0 = x1 / x2;
+//
   if
   (q0 >= 0)
   {
@@ -429,10 +532,43 @@ XATS2JS_gint_div_sint_sint
 //
 /* ****** ****** */
 function
+XATS2JS_string_head_opt
+  (x0)
+{
+if
+(x0.length <= 0)
+{
+  return 0; // none
+}
+return x0.charCodeAt(0);
+}
+/* ****** ****** */
+function
+XATS2JS_string_head_raw
+  (x0)
+{
+return x0.charCodeAt(0);
+}
+/* ****** ****** */
+function
+XATS2JS_string_tail_raw
+  (x0)
+{
+return x0.splice(1);//tail
+}
+/* ****** ****** */
+function
 XATS2JS_string_print
   (x0)
 {
-  XATS2JS_g_print(x0); return;
+XATS2JS_g_print(x0); return;
+}
+/* ****** ****** */
+function
+XATS2JS_strptr_set_at
+  (cs, i0, c0)
+{
+  throw new Error();
 }
 /* ****** ****** */
 //

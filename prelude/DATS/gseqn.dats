@@ -8,6 +8,8 @@
 (* ****** ****** *)
 
 #staload
+"prelude/SATS/gseqn.sats"
+#staload
 UN =
 "prelude/SATS/unsafe.sats"
 
@@ -19,7 +21,7 @@ gseqn_nilq(xs) =
 let
 val ln =
 gseqn_length
-<xs><x0,ln>(xs) in ln = 0
+<xs><x0><ln>(xs) in ln = 0
 end // end of [gseqn_nilq]
 
 (* ****** ****** *)
