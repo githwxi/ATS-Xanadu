@@ -40,6 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/basics.sats"
 #staload "./../SATS/stamp0.sats"
 #staload "./../SATS/symbol.sats"
 #staload "./../SATS/lexing.sats"
@@ -166,6 +167,30 @@ ref<hdcst_struct>
 }
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+hdcst_fcastq(hdc) =
+let
+val
+knd = hdcst_get_kind(hdc)
+in
+//
+case+ knd of
+|
+T_FUN(fnk) =>
+(
+case+ fnk of
+| FNKfcast() => true
+| _(*non-FNKfcast*) => false
+)
+(*
+  | T_VAL(vlk) => false
+*)
+| _ (* rest-of-tnode *) => false
+//
+end // end of [hdcst_iscast]
 
 (* ****** ****** *)
 
