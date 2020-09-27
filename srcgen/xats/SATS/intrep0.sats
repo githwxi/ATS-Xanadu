@@ -374,7 +374,8 @@ hdcst_make_idtp
 fun
 hdvar_make_idtp
 ( loc: loc_t
-, sym: sym_t, htp: h0typ): hdvar
+, sym: sym_t
+, knd: tnode, htp: h0typ): hdvar
 //
 (* ****** ****** *)
 //
