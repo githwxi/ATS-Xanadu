@@ -214,12 +214,12 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-s2cst_isdat(s2c0) =
+s2cst_isdat(s2c) =
 let
 //
 val
 opt =
-s2cst_get_d2conlst(s2c0)
+s2cst_get_d2conlst(s2c)
 //
 in
 //
@@ -232,10 +232,10 @@ end // end of [s2cst_isdat]
 (* ****** ****** *)
 
 implement
-d2cst_fcastq(d2c0) =
+d2cst_fcastq(d2c) =
 let
 val
-knd = d2cst_get_kind(d2c0)
+knd = d2cst_get_kind(d2c)
 in
 //
 case+ knd of
