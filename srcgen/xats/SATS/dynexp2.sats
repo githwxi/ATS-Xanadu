@@ -288,11 +288,14 @@ overload .tag with d2con_set_tag
 (* ****** ****** *)
 //
 fun
-d2cst_iscast(d2cst): bool
+d2cst_fcastq(d2cst): bool
 fun
 d2cst_get_kind(d2cst): tnode
 fun
 d2var_get_kind(d2var): tnode
+//
+overload .kind with d2cst_get_kind
+overload .kind with d2var_get_kind
 //
 (* ****** ****** *)
 //

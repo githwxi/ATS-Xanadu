@@ -139,12 +139,13 @@ hdcst_make_dcst
 //
 val loc = d2c.loc()
 val sym = d2c.sym()
+val knd = d2c.kind()
 val t2p = d2c.type()
 //
 val htp = tcomp30_type(t2p)
 //
 in
-  hdcst_make_idtp(loc, sym, htp)
+  hdcst_make_idtp(loc, sym, knd, htp)
 end // end of [hdcst_make_dcst]
 
 (* ****** ****** *)
