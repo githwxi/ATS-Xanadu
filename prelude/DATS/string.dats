@@ -185,7 +185,7 @@ impltmp<>
 string_vt_make_list
   {n}(cs) =
 (
-UN_strptr_vt_cast(p0)
+UN_string_vt_cast(p0)
 ) where
 {
 //
@@ -233,7 +233,7 @@ impltmp<>
 string_vt_make_list_vt
   {n}(cs) =
 (
-UN_strptr_vt_cast(p0)
+UN_string_vt_cast(p0)
 ) where
 {
 //
@@ -291,7 +291,7 @@ impltmp
 string_vt_tabulate
 ( n0 ) =
 (
-UN_strptr_vt_cast(p0)
+UN_string_vt_cast(p0)
 ) where
 {
 //

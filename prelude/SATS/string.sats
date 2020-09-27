@@ -107,9 +107,12 @@ stropt_unsome
 //
 (*
 HX-2020-09-27:
-[strptr_vt] and [string_vt]
-are assumed to be of the same
-representation!
+Note that [strptr_vt] and [string_vt] are
+assumed to be of the same representation.
+Actually, the former is a tempory version
+of the latter: A string_vt construction is
+cemented with a call to the cast-function
+UN_string_vt_cast.
 *)
 //
 absvwtp
@@ -129,7 +132,7 @@ vwtpdef
 strptr_vt(n:int) = strptr1_vt(n)
 //
 fcast
-UN_strptr_vt_cast
+UN_string_vt_cast
 {n:int}
 (cs: strptr_vt(n)): string_vt(n)
 //
