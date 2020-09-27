@@ -42,6 +42,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/stamp0.sats"
 #staload "./../SATS/symbol.sats"
+#staload "./../SATS/lexing.sats"
 #staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
@@ -125,6 +126,7 @@ hdcst_struct = @{
 //
   hdcst_loc= loc_t // loc
 , hdcst_sym= sym_t // name
+, hdcst_kind= tnode // kind
 , hdcst_type= h0typ // type
 , hdcst_stamp= stamp // unicity
 //
@@ -139,17 +141,22 @@ implement
 hdcst_get_sym
 (hdc) = hdc->hdcst_sym
 implement
+hdcst_get_kind
+(hdc) = hdc->hdcst_kind
+implement
 hdcst_get_stamp
 (hdc) = hdc->hdcst_stamp
 
 implement
 hdcst_make_idtp
-(loc, sym, htp) =
+( loc
+, sym, knd, htp) =
 (
 ref<hdcst_struct>
 @{
   hdcst_loc=loc
 , hdcst_sym=sym
+, hdcst_kind=knd
 , hdcst_type=htp
 , hdcst_stamp=stamp
 }

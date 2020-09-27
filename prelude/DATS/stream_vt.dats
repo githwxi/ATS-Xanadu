@@ -105,7 +105,12 @@ impltmp
 stream_vt_print_all
   (xs) =
 (
-loop(xs, 0(*i0*))
+loop
+(xs, 0(*i0*)) where
+{
+val () =
+stream_vt_print$beg<>()
+}
 ) where
 {
 vwtpdef
@@ -142,7 +147,12 @@ impltmp
 stream_vt_print_len
   (xs, n0) =
 (
-loop(xs, 0(*i0*))
+loop
+(xs, 0(*i0*)) where
+{
+val () =
+stream_vt_print$beg<>()
+}
 ) where
 {
 vwtpdef
@@ -168,7 +178,7 @@ stream_vt_free<a>(xs)
 //
 val () =
 if
-(n0 > 0)
+(i0 > 0)
 then
 stream_vt_print$sep<>()
 val () =
@@ -181,7 +191,7 @@ else
 let
 val () =
 if
-(n0 > 0)
+(i0 > 0)
 then
 stream_vt_print$sep<>()
 val () =

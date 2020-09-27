@@ -232,7 +232,7 @@ end // end of [s2cst_isdat]
 (* ****** ****** *)
 
 implement
-d2cst_iscast(d2c0) =
+d2cst_fcastq(d2c0) =
 let
 val
 knd = d2cst_get_kind(d2c0)

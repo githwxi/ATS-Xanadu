@@ -378,6 +378,17 @@ XATS2JS_gint_neq_sint_sint
 { return (x1 !== x2); }
 /* ****** ****** */
 function
+XATS2JS_gint_cmp_sint_sint
+  (x1, x2)
+{
+if
+(x1 < x2)
+return (-1);
+else
+return (x1 <= x2 ? 0 : 1);
+}
+/* ****** ****** */
+function
 XATS2JS_gint_add_sint_sint
   (x1, x2)
 { return ( x1 + x2 ); }

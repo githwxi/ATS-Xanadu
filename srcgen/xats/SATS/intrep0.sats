@@ -183,6 +183,15 @@ overload .tag with hdcon_set_tag
 (* ****** ****** *)
 //
 fun
+hdcst_fcastq(hdcst): bool
+fun
+hdcst_get_kind(hdcst): tnode
+fun
+hdvar_get_kind(hdvar): tnode
+//
+(* ****** ****** *)
+//
+fun
 hdcon_get_stamp(hdcon): stamp
 fun
 hdcst_get_stamp(hdcst): stamp
@@ -248,7 +257,7 @@ overload fprint with fprint_htcst
 fun
 htcst_make_idst
 ( loc: loc_t
-, sym: symbol, hst: h0srt): htcst
+, sym: sym_t, hst: h0srt): htcst
 (* ****** ****** *)
 //
 fun
@@ -266,7 +275,7 @@ overload fprint with fprint_htvar
 //
 fun
 htvar_make_idst
-(sym: symbol, hst: h0srt): htvar
+(sym: sym_t, hst: h0srt): htvar
 //
 (* ****** ****** *)
 typedef labh0typ = slabeled(h0typ)
@@ -353,18 +362,19 @@ overload fprint with fprint_hdvar
 fun
 hdcon_make_idtp
 ( loc: loc_t
-, sym: symbol, htp: h0typ): hdcon
+, sym: sym_t, htp: h0typ): hdcon
 fun
 hdcst_make_idtp
 ( loc: loc_t
-, sym: symbol, htp: h0typ): hdcst
+, sym: sym_t
+, knd: tnode, htp: h0typ): hdcst
 //
 (* ****** ****** *)
 //
 fun
 hdvar_make_idtp
 ( loc: loc_t
-, sym: symbol, htp: h0typ): hdvar
+, sym: sym_t, htp: h0typ): hdvar
 //
 (* ****** ****** *)
 //

@@ -642,7 +642,7 @@ g_print<list(a)>(xs) =
 let
 val () =
 gseq_print<list(a)><a>(xs)
-end // end of [g_fprint]
+end // end of [g_print]
 //
 impltmp
 {a:t0}
