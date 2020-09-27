@@ -99,22 +99,6 @@ end // end of [htvar_make_svar]
 (* ****** ****** *)
 
 implement
-hdvar_make_dvar
-  (d2v) = let
-//
-val loc = d2v.loc()
-val sym = d2v.sym()
-val t2p = d2v.type()
-//
-val htp = tcomp30_type(t2p)
-//
-in
-  hdvar_make_idtp(loc, sym, htp)
-end // end of [hdvar_make_dvar]
-
-(* ****** ****** *)
-
-implement
 hdcon_make_dcon
   (d2c) = let
 //
@@ -133,6 +117,8 @@ let
   hdc.tag(d2c.tag()) in hdc end
 end // end of [hdcon_make_dcon]
 
+(* ****** ****** *)
+
 implement
 hdcst_make_dcst
   (d2c) = let
@@ -145,8 +131,25 @@ val t2p = d2c.type()
 val htp = tcomp30_type(t2p)
 //
 in
-  hdcst_make_idtp(loc, sym, knd, htp)
+hdcst_make_idtp(loc, sym, knd, htp)
 end // end of [hdcst_make_dcst]
+
+(* ****** ****** *)
+
+implement
+hdvar_make_dvar
+  (d2v) = let
+//
+val loc = d2v.loc()
+val sym = d2v.sym()
+val knd = d2v.kind()
+val t2p = d2v.type()
+//
+val htp = tcomp30_type(t2p)
+//
+in
+hdvar_make_idtp(loc, sym, knd, htp)
+end // end of [hdvar_make_dvar]
 
 (* ****** ****** *)
 

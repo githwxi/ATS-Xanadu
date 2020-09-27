@@ -176,6 +176,7 @@ hdvar_struct = @{
 //
   hdvar_loc= loc_t // loc
 , hdvar_sym= sym_t // name
+, hdvar_kind= tnode // kind
 , hdvar_type= h0typ // type
 , hdvar_stamp= stamp // unicity
 //
@@ -190,17 +191,22 @@ implement
 hdvar_get_sym
 (hdv) = hdv->hdvar_sym
 implement
+hdvar_get_kind
+(hdv) = hdv->hdvar_kind
+implement
 hdvar_get_stamp
 (hdv) = hdv->hdvar_stamp
 
 implement
 hdvar_make_idtp
-(loc, sym, htp) =
+( loc
+, sym, knd, htp) =
 (
 ref<hdvar_struct>
 @{
   hdvar_loc=loc
 , hdvar_sym=sym
+, hdvar_kind=knd
 , hdvar_type=htp
 , hdvar_stamp=stamp
 }
