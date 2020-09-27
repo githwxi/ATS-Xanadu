@@ -62,16 +62,36 @@ string_vt_lemma
 (!string_vt(n)): [n>=0] void
 
 (* ****** ****** *)
-
+//
+(*
+HX-2020-09-27:
+//
+[string]
+and
+[string_vt]
+are NOT assumed to be of the
+same representation!
+//
+For instance, a string is a
+JS_string in JS but a string_vt
+is a JS_array (of chars) in JS!
+*)
+//
+(*
 fcast
 string_vt2t
 {n:int}
 (cs: string_vt(n)): string(n)
-fcast
+*)
+fun<>
+string_vt2t
+{n:int}
+(cs: string_vt(n)): string(n)
+fun<>
 stropt_vt2t
 {n:int}
 (cs: stropt_vt(n)): stropt(n)
-
+//
 (* ****** ****** *)
 
 fcast
@@ -84,12 +104,35 @@ stropt_unsome
 (cs: stropt(n)): string(n-1)
 
 (* ****** ****** *)
-
+//
+(*
+HX-2020-09-27:
+[strptr_vt] and [string_vt]
+are assumed to be of the same
+representation!
+*)
+//
 absvwtp
 strptr_i0_vx(n:int) <= ptr
 vwtpdef
-strptr(n:int) = strptr_i0_vx(n)
-
+strptr0_vt =
+[n:int] strptr_i0_vx(n)
+vwtpdef
+strptr1_vt
+(n:int) = strptr_i0_vx(n)
+//
+(* ****** ****** *)
+//
+vwtpdef
+strptr_vt = strptr0_vt
+vwtpdef
+strptr_vt(n:int) = strptr1_vt(n)
+//
+fcast
+UN_strptr_vt_cast
+{n:int}
+(cs: strptr_vt(n)): string_vt(n)
+//
 (* ****** ****** *)
 //
 (*
@@ -240,12 +283,6 @@ string_get_at
 {i:nat|i < n}
 ( cs:
   string(n), i0: int(i)): cgtz
-fun<>
-strptr_set_at
-{n:int}
-{i:nat|i < n}
-( p0:
-! strptr(n), i0: int(i), c0: cgtz): void
 //
 fun<>
 string_vt_get_at
@@ -253,6 +290,13 @@ string_vt_get_at
 {i:nat|i < n}
 ( cs:
 ! string_vt(n), i0: int(i)): cgtz
+//
+fun<>
+strptr_vt_set_at
+{n:int}
+{i:nat|i < n}
+( p0:
+! strptr_vt(n), i0: int(i), c0: cgtz): void
 fun<>
 string_vt_set_at
 {n:int}
@@ -304,8 +348,9 @@ string_streamize
 (* ****** ****** *)
 //
 fun<>
-strptr_alloc
-{n:nat}(bsz: int(n)): strptr(n)
+strptr_vt_alloc
+{n:nat}
+(bsz: sint(n)): strptr_vt(n)
 //
 (* ****** ****** *)
 
@@ -394,18 +439,19 @@ consq with string_consq of 1000
 #symload
 [] with string_get_at of 1000
 #symload
-[] with strptr_set_at of 1000
-#symload
 get_at with string_get_at of 1000
-#symload
-set_at with strptr_set_at of 1000
 //
 #symload
 [] with string_vt_get_at of 1000
 #symload
+get_at with string_vt_get_at of 1000
+//
+#symload
+[] with strptr_vt_set_at of 1000
+#symload
 [] with string_vt_set_at of 1000
 #symload
-get_at with string_vt_get_at of 1000
+set_at with strptr_vt_set_at of 1000
 #symload
 set_at with string_vt_set_at of 1000
 //

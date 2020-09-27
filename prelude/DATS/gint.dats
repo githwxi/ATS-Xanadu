@@ -259,16 +259,16 @@ in(*in-of-local*)
 (* ****** ****** *)
 //
 impltmp
-gseq_nilq<x0,xs> = gint_nilq_sint<>
+gseq_nilq<x0><xs> = gint_nilq_sint<>
 impltmp
-gseq_consq<x0,xs> = gint_consq_sint<>
+gseq_consq<x0><xs> = gint_consq_sint<>
 //
 (* ****** ****** *)
 //
 impltmp
-gseq_forall<x0,xs> = gint_forall_sint<>
+gseq_forall<x0><xs> = gint_forall_sint<>
 impltmp
-gseq_rforall<x0,xs> = gint_rforall_sint<>
+gseq_rforall<x0><xs> = gint_rforall_sint<>
 //
 (* ****** ****** *)
 
