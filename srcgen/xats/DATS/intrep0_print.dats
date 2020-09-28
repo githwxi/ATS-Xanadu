@@ -609,6 +609,12 @@ x0.node() of
   , "H0Efix("
   , knd0, "; ", fid1, "; ", hfas, "; ", body, ")")
 //
+| H0Etry
+  (knd0, h0e1, hcls) =>
+  fprint!
+  ( out, "H0Etry("
+  , knd0, "; ", h0e1, "; ", hcls, ")")
+//
 | H0Eaddr(h0e1) =>
   (
    fprint!(out, "H0Eaddr(", h0e1, ")")

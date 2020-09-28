@@ -605,6 +605,11 @@ H0Ecase of
   , hdvar(*fid*)
   , hfarglst(*arg*), h0exp(*body*) )
 //
+|
+H0Etry of
+( token(*knd*)
+, h0exp(*val*), h0claulst(*claues*))
+//
 | H0Eaddr of h0exp(*l-value*)
 | H0Eflat of h0exp(*l-value*)
 | H0Etalf of h0exp(*H0Eflat*)

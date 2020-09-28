@@ -199,13 +199,13 @@ loop(p0, 0(*i0*), cs)
 {
 //
 sexpdef
-strp=strtmp1_vt
+stmp=strtmp1_vt
 //
 fun
 loop
 {i:nat
 |i<=n}.<n-i>.
-( p0: strp(n)
+( p0: stmp(n)
 , i0: sint(i)
 , cs
 : list
@@ -247,13 +247,13 @@ loop(p0, 0(*i0*), cs)
 {
 //
 sexpdef
-strp=strtmp1_vt
+stmp=strtmp1_vt
 //
 fun
 loop
 {i:nat
 |i<=n}.<n-i>.
-( p0: strp(n)
+( p0: stmp(n)
 , i0: sint(i)
 , cs
 : list_vt
@@ -305,13 +305,13 @@ val () = loop(p0, i0)
 {
 //
 sexpdef
-strp=strtmp1_vt
+stmp=strtmp1_vt
 //
 fun
 loop
 {i:nat
 |i<=n}.<n-i>.
-( p0: strp(n)
+( p0: stmp(n)
 , i0: sint(i)): void =
 (
 if

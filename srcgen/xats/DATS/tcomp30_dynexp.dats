@@ -1303,6 +1303,38 @@ end // end of [aux_fix]
 (* ****** ****** *)
 
 fun
+aux_try
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Etry(knd0, h0e1, hcls)
+) where
+{
+val-
+D3Etry
+( knd0
+, d3e1, dcls) = d3e0.node()
+val h0e1 = tcomp30_dexp(d3e1)
+val hcls = tcomp30_dclaulst(dcls)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_try]
+
+(* ****** ****** *)
+
+fun
 aux_addr
 (d3e0: d3exp): h0exp =
 let
@@ -1475,6 +1507,34 @@ end // end of [aux_free]
 (* ****** ****** *)
 
 fun
+aux_raise
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Eraise(h0e1) where
+{
+//
+val-
+D3Eraise(d3e1) = d3e0.node()
+//
+val h0e1 = tcomp30_dexp(d3e1)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_raise]
+
+(* ****** ****** *)
+
+fun
 aux_lazy
 (d3e0: d3exp): h0exp =
 let
@@ -1626,6 +1686,8 @@ D3Eassgn _ => aux_assgn(d3e0)
 | D3Elam _ => aux_lam(d3e0)
 | D3Efix _ => aux_fix(d3e0)
 //
+| D3Etry _ => aux_try(d3e0)
+//
 | D3Eaddr _ => aux_addr(d3e0)
 | D3Eflat _ => aux_flat(d3e0)
 | D3Etalf _ => aux_talf(d3e0)
@@ -1634,6 +1696,8 @@ D3Eassgn _ => aux_assgn(d3e0)
 //
 | D3Eeval _ => aux_eval(d3e0)
 | D3Efree _ => aux_free(d3e0)
+//
+| D3Eraise _ => aux_raise(d3e0) 
 //
 | D3Elazy _ => aux_lazy(d3e0)
 | D3Ellazy _ => aux_llazy(d3e0)
