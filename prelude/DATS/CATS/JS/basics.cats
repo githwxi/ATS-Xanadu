@@ -28,8 +28,16 @@ function
 XATS2JS_fcast
   ( x0 )
 {
-return x0; // obj: object
+return x0; //obj: object
 }  
+/* ****** ****** */
+//
+function
+XATS2JS_raise
+  ( exn )
+{
+  throw exn;//no return!
+}
 /* ****** ****** */
 //
 function
