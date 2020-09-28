@@ -445,48 +445,142 @@ gflt_div_dflt_dflt<> = XATS2JS_gflt_div_dflt_dflt
 // prelude/string.sats
 //
 (* ****** ****** *)
+impltmp
+string_vt2t<> =
+XATS2JS_string_vt2t
+where
+{
+#extern
+fun
+XATS2JS_string_vt2t
+(cs
+:string_vt):string // = $ext()
+}
+(* ****** ****** *)
+impltmp
+string_print<> =
+XATS2JS_string_print
+where
+{
 #extern
 fun
 XATS2JS_string_print
 (cs: string): void // = $ext()
-impltmp
-string_print<> =
-XATS2JS_string_print//basics.cats
-//
+}
 (* ****** ****** *)
+impltmp
+string_head_opt<> =
+XATS2JS_string_head_opt
+where
+{
 #extern
 fun
 XATS2JS_string_head_opt
 (cs: string): char // = $ext()
-impltmp
-string_head_opt<> =
-XATS2JS_string_head_opt//basics.cats
+}
 (* ****** ****** *)
+impltmp
+string_head_raw<> =
+XATS2JS_string_head_raw
+where
+{
 #extern
 fun
 XATS2JS_string_head_raw
 (cs: string): char // = $ext()
-impltmp
-string_head_raw<> =
-XATS2JS_string_head_raw//basics.cats
+}
 (* ****** ****** *)
+impltmp
+string_tail_raw<> =
+XATS2JS_string_tail_raw
+where
+{
 #extern
 fun
 XATS2JS_string_tail_raw
 (cs: string): string // = $ext()
-impltmp
-string_tail_raw<> =
-XATS2JS_string_tail_raw//basics.cats
+}
 (* ****** ****** *)
+impltmp
+string_get_at<> =
+XATS2JS_string_get_at
+where
+{
+#extern
+fun
+XATS2JS_string_get_at
+( cs
+: string, i0: sint): char // = $ext()
+}
+(* ****** ****** *)
+impltmp
+string_forall<>(cs) =
+let
+//
 #extern
 fun
 XATS2JS_string_forall_cfr
 ( cs: string
 , f0: (cgtz) -<cfr> bool): bool
-impltmp
-string_forall<>(cs) =
+//
+in
 XATS2JS_string_forall_cfr
-(cs, lam(c0) => forall$test<cgtz>(c0))
+( cs
+, lam(c0) => forall$test<cgtz>(c0))
+end // end of [string_forall]
+(* ****** ****** *)
+impltmp
+strtmp_vt_alloc<> =
+XATS2JS_strtmp_vt_alloc
+where
+{
+#extern
+fun
+XATS2JS_strtmp_vt_alloc
+(bsz: sint) : strtmp0_vt // = $ext()
+}
+(* ****** ****** *)
+impltmp
+strtmp_vt_set_at<> =
+XATS2JS_strtmp_vt_set_at
+where
+{
+#extern
+fun
+XATS2JS_strtmp_vt_set_at
+( cs:strtmp0_vt
+, i0:sint, c0:char): void // = $ext()
+}
+(* ****** ****** *)
+impltmp
+string_vt_forall0<>(cs) =
+let
+//
+#extern
+fun
+XATS2JS_string_vt_forall_cfr
+( cs: ~string_vt
+, f0: (cgtz) -<cfr> bool): bool
+//
+XATS2JS_string_vt_forall_cfr
+( cs
+, lam(c0) => forall0$test<cgtz>(c0))
+end // end of [string_vt_forall0]
+(* ****** ****** *)
+impltmp
+string_vt_forall1<>(cs) =
+let
+//
+#extern
+fun
+XATS2JS_string_vt_forall_cfr
+( cs: !string_vt
+, f0: (cgtz) -<cfr> bool): bool
+//
+XATS2JS_string_vt_forall_cfr
+( cs
+, lam(c0) => forall1$test<cgtz>(c0))
+end // end of [string_vt_forall1]
 (* ****** ****** *)
 
 (* end of [XATS2JS_basics.dats] *)

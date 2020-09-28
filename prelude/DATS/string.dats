@@ -190,7 +190,7 @@ UN_string_vt_cast(p0)
 {
 //
 val p0 =
-strptr_vt_alloc<>
+strtmp_vt_alloc<>
 (list_length(cs))
 val () =
 loop(p0, 0(*i0*), cs)
@@ -199,7 +199,7 @@ loop(p0, 0(*i0*), cs)
 {
 //
 sexpdef
-strp=strptr1_vt
+strp=strtmp1_vt
 //
 fun
 loop
@@ -221,7 +221,7 @@ list_cons(c0, cs) =>
 ) where
 {
 val () =
-strptr_vt_set_at<>(p0, i0, c0)
+strtmp_vt_set_at<>(p0, i0, c0)
 }
 )
 //
@@ -238,7 +238,7 @@ UN_string_vt_cast(p0)
 {
 //
 val p0 =
-strptr_vt_alloc<>
+strtmp_vt_alloc<>
 (list_vt_length(cs))
 val () =
 loop(p0, 0(*i0*), cs)
@@ -247,7 +247,7 @@ loop(p0, 0(*i0*), cs)
 {
 //
 sexpdef
-strp=strptr1_vt
+strp=strtmp1_vt
 //
 fun
 loop
@@ -269,7 +269,7 @@ list_vt_cons(c0, cs) =>
 ) where
 {
 val () =
-strptr_vt_set_at<>(p0, i0, c0)
+strtmp_vt_set_at<>(p0, i0, c0)
 }
 )
 //
@@ -296,7 +296,7 @@ UN_string_vt_cast(p0)
 {
 //
 val p0 =
-strptr_vt_alloc<>(n0)
+strtmp_vt_alloc<>(n0)
 //
 val i0 = 0
 val () = loop(p0, i0)
@@ -305,7 +305,7 @@ val () = loop(p0, i0)
 {
 //
 sexpdef
-strp=strptr1_vt
+strp=strtmp1_vt
 //
 fun
 loop
@@ -324,7 +324,7 @@ then
 val c0 =
 tabulate$fopr<cgtz><n>(i0)
 val () =
-strptr_vt_set_at<>(p0, i0, c0)
+strtmp_vt_set_at<>(p0, i0, c0)
 }
 )
 //

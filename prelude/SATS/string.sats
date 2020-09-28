@@ -107,7 +107,7 @@ stropt_unsome
 //
 (*
 HX-2020-09-27:
-Note that [strptr_vt] and [string_vt] are
+Note that [strtmp_vt] and [string_vt] are
 assumed to be of the same representation.
 The former is actually a temporary of the
 latter:
@@ -117,25 +117,25 @@ which itself is just a no-op.
 *)
 //
 absvwtp
-strptr_i0_vx(n:int) <= ptr
+strtmp_i0_vx(n:int) <= ptr
 vwtpdef
-strptr0_vt =
-[n:int] strptr_i0_vx(n)
+strtmp0_vt =
+[n:int] strtmp_i0_vx(n)
 vwtpdef
-strptr1_vt
-(n:int) = strptr_i0_vx(n)
+strtmp1_vt
+(n:int) = strtmp_i0_vx(n)
 //
 (* ****** ****** *)
 //
 vwtpdef
-strptr_vt = strptr0_vt
+strtmp_vt = strtmp0_vt
 vwtpdef
-strptr_vt(n:int) = strptr1_vt(n)
+strtmp_vt(n:int) = strtmp1_vt(n)
 //
 fcast
 UN_string_vt_cast
 {n:int}
-(cs: strptr_vt(n)): string_vt(n)
+(cs: strtmp_vt(n)): string_vt(n)
 //
 (* ****** ****** *)
 //
@@ -296,11 +296,11 @@ string_vt_get_at
 ! string_vt(n), i0: int(i)): cgtz
 //
 fun<>
-strptr_vt_set_at
+strtmp_vt_set_at
 {n:int}
 {i:nat|i < n}
 ( p0:
-! strptr_vt(n), i0: int(i), c0: cgtz): void
+! strtmp_vt(n), i0: int(i), c0: cgtz): void
 fun<>
 string_vt_set_at
 {n:int}
@@ -335,6 +335,16 @@ fun<>
 string_rforall(string): bool
 //
 (* ****** ****** *)
+fun<>
+string_vt_forall0(~string_vt): bool
+fun<>
+string_vt_forall1(!string_vt): bool
+(* ****** ****** *)
+fun<>
+string_vt_rforall0(~string_vt): bool
+fun<>
+string_vt_rforall1(!string_vt): bool
+(* ****** ****** *)
 //
 fun<>
 string_listize
@@ -352,9 +362,9 @@ string_streamize
 (* ****** ****** *)
 //
 fun<>
-strptr_vt_alloc
+strtmp_vt_alloc
 {n:nat}
-(bsz: sint(n)): strptr_vt(n)
+(bsz: sint(n)): strtmp_vt(n)
 //
 (* ****** ****** *)
 
@@ -451,13 +461,13 @@ get_at with string_get_at of 1000
 get_at with string_vt_get_at of 1000
 //
 #symload
-[] with strptr_vt_set_at of 1000
-#symload
 [] with string_vt_set_at of 1000
 #symload
-set_at with strptr_vt_set_at of 1000
+[] with strtmp_vt_set_at of 1000
 #symload
 set_at with string_vt_set_at of 1000
+#symload
+set_at with strtmp_vt_set_at of 1000
 //
 (* ****** ****** *)
 //
