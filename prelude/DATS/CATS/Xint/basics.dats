@@ -530,11 +530,11 @@ string_tail_raw<> = Xint_string_tail_raw
 //
 #extern
 fun
-Xint_strptr_vt_alloc
+Xint_strtmp_vt_alloc
 {n:nat}
-(len: int(n)): strptr_vt(n)
+(len: int(n)): strtmp_vt(n)
 impltmp
-strptr_vt_alloc<> = Xint_strptr_vt_alloc
+strtmp_vt_alloc<> = Xint_strtmp_vt_alloc
 //
 #extern
 fun
@@ -549,13 +549,13 @@ string_get_at<> = Xint_string_get_at
 //
 #extern
 fun
-Xint_strptr_vt_set_at
+Xint_strtmp_vt_set_at
 {n:nat}
 {i:int|i<n}
 ( p0:
-! strptr_vt(n), i0:int(i), c0:cgtz): void
+! strtmp_vt(n), i0:int(i), c0:cgtz): void
 impltmp
-strptr_vt_set_at<> = Xint_strptr_vt_set_at
+strtmp_vt_set_at<> = Xint_strtmp_vt_set_at
 //
 (* ****** ****** *)
 //

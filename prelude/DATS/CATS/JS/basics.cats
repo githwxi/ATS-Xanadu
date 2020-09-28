@@ -15,13 +15,13 @@ XATS2JS_char
   ( cs )
 {
 // cs: singleton
-return x0.charCodeAt();
+return cs.charCodeAt(0);
 }
 function
 XATS2JS_string
   ( cs )
 {
-return cs; // x0: string
+return cs;//cs:JS_string
 }
 /* ****** ****** */
 function
@@ -30,6 +30,17 @@ XATS2JS_fcast
 {
 return x0; // obj: object
 }  
+/* ****** ****** */
+//
+function
+XATS2JS_g_print(obj)
+{
+var
+rep = obj.toString();
+process.stdout.write(rep);
+return; // XATS2JS_g_print
+}
+//
 /* ****** ****** */
 //
 function
@@ -112,11 +123,11 @@ if
 lvl0.hasOwnProperty('prev')
 )
 { // flat tuple
-  root =
-  XATS2JS_lval_get(lvl0.prev);
-  root =
-  root.slice(); root[offs] = obj1;
-  XATS2JS_lval_set(lvl0.prev, root);
+root =
+XATS2JS_lval_get(lvl0.prev);
+root =
+root.slice(); root[offs] = obj1;
+XATS2JS_lval_set(lvl0.prev, root);
 }
 else
 {
@@ -283,17 +294,6 @@ if
 //
 } // end of [XATS2JS_llazy_free]
 
-/* ****** ****** */
-//
-function
-XATS2JS_g_print(obj)
-{
-var
-rep = obj.toString();
-process.stdout.write(rep);
-return; // XATS2JS_g_print
-}
-//
 /* ****** ****** */
 //
 // prelude/bool.sats
@@ -531,44 +531,153 @@ XATS2JS_gint_div_sint_sint
 // prelude/string.sats
 //
 /* ****** ****** */
+//
+// HX-2020-09-28:
+// Please note that:
+// A string is a JS_string
+// A string_vt is a JS_array
+//
+/* ****** ****** */
+function
+XATS2JS_string_vt2t
+  (cs)
+{
+cs.pop(); // remove the last '0'
+var cs =
+String.fromCharCode.apply(null, cs);
+return cs; // XATS2JS_string_vt2t
+}
+/* ****** ****** */
 function
 XATS2JS_string_head_opt
-  (x0)
+  (cs)
 {
 if
-(x0.length <= 0)
+(cs.length <= 0)
 {
   return 0; // none
 }
-return x0.charCodeAt(0);
+return cs.charCodeAt(0);
 }
 /* ****** ****** */
 function
 XATS2JS_string_head_raw
-  (x0)
+  (cs)
 {
-return x0.charCodeAt(0);
+return cs.charCodeAt(0);
 }
 /* ****** ****** */
 function
 XATS2JS_string_tail_raw
-  (x0)
+  (cs)
 {
-return x0.splice(1);//tail
+return cs.slice(1);//tail
 }
 /* ****** ****** */
 function
 XATS2JS_string_print
-  (x0)
+  (cs)
 {
-XATS2JS_g_print(x0); return;
+  XATS2JS_g_print(cs);
+  return;
 }
 /* ****** ****** */
 function
-XATS2JS_strptr_set_at
+XATS2JS_string_get_at
+  (cs, i0)
+{
+  return cs[i0];
+  // cs: JS_array(char)
+}
+/* ****** ****** */
+function
+XATS2JS_strtmp_vt_alloc
+  (bsz)
+{
+  cs =
+  new Array(bsz+1);
+  cs[bsz] = 0; return cs;
+}
+function
+XATS2JS_strtmp_vt_set_at
   (cs, i0, c0)
 {
-  throw new Error();
+  cs[i0] = c0;
+  return;//cs:JS_array(char)
+}
+/* ****** ****** */
+function
+XATS2JS_string_forall_cfr
+  (cs, f0)
+{
+var
+res = true;
+var
+len = cs.length
+for
+( i0 = 0
+; i0 < len; i0 += 1)
+{
+var c0 = cs.charCodeAt(i0);
+if
+(!f0(c0)){res = false; break;}
+}
+return res; // string_forall_cfr
+}
+/* ****** ****** */
+function
+XATS2JS_string_rforall_cfr
+  (cs, f0)
+{
+var
+res = true;
+var
+len = cs.length
+for
+( i0 = len
+; i0 >= 1 ; i0 -= 1)
+{
+var c0 = cs.charCodeAt(i0-1);
+if
+(!f0(c0)){res = false; break;}
+}
+return res; // string_rforall_cfr
+}
+/* ****** ****** */
+function
+XATS2JS_string_vt_forall_cfr
+  (cs, f0)
+{
+var
+res = true;
+var
+len = cs.length
+for
+( i0 = 0
+; i0 < len; i0 += 1)
+{
+if
+(!f0(cs[i0])){res = false; break;}
+}
+return res; // string_vt_forall_cfr
+}
+/* ****** ****** */
+function
+XATS2JS_string_vt_rforall_cfr
+  (cs, f0)
+{
+var
+res = true;
+var
+len = cs.length;
+for
+( i0 = len
+; i0 >= 1 ; i0 -= 1)
+{
+if
+(!f0(cs[i0-1])){res = false; break;}
+}
+return res; // string_vt_rforall_cfr
 }
 /* ****** ****** */
 //
