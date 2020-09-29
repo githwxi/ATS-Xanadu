@@ -539,10 +539,10 @@ x0.node() of
   , fid, "; ", f3as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
-| D3Etry
+| D3Etry0
   (tok0, d3e1, dcls) =>
   fprint!
-  ( out, "D3Etry("
+  ( out, "D3Etry0("
   , tok0, "; ", d3e1, "; ", dcls, ")")
 //
 | D3Eaddr(d3e1) =>

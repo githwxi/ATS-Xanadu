@@ -499,7 +499,7 @@ d0exp_node =
   , f0arglst(*arglst*)
   , effs0expopt, f0unarrow, d0exp, tokenopt)
 //
-| D0Etry of
+| D0Etry0 of
   ( token
   , d0exp
   , token(*WITH*)

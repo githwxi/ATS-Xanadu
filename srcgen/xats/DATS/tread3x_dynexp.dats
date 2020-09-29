@@ -622,7 +622,7 @@ d3e0.node() of
     val () = tread3x_d3exp(body)
   }
 //
-| D3Etry
+| D3Etry0
   (tok0, d3e1, d3cs) =>
   {
     val () = tread3x_d3exp(d3e1)

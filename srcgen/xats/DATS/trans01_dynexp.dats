@@ -1384,7 +1384,7 @@ d0e0.node() of
     }
   end // end of [D1Efix]
 //
-| D0Etry
+| D0Etry0
   ( tbeg, d0e1, twth
   , tbar, d0cs, tend) => let
     val d1e1 = trans01_dexp(d0e1)
@@ -1394,9 +1394,9 @@ d0e0.node() of
     {
       val d1e0 =
         d1exp_make_node
-        (loc0, D1Etry(tbeg, d1e1, d1cs))
+        (loc0, D1Etry0(tbeg, d1e1, d1cs))
     }
-  end // end of [D0Etry]
+  end // end of [D0Etry0]
 //
 | D0Eanno(d0e1, s0e2) =>
   let

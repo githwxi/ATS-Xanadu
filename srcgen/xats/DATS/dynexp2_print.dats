@@ -499,10 +499,10 @@ case- x0.node() of
   , fid, "; ", f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
-| D2Etry
+| D2Etry0
   (knd, d2e1, d2cls) =>
   fprint!
-  ( out, "D2Etry("
+  ( out, "D2Etry0("
   , knd, "; ", d2e1, "; ", d2cls, ")")
 //
 (*

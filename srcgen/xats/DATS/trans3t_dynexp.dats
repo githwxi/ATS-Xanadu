@@ -530,10 +530,11 @@ d3e0.node() of
     d3exp_make_node
     ( loc0
     , t2p0
-    , D3Efix(knd0, d2v0, arg1, res2, arrw, body))
+    , D3Efix
+      (knd0, d2v0, arg1, res2, arrw, body))
   end // D3Efix
 //
-| D3Etry
+| D3Etry0
   (tok0, d3e1, d3cls) =>
   let
     val d3e1 =
@@ -542,7 +543,7 @@ d3e0.node() of
     trans3t_dclaulst(env0, d3cls)
   in
     d3exp_make_node
-    (loc0, t2p0, D3Etry(tok0, d3e1, d3cls))
+    (loc0, t2p0, D3Etry0(tok0, d3e1, d3cls))
   end
 //
 | D3Eaddr(d3e1) =>

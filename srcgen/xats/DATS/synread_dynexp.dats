@@ -427,7 +427,7 @@ d0e0.node() of
 //
   }
 //
-| D0Etry
+| D0Etry0
   ( tbeg, d0e1, tmid
   , topt, dcls, tend) =>
   {

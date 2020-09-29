@@ -1441,14 +1441,14 @@ x0.node() of
 (* ****** ****** *)
 
 fun
-aux_try
+aux_try0
 ( d2e0
 : d2exp): d3exp = let
 //
 val
 loc0 = d2e0.loc()
 val-
-D2Etry
+D2Etry0
 ( tok0
 , d2e1, d2cs) = d2e0.node()
 //
@@ -1462,9 +1462,9 @@ trans23_dclaulst_dntp(d2cs, targ, tres)
 in
 //
 d23exp_make_node
-  (loc0, tres, D3Etry(tok0, d3e1, d3cs))
+  (loc0, tres, D3Etry0(tok0, d3e1, d3cs))
 //
-end (* end of [aux_try] *)
+end (* end of [aux_try0] *)
 
 (* ****** ****** *)
 
@@ -1784,8 +1784,8 @@ d2e0.node() of
 | D2Efix
   (_, _, _, _, _, _) => aux_fix(d2e0)
 //
-| D2Etry
-  (tok0, d2e1, dcls) => aux_try(d2e0)
+| D2Etry0
+  (tok0, d2e1, dcls) => aux_try0(d2e0)
 //
 (*
 | D2Eflat(d2e1) => aux_flat(d2e0)

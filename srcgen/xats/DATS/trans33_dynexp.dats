@@ -1590,7 +1590,7 @@ end // end of [aux_fix]
 (* ****** ****** *)
 
 fun
-aux_try
+aux_try0
 ( env0:
 ! abstenv
 , d3e0: d3exp): d3exp = let
@@ -1598,7 +1598,7 @@ aux_try
 val
 loc0 = d3e0.loc()
 val-
-D3Etry
+D3Etry0
 ( tok0
 , d3e1, dcls) = d3e0.node()
 //
@@ -1612,9 +1612,9 @@ trans33_dclaulst_dntp(env0, dcls, tres)
 in
 //
   d33exp_make_node
-  (loc0, tres, D3Etry(tok0, d3e1, dcls))
+  (loc0, tres, D3Etry0(tok0, d3e1, dcls))
 //
-end (* end of [aux_try] *)
+end (* end of [aux_try0] *)
 
 (* ****** ****** *)
 
@@ -2026,7 +2026,7 @@ D3Ecase _ => aux_case(env0, d3e0)
 | D3Elam _ => aux_lam(env0, d3e0)
 | D3Efix _ => aux_fix(env0, d3e0)
 //
-| D3Etry _ => aux_try(env0, d3e0)
+| D3Etry0 _ => aux_try0(env0, d3e0)
 //
 | D3Eaddr _ => aux_addr(env0, d3e0)
 //

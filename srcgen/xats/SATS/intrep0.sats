@@ -606,7 +606,7 @@ H0Ecase of
   , hfarglst(*arg*), h0exp(*body*) )
 //
 |
-H0Etry of
+H0Etry0 of
 ( token(*knd*)
 , h0exp(*val*), h0claulst(*claues*))
 //
