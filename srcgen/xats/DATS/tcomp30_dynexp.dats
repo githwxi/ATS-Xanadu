@@ -1303,7 +1303,7 @@ end // end of [aux_fix]
 (* ****** ****** *)
 
 fun
-aux_try
+aux_try0
 (d3e0: d3exp): h0exp =
 let
 //
@@ -1317,11 +1317,11 @@ h0t0 = tcomp30_type(t2p0)
 val
 hend =
 (
-  H0Etry(knd0, h0e1, hcls)
+  H0Etry0(knd0, h0e1, hcls)
 ) where
 {
 val-
-D3Etry
+D3Etry0
 ( knd0
 , d3e1, dcls) = d3e0.node()
 val h0e1 = tcomp30_dexp(d3e1)
@@ -1330,7 +1330,7 @@ val hcls = tcomp30_dclaulst(dcls)
 //
 in
   h0exp_make_node(loc0, h0t0, hend)
-end // end of [aux_try]
+end // end of [aux_try0]
 
 (* ****** ****** *)
 
@@ -1686,7 +1686,7 @@ D3Eassgn _ => aux_assgn(d3e0)
 | D3Elam _ => aux_lam(d3e0)
 | D3Efix _ => aux_fix(d3e0)
 //
-| D3Etry _ => aux_try(d3e0)
+| D3Etry0 _ => aux_try0(d3e0)
 //
 | D3Eaddr _ => aux_addr(d3e0)
 | D3Eflat _ => aux_flat(d3e0)

@@ -585,11 +585,11 @@ case+ x0.node() of
   , "D0Efix(", tok0, "; ", fid0, "; "
   , arg1, "; ", res2, "; ", arrw, "; ", body, "; ", tend, ")")
 //
-| D0Etry
+| D0Etry0
   (tok0, d0e1, twth, tbar, d0cs, tend) =>
   fprint!
   ( out
-  , "D0Etry(", tok0, "; "
+  , "D0Etry0(", tok0, "; "
   , d0e1, "; ", twth, "; ", tbar, "; ", "...", "; ", tend, ")")
 //
 | D0Eanno

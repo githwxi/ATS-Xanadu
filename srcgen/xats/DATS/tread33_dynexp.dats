@@ -548,7 +548,7 @@ d3e0.node() of
     val () = tread33_d3exp(body)
   }
 //
-| D3Etry
+| D3Etry0
   (tok0, d3e1, d3cs) =>
   {
     val () = tread33_d3exp(d3e1)

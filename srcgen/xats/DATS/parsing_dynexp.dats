@@ -1909,7 +1909,7 @@ case+ tnd of
     err := e0;
     d0exp_make_node
     ( loc_res
-    , D0Etry
+    , D0Etry0
       (tok, d0e1, tok2, tbar, d0cs, tend))
   end // end of [T_TRY]
 //

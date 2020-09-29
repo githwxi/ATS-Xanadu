@@ -809,9 +809,9 @@ d2exp_node =
   , f2arglst(*arg*)
   , effs2expopt, f1unarrow, d2exp(*body*))
 //
-| D2Etry of
+| D2Etry0 of
   (token(*TRY*), d2exp(*val*), d2claulst)
-  // D2Etry
+  // D2Etry0
 //
 (*
 | D2Eflat of d2exp(*l-value*)

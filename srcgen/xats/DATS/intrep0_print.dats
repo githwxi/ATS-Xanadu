@@ -607,10 +607,10 @@ x0.node() of
   ( out, "H0Efix("
   , knd0, "; ", fid1, "; ", hfas, "; ", body, ")")
 //
-| H0Etry
+| H0Etry0
   (knd0, h0e1, hcls) =>
   fprint!
-  ( out, "H0Etry("
+  ( out, "H0Etry0("
   , knd0, "; ", h0e1, "; ", hcls, ")")
 //
 | H0Eaddr(h0e1) =>

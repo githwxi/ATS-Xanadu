@@ -2603,17 +2603,17 @@ d1e0.node() of
       (knd, d2v, f2as, tres, arrw, body))
   end
 //
-| D1Etry
+| D1Etry0
   (tok, d1e1, d1cls) =>
   (
     d2exp_make_node
     ( loc0
-    , D2Etry(tok, d2e1, d2cls))
+    , D2Etry0(tok, d2e1, d2cls))
   ) where
   {
     val d2e1 = trans12_dexp(d1e1)
     val d2cls = trans12_dclaulst(d1cls)
-  } (* end of [D1Etry] *)
+  } (* end of [D1Etry0] *)
 //
 | D1Eanno
   (d1e1, s1e2) =>
