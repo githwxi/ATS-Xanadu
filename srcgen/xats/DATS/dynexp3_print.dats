@@ -332,10 +332,10 @@ x0.node() of
 //
 | D3Evar(d2v1) =>
   fprint!(out, "D3Evar(", d2v1, ")")
-| D3Evknd(knd, d2v1) =>
+| D3Evknd(knd0, d2v1) =>
   fprint!
   ( out
-  , "D3Evknd(", knd, ", ", d2v1, ")")
+  , "D3Evknd(", knd0, ", ", d2v1, ")")
 //
 | D3Econ1(d2c1) =>
   fprint!(out, "D3Econ1(", d2c1, ")")
@@ -523,19 +523,19 @@ x0.node() of
   , knd0, "; ", d3e1, "; ", dcls, ")")
 //
 | D3Elam
-  (knd, f3as, tres, arrw, body) =>
+  (knd0, f3as, tres, arrw, body) =>
   fprint!
   ( out
   , "D3Elam("
-  , knd, "; "
+  , knd0, "; "
   , f3as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 | D3Efix
-  (knd, fid, f3as, tres, arrw, body) =>
+  (knd0, fid, f3as, tres, arrw, body) =>
   fprint!
   ( out
   , "D3Efix("
-  , knd, "; "
+  , knd0, "; "
   , fid, "; ", f3as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
@@ -564,16 +564,16 @@ x0.node() of
   )
 //
 | D3Eeval
-  (knd, d3e1) =>
+  (knd0, d3e1) =>
   fprint!
   ( out
-  , "D3Eeval(", knd, "; ", d3e1, ")")
+  , "D3Eeval(", knd0, "; ", d3e1, ")")
 //
 | D3Efree
-  (knd, d3e1) =>
+  (knd0, d3e1) =>
   fprint!
   ( out
-  , "D3Efree(", knd, "; ", d3e1, ")")
+  , "D3Efree(", knd0, "; ", d3e1, ")")
 //
 | D3Eraise(d3e1) =>
   (
@@ -792,15 +792,15 @@ x0.node() of
   , "D3Clocal(", head, "; ", body, ")")
 //
 | D3Cinclude
-  ( tok
-  , src, knd
+  ( tok0
+  , src1, knd2
   , fopt, body) =>
   (
   fprint!
   ( out
   , "D3Cinclude("
-  , "src= ", src, "; "
-  , "knd= ", knd, "; "
+  , "src= ", src1, "; "
+  , "knd= ", knd2, "; "
   , fopt, "; ", body, ")")
   ) where
   {
@@ -812,15 +812,15 @@ x0.node() of
   }
 //
 | D3Cstaload
-  ( tok
-  , src, knd
+  ( tok0
+  , src1, knd2
   , fopt, flag, body) =>
   (
   fprint!
   ( out
   , "D3Cstaload("
-  , "src= ", src, "; "
-  , "knd= ", knd, "; "
+  , "src= ", src1, "; "
+  , "knd= ", knd2, "; "
   , fopt, "; ", flag, "; ", body, ")")
   ) where
   {
@@ -835,40 +835,46 @@ x0.node() of
   fprint!(out, "D3Cabstype(", d2cl, ")")
 //
 | D3Cabsopen
-  (tok, sqid) =>
+  (tok0, sqid) =>
   fprint!
   ( out
   , "D3Cabsopen("
-  , tok(*absopen*), "; ", sqid, ")")
+  , tok0(*absopen*), "; ", sqid, ")")
 | D3Cabsimpl
-  (knd, sqid, def0) =>
+  (knd0, sqid, def0) =>
   fprint!
   ( out
   , "D3Cabsimpl("
-  , knd(*abskind*), "; ", sqid, "; ", def0, ")")
+  , knd0(*abskind*), "; ", sqid, "; ", def0, ")")
 //
 | D3Cfundecl
-  (knd, mopt, tqas, f3ds) =>
+  (knd0, mopt, tqas, f3ds) =>
   fprint!
   ( out
   , "D3Cfundecl("
-  , knd, "; ", mopt, "; ", tqas, "; ", f3ds, ")")
+  , knd0, "; ", mopt, "; ", tqas, "; ", f3ds, ")")
 //
 | D3Cvaldecl
-  (knd, mopt, v3ds) =>
+  (knd0, mopt, v3ds) =>
   fprint!
   ( out
   , "D3Cvaldecl("
-  , knd, "; ", mopt, "; ", v3ds, ")")
+  , knd0, "; ", mopt, "; ", v3ds, ")")
 | D3Cvardecl
-  (knd, mopt, v3ds) =>
+  (knd0, mopt, v3ds) =>
   fprint!
   ( out
   , "D3Cvardecl("
-  , knd, "; ", mopt, "; ", v3ds, ")")
+  , knd0, "; ", mopt, "; ", v3ds, ")")
+//
+| D3Cexcptcon
+  (d1cl, d2cs) =>
+  fprint!
+  ( out
+  , "D23excptcon(", d1cl, "; ", d2cs, ")")
 //
 | D3Cimpdecl1
-  ( knd
+  ( knd0
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
@@ -876,13 +882,13 @@ x0.node() of
   fprint!
   ( out
   , "D3Cimpdecl1("
-  , knd, "; "
+  , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl1] *)
 | D3Cimpdecl2
-  ( knd
+  ( knd0
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
@@ -890,13 +896,13 @@ x0.node() of
   fprint!
   ( out
   , "D3Cimpdecl2("
-  , knd, "; "
+  , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
   ) (* end of [D3Cimpdecl2] *)
 | D3Cimpdecl3
-  ( knd
+  ( knd0
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
@@ -904,7 +910,7 @@ x0.node() of
   fprint!
   ( out
   , "D3Cimpdecl3("
-  , knd, "; "
+  , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"

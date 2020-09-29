@@ -808,6 +808,10 @@ x0.node() of
   , "H0Cvardecl("
   , knd, "; ", mopt, "; ", hvds, ")")
 //
+| H0Cexcptcon(hdcs) =>
+  fprint!
+  (out, "H0Cexcptcon(", hdcs, ")")
+//
 | H0Cimpdecl3
   ( knd
   , stmp, mopt

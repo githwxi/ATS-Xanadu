@@ -2165,6 +2165,8 @@ IMPLS2CST2
 
 in(* in-of-local *)
 
+(* ****** ****** *)
+
 fun
 aux_absopen
 ( d2cl
@@ -2183,6 +2185,8 @@ in
   d3ecl_make_node
   (loc0, D3Cabsopen(tok, is2c))
 end // end of [aux_absopen]
+
+(* ****** ****** *)
 
 fun
 aux_absimpl
@@ -2609,11 +2613,18 @@ auxv2ds
 : v3aldeclist =
 (
 case+ v2ds of
-| list_nil() =>
-  list_nil()
-| list_cons(x0, xs) =>
-  list_cons
-  (auxv2d0(d2cl, x0), auxv2ds(d2cl, xs))
+|
+list_nil() =>
+list_nil()
+|
+list_cons(x0, xs) =>
+let
+val
+v2d0 = auxv2d0(d2cl, x0)
+in
+list_cons
+( v2d0, auxv2ds(d2cl, xs) )
+end (* end of [list_cons] *)
 )
 //
 } (* end of [aux_valdecl] *)
@@ -2707,15 +2718,41 @@ auxv2ds
 : v3ardeclist =
 (
 case+ v2ds of
-| list_nil() =>
-  list_nil()
-| list_cons(x0, xs) =>
-  list_cons
-  (auxv2d0(d2cl, x0), auxv2ds(d2cl, xs))
+|
+list_nil() =>
+list_nil()
+|
+list_cons(x0, xs) =>
+let
+val
+v2d0 = auxv2d0(d2cl, x0)
+in
+list_cons
+( v2d0, auxv2ds(d2cl, xs) )
+end (* end of [list_cons] *)
 )
 //
 } (* end of [aux_vardecl] *)
 
+(* ****** ****** *)
+//
+fun
+aux_excptcon
+( d2cl
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2cl.loc()
+val-
+D2Cexcptcon
+( d1cl
+, d2cs ) = d2cl.node()
+//
+in
+d3ecl_make_node
+(loc0, D3Cexcptcon(d1cl, d2cs))
+end // end of [aux_excptcon]
+//
 (* ****** ****** *)
 
 fun
@@ -2982,6 +3019,8 @@ d2cl.node() of
 | D2Cvaldecl _ => aux_valdecl(d2cl)
 | D2Cvardecl _ => aux_vardecl(d2cl)
 //
+| D2Cexcptcon _ => aux_excptcon(d2cl)
+//
 | D2Cimpdecl1 _ => aux_impdecl1(d2cl)
 | D2Cimpdecl2 _ => aux_impdecl2(d2cl)
 //
@@ -2989,8 +3028,10 @@ d2cl.node() of
   d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
 | D2Cdatasort _ =>
   d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
+(*
 | D2Cexcptcon _ =>
   d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
+*)
 | D2Cdatatype _ =>
   d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
 //
