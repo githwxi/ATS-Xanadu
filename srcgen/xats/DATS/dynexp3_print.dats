@@ -871,7 +871,12 @@ x0.node() of
   (d1cl, d2cs) =>
   fprint!
   ( out
-  , "D23excptcon(", d1cl, "; ", d2cs, ")")
+  , "D3excptcon(", d1cl, "; ", d2cs, ")")
+| D3Cdatatype
+  (d1cl, s2cs) =>
+  fprint!
+  ( out
+  , "D3datatype(", d1cl, "; ", s2cs, ")")
 //
 | D3Cimpdecl1
   ( knd0
