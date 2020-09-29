@@ -837,6 +837,7 @@ d3ecl_node =
   (token(*knd*), decmodopt, v3ardeclist)
 //
 | D3Cexcptcon of (d1ecl(*src*), d2conlst)
+| D3Cdatatype of (d1ecl(*src*), s2cstlst)
 //
 | D3Cimpdecl1 of
   ( token(*impkind*)

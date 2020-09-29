@@ -941,6 +941,10 @@ H0Cvardecl of
 //
 |
 H0Cexcptcon of (hdconlst)
+(*
+|
+H0Cdatatype of (htcstlst)
+*)
 //
 |
 H0Cimpdecl3 of
