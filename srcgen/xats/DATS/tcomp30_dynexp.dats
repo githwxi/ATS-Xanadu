@@ -91,9 +91,10 @@ the_dvarmap_search_opt(d2v0)
 in
 case+ opt of
 | ~
-Some_vt(hdv1) => hdv1
+Some_vt
+( hdv1 ) => hdv1
 | ~
-None_vt((*void*)) =>
+None_vt() =>
 let
 val hdv1 =
 hdvar_make_dvar(d2v0)
