@@ -125,7 +125,8 @@ the_dconmap_search_opt(d2c0)
 in
 case+ opt of
 | ~
-Some_vt(hdc1) => hdc1
+Some_vt
+( hdc1 ) => hdc1
 | ~
 None_vt((*void*)) =>
 let
@@ -2119,6 +2120,41 @@ end // end of [aux_vardecl]
 (* ****** ****** *)
 
 fun
+aux_excptcon
+( d3cl
+: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cexcptcon
+(d1cl, d2cs) = d3cl.node()
+//
+in
+//
+( h0dcl_make_node
+  (loc0, H0Cexcptcon(hdcs))
+) where
+{
+val hdcs =
+list_vt2t
+(
+list_map<d2con><hdcon>(d2cs)
+) where
+{
+implement
+list_map$fopr<
+  d2con><hdcon> = hdcon_make_dcon
+} (* end of [where] *)
+} (* h0dcl_make_node *)
+//
+end // end of [aux_excptcon]
+
+(* ****** ****** *)
+
+fun
 aux_impdecl3
 ( d3cl
 : d3ecl): h0dcl =
@@ -2282,6 +2318,9 @@ D3Cfundecl _ => aux_fundecl(d3cl)
 D3Cvaldecl _ => aux_valdecl(d3cl)
 |
 D3Cvardecl _ => aux_vardecl(d3cl)
+//
+|
+D3Cexcptcon _ => aux_excptcon(d3cl)
 //
 |
 D3Cimpdecl3 _ => aux_impdecl3(d3cl)

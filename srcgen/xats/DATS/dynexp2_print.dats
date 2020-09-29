@@ -317,7 +317,8 @@ case- x0.node() of
 *)
   )
 //
-| D2Psapp(d2f0, s2vs) =>
+| D2Psapp
+  (d2f0, s2vs) =>
   fprint!
   ( out, "D2Psapp("
   , d2f0, "; ", s2vs(*sarg*), ")")
@@ -329,10 +330,11 @@ case- x0.node() of
   ( out, "D2Pdapp("
   , d2f0, "; ", npf0, "; ", d2ps, ")")
 //
-| D2Ptuple(knd, npf, d2ps) =>
+| D2Ptuple
+  (knd0, npf, d2ps) =>
   fprint!
   ( out, "D2Ptuple("
-  , knd, "; ", npf, "; ", d2ps, ")")
+  , knd0, "; ", npf, "; ", d2ps, ")")
 //
 | D2Panno(d2p1, s2e2) =>
   fprint!
@@ -436,10 +438,10 @@ case- x0.node() of
   , d2es, "; ", d1e1(*last*), ")")
 //
 | D2Etuple
-  (knd, npf, d2es) =>
+  (knd0, npf1, d2es) =>
   fprint!
   ( out, "D2Etuple("
-  , knd, "; ", npf, "; ", d2es, ")")
+  , knd0, "; ", npf1, "; ", d2es, ")")
 //
 | D2Eassgn
   (d2e1, d2e2) =>
@@ -479,31 +481,31 @@ case- x0.node() of
   , d2e1, "; ", d2e2, "; ", opt3, ")")
 //
 | D2Ecase
-  (knd, d2e1, d2cls) =>
+  (knd0, d2e1, d2cls) =>
   fprint!
   ( out, "D2Ecase("
-  , knd, "; ", d2e1, "; ", d2cls, ")")
+  , knd0, "; ", d2e1, "; ", d2cls, ")")
 //
 | D2Elam
-  (knd, f2as, tres, arrw, body) =>
+  (knd0, f2as, tres, arrw, body) =>
   fprint!
   ( out
-  , "D2Elam(", knd, "; "
+  , "D2Elam(", knd0, "; "
   , f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 | D2Efix
-  (knd, fid, f2as, tres, arrw, body) =>
+  (knd0, fid1, f2as, tres, arrw, body) =>
   fprint!
   ( out
-  , "D2Efix(", knd, "; "
-  , fid, "; ", f2as, "; "
+  , "D2Efix(", knd0, "; "
+  , fid1, "; ", f2as, "; "
   , tres, "; ", arrw, "; ", body, ")")
 //
 | D2Etry0
-  (knd, d2e1, d2cls) =>
+  (tok0, d2e1, d2cls) =>
   fprint!
   ( out, "D2Etry0("
-  , knd, "; ", d2e1, "; ", d2cls, ")")
+  , tok0, "; ", d2e1, "; ", d2cls, ")")
 //
 (*
 | D2Eflat(d2e1) =>
@@ -654,15 +656,15 @@ case- x0.node() of
   , "D2Clocal(", head, "; ", body, ")")
 //
 | D2Cinclude
-  ( tok
-  , src, knd
+  ( tok0
+  , src1, knd2
   , fopt, body) =>
   (
   fprint!
   ( out
   , "D2Cinclude("
-  , "src= ", src, "; "
-  , "knd= ", knd, "; "
+  , "src= ", src1, "; "
+  , "knd= ", knd2, "; "
   , fopt, "; ", body, ")")
   ) where
   {
@@ -674,15 +676,15 @@ case- x0.node() of
   }
 //
 | D2Cstaload
-  ( tok
-  , src, knd
+  ( tok0
+  , src1, knd2
   , fopt, flag, body) =>
   (
   fprint!
   ( out
   , "D2Cstaload("
-  , "src= ", src, "; "
-  , "knd= ", knd, "; "
+  , "src= ", src1, "; "
+  , "knd= ", knd2, "; "
   , fopt, "; ", flag, "; ", body, ")")
   ) where
   {
@@ -717,24 +719,24 @@ case- x0.node() of
   , "D2Cabstype(", s2c, "; ", def0, ")")
 //
 | D2Cabsopen
-  (tok, sqid) =>
+  (tok0, sqid) =>
   fprint!
   ( out
   , "D2Cabsopen("
-  , tok(*absopen*), "; ", sqid, ")")
+  , tok0(*absopen*), "; ", sqid, ")")
 | D2Cabsimpl
-  (knd, sqid, def0) =>
+  (knd0, sqid, def0) =>
   fprint!
   ( out
   , "D2Cabsimpl("
-  , knd(*abskind*), "; ", sqid, "; ", def0, ")")
+  , knd0(*abskind*), "; ", sqid, "; ", def0, ")")
 //
 | D2Csymload
-  (tok, sym0, dpi1) =>
+  (tok0, sym0, dpi1) =>
   fprint!
   ( out
   , "D2Csymload("
-  , tok, "; ", sym0, "; ", dpi1, ")")
+  , tok0, "; ", sym0, "; ", dpi1, ")")
 //
 | D2Cdatasort(d1cl, s2ts) =>
   fprint!
@@ -751,51 +753,51 @@ case- x0.node() of
   , "D2Cdatatype(", d1cl, "; ", s2cs, ")")
 //
 | D2Cdynconst
-  (knd, tqas, d2cs) =>
+  (knd0, tqas, d2cs) =>
   fprint!
   ( out
   , "D2Cynconst("
-  , knd, "; ", tqas, "; ", d2cs, ")")
+  , knd0, "; ", tqas, "; ", d2cs, ")")
 //
 | D2Cfundecl
-  (knd, mopt, tqas, f2ds) =>
+  (knd0, mopt, tqas, f2ds) =>
   fprint!
   ( out
   , "D2Cfundecl("
-  , knd, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
+  , knd0, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
 //
 | D2Cvaldecl
-  (knd, mopt, v2ds) =>
+  (knd0, mopt, v2ds) =>
   fprint!
   ( out
   , "D2Cvaldecl("
-  , knd, "; ", mopt, "; ", v2ds, ")")
+  , knd0, "; ", mopt, "; ", v2ds, ")")
 | D2Cvardecl
-  (knd, mopt, v2ds) =>
+  (knd0, mopt, v2ds) =>
   fprint!
   ( out
   , "D2Cvardecl("
-  , knd, "; ", mopt, "; ", v2ds, ")")
+  , knd0, "; ", mopt, "; ", v2ds, ")")
 //
 | D2Cimpdecl1
-  ( knd
+  ( knd0
   , stmp, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
   , "D2Cimpdecl1("
-  , knd, "; "
+  , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
 | D2Cimpdecl2
-  ( knd
+  ( knd0
   , stmp, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
   , "D2Cimpdecl2("
-  , knd, "; "
+  , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")

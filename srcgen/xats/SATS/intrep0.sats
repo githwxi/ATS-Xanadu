@@ -100,6 +100,8 @@ abstbox hdcst_tbox = ptr
 typedef hdcon = hdcon_tbox
 typedef hdcst = hdcst_tbox
 //
+typedef hdconlst = List0(hdcon)
+//
 abstbox hdvar_tbox = ptr
 typedef hdvar = hdvar_tbox
 typedef hdvarlst = List0(hdvar)
@@ -936,6 +938,9 @@ H0Cvaldecl of
 H0Cvardecl of
 ( token(*knd*)
 , decmodopt, hvardeclist)
+//
+|
+H0Cexcptcon of (hdconlst)
 //
 |
 H0Cimpdecl3 of
