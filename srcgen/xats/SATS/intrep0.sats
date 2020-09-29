@@ -182,10 +182,16 @@ overload .tag with hdcon_set_tag
 //
 (* ****** ****** *)
 //
+//
 fun
 hdcst_fcastq(hdcst): bool
+//
+fun
+hdcon_get_dvar(hdcon): hdvar
+//
 fun
 hdcst_get_kind(hdcst): tnode
+//
 fun
 hdvar_get_kind(hdvar): tnode
 //

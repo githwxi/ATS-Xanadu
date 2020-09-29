@@ -73,6 +73,7 @@ hdcon_struct = @{
 , hdcon_sym= sym_t // name
 , hdcon_tag= tag_t // tag
 , hdcon_type= h0typ // type
+, hdcon_dvar = hdvar // r-time
 , hdcon_stamp= stamp // unicity
 //
 } (* end of [hdcon_tbox] *)
@@ -95,6 +96,10 @@ hdcon_set_tag
 (hdc->hdcon_tag := tag)
 //
 implement
+hdcon_get_dvar
+(hdc) = hdc->hdcon_dvar
+//
+implement
 hdcon_get_stamp
 (hdc) = hdc->hdcon_stamp
 
@@ -108,12 +113,21 @@ ref<hdcon_struct>
 , hdcon_sym=sym
 , hdcon_tag=(~1)
 , hdcon_type=htp
+, hdcon_dvar=hdv
 , hdcon_stamp=stamp
 }
 ) where
 {
+//
+  val knd =
+  T_EOF(*void*)
+  val hdv =
+  hdvar_make_idtp
+  (loc, sym, knd, htp)
+//
   val
   stamp = hdcon_stamp_new()
+//
 }
 
 end // end of [local]
