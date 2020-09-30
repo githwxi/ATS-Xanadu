@@ -223,9 +223,9 @@ sym.node() of
 | S0YMBbrack(tbeg, tend) =>
   {
     val () =
-    synread_LBRACE(tbeg)
+    synread_LBRACK(tbeg)
     val () =
-    synread_RBRACE(tend)
+    synread_RBRACK(tend)
   }
 ) (* end of [synread_s0ymb] *)
 //

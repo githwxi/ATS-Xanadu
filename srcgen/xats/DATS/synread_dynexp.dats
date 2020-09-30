@@ -362,7 +362,8 @@ d0e0.node() of
   {
 (*
     val () =
-    synread_LBRACK(tbeg)
+      synread_LBRACK(tbeg)
+    // end of [val]
 *)
     val () =
       synread_RBRACK(tend)
