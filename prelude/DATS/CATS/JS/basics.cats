@@ -10,6 +10,22 @@ XATS2JS_none = null
 var
 XATS2JS_void = null
 /* ****** ****** */
+var // global
+XATS2JS_excbas = 0
+var // global
+XATS2JS_exctag = 0
+function
+XATS2JS_new_exctag
+  (    )
+{
+var bas0 =
+XATS2JS_excbas;
+var tag1 =
+XATS2JS_exctag + 1;
+XATS2JS_exctag = tag1;
+return ( bas0 + tag1 );
+}
+/* ****** ****** */
 function
 XATS2JS_char
   ( cs )
@@ -34,6 +50,12 @@ return x0; //obj: object
 //
 function
 XATS2JS_raise
+  ( exn )
+{
+  throw exn;//no return!
+}
+function
+XATS2JS_reraise
   ( exn )
 {
   throw exn;//no return!

@@ -161,6 +161,19 @@ hdvar_stamp_new(): stamp
 (* ****** ****** *)
 //
 fun
+hdcon_get_loc(hdcon): loc_t
+fun
+hdcst_get_loc(hdcst): loc_t
+fun
+hdvar_get_loc(hdvar): loc_t
+//
+overload .loc with hdcon_get_loc
+overload .loc with hdcst_get_loc
+overload .loc with hdvar_get_loc
+//
+(* ****** ****** *)
+//
+fun
 hdcon_get_sym(hdcon): sym_t
 fun
 hdcst_get_sym(hdcst): sym_t

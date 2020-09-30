@@ -130,8 +130,7 @@ Some_vt
 | ~
 None_vt((*void*)) =>
 let
-val hdc1 =
-hdcon_make_dcon(d2c0)
+val hdc1 = hdcon_make_dcon(d2c0)
 in
 the_dconmap_insert_any(d2c0, hdc1); hdc1
 end
@@ -1920,6 +1919,10 @@ D3Cfundecl
 , tqas
 , f3ds) = d3cl.node()
 //
+val
+tqas =
+tcomp30_tqarglst(tqas)
+//
 fun
 auxf3d0
 ( f3d0
@@ -1969,18 +1972,20 @@ list_map<f3undecl><hfundecl>(f3ds)
 ) where
 {
 implement
-list_map$fopr<
-  f3undecl><hfundecl>(x0) = auxf3d0(x0)
+list_map$fopr<f3undecl><hfundecl>(f3d) = auxf3d0(f3d)
 }
 //
-val tqas =
-tcomp30_tqarglst(tqas)
-//
-val hfds = auxf3ds(f3ds)
-//
 in
-h0dcl_make_node
-(loc0, H0Cfundecl(knd, mopt, tqas, hfds))
+//
+let
+val
+hfds = auxf3ds(f3ds)
+in
+  h0dcl_make_node
+  ( loc0
+  , H0Cfundecl(knd, mopt, tqas, hfds))
+end // end of [let]
+//
 end // end of [aux_fundecl]
 
 (* ****** ****** *)
@@ -2034,18 +2039,21 @@ auxv3ds
 : hvaldeclist =
 list_vt2t
 (
-list_map<v3aldecl><hvaldecl>(v3ds)
+list_map<
+  v3aldecl><hvaldecl>(v3ds)
 ) where
 {
 implement
-list_map$fopr<v3aldecl><hvaldecl>(x0) = auxv3d0(x0)
+list_map$fopr<v3aldecl><hvaldecl>(v3d) = auxv3d0(v3d)
 }
 //
+in
+let
 val hvds = auxv3ds(v3ds)
-//
 in
   h0dcl_make_node
   (loc0, H0Cvaldecl(knd, mopt, hvds))
+end
 end // end of [aux_valdecl]
 
 (* ****** ****** *)
@@ -2107,14 +2115,17 @@ list_map<v3ardecl><hvardecl>(v3ds)
 ) where
 {
 implement
-list_map$fopr<v3ardecl><hvardecl>(x0) = auxv3d0(x0)
+list_map$fopr<v3ardecl><hvardecl>(v3d) = auxv3d0(v3d)
 }
 //
-val hvds = auxv3ds(v3ds)
-//
+in
+let
+  val
+  hvds = auxv3ds(v3ds)
 in
   h0dcl_make_node
   (loc0, H0Cvardecl(knd, mopt, hvds))
+end
 end // end of [aux_vardecl]
 
 (* ****** ****** *)
@@ -2132,23 +2143,33 @@ val-
 D3Cexcptcon
 (d1cl, d2cs) = d3cl.node()
 //
+fun
+auxd2cs
+( d2cs
+: d2conlst): hdconlst =
+(
+case+ d2cs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(d2c1, d2cs) =>
+let
+  val hdc1 =
+  tcomp30_dcon(d2c1)
+in
+  list_cons(hdc1, auxd2cs(d2cs))
+end
+)
+//
 in
 //
-( h0dcl_make_node
-  (loc0, H0Cexcptcon(hdcs))
-) where
-{
-val hdcs =
-list_vt2t
-(
-list_map<d2con><hdcon>(d2cs)
-) where
-{
-implement
-list_map$fopr<
-  d2con><hdcon> = hdcon_make_dcon
-} (* end of [where] *)
-} (* h0dcl_make_node *)
+let
+val hdcs = auxd2cs(d2cs)
+in
+h0dcl_make_node(loc0, H0Cexcptcon(hdcs))
+end
 //
 end // end of [aux_excptcon]
 
