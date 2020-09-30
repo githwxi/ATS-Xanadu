@@ -52,16 +52,15 @@ fun<>
 g_inp_cstream(): stream_vt(sint)
 
 (* ****** ****** *)
-
 fun<>
 g_inp_line(): string
 fun<>
+g_inp_lline(): string_vt
+(* ****** ****** *)
+fun<>
 g_inp_line_list(): list(char)
 fun<>
-g_inp_lline(): string_vt()
-fun<>
 g_inp_lline_list(): list_vt(char)
-
 (* ****** ****** *)
 
 (* end of [gios.sats] *)

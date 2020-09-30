@@ -292,13 +292,6 @@ length0 with list_vt_length0 of 1000
 #symload rappend with list_vt_rappend of 1000
 
 (* ****** ****** *)
-//
-#symload listize with list_vt_listize of 1000
-#symload rlistize with list_vt_rlistize of 1000
-//
-#symload streamize with list_vt_streamize of 1000
-//
-(* ****** ****** *)
 
 #symload forall0 with list_vt_forall0 of 1000
 #symload forall1 with list_vt_forall1 of 1000
@@ -308,6 +301,17 @@ length0 with list_vt_length0 of 1000
 #symload foreach0 with list_vt_foreach0 of 1000
 #symload foreach1 with list_vt_foreach1 of 1000
 
+(* ****** ****** *)
+//
+#symload listize with list_vt_listize0 of 1000
+#symload rlistize with list_vt_rlistize0 of 1000
+(*
+#symload listize0 with list_vt_listize0 of 1000
+#symload rlistize0 with list_vt_rlistize0 of 1000
+*)
+//
+#symload streamize with list_vt_streamize of 1000
+//
 (* ****** ****** *)
 //
 #symload mergesort with list_vt_mergesort of 1000
