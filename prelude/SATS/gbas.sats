@@ -353,7 +353,7 @@ fun
 <x0:t0>
 <ln:i0>
 iforalln$test
-  (i0: nint(ln), x0: x0): bool
+  (i0: sint(ln), x0: x0): bool
 //
 (* ****** ****** *)
 
@@ -373,7 +373,7 @@ fun
 <x0:t0>
 <ln:i0>
 iforeachn$work
-  (i0: nint(ln), x0: x0): void
+  (i0: sint(ln), x0: x0): void
 //
 (* ****** ****** *)
 //

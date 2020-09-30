@@ -451,6 +451,32 @@ typedef p2tr(x:vt) = p2tr0(x)
 typedef p2tr(x:vt, l:a0) = p2tr1(x, l)
 //
 (* ****** ****** *)
+//
+abstype
+cp1tr_tbox
+(l:addr) <= p1tr_k
+abstype
+cp2tr_tbox
+(x:vwtp, l:addr) <= p2tr_k
+//
+typedef
+cp1tr0 = [l:a0] cp1tr_tbox(l)
+typedef
+cp1tr1(l: a0) = cp1tr_tbox(l)
+//
+typedef
+cp2tr0
+(a:vt) = [l:a0] cp2tr_tbox(a, l)
+typedef
+cp2tr1
+(a: vt, l: a0) = cp2tr_tbox(a, l)
+//
+typedef cp1tr = cp1tr0
+typedef cp1tr(l:a0) = cp1tr1(l)
+typedef cp2tr(x:vt) = cp2tr0(x)
+typedef cp2tr(x:vt, l:a0) = cp2tr1(x, l)
+//
+(* ****** ****** *)
 
 typedef
 bool_k = $extype("xats_bool_t")

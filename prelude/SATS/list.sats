@@ -84,7 +84,7 @@ list_head_opt(xs: list(a)): optn_vt(a)
 fun
 <a:t0>
 list_tail
-{n:pos}(list(a, i)): list(a, n-1)
+{n:pos}(list(a, n)): list(a, n-1)
 fun
 <a:t0>
 list_tail_raw(xs: list(a)): list(a)
