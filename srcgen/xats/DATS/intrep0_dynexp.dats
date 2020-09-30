@@ -84,6 +84,9 @@ hdcon_tbox = ref(hdcon_struct)
 in(* in-of-local *)
 
 implement
+hdcon_get_loc
+(hdc) = hdc->hdcon_loc
+implement
 hdcon_get_sym
 (hdc) = hdc->hdcon_sym
 //
@@ -153,8 +156,12 @@ hdcst_tbox = ref(hdcst_struct)
 in(* in-of-local *)
 
 implement
+hdcst_get_loc
+(hdc) = hdc->hdcst_loc
+implement
 hdcst_get_sym
 (hdc) = hdc->hdcst_sym
+//
 implement
 hdcst_get_kind
 (hdc) = hdc->hdcst_kind
@@ -227,8 +234,12 @@ hdvar_tbox = ref(hdvar_struct)
 in(* in-of-local *)
 
 implement
+hdvar_get_loc
+(hdv) = hdv->hdvar_loc
+implement
 hdvar_get_sym
 (hdv) = hdv->hdvar_sym
+//
 implement
 hdvar_get_kind
 (hdv) = hdv->hdvar_kind
