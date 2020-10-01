@@ -366,8 +366,7 @@ if
 isabs
 then
 let
-val () =
-strptr_free(dir0) in dirs
+val()=free(dir0) in dirs
 end
 else
 (
@@ -377,8 +376,7 @@ else
 |
 list_vt_cons _ =>
 let
-val () =
-strptr_free(dir0) in dirs
+val()=free(dir0) in dirs
 end
 ) : dirs // end of [val]
 in
@@ -392,7 +390,8 @@ then
 (
 case+ dirs of
 | ~
-list_vt_nil() =>
+list_vt_nil
+((*void*)) =>
 let
   val () =
   strptr_free(dir0)
@@ -401,15 +400,30 @@ let
 in
   aux1(p0, p0, npar, dirs)
 end
-| ~
-list_vt_cons(dir1, dirs) =>
+| @
+list_vt_cons
+(dir1, dirx) =>
+if
+isCDR(dir1)
+then
+let
+  val () =
+  strptr_free(dir0)
+  val npar = npar + 1
+in
+  fold@{..}(dirs);
+  aux1(p0, p0, npar, dirs)
+end
+else
 let
   val () =
   strptr_free(dir0)
   val () =
   strptr_free(dir1)
+  val dirx = (dirx)
 in
-  aux1(p0, p0, npar, dirs)
+  free@{..}{0}(dirs);
+  aux1(p0, p0, npar, dirx)
 end
 )
 else
@@ -463,6 +477,26 @@ case+ xs of
 )
 }
 //
+val
+iscdr =
+(
+  auxcdr(dirs)
+) where
+{
+fun
+auxcdr
+(xs: !dirs): bool =
+(
+case+ xs of
+|
+list_vt_nil
+  () => false
+|
+list_vt_cons
+  (x0, xs) => isCDR(x0)
+)
+} (*where*) // end-of-val
+//
 local
 val
 npar =
@@ -474,20 +508,53 @@ npar *
 succ(string_length(PDR))
 end
 //
-val n0 = $UN.cast{Size}(n0)
+val n0 =
+$UN.cast{Size}(n0)
 val n0 =
 (
-if isabs
-then succ(n0) else n0): Size
+if
+isabs
+then
+succ(n0) else n0): Size
 //
 val
-( pfat
-, pfgc | q0) = malloc_gc(n0)
+(
+pfat
+,
+pfgc|q0) = malloc_gc(n0)
 //
 val q1 =
 (
-if isabs
-then putc(q0, DSP) else q0): ptr
+if
+isabs
+then putc(q0, DSP) else q0
+) : ptr // end-of-val
+//
+val q1 =
+(
+if
+iscdr
+then
+let
+val q1 =
+puts(q1, CDR)
+in
+putc(q1, DSP) end else q1): ptr
+//
+val dirs =
+(
+if
+iscdr
+then
+(
+case-
+dirs of
+| ~
+list_vt_cons
+(x0, xs) =>
+let
+val () =
+free(x0) in xs end) else dirs): dirs
 //
 val q1 =
 loop2(q1, npar) where
@@ -500,10 +567,12 @@ if
 (npar <= 0)
 then q1 else
 let
-val q1 =
-puts(q1, PDR)
-val q1 =
-putc(q1, DSP) in loop2(q1, npar-1)
+  val
+  npar = npar-1
+  val q1 =
+  puts(q1, PDR)
+  val q1 =
+  putc(q1, DSP) in loop2(q1, npar)
 end // end of [if]
 }
 //
