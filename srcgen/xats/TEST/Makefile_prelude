@@ -6,6 +6,7 @@
 
 XATSOPT=./../xatsopt
 PRELUDE=./../../../prelude
+XATSLIB=./../../../xatslib
 
 ######
 #
@@ -134,5 +135,20 @@ all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/optn_vt.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/stream_vt.dats
+
+######
+all_githwxi:: ; \
+$(XATSOPT) -s $(XATSLIB)/githwxi/DATS/githwxi.sats
+######
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/mygist.dats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/mygist.dats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/gtree1.dats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/dvdcnq.dats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/parcmbr1.dats
 
 ###### end of [Makefile_prelude] ######
