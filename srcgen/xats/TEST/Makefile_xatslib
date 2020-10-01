@@ -1,0 +1,38 @@
+######
+#
+# For testing the files in prelude
+#
+######
+
+XATSOPT=./../xatsopt
+PRELUDE=./../../../prelude
+XATSLIB=./../../../xatslib
+
+######
+
+all:: all_libc
+all:: all_githwxi
+
+######
+all_libc:: ; \
+$(XATSOPT) -s $(XATSLIB)/githwxi/SATS/libc.sats
+######
+all_libc:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/stdio.dats
+######
+all_githwxi:: ; \
+$(XATSOPT) -s $(XATSLIB)/githwxi/SATS/githwxi.sats
+######
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/mygist.dats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/mygist.dats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/gtree1.dats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/dvdcnq.dats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/parcmbr1.dats
+######
+
+###### end of [Makefile_prelude] ######
