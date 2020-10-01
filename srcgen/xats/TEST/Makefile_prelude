@@ -1,0 +1,126 @@
+######
+#
+# For testing the files in prelude
+#
+######
+
+XATSOPT=./../xatsopt
+PRELUDE=./../../../prelude
+
+######
+#
+# Static declarations
+#
+######
+
+all:: all_sats
+all:: all_dats
+
+######
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gbas.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gord.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gnum.sats
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/bool.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/char.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gint.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gflt.sats
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gfor.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gfun.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gios.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/rand.sats
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gseq.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gseqn.sats
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/list.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/optn.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/array.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/string.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/stream.sats
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/unsafe.sats
+
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gseq_vt.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gseqn_vt.sats
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/list_vt.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/optn_vt.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/stream_vt.sats
+
+######
+#
+# Dynamic implementations
+#
+######
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gbas.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gnum.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gord.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/bool.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/char.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gint.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gfor.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gfun.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gios.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/rand.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gseq.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gseqn.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/list.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/optn.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/stream.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/list_vt.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/optn_vt.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/stream_vt.dats
+
+###### end of [Makefile_prelude] ######
