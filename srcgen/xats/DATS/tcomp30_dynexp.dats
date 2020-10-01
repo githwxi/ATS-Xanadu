@@ -1704,6 +1704,9 @@ D3Eassgn _ => aux_assgn(d3e0)
 | D3Ellazy _ => aux_llazy(d3e0)
 //
 |
+D3Eanno
+(d3e1, _) => tcomp30_dexp(d3e1)
+|
 D3Enone0 _ =>
 let
 //
@@ -1715,8 +1718,8 @@ val
 h0t0 = tcomp30_type(t2p0)
 //
 in
-h0exp_make_node
-(loc0, h0t0, H0Enone0(*void*))
+  h0exp_make_node
+  (loc0, h0t0, H0Enone0(*void*))
 end // end of [let]
 //
 | _(*rest-of_d3exp*) =>
