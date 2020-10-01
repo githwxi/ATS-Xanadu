@@ -478,7 +478,7 @@ strmcon_vt_nil()
 strmcon_vt_cons(xs0, xss) => !
 (
 stream_vt_append<x0>
-(glseq_streamize0<xs><x0>(xs0), gconcat(xss)))
+(glseq_streamize<xs><x0>(xs0), gconcat(xss)))
 )
 } (* end of [stream_vt_gconcat] *)
 //

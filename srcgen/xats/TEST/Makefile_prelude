@@ -114,7 +114,19 @@ $(XATSOPT) -d $(PRELUDE)/DATS/list.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/optn.dats
 all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/array.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/string.dats
+all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/stream.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/tuple.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/unsafe.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gseq_vt.dats
 
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list_vt.dats
