@@ -220,6 +220,8 @@ d2e0.node() of
 | D2Eflt(tok) => ()
 | D2Estr(tok) => ()
 //
+| D2Etop(tok) => ()
+//
 | D2Evar(d2v) => ()
 //
 | D2Econ1(d2c) => ()
