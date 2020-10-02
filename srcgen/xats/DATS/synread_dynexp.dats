@@ -66,18 +66,18 @@ _(*TMP*) = "./../DATS/synread_staexp.dats"
 implement
 //{}(*tmp*)
 synread_d0pid
-  (id0) =
+  (dpid) =
 (
 case+
-id0.node() of
+dpid.node() of
 | I0DNTsome _ => ()
-| I0DNTnone(tok) =>
+| I0DNTnone(tok0) =>
   let
     val () =
-    synerr_add(SYNERRd0pid(id0))
+    synerr_add(SYNERRd0pid(dpid))
   in
-    prerr(tok.loc());
-    prerrln!(": SYNERR(d0pid): ", tok);
+    prerr(tok0.loc());
+    prerrln!(": SYNERR(d0pid): ", tok0);
   end // end of [let]
 ) (* end of [synread_d0pid] *)
 
@@ -181,19 +181,21 @@ case+ dend of
 implement
 //{}(*tmp*)
 synread_d0eid
-  (id0) =
+  (deid) =
 (
 case+
-id0.node() of
-| I0DNTsome _ => ()
-| I0DNTnone(tok) =>
-  let
-    val () =
-    synerr_add(SYNERRd0eid(id0))
-  in
-    prerr(tok.loc());
-    prerrln!(": SYNERR(d0eid): ", tok);
-  end // end of [let]
+deid.node() of
+|
+I0DNTsome _ => ()
+|
+I0DNTnone(tok0) =>
+let
+  val () =
+  synerr_add(SYNERRd0eid(deid))
+in
+  prerr(tok0.loc());
+  prerrln!(": SYNERR(d0eid): ", tok0);
+end // end of [let]
 ) (* end of [synread_d0eid] *)
 
 (* ****** ****** *)
@@ -201,17 +203,17 @@ id0.node() of
 implement
 //{}(*tmp*)
 synread_dq0eid
-  (qid) =
+  (qid0) =
 (
-case+ qid of
-| DQ0EIDnone(id0) =>
+case+ qid0 of
+| DQ0EIDnone(seid) =>
   {
-    val () = synread_s0eid(id0)
+    val () = synread_s0eid(seid)
   }
-| DQ0EIDsome(tok, id0) =>
+| DQ0EIDsome(tok0, deid) =>
   {
-    val () = synread_qname(tok)
-    val () = synread_d0eid(id0)
+    val () = synread_qname(tok0)
+    val () = synread_d0eid(deid)
   }
 ) (* end of [synread_dq0eid] *)
 
@@ -341,7 +343,7 @@ d0e0.node() of
     case+ topt of
     | None() =>
       synread_d0explst(d0es)
-    | Some(tok) =>
+    | Some(tok0) =>
       synread_d0explst(d0es)
     ) : void // end of [val]
 //
@@ -386,13 +388,13 @@ d0e0.node() of
   }
 //
 | D0Elam
-  ( tok
+  ( tok0
   , arg0, res0
   , arrw, body, topt) =>
   {
 (*
     val () = 
-      synread_LAM(tok)
+      synread_LAM(tok0)
 *)
 //
     val () =
@@ -407,16 +409,16 @@ d0e0.node() of
   }
 //
 | D0Efix
-  ( tok, fid
+  ( tok0, fid0
   , arg0, res0
   , arrw, body, topt) =>
   {
 (*
     val () = 
-      synread_FIX(tok)
+      synread_FIX(tok0)
 *)
     val () =
-      synread_d0eid(fid)
+      synread_d0eid(fid0)
     val () =
       synread_f0arglst(arg0)
     val () =
@@ -659,19 +661,19 @@ synread_abstdf0
 (
 case+ def of
 | ABSTDF0some() => ()
-| ABSTDF0lteq(tok, s0e) =>
+| ABSTDF0lteq(tok0, s0e1) =>
   {
 (*
-    val () = synread_LTEQ(tok)
+    val () = synread_LTEQ(tok0)
 *)
-    val () = synread_s0exp(s0e)
+    val () = synread_s0exp(s0e1)
   }
-| ABSTDF0eqeq(tok, s0e) =>
+| ABSTDF0eqeq(tok0, s0e1) =>
   {
 (*
-    val () = synread_EQEQ(tok)
+    val () = synread_EQEQ(tok0)
 *)
-    val () = synread_s0exp(s0e)
+    val () = synread_s0exp(s0e1)
   }
 ) (* end of [synread_abstdf0] *)
 
@@ -682,7 +684,8 @@ implement
 synread_d0ecl
   (d0cl) = let
 //
-val loc0 = d0cl.loc((*void*))
+val
+loc0 = d0cl.loc((*void*))
 //
 (*
 val () =
@@ -698,266 +701,302 @@ in
 case+
 d0cl.node() of
 //
-| D0Cnonfix
-  (tok, ids) =>
-  {
+|
+D0Cnonfix
+(tok0, i0ds) =>
+{
   val () =
-  synread_i0dntlst(ids)
-  }
+  synread_i0dntlst(i0ds)
+}
 //
-| D0Cfixity
-  (tok, ids, opt) =>
-  {
+|
+D0Cfixity
+(tok0, i0ds, opt1) =>
+{
   val () =
-  synread_i0dntlst(ids)
+  synread_i0dntlst(i0ds)
 //
   val () =
   (
-    synread_precopt(opt)
+    synread_precopt(opt1)
   ) (* end of [val] *)
-  }
+}
 //
-| D0Cstatic
-  (tok, dcl1) =>
-  {
-    val () =
-    (
-      synread_d0ecl(dcl1)
-    )
-  }
-| D0Cextern
-  (tok, dcl1) =>
-  {
-    val () =
-    (
-      synread_d0ecl(dcl1)
-    )
-  }
-//
-| D0Cinclude
-  (tok, d0e(*src*)) => ()
-| D0Cstaload
-  (tok, d0e(*src*)) => ()
-//
-| D0Cabssort
-  (tok, tid(*name*)) =>
-  {
-(*
-    val () =
-    synread_ABSSORT(tok)
-*)
-    val () = synread_s0tid(tid)
-  }
-//
-| D0Cstacst0
-  ( tok, sid
-  , tmas, tcln, s0t0) =>
-  {
-(*
-    val () =
-    synread_STACST0(tok)
-*)
-    val () = synread_CLN(tcln)
-    val () = synread_s0eid(sid)
-    val () = synread_sort0(s0t0)
-  }
-//
-| D0Csortdef
-  (tok, tid, teq, def) =>
-  {
-(*
-    val () =
-    synread_SORTDEF(tok)
-*)
-    val () = synread_EQ(teq)
-    val () = synread_s0tid(tid)
-    val () = synread_s0rtdef(def)
-  }
-//
-| D0Csexpdef
-  ( tok, sid
-  , arg, res, teq, def) =>
-  {
-//
-(*
-    val () =
-    synread_SEXPDEF(tok)
-*)
-//
-    val () =
-      synread_EQ(teq)  
-    val () =
-      synread_s0eid(sid)
-    val () =
-      synread_s0marglst(arg)
-    val () =
-      synread_sort0opt(res)
-//
-    val () = synread_s0exp(def)
-//
-  }
-//
-| D0Cabstype
-  ( tok, sid
-  , arg, res, def) =>
-  {
-//
-(*
-    val () =
-    synread_ABSTYPE(tok)
-*)
-//
-    val () =
-      synread_s0eid(sid)
-    val () =
-      synread_t0marglst(arg)
-    val () =
-      synread_sort0opt(res)
-//
-    val () = synread_abstdf0(def)
-//
-  }
-//
-| D0Cabsopen(tok, sqid) =>
-  {
-(*
-    val () =
-    synread_ABSOPEN(tok)
-*)
-    val () = synread_sq0eid(sqid)
-  }
-//
-| D0Csymload
-  ( tok, sym0
-  , twth, dqid, topt) =>
-  {
-(*
-    val () =
-    synread_SYMLOAD(tok)
-*)
-    val () = synread_WITH(twth)
-    val () = synread_s0ymb(sym0)
-    val () = synread_dq0eid(dqid)
-  }
-//
-| D0Cfundecl
-  (tok, mopt, tqas, f0ds) =>
-  {
-(*
-    val () =
-    synread_FUN(tok)
-*)
-    val () =
-    synread_tq0arglst(tqas)
-    val () =
-    synread_f0undeclist(f0ds)
-  }
-//
-| D0Cvaldecl
-  (tok, mopt, v0ds) =>
-  {
-(*
-    val () =
-    synread_VAL(tok)
-*)
-    val () =
-    synread_v0aldeclist(v0ds)
-  }
-//
-| D0Cvardecl
-  (tok, mopt, v0ds) =>
-  {
-(*
-    val () =
-    synread_VAR(tok)
-*)
-    val () =
-    synread_v0ardeclist(v0ds)
-  }
-//
-| D0Cimpdecl
-  ( tok, mopt
-  , sqas, tqas
-  , dqid, tias, f0as
-  , res0, teq1, body) =>
-  {
-(*
-    val () =
-    synread_sq0arglst(sqas)
-*)
-    val () =
-    synread_tq0arglst(tqas)
-(*
-    val () =
-    synread_ti0arglst(tias)
-*)
-    val () =
-      synread_f0arglst(f0as)
-    val () =
-    synread_effs0expopt(res0)
-    val () = synread_EQ(teq1)
-    val () = synread_d0exp(body)
-  }
-//
-| D0Cexcptcon
-  (tok, d0cs) =>
-  {
-(*
-    val () =
-    synread_EXCEPTION(tok)
-*)
-    val () =
-      synread_d0atconlst(d0cs)
-    // end of [val]
-  }
-//
-| D0Cdynconst
-  (tok, tqas, d0cs) =>
-  {
-(*
-    val () =
-      synread_FUN/VAL(tok)
-    // end of [val]
-*)
-    val () =
-      synread_tq0arglst(tqas)
-    val () =
-      synread_d0cstdeclist(d0cs)
-  }
-//
-| D0Clocal
-  ( tbeg, head
-  , topt, body, tend) =>
-  {
-//
-    val () = synread_d0eclist(head)
-    val () = synread_ifguardlst(head)
-//
-    val () = synread_d0eclist(body)
-    val () = synread_ifguardlst(body)
-//
-  }
-//
-| D0Cnone(tok) =>
-  let
-    val () =
-    synerr_add(SYNERRd0ecl(d0cl))
-  in
-    prerrln!(loc0, ": SYNERR(d0ecl): ", d0cl);
-  end // end of [D0Cnone]
-//
-| D0Ctokerr(tok) =>
-  let
-    val () =
-    synerr_add(SYNERRd0ecl(d0cl))
-  in
-    prerrln!(loc0, ": SYNERR(d0ecl): ", d0cl);
-  end // end of [D0Cnone]
-//
-| _(* rest-of-d0ecl *) =>
+|
+D0Cstatic
+(tok0, dcl1) =>
+{
+  val () =
   (
-    prerrln!(loc0, ": synread_d0ecl: d0cl = ", d0cl)
+    synread_d0ecl(dcl1)
   )
+}
+|
+D0Cextern
+(tok0, dcl1) =>
+{
+  val () =
+  (
+    synread_d0ecl(dcl1)
+  )
+}
+//
+|
+D0Cdefine
+( tok0
+, gid0
+, gmas, def1) => ()
+//
+|
+D0Cinclude
+( tok0
+, dsrc(*src*)) => ()
+|
+D0Cstaload
+( tok0
+, dsrc(*src*)) => ()
+//
+|
+D0Cabssort
+(tok0, tid0(*name*)) =>
+{
+(*
+  val () =
+  synread_ABSSORT(tok0)
+*)
+  val () = synread_s0tid(tid0)
+}
+//
+|
+D0Cstacst0
+( tok0, sid0
+, tmas, tcln, s0t1) =>
+{
+(*
+  val () =
+  synread_STACST0(tok0)
+*)
+  val () = synread_CLN(tcln)
+//
+  val () = synread_s0eid(sid0)
+  val () = synread_sort0(s0t1)
+//
+}
+//
+|
+D0Csortdef
+(tok0, tid0, teq1, def2) =>
+{
+(*
+  val () =
+  synread_SORTDEF(tok0)
+*)
+  val () = synread_EQ(teq1)
+  val () = synread_s0tid(tid0)
+  val () = synread_s0rtdef(def2)
+}
+//
+|
+D0Csexpdef
+( tok0, sid0
+, arg0, res0, teq1, def2) =>
+{
+//
+(*
+  val () =
+  synread_SEXPDEF(tok0)
+*)
+//
+  val () =
+    synread_EQ(teq1)
+  val () =
+    synread_s0eid(sid0)
+  val () =
+    synread_s0marglst(arg0)
+  val () =
+    synread_sort0opt( res0 )
+//
+  val () = synread_s0exp(def2)
+//
+}
+//
+|
+D0Cabstype
+( tok0, sid0
+, arg0, res0, def1) =>
+{
+//
+(*
+  val () =
+  synread_ABSTYPE(tok0)
+*)
+//
+  val () =
+    synread_s0eid(sid0)
+  val () =
+    synread_t0marglst(arg0)
+  val () =
+    synread_sort0opt( res0 )
+  // end of [val]
+//
+  val () = synread_abstdf0(def1)
+//
+}
+//
+|
+D0Cabsopen(tok0, sqid) =>
+{
+(*
+  val () =
+  synread_ABSOPEN(tok0)
+*)
+  val () = synread_sq0eid(sqid)
+}
+//
+|
+D0Csymload
+( tok0, sym0
+, twth, dqid, topt) =>
+{
+(*
+  val () =
+  synread_SYMLOAD(tok0)
+*)
+  val () = synread_WITH(twth)
+  val () = synread_s0ymb(sym0)
+  val () = synread_dq0eid(dqid)
+}
+//
+|
+D0Cfundecl
+(tok, mopt, tqas, f0ds) =>
+{
+(*
+  val () =
+  synread_FUN(tok0)
+*)
+  val () =
+  synread_tq0arglst(tqas)
+  val () =
+  synread_f0undeclist(f0ds)
+}
+//
+|
+D0Cvaldecl
+(tok0, mopt, v0ds) =>
+{
+(*
+  val () =
+  synread_VAL(tok0)
+*)
+  val () =
+  synread_v0aldeclist(v0ds)
+}
+//
+|
+D0Cvardecl
+(tok0, mopt, v0ds) =>
+{
+(*
+  val () =
+  synread_VAR(tok0)
+*)
+  val () =
+  synread_v0ardeclist(v0ds)
+}
+//
+|
+D0Cimpdecl
+( tok0, mopt
+, sqas, tqas
+, dqid, tias, f0as
+, res0, teq1, body) =>
+{
+(*
+  val () =
+  synread_sq0arglst(sqas)
+*)
+  val () =
+  synread_tq0arglst(tqas)
+(*
+  val () =
+  synread_ti0arglst(tias)
+*)
+  val () =
+    synread_f0arglst(f0as)
+  val () =
+  synread_effs0expopt(res0)
+  val () = synread_EQ(teq1)
+  val () = synread_d0exp(body)
+}
+//
+|
+D0Cexcptcon
+(tok0, d0cs) =>
+{
+(*
+  val () =
+  synread_EXCEPTION(tok0)
+*)
+  val () =
+    synread_d0atconlst(d0cs)
+  // end of [val]
+}
+//
+|
+D0Cdynconst
+(tok0, tqas, d0cs) =>
+{
+(*
+  val () =
+    synread_FUN/VAL(tok0)
+  // end of [val]
+*)
+  val () =
+    synread_tq0arglst(tqas)
+  // end of [val]
+  val () =
+    synread_d0cstdeclist(d0cs)
+  // end of [val]
+}
+//
+|
+D0Clocal
+( tbeg, head
+, topt, body, tend) =>
+{
+//
+  val () = synread_d0eclist(head)
+  val () = synread_ifguardlst(head)
+//
+  val () = synread_d0eclist(body)
+  val () = synread_ifguardlst(body)
+//
+}
+//
+|
+D0Cnone(tok0) =>
+let
+  val () =
+  synerr_add(SYNERRd0ecl(d0cl))
+in
+  prerrln!(loc0, ": SYNERR(d0ecl): ", d0cl);
+end // end of [D0Cnone]
+//
+|
+D0Ctokerr(tok0) =>
+let
+  val () =
+  synerr_add(SYNERRd0ecl(d0cl))
+in
+  prerrln!(loc0, ": SYNERR(d0ecl): ", d0cl);
+end // end of [D0Cnone]
+//
+|
+_(* rest-of-d0ecl *) =>
+(
+  prerrln!(loc0, ": synread_d0ecl: d0cl = ", d0cl)
+)
 //
 end // end of [synread_d0ecl]
 
@@ -1037,38 +1076,41 @@ synread_f0unarrow
 (
 case+ arrw of
 //
-| F0UNARROWnone(tok) =>
-  let
-    val () =
-    synerr_add
-    (SYNERRf0unarrow(tok))
-  in
-    prerr(tok.loc());
-    prerrln!
-    (": SYNERR(f0unarrow): ", tok);
-  end
+|
+F0UNARROWnone(tok0) =>
+let
+  val () =
+  synerr_add
+  (SYNERRf0unarrow(tok0))
+in
+  prerr(tok0.loc());
+  prerrln!
+  (": SYNERR(f0unarrow): ", tok0);
+end
 //
-| F0UNARROWdflt(tok) =>
-  {
+|
+F0UNARROWdflt(tok0) =>
+{
 (*
-    val () =
-    synread_EQGT(tok)
+  val () =
+  synread_EQGT(tok0)
 *)
-  }
-| F0UNARROWlist
-    (tbeg, s0es, tend) =>
-  {
+} (* end of [F0UNARROWdflt] *)
+|
+F0UNARROWlist
+  (tbeg, s0es, tend) =>
+{
 (*
-    val () =
-    synread_EQLT(tbeg)
+  val () =
+  synread_EQLT(tbeg)
 *)
 //
-    val () =
-    synread_s0explst(s0es)
+  val () =
+  synread_s0explst(s0es)
 //
-    val () = synread_GT(tend)
+  val () = synread_GT(tend)
 //
-  }
+} (* end of [F0UNARROWlist] *)
 //
 ) (* end of [synread_f0unarrow] *)
 
@@ -1082,7 +1124,8 @@ synread_f0arglst
 list_foreach<f0arg>(f0as)
 ) where
 {
-implement(env)
+implement
+(env)//tmp
 list_foreach$fwork<f0arg><env>
   (f0a0, env) =
 (
@@ -1134,7 +1177,7 @@ list_foreach<q0arg>(q0as)
 {
 //
 implement
-(env)
+(env)//tmp
 list_foreach$fwork<q0arg><env>
   (q0a0, env) =
 (
@@ -1159,31 +1202,34 @@ synread_tq0arglst
 list_foreach<tq0arg>(tqas)
 ) where
 {
-implement(env)
+implement
+(env)//tmp
 list_foreach$fwork<tq0arg><env>
   (tq0a, env) =
 (
 case+
 tq0a.node() of
 //
-| TQ0ARGnone(tok) =>
-  let
+|
+TQ0ARGnone(tok0) =>
+let
   val
   loc0 = tq0a.loc((*void*))
   val () =
   synerr_add(SYNERRtq0arg(tq0a))
-  in
+in
   prerrln!
   (loc0, ": SYNERR(tq0arg): ", tq0a)
-  end // end of [TQ0ARGGnone]
+end // end of [TQ0ARGGnone]
 //
-| TQ0ARGsome
-    (tbeg, q0as, tend) =>
-  {
-    val () =
-    synread_LT_GT(tbeg, tend)
-    val () = synread_q0arglst(q0as)
-  }
+|
+TQ0ARGsome
+(tbeg, q0as, tend) =>
+{
+  val () =
+  synread_LT_GT(tbeg, tend)
+  val () = synread_q0arglst(q0as)
+} (* end of [TQ0ARGsome] *)
 //
 )
 } (* end of [synread_tq0arglst] *)
@@ -1196,9 +1242,13 @@ synread_wths0expopt
   (wopt) =
 (
 case+ wopt of
-| WTHS0EXPnone() => ()
-| WTHS0EXPsome(tok, s0e) => synread_s0exp(s0e)
-)
+|
+WTHS0EXPnone
+((*void*)) => ()
+|
+WTHS0EXPsome
+(tok0, s0e1) => synread_s0exp(s0e1)
+) (* end of [synread_wths0expopt] *)
 //
 (* ****** ****** *)
 //
@@ -1209,8 +1259,9 @@ synread_teqd0expopt
 (
 case+ topt of
 | TEQD0EXPnone() => ()
-| TEQD0EXPsome(tok, d0e) => synread_d0exp(d0e)
-)
+| TEQD0EXPsome
+  (tok0, d0e1) => synread_d0exp(d0e1)
+) (* end of [synread_teqd0expopt] *)
 //
 (* ****** ****** *)
 //
@@ -1222,7 +1273,8 @@ synread_v0aldeclist
 list_foreach<v0aldecl>(v0ds)
 ) where
 {
-implement(env)
+implement
+(env)//tmp
 list_foreach$fwork<v0aldecl><env>
   (v0d, env) =
 {
@@ -1246,7 +1298,8 @@ synread_v0ardeclist
 list_foreach<v0ardecl>(v0ds)
 ) where
 {
-implement(env)
+implement
+(env)//tmp
 list_foreach$fwork<v0ardecl><env>
   (v0d, env) =
 {
@@ -1280,7 +1333,8 @@ synread_f0undeclist
 list_foreach<f0undecl>(f0ds)
 ) where
 {
-implement(env)
+implement
+(env)//tmp
 list_foreach$fwork<f0undecl><env>
   (f0d, env) =
 {
@@ -1311,9 +1365,9 @@ synread_precopt(opt) =
 (
 case+ opt of
 | PRECOPTnil() => ()
-| PRECOPTint(tok) =>
+| PRECOPTint(tok0) =>
   {
-    val () = synread_INT1(tok)
+    val () = synread_INT1(tok0)
   }
 | PRECOPTopr
   (topr, pmod) =>
@@ -1362,22 +1416,22 @@ case+ sint of
 {
 // HX-2018-11-18:
 // int sign is either + or -
-  fun
-  auxopr(tok: token): void =
-  (
-    case+
-    tok.node() of
-    | T_IDENT_sym"+" => ()
-    | T_IDENT_sym"-" => ()
-    | _(*unrecognized*) =>
-      let
-        val () =
-        synerr_add(SYNERRsignint_opr(tok))
-      in
-        prerrln!
-        (tok.loc(), ": SYNERR(SIGNINT_OPR): ", tok);
-      end // end of [let]
-  ) (* end of [auxopr] *)
+fun
+auxopr(tok0: token): void =
+(
+  case+
+  tok0.node() of
+  | T_IDENT_sym"+" => ()
+  | T_IDENT_sym"-" => ()
+  | _(*unrecognized*) =>
+    let
+      val () =
+      synerr_add(SYNERRsignint_opr(tok0))
+    in
+      prerrln!
+      (tok0.loc(), ": SYNERR(SIGNINT_OPR): ", tok0);
+    end // end of [let]
+) (* end of [auxopr] *)
 //
 } (* end of [synread_signint] *)
 
@@ -1391,7 +1445,8 @@ synread_a0typlst
 list_foreach<a0typ>(atps)
 ) where
 {
-implement(env)
+implement
+(env)//tmp
 list_foreach$fwork<a0typ><env>
   (atp, env) =
 (
@@ -1423,13 +1478,14 @@ synread_d0arglst
 list_foreach<d0arg>(d0as)
 ) where
 {
-implement(env)
+implement
+(env)//tmp
 list_foreach$fwork<d0arg><env>
   (d0a, env) =
 (
 case+
 d0a.node() of
-| D0ARGnone(tok) => ()
+| D0ARGnone(tok0) => ()
 | D0ARGsome_sta
   (tbeg, s0qs, tend) =>
   synread_s0qualst(s0qs)
@@ -1454,7 +1510,8 @@ synread_d0cstdeclist
 list_foreach<d0cstdecl>(d0cs)
 ) where
 {
-implement(env)
+implement
+(env)//tmp
 list_foreach$fwork<d0cstdecl><env>
   (d0c, env) =
 let
