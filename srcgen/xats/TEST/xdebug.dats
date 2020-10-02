@@ -19,8 +19,10 @@ fun
 length(xs: list(int)): int =
 (
 case+ xs of
-| list_nil() => 0 + 0
-| list_cons{n}(_, xs) => 1 + length(xs)
+|
+list_nil() => 0 + 0
+|
+list_cons{n}(_, xs) => 1 + length(xs)
 )
 
 (* ****** ****** *)

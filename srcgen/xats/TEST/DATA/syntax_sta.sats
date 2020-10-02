@@ -1,3 +1,6 @@
+#define x 5+5
+
+////
 
 fun
 foo(x: &(int(0)>>int(1))): int

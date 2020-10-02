@@ -108,6 +108,8 @@ datatype synerr =
 | SYNERRl0abl of (l0abl)
 | SYNERRs0ymb of (s0ymb)
 //
+| SYNERRg0eid of (i0dnt)
+//
 | SYNERRt0int of (t0int)
 | SYNERRt0chr of (t0chr)
 | SYNERRt0str of (t0str)
@@ -193,6 +195,11 @@ synread_l0abl: synreader(l0abl)
 //
 fun//{}
 synread_s0ymb: synreader(s0ymb)
+//
+(* ****** ****** *)
+//
+fun//{}
+synread_g0eid: synreader(g0eid)
 //
 (* ****** ****** *)
 //

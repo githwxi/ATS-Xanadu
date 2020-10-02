@@ -58,20 +58,44 @@ _(*TMP*) = "./../DATS/synread_basics.dats"
 
 implement
 //{}(*tmp*)
+synread_g0eid
+  (geid) =
+(
+case+
+geid.node() of
+|
+I0DNTsome _ => ()
+|
+I0DNTnone(tok0) =>
+let
+val () =
+synerr_add(SYNERRg0eid(geid))
+in
+  prerr(tok0.loc());
+  prerrln!(": SYNERR(g0eid): ", tok0);
+end // end of [let]
+) (* end of [synread_g0eid] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
 synread_t0int
   (int) =
 (
 case+
 int.node() of
-| T0INTsome _ => ()
-| T0INTnone(tok) =>
-  let
-    val () =
-    synerr_add(SYNERRt0int(int))
-  in
-    prerr(tok.loc());
-    prerrln!(": SYNERR(t0int): ", tok);
-  end // end of [let]
+|
+T0INTsome _ => ()
+|
+T0INTnone(tok) =>
+let
+  val () =
+  synerr_add(SYNERRt0int(int))
+in
+  prerr(tok.loc());
+  prerrln!(": SYNERR(t0int): ", tok);
+end // end of [let]
 )
 
 (* ****** ****** *)

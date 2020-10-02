@@ -558,6 +558,128 @@ XATS2JS_gint_div_sint_sint
 }
 /* ****** ****** */
 //
+// prelude/gflt.sats
+//
+/* ****** ****** */
+function
+XATS2JS_gflt_i_dflt
+  (x0)
+{
+  return x0; // int
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_abs_dflt
+  (x0)
+{
+if
+(x0 >= 0.0)
+{
+  return x0; // abs
+}
+else
+{
+  return -x0; // abs
+}
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_neg_dflt
+  (x0)
+{
+return (-x0); // neg
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_succ_dflt
+  (x0)
+{
+return (x0 + 1); // +1
+}
+function
+XATS2JS_gflt_pred_dflt
+  (x0)
+{
+return (x0 - 1); // -1
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_lt_dflt_dflt
+  (x1, x2)
+{
+return (x1 < x2); // lt
+}
+function
+XATS2JS_gflt_gt_dflt_dflt
+  (x1, x2)
+{
+return (x1 > x2); // gt
+}
+function
+XATS2JS_gflt_eq_dflt_dflt
+  (x1, x2)
+{
+return (x1 === x2); // eq
+}
+function
+XATS2JS_gflt_lte_dflt_dflt
+  (x1, x2)
+{
+return (x1 <= x2); // lte
+}
+function
+XATS2JS_gflt_gte_dflt_dflt
+  (x1, x2)
+{
+return (x1 >= x2); // gte
+}
+function
+XATS2JS_gflt_neq_dflt_dflt
+  (x1, x2)
+{
+return (x1 !== x2); // neq
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_cmp_dflt_dflt
+  (x1, x2)
+{
+if
+(x1 < x2)
+return (-1);
+else
+return (x1 <= x2 ? 0 : 1);
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_add_dflt_dflt
+  (x1, x2)
+{
+   return (x1 + x2); // add
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_sub_dflt_dflt
+  (x1, x2)
+{
+   return (x1 - x2); // sub
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_mul_dflt_dflt
+  (x1, x2)
+{
+   return (x1 * x2); // mul
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_div_dflt_dflt
+  (x1, x2)
+{
+   return (x1 / x2); // div
+}
+/* ****** ****** */
+//
 // prelude/string.sats
 //
 /* ****** ****** */
