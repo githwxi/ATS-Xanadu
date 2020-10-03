@@ -107,6 +107,7 @@ staexp1.dats \
 dynexp1.dats \
 staexp1_print.dats \
 dynexp1_print.dats \
+gmacro1_define.dats \
 trans01_basics.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \

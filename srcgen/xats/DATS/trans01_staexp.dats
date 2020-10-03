@@ -520,7 +520,7 @@ g0e0.node() of
   FXITMatm(g1e0) where
   {
     val g1e0 =
-      g1exp_make_node(loc0, G1Enone(loc0))
+      g1exp_make_node(loc0, G1Enone1(g0e0))
     // end of [val]
   }
 //

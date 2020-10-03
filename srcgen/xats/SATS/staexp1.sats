@@ -52,14 +52,14 @@ typedef tokenopt = $LEX.tokenopt
 typedef tokenlst = $LEX.tokenlst
 //
 (* ****** ****** *)
-
 #staload
 S0E = "./staexp0.sats"
-
 (* ****** ****** *)
 //
 abstbox g1exp_tbox = ptr
 abstbox g1marg_tbox = ptr
+//
+typedef g0exp = $S0E.g0exp
 //
 typedef g1exp = g1exp_tbox
 typedef g1explst = List0(g1exp)
@@ -90,7 +90,8 @@ g1exp_node =
 //
 | G1Elist of g1explst (*temp*)
 //
-| G1Enone of (loc_t) // HX: for error indicaton
+| G1Enone0 of () // HX: EMPTY
+| G1Enone1 of (g0exp) // ERROR!
 //
 (* ****** ****** *)
 //
