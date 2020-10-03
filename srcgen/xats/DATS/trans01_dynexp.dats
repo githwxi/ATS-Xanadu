@@ -2270,8 +2270,9 @@ D0Cstatic
 val d1c = trans01_decl(d0c)
 //
 in
-  d1ecl_make_node(loc0, D1Cstatic(tok, d1c))
-end // end of [aux_static]
+d1ecl_make_node
+(loc0, D1Cstatic(tok, d1c))
+end (* let *) // end of [aux_static]
 fun
 aux_extern
 ( d0cl
@@ -2286,8 +2287,9 @@ D0Cextern
 val d1c = trans01_decl(d0c)
 //
 in
-  d1ecl_make_node(loc0, D1Cextern(tok, d1c))
-end // end of [aux_extern]
+d1ecl_make_node
+(loc0, D1Cextern(tok, d1c))
+end (* let *) // end of [aux_extern]
 
 (* ****** ****** *)
 
@@ -2300,20 +2302,22 @@ val loc0 = d0cl.loc()
 //
 val-
 D0Cdefine
-( tok
-, gid
+( tok0
+, gid0
 , gmas
 , gdef) = d0cl.node()
 //
-val-I0DNTsome(gid) = gid.node()
+val-
+I0DNTsome(gid0) = gid0.node()
 //
 val gmas = trans01_gmarglst(gmas)
 val gdef = trans01_g0expdef(gdef)
 //
 in
-  d1ecl_make_node
-  (loc0, D1Cdefine(tok, gid, gmas, gdef))
-end // end of [aux_define]
+d1ecl_make_node
+( loc0
+, D1Cdefine(tok0, gid0, gmas, gdef))
+end (* let *) // end of [aux_define]
 
 (* ****** ****** *)
 
@@ -2326,20 +2330,22 @@ val loc0 = d0cl.loc()
 //
 val-
 D0Cmacdef
-( tok
-, gid
+( tok0
+, gid0
 , gmas
 , mdef) = d0cl.node()
 //
-val-I0DNTsome(gid) = gid.node()
+val-
+I0DNTsome(gid0) = gid0.node()
 //
 val gmas = trans01_gmarglst(gmas)
 val mdef = trans01_d0macdef(mdef)
 //
 in
-  d1ecl_make_node
-  (loc0, D1Cmacdef(tok, gid, gmas, mdef))
-end // end of [aux_macdef]
+d1ecl_make_node
+( loc0
+, D1Cmacdef(tok0, gid0, gmas, mdef))
+end (* let *) // end of [aux_macdef]
 
 (* ****** ****** *)
 
