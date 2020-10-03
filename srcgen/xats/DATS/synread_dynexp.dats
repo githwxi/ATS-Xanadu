@@ -291,6 +291,20 @@ d0e0.node() of
     synread_d0exp_RPAREN(dend)
   }
 //
+| D0Etuple
+  ( tknd
+  , topt, d0es, dend) =>
+  {
+(*
+    val () =
+    synread_LPAREN(tknd)
+*)
+    val () =
+    synread_d0explst(d0es)
+    val () =
+    synread_d0exp_RPAREN(dend)
+  }
+//
 | D0Eif0
   ( tbeg(*IF*)
   , d0e1, d0e2, d0e3, topt) =>
