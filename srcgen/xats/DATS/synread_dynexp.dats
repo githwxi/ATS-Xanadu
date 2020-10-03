@@ -661,21 +661,53 @@ synread_abstdf0
 (
 case+ def of
 | ABSTDF0some() => ()
-| ABSTDF0lteq(tok0, s0e1) =>
-  {
+//
+|
+ABSTDF0lteq(tok0, s0e1) =>
+{
 (*
-    val () = synread_LTEQ(tok0)
+  val () = synread_LTEQ(tok0)
 *)
-    val () = synread_s0exp(s0e1)
-  }
-| ABSTDF0eqeq(tok0, s0e1) =>
-  {
+  val () = synread_s0exp(s0e1)
+}
+//
+|
+ABSTDF0eqeq(tok0, s0e1) =>
+{
 (*
-    val () = synread_EQEQ(tok0)
+  val () = synread_EQEQ(tok0)
 *)
-    val () = synread_s0exp(s0e1)
-  }
+  val () = synread_s0exp(s0e1)
+}
 ) (* end of [synread_abstdf0] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_g0expdef
+  (def) =
+(
+case+ def of
+| G0EDEFnone() => ()
+| G0EDEFsome(topt, g0e1) =>
+  {
+    val () = synread_g0exp(g0e1)
+  }
+) (* end of [synread_g0expdef] *)
+
+implement
+//{}(*tmp*)
+synread_d0macdef
+  (def) =
+(
+case+ def of
+| D0MDEFnone() => ()
+| D0MDEFsome(topt, d0e1) =>
+  {
+    val () = synread_d0exp(d0e1)
+  }
+) (* end of [synread_d0macdef] *)
 
 (* ****** ****** *)
 
@@ -687,14 +719,14 @@ synread_d0ecl
 val
 loc0 = d0cl.loc((*void*))
 //
-(*
+// (*
 val () =
 println!
 ("synread_d0ecl: loc0 = ", loc0)
 val () =
 println!
 ("synread_d0ecl: d0cl = ", d0cl)
-*)
+// *)
 //
 in
 //
@@ -744,8 +776,35 @@ D0Cextern
 |
 D0Cdefine
 ( tok0
-, gid0
-, gmas, def1) => ()
+, geid
+, gmas, def1) =>
+{
+//
+  val () =
+  synread_g0eid(geid)
+  val () =
+  synread_g0marglst(gmas)
+  val () =
+  (
+    synread_g0expdef(def1)
+  )
+}
+|
+D0Cmacdef
+( tok0
+, geid
+, gmas, def1) =>
+{
+//
+  val () =
+  synread_g0eid(geid)
+  val () =
+  synread_g0marglst(gmas)
+  val () =
+  (
+    synread_d0macdef(def1)
+  )
+}
 //
 |
 D0Cinclude
