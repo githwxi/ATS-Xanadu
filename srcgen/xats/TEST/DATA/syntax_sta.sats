@@ -1,4 +1,6 @@
 #define x 5+5
+#define f(x) = x + x
+#macdef f{a}(x) = x + x
 
 ////
 
