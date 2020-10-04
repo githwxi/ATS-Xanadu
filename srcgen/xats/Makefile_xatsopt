@@ -107,7 +107,6 @@ staexp1.dats \
 dynexp1.dats \
 staexp1_print.dats \
 dynexp1_print.dats \
-gmacro1_define.dats \
 trans01_basics.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
@@ -131,6 +130,8 @@ dynexp2_d2cst.dats \
 dynexp2_d2var.dats \
 dynexp2_print.dats \
 nmspace.dats \
+gmacro1_define.dats \
+dmacro2_macdef.dats \
 trans12_basics.dats \
 trans12_envmap.dats \
 trans12_staexp.dats \

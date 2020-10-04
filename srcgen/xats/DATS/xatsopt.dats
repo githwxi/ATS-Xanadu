@@ -220,8 +220,6 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./staexp1_print.dats"
 #dynload "./dynexp1_print.dats"
 //
-#dynload "./gmacro1_define.dats"
-//
 #dynload "./trans01_basics.dats"
 #dynload "./trans01_envmap.dats"
 #dynload "./trans01_staexp.dats"
@@ -257,6 +255,9 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./dynexp2_print.dats"
 //
 #dynload "./nmspace.dats"
+//
+#dynload "./gmacro1_define.dats"
+#dynload "./dmacro2_macdef.dats"
 //
 #dynload "./trans12_basics.dats"
 #dynload "./trans12_envmap.dats"
