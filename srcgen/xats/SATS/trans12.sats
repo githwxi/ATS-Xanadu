@@ -71,6 +71,10 @@ typedef token = $LEX.token
 
 (* ****** ****** *)
 //
+typedef g1exp = $S1E.g1exp
+//
+(* ****** ****** *)
+//
 typedef sort1 = $S1E.sort1
 typedef sort1opt = $S1E.sort1opt
 typedef sort1lst = $S1E.sort1lst
@@ -123,8 +127,7 @@ typedef s2varlst = $S2E.s2varlst
 //
 (* ****** ****** *)
 
-typedef
-s2varlstlst = List0($S2E.s2varlst)
+typedef s2varlstlst = List0(s2varlst)
 
 (* ****** ****** *)
 //
@@ -146,6 +149,11 @@ typedef effs2expopt = $S2E.effs2expopt
 //
 typedef s2txt = $S2E.s2txt
 typedef s2txtopt = $S2E.s2txtopt
+//
+(* ****** ****** *)
+//
+vtypedef
+  g1expopt_vt = Option_vt(g1exp)
 //
 (* ****** ****** *)
 //
@@ -388,6 +396,57 @@ the_qualist_find
 (* ****** ****** *)
 //
 fun
+the_gmacenv_add
+(gid: sym_t, def: g1exp): void
+fun
+the_gmacenv_padd
+(gid: sym_t, def: g1exp): void
+//
+fun
+the_gmacenv_find
+  ( gid: sym_t ) : g1expopt_vt
+fun
+the_gmacenv_qfind
+  ( qua: token
+  , gid: sym_t ) : g1expopt_vt
+//
+(* ****** ****** *)
+absview
+gmacenv_view
+viewdef
+gmacenv_v = gmacenv_view
+(* ****** ****** *)
+//
+fun
+the_gmacenv_fprint(FILEref): void
+fun
+the_gmacenv_println((*void*)): void
+//
+fun
+the_gmacenv_pop
+  (gmacenv_v | (*none*)): s2tmap
+fun
+the_gmacenv_popfree
+  (gmacenv_v | (*none*)): (void)
+fun
+the_gmacenv_pushnil
+  ((*void*)): (gmacenv_v | void)
+//
+fun
+the_gmacenv_locjoin
+(
+  pf1: gmacenv_v
+, pf2: gmacenv_v | (*none*)
+) : void // end of [the_gmacenv_locjoin]
+//
+fun // p: pervasive
+the_gmacenv_pjoinwth0(map: s2tmap): void
+fun // p: pervasive
+the_gmacenv_pjoinwth1(map: !s2tmap): void
+//
+(* ****** ****** *)
+//
+fun
 the_sortenv_add
 (tid: sym_t, s2t: s2txt): void
 fun
@@ -396,10 +455,11 @@ the_sortenv_padd
 //
 fun
 the_sortenv_find
-  (tid: sym_t): s2txtopt_vt
+  ( tid: sym_t ) : s2txtopt_vt
 fun
 the_sortenv_qfind
-  (qua: token, tid: sym_t): s2txtopt_vt
+  ( qua: token
+  , tid: sym_t ) : s2txtopt_vt
 //
 (* ****** ****** *)
 //

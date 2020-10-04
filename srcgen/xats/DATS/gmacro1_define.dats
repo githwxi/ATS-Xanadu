@@ -33,6 +33,12 @@
 //
 (* ****** ****** *)
 //
+// HX-2020-10-04:
+// For macros that may potentially
+// result in capturing of variables.
+//
+(* ****** ****** *)
+//
 #include
 "share/atspre_staload.hats"
 #staload
@@ -40,8 +46,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-staload
-"./../SATS/staexp1.sats"
+#staload "./../SATS/staexp1.sats"
 //
 (* ****** ****** *)
 (*
