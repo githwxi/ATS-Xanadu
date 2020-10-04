@@ -575,7 +575,16 @@ fmodenv_set_t3imptbl
 
 (* ****** ****** *)
 
-end // end of [local] *)
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+absimpl
+gmacenv_view = unit_v
+in
+end // end of [local] 
 
 (* ****** ****** *)
 
