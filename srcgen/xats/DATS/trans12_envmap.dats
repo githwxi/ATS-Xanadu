@@ -386,6 +386,12 @@ symenv(a:type) = $ENV.symenv(a)
 //
 static
 fun
+the_gmacenv_savecur((*void*)): void
+and
+the_gmacenv_restore((*void*)): g1menv
+//
+static
+fun
 the_sortenv_savecur((*void*)): void
 and
 the_sortenv_restore((*void*)): s2tmap
@@ -413,6 +419,8 @@ fmodenv_struct =
 //
   path= fpath
 //
+, g1mac= g1menv
+//
 , s2txt= s2tmap
 , s2itm= s2imap
 , d2itm= d2imap
@@ -431,6 +439,7 @@ in (* in-of-local *)
 implement
 fmodenv_make
 ( fp0
+, g1ms
 , s2ts, s2is, d2is, d2cs
 ) = let
 //
@@ -442,6 +451,8 @@ prval () = mfree_gc_v_elim(pfgc)
 //
   val () = p0->path := fp0
 //
+  val () = p0->g1mac := g1ms
+//
   val () = p0->s2txt := s2ts
   val () = p0->s2itm := s2is
   val () = p0->d2itm := d2is
@@ -452,7 +463,8 @@ prval () = mfree_gc_v_elim(pfgc)
 //
 in
 //
-ref_make_viewptr{fmodenv_struct}(pfat | p0)
+  ref_make_viewptr
+  {fmodenv_struct}( pfat | p0 )
 //
 end // end of [fmodenv_make]
 
@@ -464,7 +476,7 @@ fmodenv_get_path
   (p0->path) where
 {
   val
-  (vbox(pf) | p0) = ref_get_viewptr(menv)
+  (vbox(pf)|p0) = ref_get_viewptr(menv)
 } (* end of [fmodenv_get_path] *)
 
 (* ****** ****** *)
@@ -478,6 +490,24 @@ myassert
 (pf: !a@l): (a@l, minus_v(fmodenv, a@l))
 
 in (* in-of-local *)
+
+implement
+fmodenv_get_g1menv
+  (menv) = let
+//
+  val
+  (pfbox|p0) =
+  ref_get_viewptr(menv)
+  prval
+  vbox( pf0 ) = pfbox
+//
+  prval
+  (pf1, fpf1) = myassert(view@(p0->g1mac))
+in
+  (pf1, fpf1 | addr@(p0->g1mac))
+end // end of [fmodenv_get_g1menv]
+
+(* ****** ****** *)
 
 implement
 fmodenv_get_s2tmap
@@ -583,7 +613,106 @@ local
 //
 absimpl
 gmacenv_view = unit_v
+//
+vtypedef
+  g1menv = symenv(g1mac)
+//
+//
+extern
+prfun
+vbox_make_viewptr
+{a:vt0p}{l:addr}
+( pf: a @ l
+| p0: ptr(l)):<> vbox(a @ l)
+//
+val
+( pf
+| p0) =
+$ENV.symenv_make_nil((*void*))
+//
+prval
+pfbox =
+vbox_make_viewptr{g1menv}(pf|p0)
+//
+fun
+the_nmspace_find
+  (tid: sym_t): g1macopt_vt =
+let
+  fun
+  fopr
+  ( menv
+  : fmodenv)
+  : g1macopt_vt = g1mopt where
+  {
+    val
+    ( pf0
+    , fpf|p0) =
+      fmodenv_get_g1menv(menv)
+    // end of [val]
+    val g1mopt =
+      $MAP.symmap_search(!p0, tid)
+    prval ((*void*)) =
+      minus_v_addback(fpf, pf0 | menv)
+    // end of [prval]
+  }
 in
+  $NMS.the_nmspace_find(lam(x) => fopr(x))
+end // end of [the_nmspace_find]
+//
+in
+
+implement
+the_gmacenv_pop
+(
+  pfenv | (*none*)
+) = let
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+in
+  $effmask_ref
+  ($ENV.symenv_pop{g1mac}(!p0))
+end // end of [the_gmacenv_pop]
+
+(* ****** ****** *)
+
+implement
+the_gmacenv_pjoinwth0
+  (map) = let
+  prval
+  vbox(pf) = pfbox in
+  $effmask_ref
+  ($ENV.symenv_pjoinwth0(!p0, map))
+end // end of [the_gmacenv_pjoinwth0]
+implement
+the_gmacenv_pjoinwth1
+  (map) = let
+  prval
+  vbox(pf) = pfbox in
+  $effmask_ref
+  ($ENV.symenv_pjoinwth1(!p0, map))
+end // end of [the_gmacenv_pjoinwth1]
+
+(* ****** ****** *)
+
+implement
+the_gmacenv_savecur
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+  $effmask_ref($ENV.symenv_savecur(!p0))
+end
+implement
+the_gmacenv_restore
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+  $effmask_ref($ENV.symenv_restore(!p0))
+end
+
 end // end of [local] 
 
 (* ****** ****** *)
@@ -859,6 +988,8 @@ $ENV.fprint_symenv_ptop
 end // end of [the_sortenv_print]
 
 end // end of [local]
+
+(* ****** ****** *)
 
 implement
 the_sortenv_println
@@ -1988,27 +2119,41 @@ extern
 prfun _assert_{vw:view}(): vw
 in // in-of-local
 //
-  val m0 =
+  val env0 =
+  the_gmacenv_pop
+  (_assert_() | (*none*))
+  val () =
+  the_gmacenv_pjoinwth1(env0)
+//
+  val map0 =
   the_sortenv_pop
   (_assert_() | (*none*))
-  val () = the_sortenv_pjoinwth1(m0)
+  val () =
+  the_sortenv_pjoinwth1(map0)
 //
-  val m1 =
+  val map1 =
   the_sexpenv_pop
   (_assert_() | (*none*))
-  val () = the_sexpenv_pjoinwth1(m1)
+  val () =
+  the_sexpenv_pjoinwth1(map1)
 //
-  val m2 =
+  val map2 =
   the_dexpenv_pop
   (_assert_() | (*none*))
-  val () = the_dexpenv_pjoinwth1(m2)
+  val () =
+  the_dexpenv_pjoinwth1(map2)
 //
-  val fid =
+  val fid0 =
   $FP0.filpath_get_full2(fp0)
-  val env =
-  fmodenv_make(fp0, m0, m1, m2, d2cs)
 //
-  val ( ) = the_fmodenvmap_add(fid, env)
+  val menv =
+  fmodenv_make
+  ( fp0
+  , env0
+  , map0, map1, map2, d2cs)
+//
+  val ((*void*)) =
+  the_fmodenvmap_add(fid0, menv)
 //
 end // end of [local]
 //
@@ -2054,20 +2199,27 @@ prval unit_v() = pf
 //
 in
 let
+//
 val
-s2tenv =
+g1menv =
+the_gmacenv_restore()
+//
+val
+s2tmap =
 the_sortenv_restore()
 val
-s2ienv =
+s2imap =
 the_sexpenv_restore()
 val
-d2ienv =
+d2imap =
 the_dexpenv_restore()
 //
-val ((*void*)) = $NMS.the_nmspace_restore()
+val
+((*void*)) =
+$NMS.the_nmspace_restore()
 //
 in
-  (s2tenv, s2ienv, d2ienv)
+  (g1menv, s2tmap, s2imap, d2imap)
 end
 end (* end of [the_trans12_restore] *)
 
