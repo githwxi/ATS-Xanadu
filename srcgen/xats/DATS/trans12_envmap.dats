@@ -673,6 +673,51 @@ in
   ($ENV.symenv_pop{g1mac}(!p0))
 end // end of [the_gmacenv_pop]
 
+implement
+the_gmacenv_popfree
+  (pfenv | (*none*)) =
+{
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+  val () =
+  $effmask_ref
+  ($ENV.symenv_popfree{g1mac}(!p0))
+} // end of [the_gmacenv_popfree]
+
+(* ****** ****** *)
+
+implement
+the_gmacenv_pushnil
+  () = (pfenv | ()) where
+{
+//
+  prval pfenv = unit_v()
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_pushnil{g1mac}(!p0))
+//
+} // end of [the_gmacenv_pushnil]
+
+(* ****** ****** *)
+
+implement
+the_gmacenv_locjoin
+(pf1, pf2| (*void*) ) =
+{
+//
+  prval unit_v() = pf1
+  prval unit_v() = pf2
+//
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_locjoin{g1mac}(!p0))
+//
+} // end of [the_gmacenv_locjoin]
+
 (* ****** ****** *)
 
 implement
@@ -1998,6 +2043,8 @@ val ((*void*)) =
 the_fxtyenv_popfree(_assert_() | (*void*))
 *)
 val ((*void*)) =
+the_gmacenv_popfree(_assert_() | (*void*))
+val ((*void*)) =
 the_sortenv_popfree(_assert_() | (*void*))
 val ((*void*)) =
 the_sexpenv_popfree(_assert_() | (*void*))
@@ -2025,11 +2072,13 @@ val
 *)
 //
 val
-(pf1_ | ()) = the_sortenv_pushnil()
+(pf1_ | ()) = the_gmacenv_pushnil()
 val
-(pf2_ | ()) = the_sexpenv_pushnil()
+(pf2_ | ()) = the_sortenv_pushnil()
 val
-(pf3_ | ()) = the_dexpenv_pushnil()
+(pf3_ | ()) = the_sexpenv_pushnil()
+val
+(pf4_ | ()) = the_dexpenv_pushnil()
 //
 (*
 prval () = $UN.castview0{void}(pf0_)
@@ -2037,6 +2086,7 @@ prval () = $UN.castview0{void}(pf0_)
 prval () = $UN.castview0{void}(pf1_)
 prval () = $UN.castview0{void}(pf2_)
 prval () = $UN.castview0{void}(pf3_)
+prval () = $UN.castview0{void}(pf4_)
 //
 } (* end of [the_trans12_pushnil] *)
 
@@ -2061,6 +2111,9 @@ val ((*void*)) =
 the_fxtyenv_locjoin
 (_assert_(), _assert_() | (*void*))
 *)
+val ((*void*)) =
+the_gmacenv_locjoin
+(_assert_(), _assert_() | (*void*))
 val ((*void*)) =
 the_sortenv_locjoin
 (_assert_(), _assert_() | (*void*))
@@ -2088,20 +2141,33 @@ extern
 prfun _assert_{vw:view}(): vw
 in // in-of-local
 //
-  val m0 =
+  val
+  env0 =
+  the_gmacenv_pop
+  (_assert_() | (*none*))
+  val () =
+  the_gmacenv_pjoinwth0(env0)
+//
+  val
+  map0 =
   the_sortenv_pop
   (_assert_() | (*none*))
-  val () = the_sortenv_pjoinwth0(m0)
+  val () =
+  the_sortenv_pjoinwth0(map0)
 //
-  val m1 =
+  val
+  map1 =
   the_sexpenv_pop
   (_assert_() | (*none*))
-  val () = the_sexpenv_pjoinwth0(m1)
+  val () =
+  the_sexpenv_pjoinwth0(map1)
 //
-  val m2 =
+  val
+  map2 =
   the_dexpenv_pop
   (_assert_() | (*none*))
-  val () = the_dexpenv_pjoinwth0(m2)
+  val () =
+  the_dexpenv_pjoinwth0(map2)
 //
 end // end of [local]
 //
@@ -2182,6 +2248,7 @@ the_trans12_savecur
 //
 prval pf = unit_v(*void*)
 //
+  val () = the_gmacenv_savecur()
   val () = the_sortenv_savecur()
   val () = the_sexpenv_savecur()
   val () = the_dexpenv_savecur()
