@@ -2889,13 +2889,18 @@ the_trans12_savecur((*void*))
 //
 val d2cs = trans12_declist(d1cs)
 //
-val env3 =
+val envs =
 the_trans12_restore(pf|(*void*))
+//
 val menv =
 fmodenv_make
-(fp0, env3.0, env3.1, env3.2, d2cs)
+( fp0
+, envs.0(*gmac*)
+, envs.1, envs.2, envs.3, d2cs )
 //
-val () = trans12_staload_add(fp0, menv)
+val
+((*void*)) =
+trans12_staload_add( fp0, menv )
 //
 } (* end of [None_vt] *)
 | ~Some_vt(menv) => (1(*shared*), menv)

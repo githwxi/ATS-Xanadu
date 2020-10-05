@@ -47,6 +47,9 @@
 typedef loc_t = $LOC.loc_t
 //
 (* ****** ****** *)
+typedef fpath = $FP0.filpath
+typedef filpath = $FP0.filpath
+(* ****** ****** *)
 
 #staload LEX = "./lexing.sats"
 #staload S1E = "./staexp1.sats"
@@ -56,22 +59,24 @@ typedef loc_t = $LOC.loc_t
 
 (* ****** ****** *)
 
-(*
-symintr trans12
-*)
-
-(* ****** ****** *)
-
-typedef fpath = $FP0.filpath
-typedef filpath = $FP0.filpath
-
-(* ****** ****** *)
-
 typedef token = $LEX.token
 
 (* ****** ****** *)
+(*
+symintr trans12 // too much?
+*)
+(* ****** ****** *)
 //
 typedef g1exp = $S1E.g1exp
+//
+typedef
+g1expopt = $S1E.g1expopt
+typedef
+g1marglst = $S1E.g1marglst
+datatype g1mac =
+G1MAC of (g1marglst, g1expopt)
+//
+vtypedef g1menv = symmap(g1mac)
 //
 (* ****** ****** *)
 //
@@ -153,7 +158,7 @@ typedef s2txtopt = $S2E.s2txtopt
 (* ****** ****** *)
 //
 vtypedef
-  g1expopt_vt = Option_vt(g1exp)
+  g1macopt_vt = Option_vt(g1mac)
 //
 (* ****** ****** *)
 //
@@ -290,8 +295,10 @@ typedef d2itm = $D2E.d2itm
 typedef s2itmopt = $S2E.s2itmopt
 typedef d2itmopt = $D2E.d2itmopt
 //
-vtypedef s2itmopt_vt = $S2E.s2itmopt_vt
-vtypedef d2itmopt_vt = $D2E.d2itmopt_vt
+vtypedef
+s2itmopt_vt = $S2E.s2itmopt_vt
+vtypedef
+d2itmopt_vt = $D2E.d2itmopt_vt
 //
 (* ****** ****** *)
 //
@@ -311,11 +318,26 @@ dargid_new((*void*)): sym_t
 fun
 fmodenv_make
 ( fp: fpath
-, m0: s2tmap
-, m1: s2imap
-, m2: d2imap
+, env0: g1menv
+(*
+, env1: d2menv
+*)
+, map0: s2tmap
+, map1: s2imap
+, map2: d2imap
 , d2cs: d2eclist) : fmodenv
 
+(* ****** ****** *)
+fun
+fmodenv_get_g1menv
+( menv
+: fmodenv
+) :
+[
+  l:addr
+]
+( g1menv@l
+, minus_v(fmodenv, g1menv@l) | ptr(l))
 (* ****** ****** *)
 //
 (*
@@ -404,27 +426,20 @@ the_gmacenv_padd
 //
 fun
 the_gmacenv_find
-  ( gid: sym_t ) : g1expopt_vt
+  ( gid: sym_t ) : g1macopt_vt
 fun
 the_gmacenv_qfind
   ( qua: token
-  , gid: sym_t ) : g1expopt_vt
+  , gid: sym_t ) : g1macopt_vt
 //
 (* ****** ****** *)
-absview
-gmacenv_view
-viewdef
-gmacenv_v = gmacenv_view
+absview gmacenv_view
+viewdef gmacenv_v = gmacenv_view
 (* ****** ****** *)
-//
-fun
-the_gmacenv_fprint(FILEref): void
-fun
-the_gmacenv_println((*void*)): void
 //
 fun
 the_gmacenv_pop
-  (gmacenv_v | (*none*)): s2tmap
+  (gmacenv_v | (*none*)): g1menv
 fun
 the_gmacenv_popfree
   (gmacenv_v | (*none*)): (void)
@@ -440,10 +455,15 @@ the_gmacenv_locjoin
 ) : void // end of [the_gmacenv_locjoin]
 //
 fun // p: pervasive
-the_gmacenv_pjoinwth0(map: s2tmap): void
+the_gmacenv_pjoinwth0(map: g1menv): void
 fun // p: pervasive
-the_gmacenv_pjoinwth1(map: !s2tmap): void
+the_gmacenv_pjoinwth1(map: !g1menv): void
 //
+(* ****** ****** *)
+fun
+the_gmacenv_fprint(FILEref): void
+fun
+the_gmacenv_println((*void*)): void
 (* ****** ****** *)
 //
 fun
@@ -462,11 +482,9 @@ the_sortenv_qfind
   , tid: sym_t ) : s2txtopt_vt
 //
 (* ****** ****** *)
-//
-absview
-sortenv_view
-viewdef
-sortenv_v = sortenv_view
+absview sortenv_view
+viewdef sortenv_v = sortenv_view
+(* ****** ****** *)
 //
 fun
 the_sortenv_pop
@@ -517,20 +535,19 @@ the_sexpenv_add_varlstlst(svss: s2varlstlst): void
 //
 fun
 the_sexpenv_find
-  (sym: sym_t): s2itmopt_vt
+  ( sym: sym_t ) : s2itmopt_vt
 fun // pervasive
 the_sexpenv_pfind
-  (sym: sym_t): s2itmopt_vt
+  ( sym: sym_t ) : s2itmopt_vt
 fun
 the_sexpenv_qfind
-  (qua: token, sym: sym_t): s2itmopt_vt
+  ( qua: token
+  , sym: sym_t ) : s2itmopt_vt
 //
 (* ****** ****** *)
-//
-absview
-sexpenv_view
-viewdef
-sexpenv_v = sexpenv_view
+absview sexpenv_view
+viewdef sexpenv_v = sexpenv_view
+(* ****** ****** *)
 //
 fun
 the_sexpenv_pop
@@ -712,7 +729,8 @@ trans12_seff: s1eff -> s2eff
 *)
 //
 fun
-trans12_effsexpopt: effs1expopt -> effs2expopt
+trans12_effsexpopt
+( opt0: effs1expopt ) : effs2expopt
 //
 (* ****** ****** *)
 //
@@ -734,17 +752,16 @@ the_dexpenv_add_varlst(d2vs: d2varlst): void
 //
 fun
 the_dexpenv_find
-  (sym: sym_t): d2itmopt_vt
+  ( sym: sym_t ) : d2itmopt_vt
 fun
 the_dexpenv_qfind
-  (qua: token, sym: sym_t): d2itmopt_vt
+  ( qua: token
+  , sym: sym_t ) : d2itmopt_vt
 //
 (* ****** ****** *)
-//
-absview
-dexpenv_view
-viewdef
-dexpenv_v = dexpenv_view
+absview dexpenv_view
+viewdef dexpenv_v = dexpenv_view
+(* ****** ****** *)
 //
 fun
 the_dexpenv_pop
@@ -784,11 +801,9 @@ the_fmodenvmap_find
   (fid: sym_t): Option_vt(fmodenv)
 //
 (* ****** ****** *)
-//
-absview
-trans12_view
-viewdef
-trans12_v = trans12_view
+absview trans12_view
+viewdef trans12_v = trans12_view
+(* ****** ****** *)
 //
 fun
 the_trans12_popfree
@@ -819,12 +834,18 @@ trans12_save_view
 viewdef
 trans12_save_v = trans12_save_view
 //
+(* ****** ****** *)
+//
 fun
 the_trans12_savecur
-((*none*)): (trans12_save_v | void)
+((*none*))
+:
+(trans12_save_v | void)
 fun
 the_trans12_restore
-(trans12_save_v | (*none*)) : (s2tmap, s2imap, d2imap)
+(trans12_save_v | (*none*))
+:
+( g1menv, s2tmap, s2imap, d2imap )
 //
 (* ****** ****** *)
 //
