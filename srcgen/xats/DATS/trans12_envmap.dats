@@ -627,7 +627,7 @@ vbox_make_viewptr
 //
 val
 ( pf
-| p0) =
+| p0) = // symenv creation
 $ENV.symenv_make_nil((*void*))
 //
 prval
@@ -779,7 +779,7 @@ vbox_make_viewptr
 //
 val
 ( pf
-| p0) =
+| p0) = // symenv creation
 $ENV.symenv_make_nil((*void*))
 //
 prval
@@ -1067,7 +1067,7 @@ vbox_make_viewptr
 //
 val
 ( pf
-| p0) =
+| p0) = // symenv creation
 $ENV.symenv_make_nil((*void*))
 //
 prval
@@ -1519,7 +1519,7 @@ vbox_make_viewptr
 //
 val
 ( pf
-| p0) =
+| p0) = // symenv creation
 $ENV.symenv_make_nil((*void*))
 //
 prval
