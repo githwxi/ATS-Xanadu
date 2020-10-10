@@ -46,6 +46,7 @@ treader01
 
 datatype
 trerr01 =
+| TRERR01g1exp of (g1exp)
 | TRERR01d1ecl of (d1ecl)
 
 typedef
@@ -61,6 +62,24 @@ trerr01_add(trerr01): void
 fun
 tread01_program
   (prog: d1eclist): void
+//
+(* ****** ****** *)
+//
+fun//{}
+tread01_g1exp: treader01(g1exp)
+fun//{}
+tread01_g1expopt: treader01(g1expopt)
+fun//{}
+tread01_g1explst: treader01(g1explst)
+//
+fun//{}
+tread01_g1arg: treader01(g1arg)
+fun//{}
+tread01_g1marg: treader01(g1marg)
+fun//{}
+tread01_g1arglst: treader01(g1arglst)
+fun//{}
+tread01_g1marglst: treader01(g1marglst)
 //
 (* ****** ****** *)
 

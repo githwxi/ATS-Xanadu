@@ -14,6 +14,11 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+#define one 1
+#define two 2
+#define sum = one + two
+
+////
 #extern
 fun
 length(xs: list(int)): int =

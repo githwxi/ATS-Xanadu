@@ -50,6 +50,109 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/tread01.sats"
 //
 (* ****** ****** *)
+
+implement
+tread01_g1exp
+  (g1e0) = let
+//
+val
+loc0 = g1e0.loc()
+//
+in
+//
+case+
+g1e0.node() of
+//
+| G1Eid(sym) => ()
+//
+| G1Eint(tok) => ()
+| G1Estr(tok) => ()
+//
+| G1Eapp() => ()
+| G1Eapp1
+  (g1f0, g1e1) =>
+  {
+    val () =
+    tread01_g1exp(g1f0)
+    val () =
+    tread01_g1exp(g1e1)
+  }
+| G1Eapp2
+  (g1f0, g1e1, g1e2) =>
+  {
+    val () =
+    tread01_g1exp(g1f0)
+    val () =
+    tread01_g1exp(g1e1)
+    val () =
+    tread01_g1exp(g1e2)
+  }
+//
+| G1Elist(g1es) =>
+  {
+    val () =
+    tread01_g1explst(g1es)
+  }
+//
+| G1Enone0() => ()
+| G1Enone1(g0e) =>
+  {
+//
+    val () =
+    trerr01_add(TRERR01g1exp(g1e0))
+//
+    val () =
+    let
+    val
+    loc = g1e0.loc()
+    in
+    prerrln!(loc, ": TRERR01(g1exp): ", g1e0)
+    end // end-of-val
+//
+  } (* end of [G1Enone1] *)
+//
+end (* end of [tread01_g1exp] *)
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_g1expopt(opt0) =
+(
+case+ opt0 of
+| None() => ()
+| Some(g1e) => tread01_g1exp(g1e)
+)
+//
+implement
+//{}(*tmp*)
+tread01_g1explst(g1es) =
+(
+list_foreach<g1exp>(g1es)
+) where
+{
+implement(env)
+list_foreach$fwork<g1exp><env>(g1e, env) = tread01_g1exp(g1e)
+} (* end of [tread01_g1explst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_g1marg(g1ma) = ()
+//
+implement
+//{}(*tmp*)
+tread01_g1marglst(gmas) =
+(
+list_foreach<g1marg>(gmas)
+) where
+{
+implement(env)
+list_foreach$fwork<g1marg><env>(gma, env) = tread01_g1marg(gma)
+} (* end of [tread01_g1marglst] *)
+//
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)
@@ -61,7 +164,7 @@ tread01_sort1opt(opt0) =
 (
 case+ opt0 of
 | None() => ()
-| Some(s1t0) => tread01_sort1(s1t0)
+| Some(s1t) => tread01_sort1(s1t)
 )
 //
 (* ****** ****** *)
