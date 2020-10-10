@@ -733,14 +733,14 @@ synread_d0ecl
 val
 loc0 = d0cl.loc((*void*))
 //
-// (*
+(*
 val () =
 println!
 ("synread_d0ecl: loc0 = ", loc0)
 val () =
 println!
 ("synread_d0ecl: d0cl = ", d0cl)
-// *)
+*)
 //
 in
 //

@@ -123,18 +123,38 @@ in
 case+
 d1c0.node() of
 //
-| D1Cstatic
-  (tok, d1c1) =>
-  {
-    val () =
-    tread01_d1ecl(d1c1)
-  }
-| D1Cextern
-  (tok, d1c1) =>
-  {
-    val () =
-    tread01_d1ecl(d1c1)
-  }
+|
+D1Cstatic
+(tok, d1c1) =>
+{
+  val () =
+  tread01_d1ecl(d1c1)
+}
+|
+D1Cextern
+(tok, d1c1) =>
+{
+  val () =
+  tread01_d1ecl(d1c1)
+}
+//
+|
+D1Cdefine
+( tok0
+, geid
+, gmas, def1) =>
+{
+(*
+  val () =
+  tread01_g0eid(geid)
+*)
+  val () =
+  tread01_g1marglst(gmas)
+  val () =
+  (
+    tread01_g1expopt(def1)
+  )
+}
 //
 | D1Cinclude
   ( tok
