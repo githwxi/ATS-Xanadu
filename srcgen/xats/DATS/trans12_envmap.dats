@@ -636,7 +636,7 @@ vbox_make_viewptr{g1menv}(pf|p0)
 //
 fun
 the_nmspace_find
-  (tid: sym_t): g1macopt_vt =
+  (gid: sym_t): g1macopt_vt =
 let
   fun
   fopr
@@ -650,7 +650,7 @@ let
       fmodenv_get_g1menv(menv)
     // end of [val]
     val g1mopt =
-      $MAP.symmap_search(!p0, tid)
+      $MAP.symmap_search(!p0, gid)
     prval ((*void*)) =
       minus_v_addback(fpf, pf0 | menv)
     // end of [prval]
@@ -660,6 +660,28 @@ in
 end // end of [the_nmspace_find]
 //
 in
+
+implement
+the_gmacenv_add
+  (gid, g1m) = let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_insert(!p0, gid, g1m)
+end // end of [the_gmacenv_add]
+
+(* ****** ****** *)
+
+implement
+the_gmacenv_padd
+  (gid, g1m) = let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_pinsert(!p0, gid, g1m)
+end // end of [the_gmacenv_padd]
+
+(* ****** ****** *)
 
 implement
 the_gmacenv_pop
@@ -757,6 +779,56 @@ vbox(pf) = pfbox
 in
   $effmask_ref($ENV.symenv_restore(!p0))
 end
+
+(* ****** ****** *)
+
+local
+
+fun
+fprintln_g1mac
+( out
+: FILEref
+, g1m: g1mac) = fprintln!(out, g1m)
+
+in (* in-of-local *)
+
+implement
+the_gmacenv_fprint
+  (out) = let
+//
+prval vbox(pf) = pfbox
+//
+in (* let *)
+//
+$effmask_ref
+(
+fprintln!(out, "top:");
+$ENV.fprint_symenv_top
+( out, !p0
+, lam(out, x) => fprintln_g1mac(out, x));
+(*
+fprintln!(out, "ptop:");
+$ENV.fprint_symenv_ptop
+( out, !p0
+, lam(out, x) => fprintln_g1mac(out, x));
+*)
+)
+//
+end // end of [the_gmacenv_print]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+implement
+the_gmacenv_println
+  ((*void*)) = let
+  val out = stdout_ref
+in
+  the_gmacenv_fprint(out); fprint_newline(out)
+end // end of [the_gmacenv_println]
+
+(* ****** ****** *)
 
 end // end of [local] 
 

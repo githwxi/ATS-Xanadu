@@ -2752,6 +2752,33 @@ local
 (* ****** ****** *)
 
 fun
+aux_define
+( d1cl
+: d1ecl): d2ecl = let
+//
+val
+loc0 = d1cl.loc()
+val-
+D1Cdefine
+( tok, gid0
+, gmas, def1) = d1cl.node()
+//
+val
+sym = gexpid_sym(gid0)
+
+val
+gmac = G1MAC(gmas, def1)
+//
+val () =
+the_gmacenv_add(sym, gmac)
+//
+in
+d2ecl_make_node(loc0, D2Cdefine(d1cl))
+end // end of [aux_define]
+
+(* ****** ****** *)
+
+fun
 aux_include
 ( d1cl
 : d1ecl): d2ecl = let
@@ -5477,6 +5504,8 @@ d1cl.node() of
   in
     d2ecl_make_node(loc0, D2Cextern(tok, d2c))
   end
+//
+| D1Cdefine _ => aux_define(d1cl)
 //
 | D1Clocal
   (head, body) => let

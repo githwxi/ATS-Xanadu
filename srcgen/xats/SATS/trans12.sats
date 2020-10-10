@@ -69,10 +69,13 @@ symintr trans12 // too much?
 //
 typedef g1exp = $S1E.g1exp
 //
+(* ****** ****** *)
+//
 typedef
 g1expopt = $S1E.g1expopt
 typedef
 g1marglst = $S1E.g1marglst
+//
 datatype g1mac =
 G1MAC of (g1marglst, g1expopt)
 //
@@ -80,24 +83,42 @@ vtypedef g1menv = symmap(g1mac)
 //
 (* ****** ****** *)
 //
+fun
+print_g1mac : print_type(g1mac)
+fun
+prerr_g1mac : prerr_type(g1mac)
+fun
+fprint_g1mac : fprint_type(g1mac)
+//
+overload print with print_g1mac
+overload prerr with prerr_g1mac
+overload fprint with fprint_g1mac
+//
+(* ****** ****** *)
+//
 typedef sort1 = $S1E.sort1
-typedef sort1opt = $S1E.sort1opt
-typedef sort1lst = $S1E.sort1lst
-//
 typedef s1arg = $S1E.s1arg
-typedef s1marg = $S1E.s1marg
-typedef s1arglst = $S1E.s1arglst
-//
-typedef s1rtcon = $S1E.s1rtcon
-//
 typedef s1exp = $S1E.s1exp
 (*
 typedef s1eff = $S1E.s1eff
 *)
+typedef s1qua = $S1E.s1qua
+//
+(* ****** ****** *)
+//
+typedef s1marg = $S1E.s1marg
+typedef s1rtcon = $S1E.s1rtcon
+//
+(* ****** ****** *)
+//
+typedef sort1opt = $S1E.sort1opt
+typedef sort1lst = $S1E.sort1lst
+//
+typedef s1arglst = $S1E.s1arglst
+//
 typedef s1expopt = $S1E.s1expopt
 typedef s1explst = $S1E.s1explst
 //
-typedef s1qua = $S1E.s1qua
 typedef s1qualst = $S1E.s1qualst
 //
 (* ****** ****** *)
@@ -419,10 +440,10 @@ the_qualist_find
 //
 fun
 the_gmacenv_add
-(gid: sym_t, def: g1exp): void
+(gid: sym_t, def: g1mac): void
 fun
 the_gmacenv_padd
-(gid: sym_t, def: g1exp): void
+(gid: sym_t, def: g1mac): void
 //
 fun
 the_gmacenv_find

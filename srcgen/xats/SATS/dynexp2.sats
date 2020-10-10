@@ -1130,6 +1130,8 @@ d2ecl_node =
 | D2Clist of (d2eclist)
 *)
 //
+| D2Cdefine of (d1ecl)
+//
 | D2Cstatic of
   (token(*STATIC*), d2ecl)
 | D2Cextern of

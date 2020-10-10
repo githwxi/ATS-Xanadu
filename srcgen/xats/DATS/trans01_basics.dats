@@ -241,6 +241,19 @@ tok.node() of
 (* ****** ****** *)
 
 implement
+gexpid_sym(tok) =
+(
+case-
+tok.node() of
+//
+| T_IDENT_alp(nm) => $SYM.symbol_make(nm)
+| T_IDENT_sym(nm) => $SYM.symbol_make(nm)
+//
+) (* end of [gexpid_sym] *)
+
+(* ****** ****** *)
+
+implement
 sargid_sym(tok) =
 (
 case-
@@ -249,7 +262,7 @@ tok.node() of
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 //
-) (* end of [sexpid_sym] *)
+) (* end of [sargid_sym] *)
 
 (* ****** ****** *)
 
