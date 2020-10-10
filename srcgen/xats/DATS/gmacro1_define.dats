@@ -46,9 +46,11 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 #staload "./../SATS/symbol.sats"
+#staload "./../SATS/lexing.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
 implement
@@ -87,7 +89,7 @@ typedef g1mas = List0(g1mid)
 //
 datatype g1mac =
 //
-| G1Mid of g1mid
+| G1Mid0 of g1mid
 //
 | G1Mint of int
 | G1Mbtf of bool
@@ -124,8 +126,8 @@ fprint_val<g1mac> = fprint_g1mac
 in
 case+ g1m0 of
 |
-G1Mid(x0) =>
-fprint!(out, "G1Mid(", x0, ")")
+G1Mid0(x0) =>
+fprint!(out, "G1Mid0(", x0, ")")
 //
 |
 G1Mint(i0) =>
@@ -157,8 +159,96 @@ end (*let*) // end of [fprint_g1mac]
 
 (* ****** ****** *)
 
+local
+//
+fun
+auxarg0
+( g1a0
+: g1arg): g1mid =
+(
+case-
+g1a0.node() of
+//
+|
+T_IDENT_alp(nam) => symbol_make(nam)
+|
+T_IDENT_sym(nam) => symbol_make(nam)
+//
+) (* end of [auxarg] *)
+fun
+auxargs
+( g1as
+: g1arglst): g1mas =
+list_vt2t
+(
+list_map<g1arg><g1mid>(g1as) where
+{
 implement
-trans11_g1mac(gmas, def1) = G1Mnone0()
+list_map$fopr<g1arg><g1mid>(g1a) = auxarg0(g1a)
+}
+) (* end of [auxargs] *)
+//
+fun
+auxmarg
+(g1ma: g1marg): g1mas =
+(
+case-
+g1ma.node() of
+(*
+| G1MARGsarg(g1as) => list_nil()
+*)
+| G1MARGdarg(g1as) => auxargs(g1as)
+)
+
+fun
+auxgexp
+( g1e0: g1exp ): g1mac =
+(
+case+
+g1e0.node() of
+|
+G1Eid0(gid) => G1Mid0(gid)
+|
+G1Enone0((*void*)) => G1Mnone0()
+|
+_ (*rest-of-g1exp*) => G1Mnone1(g1e0)
+)
+
+fun
+auxgmas
+( gmas
+: g1marglst
+, def1: g1mac): g1mac =
+(
+case+ gmas of
+| list_nil() => def1
+| list_cons(g1ma, gmas) =>
+  let
+  val args = auxmarg(g1ma)
+  in
+    G1Mlam(args, auxgmas(gmas, def1))
+  end
+) (* end of [auxgmas] *)
+
+in(*in-of-local*)
+
+implement
+trans11_g1mac
+(gmas, def1) =
+(
+  auxgmas(gmas, def1)
+) where
+{
+//
+val def1 =
+(
+case+ def1 of
+| None() => G1Mnone0() | Some(g1e) => auxgexp(g1e)
+) : g1mac // end-of-val
+//
+} // end of [trans11_g1mac]
+
+end // end of [local]
 
 (* ****** ****** *)
 
