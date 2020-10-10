@@ -76,7 +76,7 @@ typedef g1marglst = List0(g1marg)
 datatype
 g1exp_node =
 //
-| G1Eid of (sym_t)
+| G1Eid0 of (sym_t)
 //
 | G1Eint of (token)
 | G1Estr of (token)
@@ -523,7 +523,7 @@ typedef labs1explst = List0(labs1exp)
 datatype
 s1exp_node =
 //
-| S1Eid of sym_t
+| S1Eid0 of sym_t
 //
 | S1Eint of token
 | S1Echr of token

@@ -635,7 +635,7 @@ case+ tnd of
     val loc = id.loc()
   in
     err := e0;
-    g0exp_make_node(loc, G0Eid(id))
+    g0exp_make_node(loc, G0Eid0(id))
   end // end of [t_g0eid]
 //
 | _ when t_t0int(tnd) =>
@@ -1747,7 +1747,7 @@ case+ tnd of
     val id = p_s0eid(buf, err)
   in
     err := e0;
-    s0exp_make_node(id.loc(), S0Eid(id))
+    s0exp_make_node(id.loc(), S0Eid0(id))
   end // end of [t_s0eid]
 //
 | _ when t_t0int(tnd) =>
@@ -2164,7 +2164,7 @@ case+ tnd of
         val ids = auxids(buf, err)
         val ids = list_cons(id0, ids)
         val opt = popt_sort0_anno(buf, err)
-        val loc_res =
+        val loc01 =
         (
           case+ opt of
           | None() => id0.loc()
@@ -2172,7 +2172,7 @@ case+ tnd of
         ) : loc_t // end of [val]
       in
         err := e0;
-        s0qua_make_node(loc_res, S0QUAvars(ids, opt))
+        s0qua_make_node(loc01, S0QUAvars(ids, opt))
       end // end of [T_COMMA]
 //
     | _ (*atms0expseq*) => let
@@ -2181,7 +2181,8 @@ case+ tnd of
         // end of [val]
 //
         val s0e0 =
-        s0exp_make_node(id0.loc(), S0Eid(id0))
+        s0exp_make_node
+        (id0.loc(), S0Eid0(id0))
         val s0e1 =
         (
         case+ s0es of
@@ -2191,7 +2192,8 @@ case+ tnd of
             val s0e = list_last(s0es)
             val loc01 = id0.loc() + s0e.loc()
           in
-            s0exp_make_node(loc01, S0Eapps(list_cons(s0e0, s0es)))
+            s0exp_make_node
+            (loc01, S0Eapps(list_cons(s0e0, s0es)))
           end
         ) : s0exp // end of [val]
 //
@@ -2199,9 +2201,9 @@ case+ tnd of
         err := e0;
         s0qua_make_node(s0e1.loc(), S0QUAprop(s0e1))
       end // end of [atms0expseq]
-  end // end of [S0Eid]
+  end // end of [S0Eid0]
 //
-| _ (*non-S0Eid*) => let
+| _ (*non-S0Eid0*) => let
     val s0e0 = p_s0exp(buf, err)
   in
     // HX-2018-09-09:
@@ -2211,7 +2213,7 @@ case+ tnd of
     in
         s0qua_make_node(s0e0.loc(), S0QUAprop(s0e0))
     end
-  end // end of [non-S0Eid]
+  end // end of [non-S0Eid0]
 //
 end // end-of-let // end of [p_s0qua]
 

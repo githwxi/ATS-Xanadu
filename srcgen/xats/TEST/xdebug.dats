@@ -18,6 +18,11 @@
 #define two 2
 #define sum = one + two
 
+#define pow2(x) = x * x
+#define pow3(x) = x * pow2(x)
+
+#define iadd(x, y) = iadd(x, y)
+
 ////
 #extern
 fun

@@ -505,7 +505,7 @@ d1gpat_make_node
 datatype
 d1exp_node =
 //
-| D1Eid of token
+| D1Eid0 of token
 //
 | D1Eint of token
 | D1Echr of token

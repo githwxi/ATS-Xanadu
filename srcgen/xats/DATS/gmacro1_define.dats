@@ -45,16 +45,21 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-//
+#staload "./../SATS/symbol.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
-//
+(* ****** ****** *)
+#staload "./../SATS/trans12.sats"
+(* ****** ****** *)
+implement
+fprint_val<sym_t> = fprint_symbol
 (* ****** ****** *)
 (*
 //
 datatype
 g1exp_node =
 //
-| G1Eid of (sym_t)
+| G1Eid0 of (sym_t)
 //
 | G1Eint of (token)
 | G1Estr of (token)
@@ -73,22 +78,88 @@ g1exp_node =
 //
 *)
 //
-datatype
-g1val =
-| G1Vid of sym_t
+(* ****** ****** *)
+abstype g1mid_tbox = ptr
+(* ****** ****** *)
+typedef g1mid = g1mid_tbox
+typedef g1mas = List0(g1mid)
+(* ****** ****** *)
 //
-| G1Vint of (int)
-| G1Vstr of string
+datatype g1mac =
 //
-| G1Vapp1 of (g1val, g1val)
-| G1Vapp2 of (g1val, g1val, g1val)
+| G1Mid of g1mid
 //
-| G1Vlist of (g1valist)
+| G1Mint of int
+| G1Mbtf of bool
+| G1Mstr of string
 //
-| G1Vnone0 of () | G1Vnone1 of (g1exp)
+| G1Mlam of
+  (g1mas, g1mac(*body*))
+| G1Mapp of
+  (g1mac(*fun*), g1maclst)
 //
-where g1valist = List0(g1val)
+| G1Mnone0 of () // HX: EMPTY
+| G1Mnone1 of (g1exp) // ERROR!
 //
+where g1maclst = List0(g1mac) // lists
+//
+(* ****** ****** *)
+absimpl g1mid_tbox = sym_t
+(* ****** ****** *)
+absimpl g1mac_tbox = g1mac
+(* ****** ****** *)
+//
+implement
+print_g1mac
+(g1m) =
+fprint_g1mac(stdout_ref, g1m)
+//
+(* ****** ****** *)
+//
+implement
+fprint_g1mac(out, g1m0) =
+let
+implement
+fprint_val<g1mac> = fprint_g1mac
+in
+case+ g1m0 of
+|
+G1Mid(x0) =>
+fprint!(out, "G1Mid(", x0, ")")
+//
+|
+G1Mint(i0) =>
+fprint!(out, "G1Mint(", i0, ")")
+|
+G1Mbtf(i0) =>
+fprint!(out, "G1Mbtf(", i0, ")")
+|
+G1Mstr(cs) =>
+fprint!(out, "G1Mstr(", cs, ")")
+//
+|
+G1Mlam(gmas, g1m1) =>
+fprint!
+( out
+, "G1Mlam(", gmas, "; ", g1m1, ")")
+|
+G1Mapp(g1f0, g1ms) =>
+fprint!
+( out
+, "G1Mapp(", g1f0, "; ", g1ms, ")")
+//
+| G1Mnone0() =>
+  fprint!(out, "G1Mnone0()")
+| G1Mnone1(g1e1) =>
+  fprint!(out, "G1Mnone1(", g1e1, ")")
+//
+end (*let*) // end of [fprint_g1mac]
+
+(* ****** ****** *)
+
+implement
+trans11_g1mac(gmas, def1) = G1Mnone0()
+
 (* ****** ****** *)
 
 (* end of [xats_gmacro1_define.dats] *)

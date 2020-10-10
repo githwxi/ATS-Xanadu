@@ -429,9 +429,9 @@ fprint_d1exp
 (
 case+
 x0.node() of
-| D1Eid(tok) =>
+| D1Eid0(tok) =>
   fprint!
-  (out, "D1Eid(", tok, ")")
+  (out, "D1Eid0(", tok, ")")
 //
 | D1Eint(tok) =>
   fprint!

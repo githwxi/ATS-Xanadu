@@ -1051,7 +1051,7 @@ $SYM.symbol_make(nam)
 val opt =
 the_fxtyenv_search(sym)
 val d1e0 =
-d1exp_make_node(loc, D1Eid(tok))
+d1exp_make_node(loc, D1Eid0(tok))
 //
 in
 case+ opt of
@@ -1161,7 +1161,7 @@ in
 case-
 d0e0.node() of
 //
-| D0Eid(id0) =>
+| D0Eid0(id0) =>
   (
     auxid0(id0)
   )
@@ -2534,7 +2534,7 @@ iseq
 case+
 x0.node() of
 |
-D1Eid(tok) =>
+D1Eid0(tok) =>
 (
 case+
 tok.node() of
@@ -2542,7 +2542,7 @@ tok.node() of
 T_IDENT_sym
 ("=") => true | _ => false
 )
-| _ (* non-D1Eid *) => false
+| _ (* non-D1Eid0 *) => false
 )
 
 (* ****** ****** *)

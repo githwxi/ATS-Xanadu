@@ -236,7 +236,7 @@ d0e0.node() of
 | D0Eflt _ => ()
 | D0Estr _ => ()
 //
-| D0Eid(id0) =>
+| D0Eid0(id0) =>
   {
     val () =
     synread_d0eid(id0)

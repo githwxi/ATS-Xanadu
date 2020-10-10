@@ -427,7 +427,7 @@ typedef t0marglst = List0(t0marg)
 datatype
 g0exp_node =
 //
-| G0Eid of (g0eid)
+| G0Eid0 of (g0eid)
 //
 | G0Eint of (t0int)
 | G0Estr of (t0str)
@@ -836,7 +836,7 @@ typedef labs0explst = List0(labs0exp)
 datatype
 s0exp_node =
 //
-| S0Eid of (s0eid)
+| S0Eid0 of (s0eid)
 //
 | S0Eop1 of (token) // op_symid
 | S0Eop2 of (token, s0eid, token) // op(...)
