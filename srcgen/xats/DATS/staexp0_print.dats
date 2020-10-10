@@ -341,8 +341,8 @@ fprint_g0exp
 (
 case+ x0.node() of
 //
-| G0Eid(tid) =>
-  fprint!(out, "G0Eid(", tid, ")")
+| G0Eid0(gid) =>
+  fprint!(out, "G0Eid0(", gid, ")")
 //
 | G0Eint(int) =>
   fprint!(out, "G0Eint(", int, ")")
@@ -672,8 +672,8 @@ fprint_s0exp
 (
 case+ x0.node() of
 //
-| S0Eid(sid) =>
-  fprint!(out, "S0Eid(", sid, ")")
+| S0Eid0(sid) =>
+  fprint!(out, "S0Eid0(", sid, ")")
 //
 | S0Eop1(opid) =>
   fprint!(out, "S0Eop1(", opid, ")")

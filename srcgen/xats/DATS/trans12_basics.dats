@@ -224,7 +224,7 @@ iseq
 case+
 x0.node() of
 |
-D1Eid(tok) =>
+D1Eid0(tok) =>
 (
 case+
 tok.node() of
@@ -232,7 +232,7 @@ tok.node() of
 T_IDENT_sym
 ("=") => true | _ => false
 )
-| _ (* non-D1Eid *) => false
+| _ (* non-D1Eid0 *) => false
 )
 in (* in-of-local *)
 //
@@ -253,7 +253,7 @@ iseq(x0) =>
 case+
 x1.node() of
 |
-D1Eid(tok) =>
+D1Eid0(tok) =>
 (
 case+
 tok.node() of

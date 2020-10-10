@@ -70,14 +70,16 @@ symintr trans12 // too much?
 typedef g1exp = $S1E.g1exp
 //
 (* ****** ****** *)
-//
-typedef
-g1expopt = $S1E.g1expopt
-typedef
-g1marglst = $S1E.g1marglst
-//
-datatype g1mac =
-G1MAC of (g1marglst, g1expopt)
+abstype g1mac_tbox = ptr
+typedef g1mac = g1mac_tbox
+(* ****** ****** *)
+fun
+trans11_g1exp(g1exp): g1mac
+fun
+trans11_g1mac
+( gmas: $S1E.g1marglst
+, def1: $S1E.g1expopt): g1mac
+(* ****** ****** *)
 //
 vtypedef g1menv = symmap(g1mac)
 //

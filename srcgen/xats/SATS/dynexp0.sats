@@ -441,7 +441,7 @@ overload fprint with fprint_labd0pat_RBRACE
 datatype
 d0exp_node =
 //
-| D0Eid of d0eid
+| D0Eid0 of d0eid
 //
 | D0Eint of t0int
 | D0Echr of t0chr

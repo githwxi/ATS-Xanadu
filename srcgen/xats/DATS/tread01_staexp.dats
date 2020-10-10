@@ -63,7 +63,7 @@ in
 case+
 g1e0.node() of
 //
-| G1Eid(sym) => ()
+| G1Eid0(gid) => ()
 //
 | G1Eint(tok) => ()
 | G1Estr(tok) => ()

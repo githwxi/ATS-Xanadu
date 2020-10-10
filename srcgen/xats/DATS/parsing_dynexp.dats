@@ -1699,42 +1699,47 @@ in
 //
 case+ tnd of
 //
-| _ when t_d0eid(tnd) =>
-  let
-    val id = p_d0eid(buf, err)
-  in
-    err := e0;
-    d0exp_make_node(id.loc(), D0Eid(id))
-  end // end of [t_d0eid]
+|
+_ when t_d0eid(tnd) =>
+let
+  val id = p_d0eid(buf, err)
+in
+  err := e0;
+  d0exp_make_node(id.loc(), D0Eid0(id))
+end // end of [t_d0eid]
 //
-| _ when t_t0int(tnd) =>
-  let
-    val i0 = p_t0int(buf, err)
-  in
-    err := e0;
-    d0exp_make_node(i0.loc(), D0Eint(i0))
-  end // end of [t_t0int]
-| _ when t_t0chr(tnd) =>
-  let
-    val c0 = p_t0chr(buf, err)
-  in
-    err := e0;
-    d0exp_make_node(c0.loc(), D0Echr(c0))
-  end // end of [t_t0chr]
-| _ when t_t0flt(tnd) =>
-  let
-    val f0 = p_t0flt(buf, err)
-  in
-    err := e0;
-    d0exp_make_node(f0.loc(), D0Eflt(f0))
-  end // end of [t_t0flt]
-| _ when t_t0str(tnd) =>
-  let
-    val s0 = p_t0str(buf, err)
-  in
-    err := e0;
-    d0exp_make_node(s0.loc(), D0Estr(s0))
-  end // end of [t_t0str]
+|
+_ when t_t0int(tnd) =>
+let
+  val i0 = p_t0int(buf, err)
+in
+  err := e0;
+  d0exp_make_node(i0.loc(), D0Eint(i0))
+end // end of [t_t0int]
+|
+_ when t_t0chr(tnd) =>
+let
+  val c0 = p_t0chr(buf, err)
+in
+  err := e0;
+  d0exp_make_node(c0.loc(), D0Echr(c0))
+end // end of [t_t0chr]
+|
+_ when t_t0flt(tnd) =>
+let
+  val f0 = p_t0flt(buf, err)
+in
+  err := e0;
+  d0exp_make_node(f0.loc(), D0Eflt(f0))
+end // end of [t_t0flt]
+|
+_ when t_t0str(tnd) =>
+let
+  val s0 = p_t0str(buf, err)
+in
+  err := e0;
+  d0exp_make_node(s0.loc(), D0Estr(s0))
+end // end of [t_t0str]
 //
 | T_LT() => let
     val () =
@@ -1773,7 +1778,7 @@ case+ tnd of
         val tnd = T_IDENT_LT
         val tok = token_make_node(loc, tnd)
       in
-        d0exp_make_node(loc, D0Eid(i0dnt_some(tok)))
+        d0exp_make_node(loc, D0Eid0(i0dnt_some(tok)))
       end // end of [non-GT]
   end // end of [T_LT]
 //
@@ -1788,7 +1793,7 @@ case+ tnd of
     // end of [val]
   in
     d0exp_make_node
-      (loc, D0Eid(i0dnt_some(tok)))
+      (loc, D0Eid0(i0dnt_some(tok)))
     // d0exp_make_node
   end // end of [T_GT]
 //
@@ -3326,16 +3331,16 @@ s0q0.node() of
   (
   case+
   s0p.node() of
-  | S0Eid(id) =>
+  | S0Eid0(sid) =>
     let
       val loc = s0p.loc()
       val opt = None(*sort0*)
-      val ids = list_sing(id)
+      val ids = list_sing(sid)
     in
       s0qua_make_node
       (loc, S0QUAvars(ids, opt))
     end
-  | _ (* non-S0Eid *) => s0q0
+  | _ (* non-S0Eid0 *) => s0q0
   )
 | _(* non-S0QUAprop *) => s0q0
 )

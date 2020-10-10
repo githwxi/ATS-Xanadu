@@ -140,8 +140,8 @@ fprint_g1exp
 (
 case+ x0.node() of
 //
-| G1Eid(tok) =>
-  fprint!(out, "G1Eid(", tok, ")")
+| G1Eid0(gid) =>
+  fprint!(out, "G1Eid0(", gid, ")")
 //
 | G1Eint(int) =>
   fprint!(out, "G1Eint(", int, ")")
@@ -498,9 +498,9 @@ fprint_s1exp
 (
 case+ x0.node() of
 //
-| S1Eid(sid) =>
+| S1Eid0(sid) =>
   fprint!
-  (out, "S1Eid(", sid, ")")
+  (out, "S1Eid0(", sid, ")")
 //
 | S1Eint(tok) =>
   fprint!

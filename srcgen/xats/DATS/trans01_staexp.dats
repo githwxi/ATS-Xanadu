@@ -423,7 +423,7 @@ val opt =
 the_fxtyenv_search(sym)
 //
 val g1e0 =
-g1exp_make_node(loc, G1Eid(sym))
+g1exp_make_node(loc, G1Eid0(sym))
 //
 in
 //
@@ -492,7 +492,7 @@ in
 case+
 g0e0.node() of
 //
-| G0Eid(gid) => auxgid(gid)
+| G0Eid0(gid) => auxgid(gid)
 //
 | G0Eint(int) => auxint(int)
 | G0Estr(str) => auxstr(str)
@@ -1152,7 +1152,7 @@ $SYM.symbol_make(nam)
 val opt =
 the_fxtyenv_search(sym)
 val s1e0 =
-s1exp_make_node(loc, S1Eid(sym))
+s1exp_make_node(loc, S1Eid0(sym))
 //
 in
 case+ opt of
@@ -1262,7 +1262,7 @@ in
 case-
 s0e0.node() of
 //
-| S0Eid(sid) => auxsid(sid)
+| S0Eid0(sid) => auxsid(sid)
 //
 | S0Eint(int) => auxint(int)
 | S0Echr(chr) => auxchr(chr)
@@ -1275,7 +1275,7 @@ s0e0.node() of
     val sym = sexpid_sym(tok)
     val s1e =
     s1exp_make_node
-      (tok.loc(), S1Eid(sym))
+      (tok.loc(), S1Eid0(sym))
     // end of [val]
     val s1e0 =
     s1exp_make_node(loc0, S1Ebs1(s1e))
@@ -1289,7 +1289,7 @@ s0e0.node() of
     val sym = sexpid_sym(tok)
     val s1e =
     s1exp_make_node
-      (tok.loc(), S1Eid(sym))
+      (tok.loc(), S1Eid0(sym))
     // end of [val]
     val s1e0 =
     s1exp_make_node(loc0, S1Ebs1(s1e))

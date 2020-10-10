@@ -485,8 +485,8 @@ fprint_d0exp
 (
 case+ x0.node() of
 //
-| D0Eid(id) =>
-  fprint!(out, "D0Eid(", id, ")")
+| D0Eid0(id) =>
+  fprint!(out, "D0Eid0(", id, ")")
 //
 | D0Eint(i0) =>
   fprint!(out, "D0Eint(", i0, ")")

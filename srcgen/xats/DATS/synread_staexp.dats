@@ -92,10 +92,10 @@ case+
 g0e0.node() of
 //
 |
-G0Eid(geid) =>
+G0Eid0(gid) =>
 {
   val () =
-  synread_g0eid(geid)
+  synread_g0eid(gid)
 }
 //
 |
@@ -843,8 +843,8 @@ in
 case+
 s0e0.node() of
 //
-| S0Eid(id0) =>
-  synread_s0eid(id0)
+| S0Eid0(sid) =>
+  synread_s0eid(sid)
 //
 | S0Eop1(tok0) => ()
 | S0Eop2
