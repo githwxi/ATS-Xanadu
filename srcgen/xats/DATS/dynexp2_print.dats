@@ -643,12 +643,18 @@ case- x0.node() of
   fprint!
   (out, "D2Cnone1(", d1csrc, ")")
 //
+| D2Cdefine(d1cl) =>
+  fprint!
+  (out, "D2Cdefine(", d1cl, ")")
+//
 | D2Cstatic
-  (tok, d2c) =>
-  fprint!(out, "D2Cstatic(", d2c, ")")
+  (tok, d2cl) =>
+  fprint!
+  (out, "D2Cstatic(", d2cl, ")")
 | D2Cextern
-  (tok, d2c) =>
-  fprint!(out, "D2Cextern(", d2c, ")")
+  (tok, d2cl) =>
+  fprint!
+  (out, "D2Cextern(", d2cl, ")")
 //
 | D2Clocal(head, body) =>
   fprint!

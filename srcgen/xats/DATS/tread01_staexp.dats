@@ -68,7 +68,8 @@ g1e0.node() of
 | G1Eint(tok) => ()
 | G1Estr(tok) => ()
 //
-| G1Eapp() => ()
+| G1Eapp
+  ( (*void*) ) => ()
 | G1Eapp1
   (g1f0, g1e1) =>
   {

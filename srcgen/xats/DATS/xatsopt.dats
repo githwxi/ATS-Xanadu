@@ -1061,6 +1061,9 @@ end (* end of [val] *)
 //
 (* ****** ****** *)
 //
+val () = println!("the_gmacenv =")
+val () = the_gmacenv_println((*void*))
+//
 val () = println!("the_sortenv =")
 val () = the_sortenv_println((*void*))
 //

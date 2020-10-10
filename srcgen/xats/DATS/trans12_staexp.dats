@@ -116,12 +116,37 @@ NMS = "./../SATS/nmspace.sats"
 #staload "./../SATS/trans12.sats"
 
 (* ****** ****** *)
-
+implement
+fprint_val<g1exp> = fprint_g1exp
+(* ****** ****** *)
 implement
 fprint_val<s1qua> = fprint_s1qua
 implement
 fprint_val<s2exp> = fprint_s2exp
-
+(* ****** ****** *)
+//
+implement
+print_g1mac
+(g1m) =
+fprint_g1mac(stdout_ref, g1m)
+//
+local
+(* ****** ****** *)
+implement
+fprint_val<g1marg> = fprint_g1marg
+(* ****** ****** *)
+in
+implement
+fprint_g1mac
+(out, g1m) =
+(
+case+ g1m of
+G1MAC(gmas, opt1) =>
+fprint!
+(out, "G1MAC(", gmas, "; ", opt1, ")")
+)
+end // end of [local]
+//
 (* ****** ****** *)
 
 local

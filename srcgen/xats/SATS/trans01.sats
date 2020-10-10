@@ -91,6 +91,9 @@ fun
 token2dstr : token -> string
 
 (* ****** ****** *)
+fun
+gexpid_sym : token -> sym_t
+(* ****** ****** *)
 //
 fun
 sortid_sym : token -> sym_t
