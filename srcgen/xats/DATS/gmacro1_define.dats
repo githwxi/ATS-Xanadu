@@ -160,7 +160,9 @@ end (*let*) // end of [fprint_g1mac]
 (* ****** ****** *)
 
 local
-//
+
+(* ****** ****** *)
+
 fun
 auxarg0
 ( g1a0
@@ -175,7 +177,7 @@ T_IDENT_alp(nam) => symbol_make(nam)
 T_IDENT_sym(nam) => symbol_make(nam)
 //
 ) (* end of [auxarg] *)
-fun
+and
 auxargs
 ( g1as
 : g1arglst): g1mas =
@@ -187,7 +189,9 @@ implement
 list_map$fopr<g1arg><g1mid>(g1a) = auxarg0(g1a)
 }
 ) (* end of [auxargs] *)
-//
+
+(* ****** ****** *)
+
 fun
 auxmarg
 (g1ma: g1marg): g1mas =
@@ -200,8 +204,10 @@ g1ma.node() of
 | G1MARGdarg(g1as) => auxargs(g1as)
 )
 
+(* ****** ****** *)
+
 fun
-auxgexp
+auxg1e0
 ( g1e0: g1exp ): g1mac =
 (
 case+
@@ -209,10 +215,59 @@ g1e0.node() of
 |
 G1Eid0(gid) => G1Mid0(gid)
 |
+G1Eapp1
+(g1f0, g1e1) =>
+let
+  val
+  g1f0 =
+  auxg1e0(g1f0)
+in
+  G1Mapp(g1f0, g1ms) where
+{
+  val
+  g1ms =
+  (
+  case+
+  g1e1.node() of
+  | G1Elist(g1es) =>
+    auxg1es(g1es)
+  | _ (*non-G1Elist*) =>
+    list_sing(auxg1e0(g1e1))
+  )
+}
+end // end of [G1Eapp1]
+|
+G1Eapp2
+(g1f0, g1e1, g1e2) =>
+let
+  val
+  g1f0 = auxg1e0(g1f0)
+  val
+  g1e1 = auxg1e0(g1e1)
+  val
+  g1e2 = auxg1e0(g1e2)
+in
+G1Mapp(g1f0, list_pair(g1e1, g1e2))
+end
+|
 G1Enone0((*void*)) => G1Mnone0()
 |
 _ (*rest-of-g1exp*) => G1Mnone1(g1e0)
 )
+and
+auxg1es
+( g1es
+: g1explst): g1maclst =
+list_vt2t
+(
+list_map<g1exp><g1mac>(g1es) where
+{
+implement
+list_map$fopr<g1exp><g1mac>(g1e) = auxg1e0(g1e)
+}
+)
+
+(* ****** ****** *)
 
 fun
 auxgmas
@@ -230,6 +285,8 @@ case+ gmas of
   end
 ) (* end of [auxgmas] *)
 
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -243,7 +300,7 @@ trans11_g1mac
 val def1 =
 (
 case+ def1 of
-| None() => G1Mnone0() | Some(g1e) => auxgexp(g1e)
+| None() => G1Mnone0() | Some(g1e) => auxg1e0(g1e)
 ) : g1mac // end-of-val
 //
 } // end of [trans11_g1mac]
