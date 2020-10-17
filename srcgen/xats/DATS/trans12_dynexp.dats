@@ -6016,7 +6016,7 @@ list_map$fopr<sq1arg><sq2arg>(sqa) = trans12_sqarg(sqa)
 } (* end of [trans12_sqarglst] *)
 
 (* ****** ****** *)
-
+//
 implement
 trans12_tqarg
   (tq1a) = let
@@ -6031,7 +6031,7 @@ val s2vs = trans12_qarglst(q1as)
 in
   tq2arg_make(loc0, s2vs)
 end // end of [trans12_tqarg]
-
+//
 implement
 trans12_tqarglst
   (tqas) =
@@ -6043,9 +6043,9 @@ list_map<tq1arg><tq2arg>(tqas)
 implement
 list_map$fopr<tq1arg><tq2arg>(tqa) = trans12_tqarg(tqa)
 } (* end of [trans12_tqarglst] *)
-
+//
 (* ****** ****** *)
-
+//
 implement
 trans12_tiarg
   (ti1a) = let
@@ -6062,7 +6062,7 @@ val s2es = trans12_sexplst(s1es)
 in
   ti2arg_make(loc0, s2es)
 end // end of [trans12_t1arg]
-
+//
 implement
 trans12_tiarglst
   (tias) =
@@ -6074,7 +6074,7 @@ list_map<ti1arg><ti2arg>(tias)
 implement
 list_map$fopr<ti1arg><ti2arg>(tia) = trans12_tiarg(tia)
 } (* end of [trans12_tiarglst] *)
-
+//
 (* ****** ****** *)
 
 (* end of [xats_trans12_dynexp.dats] *)

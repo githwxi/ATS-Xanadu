@@ -49,6 +49,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexing.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
@@ -101,7 +102,11 @@ datatype g1mac =
   (g1mac(*fun*), g1maclst)
 //
 | G1Mnone0 of () // HX: EMPTY
-| G1Mnone1 of (g1exp) // ERROR!
+//
+| G1Mg1exp of (g1exp) // ERROR!
+//
+| G1Ms1exp of (s1exp) // ERROR!
+| G1Md1exp of (d1exp) // ERROR!
 //
 where g1maclst = List0(g1mac) // lists
 //
@@ -152,8 +157,13 @@ fprint!
 //
 | G1Mnone0() =>
   fprint!(out, "G1Mnone0()")
-| G1Mnone1(g1e1) =>
+//
+| G1Mg1exp(g1e1) =>
   fprint!(out, "G1Mnone1(", g1e1, ")")
+| G1Ms1exp(s1e1) =>
+  fprint!(out, "G1Mnone1(", s1e1, ")")
+| G1Md1exp(d1e1) =>
+  fprint!(out, "G1Mnone1(", d1e1, ")")
 //
 end (*let*) // end of [fprint_g1mac]
 
@@ -202,7 +212,7 @@ g1ma.node() of
 | G1MARGsarg(g1as) => list_nil()
 *)
 | G1MARGdarg(g1as) => auxargs(g1as)
-)
+) (* end of [auxmarg] *)
 
 (* ****** ****** *)
 
@@ -265,12 +275,13 @@ let
   val
   g1e2 = auxg1e0(g1e2)
 in
-G1Mapp(g1f0, list_pair(g1e1, g1e2))
+G1Mapp
+(g1f0, list_pair(g1e1, g1e2))
 end
 |
 G1Enone0((*void*)) => G1Mnone0()
 |
-_ (*rest-of-g1exp*) => G1Mnone1(g1e0)
+_ (*rest-of-g1exp*) => G1Mg1exp(g1e0)
 )
 and
 auxg1es
@@ -283,7 +294,7 @@ list_map<g1exp><g1mac>(g1es) where
 implement
 list_map$fopr<g1exp><g1mac>(g1e) = auxg1e0(g1e)
 }
-)
+) (* end of [auxg1es] *)
 
 (* ****** ****** *)
 
@@ -294,13 +305,19 @@ auxgmas
 , def1: g1mac): g1mac =
 (
 case+ gmas of
-| list_nil() => def1
-| list_cons(g1ma, gmas) =>
-  let
-  val args = auxmarg(g1ma)
-  in
-    G1Mlam(args, auxgmas(gmas, def1))
-  end
+|
+list_nil
+((*void*)) => def1
+|
+list_cons
+(g1ma, gmas) =>
+let
+  val
+  args = auxmarg(g1ma)
+in
+G1Mlam
+(args, auxgmas(gmas, def1))
+end // list_cons
 ) (* end of [auxgmas] *)
 
 (* ****** ****** *)
@@ -310,20 +327,57 @@ in(*in-of-local*)
 implement
 trans11_g1mac
 (gmas, def1) =
-(
-  auxgmas(gmas, def1)
-) where
+auxgmas(gmas, def1) where
 {
 //
 val def1 =
 (
 case+ def1 of
-| None() => G1Mnone0() | Some(g1e) => auxg1e0(g1e)
+|
+None() =>
+G1Mnone0() | Some(g1e) => auxg1e0(g1e)
 ) : g1mac // end-of-val
 //
-} // end of [trans11_g1mac]
+} (* end of [trans11_g1mac] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+//
+extern
+fun
+trs1exp_gmac: s1exp -> g1mac
+extern
+fun
+trd1exp_gmac: d1exp -> g1mac
+//
+(* ****** ****** *)
+
+implement
+trs1exp_gmac(s1e0) =
+let
+//
+val () =
+println!
+("trs1exp_gmac: s1e0 = ", s1e0)
+//
+in
+  G1Ms1exp(s1e0)
+end (* end of [trs1exp_gmac] *)
+
+(* ****** ****** *)
+
+implement
+trd1exp_gmac(d1e0) =
+let
+//
+val () =
+println!
+("trd1exp_gmac: d1e0 = ", d1e0)
+//
+in
+  G1Md1exp(d1e0)
+end (* end of [trd1exp_gmac] *)
 
 (* ****** ****** *)
 
