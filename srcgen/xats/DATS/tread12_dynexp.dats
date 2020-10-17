@@ -411,7 +411,7 @@ d2e0.node() of
     prerrln!
     ( loc0
     , ": TRERR12(D2Enone1): d3exp-error: ", d2e0);
-  end // end of [D1Enone1]
+  end // end of [D2Enone1]
 //
 | _(* rest-of-d2exp *) =>
   (
