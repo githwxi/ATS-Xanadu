@@ -213,7 +213,25 @@ auxg1e0
 case+
 g1e0.node() of
 |
-G1Eid0(gid) => G1Mid0(gid)
+G1Eid0(gid) =>
+G1Mid0(gid)
+|
+G1Eint(tok) =>
+(
+G1Mint(int)
+) where
+{
+val
+int =
+(
+case-
+tok.node() of
+|
+T_INT1(rep) =>
+g0string2int(rep)
+) : int // end-of-val
+}
+//
 |
 G1Eapp1
 (g1f0, g1e1) =>

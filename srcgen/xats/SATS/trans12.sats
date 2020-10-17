@@ -58,9 +58,10 @@ typedef filpath = $FP0.filpath
 #staload D2E = "./dynexp2.sats"
 
 (* ****** ****** *)
-
 typedef token = $LEX.token
-
+(* ****** ****** *)
+typedef s1exp = $S1E.s1exp
+typedef d1exp = $D1E.d1exp
 (* ****** ****** *)
 (*
 symintr trans12 // too much?
@@ -687,6 +688,8 @@ trans12_squalst
 //
 fun
 trans12_sexp: s1exp -> s2exp 
+fun
+trg1mac_sexp: g1mac -> s2exp
 //
 (* ****** ****** *)
 //
@@ -916,6 +919,11 @@ trans12_dclaulst: d1claulst -> d2claulst
 //
 fun
 trans12_dexp: d1exp -> d2exp 
+fun
+trg1mac_dexp: g1mac -> d2exp
+//
+(* ****** ****** *)
+//
 fun
 trans12_dexpopt: d1expopt -> d2expopt
 fun
