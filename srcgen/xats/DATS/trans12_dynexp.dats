@@ -2135,6 +2135,16 @@ d2exp_tuple
 end // end of [auxlist2]
 
 (* ****** ****** *)
+//
+fun
+auxnone
+( d1e0
+: d1exp): d2exp =
+(
+  d2exp_none0(d1e0.loc())
+)
+//
+(* ****** ****** *)
 
 fun
 auxseqn
@@ -2510,6 +2520,7 @@ d1e0.node() of
 | D1Elist
   ( _, _ ) => auxlist2(d1e0)
 //
+| D1Enone _ => auxnone(d1e0)
 | D1Eseqn _ => auxseqn(d1e0)
 //
 | D1Etuple
@@ -2628,8 +2639,6 @@ d1e0.node() of
 //
 | D1Equal
   (tok0, d1e1) => aux_qual0(d1e0)
-//
-| D1Enone((*void*)) => d2exp_none0(loc0)
 //
 | _(*rest-of-d1exp*) => d2exp_none1(d1e0)
 //
