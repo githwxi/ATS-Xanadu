@@ -500,6 +500,46 @@ local
 (* ****** ****** *)
 
 fun
+auxi00
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Ei00(int) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Ei00(int))
+end // end of [auxi00]
+
+fun
+auxs00
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Es00(str) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Es00(str))
+end // end of [auxs00]
+
+(* ****** ****** *)
+
+fun
 auxint
 (d3e0: d3exp): h0exp =
 let
@@ -517,6 +557,8 @@ D3Eint(tok) = d3e0.node()
 in
 h0exp_make_node(loc0, h0t0, H0Eint(tok))
 end // end of [auxint]
+
+(* ****** ****** *)
 
 fun
 auxbtf
@@ -555,6 +597,8 @@ D3Echr(tok) = d3e0.node()
 in
 h0exp_make_node(loc0, h0t0, H0Echr(tok))
 end // end of [auxchr]
+
+(* ****** ****** *)
 
 fun
 auxflt
@@ -1619,6 +1663,11 @@ in
 //
 case+
 d3e0.node() of
+//
+|
+D3Ei00 _ => auxi00(d3e0)
+|
+D3Es00 _ => auxs00(d3e0)
 //
 |
 D3Eint _ => auxint(d3e0)

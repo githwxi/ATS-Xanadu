@@ -619,6 +619,52 @@ local
 (* ****** ****** *)
 
 fun
+auxi00
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ei00(int) = d2e0.node()
+//
+val
+t2p0 = the_t2ype_sint
+//
+in
+let
+val node = D3Ei00(int)
+in
+d23exp_make_node(loc0, t2p0, node)
+end
+end (* end of [auxi00] *)
+
+(* ****** ****** *)
+
+fun
+auxs00
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Es00(str) = d2e0.node()
+//
+val
+t2p0 = the_t2ype_string
+//
+in
+let
+val node = D3Es00(str)
+in
+d23exp_make_node(loc0, t2p0, node)
+end
+end (* end of [auxs00] *)
+
+(* ****** ****** *)
+
+fun
 auxint
 ( d2e0
 : d2exp): d3exp = let
@@ -648,6 +694,8 @@ in
 d23exp_make_node(loc0, t2p0, node)
 end
 end (* end of [auxint] *)
+
+(* ****** ****** *)
 
 fun
 auxbtf
@@ -682,6 +730,8 @@ val t2p0 = the_t2ype_char
 in
 d23exp_make_node(loc0, t2p0, node)
 end (* end of [auxchr] *)
+
+(* ****** ****** *)
 
 fun
 auxflt
@@ -1733,6 +1783,9 @@ in
 //
 case+
 d2e0.node() of
+//
+| D2Ei00 _ => auxi00(d2e0)
+| D2Es00 _ => auxs00(d2e0)
 //
 | D2Eint _ => auxint(d2e0)
 | D2Ebtf _ => auxbtf(d2e0)

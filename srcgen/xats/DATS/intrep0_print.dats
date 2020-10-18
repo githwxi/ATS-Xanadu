@@ -464,6 +464,11 @@ fprint_h0exp(out, x0) =
 case+
 x0.node() of
 //
+| H0Ei00(int) =>
+  fprint!(out, "H0Ei00(", int, ")")
+| H0Es00(str) =>
+  fprint!(out, "H0Es00(", str, ")")
+//
 | H0Eint(tok) =>
   fprint!(out, "H0Eint(", tok, ")")
 | H0Ebtf(tok) =>

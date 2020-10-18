@@ -316,6 +316,11 @@ fprint_d3exp
 case+
 x0.node() of
 //
+| D3Ei00(int) =>
+  fprint!(out, "D3Ei00(", int, ")")
+| D3Es00(str) =>
+  fprint!(out, "D3Es00(", str, ")")
+//
 | D3Eint(tok) =>
   fprint!(out, "D3Eint(", tok, ")")
 | D3Ebtf(tok) =>

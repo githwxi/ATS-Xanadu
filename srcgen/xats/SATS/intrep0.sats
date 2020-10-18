@@ -548,22 +548,25 @@ overload fprint with fprint_htiarg
 datatype
 h0exp_node =
 //
-| H0Eint of token
-| H0Ebtf of token
-| H0Echr of token
-| H0Eflt of token
-| H0Estr of token
+| H0Ei00 of (int)
+| H0Es00 of string
 //
-| H0Etop of token
+| H0Eint of (token)
+| H0Ebtf of (token)
+| H0Echr of (token)
+| H0Eflt of (token)
+| H0Estr of (token)
 //
-| H0Evar of hdvar
+| H0Etop of (token)
+//
+| H0Evar of (hdvar)
 | H0Evknd of
   (int(*knd*), hdvar)
 //
-| H0Efcon of hdcon // cnstr
+| H0Efcon of (hdcon) // cnstr
 | H0Etcon of (hdcon, htiarg)
 //
-| H0Efcst of hdcst // const
+| H0Efcst of (hdcst) // const
 | H0Etcst of (hdcst, htiarg)
 //
 (*
