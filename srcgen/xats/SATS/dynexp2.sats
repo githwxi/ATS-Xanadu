@@ -753,6 +753,7 @@ datatype
 d2exp_node =
 //
 | D2Ei00 of (int) // int
+| D2Eb00 of (bool) // bool
 | D2Es00 of string // string
 //
 | D2Eint of (token) // int

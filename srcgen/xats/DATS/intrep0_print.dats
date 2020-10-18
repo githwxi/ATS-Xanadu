@@ -466,6 +466,8 @@ x0.node() of
 //
 | H0Ei00(int) =>
   fprint!(out, "H0Ei00(", int, ")")
+| H0Eb00(btf) =>
+  fprint!(out, "H0Eb00(", btf, ")")
 | H0Es00(str) =>
   fprint!(out, "H0Es00(", str, ")")
 //

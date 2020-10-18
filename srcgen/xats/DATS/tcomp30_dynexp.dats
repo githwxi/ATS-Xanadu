@@ -519,6 +519,25 @@ h0exp_make_node(loc0, h0t0, H0Ei00(int))
 end // end of [auxi00]
 
 fun
+auxb00
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val-
+D3Eb00(btf) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Eb00(btf))
+end // end of [auxb00]
+
+fun
 auxs00
 (d3e0: d3exp): h0exp =
 let
@@ -1666,6 +1685,8 @@ d3e0.node() of
 //
 |
 D3Ei00 _ => auxi00(d3e0)
+|
+D3Eb00 _ => auxb00(d3e0)
 |
 D3Es00 _ => auxs00(d3e0)
 //
