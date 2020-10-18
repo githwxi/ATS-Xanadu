@@ -367,6 +367,11 @@ fprint_d2exp
 (
 case- x0.node() of
 //
+| D2Ei00(int) =>
+  fprint!(out, "D2Ei00(", int, ")")
+| D2Es00(str) =>
+  fprint!(out, "D2Es00(", str, ")")
+//
 | D2Eint(tok) =>
   fprint!(out, "D2Eint(", tok, ")")
 | D2Ebtf(tok) =>
