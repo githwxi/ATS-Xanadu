@@ -350,7 +350,7 @@ f1arg_make_node
 datatype
 d1pat_node =
 //
-| D1Pid of token
+| D1Pid0 of token
 //
 | D1Pint of token
 | D1Pchr of token

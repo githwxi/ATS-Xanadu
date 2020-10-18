@@ -342,7 +342,8 @@ auxid0
 : d1pat): d2pat = let
 //
 val-
-D1Pid(tok) = d1p0.node()
+D1Pid0
+( tok ) = d1p0.node()
 //
 val sym = dexpid_sym(tok)
 //
@@ -376,7 +377,7 @@ ifcase
 | isbtf(name) =>
   let
   val-
-  D1Pid(tok) = d1p0.node()
+  D1Pid0(tok) = d1p0.node()
   in
   d2pat_make_node(loc0, D2Pbtf(tok))
   end
@@ -488,14 +489,14 @@ isBANG
 (
 case+
 d1p.node() of
-| D1Pid(tok) =>
+| D1Pid0(tok) =>
   (
   case+
   tok.node() of
   | T_IDENT_sym(x) => (x = "!")
   | _(* non-T_IDENT_sym *) => false
   )
-| _(* non-D1Pid *) => false
+| _(* non-D1Pid0 *) => false
 )
 fun
 isFLAT
@@ -503,14 +504,14 @@ isFLAT
 (
 case+
 d1p.node() of
-| D1Pid(tok) =>
+| D1Pid0(tok) =>
   (
   case+
   tok.node() of
   | T_IDENT_sym(x) => (x = "@")
   | _(* non-T_IDENT_sym *) => false
   )
-| _(* non-D1Pid *) => false
+| _(* non-D1Pid0 *) => false
 )
 fun
 isFREE
@@ -518,14 +519,14 @@ isFREE
 (
 case+
 d1p.node() of
-| D1Pid(tok) =>
+| D1Pid0(tok) =>
   (
   case+
   tok.node() of
   | T_IDENT_sym(x) => (x = "~")
   | _(* non-T_IDENT_sym *) => false
   )
-| _(* non-D1Pid *) => false
+| _(* non-D1Pid0 *) => false
 )
 //
 in
@@ -774,7 +775,7 @@ in (* in-of-let *)
 case-
 d1p0.node() of
 //
-| D1Pid _ => auxid0(d1p0)
+| D1Pid0 _ => auxid0(d1p0)
 //
 | D1Papp1 _ => auxapp1(d1p0)
 //
