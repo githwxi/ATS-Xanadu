@@ -1166,14 +1166,46 @@ auxid0
 val-
 D1Eid0(tok) = d1e0.node()
 //
-val sym = dexpid_sym(tok)
-val opt = the_dexpenv_find(sym)
+val
+sym = dexpid_sym(tok)
+val
+opt = the_gmacenv_find(sym)
+//
+in
+//
+case- opt of
+|
+~None_vt() =>
+(
+  auxid0_d1exp(d1e0)
+)
+|
+~Some_vt(g1m0) =>
+(
+trg1mac_dexp(d1e0.loc(), g1m0)
+)
+//
+end // end of [auxid0]
+
+and
+auxid0_d1exp
+( d1e0
+: d1exp): d2exp = let
+//
+val-
+D1Eid0(tok) = d1e0.node()
+//
+val
+sym = dexpid_sym(tok)
+val
+opt = the_dexpenv_find(sym)
 //
 in
 //
 case+ opt of
-| ~None_vt() =>
-  (
+|
+~None_vt() =>
+(
   ifcase
   | isbtf(tok) =>
     (
@@ -1190,12 +1222,12 @@ case+ opt of
       val loc0 = d1e0.loc()
     }
   | _(* else *) => d2exp_none1(d1e0)
-  )
-| ~Some_vt(d2i) => auxid0_some(d1e0, d2i)
+)
+| ~Some_vt(d2i) => auxid0_d2itm(d1e0, d2i)
 end // end of [auxid0]
 
 and
-auxid0_some
+auxid0_d2itm
 ( d1e0
 : d1exp
 , d2i0

@@ -23,6 +23,12 @@
 
 #define iadd(x, y) = iadd(x, y)
 
+(* ****** ****** *)
+
+val x1 = one and x2 = two
+
+(* ****** ****** *)
+
 ////
 #extern
 fun

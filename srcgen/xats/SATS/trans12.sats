@@ -680,7 +680,7 @@ trans12_squalst
 fun
 trans12_sexp: s1exp -> s2exp 
 fun
-trg1mac_sexp: g1mac -> s2exp
+trg1mac_sexp:(loc_t, g1mac) -> s2exp
 //
 (* ****** ****** *)
 //
@@ -911,7 +911,7 @@ trans12_dclaulst: d1claulst -> d2claulst
 fun
 trans12_dexp: d1exp -> d2exp 
 fun
-trg1mac_dexp: g1mac -> d2exp
+trg1mac_dexp:(loc_t, g1mac) -> d2exp
 //
 (* ****** ****** *)
 //
