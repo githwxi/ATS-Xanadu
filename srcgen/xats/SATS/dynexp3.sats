@@ -303,6 +303,9 @@ overload fprint with fprint_ti3arg
 datatype
 d3exp_node =
 //
+| D3Ei00 of (int)
+| D3Es00 of string
+//
 | D3Eint of (token)
 | D3Ebtf of (token)
 | D3Echr of (token)
