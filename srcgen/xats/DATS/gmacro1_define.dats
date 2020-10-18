@@ -407,6 +407,13 @@ println!
 ("trg1mac_dexp: g1m0 = ", g1m0)
 //
 in
+//
+case+ g1m0 of
+|
+G1Mint(int) =>
+d2exp_make_node(loc0, D2Ei00(int))
+|
+_(* rest-of-g1mac *) =>
 d2exp_make_node(loc0, D2Eg1mac(g1m0))
 end (* end of [trs1exp_gmac] *)
 
