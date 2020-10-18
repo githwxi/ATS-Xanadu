@@ -69,10 +69,8 @@ symintr trans12 // too much?
 (* ****** ****** *)
 //
 typedef g1exp = $S1E.g1exp
+typedef g1mac = $S1E.g1mac
 //
-(* ****** ****** *)
-abstype g1mac_tbox = ptr
-typedef g1mac = g1mac_tbox
 (* ****** ****** *)
 fun
 trans11_g1exp(g1exp): g1mac

@@ -55,13 +55,17 @@ typedef tokenlst = $LEX.tokenlst
 #staload
 S0E = "./staexp0.sats"
 (* ****** ****** *)
-//
 abstbox g1exp_tbox = ptr
+abstype g1mac_tbox = ptr
+(* ****** ****** *)
+//
 abstbox g1marg_tbox = ptr
 //
 typedef g0exp = $S0E.g0exp
 //
 typedef g1exp = g1exp_tbox
+typedef g1mac = g1mac_tbox
+//
 typedef g1explst = List0(g1exp)
 typedef g1expopt = Option(g1exp)
 //
