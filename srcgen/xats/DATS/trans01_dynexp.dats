@@ -744,7 +744,7 @@ $SYM.symbol_make(nam)
 val opt =
 the_fxtyenv_search(sym)
 val d1p0 =
-d1pat_make_node(loc, D1Pid(tok))
+d1pat_make_node(loc, D1Pid0(tok))
 //
 in
 case+ opt of
@@ -795,7 +795,7 @@ in
 case-
 d0p0.node() of
 //
-| D0Pid(id0) =>
+| D0Pid0(id0) =>
   (
     auxid0(id0)
   )

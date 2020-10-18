@@ -333,9 +333,9 @@ fprint_d1pat
 (
 case+
 x0.node() of
-| D1Pid(tok) =>
+| D1Pid0(tok) =>
   fprint!
-  (out, "D1Pid(", tok, ")")
+  (out, "D1Pid0(", tok, ")")
 //
 | D1Pint(tok) =>
   fprint!

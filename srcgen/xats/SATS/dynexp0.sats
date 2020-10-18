@@ -338,7 +338,7 @@ f0arg_make_node
 datatype
 d0pat_node =
 //
-| D0Pid of d0pid
+| D0Pid0 of d0pid
 //
 | D0Pint of t0int
 | D0Pchr of t0chr

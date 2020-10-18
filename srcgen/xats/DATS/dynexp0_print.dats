@@ -345,8 +345,8 @@ fprint_d0pat
 (
 case+ x0.node() of
 //
-| D0Pid(id) =>
-  fprint!(out, "D0Pid(", id, ")")
+| D0Pid0(id) =>
+  fprint!(out, "D0Pid0(", id, ")")
 //
 | D0Pint(i0) =>
   fprint!(out, "D0Pint(", i0, ")")

@@ -966,7 +966,7 @@ case+ tnd of
     val id = p_d0pid(buf, err)
   in
     err := e0;
-    d0pat_make_node(id.loc(), D0Pid(id))
+    d0pat_make_node(id.loc(), D0Pid0(id))
   end // end of [t_d0pid]
 //
 | _ when t_t0int(tnd) =>

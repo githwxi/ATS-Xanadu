@@ -100,7 +100,7 @@ d0p0.node() of
 | D0Pflt _ => ()
 | D0Pstr _ => ()
 //
-| D0Pid(id0) =>
+| D0Pid0(id0) =>
   {
     val () =
     synread_d0pid(id0)
