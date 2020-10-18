@@ -838,8 +838,9 @@ d2exp_node =
 | D2Eanno of
   (d2exp(*applst*), s2exp(*type*))
 //
-| D2Enone0 of ()
-| D2Enone1 of (d1exp) | D2Eg1exp of (g1mac)
+| D2Eg1mac of (g1mac) // HX: error!
+//
+| D2Enone0 of () | D2Enone1 of (d1exp)
 //
 (* ****** ****** *)
 //

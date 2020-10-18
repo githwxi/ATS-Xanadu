@@ -69,7 +69,13 @@ symintr trans12 // too much?
 (* ****** ****** *)
 //
 typedef g1exp = $S1E.g1exp
+//
 typedef g1mac = $S1E.g1mac
+(*
+HX-2020-10-17:
+Note that g1mac is defined
+in the [g1maro_define.dats]
+*)
 //
 (* ****** ****** *)
 fun
@@ -81,19 +87,6 @@ trans11_g1mac
 (* ****** ****** *)
 //
 vtypedef g1menv = symmap(g1mac)
-//
-(* ****** ****** *)
-//
-fun
-print_g1mac : print_type(g1mac)
-fun
-prerr_g1mac : prerr_type(g1mac)
-fun
-fprint_g1mac : fprint_type(g1mac)
-//
-overload print with print_g1mac
-overload prerr with prerr_g1mac
-overload fprint with fprint_g1mac
 //
 (* ****** ****** *)
 //
