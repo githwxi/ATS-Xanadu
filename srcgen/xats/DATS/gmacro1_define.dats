@@ -50,6 +50,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
@@ -378,6 +379,36 @@ println!
 in
   G1Md1exp(d1e0)
 end (* end of [trd1exp_gmac] *)
+
+(* ****** ****** *)
+
+(*
+implement
+trg1mac_sexp(loc0, g1m0) =
+let
+//
+val () =
+println!
+("trg1mac_sexp: g1m0 = ", g1m0)
+//
+in
+d2exp_make_node(loc0, S2Eg1mac(g1m0))
+end (* end of [trs1exp_gmac] *)
+*)
+
+(* ****** ****** *)
+
+implement
+trg1mac_dexp(loc0, g1m0) =
+let
+//
+val () =
+println!
+("trg1mac_dexp: g1m0 = ", g1m0)
+//
+in
+d2exp_make_node(loc0, D2Eg1mac(g1m0))
+end (* end of [trs1exp_gmac] *)
 
 (* ****** ****** *)
 

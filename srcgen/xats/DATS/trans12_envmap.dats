@@ -684,6 +684,42 @@ end // end of [the_gmacenv_padd]
 (* ****** ****** *)
 
 implement
+the_gmacenv_find
+  (gid) = let
+//
+val
+ans =
+let
+  prval
+  vbox(pf) = pfbox
+in
+$ENV.symenv_search{g1mac}(!p0, gid)
+end // end of [val]
+//
+in
+//
+case+ ans of
+//
+| Some_vt _ => ans
+//
+| ~None_vt() => let
+    val ans = the_nmspace_find(gid)
+  in
+    case+ ans of
+    | Some_vt _ => ans
+    | ~None_vt() => let
+        prval
+        vbox(pf) = pfbox
+      in
+        $ENV.symenv_psearch{g1mac}(!p0, gid)
+      end // end of [None_vt]
+  end // end of [None_vt]
+//
+end // end of [the_gmacenv_find]
+
+(* ****** ****** *)
+
+implement
 the_gmacenv_pop
 (
   pfenv | (*none*)
@@ -910,12 +946,16 @@ end // end of [the_sortenv_padd]
 implement
 the_sortenv_find
   (tid) = let
-val ans = let
+//
+val
+ans =
+let
   prval
   vbox(pf) = pfbox
 in
 $ENV.symenv_search{s2txt}(!p0, tid)
 end // end of [val]
+//
 in
 //
 case+ ans of
@@ -1314,12 +1354,16 @@ case+ svss of
 implement
 the_sexpenv_find
   (sid) = let
-  val ans = let
-    prval
-    vbox(pf) = pfbox
-  in
-    $ENV.symenv_search{s2itm}(!p0, sid)
-  end // end of [val]
+//
+val
+ans =
+let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_search{s2itm}(!p0, sid)
+end // end of [val]
+//
 in
 //
 case+ ans of
@@ -1803,12 +1847,16 @@ the_dexpenv_add_varlst
 implement
 the_dexpenv_find
   (sym) = let
-  val ans = let
-    prval
-    vbox(pf) = pfbox
-  in
-    $ENV.symenv_search{d2itm}(!p0, sym)
-  end // end of [val]
+//
+val
+ans =
+let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_search{d2itm}(!p0, sym)
+end // end of [val]
+//
 in
 //
 case+ ans of
