@@ -549,6 +549,7 @@ datatype
 h0exp_node =
 //
 | H0Ei00 of (int)
+| H0Eb00 of (bool)
 | H0Es00 of string
 //
 | H0Eint of (token)

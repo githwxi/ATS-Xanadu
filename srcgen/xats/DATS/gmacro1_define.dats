@@ -58,31 +58,6 @@ UN = "prelude/SATS/unsafe.sats"
 implement
 fprint_val<sym_t> = fprint_symbol
 (* ****** ****** *)
-(*
-//
-datatype
-g1exp_node =
-//
-| G1Eid0 of (sym_t)
-//
-| G1Eint of (token)
-| G1Estr of (token)
-//
-| G1Eapp of ((*void*))
-//
-| G1Eapp1 of
-  (g1exp(*fun*), g1exp)
-| G1Eapp2 of
-  (g1exp(*fun*), g1exp, g1exp)
-//
-| G1Elist of g1explst (*temp*)
-//
-| G1Enone0 of () // HX: EMPTY
-| G1Enone1 of (g0exp) // HX: ERROR!
-//
-*)
-//
-(* ****** ****** *)
 abstype g1mid_tbox = ptr
 (* ****** ****** *)
 typedef g1mid = g1mid_tbox
@@ -169,6 +144,7 @@ fprint!
 end (*let*) // end of [fprint_g1mac]
 
 (* ****** ****** *)
+
 
 local
 
@@ -413,9 +389,71 @@ case+ g1m0 of
 G1Mint(int) =>
 d2exp_make_node(loc0, D2Ei00(int))
 |
+G1Mbtf(btf) =>
+d2exp_make_node(loc0, D2Eb00(btf))
+|
+G1Mstr(str) =>
+d2exp_make_node(loc0, D2Es00(str))
+|
 _(* rest-of-g1mac *) =>
 d2exp_make_node(loc0, D2Eg1mac(g1m0))
 end (* end of [trs1exp_gmac] *)
+
+(* ****** ****** *)
+
+abstbox g1menv_tbox = ptr
+typedef g1menv = g1menv_tbox
+
+(* ****** ****** *)
+
+static
+fun
+g1menv_extend
+( kxs
+: g1menv
+, k0:g1mid, x0:g1mac): g1menv
+static
+fun
+g1menv_search_opt
+( kxs
+: g1menv
+, key: g1mid): Option_vt(g1mac)
+
+(* ****** ****** *)
+
+local
+
+absimpl
+g1menv_tbox = List0(@(g1mid, g1mac))
+
+in (* in-of-local *)
+
+implement
+g1menv_extend
+(kxs, k0, x0) =
+list_cons(@(k0, x0), kxs)
+
+implement
+g1menv_search_opt
+(kxs, key) =
+auxlst(kxs) where
+{
+fun
+auxlst
+(kxs: g1menv): Option_vt(g1mac) =
+(
+case+ kxs of
+|
+list_nil() => None_vt()
+|
+list_cons(kx0, kxs) =>
+if
+(key = kx0.0)
+then Some_vt(kx0.1) else auxlst(kxs)
+) (* end of [auxlst] *)
+} (* end of [g1menv_search_opt] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
