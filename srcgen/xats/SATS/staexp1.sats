@@ -119,11 +119,22 @@ overload prerr with prerr_g1exp
 overload fprint with fprint_g1exp
 //
 fun
+print_g1mac : print_type(g1mac)
+fun
+prerr_g1mac : prerr_type(g1mac)
+fun
+fprint_g1mac : fprint_type(g1mac)
+//
+overload print with print_g1mac
+overload prerr with prerr_g1mac
+overload fprint with fprint_g1mac
+//
+(* ****** ****** *)
+fun
 g1exp_none(loc: loc_t): g1exp
 fun
 g1exp_make_node
 (loc: loc_t, node: g1exp_node): g1exp
-//
 (* ****** ****** *)
 //
 datatype

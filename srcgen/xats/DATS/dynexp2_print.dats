@@ -537,6 +537,9 @@ case- x0.node() of
   fprint!
   (out, "D2Eanno(", d2e1, "; ", s2e2, ")")
 //
+| D2Eg1mac(g1m0) =>
+  fprint!(out, "D2Eg1mac(", g1m0, ")")
+//
 | D2Enone0() => fprint!(out, "D2Enone0(", ")")
 | D2Enone1(d1esrc) => fprint!(out, "D2Enone1(", d1esrc, ")")
 //
