@@ -14,9 +14,10 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+#define nul 0
 #define one 1
 #define two 2
-#define sum = one + two
+#define exp = one + two * two
 
 #define pow2(x) = x * x
 #define pow3(x) = x * pow2(x)
@@ -25,7 +26,15 @@
 
 (* ****** ****** *)
 
-val x1 = one and x2 = two
+val x1 = one
+and x2 = two
+(*
+val one = 1
+val two = 2
+*)
+val x3 = exp
+val x12 = x1 + x2
+val xxx1 = pow3(x1)
 
 (* ****** ****** *)
 

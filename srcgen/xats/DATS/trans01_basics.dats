@@ -233,6 +233,10 @@ sortid_sym(tok) =
 case-
 tok.node() of
 //
+(*
+| T_IDENT(nm) => $SYM.symbol_make(nm)
+*)
+//
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 | T_IDENT_sym(nm) => $SYM.symbol_make(nm)
 //
@@ -246,6 +250,10 @@ gexpid_sym(tok) =
 case-
 tok.node() of
 //
+(*
+| T_IDENT(nm) => $SYM.symbol_make(nm)
+*)
+//
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 | T_IDENT_sym(nm) => $SYM.symbol_make(nm)
 //
@@ -258,6 +266,10 @@ sargid_sym(tok) =
 (
 case-
 tok.node() of
+//
+(*
+| T_IDENT(nm) => $SYM.symbol_make(nm)
+*)
 //
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
@@ -280,7 +292,10 @@ in
 case-
 tok.node() of
 //
+| T_IDENT(nm) => $SYM.symbol_make(nm)
+//
 | T_OP_sym(nm) => $SYM.symbol_make(nm)
+//
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 | T_IDENT_sym(nm) => $SYM.symbol_make(nm)
 //
@@ -294,7 +309,10 @@ dexpid_sym(tok) =
 case-
 tok.node() of
 //
+| T_IDENT(nm) => $SYM.symbol_make(nm)
+//
 | T_OP_sym(nm) => $SYM.symbol_make(nm)
+//
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 | T_IDENT_sym(nm) => $SYM.symbol_make(nm)
 | T_IDENT_srp(nm) => $SYM.symbol_make(nm)

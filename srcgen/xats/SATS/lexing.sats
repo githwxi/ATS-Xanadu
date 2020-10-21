@@ -64,6 +64,12 @@ tnode =
   | T_CLNLT of (string) // :<
   | T_DOTLT of (string) // .<
 //
+(*
+// HX-2020-10-21:
+// for internal names
+*)
+  | T_IDENT of (string) // generic
+//
   | T_IDENT_alp of string // alnum
   | T_IDENT_sym of string // symbol
 //

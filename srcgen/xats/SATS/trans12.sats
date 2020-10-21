@@ -81,7 +81,17 @@ in the [g1maro_define.dats]
 fun
 trans11_g1exp(g1exp): g1mac
 fun
-trans11_g1mac
+trans11_g1mac(g1mac): g1mac
+//
+(* ****** ****** *)
+typedef g1maclst = List0(g1mac)
+(* ****** ****** *)
+fun
+trans11_g1mac_app
+(g1f0: g1mac, g1ms: g1maclst): g1mac
+(* ****** ****** *)
+fun
+trans11_g1mdef
 ( gmas: $S1E.g1marglst
 , def1: $S1E.g1expopt): g1mac
 (* ****** ****** *)
@@ -679,8 +689,14 @@ trans12_squalst
 //
 fun
 trans12_sexp: s1exp -> s2exp 
+//
 fun
-trg1mac_sexp:(loc_t, g1mac) -> s2exp
+trans12_seid: s1exp -> s2exp 
+//
+fun
+trs1exp_gmac: s1exp -> g1mac
+fun
+trg1mac_sexp: (loc_t, g1mac) -> s2exp
 //
 (* ****** ****** *)
 //
@@ -910,8 +926,14 @@ trans12_dclaulst: d1claulst -> d2claulst
 //
 fun
 trans12_dexp: d1exp -> d2exp 
+//
 fun
-trg1mac_dexp:(loc_t, g1mac) -> d2exp
+trans12_deid: d1exp -> d2exp 
+//
+fun
+trd1exp_gmac: d1exp -> g1mac
+fun
+trg1mac_dexp: (loc_t, g1mac) -> d2exp
 //
 (* ****** ****** *)
 //
