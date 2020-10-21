@@ -109,6 +109,10 @@ case+ tnd of
 | T_DOTLT(x) =>
   fprint!(out, "DOTLT(", x, ")")
 //
+//
+| T_IDENT(x) =>
+  fprint!(out, "IDENT(", x, ")")
+//
 | T_IDENT_alp(x) =>
   fprint!(out, "IDENT_alp(", x, ")")
 | T_IDENT_sym(x) =>
@@ -402,6 +406,8 @@ case+ tnd of
 //
 | T_CLNLT(x) => fprint(out, x)
 | T_DOTLT(x) => fprint(out, x)
+//
+| T_IDENT(x) => fprint(out, x)
 //
 | T_IDENT_alp(x) => fprint(out, x)
 | T_IDENT_sym(x) => fprint(out, x)
