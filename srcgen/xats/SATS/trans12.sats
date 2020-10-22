@@ -87,7 +87,7 @@ trans11_g1mac(g1mac): g1mac
 typedef g1maclst = List0(g1mac)
 (* ****** ****** *)
 fun
-trans11_g1mac_app
+trans11_g1mac_apps
 (g1f0: g1mac, g1ms: g1maclst): g1mac
 (* ****** ****** *)
 fun

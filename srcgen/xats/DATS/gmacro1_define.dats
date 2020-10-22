@@ -86,17 +86,16 @@ datatype g1mac =
 | G1Mbtf of bool
 | G1Mstr of string
 //
-| G1Mmlam of
+| G1Mlam0 of
   ( g1mas(*marg*)
   , g1mac(*body*))
 //
-| G1Mmapp of
+| G1Mapps of
   ( g1mac(*fun*)
   , g1maclst(*args*))
 //
-| G1Mcenv of
-  ( g1mac
-  , g1menv )
+| G1Msubs of
+  ( g1mac, g1menv )
 //
 | G1Msexp of (s1exp)
 | G1Mdexp of (d1exp)
@@ -143,35 +142,36 @@ G1Mstr(cs) =>
 fprint!(out, "G1Mstr(", cs, ")")
 //
 |
-G1Mmlam(gmas, g1m1) =>
+G1Mlam0
+(gmas, g1m1) =>
 fprint!
 ( out
-, "G1Mlam(", gmas, "; ", g1m1, ")")
+, "G1Mlam0(", gmas, "; ", g1m1, ")")
 |
-G1Mmapp(g1f0, g1ms) =>
+G1Mapps
+(g1f0, g1ms) =>
 fprint!
 ( out
-, "G1Mapp(", g1f0, "; ", g1ms, ")")
+, "G1Mapps(", g1f0, "; ", g1ms, ")")
 //
 |
-G1Mcenv(g1m1, env2) =>
+G1Msubs
+(g1m1, subs) =>
 fprint!
 ( out
-, "G1Mlam(", g1m1, "; ", "...", ")")
+, "G1Msubs(", g1m1, "; ", "...", ")")
 //
 |
 G1Msexp(s1e1) =>
-fprint!(out, "G1Msexp(", s1e1, ")")
+fprint!( out, "G1Msexp(", s1e1, ")" )
 |
 G1Mdexp(d1e1) =>
-fprint!(out, "G1Mdexp(", d1e1, ")")
+fprint!( out, "G1Mdexp(", d1e1, ")" )
 //
-|
-G1Mnone0() =>
-fprint!(out, "G1Mnone0()")
-|
-G1Mnone1(g1e1) =>
-fprint!(out, "G1Mnone1(", g1e1, ")")
+| G1Mnone0() =>
+  fprint!(out, "G1Mnone0()")
+| G1Mnone1(g1e1) =>
+  fprint!(out, "G1Mnone1(", g1e1, ")")
 //
 end (*let*) // end of [fprint_g1mac]
 
@@ -226,7 +226,9 @@ g1ma.node() of
 
 fun
 auxg1e0
-( g1e0: g1exp ): g1mac =
+( g1e0
+: g1exp )
+: g1mac =
 (
 case+
 g1e0.node() of
@@ -236,8 +238,7 @@ G1Mid0(gid)
 |
 G1Eint(tok) =>
 (
-G1Mint(int)
-) where
+G1Mint(int)) where
 {
 val
 int =
@@ -245,8 +246,7 @@ int =
 case-
 tok.node() of
 |
-T_INT1(rep) =>
-g0string2int(rep)
+T_INT1(rep) => g0string2int(rep)
 ) : int // end-of-val
 }
 //
@@ -258,18 +258,21 @@ let
   g1f0 =
   auxg1e0(g1f0)
 in
-  G1Mmapp(g1f0, g1ms) where
+  G1Mapps(g1f0, g1ms) where
 {
-  val
-  g1ms =
-  (
-  case+
-  g1e1.node() of
-  | G1Elist(g1es) =>
-    auxg1es(g1es)
-  | _ (*non-G1Elist*) =>
-    list_sing(auxg1e0(g1e1))
-  )
+val
+g1ms =
+(
+case+
+g1e1.node() of
+| G1Elist(g1es) =>
+  auxg1es(g1es)
+| _ (*non-G1Elist*) =>
+  let
+  val g1m1 =
+  auxg1e0(g1e1) in list_sing(g1m1)
+  end
+)
 }
 end // end of [G1Eapp1]
 |
@@ -283,7 +286,7 @@ let
   val
   g1e2 = auxg1e0(g1e2)
 in
-G1Mmapp
+G1Mapps
 (g1f0, list_pair(g1e1, g1e2))
 end
 |
@@ -323,7 +326,7 @@ let
   val
   args = auxmarg(g1ma)
 in
-G1Mmlam
+G1Mlam0
 (args, auxgmas(gmas, def1))
 end // list_cons
 ) (* end of [auxgmas] *)
@@ -341,9 +344,8 @@ auxgmas(gmas, def1) where
 val def1 =
 (
 case+ def1 of
-|
-None() =>
-G1Mnone0() | Some(g1e) => auxg1e0(g1e)
+| None() => G1Mnone0()
+| Some(g1e) => auxg1e0(g1e)
 ) : g1mac // end-of-val
 //
 } (* end of [trans11_g1mdef] *)
@@ -366,6 +368,48 @@ end (* end of [trs1exp_gmac] *)
 
 (* ****** ****** *)
 
+local
+
+(* ****** ****** *)
+
+fun
+auxid0
+( d1e0
+: d1exp): g1mac =
+let
+val-
+D1Eid0
+( tok ) = d1e0.node()
+in
+  G1Mid0(dexpid_sym(tok))
+end // end of [auxid0]
+
+(* ****** ****** *)
+
+fun
+auxint
+( d1e0
+: d1exp): g1mac =
+(
+G1Mint(int)) where
+{
+val-
+D1Eint
+( tok ) = d1e0.node()
+val
+int =
+(
+case-
+tok.node() of
+|
+T_INT1(rep) => g0string2int(rep)
+) : int // end-of-val
+} (* end of [auxint] *)
+
+(* ****** ****** *)
+
+in(* in-of-local *)
+
 implement
 trd1exp_gmac(d1e0) =
 let
@@ -375,8 +419,18 @@ println!
 ("trd1exp_gmac: d1e0 = ", d1e0)
 //
 in
-  G1Mdexp(d1e0)
+//
+case+
+d1e0.node() of
+| D1Eid0 _ => auxid0(d1e0)
+| D1Eint _ => auxint(d1e0)
+//
+|
+_(*rest-of-d1exp*) => G1Mdexp(d1e0)
+//
 end (* end of [trd1exp_gmac] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -391,31 +445,67 @@ g1menv_extend
 , k0:g1mid, x0:g1mac): g1menv
 static
 fun
+g1menv_extends
+( kxs
+: g1menv
+, ks: g1mas, xs: g1maclst): g1menv
+static
+fun
 g1menv_search_opt
 ( kxs
 : g1menv
 , key: g1mid): Option_vt(g1mac)
 
 (* ****** ****** *)
-//
-static
-fun
-g1mac_msubsts
-(g1m0: g1mac, env1: g1menv): g1mac
-//
-(* ****** ****** *)
 
 local
 
 absimpl
-g1menv_tbox = List0(@(g1mid, g1mac))
+g1menv_tbox =
+List0(@(g1mid, g1mac))
 
 in (* in-of-local *)
+
+implement
+g1menv_nil
+((*void*)) = list_nil()
 
 implement
 g1menv_extend
 (kxs, k0, x0) =
 list_cons(@(k0, x0), kxs)
+
+implement
+g1menv_extends
+(kxs, ks, xs) =
+(
+case+ ks of
+|
+list_nil() => kxs
+|
+list_cons(k0, ks) =>
+(
+case+ xs of
+|
+list_nil() =>
+let
+val x0 = G1Mnone0()
+val kxs =
+g1menv_extend(kxs, k0, x0)
+in
+g1menv_extends(kxs, ks, xs)
+end
+|
+list_cons(x0, xs) =>
+let
+val kxs =
+g1menv_extend(kxs, k0, x0)
+in
+g1menv_extends(kxs, ks, xs)
+end
+)
+) (* end of [g1menv_extends] *)
+
 
 implement
 g1menv_search_opt
@@ -440,8 +530,51 @@ then Some_vt(kx0.1) else auxlst(kxs)
 end // end of [local]
 
 (* ****** ****** *)
+//
+static
+fun
+trans11_g1mac_subs
+(body: g1mac, env0: g1menv): g1mac
+//
+(* ****** ****** *)
 
 local
+
+(* ****** ****** *)
+
+fun
+isIOP1
+( opnm
+: sym_t
+, g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+(
+case+ g1f0 of
+|
+G1Mid0(sym0) =>
+(
+if
+(
+opnm != sym0
+)
+then false else
+(
+case+ g1ms of
+|
+list_nil() => false
+|
+list_cons(g1m1, g1ms) =>
+(
+case+ g1m1 of
+| G1Mint _ => true
+| _ (*non-G1Mint*) => false
+)
+)
+) (*if*) // end of [G1Mid0]
+//
+| _ (*non-G1Mid0*) => false)
 
 (* ****** ****** *)
 
@@ -495,6 +628,16 @@ case+ g1m2 of
 (* ****** ****** *)
 //
 fun
+isINEG
+( g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+isIOP1(SUB_symbol, g1f0, g1ms)
+//
+(* ****** ****** *)
+//
+fun
 isIADD
 ( g1f0
 : g1mac
@@ -531,6 +674,59 @@ isIMOD
 : g1maclst): bool =
 isIOP2(MOD_symbol, g1f0, g1ms)
 *)
+//
+(* ****** ****** *)
+//
+fun
+isILT
+( g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+isIOP2(LT_symbol, g1f0, g1ms)
+fun
+isIGT
+( g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+isIOP2(GT_symbol, g1f0, g1ms)
+fun
+isIEQ
+( g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+isIOP2(EQ_symbol, g1f0, g1ms)
+//
+fun
+isILTE
+( g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+isIOP2(LTEQ_symbol, g1f0, g1ms)
+fun
+isIGTE
+( g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+isIOP2(GTEQ_symbol, g1f0, g1ms)
+fun
+isIEQ2
+( g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+isIOP2(EQEQ_symbol, g1f0, g1ms)
+fun
+isINEQ
+( g1f0
+: g1mac
+, g1ms
+: g1maclst): bool =
+isIOP2(BANGEQ_symbol, g1f0, g1ms)
 //
 (* ****** ****** *)
 
@@ -574,19 +770,20 @@ case+ opt of
 ~None_vt() => g1m0
 |
 ~Some_vt(g1m0) => auxg1m0(g1m0)
-end // end of [aux_id0]
+end // end of [auxgmid]
 
 (* ****** ****** *)
 
 fun
-auxmapp
+auxapps
 ( g1m0
 : g1mac): g1mac =
 let
 //
 val-
-G1Mmapp
+G1Mapps
 (g1f0, g1ms) = g1m0
+//
 val g1f0 = auxg1m0(g1f0)
 val g1ms = auxg1ms(g1ms)
 //
@@ -594,72 +791,138 @@ in
 ifcase
 //
 |
-isIADD(g1f0, g1ms) =>
+isILT(g1f0, g1ms) =>
 let
-//
 val-
 list_cons
 (g1m1, g1ms) = g1ms
 val-
 list_cons
 (g1m2, g1ms) = g1ms
-//
 val-G1Mint(i1) = g1m1
-val-G1Mint(i2) = g1m2 in G1Mint(i1+i2)
+val-G1Mint(i2) = g1m2 in G1Mbtf(i1 < i2)
+end // end of [isILT]
+|
+isIGT(g1f0, g1ms) =>
+let
+val-
+list_cons
+(g1m1, g1ms) = g1ms
+val-
+list_cons
+(g1m2, g1ms) = g1ms
+val-G1Mint(i1) = g1m1
+val-G1Mint(i2) = g1m2 in G1Mbtf(i1 > i2)
+end // end of [isIGT]
+|
+isIEQ(g1f0, g1ms) =>
+let
+val-
+list_cons
+(g1m1, g1ms) = g1ms
+val-
+list_cons
+(g1m2, g1ms) = g1ms
+val-G1Mint(i1) = g1m1
+val-G1Mint(i2) = g1m2 in G1Mbtf(i1 = i2)
+end // end of [isIEQ]
+//
+|
+isILTE(g1f0, g1ms) =>
+let
+val-
+list_cons
+(g1m1, g1ms) = g1ms
+val-
+list_cons
+(g1m2, g1ms) = g1ms
+val-G1Mint(i1) = g1m1
+val-G1Mint(i2) = g1m2 in G1Mbtf(i1 <= i2)
+end // end of [isILTE]
+|
+isIGTE(g1f0, g1ms) =>
+let
+val-
+list_cons
+(g1m1, g1ms) = g1ms
+val-
+list_cons
+(g1m2, g1ms) = g1ms
+val-G1Mint(i1) = g1m1
+val-G1Mint(i2) = g1m2 in G1Mbtf(i1 >= i2)
+end // end of [isIGTE]
+|
+isINEQ(g1f0, g1ms) =>
+let
+val-
+list_cons
+(g1m1, g1ms) = g1ms
+val-
+list_cons
+(g1m2, g1ms) = g1ms
+val-G1Mint(i1) = g1m1
+val-G1Mint(i2) = g1m2 in G1Mbtf(i1 != i2)
+end // end of [isINEQ]
+//
+|
+isIADD(g1f0, g1ms) =>
+let
+val-
+list_cons
+(g1m1, g1ms) = g1ms
+val-
+list_cons
+(g1m2, g1ms) = g1ms
+val-G1Mint(i1) = g1m1
+val-G1Mint(i2) = g1m2 in G1Mint(i1 + i2)
 end // end of [isIADD]
 //
 |
 isISUB(g1f0, g1ms) =>
 let
-//
 val-
 list_cons
 (g1m1, g1ms) = g1ms
 val-
 list_cons
 (g1m2, g1ms) = g1ms
-//
 val-G1Mint(i1) = g1m1
-val-G1Mint(i2) = g1m2 in G1Mint(i1-i2)
+val-G1Mint(i2) = g1m2 in G1Mint(i1 - i2)
 end // end of [isISUB]
 //
 |
 isIMUL(g1f0, g1ms) =>
 let
-//
 val-
 list_cons
 (g1m1, g1ms) = g1ms
 val-
 list_cons
 (g1m2, g1ms) = g1ms
-//
 val-G1Mint(i1) = g1m1
-val-G1Mint(i2) = g1m2 in G1Mint(i1*i2)
+val-G1Mint(i2) = g1m2 in G1Mint(i1 * i2)
 end // end of [isIMUL]
 //
 |
 isIDIV(g1f0, g1ms) =>
 let
-//
 val-
 list_cons
 (g1m1, g1ms) = g1ms
 val-
 list_cons
 (g1m2, g1ms) = g1ms
-//
 val-G1Mint(i1) = g1m1
-val-G1Mint(i2) = g1m2 in G1Mint(i1*i2)
+val-G1Mint(i2) = g1m2 in G1Mint(i1 / i2)
 end // end of [isIDIV]
 //
-| _(* non-delta *) => auxmapp_(g1f0, g1ms)
+| _(*non-delta-redex*) => auxapps_(g1f0, g1ms)
 // end-of-ifcase
 //
-end // end of [auxmapp]
+end // end of [auxapps]
 
 and
-auxmapp_
+auxapps_
 ( g1f0
 : g1mac
 , g1ms
@@ -667,7 +930,19 @@ auxmapp_
 ) : g1mac =
 (
 case+ g1f0 of
-| _(*non-lam*) => G1Mmapp(g1f0, g1ms)
+|
+G1Mlam0
+(gmas, body) =>
+(
+trans11_g1mac_subs(body, env0)
+) where
+{
+  val env0 =
+  g1menv_nil((*void*))
+  val env0 =
+  g1menv_extends(env0, gmas, g1ms)
+}
+| _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
 )
 
 in(* in-of-local *)
@@ -688,34 +963,157 @@ case+ g1m0 of
 //
 | G1Mid0 _ => auxgmid(g1m0)
 //
-| G1Mmapp _ => auxmapp(g1m0)
+| G1Mapps _ => auxapps(g1m0)
 //
 | _(*rest-of-g1mac*) => g1m0
 //
 ) where
 {
 //
+(*
 val () =
 println!
 ("trans11_g1mac: g1m0 = ", g1m0)
+*)
 //
 }(*where*)//end of [trans11_g1mac]
 //
 implement
-trans11_g1mac_app
+trans11_g1mac_apps
   (g1f0, g1ms) =
 (
-  auxmapp_(g1f0, g1ms)
+  auxapps_(g1f0, g1ms)
 ) where
 {
+(*
 val () =
 println!
-("trans11_g1mac_app: g1f0 = ", g1f0)
+("trans11_g1mac_apps: g1f0 = ", g1f0)
 val () =
 println!
-("trans11_g1mac_app: g1ms = ", g1ms)
+("trans11_g1mac_apps: g1ms = ", g1ms)
+*)
 }
 //
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+fun
+auxg1m0
+( g1m0
+: g1mac
+, env0: g1menv): g1mac =
+trans11_g1mac_subs(g1m0, env0)
+fun
+auxg1ms
+( g1ms
+: g1maclst
+, env0: g1menv): g1maclst =
+list_vt2t
+(
+list_map<
+g1mac><g1mac>(g1ms)) where
+{
+implement
+list_map$fopr<
+  g1mac><g1mac>(g1m0) =
+(
+trans11_g1mac_subs(g1m0, env0)
+)
+} (*where*) // end of [auxg1ms]
+
+(* ****** ****** *)
+
+fun
+auxgmid
+( g1m0
+: g1mac
+, env0
+: g1menv): g1mac =
+let
+//
+val-
+G1Mid0(sym) = g1m0
+val
+opt =
+g1menv_search_opt(env0, sym)
+//
+in
+case+ opt of
+|
+~Some_vt
+( g1m1 ) => g1m1
+|
+~None_vt
+((*nil*)) => let
+//
+val
+opt = the_gmacenv_find(sym)
+//
+in
+case+ opt of
+|
+~None_vt() => g1m0
+|
+~Some_vt(g1m1) => trans11_g1mac(g1m1)
+end // end of [None_vt]
+end // end of [auxgmid]
+
+(* ****** ****** *)
+
+fun
+auxapps
+( g1m0
+: g1mac
+, env0
+: g1menv): g1mac =
+let
+val-
+G1Mapps
+(
+g1f0, g1ms) = g1m0
+val
+g1f0 = auxg1m0(g1f0, env0)
+val
+g1ms = auxg1ms(g1ms, env0)
+in
+trans11_g1mac_apps(g1f0, g1ms)
+end // end of [auxapps]
+
+in(*in-of-local*)
+
+implement
+trans11_g1mac_subs
+  (g1m0, env0) =
+(
+case+ g1m0 of
+//
+| G1Mint _ => g1m0
+| G1Mbtf _ => g1m0
+| G1Mstr _ => g1m0
+//
+| G1Mid0 _ =>
+  auxgmid(g1m0, env0)
+//
+| G1Mapps _ =>
+  auxapps(g1m0, env0)
+//
+|
+_ (*rest-of-g1mac*) =>
+  G1Msubs(g1m0, env0)
+//
+) where
+{
+(*
+val () =
+println!
+("trans11_g1mac_env: g1m0 = ", g1m0)
+*)
+}(*where*)//end of [trans11_g1mac_env]
+
 end // end of [local]
 
 (* ****** ****** *)
@@ -806,12 +1204,12 @@ d2exp_make_node(loc0, D2Es00(str))
 end // end of [auxstr]
 //
 fun
-auxmapp
+auxapps
 ( g1m0
 : g1mac): d2exp =
 let
 val-
-G1Mmapp
+G1Mapps
 (g1f0, g1ms) = g1m0
 //
 in
@@ -838,7 +1236,7 @@ case+ g1m0 of
 | G1Mbtf _ => auxbtf(g1m0)
 | G1Mstr _ => auxstr(g1m0)
 //
-| G1Mmapp _ => auxmapp(g1m0)
+| G1Mapps _ => auxapps(g1m0)
 //
 | _(* rest-of-g1mac *) =>
 (
