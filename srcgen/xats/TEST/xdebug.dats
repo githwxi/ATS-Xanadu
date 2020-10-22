@@ -34,7 +34,8 @@ val two = 2
 *)
 val x3 = exp
 val x12 = x1 + x2
-val xxx1 = pow3(x1)
+val xx1 = pow2(x1)
+val xxx2 = pow3(x2)
 
 (* ****** ****** *)
 

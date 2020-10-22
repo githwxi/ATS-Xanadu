@@ -1991,9 +1991,9 @@ end
 ) : g1maclst // end of [val]
 //
 in
-  trg1mac_dexp
-  ( d1e0.loc()
-  , trans11_g1mac_app(g1f0, g1ms))
+trg1mac_dexp
+( d1e0.loc()
+, trans11_g1mac_apps(g1f0, g1ms))
 end where
 {
 fun
