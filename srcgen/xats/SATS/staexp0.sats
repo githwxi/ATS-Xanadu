@@ -433,11 +433,24 @@ g0exp_node =
 | G0Estr of (t0str)
 //
 | G0Eapps of g0explst
-| G0Elist of
-  (token, g0explst, token) (*temp*)
+| G0Elist of // temp
+  (token, g0explst, token)
 //
-| G0Enone of (token) // HX: for error
+| G0Eif0 of
+  ( token
+  , g0exp
+  , g0exp_THEN
+  , g0exp_ELSE, tokenopt)
 //
+| G0Enone1 of (token(*error*))
+//
+(* ****** ****** *)
+and
+g0exp_THEN =
+| g0exp_THEN of (token, g0exp)
+and
+g0exp_ELSE =
+| g0exp_ELSE of (token, g0exp)
 (* ****** ****** *)
 //
 fun
@@ -459,6 +472,34 @@ overload fprint with fprint_g0exp
 fun
 g0exp_make_node
 (loc: loc_t, node: g0exp_node): g0exp
+//
+(* ****** ****** *)
+//
+fun
+print_g0exp_THEN:
+  print_type(g0exp_THEN)
+fun
+prerr_g0exp_THEN:
+  prerr_type(g0exp_THEN)
+fun
+fprint_g0exp_THEN: fprint_type(g0exp_THEN)
+//
+overload print with print_g0exp_THEN
+overload prerr with prerr_g0exp_THEN
+overload fprint with fprint_g0exp_THEN
+//
+fun
+print_g0exp_ELSE:
+  print_type(g0exp_ELSE)
+fun
+prerr_g0exp_ELSE:
+  prerr_type(g0exp_ELSE)
+fun
+fprint_g0exp_ELSE: fprint_type(g0exp_ELSE)
+//
+overload print with print_g0exp_ELSE
+overload prerr with prerr_g0exp_ELSE
+overload fprint with fprint_g0exp_ELSE
 //
 (* ****** ****** *)
 //

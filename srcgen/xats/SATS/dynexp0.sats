@@ -599,6 +599,34 @@ d0exp_make_node
 (* ****** ****** *)
 //
 fun
+print_d0exp_THEN:
+  print_type(d0exp_THEN)
+fun
+prerr_d0exp_THEN:
+  prerr_type(d0exp_THEN)
+fun
+fprint_d0exp_THEN: fprint_type(d0exp_THEN)
+//
+overload print with print_d0exp_THEN
+overload prerr with prerr_d0exp_THEN
+overload fprint with fprint_d0exp_THEN
+//
+fun
+print_d0exp_ELSE:
+  print_type(d0exp_ELSE)
+fun
+prerr_d0exp_ELSE:
+  prerr_type(d0exp_ELSE)
+fun
+fprint_d0exp_ELSE: fprint_type(d0exp_ELSE)
+//
+overload print with print_d0exp_ELSE
+overload prerr with prerr_d0exp_ELSE
+overload fprint with fprint_d0exp_ELSE
+//
+(* ****** ****** *)
+//
+fun
 d0exp_RPAREN_loc
 (x0: d0exp_RPAREN): loc_t
 //
@@ -633,34 +661,6 @@ fprint_labd0exp_RBRACE: fprint_type(labd0exp_RBRACE)
 overload print with print_labd0exp_RBRACE
 overload prerr with prerr_labd0exp_RBRACE
 overload fprint with fprint_labd0exp_RBRACE
-//
-(* ****** ****** *)
-//
-fun
-print_d0exp_THEN:
-  print_type(d0exp_THEN)
-fun
-prerr_d0exp_THEN:
-  prerr_type(d0exp_THEN)
-fun
-fprint_d0exp_THEN: fprint_type(d0exp_THEN)
-//
-overload print with print_d0exp_THEN
-overload prerr with prerr_d0exp_THEN
-overload fprint with fprint_d0exp_THEN
-//
-fun
-print_d0exp_ELSE:
-  print_type(d0exp_ELSE)
-fun
-prerr_d0exp_ELSE:
-  prerr_type(d0exp_ELSE)
-fun
-fprint_d0exp_ELSE: fprint_type(d0exp_ELSE)
-//
-overload print with print_d0exp_ELSE
-overload prerr with prerr_d0exp_ELSE
-overload fprint with fprint_d0exp_ELSE
 //
 (* ****** ****** *)
 //

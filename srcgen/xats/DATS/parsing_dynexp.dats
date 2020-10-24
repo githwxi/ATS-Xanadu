@@ -1331,6 +1331,14 @@ p_atmd0expseq: parser(d0explst)
 //
 extern
 fun
+p_d0exp_THEN: parser(d0exp_THEN)
+and
+p_d0exp_ELSE: parser(d0exp_ELSE)
+//
+(* ****** ****** *)
+//
+extern
+fun
 p_d0expseq_COMMA: parser(d0explst)
 extern
 fun
@@ -1366,20 +1374,12 @@ p_labd0exp_RBRACE: parser(labd0exp_RBRACE)
 //
 extern
 fun
-p_d0exp_THEN: parser(d0exp_THEN)
-and
-p_d0exp_ELSE: parser(d0exp_ELSE)
-//
-(* ****** ****** *)
-//
-extern
-fun
 p_ENDWHERE: parser(endwhere)
 //
 extern
 fun
 pseq_d0eclseq_WHERE:
-  parser(List0(d0eclseq_WHERE))
+parser(List0(d0eclseq_WHERE))
 //
 (*
 extern
@@ -1565,7 +1565,7 @@ case+ tnd of
     }
   end 
 //
-| _ (* error *) =>
+| _ (* rest-of-token *) =>
   ( err := e0 + 1;
     d0exp_make_node(tok.loc(), D0Enone(tok))
   ) (* end-of-error *)
@@ -2014,6 +2014,62 @@ end // end of [p_appd0exp]
 (* ****** ****** *)
 
 implement
+p_d0exp_THEN
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_THEN() => let
+    val () =
+      buf.incby1()
+    val d0e =
+      p_d0exp(buf, err)
+  in
+    err := e0; d0exp_THEN(tok, d0e)
+  end // end of [T_THEN]
+| _(*non-THEN*) =>
+  ( // HX-2018-09-25: error
+    d0exp_THEN(tok, p_d0exp(buf, err))
+  ) (* end of [non-THEN] *)
+//
+end // end of [p_d0exp_THEN]
+
+(* ****** ****** *)
+
+implement
+p_d0exp_ELSE
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_ELSE() => let
+    val () =
+      buf.incby1()
+    val d0e =
+      p_d0exp(buf, err)
+  in
+    err := e0; d0exp_ELSEsome(tok, d0e)
+  end // end of [T_THEN]
+| _(*non-ELSE*) =>
+  (
+    d0exp_ELSEnone((*void*)) // HX: ELSE-less
+  )
+//
+end // end of [p_d0exp_ELSE]
+
+(* ****** ****** *)
+
+implement
 p_atmd0expseq
   (buf, err) =
 (
@@ -2140,62 +2196,6 @@ case+ tnd1 of
   )
 //
 end // end of [p_labd0exp_RBRACE]
-
-(* ****** ****** *)
-
-implement
-p_d0exp_THEN
-  (buf, err) = let
-//
-val e0 = err
-val tok = buf.get0()
-//
-in
-//
-case+
-tok.node() of
-| T_THEN() => let
-    val () =
-      buf.incby1()
-    val d0e =
-      p_d0exp(buf, err)
-  in
-    err := e0; d0exp_THEN(tok, d0e)
-  end // end of [T_THEN]
-| _(*non-THEN*) =>
-  ( // HX-2018-09-25: error
-    d0exp_THEN(tok, p_d0exp(buf, err))
-  ) (* end of [non-THEN] *)
-//
-end // end of [p_d0exp_THEN]
-
-(* ****** ****** *)
-
-implement
-p_d0exp_ELSE
-  (buf, err) = let
-//
-val e0 = err
-val tok = buf.get0()
-//
-in
-//
-case+
-tok.node() of
-| T_ELSE() => let
-    val () =
-      buf.incby1()
-    val d0e =
-      p_d0exp(buf, err)
-  in
-    err := e0; d0exp_ELSEsome(tok, d0e)
-  end // end of [T_THEN]
-| _(*non-ELSE*) =>
-  (
-    d0exp_ELSEnone((*void*)) // HX: ELSE-less
-  )
-//
-end // end of [p_d0exp_ELSE]
 
 (* ****** ****** *)
 //
@@ -2703,7 +2703,7 @@ tok.node() of
   in
     case+
     g0e.node() of
-    | G0Enone(_) =>
+    | G0Enone1(_) =>
       G0EDEFnone(*void*)
     | _(*non-G0Enone*) =>
       G0EDEFsome(None(*void*), g0e(*def*))

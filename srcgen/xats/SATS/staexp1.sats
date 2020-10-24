@@ -85,6 +85,11 @@ g1exp_node =
 | G1Eint of (token)
 | G1Estr of (token)
 //
+| G1Eif0 of
+  ( g1exp(* cond *)
+  , g1exp(* then *)
+  , g1exp(* else *) )
+//
 | G1Eapp of ((*void*))
 //
 | G1Eapp1 of

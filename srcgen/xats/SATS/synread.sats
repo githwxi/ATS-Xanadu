@@ -209,6 +209,13 @@ synread_g0exp: synreader(g0exp)
 fun//{}
 synread_g0explst: synreader(g0explst)
 //
+(* ****** ****** *)
+fun//{}
+synread_g0exp_THEN: synreader(g0exp_THEN)
+fun//{}
+synread_g0exp_ELSE: synreader(g0exp_ELSE)
+(* ****** ****** *)
+//
 fun//{}
 synread_g0arg: synreader(g0arg)
 fun//{}

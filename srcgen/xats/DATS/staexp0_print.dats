@@ -349,20 +349,65 @@ case+ x0.node() of
 | G0Estr(str) =>
   fprint!(out, "G0Estr(", str, ")")
 //
-| G0Eapps(s0ts) =>
-  fprint!(out, "G0Eapps(", s0ts, ")")
-//
-| G0Elist(t0, g0es, t1) =>
+| G0Eif0
+  ( tif0
+  , g0e1
+  , g0e2
+  , g0e3, topt) =>
   fprint!
-  (out, "G0Elist(", t0, "; ", g0es, "; ", t1, ")")
+  ( out
+  , "G0Eif0(", tif0
+  , g0e1, "; ", g0e2, "; ", g0e3, ")" )
 //
-| G0Enone(tok) =>
-  fprint!( out, "G0Enone(", tok, ")" )
-  // end of [G0Enone]
+| G0Eapps(s0ts) =>
+  fprint!( out, "G0Eapps(", s0ts, ")" )
+//
+| G0Elist
+  ( tbeg
+  , g0es, tend) =>
+  fprint!
+  ( out
+  , "G0Elist("
+  , tbeg, "; ", g0es, "; ", tend, ")" )
+//
+| G0Enone1(tok) =>
+  (
+    fprint!( out, "G0Enone1(", tok, ")" )
+  ) // end of [G0Enone]
 //
 ) (* end of [fprint_g0exp] *)
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+print_g0exp_THEN(x0) =
+fprint_g0exp_THEN(stdout_ref, x0)
+implement
+prerr_g0exp_THEN(x0) =
+fprint_g0exp_THEN(stderr_ref, x0)
+implement
+fprint_g0exp_THEN(out, x0) =
+(
+case+ x0 of
+| g0exp_THEN(tok, g0e) =>
+  fprint!(out, "g0exp_THEN(", tok, "; ", g0e, ")")
+) (* end of [fprint_g0exp_THEN] *)
+
+implement
+print_g0exp_ELSE(x0) =
+fprint_g0exp_ELSE(stdout_ref, x0)
+implement
+prerr_g0exp_ELSE(x0) =
+fprint_g0exp_ELSE(stderr_ref, x0)
+implement
+fprint_g0exp_ELSE(out, x0) =
+(
+case+ x0 of
+| g0exp_ELSE(tok, g0e) =>
+  fprint!(out, "g0exp_ELSE(", tok, "; ", g0e, ")")
+) (* end of [fprint_g0exp_ELSE] *)
 
 (* ****** ****** *)
 
