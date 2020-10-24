@@ -73,6 +73,7 @@ typedef token = $LEX.token
 #staload
   S1E = "./staexp1.sats"
 //
+typedef g1mac = $S1E.g1mac
 typedef sort1 = $S1E.sort1
 typedef s1exp = $S1E.s1exp
 //
@@ -769,9 +770,14 @@ s2exp_node =
 | S2Etyrec of (tyrec, int(*npf*), labs2explst)
 //
 | S2Enone0 // of () // HX: error or special
+//
 | S2Enone1 of
     (loc_t, s1exp(*src*)) // HX: error indication
   // S2Enone1
+| S2Eg1mac of
+    (loc_t, g1mac(*src*)) // HX: error indication
+  // S2Eg1mac
+//
 | S2Enone2 of
     (loc_t, s2exp(*src*)) // HX: error indication
   // S2Enone2

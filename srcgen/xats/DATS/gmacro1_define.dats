@@ -50,6 +50,8 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
@@ -1276,10 +1278,51 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(*
 implement
-trg1mac_sexp(loc0, g1m0) = ...
+trg1mac_sexp
+(loc0, g1m0) =
+let
+//
+val () =
+$tempenver(loc0)
+//
+in(*in-of-let*)
+//
+case+ g1m0 of
+//
+(*
+| G1Mid0 _ => auxid0(g1m0)
 *)
+//
+(*
+| G1Mint _ => auxint(g1m0)
+| G1Mbtf _ => auxbtf(g1m0)
+| G1Mstr _ => auxstr(g1m0)
+*)
+//
+(*
+| G1Mapps _ => auxapps(g1m0)
+*)
+//
+| _(* error *) =>
+  let
+    val
+    s2t0 = S2Tnone0()
+  in
+    s2exp_make_node
+    (s2t0, S2Eg1mac(loc0, g1m0))
+  end
+//
+end where
+{
+//
+(*
+  val () =
+  println!
+  ("trg1mac_sexp: g1m0 = ", g1m0)
+*)
+//
+} (*where*) // end of [trg1mac_sexp]
 
 (* ****** ****** *)
 

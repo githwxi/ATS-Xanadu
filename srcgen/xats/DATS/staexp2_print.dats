@@ -574,12 +574,21 @@ s2e0.node() of
 //
 | S2Enone0() =>
   fprint!(out, "S2Enone0(", ")")
+//
 | S2Enone1(loc, s1e) =>
   fprint!( out, "S2Enone1(", s1e, ")" )
 (*
   fprint!
   (out, "S2Enone1(", loc, "; ", s1e, ")")
 *)
+//
+| S2Eg1mac(loc, g1m) =>
+  fprint!( out, "S2Eg1mac(", g1m, ")" )
+(*
+  fprint!
+  (out, "S2Eg1mac(", loc, "; ", g1m, ")")
+*)
+//
 | S2Enone2(loc, s2e) =>
   fprint!( out, "S2Enone2(", s2e, ")" )
 (*
