@@ -497,6 +497,36 @@ g0e0.node() of
 | G0Eint(int) => auxint(int)
 | G0Estr(str) => auxstr(str)
 //
+| G0Eif0
+  ( tif0
+  , g0e1
+  , g0e2
+  , g0e3, topt) =>
+  FXITMatm(g1e0) where
+  {
+    val g1e1 =
+    trans01_gexp(g0e1)
+//
+    val g1e2 =
+    (
+    case+ g0e2 of
+    | g0exp_THEN
+      (tok1, g0e2) =>
+      trans01_gexp(g0e2))
+//
+    val g1e3 =
+    (
+    case+ g0e3 of
+    | g0exp_ELSE
+      (tok1, g0e3) =>
+      trans01_gexp(g0e3))
+//
+    val g1e0 =
+    g1exp_make_node
+    (loc0, G1Eif0(g1e1, g1e2, g1e3))
+//
+  }
+//
 | G0Eapps(g0es) =>
   FXITMatm(g1e0) where
   {
@@ -516,7 +546,7 @@ g0e0.node() of
     g1exp_make_node(loc0, G1Elist(g1es))
   }
 //
-| G0Enone(tok) =>
+| G0Enone1(tok) =>
   FXITMatm(g1e0) where
   {
     val g1e0 =

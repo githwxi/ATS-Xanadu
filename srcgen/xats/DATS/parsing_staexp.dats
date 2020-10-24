@@ -218,6 +218,9 @@ case+ tnd of
 //
 | T_EQ((*void*)) => true
 //
+| T_LT((*void*)) => true // "<"
+| T_GT((*void*)) => true // ">"
+//
 | T_BSLASH((*void*)) => true
 //
 | _ (* non-identifier *) => false
@@ -546,17 +549,31 @@ _(*non-IDENT_qual*) =>
 end // end of [p_sq0eid]
 //
 (* ****** ****** *)
-
+//
 extern
 fun
 p_atmg0exp: parser(g0exp)
+//
+extern
+fun
+p_appg0exp: parser(g0exp)
+//
 extern
 fun
 p_atmg0expseq: parser(g0explst)
+//
 extern
 fun
 p_g0expseq_COMMA: parser(g0explst)
-
+//
+(* ****** ****** *)
+//
+extern
+fun
+p_g0exp_THEN: parser(g0exp_THEN)
+and
+p_g0exp_ELSE: parser(g0exp_ELSE)
+//
 (* ****** ****** *)
 
 local
@@ -568,9 +585,52 @@ implement
 p_napps(buf, err) = let
   val e0 = err
   val tok = buf.get0()
+  val tnd = tok.node()
 in
+//
+case+ tnd of
+//
+| T_IF() => let
+//
+    val () = buf.incby1()
+//
+    val g0e1 =
+      p_appg0exp(buf, err)
+    val g0e2 =
+      p_g0exp_THEN(buf, err)
+    val g0e3 =
+      p_g0exp_ELSE(buf, err)
+    val topt = popt_ENDIF(buf, err)
+//
+    val
+    loc_res =
+    (
+    case+ topt of
+    | None() =>
+      (
+      case g0e3 of
+      | g0exp_ELSE
+          (_, g0e) =>
+        (
+          tok.loc() + g0e.loc()
+        ) (* g0exp_ELSE *)
+      )
+    | Some(tok2) => tok.loc() + tok2.loc()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    g0exp_make_node
+    ( loc_res
+    , G0Eif0(tok, g0e1, g0e2, g0e3, topt))
+  end // end of [T_IF]
+//
+| _ (* rest-of-token *) =>
+(
   err := e0 + 1;
-  g0exp_make_node(tok.loc(), G0Enone(tok))
+  g0exp_make_node(tok.loc(), G0Enone1(tok))
+)
+//
 end // end of [p_napps]
 
 in (* in-of-local *)
@@ -627,26 +687,27 @@ in
 //
 case+ tnd of
 //
-| _ when
-  t_g0eid(tnd) =>
-  let
-    val id =
-    p_g0eid(buf, err)
-    val loc = id.loc()
-  in
-    err := e0;
-    g0exp_make_node(loc, G0Eid0(id))
-  end // end of [t_g0eid]
+|
+_ when t_g0eid(tnd) =>
+let
+  val id =
+  p_g0eid(buf, err)
+  val loc = id.loc()
+in
+  err := e0;
+  g0exp_make_node(loc, G0Eid0(id))
+end // end of [t_g0eid]
 //
-| _ when t_t0int(tnd) =>
-  let
-    val i0 =
-    p_t0int(buf, err)
-    val loc = i0.loc()
-  in
-    err := e0;
-    g0exp_make_node(loc, G0Eint(i0))
-  end // end of [t_t0int]
+|
+_ when t_t0int(tnd) =>
+let
+  val i0 =
+  p_t0int(buf, err)
+  val loc = i0.loc()
+in
+  err := e0;
+  g0exp_make_node(loc, G0Eint(i0))
+end // end of [t_t0int]
 //
 | _ when t_t0str(tnd) =>
   let
@@ -658,33 +719,117 @@ case+ tnd of
     g0exp_make_node(loc, G0Estr(x0))
   end // end of [t_t0int]
 //
-| T_LPAREN() => let
-    val () = buf.incby1()
-    val g0es =
-      p_g0expseq_COMMA(buf, err)
-    // end of [val]
-    val tbeg = tok
-    val tend = p_RPAREN(buf, err)
-  in
-    err := e0;
-    g0exp_make_node
-    ( loc_res
-    , G0Elist(tbeg, g0es, tend)) where
-    {
-      val loc_res = tbeg.loc()+tend.loc()
-    }
-  end // end of [T_LPAREN]
+|
+T_LPAREN() => let
+  val () = buf.incby1()
+  val g0es =
+    p_g0expseq_COMMA(buf, err)
+  // end of [val]
+  val tbeg = tok
+  val tend = p_RPAREN(buf, err)
+in
+  err := e0;
+  g0exp_make_node
+  ( loc_res
+  , G0Elist(tbeg, g0es, tend)) where
+  {
+    val loc_res = tbeg.loc()+tend.loc()
+  }
+end // end of [T_LPAREN]
 //
-| _ (* error *) =>
-  let
-    val () = (err := e0 + 1)
-    // HX: indicating a parsing error
-  in
-    g0exp_make_node(tok.loc(), G0Enone(tok))
-  end (* this-is-a-case-of-error *)
+|
+_ (* rest-of-token *) =>
+let
+  val () = (err := e0 + 1)
+  // HX: indicating a parsing error
+in
+  g0exp_make_node(tok.loc(), G0Enone1(tok))
+end (* this-is-a-case-of-error *)
 //
 end // end-of-let // end of [p_atmsort0]
 //
+(* ****** ****** *)
+//
+implement
+p_appg0exp
+  (buf, err) = let
+//
+val
+g0e0 = p_atmg0exp(buf, err)
+val
+g0es = p_atmg0expseq(buf, err)
+//
+in
+//
+case+ g0es of
+| list_nil() => g0e0
+| list_cons _ => let
+    val g0e1 = list_last(g0es)
+    val loc0 = g0e0.loc() + g0e1.loc()
+  in
+    g0exp_make_node
+      (loc0, G0Eapps(list_cons(g0e0, g0es)))
+    // g0exp_make_node
+  end // end of [list_cons]
+//
+end // end of [p_appg0exp]
+//
+(* ****** ****** *)
+
+implement
+p_g0exp_THEN
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_THEN() => let
+    val () =
+      buf.incby1()
+    val g0e =
+      p_g0exp(buf, err)
+  in
+    err := e0; g0exp_THEN(tok, g0e)
+  end // end of [T_THEN]
+| _(*non-THEN*) =>
+  ( // HX-2018-09-25: error
+    g0exp_THEN(tok, p_g0exp(buf, err))
+  ) (* end of [non-THEN] *)
+//
+end // end of [p_g0exp_THEN]
+
+(* ****** ****** *)
+
+implement
+p_g0exp_ELSE
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+| T_ELSE() => let
+    val () =
+      buf.incby1()
+    val g0e =
+      p_g0exp(buf, err)
+  in
+    err := e0; g0exp_ELSE(tok, g0e)
+  end // end of [T_ELSE]
+| _(*non-ELSE*) =>
+  ( // HX-2018-09-25: error
+    g0exp_ELSE(tok, p_g0exp(buf, err))
+  ) (* end of [non-ELSE] *)
+//
+end // end of [p_g0exp_ELSE]
+
 (* ****** ****** *)
 //
 implement

@@ -68,6 +68,18 @@ g1e0.node() of
 | G1Eint(tok) => ()
 | G1Estr(tok) => ()
 //
+| G1Eif0
+  (g1e1,
+   g1e2, g1e3) =>
+  {
+    val () =
+    tread01_g1exp(g1e1)
+    val () =
+    tread01_g1exp(g1e2)
+    val () =
+    tread01_g1exp(g1e3)
+  }
+//
 | G1Eapp
   ( (*void*) ) => ()
 | G1Eapp1
@@ -79,7 +91,8 @@ g1e0.node() of
     tread01_g1exp(g1e1)
   }
 | G1Eapp2
-  (g1f0, g1e1, g1e2) =>
+  (g1f0,
+   g1e1, g1e2) =>
   {
     val () =
     tread01_g1exp(g1f0)

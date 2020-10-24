@@ -22,6 +22,14 @@
 #define pow2(x) = x * x
 #define pow3(x) = x * pow2(x)
 
+#define
+npow(n, x) =
+if
+n > 0
+then x * npow(n-1, x) else 1
+
+(* ****** ****** *)
+
 #define iadd(x, y) = iadd(x, y)
 
 (* ****** ****** *)

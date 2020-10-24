@@ -112,6 +112,21 @@ G0Estr(tstr) =>
 }
 //
 |
+G0Eif0
+( tif0
+, g0e1
+, g0e2
+, g0e3, topt) =>
+{
+  val () =
+  synread_g0exp(g0e1)
+  val () =
+  synread_g0exp_THEN(g0e2)
+  val () =
+  synread_g0exp_ELSE(g0e3)
+}
+//
+|
 G0Eapps(g0es) =>
 {
   val () =
@@ -128,7 +143,7 @@ G0Elist
 }
 //
 |
-G0Enone(tok0) =>
+G0Enone1(tok0) =>
 let
 val () =
 synerr_add(SYNERRg0exp(g0e0))
@@ -153,6 +168,34 @@ implement
 (env)//tmp
 list_foreach$fwork<g0exp><env>(g0a, env) = synread_g0exp(g0a)
 } (* end of [synread_g0explst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_g0exp_THEN
+  (g0e0) =
+(
+case+ g0e0 of
+| g0exp_THEN
+  (tbeg, g0e1) =>
+  {
+  val () = synread_g0exp(g0e1)
+  }
+) (* end of [synread_g0exp_THEN] *)
+//
+implement
+//{}(*tmp*)
+synread_g0exp_ELSE
+  (g0e0) =
+(
+case+ g0e0 of
+| g0exp_ELSE
+  (tbeg, g0e1) =>
+  {
+  val () = synread_g0exp(g0e1)
+  }
+) (* end of [synread_g0exp_ELSE] *)
 //
 (* ****** ****** *)
 

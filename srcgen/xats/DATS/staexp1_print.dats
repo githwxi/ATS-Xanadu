@@ -148,6 +148,14 @@ case+ x0.node() of
 | G1Estr(str) =>
   fprint!(out, "G1Estr(", str, ")")
 //
+| G1Eif0
+  ( g1e1
+  , g1e2, g1e3) =>
+  fprint!
+  ( out
+  , "G1Eif0("
+  , g1e1, "; ", g1e2, "; ", g1e3, ")")
+//
 | G1Eapp() =>
   fprint!(out, "G1Eapp()")
 //
@@ -168,11 +176,11 @@ case+ x0.node() of
 //
 | G1Enone0() =>
   (
-   fprint!(out, "G1Enone0(", ")")
+    fprint!(out, "G1Enone0(", ")")
   )
 | G1Enone1(g0e1) =>
   (
-   fprint!(out, "G1Enone1(", g0e1, ")")
+    fprint!(out, "G1Enone1(", g0e1, ")")
   )
 //
 ) (* fprint_g1exp *) end // end of [local]
