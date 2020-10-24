@@ -86,9 +86,14 @@ datatype g1mac =
 | G1Mbtf of bool
 | G1Mstr of string
 //
+| G1Mif0 of
+  ( g1mac(*cond*)
+  , g1mac(*then*)
+  , g1mac(*else*) )
+//
 | G1Mlam0 of
   ( g1mas(*marg*)
-  , g1mac(*body*))
+  , g1mac(*body*) )
 //
 | G1Mapps of
   ( g1mac(*fun*)
@@ -140,6 +145,15 @@ fprint!(out, "G1Mbtf(", i0, ")")
 |
 G1Mstr(cs) =>
 fprint!(out, "G1Mstr(", cs, ")")
+//
+|
+G1Mif0
+( g1m1
+, g1m2, g1m3) =>
+fprint!
+( out
+, "G1Mif0("
+, g1m1, "; ", g1m2, "; ", g1m3, ")")
 //
 |
 G1Mlam0
@@ -251,6 +265,21 @@ T_INT1(rep) => g0string2int(rep)
 }
 //
 |
+G1Eif0
+(g1e1,
+ g1e2, g1e3) =>
+let
+  val
+  g1m1 = auxg1e0(g1e1)
+  val
+  g1m2 = auxg1e0(g1e2)
+  val
+  g1m3 = auxg1e0(g1e3)
+in
+  G1Mif0(g1m1, g1m2, g1m3)
+end
+//
+|
 G1Eapp1
 (g1f0, g1e1) =>
 let
@@ -344,8 +373,9 @@ auxgmas(gmas, def1) where
 val def1 =
 (
 case+ def1 of
-| None() => G1Mnone0()
-| Some(g1e) => auxg1e0(g1e)
+| Some(g1e1) =>
+  auxg1e0(g1e1)
+| None((*void*)) => G1Mnone0()
 ) : g1mac // end-of-val
 //
 } (* end of [trans11_g1mdef] *)
@@ -729,14 +759,34 @@ isINEQ
 isIOP2(BANGEQ_symbol, g1f0, g1ms)
 //
 (* ****** ****** *)
-
+//
 fun
 auxg1m0
 ( g1m0
 : g1mac)
 : g1mac =
-trans11_g1mac(g1m0)
-fun
+(
+//
+case+ g1m0 of
+//
+| G1Mint _ => g1m0
+| G1Mbtf _ => g1m0
+| G1Mstr _ => g1m0
+//
+| G1Msexp _ => g1m0
+| G1Mdexp _ => g1m0
+//
+| G1Mid0 _ => auxgmid(g1m0)
+//
+| G1Mif0 _ => auxcond(g1m0)
+//
+| G1Mapps _ => auxapps(g1m0)
+//
+| _(*rest-of-g1mac*) => g1m0
+//
+)
+//
+and
 auxg1ms
 ( g1ms
 : g1maclst
@@ -751,10 +801,10 @@ implement
 list_map$fopr<
   g1mac><g1mac>(g1m) = auxg1m0(g1m)
 } (* end of [auxg1ms] *)
-
+//
 (* ****** ****** *)
-
-fun
+//
+and
 auxgmid
 ( g1m0
 : g1mac): g1mac =
@@ -771,10 +821,60 @@ case+ opt of
 |
 ~Some_vt(g1m0) => auxg1m0(g1m0)
 end // end of [auxgmid]
-
+//
 (* ****** ****** *)
-
-fun
+//
+and
+auxcond
+( g1m0
+: g1mac): g1mac =
+let
+//
+val-
+G1Mif0
+( g1m1
+, g1m2, g1m3) = g1m0
+//
+val
+g1m1 =
+auxg1m0(g1m1)
+//
+in
+//
+case+
+g1m1 of
+//
+|
+G1Mbtf(btf) =>
+if
+btf
+then auxg1m0(g1m2)
+else auxg1m0(g1m3)
+//
+|
+G1Mint(int) =>
+if
+(int != 0)
+then auxg1m0(g1m2)
+else auxg1m0(g1m3)
+//
+|
+G1Mstr(str) =>
+if
+(str != "")
+then auxg1m0(g1m2)
+else auxg1m0(g1m3)
+//
+| _ (*non-redex*) =>
+(
+  G1Mif0(g1m1, g1m2, g1m3)
+)
+//
+end // end of [auxcond]
+//
+(* ****** ****** *)
+//
+and
 auxapps
 ( g1m0
 : g1mac): g1mac =
@@ -783,6 +883,43 @@ let
 val-
 G1Mapps
 (g1f0, g1ms) = g1m0
+//
+in
+  auxapps_1(g1f0, g1ms)
+end
+//
+and
+auxapps_2
+( g1f0
+: g1mac
+, g1ms
+: g1maclst
+) : g1mac =
+(
+case+ g1f0 of
+|
+G1Mlam0
+(gmas, body) =>
+(
+trans11_g1mac_subs(body, env0)
+) where
+{
+  val env0 =
+  g1menv_nil((*void*))
+  val env0 =
+  g1menv_extends(env0, gmas, g1ms)
+}
+| _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
+)
+//
+and
+auxapps_1
+( g1f0
+: g1mac
+, g1ms
+: g1maclst
+) : g1mac =
+let
 //
 val g1f0 = auxg1m0(g1f0)
 val g1ms = auxg1ms(g1ms)
@@ -916,58 +1053,18 @@ val-G1Mint(i1) = g1m1
 val-G1Mint(i2) = g1m2 in G1Mint(i1 / i2)
 end // end of [isIDIV]
 //
-| _(*non-delta-redex*) => auxapps_(g1f0, g1ms)
+| _(*non-delta-redex*) => auxapps_2(g1f0, g1ms)
 // end-of-ifcase
 //
-end // end of [auxapps]
-
-and
-auxapps_
-( g1f0
-: g1mac
-, g1ms
-: g1maclst
-) : g1mac =
-(
-case+ g1f0 of
-|
-G1Mlam0
-(gmas, body) =>
-(
-trans11_g1mac_subs(body, env0)
-) where
-{
-  val env0 =
-  g1menv_nil((*void*))
-  val env0 =
-  g1menv_extends(env0, gmas, g1ms)
-}
-| _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
-)
-
+end // end of [auxapps_1]
+//
 in(* in-of-local *)
 //
 implement
 trans11_g1mac
-  ( g1m0 ) =
+  (g1m0) =
 (
-//
-case+ g1m0 of
-//
-| G1Mint _ => g1m0
-| G1Mbtf _ => g1m0
-| G1Mstr _ => g1m0
-//
-| G1Msexp _ => g1m0
-| G1Mdexp _ => g1m0
-//
-| G1Mid0 _ => auxgmid(g1m0)
-//
-| G1Mapps _ => auxapps(g1m0)
-//
-| _(*rest-of-g1mac*) => g1m0
-//
-) where
+  auxg1m0(g1m0)) where
 {
 //
 (*
@@ -982,8 +1079,7 @@ implement
 trans11_g1mac_apps
   (g1f0, g1ms) =
 (
-  auxapps_(g1f0, g1ms)
-) where
+  auxapps_1(g1f0, g1ms)) where
 {
 (*
 val () =
@@ -1000,14 +1096,35 @@ end // end of [local]
 (* ****** ****** *)
 
 local
-
+//
 fun
 auxg1m0
 ( g1m0
 : g1mac
 , env0: g1menv): g1mac =
-trans11_g1mac_subs(g1m0, env0)
-fun
+(
+case+ g1m0 of
+//
+| G1Mint _ => g1m0
+| G1Mbtf _ => g1m0
+| G1Mstr _ => g1m0
+//
+| G1Mid0 _ =>
+  auxgmid(g1m0, env0)
+//
+| G1Mif0 _ =>
+  auxcond(g1m0, env0)
+//
+| G1Mapps _ =>
+  auxapps(g1m0, env0)
+//
+|
+_ (*rest-of-g1mac*) =>
+  G1Msubs(g1m0, env0)
+//
+)
+//
+and
 auxg1ms
 ( g1ms
 : g1maclst
@@ -1019,15 +1136,13 @@ g1mac><g1mac>(g1ms)) where
 {
 implement
 list_map$fopr<
-  g1mac><g1mac>(g1m0) =
-(
-trans11_g1mac_subs(g1m0, env0)
-)
+  g1mac><g1mac>
+  (g1m0) = auxg1m0(g1m0, env0)
 } (*where*) // end of [auxg1ms]
-
+//
 (* ****** ****** *)
-
-fun
+//
+and
 auxgmid
 ( g1m0
 : g1mac
@@ -1061,10 +1176,69 @@ case+ opt of
 ~Some_vt(g1m1) => trans11_g1mac(g1m1)
 end // end of [None_vt]
 end // end of [auxgmid]
-
+//
 (* ****** ****** *)
 
-fun
+and
+auxcond
+( g1m0
+: g1mac
+, env0
+: g1menv): g1mac =
+let
+//
+val-
+G1Mif0
+( g1m1
+, g1m2, g1m3) = g1m0
+//
+val
+g1m1 =
+auxg1m0(g1m1, env0)
+//
+in
+//
+case+
+g1m1 of
+//
+|
+G1Mbtf(btf) =>
+if
+btf
+then auxg1m0(g1m2, env0)
+else auxg1m0(g1m3, env0)
+//
+|
+G1Mint(int) =>
+if
+(int != 0)
+then auxg1m0(g1m2, env0)
+else auxg1m0(g1m3, env0)
+//
+|
+G1Mstr(str) =>
+if
+(str != "")
+then auxg1m0(g1m2, env0)
+else auxg1m0(g1m3, env0)
+//
+| _ (*non-redex*) =>
+(
+let
+val g1m2 =
+G1Msubs(g1m2, env0)
+val g1m3 =
+G1Msubs(g1m3, env0)
+in
+  G1Mif0(g1m1, g1m2, g1m3)
+end
+)
+//
+end // end of [auxcond]
+
+(* ****** ****** *)
+//
+and
 auxapps
 ( g1m0
 : g1mac
@@ -1082,30 +1256,14 @@ g1ms = auxg1ms(g1ms, env0)
 in
 trans11_g1mac_apps(g1f0, g1ms)
 end // end of [auxapps]
-
+//
 in(*in-of-local*)
 
 implement
 trans11_g1mac_subs
   (g1m0, env0) =
 (
-case+ g1m0 of
-//
-| G1Mint _ => g1m0
-| G1Mbtf _ => g1m0
-| G1Mstr _ => g1m0
-//
-| G1Mid0 _ =>
-  auxgmid(g1m0, env0)
-//
-| G1Mapps _ =>
-  auxapps(g1m0, env0)
-//
-|
-_ (*rest-of-g1mac*) =>
-  G1Msubs(g1m0, env0)
-//
-) where
+  auxg1m0(g1m0, env0)) where
 {
 (*
 val () =

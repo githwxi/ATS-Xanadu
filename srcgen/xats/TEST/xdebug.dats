@@ -28,6 +28,8 @@ if
 n > 0
 then x * npow(n-1, x) else 1
 
+#define pow2(x) = npow(2, x)
+
 (* ****** ****** *)
 
 #define iadd(x, y) = iadd(x, y)
