@@ -582,5 +582,24 @@ XATS2JS_string_vt_forall_cfr
 , lam(c0) => forall1$test<cgtz>(c0))
 end // end of [string_vt_forall1]
 (* ****** ****** *)
+//
+// prelude/garr.sats
+// (arrays of various dimensionality)
+//
+(* ****** ****** *)
+//
+// HX-2020-06-10:
+// Please note that
+// [a] is boxed in Xinterp
+//
+#extern
+fun
+XATS2JS_a0ptr_alloc
+{a:vt}((*void*)): a0ptr(?a)
+impltmp
+{ a:vt }
+a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
+//
+(* ****** ****** *)
 
 (* end of [XATS2JS_basics.dats] *)

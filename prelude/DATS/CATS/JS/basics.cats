@@ -833,6 +833,20 @@ return res; // string_vt_rforall_cfr
 }
 /* ****** ****** */
 //
+// prelude/garr.sats
+// (arrays of various dimensionality)
+//
+/* ****** ****** */
+
+function
+XATS2JS_a0ptr_alloc
+  (/*void*/)
+{
+  return new Array(1);
+}
+
+/* ****** ****** */
+//
 // prelude/unsafe.sats
 //
 /* ****** ****** */
