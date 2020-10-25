@@ -876,6 +876,34 @@ h0exp_make_node
 end // end of [auxtimp]
 
 (* ****** ****** *)
+//
+fun
+auxsap0
+(d3e0: d3exp): h0exp =
+(
+  tcomp30_dexp(d3e1)
+) where
+{
+val-
+D3Esap0
+(d3e1, s2es) = d3e0.node()
+//
+} (* end of [auxsap0] *)
+//
+fun
+auxsap1
+(d3e0: d3exp): h0exp =
+(
+  tcomp30_dexp(d3e1)
+) where
+{
+val-
+D3Esap1
+(d3e1, s2es) = d3e0.node()
+//
+} (* end of [auxsap1] *)
+//
+(* ****** ****** *)
 
 fun
 auxdapp
@@ -1723,6 +1751,11 @@ D3Etcst _ => auxtcst(d3e0)
 D3Etimp _ => auxtimp(d3e0)
 //
 |
+D3Esap0 _ => auxsap0(d3e0)
+|
+D3Esap1 _ => auxsap1(d3e0)
+//
+|
 D3Edapp _ => auxdapp(d3e0)
 //
 | D3Elet _ => aux_let(d3e0)
@@ -1805,6 +1838,13 @@ h0t0 = tcomp30_type(t2p0)
 val
 hend =
 H0Enone1($UN.cast{ptr}(d3e0))
+//
+val () =
+println!
+("tcomp30_dexp: loc0 = ", loc0)
+val () =
+println!
+("tcomp30_dexp: hend = ", "H0Enone1(", d3e0, ")")
 //
 in
 h0exp_make_node(loc0, h0t0, hend)

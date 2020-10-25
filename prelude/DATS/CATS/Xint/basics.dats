@@ -559,7 +559,7 @@ strtmp_vt_set_at<> = XINTERP_strtmp_vt_set_at
 //
 (* ****** ****** *)
 //
-// prelude/garr.sats
+// prelude/array.sats
 // (arrays of various dimensionality)
 //
 (* ****** ****** *)
