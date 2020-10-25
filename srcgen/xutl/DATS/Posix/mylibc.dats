@@ -56,7 +56,9 @@ implement
 xatsopt_memcpy
 (dst, src, nbyte) =
 (
-  $extfcall(ptr, "memcpy", dst, src, nbyte)
+$extfcall
+( ptr
+, "memcpy", dst, src, nbyte)
 )
 //
 (* ****** ****** *)
@@ -198,12 +200,12 @@ end // end of [xatsopt_strbtwe]
 implement
 xatsopt_strchr(cs, c0) =
 (
-  $extfcall(ptr, "strchr", cs, c0)
+$extfcall(ptr, "strchr", cs, c0)
 )
 implement
 xatsopt_strrchr(cs, c0) =
 (
-  $extfcall(ptr, "strrchr", cs, c0)
+$extfcall(ptr, "strrchr", cs, c0)
 )
 //
 (* ****** ****** *)
@@ -211,12 +213,14 @@ xatsopt_strrchr(cs, c0) =
 implement
 xatsopt_strcmp(cs1, cs2) =
 (
-  $extfcall(int, "strcmp", cs1, cs2)
+  $extfcall
+  (int, "strcmp", cs1, cs2)
 )
 implement
 xatsopt_strncmp(cs1, cs2, nlen) =
 (
-  $extfcall(int, "strncmp", cs1, cs2, nlen)
+  $extfcall
+  (int, "strncmp", cs1, cs2, nlen)
 )
 //
 (* ****** ****** *)
