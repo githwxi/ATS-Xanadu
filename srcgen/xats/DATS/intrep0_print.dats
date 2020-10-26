@@ -366,6 +366,11 @@ x0.node() of
 | H0Pvar(hdv) =>
   fprint!(out, "H0Pvar(", hdv, ")")
 //
+| H0Pint(tok) =>
+  fprint!(out, "H0Pint(", tok, ")")
+| H0Pstr(tok) =>
+  fprint!(out, "H0Pstr(", tok, ")")
+//
 | H0Pcon(hdc) =>
   fprint!(out, "H0Pcon(", hdc, ")")
 //
