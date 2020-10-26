@@ -430,8 +430,12 @@ datatype
 h0pat_node =
 //
 | H0Pnil of ()
+//
 | H0Pany of () // wildcard
 | H0Pvar of hdvar // variable
+//
+| H0Pint of token
+| H0Pstr of token
 //
 | H0Pcon of hdcon // cnstrctr
 //

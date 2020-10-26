@@ -14,6 +14,10 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+val x = println(12345)
+////
+(* ****** ****** *)
+
 #define nul 0
 #define one 1
 #define two 2

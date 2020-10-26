@@ -701,6 +701,24 @@ list_vt2t(f1as) where
 local
 
 fun
+auxstr
+( str
+: t0str)
+: d1pitm = let
+//
+val loc = str.loc()
+//
+val-
+T0STRsome(tok) = str.node()
+//
+in
+FXITMatm
+(d1pat_make_node(loc, D1Pstr(tok)))
+end // end of [auxstr]
+
+(* ****** ****** *)
+
+fun
 auxid0
 ( id0
 : d0pid)
@@ -796,13 +814,10 @@ case-
 d0p0.node() of
 //
 | D0Pid0(id0) =>
-  (
-    auxid0(id0)
-  )
+  auxid0(id0)
 //
-(*
-| D0Pstr(str) => auxstr(str)
-*)
+| D0Pstr(str) =>
+  auxstr(str)
 //
 | D0Papps(d0ps) =>
   FXITMatm(d1p0) where

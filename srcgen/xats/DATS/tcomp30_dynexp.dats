@@ -222,6 +222,54 @@ end
 (* ****** ****** *)
 
 fun
+auxint
+(d3p0: d3pat): h0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Pint(tok0) where
+{
+  val-
+  D3Pint(tok0) = d3p0.node()
+}
+//
+in
+  h0pat_make_node(loc0, h0t0, hend)
+end
+
+fun
+auxstr
+(d3p0: d3pat): h0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Pstr(tok0) where
+{
+  val-
+  D3Pstr(tok0) = d3p0.node()
+}
+//
+in
+  h0pat_make_node(loc0, h0t0, hend)
+end
+
+(* ****** ****** *)
+
+fun
 auxdapp
 (d3p0: d3pat): h0pat =
 let
@@ -315,6 +363,11 @@ D3Pany() => auxany(d3p0)
 //
 |
 D3Pvar _ => auxvar(d3p0)
+//
+|
+D3Pint _ => auxint(d3p0)
+|
+D3Pstr _ => auxstr(d3p0)
 //
 |
 D3Pcon1(d2c0) =>
