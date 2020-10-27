@@ -368,6 +368,10 @@ x0.node() of
 //
 | H0Pint(tok) =>
   fprint!(out, "H0Pint(", tok, ")")
+| H0Pbtf(tok) =>
+  fprint!(out, "H0Pbtf(", tok, ")")
+| H0Pchr(tok) =>
+  fprint!(out, "H0Pchr(", tok, ")")
 | H0Pstr(tok) =>
   fprint!(out, "H0Pstr(", tok, ")")
 //

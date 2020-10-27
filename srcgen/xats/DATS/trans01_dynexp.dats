@@ -724,6 +724,24 @@ end // end of [auxint]
 (* ****** ****** *)
 
 fun
+auxchr
+( chr
+: t0chr)
+: d1pitm = let
+//
+val loc = chr.loc()
+//
+val-
+T0CHRsome(tok) = chr.node()
+//
+in
+FXITMatm
+(d1pat_make_node(loc, D1Pchr(tok)))
+end // end of [auxchr]
+
+(* ****** ****** *)
+
+fun
 auxstr
 ( str
 : t0str)
@@ -841,6 +859,8 @@ d0p0.node() of
 //
 | D0Pint(int) =>
   auxint(int)
+| D0Pchr(int) =>
+  auxchr(int)
 | D0Pstr(str) =>
   auxstr(str)
 //

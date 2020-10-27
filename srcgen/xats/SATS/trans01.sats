@@ -70,25 +70,35 @@ symintr trans01
 *)
 
 (* ****** ****** *)
-
 fun
-token2sint : token -> int
+token2sint: token -> int
 fun
-token2dint : token -> int
-
+token2dint: token -> int
 (* ****** ****** *)
 fun
-token2schr : token -> char
+token2sbtf: token -> bool
 fun
-token2sstr : token -> string
+token2dbtf: token -> bool
 (* ****** ****** *)
 fun
-token2dchr : token -> char
+token2schr: token -> char
 fun
-token2dstr : token -> string
+token2dchr: token -> char
 (* ****** ****** *)
+fun
+token2sflt: token -> double
+fun
+token2dflt: token -> double
+(* ****** ****** *)
+fun
+token2sstr: token -> string
+fun
+token2dstr: token -> string
+(* ****** ****** *)
+//
 fun
 gexpid_sym : token -> sym_t
+//
 (* ****** ****** *)
 //
 fun
