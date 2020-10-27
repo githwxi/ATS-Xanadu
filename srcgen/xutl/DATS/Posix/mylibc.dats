@@ -67,6 +67,9 @@ $extfcall
 implement
 xatsopt_chrunq(src) =
 let
+//
+#define OCT 8 // base
+//
 fun
 auxmain
 ( p1: ptr
@@ -119,13 +122,13 @@ let
 //
 fun
 auxrest
-( dd: int
+( ds: int
 , p2: ptr
 , ln
 : intGte(0)): int =
 if
 (ln <= 0)
-then dd else
+then ds else
 let
 val c2 =
 $UN.ptr0_get<char>(p2)
@@ -138,14 +141,15 @@ in
   val p2 =
   ptr0_succ<char>(p2)
   in
-  auxrest(8*dd+d2, p2, ln-1)
+    auxrest
+    (OCT*ds+d2, p2, ln-1)
   end
-  else dd // end-of-if
+  else ds // end-of-if
 end // end of [auxrest]
 //
 in
   int2char0
-  (auxrest(0(*dd*), p2, ln))
+  (auxrest(0(*ds*), p2, ln))
 end
 end // end of [ln>=2]
 //
@@ -193,11 +197,13 @@ val c2 = $UN.ptr0_get<char>(p2)
 in
 //
 case+ c2 of
+| '"' => '"'
+| 'a' => '\a'
+| 'b' => '\b'
+| 'f' => '\f'
 | 'n' => '\n'
 | 'r' => '\r'
 | 't' => '\t'
-| 'b' => '\b'
-| 'f' => '\f'
 | 'v' => '\v'
 | '\'' => '\''
 | '\\' => '\\'
@@ -233,7 +239,7 @@ val d0 =
 val p2 =
 ptr0_succ<char>(p2)
 in
-auxrest(p2, ds*OCT + d0)
+auxrest(p2, OCT*ds + d0)
 end else ( int2char0(ds) )
 //
 end // end of [auxrest]
@@ -252,23 +258,181 @@ implement
 xatsopt_strunq(src) =
 let
 //
+#define OCT 8
 #define CNUL '\000'
 //
 val p0 = string2ptr(src)
 val n0 = g1ofg0(length(src))
 val () = assertloc(n0 >= 2)
 val p1 = ptr0_succ<char>(p0)
+//
+fun
+isBS
+( c0
+: char
+)
+: bool = (c0 = '\\')
+//
+fun
+auxmain
+( q0: ptr
+, p1: ptr
+, ln: Nat): void =
+if
+(ln <= 0)
+then
+(
+auxfini(q0)
+)
+else let
+//
+val c1 =
+$UN.ptr0_get<char>(p1)
+//
+in
+ifcase
+|
+isBS(c1) =>
+let
+val p1 =
+ptr0_succ<char>(p1)
+in
+auxisbs(q0, p1, ln-1)
+end
+|
+_(* else *) =>
+let
+val () =
+$UN.ptr0_set<char>(q0, c1)
+in
+let
+  val p1 =
+  ptr0_succ<char>(p1)
+  val q0 =
+  ptr0_succ<char>(q0)
+in
+  auxmain(q0, p1, ln-1)
+end
+end
+// end of [ifcase]
+end // if-else // auxmain
+//
+and
+auxisbs
+( q0: ptr
+, p1: ptr
+, ln: Nat): void =
+let
+//
+val () =
+assertloc(ln >= 1)
+//
+val c1 =
+$UN.ptr0_get<char>(p1)
+fun
+auxescp
+(c1: char): void =
+let
+val () =
+$UN.ptr0_set<char>(q0, c1)
+val p1=ptr0_succ<char>(p1)
+val q0=ptr0_succ<char>(q0)
+in
+  auxmain(q0, p1, ln-1)
+end
+in
+case+ c1 of
+| '"' => auxescp('"')
+| 'a' => auxescp('\a')
+| 'b' => auxescp('\b')
+| 'f' => auxescp('\f')
+| 'n' => auxescp('\n')
+| 'r' => auxescp('\r')
+| 't' => auxescp('\t')
+| 'v' => auxescp('\v')
+| '\\' => auxescp('\\')
+| _(*else*) =>
+  auxisds(q0, p1, ln, 3, 0)
+end // end of [auxisbs]
+//
+and
+auxisds
+( q0: ptr
+, p1: ptr
+, ln: Nat
+, nd: int
+, ds: int): void =
+if
+(ln <= 0)
+then
+let
+val cc = int2char0(ds)
+val () =
+$UN.ptr0_set<char>(q0, cc)
+in
+  auxfini
+  (ptr0_succ<char>(q0))
+end
+else
+(
+if
+(nd <= 0)
+then
+let
+val cc = int2char0(ds)
+val () =
+$UN.ptr0_set<char>(q0, cc)
+val q0=ptr0_succ<char>(q0)
+in
+  auxmain( q0, p1, ln )
+end
+else
+let
+val c1 =
+$UN.ptr0_get<char>(p1)
+in
+if
+isdigit(c1)
+then
+let
+val d1 = c1 - '0'
+val ds = OCT*ds+d1
+val p1 =
+ptr0_succ<char>(p1)
+in
+auxisds
+(q0, p1, ln-1, nd-1, ds)
+end
+else
+let
+val cc = int2char0(ds)
+val () =
+$UN.ptr0_set<char>(q0, cc)
+val q0=ptr0_succ<char>(q0)
+in
+  auxmain( q0, p1, ln )
+end
+end // else
+) (* if-else *) // auxisds
+//
+and
+auxfini
+( q0: ptr): void =
+(
+$UN.ptr0_set<char>(q0, CNUL)
+)
+//
 val
 ( pf0
 , fpf | q0) = malloc_gc(n0-1)
-val () =
-ignoret
-(xatsopt_memcpy(q0, p1, n0-2))
-val () =
-$UN.ptr0_set_at<char>(q0, n0-2, CNUL)
 //
 in
+let
+  val () =
+  auxmain(q0, p1, sz2i(n0)-2)
+in
   $UN.castvwtp0((pf0, fpf | q0))
+end
 end // end of [xatsopt_strunq]
 //
 (* ****** ****** *)

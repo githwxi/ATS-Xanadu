@@ -70,6 +70,18 @@ assertloc('b' = xatsopt_chrunq("'\\142'"))
 val () =
 assertloc('z' = xatsopt_chrunq("'\\172'"))
 //
+val () =
+assertloc("xy" = xatsopt_strunq("\"xy\""))
+val () =
+assertloc("\t" = xatsopt_strunq("\"\\t\""))
+val () =
+assertloc("\n" = xatsopt_strunq("\"\\012\""))
+//
+val () =
+assertloc("\"" = xatsopt_strunq("\"\\\"\""))
+val () =
+assertloc("xy" = xatsopt_strunq("\"\\170\\171\""))
+//
 } (* end of [main0] *)
 
 (* ****** ****** *)
