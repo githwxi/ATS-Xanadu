@@ -33,9 +33,10 @@
 //
 (* ****** ****** *)
 //
+#include
+"share/atspre_staload.hats"
 #staload
-UN =
-"prelude/SATS/unsafe.sats"
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
@@ -65,9 +66,94 @@ $extfcall
 //
 implement
 xatsopt_chrunq(src) =
-(
-  $UN.ptr0_get<char>(p1)
-) where
+let
+fun
+auxmain
+( p1: ptr
+, ln
+: intGte(0)): char =
+let
+//
+val c1 =
+$UN.ptr0_get<char>(p1)
+//
+in
+//
+ifcase
+|
+(ln = 0) =>
+let
+val () =
+assertloc(c1 = '\'')
+in
+  int2char0(0)
+end
+|
+(ln = 1) => c1
+|
+_(* ln>=2 *) =>
+let
+val () =
+assertloc(c1 = '\\')
+//
+val p2 =
+ptr0_succ<char>(p1)
+val c2 =
+$UN.ptr0_get<char>(p2)
+//
+in
+//
+case+ c2 of
+| '"' => '"'
+| 'a' => '\a'
+| 'b' => '\b'
+| 'f' => '\f'
+| 'n' => '\n'
+| 'r' => '\r'
+| 't' => '\t'
+| 'v' => '\v'
+| '\'' => '\''
+| '\\' => '\\'
+| _(*isdigit*) =>
+let
+//
+fun
+auxrest
+( dd: int
+, p2: ptr
+, ln
+: intGte(0)): int =
+if
+(ln <= 0)
+then dd else
+let
+val c2 =
+$UN.ptr0_get<char>(p2)
+in
+  if
+  isdigit(c2)
+  then
+  let
+  val d2 = c2 - '0'
+  val p2 =
+  ptr0_succ<char>(p2)
+  in
+  auxrest(8*dd+d2, p2, ln-1)
+  end
+  else dd // end-of-if
+end // end of [auxrest]
+//
+in
+  int2char0
+  (auxrest(0(*dd*), p2, ln))
+end
+end // end of [ln>=2]
+//
+end // end of [ifcase]
+//
+in
+  auxmain(p1, sz2i(n0) - 2)
+end where
 {
   val p0 = string2ptr(src)
   val n0 = g1ofg0(length(src))
@@ -77,30 +163,20 @@ xatsopt_chrunq(src) =
 //
 (* ****** ****** *)
 //
-implement
-xatsopt_strunq(src) =
-let
+(*
 //
-#define CNUL '\000'
+(*
+HX-2020-10-26:
+This function is
+merged with [xatsopt_chrunq]
+*)
 //
-val p0 = string2ptr(src)
-val n0 = g1ofg0(length(src))
-val () = assertloc(n0 >= 2)
-val p1 = ptr0_succ<char>(p0)
-val
-( pf0
-, fpf | q0) = malloc_gc(n0-1)
-val () =
-ignoret
-(xatsopt_memcpy(q0, p1, n0-2))
-val () =
-$UN.ptr0_set_at<char>(q0, n0-2, CNUL)
-//
-in
-  $UN.castvwtp0((pf0, fpf | q0))
-end // end of [xatsopt_strunq]
-//
-(* ****** ****** *)
+extern
+fun
+xatsopt_chrunq2
+( source
+: string): char
+= "ext#xatsopt_chrunq2"
 //
 implement
 xatsopt_chrunq2(src) =
@@ -168,6 +244,32 @@ end // end of [auxrest]
   val p1 = ptr0_succ<char>(p0)
 //
 } (* end of [xatsopt_chrunq2] *)
+*)
+//
+(* ****** ****** *)
+//
+implement
+xatsopt_strunq(src) =
+let
+//
+#define CNUL '\000'
+//
+val p0 = string2ptr(src)
+val n0 = g1ofg0(length(src))
+val () = assertloc(n0 >= 2)
+val p1 = ptr0_succ<char>(p0)
+val
+( pf0
+, fpf | q0) = malloc_gc(n0-1)
+val () =
+ignoret
+(xatsopt_memcpy(q0, p1, n0-2))
+val () =
+$UN.ptr0_set_at<char>(q0, n0-2, CNUL)
+//
+in
+  $UN.castvwtp0((pf0, fpf | q0))
+end // end of [xatsopt_strunq]
 //
 (* ****** ****** *)
 

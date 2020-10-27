@@ -77,19 +77,10 @@ fun
 token2dint : token -> int
 
 (* ****** ****** *)
-
 fun
 token2schr : token -> char
 fun
-token2dchr : token -> char
-
-(* ****** ****** *)
-
-fun
 token2sstr : token -> string
-fun
-token2dstr : token -> string
-
 (* ****** ****** *)
 fun
 gexpid_sym : token -> sym_t
