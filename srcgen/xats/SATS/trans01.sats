@@ -83,6 +83,11 @@ fun
 token2sstr : token -> string
 (* ****** ****** *)
 fun
+token2dchr : token -> char
+fun
+token2dstr : token -> string
+(* ****** ****** *)
+fun
 gexpid_sym : token -> sym_t
 (* ****** ****** *)
 //
