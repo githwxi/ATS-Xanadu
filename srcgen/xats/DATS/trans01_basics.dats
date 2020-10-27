@@ -153,6 +153,9 @@ T_CHAR_slash(rep) =>
 )
 ) (* end of [token2schr] *)
 
+implement
+token2dchr(tok) = token2schr(tok)
+
 end // end of [local]
 
 (* ****** ****** *)
@@ -177,6 +180,9 @@ tok.node() of
 T_STRING_closed
   (rep) => xatsopt_strunq(rep)
 )
+
+implement
+token2dstr(tok) = token2sstr(tok)
 
 end // end of [local]
 
