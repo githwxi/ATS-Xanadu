@@ -342,7 +342,9 @@ in
 end
 in
 case+ c1 of
+//
 | '"' => auxescp('"')
+//
 | 'a' => auxescp('\a')
 | 'b' => auxescp('\b')
 | 'f' => auxescp('\f')
@@ -350,9 +352,15 @@ case+ c1 of
 | 'r' => auxescp('\r')
 | 't' => auxescp('\t')
 | 'v' => auxescp('\v')
+| '\'' => auxescp('\'')
 | '\\' => auxescp('\\')
+//
 | _(*else*) =>
-  auxisds(q0, p1, ln, 3, 0)
+(
+  auxisds
+  (q0, p1, ln, 3(*nd*), 0(*ds*))
+)
+//
 end // end of [auxisbs]
 //
 and
