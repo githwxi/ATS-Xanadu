@@ -486,6 +486,19 @@ d2pat_make_node(loc0, D2Pint(tok))
 end // end of [auxint]
 
 fun
+auxchr
+( d1p0
+: d1pat): d2pat =
+let
+val
+loc0 = d1p0.loc()
+val-
+D1Pchr(tok) = d1p0.node()
+in
+d2pat_make_node(loc0, D2Pchr(tok))
+end // end of [auxchr]
+
+fun
 auxstr
 ( d1p0
 : d1pat): d2pat =
@@ -496,7 +509,7 @@ val-
 D1Pstr(tok) = d1p0.node()
 in
 d2pat_make_node(loc0, D2Pstr(tok))
-end // end of [auxint]
+end // end of [auxstr]
 
 (* ****** ****** *)
 
@@ -809,6 +822,7 @@ d1p0.node() of
 | D1Pid0 _ => auxid0(d1p0)
 //
 | D1Pint _ => auxint(d1p0)
+| D1Pchr _ => auxchr(d1p0)
 | D1Pstr _ => auxstr(d1p0)
 //
 | D1Papp1 _ => auxapp1(d1p0)

@@ -121,6 +121,28 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+token2sbtf(tok) =
+(
+case-
+tok.node() of
+|
+T_IDENT_alp(rep) =>
+(
+ifval
+(c0 = 't', true, false)
+) where
+{
+val p0 = string2ptr(rep)
+val c0 = $UN.ptr0_get<char>(p0)
+}
+) (* end of [token2sbtf] *)
+
+implement
+token2dbtf(tok) = token2sbtf(tok)
+
+(* ****** ****** *)
+
 local
 
 (*
@@ -158,6 +180,23 @@ token2dchr(tok) = token2schr(tok)
 
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+token2sflt(tok) =
+(
+//
+case-
+tok.node() of
+|
+T_FLOAT1(rep) =>
+(g0string2float(rep))
+//
+) (* end of [token2sflt] *)
+//
+implement
+token2dflt(tok) = token2sflt(tok)
+//
 (* ****** ****** *)
 
 local

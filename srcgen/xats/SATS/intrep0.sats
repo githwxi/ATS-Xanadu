@@ -435,6 +435,8 @@ h0pat_node =
 | H0Pvar of hdvar // variable
 //
 | H0Pint of token
+| H0Pbtf of token
+| H0Pchr of token
 | H0Pstr of token
 //
 | H0Pcon of hdcon // cnstrctr

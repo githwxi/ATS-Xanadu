@@ -422,6 +422,11 @@ d3p0.node() of
 //
 | D3Pvar _ => d3p0
 //
+| D3Pint _ => d3p0
+| D3Pbtf _ => d3p0
+| D3Pchr _ => d3p0
+| D3Pstr _ => d3p0
+//
 | D3Pbang _ =>
   auxbang(env0, d3p0)
 | D3Pflat _ =>

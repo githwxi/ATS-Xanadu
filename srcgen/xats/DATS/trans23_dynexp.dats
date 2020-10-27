@@ -409,6 +409,10 @@ d2p0.node() of
   (
     d3pat_btf(loc0, tok0)
   )
+| D2Pchr(tok0) =>
+  (
+    d3pat_chr(loc0, tok0)
+  )
 //
 | D2Pcon1 _ => auxcon1(d2p0)
 (*

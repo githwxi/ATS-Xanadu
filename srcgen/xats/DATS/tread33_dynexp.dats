@@ -99,6 +99,11 @@ d3p0.node() of
 //
 | D3Pvar _ => ()
 //
+| D3Pint _ => ()
+| D3Pbtf _ => ()
+| D3Pchr _ => ()
+| D3Pstr _ => ()
+//
 | D3Pcon1 _ => ()
 //
 | D3Pbang(d3p1) =>
