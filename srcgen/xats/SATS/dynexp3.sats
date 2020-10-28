@@ -193,6 +193,9 @@ d3pat_btf
 fun
 d3pat_chr
 (loc0: loc_t, tok0: token): d3pat
+fun
+d3pat_str
+(loc0: loc_t, tok0: token): d3pat
 
 (* ****** ****** *)
 
