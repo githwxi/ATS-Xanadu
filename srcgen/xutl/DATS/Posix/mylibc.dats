@@ -329,6 +329,7 @@ assertloc(ln >= 1)
 //
 val c1 =
 $UN.ptr0_get<char>(p1)
+//
 fun
 auxescp
 (c1: char): void =
@@ -338,8 +339,19 @@ $UN.ptr0_set<char>(q0, c1)
 val p1=ptr0_succ<char>(p1)
 val q0=ptr0_succ<char>(q0)
 in
-  auxmain(q0, p1, ln-1)
+  auxmain(q0, p1, ln - 1)
 end
+//
+fun
+auxskip
+((*void*)): void =
+(
+  auxmain(q0, p1, ln - 1)
+) where
+{
+val p1=ptr0_succ<char>(p1)
+}
+//
 in
 case+ c1 of
 //
@@ -354,6 +366,8 @@ case+ c1 of
 | 'v' => auxescp('\v')
 | '\'' => auxescp('\'')
 | '\\' => auxescp('\\')
+//
+| '\n' => auxskip((*void*))
 //
 | _(*else*) =>
 (
