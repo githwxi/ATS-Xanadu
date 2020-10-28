@@ -169,6 +169,16 @@ in
 d3pat_make_node
 (loc0, t2p0, D3Pchr(tok0))
 end // end of [let]
+implement
+d3pat_str
+(loc0, tok0) =
+let
+val
+t2p0 = the_t2ype_string
+in
+d3pat_make_node
+(loc0, t2p0, D3Pstr(tok0))
+end // end of [let]
 
 (* ****** ****** *)
 
