@@ -122,6 +122,7 @@ in
   d2v0.type(t2ype_new(loc0))
 end
 )
+//
 implement
 trenv23_dvar_dntp
   (d2v0, t2p0) =
@@ -411,7 +412,7 @@ d2p0.node() of
   ) where
   {
   val
-  t2p0 = the_t2ype_none0
+  t2p0 = t2ype_new(loc0)
   }
 //
 | D2Pvar(d2v0) =>
