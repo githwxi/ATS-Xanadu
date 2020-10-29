@@ -347,13 +347,20 @@ d3pat_dntp
 ( d3p0: d3pat, t2p0: t2ype ): d3pat
 //
 (* ****** ****** *)
-
+//
+fun
+d3pat_dap0_up
+( loc0: loc_t, d3f0: d3pat ): d3pat
+fun
+d3pat_dap1_up
+( loc0: loc_t, d3f0: d3pat ): d3pat
+//
 fun
 d3pat_dapp_up
 ( loc0: loc_t
 , d3f0: d3pat
 , npf0: int, d3ps: d3patlst): d3pat
-
+//
 (* ****** ****** *)
 //
 fun

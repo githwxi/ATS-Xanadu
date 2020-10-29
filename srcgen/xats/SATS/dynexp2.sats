@@ -562,6 +562,7 @@ d2pat_node =
 //
 | D2Pnil of ()
 | D2Pany of ()
+| D2Parg of ()
 //
 | D2Pint of (token)
 | D2Pbtf of (token)
@@ -585,6 +586,7 @@ d2pat_node =
   (d2pat, s2varlst(*sarg*))
 //
 | D2Pdap0 of (d2pat)
+| D2Pdap1 of (d2pat)
 | D2Pdapp of
   ( d2pat
   , int(*npf*), d2patlst(*darg*))
