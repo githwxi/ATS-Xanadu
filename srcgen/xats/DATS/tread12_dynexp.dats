@@ -68,6 +68,35 @@ _(*TMP*) = "./../DATS/tread12_staexp.dats"
 //
 implement
 //{}(*tmp*)
+tread12_d2con
+  (d2c0) = let
+//
+val
+loc0 = d2c0.loc((*void*))
+val
+s2e0 = d2con_get_sexp(d2c0)
+//
+val () = tread12_s2exp(s2e0)
+//
+in
+  // nothing
+end // end of [tread12_d2con]
+//
+implement
+//{}(*tmp*)
+tread12_d2conlst(d2cs) =
+(
+list_foreach<d2con>(d2cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d2con><env>(d2c, env) = tread12_d2con(d2c)
+} (* end of [tread12_d2conlst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 tread12_d2cst
   (d2c0) = let
 //
@@ -659,6 +688,15 @@ d2cl.node() of
     end // end of [D2PITMnone]
   | D2PITMsome(_, _) => ((*void*))
   )
+//
+| D2Cexcptcon(d1cl, d2cs) =>
+  {
+    val () = tread12_d2conlst(d2cs)
+  }
+| D2Cdatatype(d1cl, s2cs) =>
+  {
+    val () = tread12_s2cstlst(s2cs)
+  }
 //
 | D2Cfundecl
   (knd, mopt, tqas, f2ds) =>
