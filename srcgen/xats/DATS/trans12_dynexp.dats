@@ -136,6 +136,7 @@ list_isnot_sing (xs) =
 // end of [list_isnot_sing]
 //
 (* ****** ****** *)
+//
 (*
 HX-2020-07:
 A nullary constructor C can
@@ -149,15 +150,6 @@ let
 val loc0 = d2p0.loc()
 in
 d2pat_make_node(loc0, D2Pdap0(d2p0))
-end
-//
-fun
-d2exp_dap0
-(d2e0: d2exp): d2exp =
-let
-val loc0 = d2e0.loc()
-in
-d2exp_make_node(loc0, D2Edap0(d2e0))
 end
 //
 (* ****** ****** *)
@@ -176,12 +168,30 @@ case+
 d2f0.node() of
 |
 D2Pdap0(d2f0) =>
-  d2pat_dapp(loc0, d2f0, npf1, d2as)
+(
+d2pat_dapp(loc0, d2f0, npf1, d2as)
+)
 // end of [D2Pdap0]
 |
 _ (*non-D2Pdap0*) =>
+(
+case+ d2as of
+|
+list_nil() =>
+d2pat_dapp(loc0, d2f0, npf1, d2as)
+|
+list_cons(d2a1, _) =>
+(
+case+
+d2a1.node() of
+| D2Parg() =>
+  d2pat_make_node
+  ( loc0, D2Pdap1(d2f0) )
+| _(*non-D2Parg*) =>
   d2pat_dapp(loc0, d2f0, npf1, d2as)
-)
+) (* end of [list_cons] *)
+) (* end of [non-D2Pdap0] *)
+) (* end of [my_d2pat_dapp] *)
 //
 (* ****** ****** *)
 
@@ -247,7 +257,18 @@ d2exp_dapp(loc0, d2f0, npf1, d2as)
 )
 //
 (* ****** ****** *)
-
+//
+fun
+d2exp_dap0
+(d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.loc()
+in
+d2exp_make_node(loc0, D2Edap0(d2e0))
+end
+//
+(* ****** ****** *)
+//
 fun
 my_d2exp_con1
 ( loc0
@@ -264,7 +285,7 @@ if
 (narg>0)
 then d2e0 else d2exp_dap0(d2e0)
 end // end of [my_d2exp_con1]
-
+//
 (* ****** ****** *)
 //
 fun
@@ -312,6 +333,24 @@ d2e1.node() of
 (* ****** ****** *)
 
 local
+
+(* ****** ****** *)
+
+fun
+isany
+( sym
+: sym_t): bool =
+(
+ifcase
+| sym=WCARD => true
+| _(* else *) => false
+) where
+{
+macdef
+WCARD = $SYM.WCARD_symbol
+overload =
+with $SYM.eq_symbol_symbol
+} (* end of [isbtf] *)
 
 (* ****** ****** *)
 
@@ -374,6 +413,10 @@ let
 in
 //
 ifcase
+| isany(name) =>
+  (
+  d2pat_make_node(loc0, D2Pany())
+  )
 | isbtf(name) =>
   let
   val-
@@ -677,8 +720,23 @@ D1Plist(d1ps1, d1ps2) =>
 _(* non-D2Plist *) =>
 let
   val d2p2 =
-  trans12_dpat(d1p2) in list_sing(d2p2)
-end
+  trans12_dpat(d1p2)
+  val d2p2 =
+  d2pat_any2arg(d2p2) in list_sing(d2p2)
+end where
+{
+fun
+d2pat_any2arg
+(d2p0: d2pat): d2pat =
+(
+case+
+d2p0.node() of
+|
+D2Pany() =>
+d2pat_make_node
+(d2p0.loc(), D2Parg()) | _(*else*) => d2p0
+)
+}
 ) : d2patlst // end of [val]
 //
 in

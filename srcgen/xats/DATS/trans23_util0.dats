@@ -1029,6 +1029,25 @@ then d3p0 else d3pat_tcast(d3p0, t2p1)
 end // end of [d3pat_dntp]
 
 (* ****** ****** *)
+implement
+d3pat_dap0_up
+( loc0, d3f0 ) =
+let
+val npf2 = ~1
+val d3ps = list_nil
+in
+d3pat_dapp_up(loc0, d3f0, npf2, d3ps)
+end // end of [d3pat_dap0_up]
+(* ****** ****** *)
+implement
+d3pat_dap1_up
+( loc0, d3f0 ) =
+let
+val tres = t2ype_new(loc0)
+in
+d3pat_make_node(loc0, tres, D3Pdap1(d3f0))
+end // end of [d3pat_dap1_up]
+(* ****** ****** *)
 
 implement
 d3pat_dapp_up
@@ -1051,7 +1070,7 @@ val tfun = // is FC2fun!
 //
 val d3f0 = d3pat_dntp(d3f0, tfun)
 //
-in
+in(*in-of-let*)
 //
 d3pat_make_node
 (loc0, tres, D3Pdapp(d3f0, npf0, d3ps))

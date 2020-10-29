@@ -121,7 +121,9 @@ d3pat_node =
 | D3Psap0 of (d3pat, s2explst)
 | D3Psap1 of (d3pat, s2explst)
 //
-| D3Pdapp of (d3pat, int(*npf*), d3patlst)
+| D3Pdap1 of (d3pat)
+| D3Pdapp of
+  (d3pat, int(*npf*), d3patlst)
 //
 | D3Ptuple of
   (int(*knd*), int(*npf*), d3patlst)

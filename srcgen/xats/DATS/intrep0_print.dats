@@ -385,6 +385,8 @@ x0.node() of
 | H0Pfree(h0p) =>
   fprint!(out, "H0Pfree(", h0p, ")")
 //
+| H0Pdap1(h0f0) =>
+  fprint!(out, "H0Pdap1(", h0f0, ")")
 | H0Pdapp
   (h0f0, npf1, h0ps) =>
   fprint!

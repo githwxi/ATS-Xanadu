@@ -282,6 +282,8 @@ case- x0.node() of
   fprint!(out, "D2Pnil(", ")")
 | D2Pany() =>
   fprint!(out, "D2Pany(", ")")
+| D2Parg() =>
+  fprint!(out, "D2Parg(", ")")
 //
 | D2Pint(tok) =>
   fprint!(out, "D2Pint(", tok, ")")
@@ -320,11 +322,15 @@ case- x0.node() of
 | D2Psapp
   (d2f0, s2vs) =>
   fprint!
-  ( out, "D2Psapp("
+  ( out
+  , "D2Psapp("
   , d2f0, "; ", s2vs(*sarg*), ")")
 //
 | D2Pdap0(d2f0) =>
   fprint!(out, "D2Pdap0(", d2f0, ")")
+| D2Pdap1(d2f0) =>
+  fprint!(out, "D2Pdap1(", d2f0, ")")
+//
 | D2Pdapp(d2f0, npf0, d2ps) =>
   fprint!
   ( out, "D2Pdapp("

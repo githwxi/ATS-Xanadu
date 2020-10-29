@@ -315,6 +315,8 @@ end
 
 (* ****** ****** *)
 
+(* ****** ****** *)
+
 fun
 auxdapp
 (d3p0: d3pat): h0pat =
@@ -436,6 +438,22 @@ h0pat_make_node
 end
 //
 |
+D3Pdap1(d3f0) =>
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+val
+h0f0 = tcomp30_dpat(d3f0)
+in
+h0pat_make_node
+(loc0, h0t0, H0Pdap1(h0f0))
+end
+//
+|
 D3Pbang(d3p1) =>
 let
 val
@@ -488,6 +506,7 @@ D3Psap0
 D3Psap1
 ( d3p1
 , sarg) => tcomp30_dpat(d3p1)
+//
 |
 D3Pdapp
 ( d3f0
@@ -498,7 +517,7 @@ D3Ptuple
 , npf1, d3ps) => aux_tuple(d3p0)
 |
 D3Panno
-(d3p1, s2e2) => tcomp30_dpat(d3p1)
+( d3p1, s2e2) => tcomp30_dpat(d3p1)
 //
 | _(* rest-of_d3pat *) =>
 let
