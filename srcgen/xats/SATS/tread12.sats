@@ -122,6 +122,13 @@ tread12_effs2expopt: treader12(effs2expopt)
 (* ****** ****** *)
 //
 fun//{}
+tread12_d2con: treader12(d2con)
+fun//{}
+tread12_d2conlst: treader12(d2conlst)
+//
+(* ****** ****** *)
+//
+fun//{}
 tread12_d2cst: treader12(d2cst)
 fun//{}
 tread12_d2cstlst: treader12(d2cstlst)

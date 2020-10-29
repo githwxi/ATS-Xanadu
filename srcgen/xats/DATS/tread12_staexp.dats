@@ -46,9 +46,13 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/lexing.sats"
 //
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 //
 #staload "./../SATS/tread12.sats"
 //
@@ -93,11 +97,42 @@ case+ s2tx of
 implement
 //{}(*tmp*)
 tread12_s2cst
-  (s2c0) = ((*void*))
+  (s2c0) = () where
+{
+//
+local
+val
+s2e0 =
+s2cst_get_sexp(s2c0)
+in // in-of-local
+val () = tread12_s2exp(s2e0)
+end // end-of-local
+//
+val () =
+let
+val
+opt0 =
+s2cst_get_d2conlst(s2c0)
+in // in-of-let
+case+ opt0 of
+| ~
+None_vt() => ((*void*))
+| ~
+Some_vt(d2cs) => tread12_d2conlst(d2cs)
+end // end-of-let
+//
+} (* end of [tread12_s2cst] *)
+//
 implement
 //{}(*tmp*)
-tread12_s2cstlst
-  (s2cs) = ((*void*))
+tread12_s2cstlst(s2cs) =
+(
+list_foreach<s2cst>(s2cs)
+) where
+{
+implement(env)
+list_foreach$fwork<s2cst><env>(s2c, env) = tread12_s2cst(s2c)
+} (* end of [tread12_s2cstlst] *)
 //
 (* ****** ****** *)
 //
