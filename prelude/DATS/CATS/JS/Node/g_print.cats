@@ -1,6 +1,6 @@
 /* ****** ****** */
 /*
-Print for Xats2js/Node
+G_print for Xats2js/Node
 */
 /* ****** ****** */
 //
@@ -62,4 +62,4 @@ XATS2JS_NODE_string_print
 }
 /* ****** ****** */
 
-/* end of [XATS2JS_NODE_print.cats] */
+/* end of [XATS2JS_NODE_g_print.cats] */

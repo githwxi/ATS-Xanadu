@@ -70,4 +70,4 @@ XATS2JS_the_print_store_clear(): (void)
 //
 (* ****** ****** *)
 
-(* end of [XATS2JS_print.dats] *)
+(* end of [XATS2JS_g_print.dats] *)

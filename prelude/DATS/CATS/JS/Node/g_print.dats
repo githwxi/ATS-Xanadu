@@ -61,4 +61,4 @@ XATS2JS_NODE_string_print
 }
 (* ****** ****** *)
 
-(* end of [XATS2JS_NODE_print.dats] *)
+(* end of [XATS2JS_NODE_g_print.dats] *)
