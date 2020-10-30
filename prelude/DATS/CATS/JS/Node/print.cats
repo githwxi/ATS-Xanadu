@@ -1,6 +1,6 @@
 /* ****** ****** */
 /*
-Runtime for Xats2js/Node
+Print for Xats2js/Node
 */
 /* ****** ****** */
 //
@@ -26,7 +26,7 @@ else
 {
 XATS2JS_NODE_g_print("false");
 }
-return ; // XATS2JS_NODE_bool_print
+return; // XATS2JS_NODE_bool_print
 }
 /* ****** ****** */
 function
@@ -62,4 +62,4 @@ XATS2JS_NODE_string_print
 }
 /* ****** ****** */
 
-/* end of [XATS2JS_NODE_runtime.cats] */
+/* end of [XATS2JS_NODE_print.cats] */
