@@ -1,6 +1,6 @@
 /* ****** ****** */
 /*
-Print for Xats2js
+G_print for Xats2js
 */
 /* ****** ****** */
 //
@@ -86,4 +86,4 @@ XATS2JS_the_print_store = []; return;
 
 /* ****** ****** */
 
-/* end of [XATS2JS_print.cats] */
+/* end of [XATS2JS_g_print.cats] */
