@@ -373,26 +373,26 @@ typedef xs = string
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 impltmp
-g_cmp<xs> = gseq_cmp<xs><x0>
-
+g_cmp<xs> = string_cmp<>
+//
+impltmp
+string_cmp<> = gseq_cmp<xs><x0>
+//
 (* ****** ****** *)
 //
 impltmp
 g_print<xs> = string_print<>
 //
-(*
-impltmp
-g_print<xs>(xs) =
-gseq_print<xs,x0>(xs)
 impltmp
 gseq_print$beg<xs><x0>() = ()
 impltmp
 gseq_print$end<xs><x0>() = ()
 impltmp
 gseq_print$sep<xs><x0>() = ()
-*)
+impltmp
+string_print<> = gseq_print<xs><x0>
 //
 (* ****** ****** *)
 
