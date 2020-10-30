@@ -81,6 +81,26 @@ else
 optn_vt_cons(string_tail_raw(cs))
 //
 (* ****** ****** *)
+impltmp<>
+string_lt<>(x1, x2) = 
+(string_cmp<>(x1, x2) < 0)
+impltmp<>
+string_gt<>(x1, x2) = 
+(string_cmp<>(x1, x2) > 0)
+impltmp<>
+string_eq<>(x1, x2) = 
+(string_cmp<>(x1, x2) = 0)
+(* ****** ****** *)
+impltmp<>
+string_lte<>(x1, x2) = 
+(string_cmp<>(x1, x2) <= 0)
+impltmp<>
+string_gte<>(x1, x2) = 
+(string_cmp<>(x1, x2) >= 0)
+impltmp<>
+string_neq<>(x1, x2) = 
+(string_cmp<>(x1, x2) != 0)
+(* ****** ****** *)
 
 impltmp<>
 string_length
@@ -372,6 +392,20 @@ typedef xs = string
 //
 in (* in-of-local *)
 
+(* ****** ****** *)
+impltmp
+g_lt<xs> = string_lt<>
+impltmp
+g_gt<xs> = string_gt<>
+impltmp
+g_eq<xs> = string_eq<>
+(* ****** ****** *)
+impltmp
+g_lte<xs> = string_lte<>
+impltmp
+g_gte<xs> = string_gte<>
+impltmp
+g_neq<xs> = string_neq<>
 (* ****** ****** *)
 //
 impltmp

@@ -458,6 +458,86 @@ XATS2JS_string_vt2t
 }
 (* ****** ****** *)
 impltmp
+string_lt<> =
+XATS2JS_string_lt
+where
+{
+#extern
+fun
+XATS2JS_string_lt
+(x1: string
+,x2: string): bool // = $ext()
+}
+impltmp
+string_gt<> =
+XATS2JS_string_gt
+where
+{
+#extern
+fun
+XATS2JS_string_gt
+(x1: string
+,x2: string): bool // = $ext()
+}
+impltmp
+string_eq<> =
+XATS2JS_string_eq
+where
+{
+#extern
+fun
+XATS2JS_string_eq
+(x1: string
+,x2: string): bool // = $ext()
+}
+(* ****** ****** *)
+impltmp
+string_lte<> =
+XATS2JS_string_lte
+where
+{
+#extern
+fun
+XATS2JS_string_lte
+(x1: string
+,x2: string): bool // = $ext()
+}
+impltmp
+string_gte<> =
+XATS2JS_string_gte
+where
+{
+#extern
+fun
+XATS2JS_string_gte
+(x1: string
+,x2: string): bool // = $ext()
+}
+impltmp
+string_neq<> =
+XATS2JS_string_neq
+where
+{
+#extern
+fun
+XATS2JS_string_neq
+(x1: string
+,x2: string): bool // = $ext()
+}
+(* ****** ****** *)
+impltmp
+string_cmp<> =
+XATS2JS_string_cmp
+where
+{
+#extern
+fun
+XATS2JS_string_cmp
+(x1: string
+,x2: string): sint // = $ext()
+}
+(* ****** ****** *)
+impltmp
 string_print<> =
 XATS2JS_string_print
 where
@@ -562,6 +642,7 @@ XATS2JS_string_vt_forall_cfr
 ( cs: ~string_vt
 , f0: (cgtz) -<cfr> bool): bool
 //
+in
 XATS2JS_string_vt_forall_cfr
 ( cs
 , lam(c0) => forall0$test<cgtz>(c0))
@@ -577,6 +658,7 @@ XATS2JS_string_vt_forall_cfr
 ( cs: !string_vt
 , f0: (cgtz) -<cfr> bool): bool
 //
+in
 XATS2JS_string_vt_forall_cfr
 ( cs
 , lam(c0) => forall1$test<cgtz>(c0))
