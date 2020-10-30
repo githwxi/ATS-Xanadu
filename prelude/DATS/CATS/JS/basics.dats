@@ -53,15 +53,6 @@ bool_mul<> = XATS2JS_bool_mul
 //
 (* ****** ****** *)
 //
-#extern
-fun
-XATS2JS_bool_print
-(b0: bool): void // = $ext()
-impltmp
-bool_print<> = XATS2JS_bool_print
-//
-(* ****** ****** *)
-//
 // prelude/char.sats
 //
 // [char] is a (small) number
@@ -114,34 +105,7 @@ impltmp
 char_noteq<> = XATS2JS_char_noteq
 (* ****** ****** *)
 //
-#extern
-fun
-XATS2JS_char_print
-(b0: char): void // = $ext()
-impltmp
-char_print<> = XATS2JS_char_print
-//
-(* ****** ****** *)
-//
 // prelude/gint.sats
-//
-(* ****** ****** *)
-//
-#extern
-fun
-XATS2JS_gint_print_sint
-( x0: sint ): void // = $ext()
-#extern
-fun
-XATS2JS_gint_print_uint
-( x0: uint ): void // = $ext()
-//
-impltmp
-gint_print_sint<> =
-XATS2JS_gint_print_sint // [basics.cats]
-impltmp
-gint_print_uint<> =
-XATS2JS_gint_print_uint // [basics.cats]
 //
 (* ****** ****** *)
 //
@@ -535,17 +499,6 @@ fun
 XATS2JS_string_cmp
 (x1: string
 ,x2: string): sint // = $ext()
-}
-(* ****** ****** *)
-impltmp
-string_print<> =
-XATS2JS_string_print
-where
-{
-#extern
-fun
-XATS2JS_string_print
-(cs: string): void // = $ext()
 }
 (* ****** ****** *)
 impltmp
