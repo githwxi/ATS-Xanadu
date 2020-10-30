@@ -425,6 +425,10 @@ in(*in-of-let*)
 case+
 d3e0.node() of
 //
+| D3Ei00 _ => ()
+| D3Eb00 _ => ()
+| D3Es00 _ => ()
+//
 | D3Eint _ => ()
 | D3Ebtf _ => ()
 | D3Echr _ => ()
