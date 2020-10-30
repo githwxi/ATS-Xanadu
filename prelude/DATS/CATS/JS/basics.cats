@@ -701,6 +701,64 @@ return cs; // XATS2JS_string_vt2t
 }
 /* ****** ****** */
 function
+XATS2JS_string_lt
+  (x1, x2)
+{
+  return (x1 < x2);
+}
+function
+XATS2JS_string_gt
+  (x1, x2)
+{
+  return (x1 > x2);
+}
+function
+XATS2JS_string_eq
+  (x1, x2)
+{
+  return (x1===x2);
+}
+function
+XATS2JS_string_lte
+  (x1, x2)
+{
+  return (x1 <= x2);
+}
+function
+XATS2JS_string_gte
+  (x1, x2)
+{
+  return (x1 >= x2);
+}
+function
+XATS2JS_string_neq
+  (x1, x2)
+{
+  return (x1 !== x2);
+}
+/* ****** ****** */
+function
+XATS2JS_string_cmp
+  (x1, x2)
+{
+if(x1 < x2)
+{
+  return -1;
+} else
+{
+  return (x1===x2 ? 0 : 1);
+} // end of [if]
+}
+/* ****** ****** */
+function
+XATS2JS_string_print
+  (cs)
+{
+  XATS2JS_g_print(cs);
+  return;
+}
+/* ****** ****** */
+function
 XATS2JS_string_head_opt
   (cs)
 {
@@ -724,14 +782,6 @@ XATS2JS_string_tail_raw
   (cs)
 {
 return cs.slice(1);//tail
-}
-/* ****** ****** */
-function
-XATS2JS_string_print
-  (cs)
-{
-  XATS2JS_g_print(cs);
-  return;
 }
 /* ****** ****** */
 function

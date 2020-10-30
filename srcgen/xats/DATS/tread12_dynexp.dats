@@ -243,6 +243,10 @@ in
 case+
 d2e0.node() of
 //
+| D2Ei00(int) => ()
+| D2Eb00(int) => ()
+| D2Es00(int) => ()
+//
 | D2Eint(tok) => ()
 | D2Ebtf(tok) => ()
 | D2Echr(tok) => ()
@@ -558,6 +562,8 @@ in
 //
 case+
 d2cl.node() of
+//
+| D2Cdefine _ => ()
 //
 | D2Cstatic
   (tok, d2c1) =>

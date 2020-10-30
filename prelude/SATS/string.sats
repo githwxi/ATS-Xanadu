@@ -250,6 +250,26 @@ string_neqzq
 (cs: string(n)): bool(n>0)
 
 (* ****** ****** *)
+fun<>
+string_lt
+(x1: string, x2: string): bool
+fun<>
+string_gt
+(x1: string, x2: string): bool
+fun<>
+string_eq
+(x1: string, x2: string): bool
+(* ****** ****** *)
+fun<>
+string_lte
+(x1: string, x2: string): bool
+fun<>
+string_gte
+(x1: string, x2: string): bool
+fun<>
+string_neq
+(x1: string, x2: string): bool
+(* ****** ****** *)
 
 fun<>
 string_cmp
