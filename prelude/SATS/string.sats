@@ -123,7 +123,7 @@ strtmp0_vt =
 [n:int] strtmp_i0_vx(n)
 vwtpdef
 strtmp1_vt
-(n:int) = strtmp_i0_vx(n)
+(n: int) = strtmp_i0_vx(n)
 //
 (* ****** ****** *)
 //
@@ -151,15 +151,6 @@ string_top2tr
 #symload
 ptrof with string_top2tr
 *)
-//
-(* ****** ****** *)
-//
-fun<>
-string_print(string): void
-fun<>
-string_vt_print(!string_vt): void
-fun<>
-string_vt_print0(~string_vt): void
 //
 (* ****** ****** *)
 //
@@ -246,6 +237,32 @@ string_tail_opt
 //
 fun<>
 string_tail_raw(string): string
+//
+(* ****** ****** *)
+
+fun<>
+string_eqzq
+{n:int}
+(cs: string(n)): bool(n=0)
+fun<>
+string_neqzq
+{n:int}
+(cs: string(n)): bool(n>0)
+
+(* ****** ****** *)
+
+fun<>
+string_cmp
+(x1: string, x2: string): sint
+
+(* ****** ****** *)
+//
+fun<>
+string_print(string): void
+fun<>
+string_vt_print(!string_vt): void
+fun<>
+string_vt_print0(~string_vt): void
 //
 (* ****** ****** *)
 
