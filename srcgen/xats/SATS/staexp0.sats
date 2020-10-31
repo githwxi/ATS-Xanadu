@@ -1084,11 +1084,12 @@ d0atypelst = List0(d0atype)
 //
 datatype
 d0atype_node =
-| D0ATYPE of
-  ( d0eid
-  , t0marglst
-  , sort0opt(*res*), token, d0atconlst)
-  // D0ATYPE
+|
+D0ATYPE of
+( d0eid
+, t0marglst
+, sort0opt(*res*), token, d0atconlst
+) (* D0ATYPE *)
 //
 fun
 d0atype_get_loc
