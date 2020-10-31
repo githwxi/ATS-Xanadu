@@ -477,6 +477,12 @@ d0e0.node() of
 //
   }
 //
+| D0Eanno(d0e1, s0e2) =>
+  {
+    val () = synread_d0exp(d0e1)
+    val () = synread_s0exp(s0e2)
+  }
+//
 | D0Equal(qtok, d0e1) =>
   {
     val () = synread_qname(qtok)
@@ -858,10 +864,10 @@ D0Cabssort
 ( tok0, tid0(*name*) ) =>
 {
 (*
-  val () =
-  synread_ABSSORT(tok0)
+val () =
+synread_ABSSORT(tok0)
 *)
-  val () = synread_s0tid(tid0)
+val () = synread_s0tid(tid0)
 }
 //
 |
@@ -886,12 +892,12 @@ D0Csortdef
 , tid0, teq1, def2) =>
 {
 (*
-  val () =
-  synread_SORTDEF(tok0)
+val () =
+synread_SORTDEF(tok0)
 *)
-  val () = synread_EQ(teq1)
-  val () = synread_s0tid(tid0)
-  val () = synread_s0rtdef(def2)
+val () = synread_EQ(teq1)
+val () = synread_s0tid(tid0)
+val () = synread_s0rtdef(def2)
 }
 //
 |
@@ -902,20 +908,21 @@ D0Csexpdef
 {
 //
 (*
-  val () =
-  synread_SEXPDEF(tok0)
+val () =
+synread_SEXPDEF(tok0)
 *)
 //
-  val () =
-    synread_EQ(teq1)
-  val () =
-    synread_s0eid(sid0)
-  val () =
-    synread_s0marglst(arg0)
-  val () =
-    synread_sort0opt( res0 )
+val () =
+synread_s0eid(sid0)
+val () =
+synread_s0marglst(arg0)
 //
-  val () = synread_s0exp(def2)
+val () =
+  synread_sort0opt(res0)
+// end of [val]
+//
+val () = synread_EQ(teq1)
+val () = synread_s0exp(def2)
 //
 }
 //
@@ -926,30 +933,52 @@ D0Cabstype
 {
 //
 (*
-  val () =
-  synread_ABSTYPE(tok0)
+val () =
+synread_ABSTYPE(tok0)
 *)
 //
-  val () =
-    synread_s0eid(sid0)
-  val () =
-    synread_t0marglst(arg0)
-  val () =
-    synread_sort0opt( res0 )
-  // end of [val]
+val () =
+synread_s0eid(sid0)
+val () =
+synread_t0marglst(arg0)
 //
-  val () = synread_abstdf0(def1)
+val () =
+  synread_sort0opt(res0)
+// end of [val]
+//
+val () = synread_abstdf0(def1)
 //
 }
 //
 |
-D0Cabsopen(tok0, sqid) =>
+D0Cabsopen
+  (tok0, sqid) =>
+{
+(*
+val () =
+synread_ABSOPEN(tok0)
+*)
+val () = synread_sq0eid(sqid)
+}
+//
+|
+D0Cabsimpl
+( tok0
+, sqid, smas
+, res1, teq2, s0e1) =>
 {
 (*
   val () =
-  synread_ABSOPEN(tok0)
+  symread_ABSIMPL(tok0)
 *)
-  val () = synread_sq0eid(sqid)
+  val () =
+  synread_sq0eid(sqid)
+  val () =
+  synread_s0marglst(smas)
+  val () =
+  synread_sort0opt(res1)
+  val () = synread_EQ(teq2)
+  val () = synread_s0exp(s0e1)
 }
 //
 |

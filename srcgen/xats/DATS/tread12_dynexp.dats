@@ -271,11 +271,17 @@ d2e0.node() of
   val () = tread12_d2exp(d2e1)
   val () = tread12_dsapparg(s2es)
   }
+//
 | D2Etapp
   (d2e1, s2es) =>
   {
   val () = tread12_d2exp(d2e1)
   val () = tread12_dtapparg(s2es)
+  }
+//
+| D2Edap0(d2e1) =>
+  {
+  val () = tread12_d2exp(d2e1)
   }
 | D2Edapp
   (d2e1, npf2, d2es) =>

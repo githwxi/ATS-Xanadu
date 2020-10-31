@@ -122,6 +122,11 @@ d3p0.node() of
     tread33_d3pat(d3p1)
   }
 //
+| D3Pdap1(d3f1) =>
+  {
+    val () =
+    tread33_d3pat(d3f1)
+  }
 | D3Pdapp
   (d3f1, npf2, d3ps) =>
   {
