@@ -526,14 +526,14 @@ extern
 fun
 the_fixity_load
 (
-XATSHOME: string
+XATSENV: string
 ) : void =
   "ext#libxatsopt_the_fixity_load"
 extern
 fun
 the_basics_load
 (
-XATSHOME: string
+XATSENV: string
 ,
 stadyn: int, given: string
 ) : void =
@@ -543,7 +543,7 @@ extern
 fun
 the_prelude_load
 (
-XATSHOME: string
+XATSENV: string
 ,
 stadyn: int, given: string
 ) : void =
@@ -553,14 +553,14 @@ extern
 fun
 the_preludes_load
 (
-  XATSHOME: string
+  XATSENV: string
 ) : void =
   "ext#libxatsopt_the_preludes_load"
 extern
 fun
 the_preludes_load_if
 (
-  XATSHOME: string, flag: &int
+  XATSENV: string, flag: &int
 ) : void =
   "ext#libxatsopt_the_preludes_load_if"
 //
@@ -620,7 +620,7 @@ arg0= commarg
 ,
 wtk0= waitknd
 ,
-ATSHOME= string
+XATSENV= string
 ,
 prelude= int
 ,
@@ -880,7 +880,7 @@ stadyn =
 waitknd_get_stadyn(wtk0)
 //
 val
-XATSHOME = st0.ATSHOME
+XATSENV = st0.XATSENV
 //
 val () =
 ifcase
@@ -918,7 +918,7 @@ then
 //
 val () =
 the_preludes_load_if
-(XATSHOME, st0.prelude)
+(XATSENV, st0.prelude)
 // end of [val]
 //
 val () = (st0.inpfil0 := fp0)
@@ -1488,11 +1488,11 @@ xatsopt_main0
   (argc, argv) = let
 //
 val
-XATSHOME =
+XATSENV =
 $GLO.the_XATSHOME_get((*void*))
 //
 val () = 
-$FP0.the_includes_push(XATSHOME)
+$FP0.the_includes_push(XATSENV)
 //
 val+
 list_cons
@@ -1509,7 +1509,7 @@ st0: cmdstate =
   arg0= arg0
 , wtk0= WTKnone()
 //
-, ATSHOME= XATSHOME
+, XATSENV= XATSENV
 //
 , prelude= 0(*~loaded*)
 //
@@ -1564,13 +1564,13 @@ prerrln!("Hello from ATS3(xatsopt)!")
 //
 implement
 the_fixity_load
-  (XATSHOME) = let
+  (XATSENV) = let
 //
   val given =
     "prelude/fixity.sats"
 //
   val fname =
-    dirbase(XATSHOME, given)
+    dirbase(XATSENV, given)
   val fpath =
     fpath_make(given, fname)  
 //
@@ -1623,7 +1623,7 @@ end // end of [the_fixity_load]
 //
 implement
 the_basics_load
-(XATSHOME, stadyn, given) = let
+(XATSENV, stadyn, given) = let
 //
   val
   d1cs = trans01_declist(d0cs)
@@ -1647,7 +1647,7 @@ println!
 //
   val
   fname =
-  dirbase(XATSHOME, given)
+  dirbase(XATSENV, given)
   val
   fpath =
   fpath_make( given, fname )  
@@ -1685,7 +1685,7 @@ println!
 //
 implement
 the_prelude_load
-(XATSHOME, stadyn, given) =
+(XATSENV, stadyn, given) =
 let
 //
   val
@@ -1707,7 +1707,7 @@ println!
 //
   val
   fname =
-  dirbase(XATSHOME, given)
+  dirbase(XATSENV, given)
   val
   fpath =
   fpath_make(given, fname)  
@@ -1762,119 +1762,119 @@ println!
 
 implement
 the_preludes_load
-  (XATSHOME) =
+  (XATSENV) =
 {
 //
 val () =
 the_fixity_load
-  (XATSHOME)
+  (XATSENV)
 //
 val () =
 the_basics_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/basics.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/xsetup.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/excptn.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gbas.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gnum.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gord.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gfor.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gfun.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gseq.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/bool.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/char.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gint.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gflt.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gios.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/rand.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/optn.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/list.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/array.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/string.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/stream.sats")
 //
@@ -1882,18 +1882,18 @@ the_prelude_load
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/gseq_vt.sats")
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/optn_vt.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/list_vt.sats")
 //
@@ -1904,21 +1904,30 @@ the_prelude_load
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/array_vt.sats")
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/string_vt.sats")
 *)
 //
 val () =
 the_prelude_load
-( XATSHOME
+( XATSENV
 , 0(*static*)
 , "prelude/SATS/stream_vt.sats")
+//
+(* ****** ****** *)
+val () =
+the_prelude_load
+  ( XATSENV
+  , 1(*dynamic*)
+  , "prelude/DATS/synougat.dats")
+// the_prelude_load
+(* ****** ****** *)
 //
 (*
 val () =
@@ -1932,14 +1941,14 @@ println!
 //
 implement
 the_preludes_load_if
-  (XATSHOME, flag) =
+  (XATSENV, flag) =
 (
 //
 if
 (flag = 0)
 then let
   val () =
-  (flag := flag + 1) in the_preludes_load(XATSHOME)
+  (flag := flag + 1) in the_preludes_load(XATSENV)
 end // end of [then]
 //
 ) (* end of [the_preludes_load_if] *)

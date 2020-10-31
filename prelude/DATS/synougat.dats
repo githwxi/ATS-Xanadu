@@ -5,7 +5,11 @@
 //
 (* ****** ****** *)
 //
-// For print and println
+(*
+HX:
+for overloading
+print and println
+*)
 //
 (* ****** ****** *)
 (*
@@ -591,4 +595,4 @@ print9
 //
 (* ****** ****** *)
 
-(* end of [synugat.dats] *)
+(* end of [synougat.dats] *)
