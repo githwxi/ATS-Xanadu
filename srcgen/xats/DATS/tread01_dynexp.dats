@@ -155,22 +155,32 @@ D1Cdefine
     tread01_g1expopt(def1)
   )
 }
+|
+D1Clocal(head, body) =>
+{
+  val () =
+    tread01_d1eclist(head)
+  val () =
+    tread01_d1eclist(body)
+} (* end of [D1Clocal] *)
 //
-| D1Cinclude
-  ( tok
-  , src, knd
-  , fopt, body) =>
-  {
-    val () =
+//
+|
+D1Cinclude
+( tok
+, src, knd
+, fopt, body) =>
+{
+  val () =
+  (
+  case+ body of
+  | None() => ()
+  | Some(d1cs) =>
     (
-    case+ body of
-    | None() => ()
-    | Some(d1cs) =>
-      (
-        tread01_d1eclist(d1cs)
-      )
+      tread01_d1eclist(d1cs)
     )
-  }
+  )
+}
 | D1Cstaload _ => ()
 //
 | D1Csymload
@@ -182,6 +192,18 @@ D1Cdefine
     val () =
     tread01_dq0eid(dqid)
 *)
+  }
+//
+| D1Csortdef
+  ( knd
+  , tid0, def1) =>
+  {
+(*
+    val () =
+    tread01_s0tid(tid0)  
+*)
+    val () =
+    tread01_s1rtdef(def1)
   }
 //
 | D1Csexpdef
@@ -259,42 +281,55 @@ D1Cdefine
   , dqid, ti1s
   , f1as, res1, teq2, body) =>
   {
-    val () =
-    tread01_sq1arglst(sqas)
-    val () =
-    tread01_tq1arglst(tqas)
+  val () =
+  tread01_sq1arglst(sqas)
+  val () =
+  tread01_tq1arglst(tqas)
 //
-    val () =
-    tread01_ti1arglst(ti1s)
+  val () =
+  tread01_ti1arglst(ti1s)
 //
+  val () =
+    tread01_f1arglst(f1as)
+  // end of [val]
+//
+  val () =
+    tread01_effs1expopt(res1)
+  // end of [val]
+//
+  val () = tread01_d1exp(body)
+//
+  }
+//
+| D1Cexcptcon
+  (tok0, d1cs) =>
+  {
     val () =
-      tread01_f1arglst(f1as)
+    tread01_d1atconlst(d1cs)
+  }
+| D1Cdatatype
+  (tok0, d1ts, wdcs) =>
+  {
+    val () =
+      tread01_wd1eclseq(wdcs)
     // end of [val]
-//
     val () =
-      tread01_effs1expopt(res1)
+      tread01_d1atypelst(d1ts)
     // end of [val]
-//
-    val () = tread01_d1exp(body)
-//
   }
 //
 | D1Cdynconst
   (knd, tqas, d1cs) =>
   {
     val () =
-    tread01_tq1arglst(tqas)
+      tread01_tq1arglst(tqas)
+    // end of [val]
 (*
     val () =
-    tread01_d1cstdeclist(d1cs)
+      tread01_d1cstdeclist(d1cs)
+    // end of [val]
 *)
   }
-//
-| D1Clocal(head, body) =>
-  {
-    val () = tread01_d1eclist(head)
-    val () = tread01_d1eclist(body)
-  } (* end of [D1Clocal] *)
 //
 | _(* rest-of-d1ecl *) =>
   (
@@ -563,6 +598,59 @@ implement(env)
 list_foreach$fwork<f1undecl><env>(f1d, env) = tread01_f1undecl(f1d)
 } (* end of [tread01_f1undeclist] *)
 //
+(* ****** ****** *)
+//
+implement
+tread01_wd1eclseq
+  (wdcs) =
+(
+case+ wdcs of
+|
+WD1CSnone() => ()
+|
+WD1CSsome(d1cs) =>
+{
+  val () = tread01_d1eclist(d1cs)
+} (* end of [tread01_wd1eclseq] *)
+)
+//
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread01_d1atypelst
+  (d1ts) =
+(
+list_foreach<d1atype>(d1ts)
+) where
+{
+implement
+(env)//tmp
+list_foreach$fwork<d1atype><env>
+  (d1t, env) =
+{
+(*
+  val () =
+  tread01_d1eid(deid)
+*)
+  val () =
+  tread01_t1marglst(tmas)
+  val () =
+    tread01_sort1opt(res1)
+  // end of [val]
+  val () =
+    tread01_d1atconlst(d1cs)
+  // end of [val]
+} where
+{
+  val+
+  D1ATYPE
+  ( deid
+  , tmas
+  , res1, d1cs) = d1t.node()
+} (* end of [where] *)
+} (* end of [tread01_d0atypelst] *)
+
 (* ****** ****** *)
 
 local

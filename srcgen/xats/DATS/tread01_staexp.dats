@@ -343,6 +343,23 @@ list_foreach$fwork<t1marg><env>(tma, env) = tread01_t1marg(tma)
 //
 implement
 //{}(*tmp*)
+tread01_s1uni(s1u0) = ()
+//
+implement
+//{}(*tmp*)
+tread01_s1unilst(s1us) =
+(
+list_foreach<s1uni>(s1us)
+) where
+{
+implement(env)
+list_foreach$fwork<s1uni><env>(s1u, env) = tread01_s1uni(s1u)
+} (* end of [tread01_s1unilst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 tread01_s1exp(s1e0) = ()
 //
 implement
@@ -383,15 +400,69 @@ list_foreach$fwork<s1qua><env>(s1q, env) = tread01_s1qua(s1q)
 } (* end of [tread01_s1qualst] *)
 //
 (* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread01_s1rtdef
+  (def0) =
+(
+case+
+def0.node() of
+| S1RTDEFsort(s1t1) =>
+  tread01_sort1(s1t1)
+| S1RTDEFsbst(s1a1, s1es) =>
+  {
+    val () = tread01_s1arg(s1a1)
+    val () = tread01_s1explst(s1es)
+  }
+)
+
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread01_effs1expopt(opt) =
+tread01_effs1expopt
+  (opt0) =
 (
-case+ opt of
+case+ opt0 of
 | EFFS1EXPnone() => ()
-| EFFS1EXPsome(s1e) => tread01_s1exp(s1e)
+| EFFS1EXPsome(s1e1) => tread01_s1exp(s1e1)
 )
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_d1atcon
+  (d1c0) =
+(
+case+
+d1c0.node() of
+|
+D1ATCON
+( s0us
+, name, s0es, args) =>
+{
+(*
+val () = tread01_d1eid(name) // dyncon
+*)
+val () = tread01_s1unilst(s0us) // quanty
+val () = tread01_s1explst(s0es) // indexes
+val () = tread01_s1expopt(args) // arguments
+}
+)
+//
+implement
+//{}(*tmp*)
+tread01_d1atconlst
+  (d1cs) =
+(
+list_foreach<d1atcon>(d1cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d1atcon><env>(d1c, env) = tread01_d1atcon(d1c)
+} (* end of [tread01_d0atconlst] *)
 //
 (* ****** ****** *)
 

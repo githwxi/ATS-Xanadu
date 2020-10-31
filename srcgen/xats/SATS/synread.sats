@@ -329,12 +329,12 @@ fun//{}
 synread_effs0expopt: synreader(effs0expopt)
 
 (* ****** ****** *)
-
+//
 fun//{}
 synread_d0atcon: synreader(d0atcon)
 fun//{}
 synread_d0atconlst: synreader(d0atconlst)
-
+//
 (* ****** ****** *)
 //
 fun//{}
