@@ -616,6 +616,11 @@ d2cl.node() of
     val () = tread12_sort2(s2t)
   }
 //
+| D2Csortdef(s2c, def) =>
+  {
+    val () = tread12_s2txt(def)
+  }
+//
 | D2Csexpdef(s2c, def) =>
   {
 (*
@@ -626,6 +631,7 @@ d2cl.node() of
     val def = unsome(def)
 *)
 //
+    val () = tread12_s2cst(s2c)
     val () = tread12_s2exp(def)
 //
 (*
@@ -642,6 +648,7 @@ d2cl.node() of
 | D2Cabstype(s2c, df2) =>
   {
 //
+    val () = tread12_s2cst(s2c)
     val () = tread12_abstdf2(df2)
 //
 (*
