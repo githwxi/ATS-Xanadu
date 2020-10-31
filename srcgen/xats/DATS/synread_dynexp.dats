@@ -113,7 +113,8 @@ d0p0.node() of
   }
 //
 | D0Pparen
-  (tbeg, d0ps, dend) =>
+  ( tbeg
+  , d0ps, dend) =>
   {
 (*
     val () =
@@ -125,7 +126,18 @@ d0p0.node() of
     synread_d0pat_RPAREN(dend)
   }
 //
-| D0Panno(d0p1, s0e2) =>
+| D0Ptuple
+  ( tbeg, topt
+  , d0ps, dend ) =>
+  {
+    val () =
+    synread_d0patlst(d0ps)
+    val () =
+    synread_d0pat_RPAREN(dend)
+  }
+//
+| D0Panno
+  ( d0p1, s0e2 ) =>
   {
     val () = synread_d0pat(d0p1)
     val () = synread_s0exp(s0e2)
@@ -821,17 +833,29 @@ D0Cmacdef
 }
 //
 |
+D0Clocal
+( tbeg, head
+, topt, body, tend) =>
+{
+//
+  val () = synread_d0eclist(head)
+  val () = synread_ifguardlst(head)
+//
+  val () = synread_d0eclist(body)
+  val () = synread_ifguardlst(body)
+//
+}
+//
+|
 D0Cinclude
-( tok0
-, dsrc(*src*)) => ()
+( tok0, dsrc(*src*) ) => ()
 |
 D0Cstaload
-( tok0
-, dsrc(*src*)) => ()
+( tok0, dsrc(*src*) ) => ()
 //
 |
 D0Cabssort
-(tok0, tid0(*name*)) =>
+( tok0, tid0(*name*) ) =>
 {
 (*
   val () =
@@ -858,7 +882,8 @@ D0Cstacst0
 //
 |
 D0Csortdef
-(tok0, tid0, teq1, def2) =>
+( tok0
+, tid0, teq1, def2) =>
 {
 (*
   val () =
@@ -871,8 +896,9 @@ D0Csortdef
 //
 |
 D0Csexpdef
-( tok0, sid0
-, arg0, res0, teq1, def2) =>
+( tok0
+, sid0, arg0
+, res0, teq1, def2) =>
 {
 //
 (*
@@ -1017,6 +1043,18 @@ D0Cexcptcon
 }
 //
 |
+D0Cdatatype
+(tok0, d0ts, wdcs) =>
+{
+  val () =
+    synread_wd0eclseq(wdcs)
+  // end of [val]
+  val () =
+    synread_d0atypelst(d0ts)
+  // end of [val]
+}
+//
+|
 D0Cdynconst
 (tok0, tqas, d0cs) =>
 {
@@ -1031,20 +1069,6 @@ D0Cdynconst
   val () =
     synread_d0cstdeclist(d0cs)
   // end of [val]
-}
-//
-|
-D0Clocal
-( tbeg, head
-, topt, body, tend) =>
-{
-//
-  val () = synread_d0eclist(head)
-  val () = synread_ifguardlst(head)
-//
-  val () = synread_d0eclist(body)
-  val () = synread_ifguardlst(body)
-//
 }
 //
 |
@@ -1558,21 +1582,87 @@ list_foreach$fwork<d0arg><env>
 (
 case+
 d0a.node() of
-| D0ARGnone(tok0) => ()
-| D0ARGsome_sta
-  (tbeg, s0qs, tend) =>
+|
+D0ARGnone(tok0) => ()
+|
+D0ARGsome_sta
+(tbeg, s0qs, tend) =>
+{
+  val () =
+  synread_RBRACE(tend)
+  val () =
   synread_s0qualst(s0qs)
-| D0ARGsome_dyn1
-  (sid) => synread_s0eid(sid)
-| D0ARGsome_dyn2
-  (tbeg, atps, opt2, tend) =>
-  {
-    val () = synread_a0typlst(atps)
-    val () = synread_a0typlstopt(opt2)
-  }
+}
+|
+D0ARGsome_dyn1(sid) =>
+{
+  val () = synread_s0eid(sid)
+}
+|
+D0ARGsome_dyn2
+(tbeg, atps, opt2, tend) =>
+{
+val () = synread_RPAREN(tend)
+val () = synread_a0typlst(atps)
+val () = synread_a0typlstopt(opt2)
+}
 )
 } (* end of [synread_d0arglst] *)
 //
+(* ****** ****** *)
+//
+implement
+synread_wd0eclseq
+  (wdcs) =
+(
+case+ wdcs of
+|
+WD0CSnone() => ()
+|
+WD0CSsome
+(tbeg, topt, d0cs, tend) =>
+{
+  val () = synread_d0eclist(d0cs)
+} (* end of [synread_wd0eclseq] *)
+)
+//
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+synread_d0atypelst
+  (d0ts) =
+(
+list_foreach<d0atype>(d0ts)
+) where
+{
+implement
+(env)//tmp
+list_foreach$fwork<d0atype><env>
+  (d0t, env) =
+{
+  val () =
+  synread_d0eid(deid)
+  val () =
+  synread_t0marglst(tmas)
+  val () =
+    synread_sort0opt(res1)
+  // end of [val]
+  val () = synread_EQ(teq2)
+  val () =
+    synread_d0atconlst(d0cs)
+  // end of [val]
+} where
+{
+  val+
+  D0ATYPE
+  ( deid
+  , tmas
+  , res1 (*sort0opt*)
+  , teq2, d0cs) = d0t.node()
+} (* end of [where] *)
+} (* end of [synread_d0atypelst] *)
+
 (* ****** ****** *)
 //
 implement

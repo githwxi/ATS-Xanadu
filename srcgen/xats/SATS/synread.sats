@@ -610,6 +610,15 @@ synread_a0typlst: synreader(a0typlst)
 fun//{}
 synread_a0typlstopt: synreader(a0typlstopt)
 //
+(* ****** ****** *)
+//
+fun//{}
+synread_wd0eclseq: synreader(wd0eclseq)
+fun//{}
+synread_d0atypelst: synreader(d0atypelst)
+//
+(* ****** ****** *)
+//
 fun//{}
 synread_d0cstdeclist: synreader(d0cstdeclist)
 //
