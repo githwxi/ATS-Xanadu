@@ -32,10 +32,37 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
+impltmp
+bool_print<>(b0) =
+if b0
+then
+g_print<string>("true")
+else
+g_print<string>("false")
+//
+(* ****** ****** *)
+//
+impltmp
+bool_parse<>(rep) =
+(
+case+ rep of
+| "false" => false
+(*
+| "False" => false
+| "FALSE" => false
+| "" => false | "0" => false
+| "ff" => false | "Ff" => false | "FF" => false
+| "nil" => false | "Nil" => false | "NIL" => false
+| "none" => false | "None" => false | "NONE" => false
+| "null" => false | "Null" => false | "NULL" => false
+*)
+| _ (* else *) => true
+)
+//
+(* ****** ****** *)
 impltmp
 g_print<bool> = bool_print<>
-
 (* ****** ****** *)
 
 (* end of [bool.dats] *)

@@ -435,6 +435,12 @@ d3e0.node() of
     (loc0, ": TRERR33(D3Esym0): the possible solutions: ", dpis);
   end
 //
+| D3Esap0
+  (d3e1, s2e2) =>
+  {
+    val () =
+    tread33_d3exp(d3e1)
+  }
 | D3Esap1
   (d3e1, s2e2) =>
   {
