@@ -89,14 +89,17 @@ loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 //
-// (*
+(*
+val () =
+println!
+("tread23_d3exp: loc0 = ", loc0)
 val () =
 println!
 ("tread23_d3exp: d3e0 = ", d3e0)
 val () =
 println!
 ("tread23_d3exp: t2p0 = ", t2p0)
-// *)
+*)
 //
 //
 in
@@ -244,6 +247,51 @@ end // end of [aux_absimpl]
 (* ****** ****** *)
 
 fun
+aux_fundecl
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+// HX-2020-10-31: FIXME!!!
+end // end of [aux_fundecl]
+
+(* ****** ****** *)
+
+fun
+aux_valdecl
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+// HX-2020-10-31: FIXME!!!
+end // end of [aux_valdecl]
+
+(* ****** ****** *)
+
+fun
+aux_vardecl
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+// HX-2020-10-31: FIXME!!!
+end // end of [aux_vardecl]
+
+(* ****** ****** *)
+
+fun
 aux_impdecl1
 ( d3cl
 : d3ecl): void =
@@ -368,11 +416,14 @@ let
 //
 val loc0 = d3cl.loc()
 //
-// (*
+(*
+val () =
+println!
+("tread23_d3ecl: loc0 = ", loc0)
 val () =
 println!
 ("tread23_d3ecl: d3cl = ", d3cl)
-// *)
+*)
 //
 in(*in-of-let*)
 //
@@ -397,11 +448,17 @@ D3Cextern(tok, d3c1) =>
 D3Clocal(head, body) =>
 {
 (*
-val () = tread23_d3eclist(head)
-val () = tread23_d3eclist(body)
+  val () =
+  tread23_d3eclist(head)
+  val () =
+  tread23_d3eclist(body)
 *)
-val () = tread23_d3ecl_D3Clocal(d3cl)
+  val () =
+  tread23_d3ecl_D3Clocal(d3cl)
 } (* end of [D3Clocal] *)
+//
+| D3Cinclude _ => ((*void*))
+| D3Cstaload _ => ((*void*))
 //
 |
 D3Cabsopen _ => aux_absopen(d3cl)
@@ -409,13 +466,20 @@ D3Cabsopen _ => aux_absopen(d3cl)
 D3Cabsimpl _ => aux_absimpl(d3cl)
 //
 |
+D3Cfundecl _ => aux_fundecl(d3cl)
+|
+D3Cvaldecl _ => aux_valdecl(d3cl)
+|
+D3Cvardecl _ => aux_vardecl(d3cl)
+//
+|
 D3Cimpdecl1 _ => aux_impdecl1(d3cl)
 //
 |
 _(* rest-of-d3ecl *) =>
 {
-  val () =
-  println!(loc0, ": tread23_d3ecl(", d3cl, ")")
+val () =
+println!(loc0, ": tread23_d3ecl(", d3cl, ")")
 }
 //
 end // end of [tread23_d3ecl]
@@ -478,7 +542,8 @@ let
 //
 (*
 val () =
-println!("tread23_program")
+println!
+("tread23_program")
 *)
 //
 val () =

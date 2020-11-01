@@ -1249,9 +1249,11 @@ trans3t_decl
 val
 loc0 = d3cl.loc()
 //
+(*
 val () =
 println!
 ("trans3t_decl: d3cl = ", d3cl)
+*)
 //
 in(* in-of-let *)
 //
