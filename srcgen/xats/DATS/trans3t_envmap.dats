@@ -408,9 +408,11 @@ val
 test =
 t2xtvlst_srtck(xtvs, test)
 //
+(*
 val () =
 println!
 ("staload_find_timp: xtvs = ", xtvs)
+*)
 //
 (*
 val () =
@@ -425,31 +427,31 @@ println!
 *)
 //
 in
-  if
-  test
-  then
-  let
+if
+test
+then
+let
 //
-  val () = auxrst(xarg)
+val () = auxrst(xarg)
 //
-  val tsub =
-  ti3env_redo(d3cl, ti3e, targ)
+val tsub =
+ti3env_redo(d3cl, ti3e, targ)
 //
 (*
-  val
-  ((*void*)) =
-  println!
-  ("staload_find_timp: tsub = ", tsub)
+val
+((*void*)) =
+println!
+("staload_find_timp: tsub = ", tsub)
 *)
 //
-  in
-    auxrst(xtvs); // reset
-    Some_vt@(d3cl, s2vs, tsub)
-  end
-  else
-  ( auxrst(xtvs); // reset
-    auxrst(xarg); auxlst(xs, xarg)
-  ) (* end of [else] *) // end-of-if
+in
+  auxrst(xtvs); // reset
+  Some_vt@(d3cl, s2vs, tsub)
+end // end-of-then
+else
+( auxrst(xtvs); // reset
+  auxrst(xarg); auxlst(xs, xarg)
+) (* end of [else] *) // end-of-if
 end // end of [auxlst]
 )
 //
@@ -869,28 +871,28 @@ println!
 *)
 //
 in
-  if
-  test
-  then
-  let
+if
+test
+then
+let
 //
-  val () = auxrst(xarg)
-  val tsub =
-  ti3env_redo(d3cl, ti3e, targ)
+val () = auxrst(xarg)
+val tsub =
+ti3env_redo(d3cl, ti3e, targ)
 (*
-  val
-  ((*void*)) =
-  println!
-  ("implstk_find_timp: tsub = ", tsub)
+val
+((*void*)) =
+println!
+("implstk_find_timp: tsub = ", tsub)
 *)
-  in
-    auxrst(xtvs); // reset
-    Some_vt@(d3cl, s2vs, tsub)
-  end
-  else
-  ( auxrst(xtvs); // reset
-    auxrst(xarg); auxlst(xs, xarg)
-  ) (* end of [else] *) // end-of-if
+in
+  auxrst(xtvs); // reset
+  Some_vt@(d3cl, s2vs, tsub)
+end // end-of-then
+else
+( auxrst(xtvs); // reset
+  auxrst(xarg); auxlst(xs, xarg)
+) (* end of [else] *) // end-of-if
 end // end of [else]
 //
 end // end of [implstk_cons]
@@ -1221,9 +1223,11 @@ val () =
 //
 } where
 {
+(*
 val () =
 println!
 ("implenv_push_timp: d3e0 = ", d3e0)
+*)
 } (* end of [implenv_push_timp] *)
 
 (* ****** ****** *)

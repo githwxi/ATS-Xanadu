@@ -1921,12 +1921,20 @@ the_prelude_load
 , "prelude/SATS/stream_vt.sats")
 //
 (* ****** ****** *)
+//
+(*
+HX-2020-10-31:
+This one also needs to be loaded
+externally for template resolution!
+*)
+//
 val () =
 the_prelude_load
   ( XATSENV
   , 1(*dynamic*)
   , "prelude/DATS/synougat.dats")
 // the_prelude_load
+//
 (* ****** ****** *)
 //
 (*
