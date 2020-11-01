@@ -82,23 +82,23 @@ optn_vt_cons(string_tail_raw(cs))
 //
 (* ****** ****** *)
 impltmp<>
-string_lt<>(x1, x2) = 
+string_lt(x1, x2) = 
 (string_cmp<>(x1, x2) < 0)
 impltmp<>
-string_gt<>(x1, x2) = 
+string_gt(x1, x2) = 
 (string_cmp<>(x1, x2) > 0)
 impltmp<>
-string_eq<>(x1, x2) = 
+string_eq(x1, x2) = 
 (string_cmp<>(x1, x2) = 0)
 (* ****** ****** *)
 impltmp<>
-string_lte<>(x1, x2) = 
+string_lte(x1, x2) = 
 (string_cmp<>(x1, x2) <= 0)
 impltmp<>
-string_gte<>(x1, x2) = 
+string_gte(x1, x2) = 
 (string_cmp<>(x1, x2) >= 0)
 impltmp<>
-string_neq<>(x1, x2) = 
+string_neq(x1, x2) = 
 (string_cmp<>(x1, x2) != 0)
 (* ****** ****** *)
 
