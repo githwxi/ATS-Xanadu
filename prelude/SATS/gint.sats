@@ -46,9 +46,16 @@ gint_print(x: gint(k)): void
 (* ****** ****** *)
 //
 fun<>
-gint_print_sint(x: sint): void
+gint_print_sint(sint): void
 fun<>
-gint_print_uint(u: uint): void
+gint_print_uint(uint): void
+//
+(* ****** ****** *)
+//
+fun<>
+gint_parse_sint(string): sint
+fun<>
+gint_parse_uint(string): uint
 //
 (* ****** ****** *)
 //
