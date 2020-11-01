@@ -2476,7 +2476,7 @@ val-
 D0Cinclude
 (tok, d0e) = d0cl.node()
 //
-// (*
+(*
 //
 val out = stdout_ref
 //
@@ -2496,7 +2496,7 @@ fprintln!(out, "the_filepathlst: ")
 *)
 val (_) = $FP0.the_filpathlst_fprint(out)
 //
-// *)
+*)
 //
 val
 src =
@@ -3237,28 +3237,34 @@ end // end of [aux_datatype]
 and
 aux_d0atype
 ( d0t0
-: d0atype): d1atype = let
+: d0atype
+)
+: d1atype = let
 //
-val loc0 = d0t0.loc()
+val
+loc0 = d0t0.loc()
 //
 in
 //
 case+
 d0t0.node() of
-| D0ATYPE
-  (deid, arg, res, teq, d0cs) => let
+|
+D0ATYPE
+( deid
+, arg1, res2, teq3, d0cs) =>
+let
 //
-    val-
-    I0DNTsome(tok) = deid.node()
+  val-
+  I0DNTsome(tok0) = deid.node()
 //
-    val res = trans01_sortopt(res)
-    val arg = trans01_tmarglst(arg)
+  val res2 = trans01_sortopt(res2)
+  val arg1 = trans01_tmarglst(arg1)
 //
-    val d1cs = trans01_datconlst(d0cs)
+  val d1cs = trans01_datconlst(d0cs)
 //
-  in
-    d1atype_make_node(loc0, D1ATYPE(tok, arg, res, d1cs))
-  end // end of [D0ATYPE]
+in
+  d1atype_make_node(loc0, D1ATYPE(tok0, arg1, res2, d1cs))
+end // end of [D0ATYPE]
 //
 end // end of [aux_d0atype]
 
