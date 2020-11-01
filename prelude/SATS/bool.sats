@@ -58,7 +58,9 @@ bool_mul
 (* ****** ****** *)
 
 fun<>
-bool_print(b0: bool): void
+bool_print(bool): void
+fun<>
+bool_parse(string): bool
 
 (* ****** ****** *)
 //
