@@ -7,7 +7,7 @@ G_print for Xats2js/Node
 function
 XATS2JS_NODE_g_print(obj)
 {
-var
+let
 rep = obj.toString();
 process.stdout.write(rep);
 return; // XATS2JS_NODE_g_print

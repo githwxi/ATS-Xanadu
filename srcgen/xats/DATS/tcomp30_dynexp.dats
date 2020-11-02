@@ -71,11 +71,12 @@ UN = "prelude/SATS/unsafe.sats"
 implement
 tcomp30_program
   (prog0) =
-  (prog1) where
+(
+  H0PKG(hdcls)) where
 {
 //
 val
-prog1 =
+hdcls =
 tcomp30_declist(prog0)
 //
 } (* end of [tcomp30_program] *)
