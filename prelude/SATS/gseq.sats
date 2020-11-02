@@ -236,6 +236,12 @@ fun
 <x0:t0>
 gseq_unrlist_vt(list_vt(x0)): (xs)
 //
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_unstream(stream(x0)): (xs)
 fun
 <xs:t0>
 <x0:t0>

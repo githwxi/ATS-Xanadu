@@ -298,6 +298,17 @@ strtmp_vt_set_at<>(p0, i0, c0)
 (* ****** ****** *)
 //
 impltmp
+string_vt_make_stream
+  (cs) =
+string_vt_make_list_vt(listize(cs))
+impltmp
+string_vt_make_stream_vt
+  (cs) =
+string_vt_make_list_vt(listize(cs))
+//
+(* ****** ****** *)
+//
+impltmp
 <n>(*tmp*)
 string_tabulate
 ( n0 ) =
@@ -453,6 +464,13 @@ impltmp
 gseq_unlist<xs><x0> = string_make_list<>
 impltmp
 gseq_unlist_vt<xs><x0> = string_make_list_vt<>
+
+(* ****** ****** *)
+
+impltmp
+gseq_unstream<xs><x0> = string_make_stream<>
+impltmp
+gseq_unstream_vt<xs><x0> = string_make_stream_vt<>
 
 (* ****** ****** *)
 

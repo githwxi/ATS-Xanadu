@@ -439,14 +439,19 @@ string_vt_make_list_vt
 (cs: list_vt(cgtz, n)): string_vt(n)
 //
 (* ****** ****** *)
-//
+fun<>
+string_make_stream
+  (cs: stream(cgtz)): string
 fun<>
 string_make_stream_vt
   (cs: stream_vt(cgtz)): string
+(* ****** ****** *)
+fun<>
+string_vt_make_stream
+  (cs: stream(cgtz)): string_vt
 fun<>
 string_vt_make_stream_vt
   (cs: stream_vt(cgtz)): string_vt
-//
 (* ****** ****** *)
 //
 fun
