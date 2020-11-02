@@ -18,9 +18,9 @@ function
 XATS2JS_new_exctag
   (    )
 {
-var bas0 =
+let bas0 =
 XATS2JS_excbas;
-var tag1 =
+let tag1 =
 XATS2JS_exctag + 1;
 XATS2JS_exctag = tag1;
 return ( bas0 + tag1 );
@@ -114,9 +114,9 @@ XATS2JS_lval_get
   (lvl0)
 {
 //
-var
+let
 root = lvl0.root;
-var
+let
 offs = lvl0.offs;
 //
 if
@@ -134,8 +134,8 @@ XATS2JS_lval_set
   (lvl0, obj1)
 {
 //
-var root = null;
-var offs = lvl0.offs;
+let root = null;
+let offs = lvl0.offs;
 //
 if
 (
@@ -207,7 +207,7 @@ function
 XATS2JS_new_cptr
   (lvl1, idx2)
 {
-var
+let
 con1 =
 XATS2JS_lval_get(lvl1);
 return {root:con1, offs:idx2}; 
@@ -216,7 +216,7 @@ function
 XATS2JS_new_tptr
   (lvl1, idx2)
 {
-var
+let
 tup1 =
 XATS2JS_lval_get(lvl1);
 if
@@ -248,7 +248,7 @@ XATS2JS_lazy_eval
   (lzobj)
 {
 //
-var lzres;
+let lzres;
 //
 if
 (lzobj.lztag===0)
@@ -493,7 +493,7 @@ XATS2JS_gint_div_sint_sint
   (x1, x2)
 { 
 //
-  var q0 = x1 / x2;
+  let q0 = x1 / x2;
 //
   if
   (q0 >= 0)
@@ -644,9 +644,9 @@ XATS2JS_string_vt2t
   (cs)
 {
 cs.pop(); // remove the last '0'
-var cs =
+let res = // from array to string
 String.fromCharCode.apply(null, cs);
-return cs; // XATS2JS_string_vt2t
+return res; // XATS2JS_string_vt2t
 }
 /* ****** ****** */
 function
@@ -737,6 +737,7 @@ function
 XATS2JS_strtmp_vt_alloc
   (bsz)
 {
+  let
   cs =
   new Array(bsz+1);
   cs[bsz] = 0; return cs;
@@ -753,15 +754,16 @@ function
 XATS2JS_string_forall_cfr
   (cs, f0)
 {
-var
+let i0;
+let
 res = true;
-var
+let
 len = cs.length
 for
 ( i0 = 0
 ; i0 < len; i0 += 1)
 {
-var c0 = cs.charCodeAt(i0);
+let c0 = cs.charCodeAt(i0);
 if
 (!f0(c0)){res = false; break;}
 }
@@ -772,15 +774,16 @@ function
 XATS2JS_string_rforall_cfr
   (cs, f0)
 {
-var
+let i0;
+let
 res = true;
-var
+let
 len = cs.length
 for
 ( i0 = len
 ; i0 >= 1 ; i0 -= 1)
 {
-var c0 = cs.charCodeAt(i0-1);
+let c0 = cs.charCodeAt(i0-1);
 if
 (!f0(c0)){res = false; break;}
 }
@@ -791,9 +794,10 @@ function
 XATS2JS_string_vt_forall_cfr
   (cs, f0)
 {
-var
+let i0;
+let
 res = true;
-var
+let
 len = cs.length
 for
 ( i0 = 0
@@ -809,9 +813,10 @@ function
 XATS2JS_string_vt_rforall_cfr
   (cs, f0)
 {
-var
+let i0;
+let
 res = true;
-var
+let
 len = cs.length;
 for
 ( i0 = len
@@ -838,7 +843,7 @@ function
 XATS2JS_a0ptr_make
   (x0)
 {
-var A0 =
+let A0 =
 XATS2JS_a0ptr_alloc();
 A0[0] = x0; return A0;
 }

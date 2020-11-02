@@ -1036,27 +1036,36 @@ println!("//process_fpath: d3cs = ", d3cs)
 *)
 //
 val
-h0cs = tcomp30_program(d3cs)
+hpkg =
+tcomp30_program(d3cs)
+val+H0PKG(hdcls) = hpkg
 //
 val () =
 let
 fun
 loop
-(h0cs: h0dclist): void =
+( hdcls
+: h0dclist): void =
 (
-case+ h0cs of
+case+
+hdcls of
 |
 list_nil() => ((*void*))
 |
 list_cons
-(h0c1, h0cs) => let
+(hdcl1, hdcls) => let
 val () =
-println!("//", h0c1) in loop(h0cs)
+println!
+("//", hdcl1) in loop(hdcls)
 end
 ) (* end-of-loop *)
 in
-println!
-("//process_fpath: h0cs = "); loop(h0cs)
+loop(hdcls) where
+{
+  val () =
+  println!
+  ("//process_fpath: hdcls = ")
+}
 end (* end of [val] *)
 //
 (* ****** ****** *)

@@ -145,7 +145,7 @@ the_dvarmap_insert_exn
 //
 fun
 tcomp30_program
-(prog: d3eclist): h0dclist
+(prog: d3eclist): h0pkg
 
 (* ****** ****** *)
 //

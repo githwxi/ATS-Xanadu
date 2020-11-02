@@ -934,6 +934,12 @@ overload fprint with fprint_hvardecl
 (* ****** ****** *)
 //
 datatype
+h0pkg =
+H0PKG of (h0dclist)
+//
+(* ****** ****** *)
+//
+datatype
 h0dcl_node =
 //
 |
