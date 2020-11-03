@@ -308,14 +308,21 @@ string_vt_get_next
 *)
 
 (* ****** ****** *)
-
+//
 fun<>
 string_length
 {n:int}(string(n)): int(n)
+//
 fun<>
 string_vt_length
 {n:int}(!string_vt(n)): int(n)
-
+fun<>
+string_vt_length0
+{n:int}(~string_vt(n)): int(n)
+fun<>
+string_vt_length1
+{n:int}(!string_vt(n)): int(n)
+//
 (* ****** ****** *)
 //
 fun<>

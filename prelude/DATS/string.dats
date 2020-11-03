@@ -159,6 +159,31 @@ end
 
 (* ****** ****** *)
 //
+impltmp
+<>(*tmp*)
+string_vt_length =
+string_vt_length1<>
+//
+impltmp
+<>(*tmp*)
+string_vt_length0(cs) =
+let
+val n0 =
+string_vt_length1<>(cs)
+in
+let
+  val () = g_free(cs) in n0
+end
+end (* [string_vt_length0] *)
+//
+impltmp
+<>(*tmp*)
+string_vt_length1(cs) =
+$UN.cast01
+(glseq_length1<string_vt><cgtz>(cs))
+//
+(* ****** ****** *)
+//
 impltmp<>
 string_append
   (xs, ys) =
