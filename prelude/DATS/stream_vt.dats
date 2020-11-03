@@ -67,7 +67,12 @@ g_free<stream_vt(a)> = stream_vt_free<a>
 //
 impltmp
 <a>(*tmp*)
-stream_vt_print(xs) =
+stream_vt_print =
+stream_vt_print0<>
+//
+impltmp
+<a>(*tmp*)
+stream_vt_print0(xs) =
 let
 val len = 
 stream_vt_print$len<>()

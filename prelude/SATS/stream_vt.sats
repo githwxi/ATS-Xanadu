@@ -78,6 +78,11 @@ fun
 stream_vt_print
   (xs: stream_vt(a)): void
 //
+fun
+<a:vt>
+stream_vt_print0
+  (xs: stream_vt(a)): void
+//
 fun<>
 stream_vt_print$len(): sint
 //
