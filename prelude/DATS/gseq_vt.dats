@@ -203,12 +203,14 @@ $UN.p2tr_set<yy>
 end // foldl$fopr
 //
 var r0: yy
+//
+val p0 = $addr(r0)
 val pz =
-glseq_foldl0<xs><x0><r0>(xs, $addr(r0))
+glseq_foldl0<xs><x0><r0>(xs, p0)
 //
 in
 $UN.p2tr_set<yy>
-(pz, list_vt_nil()); $UN.castlin01(r0)
+(pz,list_vt_nil()); $UN.castlin01(r0)
 end // end of [glseq_map0_list/foldl]
 //
 (* ****** ****** *)
