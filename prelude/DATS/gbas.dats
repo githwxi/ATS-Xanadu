@@ -62,6 +62,12 @@ g_print0<a>(x) =
   val () = g_print<a>(x)
 } (* end of [g_print0] *)
 //
+(*
+impltmp
+{a:vt}
+g_print1<a> = g_print<a>
+*)
+//
 (* ****** ****** *)
 //
 impltmp

@@ -198,22 +198,14 @@ end // end of [else]
 
 (* ****** ****** *)
 impltmp
+<>(*tmp*)
 string_listize(cs) =
-let
-val cs =
-string_streamize(cs)
-in
-stream_vt_listize<cgtz>(cs)
-end // end of [string_listize]
+$UN.castlin01(gseq_listize(cs))
 (* ****** ****** *)
 impltmp
+<>(*tmp*)
 string_rlistize(cs) =
-let
-val cs =
-string_streamize(cs)
-in
-stream_vt_rlistize<cgtz>(cs)
-end // end of [string_rlistize]
+$UN.castlin01(gseq_rlistize(cs))
 (* ****** ****** *)
 impltmp
 <>(*tmp*)
@@ -516,6 +508,8 @@ gseq_consq<xs><x0> = string_consq<>
 
 impltmp
 gseq_forall<xs><x0> = string_forall<>
+impltmp
+gseq_streamize<xs><x0> = string_streamize<>
 
 (* ****** ****** *)
 
