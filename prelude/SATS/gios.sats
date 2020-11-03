@@ -27,13 +27,20 @@
 
 (* ****** ****** *)
 //
-// For generic ordering
-//
-(* ****** ****** *)
-//
 // Author: Hongwei Xi
 // Start Time: April, 2020
 // Authoremail: gmhwxiATgmailDOTcom
+//
+(* ****** ****** *)
+//
+// HX-2020-11-03:
+// For SYNCRONOUS programming
+// For instance, this is NOT meant
+// for a language like JavaScript.
+// In particular, this is NOT meant
+// for a programming language system
+// like NodeJS, which primarily support
+// a style of ASYNCHRONOUS programming.
 //
 (* ****** ****** *)
 
