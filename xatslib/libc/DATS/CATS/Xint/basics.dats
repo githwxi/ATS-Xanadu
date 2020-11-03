@@ -3,9 +3,13 @@
 Basics for Xinterp
 *)
 (* ****** ****** *)
-//
 #staload
-"./../../stdio.dats"
+"xatslib\
+/libc/SATS/libc.sats"
+(* ****** ****** *)
+//
+#staload "./../../gios.dats"
+#staload "./../../stdio.dats"
 //
 (* ****** ****** *)
 //
