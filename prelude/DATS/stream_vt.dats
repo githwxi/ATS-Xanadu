@@ -96,7 +96,7 @@ stream_vt_print$rst() = string_print("...")
 //
 impltmp
 {a:vt}
-g_print0<stream_vt(a)> = stream_vt_print<a>
+gl_print0<stream_vt(a)> = stream_vt_print<a>
 //
 (* ****** ****** *)
 
@@ -129,13 +129,18 @@ stream_vt_print$end<>()
 | ~
 strmcon_vt_cons(x0, xs) =>
 let
+//
 val () =
 if
 (i0 > 0)
 then
 stream_vt_print$sep<>()
-val () =
-g_print0<a>(x0) in loop(xs, succ(i0))
+//
+in
+loop(xs, succ(i0)) where
+{
+  val () = gl_print0<a>(x0)
+}
 end // end of [strmcon_vt_cons]
 )
 } (* end of [stream_vt_print_all] *)
@@ -189,13 +194,18 @@ in
 end // end of [then]
 else
 let
+//
 val () =
 if
 (i0 > 0)
 then
 stream_vt_print$sep<>()
-val () =
-g_print0<a>(x0) in loop(xs, succ(i0))
+//
+in
+loop(xs, succ(i0)) where
+{
+  val () = gl_print0<a>(x0)
+}
 end // end of [else]
 ) (* strmcon_vt_cons *)
 } (* end of [stream_vt_print_len] *)

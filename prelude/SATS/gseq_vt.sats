@@ -80,6 +80,30 @@ glseq_uncons_opt
 fun
 <xs:vt>
 <x0:vt>
+glseq_print0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+glseq_print1(xs: !xs): void
+//
+fun
+<xs:vt>
+<x0:vt>
+glseq_print$beg((*void*)): void
+fun
+<xs:vt>
+<x0:vt>
+glseq_print$end((*void*)): void
+fun
+<xs:vt>
+<x0:vt>
+glseq_print$sep((*void*)): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 glseq_length0(~xs): nint
 fun
 <xs:vt>
@@ -278,7 +302,7 @@ glseq_mapstrm0_stream(~xs): stream_vt(y0)
 //
 (* ****** ****** *)
 //
-// For gseq-i-operations
+// For glseq-i-operations
 //
 (* ****** ****** *)
 //

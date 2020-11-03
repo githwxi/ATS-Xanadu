@@ -53,39 +53,37 @@ g_copy(x: !(a)): (a)
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 g_input(): a
 fun
-<a:vt>
+<a:t0>
 g_input_exn
 ((*void*)): a
 fun
-<a:vt>
+<a:t0>
 g_input_opt
 ((*void*)): optn_vt(a)
 //
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_equal(!a, !a): bool
+<a:t0>
+g_equal(a, a): bool
 fun
-<a:vt>
-g_noteq(!a, !a): bool
+<a:t0>
+g_noteq(a, a): bool
 //
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_print(x: !a): void
+<a:t0>
+g_print(x: a): void
 fun
 <a:vt>
-g_print0(x: ~a): void
-(*
+gl_print0(x: ~a): void
 fun
 <a:vt>
-g_print1(x: !a): void
-*)
+gl_print1(x: !a): void
 //
 (* ****** ****** *)
 
