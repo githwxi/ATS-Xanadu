@@ -139,9 +139,15 @@ a0ptr_print$end(): void
 fun
 <a:vt>
 a0ref_print(A0: a0ref(a)): void
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
-a0ptr_print( !a0ptr(a) ): void
+a0ptr_print0(A0: ~a0ptr(a)): void
+fun
+<a:vt>
+a0ptr_print1(A0: !a0ptr(a)): void
 //
 (* ****** ****** *)
 //

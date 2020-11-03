@@ -461,8 +461,7 @@ impltmp
 println1
 ( x1 ) =
 (
-print1
-( x1 ) ; println0<>()
+print1(x1) ; println0<>()
 ) (* end of [println1] *)
 //
 (* ****** ****** *)
