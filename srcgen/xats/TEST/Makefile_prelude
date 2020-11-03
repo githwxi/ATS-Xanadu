@@ -40,10 +40,6 @@ all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gfor.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gfun.sats
-all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/gios.sats
-all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/rand.sats
 
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq.sats
@@ -101,10 +97,6 @@ all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gfor.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gfun.dats
-all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gios.dats
-all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/rand.dats
 
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq.dats
