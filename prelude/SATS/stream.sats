@@ -80,14 +80,22 @@ stream_print_len
 
 fun
 <a:t0>
-stream_length(stream(a)): nint
+stream_length
+(xs: stream(a)): nint
+
+(* ****** ****** *)
+
+fun
+<a:t0>
+stream_listize
+(xs: stream(a)): list_vt(a)
 
 (* ****** ****** *)
 //
 fun
 <a:t0>
 stream_extend
-(stream(a), a): stream(a)
+(xs: stream(a), x0: a): stream(a)
 fun
 <a:t0>
 stream_append

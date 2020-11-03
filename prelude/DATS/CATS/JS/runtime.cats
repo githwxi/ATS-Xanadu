@@ -729,8 +729,7 @@ function
 XATS2JS_string_get_at
   (cs, i0)
 {
-  return cs[i0];
-  // cs: JS_array(char)
+return cs.charCodeAt(i0);
 }
 /* ****** ****** */
 function
@@ -743,11 +742,17 @@ XATS2JS_strtmp_vt_alloc
   cs[bsz] = 0; return cs;
 }
 function
+XATS2JS_string_vt_get_at
+  (cs, i0)
+{
+  return cs[i0];
+  //cs:JS_array(char)
+}
+function
 XATS2JS_strtmp_vt_set_at
   (cs, i0, c0)
 {
-  cs[i0] = c0;
-  return;//cs:JS_array(char)
+  return (cs[i0] = c0);
 }
 /* ****** ****** */
 function

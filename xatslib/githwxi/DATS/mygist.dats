@@ -647,6 +647,21 @@ case+ !cs of
 | ~
 strmcon_vt_nil() =>
 strmcon_vt_nil()
+| ~
+strmcon_vt_cons(c0, cs) =>
+if
+iseol(c0)
+then
+strmcon_vt_cons
+(l1, auxmain0(cs)) where
+{
+  val l1 = string_vt_nil()
+}
+else
+let
+val rs =
+list_vt_sing(c0) in auxmain1(cs, rs)
+end
 )
 and
 auxmain1
