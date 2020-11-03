@@ -27,13 +27,92 @@
 
 (* ****** ****** *)
 //
-// For random values
+// HX-2020-11-03
+// For generating random values
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: June, 2020
 // Authoremail: gmhwxiATgmailDOTcom
+//
+(* ****** ****** *)
+
+#extern
+fun
+<a0:vt>
+g_rand((*void*)): a0
+
+(* ****** ****** *)
+//
+#extern
+fun<>
+rand_seed
+((*void*)): uint
+#extern
+fun<>
+rand_set_nil
+((*void*)): void
+#extern
+fun<>
+rand_set_seed
+( seed : uint ) : void
+//
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+rand_set_nil() =
+let
+val
+seed = rand_seed<>()
+in
+  rand_set_seed<>(seed)
+end
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+nint_rand(): nint
+#extern
+fun<>
+nint_rand$limit(): sintgt(0)
+//
+#extern
+fun<>
+nint_rand_limit
+{n:pos}(l0: int(n)): nintlt(n)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<a:vt>
+list_rand(): list_vt(a)
+#extern
+fun<>
+list_rand$length(): nint
+//
+#extern
+fun
+<a:vt>
+list_rand_length
+{n:nat}(ln: int(n)): list_vt(a,n)
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+string_rand(): string_vt
+#extern
+fun<>
+string_rand$length(): nint
+//
+#extern
+fun<>
+string_rand_length
+{n:nat}(ln: int(n)): string_vt(n)
 //
 (* ****** ****** *)
 
@@ -46,22 +125,10 @@ rand_seed() = 0u
 (* ****** ****** *)
 
 impltmp
-<>(*tmp*)
-rand_set_nil() =
-let
-val
-seed = rand_seed<>()
-in
-rand_set_seed<>(seed)
-end
-
-(* ****** ****** *)
-
-impltmp
-rand<bool>() =
+g_rand<bool>() =
 let
 val tf =
-rand_nint_limit(2)
+nint_rand_limit(2)
 in
 if
 (tf > 0)
@@ -71,10 +138,10 @@ end
 (* ****** ****** *)
 
 impltmp
-rand<char>() =
+g_rand<char>() =
 let
 val n0 =
-rand_nint_limit(256)
+nint_rand_limit(256)
 in
 char_make_sint
 ( if
@@ -83,13 +150,6 @@ char_make_sint
 end
 
 (* ****** ****** *)
-//
-impltmp
-<>(*tmp*)
-rand_nint() =
-rand_nint_limit<>
-(rand_nint$limit<>())
-//
 (*
 HX-2020-06-22:
 the default [1024]
@@ -97,85 +157,93 @@ is randomly chosen
 *)
 impltmp
 <>(*tmp*)
-rand_nint$limit() = 1024
+nint_rand$limit() = 1024
+//
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+nint_rand() =
+nint_rand_limit<>
+(nint_rand$limit<>((*void*)))
 //
 (* ****** ****** *)
 
 impltmp
-rand<sint>() =
+g_rand<sint>() =
 let
 val
 limit =
-rand_nint$limit<>()
+nint_rand$limit<>()
 in
-rand_nint_limit<>(2*limit)-limit
-end // end of [rand<sint>]
+nint_rand_limit<>(2*limit)-limit
+end // end of [g_rand<sint>]
 
 (* ****** ****** *)
 //
 impltmp
 {a0:vt
 ,a1:vt}
-rand<(a0,a1)>() =
+g_rand<(a0,a1)>() =
 let
 val x0 =
-rand<a0>()
+g_rand<a0>()
 val x1 =
-rand<a1>() in @(x0, x1)
+g_rand<a1>() in @(x0, x1)
 end
 impltmp
 {a0:vt
 ,a1:vt}
-rand<$(a0,a1)>() =
+g_rand<$(a0,a1)>() =
 let
 val x0 =
-rand<a0>()
+g_rand<a0>()
 val x1 =
-rand<a1>() in $(x0, x1)
+g_rand<a1>() in $(x0, x1)
 end
 //
 impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}
-rand<(a0,a1,a2)>() =
+g_rand<(a0,a1,a2)>() =
 let
 val x0 =
-rand<a0>()
+g_rand<a0>()
 val x1 =
-rand<a1>()
+g_rand<a1>()
 val x2 =
-rand<a2>() in @(x0, x1, x2)
+g_rand<a2>() in @(x0, x1, x2)
 end
 impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}
-rand<$(a0,a1,a2)>() =
+g_rand<$(a0,a1,a2)>() =
 let
 val x0 =
-rand<a0>()
+g_rand<a0>()
 val x1 =
-rand<a1>()
+g_rand<a1>()
 val x2 =
-rand<a2>() in $(x0, x1, x2)
+g_rand<a2>() in $(x0, x1, x2)
 end
 //
 (* ****** ****** *)
 //
 impltmp
 <a>(*tmp*)
-rand_list() =
-rand_list_length<a>
-(rand_list$length<>())
+list_rand() =
+list_rand_length<a>
+(list_rand$length<>())
 //
 impltmp
 {a:t0}
-rand<list(a)>() =
-list_vt2t(rand_list<a>())
+g_rand<list(a)>() =
+list_vt2t(list_rand<a>())
 impltmp
 {a:vt}
-rand<list_vt(a)> = rand_list<a>
+g_rand<list_vt(a)> = list_rand<a>
 //
 (* ****** ****** *)
 //
@@ -187,36 +255,36 @@ is randomly chosen
 //
 impltmp
 <>(*tmp*)
-rand_list$length() =
-(rand_nint_limit<>(16))
+list_rand$length() =
+(nint_rand_limit<>(16))
 //
 (* ****** ****** *)
 //
 impltmp
 <a>(*tmp*)
-rand_list_length
+list_rand_length
 ( ln ) =
 (
 gint_map_list_nint<a>(ln)
 ) where
 {
 impltmp
-map$fopr<int><a>(_) = rand<a>()
+map$fopr<int><a>(_) = g_rand<a>()
 }
 //
 (* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
-rand_string() =
-rand_string_length<>
-(rand_string$length<>())
+string_rand() =
+string_rand_length<>
+(string_rand$length<>())
 //
 impltmp
-rand<string>() =
-string_vt2t(rand_string<>())
+g_rand<string>() =
+string_vt2t(string_rand<>())
 impltmp
-rand<string_vt> = rand_string<>
+g_rand<string_vt> = string_rand<>
 //
 (* ****** ****** *)
 
