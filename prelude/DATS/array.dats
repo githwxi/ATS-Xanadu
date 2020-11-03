@@ -56,13 +56,18 @@ end
 (* ****** ****** *)
 //
 impltmp
-<a:t0>
+<a:vt>
 a0ref_print(A0) =
 let
+val x0 = a0ref_get<a>(A0)
+val x0 = $UN.castlin10{a}(x0)
+//
 val () = a0ref_print$beg<>()
-val () = g_print<a>(get(A0))
+val () = gl_print0<a>(x0)
 val () = a0ref_print$end<>()
-end
+//
+val x0 = $UN.castlin10{?a}(x0)
+end (* end of [a0ref_print] *)
 //
 impltmp
 <>(*tmp*)
@@ -73,8 +78,21 @@ a0ref_print$end() = string_print("]")
 //
 (* ****** ****** *)
 impltmp
-{a:t0}
+{a:vt}
 g_print<a0ref(a)> = a0ref_print<a>
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+a0ptr_print$beg() = string_print("[")
+impltmp
+<>(*tmp*)
+a0ptr_print$end() = string_print("]")
+//
+(* ****** ****** *)
+impltmp
+{a:vt}
+gl_print1<a0ptr(a)> = a0ptr_print1<a>
 (* ****** ****** *)
 (*
 **HX: 1-dimensional
