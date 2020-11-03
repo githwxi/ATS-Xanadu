@@ -283,6 +283,8 @@ fun<>
 string_vt_print(!string_vt): void
 fun<>
 string_vt_print0(~string_vt): void
+fun<>
+string_vt_print1(!string_vt): void
 //
 (* ****** ****** *)
 
@@ -409,6 +411,11 @@ fun<>
 strtmp_vt_alloc
 {n:nat}
 (bsz: sint(n)): strtmp_vt(n)
+//
+(* ****** ****** *)
+//
+fun<>
+string_vt_free(string_vt): void
 //
 (* ****** ****** *)
 
@@ -547,6 +554,8 @@ print with string_print of 1000
 print with string_vt_print of 1000
 #symload
 print0 with string_vt_print0 of 1000
+#symload
+print1 with string_vt_print1 of 1000
 //
 (* ****** ****** *)
 //

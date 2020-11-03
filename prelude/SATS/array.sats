@@ -131,10 +131,6 @@ fun<>
 a0ref_print$beg(): void
 fun<>
 a0ref_print$end(): void
-fun<>
-a0ptr_print$beg(): void
-fun<>
-a0ptr_print$end(): void
 //
 fun
 <a:vt>
@@ -142,6 +138,14 @@ a0ref_print(A0: a0ref(a)): void
 //
 (* ****** ****** *)
 //
+fun<>
+a0ptr_print$beg(): void
+fun<>
+a0ptr_print$end(): void
+//
+fun
+<a:vt>
+a0ptr_print(A0: !a0ptr(a)): void
 fun
 <a:vt>
 a0ptr_print0(A0: ~a0ptr(a)): void
@@ -400,16 +404,16 @@ a0ptr with a0ptr_make of 1000
 (* ****** ****** *)
 
 #symload
-print with a0ref_print of 1000
+head with a1ref_head of 1000
 #symload
-print with a0ptr_print of 1000
+tail with a1ref_tail of 1000
 
 (* ****** ****** *)
 
 #symload
-head with a1ref_head of 1000
+print with a0ref_print of 1000
 #symload
-tail with a1ref_tail of 1000
+print with a0ptr_print of 1000
 
 (* ****** ****** *)
 (*

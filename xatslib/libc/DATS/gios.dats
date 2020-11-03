@@ -27,47 +27,100 @@
 
 (* ****** ****** *)
 //
+// For generic ordering
+//
+(* ****** ****** *)
+//
 // Author: Hongwei Xi
 // Start Time: April, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#staload
+"xatslib\
+/libc/SATS/gios.sats"
+(* ****** ****** *)
+#staload
+"xatslib\
+/libc/DATS/stdio.dats"
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+g_inp_char() =
+fgetc_ref(g_stdin<>())
+
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+g_inp_cstream() =
+(
+  auxmain(g_stdin<>())
+) where
+{
 //
-// HX-2020-11-03:
-// For SYNCRONOUS programming
-// For instance, this is NOT meant
-// for a language like JavaScript.
-// In particular, this is NOT meant
-// for a programming language system
-// like NodeJS, which primarily support
-// a style of ASYNCHRONOUS programming.
+fun
+auxmain
+(
+fr: FILEref
+) : stream_vt(int) =
+$llazy
+(
+let
+val c0 = fgetc_ref(fr)
+in
+  if
+  (c0 < 0) // EOF
+  then
+  strmcon_vt_nil((*void*))
+  else
+  strmcon_vt_cons(c0, auxmain(fr))
+end // end of [let]
+)
+//
+} (* end of [g_inp_chars] *)
+
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+g_inp_line_list() =
+list_vt2t{char}(g_inp_lline_list<>())
 //
 (* ****** ****** *)
 
-fun<>
-g_stdin(): FILEref
-fun<>
-g_stdout(): FILEref
-fun<>
-g_stderr(): FILEref
+impltmp
+<>(*tmp*)
+g_inp_lline_list() =
+let
+//
+val EOL = '\n'
+//
+fun
+loop
+( cs
+: list_vt(char)): list_vt(char) =
+let
+val c0 = g_inp_char<>()
+in
+  if
+  (c0 >= 0)
+  then
+  let
+  val c0 = char(c0)
+  in
+  if
+  (c0 = EOL)
+  then cs else loop(list_vt_cons(c0, cs))
+  end
+  else cs // end of [else]
+end
+//
+in
+  list_vt_reverse<char>(loop(list_vt_nil()))
+end // end of [g_inp_lline_list]
 
 (* ****** ****** *)
 
-fun<>
-g_inp_char(): sint
-fun<>
-g_inp_cstream(): stream_vt(sint)
-
-(* ****** ****** *)
-fun<>
-g_inp_line(): string
-fun<>
-g_inp_lline(): string_vt
-(* ****** ****** *)
-fun<>
-g_inp_line_list(): list(char)
-fun<>
-g_inp_lline_list(): list_vt(char)
-(* ****** ****** *)
-
-(* end of [gios.sats] *)
+(* end of [gios.dats] *)

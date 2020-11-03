@@ -987,17 +987,5 @@ a1ptr_view(a:vt,l:a0,n:i0)
 sexpdef arrvw = a1ptr_view
 //
 (* ****** ****** *)
-//
-abstype
-FILEref_tbox <= ptr
-absvwtp
-FILEptr_vtbx(l:addr) <= ptr
-//
-typedef FILEref = FILEref_tbox
-sexpdef FILEptr = FILEref_vtbx
-vwtpdef FILEptr0 = [l:addr] FILEptr(l)
-vwtpdef FILEptr1 = [l:agtz] FILEptr(l)
-//
-(* ****** ****** *)
 
 (* end of [basics.sats] *)
