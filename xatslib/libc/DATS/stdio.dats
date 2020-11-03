@@ -36,6 +36,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#staload
+"xatslib\
+/libc/SATS/libc.sats"
+(* ****** ****** *)
 
 #extern
 fun<>

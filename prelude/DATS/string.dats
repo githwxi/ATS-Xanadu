@@ -130,6 +130,34 @@ gseq_print<string><cgtz>(cs)
 end // end of [string_print]
 
 (* ****** ****** *)
+//
+impltmp<>
+string_vt_print =
+string_vt_print1<>
+impltmp<>
+string_vt_print0(cs) =
+(
+  string_vt_free<>(cs)
+) where
+{
+  val () =
+  string_vt_print1<>(cs)
+}
+//
+impltmp<>
+string_vt_print1(cs) =
+let
+impltmp
+glseq_print$beg<>() = ()
+impltmp
+glseq_print$sep<>() = ()
+impltmp
+glseq_print$end<>() = ()
+in
+glseq_print1<string_vt><cgtz>(cs)
+end // end of [string_print1]
+//
+(* ****** ****** *)
 
 impltmp<>
 string_length

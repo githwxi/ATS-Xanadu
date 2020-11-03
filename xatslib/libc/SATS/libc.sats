@@ -27,13 +27,21 @@
 
 (* ****** ****** *)
 //
-// For generic ordering
-//
-(* ****** ****** *)
-//
 // Author: Hongwei Xi
 // Start Time: April, 2020
 // Authoremail: gmhwxiATgmailDOTcom
+//
+(* ****** ****** *)
+//
+abstype
+FILEref_tbox <= ptr
+absvwtp
+FILEptr_vtbx(l:addr) <= ptr
+//
+typedef FILEref = FILEref_tbox
+sexpdef FILEptr = FILEref_vtbx
+vwtpdef FILEptr0 = [l:addr] FILEptr(l)
+vwtpdef FILEptr1 = [l:agtz] FILEptr(l)
 //
 (* ****** ****** *)
 
