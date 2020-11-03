@@ -212,7 +212,7 @@ if
 then
 stream_print$sep<>()
 val () =
-g_print0<a>(x0) in loop(xs, succ(i0))
+g_print<a>(x0) in loop(xs, succ(i0))
 end // end of [else]
 ) (* strmcon_cons *)
 } (* end of [stream_print_len] *)

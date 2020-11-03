@@ -34,14 +34,14 @@ the circular beauty :)
 *)
 //
 impltmp
-{a:vt}
+{a:t0}
 g_equal<a>
   (x, y) =
 (
 not(g_noteq<a>(x, y))
 )
 impltmp
-{a:vt}
+{a:t0}
 g_noteq<a>
   (x, y) =
 (
@@ -50,23 +50,21 @@ not(g_equal<a>(x, y))
 //
 (* ****** ****** *)
 impltmp
-{a:vt}
+{a:t0}
 g_equal<a> = gl_eq11<a>
 (* ****** ****** *)
 //
 impltmp
 {a:vt}
-g_print0<a>(x) =
+gl_print0<a>(x) =
 ( g_free<a>(x) ) where
 {
-  val () = g_print<a>(x)
-} (* end of [g_print0] *)
+val () = gl_print1<a>(x)
+} (* end of [gl_print0] *)
 //
-(*
 impltmp
-{a:vt}
-g_print1<a> = g_print<a>
-*)
+{a:t0}
+gl_print1<a> = g_print<a>
 //
 (* ****** ****** *)
 //

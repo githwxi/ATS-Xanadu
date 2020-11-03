@@ -876,7 +876,27 @@ impltmp
 {a:vt}
 glseq_rlistize0
 <list_vt(a)><a>(xs) =
-list_vt_reverse<a>( xs )
+( list_vt_reverse<a>( xs ) )
+//
+(* ****** ****** *)
+//
+impltmp
+{a:vt}
+gl_print1<list_vt(a)> =
+glseq_print1<list_vt(a)><a>
+//
+impltmp
+{a:vt}
+glseq_print$beg
+<list_vt(a)><a>() = string_print("(")
+impltmp
+{a:vt}
+glseq_print$end
+<list_vt(a)><a>() = string_print(")")
+impltmp
+{a:vt}
+glseq_print$sep
+<list_vt(a)><a>() = string_print(",")
 //
 (* ****** ****** *)
 

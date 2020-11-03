@@ -69,6 +69,52 @@ optn_vt_cons
 
 impltmp
 <xs><x0>
+glseq_print1(xs) =
+let
+//
+val () =
+glseq_print$beg<xs><x0>()
+//
+val () =
+(
+  glseq_iforeach1<xs><x0>(xs)
+) where
+{
+//
+impltmp
+iforeach1$work<x0>
+  (i0, x0) =
+(
+  gl_print1<x0>(x0)
+) where
+{
+  val () =
+  if
+  (i0 > 0)
+  then glseq_print$sep<xs><x0>()
+} (* where *)
+//
+} (* where *)
+//
+val () =
+glseq_print$end<xs><x0>((*void*))
+//
+endlet (* end of [glseq_print1] *)
+
+(* ****** ****** *)
+impltmp
+<xs><x0>
+glseq_print$beg() = string_print("(")
+impltmp
+<xs><x0>
+glseq_print$end() = string_print(")")
+impltmp
+<xs><x0>
+glseq_print$sep() = string_print(",")
+(* ****** ****** *)
+
+impltmp
+<xs><x0>
 glseq_length0(xs) =
 (
 glseq_foldl0

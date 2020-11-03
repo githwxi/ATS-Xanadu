@@ -269,7 +269,7 @@ impltmp
 <a1>
 print1(x1) = () where
 {
-  val () = g_print<a1>(x1)
+  val () = gl_print1<a1>(x1)
 }
 //
 (* ****** ****** *)
@@ -281,8 +281,8 @@ print2
 ( x1
 , x2 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
 }
 //
 (* ****** ****** *)
@@ -296,9 +296,9 @@ print3
 , x2
 , x3 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
+  val () = gl_print1<a3>(x3)
 }
 //
 (* ****** ****** *)
@@ -314,10 +314,10 @@ print4
 , x3
 , x4 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
+  val () = gl_print1<a3>(x3)
+  val () = gl_print1<a4>(x4)
 }
 //
 (* ****** ****** *)
@@ -335,11 +335,11 @@ print5
 , x4
 , x5 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
+  val () = gl_print1<a3>(x3)
+  val () = gl_print1<a4>(x4)
+  val () = gl_print1<a5>(x5)
 }
 //
 (* ****** ****** *)
@@ -359,12 +359,12 @@ print6
 , x5
 , x6 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
-  val () = g_print<a6>(x6)
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
+  val () = gl_print1<a3>(x3)
+  val () = gl_print1<a4>(x4)
+  val () = gl_print1<a5>(x5)
+  val () = gl_print1<a6>(x6)
 }
 //
 (* ****** ****** *)
@@ -383,13 +383,13 @@ print7
 , x4, x5
 , x6, x7 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
-  val () = g_print<a6>(x6)
-  val () = g_print<a7>(x7)
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
+  val () = gl_print1<a3>(x3)
+  val () = gl_print1<a4>(x4)
+  val () = gl_print1<a5>(x5)
+  val () = gl_print1<a6>(x6)
+  val () = gl_print1<a7>(x7)
 }
 //
 (* ****** ****** *)
@@ -409,14 +409,14 @@ print8
 , x5, x6
 , x7, x8 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
-  val () = g_print<a6>(x6)
-  val () = g_print<a7>(x7)
-  val () = g_print<a8>(x8)
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
+  val () = gl_print1<a3>(x3)
+  val () = gl_print1<a4>(x4)
+  val () = gl_print1<a5>(x5)
+  val () = gl_print1<a6>(x6)
+  val () = gl_print1<a7>(x7)
+  val () = gl_print1<a8>(x8)
 }
 //
 (* ****** ****** *)
@@ -438,22 +438,22 @@ print9
 , x6, x7
 , x8, x9 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
-  val () = g_print<a6>(x6)
-  val () = g_print<a7>(x7)
-  val () = g_print<a8>(x8)
-  val () = g_print<a9>(x9)
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
+  val () = gl_print1<a3>(x3)
+  val () = gl_print1<a4>(x4)
+  val () = gl_print1<a5>(x5)
+  val () = gl_print1<a6>(x6)
+  val () = gl_print1<a7>(x7)
+  val () = gl_print1<a8>(x8)
+  val () = gl_print1<a9>(x9)
 }
 //
 (* ****** ****** *)
 impltmp
 println0
 <>(*tmp*)
-((*_*)) = g_print("\n")
+((*_*)) = gl_print1("\n")
 (* ****** ****** *)
 //
 impltmp

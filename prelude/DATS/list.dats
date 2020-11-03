@@ -638,11 +638,8 @@ g_cmp<list(a)> = gseq_cmp<list(a)><a>
 //
 impltmp
 {a:t0}
-g_print<list(a)>(xs) =
-let
-val () =
-gseq_print<list(a)><a>(xs)
-end // end of [g_print]
+g_print<list(a)> =
+gseq_print<list(a)><a>
 //
 impltmp
 {a:t0}
