@@ -19,6 +19,10 @@ all_libc:: ; \
 $(XATSOPT) -s $(XATSLIB)/githwxi/SATS/libc.sats
 ######
 all_libc:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/gios.dats
+all_libc:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/rand.dats
+all_libc:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/stdio.dats
 ######
 all_githwxi:: ; \

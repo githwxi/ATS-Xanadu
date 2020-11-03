@@ -27,6 +27,12 @@
 
 (* ****** ****** *)
 
+#staload
+"xatslib\
+/libc/DATS/rand.dats"
+
+(* ****** ****** *)
+
 #extern
 fun
 <a0:vt>
@@ -48,7 +54,7 @@ mytest_arg
 ( arg ) where
 {
 val
-arg = rand<a0>()
+arg = g_rand<a0>()
 //
 (*
 val () =
