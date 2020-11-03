@@ -38,11 +38,46 @@
 (* ****** ****** *)
 #staload
 "xatslib\
-/libc/SATS/gios.sats"
+/libc/SATS/libc.sats"
 (* ****** ****** *)
 #staload
 "xatslib\
 /libc/DATS/stdio.dats"
+(* ****** ****** *)
+
+#extern
+fun<>
+g_stdin(): FILEref // STDIN=0
+#extern
+fun<>
+g_stdout(): FILEref // STDOUT=1
+#extern
+fun<>
+g_stderr(): FILEref // STDERR=2
+
+(* ****** ****** *)
+
+#extern
+fun<>
+g_inp_char(): sint
+#extern
+fun<>
+g_inp_cstream(): stream_vt(sint)
+
+(* ****** ****** *)
+#extern
+fun<>
+g_inp_line(): string
+#extern
+fun<>
+g_inp_lline(): string_vt
+(* ****** ****** *)
+#extern
+fun<>
+g_inp_line_list(): list(char)
+#extern
+fun<>
+g_inp_lline_list(): list_vt(char)
 (* ****** ****** *)
 
 impltmp
