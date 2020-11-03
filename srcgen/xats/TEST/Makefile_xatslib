@@ -1,6 +1,7 @@
 ######
 #
-# For testing the files in prelude
+# For testing
+# the files in xatslib
 #
 ######
 
@@ -26,7 +27,8 @@ $(XATSOPT) -s $(XATSLIB)/githwxi/SATS/githwxi.sats
 all_githwxi:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/mygist.dats
 all_githwxi:: ; \
-$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/mygist.dats
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/mytest.dats
+######
 all_githwxi:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/gtree1.dats
 all_githwxi:: ; \
@@ -35,4 +37,4 @@ all_githwxi:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/parcmbr1.dats
 ######
 
-###### end of [Makefile_prelude] ######
+###### end of [Makefile_xatslib] ######
