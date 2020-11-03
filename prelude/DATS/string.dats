@@ -117,6 +117,21 @@ string_neq(x1, x2) =
 (* ****** ****** *)
 
 impltmp<>
+string_print(cs) =
+let
+impltmp
+gseq_print$beg<>() = ()
+impltmp
+gseq_print$sep<>() = ()
+impltmp
+gseq_print$end<>() = ()
+in
+gseq_print<string><cgtz>(cs)
+end // end of [string_print]
+
+(* ****** ****** *)
+
+impltmp<>
 string_length
   (xs) =
 (
