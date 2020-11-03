@@ -9,6 +9,7 @@ Basics for Xinterp
 (* ****** ****** *)
 //
 #staload "./../../gios.dats"
+#staload "./../../rand.dats"
 #staload "./../../stdio.dats"
 //
 (* ****** ****** *)
@@ -53,5 +54,15 @@ impltmp
 fputc_ref<> = XINTERP_fputc_ref
 //
 (* ****** ****** *)
+//
+#extern
+fun
+XINTERP_nint_rand_limit
+{n:pos}(limit: int(n)): nintlt(n)
+//
+impltmp
+nint_rand_limit<> = XINTERP_nint_rand_limit
+//
+(* ****** ****** *)
 
-(* end of [XINTERP_basics.dats] *)
+(* end of [XINTERP_libc_basics.dats] *)

@@ -687,15 +687,5 @@ a1ptr_set_at_raw<a>
 XINTERP_a1ptr_set_at_raw{a}(A0, i0, x0)
 //
 (* ****** ****** *)
-//
-#extern
-fun
-XINTERP_rand_nint_limit
-{n:pos}(limit: int(n)): nintlt(n)
-//
-impltmp
-rand_nint_limit<> = XINTERP_rand_nint_limit
-//
-(* ****** ****** *)
 
-(* end of [XINTERP_runtime.dats] *)
+(* end of [XINTERP_basics.dats] *)
