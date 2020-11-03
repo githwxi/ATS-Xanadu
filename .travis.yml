@@ -41,13 +41,13 @@ script:
   - ./configure&&make CC=${GCC} all
   # Building Xanadu
   - cd ${XATSHOME}/srcgen
-  - echo 'running unit-tests...'
-  - (cd xutl/TEST && make testall)
-  - (cd xutl/TEST/Posix && make testall)
   - echo 'building ATS-Xanadu...'
   - (cd xats && make all)
-  - echo 'running integration tests...'
-  - (cd xats/TEST && make XATSOPT=./../xatsopt testall)
+  - echo 'running xutl unit-tests...'
+  - (cd xutl/TEST && make testall)
+  - (cd xutl/TEST/Posix && make testall)
+  - echo 'running xats unit-tests...'
+  - (cd xats/TEST && make XATSOPT=./../xatsopt -f Makefile_test all)
 
 after_script:
   - date
