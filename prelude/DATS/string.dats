@@ -45,6 +45,20 @@ UN =
 "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
+//
+impltmp<>
+string_nil() =
+string_make_list<>
+(list_nil())
+//
+(* ****** ****** *)
+//
+impltmp<>
+string_vt_nil() =
+string_vt_make_list_vt<>
+(list_vt_nil())
+//
+(* ****** ****** *)
 
 impltmp<>
 string_nilq(cs) =

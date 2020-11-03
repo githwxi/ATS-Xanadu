@@ -5,6 +5,23 @@
 //
 (* ****** ****** *)
 //
+#extern
+fun
+<a1:vt>
+free1( x1: ~a1): void
+//
+(* ****** ****** *)
+//
+#symload free with free1
+//
+(* ****** ****** *)
+//
+impltmp
+<a1>
+free1(x1) = g_free<a1>(x1)
+//
+(* ****** ****** *)
+//
 (*
 HX:
 for overloading

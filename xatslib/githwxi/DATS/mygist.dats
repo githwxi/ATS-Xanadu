@@ -579,7 +579,8 @@ HX: the code has moved into prelude/gseq.dats
 *)
 implement
 <cz:type>
-gseq_concat_string(cz) =
+gseq_concat_string
+  (cz) =
 let
 typedef c0 = cgtz
 typedef cs = string
@@ -588,6 +589,106 @@ string_vt_make_stream_vt<>
 (stream_vt_gconcat<c0,cs>(gseq_streamize<cs,cz>(cz)))
 end // end of [gseq_concat_string]
 *)
+(* ****** ****** *)
+//
+// HX-2020-11-02
+// Turning a string into lines
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+string_split_lines
+(cs:string): stream_vt(string_vt)
+#extern
+fun<>
+string_vt_split_lines
+(cs:string_vt): stream_vt(string_vt)
+//
+(* ****** ****** *)
+vwtpdef
+cstream_vt = stream_vt(cgtz)
+#extern
+fun<>
+cstream_vt_split_lines
+(cs:cstream_vt): stream_vt(string_vt)
+(* ****** ****** *)
+impltmp
+<>(*tmp*)
+string_split_lines(cs) =
+cstream_vt_split_lines(streamize(cs))
+impltmp
+<>(*tmp*)
+string_vt_split_lines(cs) =
+cstream_vt_split_lines(streamize(cs))
+(* ****** ****** *)
+impltmp
+<>(*tmp*)
+cstream_vt_split_lines
+  (cs) =
+(
+  auxmain0(cs)
+) where
+{
+fun
+iseol
+( c0
+: cgtz )
+: bool = (c0 = '\n')
+fun
+auxmain0
+( cs
+: cstream_vt)
+: stream_vt(string_vt) =
+$llazy
+(
+free(cs);
+case+ !cs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+)
+and
+auxmain1
+( cs
+: cstream_vt
+, rs
+: list_vt(cgtz))
+: strmcon_vt(string_vt) =
+(
+case+ !cs of
+| ~
+strmcon_vt_nil() =>
+(
+strmcon_vt_sing(l1)
+) where
+{
+val rs =
+list_vt_reverse(rs)
+val l1 =
+string_vt_make_list_vt(rs)
+}
+| ~
+strmcon_vt_cons(c0, cs) =>
+if
+iseol(c0)
+then
+let
+val rs =
+list_vt_reverse(rs)
+val l1 =
+string_vt_make_list_vt(rs)
+in
+  strmcon_vt_cons(l1, auxmain0(cs))
+end
+else 
+(
+  auxmain1(cs, list_vt_cons(c0, rs))
+)
+)
+
+} (* end of [cstream_vt_split_lines] *)
+
 (* ****** ****** *)
 
 (* end of [mygist.dats] *)
