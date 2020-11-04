@@ -59,7 +59,6 @@ FP0 = "./../SATS/filpath.sats"
   dpath_make = $FP0.dirpath_make
   macdef
   fpath_dname = $FP0.filpath_get_dirname
-
 //
 #staload
 GLO = "./../SATS/global.sats"
@@ -1847,17 +1846,6 @@ the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "prelude/SATS/gflt.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gios.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/rand.sats")
 //
 val () =
 the_prelude_load
