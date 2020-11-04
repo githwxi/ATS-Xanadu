@@ -1966,14 +1966,14 @@ trans01_vardeclist
   (d0cs) =
 list_vt2t(d1cs) where
 {
-  val
-  d1cs =
-  list_map<v0ardecl><v1ardecl>
-    (d0cs) where
-  {
-    implement
-    list_map$fopr<v0ardecl><v1ardecl> = trans01_vardecl
-  }
+val
+d1cs =
+list_map<v0ardecl><v1ardecl>
+  (d0cs) where
+{
+implement
+list_map$fopr<v0ardecl><v1ardecl> = trans01_vardecl
+}
 } (* end of [trans01_vardeclist] *)
 
 (* ****** ****** *)

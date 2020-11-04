@@ -4023,13 +4023,18 @@ val
 isr =
 (
 ifcase
-| isr > 0 => true
-| isr < 0 => false
-| _(* else *) =>
-  let
-  val-
-  T_FUN(fnk) = knd.node() in funkind_isrec(fnk)
-  end
+|
+isr > 0 => true
+|
+isr < 0 => false
+|
+_(* else *) =>
+(
+funkind_isrec(fnk)
+) where
+{
+val-T_FUN(fnk) = knd.node()
+}
 ) : bool // endval
 //
 val
