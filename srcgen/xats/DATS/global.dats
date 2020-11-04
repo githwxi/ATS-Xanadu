@@ -63,8 +63,11 @@ then
 strptr2string(XATSHOME)
 else
 let
+//
+// XATSHOME is undefined!
+//
 prval () =
-strptr_free_null(XATSHOME) in ""(*UNDEF*)
+strptr_free_null(XATSHOME) in ""
 end (* end of [if] *)
 //
 end (* end of [the_XATSHOME_get *)
