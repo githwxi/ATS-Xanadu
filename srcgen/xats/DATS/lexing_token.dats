@@ -355,6 +355,8 @@ case+ tnd of
 //
 | T_SRP_SYMLOAD() => fprint(out, "#SYMLOAD")
 //
+| T_SRP_EXTNAME() => fprint(out, "#EXTNAME")
+//
 ) (* end of [fprint_tnode] *)
 //
 (* ****** ****** *)
@@ -629,6 +631,8 @@ case+ tnd of
 | T_SRP_DYNLOAD() => fprint(out, "#dynload")
 //
 | T_SRP_SYMLOAD() => fprint(out, "#symload")
+//
+| T_SRP_EXTNAME() => fprint(out, "#extname")
 //
 ) (* end of [fprint2_tnode] *)
 //

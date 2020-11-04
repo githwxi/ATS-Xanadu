@@ -274,6 +274,8 @@ tnode =
 //
   | T_SRP_SYMLOAD of () // #symload
 //
+  | T_SRP_EXTNAME of () // #extname
+//
 abstbox token_tbox = $tup((*void*))
 //
 (*
