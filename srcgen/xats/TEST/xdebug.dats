@@ -14,6 +14,14 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+#extern
+fun
+foo(x: int): int = #xref(_)
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
+
 fun
 foo(xs: list(int)): bool =
 (
