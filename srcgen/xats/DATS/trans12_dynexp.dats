@@ -4109,9 +4109,9 @@ isext
 (
 case+
 d1e1.node() of
-| D1Eexport _ => true
+| D1Eexname _ => true
 |
-_ (*non-D1Eexport*) => false
+_ (*non-D1Eexname*) => false
 )
 //
 fun
@@ -4176,9 +4176,9 @@ Some(d1e) =>
 case+
 d1e.node() of
 |
-D1Eexport(g1e) => Some(g1e)
+D1Eexname(g1e) => Some(g1e)
 |
-_(*D1Eexport*) => None(*void*)
+_(*D1Eexname*) => None(*void*)
 )
 ) : g1expopt // end-of-val
 //

@@ -344,7 +344,7 @@ case+ tnd of
 //
 | T_SRP_STATIC() => fprint(out, "#STATIC")
 | T_SRP_EXTERN() => fprint(out, "#EXTERN")
-| T_DLR_EXPORT() => fprint(out, "$EXPORT")
+| T_DLR_EXNAME() => fprint(out, "$EXNAME")
 //
 | T_SRP_DEFINE() => fprint(out, "#DEFINE")
 | T_SRP_MACDEF() => fprint(out, "#MACDEF")
@@ -616,11 +616,11 @@ case+ tnd of
 | T_SRP_FIXITY(knd) =>
   fprint!(out, "#fixity(", knd, ")")
 //
-| T_SRP_STACST() => fprint!(out, "#stacst")
+| T_SRP_STACST() => fprint(out, "#stacst")
 //
-| T_SRP_STATIC() => fprint!(out, "#static")
-| T_SRP_EXTERN() => fprint!(out, "#extern")
-| T_DLR_EXPORT() => fprint(out, "$export")
+| T_SRP_STATIC() => fprint(out, "#static")
+| T_SRP_EXTERN() => fprint(out, "#extern")
+| T_DLR_EXNAME() => fprint(out, "$exname")
 //
 //
 | T_SRP_DEFINE() => fprint!(out, "#define")

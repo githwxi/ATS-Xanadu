@@ -19,7 +19,7 @@ XINTERP_bool_neg
 ( b0
 : bool(b0)
 )
-: bool(~b0) // = $ext()
+: bool(~b0) = $export()
 impltmp
 bool_neg<> = XINTERP_bool_neg
 //
@@ -32,9 +32,8 @@ XINTERP_bool_add
 ( b1
 : bool(b1)
 , b2
-: bool(b2)
-)
-: bool(b1+b2) // = $ext()
+: bool(b2))
+: bool(b1+b2) = $export()
 #extern
 fun
 XINTERP_bool_mul
@@ -42,9 +41,8 @@ XINTERP_bool_mul
 ( b1
 : bool(b1)
 , b2
-: bool(b2)
-)
-: bool(b1*b2) // = $ext()
+: bool(b2))
+: bool(b1*b2) = $export()
 //
 impltmp
 bool_add<> = XINTERP_bool_add
@@ -57,7 +55,7 @@ bool_mul<> = XINTERP_bool_mul
 fun
 XINTERP_bool_print
 ( b0
-: bool): void // = $ext()
+: bool): void = $export()
 impltmp
 bool_print<> = XINTERP_bool_print
 //
@@ -72,15 +70,13 @@ fun
 XINTERP_char_eqzq
 {c:char}
 ( c0
-: char(c))
-: bool(c=0) // = $ext()
+: char(c)): bool(c=0) = $export()
 #extern
 fun
 XINTERP_char_neqzq
 {c:char}
 ( c0
-: char(c))
-: bool(c>0) // = $ext()
+: char(c)): bool(c>0) = $export()
 //
 impltmp
 char_eqzq<> = XINTERP_char_eqzq
@@ -97,7 +93,7 @@ XINTERP_char_equal
 : char(c1)
 , c2
 : char(c2))
-: bool(c1=c2) // = $ext()
+: bool(c1=c2) = $export((*void*))
 #extern
 fun
 XINTERP_char_noteq
@@ -106,7 +102,7 @@ XINTERP_char_noteq
 : char(c1)
 , c2
 : char(c2))
-: bool(c1!=c2) // = $ext()
+: bool(c1!=c2) = $export((*void*))
 //
 impltmp
 char_equal<> = XINTERP_char_equal
@@ -118,10 +114,8 @@ char_noteq<> = XINTERP_char_noteq
 #extern
 fun
 XINTERP_char_cmp
-( c1
-: char
-, c2
-: char): sint // = $ext()
+( c1: char
+, c2: char): sint = $export()
 impltmp
 char_cmp<> = XINTERP_char_cmp
 //
@@ -130,8 +124,7 @@ char_cmp<> = XINTERP_char_cmp
 #extern
 fun
 XINTERP_char_print
-( c0
-: char): void // = $ext()
+( c0: char ) : void = $export()
 impltmp
 char_print<> = XINTERP_char_print
 //
@@ -140,11 +133,11 @@ char_print<> = XINTERP_char_print
 #extern
 fun
 XINTERP_char_make_sint
-( c0: sint ) : char // = $ext()
+( c0: sint ) : char = $export()
 #extern
 fun
 XINTERP_char_make_uint
-( c0: uint ) : char // = $ext()
+( c0: uint ) : char = $export()
 //
 impltmp
 char_make_sint<> = XINTERP_char_make_sint
@@ -156,7 +149,8 @@ char_make_uint<> = XINTERP_char_make_uint
 #extern
 fun
 XINTERP_sint_make_char
-( c0: char ) : sint // = $ext()
+( c0
+: char ) : sint = $export()
 //
 impltmp
 sint_make_char<> = XINTERP_sint_make_char
@@ -170,14 +164,17 @@ sint_make_char<> = XINTERP_sint_make_char
 #extern
 fun
 XINTERP_gint_print_sint
-( x0 : sint ) : void // = $ext()
-impltmp
-gint_print_sint<>(i0) =
-XINTERP_gint_print_sint(i0)
+( x0
+: sint ) : void = $export()
 #extern
 fun
 XINTERP_gint_print_uint
-( x0 : uint ) : void // = $ext()
+( x0
+: uint ) : void = $export()
+//
+impltmp
+gint_print_sint<>(i0) =
+XINTERP_gint_print_sint(i0)
 impltmp
 gint_print_uint<>(u0) =
 XINTERP_gint_print_uint(u0)
@@ -189,7 +186,7 @@ fun
 XINTERP_gint_neg_sint
 {i:int}
 ( x0
-: sint(i)): sint(-i) // = $ext()
+: sint(i)): sint(-i) = $export()
 impltmp
 gint_neg_sint<> = XINTERP_gint_neg_sint
 //
@@ -200,7 +197,7 @@ fun
 XINTERP_gint_abs_sint
 {i:int}
 ( x0
-: sint(i)): sint(abs(i)) // = $ext()
+: sint(i)): sint(abs(i)) = $export()
 impltmp
 gint_abs_sint<> = XINTERP_gint_abs_sint
 //
@@ -211,13 +208,14 @@ fun
 XINTERP_gint_succ_sint
 {i:int}
 ( x0
-: sint(i)): sint(i+1) // = $ext()
+: sint(i)): sint(i+1) = $export()
 #extern
 fun
 XINTERP_gint_pred_sint
 {i:int}
 ( x0
-: sint(i)): sint(i-1) // = $ext()
+: sint(i)): sint(i-1) = $export()
+//
 impltmp
 gint_succ_sint<> = XINTERP_gint_succ_sint
 impltmp
@@ -229,10 +227,8 @@ gint_pred_sint<> = XINTERP_gint_pred_sint
 fun
 XINTERP_gint_lt_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): bool(i<j) // = $ext()
+( x: sint(i)
+, y: sint(j)): bool(i<j) = $export()
 impltmp
 gint_lt_sint_sint<> = XINTERP_gint_lt_sint_sint
 //
@@ -240,10 +236,8 @@ gint_lt_sint_sint<> = XINTERP_gint_lt_sint_sint
 fun
 XINTERP_gint_gt_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): bool(i>j) // = $ext()
+( x: sint(i)
+, y: sint(j)): bool(i>j) = $export()
 impltmp
 gint_gt_sint_sint<> = XINTERP_gint_gt_sint_sint
 //
@@ -251,10 +245,8 @@ gint_gt_sint_sint<> = XINTERP_gint_gt_sint_sint
 fun
 XINTERP_gint_eq_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): bool(i=j) // = $ext()
+( x: sint(i)
+, y: sint(j)): bool(i=j) = $export()
 impltmp
 gint_eq_sint_sint<> = XINTERP_gint_eq_sint_sint
 //
@@ -262,10 +254,8 @@ gint_eq_sint_sint<> = XINTERP_gint_eq_sint_sint
 fun
 XINTERP_gint_lte_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): bool(i<=j) // = $ext()
+( x: sint(i)
+, y: sint(j)): bool(i<=j) = $export()
 impltmp
 gint_lte_sint_sint<> = XINTERP_gint_lte_sint_sint
 //
@@ -273,10 +263,8 @@ gint_lte_sint_sint<> = XINTERP_gint_lte_sint_sint
 fun
 XINTERP_gint_gte_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): bool(i>=j) // = $ext()
+( x: sint(i)
+, y: sint(j)): bool(i>=j) = $export()
 impltmp
 gint_gte_sint_sint<> = XINTERP_gint_gte_sint_sint
 //
@@ -284,10 +272,8 @@ gint_gte_sint_sint<> = XINTERP_gint_gte_sint_sint
 fun
 XINTERP_gint_neq_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): bool(i!=j) // = $ext()
+( x: sint(i)
+, y: sint(j)): bool(i!=j) = $export()
 impltmp
 gint_neq_sint_sint<> = XINTERP_gint_neq_sint_sint
 //
@@ -297,10 +283,8 @@ gint_neq_sint_sint<> = XINTERP_gint_neq_sint_sint
 fun
 XINTERP_gint_cmp_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): sint(sgn(i-j)) // = $ext()
+( x: sint(i)
+, y: sint(j)): sint(sgn(i-j)) = $export()
 impltmp
 gint_cmp_sint_sint<> = XINTERP_gint_cmp_sint_sint
 
@@ -310,10 +294,8 @@ gint_cmp_sint_sint<> = XINTERP_gint_cmp_sint_sint
 fun
 XINTERP_gint_add_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): sint( i+j ) // = $ext()
+( x: sint(i)
+, y: sint(j)): sint( i+j ) = $export()
 impltmp
 gint_add_sint_sint<> = XINTERP_gint_add_sint_sint
 #extern
@@ -323,7 +305,7 @@ XINTERP_gint_sub_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): sint( i-j ) // = $ext()
+: sint(j)): sint( i-j ) = $export()
 impltmp
 gint_sub_sint_sint<> = XINTERP_gint_sub_sint_sint
 //
@@ -331,30 +313,24 @@ gint_sub_sint_sint<> = XINTERP_gint_sub_sint_sint
 fun
 XINTERP_gint_mul_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): sint( i*j ) // = $ext()
+( x: sint(i)
+, y: sint(j)): sint( i*j ) = $export()
 impltmp
 gint_mul_sint_sint<> = XINTERP_gint_mul_sint_sint
 #extern
 fun
 XINTERP_gint_div_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): sint( i/j ) // = $ext()
+( x: sint(i)
+, y: sint(j)): sint( i/j ) = $export()
 impltmp
 gint_div_sint_sint<> = XINTERP_gint_div_sint_sint
 #extern
 fun
 XINTERP_gint_mod_sint_sint
 {i,j:int}
-( x
-: sint(i)
-, y
-: sint(j)): sint(mod(i,j)) // = $ext()
+( x: sint(i)
+, y: sint(j)): sint(mod(i,j)) = $export()
 impltmp
 gint_mod_sint_sint<> = XINTERP_gint_mod_sint_sint
 //
@@ -367,7 +343,7 @@ gint_mod_sint_sint<> = XINTERP_gint_mod_sint_sint
 #extern
 fun
 XINTERP_gflt_i_dflt
-( x0: sint ): dflt // = $ext()
+( x0: sint ): dflt = $export()
 impltmp
 gflt_i_dflt<> = XINTERP_gflt_i_dflt
 //
@@ -376,14 +352,16 @@ gflt_i_dflt<> = XINTERP_gflt_i_dflt
 #extern
 fun
 XINTERP_gflt_neg_dflt
-  ( x0: dflt ): dflt // = $ext()
+  ( x0: dflt ): dflt = $export()
 impltmp
 gflt_neg_dflt<> = XINTERP_gflt_neg_dflt
+//
+(* ****** ****** *)
 //
 #extern
 fun
 XINTERP_gflt_abs_dflt
-  ( x0: dflt ): dflt // = $ext()
+  ( x0: dflt ): dflt = $export()
 impltmp
 gflt_abs_dflt<> = XINTERP_gflt_abs_dflt
 //
@@ -392,13 +370,13 @@ gflt_abs_dflt<> = XINTERP_gflt_abs_dflt
 #extern
 fun
 XINTERP_gflt_succ_dflt
-  ( x0: dflt ): dflt // = $ext()
+  ( x0: dflt ): dflt = $export()
 impltmp
 gflt_succ_dflt<> = XINTERP_gflt_succ_dflt
 #extern
 fun
 XINTERP_gflt_pred_dflt
-  ( x0: dflt ): dflt // = $ext()
+  ( x0: dflt ): dflt = $export()
 impltmp
 gflt_pred_dflt<> = XINTERP_gflt_pred_dflt
 //
@@ -407,27 +385,27 @@ gflt_pred_dflt<> = XINTERP_gflt_pred_dflt
 #extern
 fun
 XINTERP_gflt_lt_dflt_dflt
-( x0: dflt, y0: dflt ): bool // = $ext()
+( x0: dflt, y0: dflt ): bool = $export()
 #extern
 fun
 XINTERP_gflt_gt_dflt_dflt
-( x0: dflt, y0: dflt ): bool // = $ext()
+( x0: dflt, y0: dflt ): bool = $export()
 #extern
 fun
 XINTERP_gflt_eq_dflt_dflt
-( x0: dflt, y0: dflt ): bool // = $ext()
+( x0: dflt, y0: dflt ): bool = $export()
 #extern
 fun
 XINTERP_gflt_lte_dflt_dflt
-( x0: dflt, y0: dflt ): bool // = $ext()
+( x0: dflt, y0: dflt ): bool = $export()
 #extern
 fun
 XINTERP_gflt_gte_dflt_dflt
-( x0: dflt, y0: dflt ): bool // = $ext()
+( x0: dflt, y0: dflt ): bool = $export()
 #extern
 fun
 XINTERP_gflt_neq_dflt_dflt
-( x0: dflt, y0: dflt ): bool // = $ext()
+( x0: dflt, y0: dflt ): bool = $export()
 //
 impltmp
 gflt_lt_dflt_dflt<> = XINTERP_gflt_lt_dflt_dflt
@@ -447,7 +425,7 @@ gflt_neq_dflt_dflt<> = XINTERP_gflt_neq_dflt_dflt
 #extern
 fun
 XINTERP_gflt_cmp_dflt_dflt
-( x0: dflt, y0: dflt ): sint // = $ext()
+( x0: dflt, y0: dflt ): sint = $export()
 impltmp
 gflt_cmp_dflt_dflt<> = XINTERP_gflt_cmp_dflt_dflt
 //
@@ -456,19 +434,19 @@ gflt_cmp_dflt_dflt<> = XINTERP_gflt_cmp_dflt_dflt
 #extern
 fun
 XINTERP_gflt_add_dflt_dflt
-( x0: dflt, y0: dflt ): dflt // = $ext()
+( x0: dflt, y0: dflt ): dflt = $export()
 #extern
 fun
 XINTERP_gflt_sub_dflt_dflt
-( x0: dflt, y0: dflt ): dflt // = $ext()
+( x0: dflt, y0: dflt ): dflt = $export()
 #extern
 fun
 XINTERP_gflt_mul_dflt_dflt
-( x0: dflt, y0: dflt ): dflt // = $ext()
+( x0: dflt, y0: dflt ): dflt = $export()
 #extern
 fun
 XINTERP_gflt_div_dflt_dflt
-( x0: dflt, y0: dflt ): dflt // = $ext()
+( x0: dflt, y0: dflt ): dflt = $export()
 //
 impltmp
 gflt_add_dflt_dflt<> = XINTERP_gflt_add_dflt_dflt
@@ -499,7 +477,7 @@ string_vt2t<>
 #extern
 fun
 XINTERP_string_print
-( x0: string ) : void // = $ext()
+( x0: string ) : void = $export()
 impltmp
 string_print<> = XINTERP_string_print
 //
@@ -508,7 +486,7 @@ string_print<> = XINTERP_string_print
 #extern
 fun
 XINTERP_string_head_opt
-( x0 : string ) : char // = $ext()
+( x0 : string ) : char = $export()
 impltmp
 string_head_opt<> = XINTERP_string_head_opt
 //
@@ -517,10 +495,10 @@ string_head_opt<> = XINTERP_string_head_opt
 #extern
 fun
 XINTERP_string_head_raw
-( x0 : string ) : char // = $ext()
+( x0 : string ) : char = $export()
 fun
 XINTERP_string_tail_raw
-( x0: string ) : string // = $ext()
+( x0: string ) : string = $export()
 impltmp
 string_head_raw<> = XINTERP_string_head_raw
 impltmp
@@ -532,7 +510,9 @@ string_tail_raw<> = XINTERP_string_tail_raw
 fun
 XINTERP_strtmp_vt_alloc
 {n:nat}
-(len: int(n)): strtmp_vt(n)
+( len
+: int(n))
+: strtmp_vt(n) = $export()
 impltmp
 strtmp_vt_alloc<> = XINTERP_strtmp_vt_alloc
 //
@@ -543,7 +523,7 @@ XINTERP_string_get_at
 {i:int|i<n}
 ( p0:
   string(n)
-, i0: int(i)): cgtz
+, i0: int(i)): cgtz = $export()
 impltmp
 string_get_at<> = XINTERP_string_get_at
 //
@@ -553,7 +533,8 @@ XINTERP_strtmp_vt_set_at
 {n:nat}
 {i:int|i<n}
 ( p0:
-! strtmp_vt(n), i0:int(i), c0:cgtz): void
+! strtmp_vt(n)
+, i0:int(i), c0:cgtz): void = $export()
 impltmp
 strtmp_vt_set_at<> = XINTERP_strtmp_vt_set_at
 //
@@ -571,21 +552,24 @@ strtmp_vt_set_at<> = XINTERP_strtmp_vt_set_at
 #extern
 fun
 XINTERP_a0ptr_alloc
-{a:vt}((*void*)): a0ptr(?a)
+{a:vt}
+((*void*)): a0ptr(?a) = $export()
 impltmp
 {a:vt}
 a0ptr_alloc<a> = XINTERP_a0ptr_alloc
+//
+(* ****** ****** *)
 //
 #extern
 fun
 XINTERP_a0ref_get
 {a:vt}
-(A0: a0ref(a)): ~a
+(A0: a0ref(a)): ~a = $export()
 #extern
 fun
 XINTERP_a0ref_set
 {a:vt}
-(A0: a0ref(a), x0: a): void
+(A0: a0ref(a), x0: a): void = $export()
 //
 impltmp
 {a:vt}
@@ -601,8 +585,10 @@ a0ref_set<a>
 #extern
 fun
 XINTERP_a1ptr_alloc
-{a:vt}{n:int}
-( asz: int(n) ): a1ptr(?a)
+{a:vt}
+{n:i0}
+( asz
+: int(n) ): a1ptr(?a) = $export()
 impltmp
 {a:vt}
 a1ptr_alloc<a> = XINTERP_a1ptr_alloc
@@ -610,41 +596,48 @@ a1ptr_alloc<a> = XINTERP_a1ptr_alloc
 #extern
 fun
 XINTERP_a1ref_head_raw
-{a:vt}{n:int}
+{a:vt}
+{n:i0}
 ( A0
-: a1ref(a, n) ): ~a
+: a1ref(a, n) ): ~a = $export()
 #extern
 fun
 XINTERP_a1ref_tail_raw
-{a:vt}{n:int}
+{a:vt}{n:i0}
 ( A0
-: a1ref(a, n) ): a1ref(a, n-1)
+: a1ref(a, n)
+)
+: a1ref(a, n-1) = $export()
 //
 #extern
 fun
 XINTERP_a1ref_get_at_raw
 {a:vt}{n:int}
 ( A0
-: a1ref(a, n), i0: int): ~a
+: a1ref
+  (a, n), i0: int): ~a = $export()
 #extern
 fun
 XINTERP_a1ptr_get_at_raw
 {a:vt}{n:int}
 ( A0:
-! a1ptr(a, n), i0: int): ~a
+! a1ptr
+  (a, n), i0: int): ~a = $export()
 //
 #extern
 fun
 XINTERP_a1ref_set_at_raw
 {a:vt}{n:int}
 ( A0
-: a1ref(a, n), i0: int, x0: a): void
+: a1ref(a, n)
+, i0: int, x0: a): void = $export()
 #extern
 fun
 XINTERP_a1ptr_set_at_raw
 {a:vt}{n:int}
 ( A0:
-! a1ptr(a, n), i0: nintlt(n), x0: a): void
+! a1ptr(a, n)
+, i0: int, x0: a): void = $export()
 //
 (* ****** ****** *)
 //

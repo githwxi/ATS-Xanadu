@@ -500,7 +500,7 @@ val () = myins("#stacst", T_SRP_STACST)
 //
 val () = myins("#static", T_SRP_STATIC)
 val () = myins("#extern", T_SRP_EXTERN)
-val () = myins("$export", T_DLR_EXPORT)
+val () = myins("$exname", T_DLR_EXNAME)
 //
 val () = myins("#define", T_SRP_DEFINE)
 val () = myins("#macdef", T_SRP_MACDEF)
