@@ -2072,6 +2072,11 @@ D3Ecase _ => aux_case(env0, d3e0)
     trans33_dexp(env0, d3e1) in d3e1
   end where
   {
+  val
+  loc1 = d3e1.loc()
+  val () =
+  println!
+  ("trans33_dexp: D3Etcast: loc1 = ", loc1)
   val () =
   println!
   ("trans33_dexp: D3Etcast: d3e1 = ", d3e1)
