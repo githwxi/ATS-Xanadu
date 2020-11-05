@@ -261,7 +261,7 @@ tnode =
 //
   | T_SRP_STATIC of () // #static
   | T_SRP_EXTERN of () // #extern
-  | T_DLR_EXPORT of () // $export
+  | T_DLR_EXNAME of () // $exname
 //
   | T_SRP_DEFINE of () // #define
   | T_SRP_MACDEF of () // #macdef

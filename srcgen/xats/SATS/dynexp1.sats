@@ -587,7 +587,7 @@ d1exp_node =
   ( token(*qual*)
   , d1exp(*deid*)) // HX: qualified expression
 //
-| D1Eexport of (g1exp) // HX: for exporting names
+| D1Eexname of (g1exp) // HX: for specifying names
 //
 // end of [d1exp_node]
 //
