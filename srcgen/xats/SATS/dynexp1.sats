@@ -533,7 +533,7 @@ d1exp_node =
 | D1Elist of
   (d1explst, d1explst) // temp.
 //
-| D1Enone of ()//HX: for emptiness
+| D1Enone of ()//HX:for emptiness
 //
 | D1Eseqn of
   (d1explst, d1explst)//sequencing
@@ -580,10 +580,12 @@ d1exp_node =
   // D1Etry0
 //
 | D1Eanno of
-  (d1exp, s1exp(*anno*)) // HX: type-annotation
+  (d1exp, s1exp(*anno*)) //HX: type-annotation
 //
 | D1Equal of
-  (token(*qual*), d1exp) // HX: qualified expression
+  (token(*qual*), d1exp) //HX:qualified expression
+//
+| D1Eextname of ( g1exp ) //HX: for external names
 //
 // end of [d1exp_node]
 //
