@@ -4089,6 +4089,7 @@ in
 end where
 {
 //
+//
 fun
 ishdr
 ( f1d0
@@ -4097,9 +4098,21 @@ let
 val+
 F1UNDECL(rcd) = f1d0
 in
-  case+ rcd.def of
-  | None() => true | Some(d1e) => false
+case+ rcd.def of
+| None() => true
+| Some(d1e1) => isext(d1e1)
 end
+and
+isext
+( d1e1
+: d1exp): bool =
+(
+case+
+d1e1.node() of
+| D1Eextname _ => true
+|
+_ (*non-D1Eextname*) => false
+)
 //
 fun
 auxd2vs
@@ -4149,8 +4162,33 @@ trans12_farglst(rcd.arg)
 val res =
 trans12_effsexpopt(rcd.res)
 //
+local
+val opt = rcd.def
+in
+val ext =
+(
+case+ opt of
+|
+None() => None()
+|
+Some(d1e) =>
+(
+case+
+d1e.node() of
+| D1Eextname(g1e) => Some(g1e)
+| _(*D1Eextname*) => None(*void*)
+)
+) : g1expopt // end-of-val
+//
 val def =
-  trans12_dexpopt(rcd.def)
+(
+case+ ext of
+|
+Some _ => None()
+|
+None _ =>
+trans12_dexpopt(opt)): d2expopt
+end // end of [local]
 //
 val
 ((*void*)) =
@@ -4159,17 +4197,21 @@ the_trans12_popfree(pf0|(*void*))
 val wtp =
 (
 case+ rcd.wtp of
-| WTHS1EXPnone
-    ((*void*)) => None()
-| WTHS1EXPsome
-    (tok, s1e) => Some(trans12_sexp(s1e))
+|
+WTHS1EXPnone
+  ((*void*)) => None()
+|
+WTHS1EXPsome
+  (tok, s1e) => Some(trans12_sexp(s1e))
 ) : s2expopt // end of [val]
 //
 in
 F2UNDECL(
 @{
  loc=loc
-,nam=nam,d2c=d2c,arg=arg,res=res,def=def,wtp=wtp}
+,nam=nam
+,d2c=d2c
+,arg=arg,res=res,ext=ext,def=def,wtp=wtp}
 ) (* F2UNDECL *)
 end // end of [auxf1d0]
 //

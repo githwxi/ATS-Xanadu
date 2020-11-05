@@ -91,6 +91,9 @@ fprint_val<filpath> =
 $FP0.fprint_filpath_full2
 //
 (* ****** ****** *)
+implement
+fprint_val<g1exp> = fprint_g1exp
+(* ****** ****** *)
 //
 implement
 fprint_val<sort2> = fprint_sort2
@@ -981,14 +984,15 @@ fprint_f2undecl
 val+F2UNDECL(rcd) = x0
 //
 in
-  fprint!
-  ( out
-  , "F2UNDECL@{"
-  , "nam=", rcd.nam, ", "
-  , "d2c=", rcd.d2c, ", "
-  , "arg=", rcd.arg, ", "
-  , "res=", rcd.res, ", "
-  , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
+fprint!
+( out
+, "F2UNDECL@{"
+, "nam=", rcd.nam, ", "
+, "d2c=", rcd.d2c, ", "
+, "arg=", rcd.arg, ", "
+, "res=", rcd.res, ", "
+, "ext=", rcd.ext, ", "
+, "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
 
 (* ****** ****** *)
