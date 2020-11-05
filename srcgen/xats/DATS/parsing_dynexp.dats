@@ -1566,9 +1566,11 @@ case+ tnd of
   end 
 //
 | _ (* rest-of-token *) =>
-  ( err := e0 + 1;
-    d0exp_make_node(tok.loc(), D0Enone(tok))
-  ) (* end-of-error *)
+  let
+    val () = err := e0 + 1
+  in
+    d0exp_make_node(tok.loc(), D0Enone1(tok))
+  end // HX: indicating a parsing error
 //
 end // end of [p_napps]
 
@@ -1977,10 +1979,23 @@ end // end of [t_t0str]
     }
   end // end of [T_IDENT_qual]
 //
-| _ (* error *) => let
+| T_DLR_EXTNAME _ => let
+    val () = buf.incby1()
+    val g0e = p_g0exp(buf, err)
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res, D0Eextname(g0e) ) where
+    {
+      val loc_res = tok.loc()+g0e.loc()
+    }
+  end
+//
+| _ (* error *) =>
+  let
     val () = (err := e0 + 1)
   in
-    d0exp_make_node(tok.loc(), D0Enone(tok))
+    d0exp_make_node(tok.loc(), D0Enone1(tok))
   end // HX: indicating a parsing error
 //
 end // end of [p_atmd0exp]
@@ -2364,7 +2379,7 @@ in
       val () = (err := e0 + 1)
     in
       d0exp_make_node
-        (tok.loc(), D0Enone(tok))
+        (tok.loc(), D0Enone1(tok))
       // end of [d0exp_make_node]
     end // end of [T_EQGT]
   | _(*non-EQGT...*) => p_atmd0exp(buf, err)
@@ -2715,30 +2730,35 @@ end // end of [p_g0expdef]
 
 implement
 p_d0macdef
-  (buf, err) = let
+  (buf, err) =
+let
 //
-val tok = buf.get0()
+val
+tok = buf.get0()
 //
-in
+in (* in-of-let *)
 //
 case+
 tok.node() of
-| T_EQ() => let
-    val () = buf.incby1()
-    val d0e = p_d0exp(buf, err)
-  in
-    D0MDEFsome(Some(tok), d0e(*def*))
-  end
-| _(*non-EQ*) => let
-    val d0e = p_d0exp(buf, err)
-  in
-    case+
-    d0e.node() of
-    | D0Enone(_) =>
-      D0MDEFnone(*void*)
-    | _(*non-G0Enone*) =>
-      D0MDEFsome(None(*void*), d0e(*def*))
-  end
+|
+T_EQ() => let
+  val () = buf.incby1()
+  val d0e = p_d0exp(buf, err)
+in
+  D0MDEFsome(Some(tok), d0e(*def*))
+end // end of [T_EQ]
+|
+_(*non-EQ*) =>
+let
+  val d0e = p_d0exp(buf, err)
+in
+  case+
+  d0e.node() of
+  | D0Enone1(_) =>
+    D0MDEFnone(*void*)
+  | _(*non-G0Enone*) =>
+    D0MDEFsome(None(*void*), d0e(*def*))
+end // end of [non-EQ]
 //
 end // end of [p_d0macdef]
 

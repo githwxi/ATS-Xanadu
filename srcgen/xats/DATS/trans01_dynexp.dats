@@ -1481,7 +1481,7 @@ d0e0.node() of
     }
   end // end of [D0Equal]
 //
-| D0Enone(_(*tokerr*)) =>
+| D0Enone1(_(*tokerr*)) =>
   let
     val d1e0 = d1exp_none(loc0) in FXITMatm(d1e0)
   end // end of [D0Enone]

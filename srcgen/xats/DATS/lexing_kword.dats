@@ -511,7 +511,7 @@ val () = myins("#dynload", T_SRP_DYNLOAD)
 //
 val () = myins("#symload", T_SRP_SYMLOAD)
 //
-val () = myins("#extname", T_SRP_EXTNAME)
+val () = myins("$extname", T_DLR_EXTNAME)
 //
 } (* end of [kword_initize] *)
 //

@@ -16,7 +16,13 @@
 
 #extern
 fun
-foo(x: int): int = #xref(_)
+fact
+( x0
+: int): int = $extname(_)
+
+(*
+#dyncst fact = $extname(_)
+*)
 
 (* ****** ****** *)
 ////
