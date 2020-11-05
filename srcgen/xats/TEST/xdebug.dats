@@ -18,7 +18,7 @@
 fun
 fact
 ( x0
-: int): int = $export(_)
+: int): int = $exname(_)
 
 implement
 fact(x0) =
@@ -27,7 +27,7 @@ x0 > 0
 then x0 * fact(x0-1) else 1
 
 (*
-#dyncst fact = $extname(_)
+#exname fact = _
 *)
 
 (* ****** ****** *)
