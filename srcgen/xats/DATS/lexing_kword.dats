@@ -500,6 +500,7 @@ val () = myins("#stacst", T_SRP_STACST)
 //
 val () = myins("#static", T_SRP_STATIC)
 val () = myins("#extern", T_SRP_EXTERN)
+val () = myins("$export", T_DLR_EXPORT)
 //
 val () = myins("#define", T_SRP_DEFINE)
 val () = myins("#macdef", T_SRP_MACDEF)
@@ -510,8 +511,6 @@ val () = myins("#staload", T_SRP_STALOAD)
 val () = myins("#dynload", T_SRP_DYNLOAD)
 //
 val () = myins("#symload", T_SRP_SYMLOAD)
-//
-val () = myins("$extname", T_DLR_EXTNAME)
 //
 } (* end of [kword_initize] *)
 //

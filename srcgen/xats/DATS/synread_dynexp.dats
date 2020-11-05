@@ -489,7 +489,7 @@ d0e0.node() of
     val () = synread_d0exp(d0e1)
   }
 //
-| D0Eextname(  name  ) =>
+| D0Eexport(  name  ) =>
   {
     val () = synread_g0exp(name)
   }

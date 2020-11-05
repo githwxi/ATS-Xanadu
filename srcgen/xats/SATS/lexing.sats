@@ -259,10 +259,9 @@ tnode =
 //
   | T_SRP_STACST of () // #stacst
 //
-// #static
-  | T_SRP_STATIC of () // locally
-// #extern
-  | T_SRP_EXTERN of () // globally
+  | T_SRP_STATIC of () // #static
+  | T_SRP_EXTERN of () // #extern
+  | T_DLR_EXPORT of () // $export
 //
   | T_SRP_DEFINE of () // #define
   | T_SRP_MACDEF of () // #macdef
@@ -273,8 +272,6 @@ tnode =
   | T_SRP_DYNLOAD of () // #dynload
 //
   | T_SRP_SYMLOAD of () // #symload
-//
-  | T_DLR_EXTNAME of () // $extname
 //
 abstbox token_tbox = $tup((*void*))
 //
