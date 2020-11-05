@@ -1979,13 +1979,13 @@ end // end of [t_t0str]
     }
   end // end of [T_IDENT_qual]
 //
-| T_DLR_EXTNAME _ => let
+| T_DLR_EXPORT _ => let
     val () = buf.incby1()
     val g0e = p_g0exp(buf, err)
   in
     err := e0;
     d0exp_make_node
-    ( loc_res, D0Eextname(g0e) ) where
+    ( loc_res, D0Eexport(g0e) ) where
     {
       val loc_res = tok.loc()+g0e.loc()
     }

@@ -344,6 +344,7 @@ case+ tnd of
 //
 | T_SRP_STATIC() => fprint(out, "#STATIC")
 | T_SRP_EXTERN() => fprint(out, "#EXTERN")
+| T_DLR_EXPORT() => fprint(out, "$EXPORT")
 //
 | T_SRP_DEFINE() => fprint(out, "#DEFINE")
 | T_SRP_MACDEF() => fprint(out, "#MACDEF")
@@ -354,8 +355,6 @@ case+ tnd of
 | T_SRP_DYNLOAD() => fprint(out, "#DYNLOAD")
 //
 | T_SRP_SYMLOAD() => fprint(out, "#SYMLOAD")
-//
-| T_DLR_EXTNAME() => fprint(out, "$EXTNAME")
 //
 ) (* end of [fprint_tnode] *)
 //
@@ -621,6 +620,8 @@ case+ tnd of
 //
 | T_SRP_STATIC() => fprint!(out, "#static")
 | T_SRP_EXTERN() => fprint!(out, "#extern")
+| T_DLR_EXPORT() => fprint(out, "$export")
+//
 //
 | T_SRP_DEFINE() => fprint!(out, "#define")
 | T_SRP_MACDEF() => fprint!(out, "#macdef")
@@ -631,8 +632,6 @@ case+ tnd of
 | T_SRP_DYNLOAD() => fprint(out, "#dynload")
 //
 | T_SRP_SYMLOAD() => fprint(out, "#symload")
-//
-| T_DLR_EXTNAME() => fprint(out, "$extname")
 //
 ) (* end of [fprint2_tnode] *)
 //

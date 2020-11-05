@@ -18,7 +18,13 @@
 fun
 fact
 ( x0
-: int): int = $extname(_)
+: int): int = $export(_)
+
+implement
+fact(x0) =
+if
+x0 > 0
+then x0 * fact(x0-1) else 1
 
 (*
 #dyncst fact = $extname(_)

@@ -523,7 +523,7 @@ d0exp_node =
 | D0Enone1 of (token) // HX: for error indication
 //
 // HX-2020-11-04:
-| D0Eextname of (g0exp) // HX: for external names
+| D0Eexport of (g0exp) // HX: for exporting names
 //
 // end of [d0exp_node]
 

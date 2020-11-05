@@ -550,7 +550,7 @@ x0.node() of
     fprint!(out, "D1Equal(", tok1, "; ", d1e2, ")")
   )
 //
-| D1Eextname(g1e1) => fprint!(out, "D1Eextname(", g1e1, ")")
+| D1Eexport(g1e1) => fprint!(out, "D1Eexport(", g1e1, ")")
 //
 ) (* end of [fprint_d1exp] *) end // end of [local]
 

@@ -602,7 +602,7 @@ case+ x0.node() of
 //
 | D0Enone1(tok) => fprint!(out, "D0Enone1(", tok, ")")
 //
-| D0Eextname(g0e) => fprint!(out, "D0Eextname(", g0e, ")")
+| D0Eexport(g0e) => fprint!(out, "D0Eexport(", g0e, ")")
 //
 ) (* end of [fprint_d0exp] *)
 

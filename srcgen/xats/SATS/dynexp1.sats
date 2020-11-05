@@ -580,12 +580,14 @@ d1exp_node =
   // D1Etry0
 //
 | D1Eanno of
-  (d1exp, s1exp(*anno*)) //HX: type-annotation
+  ( d1exp
+  , s1exp(*anno*)) // HX: type-annotation
 //
 | D1Equal of
-  (token(*qual*), d1exp) //HX:qualified expression
+  ( token(*qual*)
+  , d1exp(*deid*)) // HX: qualified expression
 //
-| D1Eextname of ( g1exp ) //HX: for external names
+| D1Eexport of (g1exp) // HX: for exporting names
 //
 // end of [d1exp_node]
 //
