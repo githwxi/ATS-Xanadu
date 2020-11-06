@@ -995,7 +995,7 @@ fprint!
 , "d2c=", rcd.d2c, ", "
 , "arg=", rcd.arg, ", "
 , "res=", rcd.res, ", "
-, "ext=", rcd.ext, ", "
+, "xnm=", rcd.xnm, ", "
 , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
 end // end of [fprint_f2undecl]
 
