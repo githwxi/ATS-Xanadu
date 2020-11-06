@@ -55,22 +55,44 @@ typedef tokenlst = $LEX.tokenlst
 #staload
 S0E = "./staexp0.sats"
 (* ****** ****** *)
+//
+datatype g1nam =
+//
+| G1Nnil of ()
+//
+| G1Nid0 of sym_t
+//
+| G1Nint of (int)
+| G1Nstr of string
+//
+| G1Nlist of (g1namlst)
+//
+| G1Nnone0 of () // HX: EMPTY
+| G1Nnone1 of (g0nam) // ERROR!
+//
+where
+g0nam = $S0E.g0nam
+and
+g1namlst = List0(g1nam)
+and
+g1namopt = Option(g1nam)
+//
+(* ****** ****** *)
 abstbox g1exp_tbox = ptr
 abstype g1mac_tbox = ptr
 (* ****** ****** *)
-//
 abstbox g1marg_tbox = ptr
+(* ****** ****** *)
 //
 typedef g0exp = $S0E.g0exp
 //
 typedef g1exp = g1exp_tbox
 typedef g1mac = g1mac_tbox
+typedef g1arg = token(*sym*)
+typedef g1marg = g1marg_tbox
 //
 typedef g1explst = List0(g1exp)
 typedef g1expopt = Option(g1exp)
-//
-typedef g1arg = token(*sym*)
-typedef g1marg = g1marg_tbox
 //
 typedef g1arglst = List0(g1arg)
 typedef g1marglst = List0(g1marg)
@@ -101,6 +123,19 @@ g1exp_node =
 //
 | G1Enone0 of () // HX: EMPTY
 | G1Enone1 of (g0exp) // ERROR!
+//
+(* ****** ****** *)
+//
+fun
+print_g1nam : print_type(g1nam)
+fun
+prerr_g1nam : prerr_type(g1nam)
+fun
+fprint_g1nam : fprint_type(g1nam)
+//
+overload print with print_g1nam
+overload prerr with prerr_g1nam
+overload fprint with fprint_g1nam
 //
 (* ****** ****** *)
 //

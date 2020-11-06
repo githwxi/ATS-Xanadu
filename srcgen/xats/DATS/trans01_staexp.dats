@@ -399,6 +399,119 @@ end // end of [$FIX.fxopr_make_app]
 local
 
 fun
+auxnid
+( nid
+: g0nid): g1nam =
+let
+val-
+I0DNTsome
+(tok) = nid.node()
+in
+case-
+tok.node() of
+|
+T_IDENT_alp(nam) =>
+G1Nid0
+($SYM.symbol_make(nam))
+|
+T_IDENT_sym(nam) =>
+G1Nid0
+($SYM.symbol_make(nam))
+end // end of [auxnid]
+
+fun
+auxint
+( int
+: t0int): g1nam =
+let
+val-
+T0INTsome
+  (tok) = int.node()
+in
+G1Nint(token2sint(tok))
+end // end of [auxint]
+fun
+auxstr
+( str
+: t0str): g1nam =
+let
+val-
+T0STRsome
+  (tok) = str.node()
+in
+G1Nstr(token2sstr(tok))
+end // end of [auxstr]
+
+in(*in-of-local*)
+
+implement
+trans01_gnam
+  (gnm0) =
+(
+case+
+gnm0.node() of
+|
+G0Nid0(nid) => auxnid(nid)
+|
+G0Nint(int) => auxint(int)
+|
+G0Nstr(str) => auxstr(str)
+//
+|
+G0Nlist
+(tbeg, gnms, tend) =>
+(
+case+ gnms of
+|
+list_nil() => G1Nnil()
+|
+list_cons(gnm1, gnms) =>
+let
+val
+gnm1 = trans01_gnam(gnm1)
+in
+case+ gnms of
+|
+list_nil _ => gnm1
+|
+list_cons _ =>
+let
+  val
+  gnms =
+  trans01_gnamlst(gnms)
+in
+  G1Nlist(list_cons(gnm1, gnms))
+end
+end
+) (* end of [G0Nlist] *)
+//
+| G0Nnone0() => G1Nnone0()
+//
+| _(*rest-of-g0nam*) => G1Nnone1(gnm0)
+) (* end of [trans01_gnam] *)
+
+end // end of [local]
+
+implement
+trans01_gnamlst
+  (gnms) =
+list_vt2t(g1es) where
+{
+val
+g1es =
+list_map<g0nam><g1nam>
+  (gnms) where
+{
+implement
+list_map$fopr<g0nam><g1nam> = trans01_gnam
+}
+} (* end of [trans01_gnamlst] *)
+
+(* ****** ****** *)
+
+local
+
+fun
 auxgid
 ( gid
 : g0eid)
@@ -428,13 +541,18 @@ g1exp_make_node(loc, G1Eid0(sym))
 in
 //
 case+ opt of
-| ~None_vt() =>
-   FXITMatm(g1e0)
-| ~Some_vt(fxty) =>
-  (case+ fxty of
-   | $FIX.FIXTYnon() => FXITMatm(g1e0)
-   | _(*non-FIXTYnon*) => FXITMopr(g1e0, fxty)
-  ) (* end of [Some_vt] *)
+| ~
+None_vt() =>
+FXITMatm(g1e0)
+| ~
+Some_vt(fxty) =>
+(
+case+ fxty of
+|
+$FIX.FIXTYnon() => FXITMatm(g1e0)
+|
+_(*non-FIXTYnon*) => FXITMopr(g1e0, fxty)
+) (* end of [Some_vt] *)
 //
 end // end of [auxgid]
 

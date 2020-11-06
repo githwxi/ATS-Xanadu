@@ -64,7 +64,7 @@ fprint_val<token> = fprint_token
 (* ****** ****** *)
 //
 implement
-fprint_val<g0nam> = fprint_g0nam
+fprint_val<g1nam> = fprint_g1nam
 implement
 fprint_val<g1exp> = fprint_g1exp
 //
@@ -119,6 +119,50 @@ implement
 fprint_val<d1atype> = fprint_d1atype
 implement
 fprint_val<d1atcon> = fprint_d1atcon
+
+(* ****** ****** *)
+
+implement
+print_g1nam(x0) =
+fprint_g1nam(stdout_ref, x0)
+implement
+prerr_g1nam(x0) =
+fprint_g1nam(stderr_ref, x0)
+
+implement
+fprint_g1nam
+  (out, gnm0) =
+(
+case+ gnm0 of
+|
+G1Nnil() =>
+fprint!
+(out, "G1Nnil(", ")")
+|
+G1Nid0(sym) =>
+fprint!
+(out, "G1Nid0(", sym, ")")
+|
+G1Nint(tok) =>
+fprint!
+(out, "G1Nint(", tok, ")")
+|
+G1Nstr(tok) =>
+fprint!
+(out, "G1Nstr(", tok, ")")
+//
+|
+G1Nlist(gnms) =>
+fprint!
+(out, "G1Nlist(", gnms, ")")
+|
+G1Nnone0() =>
+fprint!(out, "G1Nnone0(", ")")
+|
+G1Nnone1(tok) =>
+fprint!(out, "G1Nnone1(", tok, ")")
+//
+) (* end of [fprint_g1nam] *)
 
 (* ****** ****** *)
 

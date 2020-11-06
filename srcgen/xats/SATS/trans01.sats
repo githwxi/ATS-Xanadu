@@ -171,6 +171,11 @@ the_fxtyenv_fprint(FILEref): void
 //
 (* ****** ****** *)
 //
+typedef g0nam = $S0E.g0nam
+typedef g0namlst = $S0E.g0namlst
+//
+(* ****** ****** *)
+//
 typedef g0exp = $S0E.g0exp
 typedef g0explst = $S0E.g0explst
 //
@@ -238,6 +243,11 @@ typedef d0eclist = $D0E.d0eclist
 //
 (* ****** ****** *)
 //
+typedef g1nam = $S1E.g1nam
+typedef g1namlst = $S1E.g1namlst
+//
+(* ****** ****** *)
+//
 typedef g1exp = $S1E.g1exp
 typedef g1explst = $S1E.g1explst
 //
@@ -302,6 +312,13 @@ typedef d1claulst = $D1E.d1claulst
 typedef d1ecl = $D1E.d1ecl
 typedef d1eclopt = $D1E.d1eclopt
 typedef d1eclist = $D1E.d1eclist
+//
+(* ****** ****** *)
+//
+fun
+trans01_gnam: g0nam -> g1nam
+fun
+trans01_gnamlst: g0namlst -> g1namlst
 //
 (* ****** ****** *)
 //
