@@ -36,7 +36,7 @@ XINTERP_bool_add
 : bool(b1)
 , b2
 : bool(b2)): bool(b1+b2)
-= $exname()
+= $exname((*self*))
 #extern
 fun
 XINTERP_bool_mul
@@ -45,7 +45,7 @@ XINTERP_bool_mul
 : bool(b1)
 , b2
 : bool(b2)): bool(b1*b2)
-= $exname()
+= $exname((*self*))
 //
 impltmp
 bool_add<> = XINTERP_bool_add
@@ -564,6 +564,7 @@ fun
 XINTERP_string_tail_raw
 ( x0
 : string ): string = $exname()
+//
 impltmp
 string_head_raw<> = XINTERP_string_head_raw
 impltmp
@@ -591,7 +592,8 @@ XINTERP_string_get_at
 {i:int|i<n}
 ( p0:
   string(n)
-, i0: sint(i)): cgtz = $exname()
+, i0: sint(i)): cgtz
+= $exname((*self*))
 //
 #extern
 fun
@@ -601,7 +603,7 @@ XINTERP_strtmp_vt_set_at
 ( p0:
 ! strtmp_vt(n)
 , i0: sint(i), c0: cgtz): void
-= $exname((*void*))
+= $exname((*self*))
 //
 impltmp
 string_get_at<> = XINTERP_string_get_at
@@ -638,15 +640,15 @@ fun
 XINTERP_a0ref_get
 {a:vt}
 ( A0
-: a0ref(a)): ~a
-= $exname((*void*))
+: a0ref(a))
+: (~a) = $exname()
 #extern
 fun
 XINTERP_a0ref_set
 {a:vt}
 ( A0
 : a0ref(a), x0: a): void
-= $exname((*void*))
+= $exname((*self*))
 //
 impltmp
 {a:vt}
@@ -663,7 +665,7 @@ XINTERP_a1ptr_alloc
 {a:vt}
 {n:i0}
 ( asz
-: sint(n) )
+: sint(n))
 : a1ptr(?a) = $exname()
 //
 impltmp
@@ -678,15 +680,16 @@ XINTERP_a1ref_head_raw
 {a:vt}
 {n:i0}
 ( A0
-: a1ref(a, n)
-) : ~a = $exname((*void*))
+: a1ref(a, n))
+: (~a) = $exname()
 #extern
 fun
 XINTERP_a1ref_tail_raw
 {a:vt}{n:i0}
 ( A0
-: a1ref(a, n)
-) : a1ref(a, n-1) = $exname()
+: a1ref(a, n))
+: a1ref(a, n-1)
+= $exname((*self*))
 //
 #extern
 fun
@@ -695,7 +698,8 @@ XINTERP_a1ref_get_at_raw
 ( A0
 : a1ref(a, n)
 , i0
-: sint(*index*)): ~a = $exname()
+: sint(*index*)): (~a)
+= $exname((*self*))
 #extern
 fun
 XINTERP_a1ptr_get_at_raw
@@ -703,7 +707,8 @@ XINTERP_a1ptr_get_at_raw
 ( A0:
 ! a1ptr(a, n)
 , i0
-: sint(*index*)): ~a = $exname()
+: sint(*index*)): (~a)
+= $exname((*self*))
 //
 #extern
 fun
@@ -711,16 +716,18 @@ XINTERP_a1ref_set_at_raw
 {a:vt}{n:int}
 ( A0
 : a1ref(a, n)
-, i0: sint(*index*), x0: a): void
-= $exname((*void*))
+, i0
+: sint(*index*), x0: a): void
+= $exname((*self*))
 #extern
 fun
 XINTERP_a1ptr_set_at_raw
 {a:vt}{n:int}
 ( A0:
 ! a1ptr(a, n)
-, i0: sint(*index*), x0: a): void
-= $exname((*void*))
+, i0
+: sint(*index*), x0: a): void
+= $exname((*self*))
 //
 (* ****** ****** *)
 //
