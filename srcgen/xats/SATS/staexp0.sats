@@ -90,6 +90,8 @@ typedef i0dnt = i0dnt_tbox
 //
 (* ****** ****** *)
 //
+typedef g0nid = i0dnt_tbox
+//
 typedef g0eid = i0dnt_tbox
 //
 (* ****** ****** *)
@@ -379,6 +381,10 @@ overload fprint with fprint_dq0eid
 //
 (* ****** ****** *)
 //
+abstbox g0nam_tbox = ptr
+//
+(* ****** ****** *)
+//
 abstbox g0exp_tbox = ptr
 //
 abstbox g0marg_tbox = ptr
@@ -394,6 +400,11 @@ abstbox s0marg_tbox = ptr
 abstbox t0arg_tbox = ptr
 abstbox t0marg_tbox = ptr
 //
+(* ****** ****** *)
+
+typedef g0nam = g0nam_tbox
+typedef g0namlst = List0(g0nam)
+
 (* ****** ****** *)
 //
 typedef g0exp = g0exp_tbox
@@ -421,6 +432,43 @@ typedef t0arg = t0arg_tbox
 typedef t0marg = t0marg_tbox
 typedef t0arglst = List0(t0arg)
 typedef t0marglst = List0(t0marg)
+//
+(* ****** ****** *)
+//
+datatype
+g0nam_node =
+//
+| G0Nid0 of (g0nid)
+| G0Nint of (t0int)
+| G0Nstr of (t0str)
+//
+| G0Nlist of
+  (token, g0namlst, token)
+//
+| G0Nnone0 of ()
+| G0Nnone1 of (token(*error*))
+//
+(* ****** ****** *)
+//
+fun
+g0nam_get_loc(g0nam): loc_t
+fun
+g0nam_get_node(g0nam): g0nam_node
+//
+overload .loc with g0nam_get_loc
+overload .node with g0nam_get_node
+//
+fun print_g0nam : print_type(g0nam)
+fun prerr_g0nam : prerr_type(g0nam)
+fun fprint_g0nam : fprint_type(g0nam)
+//
+overload print with print_g0nam
+overload prerr with prerr_g0nam
+overload fprint with fprint_g0nam
+//
+fun
+g0nam_make_node
+(loc: loc_t, node: g0nam_node): g0nam
 //
 (* ****** ****** *)
 //

@@ -58,34 +58,34 @@ S0E = "./staexp0.sats"
 #staload
 D0E = "./dynexp0.sats"
 //
+typedef g0nam = $S0E.g0nam
+typedef d0exp = $D0E.d0exp
 typedef sq0eid = $S0E.sq0eid
 typedef dq0eid = $S0E.dq0eid
-//
-  typedef d0exp = $D0E.d0exp
 //
 (* ****** ****** *)
 //
 #staload
 S1E = "./staexp1.sats"
 //
-  typedef g1exp = $S1E.g1exp
-  typedef g1mac = $S1E.g1mac
+typedef g1exp = $S1E.g1exp
+typedef g1mac = $S1E.g1mac
 //
-  typedef s1exp = $S1E.s1exp
+typedef s1exp = $S1E.s1exp
 //
 (* ****** ****** *)
 //
 #staload
 D1E = "./dynexp1.sats"
 //
-  typedef d1pat = $D1E.d1pat
-  typedef d1exp = $D1E.d1exp
-  typedef d1ecl = $D1E.d1ecl
+typedef d1pat = $D1E.d1pat
+typedef d1exp = $D1E.d1exp
+typedef d1ecl = $D1E.d1ecl
 //
-  typedef d1eclist = $D1E.d1eclist
+typedef d1eclist = $D1E.d1eclist
 //
-  typedef f1unarrow = $D1E.f1unarrow
-  typedef decmodopt = $D1E.decmodopt
+typedef f1unarrow = $D1E.f1unarrow
+typedef decmodopt = $D1E.decmodopt
 //
 (* ****** ****** *)
 
@@ -364,6 +364,17 @@ overload .tqas with d2var_get_tqas
 //
 overload .type with d2var_set_type
 overload .tqas with d2var_set_tqas
+//
+(* ****** ****** *)
+//
+(*
+//
+fun
+d2cst_get_exnm(d2cst): exnam
+//
+overload .exnm with d2cst_get_exnm
+//
+*)
 //
 (* ****** ****** *)
 //
@@ -1109,7 +1120,7 @@ F2UNDECL of @{
 , d2c= d2cst
 , arg= f2arglst
 , res= effs2expopt
-, ext= g1expopt
+, ext= Option(g0nam)
 , def= d2expopt, wtp= s2expopt
 }
 //

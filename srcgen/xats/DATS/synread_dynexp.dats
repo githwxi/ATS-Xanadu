@@ -491,7 +491,7 @@ d0e0.node() of
 //
 | D0Eexname( exname ) =>
   {
-    val () = synread_g0exp(exname)
+    val () = synread_g0nam(exname)
   }
 //
 | _(* rest-of-d0exp *) =>

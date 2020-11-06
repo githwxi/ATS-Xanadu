@@ -18,7 +18,7 @@
 fun
 fact
 ( x0
-: int): int = $exname(_)
+: int): int = $exname(0)
 
 implement
 fact(x0) =

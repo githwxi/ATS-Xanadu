@@ -55,7 +55,91 @@ UN = "prelude/SATS/unsafe.sats"
 _(*TMP*) = "./../DATS/synread_basics.dats"
 //
 (* ****** ****** *)
+implement
+//{}(*tmp*)
+synread_g0nid
+  (geid) =
+(
+case+
+geid.node() of
+|
+I0DNTsome _ => ()
+|
+I0DNTnone(tok0) =>
+let
+val () =
+synerr_add(SYNERRg0nid(geid))
+in
+  prerr(tok0.loc());
+  prerrln!(": SYNERR(g0nid): ", tok0);
+end // end of [let]
+) (* end of [synread_g0nid] *)
+(* ****** ****** *)
 
+implement
+synread_g0nam
+  (gnm0) =
+(
+case+
+gnm0.node() of
+//
+|
+G0Nid0(gid) =>
+{
+  val () =
+  synread_g0nid(gid)
+}
+//
+|
+G0Nint(tint) =>
+{
+  val () =
+  synread_t0int(tint)
+}
+|
+G0Nstr(tstr) =>
+{
+  val () =
+  synread_t0str(tstr)
+}
+|
+G0Nlist
+(tbeg, gnms, tend) =>
+{
+  val () =
+  synread_RPAREN(tend)
+  val () =
+  synread_g0namlst(gnms)
+}
+|
+G0Nnone0() => ()
+|
+G0Nnone1(tok0) =>
+let
+val () =
+synerr_add(SYNERRg0nam(gnm0))
+in
+  prerr(tok0.loc());
+  prerrln!(": SYNERR(g0nam): ", tok0);
+end // end of [let]
+//
+) (* end of [synread_g0nam] *)
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_g0namlst
+  (gnms) =
+(
+list_foreach<g0nam>(gnms)
+) where
+{
+implement
+(env)//tmp
+list_foreach$fwork<g0nam><env>(gnm, env) = synread_g0nam(gnm)
+} (* end of [synread_g0explst] *)
+//
+(* ****** ****** *)
 implement
 //{}(*tmp*)
 synread_g0eid
@@ -159,14 +243,14 @@ end // end of [let]
 implement
 //{}(*tmp*)
 synread_g0explst
-  (g0as) =
+  (g0es) =
 (
-list_foreach<g0exp>(g0as)
+list_foreach<g0exp>(g0es)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<g0exp><env>(g0a, env) = synread_g0exp(g0a)
+list_foreach$fwork<g0exp><env>(g0e, env) = synread_g0exp(g0e)
 } (* end of [synread_g0explst] *)
 //
 (* ****** ****** *)

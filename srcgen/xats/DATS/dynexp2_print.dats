@@ -91,8 +91,12 @@ fprint_val<filpath> =
 $FP0.fprint_filpath_full2
 //
 (* ****** ****** *)
+//
+implement
+fprint_val<g0nam> = fprint_g0nam
 implement
 fprint_val<g1exp> = fprint_g1exp
+//
 (* ****** ****** *)
 //
 implement
