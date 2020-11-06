@@ -64,6 +64,8 @@ fprint_val<token> = fprint_token
 (* ****** ****** *)
 //
 implement
+fprint_val<g0nam> = fprint_g0nam
+implement
 fprint_val<g1exp> = fprint_g1exp
 //
 (*

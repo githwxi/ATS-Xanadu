@@ -168,7 +168,8 @@ end // end-of-let // end of [p_l0abl]
 (* ****** ****** *)
 //
 implement
-p_s0ymb(buf, err) = let
+p_s0ymb
+  (buf, err) = let
 //
 val e0 = err
 val tok = buf.get0()
@@ -206,6 +207,51 @@ tok.node() of
 //
 end // end of [p_s0ymb]
 //
+(* ****** ****** *)
+
+implement
+t_g0nid(tnd) =
+(
+case+ tnd of
+//
+| T_IDENT_alp _ => true
+| T_IDENT_sym _ => true
+//
+| _ (* non-identifier *) => false
+//
+) (* end of [t_g0nid] *)
+
+(* ****** ****** *)
+
+implement
+p_g0nid
+  (buf, err) = let
+//
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+//
+| T_IDENT_alp _ =>
+  i0dnt_some(tok) where
+  {
+    val () = buf.incby1()
+  }
+| T_IDENT_sym _ =>
+  i0dnt_some(tok) where
+  {
+    val () = buf.incby1()
+  }
+//
+| _ (* non-identifier *) =>
+  (
+    err := err + 1; i0dnt_none(tok)
+  ) (* end of [non-IDENT] *)
+//
+end // end of [p_g0nid]
+
 (* ****** ****** *)
 
 implement
@@ -549,6 +595,118 @@ _(*non-IDENT_qual*) =>
 end // end of [p_sq0eid]
 //
 (* ****** ****** *)
+
+extern
+fun
+p_atmg0nam: parser(g0nam)
+extern
+fun
+p_g0namseq_COMMA: parser(g0namlst)
+
+(* ****** ****** *)
+//
+implement
+p_g0nam
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+val tnd = tok.node()
+//
+in
+//
+case+ tnd of
+|
+T_LPAREN() => let
+  val () = buf.incby1()
+  val gnms =
+    p_g0namseq_COMMA(buf, err)
+  // end of [val]
+  val tbeg = tok
+  val tend = p_RPAREN(buf, err)
+in
+  err := e0;
+  g0nam_make_node
+  ( loc_res
+  , G0Nlist(tbeg, gnms, tend)) where
+  {
+    val loc_res = tbeg.loc()+tend.loc()
+  }
+end // end of [T_LPAREN]
+|
+_(*rest-of-token*) => p_atmg0nam(buf, err)
+end
+//
+implement
+p_atmg0nam
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+val tnd = tok.node()
+//
+(*
+val () =
+println!
+("p_atmg0nam: e0 = ", e0)
+val () =
+println!
+("p_atmg0nam: tok = ", tok)
+*)
+//
+in
+//
+case+ tnd of
+//
+|
+_ when t_g0nid(tnd) =>
+let
+  val id =
+  p_g0nid(buf, err)
+  val loc = id.loc()
+in
+  err := e0;
+  g0nam_make_node(loc, G0Nid0(id))
+end // end of [t_g0nid]
+//
+| _ when t_t0int(tnd) =>
+  let
+    val x0 =
+    p_t0int(buf, err)
+    val loc = x0.loc()
+  in
+    err := e0;
+    g0nam_make_node(loc, G0Nint(x0))
+  end // end of [t_t0int]
+| _ when t_t0str(tnd) =>
+  let
+    val x0 =
+    p_t0str(buf, err)
+    val loc = x0.loc()
+  in
+    err := e0;
+    g0nam_make_node(loc, G0Nstr(x0))
+  end // end of [t_t0str]
+//
+| _ (* rest-of-token *) =>
+(
+  err := e0 + 1;
+  g0nam_make_node(tok.loc(), G0Nnone1(tok))
+)
+//
+end // end of [p_atmg0nam]
+//
+implement
+p_g0namseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(
+pstar_COMMA_fun{g0nam}(buf, err, p_atmg0nam)
+)
+) (* end of [p_g0namseq_COMMA] *)
+//
+(* ****** ****** *)
 //
 extern
 fun
@@ -582,7 +740,8 @@ static
 fun
 p_napps: parser(g0exp)
 implement
-p_napps(buf, err) = let
+p_napps
+  (buf, err) = let
   val e0 = err
   val tok = buf.get0()
   val tnd = tok.node()
@@ -636,7 +795,8 @@ end // end of [p_napps]
 in (* in-of-local *)
 
 implement
-p_g0exp(buf, err) = let
+p_g0exp
+  (buf, err) = let
 //
 val g0es0 =
 p_atmg0expseq(buf, err)
@@ -717,7 +877,7 @@ end // end of [t_t0int]
   in
     err := e0;
     g0exp_make_node(loc, G0Estr(x0))
-  end // end of [t_t0int]
+  end // end of [t_t0str]
 //
 |
 T_LPAREN() => let

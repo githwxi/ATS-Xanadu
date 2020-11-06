@@ -4176,11 +4176,11 @@ Some(d1e) =>
 case+
 d1e.node() of
 |
-D1Eexname(g1e) => Some(g1e)
+D1Eexname(gnm) => Some(gnm)
 |
 _(*D1Eexname*) => None(*void*)
 )
-) : g1expopt // end-of-val
+) : Option(g0nam) // end-of-val
 //
 val def =
 (

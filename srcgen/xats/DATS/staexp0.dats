@@ -352,6 +352,36 @@ case+ x0 of
 local
 
 absimpl
+g0nam_tbox = $rec{
+  g0nam_loc= loc_t
+, g0nam_node= g0nam_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+implement
+g0nam_get_loc(x0) = x0.g0nam_loc
+implement
+g0nam_get_node(x0) = x0.g0nam_node
+
+(* ****** ****** *)
+
+implement
+g0nam_make_node
+(loc, node) = $rec
+{
+  g0nam_loc= loc, g0nam_node= node
+} (* end of [g0nam_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 g0exp_tbox = $rec{
   g0exp_loc= loc_t
 , g0exp_node= g0exp_node

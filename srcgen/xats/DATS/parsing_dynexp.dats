@@ -1981,13 +1981,13 @@ end // end of [t_t0str]
 //
 | T_DLR_EXNAME _ => let
     val () = buf.incby1()
-    val g0e = p_g0exp(buf, err)
+    val gnm = p_g0nam(buf, err)
   in
     err := e0;
     d0exp_make_node
-    ( loc_res, D0Eexname(g0e) ) where
+    ( loc_res, D0Eexname(gnm) ) where
     {
-      val loc_res = tok.loc()+g0e.loc()
+      val loc_res = tok.loc()+gnm.loc()
     }
   end
 //

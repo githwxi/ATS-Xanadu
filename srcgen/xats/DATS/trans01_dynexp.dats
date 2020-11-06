@@ -1486,16 +1486,14 @@ d0e0.node() of
   val d1e0 = d1exp_none(loc0) in FXITMatm(d1e0)
   end // end of [D0Enone]
 //
-| D0Eexname(g0e1) =>
-  let
-    val g1e1 = trans01_gexp(g0e1)
-  in
-    FXITMatm(d1e0) where
-    {
+| D0Eexname(gnm1) =>
+  (
+  FXITMatm(d1e0) where
+  {
     val
-    d1e0 = d1exp_make_node(loc0, D1Eexname(g1e1))
-    }
-  end // end of [D0Eexname]
+    d1e0 = d1exp_make_node(loc0, D1Eexname(gnm1))
+  }
+  ) // end of [D0Eexname]
 //
 end (* end of [auxitm] *)
 

@@ -70,6 +70,8 @@ fprint_val<s0ymb> = fprint_s0ymb
 (* ****** ****** *)
 
 implement
+fprint_val<g0nam> = fprint_g0nam
+implement
 fprint_val<g0exp> = fprint_g0exp
 
 (* ****** ****** *)
@@ -318,6 +320,54 @@ case+ x0 of
 | DQ0EIDsome(tok, sid) =>
   fprint!(out, "DQ0EIDsome(", tok, "; ", sid, ")")
 )
+
+(* ****** ****** *)
+
+implement
+print_g0nam(x0) =
+fprint_g0nam(stdout_ref, x0)
+implement
+prerr_g0nam(x0) =
+fprint_g0nam(stderr_ref, x0)
+
+(* ****** ****** *)
+
+local
+
+implement
+fprint_val<g0nam> = fprint_g0nam
+
+in (* in-of-local *)
+
+implement
+fprint_g0nam
+  (out, x0) =
+(
+case+ x0.node() of
+|
+G0Nid0(tok) =>
+fprint!(out, "G0Nid0(", tok, ")")
+|
+G0Nint(tok) =>
+fprint!(out, "G0Nint(", tok, ")")
+|
+G0Nstr(tok) =>
+fprint!(out, "G0Nstr(", tok, ")")
+|
+G0Nlist
+(tbeg, gnms, tend) =>
+fprint!
+( out
+, "G0Nlist("
+, tbeg, "; ", gnms, "; ", tend, ")")
+//
+| G0Nnone0() =>
+  fprint!(out, "G0Nnone0(", ")")
+| G0Nnone1(tok) =>
+  fprint!(out, "G0Nnone1(", tok, ")")
+)
+//
+end // end of [local]
 
 (* ****** ****** *)
 
