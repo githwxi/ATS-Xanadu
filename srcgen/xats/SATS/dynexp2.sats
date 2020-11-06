@@ -367,14 +367,10 @@ overload .tqas with d2var_set_tqas
 //
 (* ****** ****** *)
 //
-(*
-//
 fun
-d2cst_get_exnm(d2cst): exnam
+d2cst_get_exnm(d2cst): g1nam
 //
 overload .exnm with d2cst_get_exnm
-//
-*)
 //
 (* ****** ****** *)
 //
