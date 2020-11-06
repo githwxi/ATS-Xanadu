@@ -1490,8 +1490,10 @@ d0e0.node() of
   (
   FXITMatm(d1e0) where
   {
-    val
-    d1e0 = d1exp_make_node(loc0, D1Eexname(gnm1))
+  val
+  gnm1 = trans01_gnam(gnm1)
+  val
+  d1e0 = d1exp_make_node(loc0, D1Eexname(gnm1))
   }
   ) // end of [D0Eexname]
 //

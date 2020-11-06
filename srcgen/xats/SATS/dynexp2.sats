@@ -58,7 +58,6 @@ S0E = "./staexp0.sats"
 #staload
 D0E = "./dynexp0.sats"
 //
-typedef g0nam = $S0E.g0nam
 typedef d0exp = $D0E.d0exp
 typedef sq0eid = $S0E.sq0eid
 typedef dq0eid = $S0E.dq0eid
@@ -68,6 +67,7 @@ typedef dq0eid = $S0E.dq0eid
 #staload
 S1E = "./staexp1.sats"
 //
+typedef g1nam = $S1E.g1nam
 typedef g1exp = $S1E.g1exp
 typedef g1mac = $S1E.g1mac
 //
@@ -1111,6 +1111,8 @@ overload fprint with fprint_v2ardecl
 //
 typedef
 g1expopt = $S1E.g1expopt
+typedef
+g1namopt = $S1E.g1namopt
 //
 datatype
 f2undecl =
@@ -1120,7 +1122,7 @@ F2UNDECL of @{
 , d2c= d2cst
 , arg= f2arglst
 , res= effs2expopt
-, ext= Option(g0nam)
+, ext= g1namopt
 , def= d2expopt, wtp= s2expopt
 }
 //

@@ -95,12 +95,18 @@ fprint_val<dl0abeled(a)> = fprint_dl0abeled<a>
 (* ****** ****** *)
 
 implement
+fprint_val<g1nam> = fprint_g1nam
+implement
 fprint_val<g1exp> = fprint_g1exp
+
+(* ****** ****** *)
 
 implement
 fprint_val<sort1> = fprint_sort1
 implement
 fprint_val<s1exp> = fprint_s1exp
+
+(* ****** ****** *)
 
 implement
 fprint_val<s1arg> = fprint_s1arg

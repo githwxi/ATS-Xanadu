@@ -4180,7 +4180,7 @@ D1Eexname(gnm) => Some(gnm)
 |
 _(*D1Eexname*) => None(*void*)
 )
-) : Option(g0nam) // end-of-val
+) : Option(g1nam) // end-of-val
 //
 val def =
 (
