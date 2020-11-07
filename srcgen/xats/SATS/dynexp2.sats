@@ -367,10 +367,29 @@ overload .tqas with d2var_set_tqas
 //
 (* ****** ****** *)
 //
-fun
-d2cst_get_exnm(d2cst): g1nam
+datatype x2knd =
+| X2KNDnone of ()
+| X2KNDsome of ( int )
+datatype x2nam =
+| X2NAMnone of ()
+| X2NAMsome of (g1nam)
 //
-overload .exnm with d2cst_get_exnm
+fun
+d2cst_get_xknd(d2cst): x2knd
+fun
+d2cst_get_xnam(d2cst): x2nam
+//
+(*
+fun
+d2cst_set_xknd
+(d2c0: d2cst, xknd: x2knd): void
+fun
+d2cst_set_xnam
+(d2c0: d2cst, xnam: x2nam): void
+*)
+//
+overload .xknd with d2cst_get_xknd
+overload .xnam with d2cst_get_xnam
 //
 (* ****** ****** *)
 //
@@ -417,8 +436,14 @@ d2cst_make_idtp
 ( id0: token
 , knd: tnode
 , tqas: tq2as, s2e1: s2exp): d2cst
+//
 fun
 stamp_d2cst_kind(d2cst, tnode): void
+//
+fun
+stamp_d2cst_xknd(d2cst, x2knd): void
+fun
+stamp_d2cst_xnam(d2cst, x2nam): void
 //
 (* ****** ****** *)
 //

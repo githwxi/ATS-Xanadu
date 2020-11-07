@@ -51,15 +51,13 @@ MAP = "./../SATS/symmap.sats"
 ENV = "./../SATS/symenv.sats"
 //
 (* ****** ****** *)
-//
 #staload
 FP0 = "./../SATS/filpath.sats"
-//
 (* ****** ****** *)
-
+#staload "./../SATS/dynexp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 #staload "./../SATS/trans01.sats"
-
 (* ****** ****** *)
 //
 vtypedef
@@ -348,21 +346,31 @@ val
 $FP0.the_dirpathlst_push(dp0)
 //
 val
-d0csopt =
-parse_from_filpath_toplevel(knd, fp0)
+dparsed =
+parse_from_filpath_toplevel
+  (knd, fp0)
 //
 val
 d1csopt =
-(
-case+ d0csopt of
+let
+val
+d0csopt =
+d0parsed_get_parsed
+(dparsed)
+in
+case+
+d0csopt of
 |
-~None_vt() => None_vt()
+None() => None_vt()
 |
-~Some_vt(d0cs) => Some_vt(trans01_declist(d0cs))
-) : Option_vt(d1eclist)
+Some(d0cs) =>
+Some_vt(trans01_declist(d0cs))
+end : Option_vt(d1eclist)
 //
-val () = $FP0.the_filpathlst_pout(pf1|(*void*))
-val () = $FP0.the_dirpathlst_pout(pf2|(*void*))
+val () =
+$FP0.the_filpathlst_pout(pf1|(*void*))
+val () =
+$FP0.the_dirpathlst_pout(pf2|(*void*))
 //
 in
   d1csopt

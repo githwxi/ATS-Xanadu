@@ -784,45 +784,67 @@ end // end of [parse_from_fileref_toplevel]
 //
 (* ****** ****** *)
 
+local
+#staload
+"./../SATS/dynexp0.sats"
+in//in-of-local
 implement
 parse_from_filpath_toplevel
-  (stadyn, fp0) =
+  (knd, fp0) =
 (
 //
 ifcase
 |
 filpath_is_stdin(fp0) =>
-Some_vt(d0cs) where
-{
+let
 val
 d0cs =
-parse_from_stdin_toplevel(stadyn)
-}
-| _(* filename:given *) =>
+parse_from_stdin_toplevel
+  (knd(*stadyn*))
+in
+D0PARSED@{
+  stadyn=knd
+, source=fp0, parsed=Some(d0cs) }
+end //filpath_is_stdin
+//
+| _ (*filename: given*) =>
 let
 //
-val fnm = fp0.full1()
-val opt =
-fileref_open_opt(fnm, file_mode_r)
+val
+fnm =
+fp0.full1()
+val
+opt =
+fileref_open_opt
+(fnm(*source*), file_mode_r)
 //
 in
 //
 case+ opt of
-| ~None_vt() =>
-   None_vt()
-| ~Some_vt(inp) =>
-  let
-    val d0cs =
-    parse_from_fileref_toplevel
-      (stadyn, inp)
-    val ((*void*)) = fileref_close(inp)
-  in
-    Some_vt(d0cs)
-  end // end of [Some_vt]
+| ~
+None_vt() =>
+D0PARSED@{
+  stadyn=knd
+, source=fp0, parsed=None() }
 //
-end
+| ~
+Some_vt(inp) =>
+let
+  val
+  d0cs =
+  parse_from_fileref_toplevel
+    (knd, inp)
+  val () = fileref_close(inp)
+in
+D0PARSED@{
+  stadyn=knd
+, source=fp0, parsed=Some(d0cs) }
+end // end of [Some_vt]
+//
+end // for [filename: given]
 //
 ) (* parser_from_filpath_toplevel *)
+end // end of [local]
 
 (* ****** ****** *)
 
