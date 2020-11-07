@@ -934,8 +934,14 @@ overload fprint with fprint_hvardecl
 (* ****** ****** *)
 //
 datatype
-h0pkg =
-H0PKG of (h0dclist)
+h0comped =
+H0COMPED of @{
+  stadyn= int
+, source= filpath
+, comped=
+  Option(h0dclist)
+} where
+  filpath= $FP0.filpath
 //
 (* ****** ****** *)
 //

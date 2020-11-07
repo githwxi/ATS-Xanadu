@@ -1246,7 +1246,7 @@ then
 val () =
 prerrln!
 ("\
-tread33_program: \
+tread33_package: \
 nxerr = ", nxerr )
 //
 val () =
@@ -1255,7 +1255,7 @@ if
 then
 prerrln!
 ("\
-tread33_program: \
+tread33_package: \
 there is one trans33-error!")
 val () =
 if
@@ -1263,7 +1263,7 @@ if
 then
 prerrln!
 ("\
-tread33_program: \
+tread33_package: \
 there are some trans33-errors!")
 //
 val () =
@@ -1278,12 +1278,12 @@ else
 val () =
 prerrln!
 ("\
-tread33_program: \
+tread33_package: \
 there are none of trans33-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread33_program]
+end // end of [tread33_package]
 
 end // end of [local]
 

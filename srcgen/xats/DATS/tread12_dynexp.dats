@@ -1066,7 +1066,7 @@ then
 val () =
 prerrln!
 ("\
-tread12_program: \
+tread12_package: \
 nxerr = ", nxerr )
 //
 val () =
@@ -1075,7 +1075,7 @@ if
 then
 prerrln!
 ("\
-tread12_program: \
+tread12_package: \
 there is one trans12-error!")
 val () =
 if
@@ -1083,7 +1083,7 @@ if
 then
 prerrln!
 ("\
-tread12_program: \
+tread12_package: \
 there are some trans12-errors!")
 //
 val () =
@@ -1098,12 +1098,12 @@ else
 val () =
 prerrln!
 ("\
-tread12_program: \
+tread12_package: \
 there are none of trans12-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread12_program]
+end // end of [tread12_package]
 
 end // end of [local]
 

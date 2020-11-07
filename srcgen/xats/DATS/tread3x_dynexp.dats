@@ -1139,7 +1139,7 @@ then
 val () =
 prerrln!
 ("\
-tread3x_program: \
+tread3x_package: \
 nxerr = ", nxerr )
 //
 val () =
@@ -1148,7 +1148,7 @@ if
 then
 prerrln!
 ("\
-tread3x_program: \
+tread3x_package: \
 there is one trans3x-error!")
 val () =
 if
@@ -1156,7 +1156,7 @@ if
 then
 prerrln!
 ("\
-tread3x_program: \
+tread3x_package: \
 there are some trans3x-errors!")
 //
 val () =
@@ -1171,12 +1171,12 @@ else
 val () =
 prerrln!
 ("\
-tread3x_program: \
+tread3x_package: \
 there are none of trans3x-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread3x_program]
+end // end of [tread3x_package]
 
 end // end of [local]
 

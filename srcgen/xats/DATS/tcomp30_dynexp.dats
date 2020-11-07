@@ -69,18 +69,42 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 implement
-tcomp30_program
-  (prog0) =
+tcomp30_envless
+  (prog) =
 (
-  H0PKG(hdcls)) where
-{
+  tcomp30_declist(prog)
+) (* end of [tcomp30_envless] *)
+//
+(* ****** ****** *)
+
+implement
+tcomp30_package
+  (p3kg) = let
+//
+val+
+D3TRANSD(rcd) = p3kg
 //
 val
-hdcls =
-tcomp30_declist(prog0)
+d3cs =
+(
+case+
+rcd.transd of
+| None() =>
+  list_nil((*void*))
+| Some(d3cs) => d3cs
+) : d3eclist // end-of-val
 //
-} (* end of [tcomp30_program] *)
-//
+in
+H0COMPED@{
+  stadyn= rcd.stadyn
+, source= rcd.source
+, comped= Some(prog) } where
+{
+  val
+  prog = tcomp30_envless(d3cs)
+}
+end // end of [tcomp30_package]
+
 (* ****** ****** *)
 
 implement
