@@ -189,7 +189,7 @@ implenv_add_impdecl3
 (* ****** ****** *)
 //
 fun
-trans3t_program
+trans3t_envless
   (d3cls: d3eclist): d3eclist
 //
 (* ****** ****** *)

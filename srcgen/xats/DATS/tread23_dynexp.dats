@@ -581,7 +581,7 @@ then
 val () =
 prerrln!
 ("\
-tread23_program: \
+tread23_package: \
 nxerr = ", nxerr )
 //
 val () =
@@ -590,7 +590,7 @@ if
 then
 prerrln!
 ("\
-tread23_program: \
+tread23_package: \
 there is one trans23-error!")
 val () =
 if
@@ -598,7 +598,7 @@ if
 then
 prerrln!
 ("\
-tread23_program: \
+tread23_package: \
 there are some trans23-errors!")
 //
 val () =
@@ -613,12 +613,12 @@ else
 val () =
 prerrln!
 ("\
-tread23_program: \
+tread23_package: \
 there are none of trans23-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread23_program]
+end // end of [tread23_package]
 
 end // end of [local]
 

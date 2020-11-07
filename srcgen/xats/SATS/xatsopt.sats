@@ -32,6 +32,12 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
+fun
+xatsopt_version
+  (out: FILEref): void
+//
+(* ****** ****** *)
 
 #staload
 D0E = "./../SATS/dynexp0.sats"
@@ -45,19 +51,74 @@ D3E = "./../SATS/dynexp3.sats"
 HIR = "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
-
-typedef d0parsed = $D0E.d0parsed
-typedef d1transd = $D1E.d1transd
-typedef d2transd = $D2E.d2transd
-typedef d3transd = $D3E.d3transd
-
+//
+typedef
+d0parsed = $D0E.d0parsed
+typedef
+d1transd = $D1E.d1transd
+typedef
+d2transd = $D2E.d2transd
+typedef
+d3transd = $D3E.d3transd
+//
+typedef
+h0comped = $HIR.h0comped
+//
 (* ****** ****** *)
-
+//
 fun
-trans02_package(d0parsed): d2transd
+trans01_package
+  (p0kg: d0parsed): d1transd
 fun
-trans03_package(d0parsed): d3transd
-
+trans02_package
+  (p0kg: d0parsed): d2transd
+fun
+trans03_package
+  (p0kg: d0parsed): d3transd
+//
+(* ****** ****** *)
+//
+fun
+trs03cmp30_package
+  (p0kg: d0parsed): h0comped
+//
+(* ****** ****** *)
+fun
+the_fixity_load
+(
+  XATSENV: string
+) : void =
+  "ext#libxatsopt_the_fixity_load"
+(* ****** ****** *)
+fun
+the_basics_load
+( XATSENV: string
+, stadyn: int, given: string
+) : void =
+  "ext#libxatsopt_the_basics_load"
+//
+(* ****** ****** *)
+fun
+the_prelude_load
+( XATSENV: string
+, stadyn: int, given: string
+) : void =
+  "ext#libxatsopt_the_prelude_load"
+//
+(* ****** ****** *)
+fun
+the_preludes_load
+(
+  XATSENV: string
+) : void =
+  "ext#libxatsopt_the_preludes_load"
+fun
+the_preludes_load_if
+(
+  XATSENV: string, flag: &int
+) : void =
+  "ext#libxatsopt_the_preludes_load_if"
+//
 (* ****** ****** *)
 
 (* end of [xats_xatsopt.sats] *)

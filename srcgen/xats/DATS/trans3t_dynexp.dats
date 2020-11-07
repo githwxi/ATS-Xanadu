@@ -96,9 +96,9 @@ case+ s2vs of
 (* ****** ****** *)
 
 implement
-trans3t_program
-  (prog0) =
-  (prog1) where
+trans3t_envless
+  (prog) =
+  (prog) where
 {
 //
 val
@@ -109,17 +109,17 @@ val () =
 implenv_push_init(env0)
 //
 val
-prog1 =
-trans3t_declist(env0, prog0)
+prog =
+trans3t_declist(env0, prog)
 //
 val () =
 (
-  implenv_pop0_init(env0)
+  implenv_pop0_init( env0 )
 )
 //
 val () = implenv_free_nil(env0)
 //
-} (* end of [trans3t_program] *)
+} (* end of [trans3t_package] *)
 
 (* ****** ****** *)
 

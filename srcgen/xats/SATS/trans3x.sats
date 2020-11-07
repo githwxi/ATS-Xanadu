@@ -161,7 +161,7 @@ tr3xenv_dvar_kind
 (* ****** ****** *)
 //
 fun
-trans3x_program
+trans3x_envless
   (d3cls: d3eclist): d3eclist
 //
 (* ****** ****** *)

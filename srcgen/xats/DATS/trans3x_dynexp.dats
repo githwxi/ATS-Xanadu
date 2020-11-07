@@ -70,21 +70,21 @@ fprint_val<t2ype> = fprint_t2ype
 (* ****** ****** *)
 //
 implement
-trans3x_program
-  (prog0) =
-  (prog1) where
+trans3x_envless
+  (prog) =
+  (prog) where
 {
 //
 val
 env0 = tr3xenv_make_nil()
 //
 val
-prog1 =
-trans3x_declist(env0, prog0)
+prog =
+trans3x_declist(env0, prog)
 //
 val () = tr3xenv_free_nil(env0)
 //
-} (* end of [trans3x_program] *)
+} (* end of [trans3x_envless] *)
 //
 (* ****** ****** *)
 

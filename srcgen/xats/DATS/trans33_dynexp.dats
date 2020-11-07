@@ -112,21 +112,21 @@ list_cons(x1, list_npf_cons(n0-1, x0, xs))
 (* ****** ****** *)
 
 implement
-trans33_program
-  (prog0) =
-  (prog1) where
+trans33_envless
+  (prog) =
+  (prog) where
 {
 //
 val
 env0 = abstenv_make_nil()
 //
 val
-prog1 =
-trans33_declist(env0, prog0)
+prog =
+trans33_declist(env0, prog)
 //
 val () = abstenv_free_top(env0)
 //
-} (* end of [trans33_program] *)
+} (* end of [trans33_envless] *)
 
 (* ****** ****** *)
 

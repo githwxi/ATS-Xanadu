@@ -174,7 +174,7 @@ whnfize_env with t2ype_whnfize_env
 (* ****** ****** *)
 //
 fun
-trans33_program
+trans33_envless
   (dcls: d3eclist): d3eclist
 //
 (* ****** ****** *)

@@ -94,6 +94,8 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tcomp30.sats"
 //
 (* ****** ****** *)
+#staload "./../SATS/xatsopt.sats"
+(* ****** ****** *)
 //
 #staload
 _(*TMP*) =
@@ -300,6 +302,8 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./tcomp30_statyp.dats"
 #dynload "./tcomp30_dynexp.dats"
 //
+#dynload "./xatsopt_util0.dats"
+//
 (* ****** ****** *)
 //
 datatype
@@ -503,68 +507,6 @@ fprintln! (out, "  --tycheck (for typechecking only)");
 fprint_newline (out); // HX: needed for flushing out the output
 //
 end // end of [xatsopt_usage]
-//
-(* ****** ****** *)
-//
-extern
-fun
-xatsopt_version
-  (out: FILEref): void
-implement
-xatsopt_version
-  (out) = let
-  val MAJOR = 0
-  val MINOR = 0
-  val MICRO = 0
-in
-  fprint!(out, "ATS/Xanadu version ");
-  fprint!(out, MAJOR, ".", MINOR, ".", MICRO);
-  fprintln!(out, " Copyright (c) 2018-20?? Hongwei Xi")
-end // end of [xatsopt_version]
-//
-(* ****** ****** *)
-//
-extern
-fun
-the_fixity_load
-(
-XATSENV: string
-) : void =
-  "ext#libxatsopt_the_fixity_load"
-extern
-fun
-the_basics_load
-(
-XATSENV: string
-,
-stadyn: int, given: string
-) : void =
-  "ext#libxatsopt_the_basics_load"
-//
-extern
-fun
-the_prelude_load
-(
-XATSENV: string
-,
-stadyn: int, given: string
-) : void =
-  "ext#libxatsopt_the_prelude_load"
-//
-extern
-fun
-the_preludes_load
-(
-  XATSENV: string
-) : void =
-  "ext#libxatsopt_the_preludes_load"
-extern
-fun
-the_preludes_load_if
-(
-  XATSENV: string, flag: &int
-) : void =
-  "ext#libxatsopt_the_preludes_load_if"
 //
 (* ****** ****** *)
 //
@@ -927,31 +869,14 @@ val () =
 val
 (pf0 | ()) =
 $FP0.the_filpathlst_push(fp0)
+//
 val
-d0cs =
-let
-val
-dparsed =
+p0kg =
 parse_from_filpath_toplevel
   (stadyn, fp0)
 //
-val
-d0csopt =
-let
-val () =
-synread_package(dparsed)
-in
-d0parsed_get_parsed(dparsed)
-end // end of [val]
-//
-in
-case+
-d0csopt of
-| Some(d0cs) => d0cs
-| None((*void*)) => list_nil()
-end : d0eclist // end-of-val
-//
 prval () = $UN.castview0{void}(pf0)
+//
 (*
 val
 ((*popped*)) =
@@ -962,131 +887,37 @@ $FP0.the_filpathlst_pout(pf0 | (*none*))
 val () =
 println!("//process_fpath: d0cs = ", d0cs)
 *)
-//
-val
-d1cs =
-let
-val
-d1cs = trans01_declist(d0cs)
-//
-val
-p1kg =
-D1TRANSD@{
-  stadyn=stadyn
-, source=fp0, transd=Some(d1cs)}
-//
-in
-d1cs where
-{
-  val () = tread01_package(p1kg)
-}
-end // end of [val]
 (*
 val () =
 println!("//process_fpath: d1cs = ", d1cs)
 *)
-//
-val
-d2cs =
-let
-val
-d2cs = trans12_declist(d1cs)
-//
-val
-p2kg =
-D2TRANSD@{
-  stadyn=stadyn
-, source=fp0, transd=Some(d2cs)}
-//
-in
-d2cs where
-{
-  val () = tread12_package(p2kg)
-}
-end // end of [val]
 (*
 val () =
 println!("//process_fpath: d2cs = ", d2cs)
 *)
-//
-val
-d3cs =
-let
-val
-d3cs = trans23_declist(d2cs)
-val
-p3kg =
-D3TRANSD@{
-  stadyn=stadyn
-, source=fp0, transd=Some(d3cs)}
-in
-d3cs where
-{
-  val () = tread23_package(p3kg)
-}
-end // end of [val]
+(*
+val () =
+println!("//process_fpath: d3cs = ", d3cs)
+*)
+(*
+val () =
+println!("//process_fpath: d3cs = ", d3cs)
+*)
 (*
 val () =
 println!("//process_fpath: d3cs = ", d3cs)
 *)
 //
-val
-d3cs =
-let
-val
-d3cs = trans33_program(d3cs)
-val
-p3kg =
-D3TRANSD@{
-  stadyn=stadyn
-, source=fp0, transd=Some(d3cs)}
-in
-d3cs where
-{
-  val () = tread33_package(p3kg)
-}
-end // end of [val]
-(*
-val () =
-println!("//process_fpath: d3cs = ", d3cs)
-*)
+(* ****** ****** *)
 //
 val
-d3cs =
-let
-val
-d3cs = trans3t_program(d3cs)
-val
-d3cs = trans3x_program(d3cs)
-val
-p3kg =
-D3TRANSD@{
-  stadyn=stadyn
-, source=fp0, transd=Some(d3cs)}
-in
-d3cs where
-{
-  val () = tread3x_package(p3kg)
-}
-end // end of [val]
+h0pkg = trs03cmp30_package(p0kg)
 //
-(*
-val () =
-println!("//process_fpath: d3cs = ", d3cs)
-*)
-//
-val
-hpkg =
-tcomp30_program(d3cs)
-val
-hdcls =
-(
-case+ hpkg of
-| H0PKG(hdcls) => hdcls
-) : h0dclist // end-of-val
+(* ****** ****** *)
 //
 val () =
 let
+//
 fun
 loop
 ( hdcls
@@ -1095,22 +926,41 @@ loop
 case+
 hdcls of
 |
-list_nil() => ((*void*))
+list_nil() => ()
 |
 list_cons
-(hdcl1, hdcls) => let
-val () =
-println!
-("//", hdcl1) in loop(hdcls)
+(hdcl1, hdcls) =>
+let
+  val () =
+  println!("//", hdcl1) in loop(hdcls)
 end
 ) (* end-of-loop *)
+//
 in
-loop(hdcls) where
+//
+let
+val
+hdcls =
+(
+(
+case+
+rcd.comped of
+| None() =>
+  list_nil()
+| Some(hdcls) => hdcls
+) where
 {
-  val () =
-  println!
-  ("//process_fpath: hdcls = ")
+val+H0COMPED(rcd) = h0pkg
 }
+) : h0dclist // end-of-val
+in
+  loop(hdcls) where
+  {
+    val () =
+    println!("//process_fpath: hdcls = ")
+  }
+end // end of [let]
+//
 end (* end of [val] *)
 //
 (* ****** ****** *)
@@ -1605,405 +1455,13 @@ main0(argc, argv) =
 //
 if
 (argc >= 2)
-then
-xatsopt_main0(argc, argv)
-else
-prerrln!("Hello from ATS3(xatsopt)!")
+then xatsopt_main0(argc, argv)
+else prerrln!("Hello from ATS3(xatsopt)!")
 // end of [if]
 ) (* end of [main] *)
 //
 #endif // ifdef(_LIBXATSOPT_)
 //
 (* ****** ****** *)
-//
-implement
-the_fixity_load
-  (XATSENV) = let
-//
-  val given =
-    "prelude/fixity.sats"
-//
-  val fname =
-    dirbase(XATSENV, given)
-  val fpath =
-    fpath_make(given, fname)  
-//
-  val
-  (pf0 | ()) =
-  $FP0.the_filpathlst_push(fpath)
-//
-  val d0cs = let
-    val
-    opt =
-    fileref_open_opt(fname, file_mode_r)
-  in
-    case+ opt of
-    | ~None_vt() => list_nil()
-    | ~Some_vt(filr) => d0cs where
-      {
-        val d0cs =
-        parse_from_fileref_toplevel
-        (
-          0(*static*), filr(*input*)
-        )
-        val ((*void*)) = fileref_close(filr)
-      }
-   end : d0eclist // end of [val]
-//
-  val
-  ((*popped*)) =
-  $FP0.the_filpathlst_pout(pf0 | (*none*))
-//
-  val
-  (pf0 | ()) =
-  the_fxtyenv_push((*void*))
-  val d1cs = trans01_declist(d0cs)
-  val map =
-  the_fxtyenv_pout(pf0 | (*none*))
-//
-  val ((*joined*)) = the_fxtyenv_pjoinwth0(map)
-//
-(*
-  val () = println! "the_fxtyenv = "
-  val () = the_fxtyenv_println((*void*))
-  val () = println! "[the_fixity_load] is finished."
-*)
-//
-in
-  // empty
-end // end of [the_fixity_load]
 
-(* ****** ****** *)
-//
-implement
-the_basics_load
-(XATSENV, stadyn, given) = let
-//
-  val
-  d1cs = trans01_declist(d0cs)
-//
-  val
-  (pf0|()) =
-  the_trans12_pushnil((*void*))
-  val d2cs = trans12_declist(d1cs)
-  val
-  ((*joined*)) =
-  the_trans12_pjoinwth0(pf0 | (*void*))
-//
-in (* nothing *) end where
-{
-//
-(*
-val () =
-println!
-("//the_basics_load: ", given)
-*)
-//
-  val
-  fname =
-  dirbase(XATSENV, given)
-  val
-  fpath =
-  fpath_make( given, fname )  
-//
-  val
-  (pf0 | ()) =
-  $FP0.the_filpathlst_push(fpath)
-//
-  val d0cs = let
-    val
-    opt =
-    fileref_open_opt(fname, file_mode_r)
-  in
-    case+ opt of
-    | ~None_vt() =>
-       list_nil(*void*)
-    | ~Some_vt(filr) =>
-      (
-        fileref_close(filr); d0cs
-      ) where
-      {
-        val
-        d0cs =
-        parse_from_fileref_toplevel(stadyn, filr)
-      } (* end of [Some_vt] *)
-   end : d0eclist // end-of-let
-//
-  val
-  ((*popped*)) =
-  $FP0.the_filpathlst_pout(pf0 | (*none*))
-//
-} (* end of [the_basics_load] *)
-//
-(* ****** ****** *)
-//
-implement
-the_prelude_load
-(XATSENV, stadyn, given) =
-let
-//
-  val
-  (pf0|()) =
-  the_trans12_pushnil((*void*))
-  val d2cs = trans12_declist(d1cs)
-  val
-  ((*joined*)) =
-  the_trans12_pjoinwth1(pf0 | fpath, d2cs)
-//
-in (* nothing *) end where
-{
-//
-(*
-val () =
-println!
-("//the_prelude_load: ", given)
-*)
-//
-  val
-  fname =
-  dirbase(XATSENV, given)
-  val
-  fpath =
-  fpath_make(given, fname)  
-  val
-  dpath =
-  dpath_make(fpath_dname(fpath))
-//
-  val
-  (pf1 | ()) =
-  $FP0.the_filpathlst_push(fpath)
-  val
-  (pf2 | ()) =
-  $FP0.the_dirpathlst_push(dpath)
-//
-  val d0cs = let
-    val
-    opt =
-    fileref_open_opt
-    (fname, file_mode_r)
-  in
-    case+ opt of
-    |
-    ~None_vt() =>
-     (
-     list_nil(*void*)
-     ) // None_vt
-    |
-    ~Some_vt(filr) =>
-     let
-       val
-       d0cs =
-       parse_from_fileref_toplevel
-         (stadyn, filr)
-       val () = fileref_close(filr)
-     in
-       d0cs
-     end // end of [Some_vt]
-   end : d0eclist // end-of-let
-//
-  val d1cs = trans01_declist(d0cs)
-//
-  val
-  ((*popped*)) =
-  $FP0.the_filpathlst_pout(pf1 | (*none*))
-  val
-  ((*popped*)) =
-  $FP0.the_dirpathlst_pout(pf2 | (*none*))
-//
-} (* end of [the_prelude_load] *)
-//
-(* ****** ****** *)
-
-implement
-the_preludes_load
-  (XATSENV) =
-{
-//
-val () =
-the_fixity_load
-  (XATSENV)
-//
-val () =
-the_basics_load
-( XATSENV
-, 0(*static*)
-, "prelude/basics.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/xsetup.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/excptn.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gbas.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gnum.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gord.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gfor.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gfun.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gseq.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/bool.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/char.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gint.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gflt.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/optn.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/list.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/array.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/string.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/stream.sats")
-//
-// HX: for linear stuff
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gseq_vt.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/optn_vt.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/list_vt.sats")
-//
-(*
-//
-// HX: array contains array_vt
-// HX: string contains string_vt
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/array_vt.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/string_vt.sats")
-*)
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/stream_vt.sats")
-//
-(* ****** ****** *)
-//
-(*
-HX-2020-10-31:
-This one also needs to be loaded
-externally for template resolution!
-*)
-//
-val () =
-the_prelude_load
-  ( XATSENV
-  , 1(*dynamic*)
-  , "prelude/DATS/synougat.dats")
-// the_prelude_load
-//
-(* ****** ****** *)
-//
-(*
-val () =
-println!
-("//[the_preludes_load] is finished.")
-*)
-//
-} (* end of [the_preludes_load] *)
-
-(* ****** ****** *)
-//
-implement
-the_preludes_load_if
-  (XATSENV, flag) =
-(
-//
-if
-(flag = 0)
-then let
-  val () =
-  (flag := flag + 1) in the_preludes_load(XATSENV)
-end // end of [then]
-//
-) (* end of [the_preludes_load_if] *)
-
-(* ****** ****** *)
-
-(* end of [xats_xatsopt.dats] *)
+(* end of [xats_xatsopt_main0.dats] *)

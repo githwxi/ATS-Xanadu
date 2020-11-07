@@ -725,7 +725,7 @@ then
 val () =
 prerrln!
 ("\
-tread01_program: \
+tread01_package: \
 nxerr = ", nxerr )
 //
 val () =
@@ -734,7 +734,7 @@ if
 then
 prerrln!
 ("\
-tread01_program: \
+tread01_package: \
 there is one trans01-error!")
 val () =
 if
@@ -742,7 +742,7 @@ if
 then
 prerrln!
 ("\
-tread01_program: \
+tread01_package: \
 there are some trans01-errors!")
 //
 val () =
@@ -757,12 +757,12 @@ else
 val () =
 prerrln!
 ("\
-tread01_program: \
+tread01_package: \
 there are none of trans01-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread01_program]
+end // end of [tread01_package]
 
 end // end of [local]
 
