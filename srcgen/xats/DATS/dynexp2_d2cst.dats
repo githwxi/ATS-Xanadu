@@ -95,6 +95,10 @@ ref<d2cst_struct>
 }
 val () =
 stamp_d2cst_kind(d2c0, knd0)
+val () =
+stamp_d2cst_xknd(d2c0, X2KNDnone)
+val () =
+stamp_d2cst_xnam(d2c0, X2NAMnone)
 }
 ) where
 {
@@ -153,6 +157,10 @@ ref<d2cst_struct>
 }
 val () =
 stamp_d2cst_kind(d2c0, knd0)
+val () =
+stamp_d2cst_xknd(d2c0, X2KNDnone)
+val () =
+stamp_d2cst_xnam(d2c0, X2NAMnone)
 }
 ) where
 {
@@ -331,6 +339,158 @@ println!
 in
   // nothing
 end // end of [stamp_d2cst_kind]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+#staload
+"libats/SATS/dynarray.sats"
+#staload _ =
+"libats/DATS/dynarray.dats"
+//
+typedef itm = x2knd
+vtypedef dynarray = dynarray(itm)
+//
+val
+theDynarr = 
+dynarray_make_nil<itm>(i2sz(ND2CST))
+val
+theDynarr = $UN.castvwtp0{ptr}(theDynarr)
+//
+in (* in-of-local *)
+
+implement
+d2cst_get_xknd
+  (d2c) = let
+//
+  val s0 =
+  d2c.stamp()
+  val i0 =
+  stamp2uint(s0)
+  val i0 =
+  u2sz(g1ofg0(i0))
+  val A0 =
+  $UN.castvwtp0{dynarray}(theDynarr)
+  val cp = dynarray_getref_at(A0, i0)
+  prval ((*void*)) = $UN.cast2void(A0)
+//
+in
+//
+if
+isneqz(cp)
+then $UN.p2tr_get(cp) else X2KNDnone()
+//
+end // end of [d2cst_get_xknd]
+
+(* ****** ****** *)
+
+implement
+stamp_d2cst_xknd
+  (d2c, knd) = let
+//
+(*
+val () =
+println!
+("stamp_d2cst_xknd: d2c = ", d2c)
+val () =
+println!
+("stamp_d2cst_xknd: knd = ", knd)
+*)
+//
+  val s0 =
+  d2c.stamp()
+  val i0 =
+  stamp2uint(s0)
+  val i0 =
+  u2sz(g1ofg0(i0))
+  val A0 =
+  $UN.castvwtp0{dynarray}(theDynarr)
+  val-
+  ~None_vt() =
+  dynarray_insert_at_opt(A0, i0, knd)
+  prval ((*void*)) = $UN.cast2void(A0)
+in
+  // nothing
+end // end of [stamp_d2cst_xknd]
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+#staload
+"libats/SATS/dynarray.sats"
+#staload _ =
+"libats/DATS/dynarray.dats"
+//
+typedef itm = x2nam
+vtypedef dynarray = dynarray(itm)
+//
+val
+theDynarr = 
+dynarray_make_nil<itm>(i2sz(ND2CST))
+val
+theDynarr = $UN.castvwtp0{ptr}(theDynarr)
+//
+in (* in-of-local *)
+
+implement
+d2cst_get_xnam
+  (d2c) = let
+//
+  val s0 =
+  d2c.stamp()
+  val i0 =
+  stamp2uint(s0)
+  val i0 =
+  u2sz(g1ofg0(i0))
+  val A0 =
+  $UN.castvwtp0{dynarray}(theDynarr)
+  val cp = dynarray_getref_at(A0, i0)
+  prval ((*void*)) = $UN.cast2void(A0)
+//
+in
+//
+if
+isneqz(cp)
+then $UN.p2tr_get(cp) else X2NAMnone()
+//
+end // end of [d2cst_get_xnam]
+
+(* ****** ****** *)
+
+implement
+stamp_d2cst_xnam
+  (d2c, xnm) = let
+//
+(*
+val () =
+println!
+("stamp_d2cst_xnam: d2c = ", d2c)
+val () =
+println!
+("stamp_d2cst_xnam: xnm = ", xnm)
+*)
+//
+  val s0 =
+  d2c.stamp()
+  val i0 =
+  stamp2uint(s0)
+  val i0 =
+  u2sz(g1ofg0(i0))
+  val A0 =
+  $UN.castvwtp0{dynarray}(theDynarr)
+  val-
+  ~None_vt() =
+  dynarray_insert_at_opt(A0, i0, xnm)
+  prval ((*void*)) = $UN.cast2void(A0)
+in
+  // nothing
+end // end of [stamp_d2cst_xnam]
 
 end // end of [local]
 

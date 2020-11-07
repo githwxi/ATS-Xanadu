@@ -67,8 +67,9 @@ FS0 = "./../SATS/filsrch.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/parsing.sats"
+#staload "./../SATS/dynexp0.sats"
 //
+#staload "./../SATS/parsing.sats"
 #staload "./../SATS/synread.sats"
 //
 #staload "./../SATS/trans01.sats"
@@ -920,20 +921,27 @@ the_preludes_load_if
 (XATSENV, st0.prelude)
 // end of [val]
 //
-val () = (st0.inpfil0 := fp0)
+val () =
+( st0.inpfil0 := fp0 )
 val
 (pf0 | ()) =
 $FP0.the_filpathlst_push(fp0)
 val
 d0cs =
 let
-val opt =
+val
+dparsed =
 parse_from_filpath_toplevel
   (stadyn, fp0)
+val
+d0csopt =
+d0parsed_get_parsed
+  (dparsed)
 in
-case+ opt of
-| ~Some_vt(d0cs) => d0cs
-| ~None_vt((*void*)) => list_nil()
+case+
+d0csopt of
+| Some(d0cs) => d0cs
+| None((*void*)) => list_nil()
 end : d0eclist // end-of-val
 //
 prval () = $UN.castview0{void}(pf0)

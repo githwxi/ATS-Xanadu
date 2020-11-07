@@ -488,6 +488,17 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+d0parsed_get_parsed
+  (pkg) =
+(
+case+ pkg of
+|
+D0PARSED(rcd) => rcd.parsed
+)
+
+(* ****** ****** *)
+
 local
 
 absimpl
