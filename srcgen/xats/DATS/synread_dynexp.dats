@@ -1975,8 +1975,22 @@ the_synerrlst_set(xs) = the_synerrlst[] := xs
 end // end of [local]
 //
 implement
-synread_program(d0cs) =
-let
+synread_package
+(
+  p0kg
+) = let // d0parsed
+//
+val+
+D0PARSED(rcd) = p0kg
+//
+val d0cs =
+(
+case+
+rcd.parsed of
+| None() =>
+  list_nil()
+| Some(d0cs) => d0cs
+) : d0eclist // end-of-val
 //
 val () =
 synread_d0eclist(d0cs)

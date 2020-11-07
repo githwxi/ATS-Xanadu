@@ -1173,6 +1173,18 @@ overload fprint with fprint_f2undecl
 (* ****** ****** *)
 //
 datatype
+d2transd =
+D2TRANSD of @{
+  stadyn= int
+, source= filpath
+, transd=
+  Option(d2eclist)
+} where
+  filpath= $FP0.filpath
+//
+(* ****** ****** *)
+//
+datatype
 d2ecl_node =
 //
 | D2Cnone0 of ()

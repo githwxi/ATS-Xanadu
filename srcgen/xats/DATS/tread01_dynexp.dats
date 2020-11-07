@@ -689,11 +689,27 @@ the_trerr01lst_set(xs) = the_trerr01lst[] := xs
 end // end of [local]
 //
 implement
-tread01_program(prog) =
+tread01_package
+(
+  p1kg
+) = let // d1transd
+//
+val+
+D1TRANSD(rcd) = p1kg
+//
+val d1cs =
 let
+val
+d1csopt = rcd.transd
+in
+case+ d1csopt of
+| None() =>
+  list_nil((*void*))
+| Some(d1cs) => d1cs
+end : d1eclist // end-of-val
 //
 val () =
-tread01_d1eclist(prog)
+tread01_d1eclist(d1cs)
 val
 xerrs = the_trerr01lst_get()
 val

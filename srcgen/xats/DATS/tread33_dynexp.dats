@@ -1202,11 +1202,34 @@ the_trerr33lst_set(xs) = the_trerr33lst[] := xs
 end // end of [local]
 //
 implement
-tread33_program(prog) =
+tread33_package
+(
+  p3kg
+) = let
+//
+(*
+val () =
+println!
+("tread33_package")
+*)
+//
+val
+D3TRANSD(rcd) = p3kg
+//
+val d3cs =
 let
+val
+d3csopt = rcd.transd
+in
+case+
+d3csopt of
+| None() =>
+  list_nil((*void*))
+| Some(d3cs) => d3cs
+end : d3eclist // end-of-val
 //
 val () =
-tread33_d3eclist(prog)
+tread33_d3eclist(d3cs)
 //
 val
 xerrs = the_trerr33lst_get()

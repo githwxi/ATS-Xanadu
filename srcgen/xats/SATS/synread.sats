@@ -181,8 +181,8 @@ synerr_add(synerr): void
 (* ****** ****** *)
 //
 fun
-synread_program
-  (prog: d0eclist): void
+synread_package
+( p0kg: d0parsed ): void
 //
 (* ****** ****** *)
 //

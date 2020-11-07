@@ -805,6 +805,18 @@ overload fprint with fprint_d1cstdecl
 (* ****** ****** *)
 //
 datatype
+d1transd =
+D1TRANSD of @{
+  stadyn= int
+, source= filpath
+, transd=
+  Option(d1eclist)
+} where
+  filpath= $FP0.filpath
+//
+(* ****** ****** *)
+//
+datatype
 d1ecl_node =
 //
 | D1Cnone0 of ()

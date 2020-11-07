@@ -1029,11 +1029,28 @@ the_trerr12lst_set(xs) = the_trerr12lst[] := xs
 end // end of [local]
 //
 implement
-tread12_program(prog) =
+tread12_package
+(
+  p2kg
+) = let
+//
+val+
+D2TRANSD(rcd) = p2kg
+//
+val d2cs =
 let
+val
+d2csopt = rcd.transd
+in
+case+
+d2csopt of
+| None() =>
+  list_nil((*void*))
+| Some(d2cs) => d2cs
+end : d2eclist // end-of-val
 //
 val () =
-tread12_d2eclist(prog)
+tread12_d2eclist(d2cs)
 val
 xerrs = the_trerr12lst_get()
 val

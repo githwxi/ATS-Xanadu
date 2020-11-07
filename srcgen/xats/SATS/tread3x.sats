@@ -77,8 +77,8 @@ trerr3x_add(trerr3x): void
 (* ****** ****** *)
 //
 fun
-tread3x_program
-  (prog: d3eclist): void
+tread3x_package
+  ( p3kg: d3transd ): void
 //
 (* ****** ****** *)
 //
