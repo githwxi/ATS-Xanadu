@@ -798,6 +798,18 @@ overload fprint with fprint_f3undecl
 (* ****** ****** *)
 //
 datatype
+d3transd =
+D3TRANSD of @{
+  stadyn= int
+, source= filpath
+, transd=
+  Option(d3eclist)
+} where
+  filpath= $FP0.filpath
+//
+(* ****** ****** *)
+//
+datatype
 d3ecl_node =
 //
 | D3Cnone0 of ()

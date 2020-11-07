@@ -1095,8 +1095,31 @@ the_trerr3xlst_set(xs) = the_trerr3xlst[] := xs
 end // end of [local]
 //
 implement
-tread3x_program(d3cs) =
+tread3x_package
+(
+  p3kg
+) = let
+//
+(*
+val () =
+println!
+("tread3x_package")
+*)
+//
+val
+D3TRANSD(rcd) = p3kg
+//
+val d3cs =
 let
+val
+d3csopt = rcd.transd
+in
+case+
+d3csopt of
+| None() =>
+  list_nil((*void*))
+| Some(d3cs) => d3cs
+end : d3eclist // end-of-val
 //
 val () =
 tread3x_d3eclist(d3cs)

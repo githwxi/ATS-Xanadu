@@ -68,16 +68,18 @@ FS0 = "./../SATS/filsrch.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/dynexp0.sats"
-//
 #staload "./../SATS/parsing.sats"
 #staload "./../SATS/synread.sats"
 //
+#staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/trans01.sats"
 #staload "./../SATS/tread01.sats"
 //
+#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/trans12.sats"
 #staload "./../SATS/tread12.sats"
 //
+#staload "./../SATS/dynexp3.sats"
 #staload "./../SATS/trans23.sats"
 #staload "./../SATS/tread23.sats"
 //
@@ -879,8 +881,7 @@ val
 stadyn =
 waitknd_get_stadyn(wtk0)
 //
-val
-XATSENV = st0.XATSENV
+val XATSENV = st0.XATSENV
 //
 val () =
 ifcase
@@ -933,10 +934,16 @@ val
 dparsed =
 parse_from_filpath_toplevel
   (stadyn, fp0)
+//
 val
 d0csopt =
-d0parsed_get_parsed
-  (dparsed)
+let
+val () =
+synread_package(dparsed)
+in
+d0parsed_get_parsed(dparsed)
+end // end of [val]
+//
 in
 case+
 d0csopt of
@@ -956,18 +963,22 @@ val () =
 println!("//process_fpath: d0cs = ", d0cs)
 *)
 //
-val () =
-synread_program(d0cs)
-//
 val
 d1cs =
 let
 val
 d1cs = trans01_declist(d0cs)
+//
+val
+p1kg =
+D1TRANSD@{
+  stadyn=stadyn
+, source=fp0, transd=Some(d1cs)}
+//
 in
 d1cs where
 {
-val () = tread01_program(d1cs)
+  val () = tread01_package(p1kg)
 }
 end // end of [val]
 (*
@@ -980,10 +991,17 @@ d2cs =
 let
 val
 d2cs = trans12_declist(d1cs)
+//
+val
+p2kg =
+D2TRANSD@{
+  stadyn=stadyn
+, source=fp0, transd=Some(d2cs)}
+//
 in
 d2cs where
 {
-val () = tread12_program(d2cs)
+  val () = tread12_package(p2kg)
 }
 end // end of [val]
 (*
@@ -996,10 +1014,15 @@ d3cs =
 let
 val
 d3cs = trans23_declist(d2cs)
+val
+p3kg =
+D3TRANSD@{
+  stadyn=stadyn
+, source=fp0, transd=Some(d3cs)}
 in
 d3cs where
 {
-val () = tread23_program(d3cs)
+  val () = tread23_package(p3kg)
 }
 end // end of [val]
 (*
@@ -1012,10 +1035,15 @@ d3cs =
 let
 val
 d3cs = trans33_program(d3cs)
+val
+p3kg =
+D3TRANSD@{
+  stadyn=stadyn
+, source=fp0, transd=Some(d3cs)}
 in
 d3cs where
 {
-val () = tread33_program(d3cs)
+  val () = tread33_package(p3kg)
 }
 end // end of [val]
 (*
@@ -1030,10 +1058,15 @@ val
 d3cs = trans3t_program(d3cs)
 val
 d3cs = trans3x_program(d3cs)
+val
+p3kg =
+D3TRANSD@{
+  stadyn=stadyn
+, source=fp0, transd=Some(d3cs)}
 in
 d3cs where
 {
-val () = tread3x_program(d3cs)
+  val () = tread3x_package(p3kg)
 }
 end // end of [val]
 //
@@ -1045,7 +1078,12 @@ println!("//process_fpath: d3cs = ", d3cs)
 val
 hpkg =
 tcomp30_program(d3cs)
-val+H0PKG(hdcls) = hpkg
+val
+hdcls =
+(
+case+ hpkg of
+| H0PKG(hdcls) => hdcls
+) : h0dclist // end-of-val
 //
 val () =
 let

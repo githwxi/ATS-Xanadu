@@ -32,13 +32,12 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./staexp0.sats"
-
+//
+#staload
+FP0 = "./filpath.sats"
+//
 (* ****** ****** *)
-//
-#staload FP = "./filpath.sats"
-//
+#staload "./staexp0.sats"
 (* ****** ****** *)
 //
 typedef
@@ -1004,13 +1003,13 @@ D0PARSED of @{
 , parsed=
   Option(d0eclist)
 } where
-  filpath= $FP.filpath
+  filpath= $FP0.filpath
 //
 (* ****** ****** *)
 //
 fun
 d0parsed_get_parsed
-( pkg
+( p0kg
 : d0parsed): Option(d0eclist)
 //
 (* ****** ****** *)

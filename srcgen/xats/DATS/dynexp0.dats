@@ -490,9 +490,9 @@ end // end of [local]
 
 implement
 d0parsed_get_parsed
-  (pkg) =
+  (p0kg) =
 (
-case+ pkg of
+case+ p0kg of
 |
 D0PARSED(rcd) => rcd.parsed
 )
