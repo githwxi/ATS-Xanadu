@@ -4,6 +4,12 @@ Basics for Xats2js/Node
 */
 /* ****** ****** */
 
+const
+XATS2JS_NODE_fs =
+require( 'fs' ) ;
+
+/* ****** ****** */
+
 function
 XATS2JS_NODE_fs_readFileSync
   (path)

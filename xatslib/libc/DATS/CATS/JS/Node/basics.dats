@@ -12,8 +12,20 @@ Basics for Xats2js/Node
 impltmp
 <>(*tmp*)
 fpath_streamize_char
-
-where
+  (path) =
+let
+val
+opt =
+XATS2JS_NODE_fs_readFileSync
+  (path)
+in
+if
+stropt_nilq(opt)
+then
+stream_vt_nil((*void*))
+else
+string_streamize(stropt_unsome(opt))
+end where
 {
 #extern
 fun
