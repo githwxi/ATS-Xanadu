@@ -13,7 +13,9 @@ UN =
 fun
 XATS2JS_UN_p2tr_get
 {a:vt}
-(p0: p2tr(a)): a // = $ext()
+( p0
+: p2tr(a)): (a)
+= $exname((*self*))
 impltmp
 <a>(*tmp*)
 $UN.p2tr_get = XATS2JS_UN_p2tr_get
@@ -23,7 +25,8 @@ fun
 XATS2JS_UN_p2tr_set
 {a:vt}
 ( p0
-: p2tr(a), x0: a): void // = $ext()
+: p2tr(a), x0: a): void
+= $exname((*self*))
 impltmp
 <a>(*tmp*)
 $UN.p2tr_set = XATS2JS_UN_p2tr_set
