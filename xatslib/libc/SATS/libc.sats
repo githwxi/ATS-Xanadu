@@ -45,4 +45,4 @@ vwtpdef FILEptr1 = [l:agtz] FILEptr(l)
 //
 (* ****** ****** *)
 
-(* end of [libc.sats] *)
+(* end of [xatslib_libc.sats] *)

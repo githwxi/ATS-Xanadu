@@ -27,96 +27,34 @@
 
 (* ****** ****** *)
 //
-#extern
-fun
-<inp:vt>
-<out:vt>
-dvdcnq_solve(x0: inp): out
-//
-#extern
-fun
-<inp:vt>
-<out:vt>
-dvdcnq_divide
-(x0: inp): list_vt(inp)
-#extern
-fun
-<inp:vt>
-<out:vt>
-dvdcnq_conquer
-(xs: list_vt(inp)): list_vt(out)
+// For processing files abstractly
 //
 (* ****** ****** *)
-
-datavwtp
-either
-(i: vt, o: vt) =
-| either_l of (i) | either_r of (o)
-
+//
+// Author: Hongwei Xi
+// Start Time: November, 2020
+// Authoremail: gmhwxiATgmailDOTcom
+//
+(* ****** ****** *)
+#staload
+"xatslib\
+/libc/SATS/libc.sats"
 (* ****** ****** *)
 //
 #extern
 fun
-<inp:vt>
-<out:vt>
-dvdcnq_solve_rec
-  (x0: inp): out
-#extern
-fun
-<inp:vt>
-<out:vt>
-dvdcnq_solve_try
-  (x0: inp): either(inp, out)
+fpath_streamize_char
+  (path: string): stream_vt(char)
 //
 #extern
 fun
-<inp:vt>
-<out:vt>
-dvdcnq_solved_cmb(rs: list_vt(out)): out
+fpath_streamize_line
+  (path: string): stream_vt(string)
+#extern
+fun
+fpath_streamize_line_vt
+  (path: string): stream_vt(string_vt)
 //
 (* ****** ****** *)
 
-impltmp
-<inp:vt>
-<out:vt>
-dvdcnq_solve(x0) =
-let
-val xr =
-dvdcnq_solve_try<inp><out>(x0)
-in
-//
-case+ xr of
-| ~
-either_r(r0) => r0
-| ~
-either_l(x0) => let
-//
-val xs =
-dvdcnq_divide<inp><out>(x0)
-val rs =
-dvdcnq_conquer<inp><out>(xs)
-//
-in
-  dvdcnq_solved_cmb<inp><out>(rs)
-end
-//
-end // end of [dvdcnq_solve]
-
-(* ****** ****** *)
-
-impltmp
-<inp:vt>
-<out:vt>
-dvdcnq_conquer(xs) =
-(
-list_vt_map0<inp><out>(xs)
-) where
-{
-  impltmp
-  map0$fopr<inp><out>(x1) =
-  dvdcnq_solve_rec<inp><out>(x1)
-}
-
-(* ****** ****** *)
-
-(* end of [xatslib_githwxi_dvdcnq.dats] *)
+(* end of [xatslib_libc_filesys.dats] *)

@@ -706,4 +706,4 @@ else
 
 (* ****** ****** *)
 
-(* end of [mygist.dats] *)
+(* end of [xatslib_githwxi_mygist.dats] *)

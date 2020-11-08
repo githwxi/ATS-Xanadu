@@ -65,4 +65,4 @@ nint_rand_limit<> = XINTERP_nint_rand_limit
 //
 (* ****** ****** *)
 
-(* end of [XINTERP_libc_basics.dats] *)
+(* end of [xatslib_libc_XINTERP_basics.dats] *)

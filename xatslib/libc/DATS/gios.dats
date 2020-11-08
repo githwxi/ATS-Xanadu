@@ -158,4 +158,4 @@ end // end of [g_inp_lline_list]
 
 (* ****** ****** *)
 
-(* end of [gios.dats] *)
+(* end of [xatslib_libc_gios.dats] *)
