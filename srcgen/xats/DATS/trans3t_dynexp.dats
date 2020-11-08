@@ -292,6 +292,9 @@ val t2p0 = d3e0.type()
 (*
 val () =
 println!
+("trans3t_dexp: loc0 = ", loc0)
+val () =
+println!
 ("trans3t_dexp: d3e0 = ", d3e0)
 val () =
 println!

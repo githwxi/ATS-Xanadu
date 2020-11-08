@@ -237,6 +237,64 @@ end // end of [string_append_vt]
 (* ****** ****** *)
 
 impltmp<>
+string_reverse
+{n0}(cs) =
+let
+val n0 =
+string_length<>(cs)
+in
+//
+let
+//
+typedef c0 = cgtz
+//
+impltmp
+tabulate$fopr
+<c0><n0>(i0) =
+let
+val j0 = (n0-1)-i0
+in
+  string_get_at<>(cs, j0)
+end
+//
+in
+  string_tabulate<n0>(n0)
+end
+//
+end // end of [string_reverse]
+
+(* ****** ****** *)
+
+impltmp<>
+string_reverse_vt
+{n0}(cs) =
+let
+val n0 =
+string_length<>(cs)
+in
+//
+let
+//
+typedef c0 = cgtz
+//
+impltmp
+tabulate$fopr
+<c0><n0>(i0) =
+let
+val j0 = (n0-1)-i0
+in
+  string_get_at<>(cs, j0)
+end
+//
+in
+  string_tabulate_vt<n0>(n0)
+end
+//
+end // end of [string_reverse_vt]
+
+(* ****** ****** *)
+
+impltmp<>
 string_forall
   (xs) =
 ( loop(xs) ) where
