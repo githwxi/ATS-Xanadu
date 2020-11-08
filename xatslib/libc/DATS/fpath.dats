@@ -57,4 +57,4 @@ fpath_streamize_line_vt
 //
 (* ****** ****** *)
 
-(* end of [xatslib_libc_filesys.dats] *)
+(* end of [xatslib_libc_fpath.dats] *)
