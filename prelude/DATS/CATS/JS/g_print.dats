@@ -12,7 +12,7 @@ where
 #extern
 fun
 XATS2JS_bool_print
-(b0: bool): void // = $ext()
+(b0: bool): void = $exname()
 }
 //
 (* ****** ****** *)
@@ -25,28 +25,32 @@ where
 #extern
 fun
 XATS2JS_char_print
-(b0: char): void // = $ext()
+(b0: char): void = $exname()
 }
 //
 (* ****** ****** *)
 //
-local
-#extern
-fun
-XATS2JS_gint_print_sint
-( x0: sint ): void // = $ext()
-#extern
-fun
-XATS2JS_gint_print_uint
-( x0: uint ): void // = $ext()
-in
 impltmp
 gint_print_sint<> =
 XATS2JS_gint_print_sint
+where
+{
+#extern
+fun
+XATS2JS_gint_print_sint
+( x0: sint ): void = $exname()
+}
+//
 impltmp
 gint_print_uint<> =
 XATS2JS_gint_print_uint
-end // end of [local]
+where
+{
+#extern
+fun
+XATS2JS_gint_print_uint
+( x0: uint ): void = $exname()
+}
 //
 (* ****** ****** *)
 impltmp
@@ -57,7 +61,7 @@ where
 #extern
 fun
 XATS2JS_string_print
-(cs: string): void // = $ext()
+(cs: string): void = $exname()
 }
 (* ****** ****** *)
 //
