@@ -36,6 +36,17 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+fun<>
+optn_nil_
+{a:t0}
+((*_*)): optn(a, ff)
+fun
+<a:t0>
+optn_cons_
+(x0: a): optn(a, tt)
+
+(* ****** ****** *)
 //
 fun<>
 optn_nilq

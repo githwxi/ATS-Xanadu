@@ -13,6 +13,17 @@
 //
 impltmp
 <>(*tmp*)
+optn_nil_
+() = optn_nil()
+impltmp
+<a>(*tmp*)
+optn_cons_
+(x0) = optn_cons(x0)
+//
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
 optn_nilq(xs) =
 (
 case+ xs of

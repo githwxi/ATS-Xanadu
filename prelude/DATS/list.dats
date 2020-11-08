@@ -14,6 +14,18 @@
 *)
 
 (* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+list_nil_
+() = list_nil()
+impltmp
+<a>(*tmp*)
+list_cons_
+(x0, xs) =
+list_cons(x0, xs)
+//
+(* ****** ****** *)
 
 impltmp
 <a>(*tmp*)

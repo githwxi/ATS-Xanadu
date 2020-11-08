@@ -37,9 +37,21 @@
 //
 (* ****** ****** *)
 //
+fun<>
+list_nil_(): list(a, 0)
 fun
 <a:t0>
-list_sing(x: a): list(a, 1)
+list_cons_
+{n:i0}
+( x0: a
+, xs
+: list(a, n)): list(a, n+1)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_sing(x0: a): list(a, 1)
 //
 (* ****** ****** *)
 
