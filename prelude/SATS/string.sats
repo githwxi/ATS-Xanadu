@@ -382,6 +382,10 @@ fun<>
 string_reverse_vt
 {n:int}
 (cs: string(n)): string_vt(n)
+fun<>
+string_vt_reverse
+{n:int}
+(cs: string_vt(n)): string_vt(n)
 (* ****** ****** *)
 //
 fun<>
