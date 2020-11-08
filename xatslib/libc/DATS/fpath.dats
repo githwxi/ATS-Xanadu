@@ -42,18 +42,18 @@
 (* ****** ****** *)
 //
 #extern
-fun
+fun<>
 fpath_streamize_char
-  (path: string): stream_vt(char)
+(path: string): stream_vt(char)
 //
 #extern
-fun
+fun<>
 fpath_streamize_line
-  (path: string): stream_vt(string)
+(path: string): stream_vt(string)
 #extern
-fun
+fun<>
 fpath_streamize_line_vt
-  (path: string): stream_vt(string_vt)
+(path: string): stream_vt(string_vt)
 //
 (* ****** ****** *)
 
