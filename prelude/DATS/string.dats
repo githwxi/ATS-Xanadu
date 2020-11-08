@@ -287,7 +287,7 @@ in
 end
 //
 in
-  string_tabulate_vt<n0>(n0)
+  string_vt_tabulate<n0>(n0)
 end
 //
 end // end of [string_reverse_vt]
