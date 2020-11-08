@@ -64,4 +64,4 @@ typedef gvalist = list(gval)
 //
 (* ****** ****** *)
 
-(* end of [githwxi.sats] *)
+(* end of [xatslib_githwxi.sats] *)

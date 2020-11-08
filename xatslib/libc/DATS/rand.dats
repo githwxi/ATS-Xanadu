@@ -288,4 +288,4 @@ g_rand<string_vt> = string_rand<>
 //
 (* ****** ****** *)
 
-(* end of [rand.dats] *)
+(* end of [xatslib_libc_rand.dats] *)
