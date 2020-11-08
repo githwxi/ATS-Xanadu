@@ -636,4 +636,4 @@ XATS2JS_UN_p2tr_set
 //
 /* ****** ****** */
 
-/* end of [XATS2JS_basics.cats] */
+/* end of [XATS2JS_prelude.cats] */
