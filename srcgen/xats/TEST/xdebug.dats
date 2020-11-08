@@ -11,9 +11,21 @@
 #staload
 "prelude/DATS/gord.dats"
 (* ****** ****** *)
+#staload
+"prelude/DATS/string.dats"
+(* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
-
+impltmp
+tabulate$fopr
+<cgtz><2>(i0) = 'a'
+val aa = string_tabulate<2>(2)
+////
+val ba =
+string_reverse("ab")
+(* ****** ****** *)
+////
+(* ****** ****** *)
 #extern
 fun
 fact

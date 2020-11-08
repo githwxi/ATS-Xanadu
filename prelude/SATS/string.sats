@@ -374,6 +374,15 @@ string_vt_append
 , !string_vt(n)): string_vt(m+n)
 //
 (* ****** ****** *)
+fun<>
+string_reverse
+{n:int}
+(cs: string(n)): string(n)
+fun<>
+string_reverse_vt
+{n:int}
+(cs: string(n)): string_vt(n)
+(* ****** ****** *)
 //
 fun<>
 string_forall(string): bool
@@ -570,6 +579,13 @@ length with string_vt_length of 1000
 append with string_append of 1000
 #symload
 append with string_vt_append of 1000
+//
+(* ****** ****** *)
+//
+#symload
+reverse with string_reverse of 1000
+#symload
+reverse with string_vt_reverse of 1000
 //
 (* ****** ****** *)
 

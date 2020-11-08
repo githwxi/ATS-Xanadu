@@ -236,9 +236,10 @@ sieve$test(x1: x0, x2: x0): bool
 (* ****** ****** *)
 //
 fun
-<a:vt>
-<n:i0>
-tabulate$fopr(i0: nintlt(n)): (a)
+<x0:vt>
+<n0:i0>
+tabulate$fopr
+(index: nintlt(n0)): x0
 //
 (* ****** ****** *)
 //
