@@ -338,6 +338,35 @@ String.fromCharCode.apply(null, cs);
 return res; // XATS2JS_string_vt2t
 }
 /* ****** ****** */
+//
+function
+XATS2JS_string_nilq
+  (opt)
+{
+return(opt==="");
+}
+function
+XATS2JS_string_cons
+  (opt)
+{
+return(opt!=="");
+}
+/* ****** ****** */
+//
+function
+XATS2JS_stropt_nilq
+  (opt)
+{
+return(opt===null);
+}
+function
+XATS2JS_stropt_consq
+  (opt)
+{
+return(opt!==null);
+}
+//
+/* ****** ****** */
 function
 XATS2JS_string_lt
   (x1, x2)
