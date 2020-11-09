@@ -376,10 +376,10 @@ d2cst_get_xnam(d2cst): x2nam
 fun
 d2cst_set_xknd
 (d2c0: d2cst, xknd: x2knd): void
+*)
 fun
 d2cst_set_xnam
 (d2c0: d2cst, xnam: x2nam): void
-*)
 //
 overload .xknd with d2cst_get_xknd
 overload .xnam with d2cst_get_xnam
