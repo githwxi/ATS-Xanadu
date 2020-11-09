@@ -5540,12 +5540,62 @@ println!
 ("aux_dcstdecl: s2e0 = ", s2e0)
 *)
 //
+(*
+val () =
+let
+val
+def1 = rcd.def
+in
+println!
+("aux_dcstdecl: def1 = ", def1)
+end // end of [val'
+*)
+//
+fun
+d2cxnam
+( d2c0
+: d2cst
+, def1
+: teqd1expopt): void =
+(
+case+ def1 of
+|
+TEQD1EXPnone
+((*void*)) => ()
+|
+TEQD1EXPsome
+(teq1, d1e2) =>
+(
+case+
+d1e2.node() of
+|
+D1Eexname(gnm) =>
+let
+val
+xnam = X2NAMsome(gnm)
+in
+d2cst_set_xnam(d2c0, xnam)
+end
+| _(* non-D1Eexname *) => ()
+)
+) (* end of [d2cxnam] *)
+//
 in
 let
+//
 val nam = rcd.nam
 val knd = knd.node()
+//
+val
+d2c0 =
+d2cst_make_idtp
+(nam, knd, tqas, s2e0)
+//
 in
-d2cst_make_idtp(nam, knd, tqas, s2e0)
+let
+val () =
+d2cxnam(d2c0, rcd.def) in d2c0
+end
 end
 end // end of [aux_dcstdecl]
 
