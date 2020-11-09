@@ -212,6 +212,13 @@ fun
 hdvar_get_kind(hdvar): tnode
 //
 (* ****** ****** *)
+
+fun
+hdcst_get_xknd(hdcst): x2knd
+fun
+hdcst_get_xnam(hdcst): x2nam
+
+(* ****** ****** *)
 //
 fun
 hdcon_get_stamp(hdcon): stamp
