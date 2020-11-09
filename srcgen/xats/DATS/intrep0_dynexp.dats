@@ -47,6 +47,11 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
+
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/staexp2.sats"
+
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 //
@@ -146,6 +151,8 @@ hdcst_struct = @{
 , hdcst_sym= sym_t // name
 , hdcst_kind= tnode // kind
 , hdcst_type= h0typ // type
+, hdcst_xknd= x2knd // xknd
+, hdcst_xnam= x2nam // xnam
 , hdcst_stamp= stamp // unicity
 //
 } (* end of [hdcon_tbox] *)
@@ -172,7 +179,9 @@ hdcst_get_stamp
 implement
 hdcst_make_idtp
 ( loc
-, sym, knd, htp) =
+, sym
+, knd, htp
+, xkd, xnm) =
 (
 ref<hdcst_struct>
 @{
@@ -180,6 +189,8 @@ ref<hdcst_struct>
 , hdcst_sym=sym
 , hdcst_kind=knd
 , hdcst_type=htp
+, hdcst_xknd=xkd
+, hdcst_xnam=xnm
 , hdcst_stamp=stamp
 }
 ) where

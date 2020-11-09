@@ -73,9 +73,19 @@ typedef token = $LEX.token
 #staload
   S1E = "./staexp1.sats"
 //
+typedef g1nam = $S1E.g1nam
 typedef g1mac = $S1E.g1mac
 typedef sort1 = $S1E.sort1
 typedef s1exp = $S1E.s1exp
+//
+(* ****** ****** *)
+//
+datatype x2knd =
+| X2KNDnone of ()
+| X2KNDsome of ( int )
+datatype x2nam =
+| X2NAMnone of ()
+| X2NAMsome of (g1nam)
 //
 (* ****** ****** *)
 //

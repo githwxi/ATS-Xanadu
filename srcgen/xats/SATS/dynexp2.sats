@@ -367,13 +367,6 @@ overload .tqas with d2var_set_tqas
 //
 (* ****** ****** *)
 //
-datatype x2knd =
-| X2KNDnone of ()
-| X2KNDsome of ( int )
-datatype x2nam =
-| X2NAMnone of ()
-| X2NAMsome of (g1nam)
-//
 fun
 d2cst_get_xknd(d2cst): x2knd
 fun

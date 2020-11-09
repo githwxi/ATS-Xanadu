@@ -128,10 +128,14 @@ val sym = d2c.sym()
 val knd = d2c.kind()
 val t2p = d2c.type()
 //
+val xkd = d2c.xknd()
+val xnm = d2c.xnam()
+//
 val htp = tcomp30_type(t2p)
 //
 in
-hdcst_make_idtp(loc, sym, knd, htp)
+  hdcst_make_idtp
+  (loc, sym, knd, htp, xkd, xnm)
 end // end of [hdcst_make_dcst]
 
 (* ****** ****** *)

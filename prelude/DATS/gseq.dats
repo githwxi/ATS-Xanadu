@@ -200,7 +200,7 @@ impltmp
 gseq_print$end() = string_print(")")
 impltmp
 <xs><x0>
-gseq_print$sep() = string_print(",")
+gseq_print$sep() = string_print(";")
 (* ****** ****** *)
 
 impltmp
