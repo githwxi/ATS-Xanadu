@@ -4169,7 +4169,7 @@ val xnm =
 (
 case+ opt of
 |
-None() => None()
+None() => None(*void*)
 |
 Some(d1e) =>
 (
@@ -4182,6 +4182,16 @@ _(*D1Eexname*) => None(*void*)
 )
 ) : Option(g1nam) // end-of-val
 //
+val ( ) =
+(
+case+ xnm of
+|
+None _ => ()
+|
+Some(gnm) =>
+d2cst_set_xnam
+(d2c, X2NAMsome(gnm))): void
+//
 val def =
 (
 case+ xnm of
@@ -4190,6 +4200,7 @@ Some _ => None()
 |
 None _ =>
 trans12_dexpopt(opt)): d2expopt
+//
 end // end of [local]
 //
 val
