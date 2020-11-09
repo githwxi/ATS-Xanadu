@@ -349,6 +349,16 @@ glseq_iforeach1(!xs): void
 #symload length1 with glseq_length1 of 0100
 
 (* ****** ****** *)
+
+#symload forall0 with glseq_forall0 of 0100
+#symload forall1 with glseq_forall1 of 0100
+
+(* ****** ****** *)
+
+#symload foreach0 with glseq_foreach0 of 0100
+#symload foreach1 with glseq_foreach1 of 0100
+
+(* ****** ****** *)
 //
 (*
 #symload listize with glseq_listize0 of 0100
@@ -373,6 +383,16 @@ glseq_iforeach1(!xs): void
 #symload map1_stream with glseq_map1_stream of 0100
 *)
 //
+(* ****** ****** *)
+
+#symload iforall0 with glseq_iforall0 of 0100
+#symload iforall1 with glseq_iforall1 of 0100
+
+(* ****** ****** *)
+
+#symload iforeach0 with glseq_iforeach0 of 0100
+#symload iforeach1 with glseq_iforeach1 of 0100
+
 (* ****** ****** *)
 
 (* end of [gseq_vt.sats] *)
