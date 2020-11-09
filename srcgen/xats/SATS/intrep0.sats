@@ -212,12 +212,15 @@ fun
 hdvar_get_kind(hdvar): tnode
 //
 (* ****** ****** *)
-
+//
 fun
 hdcst_get_xknd(hdcst): x2knd
 fun
 hdcst_get_xnam(hdcst): x2nam
-
+//
+overload .xknd with hdcst_get_xknd
+overload .xnam with hdcst_get_xnam
+//
 (* ****** ****** *)
 //
 fun
