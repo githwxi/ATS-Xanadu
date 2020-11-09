@@ -630,6 +630,7 @@ cstream_vt_split_lines
   auxmain0(cs)
 ) where
 {
+//
 fun
 iseol
 ( c0
@@ -701,7 +702,7 @@ else
   auxmain1(cs, list_vt_cons(c0, rs))
 )
 ) (* end of [auxmain1] *)
-
+//
 } (* end of [cstream_vt_split_lines] *)
 
 (* ****** ****** *)

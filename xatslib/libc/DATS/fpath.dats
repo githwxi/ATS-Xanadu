@@ -65,11 +65,108 @@ impltmp
 <>(*tmp*)
 fpath_streamize_line
   (path) =
-let
-val cs =
+stream_vt_map0
+(
+fpath_streamize_line_vt<>(path)
+) where
+{
+typedef y0 = string
+vwtpdef x0 = string_vt
+impltmp
+map0$fopr<x0><y0>(x0) = string_vt2t(x0)
+}
+
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+fpath_streamize_line_vt
+  (path) =
+(
+auxmain0
+(
 fpath_streamize_cgtz<>(path)
+)
+) where
+{
+//
+vwtpdef
+cstream =
+stream_vt(cgtz)
+//
+fun
+iseol
+( c0
+: cgtz )
+: bool = (c0 = '\n')
+fun
+auxmain0
+( cs
+: cstream)
+: stream_vt(string_vt) =
+$llazy
+(
+free(cs);
+case+ !cs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(c0, cs) =>
+if
+iseol(c0)
+then
+strmcon_vt_cons
+(l1, auxmain0(cs)) where
+{
+  val l1 = string_vt_nil()
+}
+else
+let
+val rs =
+list_vt_sing(c0) in auxmain1(cs, rs)
+end
+)
+and
+auxmain1
+( cs
+: cstream
+, rs
+: list_vt(cgtz))
+: strmcon_vt(string_vt) =
+(
+case+ !cs of
+| ~
+strmcon_vt_nil() =>
+(
+strmcon_vt_sing(l1)
+) where
+{
+val rs =
+list_vt_reverse(rs)
+val l1 =
+string_vt_make_list_vt(rs)
+}
+| ~
+strmcon_vt_cons(c0, cs) =>
+if
+iseol(c0)
+then
+let
+val rs =
+list_vt_reverse(rs)
+val l1 =
+string_vt_make_list_vt(rs)
 in
-end // end of [fpath_streamize_line]
+  strmcon_vt_cons(l1, auxmain0(cs))
+end
+else 
+(
+  auxmain1(cs, list_vt_cons(c0, rs))
+)
+) (* end of [auxmain1] *)
+//
+} (* end of [fpath_streamize_line] *)
 
 (* ****** ****** *)
 

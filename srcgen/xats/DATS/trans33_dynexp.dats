@@ -2074,12 +2074,17 @@ D3Ecase _ => aux_case(env0, d3e0)
   {
   val
   loc1 = d3e1.loc()
+  val
+  t2p1 = d3e1.type()
   val () =
   println!
   ("trans33_dexp: D3Etcast: loc1 = ", loc1)
   val () =
   println!
   ("trans33_dexp: D3Etcast: d3e1 = ", d3e1)
+  val () =
+  println!
+  ("trans33_dexp: D3Etcast: t2p1 = ", t2p1)
   val () =
   println!
   ("trans33_dexp: D3Etcast: t2p2 = ", t2p2)
