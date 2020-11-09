@@ -664,7 +664,7 @@ gseq_print$end
 impltmp
 {a:t0}
 gseq_print$sep
-<list(a)><a>() = string_print(",")
+<list(a)><a>() = string_print(";")
 //
 (* ****** ****** *)
 //

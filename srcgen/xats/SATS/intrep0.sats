@@ -42,6 +42,7 @@
 #staload "./locinfo.sats"
 
 (* ****** ****** *)
+#staload "./staexp2.sats"
 #staload "./statyp2.sats"
 #staload "./dynexp2.sats"
 (* ****** ****** *)
@@ -388,7 +389,8 @@ fun
 hdcst_make_idtp
 ( loc: loc_t
 , sym: sym_t
-, knd: tnode, htp: h0typ): hdcst
+, knd: tnode, htp: h0typ
+, xkd: x2knd, xnm: x2nam): hdcst
 //
 (* ****** ****** *)
 //
