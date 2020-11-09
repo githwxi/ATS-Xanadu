@@ -567,7 +567,8 @@ where
 fun
 XATS2JS_string_get_at
 ( cs
-: string, i0: sint): char = $exname()
+: string, i0: sint): char
+= $exname((*self*))
 }
 (* ****** ****** *)
 impltmp
@@ -579,6 +580,7 @@ fun
 XATS2JS_string_forall_cfr
 ( cs: string
 , f0: (cgtz) -<cfr> bool): bool
+= $exname((*self*))
 //
 in
 XATS2JS_string_forall_cfr

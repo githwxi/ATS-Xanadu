@@ -12,7 +12,7 @@ where
 #extern
 fun
 XATS2JS_NODE_bool_print
-(b0: bool): void // = $ext()
+(b0: bool): void = $exname()
 }
 //
 (* ****** ****** *)
@@ -25,7 +25,7 @@ where
 #extern
 fun
 XATS2JS_NODE_char_print
-(b0: char): void // = $ext()
+(b0: char): void = $exname()
 }
 //
 (* ****** ****** *)
@@ -34,11 +34,11 @@ local
 #extern
 fun
 XATS2JS_NODE_gint_print_sint
-( x0: sint ): void // = $ext()
+( x0: sint ): void = $exname()
 #extern
 fun
 XATS2JS_NODE_gint_print_uint
-( x0: uint ): void // = $ext()
+( x0: uint ): void = $exname()
 in
 impltmp
 gint_print_sint<> =
@@ -57,7 +57,7 @@ where
 #extern
 fun
 XATS2JS_NODE_string_print
-(cs: string): void // = $ext()
+(cs: string): void = $exname()
 }
 (* ****** ****** *)
 
