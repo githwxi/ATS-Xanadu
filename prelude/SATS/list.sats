@@ -38,7 +38,8 @@
 (* ****** ****** *)
 //
 fun<>
-list_nil_(): list(a, 0)
+list_nil_
+{a:t0}(): list(a, 0)
 fun
 <a:t0>
 list_cons_
