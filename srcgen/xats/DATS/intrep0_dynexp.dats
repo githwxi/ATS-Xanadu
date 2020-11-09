@@ -172,6 +172,14 @@ hdcst_get_sym
 implement
 hdcst_get_kind
 (hdc) = hdc->hdcst_kind
+//
+implement
+hdcst_get_xknd
+(hdc) = hdc->hdcst_xknd
+implement
+hdcst_get_xnam
+(hdc) = hdc->hdcst_xnam
+//
 implement
 hdcst_get_stamp
 (hdc) = hdc->hdcst_stamp
