@@ -700,7 +700,7 @@ else
 (
   auxmain1(cs, list_vt_cons(c0, rs))
 )
-)
+) (* end of [auxmain1] *)
 
 } (* end of [cstream_vt_split_lines] *)
 

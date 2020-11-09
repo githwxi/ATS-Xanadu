@@ -1,11 +1,13 @@
 (* ****** ****** *)
 (*
-Basics for Xats2js/Node
+Basics
+for Xats2js/Node
 *)
 (* ****** ****** *)
 
 #staload
-"xatslib/libc/DATS/fpath.dats"
+"xatslib\
+/libc/DATS/fpath.dats"
 
 (* ****** ****** *)
 
@@ -33,6 +35,16 @@ XATS2JS_NODE_fs_readFileSync
   (path: string): stropt = $exname()
 } (* end of [fpath_streamize_char] *)
 
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+fpath_streamize_cgtz
+  (path) =
+(
+  fpath_streamize_char<>(path)
+) (* end of [fpath_streamize_cgtz] *)
+//
 (* ****** ****** *)
 
 (* end of [xatslib_libc_XATS2JS_NODE_basics.dats] *)

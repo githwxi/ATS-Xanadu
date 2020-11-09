@@ -48,6 +48,10 @@ fpath_streamize_char
 //
 #extern
 fun<>
+fpath_streamize_cgtz
+(path: string): stream_vt(cgtz)
+#extern
+fun<>
 fpath_streamize_line
 (path: string): stream_vt(string)
 #extern
@@ -55,6 +59,18 @@ fun<>
 fpath_streamize_line_vt
 (path: string): stream_vt(string_vt)
 //
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+fpath_streamize_line
+  (path) =
+let
+val cs =
+fpath_streamize_cgtz<>(path)
+in
+end // end of [fpath_streamize_line]
+
 (* ****** ****** *)
 
 (* end of [xatslib_libc_fpath.dats] *)
