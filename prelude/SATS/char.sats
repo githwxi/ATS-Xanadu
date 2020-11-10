@@ -52,6 +52,9 @@ sint_make_char
 (char: char): sint
 //
 (* ****** ****** *)
+fun<>
+char_print(char): void
+(* ****** ****** *)
 //
 fun<>
 char_eqzq
@@ -76,21 +79,26 @@ char_noteq
 (* ****** ****** *)
 
 fun<>
+sub_char_char
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): sint(c1 - c2)
+
+(* ****** ****** *)
+fun<>
 char_cmp
 {c1,c2:char}
 ( c1: char(c1)
 , c2: char(c2)): sint(sgn(c1-c2))
 
 (* ****** ****** *)
-
-fun<>
-char_print(c0: char): void
-
-(* ****** ****** *)
 //
 // HX-2020-05-30:
 // symbol overloading for char
 //
+(* ****** ****** *)
+#symload
+- with sub_char_char of 1000
 (* ****** ****** *)
 //
 #symload
