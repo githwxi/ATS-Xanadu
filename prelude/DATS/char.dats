@@ -34,11 +34,20 @@
 (* ****** ****** *)
 //
 impltmp
-char_noteq<>
+<>(*tmp*)
+char_noteq
   (c1, c2) =
 (
-  not(char_equal<>(c1, c2))
+  not(char_equal(c1, c2))
 )
+//
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+sub_char_char
+  (c1, c2) =
+  ( sint(c1) - sint(c2) )
 //
 (* ****** ****** *)
 //
