@@ -90,7 +90,13 @@ char_cmp
 {c1,c2:char}
 ( c1: char(c1)
 , c2: char(c2)): sint(sgn(c1-c2))
-
+(* ****** ****** *)
+//
+fun<>
+char_lower(c0: char): char
+fun<>
+char_upper(c0: char): char
+//
 (* ****** ****** *)
 //
 // HX-2020-05-30:

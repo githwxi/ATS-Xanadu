@@ -50,6 +50,40 @@ sub_char_char
   ( sint(c1) - sint(c2) )
 //
 (* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+char_lower
+  (c0) =
+(
+  if
+  (c0 < 'A')
+  then c0 else
+  (
+  if
+  (c0 > 'Z')
+  then c0 else
+  char(sint('a')+(sint(c0)-sint('A')))
+  )
+) (* end of [char_lower] *)
+
+impltmp
+<>(*tmp*)
+char_upper
+  (c0) =
+(
+  if
+  (c0 < 'a')
+  then c0 else
+  (
+  if
+  (c0 > 'z')
+  then c0 else
+  char(sint('A')+(sint(c0)-sint('a')))
+  )
+) (* end of [char_upper] *)
+
+(* ****** ****** *)
 //
 // HX:
 // For implementing
