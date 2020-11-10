@@ -507,6 +507,34 @@ string_vt_tabulate_cfr
 //
 (* ****** ****** *)
 //
+fun<>
+string_lower
+{n:int}
+(cs: string(n)): string(n)
+fun<>
+string_lower_vt
+{n:int}
+(cs: string(n)): string_vt(n)
+fun<>
+string_vt_lower
+{n:int}
+(cs: string_vt(n)): string_vt(n)
+//
+fun<>
+string_upper
+{n:int}
+(cs: string(n)): string(n)
+fun<>
+string_upper_vt
+{n:int}
+(cs: string(n)): string_vt(n)
+fun<>
+string_vt_upper
+{n:int}
+(cs: string_vt(n)): string_vt(n)
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for string
 //

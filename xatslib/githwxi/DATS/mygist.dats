@@ -591,7 +591,7 @@ end // end of [gseq_concat_string]
 *)
 (* ****** ****** *)
 //
-// HX-2020-11-02
+// HX-2020-11-02:
 // Turning a string into lines
 //
 (* ****** ****** *)
@@ -704,6 +704,84 @@ else
 ) (* end of [auxmain1] *)
 //
 } (* end of [cstream_vt_split_lines] *)
+
+(* ****** ****** *)
+//
+// HX-2020-11-09:
+//
+(* ****** ****** *)
+(*
+(*
+HX-2020-11-09:
+These functions are
+declared in prelude/string.sats
+*)
+#extern
+fun<>
+string_lower
+{n:int}
+(cs: string(n)): string(n)
+#extern
+fun<>
+string_upper
+{n:int}
+(cs: string(n)): string(n)
+*)
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+string_lower(cs) =
+let
+val n0 = length(cs)
+in
+string_tabulate(n0)
+where
+{
+fun
+lower
+(c0: cgtz): cgtz =
+if
+(c0 < 'A')
+then c0 else
+(
+if
+(c0 > 'Z')
+then c0 else
+char(sint('a')+(sint(c0)-sint('A')))
+)
+impltmp
+tabulate$fopr<cgtz>(i0) = lower(cs[i0])
+}
+end // end of [string_lower]
+
+(* ****** ****** *)
+
+impltmp
+<>(*tmp*)
+string_upper(cs) =
+let
+val n0 = length(cs)
+in
+string_tabulate(n0)
+where
+{
+fun
+upper
+(c0: cgtz): cgtz =
+if
+(c0 < 'a')
+then c0 else
+(
+if
+(c0 > 'z')
+then c0 else
+char(sint('A')+(sint(c0)-sint('a')))
+)
+impltmp
+tabulate$fopr<cgtz>(i0) = upper(cs[i0])
+}
+end // end of [string_upper]
 
 (* ****** ****** *)
 

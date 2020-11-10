@@ -3,12 +3,12 @@
 Native arrays for Xats2js
 *)
 (* ****** ****** *)
-
+//
 abstype
 jsarray_type(a:vt)
 typedef
 jsarray(a:vt) = jsarray_type(a)
-
+//
 (* ****** ****** *)
 #extern
 fun
