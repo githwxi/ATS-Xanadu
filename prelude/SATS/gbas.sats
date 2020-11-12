@@ -96,8 +96,12 @@ HX-2020-11-12:
 Note that == is already
 widely used for equality
 *)
-#symload === with g_eqref
+//
+#symload == with g_eqref
 #symload !== with g_neqrf
+//
+#symload === with g_eqref
+#symload !=== with g_neqrf
 //
 (* ****** ****** *)
 //
