@@ -20,7 +20,7 @@ XATS2JS_g_eqref
 impltmp
 {a:t0}
 g_neqrf<a> =
-XATS2JS_g_eqref{a}
+XATS2JS_g_neqrf{a}
 where
 {
 #extern
