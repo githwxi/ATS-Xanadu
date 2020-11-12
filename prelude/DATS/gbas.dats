@@ -55,6 +55,23 @@ g_equal<a> = gl_eq11<a>
 (* ****** ****** *)
 //
 impltmp
+{a:t0}
+g_eqref<a>
+  (x, y) =
+(
+not(g_neqrf<a>(x, y))
+)
+impltmp
+{a:t0}
+g_neqrf<a>
+  (x, y) =
+(
+not(g_eqref<a>(x, y))
+)
+//
+(* ****** ****** *)
+//
+impltmp
 {a:vt}
 gl_print0<a>(x) =
 ( g_free<a>(x) ) where

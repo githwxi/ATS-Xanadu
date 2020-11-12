@@ -67,10 +67,10 @@ XATS2JS_string_print
 //
 #extern
 fun
-XATS2JS_the_print_store_join(): string
+XATS2JS_the_print_store_join(): string = $exname()
 #extern
 fun
-XATS2JS_the_print_store_clear(): (void)
+XATS2JS_the_print_store_clear(): (void) = $exname()
 //
 (* ****** ****** *)
 

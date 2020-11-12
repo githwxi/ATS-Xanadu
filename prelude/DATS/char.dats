@@ -38,7 +38,7 @@ impltmp
 char_noteq
   (c1, c2) =
 (
-  not(char_equal(c1, c2))
+not(char_equal(c1, c2))
 )
 //
 (* ****** ****** *)
@@ -87,7 +87,7 @@ char_upper
 //
 // HX:
 // For implementing
-// some gseq_operations
+// some g-operations
 //
 (* ****** ****** *)
 
@@ -102,9 +102,14 @@ impltmp
 g_noteq<char> = char_noteq<>
 
 (* ****** ****** *)
+impltmp
+g_eqref<char> = g_equal<char>
+impltmp
+g_neqrf<char> = g_noteq<char>
+(* ****** ****** *)
 
 impltmp
-g_print<char> = char_print<>
+g_print<char> = char_print< >
 
 (* ****** ****** *)
 

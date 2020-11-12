@@ -62,6 +62,13 @@ g_u<uint>(u) = u // g_u: uint -> a
 (* ****** ****** *)
 
 impltmp
+g_eqref<sint> = g_equal<sint>
+impltmp
+g_neqrf<sint> = g_noteq<sint>
+
+(* ****** ****** *)
+
+impltmp
 g_print<sint> = gint_print_sint<>
 
 (* ****** ****** *)
