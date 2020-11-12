@@ -114,9 +114,12 @@ app of 70 // app_prcdv
 //
 (* ****** ****** *)
 //
-#infix0 < > <= >= of 40
+#infix0 < <= of 40
+#infix0 > >= of 40
+#infix0 = != of 30
 //
-#infix0 = != == !== of 30
+#infix0 == !== of 30
+#infix0 === !=== of 30
 //
 (* ****** ****** *)
 
