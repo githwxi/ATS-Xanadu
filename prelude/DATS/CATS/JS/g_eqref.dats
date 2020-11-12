@@ -13,7 +13,8 @@ where
 #extern
 fun
 XATS2JS_g_eqref
-{a:t0}(x1: a, x2: a): bool
+{a:t0}
+(x1: a, x2: a): bool = $exname()
 }
 //
 impltmp
@@ -25,7 +26,8 @@ where
 #extern
 fun
 XATS2JS_g_neqrf
-{a:t0}(x1: a, x2: a): bool
+{a:t0}
+(x1: a, x2: a): bool = $exname()
 }
 //
 (* ****** ****** *)
