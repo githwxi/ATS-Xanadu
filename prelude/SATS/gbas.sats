@@ -74,6 +74,26 @@ fun
 g_noteq(a, a): bool
 //
 (* ****** ****** *)
+(*
+HX-2020-11-12:
+reference equality
+*)
+fun
+<a:t0>
+g_eqref(a, a): bool
+fun
+<a:t0>
+g_neqrf(a, a): bool
+//
+(*
+HX-2020-11-12:
+Note that == is already
+widely used for equality
+*)
+#symload === with g_eqref
+#symload !== with g_neqrf
+//
+(* ****** ****** *)
 //
 fun
 <a:t0>
@@ -117,6 +137,18 @@ filter0$test(x0: ~x0): bool
 fun
 <x0:vt>
 filter1$test(x0: !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+search$test(x0: x0): bool
+fun
+<x0:t0>
+search0$test(x0: ~x0): bool
+fun
+<x0:t0>
+search1$test(x0: !x0): bool
 //
 (* ****** ****** *)
 //

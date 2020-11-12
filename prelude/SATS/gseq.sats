@@ -198,7 +198,21 @@ gseq_foreach(xs): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_memberq(xs, x0): bool
+gseq_memberq
+(xs: xs, x0: x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_search_opt
+  (xs: xs): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rsearch_opt
+  (xs: xs): optn_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -467,12 +481,12 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_indexof
-(xs: xs, x0: x0): sint // ~1: ~found
+(xs: xs, x0: x0): sint // -1: ~found
 fun
 <xs:t0>
 <x0:t0>
 gseq_rindexof
-(xs: xs, x0: x0): sint // ~1: ~found
+(xs: xs, x0: x0): sint // -1: ~found
 //
 (* ****** ****** *)
 //

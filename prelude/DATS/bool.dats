@@ -36,10 +36,8 @@
 impltmp
 bool_print<>(b0) =
 if b0
-then
-g_print<string>("true")
-else
-g_print<string>("false")
+then g_print<string>("true")
+else g_print<string>("false")
 //
 (* ****** ****** *)
 //
@@ -61,8 +59,19 @@ case+ rep of
 )
 //
 (* ****** ****** *)
+//
+// HX:
+// For implementing
+// some g-operations
+//
+(* ****** ****** *)
 impltmp
-g_print<bool> = bool_print<>
+g_eqref<bool> = g_equal<bool>
+impltmp
+g_neqrf<bool> = g_noteq<bool>
+(* ****** ****** *)
+impltmp
+g_print<bool> = bool_print< >
 (* ****** ****** *)
 
 (* end of [bool.dats] *)
