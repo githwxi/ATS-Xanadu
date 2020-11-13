@@ -178,8 +178,12 @@ val
 p2kg =
 trans02_package(p0kg)
 //
+local
 val+
 D2TRANSD(rcd) = p2kg
+in
+val stadyn = rcd.stadyn
+val source = rcd.source
 val
 d2csopt =
 rcd.transd where
@@ -187,6 +191,7 @@ rcd.transd where
   val () =
   tread12_package(p2kg)
 }
+end // end of [local]
 //
 val
 d3csopt =
@@ -196,8 +201,18 @@ d2csopt of
 | None() =>
   None(*void*)
 | Some(d2cs) =>
-  Some(trans23_declist(d2cs))
+  Some
+  (trans23_declist(d2cs))
 ) : Option(d3eclist) // end-of-val
+val () =
+tread33_package(p3kg) where
+{
+val p3kg =
+D3TRANSD@{
+  stadyn= stadyn
+, source= source, transd= d3csopt
+}
+}
 //
 val
 d3csopt =
@@ -207,8 +222,19 @@ d3csopt of
 | None() =>
   None(*void*)
 | Some(d3cs) =>
-  Some(trans33_envless(d3cs))
+  Some
+  (trans33_envless(d3cs))
 ) : Option(d3eclist) // end-of-val
+val () =
+tread33_package(p3kg) where
+{
+val p3kg =
+D3TRANSD@{
+  stadyn= stadyn
+, source= source, transd= d3csopt
+}
+}
+//
 val
 d3csopt =
 (
@@ -232,8 +258,8 @@ d3csopt of
 //
 in
 D3TRANSD@{
-  stadyn= rcd.stadyn
-, source= rcd.source, transd= d3csopt
+  stadyn= stadyn
+, source= source, transd= d3csopt
 }
 end // end of [trans03_package]
 

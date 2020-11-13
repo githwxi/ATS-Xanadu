@@ -17,13 +17,22 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+fun
+foo
+( xs
+: stream_vt(int)): void =
+(
+case+ !xs of
+| ~stream_vt_nil() => ()
+)
+
+(* ****** ****** *)
+////
 datatype
 ab = A of () | B of (int)
-
 fun
 foo(ab: ab): int =
 case+ ab of A _ => 0 | B _ => 1
-
 (* ****** ****** *)
 ////
 impltmp

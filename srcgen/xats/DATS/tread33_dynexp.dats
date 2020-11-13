@@ -87,7 +87,16 @@ implement
 tread33_d3pat
   (d3p0) = let
 //
-val loc0 = d3p0.loc((*void*))
+(*
+val
+loc0 = d3p0.loc()
+val () =
+println!
+("tread33_d3pat: loc0 = ", loc0)
+val () =
+println!
+("tread33_d3pat: d3p0 = ", d3p0)
+*)
 //
 in
 //
@@ -129,12 +138,36 @@ d3p0.node() of
   }
 | D3Pdapp
   (d3f1, npf2, d3ps) =>
-  {
+  let
     val () =
     tread33_d3pat(d3f1)
     val () =
     tread33_d3patlst(d3ps)
-  }
+  in
+    case+
+    d3f1.node() of
+    |
+    D3Pcon1 _ => ()
+    |
+    _(*non-D3Pcon?*) =>
+    let
+      val
+      loc0 = d3p0.loc()
+      val
+      t2p0 = d3p0.type()
+      val () =
+      trerr33_add(TRERR33d3pat(d3p0))
+    in
+      prerrln!
+      (loc0, ": ***TRERR33***");
+      prerrln!
+      (loc0, ": TRERR33(D3Pdapp): unresolved datacon");
+      prerrln!
+      (loc0, ": TRERR33(D3Pdapp): the datacon: ", d3f1);
+      prerrln!
+      (loc0, ": TRERR33(D3Psym0): the inferred type: ", t2p0);
+    end (* non-D3Pcon? *)
+  end // end of [D3Pdapp]
 //
 | D3Pnone0() => ()
 //
@@ -153,6 +186,8 @@ d3p0.node() of
 //
 | D3Psym0(sym1, dpis) =>
   let
+    val
+    loc0 = d3p0.loc()
     val
     t2p0 = d3p0.type()
     val () =
@@ -173,6 +208,8 @@ d3p0.node() of
 | D3Ptcast(d3p1, t2p2) =>
   let
 //
+    val
+    loc0 = d3p0.loc()
     val
     t2p1 = d3p1.type()
     val () =
@@ -196,6 +233,8 @@ d3p0.node() of
 //
 | D3Pnone1(d3p1) =>
   let
+    val
+    loc0 = d3p0.loc()
     val () =
     trerr33_add(TRERR33d3pat(d3p0))
   in
@@ -208,6 +247,8 @@ d3p0.node() of
 //
 | _(* rest-of-d3pat *) =>
   {
+    val
+    loc0 = d3p0.loc()
     val () = prerrln!(loc0, ": tread33_d3pat(", d3p0, ")")
   }
 //
