@@ -366,11 +366,11 @@ x0.node() of
 //
 | D1Papp1(d1p0, d1p1) =>
   fprint!
-  ( out, "D1Papps("
+  ( out, "D1Papp1("
   , d1p0, "; ", d1p1, ")")
 | D1Papp2(d1p0, d1p1, d1p2) =>
   fprint!
-  ( out, "D1Papps("
+  ( out, "D1Papp2("
   , d1p0, "; ", d1p1, ";", d1p2, ")")
 //
 | D1Psarg(s1as) =>

@@ -610,8 +610,9 @@ d2pat_node =
 | D2Psapp of
   (d2pat, s2varlst(*sarg*))
 //
-| D2Pdap0 of (d2pat)
-| D2Pdap1 of (d2pat)
+| D2Pdap0 of (d2pat) // nullary
+| D2Pdap1 of (d2pat) // argless
+//
 | D2Pdapp of
   ( d2pat
   , int(*npf*), d2patlst(*darg*))

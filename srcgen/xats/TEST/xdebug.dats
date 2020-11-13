@@ -16,6 +16,16 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+
+datatype
+ab = A of () | B of (int)
+
+fun
+foo(ab: ab): int =
+case+ ab of A _ => 0 | B _ => 1
+
+(* ****** ****** *)
+////
 impltmp
 tabulate$fopr
 <cgtz><2>(i0) = 'a'

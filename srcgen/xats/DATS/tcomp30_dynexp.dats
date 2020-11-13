@@ -558,6 +558,13 @@ val
 hend =
 H0Pnone1($UN.cast{ptr}(d3p0))
 //
+val () =
+println!
+("tcomp30_dpat: loc0 = ", loc0)
+val () =
+println!
+("tcomp30_dpat: hend = ", "H0Pnone1(", d3p0, ")")
+//
 in
   h0pat_make_node(loc0, h0t0, hend)
 end // end of [let]
