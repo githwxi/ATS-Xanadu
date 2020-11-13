@@ -205,7 +205,7 @@ d2csopt of
   (trans23_declist(d2cs))
 ) : Option(d3eclist) // end-of-val
 val () =
-tread33_package(p3kg) where
+tread23_package(p3kg) where
 {
 val p3kg =
 D3TRANSD@{
