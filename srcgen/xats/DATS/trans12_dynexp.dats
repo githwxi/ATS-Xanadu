@@ -99,6 +99,13 @@ fprint_val<d2cst> = fprint_d2cst
 implement
 fprint_val<d2var> = fprint_d2var
 //
+(* ****** ****** *)
+//
+implement
+fprint_val<d1pat> = fprint_d1pat
+implement
+fprint_val<d2pat> = fprint_d2pat
+//
 implement
 fprint_val<d1exp> = fprint_d1exp
 implement
@@ -164,16 +171,40 @@ my_d2pat_dapp
 , d2as
 : d2patlst): d2pat =
 (
+let
+(*
+val () =
+println!
+("my_d2pat_dapp: d2f0 = ", d2f0)
+val () =
+println!
+("my_d2pat_dapp: d2as = ", d2as)
+*)
+in
+//
 case+
 d2f0.node() of
 |
 D2Pdap0(d2f0) =>
 (
-d2pat_dapp(loc0, d2f0, npf1, d2as)
-)
-// end of [D2Pdap0]
+case+ d2as of
 |
-_ (*non-D2Pdap0*) =>
+list_nil() =>
+d2pat_dapp(loc0, d2f0, npf1, d2as)
+|
+list_cons(d2a1, _) =>
+(
+case+
+d2a1.node() of
+| D2Parg() => 
+  d2pat_make_node
+  ( loc0, D2Pdap1(d2f0) )
+| _(*non-D2Parg*) =>
+  d2pat_dapp(loc0, d2f0, npf1, d2as)
+)
+) (* D2Pdap0 *)
+|
+_ (* non-D2Pdap0 *) =>
 (
 case+ d2as of
 |
@@ -191,6 +222,8 @@ d2a1.node() of
   d2pat_dapp(loc0, d2f0, npf1, d2as)
 ) (* end of [list_cons] *)
 ) (* end of [non-D2Pdap0] *)
+//
+end // end of [let]
 ) (* end of [my_d2pat_dapp] *)
 //
 (* ****** ****** *)
@@ -685,6 +718,17 @@ auxapp1_
 ( d1p0
 : d1pat): d2pat = let
 //
+(*
+val
+loc0 = d1p0.loc()
+val () =
+println!
+("auxapp1_: loc0 = ", loc0)
+val () =
+println!
+("auxapp1_: d1p0 = ", d1p0)
+*)
+//
 val-
 D1Papp1
 ( d1p1
@@ -867,6 +911,9 @@ val
 loc0 = d1p0.loc()
 //
 (*
+val () =
+println!
+("trans12_dpat: loc0 = ", loc0)
 val () =
 println!
 ("trans12_dpat: d1p0 = ", d1p0)

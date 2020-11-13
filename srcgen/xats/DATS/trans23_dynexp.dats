@@ -326,7 +326,7 @@ d3p1 = trans23_dpat(d2p1)
 //
 in
   d3pat_dap1_up(loc0, d3p1)
-end (* end of [auxdap0] *)
+end (* end of [auxdap1] *)
 
 (* ****** ****** *)
 
