@@ -691,6 +691,9 @@ H0Etry0 of
 | H0Enone0 of () // HX: nil/none/null
 | H0Enone1 of (dataptr) // HX: for ignores
 //
+where
+h0dclistopt = Option(h0dclist)
+//
 (* ****** ****** *)
 //
 fun
@@ -971,6 +974,14 @@ H0Cextern of
 H0Clocal of
 ( h0dclist(*head*)
 , h0dclist(*body*))
+//
+|
+H0Cinclude of
+( token
+, g1exp // src
+, int(*knd*) // sta/dyn: 0/1
+, filpathopt
+, h0dclistopt) // file inclusion
 //
 |
 H0Cfundecl of

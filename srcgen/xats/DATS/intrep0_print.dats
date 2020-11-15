@@ -39,6 +39,9 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+#staload
+FP0 = "./../SATS/filpath.sats"
+(* ****** ****** *)
 //
 #staload "./../SATS/symbol.sats"
 //
@@ -48,7 +51,13 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/lexing.sats"
 (* ****** ****** *)
 
+#staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
 
 (* ****** ****** *)
 
@@ -59,6 +68,17 @@ UN = "prelude/SATS/unsafe.sats"
 
 #staload "./../SATS/intrep0.sats"
 
+(* ****** ****** *)
+//
+(*
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full1
+*)
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full2
+//
 (* ****** ****** *)
 
 implement
@@ -805,6 +825,26 @@ x0.node() of
   fprint!
   ( out
   , "H0Clocal(", head, "; ", body, ")")
+//
+| H0Cinclude
+  ( tok0
+  , src1, knd2
+  , fopt, body) =>
+  (
+  fprint!
+  ( out
+  , "H0Cinclude("
+  , "src= ", src1, "; "
+  , "knd= ", knd2, "; "
+  , fopt, "; ", body, ")")
+  ) where
+  {
+    val body =
+    (
+    case+ body of
+    | None _ => "None()"
+    | Some _ => "Some(<hdcls>)"): string
+  }
 //
 | H0Cfundecl
   (knd, mopt, tqas, hfds) =>
