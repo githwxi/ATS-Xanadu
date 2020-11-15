@@ -160,19 +160,6 @@ end // end of [local]
 //
 (* ****** ****** *)
 //
-// HX-2019-11-14:
-//
-#ifdef
-_LIBXATSOPT_
-#then
-#define
-ATS_MAINATSFLAG 1
-#define
-ATS_DYNLOADNAME "libxatsopt_dynloadall"
-#endif // #ifdef
-//
-(* ****** ****** *)
-//
 #dynload "./basics.dats"
 //
 #dynload "./stamp0.dats"
@@ -308,6 +295,41 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 implement
 the_XATSHOME_get() =
 $GLO.the_XATSHOME_get()
+(* ****** ****** *)
+//
+implement
+echo_argc_argv
+{n}
+(out, argc, argv) =
+(
+loop(argv, 0(*i0*))
+) where
+{
+fun
+loop
+{ i:nat
+| i <= n} .<n-i>.
+( argv
+: !argv(n)
+, i0: int(i)): void =
+(
+if
+(i0 >= argc)
+then
+fprintln!(out)
+else
+let
+val () =
+if
+(i0 > 0)
+then
+fprint(out, ' ')
+in
+fprint(out, argv[i0]); loop(argv, i0+1)
+end (*let*) // end of [else]
+)
+} (* end of [ech0_argc_argv] *)
+//
 (* ****** ****** *)
 //
 datatype

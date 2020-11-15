@@ -125,6 +125,14 @@ fun
 the_XATSHOME_get((*void*)): string
 //
 (* ****** ****** *)
+//
+fun
+echo_argc_argv
+  {n:nat}
+( out: FILEref
+, argc: int(n), argv: !argv(n)): void
+//
+(* ****** ****** *)
 fun
 xatsopt_main0
 {n:int | n >= 1}(int(n), !argv(n)): void
