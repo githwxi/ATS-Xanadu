@@ -178,17 +178,14 @@ xatsopt
 xatsopt: \
 DATS/xatsopt.dats \
 $(OBJSATS) $(OBJDATS) ; \
-$(PATSCC) -cleanaft \
--o xatsopt $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
+$(PATSCC) -cleanaft -o xatsopt \
+$(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
 #
 ######
 
 libxatsopt: \
-$(OBJSATS) $(OBJDATS) \
-BUILD/libxatsopt_dats.o ; \
+$(OBJSATS) $(OBJDATS) ; \
 ($(AR) -r $@.a $^ && $(MVF) $@.a ./../../lib)
-BUILD/libxatsopt_dats.o: \
-DATS/xatsopt.dats; $(PATSCC) -DATS _LIBXATSOPT_ -o $@ -c $<
 
 ######
 
