@@ -916,13 +916,13 @@ case+ x0.node() of
   , tbeg, "; ", d0cs0, "; "
   , topt, "; ", d0cs1, "; ", tend, ")")
 //
-| D0Cinclude(tok, d0e) =>
+| D0Cinclude(tok, g0e) =>
   fprint!
-  (out, "D0Cinclude(", tok, "; ", d0e, ")")
+  (out, "D0Cinclude(", tok, "; ", g0e, ")")
 //
-| D0Cstaload(tok, d0e) =>
+| D0Cstaload(tok, g0e) =>
   fprint!
-  (out, "D0Cstaload(", tok, "; ", d0e, ")")
+  (out, "D0Cstaload(", tok, "; ", g0e, ")")
 (*
 | D0Cdynload(tok, d0e) =>
   fprint!

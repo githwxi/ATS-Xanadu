@@ -827,14 +827,14 @@ d3ecl_node =
 //
 | D3Cinclude of
   ( token
-  , d1exp // src
+  , g1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , d3eclistopt) // file inclusion
 //
 | D3Cstaload of
   ( token
-  , d1exp // src
+  , g1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , int(*shared*), fmodenvopt)

@@ -3135,7 +3135,7 @@ case+ body of
 |
 None() =>
 (
-auxd1exp(src1)
+auxg1exp(src1)
 ) where
 {
 val () = (flag := 0)
@@ -3154,42 +3154,45 @@ end
 ) where
 {
 fun
-auxd1exp
+auxg1exp
 ( src
-: d1exp
+: g1exp
 ) : fmodenvopt =
 (
 case+
 src.node() of
 |
-D1Eid0 _ => auxd1eid(src)
+G1Eid0 _ => auxg1eid(src)
 |
-D1Eapp2
-(_, _, src) => auxd1eid(src)
+G1Eapp2
+(_, _, src) => auxg1eid(src)
 //
-| _ (*else*) => None((*void*))
+|
+_ (* else *) => None((*void*))
 //
 ) // end of [auxd1exp]
 and
-auxd1eid
+auxg1eid
 ( src
-: d1exp
+: g1exp
 ) : fmodenvopt =
 (
 case+
 src.node() of
 |
-D1Eid0(tok) =>
-let
-val opt =
-the_qualist_find(tok)
-in
+G1Eid0(sym) =>
+(
 case+ opt of
 | ~None_vt() => None()
 | ~Some_vt(m0) => Some(m0)
-end // end of [let]
+) where
+{
+  val
+  opt =
+  the_qualist_find_sym(sym)
+}
 | _ (*else*) => None((*void*))
-) // end of [auxd1eid]
+) // end of [auxg1eid]
 //
 fun
 auxd1cls
@@ -3249,7 +3252,7 @@ Some(menv) =>
 let
 val
 nmopt =
-d1exp_nmspace(src1)
+g1exp_nmspace(src1)
 in
 case+ nmopt of
 |

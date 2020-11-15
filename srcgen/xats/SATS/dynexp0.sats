@@ -1069,17 +1069,17 @@ for skipping synerr:
   , d0eclist(*body*), token(*END*))
 //
 | D0Cinclude of
-    (token(*INCLUDE*), d0exp)
+    (token(*INCLUDE*), g0exp(*src*))
   // HX: for file inclusion
 //
 // HX: for static loading
 //
 | D0Cstaload of
-    (token(*#STALOAD*), d0exp)
+    (token(*#STALOAD*), g0exp(*src*))
   // end of [D0Cstaload]
 (*
 | D0Cdynload of
-    (token(*#DYNLOAD*), d0exp)
+    (token(*#DYNLOAD*), g0exp(*src*))
   // end of [D0Cdynload]
 *)
 //

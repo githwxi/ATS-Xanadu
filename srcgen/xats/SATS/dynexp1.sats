@@ -843,25 +843,20 @@ d1ecl_node =
   , token(*g0eid*)
   , g1marglst(*arg*), d1expopt)
 //
-(*
 | D1Cinclude of
   ( token
-  , d0exp
-  , filpathopt) // file inclusion
-*)
-| D1Cinclude of
-  ( token
-  , d1exp // src
+  , g1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
-  , d1eclistopt) // file inclusion
+  , d1eclistopt) // file including
 //
 | D1Cstaload of
   ( token
-  , d1exp // src
+  , g1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
-  , int(*shared*), d1eclistopt)
+  , int(*shared*)
+  , d1eclistopt) // file nampspacing
 //
 | D1Cabssort of
   (token, token(*s0tid*))

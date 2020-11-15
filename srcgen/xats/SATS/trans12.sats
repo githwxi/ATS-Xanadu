@@ -439,6 +439,9 @@ the_nmspace_open
 fun
 the_qualist_find
   (qua: token): fmodenvopt_vt
+fun
+the_qualist_find_sym
+  (qua: sym_t): fmodenvopt_vt
 //
 (* ****** ****** *)
 //
@@ -1031,8 +1034,8 @@ trans12_tiarglst(tias: ti1arglst): ti2arglst
 (* ****** ****** *)
 
 fun
-d1exp_nmspace
-(d1e0: d1exp): symbolopt_vt
+g1exp_nmspace
+(g1e0: g1exp): symbolopt_vt
 
 (* ****** ****** *)
 //
