@@ -533,16 +533,24 @@ fprint_newline (out); // HX: needed for flushing out the output
 end // end of [xatsopt_usage]
 //
 (* ****** ****** *)
-//
 datatype
 waitknd =
-  | WTKnone of ()
-  | WTKoutput of () // -o ...
-  | WTKinpsta of () // -s ...
-  | WTKinpdyn of () // -d ...
-  | WTKdefine of () // -DATS ...
-  | WTKinpath of () // -IATS ...
+| WTKnone of ()
+| WTKoutput of () // -o ...
+| WTKinpsta of () // -s ...
+| WTKinpdyn of () // -d ...
+| WTKdefine of () // -DATS ...
+| WTKinpath of () // -IATS ...
 // end of [waitkind]
+(* ****** ****** *)
+datatype
+outchan =
+// no-closing
+| OUTCHANref of (FILEref)
+// to-be-closed
+| OUTCHANptr of (FILEref)
+// end of [outchan]
+(* ****** ****** *)
 //
 fun
 waitknd_get_stadyn
@@ -556,12 +564,6 @@ case+ knd of
 //
 (* ****** ****** *)
 //
-datatype
-outchan =
-| OUTCHANref of (FILEref)
-| OUTCHANptr of (FILEref)
-// end of [outchan]
-
 fun
 outchan_get_filref
   (x0: outchan): FILEref =
@@ -576,23 +578,21 @@ case+ x0 of
 typedef
 cmdstate = @{
 //
-arg0= commarg
-,
-wtk0= waitknd
-,
-XATSENV= string
-,
-prelude= int
-,
-inpfil0=fpath_t
-,
-// the number of inputs
-ninpfil= int // processed
+  arg0= commarg
+, wtk0= waitknd
+, XATSENV= string
+, prelude= int
+, inpfil0=fpath_t
+(*
+the number of inputs
+*)
+, ninpfil= int // processed
 //
 , outmode= fmode
 , outchan= outchan
-//
+(*
 // the number of caught
+*)
 , nxerror= int // errors
 //
 } (* end of [cmdstate] *)
@@ -606,8 +606,7 @@ isinpwait
 ) : bool =
 (
 case+
-st0.wtk0
-of // case+
+st0.wtk0 of // case+
  | WTKinpsta() => true
  | WTKinpdyn() => true
 (*
