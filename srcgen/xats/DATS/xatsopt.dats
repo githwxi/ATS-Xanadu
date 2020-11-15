@@ -46,19 +46,19 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-//
 // HX-2019-11-14:
 //
 #ifdef
 __LIBXATSOPT__
 #then
+(* ****** ****** *)
 #define
 ATS_MAINATSFLAG 1
 #define
 ATS_DYNLOADNAME "libxatsopt_dynloadall"
-#endif // #ifdef                                                                                                                                     //                                                                                                                                                   
 (* ****** ****** *)
-//
+#else
+(* ****** ****** *)
 implement
 main0(argc, argv) =
 (
@@ -94,7 +94,7 @@ prerrln!
   echo_argc_argv(out, argc, argv)
 // *)
 } (* end of [main] *)
-//
 (* ****** ****** *)
-
+#endif // #ifdef(__LIBXATSOPT__)
+(* ****** ****** *)
 (* end of [xats_xatsopt.dats] *)
