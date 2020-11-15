@@ -1197,14 +1197,14 @@ d2ecl_node =
 //
 | D2Cinclude of
   ( token
-  , d1exp // src
+  , g1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , d2eclistopt) // file inclusion
 //
 | D2Cstaload of
   ( token
-  , d1exp // src
+  , g1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , int(*shared*), fmodenvopt)

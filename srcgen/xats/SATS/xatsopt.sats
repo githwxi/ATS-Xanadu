@@ -120,5 +120,15 @@ the_preludes_load_if
   "ext#libxatsopt_the_preludes_load_if"
 //
 (* ****** ****** *)
+//
+fun
+the_XATSHOME_get((*void*)): string
+//
+(* ****** ****** *)
+fun
+xatsopt_main0
+{n:int | n >= 1}(int(n), !argv(n)): void
+//
+(* ****** ****** *)
 
 (* end of [xats_xatsopt.sats] *)

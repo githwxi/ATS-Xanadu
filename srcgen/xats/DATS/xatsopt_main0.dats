@@ -305,6 +305,10 @@ ATS_DYNLOADNAME "libxatsopt_dynloadall"
 #dynload "./xatsopt_util0.dats"
 //
 (* ****** ****** *)
+implement
+the_XATSHOME_get() =
+$GLO.the_XATSHOME_get()
+(* ****** ****** *)
 //
 datatype
 commarg =
@@ -319,14 +323,12 @@ commarglst
 extern
 fun
 parse_commarg
-( string
-) :<> commarg
+(cmd: string):<> commarg
 and
 parse_commarglst
   {n:nat}
 ( argc: int(n)
-, argv: !argv(n)
-) :<!wrt> commarglst(n)
+, argv: !argv(n)): commarglst(n)
 //
 (* ****** ****** *)
 
@@ -507,14 +509,6 @@ fprintln! (out, "  --tycheck (for typechecking only)");
 fprint_newline (out); // HX: needed for flushing out the output
 //
 end // end of [xatsopt_usage]
-//
-(* ****** ****** *)
-//
-extern
-fun
-xatsopt_main0
-{n:int | n >= 1}
-(int(n), !argv(n)): void
 //
 (* ****** ****** *)
 //
@@ -1442,26 +1436,6 @@ end // end of [xatsopt_main0]
 
 end // end of [local]
 
-(* ****** ****** *)
-//
-#ifdef
-_LIBXATSOPT_
-#then
-#else
-//
-implement
-main0(argc, argv) =
-(
-//
-if
-(argc >= 2)
-then xatsopt_main0(argc, argv)
-else prerrln!("Hello from ATS3(xatsopt)!")
-// end of [if]
-) (* end of [main] *)
-//
-#endif // ifdef(_LIBXATSOPT_)
-//
 (* ****** ****** *)
 
 (* end of [xats_xatsopt_main0.dats] *)

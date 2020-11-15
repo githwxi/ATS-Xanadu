@@ -159,7 +159,7 @@ the_nmspace_open
 )
 //
 (* ****** ****** *)
-//
+
 local
 //
 vtypedef
@@ -350,11 +350,14 @@ _(*else*) =>
 end // end of [let] // auxlst2
 //
 in
-//
+
+(* ****** ****** *)
+
 implement
 the_qualist_find
   (qua) =
 (
+//
 case+
 qua.node() of
 |
@@ -371,12 +374,31 @@ auxlst0(string2ptr(qua))
 (*
 val () =
 println!
+("the_qualist_find_tok: qua = ", qua)
+*)
+} (* where *) // the_qualist_find_tok
+
+(* ****** ****** *)
+
+implement
+the_qualist_find_sym
+  (qua) =
+(
+  auxlst0
+  (string2ptr(qua.name()))
+) where
+{
+(*
+val () =
+println!
 ("the_qualist_find: qua = ", qua)
 *)
-} (* where *) // the_qualist_find
-//
+} (* end of [the_qualist_find_sym] *)
+
+(* ****** ****** *)
+
 end // end of [local]
-//
+
 (* ****** ****** *)
 
 vtypedef

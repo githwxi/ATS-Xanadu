@@ -3921,26 +3921,26 @@ abstype ::=
 //
 | T_SRP_INCLUDE() => let
     val () = buf.incby1()
-    val d0e =
-      p_appd0exp(buf, err)
+    val g0e =
+      p_g0exp(buf, err)
     // end of [val]
-    val loc_res = loc+d0e.loc()
+    val loc_res = loc+g0e.loc()
   in
     err := e0;
-    d0ecl_make_node(loc_res, D0Cinclude(tok, d0e))
+    d0ecl_make_node(loc_res, D0Cinclude(tok, g0e))
   end // end of [#INCLUDE(...)]
 //
 | T_SRP_STALOAD() => let
 //
     val () = buf.incby1()
 //
-    val d0e =
-      p_appd0exp(buf, err)
+    val g0e =
+      p_g0exp(buf, err)
     // end of [val]
-    val loc_res = loc+d0e.loc()
+    val loc_res = loc+g0e.loc()
   in
     err := e0;
-    d0ecl_make_node(loc_res, D0Cstaload(tok, d0e))
+    d0ecl_make_node(loc_res, D0Cstaload(tok, g0e))
   end // end of [#STALOAD(...)]
 //
 | T_SRP_SYMLOAD() => let

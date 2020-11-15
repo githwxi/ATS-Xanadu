@@ -40,7 +40,13 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/symbol.sats"
+#staload
+SYM = "./../SATS/symbol.sats"
+#symload
+= with $SYM.eq_symbol_symbol
+
+(* ****** ****** *)
+
 #staload "./../SATS/lexing.sats"
 
 (* ****** ****** *)
@@ -219,31 +225,24 @@ strptr2string
 //
 fun
 iseq
-(x0: d1exp): bool =
+(x0: g1exp): bool =
 (
 case+
 x0.node() of
-|
-D1Eid0(tok) =>
-(
-case+
-tok.node() of
-|
-T_IDENT_sym
-("=") => true | _ => false
-)
-| _ (* non-D1Eid0 *) => false
+| G1Eid0(sym) =>
+  (sym = $SYM.EQ_symbol)
+| _(*non-G1Eid0*) => false
 )
 in (* in-of-local *)
 //
 implement
-d1exp_nmspace
-  (d1e0) =
+g1exp_nmspace
+  (g1e0) =
 (
 case+
-d1e0.node() of
+g1e0.node() of
 |
-D1Eapp2
+G1Eapp2
 (x0, x1, x2) =>
 (
 ifcase
@@ -253,18 +252,15 @@ iseq(x0) =>
 case+
 x1.node() of
 |
-D1Eid0(tok) =>
+G1Eid0(sym) =>
+let
+val nm0 = sym.name()
+in
+Some_vt
 (
-case+
-tok.node() of
-| T_IDENT_alp(nm0) =>
-  Some_vt
-  (
-    symbol_make(DLR(nm0))
-  )
-| _ =>
-  Some_vt(symbol_make("$_"))
+  $SYM.symbol_make(DLR(nm0))
 )
+end
 | _ (* else *) => None_vt(*void*)
 )
 | _ (* else *) => None_vt(*void*)

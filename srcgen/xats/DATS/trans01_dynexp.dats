@@ -42,6 +42,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload
 SYM = "./../SATS/symbol.sats"
+(* ****** ****** *)
+//
 #staload
 FIX = "./../SATS/fixity.sats"
 #staload
@@ -52,6 +54,10 @@ ENV = "./../SATS/symenv.sats"
 #staload
 LOC = "./../SATS/locinfo.sats"
 //
+(* ****** ****** *)
+overload
+= with $SYM.eq_symbol_symbol
+(* ****** ****** *)
 overload
 + with $LOC.location_combine
 overload
@@ -2426,8 +2432,8 @@ vtypedef
 fopt = fnameopt_vt
 //
 fun
-auxd1e
-(d1e: d1exp): fopt =
+auxg1e
+(g1e: g1exp): fopt =
 let
 (*
 val () =
@@ -2436,17 +2442,17 @@ println!
 *)
 in
 case+
-d1e.node() of
-| D1Estr _ => auxstr(d1e)
+g1e.node() of
+| G1Estr _ => auxstr(g1e)
 | _(*non-D1Estr*) => None_vt()
 end // end of [auxd1e]
 and
 auxstr
-(d1e: d1exp): fopt =
+(g1e: g1exp): fopt =
   auxtok(tok) where
 {
   val-
-  D1Estr(tok) = d1e.node()
+  G1Estr(tok) = g1e.node()
 }
 and
 auxtok
@@ -2485,7 +2491,7 @@ println!
 //
 val-
 D0Cinclude
-(tok, d0e) = d0cl.node()
+(tok, g0e) = d0cl.node()
 //
 (*
 //
@@ -2511,9 +2517,9 @@ val (_) = $FP0.the_filpathlst_fprint(out)
 //
 val
 src =
-trans01_dexp(d0e)
+trans01_gexp(g0e)
 val
-opt = auxd1e(src)
+opt = auxg1e(src)
 val
 opt1 =
 (
@@ -2611,27 +2617,20 @@ fopt = fnameopt_vt
 
 fun
 iseq
-(x0: d1exp): bool =
+(x0: g1exp): bool =
 (
 case+
 x0.node() of
-|
-D1Eid0(tok) =>
-(
-case+
-tok.node() of
-|
-T_IDENT_sym
-("=") => true | _ => false
-)
-| _ (* non-D1Eid0 *) => false
+| G1Eid0(sym) =>
+  ( sym = $SYM.EQ_symbol )
+| _ (* non-G1Eid0 *) => false
 )
 
 (* ****** ****** *)
 
 fun
-auxd1e
-(d1e: d1exp): fopt =
+auxg1e
+(g1e: g1exp): fopt =
 let
 (*
 val () =
@@ -2640,19 +2639,19 @@ println!
 *)
 in
 case+
-d1e.node() of
-| D1Estr _ => auxstr(d1e)
-| D1Eapp2 _ => auxapp2(d1e)
+g1e.node() of
+| G1Estr _ => auxstr(g1e)
+| G1Eapp2 _ => auxapp2(g1e)
 | _(*non-D1Estr*) => None_vt()
-end // end of [auxd1e]
+end // end of [auxg1e]
 //
 and
 auxstr
-(d1e: d1exp): fopt =
+(g1e: g1exp): fopt =
   auxtok(tok) where
 {
   val-
-  D1Estr(tok) = d1e.node()
+  G1Estr(tok) = g1e.node()
 }
 //
 and
@@ -2675,12 +2674,12 @@ tok.node() of
 //
 and
 auxapp2
-(d1e: d1exp): fopt =
+(g1e: g1exp): fopt =
 let
 //
 val-
-D1Eapp2
-(x0, x1, x2) = d1e.node()
+G1Eapp2
+(x0, x1, x2) = g1e.node()
 //
 in
 //
@@ -2689,7 +2688,7 @@ ifcase
 iseq(x0) =>
 (
 case+ x2.node() of
-| D1Estr _ => auxstr(x2)
+| G1Estr _ => auxstr(x2)
 | _ (*else*) => None_vt(*void*)
 )
 | _ (* else *) => None_vt(*void*)
@@ -2712,13 +2711,13 @@ println!("aux_staload")
 //
 val-
 D0Cstaload
-(tok, d0e) = d0cl.node()
+(tok, g0e) = d0cl.node()
 //
 val
 src =
-trans01_dexp(d0e)
+trans01_gexp(g0e)
 val
-opt = auxd1e(src)
+opt = auxg1e(src)
 //
 val
 opt1 =
