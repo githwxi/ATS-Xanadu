@@ -2169,6 +2169,39 @@ list_map$fopr<d3clau><h0clau>(dcl) = tcomp30_dclau(dcl)
 local
 
 (* ****** ****** *)
+
+fun
+aux_include
+( d3cl
+: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cinclude
+( tok
+, src // g1exp
+, knd // stadyn
+, opt1
+, opt2) = d3cl.node()
+//
+val opt2 =
+(
+case+ opt2 of
+| None() => None()
+| Some(d3cs) =>
+  Some(tcomp30_declist(d3cs))
+) : h0dclistopt // end-of-val
+//
+in
+h0dcl_make_node
+( loc0
+, H0Cinclude(tok, src, knd, opt1, opt2))
+end // end of [aux_include]
+
+(* ****** ****** *)
 //
 fun
 aux_fundecl
@@ -2598,6 +2631,9 @@ in
   h0dcl_make_node
   ( loc0, H0Clocal(head, body) )
 end
+//
+|
+D3Cinclude _ => aux_include(d3cl)
 //
 |
 D3Cfundecl _ => aux_fundecl(d3cl)
