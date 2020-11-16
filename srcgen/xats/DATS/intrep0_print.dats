@@ -836,7 +836,7 @@ x0.node() of
   , "H0Cinclude("
   , "src= ", src1, "; "
   , "knd= ", knd2, "; "
-  , fopt, "; ", body, ")")
+  ,  fopt, "; ", body, ")")
   ) where
   {
     val body =

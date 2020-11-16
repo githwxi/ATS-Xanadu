@@ -42,7 +42,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 #staload
 SYM = "./../SATS/symbol.sats"
-#symload
+overload
 = with $SYM.eq_symbol_symbol
 
 (* ****** ****** *)

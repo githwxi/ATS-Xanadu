@@ -811,7 +811,7 @@ x0.node() of
   , "D3Cinclude("
   , "src= ", src1, "; "
   , "knd= ", knd2, "; "
-  , fopt, "; ", body, ")")
+  ,  fopt, "; ", body, ")")
   ) where
   {
     val body =
