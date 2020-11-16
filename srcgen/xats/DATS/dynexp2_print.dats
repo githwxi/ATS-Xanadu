@@ -679,7 +679,8 @@ case- x0.node() of
   fprint!
   (out, "D2Cextern(", d2cl, ")")
 //
-| D2Clocal(head, body) =>
+| D2Clocal
+  (head, body) =>
   fprint!
   ( out
   , "D2Clocal(", head, "; ", body, ")")
@@ -694,7 +695,7 @@ case- x0.node() of
   , "D2Cinclude("
   , "src= ", src1, "; "
   , "knd= ", knd2, "; "
-  , fopt, "; ", body, ")")
+  ,  fopt, "; ", body, ")")
   ) where
   {
     val body =

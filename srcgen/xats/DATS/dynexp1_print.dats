@@ -750,19 +750,19 @@ case+ x0.node() of
   , "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
 //
 | D1Cinclude
-  (tok, src, knd, opt, body) =>
+  (tok, src, knd, opt1, opt2) =>
   (
   fprint!
   ( out
   , "D1Cinclude("
   , tok, "; "
   , src, "; " // src: d1exp
-  , knd, "; ", opt, "; ", body, ")")
+  , knd, "; ", opt1, "; ", opt2, ")")
   ) where
   {
-    val body =
+    val opt2 =
     (
-    case+ body of
+    case+ opt2 of
     | None _ => "None()"
     | Some _ => "Some(<d1cls>)"): string
   }
