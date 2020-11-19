@@ -248,15 +248,20 @@ fprint_funkind
 (
 //
 case+ fnk of
+//
 | FNKfn0() => fprint(out, "FNKfn0")
-| FNKfnx() => fprint(out, "FNKfnx")
 | FNKfn1() => fprint(out, "FNKfn1")
+| FNKfn2() => fprint(out, "FNKfn2")
+//
+| FNKfnx() => fprint(out, "FNKfnx")
 | FNKfun() => fprint(out, "FNKfun")
+//
+| FNKpraxi() => fprint(out, "FNKpraxi")
 //
 | FNKprfn0() => fprint(out, "FNKprfn0")
 | FNKprfn1() => fprint(out, "FNKprfn1")
+//
 | FNKprfun() => fprint(out, "FNKprfun")
-| FNKpraxi() => fprint(out, "FNKpraxi")
 //
 | FNKfcast() => fprint(out, "FNKfcast")
 //
