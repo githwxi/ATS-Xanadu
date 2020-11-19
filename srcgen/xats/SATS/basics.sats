@@ -202,22 +202,23 @@ fprint_valkind:fprint_type(valkind)
 overload fprint with fprint_valkind
 //
 (* ****** ****** *)
-
+//
 datatype
 funkind =
 //
 | FNKfn0 // nonrec fun
-| FNKfnx // tailrec fun
-| FNKfn1 // recursive fun
-| FNKfun // recursive fun
-//
-| FNKprfn0 // nonrec proof fun
-| FNKprfn1 // recursive proof fun
-| FNKprfun // recursive proof fun
+| FNKfn1 // genrec fun
+| FNKfn2 // tailrec fun
+| FNKfnx // tailopt fun
+| FNKfun // ex-specified
 //
 | FNKpraxi // proof axiom
 //
-| FNKfcast // casting fun
+| FNKprfn0 // nonrec prfun
+| FNKprfn1 // genrec prfun
+| FNKprfun // ex-specified
+//
+| FNKfcast // no-op casting
 //
 // end of [funkind]
 //
