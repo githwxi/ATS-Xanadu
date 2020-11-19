@@ -142,6 +142,12 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+eq_hdcst_hdcst(x1, x2) =
+(x1.stamp() = x2.stamp())
+
+(* ****** ****** *)
+
 local
 
 typedef

@@ -236,6 +236,14 @@ overload .stamp with hdvar_get_stamp
 //
 (* ****** ****** *)
 //
+fun
+eq_hdcst_hdcst
+(c1: hdcst, c2: hdcst): bool
+//
+overload = with eq_hdcst_hdcst
+//
+(* ****** ****** *)
+//
 datatype
 h0srt =
 //
