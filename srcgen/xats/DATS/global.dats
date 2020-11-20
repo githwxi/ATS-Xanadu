@@ -61,14 +61,13 @@ if
 isneqz(XATSHOME)
 then
 strptr2string(XATSHOME)
-else
-let
+else let
 //
 // XATSHOME is undefined!
 //
 prval () =
 strptr_free_null(XATSHOME) in ""
-end (* end of [if] *)
+end (*let*) // end of [else]
 //
 end (* end of [the_XATSHOME_get *)
 //

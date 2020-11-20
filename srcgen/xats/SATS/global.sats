@@ -32,10 +32,22 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#staload
+FP0 = "./filpath.sats"
+(* ****** ****** *)
+typedef
+filpath = $FP0.filpath
+(* ****** ****** *)
+abstbox fpathenv_tbox = ptr
+typedef fpathenv = fpathenv_tbox
+(* ****** ****** *)
 //
 fun
 the_XATSHOME_get(): string
 //
+(* ****** ****** *)
+fun
+the_global_search(fp0: filpath): fpathenv
 (* ****** ****** *)
 
 (* end of [xats_global.sats] *)
