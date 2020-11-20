@@ -145,13 +145,37 @@ $effmask_all
 end // en dof [gequal_val_val<key>]
 //
 (* ****** ****** *)
+abstbox fpenvtbl = ptr
+(* ****** ****** *)
 val
 the_global_fpenvtbl =
 let
 val mycap = i2sz(1*1024)
 in
-  hashtbl_make_nil<key,itm>(mycap)
+$UN.castvwtp0{fpenvtbl}
+(hashtbl_make_nil<key,itm>(mycap))
 end // end of [the_global_fpenvtbl]
+(* ****** ****** *)
+
+implement
+the_global_fpsrch
+  (key) = let
+//
+  val
+  mytbl =
+  $UN.castvwtp0
+  {hashtbl}
+  (the_global_fpenvtbl)
+//
+  val opt =
+  hashtbl_search_opt(mytbl, key)
+//
+in
+  let
+  prval () = $UN.cast2void(mytbl) in opt
+  end
+end // end of [the_global_fpserch]
+
 (* ****** ****** *)
 
 end // end of [local]
