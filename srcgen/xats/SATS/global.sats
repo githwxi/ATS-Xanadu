@@ -47,7 +47,12 @@ the_XATSHOME_get(): string
 //
 (* ****** ****** *)
 fun
-the_global_search(fp0: filpath): fpathenv
+the_global_fpsrch0
+  ( (*current*) ) : fpathenv
+(* ****** ****** *)
+fun
+the_global_fpsrch1
+  ( fpath: filpath ) : fpathenv
 (* ****** ****** *)
 
 (* end of [xats_global.sats] *)
