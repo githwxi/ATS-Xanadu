@@ -1012,6 +1012,10 @@ d0parsed_get_parsed
 ( p0kg
 : d0parsed): Option(d0eclist)
 //
+overload
+.parsed with
+d0parsed_get_parsed
+//
 (* ****** ****** *)
 
 datatype

@@ -375,15 +375,16 @@ parse_from_filpath_toplevel
 val
 d1csopt =
 let
+//
 val
 d0csopt =
-d0parsed_get_parsed
-(dparsed)
+dparsed.parsed()
+//
 in
 case+
 d0csopt of
 |
-None() => None_vt()
+None() => None_vt(*void*)
 |
 Some(d0cs) =>
 Some_vt(trans01_declist(d0cs))
@@ -421,44 +422,47 @@ end
 val
 ((*void*)) =
 let
-  val knd =
-  (
+val
+knd =
+(
   case+ opt of
   | None_vt _ => 0 | Some_vt _ => 1
-  ) : int // end of [val]
-in
+) : int // end of [val]
+in(*in-of-let*)
 (*
 println!
 ("trans01_staload_from_filpath: knd = ", knd)
 *)
-end
+end // end of [let]
 //
 in
 //
 case+ opt of
-| @Some_vt(d1cs) =>
-  let
-    prval () =
-    fold@(opt) in (1, opt) 
-  end
-| ~None_vt((*void*)) =>
-  let
-    val opt = aux_parse(knd, fp0)
-  in
-    case+ opt of
-    | None_vt() =>
-      (
-        (0, opt)
-      )
-    | Some_vt(d1cs) =>
-      (
-        (0, opt)
-      ) where
-      {
-        val ((*void*)) =
-        trans01_staload_add(fp0, d1cs)
-      } (* end of [Some_vt] *)
-  end
+| @
+Some_vt(d1cs) =>
+let
+  prval () =
+  fold@(opt) in (1, opt) 
+end (* Some_vt *)
+| ~
+None_vt((*void*)) =>
+let
+  val opt = aux_parse(knd, fp0)
+in
+  case+ opt of
+  | None_vt() =>
+    (
+      (0, opt)
+    )
+  | Some_vt(d1cs) =>
+    (
+      (0, opt)
+    ) where
+    {
+      val ((*void*)) =
+      trans01_staload_add(fp0, d1cs)
+    } (* end of [Some_vt] *)
+end (* None_vt *)
 //
 end // end of [trans01_staload_from_filpath]
 
