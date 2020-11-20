@@ -73,4 +73,45 @@ end (* end of [the_XATSHOME_get *)
 //
 (* ****** ****** *)
 
+local
+
+typedef
+fpathenv_struct =
+@{
+fpathenv_level = int
+} (* fpathenv_struct *)
+
+absimpl
+fpathenv_tbox = ref(fpathenv_struct)
+
+in (*in-of-local*)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+#staload
+"libats/SATS/hashfun.sats"
+#staload
+"libats/SATS/hashtbl_chain.sats"
+//
+#staload _(*anon*) = "libats/DATS/qlist.dats"
+//
+#staload _(*anon*) = "libats/DATS/hashfun.dats"
+#staload _(*anon*) = "libats/DATS/linmap_list.dats"
+#staload _(*anon*) = "libats/DATS/hashtbl_chain.dats"
+//
+typedef key = filpath
+typedef itm = fpathenv
+//
+vtypedef hashtbl = hashtbl(key, itm)
+//
+in (* in of local *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_global.dats] *)
