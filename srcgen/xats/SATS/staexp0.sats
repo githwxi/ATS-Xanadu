@@ -34,15 +34,15 @@
 (* ****** ****** *)
 //
 #staload
-LAB = "./label0.sats"
+LAB = "./xlabel0.sats"
 #staload
 LOC = "./locinfo.sats"
 //
   typedef label = $LAB.label
   typedef loc_t = $LOC.location
 //
-#staload LEX = "./lexing.sats"
-#staload SYM = "./symbol.sats"
+#staload SYM = "./xsymbol.sats"
+#staload LEX = "./lexing0.sats"
 //
   typedef token = $LEX.token
   typedef tokenlst = $LEX.tokenlst

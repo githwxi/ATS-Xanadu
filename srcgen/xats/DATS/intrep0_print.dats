@@ -43,12 +43,12 @@ UN = "prelude/SATS/unsafe.sats"
 FP0 = "./../SATS/filpath.sats"
 (* ****** ****** *)
 //
-#staload "./../SATS/symbol.sats"
+#staload "./../SATS/xsymbol.sats"
 //
 (* ****** ****** *)
-#staload "./../SATS/label0.sats"
+#staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/staexp0.sats"
@@ -137,7 +137,7 @@ fprint_val<h0dcl> = fprint_h0dcl
 (* ****** ****** *)
 //
 local
-#staload "./../SATS/stamp0.sats"
+#staload "./../SATS/xstamp0.sats"
 in
 overload fprint with fprint_stamp
 end // end of [local]

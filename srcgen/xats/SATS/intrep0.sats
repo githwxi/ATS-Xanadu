@@ -33,12 +33,12 @@
 //
 (* ****** ****** *)
 
-#staload "./basics.sats"
+#staload "./xbasics.sats"
 
 (* ****** ****** *)
 
-#staload "./stamp0.sats"
-#staload "./symbol.sats"
+#staload "./xstamp0.sats"
+#staload "./xsymbol.sats"
 #staload "./locinfo.sats"
 
 (* ****** ****** *)

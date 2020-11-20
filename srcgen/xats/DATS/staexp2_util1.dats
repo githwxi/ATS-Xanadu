@@ -41,9 +41,9 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-STM = "./../SATS/stamp0.sats"
+STM = "./../SATS/xstamp0.sats"
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 //
 macdef
 VIEW = $SYM.VIEW_symbol
@@ -59,7 +59,7 @@ overload
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 //
 #staload "./../SATS/staexp2.sats"
 //

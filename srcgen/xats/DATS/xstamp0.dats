@@ -33,34 +33,34 @@
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/stamp0.sats"
-//
-(* ****** ****** *)
-//
 #include
 "share/atspre_staload.hats"
+//
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+//
+#staload "./../SATS/xstamp0.sats"
+//
+(* ****** ****** *)
 
-absimpl
-stamp_type = ptr
+absimpl stamp_type = ptr
 
 (* ****** ****** *)
 //
 implement
-the_stamp0 =
-( the_null_ptr )
+the_stamp0 = ( the_null_ptr )
 //
 (* ****** ****** *)
 //
 implement
 stamp2uint(x0) =
-$UN.cast{uint}
-(
-$UN.cast{uintptr}(x0)
-)
+let
+val x0 =
+$UN.cast
+{uintptr}(x0) in $UN.cast{uint}(x0)
+end // end of [stamp2uint]
 //
 (* ****** ****** *)
 //
@@ -92,7 +92,7 @@ fprint_stamp(stderr_ref, x0)
 implement
 fprint_stamp(out, x0) =
 (
-  fprint_uint(out, stamp2uint(x0))
+fprint_uint(out, stamp2uint(x0))
 )
 //
 (* ****** ****** *)
@@ -129,4 +129,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_stamp0.dats] *)
+(* end of [xats_xstamp0.dats] *)

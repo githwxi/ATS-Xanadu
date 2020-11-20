@@ -47,18 +47,18 @@ FP0 = "./../SATS/filpath.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/stamp0.sats"
+#staload "./../SATS/xstamp0.sats"
 overload fprint with fprint_stamp
 //
 (* ****** ****** *)
 
-#staload "./../SATS/label0.sats"
+#staload "./../SATS/xlabel0.sats"
 //
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 //
 (* ****** ****** *)
 

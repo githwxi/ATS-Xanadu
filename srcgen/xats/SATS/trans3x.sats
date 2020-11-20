@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 
-#staload "./label0.sats"
+#staload "./xlabel0.sats"
 #staload "./locinfo.sats"
 
 (* ****** ****** *)

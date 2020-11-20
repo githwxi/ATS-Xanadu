@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 
-#staload "./basics.sats"
+#staload "./xbasics.sats"
 
 (* ****** ****** *)
 //
@@ -46,8 +46,8 @@
   typedef pos_t = $LOC.position
   typedef loc_t = $LOC.location
 //
-#staload LEXBUF = "./lexbuf.sats"
-  typedef lexbuf = $LEXBUF.lexbuf
+#staload LXBF = "./lexbuf0.sats"
+  typedef lexbuf = $LXBF.lexbuf
 //
 (* ****** ****** *)
 //
@@ -449,4 +449,4 @@ fileref_tokenize(inpfil: FILEref): tokenlst_vt
 //
 (* ****** ****** *)
 
-(* end of [xats_lexing.sats] *)
+(* end of [xats_lexing0.sats] *)

@@ -35,20 +35,20 @@ LIBGC=-lgc
 ######
 
 SRCSATS := \
-basics.sats \
-stamp0.sats \
-symbol.sats \
-symmap.sats \
-symenv.sats \
-label0.sats \
-fixity.sats \
-global.sats \
+xbasics.sats \
+xstamp0.sats \
+xsymbol.sats \
+xsymmap.sats \
+xsymenv.sats \
+xlabel0.sats \
+xfixity.sats \
+xglobal.sats \
 xerrory.sats \
 filpath.sats \
 filsrch.sats \
 locinfo.sats \
-lexbuf.sats \
-lexing.sats \
+lexbuf0.sats \
+lexing0.sats \
 staexp0.sats \
 dynexp0.sats \
 parsing.sats \
@@ -57,7 +57,7 @@ staexp1.sats \
 dynexp1.sats \
 trans01.sats \
 tread01.sats \
-effect.sats \
+effect0.sats \
 staexp2.sats \
 statyp2.sats \
 dynexp2.sats \
@@ -77,22 +77,22 @@ tcomp30.sats \
 xatsopt.sats \
 
 SRCDATS := \
-basics.dats \
-stamp0.dats \
-symbol.dats \
-symmap.dats \
-symenv.dats \
-label0.dats \
-fixity.dats \
-global.dats \
+xbasics.dats \
+xstamp0.dats \
+xsymbol.dats \
+xsymmap.dats \
+xsymenv.dats \
+xlabel0.dats \
+xfixity.dats \
+xglobal.dats \
 xerrory.dats \
 filpath.dats \
 filsrch.dats \
 locinfo.dats \
-lexbuf.dats \
-lexing_token.dats \
-lexing_kword.dats \
-lexing_util0.dats \
+lexbuf0.dats \
+lexing0_token.dats \
+lexing0_kword.dats \
+lexing0_util0.dats \
 staexp0.dats \
 dynexp0.dats \
 staexp0_print.dats \
@@ -114,7 +114,7 @@ trans01_staexp.dats \
 trans01_dynexp.dats \
 tread01_staexp.dats \
 tread01_dynexp.dats \
-effect.dats \
+effect0.dats \
 staexp2.dats \
 statyp2.dats \
 dynexp2.dats \

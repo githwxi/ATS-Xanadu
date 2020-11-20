@@ -40,7 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 //
 (* ****** ****** *)
 
@@ -448,4 +448,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_basics.dats] *)
+(* end of [xats_xbasics.dats] *)

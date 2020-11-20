@@ -41,11 +41,11 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 #staload
-FIX = "./../SATS/fixity.sats"
+FIX = "./../SATS/xfixity.sats"
 #staload
-ENV = "./../SATS/symenv.sats"
+ENV = "./../SATS/xsymenv.sats"
 //
 #staload
 LOC = "./../SATS/locinfo.sats"
@@ -58,8 +58,8 @@ overload print with $LOC.print_location
 
 (* ****** ****** *)
 
-#staload "./../SATS/basics.sats"
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/xbasics.sats"
+#staload "./../SATS/lexing0.sats"
 
 (* ****** ****** *)
 
@@ -73,7 +73,7 @@ overload print with $LOC.print_location
 (* ****** ****** *)
 //
 #staload
-_(*TMP*) = "./../DATS/fixity.dats"
+_(*TMP*) = "./../DATS/xfixity.dats"
 //
 (* ****** ****** *)
 

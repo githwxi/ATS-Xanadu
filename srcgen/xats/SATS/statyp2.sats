@@ -33,15 +33,15 @@
 //
 (* ****** ****** *)
 
-#staload"./basics.sats"
-#staload"./stamp0.sats"
+#staload"./xbasics.sats"
+#staload"./xstamp0.sats"
 
 (* ****** ****** *)
 //
 #staload
-  SYM = "./symbol.sats"
+  SYM = "./xsymbol.sats"
 #staload
-  LAB = "./label0.sats"
+  LAB = "./xlabel0.sats"
 //
   typedef sym_t = $SYM.sym_t
   typedef label = $LAB.label

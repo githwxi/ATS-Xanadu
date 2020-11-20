@@ -41,13 +41,13 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 //
 #staload
-FIX = "./../SATS/fixity.sats"
+FIX = "./../SATS/xfixity.sats"
 #staload
-ENV = "./../SATS/symenv.sats"
+ENV = "./../SATS/xsymenv.sats"
 //
 (* ****** ****** *)
 //
@@ -72,12 +72,12 @@ prerr with $LOC.prerr_location
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 //
 #staload "./../SATS/filpath.sats"
 #staload "./../SATS/filsrch.sats"
 //
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 #staload "./../SATS/parsing.sats"
 //
 #staload "./../SATS/staexp0.sats"
@@ -91,7 +91,7 @@ prerr with $LOC.prerr_location
 (* ****** ****** *)
 //
 #staload
-_(*TMP*) = "./../DATS/fixity.dats"
+_(*TMP*) = "./../DATS/xfixity.dats"
 //
 #staload
 _(*TMP*) = "./../DATS/staexp1_print.dats"

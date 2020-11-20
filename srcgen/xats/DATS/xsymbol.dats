@@ -40,7 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/symbol.sats"
+#staload "./../SATS/xsymbol.sats"
 
 (* ****** ****** *)
 
@@ -553,4 +553,4 @@ STRING_fp_symbol = symbol_make("__STRING__")
 
 (* ****** ****** *)
 
-(* end of [xats_symbol.dats] *)
+(* end of [xats_xsymbol.dats] *)

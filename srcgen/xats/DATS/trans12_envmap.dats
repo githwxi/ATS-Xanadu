@@ -46,14 +46,14 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 //
 (* ****** ****** *)
 //
 #staload
-MAP = "./../SATS/symmap.sats"
+MAP = "./../SATS/xsymmap.sats"
 #staload
-ENV = "./../SATS/symenv.sats"
+ENV = "./../SATS/xsymenv.sats"
 #staload
 NMS = "./../SATS/nmspace.sats"
 //
@@ -64,7 +64,7 @@ FP0 = "./../SATS/filpath.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 

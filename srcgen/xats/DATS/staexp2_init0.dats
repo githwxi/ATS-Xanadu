@@ -41,7 +41,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 
 (* ****** ****** *)
 //
@@ -51,7 +51,7 @@ SYM = "./../SATS/symbol.sats"
 
 local
 //
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 //
 val
 s2tb_int = T2BASpre($SYM.INT_symbol)

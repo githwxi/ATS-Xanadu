@@ -61,7 +61,7 @@ FP0 = "./../SATS/filpath.sats"
   fpath_dname = $FP0.filpath_get_dirname
 //
 #staload
-GLO = "./../SATS/global.sats"
+GLO = "./../SATS/xglobal.sats"
 #staload
 FS0 = "./../SATS/filsrch.sats"
 //
@@ -112,6 +112,10 @@ rcd.parsed where
   synread_package(p0kg)
 }
 //
+val () =
+$GLO.the_global_fpadd1
+(rcd.source(*filpath*))
+//
 val
 d1csopt =
 (
@@ -122,6 +126,10 @@ d0csopt of
 | Some(d0cs) =>
   Some(trans01_declist(d0cs))
 ) : Option(d1eclist) // end-of-val
+//
+val () =
+assertloc
+($GLO.the_global_level() = 0)
 //
 in
 D1TRANSD@{

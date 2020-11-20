@@ -41,7 +41,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 //
 macdef
 LIN_sym = $SYM.LIN_symbol
@@ -87,9 +87,9 @@ overload
 (* ****** ****** *)
 //
 #staload
-MAP = "./../SATS/symmap.sats"
+MAP = "./../SATS/xsymmap.sats"
 #staload
-ENV = "./../SATS/symenv.sats"
+ENV = "./../SATS/xsymenv.sats"
 //
 (* ****** ****** *)
 //
@@ -98,11 +98,11 @@ NMS = "./../SATS/nmspace.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 
 (* ****** ****** *)
 
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 
 (* ****** ****** *)
 

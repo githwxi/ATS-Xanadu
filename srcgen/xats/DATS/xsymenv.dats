@@ -41,9 +41,9 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 #staload
-MAP = "./../SATS/symmap.sats"
+MAP = "./../SATS/xsymmap.sats"
 //
 typedef sym_t = $SYM.sym_t
 vtypedef
@@ -62,7 +62,7 @@ symmaplst0
 //
 (* ****** ****** *)
 
-#staload "./../SATS/symenv.sats"
+#staload "./../SATS/xsymenv.sats"
 
 (* ****** ****** *)
 //
@@ -346,4 +346,4 @@ fprint_symenv_ptop
 //
 (* ****** ****** *)
 
-(* end of [xats_symenv.dats] *)
+(* end of [xats_xsymenv.dats] *)

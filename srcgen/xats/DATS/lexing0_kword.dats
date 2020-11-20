@@ -43,9 +43,9 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload"./../SATS/basics.sats"
-#staload"./../SATS/symbol.sats"
-#staload"./../SATS/lexing.sats"
+#staload"./../SATS/xbasics.sats"
+#staload"./../SATS/xsymbol.sats"
+#staload"./../SATS/lexing0.sats"
 //
 (* ****** ****** *)
 //
@@ -530,4 +530,4 @@ implement T_IDENT_MSGT = T_IDENT_sym("->")
 //
 (* ****** ****** *)
 
-(* end of [xats_lexing_kword.dats] *)
+(* end of [xats_lexing0_kword.dats] *)

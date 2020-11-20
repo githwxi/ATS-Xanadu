@@ -40,9 +40,9 @@ UN="prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
-#staload "./../SATS/stamp0.sats"
-#staload "./../SATS/symbol.sats"
+#staload "./../SATS/xbasics.sats"
+#staload "./../SATS/xstamp0.sats"
+#staload "./../SATS/xsymbol.sats"
 #staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)

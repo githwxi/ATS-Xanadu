@@ -41,9 +41,9 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-STM = "./../SATS/stamp0.sats"
+STM = "./../SATS/xstamp0.sats"
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 overload
 fprint with $STM.fprint_stamp
 overload
@@ -59,15 +59,15 @@ FP0 = "./../SATS/filpath.sats"
 (* ****** ****** *)
 //
 #staload
-LAB = "./../SATS/label0.sats"
+LAB = "./../SATS/xlabel0.sats"
 overload
 fprint with $LAB.fprint_label
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 //
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 //
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"

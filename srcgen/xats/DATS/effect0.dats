@@ -33,78 +33,14 @@
 //
 (* ****** ****** *)
 //
-abstype
-stamp_type = ptr
-//
-typedef stamp = stamp_type
-typedef stampopt = Option(stamp)
-//
-(* ****** ****** *)
-
-val the_stamp0 : stamp
-
-(* ****** ****** *)
-//
-fun
-stamp2uint(stamp):<> uint
-//
-overload .uint with stamp2uint
+#staload "./../SATS/effect0.sats"
 //
 (* ****** ****** *)
 //
-fun
-lt_stamp_stamp
-(x1: stamp, x2: stamp):<> bool
-fun
-lte_stamp_stamp
-(x1: stamp, x2: stamp):<> bool
-//
-fun
-eq_stamp_stamp
-(x1: stamp, x2: stamp):<> bool
-fun
-neq_stamp_stamp
-(x1: stamp, x2: stamp):<> bool
-//
-fun
-compare_stamp_stamp
-(x1: stamp, x2: stamp):<> (int)
-//
-overload < with lt_stamp_stamp
-overload <= with lte_stamp_stamp
-//
-overload = with eq_stamp_stamp
-overload != with neq_stamp_stamp
-//
-overload compare with compare_stamp_stamp
-//
-(* ****** ****** *)
-//
-fun print_stamp: print_type(stamp)
-fun prerr_stamp: prerr_type(stamp)
-fun fprint_stamp: fprint_type(stamp)
+// HX-2019-02-20:
+// It is no longer planned to support
+// effect-tracking given its "obtrusiveness"!!!
 //
 (* ****** ****** *)
 
-abstype stamper_tbox = ptr
-typedef stamper = stamper_tbox
-
-(* ****** ****** *)
-
-fun
-stamper_new((*void*)): stamper
-
-(* ****** ****** *)
-//
-fun
-stamper_set
-  (obj: stamper, n0: uint): void
-//
-(* ****** ****** *)
-
-fun
-stamper_getinc(obj: stamper): stamp
-
-(* ****** ****** *)
-
-(* end of [xats_stamp0.sats] *)
+(* end of [xats_effect0.dats] *)

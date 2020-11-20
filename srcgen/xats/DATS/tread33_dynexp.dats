@@ -40,7 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/label0.sats"
+#staload "./../SATS/xlabel0.sats"
 //
 #staload "./../SATS/xerrory.sats"
 //
@@ -50,7 +50,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 //
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"

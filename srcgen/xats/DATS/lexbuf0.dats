@@ -49,12 +49,12 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (*
 #staload
-LOC = "./../SATS/locinfo.sats"
+  LOC = "./../SATS/locinfo.sats"
 *)
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/lexbuf.sats"
+#staload "./../SATS/lexbuf0.sats"
 //
 (* ****** ****** *)
 //
@@ -360,4 +360,4 @@ end // end of [lexbufpos_get_loc]
 *)
 (* ****** ****** *)
 
-(* end of [xats_lexbuf.dats] *)
+(* end of [xats_lexbuf0.dats] *)

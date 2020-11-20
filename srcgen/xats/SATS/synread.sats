@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 
-#staload "./lexing.sats"
+#staload "./lexing0.sats"
 
 (* ****** ****** *)
 

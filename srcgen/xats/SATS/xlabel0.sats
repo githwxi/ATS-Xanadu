@@ -28,80 +28,77 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: August, 2018
+// Start Time: July, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
+
 #staload
-SYM = "./symbol.sats"
-//
-typedef sym_t = $SYM.sym_t
-//
+SYM = "./xsymbol.sats"
+
 (* ****** ****** *)
 //
-absvtype
-symmap_vtype(itm:type) = ptr
-vtypedef
-symmap(itm:type) = symmap_vtype(itm)
+abstbox label_tbox = ptr
 //
-(* ****** ****** *)
+typedef label = label_tbox
 //
-fun
-symmap_make_nil
-  {itm:type}(): symmap(itm)
+typedef symbol = $SYM.symbol
 //
 (* ****** ****** *)
 //
 fun
-symmap_free
-  {itm:type}
-  (map: symmap(itm)):<!wrt> void
+eq_label_label
+(l1: label, l2: label): bool
 //
-(* ****** ****** *)
-
-fun
-symmap_search
-  {itm:type}
-(
-  kxs: !symmap(itm), k0: sym_t
-) :<> Option_vt(itm) // end-of-fun
-
-(* ****** ****** *)
-
-fun
-symmap_insert
-  {itm:type}
-(
-  kxs: &symmap(itm), k0: sym_t, x0: itm
-) :<> void // end of [symmap_insert]
-
-(* ****** ****** *)
-
-fun
-symmap_insert2
-  {itm:type}
-( kxs: &symmap(itm)
-, key: sym_t, itm: itm, mix: (itm, itm) -<0> itm
-) :<> void // end of [symmap_insert2]
-
+overload = with eq_label_label
+//
 (* ****** ****** *)
 //
 fun
-symmap_joinwth
-  {itm:type}
-  (m1: &symmap(itm), m2: !symmap(itm)): void
-// end of [symmap_joinwth]
+print_label : print_type(label)
+fun
+prerr_label : prerr_type(label)
+fun
+fprint_label : fprint_type(label)
+//
+overload print with print_label
+overload prerr with prerr_label
+overload fprint with fprint_label
+//
+(* ****** ****** *)
+//
+val label_nil : label
+//
+fun
+label_make_int(i0: int): label
+fun
+label_make_sym(i0: symbol): label
+fun
+label_make_name(s0: string): label
+//
+(* ****** ****** *)
+//
+fun
+label_is_int(l0: label): bool
+fun
+label_is_sym(l0: label): bool
+//
+(* ****** ****** *)
+//
+fun
+label_get_int
+  (l0: label): Option_vt(int)
+fun
+label_get_sym
+  (l0: label): Option_vt(symbol)
+//
+overload .int with label_get_int
+overload .sym with label_get_sym
 //
 (* ****** ****** *)
 
-fun
-fprint_symmap
-  {itm:type}
-( out: FILEref
-, map: !symmap(itm), fpr: (FILEref, itm) -> void
-) : void // end of [fprint_symmap]
+fun label_dotize(l0: label): symbol
 
 (* ****** ****** *)
 
-(* end of [xats_symmap.sats] *)
+(* end of [xats_xlabel0.sats] *)
