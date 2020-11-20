@@ -1111,18 +1111,14 @@ case+ g1m0 of
 | G1Mbtf _ => g1m0
 | G1Mstr _ => g1m0
 //
-| G1Mid0 _ =>
-  auxgmid(g1m0, env0)
+| G1Mid0 _ => auxgmid(g1m0, env0)
 //
-| G1Mif0 _ =>
-  auxcond(g1m0, env0)
+| G1Mif0 _ => auxcond(g1m0, env0)
 //
-| G1Mapps _ =>
-  auxapps(g1m0, env0)
+| G1Mapps _ => auxapps(g1m0, env0)
 //
 |
-_ (*rest-of-g1mac*) =>
-  G1Msubs(g1m0, env0)
+_ (* else *) => G1Msubs(g1m0, env0)
 //
 )
 //
@@ -1134,12 +1130,12 @@ auxg1ms
 list_vt2t
 (
 list_map<
-g1mac><g1mac>(g1ms)) where
+  g1mac><g1mac>(g1ms)) where
 {
 implement
 list_map$fopr<
   g1mac><g1mac>
-  (g1m0) = auxg1m0(g1m0, env0)
+( g1m0 ) = auxg1m0(g1m0, env0)
 } (*where*) // end of [auxg1ms]
 //
 (* ****** ****** *)
@@ -1272,7 +1268,7 @@ val () =
 println!
 ("trans11_g1mac_env: g1m0 = ", g1m0)
 *)
-}(*where*)//end of [trans11_g1mac_env]
+}(*where*)//end of [trans11_g1mac_subs]
 
 end // end of [local]
 

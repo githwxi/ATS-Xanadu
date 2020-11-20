@@ -2519,11 +2519,11 @@ val
 src =
 trans01_gexp(g0e)
 val
-opt = auxg1e(src)
+opt0 = auxg1e(src)
 val
 opt1 =
 (
-case+ opt of
+case+ opt0 of
 |
 ~None_vt() => None_vt()
 |
