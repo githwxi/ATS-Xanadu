@@ -33,9 +33,9 @@
 //
 (* ****** ****** *)
 //
-#staload "./basics.sats"
-#staload "./symbol.sats"
-#staload "./symmap.sats"
+#staload "./xbasics.sats"
+#staload "./xsymbol.sats"
+#staload "./xsymmap.sats"
 //
 (* ****** ****** *)
 //
@@ -51,7 +51,7 @@ typedef fpath = $FP0.filpath
 typedef filpath = $FP0.filpath
 (* ****** ****** *)
 
-#staload LEX = "./lexing.sats"
+#staload LEX = "./lexing0.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
 #staload S2E = "./staexp2.sats"

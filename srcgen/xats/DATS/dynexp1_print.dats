@@ -48,13 +48,13 @@ LOC = "./../SATS/locinfo.sats"
 (* ****** ****** *)
 //
 #staload
-LAB = "./../SATS/label0.sats"
+LAB = "./../SATS/xlabel0.sats"
 overload
 fprint with $LAB.fprint_label
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 //
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"

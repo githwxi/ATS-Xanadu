@@ -34,11 +34,11 @@
 (* ****** ****** *)
 //
 #staload
-SYM = "./symbol.sats"
+SYM = "./xsymbol.sats"
 typedef sym_t = $SYM.sym_t
 //
 #staload
-MAP = "./symmap.sats"
+MAP = "./xsymmap.sats"
 vtypedef
 symmap(itm:type) = $MAP.symmap(itm)
 //
@@ -171,4 +171,4 @@ fprint_symenv_ptop
 
 (* ****** ****** *)
 
-(* end of [xats_symenv.sats] *)
+(* end of [xats_xsymenv.sats] *)

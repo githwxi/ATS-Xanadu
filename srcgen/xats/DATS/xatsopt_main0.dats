@@ -61,7 +61,7 @@ FP0 = "./../SATS/filpath.sats"
   fpath_dname = $FP0.filpath_get_dirname
 //
 #staload
-GLO = "./../SATS/global.sats"
+GLO = "./../SATS/xglobal.sats"
 #staload
 FS0 = "./../SATS/filsrch.sats"
 //
@@ -160,19 +160,17 @@ end // end of [local]
 //
 (* ****** ****** *)
 //
-#dynload "./basics.dats"
+#dynload "./xbasics.dats"
 //
-#dynload "./stamp0.dats"
+#dynload "./xstamp0.dats"
 //
-#dynload "./symbol.dats"
-#dynload "./symmap.dats"
-#dynload "./symenv.dats"
+#dynload "./xsymbol.dats"
+#dynload "./xsymmap.dats"
+#dynload "./xsymenv.dats"
 //
-#dynload "./label0.dats"
+#dynload "./xlabel0.dats"
 //
-#dynload "./fixity.dats"
-//
-#dynload "./global.dats"
+#dynload "./xfixity.dats"
 //
 #dynload "./xerrory.dats"
 //
@@ -181,13 +179,16 @@ end // end of [local]
 //
 #dynload "./locinfo.dats"
 //
+#dynload "./xglobal.dats"
+//
+//
 // HX-2018-10:
 // The following
 // order is significant!
-#dynload "./lexbuf.dats"
-#dynload "./lexing_token.dats"
-#dynload "./lexing_kword.dats"
-#dynload "./lexing_util0.dats"
+#dynload "./lexbuf0.dats"
+#dynload "./lexing0_token.dats"
+#dynload "./lexing0_kword.dats"
+#dynload "./lexing0_util0.dats"
 //
 #dynload "./staexp0.dats"
 #dynload "./dynexp0.dats"
@@ -219,7 +220,7 @@ end // end of [local]
 #dynload "./tread01_staexp.dats"
 #dynload "./tread01_dynexp.dats"
 //
-#dynload "./effect.dats"
+#dynload "./effect0.dats"
 //
 #dynload "./staexp2.dats"
 #dynload "./statyp2.dats"

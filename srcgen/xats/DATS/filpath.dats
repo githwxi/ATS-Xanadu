@@ -55,7 +55,7 @@ UN_string_vt2t
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 //
   typedef symbol = $SYM.symbol
 //

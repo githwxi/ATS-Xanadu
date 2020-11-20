@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 
-#staload "./basics.sats"
+#staload "./xbasics.sats"
 
 (* ****** ****** *)
 

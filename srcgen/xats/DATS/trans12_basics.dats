@@ -39,15 +39,16 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
+//
 #staload
-SYM = "./../SATS/symbol.sats"
-overload
-= with $SYM.eq_symbol_symbol
-
+SYM = "./../SATS/xsymbol.sats"
+//
+  overload
+  = with $SYM.eq_symbol_symbol
+//
 (* ****** ****** *)
 
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 
 (* ****** ****** *)
 

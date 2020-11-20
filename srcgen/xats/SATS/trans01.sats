@@ -34,13 +34,13 @@
 (* ****** ****** *)
 //
 #staload
-SYM = "./symbol.sats"
+SYM = "./xsymbol.sats"
 #staload
-MAP = "./symmap.sats"
+MAP = "./xsymmap.sats"
 #staload
-FIX = "./fixity.sats"
+FIX = "./xfixity.sats"
 #staload
-LEX = "./lexing.sats"
+LEX = "./lexing0.sats"
 //
 typedef sym_t = $SYM.sym_t
 typedef fixty = $FIX.fixty

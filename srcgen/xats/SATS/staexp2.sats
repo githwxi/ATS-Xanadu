@@ -33,19 +33,19 @@
 //
 (* ****** ****** *)
 
-#staload"./basics.sats"
+#staload"./xbasics.sats"
 
 (* ****** ****** *)
 //
 #staload
-  STM = "./stamp0.sats"
+  STM = "./xstamp0.sats"
 //
 typedef stamp = $STM.stamp
 //
 (* ****** ****** *)
 //
 #staload
-  SYM = "./symbol.sats"
+  SYM = "./xsymbol.sats"
 #staload
   LOC = "./locinfo.sats"
 #staload
@@ -58,17 +58,17 @@ typedef fpath = $FP0.filpath
 (* ****** ****** *)
 
 #staload
-  LAB = "./label0.sats"
+  LAB = "./xlabel0.sats"
 typedef label = $LAB.label
 
 #staload
-  LEX = "./lexing.sats"
+  LEX = "./lexing0.sats"
 typedef token = $LEX.token
 
 (* ****** ****** *)
 //
 #staload
-  EFF = "./effect.sats"
+  EFF = "./effect0.sats"
 //
 #staload
   S1E = "./staexp1.sats"

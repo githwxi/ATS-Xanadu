@@ -13,7 +13,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 #staload
-"./../../../SATS/label0.sats"
+"./../../../SATS/xlabel0.sats"
 #staload
 "./../../../SATS/locinfo.sats"
 (* ****** ****** *)

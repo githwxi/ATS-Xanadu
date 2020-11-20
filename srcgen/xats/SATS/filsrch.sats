@@ -34,7 +34,7 @@
 (* ****** ****** *)
 //
 #staload
-SYM = "./symbol.sats"
+SYM = "./xsymbol.sats"
 //
 (* ****** ****** *)
 

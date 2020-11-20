@@ -39,11 +39,10 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
-#staload "./../SATS/stamp0.sats"
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
-
 (* ****** ****** *)
 
 implement

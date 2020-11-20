@@ -40,11 +40,11 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 //
-#staload "./../SATS/symbol.sats"
+#staload "./../SATS/xsymbol.sats"
 //
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 //
 #staload "./../SATS/locinfo.sats"
 #staload
@@ -1354,4 +1354,4 @@ end // end of [lexing_preprocess_tokenlst]
 
 (* ****** ****** *)
 
-(* end of [xats_lexing_token.dats] *)
+(* end of [xats_lexing0_token.dats] *)

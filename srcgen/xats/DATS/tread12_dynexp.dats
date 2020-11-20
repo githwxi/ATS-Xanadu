@@ -48,7 +48,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexing0.sats"
 //
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"

@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 
-#staload "./basics.sats"
+#staload "./xbasics.sats"
 
 (* ****** ****** *)
 //
@@ -270,4 +270,4 @@ fun symbol_of_stamp(stamp: uint): symbolopt_vt
 //
 (* ****** ****** *)
 
-(* end of [xats_symbol.sats] *)
+(* end of [xats_xsymbol.sats] *)

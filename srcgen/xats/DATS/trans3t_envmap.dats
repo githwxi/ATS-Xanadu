@@ -40,7 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/stamp0.sats"
+#staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)

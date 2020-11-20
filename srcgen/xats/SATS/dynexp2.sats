@@ -34,7 +34,7 @@
 (* ****** ****** *)
 //
 #staload
-SYM = "./symbol.sats"
+SYM = "./xsymbol.sats"
 #staload
 LOC = "./locinfo.sats"
 //
@@ -47,7 +47,7 @@ typedef
 filpathopt = $FP0.filpathopt
 //
 #staload
-LEX = "./lexing.sats"
+LEX = "./lexing0.sats"
 typedef tnode = $LEX.tnode
 typedef token = $LEX.token
 //

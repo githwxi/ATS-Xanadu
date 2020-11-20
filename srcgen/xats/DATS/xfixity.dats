@@ -45,7 +45,7 @@ ERR = "./../SATS/xerrory.sats"
 
 (* ****** ****** *)
 
-#staload "./../SATS/fixity.sats"
+#staload "./../SATS/xfixity.sats"
 #staload "./../SATS/locinfo.sats"
 
 (* ****** ****** *)
@@ -673,4 +673,4 @@ end // end of [fxitmlst_resolve]
 
 (* ****** ****** *)
 
-(* end of [xats_fixity.dats] *)
+(* end of [xats_xfixity.dats] *)

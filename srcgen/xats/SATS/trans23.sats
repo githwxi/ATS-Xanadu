@@ -33,12 +33,12 @@
 //
 (* ****** ****** *)
 
-#staload "./label0.sats"
+#staload "./xlabel0.sats"
 #staload "./locinfo.sats"
 
 (* ****** ****** *)
 
-#staload LEX = "./lexing.sats"
+#staload LEX = "./lexing0.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
 

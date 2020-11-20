@@ -41,14 +41,14 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 #staload
-FIX = "./../SATS/fixity.sats"
+FIX = "./../SATS/xfixity.sats"
 //
 #staload
-MAP = "./../SATS/symmap.sats"
+MAP = "./../SATS/xsymmap.sats"
 #staload
-ENV = "./../SATS/symenv.sats"
+ENV = "./../SATS/xsymenv.sats"
 //
 (* ****** ****** *)
 #staload

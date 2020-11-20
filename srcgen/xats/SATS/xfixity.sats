@@ -251,4 +251,4 @@ fxitm_postfix(x0: a, f1: a): fxitm(a) // f1(x0)
 //
 (* ****** ****** *)
 
-(* end of [xats_fixity.sats] *)
+(* end of [xats_xfixity.sats] *)

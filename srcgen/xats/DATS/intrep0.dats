@@ -41,9 +41,9 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-STM = "./../SATS/stamp0.sats"
+STM = "./../SATS/xstamp0.sats"
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 #staload
 LOC = "./../SATS/locinfo.sats"
 //

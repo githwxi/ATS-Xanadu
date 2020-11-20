@@ -41,11 +41,11 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/symmap.sats"
+#staload "./../SATS/xsymmap.sats"
 
 (* ****** ****** *)
 
@@ -269,4 +269,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_symmap.dats] *)
+(* end of [xats_xsymmap.dats] *)

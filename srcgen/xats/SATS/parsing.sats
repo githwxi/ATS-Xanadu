@@ -46,7 +46,7 @@
 (* ****** ****** *)
 //
 #staload
-SYM = "./symbol.sats"
+SYM = "./xsymbol.sats"
 typedef kword = $SYM.symbol
 #staload
 LOC = "./locinfo.sats"
@@ -58,7 +58,7 @@ typedef filpath = $FP0.filpath
 (* ****** ****** *)
 //
 #staload
-LEXING = "./lexing.sats"
+LEXING = "./lexing0.sats"
 //
   typedef tnode = $LEXING.tnode
   typedef token = $LEXING.token

@@ -28,26 +28,57 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: November, 2018
+// Start Time: July, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-(*
-//
-abstype effect_type = ptr
-abstype effset_type = ptr
-//
-typedef effect = effect_type
-typedef effset = effset_type
-typedef effectlst = List0(effect)
-//
-*)
+#staload
+FP0 = "./filpath.sats"
+(* ****** ****** *)
+typedef
+filpath = $FP0.filpath
+(* ****** ****** *)
+abstbox
+fpathenv_tbox = ptr
+typedef
+fpathenv = fpathenv_tbox
 (* ****** ****** *)
 //
-// HX-2019-02-20:
-// It is no longer planned to support
-// effect-tracking given its "obtrusiveness"!!!
+fun
+fpathenv_get_level
+( fpenv: fpathenv ) : int
+//
+fun
+fpathenv_inc_level
+( fpenv: fpathenv ) : void
+fun
+fpathenv_dec_level
+( fpenv: fpathenv ) : void
+//
+(* ****** ****** *)
+//
+fun
+the_XATSHOME_get(): string
+//
+(* ****** ****** *)
+//
+fun
+the_global_level
+  ((*void*)): int//top:0/err:-1
+//
+(* ****** ****** *)
+fun
+the_global_fpadd1
+  (fpath: filpath): void
+(* ****** ****** *)
+//
+fun
+the_global_fpsrch0
+  ((*current*)): Option_vt(fpathenv)
+fun
+the_global_fpsrch1
+  (fpath: filpath): Option_vt(fpathenv)
 //
 (* ****** ****** *)
 
-(* end of [xats_effect.sats] *)
+(* end of [xats_xglobal.sats] *)

@@ -41,11 +41,11 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-LAB = "./../SATS/label0.sats"
+LAB = "./../SATS/xlabel0.sats"
 #staload
-STM = "./../SATS/stamp0.sats"
+STM = "./../SATS/xstamp0.sats"
 #staload
-SYM = "./../SATS/symbol.sats"
+SYM = "./../SATS/xsymbol.sats"
 //
 overload
 = with $LAB.eq_label_label
@@ -56,7 +56,7 @@ overload
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/basics.sats"
+#staload "./../SATS/xbasics.sats"
 //
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"

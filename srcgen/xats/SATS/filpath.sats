@@ -34,7 +34,7 @@
 (* ****** ****** *)
 //
 #staload
-SYM = "./symbol.sats"
+SYM = "./xsymbol.sats"
 //
 (* ****** ****** *)
 //
@@ -210,6 +210,12 @@ overload is_sats with filpath_is_sats
 overload is_dats with filpath_is_dats
 //
 (* ****** ****** *)
+//
+(*
+HX-2020:
+For obtaining
+the current filpath
+*)
 //
 fun
 the_filpath_get((*void*)): filpath

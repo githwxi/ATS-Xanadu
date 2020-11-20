@@ -45,8 +45,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/lexbuf.sats"
-#staload "./../SATS/lexing.sats"
+#staload "./../SATS/lexbuf0.sats"
+#staload "./../SATS/lexing0.sats"
 //
 #staload "./../SATS/locinfo.sats"
 #staload
@@ -1838,4 +1838,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_lexing_util0.dats] *)
+(* end of [xats_lexing0_util0.dats] *)

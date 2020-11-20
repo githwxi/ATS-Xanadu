@@ -44,14 +44,25 @@ UN = "prelude/SATS/unsafe.sats"
 "./../../xutl/SATS/mylibc.sats"
 //
 (* ****** ****** *)
-
+//
 #staload
-SYM = "./../SATS/symbol.sats"
-
+  SYM = "./../SATS/xsymbol.sats"
+//
 (* ****** ****** *)
 
-#staload "./../SATS/global.sats"
+#staload "./../SATS/xglobal.sats"
 
+(* ****** ****** *)
+(*
+//
+// HX-2020-11-20:
+// For debugging purpose
+//
+val () =
+println!
+("XATSOPT\
+: dynloading(xglobal.dats)")
+*)
 (* ****** ****** *)
 //
 implement
@@ -78,6 +89,12 @@ end (* end of [the_XATSHOME_get *)
 //
 (* ****** ****** *)
 
+extern
+fun
+fpathenv_new() : fpathenv
+
+(* ****** ****** *)
+
 local
 
 typedef
@@ -91,8 +108,86 @@ fpathenv_tbox = ref(fpathenv_struct)
 
 in (*in-of-local*)
 
+(* ****** ****** *)
+
+implement
+fpathenv_new() =
+ref<fpathenv_struct>
+(
+@{
+  fpathenv_level = 0
+}(* @{ *)
+) (* end of [fpathenv_new()] *)
+
+(* ****** ****** *)
+//
+implement
+fpathenv_inc_level
+  (env) = let
+//
+val l0 =
+(env->fpathenv_level)
+//
+in
+(env->fpathenv_level := l0+1)
+end
+implement
+fpathenv_dec_level
+  (env) = let
+//
+val l0 =
+(env->fpathenv_level)
+//
+in
+(env->fpathenv_level := l0+1)
+end // end of [fpathenv_dec_level]
+//
+(* ****** ****** *)
+//
+implement
+fpathenv_get_level
+  (env) =
+  (env->fpathenv_level)
+//
+(*
+implement
+fpathenv_set_level
+  (env, level) =
+  (env->fpathenv_level := level)
+*)
+//
+(* ****** ****** *)
+
 end // end of [local]
 
+(* ****** ****** *)
+implement
+the_global_level
+((*current*)) =
+let
+val opt =
+the_global_fpsrch0()
+in
+//
+case+ opt of
+| ~
+None_vt() =>
+  (~1) //HX:error!
+| ~
+Some_vt(env) =>
+  fpathenv_get_level(env)
+//
+end // end of [the_global_level]
+(* ****** ****** *)
+//
+implement
+the_global_fpsrch0
+  ((*current*)) =
+(
+the_global_fpsrch1
+($FP0.the_filpath_get((*void*)))
+)
+//
 (* ****** ****** *)
 
 local
@@ -111,7 +206,8 @@ local
 typedef key = filpath
 typedef itm = fpathenv
 //
-vtypedef hashtbl = hashtbl(key, itm)
+vtypedef
+hashtbl = hashtbl(key, itm)
 //
 in (* in of local *)
 
@@ -124,9 +220,20 @@ val
 sym =
 $FP0.filpath_get_full2(key)
 in
-  hash_key<string>
-  ($SYM.symbol_get_name(sym))
-end // end of [hash_key<key>]
+let
+  val
+  nam =
+  $SYM.symbol_get_name(sym)
+in
+//
+(*
+HX-2020-11-20:
+For circumventing tailrecopt
+*)
+gidentity(hash_key<string>(nam))
+//
+end
+end (*let*) // end of [hash_key<key>]
 
 (* ****** ****** *)
 //
@@ -152,13 +259,60 @@ the_global_fpenvtbl =
 let
 val mycap = i2sz(1*1024)
 in
-$UN.castvwtp0{fpenvtbl}
-(hashtbl_make_nil<key,itm>(mycap))
+(
+$UN.castvwtp0{fpenvtbl}(mytbl)
+) where
+{
+val
+mytbl =
+hashtbl_make_nil<key,itm>(mycap)
+(*
+val () =
+println!
+( "the_global_fpenvtbl: created!" )
+*)
+} (*where*) // end of [mytbl]
 end // end of [the_global_fpenvtbl]
 (* ****** ****** *)
 
 implement
-the_global_fpsrch
+the_global_fpadd1
+  (key) = let
+//
+  val
+  mytbl =
+  $UN.castvwtp0
+  {hashtbl}
+  (the_global_fpenvtbl)
+//
+  val env =
+  fpathenv_new()
+  val opt =
+  hashtbl_insert_opt
+  ( mytbl, key, env )
+  val () =
+  (
+    case- opt of ~None_vt() => ()
+  ) : void // end of [val]
+//
+in
+let
+prval() = $UN.cast2void(mytbl) in ()
+end
+end where
+{ overload
+  print with $FP0.print_filpath_full2
+(*
+  val () =
+  println!
+  ( "the_global_fpadd1: key = ", key )
+*)
+} (*where*) // end of [the_global_fpadd1]
+
+(* ****** ****** *)
+
+implement
+the_global_fpsrch1
   (key) = let
 //
   val
@@ -171,10 +325,18 @@ the_global_fpsrch
   hashtbl_search_opt(mytbl, key)
 //
 in
-  let
-  prval () = $UN.cast2void(mytbl) in opt
-  end
-end // end of [the_global_fpserch]
+let
+prval() = $UN.cast2void(mytbl) in opt
+end
+end where
+{ overload
+  print with $FP0.print_filpath_full2
+(*
+  val () =
+  println!
+  ( "the_global_fpsrch1: key = ", key )
+*)
+} (*where*) // end of [the_global_fpsrch1]
 
 (* ****** ****** *)
 
@@ -182,4 +344,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_global.dats] *)
+(* end of [xats_xglobal.dats] *)
