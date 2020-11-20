@@ -45,6 +45,11 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload
+SYM = "./../SATS/symbol.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/global.sats"
 
 (* ****** ****** *)
@@ -109,6 +114,45 @@ typedef itm = fpathenv
 vtypedef hashtbl = hashtbl(key, itm)
 //
 in (* in of local *)
+
+(* ****** ****** *)
+//
+implement
+hash_key<key>(key) =
+let
+val
+sym =
+$FP0.filpath_get_full2(key)
+in
+  hash_key<string>
+  ($SYM.symbol_get_name(sym))
+end // end of [hash_key<key>]
+
+(* ****** ****** *)
+//
+implement
+gequal_val_val<key>
+  (key1, key2) = let
+//
+val sym1 = 
+$FP0.filpath_get_full2(key1)
+val sym2 = 
+$FP0.filpath_get_full2(key2)
+//
+in
+$effmask_all
+($SYM.eq_symbol_symbol(sym1, sym2))
+end // en dof [gequal_val_val<key>]
+//
+(* ****** ****** *)
+val
+the_global_fpenvtbl =
+let
+val mycap = i2sz(1*1024)
+in
+  hashtbl_make_nil<key,itm>(mycap)
+end // end of [the_global_fpenvtbl]
+(* ****** ****** *)
 
 end // end of [local]
 
