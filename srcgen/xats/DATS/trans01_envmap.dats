@@ -67,11 +67,17 @@ symenv(itm:type) = $ENV.symenv(itm)
 
 local
 
-#staload $FIX
-
+(* ****** ****** *)
+//
+#staload $FIX(*open*)
+//
+(* ****** ****** *)
+//
 absimpl
 fxtyenv_view = unit_v
-
+//
+(* ****** ****** *)
+//
 val
 [l0:addr]
 (pf | p0) =
@@ -80,8 +86,12 @@ val r0 =
 ref_make_viewptr(pf | p0)
 val
 (pfbox | p0) = ref_get_viewptr(r0)
+//
+(* ****** ****** *)
 
-in (* in-of-local *)
+in(* in-of-local *)
+
+(* ****** ****** *)
 
 (*
 implement
@@ -119,6 +129,7 @@ end // end of [let]
 prval vbox(pf) = pfbox
 } (* end of [the_fxtyenv_search] *)
 
+(* ****** ****** *)
 
 implement
 the_fxtyenv_insert
@@ -276,6 +287,11 @@ trans01_staload_add
   (fp0, d1cs) =
 let
 //
+(*
+HX-2020:
+Using cached if available!
+*)
+//
 val sym =
 $FP0.filpath_get_full2(fp0)
 //
@@ -283,13 +299,19 @@ in
 let
 prval vbox(pf) = pf0
 in
-$MAP.symmap_insert(!p0, sym, d1cs)
+$MAP.symmap_insert
+( !p0(*global*), sym, d1cs )
 end
 end
 //
 implement
 trans01_staload_find
   (fp0) = let
+//
+(*
+HX-2020:
+Using cached if available!
+*)
 //
 val sym =
 $FP0.filpath_get_full2(fp0)

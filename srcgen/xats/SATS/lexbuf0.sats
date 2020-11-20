@@ -34,7 +34,7 @@
 (* ****** ****** *)
 
 %{#
-#include "CATS/lexbuf.cats"
+#include "CATS/lexbuf0.cats"
 %} // end of [%{#]
 
 (* ****** ****** *)
@@ -59,7 +59,7 @@ abstflt
 lexbuf_tflt =
 $extype"xats_lexbuf_struct"
 //
-  typedef lexbuf = lexbuf_tflt
+typedef lexbuf = lexbuf_tflt
 //
 (* ****** ****** *)
 

@@ -33,14 +33,14 @@
 //
 /* ****** ****** */
 
-#ifndef XANADU_SRCGEN_CATS_LEXBUF
-#define XANADU_SRCGEN_CATS_LEXBUF
+#ifndef XANADU_SRCGEN_CATS_LEXBUF0
+#define XANADU_SRCGEN_CATS_LEXBUF0
 
 /* ****** ****** */
 
 /*
 typedef
-lexbuf_tflat =
+lexbuf_tflt =
 $extype_struct
 "xats_lexbuf_struct" of
 {
@@ -57,8 +57,10 @@ $extype_struct
 //
 , cbhead= cblist, cbtail= cblist
 //
-} (* end of [lexbuf] *)
+} (* end of [xats_lexbuf_tflt] *)
 */
+
+/* ****** ****** */
 
 typedef struct {
 //
@@ -82,8 +84,8 @@ typedef struct {
 
 /* ****** ****** */
 
-#endif // end of [XANADU_SRCGEN_CATS_LEXBUF]
+#endif // end of [XANADU_SRCGEN_CATS_LEXBUF0]
 
 /* ****** ****** */
 
-/* end of [xats_lexbuf.cats] */
+/* end of [xats_lexbuf0.cats] */

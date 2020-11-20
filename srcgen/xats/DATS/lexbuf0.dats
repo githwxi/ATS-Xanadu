@@ -74,7 +74,7 @@ $extype_struct
 , cbuf= stropt
 , begp= ptr, endp= ptr, curp= ptr
 , cbhead= arrayref(uchar,0), cbtail= cblist
-} (* end of [lexbuf] *)
+} (* end of [lexbuf_tflt] *)
 //
 (* ****** ****** *)
 

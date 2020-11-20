@@ -209,8 +209,6 @@ typedef itm = fpathenv
 vtypedef
 hashtbl = hashtbl(key, itm)
 //
-in (* in of local *)
-
 (* ****** ****** *)
 //
 implement
@@ -275,8 +273,12 @@ println!
 end // end of [the_global_fpenvtbl]
 (* ****** ****** *)
 
+in(* in-of-local *)
+
+(* ****** ****** *)
+
 implement
-the_global_fpadd1
+the_global_fpiadd1
   (key) = let
 //
   val
@@ -305,9 +307,9 @@ end where
 (*
   val () =
   println!
-  ( "the_global_fpadd1: key = ", key )
+  ( "the_global_fpiadd1: key = ", key )
 *)
-} (*where*) // end of [the_global_fpadd1]
+} (*where*) // end of [the_global_fpiadd1]
 
 (* ****** ****** *)
 

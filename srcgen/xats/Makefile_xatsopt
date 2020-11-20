@@ -9,6 +9,7 @@ MV=mv
 CP=cp
 CC=gcc
 SED=sed
+CPf=cp -f
 MVF=mv -f
 RMF=rm -f
 

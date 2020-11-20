@@ -113,8 +113,8 @@ rcd.parsed where
 }
 //
 val () =
-$GLO.the_global_fpadd1
-(rcd.source(*filpath*))
+$GLO.the_global_fpiadd1
+( rcd.source(*filpath*) )
 //
 val
 d1csopt =
