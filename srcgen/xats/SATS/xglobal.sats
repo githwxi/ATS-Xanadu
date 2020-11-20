@@ -68,7 +68,7 @@ the_global_level
 //
 (* ****** ****** *)
 fun
-the_global_fpadd1
+the_global_fpiadd1
   (fpath: filpath): void
 (* ****** ****** *)
 //
