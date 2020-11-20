@@ -877,45 +877,67 @@ trans_tnode
 (node0: tnode): tnode =
 (
 case+ node0 of
-| T_SPECHAR(c) => let
-    val
-    node1 = char2tnode(c)
-  in
-    case+ node1 of
-    | T_EOF() => node0 | _(*else*) => node1
-  end // end of [T_SPECHAR]
+|
+T_SPECHAR(c) =>
+let
+  val
+  node1 =
+  char2tnode(c)
+in
+  case+ node1 of
+  | T_EOF() => node0
+  | _(* else *) => node1
+end // end of [T_SPECHAR]
 //
-| T_IDENT_alp(id) => let
-    val
-    node1 = tnode_search(id)
-  in
-    case+ node1 of
-    | T_EOF() => node0 | _(*else*) => node1
-  end // end of [T_IDENT_alp]
-| T_IDENT_sym(id) => let
-    val
-    node1 = tnode_search(id)
-  in
-    case+ node1 of
-    | T_EOF() => node0 | _(*else*) => node1
-  end // end of [T_IDENT_sym]
+|
+T_IDENT_alp(id) =>
+let
+  val
+  node1 =
+  tnode_search(id)
+in
+  case+ node1 of
+  | T_EOF() => node0
+  | _(* else *) => node1
+end // end of [T_IDENT_alp]
 //
-| T_IDENT_dlr(id) => let
-    val
-    node1 = tnode_search(id)
-  in
-    case+ node1 of
-    | T_EOF() => node0 | _(*else*) => node1
-  end // end of [T_IDENT_dlr]
-| T_IDENT_srp(id) => let
-    val
-    node1 = tnode_search(id)
-  in
-    case+ node1 of
-    | T_EOF() => node0 | _(*else*) => node1
-  end // end of [T_IDENT_srp]
+|
+T_IDENT_sym(id) =>
+let
+  val
+  node1 =
+  tnode_search(id)
+in
+  case+ node1 of
+  | T_EOF() => node0
+  | _(* else *) => node1
+end // end of [T_IDENT_sym]
 //
-| _ (* rest-of-tnode *) => node0
+|
+T_IDENT_dlr(id) =>
+let
+  val
+  node1 =
+  tnode_search(id)
+in
+  case+ node1 of
+  | T_EOF() => node0
+  | _(* else *) => node1
+end // end of [T_IDENT_dlr]
+|
+T_IDENT_srp(id) =>
+let
+  val
+  node1 =
+  tnode_search(id)
+in
+  case+ node1 of
+  | T_EOF() => node0
+  | _(* else *) => node1
+end // end of [T_IDENT_srp]
+//
+|
+_(* rest-of-tnode *) => node0
 //
 )
 //
@@ -1244,9 +1266,10 @@ case+ x0.node() of
         loop0(xs2, list_vt_cons(x01, res))
       end // end of [T_IDENT_sym(-)]
     | _ (* rest-of-tnode *) =>
+      (
         loop1(x1, xs2, list_vt_cons(x0, res))
-      // end of [rest-of-tnode]
-  )
+      ) (* end of [rest-of-tnode] *)
+  ) (* end of [T_CASE] *)
 //
 (*
 | T_LTGT((*void*)) => let
