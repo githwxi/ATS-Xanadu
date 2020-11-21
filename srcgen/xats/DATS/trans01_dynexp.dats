@@ -2330,7 +2330,7 @@ in
   let
     val () = loop(ids1)
   in
-    d1ecl_make_node(loc0, D1Cnone1(d0cl))
+    d1ecl_make_node(loc0, D1Cd0ecl(d0cl))
   end
 end // end of [aux_fixity]
 
@@ -2375,7 +2375,7 @@ in
   let
     val () = loop(ids1)
   in
-    d1ecl_make_node(loc0, D1Cnone1(d0cl))
+    d1ecl_make_node(loc0, D1Cd0ecl(d0cl))
   end
 end // end of [aux_nonfix]
 
