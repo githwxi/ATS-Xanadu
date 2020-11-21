@@ -114,6 +114,8 @@ dexpid_sym : token -> sym_t
 
 fun
 strnormize(cs: string): string
+fun
+strevalize(cs: string): string
 
 (* ****** ****** *)
 
