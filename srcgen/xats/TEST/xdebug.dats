@@ -1,20 +1,11 @@
 (* ****** ****** *)
-#staload _ =
-"prelude\
-/DATS/CATS\
-/Xint/basics.dats"
-(* ****** ****** *)
-#staload
-"prelude/DATS/gint.dats"
-#staload
-"prelude/DATS/gnum.dats"
-#staload
-"prelude/DATS/gord.dats"
-(* ****** ****** *)
-#staload
-"prelude/DATS/string.dats"
-(* ****** ****** *)
 #staload "./xdebug.sats"
+(* ****** ****** *)
+
+val sum = op+(1, 2)
+
+(* ****** ****** *)
+////
 (* ****** ****** *)
 
 fun
@@ -23,7 +14,7 @@ foo
 : stream_vt(int)): void =
 (
 case+ !xs of
-| ~stream_vt_nil() => ()
+| ~strmcon_vt_nil() => ()
 )
 
 (* ****** ****** *)

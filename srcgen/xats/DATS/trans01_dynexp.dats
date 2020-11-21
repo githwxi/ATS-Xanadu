@@ -1121,13 +1121,15 @@ d1exp_make_node(loc, D1Eid0(tok))
 //
 in
 case+ opt of
-| ~None_vt() =>
-   FXITMatm(d1e0)
-| ~Some_vt(fxty) =>
-  (case+ fxty of
-   | $FIX.FIXTYnon() => FXITMatm(d1e0)
-   | _(*non-FIXTYnon*) => FXITMopr(d1e0, fxty)
-  ) (* end of [Some_vt] *)
+| ~
+None_vt() =>
+FXITMatm(d1e0)
+| ~
+Some_vt(fxty) =>
+(case+ fxty of
+ | $FIX.FIXTYnon() => FXITMatm(d1e0)
+ | _(*non-FIXTYnon*) => FXITMopr(d1e0, fxty)
+) (* end of [Some_vt] *)
 end // end of [auxid0_IDENT]
 
 and
@@ -1136,11 +1138,13 @@ auxid0_BSLASH
 //
 val loc = tok.loc()
 //
-val d1e0 =
-  d1exp_make_node(loc, D1Ebs0())
+val
+d1e0 =
+d1exp_make_node(loc, D1Ebs0())
 //
 in
-  FXITMopr(d1e0, $FIX.backslash_fixty)
+  FXITMopr
+  ( d1e0, $FIX.backslash_fixty )
 end // end of [auxid0_BSLASH]
 
 fun
@@ -1155,8 +1159,8 @@ val-
 T0INTsome(tok) = int.node()
 //
 in
-  FXITMatm
-  (d1exp_make_node(loc, D1Eint(tok)))
+FXITMatm
+(d1exp_make_node(loc, D1Eint(tok)))
 end // end of [auxint]
 and
 auxchr
@@ -1170,8 +1174,8 @@ val-
 T0CHRsome(tok) = chr.node()
 //
 in
-  FXITMatm
-  (d1exp_make_node(loc, D1Echr(tok)))
+FXITMatm
+(d1exp_make_node(loc, D1Echr(tok)))
 end // end of [auxchr]
 and
 auxflt
@@ -1185,8 +1189,8 @@ val-
 T0FLTsome(tok) = flt.node()
 //
 in
-  FXITMatm
-  (d1exp_make_node(loc, D1Eflt(tok)))
+FXITMatm
+(d1exp_make_node(loc, D1Eflt(tok)))
 end // end of [auxflt]
 and
 auxstr
@@ -1200,9 +1204,29 @@ val-
 T0STRsome(tok) = str.node()
 //
 in
-  FXITMatm
-  (d1exp_make_node(loc, D1Estr(tok)))
+FXITMatm
+(d1exp_make_node(loc, D1Estr(tok)))
 end // end of [auxstr]
+
+(* ****** ****** *)
+
+fun
+auxopid
+( id0
+: d0eid)
+: d1eitm = let
+//
+val loc = id0.loc()
+val-
+I0DNTsome
+  (tok) = id0.node()
+//
+in
+FXITMatm
+(d1exp_make_node(loc, D1Eid0(tok)))
+end // end of [auxopid]
+
+(* ****** ****** *)
 
 fun
 auxitm
@@ -1210,8 +1234,7 @@ auxitm
 : d0exp)
 : d1eitm = let
 //
-val
-loc0 = d0e0.loc()
+val loc0 = d0e0.loc()
 //
 (*
 val () =
@@ -1236,6 +1259,8 @@ d0e0.node() of
 | D0Echr(chr) => auxchr(chr)
 | D0Eflt(flt) => auxflt(flt)
 | D0Estr(str) => auxstr(str)
+//
+| D0Eopid(id0) => auxopid(id0)
 //
 | D0Eapps(d0es) =>
   FXITMatm(d1e0) where
@@ -1292,7 +1317,7 @@ d0e0.node() of
     FXITMatm(d1e0) where
     {
       val d1e0 =
-        d1exp_make_node
+      d1exp_make_node
         (loc0, D1Eif0(d1e1, d1e2, opt3))
     }
   end (* end of [D0Eif0] *)

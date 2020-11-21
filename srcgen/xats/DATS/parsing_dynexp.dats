@@ -1743,6 +1743,38 @@ in
   d0exp_make_node(s0.loc(), D0Estr(s0))
 end // end of [t_t0str]
 //
+|
+T_OP_sym _ =>
+let
+  val id =
+  i0dnt_some(tok) where
+  {
+  val () = buf.incby1()
+  }
+  val id_loc = tok.loc()
+in
+  err := e0;
+  d0exp_make_node(id_loc, D0Eopid(id))
+end // end of [T_OP_sym]
+|
+T_OP_par _ =>
+let
+//
+  val () =
+  buf.incby1((*void*))
+//
+  val id = p_d0eid(buf, err)
+//
+  val tbeg = tok
+  val tend = p_RPAREN(buf, err)
+//
+  val id_loc = tbeg.loc() + tend.loc()
+//
+in
+  err := e0;
+  d0exp_make_node(id_loc, D0Eopid(id))
+end // end of [T_OP_par]
+//
 | T_LT() => let
     val () =
       buf.incby1()
@@ -3968,13 +4000,14 @@ abstype ::=
       val tnd = tok.node()
     in
       case+ tnd of
-      | T_OF() =>
-        (
-        Some(p_t0int(buf, err))
-        ) where
-        {
-          val () = buf.incby1()
-        }
+      |
+      T_OF() =>
+      ( Some
+        (p_t0int(buf, err))
+      ) where
+      {
+        val () = buf.incby1()
+      }
       | _(*non-OF*) => None(*void*)
     end : t0intopt // end-of-let
 //
