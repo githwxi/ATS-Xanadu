@@ -3149,7 +3149,7 @@ auxd1cls(fopt, d1cs)
 in
 flag := res.0; Some(res.1)
 end
-)
+) (* case *)
 : fmodenvopt // end-of-val
 ) where
 {
@@ -3250,19 +3250,19 @@ None() => ((*void*))
 |
 Some(menv) =>
 let
-val
-nmopt =
-g1exp_nmspace(src1)
+  val
+  nmopt =
+  g1exp_nmspace(src1)
 in
 case+ nmopt of
-|
-~None_vt() =>
- the_nmspace_open(menv)
-|
-~Some_vt(nm0) =>
- the_sexpenv_add
- (nm0, S2ITMfmodenv(menv))
-end
+| ~
+None_vt() =>
+the_nmspace_open(menv)
+| ~
+Some_vt(nm0) =>
+the_sexpenv_add
+(nm0, S2ITMfmodenv(menv))
+end // end of [Some]
 ) : void // end of val
 //
 in
