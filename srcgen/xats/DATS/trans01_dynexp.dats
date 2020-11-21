@@ -2435,13 +2435,36 @@ D0Cdefine
 val-
 I0DNTsome(gid0) = gid0.node()
 //
-val gmas = trans01_gmarglst(gmas)
-val gdef = trans01_g0expdef(gdef)
+val
+gmas = trans01_gmarglst(gmas)
+val
+opt2 = trans01_g0expdef(gdef)
+//
+val () =
+(
+case+ gmas of
+|
+list_nil _ =>
+(
+case+ opt2 of
+|
+None() => ((*void*))
+|
+Some(g1e2) =>
+let
+val
+sym0 = gexpid_sym(gid0)
+in
+the_xnamenv_insert(sym0, g1e2)
+end // end of [Some]
+)
+| list_cons _ => ((*skipped*))
+)
 //
 in
 d1ecl_make_node
 ( loc0
-, D1Cdefine(tok0, gid0, gmas, gdef))
+, D1Cdefine(tok0, gid0, gmas, opt2))
 end (* let *) // end of [aux_define]
 
 (* ****** ****** *)
