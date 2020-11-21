@@ -166,7 +166,7 @@ end (* end of [the_fxtyenv_insert] *)
 (* ****** ****** *)
 
 implement
-the_fxtyenv_pout
+the_fxtyenv_pop
 (
   pfenv | (*none*)
 ) = let
@@ -175,10 +175,23 @@ the_fxtyenv_pout
 in
   $effmask_ref
   ($ENV.symenv_pop{fixty}(!p0))
-end // end of [the_fxtyenv_pout]
+end // end of [the_fxtyenv_pop]
 
 implement
-the_fxtyenv_push
+the_fxtyenv_popfree
+(
+  pfenv | (*none*)
+) = 
+$effmask_ref
+(
+$MAP.symmap_free
+(the_fxtyenv_pop(pfenv|(*void*)))
+) (* end of [the_fxtyenv_popfree] *)
+
+(* ****** ****** *)
+
+implement
+the_fxtyenv_pushnil
   () = (pfenv | ()) where
 {
 //
@@ -191,18 +204,7 @@ the_fxtyenv_push
   $effmask_ref
   ($ENV.symenv_pushnil{fixty}(!p0))
 //
-} // end of [the_fxtyenv_push]
-
-implement
-the_fxtyenv_popfree
-(
-  pfenv | (*none*)
-) = 
-$effmask_ref
-(
-  $MAP.symmap_free
-  (the_fxtyenv_pout(pfenv | (*void*)))
-) (* end of [the_fxtyenv_popfree] *)
+} (* end of [the_fxtyenv_pushnil] *)
 
 (* ****** ****** *)
 
@@ -281,11 +283,12 @@ val
 (pf0 | p0) = ref_get_viewptr(r0)
 
 in (* in-of-local *)
+
+(* ****** ****** *)
 //
 implement
 trans01_staload_add
-  (fp0, d1cs) =
-let
+  (fp0, d1cs) = let
 //
 (*
 HX-2020:
@@ -297,12 +300,16 @@ $FP0.filpath_get_full2(fp0)
 //
 in
 let
-prval vbox(pf) = pf0
+prval
+vbox(pf) = pf0
 in
 $MAP.symmap_insert
 ( !p0(*global*), sym, d1cs )
-end
-end
+end // end of [let]
+end // end of [let]
+// end of [trans01_staload_add]
+//
+(* ****** ****** *)
 //
 implement
 trans01_staload_find
@@ -321,9 +328,12 @@ let
   prval vbox(pf) = pf0
 in
   $MAP.symmap_search(!p0, sym)
-end
-end
+end // end of [let]
+end // end of [let]
+// end of [trans01_staload_find]
 //
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)

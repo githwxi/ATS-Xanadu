@@ -137,15 +137,16 @@ viewdef
 fxtyenv_v = fxtyenv_view
 //
 fun
-the_fxtyenv_push
-  ((*void*)): (fxtyenv_v | void)
-fun
-the_fxtyenv_pout
+the_fxtyenv_pop
 ( fxtyenv_v 
-| (* none *)): $MAP.symmap(fixty)
+| (*none*)): $MAP.symmap(fixty)
 fun
 the_fxtyenv_popfree
-(pf: fxtyenv_v  | (* none *)): void
+( fxtyenv_v  | (*none*) ): void
+//
+fun
+the_fxtyenv_pushnil
+  ((*void*)): (fxtyenv_v | void)
 //
 (* ****** ****** *)
 //

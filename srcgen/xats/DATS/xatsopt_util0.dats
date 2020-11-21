@@ -349,12 +349,11 @@ the_fixity_load
 //
   val
   (pf0 | ()) =
-  the_fxtyenv_push((*void*))
+  the_fxtyenv_pushnil((*void*))
   val d1cs = trans01_declist(d0cs)
-  val map =
-  the_fxtyenv_pout(pf0 | (*none*))
+  val map0 = the_fxtyenv_pop(pf0 | (*none*))
 //
-  val ((*joined*)) = the_fxtyenv_pjoinwth0(map)
+  val ((*joined*)) = the_fxtyenv_pjoinwth0(map0)
 //
 (*
   val () = println! "the_fxtyenv = "

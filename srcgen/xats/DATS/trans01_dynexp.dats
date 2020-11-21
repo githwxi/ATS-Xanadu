@@ -1342,15 +1342,16 @@ d0e0.node() of
 //
   in
     case+ d0cs of
-    | d0eclseq_WHERE
-      (_, _, d0cs, _) => let
-        val d1cs = trans01_declist(d0cs)
-      in
-        FXITMatm
-        (
-          d1exp_make_node(loc0, D1Ewhere(d1e1, d1cs))
-        )
-      end // end of [d0eclseq_WHERE]
+    |
+    d0eclseq_WHERE
+    (_, _, d0cs, _) => let
+      val d1cs = trans01_declist(d0cs)
+    in
+      FXITMatm
+      (
+      d1exp_make_node(loc0, D1Ewhere(d1e1, d1cs))
+      )
+    end // end of [d0eclseq_WHERE]
   end // end of [D0Ewhere]
 //
 | D0Ebrack
@@ -1359,9 +1360,7 @@ d0e0.node() of
     trans01_dexplst(d0es)
     val d1e0 =
     (
-      d1exp_make_node
-        (loc0, D1Ebrack(d1es))
-      // d1exp_make_node
+    d1exp_make_node(loc0, D1Ebrack(d1es))
     ) (* end of [val] *)
   in
 (*
