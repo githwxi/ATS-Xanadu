@@ -660,15 +660,19 @@ fprint_d2ecl
 (
 case- x0.node() of
 //
-| D2Cnone0() =>
-  fprint!(out, "D2Cnone0(", ")")
-| D2Cnone1(d1csrc) =>
+| D2Cnone0
+  ((*void*)) =>
   fprint!
-  (out, "D2Cnone1(", d1csrc, ")")
+  (out, "D2Cnone0(", ")")
+| D2Cnone1
+  (  d1cl  ) =>
+  fprint!
+  (out, "D2Cnone1(", d1cl, ")")
 //
-| D2Cdefine(d1cl) =>
+| D2Cd1ecl
+  (  d1cl  ) =>
   fprint!
-  (out, "D2Cdefine(", d1cl, ")")
+  (out, "D2Cd1ecl(", d1cl, ")")
 //
 | D2Cstatic
   (tok, d2cl) =>

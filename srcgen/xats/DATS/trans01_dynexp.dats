@@ -1341,19 +1341,32 @@ d0e0.node() of
   ( tok(*let*)
   , d0cs
   , topt, d0es, tend) => let
-    val d1cs = trans01_declist(d0cs)
+//
+    val
+    (pf0|()) =
+    the_trans01_pushnil()
+//
+    val d1cs =
+    trans01_declist(d0cs)
     val d1es =
     (
     case+ d0es of
-    | list_nil() =>
-      (
-        list_sing(d1e0)
-      ) where
-      {
-        val d1e0 = d1exp_none(tend.loc())
-      }
-    | list_cons _ => trans01_dexplst(d0es)
+    |
+    list_nil() =>
+    (
+      list_sing(d1e0)) where
+    {
+      val
+      d1e0 = d1exp_none(tend.loc())
+    }
+    |
+    list_cons _ => trans01_dexplst(d0es)
     ) : d1explst // end of [val]
+//
+    val
+    ((*void*)) =
+    the_trans01_popfree( pf0 |(*void*) )
+//
   in
     FXITMatm
     (
@@ -1361,23 +1374,34 @@ d0e0.node() of
     )
   end // end of [D0Elet] *)
 //
-| D0Ewhere(d0e1, d0cs) => let
-//
-    val d1e1 = trans01_dexp(d0e1)
-//
-  in
-    case+ d0cs of
+| D0Ewhere
+  (d0e1, d0cs) =>
+  ( case+ d0cs of
     |
     d0eclseq_WHERE
     (_, _, d0cs, _) => let
-      val d1cs = trans01_declist(d0cs)
+//
+      val
+      (pf0|()) =
+      the_trans01_pushnil()
+//
+      // HX: this needs to
+      val // be processed first!
+      d1cs = trans01_declist(d0cs)
+//
+      val d1e1 = trans01_dexp(d0e1)
+//
+      val
+      ((*void*)) =
+      the_trans01_popfree( pf0 |(*void*) )
+//
     in
       FXITMatm
       (
       d1exp_make_node(loc0, D1Ewhere(d1e1, d1cs))
       )
     end // end of [d0eclseq_WHERE]
-  end // end of [D0Ewhere]
+  ) (* end of [D0Ewhere] *)
 //
 | D0Ebrack
   (tbeg, d0es, tend) => let
@@ -2772,24 +2796,39 @@ None_vt()
 |
 Some_vt(fp0) =>
 let
-  val () =
-  (
-  ifcase
-  | is_sats(fp0) => knd := 0(*sta*)
-  | _(*non-sats*) => knd := 1(*dyn*)
-  )
+val () =
+(
+ifcase
+|
+is_sats(fp0) => knd := 0(*sta*)
+|
+_(*non-sats*) => knd := 1(*dyn*)
+)
 in
-  let
-  val res =
-  trans01_staload_from_filpath(knd, fp0)
-  in
-    flag := res.0; res.1
-  end
+(
+flag := result.0; result.1
+) where
+{
+val
+(pf0|()) =
+the_trans01_savecur((*void*))
+//
+val
+result =
+trans01_staload_from_filpath
+  (knd(*stadyn*), fp0(*fpath*))
+//
+val
+((*void*)) =
+the_trans01_restore(pf0|(*void*))
+//
+} (* end of [where] *)
+//
 end // end of [Some_vt]
 ) : Option_vt(d1eclist)
 //
-val opt1 = option_vt2t(opt1)
-val opt2 = option_vt2t(opt2)
+val opt1 = option_vt2t(opt1) // fpath
+val opt2 = option_vt2t(opt2) // d1cls
 //
 in
 //
@@ -3371,13 +3410,26 @@ d0cl.node() of
   ( tbeg, head
   , topt, body, tend) =>
   let
+//
+    val
+    (pf1|()) =
+    the_trans01_pushnil()
+//
     val
     head = trans01_declist(head)
+//
+    val
+    (pf2|()) =
+    the_trans01_pushnil()
+//
     val
     body = trans01_declist(body)
+//
+    val ((*void*)) =
+    the_trans01_locjoin(pf1, pf2 | (*none*))
+//
   in
-    d1ecl_make_node
-    ( loc0, D1Clocal(head, body) )
+    d1ecl_make_node( loc0, D1Clocal(head, body) )
   end // end of [D0Clocal]
 //
 | D0Cinclude _ => aux_include(d0cl)

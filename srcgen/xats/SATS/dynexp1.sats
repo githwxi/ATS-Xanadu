@@ -822,6 +822,8 @@ d1ecl_node =
 | D1Cnone0 of ()
 | D1Cnone1 of (d0ecl)
 //
+| D1Cd0ecl of (d0ecl)
+//
 (*
 | D1Cfixity of (d0ecl)
   // updating fixity env

@@ -122,20 +122,20 @@ symenv_pushnil
 //
 fun
 symenv_locjoin
-  {itm:type}(env: &symenv(itm) >> _): void
+{itm:type}(env: &symenv(itm) >> _): void
 // end of [symenv_locjoin]
 //
 (* ****** ****** *)
 //
 fun
 symenv_pjoinwth0
-  {itm:type}
-  (env: &symenv(itm), map: symmap(itm)): (void)
+{itm:type}
+(env: &symenv(itm), map: symmap(itm)): (void)
 // end of [symenv_pjoinwth0]
 fun
 symenv_pjoinwth1
-  {itm:type}
-  (env: &symenv(itm), map: !symmap(itm)): (void)
+{itm:type}
+(env: &symenv(itm), map: !symmap(itm)): (void)
 // end of [symenv_pjoinwth1]
 //
 (* ****** ****** *)
@@ -144,14 +144,14 @@ symenv_pjoinwth1
 //
 fun
 symenv_savecur
-  {itm:type}(env: &symenv(itm) >> _): void
+{itm:type}(env: &symenv(itm) >> _): void
 // end of [symenv_savecur]
 //
 // HX: restoring the last saved env
 //
 fun
 symenv_restore
-  {itm:type}(env: &symenv(itm) >> _): symmap(itm)
+{itm:type}(env: &symenv(itm) >> _): symmap(itm)
 // end of [symenv_restore]
 //
 (* ****** ****** *)

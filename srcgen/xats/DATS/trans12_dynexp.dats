@@ -3072,8 +3072,8 @@ val () =
 the_gmacenv_add(sym0, gmac)
 //
 in
-  d2ecl_make_node
-  ( loc0, D2Cdefine( d1cl ) )
+d2ecl_make_node
+( loc0 , D2Cd1ecl( d1cl ) )
 end // end of [aux_define]
 
 (* ****** ****** *)
@@ -3217,13 +3217,13 @@ case+ mopt of
 (0(*nshare*), menv) where
 {
 val
-(pf | ()) =
+(pf0 | ()) =
 the_trans12_savecur((*void*))
 //
 val d2cs = trans12_declist(d1cs)
 //
 val envs =
-the_trans12_restore(pf|(*void*))
+the_trans12_restore(pf0|(*nil*))
 //
 val menv =
 fmodenv_make

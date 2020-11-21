@@ -2162,7 +2162,11 @@ local
 absimpl
 trans12_view = unit_v
 
+(* ****** ****** *)
+
 in (* in-of-local *)
+
+(* ****** ****** *)
 
 implement
 the_trans12_popfree
@@ -2196,6 +2200,8 @@ end // end of [local]
 //
 } (* end of [the_trans12_popfree] *)
 
+(* ****** ****** *)
+
 implement
 the_trans12_pushnil
   ((*void*)) =
@@ -2210,17 +2216,22 @@ $NMS.the_nmspace_push()
 //
 (*
 val
-(pf0_ | ()) = the_fxtyenv_push()
+(
+pf0_|()) = the_fxtyenv_pushnil()
 *)
 //
 val
-(pf1_ | ()) = the_gmacenv_pushnil()
+(
+pf1_|()) = the_gmacenv_pushnil()
 val
-(pf2_ | ()) = the_sortenv_pushnil()
+(
+pf2_|()) = the_sortenv_pushnil()
 val
-(pf3_ | ()) = the_sexpenv_pushnil()
+(
+pf3_|()) = the_sexpenv_pushnil()
 val
-(pf4_ | ()) = the_dexpenv_pushnil()
+(
+pf4_|()) = the_dexpenv_pushnil()
 //
 (*
 prval () = $UN.castview0{void}(pf0_)
@@ -2231,6 +2242,8 @@ prval () = $UN.castview0{void}(pf3_)
 prval () = $UN.castview0{void}(pf4_)
 //
 } (* end of [the_trans12_pushnil] *)
+
+(* ****** ****** *)
 
 implement
 the_trans12_locjoin
@@ -2380,6 +2393,8 @@ trans12_save_view = unit_v
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 the_trans12_savecur
   ((*void*)) =
@@ -2398,6 +2413,8 @@ prval pf = unit_v(*void*)
   val () = $NMS.the_nmspace_savecur()
 //
 } (* end of [the_trans12_savecur] *)
+
+(* ****** ****** *)
 
 implement
 the_trans12_restore
@@ -2431,6 +2448,8 @@ in
   (g1menv, s2tmap, s2imap, d2imap)
 end
 end (* end of [the_trans12_restore] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
