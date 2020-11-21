@@ -369,6 +369,26 @@ the_xnamenv_insert
   (key, itm) = let
   prval
   vbox(pf) = pfbox
+//
+val () =
+$effmask_all
+(
+println!
+(
+"the_xnamenv_insert: key = ", key
+) ;
+println!
+(
+"the_xnamenv_insert: itm = ", itm
+)
+) where
+{
+  overload
+  print with $S1E.print_g1exp
+  overload
+  print with $SYM.print_symbol
+}
+//
 in
   $ENV.symenv_insert(!p0, key, itm)
 end // end of [the_xnamenv_insert]
