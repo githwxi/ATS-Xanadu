@@ -1744,8 +1744,21 @@ in
 end // end of [t_t0str]
 //
 |
-T_OP_sym _ =>
-let
+T_OP _ => let
+//
+  val () =
+  buf.incby1((*void*))
+//
+  val id = p_d0eid(buf, err)
+//
+  val id_loc = tok.loc() + id.loc()
+//
+in
+  err := e0;
+  d0exp_make_node(id_loc, D0Eopid(id))
+end // end of [ T_OP ]
+|
+T_OP_sym _ => let
   val id =
   i0dnt_some(tok) where
   {
@@ -1757,8 +1770,7 @@ in
   d0exp_make_node(id_loc, D0Eopid(id))
 end // end of [T_OP_sym]
 |
-T_OP_par _ =>
-let
+T_OP_par _ => let
 //
   val () =
   buf.incby1((*void*))

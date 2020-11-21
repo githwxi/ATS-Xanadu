@@ -2,7 +2,7 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
-val sum = op+(1, 2)
+val sum = op + (1, 2)
 
 (* ****** ****** *)
 ////
