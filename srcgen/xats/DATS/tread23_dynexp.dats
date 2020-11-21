@@ -292,6 +292,34 @@ end // end of [aux_vardecl]
 (* ****** ****** *)
 
 fun
+aux_excptcon
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+// HX-2020-11-21: FIXME!!!
+end // end of [aux_excptcon]
+
+fun
+aux_datatype
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+// HX-2020-11-21: FIXME!!!
+end // end of [aux_datatype]
+
+(* ****** ****** *)
+
+fun
 aux_impdecl1
 ( d3cl
 : d3ecl): void =
@@ -471,6 +499,11 @@ D3Cfundecl _ => aux_fundecl(d3cl)
 D3Cvaldecl _ => aux_valdecl(d3cl)
 |
 D3Cvardecl _ => aux_vardecl(d3cl)
+//
+|
+D3Cexcptcon _ => aux_excptcon(d3cl)
+|
+D3Cdatatype _ => aux_datatype(d3cl)
 //
 |
 D3Cimpdecl1 _ => aux_impdecl1(d3cl)
