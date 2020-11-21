@@ -322,6 +322,12 @@ tok.node() of
 
 (* ****** ****** *)
 
+(*
+HX-2020-11-21:
+Just for removing
+each occurrence of
+backslash followed by a newline.
+*)
 implement
 strnormize(cs) = let
 //
@@ -443,6 +449,18 @@ in
 if isnm(string2ptr(cs)) then cs else norm(cs)
 )
 end // end of [string_normlize]
+
+(* ****** ****** *)
+
+(*
+fun
+strevalize(src: string): string
+*)
+(*
+HX-2020-11-21:
+Just for replacing each
+DEFINED name withi its definition.
+*)
 
 (* ****** ****** *)
 
