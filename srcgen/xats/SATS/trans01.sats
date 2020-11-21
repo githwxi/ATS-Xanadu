@@ -124,10 +124,10 @@ token2string : token -> string
 //
 fun
 the_fxtyenv_search
-  (key: sym_t): fixtyopt_vt
+(key: sym_t): fixtyopt_vt
 fun
 the_fxtyenv_insert
-  (key: sym_t, itm: fixty): void
+(key: sym_t, itm: fixty): void
 //
 (* ****** ****** *)
 //
@@ -169,6 +169,67 @@ fun
 the_fxtyenv_println(): void
 fun
 the_fxtyenv_fprint(FILEref): void
+//
+(* ****** ****** *)
+//
+typedef
+g1exp = $S1E.g1exp
+//
+fun
+the_xnamenv_search
+( key
+: sym_t ) : Option_vt(g1exp)
+fun
+the_xnamenv_insert
+( key: sym_t, itm: g1exp ) : void
+//
+(* ****** ****** *)
+//
+absview
+xnamenv_view
+viewdef
+xnamenv_v = xnamenv_view
+//
+fun
+the_xnamenv_pop
+( xnamenv_v 
+| (*none*)): $MAP.symmap(g1exp)
+fun
+the_xnamenv_popfree
+( xnamenv_v  | (*none*) ): void
+//
+fun
+the_xnamenv_pushnil
+  ((*void*)): (xnamenv_v | void)
+//
+(* ****** ****** *)
+//
+fun
+the_xnamenv_locjoin
+(
+  pf1: xnamenv_v
+, pf2: xnamenv_v | (*none*)
+) : void // end of [the_xnamenv_locjoin]
+//
+(* ****** ****** *)
+//
+fun // p: pervasive
+the_xnamenv_pjoinwth0
+( map: $MAP.symmap(fixty) ): void
+//
+(* ****** ****** *)
+//
+fun
+the_xnamenv_println(): void
+fun
+the_xnamenv_fprint(FILEref): void
+//
+(* ****** ****** *)
+//
+(*
+HX:
+Environment-handling for trans01
+*)
 //
 (* ****** ****** *)
 absview trans01_view

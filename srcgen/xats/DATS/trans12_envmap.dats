@@ -683,6 +683,8 @@ end // end of [the_nmspace_find]
 //
 in
 
+(* ****** ****** *)
+
 implement
 the_gmacenv_add
   (gid, g1m) = let
@@ -694,6 +696,7 @@ end // end of [the_gmacenv_add]
 
 (* ****** ****** *)
 
+(*
 implement
 the_gmacenv_padd
   (gid, g1m) = let
@@ -702,6 +705,7 @@ the_gmacenv_padd
 in
   $ENV.symenv_pinsert(!p0, gid, g1m)
 end // end of [the_gmacenv_padd]
+*)
 
 (* ****** ****** *)
 

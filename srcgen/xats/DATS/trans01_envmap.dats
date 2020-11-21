@@ -150,17 +150,19 @@ mix .<>.
 (x0: fixty, x1: fixty):<> fixty =
 (
 case+ x0 of
-| FIXTYpre(p0) =>
-  ( case+ x1 of
+|
+FIXTYpre(p0) =>
+( case+ x1 of
   | FIXTYinf
     (p1, a1) =>
     FIXTYpreinf(p0, p1, a1) | _ => x0
-  ) (* end of [FIXTYinf] *)
-| FIXTYinf(p0, a0) =>
-  ( case+ x1 of
+) (* end of [FIXTYinf] *)
+|
+FIXTYinf(p0, a0) =>
+( case+ x1 of
   | FIXTYpre(p1) =>
     FIXTYpreinf(p1, p0, a0) | _ => x0
-  ) (* end of [FIXTYinf] *)
+) (* end of [FIXTYinf] *)
 | _ (* non-FIXTYpre-FIXTYinf *) => x0
 )
 //
@@ -303,6 +305,165 @@ the_fxtyenv_println
 end // end of [local]
 
 (* ****** ****** *)
+//
+static
+fun
+the_xnamenv_savecur(): void
+and
+the_xnamenv_restore(): void
+//
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+//
+absimpl
+xnamenv_view = unit_v
+//
+(* ****** ****** *)
+//
+val
+[l0:addr]
+(pf | p0) =
+$ENV.symenv_make_nil()
+val r0 =
+ref_make_viewptr(pf | p0)
+val
+(pfbox | p0) = ref_get_viewptr(r0)
+//
+(* ****** ****** *)
+
+in(* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+the_xnamenv_search
+  (k0) =
+(
+$effmask_ref
+(
+let
+val opt =
+$ENV.symenv_search(!p0, k0)
+in
+//
+case+ opt of
+| @Some_vt _ =>
+  (fold@(opt); opt)
+| ~None_vt _ =>
+  $ENV.symenv_psearch(!p0, k0)
+//
+end // end of [let]
+)
+) where
+{
+prval vbox(pf) = pfbox
+} (*end of [the_xnamenv_search]*)
+
+(* ****** ****** *)
+
+implement
+the_xnamenv_insert
+  (key, itm) = let
+  prval
+  vbox(pf) = pfbox
+in
+  $ENV.symenv_insert(!p0, key, itm)
+end // end of [the_xnamenv_insert]
+
+(* ****** ****** *)
+
+implement
+the_xnamenv_pop
+(
+  pfenv | (*none*)
+) = let
+  prval vbox(pf) = pfbox
+  prval unit_v() = pfenv
+in
+  $effmask_ref
+  ($ENV.symenv_pop{g1exp}(!p0))
+end // end of [the_xnamenv_pop]
+
+implement
+the_xnamenv_popfree
+(
+  pfenv | (*none*)
+) = 
+$effmask_ref
+(
+$MAP.symmap_free
+(the_xnamenv_pop(pfenv|(*void*)))
+) (* end of [the_xnamenv_popfree] *)
+
+(* ****** ****** *)
+
+implement
+the_xnamenv_pushnil
+  () = (pfenv | ()) where
+{
+//
+  prval
+  pfenv = unit_v()
+//
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_pushnil{g1exp}(!p0))
+//
+} (* end of [the_xnamenv_pushnil] *)
+
+(* ****** ****** *)
+
+implement
+the_xnamenv_locjoin
+(pf1, pf2| (*void*) ) =
+{
+//
+  prval unit_v() = pf1
+  prval unit_v() = pf2
+//
+  prval vbox(pf) = pfbox
+//
+  val () =
+  $effmask_ref
+  ($ENV.symenv_locjoin{g1exp}(!p0))
+//
+} (* end of [the_xnamenv_locjoin] *)
+
+(* ****** ****** *)
+
+implement
+the_xnamenv_savecur
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+$effmask_ref($ENV.symenv_savecur(!p0))
+end // end of [the_xnamenv_savecur]
+
+implement
+the_xnamenv_restore
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+$effmask_ref
+(
+$MAP.symmap_free($ENV.symenv_restore(!p0))
+)
+end // end of [the_xnamenv_restore]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
 
 local
 
@@ -327,8 +488,12 @@ local
 extern
 prfun _assert_{vw:view}(): vw
 in(* in-of-local *)
+//
 val ((*void*)) =
 the_fxtyenv_popfree(_assert_() | (*void*))
+val ((*void*)) =
+the_xnamenv_popfree(_assert_() | (*void*))
+//
 end // end of [local]
 //
 } (* end of [the_trans01_popfree] *)
@@ -346,8 +511,12 @@ prval pf = unit_v
 val
 (
 pf0_|()) = the_fxtyenv_pushnil()
+val
+(
+pf1_|()) = the_xnamenv_pushnil()
 //
 prval( ) = $UN.castview0{void}(pf0_)
+prval( ) = $UN.castview0{void}(pf1_)
 //
 } (* end of [the_trans01_pushnil] *)
 
@@ -368,6 +537,9 @@ in // in-of-local
 //
 val ((*void*)) =
 the_fxtyenv_locjoin
+(_assert_(), _assert_() | (*void*))
+val ((*void*)) =
+the_xnamenv_locjoin
 (_assert_(), _assert_() | (*void*))
 //
 end // end of [local]
@@ -400,6 +572,7 @@ the_trans01_savecur
 prval pf = unit_v(*void*)
 //
   val () = the_fxtyenv_savecur()
+  val () = the_xnamenv_savecur()
 //
 } (* end of [the_trans01_savecur] *)
 
@@ -415,7 +588,8 @@ prval unit_v() = pf
 in
 {
 //
-val () = the_fxtyenv_restore()
+  val () = the_fxtyenv_restore()
+  val () = the_xnamenv_restore()
 //
 }
 end (* end of [the_trans01_restore] *)

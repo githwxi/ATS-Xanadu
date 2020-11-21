@@ -448,9 +448,11 @@ the_qualist_find_sym
 fun
 the_gmacenv_add
 (gid: sym_t, def: g1mac): void
+(*
 fun
 the_gmacenv_padd
 (gid: sym_t, def: g1mac): void
+*)
 //
 fun
 the_gmacenv_find
