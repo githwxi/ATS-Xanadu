@@ -497,6 +497,9 @@ case+ x0.node() of
 | D0Estr(s0) =>
   fprint!(out, "D0Estr(", s0, ")")
 //
+| D0Eopid(id) =>
+  fprint!(out, "D0Eopid(", id, ")")
+//
 | D0Eapps(d0es) =>
   fprint!(out, "D0Eapps(", d0es, ")")
 //
