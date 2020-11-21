@@ -720,9 +720,12 @@ fprint_d1ecl
 case+ x0.node() of
 //
 | D1Cnone0() =>
-  fprint!(out, "D1Cnone(", ")")
+  fprint!(out, "D1Cnone0(", ")")
 | D1Cnone1(d0c) =>
-  fprint!(out, "D1Cnone(", d0c, ")")
+  fprint!(out, "D1Cnone1(", d0c, ")")
+//
+| D1Cd0ecl(d0c) =>
+  fprint!(out, "D1Cd0ecl(", d0c, ")")
 //
 | D1Cstatic(knd, d1c) =>
   fprint!

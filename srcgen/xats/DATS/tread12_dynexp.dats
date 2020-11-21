@@ -569,7 +569,7 @@ in
 case+
 d2cl.node() of
 //
-| D2Cdefine _ => ()
+| D2Cd1ecl _ => ()
 //
 | D2Cstatic
   (tok, d2c1) =>

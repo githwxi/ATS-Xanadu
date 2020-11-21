@@ -161,7 +161,7 @@ the_fxtyenv_locjoin
 //
 fun // p: pervasive
 the_fxtyenv_pjoinwth0
-  (map: $MAP.symmap(fixty)): void
+( map: $MAP.symmap(fixty) ): void
 //
 (* ****** ****** *)
 //
@@ -171,16 +171,47 @@ fun
 the_fxtyenv_fprint(FILEref): void
 //
 (* ****** ****** *)
+absview trans01_view
+viewdef trans01_v = trans01_view
+(* ****** ****** *)
 //
-typedef g0nam = $S0E.g0nam
-typedef g0namlst = $S0E.g0namlst
+fun
+the_trans01_popfree
+  (trans01_v | (*none*)): (void)
+fun
+the_trans01_pushnil
+  ((*void*)): (trans01_v | void)
+//
+fun
+the_trans01_locjoin
+( pf1: trans01_v
+, pf2: trans01_v | (*none*)): void
 //
 (* ****** ****** *)
 //
-typedef g0exp = $S0E.g0exp
-typedef g0explst = $S0E.g0explst
+absview
+trans01_save_view
+viewdef
+trans01_save_v = trans01_save_view
 //
+(* ****** ****** *)
+//
+fun
+the_trans01_savecur
+((*none*)):(trans01_save_v | void)
+//
+fun
+the_trans01_restore
+(pf0:trans01_save_v|(*none*)): void
+//
+(* ****** ****** *)
+//
+typedef g0nam = $S0E.g0nam
+typedef g0exp = $S0E.g0exp
 typedef g0marg = $S0E.g0marg
+//
+typedef g0namlst = $S0E.g0namlst
+typedef g0explst = $S0E.g0explst
 typedef g0marglst = $S0E.g0marglst
 //
 (* ****** ****** *)
@@ -189,23 +220,29 @@ typedef sort0 = $S0E.sort0
 typedef sort0opt = $S0E.sort0opt
 typedef sort0lst = $S0E.sort0lst
 //
-typedef s0arg = $S0E.s0arg
-typedef s0marg = $S0E.s0marg
-typedef s0arglst = $S0E.s0arglst
-typedef s0marglst = $S0E.s0marglst
+(* ****** ****** *)
 //
+typedef s0arg = $S0E.s0arg
 typedef t0arg = $S0E.t0arg
-typedef t0marg = $S0E.t0marg
+typedef s0arglst = $S0E.s0arglst
 typedef t0arglst = $S0E.t0arglst
+//
+typedef s0marg = $S0E.s0marg
+typedef t0marg = $S0E.t0marg
+typedef s0marglst = $S0E.s0marglst
 typedef t0marglst = $S0E.t0marglst
 //
-typedef s0qua = $S0E.s0qua
-typedef s0qualst = $S0E.s0qualst
+(* ****** ****** *)
 //
+typedef s0qua = $S0E.s0qua
 typedef s0uni = $S0E.s0uni
+typedef s0qualst = $S0E.s0qualst
 typedef s0unilst = $S0E.s0unilst
 //
+(* ****** ****** *)
+//
 typedef s0exp = $S0E.s0exp
+//
 (*
 typedef s0eff = $S0E.s0eff
 *)

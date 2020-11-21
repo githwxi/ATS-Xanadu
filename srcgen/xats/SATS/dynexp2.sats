@@ -1184,11 +1184,7 @@ d2ecl_node =
 | D2Cnone0 of ()
 | D2Cnone1 of (d1ecl)
 //
-(*
-| D2Clist of (d2eclist)
-*)
-//
-| D2Cdefine of (d1ecl)
+| D2Cd1ecl of (d1ecl)
 //
 | D2Cstatic of
   (token(*STATIC*), d2ecl)

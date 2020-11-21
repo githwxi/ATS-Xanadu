@@ -64,6 +64,14 @@ vtypedef
 symenv(itm:type) = $ENV.symenv(itm)
 //
 (* ****** ****** *)
+//
+static
+fun
+the_fxtyenv_savecur(): void
+and
+the_fxtyenv_restore(): void
+//
+(* ****** ****** *)
 
 local
 
@@ -238,6 +246,31 @@ in
 end // end of [the_fxtyenv_pjoinwth0]
 
 (* ****** ****** *)
+
+implement
+the_fxtyenv_savecur
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+$effmask_ref($ENV.symenv_savecur(!p0))
+end // end of [the_fxtyenv_savecur]
+
+implement
+the_fxtyenv_restore
+  ((*void*)) =
+let
+prval
+vbox(pf) = pfbox
+in
+$effmask_ref
+(
+$MAP.symmap_free($ENV.symenv_restore(!p0))
+)
+end // end of [the_fxtyenv_restore]
+
+(* ****** ****** *)
 //
 implement
 the_fxtyenv_fprint
@@ -265,6 +298,128 @@ the_fxtyenv_println
   the_fxtyenv_fprint(stdout_ref)
 }
 //
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+trans01_view = unit_v
+
+(* ****** ****** *)
+
+in(* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+the_trans01_popfree
+  (pfenv | (*void*)) =
+{
+//
+prval
+unit_v() = pfenv
+//
+local
+extern
+prfun _assert_{vw:view}(): vw
+in(* in-of-local *)
+val ((*void*)) =
+the_fxtyenv_popfree(_assert_() | (*void*))
+end // end of [local]
+//
+} (* end of [the_trans01_popfree] *)
+
+(* ****** ****** *)
+
+implement
+the_trans01_pushnil
+  ((*void*)) =
+  (pf | ()) where
+{
+//
+prval pf = unit_v
+//
+val
+(
+pf0_|()) = the_fxtyenv_pushnil()
+//
+prval( ) = $UN.castview0{void}(pf0_)
+//
+} (* end of [the_trans01_pushnil] *)
+
+(* ****** ****** *)
+
+implement
+the_trans01_locjoin
+(pf1, pf2| (*void*)) =
+{
+//
+prval unit_v() = pf1
+prval unit_v() = pf2
+//
+local
+extern
+prfun _assert_{vw:view}(): vw
+in // in-of-local
+//
+val ((*void*)) =
+the_fxtyenv_locjoin
+(_assert_(), _assert_() | (*void*))
+//
+end // end of [local]
+//
+} // end of [the_trans01_locjoin]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+trans01_save_view = unit_v
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+the_trans01_savecur
+  ((*void*)) =
+(
+  (pf | ())
+) where
+{
+//
+prval pf = unit_v(*void*)
+//
+  val () = the_fxtyenv_savecur()
+//
+} (* end of [the_trans01_savecur] *)
+
+(* ****** ****** *)
+
+implement
+the_trans01_restore
+  (pf | (*void*)) =
+let
+//
+prval unit_v() = pf
+//
+in
+{
+//
+val () = the_fxtyenv_restore()
+//
+}
+end (* end of [the_trans01_restore] *)
+
 (* ****** ****** *)
 
 end // end of [local]
@@ -340,19 +495,23 @@ end // end of [local]
 
 local
 
+(* ****** ****** *)
+//
 overload
 print with
 $FP0.print_dirpath
+//
 (*
 overload
 print with
 $FP0.print_filpath_full1
 *)
-// (*
+//
 overload
 print with
 $FP0.print_filpath_full2
-// *)
+//
+(* ****** ****** *)
 
 fun
 aux_parse
