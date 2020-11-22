@@ -707,7 +707,8 @@ gseq_map_rlist<list(a)><a> = list_maprev_vt<a>
 (*
 For gseqn-operations
 *)
-#staload "./../SATS/gseqn.sats"
+#staload
+"prelude/SATS/gseqn.sats"
 //
 (* ****** ****** *)
 
