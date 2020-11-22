@@ -5912,8 +5912,11 @@ in (* in-of-let *)
 case-
 d1cl.node() of
 //
-| D1Cnone0() => d2ecl_none1(d1cl)
+| D1Cnone0( ) => d2ecl_none1(d1cl)
 | D1Cnone1(_) => d2ecl_none1(d1cl)
+//
+| D1Cd0ecl(_) =>
+  d2ecl_make_node(loc0, D2Cd1ecl(d1cl))
 //
 | D1Cstatic
   (tok, d1c) =>

@@ -370,6 +370,7 @@ the_xnamenv_insert
   prval
   vbox(pf) = pfbox
 //
+(*
 val () =
 $effmask_all
 (
@@ -388,6 +389,7 @@ println!
   overload
   print with $SYM.print_symbol
 }
+*)
 //
 in
   $ENV.symenv_insert(!p0, key, itm)

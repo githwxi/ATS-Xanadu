@@ -2515,12 +2515,14 @@ in
 case+
 g1e.node() of
 | G1Estr _ => auxstr(g1e)
-| _(*non-D1Estr*) => None_vt()
+|
+_(*non-D1Estr*) => None_vt()
 end // end of [auxd1e]
 and
 auxstr
 (g1e: g1exp): fopt =
-  auxtok(tok) where
+(
+  auxtok(tok)) where
 {
   val-
   G1Estr(tok) = g1e.node()
@@ -2539,6 +2541,7 @@ tok.node() of
   { val
     fnm = xatsopt_strunq(fnm)
     val fnm = strnormize(fnm)
+    val fnm = strevalize(fnm)
   } // T_STRING_closed
 | _(* else *) => None_vt(*void*)
 )
@@ -2739,6 +2742,7 @@ tok.node() of
   { val
     fnm = xatsopt_strunq(fnm)
     val fnm = strnormize(fnm)
+    val fnm = strevalize(fnm)
   } // T_STRING_closed
 | _(* else *) => None_vt(*void*)
 )

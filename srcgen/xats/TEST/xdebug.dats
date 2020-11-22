@@ -2,9 +2,26 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+local
+#define
+XATSHOME="__XATSHOME__"
+in
+#include"\
+$XATSHOME/prelude/SATS/gbas.sats"
+end // end of [local]
+
+(* ****** ****** *)
+(*
+#include"\
+$(XATSHOME)/prelude/SATS/gbas.sats"
+#include"\
+$()(XATSHOME)/prelude/SATS/gbas.sats"
+*)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 #define x = 1
 #define y = (x+1)
-
 (* ****** ****** *)
 ////
 (* ****** ****** *)
