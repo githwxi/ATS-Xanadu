@@ -1024,26 +1024,31 @@ in(* in-of-local *)
 (* ****** ****** *)
 
 implement
-strevalize(src) =
+strevalize
+  (src) =
 (
 let
+//
 val
 res =
 auxevalize(src)
+//
+(*
 val ( ) =
 println!
 ("trans01: strevalize: res = ", res)
-in
-  res
-end
-) where
+*)
+//
+in res end where
 {
 //
-val () =
+(*
+val ( ) =
 println!
 ("trans01: strevalize: src = ", src)
+*)
 //
-} (* end of [strevalize] *)
+} (*where*) ) // end of [strevalize]
 
 (* ****** ****** *)
 
