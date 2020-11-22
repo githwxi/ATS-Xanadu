@@ -1,5 +1,7 @@
 Hi, there,
 
+HX-2020-10-12:
+
 I have been teaching ATS2 at Boston University for about 5 years
 The biggest problem I see is the VERY steep learning curve associated
 with ATS2.  Very few students were able to ever overcome it to reach
@@ -29,7 +31,7 @@ algebraic type-checking.  Type-based meta-programming in ATS3 solely
 uses algebraic types (while ATS2 uses dependent types). ATS3 may be
 initially compiled to ATS2 so as to get it going quickly.
 
-##############################
+########################################################################
 
 Cheers!
 
