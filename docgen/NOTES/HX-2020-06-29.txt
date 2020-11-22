@@ -1,3 +1,5 @@
+Hi, there,
+
 HX-2020-06-29:
 
 Before I take a break, I would like to give you an update on the
@@ -73,7 +75,7 @@ will find that the templates in ATS3 are even more powerful in many
 aspects. Actually, not only just more powerful but also a great deal
 safer. Keep tuned.
 
-##############################
+########################################################################
 
 Cheers!
 
