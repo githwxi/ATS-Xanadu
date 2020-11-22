@@ -1,5 +1,9 @@
 Hi, there,
 
+(*
+HX-2018-04-07: Let us get started!!!
+*)
+
 As of today, I am pleased to announce that ATS3 has reached a stage
 where it can be realistically used in software construction. This is
 achieved after slightly more than two and one-half years of continual
@@ -79,6 +83,8 @@ in itself, it is perceivable that ATS/Xanadu can be readily translated
 into such an implementation due to the fact that the difference
 between ATS2 and ATS3 in terms of both syntax and semantics is fairly
 minor.
+
+##############################
 
 Cheers!
 

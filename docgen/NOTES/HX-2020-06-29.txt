@@ -1,0 +1,80 @@
+HX-2020-06-29:
+
+Before I take a break, I would like to give you an update on the
+implementation of ATS3.
+
+To put things into some sort of perspective, let me first say a few
+words on the motivation behind ATS3.
+
+Advised by Prof. Frank Pfenning, I did my PhD thesis on PROGRAM
+VERIFICATION during my years at CMU, designing and implementing DML
+(Dependently Typed ML), a programming language that extends ML with a
+restricted form of dependent types. These days such dependent types
+are often referred to as DML-style dependent types in the literature
+(in contrast to Martin-Lof's dependent types that were originally
+invented for creating a type-theoretic foundation for Mathematics).
+By the way, please note that DML is considered the predecessor of ATS.
+
+As you can see, there are two words in PROGRAM VERIFICATION. One must
+talk about program construction when talking about program
+verification. Originally, the kind of programs I intended to verify
+were supposedly written in an ML-like language. But it soon (even
+before 2008) became very clear to me that such a language badly lacks
+meta-programming support. And I immediately started to improvise. I
+first added some support for templates into ATS1 and then strengthened
+it in ATS2.  Unfortunately, the kind of support for templates in ATS2
+was in direct conflict with the support for dependent types. The
+original primary motivation for ATS3 was to eliminate this (crippling)
+conflict.
+
+Up to ATS2, I mostly did language implementation for the purpose of
+experimenting with a variety of programming features. At this point, I
+no longer feel that I have time and/or energy to continue
+experimenting. Compared to ATS2, I re-designed the implementation of
+ATS3 to make it much more modular so as to better support future
+changes and additions. I intend for ATS3 to eventually become a language
+of production quality.
+
+ATS3 is implemented in ATS2. There are three big components planned
+for ATS3: program construction (Part I), program compilation (Part 2),
+and program verification (Part 3).
+
+######
+
+Part 1:
+
+At this moment, I have nearly finished Part I.
+
+This part covers type inference (involving only ML-style algebraic
+types) and template resolution (this is, replacing template instances
+with proper template-free code).  There is currently a rudimentary
+interpreter available for interpreting programs constructed in ATS3. I
+have also been implementing a template-based prelude library for
+ATS3.
+
+Part 2:
+
+I will soon be starting to work on Part 2 after taking a break, hoping
+to finish something that can be tested at the end of the Summer.
+
+Part 3:
+
+This part essentially does type-checking involving linear types and
+dependent types. Hopefully, I will be able to get a running implementation
+by the Spring next year.
+
+######
+
+Based on what I have experimented so far, I find the current support
+for templates in ATS3 to be a game-changing programming feature that
+can greatly increase one's programming productivity. I am a bit amazed
+by it :) If you think that the templates in C++ are powerful, then you
+will find that the templates in ATS3 are even more powerful in many
+aspects. Actually, not only just more powerful but also a great deal
+safer. Keep tuned.
+
+##############################
+
+Cheers!
+
+--Hongwei
