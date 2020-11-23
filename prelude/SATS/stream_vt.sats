@@ -37,10 +37,24 @@ stream_vt2t
 (xs: stream_vt(a)): stream(a)
 //
 (* ****** ****** *)
+//
+fun<>
+strmcon_vt_nil_
+{a:vt}
+((*void*)): strmcon_vt(a)
+fun
+<a:vt>
+strmcon_vt_cons_
+( x0: (a)
+, xs
+: stream_vt(a)): strmcon_vt(a)
+//
+(* ****** ****** *)
 
 fun
 <a:vt>
-stream_vt_nil(): stream_vt(a)
+stream_vt_nil
+( (*void*) ): stream_vt(a)
 fun
 <a:vt>
 stream_vt_cons
