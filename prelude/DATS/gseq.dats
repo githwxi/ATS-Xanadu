@@ -393,6 +393,13 @@ gseq_map_rlist<xs><x0><x0>(xs)
 //
 (* ****** ****** *)
 
+(*
+//
+(*
+HX-2020-11-23:
+This is not very useful!
+*)
+//
 impltmp
 <xs><x0>
 gseq_streamize
@@ -418,6 +425,7 @@ strmcon_vt_cons(x0, auxseq(xs))
 end // end of [else]
 ) (* end of [auxseq] *)
 } (* end of [gseq_streamize] *)
+*)
 
 (* ****** ****** *)
 //
