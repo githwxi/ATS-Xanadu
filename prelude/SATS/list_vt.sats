@@ -50,6 +50,19 @@ list_vt2t
 
 (* ****** ****** *)
 //
+fun<>
+list_vt_nil_
+{a:vt}(): list_vt(a, 0)
+fun
+<a:vt>
+list_vt_cons_
+{n:i0}
+( x0: a
+, xs
+: list_vt(a, n)): list_vt(a, n+1)
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
 list_vt_sing(x: a): list_vt(a,1)
