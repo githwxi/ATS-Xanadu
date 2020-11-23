@@ -64,7 +64,7 @@ fun
 XATS2JS_strmcon_cons
 {a:t0}
 ( x0: a
-, xs: strmcon(a)): strmcon(a) = $exname()
+, xs: stream(a)): strmcon(a) = $exname()
 implfun
 XATS2JS_strmcon_nil() = strmcon_nil((*void*))
 implfun
@@ -79,11 +79,11 @@ XATS2JS_strmcon_cons(x0, xs) = strmcon_cons(x0, xs)
 #extern
 fun
 XATS2JS_optn_vt_nil
-{a:vt}(): optn(a) = $exname()
+{a:vt}(): optn_vt(a) = $exname()
 #extern
 fun
 XATS2JS_optn_vt_cons
-{a:vt}(x0: a): optn(a) = $exname()
+{a:vt}(x0: a): optn_vt(a) = $exname()
 //
 implfun
 XATS2JS_optn_vt_nil() = optn_vt_nil()
@@ -100,13 +100,13 @@ XATS2JS_optn_vt_cons(x0) = optn_vt_cons(x0)
 fun
 XATS2JS_list_vt_nil
 {a:vt}
-( (*void*) ): list(a) = $exname()
+( (*void*) ): list_vt(a) = $exname()
 #extern
 fun
 XATS2JS_list_vt_cons
 {a:vt}
 ( x0: a
-, xs: list(a)): list(a) = $exname()
+, xs: list_vt(a)): list_vt(a) = $exname()
 implfun
 XATS2JS_list_vt_nil() = list_vt_nil((*void*))
 implfun
@@ -122,13 +122,13 @@ XATS2JS_list_vt_cons(x0, xs) = list_vt_cons(x0, xs)
 fun
 XATS2JS_strmcon_vt_nil
 {a:vt}
-( (*void*) ): strmcon(a) = $exname()
+( (*void*) ): strmcon_vt(a) = $exname()
 #extern
 fun
 XATS2JS_strmcon_vt_cons
 {a:vt}
 ( x0: a
-, xs: strmcon(a)): strmcon(a) = $exname()
+, xs: stream_vt(a)): strmcon_vt(a) = $exname()
 implfun
 XATS2JS_strmcon_vt_nil() = strmcon_vt_nil((*void*))
 implfun
