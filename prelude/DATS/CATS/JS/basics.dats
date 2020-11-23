@@ -407,6 +407,48 @@ gflt_div_dflt_dflt<> = XATS2JS_gflt_div_dflt_dflt
 //
 (* ****** ****** *)
 //
+// prelude/optn.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_optn_nil
+{a:t0}(): optn(a) = $exname()
+#extern
+fun
+XATS2JS_optn_cons
+{a:t0}(x0: a): optn(a) = $exname()
+//
+implfun
+XATS2JS_optn_nil() = optn_nil()
+implfun
+XATS2JS_optn_cons(x0) = optn_cons(x0)
+//
+(* ****** ****** *)
+//
+// prelude/list.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_list_nil
+{a:t0}
+( (*void*) ): list(a) = $exname()
+#extern
+fun
+XATS2JS_list_cons
+{a:t0}
+( x0: a
+, xs: list(a)): list(a) = $exname()
+implfun
+XATS2JS_list_nil() = list_nil((*void*))
+implfun
+XATS2JS_list_cons(x0, xs) = list_cons(x0, xs)
+//
+(* ****** ****** *)
+//
 // prelude/string.sats
 //
 (* ****** ****** *)
