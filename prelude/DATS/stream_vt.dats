@@ -10,9 +10,67 @@
 *)
 //
 (* ****** ****** *)
+abstbox box_tx
+typedef box = box_tx
+(* ****** ****** *)
 #staload
 UN =
 "prelude/SATS/unsafe.sats"
+(* ****** ****** *)
+//
+// HX-2020-03-21
+// It is a bit wild :)
+//
+impltmp
+<a>(*tmp*)
+stream_vt2t(xs) =
+(
+auxmain
+($UN.castlin01(xs))
+) where
+{
+fun
+auxmain
+(xs: box): stream(a) =
+$lazy
+(
+let
+val xs =
+$UN.castlin10{stream_vt(a)}(xs)
+val r0 = !xs
+in
+//
+case+ r0 of
+|
+~ strmcon_vt_nil
+  () =>
+  strmcon_nil((*void*))
+|
+@ strmcon_vt_cons
+  (x0, xs) =>
+  let
+  val xs =
+  $UN.castlin10{box}(xs)
+  val () =
+  ( r0.1 := auxmain(xs) )
+  in $UN.castlin10{strmcom(a)}(r0) end
+//
+end // end of [let]
+)
+} (* end of [stream_vt2t] *)
+
+(* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+strmcon_vt_nil_
+() = strmcon_vt_nil()
+impltmp
+<a>(*tmp*)
+strmcon_vt_cons_
+(x0, xs) =
+strmcon_vt_cons(x0, xs)
+//
 (* ****** ****** *)
 //
 impltmp

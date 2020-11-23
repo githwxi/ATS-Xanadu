@@ -30,6 +30,17 @@
 // For functional streams
 //
 (* ****** ****** *)
+//
+fun<>
+strmcon_nil_
+{a:t0}
+((*void*)): strmcon(a)
+fun
+<a:t0>
+strmcon_cons_
+(a, stream(a)): strmcon(a)
+//
+(* ****** ****** *)
 
 fun
 <a:t0>
