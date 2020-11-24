@@ -1,5 +1,6 @@
 (* ****** ****** *)
 (*
+HX-2020-11-09:
 Native arrays for Xats2js
 *)
 (* ****** ****** *)
@@ -34,12 +35,21 @@ XATS2JS_jsarray_set_at
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
 XATS2JS_jsarray_streamize
-  {a:t0}(xs: jsarray(a)): stream_vt(a)
+{a:t0}
+( xs
+: jsarray(a)): stream_vt(a) = $exname()
 //
+(* ****** ****** *)
 impltmp
-<>(*tmp*)
+{a:t0}
+gseq_streamize
+<jsarray(a)><a> =
+XATS2JS_jsarray_streamize
+(* ****** ****** *)
+//
+implfun
 XATS2JS_jsarray_streamize
 {a}(xs) =
 auxmain(0) where
@@ -55,12 +65,14 @@ auxmain(0) where
     if
     (i0 >= n0)
     then
-    stream_vt_nil(*void*)
+    (
+      stream_vt_nil((*void*))
+    )
     else
     let
-    val x0 = xs.get_at(i0)
+      val x0 = xs.get_at(i0)
     in
-    stream_vt_cons(x0, auxmain(i0+1))
+      stream_vt_cons(x0, auxmain(i0+1))
     end // end of [else]
   ) (* end of [auxmain] *)
 //
@@ -81,4 +93,4 @@ get_at with XATS2JS_jsarray_get_at of 1000
 set_at with XATS2JS_jsarray_set_at of 1000
 (* ****** ****** *)
 
-(* end of [XATS2JS_native.dats] *)
+(* end of [XATS2JS_jsarray.dats] *)

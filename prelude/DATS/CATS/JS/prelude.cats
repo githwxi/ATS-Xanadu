@@ -664,6 +664,9 @@ XATS2JS_UN_p2tr_set
 }
 //
 /* ****** ****** */
+// HX-2020-11-09:
+// Native arrays for Xats2js
+/* ****** ****** */
 
 function
 XATS2JS_jsarray_length
