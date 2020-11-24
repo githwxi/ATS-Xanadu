@@ -54,12 +54,13 @@ strmcon_vt_cons_
 fun
 <a:vt>
 stream_vt_nil
-( (*void*) ): stream_vt(a)
+((*void*)): stream_vt( a )
 fun
 <a:vt>
 stream_vt_cons
-( x0: a
-, xs: stream_vt(a)): stream_vt(a)
+( x0: (a)
+, xs
+: stream_vt(a)): stream_vt( a )
 
 (* ****** ****** *)
 
@@ -74,10 +75,12 @@ strmcon_vt_sing(a): strmcon_vt(a)
 
 fun
 <a:vt>
-stream_vt_pair(a, a): stream_vt(a)
+stream_vt_pair
+  (fst: a, snd: a): stream_vt(a)
 fun
 <a:vt>
-strmcon_vt_pair(a, a): strmcon_vt(a)
+strmcon_vt_pair
+  (fst: a, snd: a): strmcon_vt(a)
 
 (* ****** ****** *)
 

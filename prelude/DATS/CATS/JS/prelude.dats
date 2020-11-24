@@ -7,6 +7,39 @@ Prelude for Xats2js
 UN = // for casting
 "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
+// prelude/basics
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_lazy_cfr
+{a:t0}
+( f0
+: ()-<cfr>a
+) : lazy(a) = $exname()
+#extern
+fun
+XATS2JS_llazy_cfr
+{a:vt}
+( f0
+: ()-<cfr>a
+) : lazy_vt(a) = $exname()
+#extern
+fun
+XATS2JS_lazy_vt_cfr
+{a:vt}
+( f0
+: ()-<cfr>a
+) : lazy_vt(a) = $exname()
+//
+implfun
+XATS2JS_lazy_cfr{a}(f0) = $lazy(f0())
+implfun
+XATS2JS_llazy_cfr{a}(f0) = $llazy(f0())
+implfun
+XATS2JS_lazy_vt_cfr{a}(f0) = $llazy(f0())
+//
+(* ****** ****** *)
 //
 // prelude/optn.sats
 //
