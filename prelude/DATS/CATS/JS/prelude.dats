@@ -228,18 +228,38 @@ XATS2JS_strmcon_vt_cons(x0, xs) = strmcon_vt_cons(x0, xs)
 
 #extern
 fun
-XATS2JS_stream_vt_uncons_cfr
+XATS2JS_stream_vt_uncons_cfr_1
+{x0:vt}{r0:vt}
+( xs
+: stream_vt(x0)
+, f1
+: (x0, stream_vt(x0))-<cfr>r0): r0 = $exname()
+implfun
+XATS2JS_stream_vt_uncons_cfr_1
+  (xs, f1) =
+( case- !xs of
+  | ~strmcon_vt_cons(x0, xs) => f1(x0, xs)
+) // end of [XATS2JS_stream_vt_uncons_cfr_1]
+
+(* ****** ****** *)
+
+#extern
+fun
+XATS2JS_stream_vt_uncons_cfr_2
 {x0:vt}{r0:vt}
 ( xs
 : stream_vt(x0)
 , f0
+: ((*void*)) -<cfr> r0
+, f1
 : (x0, stream_vt(x0))-<cfr>r0): r0 = $exname()
 implfun
-XATS2JS_stream_vt_uncons_cfr
-  (xs, f0) =
-let
-val-strmcon_vt_cons(x0, xs) = !xs in f0(x0, xs)
-end // end of [XATS2JS_stream_vt_uncons_cfr]
+XATS2JS_stream_vt_uncons_cfr_2
+  (xs, f0, f1) =
+( case+ !xs of
+  | ~strmcon_vt_nil() => f0((*void*))
+  | ~strmcon_vt_cons(x0, xs) => f1(x0, xs)
+) // end of [XATS2JS_stream_vt_uncons_cfr_2]
 
 (* ****** ****** *)
 
