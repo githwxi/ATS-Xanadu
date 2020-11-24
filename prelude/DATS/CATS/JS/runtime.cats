@@ -3,12 +3,23 @@
 Runtime for Xats2js
 */
 /* ****** ****** */
-var
+const
+XATS2JS_nil = null
+const
 XATS2JS_top = null
-var
+const
 XATS2JS_none = null
-var
+const
+XATS2JS_null = null
+const
 XATS2JS_void = null
+/* ****** ****** */
+function
+XATS2JS_fnull
+  (    )
+{
+throw new Error();
+}
 /* ****** ****** */
 var // global
 XATS2JS_excbas = 0
