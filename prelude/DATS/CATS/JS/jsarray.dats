@@ -4,6 +4,8 @@ HX-2020-11-09:
 Native arrays for Xats2js
 *)
 (* ****** ****** *)
+#staload _ = "./basics.dats"
+(* ****** ****** *)
 //
 abstype
 jsarray_type(a:vt)
@@ -32,6 +34,22 @@ XATS2JS_jsarray_set_at
 ( xs
 : jsarray(a)
 , i0: nint, x0: a): void = $exname()
+(* ****** ****** *)
+//
+// HX-2020-11-09
+// symbol overloading for jsarray
+//
+(* ****** ****** *)
+#symload
+length
+with XATS2JS_jsarray_length of 1000
+(* ****** ****** *)
+#symload
+get_at
+with XATS2JS_jsarray_get_at of 1000
+#symload
+set_at
+with XATS2JS_jsarray_set_at of 1000
 (* ****** ****** *)
 //
 #extern
@@ -66,31 +84,18 @@ auxmain(0) where
     (i0 >= n0)
     then
     (
-      stream_vt_nil((*void*))
+      strmcon_vt_nil((*void*))
     )
     else
     let
       val x0 = xs.get_at(i0)
     in
-      stream_vt_cons(x0, auxmain(i0+1))
+      strmcon_vt_cons(x0, auxmain(i0+1))
     end // end of [else]
   ) (* end of [auxmain] *)
 //
 } (* end of [XATS2JS_jsarray_streamize] *)
 //
-(* ****** ****** *)
-//
-// HX-2020-11-09
-// symbol overloading for jsarray
-//
-(* ****** ****** *)
-#symload
-length with XATS2JS_jsarray_length of 1000
-(* ****** ****** *)
-#symload
-get_at with XATS2JS_jsarray_get_at of 1000
-#symload
-set_at with XATS2JS_jsarray_set_at of 1000
 (* ****** ****** *)
 
 (* end of [XATS2JS_jsarray.dats] *)
