@@ -94,6 +94,10 @@ fun
 <a:vt>
 stream_vt_print
   (xs: stream_vt(a)): void
+fun
+<a:vt>
+streax_vt_print
+  (xs: streax_vt(a)): void
 //
 fun
 <a:vt>
@@ -102,6 +106,8 @@ stream_vt_print0
 //
 fun<>
 stream_vt_print$len(): sint
+fun<>
+streax_vt_print$len(): sint
 //
 fun<>
 stream_vt_print$beg(): void

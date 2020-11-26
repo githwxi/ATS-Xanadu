@@ -274,6 +274,22 @@ end // end of [else]
 } (* end of [stream_vt_print_len] *)
 
 (* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+streax_vt_print(xs) =
+let
+impltmp
+stream_vt_print$len<>() =
+streax_vt_print$len<>()
+in
+stream_vt_print0<>(streax_vt_streamize(xs))
+end // end of [streax_vt_print]
+impltmp
+{a:vt}
+gl_print0<streax_vt(a)> = streax_vt_print<a>
+//
+(* ****** ****** *)
 
 impltmp
 <a>(*tmp*)
@@ -1535,6 +1551,11 @@ impltmp
 {x0:vt}
 glseq_streamize
 <stream_vt(x0)><x0> = stream_vt_streamize<x0>
+//
+impltmp
+{x0:vt}
+glseq_streamize
+<streax_vt(x0)><x0> = streax_vt_streamize<x0>
 //
 (* ****** ****** *)
 
