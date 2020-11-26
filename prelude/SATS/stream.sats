@@ -40,6 +40,11 @@ fun
 strmcon_cons_
 (a, stream(a)): strmcon(a)
 //
+fun
+<a:t0>
+strxcon_cons_
+(a, streax(a)): strxcon(a)
+//
 (* ****** ****** *)
 
 fun
@@ -143,8 +148,17 @@ fun
 stream_map(stream(x0)): stream(y0)
 fun
 <x0:t0>
+<y0:t0>
+streax_map(streax(x0)): streax(y0)
+//
+fun
+<x0:t0>
 <y0:vt>
 stream_map_vt(stream(x0)): stream_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+streax_map_vt(streax(x0)): streax_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -158,7 +172,14 @@ fun
 stream_filter(stream(x0)): stream(x0)
 fun
 <x0:t0>
+streax_filter(streax(x0)): streax(x0)
+//
+fun
+<x0:t0>
 stream_filter_vt(stream(x0)): stream_vt(x0)
+fun
+<x0:t0>
+streax_filter_vt(streax(x0)): streax_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -195,7 +216,14 @@ fun
 stream_sieve(stream(x0)): stream(x0)
 fun
 <x0:t0>
+streax_sieve(stream(x0)): streax(x0)
+//
+fun
+<x0:t0>
 stream_sieve_vt(stream(x0)): stream_vt(x0)
+fun
+<x0:t0>
+streax_sieve_vt(stream(x0)): streax_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -226,20 +254,29 @@ stream_sieve_vt(stream(x0)): stream_vt(x0)
 //
 (* ****** ****** *)
 //
-#symload filter with stream_filter of 1000
-#symload filter_vt with stream_filter_vt of 1000
-//
-(* ****** ****** *)
-//
 #symload map with stream_map of 1000
+#symload map with streax_map of 1000
 #symload map_vt with stream_map_vt of 1000
-#symload mapopt with stream_mapopt of 1000
-#symload mapopt_vt with stream_mapopt_vt of 1000
+#symload map_vt with streax_map_vt of 1000
 //
 (* ****** ****** *)
 //
 #symload sieve with stream_sieve of 1000
+#symload sieve with streax_sieve of 1000
 #symload sieve_vt with stream_sieve_vt of 1000
+#symload sieve_vt with streax_sieve_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload filter with stream_filter of 1000
+#symload filter with streax_filter of 1000
+#symload filter_vt with stream_filter_vt of 1000
+#symload filter_vt with streax_filter_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload mapopt with stream_mapopt of 1000
+#symload mapopt_vt with stream_mapopt_vt of 1000
 //
 (* ****** ****** *)
 
