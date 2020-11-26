@@ -213,6 +213,11 @@ fun
 <y0:vt>
 stream_vt_map0
   (xs: stream_vt(x0)): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+streax_vt_map0
+  (xs: streax_vt(x0)): streax_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -224,6 +229,10 @@ fun
 <x0:vt>
 stream_vt_filter0
   (xs: stream_vt(x0)): stream_vt(x0)
+fun
+<x0:vt>
+streax_vt_filter0
+  (xs: streax_vt(x0)): streax_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -235,6 +244,11 @@ fun
 <y0:vt>
 stream_vt_mapopt0
   (xs: stream_vt(x0)): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+streax_vt_mapopt0
+  (xs: streax_vt(x0)): streax_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -243,18 +257,33 @@ fun
 <y0:vt>
 stream_vt_mapoptn0
   (xs: stream_vt(x0)): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+streax_vt_mapoptn0
+  (xs: streax_vt(x0)): streax_vt(y0)
 //
 fun
 <x0:vt>
 <y0:vt>
 stream_vt_maplist0
   (xs: stream_vt(x0)): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+streax_vt_maplist0
+  (xs: streax_vt(x0)): streax_vt(y0)
 //
 fun
 <x0:vt>
 <y0:vt>
 stream_vt_mapstrm0
   (xs: stream_vt(x0)): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+streax_vt_mapstrm0
+  (xs: streax_vt(x0)): streax_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -267,6 +296,11 @@ fun
 <y0:vt>
 stream_vt_imap0
   (xs: stream_vt(x0)): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+streax_vt_imap0
+  (xs: streax_vt(x0)): streax_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -274,6 +308,10 @@ fun
 <x0:vt>
 stream_vt_ifilter0
   (xs: stream_vt(x0)): stream_vt(x0)
+fun
+<x0:vt>
+streax_vt_ifilter0
+  (xs: streax_vt(x0)): streax_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -282,6 +320,11 @@ fun
 <y0:vt>
 stream_vt_imapopt0
   (xs: stream_vt(x0)): stream_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+streax_vt_imapopt0
+  (xs: streax_vt(x0)): streax_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -301,6 +344,8 @@ fun
 stream_vt_z2forcmp0
   ( xs: stream_vt(x0)
   , ys: stream_vt(y0)): sint
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt

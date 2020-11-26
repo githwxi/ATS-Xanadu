@@ -935,19 +935,33 @@ datatype
 strmcon(a:type+) =
 | strmcon_nil of ((*void*))
 | strmcon_cons of (a, stream(a))
+and
+strxcon(a:type+) =
+| strxcon_cons of (a, streax(a))
 //
 where
+{
 typedef
 stream(a:type) = lazy(strmcon(a))
+typedef
+streax(a:type) = lazy(strxcon(a))
+}
 //
 datavwtp
 strmcon_vt(a:vwtp+) =
 | strmcon_vt_nil of ((*void*))
 | strmcon_vt_cons of (a, stream_vt(a))
+and
+strxcon_vt(a:vwtp+)
+| strxcon_vt_cons of (a, streax_vt(a))
 //
 where
+{
 vwtpdef
 stream_vt(a:vwtp) = lazy_vt(strmcon_vt(a))
+vwtpdef
+streax_vt(a:vwtp) = lazy_vt(strxcon_vt(a))
+} (* where *)
 //
 (* ****** ****** *)
 //

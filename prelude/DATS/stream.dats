@@ -27,6 +27,12 @@ strmcon_cons_
 (x0, xs) =
 strmcon_cons(x0, xs)
 //
+impltmp
+<a>(*tmp*)
+strxcon_cons_
+(x0, xs) =
+strxcon_cons(x0, xs)
+//
 (* ****** ****** *)
 //
 impltmp
