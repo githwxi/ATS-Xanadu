@@ -153,6 +153,11 @@ fun
 stream_vt_streamize
 (xs: stream_vt(a)): stream_vt(a)
 //
+fun
+<a:vt>
+streax_vt_streamize
+(xs: streax_vt(a)): stream_vt(a)
+//
 (* ****** ****** *)
 //
 fun
