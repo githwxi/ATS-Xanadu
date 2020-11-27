@@ -99,7 +99,7 @@ iseol
 ( c0
 : cgtz )
 : bool = (c0 = '\n')
-fun
+fnx
 auxmain0
 ( cs
 : cstream)
