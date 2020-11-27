@@ -167,7 +167,7 @@ string_length
 ) where
 {
 //
-fun
+fnx
 loop
 {i,j:nat}.<i>.
 ( xs
@@ -303,7 +303,7 @@ string_forall
 typedef x0 = cgtz
 typedef xs = string
 //
-fun
+fnx
 loop(xs: xs): bool =
 if
 string_nilq
@@ -401,7 +401,7 @@ loop(p0, 0(*i0*), cs)
 sexpdef
 stmp=strtmp1_vt
 //
-fun
+fnx
 loop
 {i:nat
 |i<=n}.<n-i>.
@@ -449,7 +449,7 @@ loop(p0, 0(*i0*), cs)
 sexpdef
 stmp=strtmp1_vt
 //
-fun
+fnx
 loop
 {i:nat
 |i<=n}.<n-i>.
@@ -522,7 +522,7 @@ val () = loop(p0, i0)
 sexpdef
 stmp=strtmp1_vt
 //
-fun
+fnx
 loop
 {i:nat
 |i<=n}.<n-i>.
