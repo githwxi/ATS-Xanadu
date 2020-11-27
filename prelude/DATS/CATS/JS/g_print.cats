@@ -74,15 +74,7 @@ var
 rep =
 XATS2JS_the_print_store.join("");
 return rep;
-} // XATS2JS_the_print_store_join0
-function
-XATS2JS_the_print_store_join(sep)
-{
-var
-rep =
-XATS2JS_the_print_store.join(sep);
-return rep;
-} // XATS2JS_the_print_store_join1
+} // XATS2JS_the_print_store_join
 
 /* ****** ****** */
 
