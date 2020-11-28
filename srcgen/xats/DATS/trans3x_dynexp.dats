@@ -448,6 +448,63 @@ in
 end
 //
 |
+D3Eraise(d3e1) =>
+let
+val d3e1 =
+trans3x_dexp(env0, d3e1)
+in
+let
+  val dend = D3Eraise( d3e1 )
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end
+end // end of [D3Eraise]
+//
+|
+D3Elazy( d3e1 ) =>
+let
+//
+val d3e1 =
+trans3x_dexp(env0, d3e1)
+//
+in
+let
+  val dend = D3Elazy(  d3e1  )
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end
+end // end of [ D3Elazy ]
+|
+D3Ellazy
+(d3e1, d3es(*free*)) =>
+let
+//
+val d3e1 =
+trans3x_dexp(env0, d3e1)
+val d3es =
+trans3x_dexplst(env0, d3es)
+//
+val dend = D3Ellazy(d3e1, d3es)
+//
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end // end of [D3Ellazy]
+//
+|
+D3Eanno
+(d3e1, s2e2(*anno*)) =>
+let
+//
+val d3e1 =
+trans3x_dexp(env0, d3e1)
+//
+val dend = D3Eanno(d3e1, s2e2)
+//
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end // end of [ D3Eanno ]
+//
+|
 dend(*else*) =>
 let
 val d3e0 =
