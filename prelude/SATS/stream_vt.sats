@@ -50,6 +50,22 @@ strmcon_vt_cons_
 : stream_vt(a)): strmcon_vt(a)
 //
 (* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+strmcon_vt_uncons_cfr
+( xs: strmcon_vt( x0 )
+, f0: ((*void*)) -<cfr> r0
+, f1: (x0, stream_vt(x0)) -<cfr> r0): r0
+fun
+<x0:vt>
+<r0:vt>
+strxcon_vt_uncons_cfr
+( xs: strxcon_vt( x0 )
+, f1: (x0, streax_vt(x0)) -<cfr> r0): r0
+//
+(* ****** ****** *)
 
 fun
 <a:vt>

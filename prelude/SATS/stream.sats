@@ -45,6 +45,21 @@ fun
 strxcon_cons_
 (a, streax(a)): strxcon(a)
 //
+fun
+<x0:t0>
+<r0:vt>
+strmcon_uncons_cfr
+( xs: strmcon( x0 )
+, f0: ((*void*)) -<cfr> r0
+, f1: (x0, stream(x0)) -<cfr> r0): r0
+//
+fun
+<x0:t0>
+<r0:vt>
+strxcon_uncons_cfr
+( xs: strxcon(x0)
+, f1: (x0, streax(x0)) -<cfr> r0): r0
+//
 (* ****** ****** *)
 
 fun
