@@ -376,7 +376,7 @@ stream_vt_map0<x0><y0>(xs)
 ) where
 {
 impltmp map0$fopr<x0><y0>(x0) = f0(x0)
-}
+} (* end of [XATS2JS_stream_vt_map0_cfr] *)
 
 (* ****** ****** *)
 
@@ -394,7 +394,7 @@ stream_vt_filter0<x0>(xs)
 ) where
 {
   impltmp filter0$test<x0>(x0) = f0(x0)
-}
+} (* end of [XATS2JS_stream_vt_filter0_cfr] *)
 
 (* ****** ****** *)
 
