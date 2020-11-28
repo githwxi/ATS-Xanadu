@@ -60,6 +60,21 @@ return; // gint_print_uint
 }
 /* ****** ****** */
 function
+XATS2JS_gflt_print_sflt
+  (x0)
+{
+XATS2JS_g_print(x0);
+return; // gint_print_sflt
+}
+function
+XATS2JS_gflt_print_dflt
+  (x0)
+{
+XATS2JS_g_print(x0);
+return; // gint_print_dflt
+}
+/* ****** ****** */
+function
 XATS2JS_string_print
   (cs)
 {
