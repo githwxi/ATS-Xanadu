@@ -150,5 +150,25 @@ fun<>
 gflt_mod_dflt_dflt(dflt, dflt): dflt
 //
 (* ****** ****** *)
+//
+fun<>
+gflt_add_sint_dflt(sint, dflt): dflt
+fun<>
+gflt_sub_sint_dflt(sint, dflt): dflt
+fun<>
+gflt_mul_sint_dflt(sint, dflt): dflt
+fun<>
+gflt_div_sint_dflt(sint, dflt): dflt
+//
+fun<>
+gflt_add_dflt_sint(dflt, sint): dflt
+fun<>
+gflt_sub_dflt_sint(dflt, sint): dflt
+fun<>
+gflt_mul_dflt_sint(dflt, sint): dflt
+fun<>
+gflt_div_dflt_sint(dflt, sint): dflt
+//
+(* ****** ****** *)
 
 (* end of [gflt.sats] *)
