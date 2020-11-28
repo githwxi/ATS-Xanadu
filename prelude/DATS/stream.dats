@@ -36,6 +36,29 @@ strxcon_cons(x0, xs)
 (* ****** ****** *)
 //
 impltmp
+<x0><r0>
+strmcon_uncons_cfr
+(xs, f0, f1) =
+(
+case+ xs of
+|
+strmcon_nil() => f0((*void*))
+|
+strmcon_cons(x0, xs) => f1(x0, xs)
+)
+impltmp
+<x0><r0>
+strxcon_uncons_cfr
+(xs, f1) =
+(
+case+ xs of
+|
+strxcon_cons(x0, xs) => f1(x0, xs)
+)
+//
+(* ****** ****** *)
+//
+impltmp
 <a>(*tmp*)
 stream_nil() =
 $lazy(strmcon_nil())
