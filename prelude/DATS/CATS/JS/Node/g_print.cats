@@ -43,15 +43,30 @@ function
 XATS2JS_NODE_gint_print_sint
   (x0)
 {
-XATS2JS_NODE_g_print(x0);
-return; // gint_print_sint
+  XATS2JS_NODE_g_print(x0);
+  return; // gint_print_sint<>
 }
 function
 XATS2JS_NODE_gint_print_uint
   (x0)
 {
-XATS2JS_NODE_g_print(x0);
-return; // gint_print_uint
+  XATS2JS_NODE_g_print(x0);
+  return; // gint_print_uint<>
+}
+/* ****** ****** */
+function
+XATS2JS_NODE_gflt_print_sflt
+  (x0)
+{
+  XATS2JS_NODE_g_print(x0);
+  return; // gflt_print_sflt<>
+}
+function
+XATS2JS_NODE_gflt_print_dflt
+  (x0)
+{
+  XATS2JS_NODE_g_print(x0);
+  return; // gflt_print_dflt<>
 }
 /* ****** ****** */
 function

@@ -170,5 +170,30 @@ fun<>
 gflt_div_dflt_sint(dflt, sint): dflt
 //
 (* ****** ****** *)
+//
+// HX-2020-11-18:
+// For symbol overloading
+//
+(* ****** ****** *)
+#symload + with gflt_add_sflt_sflt of 1000
+#symload - with gflt_sub_sflt_sflt of 1000
+#symload * with gflt_mul_sflt_sflt of 1000
+#symload / with gflt_div_sflt_sflt of 1000
+(* ****** ****** *)
+#symload + with gflt_add_dflt_dflt of 1000
+#symload - with gflt_sub_dflt_dflt of 1000
+#symload * with gflt_mul_dflt_dflt of 1000
+#symload / with gflt_div_dflt_dflt of 1000
+(* ****** ****** *)
+#symload + with gflt_add_sint_dflt of 1000
+#symload - with gflt_sub_sint_dflt of 1000
+#symload * with gflt_mul_sint_dflt of 1000
+#symload / with gflt_div_sint_dflt of 1000
+(* ****** ****** *)
+#symload + with gflt_add_dflt_sint of 1000
+#symload - with gflt_sub_dflt_sint of 1000
+#symload * with gflt_mul_dflt_sint of 1000
+#symload / with gflt_div_dflt_sint of 1000
+(* ****** ****** *)
 
 (* end of [gflt.sats] *)

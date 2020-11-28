@@ -53,6 +53,30 @@ XATS2JS_gint_print_uint
 }
 //
 (* ****** ****** *)
+//
+impltmp
+gflt_print_sflt<> =
+XATS2JS_gflt_print_sflt
+where
+{
+#extern
+fun
+XATS2JS_gflt_print_sflt
+( x0: sflt ): void = $exname()
+}
+//
+impltmp
+gflt_print_dflt<> =
+XATS2JS_gflt_print_dflt
+where
+{
+#extern
+fun
+XATS2JS_gflt_print_dflt
+( x0: dflt ): void = $exname()
+}
+//
+(* ****** ****** *)
 impltmp
 string_print<> =
 XATS2JS_string_print
