@@ -71,6 +71,22 @@ implfun
 XATS2JS_optn_cons(x0) = optn_cons(x0)
 //
 (* ****** ****** *)
+#extern
+fun
+XATS2JS_optn_uncons_cfr
+{x0:t0}{r0:vt}
+( xs
+: optn(x0)
+, f0: ()-<cfr>r0
+, f1: (x0)-<cfr>r0): r0 = $exname()
+implfun
+XATS2JS_optn_uncons_cfr
+  (xs, f0, f1) =
+( case+ !xs of
+  | optn_nil() => f0()
+  | optn_cons(x0) => f1(x0)
+) (* end of [XATS2JS_optn_uncons_cfr] *)
+(* ****** ****** *)
 //
 // prelude/list.sats
 //
@@ -93,6 +109,24 @@ XATS2JS_list_nil() = list_nil((*void*))
 implfun
 XATS2JS_list_cons(x0, xs) = list_cons(x0, xs)
 //
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_list_uncons_cfr
+{x0:t0}{r0:vt}
+( xs
+: list(x0)
+, f0
+: ((*void*))-<cfr>r0
+, f1
+: (x0, list(x0))-<cfr>r0): r0 = $exname()
+implfun
+XATS2JS_list_uncons_cfr
+  (xs, f0, f1) =
+( case+ !xs of
+  | list_nil() => f0()
+  | list_cons(x0, xs) => f1(x0, xs)
+) (* end of [XATS2JS_list_uncons_cfr] *)
 (* ****** ****** *)
 //
 // prelude/stream.sats
@@ -138,6 +172,39 @@ XATS2JS_stream_cons(x0, xs) = stream_cons(x0, xs)
 //
 *)
 (* ****** ****** *)
+#extern
+fun
+XATS2JS_stream_uncons_cfr
+{x0:t0}{r0:vt}
+( xs
+: stream(x0)
+, f0
+: ((*void*))-<cfr>r0
+, f1
+: (x0, stream(x0))-<cfr>r0): r0 = $exname()
+implfun
+XATS2JS_stream_uncons_cfr
+  (xs, f0, f1) =
+( case+ !xs of
+  | strmcon_nil() => f0((*void*))
+  | strmcon_cons(x0, xs) => f1(x0, xs)
+) (* end of [XATS2JS_stream_uncons_cfr] *)
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_streax_uncons_cfr
+{x0:t0}{r0:vt}
+( xs
+: streax(x0)
+, f1
+: (x0, streax(x0))-<cfr>r0): r0 = $exname()
+implfun
+XATS2JS_streax_uncons_cfr
+  (xs, f1) =
+( case+ !xs of
+  | strxcon_cons(x0, xs) => f1(x0, xs)
+) (* end of [XATS2JS_streax_uncons_cfr] *)
+(* ****** ****** *)
 //
 // prelude/optn_vt.sats
 //
@@ -158,8 +225,24 @@ implfun
 XATS2JS_optn_vt_cons(x0) = optn_vt_cons(x0)
 //
 (* ****** ****** *)
+#extern
+fun
+XATS2JS_optn_vt_uncons_cfr
+{x0:vt}{r0:vt}
+( xs
+: optn_vt(x0)
+, f0: ()-<cfr>r0
+, f1: (x0)-<cfr>r0): r0 = $exname()
+implfun
+XATS2JS_optn_vt_uncons_cfr
+  (xs, f0, f1) =
+( case+ !xs of
+  | ~optn_vt_nil() => f0()
+  | ~optn_vt_cons(x0) => f1(x0)
+) (* end of [XATS2JS_optn_vt_uncons_cfr] *)
+(* ****** ****** *)
 //
-// prelude/list.sats
+// prelude/list_vt.sats
 //
 (* ****** ****** *)
 //
@@ -180,6 +263,24 @@ XATS2JS_list_vt_nil() = list_vt_nil((*void*))
 implfun
 XATS2JS_list_vt_cons(x0, xs) = list_vt_cons(x0, xs)
 //
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_list_vt_uncons_cfr
+{x0:vt}{r0:vt}
+( xs
+: list_vt(x0)
+, f0
+: ((*void*))-<cfr>r0
+, f1
+: (x0, list_vt(x0))-<cfr>r0): r0 = $exname()
+implfun
+XATS2JS_list_vt_uncons_cfr
+  (xs, f0, f1) =
+( case+ !xs of
+  | ~list_vt_nil() => f0()
+  | ~list_vt_cons(x0, xs) => f1(x0, xs)
+) (* end of [XATS2JS_list_vt_uncons_cfr] *)
 (* ****** ****** *)
 //
 // prelude/stream_vt.sats
@@ -225,7 +326,6 @@ implfun
 XATS2JS_strmcon_vt_cons(x0, xs) = strmcon_vt_cons(x0, xs)
 //
 (* ****** ****** *)
-
 #extern
 fun
 XATS2JS_stream_vt_uncons_cfr
@@ -233,7 +333,7 @@ XATS2JS_stream_vt_uncons_cfr
 ( xs
 : stream_vt(x0)
 , f0
-: ((*void*)) -<cfr> r0
+: ((*void*))-<cfr>r0
 , f1
 : (x0, stream_vt(x0))-<cfr>r0): r0 = $exname()
 implfun
@@ -243,7 +343,21 @@ XATS2JS_stream_vt_uncons_cfr
   | ~strmcon_vt_nil() => f0((*void*))
   | ~strmcon_vt_cons(x0, xs) => f1(x0, xs)
 ) (* end of [XATS2JS_stream_vt_uncons_cfr] *)
-
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_streax_vt_uncons_cfr
+{x0:vt}{r0:vt}
+( xs
+: streax_vt(x0)
+, f1
+: (x0, streax_vt(x0))-<cfr>r0): r0 = $exname()
+implfun
+XATS2JS_streax_vt_uncons_cfr
+  (xs, f1) =
+( case+ !xs of
+  | ~strxcon_vt_cons(x0, xs) => f1(x0, xs)
+) (* end of [XATS2JS_streax_vt_uncons_cfr] *)
 (* ****** ****** *)
 
 #extern
@@ -261,8 +375,7 @@ XATS2JS_stream_vt_map0_cfr
 stream_vt_map0<x0><y0>(xs)
 ) where
 {
-impltmp
-map0$fopr<x0><y0>(x0) = f0(x0)
+impltmp map0$fopr<x0><y0>(x0) = f0(x0)
 }
 
 (* ****** ****** *)
@@ -280,8 +393,7 @@ XATS2JS_stream_vt_filter0_cfr
 stream_vt_filter0<x0>(xs)
 ) where
 {
-  impltmp
-  filter0$test<x0>(x0) = f0(x0)
+  impltmp filter0$test<x0>(x0) = f0(x0)
 }
 
 (* ****** ****** *)
