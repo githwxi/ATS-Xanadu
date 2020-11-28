@@ -599,6 +599,10 @@ end // end of [gseq_concat_string]
 #extern
 fun<>
 string_split_lines
+(cs:string): stream_vt(string)
+#extern
+fun<>
+string_split_lines_vt
 (cs:string): stream_vt(string_vt)
 #extern
 fun<>
@@ -613,14 +617,32 @@ fun<>
 cstream_vt_split_lines
 (cs:cstream_vt): stream_vt(string_vt)
 (* ****** ****** *)
+//
 impltmp
 <>(*tmp*)
 string_split_lines(cs) =
+let
+typedef y0 = string
+vwtpdef x0 = string_vt
+impltmp
+map0$fopr<x0><y0> = string_vt2t
+in
+stream_vt_map0<x0><y0>
+(
 cstream_vt_split_lines(streamize(cs))
+)
+end
+//
+impltmp
+<>(*tmp*)
+string_split_lines_vt(cs) =
+cstream_vt_split_lines(streamize(cs))
+//
 impltmp
 <>(*tmp*)
 string_vt_split_lines(cs) =
 cstream_vt_split_lines(streamize(cs))
+//
 (* ****** ****** *)
 impltmp
 <>(*tmp*)
