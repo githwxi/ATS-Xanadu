@@ -387,14 +387,28 @@ a1ref_rforall0
 (* ****** ****** *)
 //
 #symload
+[] with a0ref_get of 1000
+#symload
+[] with a0ref_set of 1000
+//
+#symload
 get with a0ref_get of 1000
 #symload
 set with a0ref_set of 1000
+//
+(* ****** ****** *)
+//
+#symload
+[] with a0ptr_get of 1000
+#symload
+[] with a0ptr_set of 1000
 //
 #symload
 get with a0ptr_get of 1000
 #symload
 set with a0ptr_set of 1000
+//
+(* ****** ****** *)
 //
 #symload
 a0ref with a0ref_make of 1000
