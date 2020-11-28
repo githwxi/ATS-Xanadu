@@ -136,4 +136,42 @@ g_div<dflt> = gflt_div_dflt_dflt<>
 //
 (* ****** ****** *)
 
+impltml
+<>(*tmp*)
+gflt_add_sint_dflt(i1, f2) =
+gflt_add_dflt_dflt(g_i(i1), f2)
+impltml
+<>(*tmp*)
+gflt_sub_sint_dflt(i1, f2) =
+gflt_sub_dflt_dflt(g_i(i1), f2)
+impltml
+<>(*tmp*)
+gflt_mul_sint_dflt(i1, f2) =
+gflt_mul_dflt_dflt(g_i(i1), f2)
+impltml
+<>(*tmp*)
+gflt_div_sint_dflt(i1, f2) =
+gflt_div_dflt_dflt(g_i(i1), f2)
+
+(* ****** ****** *)
+
+impltml
+<>(*tmp*)
+gflt_add_dflt_sint(f1, i2) =
+gflt_add_dflt_dflt(f1, g_i(i2))
+impltml
+<>(*tmp*)
+gflt_sub_dflt_sint(f1, i2) =
+gflt_sub_dflt_dflt(f1, g_i(i2))
+impltml
+<>(*tmp*)
+gflt_mul_dflt_sint(f1, i2) =
+gflt_mul_dflt_dflt(f1, g_i(i2))
+impltml
+<>(*tmp*)
+gflt_div_dflt_sint(f1, i2) =
+gflt_div_dflt_dflt(f1, g_i(i2))
+
+(* ****** ****** *)
+
 (* end of [gflt.dats] *)
