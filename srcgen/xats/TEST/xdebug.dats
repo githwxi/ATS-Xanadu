@@ -18,6 +18,11 @@ $(XATSHOME)/prelude/SATS/gbas.sats"
 $()(XATSHOME)/prelude/SATS/gbas.sats"
 *)
 (* ****** ****** *)
+
+fun
+foo(Z: a0ref(int)): int = Z[]
+
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 #define x = 1
