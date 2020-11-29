@@ -125,13 +125,43 @@ XATS2JS_jsarray_streamize
 // XATS2JS/jsobjmap:
 //
 (* ****** ****** *)
+typedef int = sint
+typedef str = string
+(* ****** ****** *)
 #extern
 fun
 <k0:t0>
 XATS2JS_jsobjmap_keys
 {x0:vt}
 ( map
+: jsobjmap(k0, x0)): jsarray(k0)
+(* ****** ****** *)
+impltmp
+XATS2JS_jsobjmap_keys
+<int> =
+XATS2JS_jsobjmap_keys where
+{
+typedef k0 = int
+#extern
+fun
+XATS2JS_jsobjmap_keys
+{x0:vt}
+( map
 : jsobjmap(k0, x0)): jsarray(k0) = $exname()
+}
+impltmp
+XATS2JS_jsobjmap_keys
+<str> =
+XATS2JS_jsobjmap_keys where
+{
+typedef k0 = str
+#extern
+fun
+XATS2JS_jsobjmap_keys
+{x0:vt}
+( map
+: jsobjmap(k0, x0)): jsarray(k0) = $exname()
+}
 (* ****** ****** *)
 #extern
 fun
@@ -139,7 +169,64 @@ fun
 XATS2JS_jsobjmap_mapped
 {x0:vt}
 ( map
+: jsobjmap(k0, x0), key: k0): bool
+(* ****** ****** *)
+//
+impltmp
+XATS2JS_jsobjmap_mapped
+<int> =
+XATS2JS_jsobjmap_mapped where
+{
+typedef k0 = int
+fun
+XATS2JS_jsobjmap_mapped
+{x0:vt}
+( map
 : jsobjmap(k0, x0), key: k0): bool = $exname()
+}
+//
+impltmp
+XATS2JS_jsobjmap_mapped
+<str> =
+XATS2JS_jsobjmap_mapped where
+{
+typedef k0 = str
+fun
+XATS2JS_jsobjmap_mapped
+{x0:vt}
+( map
+: jsobjmap(k0, x0), key: k0): bool = $exname()
+}
+//
+(* ****** ****** *)
+#extern
+fun
+<k0:t0>
+XATS2JS_jsobjmap_make_nil
+{x0:t0}((*void*)): jsobjmap(k0, x0)
+(* ****** ****** *)
+impltmp
+XATS2JS_jsobjmap_make_nil
+<int> =
+XATS2JS_jsobjmap_make_nil where
+{
+typedef k0 = int
+#extern
+fun
+XATS2JS_jsobjmap_make_nil
+{x0:t0}((*void*)): jsobjmap(k0, x0) = $exname()
+}
+impltmp
+XATS2JS_jsobjmap_make_nil
+<str> =
+XATS2JS_jsobjmap_make_nil where
+{
+typedef k0 = str
+#extern
+fun
+XATS2JS_jsobjmap_make_nil
+{x0:t0}((*void*)): jsobjmap(k0, x0) = $exname()
+}
 (* ****** ****** *)
 #extern
 fun
@@ -147,37 +234,136 @@ fun
 XATS2JS_jsobjmap_search_opt
 {x0:t0}
 ( map
-: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $exname()
+: jsobjmap(k0, x0), key: k0): optn_vt(x0)
 (* ****** ****** *)
+//
+impltmp
+XATS2JS_jsobjmap_search_opt
+<int> =
+XATS2JS_jsobjmap_search_opt where
+{
+typedef k0 = int
+#extern
+fun
+XATS2JS_jsobjmap_search_opt
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $exname()
+}
+//
+impltmp
+XATS2JS_jsobjmap_search_opt
+<str> =
+XATS2JS_jsobjmap_search_opt where
+{
+typedef k0 = str
+#extern
+fun
+XATS2JS_jsobjmap_search_opt
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $exname()
+}
+//
+(* ****** ****** *)
+//
+(*
 #extern
 fun
 <k0:t0>
 XATS2JS_jsobjmap_remove
 {x0:vt}
 ( map
-: jsobjmap(k0, x0), key: k0): bool = $exname()
+: jsobjmap(k0, x0), key: k0): bool
+*)
+//
 #extern
 fun
 <k0:t0>
 XATS2JS_jsobjmap_remove_opt
 {x0:vt}
 ( map
-: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $exname()
+: jsobjmap(k0, x0), key: k0): optn_vt(x0)
+//
 (* ****** ****** *)
+//
+impltmp
+XATS2JS_jsobjmap_remove_opt
+<int> =
+XATS2JS_jsobjmap_remove_opt where
+{
+typedef k0 = int
+#extern
+fun
+XATS2JS_jsobjmap_remove_opt
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $exname()
+}
+//
+impltmp
+XATS2JS_jsobjmap_remove_opt
+<str> =
+XATS2JS_jsobjmap_remove_opt where
+{
+typedef k0 = str
+#extern
+fun
+XATS2JS_jsobjmap_remove_opt
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $exname()
+}
+//
+(* ****** ****** *)
+(*
 #extern
 fun
 <k0:t0>
 XATS2JS_jsobjmap_insert
 {x0:vt}
 ( map
-: jsobjmap(k0, x0), key: k0, itm: x0): bool = $exname()
+: jsobjmap(k0, x0), key: k0, itm: x0): bool
+*)
+//
 #extern
 fun
 <k0:t0>
 XATS2JS_jsobjmap_insert_opt
 {x0:vt}
 ( map
+: jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0)
+//
+(* ****** ****** *)
+//
+impltmp
+XATS2JS_jsobjmap_insert_opt
+<int> =
+XATS2JS_jsobjmap_insert_opt where
+{
+typedef k0 = int
+#extern
+fun
+XATS2JS_jsobjmap_insert_opt
+{x0:t0}
+( map
 : jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0) = $exname()
+}
+//
+impltmp
+XATS2JS_jsobjmap_insert_opt
+<str> =
+XATS2JS_jsobjmap_insert_opt where
+{
+typedef k0 = str
+#extern
+fun
+XATS2JS_jsobjmap_insert_opt
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0) = $exname()
+}
+//
 (* ****** ****** *)
 
 (* end of [XATS2JS_jsbasics.dats] *)
