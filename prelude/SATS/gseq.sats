@@ -296,7 +296,7 @@ fun
 <y0:vt>
 gseq_map_stream(xs): stream_vt(y0)
 (* ****** ****** *)
-
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -305,9 +305,9 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_copy_rlist(xs): list_vt(x0)
-
+//
 (* ****** ****** *)
-
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -320,7 +320,7 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_filter_stream(xs): stream_vt(x0)
-
+//
 (* ****** ****** *)
 //
 fun
@@ -553,6 +553,10 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_mergesort(xs: xs): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_mergesort_list(xs: xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
