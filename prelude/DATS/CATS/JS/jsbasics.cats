@@ -46,17 +46,17 @@ function
 XATS2JS_jsobjmap_keys
    (obj)
 {
-  return Object.keys(obj);
+return Object.keys(obj);
 } // XATS2JS_jsobjmap_keys
 
 /* ****** ****** */
 
 function
-XATS2JS_jsobjmap_mapped
+XATS2JS_jsobjmap_keyq
    (obj, key)
 {
-return obj.hasOwnProperty(key)
-} // XATS2JS_jsobjmap_mapped
+return obj.hasOwnProperty(key);
+} // XATS2JS_jsobjmap_keyq
 
 /* ****** ****** */
 

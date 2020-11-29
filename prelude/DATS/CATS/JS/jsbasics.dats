@@ -136,6 +136,7 @@ XATS2JS_jsobjmap_keys
 ( map
 : jsobjmap(k0, x0)): jsarray(k0)
 (* ****** ****** *)
+//
 impltmp
 XATS2JS_jsobjmap_keys
 <int> =
@@ -162,37 +163,37 @@ XATS2JS_jsobjmap_keys
 ( map
 : jsobjmap(k0, x0)): jsarray(k0) = $exname()
 }
+//
 (* ****** ****** *)
 #extern
 fun
 <k0:t0>
-XATS2JS_jsobjmap_mapped
+XATS2JS_jsobjmap_keyq
 {x0:vt}
 ( map
 : jsobjmap(k0, x0), key: k0): bool
 (* ****** ****** *)
 //
 impltmp
-XATS2JS_jsobjmap_mapped
+XATS2JS_jsobjmap_keyq
 <int> =
-XATS2JS_jsobjmap_mapped where
+XATS2JS_jsobjmap_keyq where
 {
 typedef k0 = int
 fun
-XATS2JS_jsobjmap_mapped
+XATS2JS_jsobjmap_keyq
 {x0:vt}
 ( map
 : jsobjmap(k0, x0), key: k0): bool = $exname()
 }
-//
 impltmp
-XATS2JS_jsobjmap_mapped
+XATS2JS_jsobjmap_keyq
 <str> =
-XATS2JS_jsobjmap_mapped where
+XATS2JS_jsobjmap_keyq where
 {
 typedef k0 = str
 fun
-XATS2JS_jsobjmap_mapped
+XATS2JS_jsobjmap_keyq
 {x0:vt}
 ( map
 : jsobjmap(k0, x0), key: k0): bool = $exname()
@@ -250,7 +251,6 @@ XATS2JS_jsobjmap_search_opt
 ( map
 : jsobjmap(k0, x0), key: k0): optn_vt(x0) = $exname()
 }
-//
 impltmp
 XATS2JS_jsobjmap_search_opt
 <str> =
@@ -280,12 +280,46 @@ XATS2JS_jsobjmap_remove
 #extern
 fun
 <k0:t0>
+XATS2JS_jsobjmap_remove_any
+{x0:vt}
+( map
+: jsobjmap(k0, x0), key: k0): void
+#extern
+fun
+<k0:t0>
 XATS2JS_jsobjmap_remove_opt
 {x0:vt}
 ( map
 : jsobjmap(k0, x0), key: k0): optn_vt(x0)
 //
 (* ****** ****** *)
+//
+impltmp
+XATS2JS_jsobjmap_remove_any
+<int> =
+XATS2JS_jsobjmap_remove_any where
+{
+typedef k0 = int
+#extern
+fun
+XATS2JS_jsobjmap_remove_any
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0): void = $exname()
+}
+impltmp
+XATS2JS_jsobjmap_remove_any
+<str> =
+XATS2JS_jsobjmap_remove_any where
+{
+typedef k0 = str
+#extern
+fun
+XATS2JS_jsobjmap_remove_any
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0): void = $exname()
+}
 //
 impltmp
 XATS2JS_jsobjmap_remove_opt
@@ -300,7 +334,6 @@ XATS2JS_jsobjmap_remove_opt
 ( map
 : jsobjmap(k0, x0), key: k0): optn_vt(x0) = $exname()
 }
-//
 impltmp
 XATS2JS_jsobjmap_remove_opt
 <str> =
@@ -329,12 +362,46 @@ XATS2JS_jsobjmap_insert
 #extern
 fun
 <k0:t0>
+XATS2JS_jsobjmap_insert_any
+{x0:vt}
+( map
+: jsobjmap(k0, x0), key: k0, itm: x0): void
+#extern
+fun
+<k0:t0>
 XATS2JS_jsobjmap_insert_opt
 {x0:vt}
 ( map
 : jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0)
 //
 (* ****** ****** *)
+//
+impltmp
+XATS2JS_jsobjmap_insert_any
+<int> =
+XATS2JS_jsobjmap_insert_any where
+{
+typedef k0 = int
+#extern
+fun
+XATS2JS_jsobjmap_insert_any
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0, itm: x0): void = $exname()
+}
+impltmp
+XATS2JS_jsobjmap_insert_any
+<str> =
+XATS2JS_jsobjmap_insert_any where
+{
+typedef k0 = str
+#extern
+fun
+XATS2JS_jsobjmap_insert_any
+{x0:t0}
+( map
+: jsobjmap(k0, x0), key: k0, itm: x0): void = $exname()
+}
 //
 impltmp
 XATS2JS_jsobjmap_insert_opt
@@ -349,7 +416,6 @@ XATS2JS_jsobjmap_insert_opt
 ( map
 : jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0) = $exname()
 }
-//
 impltmp
 XATS2JS_jsobjmap_insert_opt
 <str> =
