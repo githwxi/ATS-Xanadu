@@ -1575,8 +1575,8 @@ gseq_z2foldl
 <xs,ys><x0,y0><r0>(xs, ys, $addr(r0))
 //
 in
-  $UN.p2tr_set<zz>
-  (pz, list_vt_nil()); $UN.castlin01(r0)
+$UN.p2tr_set<zz>
+(pz, list_vt_nil()); $UN.castlin01(r0)
 end // end of [gseq_z2map_list/z2foldl]
 //
 (* ****** ****** *)
@@ -1585,21 +1585,29 @@ end // end of [gseq_z2map_list/z2foldl]
 // Miscellaneous gseq-operations
 //
 (* ****** ****** *)
-
+//
 impltmp
 <xs><x0>
 gseq_mergesort
+  (xs) =
+(
+gseq_unlist_vt<xs><x0>(xx)
+) where
+{
+val xx =
+gseq_mergesort_list<xs><x0>(xs)
+} (* end of [gseq_mergesort] *)
+impltmp
+<xs><x0>
+gseq_mergesort_list
   (xs) = let
+(
+  list_vt_mergesort<x0>(xx)
+) where
+{
+val xx = gseq_listize<xs><x0>(xs)
+} (* end of [gseq_mergesort_list] *)
 //
-val xx =
-gseq_listize<xs><x0>(xs)
-val xx =
-list_vt_mergesort<x0>(xx)
-//
-in
-  gseq_unlist_vt<xs><x0>(xx)
-end // end of [gseq_mergesort]
-
 (* ****** ****** *)
 
 impltmp

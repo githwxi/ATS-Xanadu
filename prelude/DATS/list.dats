@@ -704,6 +704,17 @@ gseq_map_rlist<list(a)><a> = list_maprev_vt<a>
 //
 (* ****** ****** *)
 //
+impltmp
+{x0:t0}
+gseq_mergesort
+<list(x0)><x0>( xs ) = list_mergesort<x0>(xs)
+impltmp
+{x0:t0}
+gseq_mergesort_list
+<list(x0)><x0>( xs ) = list_mergesort_vt<x0>(xs)
+//
+(* ****** ****** *)
+//
 (*
 For gseqn-operations
 *)
