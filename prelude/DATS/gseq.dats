@@ -1600,7 +1600,7 @@ gseq_mergesort_list<xs><x0>(xs)
 impltmp
 <xs><x0>
 gseq_mergesort_list
-  (xs) = let
+  (xs) =
 (
   list_vt_mergesort<x0>(xx)
 ) where
