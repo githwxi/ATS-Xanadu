@@ -42,28 +42,6 @@ case+ xs of
 (* ****** ****** *)
 //
 impltmp
-{a:t0}
-g_print<optn(a)> =
-gseq_print<optn(a)><a>
-//
-impltmp
-{a:t0}
-gseq_print$beg
-<optn(a)><a>() = string_print("(")
-impltmp
-{a:t0}
-gseq_print$end
-<optn(a)><a>() = string_print(")")
-(*
-impltmp
-{a:t0}
-gseq_print$sep
-<optn(a)><a>() = string_print(";")
-*)
-//
-(* ****** ****** *)
-//
-impltmp
 <a>(*tmp*)
 optn_length(xs) =
 (
@@ -164,6 +142,28 @@ case+ xs of
 (* ****** ****** *)
 //
 // For gseq-operations
+//
+(* ****** ****** *)
+//
+impltmp
+{a:t0}
+g_print<optn(a)> =
+gseq_print<optn(a)><a>
+//
+impltmp
+{a:t0}
+gseq_print$beg
+<optn(a)><a>() = string_print("(")
+impltmp
+{a:t0}
+gseq_print$end
+<optn(a)><a>() = string_print(")")
+(*
+impltmp
+{a:t0}
+gseq_print$sep
+<optn(a)><a>() = string_print(";")
+*)
 //
 (* ****** ****** *)
 

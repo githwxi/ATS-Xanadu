@@ -76,6 +76,24 @@ optn_vt_length0
 (* ****** ****** *)
 //
 fun
+<x0:vt>
+optn_vt_forall0(xs: ~optn_vt(x0)): bool
+fun
+<x0:vt>
+optn_vt_forall1(xs: !optn_vt(x0)): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_foreach0(xs: ~optn_vt(x0)): void
+fun
+<x0:vt>
+optn_vt_foreach1(xs: !optn_vt(x0)): void
+//
+(* ****** ****** *)
+//
+fun
 <a:vt>
 optn_vt_listize0
 {b:b0}
