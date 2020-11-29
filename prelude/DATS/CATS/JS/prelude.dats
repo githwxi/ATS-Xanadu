@@ -397,5 +397,149 @@ stream_vt_filter0<x0>(xs)
 } (* end of [XATS2JS_stream_vt_filter0_cfr] *)
 
 (* ****** ****** *)
+//
+// prelude/array.sats
+// (arrays of
+//  various dimensionality)
+//
+(* ****** ****** *)
+//
+// HX-2020-10-25:
+// Please note that
+// [a] is boxed in JavaScript
+//
+(* ****** ****** *)
+//
+// HX: 0-dimensional
+//
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_a0ptr_make
+{a:vt}
+(
+x0: a
+) : a0ptr(a) = $exname()
+impltmp
+{ a:vt }
+a0ptr_make<a> = XATS2JS_a0ptr_make
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_a0ptr_alloc
+{a:vt}
+(
+// argless
+) : a0ptr(?a) = $exname()
+impltmp
+{ a:vt }
+a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_a0ref_get
+{a:vt}
+( A0
+: a0ref(a)): (~a) = $exname()
+impltmp
+{ a:vt }
+a0ref_get<a> = XATS2JS_a0ref_get
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_a0ref_set
+{a:vt}
+( A0
+: a0ref(a)
+, x0 : (a)) : void = $exname()
+impltmp
+{ a:vt }
+a0ref_set<a> = XATS2JS_a0ref_set
+(* ****** ****** *)
+//
+// HX: 1-dimensional
+//
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_a1ptr_alloc
+{a:vt}
+{n:nat}
+( asz
+: int(n))
+: a1ptr(?a, n) = $exname((*self*))
+impltmp
+{ a:vt }
+a1ptr_alloc<a> = XATS2JS_a1ptr_alloc
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_a1ref_get_at
+{a:vt}
+{n:i0}
+( A0:
+! a1ref(a, n)
+, i0: nintlt(n)): ~a = $exname()
+impltmp
+{ a:vt }
+a1ref_get_at<a> = XATS2JS_a1ref_get_at
+//
+#extern
+fun
+XATS2JS_a1ptr_get_at
+{a:vt}
+{n:i0}
+( A0:
+! a1ptr(a, n)
+, i0: nintlt(n)): ~a = $exname()
+impltmp
+{ a:vt }
+a1ptr_get_at<a> = XATS2JS_a1ptr_get_at
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_a1ref_set_at
+{a:vt}
+{n:i0}
+( A0:
+! a1ref(a, n)
+, i0: nintlt(n)
+, x0: a(*new*)): void = $exname()
+impltmp
+{ a:vt }
+a1ref_set_at<a> = XATS2JS_a1ref_set_at
+//
+#extern
+fun
+XATS2JS_a1ptr_set_at
+{a:vt}
+{n:i0}
+( A0:
+! a1ptr(a, n)
+, i0: nintlt(n)
+, x0: a(*new*)): void = $exname()
+impltmp
+{ a:vt }
+a1ptr_set_at<a> = XATS2JS_a1ptr_set_at
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_a1ptr_set_at_raw
+{a:vt}
+{n:i0}
+( A0:
+! a1ptr(?a, n)
+, i0: nintlt(n)
+, x0: a(*ini*)): void = $exname()
+impltmp
+{ a:vt }
+a1ptr_set_at_raw<a> = XATS2JS_a1ptr_set_at_raw
+//
+(* ****** ****** *)
 
 (* end of [XATS2JS_prelude.dats] *)
