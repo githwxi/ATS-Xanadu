@@ -49,7 +49,7 @@ impltmp
 list_vt_make_nval
   (n0, x0) = let
 //
-fun
+fnx
 loop{i:nat}.<i>.
 ( i0
 : int(i)
@@ -103,7 +103,7 @@ list_vt_free
   {n}(xs) =
 ( loop(xs) ) where
 {
-fun
+fnx
 loop
 {n:nat}.<n>.
 (xs: list_vt(a, n)): void =
@@ -125,7 +125,7 @@ impltmp
 <a>(*tmp*)
 list_vt_copy(xs) =
 let
-fun
+fnx
 loop
 {n:nat}.<n>.
 ( xs
@@ -169,7 +169,7 @@ list_vt_length
   {n}(xs) =
 ( loop(xs, 0) ) where
 {
-fun
+fnx
 loop
 {i,j:nat
 |i+j = n}.<i>.
@@ -209,7 +209,7 @@ end
 ) where
 {
 //
-fun
+fnx
 loop
 {m,n:nat} .<m>.
 ( xs:
@@ -245,7 +245,7 @@ val () = auxmain(xss, &res) in res
 end where
 {
 //
-fun
+fnx
 auxnext
 ( res
 : p2tr(list_vt(a))
@@ -273,7 +273,8 @@ xs0 =
 $UN.delinear(xs0) in auxnext(res) end
 //
 end // end of [auxnext]
-fun
+//
+fnx
 auxmain
 ( xss
 : list_vt
@@ -313,7 +314,7 @@ list_vt_rappend
 ) where
 {
 //
-fun
+fnx
 loop
 {m,n:nat} .<m>.
 ( xs0
@@ -348,7 +349,7 @@ list_vt_rappend10
 ) where
 {
 //
-fun
+fnx
 loop
 {m,n:nat} .<m>.
 ( xs0
@@ -382,7 +383,7 @@ list_vt_rappend11
 ) where
 {
 //
-fun
+fnx
 loop
 {m,n:nat} .<m>.
 ( xs0
@@ -433,7 +434,7 @@ list_vt_forall0
   (xs) =
   (loop(xs)) where
 {
-fun
+fnx
 loop
 ( xs
 : list_vt(a)): bool =
@@ -468,7 +469,7 @@ list_vt_forall1
   (xs) =
   (loop(xs)) where
 {
-fun
+fnx
 loop
 ( xs
 : !list_vt(a)): bool =
@@ -497,7 +498,7 @@ list_vt_foreach0
   (xs) =
   (loop(xs)) where
 {
-fun
+fnx
 loop
 ( xs
 : list_vt(a)): void =
@@ -522,7 +523,7 @@ list_vt_foreach1
   (xs) =
   (loop(xs)) where
 {
-fun
+fnx
 loop
 ( xs
 : list_vt(a)): void =
@@ -577,7 +578,7 @@ impltmp
 <x0><y0>
 list_vt_map0(xs) = let
 //
-fun
+fnx
 loop{i:nat}.<i>.
 ( xs
 : ~list_vt(x0, i)
@@ -621,7 +622,7 @@ end
 ) where
 {
 //
-fun
+fnx
 loop
 {i,j:nat}.<i>.
 ( xs
@@ -655,7 +656,7 @@ list_vt_mergesort
 typedef
 xs = list_vt(a)
 //
-fun
+fnx
 amain
 (xs: xs, n0: nint): xs =
 if

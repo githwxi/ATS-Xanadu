@@ -201,7 +201,7 @@ stream_vt_print$beg<>()
 {
 vwtpdef
 xs = stream_vt(a)
-fun
+fnx
 loop
 ( xs: xs
 , i0: nint): void =
@@ -248,7 +248,7 @@ stream_vt_print$beg<>()
 {
 vwtpdef
 xs = stream_vt(a)
-fun
+fnx
 loop(xs: xs, i0: nint): void =
 (
 case+ !xs of
@@ -341,7 +341,7 @@ stream_vt_drop
 //
 vwtpdef xs = stream_vt(a)
 //
-fun
+fnx
 auxloop
 (xs: xs, n0: sint): xs =
 if
@@ -404,7 +404,7 @@ impltmp
 stream_vt_listize(xs) =
 let
 //
-fun
+fnx
 loop
 ( xs
 : stream_vt(a)
@@ -441,7 +441,7 @@ stream_vt_rlistize(xs) =
   loop(xs, list_vt_nil())
 ) where
 {
-fun
+fnx
 loop
 ( xs
 : stream_vt(a)
@@ -483,8 +483,10 @@ g_free(xs);
 case+ !xs of
 | ~
 strxcon_vt_cons
-  (x0, xs) =>
-  strmcon_vt_cons(x0, auxmain(xs))
+( x0, xs ) =>
+(
+strmcon_vt_cons(x0, auxmain(xs))
+)
 //
 ) (* end of [auxmain] *)
 //
@@ -628,12 +630,14 @@ stream_vt_sortedq
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() => true
+strmcon_vt_nil
+((*void*)) => true
 | ~
-strmcon_vt_cons(x0, xs) => loop(x0, xs)
+strmcon_vt_cons
+( x0, xs ) => loop(x0, xs)
 ) where
 {
-fun
+fnx
 loop
 ( x0: a
 , xs: stream_vt(a)): bool =
@@ -692,7 +696,7 @@ stream_vt_forall0
   (xs) =
 ( loop(xs) ) where
 {
-fun
+fnx
 loop
 ( xs
 : stream_vt(a)): bool =
@@ -1276,13 +1280,13 @@ case+ !xs of
 | ~
 strxcon_vt_cons(x0, xs) =>
 let
-  val y0 =
-  imap0$fopr<x0><y0>(i0, x0)
+val y0 =
+imap0$fopr<x0><y0>(i0, x0)
 in
-  strxcon_vt_cons
-  (y0, auxmain(succ(i0), xs))
-end
-)
+strxcon_vt_cons
+(y0, auxmain(succ(i0), xs))
+end // strxcon_vt_cons
+) (* end of [auxmain] *)
 } (* end of [streax_vt_imap0] *)
 
 (* ****** ****** *)
@@ -1467,7 +1471,7 @@ stream_vt_z2forall0
   loop(xs, ys)
 ) where
 {
-fun
+fnx
 loop
 ( xs
 : stream_vt(x0)
@@ -1511,7 +1515,7 @@ stream_vt_z2forcmp0
   loop(xs, ys)
 ) where
 {
-fun
+fnx
 loop
 ( xs
 : stream_vt(x0)
