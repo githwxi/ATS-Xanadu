@@ -139,8 +139,10 @@ loop(xs, 0(*i0*))
 {
 typedef
 xs = stream(a)
-fun
-loop(xs: xs, i0: nint): void =
+fnx
+loop
+( xs: xs
+, i0: nint): void =
 (
 case+ !xs of
 |
@@ -172,7 +174,7 @@ loop(xs, 0(*i0*))
 {
 typedef
 xs = stream(a)
-fun
+fnx
 loop
 ( xs: xs
 , i0: nint): void =
@@ -222,7 +224,7 @@ stream_length
 {
 typedef
 xs = stream(a)
-fun
+fnx
 loop
 ( xs: xs
 , i0: nint): nint =
@@ -275,7 +277,7 @@ stream_forall
   (xs) =
 ( loop(xs) ) where
 {
-fun
+fnx
 loop
 ( xs
 : stream(a)): bool =

@@ -51,7 +51,7 @@ list_make_nval_vt
 loop(n0, list_vt_nil())
 ) where
 {
-fun
+fnx
 loop
 {i,j:nat}.<i>.
 ( i0
@@ -124,7 +124,7 @@ list_length
   loop(xs, 0)
 ) where
 {
-fun
+fnx
 loop{i,j:int}
 ( xs
 : list(a, i)
@@ -146,8 +146,8 @@ list_get_at
   auxlst(xs, i0)
 ) where
 {
-fun
-auxlst
+fnx
+auxloop
 {n:int}
 ( xs
 : list(a, n)
@@ -159,8 +159,8 @@ case+ xs of
 list_cons(x0, xs) =>
 if
 (i0 > 0)
-then auxlst(xs, pred(i0)) else x0
-) (* end of [auxlst] *)
+then auxloop(xs, pred(i0)) else x0
+) (* end of [auxloop] *)
 } (* end of [list_get_at] *)
 //
 (* ****** ****** *)
@@ -179,7 +179,7 @@ impltmp
 list_append
 {m,n}
 (xs, ys) = let
-fun
+fnx
 loop
 {m:nat} .<m>.
 ( xs
@@ -228,8 +228,8 @@ list_vt_reverse<a>(auxmain(xss, res))
 end
 ) where
 {
-fun
-auxmain
+fnx
+auxloop
 ( xss
 : list(list(a))
 , res: list_vt(a)): list_vt(a) =
@@ -237,7 +237,7 @@ auxmain
 case+ xss of
 | list_nil() => res
 | list_cons(xs, xss) =>
-  auxmain(xss, list_rappend_vt(xs, res))
+  auxloop(xss, list_rappend_vt(xs, res))
 )
 } (* end of [list_concat_vt] *)
 //
@@ -251,7 +251,7 @@ list_rappend
   loop(xs, ys)
 ) where
 {
-fun
+fnx
 loop
 {m,n:nat}.<m>.
 ( xs
@@ -277,7 +277,7 @@ list_rappend_vt
   loop(xs, ys)
 ) where
 {
-fun
+fnx
 loop
 {m,n:nat}.<m>.
 ( xs
@@ -309,7 +309,7 @@ impltmp
 list_forall(xs) =
   (loop(xs)) where
 {
-fun
+fnx
 loop
 (xs: list(a)): bool =
 (
@@ -329,7 +329,7 @@ impltmp
 list_foreach(xs) =
   (loop(xs)) where
 {
-fun
+fnx
 loop
 (xs: list(a)): void =
 (
@@ -390,7 +390,7 @@ ys = list_vt(y0)
 typedef
 ys(i:int) = list_vt(y0, i)
 //
-fun
+fnx
 loop
 {i:nat}.<i>.
 ( xs:
@@ -437,7 +437,7 @@ loop(xs, list_vt_nil((*void*)))
 ) where
 {
 //
-fun
+fnx
 loop
 {i,j:nat}.<i>.
 ( xs
