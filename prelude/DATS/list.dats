@@ -143,11 +143,11 @@ impltmp
 list_get_at
   (xs, i0) =
 (
-  auxlst(xs, i0)
+  loop(xs, i0)
 ) where
 {
 fnx
-auxloop
+loop
 {n:int}
 ( xs
 : list(a, n)
@@ -159,7 +159,7 @@ case+ xs of
 list_cons(x0, xs) =>
 if
 (i0 > 0)
-then auxloop(xs, pred(i0)) else x0
+then loop(xs, pred(i0)) else x0
 ) (* end of [auxloop] *)
 } (* end of [list_get_at] *)
 //
@@ -224,12 +224,12 @@ let
 val
 res = list_vt_nil()
 in
-list_vt_reverse<a>(auxmain(xss, res))
+list_vt_reverse<a>(loop(xss, res))
 end
 ) where
 {
 fnx
-auxloop
+loop
 ( xss
 : list(list(a))
 , res: list_vt(a)): list_vt(a) =
@@ -237,7 +237,7 @@ auxloop
 case+ xss of
 | list_nil() => res
 | list_cons(xs, xss) =>
-  auxloop(xss, list_rappend_vt(xs, res))
+  loop(xss, list_rappend_vt(xs, res))
 )
 } (* end of [list_concat_vt] *)
 //

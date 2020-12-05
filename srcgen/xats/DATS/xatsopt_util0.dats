@@ -563,6 +563,11 @@ the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "prelude/SATS/gseq.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/gmap.sats")
 //
 val () =
 the_prelude_load

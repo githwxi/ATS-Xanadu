@@ -45,6 +45,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gfun.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq.sats
 all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gmap.sats
+all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseqn.sats
 
 all_sats:: ; \
@@ -101,6 +103,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/gfun.dats
 
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gmap.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseqn.dats
 
