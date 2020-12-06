@@ -12,6 +12,18 @@ UN =
 "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
+
+impltmp
+<map>
+<key>
+<itm>
+gmap_print(kxs) =
+stream_vt_print_all
+(
+gmap_streamize<map><key><itm>(kxs)
+) (* end of [gmap_print] *)
+
+(* ****** ****** *)
 //
 impltmp
 <map>
