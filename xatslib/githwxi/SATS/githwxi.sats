@@ -37,6 +37,7 @@
 //
 (* ****** ****** *)
 //
+(*
 datatype
 gval_tbox =
 //
@@ -61,6 +62,7 @@ where
 typedef gval = gval_tbox
 typedef gvalist = list(gval)
 }
+*)
 //
 (* ****** ****** *)
 
