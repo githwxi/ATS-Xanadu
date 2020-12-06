@@ -22,7 +22,7 @@ based on the native JS objmaps
 //
 abstype
 jsobjmap_type
-(k0: t0, x0:vt)
+(k0:t0, x0:vt)
 //
 typedef
 jsobjmap
@@ -429,6 +429,36 @@ XATS2JS_jsobjmap_insert_opt
 ( map
 : jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0) = $exname()
 }
+//
+(* ****** ****** *)
+//
+impltmp
+{k0:t0}
+{x0:t0}
+gmap_streamize
+<jsobjmap(k0,x0)><k0><x0>(kxs) =
+stream_vt_map0
+(
+gmap_streamize_key
+<jsobjmap(k0,x0)><k0><x0>(kxs)
+) where
+{
+impltmp map0$fopr<k0><(k0,x0)>(k0) =
+let
+val-
+~optn_vt_cons(x0) =
+XATS2JS_jsobjmap_search_opt(kxs, k0) in (k0, x0)
+end
+}
+//
+impltmp
+{k0:t0}
+{x0:t0}
+gmap_streamize_key
+<jsobjmap(k0,x0)><k0><x0>(kxs) =
+(
+ XATS2JS_jsarray_streamize(XATS2JS_jsobjmap_keys(kxs))
+)
 //
 (* ****** ****** *)
 

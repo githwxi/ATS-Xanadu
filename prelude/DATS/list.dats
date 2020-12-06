@@ -600,12 +600,13 @@ end
 impltmp
 {a:t0}
 gseq_nil
-<list(a)><a>() = list_nil()
+<list(a)><a>
+((*void*)) = list_nil()
 impltmp
 {a:t0}
 gseq_cons
 <list(a)><a>
-  (x0, xs) = list_cons(x0, xs)
+( x0, xs ) = list_cons(x0, xs)
 //
 (* ****** ****** *)
 //
@@ -627,7 +628,7 @@ gseq_uncons_raw
 let
   val x0 = xs.0
   val () = xs := xs.1 in x0
-end
+end // end of [gseq_uncons_raw]
 //
 (* ****** ****** *)
 //
@@ -712,6 +713,107 @@ impltmp
 {x0:t0}
 gseq_mergesort_list
 <list(x0)><x0>( xs ) = list_mergesort_vt<x0>(xs)
+//
+(* ****** ****** *)
+//
+(*
+For gmap-operations
+#staload
+"prelude/SATS/gmap.sats"
+*)
+//
+(* ****** ****** *)
+impltmp
+{k0:t0}
+{x0:t0}
+gmap_keyq
+<list@(k0,x0)><k0><x0>
+(kxs, key) =
+(
+  loop(kxs)) where
+{
+fun
+loop
+( kxs
+: list@(k0,x0)): bool =
+(
+case+ kxs of
+|
+list_nil() => false
+|
+list_cons(kx1, kxs) =>
+if
+g_equal<k0>
+(key, kx1.0) then true else loop(kxs)
+)
+} (*where*) // end of [gmap_keyq]
+(* ****** ****** *)
+impltmp
+{k0:t0}
+{x0:t0}
+gmap_search_opt
+<list@(k0,x0)><k0><x0>
+(kxs, key) =
+(
+  loop(kxs)) where
+{
+fun
+loop
+( kxs
+: list@(k0,x0)): optn_vt(x0) =
+(
+case+ kxs of
+|
+list_nil() =>
+optn_vt_nil(*void*)
+|
+list_cons(kx1, kxs) =>
+if
+g_equal<k0>
+(key, kx1.0)
+then optn_vt_cons(kx1.1) else loop(kxs)
+)
+} (*where*) // end of [gmap_search_opt]
+(* ****** ****** *)
+impltmp
+{k0:t0}
+{x0:t0}
+gmap_insert_opt
+<list@(k0,x0)><k0><x0>
+(kxs, key, itm) =
+optn_vt_nil(*void*) where
+{
+val () =
+( kxs := list_cons((key, itm), kxs) )
+} (* end of [gmap_insert_opt] *)
+(* ****** ****** *)
+//
+impltmp
+{k0:t0}
+{x0:t0}
+gmap_streamize
+<list@(k0,x0)><k0><x0> = list_streamize
+//
+impltmp
+{k0:t0}
+{x0:t0}
+gmap_streamize_key
+<list@(k0,x0)><k0><x0>(kxs) =
+(
+  gseq_map_stream(kxs)) where
+{
+impltmp map$fopr<(k0,x0)><k0>(kx) = kx.0
+}
+impltmp
+{k0:t0}
+{x0:t0}
+gmap_streamize_itm
+<list@(k0,x0)><k0><x0>(kxs) =
+(
+  gseq_map_stream(kxs)) where
+{
+impltmp map$fopr<(k0,x0)><x0>(kx) = kx.1
+}
 //
 (* ****** ****** *)
 //
