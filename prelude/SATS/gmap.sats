@@ -37,13 +37,13 @@ fun
 <key:t0>
 <itm:t0>
 gmap_insert_opt
-(kxs: &map >> _, key, itm): optn_vt(itm)
+(kxs: &map >> map, key, itm): optn_vt(itm)
 fun
 <map:t0>
 <key:t0>
 <itm:t0>
 gmap_remove_opt
-(kxs: &map >> _, key: key): optn_vt(itm)
+(kxs: &map >> map, key: key): optn_vt(itm)
 //
 (* ****** ****** *)
 //
