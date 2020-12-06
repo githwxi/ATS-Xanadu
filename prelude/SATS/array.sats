@@ -169,7 +169,7 @@ a0ptr_print1(A0: !a0ptr(a)): void
 //
 fun
 <a:vt>
-a1ptr_alloc:
+a1ptr_alloc
 {n:nat}
 (asz: int(n)): a1ptr(?a, n)
 fun
