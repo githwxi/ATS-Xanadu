@@ -420,10 +420,16 @@ string_streamize
 //
 (* ****** ****** *)
 //
+(*
+HX-2020-12-05:
+This one needs to be
+given a native implementation
+*)
+//
 fun<>
 strtmp_vt_alloc
 {n:nat}
-(bsz: sint(n)): strtmp_vt(n)
+( bsz: sint(n) ): strtmp_vt(n)
 //
 (* ****** ****** *)
 //

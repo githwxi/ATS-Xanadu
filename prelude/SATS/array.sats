@@ -85,6 +85,10 @@ a1ptr2ref
 //
 (* ****** ****** *)
 //
+// HX-2020-12-05:
+// This one needs to be
+// given a native implementation
+//
 fun
 <a:vt>
 a0ptr_alloc
@@ -159,9 +163,13 @@ a0ptr_print1(A0: !a0ptr(a)): void
 //
 (* ****** ****** *)
 //
+// HX-2020-12-05
+// This one needs to be
+// given a native implementation
+//
 fun
 <a:vt>
-a1ptr_alloc
+a1ptr_alloc:
 {n:nat}
 (asz: int(n)): a1ptr(?a, n)
 fun
