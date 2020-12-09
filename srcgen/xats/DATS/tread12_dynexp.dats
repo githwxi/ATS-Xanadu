@@ -311,22 +311,22 @@ d2e0.node() of
     )
   } (* end of [D2Edtsel] *)
 //
-| D2Eif0
-  (d2e1, d2e2, opt3) =>
-  {
-  val () = tread12_d2exp(d2e1)
-  val () = tread12_d2exp(d2e2)
-  val () = tread12_d2expopt(opt3)
-  }
+|
+D2Eif0
+(d2e1, d2e2, opt3) =>
+{
+val () = tread12_d2exp(d2e1)
+val () = tread12_d2exp(d2e2)
+val () = tread12_d2expopt(opt3)
+}
 //
-| D2Ecase
-  (knd0, d2e1, dcls) =>
-  {
-  val () = tread12_d2exp(d2e1)
-(*
-  val () = tread12_d2claulst(dcls)
-*)
-  }
+|
+D2Ecase
+(knd0, d2e1, dcls) =>
+{
+val () = tread12_d2exp(d2e1)
+val () = tread12_d2claulst(dcls)
+}
 //
 | D2Elet
   (d2cs, d2e1) =>
@@ -390,14 +390,13 @@ d2e0.node() of
 //
   }
 //
-| D2Etry0
-  ( knd0, d2e1, dcls ) =>
-  {
-  val () = tread12_d2exp(d2e1)
-(*
-  val () = tread12_d2claulst(dcls)
-*)
-  }
+|
+D2Etry0
+( knd0, d2e1, dcls ) =>
+{
+val () = tread12_d2exp(d2e1)
+val () = tread12_d2claulst(dcls)
+}
 //
 | D2Eaddr(d2e1) =>
   {
@@ -516,6 +515,8 @@ case+ s2es of
 ) (* end of [auxlst] *)
 } (* end of [tread12_dsapparg] *)
 
+(* ****** ****** *)
+
 implement
 //{}(*tmp*)
 tread12_dtapparg
@@ -549,6 +550,98 @@ case+ s2es of
 ) (* end of [auxlst] *)
 } (* end of [tread12_dtapparg] *)
 
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread12_d2gua(d2g0) =
+(
+case+
+d2g0.node() of
+|
+D2GUAexp(d2e1) =>
+{
+val () = tread12_d2exp(d2e1)
+}
+|
+D2GUAmat(d2e1, d2p2) =>
+{
+val () = tread12_d2exp(d2e1)
+val () = tread12_d2pat(d2p2)
+}
+) (* end of [tread12_d2gua] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread12_d2gpat(dgpt) =
+(
+case+
+dgpt.node() of
+|
+D2GPATpat(d2p1) =>
+{
+val () = tread12_d2pat(d2p1)
+}
+|
+D2GPATgua(d2p1, d2gs) =>
+{
+val () = tread12_d2pat(d2p1)
+val () = tread12_d2gualst(d2gs)
+}  
+) (* end of [tread12_d2gpat] *)
+
+(* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread12_d2clau(dcl0) =
+(
+case+
+dcl0.node() of
+|
+D2CLAUpat(dgpt) =>
+{
+  val () =
+  tread12_d2gpat(dgpt)
+}
+|
+D2CLAUexp(dgpt, d2e1) =>
+{
+//
+  val () =
+  tread12_d2gpat(dgpt)
+//
+  val () = tread12_d2exp(d2e1)
+//
+}
+) (* end of [tread12_d2clau] *)
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread12_d2gualst(d2gs) =
+(
+list_foreach<d2gua>(d2gs)
+) where
+{
+implement(env)
+list_foreach$fwork<d2gua><env>(d2g, env) = tread12_d2gua(d2g)
+} (* end of [tread12_d2gualst] *)
+//
+implement
+//{}(*tmp*)
+tread12_d2claulst(dcls) =
+(
+list_foreach<d2clau>(dcls)
+) where
+{
+implement(env)
+list_foreach$fwork<d2clau><env>(dcl, env) = tread12_d2clau(dcl)
+} (* end of [tread12_d2claulst] *)
+//
 (* ****** ****** *)
 
 implement

@@ -106,7 +106,7 @@ optn_vt_foreach0(xs) =
 (
 case+ xs of
 | ~optn_vt_nil() => ()
-| ~optn_vt_cons(x0) => foreach0$test<a>(x0)
+| ~optn_vt_cons(x0) => foreach0$work<a>(x0)
 ) (* end of [glseq_foreach0] *)
 impltmp
 <a>(*tmp*)
@@ -114,7 +114,7 @@ optn_vt_foreach1(xs) =
 (
 case+ xs of
 | !optn_vt_nil() => ()
-| !optn_vt_cons(x0) => foreach1$test<a>(x0)
+| !optn_vt_cons(x0) => foreach1$work<a>(x0)
 ) (* end of [glseq_foreach1] *)
 
 (* ****** ****** *)

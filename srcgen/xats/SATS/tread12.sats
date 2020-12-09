@@ -161,6 +161,20 @@ tread12_dtapparg: treader12(s2explst)
 (* ****** ****** *)
 //
 fun//{}
+tread12_d2gua: treader12(d2gua)
+fun//{}
+tread12_d2clau: treader12(d2clau)
+fun//{}
+tread12_d2gpat: treader12(d2gpat)
+//
+fun//{}
+tread12_d2gualst: treader12(d2gualst)
+fun//{}
+tread12_d2claulst: treader12(d2claulst)
+//
+(* ****** ****** *)
+//
+fun//{}
 tread12_d2ecl: treader12(d2ecl)
 fun//{}
 tread12_d2eclist: treader12(d2eclist)

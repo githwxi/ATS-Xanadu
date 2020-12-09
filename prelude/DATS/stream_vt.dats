@@ -53,7 +53,7 @@ case+ r0 of
   $UN.castlin10{box}(xs)
   val () =
   ( r0.1 := auxmain(xs) )
-  in $UN.castlin10{strmcom(a)}(r0) end
+  in $UN.castlin10{strmcon(a)}(r0) end
 //
 end // end of [let]
 )
