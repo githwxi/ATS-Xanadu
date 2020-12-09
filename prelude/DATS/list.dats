@@ -558,7 +558,7 @@ val res2 =
 stream_vt_map0(res2) where
 {
 sexpdef n0 = n
-sexpdef n1 = pred(n)
+sexpdef n1 = n-1
 impltmp
 map0$fopr
 <xs(n1)><xs(n0)>
