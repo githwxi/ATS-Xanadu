@@ -94,7 +94,7 @@ impltmp
 gl_print1
 <
 t0up3
-(a0,a1,a3)>(t3) =
+(a0,a1,a2)>(t3) =
 let
 val () = t0up_print$beg()
 val () = gl_print1<a0>(t3.0)
@@ -112,7 +112,7 @@ impltmp
 gl_print1
 <
 t1up3
-(a0,a1,a3)>(t3) =
+(a0,a1,a2)>(t3) =
 let
 val () = t1up_print$beg()
 val () = gl_print1<a0>(t3.0)
