@@ -194,19 +194,23 @@ t2ype_eval_env
 , t2p0: t2ype): t2ype =
 let
 //
-  val-
-  T2Pcst
-  (s2c0) = t2p0.node()
+val-
+T2Pcst
+(s2c0) = t2p0.node()
 //
-  val
-  opt0 =
-  abstenv_find(env0, s2c0)
+val
+opt0 =
+abstenv_find(env0, s2c0)
 //
 in
-  case+ opt0 of
-  | ~None_vt() => t2p0
-  | ~Some_vt(t2p1) =>
-     t2ype_whnfize_env(env0, t2p1)
+//
+case+ opt0 of
+| ~
+None_vt() => t2p0
+| ~
+Some_vt(t2p1) =>
+t2ype_whnfize_env(env0, t2p1)
+//
 end // end of [t2ype_eval_env]
 //
 in(*in-of-local*)

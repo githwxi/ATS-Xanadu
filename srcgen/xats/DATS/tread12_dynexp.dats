@@ -756,10 +756,8 @@ d2cl.node() of
 *)
     val () =
     tread12_tq2arglst(tqas)
-(*
     val () =
     tread12_ti2arglst(ti2s)
-*)
 //
     val () =
     tread12_f2arglst( f2as )
@@ -782,10 +780,8 @@ d2cl.node() of
 *)
     val () =
     tread12_tq2arglst(tqas)
-(*
     val () =
     tread12_ti2arglst(ti2s)
-*)
 //
     val () =
       tread12_f2arglst(f2as)
@@ -889,6 +885,27 @@ list_foreach<tq2arg>(tqas)
 implement(env)
 list_foreach$fwork<tq2arg><env>(tq2a, env) = tread12_tq2arg(tq2a)
 } (* end of [tread12_tq2arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread12_ti2arg
+  (ti2a) =
+(
+  tread12_s2explst(ti2a.s2es())
+)
+//
+implement
+//{}(*tmp*)
+tread12_ti2arglst(tias) =
+(
+list_foreach<ti2arg>(tias)
+) where
+{
+implement(env)
+list_foreach$fwork<ti2arg><env>(ti2a, env) = tread12_ti2arg(ti2a)
+} (* end of [tread12_ti2arglst] *)
 //
 (* ****** ****** *)
 //
