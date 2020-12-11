@@ -443,8 +443,34 @@ d3p0.node() of
 | D3Ptuple _ =>
   aux_tuple(env0, d3p0)
 //
-| D3Pnone0 _ => d3p0
-| D3Pnone1 _ => d3p0
+|
+D3Ptcast(d3p1, t2p2) =>
+let
+  val
+  d3p1 = // HX: abstype-handling!
+  trans33_dpat(env0, d3p1) in d3p1
+end where
+{
+val
+loc1 = d3p1.loc()
+val
+t2p1 = d3p1.type()
+val () =
+println!
+("trans33_dpat: D3Ptcast: loc1 = ", loc1)
+val () =
+println!
+("trans33_dpat: D3Ptcast: d3p1 = ", d3p1)
+val () =
+println!
+("trans33_dpat: D3Ptcast: t2p1 = ", t2p1)
+val () =
+println!
+("trans33_dpat: D3Ptcast: t2p2 = ", t2p2)
+} (* where *) // end of [D3Ptcast]
+//
+| D3Pnone0 _ => d3p0 // HX: interp
+| D3Pnone1 _ => d3p0 // HX: errmsg
 //
 | _ (* rest-of-d3pat *) => d3p0
 //
@@ -2064,31 +2090,32 @@ D3Ecase _ => aux_case(env0, d3e0)
     (loc0, env0, d3e1, lab2) in d3e0
   end // end of [D3Elcast]
 //
-| D3Etcast
-  (d3e1, t2p2) =>
-  let
-    val
-    d3e1 = // HX: abstype-handling!
-    trans33_dexp(env0, d3e1) in d3e1
-  end where
-  {
+|
+D3Etcast
+(d3e1, t2p2) =>
+let
   val
-  loc1 = d3e1.loc()
-  val
-  t2p1 = d3e1.type()
-  val () =
-  println!
-  ("trans33_dexp: D3Etcast: loc1 = ", loc1)
-  val () =
-  println!
-  ("trans33_dexp: D3Etcast: d3e1 = ", d3e1)
-  val () =
-  println!
-  ("trans33_dexp: D3Etcast: t2p1 = ", t2p1)
-  val () =
-  println!
-  ("trans33_dexp: D3Etcast: t2p2 = ", t2p2)
-  }
+  d3e1 = // HX: abstype-handling!
+  trans33_dexp(env0, d3e1) in d3e1
+end where
+{
+val
+loc1 = d3e1.loc()
+val
+t2p1 = d3e1.type()
+val () =
+println!
+("trans33_dexp: D3Etcast: loc1 = ", loc1)
+val () =
+println!
+("trans33_dexp: D3Etcast: d3e1 = ", d3e1)
+val () =
+println!
+("trans33_dexp: D3Etcast: t2p1 = ", t2p1)
+val () =
+println!
+("trans33_dexp: D3Etcast: t2p2 = ", t2p2)
+} (* where *) // end of [D3Etcast]
 //
 | D3Enone0 _ => d3e0 // HX: interp
 | D3Enone1 _ => d3e0 // HX: errmsg
