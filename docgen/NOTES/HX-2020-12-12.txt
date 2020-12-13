@@ -1,0 +1,97 @@
+Hi, there,
+
+HX-2020-12-12:
+
+######
+#
+# Building packages for ATS3
+#
+######
+
+I have long been contemplating on building an ecosystem for ATS.
+
+In the past, I did various experiments and, in particular, played
+with an idea of using npm for distributing packages written in/for
+ATS. And Ryan King even started to build a package management
+system (PMS) for ATS (see https://github.com/RyanTKing/wombats for
+more details). As always, you are welcome to share your ideas!
+
+One thing seems rather clear to me is that any PMS for ATS should be
+closely connected to the support for template resolution in ATS3. At
+this stage, I have to stress that I am not yet clear as to how such a
+connection can and should be made. Instead of forging something that
+is yet to become more concrete, I plan to keep options open maximally
+by simply using the github to distribute packages for now.
+
+##################################################################
+
+I created the following repo:
+
+https://github.com/xanadu-lang/contrib
+
+for hosting contributed packages. I put some of my packages there
+for people to see. Mostly I intend to put links there to packages
+stored elsewhere.
+
+So far you can find the following packages:
+
+https://github.com/xanadu-lang/contrib/tree/master/githwxi/StreamDemo
+https://github.com/xanadu-lang/contrib/tree/master/githwxi/StreamDemo2
+
+I suggest that a directory of the name TEST be included in a package;
+this directory should contain at least one example that shows how the
+package can actually be used. Of course, more documentation is better.
+
+##################################################################
+
+StreamDemo:
+
+In the package StreamDemo, there are some functions for displaying
+streams. Essentially, StreamDemo can turn a given stream into another
+stream that allows the items in the given stream to be displayed in a
+webpage. An an analogy, if we see a stream as a tape of some sort,
+StreamDemo provides functions for building a machine to view such a
+tape. StreamDemo is entirely template-based.
+
+Animating the involved depth-first search for solving the 8-queen puzzle:
+https://xanadu-lang.github.io/contrib/githwxi/StreamDemo/TEST/QueenPuzzle/2020-12-10/
+
+##################################################################
+
+StreamDemo2:
+
+In the package StreamDemo2, which builds on top of StreamDemo, there
+is a webpage for viewing a stream; some contents of the webpage can be
+specialized for any chosen stream. As StreamDemo2 needs to interact
+with JavaScript (JS), it cannot be entirely template-based. Instead.
+it contains a template portion (StreamDemo2.dats) and a non-template
+portion (StreamDemo2_.dats); the latter provides functions that can
+be called directly in JS.
+
+Enumerating prime numbers:
+https://xanadu-lang.github.io/contrib/githwxi/StreamDemo2/TEST/PrimeNums/2020-12-12/
+
+Enumerating Fibonacci numbers:
+https://xanadu-lang.github.io/contrib/githwxi/StreamDemo2/TEST/Fibonacci/2020-12-12/
+
+Animating the involved depth-first search for solving the 8-queen puzzle:
+https://xanadu-lang.github.io/contrib/githwxi/StreamDemo2/TEST/QueenPuzzle/2020-12-12/
+
+##################################################################
+
+I hope you find it interesting. Moreever, you can use these packages (or something
+of your own) to build more packages for displaying streams and share them.
+
+##################################################################
+
+Cheers!
+
+--Hongwei
+
+##################################################################
+
+For previously post messages:
+
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgen/NOTES
+
+##################################################################
