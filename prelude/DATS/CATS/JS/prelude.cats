@@ -521,7 +521,7 @@ let i0;
 let
 res = true;
 let
-len = cs.length
+len = cs.length-1;
 for
 ( i0 = 0
 ; i0 < len; i0 += 1)
@@ -540,7 +540,7 @@ let i0;
 let
 res = true;
 let
-len = cs.length;
+len = cs.length-1;
 for
 ( i0 = len
 ; i0 >= 1 ; i0 -= 1)
