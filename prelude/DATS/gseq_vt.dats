@@ -220,6 +220,85 @@ end // end of [foreach0$work]
 } (* end of [glseq_foldl0/foreach0] *)
 
 (* ****** ****** *)
+
+impltmp
+<xs><x0><r0>
+glseq_foldl1
+(xs, r0) = r0 where
+{
+//
+var r0: r0 = r0
+//
+val p0 = $addr(r0)
+//
+val () =
+(
+  glseq_foreach1<xs><x0>(xs)
+) where
+{
+impltmp
+foreach1$work<x0>(x0) =
+let
+val r0 = $UN.p2tr_get<r0>(p0)
+in
+//
+$UN.p2tr_set<r0>
+  (p0, foldl1$fopr<x0><r0>(r0, x0))
+//
+end // end of [foreach1$work]
+}
+//
+} (* end of [glseq_foldl1/foreach1] *)
+
+(* ****** ****** *)
+//
+impltmp
+<xs><x0>
+glseq_listize0
+  (xs) =
+let
+  impltmp
+  map0$fopr<x0><x0>(x0) = x0
+in
+glseq_map0_list<xs><x0><x0>(xs)
+end
+//
+impltmp
+<xs><x0>
+glseq_rlistize0
+  (xs) =
+let
+  impltmp
+  map0$fopr<x0><x0>(x0) = x0
+in
+glseq_map0_rlist<xs><x0><x0>(xs)
+end
+//
+(* ****** ****** *)
+//
+impltmp
+<xs><x0>
+glseq_listize1
+  (xs) =
+let
+  impltmp
+  map1$fopr<x0><x0>(x0) = x0
+in
+  glseq_map1_list<xs><x0><x0>(xs)
+end
+//
+impltmp
+<xs><x0>
+glseq_rlistize0
+  (xs) =
+let
+  impltmp
+  map1$fopr<x0><x0>(x0) = x0
+in
+  glseq_map1_rlist<xs><x0><x0>(xs)
+end
+//
+(* ****** ****** *)
 //
 impltmp
 <xs><x0><y0>
@@ -266,7 +345,7 @@ impltmp
 glseq_map0_rlist
   (xs) = let
 //
-typedef r0 = list_vt(y0)
+vwtpdef r0 = list_vt(y0)
 //
 in
 //
@@ -279,6 +358,70 @@ foldl0$fopr
 < x0 >< r0 >
 (r0, x0) =
 list_vt_cons(map0$fopr<x0><y0>(x0), r0)
+}
+//
+end // end of [glseq_map0_rlist/foldl0]
+//
+(* ****** ****** *)
+//
+impltmp
+<xs><x0><y0>
+glseq_map1_list
+  (xs) = let
+//
+vwtpdef
+yy =
+list_vt(y0)
+typedef
+r0 = p2tr(yy)
+//
+impltmp
+foldl1$fopr
+<x0><r0>(p0, x0) =
+let
+//
+val y0 =
+map1$fopr<x0><y0>(x0)
+val r1 = 
+list_vt_cons( y0, _ )
+val p1 = $addr( r1.1 )
+//
+in
+$UN.p2tr_set<yy>
+(p0, $UN.castlin01(r1)); (p1)
+end // foldl$fopr
+//
+var r0: yy
+//
+val p0 = $addr(r0)
+val pz =
+glseq_foldl1<xs><x0><r0>(xs, p0)
+//
+in
+$UN.p2tr_set<yy>
+(pz,list_vt_nil()); $UN.castlin01(r0)
+end // end of [glseq_map1_list/foldl]
+//
+(* ****** ****** *)
+//
+impltmp
+<xs><x0><y0>
+glseq_map1_rlist
+  (xs) = let
+//
+vwtpdef r0 = list_vt(y0)
+//
+in
+//
+glseq_foldl1
+<xs><x0>< r0 >
+(xs, list_vt_nil()) where
+{
+impltmp
+foldl1$fopr
+< x0 >< r0 >
+(r0, x0) =
+list_vt_cons(map1$fopr<x0><y0>(x0), r0)
 }
 //
 end // end of [glseq_map0_rlist/foldl0]
@@ -379,12 +522,14 @@ foldr0$fopr
 } (* end of [glseq_append00/foldr0] *)
 
 (* ****** ****** *)
-
+//
 impltmp
 <xs><x0>
-glseq_reverse0(xs) =
+glseq_reverse0
+  ( xs ) =
 glseq_rappend00
 (xs, glseq_nil<xs><x0>())
+//
 impltmp
 <xs><x0>
 glseq_rappend00
@@ -399,7 +544,7 @@ foldl0$fopr
 < x0><xs >
 ( r0, x0 ) = glseq_cons<xs><x0>(x0, r0)
 } (* end of [glseq_rappend00/foldl0] *)
-
+//
 (* ****** ****** *)
 //
 // For gseq-i-operations

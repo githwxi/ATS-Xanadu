@@ -420,6 +420,21 @@ string_streamize
 //
 (* ****** ****** *)
 //
+fun<>
+string_vt_listize1
+{n:int}
+(!string_vt(n)): list_vt(cgtz,n)
+fun<>
+string_vt_rlistize1
+{n:int}
+(!string_vt(n)): list_vt(cgtz,n)
+//
+fun<>
+string_vt_streamize
+(cs: string_vt): stream_vt(cgtz)
+//
+(* ****** ****** *)
+//
 (*
 HX-2020-12-05:
 This one needs to be

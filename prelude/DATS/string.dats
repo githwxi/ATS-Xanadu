@@ -235,6 +235,22 @@ string_vt_make_list_vt<>(zs)
 end // end of [string_append_vt]
 //
 (* ****** ****** *)
+//
+impltmp<>
+string_vt_append
+  (xs, ys) =
+let
+//
+val zs =
+list_vt_append<cgtz>
+( string_vt_listize1<>(xs)
+, string_vt_listize1<>(ys))
+//
+in
+string_vt_make_list_vt<>(zs)
+end // end of [string_append_vt]
+//
+(* ****** ****** *)
 
 impltmp<>
 string_reverse
@@ -323,6 +339,44 @@ end // end of [else]
 } (* end of [string_forall/uncons] *)
 
 (* ****** ****** *)
+
+impltmp<>
+string_vt_forall1
+  (xs) =
+let
+//
+val
+len = length1(xs)
+//
+in
+  loop(xs, len, 0)
+end where // end-of-let
+{
+//
+fnx
+loop
+{n:int}
+{i:nat| i <= n}
+( xs:
+! string_vt(n)
+, len: sint(n)
+, ind: sint(i)): bool =
+if
+(ind >= len)
+then true else
+let
+val x0 = xs[ind]
+in
+if
+forall$test<cgtz>(x0)
+then
+loop(xs, len, succ(ind)) else false
+// end of [if]
+end // end of [else]
+//
+} (* end of [string_vt_forall1/get_at] *)
+
+(* ****** ****** *)
 impltmp
 <>(*tmp*)
 string_listize(cs) =
@@ -362,6 +416,53 @@ strmcon_vt_cons(ci, auxmain(i0))
 end // end of [else]
 )
 } (* end of [string_streamize] *)
+(* ****** ****** *)
+impltmp
+<>(*tmp*)
+string_vt_listize1(cs) =
+$UN.castlin01(glseq_listize1(cs))
+impltmp
+<>(*tmp*)
+string_vt_rlistize1(cs) =
+$UN.castlin01(glseq_rlistize1(cs))
+(* ****** ****** *)
+impltmp
+<>(*tmp*)
+string_vt_streamize
+  (cs) = let
+//
+  val
+  len = length1(cs)
+//
+in
+  auxmain(cs, len, 0)
+end where // end of [let]
+{
+fun
+auxmain
+{n:int}
+{i:nat|i <= n}
+( cs:
+! string_vt(n)
+, len: sint(n)
+, ind: sint(i))
+: stream_vt(cgtz) =
+$llazy
+(
+free(cs);
+if
+(ind >= len)
+then
+strmcon_vt_nil()
+else
+let
+val ci = cs[ind]
+in
+  strmcon_vt_cons
+  (ci, auxmain(cs, len, ind+1))
+end // end of [else]
+)
+} (* end of [string_vt_streamize] *)
 (* ****** ****** *)
 
 impltmp<>
@@ -657,6 +758,26 @@ impltmp
 gseq_unstream<xs><x0> = string_make_stream<>
 impltmp
 gseq_unstream_vt<xs><x0> = string_make_stream_vt<>
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+typedef x0 = cgtz
+viewdef xs = string_vt
+//
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+impltmp
+glseq_forall0<xs><x0> = string_vt_forall0<>
+impltmp
+glseq_forall1<xs><x0> = string_vt_forall1<>
 
 (* ****** ****** *)
 
