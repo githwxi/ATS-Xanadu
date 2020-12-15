@@ -622,6 +622,7 @@ fun
 XATS2JS_string_vt_forall_cfr
 ( cs: ~string_vt
 , f0: (cgtz) -<cfr> bool): bool
+= $exname((*self*))
 //
 in
 XATS2JS_string_vt_forall_cfr
@@ -638,6 +639,7 @@ fun
 XATS2JS_string_vt_forall_cfr
 ( cs: !string_vt
 , f0: (cgtz) -<cfr> bool): bool
+= $exname((*self*))
 //
 in
 XATS2JS_string_vt_forall_cfr
