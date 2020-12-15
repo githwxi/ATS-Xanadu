@@ -773,6 +773,13 @@ viewdef xs = string_vt
 in (* in-of-local *)
 
 (* ****** ****** *)
+//
+impltmp
+gl_print0<xs> = string_vt_print0<>
+impltmp
+gl_print1<xs> = string_vt_print1<>
+//
+(* ****** ****** *)
 
 impltmp
 glseq_forall0<xs><x0> = string_vt_forall0<>
