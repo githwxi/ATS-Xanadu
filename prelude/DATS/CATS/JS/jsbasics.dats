@@ -6,6 +6,12 @@ Native arrays for Xats2js
 (* ****** ****** *)
 //
 abstype
+jsobj_type(*void*)
+typedef jsobj = jsobj_type
+//
+(* ****** ****** *)
+//
+abstype
 jsarray_type(a:vt)
 typedef
 jsarray(a:vt) = jsarray_type(a)
@@ -17,9 +23,6 @@ Hashmaps for Xats2js
 based on the native JS objmaps 
 *)
 (* ****** ****** *)
-#staload _ = "./basics.dats"
-(* ****** ****** *)
-//
 abstype
 jsobjmap_type
 (k0:t0, x0:vt)
@@ -28,6 +31,38 @@ typedef
 jsobjmap
 ( k0: t0
 , x0: vt) = jsobjmap_type(k0, x0)
+//
+(* ****** ****** *)
+#staload _ = "./basics.dats"
+(* ****** ****** *)
+//
+// XATS2JS/jsobj
+//
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_jsobj_get_at
+( obj
+: jsobj
+, key
+: string): jsobj = $exname()
+#extern
+fun
+XATS2JS_jsobj_set_at
+( obj
+: jsobj
+, key
+: string
+, itm: jsobj): void = $exname()
+//
+#symload
+[] with XATS2JS_jsobj_get_at
+#symload
+[] with XATS2JS_jsobj_set_at
+#symload
+get_at with XATS2JS_jsobj_get_at
+#symload
+set_at with XATS2JS_jsobj_set_at
 //
 (* ****** ****** *)
 //
@@ -47,7 +82,7 @@ XATS2JS_jsarray_get_at
 {a:t0}
 ( xs
 : jsarray(a)
-, i0: nint(*index*)): a = $exname()
+, i0: nint(*ind*)): a = $exname()
 #extern
 fun
 XATS2JS_jsarray_set_at

@@ -3,19 +3,32 @@
 JSBasics for Xats2js
 */
 /* ****** ****** */
+function
+XATS2JS_jsobj_get_at
+  (obj, key)
+{
+  return obj[ key ];
+}
+function
+XATS2JS_jsobj_set_at
+  (obj, key, itm)
+{
+  return (obj[key] = itm);
+}
+/* ****** ****** */
 // HX-2020-11-09:
 // Native arrays for Xats2js
 /* ****** ****** */
 
 function
 XATS2JS_jsarray_size
-  (xs)
+  ( xs )
 {
   return ( xs.length );
 }
 function
 XATS2JS_jsarray_length
-  (xs)
+  ( xs )
 {
   return ( xs.length );
 }

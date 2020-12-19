@@ -139,6 +139,12 @@ d2p0.node() of
 | D2Pnil() => ()
 | D2Pany() => ()
 //
+| D2Pint _ => ()
+| D2Pbtf _ => ()
+| D2Pchr _ => ()
+| D2Pflt _ => ()
+| D2Pstr _ => ()
+//
 | D2Pvar(d2v1) => ()
 //
 | D2Pcon1(d2c1) => ()
