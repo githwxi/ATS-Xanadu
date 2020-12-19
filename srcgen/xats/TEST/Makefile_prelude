@@ -141,9 +141,7 @@ $(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/basics.dats
 all_JS_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/prelude.dats
 all_JS_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/jsarray.dats
-all_JS_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/jsmapstr.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/jsbasics.dats
   
 ######
   
