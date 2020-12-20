@@ -2226,45 +2226,101 @@ D1Eapp2
 , d1e2
 , d1e3) = d1e0.node()
 //
-fun
-isASSGN
-(d1e: d1exp): bool =
-(
-case+
-d1e.node() of
-|
-D1Eid0(tok) =>
-(
-case+ tok.node() of
-|
-T_IDENT_sym(sym) => (sym = ":=")
-| _ (* non-T_IDENT_sym *) => false
-)
-| _ (*non-D1Eid0*) => false
-)
-//
 in
 //
 ifcase
 |
 isASSGN(d1e1) =>
 let
-val d2e2 = trans12_dexp(d1e2)
-val d2e3 = trans12_dexp(d1e3)
+//
+val
+d2e2 = trans12_dexp(d1e2)
+val
+d2e3 = trans12_dexp(d1e3)
+//
+(*
+val () =
+println!
+("auxapp2: d2e2 = ", d2e2)
+val () =
+println!
+("auxapp2: d2e3 = ", d2e3)
+*)
+//
 in
+//
+case+
+d2e2.node() of
+|
+D2Edapp
+( d2f0
+, npf1, darg) =>
+(
+case+
+d2f0.node() of
+|
+D2Ebrack
+(d2ps, d2es) =>
+let
+//
+// HX:
+// A[idx] := itm
+//
+val d2es =
+list_vt2t
+(
+list_extend(d2es, d2e3)
+)
+val d2f0 =
+d2exp_make_node
+( loc0
+, D2Ebrack(d2ps, d2es) )
+in
+d2exp_make_node
+( loc0
+, D2Edapp(d2f0, npf1, darg) )
+end // end of [D2Ebrack]
+|
+_(*non-D2Ebrack*) =>
   d2exp_make_node
   (loc0, D2Eassgn(d2e2, d2e3))
-end
+)
+|
+_(* non-D2Edapp *) =>
+  d2exp_make_node
+  (loc0, D2Eassgn(d2e2, d2e3))
+//
+end//isASSGN
+//
 | _ (* else *) =>
 let
 val d2e1 = trans12_dexp(d1e1)
 val d2e2 = trans12_dexp(d1e2)
 val d2e3 = trans12_dexp(d1e3)
 in
-  d2exp_app2(loc0, d2e1, d2e2, d2e3)
-end
+d2exp_app2(loc0, d2e1, d2e2, d2e3)
+end // end of [non-assignment]
 //
-end // end of [auxapp2]
+end where
+{
+  fun
+  isASSGN
+  (d1e: d1exp): bool =
+  (
+    case+
+    d1e.node() of
+    |
+    D1Eid0(tok) =>
+    (
+    case+ tok.node() of
+    |
+    T_IDENT_sym
+      ( sym ) => (sym = ":=")
+    | _(*non-T_IDENT*) => false
+    )
+    | _ (* non-D1Eid0 *) => false
+  ) (* end of [isASSGN] *)
+} (* where *)  // end of [auxapp2]
 
 (* ****** ****** *)
 

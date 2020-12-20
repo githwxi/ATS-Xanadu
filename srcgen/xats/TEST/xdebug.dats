@@ -18,10 +18,14 @@ $(XATSHOME)/prelude/SATS/gbas.sats"
 $()(XATSHOME)/prelude/SATS/gbas.sats"
 *)
 (* ****** ****** *)
-
+fun
+foo
+(A: a1ref(int, 3)): void = (A[0] := 0)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 fun
 foo(Z: a0ref(int)): int = Z[]
-
 (* ****** ****** *)
 ////
 (* ****** ****** *)
