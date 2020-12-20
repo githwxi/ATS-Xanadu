@@ -354,6 +354,17 @@ streax_vt_imapopt0
   (xs: streax_vt(x0)): streax_vt(y0)
 //
 (* ****** ****** *)
+fun
+<a:vt>
+stream_vt_istreamize
+( xs
+: stream_vt(a)): stream_vt(@(nint, a))
+fun
+<a:vt>
+streax_vt_istreamize
+( xs
+: streax_vt(a)): stream_vt(@(nint, a))
+(* ****** ****** *)
 //
 // For z2-glseq-operations
 //
