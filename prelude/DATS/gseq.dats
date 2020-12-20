@@ -1408,6 +1408,68 @@ end // end of
 
 (* ****** ****** *)
 //
+impltmp
+<xs><x0>
+gseq_istreamize
+  ( xs ) =
+(
+  stream_vt_istreamize
+  (gseq_streamize<xs><x0>(xs))
+)
+//
+(* ****** ****** *)
+//
+// HX:
+// Miscellaneous gseq-operations
+//
+(* ****** ****** *)
+//
+impltmp
+<xs><x0>
+gseq_mergesort
+  (xs) =
+(
+gseq_unlist_vt<xs><x0>(xx)
+) where
+{
+val xx =
+gseq_mergesort_list<xs><x0>(xs)
+} (* end of [gseq_mergesort] *)
+impltmp
+<xs><x0>
+gseq_mergesort_list
+  (xs) =
+(
+  list_vt_mergesort<x0>(xx)
+) where
+{
+val xx = gseq_listize<xs><x0>(xs)
+} (* end of [gseq_mergesort_list] *)
+//
+(* ****** ****** *)
+
+impltmp
+<xs><x0>
+gseq_permutize
+  (xs) = let
+//
+val y0 =
+gseq_listize<xs><x0>(xs)
+val ys =
+list_vt_permutize<x0>(y0)
+//
+in
+(
+  stream_vt_map0<y0><xs>(ys)
+) where
+{
+  typedef y0 = list_vt(x0)
+  impltmp map0$fopr<y0><xs> = gseq_unlist_vt<xs><x0>
+}
+end // end of [gseq_permutize]
+
+(* ****** ****** *)
+//
 // For z2-gseq-operations
 //
 (* ****** ****** *)
@@ -1579,57 +1641,6 @@ $UN.p2tr_set<zz>
 (pz, list_vt_nil()); $UN.castlin01(r0)
 end // end of [gseq_z2map_list/z2foldl]
 //
-(* ****** ****** *)
-//
-// HX:
-// Miscellaneous gseq-operations
-//
-(* ****** ****** *)
-//
-impltmp
-<xs><x0>
-gseq_mergesort
-  (xs) =
-(
-gseq_unlist_vt<xs><x0>(xx)
-) where
-{
-val xx =
-gseq_mergesort_list<xs><x0>(xs)
-} (* end of [gseq_mergesort] *)
-impltmp
-<xs><x0>
-gseq_mergesort_list
-  (xs) =
-(
-  list_vt_mergesort<x0>(xx)
-) where
-{
-val xx = gseq_listize<xs><x0>(xs)
-} (* end of [gseq_mergesort_list] *)
-//
-(* ****** ****** *)
-
-impltmp
-<xs><x0>
-gseq_permutize
-  (xs) = let
-//
-val y0 =
-gseq_listize<xs><x0>(xs)
-val ys =
-list_vt_permutize<x0>(y0)
-//
-in
-(
-  stream_vt_map0<y0><xs>(ys)
-) where
-{
-  typedef y0 = list_vt(x0)
-  impltmp map0$fopr<y0><xs> = gseq_unlist_vt<xs><x0>
-}
-end // end of [gseq_permutize]
-
 (* ****** ****** *)
 //
 // For x2-gseq-operations

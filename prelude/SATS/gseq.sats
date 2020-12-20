@@ -552,6 +552,14 @@ gseq_ifilter_rlist(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
+gseq_istreamize
+  (xs: xs): stream_vt( @(nint, x0) )
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_mergesort(xs: xs): (xs)
 fun
 <xs:t0>
