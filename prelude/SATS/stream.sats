@@ -115,13 +115,6 @@ stream_length
 (xs: stream(a)): nint
 
 (* ****** ****** *)
-
-fun
-<a:t0>
-stream_listize
-(xs: stream(a)): list_vt(a)
-
-(* ****** ****** *)
 //
 fun
 <a:t0>
@@ -149,6 +142,20 @@ fun
 <x0:t0>
 stream_foreach(xs: stream(x0)): void
 *)
+//
+(* ****** ****** *)
+//
+(*
+fun
+<x0:t0>
+stream_listize
+( xs: stream(x0) ) : list_vt(x0)
+*)
+//
+fun
+<x0:t0>
+stream_streamize
+( xs: stream(x0) ) : stream_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -241,6 +248,15 @@ fun
 streax_sieve_vt(stream(x0)): streax_vt(x0)
 //
 (* ****** ****** *)
+
+fun
+<x0:t0>
+stream_imap(stream(x0)): stream(@(nint, x0))
+fun
+<x0:t0>
+stream_imap_vt(stream(x0)): stream_vt(@(nint, x0))
+
+(* ****** ****** *)
 //
 // HX-2020-05-30:
 // symbol overloading for stream
@@ -252,21 +268,34 @@ streax_sieve_vt(stream(x0)): streax_vt(x0)
 //
 (* ****** ****** *)
 
-#symload length with stream_length of 1000
+#symload
+length with stream_length of 1000
 
 (* ****** ****** *)
 
-#symload extend with stream_extend of 1000
-#symload append with stream_append of 1000
-#symload concat with stream_concat of 1000
+#symload
+extend with stream_extend of 1000
+#symload
+append with stream_append of 1000
+#symload
+concat with stream_concat of 1000
 
 (* ****** ****** *)
 //
-#symload forall with stream_forall of 1000
+#symload
+forall with stream_forall of 1000
 (*
-#symload foreach with stream_foreach of 1000
+#symload
+foreach with stream_foreach of 1000
 *)
 //
+(* ****** ****** *)
+(*
+#symload
+listize with stream_listize of 1000
+*)
+#symload
+streamize with stream_streamize of 1000
 (* ****** ****** *)
 //
 #symload map with stream_map of 1000

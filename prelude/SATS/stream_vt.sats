@@ -170,6 +170,7 @@ fun
 <a:vt>
 stream_vt_rlistize
 (xs: stream_vt(a)): list_vt(a)
+//
 fun
 <a:vt>
 stream_vt_streamize
