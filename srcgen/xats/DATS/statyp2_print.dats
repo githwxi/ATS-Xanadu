@@ -182,10 +182,15 @@ x0.node() of
 | T2Ptyext(tnm1, t2ps) =>
   fprint!(out, "T2Ptyext(", tnm1, "; ", t2ps, ")")
 //
-| T2Ptyrec(knd1, npf2, lt2ps) =>
+| T2Ptyrec(knd1, npf2, ltps) =>
+  let
+  val s2t0 = x0.sort()
+  in
   fprint!
   ( out
-  , "T2Ptyrec(", knd1, "; ", npf2, "; ", lt2ps, ")")
+  , "T2Ptyrec("
+  , knd1, ": ", s2t0, "; ", npf2, "; ", ltps, ")")
+  end // end of [ T2Ptyrec ]
 //
 | T2Pnone0() => fprint!(out, "T2Pnone0(", ")")
 | T2Pnone1(s2e) => fprint!(out, "T2Pnone1(", s2e, ")")

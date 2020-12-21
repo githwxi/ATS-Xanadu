@@ -410,20 +410,21 @@ t2ype_subst$var<>(t2p0, flag)
     t2ype_make_node(s2t0, T2Plam(s2vs, t2p1))
   end
 //
-| T2Pfun
-  (fc2, npf, t2ps, t2p1) =>
-  let
-    val
-    t2p1 = auxt2p0(t2p1, flag)
-    val
-    t2ps = auxt2ps(t2ps, flag)
-  in
-    if
-    flag=fini
-    then t2p0
-    else
-    t2ype_make_node(s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
-  end
+|
+T2Pfun
+(fc2, npf, t2ps, t2p1) =>
+let
+  val
+  t2p1 = auxt2p0(t2p1, flag)
+  val
+  t2ps = auxt2ps(t2ps, flag)
+in
+  if
+  flag=fini
+  then t2p0
+  else
+  t2ype_make_node(s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
+end
 //
 | T2Pexi(s2vs, t2p1) => let
     val
