@@ -294,6 +294,9 @@ fun
 t2ype_evalrec(t2p: t2ype): t2ype
 //
 (* ****** ****** *)
+fun
+t2ype_sortrec(t2p: t2ype): sort2
+(* ****** ****** *)
 //
 val
 the_t2ype_none0: t2ype

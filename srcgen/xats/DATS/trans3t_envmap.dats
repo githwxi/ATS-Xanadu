@@ -316,8 +316,15 @@ fun
 ftest
 (xtv0: t2xtv): bool =
 let
-val t2p0 = xtv0.type()
-val s2t1 = t2p0.sort()
+val
+t2p0 = xtv0.type()
+(*
+val
+s2t1 = t2p0.sort()
+*)
+val
+s2t1 = t2ype_sortrec(t2p0)
+//
 in
 case+ s2t1 of
 |
