@@ -582,14 +582,20 @@ impltmp
 <>(*tmp*)
 string_vt_make_stream
   (cs) =
-string_vt_make_list_vt
-  (stream_listize(cs))
+let
+val cs = listize(cs)
+in
+  string_vt_make_list_vt(cs)
+endlet // string_vt_make_stream
 impltmp
 <>(*tmp*)
 string_vt_make_stream_vt
   (cs) =
-string_vt_make_list_vt
-  (stream_vt_listize(cs))
+let
+val cs = listize(cs)
+in
+  string_vt_make_list_vt(cs)
+endlet // string_vt_make_stream_vt
 //
 (* ****** ****** *)
 //
