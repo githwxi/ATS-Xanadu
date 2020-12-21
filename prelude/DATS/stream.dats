@@ -299,6 +299,32 @@ end
 (* ****** ****** *)
 
 impltmp
+<x0>(*tmp*)
+stream_streamize
+( xs ) =
+(
+  auxmain(xs)) where
+{
+//
+fun
+auxmain
+( xs ) = $llazy
+(
+case+
+$eval(xs) of
+|
+strmcon_nil() =>
+strmcon_vt_nil()
+|
+strmcon_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs))
+)
+//
+} (*where*) // end of [stream_streamize]
+
+(* ****** ****** *)
+
+impltmp
 <x0><y0>
 stream_map
   (xs) =
@@ -307,14 +333,17 @@ stream_map
 ) where
 {
 fun
-auxmain(xs) =
-$lazy
+auxmain
+( xs ) = $lazy
 (
-case+ $eval(xs) of
-| strmcon_nil() =>
-  strmcon_nil()
-| strmcon_cons(x0, xs) =>
-  strmcon_cons(map$fopr(x0), auxmain(xs))
+case+
+$eval(xs) of
+|
+strmcon_nil() =>
+strmcon_nil()
+|
+strmcon_cons(x0, xs) =>
+strmcon_cons(map$fopr(x0), auxmain(xs))
 )
 } (* end of [stream_map] *)
 
@@ -330,11 +359,14 @@ fun
 auxmain(xs) =
 $llazy
 (
-case+ $eval(xs) of
-| strmcon_nil() =>
-  strmcon_vt_nil()
-| strmcon_cons(x0, xs) =>
-  strmcon_vt_cons(map$fopr(x0), auxmain(xs))
+case+
+$eval(xs) of
+|
+strmcon_nil() =>
+strmcon_vt_nil()
+|
+strmcon_cons(x0, xs) =>
+strmcon_vt_cons(map$fopr(x0), auxmain(xs))
 )
 } (* end of [stream_map_vt] *)
 
