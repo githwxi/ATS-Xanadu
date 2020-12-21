@@ -672,4 +672,58 @@ case+ !xs of
 
 (* ****** ****** *)
 
+impltmp
+<x0><y0>
+stream_imap
+  (xs) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0
+: nint,
+  xs
+: stream(x0)) = $lazy
+(
+case+
+$eval(xs) of
+|
+strmcon_nil() =>
+strmcon_nil()
+|
+strmcon_cons(x0, xs) =>
+strmcon_cons
+( imap$fopr(i0, x0), auxmain(i0+1, xs) )
+)
+} (* end of [stream_imap] *)
+
+impltmp
+<x0><y0>
+stream_imap_vt
+  (xs) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0
+: nint,
+  xs
+: stream(x0)) = $llazy
+(
+case+
+$eval(xs) of
+|
+strmcon_nil() =>
+strmcon_vt_nil()
+|
+strmcon_cons(x0, xs) =>
+strmcon_vt_cons
+( imap$fopr(i0, x0), auxmain(i0+1, xs) )
+)
+} (* end of [stream_imap_vt] *)
+
+(* ****** ****** *)
+
 (* end of [stream.dats] *)

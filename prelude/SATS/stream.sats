@@ -251,10 +251,12 @@ streax_sieve_vt(stream(x0)): streax_vt(x0)
 
 fun
 <x0:t0>
-stream_imap(stream(x0)): stream(@(nint, x0))
+<y0:t0>
+stream_imap(stream(x0)): stream( y0 )
 fun
 <x0:t0>
-stream_imap_vt(stream(x0)): stream_vt(@(nint, x0))
+<y0:vt>
+stream_imap_vt(stream(x0)): stream_vt( y0 )
 
 (* ****** ****** *)
 //
@@ -316,6 +318,11 @@ streamize with stream_streamize of 1000
 #symload filter with streax_filter of 1000
 #symload filter_vt with stream_filter_vt of 1000
 #symload filter_vt with streax_filter_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload imap with stream_imap of 1000
+#symload imap_vt with stream_imap_vt of 1000
 //
 (* ****** ****** *)
 //
