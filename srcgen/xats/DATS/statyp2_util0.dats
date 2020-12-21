@@ -935,6 +935,68 @@ end (* t2ype_evalrec *) end // end of [local]
 (* ****** ****** *)
 
 implement
+t2ype_sortrec(t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Pxtv(xtv0) =>
+let
+val
+t2p1 = xtv0.type()
+in
+case+
+t2p1.node() of
+//
+|
+T2Pnone0() => xtv0.sort()
+|
+_(*solved*) => t2ype_sortrec(t2p1)
+//
+end // end of [T2Pxtv]
+|
+T2Ptyrec
+(knd, npf, ltps) =>
+(
+case+ knd of
+|
+TYRECflt0() =>
+auxlst(ltps) where
+{
+fun
+auxlst
+( ltps
+: labt2ypelst): sort2 =
+(
+case+ ltps of
+|
+list_nil
+((*void*)) => the_sort2_type
+|
+list_cons
+(ltp1, ltps) =>
+let
+//
+val+
+SLABELED(lab, t2p) = ltp1
+//
+val s2t = t2ype_sortrec(t2p)
+in
+if
+sort2_islin(s2t)
+then the_sort2_vwtp else auxlst(ltps)
+end // end of [list_cons]
+)
+} (* end of [T2Ptyrec] *)
+| _(*non-TYRECflt0*) => t2p0.sort()
+)
+| _ (* rest-of-t2ype*) => t2p0.sort()
+
+) (* end of [t2ype_sortrec] *)
+
+(* ****** ****** *)
+
+implement
 {}(*tmp*)
 t2ype_whnfz
   (t2p0) = let
