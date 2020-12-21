@@ -508,14 +508,14 @@ case+ xs of
   strmcon_vt_nil()
 | strmcon_cons(x0, xs) =>
   let
+    val
+    opt =
+    filter$test<x0>(x0)
 (*
     val
     opt =
     mapopt$fopr<x0><y0>(x0)
 *)
-    val
-    opt =
-    filter$test<x0>(x0)
   in
 (*
     case+ opt of
@@ -609,7 +609,13 @@ case+ xs of
 } (* end of [stream_mapoptn_vt] *)
 
 (* ****** ****** *)
-
+//
+(*
+// HX-2020-12-21:
+// This is mostly as an example
+// rather than for its usefulness
+*)
+//
 impltmp
 <x0:t0>
 stream_sieve
@@ -638,9 +644,7 @@ case+ !xs of
   }
 )
 } (* stream_sieve *)
-
-(* ****** ****** *)
-
+//
 impltmp
 <x0:t0>
 stream_sieve_vt
@@ -669,7 +673,7 @@ case+ !xs of
   }
 )
 } (* stream_sieve_vt *)
-
+//
 (* ****** ****** *)
 
 impltmp
@@ -694,7 +698,7 @@ strmcon_nil()
 |
 strmcon_cons(x0, xs) =>
 strmcon_cons
-( imap$fopr(i0, x0), auxmain(i0+1, xs) )
+(imap$fopr<x0><y0>(i0, x0), auxmain(i0+1, xs))
 )
 } (* end of [stream_imap] *)
 
@@ -720,7 +724,7 @@ strmcon_vt_nil()
 |
 strmcon_cons(x0, xs) =>
 strmcon_vt_cons
-( imap$fopr(i0, x0), auxmain(i0+1, xs) )
+(imap$fopr<x0><y0>(i0, x0), auxmain(i0+1, xs))
 )
 } (* end of [stream_imap_vt] *)
 
