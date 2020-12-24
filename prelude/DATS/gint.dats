@@ -181,12 +181,31 @@ else true // end of [else]
 (* ****** ****** *)
 
 impltmp
-<y0:vt>
-gint_map_list_nint
-  (xs) = let
+<>(*tmp*)
+gint_listize_nint
+  {n}(xs) = let
 //
 typedef
-x0 = nint
+x0 = nintlt(n)
+typedef
+y0 = nintlt(n)
+//
+impltmp
+map$fopr<x0><y0>(x0) = x0
+//
+in
+  gint_map_list_nint<y0>(xs)
+end // end of [gint_listize_nint]
+
+(* ****** ****** *)
+
+impltmp
+<y0:vt>
+gint_map_list_nint
+  {n}(xs) = let
+//
+typedef
+x0 = nintlt(n)
 //
 fun
 loop{i:nat}.<i>.

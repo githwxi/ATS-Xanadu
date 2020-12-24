@@ -272,15 +272,15 @@ gint_rforall_uint(ub: uint): bool
 fun<>
 gint_listize_nint
 {n:nat}
-(n0: sint(n)): stream_vt(nintlt(n))
+(n0: sint(n)): list_vt(nintlt(n), n)
 fun<>
 gint_rlistize_nint
 {n:nat}
-(n0: sint(n)): stream_vt(nintlt(n))
+(n0: sint(n)): list_vt(nintlt(n), n)
 fun<>
 gint_streamize_nint
 {n:nat}
-(n0: sint(n)): stream_vt(nintlt(n))
+(n0: sint(n)): stream_vt( nintlt(n) )
 
 (* ****** ****** *)
 
