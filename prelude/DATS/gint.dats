@@ -200,6 +200,26 @@ end // end of [gint_listize_nint]
 (* ****** ****** *)
 
 impltmp
+<>(*tmp*)
+gint_rlistize_nint
+  {n}(xs) = let
+//
+typedef
+x0 = nintlt(n)
+typedef
+y0 = nintlt(n)
+//
+impltmp
+map$fopr
+<x0><y0>(x0) = ( xs-1-x0 )
+//
+in
+  gint_map_list_nint<y0>(xs)
+end // end of [gint_rlistize_nint]
+
+(* ****** ****** *)
+
+impltmp
 <y0:vt>
 gint_map_list_nint
   {n}(xs) = let
@@ -209,26 +229,26 @@ x0 = nintlt(n)
 //
 fun
 loop{i:nat}.<i>.
-( xs
+( i0
 : sint(i)
 , r0
 : &(?list_vt(y0)) >> list_vt(y0, i)
 ) : void =
 (
 if
-(xs = 0)
+(i0 = xs)
 then
 (r0 := list_vt_nil())
 else
 let
-val x0 = xs
-val xs = pred(xs)
+val x0 = i0
+val i0 = succ(i0)
 val y0 =
 map$fopr<x0><y0>(x0)
 val () =
 (r0 := list_vt_cons(y0, _))
 in
-  loop(xs, r0.1); $fold(r0)
+  loop(i0, r0.1); $fold(r0)
 end // else
 ) (* end of [loop] *)
 //
