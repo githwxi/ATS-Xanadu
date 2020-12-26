@@ -41,6 +41,8 @@
 // Note that array_vt is included
 //
 (* ****** ****** *)
+// HX: singleton
+(* ****** ****** *)
 
 abstbox
 a0ref_vt_x0(a:vt)
@@ -51,6 +53,8 @@ a0ref(a:vt) = a0ref_vt_x0(a)
 vwtpdef
 a0ptr(a:vt) = a0ptr_vt_vx(a)
 
+(* ****** ****** *)
+// HX: 1-dimensional
 (* ****** ****** *)
 //
 abstbox
@@ -73,6 +77,37 @@ vwtpdef
 a1ptrsz(a:vt) = [n:i0] a1ptr(a, n)
 //
 (* ****** ****** *)
+// HX: 2-dimensional
+(* ****** ****** *)
+//
+abstbox
+a2ref_vt_i0_i0_x0
+( a:vt, nrow:i0, ncol:i0)
+absvtbx
+a2ptr_vt_i0_i0_vx
+( a:vt, nrow:i0, ncol:i0)
+//
+typedef
+a2ref(
+a:vt,
+m:i0,n:i0) =
+a2ref_vt_i0_i0_x0(a, m, n)
+vwtpdef
+a2ptr(
+a:vt,
+m:i0,n:i0) =
+a2ptr_vt_i0_i0_vx(a, m, n)
+//
+(* ****** ****** *)
+//
+typedef
+a2refsz(a:vt) =
+  [m,n:i0] a2ref( a, m, n )
+vwtpdef
+a2ptrsz(a:vt) =
+  [m,n:i0] a2ptr( a, m, n )
+//
+(* ****** ****** *)
 //
 fcast
 a0ptr2ref
@@ -82,6 +117,10 @@ fcast
 a1ptr2ref
 {a:vt}{n:i0}
 (a1ptr(a, n)): a1ref(a, n)
+fcast
+a2ptr2ref
+{a:vt}{m,n:i0}
+(a2ptr(a, m, n)): a2ref(a, m, n)
 //
 (* ****** ****** *)
 //
