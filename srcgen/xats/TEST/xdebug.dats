@@ -1,7 +1,17 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
-
+//
+#define X 1
+//
+fun
+foo(x0: int): bool = 
+case+ x0 of
+| X => true | _ => false
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
 local
 #define
 XATSHOME="__XATSHOME__"

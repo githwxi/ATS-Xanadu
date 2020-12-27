@@ -186,6 +186,20 @@ case- x0.node() of
 | D3Pany() =>
   fprint!(out, "D3Pany()")
 //
+| D3Pvar(d2v) =>
+  fprint!
+  (out, "D3Pvar(", d2v, ")")
+//
+| D3Pi00(int) =>
+  fprint!
+  (out, "D3Pi00(", int, ")")
+| D3Pb00(btf) =>
+  fprint!
+  (out, "D3Pb00(", btf, ")")
+| D3Ps00(str) =>
+  fprint!
+  (out, "D3Ps00(", str, ")")
+//
 | D3Pint(tok) =>
   fprint!
   (out, "D3Pint(", tok, ")")
@@ -201,10 +215,6 @@ case- x0.node() of
 | D3Pstr(tok) =>
   fprint!
   (out, "D3Pstr(", tok, ")")
-//
-| D3Pvar(d2v) =>
-  fprint!
-  (out, "D3Pvar(", d2v, ")")
 //
 | D3Pcon1(d2c0) =>
   fprint!

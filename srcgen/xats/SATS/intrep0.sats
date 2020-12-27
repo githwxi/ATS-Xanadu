@@ -454,6 +454,10 @@ h0pat_node =
 | H0Pany of () // wildcard
 | H0Pvar of hdvar // variable
 //
+| H0Pi00 of (int)
+| H0Pb00 of (bool)
+| H0Ps00 of string
+//
 | H0Pint of token
 | H0Pbtf of token
 | H0Pchr of token
