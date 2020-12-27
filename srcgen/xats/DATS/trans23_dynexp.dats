@@ -406,38 +406,53 @@ d2p0.node() of
 | D2Pnil() =>
   d3pat_nil(loc0)
 //
-| D2Pany() =>
-  (
+|
+D2Pany() =>
+(
   d3pat_any(loc0, t2p0)
-  ) where
-  {
+) where
+{
   val
   t2p0 = t2ype_new(loc0)
-  }
+}
 //
-| D2Pvar(d2v0) =>
-  let
-    val () =
-    trenv23_dvar(d2v0)
-  in
-    d3pat_var(loc0, d2v0)
-  end
+|
+D2Pvar(d2v0) =>
+let
+  val () =
+  trenv23_dvar(d2v0)
+in
+  d3pat_var(loc0, d2v0)
+end
 //
-| D2Pint(tok0) =>
+| D2Pi00(int) =>
   (
-    d3pat_int(loc0, tok0)
+    d3pat_i00(loc0, int)
   )
-| D2Pbtf(tok0) =>
+| D2Pb00(btf) =>
   (
-    d3pat_btf(loc0, tok0)
+    d3pat_b00(loc0, btf)
   )
-| D2Pchr(tok0) =>
+| D2Ps00(str) =>
   (
-    d3pat_chr(loc0, tok0)
+    d3pat_s00(loc0, str)
   )
-| D2Pstr(tok0) =>
+//
+| D2Pint(tok) =>
   (
-    d3pat_str(loc0, tok0)
+    d3pat_int(loc0, tok)
+  )
+| D2Pbtf(tok) =>
+  (
+    d3pat_btf(loc0, tok)
+  )
+| D2Pchr(tok) =>
+  (
+    d3pat_chr(loc0, tok)
+  )
+| D2Pstr(tok) =>
+  (
+    d3pat_str(loc0, tok)
   )
 //
 | D2Pcon1 _ => auxcon1(d2p0)

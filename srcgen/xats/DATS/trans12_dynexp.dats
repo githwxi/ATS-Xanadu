@@ -417,25 +417,67 @@ val-
 D1Pid0
 ( tok ) = d1p0.node()
 //
-val sym = dexpid_sym(tok)
+val
+sym =
+dexpid_sym(tok)
+val
+opt =
+the_gmacenv_find(sym)
+//
+in
+//
+case- opt of
+|
+~None_vt() =>
+(
+  auxid0_d1pat(d1p0)
+)
+|
+~Some_vt(g1m0) =>
+let
+val
+loc0 = d1p0.loc()
+val
+g1m0 =
+trans11_g1mac(g1m0)
+in
+  trg1mac_dpat(loc0, g1m0)
+end
+//
+end // end of [auxid0]
+
+and
+auxid0_d1pat
+( d1p0
+: d1pat): d2pat = let
+//
+val-
+D1Pid0
+( tok ) = d1p0.node()
+//
+val
+sym = dexpid_sym(tok)
 //
 (*
 val opt = None_vt((*void*))
 *)
-val opt = the_dexpenv_find(sym)
+val
+opt = the_dexpenv_find(sym)
 //
 in
 //
 case+ opt of
 //
-| ~None_vt() =>
-   auxid0_none
-   (d1p0, sym(*d2var*))
-| ~Some_vt(d2i) =>
-   auxid0_some
-   (d1p0, sym(*d2var*), d2i(*d2con*))
+| ~
+None_vt() =>
+auxid0_none
+(d1p0, sym(*d2var*))
+| ~
+Some_vt(d2i) =>
+auxid0_d2itm
+(d1p0, sym(*d2var*), d2i(*d2con*))
 //
-end // end of [auxid0]
+end // end of [auxid0_d1pat]
 
 and
 auxid0_none
@@ -446,30 +488,32 @@ let
 in
 //
 ifcase
-| isany(name) =>
-  (
-  d2pat_make_node(loc0, D2Pany())
-  )
-| isbtf(name) =>
-  let
-  val-
-  D1Pid0(tok) = d1p0.node()
-  in
-  d2pat_make_node(loc0, D2Pbtf(tok))
-  end
+|
+isany(name) =>
+(
+d2pat_make_node(loc0, D2Pany())
+)
+|
+isbtf(name) =>
+let
+val-
+D1Pid0(tok) = d1p0.node()
+in
+d2pat_make_node(loc0, D2Pbtf(tok))
+end
 | _ (* else *) =>
-  let
-  val
-  d2v0 = d2var_new2(loc0, name)
-  in
-  d2pat_make_node(loc0, D2Pvar(d2v0))
-  end
+let
+val
+d2v0 = d2var_new2(loc0, name)
+in
+d2pat_make_node(loc0, D2Pvar(d2v0))
+end
 //
 end // end of [auxid0_none]
 
 (*
 and
-auxid0_some
+auxid0_d2itm
 ( d1p0: d1pat
 , name: sym_t
 , d2i0: d2itm): d2pat =
@@ -477,10 +521,10 @@ let
   val loc0 = d1p0.loc()
 in
   d2pat_make_node(loc0, D2Pnone1(d1p0))
-end // end of [auxid0_some]
+end // end of [auxid0_d2itm]
 *)
 and
-auxid0_some
+auxid0_d2itm
 ( d1p0: d1pat
 , name: sym_t
 , d2i0: d2itm): d2pat =
@@ -496,7 +540,7 @@ case+ d2i0 of
   auxid0_d2cst(d1p0, name)
 | D2ITMsym(_, dpis) =>
   auxid0_d2sym(d1p0, dpis)
-) (* end of [auxid0_some] *)
+) (* end of [auxid0_d2itm] *)
 
 and
 auxid0_d2con
@@ -509,16 +553,19 @@ in
 if
 list_isnot_sing(d2cs)
 then
-d2pat_con2(loc0, d2cs)
+(
+  d2pat_con2(loc0, d2cs)
+)
 else
 let
-val d2c0 = d2cs.head()
+  val d2c0 = d2cs.head()
 in
-my_d2pat_con1(loc0, d2c0)
-end // end of [if]
+  my_d2pat_con1(loc0, d2c0)
+end // end of [let]
+// end of [if]
 //
 end // end of [auxid0_d2con]
-
+//
 and
 auxid0_d2var
 ( d1p0: d1pat
@@ -533,7 +580,7 @@ auxid0_d2cst
 (
   auxid0_none(d1p0, name)
 )
-
+//
 and
 auxid0_d2sym
 ( d1p0
@@ -605,13 +652,14 @@ isBANG
 (
 case+
 d1p.node() of
-| D1Pid0(tok) =>
-  (
-  case+
-  tok.node() of
-  | T_IDENT_sym(x) => (x = "!")
-  | _(* non-T_IDENT_sym *) => false
-  )
+|
+D1Pid0(tok) =>
+(
+case+
+tok.node() of
+| T_IDENT_sym(x) => (x = "!")
+| _(* non-T_IDENT_sym *) => false
+)
 | _(* non-D1Pid0 *) => false
 )
 fun
@@ -620,13 +668,14 @@ isFLAT
 (
 case+
 d1p.node() of
-| D1Pid0(tok) =>
-  (
-  case+
-  tok.node() of
-  | T_IDENT_sym(x) => (x = "@")
-  | _(* non-T_IDENT_sym *) => false
-  )
+|
+D1Pid0(tok) =>
+(
+case+
+tok.node() of
+| T_IDENT_sym(x) => (x = "@")
+| _(* non-T_IDENT_sym *) => false
+)
 | _(* non-D1Pid0 *) => false
 )
 fun
@@ -635,13 +684,14 @@ isFREE
 (
 case+
 d1p.node() of
-| D1Pid0(tok) =>
-  (
-  case+
-  tok.node() of
-  | T_IDENT_sym(x) => (x = "~")
-  | _(* non-T_IDENT_sym *) => false
-  )
+|
+D1Pid0(tok) =>
+(
+case+
+tok.node() of
+| T_IDENT_sym(x) => (x = "~")
+| _(* non-T_IDENT_sym *) => false
+)
 | _(* non-D1Pid0 *) => false
 )
 //
@@ -649,30 +699,33 @@ in
 //
 ifcase
 //
-| isBANG(d1p1) =>
-  let
-    val d2p2 =
-    trans12_dpat(d1p2)
-  in
-    d2pat_make_node
-    (d1p0.loc(), D2Pbang(d2p2))
-  end
-| isFLAT(d1p1) =>
-  let
-    val d2p2 =
-    trans12_dpat(d1p2)
-  in
-    d2pat_make_node
-    (d1p0.loc(), D2Pflat(d2p2))
-  end
-| isFREE(d1p1) =>
-  let
-    val d2p2 =
-    trans12_dpat(d1p2)
-  in
-    d2pat_make_node
-    (d1p0.loc(), D2Pfree(d2p2))
-  end
+|
+isBANG(d1p1) =>
+let
+  val d2p2 =
+  trans12_dpat(d1p2)
+in
+  d2pat_make_node
+  (d1p0.loc(), D2Pbang(d2p2))
+end
+|
+isFLAT(d1p1) =>
+let
+  val d2p2 =
+  trans12_dpat(d1p2)
+in
+  d2pat_make_node
+  (d1p0.loc(), D2Pflat(d2p2))
+end
+|
+isFREE(d1p1) =>
+let
+  val d2p2 =
+  trans12_dpat(d1p2)
+in
+  d2pat_make_node
+  (d1p0.loc(), D2Pfree(d2p2))
+end
 //
 | _ (* else *) =>
 (
@@ -904,11 +957,20 @@ end // end of [auxlist2]
 in (* in-of-local *)
 
 implement
+trans12_dpid
+  (d1p0) =
+(
+auxid0_d1pat(d1p0)
+)
+
+(* ****** ****** *)
+
+implement
 trans12_dpat
   (d1p0) = let
 //
 val
-loc0 = d1p0.loc()
+loc0 = d1p0.loc((*void*))
 //
 (*
 val () =
@@ -2824,11 +2886,20 @@ end // end of [aux_qual0]
 in (* in-of-local *)
 
 implement
+trans12_deid
+  (d1e0) =
+(
+auxid0_d1exp(d1e0)
+)
+
+(* ****** ****** *)
+
+implement
 trans12_dexp
   (d1e0) = let
 //
 val
-loc0 = d1e0.loc()
+loc0 = d1e0.loc((*void*))
 //
 (*
 val () =
@@ -2991,9 +3062,6 @@ d1e0.node() of
 *)
 //
 end // end of [trans12_dexp]
-
-implement
-trans12_deid(d1e0) = auxid0_d1exp(d1e0)
 
 end // end of [local]
 

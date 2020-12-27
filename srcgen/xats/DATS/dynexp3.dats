@@ -138,6 +138,41 @@ d3pat_make_node
 end // end of [let]
 
 (* ****** ****** *)
+//
+implement
+d3pat_i00
+(loc0, int) =
+let
+val
+t2p0 = the_t2ype_sint
+in
+d3pat_make_node
+(loc0, t2p0, D3Pi00(int))
+end // end of [let]
+//
+implement
+d3pat_b00
+(loc0, btf) =
+let
+val
+t2p0 = the_t2ype_bool
+in
+d3pat_make_node
+(loc0, t2p0, D3Pb00(btf))
+end // end of [let]
+//
+implement
+d3pat_s00
+(loc0, str) =
+let
+val
+t2p0 = the_t2ype_string
+in
+d3pat_make_node
+(loc0, t2p0, D3Ps00(str))
+end // end of [let]
+//
+(* ****** ****** *)
 
 implement
 d3pat_int

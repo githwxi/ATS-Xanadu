@@ -98,9 +98,12 @@ datatype
 d3pat_node =
 //
 | D3Pnil of ()
-//
 | D3Pany of ()
-| D3Pvar of (d2var)
+| D3Pvar of d2var
+//
+| D3Pi00 of (int)
+| D3Pb00 of (bool)
+| D3Ps00 of string
 //
 | D3Pint of (token)
 | D3Pbtf of (token)
@@ -184,6 +187,18 @@ fun
 d3pat_var
 (loc0: loc_t, d2v0: d2var): d3pat
 //
+(* ****** ****** *)
+
+fun
+d3pat_i00
+(loc0: loc_t, int: int): d3pat
+fun
+d3pat_b00
+(loc0: loc_t, btf: bool): d3pat
+fun
+d3pat_s00
+(loc0: loc_t, str: string): d3pat
+
 (* ****** ****** *)
 
 fun

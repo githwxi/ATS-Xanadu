@@ -905,6 +905,9 @@ fun
 trans12_dpat: d1pat -> d2pat
 //
 fun
+trans12_dpid: d1pat -> d2pat 
+//
+fun
 trd1pat_gmac: d1pat -> g1mac
 fun
 trg1mac_dpat: (loc_t, g1mac) -> d2pat

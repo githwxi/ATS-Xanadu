@@ -292,6 +292,16 @@ case- x0.node() of
 | D2Parg() =>
   fprint!(out, "D2Parg(", ")")
 //
+| D2Pvar(d2v) =>
+  fprint!(out, "D2Pvar(", d2v, ")")
+//
+| D2Pi00(int) =>
+  fprint!(out, "D2Pi00(", int, ")")
+| D2Pb00(btf) =>
+  fprint!(out, "D2Pb00(", btf, ")")
+| D2Ps00(str) =>
+  fprint!(out, "D2Ps00(", str, ")")
+//
 | D2Pint(tok) =>
   fprint!(out, "D2Pint(", tok, ")")
 | D2Pbtf(tok) =>
@@ -302,9 +312,6 @@ case- x0.node() of
   fprint!(out, "D2Pflt(", tok, ")")
 | D2Pstr(tok) =>
   fprint!(out, "D2Pstr(", tok, ")")
-//
-| D2Pvar(d2v) =>
-  fprint!(out, "D2Pvar(", d2v, ")")
 //
 | D2Pcon1(d2c0) =>
   fprint!(out, "D2Pcon1(", d2c0, ")")
@@ -353,6 +360,9 @@ case- x0.node() of
   fprint!
   ( out
   , "D2Panno(", d2p1, "; ", s2e2, ")")
+//
+| D2Pg1mac(g1m0) =>
+  fprint!(out, "D2Pg1mac(", g1m0, ")")
 //
 | D2Pnone0() => fprint!(out, "D2Pnone0(", ")")
 | D2Pnone1(d1psrc) => fprint!(out, "D2Pnone1(", d1psrc, ")")

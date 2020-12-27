@@ -589,13 +589,17 @@ d2pat_node =
 | D2Pany of ()
 | D2Parg of ()
 //
+| D2Pvar of d2var
+//
+| D2Pi00 of (int) // int
+| D2Pb00 of (bool) // bool
+| D2Ps00 of string // string
+//
 | D2Pint of (token)
 | D2Pbtf of (token)
 | D2Pchr of (token)
 | D2Pflt of (token)
 | D2Pstr of (token)
-//
-| D2Pvar of (d2var)
 //
 | D2Pcon1 of (d2con)
 | D2Pcon2 of (d2conlst)
@@ -623,8 +627,9 @@ d2pat_node =
 | D2Panno of
   (d2pat, s2exp) // no s2xtv in anno
 //
-| D2Pnone0 of ()
-| D2Pnone1 of (d1pat)
+| D2Pg1mac of (g1mac) // HX: error!
+//
+| D2Pnone0 of () | D2Pnone1 of (d1pat)
 //
 (* ****** ****** *)
 //
