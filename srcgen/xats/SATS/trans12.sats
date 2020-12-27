@@ -903,6 +903,14 @@ the_trans12_add_gualst(d2gs: d2gualst): void
 //
 fun
 trans12_dpat: d1pat -> d2pat
+//
+fun
+trd1pat_gmac: d1pat -> g1mac
+fun
+trg1mac_dpat: (loc_t, g1mac) -> d2pat
+//
+(* ****** ****** *)
+//
 fun
 trans12_dpatlst: d1patlst -> d2patlst
 //
