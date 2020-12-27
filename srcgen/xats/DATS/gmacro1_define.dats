@@ -1327,6 +1327,136 @@ end where
 (* ****** ****** *)
 
 implement
+trg1mac_dpat
+(loc0, g1m0) =
+let
+//
+val () =
+$tempenver(loc0)
+//
+fun
+auxexp
+( g1m0
+: g1mac): d2pat =
+trg1mac_dpat(loc0, g1m0)
+fun
+auxexplst
+( g1ms
+: g1maclst): d2patlst =
+let
+implement
+list_map$fopr<
+  g1mac><d2pat>(x) = auxexp(x)
+in
+list_vt2t
+(list_map<g1mac><d2pat>(g1ms))
+end
+//
+fun
+auxid0
+( g1m0
+: g1mac): d2pat =
+(
+trans12_dpid(d1p0)
+) where
+{
+val-
+G1Mid0(sym) = g1m0
+val
+tok =
+token_make_node
+(loc0, T_IDENT(sym.name()))
+val
+d1p0 =
+d1pat_make_node(loc0, D1Pid0(tok))
+} // end of [auxid0]
+//
+fun
+auxint
+( g1m0
+: g1mac): d2pat =
+let
+val-
+G1Mint(int) = g1m0
+in
+d2pat_make_node(loc0, D2Pi00(int))
+end // end of [auxint]
+//
+fun
+auxbtf
+( g1m0
+: g1mac): d2pat =
+let
+val-
+G1Mbtf(btf) = g1m0
+in
+d2pat_make_node(loc0, D2Pb00(btf))
+end // end of [auxbtf]
+//
+fun
+auxstr
+( g1m0
+: g1mac): d2pat =
+let
+val-
+G1Mstr(str) = g1m0
+in
+d2pat_make_node(loc0, D2Ps00(str))
+end // end of [auxstr]
+//
+fun
+auxapps
+( g1m0
+: g1mac): d2pat =
+let
+val-
+G1Mapps
+(g1f0, g1ms) = g1m0
+//
+in
+//
+let
+val
+d2f0 = auxexp(g1f0)
+val
+d2ps = auxexplst(g1ms)
+in
+d2pat_make_node
+(loc0, D2Pdapp(d2f0, (~1), d2ps))
+end
+//
+end // end of [auxapp]
+//
+in
+//
+case+ g1m0 of
+//
+| G1Mid0 _ => auxid0(g1m0)
+//
+| G1Mint _ => auxint(g1m0)
+| G1Mbtf _ => auxbtf(g1m0)
+| G1Mstr _ => auxstr(g1m0)
+//
+| G1Mapps _ => auxapps(g1m0)
+//
+| _(* rest-of-g1mac *) =>
+(
+d2pat_make_node(loc0, D2Pg1mac(g1m0))
+)
+end where
+{
+//
+(*
+  val () =
+  println!
+  ("trg1mac_dpat: g1m0 = ", g1m0)
+*)
+//
+} (*where*) // end of [trg1mac_dpat]
+
+(* ****** ****** *)
+
+implement
 trg1mac_dexp
 (loc0, g1m0) =
 let
