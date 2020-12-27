@@ -60,6 +60,13 @@ case+ rep of
 //
 (* ****** ****** *)
 //
+impltmp
+<a>(*tmp*)
+bool_ifval
+(b, x, y) = if b then x else y
+//
+(* ****** ****** *)
+//
 // HX:
 // For implementing
 // some g-operations
