@@ -105,6 +105,7 @@ datatype g1mac =
   ( g1mac, g1menv )
 //
 | G1Msexp of (s1exp)
+| G1Mdpat of (d1pat)
 | G1Mdexp of (d1exp)
 //
 | G1Mnone0 of () // HX: EMPTY
@@ -180,6 +181,9 @@ fprint!
 |
 G1Msexp(s1e1) =>
 fprint!( out, "G1Msexp(", s1e1, ")" )
+|
+G1Mdpat(d1p1) =>
+fprint!( out, "G1Mdpat(", d1p1, ")" )
 |
 G1Mdexp(d1e1) =>
 fprint!( out, "G1Mdexp(", d1e1, ")" )
