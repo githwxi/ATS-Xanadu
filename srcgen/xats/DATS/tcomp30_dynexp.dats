@@ -247,6 +247,77 @@ end
 (* ****** ****** *)
 
 fun
+auxi00
+(d3p0: d3pat): h0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Pi00(int) where
+{
+  val-
+  D3Pi00(int) = d3p0.node()
+}
+//
+in
+  h0pat_make_node(loc0, h0t0, hend)
+end
+
+fun
+auxb00
+(d3p0: d3pat): h0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Pb00(btf) where
+{
+  val-
+  D3Pb00(btf) = d3p0.node()
+}
+//
+in
+  h0pat_make_node(loc0, h0t0, hend)
+end
+
+fun
+auxs00
+(d3p0: d3pat): h0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend = H0Ps00(str) where
+{
+  val-
+  D3Ps00(str) = d3p0.node()
+}
+//
+in
+  h0pat_make_node(loc0, h0t0, hend)
+end
+
+(* ****** ****** *)
+
+fun
 auxint
 (d3p0: d3pat): h0pat =
 let
@@ -436,6 +507,13 @@ D3Pany() => auxany(d3p0)
 //
 |
 D3Pvar _ => auxvar(d3p0)
+//
+|
+D3Pi00 _ => auxi00(d3p0)
+|
+D3Pb00 _ => auxb00(d3p0)
+|
+D3Ps00 _ => auxs00(d3p0)
 //
 |
 D3Pint _ => auxint(d3p0)
