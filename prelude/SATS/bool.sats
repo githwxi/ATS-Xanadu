@@ -64,6 +64,14 @@ bool_parse(string): bool
 
 (* ****** ****** *)
 //
+fun
+<a:t0>
+bool_ifval
+{b:b0}
+(b: bool(b), x: a, y: a): a
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for bool
 //
@@ -85,6 +93,8 @@ not with bool_neg of 1000
 //
 #symload print with bool_print of 1000
 //
+(* ****** ****** *)
+#symload ifval with bool_ifval of 1000
 (* ****** ****** *)
 
 (* end of [bool.sats] *)
