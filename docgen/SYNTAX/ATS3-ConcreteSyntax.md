@@ -5,24 +5,25 @@ The Concrete Syntax of Xanadu
 
 ___________________
 
-Xanadu is a programming language in the ATS family.  It is sometimes
-referred to as ATS/Xanadu or simply ATS3.
+ATS/Xanadu refers to a programming language in the ATS family and its
+implementation. It is often referred to as ATS3 for its being the 3rd
+edition of ATS (while Xanadu is the name of the implementation).
 
-Xanadu is designed to be both a source language and a target language;
-it is a source for manual program construction (by humans), and it is
-also a target for automated code generation (by compilers). It is
-expected that various extensions to Xanadu will be built in the future
-that compile back to Xanadu itself.
+ATS3 is designed to be both a source language and a target language;
+it is a source for manual program construction (by programmers), and
+it is also a target for automated code generation (by compilers). It
+is expected that various extensions to ATS3 will be built in the
+future that compile back to ATS3 itself.
 
-The concrete syntax of Xanadu has its root in ML, and its design is
+The concrete syntax of ATS3 has its root in ML, and its design is
 also influenced by C and Lisp. In this document, please find an
-informal and partial presentation of the concrete syntax of Xanadu,
+informal and partial presentation of the concrete syntax of ATS3,
 which primarily relies on code examples for illustration.
 
 Primitive Constants
 -------------------
 
-There are currently in Xanadu the following kinds of primitive
+There are currently in ATS3 the following kinds of primitive
 constants: ints (for intergers), bools (for booleans), chars (for
 characters), floats (for floating point numbers), and strings (of
 characters).  It is planned to support strings of various unicodes in
@@ -50,7 +51,7 @@ one can write *tt* and *ff* for *true* and *false*, respectively.
 
 ### Chars
 
-A char-value in Xanadu can essentially be written in the
+A char-value in ATS3 can essentially be written in the
 same way as in C. Please find some examples of char-values
 as follows:
 
@@ -60,7 +61,7 @@ as follows:
 
 ### Floats
 
-A float-value in Xanadu can essentially be written in the same way as
+A float-value in ATS3 can essentially be written in the same way as
 in C. Please find some examples of float-values as follows:
 
 - <code>0.01</code>
@@ -71,7 +72,7 @@ in C. Please find some examples of float-values as follows:
   
 ### Strings
 
-A string in Xanadu can essentially be written in the same way as in C.
+A string in ATS3 can essentially be written in the same way as in C.
 Please find some examples of string constants as follows:
 
 - <code>"abcde"</code>
@@ -81,7 +82,7 @@ Please find some examples of string constants as follows:
 Keywords
 --------
 
-Xanadu supports a rich set of programming features, making use of
+ATS3 supports a rich set of programming features, making use of
 quite a few keywords.
 
 The following keywords are for forming expressions:
@@ -97,21 +98,21 @@ The following keywords are for forming expressions:
   some suspended computation); etc. One can also write `!` for `$eval`.
 - <code>$fold</code>:
   for folding an unfolded value of some linear datatype (i.e., datavtype).
-  This is a new concept in Xanadu, which does not have a counterpart in commonly
+  This is a new concept in ATS3, which does not have a counterpart in commonly
   used programming languages.
 - <code>$free</code>:
   for freeing an unfolded value of some linear datatype (i.e., datavtype).
-  This is a new concept in Xanadu, which does not have a counterpart in commonly
+  This is a new concept in ATS3, which does not have a counterpart in commonly
   used programming languages.
 - <code>$lazy</code>:
-  for forming a lazy-value (representing suspended computation). Note that Xanadu
+  for forming a lazy-value (representing suspended computation). Note that ATS3
   is a call-by-value language that supports lazy-evaluation.
 - <code>$llazy</code>:
   for forming a linear lazy-value (representing suspended computation). Linear
-  lazy-evaluation is an extremely useful feature in Xanadu, which seems to have not
+  lazy-evaluation is an extremely useful feature in ATS3, which seems to have not
   been supported elsewhere.
 - <code>$raise</code>:
-  for raising a run-time exception (which may be caught by a handler). Xanadu supports
+  for raising a run-time exception (which may be caught by a handler). ATS3 supports
   the use of exceptions for altering control-flow in program execution.
 - <code>$tup</code>:
   for forming a boxed tuple. Note that $tup is resolved to either $tup_t or $tup_vt.
@@ -160,7 +161,7 @@ an identifier.
 Fixity Delarations
 ------------------
 
-Xanadu supports prefix, infix, and postfix operators.
+ATS3 supports prefix, infix, and postfix operators.
 
 ### Infix-declarations
 
@@ -219,12 +220,12 @@ the keyword `#nonfix`:
 Static Expressions
 ------------------
 
-There are many forms of static expressions in Xanadu.
+There are many forms of static expressions in ATS3.
 
 Dynamic Expressions
 ------------------
 
-There are many forms of dynamic expressions in Xanadu.  A dynamic
+There are many forms of dynamic expressions in ATS3.  A dynamic
 expression is atomic if it cannot result in parsing ambiguities when
 put in any contexts.
 
@@ -305,7 +306,7 @@ Dynamic Declarations
 
 ### Function Delarations
 
-In Xanadu, there are (regular) functions and there are function
+In ATS3, there are (regular) functions and there are function
 templates.  We often use the word `function` to refer to either a
 regular function (that is not a template) or a function template.
 
@@ -358,7 +359,7 @@ if x > 0 then x * fact(x-1) else 1
 
 ## Documenting, Documenting, Documenting, ...
 
-Xanadu is a feature-rich programming language, and its concrete syntax
-is large and complex. I expect that the process of documenting Xanadu
+ATS3 is a feature-rich programming language, and its concrete syntax
+is large and complex. I expect that the process of documenting ATS3
 will be going on for quite a long time. Please contribute amply and
 generously to this process.
