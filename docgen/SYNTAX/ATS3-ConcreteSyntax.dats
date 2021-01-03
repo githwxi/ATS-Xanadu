@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-The Concrete Syntax of Xanadu
+The Concrete Syntax of ATS3
 *)
 (* ****** ****** *)
 
@@ -68,4 +68,4 @@ if x > 0 then x * fact(x-1) else 1
 
 (* ****** ****** *)
 
-(* end of [XanaduConcreteSyntax.dats] *)
+(* end of [ATS3-ConcreteSyntax.dats] *)

@@ -14,7 +14,7 @@ all:: test
 ######
 
 test:: ; \
-$(XATSOPT) -d ./XanaduConcreteSyntax.dats
+$(XATSOPT) -d ./ATS3-ConcreteSyntax.dats
 
 ###### end of [Makefile] ######
 
