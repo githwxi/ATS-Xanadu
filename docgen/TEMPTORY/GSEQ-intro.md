@@ -14,7 +14,8 @@ greatly facilitate batch-processing.
 In functional programming, batch-processing is commonly associated
 with the use of combinators (which are often higher-order functions of
 relatively small bodies). ATS3 strongly advocates batch-processing by
-providing support at both the language level and the library level.
+providing support at the language level as well as at the library
+level.
 
 ## Commonly used verbs
 
