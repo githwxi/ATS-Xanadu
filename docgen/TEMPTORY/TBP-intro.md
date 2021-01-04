@@ -12,7 +12,10 @@ Template-Based Programming (TBP) advocates the use of (function)
 templates in place of functions, which can be regarded as a form of
 late-binding at compile-time. Intuitively, one may think of templates
 as functions containing placeholders inside their bodies that can be
-replaced with code obtained *contextually* at compile-time.
+replaced with code obtained *contextually* at compile-time.  Even at
+this very early stage, it is important to note that the mentioned code
+replacement is inherently of a recursive nature as code obtained
+contextually may itself contain templates.
 
 Various aspects of templates have already appeared in languages such
 as LISP (macros), Haskell (type classes), Scala (implicits), etc. One
