@@ -133,12 +133,12 @@ case+ tnd of
 | T_INT3(base, rep, k0(*sfx*)) =>
   fprint!(out, "INT3(", base, ", ", rep, ", ", k0, ")")
 //
-| T_FLOAT1(rep) =>
-  fprint!(out, "FLOAT1(", rep, ")")
-| T_FLOAT2(base, rep) =>
-  fprint!(out, "FLOAT2(", base, ", ", rep, ")")
-| T_FLOAT3(base, rep, k0(*sfx*)) =>
-  fprint!(out, "FLOAT3(", base, ", ", rep, ", ", k0, ")")
+| T_FLT1(rep) =>
+  fprint!(out, "FLT1(", rep, ")")
+| T_FLT2(base, rep) =>
+  fprint!(out, "FLT2(", base, ", ", rep, ")")
+| T_FLT3(base, rep, k0(*sfx*)) =>
+  fprint!(out, "FLT3(", base, ", ", rep, ", ", k0, ")")
 //
 (*
 | T_CHAR(chr) =>
@@ -422,9 +422,9 @@ case+ tnd of
 | T_INT2(base, rep) => fprint(out, rep)
 | T_INT3(base, rep, _(*sfx*)) => fprint(out, rep)
 //
-| T_FLOAT1(rep) => fprint(out, rep)
-| T_FLOAT2(base, rep) => fprint(out, rep)
-| T_FLOAT3(base, rep, _(*sfx*)) => fprint(out, rep)
+| T_FLT1(rep) => fprint(out, rep)
+| T_FLT2(base, rep) => fprint(out, rep)
+| T_FLT3(base, rep, _(*sfx*)) => fprint(out, rep)
 //
 (*
 | T_CHAR(chr) =>
@@ -974,9 +974,9 @@ case+ node of
 | T_INT2(_, rep) => posincneol(pos1, rep)
 | T_INT3(_, rep, _) => posincneol(pos1, rep)
 //
-| T_FLOAT1(rep) => posincneol(pos1, rep)
-| T_FLOAT2(_, rep) => posincneol(pos1, rep)
-| T_FLOAT3(_, rep, _) => posincneol(pos1, rep)
+| T_FLT1(rep) => posincneol(pos1, rep)
+| T_FLT2(_, rep) => posincneol(pos1, rep)
+| T_FLT3(_, rep, _) => posincneol(pos1, rep)
 //
 | T_CHAR_nil(rep) => posincneol(pos1, rep)
 | T_CHAR_char(rep) => posincneol(pos1, rep)

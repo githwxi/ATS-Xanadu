@@ -844,9 +844,9 @@ else
   if
   (k1 = 0)
   then
-  T_FLOAT2(DEC, lexbuf_get_fullseg(buf))
+  T_FLT2(DEC, lexbuf_get_fullseg(buf))
   else
-  T_FLOAT3(DEC, lexbuf_get_fullseg(buf), k1)
+  T_FLT3(DEC, lexbuf_get_fullseg(buf), k1)
 end // end of [else]
 //
 end // end of [else]
@@ -903,9 +903,9 @@ in
   if
   (k1 = 0)
   then
-  T_FLOAT2(HEX, lexbuf_get_fullseg(buf))
+  T_FLT2(HEX, lexbuf_get_fullseg(buf))
   else
-  T_FLOAT3(HEX, lexbuf_get_fullseg(buf), k1)
+  T_FLT3(HEX, lexbuf_get_fullseg(buf), k1)
 end // end of [else]
 //
 end // end of [else]
@@ -955,9 +955,9 @@ in
   if
   (k1 = 0)
   then
-  T_FLOAT1(lexbuf_get_fullseg(buf))
+  T_FLT1(lexbuf_get_fullseg(buf))
   else
-  T_FLOAT3(DEC, lexbuf_get_fullseg(buf), k1)
+  T_FLT3(DEC, lexbuf_get_fullseg(buf), k1)
 end // end of [else]
 //
 end // end of [else]

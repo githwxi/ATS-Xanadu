@@ -200,7 +200,7 @@ token2sflt(tok) =
 case-
 tok.node() of
 |
-T_FLOAT1(rep) =>
+T_FLT1(rep) =>
 (g0string2float(rep))
 //
 ) (* end of [token2sflt] *)

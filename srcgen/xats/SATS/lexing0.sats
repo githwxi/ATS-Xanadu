@@ -82,9 +82,9 @@ tnode =
   | T_INT2 of (int(*base*), string(*rep*))
   | T_INT3 of (int(*base*), string(*rep*), int(*suffix*))
 //
-  | T_FLOAT1 of (string(*rep*)) // base=10
-  | T_FLOAT2 of (int(*base*), string(*rep*))
-  | T_FLOAT3 of (int(*base*), string(*rep*), int(*suffix*))
+  | T_FLT1 of (string(*rep*)) // base=10
+  | T_FLT2 of (int(*base*), string(*rep*))
+  | T_FLT3 of (int(*base*), string(*rep*), int(*suffix*))
 //
 (*
   | T_CHAR of (int) // ascii

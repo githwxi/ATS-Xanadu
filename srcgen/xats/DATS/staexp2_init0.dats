@@ -251,6 +251,21 @@ s2cstref_make_name("the_ldflt_ctype")
 (* ****** ****** *)
 
 implement
+the_slint_ctype =
+s2cstref_make_name("the_slint_ctype")
+implement
+the_ulint_ctype =
+s2cstref_make_name("the_ulint_ctype")
+implement
+the_sllint_ctype =
+s2cstref_make_name("the_sllint_ctype")
+implement
+the_ullint_ctype =
+s2cstref_make_name("the_ullint_ctype")
+
+(* ****** ****** *)
+
+implement
 the_string_ctype =
 s2cstref_make_name("the_string_ctype")
 
