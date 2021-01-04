@@ -2,14 +2,17 @@
 
 When teaching functional programming, I often receive a question like
 this one: How can one access an element in a list when given the index
-of the element? It is mostly likely that the person who asks this
-question is still of a mentality that focuses on what I call
-individual-processing (in contrast with batch-processing). I suppose
-that a big part of this mentality comes from ubiquity of for-loops and
-while-loops in imperative programming. As far as I can see, it would
-be nearly impossible for a programmer to break out of this mentality
-if there was no support at the level of programming language to
-greatly facilitate batch-processing.
+of the element? Of course, I could answer the question by mentioning
+the name of a library function that does precisely what is asked. But
+why is such a question being frequently asked in the first place?  It
+is mostly likely that the person who asks this question is still of a
+mentality that focuses on what I call individual-processing (in
+contrast with batch-processing). I suppose that a big part of this
+mentality comes from ubiquity of for-loops and while-loops in
+imperative programming. As far as I can see, it would be nearly
+impossible for a programmer to break out of this mentality if there
+was no support at the level of programming language to greatly
+facilitate batch-processing.
 
 In functional programming, batch-processing is commonly associated
 with the use of combinators (which are often higher-order functions of
