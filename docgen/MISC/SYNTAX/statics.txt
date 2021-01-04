@@ -1,0 +1,122 @@
+########################
+Syntax for the statics of ATS3
+########################
+
+Sorts
+
+Sorts in ATS are for classifying static terms.
+Note that types (for dynamic terms) are static terms
+but not all the static terms are types. For instance,
+there are static integers and static booleans in ATS,
+which are predicative.
+
+Following is a list of built-in predicative sorts in ATS:
+
+int // for static integers
+addr // for memory addresses
+bool // for static booleans
+char // for static chars
+real // for real numbers
+float // for static floats
+string // for static strings
+
+Following is a list of built-in impredicative sorts in ATS:
+
+prop // for props (which are types for proofs)
+view // for views (which are types for linear proofs)
+type // for types
+tbox // for boxed types
+vtype // for linear types
+vtbox // for linear boxed types
+(*
+tflt/tflat // for flat/unboxed types
+vtflt/vtflat // for linear flat/unboxed types
+*)
+
+There are also various short names for the
+above sorts:
+
+sortdef i0 = int
+sortdef a0 = addr
+sortdef b0 = bool
+sortdef c0 = char
+
+sortdef p0 = prop
+sortdef v0 = view
+sortdef t0 = type
+sortdef x0 = tbox
+sortdef vt = vtype
+sortdef vx = vtbox
+
+########################
+
+Abstract sorts can be introduced in ATS. For instance,
+
+abssort real // introducing an abstract sort for reals
+
+However, introducing abstract sorts is not a feature meant
+for common use; it is reserved for experts or developers of ATS.
+
+########################
+
+Datasorts
+
+A datasort is a user-defined sort. Declaring a datasort
+is like declaring a datatype in an ML-like language. For instance,
+a datasort list is introduced via a datasort-declaration:
+
+datasort list =
+  | list_nil of ()
+  | list_cons of (int, list)
+// end of [datasort]
+
+There are two data constructors associated list: list_nil and
+list_cons, which are assigned the following functional sorts:
+
+list_nil: () -> list
+list_cons : (int, list) -> list
+
+########################
+
+Sort definitions
+
+In ATS3, a sortdef-declaration introduces an alias for a sort or
+a subset sort. For instance, three sortdef-declarations are given as
+follows:
+
+sortdef ints = ilist // alias for sort
+sortdef posint = {a: int | a > 0} // alias for subset sort
+sortdef negint = {a: int | a < 0} // alias for subset sort
+
+Note that a subset sort is NOT a proper sort.
+
+Primarily, a subset sort is introduced as a form of convenience
+for handling quantification (which is to be explained with examples
+later).
+
+########################
+
+Static Expressions
+
+Static constants (of predicative sorts) can be introduced via
+stacst-declarations:
+
+#stacst one: int // a static constant of the sort int
+#stacst gte: (int, int) -> bool // a binary function on ints
+
+Abstract types can be introduced via abstype-declarations:
+
+abstype int2_box <= $(int, int) // represented as a boxed pair of ints
+abstype int2_flat <= @(int, int) // represented as a unboxed pair of ints
+
+In ATS3, a sexpdef-declaration introduces an alias for a static
+expression.  For intance, the following declaration introduces a
+static function of the name double (which is of the sort int -> int):
+
+sexpdef double(a: int) = a + a
+
+Note that NO recursion is allowed in sexpdef-declarations.
+
+########################
+
+############ end of [statics.txt] ############
