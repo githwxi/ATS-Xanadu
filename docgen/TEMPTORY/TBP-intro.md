@@ -117,10 +117,15 @@ Note that `g_equal` is already given a standard implementation on
 basic types like int, bool, char, string, etc. If `list_equal` is
 called on two lists of the type `list(int)`, the compiler can
 automatically find based on contextual information an implementation
-of `g_equal<int>` needed for compiling `list_equal<int>`.
+of `g_equal<int>` needed for compiling `list_equal<int>`. Moreover,
+one can direct the compiler to locate another implementation of
+`g_equal<int>` if needed. It is in this sense of directing the
+compiler to establish a link between a call to `g_equal<int>`
+and an implementation of `g_equal<int>` that TBP can be regarded
+as a form of late-binding at compile-time.
 
-Templates in ATS3 are embeddable in the sense that they can be
-implemented in the body of a function. For instance, the previous
+Templates in ATS3 are embeddable for they can be implemented in the
+body of other templates. For instance, the previous higher-order
 template `list_fequal` can be given an implementation based on
 `list_equal` as follows:
 
@@ -134,12 +139,14 @@ list_fequal
   list_equal<a>(xs, ys)
 ) where
 {
-  implement g_equal<a>(x, y) = eq(x, y)
+  impltmp g_equal<a>(x, y) = eq(x, y)
 }
 ```
 
-It will beome clear soon that the embeddability of templates can have
-great impact on the way in which a program is structured.
+where an implementation of `g_equal<a>` is given in the body of the
+implementation of `list_fequal<a>`.  It will beome clear soon that the
+embeddability of templates can have great impact on the way in which a
+program is structured.
 
 With the above simple example, I have demonstrated a bit of TBP where
 templates are employed to replace higher-order functions.  While this
