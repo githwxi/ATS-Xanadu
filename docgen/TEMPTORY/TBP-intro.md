@@ -24,8 +24,9 @@ TBP) at compile-time and dispatching a method call (in OOP) at
 run-time.
 
 There are plenty of motivating examples for templates. For the moment,
-let us take a look at equality types in Standard ML (SML), which also
-directly motivates the feature of type classes in Haskell.
+let us take a look at equality types in Standard ML (SML), which can
+be said to have directly motivated the addition of type classes into
+Haskell.
 
 Basically, an equality type in SML is one that supports polymorphic
 equality (=), which is given the type `''a * ''a -> bool` (instead of
