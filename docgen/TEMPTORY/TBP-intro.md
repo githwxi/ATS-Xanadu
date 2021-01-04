@@ -119,10 +119,10 @@ called on two lists of the type `list(int)`, the compiler can
 automatically find based on contextual information an implementation
 of `g_equal<int>` needed for compiling `list_equal<int>`.
 
-Templates in Temptory are embeddable in the sense that they can be
-implemented in the body of a function. For instance, the previous template
-`list_fequal` can be given an implementation based on `list_equal`
-as follows:
+Templates in ATS3 are embeddable in the sense that they can be
+implemented in the body of a function. For instance, the previous
+template `list_fequal` can be given an implementation based on
+`list_equal` as follows:
 
 
 ```ats
