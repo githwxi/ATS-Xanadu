@@ -5,17 +5,18 @@ design. For instance, linking the name of a function to the actual
 code implementing the function can be seen as a form of late-binding
 (at link-time). More conspicuously, method dispatching in
 object-oriented programming (OOP) is also a well-known form of
-late-binding (at run-time).
+late-binding (at run-time). As a form of late-binding at compile-time,
+one can think of overloading supported by type classes in Haskell.
 
 Template-Based Programming (TBP) advocates the use of (function)
-templates in place of functions, supporting a form of late-binding at
-compile-time. Intuitively, one may think of templates as functions
-containing placeholders inside their bodies that can be replaced with
-code obtained contextually.
+templates in place of functions, which can be regarded as a form of
+late-binding at compile-time. Intuitively, one may think of templates
+as functions containing placeholders inside their bodies that can be
+replaced with code obtained *contextually* at compile-time.
 
 Various aspects of templates have already appeared in languages such
 as LISP (macros), Haskell (type classes), Scala (implicits), etc. One
-may also see some similarity between resolving a template call (in
+may also see great similarity between resolving a template call (in
 TBP) at compile-time and dispatching a method call (in OOP) at
 run-time.
 
