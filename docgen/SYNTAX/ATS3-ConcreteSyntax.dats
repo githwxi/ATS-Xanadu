@@ -4,12 +4,23 @@ The Concrete Syntax of ATS3
 *)
 (* ****** ****** *)
 
-(* Ints *)
+(* Sints *)
 
-val _ = 01234567
-val _ = 123456789
-val _ = 0xdeadbeef
-val _ = 0XDEADBEEF
+val _ =
+01234567: sint
+val _ =
+123456789l: slint
+val _ =
+0xdeadbeefll: sllint
+val _ =
+0XDEADBEEFLL: sllint
+
+val _ =
+123u: uint
+val _ =
+123456789ul: ulint
+val _ =
+0XDEADBEEFULL: ullint
 
 (* ****** ****** *)
 
@@ -46,7 +57,11 @@ val ld = 1.0l : ldouble
 
 val _ = "abcde"
 val _ = "\"abcde\""
-val _ = "Hello, world!\n"
+val _ =
+"Hello, world!\n": string
+val _ = "\
+This is a string \
+spreaded over multiple lines"
 
 (* ****** ****** *)
 

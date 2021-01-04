@@ -576,6 +576,16 @@ usize1(i:int) = gint1(usize_k, i)
 //
 (* ****** ****** *)
 //
+typedef sllint0 = gint0(sllint_k)
+typedef ullint0 = gint0(ullint_k)
+//
+typedef
+sllint1(i:int) = gint1(sllint_k, i)
+typedef
+ullint1(i:int) = gint1(ullint_k, i)
+//
+(* ****** ****** *)
+//
 typedef
 gint(a:type) = gint0(a)
 typedef
@@ -604,15 +614,24 @@ typedef usize(i:int) = usize1(i)
 typedef ssize = ssize0
 typedef ssize(i:int) = ssize1(i)
 //
+typedef llint = sllint0
+typedef llint(i:int) = sllint1(i)
+typedef sllint = sllint0
+typedef sllint(i:int) = sllint1(i)
+typedef ullint = ullint0
+typedef ullint(i:int) = ullint1(i)
+//
 (* ****** ****** *)
-
+//
 typedef
 nint = [i:int | i >= 0] sint(i)
 typedef
 nlint = [i:int | i >= 0] slint(i)
 typedef
 nsize = [i:int | i >= 0] ssize(i)
-
+typedef
+nllint = [i:int | i >= 0] sllint(i)
+//
 (* ****** ****** *)
 //
 typedef

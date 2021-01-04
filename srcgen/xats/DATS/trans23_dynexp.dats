@@ -720,14 +720,103 @@ loc0 = d2e0.loc()
 val-
 D2Eint(tok) = d2e0.node()
 //
+fun
+ucnt
+(p0: ptr): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if
+iseqz(c0)
+then 0 else
+(
+if
+(c0 != 'u' && c0 != 'U')
+then ucnt(ptr0_succ<char>(p0))
+else 1 + ucnt(ptr0_succ<char>(p0))
+)
+end // end of [ucnt]
+//
+fun
+lcnt
+(p0: ptr): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if
+iseqz(c0)
+then 0 else
+(
+if
+(c0 != 'l' && c0 != 'L')
+then lcnt(ptr0_succ<char>(p0))
+else 1 + lcnt(ptr0_succ<char>(p0))
+)
+end // end of [lcnt]
+//
+fun
+tint1
+( tok
+: token)
+: t2ype = the_t2ype_sint
+fun
+tint2
+( tok
+: token)
+: t2ype = the_t2ype_sint
+fun
+tint3
+(tok
+: token): t2ype =
+let
+val-
+T_INT3
+( bas
+, rep, sfx) = tok.node()
+val
+len =
+sz2i(string_length(rep))
+val p0 =
+ptr_add<char>
+(string2ptr(rep), len-sfx)
+in
+//
+let
+val nu = ucnt(p0)
+and nl = lcnt(p0)
+in
+//
+if
+(nu > 0)
+then
+(
+ifcase
+| (nl=0) => the_t2ype_uint
+| (nl=1) => the_t2ype_ulint
+| _(*else*) => the_t2ype_ullint
+)
+else
+(
+ifcase
+| (nl=0) => the_t2ype_sint
+| (nl=1) => the_t2ype_slint
+| _(*else*) => the_t2ype_sllint
+)
+//
+end // end-of-let
+//
+end // end of [tint3]
+//
 val
 t2p0 =
 (
 case+
 tok.node() of
-| T_INT1 _ => the_t2ype_sint
-| T_INT2 _ => the_t2ype_sint
-| T_INT3 _ => the_t2ype_sint
+| T_INT1 _ => tint1(tok)
+| T_INT2 _ => tint2(tok)
+| T_INT3 _ => tint3(tok)
 //
 | _ (* dead *) => the_t2ype_sint
 //
@@ -789,15 +878,101 @@ loc0 = d2e0.loc()
 val-
 D2Eflt(tok) = d2e0.node()
 //
+fun
+fcnt
+(p0: ptr): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if
+iseqz(c0)
+then 0 else
+(
+if
+(c0 != 'f' && c0 != 'F')
+then fcnt(ptr0_succ<char>(p0))
+else 1 + fcnt(ptr0_succ<char>(p0))
+)
+end // end of [fcnt]
+//
+fun
+lcnt
+(p0: ptr): int =
+let
+val c0 =
+$UN.ptr0_get<char>(p0)
+in
+if
+iseqz(c0)
+then 0 else
+(
+if
+(c0 != 'l' && c0 != 'L')
+then lcnt(ptr0_succ<char>(p0))
+else 1 + lcnt(ptr0_succ<char>(p0))
+)
+end // end of [lcnt]
+//
+fun
+tflt1
+( tok
+: token)
+: t2ype = the_t2ype_dflt
+fun
+tflt2
+( tok
+: token)
+: t2ype = the_t2ype_dflt
+fun
+tflt3
+(tok
+: token): t2ype =
+let
+val-
+T_FLT3
+( bas
+, rep, sfx) = tok.node()
+val
+len =
+sz2i(string_length(rep))
+val p0 =
+ptr_add<char>
+(string2ptr(rep), len-sfx)
+in
+//
+let
+val nf = fcnt(p0)
+and nl = lcnt(p0)
+in
+//
+if
+(nl <= 0)
+then 
+(
+if
+(nf > 0)
+then the_t2ype_sflt
+else the_t2ype_dflt
+)
+else the_t2ype_ldflt
+//
+end // end-of-let
+//
+end // end of [tflt3]
+//
 val
 t2p0 =
 (
 case+
 tok.node() of
-| T_FLOAT1 _ => the_t2ype_dflt
-| T_FLOAT2 _ => the_t2ype_dflt
-| T_FLOAT3 _ => the_t2ype_dflt
+//
+| T_FLT1 _ => tflt1(tok)
+| T_FLT2 _ => tflt2(tok)
+| T_FLT3 _ => tflt3(tok)
+//
 | _ (* dead *) => the_t2ype_dflt
+//
 ) : t2ype // end of [val]
 //
 in

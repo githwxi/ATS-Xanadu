@@ -74,9 +74,9 @@ implement
 t_t0flt(tnd) =
 (
   case+ tnd of
-  | T_FLOAT1 _ => true
-  | T_FLOAT2 _ => true
-  | T_FLOAT3 _ => true
+  | T_FLT1 _ => true
+  | T_FLT2 _ => true
+  | T_FLT3 _ => true
   | _ (* non-FLOAT *) => false
 ) (* end of [t_t0flt] *)
 

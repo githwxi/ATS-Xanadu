@@ -58,10 +58,18 @@ typedef the_char_ctype = char0
 typedef the_sflt_ctype = sflt
 // double precision
 typedef the_dflt_ctype = dflt
-(*
+//
 // ldouble precision
 typedef the_ldflt_ctype = ldflt
-*)
+//
+//
+(* ****** ****** *)
+//
+typedef the_slint_ctype = slint0
+typedef the_ulint_ctype = ulint0
+//
+typedef the_sllint_ctype = sllint0
+typedef the_ullint_ctype = ullint0
 //
 (* ****** ****** *)
 //

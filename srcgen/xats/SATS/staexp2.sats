@@ -1385,6 +1385,11 @@ val the_sflt_ctype : s2cstref
 val the_dflt_ctype : s2cstref
 val the_ldflt_ctype : s2cstref
 //
+val the_slint_ctype : s2cstref
+val the_ulint_ctype : s2cstref
+val the_sllint_ctype : s2cstref
+val the_ullint_ctype : s2cstref
+//
 val the_string_ctype : s2cstref
 //
 (* ****** ****** *)

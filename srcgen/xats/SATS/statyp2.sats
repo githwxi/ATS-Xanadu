@@ -175,6 +175,19 @@ the_t2ype_dflt: t2ype
 and
 the_t2ype_ldflt: t2ype
 //
+(* ****** ****** *)
+//
+val
+the_t2ype_slint: t2ype
+val
+the_t2ype_ulint: t2ype
+val
+the_t2ype_sllint: t2ype
+val
+the_t2ype_ullint: t2ype
+//
+(* ****** ****** *)
+//
 val
 the_t2ype_string: t2ype
 //
