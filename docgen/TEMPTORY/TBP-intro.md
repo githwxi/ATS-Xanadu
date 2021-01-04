@@ -1,12 +1,13 @@
 # Template-Based Programming
 
-The notion of *late-binding* is prevalent in programming langauge
-design. For instance, linking the name of a function to the actual
-code implementing the function can be seen as a form of late-binding
-(at link-time). More conspicuously, method dispatching in
-object-oriented programming (OOP) is also a well-known form of
-late-binding (at run-time). As a form of late-binding at compile-time,
-one can think of overloading supported by type classes in Haskell.
+The notion of *late-binding* is prevalent in programming language
+design and implementation. For instance, linking the name of a
+function to the actual code implementing the function can be seen as a
+form of late-binding (at link-time). More conspicuously, method
+dispatching in object-oriented programming (OOP) is also a well-known
+form of late-binding (at run-time). As a form of late-binding at
+compile-time, one can think of overloading supported by type classes
+in Haskell.
 
 Template-Based Programming (TBP) advocates the use of (function)
 templates in place of functions, which can be regarded as a form of
