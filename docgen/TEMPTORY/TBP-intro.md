@@ -1,10 +1,17 @@
 # Template-Based Programming
 
+The notion of *late-binding* is prevalent in programming langauge
+design. For instance, linking the name of a function to the actual
+code implementing the function can be seen as a form of late-binding
+(at link-time). More conspicuously, method dispatching in
+object-oriented programming (OOP) is also a well-known form of
+late-binding (at run-time).
+
 Template-Based Programming (TBP) advocates the use of (function)
-templates in place of functions. A template generalizes the notion of
-function to support a form of late-binding at compile-time.
-Conceptually, one may think of templates as functions containing
-switches inside their bodies that can be controlled from the outside.
+templates in place of functions, supporting a form of late-binding at
+compile-time. Intuitively, one may think of templates as functions
+containing placeholders inside their bodies that can be replaced with
+code obtained contextually.
 
 Various aspects of templates have already appeared in languages such
 as LISP (macros), Haskell (type classes), Scala (implicits), etc. One
@@ -27,7 +34,6 @@ given lists (of the same generic type) are equal, one could try to
 implement a function template of the following type:
 
 ```ats
-extern
 fun
 <a:type>
 list_fequal
@@ -56,14 +62,14 @@ given lists are equal by calling `g_equal` to test equality on elements:
 
 ```ats
 //
-extern
+#extern
 fun
 <a:type>
 list_equal
 ( xs: list(a)
 , ys: list(a)): bool
 //
-implement
+impltmp
 <a>(*tmp*)
 list_equal
   (xs, ys) =
@@ -97,6 +103,7 @@ case+ xs of
 ) (* end of [loop] *)
 //
 } (* end of [list_equal] *)
+//
 ```
 
 Note that `g_equal` is already given a standard implementation on
@@ -112,8 +119,8 @@ as follows:
 
 
 ```ats
-implement
-{a}(*tmp*)
+impltmp
+<a>(*tmp*)
 list_fequal
   (xs, ys, eq) =
 (
