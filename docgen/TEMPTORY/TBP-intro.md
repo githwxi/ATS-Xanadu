@@ -34,9 +34,9 @@ equality (=), which is given the type `''a * ''a -> bool` (instead of
 instantiated with an equality type (where a special function is
 designated for testing equality on elements of this type).
   
-There is *no* polymorphic equality in ATS. In order to test whether two
+There is *no* polymorphic equality in ATS3. In order to test whether two
 given lists (of the same generic type) are equal, one could try to
-implement a function template of the following type:
+implement a function template of the following interface:
 
 ```ats
 fun
@@ -53,7 +53,7 @@ function but it suffers from the requirement that each caller of
 testing equality on elements in the two given lists).
 
 Let us see a template-based solution to implementing equality test on
-lists. In ATS, the name `g_equal` refers to a template of the
+lists. In ATS3, the name `g_equal` refers to a template of the
 following interface:
 
 ```ats
@@ -66,14 +66,16 @@ A function `list_equal` can be defined as follows to test whether two
 given lists are equal by calling `g_equal` to test equality on elements:
 
 ```ats
-//
+
 #extern
 fun
 <a:type>
 list_equal
 ( xs: list(a)
 , ys: list(a)): bool
-//
+
+(* ****** ****** *)
+
 impltmp
 <a>(*tmp*)
 list_equal
@@ -108,14 +110,14 @@ case+ xs of
 ) (* end of [loop] *)
 //
 } (* end of [list_equal] *)
-//
+
 ```
 
 Note that `g_equal` is already given a standard implementation on
 basic types like int, bool, char, string, etc. If `list_equal` is
 called on two lists of the type `list(int)`, the compiler can
-*automatically* find an implementation of `g_equal<int>` needed for
-compiling `list_equal<int>`.
+automatically find based on contextual information an implementation
+of `g_equal<int>` needed for compiling `list_equal<int>`.
 
 Templates in Temptory are embeddable in the sense that they can be
 implemented in the body of a function. For instance, the previous template
