@@ -372,6 +372,201 @@ in gseq_exists<xs><x0>(xs) end
 //
 impltmp
 <xs><x0>
+gseq_search
+  (xs, i0) =
+(
+case- opt of
+| ~
+optn_vt_cons(x0) => x0) where
+{
+val opt =
+gseq_search_opt<xs><x0>(xs, i0)
+} (*where*)//end of [gseq_search]
+//
+impltmp
+<xs><x0>
+gseq_rsearch
+  (xs, i0) =
+(
+case- opt of
+| ~
+optn_vt_cons(x0) => x0) where
+{
+val opt =
+gseq_rsearch_opt<xs><x0>(xs, i0)
+} (*where*)//end of [gseq_rsearch]
+//
+(* ****** ****** *)
+impltmp
+<xs><x0>
+gseq_search_opt
+  ( xs ) =
+let
+//
+val p0 = $addr(r0)
+//
+val
+btf =
+gseq_forall<xs><x0>(xs)
+where
+{
+impltmp
+forall$test<x0>(x0) =
+if
+search$test<x0>(x0)
+then
+let
+val () =
+$UN.p2tr_set<res>
+( p0
+, optn_vt_cons(x0)) in false
+end else (true) // end-of-if
+} (*where*) // end of [ val ]
+//
+in
+let
+  val
+  res =
+  $UN.p2tr_get<res>(p0) in res
+end
+end where
+{
+//
+vwtpdef res = optn_vt(x0)
+//
+var r0: res = optn_vt_nil((*void*))
+//
+} (*where*) // end of [gseq_search_opt]
+(* ****** ****** *)
+impltmp
+<xs><x0>
+gseq_rsearch_opt
+  ( xs ) =
+let
+//
+val p0 = $addr(r0)
+//
+val
+btf =
+gseq_rforall<xs><x0>(xs)
+where
+{
+impltmp
+rforall$test<x0>(x0) =
+if
+rsearch$test<x0>(x0)
+then
+let
+val () =
+$UN.p2tr_set<res>
+( p0
+, optn_vt_cons(x0)) in false
+end else (true) // end-of-if
+} (*where*) // end of [ val ]
+//
+in
+let
+  val
+  res =
+  $UN.p2tr_get<res>(p0) in res
+end
+end where
+{
+//
+vwtpdef res = optn_vt(x0)
+//
+var r0: res = optn_vt_nil((*void*))
+//
+} (*where*) // end of [gseq_rsearch_opt]
+(* ****** ****** *)
+
+impltmp
+<xs><x0>
+gseq_get_at
+  (xs, i0) =
+(
+case- opt of
+| ~
+optn_vt_cons(x0) => x0) where
+{
+val opt =
+gseq_get_at_opt<xs><x0>(xs, i0)
+} (*where*) // end of [gseq_get_at]
+
+(* ****** ****** *)
+//
+(*
+impltmp
+<xs><x0>
+gseq_fset_at
+  (xs, i0, x0) =
+(
+case- opt of
+| ~optn_vt_cons(xs) => xs
+) where
+{
+val opt =
+gseq_fset_at_opt<xs><x0>(xs, i0, x0)
+} (*where*) // end of [gseq_fset_at]
+*)
+//
+impltmp
+<xs><x0>
+gseq_fset_at
+  (xs, i0, x0) =
+let
+  val xs =
+  gseq_streamize<xs><x0>(xs)
+in
+  gseq_unstream_vt
+  (stream_vt_fset_at<x0>(xs, i0, x0))
+end (*let*) // end of [gseq_fset_at]
+//
+(* ****** ****** *)
+impltmp
+<xs><x0>
+gseq_get_at_opt
+  (xs, i0) =
+let
+//
+val p0 = $addr(r0)
+//
+val
+btf =
+gseq_iforall<xs><x0>(xs)
+where
+{
+impltmp
+iforall$test<x0>(i1, x0) =
+if
+(i1 < i0)
+then true else
+let
+val () =
+$UN.p2tr_set<res>
+( p0
+, optn_vt_cons(x0)) in false
+end
+} (*where*) // end of [val]
+//
+in
+let
+  val
+  res =
+  $UN.p2tr_get<res>(p0) in res
+end
+end where
+{
+//
+vwtpdef res = optn_vt(x0)
+//
+var r0: res = optn_vt_nil((*void*))
+//
+} (*where*) // end of [gseq_get_at_opt]
+(* ****** ****** *)
+//
+impltmp
+<xs><x0>
 gseq_listize
   (xs) =
 (

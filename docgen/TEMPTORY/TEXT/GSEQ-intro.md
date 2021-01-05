@@ -50,7 +50,10 @@ to as a combinator.
 * **foldleft**:
   It is for processing a given sequence in its entirety and returning
   the accumulated result at the end
-  
+
+* **filter**: It is for filtering out the elements in a given sequence
+  that satisfy certain predicate.
+
 * **map_list**: It is for applying a given function to each element in a
   given sequence and returning a linear list consisting of the results
   of these applications in the order as they are produced.
@@ -97,6 +100,7 @@ to the i-version of the sequence.
 * **iforeach**: It is the i-version of `foreach`
 * **ifoldleft**: It is the i-version of `foldleft`
 
+* **ifilter**: It is the i-version of `filter`.
 * **imap_list**: It is the i-version of `map_list`.
 * **imap_rlist**: It is the i-version of `map_rlist`.
 * **imap_stream**: It is the i-version of `map_stream`.
@@ -114,6 +118,7 @@ sequences `xs` and `ys` is like applying the verb to `zip(xs, ys)`.
 * **zforeach**: It is the z-version of `foreach`.
 * **zfoldleft**: It is the z-version of `foldleft`.
 
+* **zfilter**: It is the z-version of `filter`.
 * **zmap_list**: It is the z-version of `map_list`.
 * **zmap_rlist**: It is the z-version of `map_rlist`.
 * **zmap_stream**: It is the z-version of `map_stream`.

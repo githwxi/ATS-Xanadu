@@ -164,6 +164,18 @@ search1$test(x0: !x0): bool
 //
 fun
 <x0:t0>
+rsearch$test(x0: x0): bool
+fun
+<x0:t0>
+rsearch0$test(x0: ~x0): bool
+fun
+<x0:t0>
+rsearch1$test(x0: !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 <y0:vt>
 mapoptn$fopr(x0: x0): optn_vt(y0)
 fun

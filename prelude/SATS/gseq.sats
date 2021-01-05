@@ -206,6 +206,16 @@ gseq_memberq
 fun
 <xs:t0>
 <x0:t0>
+gseq_search(xs): x0
+fun
+<xs:t0>
+<x0:t0>
+gseq_rsearch(xs): x0
+//
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
 gseq_search_opt
   (xs: xs): optn_vt(x0)
 fun
@@ -213,6 +223,35 @@ fun
 <x0:t0>
 gseq_rsearch_opt
   (xs: xs): optn_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_get_at
+(xs: xs, i0: nint): x0
+fun
+<xs:t0>
+<x0:t0>
+gseq_fset_at
+( xs: xs
+, i0: nint, x0: x0): xs
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_get_at_opt
+( xs: xs
+, i0: nint): optn_vt(x0)
+(*
+fun
+<xs:t0>
+<x0:t0>
+gseq_fset_at_opt
+( xs: xs
+, i0: nint, x0: x0): optn_vt(xs)
+*)
 //
 (* ****** ****** *)
 //

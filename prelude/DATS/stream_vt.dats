@@ -579,6 +579,44 @@ strmcon_vt_cons(x0, auxmain1(xss, xs1))
 } (* end of [stream_vt_concat] *)
 //
 (* ****** ****** *)
+
+impltmp
+<x0>(*tmp*)
+stream_vt_fset_at
+  (xs, i0, x0) =
+(
+auxmain
+(xs, 0(*i1*), x0)
+) where
+{
+fun
+auxmain
+( xs
+: stream_vt(x0)
+, i1: nint, x0: x0) =
+$llazy
+(
+free(xs); free(x0);
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(x1, xs) =>
+if
+(i1 < i0)
+then
+strmcon_vt_cons
+(x1, auxmain(xs, i1+1, x0))
+else
+let
+val () =
+free(x1) in strmcon_vt_cons(x0, xs)
+end
+)
+} (* end of [stream_vt_fset_at] *)
+
+(* ****** ****** *)
 //
 impltmp
 <xs><x0>
