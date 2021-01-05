@@ -52,7 +52,8 @@ end (* end of [local] *)
 (* ****** ****** *)
 
 impltmp
-g_print<board> =
+g_print
+<board> =
 board_print where
 {
 fun
@@ -80,7 +81,7 @@ if i0 = x0 then print "Q " else print ". "; loop(i0+1)
 )
 }
 } (* end of [board_print *)
-}
+} (* where *) // end of [g_print<board>]
 
 (* ****** ****** *)
 
