@@ -1,4 +1,4 @@
 # Temptory
 
-## [Template-Based Programming](./TBP-intro.md)
-## [Sequentiall Batch-Processing](./GSEQ-intro.md)
+## [Introduction to TBP](./TBP-intro.md)
+## [Sequential Batch-Processing](./GSEQ-intro.md)
