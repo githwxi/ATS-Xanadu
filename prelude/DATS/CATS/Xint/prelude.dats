@@ -14,6 +14,14 @@ UN =
 (* ****** ****** *)
 //
 (*
+// prelude/array.sats
+// arrays of
+// various dimensionality
+*)
+//
+(* ****** ****** *)
+//
+(*
 HX-2020-10-25:
 A C-style implementation
 does not work in general
@@ -74,4 +82,4 @@ end // end of [a1ref_listize]
 //
 (* ****** ****** *)
 
-(* end of [XINTERP_array.dats] *)
+(* end of [XINTERP_prelude.dats] *)
