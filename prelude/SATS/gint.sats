@@ -268,7 +268,7 @@ fun<>
 gint_rforall_uint(ub: uint): bool
 //
 (* ****** ****** *)
-
+//
 fun<>
 gint_listize_nint
 {n:nat}
@@ -277,17 +277,22 @@ fun<>
 gint_rlistize_nint
 {n:nat}
 (n0: sint(n)): list_vt(nintlt(n), n)
+//
+(* ****** ****** *)
+fun<>
+gint_streamize_sint
+{i:int}
+(i0: sint(i)): stream_vt( nintlt(i) )
 fun<>
 gint_streamize_nint
 {n:nat}
 (n0: sint(n)): stream_vt( nintlt(n) )
-
 (* ****** ****** *)
 
 fun
 <a:vt>
 gint_map_list_nint
-{n:nat}(n0: sint(n)): list_vt(a, n)
+{n:nat}( n0: sint(n) ): list_vt(a, n)
 
 (* ****** ****** *)
 //

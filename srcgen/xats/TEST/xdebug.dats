@@ -1,4 +1,8 @@
 (* ****** ****** *)
+#include
+"share\
+/xatsopt_prelude.hats"
+(* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
 //
