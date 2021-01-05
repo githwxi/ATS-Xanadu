@@ -289,6 +289,17 @@ strmcon_vt_cons(i0, auxmain(n0, succ(i0)))
 } (* end of [gint_streamize_nint] *)
 
 (* ****** ****** *)
+impltmp
+<>(*tmp*)
+gint_streamize_sint
+  (i0) =
+(
+if
+(i0 <= 0)
+then
+stream_vt_nil() else gint_streamize_nint(i0)
+)
+(* ****** ****** *)
 //
 // HX:
 // For implementing
@@ -306,16 +317,21 @@ in(*in-of-local*)
 (* ****** ****** *)
 //
 impltmp
-gseq_nilq<x0><xs> = gint_nilq_sint<>
+gseq_nilq<xs><x0> = gint_nilq_sint<>
 impltmp
-gseq_consq<x0><xs> = gint_consq_sint<>
+gseq_consq<xs><x0> = gint_consq_sint<>
 //
 (* ****** ****** *)
 //
 impltmp
-gseq_forall<x0><xs> = gint_forall_sint<>
+gseq_forall<xs><x0> = gint_forall_sint<>
 impltmp
-gseq_rforall<x0><xs> = gint_rforall_sint<>
+gseq_rforall<xs><x0> = gint_rforall_sint<>
+//
+(* ****** ****** *)
+//
+impltmp
+gseq_streamize<xs><x0> = gint_streamize_sint
 //
 (* ****** ****** *)
 

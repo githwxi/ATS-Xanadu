@@ -9,12 +9,16 @@
 *)
 //
 (* ****** ****** *)
+#include
+"share\
+/xatsopt_prelude.hats"
+(* ****** ****** *)
 
 #define N 8
 
 (* ****** ****** *)
 
-abstype board == p1tr
+abstype board == p1tr0
 
 (* ****** ****** *)
 
@@ -47,6 +51,10 @@ end (* end of [local] *)
 
 (* ****** ****** *)
 
+impltmp
+g_print<board> =
+board_print where
+{
 fun
 board_print
 (xs: board): void =
@@ -72,6 +80,7 @@ if i0 = x0 then print "Q " else print ". "; loop(i0+1)
 )
 }
 } (* end of [board_print *)
+}
 
 (* ****** ****** *)
 
