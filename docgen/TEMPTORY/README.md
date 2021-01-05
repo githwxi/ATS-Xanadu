@@ -1,4 +1,4 @@
 # Temptory
 
-## [Introduction to TBP](./TBP-intro.md)
-## [Sequential Batch-Processing](./GSEQ-intro.md)
+## [Introduction to TBP](./TEXT/TBP-intro.md)
+## [Sequential Batch-Processing](./TEXT/GSEQ-intro.md)
