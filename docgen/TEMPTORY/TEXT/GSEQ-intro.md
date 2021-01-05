@@ -29,14 +29,13 @@ to as a combinator.
 
 ------
 
-* **listize**:
-  It is for turning a given sequence into a linear list
-* **rlistize**:
-  It is for turning a given sequence into a linear list
-  in the reverse order
-* **streamize**:
-  It is for turning a given sequence into a linear stream
-  
+* **foldl**:
+  It is for processing a given sequence in its entirety and returning
+  the accumulated result at the end
+
+* **filter**: It is for filtering out the elements in a given sequence
+  that satisfy certain predicate.
+
 * **forall**:
   It is for processing a given sequence
   until the processing function returns false.
@@ -47,13 +46,11 @@ to as a combinator.
 * **foreach**:
   It is for processing a given sequence in its entirety.
   
-* **foldleft**:
-  It is for processing a given sequence in its entirety and returning
-  the accumulated result at the end
-
-* **filter**: It is for filtering out the elements in a given sequence
-  that satisfy certain predicate.
-
+* **listize**:
+  It is for turning a given sequence into a linear list
+* **streamize**:
+  It is for turning a given sequence into a linear stream
+  
 * **map_list**: It is for applying a given function to each element in a
   given sequence and returning a linear list consisting of the results
   of these applications in the order as they are produced.
@@ -69,15 +66,20 @@ to as a combinator.
 
 ------
 
+* **foldr**:
+  It is like `foldl` but processing in done in the reverse order
+
 * **rforall**:
   It is like `forall` but processing in done in the reverse order
 * **rexists**:
   It is like `exists` but processing in done in the reverse order
 * **rforeach**:
   It is like `foreach` but processing in done in the reverse order
-* **foldright**:
-  It is like `foldleft` but processing in done in the reverse order
 
+* **rlistize**:
+  It is for turning a given sequence into a linear list
+  in the reverse order
+  
 * **rmap_list**:
   It is like `map_list` but processing in done in the reverse order
 * **rmap_rlist**:
@@ -95,12 +97,14 @@ where `{verb}` refers to the name of the verb.  Basically, applying
 the i-version of a verb to a given sequence is like applying the verb
 to the i-version of the sequence.
 
+* **ifoldl**: It is the i-version of `foldl`
+
+* **ifilter**: It is the i-version of `filter`.
+
 * **iforall**: It is the i-version of `forall`
 * **iexists**: It is the i-version of `exists`
 * **iforeach**: It is the i-version of `foreach`
-* **ifoldleft**: It is the i-version of `foldleft`
 
-* **ifilter**: It is the i-version of `filter`.
 * **imap_list**: It is the i-version of `map_list`.
 * **imap_rlist**: It is the i-version of `map_rlist`.
 * **imap_stream**: It is the i-version of `map_stream`.
@@ -113,12 +117,14 @@ often named `z{verb}` where `{verb}` refers to the name of the
 verb. Basically, applying the z-version of a verb to two given
 sequences `xs` and `ys` is like applying the verb to `zip(xs, ys)`.
   
+* **zfoldl**: It is the z-version of `foldl`.
+
+* **zfilter**: It is the z-version of `filter`.
+
 * **zforall**: It is the z-version of `forall`.
 * **zexists**: It is the z-version of `exists`.
 * **zforeach**: It is the z-version of `foreach`.
-* **zfoldleft**: It is the z-version of `foldleft`.
 
-* **zfilter**: It is the z-version of `filter`.
 * **zmap_list**: It is the z-version of `map_list`.
 * **zmap_rlist**: It is the z-version of `map_rlist`.
 * **zmap_stream**: It is the z-version of `map_stream`.
@@ -131,10 +137,11 @@ often named `x{verb}` where `{verb}` refers to the name of the
 verb. Basically, applying the z-version of a verb to two given
 sequences `xs` and `ys` is like applying the verb to `cross(xs, ys)`.
 
+* **xfoldl**: It is the x-version of `foldl`.
+
 * **xforall**: It is the x-version of `forall`.
 * **xexists**: It is the x-version of `exists`.
 * **xforeach**: It is the x-version of `foreach`.
-* **xfoldleft**: It is the x-version of `foldleft`.
 
 * **xmap_list**: It is the x-version of `map_list`.
 * **xmap_rlist**: It is the x-version of `map_rlist`.
