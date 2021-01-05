@@ -126,7 +126,7 @@ and an implementation of `g_equal<int>` that TBP can be regarded
 as a form of late-binding at compile-time.
 
 Templates in ATS3 are embeddable for they can be implemented in the
-body of other templates. For instance, the previous higher-order
+body of other templates. As an example, the previous higher-order
 template `list_fequal` can be given an implementation based on
 `list_equal` as follows:
 
@@ -145,9 +145,9 @@ list_fequal
 ```
 
 where an implementation of `g_equal<a>` is given in the body of the
-implementation of `list_fequal<a>`.  It will beome clear soon that the
-embeddability of templates can have great impact on the way in which a
-program is structured.
+implementation of `list_fequal<a>`.  It will become clear soon that
+the embeddability of templates is a feature that can be made of use
+to greatly simplify the way in which a program is structured.
 
 With the above simple example, I have demonstrated a bit of TBP where
 templates are employed to replace higher-order functions.  While this

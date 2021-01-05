@@ -197,6 +197,12 @@ stream_vt_concat
 (xss: stream_vt(stream_vt(a))): stream_vt(a)
 //
 (* ****** ****** *)
+fun
+<x0:vt>
+stream_vt_fset_at
+( xs: stream_vt(x0)
+, i0: nint, x0: x0): stream_vt(x0)
+(* ****** ****** *)
 //
 fun
 <xs:vt>
