@@ -373,27 +373,27 @@ in gseq_exists<xs><x0>(xs) end
 impltmp
 <xs><x0>
 gseq_search
-  (xs, i0) =
+  (xs) =
 (
 case- opt of
 | ~
 optn_vt_cons(x0) => x0) where
 {
-val opt =
-gseq_search_opt<xs><x0>(xs, i0)
+val
+opt = gseq_search_opt<xs><x0>(xs)
 } (*where*)//end of [gseq_search]
 //
 impltmp
 <xs><x0>
 gseq_rsearch
-  (xs, i0) =
+  (xs) =
 (
 case- opt of
 | ~
 optn_vt_cons(x0) => x0) where
 {
-val opt =
-gseq_rsearch_opt<xs><x0>(xs, i0)
+val
+opt = gseq_rsearch_opt<xs><x0>(xs)
 } (*where*)//end of [gseq_rsearch]
 //
 (* ****** ****** *)
