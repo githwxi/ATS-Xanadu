@@ -10,11 +10,11 @@
 *)
 //
 (* ****** ****** *)
-
+//
 #staload
 UN =
 "prelude/SATS/unsafe.sats"
-
+//
 (* ****** ****** *)
 //
 // For 1-gseq-operations
@@ -580,7 +580,13 @@ end // end of
 // [gseq_map_stream/streamize]
 
 (* ****** ****** *)
-
+//
+impltmp
+<xs><x0><y0>
+gseq_mapopt_list(xs) =
+stream_vt_listize
+(gseq_mapopt_stream(xs))
+//
 impltmp
 <xs><x0><y0>
 gseq_mapopt_stream(xs) =
@@ -599,7 +605,7 @@ in
 end
 end // end of
 // [gseq_mapopt_stream/streamize]
-
+//
 (* ****** ****** *)
 //
 impltmp

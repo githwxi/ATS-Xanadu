@@ -141,49 +141,7 @@ I will be introducing more verbs elsewhere. My own experience
 indicates that the above list of verbs are already adequate for
 average programming needs.
 
-## Verb Dependencies in the GSEQ package
-
-Given two verbs `verb1` and `verb2`, I write `verb1 < verb2` to mean
-that there is an implementation of `verb2` that depends on `verb1`. In
-other words, `verb2` is available for use as long as `verb1` is
-implemented. In the terms of OOP, one may see `verb2` as a method
-whose implementation calls anther method `verb1`.  If `verb2` depends
-on `verb1`, I may also say `verb1` supports `verb2`.
-
-In the GSEQ package, the following verb dependecies exist:
-
-* streamize < forall
-
-* forall < exists
-* forall < foreach 
-* foreach < foldleft
-* foldleft < listize
-
-* rlistize < rforall
-* foldleft < rlistize  
-
-* foldleft < map_list
-* foldleft < map_rlist
-* streamize < map_stream
-
-* foldleft < imap_list
-* foldleft < imap_rlist
-* streamize < imap_stream
-
-* forall < iforall
-* iforall < iexists
-* iforall < iforeach
-* iforeach < ifoldleft
-
-* rforall < rexists
-* rforall < rforeach
-* rforeach < foldright
-
-There is really no need to memorize these verb dependencies at this
-point.  All one really should be clear about for now is that if
-`streamize` is implemented, then all of the other verbs are available
-for use. And please note that all of the verbs are given tail-recursive
-implementations in the GSEQ package.
+## Verb Dependencies
 
 ## Let's see some verbs in action!
 
@@ -198,31 +156,36 @@ board configurations and then implement it as a list:
 ```ats
 (* ****** ****** *)
 
-abstbox board = ptr
+abstype board == p1tr
 
 (* ****** ****** *)
 
-extern
+#extern
 fun
 board_nil(): board
-and
-board_cons(int, board): board
+#extern
+fun
+board_cons
+(x0: int, xs: board): board
 
 (* ****** ****** *)
 
 local
 
-absimpl board = list0(int)
+absimpl board = list(int)
 
 in(* in-of-local *)
 
-implement
-board_nil() = nil()
-implement
-board_cons(x0, xs) = cons(x0, xs)
+implfun
+board_nil
+((*void*)) = list_nil()
+implfun
+board_cons
+( x0, xs ) = list_cons(x0, xs)
 
-implement
-gseq_streamize<board><int>(xs) = list0_streamize<int>(xs)
+impltmp
+gseq_streamize
+<board><int>(xs) = list_streamize<int>(xs)
 
 end (* end of [local] *)
 
@@ -244,8 +207,8 @@ board_check
 gseq_iforall<board><int>(xs)
 ) where
 {
-implement
-gseq_iforall$test<int>(i1, x1) =
+impltmp
+iforall$test<int>(i1, x1) =
 if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
 }
 ```
@@ -259,22 +222,21 @@ fun
 board_print
 (xs: board): void =
 (
-gseq_rforeach<board><int>
-  (xs)
+gseq_rforeach
+<board><int>(xs)
 ) where
 {
-implement
-gseq_rforeach$work<int>(x0) =
+impltmp
+rforeach$work<int>(x0) =
 (
-  loop(0)
-) where
+  loop(0) ) where
 {
 fun
 loop(i0: int): void =
 if
 i0 >= N
 then
-println!((*void*))
+println((*void*))
 else
 (
 if i0 = x0 then print "Q " else print ". "; loop(i0+1)
