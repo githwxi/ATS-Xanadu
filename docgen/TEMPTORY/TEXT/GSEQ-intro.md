@@ -29,13 +29,6 @@ to as a combinator.
 
 ------
 
-* **foldl**:
-  It is for processing a given sequence in its entirety and returning
-  the accumulated result at the end
-
-* **filter**: It is for filtering out the elements in a given sequence
-  that satisfy certain predicate.
-
 * **forall**:
   It is for processing a given sequence
   until the processing function returns false.
@@ -46,6 +39,13 @@ to as a combinator.
 * **foreach**:
   It is for processing a given sequence in its entirety.
   
+* **foldl**:
+  It is for processing a given sequence in its entirety and returning
+  the accumulated result at the end
+
+* **filter**: It is for filtering out the elements in a given sequence
+  that satisfy certain predicate.
+
 * **listize**:
   It is for turning a given sequence into a linear list
 * **streamize**:
@@ -66,15 +66,15 @@ to as a combinator.
 
 ------
 
-* **foldr**:
-  It is like `foldl` but processing in done in the reverse order
-
 * **rforall**:
   It is like `forall` but processing in done in the reverse order
 * **rexists**:
   It is like `exists` but processing in done in the reverse order
 * **rforeach**:
   It is like `foreach` but processing in done in the reverse order
+
+* **foldr**:
+  It is like `foldl` but processing in done in the reverse order
 
 * **rlistize**:
   It is for turning a given sequence into a linear list
@@ -97,13 +97,13 @@ where `{verb}` refers to the name of the verb.  Basically, applying
 the i-version of a verb to a given sequence is like applying the verb
 to the i-version of the sequence.
 
-* **ifoldl**: It is the i-version of `foldl`
-
-* **ifilter**: It is the i-version of `filter`.
-
 * **iforall**: It is the i-version of `forall`
 * **iexists**: It is the i-version of `exists`
 * **iforeach**: It is the i-version of `foreach`
+
+* **ifoldl**: It is the i-version of `foldl`
+
+* **ifilter**: It is the i-version of `filter`.
 
 * **imap_list**: It is the i-version of `map_list`.
 * **imap_rlist**: It is the i-version of `map_rlist`.
@@ -118,8 +118,6 @@ verb. Basically, applying the z-version of a verb to two given
 sequences `xs` and `ys` is like applying the verb to `zip(xs, ys)`.
   
 * **zfoldl**: It is the z-version of `foldl`.
-
-* **zfilter**: It is the z-version of `filter`.
 
 * **zforall**: It is the z-version of `forall`.
 * **zexists**: It is the z-version of `exists`.
