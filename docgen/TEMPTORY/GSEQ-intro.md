@@ -148,7 +148,9 @@ average programming needs.
 The famous 8-queen puzzle asks the player to find ways to put eight
 queen pieces on a chess board such that no queen piece can attack any
 other ones. In other words, no two queen pieces can be put on the same
-row, the same column, or the same diagnal.
+row, the same column, or the same diagnal. Please click
+[here](https://xanadu-lang.github.io/contrib/githwxi/StreamDemo2/TEST/QueenPuzzle/2020-12-12/.)
+for a demo.
 
 Let us first declare an abstract type `board` for values representing
 board configurations and then implement it as a list:
