@@ -405,29 +405,37 @@ arglst(n:int) = list_vt(commarg, n)
 //
 fun
 loop
-{i:nat | i <= n}{l:addr} .<n-i>.
-( pf0: arglst(0) @ l
-| argv: !argv(n), i: int i, p0: ptr l
+{i:nat
+|i <= n}
+{l:addr} .<n-i>.
+( pf0
+: arglst(0) @ l
+| argv: !argv(n)
+, i0: int i, p0: ptr l
 ) :<!wrt> (arglst(n-i) @ l | void) =
 (
 //
 if
-i < argc
-then let
+i0 < argc
+then
+(
+fold@(!p0); (pf0 | res)
+) where
+{
   val+~list_vt_nil() = !p0
-  val x = parse_commarg(argv[i])
+  val x0 =
+  parse_commarg(argv[i0])
   val () =
   ( !p0 :=
-    list_vt_cons(x, list_vt_nil())
+    list_vt_cons
+    (x0, list_vt_nil((*void*)))
   ) (* end of [val] *)
   val+@list_vt_cons(_, xs) = !p0
-  val (pf | ()) =
-    loop (view@xs | argv, i+1, addr@xs) // tail-call
-  // end of [val]
-in
-  fold@(!p0); (pf0 | ())
-end // end of [then]
-else (pf0 | ()) // end of [else]
+  val
+  (pf1 | res) =
+  loop // tail-call
+  (view@xs | argv, i0+1, addr@xs)
+} else (pf0 | ()) // end of [else]
 //
 ) (* end of [loop] *)
 //

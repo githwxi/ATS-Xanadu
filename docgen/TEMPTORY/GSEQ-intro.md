@@ -2,12 +2,12 @@
 
 When teaching functional programming, I often receive a question like
 this one: How can one access an element in a list when given the index
-of the element? Of course, I could answer the question by mentioning
-the name of a library function that does precisely what is asked. But
-why is such a question being frequently asked in the first place?  It
-is mostly likely that the person who asks this question is still of a
-mentality that focuses on what I call individual-processing (in
-contrast with batch-processing). I suppose that a big part of this
+of the element? Of course, I could answer the question by simply
+mentioning the name of a library function that does precisely what is
+asked. But why is such a question being frequently asked in the first
+place?  It is mostly likely that the person who asks this question is
+still of a mentality that focuses on what I call individual-processing
+(in contrast with batch-processing). I suppose that a big part of this
 mentality comes from ubiquity of for-loops and while-loops in
 imperative programming. As far as I can see, it would be nearly
 impossible for a programmer to break out of this mentality if there
@@ -66,10 +66,10 @@ to as a combinator.
 
 ------
 
-* **rexists**:
-  It is like `exists` but processing in done in the reverse order
 * **rforall**:
   It is like `forall` but processing in done in the reverse order
+* **rexists**:
+  It is like `exists` but processing in done in the reverse order
 * **rforeach**:
   It is like `foreach` but processing in done in the reverse order
 * **foldright**:
@@ -92,8 +92,8 @@ where `{verb}` refers to the name of the verb.  Basically, applying
 the i-version of a verb to a given sequence is like applying the verb
 to the i-version of the sequence.
 
-* **iexists**: It is the i-version of `exists`
 * **iforall**: It is the i-version of `forall`
+* **iexists**: It is the i-version of `exists`
 * **iforeach**: It is the i-version of `foreach`
 * **ifoldleft**: It is the i-version of `foldleft`
 
@@ -109,7 +109,8 @@ often named `z{verb}` where `{verb}` refers to the name of the
 verb. Basically, applying the z-version of a verb to two given
 sequences `xs` and `ys` is like applying the verb to `zip(xs, ys)`.
   
-* **zforall**: It is the z-version of `forall`.  
+* **zforall**: It is the z-version of `forall`.
+* **zexists**: It is the z-version of `exists`.
 * **zforeach**: It is the z-version of `foreach`.
 * **zfoldleft**: It is the z-version of `foldleft`.
 
@@ -125,7 +126,8 @@ often named `x{verb}` where `{verb}` refers to the name of the
 verb. Basically, applying the z-version of a verb to two given
 sequences `xs` and `ys` is like applying the verb to `cross(xs, ys)`.
 
-* **xforall**: It is the x-version of `forall`.    
+* **xforall**: It is the x-version of `forall`.
+* **xexists**: It is the x-version of `exists`.
 * **xforeach**: It is the x-version of `foreach`.
 * **xfoldleft**: It is the x-version of `foldleft`.
 
