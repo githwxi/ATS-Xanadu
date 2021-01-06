@@ -7,12 +7,13 @@ mentioning the name of a library function that does precisely what is
 asked. But why is such a question being frequently asked in the first
 place?  It is mostly likely that the person who asks this question is
 still of a mentality that focuses on what I call individual-processing
-(in contrast with batch-processing). I suppose that a big part of this
-mentality comes from ubiquity of for-loops and while-loops in
-imperative programming. As far as I can see, it would be nearly
-impossible for a programmer to break out of this mentality if there
-was no support at the level of programming language to greatly
-facilitate batch-processing.
+(in contrast with batch-processing), which just processes one element
+at a time. I suppose that a big part of this mentality comes from the
+ubiquity of for-loops and while-loops in imperative programming. As
+far as I can see, it would be nearly impossible for a programmer to
+break out of this mentality if there was no support at the level of
+programming language to greatly facilitate batch-processing, which
+processes a sequence of elements at a time.
 
 In functional programming, batch-processing is commonly associated
 with the use of combinators (which are often higher-order functions of
