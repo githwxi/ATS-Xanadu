@@ -60,8 +60,7 @@ fun
 board_print
 (xs: board): void =
 (
-gseq_rforeach
-<board><int>(xs)
+rforeach(xs)
 ) where
 {
 impltmp
@@ -89,13 +88,14 @@ fun
 board_check
 (x0: int, xs: board): bool =
 (
-gseq_iforall<board><int>(xs)
-) where
+iforall(xs)) where
 {
 impltmp
 iforall$test<int>(i1, x1) =
-if (x0 != x1) then (abs(x0 - x1) != i1 + 1) else false
-}
+if
+(x0 != x1)
+then (abs(x0 - x1) != i1 + 1) else false
+} (* end of [board_check] *)
 
 (* ****** ****** *)
 
@@ -105,7 +105,7 @@ board_extend
 (
 list_vt2t
 (
-gseq_mapopt_list<int><int><board>(N)
+mapopt_list(N)
 )
 ) where
 {
@@ -113,20 +113,21 @@ impltmp
 filter$test<int>(x0) = board_check(x0, xs)
 impltmp
 map$fopr<int><board>(x0) = board_cons(x0, xs)
-}
+} (* end of [board_extend] *)
 
 fun
 boardlst_extend
-(xss: list(board)): list(board) =
+( xss
+: list(board)): list(board) =
 (
-gseq_foldr(xss, list_nil())
-) where
+foldr
+(xss, list_nil())) where
 {
 typedef xs = board
 typedef r0 = list(board)
 impltmp
 foldr$fopr<xs><r0>(xs, r0) = append(board_extend(xs), r0)
-}
+} (* end of [boardlst_extend] *)
 
 (* ****** ****** *)
 
@@ -153,8 +154,7 @@ xss = qsolve()
 //
 val () =
 (
-gseq_iforeach(xss)
-) where
+iforeach(xss)) where
 {
 impltmp
 iforeach$work<board>(i0, xs) =
