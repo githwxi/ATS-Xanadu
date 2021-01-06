@@ -21,12 +21,18 @@ auxloop
   strmcon_vt_nil() => true
   | ~
   strmcon_vt_cons(x0, xs) =>
-  if
-  forall$test(x0)
-  then auxloop(xs)
-  else let val () = free(xs) in false end
+  let
+    val
+    test =
+    forall$test<x0>(x0)
+  in
+    if
+    test
+    then auxloop(xs)
+    else let val () = free(xs) in false end
+  end // end of [strmcon_vt_cons]
   )
-} (* end of [gseq_forall] *)
+} (*where*) // end of [gseq_forall]
 
 (* ****** ****** *)
 

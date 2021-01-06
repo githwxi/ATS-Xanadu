@@ -22,10 +22,12 @@ level.
 
 ## Common Verbs
 
-I list as follows some commonly used verbs and their variations in
-the context of batch-processing elements sequentially. Note that an
+I list as follows some commonly used verbs and their variations in the
+context of batch-processing elements sequentially. Note that an
 implementation of a verb for a particular datatype is often referred
-to as a combinator.
+to as a combinator. Also, the full name of each listed verb in the
+package GSEQ always starts with the prefix `gseq_`, which is omitted
+here for simplicity.
 
 ------
 
@@ -171,20 +173,26 @@ auxloop
 (gseq_streamize<xs><x0>(xs))
 ) where
 {
-  fun
-  auxloop(xs) =
-  (
+fun
+auxloop(xs) =
+(
   case+ !xs of
   | ~
   strmcon_vt_nil() => true
   | ~
   strmcon_vt_cons(x0, xs) =>
-  if
-  forall$test(x0)
-  then auxloop(xs)
-  else let val () = $free(xs) in false end
-  )
-} (* end of [gseq_forall] *)
+  let
+    val
+    test =
+    forall$test<x0>(x0)
+  in
+    if
+    test
+    then auxloop(xs)
+    else let val () = free(xs) in false end
+  end // end of [strmcon_vt_cons]
+) (* end of [auxloop] *)
+} (*where*) // end of [gseq_forall]
 ```
 
 Clearly, we can also implemented `exists` based on `streamize`.
