@@ -1,4 +1,4 @@
-# GSEQ for Sequential Batch-Processing
+# GSEQ for Processing Sequences
 
 When teaching functional programming, I often receive a question like
 this one: How can one access an element in a list when given the index
@@ -7,28 +7,29 @@ mentioning the name of a library function that does precisely what is
 asked. But why is such a question being frequently asked in the first
 place?  It is mostly likely that the person who asks this question is
 still of a mentality that focuses on what I call individual-processing
-(in contrast with batch-processing), which just processes one element
-at a time. I suppose that a big part of this mentality comes from the
-ubiquity of for-loops and while-loops in imperative programming. As
-far as I can see, it would be nearly impossible for a programmer to
-break out of this mentality if there was no support at the level of
-programming language to greatly facilitate batch-processing, which
-processes a sequence of elements at a time.
+(in contrast with batch-processing), which basically refers to
+processing one element at a time. I suppose that a big part of this
+mentality comes from the ubiquity of for-loops and while-loops in
+imperative programming. As far as I can see, it would be nearly
+impossible for a programmer to break out of this mentality if there
+was no support at the level of programming language to greatly
+facilitate batch-processing, that is, processing a sequence of
+elements at a time.
 
 In functional programming, batch-processing is commonly associated
-with the use of combinators (which are often higher-order functions of
-relatively small bodies). ATS3 strongly advocates batch-processing by
-providing support at the language level as well as at the library
+with the use of combinators (which are often higher-order functions
+of relatively small bodies). ATS3 strongly advocates batch-processing
+by providing support at the language level as well as at the library
 level.
 
 ## Common Verbs
 
 I list as follows some commonly used verbs and their variations in the
-context of batch-processing elements sequentially. Note that an
-implementation of a verb for a particular datatype is often referred
-to as a combinator. Also, the full name of each listed verb in the
-package GSEQ always starts with the prefix `gseq_`, which is omitted
-here for simplicity.
+context of batch-processing elements sequentially. Note that the full
+name of each listed verb in the package GSEQ always starts with the
+prefix `gseq_`, which is omitted here for simplicity. Also note that
+an implementation of a verb for a particular datatype is often referred
+to as a combinator (which originally means a closed term in lambda-calculus).
 
 ------
 
