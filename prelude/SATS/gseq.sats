@@ -371,6 +371,11 @@ fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
+gseq_mapopt_rlist(xs): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
 gseq_mapopt_stream(xs): stream_vt(y0)
 //
 (* ****** ****** *)
