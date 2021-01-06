@@ -886,6 +886,15 @@ length with gseq_length of 0100
 
 (* ****** ****** *)
 
+#symload
+mapopt_list with gseq_mapopt_list of 0100
+#symload
+mapopt_rlist with gseq_mapopt_rlist of 0100
+#symload
+mapopt_stream with gseq_mapopt_stream of 0100
+
+(* ****** ****** *)
+
 #symload append with gseq_append of 0100
 #symload concat with gseq_append of 0100
 #symload reverse with gseq_append of 0100
