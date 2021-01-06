@@ -852,10 +852,23 @@ length with gseq_length of 0100
 
 (* ****** ****** *)
 //
-#symload foldl with gseq_foldl of 0100
-#symload forall with gseq_forall of 0100
-#symload foreach with gseq_foreach of 0100
+#symload
+foldl with gseq_foldl of 0100
+#symload
+forall with gseq_forall of 0100
+#symload
+foreach with gseq_foreach of 0100
 //
+(* ****** ****** *)
+#symload
+memberq with gseq_memberq of 0100
+(* ****** ****** *)
+#symload
+get_at with gseq_get_at of 0100
+#symload
+fset_at with gseq_fset_at of 0100
+#symload
+get_at_opt with gseq_get_at_opt of 0100
 (* ****** ****** *)
 //
 #symload max2 with gseq_max2 of 0100
