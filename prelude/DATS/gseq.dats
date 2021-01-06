@@ -781,6 +781,11 @@ impltmp
 gseq_mapopt_list(xs) =
 stream_vt_listize
 (gseq_mapopt_stream(xs))
+impltmp
+<xs><x0><y0>
+gseq_mapopt_rlist(xs) =
+stream_vt_rlistize
+(gseq_mapopt_stream(xs))
 //
 impltmp
 <xs><x0><y0>

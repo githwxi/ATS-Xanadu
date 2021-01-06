@@ -153,6 +153,14 @@ average programming needs.
 
 ## Verb Dependencies
 
+Given two verbs `verb1` and `verb2`, I write `verb1 < verb2` to mean
+that there is an implementation of `verb2` that depends on `verb1`. In
+other words, `verb2` is available for use as long as `verb1` is
+implemented. While there are a lot of fine details in terms of
+implementation, one thing worth remembering is that each of the listed
+verbs for sequential batching-processing is available as long as
+`streamize` is implemented.
+
 ## Let's see some verbs in action!
 
 The famous 8-queen puzzle asks the player to find ways to put eight
