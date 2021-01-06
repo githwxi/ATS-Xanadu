@@ -9,7 +9,8 @@ impltmp
 <xs><x0>
 gseq_forall(xs) =
 (
-  auxloop(streamize(xs))
+auxloop
+(gseq_streamize<xs><x0>(xs))
 ) where
 {
   fun
@@ -26,6 +27,18 @@ gseq_forall(xs) =
   else let val () = free(xs) in false end
   )
 } (* end of [gseq_forall] *)
+
+(* ****** ****** *)
+
+impltmp
+<xs><x0>
+gseq_exists(xs) =
+(
+  not(gseq_forall<xs><x0>(xs))) where
+{
+  impltmp
+  forall$test<x0>(x0) = not(exists$test<x0>(x0))
+} (* end of [gseq_exists] *)
 
 (* ****** ****** *)
 
