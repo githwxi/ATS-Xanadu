@@ -1,4 +1,4 @@
-# Sequential Batch-Processing
+# GSEQ for Sequential Batch-Processing
 
 When teaching functional programming, I often receive a question like
 this one: How can one access an element in a list when given the index
@@ -151,7 +151,7 @@ I will be introducing more verbs elsewhere. My own experience
 indicates that the above list of verbs are already adequate for
 average programming needs.
 
-## Verb Dependencies
+## Verb Dependencies in GSEQ
 
 Given two verbs `verb1` and `verb2`, I write `verb1 < verb2` to mean
 that there is an implementation of `verb2` that depends on `verb1`. In
