@@ -20,7 +20,7 @@ relatively small bodies). ATS3 strongly advocates batch-processing by
 providing support at the language level as well as at the library
 level.
 
-## Commonly used verbs
+## Common Verbs
 
 I list as follows some commonly used verbs and their variations in
 the context of batch-processing elements sequentially. Note that an
@@ -41,15 +41,15 @@ to as a combinator.
   
 * **foldl**:
   It is for processing a given sequence in its entirety and returning
-  the accumulated result at the end
+  the accumulated result at the end.
 
 * **filter**: It is for filtering out the elements in a given sequence
   that satisfy certain predicate.
 
 * **listize**:
-  It is for turning a given sequence into a linear list
+  It is for turning a given sequence into a linear list.
 * **streamize**:
-  It is for turning a given sequence into a linear stream
+  It is for turning a given sequence into a linear stream.
   
 * **map_list**: It is for applying a given function to each element in a
   given sequence and returning a linear list consisting of the results
@@ -67,23 +67,23 @@ to as a combinator.
 ------
 
 * **rforall**:
-  It is like `forall` but processing in done in the reverse order
+  It is like `forall` but processing in done in the reverse order.
 * **rexists**:
-  It is like `exists` but processing in done in the reverse order
+  It is like `exists` but processing in done in the reverse order.
 * **rforeach**:
-  It is like `foreach` but processing in done in the reverse order
+  It is like `foreach` but processing in done in the reverse order.
 
 * **foldr**:
-  It is like `foldl` but processing in done in the reverse order
+  It is like `foldl` but processing in done in the reverse order.
 
 * **rlistize**:
   It is for turning a given sequence into a linear list
-  in the reverse order
+  in the reverse order.
   
 * **rmap_list**:
-  It is like `map_list` but processing in done in the reverse order
+  It is like `map_list` but processing in done in the reverse order.
 * **rmap_rlist**:
-  It is like `map_rlist` but processing in done in the reverse order
+  It is like `map_rlist` but processing in done in the reverse order.
 
 ------
 
@@ -159,7 +159,32 @@ other words, `verb2` is available for use as long as `verb1` is
 implemented. While there are a lot of fine details in terms of
 implementation, one thing worth remembering is that each of the listed
 verbs for sequential batching-processing is available as long as
-`streamize` is implemented.
+`streamize` is implemented. For instance, an implementation of `forall`
+is given as follows that is based on `streamize`:
+
+```ats
+impltmp
+<xs><x0>
+gseq_forall(xs) =
+(
+  auxloop(streamize(xs))
+) where
+{
+  fun
+  auxloop(xs) =
+  (
+  case+ !xs of
+  | ~
+  strmcon_vt_nil() => true
+  | ~
+  strmcon_vt_cons(x0, xs) =>
+  if
+  forall$test(x0)
+  then auxloop(xs)
+  else let val () = free(xs) in false end
+  )
+} (* end of [gseq_forall] *)
+```
 
 ## Let's see some verbs in action!
 
