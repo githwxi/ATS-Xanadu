@@ -160,11 +160,11 @@ average programming needs.
 Given two verbs `verb1` and `verb2`, I write `verb1 < verb2` to mean
 that there is an implementation of `verb2` that depends on `verb1`. In
 other words, `verb2` is available for use as long as `verb1` is
-implemented. While there are a lot of fine details in terms of
-implementation, one thing worth remembering is that each of the listed
-verbs for sequential batching-processing is available as long as
-`streamize` is implemented. For instance, an implementation of `forall`
-is given as follows that is based on `streamize`:
+implemented. While there are a lot of fine implementation details, one
+thing worth remembering is that each of the listed verbs for
+processing sequences is available as long as `streamize` is
+implemented. For instance, an implementation of `forall` is given as
+follows that is directly based on `streamize`:
 
 ```ats
 impltmp
@@ -197,7 +197,7 @@ auxloop(xs) =
 } (*where*) // end of [gseq_forall]
 ```
 
-Clearly, we can also implemented `exists` based on `streamize`.
+Clearly, we can also implement `exists` based on `streamize`.
 However, it is a lot easier to implement `exists` based on `forall`
 as is shown below:
 
