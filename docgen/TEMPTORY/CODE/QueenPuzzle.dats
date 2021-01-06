@@ -18,7 +18,7 @@
 
 (* ****** ****** *)
 
-abstype board == p1tr0
+abstype board == p1tr
 
 (* ****** ****** *)
 

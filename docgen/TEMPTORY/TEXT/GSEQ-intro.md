@@ -167,7 +167,8 @@ impltmp
 <xs><x0>
 gseq_forall(xs) =
 (
-  auxloop(streamize(xs))
+auxloop
+(gseq_streamize<xs><x0>(xs))
 ) where
 {
   fun
@@ -181,11 +182,27 @@ gseq_forall(xs) =
   if
   forall$test(x0)
   then auxloop(xs)
-  else let val () = free(xs) in false end
+  else let val () = $free(xs) in false end
   )
 } (* end of [gseq_forall] *)
 ```
 
+Clearly, we can also implemented `exists` based on `streamize`.
+However, it is a lot easier to implement `exists` based on `forall`
+as is shown below:
+
+```ats
+impltmp
+<xs><x0>
+gseq_exists(xs) =
+(
+  not(gseq_forall<xs><x0>(xs))) where
+{
+  impltmp
+  forall$test<x0>(x0) = not(exists$test<x0>(x0))
+} (* end of [gseq_exists] *)
+```
+  
 ## Let's see some verbs in action!
 
 The famous 8-queen puzzle asks the player to find ways to put eight
