@@ -950,49 +950,6 @@ lazy_vt(a:vwtp) = lazy_vt_vx(a)
 //
 (* ****** ****** *)
 //
-datatype
-strmcon(a:type+) =
-| strmcon_nil of ((*void*))
-| strmcon_cons of (a, stream(a))
-and
-strxcon(a:type+) =
-| strxcon_cons of (a, streax(a))
-//
-where
-{
-typedef
-stream(a:type) = lazy(strmcon(a))
-typedef
-streax(a:type) = lazy(strxcon(a))
-}
-//
-datavwtp
-strmcon_vt(a:vwtp+) =
-| strmcon_vt_nil of ((*void*))
-| strmcon_vt_cons of (a, stream_vt(a))
-and
-strxcon_vt(a:vwtp+)
-| strxcon_vt_cons of (a, streax_vt(a))
-//
-where
-{
-vwtpdef
-stream_vt(a:vwtp) = lazy_vt(strmcon_vt(a))
-vwtpdef
-streax_vt(a:vwtp) = lazy_vt(strxcon_vt(a))
-} (* where *)
-//
-(* ****** ****** *)
-//
-(*
-#symload nil with strmcon_nil
-#symload cons with strmcon_cons
-#symload nil_vt with strmcon_vt_nil
-#symload cons_vt with strmcon_vt_cons
-*)
-//
-(* ****** ****** *)
-//
 (*
 fun
 <a1:t0>
@@ -1019,6 +976,77 @@ absview
 a1ptr_view(a:vt,l:a0,n:i0)
 sexpdef arrvw = a1ptr_view
 //
+(* ****** ****** *)
+//
+datatype
+strmcon(a:type+) =
+| strmcon_nil of ((*void*))
+| strmcon_cons of (a, stream(a))
+and
+strxcon(a:type+) =
+| strxcon_cons of (a, streax(a))
+//
+where
+{
+typedef
+stream(a:type) = lazy(strmcon(a))
+typedef
+streax(a:type) = lazy(strxcon(a))
+}
+//
+datavwtp
+strmcon_vt(a:vwtp+) =
+| strmcon_vt_nil of ((*void*))
+| strmcon_vt_cons of (a, stream_vt(a))
+and
+strxcon_vt(a:vwtp+) =
+| strxcon_vt_cons of (a, streax_vt(a))
+//
+where
+{
+vwtpdef
+stream_vt(a:vwtp) = lazy_vt(strmcon_vt(a))
+vwtpdef
+streax_vt(a:vwtp) = lazy_vt(strxcon_vt(a))
+} (* where *)
+//
+(* ****** ****** *)
+//
+(*
+#symload nil with strmcon_nil
+#symload cons with strmcon_cons
+#symload nil_vt with strmcon_vt_nil
+#symload cons_vt with strmcon_vt_cons
+*)
+//
+(* ****** ****** *)
+datatype
+strqcon
+(a:type+, int) =
+|
+strqcon_nil(a, 0) of ((*void*))
+|
+{ n:int | n >= 0 }
+strqcon_cons(a, n+1) of (a, streaq(a, n))
+where
+{
+typedef
+streaq(a:vwtp, n:int) = lazy(strqcon(a, n))
+} (* where *) // end of [strqcon]
+(* ****** ****** *)
+datavwtp
+strqcon_vt
+(a:vwtp+, int) =
+|
+strqcon_vt_nil(a, 0) of ((*void*))
+|
+{ n:int | n >= 0 }
+strqcon_vt_cons(a, n+1) of (a, streaq_vt(a, n))
+where
+{
+vwtpdef
+streaq_vt(a:vwtp, n:int) = lazy_vt(strqcon_vt(a, n))
+} (* where *) // end of [strqcon_vt]
 (* ****** ****** *)
 
 (* end of [basics.sats] *)
