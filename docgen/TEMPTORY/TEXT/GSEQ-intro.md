@@ -337,4 +337,4 @@ Q . . . . . . .
 . . . Q . . . . 
 ```
 
-Please find the entirety of the implementation [here](./CODE/QueenPuzzle.dats).
+Please find the entirety of the implementation [here](./../CODE/QueenPuzzle.dats).
