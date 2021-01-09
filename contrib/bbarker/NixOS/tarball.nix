@@ -47,8 +47,9 @@ stdenv.mkDerivation rec {
 
   shellHook = ''
     export XATSHOME=$PWD
-    source ./nix/path_hack.sh
+    source ./share/NixOS/pathenv.sh
     export LD_LIBRARY_PATH=LD_LIBRARY_PATH:"${boehmgc}/lib"
   '';
 }
 
+###### end of [tarball.nix] ######
