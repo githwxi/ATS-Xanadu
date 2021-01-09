@@ -16,7 +16,7 @@ command-lines:
 
 4. `cd ${XATSHOME}`
 5. `nix-shell share/NixOS/shell.nix`
-6. `make -C srcgen/xats`
+6. `(cd srcgen/xats && make all && cp xatsopt ./../../bin)`
 
 If the build is successful, you should be able to find
 the command `xatsopt` in ${XATSHOME}/bin:
