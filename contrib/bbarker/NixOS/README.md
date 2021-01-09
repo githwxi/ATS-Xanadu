@@ -1,9 +1,24 @@
 
-## Using ATS-Xanadu from a git repo-build
+## Building ATS-Xanadu from a git repository
 
+Please clone the ATS-Xanadu repo to a desired
+location. For instance,
 
-From your ATS-Xanadu root directory (NOT this directory)
+1. `cd /tmp`
+2. `git clone https://github.com/githwxi/ATS-Xanadu.git`
 
-1.  Clone the ATS-Xanadu repo to a desired location
-2. `nix-shell nix/shell.nix`
-3. `cd srcgen/xats && make`
+Please set the environment variable XATSHOME as follows:
+
+3. `export XATSHOME=/tmp/ATS-Xanadu`
+
+You can now build ATS-Xanadu by executing the following
+command-lines:
+
+4. `cd ${XATSHOME}`
+5. `nix-shell share/NixOS/shell.nix`
+6. `make -C srcgen/xats`
+
+If the build is successful, you should be able to find
+the command `xatsopt` in ${XATSHOME}/bin:
+
+7. `ls -al ${XATSHOME}/bin`
