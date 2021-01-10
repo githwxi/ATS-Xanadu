@@ -111,5 +111,52 @@ implement
 fprint_val<d4ecl> = fprint_d4ecl
 
 (* ****** ****** *)
+//
+implement
+print_d4pat(x0) =
+fprint_d4pat(stdout_ref, x0)
+implement
+prerr_d4pat(x0) =
+fprint_d4pat(stderr_ref, x0)
+//
+implement
+fprint_d4pat
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| D4Pnil() =>
+  fprint!(out, "D4Pnil()")
+| D4Pany() =>
+  fprint!(out, "D4Pany()")
+//
+| D4Pvar(d2v) =>
+  fprint!
+  (out, "D4Pvar(", d2v, ")")
+//
+| _(* rest-of-d4pat *) => fprint!(out, "D4P...(...)")
+//
+) (* end of [fprint_d4pat] *)
+//
+(* ****** ****** *)
+//
+implement
+print_d4exp(x0) =
+fprint_d4exp(stdout_ref, x0)
+implement
+prerr_d4exp(x0) =
+fprint_d4exp(stderr_ref, x0)
+//
+implement
+fprint_d4exp
+  (out, x0) =
+(
+case+ x0.node() of
+//
+| _(* rest-of-d4exp *) => fprint!(out, "D4E...(...)")
+//
+) (* end of [fprint_d4exp] *)
+//
+(* ****** ****** *)
 
 (* end of [xats_dynexp4_print.dats] *)
