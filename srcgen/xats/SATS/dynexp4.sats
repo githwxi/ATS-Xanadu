@@ -236,6 +236,14 @@ overload .sexp with d4exp_get_sexp
 (* ****** ****** *)
 //
 fun
+d4exp_make_node
+( loc0: loc_t
+, s2e0: s2exp
+, t2p0: t2ype, node: d4exp_node): d4exp
+//
+(* ****** ****** *)
+//
+fun
 print_d4exp: print_type(d4exp)
 fun
 prerr_d4exp: prerr_type(d4exp)

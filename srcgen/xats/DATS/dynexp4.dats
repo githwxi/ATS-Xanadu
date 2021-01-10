@@ -105,4 +105,44 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+//
+absimpl
+d4exp_tbox = $rec
+{ d4exp_loc= loc_t
+, d4exp_sexp= s2exp
+, d4exp_type= t2ype
+, d4exp_node= d4exp_node
+} (* end of [absimpl] *)
+//
+in(* in-of-local *)
+//
+implement
+d4exp_get_loc
+  (d4p) = d4p.d4exp_loc
+implement
+d4exp_get_node
+  (d4p) = d4p.d4exp_node
+//
+implement
+d4exp_get_sexp
+  (d4p) = d4p.d4exp_sexp
+implement
+d4exp_get_type
+  (d4p) = d4p.d4exp_type
+//
+implement
+d4exp_make_node
+( loc0
+, s2e0, t2p0, node
+) = $rec
+{ d4exp_loc= loc0
+, d4exp_sexp= s2e0
+, d4exp_type= t2p0, d4exp_node= node
+} (* d4exp_make_node *)
+//
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp4.dats] *)

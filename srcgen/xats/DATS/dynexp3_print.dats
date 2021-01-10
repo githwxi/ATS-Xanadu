@@ -179,7 +179,7 @@ implement
 fprint_d3pat
   (out, x0) =
 (
-case- x0.node() of
+case+ x0.node() of
 //
 | D3Pnil() =>
   fprint!(out, "D3Pnil()")
