@@ -531,13 +531,18 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-d3ecl_none1(d2c0) =
+d3ecl_none0(loc0) =
+d3ecl_make_node
+(loc0, D3Cnone0(*void*))
+//
+implement
+d3ecl_none1(d2cl) =
 (
 d3ecl_make_node
-(loc0, D3Cnone1(d2c0))
+(loc0, D3Cnone1(d2cl))
 ) where
 {
-  val loc0 = d2c0.loc((*void*))
+  val loc0 = d2cl.loc((*void*))
 }
 //
 (* ****** ****** *)
