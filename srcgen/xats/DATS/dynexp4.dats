@@ -145,4 +145,54 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+
+absimpl
+d4ecl_tbox = $rec
+{
+  d4ecl_loc= loc_t
+, d4ecl_node= d4ecl_node
+} (* end of [absimpl] *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d4ecl_get_loc(x0) = x0.d4ecl_loc
+implement
+d4ecl_get_node(x0) = x0.d4ecl_node
+
+(* ****** ****** *)
+
+implement
+d4ecl_make_node
+(loc, node) = $rec
+{
+  d4ecl_loc= loc, d4ecl_node= node
+} (* end of [d4ecl_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+d4ecl_none0(loc0) =
+d4ecl_make_node
+(loc0, D4Cnone0(*void*))
+//
+implement
+d4ecl_none1(d3cl) =
+(
+d4ecl_make_node
+(loc0, D4Cnone1(d3cl))
+) where
+{
+  val loc0 = d3cl.loc((*void*))
+}
+//
+(* ****** ****** *)
+
 (* end of [xats_dynexp4.dats] *)

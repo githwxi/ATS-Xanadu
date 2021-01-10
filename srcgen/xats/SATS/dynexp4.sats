@@ -226,10 +226,10 @@ overload .type with d4exp_get_type
 //
 fun
 d4exp_get_sexp
-(d4p0: d4exp): s2exp
+(d4e0: d4exp): s2exp
 fun
 d4explst_get_sexp
-(d4ps: d4explst): s2explst
+(d4es: d4explst): s2explst
 //
 overload .sexp with d4exp_get_sexp
 //
@@ -256,6 +256,26 @@ overload fprint with fprint_d4exp
 //
 (* ****** ****** *)
 //
+datatype
+d4ecl_node =
+//
+| D4Cnone0 of ()
+| D4Cnone1 of (d3ecl)
+//
+(* ****** ****** *)
+//
+fun
+d4ecl_get_loc
+(d4cl: d4ecl): loc_t
+fun
+d4ecl_get_node
+(d4cl: d4ecl): d4ecl_node
+//
+overload .loc with d4ecl_get_loc
+overload .node with d4ecl_get_node
+//
+(* ****** ****** *)
+//
 fun
 print_d4ecl: print_type(d4ecl)
 fun
@@ -266,6 +286,15 @@ fprint_d4ecl: fprint_type(d4ecl)
 overload print with print_d4ecl
 overload prerr with prerr_d4ecl
 overload fprint with fprint_d4ecl
+//
+(* ****** ****** *)
+//
+fun d4ecl_none0(loc_t): d4ecl
+fun d4ecl_none1(d3ecl): d4ecl
+//
+fun
+d4ecl_make_node
+(loc: loc_t, node: d4ecl_node): d4ecl
 //
 (* ****** ****** *)
 
