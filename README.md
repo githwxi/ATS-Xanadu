@@ -65,4 +65,4 @@ instructions after it is officially released.
   unrelated to using ATS that can result in the executable being covered by GPLv3/LGPLv3.
 * The contributed portion (ATS/Xanadu/contrib) is released under the MIT license.
 * There is also a release under the MIT license for the C header files of the Libraries,
-  which one can, for instance, freely insert into C code generated from ATS source code.
+  which one can, for instance, freely insert into any C code generated from ATS source code.

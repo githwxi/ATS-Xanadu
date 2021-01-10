@@ -94,6 +94,8 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tcomp30.sats"
 //
 (* ****** ****** *)
+#staload "./../SATS/dynexp4.sats"
+(* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
 //
@@ -190,6 +192,8 @@ end // end of [local]
 #dynload "./lexing0_kword.dats"
 #dynload "./lexing0_util0.dats"
 //
+(* ****** ****** *)
+//
 #dynload "./staexp0.dats"
 #dynload "./dynexp0.dats"
 #dynload "./staexp0_print.dats"
@@ -206,6 +210,8 @@ end // end of [local]
 #dynload "./synread_staexp.dats"
 #dynload "./synread_dynexp.dats"
 //
+(* ****** ****** *)
+//
 #dynload "./staexp1.dats"
 #dynload "./dynexp1.dats"
 //
@@ -221,6 +227,8 @@ end // end of [local]
 #dynload "./tread01_dynexp.dats"
 //
 #dynload "./effect0.dats"
+//
+(* ****** ****** *)
 //
 #dynload "./staexp2.dats"
 #dynload "./statyp2.dats"
@@ -259,6 +267,8 @@ end // end of [local]
 #dynload "./tread12_staexp.dats"
 #dynload "./tread12_dynexp.dats"
 //
+(* ****** ****** *)
+//
 #dynload "./dynexp3.dats"
 //
 #dynload "./dynexp3_print.dats"
@@ -280,6 +290,8 @@ end // end of [local]
 #dynload "./trans3x_dynexp.dats"
 #dynload "./tread3x_dynexp.dats"
 //
+(* ****** ****** *)
+//
 #dynload "./intrep0.dats"
 #dynload "./intrep0_print.dats"
 #dynload "./intrep0_jsoniz.dats"
@@ -289,6 +301,13 @@ end // end of [local]
 #dynload "./tcomp30_util0.dats"
 #dynload "./tcomp30_statyp.dats"
 #dynload "./tcomp30_dynexp.dats"
+//
+(* ****** ****** *)
+//
+#dynload "./dynexp4.dats"
+#dynload "./dynexp4_print.dats"
+//
+(* ****** ****** *)
 //
 #dynload "./xatsopt_util0.dats"
 //
