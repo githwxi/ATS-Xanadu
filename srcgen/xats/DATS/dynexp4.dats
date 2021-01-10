@@ -65,6 +65,44 @@ LOC = "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 
+local
+//
+absimpl
+d4pat_tbox = $rec
+{ d4pat_loc= loc_t
+, d4pat_sexp= s2exp
+, d4pat_type= t2ype
+, d4pat_node= d4pat_node
+} (* end of [absimpl] *)
+//
+in(* in-of-local *)
+//
+implement
+d4pat_get_loc
+  (d4p) = d4p.d4pat_loc
+implement
+d4pat_get_node
+  (d4p) = d4p.d4pat_node
+//
+implement
+d4pat_get_sexp
+  (d4p) = d4p.d4pat_sexp
+implement
+d4pat_get_type
+  (d4p) = d4p.d4pat_type
+//
+implement
+d4pat_make_node
+( loc0
+, s2e0, t2p0, node
+) = $rec
+{ d4pat_loc= loc0
+, d4pat_sexp= s2e0
+, d4pat_type= t2p0, d4pat_node= node
+} (* d4pat_make_node *)
+//
+end // end of [local]
+
 (* ****** ****** *)
 
 (* end of [xats_dynexp4.dats] *)

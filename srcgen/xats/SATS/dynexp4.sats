@@ -126,5 +126,47 @@ d4pat_node =
 | D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)
 //
 (* ****** ****** *)
+//
+fun
+d4pat_get_loc
+(d4p0: d4pat): loc_t
+fun
+d4pat_get_node
+(d4p0: d4pat): d4pat_node
+//
+overload .loc with d4pat_get_loc
+overload .node with d4pat_get_node
+//
+(* ****** ****** *)
+//
+fun
+d4pat_get_type
+(d4p0: d4pat): t2ype
+fun
+d4patlst_get_type
+(d4ps: d4patlst): t2ypelst
+//
+overload .type with d4pat_get_type
+//
+(* ****** ****** *)
+//
+fun
+d4pat_get_sexp
+(d4p0: d4pat): s2exp
+fun
+d4patlst_get_sexp
+(d4ps: d4patlst): s2explst
+//
+overload .sexp with d4pat_get_sexp
+//
+(* ****** ****** *)
+//
+fun
+d4pat_make_node
+( loc0: loc_t
+, s2e0: s2exp
+, t2p0: t2ype, node: d4pat_node): d4pat
+//
+(* ****** ****** *)
 
 (* end of [xats_dynexp4.sats] *)
