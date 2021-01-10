@@ -164,6 +164,8 @@ intrep0_dynexp.dats \
 tcomp30_util0.dats \
 tcomp30_statyp.dats \
 tcomp30_dynexp.dats \
+dynexp4.dats \
+dynexp4_print.dats \
 xatsopt_util0.dats \
 xatsopt_main0.dats \
 ######

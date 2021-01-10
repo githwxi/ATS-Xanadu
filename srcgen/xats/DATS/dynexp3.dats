@@ -49,12 +49,14 @@ LOC = "./../SATS/locinfo.sats"
   typedef loc_t = $LOC.loc_t
 //
 (* ****** ****** *)
-
+//
 #staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/statyp2.sats"
+//
+#staload "./../SATS/dynexp2.sats"
+//
 #staload "./../SATS/dynexp3.sats"
-
+//
 (* ****** ****** *)
 
 local
