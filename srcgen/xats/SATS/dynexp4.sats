@@ -168,5 +168,97 @@ d4pat_make_node
 , t2p0: t2ype, node: d4pat_node): d4pat
 //
 (* ****** ****** *)
+//
+fun
+print_d4pat: print_type(d4pat)
+fun
+prerr_d4pat: prerr_type(d4pat)
+fun
+fprint_d4pat: fprint_type(d4pat)
+//
+overload print with print_d4pat
+overload prerr with prerr_d4pat
+overload fprint with fprint_d4pat
+//
+(* ****** ****** *)
+
+datatype
+d4exp_node =
+//
+| D4Ei00 of (int)
+| D4Eb00 of (bool)
+| D4Es00 of string
+//
+| D4Eint of (token)
+| D4Ebtf of (token)
+| D4Echr of (token)
+| D4Eflt of (token)
+| D4Estr of (token)
+//
+| D4Etop of (token)
+//
+| D4Evar of (d2var)
+
+(* ****** ****** *)
+//
+fun
+d4exp_get_loc
+(d4p0: d4exp): loc_t
+fun
+d4exp_get_node
+(d4p0: d4exp): d4exp_node
+//
+overload .loc with d4exp_get_loc
+overload .node with d4exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+d4exp_get_type
+(d4p0: d4exp): t2ype
+fun
+d4explst_get_type
+(d4ps: d4explst): t2ypelst
+//
+overload .type with d4exp_get_type
+//
+(* ****** ****** *)
+//
+fun
+d4exp_get_sexp
+(d4p0: d4exp): s2exp
+fun
+d4explst_get_sexp
+(d4ps: d4explst): s2explst
+//
+overload .sexp with d4exp_get_sexp
+//
+(* ****** ****** *)
+//
+fun
+print_d4exp: print_type(d4exp)
+fun
+prerr_d4exp: prerr_type(d4exp)
+fun
+fprint_d4exp: fprint_type(d4exp)
+//
+overload print with print_d4exp
+overload prerr with prerr_d4exp
+overload fprint with fprint_d4exp
+//
+(* ****** ****** *)
+//
+fun
+print_d4ecl: print_type(d4ecl)
+fun
+prerr_d4ecl: prerr_type(d4ecl)
+fun
+fprint_d4ecl: fprint_type(d4ecl)
+//
+overload print with print_d4ecl
+overload prerr with prerr_d4ecl
+overload fprint with fprint_d4ecl
+//
+(* ****** ****** *)
 
 (* end of [xats_dynexp4.sats] *)

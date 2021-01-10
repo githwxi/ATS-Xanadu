@@ -64,6 +64,51 @@ LOC = "./../SATS/locinfo.sats"
 #staload "./../SATS/dynexp4.sats"
 //
 (* ****** ****** *)
+//
+(*
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full1
+*)
+implement
+fprint_val<filpath> =
+$FP0.fprint_filpath_full2
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<s2cst> = fprint_s2cst
+implement
+fprint_val<s2var> = fprint_s2var
+implement
+fprint_val<s2exp> = fprint_s2exp
+//
+implement
+fprint_val<t2ype> = fprint_t2ype
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d2con> = fprint_d2con
+implement
+fprint_val<d2cst> = fprint_d2cst
+implement
+fprint_val<d2var> = fprint_d2var
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d4pat> = fprint_d4pat
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d4exp> = fprint_d4exp
+//
+(* ****** ****** *)
+
+implement
+fprint_val<d4ecl> = fprint_d4ecl
 
 (* ****** ****** *)
 
