@@ -532,8 +532,10 @@ end // end of [local]
 //
 implement
 d3ecl_none0(loc0) =
-d3ecl_make_node
-(loc0, D3Cnone0(*void*))
+(
+  d3ecl_make_node
+  (loc0, D3Cnone0(*void*))
+)
 //
 implement
 d3ecl_none1(d2cl) =

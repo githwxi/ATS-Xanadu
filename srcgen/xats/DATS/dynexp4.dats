@@ -180,8 +180,10 @@ end // end of [local]
 //
 implement
 d4ecl_none0(loc0) =
-d4ecl_make_node
-(loc0, D4Cnone0(*void*))
+(
+  d4ecl_make_node
+  (loc0, D4Cnone0(*void*))
+)
 //
 implement
 d4ecl_none1(d3cl) =
