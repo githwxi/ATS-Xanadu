@@ -32,6 +32,8 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#define ATS_DYNLOADFLAG 0
+(* ****** ****** *)
 //
 #include
 "share/atspre_staload.hats"
@@ -92,6 +94,12 @@ FS0 = "./../SATS/filsrch.sats"
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/tcomp30.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/dynexp4.sats"
+#staload "./../SATS/trans34.sats"
+#staload "./../SATS/tread34.sats"
 //
 (* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
