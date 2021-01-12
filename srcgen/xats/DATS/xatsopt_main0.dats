@@ -200,6 +200,7 @@ end // end of [local]
 //
 #dynload "./staexp0.dats"
 #dynload "./dynexp0.dats"
+//
 #dynload "./staexp0_print.dats"
 #dynload "./dynexp0_print.dats"
 //
@@ -219,6 +220,8 @@ end // end of [local]
 #dynload "./staexp1.dats"
 #dynload "./dynexp1.dats"
 //
+#dynload "./effect0.dats"
+//
 #dynload "./staexp1_print.dats"
 #dynload "./dynexp1_print.dats"
 //
@@ -230,13 +233,12 @@ end // end of [local]
 #dynload "./tread01_staexp.dats"
 #dynload "./tread01_dynexp.dats"
 //
-#dynload "./effect0.dats"
-//
 (* ****** ****** *)
 //
 #dynload "./staexp2.dats"
 #dynload "./statyp2.dats"
 #dynload "./dynexp2.dats"
+#dynload "./nmspace.dats"
 //
 #dynload "./staexp2_init0.dats"
 //
@@ -257,8 +259,6 @@ end // end of [local]
 #dynload "./dynexp2_d2var.dats"
 //
 #dynload "./dynexp2_print.dats"
-//
-#dynload "./nmspace.dats"
 //
 #dynload "./gmacro1_define.dats"
 #dynload "./dmacro2_macdef.dats"
@@ -311,12 +311,16 @@ end // end of [local]
 #dynload "./dynexp4.dats"
 #dynload "./dynexp4_print.dats"
 //
+#dynload "./trans34_envmap.dats"
 #dynload "./trans34_dynexp.dats"
 #dynload "./tread34_dynexp.dats"
 //
 (* ****** ****** *)
 //
-#dynload "./xatsopt_util0.dats"
+(*
+// #define ATS_DYNLOADFLAG 0
+// #dynload "./xatsopt_util0.dats"
+*)
 //
 (* ****** ****** *)
 implement

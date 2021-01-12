@@ -168,10 +168,10 @@ tcomp30_statyp.dats \
 tcomp30_dynexp.dats \
 dynexp4.dats \
 dynexp4_print.dats \
+trans34_envmap.dats \
 trans34_dynexp.dats \
 tread34_dynexp.dats \
-xatsopt_util0.dats \
-xatsopt_main0.dats \
+xatsopt_util0.dats xatsopt_main0.dats \
 ######
 
 OBJSATS := \
