@@ -38,6 +38,8 @@ BUILD/tread3x_sats.o : SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SAT
 BUILD/intrep0_sats.o : SATS/xbasics.sats SATS/xstamp0.sats SATS/xsymbol.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats
 BUILD/tcomp30_sats.o : SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/intrep0.sats
 BUILD/dynexp4_sats.o : SATS/xbasics.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats
+BUILD/trans34_sats.o : SATS/xlabel0.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/dynexp4.sats
+BUILD/tread34_sats.o : SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/dynexp4.sats
 BUILD/xatsopt_sats.o : SATS/dynexp0.sats SATS/dynexp1.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/intrep0.sats
 BUILD/xbasics_dats.o : SATS/xbasics.sats
 BUILD/xstamp0_dats.o : SATS/xstamp0.sats
