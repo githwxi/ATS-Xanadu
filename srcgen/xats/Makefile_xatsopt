@@ -168,6 +168,7 @@ tcomp30_statyp.dats \
 tcomp30_dynexp.dats \
 dynexp4.dats \
 dynexp4_print.dats \
+dynexp4_util0.dats \
 trans34_envmap.dats \
 trans34_dynexp.dats \
 tread34_dynexp.dats \
