@@ -94,7 +94,11 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tcomp30.sats"
 //
 (* ****** ****** *)
+//
 #staload "./../SATS/dynexp4.sats"
+#staload "./../SATS/trans34.sats"
+#staload "./../SATS/tread34.sats"
+//
 (* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
@@ -306,6 +310,9 @@ end // end of [local]
 //
 #dynload "./dynexp4.dats"
 #dynload "./dynexp4_print.dats"
+//
+#dynload "./trans34_dynexp.dats"
+#dynload "./tread34_dynexp.dats"
 //
 (* ****** ****** *)
 //
