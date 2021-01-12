@@ -76,6 +76,8 @@ tread3x.sats \
 intrep0.sats \
 tcomp30.sats \
 dynexp4.sats \
+trans34.sats \
+tread34.sats \
 xatsopt.sats \
 
 SRCDATS := \

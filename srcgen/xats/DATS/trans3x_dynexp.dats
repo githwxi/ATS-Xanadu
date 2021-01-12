@@ -205,11 +205,14 @@ t2p0 =
 t2ype_normize(t2p0)
 //
 #if(__XATSOPT_DEBUG__)
-(*
+// (*
 val () =
 println!
 ("trans3x_dexp: d3e0 = ", d3e0)
-*)
+val () =
+println!
+("trans3x_dexp: t2p0 = ", t2p0)
+// *)
 #endif//__XATSOPT_DEBUG__
 //
 in(*in-of-let*)
