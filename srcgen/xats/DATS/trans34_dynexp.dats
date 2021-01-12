@@ -80,5 +80,8 @@ implement
 fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
+implement
+fprint_val<d3exp> = fprint_d3exp
+(* ****** ****** *)
 
 (* end of [xats_trans34_dynexp.dats] *)

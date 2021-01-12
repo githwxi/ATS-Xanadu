@@ -92,6 +92,9 @@ typedef d4exp = $D4E.d4exp
 typedef d4ecl = $D4E.d4ecl
 //
 (* ****** ****** *)
+typedef d4expopt = $D4E.d4expopt
+typedef d4explst = $D4E.d4explst
+(* ****** ****** *)
 //
 absvtype
 tr34env_vtype = ptr
@@ -136,6 +139,27 @@ fun
 tr34env_pop_lams
   ( env0 : !tr34env ) : void
 //
+(* ****** ****** *)
+fun
+trans34_dexp
+( env0:
+! tr34env, d3e0: d3exp): d4exp
+(* ****** ****** *)
+fun
+trans34_dexplst
+( env0:
+! tr34env, d3es: d3explst): d4explst
+fun
+trans34_dexpopt
+( env0:
+! tr34env, opt0: d3expopt): d4expopt
+(* ****** ****** *)
+
+fun
+trans34_decl
+( env0:
+! tr34env, d3c0: d3ecl): d4ecl
+
 (* ****** ****** *)
 
 (* end of [xats_trans34.sats] *)
