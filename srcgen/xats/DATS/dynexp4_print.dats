@@ -182,7 +182,20 @@ case+ x0.node() of
 | D4Estr(tok) =>
   fprint!(out, "D4Estr(", tok, ")")
 //
+| D4Etop(tok) =>
+  fprint!(out, "D4Etop(", tok, ")")
+//
+| D4Evar(d2v) =>
+  fprint!(out, "D4Evar(", d2v, ")")
+//
+| D4Enone0() =>
+  fprint!(out, "D4Enone0(", ")")
+| D4Enone1(d3esrc) =>
+  fprint!(out, "D4Enone1(", d3esrc, ")")
+//
+(*
 | _(* rest-of-d4exp *) => fprint!(out, "D4E...(...)")
+*)
 //
 ) (* end of [fprint_d4exp] *)
 //
