@@ -719,6 +719,7 @@ datatype
 s2exp_node =
 //
 | S2Eint of (int) // integer
+| S2Ebtf of (bool) // boolean
 | S2Echr of (char) // character
 //
 | S2Estr of string // string
@@ -809,6 +810,8 @@ overload .node with s2exp_get_node
 fun
 s2exp_int(i0: int): s2exp
 fun
+s2exp_btf(b0: bool): s2exp
+fun
 s2exp_chr(c0: char): s2exp
 //
 fun
@@ -841,6 +844,8 @@ s2exp_cast
 , s2e: s2exp
 , s2t: sort2) : s2exp
 //
+(* ****** ****** *)
+//
 fun
 s2exp_apps
 ( loc0: loc_t
@@ -857,6 +862,8 @@ s2exp_app2
 ( loc0: loc_t
 , s2f0: s2exp(*fun*)
 , s2a1: s2exp, s2a2: s2exp): s2exp
+//
+(* ****** ****** *)
 //
 fun
 s2exp_any(knd: int): s2exp
@@ -992,6 +999,8 @@ labs2explst_make_list2
 //
 (* ****** ****** *)
 //
+(*
+//
 fun s2exp_sint0(): s2exp
 fun s2exp_uint0(): s2exp
 //
@@ -999,6 +1008,18 @@ fun s2exp_bool0(): s2exp
 fun s2exp_char0(): s2exp
 //
 fun s2exp_list0(s2exp): s2exp
+//
+*)
+//
+fun
+s2exp_type_sint(idx: s2exp): s2exp
+fun
+s2exp_type_uint(idx: s2exp): s2exp
+//
+fun
+s2exp_type_bool(idx: s2exp): s2exp
+fun
+s2exp_type_char(idx: s2exp): s2exp
 //
 (* ****** ****** *)
 //

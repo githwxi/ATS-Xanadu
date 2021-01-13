@@ -455,6 +455,8 @@ s2e0.node() of
 //
 | S2Eint(i0) =>
   fprint!(out, "S2Eint(", i0, ")")
+| S2Ebtf(b0) =>
+  fprint!(out, "S2Ebtf(", b0, ")")
 | S2Echr(c0) =>
   fprint!(out, "S2Echr(", c0, ")")
 //

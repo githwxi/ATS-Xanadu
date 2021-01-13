@@ -541,6 +541,14 @@ in
 end // end of [s2exp_int]
 
 implement
+s2exp_btf(b0) = let
+  val
+  s2t = the_sort2_bool
+in
+  s2exp_make_node(s2t, S2Ebtf(b0))
+end // end of [s2exp_btf]
+
+implement
 s2exp_chr(c0) = let
   val
   s2t = the_sort2_int
@@ -683,11 +691,21 @@ in
   (s2t_res, S2Eapp(s2f0, s2as))
 end // end of [s2exp_apps]
 //
+(* ****** ****** *)
+//
+implement
+s2exp_app1
+(loc0, s2f0, s2a1) =
+(
+s2exp_apps
+( loc0, s2f0, list_sing(s2a1) )
+)
 implement
 s2exp_app2
 (loc0, s2f0, s2a1, s2a2) =
 (
-  s2exp_apps(loc0, s2f0, list_pair(s2a1, s2a2))
+s2exp_apps
+(loc0, s2f0, list_pair(s2a1, s2a2))
 )
 //
 (* ****** ****** *)
@@ -876,6 +894,67 @@ in
 end // end of [else]
 //
 end // end of [s2exp_uni]
+
+(* ****** ****** *)
+
+implement
+s2exp_type_sint
+  (s2i1) = let
+//
+val
+s2t0 =
+the_sort2_type
+//
+val
+s2f0 =
+s2cstref_get_sexp
+( the_sint_ctype )
+val node =
+S2Eapp(s2f0, list_sing(s2i1))
+//
+in
+  s2exp_make_node(s2t0, node)
+end // end of [s2exp_type_sint]
+
+implement
+s2exp_type_uint
+  (s2i1) = let
+//
+val
+s2t0 =
+the_sort2_type
+//
+val
+s2f0 =
+s2cstref_get_sexp
+( the_uint_ctype )
+val node =
+S2Eapp(s2f0, list_sing(s2i1))
+//
+in
+  s2exp_make_node(s2t0, node)
+end // end of [s2exp_type_uint]
+
+(* ****** ****** *)
+
+implement
+s2exp_type_bool
+  (s2b1) = let
+//
+val
+s2t0 =
+the_sort2_type
+//
+val
+s2f0 =
+s2cstref_get_sexp
+( the_bool_ctype )
+val node =
+S2Eapp(s2f0, list_sing(s2b1))
+//
+in
+  s2exp_make_node(s2t0, node)
+end // end of [s2exp_type_bool]
 
 (* ****** ****** *)
 
