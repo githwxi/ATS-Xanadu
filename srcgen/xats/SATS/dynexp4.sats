@@ -198,7 +198,9 @@ d4exp_node =
 | D4Etop of (token)
 //
 | D4Evar of (d2var)
-
+//
+| D4Enone0 of () | D4Enone1 of (d3exp)
+//
 (* ****** ****** *)
 //
 fun
@@ -232,6 +234,11 @@ d4explst_get_sexp
 (d4es: d4explst): s2explst
 //
 overload .sexp with d4exp_get_sexp
+//
+(* ****** ****** *)
+//
+fun
+d4exp_none1(d3e0: d3exp): d4exp
 //
 (* ****** ****** *)
 //

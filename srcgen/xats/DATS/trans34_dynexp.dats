@@ -84,4 +84,56 @@ implement
 fprint_val<d3exp> = fprint_d3exp
 (* ****** ****** *)
 
+implement
+trans34_dexp
+( env0, d3e0) =
+(
+  d4exp_none1(d3e0)
+)
+(* ****** ****** *)
+//
+implement
+trans34_dexpopt
+( env0, opt0 ) =
+(
+case+ opt0 of
+| None() => None()
+| Some(d3e0) =>
+  Some(trans34_dexp(env0, d3e0))
+)
+//
+implement
+trans34_dexplst
+(  env0, d3es  ) =
+(
+list_vt2t
+(
+list_map<d3exp><d4exp>(d3es)
+)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<d3exp><d4exp>
+  (d3e0) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+val
+d4e0 = trans34_dexp(env0, d3e0)
+//
+in
+let
+prval () = $UN.cast2void(env0) in d4e0
+end
+end // list_map$fopr
+} (* end of [trans34_dexplst] *)
+//
+(* ****** ****** *)
+
 (* end of [xats_trans34_dynexp.dats] *)
