@@ -145,6 +145,22 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+d4exp_none1
+( d3e0 ) =
+d4exp_make_node
+( loc0
+, s2e0, t2p0, node) where
+{
+  val loc0 = d3e0.loc()
+  val t2p0 = d3e0.type()
+  val s2e0 =
+  the_s2exp_none0(*void*)
+  val node = D4Enone1(d3e0)
+}
+
+(* ****** ****** *)
+
 local
 
 absimpl
