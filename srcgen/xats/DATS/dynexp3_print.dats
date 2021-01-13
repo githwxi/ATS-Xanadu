@@ -55,7 +55,7 @@ FP0 = "./../SATS/filpath.sats"
 overload fprint with fprint_stamp
 //
 (* ****** ****** *)
-
+//
 #staload "./../SATS/xlabel0.sats"
 //
 #staload "./../SATS/lexing0.sats"

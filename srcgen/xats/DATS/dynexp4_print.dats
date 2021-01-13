@@ -50,6 +50,17 @@ LOC = "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/xstamp0.sats"
+overload fprint with fprint_stamp
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/xlabel0.sats"
+//
+#staload "./../SATS/lexing0.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 //
@@ -152,6 +163,24 @@ fprint_d4exp
   (out, x0) =
 (
 case+ x0.node() of
+//
+| D4Ei00(int) =>
+  fprint!(out, "D4Ei00(", int, ")")
+| D4Eb00(btf) =>
+  fprint!(out, "D4Eb00(", btf, ")")
+| D4Es00(str) =>
+  fprint!(out, "D4Es00(", str, ")")
+//
+| D4Eint(tok) =>
+  fprint!(out, "D4Eint(", tok, ")")
+| D4Ebtf(tok) =>
+  fprint!(out, "D4Ebtf(", tok, ")")
+| D4Echr(tok) =>
+  fprint!(out, "D4Echr(", tok, ")")
+| D4Eflt(tok) =>
+  fprint!(out, "D4Eflt(", tok, ")")
+| D4Estr(tok) =>
+  fprint!(out, "D4Estr(", tok, ")")
 //
 | _(* rest-of-d4exp *) => fprint!(out, "D4E...(...)")
 //
