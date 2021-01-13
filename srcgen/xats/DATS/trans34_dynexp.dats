@@ -84,12 +84,46 @@ implement
 fprint_val<d3exp> = fprint_d3exp
 (* ****** ****** *)
 
+local
+
+fun
+auxbtf
+( d3e0
+: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Eb00(btf) = d3e0.node()
+//
+val
+s2b0 = s2exp_btf(btf)
+val
+s2e0 = s2exp_type_bool(s2b0)
+//
+in
+  d4exp_make_node
+  (loc0, s2e0, t2p0, D4Eb00(btf))
+end // end of [auxbtf]
+
+in(*in-of-local*)
+
 implement
 trans34_dexp
 ( env0, d3e0) =
 (
-  d4exp_none1(d3e0)
+case+
+d3e0.node() of
+| D3Eb00 _ => auxbtf(d3e0)
+| _ (* rest-of-d3exp *) => d4exp_none1(d3e0)
 )
+
+end // end of [local]
+
 (* ****** ****** *)
 //
 implement
