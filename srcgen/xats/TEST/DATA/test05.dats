@@ -2,7 +2,7 @@
 #staload
 "prelude\
 /DATS/CATS\
-/Xint/runtime.dats"
+/Xats/basics.dats"
 (* ****** ****** *)
 
 #extern
@@ -17,9 +17,9 @@ g_mul
 else g_1()
 
 (* ****** ****** *)
-
+(*
 val res = gfact<bool>(true)
-
+*)
 (* ****** ****** *)
 
 (* end of [test05.dats] *)

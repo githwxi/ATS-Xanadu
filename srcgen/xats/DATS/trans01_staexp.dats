@@ -431,6 +431,17 @@ in
 G1Nint(token2sint(tok))
 end // end of [auxint]
 fun
+auxflt
+( flt
+: t0flt): g1nam =
+let
+val-
+T0FLTsome
+  (tok) = flt.node()
+in
+G1Nflt(token2sflt(tok))
+end // end of [auxflt]
+fun
 auxstr
 ( str
 : t0str): g1nam =
@@ -454,6 +465,8 @@ gnm0.node() of
 G0Nid0(nid) => auxnid(nid)
 |
 G0Nint(int) => auxint(int)
+|
+G0Nflt(flt) => auxflt(flt)
 |
 G0Nstr(str) => auxstr(str)
 //
@@ -572,6 +585,36 @@ in
   (g1exp_make_node(loc, G1Eint(tok)))
 end // end of [auxint]
 fun
+auxchr
+( chr
+: t0chr)
+: g1eitm = let
+//
+val loc = chr.loc()
+//
+val-
+T0CHRsome(tok) = chr.node()
+//
+in
+  FXITMatm
+  (g1exp_make_node(loc, G1Echr(tok)))
+end // end of [auxchr]
+fun
+auxflt
+( flt
+: t0flt)
+: g1eitm = let
+//
+val loc = flt.loc()
+//
+val-
+T0FLTsome(tok) = flt.node()
+//
+in
+  FXITMatm
+  (g1exp_make_node(loc, G1Eflt(tok)))
+end // end of [auxflt]
+fun
 auxstr
 ( str
 : t0str)
@@ -613,6 +656,8 @@ g0e0.node() of
 | G0Eid0(gid) => auxgid(gid)
 //
 | G0Eint(int) => auxint(int)
+| G0Echr(chr) => auxchr(chr)
+| G0Eflt(flt) => auxflt(flt)
 | G0Estr(str) => auxstr(str)
 //
 | G0Eif0

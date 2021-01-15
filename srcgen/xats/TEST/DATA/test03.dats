@@ -2,7 +2,7 @@
 #staload
 "prelude\
 /DATS/CATS\
-/Xint/runtime.dats"
+/Xats/basics.dats"
 (* ****** ****** *)
 
 (*

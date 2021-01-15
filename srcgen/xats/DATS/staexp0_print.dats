@@ -351,6 +351,12 @@ fprint!(out, "G0Nid0(", tok, ")")
 G0Nint(tok) =>
 fprint!(out, "G0Nint(", tok, ")")
 |
+G0Nchr(tok) =>
+fprint!(out, "G0Nchr(", tok, ")")
+|
+G0Nflt(tok) =>
+fprint!(out, "G0Nflt(", tok, ")")
+|
 G0Nstr(tok) =>
 fprint!(out, "G0Nstr(", tok, ")")
 |
@@ -396,6 +402,10 @@ case+ x0.node() of
 //
 | G0Eint(int) =>
   fprint!(out, "G0Eint(", int, ")")
+| G0Echr(chr) =>
+  fprint!(out, "G0Echr(", chr, ")")
+| G0Eflt(flt) =>
+  fprint!(out, "G0Eflt(", flt, ")")
 | G0Estr(str) =>
   fprint!(out, "G0Estr(", str, ")")
 //

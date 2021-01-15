@@ -97,6 +97,18 @@ G0Nint(tint) =>
   synread_t0int(tint)
 }
 |
+G0Nchr(tchr) =>
+{
+  val () =
+  synread_t0chr(tchr)
+}
+|
+G0Nflt(tflt) =>
+{
+  val () =
+  synread_t0flt(tflt)
+}
+|
 G0Nstr(tstr) =>
 {
   val () =
@@ -187,6 +199,18 @@ G0Eint(tint) =>
 {
   val () =
   synread_t0int(tint)
+}
+|
+G0Echr(tchr) =>
+{
+  val () =
+  synread_t0chr(tchr)
+}
+|
+G0Eflt(tflt) =>
+{
+  val () =
+  synread_t0flt(tflt)
 }
 |
 G0Estr(tstr) =>
