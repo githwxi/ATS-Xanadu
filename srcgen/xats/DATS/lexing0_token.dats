@@ -823,6 +823,12 @@ implement
 tnode_insert
 (name, node) = let
 //
+(*
+val () =
+println!
+("tnode_insert: name = ", name)
+*)
+//
 var res: itm?
 val tbl =
 $UN.castvwtp0{hashtbl}(theHashtbl)
