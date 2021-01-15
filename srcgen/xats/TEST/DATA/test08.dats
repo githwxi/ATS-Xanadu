@@ -2,11 +2,11 @@
 #staload
 "prelude\
 /DATS/CATS\
-/Xint/runtime.dats"
+/Xats/basics.dats"
 (* ****** ****** *)
 
-#define Int 100
-#define Flt 100.0
+#define Int 0
+#define Flt 0.0
 
 #define CHRNIL ''
 #define STRNIL ""
@@ -16,6 +16,8 @@ sing(x) cons(x, nil())
 #define
 sing_vt(x) cons_vt(x, nil_vt())
 
+(* ****** ****** *)
+////
 #defrec
 power(x, n) =
 $if

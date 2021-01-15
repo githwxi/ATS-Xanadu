@@ -62,6 +62,7 @@ datatype g1nam =
 | G1Nid0 of sym_t
 //
 | G1Nint of (int)
+| G1Nflt of double
 | G1Nstr of string
 //
 | G1Nlist of (g1namlst)
@@ -104,6 +105,8 @@ g1exp_node =
 | G1Eid0 of (sym_t)
 //
 | G1Eint of (token)
+| G1Echr of (token)
+| G1Eflt of (token)
 | G1Estr of (token)
 //
 | G1Eif0 of

@@ -678,6 +678,15 @@ end // end of [t_g0nid]
     err := e0;
     g0nam_make_node(loc, G0Nint(x0))
   end // end of [t_t0int]
+| _ when t_t0flt(tnd) =>
+  let
+    val x0 =
+    p_t0flt(buf, err)
+    val loc = x0.loc()
+  in
+    err := e0;
+    g0nam_make_node(loc, G0Nflt(x0))
+  end // end of [t_t0flt]
 | _ when t_t0str(tnd) =>
   let
     val x0 =
@@ -868,6 +877,28 @@ in
   err := e0;
   g0exp_make_node(loc, G0Eint(i0))
 end // end of [t_t0int]
+//
+|
+_ when t_t0chr(tnd) =>
+let
+  val i0 =
+  p_t0chr(buf, err)
+  val loc = i0.loc()
+in
+  err := e0;
+  g0exp_make_node(loc, G0Echr(i0))
+end // end of [t_t0chr]
+//
+|
+_ when t_t0flt(tnd) =>
+let
+  val i0 =
+  p_t0flt(buf, err)
+  val loc = i0.loc()
+in
+  err := e0;
+  g0exp_make_node(loc, G0Eflt(i0))
+end // end of [t_t0flt]
 //
 | _ when t_t0str(tnd) =>
   let

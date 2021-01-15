@@ -439,7 +439,10 @@ datatype
 g0nam_node =
 //
 | G0Nid0 of (g0nid)
+//
 | G0Nint of (t0int)
+| G0Nchr of (t0chr)
+| G0Nflt of (t0flt)
 | G0Nstr of (t0str)
 //
 | G0Nlist of
@@ -478,6 +481,8 @@ g0exp_node =
 | G0Eid0 of (g0eid)
 //
 | G0Eint of (t0int)
+| G0Echr of (t0chr)
+| G0Eflt of (t0flt)
 | G0Estr of (t0str)
 //
 | G0Eapps of g0explst
