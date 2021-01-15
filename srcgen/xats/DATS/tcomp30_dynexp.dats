@@ -1577,10 +1577,14 @@ D3Elam
 ( knd
 , f3as, res1
 , arrw, body) = d3e0.node()
+//
 val
-hfas = tcomp30_farglst(f3as)
-val body = tcomp30_dexp(body)
-}
+hfas =
+tcomp30_farglst(f3as)
+val
+body = tcomp30_dexp(body)
+//
+} (* where *)
 //
 in
   h0exp_make_node(loc0, h0t0, hend)

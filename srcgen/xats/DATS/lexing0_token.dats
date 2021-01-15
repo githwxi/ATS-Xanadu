@@ -324,6 +324,11 @@ case+ tnd of
 | T_WITHTYPE(srt) =>
   fprint!(out, "WITHTYPE(", srt, ")")
 //
+| T_DLR_EXISTS() =>
+  fprint( out, "$EXSITS" )
+| T_DLR_EXNAME() =>
+  fprint( out, "$EXNAME" )
+//
 | T_SRP_THEN() =>
   fprint!(out, "#THEN(", ")")
 | T_SRP_ELSE() =>
@@ -344,7 +349,6 @@ case+ tnd of
 //
 | T_SRP_STATIC() => fprint(out, "#STATIC")
 | T_SRP_EXTERN() => fprint(out, "#EXTERN")
-| T_DLR_EXNAME() => fprint(out, "$EXNAME")
 //
 | T_SRP_DEFINE() => fprint(out, "#DEFINE")
 | T_SRP_MACDEF() => fprint(out, "#MACDEF")
@@ -600,6 +604,11 @@ case+ tnd of
 | T_WITHTYPE(knd) =>
   fprint!(out, "withtype(", knd, ")")
 //
+| T_DLR_EXISTS() =>
+  fprint( out, "$exists" )
+| T_DLR_EXNAME() =>
+  fprint( out, "$exname" )
+//
 | T_SRP_THEN() =>
   fprint!(out, "#then(", ")")
 | T_SRP_ELSE() =>
@@ -620,8 +629,6 @@ case+ tnd of
 //
 | T_SRP_STATIC() => fprint(out, "#static")
 | T_SRP_EXTERN() => fprint(out, "#extern")
-| T_DLR_EXNAME() => fprint(out, "$exname")
-//
 //
 | T_SRP_DEFINE() => fprint!(out, "#define")
 | T_SRP_MACDEF() => fprint!(out, "#macdef")

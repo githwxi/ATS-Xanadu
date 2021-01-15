@@ -576,16 +576,22 @@ d1exp_node =
 //
 | D1Etry0 of
   ( token(*TRY*)
-  , d1exp(*value*), d1claulst(*clauses*))
+  , d1exp(*value*), d1claulst(*clauses*) )
   // D1Etry0
 //
 | D1Eanno of
   ( d1exp
-  , s1exp(*anno*)) // HX: type-annotation
+  , s1exp(*anno*) ) // HX: type-annotation
 //
 | D1Equal of
   ( token(*qual*)
-  , d1exp(*deid*)) // HX: qualified expression
+  , d1exp(*deid*) ) // HX: qualified expression
+//
+(*
+|
+D1Eexist of // HX-2021-01-14: for
+(s1explstlst, d1exp) // existential introduction
+*)
 //
 | D1Eexname of (g1nam) // HX: for specifying names
 //

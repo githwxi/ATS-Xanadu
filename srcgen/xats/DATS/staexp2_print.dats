@@ -86,6 +86,13 @@ fprint_val<s2var> = fprint_s2var
 implement
 fprint_val<s2txt> = fprint_s2txt
 
+(* ****** ****** *)
+
+implement
+fprint_val<t2ype> = fprint_t2ype
+
+(* ****** ****** *)
+
 implement
 fprint_val<s2exp> = fprint_s2exp
 (*
@@ -568,6 +575,9 @@ s2e0.node() of
   fprint!
   ( out, "S2Etyrec("
   , knd, "; ", npf, "; ", ls2es, ")")
+//
+| S2Et2ype(t2p1) =>
+  fprint!(out, "S2Et2ype(", t2p1, ")")
 //
 | S2Etyext(tnm1, s2es) =>
   fprint!

@@ -736,7 +736,9 @@ let
 val+
 F3UNDECL(rcd) = f3d0
 in
-  if (d2c0 = rcd.d2c) then true else false
+  if
+  (d2c0 = rcd.d2c)
+  then true else false
 end
 fun
 auxf3ds
@@ -746,7 +748,9 @@ auxf3ds
 case+ f3ds of
 | list_nil() => false
 | list_cons(f3d0, f3ds) =>
-  if auxf3d0(f3d0) then true else auxf3ds(f3ds)
+  if
+  auxf3d0(f3d0)
+  then true else auxf3ds(f3ds)
 )
 } (* D3Cfundecl *)
 |

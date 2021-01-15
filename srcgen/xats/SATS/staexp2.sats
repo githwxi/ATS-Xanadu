@@ -775,6 +775,9 @@ s2exp_node =
 | S2Elist of s2explst // HX: temporary use
 *)
 //
+// HX-2021-01: for lifting from
+| S2Et2ype of (t2ype) // [t2ype] to [s2exp]
+//
 | S2Etyext of
   (string(*name*), s2explst) (* external *)
 //
