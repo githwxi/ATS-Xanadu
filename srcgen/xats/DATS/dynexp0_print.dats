@@ -606,6 +606,9 @@ case+ x0.node() of
 | D0Enone1(tok) => fprint!(out, "D0Enone1(", tok, ")")
 //
 | D0Eexname(g0e) => fprint!(out, "D0Eexname(", g0e, ")")
+| D0Eexists
+  (tok0, sqas, d0e1) =>
+  fprint!(out, "D0Eexists(", tok0, "; ", sqas, "; ", d0e1, ")")
 //
 ) (* end of [fprint_d0exp] *)
 

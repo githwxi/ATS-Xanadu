@@ -1336,6 +1336,12 @@ and
 p_d0exp_ELSE: parser(d0exp_ELSE)
 //
 (* ****** ****** *)
+extern
+fun
+p_D0Esqarg: parser(d0exp)
+and
+p_D0Esqargseq: parser(d0explst)
+(* ****** ****** *)
 //
 extern
 fun
@@ -1993,8 +1999,7 @@ end // end of [T_OP_par]
     end // end of [val]
   in
     d0exp_make_node
-      (loc_res, D0Edtsel(tok, lab, arg))
-    // d0exp_make_node
+    (loc_res, D0Edtsel(tok, lab, arg))
   end // end of [T_DOT]
 //
 | T_LBRACK() => let
@@ -2003,12 +2008,17 @@ end // end of [T_OP_par]
       p_d0expseq_COMMA(buf, err)
     val tbeg = tok
     val tend = p_RBRACK(buf, err)
-    val loc_res = tbeg.loc()+tend.loc()
   in
     err := e0;
-    d0exp_make_node
-      (loc_res, D0Ebrack(tbeg, d0es, tend))
-    // end of [d0exp_make_node]
+    let
+      val
+      loc_res =
+      tbeg.loc()+tend.loc()
+    in
+      d0exp_make_node
+      ( loc_res
+      , D0Ebrack(tbeg, d0es, tend) )
+    end
   end // end of [T_LBRACK]
 //
 | T_IDENT_qual _ => let
@@ -2017,32 +2027,55 @@ end // end of [T_OP_par]
   in
     err := e0;
     d0exp_make_node
-    (loc_res, D0Equal(tok, d0e)) where
+    ( loc_res
+    , D0Equal(tok, d0e)) where
     {
       val loc_res = tok.loc()+d0e.loc()
     }
   end // end of [T_IDENT_qual]
 //
-| T_DLR_EXNAME _ => let
-    val () = buf.incby1()
-    val gnm = p_g0nam(buf, err)
-  in
-    err := e0;
-    d0exp_make_node
-    ( loc_res, D0Eexname(gnm) ) where
-    {
-      val loc_res = tok.loc()+gnm.loc()
-    }
-  end
+|
+T_DLR_EXNAME _ => let
+  val () = buf.incby1()
+  val gnm = p_g0nam(buf, err)
+in
+  err := e0;
+  d0exp_make_node
+  ( loc_res, D0Eexname(gnm) ) where
+  {
+    val loc_res = tok.loc()+gnm.loc()
+  }
+end // end of [T_DLR_EXNAME]
 //
-| _ (* error *) =>
+|
+T_DLR_EXISTS _ => let
+  val () = buf.incby1()
+  val sqs =
+    p_D0Esqargseq(buf, err)
+  val d0e = p_atmd0exp(buf, err)
+in
+  err := e0;
+  d0exp_make_node
+  ( loc_res
+  , D0Eexists(tok, sqs, d0e)) where
+  {
+    val loc_res = tok.loc()+d0e.loc()
+  }
+end // end of [T_DLR_EXISTS]
+//
+| _ (* error-processing *) =>
   let
-    val () = (err := e0 + 1)
+    val loc = tok.loc()
   in
-    d0exp_make_node(tok.loc(), D0Enone1(tok))
-  end // HX: indicating a parsing error
+  let
+    val
+    ((*void*)) = (err := e0 + 1)
+  in
+    d0exp_make_node(loc, D0Enone1(tok))
+  end
+  end // HX: indication of a parsing error
 //
-end // end of [p_atmd0exp]
+end (*end-of-let*) // end of [ p_atmd0exp ]
 
 (* ****** ****** *)
 
@@ -2051,24 +2084,44 @@ p_appd0exp
   (buf, err) = let
 //
 val
-d0e0 = p_atmd0exp(buf, err)
+d0e0 =
+p_atmd0exp(buf, err)
 val
-d0es = p_atmd0expseq(buf, err)
+d0es =
+p_atmd0expseq(buf, err)
 //
 in
 //
 case+ d0es of
-| list_nil() => d0e0
-| list_cons _ => let
-    val d0e1 = list_last(d0es)
-    val loc0 = d0e0.loc() + d0e1.loc()
-  in
-    d0exp_make_node
-      (loc0, D0Eapps(list_cons(d0e0, d0es)))
-    // d0exp_make_node
-  end // end of [list_cons]
+|
+list_nil() => d0e0
+|
+list_cons _ => let
+  val
+  d0e1 =
+  list_last(d0es)
+  val
+  loc0 =
+  (d0e0.loc() + d0e1.loc())
+in
+  d0exp_make_node
+  ( loc0
+  , D0Eapps(list_cons(d0e0, d0es)))
+end // end of [list_cons]
 //
 end // end of [p_appd0exp]
+
+(* ****** ****** *)
+
+implement
+p_atmd0expseq
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{d0exp}(buf, err, p_atmd0exp))
+//
+) (* end of [p_atmd0expseq] *)
 
 (* ****** ****** *)
 
@@ -2083,18 +2136,20 @@ in
 //
 case+
 tok.node() of
-| T_THEN() => let
-    val () =
-      buf.incby1()
-    val d0e =
-      p_d0exp(buf, err)
-  in
-    err := e0; d0exp_THEN(tok, d0e)
-  end // end of [T_THEN]
-| _(*non-THEN*) =>
-  ( // HX-2018-09-25: error
-    d0exp_THEN(tok, p_d0exp(buf, err))
-  ) (* end of [non-THEN] *)
+|
+T_THEN() => let
+  val () =
+    buf.incby1()
+  val d0e =
+    p_d0exp(buf, err)
+in
+  err := e0; d0exp_THEN(tok, d0e)
+end // end of [T_THEN]
+|
+_(*non-THEN*) =>
+( // HX-2018-09-25: error
+  d0exp_THEN(tok, p_d0exp(buf, err))
+) (* end of [non-THEN] *)
 //
 end // end of [p_d0exp_THEN]
 
@@ -2111,32 +2166,73 @@ in
 //
 case+
 tok.node() of
-| T_ELSE() => let
-    val () =
-      buf.incby1()
-    val d0e =
-      p_d0exp(buf, err)
-  in
-    err := e0; d0exp_ELSEsome(tok, d0e)
-  end // end of [T_THEN]
-| _(*non-ELSE*) =>
-  (
-    d0exp_ELSEnone((*void*)) // HX: ELSE-less
-  )
+|
+T_ELSE() => let
+  val () =
+    buf.incby1()
+  val d0e =
+    p_d0exp(buf, err)
+in
+  err := e0; d0exp_ELSEsome(tok, d0e)
+end // end of [T_THEN]
+|
+_(*non-ELSE*) =>
+(
+  d0exp_ELSEnone((*void*)) // HX: ELSE-less
+)
 //
 end // end of [p_d0exp_ELSE]
 
 (* ****** ****** *)
 
 implement
-p_atmd0expseq
+p_D0Esqarg
+  (buf, err) = let
+//
+val e0 = err
+val tok = buf.get0()
+//
+in
+//
+case+
+tok.node() of
+//
+|
+T_LBRACE() => let
+  val () = buf.incby1()
+  val s0es =
+    p_s0expseq_COMMA(buf, err)
+  val tbeg = tok
+  val tend = p_RBRACE(buf, err)
+in
+  err := e0;
+  d0exp_make_node
+  ( loc_res
+  , D0Esqarg(tbeg, s0es, tend)) where
+  {
+    val loc_res = tbeg.loc()+tend.loc()
+  }
+end // end of [T_LBRACE]
+//
+|
+_(*non-T_LBRACE*) =>
+let
+  val () = (err := e0 + 1)
+in
+d0exp_make_node(tok.loc(), D0Enone1(tok))
+end // HX: indicating a parsing error
+//
+end // end of [p_D0Esqarg]
+
+implement
+p_D0Esqargseq
   (buf, err) =
 (
 //
 list_vt2t
-(pstar_fun{d0exp}(buf, err, p_atmd0exp))
+( pstar_fun{d0exp}(buf, err, p_D0Esqarg) )
 //
-) (* end of [p_atmd0expseq] *)
+) (* end of [p_D0Esqargseq] *)
 
 (* ****** ****** *)
 

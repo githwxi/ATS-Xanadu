@@ -199,6 +199,13 @@ d4exp_node =
 //
 | D4Evar of (d2var)
 //
+(*
+| D4Eexist1 of
+  (s2explst, d4exp)
+| D4Eopenas of
+  (s2varlst, s2explst, d4exp)
+*)
+//
 | D4Enone0 of () | D4Enone1 of (d3exp)
 //
 (* ****** ****** *)

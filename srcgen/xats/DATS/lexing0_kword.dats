@@ -424,16 +424,19 @@ val () = myins("datavwtp", T_DATAVWTP_)
 val () = myins("datavtype", T_DATAVTYPE_)
 *)
 //
+val () = myins("with", T_WITH)
+val () = myins("withtype", T_WITHTYPE_)
+val () = myins("withprop", T_WITHPROP_)
+val () = myins("withview", T_WITHVIEW_)
+val () = myins("withvwtp", T_WITHVWTP_)
 (*
-//
-val () = myins("macdef")
-val () = myins("macrodef")
-//
+val () = myins("withvtype", T_WITHVTYPE_)
 *)
 //
 (*
 //
-val () = myins("with")
+val () = myins("macdef", T_MACDEF)
+val () = myins("macrodef", T_MACRODEF)
 //
 *)
 //
@@ -447,25 +450,29 @@ val () = myins("$rec_vt", T_RECORD4_)
 //
 (*
 //
-val () = myins("$list")
-val () = myins("$list_t")
-val () = myins("$list_vt")
+val () =
+myins("$list", T_DLR_list)
+val () =
+myins("$list_t", T_DLR_list_t)
+val () =
+myins("$list_vt", T_DLR_list_vt)
 //
-val () = myins("$raise")
+val () =
+myins("$raise", T_DLR_raise)
 //
-val () = myins("$delay")
-val () = myins("$delay_t")
-val () = myins("$delay_vt")
+val () =
+myins("$delay", T_DLR_delay)
+val () =
+myins("$delay_t", T_DLR_delay_t)
+val () =
+myins("$delay_vt", T_DLR_delay_vt)
 //
 *)
 //
-val () = myins("withtype", T_WITHTYPE_)
-val () = myins("withprop", T_WITHPROP_)
-val () = myins("withview", T_WITHVIEW_)
-val () = myins("withvwtp", T_WITHVWTP_)
-(*
-val () = myins("withvtype", T_WITHVTYPE_)
-*)
+//
+val () = myins("$exists", T_DLR_EXISTS)
+val () = myins("$exname", T_DLR_EXNAME)
+//
 //
 val () =
   myins("#if", T_SRP_IFEXP_)
@@ -500,7 +507,6 @@ val () = myins("#stacst", T_SRP_STACST)
 //
 val () = myins("#static", T_SRP_STATIC)
 val () = myins("#extern", T_SRP_EXTERN)
-val () = myins("$exname", T_DLR_EXNAME)
 //
 val () = myins("#define", T_SRP_DEFINE)
 val () = myins("#macdef", T_SRP_MACDEF)
