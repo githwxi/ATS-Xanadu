@@ -1549,7 +1549,21 @@ d0e0.node() of
   val
   d1e0 = d1exp_make_node(loc0, D1Eexname(gnm1))
   }
-  ) // end of [D0Eexname]
+  ) (* end of [D0Eexname] *)
+//
+| D0Eexists
+  (tok0, sqas, d0e1) =>
+  let
+  val sqas =
+    trans01_dexplst(sqas)
+  // end of [val]
+  val d1e1 = trans01_dexp(d0e1)
+  val
+  d1e0 =
+  d1exp_make_node
+  ( loc0
+  , D1Eexists(tok0, sqas, d1e1)) in FXITMatm(d1e0)
+  end (*let*) // end of [D0Eexists]
 //
 end (* end of [auxitm] *)
 

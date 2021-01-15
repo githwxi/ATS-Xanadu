@@ -493,6 +493,17 @@ d0e0.node() of
   {
     val () = synread_g0nam(exname)
   }
+| D0Eexists
+  (tok0, sqas, d0e1) =>
+  {
+(*
+    val () =
+    synread_DLR_EXISTS(tok0)
+*)
+    val () =
+    synread_d0explst(sqas)
+    val () = synread_d0exp(d0e1)
+  }
 //
 | _(* rest-of-d0exp *) =>
   (
