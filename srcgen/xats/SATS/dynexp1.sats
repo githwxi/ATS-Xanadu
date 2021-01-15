@@ -594,6 +594,8 @@ D1Eexist of // HX-2021-01-14: for
 *)
 //
 | D1Eexname of (g1nam) // HX: for specifying names
+| D1Eexists of // HX-2021-01-14: $exist{..}..{..}
+  (token, d1explst(*D1Esqarglst*), d1exp) // (d1exp)
 //
 // end of [d1exp_node]
 //
