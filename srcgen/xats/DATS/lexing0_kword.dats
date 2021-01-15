@@ -424,7 +424,9 @@ val () = myins("datavwtp", T_DATAVWTP_)
 val () = myins("datavtype", T_DATAVTYPE_)
 *)
 //
+(*
 val () = myins("with", T_WITH)
+*)
 val () = myins("withtype", T_WITHTYPE_)
 val () = myins("withprop", T_WITHPROP_)
 val () = myins("withview", T_WITHVIEW_)
