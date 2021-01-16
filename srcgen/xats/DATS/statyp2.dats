@@ -593,6 +593,7 @@ case+ s2vs of
     t2ype_make_node(s2t0, T2Pexi(s2vs, body))
   end // end of [list_cons]
 )
+//
 implement
 t2ype_uni
 (s2vs, body) =
