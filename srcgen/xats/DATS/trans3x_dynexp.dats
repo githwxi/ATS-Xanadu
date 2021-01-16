@@ -508,6 +508,21 @@ in
 end // end of [ D3Eanno ]
 //
 |
+D3Eexist1
+( s2es(*wits*)
+, d3e1(*packed*)) =>
+let
+//
+val d3e1 =
+trans3x_dexp(env0, d3e1)
+//
+val dend = D3Eexist1(s2es, d3e1)
+//
+in
+  d3exp_make_node(loc0, t2p0, dend)
+end // end of [ D3Eexist1 ]
+//
+|
 dend(*else*) =>
 let
 val d3e0 =

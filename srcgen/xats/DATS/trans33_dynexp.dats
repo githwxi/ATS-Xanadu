@@ -1950,12 +1950,68 @@ end // end of [aux_anno]
 
 (* ****** ****** *)
 
+fun
+aux_exist1
+( env0:
+! abstenv
+, d3e0: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+#if(__XATSOPT_DEBUG__)
+// (*
+val () =
+println!
+("aux_exist1: d3e0 = ", d3e0)
+val () =
+println!
+("aux_exist1: t2p0 = ", t2p0)
+// *)
+#endif//__XATSOPT_DEBUG__
+//
+val-
+D3Eexist1
+(s2es, d3e1) = d3e0.node()
+//
+val d3e1 =
+trans33_dexp_dntp(env0, d3e1, t2p0)
+//
+in
+d33exp_make_node(loc0, t2p0, D3Eexist1(s2es, d3e1))
+end // end of [aux_exist1]
+
+(* ****** ****** *)
+
 (*
 fun
 aux_tcast
 ( env0:
 ! abstenv
-, d3e0: d3exp): d3exp = let
+, d3e0
+: d3exp ): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Elcast
+(d3e1, lab2) = d3e0.node()
+in
+  ... ...
+end // end of [aux_lcast]
+*)
+
+(* ****** ****** *)
+
+(*
+fun
+aux_tcast
+( env0:
+! abstenv
+, d3e0
+: d3exp ): d3exp = let
 //
 val
 loc0 = d3e0.loc()
@@ -2075,20 +2131,22 @@ D3Ecase _ => aux_case(env0, d3e0)
 | D3Elazy _ => aux_lazy(env0, d3e0)
 | D3Ellazy _ => aux_llazy(env0, d3e0)
 //
-| D3Eanno
-  (d3e1, s2e2) => aux_anno(env0, d3e0)
+| D3Eanno _ => aux_anno(env0, d3e0)
 //
-| D3Elcast
-  (d3e1, lab2) =>
-  let // HX: for abstype-handling!
-    val
-    d3e1 =
-    trans33_dexp(env0, d3e1)
-    val
-    de30 =
-    d33exp_proj_up
-    (loc0, env0, d3e1, lab2) in d3e0
-  end // end of [D3Elcast]
+| D3Eexist1 _ => aux_exist1(env0, d3e0)
+//
+|
+D3Elcast
+(d3e1, lab2) =>
+let // HX: for abstype-handling!
+  val
+  d3e1 =
+  trans33_dexp(env0, d3e1)
+  val
+  de30 =
+  d33exp_proj_up
+  (loc0, env0, d3e1, lab2) in d3e0
+end // end of [D3Elcast]
 //
 |
 D3Etcast

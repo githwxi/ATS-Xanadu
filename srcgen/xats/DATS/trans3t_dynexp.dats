@@ -635,6 +635,13 @@ d3e0.node() of
   in
     d3exp_make_node(loc0, t2p0, D3Eanno(d3e1, s2e2))
   end
+| D3Eexist1(s2es, d3e1) =>
+  let
+    val d3e1 =
+    trans3t_dexp(env0, d3e1)
+  in
+    d3exp_make_node(loc0, t2p0, D3Eexist1(s2es, d3e1))
+  end
 //
 | D3Elcast(d3e1, lab2) =>
   let
@@ -646,6 +653,7 @@ d3e0.node() of
 (*
 | D3Elcast(d3e1, lab2) => d3e0 (* HX: lab2: missing label *)
 *)
+//
 | D3Etcast(d3e1, t2p2) =>
   let
     val d3e1 =
