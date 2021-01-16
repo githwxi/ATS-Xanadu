@@ -2046,6 +2046,10 @@ D3Eassgn _ => aux_assgn(d3e0)
 D3Eanno
 (d3e1, _) => tcomp30_dexp(d3e1)
 |
+D3Eexist1
+(_, d3e1) => tcomp30_dexp(d3e1)
+//
+|
 D3Enone0 _ =>
 let
 //

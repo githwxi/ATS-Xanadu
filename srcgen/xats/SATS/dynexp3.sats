@@ -472,11 +472,11 @@ for the meaning of knd
 //
 | D3Eanno of (d3exp, s2exp(*anno*))
 //
-| D3Elcast of (d3exp, label(*given*))
-| D3Etcast of (d3exp, t2ype(*given*))
-//
 | D3Eexist1 of
   (s2explst(*wits*), d3exp(*packed*))
+//
+| D3Elcast of (d3exp, label(*given*))
+| D3Etcast of (d3exp, t2ype(*given*))
 //
 | D3Enone0 of ()
 | D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
