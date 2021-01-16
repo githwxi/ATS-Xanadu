@@ -624,6 +624,11 @@ x0.node() of
   ( out
   , "D3Etcast(", d3e1, "; ", t2p2, ")")
 //
+| D3Eexist1(s2es, d3e1) =>
+  fprint!
+  ( out
+  , "D3Eexist1(", s2es, "; ", d3e1, ")")
+//
 | D3Enone0() =>
   fprint!(out, "D3Enone0(", ")")
 | D3Enone1(d2esrc) =>

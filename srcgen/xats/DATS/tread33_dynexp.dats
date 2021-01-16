@@ -670,6 +670,9 @@ d3e0.node() of
   ( d3e1, s2e2 ) =>
   {
     val () = tread33_d3exp(d3e1)
+(*
+    val () = tread33_s2exp(s2e2)
+*)
   }
 //
 | D3Elcast(d3e1, lab2) =>
@@ -682,6 +685,16 @@ d3e0.node() of
   {
     val () =
     tread33_d3exp_D3Etcast(d3e0)
+  }
+//
+| D3Eexist1(s2es, d3e1) =>
+  {
+(*
+    val () =
+      tread33_s2explst(s2es)
+    // end of [val]
+*)
+    val () = tread33_d3exp(d3e1)
   }
 //
 | D3Enone0( ) => ((*void*))
