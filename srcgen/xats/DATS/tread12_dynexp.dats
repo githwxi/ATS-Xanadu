@@ -431,16 +431,28 @@ val () = tread12_d2claulst(dcls)
   {
     val () = tread12_d2exp(d2e1)
   }
-| D2Ellazy(d2e1, d2es) =>
+| D2Ellazy
+  (d2e1, d2es(*frees*)) =>
   {
-    val () = tread12_d2exp(d2e1)
-    val () = tread12_d2explst(d2es)
+    val () =
+      tread12_d2exp(d2e1)
+    val () =
+      tread12_d2explst(d2es)
+    // end of [val]
   }
 //
 | D2Eanno(d2e1, s2e2) =>
   {
     val () = tread12_d2exp(d2e1)
     val () = tread12_s2exp(s2e2)
+  }
+//
+| D2Eexist1(s2es, d2e1) =>
+  {
+    val () =
+      tread12_s2explst(s2es)
+    // end of [val]
+    val () = tread12_d2exp(d2e1)
   }
 //
 | D2Enone0() => ((*void*))

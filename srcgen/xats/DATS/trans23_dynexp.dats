@@ -1980,8 +1980,31 @@ trans23_dexp_dntp(d2e1, t2p2)
 //
 in
 d23exp_make_node
-(loc0, d3e1.type(), D3Eanno(d3e1, s2e2))
+( loc0
+, d3e1.type(), D3Eanno(d3e1, s2e2))
 end // end of [aux_anno]
+
+(* ****** ****** *)
+
+fun
+aux_exist1
+( d2e0
+: d2exp): d3exp =
+let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Eexist1
+(s2es, d2e1) = d2e0.node()
+//
+val d3e1 = trans23_dexp(d2e1)
+//
+in
+d23exp_make_node
+( loc0
+, d3e1.type(), D3Eexist1(s2es, d3e1))
+end // end of [aux_exist1]
 
 (* ****** ****** *)
 
@@ -2084,6 +2107,10 @@ d2e0.node() of
 | D2Eanno
     (d2e1, s2e2) => aux_anno(d2e0)
   // type-annotation ascription
+//
+| D2Eexist1
+    (s2es, d2e1) => aux_exist1(d2e0)
+  // HX-2021-01-15: existentially packing
 //
 | _ (*rest-of-d2exp*) => d3exp_none1_0(d2e0)
 //
