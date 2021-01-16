@@ -2883,6 +2883,55 @@ end // end of [aux_qual0]
 
 (* ****** ****** *)
 
+fun
+aux_exists
+( d1e0
+: d1exp): d2exp =
+(
+auxlst
+( sqas
+, trans12_dexp(d1e1))
+) where
+{
+//
+fun
+auxlst
+( sqas
+: d1explst
+, d2e1: d2exp): d2exp =
+(
+case+ sqas of
+|
+list_nil() => d2e1
+|
+list_cons
+(s1qa, sqas) =>
+let
+val-
+D1Esqarg
+(s1es) = s1qa.node()
+val
+s2es =
+trans12_sexplst(s1es)
+val
+loc1 =
+s1qa.loc() + d2e1.loc()
+val
+d2e1 = auxlst(sqas, d2e1)
+in
+d2exp_make_node
+(loc1, D2Eexist1(s2es, d2e1))
+end (*let*) // [list_cons]
+)
+//
+val-
+D1Eexists
+(tok0, sqas, d1e1) = d1e0.node()
+//
+} (*where*) // end of [aux_exists]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -3050,6 +3099,9 @@ d1e0.node() of
 //
 | D1Equal
   (tok0, d1e1) => aux_qual0(d1e0)
+//
+| D1Eexists
+  (tok0, sqas, d1e1) => aux_exists(d1e0)
 //
 | _(*rest-of-d1exp*) => d2exp_none1(d1e0)
 //

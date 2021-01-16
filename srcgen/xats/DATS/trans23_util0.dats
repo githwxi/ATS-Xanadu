@@ -1449,7 +1449,7 @@ auxmain
 //
 val t2p0 = whnfize(t2p0)
 //
-in
+in(*in-of-let*)
 //
 case+
 t2p0.node() of

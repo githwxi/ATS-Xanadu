@@ -875,7 +875,13 @@ d2exp_node =
 | D2Eanno of
   (d2exp(*applst*), s2exp(*type*))
 //
-| D2Eg1mac of (g1mac) // HX: error!
+|
+D2Eexist1 of
+(s2explst(*wits*), d2exp(*packed*))
+//
+|
+D2Eg1mac of
+(g1mac(*unknown*))// HX: macro error!
 //
 | D2Enone0 of () | D2Enone1 of (d1exp)
 //
