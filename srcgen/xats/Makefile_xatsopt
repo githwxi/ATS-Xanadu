@@ -14,10 +14,13 @@ MVF=mv -f
 RMF=rm -f
 
 ######
-
+#
 PATSCC=$(PATSHOME)/bin/patscc
 PATSOPT=$(PATSHOME)/bin/patsopt
-
+#
+# PATSOPT=\
+# $(PATSHOME)/bin/patsopt --gline
+#
 ######
 #
 CFLAGS=
@@ -123,6 +126,7 @@ staexp2.dats \
 statyp2.dats \
 dynexp2.dats \
 staexp2_init0.dats \
+statyp2_init0.dats \
 staexp2_util1.dats \
 staexp2_util2.dats \
 staexp2_s2cst.dats \

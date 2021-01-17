@@ -273,7 +273,9 @@ in
 case+ xs of
 |
 list_nil() =>
-let val () = g_free(ys) in !xss end
+let
+  val () = g_free(ys) in !xss
+end
 |
 list_cons(x1, xs) =>
 let

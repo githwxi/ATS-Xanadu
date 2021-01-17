@@ -287,6 +287,8 @@ fprint_val<sort1> = fprint_sort1
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 fprint_sort1
   (out, x0) =
@@ -313,25 +315,35 @@ case+ x0.node() of
 *)
 //
 | S1Tapp1
-  (s1t0, s1t1) =>
-  fprint!
-  (out, "S1Tapp1(", s1t0, "; ", s1t1, ")")
-| S1Tapp2
-  (s1t0, s1t1, s1t2) =>
+  (s1t1, s1t2) =>
   fprint!
   ( out
-  , "S1Tapp2(", s1t0, "; ", s1t1, "; ", s1t2, ")")
+  , "S1Tapp1(", s1t1, "; ", s1t2, ")")
+| S1Tapp2
+  (s1t1, s1t2, s1t3) =>
+  fprint!
+  ( out
+  , "S1Tapp2("
+  , s1t1, "; ", s1t2, "; ", s1t3, ")" )
 //
 | S1Tlist(s1ts) =>
-  fprint!(out, "S1Tlist(", s1ts, ")")
+  fprint!
+  ( out, "S1Tlist(", s1ts, ")" )
 //
 | S1Tqual(tok0, s1t1) =>
   fprint!
-  (out, "S1Tqual(", tok0, "; ", s1t1, ")")
+  ( out, "S1Tqual(", tok0, "; ", s1t1, ")" )
 //
 | S1Tnone((*void*)) => fprint!(out, "S1Tnone(", ")")
 //
-) (* end of [fprint_sort1] *)
+(*
+| _ (* else-of-S1T... *) =>
+  fprint!(out, "S1T...(", "...", ")")
+*)
+//
+) (* case *) // end of [fprint_sort1]
+
+(* ****** ****** *)
 
 end // end of [local]
 
