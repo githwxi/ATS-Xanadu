@@ -496,6 +496,12 @@ t2ypelst_subst_svarlst
 (* ****** ****** *)
 //
 fun
+s2varlst_epred
+  (s2vs: s2varlst): s2varlst
+//
+(* ****** ****** *)
+//
+fun
 s2exp_erase
   (s2e0: s2exp): t2ype
 fun

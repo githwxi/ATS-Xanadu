@@ -423,6 +423,21 @@ def0.node() of
 //
 implement
 //{}(*tmp*)
+tread01_f1unarrow
+  (arrw) =
+(
+case+ arrw of
+|
+F1UNARROWdflt() => ((*void*))
+|
+F1UNARROWlist
+( s1es ) => tread01_s1explst(s1es)
+)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 tread01_effs1expopt
   (opt0) =
 (

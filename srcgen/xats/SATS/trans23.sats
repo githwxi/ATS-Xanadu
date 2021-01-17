@@ -68,7 +68,7 @@ typedef t2ypelst = $S2T.t2ypelst
 typedef labt2ype = $S2T.labt2ype
 typedef labt2ypelst = $S2T.labt2ypelst
 
-typedef f1unarrow = $D1E.f1unarrow
+typedef f1unarrow = $S1E.f1unarrow
 typedef effs2expopt = $S2E.effs2expopt
 
 (* ****** ****** *)

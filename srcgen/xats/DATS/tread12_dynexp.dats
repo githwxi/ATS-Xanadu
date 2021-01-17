@@ -379,6 +379,8 @@ val () = tread12_d2claulst(dcls)
 //
     val () =
     tread12_f2arglst(f2as)
+    val () =
+    tread12_effs2expopt(tres)
 //
     val () = tread12_d2exp(body)
 //

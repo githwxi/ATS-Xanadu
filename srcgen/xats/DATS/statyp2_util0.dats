@@ -76,6 +76,42 @@ fprint_val<t2ype> = fprint_t2ype
 (* ****** ****** *)
 
 implement
+s2varlst_epred
+  (s2vs) =
+(
+  auxs2vs(s2vs) ) where
+{
+fun
+auxs2vs
+( s2vs
+: s2varlst
+)
+: s2varlst =
+(
+case+ s2vs of
+| list_nil() =>
+  list_nil()
+| list_cons
+  (s2v0, s2vs) =>
+  (
+  if
+  impred
+  then
+  list_cons(s2v0, s2vs) else s2vs
+  ) where
+  {
+    val s2t0 = s2v0.sort()
+    val s2vs = auxs2vs(s2vs)
+    val impred = sort2_is_impred(s2t0)
+  }
+) (* end of [auxs2vs] *)
+} (*where*) // end of [s2varlst_epred]
+//
+(* ****** ****** *)
+
+(* ****** ****** *)
+
+implement
 s2exp_erase(s2e0) =
 let
 //
@@ -106,31 +142,6 @@ auxs2vs
 // 2: Impredicatives and Predicatives do not mix
 //
 fun
-auxs2vs
-( s2vs
-: s2varlst
-)
-: s2varlst =
-(
-case+ s2vs of
-| list_nil() =>
-  list_nil()
-| list_cons
-  (s2v0, s2vs) =>
-  (
-  if
-  impred
-  then
-  list_cons(s2v0, s2vs) else s2vs
-  ) where
-  {
-    val s2t0 = s2v0.sort()
-    val s2vs = auxs2vs(s2vs)
-    val impred = sort2_is_impred(s2t0)
-  }
-) (* end of [auxs2vs] *)
-//
-fun
 auxmain
 (s2e0: s2exp): t2ype =
 (
@@ -143,14 +154,16 @@ s2e0.node() of
 | S2Eexi
   (s2vs, s2ps, body) =>
   let
-    val s2vs = auxs2vs(s2vs)
+    val
+    s2vs = s2varlst_epred(s2vs)
   in
     t2ype_exi(s2vs, s2exp_erase(body))
   end
 | S2Euni
   (s2vs, s2ps, body) =>
   let
-    val s2vs = auxs2vs(s2vs)
+    val
+    s2vs = s2varlst_epred(s2vs)
   in
     t2ype_uni(s2vs, s2exp_erase(body))
   end

@@ -299,7 +299,8 @@ tcomp30_type
 //
 (*
 //
-val s2t0 = t2p0.sort()
+val
+s2t0 = t2p0.sort()
 //
 val () =
 println!
@@ -310,9 +311,14 @@ println!
 *)
 //
 (*
-val () =
-println!
-("tcomp30_type: hst0 = ", hst0)
+//
+(*
+HX-2021-01-16:
+The type should have been
+normalized at this point! 
+*)
+val
+t2p0 = t2ype_normize(t2p0)
 *)
 //
 in
@@ -339,6 +345,18 @@ T2Ptyrec _ => aux_tyrec(t2p0)
 val s2t0 = t2p0.sort()
 val hst0 = tcomp30_sort(s2t0)
 val data = $UN.cast{ptr}(t2p0)
+//
+// (*
+val () =
+println!
+("tcomp30_type: t2p0 = ", t2p0)
+val () =
+println!
+("tcomp30_type: s2t0 = ", s2t0)
+val () =
+println!
+("tcomp30_type: hst0 = ", hst0)
+// *)
 //
 in
 h0typ_make_node(hst0, H0Tnone1(data))
