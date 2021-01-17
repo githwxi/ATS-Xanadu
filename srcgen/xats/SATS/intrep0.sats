@@ -336,8 +336,13 @@ h0typ_node =
   , h0typlst(*arg*),h0typ(*res*)
   ) (* end of H0Tfun *)
 //
-| H0Tapp of (h0typ, h0typlst) // inst
-| H0Tlam of (htvarlst, h0typ) // poly
+| H0Tapp of
+  (h0typ, h0typlst) // inst
+| H0Tlam of
+  (htvarlst, h0typ) // poly
+//
+| H0Ttyext of
+  (string(*name*), h0typlst) // external
 //
 | H0Ttyrec of
   (tyrec(*knd*), int(*npf*), labh0typlst)
