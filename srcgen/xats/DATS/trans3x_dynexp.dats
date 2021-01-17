@@ -88,6 +88,90 @@ val () = tr3xenv_free_nil(env0)
 //
 (* ****** ****** *)
 
+fun
+d2var_typenfz
+(d2v: d2var): void =
+let
+val t2p = d2v.type()
+in
+d2v.type(t2ype_normize(t2p))
+end // end [d2var_typenfz
+
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+
+typedef
+d3end = d3pat_node
+
+(* ****** ****** *)
+
+fun
+auxvar
+( env0:
+! tr3xenv
+, dend: d3end): d3end =
+let
+val-D3Pvar(d2v0) = dend
+val () =
+d2var_typenfz(d2v0) in dend
+end // end of [auxvar]
+
+in(*in-of-local*)
+
+implement
+trans3x_dpat
+(env0, d3p0) = let
+//
+val
+loc0 = d3p0.loc()
+//
+val
+t2p0 = d3p0.type()
+val
+dend = d3p0.node()
+//
+val
+t2p0 =
+t2ype_normize(t2p0)
+//
+#if(__XATSOPT_DEBUG__)
+// (*
+val () =
+println!
+("trans3x_dpat: d3p0 = ", d3p0)
+val () =
+println!
+("trans3x_dpat: t2p0 = ", t2p0)
+// *)
+#endif//__XATSOPT_DEBUG__
+//
+in
+//
+case+ dend of
+//
+|
+D3Pvar _ =>
+let
+val dend = auxvar(env0, dend)
+in
+d3pat_make_node(loc0, t2p0, dend)
+end
+//
+|
+dend(*else*) =>
+(
+d3pat_make_node(loc0, t2p0, dend)
+) (* end of [D3P...] *)
+//
+end // end of [trans3x_dpat]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
@@ -782,6 +866,8 @@ val pat = rcd.pat
 val def = rcd.def
 val wtp = rcd.wtp
 //
+val pat =
+trans3x_dpat(env0, pat)
 val () =
 tr3xenv_add_dpat(env0, pat)
 //

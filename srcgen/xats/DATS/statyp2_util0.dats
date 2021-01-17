@@ -1190,15 +1190,15 @@ auxt2ps
 case+ t2ps of
 | list_nil() =>
   list_nil()
-| list_cons(t2p1, t2ps2) =>
+| list_cons(t2p1, tps2) =>
   let
   val fini = flag
   val t2p1 = auxt2p0(t2p1, flag)
-  val t2ps2 = auxt2ps(t2ps2, flag)
+  val tps2 = auxt2ps(tps2, flag)
   in
     if
     fini = flag
-    then t2ps else list_cons(t2p1, t2ps2)
+    then t2ps else list_cons(t2p1, tps2)
   end
 ) (* end of [auxt2ps] *)
 //
@@ -1326,6 +1326,8 @@ end
 
 local
 
+(* ****** ****** *)
+
 fun
 auxbas
 ( t2p0: t2ype
@@ -1349,6 +1351,8 @@ t2p0.node() of
 //
 end // end of [auxbas]
 
+(* ****** ****** *)
+
 and
 auxvar
 ( t2p0: t2ype
@@ -1360,16 +1364,53 @@ T2Pvar
 (s2v0) = t2p0.node() in t2p0
 end // end of [auxvar]
 
+(* ****** ****** *)
+
+and
+auxcst
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+//
+val-
+T2Pcst(s2c0) = t2p0.node()
+val
+def0 = s2cst_get_type(s2c0)
+//
+in(*in-of-let*)
+//
+case+
+def0.node() of
+//
+|
+T2Pnone0() => t2p0
+//
+|
+_(* else *) =>
+(
+  t2ype_normize(def0)
+) where
+{
+  val () = flag := flag + 1
+}
+//
+end // end of [auxcst]
+
+(* ****** ****** *)
+
 and
 auxxtv
 ( t2p0: t2ype
 , flag
 : &int >> int): t2ype =
 let
+//
 val-
 T2Pxtv
 (xtv0) = t2p0.node()
-in
+//
+in(*in-of-let*)
 //
 let
 val
@@ -1377,21 +1418,25 @@ t2p1 = xtv0.type()
 in
 case+
 t2p1.node() of
-| T2Pnone0() => t2p0
-| _ (*non-T2Pnone0*) =>
-  let
-    val
-    t2p1 =
-    t2ype_normize(t2p1)
-  in
-    xtv0.type(t2p1); t2p1
-  end where
-  {
-    val () = flag := flag + 1
-  }
+|
+T2Pnone0() => t2p0
+|
+_ (*non-T2Pnone0*) =>
+let
+  val
+  t2p1 =
+  t2ype_normize(t2p1)
+in
+  xtv0.type(t2p1); t2p1
+end where
+{
+  val () = flag := flag + 1
+}
 end // end of [let]
 //
 end // end of [auxxtv]
+
+(* ****** ****** *)
 
 and
 auxapp
@@ -1438,6 +1483,8 @@ end
 //
 end // end of [auxapp]
 
+(* ****** ****** *)
+
 and
 auxt2p0
 ( t2p0: t2ype
@@ -1453,10 +1500,8 @@ t2p0.node() of
 | T2Pvar _ =>
   auxvar(t2p0, flag)
 //
-(*
 | T2Pcst _ =>
   auxcst(t2p0, flag)
-*)
 //
 | T2Pxtv _ =>
   auxxtv(t2p0, flag)
@@ -1511,6 +1556,8 @@ end
 //
 )
 
+(* ****** ****** *)
+
 and
 auxt2ps
 ( t2ps
@@ -1523,15 +1570,15 @@ case+ t2ps of
 list_nil() =>
 list_nil()
 |
-list_cons(t2p1, t2ps2) =>
+list_cons(t2p1, tps2) =>
 let
   val fini = flag
   val t2p1 = auxt2p0(t2p1, flag)
-  val t2ps2 = auxt2ps(t2ps2, flag)
+  val tps2 = auxt2ps(tps2, flag)
 in
 if
 fini = flag
-then t2ps else list_cons(t2p1, t2ps2)
+then t2ps else list_cons(t2p1, tps2)
 end
 )
 
