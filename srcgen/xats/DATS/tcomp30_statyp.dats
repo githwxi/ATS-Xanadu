@@ -346,7 +346,7 @@ val s2t0 = t2p0.sort()
 val hst0 = tcomp30_sort(s2t0)
 val data = $UN.cast{ptr}(t2p0)
 //
-// (*
+(*
 val () =
 println!
 ("tcomp30_type: t2p0 = ", t2p0)
@@ -356,7 +356,7 @@ println!
 val () =
 println!
 ("tcomp30_type: hst0 = ", hst0)
-// *)
+*)
 //
 in
 h0typ_make_node(hst0, H0Tnone1(data))
