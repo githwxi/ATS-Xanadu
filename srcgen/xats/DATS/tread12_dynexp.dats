@@ -169,6 +169,18 @@ d2p0.node() of
 | D2Psym0
   ( d1p1, dpis ) => ()
 //
+// HX: nullary
+| D2Pdap0(d2p1) =>
+  { 
+    val () =
+    tread12_d2pat(d2p1)
+  }
+// HX: argless
+| D2Pdap1(d2p1) =>
+  {
+    val () =
+    tread12_d2pat(d2p1)
+  }
 | D2Pdapp
   (d2f0, npf1, d2ps) =>
   {
