@@ -17,7 +17,7 @@ val x1 = $exists{1}(1)
 (* ****** ****** *)
 
 val fx =
-lam{n:int}(x: int(n)): int(N) => x
+lam{n:int}(x: int(n)): int(n) => x
 
 (* ****** ****** *)
 

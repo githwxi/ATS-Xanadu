@@ -168,6 +168,17 @@ trans3x_envless
 (* ****** ****** *)
 //
 fun
+trans3x_dpat
+( env0:
+! tr3xenv, d3p0: d3pat): d3pat
+fun
+trans3x_dpatlst
+( env0:
+! tr3xenv, d3ps: d3patlst): d3patlst
+//
+(* ****** ****** *)
+//
+fun
 trans3x_dexp
 ( env0:
 ! tr3xenv, d3e0: d3exp): d3exp 
