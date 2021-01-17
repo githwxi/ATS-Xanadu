@@ -321,7 +321,7 @@ val
 t2p0 = t2ype_normize(t2p0)
 *)
 //
-in
+in(*in-of-let*)
 //
 case+
 t2p0.node() of

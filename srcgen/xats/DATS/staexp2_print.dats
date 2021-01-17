@@ -75,6 +75,11 @@ fprint with $LAB.fprint_label
 (* ****** ****** *)
 
 implement
+fprint_val<sort1> = fprint_sort1
+
+(* ****** ****** *)
+
+implement
 fprint_val<sort2> = fprint_sort2
 
 implement
@@ -159,12 +164,29 @@ case+ s2t0 of
   ( out
   , "S2Tapp(", s2t1, "; ", s2ts, ")")
 //
-| S2Tnone0() =>
+|
+S2Tnone0() =>
+(
   fprint!(out, "S2Tnone0(", ")")
-| S2Tnone1(s1tsrc) =>
-  fprint!(out, "S2Tnone1(", s1tsrc, ")")
+)
+|
+S2Tnone1(s1tsrc) =>
+(
+fprintln!(out, "S2Tnone1(", s1tsrc, ")")
+)
 //
-) (* end of [fprint_sort2] *)
+(*
+| _ (* S2T... *) =>
+  fprint!(out, "S2T...(", "...", ")")
+*)
+//
+) where
+{
+val () =
+fprintln!
+( out
+, "fprint_sort2: s2t0 =", $UN.cast{ptr}(s2t0))
+} (* case *) // end of [fprint_sort2]
 
 end // end of [local]
 

@@ -83,6 +83,7 @@ BUILD/staexp2_dats.o : HATS/xatsopt.hats SATS/xstamp0.sats SATS/locinfo.sats SAT
 BUILD/statyp2_dats.o : SATS/xbasics.sats SATS/xstamp0.sats SATS/xsymbol.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats
 BUILD/dynexp2_dats.o : SATS/xstamp0.sats SATS/xbasics.sats SATS/xsymbol.sats SATS/lexing0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/trans01.sats
 BUILD/staexp2_init0_dats.o : SATS/xsymbol.sats SATS/staexp2.sats SATS/xbasics.sats
+BUILD/statyp2_init0_dats.o : SATS/xsymbol.sats SATS/staexp2.sats SATS/statyp2.sats
 BUILD/staexp2_util1_dats.o : SATS/xstamp0.sats SATS/xsymbol.sats SATS/xbasics.sats SATS/staexp2.sats
 BUILD/staexp2_util2_dats.o : SATS/xsymbol.sats SATS/staexp2.sats
 BUILD/staexp2_s2cst_dats.o : SATS/xstamp0.sats SATS/xsymbol.sats SATS/lexing0.sats SATS/trans01.sats SATS/trans12.sats SATS/staexp2.sats SATS/statyp2.sats
@@ -127,7 +128,7 @@ BUILD/tcomp30_util0_dats.o : SATS/xbasics.sats SATS/xstamp0.sats SATS/locinfo.sa
 BUILD/tcomp30_statyp_dats.o : SATS/xbasics.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/intrep0.sats SATS/tcomp30.sats
 BUILD/tcomp30_dynexp_dats.o : HATS/xatsopt.hats SATS/xbasics.sats SATS/locinfo.sats SATS/statyp2.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/intrep0.sats SATS/tcomp30.sats
 BUILD/dynexp4_dats.o : SATS/xsymbol.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/dynexp4.sats
-BUILD/dynexp4_print_dats.o : SATS/xsymbol.sats SATS/locinfo.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/dynexp4.sats
+BUILD/dynexp4_print_dats.o : SATS/xsymbol.sats SATS/locinfo.sats SATS/xstamp0.sats SATS/xlabel0.sats SATS/lexing0.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/dynexp4.sats
 BUILD/dynexp4_util0_dats.o : SATS/dynexp2.sats SATS/dynexp3.sats SATS/dynexp4.sats
 BUILD/trans34_envmap_dats.o : SATS/statyp2.sats SATS/staexp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/dynexp4.sats SATS/trans34.sats
 BUILD/trans34_dynexp_dats.o : SATS/xbasics.sats SATS/lexing0.sats SATS/locinfo.sats SATS/staexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/statyp2.sats SATS/trans12.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/dynexp4.sats SATS/trans34.sats

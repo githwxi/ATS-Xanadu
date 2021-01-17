@@ -241,6 +241,7 @@ end // end of [local]
 #dynload "./nmspace.dats"
 //
 #dynload "./staexp2_init0.dats"
+#dynload "./statyp2_init0.dats"
 //
 #dynload "./staexp2_util1.dats"
 #dynload "./staexp2_util2.dats"

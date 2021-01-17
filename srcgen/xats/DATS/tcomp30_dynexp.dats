@@ -482,18 +482,23 @@ implement
 tcomp30_dpat
   (d3p0) = let
 //
-(*
+#if(__XATSOPT_DEBUG__)
+// (*
 val
 loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
 val () =
 println!
+("tcomp30_dpat: loc0 = ", loc0)
+val () =
+println!
 ("tcomp30_dpat: d3p0 = ", d3p0)
 val () =
 println!
 ("tcomp30_dpat: t2p0 = ", t2p0)
-*)
+// *)
+#endif//__XATSOPT_DEBUG__
 //
 in(*in-of-let*)
 //
@@ -1928,18 +1933,21 @@ tcomp30_dexp
   (d3e0) = let
 //
 #if(__XATSOPT_DEBUG__)
-(*
+// (*
 val
 loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 val () =
 println!
+("tcomp30_dexp: loc0 = ", loc0)
+val () =
+println!
 ("tcomp30_dexp: d3e0 = ", d3e0)
 val () =
 println!
 ("tcomp30_dexp: t2p0 = ", t2p0)
-*)
+// *)
 #endif//__XATSOPT_DEBUG__
 //
 in
