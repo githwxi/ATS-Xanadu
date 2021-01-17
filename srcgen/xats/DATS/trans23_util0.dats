@@ -2281,6 +2281,9 @@ x0.node() of
   (s2vs, s2ps) =>
   let
   val
+  s2vs =
+  s2varlst_epred(s2vs)
+  val
   tres =
   auxf3as
   (xs, tres, flag) in t2ype_uni(s2vs, tres)

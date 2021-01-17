@@ -662,6 +662,32 @@ s1exp_make_node
 //
 (* ****** ****** *)
 //
+datatype
+f1unarrow =
+(*
+| F1UNARROWnone of
+  (token(*error*))
+*)
+| F1UNARROWdflt // default
+| F1UNARROWlist of (s1explst)
+//
+(* ****** ****** *)
+//
+fun
+print_f1unarrow:
+  print_type(f1unarrow)
+fun
+prerr_f1unarrow:
+  prerr_type(f1unarrow)
+fun
+fprint_f1unarrow: fprint_type(f1unarrow)
+//
+overload print with print_f1unarrow
+overload prerr with prerr_f1unarrow
+overload fprint with fprint_f1unarrow
+//
+(* ****** ****** *)
+//
 // HX-2019-02-18:
 // There is no longer plan
 // to support effect-tracking!!!

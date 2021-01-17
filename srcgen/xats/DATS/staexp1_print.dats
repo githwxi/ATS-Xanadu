@@ -649,6 +649,24 @@ end // end of [local]
 
 (* ****** ****** *)
 
+implement
+print_f1unarrow(x0) =
+fprint_f1unarrow(stdout_ref, x0)
+implement
+prerr_f1unarrow(x0) =
+fprint_f1unarrow(stderr_ref, x0)
+implement
+fprint_f1unarrow(out, x0) =
+(
+case+ x0 of
+| F1UNARROWdflt() =>
+  fprint!(out, "F1UNARROWdflt(", ")")
+| F1UNARROWlist(s1es) =>
+  fprint!(out, "F1UNARROWlist(", s1es, ")")
+) (* end of [fprint_f1unarrow] *)
+
+(* ****** ****** *)
+
 (*
 implement
 print_s1eff(x0) =

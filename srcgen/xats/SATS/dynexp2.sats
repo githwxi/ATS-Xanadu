@@ -73,6 +73,8 @@ typedef g1mac = $S1E.g1mac
 //
 typedef s1exp = $S1E.s1exp
 //
+typedef f1unarrow = $S1E.f1unarrow
+//
 (* ****** ****** *)
 //
 #staload
@@ -84,7 +86,6 @@ typedef d1ecl = $D1E.d1ecl
 //
 typedef d1eclist = $D1E.d1eclist
 //
-typedef f1unarrow = $D1E.f1unarrow
 typedef decmodopt = $D1E.decmodopt
 //
 (* ****** ****** *)

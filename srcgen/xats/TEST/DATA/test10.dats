@@ -10,7 +10,14 @@ For testing [$exist]
 (*
 val x0 = $exists(1)
 *)
+(*
 val x1 = $exists{1}(1)
+*)
+
+(* ****** ****** *)
+
+val fx =
+lam{n:int}(x: int(n)): int(N) => x
 
 (* ****** ****** *)
 

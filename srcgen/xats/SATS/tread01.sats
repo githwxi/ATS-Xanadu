@@ -141,6 +141,11 @@ tread01_s1rtdef: treader01(s1rtdef)
 (* ****** ****** *)
 //
 fun//{}
+tread01_f1unarrow: treader01(f1unarrow)
+//
+(* ****** ****** *)
+//
+fun//{}
 tread01_effs1expopt: treader01(effs1expopt)
 //
 (* ****** ****** *)

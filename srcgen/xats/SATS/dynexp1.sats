@@ -599,15 +599,6 @@ D1Eexist of // HX-2021-01-14: for
 //
 // end of [d1exp_node]
 //
-and
-f1unarrow =
-(*
-| F1UNARROWnone of
-  (token(*error*))
-*)
-| F1UNARROWdflt // default
-| F1UNARROWlist of (s1explst)
-//
 (* ****** ****** *)
 //
 fun
@@ -631,21 +622,6 @@ d1exp_none(loc: loc_t): d1exp
 fun
 d1exp_make_node
 (loc: loc_t, node: d1exp_node): d1exp
-//
-(* ****** ****** *)
-//
-fun
-print_f1unarrow:
-  print_type(f1unarrow)
-fun
-prerr_f1unarrow:
-  prerr_type(f1unarrow)
-fun
-fprint_f1unarrow: fprint_type(f1unarrow)
-//
-overload print with print_f1unarrow
-overload prerr with prerr_f1unarrow
-overload fprint with fprint_f1unarrow
 //
 (* ****** ****** *)
 //
