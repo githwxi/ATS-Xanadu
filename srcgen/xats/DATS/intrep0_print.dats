@@ -260,6 +260,12 @@ x0.node() of
   ( out
   , "H0Tlam(", htvs, "; ", h0t1, ")")
 //
+| H0Ttyext
+  (name, h0ts) =>
+  fprint!
+  ( out
+  , "H0Ttyext(", name, "; ", h0ts, ")")
+//
 | H0Ttyrec
   (knd0, npf1, lhts) =>
   fprint!
