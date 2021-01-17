@@ -1,0 +1,34 @@
+Hi, there,
+
+HX-2021-01-17:
+
+I would like to put out a few words on the current development of
+ATS/Xanadu, an implementation for ATS3 (the third edition of ATS).
+
+######
+#
+# Advanced Type-Checking
+#
+######
+
+My focus as of now is on implementing type-checking support for
+linear and dependent types. It is difficult to accurate estimate
+how long this implementation is going to take. My hope is to get
+something running by the end of May. Like in ATS2, I plan to implementat
+a constraint-solver for local use. Unlike in ATS2, I also plan to
+collect constriants in some format (e.g., JSON) that can be sent to
+another location for constraint-solving.
+
+##################################################################
+
+Cheers!
+
+--Hongwei
+
+##################################################################
+
+For previously post messages:
+
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgen/NOTES
+
+##################################################################
