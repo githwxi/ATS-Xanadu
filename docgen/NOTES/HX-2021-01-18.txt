@@ -1,0 +1,58 @@
+Hi, there,
+
+HX-2021-01-18:
+
+######
+#
+# Outlining
+# a design for OOP in ATS3
+#
+######
+
+class
+a1obj_ref
+(a:type,n:int)
+{
+  val
+  len: sint(n)
+  val
+  arr: a1ref(a, n)
+//
+  #cnstor
+  make1
+  (len: sint(n), ini: a) =
+  (
+  this.len = len;
+  a1ref_make_elt(len, ini)
+  )
+  
+  #method
+  get_at
+  {i:int}
+  (i0: int(i)): a =
+  a1ref_get_at(this.arr, i0)
+//
+  #method
+  set_at
+  {i:int}
+  (i0: int(i), x0: a): void =
+  a1ref_get_at(this.arr, i0)
+//
+  method length(): sint(n) = this.len
+//
+} (* end of [a1obj_ref] *)
+
+
+##################################################################
+
+Cheers!
+
+--Hongwei
+
+##################################################################
+
+For previously post messages:
+
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgen/NOTES
+
+##################################################################
