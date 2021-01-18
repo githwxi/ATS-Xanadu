@@ -134,6 +134,30 @@ in
   (loc0, s2e0, t2p0, D4Eb00(btf))
 end // end of [auxb00]
 
+fun
+auxc00
+( d3e0
+: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Ec00(chr) = d3e0.node()
+//
+val
+s2c0 = s2exp_chr(chr)
+val
+s2e0 = s2exp_type_char(s2c0)
+//
+in
+  d4exp_make_node
+  (loc0, s2e0, t2p0, D4Ec00(chr))
+end // end of [auxb00]
+
 in(*in-of-local*)
 
 implement
@@ -142,8 +166,11 @@ trans34_dexp
 (
 case+
 d3e0.node() of
+//
 | D3Ei00 _ => auxi00(d3e0)
 | D3Eb00 _ => auxb00(d3e0)
+| D3Ec00 _ => auxb00(d3e0)
+//
 | _ (* rest-of-d3exp *) => d4exp_none1(d3e0)
 )
 

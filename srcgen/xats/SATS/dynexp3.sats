@@ -325,6 +325,7 @@ d3exp_node =
 //
 | D3Ei00 of (int)
 | D3Eb00 of (bool)
+| D3Ec00 of (char)
 | D3Es00 of string
 //
 | D3Eint of (token)

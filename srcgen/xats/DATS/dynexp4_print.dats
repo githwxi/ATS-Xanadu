@@ -168,6 +168,8 @@ case+ x0.node() of
   fprint!(out, "D4Ei00(", int, ")")
 | D4Eb00(btf) =>
   fprint!(out, "D4Eb00(", btf, ")")
+| D4Ec00(chr) =>
+  fprint!(out, "D4Ec00(", chr, ")")
 | D4Es00(str) =>
   fprint!(out, "D4Es00(", str, ")")
 //
