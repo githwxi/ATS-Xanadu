@@ -594,6 +594,7 @@ d2pat_node =
 //
 | D2Pi00 of (int) // int
 | D2Pb00 of (bool) // bool
+| D2Pc00 of (char) // char
 | D2Ps00 of string // string
 //
 | D2Pint of (token)
@@ -788,6 +789,7 @@ d2exp_node =
 //
 | D2Ei00 of (int) // int
 | D2Eb00 of (bool) // bool
+| D2Ec00 of (char) // char
 | D2Es00 of string // string
 //
 | D2Eint of (token) // int
