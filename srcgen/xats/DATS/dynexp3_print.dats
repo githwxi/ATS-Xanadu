@@ -333,6 +333,8 @@ x0.node() of
   fprint!(out, "D3Ei00(", int, ")")
 | D3Eb00(btf) =>
   fprint!(out, "D3Eb00(", btf, ")")
+| D3Ec00(chr) =>
+  fprint!(out, "D3Ec00(", chr, ")")
 | D3Es00(str) =>
   fprint!(out, "D3Es00(", str, ")")
 //

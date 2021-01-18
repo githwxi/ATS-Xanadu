@@ -187,6 +187,7 @@ d4exp_node =
 //
 | D4Ei00 of (int)
 | D4Eb00 of (bool)
+| D4Ec00 of (char)
 | D4Es00 of string
 //
 | D4Eint of (token)

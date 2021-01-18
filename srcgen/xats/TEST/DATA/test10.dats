@@ -1,4 +1,9 @@
 (* ****** ****** *)
+#staload
+"prelude\
+/DATS/CATS\
+/Xats/basics.dats"
+(* ****** ****** *)
 //
 (*
 HX-2021-01-15:
@@ -16,8 +21,12 @@ val x1 = $exists{1}(1)
 
 (* ****** ****** *)
 
-val fx =
-lam{n:int}(x: int(n)): int(n) => x
+val fxy =
+lam{n:int}
+(x: int(n))
+(y: int(n)): int(n+n) => x+y
+
+val sum = fxy(1000000)(1000000)
 
 (* ****** ****** *)
 

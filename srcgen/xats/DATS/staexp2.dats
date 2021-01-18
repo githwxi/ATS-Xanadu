@@ -939,7 +939,7 @@ end // end of [s2exp_type_uint]
 
 implement
 s2exp_type_bool
-  (s2b1) = let
+  (s2i1) = let
 //
 val
 s2t0 =
@@ -950,11 +950,30 @@ s2f0 =
 s2cstref_get_sexp
 ( the_bool_ctype )
 val node =
-S2Eapp(s2f0, list_sing(s2b1))
+S2Eapp(s2f0, list_sing(s2i1))
 //
 in
   s2exp_make_node(s2t0, node)
 end // end of [s2exp_type_bool]
+
+implement
+s2exp_type_char
+  (s2i1) = let
+//
+val
+s2t0 =
+the_sort2_type
+//
+val
+s2f0 =
+s2cstref_get_sexp
+( the_char_ctype )
+val node =
+S2Eapp(s2f0, list_sing(s2i1))
+//
+in
+  s2exp_make_node(s2t0, node)
+end // end of [s2exp_type_char]
 
 (* ****** ****** *)
 

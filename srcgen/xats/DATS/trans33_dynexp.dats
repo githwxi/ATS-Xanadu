@@ -2061,6 +2061,11 @@ in
 case+
 d3e0.node() of
 //
+| D3Ei00 _ => d3e0
+| D3Eb00 _ => d3e0
+| D3Ec00 _ => d3e0
+| D3Es00 _ => d3e0
+//
 | D3Eint _ => d3e0
 | D3Ebtf _ => d3e0
 | D3Echr _ => d3e0
