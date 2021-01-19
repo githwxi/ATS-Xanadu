@@ -36,7 +36,7 @@ a1obj_ref
   set_at
   {i:int}
   (i0: int(i), x0: a): void =
-  a1ref_get_at(this.arr, i0)
+  a1ref_set_at(this.arr, i0, x0)
 //
   method length(): sint(n) = this.len
 //
