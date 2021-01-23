@@ -74,7 +74,7 @@ absimpl
 input_tbox
 (tok:t0) = stream(tok)
 //
-in
+in(*in-of-local*)
 //
 impltmp
 <tok>
@@ -144,7 +144,7 @@ parser_tbox
 -<cfr>
 (input(tok), optn_vt(res))
 //
-in
+in(*in-of-local*)
 //
 impltmp
 <tok><res>
