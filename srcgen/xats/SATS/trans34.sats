@@ -79,6 +79,7 @@ typedef f3arglst = $D3E.f3arglst
 //
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
+typedef d3eclopt = $D3E.d3eclopt
 typedef d3eclist = $D3E.d3eclist
 //
 typedef d3gualst = $D3E.d3gualst
@@ -94,6 +95,9 @@ typedef d4ecl = $D4E.d4ecl
 (* ****** ****** *)
 typedef d4expopt = $D4E.d4expopt
 typedef d4explst = $D4E.d4explst
+(* ****** ****** *)
+typedef d4eclopt = $D4E.d4eclopt
+typedef d4ecllst = $D4E.d4eclist
 (* ****** ****** *)
 //
 absvtype
@@ -159,6 +163,10 @@ fun
 trans34_decl
 ( env0:
 ! tr34env, d3c0: d3ecl): d4ecl
+fun
+trans34_declopt
+( env0:
+! tr34env, opt0: d3eclopt): d4eclopt
 
 (* ****** ****** *)
 
