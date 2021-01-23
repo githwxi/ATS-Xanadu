@@ -72,6 +72,11 @@ where t2srtlst = List0(t2srt)
 (* ****** ****** *)
 //
 (*
+(*
+HX:
+[t2ype] is 
+declared in staexp2.sats
+*)
 abstbox t2ype_tbox = ptr
 *)
 //
