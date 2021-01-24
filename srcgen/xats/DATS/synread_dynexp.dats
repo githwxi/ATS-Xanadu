@@ -44,6 +44,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/filpath.sats"
 #staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
@@ -1223,11 +1224,11 @@ F0UNARROWnone(tok0) =>
 let
   val () =
   synerr_add
-  (SYNERRf0unarrow(tok0))
+  (SYNERRfarrow(tok0))
 in
   prerr(tok0.loc());
   prerrln!
-  (": SYNERR(f0unarrow): ", tok0);
+  (": SYNERR(farrow): ", tok0);
 end
 //
 |
@@ -1568,10 +1569,10 @@ auxopr(tok0: token): void =
   | _(*unrecognized*) =>
     let
       val () =
-      synerr_add(SYNERRsignint_opr(tok0))
+      synerr_add(SYNERRsignopr(tok0))
     in
       prerrln!
-      (tok0.loc(), ": SYNERR(SIGNINT_OPR): ", tok0);
+      (tok0.loc(), ": SYNERR(SIGNOPR): ", tok0);
     end // end of [let]
 ) (* end of [auxopr] *)
 //
@@ -1998,9 +1999,24 @@ val d0cs =
 (
 case+
 rcd.parsed of
-| None() =>
-  list_nil()
-| Some(d0cs) => d0cs
+|
+None() =>
+list_nil() where
+{
+val () =
+synerr_add
+(SYNERRd0parsed(p0kg))
+//
+#symload
+prerr with prerr_filpath_full2
+val () =
+prerrln!
+( "(Meta-Location)"
+, ": SYNERR(d0parsed): ", rcd.source)
+//
+}
+|
+Some(d0cs) => d0cs
 ) : d0eclist // end-of-val
 //
 val () =
