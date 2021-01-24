@@ -150,9 +150,11 @@ datatype synerr =
     (tkind, token) // token mismatch
   // SYNERRtoken
 //
-| SYNERRf0unarrow of (token) // => | =<
+| SYNERRfarrow of (token) // => | =<
 //
-| SYNERRsignint_opr of (token) // sign: + or -
+| SYNERRsignopr of (token) // sign: + or -
+// HX-2021-01-24: the package is
+| SYNERRd0parsed of (d0parsed) // missing
 //
 (* ****** ****** *)
 //

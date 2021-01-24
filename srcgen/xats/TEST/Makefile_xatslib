@@ -16,14 +16,16 @@ all:: all_githwxi
 
 ######
 all_libc:: ; \
-$(XATSOPT) -s $(XATSLIB)/githwxi/SATS/libc.sats
+$(XATSOPT) -s $(XATSLIB)/libc/SATS/libc.sats
 ######
 all_libc:: ; \
-$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/gios.dats
+$(XATSOPT) -d $(XATSLIB)/libc/DATS/gios.dats
 all_libc:: ; \
-$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/rand.dats
+$(XATSOPT) -d $(XATSLIB)/libc/DATS/rand.dats
 all_libc:: ; \
-$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/stdio.dats
+$(XATSOPT) -d $(XATSLIB)/libc/DATS/fpath.dats
+all_libc:: ; \
+$(XATSOPT) -d $(XATSLIB)/libc/DATS/stdio.dats
 ######
 all_githwxi:: ; \
 $(XATSOPT) -s $(XATSLIB)/githwxi/SATS/githwxi.sats
