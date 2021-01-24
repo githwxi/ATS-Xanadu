@@ -185,7 +185,17 @@ trans34_declopt
 ! tr34env, opt0: d3eclopt): d4eclopt
 (* ****** ****** *)
 
-typedef f3undecl = $D3E.f3undecl
+typedef
+f3undecl = $D3E.f3undecl
+typedef
+f3undeclist = $D3E.f3undeclist
+
+(* ****** ****** *)
+
+typedef
+f4undecl = $D4E.f4undecl
+typedef
+f4undeclist = $D4E.f4undeclist
 
 (* ****** ****** *)
 //
@@ -193,6 +203,17 @@ fun
 f3undecl_get_s2expopt
   ( fdcl: f3undecl ) : s2expopt
 //
+(* ****** ****** *)
+
+fun
+trans34_fundecl
+( env0:
+! tr34env, f3d0: f3undecl): f4undecl
+fun
+trans34_fundeclist
+( env0:
+! tr34env, f3ds: f3undeclist): f4undeclist
+
 (* ****** ****** *)
 
 (* end of [xats_trans34.sats] *)

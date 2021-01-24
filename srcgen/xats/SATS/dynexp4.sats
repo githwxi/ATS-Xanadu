@@ -51,6 +51,14 @@ typedef d4patopt = Option(d4pat)
 //
 (* ****** ****** *)
 //
+abstbox f4arg_tbox = ptr
+//
+typedef f4arg = f4arg_tbox
+typedef f4arglst = List0(f4arg)
+typedef f4arglstopt = Option(f4arglst)
+//
+(* ****** ****** *)
+//
 abstbox d4exp_tbox = ptr
 abstbox t3imp_tbox = ptr
 //
@@ -181,6 +189,53 @@ overload prerr with prerr_d4pat
 overload fprint with fprint_d4pat
 //
 (* ****** ****** *)
+//
+datatype
+f4arg_node =
+//
+(*
+| F4ARGnone of (token)
+*)
+//
+| F4ARGnone2 of f2arg
+| F4ARGnone3 of f3arg
+//
+| F4ARGsome_dyn of
+  (int(*npf*), d4patlst)
+//
+| F4ARGsome_sta of
+  (s2varlst(*s2vs*), s2explst(*s2ps*))
+//
+| F4ARGsome_met of (s2explst)
+//
+(* ****** ****** *)
+//
+fun
+f4arg_get_loc(f4arg): loc_t
+fun
+f4arg_get_node(f4arg): f4arg_node
+//
+overload .loc with f4arg_get_loc
+overload .node with f4arg_get_node
+//
+fun
+print_f4arg : print_type(f4arg)
+fun
+prerr_f4arg : prerr_type(f4arg)
+fun
+fprint_f4arg : fprint_type(f4arg)
+//
+overload print with print_f4arg
+overload prerr with prerr_f4arg
+overload fprint with fprint_f4arg
+//
+(* ****** ****** *)
+//
+fun
+f4arg_make_node
+(loc: loc_t, node: f4arg_node): f4arg
+//
+(* ****** ****** *)
 
 datatype
 d4exp_node =
@@ -272,10 +327,37 @@ overload fprint with fprint_d4exp
 (* ****** ****** *)
 //
 datatype
+f4undecl =
+F4UNDECL of @{
+  loc= loc_t
+, nam= d2var
+, d2c= d2cst
+, a2g= f2arglst
+//
+, a4g=
+    f4arglstopt
+, res=
+    effs2expopt
+//
+, def= d4expopt, rtp= t2ype
+, wtp= s2expopt, ctp= t2pcast
+}
+//
+typedef
+f4undeclist = List0(f4undecl)
+//
+(* ****** ****** *)
+//
+datatype
 d4ecl_node =
 //
 | D4Cnone0 of ()
 | D4Cnone1 of (d3ecl)
+//
+| D4Cfundecl of
+  ( token(*funknd*)
+  , decmodopt
+  , tq2arglst(*tmpargs*), f4undeclist)
 //
 (* ****** ****** *)
 //

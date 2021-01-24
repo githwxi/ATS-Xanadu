@@ -301,15 +301,17 @@ x0.node() of
 | F3ARGnone2(f2a) =>
   fprint!(out, "F3ARGnone2(", f2a, ")")
 | F3ARGnone3(f3a) =>
-  fprint!(out, "F3ARGnone2(", f3a, ")")
+  fprint!(out, "F3ARGnone3(", f3a, ")")
 //
 | F3ARGsome_met(s2es) =>
   fprint!(out, "F3ARGsome_met(", s2es, ")")
 //
-| F3ARGsome_dyn(npf, d3ps) =>
-  fprint!(out, "F3ARGsome_dyn(", npf, "; ", d3ps, ")")
+| F3ARGsome_dyn(npf1, d3ps) =>
+  fprint!
+  (out, "F3ARGsome_dyn(", npf1, "; ", d3ps, ")")
 | F3ARGsome_sta(s2vs, s2ps) =>
-  fprint!(out, "F3ARGsome_sta(", s2vs, "; ", s2ps, ")")
+  fprint!
+  (out, "F3ARGsome_sta(", s2vs, "; ", s2ps, ")")
 //
 ) (* end of [fprint_f3arg] *)
 //
