@@ -170,6 +170,11 @@ overload .sexp with d4pat_get_sexp
 (* ****** ****** *)
 //
 fun
+d4pat_none1(d3p0: d3pat): d4pat
+//
+(* ****** ****** *)
+//
+fun
 d4pat_make_node
 ( loc0: loc_t
 , s2e0: s2exp
