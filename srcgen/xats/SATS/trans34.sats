@@ -154,6 +154,13 @@ tr34env_pop_lams
 (* ****** ****** *)
 //
 fun
+trans34_dpat
+( env0:
+! tr34env, d3p0: d3pat): d4pat
+//
+(* ****** ****** *)
+//
+fun
 trans34_dexp
 ( env0:
 ! tr34env, d3e0: d3exp): d4exp

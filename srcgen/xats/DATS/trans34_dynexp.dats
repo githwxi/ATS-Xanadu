@@ -86,6 +86,26 @@ fprint_val<d3exp> = fprint_d3exp
 
 local
 
+in(*in-of-local*)
+
+implement
+trans34_dpat
+(env0, d3p0) =
+(
+//
+case+
+d3p0.node() of
+//
+| _ (*rest-of-d3exp*) => d4pat_none1(d3p0)
+//
+)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
 fun
 auxi00
 ( d3e0
@@ -171,7 +191,7 @@ d3e0.node() of
 | D3Eb00 _ => auxb00(d3e0)
 | D3Ec00 _ => auxb00(d3e0)
 //
-| _ (* rest-of-d3exp *) => d4exp_none1(d3e0)
+| _ (*rest-of-d3exp*) => d4exp_none1(d3e0)
 )
 
 end // end of [local]
@@ -321,6 +341,77 @@ prval () = $UN.cast2void(env0) in d4cl
 end
 end // list_map$fopr
 } (* end of [trans34_declist] *)
+//
+(* ****** ****** *)
+//
+(*
+HX-2021-01-24:
+For auxiliary trans34-functions
+*)
+//
+(* ****** ****** *)
+
+implement
+trans34_fundecl
+( env0, f3d0 ) =
+let
+//
+val+
+F3UNDECL(rcd) = f3d0
+//
+in(*in-of-let*)
+//
+F4UNDECL@{
+  loc= rcd.loc
+//
+, nam= rcd.nam
+, d2c= rcd.d2c
+, a2g= rcd.a2g
+//
+, a4g= None( )
+, res= rcd.res
+//
+, def= None( )
+, rtp= rcd.rtp
+, wtp= rcd.wtp, ctp= rcd.ctp
+//
+} (* end of [F4UNDECL] *)
+//
+end // end of [trans34_fundecl]
+
+(* ****** ****** *)
+//
+implement
+trans34_fundeclist
+(  env0, f3ds  ) =
+(
+list_vt2t
+(
+list_map<f3undecl><f4undecl>(f3ds)
+)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<f3undecl><f4undecl>
+  (f3d0) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+val
+f4d0 = trans34_fundecl(env0, f3d0)
+//
+in
+let
+prval () = $UN.cast2void(env0) in f4d0
+end
+end // list_map$fopr
+} (* end of [trans34_fundeclist] *)
 //
 (* ****** ****** *)
 
