@@ -114,6 +114,11 @@ fprint_val<d4pat> = fprint_d4pat
 (* ****** ****** *)
 //
 implement
+fprint_val<f4arg> = fprint_f4arg
+//
+(* ****** ****** *)
+//
+implement
 fprint_val<d4exp> = fprint_d4exp
 //
 (* ****** ****** *)
@@ -148,6 +153,43 @@ case+ x0.node() of
 | _(* rest-of-d4pat *) => fprint!(out, "D4P...(...)")
 //
 ) (* end of [fprint_d4pat] *)
+//
+(* ****** ****** *)
+//
+implement
+print_f4arg(x0) =
+fprint_f4arg(stdout_ref, x0)
+implement
+prerr_f4arg(x0) =
+fprint_f4arg(stderr_ref, x0)
+//
+implement
+fprint_f4arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+//
+| F4ARGnone2(f2a) =>
+  fprint!(out, "F4ARGnone2(", f2a, ")")
+| F4ARGnone3(f3a) =>
+  fprint!(out, "F4ARGnone3(", f3a, ")")
+//
+|
+F4ARGsome_met(s2es) =>
+fprint!(out, "F4ARGsome_met(", s2es, ")")
+//
+|
+F4ARGsome_dyn(npf1, d3ps) =>
+fprint!
+(out, "F4ARGsome_dyn(", npf1, "; ", d3ps, ")")
+|
+F4ARGsome_sta(s2vs, s2ps) =>
+fprint!
+(out, "F4ARGsome_sta(", s2vs, "; ", s2ps, ")")
+//
+) (* end of [fprint_f4arg] *)
 //
 (* ****** ****** *)
 //

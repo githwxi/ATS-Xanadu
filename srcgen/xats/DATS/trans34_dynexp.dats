@@ -230,8 +230,20 @@ aux_fundecl
 ! tr34env
 , d3cl: d3ecl): d4ecl =
 let
+//
 val
 loc0 = d3cl.loc()
+//
+val-
+D3Cfundecl
+( tok0
+, mopt
+, tqas, f3ds) = d3cl.node()
+//
+val
+f4ds =
+trans34_fundeclist(env0, f3ds)
+//
 in
 d4ecl_make_node(loc0, D4Cnone1(d3cl))
 end
