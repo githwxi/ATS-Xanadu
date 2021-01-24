@@ -222,4 +222,94 @@ end // list_map$fopr
 //
 (* ****** ****** *)
 
+local
+
+fun
+aux_fundecl
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+val
+loc0 = d3cl.loc()
+in
+d4ecl_make_node(loc0, D4Cnone1(d3cl))
+end
+
+in(*in-of-local*)
+
+implement
+trans34_decl
+( env0, d3cl) =
+let
+//
+val () =
+println!
+("trans34_decl: d3cl = ", d3cl)
+//
+in(*in-of-local*)
+//
+case+
+d3cl.node() of
+| D3Cfundecl _ =>
+  aux_fundecl(env0, d3cl)
+|
+_(*rest-of-d3ecl*) =>
+let
+  val
+  loc0 = d3cl.loc()
+in
+  d4ecl_make_node(loc0, D4Cnone1(d3cl))
+end
+//
+end // end of [trans34_decl]
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+implement
+trans34_declopt
+( env0, opt0 ) =
+(
+case+ opt0 of
+| None() => None()
+| Some(d3cl) =>
+  Some(trans34_decl(env0, d3cl))
+)
+//
+implement
+trans34_declist
+(  env0, dcls  ) =
+(
+list_vt2t
+(
+list_map<d3ecl><d4ecl>(dcls)
+)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<d3ecl><d4ecl>
+  (d3cl) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+val
+d4cl = trans34_decl(env0, d3cl)
+//
+in
+let
+prval () = $UN.cast2void(env0) in d4cl
+end
+end // list_map$fopr
+} (* end of [trans34_declist] *)
+//
+(* ****** ****** *)
+
 (* end of [xats_trans34_dynexp.dats] *)

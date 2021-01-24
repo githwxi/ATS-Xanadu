@@ -52,8 +52,16 @@ typedef s2var = $S2E.s2var
 typedef s2exp = $S2E.s2exp
 typedef t2xtv = $S2T.t2xtv
 typedef t2ype = $S2T.t2ype
+
+(* ****** ****** *)
+
+typedef s2varopt = $S2E.s2varopt
 typedef s2varlst = $S2E.s2varlst
+typedef s2expopt = $S2E.s2expopt
 typedef s2explst = $S2E.s2explst
+
+(* ****** ****** *)
+
 typedef t2xtvlst = $S2T.t2xtvlst
 typedef t2ypelst = $S2T.t2ypelst
 
@@ -97,7 +105,7 @@ typedef d4expopt = $D4E.d4expopt
 typedef d4explst = $D4E.d4explst
 (* ****** ****** *)
 typedef d4eclopt = $D4E.d4eclopt
-typedef d4ecllst = $D4E.d4eclist
+typedef d4eclist = $D4E.d4eclist
 (* ****** ****** *)
 //
 absvtype
@@ -144,10 +152,12 @@ tr34env_pop_lams
   ( env0 : !tr34env ) : void
 //
 (* ****** ****** *)
+//
 fun
 trans34_dexp
 ( env0:
 ! tr34env, d3e0: d3exp): d4exp
+//
 (* ****** ****** *)
 fun
 trans34_dexplst
@@ -158,16 +168,31 @@ trans34_dexpopt
 ( env0:
 ! tr34env, opt0: d3expopt): d4expopt
 (* ****** ****** *)
-
+//
 fun
 trans34_decl
 ( env0:
 ! tr34env, d3c0: d3ecl): d4ecl
+//
+(* ****** ****** *)
+fun
+trans34_declist
+( env0:
+! tr34env, d3cs: d3eclist): d4eclist
 fun
 trans34_declopt
 ( env0:
 ! tr34env, opt0: d3eclopt): d4eclopt
+(* ****** ****** *)
 
+typedef f3undecl = $D3E.f3undecl
+
+(* ****** ****** *)
+//
+fun
+f3undecl_get_s2expopt
+  ( fdcl: f3undecl ) : s2expopt
+//
 (* ****** ****** *)
 
 (* end of [xats_trans34.sats] *)
