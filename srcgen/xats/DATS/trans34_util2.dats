@@ -40,6 +40,15 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp3.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/dynexp4.sats"
+#staload "./../SATS/trans34.sats"
+
 (* ****** ****** *)
 
 (* end of [xats_trans34_util2.dats] *)
