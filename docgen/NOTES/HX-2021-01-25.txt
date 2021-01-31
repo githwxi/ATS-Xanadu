@@ -1,0 +1,27 @@
+Hi, there,
+
+HX-2021-01-18:
+
+######
+#
+# Outlining
+# a design for ATS/LF in ATS3
+#
+######
+
+length
+(Nil()) = 0
+length
+(Cons(x0, xs)) = 1 + length(xs)
+
+fun
+<a:type>
+gflist_length
+(xs: list(a)): sint(length(xs))
+fun
+<a:type>
+gflist_append
+( xs: list(a)
+, ys: list(a)): list(append(xs, ys))
+
+##################################################################
