@@ -197,6 +197,14 @@ stream_vt_concat
 (xss: stream_vt(stream_vt(a))): stream_vt(a)
 //
 (* ****** ****** *)
+//
+fun
+<a:vt>
+stream_vt_prefixq // xs1 prefix-ofs xs2
+( xs1
+: stream_vt(a), xs2: stream_vt(a) ): bool 
+//
+(* ****** ****** *)
 fun
 <x0:vt>
 stream_vt_fset_at
@@ -373,14 +381,6 @@ streax_vt_istreamize
 : streax_vt(a)): stream_vt(@(nint, a))
 (* ****** ****** *)
 //
-fun
-<a:vt>
-stream_vt_prefixq // xs1 prefix-ofs xs2
-( xs1
-: stream_vt(a), xs2: stream_vt(a) ): bool 
-//
-(* ****** ****** *)
-//
 // For z2-glseq-operations
 //
 (* ****** ****** *)
@@ -440,6 +440,10 @@ cons_vt with strmcon_vt_cons
 #symload append00 with stream_vt_append of 1000
 *)
 //
+(* ****** ****** *)
+
+#symload prefixq with stream_vt_prefixq of 1000
+
 (* ****** ****** *)
 
 #symload concat with stream_vt_concat of 1000

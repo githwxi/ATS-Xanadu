@@ -173,6 +173,19 @@ list_vt_rappend11
 //
 fun
 <a:vt>
+list_vt_prefixq00
+( xs1: ~list_vt(a) // xs1: a prefix
+, xs2: ~list_vt(a) ) : bool // of [xs2]
+fun
+<a:vt>
+list_vt_suffixq00
+( xs1: ~list_vt(a) // [xs1]: a suffix
+, xs2: ~list_vt(a) ) : bool // of [xs2]
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
 <n:i0>
 list_vt_tabulate(int(n)): list_vt(a, n)
 fun
@@ -225,13 +238,13 @@ fun
 <y0:vt>
 list_vt_map0
 {n:int}
-(xs: list_vt(x0, n)): list_vt(y0, n)
+(xs: ~list_vt(x0, n)): list_vt(y0, n)
 fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev0
 {n:int}
-(xs: list_vt(x0, n)): list_vt(y0, n)
+(xs: ~list_vt(x0, n)): list_vt(y0, n)
 
 (* ****** ****** *)
 //
@@ -247,17 +260,6 @@ fun
 list_vt_permutize
 {n:int}
 (~list_vt(a,n)): stream_vt(list_vt(a,n))
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-list_vt_prefixq // xs1 prefix-ofs xs2
-(xs1: list_vt(a), xs2: list_vt(a)): bool 
-fun
-<a:vt>
-list_vt_suffixq // xs1 suffix-ofs xs2
-(xs1: list_vt(a), xs2: list_vt(a)): bool 
 //
 (* ****** ****** *)
 //
@@ -317,6 +319,13 @@ length0 with list_vt_length0 of 1000
 
 (* ****** ****** *)
 
+#symload
+prefixq00 with list_vt_prefixq00 of 1000
+#symload
+suffixq00 with list_vt_suffixq00 of 1000
+
+(* ****** ****** *)
+
 #symload forall0 with list_vt_forall0 of 1000
 #symload forall1 with list_vt_forall1 of 1000
 
@@ -341,6 +350,13 @@ length0 with list_vt_length0 of 1000
 #symload mergesort with list_vt_mergesort of 1000
 (*
 #symload mergesort0 with list_vt_mergesort of 1000
+*)
+//
+(* ****** ****** *)
+//
+#symload permutize with list_vt_permutize of 1000
+(*
+#symload permutize0 with list_vt_permutize of 1000
 *)
 //
 (* ****** ****** *)
