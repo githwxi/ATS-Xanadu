@@ -1000,8 +1000,6 @@ istreamize with gseq_istreamize of 0100
 (* ****** ****** *)
 
 #symload
-extendq with gseq_extendq of 0100
-#symload
 prefixq with gseq_prefixq of 0100
 #symload
 suffixq with gseq_suffixq of 0100
