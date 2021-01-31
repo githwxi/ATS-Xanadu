@@ -250,6 +250,17 @@ list_vt_permutize
 //
 (* ****** ****** *)
 //
+fun
+<a:vt>
+list_vt_prefixq // xs1 prefix-ofs xs2
+(xs1: list_vt(a), xs2: list_vt(a)): bool 
+fun
+<a:vt>
+list_vt_suffixq // xs1 suffix-ofs xs2
+(xs1: list_vt(a), xs2: list_vt(a)): bool 
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for list
 //

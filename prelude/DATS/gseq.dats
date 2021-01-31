@@ -1676,6 +1676,36 @@ end // end of [gseq_permutize]
 
 (* ****** ****** *)
 //
+impltmp
+<xs><x0>
+gseq_prefixq
+( xs1, xs2 ) =
+(
+stream_vt_prefixq(xs1, xs2)
+) where
+{
+  val xs1 =
+  gseq_streamize<xs><x0>(xs1)
+  val xs2 =
+  gseq_streamize<xs><x0>(xs2)
+} (* end of [gseq_prefixq] *)
+//
+impltmp
+<xs><x0>
+gseq_suffixq
+( xs1, xs2 ) =
+(
+list_vt_suffixq(xs1, xs2)
+) where
+{
+  val xs1 =
+  gseq_listize<xs><x0>(xs1)
+  val xs2 =
+  gseq_listize<xs><x0>(xs2)
+} (* end of [gseq_suffixq] *)
+//
+(* ****** ****** *)
+//
 // For z2-gseq-operations
 //
 (* ****** ****** *)
