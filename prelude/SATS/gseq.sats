@@ -483,13 +483,26 @@ gseq_append_stream
 //
 fun
 <cz:t0>
-gseq_concat_string(css: cz): string_vt
+gseq_concat_string
+  (css: cz): string_vt
 //
 fun
 <xz:t0>
 <xs:t0>
 <x0:t0>
-gseq_concat_stream(xss: xz): stream_vt(x0)
+gseq_concat_stream
+  (xss: xz): stream_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_prefixq(xs1: xs, xs2: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_suffixq(xs1: xs, xs2: xs): bool
 //
 (* ****** ****** *)
 //
@@ -621,21 +634,6 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_permutize(xs: xs): stream_vt(xs)
-//
-(* ****** ****** *)
-//
-// For some binary ops
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_prefixq(xs1: xs, xs2: xs): bool
-fun
-<xs:t0>
-<x0:t0>
-gseq_suffixq(xs1: xs, xs2: xs): bool
 //
 (* ****** ****** *)
 //

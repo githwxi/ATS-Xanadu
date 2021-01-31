@@ -837,7 +837,7 @@ end (* end of [list_vt_permutize] *)
 //
 impltmp
 <a>(*tmp*)
-list_vt_suffixq
+list_vt_suffixq00
   (xs1, xs2) =
 let
   val xs1 =
@@ -845,14 +845,14 @@ let
   and xs2 =
   list_vt_reverse(xs2)
 in
-  list_vt_prefixq<a>(xs1, xs2)
-end // end of [list_vt_suffixq]
+  list_vt_prefixq00<a>(xs1, xs2)
+end // end of [list_vt_suffixq00]
 //
 (* ****** ****** *)
 //
 impltmp
 <a>(*tmp*)
-list_vt_prefixq
+list_vt_prefixq00
   (xs1, xs2) =
 (
   auxloop(xs1, xs2)
@@ -891,7 +891,7 @@ list_vt_cons(x1, xs1) =>
   end // end of [let]
 )
 ) (* end of [auxloop] *)
-} (*where*) // end of [list_vt_prefixq]
+} (*where*) // end of [list_vt_prefixq00]
 //
 (* ****** ****** *)
 //
