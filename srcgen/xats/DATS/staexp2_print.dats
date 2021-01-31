@@ -182,10 +182,12 @@ fprintln!(out, "S2Tnone1(", s1tsrc, ")")
 //
 ) where
 {
+(*
 val () =
 fprintln!
 ( out
-, "fprint_sort2: s2t0 =", $UN.cast{ptr}(s2t0))
+, "fprint_sort2: s2t0 = ", $UN.cast{ptr}(s2t0))
+*)
 } (* case *) // end of [fprint_sort2]
 
 end // end of [local]
