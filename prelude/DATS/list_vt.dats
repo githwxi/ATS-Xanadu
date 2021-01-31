@@ -835,6 +835,66 @@ end (* end of [list_vt_permutize] *)
 
 (* ****** ****** *)
 //
+impltmp
+<a>(*tmp*)
+list_vt_suffixq
+  (xs1, xs2) =
+let
+  val xs1 =
+  list_vt_reverse(xs1)
+  and xs2 =
+  list_vt_reverse(xs2)
+in
+  list_vt_prefixq<a>(xs1, xs2)
+end // end of [list_vt_suffixq]
+//
+(* ****** ****** *)
+//
+impltmp
+<a>(*tmp*)
+list_vt_prefixq
+  (xs1, xs2) =
+(
+  auxloop(xs1, xs2)
+) where
+{
+fun
+auxloop
+( xs1
+: list_vt(a)
+, xs2
+: list_vt(a)): bool =
+(
+case+ xs1 of
+| ~
+list_vt_nil() =>
+(g_free(xs2); true)
+| ~
+list_vt_cons(x1, xs1) =>
+(
+  case+ xs2 of
+  | ~
+  list_vt_nil() =>
+  ( g_free(x1)
+  ; g_free(xs1); false)
+  | ~
+  list_vt_cons(x2, xs2) =>
+  let
+    val
+    sgn = gl_cmp00<a>(x1, x2)
+  in
+    if
+    (sgn = 0)
+    then auxloop(xs1, xs2)
+    else
+    (g_free(xs1); g_free(xs2); false)
+  end // end of [let]
+)
+) (* end of [auxloop] *)
+} (*where*) // end of [list_vt_prefixq]
+//
+(* ****** ****** *)
+//
 // For glseq-operations
 //
 (* ****** ****** *)

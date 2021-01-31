@@ -1510,6 +1510,50 @@ strxcon_vt_cons
 } (*where*) // end of [streax_vt_istreamize]
 
 (* ****** ****** *)
+
+impltmp
+<a>(*tmp*)
+stream_vt_prefixq
+  (xs1, xs2) =
+(
+  auxloop(xs1, xs2)
+) where
+{
+fun
+auxloop
+( xs1
+: stream_vt(a)
+, xs2
+: stream_vt(a)): bool =
+(
+case+ !xs1 of
+| ~
+strmcon_vt_nil() =>
+(g_free(xs2); true)
+| ~
+strmcon_vt_cons(x1, xs1) =>
+(
+  case+ !xs2 of
+  | ~
+  strmcon_vt_nil() =>
+  (g_free(x1); g_free(xs1); false)
+  | ~
+  strmcon_vt_cons(x2, xs2) =>
+  let
+    val
+    sgn = gl_cmp00<a>(x1, x2)
+  in
+    if
+    (sgn = 0)
+    then auxloop(xs1, xs2)
+    else
+    (g_free(xs1); g_free(xs2); false)
+  end // end of [let]
+)
+) (* end of [auxloop] *)
+} (*where*) // end of [stream_vt_prefixq]
+
+(* ****** ****** *)
 //
 // For z2-glseq-operations
 //

@@ -624,6 +624,21 @@ gseq_permutize(xs: xs): stream_vt(xs)
 //
 (* ****** ****** *)
 //
+// For some binary ops
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_prefixq(xs1: xs, xs2: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_suffixq(xs1: xs, xs2: xs): bool
+//
+(* ****** ****** *)
+//
 // For z2-gseq-operations
 //
 (* ****** ****** *)
@@ -871,36 +886,52 @@ fset_at with gseq_fset_at of 0100
 get_at_opt with gseq_get_at_opt of 0100
 (* ****** ****** *)
 //
-#symload max2 with gseq_max2 of 0100
-#symload min2 with gseq_min2 of 0100
+#symload
+max2 with gseq_max2 of 0100
+#symload
+min2 with gseq_min2 of 0100
 //
-#symload max_exn with gseq_max_exn of 0100
-#symload min_exn with gseq_min_exn of 0100
+#symload
+max_exn with gseq_max_exn of 0100
+#symload
+min_exn with gseq_min_exn of 0100
 //
-#symload max_opt with gseq_max_opt of 0100
-#symload min_opt with gseq_min_opt of 0100
-//
-(* ****** ****** *)
-
-#symload sortedq with gseq_sortedq of 0100
-
-(* ****** ****** *)
-//
-#symload foldr with gseq_foldr of 0100
-#symload rforall with gseq_rforall of 0100
-#symload rforeach with gseq_rforeach of 0100
+#symload
+max_opt with gseq_max_opt of 0100
+#symload
+min_opt with gseq_min_opt of 0100
 //
 (* ****** ****** *)
 
-#symload listize with gseq_listize of 0100
-#symload rlistize with gseq_rlistize of 0100
-#symload streamize with gseq_streamize of 0100
+#symload
+sortedq with gseq_sortedq of 0100
+
+(* ****** ****** *)
+//
+#symload
+foldr with gseq_foldr of 0100
+#symload
+rforall with gseq_rforall of 0100
+#symload
+rforeach with gseq_rforeach of 0100
+//
+(* ****** ****** *)
+
+#symload
+listize with gseq_listize of 0100
+#symload
+rlistize with gseq_rlistize of 0100
+#symload
+streamize with gseq_streamize of 0100
 
 (* ****** ****** *)
 
-#symload map_list with gseq_map_list of 0100
-#symload map_rlist with gseq_map_rlist of 0100
-#symload map_stream with gseq_map_stream of 0100
+#symload
+map_list with gseq_map_list of 0100
+#symload
+map_rlist with gseq_map_rlist of 0100
+#symload
+map_stream with gseq_map_stream of 0100
 
 (* ****** ****** *)
 
@@ -913,10 +944,14 @@ mapopt_stream with gseq_mapopt_stream of 0100
 
 (* ****** ****** *)
 
-#symload append with gseq_append of 0100
-#symload concat with gseq_append of 0100
-#symload reverse with gseq_append of 0100
-#symload rappend with gseq_append of 0100
+#symload
+append with gseq_append of 0100
+#symload
+concat with gseq_append of 0100
+#symload
+reverse with gseq_append of 0100
+#symload
+rappend with gseq_append of 0100
 
 (* ****** ****** *)
 
@@ -929,12 +964,15 @@ concat_string with gseq_concat_string of 0100
 
 (* ****** ****** *)
 
-#symload ifoldl with gseq_ifoldl of 0100
+#symload
+ifoldl with gseq_ifoldl of 0100
 
 (* ****** ****** *)
 
-#symload iforall with gseq_iforall of 0100
-#symload iforeach with gseq_iforeach of 0100
+#symload
+iforall with gseq_iforall of 0100
+#symload
+iforeach with gseq_iforeach of 0100
 
 (* ****** ****** *)
 
@@ -946,6 +984,27 @@ imap_rlist with gseq_imap_rlist of 0100
 imap_stream with gseq_imap_stream of 0100
 #symload
 imapopt_stream with gseq_imapopt_stream of 0100
+
+(* ****** ****** *)
+
+#symload
+ifilter_list with gseq_ifilter_list of 0100
+#symload
+ifilter_rlist with gseq_ifilter_rlist of 0100
+
+(* ****** ****** *)
+
+#symload
+istreamize with gseq_istreamize of 0100
+
+(* ****** ****** *)
+
+#symload
+extendq with gseq_extendq of 0100
+#symload
+prefixq with gseq_prefixq of 0100
+#symload
+suffixq with gseq_suffixq of 0100
 
 (* ****** ****** *)
 

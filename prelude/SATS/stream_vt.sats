@@ -373,6 +373,14 @@ streax_vt_istreamize
 : streax_vt(a)): stream_vt(@(nint, a))
 (* ****** ****** *)
 //
+fun
+<a:vt>
+stream_vt_prefixq // xs1 prefix-ofs xs2
+( xs1
+: stream_vt(a), xs2: stream_vt(a) ): bool 
+//
+(* ****** ****** *)
+//
 // For z2-glseq-operations
 //
 (* ****** ****** *)
