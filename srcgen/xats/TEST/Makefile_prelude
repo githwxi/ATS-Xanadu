@@ -36,6 +36,8 @@ all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gint.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gflt.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gintb.sats
 
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gfor.sats

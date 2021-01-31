@@ -126,6 +126,8 @@ mul_b0_b0:
 //
 sexpdef + = add_b0_b0 // overloading
 sexpdef * = mul_b0_b0 // overloading
+sexpdef || = add_b0_b0 // overloading
+sexpdef && = mul_b0_b0 // overloading
 (*
 sexpdef add = add_b0_b0 // overloading
 sexpdef mul = mul_b0_b0 // overloading
