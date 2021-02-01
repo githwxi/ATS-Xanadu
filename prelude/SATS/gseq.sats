@@ -517,6 +517,11 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_group
+( xs: xs ): stream_vt(xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_group_list
 ( xs: xs ): stream_vt(list_vt(x0))
 //
 (* ****** ****** *)

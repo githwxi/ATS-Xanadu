@@ -330,7 +330,7 @@ streax_vt_mapstrm0
 (* ****** ****** *)
 fun
 <x0:vt>
-stream_vt_group
+stream_vt_group_list
 ( xs
 : stream_vt(x0))
 : stream_vt(list_vt(x0))

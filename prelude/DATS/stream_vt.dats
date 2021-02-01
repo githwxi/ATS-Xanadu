@@ -1301,28 +1301,24 @@ end // end of [strmcon_vt_cons]
 } (* end of [stream_vt_mapstrm0] *)
 
 (* ****** ****** *)
-
+//
 impltmp
 <x0>(*tmp*)
-stream_vt_group
+stream_vt_group_list
   (xs) =
 (
-  auxmain0(xs)
-) where
+  auxmain0(xs)) where
 {
 //
-vwtpdef
-r0 = list_vt(x0)
-vwtpdef
-xs = stream_vt(x0)
+vwtpdef r0 = list_vt(x0)
+vwtpdef xs = stream_vt(x0)
 //
 fnx
 auxmain0
 ( xs: xs) =
 $llazy
 (
-auxmain1
-( xs, list_vt_nil())
+auxmain1(xs, list_vt_nil())
 )
 //
 and
@@ -1351,15 +1347,14 @@ auxmain1
 (xs, list_vt_cons(x0, r0))
 else
 let
-val r0 =
-list_vt_reverse<x0>(r0)
+val r0 = list_vt_reverse<x0>(r0)
 in
   g_free(x0)
 ; strmcon_vt_cons(r0, auxmain0(xs))
 end // end of [strmcon_vt_cons]
 )
 //
-} (*where*) // end of [stream_vt_group]
+} (* end of [stream_vt_group_list] *)
 
 (* ****** ****** *)
 //
