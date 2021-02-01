@@ -926,10 +926,13 @@ strmcon_vt_nil()
 strmcon_vt_cons
   (x0, xs) =>
 ( if
-  filter0$test<x0>(x0)
+  filter0$test(x0)
   then
-  strmcon_vt_cons
-  (x0, auxmain(xs)) else auxloop(!xs)
+  strmcon_vt_cons(x0, auxmain(xs))
+  else
+  let
+  val () = g_free(x0) in auxloop(!xs)
+  end
 ) (* end of [strmcom_vt_cons] *)
 )
 } (* end of [stream_vt_filter0] *)
@@ -966,10 +969,13 @@ case+ xs of
 strxcon_vt_cons
   (x0, xs) =>
 ( if
-  filter0$test<x0>(x0)
+  filter0$test(x0)
   then
-  strxcon_vt_cons
-  (x0, auxmain(xs)) else auxloop(!xs)
+  strxcon_vt_cons(x0, auxmain(xs))
+  else
+  let
+  val () = g_free(x0) in auxloop(!xs)
+  end
 ) (* end of [strxcom_vt_cons] *)
 )
 } (* end of [streax_vt_filter0] *)
@@ -1293,6 +1299,67 @@ in
 end // end of [strmcon_vt_cons]
 )
 } (* end of [stream_vt_mapstrm0] *)
+
+(* ****** ****** *)
+
+impltmp
+<x0>(*tmp*)
+stream_vt_group
+  (xs) =
+(
+  auxmain0(xs)
+) where
+{
+//
+vwtpdef
+r0 = list_vt(x0)
+vwtpdef
+xs = stream_vt(x0)
+//
+fnx
+auxmain0
+( xs: xs) =
+$llazy
+(
+auxmain1
+( xs, list_vt_nil())
+)
+//
+and
+auxmain1
+( xs: xs
+, r0: r0)
+: strmcon_vt(r0) =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) =>
+let
+val r0 =
+list_vt_reverse<x0>(r0)
+in
+  strmcon_vt_sing<r0>(r0)
+end // end of [strmcon_vt_cons]
+| ~
+strmcon_vt_cons
+  ( x0, xs ) =>
+if
+group0$test<x0>(x0)
+then
+auxmain1
+(xs, list_vt_cons(x0, r0))
+else
+let
+val r0 =
+list_vt_reverse<x0>(r0)
+in
+  g_free(x0)
+; strmcon_vt_cons(r0, auxmain0(xs))
+end // end of [strmcon_vt_cons]
+)
+//
+} (*where*) // end of [stream_vt_group]
 
 (* ****** ****** *)
 //

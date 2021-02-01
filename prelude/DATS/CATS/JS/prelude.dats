@@ -393,7 +393,12 @@ XATS2JS_stream_vt_filter0_cfr
 stream_vt_filter0<x0>(xs)
 ) where
 {
+//
+  impltmp
+  g_free<x0>(x0) = () // leak!
+//
   impltmp filter0$test<x0>(x0) = f0(x0)
+//
 } (* end of [XATS2JS_stream_vt_filter0_cfr] *)
 
 (* ****** ****** *)
