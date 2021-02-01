@@ -143,7 +143,7 @@ fun
 filter$test(x0: x0): bool
 fun
 <x0:vt>
-filter0$test(x0: ~x0): bool
+filter0$test(x0: !x0): bool
 fun
 <x0:vt>
 filter1$test(x0: !x0): bool
@@ -155,7 +155,7 @@ fun
 search$test(x0: x0): bool
 fun
 <x0:t0>
-search0$test(x0: ~x0): bool
+search0$test(x0: !x0): bool
 fun
 <x0:t0>
 search1$test(x0: !x0): bool
@@ -167,7 +167,7 @@ fun
 rsearch$test(x0: x0): bool
 fun
 <x0:t0>
-rsearch0$test(x0: ~x0): bool
+rsearch0$test(x0: !x0): bool
 fun
 <x0:t0>
 rsearch1$test(x0: !x0): bool
@@ -285,7 +285,19 @@ foldr1$fopr(x0: !x0, r0: r0): r0
 //
 fun
 <x0:t0>
+group$test(x0: x0): bool
+fun
+<x0:vt>
+group0$test(x0: !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 sieve$test(x1: x0, x2: x0): bool
+fun
+<x0:vt>
+sieve0$test(x1: !x0, x2: !x0): bool
 //
 (* ****** ****** *)
 //
@@ -349,7 +361,7 @@ fun
 idropif$test(nint, x0): bool
 fun
 <x0:vt>
-idropif0$test(nint, ~x0): bool
+idropif0$test(nint, !x0): bool
 fun
 <x0:vt>
 idropif1$test(nint, !x0): bool
@@ -361,7 +373,7 @@ fun
 itakeif$test(nint, x0): bool
 fun
 <x0:vt>
-itakeif0$test(nint, ~x0): bool
+itakeif0$test(nint, !x0): bool
 fun
 <x0:vt>
 itakeif1$test(nint, !x0): bool
@@ -373,7 +385,7 @@ fun
 ifilter$test(nint, x0): bool
 fun
 <x0:vt>
-ifilter0$test(nint, ~x0): bool
+ifilter0$test(nint, !x0): bool
 fun
 <x0:vt>
 ifilter1$test(nint, !x0): bool

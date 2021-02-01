@@ -328,6 +328,18 @@ streax_vt_mapstrm0
   (xs: streax_vt(x0)): streax_vt(y0)
 //
 (* ****** ****** *)
+fun
+<x0:vt>
+stream_vt_group
+( xs
+: stream_vt(x0))
+: stream_vt(list_vt(x0))
+(* ****** ****** *)
+fun
+<x0:vt>
+stream_vt_sieve
+  (xs: stream_vt(x0)): stream_vt(x0)
+(* ****** ****** *)
 //
 // For glseq-i-operations
 //

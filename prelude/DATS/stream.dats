@@ -675,6 +675,10 @@ case+ !xs of
 } (* stream_sieve_vt *)
 //
 (* ****** ****** *)
+//
+// For gseq-i-operations
+//
+(* ****** ****** *)
 
 impltmp
 <x0><y0>

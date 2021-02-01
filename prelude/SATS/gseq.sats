@@ -498,11 +498,26 @@ gseq_concat_stream
 fun
 <xs:t0>
 <x0:t0>
-gseq_prefixq(xs1: xs, xs2: xs): bool
+gseq_prefixq
+  (xs1: xs, xs2: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_suffixq(xs1: xs, xs2: xs): bool
+gseq_suffixq
+  (xs1: xs, xs2: xs): bool
+//
+(* ****** ****** *)
+//
+(*
+fun
+<x0:t0>
+group$test(x0: x0): bool
+*)
+fun
+<xs:t0>
+<x0:t0>
+gseq_group
+( xs: xs ): stream_vt(list_vt(x0))
 //
 (* ****** ****** *)
 //
