@@ -158,6 +158,12 @@ else
 ) (* end of [mapoptn1$fopr] *)
 
 (* ****** ****** *)
+(*
+imptmp
+{x0:t0}
+group0$test<x0> = group$test<x0>
+*)
+(* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
