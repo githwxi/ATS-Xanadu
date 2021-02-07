@@ -1160,7 +1160,7 @@ val env0 =
 $UN.castvwtp0{tr3xenv}(env0)
 val d3cl = trans3x_decl(env0, d3cl)
 in
-let prval () = $UN.cast2void(env0) in d3cl end
+  let prval() = $UN.cast2void(env0) in d3cl end
 end
 }
 end // end of [trans3x_declist]
