@@ -38,7 +38,6 @@ xatsopt_version
   (out: FILEref): void
 //
 (* ****** ****** *)
-
 #staload
 D0E = "./../SATS/dynexp0.sats"
 #staload
@@ -48,8 +47,10 @@ D2E = "./../SATS/dynexp2.sats"
 #staload
 D3E = "./../SATS/dynexp3.sats"
 #staload
+D4E = "./../SATS/dynexp4.sats"
+(* ****** ****** *)
+#staload
 HIR = "./../SATS/intrep0.sats"
-
 (* ****** ****** *)
 //
 typedef
@@ -60,6 +61,8 @@ typedef
 d2transd = $D2E.d2transd
 typedef
 d3transd = $D3E.d3transd
+typedef
+d4transd = $D4E.d4transd
 //
 typedef
 h0comped = $HIR.h0comped
@@ -75,6 +78,9 @@ trans02_package
 fun
 trans03_package
   (p0kg: d0parsed): d3transd
+fun
+trans04_package
+  (p0kg: d0parsed): d4transd
 //
 (* ****** ****** *)
 //

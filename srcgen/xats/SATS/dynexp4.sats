@@ -354,6 +354,18 @@ f4undeclist = List0(f4undecl)
 (* ****** ****** *)
 //
 datatype
+d4transd =
+D4TRANSD of @{
+  stadyn= int
+, source= filpath
+, transd=
+  Option(d4eclist)
+} where
+  filpath= $FP0.filpath
+//
+(* ****** ****** *)
+//
+datatype
 d4ecl_node =
 //
 | D4Cnone0 of ()
