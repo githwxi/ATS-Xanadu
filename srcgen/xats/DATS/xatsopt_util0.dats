@@ -139,11 +139,18 @@ val () =
 assertloc
 ($GLO.the_global_level() = 0)
 //
-in
+val p1kg =
 D1TRANSD@{
   stadyn= rcd.stadyn
 , source= rcd.source, transd= d1csopt
 }
+//
+in
+//
+let
+val () = tread01_package(p1kg) in p1kg
+end
+//
 end // end of [trans01_package]
 
 (* ****** ****** *)
@@ -156,32 +163,29 @@ val
 p1kg =
 trans01_package(p0kg)
 //
-val+
-D1TRANSD(rcd) = p1kg
-val
-d1csopt =
-rcd.transd where
-{
-  val () =
-  tread01_package(p1kg)
-}
+val+D1TRANSD(rcd) = p1kg
 //
 val
 d2csopt =
 (
 case+
-d1csopt of
+rcd.transd of
 | None() =>
   None(*void*)
 | Some(d1cs) =>
   Some(trans12_declist(d1cs))
 ) : Option(d2eclist) // end-of-val
 //
-in
+val p2kg =
 D2TRANSD@{
   stadyn= rcd.stadyn
 , source= rcd.source, transd= d2csopt
 }
+//
+in
+let
+val () = tread12_package(p2kg) in p2kg
+end
 end // end of [trans02_package]
 
 (* ****** ****** *)
@@ -195,18 +199,11 @@ p2kg =
 trans02_package(p0kg)
 //
 local
-val+
-D2TRANSD(rcd) = p2kg
+val+D2TRANSD(rcd) = p2kg
 in
 val stadyn = rcd.stadyn
 val source = rcd.source
-val
-d2csopt =
-rcd.transd where
-{
-  val () =
-  tread12_package(p2kg)
-}
+val d2csopt = rcd.transd
 end // end of [local]
 //
 val
@@ -272,36 +269,30 @@ d3csopt of
   Some(trans3x_envless(d3cs))
 ) : Option(d3eclist) // end-of-val
 //
-in
+val p3kg =
 D3TRANSD@{
   stadyn= stadyn
 , source= source, transd= d3csopt
 }
+//
+in
+let
+val () = tread3x_package(p3kg) in p3kg
+end
 end // end of [trans03_package]
 
 (* ****** ****** *)
 
 implement
-trans04_package
-  (p0kg) = let
-//
-val
-p3kg =
-trans03_package(p0kg)
+trans34_package
+  (p3kg) = let
 //
 local
-val+
-D3TRANSD(rcd) = p3kg
+val+D3TRANSD(rcd) = p3kg
 in
 val stadyn = rcd.stadyn
 val source = rcd.source
-val
-d3csopt =
-rcd.transd where
-{
-  val () =
-  tread3x_package(p3kg)
-}
+val d3csopt = rcd.transd
 end // end of [local]
 //
 val
@@ -321,23 +312,36 @@ D4TRANSD@{
   stadyn= stadyn
 , source= source, transd= d4csopt
 }
-end // end of [trans04_package]
+end // end of [trans34_package]
 
 (* ****** ****** *)
-
+//
 implement
 trs03cmp30_package
+  (p0kg) =
+(
+tcomp30_package(p3kg)
+) where
+{
+val p3kg = trans03_package(p0kg)
+}
+//
+(* ****** ****** *)
+//
+implement
+trs04cmp30_package
   (p0kg) = let
 //
-val p3kg = trans03_package(p0kg)
+val
+p3kg =
+trans03_package(p0kg)
 //
-in
-let
-val () =
-tread3x_package(p3kg) in tcomp30_package(p3kg)
-end // end of [let]
-end // end of [trs03cmp30_package]
-
+val
+p4kg =
+trans34_package(p3kg) in tcomp30_package(p3kg)
+//
+end // end of [trs04cmp30_package]
+//
 (* ****** ****** *)
 //
 implement

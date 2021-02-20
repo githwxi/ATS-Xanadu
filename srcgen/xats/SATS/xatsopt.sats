@@ -78,9 +78,17 @@ trans02_package
 fun
 trans03_package
   (p0kg: d0parsed): d3transd
+//
+(* ****** ****** *)
+//
+fun
+trans34_package
+  (p3kg: d3transd): d4transd
+(*
 fun
 trans04_package
   (p0kg: d0parsed): d4transd
+*)
 //
 (* ****** ****** *)
 //
