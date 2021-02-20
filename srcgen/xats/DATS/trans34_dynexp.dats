@@ -84,6 +84,26 @@ implement
 fprint_val<d3exp> = fprint_d3exp
 (* ****** ****** *)
 
+implement
+trans34_envless
+  (prog) =
+  (prog) where
+{
+//
+val
+env0 =
+tr34env_make_nil()
+//
+val
+prog =
+trans34_declist(env0, prog)
+//
+val () = tr34env_free_nil(env0)
+//
+} (* end of [trans34_envless] *)
+
+(* ****** ****** *)
+
 local
 
 in(*in-of-local*)

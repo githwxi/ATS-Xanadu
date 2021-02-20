@@ -282,6 +282,50 @@ end // end of [trans03_package]
 (* ****** ****** *)
 
 implement
+trans04_package
+  (p0kg) = let
+//
+val
+p3kg =
+trans03_package(p0kg)
+//
+local
+val+
+D3TRANSD(rcd) = p3kg
+in
+val stadyn = rcd.stadyn
+val source = rcd.source
+val
+d3csopt =
+rcd.transd where
+{
+  val () =
+  tread3x_package(p3kg)
+}
+end // end of [local]
+//
+val
+d4csopt =
+(
+case+
+d3csopt of
+| None() =>
+  None(*void*)
+| Some(d3cs) =>
+  Some
+  (trans34_envless(d3cs))
+) : Option(d4eclist) // end-of-val
+//
+in
+D4TRANSD@{
+  stadyn= stadyn
+, source= source, transd= d4csopt
+}
+end // end of [trans04_package]
+
+(* ****** ****** *)
+
+implement
 trs03cmp30_package
   (p0kg) = let
 //

@@ -119,7 +119,7 @@ val () =
 //
 val () = implenv_free_nil(env0)
 //
-} (* end of [trans3t_package] *)
+} (* end of [trans3t_envless] *)
 
 (* ****** ****** *)
 
