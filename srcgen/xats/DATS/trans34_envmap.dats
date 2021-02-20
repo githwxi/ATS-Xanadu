@@ -83,8 +83,10 @@ val+
 ~TR34ENV(stk0) = env0
 in
 case+ stk0 of
+//
 |
 ~tr34stk_nil((*void*)) => ()
+//
 end
 ) (* end of [tr34env_free_nil] *)
 //
