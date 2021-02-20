@@ -51,5 +51,43 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans34.sats"
 
 (* ****** ****** *)
+//
+datavtype
+tr34env =
+TR34ENV of tr34stk
+//
+and
+tr34stk =
+//
+| tr34stk_nil of ()
+//
+(* ****** ****** *)
+
+absimpl
+tr34env_vtype = tr34env
+
+(* ****** ****** *)
+
+implement
+tr34env_make_nil() =
+TR34ENV(tr34stk_nil(*void*))
+
+(* ****** ****** *)
+//
+implement
+tr34env_free_nil
+  (env0) =
+(
+let
+val+
+~TR34ENV(stk0) = env0
+in
+case+ stk0 of
+|
+~tr34stk_nil((*void*)) => ()
+end
+) (* end of [tr34env_free_nil] *)
+//
+(* ****** ****** *)
 
 (* end of [xats_trans34_envmap.dats] *)

@@ -116,6 +116,16 @@ tr34env = tr34env_vtype
 (* ****** ****** *)
 //
 fun
+tr34env_make_nil
+  ((*void*)): tr34env
+//
+fun
+tr34env_free_nil
+  (env0: tr34env): void
+//
+(* ****** ****** *)
+//
+fun
 tr34env_add_let1
   ( env0: !tr34env ) : void
 //
@@ -150,6 +160,12 @@ tr34env_pop_fix1
 fun
 tr34env_pop_lams
   ( env0 : !tr34env ) : void
+//
+(* ****** ****** *)
+//
+fun
+trans34_envless
+  (d3cls: d3eclist): d4eclist
 //
 (* ****** ****** *)
 //
