@@ -5,10 +5,19 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
-
+(*
 val int = 10
 val chr = 'a'
 val btf = true
+*)
+(* ****** ****** *)
+
+#extern
+fun
+foo(x: int): int
+val res = foo(10)
+
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 //

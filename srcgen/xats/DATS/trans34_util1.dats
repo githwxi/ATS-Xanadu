@@ -40,6 +40,17 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/staexp2.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/trans34.sats"
+
+(* ****** ****** *)
+
+implement
+trans34_d4exp_deuni(d4e0) = d4e0
+
 (* ****** ****** *)
 
 (* end of [xats_trans34_util1.dats] *)

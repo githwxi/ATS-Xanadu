@@ -260,6 +260,8 @@ d4exp_node =
 //
 | D4Evar of (d2var)
 //
+| D4Efcst of (d2cst)
+//
 (*
 | D4Eexist1 of
   (s2explst, d4exp)

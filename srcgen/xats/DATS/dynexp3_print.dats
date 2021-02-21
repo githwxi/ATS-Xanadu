@@ -179,6 +179,11 @@ implement
 fprint_d3pat
   (out, x0) =
 (
+fprint!(out, ":", x0.type())
+) where
+{
+val () =
+(
 case+ x0.node() of
 //
 | D3Pnil() =>
@@ -275,11 +280,14 @@ case+ x0.node() of
   fprint!
   (out, "D3Ptcast(", d3p1, "; ", t2p2, ")")
 //
-| D3Pnone0() => fprint!(out, "D3Pnone0(", ")")
-| D3Pnone1(d1psrc) => fprint!(out, "D3Pnone1(", d1psrc, ")")
-| D3Pnone2(d2psrc) => fprint!(out, "D3Pnone2(", d2psrc, ")")
+| D3Pnone0
+  ((*void*)) => fprint!(out, "D3Pnone0(", ")")
+| D3Pnone1
+  ( d1psrc ) => fprint!(out, "D3Pnone1(", d1psrc, ")")
+| D3Pnone2
+  ( d2psrc ) => fprint!(out, "D3Pnone2(", d2psrc, ")")
 //
-) (* end of [fprint_d3pat] *)
+) (*val*) } (*where*) // end of [fprint_d3pat]
 //
 (* ****** ****** *)
 //

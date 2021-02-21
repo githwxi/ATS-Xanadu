@@ -253,6 +253,9 @@ case+ x0.node() of
 | D4Evar(d2v) =>
   fprint!(out, "D4Evar(", d2v, ")")
 //
+| D4Efcst(d2c) =>
+  fprint!(out, "D4Efcst(", d2c, ")")
+//
 | D4Enone0() =>
   fprint!(out, "D4Enone0(", ")")
 | D4Enone1(d3esrc) =>
