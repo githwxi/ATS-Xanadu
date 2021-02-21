@@ -505,6 +505,11 @@ fprint_h0exp(stderr_ref, x0)
 implement
 fprint_h0exp(out, x0) =
 (
+fprint!(out, ":", x0.type())
+) where
+{
+val () =
+(
 case+
 x0.node() of
 //
@@ -715,7 +720,7 @@ x0.node() of
 (*
 | _(* H0E... *) => fprint!(out, "H0E...(...)")
 *)
-)
+) (*val*) } (*where*) // end of [fprint_h0exp]
 //
 (* ****** ****** *)
 //
