@@ -6,7 +6,9 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
-val xyz = 'a'
+val int = 10
+val chr = 'a'
+val btf = true
 ////
 (* ****** ****** *)
 //
