@@ -162,6 +162,10 @@ case+ x0.node() of
   fprint!
   (out, "D4Pvar(", d2v, ")")
 //
+| D4Pnone1(d3p) =>
+  fprint!
+  (out, "D4Pnone1(", d3p, ")")
+//
 | _(* rest-of-d4pat *) => fprint!(out, "D4P...(...)")
 //
 ) (* end of [fprint_d4pat] *)
