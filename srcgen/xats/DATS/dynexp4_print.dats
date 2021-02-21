@@ -220,6 +220,11 @@ implement
 fprint_d4exp
   (out, x0) =
 (
+fprint!(out, ":", x0.sexp())
+) where
+{
+val () =
+(
 case+ x0.node() of
 //
 | D4Ei00(int) =>
@@ -257,7 +262,8 @@ case+ x0.node() of
 | _(* rest-of-d4exp *) => fprint!(out, "D4E...(...)")
 *)
 //
-) (* end of [fprint_d4exp] *)
+) (* end of [val] *)
+} (*where*) (* end of [fprint_d4exp] *)
 //
 (* ****** ****** *)
 //

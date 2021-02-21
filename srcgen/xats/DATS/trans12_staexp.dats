@@ -1909,11 +1909,18 @@ s1e0.node() of
 //
 | S1Eint(tok) =>
   s2exp_int(token2sint(tok))
+//
+(*
+| S1Ebtf(tok) =>
+  s2exp_btf(token2sbtf(tok))
+*)
 | S1Echr(tok) =>
   s2exp_chr(token2schr(tok))
+//
 (*
 | S1Eflt of token
 *)
+//
 | S1Estr(tok) =>
   s2exp_str(token2sstr(tok))
 //
