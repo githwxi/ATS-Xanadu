@@ -328,6 +328,11 @@ implement
 fprint_d3exp
   (out, x0) =
 (
+fprint!(out, ":", x0.type())
+) where
+{
+val () =
+(
 case+
 x0.node() of
 //
@@ -640,7 +645,7 @@ x0.node() of
 | D3Enone2(d3esrc) =>
   fprint!(out, "D3Enone2(", d3esrc, ")")
 //
-)
+) (*val*) } (*where*) // end of [fprint_d3exp]
 //
 (* ****** ****** *)
 //

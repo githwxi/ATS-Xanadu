@@ -262,8 +262,7 @@ case+ x0.node() of
 | _(* rest-of-d4exp *) => fprint!(out, "D4E...(...)")
 *)
 //
-) (* end of [val] *)
-} (*where*) (* end of [fprint_d4exp] *)
+) (*val*) } (*where*) (* end of [fprint_d4exp] *)
 //
 (* ****** ****** *)
 //
