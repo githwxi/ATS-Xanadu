@@ -285,8 +285,36 @@ f4ds =
 trans34_fundeclist(env0, f3ds)
 //
 in
-d4ecl_make_node(loc0, D4Cnone1(d3cl))
+d4ecl_make_node
+( loc0
+, D4Cfundecl(tok0, mopt, tqas, f4ds))
 end
+
+(* ****** ****** *)
+
+fun
+aux_valdecl
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cvaldecl
+( tok0
+, mopt, v3ds) = d3cl.node()
+//
+val
+v4ds =
+trans34_valdeclist(env0, v3ds)
+//
+in
+d4ecl_make_node
+(loc0, D4Cvaldecl(tok0, mopt, v4ds))
+end // end of [aux_valdecl]
 
 in(*in-of-local*)
 
@@ -303,8 +331,13 @@ in(*in-of-local*)
 //
 case+
 d3cl.node() of
+//
 | D3Cfundecl _ =>
   aux_fundecl(env0, d3cl)
+//
+| D3Cvaldecl _ =>
+  aux_valdecl(env0, d3cl)
+//
 |
 _(*rest-of-d3ecl*) =>
 let
@@ -432,6 +465,70 @@ prval () = $UN.cast2void(env0) in f4d0
 end
 end // list_map$fopr
 } (* end of [trans34_fundeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+trans34_valdecl
+( env0, v3d0 ) =
+let
+//
+val+
+V3ALDECL(rcd) = v3d0
+//
+val loc = rcd.loc
+val d3p = rcd.pat
+val def = rcd.def
+//
+val d4p =
+trans34_dpat(env0, d3p)
+val def =
+trans34_dexpopt(env0, def)
+//
+in(*in-of-let*)
+//
+V4ALDECL@{
+  loc= loc
+, pat= d4p
+, def= def, wtp= rcd.wtp
+//
+} (* end of [V4ALDECL] *)
+//
+end // end of [trans34_valdecl]
+//
+(* ****** ****** *)
+//
+implement
+trans34_valdeclist
+(  env0, v3ds  ) =
+(
+list_vt2t
+(
+list_map<v3aldecl><v4aldecl>(v3ds)
+)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<v3aldecl><v4aldecl>
+  (v3d0) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+val
+v4d0 = trans34_valdecl(env0, v3d0)
+//
+in
+let
+prval () = $UN.cast2void(env0) in v4d0
+end
+end // list_map$fopr
+} (* end of [trans34_valdeclist] *)
 //
 (* ****** ****** *)
 

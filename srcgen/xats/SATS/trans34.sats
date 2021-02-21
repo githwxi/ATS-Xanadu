@@ -216,9 +216,23 @@ f3undeclist = $D3E.f3undeclist
 (* ****** ****** *)
 
 typedef
+v3aldecl = $D3E.v3aldecl
+typedef
+v3aldeclist = $D3E.v3aldeclist
+
+(* ****** ****** *)
+
+typedef
 f4undecl = $D4E.f4undecl
 typedef
 f4undeclist = $D4E.f4undeclist
+
+(* ****** ****** *)
+
+typedef
+v4aldecl = $D4E.v4aldecl
+typedef
+v4aldeclist = $D4E.v4aldeclist
 
 (* ****** ****** *)
 //
@@ -236,6 +250,17 @@ fun
 trans34_fundeclist
 ( env0:
 ! tr34env, f3ds: f3undeclist): f4undeclist
+
+(* ****** ****** *)
+
+fun
+trans34_valdecl
+( env0:
+! tr34env, v3d0: v3aldecl): v4aldecl
+fun
+trans34_valdeclist
+( env0:
+! tr34env, v3ds: v3aldeclist): v4aldeclist
 
 (* ****** ****** *)
 
