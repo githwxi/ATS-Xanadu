@@ -85,6 +85,23 @@ fprint_val<d3exp> = fprint_d3exp
 (* ****** ****** *)
 
 implement
+fprint_val<d3ecl> = fprint_d3ecl
+
+(* ****** ****** *)
+//
+implement
+fprint_val<f4undecl> = fprint_f4undecl
+//
+implement
+fprint_val<v4aldecl> = fprint_v4aldecl
+(*
+implement
+fprint_val<v4ardecl> = fprint_v4ardecl
+*)
+//
+(* ****** ****** *)
+
+implement
 trans34_envless
   (prog) =
   (prog) where
@@ -310,6 +327,10 @@ D3Cvaldecl
 val
 v4ds =
 trans34_valdeclist(env0, v3ds)
+//
+val () =
+println!
+("aux_valdecl: v4ds = ", v4ds)
 //
 in
 d4ecl_make_node

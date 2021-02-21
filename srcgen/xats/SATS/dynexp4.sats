@@ -353,6 +353,15 @@ f4undeclist = List0(f4undecl)
 //
 (* ****** ****** *)
 //
+fun
+print_f4undecl: print_type(f4undecl)
+fun
+prerr_f4undecl: prerr_type(f4undecl)
+fun
+fprint_f4undecl: fprint_type(f4undecl)
+//
+(* ****** ****** *)
+//
 datatype
 v4aldecl =
 V4ALDECL of @{
@@ -367,6 +376,15 @@ V4ALDECL of @{
 //
 typedef
 v4aldeclist = List0(v4aldecl)
+//
+(* ****** ****** *)
+//
+fun
+print_v4aldecl: print_type(v4aldecl)
+fun
+prerr_v4aldecl: prerr_type(v4aldecl)
+fun
+fprint_v4aldecl: fprint_type(v4aldecl)
 //
 (* ****** ****** *)
 //
