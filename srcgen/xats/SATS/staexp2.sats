@@ -719,6 +719,10 @@ datatype
 s2exp_node =
 //
 | S2Eint of (int) // integer
+(*
+| S2Eirp of string // intrep
+*)
+//
 | S2Ebtf of (bool) // boolean
 | S2Echr of (char) // character
 //
@@ -817,8 +821,13 @@ s2exp_btf(b0: bool): s2exp
 fun
 s2exp_chr(c0: char): s2exp
 //
+(* ****** ****** *)
+//
 fun
-s2exp_str(s0: string): s2exp
+s2exp_irp(rep: string): s2exp
+//
+fun
+s2exp_str(str: string): s2exp
 //
 (* ****** ****** *)
 //

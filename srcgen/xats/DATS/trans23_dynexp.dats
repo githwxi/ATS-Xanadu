@@ -3279,6 +3279,10 @@ in
 case+
 d2cl.node() of
 //
+| D2Cd1ecl _ =>
+  d3ecl_make_node
+  (loc0, D3Cd2ecl(d2cl))
+//
 | D2Cstatic
   (tok, d2c) =>
   let

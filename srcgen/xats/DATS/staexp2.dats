@@ -531,7 +531,7 @@ TYRECflt2(nm2)) => (nm1 = nm2)
 ) (* eq_tyrec_tyrec *)
 
 (* ****** ****** *)
-
+//
 implement
 s2exp_int(i0) = let
   val
@@ -539,6 +539,18 @@ s2exp_int(i0) = let
 in
   s2exp_make_node(s2t, S2Eint(i0))
 end // end of [s2exp_int]
+//
+(*
+implement
+s2exp_irp(rep) = let
+  val
+  s2t = the_sort2_int
+in
+  s2exp_make_node(s2t, S2Eirp(rep))
+end // end of [s2exp_irp]
+*)
+//
+(* ****** ****** *)
 
 implement
 s2exp_btf(b0) = let
@@ -551,7 +563,7 @@ end // end of [s2exp_btf]
 implement
 s2exp_chr(c0) = let
   val
-  s2t = the_sort2_int
+  s2t = the_sort2_char
 in
   s2exp_make_node(s2t, S2Echr(c0))
 end // end of [s2exp_chr]
@@ -559,12 +571,12 @@ end // end of [s2exp_chr]
 (* ****** ****** *)
 
 implement
-s2exp_str(cs) = let
+s2exp_str(str) = let
   val
   s2t = the_sort2_cstr
 in
-  s2exp_make_node(s2t, S2Estr(cs))
-end // end of [s2exp_cstr]
+  s2exp_make_node(s2t, S2Estr(str))
+end // end of [s2exp_str]
 
 (* ****** ****** *)
 

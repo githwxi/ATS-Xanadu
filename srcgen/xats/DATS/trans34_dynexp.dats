@@ -70,6 +70,10 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 #staload "./../SATS/dynexp4.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans34.sats"
 
 (* ****** ****** *)
@@ -206,14 +210,109 @@ val-
 D3Ec00(chr) = d3e0.node()
 //
 val
-s2c0 = s2exp_chr(chr)
+s2ch = s2exp_chr(chr)
 val
-s2e0 = s2exp_type_char(s2c0)
+s2e0 = s2exp_type_char(s2ch)
 //
 in
   d4exp_make_node
   (loc0, s2e0, t2p0, D4Ec00(chr))
-end // end of [auxb00]
+end // end of [auxc00]
+
+(* ****** ****** *)
+
+fun
+auxint
+( d3e0
+: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Eint(tok) = d3e0.node()
+//
+val
+s2i0 =
+s2exp_int(dint) where
+{
+val dint = token2dint(tok)
+}
+//
+val
+s2e0 = s2exp_type_sint(s2i0)
+//
+in
+  d4exp_make_node
+  (loc0, s2e0, t2p0, D4Eint(tok))
+end // end of [auxint]
+
+(* ****** ****** *)
+
+fun
+auxbtf
+( d3e0
+: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Ebtf(tok) = d3e0.node()
+//
+val
+s2b0 =
+s2exp_btf(dbtf) where
+{
+val dbtf = token2dbtf(tok)
+}
+//
+val
+s2e0 = s2exp_type_bool(s2b0)
+//
+in
+  d4exp_make_node
+  (loc0, s2e0, t2p0, D4Ebtf(tok))
+end // end of [auxbtf]
+
+(* ****** ****** *)
+
+fun
+auxchr
+( d3e0
+: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Echr(tok) = d3e0.node()
+//
+val
+s2b0 =
+s2exp_chr(dchr) where
+{
+val dchr = token2dchr(tok)
+}
+//
+val
+s2e0 = s2exp_type_char(s2b0)
+//
+in
+  d4exp_make_node
+  (loc0, s2e0, t2p0, D4Echr(tok))
+end // end of [auxchr]
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 
@@ -226,7 +325,11 @@ d3e0.node() of
 //
 | D3Ei00 _ => auxi00(d3e0)
 | D3Eb00 _ => auxb00(d3e0)
-| D3Ec00 _ => auxb00(d3e0)
+| D3Ec00 _ => auxc00(d3e0)
+//
+| D3Eint _ => auxint(d3e0)
+| D3Ebtf _ => auxbtf(d3e0)
+| D3Echr _ => auxchr(d3e0)
 //
 | _ (*rest-of-d3exp*) => d4exp_none1(d3e0)
 )
@@ -300,6 +403,10 @@ D3Cfundecl
 val
 f4ds =
 trans34_fundeclist(env0, f3ds)
+//
+val () =
+println!
+("aux_fundecl: f4ds = ", f4ds)
 //
 in
 d4ecl_make_node

@@ -486,13 +486,18 @@ s2e0.node() of
 //
 | S2Eint(i0) =>
   fprint!(out, "S2Eint(", i0, ")")
+(*
+| S2Eirp(rep) =>
+  fprint!(out, "S2Eirp(", rep, ")")
+*)
+//
 | S2Ebtf(b0) =>
   fprint!(out, "S2Ebtf(", b0, ")")
 | S2Echr(c0) =>
   fprint!(out, "S2Echr(", c0, ")")
 //
-| S2Estr(s0) =>
-  fprint!(out, "S2Estr(", s0, ")")
+| S2Estr(str) =>
+  fprint!(out, "S2Estr(", str, ")")
 //
 | S2Ecst(s2c) =>
   fprint!(out, "S2Ecst(", s2c, ")")

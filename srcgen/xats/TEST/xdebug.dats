@@ -5,8 +5,8 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
-#define X 1
-val xyz = X
+
+val xyz = 'a'
 ////
 (* ****** ****** *)
 //
