@@ -968,8 +968,13 @@ println!("//process_fpath: d3cs = ", d3cs)
 //
 (* ****** ****** *)
 //
+(*
 val
 h0pkg = trs03cmp30_package(p0kg)
+*)
+//
+val
+h0pkg = trs04cmp30_package(p0kg)
 //
 (* ****** ****** *)
 //

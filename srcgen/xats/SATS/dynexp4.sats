@@ -354,6 +354,23 @@ f4undeclist = List0(f4undecl)
 (* ****** ****** *)
 //
 datatype
+v4aldecl =
+V4ALDECL of @{
+  loc= loc_t
+, pat= d4pat
+, def= d4expopt
+, wtp= s2expopt
+(*
+, ctp= t2pcast
+*)
+}
+//
+typedef
+v4aldeclist = List0(v4aldecl)
+//
+(* ****** ****** *)
+//
+datatype
 d4transd =
 D4TRANSD of @{
   stadyn= int
@@ -375,6 +392,13 @@ d4ecl_node =
   ( token(*funknd*)
   , decmodopt
   , tq2arglst(*tmpargs*), f4undeclist)
+//
+| D4Cvaldecl of
+  (token(*knd*), decmodopt, v4aldeclist)
+(*
+| D4Cvardecl of
+  (token(*knd*), decmodopt, v4ardeclist)
+*)
 //
 (* ****** ****** *)
 //
