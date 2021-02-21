@@ -314,6 +314,30 @@ end // end of [auxchr]
 
 (* ****** ****** *)
 
+fun
+auxfcst
+( d3e0
+: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Efcst(d2c0) = d3e0.node()
+//
+val
+s2e0 = d2cst_get_sexp(d2c0)
+//
+in
+d4exp_make_node
+(loc0, s2e0, t2p0, D4Efcst(d2c0))
+end // end of [auxchr]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -330,6 +354,8 @@ d3e0.node() of
 | D3Eint _ => auxint(d3e0)
 | D3Ebtf _ => auxbtf(d3e0)
 | D3Echr _ => auxchr(d3e0)
+//
+| D3Efcst _ => auxfcst(d3e0)
 //
 | _ (*rest-of-d3exp*) => d4exp_none1(d3e0)
 )

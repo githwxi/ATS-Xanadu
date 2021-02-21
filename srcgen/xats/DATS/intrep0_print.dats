@@ -380,6 +380,11 @@ fprint_h0pat(stderr_ref, x0)
 implement
 fprint_h0pat(out, x0) =
 (
+fprint!(out, ":", x0.type())
+) where
+{
+val () =
+(
 case+
 x0.node() of
 //
@@ -440,7 +445,7 @@ x0.node() of
 (*
 | _(* H0P... *) => fprint!(out, "H0P...(...)")
 *)
-)
+) (*val*) } (*where*) // end of [fprint_h0pat]
 //
 (* ****** ****** *)
 //

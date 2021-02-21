@@ -263,5 +263,15 @@ trans34_valdeclist
 ! tr34env, v3ds: v3aldeclist): v4aldeclist
 
 (* ****** ****** *)
+//
+// HX-2021-02-20:
+// Some helper functions for trans34
+//
+(* ****** ****** *)
+//
+fun
+trans34_d4exp_deuni(d4e0: d4exp): d4exp
+//
+(* ****** ****** *)
 
 (* end of [xats_trans34.sats] *)
