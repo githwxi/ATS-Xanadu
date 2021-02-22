@@ -12,9 +12,19 @@ val btf = true
 *)
 (* ****** ****** *)
 
+(*
 #extern
 fun
-foo(x: int): int
+foo
+{n:nat}
+( x0
+: int(n)): int(n)
+*)
+#extern
+fun
+foo
+{n:nat}
+( x0: int ): int
 val res = foo(10)
 
 (* ****** ****** *)
