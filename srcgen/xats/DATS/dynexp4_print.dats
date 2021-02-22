@@ -256,6 +256,17 @@ case+ x0.node() of
 | D4Efcst(d2c) =>
   fprint!(out, "D4Efcst(", d2c, ")")
 //
+| D4Esapx
+  (d4f0, s2es) =>
+  fprint!
+  ( out
+  , "D4Esapx(", d4f0, "; ", s2es, ")")
+| D4Esdgx
+  (d4f0, s2es) =>
+  fprint!
+  ( out
+  , "D4Edgpx(", d4f0, "; ", s2es, ")")
+//
 | D4Edapp
   ( d4f0
   , npf1, d4es) =>

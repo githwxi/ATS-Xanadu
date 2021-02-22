@@ -331,6 +331,13 @@ D3Efcst(d2c0) = d3e0.node()
 val
 s2e0 = d2cst_get_sexp(d2c0)
 //
+val () =
+println!
+( "auxfcst: d2c0 = ", d2c0 )
+val () =
+println!
+( "auxfcst: s2e0 = ", s2e0 )
+//
 in
 d4exp_make_node
 (loc0, s2e0, t2p0, D4Efcst(d2c0))
@@ -396,7 +403,14 @@ in(*in-of-local*)
 implement
 trans34_dexp
 ( env0, d3e0) =
-(
+let
+//
+val () =
+println!
+("trans34_dexp: d3e0 = ", d3e0)
+//
+in
+//
 case+
 d3e0.node() of
 //
@@ -413,7 +427,8 @@ d3e0.node() of
 | D3Edapp _ => auxdapp(env0, d3e0)
 //
 | _ (*rest-of-d3exp*) => d4exp_none1(d3e0)
-)
+//
+end (*let*) // end of [trans34_dexp]
 
 end // end of [local]
 
