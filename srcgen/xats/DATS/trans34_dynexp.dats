@@ -492,6 +492,58 @@ end (*let*) // end of [trans34_dexp_dntp]
 
 (* ****** ****** *)
 
+implement
+trans34_dexplst_dnts
+( env0
+, d3es, s2es) =
+(
+auxlst
+(env0, d3es, s2es)) where
+{
+fun
+auxlst
+( env0
+: !tr34env
+, d3es: d3explst
+, s2es: s2explst): d4explst =
+(
+case+ d3es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(d3e0, d3es) =>
+(
+case+ s2es of
+|
+list_nil() =>
+let
+val s2e0 =
+s2exp_none0()
+val d4e0 =
+trans34_dexp_dntp
+(env0, d3e0, s2e0)
+in
+list_cons
+(d4e0, auxlst(env0, d3es, s2es))
+end
+|
+list_cons(s2e0, s2es) =>
+let
+val d4e0 =
+trans34_dexp_dntp
+(env0, d3e0, s2e0)
+in
+list_cons
+(d4e0, auxlst(env0, d3es, s2es))
+end
+)
+) (* end of [auxlst] *)
+} (* end of [trans34_dexplst_dnts] *)
+
+(* ****** ****** *)
+
 local
 
 fun
