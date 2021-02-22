@@ -191,6 +191,17 @@ trans34_dexpopt
 ( env0:
 ! tr34env, opt0: d3expopt): d4expopt
 (* ****** ****** *)
+fun
+trans34_dexp_dntp
+( env0:
+! tr34env
+, d3e0: d3exp, s2e0: s2exp): d4exp
+fun
+trans34_dexplst_dnts
+( env0:
+! tr34env
+, d3es: d3explst, s2es: s2explst): d4explst
+(* ****** ****** *)
 //
 fun
 trans34_decl

@@ -338,6 +338,59 @@ end // end of [auxchr]
 
 (* ****** ****** *)
 
+fun
+auxdapp
+( env0
+: !tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Edapp
+( d3f0
+, npf1
+, d3es) = d3e0.node()
+//
+val d4f0 =
+trans34_dexp(env0, d3f0)
+val d4f0 =
+trans34_d4exp_deuni(d4f0)
+//
+val s2f0 =
+s2exp_whnfize(d4f0.sexp())
+//
+in
+//
+case+
+s2f0.node() of
+|
+S2Efun
+( fc2
+, npf
+, s2es, s2r0) =>
+let
+val
+d4es =
+trans34_dexplst_dnts
+( env0, d3es, s2es )
+in
+d4exp_make_node
+( loc0
+, s2r0
+, t2p0, D4Edapp(d4f0, npf1, d4es))
+end // end of [S2Efun]
+|
+_(*non-S2Efun*) => d4exp_none1(d3e0)
+//
+end // end of [auxdapp]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -356,6 +409,8 @@ d3e0.node() of
 | D3Echr _ => auxchr(d3e0)
 //
 | D3Efcst _ => auxfcst(d3e0)
+//
+| D3Edapp _ => auxdapp(env0, d3e0)
 //
 | _ (*rest-of-d3exp*) => d4exp_none1(d3e0)
 )
@@ -406,6 +461,35 @@ end
 end // list_map$fopr
 } (* end of [trans34_dexplst] *)
 //
+(* ****** ****** *)
+
+implement
+trans34_dexp_dntp
+( env0
+, d3e0, s2e0) = let
+//
+val () =
+println!
+("trans34_dexp_dntp: d3e0 = ", d3e0)
+val () =
+println!
+("trans34_dexp_dntp: s2e0 = ", s2e0)
+//
+in
+//
+case+
+d3e0.node() of
+|
+_ (* else-of-d3exp *) =>
+let
+val
+d4e0 =
+trans34_dexp
+(env0, d3e0) in d4exp_tcast(d4e0, s2e0)
+end // end of [else-of-d3exp]
+//
+end (*let*) // end of [trans34_dexp_dntp]
+
 (* ****** ****** *)
 
 local

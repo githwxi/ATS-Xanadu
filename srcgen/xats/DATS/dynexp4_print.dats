@@ -256,6 +256,20 @@ case+ x0.node() of
 | D4Efcst(d2c) =>
   fprint!(out, "D4Efcst(", d2c, ")")
 //
+| D4Edapp
+  ( d4f0
+  , npf1, d4es) =>
+  fprint!
+  ( out
+  , "D4Edapp("
+  , d4f0, "; ", npf1, "; ", d4es, ")")
+//
+| D4Etcast
+  ( d4e0, s2e0 ) =>
+  fprint!
+  ( out
+  , "D4Etcast(", d4e0, "; ", s2e0, ")")
+//
 | D4Enone0() =>
   fprint!(out, "D4Enone0(", ")")
 | D4Enone1(d3esrc) =>

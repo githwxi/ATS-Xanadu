@@ -269,6 +269,11 @@ d4exp_node =
   (s2varlst, s2explst, d4exp)
 *)
 //
+| D4Edapp of
+  (d4exp, int(*npf*), d4explst)
+//
+| D4Etcast of (d4exp, s2exp(*given*))
+//
 | D4Enone0 of () | D4Enone1 of (d3exp)
 //
 (* ****** ****** *)
@@ -310,6 +315,10 @@ overload .sexp with d4exp_get_sexp
 fun
 d4exp_none1(d3e0: d3exp): d4exp
 //
+(* ****** ****** *)
+fun
+d4exp_tcast
+(d4e0: d4exp, s2e0: s2exp): d4exp
 (* ****** ****** *)
 //
 fun
