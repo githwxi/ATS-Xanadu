@@ -951,6 +951,11 @@ s2exp_record2
 (* ****** ****** *)
 //
 fun
+s2exp_t2ype(t2p0: t2ype): s2exp
+//
+(* ****** ****** *)
+//
+fun
 s2exp_tyext
 ( s2t0: sort2
 , tnm1: string, s2es: s2explst): s2exp
@@ -1240,6 +1245,15 @@ s2explst_revar
 fun
 s2explst_revar_vt
 (s2explst, s2v1: s2var, s2v2: s2var): s2explst_vt
+//
+(* ****** ****** *)
+//
+fun{}
+s2exp_whnfz
+  (s2e0: t2ype): s2exp
+fun{}
+s2exp_whnfz$cst
+  (s2exp, flag: &int >> _): s2exp
 //
 (* ****** ****** *)
 //

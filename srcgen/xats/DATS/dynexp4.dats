@@ -205,6 +205,20 @@ d4exp_make_node
 
 (* ****** ****** *)
 
+implement
+d4exp_tcast
+( d4e0, s2e0 ) =
+d4exp_make_node
+( loc0
+, s2e0, t2p0, node) where
+{
+  val loc0 = d4e0.loc()
+  val t2p0 = d4e0.type()
+  val node = D4Etcast(d4e0, s2e0)
+}
+
+(* ****** ****** *)
+
 local
 
 absimpl
