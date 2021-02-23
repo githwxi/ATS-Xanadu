@@ -500,6 +500,11 @@ t2ypelst_subst_svarlst
 //
 (* ****** ****** *)
 //
+// HX:
+// only keeping
+// impredicative ones; i.e.,
+// erasing predicative ones
+//
 fun
 s2varlst_epred
   (s2vs: s2varlst): s2varlst
