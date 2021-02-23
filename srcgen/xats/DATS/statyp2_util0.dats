@@ -95,20 +95,18 @@ case+ s2vs of
   (s2v0, s2vs) =>
   (
   if
-  impred
-  then
-  list_cons(s2v0, s2vs) else s2vs
+  ~impred
+  then auxs2vs(s2vs)
+  else
+  list_cons(s2v0, auxs2vs(s2vs))
   ) where
   {
     val s2t0 = s2v0.sort()
-    val s2vs = auxs2vs(s2vs)
     val impred = sort2_is_impred(s2t0)
   }
 ) (* end of [auxs2vs] *)
 } (*where*) // end of [s2varlst_epred]
 //
-(* ****** ****** *)
-
 (* ****** ****** *)
 
 implement
