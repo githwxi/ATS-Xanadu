@@ -265,7 +265,7 @@ case+ x0.node() of
   (d4f0, s2es) =>
   fprint!
   ( out
-  , "D4Edgpx(", d4f0, "; ", s2es, ")")
+  , "D4Esdgx(", d4f0, "; ", s2es, ")")
 //
 | D4Edapp
   ( d4f0
