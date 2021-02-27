@@ -557,7 +557,7 @@ T2Puni
 ) where
 {
   val t2p0 =
-  t2ype_renams(t2p0, s2vs)
+  t2ype_gnvars(t2p0, s2vs)
 }
 |
 T2Pfun

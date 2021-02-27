@@ -2884,7 +2884,7 @@ t2p0.node() of
   ) where
   {
     val t2p1 =
-    t2ype_renams(t2p1, s2vs)
+    t2ype_gnvars(t2p1, s2vs)
   }
 | T2Pfun
   (_, _, t2ps, t2p1) =>

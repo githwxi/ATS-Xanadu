@@ -1449,5 +1449,10 @@ val the_lazy_ctype : s2cstref//nonlin
 val the_llazy_ctype : s2cstref//linear
 //
 (* ****** ****** *)
+(*
+HX-2021-02-27:
+Various substitution-related functions
+*)
+(* ****** ****** *)
 
 (* end of [xats_staexp2.sats] *)
