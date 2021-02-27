@@ -2765,14 +2765,14 @@ case+
 t2p0.node() of
 |
 T2Puni
-(svs2, t2p0) =>
+(svs2, t2p1) =>
 let
 val tsub =
 auxtsub(svs2, svs1)
-val t2p0 =
+val t2p1 =
 (
 t2ype_revars
-  (t2p0, svs2, tsub)
+  (t2p1, svs2, tsub)
 // t2ype_revars
 ) where
 {
@@ -2782,7 +2782,7 @@ tsub = $UN.list_vt2t(tsub)
 val () = list_vt_free(tsub)
 in
   let
-  val () = tfun := t2p0
+  val () = tfun := t2p1
   in
   f3arg_make_node
   ( loc0
@@ -2877,22 +2877,22 @@ case+
 t2p0.node() of
 //
 | T2Puni
-  (s2vs, t2p0) =>
+  (s2vs, t2p1) =>
   (
-    tfun := t2p0;
+    tfun := t2p1;
     auxf2as_1d(f2a0, tfun)
   ) where
   {
-    val t2p0 =
-    t2ype_renams(t2p0, s2vs)
+    val t2p1 =
+    t2ype_renams(t2p1, s2vs)
   }
 | T2Pfun
-  (_, _, t2ps, t2p0) =>
+  (_, _, t2ps, t2p1) =>
   let
     val d3ps =
     trans23_dpatlst_dntp(d2ps, t2ps)
   in
-    tfun := t2p0;
+    tfun := t2p1;
     f3arg_make_node
     (loc0, F3ARGsome_dyn(npf1, d3ps))
    end
