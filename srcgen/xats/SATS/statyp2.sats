@@ -460,10 +460,10 @@ t2ype_projize
 (* ****** ****** *)
 //
 fun
-t2ype_renam
+t2ype_gnvar
 (t2p0: t2ype, s2v1: s2var): t2ype
 fun
-t2ype_renams
+t2ype_gnvars
 (t2p0: t2ype, s2vs: s2varlst): t2ype
 //
 fun

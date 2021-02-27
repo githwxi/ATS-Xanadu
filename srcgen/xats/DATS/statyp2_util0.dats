@@ -236,7 +236,7 @@ end // end of [s2exp_erase]
 (* ****** ****** *)
 //
 implement
-t2ype_renam
+t2ype_gnvar
 (t2p0, s2v0) =
 (
 t2ype_revar
@@ -248,7 +248,7 @@ t2ype_revar
 }
 //
 implement
-t2ype_renams
+t2ype_gnvars
 (t2p0, svs1) = let
 //
 val svs2 =
@@ -282,7 +282,7 @@ t2ype_subst_svar
 ) where
 {
   val tsub = t2ype_var(s2v1)
-}
+} (* end of [t2ype_revar] *)
 //
 implement
 t2ype_revars
@@ -788,6 +788,12 @@ end
 //
 |
 T2Pexi(s2vs, t2p1) => let
+//
+// HX-2021-02-27:
+// alpha-renaming is not done here;
+// it should be performed before the
+// call to the substituion function!!!
+//
   val
   t2p1 = auxt2p0(t2p1, flag)
 in
@@ -799,6 +805,12 @@ in
 end
 |
 T2Puni(s2vs, t2p1) => let
+//
+// HX-2021-02-27:
+// alpha-renaming is not done here;
+// it should be performed before the
+// call to the substituion function!!!
+//
   val
   t2p1 = auxt2p0(t2p1, flag)
 in
