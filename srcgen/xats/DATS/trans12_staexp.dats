@@ -754,10 +754,14 @@ case+ s1qs of
       auxids1(ids, s2t, s2vs_)
     ) where
     {
-      val sid = sexpid_sym(id0)
-      val s2v = s2var_make_idst(sid, s2t)
-      val ((*void*)) = the_sexpenv_add_var(s2v)
-      val ((*void*)) = s2vs_ := list_vt_cons(s2v, s2vs_)
+      val sid =
+      sexpid_sym(id0)
+      val s2v =
+      s2var_make_idst(sid, s2t)
+      val ((*void*)) =
+      the_sexpenv_add_var(s2v)
+      val ((*void*)) =
+      (s2vs_ := list_vt_cons(s2v, s2vs_))
     }
   )
 //
@@ -781,12 +785,17 @@ case+ s1qs of
       val s2t = s2v.sort()
       val sid = sexpid_sym(id0)
 //
-      val s2v1 = s2var_make_idst(sid, s2t)
-      val ((*void*)) = the_sexpenv_add_var(s2v1)
-      val ((*void*)) = s2vs_ := list_vt_cons(s2v1, s2vs_)
+      val s2v1 =
+      s2var_make_idst(sid, s2t)
+      val ((*void*)) =
+      the_sexpenv_add_var(s2v1)
+      val ((*void*)) =
+      (s2vs_ := list_vt_cons(s2v1, s2vs_))
 //
-      val s2ps1 = s2explst_revar_vt(s2ps, s2v, s2v1)
-      val ((*void*)) = s2ps_ := list_vt_reverse_append(s2ps1, s2ps_)
+      val s2ps1 =
+      s2explst_revar_vt(s2ps, s2v, s2v1)
+      val ((*void*)) =
+      (s2ps_ := list_vt_reverse_append(s2ps1, s2ps_))
 //
     } (* end of [where] *) // end of [list_cons]
   )

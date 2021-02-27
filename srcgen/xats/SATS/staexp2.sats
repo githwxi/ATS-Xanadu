@@ -1236,34 +1236,6 @@ s2varlst_ismem
 //
 (* ****** ****** *)
 //
-fun
-s2exp_revar
-(s2exp, s2v1: s2var, s2v2: s2var): s2exp
-fun
-s2explst_revar
-(s2explst, s2v1: s2var, s2v2: s2var): s2explst
-fun
-s2explst_revar_vt
-(s2explst, s2v1: s2var, s2v2: s2var): s2explst_vt
-//
-(* ****** ****** *)
-//
-fun{}
-s2exp_whnfz
-  (s2e0: t2ype): s2exp
-fun{}
-s2exp_whnfz$cst
-  (s2exp, flag: &int >> _): s2exp
-//
-(* ****** ****** *)
-//
-fun
-s2exp_whnfize(s2e0: s2exp): s2exp
-//
-overload whnfize with s2exp_whnfize
-//
-(* ****** ****** *)
-//
 abstype
 s2cstnul_tbox(l:addr) = ptr
 typedef
@@ -1449,10 +1421,43 @@ val the_lazy_ctype : s2cstref//nonlin
 val the_llazy_ctype : s2cstref//linear
 //
 (* ****** ****** *)
+//
+fun
+s2exp_revar
+( s2e0: s2exp
+, s2v1: s2var, s2v2: s2var): s2exp
+//
+fun
+s2explst_revar
+( s2es: s2explst
+, s2v1: s2var, s2v2: s2var): s2explst
+//
+fun
+s2explst_revar_vt
+( s2es: s2explst
+, s2v1: s2var, s2v2: s2var): s2explst_vt
+//
+(* ****** ****** *)
 (*
 HX-2021-02-27:
 Various substitution-related functions
 *)
+(* ****** ****** *)
+//
+fun{}
+s2exp_whnfz
+  (s2e0: t2ype): s2exp
+fun{}
+s2exp_whnfz$cst
+  (s2exp, flag: &int >> _): s2exp
+//
+(* ****** ****** *)
+//
+fun
+s2exp_whnfize(s2e0: s2exp): s2exp
+//
+overload whnfize with s2exp_whnfize
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2.sats] *)

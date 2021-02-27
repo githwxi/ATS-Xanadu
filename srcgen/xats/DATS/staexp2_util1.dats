@@ -421,119 +421,244 @@ in
 case+
 s2e0.node() of
 //
-(*
 | S2Eint _ => s2e0
+| S2Ebtf _ => s2e0
 | S2Echr _ => s2e0
-| S2Eflt _ => s2e0
 | S2Estr _ => s2e0
-*)
+//
 //
 (*
-//
-// HX: please note that
-// [sexpdef] cannot appear under
-| S2Ecst _ => s2e0 // a static lam
+HX:
+please note that
+[sexpdef] cannot appear under
 *)
+|
+S2Ecst _ => s2e0 // a static lam
 //
-| S2Evar(s2v0) =>
-  if
-  (s2v0 = s2v1)
-  then
-  (flag_ := flag+1; s2exp_var(s2v2))
-  else s2e0 // end-of-else
+|
+S2Evar(s2v0) =>
+if
+not
+(s2v0 = s2v1)
+then s2e0 else
+(flag_ := flag+1; s2exp_var(s2v2))
 //
-| S2Eapp(s2e1, s2es2) =>
-  let
-    val
-    s2e1 = auxsexp(s2e1, flag_)
-    val
-    s2es2 = auxsexplst(s2es2, flag_)
-  in
-    if
-    flag = flag_ then s2e0
-    else
-    s2exp_make_node
-    (s2t0, S2Eapp(s2e1, s2es2))
-  end
+|
+S2Eapp(s2e1, s2es) =>
+let
+  val
+  s2e1 = auxsexp(s2e1, flag_)
+  val
+  s2es = auxs2es(s2es, flag_)
+in
+if
+flag = flag_
+then s2e0 else
+s2exp_make_node(s2t0, S2Eapp(s2e1, s2es))
+end
 //
 (*
-| S2Elist(s2es) =>
-  let
-    val
-    s2es = auxsexplst(s2es, flag_)
-  in
-    if
-    flag = flag_ then s2e0
-    else
-    s2exp_make_node(s2t0, S2Elist(s2es))
-  end
+|
+S2Elist(s2es) =>
+let
+val
+s2es = auxs2es(s2es, flag_)
+in
+if
+flag = flag_
+then s2e0 else
+s2exp_make_node(s2t0, S2Elist(s2es))
+end
 *)
 //
-| S2Elam(s2vs, body) =>
-  if
-  s2varlst_ismem(s2vs, s2v1)
-  then s2e0 else let
-    val body = auxsexp(body, flag_)
-  in
-    if
-    flag = flag_ then s2e0
-    else
-    s2exp_make_node(s2t0, S2Elam(s2vs, body))
-  end // end of [else]
+|
+S2Elam(s2vs, body) =>
+if
+s2varlst_ismem
+( s2vs, s2v1 )
+then s2e0 else let
+val
+body = auxsexp(body, flag_)
+in
+if
+flag = flag_
+then s2e0 else
+s2exp_make_node(s2t0, S2Elam(s2vs, body))
+end // end of [else]
 //
-| S2Eexi(s2vs, s2ps, body) =>
+|
+S2Earg(knd, s2e1) =>
+let
+val
+s2e1 =
+auxsexp(s2e1, flag_)
+in
   if
-  s2varlst_ismem(s2vs, s2v1)
-  then s2e0 else let
-    val body = auxsexp(body, flag_)
-    val s2ps = auxsexplst(s2ps, flag_)
-  in
-    if
-    flag = flag_ then s2e0
-    else
-    s2exp_make_node(s2t0, S2Eexi(s2vs, s2ps, body))
-  end // end of [else]
-| S2Euni(s2vs, s2ps, body) =>
+  flag = flag_
+  then s2e0 else
+  s2exp_make_node(s2t0, S2Earg(knd, s2e1))
+end
+|
+S2Eatx(s2e1, s2e2) =>
+let
+val
+s2e1 =
+auxsexp(s2e1, flag_)
+val
+s2e2 =
+auxsexp(s2e2, flag_)
+in
   if
-  s2varlst_ismem(s2vs, s2v1)
-  then s2e0 else let
-    val body = auxsexp(body, flag_)
-    val s2ps = auxsexplst(s2ps, flag_)
-  in
-    if
-    flag = flag_ then s2e0
-    else
-    s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
-  end // end of [else]
+  flag = flag_
+  then s2e0 else
+  s2exp_make_node(s2t0, S2Eatx(s2e1, s2e2))
+end
+|
+S2Efun
+(fc2, npf, s2es, s2e1) =>
+let
+val
+s2es =
+auxs2es(s2es, flag_)
+val
+s2e1 =
+auxsexp(s2e1, flag_)
+in
+  if
+  flag = flag_
+  then s2e0 else
+  s2exp_make_node
+  ( s2t0, S2Efun( fc2, npf, s2es, s2e1 ) )
+end
 //
-| _(* rest-of-s2exp *) => s2e0
+|
+S2Eexi(s2vs, s2ps, body) =>
+if
+s2varlst_ismem
+( s2vs, s2v1 )
+then s2e0 else let
+val
+body = auxsexp(body, flag_)
+val
+s2ps = auxs2es(s2ps, flag_)
+in
+if
+flag = flag_
+then s2e0 else
+s2exp_make_node(s2t0, S2Eexi(s2vs, s2ps, body))
+end // end of [else]
+|
+S2Euni(s2vs, s2ps, body) =>
+if
+s2varlst_ismem
+( s2vs, s2v1 )
+then s2e0 else let
+val
+body = auxsexp(body, flag_)
+val
+s2ps = auxs2es(s2ps, flag_)
+in
+if
+flag = flag_
+then s2e0 else
+s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
+end // end of [else]
+//
+|
+S2Etyext(name, s2es) =>
+let
+val
+s2es = auxs2es(s2es, flag_)
+in
+  if
+  flag = flag_
+  then s2e0 else
+  s2exp_make_node(s2t0, S2Etyext(name, s2es))
+end
+//
+|
+S2Etyrec
+(knd0, npf1, ls2es) =>
+let
+val
+ls2es = auxls2es(ls2es, flag_)
+in
+if
+flag = flag_
+then s2e0 else
+s2exp_make_node(s2t0, S2Etyrec(knd0, npf1, ls2es))
+end
+//
+|
+_(* rest-of-s2exp *) =>
+(
+  let
+  val () =
+  println!
+  ("s2exp_revar: s2e0 = ", s2e0)
+  in
+    let
+      val ((*void*)) = assertloc(false) in s2e0
+    end
+  end
+)
 //
 end // end of [let]
 //
 and
-auxsexplst
+auxs2es
 ( s2es: s2explst
 , flag_: &int >> _): s2explst =
 (
 case+ s2es of
-| list_nil() =>
-  list_nil()
-| list_cons(s2e1, s2es2) =>
-  let
-    val flag = flag_
-    val s2e1 = auxsexp(s2e1, flag_)
-    val s2es2 = auxsexplst(s2es2, flag_)
-  in
-    if
-    flag = flag_
-    then s2es else list_cons(s2e1, s2es2)
-  end // end of [let]
+|
+list_nil() => list_nil()
+|
+list_cons(s2e1, ses2) =>
+let
+  val flag = flag_
+  val s2e1 = auxsexp(s2e1, flag_)
+  val ses2 = auxs2es(ses2, flag_)
+in
+  if
+  flag = flag_
+  then s2es else list_cons(s2e1, ses2)
+end // end of [let]
+)
+//
+and
+auxls2es
+( ls2es
+: labs2explst
+, flag_: &int >> _): labs2explst =
+(
+case+ ls2es of
+|
+list_nil() => list_nil()
+|
+list_cons(ls2e1, lses2) =>
+let
+  val flag = flag_
+  val+
+  SLABELED(l1, x1) = ls2e1
+  val x1 = auxsexp(x1, flag_)
+  val lses2 = auxls2es(lses2, flag_)
+in
+if
+flag = flag_
+then ls2es else
+let
+val
+ls2e1 =
+SLABELED(l1, x1) in list_cons(ls2e1, lses2)
+end
+end // end of [let]
 )
 //
 in
 //
 let
-  var flag: int = 0 in auxsexp(s2e0, flag)
+  var flag_: int = 0 in auxsexp(s2e0, flag_)
 end
 //
 end // end of [s2exp_revar]
@@ -545,8 +670,7 @@ s2explst_revar
 (s2es, s2v1, s2v2) =
 list_vt2t
 (
-s2explst_revar_vt
-(s2es, s2v1, s2v2)
+s2explst_revar_vt(s2es, s2v1, s2v2)
 )
 //
 implement
@@ -557,19 +681,8 @@ list_map<s2exp><s2exp>(s2es)
 ) where
 {
 implement
-list_map$fopr<s2exp><s2exp>
-  (s2e0) =
-(
-  s2exp_revar(s2e0, s2v1, s2v2)
-)
+list_map$fopr<s2exp><s2exp>(s2e0) = s2exp_revar(s2e0, s2v1, s2v2)
 } (* end of [s2explst_revar_vt] *)
-//
-(* ****** ****** *)
-//
-// HX-2020-05-10:
-// It is yet to be implemented!!!
-//
-implement s2exp_whnfize(s2e0) = s2e0
 //
 (* ****** ****** *)
 
