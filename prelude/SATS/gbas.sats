@@ -59,6 +59,20 @@ g_copy(x: !(a)): (a)
 (* ****** ****** *)
 //
 fun
+<a:vt>
+g_sel2
+( x0: !(a)
+, x1: !(a)): nintlt(2)
+fun
+<a:vt>
+g_sel3
+( x0: !(a)
+, x1: !(a)
+, x2: !(a)): nintlt(3)
+//
+(* ****** ****** *)
+//
+fun
 <a:t0>
 g_input(): a
 fun

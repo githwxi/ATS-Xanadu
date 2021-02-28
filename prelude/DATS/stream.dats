@@ -638,16 +638,20 @@ strmcon_nil
 strmcon_cons
 ( y0, ys1 ) =>
 let
-val sgn = g_cmp<a>(x0, y0)
+val knd = g_sel2<a>(x0, y0)
 in
-if
-(sgn <= 0)
-then strmcon_cons(x0, merge(xs1, ys0))
-else strmcon_cons(y0, merge(xs0, ys1))
+//
+  if
+  (knd <= 0)
+  then
+  strmcon_cons(x0, merge(xs1, ys0))
+  else
+  strmcon_cons(y0, merge(xs0, ys1))
+//
 end // end of [strmcon_cons]
 ) (* strmcon_cons *)
 )
-} (* end of [stream_merge] *)
+} (*where*) // end of [stream_merge]
 
 (* ****** ****** *)
 //
