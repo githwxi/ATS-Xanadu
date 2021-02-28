@@ -24,7 +24,7 @@ foo
 fun
 foo
 {n:nat}
-( x0: int ): int
+(x0:int(n)): int
 val res = foo(10)
 
 (* ****** ****** *)
