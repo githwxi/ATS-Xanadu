@@ -413,9 +413,9 @@ s2t0 = s2e0.sort()
 fun
 auxsexp
 ( s2e0: s2exp
-, flag_: &int >> _): s2exp =
+, flag: &int >> _): s2exp =
 let
-  val flag = flag_
+  val fini = flag
 in
 //
 case+
@@ -441,18 +441,18 @@ if
 not
 (s2v0 = s2v1)
 then s2e0 else
-(flag_ := flag+1; s2exp_var(s2v2))
+(flag := fini+1; s2exp_var(s2v2))
 //
 |
 S2Eapp(s2e1, s2es) =>
 let
   val
-  s2e1 = auxsexp(s2e1, flag_)
+  s2e1 = auxsexp(s2e1, flag)
   val
-  s2es = auxs2es(s2es, flag_)
+  s2es = auxs2es(s2es, flag)
 in
 if
-flag = flag_
+fini = flag
 then s2e0 else
 s2exp_make_node(s2t0, S2Eapp(s2e1, s2es))
 end
@@ -462,10 +462,10 @@ end
 S2Elist(s2es) =>
 let
 val
-s2es = auxs2es(s2es, flag_)
+s2es = auxs2es(s2es, flag)
 in
 if
-flag = flag_
+fini = flag
 then s2e0 else
 s2exp_make_node(s2t0, S2Elist(s2es))
 end
@@ -478,10 +478,10 @@ s2varlst_ismem
 ( s2vs, s2v1 )
 then s2e0 else let
 val
-body = auxsexp(body, flag_)
+body = auxsexp(body, flag)
 in
 if
-flag = flag_
+fini = flag
 then s2e0 else
 s2exp_make_node(s2t0, S2Elam(s2vs, body))
 end // end of [else]
@@ -491,10 +491,10 @@ S2Earg(knd, s2e1) =>
 let
 val
 s2e1 =
-auxsexp(s2e1, flag_)
+auxsexp(s2e1, flag)
 in
   if
-  flag = flag_
+  fini = flag
   then s2e0 else
   s2exp_make_node(s2t0, S2Earg(knd, s2e1))
 end
@@ -503,13 +503,13 @@ S2Eatx(s2e1, s2e2) =>
 let
 val
 s2e1 =
-auxsexp(s2e1, flag_)
+auxsexp(s2e1, flag)
 val
 s2e2 =
-auxsexp(s2e2, flag_)
+auxsexp(s2e2, flag)
 in
   if
-  flag = flag_
+  fini = flag
   then s2e0 else
   s2exp_make_node(s2t0, S2Eatx(s2e1, s2e2))
 end
@@ -519,13 +519,13 @@ S2Efun
 let
 val
 s2es =
-auxs2es(s2es, flag_)
+auxs2es(s2es, flag)
 val
 s2e1 =
-auxsexp(s2e1, flag_)
+auxsexp(s2e1, flag)
 in
   if
-  flag = flag_
+  fini = flag
   then s2e0 else
   s2exp_make_node
   ( s2t0, S2Efun( fc2, npf, s2es, s2e1 ) )
@@ -538,12 +538,12 @@ s2varlst_ismem
 ( s2vs, s2v1 )
 then s2e0 else let
 val
-body = auxsexp(body, flag_)
+body = auxsexp(body, flag)
 val
-s2ps = auxs2es(s2ps, flag_)
+s2ps = auxs2es(s2ps, flag)
 in
 if
-flag = flag_
+fini = flag
 then s2e0 else
 s2exp_make_node(s2t0, S2Eexi(s2vs, s2ps, body))
 end // end of [else]
@@ -554,12 +554,12 @@ s2varlst_ismem
 ( s2vs, s2v1 )
 then s2e0 else let
 val
-body = auxsexp(body, flag_)
+body = auxsexp(body, flag)
 val
-s2ps = auxs2es(s2ps, flag_)
+s2ps = auxs2es(s2ps, flag)
 in
 if
-flag = flag_
+fini = flag
 then s2e0 else
 s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
 end // end of [else]
@@ -568,10 +568,10 @@ end // end of [else]
 S2Etyext(name, s2es) =>
 let
 val
-s2es = auxs2es(s2es, flag_)
+s2es = auxs2es(s2es, flag)
 in
   if
-  flag = flag_
+  fini = flag
   then s2e0 else
   s2exp_make_node(s2t0, S2Etyext(name, s2es))
 end
@@ -581,10 +581,10 @@ S2Etyrec
 (knd0, npf1, ls2es) =>
 let
 val
-ls2es = auxls2es(ls2es, flag_)
+ls2es = auxls2es(ls2es, flag)
 in
 if
-flag = flag_
+fini = flag
 then s2e0 else
 s2exp_make_node(s2t0, S2Etyrec(knd0, npf1, ls2es))
 end
@@ -608,7 +608,7 @@ end // end of [let]
 and
 auxs2es
 ( s2es: s2explst
-, flag_: &int >> _): s2explst =
+, flag: &int >> _): s2explst =
 (
 case+ s2es of
 |
@@ -616,12 +616,12 @@ list_nil() => list_nil()
 |
 list_cons(s2e1, ses2) =>
 let
-  val flag = flag_
-  val s2e1 = auxsexp(s2e1, flag_)
-  val ses2 = auxs2es(ses2, flag_)
+  val fini = flag
+  val s2e1 = auxsexp(s2e1, flag)
+  val ses2 = auxs2es(ses2, flag)
 in
   if
-  flag = flag_
+  fini = flag
   then s2es else list_cons(s2e1, ses2)
 end // end of [let]
 )
@@ -630,7 +630,7 @@ and
 auxls2es
 ( ls2es
 : labs2explst
-, flag_: &int >> _): labs2explst =
+, flag: &int >> _): labs2explst =
 (
 case+ ls2es of
 |
@@ -638,14 +638,14 @@ list_nil() => list_nil()
 |
 list_cons(ls2e1, lses2) =>
 let
-  val flag = flag_
+  val fini = flag
   val+
   SLABELED(l1, x1) = ls2e1
-  val x1 = auxsexp(x1, flag_)
-  val lses2 = auxls2es(lses2, flag_)
+  val x1 = auxsexp(x1, flag)
+  val lses2 = auxls2es(lses2, flag)
 in
 if
-flag = flag_
+fini = flag
 then ls2es else
 let
 val
@@ -658,7 +658,7 @@ end // end of [let]
 in
 //
 let
-  var flag_: int = 0 in auxsexp(s2e0, flag_)
+  var flag: int = 0 in auxsexp(s2e0, flag)
 end
 //
 end // end of [s2exp_revar]
