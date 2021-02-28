@@ -11,7 +11,7 @@ val chr = 'a'
 val btf = true
 *)
 (* ****** ****** *)
-
+//
 (*
 #extern
 fun
@@ -25,8 +25,8 @@ fun
 foo
 {n:nat}
 (x0:int(n)): int
-val res = foo(10)
-
+val res = foo{10}(10)
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

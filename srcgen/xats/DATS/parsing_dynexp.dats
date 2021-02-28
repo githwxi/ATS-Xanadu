@@ -1431,6 +1431,7 @@ case+ tnd of
       p_d0exp_THEN(buf, err)
     val d0e3 =
       p_d0exp_ELSE(buf, err)
+//
     val topt = popt_ENDIF(buf, err)
 //
     val
@@ -1471,12 +1472,17 @@ case+ tnd of
     val d0e1 =
       p_appd0exp(buf, err)
 //
-    val tok2 = p_OF(buf, err)
-    val tbar = popt_BAR(buf, err)
-    val d0cs = p_d0clauseq_BAR(buf, err)
+    val tok2 =
+      p_OF(buf, err)
+    val tbar =
+      popt_BAR(buf, err)
+    val d0cs =
+      p_d0clauseq_BAR(buf, err)
+//
     val tend = popt_ENDCASE(buf, err)
 //
-    val loc_res = let
+    val
+    loc_res = let
       val loc = tok.loc()
     in
       case+ tend of
@@ -1492,8 +1498,7 @@ case+ tnd of
         | list_cons(_, _) =>
           let
             val d0c =
-              list_last(d0cs) in loc + d0c.loc()
-            // end of [val]
+            list_last(d0cs) in loc + d0c.loc()
           end // end of [list_cons]
         )
       | Some(tok) => loc + tok.loc()
