@@ -597,6 +597,15 @@ in
 end // end of [s2exp_var]
 
 (* ****** ****** *)
+
+implement
+s2exp_xtv(xtv) = let
+  val s2t = xtv.sort()
+in
+  s2exp_make_node(s2t, S2Extv(xtv))
+end // end of [s2exp_xtv]
+
+(* ****** ****** *)
 //
 implement
 s2exp_cprf

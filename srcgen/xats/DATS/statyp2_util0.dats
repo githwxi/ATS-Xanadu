@@ -605,6 +605,8 @@ end // [t2ype_subst$var]
 //
 } (* end of [t2ype_subst_svar] *)
 //
+(* ****** ****** *)
+//
 implement
 t2ype_subst_svarlst
 (t2p0, s2vs, tsub) =
