@@ -1508,7 +1508,7 @@ case+ tnd of
     err := e0;
     d0exp_make_node
     ( loc_res
-    , D0Ecase(tok, d0e1, tok2, tbar, d0cs, tend))
+    , D0Ecas0(tok, d0e1, tok2, tbar, d0cs, tend))
     // end of [d0exp_make_node]
   end // end of [T_CASE]
 //

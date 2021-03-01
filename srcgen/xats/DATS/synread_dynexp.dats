@@ -334,7 +334,7 @@ d0e0.node() of
     synread_d0exp_ELSE(d0e3)
   }
 //
-| D0Ecase
+| D0Ecas0
   ( tbeg, d0e1, tmid
   , topt, dcls, tend) =>
   {

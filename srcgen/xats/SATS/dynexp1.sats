@@ -559,10 +559,10 @@ d1exp_node =
   ( d1exp(*cond*)
   , d1exp(*then*), d1expopt(*else*))
 //
-| D1Ecase of
+| D1Ecas0 of
   ( token(*+/0/-*)
   , d1exp(*value*), d1claulst(*clauses*))
-  // D1Ecase
+  // D1Ecas0
 //
 | D1Elam of
   ( token

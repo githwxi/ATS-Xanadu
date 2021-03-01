@@ -3004,12 +3004,12 @@ d1e0.node() of
     val opt3 = trans12_dexpopt(opt3)
   } (* end of [D1Eif0] *)
 //
-| D1Ecase
+| D1Ecas0
   (tok, d1e1, d1cls) =>
   (
     d2exp_make_node
     ( loc0
-    , D2Ecase(knd, d2e1, d2cls))
+    , D2Ecas0(knd, d2e1, d2cls))
   ) where
   {
     val knd =
@@ -3019,7 +3019,7 @@ d1e0.node() of
     ) : int // end of [val]
     val d2e1 = trans12_dexp(d1e1)
     val d2cls = trans12_dclaulst(d1cls)
-  } (* end of [D1Ecase] *)
+  } (* end of [D1Ecas0] *)
 //
 | D1Elam
   ( knd

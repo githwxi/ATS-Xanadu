@@ -1529,7 +1529,7 @@ end // end of [aux_if0]
 (* ****** ****** *)
 
 fun
-aux_case
+aux_cas0
 (d3e0: d3exp): h0exp =
 let
 //
@@ -1547,7 +1547,7 @@ hend =
 ) where
 {
 val-
-D3Ecase
+D3Ecas0
 ( knd0
 , d3e1, dcls) = d3e0.node()
 val h0e1 = tcomp30_dexp(d3e1)
@@ -1556,7 +1556,7 @@ val hcls = tcomp30_dclaulst(dcls)
 //
 in
   h0exp_make_node(loc0, h0t0, hend)
-end // end of [aux_case]
+end // end of [aux_cas0]
 
 (* ****** ****** *)
 
@@ -2029,7 +2029,7 @@ D3Eassgn _ => aux_assgn(d3e0)
 //
 | D3Eif0 _ => aux_if0(d3e0)
 //
-| D3Ecase _ => aux_case(d3e0)
+| D3Ecas0 _ => aux_cas0(d3e0)
 //
 | D3Elam _ => aux_lam(d3e0)
 | D3Efix _ => aux_fix(d3e0)

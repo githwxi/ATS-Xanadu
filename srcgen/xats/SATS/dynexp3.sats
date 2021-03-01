@@ -428,9 +428,9 @@ for the meaning of knd
   ( d3exp(*cond*)
   , d3exp(*then*), d3expopt(*else*))
 //
-| D3Ecase of
+| D3Ecas0 of
   (int(*knd*), d3exp(*val*), d3claulst)
-  // D3Ecase
+  // D3Ecas0
 //
 | D3Elam of
   ( token(*knd*)

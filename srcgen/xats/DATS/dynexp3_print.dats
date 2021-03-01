@@ -553,10 +553,10 @@ x0.node() of
   ( out, "D3Eif0("
   , d3e1, "; ", d3e2, "; ", opt3, ")")
 //
-| D3Ecase
+| D3Ecas0
   (knd0, d3e1, dcls) =>
   fprint!
-  ( out, "D3Ecase("
+  ( out, "D3Ecas0("
   , knd0, "; ", d3e1, "; ", dcls, ")")
 //
 | D3Elam

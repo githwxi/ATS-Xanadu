@@ -525,10 +525,10 @@ x0.node() of
   ( out
   , "D1Eif0(", d1e1, "; ", d1e2, "; ", opt3, ")")
 //
-| D1Ecase(knd, d1e1, dcls) =>
+| D1Ecas0(knd, d1e1, dcls) =>
   fprint!
   ( out
-  , "D1Ecase(", knd, "; ", d1e1, "; ", dcls , ")")
+  , "D1Ecas0(", knd, "; ", d1e1, "; ", dcls , ")")
 //
 | D1Elam
   (knd, farg, tres, arrw, body) =>

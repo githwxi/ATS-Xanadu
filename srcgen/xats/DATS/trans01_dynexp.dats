@@ -1322,7 +1322,7 @@ d0e0.node() of
     }
   end (* end of [D0Eif0] *)
 //
-| D0Ecase
+| D0Ecas0
   ( knd, d0e1, tof2
   , tbar, d0cs, tend) => let
     val d1e1 = trans01_dexp(d0e1)
@@ -1332,10 +1332,10 @@ d0e0.node() of
     {
       val d1e0 =
       d1exp_make_node
-        (loc0, D1Ecase(knd, d1e1, d1cs))
+        (loc0, D1Ecas0(knd, d1e1, d1cs))
       // end of [val]
     }
-  end // end of [D0Ecase]
+  end // end of [D0Ecas0]
 //
 | D0Elet
   ( tok(*let*)

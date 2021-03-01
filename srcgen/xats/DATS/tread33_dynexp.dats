@@ -557,7 +557,7 @@ d3e0.node() of
 //
   }
 //
-| D3Ecase
+| D3Ecas0
   (knd0, d3e1, d3cs) =>
   {
   val () = tread33_d3exp(d3e1)

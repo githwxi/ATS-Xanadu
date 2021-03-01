@@ -478,7 +478,7 @@ d0exp_node =
   , d0exp
   , d0exp_THEN, d0exp_ELSE, tokenopt)
 //
-| D0Ecase of
+| D0Ecas0 of
   ( token
   , d0exp
   , token(*OF*)
