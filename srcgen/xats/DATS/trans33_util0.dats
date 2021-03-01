@@ -1287,7 +1287,7 @@ in
 end
 //
 |
-D3Ecase
+D3Ecas0
 (knd0, de11, dcls) =>
 let
 val
@@ -1298,7 +1298,7 @@ aux_d3claulst(env0, dcls, t2p2)
 in
   d33exp_make_node
   ( loc1
-  , t2p1, D3Ecase(knd0, de11, dcls))
+  , t2p1, D3Ecas0(knd0, de11, dcls))
 end
 //
 | _ (* else *) =>

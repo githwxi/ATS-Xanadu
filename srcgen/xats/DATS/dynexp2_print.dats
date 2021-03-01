@@ -512,10 +512,10 @@ case- x0.node() of
   ( out, "D2Eif0("
   , d2e1, "; ", d2e2, "; ", opt3, ")")
 //
-| D2Ecase
+| D2Ecas0
   (knd0, d2e1, d2cls) =>
   fprint!
-  ( out, "D2Ecase("
+  ( out, "D2Ecas0("
   , knd0, "; ", d2e1, "; ", d2cls, ")")
 //
 | D2Elam

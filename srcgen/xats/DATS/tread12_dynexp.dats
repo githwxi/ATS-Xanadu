@@ -339,7 +339,7 @@ val () = tread12_d2expopt(opt3)
 }
 //
 |
-D2Ecase
+D2Ecas0
 (knd0, d2e1, dcls) =>
 {
 val () = tread12_d2exp(d2e1)

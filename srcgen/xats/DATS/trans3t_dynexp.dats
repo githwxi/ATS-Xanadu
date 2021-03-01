@@ -502,7 +502,7 @@ d3e0.node() of
     (loc0, t2p0, D3Eif0(d3e1, d3e2, opt3))
   end
 //
-| D3Ecase
+| D3Ecas0
   (knd0, d3e1, dcls) =>
   let
     val d3e1 =
@@ -511,7 +511,7 @@ d3e0.node() of
     trans3t_dclaulst(env0, dcls)
   in
     d3exp_make_node
-    (loc0, t2p0, D3Ecase(knd0, d3e1, dcls))
+    (loc0, t2p0, D3Ecas0(knd0, d3e1, dcls))
   end
 //
 | D3Elam

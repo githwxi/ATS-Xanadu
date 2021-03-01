@@ -839,9 +839,9 @@ d2exp_node =
   ( d2exp(*cond*)
   , d2exp(*then*), d2expopt(*else*) )
   // D2Eif0
-| D2Ecase of
+| D2Ecas0 of
   (int(*knd*), d2exp(*val*), d2claulst)
-  // D2Ecase
+  // D2Ecas0
 //
 | D2Elam of
   ( token(*knd*)

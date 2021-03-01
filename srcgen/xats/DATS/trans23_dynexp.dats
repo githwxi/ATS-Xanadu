@@ -1547,14 +1547,14 @@ end (* end of [aux_if0] *)
 (* ****** ****** *)
 
 fun
-aux_case
+aux_cas0
 ( d2e0
 : d2exp): d3exp = let
 //
 val
 loc0 = d2e0.loc()
 val-
-D2Ecase
+D2Ecas0
 ( knd0
 , d2e1, d2cs) = d2e0.node()
 //
@@ -1567,8 +1567,8 @@ trans23_dclaulst_dntp(d2cs, targ, tres)
 //
 in
 d23exp_make_node
-  (loc0, tres, D3Ecase(knd0, d3e1, d3cs))
-end (* end of [aux_case] *)
+  (loc0, tres, D3Ecas0(knd0, d3e1, d3cs))
+end (* end of [aux_cas0] *)
 
 (* ****** ****** *)
 
@@ -2072,9 +2072,9 @@ d2e0.node() of
     (_, _, _) => aux_if0(d2e0)
   // D2Eif0
 //
-| D2Ecase
-    (_, _, _) => aux_case(d2e0)
-  // D2Ecase
+| D2Ecas0
+    (_, _, _) => aux_cas0(d2e0)
+  // D2Ecas0
 //
 | D2Elam
   (_, _, _, _, _) => aux_lam(d2e0)
