@@ -281,7 +281,9 @@ trans34_valdeclist
 (* ****** ****** *)
 //
 fun
-trans34_d4exp_deuni(d4e0: d4exp): d4exp
+trans34_d4exp_deuni1(d4e0: d4exp): d4exp
+fun
+trans34_d4exp_deunis(d4e0: d4exp): d4exp
 //
 (* ****** ****** *)
 

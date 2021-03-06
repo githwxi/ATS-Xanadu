@@ -47,7 +47,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 implement
-trans34_d4exp_deuni
+trans34_d4exp_deuni1
   (d4e0) =
 (
 let
@@ -113,10 +113,94 @@ tsub = auxs2vs(s2vs)
 //
 val s2e1 = 
 s2exp_subst_svarlst
-(s2e1, s2vs, tsub)
+( s2e1, s2vs, tsub )
 val s2ps =
 s2explst_subst_svarlst
-(s2ps, s2vs, tsub)
+( s2ps, s2vs, tsub )
+//
+in
+  d4exp_make_node
+  ( loc0, s2e1, t2p0
+  , D4Esapx(d4e0, tsub, s2ps))
+end
+| _ (* rest-of-s2exp *) => d4e0
+end
+//
+} (*where*) // end of [trans34_d4exp_deuni1]
+
+(* ****** ****** *)
+
+implement
+trans34_d4exp_deunis
+  (d4e0) =
+(
+let
+val
+s2e0 = d4e0.sexp()
+in
+  auxd4e0(d4e0, s2e0)
+end
+) where
+{
+//
+val
+loc0 = d4e0.loc()
+val
+t2p0 = d4e0.type()
+//
+fun
+auxs2vs
+( s2vs
+: s2varlst): s2explst =
+(
+case+
+s2vs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(s2v1, s2vs) =>
+let
+val
+s2t1 = s2v1.sort()
+val
+xtv1 =
+s2xtv_new(loc0, s2t1)
+val
+s2e1 = s2exp_xtv(xtv1)
+in
+  list_cons(s2e1, auxs2vs(s2vs))
+end
+)
+//
+fun
+auxd4e0
+( d4e0: d4exp
+, s2e0: s2exp): d4exp =
+let
+//
+val
+s2e0 = s2exp_whnfize(s2e0)
+//
+in
+case+
+s2e0.node() of
+|
+S2Euni
+( s2vs
+, s2ps, s2e1) =>
+let
+//
+val
+tsub = auxs2vs(s2vs)
+//
+val s2e1 = 
+s2exp_subst_svarlst
+( s2e1, s2vs, tsub )
+val s2ps =
+s2explst_subst_svarlst
+( s2ps, s2vs, tsub )
 //
 val
 d4e1 =
@@ -130,7 +214,7 @@ end
 | _ (* rest-of-s2exp *) => d4e0
 end
 //
-} (*where*) // end of [trans34_d4exp_deuni]
+} (*where*) // end of [trans34_d4exp_deunis]
 
 (* ****** ****** *)
 

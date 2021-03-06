@@ -346,6 +346,50 @@ end // end of [auxchr]
 (* ****** ****** *)
 
 fun
+auxsap0
+( env0
+: !tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Esap0
+( d3f0
+, s2es) = d3e0.node()
+//
+val d4f0 =
+trans34_dexp(env0, d3f0)
+val s2f0 =
+s2exp_whnfize(d4f0.sexp())
+//
+in
+case+
+s2f0.node() of
+|
+S2Euni _ =>
+let
+val d4f0 =
+trans34_d4exp_deuni1(d4f0)
+in
+d4exp_make_node
+( loc0
+, s2f0, t2p0, D4Esap0(d4f0, s2es))
+end // end of [S3Euni]
+|
+_(* non-S2Euni *) =>
+d4exp_make_node
+( loc0
+, s2f0, t2p0, D4Esap0(d4f0, s2es))
+end // end of [auxsap0]
+
+(* ****** ****** *)
+
+fun
 auxdapp
 ( env0
 : !tr34env
@@ -366,7 +410,7 @@ D3Edapp
 val d4f0 =
 trans34_dexp(env0, d3f0)
 val d4f0 =
-trans34_d4exp_deuni(d4f0)
+trans34_d4exp_deunis(d4f0)
 //
 val s2f0 =
 s2exp_whnfize(d4f0.sexp())
@@ -423,6 +467,8 @@ d3e0.node() of
 | D3Echr _ => auxchr(d3e0)
 //
 | D3Efcst _ => auxfcst(d3e0)
+//
+| D3Esap0 _ => auxsap0(env0, d3e0)
 //
 | D3Edapp _ => auxdapp(env0, d3e0)
 //
