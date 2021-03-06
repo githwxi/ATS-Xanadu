@@ -25,7 +25,8 @@ fun
 foo
 {n:nat}
 (x0:int(n)): int
-val res = foo{10}(10)
+val res0 = foo(10)
+val res1 = foo{10}(10)
 //
 (* ****** ****** *)
 ////

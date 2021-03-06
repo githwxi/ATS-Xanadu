@@ -517,9 +517,12 @@ s2e0.node() of
 (*
     val s2e = "..."
 *)
-    val s2e = s2xtv_get_sexp(xtv)
+  val stm = xtv.stamp()
+  val s2e = s2xtv_get_sexp(xtv)
   in
-    fprint!(out, "S2Extv(", s2e, ")")
+  fprint!
+  ( out
+  , "S2Extv(", stm, ")[", s2e, "]")
   end
 //
 | S2Eapp

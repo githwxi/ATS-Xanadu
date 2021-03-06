@@ -220,7 +220,9 @@ implement
 fprint_d4exp
   (out, x0) =
 (
+(*
 fprint!(out, ":", x0.sexp())
+*)
 ) where
 {
 val () =
