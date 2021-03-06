@@ -11,6 +11,25 @@ val chr = 'a'
 val btf = true
 *)
 (* ****** ****** *)
+val xs0 = list_nil()
+val xs1 = list_cons(1, xs0)
+val xs2 = list_cons(2, xs1)
+(* ****** ****** *)
+(*
+//
+datatype
+ints =
+| ints_nil of ()
+| ints_cons of (int, ints)
+//
+val xs0 = ints_nil()
+val xs1 = ints_cons(1, xs0)
+val xs2 = ints_cons(2, xs1)
+//
+*)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 //
 (*
 #extern
@@ -25,9 +44,7 @@ fun
 foo
 {n:nat}
 (x0:int(n)): int
-(*
 val res0 = foo(10)
-*)
 val res1 = foo{10}(10)
 //
 (* ****** ****** *)

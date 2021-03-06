@@ -356,15 +356,15 @@ for the meaning of knd
   (d1exp(*sym*), d2pitmlst)
 //
 | D3Efcon of (d2con)
+| D3Efcst of (d2cst)
+//
 | D3Etcon of
   ( d2con
-  , ti3arg(*s2es*)
+  , ti3arg(*t2ps*)
   , ti2arglst(*sess*))
-//
-| D3Efcst of (d2cst)
 | D3Etcst of
   ( d2cst
-  , ti3arg(*s2es*)
+  , ti3arg(*t2ps*)
   , ti2arglst(*sess*))
 //
 | D3Etnfd of

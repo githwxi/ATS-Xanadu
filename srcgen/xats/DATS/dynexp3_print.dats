@@ -326,6 +326,26 @@ x0.node() of
 (* ****** ****** *)
 //
 implement
+print_ti3arg(x0) =
+fprint_ti3arg(stdout_ref, x0) 
+implement
+prerr_ti3arg(x0) =
+fprint_ti3arg(stderr_ref, x0) 
+//
+implement
+fprint_ti3arg
+  (out, x0) =
+(
+case+ x0 of
+| TI3ARGnone() =>
+  fprint!(out, "TI3ARGnone(", ")")
+| TI3ARGsome(t2ps) =>
+  fprint!(out, "TI3ARGsome(", t2ps, ")")
+)
+//
+(* ****** ****** *)
+//
+implement
 print_d3exp(x0) =
 fprint_d3exp(stdout_ref, x0) 
 implement
@@ -402,21 +422,22 @@ x0.node() of
   in
   fprint!
   ( out
-  , "D3Esym0(", d1e1, ": ", t2p0, ")")
+  , "D3Esym0(", d1e1, ": ", t2p0, ")"
+  )
   end
 // *)
 //
 | D3Efcon(d2c1) =>
   fprint!(out, "D3Efcon(", d2c1, ")")
+| D3Efcst(d2c1) =>
+  fprint!(out, "D3Efcst(", d2c1, ")")
+//
 | D3Etcon
   (d2c1, ti3a, ti2s) =>
   fprint!
   ( out
   , "D3Etcon("
   , d2c1, "; ", ti3a, "; ", ti2s, ")")
-//
-| D3Efcst(d2c1) =>
-  fprint!(out, "D3Efcst(", d2c1, ")")
 | D3Etcst
   (d2c1, ti3a, ti2s) =>
   fprint!
@@ -769,26 +790,6 @@ fprint!
 (out, "D3GPATgua(", d3p, "; ", d3gs, ")")
 //
 ) (* end of [fprint_d3gpat] *)
-//
-(* ****** ****** *)
-//
-implement
-print_ti3arg(x0) =
-fprint_ti3arg(stdout_ref, x0) 
-implement
-prerr_ti3arg(x0) =
-fprint_ti3arg(stderr_ref, x0) 
-//
-implement
-fprint_ti3arg
-  (out, x0) =
-(
-case+ x0 of
-| TI3ARGnone() =>
-  fprint!(out, "TI3ARGnone(", ")")
-| TI3ARGsome(t2ps) =>
-  fprint!(out, "TI3ARGsome(", t2ps, ")")
-)
 //
 (* ****** ****** *)
 //
