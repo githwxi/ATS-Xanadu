@@ -269,6 +269,9 @@ d4exp_node =
   (s2varlst, s2explst, d4exp)
 *)
 //
+| D4Esap0 of (d4exp, s2explst)
+| D4Esap1 of (d4exp, s2explst)
+//
 | D4Esapx of
   ( d4exp
   , s2explst, s2explst(*gua*))
