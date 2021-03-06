@@ -336,7 +336,9 @@ implement
 fprint_d3exp
   (out, x0) =
 (
+(*
 fprint!(out, ":", x0.type())
+*)
 ) where
 {
 val () =
