@@ -376,6 +376,69 @@ end // end of [auxfcst]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxti4a
+( ti4a
+: ti4arg
+, ti2s
+: ti2arglst): void =
+(
+case+ ti4a of
+|
+TI4ARGnone() => ()
+|
+TI4ARGsome(xs) => auxlst1(xs, ti2s)
+) (* end of [auxti4a] *)
+and
+auxlst1
+( xs
+: s2explst
+, ys
+: ti2arglst): void =
+(
+case+ ys of
+| list_nil() => ()
+| list_cons(y1, ys) =>
+  let
+    val es =
+    y1.s2es() in auxlst2(xs, es, ys)
+  end
+) (*case*) // end of [auxlst1]
+and
+auxlst2
+( xs
+: s2explst
+, es
+: s2explst
+, ys
+: ti2arglst): void =
+(
+case+ xs of
+|
+list_nil() => ()
+|
+list_cons(x1, xs) =>
+(
+case+ es of
+| list_nil() =>
+  auxlst1(xs, ys)
+| list_cons(e1, es) =>
+  (
+  auxlst2(xs, es, ys)
+  ) where
+  {
+    val-
+    S2Extv(v1) = x1.node()
+    val ((*void*)) =
+    s2xtv_set_sexp(v1, e1)
+  }
+)
+) (*case*) // end of [auxlst2]
+
+in(*in-of-local*)
+
 fun
 auxtcon
 ( d3e0
@@ -445,11 +508,15 @@ in
 end
 ) (* end of [val s2e0] *)
 //
+val () = auxti4a(ti4a, ti2s)
+//
 in
 d4exp_make_node
 ( loc0, s2e0, t2p0
 , D4Etcon(d2c0, ti4a, ti3a, ti2s))
 end // end of [auxtcon]
+
+end // end of [local]
 
 (* ****** ****** *)
 
