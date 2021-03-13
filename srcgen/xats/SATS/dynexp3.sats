@@ -319,6 +319,25 @@ overload prerr with prerr_ti3arg
 overload fprint with fprint_ti3arg
 //
 (* ****** ****** *)
+//
+datatype
+ti3err =
+| TI3ERRnfd of () // notfound
+| TI3ERRrec of () // recursive
+//
+//
+fun
+print_ti3err: print_type(ti3err)
+fun
+prerr_ti3err: prerr_type(ti3err)
+fun
+fprint_ti3err: fprint_type(ti3err)
+//
+overload print with print_ti3err
+overload prerr with prerr_ti3err
+overload fprint with fprint_ti3err
+//
+(* ****** ****** *)
 
 datatype
 d3exp_node =
@@ -367,11 +386,9 @@ for the meaning of knd
   , ti3arg(*t2ps*)
   , ti2arglst(*sess*))
 //
-| D3Etnfd of
+| D3Eterr of
   ( d3exp(*tcst*)
-  , t3implst (*path*) )
-| D3Etrec of
-  ( d3exp(*tcst*)
+  , ti3err(*kind*)
   , t3implst (*path*) )
 //
 | D3Etimp of

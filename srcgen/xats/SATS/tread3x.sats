@@ -60,8 +60,8 @@ datatype trerr3x =
 | TRERR3Xd3ecl of (d3ecl)
 //
 | TRERR3Xd3exp_tcst of (d3exp)
-| TRERR3Xd3exp_tnfd of (d3exp)
-| TRERR3Xd3exp_trec of (d3exp)
+//
+| TRERR3Xd3exp_terr of (d3exp)
 //
 | TRERR3Xd3exp_tapp of (d3exp)
 | TRERR3Xd3exp_timp2f of (d3exp, f3undecl)

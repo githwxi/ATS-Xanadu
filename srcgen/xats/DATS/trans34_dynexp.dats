@@ -726,7 +726,90 @@ end // end of [S2Efun]
 |
 _(*non-S2Efun*) => d4exp_none1(d3e0)
 //
-end // end of [auxdapp]
+end (*let*) // end of [auxdapp]
+
+(* ****** ****** *)
+
+fun
+aux_if0
+( env0
+: !tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Eif0
+( d3e1
+, d3e2
+, opt3) = d3e0.node()
+//
+val d4e1 =
+trans34_dexp(env0, d3e1)
+//
+val
+s2t0 = t2p0.sort()
+val
+xtv0 =
+s2xtv_new(loc0, s2t0)
+val
+s2e0 = s2exp_xtv(xtv0)
+//
+val
+d4e2 =
+trans34_dexp_dntp(env0, d3e2, s2e0)
+//
+val opt3 =
+(
+case+ opt3 of
+|
+None() =>
+None((*void*))
+|
+Some(d3e3) => Some
+(trans34_dexp_dntp(env0, d3e3, s2e0))
+) : d4expopt // end-of-val
+//
+in
+d4exp_make_node
+( loc0
+, s2e0, t2p0, D4Eif0(d4e1, d4e2, opt3))
+end (*let*) // end of [aux_if0]
+
+(* ****** ****** *)
+
+fun
+aux_anno
+( env0
+: !tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Eanno
+( d3e1
+, s2e2) = d3e0.node()
+//
+val d4e1 =
+(
+  trans34_dexp_dntp
+  ( env0, d3e1, s2e2 )
+)
+//
+in
+d4exp_make_node
+( loc0
+, s2e2, t2p0, D4Eanno(d4e1, s2e2) )
+end (*let*) // end of [aux_anno]
 
 (* ****** ****** *)
 
@@ -763,6 +846,13 @@ d3e0.node() of
 | D3Esap0 _ => auxsap0(env0, d3e0)
 //
 | D3Edapp _ => auxdapp(env0, d3e0)
+//
+| D3Eif0
+  ( _cond_
+  , _then_
+  , _else_) => aux_if0(env0, d3e0)
+//
+| D3Eanno _ => aux_anno(env0, d3e0)
 //
 | _ (*rest-of-d3exp*) => d4exp_none1(d3e0)
 //

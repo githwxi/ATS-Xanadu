@@ -126,9 +126,11 @@ d4pat_node =
 | D4Ptuple of
   (int(*knd*), int(*npf*), d4patlst)
 //
-| D4Panno of (d4pat, s2exp) // no s2xtv in anno
+| D4Panno of
+  (d4pat, s2exp) // no s2xtv in anno
 //
-| D4Ptcast of (d4pat, t2ype) // HX: error indication?
+| D4Ptcast of
+  (d4pat, t2ype) // HX: error indication?
 //
 | D4Pnone0 of ()
 | D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)
@@ -313,7 +315,15 @@ d4exp_node =
 | D4Edapp of
   (d4exp, int(*npf*), d4explst)
 //
-| D4Etcast of (d4exp, s2exp(*given*))
+| D4Eif0 of
+  ( d4exp
+  , d4exp(*then*), d4expopt(*else*))
+//
+| D4Eanno of
+  (d4exp, s2exp) // no s2xtv in anno
+//
+| D4Etcast of
+  (d4exp, s2exp(*given*)) // HX: error indication?
 //
 | D4Enone0 of () | D4Enone1 of (d3exp)
 //
