@@ -137,11 +137,45 @@ trans34_dpat
 case+
 d3p0.node() of
 //
-| _ (*rest-of-d3exp*) => d4pat_none1(d3p0)
+| _ (*rest-of-d3pat*) => d4pat_none1(d3p0)
 //
 )
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans34_dpatlst
+(  env0, d3ps  ) =
+(
+list_vt2t
+(
+list_map<d3pat><d4pat>(d3ps)
+)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<d3pat><d4pat>
+  (d3p0) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+val
+d4p0 = trans34_dpat(env0, d3p0)
+//
+in
+let
+prval () = $UN.cast2void(env0) in d4p0
+end
+end // list_map$fopr
+} (* end of [trans34_dpatlst] *)
 
 (* ****** ****** *)
 
@@ -724,6 +758,7 @@ d3e0.node() of
 | D3Efcst _ => auxfcst(d3e0)
 //
 | D3Etcon _ => auxtcon(d3e0)
+| D3Etcst _ => auxtcst(d3e0)
 //
 | D3Esap0 _ => auxsap0(env0, d3e0)
 //
@@ -860,6 +895,78 @@ end
 ) (* end of [auxlst] *)
 } (* end of [trans34_dexplst_dnts] *)
 
+(* ****** ****** *)
+
+implement
+trans34_farg
+( env0, f3a0 ) =
+let
+val
+loc0 = f3a0.loc()
+in
+case+
+f3a0.node() of
+|
+F3ARGsome_dyn
+(npf, d3ps) =>
+(
+f4arg_make_node
+( loc0
+, F4ARGsome_dyn(npf, d4ps))
+) where
+{
+  val
+  d4ps =
+  trans34_dpatlst(env0, d3ps)
+} (* F3ARGsome_dyn *)
+//
+|
+F3ARGsome_met(s2es) =>
+(
+ f4arg_make_node
+ (loc0, F4ARGsome_met(s2es))
+)
+//
+|
+_(*non-F3ARGsome_dyn*) =>
+(
+ f4arg_make_node(loc0, F4ARGnone3(f3a0))
+)
+end (* end of [trans34_farg] *)
+
+(* ****** ****** *)
+//
+implement
+trans34_farglst
+( env0, f3as ) =
+list_vt2t
+(
+list_map<f3arg><f4arg>(f3as)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<f3arg><f4arg>
+  (f3a0) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+//
+val
+f4a0 = trans34_farg(env0, f3a0)
+//
+in
+let
+prval () = $UN.cast2void(env0) in f4a0
+end
+end
+} (* end of [trans34_farglst] *)
+//
 (* ****** ****** *)
 
 local
@@ -1031,6 +1138,21 @@ val
 a2g = rcd.a2g
 //
 val
+a4g =
+(
+case+
+rcd.a3g of
+|
+None() => None()
+|
+Some(f3as) =>
+Some(
+trans34_farglst
+( env0, f3as )
+) (* end of [Some] *)
+) : f4arglstopt // end-val
+//
+val
 def = 
 trans34_dexpopt
 (env0, rcd.def)
@@ -1044,10 +1166,11 @@ F4UNDECL@{
 , d2c= d2c
 , a2g= a2g
 //
-, a4g= None( )
+, a4g= a4g
 , res= rcd.res
 //
 , def= def
+//
 , rtp= rcd.rtp
 , wtp= rcd.wtp, ctp= rcd.ctp
 //
