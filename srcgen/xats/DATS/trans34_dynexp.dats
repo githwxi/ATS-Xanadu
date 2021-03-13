@@ -1018,21 +1018,36 @@ trans34_fundecl
 let
 //
 val+
-F3UNDECL(rcd) = f3d0
+F3UNDECL
+( rcd ) = f3d0
+//
+val
+loc = rcd.loc
+val
+nam = rcd.nam
+val
+d2c = rcd.d2c
+val
+a2g = rcd.a2g
+//
+val
+def = 
+trans34_dexpopt
+(env0, rcd.def)
 //
 in(*in-of-let*)
 //
 F4UNDECL@{
-  loc= rcd.loc
+  loc= loc
 //
-, nam= rcd.nam
-, d2c= rcd.d2c
-, a2g= rcd.a2g
+, nam= nam
+, d2c= d2c
+, a2g= a2g
 //
 , a4g= None( )
 , res= rcd.res
 //
-, def= None( )
+, def= def
 , rtp= rcd.rtp
 , wtp= rcd.wtp, ctp= rcd.ctp
 //

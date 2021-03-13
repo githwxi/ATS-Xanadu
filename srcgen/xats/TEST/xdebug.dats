@@ -20,7 +20,7 @@ foo(x: a): (a, a)
 fun
 < >
 bar(): (int, int) = foo(0)
-//
+////
 (* ****** ****** *)
 (*
 val xs0 = list_nil()
