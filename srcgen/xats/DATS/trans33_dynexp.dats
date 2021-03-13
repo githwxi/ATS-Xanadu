@@ -2487,7 +2487,8 @@ f3arg_make_node
 ) where
 {
   val
-  d3ps = trans33_dpatlst(env0, d3ps)
+  d3ps =
+  trans33_dpatlst(env0, d3ps)
 } (* F3ARGsome_dyn *)
 //
 | _(*non-F3ARGsome_dyn*) => f3a0

@@ -194,8 +194,10 @@ fprint_f4arg
 case+
 x0.node() of
 //
-| F4ARGnone2(f2a) =>
-  fprint!(out, "F4ARGnone2(", f2a, ")")
+(*
+| F4ARGnone(tok) => ...
+*)
+//
 | F4ARGnone3(f3a) =>
   fprint!(out, "F4ARGnone3(", f3a, ")")
 //
@@ -445,14 +447,14 @@ None() =>
   , "a2g=", rcd.a2g, ", ", "}")
 )
 |
-Some(rcd_a3g) =>
+Some(rcd_a4g) =>
 (
   fprint!
   ( out
   , "F4UNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
-  , "a3g=", rcd_a3g, ", "
+  , "a4g=", rcd_a4g, ", "
   , "res=", rcd.res, ", "
   , "def=", rcd.def, ", "
   , "rtp=", rcd.rtp, ", "

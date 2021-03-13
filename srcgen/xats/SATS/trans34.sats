@@ -96,10 +96,14 @@ typedef d3claulst = $D3E.d3claulst
 (* ****** ****** *)
 //
 typedef d4pat = $D4E.d4pat
+typedef f4arg = $D4E.f4arg
 //
 typedef d4exp = $D4E.d4exp
 typedef d4ecl = $D4E.d4ecl
 //
+(* ****** ****** *)
+typedef d4patlst = $D4E.d4patlst
+typedef f4arglst = $D4E.f4arglst
 (* ****** ****** *)
 typedef d4expopt = $D4E.d4expopt
 typedef d4explst = $D4E.d4explst
@@ -173,6 +177,10 @@ fun
 trans34_dpat
 ( env0:
 ! tr34env, d3p0: d3pat): d4pat
+fun
+trans34_dpatlst
+( env0:
+! tr34env, d3ps: d3patlst): d4patlst
 //
 (* ****** ****** *)
 //
@@ -201,6 +209,17 @@ trans34_dexplst_dnts
 ( env0:
 ! tr34env
 , d3es: d3explst, s2es: s2explst): d4explst
+(* ****** ****** *)
+//
+fun
+trans34_farg
+( env0
+: !tr34env, f3a0: f3arg): f4arg
+fun
+trans34_farglst
+( env0
+: !tr34env, f3as: f3arglst): f4arglst
+//
 (* ****** ****** *)
 //
 fun

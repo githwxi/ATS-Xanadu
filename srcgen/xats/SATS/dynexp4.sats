@@ -202,7 +202,6 @@ f4arg_node =
 | F4ARGnone of (token)
 *)
 //
-| F4ARGnone2 of f2arg
 | F4ARGnone3 of f3arg
 //
 | F4ARGsome_dyn of
