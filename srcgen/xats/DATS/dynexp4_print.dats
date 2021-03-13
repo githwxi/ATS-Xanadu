@@ -169,9 +169,15 @@ case+ x0.node() of
   fprint!
   (out, "D4Pvar(", d2v, ")")
 //
-| D4Pnone1(d3p) =>
+| D4Panno
+  (d3p1, s2e2) =>
   fprint!
-  (out, "D4Pnone1(", d3p, ")")
+  ( out
+  , "D4Panno(", d3p1, "; ", s2e2, ")")
+//
+| D4Pnone1(d3p1) =>
+  fprint!
+  (out, "D4Pnone1(", d3p1, ")")
 //
 | _(* rest-of-d4pat *) => fprint!(out, "D4P...(...)")
 //
@@ -331,6 +337,18 @@ case+ x0.node() of
   ( out
   , "D4Edapp("
   , d4f0, "; ", npf1, "; ", d4es, ")")
+//
+| D4Eif0
+  (d4e1, d4e2, opt3) =>
+  fprint!
+  ( out, "D4Eif0("
+  , d4e1, "; ", d4e2, "; ", opt3, ")")
+//
+| D4Eanno
+  (d3e1, s2e2) =>
+  fprint!
+  ( out
+  , "D4Eanno(", d3e1, "; ", s2e2, ")")
 //
 | D4Etcast
   ( d4e0, s2e0 ) =>

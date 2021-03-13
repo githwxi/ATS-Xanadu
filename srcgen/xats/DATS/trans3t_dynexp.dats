@@ -222,7 +222,9 @@ let
 in
 d3exp_make_node
 ( loc0
-, t2p0, D3Etnfd(d3e0, tpth) )
+, t2p0
+, D3Eterr
+  (d3e0, TI3ERRnfd(), tpth) )
 end
 |
 ~Some_vt
@@ -254,7 +256,9 @@ let
 in
 d3exp_make_node
 ( loc0
-, t2p0, D3Etrec(d3e0_, tpth) )
+, t2p0
+, D3Eterr
+  (d3e0_, TI3ERRrec(), tpth) )
 end // end of [then]
 else
 let

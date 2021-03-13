@@ -346,6 +346,26 @@ case+ x0 of
 (* ****** ****** *)
 //
 implement
+print_ti3err(x0) =
+fprint_ti3err(stdout_ref, x0) 
+implement
+prerr_ti3err(x0) =
+fprint_ti3err(stderr_ref, x0) 
+//
+implement
+fprint_ti3err
+  (out, x0) =
+(
+case+ x0 of
+| TI3ERRnfd() =>
+  fprint!(out, "TI3ERRnfd()")
+| TI3ERRrec() =>
+  fprint!(out, "TI3ERRrec()")
+)
+//
+(* ****** ****** *)
+//
+implement
 print_d3exp(x0) =
 fprint_d3exp(stdout_ref, x0) 
 implement
@@ -445,16 +465,12 @@ x0.node() of
   , "D3Etcst("
   , d2c1, "; ", ti3a, "; ", ti2s, ")")
 //
-| D3Etnfd
-  (d2e1, d3es) =>
+| D3Eterr
+  (d2e1, terr, d3es) =>
   fprint!
   ( out
-  , "D3Etnfd(", d2e1, "; ", d3es, ")")
-| D3Etrec
-  (d2e1, d3es) =>
-  fprint!
-  ( out
-  , "D3Etrec(", d2e1, "; ", d3es, ")")
+  , "D3Eterr("
+  , d2e1, "; ", terr, "; ", d3es, ")")
 //
 | D3Etimp
   ( stmp

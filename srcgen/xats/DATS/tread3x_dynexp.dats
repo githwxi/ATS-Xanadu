@@ -153,7 +153,7 @@ end // end of [auxtcst]
 (* ****** ****** *)
 
 fun
-auxtnfd
+auxterr
 (d3e0: d3exp): void =
 let
 //
@@ -161,8 +161,9 @@ val
 loc0 = d3e0.loc()
 //
 val-
-D3Etnfd
+D3Eterr
 ( d3e1
+, terr
 , path ) = d3e0.node()
 //
 in
@@ -172,19 +173,29 @@ in
 {
 val () =
 trerr3x_add
-(TRERR3Xd3exp_tnfd(d3e0))
+(TRERR3Xd3exp_terr(d3e0))
 //
 val () =
 prerrln!
 (loc0, ": ***TRERR3X***")
 val () =
+(
+case+ terr of
+|
+TI3ERRnfd() =>
 prerrln!
 ( loc0
-, ": TRERR3X(D3Etnfd): temp-missing")
+, ": TRERR3X(D3Eterr): temp-missing")
+|
+TI3ERRrec() =>
+prerrln!
+( loc0
+, ": TRERR3X(D3Eterr): temp-looping")
+)
 val () =
 prerrln!
 ( loc0
-, ": TRERR3X(D3Etnfd): d3e1 = ", d3e1)
+, ": TRERR3X(D3Eterr): d3e1 = ", d3e1)
 val () =
 let
 fun
@@ -203,72 +214,12 @@ d3exp(x1)
 val () =
 prerrln!
 ( p1.loc()
-, ": TRERR3X(D3Etnfd): temp-search: ", x1)
+, ": TRERR3X(D3Eterr): temp-search: ", x1)
 in auxlst(xs) end
 )
 in auxlst(path) end
 } (* end of [where] *)
-end // end of [auxtnfd]
-
-(* ****** ****** *)
-
-fun
-auxtrec
-(d3e0: d3exp): void =
-let
-//
-val
-loc0 = d3e0.loc()
-//
-val-
-D3Etrec
-( d3e1
-, path ) = d3e0.node()
-//
-in
-(
-  auxtcst(d3e1)
-) where
-{
-val () =
-trerr3x_add
-(TRERR3Xd3exp_trec(d3e0))
-//
-val () =
-prerrln!
-(loc0, ": ***TRERR3X***")
-val () =
-prerrln!
-( loc0
-, ": TRERR3X(D3Etrec): temp-looping")
-val () =
-prerrln!
-( loc0
-, ": TRERR3X(D3Etrec): d3e1 = ", d3e1)
-val () =
-let
-fun
-auxlst
-( xs
-: t3implst
-) : void =
-(
-case+ xs of
-|
-list_nil() => ()
-|
-list_cons(x1, xs) => let
-val p1 =
-d3exp(x1)
-val () =
-prerrln!
-( p1.loc()
-, ": TRERR3X(D3Etrec): temp-search: ", x1)
-in auxlst(xs) end
-)
-in auxlst(path) end
-} (* end of [where] *)
-end // end of [auxtrec]
+end (*let*) // end of [auxterr]
 
 (* ****** ****** *)
 
@@ -457,13 +408,10 @@ d3e0.node() of
   val () = auxtcst(d3e0)
   }
 //
-| D3Etnfd _ =>
+//
+| D3Eterr _ =>
   {
-  val () = auxtnfd(d3e0)
-  }
-| D3Etrec _ =>
-  {
-  val () = auxtrec(d3e0)
+  val () = auxterr(d3e0)
   }
 //
 | D3Etimp _ =>
