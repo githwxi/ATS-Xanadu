@@ -11,9 +11,22 @@ val chr = 'a'
 val btf = true
 *)
 (* ****** ****** *)
+//
+#extern
+fun
+<a:type>
+foo(x: a): (a, a)
+//
+fun
+< >
+bar(): (int, int) = foo(0)
+//
+(* ****** ****** *)
+(*
 val xs0 = list_nil()
 val xs1 = list_cons(1, xs0)
 val xs2 = list_cons<int>(2, xs1)
+*)
 (* ****** ****** *)
 (*
 //

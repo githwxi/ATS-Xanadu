@@ -404,8 +404,6 @@ implement
 p_q0arg
 (buf, err) = let
 //
-val e0 = err
-//
 val sid =
   p_s0aid(buf, err)
 //
@@ -435,7 +433,6 @@ in
 end : loc_t // end of [val]
 //
 in
-  err := e0;
   q0arg_make_node(loc0, Q0ARGsome(sid, opt))
 end (* end of [p_q0arg] *)
 

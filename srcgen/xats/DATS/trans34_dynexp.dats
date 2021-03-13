@@ -516,6 +516,85 @@ d4exp_make_node
 , D4Etcon(d2c0, ti4a, ti3a, ti2s))
 end // end of [auxtcon]
 
+(* ****** ****** *)
+
+fun
+auxtcst
+( d3e0
+: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Etcst
+( d2c0
+, ti3a, ti2s) = d3e0.node()
+//
+val s2e0 = d2c0.sexp()
+val ti4a =
+(
+case+ ti3a of
+| TI3ARGnone() =>
+  TI4ARGnone()
+| TI3ARGsome(t2ps) =>
+  TI4ARGsome(auxlst(t2ps))
+) where
+{
+fun
+auxlst
+( xs
+: t2ypelst): s2explst =
+(
+case+ xs of
+|
+list_nil() => list_nil()
+|
+list_cons(x1, xs) =>
+let
+  val
+  s2t1 = x1.sort()
+  val
+  xtv1 =
+  s2xtv_new(loc0, s2t1)
+  val
+  s2e1 = s2exp_xtv(xtv1)
+in
+  list_cons(s2e1, auxlst(xs))
+end
+)
+} (*where*) // end of [val ti4a]
+//
+val
+ti4a = ti4a: ti4arg
+//
+val s2e0 =
+(
+case+ ti4a of
+|
+TI4ARGnone() => s2e0
+|
+TI4ARGsome(s2es) =>
+let
+val s2vs =
+d2cst_get_s2vs(d2c0)
+in
+  s2exp_subst_svarlst
+  ( s2e0, s2vs, s2es )
+end
+) (* end of [val s2e0] *)
+//
+val () = auxti4a(ti4a, ti2s)
+//
+in
+d4exp_make_node
+( loc0, s2e0, t2p0
+, D4Etcst(d2c0, ti4a, ti3a, ti2s))
+end // end of [auxtcst]
+
 end // end of [local]
 
 (* ****** ****** *)
