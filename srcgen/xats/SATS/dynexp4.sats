@@ -130,7 +130,7 @@ d4pat_node =
   (d4pat, s2exp) // no s2xtv in anno
 //
 | D4Ptcast of
-  (d4pat, t2ype) // HX: error indication?
+  (d4pat, s2exp) // HX: error indication?
 //
 | D4Pnone0 of ()
 | D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)

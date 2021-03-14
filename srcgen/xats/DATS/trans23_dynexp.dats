@@ -2766,18 +2766,20 @@ case+ wtp of
   T2PCASTnone(*void*)
   ) where
   {
-    val () = d2c.type(tfn1)
+    val () =
+    d2cst_set_type(d2c, tfn1)
   }
 | Some(s2e0) =>
   let
     val
     tfn2 =
     s2exp_erase(s2e0)
-    val () = d2c.type(tfn2)
+    val () =
+    d2cst_set_type(d2c, tfn2)
   in
     if
     unify2(loc0, tfn1, tfn2)
-    then T2PCASTnone(*void*)
+    then T2PCASTnone((*void*))
     else
     T2PCASTsome
     (tfn1(*infer*), tfn2(*given*))
@@ -2791,7 +2793,7 @@ val def =
 (
 case+ def of
 | None() =>
-  None()
+  None(*void*)
 | Some(d2e) =>
   Some(trans23_dexp_dntp(d2e, rtp))
 ) : d3expopt // end-of-val

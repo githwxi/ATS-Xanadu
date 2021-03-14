@@ -183,6 +183,12 @@ trans34_dpatlst
 ! tr34env, d3ps: d3patlst): d4patlst
 //
 (* ****** ****** *)
+fun
+trans34_dpat_dntp
+( env0:
+! tr34env
+, d3p0: d3pat, s2e0: s2exp): d4pat
+(* ****** ****** *)
 //
 fun
 trans34_dexp
