@@ -84,6 +84,9 @@ NMS = "./../SATS/nmspace.sats"
 #staload "./../SATS/trans12.sats"
 
 (* ****** ****** *)
+implement
+fprint_val<s1qua> = fprint_s1qua
+(* ****** ****** *)
 //
 implement
 fprint_val<s2cst> = fprint_s2cst
@@ -1068,25 +1071,30 @@ d2ps =
 (
 case+
 d1p0.node() of
-| D1Plist
-  (xs1) =>
-  (
-    trans12_dpatlst(xs1)
-  )
-| D1Plist
-  (xs1, xs2) =>
-  (
-    npf := length(xs1); ys1 + ys2
-  ) where
-  {
-    val ys1 = trans12_dpatlst(xs1)
-    val ys2 = trans12_dpatlst(xs2)
-  }
+|
+D1Plist
+( xs1 ) =>
+(
+  trans12_dpatlst(xs1)
+)
+|
+D1Plist
+(xs1, xs2) =>
+(
+npf :=
+length(xs1); ys1 + ys2
+) where
+{
+val
+ys1 = trans12_dpatlst(xs1)
+val
+ys2 = trans12_dpatlst(xs2)
+}
 | _(*non-D1Plist*) =>
-  (
-    list_sing(trans12_dpat(d1p0))
-  )
-) : d2patlst // end-of-val
+(
+  list_sing(trans12_dpat(d1p0))
+)
+) : d2patlst // end of [val]
 //
 val () =
 the_trans12_add_patlst(d2ps)
@@ -1107,6 +1115,12 @@ val-
 F1ARGsome_sta
   (s1qs) = f1a0.node()
 //
+(*
+val () =
+println!
+("auxsta: s1qs = ", s1qs)
+*)
+//
 var s2vs_
   : s2varlst_vt =
   list_vt_nil(*void*)
@@ -1114,7 +1128,7 @@ var s2ps_
   : s2varlst_vt =
   list_vt_nil(*void*)
 val ((*void*)) =
-  trans12_squalst(s1qs, s2vs_, s2ps_)
+trans12_squalst(s1qs, s2vs_, s2ps_)
 //
 val s2vs =
   list_vt2t(list_vt_reverse(s2vs_))
@@ -1161,8 +1175,6 @@ f1a0.node() of
 //
 ) (* end of [trans12_farg] *)
 
-end // end of [local]
-
 implement
 trans12_farglst
   (f1as) =
@@ -1172,15 +1184,32 @@ list_map<f1arg><f2arg>(f1as)
 ) where
 {
 implement
-list_map$fopr<f1arg><f2arg>(f1a) = trans12_farg(f1a)
-} (* end of [trans12_farglst] *)
+list_map$fopr<
+f1arg><f2arg>(f1a) = trans12_farg(f1a)
+} (*where*) // end of [trans12_farglst]
 
 (* ****** ****** *)
 //
 implement
 trans12_farglst_s2exp
-  (f1as, s2f0) = trans12_farglst(f1as)
+  (f1as, s2f0) =
+(
+trans12_farglst(f1as)) where
+{
+// (*
+val () =
+println!
+("trans12_farglst_s2exp: f1as = ", f1as)
+val () =
+println!
+("trans12_farglst_s2exp: s2f0 = ", s2f0)
+// *)
+} (*where*)//end of [trans12_farglst_s2exp]
 //
+(* ****** ****** *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 implement
@@ -4411,7 +4440,8 @@ trans12_farglst(rcd.arg)
 |
 Some(s2f0) =>
 trans12_farglst_s2exp(rcd.arg, s2f0)
-)
+) : f2arglst // end-of-val
+//
 val res =
 trans12_effsexpopt(rcd.res)
 //
@@ -6428,7 +6458,7 @@ case+ s1us of
   end
 )
 //
-} (* end of [trans12_datcon] *)
+} (*where*) // end of [trans12_datcon]
 
 end // end of [local]
 
