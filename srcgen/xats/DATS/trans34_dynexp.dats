@@ -848,7 +848,21 @@ d4exp_make_node
 , t2p0, D4Edapp(d4f0, npf1, d4es))
 end // end of [S2Efun]
 |
-_(*non-S2Efun*) => d4exp_none1(d3e0)
+_(*non-S2Efun*) =>
+let
+val d4f0 =
+d4exp_none1(d3f0)
+val
+d4es =
+trans34_dexplst(env0, d3es)
+val
+s2r0 = the_s2exp_none0(*void*)
+in
+d4exp_make_node
+( loc0
+, s2r0
+, t2p0, D4Edapp(d4f0, npf1, d4es))
+end // end of [non-S2Efun]
 //
 end (*let*) // end of [auxdapp]
 
