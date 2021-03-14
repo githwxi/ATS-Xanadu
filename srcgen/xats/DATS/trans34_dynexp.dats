@@ -137,11 +137,66 @@ trans34_dpat
 case+
 d3p0.node() of
 //
-| _ (*rest-of-d3pat*) => d4pat_none1(d3p0)
+|
+D3Panno(d3p1, s2e2) =>
+trans34_dpat_dntp(env0, d3p1, s2e2)
+//
+|
+_ (*rest-of-d3pat*) => d4pat_none1(d3p0)
 //
 )
 
 end // end of [local]
+
+(* ****** ****** *)
+
+implement
+trans34_dpat_dntp
+(env0, d3p0, s2e0) =
+let
+(*
+val () =
+println!
+("trans34_dpat_dntp: d3p0 = ", d3p0)
+val () =
+println!
+("trans34_dpat_dntp: s2e0 = ", s2e0)
+*)
+in(*in-of-let*)
+//
+case+
+d3p0.node() of
+//
+|
+D3Pvar(d2v0) =>
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val () =
+d2var_set_sexp(d2v0, s2e0)
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Pvar(d2v0))
+end (*let*) // end of [D3Pvar]
+//
+|
+_ (*rest-of-d3pat*) =>
+let
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+d4p0 = 
+trans34_dpat
+(env0, d3p0) in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Ptcast(d4p0, s2e0))
+end // end of [rest-of-d3pat]
+//
+end (*let*) // end of [trans34_dpat_dntp]
 
 (* ****** ****** *)
 
@@ -1232,7 +1287,7 @@ in
 d4ecl_make_node
 ( loc0
 , D4Cfundecl(tok0, mopt, tqas, f4ds))
-end
+end (*let*) // end of [aux_fundecl]
 
 (* ****** ****** *)
 
@@ -1369,6 +1424,19 @@ val
 d2c = rcd.d2c
 val
 a2g = rcd.a2g
+//
+val () =
+println!
+("trans34_fundecl: nam = ", nam)
+val () =
+println!
+("trans34_fundecl: d2c = ", d2c)
+val () =
+println!
+("trans34_fundecl: d2c.sexp = ", d2c.sexp())
+val () =
+println!
+("trans34_fundecl: d2c.type = ", d2c.type())
 //
 val
 a4g =

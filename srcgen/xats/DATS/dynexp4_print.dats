@@ -166,14 +166,23 @@ case+ x0.node() of
   fprint!(out, "D4Pany()")
 //
 | D4Pvar(d2v) =>
+  let
+  val s2e = d2v.sexp()
+  in
   fprint!
-  (out, "D4Pvar(", d2v, ")")
+  ( out
+  , "D4Pvar(", d2v, ":", s2e, ")")
+  end
 //
 | D4Panno
   (d3p1, s2e2) =>
   fprint!
   ( out
   , "D4Panno(", d3p1, "; ", s2e2, ")")
+//
+| D4Ptcast(d4p1, s2e2) =>
+  fprint!
+  (out, "D4Ptcast(", d4p1, "; ", s2e2, ")")
 //
 | D4Pnone1(d3p1) =>
   fprint!
