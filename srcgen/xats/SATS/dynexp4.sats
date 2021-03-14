@@ -282,18 +282,24 @@ d4exp_node =
 | D4Evar of (d2var)
 //
 | D4Efcon of (d2con)
+| D4Efcst of (d2cst)
+//
 | D4Etcon of
   ( d2con
   , ti4arg(*s2es*)
   , ti3arg(*t2ps*)
   , ti2arglst(*sess*))
-//
-| D4Efcst of (d2cst)
 | D4Etcst of
   ( d2cst
   , ti4arg(*s2es*)
   , ti3arg(*t2ps*)
   , ti2arglst(*sess*))
+//
+| D4Etimp of
+  ( stamp
+  , d4exp(*tcst*), t2ypelst(*targ*)
+  , d4ecl(*impl*), t2ypelst(*tsub*)
+  ) (* end of [D4timp] *)
 //
 (*
 | D4Eexist1 of
