@@ -289,6 +289,10 @@ case+ x0.node() of
 //
 | D4Evar(d2v) =>
   fprint!(out, "D4Evar(", d2v, ")")
+| D4Evknd(knd0, d2v1) =>
+  fprint!
+  ( out
+  , "D4Evknd(", knd0, ", ", d2v1, ")")
 //
 | D4Efcon(d2c) =>
   fprint!(out, "D4Efcon(", d2c, ")")

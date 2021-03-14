@@ -40,6 +40,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
@@ -215,6 +216,15 @@ end
 end
 //
 } (*where*) // end of [trans34_d4exp_deunis]
+
+(* ****** ****** *)
+
+implement
+trans34_d2var_gets2e
+( env0, d2v0 ) =
+(
+  d2v0.sexp((*void*)) // FIXME!!!
+) (* end of [trans34_d2var_gets2e] *)
 
 (* ****** ****** *)
 

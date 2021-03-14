@@ -349,9 +349,80 @@ end // end of [auxchr]
 (* ****** ****** *)
 
 fun
+auxvar
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Evar(d2v0) = d3e0.node()
+//
+val
+s2e0 =
+trans34_d2var_gets2e
+( env0, d2v0 )
+//
+val () =
+println!
+( "auxvar: d2v0 = ", d2v0 )
+val () =
+println!
+( "auxvar: s2e0 = ", s2e0 )
+//
+in
+d4exp_make_node
+(loc0, s2e0, t2p0, D4Evar(d2v0))
+end // end of [auxvar]
+
+(* ****** ****** *)
+
+fun
+auxvknd
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Evknd
+(knd0, d2v0) = d3e0.node()
+//
+val
+s2e0 =
+trans34_d2var_gets2e
+( env0, d2v0 )
+//
+val () =
+println!
+( "auxvknd: d2v0 = ", d2v0 )
+val () =
+println!
+( "auxvknd: s2e0 = ", s2e0 )
+//
+in
+d4exp_make_node
+( loc0
+, s2e0, t2p0, D4Evknd(knd0, d2v0))
+end // end of [auxvknd]
+
+(* ****** ****** *)
+
+fun
 auxfcon
-( d3e0
-: d3exp): d4exp =
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
 let
 //
 val
@@ -381,8 +452,9 @@ end // end of [auxfcon]
 
 fun
 auxfcst
-( d3e0
-: d3exp): d4exp =
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
 let
 //
 val
@@ -475,8 +547,9 @@ in(*in-of-local*)
 
 fun
 auxtcon
-( d3e0
-: d3exp): d4exp =
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
 let
 //
 val
@@ -554,8 +627,9 @@ end // end of [auxtcon]
 
 fun
 auxtcst
-( d3e0
-: d3exp): d4exp =
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
 let
 //
 val
@@ -656,7 +730,7 @@ D3Etimp
 , d3cl, tsub) = d3e0.node()
 //
 val
-d4e1 = auxtcst(d3e1)
+d4e1 = auxtcst(env0, d3e1)
 val
 s2e1 = d4e1.sexp((*void*))
 //
@@ -887,11 +961,14 @@ d3e0.node() of
 | D3Ebtf _ => auxbtf(d3e0)
 | D3Echr _ => auxchr(d3e0)
 //
-| D3Efcon _ => auxfcon(d3e0)
-| D3Efcst _ => auxfcst(d3e0)
+| D3Evar _ => auxvar(env0, d3e0)
+| D3Evknd _ => auxvknd(env0, d3e0)
 //
-| D3Etcon _ => auxtcon(d3e0)
-| D3Etcst _ => auxtcst(d3e0)
+| D3Efcon _ => auxfcon(env0, d3e0)
+| D3Efcst _ => auxfcst(env0, d3e0)
+//
+| D3Etcon _ => auxtcon(env0, d3e0)
+| D3Etcst _ => auxtcst(env0, d3e0)
 //
 | D3Etimp _ => auxtimp(env0, d3e0)
 //
