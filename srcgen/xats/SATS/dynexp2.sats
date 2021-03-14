@@ -1372,7 +1372,7 @@ overload fprint with fprint_impld2cst
 fun
 d2pat_get_sexp(d2pat): s2exp
 fun
-d2patlst_get_sexps(d2patlst): s2explst
+d2patlst_get_s2es(d2patlst): s2explst
 //
 (* ****** ****** *)
 //

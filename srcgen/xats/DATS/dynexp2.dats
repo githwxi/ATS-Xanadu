@@ -848,7 +848,7 @@ d2p0.node() of
 | _ (*else*) => the_s2exp_none0
 )
 implement
-d2patlst_get_sexps
+d2patlst_get_s2es
   (d2ps) =
 list_vt2t(d2ps) where
 {
@@ -860,7 +860,7 @@ list_map<d2pat><s2exp>
 implement
 list_map$fopr<d2pat><s2exp> = d2pat_get_sexp
 }
-} (* end of [d2patlst_get_sexps] *)
+} (* end of [d2patlst_get_s2es] *)
 
 (* ****** ****** *)
 
@@ -925,7 +925,7 @@ case+ arg of
       | list_nil() => FC2fun((*void*))
       | list_cons _ => FC2cloref(*void*)
       ) : funclo2 // end-of-val
-      val s2es = d2patlst_get_sexps(d2ps)
+      val s2es = d2patlst_get_s2es(d2ps)
     in
       s2exp_fun_full(fc2, npf, s2es, res)
     end
@@ -936,7 +936,7 @@ case+ arg of
   end
 )
 //
-} (* end of [f2undecl_get_s2exp] *)
+} (* end of [f2undecl_get_sexp] *)
 
 (* ****** ****** *)
 

@@ -313,14 +313,22 @@ trans34_d4exp_deunis(d4e0: d4exp): d4exp
 (* ****** ****** *)
 //
 fun
-trans34_d2var_gets2e
+trans34_d2var_get_sexp
 ( env0:
 ! tr34env, d2v0: d2var): s2exp
 fun
-trans34_d2var_sets2e
+trans34_d2var_set_sexp
 ( env0:
 ! tr34env, d2v0: d2var, s2e0: s2exp): void
 //
+(* ****** ****** *)
+fun
+trans34_d3pat_get_sexp(d3pat): s2exp
+fun
+trans34_d3patlst_get_s2es(d3patlst): s2explst
+(* ****** ****** *)
+fun
+trans34_f3undecl_set_sexp(f3undecl): void
 (* ****** ****** *)
 
 (* end of [xats_trans34.sats] *)

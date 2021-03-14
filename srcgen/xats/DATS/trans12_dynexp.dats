@@ -5926,24 +5926,20 @@ let
 //
 val npf = ~1
 //
-val lin = (0)
 val fc2 =
 (
   if
   nfc0 <= 0
   then FC2fun() else FC2cloref
 ) : funclo2
-val eff = S2EFFnil()
 //
 val s2es =
   list_sing(auxsid(tok0))
 val s2e0 =
   auxarg1(d1cl, nfc0+1, d1as, res0)
 in
-  s2exp_fun_full
-    (fc2, lin, eff, npf, s2es, s2e0)
-  // s2exp_fun_full
-end
+  s2exp_fun_full(fc2, npf, s2es, s2e0)
+end // end of [let]
 *)
 let
   val npf = ~1
