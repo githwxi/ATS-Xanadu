@@ -634,6 +634,46 @@ end // end of [local]
 (* ****** ****** *)
 
 fun
+auxtimp
+( env0
+: !tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val () =
+println!
+("auxtimp: d3e0 = ", d3e0)
+//
+val-
+D3Etimp
+( stmp
+, d3e1, targ
+, d3cl, tsub) = d3e0.node()
+//
+val
+d4e1 = auxtcst(d3e1)
+val
+s2e1 = d4e1.sexp((*void*))
+//
+val
+d4cl = trans34_decl(env0, d3cl)
+//
+in
+d4exp_make_node
+( loc0
+, s2e1, t2p0
+, D4Etimp
+  (stmp, d4e1, targ, d4cl, tsub))
+end (*let*) // end of [auxtimp]
+
+(* ****** ****** *)
+
+fun
 auxsap0
 ( env0
 : !tr34env
@@ -644,6 +684,10 @@ val
 loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
+//
+val () =
+println!
+("auxsap0: d3e0 = ", d3e0)
 //
 val-
 D3Esap0
@@ -688,6 +732,12 @@ val
 loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
+//
+(*
+val () =
+println!
+("auxdapp: d3e0 = ", d3e0)
+*)
 //
 val-
 D3Edapp
@@ -842,6 +892,8 @@ d3e0.node() of
 //
 | D3Etcon _ => auxtcon(d3e0)
 | D3Etcst _ => auxtcst(d3e0)
+//
+| D3Etimp _ => auxtimp(env0, d3e0)
 //
 | D3Esap0 _ => auxsap0(env0, d3e0)
 //

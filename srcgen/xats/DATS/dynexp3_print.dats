@@ -474,12 +474,12 @@ x0.node() of
 //
 | D3Etimp
   ( stmp
-  , d2e1, tsub1
-  , d2c2, tsub2) =>
+  , d3e1, targ
+  , d3cl, tsub) =>
   fprint!
   ( out
   , "D3Etimp(", stmp, "; "
-  , d2e1, "; ", tsub1, "; ", d2c2, "; ", tsub2, ")")
+  , d3e1, "; ", targ, "; ", d3cl, "; ", tsub, ")")
 //
 | D3Esap0
   (d3e1, s2es) =>

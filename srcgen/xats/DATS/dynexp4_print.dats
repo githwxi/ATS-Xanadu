@@ -312,6 +312,15 @@ case+ x0.node() of
   , d2c1, ";"
   , ti4a, ";", ti3a, ";", ti2s, ")")
 //
+| D4Etimp
+  ( stmp
+  , d4e1, targ
+  , d4cl, tsub) =>
+  fprint!
+  ( out
+  , "D4Etimp(", stmp, "; "
+  , d4e1, "; ", targ, "; ", d4cl, "; ", tsub, ")")
+//
 | D4Esap0
   (d4f0, s2es) =>
   fprint!
