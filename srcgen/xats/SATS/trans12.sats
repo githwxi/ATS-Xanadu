@@ -924,6 +924,10 @@ trans12_farg: f1arg -> f2arg
 fun
 trans12_farglst: f1arglst -> f2arglst
 //
+fun
+trans12_farglst_s2exp
+(f1as: f1arglst, s2f0: s2exp): f2arglst
+//
 (* ****** ****** *)
 //
 fun
