@@ -1176,6 +1176,12 @@ list_map$fopr<f1arg><f2arg>(f1a) = trans12_farg(f1a)
 } (* end of [trans12_farglst] *)
 
 (* ****** ****** *)
+//
+implement
+trans12_farglst_s2exp
+  (f1as, s2f0) = trans12_farglst(f1as)
+//
+(* ****** ****** *)
 
 implement
 trans12_dgua
@@ -4379,12 +4385,33 @@ val nam = d2v0
 val d2c = d2c0
 val loc = rcd.loc
 //
+val wtp =
+(
+case+ rcd.wtp of
+|
+WTHS1EXPnone
+  ((*void*)) => None()
+|
+WTHS1EXPsome
+  (tok, s1e) =>
+  Some(trans12_sexp(s1e))
+) : s2expopt // end-of-val
+//
+//
 val
 (pf0|()) =
 the_trans12_pushnil()
 //
 val arg =
+(
+case+ wtp of
+|
+None() =>
 trans12_farglst(rcd.arg)
+|
+Some(s2f0) =>
+trans12_farglst_s2exp(rcd.arg, s2f0)
+)
 val res =
 trans12_effsexpopt(rcd.res)
 //
@@ -4432,17 +4459,6 @@ end // end of [local]
 val
 ((*void*)) =
 the_trans12_popfree(pf0|(*void*))
-//
-val wtp =
-(
-case+ rcd.wtp of
-|
-WTHS1EXPnone
-  ((*void*)) => None()
-|
-WTHS1EXPsome
-  (tok, s1e) => Some(trans12_sexp(s1e))
-) : s2expopt // end of [val]
 //
 in
 F2UNDECL(
