@@ -305,5 +305,16 @@ fun
 trans34_d4exp_deunis(d4e0: d4exp): d4exp
 //
 (* ****** ****** *)
+//
+fun
+trans34_d2var_gets2e
+( env0:
+! tr34env, d2v0: d2var): s2exp
+fun
+trans34_d2var_sets2e
+( env0:
+! tr34env, d2v0: d2var, s2e0: s2exp): void
+//
+(* ****** ****** *)
 
 (* end of [xats_trans34.sats] *)

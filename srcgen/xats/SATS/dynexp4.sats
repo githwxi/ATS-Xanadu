@@ -280,6 +280,14 @@ d4exp_node =
 | D4Etop of (token)
 //
 | D4Evar of (d2var)
+(*
+HX-2021-03:
+For trans3x:
+Please see trans3x_envmap
+for the meaning of knd
+*)
+| D4Evknd of
+  (int(*kind*), d2var)
 //
 | D4Efcon of (d2con)
 | D4Efcst of (d2cst)
