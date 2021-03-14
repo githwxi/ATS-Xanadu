@@ -39,8 +39,12 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
@@ -220,12 +224,162 @@ end
 (* ****** ****** *)
 
 implement
-trans34_d2var_gets2e
+trans34_d2var_get_sexp
 ( env0, d2v0 ) =
 (
   d2v0.sexp((*void*)) // FIXME!!!
-) (* end of [trans34_d2var_gets2e] *)
+) (* end of [trans34_d2var_get_sexp] *)
 
+(* ****** ****** *)
+
+implement
+trans34_f3undecl_set_sexp
+( f3d0 ) =
+let
+//
+val+
+F3UNDECL
+( rcd ) = f3d0
+//
+val nam = rcd.nam
+val d2c = rcd.d2c
+//
+in
+//
+case+
+rcd.wtp of
+|
+Some(s2f0) =>
+{
+val () =
+d2var_set_sexp(nam, s2f0)
+val () =
+d2cst_set_sexp(d2c, s2f0)
+}
+|
+None((*void*)) =>
+let
+val a3g = rcd.a3g
+in
+case+ a3g of
+|
+None() => ((*void*))
+|
+Some(f3as) =>
+let
+val
+s2r0 =
+(
+case+
+rcd.res of
+|
+EFFS2EXPnone() =>
+s2exp_t2ype(rcd.rtp)
+|
+EFFS2EXPsome(s2r0) => s2r0
+) : s2exp // end-of-val
+val
+s2f0 =
+aux_f3as(f3as, s2r0)
+in
+d2var_set_sexp(nam, s2f0);
+d2cst_set_sexp(d2c, s2f0);
+end
+//
+end // end of [None]
+//
+end where
+{
+fun
+aux_fc2
+( f3as
+: f3arglst): funclo2 =
+(
+case+ f3as of
+| list_nil() => FC2fun()
+| list_cons(f3a0, f3as) =>
+(
+case+
+f3a0.node() of
+| F3ARGsome_dyn _ =>
+  FC2cloref | _ => aux_fc2(f3as)
+)
+)
+fun
+aux_f3a0
+( fc2
+: funclo2
+, f3a0: f3arg
+, s2r0: s2exp): s2exp =
+(
+case+
+f3a0.node() of
+| F3ARGsome_dyn
+  (npf, d3ps) =>
+  (
+    s2exp_fun_full
+    (fc2, npf, s2es, s2r0)
+  ) where
+  {
+  val s2es =
+  trans34_d3patlst_get_s2es(d3ps)
+  }
+| F3ARGsome_sta
+  (s2vs, s2ps) =>
+  s2exp_uni(s2vs, s2ps, s2r0)
+//
+| _ (*else*) => s2r0 // end-of-else
+)
+and
+aux_f3as
+( f3as
+: f3arglst
+, s2r0: s2exp): s2exp =
+(
+case+ f3as of
+|
+list_nil() => s2r0
+|
+list_cons(f3a0, f3as) =>
+let
+val fc2 = aux_fc2(f3as)
+in
+aux_f3a0
+(fc2, f3a0, aux_f3as(f3as, s2r0))
+end // end of [list_cons]
+)
+} (* trans34_f3undecl_get_sexp *)
+
+(* ****** ****** *)
+//
+implement
+trans34_d3pat_get_sexp
+( d3p0 ) =
+(
+case+
+d3p0.node() of
+|
+D3Panno(d3p1, s2e2) => s2e2
+|
+_ (*else*) => s2exp_t2ype(d3p0.type())
+) (* end of [trans34_d3pat_get_sexp] *)
+implement
+trans34_d3patlst_get_s2es
+( d3ps ) =
+(
+  list_vt2t(d3ps)
+) where
+{
+val
+d3ps =
+list_map<d3pat><s2exp>
+  (d3ps) where
+{
+implement
+list_map$fopr<d3pat><s2exp> = trans34_d3pat_get_sexp
+}
+} (* end of [trans34_d3patlst_get_s2es] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_trans34_util1.dats] *)

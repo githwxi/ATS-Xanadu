@@ -77,12 +77,13 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans34.sats"
 
 (* ****** ****** *)
-
 implement
 fprint_val<s2exp> = fprint_s2exp
 implement
 fprint_val<t2ype> = fprint_t2ype
-
+(* ****** ****** *)
+implement
+fprint_val<tq2arg> = fprint_tq2arg
 (* ****** ****** *)
 implement
 fprint_val<d3exp> = fprint_d3exp
@@ -420,7 +421,7 @@ D3Evar(d2v0) = d3e0.node()
 //
 val
 s2e0 =
-trans34_d2var_gets2e
+trans34_d2var_get_sexp
 ( env0, d2v0 )
 //
 val () =
@@ -455,7 +456,7 @@ D3Evknd
 //
 val
 s2e0 =
-trans34_d2var_gets2e
+trans34_d2var_get_sexp
 ( env0, d2v0 )
 //
 val () =
@@ -1426,17 +1427,36 @@ val
 a2g = rcd.a2g
 //
 val () =
+trans34_f3undecl_set_sexp(f3d0)
+//
+(*
+val () =
 println!
 ("trans34_fundecl: nam = ", nam)
 val () =
 println!
+("trans34_fundecl: nam.tqas = ", nam.tqas())
+val () =
+println!
+("trans34_fundecl: nam.sexp = ", nam.sexp())
+val () =
+println!
+("trans34_fundecl: nam.type = ", nam.type())
+*)
+(*
+val () =
+println!
 ("trans34_fundecl: d2c = ", d2c)
+val () =
+println!
+("trans34_fundecl: d2c.tqas = ", d2c.tqas())
 val () =
 println!
 ("trans34_fundecl: d2c.sexp = ", d2c.sexp())
 val () =
 println!
 ("trans34_fundecl: d2c.type = ", d2c.type())
+*)
 //
 val
 a4g =
@@ -1444,19 +1464,16 @@ a4g =
 case+
 rcd.a3g of
 |
-None() => None()
+None() =>
+None(*void*)
 |
 Some(f3as) =>
-Some(
-trans34_farglst
-( env0, f3as )
-) (* end of [Some] *)
-) : f4arglstopt // end-val
+Some
+(trans34_farglst(env0, f3as))): f4arglstopt
 //
 val
 def = 
-trans34_dexpopt
-(env0, rcd.def)
+trans34_dexpopt(env0, rcd.def)
 //
 in(*in-of-let*)
 //
@@ -1465,15 +1482,13 @@ F4UNDECL@{
 //
 , nam= nam
 , d2c= d2c
-, a2g= a2g
 //
-, a4g= a4g
-, res= rcd.res
+, a2g= a2g
+, a4g= a4g, res= rcd.res
 //
 , def= def
 //
-, rtp= rcd.rtp
-, wtp= rcd.wtp, ctp= rcd.ctp
+, rtp= rcd.rtp, wtp= rcd.wtp, ctp= rcd.ctp
 //
 } (* end of [F4UNDECL] *)
 //

@@ -67,14 +67,12 @@ LOC = "./../SATS/locinfo.sats"
 #staload "./../SATS/lexing0.sats"
 //
 (* ****** ****** *)
-
 #staload "./../SATS/staexp1.sats"
-#staload "./../SATS/staexp2.sats"
-
 (* ****** ****** *)
-
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/staexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans01.sats"
-
 (* ****** ****** *)
 (*
 //
@@ -1227,6 +1225,16 @@ s2exp_make_node
 (s2t0, S2Etyrec(knd, npf, ls2es1 + ls2es2))
 end // end of [s2exp_record2]
 
+(* ****** ****** *)
+//
+implement
+s2exp_t2ype
+  (t2p0) =
+(
+s2exp_make_node
+(t2p0.sort(), S2Et2ype(t2p0))
+)
+//
 (* ****** ****** *)
 //
 implement
