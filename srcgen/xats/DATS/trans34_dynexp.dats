@@ -1325,9 +1325,136 @@ f3a1.node() of
 (*
 HX-2021-03-15:
 Should this be handled?
-|
-F3ARGsome_sta _ => ...
 *)
+|
+F3ARGsome_sta
+(svs1, sps1) =>
+(
+case+
+s2f0.node() of
+|
+S2Euni
+(svs2, sps2, s2f1) =>
+let
+val
+s2vs =
+auxs2vs(svs1, svs2)
+val
+tsub =
+auxtsub(svs1, svs2)
+(*
+HX-2021-03-15:
+[sps1] is discarded!
+*)
+val
+s2ps =
+s2explst_subst_svarlst
+( sps2, svs2, tsub )
+val f4a1 = 
+f4arg_make_node
+(loc1, F4ARGsome_sta(s2vs, s2ps))
+val f4as = 
+trans34_farglst_s2exp(env0, f3as, s2f1, sres)
+in
+  list_cons(f4a1, f4as)
+end where
+{
+//
+val
+loc1 = f3a1.loc()
+//
+fun
+auxs2vs
+( svs1
+: s2varlst
+, svs2
+: s2varlst): s2varlst =
+(
+case+ svs2 of
+|
+list_nil() =>
+list_nil()
+|
+_(*list_cons*) =>
+(
+case+ svs1 of
+|
+list_nil() => svs2
+|
+list_cons(s2v1, svs1) =>
+let
+  val-
+  list_cons(_, svs2) = svs2
+in
+  list_cons
+  (s2v1, auxs2vs(svs1, svs2))
+end
+)
+) (* end of [auxs2vs] *)
+fun
+auxtsub
+( svs1
+: s2varlst
+, svs2
+: s2varlst): s2explst =
+(
+case+ svs2 of
+|
+list_nil() => list_nil()
+|
+list_cons
+(s2v2, svs2) =>
+(
+case+ svs1 of
+|
+list_nil() =>
+let
+val
+s2e1 = s2exp_var(s2v2)
+in
+list_cons
+(s2e1, auxtsub(svs1, svs2))
+end
+|
+list_cons
+(s2v1, svs1) =>
+let
+val
+s2t1 = s2v1.sort()
+val
+s2t2 = s2v2.sort()
+val
+s2e1 = s2exp_var(s2v2)
+val
+s2e1 =
+(
+if
+s2t1 <= s2t2
+then s2e1 else
+s2exp_cast
+(loc1, s2e1, s2t2)): s2exp
+in
+list_cons(s2e1, auxtsub(svs1, svs2))
+end
+)
+) (* auxtsub *)
+} (* end-of-S2Euni *)
+|
+_ (* rest-of-s2exp *) =>
+let
+val
+//
+loc1 = f3a1.loc()
+//
+val f4a1 = 
+f4arg_make_node(loc1, F4ARGnone3(f3a1))
+val f4as = 
+trans34_farglst_s2exp(env0, f3as, s2f0, sres)
+//
+in
+  list_cons(f4a1, f4as)
+end
+) (*where*) // end of [F3ARGsome_sta]
 //
 |
 F3ARGsome_dyn
@@ -1384,10 +1511,10 @@ f4arg_make_node
 , F4ARGsome_dyn(npf1, d4ps) )
 val f4as = 
 trans34_farglst_s2exp(env0, f3as, s2f1, sres)
-}
+} (* end-of-S2Efun *)
 //
 |
-_ (* rest-of-f3arg *) =>
+_ (* rest-of-s2exp *) =>
 (
   list_cons(f4a1, f4as)) where
 {
