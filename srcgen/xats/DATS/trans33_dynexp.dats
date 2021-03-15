@@ -497,7 +497,7 @@ D3Pnone2 _ => d3p0 // HX: errmsg
 | _ (* rest-of-d3pat *) => (d3p0)
 *)
 //
-end (*let*) // end of [trans33_dpat]
+end (*end*) // end of [trans33_dpat]
 
 (* ****** ****** *)
 
@@ -531,7 +531,7 @@ prval () = $UN.cast2void(env0) in d3p0
 end
 end // end of [let]
 }
-end // end of [trans33_dpatlst]
+end (*let*) // end of [trans33_dpatlst]
 
 (* ****** ****** *)
 //
