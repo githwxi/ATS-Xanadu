@@ -6,6 +6,14 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 fun
+fact(x: int) =
+if
+(x > 0)
+then x * fact(x-1) else 1
+(* ****** ****** *)
+////
+(* ****** ****** *)
+fun
 fact
 {x:int}(x) =
 if
@@ -20,13 +28,6 @@ implement
 fact{n}(x) =
 if x > 0 then x*fact(x-1) else x
 *)
-(* ****** ****** *)
-////
-fun
-fact(x: int): int =
-if
-(x > 0)
-then x * fact(x-1) else 1
 (* ****** ****** *)
 ////
 (* ****** ****** *)
