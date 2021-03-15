@@ -1773,7 +1773,24 @@ Some
 //
 val
 def = 
-trans34_dexpopt(env0, rcd.def)
+(
+case
+rcd.def of
+|
+None() => None()
+|
+Some(d3e0) =>
+(
+case+ sres of
+|
+EFFS2EXPnone() =>
+Some(trans34_dexp(env0, d3e0))
+|
+EFFS2EXPsome(s2e0) =>
+Some
+(trans34_dexp_dntp(env0, d3e0, s2e0))
+)
+) : d4expopt // end of [val def]
 //
 in(*in-of-let*)
 //
