@@ -144,19 +144,20 @@ implement
 fprint_val<t3imp> = fprint_t3imp
 //
 (* ****** ****** *)
+
+implement
+fprint_val<d3ecl> = fprint_d3ecl
+
+(* ****** ****** *)
 //
 implement
 fprint_val<d3gua> = fprint_d3gua
+//
 implement
 fprint_val<d3clau> = fprint_d3clau
 implement
 fprint_val<d3gpat> = fprint_d3gpat
 //
-(* ****** ****** *)
-
-implement
-fprint_val<d3ecl> = fprint_d3ecl
-
 (* ****** ****** *)
 //
 implement

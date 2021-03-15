@@ -332,6 +332,8 @@ for the meaning of knd
 | D4Eif0 of
   ( d4exp
   , d4exp(*then*), d4expopt(*else*))
+| D4Ecas0 of
+  (int(*knd*), d4exp(*val*), d4claulst)
 //
 | D4Eanno of
   (d4exp, s2exp) // no s2xtv in anno
@@ -404,6 +406,95 @@ fprint_d4exp: fprint_type(d4exp)
 overload print with print_d4exp
 overload prerr with prerr_d4exp
 overload fprint with fprint_d4exp
+//
+(* ****** ****** *)
+//
+datatype
+d4gua_node =
+| D4GUAexp of (d4exp)
+| D4GUAmat of (d4exp, d4pat)
+//
+fun
+d4gua_get_loc(d4gua): loc_t
+fun
+d4gua_get_node(d4gua): d4gua_node
+//
+overload .loc with d4gua_get_loc
+overload .node with d4gua_get_node
+//
+fun print_d4gua : (d4gua) -> void
+fun prerr_d4gua : (d4gua) -> void
+fun fprint_d4gua : fprint_type(d4gua)
+//
+overload print with print_d4gua
+overload prerr with prerr_d4gua
+overload fprint with fprint_d4gua
+//
+fun
+d4gua_make_node
+(loc: loc_t, node: d4gua_node): d4gua
+//
+(* ****** ****** *)
+//
+datatype
+d4clau_node =
+| D4CLAUpat of d4gpat
+| D4CLAUexp of (d4gpat, d4exp)
+and
+d4gpat_node =
+| D4GPATpat of (d4pat)
+| D4GPATgua of (d4pat, d4gualst)
+//
+(* ****** ****** *)
+//
+fun
+d4clau_get_loc(d4clau): loc_t
+fun
+d4clau_get_node(d4clau): d4clau_node
+//
+overload .loc with d4clau_get_loc
+overload .node with d4clau_get_node
+//
+fun
+d4gpat_get_loc(d4gpat): loc_t
+fun
+d4gpat_get_node(d4gpat): d4gpat_node
+//
+overload .loc with d4gpat_get_loc
+overload .node with d4gpat_get_node
+//
+(* ****** ****** *)
+//
+fun
+print_d4gpat : (d4gpat) -> void
+fun
+prerr_d4gpat : (d4gpat) -> void
+fun
+fprint_d4gpat : fprint_type(d4gpat)
+//
+overload print with print_d4gpat
+overload prerr with prerr_d4gpat
+overload fprint with fprint_d4gpat
+//
+fun
+print_d4clau : (d4clau) -> void
+fun
+prerr_d4clau : (d4clau) -> void
+fun
+fprint_d4clau : fprint_type(d4clau)
+//
+overload print with print_d4clau
+overload prerr with prerr_d4clau
+overload fprint with fprint_d4clau
+//
+(* ****** ****** *)
+//
+fun
+d4clau_make_node
+(loc: loc_t, node: d4clau_node): d4clau
+fun
+d4gpat_make_node
+(loc: loc_t, node: d4gpat_node): d4gpat
 //
 (* ****** ****** *)
 //

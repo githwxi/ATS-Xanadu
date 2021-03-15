@@ -444,10 +444,8 @@ for the meaning of knd
 | D3Eif0 of
   ( d3exp(*cond*)
   , d3exp(*then*), d3expopt(*else*))
-//
 | D3Ecas0 of
   (int(*knd*), d3exp(*val*), d3claulst)
-  // D3Ecas0
 //
 | D3Elam of
   ( token(*knd*)
@@ -649,6 +647,8 @@ d3gpat_node =
 | D3GPATpat of (d3pat)
 | D3GPATgua of (d3pat, d3gualst)
 //
+(* ****** ****** *)
+//
 fun
 d3clau_get_loc(d3clau): loc_t
 fun
@@ -665,16 +665,7 @@ d3gpat_get_node(d3gpat): d3gpat_node
 overload .loc with d3gpat_get_loc
 overload .node with d3gpat_get_node
 //
-fun
-print_d3clau : (d3clau) -> void
-fun
-prerr_d3clau : (d3clau) -> void
-fun
-fprint_d3clau : fprint_type(d3clau)
-//
-overload print with print_d3clau
-overload prerr with prerr_d3clau
-overload fprint with fprint_d3clau
+(* ****** ****** *)
 //
 fun
 print_d3gpat : (d3gpat) -> void
@@ -686,6 +677,19 @@ fprint_d3gpat : fprint_type(d3gpat)
 overload print with print_d3gpat
 overload prerr with prerr_d3gpat
 overload fprint with fprint_d3gpat
+//
+fun
+print_d3clau : (d3clau) -> void
+fun
+prerr_d3clau : (d3clau) -> void
+fun
+fprint_d3clau : fprint_type(d3clau)
+//
+overload print with print_d3clau
+overload prerr with prerr_d3clau
+overload fprint with fprint_d3clau
+//
+(* ****** ****** *)
 //
 fun
 d3clau_make_node

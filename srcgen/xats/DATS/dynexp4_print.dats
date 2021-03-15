@@ -148,6 +148,16 @@ fprint_val<d4ecl> = fprint_d4ecl
 (* ****** ****** *)
 //
 implement
+fprint_val<d4gua> = fprint_d4gua
+//
+implement
+fprint_val<d4clau> = fprint_d4clau
+implement
+fprint_val<d4gpat> = fprint_d4gpat
+//
+(* ****** ****** *)
+//
+implement
 print_d4pat(x0) =
 fprint_d4pat(stdout_ref, x0)
 implement
@@ -175,18 +185,18 @@ case+ x0.node() of
   end
 //
 | D4Panno
-  (d3p1, s2e2) =>
+  (d4p1, s2e2) =>
   fprint!
   ( out
-  , "D4Panno(", d3p1, "; ", s2e2, ")")
+  , "D4Panno(", d4p1, "; ", s2e2, ")")
 //
 | D4Ptcast(d4p1, s2e2) =>
   fprint!
-  (out, "D4Ptcast(", d4p1, "; ", s2e2, ")")
+  ( out
+  , "D4Ptcast(", d4p1, "; ", s2e2, ")")
 //
-| D4Pnone1(d3p1) =>
-  fprint!
-  (out, "D4Pnone1(", d3p1, ")")
+| D4Pnone1(d3psrc) =>
+  fprint!( out, "D4Pnone1(", d3psrc, ")" )
 //
 | _(* rest-of-d4pat *) => fprint!(out, "D4P...(...)")
 //
@@ -221,9 +231,9 @@ F4ARGsome_met(s2es) =>
 fprint!(out, "F4ARGsome_met(", s2es, ")")
 //
 |
-F4ARGsome_dyn(npf1, d3ps) =>
+F4ARGsome_dyn(npf1, d4ps) =>
 fprint!
-(out, "F4ARGsome_dyn(", npf1, "; ", d3ps, ")")
+(out, "F4ARGsome_dyn(", npf1, "; ", d4ps, ")")
 |
 F4ARGsome_sta(s2vs, s2ps) =>
 fprint!
@@ -366,11 +376,17 @@ case+ x0.node() of
   ( out, "D4Eif0("
   , d4e1, "; ", d4e2, "; ", opt3, ")")
 //
+| D4Ecas0
+  (knd0, d4e1, dcls) =>
+  fprint!
+  ( out, "D4Ecas0("
+  , knd0, "; ", d4e1, "; ", dcls, ")")
+//
 | D4Eanno
-  (d3e1, s2e2) =>
+  (d4e1, s2e2) =>
   fprint!
   ( out
-  , "D4Eanno(", d3e1, "; ", s2e2, ")")
+  , "D4Eanno(", d4e1, "; ", s2e2, ")")
 //
 | D4Etcast
   ( d4e0, s2e0 ) =>
@@ -388,6 +404,84 @@ case+ x0.node() of
 *)
 //
 ) (*val*) } (*where*) (* end of [fprint_d4exp] *)
+//
+(* ****** ****** *)
+//
+implement
+print_d4gua(x0) =
+fprint_d4gua(stdout_ref, x0)
+implement
+prerr_d4gua(x0) =
+fprint_d4gua(stderr_ref, x0)
+//
+implement
+fprint_d4gua
+  (out, x0) =
+(
+case+
+x0.node() of
+| D4GUAexp(d4e) =>
+  fprint!
+  (out, "D4GUAexp(", d4e, ")")
+| D4GUAmat(d4e, d4p) =>
+  fprint!
+  (out, "D4GUAmat(", d4e, "; ", d4p, ")")
+) (* end of [fprint_d4gua] *)
+//
+(* ****** ****** *)
+//
+implement
+print_d4clau(x0) =
+fprint_d4clau(stdout_ref, x0)
+implement
+prerr_d4clau(x0) =
+fprint_d4clau(stderr_ref, x0)
+//
+implement
+print_d4gpat(x0) =
+fprint_d4gpat(stdout_ref, x0)
+implement
+prerr_d4gpat(x0) =
+fprint_d4gpat(stderr_ref, x0)
+//
+implement
+fprint_d4clau
+  (out, x0) =
+(
+case+
+x0.node() of
+//
+|
+D4CLAUpat(d4gp) =>
+fprint!
+(out, "D4CLAUpat(", d4gp, ")")
+//
+|
+D4CLAUexp(d4gp, d0e0) =>
+fprint!
+( out
+, "D4CLAUexp(", d4gp, "; ", d0e0, ")")
+//
+) (* end of [fprint_d4clau] *)
+//
+implement
+fprint_d4gpat
+  (out, x0) =
+(
+case+
+x0.node() of
+//
+|
+D4GPATpat(d4p) =>
+fprint!
+(out, "D4GPATpat(", d4p, ")")
+//
+|
+D4GPATgua(d4p, d4gs) =>
+fprint!
+(out, "D4GPATgua(", d4p, "; ", d4gs, ")")
+//
+) (* end of [fprint_d4gpat] *)
 //
 (* ****** ****** *)
 //
