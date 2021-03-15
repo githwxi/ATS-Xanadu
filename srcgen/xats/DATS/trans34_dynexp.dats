@@ -956,7 +956,7 @@ val
 d4es =
 trans34_dexplst(env0, d3es)
 val
-s2r0 = the_s2exp_none0(*void*)
+s2r0 = s2exp_none0((*void*))
 in
 d4exp_make_node
 ( loc0
@@ -1424,7 +1424,7 @@ s2t1 = s2v1.sort()
 val
 s2t2 = s2v2.sort()
 val
-s2e1 = s2exp_var(s2v2)
+s2e1 = s2exp_var(s2v1)
 val
 s2e1 =
 (
