@@ -400,6 +400,8 @@ end // end of [aux_tuple]
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 implement
 trans33_dpat
 (env0, d3p0) = let
@@ -422,10 +424,18 @@ d3p0.node() of
 //
 | D3Pvar _ => d3p0
 //
+| D3Pi00 _ => d3p0
+| D3Pb00 _ => d3p0
+| D3Ps00 _ => d3p0
+//
 | D3Pint _ => d3p0
 | D3Pbtf _ => d3p0
 | D3Pchr _ => d3p0
+| D3Pflt _ => d3p0
 | D3Pstr _ => d3p0
+//
+| D3Pcon1 _ => d3p0
+| D3Pcon2 _ => d3p0
 //
 | D3Pbang _ =>
   auxbang(env0, d3p0)
@@ -437,11 +447,18 @@ d3p0.node() of
 | D3Psym0 _ =>
   auxsym0(env0, d3p0)
 //
+| D3Psap0 _ => (d3p0)
+| D3Psap1 _ => (d3p0)
+//
+| D3Pdap1 _ => (d3p0)
+//
 | D3Pdapp _ =>
   auxdapp(env0, d3p0)
 //
 | D3Ptuple _ =>
   aux_tuple(env0, d3p0)
+//
+| D3Panno(_, _) => d3p0
 //
 |
 D3Ptcast(d3p1, t2p2) =>
@@ -469,12 +486,20 @@ println!
 ("trans33_dpat: D3Ptcast: t2p2 = ", t2p2)
 } (* where *) // end of [D3Ptcast]
 //
-| D3Pnone0 _ => d3p0 // HX: interp
-| D3Pnone1 _ => d3p0 // HX: errmsg
+|
+D3Pnone0 _ => d3p0 // HX: interp
+|
+D3Pnone1 _ => d3p0 // HX: errmsg
+|
+D3Pnone2 _ => d3p0 // HX: errmsg
 //
-| _ (* rest-of-d3pat *) => d3p0
+(*
+| _ (* rest-of-d3pat *) => (d3p0)
+*)
 //
-end // end of [trans33_dpat]
+end (*let*) // end of [trans33_dpat]
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -501,8 +526,10 @@ val env0 =
 $UN.castvwtp0{abstenv}(env0)
 val d3p0 = trans33_dpat(env0, d3p0)
 in
-let prval () = $UN.cast2void(env0) in d3p0 end
+let
+prval () = $UN.cast2void(env0) in d3p0
 end
+end // end of [let]
 }
 end // end of [trans33_dpatlst]
 
