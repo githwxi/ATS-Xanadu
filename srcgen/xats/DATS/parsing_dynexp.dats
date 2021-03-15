@@ -1261,24 +1261,25 @@ auxs0q0
 (
 case+
 s0q0.node() of
-| S0QUAprop(s0p) =>
-  (
-  case+
-  s0p.node() of
-  | S0Eid0(sid) =>
-    let
-      val loc = s0p.loc()
-      val opt = None(*sort0*)
-      val ids = list_sing(sid)
-    in
-      s0qua_make_node
-      (loc, S0QUAvars(ids, opt))
-    end
-  | _ (* non-S0Eid0 *) => s0q0
-  )
+|
+S0QUAprop(s0p) =>
+(
+case+
+s0p.node() of
+| S0Eid0(sid) =>
+  let
+  val loc = s0p.loc()
+  val opt = None(*sort0*)
+  val ids = list_sing(sid)
+  in
+    s0qua_make_node
+    (loc, S0QUAvars(ids, opt))
+  end
+| _ (* non-S0Eid0 *) => s0q0
+)
 | _(* non-S0QUAprop *) => s0q0
 )
-and
+fun
 auxs0qs
 ( xs
 : s0qualst): s0qualst =
@@ -1311,7 +1312,7 @@ f0a0.node() of
   }
 | _ (* non-F0ARGsom_sta *) => f0a0
 )
-and
+fun
 auxf0as
 ( xs
 : f0arglst): f0arglst =
@@ -1324,12 +1325,69 @@ implement
 list_map$fopr<f0arg><f0arg>(x) = auxf0a0(x)
 }
 //
+fun
+tsts0qs
+( xs
+: s0qualst): bool =
+(
+case+ xs of
+|
+list_nil() => false
+|
+list_cons(x1, xs) =>
+(
+case+ x1.node() of
+|
+S0QUAprop(s0p) =>
+(
+case+
+s0p.node() of
+| S0Eid0(sid) => true
+| _(*non-S0Eid0*) => tsts0qs(xs)
+)
+| _(*non-S0QUAprop*) => tsts0qs(xs)
+)
+)
+fun
+tstf0as
+( xs
+: f0arglst): bool =
+(
+case+ xs of
+|
+list_nil() => false
+|
+list_cons(x1, xs) =>
+(
+case+ x1.node() of
+|
+F0ARGsome_sta
+(tbeg, s0qs, tend) =>
+if
+tsts0qs(s0qs)
+then true else tstf0as(xs)
+|
+_(*non-F0ARGsom_sta*) => tstf0as(xs)
+)
+)
+//
 in
+
+(* ****** ****** *)
+
 implement
 p_f0argseq1
 ( buf, err ) =
-auxf0as(p_f0argseq(buf, err))
+let
+val
+f0as = p_f0argseq(buf, err)
+in
+if tstf0as(f0as) then auxf0as(f0as) else f0as
 end (*let*) // end of [p_f0argseq1]
+
+(* ****** ****** *)
+
+end (* end of [local] *)
 
 (* ****** ****** *)
 //
