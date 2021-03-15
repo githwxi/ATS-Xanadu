@@ -2047,13 +2047,13 @@ if
 (nxerr = 1)
 then
 prerrln!
-("synread_package: there is one syntax0-error!")
+("synread_package: there is one synread-error!")
 val () =
 if
 (nxerr > 1)
 then
 prerrln!
-("synread_package: there are some syntax0-errors!")
+("synread_package: there are some synread-errors!")
 //
 val () =
 ($raise(XATSOPT_SYNERR_EXN(*void*))): void
@@ -2064,7 +2064,7 @@ else
 //
 val () =
 prerrln!
-("synread_package: there are none of syntax0-errors!")
+("synread_package: there are none of synread-errors!")
 //
 } (* end of [else] *)
 //

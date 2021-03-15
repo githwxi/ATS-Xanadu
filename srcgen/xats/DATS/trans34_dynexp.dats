@@ -152,6 +152,40 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+trans34_dpatlst
+( env0, d3ps ) =
+(
+list_vt2t
+(
+list_map<d3pat><d4pat>(d3ps)
+)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<d3pat><d4pat>
+  (d3p0) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+val
+d4p0 = trans34_dpat(env0, d3p0)
+//
+in
+let
+prval () = $UN.cast2void(env0) in d4p0
+end
+end // list_map$fopr
+} (* end of [trans34_dpatlst] *)
+
+(* ****** ****** *)
+
+implement
 trans34_dpat_dntp
 (env0, d3p0, s2e0) =
 let
@@ -194,44 +228,54 @@ d4p0 =
 trans34_dpat
 (env0, d3p0) in
 d4pat_make_node
-(loc0, s2e0, t2p0, D4Ptcast(d4p0, s2e0))
+( loc0
+, s2e0, t2p0, D4Ptcast(d4p0, s2e0))
 end // end of [rest-of-d3pat]
 //
-end (*let*) // end of [trans34_dpat_dntp]
+end (* end of [trans34_dpat_dntp] *)
 
 (* ****** ****** *)
 
 implement
-trans34_dpatlst
-(  env0, d3ps  ) =
+trans34_dpatlst_dnts
+( env0, d3ps, s2es ) =
 (
-list_vt2t
+case+ d3ps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(d3p1, d3ps) =>
 (
-list_map<d3pat><d4pat>(d3ps)
-)
-) where
+case+ s2es of
+|
+list_nil() =>
+(
+list_cons(d4p1, d4ps)) where
 {
 //
-val
-env0 =
-$UN.castvwtp1{ptr}(env0)
+val s2e1 = s2exp_none0()
 //
-implement
-list_map$fopr<d3pat><d4pat>
-  (d3p0) = let
+val d4p1 =
+trans34_dpat_dntp(env0, d3p1, s2e1)
+val d4ps =
+trans34_dpatlst_dnts(env0, d3ps, s2es)
 //
-val
-env0 =
-$UN.castvwtp0{tr34env}(env0)
-val
-d4p0 = trans34_dpat(env0, d3p0)
+} (* end of [list_nil] *)
+|
+list_cons(s2e1, s2es) =>
+(
+list_cons(d4p1, d4ps)) where
+{
 //
-in
-let
-prval () = $UN.cast2void(env0) in d4p0
-end
-end // list_map$fopr
-} (* end of [trans34_dpatlst] *)
+val d4p1 =
+trans34_dpat_dntp(env0, d3p1, s2e1)
+val d4ps =
+trans34_dpatlst_dnts(env0, d3ps, s2es)
+//
+} (* end of [list_cons] *)
+)
+) (* end of [trans34_dpatlst_dnts] *)
 
 (* ****** ****** *)
 
@@ -1257,6 +1301,120 @@ end
 } (* end of [trans34_farglst] *)
 //
 (* ****** ****** *)
+//
+implement
+trans34_farglst_s2exp
+( env0
+, f3as, s2f0, sres) =
+(
+case+ f3as of
+|
+list_nil() =>
+let
+val () =
+(sres :=
+ EFFS2EXPsome(s2f0)) in list_nil()
+end // end of [list_nil]
+|
+list_cons
+(f3a1, f3as) =>
+(
+case+
+f3a1.node() of
+//
+(*
+HX-2021-03-15:
+Should this be handled?
+|
+F3ARGsome_sta _ => ...
+*)
+//
+|
+F3ARGsome_dyn
+(npf1, d3ps) =>
+(
+auxdyn(env0, s2f0, sres)
+) where
+{
+fun
+auxdyn
+( env0:
+! tr34env
+, s2f0: s2exp
+, sres
+: &effs2expopt >> _): f4arglst =
+(
+case
+s2f0.node() of
+//
+|
+S2Euni
+(s2vs, s2ps, s2f1) =>
+let
+val f4a1 = 
+f4arg_make_node
+( f3a1.loc()
+, F4ARGsome_sta(s2vs, s2ps))
+in
+  list_cons
+  (f4a1, auxdyn(env0, s2f1, sres))
+end
+//
+|
+S2Efun
+( fclo
+, npf2, s2es, s2f1) =>
+//
+(
+list_cons(f4a1, f4as)) where
+{
+//
+(*
+HX-2021-03-15: check?
+val () = assert(npf1 = npf2)
+*)
+//
+val
+d4ps =
+trans34_dpatlst_dnts
+( env0, d3ps, s2es )
+val f4a1 = 
+f4arg_make_node
+( f3a1.loc()
+, F4ARGsome_dyn(npf1, d4ps) )
+val f4as = 
+trans34_farglst_s2exp(env0, f3as, s2f1, sres)
+}
+//
+|
+_ (* rest-of-f3arg *) =>
+(
+  list_cons(f4a1, f4as)) where
+{
+val f4a1 = 
+f4arg_make_node
+(f3a1.loc(), F4ARGnone3(f3a1))
+val f4as = 
+trans34_farglst_s2exp(env0, f3as, s2f0, sres)
+}
+)
+} (*where*) // end of [F3ARGsome_dyn]
+//
+| _(* rest-of-f3arg *) =>
+(
+list_cons(f4a1, f4as)
+) where
+{
+val f4a1 = 
+f4arg_make_node
+(f3a1.loc(), F4ARGnone3(f3a1))
+val f4as = 
+trans34_farglst_s2exp(env0, f3as, s2f0, sres)
+}
+)
+) (* end of [trans34_farglst_s2exp] *)
+//
+(* ****** ****** *)
 
 local
 
@@ -1458,6 +1616,10 @@ println!
 ("trans34_fundecl: d2c.type = ", d2c.type())
 *)
 //
+var
+sres:
+effs2expopt = rcd.res
+//
 val
 a4g =
 (
@@ -1468,8 +1630,19 @@ None() =>
 None(*void*)
 |
 Some(f3as) =>
+(
+case+
+rcd.wtp of
+|
+None() =>
 Some
-(trans34_farglst(env0, f3as))): f4arglstopt
+(trans34_farglst(env0, f3as))
+|
+Some(s2f0) =>
+Some
+(trans34_farglst_s2exp(env0, f3as, s2f0, sres))
+)
+) : f4arglstopt // end-of-val
 //
 val
 def = 
@@ -1484,7 +1657,7 @@ F4UNDECL@{
 , d2c= d2c
 //
 , a2g= a2g
-, a4g= a4g, res= rcd.res
+, a4g= a4g, res= sres
 //
 , def= def
 //
