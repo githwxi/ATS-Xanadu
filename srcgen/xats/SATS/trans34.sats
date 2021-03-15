@@ -189,6 +189,12 @@ trans34_dpat_dntp
 ! tr34env
 , d3p0: d3pat, s2e0: s2exp): d4pat
 (* ****** ****** *)
+fun
+trans34_dpatlst_dnts
+( env0:
+! tr34env
+, d3ps: d3patlst, s2e0: s2explst): d4patlst
+(* ****** ****** *)
 //
 fun
 trans34_dexp
@@ -214,7 +220,8 @@ fun
 trans34_dexplst_dnts
 ( env0:
 ! tr34env
-, d3es: d3explst, s2es: s2explst): d4explst
+, d3es
+: d3explst, s2es: s2explst): d4explst
 (* ****** ****** *)
 //
 fun
@@ -225,6 +232,17 @@ fun
 trans34_farglst
 ( env0
 : !tr34env, f3as: f3arglst): f4arglst
+//
+(* ****** ****** *)
+typedef
+effs2expopt = $S2E.effs2expopt
+fun
+trans34_farglst_s2exp
+( env0
+: !tr34env
+, f3as
+: f3arglst, s2f0: s2exp
+, sres: &effs2expopt >> _ ) : f4arglst
 //
 (* ****** ****** *)
 //
