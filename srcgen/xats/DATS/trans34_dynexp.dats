@@ -254,7 +254,8 @@ list_nil() =>
 list_cons(d4p1, d4ps)) where
 {
 //
-val s2e1 = s2exp_none0()
+val
+s2e1 = the_s2exp_none0(*void*)
 //
 val d4p1 =
 trans34_dpat_dntp(env0, d3p1, s2e1)
@@ -956,7 +957,7 @@ val
 d4es =
 trans34_dexplst(env0, d3es)
 val
-s2r0 = s2exp_none0((*void*))
+s2r0 = the_s2exp_none0(*void*)
 in
 d4exp_make_node
 ( loc0
@@ -1206,7 +1207,7 @@ case+ s2es of
 list_nil() =>
 let
 val s2e0 =
-s2exp_none0()
+the_s2exp_none0
 val d4e0 =
 trans34_dexp_dntp
 (env0, d3e0, s2e0)
