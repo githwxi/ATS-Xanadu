@@ -102,6 +102,10 @@ typedef d4exp = $D4E.d4exp
 typedef d4ecl = $D4E.d4ecl
 //
 (* ****** ****** *)
+typedef d4gua = $D4E.d4gua
+typedef d4gpat = $D4E.d4gpat
+typedef d4clau = $D4E.d4clau
+(* ****** ****** *)
 typedef d4patlst = $D4E.d4patlst
 typedef f4arglst = $D4E.f4arglst
 (* ****** ****** *)
@@ -110,6 +114,9 @@ typedef d4explst = $D4E.d4explst
 (* ****** ****** *)
 typedef d4eclopt = $D4E.d4eclopt
 typedef d4eclist = $D4E.d4eclist
+(* ****** ****** *)
+typedef d4gualst = $D4E.d4gualst
+typedef d4claulst = $D4E.d4claulst
 (* ****** ****** *)
 //
 absvtype
@@ -234,16 +241,31 @@ trans34_farglst
 : !tr34env, f3as: f3arglst): f4arglst
 //
 (* ****** ****** *)
+//
 typedef
-effs2expopt = $S2E.effs2expopt
+effs2expopt =
+$S2E.effs2expopt
 fun
 trans34_farglst_s2exp
 ( env0
 : !tr34env
 , f3as
 : f3arglst, s2f0: s2exp
-, sres: &effs2expopt >> _ ) : f4arglst
+, sres: &effs2expopt >> _ ): f4arglst
 //
+(* ****** ****** *)
+
+fun
+trans34_dclau
+( env0
+: !tr34env
+, d3cl: d3clau): d4clau
+fun
+trans34_dclau
+( env0
+: !tr34env
+, dcls: d3claulst): d4claulst
+
 (* ****** ****** *)
 //
 fun
