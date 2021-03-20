@@ -5,6 +5,18 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+
+fun
+fact(x: int) =
+(
+case+ x of
+| 0 => 1
+| n => n * fact(n-1)
+)
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
 fun
 fact(x: int) =
 if

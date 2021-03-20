@@ -254,18 +254,27 @@ trans34_farglst_s2exp
 , sres: &effs2expopt >> _ ): f4arglst
 //
 (* ****** ****** *)
-
+//
 fun
-trans34_dclau
+trans34_dgpat_dntp
 ( env0
 : !tr34env
-, d3cl: d3clau): d4clau
+, d3gp
+: d3gpat, tmat: s2exp): d4gpat
+//
 fun
-trans34_dclau
+trans34_dclau_dntp
 ( env0
 : !tr34env
-, dcls: d3claulst): d4claulst
-
+, d3cl
+: d3clau, tmat: s2exp, tres: s2exp): d4clau
+fun
+trans34_dclaulst_dntp
+( env0
+: !tr34env
+, dcls
+: d3claulst, tmat: s2exp, tres: s2exp): d4claulst
+//
 (* ****** ****** *)
 //
 fun
