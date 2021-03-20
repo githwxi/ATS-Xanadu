@@ -188,6 +188,35 @@ end (*let*) // end of [auxbtf]
 
 (* ****** ****** *)
 
+fun
+auxchr
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pchr(tok) = d3p0.node()
+val
+s2b0 =
+s2exp_chr(dchr) where
+{
+val dchr = token2dchr(tok)
+}
+//
+val
+s2e0 = s2exp_type_bool(s2b0)
+//
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Pchr(tok))
+end (*let*) // end of [auxchr]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -200,6 +229,10 @@ d3p0.node() of
 //
 |
 D3Pint _ => auxint(d3p0)
+|
+D3Pbtf _ => auxbtf(d3p0)
+|
+D3Pchr _ => auxchr(d3p0)
 |
 D3Panno(d3p1, s2e2) =>
 trans34_dpat_dntp(env0, d3p1, s2e2)
