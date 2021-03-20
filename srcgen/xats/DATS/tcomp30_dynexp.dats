@@ -1543,7 +1543,7 @@ h0t0 = tcomp30_type(t2p0)
 val
 hend =
 (
-  H0Ecase(knd0, h0e1, hcls)
+  H0Ecas0(knd0, h0e1, hcls)
 ) where
 {
 val-

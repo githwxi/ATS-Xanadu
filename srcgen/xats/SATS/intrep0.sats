@@ -654,7 +654,7 @@ H0Eif0 of
 ( h0exp
 , h0exp(*then*), h0expopt(*else*))
 |
-H0Ecase of
+H0Ecas0 of
 ( int(*knd*)
 , h0exp(*val*), h0claulst(*claues*))
 //

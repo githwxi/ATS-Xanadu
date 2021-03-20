@@ -128,6 +128,66 @@ val () = tr34env_free_nil(env0)
 
 local
 
+(* ****** ****** *)
+
+fun
+auxint
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pint(tok) = d3p0.node()
+val
+s2i0 =
+s2exp_int(dint) where
+{
+val dint = token2dint(tok)
+}
+//
+val
+s2e0 = s2exp_type_sint(s2i0)
+//
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Pint(tok))
+end (*let*) // end of [auxint]
+
+(* ****** ****** *)
+
+fun
+auxbtf
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pbtf(tok) = d3p0.node()
+val
+s2b0 =
+s2exp_btf(dbtf) where
+{
+val dbtf = token2dbtf(tok)
+}
+//
+val
+s2e0 = s2exp_type_bool(s2b0)
+//
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Pbtf(tok))
+end (*let*) // end of [auxbtf]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -138,6 +198,8 @@ trans34_dpat
 case+
 d3p0.node() of
 //
+|
+D3Pint _ => auxint(d3p0)
 |
 D3Panno(d3p1, s2e2) =>
 trans34_dpat_dntp(env0, d3p1, s2e2)
