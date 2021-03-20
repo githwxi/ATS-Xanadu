@@ -175,13 +175,22 @@ case+ x0.node() of
 | D4Pany() =>
   fprint!(out, "D4Pany()")
 //
+| D4Pint(tok) =>
+  fprint!(out, "D4Pint(", tok, ")")
+| D4Pbtf(tok) =>
+  fprint!(out, "D4Pbtf(", tok, ")")
+| D4Pchr(tok) =>
+  fprint!(out, "D4Pchr(", tok, ")")
+| D4Pstr(tok) =>
+  fprint!(out, "D4Pstr(", tok, ")")
+//
 | D4Pvar(d2v) =>
   let
   val s2e = d2v.sexp()
   in
   fprint!
   ( out
-  , "D4Pvar(", d2v, ":", s2e, ")")
+  , "D4Pvar(", d2v, ":", s2e, ")" )
   end
 //
 | D4Panno

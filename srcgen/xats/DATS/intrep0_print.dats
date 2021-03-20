@@ -651,10 +651,10 @@ x0.node() of
   , "H0Eif0("
   , h0e1, "; ", h0e2, "; ", opt3, ")")
 //
-| H0Ecase
+| H0Ecas0
   (knd0, h0e1, hcls) =>
   fprint!
-  ( out, "H0Ecase("
+  ( out, "H0Ecas0("
   , knd0, "; ", h0e1, "; ", hcls, ")")
 //
 | H0Elam
