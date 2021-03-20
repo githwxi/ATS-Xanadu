@@ -1022,6 +1022,48 @@ end (*let*) // end of [aux_if0]
 (* ****** ****** *)
 
 fun
+aux_cas0
+( env0
+: !tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Ecas0
+( knd0
+, dmat
+, dcls) = d3e0.node()
+//
+val
+dmat =
+trans34_dexp(env0, dmat)
+val
+tmat = dmat.sexp((*void*))
+//
+val s2t0 = t2p0.sort()
+val xtv0 =
+s2xtv_new(loc0, s2t0)
+val s2e0 = s2exp_xtv(xtv0)
+//
+val dcls =
+trans34_dclaulst_dntp
+( env0, dcls, tmat, s2e0 )
+//
+in
+d4exp_make_node
+( loc0
+, s2e0, t2p0
+, D4Ecas0(knd0, dmat, dcls) )
+end (*let*) // end of [aux_cas0]
+
+(* ****** ****** *)
+
+fun
 aux_anno
 ( env0
 : !tr34env
@@ -1095,6 +1137,8 @@ d3e0.node() of
   ( _cond_
   , _then_
   , _else_) => aux_if0(env0, d3e0)
+//
+| D3Ecas0 _ => aux_cas0(env0, d3e0)
 //
 | D3Eanno _ => aux_anno(env0, d3e0)
 //
@@ -1228,6 +1272,120 @@ end
 )
 ) (* end of [auxlst] *)
 } (* end of [trans34_dexplst_dnts] *)
+
+(* ****** ****** *)
+
+implement
+trans34_dgpat_dntp
+( env0
+, dgpt, tmat ) =
+let
+//
+val
+loc0 = dgpt.loc()
+//
+in
+//
+case-
+dgpt.node() of
+|
+D3GPATpat(d3p1) =>
+let
+val d4p1 =
+trans34_dpat_dntp
+( env0, d3p1, tmat )
+in
+  d4gpat_make_node
+  ( loc0, D4GPATpat(d4p1) )
+end
+(*
+|
+D3GPATgua(d3p1, d3gs) =>
+*)
+//
+end (*let*) // trans34_dgpat_dntp
+
+(* ****** ****** *)
+
+implement
+trans34_dclau_dntp
+( env0
+, d3cl, tmat, tres) =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+//
+case+
+d3cl.node() of
+|
+D3CLAUpat(dgpt) =>
+let
+val
+dgpt =
+trans34_dgpat_dntp
+( env0, dgpt, tmat )
+in
+d4clau_make_node
+(loc0, D4CLAUpat(dgpt))
+end
+|
+D3CLAUexp(dgpt, d3e2) =>
+let
+//
+val
+dgpt =
+trans34_dgpat_dntp
+( env0, dgpt, tmat )
+//
+val d4e2 =
+  trans34_dexp_dntp
+  ( env0, d3e2, tres )
+//
+in
+d4clau_make_node
+(loc0, D4CLAUexp(dgpt, d4e2))
+end
+//
+end (*let*) // [trans34_dclaulst]
+
+(* ****** ****** *)
+
+implement
+trans34_dclaulst_dntp
+( env0
+, dcls, tmat, tres) =
+list_vt2t
+(
+list_map<d3clau><d4clau>(dcls)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<d3clau><d4clau>
+  (d3cl) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+//
+val
+d4cl =
+trans34_dclau_dntp
+( env0,  d3cl,  tmat,  tres )
+//
+in
+let
+prval () = $UN.cast2void(env0) in d4cl
+end
+end
+} (* end of [trans34_dclaulst_dntp] *)
 
 (* ****** ****** *)
 
