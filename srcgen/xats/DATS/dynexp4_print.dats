@@ -175,15 +175,6 @@ case+ x0.node() of
 | D4Pany() =>
   fprint!(out, "D4Pany()")
 //
-| D4Pint(tok) =>
-  fprint!(out, "D4Pint(", tok, ")")
-| D4Pbtf(tok) =>
-  fprint!(out, "D4Pbtf(", tok, ")")
-| D4Pchr(tok) =>
-  fprint!(out, "D4Pchr(", tok, ")")
-| D4Pstr(tok) =>
-  fprint!(out, "D4Pstr(", tok, ")")
-//
 | D4Pvar(d2v) =>
   let
   val s2e = d2v.sexp()
@@ -192,6 +183,40 @@ case+ x0.node() of
   ( out
   , "D4Pvar(", d2v, ":", s2e, ")" )
   end
+//
+| D4Pi00(int) =>
+  fprint!(out, "D4Pi00(", int, ")")
+| D4Pb00(btf) =>
+  fprint!(out, "D4Pb00(", btf, ")")
+| D4Pc00(chr) =>
+  fprint!(out, "D4Pc00(", chr, ")")
+| D4Ps00(str) =>
+  fprint!(out, "D4Ps00(", str, ")")
+//
+| D4Pint(tok) =>
+  fprint!(out, "D4Pint(", tok, ")")
+| D4Pbtf(tok) =>
+  fprint!(out, "D4Pbtf(", tok, ")")
+| D4Pchr(tok) =>
+  fprint!(out, "D4Pchr(", tok, ")")
+//
+| D4Psap0
+  (d4f0, s2es) =>
+  fprint!
+  ( out
+  , "D4Psap0(", d4f0, "; ", s2es, ")")
+| D4Psap1
+  (d4f0, s2es) =>
+  fprint!
+  ( out
+  , "D4Psap1(", d4f0, "; ", s2es, ")")
+//
+| D4Psapx
+  (d4f0, s2es, s2ps) =>
+  fprint!
+  ( out
+  , "D4Psapx("
+  , d4f0, "; ", s2es, "; ", s2ps, ")")
 //
 | D4Panno
   (d4p1, s2e2) =>

@@ -131,6 +131,56 @@ local
 (* ****** ****** *)
 
 fun
+auxi00
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pi00(int) = d3p0.node()
+//
+val
+s2i0 = s2exp_int(int)
+val
+s2e0 = s2exp_type_sint(s2i0)
+//
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Pi00(int))
+end (*let*) // end of [auxi00]
+
+(* ****** ****** *)
+
+fun
+auxb00
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pb00(btf) = d3p0.node()
+//
+val
+s2b0 = s2exp_btf(btf)
+val
+s2e0 = s2exp_type_bool(s2b0)
+//
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Pb00(btf))
+end (*let*) // end of [auxb00]
+
+(* ****** ****** *)
+
+fun
 auxint
 (d3p0: d3pat): d4pat =
 let
@@ -228,11 +278,17 @@ case+
 d3p0.node() of
 //
 |
+D3Pi00 _ => auxint(d3p0)
+|
+D3Pb00 _ => auxbtf(d3p0)
+//
+|
 D3Pint _ => auxint(d3p0)
 |
 D3Pbtf _ => auxbtf(d3p0)
 |
 D3Pchr _ => auxchr(d3p0)
+//
 |
 D3Panno(d3p1, s2e2) =>
 trans34_dpat_dntp(env0, d3p1, s2e2)
