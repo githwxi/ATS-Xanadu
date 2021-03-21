@@ -251,21 +251,21 @@ case+ x0.node() of
   (d3f0, s2vs) =>
   fprint!
   ( out
-  , "D3Psapp(", d3f0, "; ", s2vs, ")")
+  , "D3Psap0(", d3f0, "; ", s2vs, ")")
 | D3Psap1
   (d3f0, s2vs) =>
   fprint!
   ( out
-  , "D3Psapp(", d3f0, "; ", s2vs, ")")
+  , "D3Psap1(", d3f0, "; ", s2vs, ")")
 //
 | D3Pdap1(d3f0) =>
   fprint!
   ( out, "D3Pdap1(", d3f0, ")")
 | D3Pdapp
-  (d3f0, npf0, d3ps) =>
+  (d3f0, npf1, d3ps) =>
   fprint!
   ( out, "D3Pdapp("
-  , d3f0, "; ", npf0, "; ", d3ps, ")")
+  , d3f0, "; ", npf1, "; ", d3ps, ")")
 //
 | D3Ptuple
   (knd1, npf2, ldps) =>

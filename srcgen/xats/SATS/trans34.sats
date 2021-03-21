@@ -353,6 +353,9 @@ trans34_valdeclist
 // Some helper functions for trans34
 //
 (* ****** ****** *)
+fun
+trans34_d4pat_deunis(d4p0: d4pat): d4pat
+(* ****** ****** *)
 //
 fun
 trans34_d4exp_deuni1(d4e0: d4exp): d4exp

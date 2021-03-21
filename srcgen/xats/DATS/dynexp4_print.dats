@@ -218,6 +218,15 @@ case+ x0.node() of
   , "D4Psapx("
   , d4f0, "; ", s2es, "; ", s2ps, ")")
 //
+| D4Pdap1(d4f0) =>
+  fprint!
+  ( out, "D4Pdap1(", d4f0, ")")
+| D4Pdapp
+  (d4f0, npf1, d4ps) =>
+  fprint!
+  ( out, "D4Pdapp("
+  , d4f0, "; ", npf1, "; ", d4ps, ")")
+//
 | D4Panno
   (d4p1, s2e2) =>
   fprint!

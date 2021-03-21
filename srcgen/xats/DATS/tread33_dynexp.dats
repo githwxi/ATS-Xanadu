@@ -135,6 +135,19 @@ d3p0.node() of
     tread33_d3pat(d3p1)
   }
 //
+| D3Psap0
+  ( d3f1, sarg ) =>
+  {
+    val () =
+    tread33_d3pat(d3f1)
+  }
+| D3Psap1
+  ( d3f1, sarg ) =>
+  {
+    val () =
+    tread33_d3pat(d3f1)
+  }
+//
 | D3Pdap1(d3f1) =>
   {
     val () =
@@ -142,16 +155,33 @@ d3p0.node() of
   }
 | D3Pdapp
   (d3f1, npf2, d3ps) =>
-  let
+  {
+//
     val () =
     tread33_d3pat(d3f1)
     val () =
     tread33_d3patlst(d3ps)
-  in
+//
+    val () = auxd3f1(d3f1)
+//
+  } where {
+//
+    fun
+    auxd3f1
+    (d3f1: d3pat): void =
     case+
     d3f1.node() of
+//
     |
     D3Pcon1 _ => ()
+//
+    |
+    D3Psap0
+    (d3f1, sarg) => auxd3f1(d3f1)
+    |
+    D3Psap1
+    (d3f1, sarg) => auxd3f1(d3f1)
+//
     |
     _(*non-D3Pcon?*) =>
     let
@@ -171,7 +201,7 @@ d3p0.node() of
       prerrln!
       (loc0, ": TRERR33(D3Psym0): the inferred type: ", t2p0);
     end (* non-D3Pcon? *)
-  end // end of [D3Pdapp]
+  } (*where*) // end of [D3Pdapp]
 //
 | D3Pnone0() => ()
 //
