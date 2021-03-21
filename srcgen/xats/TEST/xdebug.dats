@@ -6,6 +6,20 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 
+fun
+length(xs: list(int)): int =
+(
+case+ xs of
+|
+list_nil() => 0 + 0
+|
+list_cons{n}(_, xs) => 1 + length(xs)
+)
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 (*
 fun
 fact(x: int) =
@@ -20,7 +34,7 @@ fact(x: int) =
 case+ x = 0 of
 | true => 1
 | false => x * fact(x-1))
-
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)
@@ -267,6 +281,7 @@ val xxx2 = pow3(x2)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
+//
 #extern
 fun
 length(xs: list(int)): int =
@@ -277,7 +292,7 @@ list_nil() => 0 + 0
 |
 list_cons{n}(_, xs) => 1 + length(xs)
 )
-
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

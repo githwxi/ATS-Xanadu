@@ -122,16 +122,16 @@ d3pat_node =
   (d1pat(*sym*), d2pitmlst)
 //
 (*
-HX: [D3Psap0]: error
-HX: [D3Psap1]: checked
+HX: [D3Psap0]: pred: skipped
+HX: [D3Psap1]: impred: checked
 *)
 | D3Psap0 of (d3pat, s2explst)
 | D3Psap1 of (d3pat, s2explst)
 //
 (*
-HX-2021-03-21:
-There is no [D3Pdap0] as
-it is merged into [D3Pdapp]!
+// HX-2021-03-21:
+// There is no [D3Pdap0] as
+// it is merged into [D3Pdapp]!
 *)
 | D3Pdap1 of (d3pat) // argless
 | D3Pdapp of

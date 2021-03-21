@@ -267,12 +267,114 @@ end (*let*) // end of [auxchr]
 
 (* ****** ****** *)
 
+fun
+auxsap0
+( env0
+: !tr34env
+, d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Psap0
+( d3p1
+, sarg) = d3p0.node()
+//
+val
+d4p1 =
+trans34_dpat(env0, d3p1)
+val
+s2e1 = d4p1.sexp((*void*))
+//
+in
+d4pat_make_node
+( loc0
+, s2e1, t2p0, D4Psap0(d4p1, sarg))
+end (*let*) // end of [auxsap0]
+
+(* ****** ****** *)
+
+fun
+auxdapp
+( env0
+: !tr34env
+, d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+tres = d3p0.type()
+//
+var
+sres:
+s2exp =
+s2exp_t2ype( tres )
+//
+val-
+D3Pdapp
+( d3f0
+, npf1
+, darg) = d3p0.node()
+//
+val
+d4f0 =
+trans34_dpat(env0, d3f0)
+val
+d4f0 =
+trans34_d4pat_deunis(d4f0)
+val
+s2f0 = d4f0.sexp((*void*))
+//
+val
+darg =
+(
+case+
+s2f0.node() of
+|
+S2Efun
+( fc21
+, npf2
+, targ, tres) =>
+let
+val () =
+(sres := tres)
+in
+  trans34_dpatlst_dnts
+  ( env0, darg, targ )
+end
+|
+_ (*non-S2Efun*) =>
+trans34_dpatlst(env0, darg)
+) : d4patlst // end-of-val-darg
+//
+in
+d4pat_make_node
+( loc0
+, sres
+, tres, D4Pdapp(d4f0, npf1, darg))
+end (*let*) // end of [auxdapp]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
 trans34_dpat
 (env0, d3p0) =
-(
+let
+//
+(*
+val () =
+println!
+("trans34_dpat: d3p0 = ", d3p0)
+*)
+//
+in (*in-of-let*)
 //
 case+
 d3p0.node() of
@@ -290,13 +392,23 @@ D3Pbtf _ => auxbtf(d3p0)
 D3Pchr _ => auxchr(d3p0)
 //
 |
+D3Psap0 _ => auxsap0(env0, d3p0)
+(*
+|
+D3Psap1 _ => auxsap1(env0, d3p0)
+*)
+//
+|
+D3Pdapp _ => auxdapp(env0, d3p0)
+//
+|
 D3Panno(d3p1, s2e2) =>
 trans34_dpat_dntp(env0, d3p1, s2e2)
 //
 |
 _ (*rest-of-d3pat*) => d4pat_none1(d3p0)
 //
-)
+end (*let*) // end of [trans34_dpat]
 
 end // end of [local]
 
