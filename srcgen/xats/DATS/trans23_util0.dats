@@ -1034,7 +1034,7 @@ d3pat_dap0_up
 ( loc0, d3f0 ) =
 let
 val npf2 = ~1
-val d3ps = list_nil
+val d3ps = list_nil()
 in
 d3pat_dapp_up(loc0, d3f0, npf2, d3ps)
 end // end of [d3pat_dap0_up]
