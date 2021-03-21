@@ -200,6 +200,10 @@ case+ x0.node() of
 | D4Pchr(tok) =>
   fprint!(out, "D4Pchr(", tok, ")")
 //
+| D4Pcon1(d2c0) =>
+  fprint!
+  (out, "D4Pcon1(", d2c0, ")")
+//
 | D4Psap0
   (d4f0, s2es) =>
   fprint!

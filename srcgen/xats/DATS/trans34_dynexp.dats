@@ -268,6 +268,29 @@ end (*let*) // end of [auxchr]
 (* ****** ****** *)
 
 fun
+auxcon1
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pcon1
+( d2c1 ) = d3p0.node()
+val
+s2e0 = d2con_get_sexp(d2c1)
+//
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Pcon1(d2c1))
+end (*let*) // end of [auxcon1]
+
+(* ****** ****** *)
+
+fun
 auxsap0
 ( env0
 : !tr34env
@@ -295,6 +318,37 @@ d4pat_make_node
 ( loc0
 , s2e1, t2p0, D4Psap0(d4p1, sarg))
 end (*let*) // end of [auxsap0]
+
+(* ****** ****** *)
+
+fun
+auxsap1
+( env0
+: !tr34env
+, d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Psap1
+( d3p1
+, sarg) = d3p0.node()
+//
+val
+d4p1 =
+trans34_dpat(env0, d3p1)
+val
+s2e1 = d4p1.sexp((*void*))
+//
+in
+d4pat_make_node
+( loc0
+, s2e1, t2p0, D4Psap1(d4p1, sarg))
+end (*let*) // end of [auxsap1]
 
 (* ****** ****** *)
 
@@ -392,11 +446,12 @@ D3Pbtf _ => auxbtf(d3p0)
 D3Pchr _ => auxchr(d3p0)
 //
 |
+D3Pcon1 _ => auxcon1(d3p0)
+//
+|
 D3Psap0 _ => auxsap0(env0, d3p0)
-(*
 |
 D3Psap1 _ => auxsap1(env0, d3p0)
-*)
 //
 |
 D3Pdapp _ => auxdapp(env0, d3p0)
