@@ -208,6 +208,21 @@ ifs
 //
 ######
 
+val () =
+$state{...}(asdfasd)
+val () =
+if ...
+then ...
+else ...
+endst{}(....)
+val () =
+case+ ... of
+  | ... => ...
+  | ... => ...
+endst{n:int}(x: int(n), y: list(a, n))
+  
+######
+
 (* ###### ###### ###### ###### ###### *)
 
 ############ end of [README] ############

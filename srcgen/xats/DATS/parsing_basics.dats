@@ -447,7 +447,7 @@ in
 end // end of [popt_LBRACE]
 
 (* ****** ****** *)
-
+(*
 implement
 popt_ENDIF
   (buf, err) = let
@@ -471,7 +471,8 @@ in
     } (* T_ENDIF *)
   | _ (* non-END *) => None(*void*)
 end // end of [popt_ENDIF]
-
+*)
+(*
 implement
 popt_ENDCASE
   (buf, err) = let
@@ -495,7 +496,7 @@ in
     } (* T_ENDCASE *)
   | _ (* non-END *) => None(*void*)
 end // end of [popt_ENDCASE]
-
+*)
 (* ****** ****** *)
 
 implement

@@ -203,15 +203,16 @@ tq0arg_make_node
 (* ****** ****** *)
 //
 abstbox ti0arg_tbox = ptr
-//
 typedef ti0arg = ti0arg_tbox
 typedef ti0arglst = List0(ti0arg)
 //
 datatype
 ti0arg_node =
-  | TI0ARGnone of token
-  | TI0ARGsome of
-    (token(*'<'*), s0explst, token(*'>'*))
+|
+TI0ARGnone of token
+|
+TI0ARGsome of
+(token(*'<'*), s0explst, token(*'>'*))
 //
 fun
 ti0arg_get_loc(ti0arg): loc_t
@@ -241,12 +242,18 @@ typedef a0typlst = List0(a0typ)
 typedef a0typopt = Option(a0typ)
 typedef a0typlstopt = Option(a0typlst)
 //
+(* ****** ****** *)
+//
 datatype
 a0typ_node =
 (*
-  | A0TYPnone of token
+|
+A0TYPnone of token
 *)
-  | A0TYPsome of (s0exp, tokenopt)
+|
+A0TYPsome of
+( s0exp
+, tokenopt(*comment*))
 //
 fun
 a0typ_get_loc(a0typ): loc_t
@@ -274,12 +281,14 @@ abstbox d0arg_tbox = ptr
 typedef d0arg = d0arg_tbox
 typedef d0arglst = List0(d0arg)
 //
+(* ****** ****** *)
+//
 datatype
 d0arg_node =
 | D0ARGnone of token
 | D0ARGsome_sta of
   (token, s0qualst, token)
-| D0ARGsome_dyn1 of s0eid
+| D0ARGsome_dyn1 of (s0eid)
 | D0ARGsome_dyn2 of
   (token, a0typlst, a0typlstopt, token)
 //
@@ -335,6 +344,57 @@ overload fprint with fprint_f0arg
 fun
 f0arg_make_node
 (loc: loc_t, node: f0arg_node): f0arg
+//
+(* ****** ****** *)
+//
+abstbox d0typ_tbox = ptr
+typedef d0typ = d0typ_tbox
+typedef d0typlst = List0(d0typ)
+//
+(* ****** ****** *)
+//
+datatype
+d0typ_node =
+(*
+|
+D0TYPnone of token
+*)
+|
+D0TYPsome of
+( token, s0expopt )
+//
+fun
+d0typ_get_loc(d0typ): loc_t
+fun
+d0typ_get_node(d0typ): d0typ_node
+//
+overload .loc with d0typ_get_loc
+overload .node with d0typ_get_node
+//
+fun print_d0typ : print_type(d0typ)
+fun prerr_d0typ : prerr_type(d0typ)
+fun fprint_d0typ : fprint_type(d0typ)
+//
+overload print with print_d0typ
+overload prerr with prerr_d0typ
+overload fprint with fprint_d0typ
+//
+fun
+d0typ_make_node
+(loc: loc_t, node: d0typ_node): d0typ
+//
+(* ****** ****** *)
+//
+datatype
+st0qua =
+| ST0QUA of
+  (token, s0qualst, token)
+where st0qualst = List0(st0qua)
+datatype
+st0invopt =
+| ST0INVnone of ()
+| ST0INVsome of
+  (st0qualst, token, d0typlst, token)
 //
 (* ****** ****** *)
 
@@ -477,6 +537,12 @@ d0exp_node =
   ( token
   , d0exp
   , d0exp_THEN, d0exp_ELSE, tokenopt)
+(*
+| D0Eif1 of
+  ( token
+  , d0exp
+  , d0exp_THEN, d0exp_ELSE, stinvopt)
+*)
 //
 | D0Ecas0 of
   ( token

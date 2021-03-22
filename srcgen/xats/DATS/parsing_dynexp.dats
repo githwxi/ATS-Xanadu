@@ -646,8 +646,8 @@ p_ti0argseq
 (*
 //
 a0typ ::=
-  | token
-  | d0pid COLON s0exp
+| token // [token] as a type
+| d0pid COLON s0exp // [d0pid] ignored
 //
 *)
 extern
@@ -1577,7 +1577,10 @@ case+ tnd of
     val d0e3 =
       p_d0exp_ELSE(buf, err)
 //
+    val topt = None{token}()
+(*
     val topt = popt_ENDIF(buf, err)
+*)
 //
     val
     loc_res =
@@ -1624,26 +1627,29 @@ case+ tnd of
     val d0cs =
       p_d0clauseq_BAR(buf, err)
 //
-    val tend = popt_ENDCASE(buf, err)
+    val topt = None{token}()
+(*
+    val topt = popt_ENDCASE(buf, err)
+*)
 //
     val
     loc_res = let
       val loc = tok.loc()
     in
-      case+ tend of
+      case+ topt of
       | None() =>
         (
         case+ d0cs of
         | list_nil() =>
           (
-            case+ tbar of
-            | None() => loc + tok2.loc()
-            | Some(tok) => loc + tok.loc()
+          case+ tbar of
+          | None() => loc + tok2.loc()
+          | Some(tok) => loc + tok.loc()
           )
         | list_cons(_, _) =>
           let
-            val d0c =
-            list_last(d0cs) in loc + d0c.loc()
+          val d0c =
+          list_last(d0cs) in loc + d0c.loc()
           end // end of [list_cons]
         )
       | Some(tok) => loc + tok.loc()
@@ -1653,7 +1659,7 @@ case+ tnd of
     err := e0;
     d0exp_make_node
     ( loc_res
-    , D0Ecas0(tok, d0e1, tok2, tbar, d0cs, tend))
+    , D0Ecas0(tok, d0e1, tok2, tbar, d0cs, topt))
     // end of [d0exp_make_node]
   end // end of [T_CASE]
 //
