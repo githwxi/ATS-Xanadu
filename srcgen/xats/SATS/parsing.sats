@@ -285,10 +285,12 @@ popt_LBRACE: parser(tokenopt)
 //
 (* ****** ****** *)
 //
+(*
 fun
 popt_ENDIF: parser(tokenopt)
 fun
 popt_ENDCASE: parser(tokenopt)
+*)
 //
 (* ****** ****** *)
 //
@@ -480,12 +482,12 @@ fun p_s0uni: parser(s0uni)
 fun p_s0uniseq: parser(s0unilst)
 
 (* ****** ****** *)
-
+//
 typedef
 s0expopt = $STAEXP0.s0expopt
 fun
 popt_s0exp_anno: parser(s0expopt)
-
+//
 (* ****** ****** *)
 //
 fun // EQ excluded
@@ -545,6 +547,15 @@ fun p_d0exp : parser(d0exp)
 labd0exp ::= l0abl EQ d0exp
 *)
 fun p_labd0exp : parser(labd0exp)
+//
+(* ****** ****** *)
+//
+// HX-2021-03-22:
+//
+typedef
+st0invopt = $DYNEXP0.st0invopt
+fun
+popt_stinv_endst: parser(st0invopt)
 //
 (* ****** ****** *)
 

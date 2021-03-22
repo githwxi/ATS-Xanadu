@@ -84,12 +84,10 @@ list_cons
 (s2v1, s2vs) =>
 let
 val
-s2t1 = s2v1.sort()
+s2v1 =
+s2var_copy(s2v1)
 val
-xtv1 =
-s2xtv_new(loc0, s2t1)
-val
-s2e1 = s2exp_xtv(xtv1)
+s2e1 = s2exp_var(s2v1)
 in
   list_cons(s2e1, auxs2vs(s2vs))
 end

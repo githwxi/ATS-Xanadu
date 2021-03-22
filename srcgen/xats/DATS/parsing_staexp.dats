@@ -768,7 +768,11 @@ case+ tnd of
       p_g0exp_THEN(buf, err)
     val g0e3 =
       p_g0exp_ELSE(buf, err)
+//
+    val topt = None{token}()
+(*
     val topt = popt_ENDIF(buf, err)
+*)
 //
     val
     loc_res =
