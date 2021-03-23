@@ -669,7 +669,7 @@ case+ x0.node() of
   (tok0, d0e1, tof2, tbar, d0cs, tinv) =>
   fprint!
   ( out
-  , "D0Ecas0(", tok0, "; "
+  , "D0Ecas1(", tok0, "; "
   , d0e1, "; ", tof2, "; ", tbar, "; ", "...", "; ", tinv, ")")
 //
 | D0Elet

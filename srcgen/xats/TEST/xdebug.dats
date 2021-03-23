@@ -13,7 +13,9 @@ if
 true
 then 1
 else 2
-endst{i,j:int| i>=j} (x: int(i), y: int(j), z: string)
+endst{i,j:int| i>=j}
+(x: int(i), y: int(j), z: string)
+val abc = 0
 (* ****** ****** *)
 ////
 (* ****** ****** *)
@@ -22,9 +24,14 @@ length(xs: list(int)): int =
 (
 case+ xs of
 |
-list_nil() => 0 + 0
+list_nil
+((*void*)) => 0 + 0
 |
-list_cons(_, xs) => 1 + length(xs)
+list_cons
+( _ , xs ) => 1 + length(xs)
+endst
+{i,j:int| i>=j}
+(x: int(i), y: int(j), z: string)
 )
 (* ****** ****** *)
 ////
