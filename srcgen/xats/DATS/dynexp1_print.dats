@@ -481,32 +481,37 @@ x0.node() of
   (out, "D1Elist1(", d1es, ")")
 | D1Elist(d1es1, d1es2) =>
   fprint!
-  (out, "D1Elist2(", d1es1, "; ", d1es2, ")")
+  ( out
+  , "D1Elist2(", d1es1, "; ", d1es2, ")")
 //
 | D1Enone((*void*)) =>
   fprint!(out, "D1Enone(", ")")
 //
 | D1Eseqn(d1es1, d1es2) =>
   fprint!
-  (out, "D1Eseqn(", d1es1, "; ", d1es2, ")")
+  ( out
+  , "D1Eseqn(", d1es1, "; ", d1es2, ")")
 //
-| D1Etuple(tok, d1es) =>
+| D1Etuple(tok0, d1es) =>
   fprint!
   ( out
-  , "D1Etuple1(", tok, "; ", d1es, ")")
-| D1Etuple(tok, d1es1, d1es2) =>
+  , "D1Etuple1(", tok0, "; ", d1es, ")" )
+| D1Etuple
+  (tok0, d1es1, d1es2) =>
   fprint!
   ( out
-  , "D1Etuple2(", tok, "; ", d1es1, "; ", d1es2, ")")
+  , "D1Etuple2("
+  , tok0, "; ", d1es1, "; ", d1es2, ")" )
 //
-| D1Erecord(tok, ld1es) =>
+| D1Erecord(tok0, ld1es) =>
   fprint!
   ( out
-  , "D1Erecord1(", tok, "; ", ld1es, ")")
-| D1Erecord(tok, ld1es1, ld1es2) =>
+  , "D1Erecord1(", tok0, "; ", ld1es, ")" )
+| D1Erecord
+  (tok0, ldes1, ldes2) =>
   fprint!
   ( out
-  , "D1Erecord2(", tok, "; ", ld1es1, "; ", ld1es2, ")")
+  , "D1Erecord2(", tok0, "; ", ldes1, "; ", ldes2, ")")
 //
 | D1Ebrack(d1es) =>
   fprint!(out, "D1Ebrack(", d1es, ")")
@@ -515,20 +520,32 @@ x0.node() of
   (out, "D1Edtsel(", lab1, "; ", arg2, ")")
 //
 | D1Elet(d1cs, d1es) =>
-  fprint!(out, "D1Elet(", d1cs, "; ", d1es, ")")
+  fprint!
+  ( out, "D1Elet(", d1cs, "; ", d1es, ")" )
 //
 | D1Ewhere(d1e1, d1cs) =>
-  fprint!(out, "D1Ewhere(", d1e1, "; ", d1cs, ")")
+  fprint!
+  ( out, "D1Ewhere(", d1e1, "; ", d1cs, ")" )
 //
 | D1Eif0(d1e1, d1e2, opt3) =>
   fprint!
   ( out
-  , "D1Eif0(", d1e1, "; ", d1e2, "; ", opt3, ")")
+  , "D1Eif0("
+  , d1e1, "; ", d1e2, "; ", opt3, ")" )
+| D1Eif1(d1e1, d1e2, opt3, tinv) =>
+  fprint!
+  ( out
+  , "D1Eif1("
+  , d1e1, "; ", d1e2, "; ", opt3, "; ", "...", ")")
 //
 | D1Ecas0(knd, d1e1, dcls) =>
   fprint!
   ( out
   , "D1Ecas0(", knd, "; ", d1e1, "; ", dcls , ")")
+| D1Ecas1(knd, d1e1, dcls, tinv) =>
+  fprint!
+  ( out
+  , "D1Ecas1(", knd, "; ", d1e1, "; ", dcls , "...", ")")
 //
 | D1Elam
   (knd, farg, tres, arrw, body) =>

@@ -187,7 +187,7 @@ in
 end // end of [p_RPAREN]
 
 (* ****** ****** *)
-
+//
 implement
 p_LBRACE
   (buf, err) = let
@@ -199,8 +199,9 @@ in
   | T_LBRACE() =>
     let val () = buf.incby1() in tok end
   | _ (* non-RLRACE *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_LBRACE]
+//
 implement
 p_RBRACE
   (buf, err) = let
@@ -212,11 +213,11 @@ in
   | T_RBRACE() =>
     let val () = buf.incby1() in tok end
   | _ (* non-RBRACE *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_RBRACE]
-
+//
 (* ****** ****** *)
-
+//
 implement
 p_LBRACK
   (buf, err) = let
@@ -228,8 +229,9 @@ in
   | T_LBRACK() =>
     let val () = buf.incby1() in tok end
   | _ (* non-LBRACK *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_LBRACK]
+//
 implement
 p_RBRACK
   (buf, err) = let
@@ -241,11 +243,11 @@ in
   | T_RBRACK() =>
     let val () = buf.incby1() in tok end
   | _ (* non-RBRACK *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_RBRACK]
-
+//
 (* ****** ****** *)
-
+//
 implement
 p_OF(buf, err) = let
   val e0 = err
@@ -256,9 +258,9 @@ in
   | T_OF() =>
     let val () = buf.incby1() in tok end
   | _ (* non-OF *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_OF]
-
+//
 (* ****** ****** *)
 
 implement
@@ -271,7 +273,7 @@ in
   | T_IN() =>
     let val () = buf.incby1() in tok end
   | _ (* non-IN *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_IN]
 
 (* ****** ****** *)
@@ -286,7 +288,7 @@ in
   | T_WITH() =>
     let val () = buf.incby1() in tok end
   | _ (* non-WITH *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_WITH]
 
 (* ****** ****** *)
@@ -301,7 +303,7 @@ in
   | T_END() =>
     let val () = buf.incby1() in tok end
   | _ (* non-END *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_END]
 
 (* ****** ****** *)
@@ -318,7 +320,7 @@ in
   | T_ENDLET() =>
     let val () = buf.incby1() in tok end
   | _ (* non-END *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_ENDLET]
 
 implement
@@ -333,7 +335,7 @@ in
   | T_ENDTRY() =>
     let val () = buf.incby1() in tok end
   | _ (* non-END *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_ENDTRY]
 
 implement
@@ -348,7 +350,7 @@ in
   | T_ENDLOCAL() =>
     let val () = buf.incby1() in tok end
   | _ (* non-END *) =>
-    let val ( ) = (err := e0 + 1) in tok end
+    let val () = (err := e0 + 1) in tok end
 end // end of [p_ENDLOCAL]
 
 (* ****** ****** *)

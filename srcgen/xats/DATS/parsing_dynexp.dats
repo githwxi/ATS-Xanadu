@@ -1576,21 +1576,24 @@ let
 //
 val
 stqs =
-p_st0quaseq(buf, err)
+p_st0quaseq
+( buf, err )
 //
-val tok0 = buf.get0()
+val
+tok0 = buf.get0()
 //
-in(*in-of-let*)
+in(* in-of-let *)
 //
 case+
 tok0.node() of
 |
 T_LPAREN() => let
-  val () = buf.incby1()
+  val () =
+  buf.incby1((*void*))
   val d0ts = 
   p_d0typseq_COMMA(buf, err)
   val tbeg = tok0
-  val tend = p_RBRACE(buf, err)
+  val tend = p_RPAREN(buf, err)
 in
   ST0INVsome(stqs, tbeg, d0ts, tend)
 end
@@ -1603,17 +1606,18 @@ implement
 popt_endst0inv
   (buf, err) =
 let
-val tok0 = buf.get0()
+val
+tok0 = buf.get0()
 in
 //
 case+
 tok0.node() of
 | T_ENDST() =>
   let
-  val () =
-  buf.incby1()
-  val inv0 =
-  p_st0inv(buf, err)
+    val () =
+    buf.incby1()
+    val inv0 =
+    p_st0inv(buf, err)
   in
     ENDST0INVsome(tok0, inv0)
   end // end of [T_ENDST]
