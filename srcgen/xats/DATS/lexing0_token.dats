@@ -262,12 +262,16 @@ case+ tnd of
 | T_CASE(k0) =>
   fprint!(out, "CASE(", k0, ")")
 //
-| T_SCASE() => fprint(out, "SCASE()")
+| T_SCASE() => fprint(out, "SCASE")
 //
+| T_ENDST() => fprint(out, "ENDST")
+//
+(*
 | T_ENDIF() => fprint(out, "ENDIF")
 | T_ENDSIF() => fprint(out, "ENDSIF")
 | T_ENDCASE() => fprint(out, "ENDCASE")
 | T_ENDSCASE() => fprint(out, "ENDSCASE")
+*)
 //
 | T_LAM(knd) =>
   fprint!(out, "LAM(", knd, ")")
@@ -544,10 +548,14 @@ case+ tnd of
 //
 | T_SCASE() => fprint(out, "scase")
 //
+| T_ENDST() => fprint(out, "endst")
+//
+(*
 | T_ENDIF() => fprint(out, "endif")
 | T_ENDSIF() => fprint(out, "endsif")
 | T_ENDCASE() => fprint(out, "endcase")
 | T_ENDSCASE() => fprint(out, "endscase")
+*)
 //
 | T_LAM(knd) =>
   fprint!(out, "lam(", knd, ")")

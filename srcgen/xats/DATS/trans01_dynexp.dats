@@ -1295,8 +1295,9 @@ d0e0.node() of
 | D0Etuple _ => auxtuple(d0e0)
 //
 | D0Eif0
-  ( tif0, d0e1
-  , d0e2, opt3, topt) => let
+  ( tif0
+  , d0e1
+  , d0e2, opt3) => let
     val d1e1 = trans01_dexp(d0e1)
     val d1e2 =
     (
@@ -1323,16 +1324,17 @@ d0e0.node() of
   end (* end of [D0Eif0] *)
 //
 | D0Ecas0
-  ( knd, d0e1, tof2
-  , tbar, d0cs, tend) => let
+  ( knd0
+  , d0e1, tof2
+  , tbar, dcls) => let
     val d1e1 = trans01_dexp(d0e1)
-    val d1cs = trans01_dclaulst(d0cs)
+    val dcls = trans01_dclaulst(dcls)
   in
     FXITMatm(d1e0) where
     {
       val d1e0 =
       d1exp_make_node
-        (loc0, D1Ecas0(knd, d1e1, d1cs))
+      (loc0, D1Ecas0(knd0, d1e1, dcls))
       // end of [val]
     }
   end // end of [D0Ecas0]

@@ -553,9 +553,14 @@ fun p_labd0exp : parser(labd0exp)
 // HX-2021-03-22:
 //
 typedef
-st0invopt = $DYNEXP0.st0invopt
+st0inv = $DYNEXP0.st0inv
+typedef
+endst0inv = $DYNEXP0.endst0inv
+//
 fun
-popt_stinv_endst: parser(st0invopt)
+p_st0inv: parser(st0inv)
+fun
+popt_endst0inv: parser(endst0inv)
 //
 (* ****** ****** *)
 
