@@ -355,13 +355,11 @@ typedef d0typlst = List0(d0typ)
 //
 datatype
 d0typ_node =
-(*
 |
 D0TYPnone of token
-*)
 |
 D0TYPsome of
-( token, s0expopt )
+( i0dnt, s0expopt )
 //
 fun
 d0typ_get_loc(d0typ): loc_t
@@ -387,14 +385,67 @@ d0typ_make_node
 //
 datatype
 st0qua =
-| ST0QUA of
-  (token, s0qualst, token)
+|
+ST0QUAnone of
+( token )
+|
+ST0QUAsome of
+(token, s0qualst, token)
 where st0qualst = List0(st0qua)
+//
 datatype
-st0invopt =
-| ST0INVnone of ()
-| ST0INVsome of
-  (st0qualst, token, d0typlst, token)
+st0inv =
+|
+ST0INVnone of
+( st0qualst, token )
+|
+ST0INVsome of
+( st0qualst
+, token, d0typlst, token)
+//
+fun
+st0qua_get_loc(st0qua): loc_t
+fun
+st0inv_get_loc(st0inv): loc_t
+//
+overload .loc with st0qua_get_loc
+overload .loc with st0inv_get_loc
+//
+fun
+print_st0inv: print_type(st0inv)
+fun
+prerr_st0inv: prerr_type(st0inv)
+fun
+fprint_st0inv: fprint_type(st0inv)
+//
+overload print with print_st0inv
+overload prerr with prerr_st0inv
+overload fprint with fprint_st0inv
+//
+(* ****** ****** *)
+//
+datatype
+endst0inv =
+|
+ENDST0INVnone of ()
+|
+ENDST0INVsome of (token, st0inv)
+//
+(* ****** ****** *)
+//
+fun
+print_endst0inv:
+print_type(endst0inv)
+fun
+prerr_endst0inv:
+prerr_type(endst0inv)
+fun
+fprint_endst0inv:
+fprint_type(endst0inv)
+//
+overload print with print_endst0inv
+overload prerr with prerr_endst0inv
+overload fprint with fprint_endst0inv
 //
 (* ****** ****** *)
 
@@ -536,19 +587,22 @@ d0exp_node =
 | D0Eif0 of
   ( token
   , d0exp
-  , d0exp_THEN, d0exp_ELSE, tokenopt)
-(*
+  , d0exp_THEN, d0exp_ELSE)
 | D0Eif1 of
   ( token
   , d0exp
-  , d0exp_THEN, d0exp_ELSE, stinvopt)
-*)
+  , d0exp_THEN, d0exp_ELSE, endst0inv)
 //
 | D0Ecas0 of
   ( token
   , d0exp
   , token(*OF*)
-  , tokenopt(*BAR*), d0claulst, tokenopt)
+  , tokenopt(*BAR*), d0claulst)
+| D0Ecas1 of
+  ( token
+  , d0exp
+  , token(*OF*)
+  , tokenopt(*BAR*), d0claulst, endst0inv)
 //
 | D0Elet of
   ( token

@@ -318,6 +318,7 @@ d0e0.node() of
     synread_d0exp_RPAREN(dend)
   }
 //
+(*
 | D0Eif0
   ( tbeg(*IF*)
   , d0e1, d0e2, d0e3, topt) =>
@@ -333,10 +334,27 @@ d0e0.node() of
     val () =
     synread_d0exp_ELSE(d0e3)
   }
+*)
+//
+| D0Eif0
+  ( tbeg(*IF*)
+  , d0e1, d0e2, d0e3) =>
+  {
+(*
+    val () =
+    synread_IF(tbeg)
+*)
+    val () =
+    synread_d0exp(d0e1)
+    val () =
+    synread_d0exp_THEN(d0e2)
+    val () =
+    synread_d0exp_ELSE(d0e3)
+  }
 //
 | D0Ecas0
-  ( tbeg, d0e1, tmid
-  , topt, dcls, tend) =>
+  ( tbeg, d0e1
+  , tmid, tbar, dcls) =>
   {
 (*
     val () =

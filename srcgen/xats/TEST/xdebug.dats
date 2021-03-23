@@ -5,7 +5,18 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
-
+val x = 0
+val y = 1
+val z = ""
+val xyz =
+if
+true
+then 1
+else 2
+endst{i,j:int| i>=j} (x: int(i), y: int(j), z: string)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 fun
 length(xs: list(int)): int =
 (
@@ -15,7 +26,6 @@ list_nil() => 0 + 0
 |
 list_cons(_, xs) => 1 + length(xs)
 )
-
 (* ****** ****** *)
 ////
 (* ****** ****** *)

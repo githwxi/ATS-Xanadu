@@ -319,9 +319,19 @@ val () = myins("scase", T_SCASE)
 val () = myins("ifcase", T_IFCASE)
 *)
 //
-val () = myins("endif", T_ENDIF)
-val () = myins("endsif", T_ENDSIF)
-val () = myins("endcase", T_ENDCASE)
+val () =
+myins("endst", T_ENDST)
+//
+(*
+val () =
+myins("endif", T_ENDIF)
+val () =
+myins("endsif", T_ENDSIF)
+val () =
+myins("endcase", T_ENDCASE)
+val () =
+myins("endscase", T_ENDSCASE)
+*)
 //
 val () = myins("lam", T_LAM(0))
 val () = myins("fix", T_FIX(0))

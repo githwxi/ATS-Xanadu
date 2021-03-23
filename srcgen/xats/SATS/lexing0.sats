@@ -195,10 +195,14 @@ tnode =
     // case, case+, case-
   | T_SCASE of () // 'scase'
 //
+  | T_ENDST of ()
+//
+(*
   | T_ENDIF of () // 'endif'
   | T_ENDSIF of () // 'endsif'
   | T_ENDCASE of () // 'endcase'
   | T_ENDSCASE of () // 'endscase'
+*)
 //
   | T_LAM of int
     // 'lam=lam1' and 'lam@=lam0'

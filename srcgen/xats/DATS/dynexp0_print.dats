@@ -324,6 +324,116 @@ in
 end // end of [fprint_dl0abeled]
 
 (* ****** ****** *)
+//
+implement
+print_st0inv
+  (x0) =
+fprint_st0inv(stdout_ref, x0)
+implement
+prerr_st0inv
+  (x0) =
+fprint_st0inv(stderr_ref, x0)
+//
+local
+//
+implement
+fprint_val<d0typ>
+(out, d0t) =
+(
+case+
+d0t.node() of
+|
+D0TYPnone
+( tok ) =>
+fprint!
+( out
+, "D0TYPnone(", tok, ")")
+|
+D0TYPsome
+( id0, opt ) =>
+(
+case+ opt of
+| None() =>
+  fprint!
+  ( out
+  , "D0TYPsome(", id0, ")")
+| Some(s2e) =>
+  fprint!
+  ( out
+  , "D0TYPsome(", id0, ":", s2e, ")")
+)
+)
+//
+implement
+fprint_val<st0qua>
+(out, stq) =
+(
+case+ stq of
+|
+ST0QUAnone(tok) =>
+fprint!
+( out
+, "ST0QUAnone(", tok, ")")
+|
+ST0QUAsome
+(tbeg, s0qs, tend) =>
+fprint!
+( out
+, "ST0QUAsome(", s0qs, ")")
+)
+//
+in(*in-of-local*)
+//
+implement
+fprint_st0inv
+  (out, x0) =
+(
+case+ x0 of
+|
+ST0INVnone
+(stqs, terr) =>
+fprint!
+( out
+, "ST0INVnone("
+, stqs, "; ", terr, ")")
+|
+ST0INVsome
+(stqs, tbeg, d0ts, tend) =>
+fprint!
+( out
+, "ST0INVsome(", stqs, "; ", d0ts, ")")
+) (* end of [fprint_st0inv] *)
+//
+end // end of [local]
+//
+(* ****** ****** *)
+//
+implement
+print_endst0inv
+  (x0) =
+fprint_endst0inv(stdout_ref, x0)
+implement
+prerr_endst0inv
+  (x0) =
+fprint_endst0inv(stderr_ref, x0)
+//
+implement
+fprint_endst0inv
+  (out, x0) =
+(
+case+ x0 of
+|
+ENDST0INVnone
+( (*void*) ) => ()
+|
+ENDST0INVsome
+( tend, inv0 ) =>
+fprint!
+( out
+, "ST0INV(", tend, ";", inv0, ")")
+)
+//
+(* ****** ****** *)
 
 implement
 print_d0pat(x0) =
@@ -530,25 +640,37 @@ case+ x0.node() of
   , "D0Etuple("
   , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
 | D0Erecord
-  (tbeg, topt, ld0es, tend) =>
+  (tbeg, topt, ldes, tend) =>
   fprint!
   ( out
   , "D0Erecord("
-  , tbeg, "; ", topt, "; ", ld0es, "; ", tend, ")")
+  , tbeg, "; ", topt, "; ", ldes, "; ", tend, ")")
 //
 | D0Eif0
-  (tif0, d0e1, d0e2, d0e3, tend) =>
+  (tif0, d0e1, d0e2, d0e3) =>
   fprint!
   ( out
   , "D0Eif0(", tif0, "; "
-  , d0e1, "; ", d0e2, "; ", d0e3, "; ", tend, ")")
+  , d0e1, "; ", d0e2, "; ", d0e3, ")")
+| D0Eif1
+  (tif0, d0e1, d0e2, d0e3, tinv) =>
+  fprint!
+  ( out
+  , "D0Eif1(", tif0, "; "
+  , d0e1, "; ", d0e2, "; ", d0e3, "; ", tinv, ")")
 //
 | D0Ecas0
-  (tok0, d0e1, tof2, tbar, d0cs, tend) =>
+  (tok0, d0e1, tof2, tbar, d0cs) =>
   fprint!
   ( out
   , "D0Ecas0(", tok0, "; "
-  , d0e1, "; ", tof2, "; ", tbar, "; ", "...", "; ", tend, ")")
+  , d0e1, "; ", tof2, "; ", tbar, "; ", "...", ")")
+| D0Ecas1
+  (tok0, d0e1, tof2, tbar, d0cs, tinv) =>
+  fprint!
+  ( out
+  , "D0Ecas0(", tok0, "; "
+  , d0e1, "; ", tof2, "; ", tbar, "; ", "...", "; ", tinv, ")")
 //
 | D0Elet
   (tok0, d0cs, topt, d0es, tok2) =>
