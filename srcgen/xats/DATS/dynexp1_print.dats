@@ -318,6 +318,77 @@ x0.node() of
 
 (* ****** ****** *)
 
+//
+implement
+print_st1inv
+  (x0) =
+fprint_st1inv(stdout_ref, x0)
+implement
+prerr_st1inv
+  (x0) =
+fprint_st1inv(stderr_ref, x0)
+//
+local
+//
+implement
+fprint_val<d1typ>
+(out, d1t) =
+(
+case+
+d1t.node() of
+(*
+|
+D1TYPnone
+( tok ) =>
+fprint!
+( out
+, "D1TYPnone(", tok, ")")
+*)
+|
+D1TYPsome
+( id0, opt ) =>
+(
+case+ opt of
+| None() =>
+  fprint!
+  ( out
+  , "D1TYPsome(", id0, ")")
+| Some(s1e) =>
+  fprint!
+  ( out
+  , "D1TYPsome(", id0, ":", s1e, ")")
+)
+)
+//
+in(*in-of-local*)
+//
+implement
+fprint_st1inv
+  (out, x0) =
+(
+case+ x0 of
+(*
+|
+ST1INVnone
+(stqs, terr) =>
+fprint!
+( out
+, "ST1INVnone("
+, stqs, "; ", terr, ")")
+*)
+|
+ST1INVsome
+( loc1
+, stqs, d0ts) =>
+fprint!
+( out
+, "ST1INVsome(", stqs, "; ", d0ts, ")")
+) (* end of [fprint_st1inv] *)
+//
+end // end of [local]
+//
+(* ****** ****** *)
+
 implement
 print_d1pat(x0) =
 fprint_d1pat(stdout_ref, x0)
