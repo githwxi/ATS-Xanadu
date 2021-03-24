@@ -1296,6 +1296,30 @@ FXITMatm
 end // end of [auxopid]
 
 (* ****** ****** *)
+//
+fun
+auxthen
+( d0e0
+: d0exp_THEN): d1exp =
+(
+case+ d0e0 of
+| d0exp_THEN
+  (tok, d0e) => trans01_dexp(d0e)
+)
+//
+fun
+auxelse
+( opt0
+: d0exp_ELSE): d1expopt =
+(
+case+ opt0 of
+| d0exp_ELSEnone
+  ((*void*)) => None((*void*))
+| d0exp_ELSEsome
+  (tok, d0e) => Some(trans01_dexp(d0e))
+)
+//
+(* ****** ****** *)
 
 fun
 auxitm
@@ -1369,22 +1393,8 @@ d0e0.node() of
   , d0e2, opt3) => let
     val d1e1 =
     trans01_dexp(d0e1)
-    val d1e2 =
-    (
-      case+ d0e2 of
-      | d0exp_THEN
-          (_, d0e2) =>
-          trans01_dexp(d0e2)
-    ) : d1exp // end of [val]
-    val opt3 =
-    (
-      case+ opt3 of
-      | d0exp_ELSEnone
-          () => None((*void*))
-      | d0exp_ELSEsome
-          (_, d0e) =>
-          Some(trans01_dexp(d0e))
-    ) : d1expopt // end of [val]
+    val d1e2 = auxthen(d0e2)
+    val opt3 = auxelse(opt3)
   in
     FXITMatm(d1e0) where
     {
@@ -1393,14 +1403,33 @@ d0e0.node() of
       (loc0, D1Eif0(d1e1, d1e2, opt3))
     }
   end (* end of [D0Eif0] *)
+| D0Eif1
+  ( tif0
+  , d0e1
+  , d0e2
+  , opt3, tinv) => let
+    val d1e1 =
+    trans01_dexp(d0e1)
+    val d1e2 = auxthen(d0e2)
+    val opt3 = auxelse(opt3)
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+      d1exp_make_node
+      (loc0, D1Eif0(d1e1, d1e2, opt3))
+    }
+  end (* end of [D0Eif1] *)
 //
 | D0Ecas0
   ( knd0
   , d0e1
   , tof2
   , tbar, dcls) => let
-    val d1e1 = trans01_dexp(d0e1)
-    val dcls = trans01_dclaulst(dcls)
+    val d1e1 =
+    trans01_dexp(d0e1)
+    val dcls =
+    trans01_dclaulst(dcls)
   in
     FXITMatm(d1e0) where
     {
@@ -1410,6 +1439,25 @@ d0e0.node() of
       // end of [val]
     }
   end // end of [D0Ecas0]
+| D0Ecas1
+  ( knd0
+  , d0e1
+  , tof2
+  , tbar
+  , dcls, tinv) => let
+    val d1e1 =
+    trans01_dexp(d0e1)
+    val dcls =
+    trans01_dclaulst(dcls)
+  in
+    FXITMatm(d1e0) where
+    {
+      val d1e0 =
+      d1exp_make_node
+      (loc0, D1Ecas0(knd0, d1e1, dcls))
+      // end of [val]
+    }
+  end // end of [D0Ecas1]
 //
 | D0Elet
   ( tok(*let*)
