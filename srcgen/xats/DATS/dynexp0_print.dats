@@ -357,10 +357,10 @@ case+ opt of
   fprint!
   ( out
   , "D0TYPsome(", id0, ")")
-| Some(s2e) =>
+| Some(s0e) =>
   fprint!
   ( out
-  , "D0TYPsome(", id0, ":", s2e, ")")
+  , "D0TYPsome(", id0, ":", s0e, ")")
 )
 )
 //

@@ -366,7 +366,7 @@ D1TYPnone of token
 *)
 |
 D1TYPsome of
-( i0dnt, s0expopt )
+( token(*id*), s1expopt )
 //
 fun
 d1typ_get_loc(d1typ): loc_t
