@@ -276,6 +276,38 @@ end // end of [local]
 local
 
 absimpl
+d1typ_tbox = $rec{
+  d1typ_loc= loc_t
+, d1typ_node= d1typ_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d1typ_get_loc(x0) = x0.d1typ_loc
+implement
+d1typ_get_node(x0) = x0.d1typ_node
+
+(* ****** ****** *)
+
+implement
+d1typ_make_node
+(loc, node) = $rec
+{
+  d1typ_loc= loc, d1typ_node= node
+} (* end of [d1typ_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d1pat_tbox = $rec{
   d1pat_loc= loc_t
 , d1pat_node= d1pat_node

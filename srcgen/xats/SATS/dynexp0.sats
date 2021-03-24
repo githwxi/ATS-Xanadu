@@ -369,6 +369,8 @@ d0typ_get_node(d0typ): d0typ_node
 overload .loc with d0typ_get_loc
 overload .node with d0typ_get_node
 //
+(* ****** ****** *)
+//
 fun print_d0typ : print_type(d0typ)
 fun prerr_d0typ : prerr_type(d0typ)
 fun fprint_d0typ : fprint_type(d0typ)

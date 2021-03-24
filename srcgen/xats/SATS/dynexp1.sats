@@ -358,6 +358,26 @@ typedef d1typlst = List0(d1typ)
 //
 (* ****** ****** *)
 //
+datatype
+d1typ_node =
+(*
+|
+D1TYPnone of token
+*)
+|
+D1TYPsome of
+( i0dnt, s0expopt )
+//
+fun
+d1typ_get_loc(d1typ): loc_t
+fun
+d1typ_get_node(d1typ): d1typ_node
+//
+overload .loc with d1typ_get_loc
+overload .node with d1typ_get_node
+//
+(* ****** ****** *)
+//
 fun
 print_d1typ : print_type(d1typ)
 fun
@@ -369,12 +389,34 @@ overload print with print_d1typ
 overload prerr with prerr_d1typ
 overload fprint with fprint_d1typ
 //
+fun
+d1typ_make_node
+(loc: loc_t, node: d1typ_node): d1typ
+//
 (* ****** ****** *)
 //
 datatype
 st1inv =
 | ST1INVsome of
-  ( loc_t, s1qualst, d1typlst )
+  (loc_t, s1qualst, d1typlst)
+//
+(* ****** ****** *)
+//
+fun
+st1inv_get_loc(st1inv): loc_t
+//
+overload .loc with st1inv_get_loc
+//
+fun
+print_st1inv: print_type(st1inv)
+fun
+prerr_st1inv: prerr_type(st1inv)
+fun
+fprint_st1inv: fprint_type(st1inv)
+//
+overload print with print_st1inv
+overload prerr with prerr_st1inv
+overload fprint with fprint_st1inv
 //
 (* ****** ****** *)
 //
