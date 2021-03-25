@@ -775,6 +775,81 @@ list_map$fopr<d0typ><d1typ>(d0t) = trans01_dtyp(d0t)
 } (* end of [trans01_dtyplst] *)
 
 (* ****** ****** *)
+//
+implement
+trans01_stinv
+  (tinv) =
+let
+val
+loc0 = tinv.loc()
+fun
+auxstqs
+( stqs
+: st0qualst): st1qualst =
+(
+case+ stqs of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons
+(st0q, stqs) =>
+(
+case+ st0q of
+|
+ST0QUAnone _ =>
+auxstqs( stqs )
+|
+ST0QUAsome
+(tbeg, s0qs, tend) =>
+let
+val
+loc1 =
+tbeg.loc() + tend.loc()
+val
+s1qs = trans01_squalst(s0qs)
+val
+st1q = ST1QUAsome(loc1, s1qs)
+in
+  list_cons(st1q, auxstqs(stqs))
+end
+)
+) (* end of [auxstqs] *)
+
+in(*in-of-let*)
+
+case+ tinv of
+|
+ST0INVnone
+(stqs, terr) =>
+let
+//
+val
+stqs = auxstqs(stqs)
+//
+val d0ts = list_nil(*void*)
+//
+in
+  ST1INVsome(loc0, stqs, d0ts)
+end
+|
+ST0INVsome
+( stqs
+, tbeg, d0ts, tend) =>
+let
+//
+val
+stqs = auxstqs(stqs)
+//
+val
+d0ts = trans01_dtyplst(d0ts)
+//
+in
+  ST1INVsome(loc0, stqs, d0ts)
+end
+end (*let*) // end of [trans01_stinv]
+//
+(* ****** ****** *)
 
 local
 
@@ -1364,24 +1439,26 @@ d0e0.node() of
     fxitmlst_resolve_d1exp(loc0, d1es)
   }
 //
-| D0Esqarg
-  (tbeg, s0es, tend) =>
-  FXITMatm(d1e0) where
-  {
-    val s1es =
-    trans01_sexplst(s0es)
-    val d1e0 =
-    d1exp_make_node(loc0, D1Esqarg(s1es))
-  }
-| D0Etqarg
-  (tbeg, s0es, tend) =>
-  FXITMatm(d1e0) where
-  {
-    val s1es =
-    trans01_sexplst(s0es)
-    val d1e0 =
-    d1exp_make_node(loc0, D1Etqarg(s1es))
-  }
+|
+D0Esqarg
+(tbeg, s0es, tend) =>
+FXITMatm(d1e0) where
+{
+  val s1es =
+  trans01_sexplst(s0es)
+  val d1e0 =
+  d1exp_make_node(loc0, D1Esqarg(s1es))
+}
+|
+D0Etqarg
+(tbeg, s0es, tend) =>
+FXITMatm(d1e0) where
+{
+  val s1es =
+  trans01_sexplst(s0es)
+  val d1e0 =
+  d1exp_make_node(loc0, D1Etqarg(s1es))
+}
 //
 | D0Eparen _ => auxparen(d0e0)
 //
@@ -1412,12 +1489,13 @@ d0e0.node() of
     trans01_dexp(d0e1)
     val d1e2 = auxthen(d0e2)
     val opt3 = auxelse(opt3)
+    val tinv = trans01_stinv(tinv)
   in
     FXITMatm(d1e0) where
     {
       val d1e0 =
       d1exp_make_node
-      (loc0, D1Eif0(d1e1, d1e2, opt3))
+      (loc0, D1Eif1(d1e1, d1e2, opt3, tinv))
     }
   end (* end of [D0Eif1] *)
 //
@@ -1442,19 +1520,19 @@ d0e0.node() of
 | D0Ecas1
   ( knd0
   , d0e1
-  , tof2
-  , tbar
+  , tof2, tbar
   , dcls, tinv) => let
     val d1e1 =
     trans01_dexp(d0e1)
     val dcls =
     trans01_dclaulst(dcls)
+    val tinv = trans01_stinv(tinv)
   in
     FXITMatm(d1e0) where
     {
       val d1e0 =
       d1exp_make_node
-      (loc0, D1Ecas0(knd0, d1e1, dcls))
+      (loc0, D1Ecas1(knd0, d1e1, dcls, tinv))
       // end of [val]
     }
   end // end of [D0Ecas1]

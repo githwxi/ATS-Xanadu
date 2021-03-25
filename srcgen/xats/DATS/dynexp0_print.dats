@@ -78,11 +78,14 @@ fprint_val<q0arg> = fprint_q0arg
 //
 implement
 fprint_val<a0typ> = fprint_a0typ
+//
 implement
 fprint_val<d0arg> = fprint_d0arg
 //
+(* ****** ****** *)
 implement
-fprint_val<f0arg> = fprint_f0arg
+fprint_val<d0typ> = fprint_d0typ
+(* ****** ****** *)
 //
 implement
 fprint_val<sq0arg> = fprint_sq0arg
@@ -96,8 +99,19 @@ fprint_val<ti0arg> = fprint_ti0arg
 (* ****** ****** *)
 //
 implement
-fprint_val<d0ecl> = fprint_d0ecl
+fprint_val<d0pat> = fprint_d0pat
 //
+implement
+fprint_val<f0arg> = fprint_f0arg
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<d0exp> = fprint_d0exp
+//
+(* ****** ****** *)
+implement
+fprint_val<d0ecl> = fprint_d0ecl
 (* ****** ****** *)
 //
 implement
@@ -203,36 +217,34 @@ case+ x0.node() of
 end // end of [local]
 
 (* ****** ****** *)
-//
+
 implement
-print_f0arg(x0) = 
-fprint_f0arg(stdout_ref, x0)
-implement
-prerr_f0arg(x0) = 
-fprint_f0arg(stderr_ref, x0)
-//
-implement
-fprint_f0arg
+fprint_d0typ
   (out, x0) =
 (
-//
-case+
-x0.node() of
-| F0ARGnone(tok) =>
-  fprint!(out, "F0ARGnone(", tok, ")")
-| F0ARGsome_dyn(d0p) =>
-  fprint!(out, "F0ARGsome_dyn(", d0p, ")")
-| F0ARGsome_sta(tbeg, s0qs, tend) =>
+case+ x0.node() of
+|
+D0TYPnone
+( tok ) =>
+fprint!
+( out
+, "D0TYPnone(", tok, ")")
+|
+D0TYPsome
+( id0, opt ) =>
+(
+case+ opt of
+| None() =>
   fprint!
   ( out
-  , "F0ARGsome_sta(", tbeg, "; ", s0qs, "; ", tend, ")")
-| F0ARGsome_met(tbeg, s0es, tend) =>
+  , "D0TYPsome(", id0, ")")
+| Some(s0e) =>
   fprint!
   ( out
-  , "F0ARGsome_met(", tbeg, "; ", s0es, "; ", tend, ")")
-//
-) (* end of [fprint_f0arg] *)
-//
+  , "D0TYPsome(", id0, ":", s0e, ")")
+)
+) (* end of [fprint_d0typ] *)
+
 (* ****** ****** *)
 //
 implement
@@ -241,6 +253,8 @@ fprint_sq0arg(stdout_ref, x0)
 implement
 prerr_sq0arg(x0) = 
 fprint_sq0arg(stderr_ref, x0)
+//
+(* ****** ****** *)
 //
 implement
 fprint_sq0arg
@@ -267,6 +281,8 @@ implement
 prerr_tq0arg(x0) = 
 fprint_tq0arg(stderr_ref, x0)
 //
+(* ****** ****** *)
+//
 implement
 fprint_tq0arg
   (out, x0) =
@@ -291,6 +307,8 @@ fprint_ti0arg(stdout_ref, x0)
 implement
 prerr_ti0arg(x0) = 
 fprint_ti0arg(stderr_ref, x0)
+//
+(* ****** ****** *)
 //
 implement
 fprint_ti0arg
@@ -324,116 +342,6 @@ in
 end // end of [fprint_dl0abeled]
 
 (* ****** ****** *)
-//
-implement
-print_st0inv
-  (x0) =
-fprint_st0inv(stdout_ref, x0)
-implement
-prerr_st0inv
-  (x0) =
-fprint_st0inv(stderr_ref, x0)
-//
-local
-//
-implement
-fprint_val<d0typ>
-(out, d0t) =
-(
-case+
-d0t.node() of
-|
-D0TYPnone
-( tok ) =>
-fprint!
-( out
-, "D0TYPnone(", tok, ")")
-|
-D0TYPsome
-( id0, opt ) =>
-(
-case+ opt of
-| None() =>
-  fprint!
-  ( out
-  , "D0TYPsome(", id0, ")")
-| Some(s0e) =>
-  fprint!
-  ( out
-  , "D0TYPsome(", id0, ":", s0e, ")")
-)
-)
-//
-implement
-fprint_val<st0qua>
-(out, stq) =
-(
-case+ stq of
-|
-ST0QUAnone(tok) =>
-fprint!
-( out
-, "ST0QUAnone(", tok, ")")
-|
-ST0QUAsome
-(tbeg, s0qs, tend) =>
-fprint!
-( out
-, "ST0QUAsome(", s0qs, ")")
-)
-//
-in(*in-of-local*)
-//
-implement
-fprint_st0inv
-  (out, x0) =
-(
-case+ x0 of
-|
-ST0INVnone
-(stqs, terr) =>
-fprint!
-( out
-, "ST0INVnone("
-, stqs, "; ", terr, ")")
-|
-ST0INVsome
-(stqs, tbeg, d0ts, tend) =>
-fprint!
-( out
-, "ST0INVsome(", stqs, "; ", d0ts, ")")
-) (* end of [fprint_st0inv] *)
-//
-end // end of [local]
-//
-(* ****** ****** *)
-//
-implement
-print_endst0inv
-  (x0) =
-fprint_endst0inv(stdout_ref, x0)
-implement
-prerr_endst0inv
-  (x0) =
-fprint_endst0inv(stderr_ref, x0)
-//
-implement
-fprint_endst0inv
-  (out, x0) =
-(
-case+ x0 of
-|
-ENDST0INVnone
-( (*void*) ) => ()
-|
-ENDST0INVsome
-( tend, inv0 ) =>
-fprint!
-( out
-, "ST0INV(", tend, ";", inv0, ")")
-)
-//
-(* ****** ****** *)
 
 implement
 print_d0pat(x0) =
@@ -442,10 +350,14 @@ implement
 prerr_d0pat(x0) =
 fprint_d0pat(stderr_ref, x0)
 
+(* ****** ****** *)
+
 local
 
+(*
 implement
 fprint_val<d0pat> = fprint_d0pat
+*)
 
 in (* in-of-local *)
 
@@ -520,10 +432,14 @@ implement
 prerr_d0pat_RPAREN(x0) =
 fprint_d0pat_RPAREN(stderr_ref, x0)
 
+(* ****** ****** *)
+
 local
 
+(*
 implement
 fprint_val<d0pat> = fprint_d0pat
+*)
 
 in (* in-of-local *)
 
@@ -532,9 +448,9 @@ fprint_d0pat_RPAREN
   (out, x0) =
 (
 case+ x0 of
-| d0pat_RPAREN_cons0(tok) =>
+| d0pat_RPAREN_cons0(tok1) =>
   fprint!
-  (out, "d0pat_RPAREN_cons0(", tok, ")")
+  (out, "d0pat_RPAREN_cons0(", tok1, ")")
 | d0pat_RPAREN_cons1(tok1, d0ps, tok2) =>
   fprint!
   (out, "d0pat_RPAREN_cons1(", tok1, ", ", d0ps, ", ", tok2, ")")
@@ -551,10 +467,14 @@ implement
 prerr_labd0pat_RBRACE(x0) =
 fprint_labd0pat_RBRACE(stderr_ref, x0)
 
+(* ****** ****** *)
+
 local
 
+(*
 implement
 fprint_val<d0pat> = fprint_d0pat
+*)
 
 in (* in-of-local *)
 
@@ -563,16 +483,143 @@ fprint_labd0pat_RBRACE
   (out, x0) =
 (
 case+ x0 of
-| labd0pat_RBRACE_cons0(tok) =>
+| labd0pat_RBRACE_cons0
+  ( tok1 ) =>
   fprint!
-  (out, "labd0pat_RBRACE_cons0(", tok, ")")
-| labd0pat_RBRACE_cons1(tok1, ld0ps, tok2) =>
+  ( out
+  , "labd0pat_RBRACE_cons0(", tok1, ")")
+| labd0pat_RBRACE_cons1
+  ( tok1, ld0ps, tok2 ) =>
   fprint!
-  (out, "labd0pat_RBRACE_cons1(", tok1, ", ", ld0ps, ", ", tok2, ")")
+  ( out
+  , "labd0pat_RBRACE_cons1(", tok1, ", ", ld0ps, ", ", tok2, ")")
 ) (* end of [fprint_labd0pat_RBRACE] *)
 
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+print_f0arg(x0) = 
+fprint_f0arg(stdout_ref, x0)
+implement
+prerr_f0arg(x0) = 
+fprint_f0arg(stderr_ref, x0)
+//
+implement
+fprint_f0arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+| F0ARGnone(tok) =>
+  fprint!(out, "F0ARGnone(", tok, ")")
+| F0ARGsome_dyn(d0p) =>
+  fprint!(out, "F0ARGsome_dyn(", d0p, ")")
+| F0ARGsome_sta(tbeg, s0qs, tend) =>
+  fprint!
+  ( out
+  , "F0ARGsome_sta(", tbeg, "; ", s0qs, "; ", tend, ")")
+| F0ARGsome_met(tbeg, s0es, tend) =>
+  fprint!
+  ( out
+  , "F0ARGsome_met(", tbeg, "; ", s0es, "; ", tend, ")")
+//
+) (* end of [fprint_f0arg] *)
+//
+(* ****** ****** *)
+//
+implement
+print_st0inv
+  (x0) =
+fprint_st0inv(stdout_ref, x0)
+implement
+prerr_st0inv
+  (x0) =
+fprint_st0inv(stderr_ref, x0)
+//
+(* ****** ****** *)
+//
+implement
+fprint_st0qua
+( out, stq ) =
+(
+case+ stq of
+|
+ST0QUAnone(tok) =>
+fprint!
+( out
+, "ST0QUAnone(", tok, ")")
+|
+ST0QUAsome
+(tbeg, s0qs, tend) =>
+fprint!
+( out
+, "ST0QUAsome(", s0qs, ")")
+) (* end of [fprint_st0qua] *)
+//
+(* ****** ****** *)
+//
+local
+//
+implement
+fprint_val<d0typ> = fprint_d0typ
+//
+implement
+fprint_val<st0qua> = fprint_st0qua
+//
+in(*in-of-local*)
+//
+implement
+fprint_st0inv
+  (out, x0) =
+(
+case+ x0 of
+|
+ST0INVnone
+(stqs, terr) =>
+fprint!
+( out
+, "ST0INVnone("
+, stqs, "; ", terr, ")")
+|
+ST0INVsome
+(stqs, tbeg, d0ts, tend) =>
+fprint!
+( out
+, "ST0INVsome(", stqs, "; ", d0ts, ")")
+) (* end of [fprint_st0inv] *)
+//
+end // end of [local]
+//
+(* ****** ****** *)
+//
+implement
+print_endst0inv
+  (x0) =
+fprint_endst0inv(stdout_ref, x0)
+implement
+prerr_endst0inv
+  (x0) =
+fprint_endst0inv(stderr_ref, x0)
+//
+implement
+fprint_endst0inv
+  (out, x0) =
+(
+case+ x0 of
+|
+ENDST0INVnone
+( (*void*) ) => ()
+|
+ENDST0INVsome
+( tend, inv0 ) =>
+fprint!
+( out
+, "ST0INV(", tend, ";", inv0, ")")
+)
+//
 (* ****** ****** *)
 
 implement
@@ -582,10 +629,14 @@ implement
 prerr_d0exp(x0) =
 fprint_d0exp(stderr_ref, x0)
 
+(* ****** ****** *)
+
 local
 
+(*
 implement
 fprint_val<d0exp> = fprint_d0exp
+*)
 
 in (* in-of-local *)
 
@@ -747,8 +798,10 @@ fprint_d0exp_RPAREN(stderr_ref, x0)
 
 local
 
+(*
 implement
 fprint_val<d0exp> = fprint_d0exp
+*)
 
 in (* in-of-local *)
 
@@ -781,8 +834,10 @@ fprint_labd0exp_RBRACE(stderr_ref, x0)
 
 local
 
+(*
 implement
 fprint_val<d0exp> = fprint_d0exp
+*)
 
 in (* in-of-local *)
 
@@ -981,9 +1036,12 @@ prerr_d0ecl(x0) =
 fprint_d0ecl(stderr_ref, x0)
 
 local
-
+//
+(*
 implement
 fprint_val<d0ecl> = fprint_d0ecl
+*)
+//
 implement
 fprint_val<g0marg> = fprint_g0marg
 implement
@@ -994,7 +1052,7 @@ implement
 fprint_val<v0ardecl> = fprint_v0ardecl
 implement
 fprint_val<d0cstdecl> = fprint_d0cstdecl
-
+//
 in (* in-of-local *)
 
 implement

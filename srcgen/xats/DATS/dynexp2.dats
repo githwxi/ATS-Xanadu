@@ -273,12 +273,49 @@ $STM.eq_stamp_stamp(x1.stamp(), x2.stamp())
 local
 
 absimpl
+d2typ_tbox = $rec{
+  d2typ_loc= loc_t
+, d2typ_node= d2typ_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+d2typ_get_loc(x0) = x0.d2typ_loc
+implement
+d2typ_get_node(x0) = x0.d2typ_node
+
+(* ****** ****** *)
+
+implement
+d2typ_make_node
+(loc, node) = $rec
+{
+  d2typ_loc= loc, d2typ_node= node
+} (* end of [d2typ_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d2pat_tbox = $rec
-{ d2pat_loc= loc_t
-, d2pat_node= d2pat_node
+{
+//
+d2pat_loc= loc_t
+,
+d2pat_node= d2pat_node
+//
 (*
 , d2pat_type= t2ype_tbox
 *)
+//
 } (* end of [absimpl] *)
 
 in (* in-of-local *)
@@ -293,12 +330,15 @@ d2pat_get_node
 implement
 d2pat_make_node
   (loc0, node) = $rec
-{ d2pat_loc= loc0
+{
+  d2pat_loc= loc0
 , d2pat_node= node
+//
 (*
 , d2pat_type= the_t2ype_none
 *)
-} (* d2pat_make_node *)
+//
+} (*$rec*) // d2pat_make_node
 //
 end // end of [local]
 

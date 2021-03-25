@@ -1808,10 +1808,10 @@ case+ tnd of
       d0exp_make_node
       ( loc_res
       , D0Eif0(tok, d0e1, d0e2, d0e3))
-    | ENDST0INVsome _ =>
+    | ENDST0INVsome(_, tinv) =>
       d0exp_make_node
       ( loc_res
-      , D0Eif1(tok, d0e1, d0e2, d0e3, topt))
+      , D0Eif1(tok, d0e1, d0e2, d0e3, tinv))
     )
   end // end of [T_IF]
 //
@@ -1869,10 +1869,10 @@ case+ tnd of
       d0exp_make_node
       ( loc_res
       , D0Ecas0(tok, d0e1, tok2, tbar, dcls))
-    | ENDST0INVsome _ =>
+    | ENDST0INVsome(_, tinv) =>
       d0exp_make_node
       ( loc_res
-      , D0Ecas1(tok, d0e1, tok2, tbar, dcls, topt))
+      , D0Ecas1(tok, d0e1, tok2, tbar, dcls, tinv))
     )
   end // end of [T_CASE]
 //

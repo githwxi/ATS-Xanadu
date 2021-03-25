@@ -119,6 +119,9 @@ implement
 fprint_val<d2var> = fprint_d2var
 //
 (* ****** ****** *)
+implement
+fprint_val<d2typ> = fprint_d2typ
+(* ****** ****** *)
 
 implement
 fprint_val<d2itm> = fprint_d2itm
@@ -234,9 +237,50 @@ fprint!(out, "; type= ", x0.type());
 *)
 ) where
 {
-  val sym = x0.sym() and stamp = x0.stamp()
-} (* end of [fprint_d2var] *)
+val
+sym = x0.sym() and stamp = x0.stamp()
+} (*where*) // end of [fprint_d2var]
 //
+(* ****** ****** *)
+//
+implement
+print_d2typ(x0) =
+fprint_d2typ(stdout_ref, x0)
+implement
+prerr_d2typ(x0) =
+fprint_d2typ(stderr_ref, x0)
+//
+implement
+fprint_d2typ
+  (out, x0) =
+(
+case+ x0.node() of
+(*
+|
+D2TYPnone
+( tok ) =>
+fprint!
+( out
+, "D2TYPnone(", tok, ")")
+*)
+|
+D2TYPsome
+( d2v, opt ) =>
+(
+case+ opt of
+|
+None() =>
+fprint!
+( out
+, "D2TYPsome(", d2v, ")")
+|
+Some(s2e) =>
+fprint!
+( out
+, "D2TYPsome(", d2v, ":", s2e, ")")
+)
+) (* end of [fprint_d2typ] *)
+
 (* ****** ****** *)
 //
 implement
@@ -254,15 +298,19 @@ fprint_f2arg
 case+
 x0.node() of
 (*
-| F2ARGnone(tok) =>
-  fprint!(out, "F2ARGnone(", tok, ")")
+|
+F2ARGnone(tok) =>
+fprint!(out, "F2ARGnone(", tok, ")")
 *)
-| F2ARGsome_met(s2es) =>
-  fprint!(out, "F2ARGsome_met(", s2es, ")")
-| F2ARGsome_dyn(npf, d2ps) =>
-  fprint!(out, "F2ARGsome_dyn(", npf, "; ", d2ps, ")")
-| F2ARGsome_sta(s2vs, s2ps) =>
-  fprint!(out, "F2ARGsome_sta(", s2vs, "; ", s2ps, ")")
+|
+F2ARGsome_met(s2es) =>
+fprint!(out, "F2ARGsome_met(", s2es, ")")
+|
+F2ARGsome_dyn(npf, d2ps) =>
+fprint!(out, "F2ARGsome_dyn(", npf, "; ", d2ps, ")")
+|
+F2ARGsome_sta(s2vs, s2ps) =>
+fprint!(out, "F2ARGsome_sta(", s2vs, "; ", s2ps, ")")
 //
 ) (* end of [fprint_f2arg] *)
 //
@@ -275,9 +323,16 @@ implement
 prerr_d2pat(x0) =
 fprint_d2pat(stderr_ref, x0)
 
+(* ****** ****** *)
+
 local
 
-in (* in-of-local *)
+(*
+implement
+fprint_val<d2pat) = fprint_d2pat
+*)
+
+in(*in-of-local*)
 
 implement
 fprint_d2pat
@@ -372,6 +427,65 @@ case- x0.node() of
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+print_st2inv(x0) =
+fprint_st2inv(stdout_ref, x0)
+implement
+prerr_st2inv(x0) =
+fprint_st2inv(stderr_ref, x0)
+//
+(* ****** ****** *)
+//
+implement
+fprint_st2qua
+  (out, stq) =
+(
+case+ stq of
+|
+ST2QUAsome
+(loc0, s2vs, s2ps) =>
+fprint!
+( out
+, "ST2QUAsome(", s2vs, "; ", s2ps, ")")
+) (* end of [fprint_st2qua] *)
+//
+(* ****** ****** *)
+
+local
+//
+implement
+fprint_val<d2typ> = fprint_d2typ
+implement
+fprint_val<st2qua> = fprint_st2qua
+//
+in(*in-of-local*)
+//
+implement
+fprint_st2inv
+  (out, x0) =
+(
+case+ x0 of
+(*
+|
+ST2INVnone
+(stqs, terr) =>
+fprint!
+( out
+, "ST2INVnone("
+, stqs, "; ", terr, ")")
+*)
+|
+ST2INVsome
+(loc1, stqs, d2ts) =>
+fprint!
+( out
+, "ST1INVsome(", stqs, "; ", d2ts, ")")
+) (* end of [fprint_st2inv] *)
+//
+end // end of [local]
+
+(* ****** ****** *)
 
 implement
 print_d2exp(x0) =
@@ -380,9 +494,16 @@ implement
 prerr_d2exp(x0) =
 fprint_d2exp(stderr_ref, x0)
 
+(* ****** ****** *)
+
 local
 
-in (* in-of-local *)
+(*
+implement
+fprint_val<d2exp) = fprint_d2exp
+*)
+
+in (*in-of-local*)
 
 implement
 fprint_d2exp
@@ -497,13 +618,14 @@ case- x0.node() of
   fprint!
   ( out
   , "D2Edtsel("
-  , lab0, "(", dpis, ")", ")")
+  , lab0, "(", dpis, ")", ")" )
   |
   Some(d2es) =>
   fprint!
   ( out
   , "D2Edtsel("
-  , lab0, "(", dpis, ")", "(", npf2, "; ", d2es, ")", ")")
+  , lab0, "(", dpis, ")"
+  , "(", npf2, "; ", d2es, ")", ")" )
   )
 //
 | D2Eif0
@@ -511,12 +633,22 @@ case- x0.node() of
   fprint!
   ( out, "D2Eif0("
   , d2e1, "; ", d2e2, "; ", opt3, ")")
+| D2Eif1
+  (d2e1, d2e2, opt3, tinv) =>
+  fprint!
+  ( out, "D2Eif1("
+  , d2e1, "; ", d2e2, "; ", opt3, "; ", tinv, ")")
 //
 | D2Ecas0
   (knd0, d2e1, d2cls) =>
   fprint!
   ( out, "D2Ecas0("
   , knd0, "; ", d2e1, "; ", d2cls, ")")
+| D2Ecas1
+  (knd0, d2e1, d2cls, tinv) =>
+  fprint!
+  ( out, "D2Ecas1("
+  , knd0, "; ", d2e1, "; ", d2cls, "; ", tinv, ")")
 //
 | D2Elam
   (knd0, f2as, tres, arrw, body) =>
@@ -595,6 +727,8 @@ implement
 prerr_d2gua(x0) =
 fprint_d2gua(stderr_ref, x0)
 
+(* ****** ****** *)
+
 implement
 fprint_d2gua
   (out, x0) =
@@ -617,6 +751,8 @@ fprint_d2clau(stdout_ref, x0)
 implement
 prerr_d2clau(x0) =
 fprint_d2clau(stderr_ref, x0)
+
+(* ****** ****** *)
 
 implement
 print_d2gpat(x0) =
@@ -659,6 +795,8 @@ fprint_d2ecl(stdout_ref, x0)
 implement
 prerr_d2ecl(x0) =
 fprint_d2ecl(stderr_ref, x0)
+
+(* ****** ****** *)
 
 local
 
@@ -868,6 +1006,8 @@ implement
 prerr_d2itm(x0) =
 fprint_d2itm(stderr_ref, x0)
 //
+(* ****** ****** *)
+//
 implement
 fprint_d2itm
   (out, x0) =
@@ -910,6 +1050,8 @@ implement
 prerr_sq2arg(x0) =
 fprint_sq2arg(stderr_ref, x0)
 //
+(* ****** ****** *)
+//
 implement
 fprint_sq2arg
   (out, x0) =
@@ -942,6 +1084,8 @@ implement
 prerr_ti2arg(x0) =
 fprint_ti2arg(stderr_ref, x0)
 //
+(* ****** ****** *)
+//
 implement
 fprint_ti2arg
   (out, x0) =
@@ -957,6 +1101,8 @@ fprint_v2aldecl(stdout_ref, x0)
 implement
 prerr_v2aldecl(x0) =
 fprint_v2aldecl(stderr_ref, x0)
+
+(* ****** ****** *)
 
 implement
 fprint_v2aldecl
@@ -981,6 +1127,8 @@ implement
 prerr_v2ardecl(x0) =
 fprint_v2ardecl(stderr_ref, x0)
 
+(* ****** ****** *)
+
 implement
 fprint_v2ardecl
   (out, x0) = let
@@ -1004,6 +1152,8 @@ fprint_f2undecl(stdout_ref, x0)
 implement
 prerr_f2undecl(x0) =
 fprint_f2undecl(stderr_ref, x0)
+
+(* ****** ****** *)
 
 implement
 fprint_f2undecl
@@ -1057,6 +1207,8 @@ fprint_impld2cst(stdout_ref, x0)
 implement
 prerr_impld2cst(x0) =
 fprint_impld2cst(stderr_ref, x0)
+//
+(* ****** ****** *)
 //
 implement
 fprint_impld2cst

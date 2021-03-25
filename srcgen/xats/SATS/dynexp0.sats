@@ -314,39 +314,6 @@ d0arg_make_node
 //
 (* ****** ****** *)
 //
-abstbox f0arg_tbox = ptr
-typedef f0arg = f0arg_tbox
-typedef f0arglst = List0(f0arg)
-//
-datatype
-f0arg_node =
-| F0ARGnone of (token)
-| F0ARGsome_dyn of (d0pat)
-| F0ARGsome_sta of (token, s0qualst, token)
-| F0ARGsome_met of (token, s0explst, token)
-//
-fun
-f0arg_get_loc(f0arg): loc_t
-fun
-f0arg_get_node(f0arg): f0arg_node
-//
-overload .loc with f0arg_get_loc
-overload .node with f0arg_get_node
-//
-fun print_f0arg : print_type(f0arg)
-fun prerr_f0arg : prerr_type(f0arg)
-fun fprint_f0arg : fprint_type(f0arg)
-//
-overload print with print_f0arg
-overload prerr with prerr_f0arg
-overload fprint with fprint_f0arg
-//
-fun
-f0arg_make_node
-(loc: loc_t, node: f0arg_node): f0arg
-//
-(* ****** ****** *)
-//
 abstbox d0typ_tbox = ptr
 typedef d0typ = d0typ_tbox
 typedef d0typlst = List0(d0typ)
@@ -382,72 +349,6 @@ overload fprint with fprint_d0typ
 fun
 d0typ_make_node
 (loc: loc_t, node: d0typ_node): d0typ
-//
-(* ****** ****** *)
-//
-datatype
-st0qua =
-|
-ST0QUAnone of
-( token )
-|
-ST0QUAsome of
-(token, s0qualst, token)
-where st0qualst = List0(st0qua)
-//
-datatype
-st0inv =
-|
-ST0INVnone of
-( st0qualst, token )
-|
-ST0INVsome of
-( st0qualst
-, token, d0typlst, token)
-//
-fun
-st0qua_get_loc(st0qua): loc_t
-fun
-st0inv_get_loc(st0inv): loc_t
-//
-overload .loc with st0qua_get_loc
-overload .loc with st0inv_get_loc
-//
-fun
-print_st0inv: print_type(st0inv)
-fun
-prerr_st0inv: prerr_type(st0inv)
-fun
-fprint_st0inv: fprint_type(st0inv)
-//
-overload print with print_st0inv
-overload prerr with prerr_st0inv
-overload fprint with fprint_st0inv
-//
-(* ****** ****** *)
-//
-datatype
-endst0inv =
-|
-ENDST0INVnone of ()
-|
-ENDST0INVsome of (token, st0inv)
-//
-(* ****** ****** *)
-//
-fun
-print_endst0inv:
-print_type(endst0inv)
-fun
-prerr_endst0inv:
-prerr_type(endst0inv)
-fun
-fprint_endst0inv:
-fprint_type(endst0inv)
-//
-overload print with print_endst0inv
-overload prerr with prerr_endst0inv
-overload fprint with fprint_endst0inv
 //
 (* ****** ****** *)
 
@@ -553,6 +454,114 @@ overload prerr with prerr_labd0pat_RBRACE
 overload fprint with fprint_labd0pat_RBRACE
 //
 (* ****** ****** *)
+//
+abstbox f0arg_tbox = ptr
+typedef f0arg = f0arg_tbox
+typedef f0arglst = List0(f0arg)
+//
+(* ****** ****** *)
+//
+datatype
+f0arg_node =
+| F0ARGnone of (token)
+| F0ARGsome_dyn of (d0pat)
+| F0ARGsome_sta of (token, s0qualst, token)
+| F0ARGsome_met of (token, s0explst, token)
+//
+fun
+f0arg_get_loc(f0arg): loc_t
+fun
+f0arg_get_node(f0arg): f0arg_node
+//
+overload .loc with f0arg_get_loc
+overload .node with f0arg_get_node
+//
+fun print_f0arg : print_type(f0arg)
+fun prerr_f0arg : prerr_type(f0arg)
+fun fprint_f0arg : fprint_type(f0arg)
+//
+overload print with print_f0arg
+overload prerr with prerr_f0arg
+overload fprint with fprint_f0arg
+//
+fun
+f0arg_make_node
+(loc: loc_t, node: f0arg_node): f0arg
+//
+(* ****** ****** *)
+//
+datatype
+st0qua =
+|
+ST0QUAnone of
+( token )
+|
+ST0QUAsome of
+(token, s0qualst, token)
+where st0qualst = List0(st0qua)
+//
+datatype
+st0inv =
+|
+ST0INVnone of
+( st0qualst, token )
+|
+ST0INVsome of
+( st0qualst
+, token, d0typlst, token)
+//
+fun
+st0qua_get_loc(st0qua): loc_t
+fun
+st0inv_get_loc(st0inv): loc_t
+//
+overload .loc with st0qua_get_loc
+overload .loc with st0inv_get_loc
+//
+(* ****** ****** *)
+//
+fun
+print_st0inv: print_type(st0inv)
+fun
+prerr_st0inv: prerr_type(st0inv)
+//
+overload print with print_st0inv
+overload prerr with prerr_st0inv
+//
+fun
+fprint_st0qua: fprint_type(st0qua)
+fun
+fprint_st0inv: fprint_type(st0inv)
+//
+overload fprint with fprint_st0qua
+overload fprint with fprint_st0inv
+//
+(* ****** ****** *)
+//
+datatype
+endst0inv =
+|
+ENDST0INVnone of ()
+|
+ENDST0INVsome of (token, st0inv)
+//
+(* ****** ****** *)
+//
+fun
+print_endst0inv:
+print_type(endst0inv)
+fun
+prerr_endst0inv:
+prerr_type(endst0inv)
+fun
+fprint_endst0inv:
+fprint_type(endst0inv)
+//
+overload print with print_endst0inv
+overload prerr with prerr_endst0inv
+overload fprint with fprint_endst0inv
+//
+(* ****** ****** *)
 
 datatype
 d0exp_node =
@@ -593,7 +602,7 @@ d0exp_node =
 | D0Eif1 of
   ( token
   , d0exp
-  , d0exp_THEN, d0exp_ELSE, endst0inv)
+  , d0exp_THEN, d0exp_ELSE, st0inv)
 //
 | D0Ecas0 of
   ( token
@@ -604,7 +613,7 @@ d0exp_node =
   ( token
   , d0exp
   , token(*OF*)
-  , tokenopt(*BAR*), d0claulst, endst0inv)
+  , tokenopt(*BAR*), d0claulst, st0inv)
 //
 | D0Elet of
   ( token
