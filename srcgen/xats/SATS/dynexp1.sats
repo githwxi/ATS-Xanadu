@@ -109,6 +109,8 @@ abstype q1arg_tbox = ptr
 typedef q1arg = q1arg_tbox
 typedef q1arglst = List0(q1arg)
 //
+(* ****** ****** *)
+//
 datatype
 q1arg_node =
 (*
@@ -277,18 +279,22 @@ abstbox d1arg_tbox = ptr
 typedef d1arg = d1arg_tbox
 typedef d1arglst = List0(d1arg)
 //
+(* ****** ****** *)
+//
 datatype
 d1arg_node =
 (*
 | D1ARGnone of token
 *)
 //
-| D1ARGsome_sta of (s1qualst)
-  // D1ARGsome_sta
+|
+D1ARGsome_sta of (s1qualst)
 //
-| D1ARGsome_dyn1 of token // s0eid
-| D1ARGsome_dyn2 of
-  (a1typlst(*arg0*), a1typlstopt(*opt1*))
+|
+D1ARGsome_dyn1 of token // s0eid
+|
+D1ARGsome_dyn2 of
+(a1typlst(*arg0*), a1typlstopt(*opt1*))
 //
 fun
 d1arg_get_loc(d1arg): loc_t
@@ -298,9 +304,14 @@ d1arg_get_node(d1arg): d1arg_node
 overload .loc with d1arg_get_loc
 overload .node with d1arg_get_node
 //
-fun print_d1arg : print_type(d1arg)
-fun prerr_d1arg : prerr_type(d1arg)
-fun fprint_d1arg : fprint_type(d1arg)
+(* ****** ****** *)
+//
+fun
+print_d1arg : print_type(d1arg)
+fun
+prerr_d1arg : prerr_type(d1arg)
+fun
+fprint_d1arg : fprint_type(d1arg)
 //
 overload print with print_d1arg
 overload prerr with prerr_d1arg
@@ -309,46 +320,6 @@ overload fprint with fprint_d1arg
 fun
 d1arg_make_node
 (loc: loc_t, node: d1arg_node): d1arg
-//
-(* ****** ****** *)
-//
-abstbox f1arg_tbox = ptr
-typedef f1arg = f1arg_tbox
-typedef f1arglst = List0(f1arg)
-//
-datatype
-f1arg_node =
-(*
-| F1ARGnone of (token)
-*)
-| F1ARGsome_dyn of (d1pat)
-| F1ARGsome_sta of (s1qualst)
-| F1ARGsome_met of (s1explst)
-//
-(* ****** ****** *)
-//
-fun
-f1arg_get_loc(f1arg): loc_t
-fun
-f1arg_get_node(f1arg): f1arg_node
-//
-overload .loc with f1arg_get_loc
-overload .node with f1arg_get_node
-//
-fun
-print_f1arg : print_type(f1arg)
-fun
-prerr_f1arg : prerr_type(f1arg)
-fun
-fprint_f1arg : fprint_type(f1arg)
-//
-overload print with print_f1arg
-overload prerr with prerr_f1arg
-overload fprint with fprint_f1arg
-//
-fun
-f1arg_make_node
-(loc: loc_t, node: f1arg_node): f1arg
 //
 (* ****** ****** *)
 //
@@ -396,9 +367,16 @@ d1typ_make_node
 (* ****** ****** *)
 //
 datatype
+st1qua =
+|
+ST1QUAsome of
+(loc_t, s1qualst)
+where
+st1qualst = List0(st1qua)
+datatype
 st1inv =
 | ST1INVsome of
-  (loc_t, s1qualst, d1typlst)
+  (loc_t, st1qualst, d1typlst)
 //
 (* ****** ****** *)
 //
@@ -407,15 +385,22 @@ st1inv_get_loc(st1inv): loc_t
 //
 overload .loc with st1inv_get_loc
 //
+(* ****** ****** *)
+//
 fun
 print_st1inv: print_type(st1inv)
 fun
 prerr_st1inv: prerr_type(st1inv)
-fun
-fprint_st1inv: fprint_type(st1inv)
 //
 overload print with print_st1inv
 overload prerr with prerr_st1inv
+//
+fun
+fprint_st1qua: fprint_type(st1qua)
+fun
+fprint_st1inv: fprint_type(st1inv)
+//
+overload fprint with fprint_st1qua
 overload fprint with fprint_st1inv
 //
 (* ****** ****** *)
@@ -489,6 +474,48 @@ d1pat_none(loc: loc_t): d1pat
 fun
 d1pat_make_node
 (loc: loc_t, node: d1pat_node): d1pat
+//
+(* ****** ****** *)
+//
+abstbox f1arg_tbox = ptr
+typedef f1arg = f1arg_tbox
+typedef f1arglst = List0(f1arg)
+//
+(* ****** ****** *)
+//
+datatype
+f1arg_node =
+(*
+| F1ARGnone of (token)
+*)
+| F1ARGsome_dyn of (d1pat)
+| F1ARGsome_sta of (s1qualst)
+| F1ARGsome_met of (s1explst)
+//
+(* ****** ****** *)
+//
+fun
+f1arg_get_loc(f1arg): loc_t
+fun
+f1arg_get_node(f1arg): f1arg_node
+//
+overload .loc with f1arg_get_loc
+overload .node with f1arg_get_node
+//
+fun
+print_f1arg : print_type(f1arg)
+fun
+prerr_f1arg : prerr_type(f1arg)
+fun
+fprint_f1arg : fprint_type(f1arg)
+//
+overload print with print_f1arg
+overload prerr with prerr_f1arg
+overload fprint with fprint_f1arg
+//
+fun
+f1arg_make_node
+(loc: loc_t, node: f1arg_node): f1arg
 //
 (* ****** ****** *)
 //

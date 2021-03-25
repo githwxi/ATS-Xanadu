@@ -494,6 +494,49 @@ overload fprint with fprint_d2var
 //
 (* ****** ****** *)
 //
+abstbox d2typ_tbox = ptr
+typedef d2typ = d2typ_tbox
+typedef d2typlst = List0(d2typ)
+//
+(* ****** ****** *)
+//
+datatype
+d2typ_node =
+(*
+|
+D2TYPnone of token
+*)
+|
+D2TYPsome of
+( d2var(*id*), s2expopt )
+//
+fun
+d2typ_get_loc(d2typ): loc_t
+fun
+d2typ_get_node(d2typ): d2typ_node
+//
+overload .loc with d2typ_get_loc
+overload .node with d2typ_get_node
+//
+(* ****** ****** *)
+//
+fun
+print_d2typ: print_type(d2typ)
+fun
+prerr_d2typ: prerr_type(d2typ)
+fun
+fprint_d2typ: fprint_type(d2typ)
+//
+overload print with print_d2typ
+overload prerr with prerr_d2typ
+overload fprint with fprint_d2typ
+//
+fun
+d2typ_make_node
+(loc: loc_t, node: d2typ_node): d2typ
+//
+(* ****** ****** *)
+//
 abstbox d2pat_tbox = ptr
 typedef d2pat = d2pat_tbox
 typedef d2patlst = List0(d2pat)
@@ -783,6 +826,39 @@ ti2arg_make
 (loc: loc_t, s2es: s2explst): ti2arg
 //
 (* ****** ****** *)
+//
+datatype
+st2qua =
+|
+ST2QUAsome of
+( loc_t
+, s2varlst, s2explst)
+where
+st2qualst = List0(st2qua)
+datatype
+st2inv =
+| ST2INVsome of
+  (loc_t, st2qualst, d2typlst)
+//
+(* ****** ****** *)
+//
+fun
+print_st2inv: print_type(st2inv)
+fun
+prerr_st2inv: prerr_type(st2inv)
+//
+overload print with print_st2inv
+overload prerr with prerr_st2inv
+//
+fun
+fprint_st2qua: fprint_type(st2qua)
+fun
+fprint_st2inv: fprint_type(st2inv)
+//
+overload fprint with fprint_st2qua
+overload fprint with fprint_st2inv
+//
+(* ****** ****** *)
 
 datatype
 d2exp_node =
@@ -837,11 +913,15 @@ d2exp_node =
 //
 | D2Eif0 of
   ( d2exp(*cond*)
-  , d2exp(*then*), d2expopt(*else*) )
-  // D2Eif0
+  , d2exp(*then*), d2expopt(*else*))
+| D2Eif1 of
+  ( d2exp(*cond*)
+  , d2exp(*then*), d2expopt(*else*), st2inv)
+//
 | D2Ecas0 of
-  (int(*knd*), d2exp(*val*), d2claulst)
-  // D2Ecas0
+  ( int(*knd*), d2exp(*val*), d2claulst)
+| D2Ecas1 of
+  ( int(*knd*), d2exp(*val*), d2claulst, st2inv)
 //
 | D2Elam of
   ( token(*knd*)

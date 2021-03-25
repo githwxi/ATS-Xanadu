@@ -107,7 +107,7 @@ implement
 fprint_val<s1exp> = fprint_s1exp
 
 (* ****** ****** *)
-
+//
 implement
 fprint_val<s1arg> = fprint_s1arg
 implement
@@ -118,7 +118,7 @@ implement
 fprint_val<s1marg> = fprint_s1marg
 implement
 fprint_val<t1marg> = fprint_t1marg
-
+//
 (* ****** ****** *)
 //
 implement
@@ -128,6 +128,28 @@ implement
 fprint_val<d1atcon> = fprint_d1atcon
 implement
 fprint_val<d1atype> = fprint_d1atype
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<q1arg> = fprint_q1arg
+//
+implement
+fprint_val<a1typ> = fprint_a1typ
+//
+implement
+fprint_val<d1arg> = fprint_d1arg
+//
+(* ****** ****** *)
+implement
+fprint_val<d1typ> = fprint_d1typ
+(* ****** ****** *)
+//
+implement
+fprint_val<d1pat> = fprint_d1pat
+//
+implement
+fprint_val<f1arg> = fprint_f1arg
 //
 (* ****** ****** *)
 //
@@ -144,17 +166,6 @@ implement
 fprint_val<d1gpat> = fprint_d1gpat
 //
 (* ****** ****** *)
-//
-implement
-fprint_val<q1arg> = fprint_q1arg
-//
-implement
-fprint_val<a1typ> = fprint_a1typ
-implement
-fprint_val<d1arg> = fprint_d1arg
-//
-implement
-fprint_val<f1arg> = fprint_f1arg
 //
 implement
 fprint_val<sq1arg> = fprint_sq1arg
@@ -249,24 +260,35 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-fprint_f1arg
+fprint_d1typ
   (out, x0) =
 (
-//
-case+
-x0.node() of
+case+ x0.node() of
 (*
-| F1ARGnone(tok) =>
-  fprint!(out, "F1ARGnone(", tok, ")")
+|
+D1TYPnone
+( tok ) =>
+fprint!
+( out
+, "D1TYPnone(", tok, ")")
 *)
-| F1ARGsome_dyn(d1p0) =>
-  fprint!(out, "F1ARGsome_dyn(", d1p0, ")")
-| F1ARGsome_sta(s1qs) =>
-  fprint!(out, "F1ARGsome_sta(", s1qs, ")")
-| F1ARGsome_met(s1es) =>
-  fprint!(out, "F1ARGsome_met(", s1es, ")")
-//
-) (* end of [fprint_f1arg] *)
+|
+D1TYPsome
+( id0, opt ) =>
+(
+case+ opt of
+|
+None() =>
+fprint!
+( out
+, "D1TYPsome(", id0, ")")
+|
+Some(s1e) =>
+fprint!
+( out
+, "D1TYPsome(", id0, ":", s1e, ")")
+)
+) (* end of [fprint_d1typ] *)
 
 (* ****** ****** *)
 
@@ -318,77 +340,6 @@ x0.node() of
 
 (* ****** ****** *)
 
-//
-implement
-print_st1inv
-  (x0) =
-fprint_st1inv(stdout_ref, x0)
-implement
-prerr_st1inv
-  (x0) =
-fprint_st1inv(stderr_ref, x0)
-//
-local
-//
-implement
-fprint_val<d1typ>
-(out, d1t) =
-(
-case+
-d1t.node() of
-(*
-|
-D1TYPnone
-( tok ) =>
-fprint!
-( out
-, "D1TYPnone(", tok, ")")
-*)
-|
-D1TYPsome
-( id0, opt ) =>
-(
-case+ opt of
-| None() =>
-  fprint!
-  ( out
-  , "D1TYPsome(", id0, ")")
-| Some(s1e) =>
-  fprint!
-  ( out
-  , "D1TYPsome(", id0, ":", s1e, ")")
-)
-)
-//
-in(*in-of-local*)
-//
-implement
-fprint_st1inv
-  (out, x0) =
-(
-case+ x0 of
-(*
-|
-ST1INVnone
-(stqs, terr) =>
-fprint!
-( out
-, "ST1INVnone("
-, stqs, "; ", terr, ")")
-*)
-|
-ST1INVsome
-( loc1
-, stqs, d0ts) =>
-fprint!
-( out
-, "ST1INVsome(", stqs, "; ", d0ts, ")")
-) (* end of [fprint_st1inv] *)
-//
-end // end of [local]
-//
-(* ****** ****** *)
-
 implement
 print_d1pat(x0) =
 fprint_d1pat(stdout_ref, x0)
@@ -396,13 +347,7 @@ implement
 prerr_d1pat(x0) =
 fprint_d1pat(stderr_ref, x0)
 
-
-local
-
-implement
-fprint_val<d1pat> = fprint_d1pat
-
-in (* in-of-local *)
+(* ****** ****** *)
 
 implement
 fprint_d1pat
@@ -464,7 +409,8 @@ x0.node() of
 | D1Ptuple(tok, d1ps1, d1ps2) =>
   fprint!
   ( out
-  , "D1Ptuple2(", tok, "; ", d1ps1, "; ", d1ps2, ")")
+  , "D1Ptuple2("
+  , tok, "; ", d1ps1, "; ", d1ps2, ")" )
 //
 | D1Precord(tok, ld1ps) =>
   fprint!
@@ -473,26 +419,107 @@ x0.node() of
 | D1Precord(tok, ld1ps1, ld1ps2) =>
   fprint!
   (out
-  , "D1Precord2(", tok, "; ", ld1ps1, "; ", ld1ps2, ")")
+  , "D1Precord2("
+  , tok, "; ", ld1ps1, "; ", ld1ps2, ")" )
 //
-| D1Panno(d1p, s1e) =>
+| D1Panno(d1p1, s1e2) =>
   fprint!
-  (out, "D1Panno(", d1p, "; ", s1e, ")")
+  (out, "D1Panno(", d1p1, "; ", s1e2, ")")
 //
 | D1Pnone((*void*)) => fprint!(out, "D1Pnone(", ")")
 //
 ) (* end of [fprint_d1pat] *)
 
+(* ****** ****** *)
+
+implement
+fprint_f1arg
+  (out, x0) =
+(
+//
+case+
+x0.node() of
+(*
+| F1ARGnone(tok) =>
+  fprint!(out, "F1ARGnone(", tok, ")")
+*)
+| F1ARGsome_dyn(d1p0) =>
+  fprint!(out, "F1ARGsome_dyn(", d1p0, ")")
+| F1ARGsome_sta(s1qs) =>
+  fprint!(out, "F1ARGsome_sta(", s1qs, ")")
+| F1ARGsome_met(s1es) =>
+  fprint!(out, "F1ARGsome_met(", s1es, ")")
+//
+) (* end of [fprint_f1arg] *)
+
+(* ****** ****** *)
+//
+implement
+print_st1inv(x0) =
+fprint_st1inv(stdout_ref, x0)
+implement
+prerr_st1inv(x0) =
+fprint_st1inv(stderr_ref, x0)
+//
+(* ****** ****** *)
+//
+implement
+fprint_st1qua
+  (out, stq) =
+(
+case+ stq of
+|
+ST1QUAsome(loc0, s1qs) =>
+fprint!
+( out
+, "ST1QUAsome(", s1qs, ")")
+) (* end of [fprint_st1qua] *)
+//
+(* ****** ****** *)
+
+local
+//
+implement
+fprint_val<d1typ> = fprint_d1typ
+implement
+fprint_val<st1qua> = fprint_st1qua
+//
+in(*in-of-local*)
+//
+implement
+fprint_st1inv
+  (out, x0) =
+(
+case+ x0 of
+(*
+|
+ST1INVnone
+(stqs, terr) =>
+fprint!
+( out
+, "ST1INVnone("
+, stqs, "; ", terr, ")")
+*)
+|
+ST1INVsome
+(loc1, stqs, d1ts) =>
+fprint!
+( out
+, "ST1INVsome(", stqs, "; ", d1ts, ")")
+) (* end of [fprint_st1inv] *)
+//
 end // end of [local]
 
 (* ****** ****** *)
-
+//
 implement
 print_d1exp(x0) =
 fprint_d1exp(stdout_ref, x0)
 implement
 prerr_d1exp(x0) =
 fprint_d1exp(stderr_ref, x0)
+//
+(* ****** ****** *)
 
 local
 
@@ -607,16 +634,18 @@ x0.node() of
   fprint!
   ( out
   , "D1Eif1("
-  , d1e1, "; ", d1e2, "; ", opt3, "; ", "...", ")")
+  , d1e1, "; ", d1e2, "; ", opt3, "; ", tinv, ")")
 //
-| D1Ecas0(knd, d1e1, dcls) =>
+| D1Ecas0(knd0, d1e1, dcls) =>
   fprint!
   ( out
-  , "D1Ecas0(", knd, "; ", d1e1, "; ", dcls , ")")
-| D1Ecas1(knd, d1e1, dcls, tinv) =>
+  , "D1Ecas0("
+  , knd0, "; ", d1e1, "; ", dcls , ")")
+| D1Ecas1(knd0, d1e1, dcls, tinv) =>
   fprint!
   ( out
-  , "D1Ecas1(", knd, "; ", d1e1, "; ", dcls , "...", ")")
+  , "D1Ecas1("
+  , knd0, "; ", d1e1, "; ", dcls, "; ", tinv, ")")
 //
 | D1Elam
   (knd, farg, tres, arrw, body) =>

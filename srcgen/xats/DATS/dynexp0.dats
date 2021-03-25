@@ -248,38 +248,6 @@ end // end of [local]
 local
 
 absimpl
-f0arg_tbox = $rec{
-  f0arg_loc= loc_t
-, f0arg_node= f0arg_node
-}
-
-in (* in-of-local *)
-
-(* ****** ****** *)
-
-implement
-f0arg_get_loc(x0) = x0.f0arg_loc
-implement
-f0arg_get_node(x0) = x0.f0arg_node
-
-(* ****** ****** *)
-
-implement
-f0arg_make_node
-(loc, node) = $rec
-{
-  f0arg_loc= loc, f0arg_node= node
-} (* end of [f0arg_make_node] *)
-
-(* ****** ****** *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
 d0typ_tbox = $rec{
   d0typ_loc= loc_t
 , d0typ_node= d0typ_node
@@ -421,6 +389,38 @@ case+ x0 of
   // d0pat_RPAREN_cons1
 )  
 //
+(* ****** ****** *)
+
+local
+
+absimpl
+f0arg_tbox = $rec{
+  f0arg_loc= loc_t
+, f0arg_node= f0arg_node
+}
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+f0arg_get_loc(x0) = x0.f0arg_loc
+implement
+f0arg_get_node(x0) = x0.f0arg_node
+
+(* ****** ****** *)
+
+implement
+f0arg_make_node
+(loc, node) = $rec
+{
+  f0arg_loc= loc, f0arg_node= node
+} (* end of [f0arg_make_node] *)
+
+(* ****** ****** *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 local
