@@ -232,6 +232,9 @@ typedef tq1arglst = $D1E.tq1arglst
 typedef ti1arglst = $D1E.ti1arglst
 //
 (* ****** ****** *)
+typedef d1typ = $D1E.d1typ
+typedef d1typlst = $D1E.d1typlst
+(* ****** ****** *)
 
 typedef d1pat = $D1E.d1pat
 typedef d1patlst = $D1E.d1patlst
@@ -243,6 +246,15 @@ typedef f1arg = $D1E.f1arg
 typedef f1arglst = $D1E.f1arglst
 
 (* ****** ****** *)
+typedef st1inv = $D1E.st1inv
+typedef st1qua = $D1E.st1qua
+(* ****** ****** *)
+
+typedef d1exp = $D1E.d1exp
+typedef d1explst = $D1E.d1explst
+typedef d1expopt = $D1E.d1expopt
+
+(* ****** ****** *)
 
 typedef d1gua = $D1E.d1gua
 typedef d1clau = $D1E.d1clau
@@ -250,12 +262,6 @@ typedef d1gpat = $D1E.d1gpat
 
 typedef d1gualst = $D1E.d1gualst
 typedef d1claulst = $D1E.d1claulst
-
-(* ****** ****** *)
-
-typedef d1exp = $D1E.d1exp
-typedef d1explst = $D1E.d1explst
-typedef d1expopt = $D1E.d1expopt
 
 (* ****** ****** *)
 
@@ -283,6 +289,11 @@ typedef ti2arglst = $D2E.ti2arglst
 
 (* ****** ****** *)
 
+typedef d2typ = $D2E.d2typ
+typedef d2typlst = $D2E.d2typlst
+
+(* ****** ****** *)
+
 typedef d2pat = $D2E.d2pat
 typedef d2patlst = $D2E.d2patlst
 typedef d2patopt = $D2E.d2patopt
@@ -300,6 +311,11 @@ typedef d2gpat = $D2E.d2gpat
 
 typedef d2gualst = $D2E.d2gualst
 typedef d2claulst = $D2E.d2claulst
+
+(* ****** ****** *)
+
+typedef st2inv = $D2E.st2inv
+typedef st2qua = $D2E.st2qua
 
 (* ****** ****** *)
 
@@ -902,6 +918,11 @@ the_trans12_add_gualst(d2gs: d2gualst): void
 (* ****** ****** *)
 //
 fun
+trans12_dtyp: d1typ -> d2typ
+//
+(* ****** ****** *)
+//
+fun
 trans12_dpat: d1pat -> d2pat
 //
 fun
@@ -931,16 +952,11 @@ trans12_farglst_s2exp
 (* ****** ****** *)
 //
 fun
-trans12_dgua: d1gua -> d2gua
+trans12_stinv
+  ( tinv : st1inv ) : st2inv
 fun
-trans12_dclau: d1clau -> d2clau
-fun
-trans12_dgpat: d1gpat -> d2gpat
-//
-fun
-trans12_dgualst: d1gualst -> d2gualst
-fun
-trans12_dclaulst: d1claulst -> d2claulst
+trans12_stqua
+  ( st1q : st1qua ) : st2qua
 //
 (* ****** ****** *)
 //
@@ -952,8 +968,10 @@ trans12_deid: d1exp -> d2exp
 //
 fun
 trd1exp_gmac: d1exp -> g1mac
+//
 fun
-trg1mac_dexp: (loc_t, g1mac) -> d2exp
+trg1mac_dexp
+(loc: loc_t, g1m: g1mac): d2exp
 //
 (* ****** ****** *)
 //
@@ -974,6 +992,20 @@ fun
 trans12_dexpseq
 (loc0: loc_t, d1es: d1explst): d2exp
 
+(* ****** ****** *)
+//
+fun
+trans12_dgua: d1gua -> d2gua
+fun
+trans12_dclau: d1clau -> d2clau
+fun
+trans12_dgpat: d1gpat -> d2gpat
+//
+fun
+trans12_dgualst: d1gualst -> d2gualst
+fun
+trans12_dclaulst: d1claulst -> d2claulst
+//
 (* ****** ****** *)
 //
 fun
