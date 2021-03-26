@@ -453,8 +453,14 @@ for the meaning of knd
 | D3Eif0 of
   ( d3exp(*cond*)
   , d3exp(*then*), d3expopt(*else*))
+| D3Eif1 of
+  ( d3exp(*cond*)
+  , d3exp(*then*), d3expopt(*else*), st2inv)
+//
 | D3Ecas0 of
   (int(*knd*), d3exp(*val*), d3claulst)
+| D3Ecas1 of
+  (int(*knd*), d3exp(*val*), d3claulst, st2inv)
 //
 | D3Elam of
   ( token(*knd*)

@@ -1285,6 +1285,34 @@ in
   ( loc1
   , t2p1, D3Eif0(de11, de12, opt3))
 end
+|
+D3Eif1
+( de11
+, de12, opt3, tinv) =>
+let
+val
+t2p1 = d3e1.type()
+val
+de12 =
+d33exp_tcastize(env0, de12, t2p2)
+val
+opt3 =
+(
+case+ opt3 of
+| None() =>
+  None((*void*))
+| Some
+  (de13) => Some
+  (
+  d33exp_tcastize(env0, de13, t2p2)
+  )
+) : d3expopt // end of [val]
+in
+  d33exp_make_node
+  ( loc1
+  , t2p1
+  , D3Eif1(de11, de12, opt3, tinv))
+end
 //
 |
 D3Ecas0
@@ -1299,6 +1327,22 @@ in
   d33exp_make_node
   ( loc1
   , t2p1, D3Ecas0(knd0, de11, dcls))
+end
+|
+D3Ecas1
+( knd0
+, de11, dcls, tinv) =>
+let
+val
+t2p1 = d3e1.type()
+val
+dcls =
+aux_d3claulst(env0, dcls, t2p2)
+in
+  d33exp_make_node
+  ( loc1
+  , t2p1
+  , D3Ecas1(knd0, de11, dcls, tinv))
 end
 //
 | _ (* else *) =>

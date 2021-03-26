@@ -109,6 +109,10 @@ typedef tq2arglst = $D2E.tq2arglst
 typedef ti2arglst = $D2E.ti2arglst
 
 (* ****** ****** *)
+
+typedef st2inv = $D2E.st2inv
+
+(* ****** ****** *)
 //
 typedef d3pat = $D3E.d3pat
 typedef d3exp = $D3E.d3exp
@@ -474,6 +478,11 @@ d23exp_if0_up
 ( loc0: loc_t
 , d3e1: d3exp
 , d3e2: d3exp, opt3: d3expopt): d3exp
+fun
+d23exp_if1_up
+( loc0: loc_t
+, d3e1: d3exp
+, d3e2: d3exp, opt3: d3expopt, tinv: st2inv): d3exp
 //
 (* ****** ****** *)
 //

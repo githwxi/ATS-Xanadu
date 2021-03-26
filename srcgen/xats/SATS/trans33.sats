@@ -69,10 +69,18 @@ typedef d3gua = $D3E.d3gua
 typedef d3clau = $D3E.d3clau
 typedef d3gpat = $D3E.d3gpat
 
+(* ****** ****** *)
+
 typedef f3arg = $D3E.f3arg
+
+(* ****** ****** *)
 
 typedef d2ecl = $D2E.d2ecl
 typedef d3ecl = $D3E.d3ecl
+
+(* ****** ****** *)
+
+typedef st2inv = $D2E.st2inv
 
 (* ****** ****** *)
 //
@@ -420,6 +428,13 @@ d33exp_if0_up
 , d3e1: d3exp(*cond*)
 , d3e2: d3exp(*then*)
 , opt3: d3expopt(*else*)): d3exp
+fun
+d33exp_if1_up
+( loc0: loc_t
+, env0: !abstenv
+, d3e1: d3exp(*cond*)
+, d3e2: d3exp(*then*)
+, opt3: d3expopt(*else*), tinv: st2inv): d3exp
 //
 (* ****** ****** *)
 //
