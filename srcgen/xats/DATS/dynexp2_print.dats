@@ -263,22 +263,41 @@ fprint!
 ( out
 , "D2TYPnone(", tok, ")")
 *)
+//
 |
-D2TYPsome
-( d2v, opt ) =>
+D2TYPsome_tok
+( tok1, opt2 ) =>
 (
-case+ opt of
+case+ opt2 of
 |
 None() =>
 fprint!
 ( out
-, "D2TYPsome(", d2v, ")")
+, "D2TYPsome_tok(", tok1, ")")
 |
-Some(s2e) =>
+Some(s2e2) =>
 fprint!
 ( out
-, "D2TYPsome(", d2v, ":", s2e, ")")
-)
+, "D2TYPsome_tok(", tok1, ":", s2e2, ")")
+) (* D2TYPsome_tok *)
+//
+|
+D2TYPsome_var
+( d2v1, opt2 ) =>
+(
+case+ opt2 of
+|
+None() =>
+fprint!
+( out
+, "D2TYPsome_var(", d2v1, ")")
+|
+Some(s2e2) =>
+fprint!
+( out
+, "D2TYPsome_var(", d2v1, ":", s2e2, ")")
+//
+) (* D2TYPsome_var *)
 ) (* end of [fprint_d2typ] *)
 
 (* ****** ****** *)

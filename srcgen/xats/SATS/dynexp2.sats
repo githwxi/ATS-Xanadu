@@ -507,7 +507,10 @@ d2typ_node =
 D2TYPnone of token
 *)
 |
-D2TYPsome of
+D2TYPsome_tok of
+( token(*id*), s2expopt )
+|
+D2TYPsome_var of
 ( d2var(*id*), s2expopt )
 //
 fun
