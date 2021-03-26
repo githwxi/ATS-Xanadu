@@ -2125,11 +2125,47 @@ d23exp_make_node
 end // end of [d23exp_dtsel_up]
 //
 (* ****** ****** *)
-
+//
 implement
 d23exp_if0_up
 ( loc0
 , d3e1, d3e2, opt3) =
+let
+//
+val tres =
+(
+case+ opt3 of
+|
+None _ =>
+the_t2ype_void
+|
+Some _ =>
+t2ype_new(loc0)): t2ype
+//
+val d3e2 =
+d23exp_dntp(d3e2, tres)
+//
+val opt3 =
+(
+case+ opt3 of
+|
+None() => None()
+|
+Some(d3e3) =>
+Some(d23exp_dntp(d3e3, tres))
+) : d3expopt // end of [val]
+//
+in(*in-of-let*)
+d23exp_make_node
+( loc0
+, tres, D3Eif0(d3e1, d3e2, opt3))
+end // end of [d23exp_if0_up]
+
+implement
+d23exp_if1_up
+( loc0
+, d3e1
+, d3e2, opt3, tinv) =
 let
 //
 val tbtf =
@@ -2140,26 +2176,33 @@ d23exp_dntp(d3e1, tbtf)
 val tres =
 (
 case+ opt3 of
-| None _ => the_t2ype_void
-| Some _ => t2ype_new(loc0)
-) : t2ype // end of [val]
+|
+None _ =>
+the_t2ype_void
+|
+Some _ =>
+t2ype_new(loc0)): t2ype
 //
 val d3e2 =
 d23exp_dntp(d3e2, tres)
+//
 val opt3 =
 (
 case+ opt3 of
-| None() => None()
-| Some(d3e3) =>
-  Some(d23exp_dntp(d3e3, tres))
+|
+None() => None()
+|
+Some(d3e3) =>
+Some(d23exp_dntp(d3e3, tres))
 ) : d3expopt // end of [val]
 //
-in
+in(*in-of-let*)
 d23exp_make_node
 ( loc0
-, tres, D3Eif0(d3e1, d3e2, opt3))
-end // end of [d23exp_if0_up]
-
+, tres
+, D3Eif1(d3e1, d3e2, opt3, tinv))
+end // end of [d23exp_if1_up]
+//
 (* ****** ****** *)
 
 implement

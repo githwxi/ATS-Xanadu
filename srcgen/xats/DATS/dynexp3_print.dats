@@ -592,12 +592,22 @@ x0.node() of
   fprint!
   ( out, "D3Eif0("
   , d3e1, "; ", d3e2, "; ", opt3, ")")
+| D3Eif1
+  (d3e1, d3e2, opt3, tinv) =>
+  fprint!
+  ( out, "D3Eif1("
+  , d3e1, "; ", d3e2, "; ", opt3, "; ", tinv, ")")
 //
 | D3Ecas0
   (knd0, d3e1, dcls) =>
   fprint!
   ( out, "D3Ecas0("
   , knd0, "; ", d3e1, "; ", dcls, ")")
+| D3Ecas1
+  (knd0, d3e1, dcls, tinv) =>
+  fprint!
+  ( out, "D3Ecas1("
+  , knd0, "; ", d3e1, "; ", dcls, "; ", tinv, ")")
 //
 | D3Elam
   (knd0, f3as, tres, arrw, body) =>
