@@ -624,6 +624,13 @@ fun//{}
 synread_a0typlstopt: synreader(a0typlstopt)
 //
 (* ****** ****** *)
+fun//{}
+synread_st0inv: synreader(st0inv)
+fun//{}
+synread_st0qua: synreader(st0qua)
+fun//{}
+synread_d0typlst: synreader(d0typlst)
+(* ****** ****** *)
 //
 fun//{}
 synread_wd0eclseq: synreader(wd0eclseq)
