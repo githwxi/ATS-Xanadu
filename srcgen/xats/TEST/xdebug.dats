@@ -14,10 +14,8 @@ true
 then 1
 else 2
 endst{i,j:int| i>=j}
-(x: int(i), y: int(j), z: string)
-val abc = 0
-(* ****** ****** *)
-////
+( x: int(i)
+, y: int(j), z: string)
 (* ****** ****** *)
 fun
 length(xs: list(int)): int =

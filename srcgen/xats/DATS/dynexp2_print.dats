@@ -499,7 +499,7 @@ ST2INVsome
 (loc1, stqs, d2ts) =>
 fprint!
 ( out
-, "ST1INVsome(", stqs, "; ", d2ts, ")")
+, "ST2INVsome(", stqs, "; ", d2ts, ")")
 ) (* end of [fprint_st2inv] *)
 //
 end // end of [local]
