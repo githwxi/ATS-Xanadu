@@ -263,9 +263,12 @@ a0typ_get_node(a0typ): a0typ_node
 overload .loc with a0typ_get_loc
 overload .node with a0typ_get_node
 //
-fun print_a0typ : print_type(a0typ)
-fun prerr_a0typ : prerr_type(a0typ)
-fun fprint_a0typ : fprint_type(a0typ)
+fun
+print_a0typ : print_type(a0typ)
+fun
+prerr_a0typ : prerr_type(a0typ)
+fun
+fprint_a0typ : fprint_type(a0typ)
 //
 overload print with print_a0typ
 overload prerr with prerr_a0typ
@@ -285,12 +288,16 @@ typedef d0arglst = List0(d0arg)
 //
 datatype
 d0arg_node =
-| D0ARGnone of token
-| D0ARGsome_sta of
-  (token, s0qualst, token)
-| D0ARGsome_dyn1 of (s0eid)
-| D0ARGsome_dyn2 of
-  (token, a0typlst, a0typlstopt, token)
+|
+D0ARGnone of token
+|
+D0ARGsome_sta of
+(token, s0qualst, token)
+|
+D0ARGsome_dyn1 of (s0eid)
+|
+D0ARGsome_dyn2 of
+(token, a0typlst, a0typlstopt, token)
 //
 fun
 d0arg_get_loc(d0arg): loc_t
@@ -300,9 +307,12 @@ d0arg_get_node(d0arg): d0arg_node
 overload .loc with d0arg_get_loc
 overload .node with d0arg_get_node
 //
-fun print_d0arg : print_type(d0arg)
-fun prerr_d0arg : prerr_type(d0arg)
-fun fprint_d0arg : fprint_type(d0arg)
+fun
+print_d0arg : print_type(d0arg)
+fun
+prerr_d0arg : prerr_type(d0arg)
+fun
+fprint_d0arg : fprint_type(d0arg)
 //
 overload print with print_d0arg
 overload prerr with prerr_d0arg

@@ -32,31 +32,61 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
 #staload "./xbasics.sats"
-
+(* ****** ****** *)
+#staload "./locinfo.sats"
 (* ****** ****** *)
 
 #staload S2E = "./staexp2.sats"
 #staload S2T = "./statyp2.sats"
 
 (* ****** ****** *)
-
+//
 typedef s2exp = $S2E.s2exp
 typedef t2ype = $S2T.t2ype
-
+//
 (* ****** ****** *)
-
+//
 abstbox c0str_tbox = ptr
 typedef c0str = c0str_tbox
 typedef c0strlst = List0(c0str)
 typedef c0stropt = Option(c0str)
-
+typedef c0strlstopt = Option(c0strlst)
+//
 (* ****** ****** *)
 //
 datatype
 c0str_node =
+//
+| C0Siequ of (s2exp, s2exp)
+//
+| C0Stequ of (s2exp, s2exp)
 | C0Stlte of (s2exp, s2exp)
+//
+(* ****** ****** *)
+//
+fun
+c0str_get_loc(c0str): loc_t
+fun
+c0str_get_node(c0str): c0str_node
+//
+overload .loc with c0str_get_loc
+overload .node with c0str_get_node
+//
+fun
+print_c0str : print_type(c0str)
+fun
+prerr_c0str : prerr_type(c0str)
+fun
+fprint_c0str : fprint_type(c0str)
+//
+overload print with print_c0str
+overload prerr with prerr_c0str
+overload fprint with fprint_c0str
+//
+fun
+c0str_make_node
+(loc: loc_t, node: c0str_node): c0str
 //
 (* ****** ****** *)
 
