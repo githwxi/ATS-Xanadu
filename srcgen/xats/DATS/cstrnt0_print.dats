@@ -40,10 +40,43 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/staexp2.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/cstrnt0.sats"
 //
 (* ****** ****** *)
-
+implement
+print_c0str(x0) =
+fprint_c0str(stdout_ref, x0)
+implement
+prerr_c0str(x0) =
+fprint_c0str(stderr_ref, x0)
+(* ****** ****** *)
+//
+implement
+fprint_c0str
+  (out, x0) =
+(
+case+ x0.node() of
+|
+C0Siequ(s2e1, s2e2) =>
+fprint!
+( out
+, "C0Siequ(", s2e1, "; ", s2e2, ")")
+|
+C0Stequ(s2e1, s2e2) =>
+fprint!
+( out
+, "C0Stequ(", s2e1, "; ", s2e2, ")")
+|
+C0Stlte(s2e1, s2e2) =>
+fprint!
+( out
+, "C0Stlte(", s2e1, "; ", s2e2, ")")
+) (* end of [fprint_c0str] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_cstrnt0_print.dats] *)
