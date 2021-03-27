@@ -650,11 +650,11 @@ H0Etimp of
   (h0exp(*l-val*), h0exp(*r-val*))
 //
 |
-H0Eif0 of
+H0Eift1 of
 ( h0exp
 , h0exp(*then*), h0expopt(*else*))
 |
-H0Ecas0 of
+H0Ecase of
 ( int(*knd*)
 , h0exp(*val*), h0claulst(*claues*))
 //

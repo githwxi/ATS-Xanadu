@@ -644,17 +644,17 @@ x0.node() of
   ( out
   , "H0Eassgn(", h0e1, "; ", h0e2, ")")
 //
-| H0Eif0
+| H0Eift1
   (h0e1, h0e2, opt3) =>
   fprint!
   ( out
-  , "H0Eif0("
+  , "H0Eift1("
   , h0e1, "; ", h0e2, "; ", opt3, ")")
 //
-| H0Ecas0
+| H0Ecase
   (knd0, h0e1, hcls) =>
   fprint!
-  ( out, "H0Ecas0("
+  ( out, "H0Ecase("
   , knd0, "; ", h0e1, "; ", hcls, ")")
 //
 | H0Elam

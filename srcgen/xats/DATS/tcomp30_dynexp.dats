@@ -1495,7 +1495,7 @@ in
 end // end of [aux_assgn]
 
 (* ****** ****** *)
-
+//
 fun
 aux_if0
 (d3e0: d3exp): h0exp =
@@ -1511,7 +1511,7 @@ h0t0 = tcomp30_type(t2p0)
 val
 hend =
 (
-  H0Eif0(h0e1, h0e2, opt3)
+  H0Eift1(h0e1, h0e2, opt3)
 ) where
 {
 val-
@@ -1525,9 +1525,40 @@ val opt3 = tcomp30_dexpopt(opt3)
 in
   h0exp_make_node(loc0, h0t0, hend)
 end // end of [aux_if0]
-
+//
+fun
+aux_if1
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Eift1(h0e1, h0e2, opt3)
+) where
+{
+val-
+D3Eif1
+( d3e1
+, d3e2
+, opt3, tinv) = d3e0.node()
+val h0e1 = tcomp30_dexp(d3e1)
+val h0e2 = tcomp30_dexp(d3e2)
+val opt3 = tcomp30_dexpopt(opt3)
+}
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_if1]
+//
 (* ****** ****** *)
-
+//
 fun
 aux_cas0
 (d3e0: d3exp): h0exp =
@@ -1543,7 +1574,7 @@ h0t0 = tcomp30_type(t2p0)
 val
 hend =
 (
-  H0Ecas0(knd0, h0e1, hcls)
+  H0Ecase(knd0, h0e1, hcls)
 ) where
 {
 val-
@@ -1557,7 +1588,38 @@ val hcls = tcomp30_dclaulst(dcls)
 in
   h0exp_make_node(loc0, h0t0, hend)
 end // end of [aux_cas0]
-
+//
+fun
+aux_cas1
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = tcomp30_type(t2p0)
+//
+val
+hend =
+(
+  H0Ecase(knd0, h0e1, hcls)
+) where
+{
+val-
+D3Ecas1
+( knd0
+, d3e1
+, dcls, tinv) = d3e0.node()
+val h0e1 = tcomp30_dexp(d3e1)
+val hcls = tcomp30_dclaulst(dcls)
+}
+//
+in
+  h0exp_make_node(loc0, h0t0, hend)
+end // end of [aux_cas1]
+//
 (* ****** ****** *)
 
 fun
@@ -2028,8 +2090,10 @@ D3Etuple _ => aux_tuple(d3e0)
 D3Eassgn _ => aux_assgn(d3e0)
 //
 | D3Eif0 _ => aux_if0(d3e0)
+| D3Eif1 _ => aux_if1(d3e0)
 //
 | D3Ecas0 _ => aux_cas0(d3e0)
+| D3Ecas1 _ => aux_cas1(d3e0)
 //
 | D3Elam _ => aux_lam(d3e0)
 | D3Efix _ => aux_fix(d3e0)
