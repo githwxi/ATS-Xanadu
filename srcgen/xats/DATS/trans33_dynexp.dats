@@ -747,6 +747,7 @@ d33exp_lam_up
   d23exp_lam_up
   (loc0, knd0, f3as, res0, arrw, body)
 )
+//
 fun
 d33exp_fix_up
 ( loc0
@@ -1638,7 +1639,7 @@ d33exp_if1_up
 end (* end of [aux_if1] *)
 //
 (* ****** ****** *)
-
+//
 fun
 aux_cas0
 ( env0:
@@ -1661,7 +1662,32 @@ in
 d33exp_make_node
 (loc0, tres, D3Ecas0(knd0, d3e1, dcls))
 end (* end of [aux_cas0] *)
-
+//
+fun
+aux_cas1
+( env0:
+! abstenv
+, d3e0: d3exp): d3exp = let
+//
+val
+loc0 = d3e0.loc()
+val-
+D3Ecas1
+( knd0
+, d3e1
+, dcls, tinv) = d3e0.node()
+//
+val tres = t2ype_new(loc0)
+val d3e1 = trans33_dexp(env0, d3e1)
+val dcls =
+trans33_dclaulst_dntp(env0, dcls, tres)
+//
+in
+d33exp_make_node
+( loc0
+, tres, D3Ecas1(knd0, d3e1, dcls, tinv))
+end (* end of [aux_cas1] *)
+//
 (* ****** ****** *)
 
 fun
@@ -2213,8 +2239,10 @@ D3Ewhere _ => aux_where(env0, d3e0)
 D3Eassgn _ => aux_assgn(env0, d3e0)
 //
 | D3Eif0 _ => aux_if0(env0, d3e0)
+| D3Eif1 _ => aux_if1(env0, d3e0)
 //
 | D3Ecas0 _ => aux_cas0(env0, d3e0)
+| D3Ecas1 _ => aux_cas1(env0, d3e0)
 //
 | D3Elam _ => aux_lam(env0, d3e0)
 | D3Efix _ => aux_fix(env0, d3e0)
