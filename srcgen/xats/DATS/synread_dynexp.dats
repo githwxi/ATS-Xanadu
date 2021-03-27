@@ -338,7 +338,8 @@ d0e0.node() of
 //
 | D0Eif0
   ( tbeg(*IF*)
-  , d0e1, d0e2, d0e3) =>
+  , d0e1
+  , d0e2, d0e3) =>
   {
 (*
     val () =
@@ -350,11 +351,31 @@ d0e0.node() of
     synread_d0exp_THEN(d0e2)
     val () =
     synread_d0exp_ELSE(d0e3)
-  }
+  } (* D0Eif0 *)
+| D0Eif1
+  ( tbeg(*IF*)
+  , d0e1
+  , d0e2, d0e3, tinv) =>
+  {
+(*
+    val () =
+    synread_IF(tbeg)
+*)
+    val () =
+    synread_d0exp(d0e1)
+    val () =
+    synread_d0exp_THEN(d0e2)
+    val () =
+    synread_d0exp_ELSE(d0e3)
+//
+    val () = synread_st0inv(tinv)
+//
+  } (* D0Eif1 *)
 //
 | D0Ecas0
-  ( tbeg, d0e1
-  , tmid, tbar, dcls) =>
+  ( tbeg
+  , d0e1, tmid
+  , tbar, dcls) =>
   {
 (*
     val () =
@@ -364,9 +385,31 @@ d0e0.node() of
     synread_d0exp(d0e1)
 //
     val () = synread_OF(tmid)
+    val () =
+      synread_d0claulst(dcls)
+    // end of [val]
 //
-    val () = synread_d0claulst(dcls)
-  }
+  } (* D0Ecas0 *)
+| D0Ecas1
+  ( tbeg
+  , d0e1, tmid
+  , tbar, dcls, tinv) =>
+  {
+(*
+    val () =
+    synread_CASE(tbeg)
+*)
+    val () =
+    synread_d0exp(d0e1)
+//
+    val () = synread_OF(tmid)
+    val () =
+      synread_d0claulst(dcls)
+    // end of [val]
+//
+    val () = synread_st0inv(tinv)
+//
+  } (* D0Ecas1 *)
 //
 | D0Elet
   ( tbeg, d0cs
@@ -1647,7 +1690,7 @@ list_foreach$fwork<d0arg><env>
 case+
 d0a.node() of
 |
-D0ARGnone(tok0) => ()
+D0ARGnone(tok) => ()
 |
 D0ARGsome_sta
 (tbeg, s0qs, tend) =>
@@ -1672,6 +1715,99 @@ val () = synread_a0typlstopt(opt2)
 }
 )
 } (* end of [synread_d0arglst] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_d0typlst
+  (d0ts) =
+(
+list_foreach<d0typ>(d0ts)
+) where
+{
+implement
+(env)//tmp
+list_foreach$fwork<d0typ><env>
+  (d0t, env) =
+(
+case+
+d0t.node() of
+|
+D0TYPnone(tok) => ()
+|
+D0TYPsome(id0, opt) =>
+{
+  val () = synread_d0pid(id0)
+  val () = synread_s0expopt(opt)
+}
+)
+} (*where*) // synread_d0typlst]
+//
+implement
+//{}(*tmp*)
+synread_st0qua
+  (st0q) =
+(
+case+ st0q of
+|
+ST0QUAnone(tok) => ()
+|
+ST0QUAsome
+(tbeg, s0qs, tend) =>
+{
+(*
+val () =
+synread_LBRACE(tbeg)
+*)
+val () =
+synread_s0qualst(s0qs)
+val () = synread_RBRACE(tend)
+}
+)
+//
+implement
+//{}(*tmp*)
+synread_st0inv
+  (tinv) =
+(
+case+ tinv of
+|
+ST0INVnone
+( stqs, tok ) =>
+(
+auxstqs( stqs )
+)
+|
+ST0INVsome
+( stqs
+, tbeg, d0ts, tend) =>
+{
+val () =
+auxstqs( stqs )
+(*
+val () =
+synread_LPAREN(tbeg)
+*)
+val () =
+synread_d0typlst(d0ts)
+val () = synread_RPAREN(tbeg)
+}
+) where
+{
+fun
+auxstqs
+( xs
+: st0qualst): void =
+(
+case+ xs of
+|
+list_nil() => ()
+|
+list_cons(x1, xs) =>
+(synread_st0qua(x1); auxstqs(xs))
+)
+} (*where*) // [synread_st0inv]
 //
 (* ****** ****** *)
 //
