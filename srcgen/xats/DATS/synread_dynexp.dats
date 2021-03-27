@@ -1791,7 +1791,7 @@ synread_LPAREN(tbeg)
 *)
 val () =
 synread_d0typlst(d0ts)
-val () = synread_RPAREN(tbeg)
+val () = synread_RPAREN(tend)
 }
 ) where
 {
