@@ -651,8 +651,14 @@ H0Etimp of
 //
 |
 H0Eift1 of
-( h0exp
+( h0exp // single if-then-else
 , h0exp(*then*), h0expopt(*else*))
+(*
+//
+// HX-2021-03-27:
+H0Eifts of // multiple if-then-else
+(h0gexplst(*then*), h0expopt(*else*))
+*)
 |
 H0Ecase of
 ( int(*knd*)
