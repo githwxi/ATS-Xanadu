@@ -69,8 +69,10 @@ UN = "prelude/SATS/unsafe.sats"
 
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
-#staload "./../SATS/dynexp4.sats"
 
+(* ****** ****** *)
+#staload "./../SATS/cstrnt0.sats"
+#staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/trans01.sats"
@@ -505,49 +507,54 @@ end // list_map$fopr
 
 implement
 trans34_dpat_dntp
-(env0, d3p0, s2e0) =
+(env0, d3p1, s2e2) =
 let
 (*
 val () =
 println!
-("trans34_dpat_dntp: d3p0 = ", d3p0)
+("trans34_dpat_dntp: d3p1 = ", d3p1)
 val () =
 println!
-("trans34_dpat_dntp: s2e0 = ", s2e0)
+("trans34_dpat_dntp: s2e2 = ", s2e2)
 *)
 in(*in-of-let*)
 //
 case+
-d3p0.node() of
+d3p1.node() of
 //
 |
-D3Pvar(d2v0) =>
+D3Pvar(d2v1) =>
 let
 val
-loc0 = d3p0.loc()
+loc0 = d3p1.loc()
 val
-t2p0 = d3p0.type()
+t2p0 = d3p1.type()
 val () =
-d2var_set_sexp(d2v0, s2e0)
+d2var_set_sexp(d2v1, s2e2)
 in
 d4pat_make_node
-(loc0, s2e0, t2p0, D4Pvar(d2v0))
+(loc0, s2e2, t2p0, D4Pvar(d2v1))
 end (*let*) // end of [D3Pvar]
 //
 |
 _ (*rest-of-d3pat*) =>
 let
 val
-loc0 = d3p0.loc()
+loc0 = d3p1.loc()
 val
-t2p0 = d3p0.type()
+d4p1 = 
+trans34_dpat(env0, d3p1)
 val
-d4p0 = 
-trans34_dpat
-(env0, d3p0) in
+t2p1 = d4p1.type((*void*))
+val
+s2e1 = d4p1.sexp((*void*))
+val
+cstr =
+c0str_make_tcast(loc0, s2e1, s2e2)
+in
 d4pat_make_node
 ( loc0
-, s2e0, t2p0, D4Ptcast(d4p0, s2e0))
+, s2e2, t2p1, D4Ptcast(d4p1, cstr))
 end // end of [rest-of-d3pat]
 //
 end (* end of [trans34_dpat_dntp] *)

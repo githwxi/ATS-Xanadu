@@ -76,19 +76,39 @@ case x0 of
 (* ****** ****** *)
 //
 implement
+c0str_get_store(x0) =
+(
+case x0 of
+| C0STR(_, _, store) => !store)
+//
+(* ****** ****** *)
+//
+implement
 c0str_make_node
 (loc0, node) =
 C0STR
 (loc0, node, store) where
 {
-  val
-  store = ref(None{c0strlst}())
+val
+store = ref(None{c0strlst}(*void*))
 } (*$rec*) // end of [c0str_make_node]
 //
 (* ****** ****** *)
 
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+c0str_make_tcast
+( loc0
+, s2e1(*src*)
+, s2e2(*dst*)) =
+(
+  c0str_make_node
+  (loc0, C0Stlte(s2e1, s2e2))
+)
+//
 (* ****** ****** *)
 
 (* end of [xats_cstrnt0.dats] *)
