@@ -193,6 +193,10 @@ fun
 d4pat_none1(d3p0: d3pat): d4pat
 //
 (* ****** ****** *)
+fun
+d4pat_tcast
+(d4p1: d4pat, s2e2: s2exp): d4pat
+(* ****** ****** *)
 //
 fun
 d4pat_make_node
