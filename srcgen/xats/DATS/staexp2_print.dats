@@ -82,6 +82,8 @@ fprint_val<sort1> = fprint_sort1
 implement
 fprint_val<sort2> = fprint_sort2
 
+(* ****** ****** *)
+
 implement
 fprint_val<s2cst> = fprint_s2cst
 
@@ -97,20 +99,46 @@ implement
 fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
-
+//
 implement
 fprint_val<s2exp> = fprint_s2exp
+//
+(* ****** ****** *)
+//
+implement
+fprint_val<s2itm> = fprint_s2itm
+//
+(* ****** ****** *)
+//
 (*
 implement
 fprint_val<s2eff> = fprint_s2eff
 *)
 implement
 fprint_val<labs2exp> = fprint_labs2exp
-
+//
 (* ****** ****** *)
 
 implement
-fprint_val<s2itm> = fprint_s2itm
+print_kxtv2(x0) =
+fprint_kxtv2(stdout_ref, x0) 
+implement
+prerr_kxtv2(x0) =
+fprint_kxtv2(stderr_ref, x0) 
+
+implement
+fprint_kxtv2(out, x0) =
+(
+case+ x0 of
+|
+KXTV2non() => fprint!(out, "KXTV2non")
+|
+KXTV2tmp() => fprint!(out, "KXTV2tmp")
+|
+KXTV2uni() => fprint!(out, "KXTV2uni")
+|
+KXTV2join() => fprint!(out, "KXTV2join")
+) (* end of [fprint_kxtv2] *)
 
 (* ****** ****** *)
 
@@ -123,8 +151,10 @@ fprint_sort2(stderr_ref, x0)
 
 local
 
+(*
 implement
 fprint_val<sort2> = fprint_sort2
+*)
 
 in (* in-of-local *)
 

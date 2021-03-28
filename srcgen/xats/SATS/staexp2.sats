@@ -548,6 +548,19 @@ datatype kxtv2 =
 //
 (* ****** ****** *)
 //
+fun
+print_kxtv2: print_type(kxtv2)
+fun
+prerr_kxtv2: print_type(kxtv2)
+fun
+fprint_kxtv2: fprint_type(kxtv2)
+//
+overload print with print_kxtv2
+overload prerr with prerr_kxtv2
+overload fprint with fprint_kxtv2
+//
+(* ****** ****** *)
+//
 (*
 fun
 s2xtv_get_loc(s2xtv): loc_t
@@ -688,11 +701,11 @@ tyrec =
 | TYRECbox0 (* box *) // nonlin
 | TYRECbox1 (* box *) // linear
 //
-| TYRECflt0 (* flat *)
+| TYRECflt0 (* flat: non/lin *)
 (*
 | TYRECflt1 of stamp (* flat *)
 *)
-| TYRECflt2 of string  (* flat *)
+| TYRECflt2 of string (* flat *)
 // end of [tyrec]
 
 typedef
