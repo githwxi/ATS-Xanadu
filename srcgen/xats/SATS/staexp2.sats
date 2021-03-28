@@ -525,6 +525,11 @@ overload fprint with fprint_s2arg
 *)
 (* ****** ****** *)
 //
+abstbox s2xtv_tbox = ptr
+typedef s2xtv = s2xtv_tbox
+//
+(* ****** ****** *)
+//
 abstbox s2exp_tbox = ptr
 abstbox s2hnf_tbox = ptr
 abstbox t2ype_tbox = ptr
@@ -534,10 +539,13 @@ typedef s2hnf = s2hnf_tbox
 typedef t2ype = t2ype_tbox
 //
 (* ****** ****** *)
-
-abstbox s2xtv_tbox = ptr
-typedef s2xtv = s2xtv_tbox
-
+//
+datatype kxtv2 =
+| KXTV2non of ()
+| KXTV2tmp of () // for temp args
+| KXTV2uni of () // for poly args
+| KXTV2join of () // for if/case-exps
+//
 (* ****** ****** *)
 //
 (*
@@ -546,6 +554,8 @@ s2xtv_get_loc(s2xtv): loc_t
 *)
 fun
 s2xtv_get_loc(s2xtv): loc_t
+fun
+s2xtv_get_kind(s2xtv): kxtv2
 fun
 s2xtv_get_sort(s2xtv): sort2
 //

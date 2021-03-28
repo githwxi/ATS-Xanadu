@@ -434,6 +434,8 @@ s2xtv_struct =
 @{
   s2xtv_loc= loc_t
 ,
+  s2xtv_kind= kxtv2
+,
   s2xtv_sort= sort2
 ,
   s2xtv_sexp= s2exp
@@ -454,6 +456,8 @@ ref<s2xtv_struct>
 @{
   s2xtv_loc= loc0
 ,
+  s2xtv_kind= knd0
+,
   s2xtv_sort= s2t0
 ,
   s2xtv_sexp= s2e0
@@ -462,6 +466,7 @@ ref<s2xtv_struct>
 }
 ) where
 {
+val knd0 = KXTV2non()
 val s2e0 = the_s2exp_none0
 val stamp = s2xtv_stamp_new()
 } (* end of [s2xtv_new] *)
@@ -471,6 +476,10 @@ val stamp = s2xtv_stamp_new()
 implement
 s2xtv_get_loc
   (xtv0) = xtv0->s2xtv_loc
+//
+implement
+s2xtv_get_kind
+  (xtv0) = xtv0->s2xtv_kind
 //
 implement
 s2xtv_get_sort
