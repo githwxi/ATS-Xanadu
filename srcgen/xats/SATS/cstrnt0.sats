@@ -66,9 +66,11 @@ c0str_node =
 (* ****** ****** *)
 //
 fun
-c0str_get_loc(c0str): loc_t
+c0str_get_loc
+( c0s: c0str ): loc_t
 fun
-c0str_get_node(c0str): c0str_node
+c0str_get_node
+( c0s: c0str ): c0str_node
 //
 overload .loc with c0str_get_loc
 overload .node with c0str_get_node
@@ -85,8 +87,19 @@ overload prerr with prerr_c0str
 overload fprint with fprint_c0str
 //
 fun
+c0str_get_store
+( c0s: c0str ): c0strlstopt
+fun
 c0str_make_node
-(loc: loc_t, node: c0str_node): c0str
+( loc0
+: loc_t, node: c0str_node): c0str
+//
+(* ****** ****** *)
+//
+fun
+c0str_make_tcast
+( loc0: loc_t
+, s2e1: s2exp, s2e2: s2exp): c0str
 //
 (* ****** ****** *)
 

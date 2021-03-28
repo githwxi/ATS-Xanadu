@@ -5,6 +5,24 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+fun
+fact
+{x:int}(x) =
+if
+(x > 0)
+then x*fact(x-1) else x
+withtype {n:nat} (int(n)) -> int
+(*
+#extern
+fun
+fact{n:int}(x: int(n)): int
+implement
+fact{n}(x) =
+if x > 0 then x*fact(x-1) else x
+*)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 val x = 0
 val y = 1
 val z = ""
@@ -58,24 +76,6 @@ fact(x: int) =
 if
 (x > 0)
 then x * fact(x-1) else 1
-(* ****** ****** *)
-////
-(* ****** ****** *)
-fun
-fact
-{x:int}(x) =
-if
-(x > 0)
-then x*fact(x-1) else x
-withtype {n:nat} (int(n)) -> int
-(*
-#extern
-fun
-fact{n:int}(x: int(n)): int
-implement
-fact{n}(x) =
-if x > 0 then x*fact(x-1) else x
-*)
 (* ****** ****** *)
 ////
 (* ****** ****** *)

@@ -36,11 +36,15 @@
 #staload "./xbasics.sats"
 
 (* ****** ****** *)
-
 #staload "./staexp2.sats"
 #staload "./statyp2.sats"
 #staload "./dynexp2.sats"
 #staload "./dynexp3.sats"
+(* ****** ****** *)
+#staload C0S = "./cstrnt0.sats"
+(* ****** ****** *)
+
+typedef c0str = $C0S.c0str
 
 (* ****** ****** *)
 //
@@ -144,7 +148,7 @@ d4pat_node =
   (d4pat, s2exp) // no s2xtv in anno
 //
 | D4Ptcast of
-  (d4pat, s2exp) // HX: error indication?
+  (d4pat, c0str) // cstrnt generation
 //
 | D4Pnone0 of ()
 | D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)
@@ -353,7 +357,7 @@ for the meaning of knd
   (d4exp, s2exp) // no s2xtv in anno
 //
 | D4Etcast of
-  (d4exp, s2exp(*given*)) // HX: error indication?
+  (d4exp, c0str) // cstrnt generation
 //
 | D4Enone0 of () | D4Enone1 of (d3exp)
 //
@@ -399,7 +403,7 @@ d4exp_none1(d3e0: d3exp): d4exp
 (* ****** ****** *)
 fun
 d4exp_tcast
-(d4e0: d4exp, s2e0: s2exp): d4exp
+(d4e1: d4exp, s2e2: s2exp): d4exp
 (* ****** ****** *)
 //
 fun

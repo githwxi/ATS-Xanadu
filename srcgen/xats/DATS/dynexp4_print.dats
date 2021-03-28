@@ -76,6 +76,7 @@ overload fprint with fprint_stamp
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/cstrnt0.sats"
 #staload "./../SATS/dynexp4.sats"
 //
 (* ****** ****** *)
@@ -237,10 +238,10 @@ case+ x0.node() of
   ( out
   , "D4Panno(", d4p1, "; ", s2e2, ")")
 //
-| D4Ptcast(d4p1, s2e2) =>
+| D4Ptcast(d4p1, cstr) =>
   fprint!
   ( out
-  , "D4Ptcast(", d4p1, "; ", s2e2, ")")
+  , "D4Ptcast(", d4p1, "; ", cstr, ")")
 //
 | D4Pnone1(d3psrc) =>
   fprint!( out, "D4Pnone1(", d3psrc, ")" )
@@ -436,10 +437,10 @@ case+ x0.node() of
   , "D4Eanno(", d4e1, "; ", s2e2, ")")
 //
 | D4Etcast
-  ( d4e0, s2e0 ) =>
+  ( d4e1, cstr ) =>
   fprint!
   ( out
-  , "D4Etcast(", d4e0, "; ", s2e0, ")")
+  , "D4Etcast(", d4e1, "; ", cstr, ")")
 //
 | D4Enone0() =>
   fprint!(out, "D4Enone0(", ")")
