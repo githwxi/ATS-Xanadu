@@ -160,7 +160,7 @@ in (* in-of-local *)
 
 implement
 fprint_sort2
-  (out, s2t0) =
+( out, s2t0 ) =
 (
 case+ s2t0 of
 //
@@ -226,17 +226,21 @@ end // end of [local]
 
 implement
 fprint_t2bas
-  (out, s2tb) =
+( out, s2tb ) =
 (
 case+ s2tb of
-| T2BASpre(sym) =>
-  fprint!(out, "T2BASpre(", sym, ")")
-| T2BASabs(abs) =>
-  fprint!(out, "T2BASabs(", abs, ")")
-| T2BASdat(dat) =>
-  fprint!(out, "T2BASdat(", dat, ")")
-| T2BASimp(knd, sym) =>
-  fprint!(out, "T2BASimp(", knd, "; ", sym, ")")
+|
+T2BASpre(sym) =>
+fprint!(out, "T2BASpre(", sym, ")")
+|
+T2BASabs(abs) =>
+fprint!(out, "T2BASabs(", abs, ")")
+|
+T2BASdat(dat) =>
+fprint!(out, "T2BASdat(", dat, ")")
+|
+T2BASimp(knd, sym) =>
+fprint!(out, "T2BASimp(", knd, "; ", sym, ")")
 )
 
 (* ****** ****** *)
@@ -296,9 +300,11 @@ fprint!(out, x0.sym())
 val () =
 fprint!
 (out, "(", x0.stamp(), ")")
+//
 (*
 val () =
-fprint!(out, ": ", x0.sort())
+fprint!
+( out, "(", x0.sort(), ")" )
 *)
 //
 } (* end of [fprint_s2cst] *)
@@ -320,16 +326,18 @@ fprint_s2var
 val () =
 fprint!(out, x0.sym())
 val () =
-fprint!(out, "(", x0.stamp(), ")")
+fprint!
+(out, "(", x0.stamp(), ")")
 (*
 val () =
-fprint!(out, ":(", x0.sort(), ")")
+fprint!
+( out, "(", x0.sort(), ")" )
 *)
 //
 } (* end of [fprint_s2var] *)
 //
 (* ****** ****** *)
-
+//
 (*
 implement
 print_s2eff(x0) =
@@ -338,12 +346,13 @@ implement
 prerr_s2eff(x0) =
 fprint_s2eff(stderr_ref, x0) 
 *)
+//
 (*
 local
-
+//
 implement
 fprint_val<s2eff> = fprint_s2eff
-
+//
 in (* in-of-local *)
 //
 implement
@@ -365,7 +374,7 @@ case+ s2f0 of
 //
 end // end of [local]
 *)
-
+//
 (* ****** ****** *)
 //
 implement
@@ -385,15 +394,19 @@ fprint_abstdf2
   (out, x0) =
 (
 case+ x0 of
-| ABSTDF2none() =>
-  fprint!(out, "ABSTDF2none(", ")")
-| ABSTDF2some() =>
-  fprint!(out, "ABSTDF2some(", ")")
-| ABSTDF2lteq(t2p) =>
-  fprint!(out, "ABSTDF2lteq(", t2p, ")")
-| ABSTDF2eqeq(s2e, t2p) =>
-  fprint!
-  (out, "ABSTDF2eqeq(", s2e, "; ", t2p, ")")
+|
+ABSTDF2none() =>
+fprint!(out, "ABSTDF2none(", ")")
+|
+ABSTDF2some() =>
+fprint!(out, "ABSTDF2some(", ")")
+|
+ABSTDF2lteq(t2p) =>
+fprint!(out, "ABSTDF2lteq(", t2p, ")")
+|
+ABSTDF2eqeq(s2e, t2p) =>
+fprint!
+(out, "ABSTDF2eqeq(", s2e, "; ", t2p, ")")
 )
 //
 (* ****** ****** *)
@@ -415,14 +428,17 @@ fprint_effs2expopt
   (out, x0) =
 (
 case+ x0 of
-| EFFS2EXPnone() =>
-  fprint!(out, "EFFS2EXPnone(", ")")
-| EFFS2EXPsome(s2e) =>
-  fprint!(out, "EFFS2EXPsome(", s2e, ")")
+|
+EFFS2EXPnone() =>
+fprint!(out, "EFFS2EXPnone(", ")")
+|
+EFFS2EXPsome(s2e) =>
+fprint!(out, "EFFS2EXPsome(", s2e, ")")
 (*
-| EFFS2EXPsome(s2f, s2e) =>
-  fprint!
-  (out, "EFFS2EXPsome(", s2f, "; ", s2e, ")")
+|
+EFFS2EXPsome(s2f, s2e) =>
+fprint!
+(out, "EFFS2EXPsome(", s2f, "; ", s2e, ")")
 *)
 ) (* end of [fprint_effs2expopt] *)
 
@@ -447,13 +463,16 @@ fprint_s2txt
   (out, s2tx) =
 (
 case+ s2tx of
-| S2TXTsrt(s2t) =>
-  fprint!(out, "S2TXTsrt(", s2t, ")")
-| S2TXTsub(s2v, s2ps) =>
-  fprint!(out, "S2TXTsub(", s2v, "; ", s2ps, ")")
+|
+S2TXTsrt(s2t) =>
+fprint!(out, "S2TXTsrt(", s2t, ")")
+|
+S2TXTsub(s2v, s2ps) =>
+fprint!(out, "S2TXTsub(", s2v, "; ", s2ps, ")")
 //
 (*
-| S2TXTerr(loc0) => fprint!(out, "S2TXTerr(...)")
+|
+S2TXTerr(loc0) => fprint!(out, "S2TXTerr(...)")
 *)
 //
 ) (* end of [fprint_s2txt] *)
