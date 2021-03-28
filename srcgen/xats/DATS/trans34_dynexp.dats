@@ -528,12 +528,12 @@ let
 val
 loc0 = d3p1.loc()
 val
-t2p0 = d3p1.type()
+t2p1 = d3p1.type()
 val () =
 d2var_set_sexp(d2v1, s2e2)
 in
 d4pat_make_node
-(loc0, s2e2, t2p0, D4Pvar(d2v1))
+(loc0, s2e2, t2p1, D4Pvar(d2v1))
 end (*let*) // end of [D3Pvar]
 //
 |
@@ -543,21 +543,11 @@ val
 loc0 = d3p1.loc()
 val
 d4p1 = 
-trans34_dpat(env0, d3p1)
-val
-t2p1 = d4p1.type((*void*))
-val
-s2e1 = d4p1.sexp((*void*))
-val
-cstr =
-c0str_make_tcast(loc0, s2e1, s2e2)
-in
-d4pat_make_node
-( loc0
-, s2e2, t2p1, D4Ptcast(d4p1, cstr))
+trans34_dpat
+(env0, d3p1) in d4pat_tcast(d4p1, s2e2)
 end // end of [rest-of-d3pat]
 //
-end (* end of [trans34_dpat_dntp] *)
+end (*let*) // end of [trans34_dpat_dntp]
 
 (* ****** ****** *)
 
@@ -1522,26 +1512,26 @@ end // list_map$fopr
 implement
 trans34_dexp_dntp
 ( env0
-, d3e0, s2e0) = let
+, d3e1, s2e2) = let
 //
 val () =
 println!
-("trans34_dexp_dntp: d3e0 = ", d3e0)
+("trans34_dexp_dntp: d3e1 = ", d3e1)
 val () =
 println!
-("trans34_dexp_dntp: s2e0 = ", s2e0)
+("trans34_dexp_dntp: s2e2 = ", s2e2)
 //
 in
 //
 case+
-d3e0.node() of
+d3e1.node() of
 |
 _ (* else-of-d3exp *) =>
 let
 val
-d4e0 =
+d4e1 =
 trans34_dexp
-(env0, d3e0) in d4exp_tcast(d4e0, s2e0)
+(env0, d3e1) in d4exp_tcast(d4e1, s2e2)
 end // end of [else-of-d3exp]
 //
 end (*let*) // end of [trans34_dexp_dntp]
