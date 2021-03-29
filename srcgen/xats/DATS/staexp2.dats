@@ -924,6 +924,16 @@ end // end of [else]
 end // end of [s2exp_uni]
 
 (* ****** ****** *)
+//
+implement
+s2exp_type_void() =
+let
+val
+s2cr =
+the_void_ctype in
+s2cstref_get_sexp(s2cr) end
+//
+(* ****** ****** *)
 
 implement
 s2exp_type_sint
@@ -984,6 +994,8 @@ in
   s2exp_make_node(s2t0, node)
 end // end of [s2exp_type_bool]
 
+(* ****** ****** *)
+
 implement
 s2exp_type_char
   (s2i1) = let
@@ -1002,6 +1014,27 @@ S2Eapp(s2f0, list_sing(s2i1))
 in
   s2exp_make_node(s2t0, node)
 end // end of [s2exp_type_char]
+
+(* ****** ****** *)
+
+implement
+s2exp_type_strlen
+  (s2i1) = let
+//
+val
+s2t0 =
+the_sort2_type
+//
+val
+s2f0 =
+s2cstref_get_sexp
+( the_string_ctype )
+val node =
+S2Eapp(s2f0, list_sing(s2i1))
+//
+in
+  s2exp_make_node(s2t0, node)
+end // end of [s2exp_type_strlen]
 
 (* ****** ****** *)
 

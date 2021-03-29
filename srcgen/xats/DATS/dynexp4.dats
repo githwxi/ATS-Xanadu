@@ -127,7 +127,12 @@ d4pat_tcast
 ( d4p1, s2e2 ) =
 d4pat_make_node
 ( loc1
-, s2e2, t2p1, node) where
+(*
+HX-2021-03-28:
+[s2e1] should not
+be changed to [s2e2]!
+*)
+, s2e1, t2p1, node) where
 {
 //
   val loc1 = d4p1.loc()

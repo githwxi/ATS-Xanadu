@@ -133,6 +133,32 @@ local
 (* ****** ****** *)
 
 fun
+auxvar
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pvar(d2v1) = d3p0.node()
+//
+val
+t2p1 = d2v1.type()
+val
+s2e1 = s2exp_t2ype(t2p1)
+val () =
+d2var_set_sexp(d2v1, s2e1)
+in
+d4pat_make_node
+(loc0, s2e1, t2p0, D4Pvar(d2v1))
+end (*let*) // end of [auxvar]
+
+(* ****** ****** *)
+
+fun
 auxi00
 (d3p0: d3pat): d4pat =
 let
@@ -179,6 +205,36 @@ in
 d4pat_make_node
 (loc0, s2e0, t2p0, D4Pb00(btf))
 end (*let*) // end of [auxb00]
+
+(* ****** ****** *)
+
+fun
+auxs00
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Ps00(str) = d3p0.node()
+//
+val
+s2i0 =
+let
+val len =
+string_length(str)
+in s2exp_int(sz2i(len)) end
+//
+val
+s2e0 = s2exp_type_strlen(s2i0)
+//
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Ps00(str))
+end (*let*) // end of [auxs00]
 
 (* ****** ****** *)
 
@@ -435,10 +491,22 @@ in (*in-of-let*)
 case+
 d3p0.node() of
 //
+(*
 |
-D3Pi00 _ => auxint(d3p0)
+D3Pnil _ => auxnil(d3p0)
 |
-D3Pb00 _ => auxbtf(d3p0)
+D3Pany _ => auxany(d3p0)
+*)
+//
+|
+D3Pvar _ => auxvar(d3p0)
+//
+|
+D3Pi00 _ => auxi00(d3p0)
+|
+D3Pb00 _ => auxb00(d3p0)
+|
+D3Ps00 _ => auxs00(d3p0)
 //
 |
 D3Pint _ => auxint(d3p0)
