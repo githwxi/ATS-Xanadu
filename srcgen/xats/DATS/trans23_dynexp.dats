@@ -2374,7 +2374,7 @@ end // end of [trans23_dgpat_dntp]
 //
 implement
 trans23_dclaulst_dntp
-(d2cls, targ, tres) =
+( d2cls, targ, tres ) =
 list_vt2t
 (
   list_map<d2clau><d3clau>(d2cls)

@@ -2329,9 +2329,9 @@ end (* trans33_dexp *) end // end of [local]
 //
 implement
 trans33_dexp_dntp
-(env0, d3e0, t2p1) =
+(env0, d3e0, t2p0) =
 (
-d33exp_dntp(env0, d3e0, t2p1)
+d33exp_dntp(env0, d3e0, t2p0)
 ) where
 {
 val
@@ -2342,7 +2342,7 @@ println!
 ("trans33_dexp_dntp: d3e0 = ", d3e0)
 val () =
 println!
-("trans33_dexp_dntp: t2p1 = ", t2p1)
+("trans33_dexp_dntp: t2p0 = ", t2p0)
 *)
 }
 //
