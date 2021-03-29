@@ -1066,14 +1066,21 @@ fun s2exp_list0(s2exp): s2exp
 *)
 //
 fun
+s2exp_type_void(): s2exp
+//
+fun
 s2exp_type_sint(idx: s2exp): s2exp
 fun
 s2exp_type_uint(idx: s2exp): s2exp
 //
 fun
 s2exp_type_bool(idx: s2exp): s2exp
+//
 fun
 s2exp_type_char(idx: s2exp): s2exp
+//
+fun
+s2exp_type_strlen(len: s2exp): s2exp
 //
 (* ****** ****** *)
 //

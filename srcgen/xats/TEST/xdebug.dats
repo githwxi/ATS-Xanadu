@@ -6,6 +6,14 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 fun
+fact(x) =
+if
+x > 0
+then x * fact(x-1) else 1
+(* ****** ****** *)
+////
+(* ****** ****** *)
+fun
 fact
 {x:int}(x) =
 if
