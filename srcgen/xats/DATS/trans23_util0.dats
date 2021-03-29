@@ -995,25 +995,25 @@ end
 
 implement
 d3pat_dntp
-(d3p0, t2p1) = let
+(d3p1, t2p2) = let
 //
-val loc0 = d3p0.loc()
-val t2p0 = d3p0.type()
+val loc0 = d3p1.loc()
+val t2p1 = d3p1.type()
 //
 (*
 val () =
 println!
-("d3pat_dntp: d3p0 = ", d3p0)
-val () =
-println!
-("d3pat_dntp: t2p0 = ", t2p0)
+("d3pat_dntp: d3p1 = ", d3p1)
 val () =
 println!
 ("d3pat_dntp: t2p1 = ", t2p1)
+val () =
+println!
+("d3pat_dntp: t2p2 = ", t2p2)
 *)
 //
 val
-test = unify2(loc0, t2p0, t2p1)
+test = unify2(loc0, t2p1, t2p2)
 //
 (*
 val () =
@@ -1024,7 +1024,8 @@ in
 //
 if
 test
-then d3p0 else d3pat_tcast(d3p0, t2p1)
+then
+d3p1 else d3pat_tcast(d3p1, t2p2)
 //
 end // end of [d3pat_dntp]
 

@@ -133,6 +133,28 @@ local
 (* ****** ****** *)
 
 fun
+auxany
+(d3p0: d3pat): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pany() = d3p0.node()
+//
+val
+s2e0 = s2exp_t2ype(t2p0)
+in
+d4pat_make_node
+(loc0, s2e0, t2p0, D4Pany())
+end (*let*) // end of [auxany]
+
+(* ****** ****** *)
+
+fun
 auxvar
 (d3p0: d3pat): d4pat =
 let
@@ -494,10 +516,10 @@ d3p0.node() of
 (*
 |
 D3Pnil _ => auxnil(d3p0)
-|
-D3Pany _ => auxany(d3p0)
 *)
 //
+|
+D3Pany _ => auxany(d3p0)
 |
 D3Pvar _ => auxvar(d3p0)
 //
@@ -528,7 +550,21 @@ D3Pdapp _ => auxdapp(env0, d3p0)
 //
 |
 D3Panno(d3p1, s2e2) =>
+(
+d4pat_make_node
+( loc0
+, s2e2
+, t2p1, D4Panno(d4p1, s2e2))
+) where
+{
+//
+val loc0 = d3p0.loc()
+val t2p1 = d3p1.type()
+//
+val d4p1 =
 trans34_dpat_dntp(env0, d3p1, s2e2)
+//
+} (* end of [D3Panno] *)
 //
 |
 _ (*rest-of-d3pat*) => d4pat_none1(d3p0)
