@@ -458,15 +458,24 @@ d3p0.node() of
 | D3Ptuple _ =>
   aux_tuple(env0, d3p0)
 //
-| D3Panno(_, _) => d3p0
+|
+D3Panno(d3p1, s2e2) =>
+(
+d3pat_anno(d3p1, s2e2)
+) where
+{
+val
+d3p1 = 
+trans33_dpat(env0, d3p1)
+} (* D3Panno *)
 //
 |
 D3Ptcast(d3p1, t2p2) =>
 let
-  val
-  d3p1 = // HX: abstype-handling!
-  trans33_dpat(env0, d3p1) in d3p1
-end where
+val
+d3p1 = // HX: abstype-handling!
+trans33_dpat
+(env0, d3p1) in d3p1 end where
 {
 val
 loc1 = d3p1.loc()
