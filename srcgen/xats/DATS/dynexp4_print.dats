@@ -410,6 +410,13 @@ case+ x0.node() of
   , "D4Esapx("
   , d4f0, "; ", s2es, "; ", s2ps, ")")
 //
+| D4Esopn
+  (d4e1, s2vs, s2ps) =>
+  fprint!
+  ( out
+  , "D4Esopn("
+  , d4e1, "; ", s2vs, "; ", s2ps, ")")
+//
 | D4Edapp
   ( d4f0
   , npf1, d4es) =>

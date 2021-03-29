@@ -331,22 +331,19 @@ for the meaning of knd
   , d4ecl(*impl*), t2ypelst(*tsub*)
   ) (* end of [D4timp] *)
 //
-(*
-| D4Eexist1 of
-  (s2explst, d4exp)
-| D4Eopenas of
-  (s2varlst, s2explst, d4exp)
-*)
-//
 | D4Esap0 of (d4exp, s2explst)
 | D4Esap1 of (d4exp, s2explst)
 //
 | D4Esapx of
   ( d4exp
-  , s2explst, s2explst(*gua*))
+  , s2explst, s2explst(*prop*))
 (*
 | D4Esmet of (d4exp, s2explst)
 *)
+//
+| D4Esopn of
+  ( d4exp
+  , s2varlst, s2explst(*prop*))
 //
 | D4Edapp of
   (d4exp, int(*npf*), d4explst)
@@ -354,11 +351,17 @@ for the meaning of knd
 | D4Eif0 of
   ( d4exp
   , d4exp(*then*), d4expopt(*else*))
+//
 | D4Ecas0 of
   (int(*knd*), d4exp(*val*), d4claulst)
 //
 | D4Eanno of
   (d4exp, s2exp) // no s2xtv in anno
+//
+(*
+| D4Eexist1 of
+  (s2explst(*wits*), d4exp(*packed*))
+*)
 //
 | D4Etcast of
   (d4exp, c0str) // cstrnt generation
