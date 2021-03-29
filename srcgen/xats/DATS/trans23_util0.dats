@@ -1027,7 +1027,7 @@ test
 then
 d3p1 else d3pat_tcast(d3p1, t2p2)
 //
-end // end of [d3pat_dntp]
+end (*let*) // end of [d3pat_dntp]
 
 (* ****** ****** *)
 implement
@@ -1038,7 +1038,7 @@ val npf2 = ~1
 val d3ps = list_nil()
 in
 d3pat_dapp_up(loc0, d3f0, npf2, d3ps)
-end // end of [d3pat_dap0_up]
+end (*let*) // end of [d3pat_dap0_up]
 (* ****** ****** *)
 implement
 d3pat_dap1_up
@@ -1047,7 +1047,7 @@ let
 val tres = t2ype_new(loc0)
 in
 d3pat_make_node(loc0, tres, D3Pdap1(d3f0))
-end // end of [d3pat_dap1_up]
+end (*let*) // end of [d3pat_dap1_up]
 (* ****** ****** *)
 
 implement
@@ -1076,7 +1076,7 @@ in(*in-of-let*)
 d3pat_make_node
 (loc0, tres, D3Pdapp(d3f0, npf0, d3ps))
 //
-end // end of [d3pat_dapp_up]
+end (*let*) // end of [d3pat_dapp_up]
 
 (* ****** ****** *)
 
@@ -1132,7 +1132,7 @@ val t2p0 =
 in
   d3pat_make_node
   (loc0, t2p0, D3Ptuple(knd1, npf2, d3ps))
-end (* end of [d3pat_tuple_up] *)
+end (*let*) // end of [d3pat_tuple_up]
 
 (* ****** ****** *)
 
@@ -1253,31 +1253,32 @@ end
 list_cons
 (s2e0, s2es1) =>
 (
-  case+
-  s2e0.node() of
-  |
-  S2Eany(k0) =>
-  let
-  val
-  t2p0 =
-  t2ype_new_loc_var(loc0, s2v0)
-  in
-    if
-    (k0 >= 2)
-    then
-    list_vt_cons
-    (t2p0, auxtsub(s2vs, s2es))
-    else
-    list_vt_cons
-    (t2p0, auxtsub(s2vs, s2es1))
-  end
-  |
-  _(*non-S2Eany*) =>
-  let
-    val t2p0 = s2exp_erase(s2e0)
-  in
-    list_vt_cons(t2p0, auxtsub(s2vs, s2es))
-  end
+case+
+s2e0.node() of
+|
+S2Eany(k0) =>
+let
+val
+t2p0 =
+t2ype_new_loc_var(loc0, s2v0)
+in
+  if
+  (k0 >= 2)
+  then
+  list_vt_cons
+  (t2p0, auxtsub(s2vs, s2es))
+  else
+  list_vt_cons
+  (t2p0, auxtsub(s2vs, s2es1))
+end
+|
+_(*non-S2Eany*) =>
+let
+  val t2p0 = s2exp_erase(s2e0)
+in
+  list_vt_cons
+  ( t2p0, auxtsub(s2vs, s2es) )
+end
 )
 )
 ) (* end of [auxtsub] *)
@@ -1285,8 +1286,11 @@ list_cons
 } // where // end of [auxmain]
 //
 in
-  auxmain(d3f0.type((*void*)))
-end (* end of [d23pat_sapp_up] *)
+let
+val
+t2p0 = d3f0.type() in auxmain(t2p0)
+end
+end (*let*) // end of [d23pat_sapp_up]
 
 (* ****** ****** *)
 //
@@ -1345,7 +1349,7 @@ if
 test
 then d3e0 else d3exp_tcast(d3e0, t2p1)
 //
-end // end of [d23exp_dntp]
+end (*let*) // end of [d23exp_dntp]
 
 (* ****** ****** *)
 
@@ -1579,7 +1583,8 @@ list_cons
 (
 case+ s2es of
 |
-list_nil() =>
+list_nil
+((*void*)) =>
 (*
 let
 val

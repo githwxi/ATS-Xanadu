@@ -644,7 +644,7 @@ end (*let*) // end of [D3Pvar]
 |
 D3Panno(d3p1, s2e2) =>
 (
-  d4pat_dntp(d4p1, s2e2)
+  d4pat_tcast(d4p1, s2e2)
 ) where
 {
 val
