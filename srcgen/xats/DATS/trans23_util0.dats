@@ -1302,16 +1302,16 @@ d3exp_make_node(loc0, t2p0, d3en)
 (*
 implement
 d23exp_anno
-(d3e0, t2p1) =
+(d3e0, t2p0) =
 let
 val
 loc0 = d3e0.loc()
 val
 d3e0 =
-d23exp_dntp(d3e0, t2p1)
+d23exp_dntp(d3e0, t2p0)
 in
 d23exp_make_node
-(loc0, t2p1, D3Edntp(d3e0, t2p1))
+(loc0, t2p0, D3Edntp(d3e0, t2p0))
 end // end of [d23exp_anno]
 *)
 
