@@ -368,8 +368,11 @@ val
 test =
 forall$test<a>(get_at(A0, i0))
 in
-if test then loop(succ(i0)) else false
-end else false // end of [if]
+if
+test
+then loop(succ(i0)) else false
+end // then
+else false // else // end of [if]
 //
 } (* end of [a1ref_forall] *)
 //
@@ -428,8 +431,9 @@ val
 test =
 rforall$test<a>(get_at(A0, i1))
 in
-  if test then loop(i1) else false
-end else false // end of [if]
+if test then loop(i1) else false
+end // then
+else false // else // end of [if]
 //
 } (* end of [a1ref_rforall] *)
 //
