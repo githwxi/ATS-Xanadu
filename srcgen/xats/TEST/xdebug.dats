@@ -6,7 +6,7 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 fun
-fact(x:int): int =
+fact(x:nint): nint =
 if
 x > 0
 then x * fact(x-1) else 1
