@@ -365,11 +365,11 @@ trans34_d4exp_deunis(d4e0: d4exp): d4exp
 (* ****** ****** *)
 //
 fun
-trans34_d2var_get_sexp
+tr34env_d2var_get_sexp
 ( env0:
 ! tr34env, d2v0: d2var): s2exp
 fun
-trans34_d2var_set_sexp
+tr34env_d2var_set_sexp
 ( env0:
 ! tr34env, d2v0: d2var, s2e0: s2exp): void
 //

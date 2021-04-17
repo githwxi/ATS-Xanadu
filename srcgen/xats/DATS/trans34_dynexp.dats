@@ -897,7 +897,7 @@ D3Evar(d2v0) = d3e0.node()
 //
 val
 s2e0 =
-trans34_d2var_get_sexp
+tr34env_d2var_get_sexp
 ( env0, d2v0 )
 //
 val () =
@@ -932,7 +932,7 @@ D3Evknd
 //
 val
 s2e0 =
-trans34_d2var_get_sexp
+tr34env_d2var_get_sexp
 ( env0, d2v0 )
 //
 val () =

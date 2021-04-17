@@ -310,15 +310,6 @@ end
 (* ****** ****** *)
 
 implement
-trans34_d2var_get_sexp
-( env0, d2v0 ) =
-(
-  d2v0.sexp((*void*)) // FIXME!!!
-) (* end of [trans34_d2var_get_sexp] *)
-
-(* ****** ****** *)
-
-implement
 trans34_f3undecl_set_sexp
 ( f3d0 ) =
 let

@@ -113,5 +113,57 @@ case- stk2 of ~dvarstk_nil() => ()
 } (* end of [tr34env_free_nil] *)
 //
 (* ****** ****** *)
+//
+local
+//
+fun
+dvarstk_search
+( dstk:
+! dvarstk
+, d2v0: d2var): s2exp =
+(
+case+ dstk of
+|
+dvarstk_nil() =>
+the_s2exp_none0(*void*)
+//
+|
+dvarstk_let1
+( dstk ) =>
+dvarstk_search(dstk, d2v0)
+|
+dvarstk_loc1
+( dstk ) =>
+dvarstk_search(dstk, d2v0)
+|
+dvarstk_loc2
+( dstk ) =>
+dvarstk_search(dstk, d2v0)
+//
+|
+dvarstk_cons
+(d2v1, s2e1, dstk) =>
+if
+(d2v0=d2v1)
+then s2e1
+else dvarstk_search(dstk, d2v0)
+//
+)
+//
+in(* in-of-local *)
+//
+implement
+tr34env_d2var_get_sexp
+( env0, d2v0 ) =
+(
+case+ env0 of
+|
+TR34ENV
+(_, dstk) => dvarstk_search(dstk, d2v0)
+)
+//
+end // end of [local]
+//
+(* ****** ****** *)
 
 (* end of [xats_trans34_envmap.dats] *)
