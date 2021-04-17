@@ -2359,7 +2359,9 @@ Some
 |
 Some(s2f0) =>
 Some
-(trans34_farglst_s2exp(env0, f3as, s2f0, sres))
+(
+trans34_farglst_s2exp(env0, f3as, s2f0, sres)
+) (* Some *)
 )
 ) : f4arglstopt // end-of-val
 //
@@ -2392,6 +2394,23 @@ F4UNDECL@{
 , nam= nam
 , d2c= d2c
 //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 , a2g= a2g
 , a4g= a4g, res= sres
 //

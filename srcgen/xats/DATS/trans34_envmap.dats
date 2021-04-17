@@ -54,12 +54,35 @@ UN = "prelude/SATS/unsafe.sats"
 //
 datavtype
 tr34env =
-TR34ENV of tr34stk
+TR34ENV of
+(abststk, dvarstk)
 //
-and
-tr34stk =
+(* ****** ****** *)
 //
-| tr34stk_nil of ()
+and abststk =
+//
+| abststk_nil of ()
+//
+| abststk_let1 of abststk
+| abststk_loc1 of abststk
+| abststk_loc2 of abststk
+//
+| abststk_open of
+  (d3ecl, s2cst, s2exp, abststk)
+| abststk_impl of
+  (d3ecl, s2cst, s2exp, abststk)
+//
+(* ****** ****** *)
+//
+and dvarstk =
+//
+| dvarstk_nil of ()
+//
+| dvarstk_let1 of dvarstk
+| dvarstk_loc1 of dvarstk
+| dvarstk_loc2 of dvarstk
+//
+| dvarstk_cons of (d2var, s2exp, dvarstk)
 //
 (* ****** ****** *)
 
@@ -67,28 +90,27 @@ absimpl
 tr34env_vtype = tr34env
 
 (* ****** ****** *)
-
+//
 implement
 tr34env_make_nil() =
-TR34ENV(tr34stk_nil(*void*))
-
+TR34ENV
+(abststk_nil(), dvarstk_nil())
+//
 (* ****** ****** *)
 //
 implement
 tr34env_free_nil
-  (env0) =
-(
-let
-val+
-~TR34ENV(stk0) = env0
-in
-case+ stk0 of
+  (env0) = () where
+{
 //
-|
-~tr34stk_nil((*void*)) => ()
+val+~TR34ENV(stk1, stk2) = env0
 //
-end
-) (* end of [tr34env_free_nil] *)
+val () =
+case- stk1 of ~abststk_nil() => ()
+val () =
+case- stk2 of ~dvarstk_nil() => ()
+//
+} (* end of [tr34env_free_nil] *)
 //
 (* ****** ****** *)
 
