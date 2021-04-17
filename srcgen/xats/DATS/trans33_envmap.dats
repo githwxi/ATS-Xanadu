@@ -73,8 +73,12 @@ abststk =
 
 local
 
+(* ****** ****** *)
+
 absimpl
 abstenv_vtype = abstenv
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 

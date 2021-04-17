@@ -5,6 +5,29 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+(*
+prfun
+gint_mul_nint_nint
+{m,n:nat}(): [m*n>=0] void
+*)
+(*
+dataprop
+nmul(int, int, int) =
+|
+{n:nat}
+nmul0(0, n, 0) of ()
+|
+{m
+,n:nat}{p:int}
+nmul1
+(m+1, n, p+n) of (nmul(m, n, p))
+dataprop
+eqint(int, int) =
+{x: int} EQINT(x, x) of ()
+gint_equal_sint
+{n:int}(sint(n)): [x:int] EQINT(x,n)
+*)
+(* ****** ****** *)
 fun
 fact(x:nint): nint =
 if
