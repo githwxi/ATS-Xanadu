@@ -130,8 +130,13 @@ fun
 tr34env_make_nil
   ((*void*)): tr34env
 //
+(* ****** ****** *)
+//
 fun
 tr34env_free_nil
+  (env0: tr34env): void
+fun
+tr34env_free_top
   (env0: tr34env): void
 //
 (* ****** ****** *)

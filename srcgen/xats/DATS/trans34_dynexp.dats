@@ -122,7 +122,7 @@ val
 prog =
 trans34_declist(env0, prog)
 //
-val () = tr34env_free_nil(env0)
+val () = tr34env_free_top(env0)
 //
 } (* end of [trans34_envless] *)
 
@@ -171,6 +171,9 @@ D3Pvar(d2v1) = d3p0.node()
 //
 val
 t2p1 = d2v1.type()
+val
+t2p1 =
+t2ype_whnfize(t2p1)
 //
 val s2e1 =
 let
@@ -195,14 +198,14 @@ val () =
 tr34env_add_dvar_sexp
 ( env0, d2v1, s2e1 )
 //
-(*
+// (*
 val () =
 println!
 ("trans34_dpat: d2v1 = ", d2v1)
 val () =
 println!
 ("trans34_dpat: s2e1 = ", s2e1)
-*)
+// *)
 //
 in
   d4pat_make_node
@@ -534,11 +537,11 @@ trans34_dpat
 (env0, d3p0) =
 let
 //
-(*
+// (*
 val () =
 println!
 ("trans34_dpat: d3p0 = ", d3p0)
-*)
+// *)
 //
 in (*in-of-let*)
 //

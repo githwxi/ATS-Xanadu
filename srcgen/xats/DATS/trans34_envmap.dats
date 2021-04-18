@@ -103,12 +103,13 @@ tr34env_free_nil
   (env0) = () where
 {
 //
-val+~TR34ENV(stk1, stk2) = env0
+val+
+~TR34ENV(tstk, dstk) = env0
 //
 val () =
-case- stk1 of ~abststk_nil() => ()
+case- tstk of ~abststk_nil() => ()
 val () =
-case- stk2 of ~dvarstk_nil() => ()
+case- dstk of ~dvarstk_nil() => ()
 //
 } (* end of [tr34env_free_nil] *)
 //
@@ -117,7 +118,59 @@ case- stk2 of ~dvarstk_nil() => ()
 local
 //
 fun
-dvarstk_search
+auxtstk
+( tstk
+: abststk): void =
+(
+case- tstk of
+|
+~abststk_nil() => ()
+|
+~abststk_open
+( d3cl
+, s2c1
+, s2e1
+, tstk) => auxtstk(tstk)
+) (* end of [auxtstk] *)
+//
+fun
+auxdstk
+( dstk
+: dvarstk): void =
+(
+case- dstk of
+|
+~dvarstk_nil() => ()
+|
+~dvarstk_cons
+( d2v1
+, s2e1
+, dstk) => auxdstk(dstk)
+) (* end of [auxdstk] *)
+//
+in(*in-of-local*)
+//
+implement
+tr34env_free_top
+  (env0) =
+{
+  val () = auxtstk(tstk)
+  val () = auxdstk(dstk)
+} where {
+//
+val+
+~TR34ENV(tstk, dstk) = env0
+//
+} (* end of [tr34env_free_nil] *)
+//
+end // end of [local]
+//
+(* ****** ****** *)
+//
+local
+//
+fun
+dvarstk_find
 ( dstk:
 ! dvarstk
 , d2v0: d2var): s2exp =
@@ -130,15 +183,15 @@ the_s2exp_none0(*void*)
 |
 dvarstk_let1
 ( dstk ) =>
-dvarstk_search(dstk, d2v0)
+dvarstk_find(dstk, d2v0)
 |
 dvarstk_loc1
 ( dstk ) =>
-dvarstk_search(dstk, d2v0)
+dvarstk_find(dstk, d2v0)
 |
 dvarstk_loc2
 ( dstk ) =>
-dvarstk_search(dstk, d2v0)
+dvarstk_find(dstk, d2v0)
 //
 |
 dvarstk_cons
@@ -146,7 +199,7 @@ dvarstk_cons
 if
 (d2v0=d2v1)
 then (s2e1)
-else dvarstk_search(dstk, d2v0)
+else dvarstk_find(dstk, d2v0)
 //
 )
 //
@@ -159,7 +212,7 @@ tr34env_d2var_get_sexp
 case+ env0 of
 |
 TR34ENV
-(_, dstk) => dvarstk_search(dstk, d2v0)
+(_, dstk) => dvarstk_find(dstk, d2v0)
 )
 //
 end // end of [local]
