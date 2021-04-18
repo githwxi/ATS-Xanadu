@@ -173,6 +173,12 @@ tr34env_pop_lams
   ( env0 : !tr34env ) : void
 //
 (* ****** ****** *)
+fun
+tr34env_add_dvar_sexp
+( env0:
+! tr34env
+, d2v0: d2var, s2e0: s2exp) : void
+(* ****** ****** *)
 //
 fun
 trans34_envless
