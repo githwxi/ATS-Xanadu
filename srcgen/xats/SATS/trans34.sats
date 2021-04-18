@@ -142,6 +142,15 @@ tr34env_free_top
 (* ****** ****** *)
 //
 fun
+tr34env_add_fun0
+  ( env0: !tr34env ) : void
+fun
+tr34env_pop_fun0
+  ( env0 : !tr34env ) : void
+//
+(* ****** ****** *)
+//
+fun
 tr34env_add_let1
   ( env0: !tr34env ) : void
 //

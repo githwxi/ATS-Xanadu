@@ -2364,6 +2364,8 @@ val
 a2g = rcd.a2g
 //
 val () =
+tr34env_add_fun0(env0)
+val () =
 trans34_f3undecl_set_sexp(f3d0)
 //
 (*
@@ -2448,29 +2450,16 @@ Some
 //
 in(*in-of-let*)
 //
+let
+val () =
+tr34env_pop_fun0(env0)
+in
 F4UNDECL@{
   loc= loc
 //
 , nam= nam
 , d2c= d2c
 //
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 , a2g= a2g
 , a4g= a4g, res= sres
 //
@@ -2479,6 +2468,7 @@ F4UNDECL@{
 , rtp= rcd.rtp, wtp= rcd.wtp, ctp= rcd.ctp
 //
 } (* end of [F4UNDECL] *)
+end // end of [let]
 //
 end // end of [trans34_fundecl]
 

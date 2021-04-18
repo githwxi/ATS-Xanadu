@@ -78,6 +78,8 @@ and dvarstk =
 //
 | dvarstk_nil of ()
 //
+| dvarstk_fun0 of dvarstk
+//
 | dvarstk_let1 of dvarstk
 | dvarstk_loc1 of dvarstk
 | dvarstk_loc2 of dvarstk
@@ -161,9 +163,55 @@ tr34env_free_top
 val+
 ~TR34ENV(tstk, dstk) = env0
 //
-} (* end of [tr34env_free_nil] *)
+} (* end of [tr34env_free_top] *)
 //
 end // end of [local]
+//
+(* ****** ****** *)
+//
+implement
+tr34env_add_fun0
+  (env0) =
+(
+case+ env0 of
+|
+@TR34ENV(tstk, dstk) =>
+(
+  fold@(env0)) where
+{
+val () =
+( dstk := dvarstk_fun0(dstk) )
+}
+) (* end of [tr34env_add_fun0] *)
+//
+implement
+tr34env_pop_fun0
+  (env0) =
+(
+case+ env0 of
+|
+@TR34ENV(tstk, dstk) =>
+(
+  fold@(env0)) where
+{
+val () = (dstk := auxdstk(dstk))
+}
+) where
+{
+fun
+auxdstk
+( dstk
+: dvarstk): dvarstk =
+(
+case- dstk of
+| ~
+dvarstk_fun0
+( dstk ) => dstk
+| ~
+dvarstk_cons
+(d2v1, s2e1, dstk) => auxdstk(dstk)
+)
+} (* end of [tr34env_pop_fun0] *)
 //
 (* ****** ****** *)
 //
@@ -180,6 +228,10 @@ case+ dstk of
 dvarstk_nil() =>
 the_s2exp_none0(*void*)
 //
+|
+dvarstk_fun0
+( dstk ) =>
+dvarstk_find(dstk, d2v0)
 |
 dvarstk_let1
 ( dstk ) =>
@@ -218,6 +270,7 @@ TR34ENV
 end // end of [local]
 //
 (* ****** ****** *)
+//
 implement
 tr34env_add_dvar_sexp
 ( env0, d2v0, s2e0 ) =
@@ -233,6 +286,7 @@ val () =
 dstk := dvarstk_cons(d2v0, s2e0, dstk)
 }
 ) (* end of [tr34env_add_dvar_sexp] *)
+//
 (* ****** ****** *)
 
 (* end of [xats_trans34_envmap.dats] *)
