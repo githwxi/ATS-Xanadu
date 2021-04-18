@@ -215,6 +215,52 @@ dvarstk_cons
 //
 (* ****** ****** *)
 //
+implement
+tr34env_add_let1
+  (env0) =
+(
+case+ env0 of
+|
+@TR34ENV(tstk, dstk) =>
+(
+  fold@(env0)) where
+{
+val () =
+( dstk := dvarstk_let1(dstk) )
+}
+) (* end of [tr34env_add_let1] *)
+//
+implement
+tr34env_pop_let1
+  (env0) =
+(
+case+ env0 of
+|
+@TR34ENV(tstk, dstk) =>
+(
+  fold@(env0)) where
+{
+val () = (dstk := auxdstk(dstk))
+}
+) where
+{
+fun
+auxdstk
+( dstk
+: dvarstk): dvarstk =
+(
+case- dstk of
+| ~
+dvarstk_let1
+( dstk ) => dstk
+| ~
+dvarstk_cons
+(d2v1, s2e1, dstk) => auxdstk(dstk)
+)
+} (* end of [tr34env_pop_let1] *)
+//
+(* ****** ****** *)
+//
 local
 //
 fun

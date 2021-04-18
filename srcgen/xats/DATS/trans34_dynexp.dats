@@ -179,7 +179,7 @@ val s2e1 =
 let
 val s2e1 = d2v1.sexp()
 in
-case+
+case-
 s2e1.node() of
 |
 S2Enone0() => s2e1 where
@@ -189,7 +189,9 @@ s2e1 = s2exp_t2ype(t2p1)
 val () =
 d2var_set_sexp(d2v1, s2e1)
 }
+(*
 | _(*non-S2Enone0*) => s2e1
+*)
 end : s2exp // end of [val]
 //
 in
@@ -673,7 +675,7 @@ val s2e1 =
 let
 val s2e1 = d2v1.sexp()
 in
-case+
+case-
 s2e1.node() of
 |
 S2Enone0() => s2e1 where
@@ -683,7 +685,9 @@ s2e1 = s2exp_t2ype(t2p1)
 val () =
 d2var_set_sexp(d2v1, s2e1)
 }
+(*
 | _(*non-S2Enone0*) => s2e1
+*)
 end : s2exp // end of [val]
 //
 in
@@ -1301,8 +1305,8 @@ end // end of [local]
 
 fun
 auxtimp
-( env0
-: !tr34env
+( env0:
+! tr34env
 , d3e0: d3exp): d4exp =
 let
 //
@@ -1341,8 +1345,8 @@ end (*let*) // end of [auxtimp]
 
 fun
 auxsap0
-( env0
-: !tr34env
+( env0:
+! tr34env
 , d3e0: d3exp): d4exp =
 let
 //
@@ -1389,8 +1393,8 @@ end // end of [auxsap0]
 
 fun
 auxdapp
-( env0
-: !tr34env
+( env0:
+! tr34env
 , d3e0: d3exp): d4exp =
 let
 //
@@ -1459,11 +1463,91 @@ end // end of [non-S2Efun]
 end (*let*) // end of [auxdapp]
 
 (* ****** ****** *)
+//
+fun
+aux_let
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Elet
+( dcls
+, d3e1) = d3e0.node()
+//
+val () =
+tr34env_add_let1(env0)
+//
+val
+dcls =
+trans34_declist(env0, dcls)
+val
+d4e1 = trans34_dexp(env0, d3e1)
+//
+val () = tr34env_pop_let1(env0)
+//
+in
+let
+val
+s2e1 = d4e1.sexp()
+in
+d4exp_make_node
+( loc0
+, s2e1, t2p0, D4Elet(dcls, d4e1))
+end
+end (*let*) // end of [aux_let]
+//
+fun
+aux_where
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Ewhere
+( d3e1
+, dcls) = d3e0.node()
+//
+val () =
+tr34env_add_let1(env0)
+//
+val
+dcls =
+trans34_declist(env0, dcls)
+val
+d4e1 = trans34_dexp(env0, d3e1)
+//
+val () = tr34env_pop_let1(env0)
+//
+in
+let
+val
+s2e1 = d4e1.sexp()
+in
+d4exp_make_node
+( loc0
+, s2e1, t2p0, D4Ewhere(dcls, d4e1))
+end
+end (*let*) // end of [aux_where]
+//
+(* ****** ****** *)
 
 fun
 aux_if0
-( env0
-: !tr34env
+( env0:
+! tr34env
 , d3e0: d3exp): d4exp =
 let
 //
@@ -1625,6 +1709,11 @@ d3e0.node() of
 | D3Esap0 _ => auxsap0(env0, d3e0)
 //
 | D3Edapp _ => auxdapp(env0, d3e0)
+//
+| D3Elet
+  (dcls, d3e1) => aux_let(env0, d3e0)
+| D3Ewhere
+  (d3e1, dcls) => aux_where(env0, d3e0)
 //
 | D3Eif0
   ( _cond_

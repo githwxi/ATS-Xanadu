@@ -32,7 +32,10 @@ fun
 fact(x) =
 if
 x > 0
-then x * fact(x-1) else 1
+then
+let
+val x1 = x - 1 in x * fact(x1)
+end else 1
 ////
 fun
 fact(x:nint): nint =
