@@ -130,7 +130,11 @@ d4pat_node =
 //
 | D4Psapx of
   ( d4pat
-  , s2explst, s2explst(*gua*))
+  , s2explst, s2explst(*prop*))
+//
+| D4Psopn of
+  ( d4pat
+  , s2varlst, s2explst(*prop*))
 //
 (*
 // HX-2021-03-21:
