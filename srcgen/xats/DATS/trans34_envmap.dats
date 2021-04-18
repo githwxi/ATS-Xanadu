@@ -145,7 +145,7 @@ dvarstk_cons
 (d2v1, s2e1, dstk) =>
 if
 (d2v0=d2v1)
-then s2e1
+then (s2e1)
 else dvarstk_search(dstk, d2v0)
 //
 )
@@ -164,6 +164,22 @@ TR34ENV
 //
 end // end of [local]
 //
+(* ****** ****** *)
+implement
+tr34env_add_dvar_sexp
+( env0, d2v0, s2e0 ) =
+(
+case+ env0 of
+|
+@TR34ENV
+(_, dstk) =>
+(
+  fold@(env0)) where
+{
+val () =
+dstk := dvarstk_cons(d2v0, s2e0, dstk)
+}
+) (* end of [tr34env_add_dvar_sexp] *)
 (* ****** ****** *)
 
 (* end of [xats_trans34_envmap.dats] *)

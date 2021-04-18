@@ -156,7 +156,9 @@ end (*let*) // end of [auxany]
 
 fun
 auxvar
-(d3p0: d3pat): d4pat =
+( env0:
+! tr34env
+, d3p0: d3pat): d4pat =
 let
 //
 val
@@ -169,13 +171,43 @@ D3Pvar(d2v1) = d3p0.node()
 //
 val
 t2p1 = d2v1.type()
+//
+val s2e1 =
+let
+val s2e1 = d2v1.sexp()
+in
+case+
+s2e1.node() of
+|
+S2Enone0() => s2e1 where
+{
 val
 s2e1 = s2exp_t2ype(t2p1)
 val () =
 d2var_set_sexp(d2v1, s2e1)
+}
+| _(*non-S2Enone0*) => s2e1
+end : s2exp // end of [val]
+//
 in
-d4pat_make_node
-(loc0, s2e1, t2p0, D4Pvar(d2v1))
+let
+val () =
+tr34env_add_dvar_sexp
+( env0, d2v1, s2e1 )
+//
+(*
+val () =
+println!
+("trans34_dpat: d2v1 = ", d2v1)
+val () =
+println!
+("trans34_dpat: s2e1 = ", s2e1)
+*)
+//
+in
+  d4pat_make_node
+  ( loc0, s2e1, t2p0, D4Pvar(d2v1) )
+end // end of [let]
 end (*let*) // end of [auxvar]
 
 (* ****** ****** *)
@@ -521,7 +553,7 @@ D3Pnil _ => auxnil(d3p0)
 |
 D3Pany _ => auxany(d3p0)
 |
-D3Pvar _ => auxvar(d3p0)
+D3Pvar _ => auxvar(env0, d3p0)
 //
 |
 D3Pi00 _ => auxi00(d3p0)
@@ -633,11 +665,36 @@ val
 loc0 = d3p0.loc()
 val
 t2p1 = d2v1.type()
-val () =
-d2var_set_sexp(d2v1, s2e0)
+//
+val s2e1 =
+let
+val s2e1 = d2v1.sexp()
 in
-d4pat_make_node
-(loc0, s2e0, t2p1, D4Pvar(d2v1))
+case+
+s2e1.node() of
+|
+S2Enone0() => s2e1 where
+{
+val
+s2e1 = s2exp_t2ype(t2p1)
+val () =
+d2var_set_sexp(d2v1, s2e1)
+}
+| _(*non-S2Enone0*) => s2e1
+end : s2exp // end of [val]
+//
+in
+let
+val () =
+println!
+("trans34_dpat_dntp: d2v1 = ", d2v1)
+val () =
+println!
+("trans34_dpat_dntp: s2e1 = ", s2e1)
+in
+  d4pat_make_node
+  ( loc0, s2e1, t2p1, D4Pvar(d2v1) )
+end
 end (*let*) // end of [D3Pvar]
 //
 (*
