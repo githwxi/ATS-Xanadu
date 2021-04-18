@@ -348,6 +348,10 @@ for the meaning of knd
 | D4Edapp of
   (d4exp, int(*npf*), d4explst)
 //
+| D4Elet of
+  (d4eclist, d4exp(*sequence*))
+| D4Ewhere of (d4eclist, d4exp)
+//
 | D4Eif0 of
   ( d4exp
   , d4exp(*then*), d4expopt(*else*))

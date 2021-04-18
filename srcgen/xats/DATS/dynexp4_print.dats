@@ -425,6 +425,17 @@ case+ x0.node() of
   , "D4Edapp("
   , d4f0, "; ", npf1, "; ", d4es, ")")
 //
+| D4Elet
+  ( dcls, d4e1) =>
+  fprint!
+  ( out
+  , "D4Elet(", dcls, "; ", d4e1, ")")
+| D4Ewhere
+  ( d4e1, dcls) =>
+  fprint!
+  ( out
+  , "D4Ewhere(", d4e1, "; ", dcls, ")")
+//
 | D4Eif0
   (d4e1, d4e2, opt3) =>
   fprint!
