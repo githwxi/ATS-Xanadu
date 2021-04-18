@@ -134,7 +134,9 @@ local
 
 fun
 auxany
-(d3p0: d3pat): d4pat =
+( env0:
+! tr34env
+, d3p0: d3pat): d4pat =
 let
 //
 val
@@ -552,13 +554,20 @@ d3p0.node() of
 //
 (*
 |
-D3Pnil _ => auxnil(d3p0)
+D3Pnil _ =>
+auxnil(d3p0)
 *)
 //
 |
-D3Pany _ => auxany(d3p0)
+D3Pany _ =>
+(
+  auxany( env0, d3p0 )
+)
 |
-D3Pvar _ => auxvar(env0, d3p0)
+D3Pvar _ =>
+(
+  auxvar( env0, d3p0 )
+)
 //
 |
 D3Pi00 _ => auxi00(d3p0)
