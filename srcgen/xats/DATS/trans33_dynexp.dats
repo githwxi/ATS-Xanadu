@@ -1863,10 +1863,13 @@ trans33_dexp(env0, d3e1)
 //
 val t2p0 =
 let
+//
 val
 t2p1 = d3e1.type()
 val
-t2p1 = whnfize_env(env0, t2p1)
+t2p1 =
+whnfize_env( env0, t2p1 )
+//
 in
 //
 let
@@ -1875,22 +1878,20 @@ opt2 =
 t2ype_un_p2tr(t2p1)
 in
 case+ opt2 of
-|
-~Some_vt(t2p2) =>
- (knd0 := 1; t2p2)
-|
-~None_vt((*void*)) =>
+| ~
+Some_vt(t2p2) => (knd0 := 1; t2p2)
+| ~
+None_vt((*void*)) =>
 let
 val
 opt2 =
 t2ype_un_lazy(t2p1)
 in
 case+ opt2 of
-|
-~Some_vt(t2p2) =>
- (knd0 := 2; t2p2)
-|
-~None_vt((*void*)) =>
+| ~
+Some_vt(t2p2) => (knd0 := 2; t2p2)
+| ~
+None_vt((*void*)) =>
 let
 val
 opt2 =
@@ -1936,13 +1937,16 @@ t2p0 = the_t2ype_void(*void*)
 val
 knd0 =
 let
+//
 val
 t2p1 = d3e1.type()
 val
 t2p1 =
-whnfize_env(env0, t2p1)
+whnfize_env( env0, t2p1 )
+//
 val
 opt2 = t2ype_un_p2tr(t2p1)
+//
 in
 case+ opt2 of
 | ~Some_vt _ => 1 | ~None_vt _ =>

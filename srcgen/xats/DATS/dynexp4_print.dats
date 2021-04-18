@@ -224,11 +224,11 @@ case+ x0.node() of
   , d4f0, "; ", s2es, "; ", s2ps, ")")
 //
 | D4Psopn
-  (d4p0, s2vs, s2ps) =>
+  (d4p1, s2vs, s2ps) =>
   fprint!
   ( out
   , "D4Psopn("
-  , d4p0, "; ", s2vs, "; ", s2ps, ")")
+  , d4p1, "; ", s2vs, "; ", s2ps, ")")
 //
 | D4Pdap1(d4f0) =>
   fprint!
