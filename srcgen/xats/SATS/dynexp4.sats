@@ -151,6 +151,8 @@ d4pat_node =
 | D4Panno of
   (d4pat, s2exp) // no s2xtv in anno
 //
+| D4Ptasmp of
+  (d4pat, c0str) // cstrnt generation
 | D4Ptcast of
   (d4pat, c0str) // cstrnt generation
 //
@@ -197,6 +199,9 @@ fun
 d4pat_none1(d3p0: d3pat): d4pat
 //
 (* ****** ****** *)
+fun
+d4pat_tasmp
+(d4p1: d4pat, s2e2: s2exp): d4pat
 fun
 d4pat_tcast
 (d4p1: d4pat, s2e2: s2exp): d4pat
