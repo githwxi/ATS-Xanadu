@@ -123,6 +123,33 @@ d4pat_make_node
 (* ****** ****** *)
 
 implement
+d4pat_tasmp
+( d4p1, s2e2 ) =
+d4pat_make_node
+( loc1
+(*
+HX-2021-03-28:
+[s2e1] should not
+be changed to [s2e2]!
+*)
+, s2e1, t2p1, node) where
+{
+//
+  val loc1 = d4p1.loc()
+  val t2p1 = d4p1.type()
+  val s2e1 = d4p1.sexp()
+//
+  val cstr =
+  c0str_make_tasmp
+  ( loc1
+  , s2e1(*src*), s2e2(*dst*))
+  val node = D4Ptasmp(d4p1, cstr)
+//
+} (* end of [d4pat_tasmp] *)
+
+(* ****** ****** *)
+
+implement
 d4pat_tcast
 ( d4p1, s2e2 ) =
 d4pat_make_node

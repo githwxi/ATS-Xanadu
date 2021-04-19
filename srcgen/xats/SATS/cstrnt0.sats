@@ -97,6 +97,10 @@ c0str_make_node
 (* ****** ****** *)
 //
 fun
+c0str_make_tasmp
+( loc0: loc_t
+, s2e1: s2exp, s2e2: s2exp): c0str
+fun
 c0str_make_tcast
 ( loc0: loc_t
 , s2e1: s2exp, s2e2: s2exp): c0str

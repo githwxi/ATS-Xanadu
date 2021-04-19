@@ -100,6 +100,18 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
+c0str_make_tasmp
+( loc0
+, s2e1(*src*)
+, s2e2(*dst*)) =
+(
+  c0str_make_node
+  (loc0, C0Stlte(s2e1, s2e2))
+)
+//
+(* ****** ****** *)
+//
+implement
 c0str_make_tcast
 ( loc0
 , s2e1(*src*)

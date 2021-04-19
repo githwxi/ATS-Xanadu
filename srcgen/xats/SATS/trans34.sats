@@ -201,6 +201,22 @@ trans34_envless
 (* ****** ****** *)
 //
 fun
+trans34_s2eopn
+( env0:
+! tr34env, s2e0: s2exp)
+: (s2varlst, s2explst, s2exp)
+fun
+trans34_d4popn
+( env0:
+! tr34env, d4p0: d4pat): d4pat
+fun
+trans34_d4eopn
+( env0:
+! tr34env, d4e0: d4exp): d4exp
+//
+(* ****** ****** *)
+//
+fun
 trans34_dpat
 ( env0:
 ! tr34env, d3p0: d3pat): d4pat
