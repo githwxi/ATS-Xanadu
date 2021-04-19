@@ -61,20 +61,20 @@ fprint_c0str
 (
 case+ x0.node() of
 |
-C0Siequ(s2e1, s2e2) =>
+C0Seqeq(s2e1, s2e2) =>
 fprint!
 ( out
-, "C0Siequ(", s2e1, "; ", s2e2, ")")
+, "C0Seqeq(", s2e1, "; ", s2e2, ")")
+|
+C0Stsub(s2e1, s2e2) =>
+fprint!
+( out
+, "C0Stsub(", s2e1, "; ", s2e2, ")")
 |
 C0Stequ(s2e1, s2e2) =>
 fprint!
 ( out
 , "C0Stequ(", s2e1, "; ", s2e2, ")")
-|
-C0Stlte(s2e1, s2e2) =>
-fprint!
-( out
-, "C0Stlte(", s2e1, "; ", s2e2, ")")
 ) (* end of [fprint_c0str] *)
 //
 (* ****** ****** *)

@@ -58,10 +58,10 @@ typedef c0strlstopt = Option(c0strlst)
 datatype
 c0str_node =
 //
-| C0Siequ of (s2exp, s2exp)
+| C0Seqeq of (s2exp, s2exp)
 //
-| C0Stequ of (s2exp, s2exp)
-| C0Stlte of (s2exp, s2exp)
+| C0Stsub of (s2exp, s2exp) // sub
+| C0Stequ of (s2exp, s2exp) // sub and sup
 //
 (* ****** ****** *)
 //
