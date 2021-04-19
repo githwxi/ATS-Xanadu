@@ -106,7 +106,7 @@ c0str_make_tasmp
 , s2e2(*dst*)) =
 (
   c0str_make_node
-  (loc0, C0Stlte(s2e1, s2e2))
+  (loc0, C0Seqeq(s2e1, s2e2))
 )
 //
 (* ****** ****** *)
@@ -118,7 +118,7 @@ c0str_make_tcast
 , s2e2(*dst*)) =
 (
   c0str_make_node
-  (loc0, C0Stlte(s2e1, s2e2))
+  (loc0, C0Stsub(s2e1, s2e2))
 )
 //
 (* ****** ****** *)
