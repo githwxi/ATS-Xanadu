@@ -22,10 +22,10 @@ nmul0(0, n, 0) of ()
 nmul1
 (m+1, n, p+n) of (nmul(m, n, p))
 dataprop
-eqint(int, int) =
-{x: int} EQINT(x, x) of ()
+inteq(int, int) =
+{x: int} INTEQ(x, x) of ()
 gint_equal_sint
-{n:int}(sint(n)): [x:int] EQINT(x,n)
+{n:int}(sint(n)): [x:int] inteq(x,n)
 *)
 (* ****** ****** *)
 fun
@@ -34,8 +34,8 @@ if
 x > 0
 then
 let
-val x1 = x - 1 in x * fact(x1)
-end else 1
+  val x1 = x - 1 in x * fact(x1)
+end else 1 // end of [if]
 ////
 fun
 fact(x:nint): nint =
