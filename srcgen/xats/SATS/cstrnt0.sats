@@ -60,8 +60,8 @@ c0str_node =
 //
 | C0Seqeq of (s2exp, s2exp)
 //
-| C0Stsub of (s2exp, s2exp) // sub
-| C0Stequ of (s2exp, s2exp) // sub and sup
+| C0Stsub of (s2exp, s2exp) // subtyping
+| C0Stpeq of (s2exp, s2exp) // type-equality
 //
 (* ****** ****** *)
 //

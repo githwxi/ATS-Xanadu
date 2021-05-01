@@ -2614,7 +2614,8 @@ let
 prval () = $UN.cast2void(env0) in f4d0
 end
 end // list_map$fopr
-} (* end of [trans34_fundeclist] *)
+//
+} (*where*) // end of [trans34_fundeclist]
 //
 (* ****** ****** *)
 //
@@ -2678,7 +2679,8 @@ let
 prval () = $UN.cast2void(env0) in v4d0
 end
 end // list_map$fopr
-} (* end of [trans34_valdeclist] *)
+//
+} (*where*) // end of [trans34_valdeclist]
 //
 (* ****** ****** *)
 
