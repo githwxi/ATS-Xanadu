@@ -29,7 +29,7 @@ gint_equal_sint
 *)
 (* ****** ****** *)
 fun
-fact(x) =
+fact(x: nint) =
 if
 x > 0
 then

@@ -129,7 +129,25 @@ val () = tr34env_free_top(env0)
 (* ****** ****** *)
 
 implement
-trans34_d4popn(env0, d4p0) = d4p0
+trans34_d4popn
+(env0, d4p0) =
+(
+  d4p0) where
+{
+//
+val
+loc0 = d4p0.loc()
+val
+s2e0 = d4p0.sexp()
+//
+val () =
+println!
+("trans34_d4popn: d4p0 = ",  d4p0)
+val () =
+println!
+("trans34_d4popn: s2e0 = ",  s2e0)
+//
+} (*where*) // end of [trans34_d4popn]
 
 (* ****** ****** *)
 
