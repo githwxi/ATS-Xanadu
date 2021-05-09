@@ -48,12 +48,92 @@ SYM = "./../SATS/xsymbol.sats"
 #staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
+
+implement
+{}(*tmp*)
+s2exp_whnfz
+  (s2e0) = let
 //
-// HX-2020-05-10:
-// It is yet to be implemented!!!
+var flag: int = 0
 //
+(*
+val () =
+println!
+("s2exp_whnfz: s2e0 = ", s2e0)
+*)
+//
+in
+//
+let
+val
+s2e0 =
+auxs2e0(s2e0, flag)
+(*
+val () =
+println!
+("s2exp_whnfz: s2e0(res) = ", s2e0)
+*)
+in s2e0 end // end of [let]
+//
+end where
+{
+//
+fun
+auxs2e0
+( s2e0: s2exp
+, flag: &int >> _): s2exp = s2e0
+//
+} (*where*) // end of [s2exp_whnfz]
+
+(* ****** ****** *)
+//
+(*
+(*
+HX-2020-05-10:
+Yet to be implemented!!!
+*)
 implement
 s2exp_whnfize(s2e0) = s2e0
+*)
+//
+(* ****** ****** *)
+//
+implement
+s2exp_whnfize
+  (s2e0) =
+(
+  s2exp_whnfz<>(s2e0)
+) where
+{
+//
+implement
+s2exp_whnfz$cst<>
+  (s2e0, flag) =
+let
+//
+val-
+S2Ecst(s2c0) = s2e0.node()
+//
+val
+def0 = s2cst_get_sexp(s2c0)
+//
+in
+//
+case+
+def0.node() of
+//
+|
+S2Enone0() => s2e0
+//
+| _(* else *) => 
+let
+val () =
+flag := flag + 1 in s2exp_whnfize(def0)
+end
+//
+end // s2exp_whnfz$cst
+//
+} (* end of [s2exp_whnfize] *)
 //
 (* ****** ****** *)
 

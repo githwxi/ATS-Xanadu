@@ -50,18 +50,30 @@ typedef t2ype = $S2T.t2ype
 abstbox c0str_tbox = ptr
 typedef c0str = c0str_tbox
 typedef c0strlst = List0(c0str)
-typedef c0stropt = Option(c0str)
-typedef c0strlstopt = Option(c0strlst)
+//
+typedef
+c0stropt = Option(c0str)
+typedef
+c0strlstopt = Option(c0strlst)
 //
 (* ****** ****** *)
 //
 datatype
 c0str_node =
 //
-| C0Seqeq of (s2exp, s2exp)
+| C0Seqeq of
+  (s2exp, s2exp) // equality
 //
-| C0Stsub of (s2exp, s2exp) // subtyping
-| C0Stpeq of (s2exp, s2exp) // type-equality
+| C0Stsub of
+  (s2exp, s2exp) // subtyping
+| C0Stpeq of
+  (s2exp, s2exp) // type-equality
+//
+| C0Slist of (c0strlst)
+//
+| C0Sif0 of
+  ( s2exp(*bool*)
+  , c0str(*then*), c0str(*else*))
 //
 (* ****** ****** *)
 //

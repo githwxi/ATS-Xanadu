@@ -1490,7 +1490,7 @@ Various substitution-related functions
 //
 fun{}
 s2exp_whnfz
-  (s2e0: t2ype): s2exp
+  (s2e0: s2exp): s2exp
 fun{}
 s2exp_whnfz$cst
   (s2exp, flag: &int >> _): s2exp
