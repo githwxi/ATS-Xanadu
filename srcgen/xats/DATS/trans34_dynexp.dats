@@ -2010,6 +2010,63 @@ end
 
 (* ****** ****** *)
 
+local
+
+fun
+auxarg0
+( env0:
+! tr34env
+, d3p0
+: d3pat): d4pat =
+let
+val s2e1 =
+(
+case+
+d3p0.node() of
+|
+D3Panno(_, s2e1) => s2e1
+|
+_(*non-D3Panno*) =>
+s2exp_t2ype(d3p0.type())
+) : s2exp // end of [val]
+val d3p1 =
+(
+case+
+d3p0.node() of
+|
+D3Panno(d3p1, _) => d3p1
+| _(*non-D3Panno*) => d3p0
+) : d3pat // end of [val]
+in
+trans34_dpat_dntp(env0, d3p1, s2e1)
+end // end of [auxarg0]
+fun
+auxargs
+( env0:
+! tr34env
+, d3ps
+: d3patlst): d4patlst =
+(
+case+ d3ps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(d3p0, d3ps) =>
+(
+list_cons(d4p0, d4ps)
+) where
+{
+  val d4p0 = auxarg0( env0, d3p0 )
+  val d4ps = auxargs( env0, d3ps )
+}
+) (*where*) // end of [auxargs]
+
+in(*in-of-local*)
+
+(* ****** ****** *)
+
 implement
 trans34_farg
 ( env0, f3a0 ) =
@@ -2029,8 +2086,7 @@ f4arg_make_node
 ) where
 {
   val
-  d4ps =
-  trans34_dpatlst(env0, d3ps)
+  d4ps = auxargs(env0, d3ps)
 } (* F3ARGsome_dyn *)
 //
 |
@@ -2046,6 +2102,10 @@ _(*non-F3ARGsome_dyn*) =>
  f4arg_make_node(loc0, F4ARGnone3(f3a0))
 )
 end (* end of [trans34_farg] *)
+
+(* ****** ****** *)
+
+end // end of [local]
 
 (* ****** ****** *)
 //

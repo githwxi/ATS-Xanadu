@@ -37,6 +37,7 @@ let
   val x1 = x - 1 in x * fact(x1)
 end else 1 // end of [if]
 ////
+(* ****** ****** *)
 fun
 fact(x:nint): nint =
 if

@@ -54,6 +54,9 @@ implement
 prerr_c0str(x0) =
 fprint_c0str(stderr_ref, x0)
 (* ****** ****** *)
+implement
+fprint_val<c0str> = fprint_c0str
+(* ****** ****** *)
 //
 implement
 fprint_c0str
@@ -75,6 +78,21 @@ C0Stpeq(s2e1, s2e2) =>
 fprint!
 ( out
 , "C0Stpeq(", s2e1, "; ", s2e2, ")")
+//
+| C0Slist(cnss) =>
+(
+  fprint!(out, "C0Slist(", cnss, ")")
+)
+//
+|
+C0Sif0
+(s2e1, cns1, cns2) =>
+( fprint!
+  ( out
+  , "C0Sif0("
+  , s2e1, "; ", cns1, "; ", cns2, ")")
+)
+//
 ) (* end of [fprint_c0str] *)
 //
 (* ****** ****** *)
