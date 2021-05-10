@@ -78,10 +78,89 @@ in s2e0 end // end of [let]
 end where
 {
 //
+(* ****** ****** *)
+//
 fun
+auxvar
+( s2e0: s2exp
+, flag
+: &int >> int): s2exp =
+let
+val-
+S2Evar
+(s2v0) = s2e0.node() in s2e0
+end // end of [auxvar]
+//
+(* ****** ****** *)
+//
+and
+auxcst
+( s2e0: s2exp
+, flag
+: &int >> int): s2exp =
+(
+  s2exp_whnfz$cst(s2e0, flag)
+)
+//
+(* ****** ****** *)
+//
+and
+auxxtv
+( s2e0: s2exp
+, flag
+: &int >> int): s2exp =
+let
+val-
+S2Extv
+(xtv0) = s2e0.node()
+in
+//
+let
+  val
+  s2e1 = xtv0.sexp()
+in
+  case+
+  s2e1.node() of
+  | S2Enone0() => s2e0
+  | _ (*non-S2Enone0*) =>
+    (
+      auxs2e0(s2e1, flag)
+    ) where
+    {
+      val () = flag := flag + 1
+    }
+end
+//
+end // end of [auxxtv]
+//
+(* ****** ****** *)
+//
+and
 auxs2e0
 ( s2e0: s2exp
-, flag: &int >> _): s2exp = s2e0
+, flag
+: &int >> int): s2exp =
+(
+case+
+s2e0.node() of
+//
+| S2Evar _ =>
+  auxvar(s2e0, flag)
+//
+| S2Ecst _ =>
+  auxcst(s2e0, flag)
+//
+| S2Extv _ =>
+  auxxtv(s2e0, flag)
+//
+(*
+| S2Elft _ =>
+  auxlft(s2e0, flag)
+*)
+//
+| _ (*rest-of-s2exp*) => s2e0
+//
+) (* end of [auxs2e0] *)
 //
 } (*where*) // end of [s2exp_whnfz]
 
