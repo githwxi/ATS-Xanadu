@@ -1049,6 +1049,8 @@ in t2p0 end // end of [let]
 //
 end where
 {
+(* ****** ****** *)
+//
 fun
 auxbas
 ( t2p0: t2ype
@@ -1071,7 +1073,9 @@ t2p0.node() of
   }
 //
 end // end of [auxbas]
-
+//
+(* ****** ****** *)
+//
 and
 auxvar
 ( t2p0: t2ype
@@ -1082,7 +1086,9 @@ val-
 T2Pvar
 (s2v0) = t2p0.node() in t2p0
 end // end of [auxvar]
-
+//
+(* ****** ****** *)
+//
 and
 auxcst
 ( t2p0: t2ype
@@ -1091,7 +1097,9 @@ auxcst
 (
   t2ype_whnfz$cst(t2p0, flag)
 )
-
+//
+(* ****** ****** *)
+//
 and
 auxxtv
 ( t2p0: t2ype
@@ -1120,7 +1128,9 @@ in
 end
 //
 end // end of [auxxtv]
-
+//
+(* ****** ****** *)
+//
 and
 auxapp
 ( t2p0: t2ype
@@ -1158,7 +1168,9 @@ t2p1.node() of
   else t2ype_make_node(t2p0.sort(), T2Papp(t2p1, t2ps))
 //
 end // end of [auxapp]
-
+//
+(* ****** ****** *)
+//
 and
 auxt2p0
 ( t2p0: t2ype
