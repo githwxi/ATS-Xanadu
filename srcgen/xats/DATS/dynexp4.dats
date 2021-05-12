@@ -148,7 +148,7 @@ be changed to [s2e2]!
 } (* end of [d4pat_tasmp] *)
 
 (* ****** ****** *)
-
+(*
 implement
 d4pat_tcast
 ( d4p1, s2e2 ) =
@@ -173,7 +173,7 @@ be changed to [s2e2]!
   val node = D4Ptcast(d4p1, cstr)
 //
 } (* end of [d4pat_tcast] *)
-
+*)
 (* ****** ****** *)
 
 local

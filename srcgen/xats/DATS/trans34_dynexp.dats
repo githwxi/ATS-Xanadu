@@ -128,6 +128,7 @@ val () = tr34env_free_top(env0)
 
 (* ****** ****** *)
 
+(*
 implement
 trans34_d4popn
 (env0, d4p0) =
@@ -148,6 +149,7 @@ println!
 ("trans34_d4popn: s2e0 = ",  s2e0)
 //
 } (*where*) // end of [trans34_d4popn]
+*)
 
 (* ****** ****** *)
 
@@ -175,12 +177,8 @@ s2e0 = s2exp_t2ype(t2p0)
 //
 in
 //
-trans34_d4popn
-(
-env0,
 d4pat_make_node
 (loc0, s2e0, t2p0, D4Pany())
-) (* trans34_d4eopn *)
 //
 end (*let*) // end of [auxany]
 
@@ -231,9 +229,12 @@ d4p0 =
 d4pat_make_node
 ( loc0
 , s2e1, t2p0, D4Pvar(d2v1))
+//
+(*
 val
 d4p0 =
 trans34_d4popn( env0, d4p0 )
+*)
 //
 in
 let
@@ -633,8 +634,7 @@ d4pat_make_node
 val loc0 = d3p0.loc()
 val t2p1 = d3p1.type()
 //
-val d4p1 =
-trans34_dpat_dntp(env0, d3p1, s2e2)
+val d4p1 = trans34_dpat(env0, d3p1)
 //
 } (* end of [D3Panno] *)
 //
@@ -732,9 +732,12 @@ d4p0 =
 d4pat_make_node
 ( loc0
 , s2e0, t2p1, D4Pvar(d2v1))
+//
+(*
 val
 d4p0 =
 trans34_d4popn( env0, d4p0 )
+*)
 //
 in
 let

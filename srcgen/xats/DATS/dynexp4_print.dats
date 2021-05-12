@@ -245,10 +245,16 @@ case+ x0.node() of
   ( out
   , "D4Panno(", d4p1, "; ", s2e2, ")")
 //
+| D4Ptasmp(d4p1, cstr) =>
+  fprint!
+  ( out
+  , "D4Ptasmp(", d4p1, "; ", cstr, ")")
+(*
 | D4Ptcast(d4p1, cstr) =>
   fprint!
   ( out
   , "D4Ptcast(", d4p1, "; ", cstr, ")")
+*)
 //
 | D4Pnone1(d3psrc) =>
   fprint!( out, "D4Pnone1(", d3psrc, ")" )
