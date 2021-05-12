@@ -50,6 +50,15 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
+//
+implement
+s2exp_whnfize_env
+  (env0, s2e0) =
+(
+s2exp_whnfize(s2e0)
+)
+//
+(* ****** ****** *)
 
 implement
 trans34_d4pat_deunis

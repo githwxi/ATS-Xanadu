@@ -6,6 +6,7 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 //
+(*
 datatype
 term(type) =
 | TERMint(int) of int
@@ -21,7 +22,8 @@ let val-TERMint(i0) = t0 in i0 end
 implement
 foo<bool>(t0) =
 let val-TERMbool(b0) = t0 in b0 end
-////
+*)
+//
 (* ****** ****** *)
 (*
 prfun

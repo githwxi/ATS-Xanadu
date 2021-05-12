@@ -195,6 +195,16 @@ tr34env_add_dvar_sexp
 (* ****** ****** *)
 //
 fun
+s2exp_whnfize_env
+( env0:
+! tr34env, s2e0: s2exp): s2exp
+//
+overload
+whnfize_env with s2exp_whnfize_env
+//
+(* ****** ****** *)
+//
+fun
 trans34_envless
   (d3cls: d3eclist): d4eclist
 //
