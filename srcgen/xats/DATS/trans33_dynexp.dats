@@ -560,9 +560,9 @@ trans33_dpat_dntp
   d3pat_dntp(d3p0, t2p0)
 ) where
 {
-val
-d3p0 = trans33_dpat(env0, d3p0)
-}
+  val
+  d3p0 = trans33_dpat(env0, d3p0)
+} (* end of [trans33_dpat_dntp] *)
 //
 (* ****** ****** *)
 //
@@ -629,7 +629,9 @@ d33exp_make_node
 , d3en
 : d3exp_node): d3exp =
 let
+//
 val t2p0 = whnfize(t2p0)
+//
 val d3e0 =
 d3exp_make_node(loc0, t2p0, d3en)
 in
@@ -1856,7 +1858,8 @@ fun
 aux_eval
 ( env0:
 ! abstenv
-, d3e0: d3exp): d3exp = let
+, d3e0
+: d3exp ): d3exp = let
 //
 val
 loc0 = d3e0.loc()
@@ -1879,7 +1882,7 @@ val
 t2p1 =
 whnfize_env( env0, t2p1 )
 //
-in
+in(* in-of-let *)
 //
 let
 val

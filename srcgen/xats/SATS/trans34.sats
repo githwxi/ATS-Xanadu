@@ -203,12 +203,21 @@ trans34_envless
 fun
 trans34_s2eopn
 ( env0:
-! tr34env, s2e0: s2exp)
-: (s2varlst, s2explst, s2exp)
+! tr34env, s2e0: s2exp): s2exp
+//
+(*
+//
+HX-2021-05-10:
+[trans34_d4popn] should
+only be applied to var-likes!
+//
 fun
 trans34_d4popn
 ( env0:
 ! tr34env, d4p0: d4pat): d4pat
+//
+*)
+//
 fun
 trans34_d4eopn
 ( env0:

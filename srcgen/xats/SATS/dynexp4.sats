@@ -153,8 +153,10 @@ d4pat_node =
 //
 | D4Ptasmp of
   (d4pat, c0str) // cstrnt generation
+(*
 | D4Ptcast of
   (d4pat, c0str) // cstrnt generation
+*)
 //
 | D4Pnone0 of ()
 | D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)
