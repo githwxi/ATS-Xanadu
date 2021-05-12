@@ -750,19 +750,21 @@ end (*let*) // end of [D3Pvar]
 |
 D3Panno(d3p1, s2e2) =>
 (
-  d4pat_tcast(d4p1, s2e2)
+d4pat_make_node
+( loc0
+, s2e2
+, t2p1, D4Panno(d4p1, s2e2))
 ) where
 {
-val
-d4p1 =
+val loc0 = d3p0.loc()
+val t2p1 = d3p1.type()
+val d4p1 =
 trans34_dpat_dntp(env0, d3p1, s2e0)
 }
 //
 |
 _ (*rest-of-d3pat*) =>
 let
-val
-loc0 = d3p0.loc()
 val
 d4p0 = 
 trans34_dpat
