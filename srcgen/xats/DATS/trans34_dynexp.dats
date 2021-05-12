@@ -199,12 +199,6 @@ t2p0 = d3p0.type()
 val-
 D3Pvar(d2v1) = d3p0.node()
 //
-val
-t2p1 = d2v1.type()
-val
-t2p1 =
-t2ype_whnfize(t2p1)
-//
 val s2e1 =
 let
 val s2e1 = d2v1.sexp()
@@ -215,7 +209,8 @@ s2e1.node() of
 S2Enone0() => s2e1 where
 {
 val
-s2e1 = s2exp_t2ype(t2p1)
+s2e1 =
+s2exp_t2ype(d2v1.type())
 val () =
 d2var_set_sexp(d2v1, s2e1)
 }
@@ -1411,7 +1406,7 @@ D3Esap0
 val d4f0 =
 trans34_dexp(env0, d3f0)
 val s2f0 =
-s2exp_whnfize(d4f0.sexp())
+whnfize_env(env0, d4f0.sexp())
 //
 in
 case+
