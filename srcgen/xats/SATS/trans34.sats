@@ -205,6 +205,14 @@ whnfize_env with s2exp_whnfize_env
 (* ****** ****** *)
 //
 fun
+trans34_s2exp_open
+( env0:
+! tr34env, s2e0: s2exp)
+: (s2varlst, s2explst, s2exp)
+//
+(* ****** ****** *)
+//
+fun
 trans34_envless
   (d3cls: d3eclist): d4eclist
 //
@@ -255,7 +263,8 @@ fun
 trans34_dpatlst_dnts
 ( env0:
 ! tr34env
-, d3ps: d3patlst, s2e0: s2explst): d4patlst
+, d3ps
+: d3patlst, s2e0: s2explst): d4patlst
 (* ****** ****** *)
 //
 fun
