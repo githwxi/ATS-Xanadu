@@ -61,6 +61,70 @@ s2exp_whnfize(s2e0)
 (* ****** ****** *)
 
 implement
+trans34_s2exp_open
+  (env0, s2e0) =
+(
+  auxs2e0(env0, s2e0)
+) where
+{
+//
+fun
+svsapp
+( xs: s2varlst
+, ys: s2varlst): s2varlst =
+(
+case+ ys of
+| list_nil() => xs
+| list_cons _ =>
+  list_append<s2var>(xs, ys)
+)
+fun
+spsapp
+( xs: s2explst
+, ys: s2explst): s2explst =
+(
+case+ ys of
+| list_nil() => xs
+| list_cons _ =>
+  list_append<s2exp>(xs, ys)
+)
+//
+fun
+auxs2e0
+( env0:
+! tr34env, s2e0: s2exp)
+: (s2varlst, s2explst, s2exp) =
+let
+val
+s2e0 =
+whnfize_env(env0, s2e0)
+in
+//
+case+
+s2e0.node() of
+|
+S2Eexi
+(svs1, sps1, s2e1) =>
+let
+val
+( svs2
+, sps2
+, sopn) =
+  auxs2e0(env0, s2e1)
+in
+  ( svsapp(svs1, svs2)
+  , spsapp(sps1, sps2), sopn)
+end
+|
+_(*rest-of-s2exp*) =>
+(list_nil(), list_nil(), s2e0)
+//
+end (*let*) // end of [auxs2e0]
+} (*where*) // end of [trans34_s2exp_open]
+
+(* ****** ****** *)
+
+implement
 trans34_d4pat_deunis
   (d4p0) =
 (

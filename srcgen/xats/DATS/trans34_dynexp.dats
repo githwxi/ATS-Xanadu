@@ -128,6 +128,46 @@ val () = tr34env_free_top(env0)
 
 (* ****** ****** *)
 
+fun
+d4pat_make_sopn
+( s2vs
+: s2varlst
+, s2ps
+: s2explst
+, d4p0: d4pat): d4pat =
+(
+case+
+(s2vs, s2ps) of
+|
+( list_nil()
+, list_nil()) => d4p0
+|
+( _(*else*)
+, _(*else*) ) =>
+let
+val
+loc0 = d4p0.loc()
+val
+t2p0 = d4p0.type()
+val
+sopn = d4p0.sexp()
+val
+s2t0 = sopn.sort()
+val
+s2e0 =
+s2exp_make_node
+( s2t0
+, S2Eexi(s2vs, s2ps, sopn))
+in
+d4pat_make_node
+( loc0
+, s2e0
+, t2p0, D4Psopn(d4p0, s2vs, s2ps))
+end
+) (* end of [d4pat_make_sopn] *)
+
+(* ****** ****** *)
+
 (*
 implement
 trans34_d4popn
@@ -206,33 +246,19 @@ in
 case-
 s2e1.node() of
 |
-S2Enone0() => s2e1 where
-{
-val
-s2e1 =
+S2Enone0() =>
 s2exp_t2ype(d2v1.type())
-val () =
-d2var_set_sexp(d2v1, s2e1)
-}
 (*
 | _(*non-S2Enone0*) => s2e1
 *)
 end : s2exp // end of [val]
 //
-val
-d4p0 =
-d4pat_make_node
-( loc0
-, s2e1, t2p0, D4Pvar(d2v1))
-//
-(*
-val
-d4p0 =
-trans34_d4popn( env0, d4p0 )
-*)
-//
 in
 let
+val
+d4p0 =
+trans34_dpat_dntp
+(env0, d3p0, s2e1)
 val () =
 tr34env_add_dvar_sexp
 (env0, d2v1, d4p0.sexp()) in d4p0
@@ -676,21 +702,16 @@ end // list_map$fopr
 
 (* ****** ****** *)
 
-implement
-trans34_dpat_dntp
-(env0, d3p0, s2e0) =
+local
+
+fun
+auxd3p0
+( env0
+: !tr34env
+, d3p0: d3pat
+, sopn: s2exp): d4pat =
 let
-//
-(*
-val () =
-println!
-("trans34_dpat_dntp: d3p0 = ", d3p0)
-val () =
-println!
-("trans34_dpat_dntp: s2e0 = ", s2e0)
-*)
-//
-in(*in-of-let*)
+in
 //
 case+
 d3p0.node() of
@@ -698,11 +719,6 @@ d3p0.node() of
 |
 D3Pvar(d2v1) =>
 let
-//
-val
-loc0 = d3p0.loc()
-val
-t2p1 = d2v1.type()
 //
 val () =
 let
@@ -715,7 +731,7 @@ s2e1.node() of
 S2Enone0() =>
 {
 val () =
-d2var_set_sexp(d2v1, s2e0)
+d2var_set_sexp(d2v1, sopn)
 }
 (*
 | _(*non-S2Enone0*) => ( )
@@ -723,16 +739,15 @@ d2var_set_sexp(d2v1, s2e0)
 end : void // end of [val]
 //
 val
+loc0 = d3p0.loc()
+val
+t2p1 = d2v1.type()
+//
+val
 d4p0 =
 d4pat_make_node
 ( loc0
-, s2e0, t2p1, D4Pvar(d2v1))
-//
-(*
-val
-d4p0 =
-trans34_d4popn( env0, d4p0 )
-*)
+, sopn, t2p1, D4Pvar(d2v1))
 //
 in
 let
@@ -753,8 +768,7 @@ d4pat_make_node
 {
 val loc0 = d3p0.loc()
 val t2p1 = d3p1.type()
-val d4p1 =
-trans34_dpat_dntp(env0, d3p1, s2e0)
+val d4p1 = auxd3p0(env0, d3p1, sopn)
 }
 //
 |
@@ -763,10 +777,43 @@ let
 val
 d4p0 = 
 trans34_dpat
-(env0, d3p0) in d4pat_tasmp(d4p0, s2e0)
+(env0, d3p0) in d4pat_tasmp(d4p0, sopn)
 end // end of [rest-of-d3pat]
 //
-end (*let*) // end of [trans34_dpat_dntp]
+end (*let*) // end of [auxd3p0]
+
+in(*in-of-local*)
+//
+implement
+trans34_dpat_dntp
+(env0, d3p0, s2e0) =
+let
+//
+val
+( s2vs
+, s2ps
+, sopn) =
+trans34_s2exp_open(env0, s2e0)
+//
+(*
+val () =
+println!
+("trans34_dpat_dntp: d3p0 = ", d3p0)
+val () =
+println!
+("trans34_dpat_dntp: s2e0 = ", s2e0)
+*)
+//
+val
+d4p0 = auxd3p0(env0, d3p0, sopn)
+//
+in(*in-of-let*)
+//
+d4pat_make_sopn(s2vs, s2ps, d4p0)
+//
+end // end of [trans34_dpat_dntp]
+//
+end // end of [local]
 
 (* ****** ****** *)
 
