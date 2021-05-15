@@ -120,25 +120,27 @@ fprint_val<labs2exp> = fprint_labs2exp
 (* ****** ****** *)
 
 implement
-print_kxtv2(x0) =
-fprint_kxtv2(stdout_ref, x0) 
+print_k2xtv(x0) =
+fprint_k2xtv(stdout_ref, x0) 
 implement
-prerr_kxtv2(x0) =
-fprint_kxtv2(stderr_ref, x0) 
+prerr_k2xtv(x0) =
+fprint_k2xtv(stderr_ref, x0) 
 
 implement
-fprint_kxtv2(out, x0) =
+fprint_k2xtv(out, x0) =
 (
 case+ x0 of
 |
-KXTV2non() => fprint!(out, "KXTV2non")
+K2XTVnon() => fprint!(out, "K2XTVnon")
 |
-KXTV2tmp() => fprint!(out, "KXTV2tmp")
+K2XTVtmp() => fprint!(out, "K2XTVtmp")
 |
-KXTV2uni() => fprint!(out, "KXTV2uni")
+K2XTVuni() => fprint!(out, "K2XTVuni")
 |
-KXTV2join() => fprint!(out, "KXTV2join")
-) (* end of [fprint_kxtv2] *)
+K2XTVjoin() => fprint!(out, "K2XTVjoin")
+|
+K2XTVopen(s2e) => fprint!(out, "K2XTVopen(...)")
+) (* end of [fprint_k2xtv] *)
 
 (* ****** ****** *)
 
@@ -335,6 +337,34 @@ fprint!
 *)
 //
 } (* end of [fprint_s2var] *)
+//
+(* ****** ****** *)
+//
+implement
+print_s2xtv(x0) =
+fprint_s2xtv(stdout_ref, x0) 
+implement
+prerr_s2xtv(x0) =
+fprint_s2xtv(stderr_ref, x0) 
+//
+implement
+fprint_s2xtv
+  (out, x0) = let
+//
+val knd = x0.kind()
+val stm = x0.stamp()
+//
+in
+//
+fprint!
+(out, "XTV(", stm, ")")
+//
+(*
+fprint!
+( out
+, "XTV(", stm, ")[", knd, "]")
+*)
+end
 //
 (* ****** ****** *)
 //

@@ -592,15 +592,15 @@ end
 |
 _(* rest-of-s2exp *) =>
 (
+let
+val () =
+println!
+("s2exp_revar: s2e0 = ", s2e0)
+in
   let
-  val () =
-  println!
-  ("s2exp_revar: s2e0 = ", s2e0)
-  in
-    let
-      val ((*void*)) = assertloc(false) in s2e0
-    end
+    val ((*void*)) = assertloc(false) in s2e0
   end
+end
 )
 //
 end // end of [let]
@@ -683,6 +683,53 @@ list_map<s2exp><s2exp>(s2es)
 implement
 list_map$fopr<s2exp><s2exp>(s2e0) = s2exp_revar(s2e0, s2v1, s2v2)
 } (* end of [s2explst_revar_vt] *)
+//
+(* ****** ****** *)
+//
+implement
+s2exp_revars
+(s2e0, svs1, svs2) =
+(
+case+ svs1 of
+|
+list_nil
+((*void*)) => s2e0
+|
+list_cons
+(s2v1, svs1) =>
+let
+val-
+list_cons
+(s2v2, svs2) = svs2
+val
+s2e0 =
+s2exp_revars
+(s2e0, svs1, svs2)
+in
+s2exp_revar(s2e0, s2v1, s2v2)
+end
+) (* end of [s2exp_revars] *)
+//
+(* ****** ****** *)
+//
+implement
+s2explst_revars
+(s2es, svs1, svs2) =
+list_vt2t
+(
+s2explst_revars_vt(s2es, svs1, svs2)
+)
+//
+implement
+s2explst_revars_vt
+(s2es, svs1, svs2) =
+(
+list_map<s2exp><s2exp>(s2es)
+) where
+{
+implement
+list_map$fopr<s2exp><s2exp>(s2e0) = s2exp_revars(s2e0, svs1, svs2)
+} (* end of [s2explst_revars_vt] *)
 //
 (* ****** ****** *)
 
