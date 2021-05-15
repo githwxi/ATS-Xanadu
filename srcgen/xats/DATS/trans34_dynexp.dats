@@ -129,7 +129,7 @@ val () = tr34env_free_top(env0)
 (* ****** ****** *)
 
 fun
-d4pat_make_sopn
+d4pat_make_opny
 ( s2vs
 : s2varlst
 , s2ps
@@ -162,9 +162,9 @@ in
 d4pat_make_node
 ( loc0
 , s2e0
-, t2p0, D4Psopn(d4p0, s2vs, s2ps))
+, t2p0, D4Popny(d4p0, s2vs, s2ps))
 end
-) (* end of [d4pat_make_sopn] *)
+) (* end of [d4pat_make_opny] *)
 
 (* ****** ****** *)
 
@@ -790,26 +790,28 @@ trans34_dpat_dntp
 let
 //
 val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val
 ( s2vs
 , s2ps
 , sopn) =
-trans34_s2exp_open(env0, s2e0)
+trans34_s2exp_opny(env0, s2e0)
 //
-(*
-val () =
-println!
-("trans34_dpat_dntp: d3p0 = ", d3p0)
-val () =
-println!
-("trans34_dpat_dntp: s2e0 = ", s2e0)
-*)
+in
 //
+let
 val
-d4p0 = auxd3p0(env0, d3p0, sopn)
-//
-in(*in-of-let*)
-//
-d4pat_make_sopn(s2vs, s2ps, d4p0)
+d4p1 =
+auxd3p0(env0, d3p0, sopn)
+in
+d4pat_make_node
+( loc0
+, s2e0
+, t2p0
+, D4Popny(d4p1, s2vs, s2ps)) end
 //
 end // end of [trans34_dpat_dntp]
 //

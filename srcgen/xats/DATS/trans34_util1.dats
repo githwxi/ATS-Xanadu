@@ -59,9 +59,30 @@ s2exp_whnfize(s2e0)
 )
 //
 (* ****** ****** *)
+(*
+//
+implement
+trans34_s2exp_opnx
+  (loc0, s2e0) =
+let
+val
+knd =
+K2XTVopen(s2e0)
+in
+xtv1.kind(knd); xtv1
+end where {
+//
+val s2t0 = s2e0.sort()
+val
+xtv1 = s2xtv_new(loc0, s2t0)
+//
+} // end of [trans34_s2exp_opnx]
+//
+*)
+(* ****** ****** *)
 
 implement
-trans34_s2exp_open
+trans34_s2exp_opny
   (env0, s2e0) =
 (
   auxs2e0(env0, s2e0)
@@ -106,21 +127,32 @@ s2e0.node() of
 S2Eexi
 (svs1, sps1, s2e1) =>
 let
+//
 val
-( svs2
-, sps2
+( s2vs
+, s2ps
 , sopn) =
   auxs2e0(env0, s2e1)
+//
+val svs2 =
+s2varlst_copy(svs1)
+val sopn =
+s2exp_revars(sopn, svs1, svs2)
+val sps2 =
+s2explst_revars(sps1, svs1, svs2)
+val s2ps =
+s2explst_revars(s2ps, svs1, svs2)
+//
 in
-  ( svsapp(svs1, svs2)
-  , spsapp(sps1, sps2), sopn)
+  ( svsapp(svs2, s2vs)
+  , spsapp(sps2, s2ps), sopn)
 end
 |
 _(*rest-of-s2exp*) =>
 (list_nil(), list_nil(), s2e0)
 //
 end (*let*) // end of [auxs2e0]
-} (*where*) // end of [trans34_s2exp_open]
+} (*where*) // end of [trans34_s2exp_opny]
 
 (* ****** ****** *)
 

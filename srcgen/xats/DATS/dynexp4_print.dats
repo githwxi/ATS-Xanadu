@@ -223,11 +223,16 @@ case+ x0.node() of
   , "D4Psapx("
   , d4f0, "; ", s2es, "; ", s2ps, ")")
 //
-| D4Psopn
+| D4Popnx
+  (d4p1, xtv2) =>
+  fprint!
+  ( out
+  , "D4Popnx(", d4p1, "; ", xtv2, ")")
+| D4Popny
   (d4p1, s2vs, s2ps) =>
   fprint!
   ( out
-  , "D4Psopn("
+  , "D4Popny("
   , d4p1, "; ", s2vs, "; ", s2ps, ")")
 //
 | D4Pdap1(d4f0) =>
@@ -423,11 +428,16 @@ case+ x0.node() of
   , "D4Esapx("
   , d4f0, "; ", s2es, "; ", s2ps, ")")
 //
-| D4Esopn
+| D4Eopnx
+  (d4e1, xtv2) =>
+  fprint!
+  ( out
+  , "D4Eopnx(", d4e1, "; ", xtv2, ")")
+| D4Eopny
   (d4e1, s2vs, s2ps) =>
   fprint!
   ( out
-  , "D4Esopn("
+  , "D4Eopny("
   , d4e1, "; ", s2vs, "; ", s2ps, ")")
 //
 | D4Edapp

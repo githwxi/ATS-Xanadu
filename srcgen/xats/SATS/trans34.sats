@@ -49,6 +49,7 @@
 (* ****** ****** *)
 
 typedef s2var = $S2E.s2var
+typedef s2xtv = $S2E.s2xtv
 typedef s2exp = $S2E.s2exp
 typedef t2xtv = $S2T.t2xtv
 typedef t2ype = $S2T.t2ype
@@ -204,8 +205,14 @@ whnfize_env with s2exp_whnfize_env
 //
 (* ****** ****** *)
 //
+(*
 fun
-trans34_s2exp_open
+trans34_s2exp_opnx
+( loc0: loc_t
+, s2e0: s2exp): s2xtv
+*)
+fun
+trans34_s2exp_opny
 ( env0:
 ! tr34env, s2e0: s2exp)
 : (s2varlst, s2explst, s2exp)
