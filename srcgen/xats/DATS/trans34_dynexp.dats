@@ -128,6 +128,7 @@ val () = tr34env_free_top(env0)
 
 (* ****** ****** *)
 
+(*
 fun
 d4pat_make_opny
 ( s2vs
@@ -165,6 +166,7 @@ d4pat_make_node
 , t2p0, D4Popny(d4p0, s2vs, s2ps))
 end
 ) (* end of [d4pat_make_opny] *)
+*)
 
 (* ****** ****** *)
 
@@ -798,14 +800,14 @@ val
 ( s2vs
 , s2ps
 , sopn) =
-trans34_s2exp_opny(env0, s2e0)
+s2exp_opny_env(env0, s2e0)
 //
 in
 //
 let
-val
-d4p1 =
-auxd3p0(env0, d3p0, sopn)
+  val
+  d4p1 =
+  auxd3p0(env0, d3p0, sopn)
 in
 d4pat_make_node
 ( loc0
@@ -1885,8 +1887,17 @@ _ (* else-of-d3exp *) =>
 let
 val
 d4e0 =
-trans34_dexp
-(env0, d3e0) in d4exp_tcast(d4e0, s2e0)
+trans34_dexp(env0, d3e0)
+in
+//
+let
+val
+d4e0 =
+d4exp_opny_env(env0, d4e0)
+in
+  d4exp_tcast( d4e0, s2e0 )
+end
+//
 end // end of [else-of-d3exp]
 //
 end (*let*) // end of [trans34_dexp_dntp]

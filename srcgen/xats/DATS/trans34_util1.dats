@@ -62,7 +62,7 @@ s2exp_whnfize(s2e0)
 (*
 //
 implement
-trans34_s2exp_opnx
+s2exp_opnx_env
   (loc0, s2e0) =
 let
 val
@@ -76,13 +76,13 @@ val s2t0 = s2e0.sort()
 val
 xtv1 = s2xtv_new(loc0, s2t0)
 //
-} // end of [trans34_s2exp_opnx]
+} // end of [s2exp_opnx_env]
 //
 *)
 (* ****** ****** *)
 
 implement
-trans34_s2exp_opny
+s2exp_opny_env
   (env0, s2e0) =
 (
   auxs2e0(env0, s2e0)
@@ -152,7 +152,35 @@ _(*rest-of-s2exp*) =>
 (list_nil(), list_nil(), s2e0)
 //
 end (*let*) // end of [auxs2e0]
-} (*where*) // end of [trans34_s2exp_opny]
+} (*where*) // end of [s2exp_opny_env]
+
+(* ****** ****** *)
+
+implement
+d4exp_opny_env
+( env0, d4e0 ) =
+let
+//
+val
+loc0 = d4e0.loc()
+val
+s2e0 = d4e0.sexp()
+val
+t2p0 = d4e0.type()
+//
+val
+( s2vs
+, s2ps
+, sopn) =
+s2exp_opny_env(env0, s2e0)
+//
+in
+d4exp_make_node
+( loc0
+, sopn
+, t2p0
+, D4Eopny(d4e0, s2vs, s2ps))
+end // end of [d4exp_opny_env]
 
 (* ****** ****** *)
 

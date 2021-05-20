@@ -207,16 +207,25 @@ whnfize_env with s2exp_whnfize_env
 //
 (*
 fun
-trans34_s2exp_opnx
+s2exp_opnx_env
 ( loc0: loc_t
 , s2e0: s2exp): s2xtv
 *)
 fun
-trans34_s2exp_opny
+s2exp_opny_env
 ( env0:
 ! tr34env, s2e0: s2exp)
 : (s2varlst, s2explst, s2exp)
 //
+(* ****** ****** *)
+fun
+d4exp_open_env
+( env0:
+! tr34env, d4e0: d4exp): d4exp
+fun
+d4exp_opny_env
+( env0:
+! tr34env, d4e0: d4exp): d4exp
 (* ****** ****** *)
 //
 fun
