@@ -59,6 +59,240 @@ s2exp_whnfize(s2e0)
 )
 //
 (* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+
+fun
+auxxtv
+( env0:
+! tr34env
+, s2e1: s2exp
+, s2e2: s2exp): void =
+let
+val-
+S2Extv
+(xtv1) = s2e1.node()
+in
+s2xtv_set_sexp(xtv1, s2e2)
+end // end of [auxxtv]
+
+(* ****** ****** *)
+
+in(*in-of-local*)
+
+(* ****** ****** *)
+
+implement
+s2exp_eqeqize_env
+(env0, s2e1, s2e2) =
+let
+val
+s2e1 =
+whnfize_env(env0, s2e1)
+val
+s2e2 =
+whnfize_env(env0, s2e2)
+in(*in-of-let*)
+//
+case+
+s2e1.node() of
+|
+S2Extv _ =>
+auxxtv(env0, s2e1, s2e2)
+| _(*rest-of-s2exp*) =>
+(
+case+
+s2e2.node() of
+|
+S2Extv _ =>
+auxxtv(env0, s2e2, s2e1)
+| _(*rest-of-s2exp*) => ((*void*))
+)
+//
+end // end of [s2exp_eqeqize_env]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+
+fun
+auxxtv
+( env0:
+! tr34env
+, s2e1: s2exp
+, s2e2: s2exp): void =
+let
+val-
+S2Extv
+(xtv1) = s2e1.node()
+in
+s2xtv_set_sexp(xtv1, s2e2)
+end // end of [auxxtv]
+
+(* ****** ****** *)
+
+in(*in-of-local*)
+
+(* ****** ****** *)
+
+implement
+s2exp_tpeqize_env
+(env0, s2e1, s2e2) =
+let
+val
+s2e1 =
+whnfize_env(env0, s2e1)
+val
+s2e2 =
+whnfize_env(env0, s2e2)
+in(*in-of-let*)
+//
+case+
+s2e1.node() of
+|
+S2Extv _ =>
+auxxtv(env0, s2e1, s2e2)
+| _(*rest-of-s2exp*) =>
+(
+case+
+s2e2.node() of
+|
+S2Extv _ =>
+auxxtv(env0, s2e2, s2e1)
+| _(*rest-of-s2exp*) => ((*void*))
+)
+//
+end // end of [s2exp_tpeqize_env]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+
+fun
+auxxtv
+( env0:
+! tr34env
+, s2e1: s2exp
+, s2e2: s2exp): void =
+let
+val-
+S2Extv
+(xtv1) = s2e1.node()
+in
+s2xtv_set_sexp(xtv1, s2e2)
+end (*let*) // end of [auxxtv]
+
+(* ****** ****** *)
+
+fun
+auxapp
+( env0:
+! tr34env
+, s2e1: s2exp
+, s2e2: s2exp): void =
+let
+val-
+S2Eapp
+(s2f1, ses1) = s2e1.node()
+in
+//
+case+
+s2e2.node() of
+|
+S2Eapp(s2f2, ses2) =>
+let
+val () =
+s2exp_tpeqize_env
+(env0, s2f1, s2f2)
+in
+  auxarg(env0, ses1, ses2)
+end // end of [S2Eapp]
+| _(*rest-of-s2exp*) => ((*void*))
+end where
+{
+fun
+auxarg
+( env0:
+! tr34env
+, ses1: s2explst
+, ses2: s2explst): void =
+(
+case+ ses1 of
+|
+list_nil() => () where
+{
+  val-list_nil() = ses2
+}
+|
+list_cons
+(se11, ses1) => () where
+{
+val-
+list_cons(se21, ses2) = ses2
+val () =
+(
+ifcase
+| _(*else*) =>
+s2exp_eqeqize_env(env0, se11, se21)
+)
+}
+)
+} (*where*) // end of [auxapp]
+
+(* ****** ****** *)
+
+in(*in-of-local*)
+
+(* ****** ****** *)
+
+implement
+s2exp_tsubize_env
+(env0, s2e1, s2e2) =
+let
+//
+val
+s2e1 =
+whnfize_env(env0, s2e1)
+val
+s2e2 =
+whnfize_env(env0, s2e2)
+//
+in(*in-of-let*)
+//
+case+
+s2e1.node() of
+//
+|
+S2Extv _ =>
+auxxtv(env0, s2e1, s2e2)
+//
+|
+S2Eapp _ =>
+auxapp(env0, s2e1, s2e2)
+//
+| _(*rest-of-s2exp*) => ((*void*))
+//
+end // end of [s2exp_tsubize_env]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
 (*
 //
 implement

@@ -192,7 +192,7 @@ fun
 tr34env_add_dvar_sexp
 ( env0:
 ! tr34env
-, d2v0: d2var, s2e0: s2exp) : void
+, d2v0: d2var, s2e0: s2exp): void
 (* ****** ****** *)
 //
 fun
@@ -205,6 +205,24 @@ whnfize_env with s2exp_whnfize_env
 //
 (* ****** ****** *)
 //
+fun
+s2exp_eqeqize_env
+( env0:
+! tr34env
+, s2e1: s2exp, s2e2: s2exp): void
+fun
+s2exp_tpeqize_env
+( env0:
+! tr34env
+, s2e1: s2exp, s2e2: s2exp): void
+fun
+s2exp_tsubize_env
+( env0:
+! tr34env
+, s2e1: s2exp, s2e2: s2exp): void
+//
+(* ****** ****** *)
+//
 (*
 fun
 s2exp_opnx_env
@@ -214,7 +232,8 @@ s2exp_opnx_env
 fun
 s2exp_opny_env
 ( env0:
-! tr34env, s2e0: s2exp)
+! tr34env
+, s2e0: s2exp)
 : (s2varlst, s2explst, s2exp)
 //
 (* ****** ****** *)
@@ -230,7 +249,7 @@ d4exp_opny_env
 //
 fun
 trans34_envless
-  (d3cls: d3eclist): d4eclist
+( d3cls: d3eclist ) : d4eclist
 //
 (* ****** ****** *)
 //
