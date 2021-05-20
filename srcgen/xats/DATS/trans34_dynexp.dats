@@ -1891,9 +1891,18 @@ trans34_dexp(env0, d3e0)
 in
 //
 let
+//
 val
 d4e0 =
 d4exp_opny_env(env0, d4e0)
+//
+val () =
+let
+val sopn = d4e0.sexp()
+in
+s2exp_tsubize_env(env0, sopn, s2e0)
+end
+//
 in
   d4exp_tcast( d4e0, s2e0 )
 end
