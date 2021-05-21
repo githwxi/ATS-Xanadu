@@ -409,11 +409,23 @@ val
 s2exp_opny_env(env0, s2e0)
 //
 in
-d4exp_make_node
-( loc0
-, sopn
-, t2p0
-, D4Eopny(d4e0, s2vs, s2ps))
+//
+case+
+(s2vs, s2ps) of
+|
+( list_nil()
+, list_nil()) => d4e0
+|
+( _(*else*)
+, _(*else*) ) =>
+(
+  d4exp_make_node
+  ( loc0
+  , sopn
+  , t2p0
+  , D4Eopny(d4e0, s2vs, s2ps))
+)
+//
 end // end of [d4exp_opny_env]
 
 (* ****** ****** *)
