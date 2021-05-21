@@ -765,6 +765,10 @@ val rtp = rcd.rtp
 val wtp = rcd.wtp
 val ctp = rcd.ctp
 //
+val () =
+tr3xenv_add_fix1
+(env0, nam(*d2v*))
+//
 val def =
 (
 case+ a3g of
@@ -782,6 +786,9 @@ Some
 (aux_f3as_body(env0, f3as, body))
 )
 ) : d3expopt // val
+//
+val () =
+tr3xenv_pop_fix1(env0)
 //
 val rtp = t2ype_normize(rtp) 
 //

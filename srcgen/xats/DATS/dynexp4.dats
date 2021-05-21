@@ -261,6 +261,21 @@ d4exp_make_node
 (* ****** ****** *)
 
 implement
+d4exp_none2
+( d4e0 ) =
+d4exp_make_node
+( loc0
+, s2e0, t2p0, node) where
+{
+  val loc0 = d4e0.loc()
+  val t2p0 = d4e0.type()
+  val s2e0 = d4e0.sexp()
+  val node = D4Enone2(d4e0)
+} (*where*) // d4exp_none2
+
+(* ****** ****** *)
+
+implement
 d4exp_tcast
 ( d4e1, s2e2 ) =
 d4exp_make_node

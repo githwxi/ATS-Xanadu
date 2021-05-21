@@ -385,7 +385,8 @@ for the meaning of knd
 | D4Etcast of
   (d4exp, c0str) // cstrnt generation
 //
-| D4Enone0 of () | D4Enone1 of (d3exp)
+| D4Enone0 of ()
+| D4Enone1 of (d3exp) | D4Enone2 of (d4exp)
 //
 (* ****** ****** *)
 //
@@ -425,6 +426,8 @@ overload .sexp with d4exp_get_sexp
 //
 fun
 d4exp_none1(d3e0: d3exp): d4exp
+fun
+d4exp_none2(d4e0: d4exp): d4exp
 //
 (* ****** ****** *)
 fun
