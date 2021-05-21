@@ -1883,22 +1883,67 @@ end // list_map$fopr
 //
 (* ****** ****** *)
 
+local
+
+fun
+aux_if0
+( env0:
+! tr34env
+, d3e0: d3exp
+, s2e0: s2exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Eif0
+( d3e1
+, d3e2
+, opt3) = d3e0.node()
+//
+val
+d4e1 =
+trans34_dexp(env0, d3e1)
+//
+val
+d4e2 =
+trans34_dexp_dntp(env0, d3e2, s2e0)
+val
+opt3 =
+(
+case+ opt3 of
+|
+None() => None()
+|
+Some(d3e3) =>
+Some
+(
+trans34_dexp_dntp(env0, d3e3, s2e0)
+)
+) : d4expopt // end of [val]
+//
+in
+d4exp_make_node
+( loc0
+, s2e0, t2p0, D4Eif0(d4e1, d4e2, opt3))
+end // end of [aux_if0]
+
+in(*in-of-local*)
+
 implement
 trans34_dexp_dntp
 ( env0
-, d3e0, s2e0) = let
-//
-val () =
-println!
-("trans34_dexp_dntp: d3e0 = ", d3e0)
-val () =
-println!
-("trans34_dexp_dntp: s2e0 = ", s2e0)
-//
-in
-//
+, d3e0, s2e0) =
+(
 case+
 d3e0.node() of
+|
+D3Eif0 _ =>
+aux_if0(env0, d3e0, s2e0)
+//
 |
 _ (* else-of-d3exp *) =>
 let
@@ -1926,7 +1971,19 @@ end
 //
 end // end of [else-of-d3exp]
 //
-end (*let*) // end of [trans34_dexp_dntp]
+) where
+{
+//
+val () =
+println!
+("trans34_dexp_dntp: d3e0 = ", d3e0)
+val () =
+println!
+("trans34_dexp_dntp: s2e0 = ", s2e0)
+//
+} (*where*) // end of [trans34_dexp_dntp]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -2487,13 +2544,21 @@ D3Cfundecl
 , mopt
 , tqas, f3ds) = d3cl.node()
 //
+(*
+val () =
+println!
+("aux_fundecl: f3ds = ", f3ds)
+*)
+//
 val
 f4ds =
 trans34_fundeclist(env0, f3ds)
 //
+// (*
 val () =
 println!
 ("aux_fundecl: f4ds = ", f4ds)
+// *)
 //
 in
 d4ecl_make_node
@@ -2796,10 +2861,27 @@ val loc = rcd.loc
 val d3p = rcd.pat
 val def = rcd.def
 //
-val d4p =
-trans34_dpat(env0, d3p)
 val def =
-trans34_dexpopt(env0, def)
+(
+case+ def of
+|
+None() => None()
+|
+Some(d3e) =>
+Some
+(trans34_dexp(env0, d3e))
+) : d4expopt // end-of-val
+//
+val d4p =
+(
+case+ def of
+|
+None() =>
+trans34_dpat(env0, d3p)
+|
+Some(d4e) =>
+trans34_dpat_dntp
+(env0, d3p, d4e.sexp())): d4pat
 //
 in(*in-of-let*)
 //
