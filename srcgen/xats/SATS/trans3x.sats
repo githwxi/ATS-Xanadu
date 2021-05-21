@@ -37,6 +37,14 @@
 #staload "./locinfo.sats"
 
 (* ****** ****** *)
+
+#define VARG 0 // arg. vars
+#define VLOC 0 // local vars
+#define VENV 1 // environ. vars
+#define VFIX 2 // fixed binding
+#define VTOP %(~1) // top-level vars
+
+(* ****** ****** *)
 //
 #staload S2E = "./staexp2.sats"
 #staload S2T = "./statyp2.sats"

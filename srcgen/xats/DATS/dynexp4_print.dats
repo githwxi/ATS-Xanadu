@@ -487,6 +487,8 @@ case+ x0.node() of
   fprint!(out, "D4Enone0(", ")")
 | D4Enone1(d3esrc) =>
   fprint!(out, "D4Enone1(", d3esrc, ")")
+| D4Enone2(d4esrc) =>
+  fprint!(out, "D4Enone2(", d4esrc, ")")
 //
 (*
 | _(* rest-of-d4exp *) => fprint!(out, "D4E...(...)")

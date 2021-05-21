@@ -74,10 +74,11 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/cstrnt0.sats"
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
-
 #staload "./../SATS/trans01.sats"
+(* ****** ****** *)
+#staload "./../SATS/trans3x.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans34.sats"
-
 (* ****** ****** *)
 implement
 fprint_val<s2exp> = fprint_s2exp
@@ -1084,14 +1085,24 @@ val-
 D3Evknd
 (knd0, d2v0) = d3e0.node()
 //
-val
-s2e0 =
-tr34env_d2var_get_sexp
-( env0, d2v0 )
-//
 val () =
 println!
 ( "auxvknd: d2v0 = ", d2v0 )
+val () =
+println!
+( "auxvknd: knd0 = ", knd0 )
+//
+val
+s2e0 =
+(
+ifcase
+|
+knd0=VFIX => d2v0.sexp()
+|
+_(*else*) =>
+tr34env_d2var_get_sexp(env0, d2v0)
+) : s2exp // end of [val]
+//
 val () =
 println!
 ( "auxvknd: s2e0 = ", s2e0 )
@@ -1493,11 +1504,11 @@ loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 //
-(*
+// (*
 val () =
 println!
 ("auxdapp: d3e0 = ", d3e0)
-*)
+// *)
 //
 val-
 D3Edapp
@@ -1513,7 +1524,13 @@ trans34_d4exp_deunis(d4f0)
 val s2f0 =
 s2exp_whnfize(d4f0.sexp())
 //
-in
+(*
+val () =
+println!
+("auxdapp: s2f0 = ", s2f0)
+*)
+//
+in(*in-of-let*)
 //
 case+
 s2f0.node() of
@@ -1537,7 +1554,7 @@ end // end of [S2Efun]
 _(*non-S2Efun*) =>
 let
 val d4f0 =
-d4exp_none1(d3f0)
+d4exp_none2(d4f0)
 val
 d4es =
 trans34_dexplst(env0, d3es)
@@ -2622,10 +2639,11 @@ a2g = rcd.a2g
 //
 val () =
 tr34env_add_fun0(env0)
+//
 val () =
 trans34_f3undecl_set_sexp(f3d0)
 //
-(*
+// (*
 val () =
 println!
 ("trans34_fundecl: nam = ", nam)
@@ -2638,7 +2656,7 @@ println!
 val () =
 println!
 ("trans34_fundecl: nam.type = ", nam.type())
-*)
+// *)
 (*
 val () =
 println!

@@ -693,18 +693,11 @@ in
 case+
 rcd.wtp of
 |
-Some(s2f0) =>
-{
-val () =
-d2var_set_sexp(nam, s2f0)
-val () =
-d2cst_set_sexp(d2c, s2f0)
-}
-|
 None((*void*)) =>
 let
 val a3g = rcd.a3g
 in
+//
 case+ a3g of
 |
 None() => ((*void*))
@@ -730,7 +723,13 @@ d2var_set_sexp(nam, s2f0);
 d2cst_set_sexp(d2c, s2f0);
 end
 //
-end // end of [None]
+end (* None *)
+|
+Some(s2f0) =>
+(
+d2var_set_sexp(nam, s2f0);
+d2cst_set_sexp(d2c, s2f0);
+) (* end of [Some] *)
 //
 end where
 {
@@ -792,7 +791,7 @@ aux_f3a0
 (fc2, f3a0, aux_f3as(f3as, s2r0))
 end // end of [list_cons]
 )
-} (* trans34_f3undecl_get_sexp *)
+} (* trans34_f3undecl_set_sexp *)
 
 (* ****** ****** *)
 //

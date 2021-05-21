@@ -427,14 +427,6 @@ _ (* end-of-tr3xstk *) => true
 //
 (* ****** ****** *)
 
-#define VARG 0 // arg. vars
-#define VLOC 0 // local vars
-#define VENV 1 // environ. vars
-#define VFIX 2 // fixed binding
-#define VTOP %(~1) // top-level vars
-
-(* ****** ****** *)
-
 implement
 tr3xenv_dvar_kind
   (env0, d2v0) =
