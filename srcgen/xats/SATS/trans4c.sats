@@ -13,12 +13,12 @@
 ** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
 ** Free Software Foundation; either version 3, or (at  your  option)  any
 ** later version.
-**
+** 
 ** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
 ** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
 ** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ** for more details.
-**
+** 
 ** You  should  have  received  a  copy of the GNU General Public License
 ** along  with  ATS;  see the  file COPYING.  If not, please write to the
 ** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
@@ -28,59 +28,11 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: March, 2021
+// Start Time: May 21st, 2021
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/staexp2.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/cstrnt0.sats"
-//
-(* ****** ****** *)
-implement
-print_c0str(x0) =
-fprint_c0str(stdout_ref, x0)
-implement
-prerr_c0str(x0) =
-fprint_c0str(stderr_ref, x0)
-(* ****** ****** *)
-implement
-fprint_val<c0str> = fprint_c0str
-(* ****** ****** *)
-//
-implement
-fprint_c0str
-  (out, x0) =
-(
-case+ x0.node() of
-|
-C0Seqeq(s2e1, s2e2) =>
-fprint!
-( out
-, "C0Seqeq(", s2e1, "; ", s2e2, ")")
-|
-C0Stsub(s2e1, s2e2) =>
-fprint!
-( out
-, "C0Stsub(", s2e1, "; ", s2e2, ")")
-|
-C0Stpeq(s2e1, s2e2) =>
-fprint!
-( out
-, "C0Stpeq(", s2e1, "; ", s2e2, ")")
-//
-) (* end of [fprint_c0str] *)
-//
+
 (* ****** ****** *)
 
-(* end of [xats_cstrnt0_print.dats] *)
+(* end of [trans4c.sats] *)
