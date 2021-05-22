@@ -69,12 +69,6 @@ c0str_node =
 | C0Stpeq of
   (s2exp, s2exp) // type-equality
 //
-| C0Slist of (c0strlst)
-//
-| C0Sif0 of
-  ( s2exp(*bool*)
-  , c0str(*then*), c0str(*else*))
-//
 (* ****** ****** *)
 //
 fun
