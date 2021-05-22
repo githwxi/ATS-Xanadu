@@ -28,49 +28,20 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May 21st, 2021
+// Start Time: May 22nd, 2021
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./xlabel0.sats"
-#staload "./locinfo.sats"
-
-(* ****** ****** *)
-#staload S2E = "./staexp2.sats"
-(* ****** ****** *)
-#staload D4E = "./dynexp4.sats"
-(* ****** ****** *)
-typedef s2var = $S2E.s2var
-(* ****** ****** *)
-typedef d4exp = $D4E.d4exp
-(* ****** ****** *)
 //
-absvtype
-tr4cenv_vtype = ptr
-vtypedef
-tr4cenv = tr4cenv_vtype
-//
-(* ****** ****** *)
-fun
-tr4cenv_add_svar
-( env0:
-! tr4cenv, s2v0: s2var): void
-
-(* ****** ****** *)
-//
-fun
-trans4c_dpat
-( env0:
-! tr4cenv, d4e0: d4exp): void
-//
-(* ****** ****** *)
-//
-fun
-trans4c_dexp
-( env0:
-! tr4cenv, d4e0: d4exp): void
+#include
+"share/atspre_staload.hats"
+#staload
+UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-(* end of [trans4c.sats] *)
+#staload "./../SATS/trans4c.sats"
+
+(* ****** ****** *)
+
+(* end of [xats_trans4c_dynexp.dats] *)
