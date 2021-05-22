@@ -28,41 +28,11 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: May 21st, 2021
+// Start Time: May 22nd, 2021
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-#staload "./xlabel0.sats"
-#staload "./locinfo.sats"
-
-(* ****** ****** *)
-#staload D4E = "./dynexp4.sats"
 (* ****** ****** *)
 
-typedef d4exp = $D4E.d4exp
-
-(* ****** ****** *)
-//
-absvtype
-tr4cenv_vtype = ptr
-vtypedef
-tr4cenv = tr4cenv_vtype
-//
-(* ****** ****** *)
-//
-fun
-trans4c_dpat
-( env0:
-! tr4cenv, d4e0: d4exp): void
-//
-(* ****** ****** *)
-//
-fun
-trans4c_dexp
-( env0:
-! tr4cenv, d4e0: d4exp): void
-//
-(* ****** ****** *)
-
-(* end of [trans4c.sats] *)
+(* end of [xats_trans4c_envmap.dats] *)
