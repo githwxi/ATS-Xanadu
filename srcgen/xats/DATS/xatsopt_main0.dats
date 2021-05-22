@@ -322,6 +322,9 @@ end // end of [local]
 #dynload "./trans34_dynexp.dats"
 #dynload "./tread34_dynexp.dats"
 //
+#dynload "./trans4c_envmap.dats"
+#dynload "./trans4c_dynexp.dats"
+//
 (* ****** ****** *)
 //
 (*
