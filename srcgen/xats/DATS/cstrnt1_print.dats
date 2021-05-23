@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: March, 2021
+// Start Time: May 22nd, 2021
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -39,70 +39,40 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-#staload "./../SATS/locinfo.sats"
-(* ****** ****** *)
 //
-#staload "./../SATS/cstrnt0.sats"
+#staload "./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
-
-local
-
-absimpl
-c0str_tbox = $rec
-{ c0str_loc= loc_t
-, c0str_node= c0str_node
-}
-
-in (* in-of-local *)
-
+//
+#staload "./../SATS/cstrnt1.sats"
+//
+(* ****** ****** *)
+implement
+print_c1str(x0) =
+fprint_c1str(stdout_ref, x0)
+implement
+prerr_c1str(x0) =
+fprint_c1str(stderr_ref, x0)
+(* ****** ****** *)
+implement
+fprint_val<c1str> = fprint_c1str
 (* ****** ****** *)
 //
 implement
-c0str_get_loc
-  (c0s) = c0s.c0str_loc
-implement
-c0str_get_node
-  (c0s) = c0s.c0str_node
-//
-(* ****** ****** *)
-//
-implement
-c0str_make_node
-( loc0
-, node) = $rec
-{ c0str_loc= loc0
-, c0str_node= node
-} (*$rec*) // c0str_make_node
-//
-(* ****** ****** *)
-
-end // end of [local]
-
-(* ****** ****** *)
-//
-implement
-c0str_make_tasmp
-( loc0
-, s2e1(*src*)
-, s2e2(*dst*)) =
+fprint_c1str
+  (out, x0) =
 (
-  c0str_make_node
-  (loc0, C0Seqeq(s2e1, s2e2))
-)
-//
-(* ****** ****** *)
-//
-implement
-c0str_make_tcast
-( loc0
-, s2e1(*src*)
-, s2e2(*dst*)) =
-(
-  c0str_make_node
-  (loc0, C0Stsub(s2e1, s2e2))
-)
+case+ x0.node() of
+|
+C1Sprop(s2e1) =>
+fprint!
+(out, "C1Sprop(", s2e1, ")")
+|
+C1Sitms(c1is) =>
+fprint!
+(out, "C1Sitms(", "...", ")")
+) (* end of [fprint_c0str] *)
 //
 (* ****** ****** *)
 
-(* end of [xats_cstrnt0.dats] *)
+(* end of [xats_cstrnt1_print.dats] *)

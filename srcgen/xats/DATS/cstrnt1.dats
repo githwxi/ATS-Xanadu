@@ -28,7 +28,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: March, 2021
+// Start Time: May 22nd, 2021
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -42,67 +42,29 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 //
-#staload "./../SATS/cstrnt0.sats"
+#staload "./../SATS/cstrnt1.sats"
 //
 (* ****** ****** *)
 
 local
 
 absimpl
-c0str_tbox = $rec
-{ c0str_loc= loc_t
-, c0str_node= c0str_node
+c1str_tbox = $rec
+{ c1str_loc= loc_t
+, c1str_node= c1str_node
 }
 
 in (* in-of-local *)
-
-(* ****** ****** *)
 //
 implement
-c0str_get_loc
-  (c0s) = c0s.c0str_loc
+c1str_get_loc
+  (c1s) = c1s.c1str_loc
 implement
-c0str_get_node
-  (c0s) = c0s.c0str_node
+c1str_get_node
+  (c1s) = c1s.c1str_node
 //
-(* ****** ****** *)
-//
-implement
-c0str_make_node
-( loc0
-, node) = $rec
-{ c0str_loc= loc0
-, c0str_node= node
-} (*$rec*) // c0str_make_node
-//
-(* ****** ****** *)
-
 end // end of [local]
 
 (* ****** ****** *)
-//
-implement
-c0str_make_tasmp
-( loc0
-, s2e1(*src*)
-, s2e2(*dst*)) =
-(
-  c0str_make_node
-  (loc0, C0Seqeq(s2e1, s2e2))
-)
-//
-(* ****** ****** *)
-//
-implement
-c0str_make_tcast
-( loc0
-, s2e1(*src*)
-, s2e2(*dst*)) =
-(
-  c0str_make_node
-  (loc0, C0Stsub(s2e1, s2e2))
-)
-//
-(* ****** ****** *)
 
-(* end of [xats_cstrnt0.dats] *)
+(* end of [xats_cstrnt1.dats] *)

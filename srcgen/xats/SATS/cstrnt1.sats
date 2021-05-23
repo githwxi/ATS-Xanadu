@@ -40,6 +40,7 @@
 #staload S2T = "./statyp2.sats"
 (* ****** ****** *)
 typedef s2var = $S2E.s2var
+typedef s2exp = $S2E.s2exp
 (* ****** ****** *)
 //
 abstbox c1str_tbox = ptr
@@ -52,6 +53,43 @@ datatype c1itm =
 | C1Isvar of s2var
 | C1Icstr of c1str
 | C1Idisj of c1strlst
+and c1str_node =
+| C1Sprop of s2exp
+| C1Sitms of c1itmlst
+and c1hyp_node =
+| C1Hprop of s2exp
+| C1Hbind of (s2var, s2exp)
+| C1Heqeq of (s2exp, s2exp)
+//
+where c1itmlst = List0(c1itm)
+//
+(* ****** ****** *)
+//
+fun
+c1str_get_loc
+( c1s: c1str ): loc_t
+fun
+c1str_get_node
+( c1s: c1str ): c1str_node
+//
+overload .loc with c1str_get_loc
+overload .node with c1str_get_node
+//
+fun
+print_c1str : print_type(c1str)
+fun
+prerr_c1str : prerr_type(c1str)
+fun
+fprint_c1str : fprint_type(c1str)
+//
+overload print with print_c1str
+overload prerr with prerr_c1str
+overload fprint with fprint_c1str
+//
+fun
+c1str_make_node
+( loc0
+: loc_t, node: c1str_node): c1str
 //
 (* ****** ****** *)
 

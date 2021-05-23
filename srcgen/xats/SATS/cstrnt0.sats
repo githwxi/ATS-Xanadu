@@ -93,9 +93,6 @@ overload prerr with prerr_c0str
 overload fprint with fprint_c0str
 //
 fun
-c0str_get_store
-( c0s: c0str ): c0strlstopt
-fun
 c0str_make_node
 ( loc0
 : loc_t, node: c0str_node): c0str
