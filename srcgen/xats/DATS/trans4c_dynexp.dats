@@ -65,6 +65,25 @@ d4p0.node() of
 end (*let*) // end of [trans4c_dpat]
 
 (* ****** ****** *)
+//
+implement
+trans4c_dpatlst
+(env0, d4ps) =
+(
+case+ d4ps of
+|
+list_nil() => ()
+|
+list_cons(d4p0, d4ps) =>
+{
+  val () =
+  trans4c_dpat(env0, d4p0)
+  val () =
+  trans4c_dpatlst(env0, d4ps)
+}
+) (* end of [trans4c_dpatlst] *)
+//
+(* ****** ****** *)
 
 implement
 trans4c_dexp
@@ -83,6 +102,25 @@ d4e0.node() of
 end (*let*) // end of [trans4c_dexp]
 
 (* ****** ****** *)
+//
+implement
+trans4c_dexplst
+(env0, d4es) =
+(
+case+ d4es of
+|
+list_nil() => ()
+|
+list_cons(d4e0, d4es) =>
+{
+  val () =
+  trans4c_dexp(env0, d4e0)
+  val () =
+  trans4c_dexplst(env0, d4es)
+}
+) (* end of [trans4c_dexplst] *)
+//
+(* ****** ****** *)
 
 implement
 trans4c_decl
@@ -99,6 +137,25 @@ d4cl.node() of
 | _ (*rest-of-d4ecl*) => ((*void*))
 //
 end (*let*) // end of [trans4c_decl]
+
+(* ****** ****** *)
+
+implement
+trans4c_declist
+(env0, dcls) =
+(
+case+ dcls of
+|
+list_nil() => ()
+|
+list_cons(d4cl, dcls) =>
+{
+  val () =
+  trans4c_decl(env0, d4cl)
+  val () =
+  trans4c_declist(env0, dcls)
+}
+) (* end of [trans4c_declist] *)
 
 (* ****** ****** *)
 

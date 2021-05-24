@@ -43,8 +43,15 @@
 (* ****** ****** *)
 typedef s2var = $S2E.s2var
 (* ****** ****** *)
+//
+typedef d4pat = $D4E.d4pat
 typedef d4exp = $D4E.d4exp
 typedef d4ecl = $D4E.d4ecl
+//
+typedef d4patlst = $D4E.d4patlst
+typedef d4explst = $D4E.d4explst
+typedef d4eclist = $D4E.d4eclist
+//
 (* ****** ****** *)
 #staload C1S = "./cstrnt1.sats"
 (* ****** ****** *)
@@ -81,7 +88,11 @@ tr4cenv_add_citm
 fun
 trans4c_dpat
 ( env0:
-! tr4cenv, d4e0: d4exp): void
+! tr4cenv, d4p0: d4pat): void
+fun
+trans4c_dpatlst
+( env0:
+! tr4cenv, d4ps: d4patlst): void
 //
 (* ****** ****** *)
 //
@@ -89,13 +100,21 @@ fun
 trans4c_dexp
 ( env0:
 ! tr4cenv, d4e0: d4exp): void
+fun
+trans4c_dexplst
+( env0:
+! tr4cenv, d4es: d4explst): void
 //
 (* ****** ****** *)
 //
 fun
 trans4c_decl
 ( env0:
-! tr4cenv, d4c0: d4ecl): void
+! tr4cenv, d4cl: d4ecl): void
+fun
+trans4c_declist
+( env0:
+! tr4cenv, dcls: d4eclist): void
 //
 (* ****** ****** *)
 
