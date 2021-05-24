@@ -249,7 +249,7 @@ d4exp_opny_env
 //
 fun
 trans34_envless
-( d3cls: d3eclist ) : d4eclist
+( dcls: d3eclist ) : d4eclist
 //
 (* ****** ****** *)
 //

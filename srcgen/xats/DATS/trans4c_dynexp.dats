@@ -49,6 +49,26 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 implement
+trans4c_envless
+  (prog) =
+  (cstr) where
+{
+//
+val
+env0 =
+tr4cenv_make_nil()
+//
+val () =
+trans4c_declist(env0, prog)
+//
+val
+cstr = tr4cenv_free_top(env0)
+//
+} (* end of [trans4c_envless] *)
+
+(* ****** ****** *)
+
+implement
 trans4c_dpat
 (env0, d4p0) =
 let
