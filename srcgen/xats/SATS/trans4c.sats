@@ -45,6 +45,11 @@ typedef s2var = $S2E.s2var
 (* ****** ****** *)
 typedef d4exp = $D4E.d4exp
 (* ****** ****** *)
+#staload C1S = "./cstrnt1.sats"
+(* ****** ****** *)
+typedef c1itm = $C1S.c1itm
+typedef c1itmlst = $C1S.c1itmlst
+(* ****** ****** *)
 //
 absvtype
 tr4cenv_vtype = ptr
@@ -52,11 +57,24 @@ vtypedef
 tr4cenv = tr4cenv_vtype
 //
 (* ****** ****** *)
+//
+fun
+tr4cenv_add_fun0
+  ( env0: !tr4cenv ) : void
+fun
+tr4cenv_pop_fun0
+  ( env0: !tr4cenv ) : void
+//
+(* ****** ****** *)
 fun
 tr4cenv_add_svar
 ( env0:
 ! tr4cenv, s2v0: s2var): void
-
+(* ****** ****** *)
+fun
+tr4cenv_add_citm
+( env0:
+! tr4cenv, itm0: c1itm): void
 (* ****** ****** *)
 //
 fun

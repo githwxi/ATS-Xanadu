@@ -40,8 +40,24 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/cstrnt1.sats"
 #staload "./../SATS/trans4c.sats"
 
+(* ****** ****** *)
+//
+datavtype
+tr34env =
+TR34ENV of citmstk
+//
+and citmstk =
+//
+| citmstk_nil of ()
+//
+| citmstk_if0 of (citmstk)
+| citmstk_cas0 of (citmstk)
+//
+| citmstk_cons of (c1itm, citmstk)
+//
 (* ****** ****** *)
 
 (* end of [xats_trans4c_envmap.dats] *)
