@@ -102,6 +102,8 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tread34.sats"
 //
 (* ****** ****** *)
+#staload "./../SATS/trans4c.sats"
+(* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
 
@@ -306,6 +308,18 @@ d3csopt of
   Some
   (trans34_envless(d3cs))
 ) : Option(d4eclist) // end-of-val
+//
+val
+c1isopt =
+(
+case+
+d4csopt of
+| None() =>
+  None(*void*)
+| Some(d4cs) =>
+  Some
+  (trans4c_envless(d4cs))
+) : Option(c1itmlst) // end-of-val
 //
 in
 D4TRANSD@{
