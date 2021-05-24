@@ -49,7 +49,38 @@ typedef c1strlst = List0(c1str)
 //
 (* ****** ****** *)
 //
-datatype c1itm =
+datatype
+c1knd =
+//
+| C1Knone of ()
+//
+| C1Kif0t of ()
+| C1Kif0f of ()
+//
+| C1Kcas0 of ()
+//
+| C1Klams of ()
+| C1Kfix1 of ()
+//
+| C1Kanno of ()
+//
+(* ****** ****** *)
+//
+fun
+print_c1knd : print_type(c1knd)
+fun
+prerr_c1knd : prerr_type(c1knd)
+fun
+fprint_c1knd : fprint_type(c1knd)
+//
+overload print with print_c1knd
+overload prerr with prerr_c1knd
+overload fprint with fprint_c1knd
+//
+(* ****** ****** *)
+//
+datatype
+c1itm =
 | C1Isvar of s2var
 | C1Icstr of c1str
 | C1Idisj of c1strlst
@@ -90,10 +121,12 @@ overload print with print_c1str
 overload prerr with prerr_c1str
 overload fprint with fprint_c1str
 //
+(* ****** ****** *)
+//
 fun
 c1str_make_node
-( loc0
-: loc_t, node: c1str_node): c1str
+( loc0: loc_t
+, knd0: c1knd, node: c1str_node): c1str
 //
 (* ****** ****** *)
 
