@@ -56,6 +56,7 @@ typedef d4eclist = $D4E.d4eclist
 #staload C1S = "./cstrnt1.sats"
 (* ****** ****** *)
 typedef c1itm = $C1S.c1itm
+typedef c1str = $C1S.c1str
 typedef c1itmlst = $C1S.c1itmlst
 (* ****** ****** *)
 //
@@ -63,6 +64,18 @@ absvtype
 tr4cenv_vtype = ptr
 vtypedef
 tr4cenv = tr4cenv_vtype
+//
+(* ****** ****** *)
+//
+fun
+tr4cenv_make_nil
+  ((*void*)): tr4cenv
+//
+(* ****** ****** *)
+//
+fun
+tr4cenv_free_top
+  (env0: tr4cenv): c1itmlst
 //
 (* ****** ****** *)
 //
@@ -83,6 +96,12 @@ fun
 tr4cenv_add_citm
 ( env0:
 ! tr4cenv, itm0: c1itm): void
+(* ****** ****** *)
+//
+fun
+trans4c_envless
+( dcls: d4eclist ) : c1itmlst
+//
 (* ****** ****** *)
 //
 fun

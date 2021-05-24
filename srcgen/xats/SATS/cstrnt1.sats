@@ -61,7 +61,11 @@ and c1hyp_node =
 | C1Hbind of (s2var, s2exp)
 | C1Heqeq of (s2exp, s2exp)
 //
-where c1itmlst = List0(c1itm)
+where
+c1itmlst = List0(c1itm)
+//
+vtypedef
+c1itmlst_vt = List0_vt(c1itm)
 //
 (* ****** ****** *)
 //

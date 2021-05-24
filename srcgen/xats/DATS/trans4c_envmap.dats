@@ -46,8 +46,8 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 datavtype
-tr34env =
-TR34ENV of citmstk
+tr4cenv =
+TR4cENV of citmstk
 //
 and citmstk =
 //
@@ -57,6 +57,56 @@ and citmstk =
 | citmstk_cas0 of (citmstk)
 //
 | citmstk_cons of (c1itm, citmstk)
+//
+(* ****** ****** *)
+
+absimpl
+tr4cenv_vtype = tr4cenv
+
+(* ****** ****** *)
+//
+implement
+tr4cenv_make_nil
+  ((*void*)) =
+(
+  TR4cENV(citmstk_nil((*void*)))
+)
+//
+(* ****** ****** *)
+//
+implement
+tr4cenv_free_top
+  (env0) =
+(
+let
+val
+c1is = list_vt_nil()
+val+
+~TR4cENV(stk0) = env0
+in
+list_vt2t(auxmain(stk0, c1is))
+end
+) where
+{
+fun
+auxmain
+( stk0
+: citmstk
+, c1is
+: c1itmlst_vt): c1itmlst_vt =
+(
+case- stk0 of
+| ~
+citmstk_nil
+((*void*)) =>
+list_vt_reverse(c1is)
+| ~
+citmstk_cons
+(c1i1, stk1) =>
+auxmain
+(stk1, list_vt_cons(c1i1, c1is))
+)
+} (*where*) // [tr4cenv_free_top]
 //
 (* ****** ****** *)
 
