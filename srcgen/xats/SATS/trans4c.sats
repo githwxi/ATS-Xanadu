@@ -44,6 +44,7 @@
 typedef s2var = $S2E.s2var
 (* ****** ****** *)
 typedef d4exp = $D4E.d4exp
+typedef d4ecl = $D4E.d4ecl
 (* ****** ****** *)
 #staload C1S = "./cstrnt1.sats"
 (* ****** ****** *)
@@ -88,6 +89,13 @@ fun
 trans4c_dexp
 ( env0:
 ! tr4cenv, d4e0: d4exp): void
+//
+(* ****** ****** *)
+//
+fun
+trans4c_decl
+( env0:
+! tr4cenv, d4c0: d4ecl): void
 //
 (* ****** ****** *)
 

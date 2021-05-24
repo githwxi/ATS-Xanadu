@@ -40,7 +40,65 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/dynexp4.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/trans4c.sats"
+
+(* ****** ****** *)
+
+implement
+trans4c_dpat
+(env0, d4p0) =
+let
+val () =
+println!
+("trans4c_dpat: d4p0 = ", d4p0)
+in
+//
+case+
+d4p0.node() of
+//
+| _ (*rest-of-d4pat*) => ((*void*))
+//
+end (*let*) // end of [trans4c_dpat]
+
+(* ****** ****** *)
+
+implement
+trans4c_dexp
+(env0, d4e0) =
+let
+val () =
+println!
+("trans4c_dexp: d4e0 = ", d4e0)
+in
+//
+case+
+d4e0.node() of
+//
+| _ (*rest-of-d4exp*) => ((*void*))
+//
+end (*let*) // end of [trans4c_dexp]
+
+(* ****** ****** *)
+
+implement
+trans4c_decl
+(env0, d4cl) =
+let
+val () =
+println!
+("trans4c_decl: d4cl = ", d4cl)
+in
+//
+case+
+d4cl.node() of
+//
+| _ (*rest-of-d4ecl*) => ((*void*))
+//
+end (*let*) // end of [trans4c_decl]
 
 (* ****** ****** *)
 
