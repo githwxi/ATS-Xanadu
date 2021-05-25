@@ -47,9 +47,19 @@ typedef t2ype = $S2T.t2ype
 //
 (* ****** ****** *)
 //
-abstbox c0str_tbox = ptr
-typedef c0str = c0str_tbox
-typedef c0strlst = List0(c0str)
+datatype c0str =
+//
+| C0Heqeq of
+  (s2exp, s2exp) // equality
+//
+| C0Ieqeq of
+  (s2exp, s2exp) // equality
+| C0Itsub of
+  (s2exp, s2exp) // subtyping
+| C0Itpeq of
+  (s2exp, s2exp) // type-equality
+//
+where c0strlst = List0(c0str)
 //
 typedef
 c0stropt = Option(c0str)
@@ -57,29 +67,6 @@ typedef
 c0strlstopt = Option(c0strlst)
 //
 (* ****** ****** *)
-//
-datatype
-c0str_node =
-//
-| C0Seqeq of
-  (s2exp, s2exp) // equality
-//
-| C0Stsub of
-  (s2exp, s2exp) // subtyping
-| C0Stpeq of
-  (s2exp, s2exp) // type-equality
-//
-(* ****** ****** *)
-//
-fun
-c0str_get_loc
-( c0s: c0str ): loc_t
-fun
-c0str_get_node
-( c0s: c0str ): c0str_node
-//
-overload .loc with c0str_get_loc
-overload .node with c0str_get_node
 //
 fun
 print_c0str : print_type(c0str)
@@ -92,21 +79,14 @@ overload print with print_c0str
 overload prerr with prerr_c0str
 overload fprint with fprint_c0str
 //
-fun
-c0str_make_node
-( loc0
-: loc_t, node: c0str_node): c0str
-//
 (* ****** ****** *)
 //
 fun
 c0str_make_tasmp
-( loc0: loc_t
-, s2e1: s2exp, s2e2: s2exp): c0str
+(s2e1: s2exp, s2e2: s2exp): c0str
 fun
 c0str_make_tcast
-( loc0: loc_t
-, s2e1: s2exp, s2e2: s2exp): c0str
+(s2e1: s2exp, s2e2: s2exp): c0str
 //
 (* ****** ****** *)
 

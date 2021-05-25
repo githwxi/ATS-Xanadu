@@ -62,22 +62,29 @@ implement
 fprint_c0str
   (out, x0) =
 (
-case+ x0.node() of
+case+ x0 of
+//
 |
-C0Seqeq(s2e1, s2e2) =>
+C0Heqeq(s2e1, s2e2) =>
 fprint!
 ( out
-, "C0Seqeq(", s2e1, "; ", s2e2, ")")
+, "C0Heqeq(", s2e1, "; ", s2e2, ")")
+//
 |
-C0Stsub(s2e1, s2e2) =>
+C0Ieqeq(s2e1, s2e2) =>
 fprint!
 ( out
-, "C0Stsub(", s2e1, "; ", s2e2, ")")
+, "C0Ieqeq(", s2e1, "; ", s2e2, ")")
 |
-C0Stpeq(s2e1, s2e2) =>
+C0Itsub(s2e1, s2e2) =>
 fprint!
 ( out
-, "C0Stpeq(", s2e1, "; ", s2e2, ")")
+, "C0Itsub(", s2e1, "; ", s2e2, ")")
+|
+C0Itpeq(s2e1, s2e2) =>
+fprint!
+( out
+, "C0Itpeq(", s2e1, "; ", s2e2, ")")
 //
 ) (* end of [fprint_c0str] *)
 //

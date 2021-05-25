@@ -141,8 +141,7 @@ be changed to [s2e2]!
 //
   val cstr =
   c0str_make_tasmp
-  ( loc1
-  , s2e1(*src*), s2e2(*dst*))
+  (s2e1(*src*), s2e2(*dst*))
   val node = D4Ptasmp(d4p1, cstr)
 //
 } (* end of [d4pat_tasmp] *)
@@ -289,8 +288,7 @@ d4exp_make_node
 //
   val cstr =
   c0str_make_tcast
-  ( loc1
-  , s2e1(*src*), s2e2(*dst*))
+  (s2e1(*src*), s2e2(*dst*))
   val node = D4Etcast(d4e1, cstr)
 //
 } (*where*) // d4exp_make_node
