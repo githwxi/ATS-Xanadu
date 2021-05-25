@@ -51,8 +51,9 @@ local
 absimpl
 c1str_tbox = $rec
 { c1str_loc= loc_t
+, c1str_kind= c1knd
 , c1str_node= c1str_node
-}
+} (* $rec *)
 
 in (* in-of-local *)
 //
@@ -63,6 +64,23 @@ implement
 c1str_get_node
   (c1s) = c1s.c1str_node
 //
+(* ****** ****** *)
+
+implement
+c1str_make_node1
+(loc0, node) =
+c1str_make_node2
+(loc0, C1Knone(), node)
+implement
+c1str_make_node2
+(loc0, c1k0, node) =
+$rec{
+  c1str_loc=loc0
+, c1str_kind= c1k0, c1str_node= node
+}
+
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)

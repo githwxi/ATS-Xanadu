@@ -127,6 +127,20 @@ c1itmstk_fun0(stk0); fold@(env0)
 end // end of [tr4cenv_add_fun0]
 
 (* ****** ****** *)
+//
+implement
+tr4cenv_add_citm
+  (env0, citm) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+in
+stk0 :=
+c1itmstk_cons(citm, stk0); fold@(env0)
+end // end of [tr4cenv_add_fun0]
+//
+(* ****** ****** *)
 
 implement
 tr4cenv_pop_fun0
