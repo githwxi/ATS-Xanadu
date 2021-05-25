@@ -73,11 +73,11 @@ implement
 trans4c_dpat
 (env0, d4p0) =
 let
-(*
+// (*
 val () =
 println!
 ("trans4c_dpat: d4p0 = ", d4p0)
-*)
+// *)
 in
 //
 case+
@@ -112,11 +112,11 @@ implement
 trans4c_dexp
 (env0, d4e0) =
 let
-(*
+// (*
 val () =
 println!
 ("trans4c_dexp: d4e0 = ", d4e0)
-*)
+// *)
 in
 //
 case+
@@ -238,12 +238,12 @@ implement
 trans4c_decl
 (env0, d4cl) =
 let
-(*
+// (*
 val () =
 println!
 ("trans4c_decl: d4cl = ", d4cl)
-*)
-in
+// *)
+in(*in-of-let*)
 //
 case+
 d4cl.node() of
