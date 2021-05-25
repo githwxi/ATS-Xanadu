@@ -44,6 +44,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/cstrnt1.sats"
 #staload "./../SATS/trans4c.sats"
 
 (* ****** ****** *)
@@ -146,6 +147,93 @@ list_cons(d4e0, d4es) =>
 //
 (* ****** ****** *)
 
+local
+
+fun
+aux_fundecl
+( env0:
+! tr4cenv,
+  d4cl: d4ecl): void =
+let
+//
+val-
+D4Cfundecl
+( tok0
+, mopt
+, tqas
+, f4ds) = d4cl.node()
+//
+in
+  auxf4ds(env0, f4ds)
+
+end where
+{
+//
+fun
+auxf4d0
+( env0:
+! tr4cenv
+, f4d0
+: f4undecl): void =
+let
+//
+val+
+F4UNDECL
+( rcd ) = f4d0
+//
+val loc = rcd.loc
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a2g = rcd.a2g
+val a4g = rcd.a4g
+//
+val () =
+tr4cenv_add_fun0(env0)
+//
+val () =
+(
+case
+rcd.def of
+|
+None() => ()
+|
+Some(d4e0) =>
+trans4c_dexp(env0, d4e0)
+) : void // end-of-val
+//
+val c1is =
+tr4cenv_pop_fun0(env0)
+val cstr =
+c1str_make_node
+(loc, C1Kfun0(), C1Sitms(c1is))
+//
+in
+tr4cenv_add_citm(env0, C1Icstr(cstr))
+end // end of [auxf4d0]
+//
+fun
+auxf4ds
+( env0:
+! tr4cenv
+, f4ds
+: f4undeclist): void =
+(
+case+ f4ds of
+|
+list_nil() => ()
+|
+list_cons
+(f4d0, f4ds) => () where
+{
+val () = auxf4d0(env0, f4d0)
+val () = auxf4ds(env0, f4ds)
+}
+) (* end of [auxf4ds] *)
+//
+} (*where*) // end of [aux_fundecl]
+
+in(*in-of-local*)
+
 implement
 trans4c_decl
 (env0, d4cl) =
@@ -160,9 +248,15 @@ in
 case+
 d4cl.node() of
 //
+|
+D4Cfundecl _ =>
+aux_fundecl(env0, d4cl)
+//
 | _ (*rest-of-d4ecl*) => ((*void*))
 //
 end (*let*) // end of [trans4c_decl]
+
+end // end of [local]
 
 (* ****** ****** *)
 

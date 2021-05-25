@@ -2695,14 +2695,10 @@ val+
 F3UNDECL
 ( rcd ) = f3d0
 //
-val
-loc = rcd.loc
-val
-nam = rcd.nam
-val
-d2c = rcd.d2c
-val
-a2g = rcd.a2g
+val loc = rcd.loc
+val nam = rcd.nam
+val d2c = rcd.d2c
+val a2g = rcd.a2g
 //
 val () =
 tr34env_add_fun0(env0)
