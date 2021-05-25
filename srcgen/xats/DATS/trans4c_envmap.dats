@@ -47,16 +47,20 @@ UN = "prelude/SATS/unsafe.sats"
 //
 datavtype
 tr4cenv =
-TR4cENV of citmstk
+TR4cENV of c1itmstk
 //
-and citmstk =
+and c1itmstk =
 //
-| citmstk_nil of ()
+| c1itmstk_nil of ()
 //
-| citmstk_if0 of (citmstk)
-| citmstk_cas0 of (citmstk)
+| c1itmstk_fun0 of (c1itmstk)
 //
-| citmstk_cons of (c1itm, citmstk)
+| c1itmstk_if0t of (c1itmstk)
+| c1itmstk_if0f of (c1itmstk)
+//
+| c1itmstk_cas0 of (c1itmstk)
+//
+| c1itmstk_cons of (c1itm, c1itmstk)
 //
 (* ****** ****** *)
 
@@ -69,7 +73,7 @@ implement
 tr4cenv_make_nil
   ((*void*)) =
 (
-  TR4cENV(citmstk_nil((*void*)))
+  TR4cENV(c1itmstk_nil((*void*)))
 )
 //
 (* ****** ****** *)
@@ -91,23 +95,71 @@ end
 fun
 auxmain
 ( stk0
-: citmstk
+: c1itmstk
 , c1is
 : c1itmlst_vt): c1itmlst_vt =
 (
 case- stk0 of
 | ~
-citmstk_nil
+c1itmstk_nil
 ((*void*)) =>
 list_vt_reverse(c1is)
 | ~
-citmstk_cons
+c1itmstk_cons
 (c1i1, stk1) =>
 auxmain
 (stk1, list_vt_cons(c1i1, c1is))
 )
 } (*where*) // [tr4cenv_free_top]
 //
+(* ****** ****** *)
+
+implement
+tr4cenv_add_fun0
+  (env0) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+in
+stk0 :=
+c1itmstk_fun0(stk0); fold@(env0)
+end // end of [tr4cenv_add_fun0]
+
+(* ****** ****** *)
+
+implement
+tr4cenv_pop_fun0
+  (env0) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+val
+( stk1
+, c1is) =
+auxmain(stk0, list_nil())
+//
+in
+stk0 := stk1; fold@(env0); c1is
+end where
+{
+fun
+auxmain
+( stk1: c1itmstk
+, c1is: c1itmlst)
+: (c1itmstk, c1itmlst) =
+(
+case- stk1 of
+| ~
+c1itmstk_fun0
+(stk1) => (stk1, c1is)
+| ~
+c1itmstk_cons(c1i1, stk1) =>
+auxmain(stk1, list_cons(c1i1, c1is))
+)
+} (*where*) // end of [tr4cenv_pop_fun0]
+
 (* ****** ****** *)
 
 (* end of [xats_trans4c_envmap.dats] *)

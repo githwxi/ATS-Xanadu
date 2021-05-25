@@ -84,7 +84,7 @@ tr4cenv_add_fun0
   ( env0: !tr4cenv ) : void
 fun
 tr4cenv_pop_fun0
-  ( env0: !tr4cenv ) : void
+  ( env0: !tr4cenv ) : c1itmlst
 //
 (* ****** ****** *)
 fun

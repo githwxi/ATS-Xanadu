@@ -2612,11 +2612,13 @@ in(*in-of-local*)
 case+
 d3cl.node() of
 //
-| D3Cfundecl _ =>
-  aux_fundecl(env0, d3cl)
+|
+D3Cfundecl _ =>
+aux_fundecl(env0, d3cl)
 //
-| D3Cvaldecl _ =>
-  aux_valdecl(env0, d3cl)
+|
+D3Cvaldecl _ =>
+aux_valdecl(env0, d3cl)
 //
 |
 _(*rest-of-d3ecl*) =>
@@ -2708,7 +2710,7 @@ tr34env_add_fun0(env0)
 val () =
 trans34_f3undecl_set_sexp(f3d0)
 //
-// (*
+(*
 val () =
 println!
 ("trans34_fundecl: nam = ", nam)
@@ -2721,7 +2723,7 @@ println!
 val () =
 println!
 ("trans34_fundecl: nam.type = ", nam.type())
-// *)
+*)
 (*
 val () =
 println!
