@@ -54,15 +54,15 @@ c1knd =
 //
 | C1Knone of ()
 //
-| C1Kif0t of ()
-| C1Kif0f of ()
+| C1Kif0t of () | C1Kif0f of ()
 //
 | C1Kcas0 of ()
 //
-| C1Klams of ()
-| C1Kfix1 of ()
+| C1Klams of () | C1Kfix1 of ()
 //
 | C1Kanno of ()
+//
+| C1Kfun0 of () | C1Kimpl of ()
 //
 (* ****** ****** *)
 //
@@ -124,9 +124,19 @@ overload fprint with fprint_c1str
 (* ****** ****** *)
 //
 fun
-c1str_make_node
+c1str_make_node1
 ( loc0: loc_t
-, knd0: c1knd, node: c1str_node): c1str
+, node: c1str_node): c1str
+fun
+c1str_make_node2
+( loc0: loc_t
+, knd0: c1knd
+, node: c1str_node): c1str
+//
+#symload
+c1str_make_node with c1str_make_node1
+#symload
+c1str_make_node with c1str_make_node2
 //
 (* ****** ****** *)
 
