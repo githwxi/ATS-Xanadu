@@ -43,7 +43,10 @@ typedef s2var = $S2E.s2var
 typedef s2exp = $S2E.s2exp
 (* ****** ****** *)
 //
+abstbox c1hyp_tbox = ptr
 abstbox c1str_tbox = ptr
+//
+typedef c1hyp = c1hyp_tbox
 typedef c1str = c1str_tbox
 typedef c1strlst = List0(c1str)
 //
@@ -54,13 +57,11 @@ c1knd =
 //
 | C1Knone of ()
 //
-| C1Kif0t of () | C1Kif0f of ()
+| C1Kbloc of ()
 //
-| C1Kcas0 of ()
+| C1Kif0 | C1Kcas0 of ()
 //
 | C1Klams of () | C1Kfix1 of ()
-//
-| C1Kanno of ()
 //
 | C1Kfun0 of () | C1Kimpl of ()
 //
@@ -82,6 +83,7 @@ overload fprint with fprint_c1knd
 datatype
 c1itm =
 | C1Isvar of s2var
+| C1Ichyp of c1hyp
 | C1Icstr of c1str
 | C1Idisj of c1strlst
 and c1str_node =
@@ -122,6 +124,34 @@ overload prerr with prerr_c1str
 overload fprint with fprint_c1str
 //
 (* ****** ****** *)
+//
+fun
+c1hyp_get_loc
+( c1s: c1hyp ): loc_t
+fun
+c1hyp_get_node
+( c1s: c1hyp ): c1hyp_node
+//
+overload .loc with c1hyp_get_loc
+overload .node with c1hyp_get_node
+//
+fun
+print_c1hyp : print_type(c1hyp)
+fun
+prerr_c1hyp : prerr_type(c1hyp)
+fun
+fprint_c1hyp : fprint_type(c1hyp)
+//
+overload print with print_c1hyp
+overload prerr with prerr_c1hyp
+overload fprint with fprint_c1hyp
+//
+(* ****** ****** *)
+//
+fun
+c1hyp_make_node
+( loc0: loc_t
+, node: c1hyp_node): c1hyp
 //
 fun
 c1str_make_node1

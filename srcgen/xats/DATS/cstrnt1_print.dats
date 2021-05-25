@@ -48,6 +48,46 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 implement
+print_c1knd(x0) =
+fprint_c1knd(stdout_ref, x0)
+implement
+prerr_c1knd(x0) =
+fprint_c1knd(stderr_ref, x0)
+(* ****** ****** *)
+//
+implement
+fprint_c1knd
+  (out, x0) =
+(
+case+ x0 of
+|
+C1Knone() =>
+fprint!(out, "C1Knone")
+|
+C1Kbloc() =>
+fprint!(out, "C1Kbloc")
+|
+C1Kif0() =>
+fprint!(out, "C1Kif0")
+|
+C1Kcas0() =>
+fprint!(out, "C1Kcas0")
+|
+C1Klams() =>
+fprint!(out, "C1Klams")
+|
+C1Kfix1() =>
+fprint!(out, "C1Kfix1")
+|
+C1Kfun0() =>
+fprint!(out, "C1Kfun0")
+|
+C1Kimpl() =>
+fprint!(out, "C1Kimpl")
+) (* end of [fprint_c1knd] *)
+//
+(* ****** ****** *)
+implement
 print_c1str(x0) =
 fprint_c1str(stdout_ref, x0)
 implement
@@ -71,7 +111,40 @@ fprint!
 C1Sitms(c1is) =>
 fprint!
 (out, "C1Sitms(", "...", ")")
-) (* end of [fprint_c0str] *)
+) (* end of [fprint_c1str] *)
+//
+(* ****** ****** *)
+implement
+print_c1hyp(x0) =
+fprint_c1hyp(stdout_ref, x0)
+implement
+prerr_c1hyp(x0) =
+fprint_c1hyp(stderr_ref, x0)
+(* ****** ****** *)
+implement
+fprint_val<c1hyp> = fprint_c1hyp
+(* ****** ****** *)
+//
+implement
+fprint_c1hyp
+  (out, x0) =
+(
+case+ x0.node() of
+|
+C1Hprop(s2e1) =>
+fprint!
+(out, "C1Hprop(", s2e1, ")")
+|
+C1Hbind(s2v1, s2e2) =>
+fprint!
+( out
+, "C1Hbind(", s2v1, ", ", s2e2, ")")
+|
+C1Heqeq(s2e1, s2e2) =>
+fprint!
+( out
+, "C1Heqeq(", s2e1, ", ", s2e2, ")")
+) (* end of [fprint_c1hyp] *)
 //
 (* ****** ****** *)
 

@@ -49,6 +49,41 @@ UN = "prelude/SATS/unsafe.sats"
 local
 
 absimpl
+c1hyp_tbox = $rec
+{ c1hyp_loc= loc_t
+, c1hyp_node= c1hyp_node
+} (* $rec *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+//
+implement
+c1hyp_get_loc
+  (c1s) = c1s.c1hyp_loc
+implement
+c1hyp_get_node
+  (c1s) = c1s.c1hyp_node
+//
+(* ****** ****** *)
+
+implement
+c1hyp_make_node
+(loc0, node) =
+$rec{
+  c1hyp_loc=loc0
+, c1hyp_node= node
+} (* $rec *) // c1hyp_make_node
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 c1str_tbox = $rec
 { c1str_loc= loc_t
 , c1str_kind= c1knd
@@ -56,6 +91,8 @@ c1str_tbox = $rec
 } (* $rec *)
 
 in (* in-of-local *)
+
+(* ****** ****** *)
 //
 implement
 c1str_get_loc
@@ -65,20 +102,22 @@ c1str_get_node
   (c1s) = c1s.c1str_node
 //
 (* ****** ****** *)
-
+//
 implement
 c1str_make_node1
 (loc0, node) =
 c1str_make_node2
-(loc0, C1Knone(), node)
+( loc0
+, C1Knone(), node)
 implement
 c1str_make_node2
 (loc0, c1k0, node) =
 $rec{
   c1str_loc=loc0
-, c1str_kind= c1k0, c1str_node= node
-}
-
+, c1str_kind= c1k0
+, c1str_node= node
+} (* $rec *) // c1str_make_node2
+//
 (* ****** ****** *)
 
 end // end of [local]

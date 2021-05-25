@@ -53,12 +53,12 @@ and c1itmstk =
 //
 | c1itmstk_nil of ()
 //
-| c1itmstk_fun0 of (c1itmstk)
-//
-| c1itmstk_if0t of (c1itmstk)
-| c1itmstk_if0f of (c1itmstk)
-//
+| c1itmstk_if0 of (c1itmstk)
 | c1itmstk_cas0 of (c1itmstk)
+//
+| c1itmstk_bloc of (c1itmstk)
+//
+| c1itmstk_fun0 of (c1itmstk)
 //
 | c1itmstk_cons of (c1itm, c1itmstk)
 //
@@ -115,6 +115,48 @@ auxmain
 (* ****** ****** *)
 
 implement
+tr4cenv_add_if0
+  (env0) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+in
+stk0 :=
+c1itmstk_if0(stk0); fold@(env0)
+end // end of [tr4cenv_add_if0]
+
+(* ****** ****** *)
+
+implement
+tr4cenv_add_cas0
+  (env0) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+in
+stk0 :=
+c1itmstk_cas0(stk0); fold@(env0)
+end // end of [tr4cenv_add_cas0]
+
+(* ****** ****** *)
+
+implement
+tr4cenv_add_bloc
+  (env0) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+in
+stk0 :=
+c1itmstk_bloc(stk0); fold@(env0)
+end // end of [tr4cenv_add_bloc]
+
+(* ****** ****** *)
+
+implement
 tr4cenv_add_fun0
   (env0) = let
 //
@@ -129,6 +171,23 @@ end // end of [tr4cenv_add_fun0]
 (* ****** ****** *)
 //
 implement
+tr4cenv_add_chyp
+  (env0, chyp) =
+(
+tr4cenv_add_citm
+(env0, C1Ichyp(chyp))
+)
+implement
+tr4cenv_add_cstr
+  (env0, cstr) =
+(
+tr4cenv_add_citm
+(env0, C1Icstr(cstr))
+)
+//
+(* ****** ****** *)
+//
+implement
 tr4cenv_add_citm
   (env0, citm) = let
 //
@@ -138,8 +197,110 @@ val+
 in
 stk0 :=
 c1itmstk_cons(citm, stk0); fold@(env0)
-end // end of [tr4cenv_add_fun0]
+end // end of [tr4cenv_add_citm]
 //
+(* ****** ****** *)
+
+implement
+tr4cenv_pop_if0
+  (env0) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+val
+( stk1
+, c1is) =
+auxmain(stk0, list_nil())
+//
+in
+stk0 := stk1; fold@(env0); c1is
+end where
+{
+fun
+auxmain
+( stk1: c1itmstk
+, c1is: c1itmlst)
+: (c1itmstk, c1itmlst) =
+(
+case- stk1 of
+| ~
+c1itmstk_if0
+(stk1) => (stk1, c1is)
+| ~
+c1itmstk_cons(c1i1, stk1) =>
+auxmain(stk1, list_cons(c1i1, c1is))
+)
+} (*where*) // end of [tr4cenv_pop_if0]
+
+(* ****** ****** *)
+
+implement
+tr4cenv_pop_cas0
+  (env0) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+val
+( stk1
+, c1is) =
+auxmain(stk0, list_nil())
+//
+in
+stk0 := stk1; fold@(env0); c1is
+end where
+{
+fun
+auxmain
+( stk1: c1itmstk
+, c1is: c1itmlst)
+: (c1itmstk, c1itmlst) =
+(
+case- stk1 of
+| ~
+c1itmstk_cas0
+(stk1) => (stk1, c1is)
+| ~
+c1itmstk_cons(c1i1, stk1) =>
+auxmain(stk1, list_cons(c1i1, c1is))
+)
+} (*where*) // end of [tr4cenv_pop_cas0]
+
+(* ****** ****** *)
+
+implement
+tr4cenv_pop_bloc
+  (env0) = let
+//
+val+
+@TR4cENV(stk0) = env0
+//
+val
+( stk1
+, c1is) =
+auxmain(stk0, list_nil())
+//
+in
+stk0 := stk1; fold@(env0); c1is
+end where
+{
+fun
+auxmain
+( stk1: c1itmstk
+, c1is: c1itmlst)
+: (c1itmstk, c1itmlst) =
+(
+case- stk1 of
+| ~
+c1itmstk_bloc
+(stk1) => (stk1, c1is)
+| ~
+c1itmstk_cons(c1i1, stk1) =>
+auxmain(stk1, list_cons(c1i1, c1is))
+)
+} (*where*) // end of [tr4cenv_pop_bloc]
+
 (* ****** ****** *)
 
 implement

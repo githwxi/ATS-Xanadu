@@ -40,6 +40,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/staexp2.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/dynexp4.sats"
 
 (* ****** ****** *)
@@ -108,6 +112,151 @@ list_cons(d4p0, d4ps) =>
 //
 (* ****** ****** *)
 
+local
+
+fun
+aux_if0
+( env0:
+! tr4cenv
+, d4e0: d4exp): void =
+let
+//
+val-
+D4Eif0
+( d4e1
+, d4e2
+, opt3) = d4e0.node()
+//
+val () =
+trans4c_dexp(env0, d4e1)
+//
+val loc1 = d4e1.loc()
+val s2e1 = d4e1.sexp()
+val sbtf = unbool(s2e1)
+(*
+val () =
+println!
+("aux_if0: s2e1 = ", s2e1)
+val () =
+println!
+("aux_if0: sbtf = ", sbtf)
+*)
+//
+val
+() =
+tr4cenv_add_if0(env0)
+//
+val
+c1h2 =
+c1hyp_make_node
+(loc1, C1Hprop(sbtf))
+//
+val
+() =
+tr4cenv_add_bloc(env0)
+val
+() =
+tr4cenv_add_chyp(env0, c1h2)
+val
+() = trans4c_dexp(env0, d4e2)
+val
+() = let
+val
+loc2 = d4e2.loc()
+val
+c1is =
+tr4cenv_pop_bloc(env0)
+val
+c1s2 =
+c1str_make_node
+( loc2
+, C1Kbloc(), C1Sitms(c1is))
+in
+  tr4cenv_add_cstr(env0, c1s2)
+end // end of [val]
+//
+val
+() =
+(
+case+ opt3 of
+|
+None() => ()
+|
+Some(d4e3) => () where
+{
+val
+sbff =
+s2exp_btf(false)
+val
+c1h3 =
+c1hyp_make_node
+( loc1
+, C1Heqeq(sbtf, sbff))
+val
+() =
+tr4cenv_add_bloc(env0)
+val
+() =
+tr4cenv_add_chyp(env0, c1h3)
+val
+() = trans4c_dexp(env0, d4e3)
+val
+() = let
+val
+loc3 = d4e3.loc()
+val
+c1is =
+tr4cenv_pop_bloc(env0)
+val
+c1s3 =
+c1str_make_node
+( loc3
+, C1Kbloc(), C1Sitms(c1is))
+in
+  tr4cenv_add_cstr(env0, c1s3)
+end // end of [val]
+}
+) : void // case // end-of-val
+//
+in
+//
+let
+val
+loc0 = d4e0.loc()
+val
+c1is =
+tr4cenv_pop_if0(env0)
+val
+c1s0 =
+c1str_make_node
+( loc0
+, C1Kif0(), C1Sitms(c1is))
+in
+  tr4cenv_add_cstr(env0, c1s0)
+end
+//
+end where
+{
+//
+fun
+unbool
+( sexp
+: s2exp
+)
+: s2exp = sbtf where
+{
+val-
+S2Eapp
+( s2f0
+, s2es) = sexp.node()
+val-
+list_cons(sbtf, _) = s2es
+} (*where*) // end of [unbool]
+//
+} (*where*) // end of [aux_if0]
+
+in(*in-of-local*)
+
 implement
 trans4c_dexp
 (env0, d4e0) =
@@ -122,9 +271,14 @@ in
 case+
 d4e0.node() of
 //
+|
+D4Eif0 _ => aux_if0(env0, d4e0)
+//
 | _ (*rest-of-d4exp*) => ((*void*))
 //
 end (*let*) // end of [trans4c_dexp]
+
+end // end of [local]
 
 (* ****** ****** *)
 //
