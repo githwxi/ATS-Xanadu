@@ -39,13 +39,10 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-//
 #staload "./../SATS/staexp2.sats"
-//
+#staload "./../SATS/cstrnt0.sats"
 (* ****** ****** *)
-//
 #staload "./../SATS/cstrnt1.sats"
-//
 (* ****** ****** *)
 implement
 print_c1knd(x0) =
@@ -53,6 +50,16 @@ fprint_c1knd(stdout_ref, x0)
 implement
 prerr_c1knd(x0) =
 fprint_c1knd(stderr_ref, x0)
+(* ****** ****** *)
+implement
+print_c1str(x0) =
+fprint_c1str(stdout_ref, x0)
+implement
+prerr_c1str(x0) =
+fprint_c1str(stderr_ref, x0)
+(* ****** ****** *)
+implement
+fprint_val<c1str> = fprint_c1str
 (* ****** ****** *)
 //
 implement
@@ -87,16 +94,6 @@ fprint!(out, "C1Kimpl")
 ) (* end of [fprint_c1knd] *)
 //
 (* ****** ****** *)
-implement
-print_c1str(x0) =
-fprint_c1str(stdout_ref, x0)
-implement
-prerr_c1str(x0) =
-fprint_c1str(stderr_ref, x0)
-(* ****** ****** *)
-implement
-fprint_val<c1str> = fprint_c1str
-(* ****** ****** *)
 //
 implement
 fprint_c1str
@@ -104,9 +101,13 @@ fprint_c1str
 (
 case+ x0.node() of
 |
-C1Sprop(s2e1) =>
+C1Ssexp(s2e1) =>
 fprint!
-(out, "C1Sprop(", s2e1, ")")
+(out, "C1Ssexp(", s2e1, ")")
+|
+C1Scstr(cstr) =>
+fprint!
+(out, "C1Scstr(", cstr, ")")
 |
 C1Sitms(c1is) =>
 fprint!

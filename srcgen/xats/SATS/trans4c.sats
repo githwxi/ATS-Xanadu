@@ -53,8 +53,10 @@ typedef d4explst = $D4E.d4explst
 typedef d4eclist = $D4E.d4eclist
 //
 (* ****** ****** *)
+#staload C0S = "./cstrnt0.sats"
 #staload C1S = "./cstrnt1.sats"
 (* ****** ****** *)
+typedef c0str = $C0S.c0str
 typedef c1itm = $C1S.c1itm
 typedef c1hyp = $C1S.c1hyp
 typedef c1str = $C1S.c1str
@@ -168,6 +170,14 @@ fun
 trans4c_declist
 ( env0:
 ! tr4cenv, dcls: d4eclist): void
+//
+(* ****** ****** *)
+//
+fun
+trans4c_cstr
+( env0:
+! tr4cenv
+, loc0: loc_t, cstr: c0str): void
 //
 (* ****** ****** *)
 

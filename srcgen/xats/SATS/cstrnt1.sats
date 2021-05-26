@@ -36,11 +36,9 @@
 (* ****** ****** *)
 #staload "./locinfo.sats"
 (* ****** ****** *)
-#staload S2E = "./staexp2.sats"
-#staload S2T = "./statyp2.sats"
-(* ****** ****** *)
-typedef s2var = $S2E.s2var
-typedef s2exp = $S2E.s2exp
+#staload "./staexp2.sats"
+#staload "./statyp2.sats"
+#staload "./cstrnt0.sats"
 (* ****** ****** *)
 //
 abstbox c1hyp_tbox = ptr
@@ -87,7 +85,8 @@ c1itm =
 | C1Icstr of c1str
 | C1Idisj of c1strlst
 and c1str_node =
-| C1Sprop of s2exp
+| C1Ssexp of s2exp
+| C1Scstr of c0str
 | C1Sitms of c1itmlst
 and c1hyp_node =
 | C1Hprop of s2exp
