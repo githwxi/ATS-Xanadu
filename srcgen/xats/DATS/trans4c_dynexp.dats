@@ -40,6 +40,10 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
+#staload "./../SATS/locinfo.sats"
+
+(* ****** ****** *)
+
 #staload "./../SATS/staexp2.sats"
 
 (* ****** ****** *)
@@ -48,6 +52,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+#staload "./../SATS/cstrnt0.sats"
 #staload "./../SATS/cstrnt1.sats"
 #staload "./../SATS/trans4c.sats"
 
@@ -261,6 +266,9 @@ implement
 trans4c_dexp
 (env0, d4e0) =
 let
+//
+val
+loc0 = d4e0.loc()
 // (*
 val () =
 println!
@@ -273,6 +281,16 @@ d4e0.node() of
 //
 |
 D4Eif0 _ => aux_if0(env0, d4e0)
+//
+|
+D4Etcast
+(d4e1, cstr) =>
+{
+  val () =
+  trans4c_dexp(env0, d4e1)
+  val () =
+  trans4c_cstr(env0, loc0, cstr)
+}
 //
 | _ (*rest-of-d4exp*) => ((*void*))
 //
@@ -430,6 +448,26 @@ list_cons(d4cl, dcls) =>
   trans4c_declist(env0, dcls)
 }
 ) (* end of [trans4c_declist] *)
+
+(* ****** ****** *)
+
+implement
+trans4c_cstr
+(env0, loc0, cstr) =
+let
+//
+val () =
+println!
+("trans4c_cstr: loc0 = ", loc0)
+val () =
+println!
+("trans4c_cstr: cstr = ", cstr)
+//
+in
+end where
+{
+
+} (*where*) // end of [trans4c_cstr]
 
 (* ****** ****** *)
 
