@@ -1485,6 +1485,14 @@ val the_ullint_ctype : s2cstref
 val the_string_ctype : s2cstref
 //
 (* ****** ****** *)
+//
+val the_sint0_ctype : s2cstref
+val the_uint0_ctype : s2cstref
+val the_bool0_ctype : s2cstref
+val the_char0_ctype : s2cstref
+val the_string0_ctype : s2cstref
+//
+(* ****** ****** *)
 
 val the_excptn_ctype : s2cstref
 

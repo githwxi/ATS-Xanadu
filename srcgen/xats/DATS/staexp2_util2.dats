@@ -134,13 +134,60 @@ end
 end // end of [auxxtv]
 //
 (* ****** ****** *)
+
+and
+auxapp
+( s2e0: s2exp
+, flag
+: &int >> _): s2exp =
+let
+//
+val fini = flag
+//
+val-
+S2Eapp
+( s2f0
+, s2es) = s2e0.node()
+//
+val
+s2f0 = auxs2e0(s2f0, flag)
+val
+s2es = auxs2es(s2es, flag)
+//
+in
+//
+case+
+s2f0.node() of
+|
+S2Elam(s2vs, body) =>
+let
+val () =
+(flag := flag+1)
+val body =
+s2exp_subst_svarlst
+( body, s2vs, s2es ) in auxs2e0(body, flag)
+end // end of [S2Elam]
+|
+_(*non-S2Elam*) =>
+if
+flag=fini then s2e0 else
+s2exp_make_node(s2e0.sort(), S2Eapp(s2f0, s2es))
+//
+end (*let*) // end of [auxapp]
+
+(* ****** ****** *)
 //
 and
 auxs2e0
 ( s2e0: s2exp
 , flag
 : &int >> int): s2exp =
-(
+let
+(*
+val fini = flag
+*)
+in
+//
 case+
 s2e0.node() of
 //
@@ -158,9 +205,40 @@ s2e0.node() of
   auxlft(s2e0, flag)
 *)
 //
+| S2Eapp _ =>
+  auxapp(s2e0, flag)
+//
 | _ (*rest-of-s2exp*) => s2e0
 //
-) (* end of [auxs2e0] *)
+end (*let*) // end of [auxs2e0]
+//
+and
+auxs2es
+( s2es: s2explst
+, flag: &int >> _): s2explst =
+let
+val fini = flag
+in
+//
+case+ s2es of
+|
+list_nil() => list_nil()
+|
+list_cons
+(s2e1, ses2) =>
+let
+val
+s2e1 = auxs2e0(s2e1, flag)
+val
+ses2 = auxs2es(ses2, flag)
+in
+  if
+  flag=fini
+  then s2es
+  else list_cons(s2e1, ses2)
+end // end of [list_cons]
+//
+end (*let*) // end of [auxs2es]
 //
 } (*where*) // end of [s2exp_whnfz]
 
@@ -285,7 +363,7 @@ flag=fini
 then s2e0
 else
 s2exp_make_node(s2t0, S2Eapp(s2e1, s2es))
-end
+end // end of [S2Eapp]
 |
 S2Elam(s2vs, s2e1) => let
 val
@@ -296,7 +374,7 @@ in
   then s2e0
   else
   s2exp_make_node(s2t0, S2Elam(s2vs, s2e1))
-end
+end // end of [S2Elam]
 //
 |
 S2Efun

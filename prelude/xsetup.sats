@@ -44,13 +44,17 @@ the_p2tr_ctype(a:vt) = p2tr(a)
 //
 (* ****** ****** *)
 //
-typedef the_sint_ctype = sint0
-typedef the_uint_ctype = uint0
+typedef
+the_sint_ctype(i:int) = sint1(i)
+typedef
+the_uint_ctype(i:int) = uint1(i)
 //
 (* ****** ****** *)
 //
-typedef the_bool_ctype = bool0
-typedef the_char_ctype = char0
+typedef
+the_bool_ctype(b:bool) = bool1(b)
+typedef
+the_char_ctype(c:char) = char1(c)
 //
 (* ****** ****** *)
 //
@@ -62,7 +66,6 @@ typedef the_dflt_ctype = dflt
 // ldouble precision
 typedef the_ldflt_ctype = ldflt
 //
-//
 (* ****** ****** *)
 //
 typedef the_slint_ctype = slint0
@@ -73,8 +76,17 @@ typedef the_ullint_ctype = ullint0
 //
 (* ****** ****** *)
 //
-typedef the_string_ctype = string0
+typedef
+the_string_ctype(n:int) = string1(n)
 //
+(* ****** ****** *)
+
+typedef the_sint0_ctype = sint0
+typedef the_uint0_ctype = uint0
+typedef the_bool0_ctype = bool0
+typedef the_char0_ctype = char0
+typedef the_string0_ctype = string0
+
 (* ****** ****** *)
 //
 typedef

@@ -154,7 +154,7 @@ tr4cenv_add_if0(env0)
 val
 c1h2 =
 c1hyp_make_node
-(loc1, C1Hprop(sbtf))
+(loc1, C1Hsexp(sbtf))
 //
 val
 () =
@@ -451,6 +451,261 @@ list_cons(d4cl, dcls) =>
 
 (* ****** ****** *)
 
+fun
+trans4c_s2exp_deexi
+( env0:
+! tr4cenv
+, loc0: loc_t
+, s2e0: s2exp): s2exp =
+(
+case+
+s2e0.node() of
+|
+S2Eexi
+( s2vs
+, s2ps, s2e1) =>
+let
+val
+tsub =
+auxtsub(s2vs)
+//
+val () =
+auxs2ps
+( env0
+, s2ps
+, s2vs
+, $UN.list_vt2t(tsub))
+//
+val
+s2e1 =
+s2exp_subst_svarlst
+( s2e1
+, s2vs
+, $UN.list_vt2t(tsub))
+//
+val () =
+list_vt_free( tsub )
+in
+  s2exp_whnfize(s2e1)
+end where
+{
+//
+fun
+auxtsub
+( s2vs
+: s2varlst)
+: s2explst_vt =
+(
+case+ s2vs of
+| list_nil() =>
+  list_vt_nil()
+| list_cons(s2v1, s2vs) =>
+  let
+  val xtv1 =
+  s2xtv_new
+  (loc0, s2v1.sort())
+  val s2e1 = s2exp_xtv(xtv1)
+  in
+  list_vt_cons(s2e1, auxtsub(s2vs))
+  end
+) (* end of [auxtsub] *)
+//
+fun
+auxs2ps
+( env0:
+! tr4cenv
+, s2ps: s2explst
+, s2vs: s2varlst
+, tsub: s2explst): void =
+(
+case+ s2ps of
+|
+list_nil() => ()
+|
+list_cons
+(s2p1, s2ps) =>
+let
+val
+s2p1 =
+s2exp_subst_svarlst
+( s2p1, s2vs, tsub )
+val
+chyp =
+c1hyp_make_node
+( loc0, C1Hsexp(s2p1))
+val () =
+tr4cenv_add_chyp(env0, chyp)
+in
+auxs2ps(env0, s2ps, s2vs, tsub)
+end // end of [list_cons]
+)
+//
+} (*where*) // S2Eexi
+| _(* non-S2Eexi *) => s2e0
+)
+
+(* ****** ****** *)
+
+local
+
+fun
+auxi_eqeq
+( env0:
+! tr4cenv,
+  loc0: loc_t
+, s2e1: s2exp
+, s2e2: s2exp): void =
+let
+//
+val s2e1 =
+s2exp_whnfize(s2e1)
+val s2e2 =
+s2exp_whnfize(s2e2)
+//
+val () =
+println!
+("auxi_eqeq: s2e1 = ", s2e1)
+val () =
+println!
+("auxi_eqeq: s2e2 = ", s2e2)
+//
+in
+//
+case+
+s2e1.node() of
+|
+S2Extv(xtv1) =>
+s2xtv_set_sexp(xtv1, s2e2)
+|
+_(*rest-of-s2exp*) =>
+(
+case+
+s2e2.node() of
+|
+S2Extv(xtv2) =>
+s2xtv_set_sexp(xtv2, s2e1)
+|
+_(*rest-of-s2exp*) =>
+let
+val cstr =
+c1str_make_node1
+(loc0, C1Seqeq(s2e1, s2e2))
+in
+  tr4cenv_add_cstr( env0, cstr )
+end
+)
+//
+end (*let*) // end of [auxi_eqeq]
+
+and
+auxi_tple
+( env0:
+! tr4cenv,
+  loc0: loc_t
+, s2e1: s2exp
+, s2e2: s2exp): void =
+let
+//
+val s2e1 =
+s2exp_whnfize(s2e1)
+val s2e2 =
+s2exp_whnfize(s2e2)
+//
+val () =
+println!
+("auxi_tple: s2e1 = ", s2e1)
+val () =
+println!
+("auxi_tple: s2e2 = ", s2e2)
+//
+in
+//
+case+
+s2e1.node() of
+|
+S2Eapp
+(s2f1, ses1) =>
+let
+val
+s2e2 =
+trans4c_s2exp_deexi
+( env0, loc0, s2e2 )
+val-
+S2Eapp
+( s2f2
+, ses2) = s2e2.node()
+val () =
+auxi_eqeq
+(env0, loc0, s2f1, s2f2)
+in
+auxj_eqeq
+(env0, loc0, ses1, ses2)
+end // end of [S2Eapp]
+//
+|
+_(*rest-of-s2exp*) =>
+let
+val cstr =
+c1str_make_node1
+(loc0, C1Stple(s2e1, s2e2))
+in
+  tr4cenv_add_cstr( env0, cstr )
+end
+//
+end (*let*) // end of [auxi_tple]
+
+and
+auxi_tpeq
+( env0:
+! tr4cenv,
+  loc0: loc_t
+, s2e1: s2exp
+, s2e2: s2exp): void =
+let
+//
+val () =
+println!
+("auxi_tpeq: s2e1 = ", s2e1)
+val () =
+println!
+("auxi_tpeq: s2e2 = ", s2e2)
+//
+in
+
+end (*let*) // end of [auxi_tpeq]
+
+(* ****** ****** *)
+
+and
+auxj_eqeq
+( env0:
+! tr4cenv,
+  loc0: loc_t
+, ses1: s2explst
+, ses2: s2explst): void =
+(
+case+ ses1 of
+|
+list_nil
+((*void*)) => ()
+|
+list_cons
+(s2e1, ses1) =>
+let
+val-
+list_cons
+(s2e2, ses2) = ses2
+val () =
+auxi_eqeq
+(env0, loc0, s2e1, s2e2)
+in
+auxj_eqeq
+(env0, loc0, ses1, ses2)
+end
+) (* end of [auxj_eqeq] *)
+
+in(*in-of-local*)
+
 implement
 trans4c_cstr
 (env0, loc0, cstr) =
@@ -464,10 +719,30 @@ println!
 ("trans4c_cstr: cstr = ", cstr)
 //
 in
-end where
-{
+//
+case+ cstr of
+|
+C0Itple(s2e1, s2e2) =>
+auxi_tple
+(env0, loc0, s2e1, s2e2)
+|
+C0Itpeq(s2e1, s2e2) =>
+auxi_tpeq
+(env0, loc0, s2e1, s2e2)
+|
+_(*rest-of-c0str*) =>
+let
+val
+cstr =
+c1str_make_node1
+(loc0, C1Scstr(cstr))
+in
+  tr4cenv_add_cstr( env0, cstr )
+end
+//
+end (*let*) // end of [trans4c_cstr]
 
-} (*where*) // end of [trans4c_cstr]
+end // end of [local]
 
 (* ****** ****** *)
 

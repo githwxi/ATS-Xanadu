@@ -52,12 +52,21 @@ prerr_c1knd(x0) =
 fprint_c1knd(stderr_ref, x0)
 (* ****** ****** *)
 implement
+print_c1itm(x0) =
+fprint_c1itm(stdout_ref, x0)
+implement
+prerr_c1itm(x0) =
+fprint_c1itm(stderr_ref, x0)
+(* ****** ****** *)
+implement
 print_c1str(x0) =
 fprint_c1str(stdout_ref, x0)
 implement
 prerr_c1str(x0) =
 fprint_c1str(stderr_ref, x0)
 (* ****** ****** *)
+implement
+fprint_val<c1itm> = fprint_c1itm
 implement
 fprint_val<c1str> = fprint_c1str
 (* ****** ****** *)
@@ -94,6 +103,21 @@ fprint!(out, "C1Kimpl")
 ) (* end of [fprint_c1knd] *)
 //
 (* ****** ****** *)
+implement
+fprint_c1itm
+  (out, x0) =
+(
+case+ x0 of
+| C1Isvar(s2v1) =>
+  fprint!(out, "C1Isvar(", s2v1, ")")
+| C1Ichyp(chyp) =>
+  fprint!(out, "C1Ichyp(", chyp, ")")
+| C1Icstr(cstr) =>
+  fprint!(out, "C1Icstr(", cstr, ")")
+| C1Idisj(c1ss) =>
+  fprint!(out, "C1Idisj(", "...", ")")
+)
+(* ****** ****** *)
 //
 implement
 fprint_c1str
@@ -101,9 +125,9 @@ fprint_c1str
 (
 case+ x0.node() of
 |
-C1Ssexp(s2e1) =>
+C1Ssexp(s2p1) =>
 fprint!
-(out, "C1Ssexp(", s2e1, ")")
+(out, "C1Ssexp(", s2p1, ")")
 |
 C1Scstr(cstr) =>
 fprint!
@@ -111,7 +135,18 @@ fprint!
 |
 C1Sitms(c1is) =>
 fprint!
-(out, "C1Sitms(", "...", ")")
+(out, "C1Sitms(", c1is, ")")
+|
+C1Seqeq(s2e1, s2e2) =>
+fprint!
+( out
+, "C1Seqeq(", s2e1, ", ", s2e2, ")")
+|
+C1Stple(s2e1, s2e2) =>
+fprint!
+( out
+, "C1Stple(", s2e1, ", ", s2e2, ")")
+//
 ) (* end of [fprint_c1str] *)
 //
 (* ****** ****** *)
@@ -132,9 +167,9 @@ fprint_c1hyp
 (
 case+ x0.node() of
 |
-C1Hprop(s2e1) =>
+C1Hsexp(s2e1) =>
 fprint!
-(out, "C1Hprop(", s2e1, ")")
+(out, "C1Hsexp(", s2e1, ")")
 |
 C1Hbind(s2v1, s2e2) =>
 fprint!
