@@ -119,6 +119,30 @@ list_cons(d4p0, d4ps) =>
 
 local
 
+(* ****** ****** *)
+
+fun
+auxdapp
+( env0:
+! tr4cenv
+, d4e0: d4exp): void =
+let
+//
+val-
+D4Edapp
+( d4f0
+, npf1
+, d4es) = d4e0.node()
+//
+val () =
+trans4c_dexp(env0, d4f0)
+//
+in
+trans4c_dexplst(env0, d4es)
+end (*let*) // end of [auxdapp]
+
+(* ****** ****** *)
+
 fun
 aux_if0
 ( env0:
@@ -260,6 +284,8 @@ list_cons(sbtf, _) = s2es
 //
 } (*where*) // end of [aux_if0]
 
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -280,7 +306,9 @@ case+
 d4e0.node() of
 //
 |
-D4Eif0 _ => aux_if0(env0, d4e0)
+D4Edapp _ => auxdapp(env0, d4e0)
+//
+|D4Eif0 _ => aux_if0(env0, d4e0)
 //
 |
 D4Etcast
@@ -530,19 +558,21 @@ s2p1 =
 s2exp_subst_svarlst
 ( s2p1, s2vs, tsub )
 val
-chyp =
-c1hyp_make_node
-( loc0, C1Hsexp(s2p1))
+cstr =
+c1str_make_node
+( loc0, C1Ssexp(s2p1))
 val () =
-tr4cenv_add_chyp(env0, chyp)
+tr4cenv_add_cstr(env0, cstr)
 in
 auxs2ps(env0, s2ps, s2vs, tsub)
 end // end of [list_cons]
 )
 //
 } (*where*) // S2Eexi
+//
 | _(* non-S2Eexi *) => s2e0
-)
+//
+) (* end of [trans4c_s2exp_deexi] *)
 
 (* ****** ****** *)
 
