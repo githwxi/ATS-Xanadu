@@ -54,7 +54,7 @@ c0str_make_tasmp
 implement
 c0str_make_tcast
 ( s2e1(*src*)
-, s2e2(*dst*)) = C0Itsub(s2e1, s2e2)
+, s2e2(*dst*)) = C0Itple(s2e1, s2e2)
 //
 (* ****** ****** *)
 

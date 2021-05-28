@@ -88,8 +88,10 @@ and c1str_node =
 | C1Ssexp of s2exp
 | C1Scstr of c0str
 | C1Sitms of c1itmlst
+| C1Seqeq of (s2exp, s2exp)
+| C1Stple of (s2exp, s2exp)
 and c1hyp_node =
-| C1Hprop of s2exp
+| C1Hsexp of s2exp
 | C1Hbind of (s2var, s2exp)
 | C1Heqeq of (s2exp, s2exp)
 //
@@ -98,6 +100,19 @@ c1itmlst = List0(c1itm)
 //
 vtypedef
 c1itmlst_vt = List0_vt(c1itm)
+//
+(* ****** ****** *)
+//
+fun
+print_c1itm : print_type(c1itm)
+fun
+prerr_c1itm : prerr_type(c1itm)
+fun
+fprint_c1itm : fprint_type(c1itm)
+//
+overload print with print_c1itm
+overload prerr with prerr_c1itm
+overload fprint with fprint_c1itm
 //
 (* ****** ****** *)
 //

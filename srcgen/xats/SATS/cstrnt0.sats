@@ -54,7 +54,7 @@ datatype c0str =
 //
 | C0Ieqeq of
   (s2exp, s2exp) // equality
-| C0Itsub of
+| C0Itple of
   (s2exp, s2exp) // subtyping
 | C0Itpeq of
   (s2exp, s2exp) // type-equality

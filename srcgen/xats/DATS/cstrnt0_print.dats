@@ -76,10 +76,10 @@ fprint!
 ( out
 , "C0Ieqeq(", s2e1, "; ", s2e2, ")")
 |
-C0Itsub(s2e1, s2e2) =>
+C0Itple(s2e1, s2e2) =>
 fprint!
 ( out
-, "C0Itsub(", s2e1, "; ", s2e2, ")")
+, "C0Itple(", s2e1, "; ", s2e2, ")")
 |
 C0Itpeq(s2e1, s2e2) =>
 fprint!

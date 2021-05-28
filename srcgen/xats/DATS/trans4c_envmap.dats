@@ -194,6 +194,10 @@ tr4cenv_add_citm
 val+
 @TR4cENV(stk0) = env0
 //
+val () =
+println!
+("tr4cenv_add_citm: citm = ", citm)
+//
 in
 stk0 :=
 c1itmstk_cons(citm, stk0); fold@(env0)

@@ -219,14 +219,14 @@ the_p2tr_ctype =
 s2cstref_make_name("the_p2tr_ctype")
 
 (* ****** ****** *)
-
+//
 implement
 the_sint_ctype =
 s2cstref_make_name("the_sint_ctype")
 implement
 the_uint_ctype =
 s2cstref_make_name("the_uint_ctype")
-
+//
 (* ****** ****** *)
 
 implement
@@ -269,6 +269,26 @@ implement
 the_string_ctype =
 s2cstref_make_name("the_string_ctype")
 
+(* ****** ****** *)
+//
+implement
+the_sint0_ctype =
+s2cstref_make_name("the_sint0_ctype")
+implement
+the_uint0_ctype =
+s2cstref_make_name("the_uint0_ctype")
+//
+implement
+the_bool0_ctype =
+s2cstref_make_name("the_bool0_ctype")
+implement
+the_char0_ctype =
+s2cstref_make_name("the_char0_ctype")
+//
+implement
+the_string0_ctype =
+s2cstref_make_name("the_string0_ctype")
+//
 (* ****** ****** *)
 
 implement
