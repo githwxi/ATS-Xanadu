@@ -657,6 +657,83 @@ list_cons(f4a0, f4as) =>
 
 local
 
+(* ****** ****** *)
+
+fun
+aux_valdecl
+( env0:
+! tr4cenv,
+  d4cl: d4ecl): void =
+let
+//
+val-
+D4Cvaldecl
+( tok0
+, mopt
+, v4ds) = d4cl.node()
+//
+in
+  auxv4ds(env0, v4ds)
+end where
+{
+//
+fun
+auxv4d0
+( env0:
+! tr4cenv
+, v4d0
+: v4aldecl): void =
+let
+//
+val+
+V4ALDECL
+( rcd ) = v4d0
+//
+val loc = rcd.loc
+//
+(*
+val () =
+tr4cenv_add_val0(env0)
+*)
+//
+val () =
+(
+case+
+rcd.def of
+|
+None() => ()
+|
+Some(d4e0) =>
+trans4c_dexp(env0, d4e0)
+) : void // end-of-val
+//
+in
+trans4c_dpat(env0, rcd.pat)
+end // end of [auxv4d0]
+//
+fun
+auxv4ds
+( env0:
+! tr4cenv
+, v4ds
+: v4aldeclist): void =
+(
+case+ v4ds of
+|
+list_nil() => ()
+|
+list_cons
+(v4d0, v4ds) => () where
+{
+val () = auxv4d0(env0, v4d0)
+val () = auxv4ds(env0, v4ds)
+}
+) (* end of [auxv4ds] *)
+//
+} (*where*) // end of [aux_valdecl]
+
+(* ****** ****** *)
+
 fun
 aux_fundecl
 ( env0:
@@ -673,7 +750,6 @@ D4Cfundecl
 //
 in
   auxf4ds(env0, f4ds)
-
 end where
 {
 //
@@ -747,6 +823,8 @@ val () = auxf4ds(env0, f4ds)
 //
 } (*where*) // end of [aux_fundecl]
 
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -762,6 +840,10 @@ in(*in-of-let*)
 //
 case+
 d4cl.node() of
+//
+|
+D4Cvaldecl _ =>
+aux_valdecl(env0, d4cl)
 //
 |
 D4Cfundecl _ =>
