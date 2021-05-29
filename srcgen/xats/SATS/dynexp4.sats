@@ -365,7 +365,7 @@ for the meaning of knd
 //
 | D4Elet of
   (d4eclist, d4exp(*sequence*))
-| D4Ewhere of (d4eclist, d4exp)
+| D4Ewhere of (d4exp, d4eclist)
 //
 | D4Eif0 of
   ( d4exp

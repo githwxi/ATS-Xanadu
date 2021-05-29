@@ -144,6 +144,48 @@ end (*let*) // end of [auxdapp]
 (* ****** ****** *)
 
 fun
+aux_let
+( env0:
+! tr4cenv
+, d4e0: d4exp): void =
+let
+//
+val-
+D4Elet
+( dcls
+, d4e1) = d4e0.node()
+//
+val () =
+trans4c_declist(env0, dcls)
+//
+in
+  trans4c_dexp( env0, d4e1 )
+end (*let*) // end of [aux_let]
+
+(* ****** ****** *)
+
+fun
+aux_where
+( env0:
+! tr4cenv
+, d4e0: d4exp): void =
+let
+//
+val-
+D4Ewhere
+( d4e1
+, dcls) = d4e0.node()
+//
+val () =
+trans4c_declist(env0, dcls)
+//
+in
+  trans4c_dexp( env0, d4e1 )
+end (*let*) // end of [aux_where]
+
+(* ****** ****** *)
+
+fun
 aux_if0
 ( env0:
 ! tr4cenv
@@ -308,7 +350,15 @@ d4e0.node() of
 |
 D4Edapp _ => auxdapp(env0, d4e0)
 //
-|D4Eif0 _ => aux_if0(env0, d4e0)
+|D4Elet _ => aux_let(env0, d4e0)
+|D4Ewhere
+(d4e1, dcls) => aux_where(env0, d4e0)
+//
+|
+D4Eif0
+( _cond_
+, _then_
+, _else_) => aux_if0(env0, d4e0)
 //
 |
 D4Etcast
