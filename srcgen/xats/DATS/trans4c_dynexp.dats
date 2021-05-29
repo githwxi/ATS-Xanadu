@@ -78,6 +78,82 @@ cstr = tr4cenv_free_top(env0)
 
 (* ****** ****** *)
 
+local
+
+fun
+auxopny
+( env0:
+! tr4cenv
+, d4p0: d4pat): void =
+let
+//
+val
+loc0 = d4p0.loc()
+//
+val-
+D4Popny
+( d4p1
+, s2vs
+, s2ps) = d4p0.node()
+//
+val () =
+auxs2vs(env0, loc0, s2vs)
+val () =
+auxs2ps(env0, loc0, s2ps)
+//
+in
+  trans4c_dpat(env0, d4p1)
+end where
+{
+//
+fun
+auxs2vs
+( env0:
+! tr4cenv
+, loc0: loc_t
+, s2vs: s2varlst): void =
+(
+case+ s2vs of
+|
+list_nil() => ()
+|
+list_cons(s2v1, s2vs) =>
+let
+val () =
+tr4cenv_add_svar(env0, s2v1)
+in
+  auxs2vs( env0, loc0, s2vs )
+end
+) (* end of [auxs2vs] *)
+//
+fun
+auxs2ps
+( env0:
+! tr4cenv
+, loc0: loc_t
+, s2ps: s2explst): void =
+(
+case+ s2ps of
+|
+list_nil() => ()
+|
+list_cons(s2p1, s2ps) =>
+let
+val
+chyp =
+c1hyp_make_node
+(loc0, C1Hsexp(s2p1))
+val () =
+tr4cenv_add_chyp(env0, chyp)
+in
+  auxs2ps( env0, loc0, s2ps )
+end
+) (* end of [auxs2ps] *)
+//
+} (*where*) // end of [auxopny]
+
+in(*in-of-local*)
+
 implement
 trans4c_dpat
 (env0, d4p0) =
@@ -92,9 +168,12 @@ in
 case+
 d4p0.node() of
 //
+| D4Popny _ => auxopny(env0, d4p0)
 | _ (*rest-of-d4pat*) => ((*void*))
 //
 end (*let*) // end of [trans4c_dpat]
+
+end // end of [local]
 
 (* ****** ****** *)
 //
@@ -140,6 +219,80 @@ trans4c_dexp(env0, d4f0)
 in
 trans4c_dexplst(env0, d4es)
 end (*let*) // end of [auxdapp]
+
+(* ****** ****** *)
+
+fun
+auxopny
+( env0:
+! tr4cenv
+, d4e0: d4exp): void =
+let
+//
+val
+loc0 = d4e0.loc()
+//
+val-
+D4Eopny
+( d4e1
+, s2vs
+, s2ps) = d4e0.node()
+//
+val () =
+auxs2vs(env0, loc0, s2vs)
+val () =
+auxs2ps(env0, loc0, s2ps)
+//
+in
+  trans4c_dexp(env0, d4e1)
+end where
+{
+//
+fun
+auxs2vs
+( env0:
+! tr4cenv
+, loc0: loc_t
+, s2vs: s2varlst): void =
+(
+case+ s2vs of
+|
+list_nil() => ()
+|
+list_cons(s2v1, s2vs) =>
+let
+val () =
+tr4cenv_add_svar(env0, s2v1)
+in
+  auxs2vs( env0, loc0, s2vs )
+end
+) (* end of [auxs2vs] *)
+//
+fun
+auxs2ps
+( env0:
+! tr4cenv
+, loc0: loc_t
+, s2ps: s2explst): void =
+(
+case+ s2ps of
+|
+list_nil() => ()
+|
+list_cons(s2p1, s2ps) =>
+let
+val
+chyp =
+c1hyp_make_node
+(loc0, C1Hsexp(s2p1))
+val () =
+tr4cenv_add_chyp(env0, chyp)
+in
+  auxs2ps( env0, loc0, s2ps )
+end
+) (* end of [auxs2ps] *)
+//
+} (*where*) // end of [auxopny]
 
 (* ****** ****** *)
 
@@ -349,6 +502,9 @@ d4e0.node() of
 //
 |
 D4Edapp _ => auxdapp(env0, d4e0)
+//
+|
+D4Eopny _ => auxopny(env0, d4e0)
 //
 |D4Elet _ => aux_let(env0, d4e0)
 |D4Ewhere
