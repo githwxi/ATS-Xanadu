@@ -57,6 +57,8 @@ c1knd =
 //
 | C1Kbloc of ()
 //
+| C1Ksexi of ()
+//
 | C1Kif0 | C1Kcas0 of ()
 //
 | C1Klams of () | C1Kfix1 of ()

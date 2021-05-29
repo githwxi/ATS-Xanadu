@@ -6,6 +6,24 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 //
+fun
+<a:type>
+length
+(xs: list(a)): nint =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => 0
+|
+list_cons
+(  _, xs  ) => 1 + length(xs)
+)
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 (*
 datatype
 term(type) =
@@ -49,6 +67,13 @@ gint_equal_sint
 *)
 (* ****** ****** *)
 fun
+fact(x:nint): nint =
+if
+x > 0
+then x * fact(x-1) else 1
+////
+(* ****** ****** *)
+fun
 fact
 {n:nat}.<n>.
 (x: sint(n)): nint =
@@ -68,14 +93,6 @@ then
 let
   val x1 = x - 1 in x * fact(x1)
 end else 1 // end of [if]
-////
-(* ****** ****** *)
-fun
-fact(x:nint): nint =
-if
-x > 0
-then x * fact(x-1) else 1
-(* ****** ****** *)
 ////
 (* ****** ****** *)
 fun
@@ -366,21 +383,6 @@ val x12 = x1 + x2
 val xx1 = pow2(x1)
 val xxx2 = pow3(x2)
 
-(* ****** ****** *)
-////
-(* ****** ****** *)
-//
-#extern
-fun
-length(xs: list(int)): int =
-(
-case+ xs of
-|
-list_nil() => 0 + 0
-|
-list_cons{n}(_, xs) => 1 + length(xs)
-)
-//
 (* ****** ****** *)
 ////
 (* ****** ****** *)
