@@ -171,18 +171,22 @@ end // end of [tr4cenv_add_fun0]
 (* ****** ****** *)
 //
 implement
+tr4cenv_add_svar
+  (env0, s2v0) =
+(
+tr4cenv_add_citm(env0, C1Isvar(s2v0))
+)
+implement
 tr4cenv_add_chyp
   (env0, chyp) =
 (
-tr4cenv_add_citm
-(env0, C1Ichyp(chyp))
+tr4cenv_add_citm(env0, C1Ichyp(chyp))
 )
 implement
 tr4cenv_add_cstr
   (env0, cstr) =
 (
-tr4cenv_add_citm
-(env0, C1Icstr(cstr))
+tr4cenv_add_citm(env0, C1Icstr(cstr))
 )
 //
 (* ****** ****** *)

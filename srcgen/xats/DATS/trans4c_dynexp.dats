@@ -396,6 +396,108 @@ list_cons(d4e0, d4es) =>
 ) (* end of [trans4c_dexplst] *)
 //
 (* ****** ****** *)
+//
+implement
+trans4c_farg
+(env0, f4a0) =
+let
+//
+val
+loc0 = f4a0.loc()
+//
+in
+//
+case+
+f4a0.node() of
+|
+F4ARGnone3 _ => ()
+//
+|
+F4ARGsome_dyn
+( npf1, d4ps ) =>
+trans4c_dpatlst(env0, d4ps)
+//
+|
+F4ARGsome_sta
+( s2vs, s2ps ) =>
+{
+  val () =
+  auxs2vs(env0, loc0, s2vs)
+  val () =
+  auxs2ps(env0, loc0, s2ps)
+}
+//
+| F4ARGsome_met(s2es) => ((*void*))
+//
+end where
+{
+//
+fun
+auxs2vs
+( env0:
+! tr4cenv
+, loc0: loc_t
+, s2vs: s2varlst): void =
+(
+case+ s2vs of
+|
+list_nil() => ()
+|
+list_cons(s2v1, s2vs) =>
+let
+val () =
+tr4cenv_add_svar(env0, s2v1)
+in
+  auxs2vs( env0, loc0, s2vs )
+end
+) (* end of [auxs2vs] *)
+//
+fun
+auxs2ps
+( env0:
+! tr4cenv
+, loc0: loc_t
+, s2ps: s2explst): void =
+(
+case+ s2ps of
+|
+list_nil() => ()
+|
+list_cons(s2p1, s2ps) =>
+let
+val
+chyp =
+c1hyp_make_node
+(loc0, C1Hsexp(s2p1))
+val () =
+tr4cenv_add_chyp(env0, chyp)
+in
+  auxs2ps( env0, loc0, s2ps )
+end
+) (* end of [auxs2ps] *)
+//
+} (*where*) // end of [trans4c_farg]
+//
+(* ****** ****** *)
+//
+implement
+trans4c_farglst
+(env0, f4as) =
+(
+case+ f4as of
+|
+list_nil() => ()
+|
+list_cons(f4a0, f4as) =>
+{
+  val () =
+  trans4c_farg(env0, f4a0)
+  val () =
+  trans4c_farglst(env0, f4as)
+}
+) (* end of [trans4c_farglst] *)
+//
+(* ****** ****** *)
 
 local
 
@@ -432,17 +534,24 @@ F4UNDECL
 ( rcd ) = f4d0
 //
 val loc = rcd.loc
-val nam = rcd.nam
-val d2c = rcd.d2c
-val a2g = rcd.a2g
-val a4g = rcd.a4g
 //
 val () =
 tr4cenv_add_fun0(env0)
 //
 val () =
 (
-case
+case+
+rcd.a4g of
+|
+None() => ()
+|
+Some(f4as) =>
+trans4c_farglst
+( env0, f4as )): void
+//
+val () =
+(
+case+
 rcd.def of
 |
 None() => ()
@@ -458,7 +567,7 @@ c1str_make_node
 (loc, C1Kfun0(), C1Sitms(c1is))
 //
 in
-tr4cenv_add_citm(env0, C1Icstr(cstr))
+tr4cenv_add_citm( env0, C1Icstr(cstr) )
 end // end of [auxf4d0]
 //
 fun
