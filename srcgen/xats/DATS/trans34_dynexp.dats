@@ -1777,6 +1777,48 @@ end (*let*) // end of [aux_anno]
 
 (* ****** ****** *)
 
+fun
+aux_cas0
+( env0
+: !tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Ecas0
+( knd0
+, dmat
+, dcls) = d3e0.node()
+//
+val
+dmat =
+trans34_dexp(env0, dmat)
+val
+tmat = dmat.sexp((*void*))
+//
+val s2t0 = t2p0.sort()
+val xtv0 =
+s2xtv_new(loc0, s2t0)
+val s2e0 = s2exp_xtv(xtv0)
+//
+val dcls =
+trans34_dclaulst_dntp
+( env0, dcls, tmat, s2e0 )
+//
+in
+d4exp_make_node
+( loc0
+, s2e0, t2p0
+, D4Ecas0(knd0, dmat, dcls) )
+end (*let*) // end of [aux_cas0]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -1884,6 +1926,8 @@ end // list_map$fopr
 
 local
 
+(* ****** ****** *)
+
 fun
 aux_if0
 ( env0:
@@ -1930,6 +1974,46 @@ d4exp_make_node
 , s2e0, t2p0, D4Eif0(d4e1, d4e2, opt3))
 end // end of [aux_if0]
 
+(* ****** ****** *)
+
+fun
+aux_cas0
+( env0
+: !tr34env
+, d3e0: d3exp
+, s2e0: s2exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Ecas0
+( knd0
+, dmat
+, dcls) = d3e0.node()
+//
+val
+dmat =
+trans34_dexp(env0, dmat)
+//
+val
+tmat = dmat.sexp((*void*))
+//
+val dcls =
+trans34_dclaulst_dntp
+( env0, dcls, tmat, s2e0 )
+//
+in
+d4exp_make_node
+( loc0
+, s2e0, t2p0, D4Ecas0(knd0, dmat, dcls))
+end (*let*) // end of [aux_cas0]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -1939,9 +2023,12 @@ trans34_dexp_dntp
 (
 case+
 d3e0.node() of
-|
-D3Eif0 _ =>
+//
+|D3Eif0 _ =>
 aux_if0(env0, d3e0, s2e0)
+|
+D3Ecas0 _ =>
+aux_cas0(env0, d3e0, s2e0)
 //
 |
 _ (* else-of-d3exp *) =>

@@ -1011,8 +1011,9 @@ auxi_eqeq
 in
 auxj_eqeq
 (env0, loc0, ses1, ses2)
-end // end of [S2Eapp]
+end (*let*) // end of [S2Eapp]
 //
+(*
 |
 S2Eexi
 ( svs1
@@ -1044,24 +1045,30 @@ val () =
 tr4cenv_add_shyplst(env0, loc0, sps2)
 }
 //
-val c1is =
-tr4cenv_pop_sexi(env0)
-val cstr =
-c1str_make_node
-(loc0, C1Ksexi(), C1Sitms(c1is))
-//
 in
-tr4cenv_add_citm(env0, C1Icstr(cstr))
-end // end of [S2Eexi]
+//
+tr4cenv_add_citm
+(env0, C1Icstr(cstr)) where
+{
+  val c1is =
+  tr4cenv_pop_sexi(env0)
+  val cstr =
+  c1str_make_node
+  (loc0, C1Ksexi(), C1Sitms(c1is))
+}
+//
+end (*let*) // end of [S2Eexi]
+*)
 //
 |
 _(*rest-of-s2exp*) =>
 let
-val cstr =
-c1str_make_node1
-(loc0, C1Stple(s2e1, s2e2))
+  val
+  cstr =
+  c1str_make_node1
+  (loc0, C1Stple(s2e1, s2e2))
 in
-  tr4cenv_add_cstr(env0, cstr)
+  tr4cenv_add_cstr( env0, cstr )
 end
 //
 end (*let*) // end of [auxi_tple]
