@@ -2219,6 +2219,7 @@ loc0 = f3a0.loc()
 in
 case+
 f3a0.node() of
+//
 |
 F3ARGsome_dyn
 (npf, d3ps) =>
@@ -2231,6 +2232,15 @@ f4arg_make_node
   val
   d4ps = auxargs(env0, d3ps)
 } (* F3ARGsome_dyn *)
+//
+|
+F3ARGsome_sta
+(s2vs, s2ps) =>
+(
+f4arg_make_node
+( loc0
+, F4ARGsome_sta(s2vs, s2ps))
+)
 //
 |
 F3ARGsome_met(s2es) =>

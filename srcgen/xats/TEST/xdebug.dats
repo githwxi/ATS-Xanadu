@@ -49,6 +49,18 @@ gint_equal_sint
 *)
 (* ****** ****** *)
 fun
+fact
+{n:nat}.<n>.
+(x: sint(n)): nint =
+if
+x > 0
+then
+let
+  val x1 = x - 1 in x * fact(x1)
+end else 1 // end of [if]
+////
+(* ****** ****** *)
+fun
 fact(x: nint): nint =
 if
 x > 0

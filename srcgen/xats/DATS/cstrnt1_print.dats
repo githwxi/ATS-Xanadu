@@ -66,6 +66,9 @@ prerr_c1str(x0) =
 fprint_c1str(stderr_ref, x0)
 (* ****** ****** *)
 implement
+fprint_val<s2exp> = fprint_s2exp
+(* ****** ****** *)
+implement
 fprint_val<c1itm> = fprint_c1itm
 implement
 fprint_val<c1str> = fprint_c1str
@@ -132,6 +135,10 @@ fprint!
 C1Scstr(cstr) =>
 fprint!
 (out, "C1Scstr(", cstr, ")")
+|
+C1Smwfd(s2es) =>
+fprint!
+(out, "C1Smwfd(", s2es, ")")
 |
 C1Sitms(c1is) =>
 fprint!

@@ -158,11 +158,11 @@ implement
 trans4c_dpat
 (env0, d4p0) =
 let
-// (*
+(*
 val () =
 println!
 ("trans4c_dpat: d4p0 = ", d4p0)
-// *)
+*)
 in
 //
 case+
@@ -490,11 +490,13 @@ let
 //
 val
 loc0 = d4e0.loc()
-// (*
+//
+(*
 val () =
 println!
 ("trans4c_dexp: d4e0 = ", d4e0)
-// *)
+*)
+//
 in
 //
 case+
@@ -561,6 +563,12 @@ let
 val
 loc0 = f4a0.loc()
 //
+// (*
+val () =
+println!
+("trans4c_farg: f4a0 = ", f4a0)
+// *)
+//
 in
 //
 case+
@@ -583,7 +591,16 @@ F4ARGsome_sta
   auxs2ps(env0, loc0, s2ps)
 }
 //
-| F4ARGsome_met(s2es) => ((*void*))
+|
+F4ARGsome_met(s2es) =>
+let
+  val
+  cstr =
+  c1str_make_node
+  (loc0, C1Smwfd(s2es))
+in
+tr4cenv_add_cstr(env0, cstr)
+end
 //
 end where
 {
@@ -708,7 +725,15 @@ trans4c_dexp(env0, d4e0)
 ) : void // end-of-val
 //
 in
+//
+case+
+rcd.def of
+|
+None() => ()
+|
+Some(d4e0) =>
 trans4c_dpat(env0, rcd.pat)
+//
 end // end of [auxv4d0]
 //
 fun
@@ -831,11 +856,13 @@ implement
 trans4c_decl
 (env0, d4cl) =
 let
-// (*
+//
+(*
 val () =
 println!
 ("trans4c_decl: d4cl = ", d4cl)
-// *)
+*)
+//
 in(*in-of-let*)
 //
 case+
