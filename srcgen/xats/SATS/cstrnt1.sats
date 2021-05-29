@@ -84,12 +84,15 @@ c1itm =
 | C1Ichyp of c1hyp
 | C1Icstr of c1str
 | C1Idisj of c1strlst
+//
 and c1str_node =
 | C1Ssexp of s2exp
 | C1Scstr of c0str
-| C1Sitms of c1itmlst
+| C1Smwfd of (s2explst)
+| C1Sitms of (c1itmlst)
 | C1Seqeq of (s2exp, s2exp)
 | C1Stple of (s2exp, s2exp)
+//
 and c1hyp_node =
 | C1Hsexp of s2exp
 | C1Hbind of (s2var, s2exp)
