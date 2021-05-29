@@ -650,8 +650,7 @@ D3Panno(d3p1, s2e2) =>
 (
 d4pat_make_node
 ( loc0
-, s2e2
-, t2p1, D4Panno(d4p1, s2e2))
+, s2e2, t2p1, D4Panno(d4p1, s2e2))
 ) where
 {
 //

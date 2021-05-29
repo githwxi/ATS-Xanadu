@@ -85,10 +85,19 @@ tr4cenv_free_top
 (* ****** ****** *)
 //
 fun
-tr4cenv_add_fun0
+tr4cenv_add_bloc
   ( env0: !tr4cenv ) : void
 fun
-tr4cenv_pop_fun0
+tr4cenv_pop_bloc
+  ( env0: !tr4cenv ) : c1itmlst
+//
+(* ****** ****** *)
+//
+fun
+tr4cenv_add_sexi
+  ( env0: !tr4cenv ) : void
+fun
+tr4cenv_pop_sexi
   ( env0: !tr4cenv ) : c1itmlst
 //
 (* ****** ****** *)
@@ -110,10 +119,10 @@ tr4cenv_pop_cas0
 (* ****** ****** *)
 //
 fun
-tr4cenv_add_bloc
+tr4cenv_add_fun0
   ( env0: !tr4cenv ) : void
 fun
-tr4cenv_pop_bloc
+tr4cenv_pop_fun0
   ( env0: !tr4cenv ) : c1itmlst
 //
 (* ****** ****** *)

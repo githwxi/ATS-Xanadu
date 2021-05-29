@@ -132,8 +132,10 @@ d4pat_node =
   ( d4pat
   , s2explst, s2explst(*prop*))
 //
+(*
 | D4Popnx of
   ( d4pat, s2xtv(*deexi*) )
+*)
 | D4Popny of
   ( d4pat
   , s2varlst, s2explst(*prop*))
@@ -354,8 +356,10 @@ for the meaning of knd
 | D4Esmet of (d4exp, s2explst)
 *)
 //
+(*
 | D4Eopnx of
   ( d4exp, s2xtv(*deexi*) )
+*)
 | D4Eopny of
   ( d4exp
   , s2varlst, s2explst(*prop*))
