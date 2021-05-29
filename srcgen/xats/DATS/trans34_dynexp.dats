@@ -1645,7 +1645,7 @@ s2e1 = d4e1.sexp()
 in
 d4exp_make_node
 ( loc0
-, s2e1, t2p0, D4Ewhere(dcls, d4e1))
+, s2e1, t2p0, D4Ewhere(d4e1, dcls))
 end
 end (*let*) // end of [aux_where]
 //
