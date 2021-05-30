@@ -1139,11 +1139,9 @@ val-
 list_cons
 (s2e2, ses2) = ses2
 val () =
-auxh_eqeq
-(env0, loc0, s2e1, s2e2)
+auxh_eqeq(env0, loc0, s2e1, s2e2)
 in
-auxhh_eqeq
-(env0, loc0, ses1, ses2)
+auxhh_eqeq(env0, loc0, ses1, ses2)
 end
 ) (* end of [auxhh_eqeq] *)
 
@@ -1243,11 +1241,9 @@ S2Eapp
 ( s2f2
 , ses2) = s2e2.node()
 val () =
-auxi_eqeq
-(env0, loc0, s2f1, s2f2)
+auxi_eqeq(env0, loc0, s2f1, s2f2)
 in
-auxii_eqeq
-(env0, loc0, ses1, ses2)
+auxii_eqeq(env0, loc0, ses1, ses2)
 end (*let*) // end of [S2Eapp]
 //
 (*
@@ -1321,6 +1317,11 @@ auxi_tpeq
 , s2e2: s2exp): void =
 let
 //
+val s2e1 =
+s2exp_whnfize(s2e1)
+val s2e2 =
+s2exp_whnfize(s2e2)
+//
 val () =
 println!
 ("auxi_tpeq: s2e1 = ", s2e1)
@@ -1329,7 +1330,19 @@ println!
 ("auxi_tpeq: s2e2 = ", s2e2)
 //
 in
-
+//
+ifcase
+|
+_(* else-of-ifcase *) =>
+let
+  val
+  cstr =
+  c1str_make_node
+  (loc0, C1Stpeq(s2e1, s2e2))
+in
+  tr4cenv_add_cstr( env0, cstr )
+end
+//
 end (*let*) // end of [auxi_tpeq]
 
 (* ****** ****** *)

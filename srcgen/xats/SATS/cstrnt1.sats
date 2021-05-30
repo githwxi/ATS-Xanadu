@@ -94,6 +94,7 @@ and c1str_node =
 | C1Sitms of (c1itmlst)
 | C1Seqeq of (s2exp, s2exp)
 | C1Stple of (s2exp, s2exp)
+| C1Stpeq of (s2exp, s2exp)
 //
 and c1hyp_node =
 | C1Hsexp of s2exp
