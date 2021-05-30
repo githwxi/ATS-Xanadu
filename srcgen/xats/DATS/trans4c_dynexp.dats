@@ -1103,6 +1103,10 @@ S2Extv(xtv2) =>
 s2xtv_set_sexp(xtv2, s2e1)
 |
 _(*rest-of-s2exp*) =>
+(
+ifcase
+|
+_ (* else-of-ifcase *) =>
 let
 val chyp =
 c1hyp_make_node
@@ -1110,9 +1114,38 @@ c1hyp_make_node
 in
   tr4cenv_add_chyp( env0, chyp )
 end
-)
+) (* end-of-ifcase *)
+) (* end of [case+] *)
 //
 end (*let*) // end of [auxh_eqeq]
+
+and
+auxhh_eqeq
+( env0:
+! tr4cenv,
+  loc0: loc_t
+, ses1: s2explst
+, ses2: s2explst): void =
+(
+case+ ses1 of
+|
+list_nil
+((*void*)) => ()
+|
+list_cons
+(s2e1, ses1) =>
+let
+val-
+list_cons
+(s2e2, ses2) = ses2
+val () =
+auxh_eqeq
+(env0, loc0, s2e1, s2e2)
+in
+auxhh_eqeq
+(env0, loc0, ses1, ses2)
+end
+) (* end of [auxhh_eqeq] *)
 
 (* ****** ****** *)
 
@@ -1154,6 +1187,10 @@ S2Extv(xtv2) =>
 s2xtv_set_sexp(xtv2, s2e1)
 |
 _(*rest-of-s2exp*) =>
+(
+ifcase
+|
+_ (*else-of-ifcase*) =>
 let
 val cstr =
 c1str_make_node
@@ -1161,7 +1198,8 @@ c1str_make_node
 in
   tr4cenv_add_cstr( env0, cstr )
 end
-)
+) (* end-of-ifcase *)
+) (* end of [case+] *)
 //
 end (*let*) // end of [auxi_eqeq]
 
