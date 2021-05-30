@@ -326,8 +326,7 @@ println!
 ("aux_if0: sbtf = ", sbtf)
 *)
 //
-val
-() =
+val () =
 tr4cenv_add_if0(env0)
 //
 val
@@ -441,6 +440,49 @@ list_cons(sbtf, _) = s2es
 
 (* ****** ****** *)
 
+fun
+aux_cas0
+( env0:
+! tr4cenv
+, d4e0: d4exp): void =
+let
+//
+val-
+D4Ecas0
+( knd0
+, dmat
+, dcls) = d4e0.node()
+//
+val () =
+trans4c_dexp(env0, dmat)
+//
+val () =
+tr4cenv_add_cas0(env0)
+//
+val () =
+trans4c_dclaulst(env0, dcls)
+//
+in
+//
+let
+val
+loc0 = d4e0.loc()
+val
+c1is =
+tr4cenv_pop_cas0(env0)
+val
+c1s0 =
+c1str_make_node
+( loc0
+, C1Kif0(), C1Sitms(c1is))
+in
+  tr4cenv_add_cstr(env0, c1s0)
+end
+//
+end (*let*) // end of [aux_cas0]
+
+(* ****** ****** *)
+
 in(*in-of-local*)
 
 implement
@@ -477,6 +519,8 @@ D4Eif0
 ( _cond_
 , _then_
 , _else_) => aux_if0(env0, d4e0)
+|
+D4Ecas0 _ => aux_cas0(env0, d4e0)
 //
 |
 D4Etcast
@@ -582,6 +626,90 @@ list_cons(f4a0, f4as) =>
   trans4c_farglst(env0, f4as)
 }
 ) (* end of [trans4c_farglst] *)
+//
+(* ****** ****** *)
+//
+implement
+trans4c_dgpat
+( env0, dgpt ) =
+(
+case+
+dgpt.node() of
+//
+|
+D4GPATpat(d4p1) =>
+trans4c_dpat(env0, d4p1)
+//
+|
+D4GPATgua(d4p1, d4gs) =>
+trans4c_dpat(env0, d4p1)
+//
+) (* end of [trans4c_dgpat] *)
+//
+(* ****** ****** *)
+//
+implement
+trans4c_dclau
+( env0, dcl0 ) =
+let
+//
+val
+loc0 = dcl0.loc()
+//
+in
+//
+case+
+dcl0.node() of
+|
+D4CLAUpat
+( dgpt ) => ()
+|
+D4CLAUexp
+(dgpt, d4e1) =>
+let
+val () =
+tr4cenv_add_bloc(env0)
+//
+val () =
+let
+val () =
+trans4c_dgpat(env0, dgpt)
+in
+  trans4c_dexp(env0, d4e1)
+end
+//
+val
+c1is =
+tr4cenv_pop_bloc(env0)
+val
+cstr =
+c1str_make_node
+( loc0
+, C1Kbloc(), C1Sitms(c1is))
+in
+  tr4cenv_add_cstr(env0, cstr)
+end
+//
+end // end of [trans4c_dclau]
+//
+(* ****** ****** *)
+//
+implement
+trans4c_dclaulst
+(env0, dcls) =
+(
+case+ dcls of
+|
+list_nil() => ()
+|
+list_cons(dcl0, dcls) =>
+{
+  val () =
+  trans4c_dclau(env0, dcl0)
+  val () =
+  trans4c_dclaulst(env0, dcls)
+}
+) (* end of [trans4c_dclaulst] *)
 //
 (* ****** ****** *)
 
@@ -917,6 +1045,11 @@ end // end of [list_cons]
 
 local
 
+(* ****** ****** *)
+// HX: auxi: singul
+// HX: auxj: plural
+(* ****** ****** *)
+
 fun
 auxi_eqeq
 ( env0:
@@ -1050,11 +1183,11 @@ in
 tr4cenv_add_citm
 (env0, C1Icstr(cstr)) where
 {
-  val c1is =
-  tr4cenv_pop_sexi(env0)
-  val cstr =
-  c1str_make_node
-  (loc0, C1Ksexi(), C1Sitms(c1is))
+val c1is =
+tr4cenv_pop_sexi(env0)
+val cstr =
+c1str_make_node
+(loc0, C1Ksexi(), C1Sitms(c1is))
 }
 //
 end (*let*) // end of [S2Eexi]

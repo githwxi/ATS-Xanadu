@@ -216,7 +216,7 @@ val-
 D3Pany() = d3p0.node()
 //
 val
-s2e0 = s2exp_t2ype(t2p0)
+s2e0 = s2exp_t2ypize(t2p0)
 //
 in
 //
@@ -250,7 +250,7 @@ case-
 s2e1.node() of
 |
 S2Enone0() =>
-s2exp_t2ype(d2v1.type())
+s2exp_t2ypize(d2v1.type())
 (*
 | _(*non-S2Enone0*) => s2e1
 *)
@@ -537,7 +537,7 @@ tres = d3p0.type()
 var
 sres:
 s2exp =
-s2exp_t2ype( tres )
+s2exp_t2ypize(tres)
 //
 val-
 D3Pdapp
@@ -809,6 +809,15 @@ let
   d4p1 =
   auxd3p0(env0, d3p0, sopn)
 in
+//
+case+
+(s2vs, s2ps) of
+|
+( list_nil()
+, list_nil()) => d4p1
+|
+( _(*else*)
+, _(*else*) ) =>
 d4pat_make_node
 ( loc0
 , s2e0
@@ -2256,7 +2265,7 @@ d3p0.node() of
 D3Panno(_, s2e1) => s2e1
 |
 _(*non-D3Panno*) =>
-s2exp_t2ype(d3p0.type())
+s2exp_t2ypize(d3p0.type())
 ) : s2exp // end of [val]
 val d3p1 =
 (
@@ -2801,6 +2810,14 @@ tr34env_add_fun0(env0)
 //
 val () =
 trans34_f3undecl_set_sexp(f3d0)
+//
+// HX-2021-05-30:
+val () = // for a template fun!
+let
+val s2f0 = nam.sexp()
+in
+tr34env_add_dvar_sexp(env0, nam, s2f0)
+end // end of [val]
 //
 (*
 val () =

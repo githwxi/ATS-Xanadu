@@ -49,10 +49,15 @@ typedef f4arg = $D4E.f4arg
 typedef d4exp = $D4E.d4exp
 typedef d4ecl = $D4E.d4ecl
 //
+typedef d4gpat = $D4E.d4gpat
+typedef d4clau = $D4E.d4clau
+//
 typedef d4patlst = $D4E.d4patlst
 typedef f4arglst = $D4E.f4arglst
 typedef d4explst = $D4E.d4explst
 typedef d4eclist = $D4E.d4eclist
+//
+typedef d4claulst = $D4E.d4claulst
 //
 (* ****** ****** *)
 #staload C0S = "./cstrnt0.sats"
@@ -181,6 +186,22 @@ fun
 trans4c_farglst
 ( env0
 : !tr4cenv, f4as: f4arglst): void
+//
+(* ****** ****** *)
+//
+fun
+trans4c_dgpat
+( env0:
+! tr4cenv, d4gp: d4gpat): void
+//
+fun
+trans4c_dclau
+( env0:
+! tr4cenv, d4cl: d4clau): void
+fun
+trans4c_dclaulst
+( env0:
+! tr4cenv, dcls: d4claulst): void
 //
 (* ****** ****** *)
 //

@@ -19,8 +19,13 @@ list_nil
 list_cons
 (  _, xs  ) => 1 + length(xs)
 )
-//
+////
 (* ****** ****** *)
+fun
+fact(x:nint): nint =
+if
+x > 0
+then x * fact(x-1) else 1
 ////
 (* ****** ****** *)
 //
@@ -65,13 +70,6 @@ inteq(int, int) =
 gint_equal_sint
 {n:int}(sint(n)): [x:int] inteq(x,n)
 *)
-(* ****** ****** *)
-fun
-fact(x:nint): nint =
-if
-x > 0
-then x * fact(x-1) else 1
-////
 (* ****** ****** *)
 fun
 fact
