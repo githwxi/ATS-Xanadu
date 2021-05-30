@@ -49,7 +49,7 @@ UN = "prelude/SATS/unsafe.sats"
 implement
 c0str_make_tasmp
 ( s2e1(*src*)
-, s2e2(*dst*)) = C0Heqeq(s2e1, s2e2)
+, s2e2(*dst*)) = C0Htpeq(s2e1, s2e2)
 //
 implement
 c0str_make_tcast

@@ -49,11 +49,17 @@ typedef t2ype = $S2T.t2ype
 //
 datatype c0str =
 //
+(*
 | C0Heqeq of
   (s2exp, s2exp) // equality
+*)
+| C0Htpeq of
+  (s2exp, s2exp) // type-equality
 //
+(*
 | C0Ieqeq of
   (s2exp, s2exp) // equality
+*)
 | C0Itple of
   (s2exp, s2exp) // subtyping
 | C0Itpeq of

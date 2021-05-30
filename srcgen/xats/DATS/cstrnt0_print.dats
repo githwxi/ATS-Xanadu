@@ -64,17 +64,26 @@ fprint_c0str
 (
 case+ x0 of
 //
+(*
 |
 C0Heqeq(s2e1, s2e2) =>
 fprint!
 ( out
 , "C0Heqeq(", s2e1, "; ", s2e2, ")")
+*)
+|
+C0Htpeq(s2e1, s2e2) =>
+fprint!
+( out
+, "C0Htpeq(", s2e1, "; ", s2e2, ")")
 //
+(*
 |
 C0Ieqeq(s2e1, s2e2) =>
 fprint!
 ( out
 , "C0Ieqeq(", s2e1, "; ", s2e2, ")")
+*)
 |
 C0Itple(s2e1, s2e2) =>
 fprint!
