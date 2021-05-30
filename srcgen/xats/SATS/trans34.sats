@@ -194,6 +194,9 @@ tr34env_add_dvar_sexp
 ! tr34env
 , d2v0: d2var, s2e0: s2exp): void
 (* ****** ****** *)
+fun
+s2exp_t2ypize(t2ype): s2exp
+(* ****** ****** *)
 //
 fun
 s2exp_whnfize_env
@@ -253,10 +256,12 @@ trans34_envless
 //
 (* ****** ****** *)
 //
+(*
 fun
 trans34_s2eopn
 ( env0:
 ! tr34env, s2e0: s2exp): s2exp
+*)
 //
 (*
 //
@@ -271,10 +276,12 @@ trans34_d4popn
 //
 *)
 //
+(*
 fun
 trans34_d4eopn
 ( env0:
 ! tr34env, d4e0: d4exp): d4exp
+*)
 //
 (* ****** ****** *)
 //

@@ -42,6 +42,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
@@ -49,6 +50,25 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
+(* ****** ****** *)
+
+implement
+s2exp_t2ypize
+  (t2p0) =
+let
+val t2p0 =
+t2ype_whnfize(t2p0)
+in
+//
+case+
+t2p0.node() of
+|
+T2Pvar(s2v0) => s2exp_var(s2v0)
+|
+_(*rest-of-t2ype*) => s2exp_t2ype(t2p0)
+//
+end // end of [s2exp_t2ypize]
+
 (* ****** ****** *)
 //
 implement
@@ -723,7 +743,7 @@ case+
 rcd.res of
 |
 EFFS2EXPnone() =>
-s2exp_t2ype(rcd.rtp)
+s2exp_t2ypize(rcd.rtp)
 |
 EFFS2EXPsome(s2r0) => s2r0
 ) : s2exp // end-of-val
@@ -816,7 +836,10 @@ d3p0.node() of
 |
 D3Panno(d3p1, s2e2) => s2e2
 |
-_ (*else*) => s2exp_t2ype(d3p0.type())
+_ (*else*) =>
+(
+  s2exp_t2ypize(d3p0.type())
+)
 ) (* end of [trans34_d3pat_get_sexp] *)
 implement
 trans34_d3patlst_get_s2es
