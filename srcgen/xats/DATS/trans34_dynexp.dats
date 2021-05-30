@@ -450,12 +450,29 @@ t2p0 = d3p0.type()
 val-
 D3Pcon1
 ( d2c1 ) = d3p0.node()
+(*
+val () =
+println!
+(
+"trans34_dpat\
+: auxcon1: d2c1 = ", d2c1)
+*)
 val
-s2e0 = d2con_get_sexp(d2c1)
+tqas = d2con_get_tqas(d2c1)
+val
+s2e1 = d2con_get_sexp(d2c1)
 //
 in
+let
+  val
+  s2e1 =
+  s2exp_tq2as_elim
+  ( loc0, s2e1, tqas )
+in
 d4pat_make_node
-(loc0, s2e0, t2p0, D4Pcon1(d2c1))
+( loc0
+, s2e1, t2p0, D4Pcon1(d2c1))
+end
 end (*let*) // end of [auxcon1]
 
 (* ****** ****** *)
@@ -1289,10 +1306,9 @@ list_nil() => list_nil()
 list_cons(x1, xs) =>
 let
   val
-  s2t1 = x1.sort()
-  val
   xtv1 =
-  s2xtv_new(loc0, s2t1)
+  s2xtv_new_srt
+  (loc0, x1.sort())
   val
   s2e1 = s2exp_xtv(xtv1)
 in
@@ -1369,10 +1385,9 @@ list_nil() => list_nil()
 list_cons(x1, xs) =>
 let
   val
-  s2t1 = x1.sort()
-  val
   xtv1 =
-  s2xtv_new(loc0, s2t1)
+  s2xtv_new_srt
+  (loc0, x1.sort())
   val
   s2e1 = s2exp_xtv(xtv1)
 in
@@ -1681,10 +1696,9 @@ val d4e1 =
 trans34_dexp(env0, d3e1)
 //
 val
-s2t0 = t2p0.sort()
-val
 xtv0 =
-s2xtv_new(loc0, s2t0)
+s2xtv_new_srt
+(loc0, t2p0.sort())
 val
 s2e0 = s2exp_xtv(xtv0)
 //
@@ -1735,9 +1749,9 @@ trans34_dexp(env0, dmat)
 val
 tmat = dmat.sexp((*void*))
 //
-val s2t0 = t2p0.sort()
 val xtv0 =
-s2xtv_new(loc0, s2t0)
+s2xtv_new_srt
+(loc0, t2p0.sort())
 val s2e0 = s2exp_xtv(xtv0)
 //
 val dcls =
@@ -1810,9 +1824,9 @@ trans34_dexp(env0, dmat)
 val
 tmat = dmat.sexp((*void*))
 //
-val s2t0 = t2p0.sort()
 val xtv0 =
-s2xtv_new(loc0, s2t0)
+s2xtv_new_srt
+(loc0, t2p0.sort())
 val s2e0 = s2exp_xtv(xtv0)
 //
 val dcls =

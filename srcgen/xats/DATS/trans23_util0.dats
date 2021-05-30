@@ -130,11 +130,16 @@ let
 //
 val tqas = d2c1.tqas()
 val t2p1 = d2c1.type()
-val t2p1 =
-  t2ype_tq2as_elim(loc0, t2p1, tqas)
 //
 in
-  unify2_t2ype_t2ype(loc0, t2p1, t2p2)
+let
+  val
+  t2p1 =
+  t2ype_tq2as_elim
+  ( loc0, t2p1, tqas )
+in
+unify2_t2ype_t2ype(loc0, t2p1, t2p2)
+end
 end
 //
 (* ****** ****** *)
@@ -158,12 +163,17 @@ let
 //
 val tqas = d2c1.tqas()
 val t2p1 = d2c1.type()
-val t2p1 =
-  t2ype_tq2as_elim(loc0, t2p1, tqas)
 //
 in
-  unify2_t2ype_t2ype(loc0, t2p1, t2p2)
+let
+  val
+  t2p1 =
+  t2ype_tq2as_elim
+  ( loc0, t2p1, tqas )
+in
+unify2_t2ype_t2ype(loc0, t2p1, t2p2)
 end
+end (* end of [unify2_d2var_t2ype] *)
 *)
 //
 (* ****** ****** *)
@@ -387,14 +397,14 @@ the_location_dummy
 val t2p1 = d2c1.type()
 val tqas = d2c1.tqas()
 //
-val
-t2p1 =
-t2ype_tq2as_elim(loc0, t2p1, tqas)
-//
 in
 let
+  val
+  t2p1 =
+  t2ype_tq2as_elim
+  ( loc0, t2p1, tqas )
 in
-  match2_t2ype_t2ype(t2p1, t2p2)
+match2_t2ype_t2ype(t2p1, t2p2)
 end
 end // end of [match2_d2con_t2ype]
 //
@@ -422,10 +432,6 @@ the_location_dummy
 val t2p1 = d2c1.type()
 val tqas = d2c1.tqas()
 //
-val
-t2p1 =
-t2ype_tq2as_elim(loc0, t2p1, tqas)
-//
 in
 let
 //
@@ -446,6 +452,12 @@ val () =
 println!
 ("match2_d2cst_t2ype: t2p2 = ", t2p2)
 *)
+//
+  val
+  t2p1 =
+  t2ype_tq2as_elim
+  ( loc0, t2p1, tqas )
+//
 //
 in
   match2_t2ype_t2ype(t2p1, t2p2)

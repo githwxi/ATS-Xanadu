@@ -70,6 +70,102 @@ _(*rest-of-t2ype*) => s2exp_t2ype(t2p0)
 end // end of [s2exp_t2ypize]
 
 (* ****** ****** *)
+
+implement
+s2exp_tq2as_elim
+(loc0, t2p0, tqas) =
+(
+case+ tqas of
+|
+list_nil() => t2p0
+|
+list_cons _ =>
+let
+val s2vs =
+list_vt_nil((*void*))
+val tsub =
+list_vt_nil((*void*))
+in
+  auxinst1(tqas, s2vs, tsub)
+end
+) where
+{
+//
+vtypedef
+s2explst_vt = List0_vt(s2exp)
+//
+fnx
+auxinst1
+( tqas
+: tq2arglst
+, s2vs: s2varlst_vt
+, tsub: s2explst_vt): s2exp =
+(
+case+ tqas of
+//
+|
+list_nil() =>
+( t2p0 ) where
+{
+val
+s2vs = list_vt_reverse(s2vs)
+val
+tsub = list_vt_reverse(tsub)
+val
+t2p0 =
+(
+s2exp_subst_svarlst(t2p0, s2vs, tsub)
+) where
+{
+  val s2vs = $UN.list_vt2t(s2vs)
+  val tsub = $UN.list_vt2t(tsub)
+}
+val ((*void*)) = list_vt_free(s2vs)
+val ((*void*)) = list_vt_free(tsub)
+} (* list_nil *)
+//
+|
+list_cons(tqa0, tqas) =>
+(
+  auxinst2(tqa0.s2vs(), tqas, s2vs, tsub)
+) (* list_cons *)
+//
+) (* end of [auxinst1] *)
+and
+auxinst2
+( svs1
+: s2varlst
+, tqas
+: tq2arglst
+, svs2: s2varlst_vt
+, tsub: s2explst_vt): s2exp =
+(
+case+ svs1 of
+|
+list_nil() =>
+(
+  auxinst1(tqas, svs2, tsub)
+)
+|
+list_cons(s2v1, svs1) =>
+let
+  val
+  xtv1 =
+  s2xtv_new_srt
+  (loc0, s2v1.sort())
+  val
+  s2ex = s2exp_xtv(xtv1)
+  val
+  svs2 = list_vt_cons(s2v1, svs2)
+  val
+  tsub = list_vt_cons(s2ex, tsub)
+in
+  auxinst2(svs1, tqas, svs2, tsub)
+end
+) (* end of [auxinst2] *)
+} (* end of [s2exp_tq2as_elim] *)
+
+(* ****** ****** *)
 //
 implement
 s2exp_whnfize_env
@@ -569,10 +665,9 @@ list_cons
 (s2v1, s2vs) =>
 let
 val
-s2t1 = s2v1.sort()
-val
 xtv1 =
-s2xtv_new(loc0, s2t1)
+s2xtv_new_srt
+(loc0, s2v1.sort())
 val
 s2e1 = s2exp_xtv(xtv1)
 in
@@ -653,14 +748,13 @@ list_cons
 (s2v1, s2vs) =>
 let
 val
-s2t1 = s2v1.sort()
-val
 xtv1 =
-s2xtv_new(loc0, s2t1)
+s2xtv_new_srt
+(loc0, s2v1.sort())
 val
 s2e1 = s2exp_xtv(xtv1)
 in
-  list_cons(s2e1, auxs2vs(s2vs))
+list_cons(s2e1, auxs2vs(s2vs))
 end
 )
 //
