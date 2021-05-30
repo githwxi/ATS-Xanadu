@@ -9,7 +9,8 @@
 fun
 <a:type>
 length
-(xs: list(a)): nint =
+{n:nat}
+(xs: list(a, n)): sint(n) =
 (
 case+ xs of
 |

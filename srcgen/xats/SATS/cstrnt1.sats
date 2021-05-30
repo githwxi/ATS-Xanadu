@@ -97,9 +97,12 @@ and c1str_node =
 | C1Stpeq of (s2exp, s2exp)
 //
 and c1hyp_node =
+//
 | C1Hsexp of s2exp
 | C1Hbind of (s2var, s2exp)
+//
 | C1Heqeq of (s2exp, s2exp)
+| C1Htpeq of (s2exp, s2exp)
 //
 where
 c1itmlst = List0(c1itm)

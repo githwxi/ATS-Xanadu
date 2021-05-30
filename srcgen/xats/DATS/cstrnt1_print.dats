@@ -192,11 +192,18 @@ C1Hbind(s2v1, s2e2) =>
 fprint!
 ( out
 , "C1Hbind(", s2v1, ", ", s2e2, ")")
+//
 |
 C1Heqeq(s2e1, s2e2) =>
 fprint!
 ( out
 , "C1Heqeq(", s2e1, ", ", s2e2, ")")
+|
+C1Htpeq(s2e1, s2e2) =>
+fprint!
+( out
+, "C1Htpeq(", s2e1, ", ", s2e2, ")")
+//
 ) (* end of [fprint_c1hyp] *)
 //
 (* ****** ****** *)
