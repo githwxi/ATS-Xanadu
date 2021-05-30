@@ -607,7 +607,8 @@ overload .stamp with s2xtv_get_stamp
 (* ****** ****** *)
 //
 fun
-s2xtv_new(loc_t, sort2): s2xtv
+s2xtv_new_srt
+(loc: loc_t, s2t: sort2): s2xtv
 //
 (* ****** ****** *)
 //

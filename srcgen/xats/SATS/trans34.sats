@@ -73,8 +73,17 @@ typedef d2var = $D2E.d2var
 //
 typedef d2cst = $D2E.d2cst
 //
+(* ****** ****** *)
+//
+typedef tq2arg = $D2E.tq2arg
+typedef tq2arglst = $D2E.tq2arglst
+//
+(* ****** ****** *)
+//
 typedef d3pat = $D3E.d3pat
 typedef f3arg = $D3E.f3arg
+//
+(* ****** ****** *)
 //
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
@@ -196,6 +205,11 @@ tr34env_add_dvar_sexp
 (* ****** ****** *)
 fun
 s2exp_t2ypize(t2ype): s2exp
+(* ****** ****** *)
+fun
+s2exp_tq2as_elim
+( loc0: loc_t
+, s2e0: s2exp, tqas: tq2arglst): s2exp
 (* ****** ****** *)
 //
 fun

@@ -465,8 +465,8 @@ s2xtv_tbox=ref(s2xtv_struct)
 in (* in-of-local *)
 //
 implement
-s2xtv_new
-(loc0, s2t0) =
+s2xtv_new_srt
+( loc0, s2t0 ) =
 (
 ref<s2xtv_struct>
 @{
@@ -485,7 +485,7 @@ ref<s2xtv_struct>
 val knd0 = K2XTVnon()
 val s2e0 = the_s2exp_none0
 val stamp = s2xtv_stamp_new()
-} (* end of [s2xtv_new] *)
+} (* end of [s2xtv_new_srt] *)
 //
 (* ****** ****** *)
 //
