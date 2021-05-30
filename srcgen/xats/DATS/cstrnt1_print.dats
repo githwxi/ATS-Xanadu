@@ -152,11 +152,17 @@ C1Seqeq(s2e1, s2e2) =>
 fprint!
 ( out
 , "C1Seqeq(", s2e1, ", ", s2e2, ")")
+//
 |
 C1Stple(s2e1, s2e2) =>
 fprint!
 ( out
 , "C1Stple(", s2e1, ", ", s2e2, ")")
+|
+C1Stpeq(s2e1, s2e2) =>
+fprint!
+( out
+, "C1Stpeq(", s2e1, ", ", s2e2, ")")
 //
 ) (* end of [fprint_c1str] *)
 //
