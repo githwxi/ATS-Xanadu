@@ -325,8 +325,8 @@ end // end of [local]
 #dynload "./cstrnt1.dats"
 #dynload "./cstrnt1_print.dats"
 //
-#dynload "./trans4c_envmap.dats"
-#dynload "./trans4c_dynexp.dats"
+#dynload "./trans4x_envmap.dats"
+#dynload "./trans4x_dynexp.dats"
 //
 (* ****** ****** *)
 //
