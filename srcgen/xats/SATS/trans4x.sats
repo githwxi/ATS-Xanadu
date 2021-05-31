@@ -71,157 +71,157 @@ typedef c1itmlst = $C1S.c1itmlst
 (* ****** ****** *)
 //
 absvtype
-tr4cenv_vtype = ptr
+tr4xenv_vtype = ptr
 vtypedef
-tr4cenv = tr4cenv_vtype
+tr4xenv = tr4xenv_vtype
 //
 (* ****** ****** *)
 //
 fun
-tr4cenv_make_nil
-  ((*void*)): tr4cenv
+tr4xenv_make_nil
+  ((*void*)): tr4xenv
 //
 (* ****** ****** *)
 //
 fun
-tr4cenv_free_top
-  (env0: tr4cenv): c1itmlst
+tr4xenv_free_top
+  (env0: tr4xenv): c1itmlst
 //
 (* ****** ****** *)
 //
 fun
-tr4cenv_add_bloc
-  ( env0: !tr4cenv ) : void
+tr4xenv_add_bloc
+  ( env0: !tr4xenv ) : void
 fun
-tr4cenv_pop_bloc
-  ( env0: !tr4cenv ) : c1itmlst
+tr4xenv_pop_bloc
+  ( env0: !tr4xenv ) : c1itmlst
 //
 (* ****** ****** *)
 //
 fun
-tr4cenv_add_sexi
-  ( env0: !tr4cenv ) : void
+tr4xenv_add_sexi
+  ( env0: !tr4xenv ) : void
 fun
-tr4cenv_pop_sexi
-  ( env0: !tr4cenv ) : c1itmlst
+tr4xenv_pop_sexi
+  ( env0: !tr4xenv ) : c1itmlst
 //
 (* ****** ****** *)
 //
 fun
-tr4cenv_add_if0
-  ( env0: !tr4cenv ) : void
+tr4xenv_add_if0
+  ( env0: !tr4xenv ) : void
 fun
-tr4cenv_pop_if0
-  ( env0: !tr4cenv ) : c1itmlst
+tr4xenv_pop_if0
+  ( env0: !tr4xenv ) : c1itmlst
 //
 fun
-tr4cenv_add_cas0
-  ( env0: !tr4cenv ) : void
+tr4xenv_add_cas0
+  ( env0: !tr4xenv ) : void
 fun
-tr4cenv_pop_cas0
-  ( env0: !tr4cenv ) : c1itmlst
-//
-(* ****** ****** *)
-//
-fun
-tr4cenv_add_fun0
-  ( env0: !tr4cenv ) : void
-fun
-tr4cenv_pop_fun0
-  ( env0: !tr4cenv ) : c1itmlst
+tr4xenv_pop_cas0
+  ( env0: !tr4xenv ) : c1itmlst
 //
 (* ****** ****** *)
+//
 fun
-tr4cenv_add_svar
+tr4xenv_add_fun0
+  ( env0: !tr4xenv ) : void
+fun
+tr4xenv_pop_fun0
+  ( env0: !tr4xenv ) : c1itmlst
+//
+(* ****** ****** *)
+fun
+tr4xenv_add_svar
 ( env0:
-! tr4cenv, s2v0: s2var): void
+! tr4xenv, s2v0: s2var): void
 fun
-tr4cenv_add_chyp
+tr4xenv_add_chyp
 ( env0:
-! tr4cenv, c1h0: c1hyp): void
+! tr4xenv, c1h0: c1hyp): void
 fun
-tr4cenv_add_cstr
+tr4xenv_add_cstr
 ( env0:
-! tr4cenv, c1s0: c1str): void
+! tr4xenv, c1s0: c1str): void
 (* ****** ****** *)
 fun
-tr4cenv_add_citm
+tr4xenv_add_citm
 ( env0:
-! tr4cenv, itm0: c1itm): void
+! tr4xenv, itm0: c1itm): void
 (* ****** ****** *)
 //
 fun
-trans4c_envless
+trans4x_envless
 ( dcls: d4eclist ) : c1itmlst
 //
 (* ****** ****** *)
 //
 fun
-trans4c_dpat
+trans4x_dpat
 ( env0:
-! tr4cenv, d4p0: d4pat): void
+! tr4xenv, d4p0: d4pat): void
 fun
-trans4c_dpatlst
+trans4x_dpatlst
 ( env0:
-! tr4cenv, d4ps: d4patlst): void
+! tr4xenv, d4ps: d4patlst): void
 //
 (* ****** ****** *)
 //
 fun
-trans4c_dexp
+trans4x_dexp
 ( env0:
-! tr4cenv, d4e0: d4exp): void
+! tr4xenv, d4e0: d4exp): void
 fun
-trans4c_dexplst
+trans4x_dexplst
 ( env0:
-! tr4cenv, d4es: d4explst): void
+! tr4xenv, d4es: d4explst): void
 //
 (* ****** ****** *)
 //
 fun
-trans4c_farg
+trans4x_farg
 ( env0
-: !tr4cenv, f4a0: f4arg): void
+: !tr4xenv, f4a0: f4arg): void
 fun
-trans4c_farglst
+trans4x_farglst
 ( env0
-: !tr4cenv, f4as: f4arglst): void
+: !tr4xenv, f4as: f4arglst): void
 //
 (* ****** ****** *)
 //
 fun
-trans4c_dgpat
+trans4x_dgpat
 ( env0:
-! tr4cenv, d4gp: d4gpat): void
+! tr4xenv, d4gp: d4gpat): void
 //
 fun
-trans4c_dclau
+trans4x_dclau
 ( env0:
-! tr4cenv, d4cl: d4clau): void
+! tr4xenv, d4cl: d4clau): void
 fun
-trans4c_dclaulst
+trans4x_dclaulst
 ( env0:
-! tr4cenv, dcls: d4claulst): void
-//
-(* ****** ****** *)
-//
-fun
-trans4c_decl
-( env0:
-! tr4cenv, d4cl: d4ecl): void
-fun
-trans4c_declist
-( env0:
-! tr4cenv, dcls: d4eclist): void
+! tr4xenv, dcls: d4claulst): void
 //
 (* ****** ****** *)
 //
 fun
-trans4c_cstr
+trans4x_decl
 ( env0:
-! tr4cenv
+! tr4xenv, d4cl: d4ecl): void
+fun
+trans4x_declist
+( env0:
+! tr4xenv, dcls: d4eclist): void
+//
+(* ****** ****** *)
+//
+fun
+trans4x_cstr
+( env0:
+! tr4xenv
 , loc0: loc_t, cstr: c0str): void
 //
 (* ****** ****** *)
 
-(* end of [trans4c.sats] *)
+(* end of [trans4x.sats] *)

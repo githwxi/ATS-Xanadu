@@ -54,34 +54,34 @@ UN = "prelude/SATS/unsafe.sats"
 
 #staload "./../SATS/cstrnt0.sats"
 #staload "./../SATS/cstrnt1.sats"
-#staload "./../SATS/trans4c.sats"
+#staload "./../SATS/trans4x.sats"
 
 (* ****** ****** *)
 
 implement
-trans4c_envless
+trans4x_envless
   (prog) =
   (cstr) where
 {
 //
 val
 env0 =
-tr4cenv_make_nil()
+tr4xenv_make_nil()
 //
 val () =
-trans4c_declist(env0, prog)
+trans4x_declist(env0, prog)
 //
 val
-cstr = tr4cenv_free_top(env0)
+cstr = tr4xenv_free_top(env0)
 //
-} (* end of [trans4c_envless] *)
+} (* end of [trans4x_envless] *)
 
 (* ****** ****** *)
 
 fun
-tr4cenv_add_svarlst
+tr4xenv_add_svarlst
 ( env0:
-! tr4cenv
+! tr4xenv
 , s2vs: s2varlst): void =
 (
 case+ s2vs of
@@ -91,18 +91,18 @@ list_nil() => ()
 list_cons(s2v1, s2vs) =>
 let
 val () =
-tr4cenv_add_svar(env0, s2v1)
+tr4xenv_add_svar(env0, s2v1)
 in
-tr4cenv_add_svarlst(env0, s2vs)
+tr4xenv_add_svarlst(env0, s2vs)
 end
-) (* end of [tr4cenv_add_svarlst] *)
+) (* end of [tr4xenv_add_svarlst] *)
 
 (* ****** ****** *)
 
 fun
-tr4cenv_add_shyplst
+tr4xenv_add_shyplst
 ( env0:
-! tr4cenv
+! tr4xenv
 , loc0: loc_t
 , s2ps: s2explst): void =
 (
@@ -118,12 +118,12 @@ chyp =
 c1hyp_make_node
 (loc0, C1Hsexp(s2p1))
 val () =
-tr4cenv_add_chyp(env0, chyp)
+tr4xenv_add_chyp(env0, chyp)
 //
 in
-tr4cenv_add_shyplst(env0,loc0,s2ps)
+tr4xenv_add_shyplst(env0,loc0,s2ps)
 end
-) (* end of [tr4cenv_add_shyplst] *)
+) (* end of [tr4xenv_add_shyplst] *)
 
 (* ****** ****** *)
 
@@ -132,7 +132,7 @@ local
 fun
 auxopny
 ( env0:
-! tr4cenv
+! tr4xenv
 , d4p0: d4pat): void =
 let
 //
@@ -146,19 +146,19 @@ D4Popny
 , s2ps) = d4p0.node()
 //
 in
-trans4c_dpat(env0, d4p1) where
+trans4x_dpat(env0, d4p1) where
 {
 val () =
-tr4cenv_add_svarlst(env0, s2vs)
+tr4xenv_add_svarlst(env0, s2vs)
 val () =
-tr4cenv_add_shyplst(env0, loc0, s2ps)
+tr4xenv_add_shyplst(env0, loc0, s2ps)
 }  
 end (*let*) // end of [auxopny]
 
 in(*in-of-local*)
 
 implement
-trans4c_dpat
+trans4x_dpat
 (env0, d4p0) =
 let
 //
@@ -168,7 +168,7 @@ loc0 = d4p0.loc()
 // (*
 val () =
 println!
-("trans4c_dpat: d4p0 = ", d4p0)
+("trans4x_dpat: d4p0 = ", d4p0)
 // *)
 //
 in
@@ -183,21 +183,21 @@ D4Ptasmp
 (d4p1, cstr) =>
 {
   val () =
-  trans4c_dpat(env0, d4p1)
+  trans4x_dpat(env0, d4p1)
   val () =
-  trans4c_cstr(env0, loc0, cstr)
+  trans4x_cstr(env0, loc0, cstr)
 }
 //
 | _ (*rest-of-d4pat*) => ((*void*))
 //
-end (*let*) // end of [trans4c_dpat]
+end (*let*) // end of [trans4x_dpat]
 
 end // end of [local]
 
 (* ****** ****** *)
 //
 implement
-trans4c_dpatlst
+trans4x_dpatlst
 (env0, d4ps) =
 (
 case+ d4ps of
@@ -207,11 +207,11 @@ list_nil() => ()
 list_cons(d4p0, d4ps) =>
 {
   val () =
-  trans4c_dpat(env0, d4p0)
+  trans4x_dpat(env0, d4p0)
   val () =
-  trans4c_dpatlst(env0, d4ps)
+  trans4x_dpatlst(env0, d4ps)
 }
-) (* end of [trans4c_dpatlst] *)
+) (* end of [trans4x_dpatlst] *)
 //
 (* ****** ****** *)
 
@@ -222,7 +222,7 @@ local
 fun
 auxdapp
 ( env0:
-! tr4cenv
+! tr4xenv
 , d4e0: d4exp): void =
 let
 //
@@ -233,10 +233,10 @@ D4Edapp
 , d4es) = d4e0.node()
 //
 val () =
-trans4c_dexp(env0, d4f0)
+trans4x_dexp(env0, d4f0)
 //
 in
-trans4c_dexplst(env0, d4es)
+trans4x_dexplst(env0, d4es)
 end (*let*) // end of [auxdapp]
 
 (* ****** ****** *)
@@ -244,7 +244,7 @@ end (*let*) // end of [auxdapp]
 fun
 auxopny
 ( env0:
-! tr4cenv
+! tr4xenv
 , d4e0: d4exp): void =
 let
 //
@@ -259,12 +259,12 @@ D4Eopny
 //
 //
 in
-trans4c_dexp(env0, d4e1) where
+trans4x_dexp(env0, d4e1) where
 {
 val () =
-tr4cenv_add_svarlst(env0, s2vs)
+tr4xenv_add_svarlst(env0, s2vs)
 val () =
-tr4cenv_add_shyplst(env0, loc0, s2ps)
+tr4xenv_add_shyplst(env0, loc0, s2ps)
 }
 end (*let*) // end of [auxopny]
 
@@ -273,7 +273,7 @@ end (*let*) // end of [auxopny]
 fun
 aux_let
 ( env0:
-! tr4cenv
+! tr4xenv
 , d4e0: d4exp): void =
 let
 //
@@ -283,10 +283,10 @@ D4Elet
 , d4e1) = d4e0.node()
 //
 val () =
-trans4c_declist(env0, dcls)
+trans4x_declist(env0, dcls)
 //
 in
-  trans4c_dexp( env0, d4e1 )
+  trans4x_dexp( env0, d4e1 )
 end (*let*) // end of [aux_let]
 
 (* ****** ****** *)
@@ -294,7 +294,7 @@ end (*let*) // end of [aux_let]
 fun
 aux_where
 ( env0:
-! tr4cenv
+! tr4xenv
 , d4e0: d4exp): void =
 let
 //
@@ -304,10 +304,10 @@ D4Ewhere
 , dcls) = d4e0.node()
 //
 val () =
-trans4c_declist(env0, dcls)
+trans4x_declist(env0, dcls)
 //
 in
-  trans4c_dexp( env0, d4e1 )
+  trans4x_dexp( env0, d4e1 )
 end (*let*) // end of [aux_where]
 
 (* ****** ****** *)
@@ -315,7 +315,7 @@ end (*let*) // end of [aux_where]
 fun
 aux_if0
 ( env0:
-! tr4cenv
+! tr4xenv
 , d4e0: d4exp): void =
 let
 //
@@ -326,7 +326,7 @@ D4Eif0
 , opt3) = d4e0.node()
 //
 val () =
-trans4c_dexp(env0, d4e1)
+trans4x_dexp(env0, d4e1)
 //
 val loc1 = d4e1.loc()
 val s2e1 = d4e1.sexp()
@@ -341,7 +341,7 @@ println!
 *)
 //
 val () =
-tr4cenv_add_if0(env0)
+tr4xenv_add_if0(env0)
 //
 val
 c1h2 =
@@ -350,26 +350,26 @@ c1hyp_make_node
 //
 val
 () =
-tr4cenv_add_bloc(env0)
+tr4xenv_add_bloc(env0)
 val
 () =
-tr4cenv_add_chyp(env0, c1h2)
+tr4xenv_add_chyp(env0, c1h2)
 val
-() = trans4c_dexp(env0, d4e2)
+() = trans4x_dexp(env0, d4e2)
 val
 () = let
 val
 loc2 = d4e2.loc()
 val
 c1is =
-tr4cenv_pop_bloc(env0)
+tr4xenv_pop_bloc(env0)
 val
 c1s2 =
 c1str_make_node
 ( loc2
 , C1Kbloc(), C1Sitms(c1is))
 in
-  tr4cenv_add_cstr(env0, c1s2)
+  tr4xenv_add_cstr(env0, c1s2)
 end // end of [val]
 //
 val
@@ -391,26 +391,26 @@ c1hyp_make_node
 , C1Heqeq(sbtf, sbff))
 val
 () =
-tr4cenv_add_bloc(env0)
+tr4xenv_add_bloc(env0)
 val
 () =
-tr4cenv_add_chyp(env0, c1h3)
+tr4xenv_add_chyp(env0, c1h3)
 val
-() = trans4c_dexp(env0, d4e3)
+() = trans4x_dexp(env0, d4e3)
 val
 () = let
 val
 loc3 = d4e3.loc()
 val
 c1is =
-tr4cenv_pop_bloc(env0)
+tr4xenv_pop_bloc(env0)
 val
 c1s3 =
 c1str_make_node
 ( loc3
 , C1Kbloc(), C1Sitms(c1is))
 in
-  tr4cenv_add_cstr(env0, c1s3)
+  tr4xenv_add_cstr(env0, c1s3)
 end // end of [val]
 }
 ) : void // case // end-of-val
@@ -422,14 +422,14 @@ val
 loc0 = d4e0.loc()
 val
 c1is =
-tr4cenv_pop_if0(env0)
+tr4xenv_pop_if0(env0)
 val
 c1s0 =
 c1str_make_node
 ( loc0
 , C1Kif0(), C1Sitms(c1is))
 in
-  tr4cenv_add_cstr(env0, c1s0)
+  tr4xenv_add_cstr(env0, c1s0)
 end
 //
 end where
@@ -457,7 +457,7 @@ list_cons(sbtf, _) = s2es
 fun
 aux_cas0
 ( env0:
-! tr4cenv
+! tr4xenv
 , d4e0: d4exp): void =
 let
 //
@@ -468,13 +468,13 @@ D4Ecas0
 , dcls) = d4e0.node()
 //
 val () =
-trans4c_dexp(env0, dmat)
+trans4x_dexp(env0, dmat)
 //
 val () =
-tr4cenv_add_cas0(env0)
+tr4xenv_add_cas0(env0)
 //
 val () =
-trans4c_dclaulst(env0, dcls)
+trans4x_dclaulst(env0, dcls)
 //
 in
 //
@@ -483,14 +483,14 @@ val
 loc0 = d4e0.loc()
 val
 c1is =
-tr4cenv_pop_cas0(env0)
+tr4xenv_pop_cas0(env0)
 val
 c1s0 =
 c1str_make_node
 ( loc0
 , C1Kif0(), C1Sitms(c1is))
 in
-  tr4cenv_add_cstr(env0, c1s0)
+  tr4xenv_add_cstr(env0, c1s0)
 end
 //
 end (*let*) // end of [aux_cas0]
@@ -500,7 +500,7 @@ end (*let*) // end of [aux_cas0]
 in(*in-of-local*)
 
 implement
-trans4c_dexp
+trans4x_dexp
 (env0, d4e0) =
 let
 //
@@ -510,7 +510,7 @@ loc0 = d4e0.loc()
 (*
 val () =
 println!
-("trans4c_dexp: d4e0 = ", d4e0)
+("trans4x_dexp: d4e0 = ", d4e0)
 *)
 //
 in
@@ -541,21 +541,21 @@ D4Etcast
 (d4e1, cstr) =>
 {
   val () =
-  trans4c_dexp(env0, d4e1)
+  trans4x_dexp(env0, d4e1)
   val () =
-  trans4c_cstr(env0, loc0, cstr)
+  trans4x_cstr(env0, loc0, cstr)
 }
 //
 | _ (*rest-of-d4exp*) => ((*void*))
 //
-end (*let*) // end of [trans4c_dexp]
+end (*let*) // end of [trans4x_dexp]
 
 end // end of [local]
 
 (* ****** ****** *)
 //
 implement
-trans4c_dexplst
+trans4x_dexplst
 (env0, d4es) =
 (
 case+ d4es of
@@ -565,16 +565,16 @@ list_nil() => ()
 list_cons(d4e0, d4es) =>
 {
   val () =
-  trans4c_dexp(env0, d4e0)
+  trans4x_dexp(env0, d4e0)
   val () =
-  trans4c_dexplst(env0, d4es)
+  trans4x_dexplst(env0, d4es)
 }
-) (* end of [trans4c_dexplst] *)
+) (* end of [trans4x_dexplst] *)
 //
 (* ****** ****** *)
 //
 implement
-trans4c_farg
+trans4x_farg
 (env0, f4a0) =
 let
 //
@@ -584,7 +584,7 @@ loc0 = f4a0.loc()
 // (*
 val () =
 println!
-("trans4c_farg: f4a0 = ", f4a0)
+("trans4x_farg: f4a0 = ", f4a0)
 // *)
 //
 in
@@ -597,16 +597,16 @@ F4ARGnone3 _ => ()
 |
 F4ARGsome_dyn
 ( npf1, d4ps ) =>
-trans4c_dpatlst(env0, d4ps)
+trans4x_dpatlst(env0, d4ps)
 //
 |
 F4ARGsome_sta
 ( s2vs, s2ps ) =>
 {
 val () =
-tr4cenv_add_svarlst(env0, s2vs)
+tr4xenv_add_svarlst(env0, s2vs)
 val () =
-tr4cenv_add_shyplst(env0, loc0, s2ps)
+tr4xenv_add_shyplst(env0, loc0, s2ps)
 }
 //
 |
@@ -617,15 +617,15 @@ let
   c1str_make_node
   (loc0, C1Smwfd(s2es))
 in
-  tr4cenv_add_cstr(env0, cstr)
+  tr4xenv_add_cstr(env0, cstr)
 end
 //
-end (*let*) // end of [trans4c_farg]
+end (*let*) // end of [trans4x_farg]
 //
 (* ****** ****** *)
 //
 implement
-trans4c_farglst
+trans4x_farglst
 (env0, f4as) =
 (
 case+ f4as of
@@ -635,16 +635,16 @@ list_nil() => ()
 list_cons(f4a0, f4as) =>
 {
   val () =
-  trans4c_farg(env0, f4a0)
+  trans4x_farg(env0, f4a0)
   val () =
-  trans4c_farglst(env0, f4as)
+  trans4x_farglst(env0, f4as)
 }
-) (* end of [trans4c_farglst] *)
+) (* end of [trans4x_farglst] *)
 //
 (* ****** ****** *)
 //
 implement
-trans4c_dgpat
+trans4x_dgpat
 ( env0, dgpt ) =
 (
 case+
@@ -652,18 +652,18 @@ dgpt.node() of
 //
 |
 D4GPATpat(d4p1) =>
-trans4c_dpat(env0, d4p1)
+trans4x_dpat(env0, d4p1)
 //
 |
 D4GPATgua(d4p1, d4gs) =>
-trans4c_dpat(env0, d4p1)
+trans4x_dpat(env0, d4p1)
 //
-) (* end of [trans4c_dgpat] *)
+) (* end of [trans4x_dgpat] *)
 //
 (* ****** ****** *)
 //
 implement
-trans4c_dclau
+trans4x_dclau
 ( env0, dcl0 ) =
 let
 //
@@ -682,34 +682,34 @@ D4CLAUexp
 (dgpt, d4e1) =>
 let
 val () =
-tr4cenv_add_bloc(env0)
+tr4xenv_add_bloc(env0)
 //
 val () =
 let
 val () =
-trans4c_dgpat(env0, dgpt)
+trans4x_dgpat(env0, dgpt)
 in
-  trans4c_dexp(env0, d4e1)
+  trans4x_dexp(env0, d4e1)
 end
 //
 val
 c1is =
-tr4cenv_pop_bloc(env0)
+tr4xenv_pop_bloc(env0)
 val
 cstr =
 c1str_make_node
 ( loc0
 , C1Kbloc(), C1Sitms(c1is))
 in
-  tr4cenv_add_cstr(env0, cstr)
+  tr4xenv_add_cstr(env0, cstr)
 end
 //
-end // end of [trans4c_dclau]
+end // end of [trans4x_dclau]
 //
 (* ****** ****** *)
 //
 implement
-trans4c_dclaulst
+trans4x_dclaulst
 (env0, dcls) =
 (
 case+ dcls of
@@ -719,11 +719,11 @@ list_nil() => ()
 list_cons(dcl0, dcls) =>
 {
   val () =
-  trans4c_dclau(env0, dcl0)
+  trans4x_dclau(env0, dcl0)
   val () =
-  trans4c_dclaulst(env0, dcls)
+  trans4x_dclaulst(env0, dcls)
 }
-) (* end of [trans4c_dclaulst] *)
+) (* end of [trans4x_dclaulst] *)
 //
 (* ****** ****** *)
 
@@ -734,7 +734,7 @@ local
 fun
 aux_valdecl
 ( env0:
-! tr4cenv,
+! tr4xenv,
   d4cl: d4ecl): void =
 let
 //
@@ -752,7 +752,7 @@ end where
 fun
 auxv4d0
 ( env0:
-! tr4cenv
+! tr4xenv
 , v4d0
 : v4aldecl): void =
 let
@@ -765,7 +765,7 @@ val loc = rcd.loc
 //
 (*
 val () =
-tr4cenv_add_val0(env0)
+tr4xenv_add_val0(env0)
 *)
 //
 val () =
@@ -776,7 +776,7 @@ rcd.def of
 None() => ()
 |
 Some(d4e0) =>
-trans4c_dexp(env0, d4e0)
+trans4x_dexp(env0, d4e0)
 ) : void // end-of-val
 //
 in
@@ -787,14 +787,14 @@ rcd.def of
 None() => ()
 |
 Some(d4e0) =>
-trans4c_dpat(env0, rcd.pat)
+trans4x_dpat(env0, rcd.pat)
 //
 end // end of [auxv4d0]
 //
 fun
 auxv4ds
 ( env0:
-! tr4cenv
+! tr4xenv
 , v4ds
 : v4aldeclist): void =
 (
@@ -817,7 +817,7 @@ val () = auxv4ds(env0, v4ds)
 fun
 aux_fundecl
 ( env0:
-! tr4cenv,
+! tr4xenv,
   d4cl: d4ecl): void =
 let
 //
@@ -836,7 +836,7 @@ end where
 fun
 auxf4d0
 ( env0:
-! tr4cenv
+! tr4xenv
 , f4d0
 : f4undecl): void =
 let
@@ -848,7 +848,7 @@ F4UNDECL
 val loc = rcd.loc
 //
 val () =
-tr4cenv_add_fun0(env0)
+tr4xenv_add_fun0(env0)
 //
 val () =
 (
@@ -858,7 +858,7 @@ rcd.a4g of
 None() => ()
 |
 Some(f4as) =>
-trans4c_farglst
+trans4x_farglst
 ( env0, f4as )): void
 //
 val () =
@@ -869,23 +869,23 @@ rcd.def of
 None() => ()
 |
 Some(d4e0) =>
-trans4c_dexp(env0, d4e0)
+trans4x_dexp(env0, d4e0)
 ) : void // end-of-val
 //
 val c1is =
-tr4cenv_pop_fun0(env0)
+tr4xenv_pop_fun0(env0)
 val cstr =
 c1str_make_node
 (loc, C1Kfun0(), C1Sitms(c1is))
 //
 in
-tr4cenv_add_citm( env0, C1Icstr(cstr) )
+tr4xenv_add_citm( env0, C1Icstr(cstr) )
 end // end of [auxf4d0]
 //
 fun
 auxf4ds
 ( env0:
-! tr4cenv
+! tr4xenv
 , f4ds
 : f4undeclist): void =
 (
@@ -908,14 +908,14 @@ val () = auxf4ds(env0, f4ds)
 in(*in-of-local*)
 
 implement
-trans4c_decl
+trans4x_decl
 (env0, d4cl) =
 let
 //
 (*
 val () =
 println!
-("trans4c_decl: d4cl = ", d4cl)
+("trans4x_decl: d4cl = ", d4cl)
 *)
 //
 in(*in-of-let*)
@@ -933,14 +933,14 @@ aux_fundecl(env0, d4cl)
 //
 | _ (*rest-of-d4ecl*) => ((*void*))
 //
-end (*let*) // end of [trans4c_decl]
+end (*let*) // end of [trans4x_decl]
 
 end // end of [local]
 
 (* ****** ****** *)
 
 implement
-trans4c_declist
+trans4x_declist
 (env0, dcls) =
 (
 case+ dcls of
@@ -950,18 +950,18 @@ list_nil() => ()
 list_cons(d4cl, dcls) =>
 {
   val () =
-  trans4c_decl(env0, d4cl)
+  trans4x_decl(env0, d4cl)
   val () =
-  trans4c_declist(env0, dcls)
+  trans4x_declist(env0, dcls)
 }
-) (* end of [trans4c_declist] *)
+) (* end of [trans4x_declist] *)
 
 (* ****** ****** *)
 
 fun
-trans4c_s2exp_deexi
+trans4x_s2exp_deexi
 ( env0:
-! tr4cenv
+! tr4xenv
 , loc0: loc_t
 , s2e0: s2exp): s2exp =
 (
@@ -1022,7 +1022,7 @@ end
 fun
 auxs2ps
 ( env0:
-! tr4cenv
+! tr4xenv
 , s2ps: s2explst
 , s2vs: s2varlst
 , tsub: s2explst): void =
@@ -1043,7 +1043,7 @@ cstr =
 c1str_make_node
 ( loc0, C1Ssexp(s2p1))
 val () =
-tr4cenv_add_cstr(env0, cstr)
+tr4xenv_add_cstr(env0, cstr)
 in
 auxs2ps(env0, s2ps, s2vs, tsub)
 end // end of [list_cons]
@@ -1053,7 +1053,7 @@ end // end of [list_cons]
 //
 | _(* non-S2Eexi *) => s2e0
 //
-) (* end of [trans4c_s2exp_deexi] *)
+) (* end of [trans4x_s2exp_deexi] *)
 
 (* ****** ****** *)
 //
@@ -1086,7 +1086,7 @@ local
 fun
 auxh_eqeq
 ( env0:
-! tr4cenv,
+! tr4xenv,
   loc0: loc_t
 , s2e1: s2exp
 , s2e2: s2exp): void =
@@ -1132,7 +1132,7 @@ val chyp =
 c1hyp_make_node
 (loc0, C1Heqeq(s2e1, s2e2))
 in
-  tr4cenv_add_chyp( env0, chyp )
+  tr4xenv_add_chyp( env0, chyp )
 end
 //
 end (*let*) // end of [auxh_eqeq]
@@ -1142,7 +1142,7 @@ end (*let*) // end of [auxh_eqeq]
 and
 auxh_tpeq
 ( env0:
-! tr4cenv,
+! tr4xenv,
   loc0: loc_t
 , s2e1: s2exp
 , s2e2: s2exp): void =
@@ -1206,7 +1206,7 @@ val chyp =
 c1hyp_make_node
 (loc0, C1Htpeq(s2e1, s2e2))
 in
-  tr4cenv_add_chyp( env0, chyp )
+  tr4xenv_add_chyp( env0, chyp )
 end
 //
 end (*let*) // end of [auxh_tpeq]
@@ -1216,7 +1216,7 @@ end (*let*) // end of [auxh_tpeq]
 and
 auxhh_eqeq
 ( env0:
-! tr4cenv,
+! tr4xenv,
   loc0: loc_t
 , ses1: s2explst
 , ses2: s2explst): void =
@@ -1244,7 +1244,7 @@ end
 fun
 auxi_eqeq
 ( env0:
-! tr4cenv,
+! tr4xenv,
   loc0: loc_t
 , s2e1: s2exp
 , s2e2: s2exp): void =
@@ -1290,7 +1290,7 @@ val cstr =
 c1str_make_node
 (loc0, C1Seqeq(s2e1, s2e2))
 in
-  tr4cenv_add_cstr( env0, cstr )
+  tr4xenv_add_cstr( env0, cstr )
 end
 //
 end (*let*) // end of [auxi_eqeq]
@@ -1300,7 +1300,7 @@ end (*let*) // end of [auxi_eqeq]
 and
 auxi_tple
 ( env0:
-! tr4cenv,
+! tr4xenv,
   loc0: loc_t
 , s2e1: s2exp
 , s2e2: s2exp): void =
@@ -1328,7 +1328,7 @@ S2Eapp
 let
 val
 s2e2 =
-trans4c_s2exp_deexi
+trans4x_s2exp_deexi
 ( env0, loc0, s2e2 )
 val-
 S2Eapp
@@ -1356,7 +1356,7 @@ s2explst_revars
 ( sps1, svs1, svs2 )
 //
 val () =
-tr4cenv_add_sexi(env0)
+tr4xenv_add_sexi(env0)
 //
 val () =
 auxi_tple
@@ -1367,18 +1367,18 @@ val
 s2e1 =
 s2exp_revars(s2e1, svs1, svs2)
 val () =
-tr4cenv_add_svarlst(env0, svs2)
+tr4xenv_add_svarlst(env0, svs2)
 val () =
-tr4cenv_add_shyplst(env0, loc0, sps2)
+tr4xenv_add_shyplst(env0, loc0, sps2)
 }
 //
 in
 //
-tr4cenv_add_citm
+tr4xenv_add_citm
 (env0, C1Icstr(cstr)) where
 {
 val c1is =
-tr4cenv_pop_sexi(env0)
+tr4xenv_pop_sexi(env0)
 val cstr =
 c1str_make_node
 (loc0, C1Ksexi(), C1Sitms(c1is))
@@ -1395,7 +1395,7 @@ let
   c1str_make_node
   (loc0, C1Stple(s2e1, s2e2))
 in
-  tr4cenv_add_cstr( env0, cstr )
+  tr4xenv_add_cstr( env0, cstr )
 end
 //
 end (*let*) // end of [auxi_tple]
@@ -1405,7 +1405,7 @@ end (*let*) // end of [auxi_tple]
 and
 auxi_tpeq
 ( env0:
-! tr4cenv,
+! tr4xenv,
   loc0: loc_t
 , s2e1: s2exp
 , s2e2: s2exp): void =
@@ -1434,7 +1434,7 @@ let
   c1str_make_node
   (loc0, C1Stpeq(s2e1, s2e2))
 in
-  tr4cenv_add_cstr( env0, cstr )
+  tr4xenv_add_cstr( env0, cstr )
 end
 //
 end (*let*) // end of [auxi_tpeq]
@@ -1444,7 +1444,7 @@ end (*let*) // end of [auxi_tpeq]
 and
 auxii_eqeq
 ( env0:
-! tr4cenv,
+! tr4xenv,
   loc0: loc_t
 , ses1: s2explst
 , ses2: s2explst): void =
@@ -1472,16 +1472,16 @@ end
 in(*in-of-local*)
 
 implement
-trans4c_cstr
+trans4x_cstr
 (env0, loc0, cstr) =
 let
 //
 val () =
 println!
-("trans4c_cstr: loc0 = ", loc0)
+("trans4x_cstr: loc0 = ", loc0)
 val () =
 println!
-("trans4c_cstr: cstr = ", cstr)
+("trans4x_cstr: cstr = ", cstr)
 //
 in
 //
@@ -1507,15 +1507,15 @@ _(*rest-of-c0str*) =>
   c1str_make_node
   (loc0, C1Scstr(cstr))
   in
-    tr4cenv_add_cstr( env0, cstr )
+    tr4xenv_add_cstr( env0, cstr )
   end
 )
 *)
 //
-end (*let*) // end of [trans4c_cstr]
+end (*let*) // end of [trans4x_cstr]
 
 end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_trans4c_dynexp.dats] *)
+(* end of [xats_trans4x_dynexp.dats] *)
