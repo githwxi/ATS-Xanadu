@@ -1058,6 +1058,14 @@ end // end of [list_cons]
 (* ****** ****** *)
 //
 fun
+un_S2Extv
+(x0: s2exp): bool =
+(
+case+ x0.node() of
+S2Extv _ => true | _ => false
+)
+//
+fun
 un_S2Eapp
 (x0: s2exp): bool =
 (
@@ -1098,23 +1106,25 @@ println!
 //
 in
 //
-case+
-s2e1.node() of
-|
-S2Extv(xtv1) =>
-s2xtv_set_sexp(xtv1, s2e2)
-|
-_(*rest-of-s2exp*) =>
-(
-case+
-s2e2.node() of
-|
-S2Extv(xtv2) =>
-s2xtv_set_sexp(xtv2, s2e1)
-|
-_(*rest-of-s2exp*) =>
-(
 ifcase
+|
+un_S2Extv(s2e1) =>
+let
+val-
+S2Extv
+(xtv1) = s2e1.node()
+in
+s2xtv_set_sexp(xtv1, s2e2)
+end
+|
+un_S2Extv(s2e2) =>
+let
+val-
+S2Extv
+(xtv2) = s2e2.node()
+in
+s2xtv_set_sexp(xtv2, s2e1)
+end
 |
 _ (* else-of-ifcase *) =>
 let
@@ -1124,8 +1134,6 @@ c1hyp_make_node
 in
   tr4cenv_add_chyp( env0, chyp )
 end
-) (* end-of-ifcase *)
-) (* end of [case+] *)
 //
 end (*let*) // end of [auxh_eqeq]
 
@@ -1154,23 +1162,26 @@ println!
 //
 in
 //
-case+
-s2e1.node() of
-|
-S2Extv(xtv1) =>
-s2xtv_set_sexp(xtv1, s2e2)
-|
-_(*rest-of-s2exp*) =>
-(
-case+
-s2e2.node() of
-|
-S2Extv(xtv2) =>
-s2xtv_set_sexp(xtv2, s2e1)
-|
-_(*rest-of-s2exp*) =>
-(
 ifcase
+|
+un_S2Extv(s2e1) =>
+let
+val-
+S2Extv
+(xtv1) = s2e1.node()
+in
+s2xtv_set_sexp(xtv1, s2e2)
+end
+|
+un_S2Extv(s2e2) =>
+let
+val-
+S2Extv
+(xtv2) = s2e2.node()
+in
+s2xtv_set_sexp(xtv2, s2e1)
+end
+//
 |
 un_S2Eapp(s2e1) =>
 let
@@ -1197,8 +1208,6 @@ c1hyp_make_node
 in
   tr4cenv_add_chyp( env0, chyp )
 end
-) (* end-of-ifcase *)
-) (* end of [case+] *)
 //
 end (*let*) // end of [auxh_tpeq]
 
@@ -1255,23 +1264,25 @@ println!
 //
 in
 //
-case+
-s2e1.node() of
-|
-S2Extv(xtv1) =>
-s2xtv_set_sexp(xtv1, s2e2)
-|
-_(*rest-of-s2exp*) =>
-(
-case+
-s2e2.node() of
-|
-S2Extv(xtv2) =>
-s2xtv_set_sexp(xtv2, s2e1)
-|
-_(*rest-of-s2exp*) =>
-(
 ifcase
+|
+un_S2Extv(s2e1) =>
+let
+val-
+S2Extv
+(xtv1) = s2e1.node()
+in
+s2xtv_set_sexp(xtv1, s2e2)
+end
+|
+un_S2Extv(s2e2) =>
+let
+val-
+S2Extv
+(xtv2) = s2e2.node()
+in
+s2xtv_set_sexp(xtv2, s2e1)
+end
 |
 _ (*else-of-ifcase*) =>
 let
@@ -1281,8 +1292,6 @@ c1str_make_node
 in
   tr4cenv_add_cstr( env0, cstr )
 end
-) (* end-of-ifcase *)
-) (* end of [case+] *)
 //
 end (*let*) // end of [auxi_eqeq]
 
