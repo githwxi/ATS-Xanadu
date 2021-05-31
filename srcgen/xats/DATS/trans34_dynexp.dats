@@ -1282,7 +1282,8 @@ t2p0 = d3e0.type()
 val-
 D3Etcon
 ( d2c0
-, ti3a, ti2s) = d3e0.node()
+, ti3a
+, ti2s) = d3e0.node()
 //
 val s2e0 = d2c0.sexp()
 val ti4a =
@@ -1361,7 +1362,8 @@ t2p0 = d3e0.type()
 val-
 D3Etcst
 ( d2c0
-, ti3a, ti2s) = d3e0.node()
+, ti3a
+, ti2s) = d3e0.node()
 //
 val s2e0 = d2c0.sexp()
 val ti4a =
@@ -1380,7 +1382,8 @@ auxlst
 (
 case+ xs of
 |
-list_nil() => list_nil()
+list_nil() =>
+list_nil()
 |
 list_cons(x1, xs) =>
 let
@@ -1446,8 +1449,10 @@ println!
 val-
 D3Etimp
 ( stmp
-, d3e1, targ
-, d3cl, tsub) = d3e0.node()
+, d3e1
+, targ
+, d3cl
+, tsub) = d3e0.node()
 //
 val
 d4e1 = auxtcst(env0, d3e1)
@@ -2647,6 +2652,38 @@ trans34_farglst_s2exp(env0, f3as, s2f0, sres)
 
 local
 
+(* ****** ****** *)
+
+fun
+aux_valdecl
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cvaldecl
+( tok0
+, mopt, v3ds) = d3cl.node()
+//
+val
+v4ds =
+trans34_valdeclist(env0, v3ds)
+//
+val () =
+println!
+("aux_valdecl: v4ds = ", v4ds)
+//
+in
+d4ecl_make_node
+(loc0, D4Cvaldecl(tok0, mopt, v4ds))
+end (*let*) // end of [aux_valdecl]
+
+(* ****** ****** *)
+
 fun
 aux_fundecl
 ( env0:
@@ -2687,34 +2724,6 @@ end (*let*) // end of [aux_fundecl]
 
 (* ****** ****** *)
 
-fun
-aux_valdecl
-( env0:
-! tr34env
-, d3cl: d3ecl): d4ecl =
-let
-//
-val
-loc0 = d3cl.loc()
-//
-val-
-D3Cvaldecl
-( tok0
-, mopt, v3ds) = d3cl.node()
-//
-val
-v4ds =
-trans34_valdeclist(env0, v3ds)
-//
-val () =
-println!
-("aux_valdecl: v4ds = ", v4ds)
-//
-in
-d4ecl_make_node
-(loc0, D4Cvaldecl(tok0, mopt, v4ds))
-end // end of [aux_valdecl]
-
 in(*in-of-local*)
 
 implement
@@ -2732,12 +2741,12 @@ case+
 d3cl.node() of
 //
 |
-D3Cfundecl _ =>
-aux_fundecl(env0, d3cl)
-//
-|
 D3Cvaldecl _ =>
 aux_valdecl(env0, d3cl)
+//
+|
+D3Cfundecl _ =>
+aux_fundecl(env0, d3cl)
 //
 |
 _(*rest-of-d3ecl*) =>
