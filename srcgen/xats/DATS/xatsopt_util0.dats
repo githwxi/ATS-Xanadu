@@ -102,7 +102,7 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tread34.sats"
 //
 (* ****** ****** *)
-#staload "./../SATS/trans4c.sats"
+#staload "./../SATS/trans4x.sats"
 (* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
@@ -318,7 +318,7 @@ d4csopt of
   None(*void*)
 | Some(d4cs) =>
   Some
-  (trans4c_envless(d4cs))
+  (trans4x_envless(d4cs))
 ) : Option(c1itmlst) // end-of-val
 //
 in
