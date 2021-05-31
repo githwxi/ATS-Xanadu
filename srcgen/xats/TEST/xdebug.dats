@@ -5,6 +5,35 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+fun
+fact(x:nint): nint =
+if
+x > 0
+then x * fact(x-1) else 1
+////
+(* ****** ****** *)
+//
+fun
+<a:type>
+append
+{m,n:nat}
+( xs
+: list(a, m)
+,
+  ys
+: list(a, n)): list(a, m+n) =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => ys
+|
+list_cons
+(  x1, xs  ) =>
+list_cons(x1, append(xs, ys))
+)
+////
+(* ****** ****** *)
 //
 fun
 <a:type>
@@ -20,13 +49,6 @@ list_nil
 list_cons
 (  _, xs  ) => 1 + length(xs)
 )
-////
-(* ****** ****** *)
-fun
-fact(x:nint): nint =
-if
-x > 0
-then x * fact(x-1) else 1
 ////
 (* ****** ****** *)
 //
