@@ -41,13 +41,13 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/cstrnt1.sats"
-#staload "./../SATS/trans4c.sats"
+#staload "./../SATS/trans4x.sats"
 
 (* ****** ****** *)
 //
 datavtype
-tr4cenv =
-TR4cENV of c1itmstk
+tr4xenv =
+Tr4xENV of c1itmstk
 //
 and c1itmstk =
 //
@@ -67,28 +67,28 @@ and c1itmstk =
 (* ****** ****** *)
 
 absimpl
-tr4cenv_vtype = tr4cenv
+tr4xenv_vtype = tr4xenv
 
 (* ****** ****** *)
 //
 implement
-tr4cenv_make_nil
+tr4xenv_make_nil
   ((*void*)) =
 (
-  TR4cENV(c1itmstk_nil((*void*)))
+  Tr4xENV(c1itmstk_nil((*void*)))
 )
 //
 (* ****** ****** *)
 //
 implement
-tr4cenv_free_top
+tr4xenv_free_top
   (env0) =
 (
 let
 val
 c1is = list_vt_nil()
 val+
-~TR4cENV(stk0) = env0
+~Tr4xENV(stk0) = env0
 in
 list_vt2t(auxmain(stk0, c1is))
 end
@@ -112,125 +112,125 @@ c1itmstk_cons
 auxmain
 (stk1, list_vt_cons(c1i1, c1is))
 )
-} (*where*) // [tr4cenv_free_top]
+} (*where*) // [tr4xenv_free_top]
 //
 (* ****** ****** *)
 
 implement
-tr4cenv_add_bloc
+tr4xenv_add_bloc
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 in
 stk0 :=
 c1itmstk_bloc(stk0); fold@(env0)
-end // end of [tr4cenv_add_bloc]
+end // end of [tr4xenv_add_bloc]
 
 (* ****** ****** *)
 
 implement
-tr4cenv_add_sexi
+tr4xenv_add_sexi
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 in
 stk0 :=
 c1itmstk_sexi(stk0); fold@(env0)
-end // end of [tr4cenv_add_sexi]
+end // end of [tr4xenv_add_sexi]
 
 (* ****** ****** *)
 
 implement
-tr4cenv_add_if0
+tr4xenv_add_if0
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 in
 stk0 :=
 c1itmstk_if0(stk0); fold@(env0)
-end // end of [tr4cenv_add_if0]
+end // end of [tr4xenv_add_if0]
 
 (* ****** ****** *)
 
 implement
-tr4cenv_add_cas0
+tr4xenv_add_cas0
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 in
 stk0 :=
 c1itmstk_cas0(stk0); fold@(env0)
-end // end of [tr4cenv_add_cas0]
+end // end of [tr4xenv_add_cas0]
 
 (* ****** ****** *)
 
 implement
-tr4cenv_add_fun0
+tr4xenv_add_fun0
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 in
 stk0 :=
 c1itmstk_fun0(stk0); fold@(env0)
-end // end of [tr4cenv_add_fun0]
+end // end of [tr4xenv_add_fun0]
 
 (* ****** ****** *)
 //
 implement
-tr4cenv_add_svar
+tr4xenv_add_svar
   (env0, s2v0) =
 (
-tr4cenv_add_citm(env0, C1Isvar(s2v0))
+tr4xenv_add_citm(env0, C1Isvar(s2v0))
 )
 implement
-tr4cenv_add_chyp
+tr4xenv_add_chyp
   (env0, chyp) =
 (
-tr4cenv_add_citm(env0, C1Ichyp(chyp))
+tr4xenv_add_citm(env0, C1Ichyp(chyp))
 )
 implement
-tr4cenv_add_cstr
+tr4xenv_add_cstr
   (env0, cstr) =
 (
-tr4cenv_add_citm(env0, C1Icstr(cstr))
+tr4xenv_add_citm(env0, C1Icstr(cstr))
 )
 //
 (* ****** ****** *)
 //
 implement
-tr4cenv_add_citm
+tr4xenv_add_citm
   (env0, citm) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 val () =
 println!
-("tr4cenv_add_citm: citm = ", citm)
+("tr4xenv_add_citm: citm = ", citm)
 //
 in
 stk0 :=
 c1itmstk_cons(citm, stk0); fold@(env0)
-end // end of [tr4cenv_add_citm]
+end // end of [tr4xenv_add_citm]
 //
 (* ****** ****** *)
 
 implement
-tr4cenv_pop_bloc
+tr4xenv_pop_bloc
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 val
 ( stk1
@@ -255,16 +255,16 @@ c1itmstk_bloc
 c1itmstk_cons(c1i1, stk1) =>
 auxmain(stk1, list_cons(c1i1, c1is))
 )
-} (*where*) // end of [tr4cenv_pop_bloc]
+} (*where*) // end of [tr4xenv_pop_bloc]
 
 (* ****** ****** *)
 
 implement
-tr4cenv_pop_sexi
+tr4xenv_pop_sexi
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 val
 ( stk1
@@ -289,16 +289,16 @@ c1itmstk_sexi
 c1itmstk_cons(c1i1, stk1) =>
 auxmain(stk1, list_cons(c1i1, c1is))
 )
-} (*where*) // end of [tr4cenv_pop_sexi]
+} (*where*) // end of [tr4xenv_pop_sexi]
 
 (* ****** ****** *)
 
 implement
-tr4cenv_pop_if0
+tr4xenv_pop_if0
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 val
 ( stk1
@@ -323,16 +323,16 @@ c1itmstk_if0
 c1itmstk_cons(c1i1, stk1) =>
 auxmain(stk1, list_cons(c1i1, c1is))
 )
-} (*where*) // end of [tr4cenv_pop_if0]
+} (*where*) // end of [tr4xenv_pop_if0]
 
 (* ****** ****** *)
 
 implement
-tr4cenv_pop_cas0
+tr4xenv_pop_cas0
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 val
 ( stk1
@@ -357,16 +357,16 @@ c1itmstk_cas0
 c1itmstk_cons(c1i1, stk1) =>
 auxmain(stk1, list_cons(c1i1, c1is))
 )
-} (*where*) // end of [tr4cenv_pop_cas0]
+} (*where*) // end of [tr4xenv_pop_cas0]
 
 (* ****** ****** *)
 
 implement
-tr4cenv_pop_fun0
+tr4xenv_pop_fun0
   (env0) = let
 //
 val+
-@TR4cENV(stk0) = env0
+@Tr4xENV(stk0) = env0
 //
 val
 ( stk1
@@ -391,8 +391,8 @@ c1itmstk_fun0
 c1itmstk_cons(c1i1, stk1) =>
 auxmain(stk1, list_cons(c1i1, c1is))
 )
-} (*where*) // end of [tr4cenv_pop_fun0]
+} (*where*) // end of [tr4xenv_pop_fun0]
 
 (* ****** ****** *)
 
-(* end of [xats_trans4c_envmap.dats] *)
+(* end of [xats_trans4x_envmap.dats] *)
