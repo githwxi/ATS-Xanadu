@@ -115,15 +115,26 @@ fprint_c1itm
   (out, x0) =
 (
 case+ x0 of
-| C1Isvar(s2v1) =>
-  fprint!(out, "C1Isvar(", s2v1, ")")
+//
+|
+C1Isvar(s2v1) =>
+let
+val
+s2t1 = s2v1.sort()
+in
+fprint!
+(out
+, "C1Isvar(", s2v1, ":", s2t1, ")")
+end
+//
 | C1Ichyp(chyp) =>
   fprint!(out, "C1Ichyp(", chyp, ")")
 | C1Icstr(cstr) =>
   fprint!(out, "C1Icstr(", cstr, ")")
 | C1Idisj(c1ss) =>
   fprint!(out, "C1Idisj(", "...", ")")
-)
+//
+) (* end of [fprint_c1itm] *)
 (* ****** ****** *)
 //
 implement

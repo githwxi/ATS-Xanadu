@@ -5,6 +5,23 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+//
+fun
+<a:type>
+length
+{n:nat}
+(xs: list(a, n)): sint(n) =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => 0
+|
+list_cons
+(  _, xs  ) => 1 + length(xs)
+)
+////
+(* ****** ****** *)
 fun
 fact(x:nint): nint =
 if
@@ -31,23 +48,6 @@ list_nil
 list_cons
 (  x1, xs  ) =>
 list_cons(x1, append(xs, ys))
-)
-////
-(* ****** ****** *)
-//
-fun
-<a:type>
-length
-{n:nat}
-(xs: list(a, n)): sint(n) =
-(
-case+ xs of
-|
-list_nil
-((*void*)) => 0
-|
-list_cons
-(  _, xs  ) => 1 + length(xs)
 )
 ////
 (* ****** ****** *)
