@@ -53,25 +53,6 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 implement
-s2exp_t2ypize
-  (t2p0) =
-let
-val t2p0 =
-t2ype_whnfize(t2p0)
-in
-//
-case+
-t2p0.node() of
-|
-T2Pvar(s2v0) => s2exp_var(s2v0)
-|
-_(*rest-of-t2ype*) => s2exp_t2ype(t2p0)
-//
-end // end of [s2exp_t2ypize]
-
-(* ****** ****** *)
-
-implement
 s2exp_tq2as_elim
 (loc0, t2p0, tqas) =
 (
@@ -165,6 +146,25 @@ end
 ) (* end of [auxinst2] *)
 } (* end of [s2exp_tq2as_elim] *)
 
+(* ****** ****** *)
+//
+implement
+t2ype_sexpize_env
+( env0, t2p0 ) =
+let
+val t2p0 =
+t2ype_whnfize(t2p0)
+in
+//
+case+
+t2p0.node() of
+|
+T2Pvar(s2v0) => s2exp_var(s2v0)
+|
+_(*rest-of-t2ype*) => s2exp_t2ype(t2p0)
+//
+end // end of [t2ype_sexpize_env]
+//
 (* ****** ****** *)
 //
 implement
@@ -804,7 +804,7 @@ end
 
 implement
 trans34_f3undecl_set_sexp
-( f3d0 ) =
+( env0, f3d0 ) =
 let
 //
 val+
@@ -837,71 +837,77 @@ case+
 rcd.res of
 |
 EFFS2EXPnone() =>
-s2exp_t2ypize(rcd.rtp)
+sexpize_env(env0, rcd.rtp)
 |
 EFFS2EXPsome(s2r0) => s2r0
 ) : s2exp // end-of-val
 val
 s2f0 =
-aux_f3as(f3as, s2r0)
+aux_f3as(env0, f3as, s2r0)
 in
-d2var_set_sexp(nam, s2f0);
-d2cst_set_sexp(d2c, s2f0);
+  d2var_set_sexp(nam, s2f0)
+; d2cst_set_sexp(d2c, s2f0)
 end
 //
 end (* None *)
 |
 Some(s2f0) =>
-(
-d2var_set_sexp(nam, s2f0);
-d2cst_set_sexp(d2c, s2f0);
+( d2var_set_sexp(nam, s2f0)
+; d2cst_set_sexp(d2c, s2f0)
 ) (* end of [Some] *)
 //
 end where
 {
 fun
-aux_fc2
+aux_fclo
 ( f3as
 : f3arglst): funclo2 =
 (
 case+ f3as of
-| list_nil() => FC2fun()
+| list_nil() =>
+  FC2fun(*void*)
 | list_cons(f3a0, f3as) =>
 (
 case+
 f3a0.node() of
 | F3ARGsome_dyn _ =>
-  FC2cloref | _ => aux_fc2(f3as)
+  FC2cloref | _ => aux_fclo(f3as)
 )
 )
 fun
 aux_f3a0
-( fc2
+( env0:
+! tr34env
+, fclo
 : funclo2
 , f3a0: f3arg
 , s2r0: s2exp): s2exp =
 (
 case+
 f3a0.node() of
-| F3ARGsome_dyn
-  (npf, d3ps) =>
-  (
-    s2exp_fun_full
-    (fc2, npf, s2es, s2r0)
-  ) where
-  {
-  val s2es =
-  trans34_d3patlst_get_s2es(d3ps)
-  }
-| F3ARGsome_sta
-  (s2vs, s2ps) =>
-  s2exp_uni(s2vs, s2ps, s2r0)
+|
+F3ARGsome_sta
+(s2vs, s2ps) =>
+s2exp_uni(s2vs, s2ps, s2r0)
+|
+F3ARGsome_dyn
+(npf1, d3ps) =>
+(
+  s2exp_fun_full
+  (fclo, npf1, s2es, s2r0)
+) where
+{
+val s2es =
+trans34_d3patlst_get_s2es(env0, d3ps)
+}
 //
 | _ (*else*) => s2r0 // end-of-else
 )
 and
 aux_f3as
-( f3as
+( env0:
+! tr34env
+, f3as
 : f3arglst
 , s2r0: s2exp): s2exp =
 (
@@ -911,10 +917,10 @@ list_nil() => s2r0
 |
 list_cons(f3a0, f3as) =>
 let
-val fc2 = aux_fc2(f3as)
+val fclo = aux_fclo(f3as)
 in
 aux_f3a0
-(fc2, f3a0, aux_f3as(f3as, s2r0))
+(env0, fclo, f3a0, aux_f3as(env0, f3as, s2r0))
 end // end of [list_cons]
 )
 } (* trans34_f3undecl_set_sexp *)
@@ -923,7 +929,7 @@ end // end of [list_cons]
 //
 implement
 trans34_d3pat_get_sexp
-( d3p0 ) =
+( env0, d3p0 ) =
 (
 case+
 d3p0.node() of
@@ -932,25 +938,28 @@ D3Panno(d3p1, s2e2) => s2e2
 |
 _ (*else*) =>
 (
-  s2exp_t2ypize(d3p0.type())
+sexpize_env(env0, d3p0.type())
 )
-) (* end of [trans34_d3pat_get_sexp] *)
+) (* trans34_d3pat_get_sexp *)
+//
 implement
 trans34_d3patlst_get_s2es
-( d3ps ) =
+( env0, d3ps ) =
 (
-  list_vt2t(d3ps)
-) where
+case+ d3ps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(d3p1, d3ps) =>
+list_cons(s2e1, s2es) where
 {
-val
-d3ps =
-list_map<d3pat><s2exp>
-  (d3ps) where
-{
-implement
-list_map$fopr<d3pat><s2exp> = trans34_d3pat_get_sexp
+val s2e1 =
+trans34_d3pat_get_sexp(env0, d3p1)
+val s2es =
+trans34_d3patlst_get_s2es(env0, d3ps)
 }
-} (* end of [trans34_d3patlst_get_s2es] *)
+) (* trans34_d3patlst_get_s2es *)
 //
 (* ****** ****** *)
 
