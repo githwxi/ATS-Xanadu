@@ -451,6 +451,13 @@ case+ x0.node() of
   ( out
   , "D4Edapp("
   , d4f0, "; ", npf1, "; ", d4es, ")")
+| D4Edapq
+  ( dapp
+  , npf1, d4es) =>
+  fprint!
+  ( out
+  , "D4Edapq("
+  , dapp, "; ", npf1, "; ", d4es, ")")
 //
 | D4Elet
   ( dcls, d4e1) =>
