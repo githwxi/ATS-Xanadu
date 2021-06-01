@@ -735,6 +735,11 @@ auxd3p0
 , d3p0: d3pat
 , sopn: s2exp): d4pat =
 let
+(*
+val () =
+println!
+("auxd3p0: d3p0 = ", d3p0)
+*)
 in
 //
 case+
@@ -752,7 +757,8 @@ in
 case-
 s2e1.node() of
 |
-S2Enone0() =>
+S2Enone0
+((*void*)) =>
 {
 val () =
 d2var_set_sexp(d2v1, sopn)
@@ -920,7 +926,7 @@ s2e0 = s2exp_type_sint(s2i0)
 in
   d4exp_make_node
   (loc0, s2e0, t2p0, D4Ei00(int))
-end // end of [auxi00]
+end (*let*) // end of [auxi00]
 
 fun
 auxb00
@@ -968,7 +974,7 @@ s2e0 = s2exp_type_char(s2ch)
 in
   d4exp_make_node
   (loc0, s2e0, t2p0, D4Ec00(chr))
-end // end of [auxc00]
+end (*let*) // end of [auxc00]
 
 (* ****** ****** *)
 
@@ -999,7 +1005,7 @@ s2e0 = s2exp_type_sint(s2i0)
 in
   d4exp_make_node
   (loc0, s2e0, t2p0, D4Eint(tok))
-end // end of [auxint]
+end (*let*) // end of [auxint]
 
 (* ****** ****** *)
 
@@ -1030,7 +1036,7 @@ s2e0 = s2exp_type_bool(s2b0)
 in
   d4exp_make_node
   (loc0, s2e0, t2p0, D4Ebtf(tok))
-end // end of [auxbtf]
+end (*let*) // end of [auxbtf]
 
 (* ****** ****** *)
 
@@ -1061,7 +1067,7 @@ s2e0 = s2exp_type_char(s2b0)
 in
   d4exp_make_node
   (loc0, s2e0, t2p0, D4Echr(tok))
-end // end of [auxchr]
+end (*let*) // end of [auxchr]
 
 (* ****** ****** *)
 
@@ -1095,7 +1101,7 @@ println!
 in
 d4exp_make_node
 (loc0, s2e0, t2p0, D4Evar(d2v0))
-end // end of [auxvar]
+end (*let*) // end of [auxvar]
 
 (* ****** ****** *)
 
@@ -1141,7 +1147,7 @@ in
 d4exp_make_node
 ( loc0
 , s2e0, t2p0, D4Evknd(knd0, d2v0))
-end // end of [auxvknd]
+end (*let*) // end of [auxvknd]
 
 (* ****** ****** *)
 
@@ -1173,7 +1179,7 @@ println!
 in
 d4exp_make_node
 (loc0, s2e0, t2p0, D4Efcon(d2c0))
-end // end of [auxfcon]
+end (*let*) // end of [auxfcon]
 
 (* ****** ****** *)
 
@@ -1205,7 +1211,7 @@ println!
 in
 d4exp_make_node
 (loc0, s2e0, t2p0, D4Efcst(d2c0))
-end // end of [auxfcst]
+end (*let*) // end of [auxfcst]
 
 (* ****** ****** *)
 
@@ -1220,9 +1226,11 @@ auxti4a
 (
 case+ ti4a of
 |
-TI4ARGnone() => ()
+TI4ARGnone() =>
+((*void*))
 |
-TI4ARGsome(xs) => auxlst1(xs, ti2s)
+TI4ARGsome(xs) =>
+auxlst1(xs, ti2s)
 ) (* end of [auxti4a] *)
 and
 auxlst1
@@ -1232,12 +1240,14 @@ auxlst1
 : ti2arglst): void =
 (
 case+ ys of
-| list_nil() => ()
-| list_cons(y1, ys) =>
-  let
-    val es =
-    y1.s2es() in auxlst2(xs, es, ys)
-  end
+|
+list_nil() => ()
+|
+list_cons(y1, ys) =>
+let
+  val es =
+  y1.s2es() in auxlst2(xs, es, ys)
+end
 ) (*case*) // end of [auxlst1]
 and
 auxlst2
@@ -1348,7 +1358,7 @@ in
 d4exp_make_node
 ( loc0, s2e0, t2p0
 , D4Etcon(d2c0, ti4a, ti3a, ti2s))
-end // end of [auxtcon]
+end (*let*) // end of [auxtcon]
 
 (* ****** ****** *)
 
@@ -1429,7 +1439,7 @@ in
 d4exp_make_node
 ( loc0, s2e0, t2p0
 , D4Etcst(d2c0, ti4a, ti3a, ti2s))
-end // end of [auxtcst]
+end (*let*) // end of [auxtcst]
 
 end // end of [local]
 
