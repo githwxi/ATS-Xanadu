@@ -320,6 +320,11 @@ implement
 DOT_symbol = symbol_make(".")
 //
 implement
+DLR_symbol = symbol_make("$")
+implement
+SRP_symbol = symbol_make("#")
+//
+implement
 SMCLN_symbol = symbol_make(";")
 //
 (* ****** ****** *)

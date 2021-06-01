@@ -147,7 +147,105 @@ end
 } (* end of [s2exp_tq2as_elim] *)
 
 (* ****** ****** *)
+
+local
+
+fun
+auxapp
+(t2p0: t2ype): s2exp =
+let
 //
+val-
+T2Papp
+( t2f0
+, t2ps) = t2p0.node()
+//
+val
+s2t0 = t2p0.sort()
+val
+s2f0 = s2exp_t2ype(t2f0)
+//
+val
+s2vs = list_vt_nil()
+val
+s2es = list_vt_nil()
+val
+(s2vs, s2es) =
+auxt2ps(t2ps, s2vs, s2es)
+val sapp =
+s2exp_make_node
+(s2t0, S2Eapp(s2f0, s2es))
+in
+//
+case+ s2vs of
+|
+list_nil _ => sapp
+|
+list_cons _ =>
+s2exp_make_node
+( s2t0
+, S2Eexi(s2vs, list_nil(), sapp))
+//
+end where
+{
+fun
+auxt2ps
+( t2ps
+: t2ypelst
+, s2vs: s2varlst_vt
+, s2es: s2explst_vt)
+: (s2varlst, s2explst) =
+(
+case+ t2ps of
+|
+list_nil() =>
+(s2vs, s2es) where
+{
+val
+s2vs =
+list_vt2t
+(list_vt_reverse(s2vs))
+val
+s2es =
+list_vt2t
+(list_vt_reverse(s2es))
+}
+|
+list_cons
+(t2p1, t2ps) =>
+(
+case+
+t2p1.node() of
+|
+T2Pnone0() =>
+let
+val s2v1 =
+s2var_new(t2p1.sort())
+val s2e1 = s2exp_var(s2v1)
+val s2vs =
+list_vt_cons(s2v1, s2vs)
+val s2es =
+list_vt_cons(s2e1, s2es)
+in
+  auxt2ps(t2ps, s2vs, s2es)
+end
+//
+|
+_(*non-T2Pnone0*) =>
+let
+val s2e1 =
+s2exp_t2ype(t2p1)
+val s2es =
+list_vt_cons(s2e1, s2es)
+in
+  auxt2ps(t2ps, s2vs, s2es)
+end
+) (* list_cons *)
+) (* end of [auxt2ps] *)
+} (*where*) // end of [auxapp]
+
+in(* in-of-local *)
+
 implement
 t2ype_sexpize_env
 ( env0, t2p0 ) =
@@ -159,12 +257,14 @@ in
 case+
 t2p0.node() of
 |
-T2Pvar(s2v0) => s2exp_var(s2v0)
+T2Papp _ => auxapp(t2p0)
 |
 _(*rest-of-t2ype*) => s2exp_t2ype(t2p0)
 //
 end // end of [t2ype_sexpize_env]
-//
+
+end // end of [local]
+
 (* ****** ****** *)
 //
 implement

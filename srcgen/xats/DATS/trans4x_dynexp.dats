@@ -45,6 +45,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 
 (* ****** ****** *)
 
@@ -958,23 +959,24 @@ list_cons(d4cl, dcls) =>
 
 (* ****** ****** *)
 
+local
+
 fun
-trans4x_s2exp_deexi
-( env0:
-! tr4xenv
+aux_exi
+( env0
+: !tr4xenv
 , loc0: loc_t
 , s2e0: s2exp): s2exp =
-(
-case+
-s2e0.node() of
-|
+let
+//
+val-
 S2Eexi
 ( s2vs
-, s2ps, s2e1) =>
-let
+, s2ps
+, s2e1) = s2e0.node()
+//
 val
-tsub =
-auxtsub(s2vs)
+tsub = auxtsub( s2vs )
 //
 val () =
 auxs2ps
@@ -1015,7 +1017,7 @@ let
   (loc0, s2v1.sort())
   val s2e1 = s2exp_xtv(xtv1)
 in
-  list_vt_cons(s2e1, auxtsub(s2vs))
+list_vt_cons(s2e1, auxtsub(s2vs))
 end
 ) (* end of [auxtsub] *)
 //
@@ -1045,15 +1047,124 @@ c1str_make_node
 val () =
 tr4xenv_add_cstr(env0, cstr)
 in
-auxs2ps(env0, s2ps, s2vs, tsub)
+  auxs2ps(env0, s2ps, s2vs, tsub)
 end // end of [list_cons]
 )
 //
-} (*where*) // S2Eexi
+} (*where*) // end of [aux_exi]
+
+(* ****** ****** *)
+
+(*
+fun
+aux_t2ype
+( env0
+: !tr4xenv
+, loc0: loc_t
+, s2e0: s2exp): s2exp =
+let
 //
-| _(* non-S2Eexi *) => s2e0
+val-
+S2Et2ype
+( t2p0 ) = s2e0.node()
+//
+in
+//
+case+
+t2p0.node() of
+|
+T2Papp(t2f0, t2ps) =>
+let
+val
+s2f0 = s2exp_t2ype(t2f0)
+val
+s2es =
+auxt2ps(env0, loc0, t2ps)
+in
+s2exp_apps(loc0, s2f0, s2es)
+end
+//
+| _(*else-of-t2ype*) => s2e0
+//
+end where
+{
+fun
+auxt2ps
+( env0:
+! tr4xenv
+, loc0: loc_t
+, t2ps: t2ypelst): s2explst =
+(
+case+ t2ps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(t2p1, t2ps) =>
+let
+//
+val s2e1 =
+(
+case+
+t2p1.node() of
+|
+T2Pnone0() =>
+let
+val
+s2t1 =
+t2p1.sort()
+val
+s2v1 =
+s2var_new(s2t1)
+val () =
+tr4xenv_add_svar
+( env0, s2v1 )
+in
+  s2exp_var(s2v1)
+end
+//
+|
+_(*else*) => s2exp_t2ype(t2p1)
+//
+) : s2exp // end-of-val
+//
+in
+list_cons
+(s2e1, auxt2ps(env0, loc0, t2ps))
+end
+)
+} (*where*) // end of [aux_t2ype]
+*)
+
+(* ****** ****** *)
+
+in(*in-of-local*)
+
+fun
+trans4x_s2exp_deexi
+( env0:
+! tr4xenv
+, loc0: loc_t
+, s2e0: s2exp): s2exp =
+(
+case+
+s2e0.node() of
+|
+S2Eexi _ =>
+aux_exi(env0, loc0, s2e0)
+//
+(*
+|
+S2Et2ype _ =>
+aux_t2ype(env0, loc0, s2e0)
+*)
+//
+| _(*else-of-s2exp*) => s2e0
 //
 ) (* end of [trans4x_s2exp_deexi] *)
+
+end // end of [trans4x_s2exp_deexi]
 
 (* ****** ****** *)
 //
@@ -1330,6 +1441,11 @@ val
 s2e2 =
 trans4x_s2exp_deexi
 ( env0, loc0, s2e2 )
+(*
+val () =
+println!
+("auxi_tple: s2e2 = ", s2e2)
+*)
 val-
 S2Eapp
 ( s2f2
