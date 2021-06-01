@@ -481,6 +481,9 @@ s2varlst_copy
   (s2vs: s2varlst): s2varlst
 //
 fun
+s2var_new(s2t: sort2): s2var
+//
+fun
 s2var_make_idst
   (sid: sym_t, s2t: sort2): s2var
 //

@@ -565,6 +565,9 @@ s2exp_make_node(s2t0, S2Euni(s2vs, s2ps, body))
 end // end of [else]
 //
 |
+S2Et2ype _ => s2e0
+//
+|
 S2Etyext(name, s2es) =>
 let
 val

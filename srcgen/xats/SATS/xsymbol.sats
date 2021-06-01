@@ -64,6 +64,9 @@ val BAR_symbol : symbol // symbol("|")
 val CLN_symbol : symbol // symbol(":")
 val DOT_symbol : symbol // symbol(".")
 //
+val DLR_symbol : symbol // symbol("$")
+val SRP_symbol : symbol // symbol("#")
+//
 val SMCLN_symbol : symbol // symbol(";")
 val TILDA_symbol : symbol // symbol("~")
 //

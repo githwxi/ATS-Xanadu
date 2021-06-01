@@ -2934,13 +2934,19 @@ Some(d3e0) =>
 case+ sres of
 |
 EFFS2EXPnone() =>
-Some(trans34_dexp(env0, d3e0))
+let
+val s2e0 =
+sexpize_env(env0, rcd.rtp)
+in
+Some
+(trans34_dexp_dntp(env0, d3e0, s2e0))
+end
 |
 EFFS2EXPsome(s2e0) =>
 Some
 (trans34_dexp_dntp(env0, d3e0, s2e0))
 )
-) : d4expopt // end of [val def]
+) : d4expopt
 //
 in(*in-of-let*)
 //

@@ -391,6 +391,16 @@ val s2vs = s2varlst_copy(s2vs)
 ) (* end of [s2varlst_copy] *)
 //
 (* ****** ****** *)
+//
+implement
+s2var_new(s2t) =
+let
+  val id0 = SRP_symbol
+in
+  s2var_make_idst(id0, s2t)
+end
+//
+(* ****** ****** *)
 
 local
 
@@ -1293,9 +1303,19 @@ implement
 s2exp_t2ype
   (t2p0) =
 (
+case+
+t2p0.node() of
+|
+T2Pvar(s2v0) =>
+s2exp_var(s2v0)
+|
+T2Pcst(s2c0) =>
+s2exp_cst(s2c0)
+|
+_ (*else-of-t2ype*) =>
 s2exp_make_node
 (t2p0.sort(), S2Et2ype(t2p0))
-)
+) (* end of [s2exp_t2ype] *)
 //
 (* ****** ****** *)
 //
