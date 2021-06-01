@@ -204,19 +204,23 @@ tr34env_add_dvar_sexp
 , d2v0: d2var, s2e0: s2exp): void
 (* ****** ****** *)
 fun
-s2exp_t2ypize(t2ype): s2exp
-(* ****** ****** *)
-fun
 s2exp_tq2as_elim
 ( loc0: loc_t
 , s2e0: s2exp, tqas: tq2arglst): s2exp
 (* ****** ****** *)
 //
 fun
+t2ype_sexpize_env
+( env0:
+! tr34env, t2p0: t2ype): s2exp
+//
+fun
 s2exp_whnfize_env
 ( env0:
 ! tr34env, s2e0: s2exp): s2exp
 //
+overload
+sexpize_env with t2ype_sexpize_env
 overload
 whnfize_env with s2exp_whnfize_env
 //
@@ -495,12 +499,15 @@ tr34env_d2var_set_sexp
 //
 (* ****** ****** *)
 fun
-trans34_d3pat_get_sexp(d3pat): s2exp
+trans34_d3pat_get_sexp
+(env0: !tr34env, d3p0: d3pat): s2exp
 fun
-trans34_d3patlst_get_s2es(d3patlst): s2explst
+trans34_d3patlst_get_s2es
+(env0: !tr34env, d3ps: d3patlst): s2explst
 (* ****** ****** *)
 fun
-trans34_f3undecl_set_sexp(f3undecl): void
+trans34_f3undecl_set_sexp
+(env0: !tr34env, f3d0: f3undecl): void
 (* ****** ****** *)
 
 (* end of [xats_trans34.sats] *)
