@@ -256,8 +256,15 @@ in
 //
 case+
 t2p0.node() of
+//
 |
-T2Papp _ => auxapp(t2p0)
+T2Pcst(s2c0) => s2exp_cst(s2c0)
+|
+T2Pvar(s2v0) => s2exp_var(s2v0)
+//
+|
+T2Papp(t2f0, t2ps) => auxapp(t2p0)
+//
 |
 _(*rest-of-t2ype*) => s2exp_t2ype(t2p0)
 //
