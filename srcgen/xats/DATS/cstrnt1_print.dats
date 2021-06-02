@@ -117,6 +117,10 @@ fprint_c1itm
 case+ x0 of
 //
 |
+C1Igimp() =>
+fprint!(out, "C1Igimp(", ")")
+//
+|
 C1Isvar(s2v1) =>
 let
 val
@@ -131,8 +135,10 @@ end
   fprint!(out, "C1Ichyp(", chyp, ")")
 | C1Icstr(cstr) =>
   fprint!(out, "C1Icstr(", cstr, ")")
+(*
 | C1Idisj(c1ss) =>
   fprint!(out, "C1Idisj(", "...", ")")
+*)
 //
 ) (* end of [fprint_c1itm] *)
 (* ****** ****** *)

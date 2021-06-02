@@ -688,7 +688,11 @@ tr4xenv_add_bloc(env0)
 val () =
 let
 val () =
-trans4x_dgpat(env0, dgpt)
+trans4x_dgpat
+( env0, dgpt )
+val () =
+tr4xenv_add_citm
+(env0, C1Igimp(*void*))
 in
   trans4x_dexp(env0, d4e1)
 end

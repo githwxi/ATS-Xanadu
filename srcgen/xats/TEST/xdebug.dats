@@ -5,13 +5,6 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
-fun
-fact(x) =
-if
-x > 0
-then x * fact(x-1) else 1
-////
-(* ****** ****** *)
 //
 fun
 <a:type>
@@ -27,6 +20,13 @@ list_nil
 list_cons
 (  _, xs  ) => 1 + length(xs)
 )
+////
+(* ****** ****** *)
+fun
+fact(x) =
+if
+x > 0
+then x * fact(x-1) else 1
 ////
 (* ****** ****** *)
 fun
