@@ -577,13 +577,22 @@ return res; // string_vt_rforall_cfr
 }
 /* ****** ****** */
 //
-// prelude/array.sats
-// (arrays of
-//  various dimensionality)
+(*
+prelude/array.sats
+For arrays of
+various dimensionalities:
+//
+Ref: 0-dimensional
+Array: 1-dimensional
+Matrix: 2-dimensional
+//
+*)
 //
 /* ****** ****** */
 //
-// HX: 1-dimensional
+(*
+HX: 0-dimensional
+*)
 //
 /* ****** ****** */
 
@@ -618,6 +627,15 @@ XATS2JS_a0ref_set
   (A0, x0)
 {
   return (A0[0] = x0);
+}
+
+/* ****** ****** */
+
+function
+XATS2JS_a0ref_get0
+  (A0)
+{
+  return A0[0];
 }
 
 /* ****** ****** */
