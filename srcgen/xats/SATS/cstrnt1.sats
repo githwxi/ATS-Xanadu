@@ -82,10 +82,15 @@ overload fprint with fprint_c1knd
 //
 datatype
 c1itm =
+//
+| C1Igimp of ()
+//
 | C1Isvar of s2var
 | C1Ichyp of c1hyp
 | C1Icstr of c1str
+(*
 | C1Idisj of c1strlst
+*)
 //
 and c1str_node =
 | C1Ssexp of s2exp
