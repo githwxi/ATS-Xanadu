@@ -320,7 +320,7 @@ val
 the_t2ype_none0: t2ype
 //
 fun
-t2ype_none0((*void*)): t2ype
+t2ype_none0(s2t: sort2): t2ype
 fun
 t2ype_none1(s2e: s2exp): t2ype
 //
