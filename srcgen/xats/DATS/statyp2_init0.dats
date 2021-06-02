@@ -108,13 +108,15 @@ t2ype_make_node
 (S2Tnone0, T2Pnone0)
 //
 implement
-t2ype_none0() =
-the_t2ype_none0(*void*)
-//
-implement
-t2ype_none1(s2e) =
+t2ype_none0
+( s2t0 ) =
 t2ype_make_node
-(S2Tnone0(), T2Pnone1(s2e))
+(s2t0, T2Pnone0(*void*))
+implement
+t2ype_none1
+( s2e0 ) =
+t2ype_make_node
+(s2e0.sort(), T2Pnone1(s2e0))
 //
 (* ****** ****** *)
 //

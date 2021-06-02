@@ -210,19 +210,20 @@ s2e0.node() of
     t2ype_make_node(s2t0, T2Plam(s2vs, t2p1))
   end
 //
-| S2Etyext(tnm1, s2es) =>
-  let
-    val t2ps = s2explst_erase(s2es)
-  in
-    t2ype_make_node(s2t0, T2Ptyext(tnm1, t2ps))
-  end
+|
+S2Etyext(tnm1, s2es) =>
+let
+  val t2ps = s2explst_erase(s2es)
+in
+  t2ype_make_node(s2t0, T2Ptyext(tnm1, t2ps))
+end
 //
 |
 S2Etyrec(knd, npf, ls2es) =>
 let
-  val lt2ps = labs2explst_erase(ls2es)
+val lt2ps = labs2explst_erase(ls2es)
 in
-  t2ype_make_node(s2t0, T2Ptyrec(knd, npf, lt2ps))
+t2ype_make_node(s2t0, T2Ptyrec(knd, npf, lt2ps))
 end
 //
 | _(*rest-of-s2exp*) => t2ype_none1(s2e0)
@@ -230,7 +231,9 @@ end
 )
 //
 in
-  if impred then auxmain(s2e0) else the_t2ype_none0
+if
+impred
+then auxmain(s2e0) else t2ype_none0(s2e0.sort())
 end // end of [s2exp_erase]
 
 (* ****** ****** *)
