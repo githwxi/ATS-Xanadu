@@ -132,11 +132,6 @@ fun
 <a:vt>
 a0ptr_alloc
 ((*void*)): a0ptr(?a)
-fun
-<a:vt>
-a0ptr_clear
-(!a0ptr(a) >> a0ptr(~a)): void
-//
 (* ****** ****** *)
 //
 fun
@@ -153,10 +148,10 @@ a0ptr_free(A0: a0ptr(a)): void
 (* ****** ****** *)
 //
 fun
-<a:vt>
-a0ref_get(A0: a0ref(a)): ~a
+<a:t0>
+a0ref_get(A0: a0ref(a)): a
 fun
-<a:vt>
+<a:t0>
 a0ref_set(A0: a0ref(a), x0: a): void
 //
 fun
@@ -167,6 +162,52 @@ fun
 <a:vt>
 a0ptr_set
 (!a0ptr(?a) >> a0ptr(a), x0: a): void
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ref_get0(A0: a0ref(a)): ~a
+fun
+<a:vt>
+a0ref_cget(A0: a0ref(a)): (a)
+//
+fun
+<a:vt>
+a0ptr_get0(A0: !a0ptr(a)): ~a
+fun
+<a:vt>
+a0ptr_cget(A0: !a0ptr(a)): (a)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ref_setf
+(A0: a0ref(a), x0: a): void
+fun
+<a:vt>
+a0ptr_setf
+(A0: !a0ptr(a), x0: a): void
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ptr_getf
+( A0:
+! a0ptr(a)>>a0ptr(~a)): void
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ref_exch
+(A0: a0ref(a), x0: a): a(*old*)
+fun
+<a:vt>
+a0ptr_exch
+(A0: !a0ptr(a), x0: a): a(*old*)
 //
 (* ****** ****** *)
 //
@@ -211,12 +252,15 @@ fun
 a1ptr_alloc
 {n:nat}
 (asz: int(n)): a1ptr(?a, n)
+(* ****** ****** *)
+//
 fun
 <a:vt>
 a1ptr_clear
 {n:nat}
 ( A0:
-! a1ptr(a, n) >> a1ptr(~a, n)): void
+! a1ptr(a,n) >> a1ptr(~a,n)
+) : void // end-of-function
 //
 (* ****** ****** *)
 //
@@ -285,27 +329,27 @@ a1ptr_length(!a1ptr(a, n)): int(n)
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 a1ref_get_at
 {n:i0}
 ( A0
-: a1ref(a, n), i0: nintlt(n)): ~a
+: a1ref(a, n), i0: nintlt(n)): a
 fun
-<a:vt>
+<a:t0>
 a1ptr_get_at
 {n:i0}
 ( A0:
-! a1ptr(a, n), i0: nintlt(n)): ~a
+! a1ptr(a, n), i0: nintlt(n)): a
 //
 fun
-<a:vt>
+<a:t0>
 a1ref_set_at
 {n:i0}
 ( A0:
   a1ref(a, n)
 , i0: nintlt(n), x0: a(*new*)): void
 fun
-<a:vt>
+<a:t0>
 a1ptr_set_at
 {n:i0}
 ( A0:
@@ -318,6 +362,25 @@ a1ptr_set_at_raw
 ( A0:
 ! a1ptr(?a, n)
 , i0: nintlt(n), x0: a(*ini*)): void
+//
+(* ****** ****** *)
+//
+(*
+HX: [cget_at] calls [g_copy]
+*)
+//
+fun
+<a:vt>
+a1ref_cget_at
+{n:i0}
+( A0:
+  a1ref(a, n), i0: nintlt(n)): ( a )
+fun
+<a:vt>
+a1ptr_cget_at
+{n:i0}
+( A0:
+! a1ptr(a, n), i0: nintlt(n)): ( a )
 //
 fun
 <a:vt>
