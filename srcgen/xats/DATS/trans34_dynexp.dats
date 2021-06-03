@@ -674,7 +674,8 @@ D3Panno
 (
 d4pat_make_node
 ( loc0
-, s2e2, t2p1, D4Panno(d4p1, s2e2))
+, s2e2
+, t2p1, D4Panno(d4p1, s1e2, s2e2))
 ) where
 {
 //
@@ -797,7 +798,7 @@ D3Panno
 d4pat_make_node
 ( loc0
 , s2e2
-, t2p1, D4Panno(d4p1, s2e2))
+, t2p1, D4Panno(d4p1, s1e2, s2e2))
 ) where
 {
 val loc0 = d3p0.loc()
