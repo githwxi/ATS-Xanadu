@@ -1821,7 +1821,8 @@ d4e1 =
 in
 d4exp_make_node
 ( loc0
-, s2e2, t2p1, D4Eanno(d4e1, s2e2) )
+, s2e2
+, t2p1, D4Eanno(d4e1, s1e2, s2e2) )
 end (*let*) // end of [aux_anno]
 
 (* ****** ****** *)
