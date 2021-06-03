@@ -483,7 +483,7 @@ case+ x0.node() of
   , knd0, "; ", d4e1, "; ", dcls, ")")
 //
 | D4Eanno
-  (d4e1, s2e2) =>
+  (d4e1, s1e2, s2e2) =>
   fprint!
   ( out
   , "D4Eanno(", d4e1, "; ", s2e2, ")")

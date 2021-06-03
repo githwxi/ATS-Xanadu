@@ -382,15 +382,15 @@ for the meaning of knd
   (int(*knd*), d4exp(*val*), d4claulst)
 //
 | D4Eanno of
-  (d4exp, s2exp) // no s2xtv in anno
+  (d4exp, s1exp(*anno*), s2exp(*type*))
 //
 (*
 | D4Eexist1 of
-  (s2explst(*wits*), d4exp(*packed*))
+  ( s2explst(*wits*), d4exp(*packed*) )
 *)
 //
 | D4Etcast of
-  (d4exp, c0str) // cstrnt generation
+  (d4exp, c0str) // constraint generation
 //
 | D4Enone0 of ()
 | D4Enone1 of (d3exp) | D4Enone2 of (d4exp)
