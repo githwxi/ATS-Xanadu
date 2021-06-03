@@ -5040,8 +5040,8 @@ auxf1d0
 , d2c0
 : d2cst
 , f1d0
-: f1undecl
-) : f2undecl = let
+: f1undecl )
+: f2undecl = let
 //
 val+
 F1UNDECL(rcd) = f1d0
@@ -5123,7 +5123,7 @@ trans12_farglst_nex1(rcd.arg, nex)
 //
 local
 val opt = rcd.def
-in(*in-of-local*)
+in(* in-of-local *)
 val xnm =
 (
 case+ opt of
@@ -5191,8 +5191,8 @@ auxf1ds
 , d2cs
 : d2cstlst
 , f1ds
-: f1undeclist
-) : f2undeclist =
+: f1undeclist )
+: f2undeclist =
 (
 case+ d2vs of
 |
