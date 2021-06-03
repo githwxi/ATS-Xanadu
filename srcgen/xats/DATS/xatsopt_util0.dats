@@ -352,7 +352,9 @@ trans03_package(p0kg)
 //
 val
 p4kg =
-trans34_package(p3kg) in tcomp30_package(p3kg)
+trans34_package(p3kg)
+val () =
+tread34_package(p4kg) in tcomp30_package(p3kg)
 //
 end // end of [trs04cmp30_package]
 //
