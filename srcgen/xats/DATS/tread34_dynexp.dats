@@ -62,6 +62,46 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/tread34.sats"
 //
 (* ****** ****** *)
+
+implement
+//{}(*tmp*)
+tread34_d4ecl(d4cl) =
+let
+//
+val loc0 = d4cl.loc()
+//
+(*
+val () =
+println!
+("tread34_d4ecl: d4cl = ", d4cl)
+*)
+//
+in
+//
+case+
+d4cl.node() of
+|
+_(* rest-of-d4ecl *) =>
+{
+  val () = println!(loc0, ": tread34_d4ecl(", d4cl, ")")
+}
+//
+end // end of [tread34_d4ecl]
+
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread34_d4eclist(d4cs) =
+(
+list_foreach<d4ecl>(d4cs)
+) where
+{
+implement(env)
+list_foreach$fwork<d4ecl><env>(d4c, env) = tread34_d4ecl(d4c)
+} (* end of [tread34_d4eclist] *)
+//
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)
