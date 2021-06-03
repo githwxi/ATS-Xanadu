@@ -247,7 +247,7 @@ case+ x0.node() of
   , d4f0, "; ", npf1, "; ", d4ps, ")")
 //
 | D4Panno
-  (d4p1, s2e2) =>
+  (d4p1, s1e2, s2e2) =>
   fprint!
   ( out
   , "D4Panno(", d4p1, "; ", s2e2, ")")

@@ -153,13 +153,14 @@ d4pat_node =
   (int(*knd*), int(*npf*), d4patlst)
 //
 | D4Panno of
-  (d4pat, s2exp) // no s2xtv in anno
+  ( d4pat
+  , s1exp, s2exp) // no s2xtv in anno
 //
 | D4Ptasmp of
-  (d4pat, c0str) // cstrnt generation
+  ( d4pat, c0str) // cstrnt generation
 (*
 | D4Ptcast of
-  (d4pat, c0str) // cstrnt generation
+  ( d4pat, c0str) // cstrnt generation
 *)
 //
 | D4Pnone0 of ()
