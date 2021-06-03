@@ -5,6 +5,14 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+
+#extern
+fun
+foo
+{m:int}
+(x: &int(m) >> int(n)): #[n:nat] void
+////
+(* ****** ****** *)
 //
 fun
 <a:type>

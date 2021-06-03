@@ -884,7 +884,8 @@ d2pat_get_sexp
 (
 case+
 d2p0.node() of
-| D2Panno(d2p1, s2e2) => s2e2
+| D2Panno
+  (d2p1, s1e2, s2e2) => s2e2
 | _ (*else*) => the_s2exp_none0
 )
 implement

@@ -273,7 +273,8 @@ case+ x0.node() of
   ( out, "D3Ptuple("
   , knd1, "; ", npf2, "; ", ldps, ")")
 //
-| D3Panno(d3p1, s2e2) =>
+| D3Panno
+  (d3p1, s1e2, s2e2) =>
   fprint!
   (out, "D3Panno(", d3p1, "; ", s2e2, ")")
 //
@@ -672,12 +673,14 @@ x0.node() of
    fprint!(out, "D3Elazy(", d3e1, ")")
   )
 | D3Ellazy
-  (d3e1, d3es(*frees*)) =>
+  ( d3e1
+  , d3es(*frees*)) =>
   fprint!
   (out
   , "D3Ellazy(", d3e1, "; ", d3es, ")")
 //
-| D3Eanno(d3e1, s2e2) =>
+| D3Eanno
+  (d3e1, s1e2, s2e2) =>
   fprint!
   ( out
   , "D3Eanno(", d3e1, "; ", s2e2, ")")

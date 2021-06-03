@@ -1300,43 +1300,43 @@ end
 (* ****** ****** *)
 
 implement
-the_sexpenv_add_cstlst
+the_sexpenv_add_csts
   (s2cs) =
 (
   foreach(s2cs)
 ) where
 {
-  fun
-  foreach
-  (s2cs: s2cstlst): void =
-  (
-  case+ s2cs of
-  | list_nil() => ()
-  | list_cons(s2c0, s2cs) =>
-    (the_sexpenv_add_cst(s2c0); foreach(s2cs))
-  )
-} (* end of [the_sexpenv_add_cstlst] *)
+fun
+foreach
+(s2cs: s2cstlst): void =
+(
+case+ s2cs of
+| list_nil() => ()
+| list_cons(s2c0, s2cs) =>
+  (the_sexpenv_add_cst(s2c0); foreach(s2cs))
+)
+} (* end of [the_sexpenv_add_csts] *)
 
 implement
-the_sexpenv_add_varlst
+the_sexpenv_add_s2vs
   (s2vs) =
 (
   foreach(s2vs)
 ) where
 {
-  fun
-  foreach
-  (s2vs: s2varlst): void =
-  (
-  case+ s2vs of
-  | list_nil() => ()
-  | list_cons(s2v0, s2vs) =>
-    (the_sexpenv_add_var(s2v0); foreach(s2vs))
-  )
-} (* end of [the_sexpenv_add_varlst] *)
+fun
+foreach
+(s2vs: s2varlst): void =
+(
+case+ s2vs of
+| list_nil() => ()
+| list_cons(s2v0, s2vs) =>
+  (the_sexpenv_add_var(s2v0); foreach(s2vs))
+)
+} (* end of [the_sexpenv_add_s2vs] *)
 
 implement
-the_sexpenv_add_tqalst
+the_sexpenv_add_tqas
   (tqas) =
 (
   foreach(tqas)
@@ -1352,13 +1352,13 @@ case+ tqas of
   let
   val s2vs = tqa0.s2vs()
   in
-  (the_sexpenv_add_varlst(s2vs); foreach(tqas))
+  (the_sexpenv_add_s2vs(s2vs); foreach(tqas))
   end
 )
-} (* end of [the_sexpenv_add_tqalst] *)
+} (* end of [the_sexpenv_add_tqas] *)
 
 implement
-the_sexpenv_add_varlstlst
+the_sexpenv_add_svss
   (svss) =
 (
   foreach(svss)
@@ -1371,9 +1371,9 @@ foreach
 case+ svss of
 | list_nil() => ()
 | list_cons(s2vs, svss) =>
-  (the_sexpenv_add_varlst(s2vs); foreach(svss))
+  (the_sexpenv_add_s2vs(s2vs); foreach(svss))
 )
-} (* end of [the_sexpenv_add_varlstlst] *)
+} (* end of [the_sexpenv_add_svss] *)
 
 (* ****** ****** *)
 
@@ -1811,7 +1811,7 @@ val d2i0 = D2ITMcst(list_cons(d2c, d2cs))
 (* ****** ****** *)
 
 implement
-the_dexpenv_add_conlst
+the_dexpenv_add_cons
   (d2cs) =
 (
   foreach(d2cs)
@@ -1826,12 +1826,12 @@ case+ d2cs of
 | list_cons(d2c0, d2cs) =>
   (the_dexpenv_add_con(d2c0); foreach(d2cs))
 )
-} (* end of [the_dexpenv_add_conlst] *)
+} (* end of [the_dexpenv_add_cons] *)
 
 (* ****** ****** *)
 
 implement
-the_dexpenv_add_cstlst
+the_dexpenv_add_csts
   (d2cs) =
 (
   foreach(d2cs)
@@ -1846,12 +1846,12 @@ the_dexpenv_add_cstlst
   | list_cons(d2c0, d2cs) =>
     (the_dexpenv_add_cst(d2c0); foreach(d2cs))
   )
-} (* end of [the_dexpenv_add_conlst] *)
+} (* end of [the_dexpenv_add_csts] *)
 
 (* ****** ****** *)
 
 implement
-the_dexpenv_add_varlst
+the_dexpenv_add_d2vs
   (d2vs) =
 (
   foreach(d2vs)
@@ -1866,7 +1866,7 @@ the_dexpenv_add_varlst
   | list_cons(d2v0, d2vs) =>
     (the_dexpenv_add_var(d2v0); foreach(d2vs))
   )
-} (* end of [the_dexpenv_add_varlst] *)
+} (* end of [the_dexpenv_add_d2vs] *)
 
 (* ****** ****** *)
 
@@ -2498,7 +2498,9 @@ d2p0.node() of
   }
 //
 | D2Panno
-  (d2p, s2e) => auxd2p0(d2p)
+  ( d2p1
+  , s1e2
+  , s2e2) => auxd2p0(d2p1)
 //
 | _(* rest-of-d2pat *) => ()
 )

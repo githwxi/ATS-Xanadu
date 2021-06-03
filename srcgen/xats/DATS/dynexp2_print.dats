@@ -425,12 +425,13 @@ case- x0.node() of
   , d2f0, "; ", npf0, "; ", d2ps, ")")
 //
 | D2Ptuple
-  (knd0, npf, d2ps) =>
+  (knd0, npf1, d2ps) =>
   fprint!
   ( out, "D2Ptuple("
-  , knd0, "; ", npf, "; ", d2ps, ")")
+  , knd0, "; ", npf1, "; ", d2ps, ")")
 //
-| D2Panno(d2p1, s2e2) =>
+| D2Panno
+  (d2p1, s1e1, s2e2) =>
   fprint!
   ( out
   , "D2Panno(", d2p1, "; ", s2e2, ")")
@@ -717,7 +718,8 @@ case- x0.node() of
   fprint!
   (out, "D2Ellazy(", d2e1, "; ", d2es, ")")
 //
-| D2Eanno(d2e1, s2e2) =>
+| D2Eanno
+  (d2e1, s1e2, s2e2) =>
   fprint!
   (out, "D2Eanno(", d2e1, "; ", s2e2, ")")
 //

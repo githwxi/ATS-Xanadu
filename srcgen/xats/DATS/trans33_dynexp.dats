@@ -196,7 +196,7 @@ in
   auxd3ps(npf1, d3ps)
 end // end of [D3Pdapp]
 |
-D3Panno(d3p1, _) =>
+D3Panno(d3p1, _, _) =>
 (
   d3pat_leftize(d3p1)
 )
@@ -459,15 +459,15 @@ d3p0.node() of
   aux_tuple(env0, d3p0)
 //
 |
-D3Panno(d3p1, s2e2) =>
-(
-d3pat_anno(d3p1, s2e2)
-) where
-{
+D3Panno
+(d3p1, s1e2, s2e2) =>
+let
 val
 d3p1 = 
 trans33_dpat(env0, d3p1)
-} (* D3Panno *)
+in
+d3pat_anno(d3p1, s1e2, s2e2)
+end // end of [D3Panno]
 //
 |
 D3Ptcast(d3p1, t2p2) =>
@@ -2089,7 +2089,8 @@ println!
 //
 val-
 D3Eanno
-(d3e1, s2e2) = d3e0.node()
+( d3e1
+, s1e2, s2e2) = d3e0.node()
 (*
 val t2p2 = s2exp_erase(s2e2)
 *)
@@ -2098,7 +2099,8 @@ val d3e1 =
 trans33_dexp_dntp(env0, d3e1, t2p0)
 //
 in
-d33exp_make_node(loc0, t2p0, D3Eanno(d3e1, s2e2))
+d33exp_make_node
+(loc0, t2p0, D3Eanno(d3e1, s1e2, s2e2))
 end // end of [aux_anno]
 
 (* ****** ****** *)
