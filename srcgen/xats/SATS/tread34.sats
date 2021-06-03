@@ -98,9 +98,6 @@ tread34_d4eclist: treader34(d4eclist)
 //
 (* ****** ****** *)
 
-(*
-(* ****** ****** *)
-
 fun//{}
 tread34_v4aldecl: treader34(v4aldecl)
 fun//{}
@@ -119,9 +116,6 @@ fun//{}
 tread34_f4undecl: treader34(f4undecl)
 fun//{}
 tread34_f4undeclist: treader34(f4undeclist)
-
-(* ****** ****** *)
-*)
 
 (* ****** ****** *)
 

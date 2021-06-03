@@ -610,6 +610,30 @@ fprint_v4aldecl: fprint_type(v4aldecl)
 (* ****** ****** *)
 //
 datatype
+v4ardecl =
+V4ARDECL of @{
+  loc= loc_t
+, d2v= d2var
+, wth= d2varopt
+, res= s2expopt
+, ini= d4expopt
+}
+//
+typedef
+v4ardeclist = List0(v4ardecl)
+//
+(* ****** ****** *)
+//
+fun
+print_v4ardecl: print_type(v4ardecl)
+fun
+prerr_v4ardecl: prerr_type(v4ardecl)
+fun
+fprint_v4ardecl: fprint_type(v4ardecl)
+//
+(* ****** ****** *)
+//
+datatype
 d4transd =
 D4TRANSD of @{
   stadyn= int
@@ -634,10 +658,8 @@ d4ecl_node =
 //
 | D4Cvaldecl of
   (token(*knd*), decmodopt, v4aldeclist)
-(*
 | D4Cvardecl of
   (token(*knd*), decmodopt, v4ardeclist)
-*)
 //
 (* ****** ****** *)
 //

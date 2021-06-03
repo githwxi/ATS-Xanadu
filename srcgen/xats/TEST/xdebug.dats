@@ -5,14 +5,6 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
-
-#extern
-fun
-foo
-{m:int}
-(x: &int(m) >> int(n)): #[n:nat] void
-////
-(* ****** ****** *)
 //
 fun
 <a:type>
@@ -28,6 +20,49 @@ list_nil
 list_cons
 (  _, xs  ) => 1 + length(xs)
 )
+fun
+<a:type>
+length
+{n:nat}
+(xs: list(a, n)): sint(n) =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => 0
+|
+list_cons
+(  _, xs  ) => 1 + length(xs)
+)
+////
+(* ****** ****** *)
+(*
+#extern
+fun
+foo
+{m:int}
+( x:
+& int(m)
+>>int(n)): #[n:nat] void
+*)
+(*
+#extern
+fun
+foo
+{m:int}
+( x:
+! int(m)
+>>int(n)): #[n:nat] void
+*)
+(*
+#extern
+fun
+foo
+{m:int}
+( x:
+& int(m)
+>>int(n)): #[n:nat] void
+*)
 ////
 (* ****** ****** *)
 fun
