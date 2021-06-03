@@ -743,10 +743,11 @@ d3e0.node() of
     , ": TRERR33(D3Enone1): the d3exp-error: ", d3e0);
   end // end of [D3Enone1]
 //
-| _(* rest-of-d3exp *) =>
-  {
-    val () = prerrln!(loc0, ": tread33_d3exp(", d3e0, ")")
-  }
+|
+_(* rest-of-d3exp *) =>
+{
+  val () = prerrln!(loc0, ": tread33_d3exp(", d3e0, ")")
+}
 //
 end // end of [tread33_d3exp]
 

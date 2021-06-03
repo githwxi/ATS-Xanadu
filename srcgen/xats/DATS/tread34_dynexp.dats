@@ -62,5 +62,67 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/tread34.sats"
 //
 (* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread34_v4aldecl
+  (v3d0) =
+{
+(*
+  val () =
+  tread34_d3pat(rcd.pat)
+  val () =
+  tread34_d3expopt(rcd.def)
+  val () =
+  tread34_s2expopt(rcd.wth)
+*)
+} where
+{
+//
+  val+V4ALDECL(rcd) = v3d0
+//
+} (* end of [tread34_v4aldecl] *)
+//
+implement
+//{}(*tmp*)
+tread34_v4aldeclist(v3ds) =
+(
+list_foreach<v4aldecl>(v3ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v4aldecl><env>(v3d, env) = tread34_v4aldecl(v3d)
+} (* end of [tread34_v4aldeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread34_v4ardecl
+  (v3d0) =
+{
+(*
+  val () =
+  tread34_d2var(rcd.d2v)
+  val () =
+  tread34_d3expopt(rcd.ini)
+*)
+} where
+{
+  val+V4ARDECL(rcd) = v3d0
+}
+//
+implement
+//{}(*tmp*)
+tread34_v4ardeclist(v3ds) =
+(
+list_foreach<v4ardecl>(v3ds)
+) where
+{
+implement(env)
+list_foreach$fwork<v4ardecl><env>(v3d, env) = tread34_v4ardecl(v3d)
+} (* end of [tread34_v4ardeclist] *)
+//
+(* ****** ****** *)
 
 (* end of [xats_tread34_dynexp.dats] *)
