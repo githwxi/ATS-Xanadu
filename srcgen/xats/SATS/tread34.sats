@@ -67,11 +67,9 @@ trerr34_add(trerr34): void
 //
 (* ****** ****** *)
 //
-(*
 fun
 tread34_package
   ( p4kg: d4transd ): void
-*)
 //
 (* ****** ****** *)
 //

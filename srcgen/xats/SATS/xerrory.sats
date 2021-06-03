@@ -61,6 +61,9 @@ XATSOPT_TRERR33_EXN of ((*void*))
 exception
 XATSOPT_TRERR3X_EXN of ((*void*))
 //
+exception
+XATSOPT_TRERR34_EXN of ((*void*))
+//
 (* ****** ****** *)
 //
 // HX:

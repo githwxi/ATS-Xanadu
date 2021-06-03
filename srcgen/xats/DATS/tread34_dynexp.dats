@@ -112,7 +112,7 @@ tread34_v4aldecl
   val () =
   tread34_d3pat(rcd.pat)
   val () =
-  tread34_d3expopt(rcd.def)
+  tread34_d4expopt(rcd.def)
   val () =
   tread34_s2expopt(rcd.wth)
 *)
@@ -145,7 +145,7 @@ tread34_v4ardecl
   val () =
   tread34_d2var(rcd.d2v)
   val () =
-  tread34_d3expopt(rcd.ini)
+  tread34_d4expopt(rcd.ini)
 *)
 } where
 {
@@ -163,6 +163,129 @@ implement(env)
 list_foreach$fwork<v4ardecl><env>(v3d, env) = tread34_v4ardecl(v3d)
 } (* end of [tread34_v4ardeclist] *)
 //
+(* ****** ****** *)
+
+local
+
+extern
+fun//{}
+the_trerr34lst_get(): trerr34lst
+extern
+fun//{}
+the_trerr34lst_set(trerr34lst): void
+
+implement
+//{}(*tmp*)
+trerr34_add(xerr) = let
+//
+val
+xerrs = the_trerr34lst_get()
+//
+in
+the_trerr34lst_set(list_cons(xerr, xerrs))
+end // end of [trerr34_add]
+
+in (* in-of-local *)
+//
+local
+//
+val
+the_trerr34lst =
+ref<trerr34lst>(list_nil)
+//
+in(*in-of-local*)
+implement
+the_trerr34lst_get() = the_trerr34lst[]
+implement
+the_trerr34lst_set(xs) = the_trerr34lst[] := xs
+end // end of [local]
+//
+implement
+tread34_package
+(
+  p4kg
+) = let
+//
+(*
+val () =
+println!
+("tread34_package")
+*)
+//
+val
+D4TRANSD(rcd) = p4kg
+//
+val d4cs =
+let
+val
+d4csopt = rcd.transd
+in
+case+
+d4csopt of
+| None() =>
+  list_nil((*void*))
+| Some(d4cs) => d4cs
+end : d4eclist // end-of-val
+//
+val () =
+tread34_d4eclist(d4cs)
+//
+val
+xerrs = the_trerr34lst_get()
+val
+nxerr = list_length<trerr34>(xerrs)
+//
+in
+//
+if
+(nxerr > 0)
+then
+{
+//
+val () =
+prerrln!
+("\
+tread34_package: \
+nxerr = ", nxerr )
+//
+val () =
+if
+(nxerr = 1)
+then
+prerrln!
+("\
+tread34_package: \
+there is one trans34-error!")
+val () =
+if
+(nxerr > 1)
+then
+prerrln!
+("\
+tread34_package: \
+there are some trans34-errors!")
+//
+val () =
+(
+$raise(XATSOPT_TRERR34_EXN(*void*))
+) : void
+//
+} (* end of [then] *)
+else
+{
+//
+val () =
+prerrln!
+("\
+tread34_package: \
+there are none of trans34-errors!")
+//
+} (* end of [else] *)
+//
+end (*let*) // end of [tread34_package]
+
+end // end of [local]
+
 (* ****** ****** *)
 
 (* end of [xats_tread34_dynexp.dats] *)
