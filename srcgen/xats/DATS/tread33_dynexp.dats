@@ -1374,7 +1374,7 @@ there are none of trans33-errors!")
 //
 } (* end of [else] *)
 //
-end // end of [tread33_package]
+end (*let*) // end of [tread33_package]
 
 end // end of [local]
 
