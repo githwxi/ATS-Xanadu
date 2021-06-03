@@ -1041,7 +1041,8 @@ trans34_d3pat_get_sexp
 case+
 d3p0.node() of
 |
-D3Panno(d3p1, s2e2) => s2e2
+D3Panno
+(d3p1, s1e2, s2e2) => s2e2
 |
 _ (*else*) =>
 (

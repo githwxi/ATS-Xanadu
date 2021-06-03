@@ -140,7 +140,8 @@ HX: [D3Psap1]: impred: checked
 | D3Ptuple of
   (int(*knd*), int(*npf*), d3patlst)
 //
-| D3Panno of (d3pat, s2exp) // no s2xtv in anno
+| D3Panno of
+  (d3pat, s1exp, s2exp) // no s2xtv in anno
 //
 | D3Ptcast of (d3pat, t2ype) // HX: error indication?
 //
@@ -227,22 +228,23 @@ d3pat_str
 
 fun
 d3pat_anno
-(d3p0: d3pat, s2e0: s2exp): d3pat
+( d3p0: d3pat
+, s1e0: s1exp, s2e0: s2exp): d3pat
 
 (* ****** ****** *)
 //
 fun
 d3pat_tcast
-(d3p0: d3pat, t2p0: t2ype): d3pat
+( d3p0: d3pat, t2p0: t2ype): d3pat
 //
 (* ****** ****** *)
 //
 fun
 d3pat_memq_dvar
-(d3p0: d3pat, d2v0: d2var): bool
+( d3p0: d3pat, d2v0: d2var): bool
 fun
 d3patlst_memq_dvar
-(d3ps: d3patlst, d2v0: d2var): bool
+( d3ps: d3patlst, d2v0: d2var): bool
 //
 (* ****** ****** *)
 //
@@ -501,7 +503,9 @@ for the meaning of knd
   ( d3exp(*eval*)
   , d3explst(*frees*)) // linear
 //
-| D3Eanno of (d3exp, s2exp(*anno*))
+| D3Eanno of
+  ( d3exp
+  , s1exp(*anno*), s2exp(*type*))
 //
 | D3Eexist1 of
   (s2explst(*wits*), d3exp(*packed*))

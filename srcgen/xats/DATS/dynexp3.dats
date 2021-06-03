@@ -235,11 +235,13 @@ d3pat_make_node
 
 implement
 d3pat_anno
-(d3p0, s2e0) =
+( d3p0
+, s1e0, s2e0) =
 (
 d3pat_make_node
 ( loc0
-, t2p0, D3Panno(d3p0, s2e0))
+, t2p0
+, D3Panno(d3p0, s1e0, s2e0))
 ) where
 {
   val loc0 = d3p0.loc((*void*))

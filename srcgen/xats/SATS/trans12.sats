@@ -571,13 +571,13 @@ the_sexpenv_add_cst(s2c: s2cst): void
 fun
 the_sexpenv_add_var(s2v: s2var): void
 fun
-the_sexpenv_add_cstlst(s2cs: s2cstlst): void
+the_sexpenv_add_csts(s2cs: s2cstlst): void
 fun
-the_sexpenv_add_varlst(s2vs: s2varlst): void
+the_sexpenv_add_s2vs(s2vs: s2varlst): void
 fun
-the_sexpenv_add_tqalst(tqas: tq2arglst): void
+the_sexpenv_add_tqas(tqas: tq2arglst): void
 fun
-the_sexpenv_add_varlstlst(svss: s2varlstlst): void
+the_sexpenv_add_svss(svss: s2varlstlst): void
 //
 fun
 the_sexpenv_find
@@ -798,11 +798,11 @@ the_dexpenv_add_cst(d2c: d2cst): void
 fun
 the_dexpenv_add_var(d2v: d2var): void
 fun
-the_dexpenv_add_conlst(d2cs: d2conlst): void
+the_dexpenv_add_cons(d2cs: d2conlst): void
 fun
-the_dexpenv_add_cstlst(d2cs: d2cstlst): void
+the_dexpenv_add_csts(d2cs: d2cstlst): void
 fun
-the_dexpenv_add_varlst(d2vs: d2varlst): void
+the_dexpenv_add_d2vs(d2vs: d2varlst): void
 //
 fun
 the_dexpenv_find
@@ -944,10 +944,6 @@ fun
 trans12_farg: f1arg -> f2arg
 fun
 trans12_farglst: f1arglst -> f2arglst
-//
-fun
-trans12_farglst_s2exp
-(f1as: f1arglst, s2f0: s2exp): f2arglst
 //
 (* ****** ****** *)
 //

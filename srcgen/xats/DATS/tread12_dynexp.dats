@@ -197,7 +197,8 @@ d2p0.node() of
     tread12_d2patlst(d2ps)
   }
 //
-| D2Panno(d2p1, s2e2) =>
+| D2Panno
+  (d2p1, s1e2, s2e2) =>
   {
     val () = tread12_s2exp(s2e2)
     val () = tread12_d2pat(d2p1)
@@ -455,7 +456,8 @@ val () = tread12_d2claulst(dcls)
     // end of [val]
   }
 //
-| D2Eanno(d2e1, s2e2) =>
+| D2Eanno
+  (d2e1, s1e2, s2e2) =>
   {
     val () = tread12_d2exp(d2e1)
     val () = tread12_s2exp(s2e2)

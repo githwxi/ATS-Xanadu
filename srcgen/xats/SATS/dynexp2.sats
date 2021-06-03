@@ -672,8 +672,10 @@ d2pat_node =
 | D2Ptuple of
   (int(*knd*), int(*npf*), d2patlst)
 //
-| D2Panno of
-  (d2pat, s2exp) // no s2xtv in anno
+(*
+HX: there is no s2xtv in anno!
+*)
+| D2Panno of (d2pat, s1exp, s2exp)
 //
 | D2Pg1mac of (g1mac) // HX: error!
 //
@@ -959,7 +961,8 @@ d2exp_node =
   , d2explst(*frees*))//linear
 //
 | D2Eanno of
-  (d2exp(*applst*), s2exp(*type*))
+  ( d2exp(*apps*)
+  , s1exp(*anno*), s2exp(*type*) )
 //
 |
 D2Eexist1 of

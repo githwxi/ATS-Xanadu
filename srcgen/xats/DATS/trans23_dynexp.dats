@@ -376,13 +376,14 @@ fun
 aux_anno
 (d2p0: d2pat): d3pat =
 (
-  d3pat_anno(d3p1, s2e2)
-) where
+d3pat_anno
+(d3p1, s1e2, s2e2)) where
 {
 //
 val-
 D2Panno
-(d2p1, s2e2) = d2p0.node()
+( d2p1
+, s1e2, s2e2) = d2p0.node()
 //
 val t2p2 = s2exp_erase(s2e2)
 val d3p1 = trans23_dpat_dntp(d2p1, t2p2)
@@ -476,14 +477,17 @@ end
 //
 | D2Ptuple _ => aux_tuple(d2p0)
 //
-| D2Panno(_, _) => aux_anno(d2p0)
+| D2Panno
+  ( d2p
+  , s1e, s2e) => aux_anno(d2p0)
 //
-| _(* else *) =>
-  let
-    val t2p0 = the_t2ype_none0
-  in
-    d3pat_make_node(loc0, t2p0, D3Pnone1(d2p0))
-  end
+|
+_(* else-of-d2pat *) =>
+let
+  val t2p0 = the_t2ype_none0
+in
+  d3pat_make_node(loc0, t2p0, D3Pnone1(d2p0))
+end
 //
 end (* end of [trans23_dpat] *)
 
@@ -525,7 +529,7 @@ d2p0.node() of
     trenv23_dvar_dntp(d2v0, t2p0)
   }
 | D2Panno
-  (d2p1, s2e2) =>
+  (d2p1, s1e2, s2e2) =>
   (
     d3pat_dntp(d3p1, t2p2)
   ) where
@@ -2027,7 +2031,8 @@ val
 loc0 = d2e0.loc()
 val-
 D2Eanno
-(d2e1, s2e2) = d2e0.node()
+( d2e1
+, s1e2, s2e2) = d2e0.node()
 //
 val t2p2 =
 s2exp_erase(s2e2)
@@ -2037,7 +2042,8 @@ trans23_dexp_dntp(d2e1, t2p2)
 in
 d23exp_make_node
 ( loc0
-, d3e1.type(), D3Eanno(d3e1, s2e2))
+, d3e1.type()
+, D3Eanno(d3e1, s1e2, s2e2) )
 end // end of [aux_anno]
 
 (* ****** ****** *)
@@ -2159,11 +2165,12 @@ d2e0.node() of
     (d2e1) => aux_lazy(d2e0)
   // nonlin lazy-evaluation
 | D2Ellazy
-    (d2e1, opt2) => aux_llazy(d2e0)
+  ( d2e1, opt2 ) => aux_llazy(d2e0)
   // linear lazy-evaluation
 //
 | D2Eanno
-    (d2e1, s2e2) => aux_anno(d2e0)
+  ( d2e1
+  , s1e2, s2e2 ) => aux_anno( d2e0 )
   // type-annotation ascription
 //
 | D2Eexist1
@@ -2705,7 +2712,9 @@ implement
 list_map$fopr<d2pat><t2ype>(d2p) =
 (
 case+ d2p.node() of
-| D2Panno(_, s2e) => s2exp_erase(s2e) | _ => the_t2ype_none0
+|
+D2Panno
+(_, _, s2e) => s2exp_erase(s2e) | _ => the_t2ype_none0
 )
 } (* end of [auxd2ps] *)
 //

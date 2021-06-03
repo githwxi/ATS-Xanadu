@@ -206,13 +206,14 @@ d3p0.node() of
 | D3Pnone0() => ()
 //
 | D3Ptuple
-  (knd, npf, d3ps) =>
+  (knd0, npf1, d3ps) =>
   {
     val () =
     tread33_d3patlst(d3ps)
   }
 //
-| D3Panno(d3p1, t2p2) =>
+| D3Panno
+  (d3p1, s1e2, s2e2) =>
   {
     val () =
     tread33_d3pat(d3p1)
@@ -697,7 +698,8 @@ d3e0.node() of
   }
 //
 | D3Eanno
-  ( d3e1, s2e2 ) =>
+  ( d3e1
+  , s1e2, s2e2 ) =>
   {
     val () = tread33_d3exp(d3e1)
 (*

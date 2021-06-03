@@ -91,7 +91,9 @@ d3p0.node() of
 | D3Ptuple
   (knd, npf, d3ps) => auxd3ps(d3ps)
 //
-| D3Panno(d3p1, _) => auxdpat(d3p1)
+| D3Panno
+  (d3p1, s1e, s2e) => auxdpat(d3p1)
+//
 | D3Ptcast(d3p1, _) => auxdpat(d3p1)
 //
 (*

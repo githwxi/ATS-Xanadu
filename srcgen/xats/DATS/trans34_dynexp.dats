@@ -668,7 +668,9 @@ D3Psap1 _ => auxsap1(env0, d3p0)
 D3Pdapp _ => auxdapp(env0, d3p0)
 //
 |
-D3Panno(d3p1, s2e2) =>
+D3Panno
+( d3p1
+, s1e2, s2e2) =>
 (
 d4pat_make_node
 ( loc0
@@ -788,7 +790,9 @@ end // end of [let]
 end (*let*) // end of [D3Pvar]
 //
 |
-D3Panno(d3p1, s2e2) =>
+D3Panno
+( d3p1
+, s1e2, s2e2) =>
 (
 d4pat_make_node
 ( loc0
@@ -1800,6 +1804,7 @@ loc0 = d3e0.loc()
 val-
 D3Eanno
 ( d3e1
+, s1e2
 , s2e2) = d3e0.node()
 //
 val
@@ -2296,7 +2301,9 @@ val s2e1 =
 case+
 d3p0.node() of
 |
-D3Panno(_, s2e1) => s2e1
+D3Panno
+( d3p1
+, s1e2, s2e2) => s2e2
 |
 _(*non-D3Panno*) =>
 let
@@ -2311,7 +2318,8 @@ val d3p1 =
 case+
 d3p0.node() of
 |
-D3Panno(d3p1, _) => d3p1
+D3Panno
+(d3p1, s1e2, s2e2) => d3p1
 | _(*non-D3Panno*) => d3p0
 ) : d3pat // end of [val]
 in

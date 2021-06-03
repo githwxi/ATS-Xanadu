@@ -597,13 +597,15 @@ end // end of [D3Ellazy]
 //
 |
 D3Eanno
-(d3e1, s2e2(*anno*)) =>
+( d3e1
+, s1e2, s2e2(*anno*)) =>
 let
 //
 val d3e1 =
 trans3x_dexp(env0, d3e1)
 //
-val dend = D3Eanno(d3e1, s2e2)
+val dend =
+D3Eanno(d3e1, s1e2, s2e2)
 //
 in
   d3exp_make_node(loc0, t2p0, dend)

@@ -625,7 +625,8 @@ D3Ptuple
 , npf1, d3ps) => aux_tuple(d3p0)
 |
 D3Panno
-( d3p1, s2e2) => tcomp30_dpat(d3p1)
+( d3p1
+, s1e2, s2e2) => tcomp30_dpat(d3p1)
 //
 | _(* rest-of_d3pat *) =>
 let
@@ -2116,10 +2117,11 @@ D3Eassgn _ => aux_assgn(d3e0)
 //
 |
 D3Eanno
-(d3e1, _) => tcomp30_dexp(d3e1)
+( d3e1
+, s1e, s2e) => tcomp30_dexp(d3e1)
 |
 D3Eexist1
-(_, d3e1) => tcomp30_dexp(d3e1)
+( _, d3e1 ) => tcomp30_dexp(d3e1)
 //
 |
 D3Enone0 _ =>
