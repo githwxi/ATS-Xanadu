@@ -19,8 +19,8 @@ well.
 There is yet another serious issue with functional programming. With
 functional data structures (that do not support modifications), it is
 often impossible to give an efficient tail-recursive implementation of
-certain recursive functions. For instance, a famous example is the
-following 'append' for concatenation two lists:
+certain simple recursive functions. For instance, a famous example is
+the following 'append' for concatenation two lists:
 
 fun
 append
@@ -55,6 +55,10 @@ case xs of
 } (* end of [append] *)
 
 Note that the implementation of 'rappend' is tail-recursive.
+The tail-recusive version of 'append(xs, ys)' traverses 'xs'
+once to construct its reverse and then traverses the reverse
+to perform reverse-appending; the constructed reverse of 'xs'
+becomes garbage at the end.
 
 While using non-tail-recursion is probably fine in the construction of
 a compiler, it is not the case in systems programming, where it is not
