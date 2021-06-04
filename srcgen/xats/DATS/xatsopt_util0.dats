@@ -354,7 +354,22 @@ val
 p4kg =
 trans34_package(p3kg)
 val () =
-tread34_package(p4kg) in tcomp30_package(p3kg)
+tread34_package(p4kg)
+//
+in(*in-of-let*)
+//
+tcomp30_package(p3kg) where
+{
+(*
+val () =
+let
+val cstr =
+trans4x_package(p4kg)
+in
+  xatsopt_cstrnt1_solving(cstr)
+end
+*)
+} (*where*) // tcomp30_package
 //
 end // end of [trs04cmp30_package]
 //
@@ -370,12 +385,12 @@ and MICRO = 0
 //
 in
 //
-  fprint!
-  (out, "ATS/Xanadu version ");
-  fprint!
-  (out, MAJOR, ".", MINOR, ".", MICRO);
-  fprintln!
-  (out, " Copyright (c) 2018-20?? Hongwei Xi")
+fprint!
+(out, "ATS/Xanadu version ");
+fprint!
+(out, MAJOR, ".", MINOR, ".", MICRO);
+fprintln!
+(out, " Copyright (c) 2018-20?? Hongwei Xi")
 //
 end // end of [xatsopt_version]
 //
