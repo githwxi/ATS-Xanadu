@@ -1,0 +1,39 @@
+Hi, there,
+
+HX-2021-06-05:
+
+The dependent types in ATS are not the kind of full spectrum dependent
+types as formulated in Martin-Lof's constructive type theory. I now
+refer to the dependent types in ATS as DML-style dependent types,
+which I first formulated in Dependent ML (DML), a language I designed
+and implemented as a part of my PhD thesis. Here is a link to my paper
+on DML:
+
+https://hwxi.github.io/PUBLICATION/MYDATA/DML-jfp07.pdf
+
+People often claim that the type system of ATS is less powerful when
+compared to languages based on Martin-Lof's type theory. This claim is
+misleading at best. Let me clarify.
+
+There is a static component (statics) and a dynamic component
+(dynamics) in ATS; types are in the statics and programs are in the
+dynamics. If we do want to support full spectrum dependent types in
+ATS, then the statics can be extended as such. However, the statics
+and the dynamics are still separate. This separation is by design; it
+is really the most salient feature of ATS.
+
+Say we somehow find a way to merge the statics and the dynamics. This
+could only mean that many features in the dynamics must be abandoned,
+resulting in a language that may have more expressive types but fewer
+programming features. For instance, regardless how powerful
+Martin-Lof's type theory is, one simply cannot give in it an efficient
+tail-recursive implementation of the list-append function. But this
+can be readily done in ATS.
+
+##################################################################
+
+For previously post messages:
+
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgen/NOTES
+
+##################################################################
