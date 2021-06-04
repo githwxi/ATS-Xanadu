@@ -1,0 +1,76 @@
+Hi, there,
+
+HX-2021-06-04:
+
+I am from the camp of functional programming (FP). As a matter of
+fact, the core of ATS is ML-like; it supports type inference,
+polymorphism, higher-order functions, datatypes and pattern matching,
+etc. However, I also want to stress that ATS offers much more than the
+usual kind of ML-like functional programming, which, in my opinion, is
+simply inadequate for systems programming (that is, implementing
+low-level systems).
+
+Often, a functional language requires a big run-time system for
+memory management, which is difficult to accomodate at low-levels.
+Of course, this is not unique to functional languages. Non-functional
+languages such as Java and Python come with big run-time systems as
+well.
+
+There is yet another serious issue with functional programming. With
+functional data structures (that do not support modifications), it is
+often impossible to give an efficient tail-recursive implementation of
+certain recursive functions. For instance, a famous example is the
+following 'append' for concatenation two lists:
+
+fun
+append
+(xs, ys) =
+(
+case xs of
+| nil() => ys
+| cons(x1, xs) => cons(x1, append(xs, ys))
+)
+
+Calling 'append(xs, ys)' on a long list 'xs' requires a deep stack or
+results in stack overflow.
+
+One possible attempt to implement 'append' in a tail-recursive manner
+leads to the following terribly inefficient implementation:
+
+fun
+append
+(xs, ys) =
+rappend(reverse(xs), ys)
+{
+fun
+reverse(xs) = rappend(xs, nil)
+and
+rappend
+(xs, ys) =
+(
+case xs of
+| nil() => ys
+| cons(x1, xs) => rappend(xs, cons(x1, ys))
+)
+} (* end of [append] *)
+
+Note that the implementation of 'rappend' is tail-recursive.
+
+While using non-tail-recursion is probably fine in the construction of
+a compiler, it is not the case in systems programming, where it is not
+uncommon to see the requirement that only tail-recursive functions
+(that is, loops) be allowed.
+
+ATS offers much more than the usual kind of FP.  It actually supports
+linear functional programming (LFP) where data structures can be
+updated in a type-safe manner. With it, one can write in ATS type-safe
+programs that are very close to their counterparts in C in terms of
+functionalities.
+
+##################################################################
+
+For previously post messages:
+
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgen/NOTES
+
+##################################################################
