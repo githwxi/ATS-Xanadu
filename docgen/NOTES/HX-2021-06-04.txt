@@ -7,7 +7,7 @@ fact, the core of ATS is ML-like; it supports type inference,
 polymorphism, higher-order functions, datatypes and pattern matching,
 etc. However, I also want to stress that ATS offers much more than the
 usual kind of ML-like functional programming, which, in my opinion, is
-simply inadequate for systems programming (that is, implementing
+far from being adequate for systems programming (that is, implementing
 low-level systems).
 
 Often, a functional language requires a big run-time system for
@@ -16,11 +16,17 @@ Of course, this is not unique to functional languages. Non-functional
 languages such as Java and Python come with big run-time systems as
 well.
 
-There is yet another serious issue with functional programming. With
-functional data structures (that do not support modifications), it is
-often impossible to give an efficient tail-recursive implementation of
-certain simple recursive functions. For instance, a famous example is
-the following 'append' for concatenation two lists:
+I am aware of LISP machines and operating systems written in LISP.
+However, LISP is not ML-like. In particular, typical LISP programs
+make pervasive use of updates. I would like to refer to LISP as a
+dynamically typed functional imperative programming language.
+
+There is yet another serious issue with ML-like functional
+programming. With functional data structures (that do not support
+modifications), it is often impossible to give an efficient
+tail-recursive implementation of certain simple recursive
+functions. For instance, a famous example is the following 'append'
+for concatenation two lists:
 
 fun
 append
@@ -65,13 +71,13 @@ a compiler, it is not the case in systems programming, where it is not
 uncommon to see the requirement that only tail-recursive functions
 (that is, loops) be allowed.
 
-ATS offers much more than the usual kind of FP. It supports so-called
-linear functional programming (LFP) where data structures can be
-updated in a type-safe manner. With it, one can write in ATS type-safe
-programs that are very close to their counterparts in C in terms of
-both functionalities and performances. Also, ATS supports type-safe
-manual memory management of C-style, obviating the need for a big
-run-time if the programmer so chooses.
+ATS offers much more than the usual ML-like FP. It supports
+so-called linearly typed functional imperative programming (FIP)
+where data structures can be updated in a type-safe manner. With it,
+one can write in ATS type-safe programs that are very close to their
+counterparts in C in terms of both functionalities and performances.
+Also, ATS supports type-safe manual memory management of C-style,
+obviating the need for a big run-time if the programmer so chooses.
 
 ##################################################################
 
