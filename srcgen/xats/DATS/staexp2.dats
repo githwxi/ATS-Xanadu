@@ -781,16 +781,31 @@ s2exp_make_node
 (* ****** ****** *)
 
 implement
-s2exp_top
-(knd, s2e) =
+s2exp_top(s2e) =
 (
 s2exp_make_node
-(s2t, S2Etop(knd, s2e))
+(s2t, S2Etop(s2e))
 ) where
 {
   val s2t =
   sort2_topize(s2e.sort())
 }
+implement
+s2exp_tpz(s2e) =
+let
+val
+s2t = s2e.sort()
+in
+if
+sort2_islin(s2t)
+then
+let
+val s2t =
+sort2_topize(s2t)
+in
+s2exp_make_node
+(s2t, S2Etpz(s2e)) end else s2e
+end // end of [s2exp_tpz]
 
 (* ****** ****** *)
 //

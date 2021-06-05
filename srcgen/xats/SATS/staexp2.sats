@@ -797,8 +797,8 @@ s2exp_node =
 //
 | S2Eany of int(*knd*)
 //
-| S2Etop of // HX: knd: 0/1: 
-  (int(*knd*), s2exp) // ?(s2e)/~(s2e)
+| S2Etop of (s2exp) // uninitized
+| S2Etpz of (s2exp) // delineared
 //
 | S2Earg of // HX: knd: 0/1: 
   (int(*knd*), s2exp) // call-by-val/ref
@@ -947,8 +947,9 @@ s2exp_any(knd: int): s2exp
 (* ****** ****** *)
 //
 fun
-s2exp_top
-(knd: int, s2e0: s2exp): s2exp
+s2exp_top(s2e0: s2exp): s2exp
+fun
+s2exp_tpz(s2e0: s2exp): s2exp
 //
 (* ****** ****** *)
 //
