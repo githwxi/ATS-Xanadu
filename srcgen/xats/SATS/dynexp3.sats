@@ -374,7 +374,7 @@ For trans3x:
 Please see trans3x_envmap
 for the meaning of knd
 *)
-| D3Evknd of
+| D3Ekvar of
   (int(*knd*), d2var)
 //
 | D3Econ1 of (d2con)

@@ -190,7 +190,7 @@ let
 val-
 D3Evar(d2v0) = dend
 in
-D3Evknd(knd, d2v0) where
+D3Ekvar(knd, d2v0) where
 {
 val
 knd =

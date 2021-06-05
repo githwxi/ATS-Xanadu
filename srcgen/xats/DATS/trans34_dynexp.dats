@@ -1103,6 +1103,18 @@ val () =
 println!
 ( "auxvar: s2e0 = ", s2e0 )
 //
+val () =
+let
+val
+s2t0=s2e0.sort()
+in
+if
+sort2_islin(s2t0)
+then
+tr34env_add_dvar_sexp
+(env0, d2v0, s2exp_tpz(s2e0))
+end // end of [val]
+//
 in
 d4exp_make_node
 (loc0, s2e0, t2p0, D4Evar(d2v0))
@@ -1111,7 +1123,7 @@ end (*let*) // end of [auxvar]
 (* ****** ****** *)
 
 fun
-auxvknd
+auxkvar
 ( env0:
 ! tr34env
 , d3e0: d3exp): d4exp =
@@ -1123,15 +1135,15 @@ val
 t2p0 = d3e0.type()
 //
 val-
-D3Evknd
+D3Ekvar
 (knd0, d2v0) = d3e0.node()
 //
 val () =
 println!
-( "auxvknd: d2v0 = ", d2v0 )
+( "auxkvar: d2v0 = ", d2v0 )
 val () =
 println!
-( "auxvknd: knd0 = ", knd0 )
+( "auxkvar: knd0 = ", knd0 )
 //
 val
 s2e0 =
@@ -1146,13 +1158,13 @@ tr34env_d2var_get_sexp(env0, d2v0)
 //
 val () =
 println!
-( "auxvknd: s2e0 = ", s2e0 )
+( "auxkvar: s2e0 = ", s2e0 )
 //
 in
 d4exp_make_node
 ( loc0
-, s2e0, t2p0, D4Evknd(knd0, d2v0))
-end (*let*) // end of [auxvknd]
+, s2e0, t2p0, D4Ekvar(knd0, d2v0))
+end (*let*) // end of [auxkvar]
 
 (* ****** ****** *)
 
@@ -1852,7 +1864,7 @@ d3e0.node() of
 | D3Echr _ => auxchr(d3e0)
 //
 | D3Evar _ => auxvar(env0, d3e0)
-| D3Evknd _ => auxvknd(env0, d3e0)
+| D3Ekvar _ => auxkvar(env0, d3e0)
 //
 | D3Efcon _ => auxfcon(env0, d3e0)
 | D3Efcst _ => auxfcst(env0, d3e0)

@@ -949,7 +949,7 @@ end
 (* ****** ****** *)
 
 fun
-auxvknd
+auxkvar
 (d3e0: d3exp): h0exp =
 let
 //
@@ -961,12 +961,12 @@ val
 h0t0 = tcomp30_type(t2p0)
 //
 val-
-D3Evknd
+D3Ekvar
 (k0, d2v0) = d3e0.node()
 val
 hdv1 = tcomp30_dvar(d2v0)
 //
-val hend = H0Evknd(k0, hdv1)
+val hend = H0Ekvar(k0, hdv1)
 //
 in
   h0exp_make_node(loc0, h0t0, hend)
@@ -2042,7 +2042,7 @@ D3Etop _ => auxtop(d3e0)
 |
 D3Evar _ => auxvar(d3e0)
 |
-D3Evknd _ => auxvknd(d3e0)
+D3Ekvar _ => auxkvar(d3e0)
 //
 |
 D3Efcon _ => auxfcon(d3e0)
