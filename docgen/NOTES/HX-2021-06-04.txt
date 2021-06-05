@@ -2,31 +2,33 @@ Hi, there,
 
 HX-2021-06-04:
 
-I am from the camp of functional programming (FP). As a matter of
-fact, the core of ATS is ML-like; it supports type inference,
-polymorphism, higher-order functions, datatypes and pattern matching,
-etc. However, I also want to stress that ATS offers much more than the
-usual kind of ML-like functional programming, which, in my opinion, is
-far from being adequate for systems programming (that is, implementing
-low-level systems).
+Functional programming (FP) puts emphasis on "purity" these days.
+In particular, it preaches all sorts of benefits gained from avoiding
+updates in programming. This somewhat leaves one with the impression
+that "pure" programs cannot have updates. How wrong! A novelty of ATS
+precisely lies in that "pure" programs can have updates.
 
-Often, a functional language requires a big run-time system for
-memory management, which is difficult to accomodate at low-levels.
-Of course, this is not unique to functional languages. Non-functional
-languages such as Java and Python come with big run-time systems as
-well.
+I am from the camp of FP. As a matter of fact, the core of ATS is
+ML-like; it supports type inference, polymorphism, higher-order
+functions, datatypes and pattern matching, etc. However, I also want
+to stress that ATS offers much more than the usual kind of ML-like
+functional programming, which, in my opinion, is far from being
+adequate for systems programming (that is, implementing low-level
+systems).
 
-I am aware of LISP machines and operating systems written in LISP.
-However, LISP is not ML-like. In particular, typical LISP programs
-make pervasive use of updates. I would like to refer to LISP as a
-dynamically typed functional imperative programming language.
+Once upon a time, we had LISP machines and operating systems written
+in LISP.  I suppose that most people would call LISP a functional
+language.  But LISP is not ML-like; it does not preach "purity" at
+all. In particular, typical LISP programs make pervasive use of
+updates. Maybe we should just refer to LISP as a functional imperative
+programming (FIP) language.
 
-There is yet another serious issue with ML-like functional
-programming. With functional data structures (that do not support
-modifications), it is often impossible to give an efficient
-tail-recursive implementation of certain simple recursive
-functions. For instance, a famous example is the following 'append'
-for concatenation two lists:
+What is so attractive about FIP? Let us first see a serious issue
+with ML-like functional programming. With functional data structures
+(that do not support modifications), it is often difficult, if
+possible at all, to give an efficient tail-recursive implementation of
+certain simple recursive functions. For instance, a famous example is
+the following 'append' for concatenation two lists:
 
 fun
 append
@@ -37,8 +39,12 @@ case xs of
 | cons(x1, xs) => cons(x1, append(xs, ys))
 )
 
-Calling 'append(xs, ys)' on a long list 'xs' requires a deep stack
-for otherwise it results in stack overflow.
+Assume that the direct style of compilation is used to compile
+'append'. Since 'append' is recursive but not tail-recursive, each
+recursive call to 'append' requires allocating a new frame on the call
+stack. This simply implies that calling 'append(xs, ys)' on a long
+list 'xs' requires a deep stack for otherwise it causes the call stack
+to overflow.
 
 One possible attempt to implement 'append' in a tail-recursive manner
 leads to the following terribly inefficient implementation:
@@ -60,24 +66,24 @@ case xs of
 )
 } (* end of [append] *)
 
-Note that the implementation of 'rappend' is tail-recursive.
-The tail-recusive version of 'append(xs, ys)' traverses 'xs'
-once to construct its reverse and then traverses the reverse
-to perform reverse-appending; the constructed reverse of 'xs'
-becomes garbage at the end.
+Note that the implementation of 'rappend' is tail-recursive.  The
+tail-recusive version of 'append(xs, ys)' traverses 'xs' once to
+construct its reverse and then traverses the reverse to perform
+reverse-appending; the constructed reverse of 'xs' becomes garbage at
+the end.
 
 While using non-tail-recursion is probably fine in the construction of
 a compiler, it is not the case in systems programming, where it is not
 uncommon to see the requirement that only tail-recursive functions
 (that is, loops) be allowed.
 
-ATS offers much more than the usual ML-like FP. It supports
-so-called linearly typed functional imperative programming (FIP)
-where data structures can be updated in a type-safe manner. With it,
-one can write in ATS type-safe programs that are very close to their
-counterparts in C in terms of both functionalities and performances.
-Also, ATS supports type-safe manual memory management of C-style,
-obviating the need for a big run-time if the programmer so chooses.
+ATS offers much more than the usual ML-like FP. It supports so-called
+linearly typed FIP where (linear) data structures can be updated in a
+type-safe manner. With it, one can write in ATS type-safe programs
+that are very close to their counterparts in C in terms of both
+functionalities and performances.  Also, ATS supports type-safe manual
+memory management of C-style, obviating the need for a big run-time
+memory management system if the programmer so chooses.
 
 ##################################################################
 
