@@ -331,11 +331,17 @@ fun
 d2cst_set_type(d2cst, t2ype): void
 //
 fun
+d2var_get_kmut(d2var): (int)
+fun
 d2var_get_sexp(d2var): s2exp
 fun
 d2var_get_type(d2var): t2ype
 fun
 d2var_get_tqas(d2var): tq2as
+//
+fun
+d2var_set_kmut
+  ( d2v0: d2var, kmut: int ): void
 //
 fun
 d2var_set_sexp(d2var, s2exp): void
