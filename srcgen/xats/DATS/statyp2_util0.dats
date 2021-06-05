@@ -177,7 +177,8 @@ s2e0.node() of
     (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
   end
 //
-| S2Etop(knd, s2e1) => s2exp_erase(s2e1)
+| S2Etop(s2e1) => s2exp_erase(s2e1)
+| S2Etpz(s2e1) => s2exp_erase(s2e1)
 //
 | S2Earg(knd, s2e1) =>
   (

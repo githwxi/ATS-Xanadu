@@ -178,7 +178,11 @@ s2e0.node() of
     val () = tread12_s2explst(s2es)  
   }
 //
-| S2Etop(knd0, s2e1) =>
+| S2Etop(s2e1) =>
+  {
+    val () = tread12_s2exp(s2e1)
+  }
+| S2Etpz(s2e1) =>
   {
     val () = tread12_s2exp(s2e1)
   }
