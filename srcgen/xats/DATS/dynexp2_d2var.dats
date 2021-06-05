@@ -64,6 +64,7 @@ d2var_struct = @{
 //
   d2var_loc= loc_t // loc
 , d2var_sym= sym_t // name
+, d2var_kmut= (int) // kmut
 , d2var_tqas= tq2as // tqas
 , d2var_sexp= s2exp // sexp
 , d2var_type= t2ype // type
@@ -109,6 +110,7 @@ ref<d2var_struct>
 @{
   d2var_loc= loc
 , d2var_sym= sym
+, d2var_kmut= kmut
 , d2var_tqas= tqas
 , d2var_sexp= s2e1
 , d2var_type= t2p2
@@ -119,6 +121,8 @@ stamp_d2var_kind(d2v0, knd0)
 }
 ) where
 {
+//
+  val kmut = 0//default
 //
   val tqas = list_nil()
 //
@@ -135,6 +139,8 @@ d2var_get_loc(x0) = x0->d2var_loc
 implement
 d2var_get_sym(x0) = x0->d2var_sym
 implement
+d2var_get_kmut(x0) = x0->d2var_kmut
+implement
 d2var_get_tqas(x0) = x0->d2var_tqas
 implement
 d2var_get_sexp(x0) = x0->d2var_sexp
@@ -142,6 +148,10 @@ implement
 d2var_get_type(x0) = x0->d2var_type
 implement
 d2var_get_stamp(x0) = x0->d2var_stamp
+//
+implement
+d2var_set_kmut
+  (x0, kmut) = (x0->d2var_kmut := kmut)
 //
 implement
 d2var_set_tqas
