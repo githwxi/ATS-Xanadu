@@ -604,6 +604,14 @@ s2e0.node() of
   , "S2Extv(", stm, ")[", s2e, "]")
   end
 //
+| S2Eany(knd) =>
+  fprint!( out, "S2Eany(", knd, ")" )
+//
+| S2Etop(s2e) =>
+  fprint!( out, "S2Etop(", s2e, ")" )
+| S2Etpz(s2e) =>
+  fprint!( out, "S2Etpz(", s2e, ")" )
+//
 | S2Eapp
   (s2fn, s2es) =>
   fprint!
@@ -614,14 +622,6 @@ s2e0.node() of
   fprint!
   ( out
   , "S2Elam(", s2vs, "; ", body, ")")
-//
-| S2Eany(knd) =>
-  fprint!( out, "S2Eany(", knd, ")" )
-//
-| S2Etop(s2e) =>
-  fprint!( out, "S2Etop(", s2e, ")" )
-| S2Etpz(s2e) =>
-  fprint!( out, "S2Etpz(", s2e, ")" )
 //
 | S2Earg(knd, s2e) =>
   fprint!
