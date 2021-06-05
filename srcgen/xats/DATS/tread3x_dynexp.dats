@@ -389,7 +389,7 @@ d3e0.node() of
 | D3Etop _ => ()
 //
 | D3Evar _ => ()
-| D3Evknd _ => ()
+| D3Ekvar _ => ()
 //
 | D3Econ1 _ => ()
 | D3Ecst1 _ => ()

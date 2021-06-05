@@ -413,10 +413,10 @@ x0.node() of
 //
 | D3Evar(d2v1) =>
   fprint!(out, "D3Evar(", d2v1, ")")
-| D3Evknd(knd0, d2v1) =>
+| D3Ekvar(knd0, d2v1) =>
   fprint!
   ( out
-  , "D3Evknd(", knd0, ", ", d2v1, ")")
+  , "D3Ekvar(", knd0, ", ", d2v1, ")")
 //
 | D3Econ1(d2c1) =>
   fprint!(out, "D3Econ1(", d2c1, ")")

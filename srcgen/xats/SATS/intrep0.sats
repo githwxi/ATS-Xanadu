@@ -597,7 +597,7 @@ h0exp_node =
 | H0Etop of (token)
 //
 | H0Evar of (hdvar)
-| H0Evknd of
+| H0Ekvar of
   (int(*knd*), hdvar)
 //
 | H0Efcon of (hdcon) // cnstr

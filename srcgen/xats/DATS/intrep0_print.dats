@@ -542,10 +542,10 @@ x0.node() of
 //
 | H0Evar(hdv) =>
   fprint!(out, "H0Evar(", hdv, ")")
-| H0Evknd(knd, hdv) =>
+| H0Ekvar(knd, hdv) =>
   fprint!
   ( out
-  , "H0Evknd(", knd, "; ", hdv, ")")
+  , "H0Ekvar(", knd, "; ", hdv, ")")
 //
 | H0Efcon(hdc) =>
   fprint!(out, "H0Efcon(", hdc, ")")
