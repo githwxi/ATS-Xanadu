@@ -790,15 +790,15 @@ s2exp_node =
 //
 | S2Extv of (s2xtv) // ext-variable
 //
-| S2Eapp of
-  (s2exp, s2explst) // application
-| S2Elam of
-  (s2varlst, s2exp) // abstraction
-//
 | S2Eany of int(*knd*)
 //
 | S2Etop of (s2exp) // uninitized
 | S2Etpz of (s2exp) // delineared
+//
+| S2Eapp of
+  (s2exp, s2explst) // application
+| S2Elam of
+  (s2varlst, s2exp) // abstraction
 //
 | S2Earg of // HX: knd: 0/1: 
   (int(*knd*), s2exp) // call-by-val/ref

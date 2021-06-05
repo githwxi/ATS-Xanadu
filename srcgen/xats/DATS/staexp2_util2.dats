@@ -369,12 +369,29 @@ S2Elam(s2vs, s2e1) => let
 val
 s2e1 = auxs2e0(s2e1, flag)
 in
-  if
-  flag=fini
-  then s2e0
-  else
-  s2exp_make_node(s2t0, S2Elam(s2vs, s2e1))
+if
+flag=fini
+then s2e0
+else
+s2exp_make_node(s2t0, S2Elam(s2vs, s2e1))
 end // end of [S2Elam]
+//
+|
+S2Etop(s2e1) =>
+let
+val
+s2e1 = auxs2e0(s2e1, flag)
+in
+  s2exp_make_node( s2t0, S2Etop(s2e1) )
+end
+|
+S2Etpz(s2e1) =>
+let
+val
+s2e1 = auxs2e0(s2e1, flag)
+in
+  s2exp_make_node( s2t0, S2Etpz(s2e1) )
+end
 //
 |
 S2Efun
