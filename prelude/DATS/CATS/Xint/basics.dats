@@ -651,10 +651,10 @@ XINTERP_a0ref_set
 = $exname((*self*))
 //
 impltmp
-{a:vt}
+{a:t0}
 a0ref_get<a> = XINTERP_a0ref_get{a}
 impltmp
-{a:vt}
+{a:t0}
 a0ref_set<a> = XINTERP_a0ref_set{a}
 //
 (* ****** ****** *)
@@ -743,23 +743,23 @@ a1ref_tail<a>
 XINTERP_a1ref_tail_raw{a}(A0)
 //
 impltmp
-{a:vt}
+{a:t0}
 a1ref_get_at<a>
 (A0, i0) =
 XINTERP_a1ref_get_at_raw{a}(A0, i0)
 impltmp
-{a:vt}
+{a:t0}
 a1ptr_get_at<a>
 (A0, i0) =
 XINTERP_a1ptr_get_at_raw{a}(A0, i0)
 //
 impltmp
-{a:vt}
+{a:t0}
 a1ref_set_at<a>
 (A0, i0, x0) =
 XINTERP_a1ref_set_at_raw{a}(A0, i0, x0)
 impltmp
-{a:vt}
+{a:t0}
 a1ptr_set_at<a>
 (A0, i0, x0) =
 XINTERP_a1ptr_set_at_raw{a}(A0, i0, x0)

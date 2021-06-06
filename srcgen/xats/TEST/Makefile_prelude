@@ -18,6 +18,7 @@ XATSLIB=./../../../xatslib
 all:: all_sats
 all:: all_dats
 all:: all_JS_dats
+all:: all_Xint_dats
 
 ######
 
@@ -145,6 +146,11 @@ $(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/prelude.dats
 all_JS_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/jsbasics.dats
   
+######
+
+all_Xint_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/CATS/Xint/basics.dats
+
 ######
   
 ###### end of [Makefile_prelude] ######
