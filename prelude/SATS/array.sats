@@ -172,31 +172,44 @@ fun
 <a:vt>
 a0ref_cget(A0: a0ref(a)): (a)
 //
+(* ****** ****** *)
+//
 fun
 <a:vt>
-a0ptr_get0(A0: !a0ptr(a)): ~a
+a0ptr_get0
+(A0: !a0ptr(a)): ~a
+fun
+<a:vt>
+a0ptr_get1
+( A0:
+! a0ptr(a) >> a0ptr(~a)): (a)
+//
+(*
+HX: [cget]: copy+get
+*)
 fun
 <a:vt>
 a0ptr_cget(A0: !a0ptr(a)): (a)
 //
 (* ****** ****** *)
 //
+(*
+HX: [setf]: set+free
+*)
+//
 fun
 <a:vt>
 a0ref_setf
 (A0: a0ref(a), x0: a): void
+//
 fun
 <a:vt>
 a0ptr_setf
 (A0: !a0ptr(a), x0: a): void
-//
-(* ****** ****** *)
-//
 fun
 <a:vt>
-a0ptr_getf
-( A0:
-! a0ptr(a)>>a0ptr(~a)): void
+a0ptr_set1
+(A0: a0ptr(~a), x0: a): void
 //
 (* ****** ****** *)
 //
@@ -204,6 +217,7 @@ fun
 <a:vt>
 a0ref_exch
 (A0: a0ref(a), x0: a): a(*old*)
+//
 fun
 <a:vt>
 a0ptr_exch
@@ -305,7 +319,7 @@ a1ptr_make_list_vt
 (* ****** ****** *)
 
 fun
-<a:vt>
+<a:t0>
 a1ref_head
 {n:i0|n>0}
 (A0: a1ref(a, n)): ~a
@@ -341,6 +355,8 @@ a1ptr_get_at
 ( A0:
 ! a1ptr(a, n), i0: nintlt(n)): a
 //
+(* ****** ****** *)
+//
 fun
 <a:t0>
 a1ref_set_at
@@ -365,8 +381,23 @@ a1ptr_set_at_raw
 //
 (* ****** ****** *)
 //
+fun
+<a:vt>
+a1ref_get0_at
+{n:i0}
+( A0:
+  a1ref(a, n), i0: nintlt(n)): ~a
+fun
+<a:vt>
+a1ptr_get0_at
+{n:i0}
+( A0:
+! a1ptr(a, n), i0: nintlt(n)): ~a
+//
+(* ****** ****** *)
+//
 (*
-HX: [cget_at] calls [g_copy]
+HX: [cget_at]: copy+get
 *)
 //
 fun
@@ -374,13 +405,36 @@ fun
 a1ref_cget_at
 {n:i0}
 ( A0:
-  a1ref(a, n), i0: nintlt(n)): ( a )
+  a1ref(a, n), i0: nintlt(n)): (a)
 fun
 <a:vt>
 a1ptr_cget_at
 {n:i0}
 ( A0:
-! a1ptr(a, n), i0: nintlt(n)): ( a )
+! a1ptr(a, n), i0: nintlt(n)): (a)
+//
+(* ****** ****** *)
+//
+(*
+HX: [setf_at]: set_at+free
+*)
+//
+fun
+<a:vt>
+a1ref_setf_at
+{n:i0}
+( A0
+: a1ref(a, n)
+, i0: nintlt(n), x0 : a(*new*)): void
+fun
+<a:vt>
+a1ptr_setf_at
+{n:i0}
+( A0:
+! a1ptr(a, n)
+, i0: nintlt(n), x0 : a(*new*)): void
+//
+(* ****** ****** *)
 //
 fun
 <a:vt>

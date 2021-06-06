@@ -637,30 +637,6 @@ a0ptr_alloc<a> = XINTERP_a0ptr_alloc
 //
 #extern
 fun
-XINTERP_a0ref_get
-{a:vt}
-( A0
-: a0ref(a))
-: (~a) = $exname()
-#extern
-fun
-XINTERP_a0ref_set
-{a:vt}
-( A0
-: a0ref(a), x0: a): void
-= $exname((*self*))
-//
-impltmp
-{a:t0}
-a0ref_get<a> = XINTERP_a0ref_get{a}
-impltmp
-{a:t0}
-a0ref_set<a> = XINTERP_a0ref_set{a}
-//
-(* ****** ****** *)
-//
-#extern
-fun
 XINTERP_a1ptr_alloc
 {a:vt}
 {n:i0}
@@ -671,6 +647,30 @@ XINTERP_a1ptr_alloc
 impltmp
 {a:vt}
 a1ptr_alloc<a> = XINTERP_a1ptr_alloc
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XINTERP_a0ref_get_raw
+{a:vt}
+( A0
+: a0ref(a))
+: (~a) = $exname()
+#extern
+fun
+XINTERP_a0ref_set_raw
+{a:vt}
+( A0
+: a0ref(a), x0: a): void
+= $exname((*self*))
+//
+impltmp
+{a:vt}
+a0ref_get0<a> = XINTERP_a0ref_get_raw{a}
+impltmp
+{a:vt}
+a0ref_setf<a> = XINTERP_a0ref_set_raw{a}
 //
 (* ****** ****** *)
 //
@@ -732,7 +732,7 @@ XINTERP_a1ptr_set_at_raw
 (* ****** ****** *)
 //
 impltmp
-{a:vt}
+{a:t0}
 a1ref_head<a>
 (A0) =
 XINTERP_a1ref_head_raw{a}(A0)
@@ -752,6 +752,19 @@ impltmp
 a1ptr_get_at<a>
 (A0, i0) =
 XINTERP_a1ptr_get_at_raw{a}(A0, i0)
+//
+impltmp
+{a:vt}
+a1ref_get0_at<a>
+(A0, i0) =
+XINTERP_a1ref_get_at_raw{a}(A0, i0)
+impltmp
+{a:vt}
+a1ptr_get0_at<a>
+(A0, i0) =
+XINTERP_a1ptr_get_at_raw{a}(A0, i0)
+//
+(* ****** ****** *)
 //
 impltmp
 {a:t0}
