@@ -6,7 +6,9 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 fun
-foo(x0: &int): int = x0
+foo
+( x0
+: &int): void = x0 := x0 + 1
 ////
 (* ****** ****** *)
 fun
