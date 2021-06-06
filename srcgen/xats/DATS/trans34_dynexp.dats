@@ -241,7 +241,8 @@ val
 t2p0 = d3p0.type()
 //
 val-
-D3Pvar(d2v1) = d3p0.node()
+D3Pvar
+(d2v1) = d3p0.node()
 //
 val s2e1 =
 let
@@ -2276,7 +2277,29 @@ d3p0.node() of
 |
 D3Panno
 ( d3p1
-, s1e2, s2e2) => s2e2
+, s1e2, s2e2) =>
+auxs2e2(s2e2) where
+{
+fun
+auxs2e2
+( s2e2
+: s2exp): s2exp =
+(
+case+
+s2e2.node() of
+//
+|
+S2Eatx
+(s2e2, _) =>
+auxs2e2(s2e2)
+//
+|
+S2Earg
+(_, s2e2) => s2e2
+//
+| _(*else*) => s2e2
+)
+} (* end of [D3Panno] *)
 |
 _(*non-D3Panno*) =>
 let
@@ -2296,7 +2319,7 @@ D3Panno
 | _(*non-D3Panno*) => d3p0
 ) : d3pat // end of [val]
 in
-trans34_dpat_dntp(env0, d3p1, s2e1)
+trans34_dpat_dntp(env0,d3p1,s2e1)
 end // end of [auxarg0]
 fun
 auxargs
@@ -2337,11 +2360,11 @@ f3a0.node() of
 //
 |
 F3ARGsome_dyn
-(npf, d3ps) =>
+(npf1, d3ps) =>
 (
 f4arg_make_node
 ( loc0
-, F4ARGsome_dyn(npf, d4ps))
+, F4ARGsome_dyn(npf1, d4ps))
 ) where
 {
   val

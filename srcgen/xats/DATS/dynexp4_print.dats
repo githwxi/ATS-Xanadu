@@ -482,6 +482,19 @@ case+ x0.node() of
   ( out, "D4Ecas0("
   , knd0, "; ", d4e1, "; ", dcls, ")")
 //
+| D4Eaddr(d4e1) =>
+  (
+   fprint!(out, "D4Eaddr(", d4e1, ")")
+  )
+| D4Eflat(d4e1) =>
+  (
+   fprint!(out, "D4Eflat(", d4e1, ")")
+  )
+| D4Etalf(d4e1) =>
+  (
+   fprint!(out, "D4Etalf(", d4e1, ")")
+  )
+//
 | D4Eanno
   (d4e1, s1e2, s2e2) =>
   fprint!
