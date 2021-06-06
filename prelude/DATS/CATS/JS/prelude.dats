@@ -445,7 +445,7 @@ fun
 XATS2JS_a0ref_get
 {a:t0}
 ( A0
-: a0ref(a)): (~a) = $exname()
+: a0ref(a)): ( a ) = $exname()
 impltmp
 { a:t0 }
 a0ref_get<a> = XATS2JS_a0ref_get

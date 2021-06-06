@@ -61,6 +61,11 @@ impltmp
 a0ref_get(A0) =
 a0ref_get0<a>(A0)
 (* ****** ****** *)
+impltmp
+<a:t0>
+a0ref_set(A0, x0) =
+a0ref_setf<a>(A0, x0)
+(* ****** ****** *)
 //
 impltmp
 <a:vt>
@@ -117,6 +122,16 @@ gl_print1<a0ptr(a)> = a0ptr_print1<a>
 (*
 **HX: 1-dimensional
 *)
+(* ****** ****** *)
+impltmp
+<a:t0>
+a1ref_get_at(A0, i0) =
+a1ref_get0_at<a>(A0, i0)
+(* ****** ****** *)
+impltmp
+<a:t0>
+a1ptr_get_at(A0, i0) =
+a1ptr_get0_at<a>(A0, i0)
 (* ****** ****** *)
 //
 impltmp

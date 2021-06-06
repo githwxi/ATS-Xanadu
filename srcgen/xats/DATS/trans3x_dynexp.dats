@@ -767,9 +767,16 @@ val rtp = rcd.rtp
 val wtp = rcd.wtp
 val ctp = rcd.ctp
 //
+(*
+//
+(*
+HX-2021-06-06:
+It is bound to d2c!
+*)
+//
 val () =
-tr3xenv_add_fix1
-(env0, nam(*d2v*))
+tr3xenv_add_fix1(env0, nam)
+*)
 //
 val def =
 (
@@ -789,8 +796,10 @@ Some
 )
 ) : d3expopt // val
 //
+(*
 val () =
 tr3xenv_pop_fix1(env0)
+*)
 //
 val rtp = t2ype_normize(rtp) 
 //
