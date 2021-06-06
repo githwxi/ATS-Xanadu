@@ -381,6 +381,11 @@ for the meaning of knd
 | D4Ecas0 of
   (int(*knd*), d4exp(*val*), d4claulst)
 //
+| D4Eaddr of d4exp(*l-value*)
+//
+| D4Eflat of d4exp(*l-value*)
+| D4Etalf of d4exp(*D4Eflat*)
+//
 | D4Eanno of
   (d4exp, s1exp(*anno*), s2exp(*type*))
 //

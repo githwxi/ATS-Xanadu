@@ -626,14 +626,14 @@ d33exp_make_node
 : loc_t
 , t2p0
 : t2ype
-, d3en
+, dend
 : d3exp_node): d3exp =
 let
 //
 val t2p0 = whnfize(t2p0)
 //
 val d3e0 =
-d3exp_make_node(loc0, t2p0, d3en)
+d3exp_make_node(loc0, t2p0, dend)
 in
 case+
 t2p0.node() of

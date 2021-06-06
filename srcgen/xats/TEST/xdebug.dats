@@ -6,8 +6,14 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 fun
-<a:vt>
-foo(x0: !a): a = x0
+foo(x0: &int): int = x0
+////
+(* ****** ****** *)
+fun
+fact(x) =
+if
+x > 0
+then x * fact(x-1) else 1
 ////
 (* ****** ****** *)
 //
@@ -68,13 +74,6 @@ foo
 & int(m)
 >>int(n)): #[n:nat] void
 *)
-////
-(* ****** ****** *)
-fun
-fact(x) =
-if
-x > 0
-then x * fact(x-1) else 1
 ////
 (* ****** ****** *)
 fun
