@@ -1837,6 +1837,37 @@ end (*let*) // end of [aux_flat]
 (* ****** ****** *)
 
 fun
+aux_talf
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Etalf
+( d3e1) = d3e0.node()
+//
+val
+d4e1 =
+trans34_dexp(env0, d3e1)
+//
+val
+s2e1 = d4e1.sexp((*void*))
+//
+in
+d4exp_make_node
+( loc0
+, s2e1, t2p0, D4Etalf(d4e1))
+end (*let*) // end of [aux_talf]
+
+(* ****** ****** *)
+
+fun
 aux_anno
 ( env0:
 ! tr34env
@@ -1923,9 +1954,7 @@ d3e0.node() of
 | D3Ecas0 _ => aux_cas0(env0, d3e0)
 //
 | D3Eflat _ => aux_flat(env0, d3e0)
-(*
 | D3Etalf _ => aux_talf(env0, d3e0)
-*)
 //
 | D3Eanno _ => aux_anno(env0, d3e0)
 //
