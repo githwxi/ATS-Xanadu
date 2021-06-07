@@ -1469,7 +1469,73 @@ s2e0 where
 end // end of [auxapp1_extp_]
 
 (* ****** ****** *)
-
+//
+fun
+isANY
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+| S1Eid0(sid) =>
+  sid = $SYM.WCARD_symbol
+| _(*non-S1Eid0*) => false
+)
+//
+fun
+isTOP
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+|
+S1Eapp1
+(s1e1, s1e2) =>
+(
+case+
+s1e2.node() of
+|
+S1Enone(loc) =>
+(
+case+
+s1e1.node() of
+| S1Eid0(sid) =>
+  sid = $SYM.QMARK_symbol
+| _(*non-S1Eid0*) => false)
+| _(*non-S1Enone1*) => false
+)
+| _(* non-S1Eapp1 *) => false
+)
+//
+fun
+isTPZ
+( s1e
+: s1exp): bool =
+(
+case+
+s1e.node() of
+|
+S1Eapp1
+(s1e1, s1e2) =>
+(
+case+
+s1e2.node() of
+|
+S1Enone(loc) =>
+(
+case+
+s1e1.node() of
+| S1Eid0(sid) =>
+  sid = $SYM.QMNEG_symbol
+| _(*non-S1Eid0*) => false)
+| _(*non-S1Enone1*) => false
+)
+| _(* non-S1Eapp1 *) => false
+)
+//
+(* ****** ****** *)
+//
 fun
 isAXCG
 ( s1e
@@ -1648,30 +1714,72 @@ s1e1.node() of
   in
     s2exp_fun_full(fc2, npf, s2es, s2e3)
   end
-| _(*non-S1Eimp*) =>
+|
+_(*non-S1Eimp*) =>
+(
+ifcase
+|
+isAXCG(s1e1) =>
+let
+  val s2e2 =
+  trans12_sexp_ci(s1e2)
+// (*
+  val () =
+  println!
+  ("auxapp2_0_: s1e3 = ", s1e3)
+// *)
+//
+in
+  s2exp_atx(s2e2, s2e3) where
+  {
+  val s2e3 =
   (
   ifcase
-  | isAXCG(s1e1) =>
-    let
-    val s2e2 =
-    trans12_sexp_ci(s1e2)
-    val s2e3 =
-    trans12_sexp_ci(s1e3)
-(*
-    val s2e3 =
-    trans12_sexp_ck(s1e3, s2e2.sort())
-*)
-    in
-      s2exp_atx(s2e2, s2e3)
-    end
-  | _ (* else *) =>
+  | isANY(s1e3) =>
+    (
     let
     val
-    s2e1 =
-    trans12_sexp(s1e1) in auxapp2_1_(s1e0, s2e1)
-    end // end of [let]
-  )
+    s2e2 =
+    (
+    case+
+    s2e2.node() of
+    | S2Earg
+      (knd, s2e2) => s2e2 | _ => s2e2
+    ) : s2exp // end of [val]
+    in
+    case+
+    s2e2.node() of
+    | S2Etop(s2e2) => s2e2 | _ => s2e2
+    end
+    )
+  | isTOP(s1e3) =>
+    (
+    case+
+    s2e2.node() of
+    | S2Earg(_, s2e2) => s2exp_top(s2e2)
+    | _(*non-S2Earg*) => s2exp_top(s2e2)
+    )
+  | isTPZ(s1e3) =>
+    (
+    case+
+    s2e2.node() of
+    | S2Earg(_, s2e2) => s2exp_tpz(s2e2)
+    | _(*non-S2Earg*) => s2exp_tpz(s2e2)
+    )
+  | _(* else *) => trans12_sexp_ci(s1e3)
+  ) : s2exp // end-of-val [s2e3]
+  }
+end
+//
+|
+_ (* else *) =>
+let
+  val
+  s2e1 =
+  trans12_sexp(s1e1) in auxapp2_1_(s1e0, s2e1)
+end // end of [let]
 )
+) (* end of [else] *)
 //
 end // end of [auxapp2_0_]
 

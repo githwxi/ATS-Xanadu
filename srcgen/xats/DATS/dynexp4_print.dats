@@ -703,6 +703,7 @@ Some(rcd_a4g) =>
   , "F4UNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
+  , "a2g=", rcd.a2g, ", "
   , "a4g=", rcd_a4g, ", "
   , "res=", rcd.res, ", "
   , "def=", rcd.def, ", "
