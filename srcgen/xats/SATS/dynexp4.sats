@@ -374,6 +374,9 @@ for the meaning of knd
   (d4eclist, d4exp(*sequence*))
 | D4Ewhere of (d4exp, d4eclist)
 //
+| D4Eassgn of
+  (d4exp(*lval*), d4exp(*rval*))
+//
 | D4Eif0 of
   ( d4exp
   , d4exp(*then*), d4expopt(*else*))
@@ -396,6 +399,8 @@ for the meaning of knd
 //
 | D4Etcast of
   (d4exp, c0str) // constraint generation
+//
+| D4Eleaked of (d4exp)//[d4exp] is linear
 //
 | D4Enone0 of ()
 | D4Enone1 of (d3exp) | D4Enone2 of (d4exp)
@@ -445,6 +450,9 @@ d4exp_none2(d4e0: d4exp): d4exp
 fun
 d4exp_tcast
 (d4e1: d4exp, s2e2: s2exp): d4exp
+(* ****** ****** *)
+fun
+d4exp_leakify(d4e0: d4exp): d4exp
 (* ****** ****** *)
 //
 fun
