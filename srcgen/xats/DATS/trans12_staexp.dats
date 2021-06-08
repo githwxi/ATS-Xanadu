@@ -1756,14 +1756,16 @@ in
     (
     case+
     s2e2.node() of
-    | S2Earg(_, s2e2) => s2exp_top(s2e2)
+    | S2Earg
+      (knd, s2e2) => s2exp_top(s2e2)
     | _(*non-S2Earg*) => s2exp_top(s2e2)
     )
   | isTPZ(s1e3) =>
     (
     case+
     s2e2.node() of
-    | S2Earg(_, s2e2) => s2exp_tpz(s2e2)
+    | S2Earg
+      (knd, s2e2) => s2exp_tpz(s2e2)
     | _(*non-S2Earg*) => s2exp_tpz(s2e2)
     )
   | _(* else *) => trans12_sexp_ci(s1e3)
@@ -1774,9 +1776,9 @@ end
 |
 _ (* else *) =>
 let
-  val
-  s2e1 =
-  trans12_sexp(s1e1) in auxapp2_1_(s1e0, s2e1)
+val
+s2e1 =
+trans12_sexp(s1e1) in auxapp2_1_(s1e0, s2e1)
 end // end of [let]
 )
 ) (* end of [else] *)

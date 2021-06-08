@@ -470,6 +470,12 @@ case+ x0.node() of
   ( out
   , "D4Ewhere(", d4e1, "; ", dcls, ")")
 //
+| D4Eassgn
+  (d4e1, d4e2) =>
+  fprint!
+  ( out
+  , "D4Eassgn(", d4e1, "; ", d4e2, ")")
+//
 | D4Eif0
   (d4e1, d4e2, opt3) =>
   fprint!

@@ -1713,6 +1713,56 @@ end (*let*) // end of [aux_where]
 (* ****** ****** *)
 
 fun
+aux_assgn
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Eassgn
+( d3e1
+, d3e2) = d3e0.node()
+//
+(*
+HX-2021-06-07:
+Typecheck [d3e2] first!
+*)
+val
+d4e2 =
+trans34_dexp(env0, d3e2)
+val
+d4e1 =
+trans34_dexp(env0, d3e1)
+//
+val
+s2e0 = s2exp_type_void()
+//
+(*
+val
+s2e1 = d4e1.sexp((*void*))
+val () =
+println!
+("aux_assgn: s2e1 = ", s2e1)
+*)
+//
+val
+d4e1 = d4exp_leakify(d4e1)
+//
+in
+d4exp_make_node
+( loc0
+, s2e0
+, t2p0, D4Eassgn(d4e1, d4e2) )
+end (*let*) // end of [aux_assgn]
+
+(* ****** ****** *)
+
+fun
 aux_if0
 ( env0:
 ! tr34env
@@ -1742,7 +1792,7 @@ s2e0 = s2exp_xtv(xtv0)
 //
 val
 d4e2 =
-trans34_dexp_dntp(env0, d3e2, s2e0)
+trans34_dexp_dntp(env0,d3e2,s2e0)
 //
 val opt3 =
 (
@@ -1752,13 +1802,16 @@ None() =>
 None((*void*))
 |
 Some(d3e3) => Some
-(trans34_dexp_dntp(env0, d3e3, s2e0))
+(
+trans34_dexp_dntp(env0,d3e3,s2e0)
+)
 ) : d4expopt // end-of-val
 //
 in
 d4exp_make_node
 ( loc0
-, s2e0, t2p0, D4Eif0(d4e1, d4e2, opt3))
+, s2e0
+, t2p0, D4Eif0(d4e1, d4e2, opt3) )
 end (*let*) // end of [aux_if0]
 
 (* ****** ****** *)
@@ -1799,8 +1852,8 @@ trans34_dclaulst_dntp
 in
 d4exp_make_node
 ( loc0
-, s2e0, t2p0
-, D4Ecas0(knd0, dmat, dcls) )
+, s2e0
+, t2p0, D4Ecas0(knd0, dmat, dcls))
 end (*let*) // end of [aux_cas0]
 
 (* ****** ****** *)
@@ -1945,6 +1998,9 @@ d3e0.node() of
   (dcls, d3e1) => aux_let(env0, d3e0)
 | D3Ewhere
   (d3e1, dcls) => aux_where(env0, d3e0)
+//
+|
+D3Eassgn _ => aux_assgn(env0, d3e0)
 //
 | D3Eif0
   ( _cond_

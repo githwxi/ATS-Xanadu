@@ -294,6 +294,36 @@ d4exp_make_node
 } (*where*) // d4exp_make_node
 
 (* ****** ****** *)
+//
+implement
+d4exp_leakify
+  (d4e0) = let
+//
+val
+s2e0 = d4e0.sexp()
+//
+in
+//
+if
+not
+(
+s2exp_islin(s2e0)
+) then d4e0 else let
+//
+val loc0 = d4e0.loc()
+val t2p0 = d4e0.type()
+//
+in
+//
+d4exp_make_node
+( loc0
+, s2e0, t2p0, D4Eleaked(d4e0))
+//
+end // else // end of [if]
+//
+end // end of [d4exp_leakify]
+//
+(* ****** ****** *)
 
 local
 
