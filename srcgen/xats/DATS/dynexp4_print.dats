@@ -470,6 +470,12 @@ case+ x0.node() of
   ( out
   , "D4Ewhere(", d4e1, "; ", dcls, ")")
 //
+| D4Eseqn
+  (d4es, d4e2) =>
+  fprint!
+  ( out
+  , "D4Eseqn(", d4es, "; ", d4e2, ")")
+//
 | D4Eassgn
   (d4e1, d4e2) =>
   fprint!
@@ -507,11 +513,21 @@ case+ x0.node() of
   ( out
   , "D4Eanno(", d4e1, "; ", s2e2, ")")
 //
+| D4Edtmap
+  ( d4e1, dtmp ) =>
+  fprint!
+  ( out
+  , "D4Edtmap(", d4e1, "; ", "[]", ")")
+//
 | D4Etcast
   ( d4e1, cstr ) =>
   fprint!
   ( out
   , "D4Etcast(", d4e1, "; ", cstr, ")")
+//
+| D4Eleakd(d4e1) =>
+  fprint!
+  ( out, "D4Eleakd(", d4e1, ")")
 //
 | D4Enone0() =>
   fprint!(out, "D4Enone0(", ")")

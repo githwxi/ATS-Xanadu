@@ -109,6 +109,7 @@ typedef d4pat = $D4E.d4pat
 typedef f4arg = $D4E.f4arg
 //
 typedef d4exp = $D4E.d4exp
+typedef dtmap = $D4E.dtmap
 typedef d4ecl = $D4E.d4ecl
 //
 (* ****** ****** *)
@@ -196,6 +197,26 @@ fun
 tr34env_pop_lams
   ( env0 : !tr34env ) : void
 //
+(* ****** ****** *)
+fun
+dtmap_insert
+( dtm0
+: dtmap
+, d2v0
+: d2var, s2e0: s2exp ): bool
+fun
+dtmap_ismem
+( dtm0
+: dtmap, d2v0: d2var ): bool
+fun
+dtmap_listize
+( dtm0
+: dtmap )
+: List0_vt( @(d2var, s2exp) )
+(* ****** ****** *)
+fun
+tr34env_dtmap_fun0
+  ( env0 : !tr34env ) : dtmap
 (* ****** ****** *)
 fun
 tr34env_add_dvar_sexp

@@ -6,6 +6,15 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 fun
+<a:vt>
+foo
+(x0: &a >> _, x1: a): a =
+let
+val tmp = x0 in x0 := x1; tmp
+end
+////
+(* ****** ****** *)
+fun
 foo
 (x0: &(?int) >> _): void = x0 := 0
 ////

@@ -301,6 +301,13 @@ overload fprint with fprint_ti4arg
 //
 (* ****** ****** *)
 
+abstype
+dtmap_type = ptr
+typedef
+dtmap = dtmap_type
+
+(* ****** ****** *)
+
 datatype
 d4exp_node =
 //
@@ -374,8 +381,13 @@ for the meaning of knd
   (d4eclist, d4exp(*sequence*))
 | D4Ewhere of (d4exp, d4eclist)
 //
+| D4Eseqn of
+  (
+  d4explst(*semi*), d4exp(*last*)
+  )
+//
 | D4Eassgn of
-  (d4exp(*lval*), d4exp(*rval*))
+  ( d4exp(*lval*), d4exp(*rval*) )
 //
 | D4Eif0 of
   ( d4exp
@@ -397,10 +409,13 @@ for the meaning of knd
   ( s2explst(*wits*), d4exp(*packed*) )
 *)
 //
+| D4Edtmap of
+  (d4exp, dtmap) // linear vtype changes
+//
 | D4Etcast of
   (d4exp, c0str) // constraint generation
 //
-| D4Eleaked of (d4exp)//[d4exp] is linear
+| D4Eleakd of (d4exp) // [d4exp] is linear
 //
 | D4Enone0 of ()
 | D4Enone1 of (d3exp) | D4Enone2 of (d4exp)

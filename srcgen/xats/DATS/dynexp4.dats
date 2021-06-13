@@ -317,7 +317,7 @@ in
 //
 d4exp_make_node
 ( loc0
-, s2e0, t2p0, D4Eleaked(d4e0))
+, s2e0, t2p0, D4Eleakd(d4e0))
 //
 end // else // end of [if]
 //
