@@ -1723,11 +1723,11 @@ isAXCG(s1e1) =>
 let
   val s2e2 =
   trans12_sexp_ci(s1e2)
-// (*
+(*
   val () =
   println!
   ("auxapp2_0_: s1e3 = ", s1e3)
-// *)
+*)
 //
 in
   s2exp_atx(s2e2, s2e3) where

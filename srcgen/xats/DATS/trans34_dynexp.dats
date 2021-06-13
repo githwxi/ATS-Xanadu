@@ -1713,6 +1713,70 @@ end (*let*) // end of [aux_where]
 (* ****** ****** *)
 
 fun
+aux_seqn
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Eseqn
+( d3es
+, d3e2) = d3e0.node()
+//
+val
+d4es =
+auxd3es(env0, d3es) where
+{
+fun
+auxd3es
+( env0:
+! tr34env
+, d3es
+: d3explst): d4explst =
+(
+case+ d3es of
+|
+list_nil() => list_nil()
+|
+list_cons(d3e1, d3es) =>
+let
+  val
+  s2e1 =
+  s2exp_type_void()
+  val
+  d4e1 =
+  trans34_dexp_dntp
+  (env0, d3e1, s2e1)
+in
+  list_cons
+  ( d4e1
+  , auxd3es(env0, d3es))
+end
+) (* end of [auxd3es] *)
+}
+val
+d4e2 = trans34_dexp(env0, d3e2)
+//
+in
+let
+val
+s2e2 =
+d4e2.sexp()
+in
+d4exp_make_node
+( loc0
+, s2e2, t2p0, D4Eseqn(d4es, d4e2))
+end
+end (*let*) // end of [aux_seqn]
+
+(* ****** ****** *)
+
+fun
 aux_assgn
 ( env0:
 ! tr34env
@@ -1998,6 +2062,8 @@ d3e0.node() of
   (dcls, d3e1) => aux_let(env0, d3e0)
 | D3Ewhere
   (d3e1, dcls) => aux_where(env0, d3e0)
+//
+| D3Eseqn _ => aux_seqn(env0, d3e0)
 //
 |
 D3Eassgn _ => aux_assgn(env0, d3e0)
