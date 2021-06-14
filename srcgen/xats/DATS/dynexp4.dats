@@ -49,6 +49,8 @@ LOC = "./../SATS/locinfo.sats"
   typedef loc_t = $LOC.loc_t
 //
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
 //
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
@@ -453,6 +455,96 @@ d4ecl_make_node
   val loc0 = d3cl.loc((*void*))
 }
 //
+(* ****** ****** *)
+
+local
+
+(* ****** ******)
+#staload
+FM =
+"libats/SATS\
+/funmap_avltree.sats"
+(* ****** ******)
+#staload
+_(*FM*) =
+"libats/DATS\
+/funmap_avltree.dats"
+#staload
+_(*QL*) =
+"libats/DATS/qlist.dats"
+(* ****** ******)
+//
+typedef key = d2var
+typedef itm = s2exp
+//
+(* ****** ******)
+//
+absimpl
+stmap_type = $FM.map(key, itm)
+//
+(* ****** ******)
+//
+implement
+$FM.equal_key_key<key>
+(k1, k2) =
+$effmask_all
+(k1.stamp() = k2.stamp())
+implement
+$FM.compare_key_key<key>
+(k1, k2) =
+$effmask_all
+(compare(k1.stamp(), k2.stamp()))
+//
+(* ****** ******)
+
+in(*in-of-local*)
+
+(* ****** ******)
+//
+implement
+stmap_nil() = $FM.funmap_nil()
+//
+(* ****** ******)
+
+implement
+stmap_ismem
+(map, key) =
+let
+//
+var res: itm
+//
+val ans =
+$FM.funmap_search<key,itm>(map,key,res)
+//
+in
+let prval() = opt_clear{itm}(res) in ans end
+end (*let*) // end of [stmap_ismem]
+
+(* ****** ****** *)
+
+implement
+stmap_insert
+(map, key, itm) =
+let
+var res: itm
+//
+val ans =
+$FM.funmap_insert<key,itm>(map,key,itm,res)
+//
+in
+let prval() = opt_clear{itm}(res) in ans end
+end (*let*) // end of [stmap_insert]
+
+(* ****** ****** *)
+//
+implement
+stmap_listize
+( map ) = $FM.funmap_listize<key,itm>( map )
+//
+(* ****** ****** *)
+
+end // end of [local]
+
 (* ****** ****** *)
 
 (* end of [xats_dynexp4.dats] *)

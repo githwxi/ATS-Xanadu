@@ -267,85 +267,46 @@ dvarstk_cons
 
 local
 
-(* ****** ******)
-#staload
-FM =
-"libats/SATS\
-/funmap_avltree.sats"
-(* ****** ******)
-#staload
-_(*FM*) =
-"libats/DATS\
-/funmap_avltree.dats"
-#staload
-_(*QL*) =
-"libats/DATS/qlist.dats"
-(* ****** ******)
+fun
+auxdstk
+( stmp:
+& stmap >> _
+, dstk
+: !dvarstk ): void =
+(
 //
-typedef key = d2var
-typedef itm = s2exp
+case- dstk of
+|
+dvarstk_fun0 _ => ((*void*))
+|
+dvarstk_cons
+(d2v1, s2e2, dstk) =>
+let
+val
+ans =
+stmap_insert
+( stmp
+, d2v1, s2e2) in auxdstk(stmp, dstk)
+end // [dvarstk_cons]
 //
-(* ****** ******)
-//
-absimpl
-stmap_type = $FM.map(key, itm)
-//
-(* ****** ******)
-//
-implement
-$FM.equal_key_key<key>
-(k1, k2) =
-$effmask_all
-(k1.stamp() = k2.stamp())
-implement
-$FM.compare_key_key<key>
-(k1, k2) =
-$effmask_all
-(compare(k1.stamp(), k2.stamp()))
-//
-(* ****** ******)
+) (* end of [auxdstk] *)
 
 in(*in-of-local*)
 
-(* ****** ******)
-
 implement
-stmap_ismem
-(map, key) =
-let
+tr34env_stmap_fun0
+  ( env0 ) =
+  ( stmp ) where
+{
 //
-var res: itm
+val+
+TR34ENV(_, dstk) = env0
 //
-val ans =
-$FM.funmap_search<key,itm>(map,key,res)
+var stmp
+  : stmap = stmap_nil()
 //
-in
-let prval() = opt_clear{itm}(res) in ans end
-end (*let*) // end of [stmap_ismem]
-
-(* ****** ****** *)
-
-implement
-stmap_insert
-(map, key, itm) =
-let
-var res: itm
-//
-val ans =
-$FM.funmap_insert<key,itm>(map,key,itm,res)
-//
-in
-let prval() = opt_clear{itm}(res) in ans end
-end (*let*) // end of [stmap_insert]
-
-(* ****** ****** *)
-//
-implement
-stmap_listize
-( map ) = $FM.funmap_listize<key,itm>( map )
-//
-(* ****** ****** *)
-
+} (*where*) // end of [tr34env_stmap_fun0]
+  
 end // end of [local]
 
 (* ****** ****** *)
