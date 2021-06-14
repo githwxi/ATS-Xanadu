@@ -200,22 +200,6 @@ tr34env_pop_lams
 //
 (* ****** ****** *)
 fun
-stmap_ismem
-( dtm0
-: stmap, d2v0: d2var ): bool
-fun
-stmap_insert
-( dtm0:
-& stmap >> _
-, d2v0
-: d2var, s2e0: s2exp ): bool
-fun
-stmap_listize
-( dtm0
-: stmap )
-: List0_vt( @(d2var, s2exp) )
-(* ****** ****** *)
-fun
 tr34env_stmap_fun0
   ( env0 : !tr34env ) : stmap
 (* ****** ****** *)
