@@ -14,6 +14,20 @@ val tmp = x0 in x0 := x1; tmp
 end
 ////
 (* ****** ****** *)
+val x = 0
+val y = 1
+val z = ""
+val xyz =
+if
+true
+then 1
+else 2
+endst{i,j:int|i>=j}
+( x: int(i)
+, y: int(j), z: string): int(i+j)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 fun
 foo
 (x0: &(?int) >> _): void = x0 := 0
@@ -197,18 +211,6 @@ if x > 0 then x*fact(x-1) else x
 *)
 (* ****** ****** *)
 ////
-(* ****** ****** *)
-val x = 0
-val y = 1
-val z = ""
-val xyz =
-if
-true
-then 1
-else 2
-endst{i,j:int| i>=j}
-( x: int(i)
-, y: int(j), z: string)
 (* ****** ****** *)
 fun
 length(xs: list(int)): int =

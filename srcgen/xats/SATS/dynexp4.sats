@@ -302,9 +302,9 @@ overload fprint with fprint_ti4arg
 (* ****** ****** *)
 
 abstype
-dtmap_type = ptr
+stmap_type = ptr
 typedef
-dtmap = dtmap_type
+stmap = stmap_type
 
 (* ****** ****** *)
 
@@ -409,8 +409,8 @@ for the meaning of knd
   ( s2explst(*wits*), d4exp(*packed*) )
 *)
 //
-| D4Edtmap of
-  (d4exp, dtmap) // linear vtype changes
+| D4Estmap of
+  (d4exp, stmap) // linear vtype changes
 //
 | D4Etcast of
   (d4exp, c0str) // constraint generation

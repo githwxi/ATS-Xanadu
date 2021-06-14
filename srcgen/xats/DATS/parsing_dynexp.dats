@@ -1595,7 +1595,12 @@ T_LPAREN() => let
   val tbeg = tok0
   val tend = p_RPAREN(buf, err)
 in
+let
+  val
+  tann = popt_s0exp_anno(buf, err)
+in
   ST0INVsome(stqs, tbeg, d0ts, tend)
+end
 end
 |
 _(*non-LPAREN*) => ST0INVnone(stqs, tok0)
