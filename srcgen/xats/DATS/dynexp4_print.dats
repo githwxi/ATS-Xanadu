@@ -513,11 +513,11 @@ case+ x0.node() of
   ( out
   , "D4Eanno(", d4e1, "; ", s2e2, ")")
 //
-| D4Edtmap
+| D4Estmap
   ( d4e1, dtmp ) =>
   fprint!
   ( out
-  , "D4Edtmap(", d4e1, "; ", "[]", ")")
+  , "D4Estmap(", d4e1, "; ", "[]", ")")
 //
 | D4Etcast
   ( d4e1, cstr ) =>
