@@ -302,8 +302,12 @@ tr34env_stmap_fun0
 val+
 TR34ENV(_, dstk) = env0
 //
-var stmp
-  : stmap = stmap_nil()
+var
+stmp:
+stmap = stmap_nil((*void*))
+//
+val
+((*void*)) = auxdstk(stmp, dstk)
 //
 } (*where*) // end of [tr34env_stmap_fun0]
   
