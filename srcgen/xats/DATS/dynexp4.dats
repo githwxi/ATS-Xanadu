@@ -526,13 +526,24 @@ implement
 stmap_insert
 (map, key, itm) =
 let
-var res: itm
-//
-val ans =
-$FM.funmap_insert<key,itm>(map,key,itm,res)
-//
+val
+ismem = stmap_ismem(map, key)
+(*
+val () =
+println!("stmap_insert: key = ", key)
+val () =
+println!("stmap_insert: itm = ", itm)
+*)
 in
-let prval() = opt_clear{itm}(res) in ans end
+if
+ismem
+then false
+else (true) where
+{
+val-
+~None_vt() =
+$FM.funmap_insert_opt<key,itm>(map,key,itm)
+} (*where*)
 end (*let*) // end of [stmap_insert]
 
 (* ****** ****** *)

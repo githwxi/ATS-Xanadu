@@ -385,7 +385,19 @@ case+ env0 of
 val () =
 dstk := dvarstk_cons(d2v0, s2e0, dstk)
 }
-) (* end of [tr34env_add_dvar_sexp] *)
+) where
+{
+//
+(*
+val () =
+println!
+("tr34env_add_dvar_sexp: d2v0 = ", d2v0)
+val () =
+println!
+("tr34env_add_dvar_sexp: s2e0 = ", s2e0)
+*)
+//
+} (*where*) // end of [tr34env_add_dvar_sexp]
 //
 (* ****** ****** *)
 

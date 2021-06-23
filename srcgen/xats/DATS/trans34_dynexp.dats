@@ -1108,6 +1108,11 @@ val () =
 let
 val
 s2t0=s2e0.sort()
+//
+val () =
+println!
+( "auxvar: s2t0 = ", s2t0 )
+//
 in
 if
 sort2_islin(s2t0)
@@ -3130,7 +3135,9 @@ val s2e0 =
 sexpize_env(env0, rcd.rtp)
 in
 Some
-(trans34_dexp_dntp(env0, d3e0, s2e0))
+(
+trans34_dexp_dntp(env0, d3e0, s2e0)
+)
 end
 |
 EFFS2EXPsome(s2e0) =>
@@ -3139,11 +3146,19 @@ Some
 )
 ) : d4expopt
 //
+val
+stmp =
+tr34env_stmap_fun0(env0)
+val
+((*void*)) =
+println!
+("trans34_fundecl: stmp=\n", stmp)
+//
 in(*in-of-let*)
 //
 let
-val () =
-tr34env_pop_fun0(env0)
+val
+((*void*)) = tr34env_pop_fun0(env0)
 in
 F4UNDECL@{
   loc= loc

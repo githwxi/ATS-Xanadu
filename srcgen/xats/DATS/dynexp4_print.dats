@@ -332,6 +332,51 @@ case+ x0 of
 (* ****** ****** *)
 //
 implement
+print_stmap(x0) =
+fprint_stmap(stdout_ref, x0)
+implement
+prerr_stmap(x0) =
+fprint_stmap(stderr_ref, x0)
+//
+(* ****** ****** *)
+
+implement
+fprint_stmap
+  (out, map) =
+(
+auxlst
+(stmap_listize(map))
+) where
+{
+fun
+auxlst
+( vts
+: List_vt
+(
+  @(d2var, s2exp))
+) : void =
+(
+case+ vts of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(vt0, vts) =>
+let
+val (d2v, s2e) = vt0
+in
+auxlst(vts) where
+{
+val () =
+fprintln!
+(out, "(", d2v, ": ", s2e, ")")
+}
+end (*let*) // end of [list_cons]
+)
+} (*where*) // end of [fprint_stmap]
+
+(* ****** ****** *)
+//
+implement
 print_d4exp(x0) =
 fprint_d4exp(stdout_ref, x0)
 implement

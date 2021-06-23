@@ -330,6 +330,20 @@ stmap_listize
 : List0_vt( @(d2var, s2exp) )
 //
 (* ****** ****** *)
+//
+fun
+print_stmap(dtm0: stmap): void
+fun
+prerr_stmap(dtm0: stmap): void
+fun
+fprint_stmap
+( out: FILEref, dtm0: stmap): void
+//
+overload print with print_stmap
+overload prerr with prerr_stmap
+overload fprint with fprint_stmap
+//
+(* ****** ****** *)
 
 datatype
 d4exp_node =
