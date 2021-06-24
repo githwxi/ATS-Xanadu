@@ -301,11 +301,25 @@ overload fprint with fprint_ti4arg
 //
 (* ****** ****** *)
 
-abstype
-stmap_type = ptr
-typedef
-stmap = stmap_type
+abstype dlocs_type = ptr
+abstype stmap_type = ptr
+typedef dlocs = dlocs_type
+typedef stmap = stmap_type
 
+(* ****** ****** *)
+//
+fun
+dlocs_nil(): dlocs
+fun
+dlocs_ismem
+( dvrs
+: dlocs, d2v0: d2var ): bool
+//
+fun
+dlocs_insert
+( dvrs
+: dlocs, d2v0: d2var ): dlocs
+//
 (* ****** ****** *)
 //
 fun
@@ -322,6 +336,11 @@ stmap_insert
 & stmap >> _
 , d2v0
 : d2var, s2e0: s2exp ): bool
+//
+fun
+stmap_remove
+( dtm0:
+& stmap >> _, d2v0: d2var): bool
 //
 fun
 stmap_listize

@@ -112,6 +112,7 @@ typedef d4exp = $D4E.d4exp
 typedef d4ecl = $D4E.d4ecl
 //
 (* ****** ****** *)
+typedef dlocs = $D4E.dlocs
 typedef stmap = $D4E.stmap
 (* ****** ****** *)
 typedef d4gua = $D4E.d4gua
@@ -204,10 +205,27 @@ tr34env_stmap_fun0
   ( env0 : !tr34env ) : stmap
 (* ****** ****** *)
 fun
+tr34env_dlocs_let1
+  ( env0 : !tr34env ) : dlocs
+fun
+tr34env_stmap_let1
+  ( env0 : !tr34env ) : stmap
+(* ****** ****** *)
+fun
+tr34env_add_dvar
+( env0:
+! tr34env, d2v0: d2var): void
+fun
 tr34env_add_dvar_sexp
 ( env0:
 ! tr34env
 , d2v0: d2var, s2e0: s2exp): void
+(* ****** ****** *)
+fun
+tr34env_add_denvs_let1
+( env0:
+! tr34env
+, d2vs: dlocs, stmp: stmap): stmap
 (* ****** ****** *)
 fun
 s2exp_tq2as_elim
@@ -498,10 +516,12 @@ fun
 tr34env_d2var_get_sexp
 ( env0:
 ! tr34env, d2v0: d2var): s2exp
+(*
 fun
 tr34env_d2var_set_sexp
 ( env0:
 ! tr34env, d2v0: d2var, s2e0: s2exp): void
+*)
 //
 (* ****** ****** *)
 fun

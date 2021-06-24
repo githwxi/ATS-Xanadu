@@ -461,6 +461,71 @@ local
 
 (* ****** ******)
 #staload
+FS =
+"libats/SATS\
+/funset_avltree.sats"
+(* ****** ******)
+#staload
+_(*FS*) =
+"libats/DATS\
+/funset_avltree.dats"
+#staload
+_(*QL*) =
+"libats/DATS/qlist.dats"
+(* ****** ******)
+//
+typedef elt = d2var
+//
+(* ****** ******)
+//
+absimpl
+dlocs_type = $FS.set(elt)
+//
+(* ****** ******)
+//
+implement
+$FS.compare_elt_elt<elt>
+(k1, k2) =
+$effmask_all
+(compare(k1.stamp(), k2.stamp()))
+//
+(* ****** ******)
+
+in(* in-of-local *)
+
+(* ****** ******)
+//
+implement
+dlocs_nil() = $FS.funset_nil()
+//
+(* ****** ******)
+
+implement
+dlocs_ismem
+(dvs, d2v) =
+$FS.funset_is_member<elt>(dvs, d2v)
+
+(* ****** ****** *)
+
+implement
+dlocs_insert
+(dvs, d2v) =
+let
+var dvs = dvs
+val-false =
+$FS.funset_insert<elt>(dvs, d2v) in dvs
+end // end of [dlocs_insert]
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+(* ****** ******)
+#staload
 FM =
 "libats/SATS\
 /funmap_avltree.sats"
@@ -545,6 +610,13 @@ val-
 $FM.funmap_insert_opt<key,itm>(map,key,itm)
 } (*where*)
 end (*let*) // end of [stmap_insert]
+
+(* ****** ****** *)
+
+implement
+stmap_remove
+( map, key ) =
+$FM.funmap_remove<key,itm>(map, key)
 
 (* ****** ****** *)
 //
