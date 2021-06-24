@@ -1680,12 +1680,17 @@ val
 stmp =
 tr34env_stmap_let1(env0)
 //
-val stmp =
+val
+stmp =
 tr34env_add_denvs_let1
 ( env0 , d2vs , stmp ) where
 {
 val () = tr34env_pop_let1(env0)
-}
+} (*where*) // end-of-val
+//
+val () =
+println!
+ ( "aux_let: stmp:\n", stmp )
 //
 in
 let
@@ -1724,7 +1729,24 @@ trans34_declist(env0, dcls)
 val
 d4e1 = trans34_dexp(env0, d3e1)
 //
+val
+d2vs =
+tr34env_dlocs_let1(env0)
+val
+stmp =
+tr34env_stmap_let1(env0)
+//
+val
+stmp =
+tr34env_add_denvs_let1
+( env0 , d2vs , stmp ) where
+{
 val () = tr34env_pop_let1(env0)
+} (*where*) // end-of-val
+//
+val () =
+println!
+ ( "aux_where: stmp:\n", stmp )
 //
 in
 let
