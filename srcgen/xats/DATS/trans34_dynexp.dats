@@ -263,15 +263,23 @@ end
 end : s2exp // end of [val]
 //
 in
+//
 let
 val
 d4p0 =
 trans34_dpat_dntp
 (env0, d3p0, s2e1)
+//
+in
+let
+val () =
+tr34env_add_dvar(env0, d2v1)
 val () =
 tr34env_add_dvar_sexp
 (env0, d2v1, d4p0.sexp()) in d4p0
+end
 end // end of [let]
+//
 end (*let*) // end of [auxvar]
 
 (* ****** ****** *)
@@ -785,6 +793,8 @@ d4pat_make_node
 //
 in
 let
+val () =
+tr34env_add_dvar(env0, d2v1)
 val () =
 tr34env_add_dvar_sexp
 (env0, d2v1, d4p0.sexp()) in d4p0
@@ -1663,7 +1673,19 @@ trans34_declist(env0, dcls)
 val
 d4e1 = trans34_dexp(env0, d3e1)
 //
+val
+d2vs =
+tr34env_dlocs_let1(env0)
+val
+stmp =
+tr34env_stmap_let1(env0)
+//
+val stmp =
+tr34env_add_denvs_let1
+( env0 , d2vs , stmp ) where
+{
 val () = tr34env_pop_let1(env0)
+}
 //
 in
 let
@@ -1758,9 +1780,8 @@ let
   trans34_dexp_dntp
   (env0, d3e1, s2e1)
 in
-  list_cons
-  ( d4e1
-  , auxd3es(env0, d3es))
+list_cons
+(d4e1, auxd3es(env0, d3es))
 end
 ) (* end of [auxd3es] *)
 }
