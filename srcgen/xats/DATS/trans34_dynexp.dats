@@ -1118,17 +1118,20 @@ val () =
 let
 val
 s2t0=s2e0.sort()
-//
+(*
 val () =
 println!
 ( "auxvar: s2t0 = ", s2t0 )
+*)
 //
-in
+in(*in-of-let*)
+//
 if
 sort2_islin(s2t0)
 then
 tr34env_add_dvar_sexp
 (env0, d2v0, s2exp_tpz(s2e0))
+//
 end // end of [val]
 //
 in

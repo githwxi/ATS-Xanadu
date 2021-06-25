@@ -394,6 +394,25 @@ overload .xnam with d2cst_get_xnam
 (* ****** ****** *)
 //
 fun
+d2var_get_saddr
+  ( d2v0: d2var ) : s2expopt
+fun
+d2var_get_atprf
+  ( d2v0: d2var ) : d2varopt
+//
+fun
+d2var_set_saddr
+(d2v0: d2var, s2l0: s2exp): void
+fun
+d2var_set_atprf
+(d2v0: d2var, d2v1: d2var): void
+//
+overload .saddr with d2var_get_saddr
+overload .atprf with d2var_get_atprf
+//
+(* ****** ****** *)
+//
+fun
 d2con_get_stamp(d2con): stamp
 fun
 d2cst_get_stamp(d2cst): stamp
