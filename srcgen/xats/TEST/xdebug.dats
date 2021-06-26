@@ -10,6 +10,15 @@ fun
 foo
 (x0: &a >> _, x1: a): a =
 let
+var tmp = x0 in x0 := x1; tmp
+end
+////
+(* ****** ****** *)
+fun
+<a:vt>
+foo
+(x0: &a >> _, x1: a): a =
+let
 val tmp = x0 in x0 := x1; tmp
 end
 ////

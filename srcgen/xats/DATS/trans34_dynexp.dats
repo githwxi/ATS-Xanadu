@@ -102,10 +102,8 @@ fprint_val<f4undecl> = fprint_f4undecl
 //
 implement
 fprint_val<v4aldecl> = fprint_v4aldecl
-(*
 implement
 fprint_val<v4ardecl> = fprint_v4ardecl
-*)
 //
 (* ****** ****** *)
 
@@ -2947,6 +2945,36 @@ end (*let*) // end of [aux_valdecl]
 (* ****** ****** *)
 
 fun
+aux_vardecl
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cvardecl
+( tok0
+, mopt, v3ds) = d3cl.node()
+//
+val
+v4ds =
+trans34_vardeclist(env0, v3ds)
+//
+val () =
+println!
+("aux_vardecl: v4ds = ", v4ds)
+//
+in
+d4ecl_make_node
+(loc0, D4Cvardecl(tok0, mopt, v4ds))
+end (*let*) // end of [aux_vardecl]
+
+(* ****** ****** *)
+
+fun
 aux_fundecl
 ( env0:
 ! tr34env
@@ -3005,6 +3033,9 @@ d3cl.node() of
 |
 D3Cvaldecl _ =>
 aux_valdecl(env0, d3cl)
+|
+D3Cvardecl _ =>
+aux_vardecl(env0, d3cl)
 //
 |
 D3Cfundecl _ =>
@@ -3309,6 +3340,53 @@ end // end of [trans34_valdecl]
 (* ****** ****** *)
 //
 implement
+trans34_vardecl
+( env0, v3d0 ) =
+let
+//
+val+
+V3ARDECL(rcd) = v3d0
+//
+val loc = rcd.loc
+val d2v = rcd.d2v
+val wth = rcd.wth
+val res = rcd.res
+val ini = rcd.ini
+//
+val ini =
+(
+case+ ini of
+|
+None() => None()
+|
+Some(d3e) =>
+(
+case+ res of
+|
+None() =>
+Some(trans34_dexp(env0, d3e))
+|
+Some(s2e) =>
+Some
+(trans34_dexp_dntp(env0, d3e, s2e))
+)
+) : d4expopt // end-of-val
+//
+in(*in-of-let*)
+//
+V4ARDECL@{
+  loc= loc
+, d2v= d2v
+, wth= wth
+, res= res, ini= ini
+//
+} (* end of [V4ALDECL] *)
+//
+end // end of [trans34_vardecl]
+//
+(* ****** ****** *)
+//
+implement
 trans34_valdeclist
 (  env0, v3ds  ) =
 (
@@ -3340,6 +3418,41 @@ end
 end // list_map$fopr
 //
 } (*where*) // end of [trans34_valdeclist]
+//
+(* ****** ****** *)
+//
+implement
+trans34_vardeclist
+(  env0, v3ds  ) =
+(
+list_vt2t
+(
+list_map<v3ardecl><v4ardecl>(v3ds)
+)
+) where
+{
+//
+val
+env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+implement
+list_map$fopr<v3ardecl><v4ardecl>
+  (v3d0) = let
+//
+val
+env0 =
+$UN.castvwtp0{tr34env}(env0)
+val
+v4d0 = trans34_vardecl(env0, v3d0)
+//
+in
+let
+prval () = $UN.cast2void(env0) in v4d0
+end
+end // list_map$fopr
+//
+} (*where*) // end of [trans34_vardeclist]
 //
 (* ****** ****** *)
 
