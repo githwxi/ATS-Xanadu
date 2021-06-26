@@ -137,13 +137,6 @@ ref<d2var_struct>
 , d2var_type= t2p2
 , d2var_stamp= stamp
 //
-(*
-// HX:
-// it is done externally
-, d2var_saddr= S2EOPTnone()
-, d2var_atprf= D2VOPTnone()
-*)
-//
 }
 //
 val () =

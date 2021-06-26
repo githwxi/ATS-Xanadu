@@ -736,6 +736,32 @@ end // end of [fprint_v4aldecl]
 (* ****** ****** *)
 
 implement
+print_v4ardecl(x0) =
+fprint_v4ardecl(stdout_ref, x0)
+implement
+prerr_v4ardecl(x0) =
+fprint_v4ardecl(stderr_ref, x0)
+
+(* ****** ****** *)
+//
+implement
+fprint_v4ardecl
+  (out, x0) = let
+//
+val+V4ARDECL(rcd) = x0
+//
+in
+  fprint!
+  ( out
+  , "V4ARDECL@{"
+  , ", wth=", rcd.wth
+  , ", res=", rcd.res
+  , ", ini=", rcd.ini, "}")
+end // end of [fprint_v4ardecl]
+//
+(* ****** ****** *)
+
+implement
 print_f4undecl(x0) =
 fprint_f4undecl(stdout_ref, x0)
 implement

@@ -451,7 +451,11 @@ f3undeclist = $D3E.f3undeclist
 typedef
 v3aldecl = $D3E.v3aldecl
 typedef
+v3ardecl = $D3E.v3ardecl
+typedef
 v3aldeclist = $D3E.v3aldeclist
+typedef
+v3ardeclist = $D3E.v3ardeclist
 
 (* ****** ****** *)
 
@@ -461,12 +465,16 @@ typedef
 f4undeclist = $D4E.f4undeclist
 
 (* ****** ****** *)
-
+//
 typedef
 v4aldecl = $D4E.v4aldecl
 typedef
+v4ardecl = $D4E.v4ardecl
+typedef
 v4aldeclist = $D4E.v4aldeclist
-
+typedef
+v4ardeclist = $D4E.v4ardeclist
+//
 (* ****** ****** *)
 //
 fun
@@ -485,7 +493,7 @@ trans34_fundeclist
 ! tr34env, f3ds: f3undeclist): f4undeclist
 
 (* ****** ****** *)
-
+//
 fun
 trans34_valdecl
 ( env0:
@@ -494,7 +502,16 @@ fun
 trans34_valdeclist
 ( env0:
 ! tr34env, v3ds: v3aldeclist): v4aldeclist
-
+//
+fun
+trans34_vardecl
+( env0:
+! tr34env, v3d0: v3ardecl): v4ardecl
+fun
+trans34_vardeclist
+( env0:
+! tr34env, v3ds: v3ardeclist): v4ardeclist
+//
 (* ****** ****** *)
 //
 // HX-2021-02-20:
