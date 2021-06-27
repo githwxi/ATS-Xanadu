@@ -2087,10 +2087,10 @@ _(*else-of-d4exp*) => None_vt(*void*)
 ) where
 {
 //
-  val () =
-  println!("auxs2e2: d4e1 = ", d4e1)
-  val () =
-  println!("auxs2e2: s2e2 = ", s2e2)
+val () =
+println!("auxs2e2: d4e1 = ", d4e1)
+val () =
+println!("auxs2e2: s2e2 = ", s2e2)
 //
 } (*where*) // end of [auxs2e2]
 (* ****** ****** *)
@@ -2155,6 +2155,12 @@ end else the_s2exp_none0(*void*)
 |
 _(*non-S2Eapp*) => the_s2exp_none0
 ) (* end of [auxloc] *)
+//
+val () =
+println!("auxs2at: d2w1 = ", d2w1)
+val () =
+println!("auxs2at: selt = ", selt)
+//
 } (*where*) // end of [auxs2at]
 (* ****** ****** *)
 fun
