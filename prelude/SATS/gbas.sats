@@ -56,6 +56,10 @@ fun
 <a:vt>
 g_copy(x: !(a)): (a)
 //
+fun
+<a:vt>
+g_updt(x: &a >> _): void
+//
 (* ****** ****** *)
 //
 fun
@@ -264,6 +268,9 @@ foreach0$work(x0: ~x0): void
 fun
 <x0:vt>
 foreach1$work(x0: !x0): void
+fun
+<x0:vt>
+foreach2$work(x0: &x0 >> _): void
 
 (* ****** ****** *)
 //

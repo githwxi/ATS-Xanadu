@@ -2687,17 +2687,17 @@ case+
 s2e2.node() of
 //
 |
-S2Eatx
-(s2e2, _) =>
-auxs2e2(s2e2)
-//
-|
 //
 // HX: CBRF = ~1
 S2Earg
 (knd, _) => (knd < 0)
 //
-| _(* else *) => false
+|
+S2Eatx
+(s2e2, _) => auxs2e2(s2e2)
+//
+|
+_(*else-of-s2exp*) => false
 )
 }
 | _ (*non-D3Pvar*) => false
@@ -2789,35 +2789,31 @@ case+
 s2e2.node() of
 //
 |
-S2Eatx
-(s2e2, _) =>
-auxs2e2(s2e2)
-//
-|
 S2Earg
 (_, s2e2) => s2e2
-//
-| _(*else*) => s2e2
-)
-} (* end of [D3Panno] *)
 |
-_(*non-D3Panno*) =>
+S2Eatx
+(s2e2, _) => auxs2e2(s2e2)
+//
+|
+_(*else-of-s2exp*) => s2e2
+)
+} (*whr*)// end-of-D3Panno
+|
+_(* non-D3Panno *) =>
 let
-  val
-  t2p0 = d3p0.type()
+val t2p0 = d3p0.type()
 in
-  sexpize_env(env0, t2p0)
-end
+sexpize_env(env0, t2p0) end
 ) : s2exp // end of [val]
 //
 val d3p1 =
 (
 case+
 d3p0.node() of
-|
-D3Panno
-(d3p1, s1e2, s2e2) => d3p1
-| _(*non-D3Panno*) => d3p0
+| D3Panno
+  (d3p1, s1e2, s2e2) => d3p1
+| _(* non-D3Panno *) => d3p0
 ) : d3pat // end of [val]
 //
 in(*in-of-let*)
