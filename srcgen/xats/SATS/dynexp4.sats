@@ -486,7 +486,9 @@ for the meaning of knd
 and
 updterr =
 | UPDTERRnone of ()
-| UPDTERRsome of
+| UPDTERRdvar of
+  (d2var(*d2w1*), s2exp) // update failure
+| UPDTERRdexp of
   (d4exp(*lval*), s2exp) // update failure
 (* ****** ****** *)
 //
