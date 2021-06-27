@@ -2000,10 +2000,20 @@ s2e0 = s2exp_type_void()
 (*
 val
 s2e1 = d4e1.sexp((*void*))
+val
+s2e2 = d4e2.sexp((*void*))
 val () =
 println!
 ("aux_assgn: s2e1 = ", s2e1)
+val () =
+println!
+("aux_assgn: s2e2 = ", s2e2)
 *)
+//
+val
+err3 =
+auxupdt
+(env0, d4e1, d4e2.sexp())
 //
 val
 d4e1 = d4exp_leakify(d4e1)
@@ -2012,8 +2022,22 @@ in
 d4exp_make_node
 ( loc0
 , s2e0
-, t2p0, D4Eassgn(d4e1, d4e2) )
-end (*let*) // end of [aux_assgn]
+, t2p0, D4Eassgn(d4e1, d4e2, err3))
+end where
+{
+fun
+auxupdt
+( env0
+: !tr34env
+, d4e1: d4exp
+, s2e2: s2exp): updterr =
+(
+case+
+d4e1.node() of
+|
+_(* else *) => UPDTERRsome(d4e1, s2e2)
+)
+} (*where*) // end of [aux_assgn]
 
 (* ****** ****** *)
 
@@ -2825,7 +2849,7 @@ auxcbrf(env0, d3p1, s2e1)
 else
 trans34_dpat_dntp(env0,d3p1,s2e1)
 //
-end // end of [auxarg0]
+end (*let*) // end of [auxarg0]
 (* ****** ****** *)
 fun
 auxargs
@@ -2849,7 +2873,6 @@ list_cons(d4p0, d4ps)
   val d4ps = auxargs( env0, d3ps )
 }
 ) (*where*) // end of [auxargs]
-
 (* ****** ****** *)
 
 in(*in-of-local*)
