@@ -508,6 +508,25 @@ case+ x0.node() of
   , "D4Edapq("
   , dapp, "; ", npf1, "; ", d4es, ")")
 //
+| D4Eproj
+  (d4e1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "D4Eproj("
+  , d4e1, "; ", lab2, "; ", idx2, ")")
+| D4Eplft
+  (d4e1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "D4Eplft("
+  , d4e1, "; ", lab2, "; ", idx2, ")")
+| D4Epptr
+  (d4e1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "D4Epptr("
+  , d4e1, "; ", lab2, "; ", idx2, ")")
+//
 | D4Elet
   ( dcls, d4e1) =>
   fprint!

@@ -6,6 +6,14 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 fun
+foo
+( xy:
+& ( int
+  , int) >> _
+) : int = xy.0 + xy.1
+////
+(* ****** ****** *)
+fun
 <a:vt>
 foo
 (x0: &a >> _, x1: a): a =
