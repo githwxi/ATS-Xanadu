@@ -608,12 +608,17 @@ case+ x0 of
 |
 UPDTERRnone() =>
 fprint!
-(out, "UPDTERRsome(", ")")
+(out, "UPDTERRnone(", ")")
 |
-UPDTERRsome(d4e1, s2e2) =>
+UPDTERRdvar(d2w1, selt) =>
 fprint!
 ( out
-, "UPDTERRsome(", d4e1, "; ", s2e2, ")")
+, "UPDTERRdvar(", d2w1, "; ", selt, ")")
+|
+UPDTERRdexp(d4e1, s2e2) =>
+fprint!
+( out
+, "UPDTERRdexp(", d4e1, "; ", s2e2, ")")
 )
 (* ****** ****** *)
 //

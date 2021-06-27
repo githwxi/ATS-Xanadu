@@ -2025,20 +2025,178 @@ d4exp_make_node
 , t2p0, D4Eassgn(d4e1, d4e2, err3))
 end where
 {
+(* ****** ****** *)
 fun
-auxupdt
-( env0
-: !tr34env
-, d4e1: d4exp
-, s2e2: s2exp): updterr =
+auxd2w1
+( d4e1
+: d4exp)
+: Option_vt(d2var) =
 (
 case+
 d4e1.node() of
 |
-_(* else *) => UPDTERRsome(d4e1, s2e2)
+D4Evar(d2v1) =>
+(
+case+
+d2v1.atprf() of
+|
+None() => None_vt()
+|
+Some(d2w1) => Some_vt(d2w1)
 )
-} (*where*) // end of [aux_assgn]
-
+|
+D4Etalf(d4e1) => auxd2w1(d4e1)
+|
+D4Eflat(d4e1) => auxd2w1(d4e1)
+//
+|
+_(*else-of-d4exp*) => None_vt(*void*)
+//
+) where
+{
+//
+  val () =
+  println!("auxd2w1: d4e1 = ", d4e1)
+//
+} (*where*) // end of [auxd2w1]
+(* ****** ****** *)
+fun
+auxs2e2
+( d4e1
+: d4exp
+, s2e2
+: s2exp)
+: Option_vt(s2exp) =
+(
+case+
+d4e1.node() of
+//
+|
+D4Evar _ => Some_vt(s2e2)
+//
+|
+D4Etalf
+( d4e1 ) => auxs2e2(d4e1, s2e2)
+|
+D4Eflat
+( d4e1 ) => auxs2e2(d4e1, s2e2)
+//
+|
+_(*else-of-d4exp*) => None_vt(*void*)
+//
+) where
+{
+//
+  val () =
+  println!("auxs2e2: d4e1 = ", d4e1)
+  val () =
+  println!("auxs2e2: s2e2 = ", s2e2)
+//
+} (*where*) // end of [auxs2e2]
+(* ****** ****** *)
+fun
+auxs2at
+( env0
+: !tr34env
+, d2w1
+: d2var
+, selt
+: s2exp): updterr =
+let
+val
+s2at =
+tr34env_d2var_get_sexp
+(env0, d2w1)
+val s2l1 =
+auxloc(s2at)
+in
+case+
+s2l1.node() of
+|
+S2Enone0() =>
+UPDTERRdvar(d2w1, selt)
+|
+_(*non-S2Enone0*) =>
+(
+UPDTERRnone((*void*))
+) where
+{
+val
+s2at =
+s2exp_at0(selt, s2l1)
+val () =
+tr34env_add_dvar_sexp
+(env0, d2w1, s2at(*atvw*))
+}
+end where
+{
+fun
+auxloc
+(s2at: s2exp): s2exp =
+(
+case+
+s2at.node() of
+|
+S2Eapp
+(s2f0, s2es) =>
+(
+if
+s2exp_is_a0ptr(s2f0)
+then
+let
+val-
+list_cons
+(_, s2es) = s2es
+val-
+list_cons
+(s2l1, _) = s2es in s2l1
+end else the_s2exp_none0(*void*)
+)
+|
+_(*non-S2Eapp*) => the_s2exp_none0
+) (* end of [auxloc] *)
+} (*where*) // end of [auxs2at]
+(* ****** ****** *)
+fun
+auxupdt
+( env0
+: !tr34env
+, d4e1
+: d4exp
+, s2e2
+: s2exp): updterr =
+let
+val
+opt1 = auxd2w1(d4e1)
+in
+case+ opt1 of
+| ~
+Some_vt(d2w1) =>
+let
+(*
+val
+opt2 = None_vt{s2exp}()
+*)
+val
+opt2 = auxs2e2(d4e1, s2e2)
+in
+//
+case+ opt2 of
+| ~
+Some_vt
+( selt ) =>
+auxs2at(env0, d2w1, selt)
+| ~
+None_vt
+((*void*)) => UPDTERRdexp(d4e1, s2e2)
+//
+end // end of [Some_vt]
+| ~
+None_vt
+((*void*)) => UPDTERRdexp(d4e1, s2e2)
+end // end of [let]
+(* ****** ****** *)
+} (*where*) // end of [auxupdt]
 (* ****** ****** *)
 
 fun
