@@ -2641,6 +2641,127 @@ end
 
 local
 
+(* ****** ****** *)
+fun
+auxwth
+( d2v
+: d2var): d2var =
+let
+//
+val sym = d2v.sym()
+val nam = sym.name()
+val nam =
+strptr2string
+(string_append("@", nam))
+//
+val sym = symbol_make(nam)
+//
+in
+  d2var_new2(d2v.loc(), sym)
+end (*let*) // end of [auxwth]
+(* ****** ****** *)
+fun
+iscbrf
+( d3p0
+: d3pat): bool =
+(
+case+
+d3p0.node() of
+|
+D3Panno
+( d3p1
+, s1e2, s2e2) =>
+(
+case+
+d3p1.node() of
+|
+D3Pvar _ =>
+auxs2e2(s2e2) where
+{
+fun
+auxs2e2
+( s2e2
+: s2exp): bool =
+(
+case+
+s2e2.node() of
+//
+|
+S2Eatx
+(s2e2, _) =>
+auxs2e2(s2e2)
+//
+|
+//
+// HX: CBRF = ~1
+S2Earg
+(knd, _) => (knd < 0)
+//
+| _(* else *) => false
+)
+}
+| _ (*non-D3Pvar*) => false
+)
+| _ (*non-D3Panno*) => false
+) where
+{
+//
+(*
+val () =
+println!
+( "iscbrf: d3p0 = ", d3p0 )
+*)
+//
+} (*where*) // end of [iscbrf]
+(* ****** ****** *)
+fun
+auxcbrf
+( env0:
+! tr34env
+, d3p0
+: d3pat
+, s2e1
+: s2exp): d4pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+//
+val-
+D3Pvar
+(d2v0) = d3p0.node()
+//
+val
+s2v0 =
+s2var_new
+(the_sort2_addr)
+val
+d2w1 = auxwth(d2v0)
+//
+val
+s2l0 = s2exp_var(s2v0)
+val () =
+d2var_set_saddr(d2v0, s2l0)
+val ( ) =
+d2var_set_atprf(d2v0, d2w1)
+//
+val
+s2at = s2exp_at0(s2e1, s2l0)
+//
+in
+d4pat_make_node
+( loc0
+, s2e1
+, t2p0, D4Pvar(d2v0)) where
+{
+val () =
+tr34env_add_dvar_sexp(env0, d2w1, s2at)
+}
+end (*let*) // end of [auxcbrf]
+(* ****** ****** *)
+
 fun
 auxarg0
 ( env0:
@@ -2648,6 +2769,7 @@ auxarg0
 , d3p0
 : d3pat): d4pat =
 let
+//
 val s2e1 =
 (
 case+
@@ -2687,6 +2809,7 @@ in
   sexpize_env(env0, t2p0)
 end
 ) : s2exp // end of [val]
+//
 val d3p1 =
 (
 case+
@@ -2696,9 +2819,18 @@ D3Panno
 (d3p1, s1e2, s2e2) => d3p1
 | _(*non-D3Panno*) => d3p0
 ) : d3pat // end of [val]
-in
+//
+in(*in-of-let*)
+//
+if
+iscbrf(d3p0)
+then
+auxcbrf(env0, d3p1, s2e1)
+else
 trans34_dpat_dntp(env0,d3p1,s2e1)
+//
 end // end of [auxarg0]
+(* ****** ****** *)
 fun
 auxargs
 ( env0:
@@ -2721,6 +2853,8 @@ list_cons(d4p0, d4ps)
   val d4ps = auxargs( env0, d3ps )
 }
 ) (*where*) // end of [auxargs]
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 

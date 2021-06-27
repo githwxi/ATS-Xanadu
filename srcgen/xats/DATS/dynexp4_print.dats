@@ -421,6 +421,10 @@ case+ x0.node() of
 //
 | D4Evar(d2v) =>
   fprint!(out, "D4Evar(", d2v, ")")
+(*
+| D4Evmut(d2v) =>
+  fprint!(out, "D4Evmut(", d2v, ")")
+*)
 | D4Ekvar(knd0, d2v1) =>
   fprint!
   ( out

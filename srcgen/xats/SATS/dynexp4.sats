@@ -381,6 +381,11 @@ d4exp_node =
 | D4Etop of (token)
 //
 | D4Evar of (d2var)
+//
+(*
+| D4Evmut of (d2var)
+*)
+//
 (*
 HX-2021-03:
 For trans3x:
