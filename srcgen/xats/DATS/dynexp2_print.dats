@@ -820,16 +820,18 @@ fprint_d2ecl(stderr_ref, x0)
 (* ****** ****** *)
 
 local
-
+//
 implement
 fprint_val<d2ecl> = fprint_d2ecl
-implement
-fprint_val<f2undecl> = fprint_f2undecl
+//
 implement
 fprint_val<v2aldecl> = fprint_v2aldecl
 implement
 fprint_val<v2ardecl> = fprint_v2ardecl
-
+//
+implement
+fprint_val<f2undecl> = fprint_f2undecl
+//
 in (* in-of-local *)
 
 implement

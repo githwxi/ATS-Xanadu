@@ -64,6 +64,9 @@ d2cst_struct = @{
 //
   d2cst_loc= loc_t // loc
 , d2cst_sym= sym_t // name
+//
+, d2cst_kind= tnode // kind
+//
 , d2cst_tqas= tq2as // tqas
 , d2cst_sexp= s2exp // sexp
 , d2cst_type= t2ype // type
@@ -86,28 +89,32 @@ val
 d2c0 =
 ref<d2cst_struct>
 @{
-  d2cst_loc= loc
-, d2cst_sym= sym
+//
+  d2cst_loc= loc0
+, d2cst_sym= sym1
+//
+, d2cst_kind= kvar
+//
 , d2cst_tqas= tqas
 , d2cst_sexp= s2e1
 , d2cst_type= t2p2
 , d2cst_stamp= stamp
 }
-val () =
-stamp_d2cst_kind(d2c0, knd0)
+//
 val () =
 stamp_d2cst_xknd(d2c0, X2KNDnone)
 val () =
 stamp_d2cst_xnam(d2c0, X2NAMnone)
+//
 }
 ) where
 {
 //
-  val loc =
+  val loc0 =
     d2var_get_loc(d2v0)
-  val sym =
+  val sym1 =
     d2var_get_sym(d2v0)
-  val knd0 =
+  val kvar =
     d2var_get_kind(d2v0)
   val tqas =
     d2var_get_tqas(d2v0)
@@ -138,8 +145,8 @@ stamp_d2cst_xnam(d2c0, X2NAMnone)
 
 implement
 d2cst_make_idtp
-( tok
-, knd0
+( tok0
+, kcst
 , tqas, s2e1) =
 (
 ( d2c0 ) where
@@ -148,25 +155,29 @@ val
 d2c0 =
 ref<d2cst_struct> 
 @{
-  d2cst_loc= loc
-, d2cst_sym= sym
+//
+  d2cst_loc= loc0
+, d2cst_sym= sym1
+//
+, d2cst_kind= kcst
+//
 , d2cst_tqas= tqas
 , d2cst_sexp= s2e1
 , d2cst_type= t2p2
 , d2cst_stamp= stamp
 }
-val () =
-stamp_d2cst_kind(d2c0, knd0)
+//
 val () =
 stamp_d2cst_xknd(d2c0, X2KNDnone)
 val () =
 stamp_d2cst_xnam(d2c0, X2NAMnone)
+//
 }
 ) where
 {
 //
-  val loc = tok.loc()
-  val sym = dexpid_sym(tok)
+  val loc0 = tok0.loc()
+  val sym1 = dexpid_sym(tok0)
 //
   val t2p2 = s2exp_erase(s2e1)
 //
@@ -189,11 +200,15 @@ stamp_d2cst_xnam(d2c0, X2NAMnone)
 } (* d2cst_make_idtp *)
 
 (* ****** ****** *)
-
+//
 implement
 d2cst_get_loc(x0) = x0->d2cst_loc
 implement
 d2cst_get_sym(x0) = x0->d2cst_sym
+//
+implement
+d2cst_get_kind(x0) = x0->d2cst_kind
+//
 implement
 d2cst_get_tqas(x0) = x0->d2cst_tqas
 implement
@@ -266,81 +281,6 @@ case+ xs of
 )
 //
 } (* end of [d2cst_get_s2vs] *)
-
-(* ****** ****** *)
-
-local
-//
-#staload
-"libats/SATS/dynarray.sats"
-#staload _ =
-"libats/DATS/dynarray.dats"
-//
-typedef itm = tnode
-vtypedef dynarray = dynarray(itm)
-//
-val
-theDynarr = 
-dynarray_make_nil<itm>(i2sz(ND2CST))
-val
-theDynarr = $UN.castvwtp0{ptr}(theDynarr)
-//
-in (* in-of-local *)
-
-implement
-d2cst_get_kind
-  (d2c) = let
-//
-  val s0 =
-  d2c.stamp()
-  val i0 =
-  stamp2uint(s0)
-  val i0 =
-  u2sz(g1ofg0(i0))
-  val A0 =
-  $UN.castvwtp0{dynarray}(theDynarr)
-  val cp = dynarray_getref_at(A0, i0)
-  prval ((*void*)) = $UN.cast2void(A0)
-//
-in
-//
-if isneqz(cp)
-  then $UN.p2tr_get(cp) else $LEX.T_EOF()
-//
-end // end of [d2cst_get_kind]
-
-(* ****** ****** *)
-
-implement
-stamp_d2cst_kind
-  (d2c, knd) = let
-//
-(*
-val () =
-println!
-("stamp_d2cst_kind: d2c = ", d2c)
-val () =
-println!
-("stamp_d2cst_kind: knd = ", knd)
-*)
-//
-  val s0 =
-  d2c.stamp()
-  val i0 =
-  stamp2uint(s0)
-  val i0 =
-  u2sz(g1ofg0(i0))
-  val A0 =
-  $UN.castvwtp0{dynarray}(theDynarr)
-  val-
-  ~None_vt() =
-  dynarray_insert_at_opt(A0, i0, knd)
-  prval ((*void*)) = $UN.cast2void(A0)
-in
-  // nothing
-end // end of [stamp_d2cst_kind]
-
-end // end of [local]
 
 (* ****** ****** *)
 

@@ -456,8 +456,10 @@ d2cst_make_idtp
 , knd: tnode
 , tqas: tq2as, s2e1: s2exp): d2cst
 //
+(*
 fun
 stamp_d2cst_kind(d2cst, tnode): void
+*)
 //
 fun
 stamp_d2cst_xknd(d2cst, x2knd): void
@@ -474,9 +476,13 @@ d2var_new2
 //
 fun
 d2var_make_idvk
-(loc_t, sym_t, knd: tnode): d2var
+( loc0: loc_t
+, sym1: sym_t, knd: tnode): d2var
+//
 fun
-stamp_d2var_kind(d2var, tnode): void
+stamp_d2var_saddr(d2v0: d2var): void
+fun
+stamp_d2var_atprf(d2v0: d2var): void
 //
 (* ****** ****** *)
 //

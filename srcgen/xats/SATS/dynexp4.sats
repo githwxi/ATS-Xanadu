@@ -698,6 +698,8 @@ v4ardecl =
 V4ARDECL of @{
   loc= loc_t
 , d2v= d2var
+, d2w= d2var
+, s2e= s2exp
 , wth= d2varopt
 , res= s2expopt
 , ini= d4expopt

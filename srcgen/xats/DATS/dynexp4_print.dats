@@ -677,9 +677,12 @@ fprint_d4ecl(stderr_ref, x0)
 local
 //
 implement
-fprint_val<f4undecl> = fprint_f4undecl
-implement
 fprint_val<v4aldecl> = fprint_v4aldecl
+implement
+fprint_val<v4ardecl> = fprint_v4ardecl
+//
+implement
+fprint_val<f4undecl> = fprint_f4undecl
 //
 in(*in-of-local*)
 //
@@ -694,6 +697,13 @@ D4Cvaldecl
 fprint!
 ( out, "D4Cvaldecl("
 , tok0, "; ", mopt, "; ", "; ", v4ds, ")")
+|
+D4Cvardecl
+(tok0, mopt, v4ds) =>
+fprint!
+( out, "D4Cvardecl("
+, tok0, "; ", mopt, "; ", "; ", v4ds, ")")
+//
 |
 D4Cfundecl
 (tok0, mopt, tqas, f4ds) =>
@@ -754,7 +764,12 @@ in
   fprint!
   ( out
   , "V4ARDECL@{"
+  , ", d2v=", rcd.d2v
+  , ", d2w=", rcd.d2w
+  , ", s2e=", rcd.s2e
+(*
   , ", wth=", rcd.wth
+*)
   , ", res=", rcd.res
   , ", ini=", rcd.ini, "}")
 end // end of [fprint_v4ardecl]

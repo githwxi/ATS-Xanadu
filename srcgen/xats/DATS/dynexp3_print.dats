@@ -831,16 +831,18 @@ prerr_d3ecl(x0) =
 fprint_d3ecl(stderr_ref, x0) 
 //
 local
-
+//
 implement
 fprint_val<d3ecl> = fprint_d3ecl
-implement
-fprint_val<f3undecl> = fprint_f3undecl
+//
 implement
 fprint_val<v3aldecl> = fprint_v3aldecl
 implement
 fprint_val<v3ardecl> = fprint_v3ardecl
-
+//
+implement
+fprint_val<f3undecl> = fprint_f3undecl
+//
 in(*in-of-local*)
 
 implement

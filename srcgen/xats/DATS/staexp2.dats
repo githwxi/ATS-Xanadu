@@ -781,6 +781,24 @@ s2exp_make_node
 (* ****** ****** *)
 //
 implement
+s2exp_at0
+(s2e(*elt*), s2l) =
+(
+s2exp_make_node
+(s2t, S2Eapp(s2f, arg))
+) where
+{
+val s2t =
+the_sort2_view
+val s2f = 
+s2cstref_get_sexp
+( the_a0p1tr_cview )
+val arg = list_pair(s2e, s2l)
+}
+//
+(* ****** ****** *)
+//
+implement
 s2exp_top(s2e) =
 (
 s2exp_make_node

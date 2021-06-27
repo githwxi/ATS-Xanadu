@@ -41,6 +41,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload "./../SATS/xbasics.sats"
+#staload "./../SATS/xsymbol.sats"
 
 (* ****** ****** *)
 
@@ -1092,13 +1093,35 @@ auxvar
 , d3e0: d3exp): d4exp =
 let
 //
+val-
+D3Evar(d2v0) = d3e0.node()
+//
+in
+//
+case+
+d2v0.atprf() of
+|
+None _ => auxvar0(env0, d3e0)
+|
+Some _ => auxvar1(env0, d3e0)
+//
+end // end of [auxvar]
+
+and
+auxvar0
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
 val
 loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 //
 val-
-D3Evar(d2v0) = d3e0.node()
+D3Evar
+(d2v0) = d3e0.node()
 //
 val
 s2e0 =
@@ -1107,10 +1130,10 @@ tr34env_d2var_get_sexp
 //
 val () =
 println!
-( "auxvar: d2v0 = ", d2v0 )
+( "auxvar0: d2v0 = ", d2v0 )
 val () =
 println!
-( "auxvar: s2e0 = ", s2e0 )
+( "auxvar0: s2e0 = ", s2e0 )
 //
 val () =
 let
@@ -1119,7 +1142,7 @@ s2t0=s2e0.sort()
 (*
 val () =
 println!
-( "auxvar: s2t0 = ", s2t0 )
+( "auxvar0: s2t0 = ", s2t0 )
 *)
 //
 in(*in-of-let*)
@@ -1135,7 +1158,126 @@ end // end of [val]
 in
 d4exp_make_node
 (loc0, s2e0, t2p0, D4Evar(d2v0))
-end (*let*) // end of [auxvar]
+end (*let*) // end of [auxvar0]
+
+and
+auxelt
+(s2at: s2exp): s2exp =
+(
+case+
+s2at.node() of
+|
+S2Eapp
+(s2f0, s2es) =>
+(
+if
+s2exp_is_a0ptr(s2f0)
+then
+let
+val-
+list_cons
+(s2e0, _) = s2es in s2e0
+end else the_s2exp_none0(*void*)
+)
+|
+_(*non-S2Eapp*) => the_s2exp_none0
+) (* end of [auxelt] *)
+
+and
+auxloc
+(s2at: s2exp): s2exp =
+(
+case+
+s2at.node() of
+|
+S2Eapp
+(s2f0, s2es) =>
+(
+if
+s2exp_is_a0ptr(s2f0)
+then
+let
+val-
+list_cons
+(_, s2es) = s2es
+val-
+list_cons
+(s2l1, _) = s2es in s2l1
+end else the_s2exp_none0(*void*)
+)
+|
+_(*non-S2Eapp*) => the_s2exp_none0
+) (* end of [auxloc] *)
+
+and
+auxvar1
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+val-
+D3Evar
+(d2v0) = d3e0.node()
+val-
+Some(d2w1) = d2v0.atprf()
+//
+val
+s2at =
+tr34env_d2var_get_sexp
+( env0, d2w1 )
+//
+val s2e0 = auxelt(s2at)
+val s2l1 = auxloc(s2at)
+//
+val () =
+println!
+( "auxvar1: d2w1 = ", d2w1 )
+val () =
+println!
+( "auxvar1: s2at = ", s2at )
+val () =
+println!
+( "auxvar1: s2e0 = ", s2e0 )
+val () =
+println!
+( "auxvar1: s2l1 = ", s2l1 )
+//
+val () =
+let
+val
+s2t0=s2e0.sort()
+(*
+val () =
+println!
+( "auxvar1: s2t0 = ", s2t0 )
+*)
+//
+in(*in-of-let*)
+//
+if
+sort2_islin(s2t0)
+then
+let
+val s2e0 = 
+s2exp_tpz(s2e0)
+val s2at =
+s2exp_at0(s2e0, s2l1)
+in
+tr34env_add_dvar_sexp
+(env0, d2w1, s2at(*atvw*)) end
+//
+end // end of [val]
+//
+in
+d4exp_make_node
+(loc0, s2e0, t2p0, D4Evar(d2v0))
+end (*let*) // end of [auxvar1]
 
 (* ****** ****** *)
 
@@ -3339,6 +3481,37 @@ end // end of [trans34_valdecl]
 //
 (* ****** ****** *)
 //
+local
+
+fun
+auxwth
+( d2v
+: d2var
+, wth
+: d2varopt): d2var =
+(
+case+ wth of
+|
+Some(d2w) => d2w
+|
+None((*void*)) => 
+let
+//
+val sym = d2v.sym()
+val nam = sym.name()
+val nam =
+strptr2string
+(string_append("@", nam))
+//
+val sym = symbol_make(nam)
+//
+in
+  d2var_new2(d2v.loc(), sym)
+end
+) (* end of [auxwth] *)
+
+in(*in-of-local*)
+//
 implement
 trans34_vardecl
 ( env0, v3d0 ) =
@@ -3353,6 +3526,18 @@ val wth = rcd.wth
 val res = rcd.res
 val ini = rcd.ini
 //
+val s2v =
+s2var_new
+(the_sort2_addr)
+val s2l = s2exp_var(s2v)
+val ( ) =
+d2var_set_saddr(d2v, s2l)
+//
+val d2w =
+auxwth(d2v, wth)
+val ( ) =
+d2var_set_atprf(d2v, d2w)
+//
 val ini =
 (
 case+ ini of
@@ -3360,29 +3545,74 @@ case+ ini of
 None() => None()
 |
 Some(d3e) =>
+Some
+(trans34_dexp(env0, d3e))
+) : d4expopt // end-of-val
+//
+val s2e =
 (
 case+ res of
 |
-None() =>
-Some(trans34_dexp(env0, d3e))
+Some(s2e) => s2e
 |
-Some(s2e) =>
-Some
-(trans34_dexp_dntp(env0, d3e, s2e))
-)
-) : d4expopt // end-of-val
+None((*void*)) =>
+let
+val
+t2p = d2v.type()
+val-
+T2Plft(t2p) = t2p.node()
+in
+//
+t2ype_sexpize_env
+( env0, t2ype_eval(t2p) )
+//
+end) : s2exp // end-of-val
 //
 in(*in-of-let*)
 //
 V4ARDECL@{
   loc= loc
 , d2v= d2v
+, d2w= d2w
+, s2e= s2e
 , wth= wth
 , res= res, ini= ini
 //
-} (* end of [V4ALDECL] *)
+} where
+{
 //
-end // end of [trans34_vardecl]
+val () =
+tr34env_add_dvar(env0, d2w)
+//
+val () =
+(
+case+ ini of
+|
+None() =>
+let
+val
+s2e = s2exp_top(s2e)
+val
+s2at = s2exp_at0(s2e, s2l)
+in
+tr34env_add_dvar_sexp(env0, d2w, s2at)
+end
+|
+Some(d4e) =>
+let
+val s2e = d4e.sexp()
+val
+s2at = s2exp_at0(s2e, s2l)
+in
+tr34env_add_dvar_sexp(env0, d2w, s2at)
+end
+) : void // end of [val]
+//
+} (*where*) // end of [V4ALDECL]
+//
+end (*let*) // end of [trans34_vardecl]
+//
+end // end of [local]
 //
 (* ****** ****** *)
 //
