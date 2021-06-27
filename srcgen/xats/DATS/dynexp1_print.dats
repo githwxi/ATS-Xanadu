@@ -807,12 +807,15 @@ implement
 fprint_val<d1ecl> = fprint_d1ecl
 implement
 fprint_val<g1marg> = fprint_g1marg
-implement
-fprint_val<f1undecl> = fprint_f1undecl
+//
 implement
 fprint_val<v1aldecl> = fprint_v1aldecl
 implement
 fprint_val<v1ardecl> = fprint_v1ardecl
+//
+implement
+fprint_val<f1undecl> = fprint_f1undecl
+//
 implement
 fprint_val<d1cstdecl> = fprint_d1cstdecl
 

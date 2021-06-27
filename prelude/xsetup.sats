@@ -96,7 +96,13 @@ the_llazy_ctype(a:vt) = lazy_vt(a)
 //
 (* ****** ****** *)
 //
-vwtpdef the_excptn_ctype = excptn_vt
+vwtpdef
+the_excptn_ctype(*void*) = excptn_vt
+//
+(* ****** ****** *)
+//
+viewdef
+the_a0p1tr_cview(*void*) = a0ptr_view
 //
 (* ****** ****** *)
 

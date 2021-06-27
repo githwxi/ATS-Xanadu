@@ -169,6 +169,29 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
+s2exp_is_a0ptr
+  (s2e0) =
+(
+case+
+s2e0.node() of
+|
+S2Ecst(s2c1) =>
+let
+val s2c0 =
+the_a0ptr_view.scst()
+in
+eq_s2cst_s2cst(s2c0, s2c1)
+end
+| _(*non-S2Ecst*) => false
+)
+//
+implement
+the_a0ptr_view =
+s2cstref_make_name("a0ptr_view")
+//
+(* ****** ****** *)
+//
+implement
 the_p2tr_tbox =
 s2cstref_make_name("p2tr_tbox")
 //
@@ -292,18 +315,22 @@ s2cstref_make_name("the_string0_ctype")
 (* ****** ****** *)
 
 implement
-the_excptn_ctype =
-s2cstref_make_name("the_excptn_ctype")
-
-(* ****** ****** *)
-
-implement
 the_lazy_ctype =
 s2cstref_make_name("the_lazy_ctype")
 implement
 the_llazy_ctype =
 s2cstref_make_name("the_llazy_ctype")
 
+(* ****** ****** *)
+implement
+the_excptn_ctype =
+s2cstref_make_name( "the_excptn_ctype" )
+(* ****** ****** *)
+//
+implement
+the_a0p1tr_cview =
+s2cstref_make_name( "the_a0p1tr_cview" )
+//
 (* ****** ****** *)
 
 (* end of [xats_staexp2_init0.dats] *)
