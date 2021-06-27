@@ -438,6 +438,16 @@ for the meaning of knd
 | D4Edapq of
   (d4exp, int(*npf*), d4explst)
 //
+| D4Eproj of
+  (d4exp(*flt*),
+   label(*proj*), int(*index*))
+| D4Eplft of
+  (d4exp(*flt*),
+   label(*proj*), int(*index*))
+| D4Epptr of
+  (d4exp(*ptr*),
+   label(*proj*), int(*index*))
+//
 | D4Elet of
   (d4eclist, d4exp(*sequence*))
 | D4Ewhere of (d4exp, d4eclist)
