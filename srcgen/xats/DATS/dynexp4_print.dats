@@ -526,10 +526,11 @@ case+ x0.node() of
   , "D4Eseqn(", d4es, "; ", d4e2, ")")
 //
 | D4Eassgn
-  (d4e1, d4e2) =>
+  (d4e1, d4e2, err3) =>
   fprint!
   ( out
-  , "D4Eassgn(", d4e1, "; ", d4e2, ")")
+  , "D4Eassgn("
+  , d4e1, "; ", d4e2, "; ", err3, ")")
 //
 | D4Eif0
   (d4e1, d4e2, opt3) =>
@@ -592,13 +593,36 @@ case+ x0.node() of
 ) (*val*) } (*where*) (* end of [fprint_d4exp] *)
 //
 (* ****** ****** *)
+implement
+print_updterr(x0) =
+fprint_updterr(stdout_ref, x0)
+implement
+prerr_updterr(x0) =
+fprint_updterr(stderr_ref, x0)
+(* ****** ****** *)
+implement
+fprint_updterr
+  (out, x0) =
+(
+case+ x0 of
+|
+UPDTERRnone() =>
+fprint!
+(out, "UPDTERRsome(", ")")
+|
+UPDTERRsome(d4e1, s2e2) =>
+fprint!
+( out
+, "UPDTERRsome(", d4e1, "; ", s2e2, ")")
+)
+(* ****** ****** *)
 //
 implement
 print_d4gua(x0) =
-fprint_d4gua(stdout_ref, x0)
+fprint_d4gua( stdout_ref, x0 )
 implement
 prerr_d4gua(x0) =
-fprint_d4gua(stderr_ref, x0)
+fprint_d4gua( stderr_ref, x0 )
 //
 implement
 fprint_d4gua

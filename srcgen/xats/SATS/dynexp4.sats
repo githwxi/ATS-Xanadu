@@ -448,7 +448,8 @@ for the meaning of knd
   )
 //
 | D4Eassgn of
-  ( d4exp(*lval*), d4exp(*rval*) )
+  ( d4exp(*lval*)
+  , d4exp(*rval*), updterr(*error*))
 //
 | D4Eif0 of
   ( d4exp
@@ -481,6 +482,12 @@ for the meaning of knd
 | D4Enone0 of ()
 | D4Enone1 of (d3exp) | D4Enone2 of (d4exp)
 //
+(* ****** ****** *)
+and
+updterr =
+| UPDTERRnone of ()
+| UPDTERRsome of
+  (d4exp(*lval*), s2exp) // update failure
 (* ****** ****** *)
 //
 fun
@@ -549,6 +556,19 @@ fprint_d4exp: fprint_type(d4exp)
 overload print with print_d4exp
 overload prerr with prerr_d4exp
 overload fprint with fprint_d4exp
+//
+(* ****** ****** *)
+//
+fun
+print_updterr: print_type(updterr)
+fun
+prerr_updterr: prerr_type(updterr)
+fun
+fprint_updterr: fprint_type(updterr)
+//
+overload print with print_updterr
+overload prerr with prerr_updterr
+overload fprint with fprint_updterr
 //
 (* ****** ****** *)
 //
