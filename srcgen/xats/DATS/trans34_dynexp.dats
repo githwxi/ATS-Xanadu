@@ -2012,7 +2012,7 @@ println!
 //
 val
 err3 =
-auxupdt
+auxupdtd
 (env0, d4e1, d4e2.sexp())
 //
 val
@@ -2098,10 +2098,8 @@ fun
 auxs2at
 ( env0
 : !tr34env
-, d2w1
-: d2var
-, selt
-: s2exp): updterr =
+, d2w1: d2var
+, selt: s2exp): d4err =
 let
 val
 s2at =
@@ -2114,12 +2112,11 @@ case+
 s2l1.node() of
 |
 S2Enone0() =>
-UPDTERRdvar(d2w1, selt)
+D4ERRupdtd1(d2w1, selt)
 |
 _(*non-S2Enone0*) =>
 (
-UPDTERRnone((*void*))
-) where
+D4ERRnone(*void*)) where
 {
 val
 s2at =
@@ -2164,13 +2161,11 @@ println!("auxs2at: selt = ", selt)
 } (*where*) // end of [auxs2at]
 (* ****** ****** *)
 fun
-auxupdt
+auxupdtd
 ( env0
 : !tr34env
-, d4e1
-: d4exp
-, s2e2
-: s2exp): updterr =
+, d4e1: d4exp
+, s2e2: s2exp): d4err =
 let
 val
 opt1 = auxd2w1(d4e1)
@@ -2179,13 +2174,11 @@ case+ opt1 of
 | ~
 Some_vt(d2w1) =>
 let
-(*
-val
-opt2 = None_vt{s2exp}()
-*)
+//
 val
 opt2 = auxs2e2(d4e1, s2e2)
-in
+//
+in(*in-of-let*)
 //
 case+ opt2 of
 | ~
@@ -2194,12 +2187,12 @@ Some_vt
 auxs2at(env0, d2w1, selt)
 | ~
 None_vt
-((*void*)) => UPDTERRdexp(d4e1, s2e2)
+((*void*)) => D4ERRupdtd0()
 //
 end // end of [Some_vt]
 | ~
 None_vt
-((*void*)) => UPDTERRdexp(d4e1, s2e2)
+((*void*)) => D4ERRupdtd0()
 end // end of [let]
 (* ****** ****** *)
 } (*where*) // end of [auxupdt]

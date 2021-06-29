@@ -550,6 +550,12 @@ case+ x0.node() of
   ( out
   , "D4Eassgn("
   , d4e1, "; ", d4e2, "; ", err3, ")")
+| D4Eupdtd
+  (d4e1, s2e2, err3) =>
+  fprint!
+  ( out
+  , "D4Eupdtd("
+  , d4e1, "; ", s2e2, "; ", err3, ")")
 //
 | D4Eif0
   (d4e1, d4e2, opt3) =>
@@ -613,31 +619,32 @@ case+ x0.node() of
 //
 (* ****** ****** *)
 implement
-print_updterr(x0) =
-fprint_updterr(stdout_ref, x0)
+print_d4err(x0) =
+fprint_d4err(stdout_ref, x0)
 implement
-prerr_updterr(x0) =
-fprint_updterr(stderr_ref, x0)
+prerr_d4err(x0) =
+fprint_d4err(stderr_ref, x0)
 (* ****** ****** *)
 implement
-fprint_updterr
+fprint_d4err
   (out, x0) =
 (
 case+ x0 of
 |
-UPDTERRnone() =>
+D4ERRnone() =>
 fprint!
-(out, "UPDTERRnone(", ")")
+(out, "D4ERRnone(", ")")
+//
 |
-UPDTERRdvar(d2w1, selt) =>
+D4ERRupdtd0() =>
+fprint!
+(out, "D4ERRupdtd0(", ")")
+|
+D4ERRupdtd1(d2w1, selt) =>
 fprint!
 ( out
-, "UPDTERRdvar(", d2w1, "; ", selt, ")")
-|
-UPDTERRdexp(d4e1, s2e2) =>
-fprint!
-( out
-, "UPDTERRdexp(", d4e1, "; ", s2e2, ")")
+, "D4ERRupdtd1(", d2w1, "; ", selt, ")")
+//
 )
 (* ****** ****** *)
 //

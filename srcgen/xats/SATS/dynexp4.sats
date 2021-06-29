@@ -458,8 +458,11 @@ for the meaning of knd
   )
 //
 | D4Eassgn of
-  ( d4exp(*lval*)
-  , d4exp(*rval*), updterr(*error*))
+  ( d4exp(*l-val*)
+  , d4exp(*r-val*), d4err(*error*))
+| D4Eupdtd of
+  ( d4exp(*l-val*)
+  , s2exp(*r-val*), d4err(*error*))
 //
 | D4Eif0 of
   ( d4exp
@@ -494,12 +497,11 @@ for the meaning of knd
 //
 (* ****** ****** *)
 and
-updterr =
-| UPDTERRnone of ()
-| UPDTERRdvar of
+d4err =
+| D4ERRnone of ()
+| D4ERRupdtd0 of ()
+| D4ERRupdtd1 of
   (d2var(*d2w1*), s2exp) // update failure
-| UPDTERRdexp of
-  (d4exp(*lval*), s2exp) // update failure
 (* ****** ****** *)
 //
 fun
@@ -572,15 +574,15 @@ overload fprint with fprint_d4exp
 (* ****** ****** *)
 //
 fun
-print_updterr: print_type(updterr)
+print_d4err: print_type(d4err)
 fun
-prerr_updterr: prerr_type(updterr)
+prerr_d4err: prerr_type(d4err)
 fun
-fprint_updterr: fprint_type(updterr)
+fprint_d4err: fprint_type(d4err)
 //
-overload print with print_updterr
-overload prerr with prerr_updterr
-overload fprint with fprint_updterr
+overload print with print_d4err
+overload prerr with prerr_d4err
+overload fprint with fprint_d4err
 //
 (* ****** ****** *)
 //
