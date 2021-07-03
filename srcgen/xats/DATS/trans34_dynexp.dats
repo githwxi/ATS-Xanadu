@@ -1780,6 +1780,7 @@ trans34_dexplst(env0, d3es)
 val
 s2r0 = the_s2exp_none0(*void*)
 in
+//
 d4exp_make_node
 ( loc0
 , s2r0
@@ -1787,6 +1788,57 @@ d4exp_make_node
 end // end of [non-S2Efun]
 //
 end (*let*) // end of [auxdapp]
+
+(* ****** ****** *)
+
+fun
+auxplft
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+//
+// (*
+val () =
+println!
+("auxplft: d3e0 = ", d3e0)
+// *)
+//
+val-
+D3Eplft
+( dtup
+, lab1
+, ind2) = d3e0.node()
+//
+val dtup =
+trans34_dexp(env0, dtup)
+val stup = 
+s2exp_whnfize(dtup.sexp())
+//
+in
+//
+case+
+stup.node() of
+|
+_(*non-S2Etyrec*) =>
+let
+//
+val
+s2r0 = the_s2exp_none0(*void*)
+//
+in
+d4exp_make_node
+( loc0
+, s2r0
+, t2p0, D4Eplft(dtup, lab1, ind2))
+end
+//  
+end (*let*) // end of [auxplft]
 
 (* ****** ****** *)
 //
@@ -2429,6 +2481,8 @@ d3e0.node() of
 | D3Esap0 _ => auxsap0(env0, d3e0)
 //
 | D3Edapp _ => auxdapp(env0, d3e0)
+//
+| D3Eplft _ => auxplft(env0, d3e0)
 //
 | D3Elet
   (dcls, d3e1) => aux_let(env0, d3e0)
