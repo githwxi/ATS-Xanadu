@@ -1086,6 +1086,59 @@ end (*let*) // end of [auxchr]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxelt
+(s2at: s2exp): s2exp =
+(
+case+
+s2at.node() of
+|
+S2Eapp
+(s2f0, s2es) =>
+(
+if
+s2exp_is_a0ptr(s2f0)
+then
+let
+val-
+list_cons
+(s2e0, _) = s2es in s2e0
+end else the_s2exp_none0(*void*)
+)
+|
+_(*non-S2Eapp*) => the_s2exp_none0
+) (* end of [auxelt] *)
+
+and
+auxloc
+(s2at: s2exp): s2exp =
+(
+case+
+s2at.node() of
+|
+S2Eapp
+(s2f0, s2es) =>
+(
+if
+s2exp_is_a0ptr(s2f0)
+then
+let
+val-
+list_cons
+(_, s2es) = s2es
+val-
+list_cons
+(s2l1, _) = s2es in s2l1
+end else the_s2exp_none0(*void*)
+)
+|
+_(*non-S2Eapp*) => the_s2exp_none0
+) (* end of [auxloc] *)
+
+in(*in-of-local*)
+
 fun
 auxvar
 ( env0:
@@ -1161,55 +1214,6 @@ d4exp_make_node
 end (*let*) // end of [auxvar0]
 
 and
-auxelt
-(s2at: s2exp): s2exp =
-(
-case+
-s2at.node() of
-|
-S2Eapp
-(s2f0, s2es) =>
-(
-if
-s2exp_is_a0ptr(s2f0)
-then
-let
-val-
-list_cons
-(s2e0, _) = s2es in s2e0
-end else the_s2exp_none0(*void*)
-)
-|
-_(*non-S2Eapp*) => the_s2exp_none0
-) (* end of [auxelt] *)
-
-and
-auxloc
-(s2at: s2exp): s2exp =
-(
-case+
-s2at.node() of
-|
-S2Eapp
-(s2f0, s2es) =>
-(
-if
-s2exp_is_a0ptr(s2f0)
-then
-let
-val-
-list_cons
-(_, s2es) = s2es
-val-
-list_cons
-(s2l1, _) = s2es in s2l1
-end else the_s2exp_none0(*void*)
-)
-|
-_(*non-S2Eapp*) => the_s2exp_none0
-) (* end of [auxloc] *)
-
-and
 auxvar1
 ( env0:
 ! tr34env
@@ -1278,6 +1282,8 @@ in
 d4exp_make_node
 (loc0, s2e0, t2p0, D4Evar(d2v0))
 end (*let*) // end of [auxvar1]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -1817,13 +1823,61 @@ D3Eplft
 //
 val dtup =
 trans34_dexp(env0, dtup)
-val stup = 
-s2exp_whnfize(dtup.sexp())
+val dtup =
+d4exp_opny_env(env0, dtup)
+//
+val stup = dtup.sexp()
+val stup = s2exp_whnfize(stup)
 //
 in
 //
 case+
 stup.node() of
+|
+S2Etyrec
+(knd, npf, lses) =>
+let
+val s2r0 =
+auxlses(ind2, lses) where
+{
+fun
+auxlses
+( i0: int
+, lses
+: labs2explst): s2exp =
+if
+(i0 >= 0)
+then
+(
+case+ lses of
+|
+list_nil() =>
+(
+  the_s2exp_none0(*void*)
+)
+|
+list_cons(lse1, lses) =>
+if
+(i0 = 0)
+then
+let
+val+
+SLABELED
+(_, s2e1) = lse1 in s2e1
+end
+else auxlses(i0-1, lses)
+) else
+(
+  the_s2exp_none0(*void*)
+)
+}
+in
+d4exp_make_node
+( loc0
+, s2r0
+, t2p0, D4Eplft(dtup, lab1, ind2))
+end
+//
 |
 _(*non-S2Etyrec*) =>
 let
