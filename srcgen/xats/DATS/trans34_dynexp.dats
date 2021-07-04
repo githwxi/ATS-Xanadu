@@ -2479,6 +2479,11 @@ D4Evar _ => auxvar(env0, d4e1)
 D4Eplft _ => auxplft(env0, d4e1)
 //
 |
+D4Eopny
+( d2e1
+, s2vs, s2ps) => auxupdt(env0, d2e1)
+//
+|
 _(*rest-of-d4exp*) => None_vt(*void*)
 ) where
 {
@@ -2516,6 +2521,7 @@ s2e1 = d4e1.sexp((*void*))
 in
 //
 if
+// true ||
 s2exp_islin(s2e1)
 then
 let
