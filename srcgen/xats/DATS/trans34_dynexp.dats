@@ -2430,7 +2430,7 @@ if
 then
 list_cons
 (lx1, auxlses(ind-1, lxs))
-else
+else // ind = 0
 (
 list_cons(lx1, lxs)) where
 {
