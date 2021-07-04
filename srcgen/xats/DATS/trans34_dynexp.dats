@@ -2152,177 +2152,32 @@ end where
 {
 (* ****** ****** *)
 fun
-auxd2w1
-( d4e1
-: d4exp)
-: Option_vt(d2var) =
-(
-case+
-d4e1.node() of
-|
-D4Evar(d2v1) =>
-(
-case+
-d2v1.atprf() of
-|
-None() => None_vt()
-|
-Some(d2w1) => Some_vt(d2w1)
-)
-//
-|
-D4Eflat
-( d4e1, _ ) => auxd2w1(d4e1)
-|
-D4Etalf
-( d4e1, _ ) => auxd2w1(d4e1)
-//
-|
-_(*else-of-d4exp*) => None_vt(*void*)
-//
-) where
-{
-//
-  val () =
-  println!("auxd2w1: d4e1 = ", d4e1)
-//
-} (*where*) // end of [auxd2w1]
-(* ****** ****** *)
-fun
-auxs2e2
-( d4e1
-: d4exp
-, s2e2
-: s2exp)
-: Option_vt(s2exp) =
-(
-case+
-d4e1.node() of
-//
-|
-D4Evar _ => Some_vt(s2e2)
-//
-|
-D4Etalf
-(d4e1, _) => auxs2e2(d4e1, s2e2)
-|
-D4Eflat
-(d4e1, _) => auxs2e2(d4e1, s2e2)
-//
-|
-_(*else-of-d4exp*) => None_vt(*void*)
-//
-) where
-{
-//
-val () =
-println!("auxs2e2: d4e1 = ", d4e1)
-val () =
-println!("auxs2e2: s2e2 = ", s2e2)
-//
-} (*where*) // end of [auxs2e2]
-(* ****** ****** *)
-fun
-auxs2at
-( env0
-: !tr34env
-, d2w1: d2var
-, selt: s2exp): d4err =
-let
-val
-s2at =
-tr34env_d2var_get_sexp
-(env0, d2w1)
-val s2l1 =
-auxloc(s2at)
-in
-case+
-s2l1.node() of
-|
-S2Enone0() =>
-D4ERRupdtd1(d2w1, selt)
-|
-_(*non-S2Enone0*) =>
-(
-D4ERRnone(*void*)) where
-{
-val
-s2at =
-s2exp_at0(selt, s2l1)
-val () =
-tr34env_add_dvar_sexp
-(env0, d2w1, s2at(*atvw*))
-}
-end where
-{
-fun
-auxloc
-(s2at: s2exp): s2exp =
-(
-case+
-s2at.node() of
-|
-S2Eapp
-(s2f0, s2es) =>
-(
-if
-s2exp_is_a0ptr(s2f0)
-then
-let
-val-
-list_cons
-(_, s2es) = s2es
-val-
-list_cons
-(s2l1, _) = s2es in s2l1
-end else the_s2exp_none0(*void*)
-)
-|
-_(*non-S2Eapp*) => the_s2exp_none0
-) (* end of [auxloc] *)
-//
-val () =
-println!("auxs2at: d2w1 = ", d2w1)
-val () =
-println!("auxs2at: selt = ", selt)
-//
-} (*where*) // end of [auxs2at]
-(* ****** ****** *)
-fun
 auxupdtd
-( env0
-: !tr34env
+( env0:
+! tr34env
 , d4e1: d4exp
 , s2e2: s2exp): d4err =
-let
-val
-opt1 = auxd2w1(d4e1)
-in
-case+ opt1 of
-| ~
-Some_vt(d2w1) =>
-let
-//
-val
-opt2 = auxs2e2(d4e1, s2e2)
-//
-in(*in-of-let*)
-//
+(
+case+
+d4e1.node() of
+|
+D4Etalf(_, opt2) =>
+(
 case+ opt2 of
-| ~
-Some_vt
-( selt ) =>
-auxs2at(env0, d2w1, selt)
-| ~
-None_vt
-((*void*)) => D4ERRupdtd0()
 //
-end // end of [Some_vt]
-| ~
-None_vt
-((*void*)) => D4ERRupdtd0()
+| None() => D4ERRupdtd0()
 //
-end // end of [let]
+| Some(xtv2) =>
+  D4ERRnone(*void*) where
+  {
+  val () =
+  s2xtv_set_sexp(xtv2, s2e2)
+  }
+//
+) (* end of [D4Etalf] *)
+|
+_(*rest-of-d4exp*) => D4ERRupdtd0()
+)
 (* ****** ****** *)
 } (*where*) // end of [aux_assgn]
 //
@@ -2601,10 +2456,20 @@ trans34_dexp(env0, d3e1)
 val
 s2e1 = d4e1.sexp((*void*))
 //
+val
+opt2 =
+(
+case+
+d4e1.node() of
+|
+D4Eflat
+(_, opt2) => opt2 | _ => None()
+) : Option(s2xtv) // end-of-val
+//
 in
 d4exp_make_node
 ( loc0
-, s2e1, t2p0, D4Etalf(d4e1, None))
+, s2e1, t2p0, D4Etalf(d4e1, opt2))
 end (*let*) // end of [aux_talf]
 
 (* ****** ****** *)
