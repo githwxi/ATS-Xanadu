@@ -2137,7 +2137,7 @@ println!
 //
 val
 err3 =
-auxupdtd
+auxupdt
 (env0, d4e1, d4e2.sexp())
 //
 val
@@ -2151,8 +2151,9 @@ d4exp_make_node
 end where
 {
 (* ****** ****** *)
+//
 fun
-auxupdtd
+auxupdt
 ( env0:
 ! tr34env
 , d4e1: d4exp
@@ -2177,7 +2178,8 @@ case+ opt2 of
 ) (* end of [D4Etalf] *)
 |
 _(*rest-of-d4exp*) => D4ERRupdtd0()
-)
+) (* end of [auxupdt] *)
+//
 (* ****** ****** *)
 } (*where*) // end of [aux_assgn]
 //
@@ -2281,18 +2283,19 @@ end (*let*) // end of [aux_cas0]
 
 local
 
+(* ****** ****** *)
+
 fun
-auxupdt
+auxvar
 ( env0:
 ! tr34env
 , d4e1: d4exp)
 : Option_vt(s2xtv) =
-(
-case+
-d4e1.node() of
-|
-D4Evar(d2v1) =>
-(
+let
+val-
+D4Evar
+(d2v1) = d4e1.node()
+in(*in-of-let*)
 case+
 d2v1.atprf() of
 |
@@ -2308,10 +2311,10 @@ tr34env_d2var_get_sexp
 //
 val () =
 println!
-("auxupdt: d2w1 = ", d2w1)
+("auxupdt: auxvar: d2w1 = ", d2w1)
 val () =
 println!
-("auxupdt: s2at = ", s2at)
+("auxupdt: auxvar: s2at = ", s2at)
 //
 in
 case+
@@ -2342,11 +2345,11 @@ in
 (*
 None_vt((*void*))
 *)
-Some_vt(xtv1) where
-{
+let
 val () =
-tr34env_add_dvar_sexp(env0,d2w1,s2at)
-}
+tr34env_add_dvar_sexp
+(env0,d2w1,s2at) in Some_vt(xtv1)
+end
 //
 end
 //
@@ -2355,7 +2358,126 @@ _(*rest-of-s2exp*) => None_vt(*void*)
 //
 end
 //
-) (* end of [D4Evar] *)
+end (*let*) // end of [auxvar]
+
+(* ****** ****** *)
+
+and
+auxplft
+( env0:
+! tr34env
+, d4e1: d4exp)
+: Option_vt(s2xtv) =
+let
+//
+val-
+D4Eplft
+( dtup
+, lab1
+, ind2) = d4e1.node()
+//
+val
+opt0 = auxupdt(env0, dtup)
+//
+in
+//
+case+ opt0 of
+| ~
+None_vt() =>
+None_vt((*void*))
+| ~
+Some_vt(xtv0) =>
+let
+//
+val s2e1 =
+s2exp_whnfize
+(d4e1.sexp((*void*)))
+val stup =
+s2exp_whnfize
+(dtup.sexp((*void*)))
+//
+val-
+S2Etyrec
+( knd
+, npf
+, lses) = stup.node()
+//
+val xtv1 =
+s2xtv_new_srt
+(d4e1.loc(), s2e1.sort())
+//
+val
+lses =
+auxlses(ind2, lses) where
+{
+//
+typedef lses = labs2explst
+//
+fun
+auxlses
+(ind: int, lxs: lses): lses =
+(
+case+ lxs of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons
+(lx1, lxs) =>
+(
+if
+(ind > 0)
+then
+list_cons
+(lx1, auxlses(ind-1, lxs))
+else
+(
+list_cons(lx1, lxs)) where
+{
+  val+
+  SLABELED(l1, x1) = lx1
+  val lx1 =
+  SLABELED(l1, s2exp_xtv(xtv1))
+} (*where*) // else // end-of-if
+) (* end of [list_cons] *)
+) (* case *) // end of [auxlses]
+}
+//
+val
+stup =
+s2exp_make_node
+( stup.sort()
+, S2Etyrec(knd, npf, lses))
+//
+in
+//
+let
+val () =
+s2xtv_set_sexp
+( xtv0, stup ) in Some_vt(xtv1)
+end
+//
+end // end of [Some_vt]
+//
+end (*let*) // end of [auxplft]
+
+(* ****** ****** *)
+
+and
+auxupdt
+( env0:
+! tr34env
+, d4e1: d4exp)
+: Option_vt(s2xtv) =
+(
+case+
+d4e1.node() of
+|
+D4Evar _ => auxvar(env0, d4e1)
+//
+|
+D4Eplft _ => auxplft(env0, d4e1)
+//
 |
 _(*rest-of-d4exp*) => None_vt(*void*)
 ) where
@@ -2363,6 +2485,8 @@ _(*rest-of-d4exp*) => None_vt(*void*)
   val () =
   println!("auxupdt: d4e1 = " , d4e1)
 } (*where*) // end of [auxupdt]
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 
@@ -2398,25 +2522,27 @@ let
 val
 opt1 =
 auxupdt(env0, d4e1)
+//
 val
 opt2 =
 (
-  case+ opt1 of
-  | ~
-  None_vt
-  ((*void*)) => None()
-  | ~
-  Some_vt
-  (  xtv1  ) => Some(xtv1)
+case+ opt1 of
+| ~
+None_vt
+() => None(*void*)
+| ~
+Some_vt
+( xtv1 ) => Some(xtv1)
 ) : Option(s2xtv)
 val () =
 (
-  case+ opt2 of
-  | None() => ()
-  | Some(xtv1) =>
-    s2xtv_set_sexp
-    (xtv1, s2exp_tpz(s2e1))
+case+ opt2 of
+| None() => ()
+| Some(xtv1) =>
+  s2xtv_set_sexp
+  (xtv1, s2exp_tpz(s2e1))
 ) : void // end of [val]
+//
 in
 d4exp_make_node
 ( loc0
