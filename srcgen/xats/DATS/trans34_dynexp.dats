@@ -1236,21 +1236,38 @@ s2at =
 tr34env_d2var_get_sexp
 ( env0, d2w1 )
 //
-val s2e0 = auxelt(s2at)
-val s2l1 = auxloc(s2at)
-//
 val () =
 println!
 ( "auxvar1: d2w1 = ", d2w1 )
 val () =
 println!
 ( "auxvar1: s2at = ", s2at )
+//
+val s2e0 = auxelt(s2at)
 val () =
 println!
 ( "auxvar1: s2e0 = ", s2e0 )
+//
+(*
+//
+// HX-2021-07-03:
+// Please check that
+// s2l1==d2v1.saddr() holds!
+// 
+val s2l1 = auxloc(s2at)
 val () =
 println!
 ( "auxvar1: s2l1 = ", s2l1 )
+//
+*)
+//
+(*
+//
+(*
+HX-2021-07-03:
+This update is
+handled by [aux_flat]!!!
+*)
 //
 val () =
 let
@@ -1277,6 +1294,7 @@ tr34env_add_dvar_sexp
 (env0, d2w1, s2at(*atvw*)) end
 //
 end // end of [val]
+*)
 //
 in
 d4exp_make_node
@@ -1875,8 +1893,9 @@ in
 d4exp_make_node
 ( loc0
 , s2r0
-, t2p0, D4Eplft(dtup, lab1, ind2))
-end
+, t2p0
+, D4Eplft(dtup, lab1, ind2))
+end // end of [S2Etyrec]
 //
 |
 _(*non-S2Etyrec*) =>
@@ -2072,7 +2091,7 @@ end
 end (*let*) // end of [aux_seqn]
 
 (* ****** ****** *)
-
+//
 fun
 aux_assgn
 ( env0:
@@ -2150,10 +2169,13 @@ None() => None_vt()
 |
 Some(d2w1) => Some_vt(d2w1)
 )
+//
 |
-D4Etalf(d4e1) => auxd2w1(d4e1)
+D4Eflat
+( d4e1, _ ) => auxd2w1(d4e1)
 |
-D4Eflat(d4e1) => auxd2w1(d4e1)
+D4Etalf
+( d4e1, _ ) => auxd2w1(d4e1)
 //
 |
 _(*else-of-d4exp*) => None_vt(*void*)
@@ -2182,10 +2204,10 @@ D4Evar _ => Some_vt(s2e2)
 //
 |
 D4Etalf
-( d4e1 ) => auxs2e2(d4e1, s2e2)
+(d4e1, _) => auxs2e2(d4e1, s2e2)
 |
 D4Eflat
-( d4e1 ) => auxs2e2(d4e1, s2e2)
+(d4e1, _) => auxs2e2(d4e1, s2e2)
 //
 |
 _(*else-of-d4exp*) => None_vt(*void*)
@@ -2299,9 +2321,11 @@ end // end of [Some_vt]
 | ~
 None_vt
 ((*void*)) => D4ERRupdtd0()
+//
 end // end of [let]
 (* ****** ****** *)
-} (*where*) // end of [auxupdt]
+} (*where*) // end of [aux_assgn]
+//
 (* ****** ****** *)
 
 fun
@@ -2400,6 +2424,93 @@ end (*let*) // end of [aux_cas0]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxupdt
+( env0:
+! tr34env
+, d4e1: d4exp)
+: Option_vt(s2xtv) =
+(
+case+
+d4e1.node() of
+|
+D4Evar(d2v1) =>
+(
+case+
+d2v1.atprf() of
+|
+None() => None_vt()
+|
+Some(d2w1) =>
+let
+//
+val
+s2at =
+tr34env_d2var_get_sexp
+( env0, d2w1 )
+//
+val () =
+println!
+("auxupdt: d2w1 = ", d2w1)
+val () =
+println!
+("auxupdt: s2at = ", s2at)
+//
+in
+case+
+s2at.node() of
+|
+S2Eapp
+(s2f0, s2es) =>
+if
+not
+(s2exp_is_a0ptr(s2f0))
+then None_vt((*void*))
+else let
+val-
+list_cons
+(s2e1, s2es) = s2es
+val-
+list_cons
+(s2l1, s2es) = s2es
+val xtv1 =
+s2xtv_new_srt
+(d4e1.loc(), s2e1.sort())
+val ((*void*)) =
+s2xtv_set_sexp(xtv1, s2e1)
+val selt = s2exp_xtv(xtv1)
+val s2at = s2exp_at0(selt, s2l1)
+in
+//
+(*
+None_vt((*void*))
+*)
+Some_vt(xtv1) where
+{
+val () =
+tr34env_add_dvar_sexp(env0,d2w1,s2at)
+}
+//
+end
+//
+|
+_(*rest-of-s2exp*) => None_vt(*void*)
+//
+end
+//
+) (* end of [D4Evar] *)
+|
+_(*rest-of-d4exp*) => None_vt(*void*)
+) where
+{
+  val () =
+  println!("auxupdt: d4e1 = " , d4e1)
+} (*where*) // end of [auxupdt]
+
+in(*in-of-local*)
+
 fun
 aux_flat
 ( env0:
@@ -2424,10 +2535,46 @@ val
 s2e1 = d4e1.sexp((*void*))
 //
 in
+//
+if
+s2exp_islin(s2e1)
+then
+let
+val
+opt1 =
+auxupdt(env0, d4e1)
+val
+opt2 =
+(
+  case+ opt1 of
+  | ~
+  None_vt
+  ((*void*)) => None()
+  | ~
+  Some_vt
+  (  xtv1  ) => Some(xtv1)
+) : Option(s2xtv)
+val () =
+(
+  case+ opt2 of
+  | None() => ()
+  | Some(xtv1) =>
+    s2xtv_set_sexp
+    (xtv1, s2exp_tpz(s2e1))
+) : void // end of [val]
+in
 d4exp_make_node
 ( loc0
-, s2e1, t2p0, D4Eflat(d4e1))
+, s2e1, t2p0, D4Eflat(d4e1, opt2))
+end // end of [then]
+else
+d4exp_make_node
+( loc0
+, s2e1, t2p0, D4Eflat(d4e1, None))
+//
 end (*let*) // end of [aux_flat]
+
+end // end of [aux_flat]
 
 (* ****** ****** *)
 
@@ -2457,7 +2604,7 @@ s2e1 = d4e1.sexp((*void*))
 in
 d4exp_make_node
 ( loc0
-, s2e1, t2p0, D4Etalf(d4e1))
+, s2e1, t2p0, D4Etalf(d4e1, None))
 end (*let*) // end of [aux_talf]
 
 (* ****** ****** *)
@@ -2478,11 +2625,9 @@ D3Eanno
 , s1e2
 , s2e2) = d3e0.node()
 //
-val
-t2p1 = d3e1.type()
+val t2p1 = d3e1.type()
 //
-val
-d4e1 =
+val d4e1 =
 (
   trans34_dexp_dntp
   ( env0, d3e1, s2e2 )

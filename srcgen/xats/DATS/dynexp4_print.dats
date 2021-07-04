@@ -94,8 +94,13 @@ $FP0.fprint_filpath_full2
 //
 implement
 fprint_val<s2cst> = fprint_s2cst
+//
 implement
 fprint_val<s2var> = fprint_s2var
+//
+implement
+fprint_val<s2xtv> = fprint_s2xtv
+//
 implement
 fprint_val<s2exp> = fprint_s2exp
 //
@@ -569,18 +574,28 @@ case+ x0.node() of
   ( out, "D4Ecas0("
   , knd0, "; ", d4e1, "; ", dcls, ")")
 //
+(*
+| D4Elval
+  (dlft, d4e1) =>
+  fprint!
+  ( out
+  , "D4Elval(", dlft, "; ", d4e1, ")")
+*)
+//
 | D4Eaddr(d4e1) =>
   (
    fprint!(out, "D4Eaddr(", d4e1, ")")
   )
-| D4Eflat(d4e1) =>
-  (
-   fprint!(out, "D4Eflat(", d4e1, ")")
-  )
-| D4Etalf(d4e1) =>
-  (
-   fprint!(out, "D4Etalf(", d4e1, ")")
-  )
+| D4Eflat
+  ( d4e1, opt2 ) =>
+  fprint!
+  ( out
+  , "D4Eflat(", d4e1, "; ", opt2, ")")
+| D4Etalf
+  ( d4e1, opt2 ) =>
+  fprint!
+  ( out
+  , "D4Etalf(", d4e1, "; ", opt2, ")")
 //
 | D4Eanno
   (d4e1, s1e2, s2e2) =>
@@ -617,6 +632,38 @@ case+ x0.node() of
 //
 ) (*val*) } (*where*) (* end of [fprint_d4exp] *)
 //
+(* ****** ****** *)
+(*
+//
+implement
+print_d4lft(x0) =
+fprint_d4lft(stdout_ref, x0)
+implement
+prerr_d4lft(x0) =
+fprint_d4lft(stderr_ref, x0)
+//
+implement
+fprint_d4lft
+  (out, x0) =
+(
+case+ x0 of
+|
+D4ELFTvar(d2v) =>
+fprint!
+(out, "D4ELFTvar(", d2v, ")")
+|
+D4ELFTsome(dlft) =>
+fprint!
+(out, "D4ELFTsome(", dlft, ")")
+|
+D4ELFTproj
+(dlft, lab1, ind2) =>
+fprint!
+( out
+, "D4ELFTproj("
+, dlft, "; ", lab1, "; ", ind2, ")")
+)
+*)
 (* ****** ****** *)
 implement
 print_d4err(x0) =

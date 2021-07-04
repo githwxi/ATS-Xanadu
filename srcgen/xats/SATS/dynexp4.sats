@@ -471,10 +471,17 @@ for the meaning of knd
 | D4Ecas0 of
   (int(*knd*), d4exp(*val*), d4claulst)
 //
+(*
+| D4Elval of
+  (d4lft(*proof*), d4exp)
+*)
+//
 | D4Eaddr of d4exp(*l-value*)
 //
-| D4Eflat of d4exp(*l-value*)
-| D4Etalf of d4exp(*D4Eflat*)
+| D4Eflat of
+  (d4exp(*l-value*), Option(s2xtv))
+| D4Etalf of
+  (d4exp(*D4Eflat*), Option(s2xtv))
 //
 | D4Eanno of
   (d4exp, s1exp(*anno*), s2exp(*type*))
@@ -496,12 +503,30 @@ for the meaning of knd
 | D4Enone1 of (d3exp) | D4Enone2 of (d4exp)
 //
 (* ****** ****** *)
+//
+(*
+and
+d4lft =
+//
+| D4ELFTnone of ()
+//
+| D4ELFTroot of (d4exp)
+//
+| D4ELFTproj of
+  (d4lft, label(*proj*), int(*index*))
+*)
+//
+(* ****** ****** *)
+//
 and
 d4err =
+//
 | D4ERRnone of ()
+//
 | D4ERRupdtd0 of ()
 | D4ERRupdtd1 of
   (d2var(*d2w1*), s2exp) // update failure
+//
 (* ****** ****** *)
 //
 fun
@@ -570,6 +595,21 @@ fprint_d4exp: fprint_type(d4exp)
 overload print with print_d4exp
 overload prerr with prerr_d4exp
 overload fprint with fprint_d4exp
+//
+(* ****** ****** *)
+//
+(*
+fun
+print_d4lft: print_type(d4lft)
+fun
+prerr_d4lft: prerr_type(d4lft)
+fun
+fprint_d4lft: fprint_type(d4lft)
+//
+overload print with print_d4lft
+overload prerr with prerr_d4lft
+overload fprint with fprint_d4lft
+*)
 //
 (* ****** ****** *)
 //

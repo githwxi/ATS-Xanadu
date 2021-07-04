@@ -303,6 +303,9 @@ d4exp_leakify
 //
 val
 s2e0 = d4e0.sexp()
+val
+s2e0 =
+s2exp_whnfize(s2e0)
 //
 in
 //
