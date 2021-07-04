@@ -6,20 +6,20 @@
 #staload "./xdebug.sats"
 (* ****** ****** *)
 fun
-foo
-( xy:
-& ( int
-  , int) >> _
-) : int = xy.0 + xy.1
-////
-(* ****** ****** *)
-fun
 <a:vt>
 foo
 (x0: &a >> _, x1: a): a =
 let
 var tmp = x0 in x0 := x1; tmp
 end
+////
+(* ****** ****** *)
+fun
+foo
+( xy:
+& ( int
+  , int) >> _
+) : int = xy.0 + xy.1
 ////
 (* ****** ****** *)
 fun
