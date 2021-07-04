@@ -5,6 +5,17 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+typedef
+int2 =
+[x,y:int|x+y=2]
+(int(x), int(y))
+fun
+foo
+( xy:
+& int2 >> _
+) : int(2) = xy.0 + xy.1
+////
+(* ****** ****** *)
 fun
 foo
 ( xy:
