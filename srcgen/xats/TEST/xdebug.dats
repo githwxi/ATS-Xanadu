@@ -5,6 +5,41 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+//
+fun
+<a:type>
+length
+{n:nat}
+(xs: list(a, n)): sint(n) =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => 0
+|
+list_cons
+(  _, xs  ) => 1 + length(xs)
+)
+////
+(* ****** ****** *)
+//
+fun
+<a:type>
+length_vt
+{n:nat}
+( xs:
+! list_vt(a, n)): sint(n) =
+(
+case+ xs of
+|
+list_vt_nil
+((*void*)) => 0
+|
+list_vt_cons
+(  _, xs  ) => 1 + length(xs)
+)
+////
+(* ****** ****** *)
 typedef
 int2 =
 [x,y:int|x+y=2]
@@ -12,7 +47,7 @@ int2 =
 fun
 foo
 ( xy:
-& int2 >> _
+& int2 // >> _
 ) : int(2) = xy.0 + xy.1
 ////
 (* ****** ****** *)
@@ -69,20 +104,6 @@ then x * fact(x-1) else 1
 ////
 (* ****** ****** *)
 //
-fun
-<a:type>
-length
-{n:nat}
-(xs: list(a, n)): sint(n) =
-(
-case+ xs of
-|
-list_nil
-((*void*)) => 0
-|
-list_cons
-(  _, xs  ) => 1 + length(xs)
-)
 fun
 <a:type>
 length
