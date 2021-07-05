@@ -88,6 +88,8 @@ and dvarstk =
 | dvarstk_loc1 of dvarstk
 | dvarstk_loc2 of dvarstk
 //
+| dvarstk_clau of dvarstk
+//
 | dvarstk_locs of (d2var, dvarstk)
 | dvarstk_cons of (d2var, s2exp, dvarstk)
 //
@@ -493,6 +495,59 @@ end // end of [let]
 } (*where*) // [tr34env_add_denvs_let1]
 //
 (* ****** ****** *)
+
+local
+
+fun
+auxdstk
+( stmp:
+& stmap >> _
+, dstk
+: !dvarstk ): void =
+(
+//
+case- dstk of
+|
+dvarstk_clau _ => ((*void*))
+|
+dvarstk_locs
+(d2v1, dstk) => auxdstk(stmp, dstk)
+|
+dvarstk_cons
+(d2v1, s2e2, dstk) =>
+let
+val
+ans =
+stmap_insert
+( stmp
+, d2v1, s2e2) in auxdstk(stmp, dstk)
+end // [dvarstk_cons]
+//
+) (* end of [auxdstk] *)
+
+in(*in-of-local*)
+
+implement
+tr34env_stmap_clau
+  ( env0 ) =
+  ( stmp ) where
+{
+//
+val+
+TR34ENV(_, dstk) = env0
+//
+var
+stmp:
+stmap = stmap_nil((*void*))
+//
+val
+((*void*)) = auxdstk(stmp, dstk)
+//
+} (*where*) // end of [tr34env_stmap_clau]
+  
+end // end of [local]
+
+(* ****** ****** *)
 //
 local
 //
@@ -521,6 +576,11 @@ dvarstk_loc1
 dvarstk_find(dstk, d2v0)
 |
 dvarstk_loc2
+( dstk ) =>
+dvarstk_find(dstk, d2v0)
+//
+|
+dvarstk_clau
 ( dstk ) =>
 dvarstk_find(dstk, d2v0)
 //

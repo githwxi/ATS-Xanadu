@@ -212,6 +212,10 @@ tr34env_stmap_let1
   ( env0 : !tr34env ) : stmap
 (* ****** ****** *)
 fun
+tr34env_stmap_clau
+  ( env0 : !tr34env ) : stmap
+(* ****** ****** *)
+fun
 tr34env_add_dvar
 ( env0:
 ! tr34env, d2v0: d2var): void
