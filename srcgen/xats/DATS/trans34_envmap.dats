@@ -88,7 +88,7 @@ and dvarstk =
 | dvarstk_loc1 of dvarstk
 | dvarstk_loc2 of dvarstk
 //
-| dvarstk_clau of dvarstk
+| dvarstk_bran of dvarstk
 //
 | dvarstk_locs of (d2var, dvarstk)
 | dvarstk_cons of (d2var, s2exp, dvarstk)
@@ -279,7 +279,7 @@ dvarstk_cons
 (* ****** ****** *)
 //
 implement
-tr34env_add_clau
+tr34env_add_bran
   (env0) =
 (
 case+ env0 of
@@ -289,12 +289,12 @@ case+ env0 of
   fold@(env0)) where
 {
 val () =
-( dstk := dvarstk_clau(dstk) )
+( dstk := dvarstk_bran(dstk) )
 }
-) (* end of [tr34env_add_clau] *)
+) (* end of [tr34env_add_bran] *)
 //
 implement
-tr34env_pop_clau
+tr34env_pop_bran
   (env0) =
 (
 case+ env0 of
@@ -314,7 +314,7 @@ auxdstk
 (
 case- dstk of
 | ~
-dvarstk_clau
+dvarstk_bran
 ( dstk ) => dstk
 | ~
 dvarstk_locs
@@ -323,7 +323,7 @@ dvarstk_locs
 dvarstk_cons
 (d2v1, s2e1, dstk) => auxdstk(dstk)
 )
-} (* end of [tr34env_pop_clau] *)
+} (* end of [tr34env_pop_bran] *)
 //
 (* ****** ****** *)
 
@@ -557,7 +557,7 @@ auxdstk
 //
 case- dstk of
 |
-dvarstk_clau _ => ((*void*))
+dvarstk_bran _ => ((*void*))
 |
 dvarstk_locs
 (d2v1, dstk) => auxdstk(stmp, dstk)
@@ -577,7 +577,7 @@ end // [dvarstk_cons]
 in(*in-of-local*)
 
 implement
-tr34env_stmap_clau
+tr34env_stmap_bran
   ( env0 ) =
   ( stmp ) where
 {
@@ -592,7 +592,7 @@ stmap = stmap_nil((*void*))
 val
 ((*void*)) = auxdstk(stmp, dstk)
 //
-} (*where*) // end of [tr34env_stmap_clau]
+} (*where*) // end of [tr34env_stmap_bran]
   
 end // end of [local]
 
@@ -629,7 +629,7 @@ dvarstk_loc2
 dvarstk_find(dstk, d2v0)
 //
 |
-dvarstk_clau
+dvarstk_bran
 ( dstk ) =>
 dvarstk_find(dstk, d2v0)
 //

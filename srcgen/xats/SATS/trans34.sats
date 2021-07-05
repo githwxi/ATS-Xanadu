@@ -202,10 +202,10 @@ tr34env_pop_lams
 (* ****** ****** *)
 //
 fun
-tr34env_add_clau
+tr34env_add_bran
   ( env0 : !tr34env ) : void
 fun
-tr34env_pop_clau
+tr34env_pop_bran
   ( env0 : !tr34env ) : void
 //
 (* ****** ****** *)
@@ -221,7 +221,7 @@ tr34env_stmap_let1
   ( env0 : !tr34env ) : stmap
 (* ****** ****** *)
 fun
-tr34env_stmap_clau
+tr34env_stmap_bran
   ( env0 : !tr34env ) : stmap
 (* ****** ****** *)
 fun
