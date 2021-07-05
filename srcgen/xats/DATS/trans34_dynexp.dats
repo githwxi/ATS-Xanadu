@@ -2213,9 +2213,29 @@ s2xtv_new_srt
 val
 s2e0 = s2exp_xtv(xtv0)
 //
+local
+val () =
+tr34env_add_bran(env0)
+in(*in-of-local*)
+//
 val
 d4e2 =
-trans34_dexp_dntp(env0,d3e2,s2e0)
+trans34_dexp_dntp
+(  env0, d3e2, s2e0  )
+//
+val
+stmp =
+tr34env_stmap_bran(env0)
+val
+((*void*)) =
+println!
+(
+"\
+trans34_dexp: \
+aux_if0: then: stmp=\n", stmp)
+//
+val () = tr34env_pop_bran(env0)
+end // end of [local]
 //
 val opt3 =
 (
@@ -2224,10 +2244,31 @@ case+ opt3 of
 None() =>
 None((*void*))
 |
-Some(d3e3) => Some
+Some(d3e3) =>
 (
-trans34_dexp_dntp(env0,d3e3,s2e0)
-)
+Some(d4e3)) where
+{
+val () =
+tr34env_add_bran(env0)
+//
+val d4e3 =
+trans34_dexp_dntp
+(  env0, d3e3, s2e0  )
+//
+val
+stmp =
+tr34env_stmap_bran(env0)
+val
+((*void*)) =
+println!
+(
+"\
+trans34_dexp: \
+aux_if0: else: stmp=\n", stmp)
+//
+val () = tr34env_pop_bran(env0)
+//
+} (* end of [Some] *)
 ) : d4expopt // end-of-val
 //
 in
@@ -2998,7 +3039,7 @@ val
 loc0 = d3cl.loc()
 //
 val () =
-tr34env_add_clau(env0)
+tr34env_add_bran(env0)
 //
 in
 //
@@ -3030,7 +3071,7 @@ val d4e2 =
 //
 val
 stmp =
-tr34env_stmap_clau(env0)
+tr34env_stmap_bran(env0)
 val
 ((*void*)) =
 println!
@@ -3040,7 +3081,7 @@ in
 //
 let
 val () =
-tr34env_pop_clau(env0)
+tr34env_pop_bran(env0)
 in
   d4clau_make_node
   (loc0, D4CLAUexp(dgpt, d4e2))
