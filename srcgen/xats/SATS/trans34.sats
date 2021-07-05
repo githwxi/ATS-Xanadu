@@ -200,6 +200,15 @@ tr34env_pop_lams
   ( env0 : !tr34env ) : void
 //
 (* ****** ****** *)
+//
+fun
+tr34env_add_clau
+  ( env0 : !tr34env ) : void
+fun
+tr34env_pop_clau
+  ( env0 : !tr34env ) : void
+//
+(* ****** ****** *)
 fun
 tr34env_stmap_fun0
   ( env0 : !tr34env ) : stmap

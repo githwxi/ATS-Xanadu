@@ -2997,6 +2997,9 @@ let
 val
 loc0 = d3cl.loc()
 //
+val () =
+tr34env_add_clau(env0)
+//
 in
 //
 case+
@@ -3025,12 +3028,27 @@ val d4e2 =
   trans34_dexp_dntp
   ( env0, d3e2, tres )
 //
+val
+stmp =
+tr34env_stmap_clau(env0)
+val
+((*void*)) =
+println!
+("trans34_dclau_dntp: stmp=\n", stmp)
+//
 in
-d4clau_make_node
-(loc0, D4CLAUexp(dgpt, d4e2))
+//
+let
+val () =
+tr34env_pop_clau(env0)
+in
+  d4clau_make_node
+  (loc0, D4CLAUexp(dgpt, d4e2))
 end
 //
-end (*let*) // [trans34_dclaulst]
+end
+//
+end (*let*) // [trans34_dclau_dntp]
 
 (* ****** ****** *)
 
