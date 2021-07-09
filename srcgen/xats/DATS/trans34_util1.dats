@@ -51,6 +51,15 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
+//
+implement
+s2exp_used(s2e0) =
+if
+s2exp_islin(s2e0)
+then
+the_s2exp_none0 else s2e0
+//
+(* ****** ****** *)
 
 implement
 s2exp_tq2as_elim
