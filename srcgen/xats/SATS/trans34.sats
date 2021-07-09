@@ -262,6 +262,9 @@ overload
 whnfize_env with s2exp_whnfize_env
 //
 (* ****** ****** *)
+fun
+s2exp_used(s2e0: s2exp): s2exp
+(* ****** ****** *)
 //
 fun
 s2exp_eqeqize_env

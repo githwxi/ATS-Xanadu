@@ -1204,7 +1204,7 @@ if
 sort2_islin(s2t0)
 then
 tr34env_add_dvar_sexp
-(env0, d2v0, s2exp_tpz(s2e0))
+(env0, d2v0, s2exp_used(s2e0))
 //
 end // end of [val]
 //
@@ -1286,7 +1286,7 @@ sort2_islin(s2t0)
 then
 let
 val s2e0 = 
-s2exp_tpz(s2e0)
+s2exp_used(s2e0)
 val s2at =
 s2exp_at0(s2e0, s2l1)
 in
@@ -2587,7 +2587,7 @@ case+ opt2 of
 | None() => ()
 | Some(xtv1) =>
   s2xtv_set_sexp
-  (xtv1, s2exp_tpz(s2e1))
+  (xtv1, s2exp_used(s2e1))
 ) : void // end of [val]
 //
 in
