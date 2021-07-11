@@ -1015,7 +1015,10 @@ val node =
 S2Eapp(s2f0, list_sing(s2i1))
 //
 in
+s2exp_whnfize
+(
   s2exp_make_node(s2t0, node)
+)
 end // end of [s2exp_type_sint]
 
 implement
@@ -1034,7 +1037,10 @@ val node =
 S2Eapp(s2f0, list_sing(s2i1))
 //
 in
+s2exp_whnfize
+(
   s2exp_make_node(s2t0, node)
+)
 end // end of [s2exp_type_uint]
 
 (* ****** ****** *)
@@ -1055,7 +1061,10 @@ val node =
 S2Eapp(s2f0, list_sing(s2i1))
 //
 in
+s2exp_whnfize
+(
   s2exp_make_node(s2t0, node)
+)
 end // end of [s2exp_type_bool]
 
 (* ****** ****** *)
@@ -1076,7 +1085,10 @@ val node =
 S2Eapp(s2f0, list_sing(s2i1))
 //
 in
+s2exp_whnfize
+(
   s2exp_make_node(s2t0, node)
+)
 end // end of [s2exp_type_char]
 
 (* ****** ****** *)
@@ -1097,7 +1109,10 @@ val node =
 S2Eapp(s2f0, list_sing(s2i1))
 //
 in
+s2exp_whnfize
+(
   s2exp_make_node(s2t0, node)
+)
 end // end of [s2exp_type_strlen]
 
 (* ****** ****** *)
@@ -1124,8 +1139,8 @@ s2exp_list1
   labs2explst_make_list1(s2es)
 //
 in
-  s2exp_make_node
-  (s2t, S2Etyrec(knd, ~1(*npf*), ls2es))
+s2exp_make_node
+(s2t, S2Etyrec(knd, ~1(*npf*), ls2es))
 end // end of [s2exp_list1]
 
 implement
@@ -1154,7 +1169,7 @@ s2exp_list2
   labs2explst_make_list2(s2es1, s2es2)
 //
 in
-  s2exp_make_node(s2t, S2Etyrec(knd, npf, ls2es))
+s2exp_make_node(s2t, S2Etyrec(knd, npf, ls2es))
 end // end of [s2exp_list2]
 
 (* ****** ****** *)
