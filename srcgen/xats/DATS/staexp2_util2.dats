@@ -351,6 +351,23 @@ s2exp_subst$var<>(s2e0, flag)
   end // end of [S2Extv]
 //
 |
+S2Etop(s2e1) =>
+let
+val
+s2e1 = auxs2e0(s2e1, flag)
+in
+  s2exp_make_node( s2t0, S2Etop(s2e1) )
+end
+|
+S2Etpz(s2e1) =>
+let
+val
+s2e1 = auxs2e0(s2e1, flag)
+in
+  s2exp_make_node( s2t0, S2Etpz(s2e1) )
+end
+//
+|
 S2Eapp
 (s2e1, s2es) => let
 val
@@ -377,20 +394,24 @@ s2exp_make_node(s2t0, S2Elam(s2vs, s2e1))
 end // end of [S2Elam]
 //
 |
-S2Etop(s2e1) =>
+S2Earg
+(knd0, sarg) =>
 let
-val
-s2e1 = auxs2e0(s2e1, flag)
+  val
+  sarg = auxs2e0(sarg, flag)
 in
-  s2exp_make_node( s2t0, S2Etop(s2e1) )
+s2exp_make_node(s2t0, S2Earg(knd0, sarg))
 end
 |
-S2Etpz(s2e1) =>
+S2Eatx
+(sbef, saft) =>
 let
-val
-s2e1 = auxs2e0(s2e1, flag)
+  val
+  sbef = auxs2e0(sbef, flag)
+  val
+  saft = auxs2e0(saft, flag)
 in
-  s2exp_make_node( s2t0, S2Etpz(s2e1) )
+s2exp_make_node(s2t0, S2Eatx(sbef, saft))
 end
 //
 |
@@ -412,11 +433,12 @@ end
 //
 |
 S2Eexi
-(s2vs, s2ps, s2e1) => let
-val
-s2ps = auxs2es(s2ps, flag)
-val
-s2e1 = auxs2e0(s2e1, flag)
+(s2vs, s2ps, s2e1) =>
+let
+  val
+  s2ps = auxs2es(s2ps, flag)
+  val
+  s2e1 = auxs2e0(s2e1, flag)
 in
 if
 flag=fini
@@ -426,11 +448,12 @@ s2exp_make_node(s2t0, S2Eexi(s2vs, s2ps, s2e1))
 end
 |
 S2Euni
-(s2vs, s2ps, s2e1) => let
-val
-s2ps = auxs2es(s2ps, flag)
-val
-s2e1 = auxs2e0(s2e1, flag)
+(s2vs, s2ps, s2e1) =>
+let
+  val
+  s2ps = auxs2es(s2ps, flag)
+  val
+  s2e1 = auxs2e0(s2e1, flag)
 in
 if
 flag=fini
