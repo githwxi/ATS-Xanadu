@@ -38,7 +38,7 @@ list_vt_nil
 ((*void*)) => 0
 |
 list_vt_cons
-(  _, xs  ) => 1 + length_vt(xs)
+(  _, ys  ) => 1 + length_vt(ys)
 )
 ////
 (* ****** ****** *)
