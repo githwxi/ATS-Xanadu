@@ -1445,11 +1445,11 @@ val
 s2e2 =
 trans4x_s2exp_deexi
 ( env0, loc0, s2e2 )
-(*
+// (*
 val () =
 println!
 ("auxi_tple: s2e2 = ", s2e2)
-*)
+// *)
 val-
 S2Eapp
 ( s2f2
