@@ -1839,7 +1839,7 @@ S2Eatx
 (s2e1,aft2) => auxs2e1(s2e1)
 | _(*rest-of-s2exp*) => s2e1
 )
-}
+} (*where*) // end of [val]
 //
 val
 d4e1 =
@@ -2237,7 +2237,8 @@ D4Etalf(_, opt2) =>
 (
 case+ opt2 of
 //
-| None() => D4ERRupdtd0()
+| None() =>
+  D4ERRnone(*void*)
 //
 | Some(xtv2) =>
   D4ERRnone(*void*) where
@@ -2274,7 +2275,8 @@ D3Eif0
 , d3e2
 , opt3) = d3e0.node()
 //
-val d4e1 =
+val
+d4e1 =
 trans34_dexp(env0, d3e1)
 //
 val
@@ -2346,8 +2348,14 @@ in
 d4exp_make_node
 ( loc0
 , s2e0
-, t2p0, D4Eif0(d4e1, d4e2, opt3) )
-end (*let*) // end of [aux_if0]
+, t2p0, D4Eif0(d4e1, d4e2, opt3))
+end where
+{
+//
+val () =
+println!("aux_if0: d3e0 = ", d3e0)
+//
+} (* where *) // end of [aux_if0]
 
 (* ****** ****** *)
 
@@ -2630,16 +2638,8 @@ trans34_dexp(env0, d3e1)
 val
 s2e1 = d4e1.sexp((*void*))
 //
-in
-//
-if
-// true ||
-s2exp_islin(s2e1)
-then
-let
 val
-opt1 =
-auxupdt(env0, d4e1)
+opt1 = auxupdt(env0, d4e1)
 //
 val
 opt2 =
@@ -2662,16 +2662,20 @@ case+ opt2 of
 ) : void // end of [val]
 //
 in
-d4exp_make_node
-( loc0
-, s2e1, t2p0, D4Eflat(d4e1, opt2))
-end // end of [then]
-else
-d4exp_make_node
-( loc0
-, s2e1, t2p0, D4Eflat(d4e1, None))
 //
-end (*let*) // end of [aux_flat]
+d4exp_make_node
+( loc0
+, s2e1
+, t2p0, D4Eflat(d4e1, opt2))
+//
+end where
+{
+//
+  val () =
+  println!
+  ("aux_flat: d3e0 = ", d3e0)
+//
+} (*where*) // end of [aux_flat]
 
 end // end of [aux_flat]
 
@@ -2893,9 +2897,47 @@ val
 d4e1 =
 trans34_dexp(env0, d3e1)
 //
+local
+val () =
+tr34env_add_bran(env0)
+in(*in-of-local*)
+val
+stmp =
+tr34env_stmap_bran(env0)
+val
+((*void*)) =
+println!
+(
+"\
+trans34_dexp: \
+aux_if0: test: stmp=\n", stmp)
+val () = tr34env_pop_bran(env0)
+end // end of [local]
+//
+local
+val () =
+tr34env_add_bran(env0)
+in(*in-of-local*)
 val
 d4e2 =
-trans34_dexp_dntp(env0, d3e2, s2e0)
+trans34_dexp_dntp
+(  env0, d3e2, s2e0  )
+//
+val
+stmp =
+tr34env_stmap_bran(env0)
+val
+((*void*)) =
+println!
+(
+"\
+trans34_dexp: \
+aux_if0: then: stmp=\n", stmp)
+//
+val () = tr34env_pop_bran(env0)
+//
+end // end of [local]
+//
 val
 opt3 =
 (
@@ -2904,10 +2946,28 @@ case+ opt3 of
 None() => None()
 |
 Some(d3e3) =>
-Some
+Some(d4e3) where
+{
+val () =
+tr34env_add_bran(env0)
+//
+val d4e3 =
+trans34_dexp_dntp
+(  env0, d3e3, s2e0  )
+//
+val
+stmp =
+tr34env_stmap_bran(env0)
+val
+((*void*)) =
+println!
 (
-trans34_dexp_dntp(env0, d3e3, s2e0)
-)
+"\
+trans34_dexp: \
+aux_if0: else: stmp=\n", stmp)
+//
+val () = tr34env_pop_bran(env0)
+}
 ) : d4expopt // end of [val]
 //
 in
@@ -3314,13 +3374,18 @@ s2at = s2exp_at0(s2e1, s2l0)
 in
 d4pat_make_node
 ( loc0
-, s2e1
-, t2p0, D4Pvar(d2v0)) where
+, s2e1, t2p0, D4Pvar(d2v0)) where
 {
 val () =
 tr34env_add_dvar_sexp(env0, d2w1, s2at)
 }
-end (*let*) // end of [auxcbrf]
+end where
+{
+(*
+  val () =
+  println!("auxcbrf: d3p0 = ", d3p0)
+*)
+} (*where*) // end of [auxcbrf]
 (* ****** ****** *)
 
 fun
@@ -3351,10 +3416,11 @@ s2e2.node() of
 //
 |
 S2Earg
-(_, s2e2) => s2e2
+(knd0, sarg) => sarg
 |
 S2Eatx
-(s2e2, _) => auxs2e2(s2e2)
+( sbef
+, saft) => auxs2e2(sbef)
 //
 |
 _(*else-of-s2exp*) => s2e2
@@ -4027,6 +4093,14 @@ trans34_farglst_s2exp(env0, f3as, s2f0, sres)
 ) : f4arglstopt // end-of-val
 //
 val
+stmp =
+tr34env_stmap_fun0(env0)
+val
+((*void*)) =
+println!
+("trans34_fundecl: stmp(bef)=\n", stmp)
+//
+val
 def = 
 (
 case
@@ -4061,7 +4135,7 @@ tr34env_stmap_fun0(env0)
 val
 ((*void*)) =
 println!
-("trans34_fundecl: stmp=\n", stmp)
+("trans34_fundecl: stmp(aft)=\n", stmp)
 //
 in(*in-of-let*)
 //
