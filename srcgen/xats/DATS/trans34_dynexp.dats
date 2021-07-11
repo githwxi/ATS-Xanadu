@@ -1783,10 +1783,80 @@ S2Efun
 , npf
 , s2es, s2r0) =>
 let
+//
+fun
+auxargs
+( env0:
+! tr34env
+, d3es
+: d3explst
+, s2es
+: s2explst): d4explst =
+(
+case+ d3es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(d3e1, d3es) =>
+(
+case+ s2es of
+|
+list_nil() =>
+let
+val
+s2e1 =
+the_s2exp_none0
+val
+d4e1 =
+trans34_dexp_dntp
+(env0, d3e1, s2e1)
+in
+list_cons
+( d4e1
+, auxargs(env0, d3es, s2es))
+end // end of [list_nil]
+|
+list_cons
+(s2e1, s2es) =>
+let
+//
+val
+s2e1 =
+auxs2e1(s2e1) where
+{
+fun
+auxs2e1
+(s2e1: s2exp): s2exp =
+(
+case+
+s2e1.node() of
+|
+S2Earg
+(knd0,s2e1) => s2e1
+|
+S2Eatx
+(s2e1,aft2) => auxs2e1(s2e1)
+| _(*rest-of-s2exp*) => s2e1
+)
+}
+//
+val
+d4e1 =
+trans34_dexp_dntp
+(env0, d3e1, s2e1)
+//
+in
+list_cons
+( d4e1
+, auxargs(env0, d3es, s2es))
+end
+)
+) (* end of [auxargs] *)
+//
 val
 d4es =
-trans34_dexplst_dnts
-( env0, d3es, s2es )
+auxargs(env0, d3es, s2es)
 in
 d4exp_make_node
 ( loc0

@@ -5,6 +5,7 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+(*
 //
 fun
 <a:type>
@@ -21,6 +22,7 @@ list_cons
 (  _, xs  ) => 1 + length(xs)
 )
 ////
+*)
 (* ****** ****** *)
 //
 fun
@@ -36,7 +38,7 @@ list_vt_nil
 ((*void*)) => 0
 |
 list_vt_cons
-(  _, xs  ) => 1 + length(xs)
+(  _, xs  ) => 1 + length_vt(xs)
 )
 ////
 (* ****** ****** *)
