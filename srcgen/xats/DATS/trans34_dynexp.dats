@@ -2902,23 +2902,6 @@ val () =
 tr34env_add_bran(env0)
 in(*in-of-local*)
 val
-stmp =
-tr34env_stmap_bran(env0)
-val
-((*void*)) =
-println!
-(
-"\
-trans34_dexp: \
-aux_if0: test: stmp=\n", stmp)
-val () = tr34env_pop_bran(env0)
-end // end of [local]
-//
-local
-val () =
-tr34env_add_bran(env0)
-in(*in-of-local*)
-val
 d4e2 =
 trans34_dexp_dntp
 (  env0, d3e2, s2e0  )
