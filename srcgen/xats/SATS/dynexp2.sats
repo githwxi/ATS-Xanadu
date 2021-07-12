@@ -413,6 +413,17 @@ overload .atprf with d2var_get_atprf
 (* ****** ****** *)
 //
 fun
+d2var_get_msexp
+  ( d2v0: d2var ) : s2expopt
+fun
+d2var_set_msexp
+(d2v0: d2var, s2e0: s2exp): void
+//
+overload .msexp with d2var_set_msexp
+//
+(* ****** ****** *)
+//
+fun
 d2con_get_stamp(d2con): stamp
 fun
 d2cst_get_stamp(d2cst): stamp
@@ -483,6 +494,8 @@ fun
 stamp_d2var_saddr(d2v0: d2var): void
 fun
 stamp_d2var_atprf(d2v0: d2var): void
+fun
+stamp_d2var_msexp(d2v0: d2var): void
 //
 (* ****** ****** *)
 //
