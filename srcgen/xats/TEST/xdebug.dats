@@ -5,6 +5,22 @@
 (* ****** ****** *)
 #staload "./xdebug.sats"
 (* ****** ****** *)
+//
+fun
+foo
+( x0
+: &(?int) >> int): void =
+if true then x0 := 1 else x0 := 2
+////
+(* ****** ****** *)
+//
+fun
+foo(x0: int): int =
+let
+var x1: int = x0 in x1 + x1
+end
+////
+(* ****** ****** *)
 (*
 //
 fun
@@ -23,14 +39,6 @@ list_cons
 )
 ////
 *)
-(* ****** ****** *)
-//
-fun
-foo
-( x0
-: &(?int) >> int): void =
-if true then x0 := 1 else x0 := 2
-////
 (* ****** ****** *)
 //
 fun
