@@ -3265,6 +3265,44 @@ in
 end (*let*) // end of [auxwth]
 (* ****** ****** *)
 fun
+auxaft
+( d3p0
+: d3pat)
+: Option_vt(s2exp) =
+(
+case+
+d3p0.node() of
+|
+D3Panno
+( d3p1
+, s1e2, s2e2) =>
+auxs2e2(s2e2) where
+{
+fun
+auxs2e2
+( s2e2
+: s2exp)
+: Option_vt(s2exp) =
+(
+case+
+s2e2.node() of
+//
+|
+S2Earg
+(knd0, sarg) => Some_vt(sarg)
+|
+S2Eatx
+(sbef, saft) => Some_vt(saft)
+//
+|
+_ (*rest-of-s2exp*) => None_vt()
+//
+)
+}
+| _ (*non-D4Panno*) => None_vt()
+)
+(* ****** ****** *)
+fun
 iscbrf
 ( d3p0
 : d3pat): bool =
@@ -3364,10 +3402,10 @@ tr34env_add_dvar_sexp(env0, d2w1, s2at)
 }
 end where
 {
-(*
-  val () =
-  println!("auxcbrf: d3p0 = ", d3p0)
-*)
+// (*
+val () =
+println!("auxcbrf: d3p0 = ", d3p0)
+// *)
 } (*where*) // end of [auxcbrf]
 (* ****** ****** *)
 
@@ -3407,7 +3445,7 @@ S2Eatx
 //
 |
 _(*else-of-s2exp*) => s2e2
-)
+) (* end of [auxs2e2] *)
 } (*whr*)// end-of-D3Panno
 |
 _(* non-D3Panno *) =>
@@ -3431,9 +3469,54 @@ in(*in-of-let*)
 if
 iscbrf(d3p0)
 then
-auxcbrf(env0, d3p1, s2e1)
+let
+val
+d4p1 =
+auxcbrf
+(env0, d3p1, s2e1)
+val
+sopt = auxaft(d3p0)
+in
+//
+case+ sopt of
+| ~
+None_vt() => d4p1
+| ~
+Some_vt(saft) =>
+let
+val-
+D4Pvar(d2v1) = d4p1.node()
+val-Some(d2w1) = d2v1.atprf()
+val-Some(s2l1) = d2v1.saddr()
+val s2at = s2exp_at0(saft, s2l1)
+val () =
+d2var_set_msexp(d2w1, s2at) in d4p1
+end // [Some_vt]
+//
+end // end of [then]
 else
-trans34_dpat_dntp(env0,d3p1,s2e1)
+let
+val
+d4p1 =
+trans34_dpat_dntp
+(env0, d3p1, s2e1)
+val
+sopt = auxaft(d3p0)
+in
+//
+case+ sopt of
+| ~
+None_vt() => d4p1
+| ~
+Some_vt(saft) =>
+let
+val-
+D4Pvar(d2v1) = d4p1.node()
+val () =
+d2var_set_msexp(d2v1, saft) in d4p1
+end // [Some_vt]
+//
+end // end of [else]
 //
 end (*let*) // end of [auxarg0]
 (* ****** ****** *)
@@ -4329,6 +4412,13 @@ s2exp_at0(s2e, s2l)
 in
 d2var_set_msexp(d2w, s2at)
 end) : void // end-of-val
+//
+val () =
+println!
+("trans34_vardecl: d2w = ", d2w)
+val () =
+println!
+("trans34_vardecl: msexp = ", d2w.msexp())
 //
 in(*in-of-let*)
 //

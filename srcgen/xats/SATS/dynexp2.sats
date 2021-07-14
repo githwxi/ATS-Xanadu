@@ -419,7 +419,7 @@ fun
 d2var_set_msexp
 (d2v0: d2var, s2e0: s2exp): void
 //
-overload .msexp with d2var_set_msexp
+overload .msexp with d2var_get_msexp
 //
 (* ****** ****** *)
 //
