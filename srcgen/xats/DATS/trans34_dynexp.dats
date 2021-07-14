@@ -4313,7 +4313,22 @@ in
 t2ype_sexpize_env
 ( env0, t2ype_eval(t2p) )
 //
-end) : s2exp // end-of-val
+end): s2exp // end-of-val
+//
+val () =
+(
+case+ res of
+|
+None() => ()
+|
+Some(s2e) =>
+let
+val
+s2at =
+s2exp_at0(s2e, s2l)
+in
+d2var_set_msexp(d2w, s2at)
+end) : void // end-of-val
 //
 in(*in-of-let*)
 //
