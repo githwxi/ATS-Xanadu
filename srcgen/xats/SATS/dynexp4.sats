@@ -363,6 +363,22 @@ overload prerr with prerr_stmap
 overload fprint with fprint_stmap
 //
 (* ****** ****** *)
+//
+datatype
+dvmrg2 = DVMRG2 of
+( d2var
+, s2expopt(*then*)
+, s2expopt(*else*))
+datatype
+dvmrgs = DVMRGS of
+( d2var, List0(s2expopt))
+//
+fun
+stmap_dvmrg2
+( map1: stmap
+, map2: stmap): List0(dvmrg2)
+//
+(* ****** ****** *)
 
 datatype
 d4exp_node =
