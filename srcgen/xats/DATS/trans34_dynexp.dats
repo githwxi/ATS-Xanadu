@@ -92,10 +92,11 @@ fprint_val<tq2arg> = fprint_tq2arg
 implement
 fprint_val<d3exp> = fprint_d3exp
 (* ****** ****** *)
-
 implement
 fprint_val<d3ecl> = fprint_d3ecl
-
+(* ****** ****** *)
+implement
+fprint_val<dvmrg2> = fprint_dvmrg2
 (* ****** ****** *)
 //
 implement
@@ -2293,21 +2294,29 @@ in(*in-of-local*)
 //
 val
 d4e2 =
+let
+val
+d4e2 =
 trans34_dexp_dntp
-(  env0, d3e2, s2e0  )
+(env0, d3e2, s2e0)
 //
 val
 stmp =
 tr34env_stmap_bran(env0)
+//
 val
 ((*void*)) =
 println!
-(
-"\
+("\
 trans34_dexp: \
 aux_if0: then: stmp=\n", stmp)
 //
+in
+  d4exp_stmap(d4e2, stmp)
+end (*let*)//end-of-val[d4e2]
+//
 val () = tr34env_pop_bran(env0)
+//
 end // end of [local]
 //
 val opt3 =
@@ -2324,25 +2333,69 @@ Some(d4e3)) where
 val () =
 tr34env_add_bran(env0)
 //
-val d4e3 =
+val
+d4e3 =
+let
+val
+d4e3 =
 trans34_dexp_dntp
-(  env0, d3e3, s2e0  )
+(env0, d3e3, s2e0)
 //
 val
 stmp =
 tr34env_stmap_bran(env0)
+//
 val
 ((*void*)) =
 println!
-(
-"\
+("\
 trans34_dexp: \
 aux_if0: else: stmp=\n", stmp)
 //
+in
+  d4exp_stmap(d4e3, stmp)
+end (*let*)//end-of-val[d4e3]
+//
 val () = tr34env_pop_bran(env0)
 //
-} (* end of [Some] *)
-) : d4expopt // end-of-val
+} (*where*) // end of [Some]
+) : d4expopt // end-of-val[opt3]
+//
+val
+dvmrg =
+let
+//
+val map1 =
+(
+case-
+d4e2.node() of
+|
+D4Estmap(_, map1) => map1
+) : stmap // end of [val]
+//
+val map2 =
+(
+case+ opt3 of
+|
+None() => stmap_nil()
+|
+Some(d4e3) =>
+(
+case-
+d4e3.node() of
+|
+D4Estmap(_, map2) => map2)
+) : stmap // end of [val]
+//
+in
+  stmap_merge2(map1, map2)
+end (*let*) // end-of-val
+//
+val () =
+println!
+("\
+trans34_dexp: \
+aux_if0: dvmrg=\n", dvmrg)
 //
 in
 d4exp_make_node
@@ -2353,9 +2406,10 @@ end where
 {
 //
 val () =
-println!("aux_if0: d3e0 = ", d3e0)
+println!
+("trans34_dexp: aux_if0: d3e0 = ", d3e0)
 //
-} (* where *) // end of [aux_if0]
+} (*where*) // end-of-fun[aux_if0]
 
 (* ****** ****** *)
 
@@ -2901,21 +2955,29 @@ local
 val () =
 tr34env_add_bran(env0)
 in(*in-of-local*)
+//
+val
+d4e2 =
+let
 val
 d4e2 =
 trans34_dexp_dntp
-(  env0, d3e2, s2e0  )
+(env0, d3e2, s2e0)
 //
 val
 stmp =
 tr34env_stmap_bran(env0)
+//
 val
 ((*void*)) =
 println!
-(
-"\
-trans34_dexp: \
+("\
+trans34_dexp_dntp: \
 aux_if0: then: stmp=\n", stmp)
+//
+in
+  d4exp_stmap(d4e2, stmp)
+end (*let*)//end-of-val[d4e2]
 //
 val () = tr34env_pop_bran(env0)
 //
@@ -2934,30 +2996,80 @@ Some(d4e3) where
 val () =
 tr34env_add_bran(env0)
 //
-val d4e3 =
+val
+d4e3 =
+let
+val
+d4e3 =
 trans34_dexp_dntp
-(  env0, d3e3, s2e0  )
+(env0, d3e3, s2e0)
 //
 val
 stmp =
 tr34env_stmap_bran(env0)
+//
 val
 ((*void*)) =
 println!
-(
-"\
-trans34_dexp: \
+("\
+trans34_dexp_dntp: \
 aux_if0: else: stmp=\n", stmp)
 //
+in
+  d4exp_stmap(d4e3, stmp)
+end (*let*)//end-of-val[d4e3]
+//
 val () = tr34env_pop_bran(env0)
-}
-) : d4expopt // end of [val]
+//
+} (*where*) // end of [Some]
+) : d4expopt // end-of-val[opt3]
+//
+val
+dvmrg =
+let
+val map1 =
+(
+case-
+d4e2.node() of
+|
+D4Estmap(_, map1) => map1
+) : stmap // end of [val]
+val map2 =
+(
+case+ opt3 of
+|
+None() => stmap_nil()
+|
+Some(d4e3) =>
+(
+case-
+d4e3.node() of
+|
+D4Estmap(_, map2) => map2)
+) : stmap // end of [val]
+in
+  stmap_merge2(map1, map2)
+end (*end*) // end of [val]
+//
+val () =
+println!
+("\
+trans34_dexp_dntp: \
+aux_if0: dvmrg=\n", dvmrg)
 //
 in
 d4exp_make_node
 ( loc0
-, s2e0, t2p0, D4Eif0(d4e1, d4e2, opt3))
-end // end of [aux_if0]
+, s2e0
+, t2p0, D4Eif0(d4e1, d4e2, opt3))
+end where
+{
+//
+val () =
+println!
+("trans34_dexp_dntp: aux_if0: d3e0 = ", d3e0)
+//
+} (*where*) // end-of-fun[aux_if0]
 
 (* ****** ****** *)
 

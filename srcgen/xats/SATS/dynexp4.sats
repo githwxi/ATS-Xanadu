@@ -570,6 +570,10 @@ d4exp_none2(d4e0: d4exp): d4exp
 //
 (* ****** ****** *)
 fun
+d4exp_stmap
+(d4e1: d4exp, map2: stmap): d4exp
+(* ****** ****** *)
+fun
 d4exp_tcast
 (d4e1: d4exp, s2e2: s2exp): d4exp
 (* ****** ****** *)
@@ -881,12 +885,18 @@ fprint_dvmrg2: fprint_type(dvmrg2)
 (* ****** ****** *)
 //
 fun
-stmap_merge1
-( map1: stmap): List0(dvmrg2)
-fun
 stmap_merge2
 ( map1: stmap
 , map2: stmap): List0(dvmrg2)
+//
+(*
+fun
+stmap_merge1l
+( map1: stmap): List0(dvmrg2)
+fun
+stmap_merge1r
+( map1: stmap): List0(dvmrg2)
+*)
 //
 (* ****** ****** *)
 
