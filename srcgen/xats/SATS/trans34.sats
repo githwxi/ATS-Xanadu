@@ -549,12 +549,11 @@ fun
 tr34env_d2var_get_sexp
 ( env0:
 ! tr34env, d2v0: d2var): s2exp
-(*
+//
 fun
-tr34env_d2var_set_sexp
+tr34env_d2var_get_msexp
 ( env0:
-! tr34env, d2v0: d2var, s2e0: s2exp): void
-*)
+! tr34env, d2v0: d2var): s2exp
 //
 (* ****** ****** *)
 fun

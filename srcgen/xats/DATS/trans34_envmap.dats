@@ -598,6 +598,63 @@ end // end of [local]
 
 (* ****** ****** *)
 //
+implement
+tr34env_add_dvar
+( env0, d2v0 ) =
+(
+case+ env0 of
+|
+@TR34ENV
+(_, dstk) =>
+(
+  fold@(env0)) where
+{
+val () =
+dstk := dvarstk_locs(d2v0, dstk)
+}
+) where
+{
+//
+(*
+val () =
+println!
+("tr34env_add_dvar: d2v0 = ", d2v0)
+*)
+//
+} (*where*) // end of [tr34env_add_dvar]
+//
+(* ****** ****** *)
+//
+implement
+tr34env_add_dvar_sexp
+( env0, d2v0, s2e0 ) =
+(
+case+ env0 of
+|
+@TR34ENV
+(_, dstk) =>
+(
+  fold@(env0)) where
+{
+val () =
+dstk := dvarstk_cons(d2v0, s2e0, dstk)
+}
+) where
+{
+//
+(*
+val () =
+println!
+("tr34env_add_dvar_sexp: d2v0 = ", d2v0)
+val () =
+println!
+("tr34env_add_dvar_sexp: s2e0 = ", s2e0)
+*)
+//
+} (*where*) // end of [tr34env_add_dvar_sexp]
+//
+(* ****** ****** *)
+//
 local
 //
 fun
@@ -662,62 +719,23 @@ TR34ENV
 end // end of [local]
 //
 (* ****** ****** *)
-//
+
 implement
-tr34env_add_dvar
+tr34env_d2var_get_msexp
 ( env0, d2v0 ) =
-(
-case+ env0 of
-|
-@TR34ENV
-(_, dstk) =>
-(
-  fold@(env0)) where
-{
-val () =
-dstk := dvarstk_locs(d2v0, dstk)
-}
-) where
-{
+let
+val opt = d2v0.msexp()
+in
 //
-(*
-val () =
-println!
-("tr34env_add_dvar: d2v0 = ", d2v0)
-*)
+case+ opt of
 //
-} (*where*) // end of [tr34env_add_dvar]
+| Some(ms2e) => ms2e
 //
-(* ****** ****** *)
+| None((*void*)) =>
+  tr34env_d2var_get_sexp(env0, d2v0)
 //
-implement
-tr34env_add_dvar_sexp
-( env0, d2v0, s2e0 ) =
-(
-case+ env0 of
-|
-@TR34ENV
-(_, dstk) =>
-(
-  fold@(env0)) where
-{
-val () =
-dstk := dvarstk_cons(d2v0, s2e0, dstk)
-}
-) where
-{
-//
-(*
-val () =
-println!
-("tr34env_add_dvar_sexp: d2v0 = ", d2v0)
-val () =
-println!
-("tr34env_add_dvar_sexp: s2e0 = ", s2e0)
-*)
-//
-} (*where*) // end of [tr34env_add_dvar_sexp]
-//
+end // end of [tr34env_d2var_get_msexp]
+
 (* ****** ****** *)
 
 (* end of [xats_trans34_envmap.dats] *)
