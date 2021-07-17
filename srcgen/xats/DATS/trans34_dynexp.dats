@@ -3057,6 +3057,55 @@ println!
 trans34_dexp_dntp: \
 aux_if0: dvmrg=\n", dvmrg)
 //
+(*
+val () =
+fdvmrg(env0, dvmrg) where
+{
+fun
+fdvmrg
+( env0:
+! tr34env
+, xtts: List0(dvmrg2)): void =
+(
+case+ xtts of
+|
+list_nil() => ()
+|
+list_cons
+(xtt0, xtts) =>
+let
+//
+val+
+DVMRG2
+( d2v0
+, opt1
+, opt2) = xtt0
+val
+ms2e =
+tr34env_d2var_get_msexp
+  (env0, d2v0)
+//
+in
+fdvmrg(env0, xtts) where  
+{
+val () =
+println!
+("aux_if0: fdvmrg: d2v0 = ", d2v0)
+val () =
+println!
+("aux_if0: fdvmrg: opt1 = ", opt1)
+val () =
+println!
+("aux_if0: fdvmrg: opt2 = ", opt2)
+val () =
+println!
+("aux_if0: fdvmrg: ms2e = ", ms2e)
+}
+end // end of [list_cons]
+) (* end of [fdvmerg] *)
+} (*where*) // end-of-val[()]
+*)
+//
 in
 d4exp_make_node
 ( loc0
