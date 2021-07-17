@@ -275,7 +275,22 @@ d4exp_make_node
 } (*where*) // d4exp_none2
 
 (* ****** ****** *)
-
+//
+implement
+d4exp_stmap
+( d4e1, map2 ) =
+d4exp_make_node
+( loc1
+, s2e1, t2p1, node) where
+{
+val loc1 = d4e1.loc()
+val t2p1 = d4e1.type()
+val s2e1 = d4e1.sexp()
+val node = D4Estmap(d4e1, map2)
+} (*where*) // d4exp_stmap
+//
+(* ****** ****** *)
+//
 implement
 d4exp_tcast
 ( d4e1, s2e2 ) =
@@ -294,7 +309,7 @@ d4exp_make_node
   val node = D4Etcast(d4e1, cstr)
 //
 } (*where*) // d4exp_make_node
-
+//
 (* ****** ****** *)
 //
 implement

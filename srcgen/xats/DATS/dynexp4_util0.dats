@@ -338,5 +338,20 @@ end
 } (*where*) // end of [stmap_merge2]
 
 (* ****** ****** *)
+//
+(*
+implement
+stmap_merge1l(map1) =
+(
+stmap_merge2(map1, map2)
+) where { val map2 = stmap_nil() }
+implement
+stmap_merge1r(map2) =
+(
+stmap_merge2(map1, map2)
+) where { val map1 = stmap_nil() }
+*)
+//
+(* ****** ****** *)
 
 (* end of [xats_dynexp4_util0.dats] *)
