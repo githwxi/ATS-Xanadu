@@ -269,6 +269,13 @@ eq_d2var_d2var
 $STM.eq_stamp_stamp(x1.stamp(), x2.stamp())
 //
 (* ****** ****** *)
+//
+implement
+cmp_d2var_d2var
+(x1, x2) =
+$STM.cmp_stamp_stamp(x1.stamp(), x2.stamp())
+//
+(* ****** ****** *)
 
 local
 

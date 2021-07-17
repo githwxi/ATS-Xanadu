@@ -453,6 +453,12 @@ overload = with eq_d2var_d2var
 (* ****** ****** *)
 //
 fun
+cmp_d2var_d2var
+(x1: d2var, x2: d2var): int(*sgn*)
+//
+(* ****** ****** *)
+//
+fun
 d2cst_make_dvar
 (d2v: d2var): d2cst
 //

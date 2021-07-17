@@ -363,22 +363,6 @@ overload prerr with prerr_stmap
 overload fprint with fprint_stmap
 //
 (* ****** ****** *)
-//
-datatype
-dvmrg2 = DVMRG2 of
-( d2var
-, s2expopt(*then*)
-, s2expopt(*else*))
-datatype
-dvmrgs = DVMRGS of
-( d2var, List0(s2expopt))
-//
-fun
-stmap_dvmrg2
-( map1: stmap
-, map2: stmap): List0(dvmrg2)
-//
-(* ****** ****** *)
 
 datatype
 d4exp_node =
@@ -875,6 +859,34 @@ fun d4ecl_none1(d3ecl): d4ecl
 fun
 d4ecl_make_node
 (loc: loc_t, node: d4ecl_node): d4ecl
+//
+(* ****** ****** *)
+//
+datatype
+dvmrg2 = DVMRG2 of
+( d2var
+, s2expopt(*then*)
+, s2expopt(*else*))
+datatype
+dvmrgs = DVMRGS of
+( d2var, List0(s2expopt))
+//
+(* ****** ****** *)
+fun
+print_dvmrg2(dvmrg2): void
+fun
+prerr_dvmrg2(dvmrg2): void
+fun
+fprint_dvmrg2: fprint_type(dvmrg2)
+(* ****** ****** *)
+//
+fun
+stmap_merge1
+( map1: stmap): List0(dvmrg2)
+fun
+stmap_merge2
+( map1: stmap
+, map2: stmap): List0(dvmrg2)
 //
 (* ****** ****** *)
 

@@ -204,7 +204,7 @@ $effmask_all(k1.stamp())
 and x2 =
 $effmask_all(k2.stamp())
 //
-in compare_stamp_stamp(x1, x2) end
+in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
 
@@ -314,7 +314,7 @@ $effmask_all(k1.stamp())
 and x2 =
 $effmask_all(k2.stamp())
 //
-in compare_stamp_stamp(x1, x2) end
+in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
 
@@ -424,7 +424,7 @@ $effmask_all(k1.stamp())
 and x2 =
 $effmask_all(k2.stamp())
 //
-in compare_stamp_stamp(x1, x2) end
+in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
 
@@ -534,7 +534,7 @@ $effmask_all(k1.stamp())
 and x2 =
 $effmask_all(k2.stamp())
 //
-in compare_stamp_stamp(x1, x2) end
+in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
 
@@ -644,7 +644,7 @@ $effmask_all(k1.stamp())
 and x2 =
 $effmask_all(k2.stamp())
 //
-in compare_stamp_stamp(x1, x2) end
+in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
 
