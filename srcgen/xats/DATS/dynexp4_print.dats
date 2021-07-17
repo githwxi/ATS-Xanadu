@@ -928,5 +928,25 @@ Some(rcd_a4g) =>
 end // end of [fprint_f4undecl]
 
 (* ****** ****** *)
+//
+implement
+print_dvmrg2(x0) =
+fprint_dvmrg2(stdout_ref, x0)
+implement
+prerr_dvmrg2(x0) =
+fprint_dvmrg2(stderr_ref, x0)
+implement
+fprint_dvmrg2(out, x0) =
+(
+case+ x0 of
+|
+DVMRG2(d2v0, opt1, opt2) =>
+fprint!
+( out
+, "DVMRG2("
+, d2v0, "; ", opt1, "; ", opt2, ")")
+)
+//
+(* ****** ****** *)
 
 (* end of [xats_dynexp4_print.dats] *)

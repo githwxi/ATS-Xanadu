@@ -74,7 +74,7 @@ eq_stamp_stamp
 (* ****** ****** *)
 //
 implement
-compare_stamp_stamp
+cmp_stamp_stamp
   (x1, x2) =
 (
   compare_ptr0_ptr0(x1, x2)
