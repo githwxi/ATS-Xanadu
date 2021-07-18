@@ -114,6 +114,7 @@ typedef d4ecl = $D4E.d4ecl
 (* ****** ****** *)
 typedef dlocs = $D4E.dlocs
 typedef stmap = $D4E.stmap
+typedef stmrg = $D4E.stmrg
 (* ****** ****** *)
 typedef dvmrg2 = $D4E.dvmrg2
 typedef dvmrgs = $D4E.dvmrgs
@@ -573,18 +574,13 @@ tr34env_d2var_get_msexp
 *)
 //
 fun
-tr34env_dvmrg2
-(env0: !tr34env, xtt: dvmrg2): void
+trans34_dvmrg2_list
+( env0
+: !tr34env, xtts: List0(dvmrg2)): stmrg
 fun
-tr34env_dvmrg2_list
-(env0: !tr34env, xtts: List0(dvmrg2)): void
-//
-fun
-tr34env_dvmrgs
-(env0: !tr34env, xts: dvmrgs): void
-fun
-tr34env_dvmrgs_list
-(env0: !tr34env, xtts: List0(dvmrgs)): void
+trans34_dvmrgs_list
+( env0
+: !tr34env, xtts: List0(dvmrgs)): stmrg
 //
 (* ****** ****** *)
 

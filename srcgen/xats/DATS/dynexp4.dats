@@ -292,6 +292,21 @@ val node = D4Estmap(d4e1, map2)
 (* ****** ****** *)
 //
 implement
+d4exp_stmrg
+( d4e1, mrg2 ) =
+d4exp_make_node
+( loc1
+, s2e1, t2p1, node) where
+{
+val loc1 = d4e1.loc()
+val t2p1 = d4e1.type()
+val s2e1 = d4e1.sexp()
+val node = D4Estmrg(d4e1, mrg2)
+} (*where*) // d4exp_stmrg
+//
+(* ****** ****** *)
+//
+implement
 d4exp_tcast
 ( d4e1, s2e2 ) =
 d4exp_make_node
@@ -650,21 +665,21 @@ end // end of [local]
 
 local
 //
-datatype
-dvcast = DVCAST of
-(d2var, s2exp, s2exp)
-//
 absimpl
 stmrg_type = List0(dvcast)
 //
 in(* in-of-local *)
 
+(* ****** ****** *)
 implement
-stmrg_listize
-  (mrg0) =
+stmrg_make(xs) = xs
+(* ****** ****** *)
+
+implement
+stmrg_listize(mrg) =
 (
 auxlst
-(mrg0, list_vt_nil())) where
+(mrg, list_vt_nil())) where
 {
 //
 vtypedef res =
@@ -689,7 +704,8 @@ case+ xs of
     {
       val res =
       list_vt_cons
-      ((d2v0, s2e1, s2e2), res) }
+      ( @(d2v0, s2e1, s2e2), res )
+    }
   end // end of [list_cons]
 )
 //

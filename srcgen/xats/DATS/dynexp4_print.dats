@@ -654,7 +654,7 @@ case+ x0.node() of
   ( d4e1, mrg2 ) =>
   fprint!
   ( out
-  , "D4Estmap(", d4e1, "; ", "[]", ")")
+  , "D4Estmrg(", d4e1, "; ", "[]", ")")
 //
 | D4Etcast
   ( d4e1, cstr ) =>
