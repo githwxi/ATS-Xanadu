@@ -719,7 +719,7 @@ TR34ENV
 end // end of [local]
 //
 (* ****** ****** *)
-
+(*
 implement
 tr34env_d2var_get_msexp
 ( env0, d2v0 ) =
@@ -735,7 +735,7 @@ case+ opt of
   tr34env_d2var_get_sexp(env0, d2v0)
 //
 end // end of [tr34env_d2var_get_msexp]
-
+*)
 (* ****** ****** *)
 
 (* end of [xats_trans34_envmap.dats] *)
