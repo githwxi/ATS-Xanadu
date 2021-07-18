@@ -300,12 +300,17 @@ overload prerr with prerr_ti4arg
 overload fprint with fprint_ti4arg
 //
 (* ****** ****** *)
-
+//
 abstype dlocs_type = ptr
 abstype stmap_type = ptr
 typedef dlocs = dlocs_type
 typedef stmap = stmap_type
-
+//
+(* ****** ****** *)
+//
+abstype stmrg_type = ptr
+typedef stmrg = stmrg_type
+//
 (* ****** ****** *)
 //
 fun
@@ -327,40 +332,63 @@ stmap_nil(): stmap
 //
 fun
 stmap_ismem
-( dtm0
+( stmp
 : stmap, d2v0: d2var ): bool
 //
 fun
 stmap_insert
-( dtm0:
+( stmp:
 & stmap >> _
 , d2v0
 : d2var, s2e0: s2exp ): bool
 //
 fun
 stmap_remove
-( dtm0:
+( stmp:
 & stmap >> _, d2v0: d2var): bool
 //
 fun
 stmap_listize
-( dtm0
+( stmp
 : stmap )
 : List0_vt( @(d2var, s2exp) )
 //
 (* ****** ****** *)
 //
 fun
-print_stmap(dtm0: stmap): void
+print_stmap(map: stmap): void
 fun
-prerr_stmap(dtm0: stmap): void
+prerr_stmap(map: stmap): void
 fun
 fprint_stmap
-( out: FILEref, dtm0: stmap): void
+( out: FILEref, map: stmap): void
 //
 overload print with print_stmap
 overload prerr with prerr_stmap
 overload fprint with fprint_stmap
+//
+(* ****** ****** *)
+//
+fun
+stmrg_listize
+( mrg0
+: stmrg )
+: List0_vt
+  ( @(d2var, s2exp, s2exp) )
+//
+(* ****** ****** *)
+//
+fun
+print_stmrg(mrg: stmrg): void
+fun
+prerr_stmrg(mrg: stmrg): void
+fun
+fprint_stmrg
+( out: FILEref, mrg: stmrg): void
+//
+overload print with print_stmrg
+overload prerr with prerr_stmrg
+overload fprint with fprint_stmrg
 //
 (* ****** ****** *)
 
@@ -493,6 +521,8 @@ for the meaning of knd
 //
 | D4Estmap of
   (d4exp, stmap) // linear vtype changes
+| D4Estmrg of
+  (d4exp, stmrg) // linear vtype merging
 //
 | D4Etcast of
   (d4exp, c0str) // constraint generation

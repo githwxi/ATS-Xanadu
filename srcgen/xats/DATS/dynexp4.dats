@@ -648,4 +648,55 @@ end // end of [local]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+dvcast = DVCAST of
+(d2var, s2exp, s2exp)
+//
+absimpl
+stmrg_type = List0(dvcast)
+//
+in(* in-of-local *)
+
+implement
+stmrg_listize
+  (mrg0) =
+(
+auxlst
+(mrg0, list_vt_nil())) where
+{
+//
+vtypedef res =
+List0_vt
+( @(d2var, s2exp, s2exp) )
+//
+fun
+auxlst
+( xs
+: List0(dvcast), res: res): res =
+(
+case+ xs of
+| list_nil() =>
+  list_vt_reverse(res)
+| list_cons(x0, xs) =>
+  let
+  val+
+  DVCAST
+  (d2v0, s2e1, s2e2) = x0
+  in
+    auxlst(xs, res) where
+    {
+      val res =
+      list_vt_cons
+      ((d2v0, s2e1, s2e2), res) }
+  end // end of [list_cons]
+)
+//
+} (*where*) // end of [stmrg_listize]
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [xats_dynexp4.dats] *)

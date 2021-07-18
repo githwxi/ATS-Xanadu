@@ -115,6 +115,9 @@ typedef d4ecl = $D4E.d4ecl
 typedef dlocs = $D4E.dlocs
 typedef stmap = $D4E.stmap
 (* ****** ****** *)
+typedef dvmrg2 = $D4E.dvmrg2
+typedef dvmrgs = $D4E.dvmrgs
+(* ****** ****** *)
 typedef d4gua = $D4E.d4gua
 typedef d4gpat = $D4E.d4gpat
 typedef d4clau = $D4E.d4clau
@@ -550,14 +553,6 @@ tr34env_d2var_get_sexp
 ( env0:
 ! tr34env, d2v0: d2var): s2exp
 //
-(*
-fun
-tr34env_d2var_get_msexp
-( env0:
-! tr34env, d2v0: d2var): s2exp
-*)
-//
-(* ****** ****** *)
 fun
 trans34_d3pat_get_sexp
 (env0: !tr34env, d3p0: d3pat): s2exp
@@ -568,6 +563,29 @@ trans34_d3patlst_get_s2es
 fun
 trans34_f3undecl_set_sexp
 (env0: !tr34env, f3d0: f3undecl): void
+(* ****** ****** *)
+//
+(*
+fun
+tr34env_d2var_get_msexp
+( env0:
+! tr34env, d2v0: d2var): s2exp
+*)
+//
+fun
+tr34env_dvmrg2
+(env0: !tr34env, xtt: dvmrg2): void
+fun
+tr34env_dvmrg2_list
+(env0: !tr34env, xtts: List0(dvmrg2)): void
+//
+fun
+tr34env_dvmrgs
+(env0: !tr34env, xts: dvmrgs): void
+fun
+tr34env_dvmrgs_list
+(env0: !tr34env, xtts: List0(dvmrgs)): void
+//
 (* ****** ****** *)
 
 (* end of [xats_trans34.sats] *)

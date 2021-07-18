@@ -373,11 +373,53 @@ auxlst(vts) where
 {
 val () =
 fprintln!
-(out, "(", d2v, ": ", s2e, ")")
-}
+(out, "(", d2v, ": ", s2e, ")") }
 end (*let*) // end of [list_cons]
+) } (*where*) // end of [fprint_stmap]
+
+(* ****** ****** *)
+//
+implement
+print_stmrg(x0) =
+fprint_stmrg(stdout_ref, x0)
+implement
+prerr_stmrg(x0) =
+fprint_stmrg(stderr_ref, x0)
+//
+(* ****** ****** *)
+
+implement
+fprint_stmrg
+  (out, mrg) =
+(
+auxlst
+(stmrg_listize(mrg))
+) where
+{
+typedef
+xtt =
+(d2var, s2exp, s2exp)
+fun
+auxlst
+(xtts: List0_vt(xtt)): void =
+(
+case+ xtts of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons
+(xtt0, xtts) =>
+(
+auxlst(xtts)) where
+{
+val
+(x0, t1, t2) = xtt0
+val () =
+print!
+("(", x0, "; ", t1, ";", t2, ")")
+} (*where*) // end of [list_cons]
 )
-} (*where*) // end of [fprint_stmap]
+} (*where*) // end of [fprint_stmrg]
 
 (* ****** ****** *)
 //
@@ -604,7 +646,12 @@ case+ x0.node() of
   , "D4Eanno(", d4e1, "; ", s2e2, ")")
 //
 | D4Estmap
-  ( d4e1, dtmp ) =>
+  ( d4e1, map2 ) =>
+  fprint!
+  ( out
+  , "D4Estmap(", d4e1, "; ", "[]", ")")
+| D4Estmrg
+  ( d4e1, mrg2 ) =>
   fprint!
   ( out
   , "D4Estmap(", d4e1, "; ", "[]", ")")
