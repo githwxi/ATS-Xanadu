@@ -538,6 +538,24 @@ D4Eif0
 D4Ecas0 _ => aux_cas0(env0, d4e0)
 //
 |
+D4Estmap
+(d4e1, map2) =>
+{
+  val () =
+  trans4x_dexp(env0, d4e1)
+}
+|
+D4Estmrg
+(d4e1, mrg2) =>
+{
+  val () =
+  trans4x_dexp(env0, d4e1)
+(*
+  val () =
+  trans4x_stmrg(env0, mrg2)
+*)
+}
+|
 D4Etcast
 (d4e1, cstr) =>
 {
