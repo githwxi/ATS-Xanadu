@@ -1608,15 +1608,24 @@ in
 case+ cstr of
 //
 |
-C0Htpeq(s2e1, s2e2) =>
+C0Htpeq
+(s2e1, s2e2) =>
 auxh_tpeq(env0, loc0, s2e1, s2e2)
 //
 |
-C0Itple(s2e1, s2e2) =>
+C0Itple
+(s2e1, s2e2) =>
 auxi_tple(env0, loc0, s2e1, s2e2)
 |
-C0Itpeq(s2e1, s2e2) =>
+C0Itpeq
+(s2e1, s2e2) =>
 auxi_tpeq(env0, loc0, s2e1, s2e2)
+//
+|
+C0Idvar
+(d2v0, s2e1, s2e2) =>
+auxi_tple(env0, loc0, s2e1, s2e2)
+//
 (*
 |
 _(*rest-of-c0str*) =>

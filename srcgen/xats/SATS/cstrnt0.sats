@@ -39,11 +39,13 @@
 
 #staload S2E = "./staexp2.sats"
 #staload S2T = "./statyp2.sats"
+#staload D2E = "./dynexp2.sats"
 
 (* ****** ****** *)
 //
 typedef s2exp = $S2E.s2exp
 typedef t2ype = $S2T.t2ype
+typedef d2var = $D2E.d2var
 //
 (* ****** ****** *)
 //
@@ -64,6 +66,9 @@ datatype c0str =
   (s2exp, s2exp) // subtyping
 | C0Itpeq of
   (s2exp, s2exp) // type-equality
+//
+| C0Idvar of
+  (d2var, s2exp, s2exp) // subtyping
 //
 where c0strlst = List0(c0str)
 //
