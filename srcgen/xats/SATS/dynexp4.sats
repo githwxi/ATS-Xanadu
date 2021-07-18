@@ -369,6 +369,16 @@ overload fprint with fprint_stmap
 //
 (* ****** ****** *)
 //
+datatype
+dvcast = DVCAST of
+(d2var, s2exp, s2exp)
+//
+(* ****** ****** *)
+fun
+stmrg_make
+(xs: List0(dvcast)): stmrg
+(* ****** ****** *)
+//
 fun
 stmrg_listize
 ( mrg0
@@ -602,6 +612,9 @@ d4exp_none2(d4e0: d4exp): d4exp
 fun
 d4exp_stmap
 (d4e1: d4exp, map2: stmap): d4exp
+fun
+d4exp_stmrg
+(d4e1: d4exp, mrg2: stmrg): d4exp
 (* ****** ****** *)
 fun
 d4exp_tcast

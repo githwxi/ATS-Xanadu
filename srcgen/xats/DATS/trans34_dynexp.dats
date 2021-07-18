@@ -2017,20 +2017,20 @@ val
 d2vs =
 tr34env_dlocs_let1(env0)
 val
-stmp =
+stmap =
 tr34env_stmap_let1(env0)
 //
 val
-stmp =
+stmap =
 tr34env_add_denvs_let1
-( env0 , d2vs , stmp ) where
+( env0 , d2vs , stmap ) where
 {
 val () = tr34env_pop_let1(env0)
 } (*where*) // end-of-val
 //
 val () =
 println!
- ( "aux_let: stmp:\n", stmp )
+( "aux_let: stmap:\n", stmap )
 //
 in
 let
@@ -2073,20 +2073,20 @@ val
 d2vs =
 tr34env_dlocs_let1(env0)
 val
-stmp =
+stmap =
 tr34env_stmap_let1(env0)
 //
 val
-stmp =
+stmap =
 tr34env_add_denvs_let1
-( env0 , d2vs , stmp ) where
+( env0 , d2vs , stmap ) where
 {
 val () = tr34env_pop_let1(env0)
 } (*where*) // end-of-val
 //
 val () =
 println!
- ( "aux_where: stmp:\n", stmp )
+( "aux_where: stmap:\n", stmap )
 //
 in
 let
@@ -2301,7 +2301,7 @@ trans34_dexp_dntp
 (env0, d3e2, s2e0)
 //
 val
-stmp =
+stmap =
 tr34env_stmap_bran(env0)
 //
 val
@@ -2309,10 +2309,10 @@ val
 println!
 ("\
 trans34_dexp: \
-aux_if0: then: stmp=\n", stmp)
+aux_if0: then: stmap=\n", stmap)
 //
 in
-  d4exp_stmap(d4e2, stmp)
+  d4exp_stmap(d4e2, stmap)
 end (*let*)//end-of-val[d4e2]
 //
 val () = tr34env_pop_bran(env0)
@@ -2342,7 +2342,7 @@ trans34_dexp_dntp
 (env0, d3e3, s2e0)
 //
 val
-stmp =
+stmap =
 tr34env_stmap_bran(env0)
 //
 val
@@ -2350,10 +2350,10 @@ val
 println!
 ("\
 trans34_dexp: \
-aux_if0: else: stmp=\n", stmp)
+aux_if0: else: stmap=\n", stmap)
 //
 in
-  d4exp_stmap(d4e3, stmp)
+  d4exp_stmap(d4e3, stmap)
 end (*let*)//end-of-val[d4e3]
 //
 val () = tr34env_pop_bran(env0)
@@ -2397,11 +2397,19 @@ println!
 trans34_dexp: \
 aux_if0: dvmrg=\n", dvmrg)
 //
+val stmrg =
+trans34_dvmrg2_list(env0, dvmrg)
+//
 in
+d4exp_stmrg
+(d4e0, stmrg) where
+{
+val d4e0 =
 d4exp_make_node
 ( loc0
 , s2e0
 , t2p0, D4Eif0(d4e1, d4e2, opt3))
+}
 end where
 {
 //
@@ -2965,7 +2973,7 @@ trans34_dexp_dntp
 (env0, d3e2, s2e0)
 //
 val
-stmp =
+stmap =
 tr34env_stmap_bran(env0)
 //
 val
@@ -2973,10 +2981,10 @@ val
 println!
 ("\
 trans34_dexp_dntp: \
-aux_if0: then: stmp=\n", stmp)
+aux_if0: then: stmap=\n", stmap)
 //
 in
-  d4exp_stmap(d4e2, stmp)
+  d4exp_stmap(d4e2, stmap)
 end (*let*)//end-of-val[d4e2]
 //
 val () = tr34env_pop_bran(env0)
@@ -3005,7 +3013,7 @@ trans34_dexp_dntp
 (env0, d3e3, s2e0)
 //
 val
-stmp =
+stmap =
 tr34env_stmap_bran(env0)
 //
 val
@@ -3013,10 +3021,10 @@ val
 println!
 ("\
 trans34_dexp_dntp: \
-aux_if0: else: stmp=\n", stmp)
+aux_if0: else: stmap=\n", stmap)
 //
 in
-  d4exp_stmap(d4e3, stmp)
+  d4exp_stmap(d4e3, stmap)
 end (*let*)//end-of-val[d4e3]
 //
 val () = tr34env_pop_bran(env0)
@@ -3106,11 +3114,19 @@ end // end of [list_cons]
 } (*where*) // end-of-val[()]
 *)
 //
+val stmrg =
+trans34_dvmrg2_list(env0, dvmrg)
+//
 in
+d4exp_stmrg
+(d4e0, stmrg) where
+{
+val d4e0 =
 d4exp_make_node
 ( loc0
 , s2e0
 , t2p0, D4Eif0(d4e1, d4e2, opt3))
+}
 end where
 {
 //
@@ -3345,12 +3361,13 @@ val d4e2 =
   ( env0, d3e2, tres )
 //
 val
-stmp =
+stmap =
 tr34env_stmap_bran(env0)
+//
 val
 ((*void*)) =
 println!
-("trans34_dclau_dntp: stmp=\n", stmp)
+("trans34_dclau_dntp: stmap=\n", stmap)
 //
 in
 //
@@ -4307,25 +4324,26 @@ Some(f3as) =>
 case+
 rcd.wtp of
 |
-None() =>
+None
+((*void*)) =>
 Some
-(trans34_farglst(env0, f3as))
+(
+trans34_farglst(env0, f3as))
 |
 Some(s2f0) =>
 Some
 (
-trans34_farglst_s2exp(env0, f3as, s2f0, sres)
-) (* Some *)
+trans34_farglst_s2exp
+(env0 , f3as , s2f0 , sres))
 )
 ) : f4arglstopt // end-of-val
 //
 val
-stmp =
-tr34env_stmap_fun0(env0)
+stmap = tr34env_stmap_fun0(env0)
 val
 ((*void*)) =
 println!
-("trans34_fundecl: stmp(bef)=\n", stmp)
+("trans34_fundecl: stmap(bef)=\n", stmap)
 //
 val
 def = 
@@ -4342,27 +4360,31 @@ case+ sres of
 EFFS2EXPnone() =>
 let
 val s2e0 =
-sexpize_env(env0, rcd.rtp)
+sexpize_env
+(env0, rcd.rtp)
 in
 Some
 (
-trans34_dexp_dntp(env0, d3e0, s2e0)
-)
+trans34_dexp_dntp
+(env0, d3e0, s2e0))
 end
 |
 EFFS2EXPsome(s2e0) =>
 Some
-(trans34_dexp_dntp(env0, d3e0, s2e0))
+(
+trans34_dexp_dntp
+(env0, d3e0, s2e0))
 )
 ) : d4expopt
 //
 val
-stmp =
+stmap =
 tr34env_stmap_fun0(env0)
+//
 val
 ((*void*)) =
 println!
-("trans34_fundecl: stmp(aft)=\n", stmp)
+("trans34_fundecl: stmap(aft)=\n", stmap)
 //
 in(*in-of-let*)
 //
@@ -4660,7 +4682,7 @@ prval () = $UN.cast2void(env0) in v4d0
 end
 end // list_map$fopr
 //
-} (*where*) // end of [trans34_valdeclist]
+} (*where*)//end of [trans34_valdeclist]
 //
 (* ****** ****** *)
 //
@@ -4695,8 +4717,133 @@ prval () = $UN.cast2void(env0) in v4d0
 end
 end // list_map$fopr
 //
-} (*where*) // end of [trans34_vardeclist]
+} (*where*)//end of [trans34_vardeclist]
 //
+(* ****** ****** *)
+
+implement
+trans34_dvmrg2_list
+  (env0, xtts) =
+(
+stmrg_make(res0)) where
+{
+//
+fun
+auxlst
+( env0
+: !tr34env
+, xtts
+: List0(dvmrg2)
+, res0
+: List0_vt(dvcast)
+)
+: List0_vt(dvcast) =
+(
+case+ xtts of
+|
+list_nil() =>
+list_vt_reverse(res0)
+|
+list_cons
+(xtt0, xtts) =>
+let
+val+
+DVMRG2
+( d2v0
+, opt1, opt2) = xtt0
+//
+val opt0 = d2v0.msexp()
+//
+val res0 =
+(
+case+ opt0 of
+|
+None() =>
+let
+//
+val
+ms2e =
+tr34env_d2var_get_sexp
+(env0, d2v0)
+//
+val res0 =
+(
+case+ opt1 of
+| None() => res0
+| Some(s2e1) =>
+  list_vt_cons
+  (DVCAST(d2v0, s2e1, ms2e), res0)
+) : List0_vt(dvcast)
+//
+in
+case+ opt2 of
+| None() => res0 | Some(s2e2) =>
+  list_vt_cons
+  (DVCAST(d2v0, s2e2, ms2e), res0)
+end // end of [None]
+|
+Some(s2e0) =>
+let
+//
+val res0 =
+(
+case+ opt1 of
+|
+None() =>
+let
+  val
+  s2e1 =
+  tr34env_d2var_get_sexp
+  (env0, d2v0)
+in
+  list_vt_cons
+  (DVCAST(d2v0, s2e1, s2e0), res0)
+end
+|
+Some(s2e1) =>
+(
+  list_vt_cons
+  (DVCAST(d2v0, s2e1, s2e0), res0)
+)
+) : List0_vt(dvcast) // end-of-val
+//
+in
+//
+case+ opt2 of
+|
+None() =>
+let
+  val
+  s2e2 =
+  tr34env_d2var_get_sexp
+  (env0, d2v0)
+in
+  list_vt_cons
+  (DVCAST(d2v0, s2e2, s2e0), res0)
+end
+|
+Some(s2e2) =>
+(
+  list_vt_cons
+  (DVCAST(d2v0, s2e2, s2e0), res0)
+)
+end
+) : List0_vt(dvcast) // end-of-val[res0]
+//
+in
+  auxlst(env0, xtts, res0)
+end
+)
+//
+val
+res0 =
+list_vt_nil((*void*))
+val
+res0 =
+list_vt2t(auxlst(env0, xtts, res0))
+//
+} (*where*)//end of [trans34_dvmrg2_list]
+
 (* ****** ****** *)
 
 (* end of [xats_trans34_dynexp.dats] *)
