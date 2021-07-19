@@ -277,6 +277,46 @@ d4exp_make_node
 (* ****** ****** *)
 //
 implement
+d4exp_dapq
+( dapp
+, npf1, d4es ) =
+d4exp_make_node
+( loc1
+, s2e1, t2p1, node) where
+{
+//
+  val loc1 = dapp.loc()
+  val t2p1 = dapp.type()
+  val s2e1 = dapp.sexp()
+//
+  val node =
+  D4Edapq(dapp, npf1, d4es)
+//
+} (*where*) // d4exp_dapq
+//
+(* ****** ****** *)
+//
+implement
+d4exp_darg
+( darg
+, knd0, saft ) =
+d4exp_make_node
+( loc1
+, s2e1, t2p1, node) where
+{
+//
+  val loc1 = darg.loc()
+  val t2p1 = darg.type()
+  val s2e1 = darg.sexp()
+//
+  val node =
+  D4Edarg(darg, knd0, saft)
+//
+} (*where*) // d4exp_darg
+//
+(* ****** ****** *)
+//
+implement
 d4exp_stmap
 ( d4e1, map2 ) =
 d4exp_make_node

@@ -12,6 +12,16 @@ foo
 : &(?int) >> int
 , x1
 : &(?int) >> int): void =
+  foo(x1, x0)
+////
+(* ****** ****** *)
+//
+fun
+foo
+( x0
+: &(?int) >> int
+, x1
+: &(?int) >> int): void =
 if true then x0 := 1 else x1 := 2
 ////
 (* ****** ****** *)

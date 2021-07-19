@@ -67,9 +67,6 @@ datatype c0str =
 | C0Itpeq of
   (s2exp, s2exp) // type-equality
 //
-| C0Idvar of
-  (d2var, s2exp, s2exp) // subtyping
-//
 where c0strlst = List0(c0str)
 //
 typedef

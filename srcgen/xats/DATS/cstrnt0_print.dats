@@ -97,14 +97,6 @@ fprint!
 ( out
 , "C0Itpeq(", s2e1, "; ", s2e2, ")")
 //
-|
-C0Idvar
-(d2v0, s2e1, s2e2) =>
-fprint!
-( out
-, "C0Idvar("
-, d2v0, "; ", s2e1, "; ", s2e2, ")")
-//
 ) (* end of [fprint_c0str] *)
 //
 (* ****** ****** *)

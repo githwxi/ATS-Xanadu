@@ -1780,8 +1780,8 @@ case+
 s2f0.node() of
 |
 S2Efun
-( fc2
-, npf
+( fc20
+, npf1
 , s2es, s2r0) =>
 let
 //
@@ -1860,21 +1860,29 @@ d4es =
 auxargs(env0, d3es, s2es)
 //
 in
+auxdapq
+(
+env0
+,
 d4exp_make_node
 ( loc0
 , s2r0
-, t2p0, D4Edapp(d4f0, npf1, d4es))
+, t2p0
+, D4Edapp(d4f0, npf1, d4es)))
 end // end of [S2Efun]
 |
 _(*non-S2Efun*) =>
 let
-val d4f0 =
+//
+val
+d4f0 =
 d4exp_none2(d4f0)
 val
 d4es =
 trans34_dexplst(env0, d3es)
 val
 s2r0 = the_s2exp_none0(*void*)
+//
 in
 //
 d4exp_make_node
@@ -1884,6 +1892,144 @@ d4exp_make_node
 end // end of [non-S2Efun]
 //
 end (*let*) // end of [auxdapp]
+
+(* ****** ****** *)
+
+and
+auxdapq
+( env0:
+! tr34env
+, d4e0: d4exp): d4exp =
+let
+//
+val-
+D4Edapp
+( d4f0
+, npf1
+, d4es) = d4e0.node()
+//
+val s2f0 = d4f0.sexp()
+//
+in(*in-of-let*)
+//
+case+
+s2f0.node() of
+|
+S2Efun
+( fc20
+, npf1
+, s2es, s2r0) =>
+if
+isapq(s2es)
+then
+(
+d4exp_dapq
+(d4e0, npf1, d4es)
+) where
+{
+val
+d4es = auxargs(d4es, s2es)
+} else d4e0 // end of [if]
+| _ (* non-S2Efun *) => d4e0
+//
+end where
+{
+//
+fun
+isapq
+(s2es: s2explst): bool =
+(
+case+ s2es of
+|
+list_nil() => false
+|
+list_cons(s2e1, s2es) =>
+(
+case+
+s2e1.node() of
+| S2Earg _ => true
+| S2Eatx _ => true
+| _ (*else*) => isapq(s2es)
+) (* end of [list_cons] *)
+)
+//
+fun
+auxknd
+(s2e1: s2exp): int =
+(
+case+
+s2e1.node() of
+|
+S2Earg
+(knd0, sarg) => knd0
+|
+_(* non-S2Earg *) => 0
+)
+fun
+auxarg1
+( d4e1: d4exp
+, s2e1: s2exp): d4exp =
+(
+case+
+s2e1.node() of
+|
+S2Earg
+(knd0, saft) =>
+d4exp_darg
+(d4e1, knd0, saft)
+|
+S2Eatx
+(s2e1, saft) =>
+d4exp_darg
+(d4e1, knd0, saft) where
+{
+  val knd0 = auxknd(s2e1)
+}
+//
+|
+_(*else*) => d4exp_none2(d4e1)
+//
+) (* end-of-fun[auxarg1] *)
+fun
+auxargs
+( d4es
+: d4explst
+, s2es
+: s2explst): d4explst =
+(
+case+ d4es of
+|
+list_nil
+((*void*)) => list_nil()
+|
+list_cons
+(d4e1, d4es) =>
+(
+case+ s2es of
+|
+list_nil() =>
+let
+val
+d4e1 =
+d4exp_none2(d4e1)
+in
+  list_cons
+  (d4e1, auxargs(d4es, s2es))
+end
+|
+list_cons(s2e1, s2es) =>
+let
+val
+d4e1 =
+auxarg1(d4e1, s2e1)
+in
+list_cons
+(d4e1, auxargs(d4es, s2es))
+end
+) (* end of [list_cons] *)
+) (* end-of-fun[auxargs] *)
+//
+} (*where*) // end of [auxdapq]
 
 (* ****** ****** *)
 

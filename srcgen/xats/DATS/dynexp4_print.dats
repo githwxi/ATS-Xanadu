@@ -554,6 +554,13 @@ case+ x0.node() of
   ( out
   , "D4Edapq("
   , dapp, "; ", npf1, "; ", d4es, ")")
+| D4Edarg
+  ( darg
+  , knd0, saft) =>
+  fprint!
+  ( out
+  , "D4Edarg("
+  , darg, "; ", knd0, "; ", saft, ")")
 //
 | D4Eproj
   (d4e1, lab2, idx2) =>
