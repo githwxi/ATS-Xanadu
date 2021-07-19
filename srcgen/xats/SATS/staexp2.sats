@@ -828,6 +828,10 @@ s2exp_node =
 //
 | S2Eexi of // exists quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
+(*
+| S2Eexj of // exists quantifier
+  (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
+*)
 | S2Euni of // forall quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
