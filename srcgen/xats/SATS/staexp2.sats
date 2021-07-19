@@ -826,14 +826,17 @@ s2exp_node =
 //
 | S2Emet of (s2explst(*met*), s2exp(*body*))
 //
+// HX: for [...]
 | S2Eexi of // exists quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
+// HX: for {...}
+| S2Euni of // forall quantifier
+  (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 (*
+// HX: for #[...]
 | S2Eexj of // exists quantifier
   (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 *)
-| S2Euni of // forall quantifier
-  (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
 //
 (*
 | S2Elist of s2explst // HX: temporary use
