@@ -800,8 +800,8 @@ s2exp_node =
 | S2Elam of
   (s2varlst, s2exp) // abstraction
 //
-| S2Earg of // HX: knd: 0/1: 
-  (int(*knd*), s2exp) // call-by-val/ref
+| S2Earg of // HX: knd: -1/0/1: 
+  (int(*knd*), s2exp) //cbrf/cbv0/cbv1
 | S2Eatx of
   (s2exp(*bef*), s2exp(*aft*)) // trans
 //

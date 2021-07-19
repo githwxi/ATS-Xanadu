@@ -49,6 +49,9 @@ typedef f4arg = $D4E.f4arg
 typedef d4exp = $D4E.d4exp
 typedef d4ecl = $D4E.d4ecl
 //
+typedef stmap = $D4E.stmap
+typedef stmrg = $D4E.stmrg
+//
 typedef d4gpat = $D4E.d4gpat
 typedef d4clau = $D4E.d4clau
 //
@@ -217,10 +220,18 @@ trans4x_declist
 (* ****** ****** *)
 //
 fun
-trans4x_cstr
+trans4x_c0str
 ( env0:
 ! tr4xenv
 , loc0: loc_t, cstr: c0str): void
+//
+(* ****** ****** *)
+//
+fun
+trans4x_stmrg
+( env0:
+! tr4xenv
+, loc0: loc_t, mrg0: stmrg): void
 //
 (* ****** ****** *)
 

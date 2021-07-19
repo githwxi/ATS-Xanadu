@@ -475,6 +475,8 @@ for the meaning of knd
   (d4exp, int(*npf*), d4explst)
 | D4Edapq of
   (d4exp, int(*npf*), d4explst)
+| D4Edarg of
+  (d4exp, int(*knd*), s2exp(*aft*))
 //
 | D4Eproj of
   (d4exp(*flt*),
@@ -608,6 +610,18 @@ d4exp_none1(d3e0: d3exp): d4exp
 fun
 d4exp_none2(d4e0: d4exp): d4exp
 //
+(* ****** ****** *)
+fun
+d4exp_dapq
+( dapp: d4exp
+, npf1: int(*pfarity*)
+// HX:
+// Some of [args] are l-values
+, d4es: d4explst(*args*)): d4exp
+fun
+d4exp_darg
+( darg: d4exp
+, knd0: int, saft: s2exp): d4exp
 (* ****** ****** *)
 fun
 d4exp_stmap
