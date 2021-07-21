@@ -2166,6 +2166,13 @@ val
 stmap =
 tr34env_stmap_let1(env0)
 //
+val () =
+println!
+( "aux_let: dlocs = ", d2vs )
+val () =
+println!
+( "aux_let: stmap(all):\n", stmap )
+//
 val
 stmap =
 tr34env_add_denvs
@@ -2176,7 +2183,7 @@ val () = tr34env_pop_let1(env0)
 //
 val () =
 println!
-( "aux_let: stmap:\n", stmap )
+( "aux_let: stmap(loc):\n", stmap )
 //
 in
 let
@@ -2222,6 +2229,13 @@ val
 stmap =
 tr34env_stmap_let1(env0)
 //
+val () =
+println!
+("aux_where: dlocs = ", d2vs)
+val () =
+println!
+("aux_where: stmap(all):\n", stmap)
+//
 val
 stmap =
 tr34env_add_denvs
@@ -2232,7 +2246,7 @@ val () = tr34env_pop_let1(env0)
 //
 val () =
 println!
-( "aux_where: stmap:\n", stmap )
+("aux_where: stmap(loc):\n", stmap)
 //
 in
 let
@@ -3517,6 +3531,10 @@ tr34env_stmap_bran(env0)
 val
 ((*void*)) =
 println!
+("trans34_dclau_dntp: d2vs = ", d2vs)
+val
+((*void*)) =
+println!
 ("trans34_dclau_dntp: stmap(all)=\n", stmap)
 //
 val
@@ -3530,7 +3548,7 @@ val () = tr34env_pop_bran(env0)
 val
 ((*void*)) =
 println!
-("trans34_dclau_dntp: stmap(env)=\n", stmap)
+("trans34_dclau_dntp: stmap(loc)=\n", stmap)
 //
 in
 let

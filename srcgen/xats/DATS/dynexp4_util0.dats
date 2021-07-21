@@ -57,6 +57,14 @@ auxdpat
 (
 case+
 d4p0.node() of
+//
+|
+D4Pint _ => d2vs
+|
+D4Pbtf _ => d2vs
+|
+D4Pchr _ => d2vs
+//
 |
 D4Pany _ => d2vs
 |
