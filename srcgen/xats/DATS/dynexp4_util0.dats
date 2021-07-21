@@ -48,6 +48,152 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 
+local
+//
+fun
+auxdpat
+( d4p0: d4pat
+, d2vs: dlocs): dlocs =
+(
+case+
+d4p0.node() of
+|
+D4Pany _ => d2vs
+|
+D4Pvar(d2v0) =>
+dlocs_insert(d2vs, d2v0)
+//
+|
+D4Pbang(d4p1) =>
+(
+  auxdpat(d4p1, d2vs)
+)
+|
+D4Pflat(d4p1) =>
+(
+  auxdpat(d4p1, d2vs)
+)
+|
+D4Pfree(d4p1) =>
+(
+  auxdpat(d4p1, d2vs)
+)
+//
+|
+D4Pdap1(d4p1) =>
+(
+  auxdpat(d4p1, d2vs)
+)
+|
+D4Pdapp
+(d4f0, npf1, d4ps) =>
+(
+  auxd4ps(d4ps, d2vs)
+) where
+{
+  val
+  d2vs = auxdpat(d4f0, d2vs)
+}
+//
+|
+D4Panno
+( d4p1
+, s1e1, s2e2) =>
+(
+  auxdpat(d4p1, d2vs)
+)
+//
+| _ (*rest-of-d4pat*) => d2vs
+//
+)
+and
+auxd4ps
+( d4ps
+: d4patlst
+, d2vs: dlocs): dlocs =
+(
+case+ d4ps of
+|
+list_nil() => d2vs
+|
+list_cons
+(d4p1, d4ps) =>
+(
+  auxd4ps(d4ps, d2vs)
+) where
+{
+  val d2vs = auxdpat(d4p1, d2vs)
+}
+) (* end of [auxd4ps] *)
+//
+fun
+auxdgua
+( d4g0: d4gua
+, d2vs: dlocs): dlocs =
+(
+case+
+d4g0.node() of
+|
+D4GUAexp
+( d4e1 ) => d2vs
+|
+D4GUAmat
+( d4e1
+, d4p2) => auxdpat(d4p2, d2vs)
+)
+and
+auxd4gs
+( d4gs
+: d4gualst
+, d2vs: dlocs): dlocs =
+(
+case+ d4gs of
+|
+list_nil() => d2vs
+|
+list_cons
+(d4g1, d4gs) =>
+(
+  auxd4gs(d4gs, d2vs)
+) where
+{
+  val d2vs = auxdgua(d4g1, d2vs)
+}
+) (* end of [auxd4gs] *)
+//
+in(*in-of-local*)
+
+implement
+d4gpat_get_dlocs
+  ( dgpt ) =
+(
+case+
+dgpt.node() of
+|
+D4GPATpat(d4p0) =>
+(
+  auxdpat(d4p0, d2vs)
+) where
+{
+  val d2vs = dlocs_nil()
+}
+|
+D4GPATgua(d4p0, d4gs) =>
+(
+  auxd4gs(d4gs, d2vs)
+) where
+{
+  val
+  d2vs = dlocs_nil((*void*))
+  val
+  d2vs = auxdpat(d4p0, d2vs)
+}
+) (* end of [tr34env_add_denvs_bran] *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 implement
 stmap_merge2
 (map1, map2) =

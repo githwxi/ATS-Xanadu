@@ -239,7 +239,7 @@ tr34env_add_dvar_sexp
 , d2v0: d2var, s2e0: s2exp): void
 (* ****** ****** *)
 fun
-tr34env_add_denvs_let1
+tr34env_add_denvs
 ( env0:
 ! tr34env
 , d2vs: dlocs, stmp: stmap): stmap

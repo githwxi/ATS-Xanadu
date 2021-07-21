@@ -2168,7 +2168,7 @@ tr34env_stmap_let1(env0)
 //
 val
 stmap =
-tr34env_add_denvs_let1
+tr34env_add_denvs
 ( env0 , d2vs , stmap ) where
 {
 val () = tr34env_pop_let1(env0)
@@ -2224,7 +2224,7 @@ tr34env_stmap_let1(env0)
 //
 val
 stmap =
-tr34env_add_denvs_let1
+tr34env_add_denvs
 ( env0 , d2vs , stmap ) where
 {
 val () = tr34env_pop_let1(env0)
@@ -3478,7 +3478,7 @@ loc0 = d3cl.loc()
 val () =
 tr34env_add_bran(env0)
 //
-in
+in(*in-of-let*)
 //
 case+
 d3cl.node() of
@@ -3502,10 +3502,14 @@ dgpt =
 trans34_dgpat_dntp
 ( env0, dgpt, tmat )
 //
-val d4e2 =
+val
+d4e2 =
   trans34_dexp_dntp
   ( env0, d3e2, tres )
 //
+val
+d2vs =
+d4gpat_get_dlocs(dgpt)
 val
 stmap =
 tr34env_stmap_bran(env0)
@@ -3513,18 +3517,29 @@ tr34env_stmap_bran(env0)
 val
 ((*void*)) =
 println!
-("trans34_dclau_dntp: stmap=\n", stmap)
+("trans34_dclau_dntp: stmap(all)=\n", stmap)
+//
+val
+stmap =
+tr34env_add_denvs
+( env0 , d2vs , stmap ) where
+{
+val () = tr34env_pop_bran(env0)
+} (*where*) // end-of-val
+//
+val
+((*void*)) =
+println!
+("trans34_dclau_dntp: stmap(env)=\n", stmap)
 //
 in
-//
 let
-val () =
-tr34env_pop_bran(env0)
+val d4e2 =
+d4exp_stmap(d4e2, stmap)
 in
   d4clau_make_node
   (loc0, D4CLAUexp(dgpt, d4e2))
 end
-//
 end
 //
 end (*let*) // [trans34_dclau_dntp]
