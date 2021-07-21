@@ -742,6 +742,9 @@ overload .loc with d4gpat_get_loc
 overload .node with d4gpat_get_node
 //
 (* ****** ****** *)
+fun
+d4gpat_get_dlocs(d4gpat): dlocs
+(* ****** ****** *)
 //
 fun
 print_d4gpat : (d4gpat) -> void

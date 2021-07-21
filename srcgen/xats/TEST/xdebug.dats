@@ -7,6 +7,41 @@
 (* ****** ****** *)
 //
 fun
+<a:type>
+length
+{n:nat}
+(xs: list(a, n)): sint(n) =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => 0
+|
+list_cons
+(  _, xs  ) => 1 + length(xs)
+)
+////
+(* ****** ****** *)
+//
+fun
+<a:type>
+length_vt
+{n:nat}
+( xs:
+! list_vt(a, n)): sint(n) =
+(
+case+ xs of
+| !
+list_vt_nil
+((*void*)) => 0
+| !
+list_vt_cons
+(  _, ys  ) => 1 + length_vt(ys)
+)
+////
+(* ****** ****** *)
+//
+fun
 foo
 ( x0
 : &(?int) >> int
@@ -22,7 +57,9 @@ foo
 : &(?int) >> int
 , x1
 : &(?int) >> int): void =
-if true then x0 := 1 else x1 := 2
+if
+true
+then x0 := 1 else x1 := 2
 ////
 (* ****** ****** *)
 //
@@ -31,43 +68,6 @@ foo(x0: int): int =
 let
 var x1: int = x0 in x1 + x1
 end
-////
-(* ****** ****** *)
-(*
-//
-fun
-<a:type>
-length
-{n:nat}
-(xs: list(a, n)): sint(n) =
-(
-case+ xs of
-|
-list_nil
-((*void*)) => 0
-|
-list_cons
-(  _, xs  ) => 1 + length(xs)
-)
-////
-*)
-(* ****** ****** *)
-//
-fun
-<a:type>
-length_vt
-{n:nat}
-( xs:
-! list_vt(a, n)): sint(n) =
-(
-case+ xs of
-|
-list_vt_nil
-((*void*)) => 0
-|
-list_vt_cons
-(  _, ys  ) => 1 + length_vt(ys)
-)
 ////
 (* ****** ****** *)
 typedef

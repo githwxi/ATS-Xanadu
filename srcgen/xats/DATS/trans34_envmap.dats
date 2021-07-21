@@ -333,8 +333,8 @@ fun
 auxdstk
 ( stmp:
 & stmap >> _
-, dstk
-: !dvarstk ): void =
+, dstk:
+! dvarstk ): void =
 (
 //
 case- dstk of
@@ -386,8 +386,8 @@ fun
 auxdstk
 ( d2vs
 : dlocs
-, dstk
-: !dvarstk ): dlocs =
+, dstk:
+! dvarstk ): dlocs =
 (
 //
 case- dstk of
@@ -427,7 +427,7 @@ dlocs = dlocs_nil((*void*))
 //
 val d2vs = auxdstk(d2vs, dstk)
 //
-} (*where*) // end of [tr34env_dlocs_let1]
+} (*where*) // [tr34env_dlocs_let1]
   
 end // end of [local]
 
@@ -439,8 +439,8 @@ fun
 auxdstk
 ( stmp:
 & stmap >> _
-, dstk
-: !dvarstk ): void =
+, dstk:
+! dvarstk ): void =
 (
 //
 case- dstk of
@@ -480,69 +480,10 @@ stmap = stmap_nil((*void*))
 val
 ((*void*)) = auxdstk(stmp, dstk)
 //
-} (*where*) // end of [tr34env_stmap_let1]
+} (*where*) // [tr34env_stmap_let1]
   
 end // end of [local]
 
-(* ****** ****** *)
-//
-implement
-tr34env_add_denvs_let1
-( env0, d2vs, stmp ) =
-let
-val
-kxs0 =
-stmap_listize(stmp)
-in
-let
-var
-stmp = stmp
-val () =
-auxlst
-(env0, stmp, kxs0) in stmp
-end
-end where
-{
-fun
-auxlst
-( env0:
-! tr34env
-, stmp
-: &stmap >> _
-, kxs0
-: List0_vt
-  (@(d2var, s2exp))): void =
-(
-case+ kxs0 of
-| ~
-list_vt_nil() => ()
-| ~
-list_vt_cons(kx0, kxs1) =>
-let
-val
-d2v0 = kx0.0
-in
-//
-if
-dlocs_ismem
-(d2vs, d2v0)
-then // dloc-var
-auxlst
-(env0, stmp, kxs1)
-else // denv-var
-let
-val () =
-tr34env_add_dvar_sexp
-( env0, d2v0, kx0.1 )
-val-true =
-stmap_remove
-(stmp, d2v0) in auxlst(env0,stmp,kxs1)
-end // end of [if]
-//
-end // end of [let]
-) (* end of [auxlst] *)
-} (*where*) // [tr34env_add_denvs_let1]
-//
 (* ****** ****** *)
 
 local
@@ -551,8 +492,8 @@ fun
 auxdstk
 ( stmp:
 & stmap >> _
-, dstk
-: !dvarstk ): void =
+, dstk:
+! dvarstk ): void =
 (
 //
 case- dstk of
@@ -592,7 +533,7 @@ stmap = stmap_nil((*void*))
 val
 ((*void*)) = auxdstk(stmp, dstk)
 //
-} (*where*) // end of [tr34env_stmap_bran]
+} (*where*) // [tr34env_stmap_bran]
   
 end // end of [local]
 
@@ -651,7 +592,66 @@ println!
 ("tr34env_add_dvar_sexp: s2e0 = ", s2e0)
 *)
 //
-} (*where*) // end of [tr34env_add_dvar_sexp]
+} (*where*)//end-of[tr34env_add_dvar_sexp]
+//
+(* ****** ****** *)
+//
+implement
+tr34env_add_denvs
+( env0, d2vs, stmp ) =
+let
+val
+kxs0 =
+stmap_listize(stmp)
+in
+let
+var
+stmp = stmp
+val () =
+auxlst
+(env0, stmp, kxs0) in stmp
+end
+end where
+{
+fun
+auxlst
+( env0:
+! tr34env
+, stmp
+: &stmap >> _
+, kxs0
+: List0_vt
+  (@(d2var, s2exp))): void =
+(
+case+ kxs0 of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(kx0, kxs1) =>
+let
+val
+d2v0 = kx0.0
+in(*of-let*)
+//
+if
+dlocs_ismem
+(d2vs, d2v0)
+then // dloc-var
+auxlst
+(env0, stmp, kxs1)
+else // denv-var
+let
+val () =
+tr34env_add_dvar_sexp
+( env0, d2v0, kx0.1 )
+val-true =
+stmap_remove
+(stmp, d2v0) in auxlst(env0,stmp,kxs1)
+end // end of [if]
+//
+end // end of [let]
+) (* end of [auxlst] *)
+} (*where*) // end-of[tr34env_add_denvs]
 //
 (* ****** ****** *)
 //
