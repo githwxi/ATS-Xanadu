@@ -572,23 +572,23 @@ implement
 dlocs_nil() = $FS.funset_nil()
 //
 (* ****** ******)
-
 implement
 dlocs_ismem
-(dvs, d2v) =
-$FS.funset_is_member<elt>(dvs, d2v)
-
+(dvrs, d2v0) =
+$FS.funset_is_member<elt>(dvrs, d2v0)
 (* ****** ****** *)
-
 implement
 dlocs_insert
-(dvs, d2v) =
+(dvrs, d2v0) =
 let
-var dvs = dvs
+var dvrs = dvrs
 val-false =
-$FS.funset_insert<elt>(dvs, d2v) in dvs
+$FS.funset_insert<elt>(dvrs, d2v0) in dvrs
 end // end of [dlocs_insert]
-
+(* ****** ****** *)
+implement
+dlocs_listize
+( dvrs ) = $FS.funset_listize<elt>(dvrs)
 (* ****** ****** *)
 
 end // end of [local]

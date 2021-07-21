@@ -337,6 +337,43 @@ case+ x0 of
 (* ****** ****** *)
 //
 implement
+print_dlocs(x0) =
+fprint_dlocs(stdout_ref, x0)
+implement
+prerr_dlocs(x0) =
+fprint_dlocs(stderr_ref, x0)
+//
+(* ****** ****** *)
+//
+implement
+fprint_dlocs
+  (out, dvrs) =
+(
+auxlst
+(dlocs_listize(dvrs))
+) where
+{
+fun
+auxlst
+( d2vs
+: List0_vt(d2var)): void =
+(
+case+ d2vs of
+| ~
+list_vt_nil
+((*void*)) => ()
+| ~
+list_vt_cons
+(d2v0, d2vs) =>
+(
+fprintln!(out, d2v0); auxlst(d2vs)
+)
+)
+} (*where*) // end of [fprint_dlocs]
+//
+(* ****** ****** *)
+//
+implement
 print_stmap(x0) =
 fprint_stmap(stdout_ref, x0)
 implement
@@ -347,10 +384,10 @@ fprint_stmap(stderr_ref, x0)
 
 implement
 fprint_stmap
-  (out, map) =
+  (out, map0) =
 (
 auxlst
-(stmap_listize(map))
+(stmap_listize(map0))
 ) where
 {
 fun
@@ -358,16 +395,19 @@ auxlst
 ( vts
 : List_vt
 (
-  @(d2var, s2exp))
+@(d2var, s2exp))
 ) : void =
 (
 case+ vts of
 | ~
-list_vt_nil() => ()
+list_vt_nil
+((*void*)) => ()
 | ~
-list_vt_cons(vt0, vts) =>
+list_vt_cons
+( vt0, vts ) =>
 let
-val (d2v, s2e) = vt0
+val
+(d2v, s2e) = vt0
 in
 auxlst(vts) where
 {

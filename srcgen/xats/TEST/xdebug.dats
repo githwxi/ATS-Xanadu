@@ -7,6 +7,33 @@
 (* ****** ****** *)
 //
 fun
+foo
+( b0: bool
+, x0
+: &(?int) >> int
+, x1
+: &(?int) >> int): void =
+(
+case+ b0 of
+| true => (x0 := 1)
+| false => (x1 := 2)
+)
+////
+(* ****** ****** *)
+//
+fun
+foo
+( x0
+: &(?int) >> int
+, x1
+: &(?int) >> int): void =
+if
+true
+then x0 := 1 else x1 := 2
+////
+(* ****** ****** *)
+//
+fun
 <a:type>
 length
 {n:nat}
@@ -48,18 +75,6 @@ foo
 , x1
 : &(?int) >> int): void =
   foo(x1, x0)
-////
-(* ****** ****** *)
-//
-fun
-foo
-( x0
-: &(?int) >> int
-, x1
-: &(?int) >> int): void =
-if
-true
-then x0 := 1 else x1 := 2
 ////
 (* ****** ****** *)
 //

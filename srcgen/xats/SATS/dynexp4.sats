@@ -325,6 +325,24 @@ dlocs_insert
 ( dvrs
 : dlocs, d2v0: d2var ): dlocs
 //
+fun
+dlocs_listize
+(dvrs: dlocs): List0_vt(d2var)
+//
+(* ****** ****** *)
+//
+fun
+print_dlocs(d2vs: dlocs): void
+fun
+prerr_dlocs(d2vs: dlocs): void
+fun
+fprint_dlocs
+(out: FILEref, d2vs: dlocs): void
+//
+overload print with print_dlocs
+overload prerr with prerr_dlocs
+overload fprint with fprint_dlocs
+//
 (* ****** ****** *)
 //
 fun
@@ -356,12 +374,12 @@ stmap_listize
 (* ****** ****** *)
 //
 fun
-print_stmap(map: stmap): void
+print_stmap(map0: stmap): void
 fun
-prerr_stmap(map: stmap): void
+prerr_stmap(map0: stmap): void
 fun
 fprint_stmap
-( out: FILEref, map: stmap): void
+(out: FILEref, map0: stmap): void
 //
 overload print with print_stmap
 overload prerr with prerr_stmap
