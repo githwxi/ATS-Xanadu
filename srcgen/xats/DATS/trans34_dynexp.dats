@@ -4979,85 +4979,81 @@ DVMRG2
 //
 val
 opt0 = d2v0.msexp()
-//
-val res0 =
+val
+s2e0 =
 (
 case+ opt0 of
 |
-None() => let
-//
-val
-ms2e =
+Some
+(s2e0) => s2e0
+|
+None
+((*void*)) =>
 tr34env_d2var_get_sexp
 (env0, d2v0)
-//
-val res0 =
-(
-case+ opt1 of
-| None() => res0
-| Some(s2e1) =>
-  list_vt_cons
-  (DVCAST(d2v0, s2e1, ms2e), res0)
-) : List0_vt(dvcast)
-//
-in
-case+ opt2 of
-| None() => res0
-| Some(s2e2) =>
-  list_vt_cons
-  (DVCAST(d2v0, s2e2, ms2e), res0)
-end (*let*) // end of [None]
-|
-Some(s2e0) => let
+) : s2exp // end-of[s2e0]
 //
 val res0 =
 (
 case+ opt1 of
 |
 None() =>
+(
+case+ opt0 of
+|
+None _ => res0
+|
+Some _ =>
 let
   val
   s2e1 =
   tr34env_d2var_get_sexp
   (env0, d2v0)
 in
-  list_vt_cons
-  (DVCAST(d2v0, s2e1, s2e0), res0)
+list_vt_cons
+(DVCAST(d2v0, s2e1, s2e0), res0)
 end
+)
 |
 Some(s2e1) =>
 (
-  list_vt_cons
-  (DVCAST(d2v0, s2e1, s2e0), res0)
+list_vt_cons
+(DVCAST(d2v0, s2e1, s2e0), res0)
 )
 ) : List0_vt(dvcast) // end-of-val
 //
-in(*in-of-let*)
-//
+val res0 =
+(
 case+ opt2 of
 |
-None() => let
+None() =>
+(
+case+ opt0 of
+|
+None _ => res0
+|
+Some _ =>
+let
   val
   s2e2 =
   tr34env_d2var_get_sexp
   (env0, d2v0)
 in
-  list_vt_cons
-  (DVCAST(d2v0, s2e2, s2e0), res0)
+list_vt_cons
+(DVCAST(d2v0, s2e2, s2e0), res0)
 end
+)
 |
 Some(s2e2) =>
 (
-  list_vt_cons
-  (DVCAST(d2v0, s2e2, s2e0), res0)
+list_vt_cons
+(DVCAST(d2v0, s2e2, s2e0), res0)
 )
-//
-end (*let*) // end of [Some]
-) : List0_vt(dvcast) // end-of[res0]
+) : List0_vt(dvcast) // end-of-val
 //
 in
   auxmain( env0, xtts, res0 )
-end
+end // end of [list_cons]
 ) (*case*) (* end-of-fun[auxmain] *)
 //
 val
