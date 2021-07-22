@@ -986,9 +986,11 @@ stmap1r_dvmrg
 //
 (* ****** ****** *)
 //
+(*
 fun
 stmaplst_dvmrg
 (maps: List0(stmap)): List0(dvmrgs)
+*)
 fun
 dclaulst_dvmrg
 (dcls: List0(d4clau)): List0(dvmrgs)

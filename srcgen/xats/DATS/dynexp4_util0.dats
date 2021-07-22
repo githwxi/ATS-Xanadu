@@ -509,11 +509,6 @@ stmap_dvmrg(map1, map2)
 (* ****** ****** *)
 
 implement
-stmaplst_dvmrg(maps) = list_nil()
-
-(* ****** ****** *)
-
-implement
 dclaulst_dvmrg(dcls) = list_nil()
 
 (* ****** ****** *)

@@ -4953,7 +4953,7 @@ stmrg_make(res0)) where
 {
 //
 fun
-auxlst
+auxmain
 ( env0
 : !tr34env
 , xtts
@@ -4974,16 +4974,17 @@ let
 val+
 DVMRG2
 ( d2v0
-, opt1, opt2) = xtt0
+, opt1
+, opt2) = xtt0
 //
-val opt0 = d2v0.msexp()
+val
+opt0 = d2v0.msexp()
 //
 val res0 =
 (
 case+ opt0 of
 |
-None() =>
-let
+None() => let
 //
 val
 ms2e =
@@ -5001,13 +5002,13 @@ case+ opt1 of
 //
 in
 case+ opt2 of
-| None() => res0 | Some(s2e2) =>
+| None() => res0
+| Some(s2e2) =>
   list_vt_cons
   (DVCAST(d2v0, s2e2, ms2e), res0)
-end // end of [None]
+end (*let*) // end of [None]
 |
-Some(s2e0) =>
-let
+Some(s2e0) => let
 //
 val res0 =
 (
@@ -5031,12 +5032,11 @@ Some(s2e1) =>
 )
 ) : List0_vt(dvcast) // end-of-val
 //
-in
+in(*in-of-let*)
 //
 case+ opt2 of
 |
-None() =>
-let
+None() => let
   val
   s2e2 =
   tr34env_d2var_get_sexp
@@ -5051,20 +5051,20 @@ Some(s2e2) =>
   list_vt_cons
   (DVCAST(d2v0, s2e2, s2e0), res0)
 )
-end
-) : List0_vt(dvcast) // end-of-val[res0]
+//
+end (*let*) // end of [Some]
+) : List0_vt(dvcast) // end-of[res0]
 //
 in
-  auxlst(env0, xtts, res0)
+  auxmain( env0, xtts, res0 )
 end
-)
+) (*case*) (* end-of-fun[auxmain] *)
 //
 val
-res0 =
-list_vt_nil((*void*))
+res0 = list_vt_nil((*void*))
 val
 res0 =
-list_vt2t(auxlst(env0, xtts, res0))
+list_vt2t(auxmain(env0, xtts, res0))
 //
 } (*where*)//end of [trans34_dvmrg2_list]
 
@@ -5076,7 +5076,113 @@ trans34_dvmrgs_list
 (
 stmrg_make(res0)) where
 {
-val res0 = list_nil(*void*)
+//
+fun
+auxmain
+( env0
+: !tr34env
+, xtss
+: List0(dvmrgs)
+, res0
+: List0_vt(dvcast)
+)
+: List0_vt(dvcast) =
+(
+case+ xtss of
+|
+list_nil() =>
+list_vt_reverse(res0)
+|
+list_cons
+(xts0, xtss) =>
+let
+//
+val+
+DVMRGS
+(d2v0, opts) = xts0
+//
+val
+opt0 = d2v0.msexp()
+val
+s2e0 =
+(
+case+ opt0 of
+|
+Some
+(s2e0) => s2e0
+|
+None
+((*void*)) =>
+tr34env_d2var_get_sexp
+(env0, d2v0)
+) : s2exp // end-of[s2e0]
+//
+fun
+auxlst
+( env0
+: !tr34env
+, opts
+: List0(s2expopt)
+, res0
+: List0_vt(dvcast)
+)
+: List0_vt(dvcast) =
+(
+case+ opts of
+|
+list_nil
+((*void*)) => res0
+|
+list_cons
+(opt1, opts) =>
+(
+auxlst(env0, opts, res0)
+) where
+{
+val res0 =
+(
+case+ opt1 of
+|
+None() =>
+let
+  val
+  s2e1 =
+  tr34env_d2var_get_sexp
+  (env0, d2v0)
+in
+case+ opt0 of
+| None _ => res0
+| Some _ =>
+  list_vt_cons
+  (DVCAST(d2v0, s2e1, s2e0), res0)
+end
+|
+Some(s2e1) =>
+(
+  list_vt_cons
+  (DVCAST(d2v0, s2e1, s2e0), res0)
+)
+) : List0_vt(dvcast) // end-of[res0]
+}
+)
+//
+in
+let
+val
+res0 =
+auxlst(env0, opts, res0)
+//
+in
+  auxmain(env0, xtss, res0)
+end
+end
+) (*case*) // end-of-fun[auxmain]
+//
+val
+res0 = list_vt_nil((*void*))
+val
+res0 =
+list_vt2t(auxmain(env0, xtss, res0))
 } (*where*)//end of [trans34_dvmrgs_list]
 
 (* ****** ****** *)
