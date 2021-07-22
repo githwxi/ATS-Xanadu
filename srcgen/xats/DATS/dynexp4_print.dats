@@ -839,10 +839,12 @@ fprint!
 (out, "D4CLAUpat(", d4gp, ")")
 //
 |
-D4CLAUexp(d4gp, d0e0) =>
+D4CLAUexp
+(d4gp, d4e1, map2) =>
 fprint!
 ( out
-, "D4CLAUexp(", d4gp, "; ", d0e0, ")")
+, "D4CLAUexp("
+, d4gp, "; ", d4e1, "; ", "[]", ")")
 //
 ) (* end of [fprint_d4clau] *)
 //
@@ -854,14 +856,14 @@ case+
 x0.node() of
 //
 |
-D4GPATpat(d4p) =>
+D4GPATpat(d4p1) =>
 fprint!
-(out, "D4GPATpat(", d4p, ")")
+(out, "D4GPATpat(", d4p1, ")")
 //
 |
-D4GPATgua(d4p, d4gs) =>
+D4GPATgua(d4p1, d4gs) =>
 fprint!
-(out, "D4GPATgua(", d4p, "; ", d4gs, ")")
+(out, "D4GPATgua(", d4p1, "; ", d4gs, ")")
 //
 ) (* end of [fprint_d4gpat] *)
 //
@@ -1034,11 +1036,43 @@ fprint_dvmrg2(out, x0) =
 (
 case+ x0 of
 |
-DVMRG2(d2v0, opt1, opt2) =>
+DVMRG2
+(d2v0, opt1, opt2) =>
 fprint!
 ( out
 , "DVMRG2("
 , d2v0, "; ", opt1, "; ", opt2, ")")
+)
+//
+(* ****** ****** *)
+//
+implement
+print_dvmrgs(x0) =
+fprint_dvmrgs(stdout_ref, x0)
+implement
+prerr_dvmrgs(x0) =
+fprint_dvmrgs(stderr_ref, x0)
+implement
+fprint_dvmrgs(out, x0) =
+(
+case+ x0 of
+|
+DVMRGS(d2v0, opts) =>
+let
+implement
+fprint_val<s2expopt>(out,x0) =
+(
+case+ x0 of
+| None() =>
+  fprint!(out, "None(", ")")
+| Some(s2e) =>
+  fprint!(out, "Some(", s2e, ")")
+)
+in
+fprint!
+( out
+, "DVMRGS(", d2v0, "; ", opts, ")")
+end (*let*) // end of [DVMRGS]
 )
 //
 (* ****** ****** *)

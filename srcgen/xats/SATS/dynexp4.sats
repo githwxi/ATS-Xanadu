@@ -735,7 +735,8 @@ d4gua_make_node
 datatype
 d4clau_node =
 | D4CLAUpat of d4gpat
-| D4CLAUexp of (d4gpat, d4exp)
+| D4CLAUexp of
+  (d4gpat, d4exp, stmap)
 and
 d4gpat_node =
 | D4GPATpat of (d4pat)
@@ -961,20 +962,36 @@ prerr_dvmrg2(dvmrg2): void
 fun
 fprint_dvmrg2: fprint_type(dvmrg2)
 (* ****** ****** *)
+fun
+print_dvmrgs(dvmrgs): void
+fun
+prerr_dvmrgs(dvmrgs): void
+fun
+fprint_dvmrgs: fprint_type(dvmrgs)
+(* ****** ****** *)
 //
 fun
-stmap_merge2
+stmap2_dvmrg
 ( map1: stmap
 , map2: stmap): List0(dvmrg2)
 //
 (*
 fun
-stmap_merge1l
+stmap1l_dvmrg
 ( map1: stmap): List0(dvmrg2)
 fun
-stmap_merge1r
+stmap1r_dvmrg
 ( map1: stmap): List0(dvmrg2)
 *)
+//
+(* ****** ****** *)
+//
+fun
+stmaplst_dvmrg
+(maps: List0(stmap)): List0(dvmrgs)
+fun
+dclaulst_dvmrg
+(dcls: List0(d4clau)): List0(dvmrgs)
 //
 (* ****** ****** *)
 
