@@ -747,7 +747,8 @@ D4CLAUpat
 ( dgpt ) => ()
 |
 D4CLAUexp
-(dgpt, d4e1) =>
+( dgpt
+, d4e1, map2) =>
 let
 val () =
 tr4xenv_add_bloc(env0)

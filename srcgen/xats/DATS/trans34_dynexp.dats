@@ -97,6 +97,8 @@ fprint_val<d3ecl> = fprint_d3ecl
 (* ****** ****** *)
 implement
 fprint_val<dvmrg2> = fprint_dvmrg2
+implement
+fprint_val<dvmrgs> = fprint_dvmrgs
 (* ****** ****** *)
 //
 implement
@@ -2548,7 +2550,7 @@ D4Estmap(_, map2) => map2)
 ) : stmap // end of [val]
 //
 in
-  stmap_merge2(map1, map2)
+  stmap2_dvmrg(map1, map2)
 end (*let*) // end-of-val
 //
 val () =
@@ -2557,7 +2559,8 @@ println!
 trans34_dexp: \
 aux_if0: dvmrg=\n", dvmrg)
 //
-val stmrg =
+val
+stmrg =
 trans34_dvmrg2_list(env0, dvmrg)
 //
 in
@@ -3216,7 +3219,7 @@ d4e3.node() of
 D4Estmap(_, map2) => map2)
 ) : stmap // end of [val]
 in
-  stmap_merge2(map1, map2)
+  stmap2_dvmrg(map1, map2)
 end (*end*) // end of [val]
 //
 val () =
@@ -3274,18 +3277,20 @@ end // end of [list_cons]
 } (*where*) // end-of-val[()]
 *)
 //
-val stmrg =
+val
+stmrg =
 trans34_dvmrg2_list(env0, dvmrg)
 //
 in
 d4exp_stmrg
 (d4e0, stmrg) where
 {
-val d4e0 =
-d4exp_make_node
-( loc0
-, s2e0
-, t2p0, D4Eif0(d4e1, d4e2, opt3))
+  val
+  d4e0 =
+  d4exp_make_node
+  ( loc0
+  , s2e0
+  , t2p0, D4Eif0(d4e1, d4e2, opt3))
 }
 end where
 {
@@ -3324,16 +3329,43 @@ trans34_dexp(env0, dmat)
 val
 tmat = dmat.sexp((*void*))
 //
-val dcls =
+val
+dcls =
 trans34_dclaulst_dntp
 ( env0, dcls, tmat, s2e0 )
 //
+val
+dvmrg = dclaulst_dvmrg(dcls)
+//
+val () =
+println!
+("\
+trans34_dexp_dntp: \
+aux_cas0: dvmrg=\n", dvmrg)
+//
+val
+stmrg =
+trans34_dvmrgs_list(env0, dvmrg)
+//
 in
-d4exp_make_node
-( loc0
-, s2e0
-, t2p0, D4Ecas0(knd0, dmat, dcls))
-end (*let*) // end of [aux_cas0]
+d4exp_stmrg
+(d4e0, stmrg) where
+{
+  val
+  d4e0 =
+  d4exp_make_node
+  ( loc0
+  , s2e0
+  , t2p0, D4Ecas0(knd0, dmat, dcls))
+}
+end where
+{
+//
+val () =
+println!
+("trans34_dexp_dntp: aux_cas0: d3e0 = ", d3e0)
+//
+} (*where*) // end-of-fun[aux_cas0]
 
 (* ****** ****** *)
 
@@ -3516,49 +3548,62 @@ dgpt =
 trans34_dgpat_dntp
 ( env0, dgpt, tmat )
 //
+val () =
+tr34env_add_let1(env0)
+//
 val
 d4e2 =
-  trans34_dexp_dntp
-  ( env0, d3e2, tres )
+trans34_dexp_dntp(env0, d3e2, tres)
 //
+val
+stloc =
+let
 val
 d2vs =
 d4gpat_get_dlocs(dgpt)
 val
 stmap =
-tr34env_stmap_bran(env0)
+tr34env_stmap_let1(env0)
 //
 val
 ((*void*)) =
 println!
-("trans34_dclau_dntp: d2vs = ", d2vs)
+("trans34_dclau_dntp: dlocs = ", d2vs)
 val
 ((*void*)) =
 println!
 ("trans34_dclau_dntp: stmap(all)=\n", stmap)
 //
-val
-stmap =
+in
 tr34env_add_denvs
 ( env0 , d2vs , stmap ) where
 {
-val () = tr34env_pop_bran(env0)
+val () = tr34env_pop_let1(env0)
 } (*where*) // end-of-val
+end (*let*) // end-of-val[stloc]
 //
 val
 ((*void*)) =
 println!
-("trans34_dclau_dntp: stmap(loc)=\n", stmap)
+("trans34_dclau_dntp: stmap(loc)=\n", stloc)
+//
+val
+stmap =
+tr34env_stmap_bran(env0)
 //
 in
-let
-val d4e2 =
-d4exp_stmap(d4e2, stmap)
-in
-  d4clau_make_node
-  (loc0, D4CLAUexp(dgpt, d4e2))
-end
-end
+//
+d4clau_make_node
+( loc0
+, D4CLAUexp
+  (dgpt, d4e2, stmap)) where
+{
+//
+val () = tr34env_pop_bran(env0)
+//
+} (*where*) // [d4clau_make_node]
+//
+end (*let*) // end of [D3CLAUexp]
 //
 end (*let*) // [trans34_dclau_dntp]
 
@@ -5022,6 +5067,17 @@ res0 =
 list_vt2t(auxlst(env0, xtts, res0))
 //
 } (*where*)//end of [trans34_dvmrg2_list]
+
+(* ****** ****** *)
+
+implement
+trans34_dvmrgs_list
+  (env0, xtss) =
+(
+stmrg_make(res0)) where
+{
+val res0 = list_nil(*void*)
+} (*where*)//end of [trans34_dvmrgs_list]
 
 (* ****** ****** *)
 

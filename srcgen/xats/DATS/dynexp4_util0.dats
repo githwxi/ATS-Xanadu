@@ -203,7 +203,7 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-stmap_merge2
+stmap2_dvmrg
 (map1, map2) =
 let
 val
@@ -272,7 +272,7 @@ val mrg =
 DVMRG2(k0, None(), Some(x0))
 //
 in
-auxlstl
+auxlstr
 (kxs, list_vt_cons(mrg, res))
 end ) (* end of [auxlstr] *)
 //
@@ -409,7 +409,7 @@ auxlst2l
 , kxs2, list_vt_cons(mrg, res))
 end // end of [let]
 |
-_(* else *) =>
+_(* else *) => // k1=k2
 let
 val mrg =
 DVMRG2(k1, Some(x1), Some(x2))
@@ -476,7 +476,7 @@ auxlst2l
 , kxs2, list_vt_cons(mrg, res))
 end // end of [let]
 |
-_(* else *) =>
+_(* else *) => // k1=k2
 let
 val mrg =
 DVMRG2(k1, Some(x1), Some(x2))
@@ -489,23 +489,33 @@ end // end of [let]
 end
 ) (*case*) (* end of [auxlst2r] *)
 //
-} (*where*) // end of [stmap_merge2]
+} (*where*) // end of [stmap_dvmrg]
 
 (* ****** ****** *)
 //
 (*
 implement
-stmap_merge1l(map1) =
+stmap1l_dvmrg(map1) =
 (
-stmap_merge2(map1, map2)
+stmap_dvmrg(map1, map2)
 ) where { val map2 = stmap_nil() }
 implement
-stmap_merge1r(map2) =
+stmap1r_dvmrg(map2) =
 (
-stmap_merge2(map1, map2)
+stmap_dvmrg(map1, map2)
 ) where { val map1 = stmap_nil() }
 *)
 //
+(* ****** ****** *)
+
+implement
+stmaplst_dvmrg(maps) = list_nil()
+
+(* ****** ****** *)
+
+implement
+dclaulst_dvmrg(dcls) = list_nil()
+
 (* ****** ****** *)
 
 (* end of [xats_dynexp4_util0.dats] *)
