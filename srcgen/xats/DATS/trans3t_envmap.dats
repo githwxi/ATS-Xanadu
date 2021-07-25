@@ -584,6 +584,11 @@ auxlst1
 (xs, implstk_nil())
 ) where
 {
+//
+// HX: [auxlst1]
+// HX: [auxlst2]
+// HX: are the same!
+//
 fun
 auxlst1
 ( xs
@@ -598,17 +603,17 @@ case- xs of
 |
 ~implstk_cons1
    (d3cl, xs) =>
- (
+(
    auxlst1
    (xs, implstk_cons1(d3cl, ys))
- )
+)
 |
 ~implstk_cons2
-   (d3cl, ti3e, xs) =>
- (
+ (d3cl, ti3e, xs) =>
+(
    auxlst1
    (xs, implstk_cons2(d3cl, ti3e, ys))
- )
+)
 )
 and
 auxlst2
@@ -621,12 +626,30 @@ case- xs of
 |
 ~implstk_loc1
  (xs) => auxlst3(xs, ys)
+(*
 |
 ~implstk_cons1
  (d3cl, xs) => auxlst2(xs, ys)
+*)
+|
+~implstk_cons1
+ (d3cl, xs) =>
+(
+  auxlst2
+  (xs, implstk_cons1(d3cl, ys))
+)
+(*
 |
 ~implstk_cons2
  (d3cl, ti3e, xs) => auxlst2(xs, ys)
+*)
+|
+~implstk_cons2
+ (d3cl, ti3e, xs) =>
+(
+  auxlst2
+  (xs, implstk_cons2(d3cl, ti3e, ys))
+)
 )
 and
 auxlst3
@@ -640,16 +663,16 @@ case- ys of
 ~implstk_nil() => xs
 |
 ~implstk_cons1(d3cl, ys) =>
- (
-   auxlst3
-   (implstk_cons1(d3cl, xs), ys)
- )
+(
+  auxlst3
+  (implstk_cons1(d3cl, xs), ys)
+)
 |
 ~implstk_cons2(d3cl, ti3e, ys) =>
- (
-   auxlst3
-   (implstk_cons2(d3cl, ti3e, xs), ys)
- )
+(
+  auxlst3
+  (implstk_cons2(d3cl, ti3e, xs), ys)
+)
 ) (* end of [auxlst3] *)
 } (* where *) // implstk_pop_loc12
 //
