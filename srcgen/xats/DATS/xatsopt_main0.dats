@@ -310,6 +310,7 @@ end // end of [local]
 (* ****** ****** *)
 //
 #dynload "./dynexp4.dats"
+#dynload "./dynexp4_stmap.dats"
 #dynload "./dynexp4_print.dats"
 #dynload "./dynexp4_util0.dats"
 //

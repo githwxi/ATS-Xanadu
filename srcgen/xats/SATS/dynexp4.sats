@@ -372,6 +372,16 @@ stmap_listize
 : List0_vt( @(d2var, s2exp) )
 //
 (* ****** ****** *)
+fun
+{env:vt0p}
+stmap_foreach$fwork
+( k0: d2var
+, x0: s2exp, env: &(env) >> _): void
+fun
+{env:vt0p}
+stmap_foreach_env
+(map: stmap, env: &(env) >> _): void
+(* ****** ****** *)
 //
 fun
 print_stmap(map0: stmap): void

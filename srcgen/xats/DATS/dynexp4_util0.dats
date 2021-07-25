@@ -39,13 +39,18 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
-
 (* ****** ****** *)
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 #staload "./../SATS/dynexp4.sats"
+(* ****** ****** *)
+
+implement
+fprint_val<d2var> = fprint_d2var
+
 (* ****** ****** *)
 
 local
@@ -508,8 +513,121 @@ stmap_dvmrg(map1, map2)
 //
 (* ****** ****** *)
 
+local
+//
+(* ****** ****** *)
+#staload
+"./dynexp4_stmap.dats"
+(* ****** ****** *)
+//
+#staload
+_(*FMAP*) =
+"libats\
+/DATS/funmap_avltree.dats"
+//
+(* ****** ****** *)
+//
+#staload
+LS =
+"libats\
+/SATS/linset_avltree.sats"
+#staload
+_(*LS*) =
+"libats\
+/DATS/linset_avltree.dats"
+//
+(* ****** ****** *)
+//
+typedef
+elt = d2var
+vtypedef
+dvset = $LS.set(elt)
+//
 implement
-dclaulst_dvmrg(dcls) = list_nil()
+$LS.compare_elt_elt<elt>
+(x1, x2) =
+$effmask_all
+(compare(x1.stamp(), x2.stamp()))
+(* ****** ****** *)
+//
+fun
+stmap_add_d2vs
+( map0: stmap
+, set1: dvset): dvset =
+let
+var env1 = set1
+in
+let
+implement
+stmap_foreach$fwork<dvset>
+(k0, x0, env1) =
+ignoret($LS.linset_insert(env1, k0))
+in(*in-of-let*)
+  stmap_foreach_env<dvset>(map0, env1); env1
+end
+end // end of [stmap_add_d2vs]
+//
+fun
+dclaulst_get_stdvs
+( dcls
+: d4claulst): dvset =
+let
+fun
+auxlst
+( dcls
+: d4claulst
+, res: &dvset >> _): void =
+(
+case+ dcls of
+|
+list_nil() => ()
+|
+list_cons(dcl1, dcls) =>
+(
+case+
+dcl1.node() of
+|
+D4CLAUpat _ =>
+(
+  auxlst(dcls, res)
+)
+|
+D4CLAUexp(_, _, map) =>
+(
+  auxlst(dcls, res)) where
+{
+val () =
+res := stmap_add_d2vs(map,res)
+}
+)
+)
+in
+( auxlst
+  (dcls, res); res) where
+{
+  var
+  res: dvset = $LS.linset_nil()
+}
+end (*let*) // dclaulst_get_stdvs
+//
+in(*in-of-local*)
+
+implement
+dclaulst_dvmrg(dcls) =
+(
+list_nil((*void*))) where
+{
+val d2vs =
+dclaulst_get_stdvs(dcls)
+val d2vs =
+$LS.linset_listize(d2vs)
+val d2vs = list_vt2t(d2vs)
+val ((*void*)) =
+println!
+("dclaulst_dvmrg: d2vs = ", d2vs)
+} (*where*) // end of [dclaulst_dvmrg]
+
+end // end of [local]
 
 (* ****** ****** *)
 

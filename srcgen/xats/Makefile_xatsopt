@@ -176,6 +176,7 @@ tcomp30_dynexp.dats \
 cstrnt0.dats \
 cstrnt0_print.dats \
 dynexp4.dats \
+dynexp4_stmap.dats \
 dynexp4_print.dats \
 dynexp4_util0.dats \
 trans34_util1.dats \
