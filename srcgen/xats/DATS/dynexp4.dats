@@ -532,12 +532,12 @@ d4ecl_make_node
 
 local
 
-(* ****** ******)
+(* ****** ****** *)
 #staload
 FS =
 "libats/SATS\
 /funset_avltree.sats"
-(* ****** ******)
+(* ****** ****** *)
 #staload
 _(*FS*) =
 "libats/DATS\
@@ -545,16 +545,16 @@ _(*FS*) =
 #staload
 _(*QL*) =
 "libats/DATS/qlist.dats"
-(* ****** ******)
+(* ****** ****** *)
 //
 typedef elt = d2var
 //
-(* ****** ******)
+(* ****** ****** *)
 //
 absimpl
 dlocs_type = $FS.set(elt)
 //
-(* ****** ******)
+(* ****** ****** *)
 //
 implement
 $FS.compare_elt_elt<elt>
@@ -562,16 +562,16 @@ $FS.compare_elt_elt<elt>
 $effmask_all
 (compare(k1.stamp(), k2.stamp()))
 //
-(* ****** ******)
+(* ****** ****** *)
 
 in(* in-of-local *)
 
-(* ****** ******)
+(* ****** ****** *)
 //
 implement
 dlocs_nil() = $FS.funset_nil()
 //
-(* ****** ******)
+(* ****** ****** *)
 implement
 dlocs_ismem
 (dvrs, d2v0) =
@@ -594,115 +594,6 @@ dlocs_listize
 end // end of [local]
 
 (* ****** ****** *)
-
-local
-
-(* ****** ******)
-#staload
-FM =
-"libats/SATS\
-/funmap_avltree.sats"
-(* ****** ******)
-#staload
-_(*FM*) =
-"libats/DATS\
-/funmap_avltree.dats"
-#staload
-_(*QL*) =
-"libats/DATS/qlist.dats"
-(* ****** ******)
-//
-typedef key = d2var
-typedef itm = s2exp
-//
-(* ****** ******)
-//
-absimpl
-stmap_type = $FM.map(key, itm)
-//
-(* ****** ******)
-//
-implement
-$FM.equal_key_key<key>
-(k1, k2) =
-$effmask_all
-(k1.stamp() = k2.stamp())
-implement
-$FM.compare_key_key<key>
-(k1, k2) =
-$effmask_all
-(compare(k1.stamp(), k2.stamp()))
-//
-(* ****** ******)
-
-in(*in-of-local*)
-
-(* ****** ******)
-//
-implement
-stmap_nil() = $FM.funmap_nil()
-//
-(* ****** ******)
-
-implement
-stmap_ismem
-(map, key) =
-let
-//
-var res: itm
-//
-val ans =
-$FM.funmap_search<key,itm>(map,key,res)
-//
-in
-let prval() = opt_clear{itm}(res) in ans end
-end (*let*) // end of [stmap_ismem]
-
-(* ****** ****** *)
-
-implement
-stmap_insert
-(map, key, itm) =
-let
-val
-ismem = stmap_ismem(map, key)
-(*
-val () =
-println!("stmap_insert: key = ", key)
-val () =
-println!("stmap_insert: itm = ", itm)
-*)
-in
-if
-ismem
-then false
-else (true) where
-{
-val-
-~None_vt() =
-$FM.funmap_insert_opt<key,itm>(map,key,itm)
-} (*where*)
-end (*let*) // end of [stmap_insert]
-
-(* ****** ****** *)
-
-implement
-stmap_remove
-( map, key ) =
-$FM.funmap_remove<key,itm>(map, key)
-
-(* ****** ****** *)
-//
-implement
-stmap_listize
-( map ) = $FM.funmap_listize<key,itm>( map )
-//
-(* ****** ****** *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
 local
 //
 absimpl
@@ -732,24 +623,27 @@ auxlst
 : List0(dvcast), res: res): res =
 (
 case+ xs of
-| list_nil() =>
-  list_vt_reverse(res)
-| list_cons(x0, xs) =>
-  let
+|
+list_nil() =>
+list_vt_reverse(res)
+|
+list_cons(x0, xs) =>
+let
   val+
   DVCAST
   (d2v0, s2e1, s2e2) = x0
-  in
-    auxlst(xs, res) where
-    {
-      val res =
-      list_vt_cons
-      ( @(d2v0, s2e1, s2e2), res )
-    }
-  end // end of [list_cons]
+in
+auxlst(xs, res) where
+{
+val res =
+list_vt_cons((d2v0, s2e1, s2e2), res)
+}
+end // end of [list_cons]
 )
 //
 } (*where*) // end of [stmrg_listize]
+
+(* ****** ****** *)
 
 end // end of [local]
 
