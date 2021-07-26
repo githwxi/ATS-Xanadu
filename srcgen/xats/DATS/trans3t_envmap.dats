@@ -585,9 +585,15 @@ auxlst1
 ) where
 {
 //
+// HX-2021-07-25:
 // HX: [auxlst1]
 // HX: [auxlst2]
 // HX: are the same!
+// HX:
+// This means that
+// static and dynamic
+// interpretations of local-in-end
+// are different!
 //
 fun
 auxlst1
