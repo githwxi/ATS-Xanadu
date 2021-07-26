@@ -47,10 +47,17 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/dynexp3.sats"
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
-
+implement
+fprint_val<s2exp> = fprint_s2exp
 implement
 fprint_val<d2var> = fprint_d2var
-
+(* ****** ****** *)
+(*
+implement
+fprint_val<dvmrg2> = fprint_dvmrg2
+implement
+fprint_val<dvmrgs> = fprint_dvmrgs
+*)
 (* ****** ****** *)
 
 local
@@ -563,7 +570,11 @@ stmap_foreach$fwork<dvset>
 (k0, x0, env1) =
 ignoret($LS.linset_insert(env1, k0))
 in(*in-of-let*)
-  stmap_foreach_env<dvset>(map0, env1); env1
+  env1 where
+{
+  val () =
+  stmap_foreach_env<dvset>(map0, env1)
+}
 end
 end // end of [stmap_add_d2vs]
 //
@@ -610,21 +621,166 @@ in
 }
 end (*let*) // dclaulst_get_stdvs
 //
+vtypedef
+d2vs2e = @(d2var, s2exp)
+vtypedef
+d2vs2es = List0_vt(d2vs2e)
+//
+fun
+fd2vkxs1
+( d2v0: d2var
+, kxs1: d2vs2es
+) :
+(s2expopt, d2vs2es) =
+(
+case+ kxs1 of
+|
+list_vt_nil
+((*void*)) => (None(), kxs1)
+| @
+list_vt_cons
+(kx1, kxs2) =>
+let
+val
+sgn =
+cmp_d2var_d2var(d2v0, kx1.0)
+in
+if
+(sgn < 0)
+then
+( fold@kxs1; (None(), kxs1) )
+else
+let
+val kx1 = kx1
+val kxs2 = kxs2
+in
+free@{..}{0}(kxs1);(Some(kx1.1), kxs2)
+end
+end (*let*) // [list_vt_cons]
+) (* case *) // end-of-fun[fd2vkxs1]
+//
+and
+fd2vkxss
+( d2v0: d2var
+, kxss:
+! List0_vt(d2vs2es)
+)
+: List0_vt(s2expopt) =
+(
+case+ kxss of
+|
+list_vt_nil() =>
+list_vt_nil()
+| @
+list_vt_cons(kxs1, kxsz) =>
+let
+val res1 = fd2vkxs1(d2v0, kxs1)
+val opts = fd2vkxss(d2v0, kxsz)
+in
+kxs1 := res1.1;
+fold@(kxss);list_vt_cons(res1.0, opts)
+end
+) (* case *) // end-of-fun[fd2vkxss]
+//
+fun
+fd2vskxss
+( d2vs:
+  List0_vt(d2var)
+, kxss:
+! List0_vt(d2vs2es)
+) : List0_vt(dvmrgs) =
+(
+case+ d2vs of
+| ~
+list_vt_nil() =>
+list_vt_nil()
+| ~
+list_vt_cons
+(d2v0, d2vs) =>
+let
+//
+val opts =
+list_vt2t(fd2vkxss(d2v0, kxss))
+//
+val res1 = fd2vskxss(d2vs, kxss)
+in
+  list_vt_cons(DVMRGS(d2v0,opts), res1)
+end
+) (* case *) // end-of-fun[fd2vskxss]
+//
+fun
+freekxss
+( kxss:
+  List0_vt(d2vs2es)): void =
+(
+case+ kxss of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(kxs1, kxss) =>
+let
+val- ~
+list_vt_nil() = kxs1 in freekxss(kxss)
+end
+) (* case *) // end-of-fun[freekxss]
+//
 in(*in-of-local*)
 
 implement
 dclaulst_dvmrg(dcls) =
-(
-list_nil((*void*))) where
+let
+//
+val res =
+list_vt2t
+(fd2vskxss(d2vs, kxss))
+//
+in
+let
+val () =
+freekxss(kxss) in res end
+end where
 {
-val d2vs =
+//
+val
+d2vs =
 dclaulst_get_stdvs(dcls)
-val d2vs =
+val
+d2vs =
 $LS.linset_listize(d2vs)
-val d2vs = list_vt2t(d2vs)
-val ((*void*)) =
-println!
-("dclaulst_dvmrg: d2vs = ", d2vs)
+//
+val
+kxss = auxlst(dcls) where
+{
+fun
+auxlst
+(dcls
+: d4claulst)
+: List0_vt(d2vs2es) =
+(
+case+ dcls of
+| list_nil() =>
+  list_vt_nil()
+| list_cons(dcl1, dcls) =>
+  (
+  case+
+  dcl1.node() of
+  |
+  D4CLAUpat _ =>
+  (
+    auxlst(dcls)
+  )
+  |
+  D4CLAUexp(_, _, map) =>
+  let
+  val
+  kxs1 = stmap_listize(map)
+  in
+    list_vt_cons(kxs1, auxlst(dcls))
+  end
+  )
+)
+} (*where*) // end-of-val[kxss]
+//
 } (*where*) // end of [dclaulst_dvmrg]
 
 end // end of [local]
