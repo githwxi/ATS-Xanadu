@@ -92,7 +92,7 @@ cp2gez(a:vt) = [l:agez] cp2tr1(a,l)
 typedef
 cp2gtz(a:vt) = [l:agtz] cp2tr1(a,l)
 (* ****** ****** *)
-
+//
 fcast
 p2tr_constize
 {a:vt}{l:a0}
@@ -101,7 +101,7 @@ p2tr_constize
 cp2tr with p2tr_constize of 1000
 #symload
 const with p2tr_constize of 1000
-
+//
 (* ****** ****** *)
 //
 fun<>
