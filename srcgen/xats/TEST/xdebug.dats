@@ -8,15 +8,16 @@
 //
 fun
 foo
-( b0: bool
+( i0: int
 , x0
 : &(?int) >> int
 , x1
 : &(?int) >> int): void =
 (
-case+ b0 of
-| true => (x0 := 1)
-| false => (x1 := 2)
+case+ i0 of
+| 0 => (x0 := 1)
+| 1 => (x1 := 2)
+| _ => (x1 := 3)
 )
 ////
 (* ****** ****** *)
