@@ -917,10 +917,11 @@ hvaldeclist = List0(hvaldecl)
 //
 (* ****** ****** *)
 //
+(*
 fun
 hvaldecl_get_loc(hvaldecl): loc_t
-//
 overload .loc with hvaldecl_get_loc
+*)
 //
 (* ****** ****** *)
 //
@@ -951,10 +952,11 @@ hvardeclist = List0(hvardecl)
 //
 (* ****** ****** *)
 //
+(*
 fun
 hvardecl_get_loc(hvardecl): loc_t
-//
 overload .loc with hvardecl_get_loc
+*)
 //
 (* ****** ****** *)
 //
