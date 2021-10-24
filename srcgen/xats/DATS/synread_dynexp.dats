@@ -237,7 +237,14 @@ implement
 synread_d0exp
   (d0e0) = let
 //
-val loc0 = d0e0.loc((*void*))
+val
+loc0 = d0e0.loc((*void*))
+//
+(*
+val () =
+println!
+("synread_d0exp: d0e0 = ", d0e0)
+*)
 //
 in
 //
@@ -650,7 +657,7 @@ case+ dend of
   {
     val () = synread_BAR(tsep)
     val () = synread_RPAREN(tend)
-    val () = synread_d0explst(d0es)
+    val () = auxcons_d0explst(d0es)
   }
 // (d0es1 ; d0es2)
 | d0exp_RPAREN_cons2
@@ -658,9 +665,49 @@ case+ dend of
   {
     val () = synread_SMCLN(tsep)
     val () = synread_RPAREN(tend)
-    val () = synread_d0explst(d0es)
+    val () = auxcons_d0explst(d0es)
   }
+) where
+{
+fun
+auxcons_d0explst
+(d0es: d0explst): void =
+(
+  case+ d0es of
+  | list_nil() => ()
+  | list_cons(d0e1, d0es) =>
+    auxcons_d0e1_d0es(d0e1, d0es)
 )
+and
+auxcons_d0e1_d0es
+( d0e1: d0exp
+, d0es: d0explst): void =
+(
+  case+ d0es of
+  | list_nil
+    ((*none*)) =>
+    (
+    case+ d0e1.node() of
+    | D0Enone1
+      ( tok1 ) =>
+      {
+        val () =
+        synread_RPAREN(tok1)
+      }
+    | _(*else*) =>
+      {
+      val () = synread_d0exp(d0e1)
+      }
+    )
+  | list_cons
+    (d0e2, d0es) =>
+    let
+      val () = synread_d0exp(d0e1)
+    in
+      auxcons_d0e1_d0es(d0e2, d0es)
+    end
+) (* end of [auxcons_d0explst] *)
+} (* end of [synread_d0exp_RPAREN] *)
 //
 (* ****** ****** *)
 //
