@@ -387,6 +387,8 @@ synread_d0expopt: synreader(d0expopt)
 fun//{}
 synread_d0explst: synreader(d0explst)
 fun//{}
+synread_d0expseq: synreader(d0explst)
+fun//{}
 synread_labd0explst: synreader(labd0explst)
 //
 (* ****** ****** *)

@@ -439,7 +439,7 @@ d0e0.node() of
     | None() =>
       synread_d0explst(d0es)
     | Some(tok0) =>
-      synread_d0explst(d0es)
+      synread_d0expseq(d0es)
     ) : void // end of [val]
 //
     val () = synread_ENDLET(tend)
@@ -612,6 +612,66 @@ list_foreach$fwork<d0exp><env>(d0e, env) = synread_d0exp(d0e)
 //
 implement
 //{}(*tmp*)
+synread_d0expseq
+  (d0es) =
+(
+  auxcons_d0explst(d0es)
+) where
+{
+fun
+auxcons_d0explst
+(d0es: d0explst): void =
+(
+  case+ d0es of
+  | list_nil() => ()
+  | list_cons(d0e1, d0es) =>
+    auxcons_d0e1_d0es(d0e1, d0es)
+)
+and
+auxcons_d0e1_d0es
+( d0e1: d0exp
+, d0es: d0explst): void =
+(
+case+ d0es of
+| list_nil
+  ((*none*)) =>
+  (
+  case+ d0e1.node() of
+  | D0Enone1
+    ( tok1 ) =>
+    {
+      val () =
+      (
+        case+
+        tok1.node() of
+        | T_END() => ()
+        | T_ENDLET() => ()
+(*
+        | T_RPAREN() => ()
+*)
+        | _(* else *) =>
+          synread_d0exp(d0e1)
+        )
+    }
+  | _(*else*) =>
+    {
+    val () = synread_d0exp(d0e1)
+    }
+  )
+| list_cons
+  (d0e2, d0es) =>
+  let
+    val () = synread_d0exp(d0e1)
+  in
+    auxcons_d0e1_d0es(d0e2, d0es)
+  end
+) (* end of [auxcons_d0explst] *)
+} (* end of [synread_d0expseq] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
 synread_d0exp_THEN
   (d0e0) =
 (
@@ -692,7 +752,13 @@ auxcons_d0e1_d0es
       ( tok1 ) =>
       {
         val () =
-        synread_RPAREN(tok1)
+        (
+        case+
+        tok1.node() of
+        | T_RPAREN() => ()
+        | _(* else *) =>
+          synread_d0exp(d0e1)
+        )
       }
     | _(*else*) =>
       {
