@@ -907,7 +907,7 @@ x0.node() of
   , hdc0, "; ", htia, "; ", hfas, "; ", body, ")")
 //
 | H0Cnone1(_) =>
-  fprint!(out, "H0Cnone1(", "...", ")")
+  fprint!(out, "H0Cnone1(", "[dataptr]", ")")
 //
 (*
 | _(* H0C... *) => fprint!(out, "H0C...(...)")
