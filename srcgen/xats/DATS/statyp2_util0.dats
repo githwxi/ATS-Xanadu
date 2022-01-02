@@ -1633,7 +1633,14 @@ let
   flag: int = 0 in auxt2p0(t2p0, flag)
 end
 //
-end (* end of [t2ype_normize] *) end // end of [local]
+end (* end of [t2ype_normize] *)
+
+implement
+t2ypelst_normize(t2ps) =
+let
+  var
+  flag: int = 0 in auxt2ps(t2ps, flag)
+end (* end of [t2ypelst_normize] *) end // end of [local]
 
 (* ****** ****** *)
 
