@@ -78,6 +78,9 @@ g_inp_line_list(): list(char)
 #extern
 fun<>
 g_inp_lline_list(): list_vt(char)
+#extern
+fun<>
+g_inp_lline_rlist(): list_vt(char)
 (* ****** ****** *)
 
 impltmp
@@ -114,21 +117,30 @@ in
 end // end of [let]
 )
 //
-} (* end of [g_inp_chars] *)
+} (* end of [g_inp_cstream] *)
 
 (* ****** ****** *)
 //
 impltmp
 <>(*tmp*)
 g_inp_line_list() =
-list_vt2t{char}(g_inp_lline_list<>())
+list_vt2t{char}
+(g_inp_lline_list<>((*void*)))
 //
 (* ****** ****** *)
 
 impltmp
 <>(*tmp*)
 g_inp_lline_list() =
-let
+list_vt_reverse<char>
+(g_inp_lline_rlist<>((*void*)))
+impltmp
+<>(*tmp*)
+g_inp_lline_rlist() =
+(
+loop(list_vt_nil())
+) where
+{
 //
 val EOL = '\n'
 //
@@ -139,22 +151,19 @@ loop
 let
 val c0 = g_inp_char<>()
 in
-  if
-  (c0 >= 0)
-  then
-  let
-  val c0 = char(c0)
-  in
-  if
-  (c0 = EOL)
-  then cs else loop(list_vt_cons(c0, cs))
-  end
-  else cs // end of [else]
-end
-//
+if
+(c0 >= 0)
+then
+let
+val c0 = char(c0)
 in
-  list_vt_reverse<char>(loop(list_vt_nil()))
-end // end of [g_inp_lline_list]
+if
+(c0 = EOL)
+then cs else loop(list_vt_cons(c0, cs))
+end
+else cs // end of [else]
+end
+} (*where*) // end of [g_inp_lline_list]
 
 (* ****** ****** *)
 
