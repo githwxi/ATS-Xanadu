@@ -27,7 +27,7 @@
 
 (* ****** ****** *)
 //
-// For generic ordering
+// For generic IO ops
 //
 (* ****** ****** *)
 //
@@ -148,7 +148,9 @@ val EOL = '\n'
 fun
 loop
 ( cs
-: list_vt(char)): list_vt(char) =
+: list_vt(char)
+)
+: list_vt(char) =
 let
 val c0 = g_inp_char<>()
 in
@@ -158,9 +160,10 @@ then
 let
 val c0 = char(c0)
 in
-if
-(c0 = EOL)
-then cs else loop(list_vt_cons(c0, cs))
+  if
+  (c0 = EOL)
+  then ( cs )
+  else loop(list_vt_cons(c0, cs))
 end
 else cs // end of [else]
 end
