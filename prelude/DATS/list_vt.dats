@@ -226,7 +226,8 @@ list_vt_cons(_, _) =>
 let
   val () = loop(xs.1, ys)
 in
-  let prval () = $fold(xs) in () end
+let
+prval () = $fold(xs) in () end
 end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //

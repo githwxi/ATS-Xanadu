@@ -39,8 +39,11 @@
 
 (*
 //
-// HX:
-// declared in basics.sats
+(*
+HX:
+This one is already
+declared in basics.sats
+*)
 //
 fcast
 list_vt2t
@@ -49,6 +52,12 @@ list_vt2t
 *)
 
 (* ****** ****** *)
+//
+(*
+HX:
+these are functions
+instead of constructors
+*)
 //
 fun<>
 list_vt_nil_
