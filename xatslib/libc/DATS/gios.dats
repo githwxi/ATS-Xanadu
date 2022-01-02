@@ -128,12 +128,13 @@ list_vt2t{char}
 (g_inp_lline_list<>((*void*)))
 //
 (* ****** ****** *)
-
+//
 impltmp
 <>(*tmp*)
 g_inp_lline_list() =
 list_vt_reverse<char>
 (g_inp_lline_rlist<>((*void*)))
+//
 impltmp
 <>(*tmp*)
 g_inp_lline_rlist() =
@@ -163,8 +164,8 @@ then cs else loop(list_vt_cons(c0, cs))
 end
 else cs // end of [else]
 end
-} (*where*) // end of [g_inp_lline_list]
-
+} (*where*) // end of [g_inp_lline_rlist]
+//
 (* ****** ****** *)
 
 (* end of [xatslib_libc_gios.dats] *)
