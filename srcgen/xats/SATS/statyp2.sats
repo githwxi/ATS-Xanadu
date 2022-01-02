@@ -530,6 +530,9 @@ t2ype_normize(t2p0: t2ype): t2ype
 //
 overload normize with t2ype_normize
 //
+fun
+t2ypelst_normize(t2ypelst): t2ypelst
+//
 (* ****** ****** *)
 //
 (*

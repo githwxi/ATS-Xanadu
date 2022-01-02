@@ -334,6 +334,24 @@ d3exp_make_node(loc0, t2p0, dend)
 end
 //
 |
+D3Etimp
+( stmp
+, tcst, targ
+, d3cl, tsub) =>
+let
+val tcst =
+trans3x_dexp(env0, tcst)
+val targ = t2ypelst_normize(targ)
+val tsub = t2ypelst_normize(tsub)
+in
+d3exp_make_node
+( loc0
+, t2p0
+, D3Etimp
+  (stmp, tcst, targ, d3cl, tsub))
+end // end of [D3Etimp]
+//
+|
 D3Esap0
 (d3f1, s2es) =>
 let

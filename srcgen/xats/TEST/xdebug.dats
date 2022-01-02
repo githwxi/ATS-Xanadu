@@ -3,6 +3,9 @@
 "share\
 /xatsopt_prelude.hats"
 (* ****** ****** *)
+val x12 = 1 + 2
+(* ****** ****** *)
+////
 #staload "./xdebug.sats"
 (* ****** ****** *)
 //
