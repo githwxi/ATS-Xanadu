@@ -1,0 +1,323 @@
+/* ****** ****** */
+/*
+Basics for Xats2cc
+*/
+/* ****** ****** */
+
+typedef int bool_t;
+typedef int sint_t;
+
+typedef float sflt_t;
+typedef double dflt_t;
+
+typedef char *cstr_t;
+
+/* ****** ****** */
+//
+// prelude/bool.sats
+//
+/* ****** ****** */
+bool_t
+XATS2CC_bool_neg
+  (bool_t b0)
+{ return ~b0 ; }
+/* ****** ****** */
+bool_t
+XATS2CC_bool_add
+(bool_t b1, bool_t b2)
+{ return (b1 || b2); }
+bool_t
+XATS2CC_bool_mul
+(bool_t b1, bool_t b2)
+{ return (b1 && b2); }
+/* ****** ****** */
+//
+// prelude/char.sats
+//
+/* ****** ****** */
+/* ****** ****** */
+//
+// prelude/gint.sats
+//
+/* ****** ****** */
+sint_t
+XATS2CC_gint_abs_sint
+  (sint_t x0)
+{
+if
+(x0 >= 0)
+{
+  return x0; // abs
+}
+else
+{
+  return -x0; // abs
+}
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gint_neg_sint
+  (sint_t x0)
+{
+return (-x0); // neg
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gint_succ_sint
+  (sint_t x0)
+{
+return (x0 + 1); // +1
+}
+sint_t
+XATS2CC_gint_pred_sint
+  (sint_t x0)
+{
+return (x0 - 1); // -1
+}
+/* ****** ****** */
+bool_t
+XATS2CC_gint_lt_sint_sint
+(sint_t x1, sint_t x2)
+{
+return (x1 < x2); // lt
+}
+bool_t
+XATS2CC_gint_gt_sint_sint
+(sint_t x1, sint_t x2)
+{
+return (x1 > x2); // gt
+}
+bool_t
+XATS2CC_gint_eq_sint_sint
+(sint_t x1, sint_t x2)
+{
+return (x1 == x2); // eq
+}
+bool_t
+XATS2CC_gint_lte_sint_sint
+(sint_t x1, sint_t x2)
+{
+return (x1 <= x2); // lte
+}
+bool_t
+XATS2CC_gint_gte_sint_sint
+(sint_t x1, sint_t x2)
+{
+return (x1 >= x2); // gte
+}
+bool_t
+XATS2CC_gint_neq_sint_sint
+(sint_t x1, sint_t x2)
+{
+return (x1 != x2); // neq
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gint_cmp_sint_sint
+(sint_t x1, sint_t x2)
+{
+if
+(x1 < x2)
+return (-1);
+else
+return (x1 <= x2 ? 0 : 1);
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gint_add_sint_sint
+(sint_t x1, sint_t x2)
+{
+   return (x1 + x2); // add
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gint_sub_sint_sint
+(sint_t x1, sint_t x2)
+{
+  return (x1 - x2); // sub
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gint_mul_sint_sint
+(sint_t x1, sint_t x2)
+{
+  return (x1 * x2); // mul
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gint_mod_sint_sint
+(sint_t x1, sint_t x2)
+{
+  return (x1 % x2); // mod
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gint_div_sint_sint
+(sint_t x1, sint_t x2)
+{
+  return (x1 / x2); // div
+}
+/* ****** ****** */
+//
+// prelude/gflt.sats
+//
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_i_dflt
+  (sint_t x0)
+{
+  return x0; // int
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_abs_dflt
+  (dflt_t x0)
+{
+if
+(x0 >= 0.0)
+{
+  return x0; // abs
+}
+else
+{
+  return -x0; // abs
+}
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_neg_dflt
+  (dflt_t x0)
+{
+return (-x0); // neg
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_succ_dflt
+  (dflt_t x0)
+{
+return (x0 + 1); // +1
+}
+dflt_t
+XATS2CC_gflt_pred_dflt
+  (dflt_t x0)
+{
+return (x0 - 1); // -1
+}
+/* ****** ****** */
+bool_t
+XATS2CC_gflt_lt_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+return (x1 < x2); // lt
+}
+bool_t
+XATS2CC_gflt_gt_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+return (x1 > x2); // gt
+}
+bool_t
+XATS2CC_gflt_eq_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+return (x1 == x2); // eq
+}
+bool_t
+XATS2CC_gflt_lte_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+return (x1 <= x2); // lte
+}
+bool_t
+XATS2CC_gflt_gte_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+return (x1 >= x2); // gte
+}
+bool_t
+XATS2CC_gflt_neq_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+return (x1 != x2); // neq
+}
+/* ****** ****** */
+sint_t
+XATS2CC_gflt_cmp_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+if
+(x1 < x2)
+return (-1);
+else
+return (x1 <= x2 ? 0 : 1);
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_add_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+   return (x1 + x2); // add
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_sub_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+   return (x1 - x2); // sub
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_mul_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+   return (x1 * x2); // mul
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_div_dflt_dflt
+(dflt_t x1, dflt_t x2)
+{
+   return (x1 / x2); // div
+}
+/* ****** ****** */
+//
+// prelude/string.sats
+//
+/* ****** ****** */
+//
+// HX-2022-01-08:
+// Please note that:
+// A string is a CC-string
+//
+/* ****** ****** */
+//
+bool_t
+XATS2CC_string_nilq
+  (cstr_t opt)
+{
+return(opt == "");
+}
+bool_t
+XATS2CC_string_consq
+  (cstr_t opt)
+{
+return(opt != "");
+}
+/* ****** ****** */
+//
+bool_t
+XATS2CC_stropt_nilq
+  (cstr_t opt)
+{
+return(opt == (cstr_t)0);
+}
+bool_t
+XATS2CC_stropt_consq
+  (cstr_t opt)
+{
+return(opt != (cstr_t)0);
+}
+//
+/* ****** ****** */
+
+/* end of [XATS2CC_prelude.cats] */

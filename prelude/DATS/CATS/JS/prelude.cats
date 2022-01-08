@@ -324,8 +324,8 @@ XATS2JS_gflt_div_dflt_dflt
 //
 // HX-2020-09-28:
 // Please note that:
-// A string is a JS_string
-// A string_vt is a JS_array
+// A string is a JS-string
+// A string_vt is a JS-array
 //
 /* ****** ****** */
 function
@@ -346,7 +346,7 @@ XATS2JS_string_nilq
 return(opt==="");
 }
 function
-XATS2JS_string_cons
+XATS2JS_string_consq
   (opt)
 {
 return(opt!=="");
