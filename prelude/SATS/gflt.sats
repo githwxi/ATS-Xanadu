@@ -152,6 +152,24 @@ gflt_mod_dflt_dflt(dflt, dflt): dflt
 (* ****** ****** *)
 //
 fun<>
+gflt_gt_dflt_sint(dflt, sint): bool
+fun<>
+gflt_lt_dflt_sint(dflt, sint): bool
+fun<>
+gflt_eq_dflt_sint(dflt, sint): bool
+fun<>
+gflt_lte_dflt_sint(dflt, sint): bool
+fun<>
+gflt_gte_dflt_sint(dflt, sint): bool
+fun<>
+gflt_neq_dflt_sint(dflt, sint): bool
+//
+fun<>
+gflt_cmp_dflt_sint(dflt, sint): sint
+//
+(* ****** ****** *)
+//
+fun<>
 gflt_add_sint_dflt(sint, dflt): dflt
 fun<>
 gflt_sub_sint_dflt(sint, dflt): dflt
@@ -174,6 +192,13 @@ gflt_div_dflt_sint(dflt, sint): dflt
 // HX-2020-11-18:
 // For symbol overloading
 //
+(* ****** ****** *)
+#symload < with gflt_lt_dflt_sint of 1000
+#symload > with gflt_gt_dflt_sint of 1000
+#symload = with gflt_eq_dflt_sint of 1000
+#symload <= with gflt_lte_dflt_sint of 1000
+#symload >= with gflt_gte_dflt_sint of 1000
+#symload != with gflt_neq_dflt_sint of 1000
 (* ****** ****** *)
 #symload + with gflt_add_sflt_sflt of 1000
 #symload - with gflt_sub_sflt_sflt of 1000
