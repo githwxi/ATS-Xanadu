@@ -156,9 +156,9 @@ gint_pred_sint<> = XATS2CC_gint_pred_sint
 fun
 XATS2CC_gint_lt_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): bool(i<j) = $exname()
 impltmp
 gint_lt_sint_sint<> = XATS2CC_gint_lt_sint_sint
@@ -167,9 +167,9 @@ gint_lt_sint_sint<> = XATS2CC_gint_lt_sint_sint
 fun
 XATS2CC_gint_gt_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): bool(i>j) = $exname()
 impltmp
 gint_gt_sint_sint<> = XATS2CC_gint_gt_sint_sint
@@ -178,9 +178,9 @@ gint_gt_sint_sint<> = XATS2CC_gint_gt_sint_sint
 fun
 XATS2CC_gint_eq_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): bool(i=j) = $exname()
 impltmp
 gint_eq_sint_sint<> = XATS2CC_gint_eq_sint_sint
@@ -189,9 +189,9 @@ gint_eq_sint_sint<> = XATS2CC_gint_eq_sint_sint
 fun
 XATS2CC_gint_lte_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): bool(i<=j) = $exname()
 impltmp
 gint_lte_sint_sint<> = XATS2CC_gint_lte_sint_sint
@@ -200,9 +200,9 @@ gint_lte_sint_sint<> = XATS2CC_gint_lte_sint_sint
 fun
 XATS2CC_gint_gte_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): bool(i>=j) = $exname()
 impltmp
 gint_gte_sint_sint<> = XATS2CC_gint_gte_sint_sint
@@ -211,9 +211,9 @@ gint_gte_sint_sint<> = XATS2CC_gint_gte_sint_sint
 fun
 XATS2CC_gint_neq_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): bool(i!=j) = $exname()
 impltmp
 gint_neq_sint_sint<> = XATS2CC_gint_neq_sint_sint
@@ -224,9 +224,9 @@ gint_neq_sint_sint<> = XATS2CC_gint_neq_sint_sint
 fun
 XATS2CC_gint_cmp_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j))
 : sint(sgn(i-j)) = $exname((*self*))
 impltmp
@@ -238,9 +238,9 @@ gint_cmp_sint_sint<> = XATS2CC_gint_cmp_sint_sint
 fun
 XATS2CC_gint_add_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): sint( i+j ) = $exname()
 impltmp
 gint_add_sint_sint<> = XATS2CC_gint_add_sint_sint
@@ -248,9 +248,9 @@ gint_add_sint_sint<> = XATS2CC_gint_add_sint_sint
 fun
 XATS2CC_gint_sub_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): sint( i-j ) = $exname()
 impltmp
 gint_sub_sint_sint<> = XATS2CC_gint_sub_sint_sint
@@ -259,9 +259,9 @@ gint_sub_sint_sint<> = XATS2CC_gint_sub_sint_sint
 fun
 XATS2CC_gint_mul_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): sint( i*j ) = $exname()
 impltmp
 gint_mul_sint_sint<> = XATS2CC_gint_mul_sint_sint
@@ -269,9 +269,9 @@ gint_mul_sint_sint<> = XATS2CC_gint_mul_sint_sint
 fun
 XATS2CC_gint_div_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): sint( i/j ) = $exname()
 impltmp
 gint_div_sint_sint<> = XATS2CC_gint_div_sint_sint
@@ -279,9 +279,9 @@ gint_div_sint_sint<> = XATS2CC_gint_div_sint_sint
 fun
 XATS2CC_gint_mod_sint_sint
 {i,j:int}
-( x
+( x1
 : sint(i)
-, y
+, x2
 : sint(j)): sint(mod(i,j)) = $exname()
 impltmp
 gint_mod_sint_sint<> = XATS2CC_gint_mod_sint_sint
@@ -335,27 +335,27 @@ gflt_pred_dflt<> = XATS2CC_gflt_pred_dflt
 #extern
 fun
 XATS2CC_gflt_lt_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x1: dflt, x2: dflt ): bool = $exname()
 #extern
 fun
 XATS2CC_gflt_gt_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x1: dflt, x2: dflt ): bool = $exname()
 #extern
 fun
 XATS2CC_gflt_eq_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x1: dflt, x2: dflt ): bool = $exname()
 #extern
 fun
 XATS2CC_gflt_lte_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x1: dflt, x2: dflt ): bool = $exname()
 #extern
 fun
 XATS2CC_gflt_gte_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x1: dflt, x2: dflt ): bool = $exname()
 #extern
 fun
 XATS2CC_gflt_neq_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x1: dflt, x2: dflt ): bool = $exname()
 //
 impltmp
 gflt_lt_dflt_dflt<> = XATS2CC_gflt_lt_dflt_dflt
@@ -375,7 +375,7 @@ gflt_neq_dflt_dflt<> = XATS2CC_gflt_neq_dflt_dflt
 #extern
 fun
 XATS2CC_gflt_cmp_dflt_dflt
-( x0: dflt, y0: dflt ): sint = $exname()
+( x1: dflt, x2: dflt ): sint = $exname()
 impltmp
 gflt_cmp_dflt_dflt<> = XATS2CC_gflt_cmp_dflt_dflt
 //
@@ -384,19 +384,19 @@ gflt_cmp_dflt_dflt<> = XATS2CC_gflt_cmp_dflt_dflt
 #extern
 fun
 XATS2CC_gflt_add_dflt_dflt
-( x0: dflt, y0: dflt ): dflt = $exname()
+( x1: dflt, x2: dflt ): dflt = $exname()
 #extern
 fun
 XATS2CC_gflt_sub_dflt_dflt
-( x0: dflt, y0: dflt ): dflt = $exname()
+( x1: dflt, x2: dflt ): dflt = $exname()
 #extern
 fun
 XATS2CC_gflt_mul_dflt_dflt
-( x0: dflt, y0: dflt ): dflt = $exname()
+( x1: dflt, x2: dflt ): dflt = $exname()
 #extern
 fun
 XATS2CC_gflt_div_dflt_dflt
-( x0: dflt, y0: dflt ): dflt = $exname()
+( x1: dflt, x2: dflt ): dflt = $exname()
 //
 impltmp
 gflt_add_dflt_dflt<> = XATS2CC_gflt_add_dflt_dflt
@@ -406,6 +406,156 @@ impltmp
 gflt_mul_dflt_dflt<> = XATS2CC_gflt_mul_dflt_dflt
 impltmp
 gflt_div_dflt_dflt<> = XATS2CC_gflt_div_dflt_dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2CC_gflt_lt_dflt_sint
+( x0: dflt, y0: sint ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_gt_dflt_sint
+( x0: dflt, y0: sint ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_eq_dflt_sint
+( x0: dflt, y0: sint ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_lte_dflt_sint
+( x0: dflt, y0: sint ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_gte_dflt_sint
+( x0: dflt, y0: sint ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_neq_dflt_sint
+( x0: dflt, y0: sint ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_cmp_dflt_sint
+( x0: dflt, y0: sint ): sint = $exname()
+//
+impltmp
+gflt_lt_dflt_sint<> = XATS2CC_gflt_lt_dflt_sint
+impltmp
+gflt_gt_dflt_sint<> = XATS2CC_gflt_gt_dflt_sint
+impltmp
+gflt_eq_dflt_sint<> = XATS2CC_gflt_eq_dflt_sint
+impltmp
+gflt_lte_dflt_sint<> = XATS2CC_gflt_lte_dflt_sint
+impltmp
+gflt_gte_dflt_sint<> = XATS2CC_gflt_gte_dflt_sint
+impltmp
+gflt_neq_dflt_sint<> = XATS2CC_gflt_neq_dflt_sint
+//
+impltmp
+gflt_cmp_dflt_sint<> = XATS2CC_gflt_cmp_dflt_sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2CC_gflt_lt_sint_dflt
+( x0: sint, y0: dflt ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_gt_sint_dflt
+( x0: sint, y0: dflt ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_eq_sint_dflt
+( x0: sint, y0: dflt ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_lte_sint_dflt
+( x0: sint, y0: dflt ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_gte_sint_dflt
+( x0: sint, y0: dflt ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_neq_sint_dflt
+( x0: sint, y0: dflt ): bool = $exname()
+#extern
+fun
+XATS2CC_gflt_cmp_sint_dflt
+( x0: sint, y0: dflt ): sint = $exname()
+//
+impltmp
+gflt_lt_sint_dflt<> = XATS2CC_gflt_lt_sint_dflt
+impltmp
+gflt_gt_sint_dflt<> = XATS2CC_gflt_gt_sint_dflt
+impltmp
+gflt_eq_sint_dflt<> = XATS2CC_gflt_eq_sint_dflt
+impltmp
+gflt_lte_sint_dflt<> = XATS2CC_gflt_lte_sint_dflt
+impltmp
+gflt_gte_sint_dflt<> = XATS2CC_gflt_gte_sint_dflt
+impltmp
+gflt_neq_sint_dflt<> = XATS2CC_gflt_neq_sint_dflt
+//
+impltmp
+gflt_cmp_sint_dflt<> = XATS2CC_gflt_cmp_sint_dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2CC_gflt_add_dflt_sint
+( x0: dflt, y0: sint ): dflt = $exname()
+#extern
+fun
+XATS2CC_gflt_sub_dflt_sint
+( x0: dflt, y0: sint ): dflt = $exname()
+#extern
+fun
+XATS2CC_gflt_mul_dflt_sint
+( x0: dflt, y0: sint ): dflt = $exname()
+#extern
+fun
+XATS2CC_gflt_div_dflt_sint
+( x0: dflt, y0: sint ): dflt = $exname()
+//
+impltmp
+gflt_add_dflt_sint<> = XATS2CC_gflt_add_dflt_sint
+impltmp
+gflt_sub_dflt_sint<> = XATS2CC_gflt_sub_dflt_sint
+impltmp
+gflt_mul_dflt_sint<> = XATS2CC_gflt_mul_dflt_sint
+impltmp
+gflt_div_dflt_sint<> = XATS2CC_gflt_div_dflt_sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2CC_gflt_add_sint_dflt
+( x0: sint, y0: dflt ): dflt = $exname()
+#extern
+fun
+XATS2CC_gflt_sub_sint_dflt
+( x0: sint, y0: dflt ): dflt = $exname()
+#extern
+fun
+XATS2CC_gflt_mul_sint_dflt
+( x0: sint, y0: dflt ): dflt = $exname()
+#extern
+fun
+XATS2CC_gflt_div_sint_dflt
+( x0: sint, y0: dflt ): dflt = $exname()
+//
+impltmp
+gflt_add_sint_dflt<> = XATS2CC_gflt_add_sint_dflt
+impltmp
+gflt_sub_sint_dflt<> = XATS2CC_gflt_sub_sint_dflt
+impltmp
+gflt_mul_sint_dflt<> = XATS2CC_gflt_mul_sint_dflt
+impltmp
+gflt_div_sint_dflt<> = XATS2CC_gflt_div_sint_dflt
 //
 (* ****** ****** *)
 //
