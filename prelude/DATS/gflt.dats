@@ -135,6 +135,38 @@ impltmp
 g_div<dflt> = gflt_div_dflt_dflt<>
 //
 (* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+gflt_lt_dflt_sint(f1, i2) =
+gflt_lt_dflt_dflt(f1, g_i(i2))
+impltmp
+<>(*tmp*)
+gflt_gt_dflt_sint(f1, i2) =
+gflt_gt_dflt_dflt(f1, g_i(i2))
+impltmp
+<>(*tmp*)
+gflt_eq_dflt_sint(f1, i2) =
+gflt_eq_dflt_dflt(f1, g_i(i2))
+impltmp
+<>(*tmp*)
+gflt_lte_dflt_sint(f1, i2) =
+gflt_lte_dflt_dflt(f1, g_i(i2))
+impltmp
+<>(*tmp*)
+gflt_gte_dflt_sint(f1, i2) =
+gflt_gte_dflt_dflt(f1, g_i(i2))
+impltmp
+<>(*tmp*)
+gflt_neq_dflt_sint(f1, i2) =
+gflt_neq_dflt_dflt(f1, g_i(i2))
+//
+impltmp
+<>(*tmp*)
+gflt_cmp_dflt_sint(f1, i2) =
+gflt_cmp_dflt_dflt(f1, g_i(i2))
+//
+(* ****** ****** *)
 
 impltmp
 <>(*tmp*)
