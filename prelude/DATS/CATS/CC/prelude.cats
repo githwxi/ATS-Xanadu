@@ -280,6 +280,180 @@ XATS2CC_gflt_div_dflt_dflt
    return (x1 / x2); // div
 }
 /* ****** ****** */
+// HX: comparison ops
+/* ****** ****** */
+//
+bool_t
+XATS2CC_gflt_lt_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_lt_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_gt_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_gt_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_eq_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_eq_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_lte_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_lte_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_gte_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_gte_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_neq_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_neq_dflt_dflt(x0, y0);
+}
+//
+/* ****** ****** */
+sint_t
+XATS2CC_gflt_cmp_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_cmp_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+//
+bool_t
+XATS2CC_gflt_lt_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_lt_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_gt_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_gt_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_eq_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_eq_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_lte_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_lte_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_gte_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_gte_dflt_dflt(x0, y0);
+}
+bool_t
+XATS2CC_gflt_neq_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_neq_dflt_dflt(x0, y0);
+}
+//
+/* ****** ****** */
+sint_t
+XATS2CC_gflt_cmp_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_cmp_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+// HX: arithmetic ops
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_add_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_add_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_sub_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_sub_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_mul_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_mul_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_div_dflt_sint
+(dflt_t x0, sint_t y0)
+{
+return \
+XATS2CC_gflt_div_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_add_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_add_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_sub_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_sub_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_mul_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_mul_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
+dflt_t
+XATS2CC_gflt_div_sint_dflt
+(sint_t x0, dflt_t y0)
+{
+return \
+XATS2CC_gflt_div_dflt_dflt(x0, y0);
+}
+/* ****** ****** */
 //
 // prelude/string.sats
 //

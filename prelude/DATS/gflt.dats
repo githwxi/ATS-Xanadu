@@ -167,6 +167,38 @@ gflt_cmp_dflt_sint(f1, i2) =
 gflt_cmp_dflt_dflt(f1, g_i(i2))
 //
 (* ****** ****** *)
+//
+impltmp
+<>(*tmp*)
+gflt_lt_sint_dflt(i1, f2) =
+gflt_lt_dflt_dflt(f2, g_i(i2))
+impltmp
+<>(*tmp*)
+gflt_gt_sint_dflt(i1, f2) =
+gflt_gt_dflt_dflt(f1, g_i(i2))
+impltmp
+<>(*tmp*)
+gflt_eq_sint_dflt(i1, f2) =
+gflt_eq_dflt_dflt(f1, g_i(i2))
+impltmp
+<>(*tmp*)
+gflt_lte_sint_dflt(i1, f2) =
+gflt_lte_dflt_dflt(g_i(i1), f2)
+impltmp
+<>(*tmp*)
+gflt_gte_sint_dflt(i1, f2) =
+gflt_gte_dflt_dflt(g_i(i1), f2)
+impltmp
+<>(*tmp*)
+gflt_neq_sint_dflt(i1, f2) =
+gflt_neq_dflt_dflt(g_i(i1), f2)
+//
+impltmp
+<>(*tmp*)
+gflt_cmp_sint_dflt(i1, f2) =
+gflt_cmp_dflt_dflt(g_i(i1), f2)
+//
+(* ****** ****** *)
 
 impltmp
 <>(*tmp*)
