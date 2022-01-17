@@ -83,6 +83,56 @@ XATS2CC_char_neqzq
 impltmp
 char_neqzq<> = XATS2CC_char_neqzq
 (* ****** ****** *)
+//
+#extern
+fun
+XATS2CC_char_lt
+( c1: char
+, c2: char): bool = $exname()
+impltmp
+char_lt< > = XATS2CC_char_lt
+//
+#extern
+fun
+XATS2CC_char_gt
+( c1: char
+, c2: char): bool = $exname()
+impltmp
+char_gt< > = XATS2CC_char_gt
+//
+#extern
+fun
+XATS2CC_char_eq
+( c1: char
+, c2: char): bool = $exname()
+impltmp
+char_eq< > = XATS2CC_char_eq
+//
+#extern
+fun
+XATS2CC_char_lte
+( c1: char
+, c2: char): bool = $exname()
+impltmp
+char_lte<> = XATS2CC_char_lte
+//
+#extern
+fun
+XATS2CC_char_gte
+( c1: char
+, c2: char): bool = $exname()
+impltmp
+char_gte<> = XATS2CC_char_gte
+//
+#extern
+fun
+XATS2CC_char_neq
+( c1: char
+, c2: char): bool = $exname()
+impltmp
+char_neq<> = XATS2CC_char_neq
+//
+(* ****** ****** *)
 #extern
 fun
 XATS2CC_char_cmp

@@ -567,6 +567,14 @@ nilq with string_nilq of 1000
 consq with string_consq of 1000
 //
 (* ****** ****** *)
+#symload < with string_lt of 1000
+#symload > with string_gt of 1000
+#symload = with string_eq of 1000
+#symload <= with string_lte of 1000
+#symload => with string_gte of 1000
+#symload != with string_neq of 1000
+#symload cmp with string_cmp of 1000
+(* ****** ****** *)
 //
 #symload
 [] with string_get_at of 1000
