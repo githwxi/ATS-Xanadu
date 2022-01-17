@@ -86,6 +86,37 @@ sub_char_char
 
 (* ****** ****** *)
 fun<>
+char_lt
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): bool(c1 < c2)
+fun<>
+char_gt
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): bool(c1 > c2)
+fun<>
+char_eq
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): bool(c1 = c2)
+fun<>
+char_lte
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): bool(c1 <= c2)
+fun<>
+char_gte
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): bool(c1 >= c2)
+fun<>
+char_neq
+{c1,c2:char}
+( c1: char(c1)
+, c2: char(c2)): bool(c1 != c2)
+(* ****** ****** *)
+fun<>
 char_cmp
 {c1,c2:char}
 ( c1: char(c1)
@@ -103,9 +134,6 @@ char_upper(c0: char): char
 // symbol overloading for char
 //
 (* ****** ****** *)
-#symload
-- with sub_char_char of 1000
-(* ****** ****** *)
 //
 #symload
 char with char_make_sint of 1000
@@ -117,6 +145,17 @@ char with char_make_uint of 1000
 #symload
 sint with sint_make_char of 1000
 //
+(* ****** ****** *)
+#symload < with char_lt of 1000
+#symload > with char_gt of 1000
+#symload = with char_eq of 1000
+#symload <= with char_lte of 1000
+#symload >= with char_gte of 1000
+#symload != with char_neq of 1000
+(* ****** ****** *)
+#symload cmp with char_cmp of 1000
+(* ****** ****** *)
+#symload - with sub_char_char of 1000
 (* ****** ****** *)
 //
 #symload print with char_print of 1000

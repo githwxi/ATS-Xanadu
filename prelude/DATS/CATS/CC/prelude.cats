@@ -7,11 +7,22 @@ Basics for Xats2cc
 typedef int bool_t;
 typedef int sint_t;
 
+typedef char char_t;
+typedef char *cstr_t;
+
 typedef float sflt_t;
 typedef double dflt_t;
 
-typedef char *cstr_t;
-
+/* ****** ****** */
+//
+#include <string.h>
+/*
+extern
+size_t strlen(char *str);
+extern
+int strcmp(char *x1, char *x2);
+*/
+//
 /* ****** ****** */
 //
 // prelude/bool.sats
@@ -35,6 +46,53 @@ XATS2CC_bool_mul
 // prelude/char.sats
 //
 /* ****** ****** */
+bool_t
+XATS2CC_char_lt
+(char_t x1, char_t x2)
+{
+return (x1 < x2); // lt
+}
+bool_t
+XATS2CC_char_gt
+(char_t x1, char_t x2)
+{
+return (x1 > x2); // gt
+}
+bool_t
+XATS2CC_char_eq
+(char_t x1, char_t x2)
+{
+return (x1 == x2); // eq
+}
+bool_t
+XATS2CC_char_lte
+(char_t x1, char_t x2)
+{
+return (x1 <= x2); // lte
+}
+bool_t
+XATS2CC_char_gte
+(char_t x1, char_t x2)
+{
+return (x1 >= x2); // gte
+}
+bool_t
+XATS2CC_char_neq
+(char_t x1, char_t x2)
+{
+return (x1 != x2); // neq
+}
+/* ****** ****** */
+sint_t
+XATS2CC_char_cmp
+(char_t x1, char_t x2)
+{
+if
+(x1 < x2)
+return (-1);
+else
+return (x1 <= x2 ? 0 : 1);
+}
 /* ****** ****** */
 //
 // prelude/gint.sats
@@ -162,6 +220,12 @@ XATS2CC_gint_div_sint_sint
 // prelude/gflt.sats
 //
 /* ****** ****** */
+sflt_t
+XATS2CC_gflt_i_sflt
+  (sint_t x0)
+{
+  return x0; // int
+}
 dflt_t
 XATS2CC_gflt_i_dflt
   (sint_t x0)
@@ -169,26 +233,45 @@ XATS2CC_gflt_i_dflt
   return x0; // int
 }
 /* ****** ****** */
+sflt_t
+XATS2CC_gflt_abs_sflt
+  (sflt_t x0)
+{
+return \
+(x0 >= 0 ? x0 : -x0);
+}
 dflt_t
 XATS2CC_gflt_abs_dflt
   (dflt_t x0)
 {
-if
-(x0 >= 0.0)
-{
-  return x0; // abs
-}
-else
-{
-  return -x0; // abs
-}
+return \
+(x0 >= 0 ? x0 : -x0);
 }
 /* ****** ****** */
+sflt_t
+XATS2CC_gflt_neg_sflt
+  (sflt_t x0)
+{
+  return (-x0); // neg
+}
 dflt_t
 XATS2CC_gflt_neg_dflt
   (dflt_t x0)
 {
-return (-x0); // neg
+  return (-x0); // neg
+}
+/* ****** ****** */
+sflt_t
+XATS2CC_gflt_succ_sflt
+  (sflt_t x0)
+{
+return (x0 + 1); // +1
+}
+sflt_t
+XATS2CC_gflt_pred_sflt
+  (sflt_t x0)
+{
+return (x0 - 1); // -1
 }
 /* ****** ****** */
 dflt_t
@@ -492,6 +575,57 @@ XATS2CC_stropt_consq
 return(opt != (cstr_t)0);
 }
 //
+/* ****** ****** */
+sint_t
+XATS2CC_string_length
+  (cstr_t str)
+{
+return (sint_t)(strlen(str));
+}
+/* ****** ****** */
+bool_t
+XATS2CC_string_lt
+(cstr_t x1, cstr_t x2)
+{
+  return (strcmp(x1, x2) < 0);
+}
+bool_t
+XATS2CC_string_gt
+(cstr_t x1, cstr_t x2)
+{
+  return (strcmp(x1, x2) < 0);
+}
+bool_t
+XATS2CC_string_eq
+(cstr_t x1, cstr_t x2)
+{
+  return (strcmp(x1, x2) == 0);
+}
+bool_t
+XATS2CC_string_lte
+(cstr_t x1, cstr_t x2)
+{
+  return (strcmp(x1, x2) <= 0);
+}
+bool_t
+XATS2CC_string_gte
+(cstr_t x1, cstr_t x2)
+{
+  return (strcmp(x1, x2) >= 0);
+}
+bool_t
+XATS2CC_string_neq
+(cstr_t x1, cstr_t x2)
+{
+  return (strcmp(x1, x2) != 0);
+}
+/* ****** ****** */
+sint_t
+XATS2CC_string_cmp
+(cstr_t x1, cstr_t x2)
+{
+return strcmp(x1, x2); // string.h
+}
 /* ****** ****** */
 
 /* end of [XATS2CC_prelude.cats] */
