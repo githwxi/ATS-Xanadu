@@ -43,6 +43,27 @@ not(char_equal(c1, c2))
 //
 (* ****** ****** *)
 //
+impltmp<>
+char_lt(x1, x2) = 
+(char_cmp<>(x1, x2) < 0)
+impltmp<>
+char_gt(x1, x2) = 
+(char_cmp<>(x1, x2) > 0)
+impltmp<>
+char_eq(x1, x2) = 
+(char_cmp<>(x1, x2) = 0)
+impltmp<>
+char_lte(x1, x2) = 
+(char_cmp<>(x1, x2) <= 0)
+impltmp<>
+char_gte(x1, x2) = 
+(char_cmp<>(x1, x2) >= 0)
+impltmp<>
+char_neq(x1, x2) = 
+(char_cmp<>(x1, x2) != 0)
+//
+(* ****** ****** *)
+//
 impltmp
 <>(*tmp*)
 sub_char_char
