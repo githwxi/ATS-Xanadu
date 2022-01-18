@@ -14,6 +14,11 @@ XATS2JS_carg
   (x0, i0)
 { return x0[i0]; }
 //
+function
+XATS2JS_targ
+  (x0, i0)
+{ return x0[i0]; }
+//
 /* ****** ****** */
 //
 /*
