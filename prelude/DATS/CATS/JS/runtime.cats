@@ -166,6 +166,23 @@ else
 return; // end of [XATS2JS_lval_set]
 }
 /* ****** ****** */
+//
+function
+XATS2JS_ctag
+  (x0)
+{ return x0[0]; }
+//
+function
+XATS2JS_carg
+  (x0, i0)
+{ return x0[i0]; }
+//
+function
+XATS2JS_targ
+  (x0, i0)
+{ return x0[i0]; }
+//
+/* ****** ****** */
 function
 XATS2JS_patckerr0()
 {
