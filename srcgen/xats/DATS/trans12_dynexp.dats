@@ -3938,8 +3938,8 @@ val body =
 (
 case+ body of
 | None() => None()
-| Some(d1cs) =>
-  Some(trans12_declist(d1cs))
+| Some(dcls) =>
+  Some(trans12_declist(dcls))
 ) : d2eclistopt // end-of-val
 //
 in

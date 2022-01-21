@@ -273,6 +273,9 @@ tnode =
   | T_SRP_MACDEF of () // #macdef
 //
   | T_SRP_INCLUDE of () // #include
+(*
+  | T_SRP_INPASTE of () // #inpaste
+*)
 //
   | T_SRP_STALOAD of () // #staload
   | T_SRP_DYNLOAD of () // #dynload

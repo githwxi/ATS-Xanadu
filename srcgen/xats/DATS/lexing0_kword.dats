@@ -524,6 +524,9 @@ val () = myins("#define", T_SRP_DEFINE)
 val () = myins("#macdef", T_SRP_MACDEF)
 //
 val () = myins("#include", T_SRP_INCLUDE)
+(*
+val () = myins("#inpaste", T_SRP_INPASTE)
+*)
 //
 val () = myins("#staload", T_SRP_STALOAD)
 val () = myins("#dynload", T_SRP_DYNLOAD)
