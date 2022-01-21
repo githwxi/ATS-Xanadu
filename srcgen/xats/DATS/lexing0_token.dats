@@ -358,6 +358,9 @@ case+ tnd of
 | T_SRP_MACDEF() => fprint(out, "#MACDEF")
 //
 | T_SRP_INCLUDE() => fprint(out, "#INCLUDE")
+(*
+| T_SRP_INPASTE() => fprint(out, "#INPASTE")
+*)
 //
 | T_SRP_STALOAD() => fprint(out, "#STALOAD")
 | T_SRP_DYNLOAD() => fprint(out, "#DYNLOAD")
@@ -642,6 +645,9 @@ case+ tnd of
 | T_SRP_MACDEF() => fprint!(out, "#macdef")
 //
 | T_SRP_INCLUDE() => fprint(out, "#include")
+(*
+| T_SRP_INPASTE() => fprint(out, "#inpaste")
+*)
 //
 | T_SRP_STALOAD() => fprint(out, "#staload")
 | T_SRP_DYNLOAD() => fprint(out, "#dynload")

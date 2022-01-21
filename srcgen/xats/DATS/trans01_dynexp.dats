@@ -2762,6 +2762,8 @@ tok.node() of
 //
 in (* in-of-local *)
 
+(* ****** ****** *)
+
 fun
 aux_include
 ( d0cl
@@ -2891,6 +2893,8 @@ in
   d1ecl_make_node
   (loc0, D1Cinclude(tok, src, knd, opt1, opt2))
 end // end of [aux_include]
+
+(* ****** ****** *)
 
 end // end of [local]
 

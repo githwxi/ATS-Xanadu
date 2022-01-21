@@ -108,20 +108,20 @@ list_foreach$fwork<d1exp><env>(d1e, env) = tread01_d1exp(d1e)
 
 implement
 //{}(*tmp*)
-tread01_d1ecl(d1c0) = let
+tread01_d1ecl(d1cl) = let
 //
-val loc0 = d1c0.loc((*void*))
+val loc0 = d1cl.loc((*void*))
 //
 (*
 val () =
 println!
-("tread01_d1ecl: d1c0 = ", d1c0)
+("tread01_d1ecl: d1cl = ", d1cl)
 *)
 //
 in
 //
 case+
-d1c0.node() of
+d1cl.node() of
 //
 |
 D1Cstatic
@@ -181,6 +181,7 @@ D1Cinclude
     )
   )
 }
+//
 | D1Cstaload _ => ()
 //
 | D1Csymload
@@ -333,7 +334,7 @@ D1Cinclude
 //
 | _(* rest-of-d1ecl *) =>
   (
-    prerrln!(loc0, ": tread01_d1ecl: d1c0 = ", d1c0)
+    prerrln!(loc0, ": tread01_d1ecl: d1cl = ", d1cl)
   )
 //
 end // end of [tread01_d1ecl]
@@ -342,13 +343,13 @@ end // end of [tread01_d1ecl]
 //
 implement
 //{}(*tmp*)
-tread01_d1eclist(d1cs) =
+tread01_d1eclist(dcls) =
 (
-list_foreach<d1ecl>(d1cs)
+list_foreach<d1ecl>(dcls)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1ecl><env>(d1c, env) = tread01_d1ecl(d1c)
+list_foreach$fwork<d1ecl><env>(dcl, env) = tread01_d1ecl(dcl)
 } (* end of [tread01_d1eclist] *)
 //
 (* ****** ****** *)
