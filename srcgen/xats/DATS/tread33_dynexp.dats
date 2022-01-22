@@ -894,7 +894,20 @@ val () = tread33_d3eclist(head)
 val () = tread33_d3eclist(body)
 } (* end of [D3Clocal] *)
 //
-| D3Cinclude _ => ((*void*))
+|
+D3Cinclude
+( tok
+, src, knd
+, fopt, dopt ) =>
+(
+  case+ dopt of
+  | None() => ()
+  | Some(dcls) =>
+    {
+      val () = tread33_d3eclist(dcls)
+    }
+)
+//
 | D3Cstaload _ => ((*void*))
 //
 | D3Cfundecl
