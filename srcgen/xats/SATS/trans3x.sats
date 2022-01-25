@@ -202,6 +202,17 @@ trans3x_dexpopt
 (* ****** ****** *)
 //
 fun
+trans3x_farg
+( env0:
+! tr3xenv, f3a0: f3arg): f3arg
+fun
+trans3x_farglst
+( env0:
+! tr3xenv, f3as: f3arglst): f3arglst
+//
+(* ****** ****** *)
+//
+fun
 trans3x_decl
 ( env0:
 ! tr3xenv, d3c0: d3ecl): d3ecl

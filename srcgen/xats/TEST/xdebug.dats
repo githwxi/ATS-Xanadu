@@ -3,6 +3,7 @@
 "share\
 /xatsopt_prelude.hats"
 (* ****** ****** *)
+////
 fun
 fact(x: int): int =
 (
@@ -11,8 +12,8 @@ fact(x: int): int =
 {
   #include "./loop.dats"
 }
-////
 (* ****** ****** *)
+////
 val x12 = 1 + 2
 (* ****** ****** *)
 ////

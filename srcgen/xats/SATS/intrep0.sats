@@ -94,6 +94,11 @@ typedef h0typ = h0typ_tbox
 typedef h0typlst = List0(h0typ)
 typedef h0typopt = Option(h0typ)
 //
+typedef
+labh0typ = slabeled(h0typ)
+typedef
+labh0typlst = List0(labh0typ)
+//
 (* ****** ****** *)
 //
 abstbox hdcon_tbox = ptr
@@ -318,13 +323,10 @@ htvar_make_idst
 (sym: sym_t, hst: h0srt): htvar
 //
 (* ****** ****** *)
-typedef labh0typ = slabeled(h0typ)
-typedef labh0typlst = List0(labh0typ)
-(* ****** ****** *)
 datatype
 h0typ_node =
 // externally named
-| H0Tbas of sym_t // type
+| H0Tbas of sym_t // basetype
 //
 | H0Tcst of htcst // constant
 | H0Tvar of htvar // variable
