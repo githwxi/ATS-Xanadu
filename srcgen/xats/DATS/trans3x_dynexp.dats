@@ -121,6 +121,8 @@ end // end of [auxvar]
 
 in(*in-of-local*)
 
+(* ****** ****** *)
+
 implement
 trans3x_dpat
 (env0, d3p0) = let
@@ -168,8 +170,76 @@ d3pat_make_node(loc0, t2p0, dend)
 //
 end // end of [trans3x_dpat]
 
+(* ****** ****** *)
+
+implement
+trans3x_dpatlst
+( env0, d3ps ) =
+(
+case+ d3ps of
+|
+list_nil() => list_nil()
+|
+list_cons(d3p1, d3ps) =>
+list_cons(d3p1, d3ps) where
+{
+  val d3p1 =
+  trans3x_dpat(env0, d3p1)
+  val d3ps =
+  trans3x_dpatlst(env0, d3ps)
+}
+) (*case*) // end of [trans3x_dpatlst]
+
+(* ****** ****** *)
+
 end // end of [local]
 
+(* ****** ****** *)
+//
+implement
+trans3x_farg
+( env0, f3a0 ) =
+(
+case+
+f3a0.node() of
+//
+|
+F3ARGnone2 _ => f3a0
+|
+F3ARGnone3 _ => f3a0
+//
+|
+F3ARGsome_dyn
+( npf1, d3ps ) =>
+let
+  val loc0 = f3a0.loc()
+  val d3ps =
+  trans3x_dpatlst(env0, d3ps)
+in
+  f3arg_make_node
+  (loc0, F3ARGsome_dyn(npf1, d3ps))
+end // end of [F3ARGsome_dyn]
+//
+| F3ARGsome_sta _ => f3a0 // NF-ize?
+| F3ARGsome_met _ => f3a0 // NF-ize?
+) (*case*) // end of [trans3x_farg]
+//
+implement
+trans3x_farglst
+( env0, f3as ) =
+(
+case+ f3as of
+|
+list_nil() => list_nil()
+|
+list_cons(f3a1, f3as) =>
+list_cons(f3a1, f3as) where
+{
+  val f3a1 = trans3x_farg(env0, f3a1)
+  val f3as = trans3x_farglst(env0, f3as)
+}
+) (*case*) // end of [trans3x_farglst]
+//
 (* ****** ****** *)
 
 local
@@ -795,6 +865,17 @@ It is bound to d2c!
 val () =
 tr3xenv_add_fix1(env0, nam)
 *)
+//
+val a3g =
+(
+case+ a3g of
+|
+None() =>
+None()
+|
+Some(f3as) =>
+Some(trans3x_farglst(env0, f3as))
+) : f3arglstopt
 //
 val def =
 (
