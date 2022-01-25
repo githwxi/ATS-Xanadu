@@ -163,6 +163,19 @@ d3pat_make_node(loc0, t2p0, dend)
 end
 //
 |
+D3Panno
+( d3p1
+, s2e2, s1e2) =>
+let
+val d3p1 =
+trans3x_dpat(env0, d3p1)
+val dend =
+D3Panno(d3p1, s2e2, s1e2)
+in
+d3pat_make_node(loc0, t2p0, dend)
+end // end of [D3Panno]
+//
+|
 dend(*else*) =>
 (
 d3pat_make_node(loc0, t2p0, dend)
