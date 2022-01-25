@@ -3,6 +3,13 @@
 "share\
 /xatsopt_prelude.hats"
 (* ****** ****** *)
+fun
+fact(x: int): int =
+if
+x > 0
+then x * fact(x-1) else 1
+////
+(* ****** ****** *)
 ////
 fun
 fact(x: int): int =
@@ -155,13 +162,6 @@ endst{i,j:int|i>=j}
 fun
 foo
 (x0: &(?int) >> _): void = x0 := 0
-////
-(* ****** ****** *)
-fun
-fact(x) =
-if
-x > 0
-then x * fact(x-1) else 1
 ////
 (* ****** ****** *)
 //
