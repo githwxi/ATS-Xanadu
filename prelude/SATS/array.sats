@@ -70,13 +70,6 @@ a1ptr(
 a:vt,n:i0) = a1ptr_vt_i0_vx(a,n)
 //
 (* ****** ****** *)
-//
-typedef
-a1refsz(a:vt) = [n:i0] a1ref(a, n)
-vwtpdef
-a1ptrsz(a:vt) = [n:i0] a1ptr(a, n)
-//
-(* ****** ****** *)
 // HX: 2-dimensional
 (* ****** ****** *)
 //
@@ -97,15 +90,6 @@ a2ptr(
 a:vt,
 m:i0,n:i0) =
 a2ptr_vt_i0_i0_vx(a, m, n)
-//
-(* ****** ****** *)
-//
-typedef
-a2refsz(a:vt) =
-  [m,n:i0] a2ref( a, m, n )
-vwtpdef
-a2ptrsz(a:vt) =
-  [m,n:i0] a2ptr( a, m, n )
 //
 (* ****** ****** *)
 //
