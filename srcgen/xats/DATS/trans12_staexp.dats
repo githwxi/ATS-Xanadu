@@ -1435,22 +1435,25 @@ val
 tnm1 =
 (
 case+ s1es of
-| list_nil() => ""
-| list_cons(x0, xs) =>
-  (
-  case+ x0.node() of
-  | S1Estr(s0) => token2sstr(s0) | _ => ""
-  )
+|
+list_nil() => ""
+|
+list_cons(x0, xs) =>
+(
+case+ x0.node() of
+| S1Estr(s0) => token2sstr(s0) | _ => ""
+)
 ) : string // end of [val]
 val
 s2es =
 (
 case+ s1es of
-| list_nil() =>
-  list_nil()
-| list_cons(x0, xs) =>
-  trans12_sexplst_ck(xs, s2t0)
-) : s2explst // end of [val]
+|
+list_nil() =>
+list_nil()
+|
+list_cons(x0, xs) =>
+trans12_sexplst_ck(xs, s2t0)) : s2explst
 //
 in
 //

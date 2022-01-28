@@ -4,14 +4,51 @@ Basics for Xats2cc
 */
 /* ****** ****** */
 
-typedef int bool_t;
-typedef int sint_t;
+typedef void void_t;
 
 typedef char char_t;
+
 typedef char *cstr_t;
 
 typedef float sflt_t;
 typedef double dflt_t;
+
+typedef size_t usize_t;
+
+typedef signed int sint_t;
+typedef signed long slint_t;
+typedef signed long long sllint_t;
+
+typedef unsigned int bool_t;
+typedef unsigned int uint_t;
+typedef unsigned long ulint_t;
+typedef unsigned long long ullint_t;
+
+/* ****** ****** */
+
+typedef void_t xats_void_t;
+
+typedef sint_t xats_sint_t;
+typedef uint_t xats_uint_t;
+
+typedef bool_t xats_bool_t;
+typedef char_t xats_char_t;
+
+typedef sflt_t xats_sflt_t;
+typedef dflt_t xats_dflt_t;
+
+typedef cstr_t xats_cstr_t;
+
+/* ****** ****** */
+
+typedef slint_t xats_slint_t;
+typedef ulint_t xats_ulint_t;
+
+typedef usize_t xats_usize_t;
+typedef ssize_t xats_ssize_t;
+
+typedef sllint_t xats_sllint_t;
+typedef ullint_t xats_ullint_t;
 
 /* ****** ****** */
 //
