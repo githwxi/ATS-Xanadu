@@ -848,24 +848,27 @@ list_vt2t
 (* ****** ****** *)
 //
 typedef
-sfloat_k =
-$extype("xats_sfloat_t")
+sflt_k =
+$extype("xats_sflt_t")
 typedef
-dfloat_k =
-$extype("xats_dfloat_t")
+dflt_k =
+$extype("xats_dflt_t")
 typedef
-ldfloat_k =
-$extype("xats_ldfloat_t")
+ldflt_k =
+$extype("xats_ldflt_t")
 //
 abstype
-gfloat_type(a:type) <= a
+gflt_type(a:type) <= a
 //
 typedef
-sflt = gfloat_type(sfloat_k)
+sflt = gflt_type(sflt_k)
 typedef
-dflt = gfloat_type(dfloat_k)
+dflt = gflt_type(dflt_k)
 typedef
-ldflt = gfloat_type(ldfloat_k)
+ldflt = gflt_type(ldflt_k)
+//
+typedef
+gflt(a:type) = gflt_type(a)
 //
 typedef
 float = sflt // single precision
