@@ -8,7 +8,9 @@ fact(x: int): int =
 if
 x > 0
 then x * fact(x-1) else 1
+(* ****** ****** *)
 ////
+typedef xyz = $extype("f", int)
 (* ****** ****** *)
 ////
 fun
