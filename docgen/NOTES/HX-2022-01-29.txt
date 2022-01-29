@@ -4,26 +4,29 @@ HX-2022-01-29:
 
 A vision for future programming in ATS
 
-Before I start, I would like to quote Captian Woodrow F. Call,
+Before I start, I would like to quote Captain Woodrow F. Call,
 a character played by Tommy Lee Jones in Lonesome Dove:
 
 "Man of Vision you say.......? Yeah. Hell of a vision." ~ Woodrow Call
 
 By the way, here is the end of the Lonesome Dove miniseries where
-Captian Woodrow Call uttered the above line when interviewed by a
+Captain Woodrow Call uttered the above line when interviewed by a
 reporter:
 
 https://www.facebook.com/caldwellwritesdotcom/videos/lonesome-dove-tells-the-story-of-two-friends-who-were-legendary-texas-rangers-an/440279033007270
 
-Ideally, a programming language should be simple and general,
-and it should permit extensive error checking, facilitate proofs
-of program properties such as correctness and possess a correct and
+Ideally, a programming language should be simple and general, and
+it should permit extensive error checking, facilitate proofs of
+program properties such as correctness and possess a correct and
 efficient implementation. Invariably there will be some conflicts
 among these goals which must be resolved with careful attention to the
-needs of the user.  In order to make significant progress, I believe
-that it is necessary to adopt approaches which can both scale and
-produce informative feedback. I am using a type-based approach for
-this purpose.
+needs of the user. I learned the above from Prof. John Reynolds when I
+was a PhD student at CMU.
+
+In order to make significant progress, I firmly believe that it is
+necessary to adopt approaches which can both scale and produce
+informative feedback. I am using a type-based approach for this
+purpose.
 
 ATS3 is not an ordinary programming language. It is more like a
 programming language for support meta-programming of all sorts.
@@ -38,6 +41,12 @@ advanced type-checking that allows many varities of bugs to be flushed
 out at compile-time; we can also benefit greatly from the extensive
 use of templates that allows massive amount of quality code to be
 generated in an automated manner.
+
+In a following post, I will use a concrete example (co-programming
+with ATS3 and Javascript) to outline some of the big steps involved
+in building a compiler to support co-programing with ATS3 and X,
+where X is just a placeholder for some programming language of one's
+choice.
 
 ##################################################################
 
