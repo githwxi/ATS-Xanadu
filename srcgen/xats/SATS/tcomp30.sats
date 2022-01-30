@@ -94,6 +94,8 @@ hdcon_make_dcon(d2con): hdcon
 fun
 hdcst_make_dcst(d2cst): hdcst
 //
+(* ****** ****** *)
+//
 fun
 the_dconmap_search_ref
 (d2c: d2con): P2tr0(hdcon)
@@ -205,10 +207,16 @@ tcomp30_dvaropt
   (opt0: d2varopt): hdvaropt
 //
 (* ****** ****** *)
+//
 fun
 tcomp30_dcon(d2c0: d2con): hdcon
 fun
 tcomp30_dcst(d2c0: d2cst): hdcst
+//
+fun
+tcomp30_dconlst(d2conlst): hdconlst
+fun
+tcomp30_dcstlst(d2cstlst): hdcstlst
 //
 (* ****** ****** *)
 //

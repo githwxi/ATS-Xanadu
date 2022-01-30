@@ -143,7 +143,7 @@ case+ opt0 of
 
 implement
 tcomp30_dcon
-  (d2c0) =
+( d2c0 ) =
 let
 val opt =
 the_dconmap_search_opt(d2c0)
@@ -163,7 +163,7 @@ end // end of [tcomp30_dcon]
 
 implement
 tcomp30_dcst
-  (d2c0) =
+( d2c0 ) =
 let
 val opt =
 the_dcstmap_search_opt(d2c0)
@@ -181,6 +181,30 @@ the_dcstmap_insert_any(d2c0, hdc1); hdc1
 end
 end // end of [tcomp30_dcst]
 
+(* ****** ****** *)
+implement
+tcomp30_dconlst
+( d2cs ) =
+list_vt2t
+(
+list_map<d2con><hdcon>(d2cs)
+) where
+{
+implement
+list_map$fopr<d2con><hdcon>(d2c) = tcomp30_dcon(d2c)
+}
+(* ****** ****** *)
+implement
+tcomp30_dcstlst
+( d2cs ) =
+list_vt2t
+(
+list_map<d2cst><hdcst>(d2cs)
+) where
+{
+implement
+list_map$fopr<d2cst><hdcst>(d2c) = tcomp30_dcst(d2c)
+}
 (* ****** ****** *)
 
 local
@@ -2601,7 +2625,8 @@ loc0 = d3cl.loc()
 //
 val-
 D3Cexcptcon
-(d1cl, d2cs) = d3cl.node()
+( d1cl
+, d2cs) = d3cl.node()
 //
 fun
 auxd2cs
@@ -2632,6 +2657,69 @@ h0dcl_make_node(loc0, H0Cexcptcon(hdcs))
 end
 //
 end // end of [aux_excptcon]
+
+(* ****** ****** *)
+
+fun
+aux_datatype
+( d3cl
+: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cdatatype
+( d1cl
+, s2cs) = d3cl.node()
+//
+val
+htcs =
+tcomp30_scstlst(s2cs)
+val
+((*void*)) =
+auxs2cs(s2cs, htcs) where
+{
+fun
+auxs2cs
+( s2cs: s2cstlst
+, htcs: htcstlst): void =
+(
+case+ s2cs of
+|
+list_nil() => ()
+|
+list_cons(s2c1, s2cs) =>
+let
+val-
+list_cons
+(htc1, htcs) = htcs
+val opt =
+s2cst_get_d2conlst(s2c1)
+in
+case- opt of
+(*
+| ~
+None_vt() =>
+auxs2cs(s2cs, htcs)
+*)
+| ~
+Some_vt(d2cs) =>
+auxs2cs(s2cs, htcs) where
+{
+val
+hdcs =
+tcomp30_dconlst(d2cs)
+val () = htc1.hdconlst(hdcs)
+}
+end // end of [Some]
+)
+} (*where*) // end of [val]
+//
+in
+h0dcl_make_node(loc0, H0Cdatatype(htcs))
+end // end of [aux_datatype]
 
 (* ****** ****** *)
 
@@ -2805,6 +2893,8 @@ D3Cvardecl _ => aux_vardecl(d3cl)
 //
 |
 D3Cexcptcon _ => aux_excptcon(d3cl)
+|
+D3Cdatatype _ => aux_datatype(d3cl)
 //
 |
 D3Cimpdecl3 _ => aux_impdecl3(d3cl)

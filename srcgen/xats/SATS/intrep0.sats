@@ -102,6 +102,7 @@ typedef hdcon = hdcon_tbox
 typedef hdcst = hdcst_tbox
 //
 typedef hdconlst = List0(hdcon)
+typedef hdcstlst = List0(hdcst)
 //
 abstbox hdvar_tbox = ptr
 typedef hdvar = hdvar_tbox
@@ -195,6 +196,20 @@ hdcon_set_tag
 //
 overload .tag with hdcon_get_tag
 overload .tag with hdcon_set_tag
+//
+(* ****** ****** *)
+//
+fun
+htcst_get_hdconlst
+(htc0: htcst): Option(hdconlst)
+fun
+htcst_set_hdconlst
+(htc0: htcst, hdcs: hdconlst): void
+//
+overload
+.hdconlst with htcst_get_hdconlst
+overload
+.hdconlst with htcst_set_hdconlst
 //
 (* ****** ****** *)
 //
@@ -1025,10 +1040,9 @@ H0Cvardecl of
 //
 |
 H0Cexcptcon of (hdconlst)
-(*
+//
 |
 H0Cdatatype of (htcstlst)
-*)
 //
 |
 H0Cimpdecl3 of

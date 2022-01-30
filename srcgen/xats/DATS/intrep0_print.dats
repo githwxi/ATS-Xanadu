@@ -892,6 +892,9 @@ x0.node() of
 | H0Cexcptcon(hdcs) =>
   fprint!
   (out, "H0Cexcptcon(", hdcs, ")")
+| H0Cdatatype(htcs) =>
+  fprint!
+  (out, "H0Cdatatype(", htcs, ")")
 //
 | H0Cimpdecl3
   ( knd

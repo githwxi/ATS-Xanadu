@@ -1006,7 +1006,7 @@ d1ecl_node =
 //
 | D1Cexcptcon of
     (token(*excptcon*), d1atconlst)
-  // D1Cexcptcon
+  (* end of [D1Cexcptcon] *)
 //
 // dataprop/dataview // proofs
 // datatype/datavtype // programs
