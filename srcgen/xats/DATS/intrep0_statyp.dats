@@ -60,6 +60,8 @@ htcst_struct = @{
 , htcst_sort= h0srt // type
 , htcst_stamp= stamp // unicity
 //
+, htcst_hdconlst= Option(hdconlst)
+//
 } (* end of [htcst_tbox] *)
 
 absimpl
@@ -67,12 +69,26 @@ htcst_tbox = ref(htcst_struct)
 
 in(* in-of-local *)
 
+(* ****** ****** *)
+//
 implement
 htcst_get_sym
 (htc) = htc->htcst_sym
 implement
 htcst_get_stamp
 (htc) = htc->htcst_stamp
+//
+(* ****** ****** *)
+//
+implement
+htcst_get_hdconlst
+(htc) = htc->htcst_hdconlst
+implement
+htcst_set_hdconlst
+(htc, hdcs) =
+(htc->htcst_hdconlst := Some(hdcs))
+//
+(* ****** ****** *)
 
 implement
 htcst_make_idst
@@ -84,6 +100,9 @@ ref<htcst_struct>
 , htcst_sym=sym
 , htcst_sort=hst
 , htcst_stamp=stamp
+//
+, htcst_hdconlst= None()
+//
 }
 ) where
 {
