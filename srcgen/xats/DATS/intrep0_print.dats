@@ -63,6 +63,11 @@ FP0 = "./../SATS/filpath.sats"
 
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
+
+(* ****** ****** *)
+
+#staload "./../SATS/dynexp3.sats"
 
 (* ****** ****** *)
 
@@ -155,21 +160,24 @@ implement
 fprint_h0srt(out, x0) =
 (
 case+ x0 of
-|
-HSTid0(sym) =>
-fprint!(out, "HSTid0(", sym, ")")
-|
-HSTint(int) =>
-fprint!(out, "HSTint(", int, ")")
-|
-HSTfun(arg, res) =>
-fprint!
-( out
-, "HSTfun(", arg, "; ", res, ")")
-|
-HSTnone1(_) =>
-fprint!(out, "HSTnone1(", "...", ")")
-)
+| HSTid0(sym) =>
+  fprint!(out, "HSTid0(", sym, ")")
+| HSTint(int) =>
+  fprint!(out, "HSTint(", int, ")")
+| HSTfun(arg, res) =>
+  fprint!
+  ( out
+  , "HSTfun(", arg, "; ", res, ")")
+| HSTnone1(s2rt) =>
+  let
+  val
+  s2rt = $UN.cast{sort2}(s2rt)
+  val () =
+  fprint!(out, "HSTnone1(sort2)")
+  in
+  fprint!(out, "HSTnone1(", s2rt, ")")
+  end
+) (*case*) // end of [fprint_h0srt]
 //
 (* ****** ****** *)
 //
@@ -273,8 +281,15 @@ x0.node() of
   , "H0Ttyrec("
   , knd0, "; ", npf1, "; ", lhts, ")")  
 //
-| H0Tnone1(_) =>
-  fprint!(out, "H0Tnone1(", "...", ")")
+| H0Tnone1(t2p1) =>
+  let
+  val
+  t2p1 = $UN.cast{t2ype}(t2p1)
+  val () =
+  fprint!(out, "H0Tnone1([t2ype])")
+  in
+  fprint!(out, "H0Tnone1(", t2p1, ")")
+  end
 //
 (*
 | _(* H0T... *) => fprint!(out, "H0T...(...)")
@@ -439,8 +454,15 @@ x0.node() of
   , "H0Ptuple("
   , knd0, "; ", npf1, "; ", h0ps, ")")
 //
-| H0Pnone1(_(*dataptr*)) =>
-  fprint!(out, "H0Pnone1(", "...", ")")
+| H0Pnone1(d3p1) =>
+  let
+  val
+  d3p1 = $UN.cast{d3pat}(d3p1)
+  val () =
+  fprint!(out, "H0Pnone1(d3pat)")
+  in
+  fprint!(out, "H0Pnone1(", d3p1, ")")
+  end
 //
 (*
 | _(* H0P... *) => fprint!(out, "H0P...(...)")
@@ -719,8 +741,15 @@ x0.node() of
 | H0Enone0() => // nil/none/null
   fprint!(out, "H0Enone0(", ")")
 //
-| H0Enone1(_) => // HX: for ignores
-  fprint!(out, "H0Enone1(", "**DATA**", ")")
+| H0Enone1(d3e1) => // HX: for ignores
+  let
+  val
+  d3e1 = $UN.cast{d3exp}(d3e1)
+  val () =
+  fprint!(out, "H0Enone1(d3exp)")
+  in
+  fprint!(out, "H0Enone1(", d3e1, ")")
+  end
 //
 (*
 | _(* H0E... *) => fprint!(out, "H0E...(...)")
@@ -909,8 +938,15 @@ x0.node() of
   , tqas, "; "
   , hdc0, "; ", htia, "; ", hfas, "; ", body, ")")
 //
-| H0Cnone1(_) =>
-  fprint!(out, "H0Cnone1(", "[dataptr]", ")")
+| H0Cnone1(d3cl) =>
+  let
+  val
+  d3cl = $UN.cast{d3ecl}(d3cl)
+  val () =
+  fprint!(out, "H0Cnone1(d3cl)")
+  in
+  fprint!(out, "H0Cnone1(", d3cl, ")")
+  end
 //
 (*
 | _(* H0C... *) => fprint!(out, "H0C...(...)")
