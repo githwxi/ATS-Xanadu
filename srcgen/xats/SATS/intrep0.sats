@@ -61,6 +61,14 @@ typedef htcstlst = List0(htcst)
 typedef htvarlst = List0(htvar)
 (* ****** ****** *)
 //
+abstbox h0typ_tbox = ptr
+//
+typedef h0typ = h0typ_tbox
+typedef h0typlst = List0(h0typ)
+typedef h0typopt = Option(h0typ)
+//
+(* ****** ****** *)
+//
 fun
 htcst_stamp_new(): stamp
 fun
@@ -88,14 +96,6 @@ overload .stamp with htvar_get_stamp
 //
 (* ****** ****** *)
 //
-abstbox h0typ_tbox = ptr
-//
-typedef h0typ = h0typ_tbox
-typedef h0typlst = List0(h0typ)
-typedef h0typopt = Option(h0typ)
-//
-(* ****** ****** *)
-//
 abstbox hdcon_tbox = ptr
 abstbox hdcst_tbox = ptr
 typedef hdcon = hdcon_tbox
@@ -108,6 +108,13 @@ abstbox hdvar_tbox = ptr
 typedef hdvar = hdvar_tbox
 typedef hdvarlst = List0(hdvar)
 typedef hdvaropt = Option(hdvar)
+//
+(* ****** ****** *)
+//
+abstbox htqarg_tbox = ptr
+typedef htqarg = htqarg_tbox
+typedef htqarglst = List0(htqarg)
+typedef htqargopt = Option(htqarg)
 //
 (* ****** ****** *)
 //
@@ -150,112 +157,6 @@ abstbox h0dcl_tbox = ptr
 typedef h0dcl = h0dcl_tbox
 typedef h0dclist = List0(h0dcl)
 typedef h0dclopt = Option(h0dcl)
-//
-(* ****** ****** *)
-//
-fun
-hdcon_stamp_new(): stamp
-fun
-hdcst_stamp_new(): stamp
-fun
-hdvar_stamp_new(): stamp
-//
-(* ****** ****** *)
-//
-fun
-hdcon_get_loc(hdcon): loc_t
-fun
-hdcst_get_loc(hdcst): loc_t
-fun
-hdvar_get_loc(hdvar): loc_t
-//
-overload .loc with hdcon_get_loc
-overload .loc with hdcst_get_loc
-overload .loc with hdvar_get_loc
-//
-(* ****** ****** *)
-//
-fun
-hdcon_get_sym(hdcon): sym_t
-fun
-hdcst_get_sym(hdcst): sym_t
-fun
-hdvar_get_sym(hdvar): sym_t
-//
-overload .sym with hdcon_get_sym
-overload .sym with hdcst_get_sym
-overload .sym with hdvar_get_sym
-//
-(* ****** ****** *)
-//
-fun
-hdcon_get_tag(hdcon): tag_t
-fun
-hdcon_set_tag
-  (hdc: hdcon, tag: tag_t): void
-//
-overload .tag with hdcon_get_tag
-overload .tag with hdcon_set_tag
-//
-(* ****** ****** *)
-//
-fun
-htcst_get_hdconlst
-(htc0: htcst): Option(hdconlst)
-fun
-htcst_set_hdconlst
-(htc0: htcst, hdcs: hdconlst): void
-//
-overload
-.hdconlst with htcst_get_hdconlst
-overload
-.hdconlst with htcst_set_hdconlst
-//
-(* ****** ****** *)
-//
-//
-fun
-hdcst_fcastq(hdcst): bool
-//
-fun
-hdcon_get_dvar(hdcon): hdvar
-//
-fun
-hdcst_get_kind(hdcst): tnode
-//
-fun
-hdvar_get_kind(hdvar): tnode
-//
-(* ****** ****** *)
-//
-fun
-hdcst_get_xknd(hdcst): x2knd
-fun
-hdcst_get_xnam(hdcst): x2nam
-//
-overload .xknd with hdcst_get_xknd
-overload .xnam with hdcst_get_xnam
-//
-(* ****** ****** *)
-//
-fun
-hdcon_get_stamp(hdcon): stamp
-fun
-hdcst_get_stamp(hdcst): stamp
-fun
-hdvar_get_stamp(hdvar): stamp
-//
-overload .stamp with hdcon_get_stamp
-overload .stamp with hdcst_get_stamp
-overload .stamp with hdvar_get_stamp
-//
-(* ****** ****** *)
-//
-fun
-eq_hdcst_hdcst
-(c1: hdcst, c2: hdcst): bool
-//
-overload = with eq_hdcst_hdcst
 //
 (* ****** ****** *)
 //
@@ -333,8 +234,10 @@ htvar_make_idst
 (sym: sym_t, hst: h0srt): htvar
 //
 (* ****** ****** *)
-typedef labh0typ = slabeled(h0typ)
-typedef labh0typlst = List0(labh0typ)
+typedef
+labh0typ = slabeled(h0typ)
+typedef
+labh0typlst = List0(labh0typ)
 (* ****** ****** *)
 datatype
 h0typ_node =
@@ -407,6 +310,146 @@ h0typ_make_node
 (* ****** ****** *)
 //
 fun
+hdcon_stamp_new(): stamp
+fun
+hdcst_stamp_new(): stamp
+fun
+hdvar_stamp_new(): stamp
+//
+(* ****** ****** *)
+//
+fun
+hdcon_get_loc(hdcon): loc_t
+fun
+hdcst_get_loc(hdcst): loc_t
+fun
+hdvar_get_loc(hdvar): loc_t
+//
+overload .loc with hdcon_get_loc
+overload .loc with hdcst_get_loc
+overload .loc with hdvar_get_loc
+//
+(* ****** ****** *)
+//
+fun
+hdcon_get_sym(hdcon): sym_t
+fun
+hdcst_get_sym(hdcst): sym_t
+fun
+hdvar_get_sym(hdvar): sym_t
+//
+overload .sym with hdcon_get_sym
+overload .sym with hdcst_get_sym
+overload .sym with hdvar_get_sym
+//
+(* ****** ****** *)
+//
+fun
+hdcon_get_tag(hdcon): tag_t
+fun
+hdcon_set_tag
+  (hdc: hdcon, tag: tag_t): void
+//
+overload .tag with hdcon_get_tag
+overload .tag with hdcon_set_tag
+//
+(* ****** ****** *)
+//
+fun
+hdcon_get_tqas
+( hdc0: hdcon ): htqarglst
+fun
+hdcon_get_type(hdcon): h0typ
+//
+(* ****** ****** *)
+//
+fun
+htcst_get_hdconlst
+(htc0: htcst): Option(hdconlst)
+fun
+htcst_set_hdconlst
+(htc0: htcst, hdcs: hdconlst): void
+//
+overload
+.hdconlst with htcst_get_hdconlst
+overload
+.hdconlst with htcst_set_hdconlst
+//
+(* ****** ****** *)
+//
+fun
+hdcst_fcastq(hdcst): bool
+//
+fun
+hdcon_get_dvar(hdcon): hdvar
+//
+fun
+hdcst_get_kind(hdcst): tnode
+//
+fun
+hdvar_get_kind(hdvar): tnode
+//
+(* ****** ****** *)
+//
+fun
+hdcst_get_xknd(hdcst): x2knd
+fun
+hdcst_get_xnam(hdcst): x2nam
+//
+overload .xknd with hdcst_get_xknd
+overload .xnam with hdcst_get_xnam
+//
+(* ****** ****** *)
+//
+fun
+hdcon_get_stamp(hdcon): stamp
+fun
+hdcst_get_stamp(hdcst): stamp
+fun
+hdvar_get_stamp(hdvar): stamp
+//
+overload .stamp with hdcon_get_stamp
+overload .stamp with hdcst_get_stamp
+overload .stamp with hdvar_get_stamp
+//
+(* ****** ****** *)
+//
+fun
+eq_hdcst_hdcst
+(c1: hdcst, c2: hdcst): bool
+//
+overload = with eq_hdcst_hdcst
+//
+(* ****** ****** *)
+//
+fun
+htqarg_get_loc(htqarg): loc_t
+fun
+htqarg_get_htvs(htqarg): htvarlst
+//
+overload .loc with htqarg_get_loc
+overload .htvs with htqarg_get_htvs
+//
+(* ****** ****** *)
+//
+fun
+print_htqarg: print_type(htqarg)
+fun
+prerr_htqarg: prerr_type(htqarg)
+fun
+fprint_htqarg: fprint_type(htqarg)
+//
+overload print with print_htqarg
+overload prerr with prerr_htqarg
+overload fprint with fprint_htqarg
+//
+(* ****** ****** *)
+fun
+htqarg_make
+(loc0: loc_t, htvs: htvarlst): htqarg
+(* ****** ****** *)
+//
+fun
 print_hdvar: hdvar -> void
 fun
 prerr_hdvar: hdvar -> void
@@ -422,13 +465,17 @@ overload fprint with fprint_hdvar
 fun
 hdcon_make_idtp
 ( loc: loc_t
-, sym: sym_t, htp: h0typ): hdcon
+, sym: sym_t
+, tqas
+: htqarglst, htp0: h0typ): hdcon
 fun
 hdcst_make_idtp
 ( loc: loc_t
 , sym: sym_t
-, knd: tnode, htp: h0typ
-, xkd: x2knd, xnm: x2nam): hdcst
+, knd: tnode
+, tqas
+: htqarglst, htp0: h0typ
+, xkd1: x2knd, xnm2: x2nam): hdcst
 //
 (* ****** ****** *)
 //
@@ -575,12 +622,12 @@ fun
 hfarg_make_node
 (loc0: loc_t, node: hfarg_node): hfarg
 (* ****** ****** *)
-
+//
 datatype
 htiarg =
 | HTIARGnone of ()
 | HTIARGsome of h0typlst
-
+//
 (* ****** ****** *)
 //
 fun
@@ -850,41 +897,6 @@ fun
 h0gpat_make_node
 (loc: loc_t, node: h0gpat_node): h0gpat
 //
-(* ****** ****** *)
-//
-abstype htqarg_tbox = ptr
-//
-typedef htqarg = htqarg_tbox
-typedef htqarglst = List0(htqarg)
-typedef htqargopt = Option(htqarg)
-//
-(* ****** ****** *)
-//
-fun
-htqarg_get_loc(htqarg): loc_t
-fun
-htqarg_get_htvs(htqarg): htvarlst
-//
-overload .loc with htqarg_get_loc
-overload .htvs with htqarg_get_htvs
-//
-(* ****** ****** *)
-//
-fun
-print_htqarg: print_type(htqarg)
-fun
-prerr_htqarg: prerr_type(htqarg)
-fun
-fprint_htqarg: fprint_type(htqarg)
-//
-overload print with print_htqarg
-overload prerr with prerr_htqarg
-overload fprint with fprint_htqarg
-//
-(* ****** ****** *)
-fun
-htqarg_make
-(loc0: loc_t, htvs: htvarlst): htqarg
 (* ****** ****** *)
 //
 datatype

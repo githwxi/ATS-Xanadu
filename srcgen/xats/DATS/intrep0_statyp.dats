@@ -51,7 +51,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 local
-
+//
 typedef
 htcst_struct = @{
 //
@@ -63,10 +63,10 @@ htcst_struct = @{
 , htcst_hdconlst= Option(hdconlst)
 //
 } (* end of [htcst_tbox] *)
-
+//
 absimpl
 htcst_tbox = ref(htcst_struct)
-
+//
 in(* in-of-local *)
 
 (* ****** ****** *)
@@ -114,7 +114,7 @@ end // end of [local]
 (* ****** ****** *)
 
 local
-
+//
 typedef
 htvar_struct = @{
 //
@@ -123,11 +123,13 @@ htvar_struct = @{
 , htvar_stamp= stamp // unicity
 //
 } (* end of [htvar_tbox] *)
-
+//
 absimpl
 htvar_tbox = ref(htvar_struct)
-
+//
 in(* in-of-local *)
+
+(* ****** ****** *)
 
 implement
 htvar_get_sym
@@ -136,9 +138,11 @@ implement
 htvar_get_stamp
 (htv) = htv->htvar_stamp
 
+(* ****** ****** *)
+
 implement
 htvar_make_idst
-(sym, hst) =
+  (sym, hst) =
 (
 ref<htvar_struct>
 @{
@@ -150,6 +154,8 @@ ref<htvar_struct>
 {
   val stamp = htvar_stamp_new()
 }
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -165,21 +171,62 @@ h0typ_tbox = $rec
 } (* absimpl *)
 
 in (* in-of-local *)
-//
+
+(* ****** ****** *)
+
 implement
 h0typ_get_sort
-  (h2t) = h2t.h0typ_sort
+  (htp) = htp.h0typ_sort
 implement
 h0typ_get_node
-  (h2t) = h2t.h0typ_node
-//
+  (htp) = htp.h0typ_node
+
+(* ****** ****** *)
+
 implement
 h0typ_make_node
   (s2t0, node) = $rec
 {
   h0typ_sort= s2t0, h0typ_node= node
 }
-//
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
+htqarg_tbox = $rec
+{ 
+  htqarg_loc= loc_t
+, htqarg_htvs= htvarlst
+} (* absimpl *)
+
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+htqarg_get_loc
+  (htqa) = htqa.htqarg_loc
+implement
+htqarg_get_htvs
+  (htqa) = htqa.htqarg_htvs
+
+(* ****** ****** *)
+
+implement
+htqarg_make
+  (loc0, htvs) = $rec
+{
+  htqarg_loc= loc0, htqarg_htvs= htvs
+}
+
+(* ****** ****** *)
+
 end // end of [local]
 
 (* ****** ****** *)
