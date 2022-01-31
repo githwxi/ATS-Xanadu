@@ -182,15 +182,6 @@ tcomp30_svarlst
 (* ****** ****** *)
 //
 fun
-tcomp30_tqa0
-(tqa0: tq2arg): htqarg
-fun
-tcomp30_tqas
-(tqas: tq2arglst): htqarglst
-//
-(* ****** ****** *)
-//
-fun
 tcomp30_type
   (t2p0: t2ype): h0typ
 fun
@@ -205,6 +196,15 @@ tcomp30_labtype
 fun
 tcomp30_labtypelst
   (labt2ypelst): labh0typlst
+//
+(* ****** ****** *)
+//
+fun
+tcomp30_tqa0
+(tqa0: tq2arg): htqarg
+fun
+tcomp30_tqas
+(tqas: tq2arglst): htqarglst
 //
 (* ****** ****** *)
 //
