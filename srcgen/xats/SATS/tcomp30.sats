@@ -182,6 +182,15 @@ tcomp30_svarlst
 (* ****** ****** *)
 //
 fun
+tcomp30_tqa0
+(tqa0: tq2arg): htqarg
+fun
+tcomp30_tqas
+(tqas: tq2arglst): htqarglst
+//
+(* ****** ****** *)
+//
+fun
 tcomp30_type
   (t2p0: t2ype): h0typ
 fun
@@ -266,13 +275,6 @@ fun
 tcomp30_decl(d3c0: d3ecl): h0dcl
 fun
 tcomp30_declist(d3eclist): h0dclist
-//
-(* ****** ****** *)
-//
-fun
-tcomp30_tqarg(tqa0: tq2arg): htqarg
-fun
-tcomp30_tqarglst(tq2arglst): htqarglst
 //
 (* ****** ****** *)
 

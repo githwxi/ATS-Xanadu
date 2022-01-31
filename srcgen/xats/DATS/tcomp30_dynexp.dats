@@ -109,10 +109,12 @@ end // end of [tcomp30_package]
 
 implement
 tcomp30_dvar
-  (d2v0) =
-let
-val opt =
+( d2v0 ) = let
+//
+val
+opt =
 the_dvarmap_search_opt(d2v0)
+//
 in
 case+ opt of
 | ~
@@ -121,8 +123,9 @@ Some_vt
 | ~
 None_vt() =>
 let
-val hdv1 =
-hdvar_make_dvar(d2v0)
+  val
+  hdv1 =
+  hdvar_make_dvar(d2v0)
 in
 the_dvarmap_insert_any(d2v0, hdv1); hdv1
 end
@@ -143,10 +146,12 @@ case+ opt0 of
 
 implement
 tcomp30_dcon
-( d2c0 ) =
-let
-val opt =
+( d2c0 ) = let
+//
+val
+opt =
 the_dconmap_search_opt(d2c0)
+//
 in
 case+ opt of
 | ~
@@ -155,7 +160,9 @@ Some_vt
 | ~
 None_vt((*void*)) =>
 let
-val hdc1 = hdcon_make_dcon(d2c0)
+  val
+  hdc1 =
+  hdcon_make_dcon(d2c0)
 in
 the_dconmap_insert_any(d2c0, hdc1); hdc1
 end
@@ -163,10 +170,12 @@ end // end of [tcomp30_dcon]
 
 implement
 tcomp30_dcst
-( d2c0 ) =
-let
-val opt =
+( d2c0 ) = let
+//
+val
+opt =
 the_dcstmap_search_opt(d2c0)
+//
 in
 case+ opt of
 | ~
@@ -174,8 +183,9 @@ Some_vt(hdc1) => hdc1
 | ~
 None_vt((*void*)) =>
 let
-val hdc1 =
-hdcst_make_dcst(d2c0)
+  val
+  hdc1 =
+  hdcst_make_dcst(d2c0)
 in
 the_dcstmap_insert_any(d2c0, hdc1); hdc1
 end
@@ -2403,10 +2413,6 @@ D3Cfundecl
 , tqas
 , f3ds) = d3cl.node()
 //
-val
-tqas =
-tcomp30_tqarglst(tqas)
-//
 fun
 auxf3d0
 ( f3d0
@@ -2456,18 +2462,21 @@ list_map<f3undecl><hfundecl>(f3ds)
 ) where
 {
 implement
-list_map$fopr<f3undecl><hfundecl>(f3d) = auxf3d0(f3d)
+list_map$fopr<
+  f3undecl><hfundecl>(f3d) = auxf3d0(f3d)
 }
 //
 in
 //
 let
 val
+tqas =
+tcomp30_tqas(tqas)
+val
 hfds = auxf3ds(f3ds)
 in
-  h0dcl_make_node
-  ( loc0
-  , H0Cfundecl(knd, mopt, tqas, hfds))
+h0dcl_make_node
+(loc0, H0Cfundecl(knd, mopt, tqas, hfds))
 end // end of [let]
 //
 end // end of [aux_fundecl]
@@ -2928,6 +2937,11 @@ list_map$fopr<d3ecl><h0dcl>(d3c) = tcomp30_decl(d3c)
 } (* end of [tcomp30_declist] *)
 
 (* ****** ****** *)
+(*
+//
+HX-2022-01-30:
+This code is moved to
+[tcomp30_staexp.dats]
 //
 implement
 tcomp30_tqarg
@@ -2956,6 +2970,7 @@ list_map$fopr<tq2arg><htqarg>(tqa) = tcomp30_tqarg(tqa)
 }
 } (* end of [tcomp30_tqarglst] *)
 //
+*)
 (* ****** ****** *)
 
 (* end of [xats_tcomp30_dynexp.dats] *)

@@ -313,9 +313,26 @@ implement
 fprint_labh0typ(out, lx) =
 (
 case+ lx of
-| SLABELED
-  (l0, x0) => fprint!(out, l0, "=", x0)
+|
+SLABELED
+(l0, x0) => fprint!(out, l0, "=", x0)
 ) (* end of [fprint_labh0typ] *)
+//
+(* ****** ****** *)
+//
+implement
+print_htqarg(x0) =
+fprint_htqarg(stdout_ref, x0)
+implement
+prerr_htqarg(x0) =
+fprint_htqarg(stderr_ref, x0)
+//
+implement
+fprint_htqarg
+  (out, x0) =
+(
+  fprint!( out, "<", x0.htvs(), ">" )
+) (* end of [fprint_htqarg] *)
 //
 (* ****** ****** *)
 //
@@ -953,22 +970,6 @@ x0.node() of
 *)
 )
 end // end of [local]
-//
-(* ****** ****** *)
-//
-implement
-print_htqarg(x0) =
-fprint_htqarg(stdout_ref, x0)
-implement
-prerr_htqarg(x0) =
-fprint_htqarg(stderr_ref, x0)
-//
-implement
-fprint_htqarg
-  (out, x0) =
-(
-  fprint!(out, "<", x0.htvs(), ">")
-) (* end of [fprint_htqarg] *)
 //
 (* ****** ****** *)
 //

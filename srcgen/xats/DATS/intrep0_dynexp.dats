@@ -69,7 +69,12 @@ Otherwise, the tag is set to be
 is associated with 'exception'.
 *)
 //
-typedef tag_t = int
+typedef
+tag_t = int
+typedef
+htqas = htqarglst
+//
+(* ****** ****** *)
 //
 typedef
 hdcon_struct = @{
@@ -77,8 +82,9 @@ hdcon_struct = @{
   hdcon_loc= loc_t // loc
 , hdcon_sym= sym_t // name
 , hdcon_tag= tag_t // tag
+, hdcon_tqas= htqas // tqas
 , hdcon_type= h0typ // type
-, hdcon_dvar = hdvar // r-time
+, hdcon_dvar= hdvar // r-time
 , hdcon_stamp= stamp // unicity
 //
 } (* end of [hdcon_tbox] *)
@@ -87,6 +93,8 @@ absimpl
 hdcon_tbox = ref(hdcon_struct)
 
 in(* in-of-local *)
+
+(* ****** ****** *)
 
 implement
 hdcon_get_loc
@@ -104,6 +112,13 @@ hdcon_set_tag
 (hdc->hdcon_tag := tag)
 //
 implement
+hdcon_get_tqas
+(hdc) = hdc->hdcon_tqas
+implement
+hdcon_get_type
+(hdc) = hdc->hdcon_type
+//
+implement
 hdcon_get_dvar
 (hdc) = hdc->hdcon_dvar
 //
@@ -111,17 +126,22 @@ implement
 hdcon_get_stamp
 (hdc) = hdc->hdcon_stamp
 
+(* ****** ****** *)
+
 implement
 hdcon_make_idtp
-(loc, sym, htp) =
+( loc
+, sym
+, tqas, htp0) =
 (
 ref<hdcon_struct>
 @{
   hdcon_loc=loc
 , hdcon_sym=sym
 , hdcon_tag=(~1)
-, hdcon_type=htp
-, hdcon_dvar=hdv
+, hdcon_tqas=tqas
+, hdcon_type=htp0
+, hdcon_dvar=hdv0
 , hdcon_stamp=stamp
 }
 ) where
@@ -129,14 +149,17 @@ ref<hdcon_struct>
 //
   val knd =
   T_EOF(*void*)
-  val hdv =
+//
+  val hdv0 =
   hdvar_make_idtp
-  (loc, sym, knd, htp)
+  (loc, sym, knd, htp0)
 //
   val
   stamp = hdcon_stamp_new()
 //
-}
+} (* end of [hdcon_make_idtp] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -149,13 +172,17 @@ eq_hdcst_hdcst(x1, x2) =
 (* ****** ****** *)
 
 local
-
+//
+typedef
+htqas = htqarglst
+//
 typedef
 hdcst_struct = @{
 //
   hdcst_loc= loc_t // loc
 , hdcst_sym= sym_t // name
 , hdcst_kind= tnode // kind
+, hdcst_tqas= htqas // tqas
 , hdcst_type= h0typ // type
 , hdcst_xknd= x2knd // xknd
 , hdcst_xnam= x2nam // xnam
@@ -167,6 +194,8 @@ absimpl
 hdcst_tbox = ref(hdcst_struct)
 
 in(* in-of-local *)
+
+(* ****** ****** *)
 
 implement
 hdcst_get_loc
@@ -190,27 +219,33 @@ implement
 hdcst_get_stamp
 (hdc) = hdc->hdcst_stamp
 
+(* ****** ****** *)
+
 implement
 hdcst_make_idtp
 ( loc
 , sym
-, knd, htp
-, xkd, xnm) =
+, knd
+, tqas, htp0
+, xkd1, xnm2) =
 (
 ref<hdcst_struct>
 @{
   hdcst_loc=loc
 , hdcst_sym=sym
 , hdcst_kind=knd
-, hdcst_type=htp
-, hdcst_xknd=xkd
-, hdcst_xnam=xnm
+, hdcst_tqas=tqas
+, hdcst_type=htp0
+, hdcst_xknd=xkd1
+, hdcst_xnam=xnm2
 , hdcst_stamp=stamp
 }
 ) where
 {
   val stamp = hdcst_stamp_new()
-}
+} (* end of [hdcst_make_idtp] *)
+
+(* ****** ****** *)
 
 end // end of [local]
 
@@ -500,6 +535,12 @@ end // end of [local]
 
 (* ****** ****** *)
 
+(*
+(*
+HX-2022-01-30:
+This code is moved to
+[intrep0_staexp.dats]
+*)
 local
 
 absimpl
@@ -525,6 +566,7 @@ implement
 htqarg_get_htvs(x0) = x0.htqarg_htvs
 
 end // end of [local]
+*)
 
 (* ****** ****** *)
 

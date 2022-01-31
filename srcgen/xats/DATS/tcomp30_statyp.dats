@@ -50,6 +50,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 
 (* ****** ****** *)
 
@@ -193,6 +194,36 @@ list_map$fopr<
 }
 ) (* end of [tcomp30_svarlst] *)
 
+(* ****** ****** *)
+//
+implement
+tcomp30_tqa0(tqa0) =
+let
+//
+val loc0 = tqa0.loc()
+val s2vs = tqa0.s2vs()
+//
+in
+let
+val
+htvs =
+tcomp30_svarlst(s2vs)
+in
+htqarg_make(loc0, htvs) end
+end // end of [tcomp30_t2q0]
+//
+implement
+tcomp30_tqas(tqas) =
+list_vt2t
+(
+list_map<tq2arg><htqarg>(tqas)
+) where
+{
+implement
+list_map$fopr<
+  tq2arg><htqarg>(tqa) = tcomp30_tqa0(tqa)
+} (* end of [tcomp30_tqas] *)
+//
 (* ****** ****** *)
 
 local

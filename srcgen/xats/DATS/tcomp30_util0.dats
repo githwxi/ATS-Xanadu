@@ -85,74 +85,89 @@ end // end of [htcst_make_scst]
 
 implement
 htvar_make_svar
-  (s2v) = let
+  (s2v0) = let
 //
-val sym = s2v.sym()
-val s2t = s2v.sort()
+val sym = s2v0.sym()
 //
-val hst = tcomp30_sort(s2t)
+val s2t0 = s2v0.sort()
 //
 in
-htvar_make_idst(  sym,  hst  )
+let
+val
+hst0 = tcomp30_sort(s2t0)
+in
+  htvar_make_idst(sym, hst0)
+end
 end // end of [htvar_make_svar]
 
 (* ****** ****** *)
 
 implement
 hdcon_make_dcon
-  (d2c) = let
+  (d2c0) = let
 //
-val loc = d2c.loc()
-val sym = d2c.sym()
-val t2p = d2c.type()
+val loc = d2c0.loc()
+val sym = d2c0.sym()
 //
-val htp = tcomp30_type(t2p)
+val tqas = d2c0.tqas()
+val t2p0 = d2c0.type()
 //
-val hdc =
-hdcon_make_idtp(loc, sym, htp)
+val htqs = tcomp30_tqas(tqas)
+val htp0 = tcomp30_type(t2p0)
+//
 //
 in
 let
-  val () =
-  hdc.tag(d2c.tag()) in hdc end
+val
+hdc0 =
+hdcon_make_idtp
+(loc, sym, htqs, htp0)
+val () =
+hdc0.tag( d2c0.tag() ) in hdc0 end
 end // end of [hdcon_make_dcon]
 
 (* ****** ****** *)
 
 implement
 hdcst_make_dcst
-  (d2c) = let
+  (d2c0) = let
 //
-val loc = d2c.loc()
-val sym = d2c.sym()
-val knd = d2c.kind()
-val t2p = d2c.type()
+val loc = d2c0.loc()
+val sym = d2c0.sym()
+val knd = d2c0.kind()
 //
-val xkd = d2c.xknd()
-val xnm = d2c.xnam()
+val tqas = d2c0.tqas()
+val t2p0 = d2c0.type()
 //
-val htp = tcomp30_type(t2p)
+val xkd1 = d2c0.xknd()
+val xnm2 = d2c0.xnam()
+//
+val htqs = tcomp30_tqas(tqas)
+val htp0 = tcomp30_type(t2p0)
 //
 in
-  hdcst_make_idtp
-  (loc, sym, knd, htp, xkd, xnm)
+hdcst_make_idtp
+( loc
+, sym
+, knd, htqs, htp0, xkd1, xnm2)
 end // end of [hdcst_make_dcst]
 
 (* ****** ****** *)
 
 implement
 hdvar_make_dvar
-  (d2v) = let
+  (d2v0) = let
 //
-val loc = d2v.loc()
-val sym = d2v.sym()
-val knd = d2v.kind()
-val t2p = d2v.type()
+val loc = d2v0.loc()
+val sym = d2v0.sym()
+val knd = d2v0.kind()
 //
-val htp = tcomp30_type(t2p)
+val t2p0 = d2v0.type()
+//
+val htp0 = tcomp30_type(t2p0)
 //
 in
-hdvar_make_idtp(loc, sym, knd, htp)
+hdvar_make_idtp(loc, sym, knd, htp0)
 end // end of [hdvar_make_dvar]
 
 (* ****** ****** *)
