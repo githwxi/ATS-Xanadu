@@ -72,13 +72,6 @@ then
 } (* end of [if] *)
 ) where
 {
-// (*
-val out = stderr_ref
-val ( ) =
-echo_argc_argv(out, argc, argv)
-// *)
-} where
-{
 //
 val () =
 prerrln!
@@ -91,6 +84,13 @@ val
 prerrln!
 ("xatsopt: XATSHOME=", XATSHOME)
 //
+} where
+{
+// (*
+val out = stderr_ref
+val ( ) =
+echo_argc_argv(out, argc, argv)
+// *)
 } (* where *) // end of [main0]
 (* ****** ****** *)
 #endif // #ifdef(__LIBXATSOPT__)
