@@ -873,17 +873,29 @@ val loc0 = d3gp.loc()
 in
 case+
 d3gp.node() of
-| D3GPATpat(d3p1) => d3gp
-| D3GPATgua(d3p1, d3gs) =>
-  (
-  d3gpat_make_node
-  (loc0, D3GPATgua(d3p1, d3gs))
-  ) where
-  {
-    val d3gs =
-    trans3x_dgualst(env0, d3gs)
-  }
-end // end of [trans3x_dgpat]
+|
+D3GPATpat(d3p1) =>
+(
+d3gpat_make_node
+(loc0, D3GPATpat(d3p1))
+) where
+{
+val
+d3p1 = trans3x_dpat(env0, d3p1)
+}
+|
+D3GPATgua(d3p1, d3gs) =>
+(
+d3gpat_make_node
+(loc0, D3GPATgua(d3p1, d3gs))
+) where
+{
+val
+d3p1 = trans3x_dpat(env0, d3p1)
+val
+d3gs = trans3x_dgualst(env0, d3gs)
+}
+end (*let*) // end of [trans3x_dgpat]
 //
 implement
 trans3x_dgualst
