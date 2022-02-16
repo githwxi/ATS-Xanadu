@@ -3,6 +3,23 @@
 "share\
 /xatsopt_prelude.hats"
 (* ****** ****** *)
+//
+fun
+<a:type>
+length
+{n:nat}
+(xs: list(a, n)): sint(n) =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => 0
+|
+list_cons
+(  _, xs  ) => 1 + length(xs)
+)
+////
+(* ****** ****** *)
 fun
 fact(x: int): int =
 if
@@ -55,23 +72,6 @@ foo
 if
 true
 then x0 := 1 else x1 := 2
-////
-(* ****** ****** *)
-//
-fun
-<a:type>
-length
-{n:nat}
-(xs: list(a, n)): sint(n) =
-(
-case+ xs of
-|
-list_nil
-((*void*)) => 0
-|
-list_cons
-(  _, xs  ) => 1 + length(xs)
-)
 ////
 (* ****** ****** *)
 //

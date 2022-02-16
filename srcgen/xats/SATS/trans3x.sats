@@ -213,6 +213,33 @@ trans3x_farglst
 (* ****** ****** *)
 //
 fun
+trans3x_dgua
+( env0:
+! tr3xenv, d3g0: d3gua): d3gua
+fun
+trans3x_dgualst
+( env0:
+! tr3xenv, d3gs: d3gualst): d3gualst
+//
+(* ****** ****** *)
+//
+fun
+trans3x_dgpat
+( env0:
+! tr3xenv, d3gp: d3gpat): d3gpat
+//
+fun
+trans3x_dclau
+( env0:
+! tr3xenv, d3cl: d3clau): d3clau
+fun
+trans3x_dclaulst
+( env0:
+! tr3xenv, dcls: d3claulst): d3claulst
+//
+(* ****** ****** *)
+//
+fun
 trans3x_decl
 ( env0:
 ! tr3xenv, d3c0: d3ecl): d3ecl
