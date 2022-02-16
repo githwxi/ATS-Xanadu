@@ -358,8 +358,21 @@ overload .tag with hdcon_set_tag
 fun
 hdcon_get_tqas
 ( hdc0: hdcon ): htqarglst
+//
+overload .tqas with hdcon_get_tqas
+//
+(* ****** ****** *)
+//
 fun
 hdcon_get_type(hdcon): h0typ
+fun
+hdcst_get_type(hdcst): h0typ
+fun
+hdvar_get_type(hdvar): h0typ
+//
+overload .type with hdcon_get_type
+overload .type with hdcst_get_type
+overload .type with hdvar_get_type
 //
 (* ****** ****** *)
 //
