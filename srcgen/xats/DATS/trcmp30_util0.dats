@@ -63,7 +63,7 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-#staload "./../SATS/tcomp30.sats"
+#staload "./../SATS/trcmp30.sats"
 
 (* ****** ****** *)
 
@@ -75,7 +75,7 @@ val loc = s2c.loc()
 val sym = s2c.sym()
 val s2t = s2c.sort()
 //
-val hst = tcomp30_sort(s2t)
+val hst = trcmp30_sort(s2t)
 //
 in
 htcst_make_idst(loc, sym, hst)
@@ -94,7 +94,7 @@ val s2t0 = s2v0.sort()
 in
 let
 val
-hst0 = tcomp30_sort(s2t0)
+hst0 = trcmp30_sort(s2t0)
 in
   htvar_make_idst(sym, hst0)
 end
@@ -112,8 +112,8 @@ val sym = d2c0.sym()
 val tqas = d2c0.tqas()
 val t2p0 = d2c0.type()
 //
-val htqs = tcomp30_tqas(tqas)
-val htp0 = tcomp30_type(t2p0)
+val htqs = trcmp30_tqas(tqas)
+val htp0 = trcmp30_type(t2p0)
 //
 //
 in
@@ -142,8 +142,8 @@ val t2p0 = d2c0.type()
 val xkd1 = d2c0.xknd()
 val xnm2 = d2c0.xnam()
 //
-val htqs = tcomp30_tqas(tqas)
-val htp0 = tcomp30_type(t2p0)
+val htqs = trcmp30_tqas(tqas)
+val htp0 = trcmp30_type(t2p0)
 //
 in
 hdcst_make_idtp
@@ -164,7 +164,7 @@ val knd = d2v0.kind()
 //
 val t2p0 = d2v0.type()
 //
-val htp0 = tcomp30_type(t2p0)
+val htp0 = trcmp30_type(t2p0)
 //
 in
 hdvar_make_idtp(loc, sym, knd, htp0)
@@ -749,4 +749,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [xats_tcomp30_util0.dats] *)
+(* end of [xats_trcmp30_util0.dats] *)

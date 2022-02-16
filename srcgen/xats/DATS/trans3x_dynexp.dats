@@ -114,10 +114,37 @@ auxvar
 ! tr3xenv
 , dend: d3end): d3end =
 let
-val-D3Pvar(d2v0) = dend
+val-
+D3Pvar(d2v0) = dend
 val () =
 d2var_typenfz(d2v0) in dend
 end // end of [auxvar]
+
+(* ****** ****** *)
+
+fun
+auxdapp
+( env0:
+! tr3xenv
+, dend: d3end): d3end =
+(
+D3Pdapp
+(d3f0, npf1, d3ps)) where
+{
+//
+val-
+D3Pdapp
+( d3f0
+, npf1, d3ps) = dend
+//
+val d3f0 =
+trans3x_dpat(env0, d3f0)
+val d3ps = 
+trans3x_dpatlst(env0, d3ps)
+//
+} (*where*) // end of [auxdapp]
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 
@@ -158,6 +185,14 @@ case+ dend of
 D3Pvar _ =>
 let
 val dend = auxvar(env0, dend)
+in
+d3pat_make_node(loc0, t2p0, dend)
+end
+//
+|
+D3Pdapp _ =>
+let
+val dend = auxdapp(env0, dend)
 in
 d3pat_make_node(loc0, t2p0, dend)
 end

@@ -91,7 +91,7 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tread3x.sats"
 //
 #staload "./../SATS/intrep0.sats"
-#staload "./../SATS/tcomp30.sats"
+#staload "./../SATS/trcmp30.sats"
 //
 (* ****** ****** *)
 //
@@ -303,9 +303,9 @@ end // end of [local]
 #dynload "./intrep0_statyp.dats"
 #dynload "./intrep0_dynexp.dats"
 //
-#dynload "./tcomp30_util0.dats"
-#dynload "./tcomp30_statyp.dats"
-#dynload "./tcomp30_dynexp.dats"
+#dynload "./trcmp30_util0.dats"
+#dynload "./trcmp30_statyp.dats"
+#dynload "./trcmp30_dynexp.dats"
 //
 (* ****** ****** *)
 //

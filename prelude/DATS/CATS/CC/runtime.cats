@@ -6,6 +6,8 @@ Runtime for Xats2cc
 #include <stdio.h>
 #include <stdlib.h>
 /* ****** ****** */
+#define XATS2CC_null 0 // null
+/* ****** ****** */
 #define XATS2CC_btf1 1 // true
 #define XATS2CC_btf0 0 // false
 /* ****** ****** */

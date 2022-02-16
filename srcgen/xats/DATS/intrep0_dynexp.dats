@@ -209,6 +209,10 @@ hdcst_get_kind
 (hdc) = hdc->hdcst_kind
 //
 implement
+hdcst_get_type
+(hdc) = hdc->hdcst_type
+//
+implement
 hdcst_get_xknd
 (hdc) = hdc->hdcst_xknd
 implement
@@ -303,6 +307,10 @@ hdvar_get_sym
 implement
 hdvar_get_kind
 (hdv) = hdv->hdvar_kind
+implement
+hdvar_get_type
+(hdv) = hdv->hdvar_type
+//
 implement
 hdvar_get_stamp
 (hdv) = hdv->hdvar_stamp

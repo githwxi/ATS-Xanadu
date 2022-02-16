@@ -58,18 +58,18 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
-#staload "./../SATS/tcomp30.sats"
+#staload "./../SATS/trcmp30.sats"
 
 (* ****** ****** *)
 
 implement
-tcomp30_sort
+trcmp30_sort
   (s2t0) = let
 //
 (*
 val () =
 println!
-("tcomp30_sort: s2t0 = ", s2t0)
+("trcmp30_sort: s2t0 = ", s2t0)
 *)
 //
 in
@@ -84,13 +84,13 @@ case+ s2t0 of
   let
   val
   hsts =
-  tcomp30_sortlst(s2ts)
+  trcmp30_sortlst(s2ts)
   in
   HSTfun
   (hsts, hst1) where
   {
     val
-    hst1 = tcomp30_sort(s2t1)
+    hst1 = trcmp30_sort(s2t1)
   }
   end // end of [S2Tfun]
 //
@@ -101,12 +101,12 @@ case+ s2t0 of
   $UN.cast{ptr}(s2t0) in HSTnone1(data)
   end
 //
-end // end of [tcomp30_sort]
+end // end of [trcmp30_sort]
 //
 (* ****** ****** *)
 
 implement
-tcomp30_scst
+trcmp30_scst
   (s2c0) = let
 //
 val opt =
@@ -124,12 +124,12 @@ htcst_make_scst(s2c0)
 in
 the_scstmap_insert_any(s2c0, htv1); htv1
 end
-end // end of [tcomp30_scst]
+end // end of [trcmp30_scst]
 
 (* ****** ****** *)
 
 implement
-tcomp30_sortlst(s2ts) =
+trcmp30_sortlst(s2ts) =
 list_vt2t
 (
 list_map<
@@ -137,14 +137,14 @@ list_map<
 {
 implement
 list_map$fopr<
-  sort2><h0srt>(s2t) = tcomp30_sort(s2t)
+  sort2><h0srt>(s2t) = trcmp30_sort(s2t)
 }
-) (* end of [tcomp30_sortlst] *)
+) (* end of [trcmp30_sortlst] *)
 
 (* ****** ****** *)
 
 implement
-tcomp30_scstlst(s2cs) =
+trcmp30_scstlst(s2cs) =
 list_vt2t
 (
 list_map<
@@ -152,14 +152,14 @@ list_map<
 {
 implement
 list_map$fopr<
-  s2cst><htcst>(s2c) = tcomp30_scst(s2c)
+  s2cst><htcst>(s2c) = trcmp30_scst(s2c)
 }
-) (* end of [tcomp30_scstlst] *)
+) (* end of [trcmp30_scstlst] *)
 
 (* ****** ****** *)
 
 implement
-tcomp30_svar
+trcmp30_svar
   (s2v0) = let
 //
 val opt =
@@ -177,12 +177,12 @@ htvar_make_svar(s2v0)
 in
 the_svarmap_insert_any(s2v0, htv1); htv1
 end
-end // end of [tcomp30_svar]
+end // end of [trcmp30_svar]
 
 (* ****** ****** *)
 
 implement
-tcomp30_svarlst(s2vs) =
+trcmp30_svarlst(s2vs) =
 list_vt2t
 (
 list_map<
@@ -190,14 +190,14 @@ list_map<
 {
 implement
 list_map$fopr<
-  s2var><htvar>(s2v) = tcomp30_svar(s2v)
+  s2var><htvar>(s2v) = trcmp30_svar(s2v)
 }
-) (* end of [tcomp30_svarlst] *)
+) (* end of [trcmp30_svarlst] *)
 
 (* ****** ****** *)
 //
 implement
-tcomp30_tqa0(tqa0) =
+trcmp30_tqa0(tqa0) =
 let
 //
 val loc0 = tqa0.loc()
@@ -207,13 +207,13 @@ in
 let
 val
 htvs =
-tcomp30_svarlst(s2vs)
+trcmp30_svarlst(s2vs)
 in
 htqarg_make(loc0, htvs) end
-end // end of [tcomp30_t2q0]
+end // end of [trcmp30_t2q0]
 //
 implement
-tcomp30_tqas(tqas) =
+trcmp30_tqas(tqas) =
 list_vt2t
 (
 list_map<tq2arg><htqarg>(tqas)
@@ -221,8 +221,8 @@ list_map<tq2arg><htqarg>(tqas)
 {
 implement
 list_map$fopr<
-  tq2arg><htqarg>(tqa) = tcomp30_tqa0(tqa)
-} (* end of [tcomp30_tqas] *)
+  tq2arg><htqarg>(tqa) = trcmp30_tqa0(tqa)
+} (* end of [trcmp30_tqas] *)
 //
 (* ****** ****** *)
 
@@ -238,8 +238,8 @@ val-
 T2Pcst
 (s2c1) = t2p0.node()
 val s2t0 = t2p0.sort()
-val hst0 = tcomp30_sort(s2t0)
-val htc1 = tcomp30_scst(s2c1)
+val hst0 = trcmp30_sort(s2t0)
+val htc1 = trcmp30_scst(s2c1)
 in
 h0typ_make_node(hst0, H0Tcst(htc1))
 end
@@ -252,8 +252,8 @@ val-
 T2Pvar
 (s2v1) = t2p0.node()
 val s2t0 = t2p0.sort()
-val hst0 = tcomp30_sort(s2t0)
-val htv1 = tcomp30_svar(s2v1)
+val hst0 = trcmp30_sort(s2t0)
+val htv1 = trcmp30_svar(s2v1)
 in
 h0typ_make_node(hst0, H0Tvar(htv1))
 end
@@ -268,8 +268,8 @@ val-
 T2Plft
 (t2p1) = t2p0.node()
 val s2t0 = t2p0.sort()
-val hst0 = tcomp30_sort(s2t0)
-val h0t1 = tcomp30_type(t2p1)
+val hst0 = trcmp30_sort(s2t0)
+val h0t1 = trcmp30_type(t2p1)
 in
 h0typ_make_node(hst0, H0Tlft(h0t1))
 end // end of [auxlft]
@@ -285,9 +285,9 @@ T2Papp
 ( t2f0
 , t2ps) = t2p0.node()
 val s2t0 = t2p0.sort()
-val hst0 = tcomp30_sort(s2t0)
-val h0f0 = tcomp30_type(t2f0)
-val h0ts = tcomp30_typelst(t2ps)
+val hst0 = trcmp30_sort(s2t0)
+val h0f0 = trcmp30_type(t2f0)
+val h0ts = trcmp30_typelst(t2ps)
 in
 h0typ_make_node(hst0, H0Tapp(h0f0, h0ts))
 end // end of [auxapp]
@@ -305,12 +305,12 @@ T2Pfun
 , t2ps, t2p1) = t2p0.node()
 //
 val s2t0 = t2p0.sort()
-val hst0 = tcomp30_sort(s2t0)
+val hst0 = trcmp30_sort(s2t0)
 //
 val
-h0ts = tcomp30_typelst(t2ps)
+h0ts = trcmp30_typelst(t2ps)
 //
-val h0t1 = tcomp30_type(t2p1)
+val h0t1 = trcmp30_type(t2p1)
 //
 in
 h0typ_make_node
@@ -330,10 +330,10 @@ T2Ptyext
 , t2ps) = t2p0.node()
 //
 val s2t0 = t2p0.sort()
-val hst0 = tcomp30_sort(s2t0)
+val hst0 = trcmp30_sort(s2t0)
 //
 val
-h0ts = tcomp30_typelst(t2ps)
+h0ts = trcmp30_typelst(t2ps)
 //
 in
 h0typ_make_node
@@ -353,10 +353,10 @@ T2Ptyrec
 , npf, ltps) = t2p0.node()
 //
 val s2t0 = t2p0.sort()
-val hst0 = tcomp30_sort(s2t0)
+val hst0 = trcmp30_sort(s2t0)
 //
 val
-lhts = tcomp30_labtypelst(ltps)
+lhts = trcmp30_labtypelst(ltps)
 //
 in
   h0typ_make_node
@@ -368,7 +368,7 @@ end // end of [aux_tyrec]
 in(*in-of-local*)
 
 implement
-tcomp30_type
+trcmp30_type
   (t2p0) = let
 //
 (*
@@ -378,10 +378,10 @@ s2t0 = t2p0.sort()
 //
 val () =
 println!
-("tcomp30_type: t2p0 = ", t2p0)
+("trcmp30_type: t2p0 = ", t2p0)
 val () =
 println!
-("tcomp30_type: s2t0 = ", s2t0)
+("trcmp30_type: s2t0 = ", s2t0)
 *)
 //
 (*
@@ -423,33 +423,33 @@ T2Ptyrec _ => aux_tyrec(t2p0)
 | _(*rest-of-t2ype*) => let
 //
 val s2t0 = t2p0.sort()
-val hst0 = tcomp30_sort(s2t0)
+val hst0 = trcmp30_sort(s2t0)
 val data = $UN.cast{ptr}(t2p0)
 //
 (*
 val () =
 println!
-("tcomp30_type: t2p0 = ", t2p0)
+("trcmp30_type: t2p0 = ", t2p0)
 val () =
 println!
-("tcomp30_type: s2t0 = ", s2t0)
+("trcmp30_type: s2t0 = ", s2t0)
 val () =
 println!
-("tcomp30_type: hst0 = ", hst0)
+("trcmp30_type: hst0 = ", hst0)
 *)
 //
 in
 h0typ_make_node(hst0, H0Tnone1(data))
 end // end of [rest]
 //
-end // end of [tcomp30_type]
+end // end of [trcmp30_type]
 
 end // end of [local]
 
 (* ****** ****** *)
 
 implement
-tcomp30_typelst
+trcmp30_typelst
   (t2ps) =
 list_vt2t(h0ts) where
 {
@@ -460,25 +460,25 @@ list_map<t2ype><h0typ>
 {
 implement
 list_map$fopr<
-  t2ype><h0typ>(t2p) = tcomp30_type(t2p)
+  t2ype><h0typ>(t2p) = trcmp30_type(t2p)
 }
-} (* end of [tcomp30_typelst] *)
+} (* end of [trcmp30_typelst] *)
 
 (* ****** ****** *)
 //
 implement
-tcomp30_labtype
+trcmp30_labtype
   (lt2p) = let
 //
 val+
 SLABELED(l0, t2p1) = lt2p
 //
 in
-SLABELED(l0, tcomp30_type(t2p1))
-end // end of [tcomp30_labtype]
+SLABELED(l0, trcmp30_type(t2p1))
+end // end of [trcmp30_labtype]
 //
 implement
-tcomp30_labtypelst
+trcmp30_labtypelst
   (ltps) =
 list_vt2t(lhts) where
 {
@@ -489,10 +489,10 @@ list_map<labt2ype><labh0typ>
 {
 implement
 list_map$fopr<
-  labt2ype><labh0typ>(ltp) = tcomp30_labtype(ltp)
+  labt2ype><labh0typ>(ltp) = trcmp30_labtype(ltp)
 }
-} (* end of [tcomp30_labtypelst] *)
+} (* end of [trcmp30_labtypelst] *)
 //
 (* ****** ****** *)
 
-(* end of [xats_tcomp30_statyp.dats] *)
+(* end of [xats_trcmp30_statyp.dats] *)

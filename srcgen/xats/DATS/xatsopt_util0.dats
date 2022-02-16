@@ -93,7 +93,7 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/tread3x.sats"
 //
 #staload "./../SATS/intrep0.sats"
-#staload "./../SATS/tcomp30.sats"
+#staload "./../SATS/trcmp30.sats"
 //
 (* ****** ****** *)
 //
@@ -334,7 +334,7 @@ implement
 trs03cmp30_package
   (p0kg) =
 (
-tcomp30_package(p3kg)
+trcmp30_package(p3kg)
 ) where
 {
 val p3kg = trans03_package(p0kg)
@@ -358,7 +358,7 @@ tread34_package(p4kg)
 //
 in(*in-of-let*)
 //
-tcomp30_package(p3kg) where
+trcmp30_package(p3kg) where
 {
 (*
 val () =
@@ -369,7 +369,7 @@ in
   xatsopt_cstrnt1_solving(cstr)
 end
 *)
-} (*where*) // tcomp30_package
+} (*where*) // trcmp30_package
 //
 end // end of [trs04cmp30_package]
 //

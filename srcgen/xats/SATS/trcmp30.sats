@@ -146,136 +146,136 @@ the_dvarmap_insert_exn
 (* ****** ****** *)
 //
 fun
-tcomp30_envless
+trcmp30_envless
 (prog: d3eclist): h0dclist
 fun
-tcomp30_package
+trcmp30_package
 (p3kg: d3transd): h0comped
 
 (* ****** ****** *)
 //
 fun
-tcomp30_sort
+trcmp30_sort
   (s2t0: sort2): h0srt
 fun
-tcomp30_sortlst
+trcmp30_sortlst
   (s2ts: sort2lst): h0srtlst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_scst
+trcmp30_scst
   (s2c0: s2cst): htcst
 fun
-tcomp30_scstlst
+trcmp30_scstlst
   (s2cs: s2cstlst): htcstlst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_svar
+trcmp30_svar
   (s2v0: s2var): htvar
 fun
-tcomp30_svarlst
+trcmp30_svarlst
   (s2vs: s2varlst): htvarlst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_type
+trcmp30_type
   (t2p0: t2ype): h0typ
 fun
-tcomp30_typelst
+trcmp30_typelst
   (t2ps: t2ypelst): h0typlst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_labtype
+trcmp30_labtype
   (labt2ype): labh0typ
 fun
-tcomp30_labtypelst
+trcmp30_labtypelst
   (labt2ypelst): labh0typlst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_tqa0
+trcmp30_tqa0
 (tqa0: tq2arg): htqarg
 fun
-tcomp30_tqas
+trcmp30_tqas
 (tqas: tq2arglst): htqarglst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_dvar
+trcmp30_dvar
   (d2v0: d2var): hdvar
 fun
-tcomp30_dvaropt
+trcmp30_dvaropt
   (opt0: d2varopt): hdvaropt
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_dcon(d2c0: d2con): hdcon
+trcmp30_dcon(d2c0: d2con): hdcon
 fun
-tcomp30_dcst(d2c0: d2cst): hdcst
+trcmp30_dcst(d2c0: d2cst): hdcst
 //
 fun
-tcomp30_dconlst(d2conlst): hdconlst
+trcmp30_dconlst(d2conlst): hdconlst
 fun
-tcomp30_dcstlst(d2cstlst): hdcstlst
-//
-(* ****** ****** *)
-//
-fun
-tcomp30_dpat(d3p0: d3pat): h0pat
-fun
-tcomp30_dpatlst(d3patlst): h0patlst
+trcmp30_dcstlst(d2cstlst): hdcstlst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_farg(f3a0: f3arg): hfarg
+trcmp30_dpat(d3p0: d3pat): h0pat
 fun
-tcomp30_farglst(f3arglst): hfarglst
+trcmp30_dpatlst(d3patlst): h0patlst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_ti3arg(tia: ti3arg): htiarg
+trcmp30_farg(f3a0: f3arg): hfarg
+fun
+trcmp30_farglst(f3arglst): hfarglst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_dexp(d3e0: d3exp): h0exp
-fun
-tcomp30_dexpopt(d3expopt): h0expopt
-fun
-tcomp30_dexplst(d3explst): h0explst
+trcmp30_ti3arg(tia: ti3arg): htiarg
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_dgua(d3g0: d3gua): h0gua
+trcmp30_dexp(d3e0: d3exp): h0exp
 fun
-tcomp30_dgualst(d3gualst): h0gualst
-//
+trcmp30_dexpopt(d3expopt): h0expopt
 fun
-tcomp30_dclau(d3cl: d3clau): h0clau
-fun
-tcomp30_dgpat(d3gp: d3gpat): h0gpat
-fun
-tcomp30_dclaulst(d3claulst): h0claulst
+trcmp30_dexplst(d3explst): h0explst
 //
 (* ****** ****** *)
 //
 fun
-tcomp30_decl(d3c0: d3ecl): h0dcl
+trcmp30_dgua(d3g0: d3gua): h0gua
 fun
-tcomp30_declist(d3eclist): h0dclist
+trcmp30_dgualst(d3gualst): h0gualst
+//
+fun
+trcmp30_dclau(d3cl: d3clau): h0clau
+fun
+trcmp30_dgpat(d3gp: d3gpat): h0gpat
+fun
+trcmp30_dclaulst(d3claulst): h0claulst
+//
+(* ****** ****** *)
+//
+fun
+trcmp30_decl(d3c0: d3ecl): h0dcl
+fun
+trcmp30_declist(d3eclist): h0dclist
 //
 (* ****** ****** *)
 
-(* end of [xats_tcomp30.sats] *)
+(* end of [xats_trcmp30.sats] *)
