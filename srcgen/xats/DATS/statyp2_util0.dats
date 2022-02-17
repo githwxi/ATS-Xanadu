@@ -483,7 +483,7 @@ end // end of [T2Ptyext]
 T2Ptyrec(knd, npf, ltps) =>
 let
   val
-  ltps = auxlt2ps(ltps, flag)
+  ltps = auxltps(ltps, flag)
 (*
   val
   s2t0 =
@@ -533,24 +533,27 @@ auxt2ps
 ) : t2ypelst =
 (
 case+ t2ps of
-| list_nil() =>
-  list_nil()
-| list_cons
-  (t2p1, t2ps1) => let
-    val fini = flag
-    val
-    t2p1 = auxt2p0(t2p1, flag)
-    val
-    t2ps1 = auxt2ps(t2ps1, flag)
-  in
-    if
-    flag = fini
-    then t2ps else list_cons(t2p1, t2ps1)
-  end
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(t2p1, t2ps1) =>
+let
+  val fini = flag
+  val
+  t2p1 = auxt2p0(t2p1, flag)
+  val
+  t2ps1 = auxt2ps(t2ps1, flag)
+in
+  if
+  flag = fini
+  then t2ps else list_cons(t2p1, t2ps1)
+end
 )
 //
 and
-auxlt2ps
+auxltps
 ( ltps
 : labt2ypelst
 , flag
@@ -558,31 +561,35 @@ auxlt2ps
 ) : labt2ypelst =
 (
 case+ ltps of
-| list_nil() =>
-  list_nil()
-| list_cons
-  (lt2p0, ltps1) =>
-  let
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(lt2p1, ltps1) =>
+let
 //
-    val fini = flag
+val fini = flag
 //
-    val+
-    SLABELED(l0, t2p0) = lt2p0
-    val t2p0 = auxt2p0(t2p0, flag)
-    val lt2p0 =
-    (
-    if
-    flag = fini
-    then lt2p0 else SLABELED(l0, t2p0)
-    ) : labt2ype // end of [val]
+val+
+SLABELED
+(l1, t2p1) = lt2p1
+val t2p1 = auxt2p0(t2p1, flag)
 //
-    val ltps1 = auxlt2ps(ltps1, flag)
+val lt2p1 =
+(
+if
+flag = fini
+then lt2p1 else SLABELED(l1, t2p1)
+) : labt2ype // end of [val]
 //
-  in
-    if
-    flag = fini
-    then ltps else list_cons(lt2p0, ltps1)
-  end
+val ltps1 = auxltps( ltps1, flag )
+//
+in
+if
+flag = fini
+then ltps else list_cons(lt2p1, ltps1)
+end
 )
 //
 } (* end of [t2ype_subst] *)
@@ -848,7 +855,7 @@ end
 T2Ptyrec(knd, npf, lt2ps) =>
 let
   val
-  lt2ps = auxlt2ps(lt2ps, flag)
+  lt2ps = auxltps(lt2ps, flag)
 (*
   val
   s2t0 =
@@ -920,7 +927,7 @@ end
 ) (* end of [auxt2ps] *)
 
 and
-auxlt2ps
+auxltps
 ( ltps
 : labt2ypelst
 , flag
@@ -933,29 +940,31 @@ list_nil() =>
 list_nil(*void*)
 |
 list_cons
-(lt2p0, ltps1) =>
+(lt2p1, ltps1) =>
 let
 //
-  val fini = flag
+val fini = flag
 //
-  val+
-  SLABELED(l0, t2p0) = lt2p0
-  val t2p0 = auxt2p0(t2p0, flag)
-  val lt2p0 =
-  (
-  if
-  flag = fini
-  then lt2p0 else SLABELED(l0,t2p0)
-  ) : labt2ype // end of [val]
+val+
+SLABELED(l1,t2p1) = lt2p1
+val
+t2p1 = auxt2p0(t2p1, flag)
 //
-  val ltps1 = auxlt2ps(ltps1, flag)
+val lt2p1 =
+(
+if
+flag = fini
+then lt2p1 else SLABELED(l1,t2p1)
+) : labt2ype // end of [val]
+//
+val ltps1 = auxltps( ltps1, flag )
 //
 in
-  if
-  flag = fini
-  then ltps else list_cons(lt2p0, ltps1)
+if
+flag = fini
+then ltps else list_cons(lt2p1, ltps1)
 end
-) (* end of [auxlt2ps] *)
+) (* end of [auxltps] *)
 
 in (*in-of-local*)
 
@@ -1312,8 +1321,8 @@ list_nil() => None_vt()
 |
 list_cons(lx0, lxs) =>
 let
-  val
-  SLABELED(l0, x0) = lx0
+val
+SLABELED(l0, x0) = lx0
 in
 if
 (l0 = lab1)
@@ -1350,7 +1359,8 @@ implement
 list_map$fopr<labs2exp><labt2ype>(ls2e) =
 let
 val+
-SLABELED(l0, s2e) = ls2e in SLABELED(l0, s2exp_erase(s2e))
+SLABELED
+(l0, s2e) = ls2e in SLABELED(l0, s2exp_erase(s2e))
 end
 } (* end of [labs2explst_erase] *)
 
@@ -1584,7 +1594,16 @@ in
 t2ype_make_node(s2t0, T2Pexi(s2vs, t2p1))
 end
 //
-| _ (*rest-of-t2ype*) => t2p0
+|
+T2Ptyrec(knd0, npf1, ltps) =>
+let
+  val s2t0 = t2p0.sort()
+  val ltps = auxltps(ltps, flag)
+in
+t2ype_make_node(s2t0, T2Ptyrec(knd0, npf1, ltps))
+end
+//
+| _ (*rest-of-t2ype*) => t2p0 // HX: FIXME!
 //
 )
 
@@ -1614,7 +1633,48 @@ then t2ps else list_cons(t2p1, tps2)
 end
 )
 
-in(*in-of-local*)
+(* ****** ****** *)
+
+and
+auxltps
+( ltps
+: labt2ypelst
+, flag
+: &int >> int): labt2ypelst =
+(
+case+ ltps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(lt2p1, ltps1) =>
+let
+val fini = flag
+val+
+SLABELED
+(l1, t2p1) = lt2p1
+val
+t2p1 =
+auxt2p0(t2p1, flag)
+//
+val lt2p1 =
+(
+if
+flag=fini
+then lt2p1 else SLABELED(l1,t2p1)
+) : labt2ype // end of [val]
+val ltps1 = auxltps( ltps1, flag )
+in
+if
+fini = flag
+then ltps else list_cons(lt2p1, ltps1)
+end
+)
+
+(* ****** ****** *)
+
+in(* in-of-local *)
 
 implement
 t2ype_normize
