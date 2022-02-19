@@ -99,11 +99,22 @@ trans04_package
 //
 (* ****** ****** *)
 //
+(*
+HX-2022-02-19:
+[tread30] is skipped
+[tread3x] is skipped
+*)
 fun
 trs03cmp30_package
   (p0kg: d0parsed): h0comped
 //
 (* ****** ****** *)
+//
+(*
+HX-2022-02-19:
+[tread30] is performed
+[tread3x] is performed
+*)
 //
 fun
 trs04cmp30_package

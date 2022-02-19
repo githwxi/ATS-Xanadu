@@ -467,6 +467,7 @@ d3e0.node() of
 | D3Etop _ => ()
 //
 | D3Evar _ => ()
+| D3Ekvar _ => ()//skip
 //
 | D3Econ1 _ => ()
 | D3Ecst1 _ => ()
@@ -477,39 +478,47 @@ d3e0.node() of
 | D3Efcst _ => ()
 | D3Etcst _ => ()
 //
-| D3Econ2(d2cs) =>
-  let
-    val
-    t2p0 = whnfize(t2p0)
-    val () =
-    trerr33_add(TRERR33d3exp(d3e0))
-  in
-    prerrln!
-    (loc0, ": ***TRERR33***");
-    prerrln!
-    (loc0, ": TRERR33(D3Econ2): d2cs = ", d2cs);
-    prerrln!
-    (loc0, ": TRERR33(D3Econ2): t2p0 = ", t2p0);
-  end
+|
+D3Econ2(d2cs) =>
+let
+  val
+  t2p0 = whnfize(t2p0)
+  val () =
+  trerr33_add(TRERR33d3exp(d3e0))
+in
+  prerrln!
+  (loc0, ": ***TRERR33***");
+  prerrln!
+  (loc0, ": TRERR33(D3Econ2): d2cs = ", d2cs);
+  prerrln!
+  (loc0, ": TRERR33(D3Econ2): t2p0 = ", t2p0);
+end // end of [D3Econ2]
 //
-| D3Esym0(sym1, dpis) =>
-  let
-    val
-    t2p0 = whnfize(t2p0)
-    val () =
-    trerr33_add(TRERR33d3exp(d3e0))
-  in
-    prerrln!
-    (loc0, ": ***TRERR33***");
-    prerrln!
-    (loc0, ": TRERR33(D3Esym0): unresolved symbol");
-    prerrln!
-    (loc0, ": TRERR33(D3Esym0): the symbol: ", sym1);
-    prerrln!
-    (loc0, ": TRERR33(D3Esym0): the inferred type: ", t2p0);
-    prerrln!
-    (loc0, ": TRERR33(D3Esym0): the possible solutions: ", dpis);
-  end
+|
+D3Esym0(sym1, dpis) =>
+let
+  val
+  t2p0 = whnfize(t2p0)
+  val () =
+  trerr33_add(TRERR33d3exp(d3e0))
+in
+  prerrln!
+  (loc0, ": ***TRERR33***");
+  prerrln!
+  (loc0, ": TRERR33(D3Esym0): unresolved symbol");
+  prerrln!
+  (loc0, ": TRERR33(D3Esym0): the symbol: ", sym1);
+  prerrln!
+  (loc0, ": TRERR33(D3Esym0): the inferred type: ", t2p0);
+  prerrln!
+  (loc0, ": TRERR33(D3Esym0): the possible solutions: ", dpis);
+end // end of [D3Esym0]
+//
+// HX: for tread3x
+| D3Eterr _ => ()//skip
+//
+// HX: for tread3x
+| D3Etimp _ => ()//skip
 //
 | D3Esap0
   (d3e1, s2e2) =>
