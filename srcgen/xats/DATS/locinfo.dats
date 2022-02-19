@@ -119,10 +119,12 @@ position_set_ncol
 //
 implement
 print_position
-  (pos) = fprint_position(stdout_ref, pos)
+  (pos) =
+  fprint_position(stdout_ref, pos)
 implement
 prerr_position
-  (pos) = fprint_position(stderr_ref, pos)
+  (pos) =
+  fprint_position(stderr_ref, pos)
 //
 (* ****** ****** *)
 
@@ -142,7 +144,7 @@ $extfcall
 ,
   "fprintf"
 ,
-  out, "%i(line=%i, offs=%i)", ntot+1, nrow+1, ncol+1
+  out, "%i(line=%i,offs=%i)", ntot+1, nrow+1, ncol+1
 ) (* end of [val] *)
 //
 end // end of [fprint_position]
@@ -447,26 +449,30 @@ local
 absreimpl
 location_type
 
-in (* in-of-local *)
+in (*in-of-local*)
 
 implement
 fprint_locrange
-  (out, loc) = () where {
+( out, loc ) = () where
+{
 //
 val () =
 fprint!
 ( out
 , loc.beg_ntot+1
-, "(line=", loc.beg_nrow+1, ", offs=", loc.beg_ncol+1, ")"
+, "(line=", loc.beg_nrow+1
+, ",offs=", loc.beg_ncol+1, ")"
 )
 //
-val () = fprint_string (out, " -- ")
+val () =
+fprint_string(out, "--")
 //
 val () =
 fprint!
 ( out
 , loc.end_ntot+1
-, "(line=", loc.end_nrow+1, ", offs=", loc.end_ncol+1, ")"
+, "(line=", loc.end_nrow+1
+, ",offs=", loc.end_ncol+1, ")"
 )
 //
 } (* end of [fprint_locrange] *)
@@ -476,15 +482,21 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-fprint_location(out, loc) =
+fprint_location
+( out, loc ) =
 (
-fprint_locrange(out, loc)
+fprint!(out, "@");
+fprint!(out, "(");
+fprint_locrange(out, loc);
+fprint!(out, ")");
 ) where
 {
+//
   val fp0 = 
   location_filpath(loc)
   val ((*void*)) =
-  ($FIL.fprint_filpath_full1(out, fp0); fprint!(out, ": "))
+  $FIL.fprint_filpath_full1(out, fp0)
+//
 } (* end of [fprint_location] *)
 //
 (* ****** ****** *)
