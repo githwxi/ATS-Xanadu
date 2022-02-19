@@ -72,9 +72,14 @@ h0comped = $HIR.h0comped
 fun
 trans01_package
   (p0kg: d0parsed): d1transd
+//
+(* ****** ****** *)
 fun
 trans02_package
   (p0kg: d0parsed): d2transd
+//
+(* ****** ****** *)
+//
 fun
 trans03_package
   (p0kg: d0parsed): d3transd
@@ -84,6 +89,8 @@ trans03_package
 fun
 trans34_package
   (p3kg: d3transd): d4transd
+//
+(* ****** ****** *)
 (*
 fun
 trans04_package
@@ -95,6 +102,7 @@ trans04_package
 fun
 trs03cmp30_package
   (p0kg: d0parsed): h0comped
+//
 (* ****** ****** *)
 //
 fun
