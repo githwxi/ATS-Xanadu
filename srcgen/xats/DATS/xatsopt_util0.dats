@@ -219,6 +219,7 @@ d2csopt of
   Some
   (trans23_declist(d2cs))
 ) : Option(d3eclist) // end-of-val
+//
 val () =
 tread23_package(p3kg) where
 {
@@ -240,15 +241,6 @@ d3csopt of
   Some
   (trans33_envless(d3cs))
 ) : Option(d3eclist) // end-of-val
-val () =
-tread33_package(p3kg) where
-{
-val p3kg =
-D3TRANSD@{
-  stadyn= stadyn
-, source= source, transd= d3csopt
-}
-}
 //
 val
 d3csopt =
@@ -271,16 +263,11 @@ d3csopt of
   Some(trans3x_envless(d3cs))
 ) : Option(d3eclist) // end-of-val
 //
-val p3kg =
+in
 D3TRANSD@{
   stadyn= stadyn
 , source= source, transd= d3csopt
 }
-//
-in
-let
-val () = tread3x_package(p3kg) in p3kg
-end
 end // end of [trans03_package]
 
 (* ****** ****** *)
@@ -350,11 +337,19 @@ val
 p3kg =
 trans03_package(p0kg)
 //
+val () =
+tread33_package(p3kg)
+val () =
+tread3x_package(p3kg)
+//
 val
 p4kg =
 trans34_package(p3kg)
+//
+(*
 val () =
 tread34_package(p4kg)
+*)
 //
 in(*in-of-let*)
 //
@@ -366,7 +361,7 @@ let
 val cstr =
 trans4x_package(p4kg)
 in
-  xatsopt_cstrnt1_solving(cstr)
+xatsopt_cstrnt1_solving(cstr)
 end
 *)
 } (*where*) // trcmp30_package
