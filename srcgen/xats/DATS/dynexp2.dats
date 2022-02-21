@@ -420,7 +420,7 @@ d2pat_dapp
 (* ****** ****** *)
 //
 implement
-d2pat_tuple
+d2pat_trcd1
 (loc0, knd, npf, d2ps) =
 let
 val isnil =
@@ -434,9 +434,9 @@ then d2pat_nil(loc0)
 else
 (
   d2pat_make_node
-  (loc0, D2Ptuple(knd, npf, d2ps))
+  (loc0, D2Ptrcd1(knd, npf, d2ps))
 )
-end // end of [d2pat_tuple]
+end // end of [d2pat_trcd1]
 //
 (* ****** ****** *)
 
@@ -666,11 +666,11 @@ d2exp_where
 (* ****** ****** *)
 //
 implement
-d2exp_tuple
+d2exp_trcd1
 (loc0, knd, npf, d2es) =
 (
   d2exp_make_node
-  (loc0, D2Etuple(knd, npf, d2es))
+  (loc0, D2Etrcd1(knd, npf, d2es))
 )
 //
 (* ****** ****** *)

@@ -622,19 +622,19 @@ case+ x0.node() of
   fprint!
   (out, "S1Elist2(", s1es1, "; ", s1es2, ")")
 //
-| S1Etuple(k0, s1es) =>
-  fprint!(out, "S1Etuple(", k0, "; ", s1es, ")")
-| S1Etuple(k0, s1es1, s1es2) =>
+| S1Etrcd1(k0, s1es) =>
+  fprint!(out, "S1Etrcd1(", k0, "; ", s1es, ")")
+| S1Etrcd1(k0, s1es1, s1es2) =>
   fprint!
   ( out
-  , "S1Etuple(", k0, "; ", s1es1, "; ", s1es2, ")")
+  , "S1Etrcd1(", k0, "; ", s1es1, "; ", s1es2, ")")
 //
-| S1Erecord(k0, ls1es) =>
-  fprint!(out, "S1Erecord(", k0, "; ", ls1es, ")")
-| S1Erecord(k0, ls1es1, ls1es2) =>
+| S1Etrcd2(k0, ls1es) =>
+  fprint!(out, "S1Etrcd2(", k0, "; ", ls1es, ")")
+| S1Etrcd2(k0, ls1es1, ls1es2) =>
   fprint!
   ( out
-  , "S1Erecord(", k0, "; ", ls1es1, "; ", ls1es2, ")")
+  , "S1Etrcd2(", k0, "; ", ls1es1, "; ", ls1es2, ")")
 //
 | S1Eforall(s1qs) =>
   fprint!(out, "S1Eforall(", s1qs, ")")

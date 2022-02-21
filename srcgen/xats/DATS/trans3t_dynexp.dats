@@ -470,7 +470,7 @@ d3e0.node() of
     (loc0, t2p0, D3Eseqn(d3es, d3e1))
   end
 //
-| D3Etuple
+| D3Etrcd1
   (knd, npf, d3es) =>
   let
     val
@@ -478,7 +478,7 @@ d3e0.node() of
     trans3t_dexplst(env0, d3es)
   in
     d3exp_make_node
-    (loc0, t2p0, D3Etuple(knd, npf, d3es))
+    (loc0, t2p0, D3Etrcd1(knd, npf, d3es))
   end
 //
 | D3Eassgn(d3el, d3er) =>

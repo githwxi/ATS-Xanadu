@@ -190,7 +190,7 @@ d2p0.node() of
     tread12_d2patlst(d2ps)
   }
 //
-| D2Ptuple
+| D2Ptrcd1
   (knd0, npf1, d2ps) =>
   {
     val () =
@@ -370,7 +370,7 @@ val () = tread12_d2claulst(dcls)
     val () = tread12_d2exp(d2e1)
   }
 //
-| D2Etuple
+| D2Etrcd1
   (knd0,
    npf1, d2es) =>
   {

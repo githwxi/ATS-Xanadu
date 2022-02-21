@@ -1093,7 +1093,7 @@ end (*let*) // end of [d3pat_dapp_up]
 (* ****** ****** *)
 
 implement
-d3pat_tuple_up
+d3pat_trcd1_up
 ( loc0
 , knd1, npf2, d3ps) = let
 //
@@ -1143,8 +1143,8 @@ val t2p0 =
 //
 in
   d3pat_make_node
-  (loc0, t2p0, D3Ptuple(knd1, npf2, d3ps))
-end (*let*) // end of [d3pat_tuple_up]
+  (loc0, t2p0, D3Ptrcd1(knd1, npf2, d3ps))
+end (*let*) // end of [d3pat_trcd1_up]
 
 (* ****** ****** *)
 
@@ -2046,7 +2046,7 @@ d23exp_make_node
 (* ****** ****** *)
 
 implement
-d23exp_tuple_up
+d23exp_trcd1_up
 ( loc0
 , knd1, npf2, d3es) = let
 //
@@ -2098,8 +2098,8 @@ val t2p0 =
 //
 in
   d23exp_make_node
-  (loc0, t2p0, D3Etuple(knd1, npf2, d3es))
-end (* end of [d23exp_tuple_up] *)
+  (loc0, t2p0, D3Etrcd1(knd1, npf2, d3es))
+end (* end of [d23exp_trcd1_up] *)
 
 (* ****** ****** *)
 

@@ -85,8 +85,8 @@ tkind =
 | K_LOCAL of ()
 | K_ENDLOCAL of ()
 //
-| K_TUPLE of ()
-| K_RECORD of ()
+| K_TRCD1 of ()
+| K_TRCD2 of ()
 //
 | K_EXISTS of ()
 //
@@ -555,9 +555,9 @@ synread_ENDLOCAL: synreader(token)
 (* ****** ****** *)
 //
 fun//{}
-synread_TUPLE: synreader(token)
+synread_TRCD1: synreader(token)
 fun//{}
-synread_RECORD: synreader(token)
+synread_TRCD2: synreader(token)
 //
 (* ****** ****** *)
 //

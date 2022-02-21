@@ -2491,7 +2491,7 @@ d2p0.node() of
     val () = auxd2ps(d2ps)
   }
 //
-| D2Ptuple
+| D2Ptrcd1
   (knd0, npf1, d2ps) =>
   {
     val () = auxd2ps(d2ps)

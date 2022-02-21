@@ -1181,7 +1181,7 @@ tuples are linear
 *)
 //
 implement
-s2exp_tuple1
+s2exp_trcd11
 (knd, s2es) = let
 //
 val s2t0 =
@@ -1217,12 +1217,12 @@ ls2es = labs2explst_make_list1(s2es)
 in
 s2exp_make_node
 (s2t0, S2Etyrec(knd, ~1(*npf*), ls2es))
-end // end of [s2exp_tuple1]
+end // end of [s2exp_trcd11]
 
 (* ****** ****** *)
 
 implement
-s2exp_tuple2
+s2exp_trcd12
 ( knd
 , s2es1, s2es2) = let
 //
@@ -1265,12 +1265,12 @@ ls2es = labs2explst_make_list2(s2es1, s2es2)
 //
 in
 s2exp_make_node(s2t0, S2Etyrec(knd, npf, ls2es))
-end // end of [s2exp_tuple2]
+end // end of [s2exp_trcd12]
 
 (* ****** ****** *)
 
 implement
-s2exp_record1
+s2exp_trcd21
 (knd, ls2es) = let
 //
 val s2t0 =
@@ -1299,12 +1299,12 @@ if knd = 0 then TYRECflt0 else TYRECbox1
 in
   s2exp_make_node
   (s2t0, S2Etyrec(knd, ~1(*npf*), ls2es))
-end // end of [s2exp_record1]
+end // end of [s2exp_trcd21]
 
 (* ****** ****** *)
 
 implement
-s2exp_record2
+s2exp_trcd22
 ( knd
 , ls2es1, ls2es2) = let
 //
@@ -1344,7 +1344,7 @@ val npf = list_length(ls2es1)
 in
 s2exp_make_node
 (s2t0, S2Etyrec(knd, npf, ls2es1 + ls2es2))
-end // end of [s2exp_record2]
+end // end of [s2exp_trcd22]
 
 (* ****** ****** *)
 //

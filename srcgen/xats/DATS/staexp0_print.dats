@@ -818,17 +818,17 @@ case+ x0.node() of
   ( out
   , "S0Eexists(", tbeg, "; ", s0qs, "; ", tend, ")")
 //
-| S0Etuple
+| S0Etrcd1
   (tbeg, topt, s0es, tend) =>
   fprint!
   ( out
-  , "S0Etuple("
+  , "S0Etrcd1("
   , tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
-| S0Erecord
+| S0Etrcd2
   (tbeg, topt, s0es, tend) =>
   fprint!
   ( out
-  , "S0Erecord("
+  , "S0Etrcd2("
   , tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
 //
 | S0Elam

@@ -610,14 +610,14 @@ s1exp_node =
 | S1Elist of
   (s1explst, s1explst) // temp.
 //
-| S1Etuple of
+| S1Etrcd1 of
   (int, s1explst)
-| S1Etuple of
+| S1Etrcd1 of
   (int, s1explst, s1explst)
 //
-| S1Erecord of
+| S1Etrcd2 of
   (int, labs1explst)
-| S1Erecord of
+| S1Etrcd2 of
   (int, labs1explst, labs1explst)
 //
 | S1Eforall of (s1qualst)

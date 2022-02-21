@@ -368,7 +368,7 @@ d3pat_dapp_up
 (* ****** ****** *)
 //
 fun
-d3pat_tuple_up
+d3pat_trcd1_up
 ( loc0: loc_t
 , knd1: int // 0/1
 , npf2: int, d3ps: d3patlst): d3pat
@@ -442,7 +442,7 @@ d23exp_seqn_up
 (* ****** ****** *)
 //
 fun
-d23exp_tuple_up
+d23exp_trcd1_up
 ( loc0: loc_t
 , knd1: int // 0/1
 , npf2: int, d3es: d3explst): d3exp

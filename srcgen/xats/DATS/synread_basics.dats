@@ -1017,20 +1017,20 @@ synread_ENDLOCAL
 
 implement
 //{}(*tmp*)
-synread_TUPLE
+synread_TRCD1
   (tok) =
 (
 case+
 tok.node() of
-| T_TUPLE _ => ()
-| _(* non-TUPLE *) =>
+| T_TRCD1 _ => ()
+| _(* non-TRCD1 *) =>
   let
     val () =
     synerr_add
-    (SYNERRtoken(K_TUPLE, tok))
+    (SYNERRtoken(K_TRCD1, tok))
   in
     prerrln!
-    (tok.loc(), ": SYNERR(TUPLE): ", tok)
+    (tok.loc(), ": SYNERR(TRCD1): ", tok)
   end // end of [let]
 )
 
@@ -1038,20 +1038,20 @@ tok.node() of
 
 implement
 //{}(*tmp*)
-synread_RECORD
+synread_TRCD2
   (tok) =
 (
 case+
 tok.node() of
-| T_RECORD _ => ()
-| _(* non-RECORD *) =>
+| T_TRCD2 _ => ()
+| _(* non-TRCD2 *) =>
   let
     val () =
     synerr_add
-    (SYNERRtoken(K_RECORD, tok))
+    (SYNERRtoken(K_TRCD2, tok))
   in
     prerrln!
-    (tok.loc(), ": SYNERR(RECORD): ", tok)
+    (tok.loc(), ": SYNERR(TRCD2): ", tok)
   end // end of [let]
 )
 

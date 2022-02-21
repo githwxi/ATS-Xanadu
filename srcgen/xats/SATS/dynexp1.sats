@@ -436,14 +436,14 @@ d1pat_node =
 | D1Plist of
   (d1patlst, d1patlst) // temp.
 //
-| D1Ptuple of
+| D1Ptrcd1 of
   (token, d1patlst)
-| D1Ptuple of
+| D1Ptrcd1 of
   (token, d1patlst, d1patlst)
 //
-| D1Precord of
+| D1Ptrcd2 of
   (token, labd1patlst)
-| D1Precord of
+| D1Ptrcd2 of
   (token, labd1patlst, labd1patlst)
 //
 | D1Panno of (d1pat, s1exp)
@@ -638,14 +638,14 @@ d1exp_node =
 | D1Eseqn of
   (d1explst, d1explst)//sequencing
 //
-| D1Etuple of
+| D1Etrcd1 of
   (token, d1explst)
-| D1Etuple of
+| D1Etrcd1 of
   (token, d1explst, d1explst)
 //
-| D1Erecord of
+| D1Etrcd2 of
   (token, labd1explst)
-| D1Erecord of
+| D1Etrcd2 of
   (token, labd1explst, labd1explst)
 //
 | D1Ebrack of (d1explst)

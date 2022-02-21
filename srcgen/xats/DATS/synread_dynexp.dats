@@ -127,7 +127,7 @@ d0p0.node() of
     synread_d0pat_RPAREN(dend)
   }
 //
-| D0Ptuple
+| D0Ptrcd1
   ( tbeg, topt
   , d0ps, dend ) =>
   {
@@ -311,7 +311,7 @@ d0e0.node() of
     synread_d0exp_RPAREN(dend)
   }
 //
-| D0Etuple
+| D0Etrcd1
   ( tknd
   , topt, d0es, dend) =>
   {

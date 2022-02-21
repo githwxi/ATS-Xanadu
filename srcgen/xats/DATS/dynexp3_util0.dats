@@ -88,7 +88,7 @@ d3p0.node() of
 | D3Pdapp(d3p1, npf, d3ps) =>
   (auxdpat(d3p1) || auxd3ps(d3ps))
 //
-| D3Ptuple
+| D3Ptrcd1
   (knd, npf, d3ps) => auxd3ps(d3ps)
 //
 | D3Panno

@@ -352,14 +352,14 @@ end (* end of [auxdapp] *)
 (* ****** ****** *)
 
 fun
-aux_tuple
+aux_trcd1
 ( d2p0
 : d2pat): d3pat = let
 //
 val
 loc0 = d2p0.loc()
 val-
-D2Ptuple
+D2Ptrcd1
 ( knd1
 , npf2, d2ps) = d2p0.node()
 //
@@ -367,8 +367,8 @@ val
 d3ps = trans23_dpatlst(d2ps)
 //
 in
-d3pat_tuple_up(loc0, knd1, npf2, d3ps)
-end // end of [aux_tuple]
+d3pat_trcd1_up(loc0, knd1, npf2, d3ps)
+end // end of [aux_trcd1]
 
 (* ****** ****** *)
 
@@ -475,7 +475,7 @@ end
 //
 | D2Pdapp _ => auxdapp(d2p0)
 //
-| D2Ptuple _ => aux_tuple(d2p0)
+| D2Ptrcd1 _ => aux_trcd1(d2p0)
 //
 | D2Panno
   ( d2p
@@ -1389,14 +1389,14 @@ end // end of [aux_none0]
 (* ****** ****** *)
 
 fun
-aux_tuple
+aux_trcd1
 ( d2e0
 : d2exp): d3exp = let
 //
 val
 loc0 = d2e0.loc()
 val-
-D2Etuple
+D2Etrcd1
 ( knd1
 , npf2
 , d2es) = d2e0.node()
@@ -1405,8 +1405,8 @@ val
 d3es = trans23_dexplst(d2es)
 //
 in
-  d23exp_tuple_up(loc0, knd1, npf2, d3es)
-end // end of [aux_tuple]
+  d23exp_trcd1_up(loc0, knd1, npf2, d3es)
+end // end of [aux_trcd1]
 
 (* ****** ****** *)
 
@@ -2123,7 +2123,7 @@ d2e0.node() of
 | D2Eseqn _ => aux_seqn(d2e0)
 //
 | D2Enone0 _ => aux_none0(d2e0)
-| D2Etuple _ => aux_tuple(d2e0)
+| D2Etrcd1 _ => aux_trcd1(d2e0)
 //
 | D2Eassgn _ => aux_assgn(d2e0)
 //

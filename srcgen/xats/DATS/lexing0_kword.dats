@@ -203,18 +203,18 @@ T_WITHVTYPE_ = T_WITHTYPE(VTFLTSORT)
 (* ****** ****** *)
 
 macdef
-T_TUPLE2_ = T_TUPLE(2)
+T_TRCD12_ = T_TRCD1(2)
 macdef
-T_TUPLE3_ = T_TUPLE(3)
+T_TRCD13_ = T_TRCD1(3)
 macdef
-T_TUPLE4_ = T_TUPLE(4)
+T_TRCD14_ = T_TRCD1(4)
 
 macdef
-T_RECORD2_ = T_RECORD(2)
+T_TRCD22_ = T_TRCD2(2)
 macdef
-T_RECORD3_ = T_RECORD(3)
+T_TRCD23_ = T_TRCD2(3)
 macdef
-T_RECORD4_ = T_RECORD(4)
+T_TRCD24_ = T_TRCD2(4)
 
 (* ****** ****** *)
 
@@ -452,13 +452,13 @@ val () = myins("macrodef", T_MACRODEF)
 //
 *)
 //
-val () = myins("$tup"   , T_TUPLE2_)
-val () = myins("$tup_t" , T_TUPLE3_)
-val () = myins("$tup_vt", T_TUPLE4_)
+val () = myins("$tup"   , T_TRCD12_)
+val () = myins("$tup_t" , T_TRCD13_)
+val () = myins("$tup_vt", T_TRCD14_)
 //
-val () = myins("$rec"   , T_RECORD2_)
-val () = myins("$rec_t" , T_RECORD3_)
-val () = myins("$rec_vt", T_RECORD4_)
+val () = myins("$rec"   , T_TRCD22_)
+val () = myins("$rec_t" , T_TRCD23_)
+val () = myins("$rec_vt", T_TRCD24_)
 //
 (*
 //

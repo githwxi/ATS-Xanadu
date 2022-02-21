@@ -1896,11 +1896,11 @@ atms0exp ::
   | ( s0expseq_COMMA )
   | ( s0expseq_COMMA | s0expseq_COMMA )
 //
-  | TUPLE( s0expseq_COMMA )
-  | TUPLE( s0expseq_COMMA | s0expseq_COMMA )
+  | TUP( s0expseq_COMMA )
+  | TUP( s0expseq_COMMA | s0expseq_COMMA )
 //
-  | RECORD{ labs0expseq_COMMA }
-  | RECORD{ labs0expseq_COMMA | labs0expseq_COMMA }
+  | REC{ labs0expseq_COMMA }
+  | REC{ labs0expseq_COMMA | labs0expseq_COMMA }
 //
 *)
 extern
@@ -2211,7 +2211,7 @@ case+ tnd of
     (loc_res, S0Eexists(tbeg, s0qs, tend))
   end // end of [T_EXISTS]
 //
-| T_TUPLE(k0) => let
+| T_TRCD1(k0) => let
     val () = buf.incby1()
     val topt =
     ( if
@@ -2230,15 +2230,15 @@ case+ tnd of
     err := e0;
     s0exp_make_node
     ( loc_res
-    , S0Etuple
+    , S0Etrcd1
       (tbeg, topt, s0es, tend)) where
     {
       val loc_res =
         tbeg.loc()+s0exp_RPAREN_loc(tend)
       // end of [val]
     }
-  end // end of [T_TUPLE]
-| T_RECORD(k0) => let
+  end // end of [T_TRCD1]
+| T_TRCD2(k0) => let
     val () = buf.incby1()
     val topt =
     ( if
@@ -2255,14 +2255,14 @@ case+ tnd of
     err := e0;
     s0exp_make_node
     ( loc_res
-    , S0Erecord
+    , S0Etrcd2
       (tbeg, topt, ls0es, tend)) where
     {
       val loc_res =
         tbeg.loc()+labs0exp_RBRACE_loc(tend)
       // end of [val]
     }
-  end // end of [T_RECORD]
+  end // end of [T_TRCD2]
 //
 (*
 | T_LBRACK() => let

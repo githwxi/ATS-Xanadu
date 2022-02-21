@@ -424,10 +424,10 @@ case- x0.node() of
   ( out, "D2Pdapp("
   , d2f0, "; ", npf0, "; ", d2ps, ")")
 //
-| D2Ptuple
+| D2Ptrcd1
   (knd0, npf1, d2ps) =>
   fprint!
-  ( out, "D2Ptuple("
+  ( out, "D2Ptrcd1("
   , knd0, "; ", npf1, "; ", d2ps, ")")
 //
 | D2Panno
@@ -610,10 +610,10 @@ case- x0.node() of
   ( out, "D2Eseqn("
   , d2es, "; ", d1e1(*last*), ")")
 //
-| D2Etuple
+| D2Etrcd1
   (knd0, npf1, d2es) =>
   fprint!
-  ( out, "D2Etuple("
+  ( out, "D2Etrcd1("
   , knd0, "; ", npf1, "; ", d2es, ")")
 //
 | D2Eassgn

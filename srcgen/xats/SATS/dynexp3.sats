@@ -137,7 +137,7 @@ HX: [D3Psap1]: impred: checked
 | D3Pdapp of
   ( d3pat, int(*npf*), d3patlst )
 //
-| D3Ptuple of
+| D3Ptrcd1 of
   (int(*knd*), int(*npf*), d3patlst)
 //
 | D3Panno of
@@ -439,7 +439,7 @@ for the meaning of knd
 | D3Eseqn of
   (d3explst(*semi*), d3exp(*last*))
 //
-| D3Etuple of
+| D3Etrcd1 of
   (int(*knd*), int(*npf*), d3explst)
 //
 | D3Eassgn of
