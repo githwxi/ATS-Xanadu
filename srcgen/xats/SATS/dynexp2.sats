@@ -953,14 +953,18 @@ d2exp_node =
 | D2Eseqn of
   (d2explst(*semi*), d2exp(*last*))
 //
-| D2Etrcd1 of
+| D2Etrcd1 of // HX: tuple
   (int(*knd*), int(*npf*), d2explst)
+(*
+| D2Etrcd2 of // HX: record
+  (int(*knd*), int(*npf*), labd2explst)
+*)
 //
 | D2Eassgn of
   ( d2exp(*l-val*), d2exp(*r-val*) )
 //
 | D2Ebrack of
-  (d2pitmlst, d2explst(*arg*))
+  (d2pitmlst(*[]*), d2explst(*arg*))
 | D2Edtsel of
   ( label
   , d2pitmlst

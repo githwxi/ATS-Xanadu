@@ -149,7 +149,7 @@ d4pat_node =
 | D4Pdapp of
   (d4pat, int(*npf*), d4patlst)
 //
-| D4Ptuple of
+| D4Ptrcd1 of
   (int(*knd*), int(*npf*), d4patlst)
 //
 | D4Panno of
@@ -524,6 +524,13 @@ for the meaning of knd
   (
   d4explst(*semi*), d4exp(*last*)
   )
+//
+| D4Etrcd1 of // HX: tuple
+  (int(*knd*), int(*npf*), d4explst)
+(*
+| D4Etrcd2 of // HX: record
+  (int(*knd*), int(*npf*), d4explst)
+*)
 //
 | D4Eassgn of
   ( d4exp(*l-val*)

@@ -633,20 +633,23 @@ d1exp_node =
 | D1Elist of
   (d1explst, d1explst) // temp.
 //
-| D1Enone of ()//HX:for emptiness
+| D1Enone of ()//HX: emptiness?
 //
 | D1Eseqn of
   (d1explst, d1explst)//sequencing
 //
-| D1Etrcd1 of
-  (token, d1explst)
-| D1Etrcd1 of
-  (token, d1explst, d1explst)
+| D1Etrcd1 of // HX: tuple1
+  (token, d1explst(*prop/type*))
+| D1Etrcd1 of // HX: tuple2
+  ( token
+  , d1explst(*prop*), d1explst(*type*))
 //
-| D1Etrcd2 of
-  (token, labd1explst)
-| D1Etrcd2 of
-  (token, labd1explst, labd1explst)
+| D1Etrcd2 of // HX: record1
+  ( token
+  , labd1explst(*prop/type*))
+| D1Etrcd2 of // HX: record2
+  ( token
+  , labd1explst(*prop*), labd1explst(*type*))
 //
 | D1Ebrack of (d1explst)
 | D1Edtsel of (label, d1expopt)

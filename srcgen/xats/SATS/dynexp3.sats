@@ -439,14 +439,18 @@ for the meaning of knd
 | D3Eseqn of
   (d3explst(*semi*), d3exp(*last*))
 //
-| D3Etrcd1 of
+| D3Etrcd1 of // HX: tuple
   (int(*knd*), int(*npf*), d3explst)
+(*
+| D3Etrcd2 of // HX: record
+  (int(*knd*), int(*npf*), d3explst)
+*)
 //
 | D3Eassgn of
-  (d3exp(*lval*), d3exp(*rval*))
+  ( d3exp(*l-val*), d3exp(*r-val*) )
 //
 | D3Ebrack of
-  (d2pitmlst(*[]*), d3explst)
+  (d2pitmlst(*[]*), d3explst(*arg*))
 | D3Edtsel of
   ( label
   , d2pitmlst
