@@ -1016,20 +1016,20 @@ s2exp_list2
 (s2explst, s2explst): s2exp
 //
 fun
-s2exp_tuple1
+s2exp_trcd11
 (knd: int
 , s2es: s2explst): s2exp
 fun
-s2exp_tuple2
+s2exp_trcd12
 (knd: int
 , s2explst, s2explst): s2exp
 //
 fun
-s2exp_record1
+s2exp_trcd21
 ( knd: int
 , lxs: labs2explst): s2exp
 fun
-s2exp_record2
+s2exp_trcd22
 ( knd: int
 , labs2explst, labs2explst): s2exp
 //

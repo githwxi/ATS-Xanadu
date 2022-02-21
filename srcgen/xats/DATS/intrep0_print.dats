@@ -464,11 +464,11 @@ x0.node() of
   , "H0Pdapp("
   , h0f0, "; ", npf1, "; ", h0ps, ")")
 //
-| H0Ptuple
+| H0Ptrcd1
   (knd0, npf1, h0ps) =>
   fprint!
   ( out
-  , "H0Ptuple("
+  , "H0Ptrcd1("
   , knd0, "; ", npf1, "; ", h0ps, ")")
 //
 | H0Pnone1(d3p1) =>
@@ -670,11 +670,11 @@ x0.node() of
   ( out
   , "H0Eseqn(", h0es, "; ", h0e1, ")")
 //
-| H0Etuple
+| H0Etrcd1
   (knd0, npf1, h0es) =>
   fprint!
   ( out
-  , "H0Etuple("
+  , "H0Etrcd1("
   , knd0, "; ", npf1, "; ", h0es, ")")
 //
 | H0Eassgn

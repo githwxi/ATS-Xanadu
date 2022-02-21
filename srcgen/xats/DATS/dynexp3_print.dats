@@ -267,10 +267,10 @@ case+ x0.node() of
   ( out, "D3Pdapp("
   , d3f0, "; ", npf1, "; ", d3ps, ")")
 //
-| D3Ptuple
+| D3Ptrcd1
   (knd1, npf2, ldps) =>
   fprint!
-  ( out, "D3Ptuple("
+  ( out, "D3Ptrcd1("
   , knd1, "; ", npf2, "; ", ldps, ")")
 //
 | D3Panno
@@ -551,10 +551,10 @@ x0.node() of
   ( out
   , "D3Eseqn(", d3es, "; ", d3e2, ")")
 //
-| D3Etuple
+| D3Etrcd1
   (knd1, npf2, d3es) =>
   fprint!
-  ( out, "D3Etuple("
+  ( out, "D3Etrcd1("
   , knd1, "; ", npf2, "; ", d3es, ")")
 //
 | D3Eassgn

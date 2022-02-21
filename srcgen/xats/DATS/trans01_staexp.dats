@@ -1512,9 +1512,9 @@ s0e0.node() of
 //
 | S0Eparen _ => auxparen(s0e0)
 //
-| S0Etuple _ => auxtuple(s0e0)
+| S0Etrcd1 _ => auxtrcd1(s0e0)
 //
-| S0Erecord _ => auxrecord(s0e0)
+| S0Etrcd2 _ => auxtrcd2(s0e0)
 //
 | S0Eforall
     (_, s0qs, _) => let
@@ -1625,17 +1625,17 @@ in
 end // end of [auxparen]
 
 and
-auxtuple
+auxtrcd1
 ( s0e0
 : s0exp): s1eitm = let
 //
 val-
-S0Etuple
+S0Etrcd1
 ( tok, _
 , s0es1, rparen) = s0e0.node()
 //
 val-
-T_TUPLE(k0) = tok.node()
+T_TRCD1(k0) = tok.node()
 //
 val
 s1e0_node =
@@ -1643,13 +1643,13 @@ s1e0_node =
 case+ rparen of
 | s0exp_RPAREN_cons0
   (_) =>
-  S1Etuple(k0, s1es1) where
+  S1Etrcd1(k0, s1es1) where
   {
     val s1es1 = trans01_sexplst(s0es1)
   }
 | s0exp_RPAREN_cons1
   (_, s0es2, _) =>
-  S1Etuple(k0, s1es1, s1es2) where
+  S1Etrcd1(k0, s1es1, s1es2) where
   {
     val s1es1 = trans01_sexplst(s0es1)
     val s1es2 = trans01_sexplst(s0es2)
@@ -1659,22 +1659,22 @@ case+ rparen of
 in
   FXITMatm
   (s1exp_make_node(s0e0.loc(), s1e0_node))
-end // end of [auxtuple]
+end // end of [auxtrcd1]
 
 (* ****** ****** *)
 
 and
-auxrecord
+auxtrcd2
 ( s0e0
 : s0exp): s1eitm = let
 //
 val-
-S0Erecord
+S0Etrcd2
 ( tok, _
 , ls0es1, rparen) = s0e0.node()
 //
 val-
-T_RECORD(k0) = tok.node()
+T_TRCD2(k0) = tok.node()
 //
 val
 s1e0_node =
@@ -1682,14 +1682,14 @@ s1e0_node =
 case+ rparen of
 | labs0exp_RBRACE_cons0
   (_) =>
-  S1Erecord(k0, ls1es1) where
+  S1Etrcd2(k0, ls1es1) where
   {
     val
     ls1es1 = trans01_labsexplst(ls0es1)
   }
 | labs0exp_RBRACE_cons1
   (_, ls0es2, _) =>
-  S1Erecord(k0, ls1es1, ls1es2) where
+  S1Etrcd2(k0, ls1es1, ls1es2) where
   {
     val
     ls1es1 = trans01_labsexplst(ls0es1)
@@ -1701,7 +1701,7 @@ case+ rparen of
 in
   FXITMatm
   (s1exp_make_node(s0e0.loc(), s1e0_node))
-end // end of [auxtuple]
+end // end of [auxtrcd1]
 
 in (* in-of-local *)
 

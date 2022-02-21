@@ -155,11 +155,11 @@ tnode =
   | T_LBRACK of () // [
   | T_RBRACK of () // ]
 //
-  | T_TUPLE of (int) // @(/$(
+  | T_TRCD1 of (int) // @(/$(
                      // @tup/$tup
                      // @tup_t/$tup_t
                      // @tup_vt/$tup_vt
-  | T_RECORD of (int) // @{/${
+  | T_TRCD2 of (int) // @{/${
                       // @rec/$rec
                       // @rec_t/$rec_t
                       // @rec_vt/$rec_vt

@@ -554,7 +554,7 @@ h0pat_node =
   ( h0pat
   , int(*npf*), h0patlst)
 //
-| H0Ptuple of
+| H0Ptrcd1 of
   ( int(*knd*)
   , int(*npf*), h0patlst)
 //
@@ -675,10 +675,10 @@ h0exp_node =
 | H0Ekvar of
   (int(*knd*), hdvar)
 //
-| H0Efcon of (hdcon) // cnstr
+| H0Efcon of (hdcon)//cnstr
 | H0Etcon of (hdcon, htiarg)
 //
-| H0Efcst of (hdcst) // const
+| H0Efcst of (hdcst)//const
 | H0Etcst of (hdcst, htiarg)
 //
 (*
@@ -718,7 +718,7 @@ H0Etimp of
 | H0Eseqn of
   (h0explst(*semi*), h0exp(*last*))
 //
-| H0Etuple of
+| H0Etrcd1 of
   (int(*knd*), int(*npf*), h0explst)
 //
 | H0Eassgn of

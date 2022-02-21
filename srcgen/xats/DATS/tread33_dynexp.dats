@@ -205,7 +205,7 @@ d3p0.node() of
 //
 | D3Pnone0() => ()
 //
-| D3Ptuple
+| D3Ptrcd1
   (knd0, npf1, d3ps) =>
   {
     val () =
@@ -624,7 +624,7 @@ end // end of [D3Esym0]
     val () = tread33_d3exp(d3e1)
   }
 //
-| D3Etuple
+| D3Etrcd1
   (knd0, npf1, d3es) =>
   {
     val () =

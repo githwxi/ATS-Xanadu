@@ -382,10 +382,10 @@ d0pat_node =
     (token, d0patlst, d0pat_RPAREN)
   // end of [D0Pparen]
 //
-| D0Ptuple of
+| D0Ptrcd1 of
     ( token, tokenopt
     , d0patlst, d0pat_RPAREN)
-| D0Precord of
+| D0Ptrcd2 of
     ( token, tokenopt
     , labd0patlst, labd0pat_RBRACE)
 //
@@ -598,10 +598,10 @@ d0exp_node =
     (token, d0explst, d0exp_RPAREN)
   // end of [D0Eparen]
 //
-| D0Etuple of
+| D0Etrcd1 of
     ( token, tokenopt
     , d0explst, d0exp_RPAREN)
-| D0Erecord of
+| D0Etrcd2 of
     ( token, tokenopt
     , labd0explst, labd0exp_RBRACE)
 //

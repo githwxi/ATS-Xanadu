@@ -1039,7 +1039,7 @@ case+ tnd of
     }
   end // end of [T_LPAREN]
 //
-| T_TUPLE(k0) => let
+| T_TRCD1(k0) => let
     val () = buf.incby1()
     val topt =
     ( if
@@ -1056,14 +1056,14 @@ case+ tnd of
     err := e0;
     d0pat_make_node
     ( loc_res
-    , D0Ptuple
+    , D0Ptrcd1
       (tbeg, topt, d0ps, tend)) where
     {
       val loc_res =
         tbeg.loc()+d0pat_RPAREN_loc(tend)
       // end of [val]
     }
-  end // end of [T_TUPLE]
+  end // end of [T_TRCD1]
 //
 | T_IDENT_qual _ => let
     val () = buf.incby1()
@@ -2274,7 +2274,7 @@ end // end of [T_OP_par]
     }
   end // end of [T_LPAREN]
 //
-| T_TUPLE(k0) => let
+| T_TRCD1(k0) => let
     val () = buf.incby1()
     val topt =
     ( if
@@ -2291,14 +2291,14 @@ end // end of [T_OP_par]
     err := e0;
     d0exp_make_node
     ( loc_res
-    , D0Etuple
+    , D0Etrcd1
       (tbeg, topt, d0es, tend)) where
     {
       val loc_res =
         tbeg.loc()+d0exp_RPAREN_loc(tend)
       // end of [val]
     }
-  end // end of [T_TUPLE]
+  end // end of [T_TRCD1]
 //
 | T_LET() => let
 //

@@ -1027,7 +1027,7 @@ d0p0.node() of
 //
 | D0Pparen _ => auxparen(d0p0)
 //
-| D0Ptuple _ => auxtuple(d0p0)
+| D0Ptrcd1 _ => auxtrcd1(d0p0)
 //
 | D0Panno(d0p, s0e) =>
   FXITMatm(d1p0) where
@@ -1123,12 +1123,12 @@ end // end of [auxparen]
 (* ****** ****** *)
 
 and
-auxtuple
+auxtrcd1
 ( d0p0
 : d0pat): d1pitm = let
 //
 val-
-D0Ptuple
+D0Ptrcd1
 ( knd, _
 , d0ps1, rparen) = d0p0.node()
 //
@@ -1139,13 +1139,13 @@ case+ rparen of
 //
 | d0pat_RPAREN_cons0
     (_) =>
-  D1Ptuple(knd, d1ps1) where
+  D1Ptrcd1(knd, d1ps1) where
   {
     val d1ps1 = trans01_dpatlst(d0ps1)
   }
 | d0pat_RPAREN_cons1
     (_, d0ps2, _) =>
-  D1Ptuple(knd, d1ps1, d1ps2) where
+  D1Ptrcd1(knd, d1ps1, d1ps2) where
   {
     val d1ps1 = trans01_dpatlst(d0ps1)
     val d1ps2 = trans01_dpatlst(d0ps2)
@@ -1156,7 +1156,7 @@ case+ rparen of
 in
   FXITMatm
   (d1pat_make_node(d0p0.loc(), d1p0_node))
-end // end of [auxtuple]
+end // end of [auxtrcd1]
 
 (* ****** ****** *)
 
@@ -1462,7 +1462,7 @@ FXITMatm(d1e0) where
 //
 | D0Eparen _ => auxparen(d0e0)
 //
-| D0Etuple _ => auxtuple(d0e0)
+| D0Etrcd1 _ => auxtrcd1(d0e0)
 //
 | D0Eif0
   ( tif0
@@ -1827,12 +1827,12 @@ end // end of [auxparen]
 (* ****** ****** *)
 
 and
-auxtuple
+auxtrcd1
 ( d0e0
 : d0exp): d1eitm = let
 //
 val-
-D0Etuple
+D0Etrcd1
 ( knd, _
 , d0es1, rparen) = d0e0.node()
 //
@@ -1843,13 +1843,13 @@ case+ rparen of
 //
 | d0exp_RPAREN_cons0
     (_) =>
-  D1Etuple(knd, d1es1) where
+  D1Etrcd1(knd, d1es1) where
   {
     val d1es1 = trans01_dexplst(d0es1)
   }
 | d0exp_RPAREN_cons1
     (_, d0es2, _) =>
-  D1Etuple(knd, d1es1, d1es2) where
+  D1Etrcd1(knd, d1es1, d1es2) where
   {
     val d1es1 = trans01_dexplst(d0es1)
     val d1es2 = trans01_dexplst(d0es2)
@@ -1859,7 +1859,7 @@ case+ rparen of
 //
 | d0exp_RPAREN_cons2
     (_, d0es2, _) =>
-  D1Etuple(knd, d1es1, d1es2) where
+  D1Etrcd1(knd, d1es1, d1es2) where
   {
     val d1es1 = trans01_dexplst(d0es1)
     val d1es2 = trans01_dexplst(d0es2)
@@ -1870,7 +1870,7 @@ case+ rparen of
 in
   FXITMatm
   (d1exp_make_node(d0e0.loc(), d1e0_node))
-end // end of [auxtuple]
+end // end of [auxtrcd1]
 
 (* ****** ****** *)
 

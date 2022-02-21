@@ -227,10 +227,10 @@ case+ tnd of
 | T_EXISTS(knd) =>
   fprint!(out, "EXISTS(", knd, ")")
 //
-| T_TUPLE(knd) =>
-  fprint!(out, "TUPLE(", knd, ")")
-| T_RECORD(knd) =>
-  fprint!(out, "RECORD(", knd, ")")
+| T_TRCD1(knd) =>
+  fprint!(out, "TRCD1(", knd, ")")
+| T_TRCD2(knd) =>
+  fprint!(out, "TRCD2(", knd, ")")
 (*
 | T_STRUCT() => fprint(out, "STRUCT")
 *)
@@ -514,9 +514,9 @@ case+ tnd of
 | T_EXISTS(knd) =>
   fprint!(out, "exists(", knd, ")")
 //
-| T_TUPLE(knd) =>
-  fprint!(out, "tuple(", knd, ")")
-| T_RECORD(knd) =>
+| T_TRCD1(knd) =>
+  fprint!(out, "TRCD1(", knd, ")")
+| T_TRCD2(knd) =>
   fprint!(out, "record(", knd, ")")
 //
 (*
@@ -1144,14 +1144,14 @@ case+ x0.node() of
     | T_LPAREN() => let
         val loc = x0.loc()+x1.loc()
         val x01 =
-        token_make_node(loc, T_TUPLE(0))
+        token_make_node(loc, T_TRCD1(0))
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of ["("]
     | T_LBRACE() => let
         val loc = x0.loc()+x1.loc()
         val x01 =
-        token_make_node(loc, T_RECORD(0))
+        token_make_node(loc, T_TRCD2(0))
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of ["{"]
@@ -1192,14 +1192,14 @@ case+ x0.node() of
     | T_LPAREN() => let
         val loc = x0.loc()+x1.loc()
         val x01 =
-        token_make_node(loc, T_TUPLE(1))
+        token_make_node(loc, T_TRCD1(1))
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of ["("]
     | T_LBRACE() => let
         val loc = x0.loc()+x1.loc()
         val x01 =
-        token_make_node(loc, T_RECORD(1))
+        token_make_node(loc, T_TRCD2(1))
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of ["{"]

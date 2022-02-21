@@ -396,17 +396,17 @@ case+ x0.node() of
   , "D0Pparen("
   , tbeg, "; ", d0ps, "; ", tend, ")")
 //
-| D0Ptuple
+| D0Ptrcd1
   (tbeg, topt, d0ps, tend) =>
   fprint!
   ( out
-  , "D0Ptuple("
+  , "D0Ptrcd1("
   , tbeg, "; ", topt, "; ", d0ps, "; ", tend, ")")
-| D0Precord
+| D0Ptrcd2
   (tbeg, topt, ld0ps, tend) =>
   fprint!
   ( out
-  , "D0Precord("
+  , "D0Ptrcd2("
   , tbeg, "; ", topt, "; ", ld0ps, "; ", tend, ")")
 //
 | D0Panno
@@ -684,17 +684,17 @@ case+ x0.node() of
   , "D0Eparen("
   , tbeg, "; ", d0es, "; ", tend, ")")
 //
-| D0Etuple
+| D0Etrcd1
   (tbeg, topt, d0es, tend) =>
   fprint!
   ( out
-  , "D0Etuple("
+  , "D0Etrcd1("
   , tbeg, "; ", topt, "; ", d0es, "; ", tend, ")")
-| D0Erecord
+| D0Etrcd2
   (tbeg, topt, ldes, tend) =>
   fprint!
   ( out
-  , "D0Erecord("
+  , "D0Etrcd2("
   , tbeg, "; ", topt, "; ", ldes, "; ", tend, ")")
 //
 | D0Eif0

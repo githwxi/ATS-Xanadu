@@ -402,24 +402,24 @@ x0.node() of
   ( out
   , "D1Plist2(", d1ps1, "; ", d1ps2, ")")
 //
-| D1Ptuple(tok, d1ps) =>
+| D1Ptrcd1(tok, d1ps) =>
   fprint!
   ( out
-  , "D1Ptuple1(", tok, "; ", d1ps, ")")
-| D1Ptuple(tok, d1ps1, d1ps2) =>
+  , "D1Ptrcd11(", tok, "; ", d1ps, ")")
+| D1Ptrcd1(tok, d1ps1, d1ps2) =>
   fprint!
   ( out
-  , "D1Ptuple2("
+  , "D1Ptrcd12("
   , tok, "; ", d1ps1, "; ", d1ps2, ")" )
 //
-| D1Precord(tok, ld1ps) =>
+| D1Ptrcd2(tok, ld1ps) =>
   fprint!
   ( out
-  , "D1Precord1(", tok, "; ", ld1ps, ")")
-| D1Precord(tok, ld1ps1, ld1ps2) =>
+  , "D1Ptrcd21(", tok, "; ", ld1ps, ")")
+| D1Ptrcd2(tok, ld1ps1, ld1ps2) =>
   fprint!
   (out
-  , "D1Precord2("
+  , "D1Ptrcd22("
   , tok, "; ", ld1ps1, "; ", ld1ps2, ")" )
 //
 | D1Panno(d1p1, s1e2) =>
@@ -590,26 +590,27 @@ x0.node() of
   ( out
   , "D1Eseqn(", d1es1, "; ", d1es2, ")")
 //
-| D1Etuple(tok0, d1es) =>
+| D1Etrcd1(tok0, d1es) =>
   fprint!
   ( out
-  , "D1Etuple1(", tok0, "; ", d1es, ")" )
-| D1Etuple
+  , "D1Etrcd11(", tok0, "; ", d1es, ")" )
+| D1Etrcd1
   (tok0, d1es1, d1es2) =>
   fprint!
   ( out
-  , "D1Etuple2("
+  , "D1Etrcd12("
   , tok0, "; ", d1es1, "; ", d1es2, ")" )
 //
-| D1Erecord(tok0, ld1es) =>
+| D1Etrcd2(tok0, ld1es) =>
   fprint!
   ( out
-  , "D1Erecord1(", tok0, "; ", ld1es, ")" )
-| D1Erecord
-  (tok0, ldes1, ldes2) =>
+  , "D1Etrcd21(", tok0, "; ", ld1es, ")" )
+| D1Etrcd2
+  (tok0, ld1es1, ld1es2) =>
   fprint!
   ( out
-  , "D1Erecord2(", tok0, "; ", ldes1, "; ", ldes2, ")")
+  , "D1Etrcd22("
+  , tok0, "; ", ld1es1, "; ", ld1es2, ")" )
 //
 | D1Ebrack(d1es) =>
   fprint!(out, "D1Ebrack(", d1es, ")")

@@ -950,9 +950,9 @@ s0exp_node =
     (token, s0explst, s0exp_RPAREN)
   // end of [S0Eparen]
 //
-| S0Etuple of
+| S0Etrcd1 of
     (token, tokenopt, s0explst, s0exp_RPAREN)
-| S0Erecord of
+| S0Etrcd2 of
     (token, tokenopt, labs0explst, labs0exp_RBRACE)
 //
 | S0Eforall of

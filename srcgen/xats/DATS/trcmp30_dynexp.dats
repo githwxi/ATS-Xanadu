@@ -477,7 +477,7 @@ end // end of [auxdapp]
 (* ****** ****** *)
 
 fun
-aux_tuple
+aux_trcd1
 (d3p0: d3pat): h0pat =
 let
 //
@@ -489,7 +489,7 @@ val
 h0t0 = trcmp30_type(t2p0)
 //
 val-
-D3Ptuple
+D3Ptrcd1
 ( knd0
 , npf1
 , d3ps) = d3p0.node()
@@ -498,11 +498,11 @@ val
 h0ps = trcmp30_dpatlst(d3ps)
 //
 val
-hend = H0Ptuple(knd0, npf1, h0ps)
+hend = H0Ptrcd1(knd0, npf1, h0ps)
 //
 in
   h0pat_make_node(loc0, h0t0, hend)
-end // end of [aux_tuple]
+end // end of [aux_trcd1]
 
 (* ****** ****** *)
 
@@ -652,9 +652,9 @@ D3Pdapp
 ( d3f0
 , npf1, d3ps) => auxdapp(d3p0)
 |
-D3Ptuple
+D3Ptrcd1
 ( knd0
-, npf1, d3ps) => aux_tuple(d3p0)
+, npf1, d3ps) => aux_trcd1(d3p0)
 |
 D3Panno
 ( d3p1
@@ -1465,7 +1465,7 @@ end
 (* ****** ****** *)
 
 fun
-aux_tuple
+aux_trcd1
 (d3e0: d3exp): h0exp =
 let
 //
@@ -1479,11 +1479,11 @@ h0t0 = trcmp30_type(t2p0)
 val
 hend =
 (
-H0Etuple(knd0, npf1, h0es)
+H0Etrcd1(knd0, npf1, h0es)
 ) where
 {
 val-
-D3Etuple
+D3Etrcd1
 ( knd0
 , npf1, d3es) = d3e0.node()
 val
@@ -2117,7 +2117,7 @@ D3Epptr _ => aux_pptr(d3e0)
 D3Eseqn _ => aux_seqn(d3e0)
 //
 |
-D3Etuple _ => aux_tuple(d3e0)
+D3Etrcd1 _ => aux_trcd1(d3e0)
 //
 |
 D3Eassgn _ => aux_assgn(d3e0)

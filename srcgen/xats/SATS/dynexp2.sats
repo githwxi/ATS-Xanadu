@@ -719,7 +719,7 @@ d2pat_node =
   ( d2pat
   , int(*npf*), d2patlst(*darg*))
 //
-| D2Ptuple of
+| D2Ptrcd1 of
   (int(*knd*), int(*npf*), d2patlst)
 //
 (*
@@ -790,7 +790,7 @@ d2pat_dapp
 (* ****** ****** *)
 //
 fun
-d2pat_tuple
+d2pat_trcd1
 ( loc0: loc_t
 , knd1: int
 , npf2: int, d2ps: d2patlst): d2pat
@@ -953,7 +953,7 @@ d2exp_node =
 | D2Eseqn of
   (d2explst(*semi*), d2exp(*last*))
 //
-| D2Etuple of
+| D2Etrcd1 of
   (int(*knd*), int(*npf*), d2explst)
 //
 | D2Eassgn of
@@ -1197,7 +1197,7 @@ d2exp_where
 (* ****** ****** *)
 //
 fun
-d2exp_tuple
+d2exp_trcd1
 ( loc0: loc_t
 , knd: int, npf: int, d2es: d2explst): d2exp
 //

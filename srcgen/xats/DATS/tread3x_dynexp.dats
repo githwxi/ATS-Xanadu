@@ -539,7 +539,7 @@ d3e0.node() of
     val () = tread3x_d3exp(d3e1)
   }
 //
-| D3Etuple
+| D3Etrcd1
     (knd0, npf1, d3es) =>
   {
     val () =

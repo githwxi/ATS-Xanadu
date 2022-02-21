@@ -1923,62 +1923,62 @@ end // end of [auxlist2]
 (* ****** ****** *)
 
 fun
-auxtuple1
+auxtrcd11
 ( s1e0
 : s1exp): s2exp = let
 //
 val-
-S1Etuple
+S1Etrcd1
 (knd, s1es) = s1e0.node()
 //
 val s2es =
 trans12_sexplst_ci(s1es)
 //
 in
-  s2exp_tuple1(knd, s2es)
-end // end of [auxtuple1]
+  s2exp_trcd11(knd, s2es)
+end // end of [auxtrcd11]
 
 fun
-auxtuple2
+auxtrcd12
 ( s1e0
 : s1exp): s2exp = let
 //
 val-
-S1Etuple
+S1Etrcd1
 ( knd, xs1, xs2) = s1e0.node()
 //
 val s2es1 = trans12_sexplst_cp(xs1)
 val s2es2 = trans12_sexplst_ct(xs2)
 //
 in
-  s2exp_tuple2(knd, s2es1, s2es2)
-end // end of [auxtuple2]
+  s2exp_trcd12(knd, s2es1, s2es2)
+end // end of [auxtrcd12]
 
 (* ****** ****** *)
 
 fun
-auxrecord1
+auxtrcd21
 ( s1e0
 : s1exp): s2exp = let
 //
 val-
-S1Erecord
+S1Etrcd2
 (knd, ls1es) = s1e0.node()
 //
 val ls2es =
 trans12_labsexplst_ci(ls1es)
 //
 in
-  s2exp_record1( knd, ls2es )
-end // end of [auxrecord1]
+  s2exp_trcd21( knd, ls2es )
+end // end of [auxtrcd21]
 
 fun
-auxrecord2
+auxtrcd22
 ( s1e0
 : s1exp): s2exp = let
 //
 val-
-S1Erecord
+S1Etrcd2
 ( knd, lxs1, lxs2) = s1e0.node()
 //
 val
@@ -1987,8 +1987,8 @@ val
 ls2es2 = trans12_labsexplst_ct(lxs2)
 //
 in
-  s2exp_record2(knd, ls2es1, ls2es2)
-end // end of [auxrecord2]
+  s2exp_trcd22(knd, ls2es1, ls2es2)
+end // end of [auxtrcd22]
 
 (* ****** ****** *)
 
@@ -2039,17 +2039,17 @@ s1e0.node() of
     (_, _) => auxlist2(s1e0)
   // end of [S1Elist]
 //
-| S1Etuple
-    (k0, _) => auxtuple1(s1e0)
-| S1Etuple
-    (k0, _, _) => auxtuple2(s1e0)
-  // end of [S1Etuple]
+| S1Etrcd1
+    (k0, _) => auxtrcd11(s1e0)
+| S1Etrcd1
+    (k0, _, _) => auxtrcd12(s1e0)
+  // end of [S1Etrcd1]
 //
-| S1Erecord
-    (k0, _) => auxrecord1(s1e0)
-| S1Erecord
-    (k0, _, _) => auxrecord2(s1e0)
-  // end of [S1Erecord]
+| S1Etrcd2
+    (k0, _) => auxtrcd21(s1e0)
+| S1Etrcd2
+    (k0, _, _) => auxtrcd22(s1e0)
+  // end of [S1Etrcd2]
 //
 | S1Eanno(s1e1, s1t2) =>
   let

@@ -928,7 +928,7 @@ then
 trans12_dpat(d1ps.head())
 else
 (
-d2pat_tuple
+d2pat_trcd1
 (d1p0.loc(), knd, npf, d2ps)
 ) where
 {
@@ -950,7 +950,7 @@ D1Plist
 //
 in
 (
-d2pat_tuple
+d2pat_trcd1
 (d1p0.loc(), knd, npf, d2ps1+d2ps2)
 ) where {
   val knd = 0
@@ -963,7 +963,7 @@ end // end of [auxlist2]
 (* ****** ****** *)
 
 fun
-auxtuple1
+auxtrcd11
 ( d1p0
 : d1pat): d2pat = let
 //
@@ -971,19 +971,19 @@ val
 loc0 = d1p0.loc()
 //
 val-
-D1Ptuple
+D1Ptrcd1
 (tok, d1ps) = d1p0.node()
 //
 val knd =
 (
 case-
-tok.node() of T_TUPLE(k0) => k0
+tok.node() of T_TRCD1(k0) => k0
 ) : int // end of [val]
 //
 in
 //
 (
-d2pat_tuple
+d2pat_trcd1
 (loc0, knd, npf, d2ps)
 ) where
 {
@@ -991,27 +991,27 @@ d2pat_tuple
   val d2ps = trans12_dpatlst(d1ps)
 }
 //
-end // end of [auxtuple1]
+end // end of [auxtrcd11]
 
 fun
-auxtuple2
+auxtrcd12
 ( d1p0
 : d1pat): d2pat = let
 //
 val-
-D1Ptuple
+D1Ptrcd1
 ( tok
 , d1ps1, d1ps2) = d1p0.node()
 //
 val knd =
 (
 case-
-tok.node() of T_TUPLE(k0) => k0
+tok.node() of T_TRCD1(k0) => k0
 ) : int // end of [val]
 //
 in
 (
-d2pat_tuple
+d2pat_trcd1
 (d1p0.loc(), knd, npf, d2ps1+d2ps2)
 ) where {
   val npf = length(d1ps1)
@@ -1067,11 +1067,11 @@ d1p0.node() of
 | D1Plist
   (xs1, xs2) => auxlist2(d1p0)
 //
-| D1Ptuple
-  (tok, d1ps) => auxtuple1(d1p0)
-| D1Ptuple
+| D1Ptrcd1
+  (tok, d1ps) => auxtrcd11(d1p0)
+| D1Ptrcd1
   ( tok
-  , xs1, xs2) => auxtuple2(d1p0)
+  , xs1, xs2) => auxtrcd12(d1p0)
 //
 | D1Panno
   (d1p1, s1e2) =>
@@ -2967,7 +2967,7 @@ then
 trans12_dexp(d1es.head())
 else
 (
-d2exp_tuple
+d2exp_trcd1
 (loc0, knd, npf, d2es)
 ) where
 {
@@ -2992,7 +2992,7 @@ D1Elist
 //
 in
 (
-d2exp_tuple
+d2exp_trcd1
 (loc0, knd, npf, ys1 + ys2)
 ) where {
   val knd = 0
@@ -3032,30 +3032,30 @@ end // end of [auxseqn]
 (* ****** ****** *)
 
 fun
-aux_tup1
+aux_trcd11
 ( d1e0
 : d1exp): d2exp = let
 //
 val
 loc0 = d1e0.loc()
 val-
-D1Etuple
+D1Etrcd1
 (tok, d1es) = d1e0.node()
 //
 val knd =
 let
 val-
-T_TUPLE(knd) = tok.node() in knd
+T_TRCD1(knd) = tok.node() in knd
 end
 val npf = ~1
 val d2es = trans12_dexplst(d1es)
 //
 in
-  d2exp_tuple(loc0, knd, npf, d2es)
-end // end of [aux_tup1]
+  d2exp_trcd1(loc0, knd, npf, d2es)
+end // end of [aux_trcd11]
 
 fun
-aux_tup2
+aux_trcd12
 ( d1e0
 : d1exp): d2exp = let
 //
@@ -3063,14 +3063,14 @@ val
 loc0 = d1e0.loc()
 //
 val-
-D1Etuple
+D1Etrcd1
 ( tok
 , xs1, xs2) = d1e0.node()
 //
 val knd =
 let
 val-
-T_TUPLE(knd) = tok.node() in knd
+T_TRCD1(knd) = tok.node() in knd
 end
 val npf = list_length(xs1)
 //
@@ -3084,8 +3084,8 @@ val d2es =
 } (* end of [val] *)
 //
 in
-  d2exp_tuple(loc0, knd, npf, d2es)
-end // end of [aux_tup2]
+  d2exp_trcd1(loc0, knd, npf, d2es)
+end // end of [aux_trcd12]
 
 (* ****** ****** *)
 fun
@@ -3451,10 +3451,12 @@ d1e0.node() of
 | D1Enone _ => auxnone(d1e0)
 | D1Eseqn _ => auxseqn(d1e0)
 //
-| D1Etuple
-  (k0, _) => aux_tup1(d1e0)
-| D1Etuple
-  (k0, _, _) => aux_tup2(d1e0)
+|
+D1Etrcd1
+(k0, xs) => aux_trcd11(d1e0)
+|
+D1Etrcd1
+(k0, xs, ys) => aux_trcd12(d1e0)
 //
 | D1Ebrack _ => aux_brack(d1e0)
 | D1Edtsel _ => aux_dtsel(d1e0)

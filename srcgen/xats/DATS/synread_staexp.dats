@@ -1041,10 +1041,10 @@ s0e0.node() of
   }
 //
 |
-S0Etuple
+S0Etrcd1
 (tbeg, topt, s0es, tend) =>
 {
-  val () = synread_TUPLE(tbeg)
+  val () = synread_TRCD1(tbeg)
 (*
   val () =
   (
@@ -1057,10 +1057,10 @@ S0Etuple
   val () = synread_s0exp_RPAREN(tend)
 }
 |
-S0Erecord
+S0Etrcd2
 (tbeg, topt, ls0es, tend) =>
 {
-  val () = synread_RECORD(tbeg)
+  val () = synread_TRCD2(tbeg)
 (*
   val () =
   (

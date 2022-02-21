@@ -374,7 +374,7 @@ end // end of [auxdapp]
 (* ****** ****** *)
 
 fun
-aux_tuple
+aux_trcd1
 ( env0:
 ! abstenv
 , d3p0: d3pat): d3pat =
@@ -384,7 +384,7 @@ val
 loc0 = d3p0.loc()
 //
 val-
-D3Ptuple
+D3Ptrcd1
 ( knd0
 , npf1
 , d3ps) = d3p0.node()
@@ -393,8 +393,8 @@ val d3ps =
 trans33_dpatlst(env0, d3ps)
 //
 in
-  d3pat_tuple_up(loc0, knd0, npf1, d3ps)
-end // end of [aux_tuple]
+  d3pat_trcd1_up(loc0, knd0, npf1, d3ps)
+end // end of [aux_trcd1]
 
 (* ****** ****** *)
 
@@ -455,8 +455,8 @@ d3p0.node() of
 | D3Pdapp _ =>
   auxdapp(env0, d3p0)
 //
-| D3Ptuple _ =>
-  aux_tuple(env0, d3p0)
+| D3Ptrcd1 _ =>
+  aux_trcd1(env0, d3p0)
 //
 |
 D3Panno
@@ -740,7 +740,7 @@ d33exp_seqn_up
 (* ****** ****** *)
 //
 fun
-d33exp_tuple_up
+d33exp_trcd1_up
 ( loc0
 : loc_t
 , env0:
@@ -748,7 +748,7 @@ d33exp_tuple_up
 , knd1: int
 , npf2: int, d3es: d3explst): d3exp =
 (
-d23exp_tuple_up(loc0, knd1, npf2, d3es)
+d23exp_trcd1_up(loc0, knd1, npf2, d3es)
 )
 //
 (* ****** ****** *)
@@ -1487,7 +1487,7 @@ end // end of [aux_seqn]
 (* ****** ****** *)
 
 fun
-aux_tuple
+aux_trcd1
 ( env0:
 ! abstenv
 , d3e0: d3exp): d3exp = let
@@ -1495,7 +1495,7 @@ aux_tuple
 val
 loc0 = d3e0.loc()
 val-
-D3Etuple
+D3Etrcd1
 ( knd1
 , npf2
 , d3es) = d3e0.node()
@@ -1504,8 +1504,8 @@ val
 d3es = trans33_dexplst(env0, d3es)
 //
 in
-d33exp_tuple_up(loc0, env0, knd1, npf2, d3es)
-end // end of [aux_tuple]
+d33exp_trcd1_up(loc0, env0, knd1, npf2, d3es)
+end // end of [aux_trcd1]
 
 (* ****** ****** *)
 
@@ -2256,7 +2256,7 @@ D3Edapp _ => auxdapp(env0, d3e0)
 D3Eseqn _ => aux_seqn(env0, d3e0)
 //
 |
-D3Etuple _ => aux_tuple(env0, d3e0)
+D3Etrcd1 _ => aux_trcd1(env0, d3e0)
 //
 | D3Elet _ => aux_let(env0, d3e0)
 |
