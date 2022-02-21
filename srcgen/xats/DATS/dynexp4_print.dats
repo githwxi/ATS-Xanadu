@@ -638,6 +638,12 @@ case+ x0.node() of
   ( out
   , "D4Eseqn(", d4es, "; ", d4e2, ")")
 //
+| D4Etrcd1
+  (knd1, npf2, d4es) =>
+  fprint!
+  ( out, "D4Etrcd1("
+  , knd1, "; ", npf2, "; ", d4es, ")")
+//
 | D4Eassgn
   (d4e1, d4e2, err3) =>
   fprint!
