@@ -598,10 +598,10 @@ d0exp_node =
     (token, d0explst, d0exp_RPAREN)
   // end of [D0Eparen]
 //
-| D0Etrcd1 of
+| D0Etrcd1 of // HX: tuple
     ( token, tokenopt
     , d0explst, d0exp_RPAREN)
-| D0Etrcd2 of
+| D0Etrcd2 of // HX: record
     ( token, tokenopt
     , labd0explst, labd0exp_RBRACE)
 //

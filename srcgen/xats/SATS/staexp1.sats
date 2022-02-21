@@ -606,19 +606,21 @@ s1exp_node =
 | S1Eapp2 of
   (s1exp(*fun*), s1exp, s1exp)
 //
-| S1Elist of s1explst // temp.
+| S1Elist of s1explst // temp
 | S1Elist of
-  (s1explst, s1explst) // temp.
+  (s1explst, s1explst) // temp
 //
-| S1Etrcd1 of
-  (int, s1explst)
-| S1Etrcd1 of
-  (int, s1explst, s1explst)
+| S1Etrcd1 of // HX: tuple1
+  (int, s1explst(*prop/type*))
+| S1Etrcd1 of // HX: tuple2
+  ( int
+  , s1explst(*prop*), s1explst(*type*))
 //
-| S1Etrcd2 of
-  (int, labs1explst)
-| S1Etrcd2 of
-  (int, labs1explst, labs1explst)
+| S1Etrcd2 of // HX: record1
+  (int, labs1explst(*prop/type*))
+| S1Etrcd2 of // HX: record2
+  ( int
+  , labs1explst(*prof*), labs1explst(*type*))
 //
 | S1Eforall of (s1qualst)
 | S1Eexists of (int(*#*), s1qualst)

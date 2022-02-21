@@ -812,7 +812,8 @@ s2exp_node =
 | S2Efun of
   ( // function type
     funclo2
-  , int(*npf*), s2explst(*arg*), s2exp(*res*)
+  , int(*npf*)
+  , s2explst(*arglst*), s2exp(*result*)
   ) (* end of S2Efun *)
 //
 | S2Ecimp of // HX: for storing
@@ -824,14 +825,17 @@ s2exp_node =
 | S2Ecast of // HX-2108-12-23: for storing
   (loc_t, s2exp, sort2) // sort-checking error
 //
-| S2Emet of (s2explst(*met*), s2exp(*body*))
+| S2Emet of // HX: for term-check
+  (s2explst(*met*), s2exp(*body*))
 //
 // HX: for [...]
 | S2Eexi of // exists quantifier
-  (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
+  ( s2varlst(*vars*)
+  , s2explst(*prop*), s2exp(*body*))
 // HX: for {...}
 | S2Euni of // forall quantifier
-  (s2varlst(*vars*), s2explst(*props*), s2exp(*body*))
+  ( s2varlst(*vars*)
+  , s2explst(*prop*), s2exp(*body*))
 (*
 // HX: for #[...]
 | S2Eexj of // exists quantifier
@@ -846,9 +850,11 @@ s2exp_node =
 | S2Et2ype of (t2ype) // [t2ype] to [s2exp]
 //
 | S2Etyext of
-  (string(*name*), s2explst) (* external *)
+  ( string(*name*)
+  , s2explst(*arglst*)) (* external *)
 //
-| S2Etyrec of (tyrec, int(*npf*), labs2explst)
+| S2Etyrec of
+  (tyrec(*knd*), int(*npf*), labs2explst)
 //
 | S2Enone0 // of () // HX: error or special
 //
