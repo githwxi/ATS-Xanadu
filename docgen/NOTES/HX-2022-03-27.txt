@@ -1,0 +1,26 @@
+Hi, there,
+
+(* ****** ****** *)
+
+HX-2022-03-27:
+
+(* ****** ****** *)
+
+Code Depot as a Societal Infrastructure
+for the Advancement of Software Production
+
+(* ****** ****** *)
+
+Statics:
+
+(* ****** ****** *)
+
+Dynamics:
+
+(* ****** ****** *)
+
+Algorithms vs. Functions
+
+(* ****** ****** *)
+
+(* end of [HX-2022-03-27.txt] *)
