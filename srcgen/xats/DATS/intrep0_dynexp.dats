@@ -166,7 +166,13 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
+eq_hdcon_hdcon(x1, x2) =
+(x1.stamp() = x2.stamp())
+implement
 eq_hdcst_hdcst(x1, x2) =
+(x1.stamp() = x2.stamp())
+implement
+eq_hdvar_hdvar(x1, x2) =
 (x1.stamp() = x2.stamp())
 
 (* ****** ****** *)
