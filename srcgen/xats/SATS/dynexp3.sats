@@ -370,9 +370,9 @@ d3exp_node =
 //
 (*
 HX-2020-06:
-For trans3x:
-Please see trans3x_envmap
-for the meaning of knd
+Please see:
+[trans3x.sats] for
+the meaning of [knd]
 *)
 | D3Ekvar of
   (int(*knd*), d2var)

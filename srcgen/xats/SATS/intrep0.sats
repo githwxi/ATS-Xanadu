@@ -428,10 +428,18 @@ overload .stamp with hdvar_get_stamp
 (* ****** ****** *)
 //
 fun
+eq_hdcon_hdcon
+(x1: hdcon, x2: hdcon): bool
+fun
 eq_hdcst_hdcst
-(c1: hdcst, c2: hdcst): bool
+(x1: hdcst, x2: hdcst): bool
+fun
+eq_hdvar_hdvar
+(x1: hdvar, x2: hdvar): bool
 //
+overload = with eq_hdcon_hdcon
 overload = with eq_hdcst_hdcst
+overload = with eq_hdvar_hdvar
 //
 (* ****** ****** *)
 //
@@ -656,6 +664,13 @@ overload fprint with fprint_htiarg
 //
 (* ****** ****** *)
 //
+(*
+VARG 0 // arg. vars
+VLOC 0 // local vars
+VENV 1 // environ. vars
+VFIX 2 // fixed binding
+VTOP %(~1) // top-level vars
+*)
 datatype
 h0exp_node =
 //
