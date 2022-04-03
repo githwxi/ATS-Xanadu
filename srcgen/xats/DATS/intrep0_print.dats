@@ -412,7 +412,9 @@ fprint_h0pat(stderr_ref, x0)
 implement
 fprint_h0pat(out, x0) =
 (
+(*
 fprint!(out, ":", x0.type())
+*)
 ) where
 {
 val () =
@@ -549,7 +551,9 @@ fprint_h0exp(stderr_ref, x0)
 implement
 fprint_h0exp(out, x0) =
 (
+(*
 fprint!(out, ":", x0.type())
+*)
 ) where
 {
 val () =
