@@ -99,6 +99,22 @@ end // end [d2var_typenfz
 
 (* ****** ****** *)
 
+fun
+trans3x_ti3a
+( env0:
+! tr3xenv,
+  ti3a: ti3arg): ti3arg =
+(
+case+ ti3a of
+|
+TI3ARGnone() => TI3ARGnone()
+|
+TI3ARGsome(t2ps) =>
+TI3ARGsome(t2ypelst_normize(t2ps))
+)
+
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
@@ -422,6 +438,23 @@ in(*in-of-let*)
 case+ dend of
 //
 |
+D3Ei00(int) =>
+d3exp_make_node
+(loc0, t2p0, D3Ei00(int))
+|
+D3Eb00(btf) =>
+d3exp_make_node
+(loc0, t2p0, D3Eb00(btf))
+|
+D3Ec00(str) =>
+d3exp_make_node
+(loc0, t2p0, D3Ec00(str))
+|
+D3Es00(str) =>
+d3exp_make_node
+(loc0, t2p0, D3Es00(str))
+//
+|
 D3Eint(int) =>
 d3exp_make_node
 (loc0, t2p0, D3Eint(int))
@@ -451,6 +484,51 @@ in
 d3exp_make_node(loc0, t2p0, dend)
 end
 //
+(*
+|
+D3Ekvar _ =>
+let
+val
+dend = auxkvar(env0, dend)
+in
+d3exp_make_node(loc0, t2p0, dend)
+end
+*)
+//
+|
+D3Etcon
+( d2c0
+, ti3a, ti2s) =>
+let
+//
+val
+ti3a =
+trans3x_ti3a(env0, ti3a)
+//
+in
+d3exp_make_node
+( loc0
+, t2p0
+, D3Etcon(d2c0, ti3a, ti2s))
+end
+//
+|
+D3Etcst
+( d2c0
+, ti3a, ti2s) =>
+let
+//
+val
+ti3a =
+trans3x_ti3a(env0, ti3a)
+//
+in
+d3exp_make_node
+( loc0
+, t2p0
+, D3Etcst(d2c0, ti3a, ti2s))
+end
+//
 |
 D3Etimp
 ( stmp
@@ -459,6 +537,8 @@ D3Etimp
 let
 val tcst =
 trans3x_dexp(env0, tcst)
+val d3cl =
+trans3x_decl(env0, d3cl)
 val targ = t2ypelst_normize(targ)
 val tsub = t2ypelst_normize(tsub)
 in
