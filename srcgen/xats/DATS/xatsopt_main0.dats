@@ -304,6 +304,7 @@ end // end of [local]
 #dynload "./intrep0_dynexp.dats"
 //
 #dynload "./trcmp30_util0.dats"
+#dynload "./trcmp30_envmap.dats"
 #dynload "./trcmp30_statyp.dats"
 #dynload "./trcmp30_dynexp.dats"
 //

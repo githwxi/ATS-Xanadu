@@ -127,8 +127,8 @@ local
 
 fun
 auxtcst
-( env0
-: !implenv
+( env0:
+! implenv
 , d3e0: d3exp): d3exp =
 let
 //
@@ -936,8 +936,8 @@ end // end of [auxs2vs_make]
 
 fun
 aux_include
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl =
 let
 //
@@ -970,8 +970,8 @@ end // end of [aux_include]
 
 fun
 aux_staload
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl =
 let
 val () =
@@ -982,8 +982,8 @@ end // end of [aux_staload]
 
 fun
 aux_fundecl
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl =
 let
 //
@@ -1039,8 +1039,8 @@ end // end of [aux_fundecl]
 
 fun
 aux_valdecl
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl =
 let
 //
@@ -1060,8 +1060,8 @@ end where
 //
 fun
 auxv3d0
-( env0
-: !implenv
+( env0:
+! implenv
 , v3d0
 : v3aldecl): v3aldecl =
 let
@@ -1082,8 +1082,8 @@ end // end of [auxv3d0]
 //
 fun
 auxv3ds
-( env0
-: !implenv
+( env0:
+! implenv
 , v3ds
 : v3aldeclist): v3aldeclist =
 (
@@ -1100,8 +1100,8 @@ case+ v3ds of
 //
 fun
 aux_vardecl
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl =
 let
 //
@@ -1121,8 +1121,8 @@ end where
 //
 fun
 auxv3d0
-( env0
-: !implenv
+( env0:
+! implenv
 , v3d0
 : v3ardecl): v3ardecl =
 let
@@ -1145,8 +1145,8 @@ end // end of [auxv3d0]
 //
 fun
 auxv3ds
-( env0
-: !implenv
+( env0:
+! implenv
 , v3ds
 : v3ardeclist): v3ardeclist =
 (
@@ -1163,8 +1163,8 @@ case+ v3ds of
 //
 fun
 aux_impdecl3
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl = let
 //
 val-
@@ -1198,8 +1198,8 @@ end // end of [aux_impdecl3]
 //
 and
 aux_impdecl3_fun
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl = let
 //
 val-
@@ -1228,8 +1228,8 @@ D3Cimpdecl3
 end // end of [aux_impdecl3_fun]
 and
 aux_impdecl3_tmp
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl = let
 //
 val
@@ -1428,8 +1428,8 @@ D3Cfundecl
 //
 fun
 auxf3d0
-( env0
-: !implenv
+( env0:
+! implenv
 , f3d0
 : f3undecl
 )
@@ -1477,8 +1477,8 @@ end // end of [auxf3d0]
 //
 fun
 auxf3ds
-( env0
-: !implenv
+( env0:
+! implenv
 , f3ds
 : f3undeclist
 )
@@ -1514,8 +1514,8 @@ local
 
 fun
 aux_fundecl
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl =
 (
 trans3t_fundecl(env0, d3cl)
@@ -1525,8 +1525,8 @@ trans3t_fundecl(env0, d3cl)
 
 fun
 aux_impdecl3
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): d3ecl =
 let
 val-
@@ -1540,6 +1540,7 @@ D3Cimpdecl3
 val body = trans3t_dexp(env0, body)
 //
 in
+//
 d3ecl_make_node
 ( d3cl.loc()
 , D3Cimpdecl3
@@ -1547,6 +1548,7 @@ d3ecl_make_node
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s, f3as, res0, body))
+//
 end // end of [aux_impdecl3]
 
 in (*in-of-local*)

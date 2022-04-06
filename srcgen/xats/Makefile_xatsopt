@@ -171,6 +171,7 @@ intrep0_jsoniz.dats \
 intrep0_statyp.dats \
 intrep0_dynexp.dats \
 trcmp30_util0.dats \
+trcmp30_envmap.dats \
 trcmp30_statyp.dats \
 trcmp30_dynexp.dats \
 cstrnt0.dats \

@@ -123,6 +123,11 @@ implement
 fprint_val<h0exp> = fprint_h0exp
 
 (* ****** ****** *)
+
+implement
+fprint_val<h0dcl> = fprint_h0dcl
+
+(* ****** ****** *)
 //
 implement
 fprint_val<h0gua> = fprint_h0gua
@@ -134,11 +139,6 @@ fprint_val<h0gpat> = fprint_h0gpat
 (* ****** ****** *)
 implement
 fprint_val<htqarg> = fprint_htqarg
-(* ****** ****** *)
-
-implement
-fprint_val<h0dcl> = fprint_h0dcl
-
 (* ****** ****** *)
 //
 local
