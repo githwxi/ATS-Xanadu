@@ -59,7 +59,11 @@ P2tr0(a:vt0p) =
 (* ****** ****** *)
 
 fun
-compenv_make_nil(): compenv
+compenv_make_nil
+( (*void*) ) : compenv
+fun
+compenv_free_nil
+( env0: compenv ) : void
 
 (* ****** ****** *)
 //

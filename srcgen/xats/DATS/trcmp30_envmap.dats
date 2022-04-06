@@ -58,11 +58,42 @@ local
 //
 datavtype compenv =
 |
-COMPENV of List0_vt(d3exp)
+COMPENV of
+( List0_vt(d3exp)
+, List0_vt(t3sub) )
+where
+t3sub = (s2varlst, t2ypelst)
 //
 absimpl compenv_vtype = compenv
 //
 in(*in-of-local*)
+
+(* ****** ****** *)
+//
+implement
+compenv_make_nil
+((*void*)) =
+COMPENV
+(d3es, tsub) where
+{
+  val d3es = list_vt_nil()
+  val tsub = list_vt_nil()
+}
+//
+implement
+compenv_free_nil
+  ( env0 ) =
+let
+val+
+~COMPENV
+ (d3es, tsub) = env0
+val-
+~list_vt_nil() = d3es
+val-
+~list_vt_nil() = tsub in (*nothing*)
+end (*let*)//end of [compenv_free_nil]
+// 
+(* ****** ****** *)
 
 end // end of [local]
 
