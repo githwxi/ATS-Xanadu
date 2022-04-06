@@ -247,21 +247,29 @@ trcmp30_dcstlst(d2cstlst): hdcstlst
 (* ****** ****** *)
 //
 fun
-trcmp30_dpat(d3p0: d3pat): h0pat
+trcmp30_dpat
+( env0:
+! compenv, d3p0: d3pat): h0pat
 fun
-trcmp30_dpatlst(d3patlst): h0patlst
+trcmp30_dpatlst
+( env0:
+! compenv, d3ps: d3patlst): h0patlst
 //
 (* ****** ****** *)
 //
 fun
-trcmp30_farg(f3a0: f3arg): hfarg
+trcmp30_farg
+( env0:
+! compenv, f3a0: f3arg): hfarg
 fun
-trcmp30_farglst(f3arglst): hfarglst
+trcmp30_farglst
+( env0:
+! compenv, f3as: f3arglst): hfarglst
 //
 (* ****** ****** *)
 //
 fun
-trcmp30_ti3arg(tia: ti3arg): htiarg
+trcmp30_ti3arg(tia0: ti3arg): htiarg
 //
 (* ****** ****** *)
 //
