@@ -919,22 +919,6 @@ case+ s2vs of
 (* ****** ****** *)
 
 fun
-auxs2vs_make
-( sqas
-: sq2arglst
-, tqas
-: tq2arglst): s2varlst =
-let
-  val s2vs = sqas.s2vs()
-in
-  case s2vs of
-  | list_nil _ => tqas.s2vs()
-  | list_cons _ => s2vs + tqas.s2vs()
-end // end of [auxs2vs_make]
-
-(* ****** ****** *)
-
-fun
 aux_include
 ( env0:
 ! implenv
@@ -1001,7 +985,7 @@ case+ tqas of
 |
 list_nil _ =>
 (
-  trans3t_fundecl(env0, d3cl)
+trans3t_fundecl(env0, d3cl)
 )
 |
 list_cons _ =>
@@ -1252,8 +1236,24 @@ t2ypelst_subst_implenv(t2ps, env0)
 //
 val s2vs =
 (
-  auxs2vs_make(sqas, tqas)
-)
+auxs2vs
+(sqas, tqas)) where
+{
+fun
+auxs2vs
+( sqas
+: sq2arglst
+, tqas
+: tq2arglst): s2varlst =
+let
+  val s2vs = sqas.s2vs()
+in
+  case s2vs of
+  | list_nil _ => tqas.s2vs()
+  | list_cons _ => s2vs + tqas.s2vs()
+end // end of [auxs2vs]
+}
+//
 val xtvs =
 list_vt2t
 (

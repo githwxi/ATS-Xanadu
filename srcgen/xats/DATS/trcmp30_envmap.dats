@@ -96,6 +96,58 @@ end (*let*)//end of [compenv_free_nil]
 (* ****** ****** *)
 
 implement
+compenv_pop0_timp
+  (env0) =
+(
+let
+val () =
+(ts := ts1)
+val () =
+(us := us1) in fold@(env0)
+end
+) where
+{
+//
+val+
+@COMPENV(ts, us) = env0
+//
+val-~list_vt_cons(_, ts1) = ts
+val-~list_vt_cons(_, us1) = us
+//
+} (* end of [compenv_pop0_timp] *)
+
+implement
+compenv_push_timp
+( env0
+, d3e0, s2vs, t2ps) =
+(
+  fold@(env0)
+) where
+{
+//
+val+
+@COMPENV(ts, us) = env0
+//
+val t0 = d3e0
+val () =
+(ts := list_vt_cons(t0, ts))
+//
+val u0 = (s2vs, t2ps)
+val () =
+(us := list_vt_cons(u0, us))
+//
+} where
+{
+(*
+val () =
+println!
+("compenv_push_timp: d3e0 = ", d3e0)
+*)
+} (* end of [compenv_push_timp] *)
+
+(* ****** ****** *)
+
+implement
 t2ype_subst_compenv
 ( t2p0, env0 ) =
 let

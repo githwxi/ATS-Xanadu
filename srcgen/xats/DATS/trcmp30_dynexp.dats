@@ -611,13 +611,17 @@ D3Pstr _ => auxstr(d3p0)
 D3Pcon1(d2c0) =>
 let
 val
+//
 loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
+//
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 =
+trsubt2p(env0, t2p0)
 val
 hdc0 = trcmp30_dcon(d2c0)
+//
 in
 h0pat_make_node
 (loc0, h0t0, H0Pcon(hdc0))
@@ -841,7 +845,7 @@ end
 end // end of [trcmp30_farglst]
 //
 (* ****** ****** *)
-
+//
 implement
 trcmp30_ti3arg
   (ti3a) =
@@ -852,7 +856,7 @@ case+ ti3a of
 | TI3ARGsome(t2ps) =>
   HTIARGsome(trcmp30_typelst(t2ps))
 )
-
+//
 (* ****** ****** *)
 
 local
@@ -1237,6 +1241,24 @@ end
 
 (* ****** ****** *)
 
+local
+//
+fun
+auxs2vs
+( sqas
+: sq2arglst
+, tqas
+: tq2arglst): s2varlst =
+let
+  val s2vs = sqas.s2vs()
+in
+  case s2vs of
+  | list_nil _ => tqas.s2vs()
+  | list_cons _ => s2vs + tqas.s2vs()
+end // end of [auxs2vs]
+//
+in(*in-of-local*)
+//
 fun
 auxtimp
 ( env0:
@@ -1262,14 +1284,57 @@ val h0e1 =
 trcmp30_dexp(env0, d3e1)
 val targ = trcmp30_typelst(targ)
 //
+val s2vs =
+(
+case-
+d3cl.node() of
+|
+D3Cfundecl
+( _, _, tqas, _) =>
+tqas.s2vs((*void*))
+|
+D3Cimpdecl3
+( _
+, _, _
+, sqas, tqas
+, _, _, _, _, _, _) =>
+(
+auxs2vs(sqas, tqas)) where
+{
+fun
+auxs2vs
+( sqas
+: sq2arglst
+, tqas
+: tq2arglst): s2varlst =
+let
+  val s2vs = sqas.s2vs()
+in
+  case s2vs of
+  | list_nil _ => tqas.s2vs()
+  | list_cons _ => s2vs + tqas.s2vs()
+end // end of [auxs2vs]
+}
+) : s2varlst // end of [val s2vs]
+//
+val () =
+compenv_push_timp
+(env0, d3e0, s2vs, tsub)
+//
 val hdcl =
 trcmp30_decl(env0, d3cl)
+//
+val () =
+compenv_pop0_timp( env0 )
+//
 val tsub = trcmp30_typelst(tsub)
 //
 in
 h0exp_make_node
 (loc0, h0t0, H0Etimp(stmp, h0e1, targ, hdcl, tsub))
 end // end of [auxtimp]
+//
+end // end of [ local ]
 
 (* ****** ****** *)
 //
@@ -2634,6 +2699,18 @@ end // end of [trcmp30_dclaulst]
 local
 
 (* ****** ****** *)
+fun
+trsubt2p
+( env0:
+! compenv
+, t2p0: t2ype): h0typ =
+trcmp30_type(t2p0) where
+{
+val
+t2p0 =
+t2ype_subst_compenv(t2p0, env0)
+} (* end of [trsubt2p] *)
+(* ****** ****** *)
 
 fun
 aux_include
@@ -2717,7 +2794,7 @@ Some(f3as) =>
 Some
 (trcmp30_farglst(env0, f3as))
 ) : hfarglstopt // end-of-val
-val rtp = trcmp30_type(rtp)
+val rtp = trsubt2p(env0, rtp)
 //
 val
 def = trcmp30_dexpopt(env0, def)
