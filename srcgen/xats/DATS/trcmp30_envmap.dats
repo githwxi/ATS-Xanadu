@@ -143,7 +143,7 @@ val () =
 println!
 ("compenv_push_timp: d3e0 = ", d3e0)
 *)
-} (* end of [compenv_push_timp] *)
+}(*where*)//end-of[compenv_push_timp]
 
 (* ****** ****** *)
 
