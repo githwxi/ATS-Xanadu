@@ -251,7 +251,7 @@ T2Puni(s2vs, t2p1) =>
     val s2t = s2v.sort()
     in
     t2ype_new_srt_xtv(s2t, t2xtv_new_srt(loc0, s2t))
-    end
+    end // end of [let] // implement
   }
   val t2p1 =
   t2ype_subst_svarlst
@@ -283,7 +283,7 @@ case+ t2p2.node() of
       val s2t = s2v.sort()
       in
       t2ype_new_srt_xtv(s2t, t2xtv_new_srt(loc0, s2t))
-      end
+      end // end of [let] // implement
     }
     val t2p2 =
     t2ype_subst_svarlst

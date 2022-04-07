@@ -233,28 +233,49 @@ local
 (* ****** ****** *)
 
 fun
+trsubt2p
+( env0:
+! compenv
+, t2p0: t2ype): h0typ =
+trcmp30_type(t2p0) where
+{
+val
+t2p0 =
+t2ype_subst_compenv(t2p0, env0)
+} (* end of [trsubt2p] *)
+
+(* ****** ****** *)
+
+fun
 auxnil
-(d3p0: d3pat): h0pat =
+( env0:
+! compenv
+, d3p0: d3pat): h0pat =
 let
 val
 loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
+//
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
+//
 in
 h0pat_make_node(loc0, h0t0, H0Pnil)
 end
+
 fun
 auxany
-(d3p0: d3pat): h0pat =
+( env0:
+! compenv
+, d3p0: d3pat): h0pat =
 let
 val
 loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 in
 h0pat_make_node(loc0, h0t0, H0Pany)
 end
@@ -263,7 +284,9 @@ end
 
 fun
 auxvar
-(d3p0: d3pat): h0pat =
+( env0:
+! compenv
+, d3p0: d3pat): h0pat =
 let
 //
 val
@@ -271,7 +294,7 @@ loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hdv1 =
@@ -468,7 +491,7 @@ loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val-
 D3Pdapp
@@ -503,13 +526,13 @@ loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val-
 D3Ptrcd1
 ( knd0
 , npf1
-, d3ps) = d3p0.node()
+, d3ps) = d3p0.node((*void*))
 //
 val
 h0ps =
@@ -538,6 +561,7 @@ val
 loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
+//
 val () =
 println!
 ("trcmp30_dpat: loc0 = ", loc0)
@@ -547,6 +571,7 @@ println!
 val () =
 println!
 ("trcmp30_dpat: t2p0 = ", t2p0)
+//
 // *)
 #endif//__XATSOPT_DEBUG__
 //
@@ -556,12 +581,15 @@ case+
 d3p0.node() of
 //
 |
-D3Pnil() => auxnil(d3p0)
+D3Pnil() =>
+auxnil(env0, d3p0)
 |
-D3Pany() => auxany(d3p0)
+D3Pany() =>
+auxany(env0, d3p0)
 //
 |
-D3Pvar _ => auxvar(d3p0)
+D3Pvar _ =>
+auxvar(env0, d3p0)
 //
 |
 D3Pi00 _ => auxi00(d3p0)
@@ -600,13 +628,16 @@ D3Pdap1(d3f0) =>
 let
 val
 loc0 = d3p0.loc()
+//
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 =
+trsubt2p(env0, t2p0)
+//
 val
 h0f0 =
-  trcmp30_dpat(env0, d3f0)
+trcmp30_dpat(env0, d3f0)
 in
 h0pat_make_node
 (loc0, h0t0, H0Pdap1(h0f0))
@@ -617,13 +648,16 @@ D3Pbang(d3p1) =>
 let
 val
 loc0 = d3p0.loc()
+//
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 =
+trsubt2p(env0, t2p0)
+//
 val
 h0p1 =
-  trcmp30_dpat(env0, d3p1)
+trcmp30_dpat(env0, d3p1)
 in
 h0pat_make_node
 (loc0, h0t0, H0Pbang(h0p1))
@@ -633,13 +667,16 @@ D3Pflat(d3p1) =>
 let
 val
 loc0 = d3p0.loc()
+//
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 =
+trsubt2p(env0, t2p0)
+//
 val
 h0p1 =
-  trcmp30_dpat(env0, d3p1)
+trcmp30_dpat(env0, d3p1)
 in
 h0pat_make_node
 (loc0, h0t0, H0Pflat(h0p1))
@@ -649,13 +686,16 @@ D3Pfree(d3p1) =>
 let
 val
 loc0 = d3p0.loc()
+//
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 =
+trsubt2p(env0, t2p0)
+//
 val
 h0p1 =
-  trcmp30_dpat(env0, d3p1)
+trcmp30_dpat(env0, d3p1)
 in
 h0pat_make_node
 (loc0, h0t0, H0Pfree(h0p1))
@@ -692,7 +732,7 @@ loc0 = d3p0.loc()
 val
 t2p0 = d3p0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -3075,7 +3115,7 @@ H0Cimpdecl3
 , stmp, mopt
 , htqa, hdc0, htia, hfas, body)
 in
-  h0dcl_make_node(loc0, hend(*impdecl*))
+h0dcl_make_node(loc0, hend(*impdecl*))
 end // end of [aux_impdecl3]
 
 (* ****** ****** *)

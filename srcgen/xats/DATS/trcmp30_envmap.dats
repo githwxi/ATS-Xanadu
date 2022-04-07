@@ -74,10 +74,10 @@ implement
 compenv_make_nil
 ((*void*)) =
 COMPENV
-(d3es, tsub) where
+(d3es, subs) where
 {
   val d3es = list_vt_nil()
-  val tsub = list_vt_nil()
+  val subs = list_vt_nil()
 }
 //
 implement
@@ -86,13 +86,47 @@ compenv_free_nil
 let
 val+
 ~COMPENV
- (d3es, tsub) = env0
+ (d3es, subs) = env0
 val-
 ~list_vt_nil() = d3es
 val-
-~list_vt_nil() = tsub in (*nothing*)
+~list_vt_nil() = subs in (*nothing*)
 end (*let*)//end of [compenv_free_nil]
 // 
+(* ****** ****** *)
+
+implement
+t2ype_subst_compenv
+( t2p0, env0 ) =
+let
+val+
+@COMPENV
+(d3es, subs) = env0
+//
+val t2p0 =
+(
+case+ subs of
+|
+list_vt_nil
+((*void*)) => t2p0
+|
+list_vt_cons
+(sub0, subs) =>
+let
+//
+val
+(s2vs,tsub) = sub0
+//
+val t2p0 =
+t2ype_subst_svarlst
+( t2p0, s2vs, tsub ) in t2p0
+end // end of [list_vt_cons]
+) : t2ype // end of [val t2p0]
+//
+in
+  fold@env0; t2p0
+end // end of [t2ype_subst_compenv]
+
 (* ****** ****** *)
 
 end // end of [local]
