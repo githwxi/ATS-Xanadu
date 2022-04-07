@@ -927,19 +927,22 @@ d3ecl_node =
   ( token(*impkind*)
   , stamp(*unicity*)
   , decmodopt
-  , sq2arglst, tq2arglst
+  , sq2arglst
+  , tq2arglst
   , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 | D3Cimpdecl2 of
   ( token(*impkind*)
   , stamp(*unicity*)
   , decmodopt
-  , sq2arglst, tq2arglst
+  , sq2arglst
+  , tq2arglst
   , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 | D3Cimpdecl3 of
   ( token(*impkind*)
   , stamp(*unicity*)
   , decmodopt
-  , sq2arglst, tq2arglst
+  , sq2arglst
+  , tq2arglst
   , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
