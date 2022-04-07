@@ -860,6 +860,20 @@ local
 (* ****** ****** *)
 
 fun
+trsubt2p
+( env0:
+! compenv
+, t2p0: t2ype): h0typ =
+trcmp30_type(t2p0) where
+{
+val
+t2p0 =
+t2ype_subst_compenv(t2p0, env0)
+} (* end of [trsubt2p] *)
+
+(* ****** ****** *)
+
+fun
 auxi00
 (d3e0: d3exp): h0exp =
 let
@@ -1021,7 +1035,9 @@ end // end of [auxstr]
 
 fun
 auxtop
-(d3e0: d3exp): h0exp =
+( env0:
+! compenv
+, d3e0: d3exp): h0exp =
 let
 //
 val
@@ -1029,7 +1045,7 @@ loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val-
 D3Etop(tok) = d3e0.node()
@@ -1042,7 +1058,9 @@ end // end of [auxtop]
 
 fun
 auxvar
-(d3e0: d3exp): h0exp =
+( env0:
+! compenv
+, d3e0: d3exp): h0exp =
 let
 //
 val
@@ -1050,7 +1068,7 @@ loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hdv1 =
@@ -1072,15 +1090,18 @@ end
 
 fun
 auxkvar
-(d3e0: d3exp): h0exp =
+( env0:
+! compenv
+, d3e0: d3exp): h0exp =
 let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val-
 D3Ekvar
@@ -1098,15 +1119,18 @@ end
 
 fun
 auxfcon
-(d3e0: d3exp): h0exp =
+( env0:
+! compenv
+, d3e0: d3exp): h0exp =
 let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hdc1 =
@@ -1126,15 +1150,18 @@ end
 
 fun
 auxfcst
-(d3e0: d3exp): h0exp =
+( env0:
+! compenv
+, d3e0: d3exp): h0exp =
 let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hdc1 =
@@ -1154,7 +1181,9 @@ end
 
 fun
 auxtcon
-(d3e0: d3exp): h0exp =
+( env0:
+! compenv
+, d3e0: d3exp): h0exp =
 let
 //
 val
@@ -1162,7 +1191,7 @@ loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val-
 D3Etcon
@@ -1181,7 +1210,9 @@ end
 
 fun
 auxtcst
-(d3e0: d3exp): h0exp =
+( env0:
+! compenv
+, d3e0: d3exp): h0exp =
 let
 //
 val
@@ -1189,7 +1220,7 @@ loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val-
 D3Etcst
@@ -1215,10 +1246,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val-
 D3Etimp
@@ -1282,10 +1314,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1319,10 +1352,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1353,10 +1387,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1389,10 +1424,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1421,10 +1457,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1456,16 +1493,16 @@ let
 //
 val
 loc0 = d3e0.loc()
-val
-t2p0 = d3e0.type()
 //
 val
-h0t0 = trcmp30_type(t2p0)
+t2p0 = d3e0.type()
+val
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
 (
-H0Eproj(h0e1, lab2, idx2)
+  H0Eproj(h0e1, lab2, idx2)
 ) where
 {
 val-
@@ -1492,14 +1529,13 @@ val
 loc0 = d3e0.loc()
 val
 t2p0 = d3e0.type()
-//
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
 (
-H0Eplft(h0e1, lab2, idx2)
+  H0Eplft(h0e1, lab2, idx2)
 ) where
 {
 val-
@@ -1524,16 +1560,16 @@ let
 //
 val
 loc0 = d3e0.loc()
-val
-t2p0 = d3e0.type()
 //
 val
-h0t0 = trcmp30_type(t2p0)
+t2p0 = d3e0.type()
+val
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
 (
-H0Epptr(h0e1, lab2, idx2)
+  H0Epptr(h0e1, lab2, idx2)
 ) where
 {
 val-
@@ -1560,10 +1596,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1595,15 +1632,16 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
 (
-H0Etrcd1(knd0, npf1, h0es)
+ H0Etrcd1(knd0, npf1, h0es)
 ) where
 {
 val-
@@ -1629,10 +1667,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1664,10 +1703,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1699,10 +1739,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1737,10 +1778,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1771,10 +1813,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1808,14 +1851,15 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val hend =
 (
-H0Elam(knd, hfas, body)
+  H0Elam( knd, hfas, body )
 ) where
 {
 val-
@@ -1847,29 +1891,30 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val hend =
 (
-  H0Efix
-  (knd, fid, hfas, body)
+ H0Efix
+ ( knd0, fid1, hfas, body )
 ) where
 {
 val-
 D3Efix
-( knd
-, fid
+( knd0
+, fid1
 , f3as, res1
 , arrw, body) = d3e0.node()
 //
-val fid = trcmp30_dvar(fid)
+val fid1 = trcmp30_dvar(fid1)
 //
 val
 hfas =
-trcmp30_farglst(env0, f3as)
+trcmp30_farglst( env0, f3as )
 val body = trcmp30_dexp(env0, body)
 }
 //
@@ -1888,10 +1933,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
@@ -1924,17 +1970,18 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
-hend = H0Eaddr(h0e1) where
+hend = H0Eaddr( h0e1 ) where
 {
 //
 val-
-D3Eaddr(d3e1) = d3e0.node()
+D3Eaddr(d3e1) = d3e0.node( )
 //
 val h0e1 = trcmp30_dexp(env0, d3e1)
 }
@@ -1954,17 +2001,18 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
-hend = H0Eflat(h0e1) where
+hend = H0Eflat( h0e1 ) where
 {
 //
 val-
-D3Eflat(d3e1) = d3e0.node()
+D3Eflat(d3e1) = d3e0.node( )
 //
 val h0e1 = trcmp30_dexp(env0, d3e1)
 }
@@ -1984,17 +2032,18 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
-hend = H0Etalf(h0e1) where
+hend = H0Etalf( h0e1 ) where
 {
 //
 val-
-D3Etalf(d3e1) = d3e0.node()
+D3Etalf(d3e1) = d3e0.node( )
 //
 val
 h0e1 = trcmp30_dexp(env0, d3e1)
@@ -2015,17 +2064,18 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
-hend = H0Efold(h0e1) where
+hend = H0Efold( h0e1 ) where
 {
 //
 val-
-D3Efold(d3e1) = d3e0.node()
+D3Efold(d3e1) = d3e0.node( )
 //
 val
 h0e1 = trcmp30_dexp(env0, d3e1)
@@ -2046,19 +2096,20 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
-H0Eeval(knd0, h0e1) where
+H0Eeval( knd0, h0e1 ) where
 {
 //
 val-
 D3Eeval
-(knd0, d3e1) = d3e0.node()
+(knd0, d3e1) = d3e0.node( )
 //
 val
 h0e1 = trcmp30_dexp(env0, d3e1)
@@ -2079,19 +2130,20 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
-H0Efree(knd0, h0e1) where
+H0Efree( knd0, h0e1 ) where
 {
 //
 val-
 D3Efree
-(knd0, d3e1) = d3e0.node()
+(knd0, d3e1) = d3e0.node( )
 //
 val
 h0e1 = trcmp30_dexp(env0, d3e1)
@@ -2112,10 +2164,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend = H0Eraise(h0e1) where
@@ -2143,17 +2196,18 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
-hend = H0Elazy(h0e1) where
+hend = H0Elazy( h0e1 ) where
 {
 //
 val-
-D3Elazy(d3e1) = d3e0.node()
+D3Elazy(d3e1) = d3e0.node( )
 //
 val
 h0e1 = trcmp30_dexp(env0, d3e1)
@@ -2174,19 +2228,20 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
-H0Ellazy(h0e1, h0es) where
+H0Ellazy( h0e1, h0es ) where
 {
 //
 val-
 D3Ellazy
-(d3e1, d3es) = d3e0.node()
+(d3e1, d3es) = d3e0.node(  )
 //
 val
 h0e1 = trcmp30_dexp(env0, d3e1)
@@ -2248,22 +2303,22 @@ D3Eflt _ => auxflt(d3e0)
 D3Estr _ => auxstr(d3e0)
 //
 |
-D3Etop _ => auxtop(d3e0)
+D3Etop _ => auxtop(env0, d3e0)
 //
 |
-D3Evar _ => auxvar(d3e0)
+D3Evar _ => auxvar(env0, d3e0)
 |
-D3Ekvar _ => auxkvar(d3e0)
+D3Ekvar _ => auxkvar(env0, d3e0)
 //
 |
-D3Efcon _ => auxfcon(d3e0)
+D3Efcon _ => auxfcon(env0, d3e0)
 |
-D3Efcst _ => auxfcst(d3e0)
+D3Efcst _ => auxfcst(env0, d3e0)
 //
 |
-D3Etcon _ => auxtcon(d3e0)
+D3Etcon _ => auxtcon(env0, d3e0)
 |
-D3Etcst _ => auxtcst(d3e0)
+D3Etcst _ => auxtcst(env0, d3e0)
 //
 |
 D3Etimp _ => auxtimp(env0, d3e0)
@@ -2340,10 +2395,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 in
 h0exp_make_node(loc0, h0t0, H0Enone0())
@@ -2354,10 +2410,11 @@ let
 //
 val
 loc0 = d3e0.loc()
+//
 val
 t2p0 = d3e0.type()
 val
-h0t0 = trcmp30_type(t2p0)
+h0t0 = trsubt2p(env0, t2p0)
 //
 val
 hend =
