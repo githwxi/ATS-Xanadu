@@ -68,6 +68,26 @@ compenv_free_nil
 (* ****** ****** *)
 //
 fun
+compenv_pop0_timp
+(env0: !compenv): void
+fun
+compenv_push_timp
+( env0
+: !compenv
+, d3e0: d3exp
+, s2vs: s2varlst
+, tsub: t2ypelst): void
+//
+(* ****** ****** *)
+//
+fun
+t2ype_subst_compenv
+( t2p0: t2ype
+, env0: !compenv ) : t2ype
+//
+(* ****** ****** *)
+//
+fun
 htcst_make_scst(s2cst): htcst
 fun
 htvar_make_svar(s2var): htvar
