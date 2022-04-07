@@ -1280,11 +1280,14 @@ D3Etimp
 , d3e1, targ
 , d3cl, tsub) = d3e0.node()
 //
-val h0e1 =
-trcmp30_dexp(env0, d3e1)
-val targ = trcmp30_typelst(targ)
+val
+h0e1 =
+(
+  trcmp30_dexp( env0, d3e1 )
+)
 //
-val s2vs =
+val
+s2vs =
 (
 case-
 d3cl.node() of
@@ -1327,11 +1330,13 @@ trcmp30_decl(env0, d3cl)
 val () =
 compenv_pop0_timp( env0 )
 //
+val targ = trcmp30_typelst(targ)
 val tsub = trcmp30_typelst(tsub)
 //
 in
 h0exp_make_node
-(loc0, h0t0, H0Etimp(stmp, h0e1, targ, hdcl, tsub))
+( loc0, h0t0
+, H0Etimp(stmp, h0e1, targ, hdcl, tsub))
 end // end of [auxtimp]
 //
 end // end of [ local ]
