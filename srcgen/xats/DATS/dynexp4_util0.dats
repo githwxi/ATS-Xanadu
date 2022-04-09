@@ -554,7 +554,8 @@ implement
 $LS.compare_elt_elt<elt>
 (x1, x2) =
 $effmask_all
-(compare(x1.stamp(), x2.stamp()))
+(cmp_stamp_stamp
+ (x1.stamp(), x2.stamp()))
 (* ****** ****** *)
 //
 fun

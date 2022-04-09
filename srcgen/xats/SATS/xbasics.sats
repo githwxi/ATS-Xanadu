@@ -310,7 +310,7 @@ typedef
 neq_type(a:t0ype) = (a, a) -> bool
 //
 typedef
-compare_type(a:t0ype) = (a, a) -> int
+cmp_type(a:t0ype) = (a, a) -> (int)
 //
 (* ****** ****** *)
 //

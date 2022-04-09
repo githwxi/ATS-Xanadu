@@ -76,7 +76,7 @@ overload <= with lte_stamp_stamp
 overload = with eq_stamp_stamp
 overload != with neq_stamp_stamp
 //
-overload compare with cmp_stamp_stamp
+overload cmp with cmp_stamp_stamp
 //
 (* ****** ****** *)
 //

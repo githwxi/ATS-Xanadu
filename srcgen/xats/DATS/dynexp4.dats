@@ -560,7 +560,8 @@ implement
 $FS.compare_elt_elt<elt>
 (k1, k2) =
 $effmask_all
-(compare(k1.stamp(), k2.stamp()))
+(cmp_stamp_stamp
+ (k1.stamp(), k2.stamp()))
 //
 (* ****** ****** *)
 

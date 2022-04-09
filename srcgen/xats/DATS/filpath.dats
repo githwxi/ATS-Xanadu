@@ -1026,15 +1026,15 @@ end // end of [local]
 //
 implement
 eq_filpath_filpath
-  (x, y) = (compare(x, y) = 0)
+  (x, y) = (cmp(x, y) = 0)
 implement
 neq_filpath_filpath
-  (x, y) = (compare(x, y) != 0)
+  (x, y) = (cmp(x, y) != 0)
 //
 (* ****** ****** *)
 
 implement
-compare_filpath_filpath
+cmp_filpath_filpath
   (x1, x2) = let
 //
 val f1 =

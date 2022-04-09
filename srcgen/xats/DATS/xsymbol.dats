@@ -189,8 +189,8 @@ neq_symbol_symbol(x, y) =
   (x.stamp() != y.stamp())
 //
 implement
-compare_symbol_symbol(x, y) =
-  compare(x.stamp(), y.stamp())
+cmp_symbol_symbol(x, y) =
+compare(x.stamp(), y.stamp())
 //
 (* ****** ****** *)
 //
