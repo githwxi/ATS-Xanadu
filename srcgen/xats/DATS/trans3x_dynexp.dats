@@ -276,12 +276,12 @@ F3ARGnone3 _ => f3a0
 F3ARGsome_dyn
 ( npf1, d3ps ) =>
 let
-  val loc0 = f3a0.loc()
-  val d3ps =
-  trans3x_dpatlst(env0, d3ps)
+val loc0 = f3a0.loc()
+val d3ps =
+trans3x_dpatlst(env0, d3ps)
 in
-  f3arg_make_node
-  (loc0, F3ARGsome_dyn(npf1, d3ps))
+f3arg_make_node
+(loc0, F3ARGsome_dyn(npf1, d3ps))
 end // end of [F3ARGsome_dyn]
 //
 | F3ARGsome_sta _ => f3a0 // NF-ize?
@@ -299,8 +299,8 @@ list_nil() => list_nil()
 list_cons(f3a1, f3as) =>
 list_cons(f3a1, f3as) where
 {
-  val f3a1 = trans3x_farg(env0, f3a1)
-  val f3as = trans3x_farglst(env0, f3as)
+val f3a1 = trans3x_farg(env0, f3a1)
+val f3as = trans3x_farglst(env0, f3as)
 }
 ) (*case*) // end of [trans3x_farglst]
 //
@@ -1473,12 +1473,14 @@ D3Cimpdecl3
 , res1, body) = d3cl.node()
 //
 local
+//
 fun
 aux_f3as_body
 ( env0
 : !tr3xenv
 , f3as
-: f3arglst, body: d3exp): d3exp =
+: f3arglst
+, body: d3exp): d3exp =
 let
 val () =
 tr3xenv_add_lams(env0, f3as)
@@ -1488,12 +1490,18 @@ body = trans3x_dexp(env0, body)
 //
 in
 let
-val () = tr3xenv_pop_lams(env0) in body
+  val () =
+  tr3xenv_pop_lams(env0) in body
 end
 end // end of [aux_f3as_body]
-in
-val body =
-aux_f3as_body(env0, f3as, body)
+//
+in(*in-of-local*)
+//
+val
+f3as = trans3x_farglst(env0,f3as)
+val
+body = aux_f3as_body(env0,f3as,body)
+//
 end // end of [local]
 //
 in
