@@ -143,14 +143,13 @@ neq_filpath_filpath
 (x1: filpath, x2: filpath):<> bool
 //
 fun
-compare_filpath_filpath
+cmp_filpath_filpath
 (x1: filpath, x2: filpath):<> (Sgn)
 //
 overload = with eq_filpath_filpath
 overload != with neq_filpath_filpath
 //
-overload
-compare with compare_filpath_filpath
+overload cmp with cmp_filpath_filpath
 //
 (* ****** ****** *)
 //

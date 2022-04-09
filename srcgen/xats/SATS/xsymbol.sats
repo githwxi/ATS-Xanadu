@@ -257,15 +257,16 @@ fun eq_symbol_symbol: eq_type(symbol)
 fun neq_symbol_symbol: neq_type(symbol)
 //
 fun
-compare_symbol_symbol: compare_type(symbol)
+cmp_symbol_symbol
+(x1: symbol, x2: symbol):int(*sgn*)
 //
 overload = with eq_symbol_symbol
 overload != with neq_symbol_symbol
 //
+overload cmp with cmp_symbol_symbol
+//
 overload iseqz with symbol_is_nil
 overload isneqz with symbol_isnot_nil
-//
-overload compare with compare_symbol_symbol
 //
 (* ****** ****** *)
 //

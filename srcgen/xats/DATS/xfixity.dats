@@ -185,17 +185,20 @@ end // end of [local]
 //
 implement
 add_prcdv_int(p, i) =
-int2prcdv(g0int_add_int(prcdv2int(p), i))
+int2prcdv
+(g0int_add_int(prcdv2int(p), i))
 implement
 sub_prcdv_int(p, i) =
-int2prcdv(g0int_sub_int(prcdv2int(p), i))
+int2prcdv
+(g0int_sub_int(prcdv2int(p), i))
 //
 (* ****** ****** *)
 //
 implement
-compare_prcdv_prcdv
-  (x0, x1) =
-  compare(prcdv2int(x0), prcdv2int(x1))
+cmp_prcdv_prcdv(x0, x1) =
+compare(prcdv2int(x0), prcdv2int(x1))
+//
+overload compare with cmp_prcdv_prcdv
 //
 (* ****** ****** *)
 //

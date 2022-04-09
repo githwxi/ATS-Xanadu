@@ -88,13 +88,14 @@ add_prcdv_int(prcdv, int): prcdv
 and
 sub_prcdv_int(prcdv, int): prcdv
 //
+fun
+cmp_prcdv_prcdv
+(p1:prcdv, p2:prcdv): int(*sgn*)
+//
 overload + with add_prcdv_int
 overload - with sub_prcdv_int
 //
-fun
-compare_prcdv_prcdv: (prcdv, prcdv) -> int
-//
-overload compare with compare_prcdv_prcdv
+overload cmp with cmp_prcdv_prcdv
 //
 (* ****** ****** *)
 //

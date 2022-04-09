@@ -1168,7 +1168,7 @@ None()
 |
 Some(f3as) =>
 Some(trans3x_farglst(env0, f3as))
-) : f3arglstopt
+) : f3arglstopt//end-of [val a3g]
 //
 val def =
 (
