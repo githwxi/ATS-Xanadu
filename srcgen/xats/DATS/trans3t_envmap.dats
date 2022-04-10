@@ -82,7 +82,10 @@ d3ecl_get_stamp
 case-
 d3cl.node() of
 |
-D3Cfundecl _ => the_stamp0
+D3Cfundecl _ =>
+(
+  the_stamp_null
+)
 |
 D3Cimpdecl3
 ( tok
@@ -97,7 +100,7 @@ val () =
 println!
 ("d3ecl_get_stamp: d3cl = ", d3cl)
 *)
-} (* end of [d3ecl_get_stamp] *)
+}(*where*)//end-of[d3ecl_get_stamp]
 //
 (* ****** ****** *)
 
@@ -159,12 +162,21 @@ end // end of [local]
 in
 //
 if
-stm0=stm1
+(*
+HX-2022-04-10:
+The test is only
+needed for [impdecl3]!
+*)
+iseqz(stm0)
+then false else
+(
+if
+(stm0=stm1)
 then
 (
 case- ti3a of
 TI3ARGsome(t2ps) =>
-match3(targ, t2ps)) else false
+match3(targ, t2ps)) else false)
 //
 end // end of [auxd3e1]
 and

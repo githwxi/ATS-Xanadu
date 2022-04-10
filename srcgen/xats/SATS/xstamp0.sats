@@ -40,14 +40,20 @@ typedef stamp = stamp_type
 typedef stampopt = Option(stamp)
 //
 (* ****** ****** *)
-
-val the_stamp0 : stamp
-
+//
+val
+the_stamp_null: stamp
+//
+fun
+stamp_iseqz
+(x0: stamp):<> bool
+overload
+iseqz with stamp_iseqz
+//
 (* ****** ****** *)
 //
 fun
 stamp2uint(stamp):<> uint
-//
 overload .uint with stamp2uint
 //
 (* ****** ****** *)

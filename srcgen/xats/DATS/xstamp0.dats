@@ -50,8 +50,12 @@ absimpl stamp_type = ptr
 (* ****** ****** *)
 //
 implement
-the_stamp0 = ( the_null_ptr )
+the_stamp_null = the_null_ptr
 //
+(* ****** ****** *)
+implement
+stamp_iseqz(x0) =
+eq_ptr0_ptr0(x0, the_null_ptr)
 (* ****** ****** *)
 //
 implement

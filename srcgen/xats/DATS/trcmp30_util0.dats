@@ -229,13 +229,13 @@ in(*in-of-local*)
 
 implement
 the_scstmap_search_ref
-  (d2v0) = let
+  (s2c0) = let
 //
 val
 map =
 $UN.ptr0_get<scstmap>(the_scstmap)
 val ref =
-linmap_search_ref<key,itm>(map,d2v0)
+linmap_search_ref<key,itm>(map,s2c0)
 //
 in
 let
@@ -244,12 +244,14 @@ prval () = lemma_p2tr_param(ref) in ref
 end
 end // end of [the_scstmap_search_ref]
 
+(* ****** ****** *)
+
 implement
 the_scstmap_search_opt
-  (d2v0) = let
+  (s2c0) = let
 //
 val
-ref = the_scstmap_search_ref(d2v0)
+ref = the_scstmap_search_ref(s2c0)
 //
 in
 //
@@ -264,7 +266,7 @@ end // end of [the_scstmap_search_opt]
 
 implement
 the_scstmap_insert_any
-  (d2v0, hdv1) = let
+  (s2c0, htc1) = let
 //
 var
 map =
@@ -276,13 +278,15 @@ $UN.ptr0_set<scstmap>(the_scstmap, map)
 ) where
 {
 val () =
-linmap_insert_any<key,itm>(map, d2v0, hdv1)
+linmap_insert_any<key,itm>(map, s2c0, htc1)
 }
 end // end of [the_scstmap_insert_any]
 
+(* ****** ****** *)
+
 implement
 the_scstmap_insert_exn
-  (d2v0, hdv1) = let
+  (s2c0, htc1) = let
 //
 var
 map =
@@ -295,7 +299,7 @@ $UN.ptr0_set<scstmap>(the_scstmap, map)
 {
 val-
 ~None_vt() =
-linmap_insert_opt<key,itm>(map, d2v0, hdv1)
+linmap_insert_opt<key,itm>(map, s2c0, htc1)
 }
 end // end of [the_scstmap_insert_exn]
 
@@ -339,13 +343,13 @@ in(*in-of-local*)
 
 implement
 the_svarmap_search_ref
-  (d2v0) = let
+  (s2v0) = let
 //
 val
 map =
 $UN.ptr0_get<svarmap>(the_svarmap)
 val ref =
-linmap_search_ref<key,itm>(map,d2v0)
+linmap_search_ref<key,itm>(map,s2v0)
 //
 in
 let
@@ -356,10 +360,10 @@ end // end of [the_svarmap_search_ref]
 
 implement
 the_svarmap_search_opt
-  (d2v0) = let
+  (s2v0) = let
 //
 val
-ref = the_svarmap_search_ref(d2v0)
+ref = the_svarmap_search_ref(s2v0)
 //
 in
 //
@@ -374,7 +378,7 @@ end // end of [the_svarmap_search_opt]
 
 implement
 the_svarmap_insert_any
-  (d2v0, hdv1) = let
+  (s2v0, htv1) = let
 //
 var
 map =
@@ -386,13 +390,13 @@ $UN.ptr0_set<svarmap>(the_svarmap, map)
 ) where
 {
 val () =
-linmap_insert_any<key,itm>(map, d2v0, hdv1)
+linmap_insert_any<key,itm>(map, s2v0, htv1)
 }
 end // end of [the_svarmap_insert_any]
 
 implement
 the_svarmap_insert_exn
-  (d2v0, hdv1) = let
+  (s2v0, htv1) = let
 //
 var
 map =
@@ -405,7 +409,7 @@ $UN.ptr0_set<svarmap>(the_svarmap, map)
 {
 val-
 ~None_vt() =
-linmap_insert_opt<key,itm>(map, d2v0, hdv1)
+linmap_insert_opt<key,itm>(map, s2v0, htv1)
 }
 end // end of [the_svarmap_insert_exn]
 
@@ -449,13 +453,13 @@ in(*in-of-local*)
 
 implement
 the_dconmap_search_ref
-  (d2v0) = let
+  (d2c0) = let
 //
 val
 map =
 $UN.ptr0_get<dconmap>(the_dconmap)
 val ref =
-linmap_search_ref<key,itm>(map,d2v0)
+linmap_search_ref<key,itm>(map,d2c0)
 //
 in
 let
@@ -466,10 +470,10 @@ end // end of [the_dconmap_search_ref]
 
 implement
 the_dconmap_search_opt
-  (d2v0) = let
+  (d2c0) = let
 //
 val
-ref = the_dconmap_search_ref(d2v0)
+ref = the_dconmap_search_ref(d2c0)
 //
 in
 //
@@ -484,7 +488,7 @@ end // end of [the_dconmap_search_opt]
 
 implement
 the_dconmap_insert_any
-  (d2v0, hdv1) = let
+  (d2c0, hdc1) = let
 //
 var
 map =
@@ -496,13 +500,13 @@ $UN.ptr0_set<dconmap>(the_dconmap, map)
 ) where
 {
 val () =
-linmap_insert_any<key,itm>(map, d2v0, hdv1)
+linmap_insert_any<key,itm>(map, d2c0, hdc1)
 }
 end // end of [the_dconmap_insert_any]
 
 implement
 the_dconmap_insert_exn
-  (d2v0, hdv1) = let
+  (d2c0, hdc1) = let
 //
 var
 map =
@@ -515,7 +519,7 @@ $UN.ptr0_set<dconmap>(the_dconmap, map)
 {
 val-
 ~None_vt() =
-linmap_insert_opt<key,itm>(map, d2v0, hdv1)
+linmap_insert_opt<key,itm>(map, d2c0, hdc1)
 }
 end // end of [the_dconmap_insert_exn]
 
@@ -559,13 +563,13 @@ in(*in-of-local*)
 
 implement
 the_dcstmap_search_ref
-  (d2v0) = let
+  (d2c0) = let
 //
 val
 map =
 $UN.ptr0_get<dcstmap>(the_dcstmap)
 val ref =
-linmap_search_ref<key,itm>(map,d2v0)
+linmap_search_ref<key,itm>(map,d2c0)
 //
 in
 let
@@ -576,10 +580,10 @@ end // end of [the_dcstmap_search_ref]
 
 implement
 the_dcstmap_search_opt
-  (d2v0) = let
+  (d2c0) = let
 //
 val
-ref = the_dcstmap_search_ref(d2v0)
+ref = the_dcstmap_search_ref(d2c0)
 //
 in
 //
@@ -594,7 +598,7 @@ end // end of [the_dcstmap_search_opt]
 
 implement
 the_dcstmap_insert_any
-  (d2v0, hdv1) = let
+  (d2c0, hdc1) = let
 //
 var
 map =
@@ -606,13 +610,13 @@ $UN.ptr0_set<dcstmap>(the_dcstmap, map)
 ) where
 {
 val () =
-linmap_insert_any<key,itm>(map, d2v0, hdv1)
+linmap_insert_any<key,itm>(map, d2c0, hdc1)
 }
 end // end of [the_dcstmap_insert_any]
 
 implement
 the_dcstmap_insert_exn
-  (d2v0, hdv1) = let
+  (d2c0, hdc1) = let
 //
 var
 map =
@@ -625,7 +629,7 @@ $UN.ptr0_set<dcstmap>(the_dcstmap, map)
 {
 val-
 ~None_vt() =
-linmap_insert_opt<key,itm>(map, d2v0, hdv1)
+linmap_insert_opt<key,itm>(map, d2c0, hdc1)
 }
 end // end of [the_dcstmap_insert_exn]
 
