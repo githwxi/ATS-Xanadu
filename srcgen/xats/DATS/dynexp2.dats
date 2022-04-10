@@ -167,7 +167,8 @@ stamper = $STM.stamper_new()
 in (* in-of-local *)
 
 implement
-d2con_stamp_new() = $STM.stamper_getinc(stamper)
+d2con_stamp_new
+((*void*)) = $STM.stamper_getinc(stamper)
 
 end // end of [local]
 
@@ -181,17 +182,17 @@ stamper = $STM.stamper_new()
 in (* in-of-local *)
 //
 implement
-d2cst_stamp_new() =
+d2cst_stamp_new
+((*void*)) =
 stamp where
 {
   val
-  stamp =
-  $STM.stamper_getinc(stamper)
+  stamp = $STM.stamper_getinc( stamper )
 (*
   val () =
   fprintln!
   ( stdout_ref
-  , "d2cst_stamp_new: stamp = ", stamp)
+  , "d2cst_stamp_new: stamp = ", stamp )
 *)
 }
 //
@@ -207,7 +208,8 @@ stamper = $STM.stamper_new()
 in (* in-of-local *)
 
 implement
-d2var_stamp_new() = $STM.stamper_getinc(stamper)
+d2var_stamp_new
+((*void*)) = $STM.stamper_getinc(stamper)
 
 end // end of [local]
 
@@ -443,13 +445,16 @@ end // end of [d2pat_trcd1]
 local
 
 val
-stamper = $STM.stamper_new()
+stamper =
+$STM.stamper_new()
+val () =
+$STM.stamper_set(stamper, 1001u)
 
 in (* in-of-local *)
 
 implement
 d2cimp_stamp_new
-() = $STM.stamper_getinc(stamper)
+((*void*)) = $STM.stamper_getinc(stamper)
 
 end // end of [local]
 

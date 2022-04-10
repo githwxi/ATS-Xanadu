@@ -63,8 +63,12 @@ local
 #staload _ =
 "libats/DATS/linmap_avltree.dats"
 //
+(* ****** ****** *)
+//
 absimpl
 symmap_vtype(itm:type) = map(key, itm)
+//
+(* ****** ****** *)
 //
 implement
 equal_key_key<key>(k0, k1) = (k0 = k1)
