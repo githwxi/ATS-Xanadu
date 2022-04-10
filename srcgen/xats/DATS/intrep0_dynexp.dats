@@ -57,114 +57,6 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-local
-//
-(*
-HX-2020-09-13:
-The tag of a constructor is
-nonnegative if the constructor
-is associated with a datatype.
-Otherwise, the tag is set to be
--1 to indicate the constructor
-is associated with 'exception'.
-*)
-//
-typedef
-tag_t = int
-typedef
-htqas = htqarglst
-//
-(* ****** ****** *)
-//
-typedef
-hdcon_struct = @{
-//
-  hdcon_loc= loc_t // loc
-, hdcon_sym= sym_t // name
-, hdcon_tag= tag_t // tag
-, hdcon_tqas= htqas // tqas
-, hdcon_type= h0typ // type
-, hdcon_dvar= hdvar // r-time
-, hdcon_stamp= stamp // unicity
-//
-} (* end of [hdcon_tbox] *)
-
-absimpl
-hdcon_tbox = ref(hdcon_struct)
-
-in(* in-of-local *)
-
-(* ****** ****** *)
-
-implement
-hdcon_get_loc
-(hdc) = hdc->hdcon_loc
-implement
-hdcon_get_sym
-(hdc) = hdc->hdcon_sym
-//
-implement
-hdcon_get_tag
-(hdc) = hdc->hdcon_tag
-implement
-hdcon_set_tag
-(hdc, tag) =
-(hdc->hdcon_tag := tag)
-//
-implement
-hdcon_get_tqas
-(hdc) = hdc->hdcon_tqas
-implement
-hdcon_get_type
-(hdc) = hdc->hdcon_type
-//
-implement
-hdcon_get_dvar
-(hdc) = hdc->hdcon_dvar
-//
-implement
-hdcon_get_stamp
-(hdc) = hdc->hdcon_stamp
-
-(* ****** ****** *)
-
-implement
-hdcon_make_idtp
-( loc
-, sym
-, tqas, htp0) =
-(
-ref<hdcon_struct>
-@{
-  hdcon_loc=loc
-, hdcon_sym=sym
-, hdcon_tag=(~1)
-, hdcon_tqas=tqas
-, hdcon_type=htp0
-, hdcon_dvar=hdv0
-, hdcon_stamp=stamp
-}
-) where
-{
-//
-  val knd =
-  T_EOF(*void*)
-//
-  val hdv0 =
-  hdvar_make_idtp
-  (loc, sym, knd, htp0)
-//
-  val
-  stamp = hdcon_stamp_new()
-//
-} (* end of [hdcon_make_idtp] *)
-
-(* ****** ****** *)
-
-end // end of [local]
-
-(* ****** ****** *)
-
 implement
 eq_hdcon_hdcon(x1, x2) =
 (x1.stamp() = x2.stamp())
@@ -174,90 +66,6 @@ eq_hdcst_hdcst(x1, x2) =
 implement
 eq_hdvar_hdvar(x1, x2) =
 (x1.stamp() = x2.stamp())
-
-(* ****** ****** *)
-
-local
-//
-typedef
-htqas = htqarglst
-//
-typedef
-hdcst_struct = @{
-//
-  hdcst_loc= loc_t // loc
-, hdcst_sym= sym_t // name
-, hdcst_kind= tnode // kind
-, hdcst_tqas= htqas // tqas
-, hdcst_type= h0typ // type
-, hdcst_xknd= x2knd // xknd
-, hdcst_xnam= x2nam // xnam
-, hdcst_stamp= stamp // unicity
-//
-} (* end of [hdcon_tbox] *)
-
-absimpl
-hdcst_tbox = ref(hdcst_struct)
-
-in(* in-of-local *)
-
-(* ****** ****** *)
-
-implement
-hdcst_get_loc
-(hdc) = hdc->hdcst_loc
-implement
-hdcst_get_sym
-(hdc) = hdc->hdcst_sym
-//
-implement
-hdcst_get_kind
-(hdc) = hdc->hdcst_kind
-//
-implement
-hdcst_get_type
-(hdc) = hdc->hdcst_type
-//
-implement
-hdcst_get_xknd
-(hdc) = hdc->hdcst_xknd
-implement
-hdcst_get_xnam
-(hdc) = hdc->hdcst_xnam
-//
-implement
-hdcst_get_stamp
-(hdc) = hdc->hdcst_stamp
-
-(* ****** ****** *)
-
-implement
-hdcst_make_idtp
-( loc
-, sym
-, knd
-, tqas, htp0
-, xkd1, xnm2) =
-(
-ref<hdcst_struct>
-@{
-  hdcst_loc=loc
-, hdcst_sym=sym
-, hdcst_kind=knd
-, hdcst_tqas=tqas
-, hdcst_type=htp0
-, hdcst_xknd=xkd1
-, hdcst_xnam=xnm2
-, hdcst_stamp=stamp
-}
-) where
-{
-  val stamp = hdcst_stamp_new()
-} (* end of [hdcst_make_idtp] *)
-
-(* ****** ****** *)
-
-end // end of [local]
 
 (* ****** ****** *)
 
@@ -282,64 +90,6 @@ case+ fnk of
 | _ (* rest-of-tnode *) => false
 //
 end // end of [hdcst_iscast]
-
-(* ****** ****** *)
-
-local
-
-typedef
-hdvar_struct = @{
-//
-  hdvar_loc= loc_t // loc
-, hdvar_sym= sym_t // name
-, hdvar_kind= tnode // kind
-, hdvar_type= h0typ // type
-, hdvar_stamp= stamp // unicity
-//
-} (* end of [hdvar_tbox] *)
-
-absimpl
-hdvar_tbox = ref(hdvar_struct)
-
-in(* in-of-local *)
-
-implement
-hdvar_get_loc
-(hdv) = hdv->hdvar_loc
-implement
-hdvar_get_sym
-(hdv) = hdv->hdvar_sym
-//
-implement
-hdvar_get_kind
-(hdv) = hdv->hdvar_kind
-implement
-hdvar_get_type
-(hdv) = hdv->hdvar_type
-//
-implement
-hdvar_get_stamp
-(hdv) = hdv->hdvar_stamp
-
-implement
-hdvar_make_idtp
-( loc
-, sym, knd, htp) =
-(
-ref<hdvar_struct>
-@{
-  hdvar_loc=loc
-, hdvar_sym=sym
-, hdvar_kind=knd
-, hdvar_type=htp
-, hdvar_stamp=stamp
-}
-) where
-{
-  val stamp = hdvar_stamp_new()
-}
-
-end // end of [local]
 
 (* ****** ****** *)
 
@@ -542,7 +292,8 @@ h0dcl_get_node
 implement
 h0dcl_make_node
 (loc0, node) = $rec
-{ h0dcl_loc= loc0, h0dcl_node= node
+{
+  h0dcl_loc= loc0, h0dcl_node= node
 } (* h0dcl_make_node *)
 //
 end // end of [local]
