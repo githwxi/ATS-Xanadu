@@ -1345,6 +1345,9 @@ d2ecl_node =
 | D2Cextern of
   (token(*EXTERN*), d2ecl)
 //
+| D2Clocal of
+  (d2eclist(*local*), d2eclist)
+//
 | D2Cinclude of
   ( token
   , g1exp // src
@@ -1358,9 +1361,6 @@ d2ecl_node =
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , int(*shared*), fmodenvopt)
-//
-| D2Clocal of
-  (d2eclist(*head*), d2eclist(*body*))
 //
 | D2Cabssort of (sym_t)
 //

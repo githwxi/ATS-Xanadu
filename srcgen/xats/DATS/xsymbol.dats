@@ -547,6 +547,8 @@ CLOREF_symbol = symbol_make("cloref")
 (* ****** ****** *)
 
 implement
+DLR_EXTBOX_symbol = symbol_make("$extbox")
+implement
 DLR_EXTYPE_symbol = symbol_make("$extype")
 
 (* ****** ****** *)

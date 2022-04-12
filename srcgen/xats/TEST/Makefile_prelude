@@ -23,6 +23,11 @@ all:: all_Xint_dats
 ######
 
 all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/basics.sats
+
+######
+
+all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gbas.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gord.sats

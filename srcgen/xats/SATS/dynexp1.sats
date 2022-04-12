@@ -937,6 +937,9 @@ d1ecl_node =
   , token(*g0eid*)
   , g1marglst(*arg*), d1expopt)
 //
+| D1Clocal of
+  (d1eclist(*local*), d1eclist)
+//
 | D1Cinclude of
   ( token
   , g1exp // src
@@ -1019,8 +1022,6 @@ d1ecl_node =
 //
 | D1Cdynconst of
   (token(*dyncstkind*), tq1arglst, d1cstdeclist)
-//
-| D1Clocal of (d1eclist(*head*), d1eclist(*body*))
 //
 | D1Celse of (token) // opt
 | D1Cendif of (token) // req

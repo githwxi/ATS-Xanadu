@@ -4357,24 +4357,27 @@ auxlams
 , body: s1exp): s2exp =
 (
 case+ arg of
-| list_nil() =>
-  (
+|
+list_nil() =>
+(
   case res of
   | None() =>
     trans12_sexp(body)
   | Some(s1t) =>
     trans12_sexp_ck
     (body, trans12_sort(s1t))
-  )
-| list_cons(x0, xs) =>
-  let
-    val
-    s2vs = trans12_smarg(x0)
-    val () = 
-    the_sexpenv_add_s2vs(s2vs)
-  in
-    s2exp_lam(s2vs, auxlams(xs, res, body))
-  end // end of [list_cons]
+)
+|
+list_cons(x0, xs) =>
+let
+  val
+  s2vs = trans12_smarg(x0)
+  val () = 
+  the_sexpenv_add_s2vs(s2vs)
+in
+  s2exp_lam
+  (s2vs, auxlams(xs, res, body))
+end // end of [list_cons]
 )
 //
 } (* where *) // end of [val]
@@ -4495,9 +4498,9 @@ val () = stamp_s2cst_type(s2c0, t2p0)
 //
 in
 let
-  val () = the_sexpenv_add_cst(s2c0)
+val () = the_sexpenv_add_cst(s2c0)
 in
-  d2ecl_make_node(loc0, D2Csexpdef(s2c0, s2e0))
+d2ecl_make_node(loc0, D2Csexpdef(s2c0, s2e0))
 end
 end // end of [aux_sexpdef]
 
@@ -6822,38 +6825,41 @@ d1cl.node() of
 | D1Cd0ecl(_) =>
   d2ecl_make_node(loc0, D2Cd1ecl(d1cl))
 //
-| D1Cstatic
-  (tok, d1c) =>
-  let
-    val d2c = trans12_decl(d1c)
-  in
-    d2ecl_make_node(loc0, D2Cstatic(tok, d2c))
-  end
-| D1Cextern
-  (tok, d1c) =>
-  let
-    val d2c = trans12_decl(d1c)
-  in
-    d2ecl_make_node(loc0, D2Cextern(tok, d2c))
-  end
+|
+D1Cstatic
+(tok, d1c) =>
+let
+val d2c = trans12_decl(d1c)
+in
+d2ecl_make_node(loc0, D2Cstatic(tok, d2c))
+end
+|
+D1Cextern
+(tok, d1c) =>
+let
+val d2c = trans12_decl(d1c)
+in
+d2ecl_make_node(loc0, D2Cextern(tok, d2c))
+end
 //
 | D1Cdefine _ => aux_define(d1cl)
 //
-| D1Clocal
-  (head, body) => let
-    val
-    (pf1|()) =
-    the_trans12_pushnil()
-    val head = trans12_declist(head)
-    val
-    (pf2|()) =
-    the_trans12_pushnil()
-    val body = trans12_declist(body)
-    val ((*void*)) =
-    the_trans12_locjoin(pf1, pf2 | (*none*))
-  in
-    d2ecl_make_node(loc0, D2Clocal(head, body))
-  end // end of [D1Clocal]
+|
+D1Clocal
+(head, body) => let
+val
+(pf1|()) =
+the_trans12_pushnil()
+val head = trans12_declist(head)
+val
+(pf2|()) =
+the_trans12_pushnil()
+val body = trans12_declist(body)
+val ((*void*)) =
+the_trans12_locjoin(pf1, pf2 | (*none*))
+in
+d2ecl_make_node(loc0, D2Clocal(head, body))
+end // end of [D1Clocal]
 //
 | D1Cinclude _ => aux_include(d1cl)
 //

@@ -69,6 +69,16 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 implement
+fprint_val<h0typ> = fprint_h0typ
+//
+implement
+fprint_val<h0pat> = fprint_h0pat
+implement
+fprint_val<h0exp> = fprint_h0exp
+//
+(* ****** ****** *)
+//
+implement
 trcmp30_envless
   (prog) =
   (prog) where
@@ -2751,6 +2761,75 @@ h0dcl_make_node
 end // end of [aux_include]
 
 (* ****** ****** *)
+
+fun
+aux_abstype
+( env0:
+! compenv
+, d3cl: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cabstype
+(s2c1, def2) = d3cl.node()
+//
+val
+htc1 = trcmp30_scst( s2c1 )
+//
+val () =
+(
+case- def2 of
+(*
+|
+ABSTDF2none() => ((*void*))
+*)
+|
+ABSTDF2some() => ((*void*))
+|
+ABSTDF2lteq
+(tdef) =>
+let
+val
+tdef = t2ype_normize(tdef)
+in
+htc1.abstdf2(trcmp30_type(tdef))
+end
+|
+ABSTDF2eqeq
+(sdef, tdef) =>
+let
+val
+tdef = t2ype_normize(tdef)
+in
+htc1.abstdf2(trcmp30_type(tdef))
+end
+) : void // end-of[val ()]
+//
+val () =
+println!
+("aux_abstype: loc0 = ", loc0)
+val () =
+println!
+("aux_abstype: s2c1 = ", s2c1)
+val () =
+println!
+("aux_abstype: def2 = ", def2)
+val () =
+println!
+("\
+aux_abstype: \
+htc1.abstdf2 = ",htc1.abstdf2())
+//
+in
+h0dcl_make_node
+( loc0,
+  H0Cnone1($UN.cast{ptr}(d3cl)) )
+end // end of [aux_abstype]
+
+(* ****** ****** *)
 //
 fun
 aux_fundecl
@@ -3316,6 +3395,9 @@ end
 //
 |
 D3Cinclude _ => aux_include(env0, d3cl)
+//
+|
+D3Cabstype _ => aux_abstype(env0, d3cl)
 //
 |
 D3Cfundecl _ => aux_fundecl(env0, d3cl)

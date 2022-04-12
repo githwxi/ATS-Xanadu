@@ -34,9 +34,9 @@
 (* ****** ****** *)
 //
 abstype
-FILEref_tbox <= ptr
+FILEref_tbox <= ptr0
 absvwtp
-FILEptr_vtbx(l:addr) <= ptr
+FILEptr_vtbx(l:addr) <= ptr0
 //
 typedef FILEref = FILEref_tbox
 sexpdef FILEptr = FILEptr_vtbx
