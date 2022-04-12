@@ -2534,6 +2534,25 @@ in(* in-of-local *)
 (* ****** ****** *)
 
 fun
+aux_abstype
+( d2cl
+: d2ecl): d3ecl = let
+//
+val
+loc0 = d2cl.loc()
+val-
+D2Cabstype
+( s2c1
+, def2 ) = d2cl.node()
+//
+in
+d3ecl_make_node
+(loc0, D3Cabstype(s2c1, def2))
+end // end of [aux_abstype]
+
+(* ****** ****** *)
+
+fun
 aux_absopen
 ( d2cl
 : d2ecl): d3ecl = let
@@ -2542,14 +2561,14 @@ val
 loc0 = d2cl.loc()
 val-
 D2Cabsopen
-( tok
+( tok0
 , is2c ) = d2cl.node()
 //
 val is2c = auxis2c(is2c)
 //
 in
-  d3ecl_make_node
-  (loc0, D3Cabsopen(tok, is2c))
+d3ecl_make_node
+(loc0, D3Cabsopen(tok0, is2c))
 end // end of [aux_absopen]
 
 (* ****** ****** *)
@@ -2563,7 +2582,7 @@ val
 loc0 = d2cl.loc()
 val-
 D2Cabsimpl
-( tok
+( tok0
 , is2c
 , def1) = d2cl.node()
 //
@@ -2585,8 +2604,8 @@ IMPLS2CST2
 ) : s2exp // end of [val]
 //
 in
-  d3ecl_make_node
-  (loc0, D3Cabsimpl(tok, is2c, def1))
+d3ecl_make_node
+(loc0, D3Cabsimpl(tok0, is2c, def1))
 end // end of [aux_absimpl]
 
 (* ****** ****** *)
@@ -3404,6 +3423,8 @@ d2cl.node() of
 | D2Cinclude _ => aux_include(d2cl)
 | D2Cstaload _ => aux_staload(d2cl)
 //
+| D2Cabstype _ => aux_abstype(d2cl)
+//
 | D2Cabsopen _ => aux_absopen(d2cl)
 | D2Cabsimpl _ => aux_absimpl(d2cl)
 //
@@ -3425,9 +3446,6 @@ d2cl.node() of
 //
 | D2Csymload _ =>
   d3ecl_make_node(loc0, D3Cd2ecl(d2cl))
-//
-| D2Cabstype _ =>
-  d3ecl_make_node(loc0, D3Cabstype(d2cl))
 //
 | _ (* rest-of-d2ecl *) => d3ecl_none1(d2cl)
 //

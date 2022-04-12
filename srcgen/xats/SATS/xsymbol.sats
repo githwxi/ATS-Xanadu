@@ -210,6 +210,7 @@ val CLOREF_symbol : symbol // cloref
 //
 (* ****** ****** *)
 
+val DLR_EXTBOX_symbol : symbol // $extbox
 val DLR_EXTYPE_symbol : symbol // $extype
 
 (* ****** ****** *)

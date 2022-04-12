@@ -861,7 +861,8 @@ case+ x0.node() of
   (d1cs_head, d1cs_body) =>
   fprint!
   ( out
-  , "D1Clocal(", d1cs_head, "; ", d1cs_body, ")")
+  , "D1Clocal("
+  , d1cs_head, "; ", d1cs_body, ")")
 //
 | D1Cinclude
   (tok, src, knd, opt1, opt2) =>

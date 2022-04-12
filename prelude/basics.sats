@@ -415,10 +415,11 @@ abssort vtflt // viewtflt: linear tflt
 *)
 //
 (* ****** ****** *)
-//
 typedef
 void = $extype("xats_void_t")
-//
+(* ****** ****** *)
+typedef
+p0tr = $extbox("xats_p0tr_t")
 (* ****** ****** *)
 //
 typedef
@@ -880,23 +881,23 @@ ldouble = ldflt // double precision
 (* ****** ****** *)
 //
 abstype
-string_i0_x0(n:int) <= ptr
+string_i0_x0(n:int) <= p0tr
 abstype
-stropt_i0_x0(n:int) <= ptr
+stropt_i0_x0(n:int) <= p0tr
 //
 typedef
 string0 =
 [n:i0] string_i0_x0(n)
 typedef
 string1
-(n: int) = string_i0_x0(n)
+(n:int) = string_i0_x0( n )
 //
 typedef
 stropt0 =
 [n:i0] stropt_i0_x0(n)
 typedef
 stropt1
-(n: int) = stropt_i0_x0(n)
+(n:int) = stropt_i0_x0( n )
 //
 (* ****** ****** *)
 //
@@ -908,23 +909,23 @@ typedef stropt(n:int) = stropt1(n)
 (* ****** ****** *)
 //
 absvwtp
-string_i0_vx(n:int) <= ptr
+string_i0_vx(n:int) <= p0tr
 absvwtp
-stropt_i0_vx(n:int) <= ptr
+stropt_i0_vx(n:int) <= p0tr
 //
 vwtpdef
 string0_vt =
 [n:i0] string_i0_vx(n)
 vwtpdef
 string1_vt
-(n:int) = string_i0_vx(n)
+(n:int) = string_i0_vx( n )
 //
 vwtpdef
 stropt0_vt =
 [n:i0] stropt_i0_vx(n)
 vwtpdef
 stropt1_vt
-(n: int) = stropt_i0_vx(n)
+(n: int) = stropt_i0_vx( n )
 //
 (* ****** ****** *)
 //
@@ -939,17 +940,17 @@ vwtpdef stropt_vt(n:int) = stropt1_vt(n)
 // HX:
 // For exceptions:
 //
-absvwtp excptn_vt <= ptr
+absvwtp excptn_vt <= p0tr
 //
 (* ****** ****** *)
 //
 abstbox
-lazy_t0_x0(a: type+) <= ptr
+lazy_t0_x0(a: type+) <= p0tr
 typedef
-lazy(a:type) = lazy_t0_x0(a)
+lazy(a:type) = lazy_t0_x0( a )
 //
 absvtbx
-lazy_vt_vx(a: vwtp+) <= ptr
+lazy_vt_vx(a: vwtp+) <= p0tr
 vwtpdef
 lazy_vt(a:vwtp) = lazy_vt_vx(a)
 //

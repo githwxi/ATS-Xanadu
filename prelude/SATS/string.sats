@@ -117,13 +117,13 @@ which itself is just a no-op.
 *)
 //
 absvwtp
-strtmp_i0_vx(n:int) <= ptr
+strtmp_i0_vx(n:int) <= p0tr
 vwtpdef
 strtmp0_vt =
 [n:int] strtmp_i0_vx(n)
 vwtpdef
 strtmp1_vt
-(n: int) = strtmp_i0_vx(n)
+(n: int) = strtmp_i0_vx( n )
 //
 (* ****** ****** *)
 //

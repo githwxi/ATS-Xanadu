@@ -1427,7 +1427,7 @@ let
 val-
 T2Pvar
 (s2v0) = t2p0.node() in t2p0
-end // end of [auxvar]
+end (*let*) // end of [auxvar]
 
 (* ****** ****** *)
 
@@ -1460,7 +1460,7 @@ _(* else *) =>
   val () = flag := flag + 1
 }
 //
-end // end of [auxcst]
+end (*let*) // end of [auxcst]
 
 (* ****** ****** *)
 
@@ -1499,7 +1499,33 @@ end where
 }
 end // end of [let]
 //
-end // end of [auxxtv]
+end (*let*) // end of [auxxtv]
+
+(* ****** ****** *)
+
+and
+auxlft
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+//
+val-
+T2Plft(t2p1) = t2p0.node()
+//
+val fini = flag
+val t2p1 = auxt2p0(t2p1, flag)
+//
+in
+if
+fini = flag
+then t2p0 else
+let
+  val s2t0 = t2p0.sort()
+in
+t2ype_make_node(s2t0, T2Plft(t2p1))
+end
+end (*let*) // end of [auxlft]
 
 (* ****** ****** *)
 
@@ -1538,15 +1564,41 @@ end
 _ (*non-T2Plam*) =>
 if
 fini=flag
-then t2p0
-else
+then t2p0 else
 let
   val s2t0 = t2p0.sort()
 in
-t2ype_make_node(s2t0, T2Papp(t2p1, t2ps))
+t2ype_make_node(s2t0, T2Papp(t2p1,t2ps))
 end
 //
 end // end of [auxapp]
+
+(* ****** ****** *)
+
+and
+auxlam
+( t2p0: t2ype
+, flag
+: &int >> int): t2ype =
+let
+//
+val-
+T2Plam
+(s2vs, t2p1) = t2p0.node()
+//
+val fini = flag
+val t2p1 = auxt2p0(t2p1, flag)
+//
+in
+if
+fini = flag
+then t2p0 else
+let
+  val s2t0 = t2p0.sort()
+in
+t2ype_make_node(s2t0, T2Plam(s2vs,t2p1))
+end
+end (*let*) // end of [auxlam]
 
 (* ****** ****** *)
 
@@ -1571,13 +1623,14 @@ t2p0.node() of
 | T2Pxtv _ =>
   auxxtv(t2p0, flag)
 //
+| T2Plft _ =>
+  auxlft(t2p0, flag)
+//
 | T2Papp _ =>
   auxapp(t2p0, flag)
 //
-(*
-| T2Plft _ =>
-  auxlft(t2p0, flag)
-*)
+| T2Plam _ =>
+  auxlam(t2p0, flag)
 //
 |
 T2Pfun
@@ -1632,10 +1685,10 @@ let
   val s2t0 = t2p0.sort()
   val ltps = auxltps(ltps, flag)
 in
-t2ype_make_node(s2t0, T2Ptyrec(knd0, npf1, ltps))
+t2ype_make_node(s2t0,T2Ptyrec(knd0,npf1,ltps))
 end
 //
-| _ (*rest-of-t2ype*) => t2p0 // HX: FIXME!
+| _ (* rest-of-t2ype *) => t2p0 // HX: FIXME!
 //
 )
 

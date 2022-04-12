@@ -199,6 +199,16 @@ overload fprint with fprint_h0srt
 (* ****** ****** *)
 //
 fun
+htcst_get_sort(htcst): h0srt
+fun
+htvar_get_sort(htvar): h0srt
+//
+overload .sort with htcst_get_sort
+overload .sort with htvar_get_sort
+//
+(* ****** ****** *)
+//
+fun
 print_htcst: htcst -> void
 fun
 prerr_htcst: htcst -> void
@@ -373,6 +383,20 @@ hdvar_get_type(hdvar): h0typ
 overload .type with hdcon_get_type
 overload .type with hdcst_get_type
 overload .type with hdvar_get_type
+//
+(* ****** ****** *)
+//
+fun
+htcst_get_abstdf2
+(htc0: htcst): h0typopt
+fun
+htcst_set_abstdf2
+(htc0: htcst, h0t1: h0typ): void
+//
+overload
+.abstdf2 with htcst_get_abstdf2
+overload
+.abstdf2 with htcst_set_abstdf2
 //
 (* ****** ****** *)
 //
@@ -1092,7 +1116,8 @@ H0Cimpdecl3 of
 , htqargopt
 , hdcst, htiarg, hfarglst, h0exp)
 //
-| H0Cnone1 of (dataptr) // HX: for ignores
+|
+H0Cnone1 of (dataptr) // HX: for ignores
 //
 (* ****** ****** *)
 //

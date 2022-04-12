@@ -138,7 +138,16 @@ $rec{
   s2cst_loc= loc_t // loc
 , s2cst_sym= sym_t // name
 , s2cst_sort= sort2 // sort
+//
 , s2cst_stamp= stamp // unicity
+//
+(*
+// HX:
+// Note that this field
+// is already stored externally
+//
+, s2cst_isabs= abstdf2 // isabs?
+*)
 //
 } (* end of [s2cst_tbox] *)
 //

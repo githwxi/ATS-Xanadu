@@ -1010,8 +1010,12 @@ isextp
 case+
 s1e.node() of
 | S1Eid0(sid) =>
-  sid =
-  $SYM.DLR_EXTYPE_symbol
+(
+(sid =
+ $SYM.DLR_EXTBOX_symbol)
+||
+(sid =
+ $SYM.DLR_EXTYPE_symbol) )
 | _(*non-S1Eid0*) => false
 )
 
@@ -1430,7 +1434,24 @@ s1e2.node() of
 ) : s1explst // end of [val]
 //
 val
-s2t0 = the_sort2_type
+s2ta = // arg
+the_sort2_type
+val
+s2tr = // res
+let
+val-
+S1Eid0(sid) = s1e1.node()
+in
+ifcase
+| sid =
+  $SYM.DLR_EXTBOX_symbol =>
+  (     the_sort2_tbox     )
+| sid =
+  $SYM.DLR_EXTYPE_symbol =>
+  (     the_sort2_type     )
+| _(*non-extp*) => the_sort2_type
+end : sort2 // end of [val]
+//
 val
 tnm1 =
 (
@@ -1453,19 +1474,18 @@ list_nil() =>
 list_nil()
 |
 list_cons(x0, xs) =>
-trans12_sexplst_ck(xs, s2t0)) : s2explst
+trans12_sexplst_ck(xs, s2ta)) : s2explst
 //
 in
 //
 s2e0 where
 {
-  val s2e0 =
-  s2exp_tyext(the_sort2_type, tnm1, s2es)
+val s2e0 = s2exp_tyext(s2tr, tnm1, s2es)
 (*
-  val ((*void*)) =
-  println!("trans12_sexp: ")
-  val ((*void*)) =
-  println!("auxapp1_extp_: s2e0 = ", s2e0)
+val ((*void*)) =
+println!("trans12_sexp: ")
+val ((*void*)) =
+println!("auxapp1_extp_: s2e0 = ", s2e0)
 *)
 }
 //

@@ -139,6 +139,8 @@ htcst_struct = @{
 , htcst_sort= h0srt // type
 , htcst_stamp= stamp // unicity
 //
+, htcst_abstdf2= h0typopt
+//
 , htcst_hdconlst= Option(hdconlst)
 //
 } (* end of [htcst_tbox] *)
@@ -154,8 +156,21 @@ implement
 htcst_get_sym
 (htc) = htc->htcst_sym
 implement
+htcst_get_sort
+(htc) = htc->htcst_sort
+implement
 htcst_get_stamp
 (htc) = htc->htcst_stamp
+//
+(* ****** ****** *)
+//
+implement
+htcst_get_abstdf2
+(htc) = htc->htcst_abstdf2
+implement
+htcst_set_abstdf2
+(htc, h0t) =
+(htc->htcst_abstdf2 := Some(h0t))
 //
 (* ****** ****** *)
 //
@@ -179,6 +194,8 @@ ref<htcst_struct>
 , htcst_sym=sym
 , htcst_sort=hst
 , htcst_stamp=stamp
+//
+, htcst_abstdf2= None()
 //
 , htcst_hdconlst= None()
 //
@@ -213,6 +230,9 @@ in(* in-of-local *)
 implement
 htvar_get_sym
 (htv) = htv->htvar_sym
+implement
+htvar_get_sort
+(htv) = htv->htvar_sort
 implement
 htvar_get_stamp
 (htv) = htv->htvar_stamp

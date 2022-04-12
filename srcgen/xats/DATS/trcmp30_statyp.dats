@@ -119,10 +119,10 @@ Some_vt(htv1) => htv1
 | ~
 None_vt((*void*)) =>
 let
-val htv1 =
+val htc1 =
 htcst_make_scst(s2c0)
 in
-the_scstmap_insert_any(s2c0, htv1); htv1
+the_scstmap_insert_any(s2c0, htc1); htc1
 end
 end // end of [trcmp30_scst]
 
@@ -295,6 +295,74 @@ end // end of [auxapp]
 (* ****** ****** *)
 
 fun
+auxlam
+(t2p0: t2ype): h0typ =
+let
+val-
+T2Plam
+( s2vs
+, t2p1) = t2p0.node()
+//
+val
+htvs = auxlst(s2vs) where
+{
+fun
+auxlst
+(s2vs: s2varlst): htvarlst =
+(
+case+ s2vs of
+|
+list_nil() => list_nil()
+|
+list_cons(s2v1, s2vs) =>
+(
+if ~
+isimp(s2v1)
+then auxlst(s2vs)
+else
+let
+val
+htv1 = trcmp30_svar(s2v1)
+in
+list_cons(htv1,auxlst(s2vs))
+end // else // end of [if]
+)
+) where
+{
+fun
+isimp
+(s2v0: s2var): bool =
+sort2_is_impred(s2v0.sort())
+}
+} (*where*) // end of [val htvs]
+//
+val h0t1 = trcmp30_type(t2p1)
+//
+in
+case+ htvs of
+|
+list_nil() => h0t1
+|
+list_cons _ =>
+let
+val hsts =
+list_map<
+  htvar><h0srt>(htvs) where
+{
+implement
+list_map$fopr<
+  htvar><h0srt>(htv) = htv.sort()
+}
+val hsts = list_vt2t(hsts)
+val hst0 = HSTfun(hsts, h0t1.sort())
+in
+h0typ_make_node(hst0, H0Tlam(htvs, h0t1))
+end
+end // end of [auxlam]
+
+(* ****** ****** *)
+
+fun
 auxfun
 (t2p0: t2ype): h0typ =
 let
@@ -410,6 +478,9 @@ T2Plft _ => auxlft(t2p0)
 //
 |
 T2Papp _ => auxapp(t2p0)
+//
+|
+T2Plam _ => auxlam(t2p0)
 //
 |
 T2Pfun _ => auxfun(t2p0)

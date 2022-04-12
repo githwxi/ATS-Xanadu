@@ -863,11 +863,6 @@ x0.node() of
   (tok, d3c) =>
   fprint!(out, "D3Cextern(", d3c, ")")
 //
-| D3Clocal(head, body) =>
-  fprint!
-  ( out
-  , "D3Clocal(", head, "; ", body, ")")
-//
 | D3Cinclude
   ( tok0
   , src1, knd2
@@ -887,6 +882,11 @@ x0.node() of
     | None _ => "None()"
     | Some _ => "Some(<d3cls>)"): string
   }
+//
+| D3Clocal(head, body) =>
+  fprint!
+  ( out
+  , "D3Clocal(", head, "; ", body, ")")
 //
 | D3Cstaload
   ( tok0
@@ -908,8 +908,10 @@ x0.node() of
     | Some _ => "Some(<fmodenv>)"): string
   }
 //
-| D3Cabstype(d2cl) =>
-  fprint!(out, "D3Cabstype(", d2cl, ")")
+| D3Cabstype(s2c1, def2) =>
+  fprint!
+  ( out
+  , "D3Cabstype(", s2c1, "; ", def2, ")")
 //
 | D3Cabsopen
   (tok0, sqid) =>
