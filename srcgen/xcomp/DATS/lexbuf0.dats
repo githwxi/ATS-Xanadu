@@ -41,9 +41,9 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-"./../../xutl/SATS/cblist.sats"
+"./../../xutil/SATS/cblist.sats"
 #staload
-"./../../xutl/SATS/mylibc.sats"
+"./../../xutil/SATS/mylibc.sats"
 //
 (* ****** ****** *)
 //

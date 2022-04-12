@@ -40,7 +40,7 @@
 (* ****** ****** *)
 //
 #staload CBS =
-"./../../xutl/SATS/cblist.sats"
+"./../../xutil/SATS/cblist.sats"
 //
 typedef cblist = $CBS.cblist
 //

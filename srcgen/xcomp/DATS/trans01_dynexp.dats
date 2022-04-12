@@ -68,7 +68,7 @@ prerr with $LOC.prerr_location
 (* ****** ****** *)
 //
 #staload
-"./../../xutl/SATS/mylibc.sats"
+"./../../xutil/SATS/mylibc.sats"
 //
 (* ****** ****** *)
 //
