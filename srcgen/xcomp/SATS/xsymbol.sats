@@ -209,10 +209,15 @@ val CLOREF_symbol : symbol // cloref
 *)
 //
 (* ****** ****** *)
-
+//
 val DLR_EXTBOX_symbol : symbol // $extbox
 val DLR_EXTYPE_symbol : symbol // $extype
-
+//
+(*
+val DLR_EXVTBX_symbol : symbol // $exvtbx
+val DLR_EXVWTP_symbol : symbol // $exvwtp
+*)
+//
 (* ****** ****** *)
 //
 // HX-2018-12-09:
