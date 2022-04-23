@@ -179,6 +179,7 @@ h0srt =
   , h0srtlst(*arg*)) // HX: not in use
 *)
 //
+| HSTnone0 of ((*nil*)) // HX: placeholder
 | HSTnone1 of (dataptr) // HX: for ignores
 //
 where h0srtlst = List0(h0srt)
@@ -275,6 +276,7 @@ h0typ_node =
 | H0Ttyrec of
   (tyrec(*knd*), int(*npf*), labh0typlst)
 //
+| H0Tnone0 of ((*nil*)) // HX: placeholder
 | H0Tnone1 of (dataptr) // HX: for ignores
 //
 (* ****** ****** *)
@@ -313,6 +315,11 @@ h0typ_get_node(h0typ): h0typ_node
 overload .sort with h0typ_get_sort
 overload .node with h0typ_get_node
 //
+(* ****** ****** *)
+//
+fun
+h0typ_none0
+((*void*)): h0typ // HX:placeholder
 fun
 h0typ_make_node
 (hst: h0srt, htn: h0typ_node): h0typ

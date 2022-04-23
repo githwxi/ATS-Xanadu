@@ -160,23 +160,33 @@ implement
 fprint_h0srt(out, x0) =
 (
 case+ x0 of
+//
 | HSTid0(sym) =>
-  fprint!(out, "HSTid0(", sym, ")")
+  fprint!
+  (out, "HSTid0(", sym, ")")
 | HSTint(int) =>
-  fprint!(out, "HSTint(", int, ")")
+  fprint!
+  (out, "HSTint(", int, ")")
+//
 | HSTfun(arg, res) =>
   fprint!
   ( out
   , "HSTfun(", arg, "; ", res, ")")
-| HSTnone1(s2rt) =>
-  let
+//
+|
+HSTnone0() =>
+fprint!(out, "HSTnone0(", ")")
+|
+HSTnone1(s2rt) =>
+let
   val
   s2rt = $UN.cast{sort2}(s2rt)
   val () =
   fprint!(out, "HSTnone1(sort2)")
-  in
+in
   fprint!(out, "HSTnone1(", s2rt, ")")
-  end
+end
+//
 ) (*case*) // end of [fprint_h0srt]
 //
 (* ****** ****** *)
@@ -281,15 +291,20 @@ x0.node() of
   , "H0Ttyrec("
   , knd0, "; ", npf1, "; ", lhts, ")")  
 //
-| H0Tnone1(t2p1) =>
-  let
+|
+H0Tnone0() =>
+fprint!(out, "H0Tnone0(", ")")
+//
+|
+H0Tnone1(t2p1) =>
+let
   val
   t2p1 = $UN.cast{t2ype}(t2p1)
   val () =
   fprint!(out, "H0Tnone1([t2ype])")
-  in
+in
   fprint!(out, "H0Tnone1(", t2p1, ")")
-  end
+end
 //
 (*
 | _(* H0T... *) => fprint!(out, "H0T...(...)")
