@@ -50,6 +50,17 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+implement
+h0typ_none0() =
+let
+val s0t0 = HSTnone0()
+val node = H0Tnone0()
+in
+h0typ_make_node(s0t0, node)
+end
+
+(* ****** ****** *)
+
 local
 
 absimpl
