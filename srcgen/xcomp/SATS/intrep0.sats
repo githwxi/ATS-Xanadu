@@ -96,6 +96,18 @@ overload .stamp with htvar_get_stamp
 //
 (* ****** ****** *)
 //
+fun
+eq_htcst_htcst
+(x1: htcst, x2: htcst): bool
+fun
+eq_htvar_htvar
+(x1: htvar, x2: htvar): bool
+//
+#symload = with eq_htcst_htcst
+#symload = with eq_htvar_htvar
+//
+(* ****** ****** *)
+//
 abstbox hdcon_tbox = ptr
 abstbox hdcst_tbox = ptr
 typedef hdcon = hdcon_tbox
@@ -323,6 +335,31 @@ h0typ_none0
 fun
 h0typ_make_node
 (hst: h0srt, htn: h0typ_node): h0typ
+//
+(* ****** ****** *)
+//
+fun{}
+h0typ_subst
+  (h0t0: h0typ): h0typ
+fun{}
+h0typ_subst$var
+  (h0typ, flag: &int >> _): h0typ
+//
+(* ****** ****** *)
+//
+fun
+h0typ_subst_tvar
+( h0t0: h0typ
+, htv0: htvar, tsub: h0typ): h0typ
+fun
+h0typ_subst_tvarlst
+( h0t0: h0typ
+, htvs: htvarlst, tsub: h0typlst): h0typ
+//
+fun
+h0typlst_subst_tvarlst
+( t2ps: h0typlst
+, htvs: htvarlst, tsub: h0typlst): h0typlst
 //
 (* ****** ****** *)
 //

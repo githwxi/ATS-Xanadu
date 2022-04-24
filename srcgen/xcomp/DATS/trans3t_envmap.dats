@@ -1353,7 +1353,7 @@ list_cons
 (vts1, vtss) =>
 auxvtss2
 (vts1.0, vts1.1, vtss, flag)
-)
+) (* end of [auxvtss1] *)
 and
 auxvtss2
 ( s2vs: s2varlst
