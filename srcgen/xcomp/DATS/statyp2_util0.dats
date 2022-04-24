@@ -378,7 +378,7 @@ in
   t2p1.node() of
   | T2Pnone0() =>
     ( // unsolved
-      t2p1 // HX: FIXME?
+      t2p0 // HX: FIXME?
     )
   | _ (*solved*) =>
     (
