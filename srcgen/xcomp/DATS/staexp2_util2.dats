@@ -123,7 +123,7 @@ in
   s2e1.node() of
   | S2Enone0() =>
     ( // unsolved
-      s2e1 // HX:FIXME?
+      s2e0 // HX:FIXME?
     )
   | _ (*non-S2Enone0*) =>
     (
