@@ -727,9 +727,15 @@ slabeled(a:type) =
 | SLABELED of (label, a)
 
 (* ****** ****** *)
+//
+fun
+{a:type}
+fprint_slabeled
+(FILEref, slabeled(a)): void
+//
+(* ****** ****** *)
 
-datatype
-tyrec =
+datatype tyrec =
 //
 | TYRECbox0 (* box *) // nonlin
 | TYRECbox1 (* box *) // linear

@@ -510,6 +510,20 @@ S2TXTerr(loc0) => fprint!(out, "S2TXTerr(...)")
 end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+{a}
+fprint_slabeled(out, lx0) =
+(
+fprint(out, l0);
+fprint(out, "=");
+fprint_val<a>(out, x0)
+) where
+{
+  val+SLABELED(l0, x0) = lx0
+} (*where*)//end of [fprint_slabeled]
+//
+(* ****** ****** *)
 
 implement
 print_tyrec(x0) =
@@ -733,14 +747,28 @@ implement
 prerr_labs2exp(x0) =
 fprint_labs2exp(stderr_ref, x0) 
 //
+(*
 implement
 fprint_labs2exp
-  (out, ls2e) =
+  (out, lx0) =
+let
+implement
+fprint_val<s2exp> = fprint_s2exp
+in
+  fprint_slabeled<s2exp>(out, lx0)
+end(*let*)//end of [fprint_labs2exp]
+*)
+//
+implement
+fprint_labs2exp
+  (out, lx0) =
 (
-case+ ls2e of
-| SLABELED(l0, s2e) => fprint!(out, l0, "=", s2e)
-) (* end of [fprint_labs2exp] *)
-
+case+ lx0 of
+|
+SLABELED
+(l0, x0) => fprint!(out, l0, "=", x0)
+) (*case*)//end of [fprint_labs2exp]
+//
 (* ****** ****** *)
 //
 implement
