@@ -299,6 +299,7 @@ end // end of [local]
 //
 #dynload "./intrep0.dats"
 #dynload "./intrep0_print.dats"
+#dynload "./intrep0_util0.dats"
 #dynload "./intrep0_jsoniz.dats"
 #dynload "./intrep0_statyp.dats"
 #dynload "./intrep0_dynexp.dats"

@@ -368,25 +368,26 @@ end // end of [T2Pcst]
 T2Pvar(s2v1) =>
 t2ype_subst$var<>(t2p0, flag)
 //
-| T2Pxtv(xtv1) =>
-  let
-    val
-    t2p1 = xtv1.type()
-  in
-    case+
-    t2p1.node() of
-    | T2Pnone0() =>
-      (
-        t2p0 // unsolved
-      )
-    | _ (*solved*) =>
-      (
-        auxt2p0(t2p1, flag)
-      ) where
-      {
-        val () = (flag := flag+1)
-      }
-  end // end of [T2Pxtv]
+|
+T2Pxtv(xtv1) =>
+let
+  val
+  t2p1 = xtv1.type()
+in
+  case+
+  t2p1.node() of
+  | T2Pnone0() =>
+    ( // unsolved
+      t2p1 // HX: FIXME?
+    )
+  | _ (*solved*) =>
+    (
+      auxt2p0(t2p1, flag)
+    ) where
+    {
+      val () = (flag := flag+1)
+    }
+end // end of [T2Pxtv]
 //
 | T2Plft(t2p1) =>
   (
@@ -592,7 +593,7 @@ then ltps else list_cons(lt2p1, ltps1)
 end
 )
 //
-} (* end of [t2ype_subst] *)
+} (*where*) // end of [t2ype_subst]
 
 (* ****** ****** *)
 //
@@ -618,7 +619,7 @@ in
   else (flag := flag+1; tsub)
 end // [t2ype_subst$var]
 //
-} (* end of [t2ype_subst_svar] *)
+}(*where*)//end-of[t2ype_subst_svar]
 //
 (* ****** ****** *)
 //
@@ -717,16 +718,16 @@ T2Pcst(s2c) => let
   val
   t2p1 = s2c.type()
 in
-  case+
-  t2p1.node() of
-  | T2Pnone0() => t2p0
-  | _ (*else*) =>
-    (
-      auxt2p0(t2p1, flag)
-    ) where
-    {
+case+
+t2p1.node() of
+| T2Pnone0() => t2p0
+| _ (*else*) =>
+  (
+    auxt2p0(t2p1, flag)
+  ) where
+  {
     val () = flag := fini + 1
-    }
+  }
 end
 //
 |
@@ -966,8 +967,8 @@ then ltps else list_cons(lt2p1, ltps1)
 end
 ) (* end of [auxltps] *)
 
-in (*in-of-local*)
-
+(* ****** ****** *)
+in(* in-of-local *)
 (* ****** ****** *)
 
 implement

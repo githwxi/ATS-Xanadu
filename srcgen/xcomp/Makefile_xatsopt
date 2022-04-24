@@ -167,6 +167,7 @@ trans3x_dynexp.dats \
 tread3x_dynexp.dats \
 intrep0.dats \
 intrep0_print.dats \
+intrep0_util0.dats \
 intrep0_jsoniz.dats \
 intrep0_statyp.dats \
 intrep0_dynexp.dats \

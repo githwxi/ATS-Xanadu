@@ -193,7 +193,7 @@ ref<htcst_struct>
   htcst_loc=loc
 , htcst_sym=sym
 , htcst_sort=hst
-, htcst_stamp=stamp
+, htcst_stamp=stmp
 //
 , htcst_abstdf2= None()
 //
@@ -202,11 +202,15 @@ ref<htcst_struct>
 }
 ) where
 {
-  val stamp = htcst_stamp_new()
+val stmp = htcst_stamp_new()
 }
 
 end // end of [local]
 
+(* ****** ****** *)
+implement
+eq_htcst_htcst(x1, x2) =
+( x1.stamp() = x2.stamp() )
 (* ****** ****** *)
 
 local
@@ -247,17 +251,21 @@ ref<htvar_struct>
 @{
   htvar_sym=sym
 , htvar_sort=hst
-, htvar_stamp=stamp
+, htvar_stamp=stmp
 }
 ) where
 {
-  val stamp = htvar_stamp_new()
+val stmp = htvar_stamp_new()
 }
 
 (* ****** ****** *)
 
 end // end of [local]
 
+(* ****** ****** *)
+implement
+eq_htvar_htvar(x1, x2) =
+( x1.stamp() = x2.stamp() )
 (* ****** ****** *)
 
 local
@@ -345,7 +353,7 @@ ref<hdcon_struct>
 , hdcon_tqas=tqas
 , hdcon_type=htp0
 , hdcon_dvar=hdv0
-, hdcon_stamp=stamp
+, hdcon_stamp=stmp
 }
 ) where
 {
@@ -358,7 +366,7 @@ ref<hdcon_struct>
   (loc, sym, knd, htp0)
 //
   val
-  stamp = hdcon_stamp_new()
+  stmp = hdcon_stamp_new()
 //
 } (* end of [hdcon_make_idtp] *)
 
@@ -439,11 +447,11 @@ ref<hdcst_struct>
 , hdcst_type=htp0
 , hdcst_xknd=xkd1
 , hdcst_xnam=xnm2
-, hdcst_stamp=stamp
+, hdcst_stamp=stmp
 }
 ) where
 {
-  val stamp = hdcst_stamp_new()
+val stmp = hdcst_stamp_new()
 } (* end of [hdcst_make_idtp] *)
 
 (* ****** ****** *)
@@ -499,11 +507,11 @@ ref<hdvar_struct>
 , hdvar_sym=sym
 , hdvar_kind=knd
 , hdvar_type=htp
-, hdvar_stamp=stamp
+, hdvar_stamp=stmp
 }
 ) where
 {
-  val stamp = hdvar_stamp_new()
+val stmp = hdvar_stamp_new()
 }
 
 end // end of [local]

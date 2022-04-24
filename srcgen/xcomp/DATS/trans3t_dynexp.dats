@@ -70,7 +70,7 @@ fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
 //
-fn
+fn//HX:non-rec
 t2ype_subst_svarlst
 ( t2p0: t2ype
 , s2vs: s2varlst
@@ -81,7 +81,7 @@ case+ s2vs of
 | list_cons _ =>
   t2ype_subst_svarlst(t2p0, s2vs, tsub)
 )
-fn
+fn//HX:non-rec
 t2ypelst_subst_svarlst
 ( t2ps: t2ypelst
 , s2vs: s2varlst

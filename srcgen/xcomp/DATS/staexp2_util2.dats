@@ -121,7 +121,10 @@ let
 in
   case+
   s2e1.node() of
-  | S2Enone0() => s2e0
+  | S2Enone0() =>
+    ( // unsolved
+      s2e1 // HX:FIXME?
+    )
   | _ (*non-S2Enone0*) =>
     (
       auxs2e0(s2e1, flag)

@@ -87,7 +87,7 @@ fprint_val<f3arg> = fprint_f3arg
 
 (* ****** ****** *)
 //
-fn
+fn//HX:non-rec
 t2ype_subst_svarlst
 ( t2p0: t2ype
 , s2vs: s2varlst
@@ -97,7 +97,7 @@ case+ s2vs of
 | list_nil _ => t2p0
 | list_cons _ =>
   t2ype_subst_svarlst(t2p0, s2vs, tsub)
-)
+) (* end of [t2ype_subst_svarlst] *)
 //
 (* ****** ****** *)
 //

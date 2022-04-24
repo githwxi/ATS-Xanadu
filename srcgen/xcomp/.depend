@@ -124,6 +124,7 @@ BUILD/trans3x_dynexp_dats.o : HATS/xatsopt.hats SATS/xbasics.sats SATS/locinfo.s
 BUILD/tread3x_dynexp_dats.o : SATS/xlabel0.sats SATS/xerrory.sats SATS/locinfo.sats SATS/lexing0.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp1.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/tread3x.sats DATS/staexp2_print.dats DATS/statyp2_print.dats DATS/dynexp1_print.dats DATS/dynexp2_print.dats DATS/dynexp3_print.dats
 BUILD/intrep0_dats.o : SATS/xbasics.sats SATS/xstamp0.sats SATS/xsymbol.sats SATS/locinfo.sats SATS/lexing0.sats SATS/staexp2.sats SATS/intrep0.sats
 BUILD/intrep0_print_dats.o : SATS/filpath.sats SATS/xsymbol.sats SATS/xlabel0.sats SATS/lexing0.sats SATS/staexp0.sats SATS/dynexp0.sats SATS/staexp1.sats SATS/dynexp1.sats SATS/staexp2.sats SATS/statyp2.sats SATS/dynexp2.sats SATS/dynexp3.sats SATS/intrep0.sats SATS/xstamp0.sats
+BUILD/intrep0_util0_dats.o : SATS/xlabel0.sats SATS/xstamp0.sats SATS/xsymbol.sats SATS/xbasics.sats SATS/staexp2.sats SATS/statyp2.sats
 BUILD/intrep0_jsoniz_dats.o : SATS/xstamp0.sats SATS/xsymbol.sats SATS/intrep0.sats
 BUILD/intrep0_statyp_dats.o : SATS/xstamp0.sats SATS/xsymbol.sats SATS/locinfo.sats SATS/intrep0.sats
 BUILD/intrep0_dynexp_dats.o : SATS/xbasics.sats SATS/xstamp0.sats SATS/xsymbol.sats SATS/lexing0.sats SATS/locinfo.sats SATS/staexp1.sats SATS/staexp2.sats SATS/intrep0.sats
