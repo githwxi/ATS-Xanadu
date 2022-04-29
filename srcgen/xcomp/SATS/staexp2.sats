@@ -757,6 +757,12 @@ labs2explst_vt = List0_vt(labs2exp)
 
 (* ****** ****** *)
 //
+(*
+HX: flat/boxed: 0/1
+fun
+tyrec_boxity(tyrec): int
+*)
+//
 fun
 eq_tyrec_tyrec
 (k1: tyrec, k2: tyrec): bool

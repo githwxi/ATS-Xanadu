@@ -25,6 +25,8 @@ typedef unsigned long ulint_t;
 typedef unsigned long long ullint_t;
 
 /* ****** ****** */
+typedef sint_t xcmp_tcas_t;
+/* ****** ****** */
 
 typedef void_t xats_void_t;
 

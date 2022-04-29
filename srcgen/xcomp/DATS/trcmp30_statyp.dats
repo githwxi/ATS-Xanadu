@@ -113,18 +113,72 @@ val opt =
 the_scstmap_search_opt(s2c0)
 //
 in
+//
 case+ opt of
 | ~
-Some_vt(htv1) => htv1
+Some_vt(htc1) => htc1
 | ~
 None_vt((*void*)) =>
 let
-val htc1 =
+//
+val
+htc1 =
 htcst_make_scst(s2c0)
+val () =
+(
+case-
+htc1.abstdf2() of
+(*
+| Some _ => ((*void*))
+*)
+| None _ => auxabst(s2c0, htc1)
+)
+//
 in
-the_scstmap_insert_any(s2c0, htc1); htc1
+  htc1 where
+{
+val () =
+the_scstmap_insert_any(s2c0, htc1)
+}
+end (*let*) // end of [None_vt]
+//
+end where
+{
+//
+fun
+auxabst
+( s2c0: s2cst
+, htc1: htcst): void =
+(
+case+ def2 of
+|
+ABSTDF2none() => ((*void*))
+|
+ABSTDF2some() => ((*void*))
+|
+ABSTDF2lteq
+(tdef) =>
+let
+val
+tdef = t2ype_normize(tdef)
+in
+  htc1.abstdf2(trcmp30_type(tdef))
 end
-end // end of [trcmp30_scst]
+|
+ABSTDF2eqeq
+(sdef, tdef) =>
+let
+val
+tdef = t2ype_normize(tdef)
+in
+  htc1.abstdf2(trcmp30_type(tdef))
+end
+) where
+{
+  val def2 = s2cst_get_abst( s2c0 )
+} (*where*) // end of [auxabst]
+//
+} (*where*) // end of [trcmp30_scst]
 
 (* ****** ****** *)
 
@@ -339,11 +393,7 @@ sort2_is_impred(s2v0.sort())
 val h0t1 = trcmp30_type(t2p1)
 //
 in
-case+ htvs of
-|
-list_nil() => h0t1
-|
-list_cons _ =>
+//
 let
 val hsts =
 list_map<
@@ -358,6 +408,7 @@ val hst0 = HSTfun(hsts, h0t1.sort())
 in
 h0typ_make_node(hst0, H0Tlam(htvs, h0t1))
 end
+//
 end // end of [auxlam]
 
 (* ****** ****** *)

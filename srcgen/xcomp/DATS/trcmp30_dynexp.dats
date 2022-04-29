@@ -2762,6 +2762,7 @@ end // end of [aux_include]
 
 (* ****** ****** *)
 
+(*
 fun
 aux_abstype
 ( env0:
@@ -2828,6 +2829,7 @@ h0dcl_make_node
 ( loc0,
   H0Cnone1($UN.cast{ptr}(d3cl)) )
 end // end of [aux_abstype]
+*)
 
 (* ****** ****** *)
 //
@@ -3396,8 +3398,14 @@ end
 |
 D3Cinclude _ => aux_include(env0, d3cl)
 //
+(*
+(*
+HX-2022-04-23:
+This is done when [htcst] is created!
+*)
 |
 D3Cabstype _ => aux_abstype(env0, d3cl)
+*)
 //
 |
 D3Cfundecl _ => aux_fundecl(env0, d3cl)

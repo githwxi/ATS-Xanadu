@@ -73,16 +73,46 @@ eq_label_label
 (
 case+ l1 of
 | LABint(i1) =>
-  (
-  case+ l2 of
-  | LABint(i2) => (i1 = i2) | _ => false
-  )
+(
+case+ l2 of
+|
+LABint(i2) => (i1 = i2) | _ => false
+)
 | LABsym(s1) =>
-  (
-  case+ l2 of
-  | LABsym(s2) => (s1 = s2) | _ => false
-  )
-) (* end of [eq_label_label] *)
+(
+case+ l2 of
+|
+LABsym(s2) => (s1 = s2) | _ => false
+)
+) (*case*) // end of [eq_label_label]
+
+(* ****** ****** *)
+(*
+HX-2022-04-29: LABint < LABsym
+*)
+implement
+cmp_label_label
+  (l1, l2) =
+(
+case+ l1 of
+| LABint(i1) =>
+(
+case+ l2 of
+|
+LABint(i2) =>
+compare(i1, i2) | _ => (~1)//int<sym
+)
+| LABsym(s1) =>
+(
+case+ l2 of
+|
+LABsym(s2) =>
+compare(s1, s2) | _ => ( 1)//sym>int
+)
+) where
+{
+#symload compare with cmp_symbol_symbol
+} (*where*) // end of [cmp_label_label]
 
 (* ****** ****** *)
 
