@@ -209,8 +209,17 @@ end // end of [local]
 
 (* ****** ****** *)
 implement
-eq_htcst_htcst(x1, x2) =
+eq_htcst_htcst
+  ( x1, x2 ) =
 ( x1.stamp() = x2.stamp() )
+(* ****** ****** *)
+implement
+htcst_isdat(x0) =
+(
+case+
+x0.hdconlst() of
+Some _ => true | None _ => false
+)
 (* ****** ****** *)
 
 local

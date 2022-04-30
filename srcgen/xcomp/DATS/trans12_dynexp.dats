@@ -6151,40 +6151,42 @@ loop
 (
 //
 case+ s1cs of
-| list_nil() => ()
-| list_cons(s1c0, s1cs) =>
-  let
-    val+
-    S1RTCON
-    (tok, opt) = s1c0.node()
-    val sid = sexpid_sym(tok)
-    val arg =
+|
+list_nil() => ()
+|
+list_cons(s1c0, s1cs) =>
+let
+  val+
+  S1RTCON
+  (tok, opt) = s1c0.node()
+  val sid = sexpid_sym(tok)
+  val arg =
+  (
+  case+ opt of
+  | None() => list_nil()
+  | Some(s1t) =>
     (
-    case+ opt of
-    | None() => list_nil()
-    | Some(s1t) =>
-      (
-      case+ s1t.node() of
-      | S1Tlist(s1ts) =>
-        trans12_sortlst(s1ts)
-      | _(*non-S1Tlist*) =>
-        list_sing(trans12_sort(s1t))
-      ) : sort2lst // end of [val]
-    )
-    val
-    s2t1 = S2Tfun(arg, s2t0)
-    val
-    s2c0 =
-    s2cst_make_idst(tok, s2t1)
+    case+ s1t.node() of
+    | S1Tlist(s1ts) =>
+      trans12_sortlst(s1ts)
+    | _(*non-S1Tlist*) =>
+      list_sing(trans12_sort(s1t))
+    ) : sort2lst // end of [val]
+  )
+  val
+  s2t1 = S2Tfun(arg, s2t0)
+  val
+  s2c0 =
+  s2cst_make_idst(tok, s2t1)
 (*
-    val () =
-    println!("aux_datasort: tok = ", tok)
-    val () =
-    println!("aux_datasort: s2t1 = ", s2t1)
+  val () =
+  println!("aux_datasort: tok = ", tok)
+  val () =
+  println!("aux_datasort: s2t1 = ", s2t1)
 *)
-  in
-    the_sexpenv_add_cst(s2c0); loop(s1cs)
-  end // end of [list_cons]
+in
+  the_sexpenv_add_cst(s2c0); loop(s1cs)
+end // end of [list_cons]
 )
 //
 in
@@ -6200,20 +6202,22 @@ auxd1ts
   s2ts: sort2lst): void =
 (
 case+ d1ts of
-| list_nil() => ()
-| list_cons(d1t0, d1ts) =>
-  let
-    val-
-    list_cons
-    (s2t0, s2ts) = s2ts
-    val () =
-    auxd1t(d1t0, s2t0) in auxd1ts(d1ts, s2ts)
-  end // end of [auxd1ts]
+|
+list_nil() => ()
+|
+list_cons(d1t0, d1ts) =>
+let
+  val-
+  list_cons
+  (s2t0, s2ts) = s2ts
+  val () =
+  auxd1t(d1t0, s2t0) in auxd1ts(d1ts, s2ts)
+end // end of [auxd1ts]
 ) (* end of [auxd1ts] *)
 }
 //
 in
-  d2ecl_make_node(loc0, D2Cdatasort(d1cl, s2ts))
+d2ecl_make_node(loc0, D2Cdatasort(d1cl, s2ts))
 end // end of [aux_datasort]
 
 (* ****** ****** *)
@@ -6239,7 +6243,7 @@ in
 let val () =
 the_dexpenv_add_cons(d2cs)
 in
-  d2ecl_make_node(loc0, D2Cexcptcon(d1cl, d2cs))
+d2ecl_make_node(loc0, D2Cexcptcon(d1cl, d2cs))
 end
 end // end of [aux_excptcon]
 
@@ -6271,7 +6275,7 @@ val () =
 aux2_datypelst(s2cs, d1ts)
 //
 in
-  d2ecl_make_node(loc0, D2Cdatatype(d1cl, s2cs))
+d2ecl_make_node(loc0, D2Cdatatype(d1cl, s2cs))
 end // end of [aux_datatype]
 
 and
@@ -6280,8 +6284,10 @@ aux_wdeclseq
 : wd1eclseq): d2eclist =
 (
 case+ wd1cs of
-| WD1CSnone() => list_nil()
-| WD1CSsome(d1cs) => trans12_declist(d1cs)
+|
+WD1CSnone() => list_nil()
+|
+WD1CSsome(d1cs) => trans12_declist(d1cs)
 ) (* end of [aux_wdeclseq] *)
 
 and

@@ -2758,7 +2758,7 @@ in
 h0dcl_make_node
 ( loc0
 , H0Cinclude(tok, src, knd, opt1, opt2))
-end // end of [aux_include]
+end (*let*) // end of [aux_include]
 
 (* ****** ****** *)
 
@@ -2828,8 +2828,30 @@ in
 h0dcl_make_node
 ( loc0,
   H0Cnone1($UN.cast{ptr}(d3cl)) )
-end // end of [aux_abstype]
+end (*let*) // end of [aux_abstype]
 *)
+fun
+aux_abstype
+( env0:
+! compenv
+, d3cl: d3ecl): h0dcl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cabstype
+(s2c1, def2) = d3cl.node()
+//
+val
+htc1 = trcmp30_scst( s2c1 )
+//
+in
+h0dcl_make_node
+( loc0
+, H0Cabstype(htc1, htc1.abstdf2()))
+end (*let*) // end of [aux_abstype]
 
 (* ****** ****** *)
 //
@@ -3185,6 +3207,8 @@ D3Cdatatype
 val
 htcs =
 trcmp30_scstlst(s2cs)
+//
+(*
 val
 ((*void*)) =
 auxs2cs(s2cs, htcs) where
@@ -3224,6 +3248,7 @@ val () = htc1.hdconlst(hdcs)
 end // end of [Some]
 )
 } (*where*) // end of [val]
+*)
 //
 in
 h0dcl_make_node(loc0, H0Cdatatype(htcs))
@@ -3400,12 +3425,15 @@ D3Cinclude _ => aux_include(env0, d3cl)
 //
 (*
 (*
-HX-2022-04-23:
-This is done when [htcst] is created!
+HX-2022-04-29:
+Should this one be added? Why?
 *)
 |
-D3Cabstype _ => aux_abstype(env0, d3cl)
+D3Cstaload _ => aux_staload(env0, d3cl)
 *)
+//
+|
+D3Cabstype _ => aux_abstype(env0, d3cl)
 //
 |
 D3Cfundecl _ => aux_fundecl(env0, d3cl)
@@ -3423,14 +3451,15 @@ D3Cdatatype _ => aux_datatype(env0, d3cl)
 |
 D3Cimpdecl3 _ => aux_impdecl3(env0, d3cl)
 |
-_(* rest-of_d3exp *) =>
-let
-  val
-  node =
-  H0Cnone1($UN.cast{ptr}(d3cl))
-in h0dcl_make_node(loc0, node) end
+_(* rest-of-d3exp *) =>
+(
+  h0dcl_make_node(loc0, node)
+) where
+{
+  val node = H0Cnone1($UN.cast{ptr}(d3cl))
+} (* end of [rest-of-d3exp] *)
 //
-end // end of [trcmp30_decl]
+end (*let*) // end of [trcmp30_decl]
 
 end // end of [local]
 

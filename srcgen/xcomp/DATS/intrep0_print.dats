@@ -934,6 +934,12 @@ x0.node() of
     | Some _ => "Some(<hdcls>)"): string
   }
 //
+| H0Cabstype
+  (htc1, def2) =>
+  fprint!
+  ( out
+  , "H0Cabstype(", htc1, "; ", def2)
+//
 | H0Cfundecl
   (knd, mopt, tqas, hfds) =>
   fprint!

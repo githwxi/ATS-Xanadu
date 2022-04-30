@@ -76,30 +76,34 @@ in
 //
 case+ s2t0 of
 //
-| S2Tid0(sym) => HSTid0(sym)
-| S2Tint(int) => HSTint(int)
+|
+S2Tid0(sym) => HSTid0(sym)
+|
+S2Tint(int) => HSTint(int)
 //
-| S2Tfun
-  (s2ts, s2t1) =>
-  let
+|
+S2Tfun
+(s2ts, s2t1) =>
+let
   val
   hsts =
   trcmp30_sortlst(s2ts)
-  in
+in
   HSTfun
   (hsts, hst1) where
   {
     val
     hst1 = trcmp30_sort(s2t1)
   }
-  end // end of [S2Tfun]
+end // end of [S2Tfun]
 //
-| _(*rest-of-sort2*) =>
-  let
+|
+_(*rest-of-sort2*) =>
+let
   val
   data =
   $UN.cast{ptr}(s2t0) in HSTnone1(data)
-  end
+end
 //
 end // end of [trcmp30_sort]
 //
@@ -124,6 +128,7 @@ let
 val
 htc1 =
 htcst_make_scst(s2c0)
+//
 val () =
 (
 case-
@@ -132,6 +137,16 @@ htc1.abstdf2() of
 | Some _ => ((*void*))
 *)
 | None _ => auxabst(s2c0, htc1)
+)
+//
+val () =
+(
+case-
+htc1.hdconlst() of
+(*
+| Some _ => ((*void*))
+*)
+| None _ => auxd2cs(s2c0, htc1)
 )
 //
 in
@@ -177,6 +192,27 @@ end
 {
   val def2 = s2cst_get_abst( s2c0 )
 } (*where*) // end of [auxabst]
+//
+fun
+auxd2cs
+( s2c0: s2cst
+, htc1: htcst): void =
+(
+case+ opt of
+| ~
+None_vt() => ()
+| ~
+Some_vt(d2cs) =>
+(
+  htc1.hdconlst(hdcs)
+) where
+{
+  val hdcs = trcmp30_dconlst(d2cs)
+}
+) where
+{
+  val opt = s2cst_get_d2conlst(s2c0)
+}
 //
 } (*where*) // end of [trcmp30_scst]
 
