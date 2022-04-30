@@ -445,6 +445,11 @@ overload
 (* ****** ****** *)
 //
 fun
+htcst_isdat(htc0: htcst): bool
+//
+overload .isdat with htcst_isdat
+//
+fun
 htcst_get_hdconlst
 (htc0: htcst): Option(hdconlst)
 fun
@@ -1130,6 +1135,10 @@ H0Cinclude of
 , int(*knd*) // sta/dyn: 0/1
 , filpathopt
 , h0dclistopt) // file inclusion
+//
+|
+H0Cabstype of
+(htcst, h0typopt(*def*))
 //
 |
 H0Cfundecl of
