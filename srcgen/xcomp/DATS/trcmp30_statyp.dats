@@ -129,6 +129,12 @@ val
 htc1 =
 htcst_make_scst(s2c0)
 //
+fun
+auxupdt
+( htc1
+: htcst
+) : htcst = htc1 where
+{
 val () =
 (
 case-
@@ -148,9 +154,10 @@ htc1.hdconlst() of
 *)
 | None _ => auxd2cs(s2c0, htc1)
 )
+} (*where*) // end of [auxupdt]
 //
 in
-  htc1 where
+  auxupdt(htc1) where
 {
 val () =
 the_scstmap_insert_any(s2c0, htc1)
