@@ -272,10 +272,11 @@ h0typ_node =
 //
 | H0Tlft of h0typ // left-value
 //
-| H0Tfun of
-  ( int(*npf*)
-  , h0typlst(*arg*),h0typ(*res*)
-  ) (* end of H0Tfun *)
+|
+H0Tfun of
+( int(*npf*)
+, h0typlst(*arg*),h0typ(*res*)
+) (* end of H0Tfun *)
 //
 | H0Tapp of
   (h0typ, h0typlst) // instance

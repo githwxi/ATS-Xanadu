@@ -273,11 +273,17 @@ end // end of [local]
 
 (* ****** ****** *)
 //
+(*
+HX-2022-05-01:
+Note that the dtcon tag
+for each datatype starts
+from 1 (instead of 0).
+*)
 implement
 trans12_tag_d2conlst
   (s2c0, d2cs) =
 (
-  auxlst(d2cs, 0(*i0*))
+  auxlst(d2cs, 1(*i0*))
 ) where
 {
 //

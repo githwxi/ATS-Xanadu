@@ -25,6 +25,10 @@ typedef unsigned long ulint_t;
 typedef unsigned long long ullint_t;
 
 /* ****** ****** */
+#define xcmp_btf0_v 0
+#define xcmp_btf1_v 1
+/* ****** ****** */
+typedef sint_t xcmp_ctag_t;
 typedef sint_t xcmp_tcas_t;
 /* ****** ****** */
 
@@ -69,8 +73,13 @@ int strcmp(char *x1, char *x2);
 /* ****** ****** */
 bool_t
 XATS2CC_bool_neg
-  (bool_t b0)
+( bool_t b0 )
 { return ~b0 ; }
+/* ****** ****** */
+#define \
+XATS2CC_btf1 1 // tt1
+#define \
+XATS2CC_btf0 0 // ff0
 /* ****** ****** */
 bool_t
 XATS2CC_bool_add
@@ -89,37 +98,37 @@ bool_t
 XATS2CC_char_lt
 (char_t x1, char_t x2)
 {
-return (x1 < x2); // lt
+  return (x1 < x2); // lt0
 }
 bool_t
 XATS2CC_char_gt
 (char_t x1, char_t x2)
 {
-return (x1 > x2); // gt
+  return (x1 > x2); // gt0
 }
 bool_t
 XATS2CC_char_eq
 (char_t x1, char_t x2)
 {
-return (x1 == x2); // eq
+  return (x1 == x2); // eq0
 }
 bool_t
 XATS2CC_char_lte
 (char_t x1, char_t x2)
 {
-return (x1 <= x2); // lte
+  return (x1 <= x2); // lte
 }
 bool_t
 XATS2CC_char_gte
 (char_t x1, char_t x2)
 {
-return (x1 >= x2); // gte
+  return (x1 >= x2); // gte
 }
 bool_t
 XATS2CC_char_neq
 (char_t x1, char_t x2)
 {
-return (x1 != x2); // neq
+  return (x1 != x2); // neq
 }
 /* ****** ****** */
 sint_t
@@ -128,9 +137,13 @@ XATS2CC_char_cmp
 {
 if
 (x1 < x2)
-return (-1);
+{
+  return (-1);
+}
 else
-return (x1 <= x2 ? 0 : 1);
+{
+  return (x1 <= x2 ? 0 : 1);
+} // end of [if]
 }
 /* ****** ****** */
 //
@@ -141,72 +154,65 @@ sint_t
 XATS2CC_gint_abs_sint
   (sint_t x0)
 {
-if
-(x0 >= 0)
-{
-  return x0; // abs
-}
-else
-{
-  return -x0; // abs
-}
+return \
+(x0 >= 0)?(x0):(-x0) ;
 }
 /* ****** ****** */
 sint_t
 XATS2CC_gint_neg_sint
   (sint_t x0)
 {
-return (-x0); // neg
+  return (-x0); // neg
 }
 /* ****** ****** */
 sint_t
 XATS2CC_gint_succ_sint
   (sint_t x0)
 {
-return (x0 + 1); // +1
+  return (x0 + 1); // +1
 }
 sint_t
 XATS2CC_gint_pred_sint
   (sint_t x0)
 {
-return (x0 - 1); // -1
+  return (x0 - 1); // -1
 }
 /* ****** ****** */
 bool_t
 XATS2CC_gint_lt_sint_sint
 (sint_t x1, sint_t x2)
 {
-return (x1 < x2); // lt
+  return (x1 < x2); // lt0
 }
 bool_t
 XATS2CC_gint_gt_sint_sint
 (sint_t x1, sint_t x2)
 {
-return (x1 > x2); // gt
+  return (x1 > x2); // gt0
 }
 bool_t
 XATS2CC_gint_eq_sint_sint
 (sint_t x1, sint_t x2)
 {
-return (x1 == x2); // eq
+  return (x1 == x2); // eq0
 }
 bool_t
 XATS2CC_gint_lte_sint_sint
 (sint_t x1, sint_t x2)
 {
-return (x1 <= x2); // lte
+  return (x1 <= x2); // lte
 }
 bool_t
 XATS2CC_gint_gte_sint_sint
 (sint_t x1, sint_t x2)
 {
-return (x1 >= x2); // gte
+  return (x1 >= x2); // gte
 }
 bool_t
 XATS2CC_gint_neq_sint_sint
 (sint_t x1, sint_t x2)
 {
-return (x1 != x2); // neq
+  return (x1 != x2); // neq
 }
 /* ****** ****** */
 sint_t
@@ -277,14 +283,14 @@ XATS2CC_gflt_abs_sflt
   (sflt_t x0)
 {
 return \
-(x0 >= 0 ? x0 : -x0);
+(x0 >= 0)?(x0):(-x0);
 }
 dflt_t
 XATS2CC_gflt_abs_dflt
   (dflt_t x0)
 {
 return \
-(x0 >= 0 ? x0 : -x0);
+(x0 >= 0)?(x0):(-x0);
 }
 /* ****** ****** */
 sflt_t
@@ -330,19 +336,19 @@ bool_t
 XATS2CC_gflt_lt_dflt_dflt
 (dflt_t x1, dflt_t x2)
 {
-return (x1 < x2); // lt
+return (x1 < x2); // lt0
 }
 bool_t
 XATS2CC_gflt_gt_dflt_dflt
 (dflt_t x1, dflt_t x2)
 {
-return (x1 > x2); // gt
+return (x1 > x2); // gt0
 }
 bool_t
 XATS2CC_gflt_eq_dflt_dflt
 (dflt_t x1, dflt_t x2)
 {
-return (x1 == x2); // eq
+return (x1 == x2); // eq0
 }
 bool_t
 XATS2CC_gflt_lte_dflt_dflt
@@ -460,42 +466,42 @@ XATS2CC_gflt_cmp_dflt_dflt(x0, y0);
 //
 bool_t
 XATS2CC_gflt_lt_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_lt_dflt_dflt(x0, y0);
 }
 bool_t
 XATS2CC_gflt_gt_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_gt_dflt_dflt(x0, y0);
 }
 bool_t
 XATS2CC_gflt_eq_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_eq_dflt_dflt(x0, y0);
 }
 bool_t
 XATS2CC_gflt_lte_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_lte_dflt_dflt(x0, y0);
 }
 bool_t
 XATS2CC_gflt_gte_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_gte_dflt_dflt(x0, y0);
 }
 bool_t
 XATS2CC_gflt_neq_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_neq_dflt_dflt(x0, y0);
@@ -504,7 +510,7 @@ XATS2CC_gflt_neq_dflt_dflt(x0, y0);
 /* ****** ****** */
 sint_t
 XATS2CC_gflt_cmp_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_cmp_dflt_dflt(x0, y0);
@@ -514,7 +520,7 @@ XATS2CC_gflt_cmp_dflt_dflt(x0, y0);
 /* ****** ****** */
 dflt_t
 XATS2CC_gflt_add_dflt_sint
-(dflt_t x0, sint_t y0)
+( dflt_t x0 , sint_t y0 )
 {
 return \
 XATS2CC_gflt_add_dflt_dflt(x0, y0);
@@ -522,7 +528,7 @@ XATS2CC_gflt_add_dflt_dflt(x0, y0);
 /* ****** ****** */
 dflt_t
 XATS2CC_gflt_sub_dflt_sint
-(dflt_t x0, sint_t y0)
+( dflt_t x0 , sint_t y0 )
 {
 return \
 XATS2CC_gflt_sub_dflt_dflt(x0, y0);
@@ -530,7 +536,7 @@ XATS2CC_gflt_sub_dflt_dflt(x0, y0);
 /* ****** ****** */
 dflt_t
 XATS2CC_gflt_mul_dflt_sint
-(dflt_t x0, sint_t y0)
+( dflt_t x0 , sint_t y0 )
 {
 return \
 XATS2CC_gflt_mul_dflt_dflt(x0, y0);
@@ -538,7 +544,7 @@ XATS2CC_gflt_mul_dflt_dflt(x0, y0);
 /* ****** ****** */
 dflt_t
 XATS2CC_gflt_div_dflt_sint
-(dflt_t x0, sint_t y0)
+( dflt_t x0 , sint_t y0 )
 {
 return \
 XATS2CC_gflt_div_dflt_dflt(x0, y0);
@@ -546,7 +552,7 @@ XATS2CC_gflt_div_dflt_dflt(x0, y0);
 /* ****** ****** */
 dflt_t
 XATS2CC_gflt_add_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_add_dflt_dflt(x0, y0);
@@ -554,7 +560,7 @@ XATS2CC_gflt_add_dflt_dflt(x0, y0);
 /* ****** ****** */
 dflt_t
 XATS2CC_gflt_sub_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_sub_dflt_dflt(x0, y0);
@@ -562,7 +568,7 @@ XATS2CC_gflt_sub_dflt_dflt(x0, y0);
 /* ****** ****** */
 dflt_t
 XATS2CC_gflt_mul_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_mul_dflt_dflt(x0, y0);
@@ -570,7 +576,7 @@ XATS2CC_gflt_mul_dflt_dflt(x0, y0);
 /* ****** ****** */
 dflt_t
 XATS2CC_gflt_div_sint_dflt
-(sint_t x0, dflt_t y0)
+( sint_t x0 , dflt_t y0 )
 {
 return \
 XATS2CC_gflt_div_dflt_dflt(x0, y0);
