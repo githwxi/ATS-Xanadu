@@ -50,6 +50,154 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 
+local
+//
+typedef
+htcst_struct = @{
+//
+  htcst_loc= loc_t
+, htcst_sym= sym_t // name
+, htcst_sort= h0srt // type
+, htcst_stamp= stamp // unicity
+//
+, htcst_abstdf2= h0typopt
+//
+, htcst_hdconlst= Option(hdconlst)
+//
+} (* end of [htcst_tbox] *)
+//
+absimpl
+htcst_tbox = ref(htcst_struct)
+//
+in(* in-of-local *)
+
+(* ****** ****** *)
+//
+implement
+htcst_get_sym
+(htc) = htc->htcst_sym
+implement
+htcst_get_sort
+(htc) = htc->htcst_sort
+implement
+htcst_get_stamp
+(htc) = htc->htcst_stamp
+//
+(* ****** ****** *)
+//
+implement
+htcst_get_abstdf2
+(htc) = htc->htcst_abstdf2
+implement
+htcst_set_abstdf2
+(htc, h0t) =
+(htc->htcst_abstdf2 := Some(h0t))
+//
+(* ****** ****** *)
+//
+implement
+htcst_get_hdconlst
+(htc) = htc->htcst_hdconlst
+implement
+htcst_set_hdconlst
+(htc, hdcs) =
+(htc->htcst_hdconlst := Some(hdcs))
+//
+(* ****** ****** *)
+
+implement
+htcst_make_idst
+(loc, sym, hst) =
+(
+ref<htcst_struct>
+@{
+  htcst_loc=loc
+, htcst_sym=sym
+, htcst_sort=hst
+, htcst_stamp=stmp
+//
+, htcst_abstdf2= None()
+//
+, htcst_hdconlst= None()
+//
+}
+) where
+{
+val stmp = htcst_stamp_new()
+}
+
+end // end of [local]
+
+(* ****** ****** *)
+implement
+eq_htcst_htcst
+  ( x1, x2 ) =
+( x1.stamp() = x2.stamp() )
+(* ****** ****** *)
+implement
+htcst_isdat(x0) =
+(
+case+
+x0.hdconlst() of
+Some _ => true | None _ => false
+)
+(* ****** ****** *)
+
+local
+//
+typedef
+htvar_struct = @{
+//
+  htvar_sym= sym_t // name
+, htvar_sort= h0srt // type
+, htvar_stamp= stamp // unicity
+//
+} (* end of [htvar_tbox] *)
+//
+absimpl
+htvar_tbox = ref(htvar_struct)
+//
+in(* in-of-local *)
+
+(* ****** ****** *)
+
+implement
+htvar_get_sym
+(htv) = htv->htvar_sym
+implement
+htvar_get_sort
+(htv) = htv->htvar_sort
+implement
+htvar_get_stamp
+(htv) = htv->htvar_stamp
+
+(* ****** ****** *)
+
+implement
+htvar_make_idst
+  (sym, hst) =
+(
+ref<htvar_struct>
+@{
+  htvar_sym=sym
+, htvar_sort=hst
+, htvar_stamp=stmp
+}
+) where
+{
+val stmp = htvar_stamp_new()
+}
+
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+implement
+eq_htvar_htvar(x1, x2) =
+( x1.stamp() = x2.stamp() )
+(* ****** ****** *)
+
 implement
 h0typ_none0() =
 let
@@ -108,14 +256,14 @@ htqarg_tbox = $rec
 in (* in-of-local *)
 
 (* ****** ****** *)
-
+//
 implement
 htqarg_get_loc
   (htqa) = htqa.htqarg_loc
 implement
 htqarg_get_htvs
   (htqa) = htqa.htqarg_htvs
-
+//
 (* ****** ****** *)
 
 implement
