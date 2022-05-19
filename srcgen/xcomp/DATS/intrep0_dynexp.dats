@@ -81,7 +81,7 @@ hdcon_struct = @{
 //
   hdcon_loc= loc_t // loc
 , hdcon_sym= sym_t // name
-, hdcon_tag= tag_t // tag
+, hdcon_ctag= tag_t // ctag
 , hdcon_tqas= htqas // tqas
 , hdcon_type= h0typ // type
 , hdcon_dvar= hdvar // r-time
@@ -104,12 +104,12 @@ hdcon_get_sym
 (hdc) = hdc->hdcon_sym
 //
 implement
-hdcon_get_tag
-(hdc) = hdc->hdcon_tag
+hdcon_get_ctag
+(hdc) = hdc->hdcon_ctag
 implement
-hdcon_set_tag
+hdcon_set_ctag
 (hdc, tag) =
-(hdc->hdcon_tag := tag)
+(hdc->hdcon_ctag := tag)
 //
 implement
 hdcon_get_tqas
@@ -136,13 +136,16 @@ hdcon_make_idtp
 (
 ref<hdcon_struct>
 @{
+//
   hdcon_loc=loc
 , hdcon_sym=sym
-, hdcon_tag=(~1)
+//
+, hdcon_ctag=(~1)
 , hdcon_tqas=tqas
 , hdcon_type=htp0
 , hdcon_dvar=hdv0
 , hdcon_stamp=stmp
+//
 }
 ) where
 {

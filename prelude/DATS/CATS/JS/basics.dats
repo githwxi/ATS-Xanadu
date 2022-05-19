@@ -23,7 +23,8 @@ XATS2JS_bool_neg
 )
 : bool(~b0) = $exname()
 //
-impltmp bool_neg<> = XATS2JS_bool_neg
+impltmp
+bool_neg<> = XATS2JS_bool_neg
 //
 (* ****** ****** *)
 //

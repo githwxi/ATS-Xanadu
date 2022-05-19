@@ -293,14 +293,15 @@ auxlst
 : d2conlst, i0: int): void =
 (
 case+ d2cs of
-| list_nil() => ()
-| list_cons(d2c1, d2cs) =>
-  (
-    auxlst(d2cs, i0 + 1)
-  ) where
-  {
-    val () = d2con_set_tag(d2c1, i0)
-  }
+|
+list_nil() => ()
+|
+list_cons(d2c1, d2cs) =>
+(
+  auxlst(d2cs, i0 + 1)) where
+{
+  val () = d2con_set_ctag(d2c1, i0)
+}
 ) (* end of [auxlst] *)
 //
 } (* end of [trans12_tag_d2conlst] *)
