@@ -123,8 +123,8 @@ hdc0 =
 hdcon_make_idtp
 (loc, sym, htqs, htp0)
 val () =
-hdc0.tag( d2c0.tag() ) in hdc0 end
-end // end of [hdcon_make_dcon]
+hdc0.ctag(d2c0.ctag()) in hdc0 end
+end(*let*)//end-of-[hdcon_make_dcon]
 
 (* ****** ****** *)
 
@@ -150,7 +150,7 @@ hdcst_make_idtp
 ( loc
 , sym
 , knd, htqs, htp0, xkd1, xnm2)
-end // end of [hdcst_make_dcst]
+end(*let*)//end-of-[hdcst_make_dcst]
 
 (* ****** ****** *)
 
@@ -168,7 +168,7 @@ val htp0 = trcmp30_type(t2p0)
 //
 in
 hdvar_make_idtp(loc, sym, knd, htp0)
-end // end of [hdvar_make_dvar]
+end(*let*)//end-of-[hdvar_make_dvar]
 
 (* ****** ****** *)
 

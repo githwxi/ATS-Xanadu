@@ -64,7 +64,7 @@ d2con_struct = @{
 //
   d2con_loc= loc_t // loc
 , d2con_sym= sym_t // name
-, d2con_tag= tag_t // tag
+, d2con_ctag= tag_t // ctag
 , d2con_tqas= tq2as // tqas
 , d2con_sexp= s2exp // sexp
 , d2con_type= t2ype // type
@@ -86,7 +86,7 @@ ref<d2con_struct>
 @{
   d2con_loc= loc
 , d2con_sym= sym
-, d2con_tag= (~1)
+, d2con_ctag= (~1)
 , d2con_tqas= tqas
 , d2con_sexp= s2e1
 , d2con_type= t2p2
@@ -117,16 +117,17 @@ ref<d2con_struct>
 //
 } (* d2con_make_idtp *)
 
+(* ****** ****** *)
+
 implement
 d2con_get_loc(x0) = x0->d2con_loc
 implement
 d2con_get_sym(x0) = x0->d2con_sym
+
+(* ****** ****** *)
 //
 implement
-d2con_get_tag(x0) = x0->d2con_tag
-implement
-d2con_set_tag
-(x0, tag) = (x0->d2con_tag := tag)
+d2con_get_ctag(x0) = x0->d2con_ctag
 //
 implement
 d2con_get_tqas(x0) = x0->d2con_tqas
@@ -139,8 +140,16 @@ d2con_get_type(x0) = x0->d2con_type
 //
 implement
 d2con_get_stamp(x0) = x0->d2con_stamp
+//
+(* ****** ****** *)
+//
+implement
+d2con_set_ctag
+(d2c, tag) = (d2c->d2con_ctag := tag)
+//
+(* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 

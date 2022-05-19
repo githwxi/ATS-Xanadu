@@ -400,13 +400,13 @@ overload .sym with hdvar_get_sym
 (* ****** ****** *)
 //
 fun
-hdcon_get_tag(hdcon): tag_t
+hdcon_get_ctag(hdcon): tag_t
 fun
-hdcon_set_tag
+hdcon_set_ctag
   (hdc: hdcon, tag: tag_t): void
 //
-overload .tag with hdcon_get_tag
-overload .tag with hdcon_set_tag
+overload .ctag with hdcon_get_ctag
+overload .ctag with hdcon_set_ctag
 //
 (* ****** ****** *)
 //

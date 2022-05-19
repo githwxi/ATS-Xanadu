@@ -277,16 +277,16 @@ overload .sym with d2var_get_sym
 typedef tag_t = int
 //
 fun
-d2con_get_tag: d2con -> tag_t
+d2con_get_ctag: d2con -> tag_t
 fun
-d2con_set_tag
+d2con_set_ctag
 (d2c: d2con, tag: tag_t): void
 //
-overload .tag with d2con_get_tag
+overload .ctag with d2con_get_ctag
 (*
 // HX:
-// This is a bit risky!
-overload .tag with d2con_set_tag
+// This is a bit too risky!
+overload .ctag with d2con_set_tag
 *)
 //
 (* ****** ****** *)
