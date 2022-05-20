@@ -5,11 +5,11 @@
 ######
 
 AR=ar
-MV=mv
 CP=cp
+MV=mv
 CC=gcc
 SED=sed
-CPf=cp -f
+CPF=cp -f
 MVF=mv -f
 RMF=rm -f
 

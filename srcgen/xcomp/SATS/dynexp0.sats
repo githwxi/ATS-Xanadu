@@ -32,6 +32,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
 //
 #staload
 FP0 = "./filpath.sats"

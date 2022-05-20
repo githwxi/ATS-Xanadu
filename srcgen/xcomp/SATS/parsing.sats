@@ -38,11 +38,15 @@
 // may be obsolete and/or inaccurate
 //
 (* ****** ****** *)
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
+//
 %{#
 #include "CATS/parsing.cats"
 %} // end of [%{#]
-
+//
 (* ****** ****** *)
 //
 #staload

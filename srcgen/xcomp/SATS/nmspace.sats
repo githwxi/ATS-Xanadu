@@ -32,10 +32,14 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
+//
 abstbox nmitm_tbox = ptr
 typedef nmitm = nmitm_tbox
-
+//
 (* ****** ****** *)
 //
 fun the_nmspace_top(): nmitm

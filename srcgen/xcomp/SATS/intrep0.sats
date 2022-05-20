@@ -32,23 +32,25 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#staload "./xbasics.sats"
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
 (* ****** ****** *)
-
+//
+#staload "./xbasics.sats"
+//
+(* ****** ****** *)
 #staload "./xstamp0.sats"
 #staload "./xsymbol.sats"
 #staload "./locinfo.sats"
-
 (* ****** ****** *)
 #staload "./staexp2.sats"
 #staload "./statyp2.sats"
 #staload "./dynexp2.sats"
 (* ****** ****** *)
-
+//
 typedef dataptr = ptr
-
+//
 (* ****** ****** *)
 
 abstbox htcst_tbox = ptr

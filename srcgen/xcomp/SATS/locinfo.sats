@@ -32,17 +32,21 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
+//
 %{#
 #include "CATS/locinfo.cats"
 %} // end of [%{#]
-
+//
 (* ****** ****** *)
-
+//
 abstbox location_type = ptr
 typedef loc_t = location_type
 typedef location = location_type
-
+//
 (* ****** ****** *)
 //
 (*

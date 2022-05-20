@@ -32,6 +32,9 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#define
+ATS_PACKNAME "ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
 //
 fun
 xatsopt_memcpy

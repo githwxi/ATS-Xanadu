@@ -32,10 +32,14 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
+//
 #staload "./xlabel0.sats"
 #staload "./locinfo.sats"
-
+//
 (* ****** ****** *)
 
 #define VARG 0 // arg. vars

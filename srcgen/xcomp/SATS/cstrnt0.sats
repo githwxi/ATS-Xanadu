@@ -32,15 +32,19 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
 #staload "./xbasics.sats"
 (* ****** ****** *)
 #staload "./locinfo.sats"
 (* ****** ****** *)
-
+//
 #staload S2E = "./staexp2.sats"
 #staload S2T = "./statyp2.sats"
 #staload D2E = "./dynexp2.sats"
-
+//
 (* ****** ****** *)
 //
 typedef s2exp = $S2E.s2exp

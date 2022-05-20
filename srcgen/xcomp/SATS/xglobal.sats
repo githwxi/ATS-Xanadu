@@ -32,11 +32,16 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-#staload
-FP0 = "./filpath.sats"
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
 (* ****** ****** *)
+//
+#staload
+  FP0 = "./filpath.sats"
 typedef
-filpath = $FP0.filpath
+  filpath = $FP0.filpath
+//
 (* ****** ****** *)
 abstbox
 fpathenv_tbox = ptr
