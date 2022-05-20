@@ -32,10 +32,14 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
+//
 #staload "./staexp1.sats"
 #staload "./dynexp1.sats"
-
+//
 (* ****** ****** *)
 //
 typedef

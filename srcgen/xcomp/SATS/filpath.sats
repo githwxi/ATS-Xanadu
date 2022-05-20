@@ -32,9 +32,13 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
 //
 #staload
-SYM = "./xsymbol.sats"
+  SYM = "./xsymbol.sats"
 //
 (* ****** ****** *)
 //

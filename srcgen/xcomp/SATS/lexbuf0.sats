@@ -32,11 +32,15 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
+//
 %{#
 #include "CATS/lexbuf0.cats"
 %} // end of [%{#]
-
+//
 (* ****** ****** *)
 //
 #staload CBS =

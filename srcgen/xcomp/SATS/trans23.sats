@@ -32,20 +32,24 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.libxatsopt"
+(* ****** ****** *)
+//
 #staload "./xlabel0.sats"
 #staload "./locinfo.sats"
-
+//
 (* ****** ****** *)
-
+//
 #staload LEX = "./lexing0.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
-
+//
 (* ****** ****** *)
-
+//
 typedef token = $LEX.token
-
+//
 (* ****** ****** *)
 //
 #staload S2E = "./staexp2.sats"
@@ -55,22 +59,22 @@ typedef token = $LEX.token
 #staload D3E = "./dynexp3.sats"
 //
 (* ****** ****** *)
-
+//
 typedef s2var = $S2E.s2var
 typedef s2exp = $S2E.s2exp
 typedef t2ype = $S2T.t2ype
 typedef t2xtv = $S2T.t2xtv
-
+//
 typedef s2varlst = $S2E.s2varlst
 typedef s2explst = $S2E.s2explst
 typedef t2ypelst = $S2T.t2ypelst
-
+//
 typedef labt2ype = $S2T.labt2ype
 typedef labt2ypelst = $S2T.labt2ypelst
-
+//
 typedef f1unarrow = $S1E.f1unarrow
 typedef effs2expopt = $S2E.effs2expopt
-
+//
 (* ****** ****** *)
 //
 typedef d2var = $D2E.d2var
