@@ -45,6 +45,9 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+#staload
+GLO = "./../SATS/xglobal.sats"
+(* ****** ****** *)
 //
 // HX-2019-11-14:
 //
@@ -78,7 +81,8 @@ prerrln!
 ("Hello from ATS3(xatsopt)!")
 //
 val
-XATSHOME = the_XATSHOME_get()
+XATSHOME =
+$GLO.the_XATSHOME_get((*void*))
 val
 ((*void*)) =
 prerrln!

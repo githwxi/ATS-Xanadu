@@ -339,10 +339,6 @@ end // end of [local]
 *)
 //
 (* ****** ****** *)
-implement
-the_XATSHOME_get() =
-$GLO.the_XATSHOME_get()
-(* ****** ****** *)
 //
 implement
 echo_argc_argv

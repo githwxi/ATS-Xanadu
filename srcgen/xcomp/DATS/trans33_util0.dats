@@ -1356,19 +1356,22 @@ end // end of [d33exp_tcastize]
 end // end of [local]
 
 (* ****** ****** *)
-
+(*
 local
 //
 #staload
-T12 =
-"./../SATS/trans12.sats"
+T12 = "./../SATS/trans12.sats"
 //
 in
+(*
+HX-2022-05-20:
+This one is declared in [trans33.sats]
+*)
 implement
 fmodenv_get_t3imptbl(menv) =
 $UN.cast($T12.fmodenv_get_t3imptbl(menv))
 end // end of [local]
-
+*)
 (* ****** ****** *)
 
 local
