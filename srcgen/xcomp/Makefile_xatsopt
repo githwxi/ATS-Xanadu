@@ -199,6 +199,10 @@ OBJDATS := \
 $(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
 
 ######
+INCLUDE=-I"."
+######
+
+######
 #
 all: \
 xatsopt
@@ -214,8 +218,8 @@ libxatsopt: \
 $(OBJSATS) $(OBJDATS) \
 BUILD/libxatsopt_dats.o; \
 ($(AR) -r $@.a $^ && $(MVF) $@.a ./../../lib)
-BUILD/libxatsopt_dats.o: \
-DATS/xatsopt.dats; $(PATSCC) -DATS __LIBXATSOPT__ -o $@ -c $<
+BUILD/libxatsopt_dats.o: DATS/xatsopt.dats; \
+$(PATSCC) $(INCLUDE) -DATS __LIBXATSOPT__ -o $@ -c $<
 
 ######
 
@@ -225,8 +229,6 @@ BUILD/%_dats.c: \
 ./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
 
 ######
-
-INCLUDE=-I"."
 
 BUILD/%_sats.o: \
 BUILD/%_sats.c; \
