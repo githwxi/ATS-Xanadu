@@ -265,17 +265,16 @@ $(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
 # For cleaning
 #
 ######
-clean:: ; \
-$(RMF) BUILD/*_?ats.c
-clean:: ; \
-$(RMF) BUILD/*_?ats.o
-clean:: ; \
-$(RMF) xatsopt_dats.o
-clean:: ; \
-$(RMF) xatsopt_dats.c
+clean:: ; $(RMF) BUILD/*_?ats.c
+clean:: ; $(RMF) BUILD/*_?ats.o
+clean:: ; $(RMF) xatsopt_dats.o
+clean:: ; $(RMF) xatsopt_dats.c
 ######
 cleanall:: clean
 cleanall:: ; $(RMF) ./xatsopt
+cleanall:: ; $(RMF) ./../../bin/xatsopt
+cleanall:: ; $(RMF) ./../../bin/xatsopt.sh
+cleanall:: ; $(RMF) ./../../lib/libxatsopt.a
 ######
 
 ###### end of [Makefile] ######
