@@ -12,6 +12,7 @@ SED=sed
 CPF=cp -f
 MVF=mv -f
 RMF=rm -f
+WCL=wc -l
 
 ######
 #
@@ -204,12 +205,16 @@ INCLUDE=-I"."
 
 ######
 #
-all: \
-xatsopt
+all:: xatsopt
+#
+######
+#
 xatsopt: \
+BUILD/xatsopt; $(MVF) $< ./../../bin/.
+BUILD/xatsopt: \
 DATS/xatsopt.dats \
 $(OBJSATS) $(OBJDATS); \
-$(PATSCC) -cleanaft -o xatsopt \
+$(PATSCC) -cleanaft -o $@ \
 $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
 #
 ######
@@ -217,7 +222,7 @@ $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
 libxatsopt: \
 $(OBJSATS) $(OBJDATS) \
 BUILD/libxatsopt_dats.o; \
-($(AR) -r $@.a $^ && $(MVF) $@.a ./../../lib)
+($(AR) -r $@.a $^ && $(MVF) $@.a ./../../lib/.)
 BUILD/libxatsopt_dats.o: DATS/xatsopt.dats; \
 $(PATSCC) $(INCLUDE) -DATS __LIBXATSOPT__ -o $@ -c $<
 

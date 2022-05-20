@@ -1,0 +1,35 @@
+######
+#
+# For some stats
+#
+######
+
+WCL=wc -l
+
+######
+
+all:: ; echo "make xatsopt"
+all:: ; echo "make libxatsopt"
+all:: ; echo "make srclines"
+
+######
+
+xatsopt: ; \
+(cd ./xcomp; make xatsopt)
+
+######
+
+libxatsopt: ; \
+(cd ./xcomp; make libxatsopt)
+
+######
+srclines:: ; $(WCL) ./xcomp/?ATS/*.?ats
+srclines:: ; $(WCL) ./xutil/?ATS/*.?ats
+srclines:: ; $(WCL) ./xutil/?ATS/Posix/*.?ats
+######
+
+cleanall:: ; (cd ./xcomp; make cleanall)
+
+######
+
+############ end of [Makefile] ############
