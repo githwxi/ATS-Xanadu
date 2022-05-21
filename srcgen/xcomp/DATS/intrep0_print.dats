@@ -545,12 +545,12 @@ fprint_htiarg(out, x0) =
 (
 case+ x0 of
 //
-| HTIARGnone() =>
-  fprint!
-  (out, "HTIARGnone(", ")")
-| HTIARGsome(h0ts) =>
-  fprint!
-  (out, "HTIARGsome(", h0ts, ")")
+|
+HTIARGnone() =>
+fprint!(out, "HTIARGnone(", ")")
+|
+HTIARGsome(h0ts) =>
+fprint!(out, "HTIARGsome(", h0ts, ")")
 //
 )
 //
@@ -562,6 +562,8 @@ fprint_h0exp(stdout_ref, x0)
 implement
 prerr_h0exp(x0) =
 fprint_h0exp(stderr_ref, x0)
+//
+(* ****** ****** *)
 //
 implement
 fprint_h0exp(out, x0) =
@@ -801,6 +803,8 @@ implement
 prerr_h0gua(x0) =
 fprint_h0gua(stderr_ref, x0)
 //
+(* ****** ****** *)
+//
 implement
 fprint_h0gua
   (out, x0) =
@@ -830,6 +834,8 @@ fprint_h0gpat(stdout_ref, x0)
 implement
 prerr_h0gpat(x0) =
 fprint_h0gpat(stderr_ref, x0)
+//
+(* ****** ****** *)
 //
 implement
 fprint_h0clau
@@ -879,6 +885,8 @@ implement
 prerr_h0dcl(x0) =
 fprint_h0dcl(stderr_ref, x0)
 //
+(* ****** ****** *)
+
 local
 //
 implement
@@ -1005,8 +1013,8 @@ end
 | _(* H0C... *) => fprint!(out, "H0C...(...)")
 *)
 )
-end // end of [local]
-//
+end (*local*) // end of [local]
+
 (* ****** ****** *)
 //
 implement
@@ -1015,6 +1023,8 @@ fprint_h0valdecl(stdout_ref, x0)
 implement
 prerr_h0valdecl(x0) =
 fprint_h0valdecl(stderr_ref, x0)
+//
+(* ****** ****** *)
 //
 implement
 fprint_h0valdecl
@@ -1044,6 +1054,8 @@ implement
 prerr_h0vardecl(x0) =
 fprint_h0vardecl(stderr_ref, x0)
 //
+(* ****** ****** *)
+//
 implement
 fprint_h0vardecl
   (out, x0) = let
@@ -1068,13 +1080,15 @@ implement
 prerr_h0fundecl(x0) =
 fprint_h0fundecl(stderr_ref, x0)
 
+(* ****** ****** *)
+
 implement
 fprint_h0fundecl
   (out, x0) = let
 //
 val+H0FUNDECL(rcd) = x0
 //
-in
+in//in-of-let
 //
 case+
 rcd.hag of

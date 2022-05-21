@@ -52,13 +52,19 @@ ATS_PACKNAME
 typedef dataptr = ptr
 //
 (* ****** ****** *)
-
+//
+(*
+abstbox htcon_tbox = ptr
+*)
 abstbox htcst_tbox = ptr
 abstbox htvar_tbox = ptr
 typedef htcst = htcst_tbox
 typedef htvar = htvar_tbox
-
+//
 (* ****** ****** *)
+(*
+typedef htconlst = List0(htcst)
+*)
 typedef htcstlst = List0(htcst)
 typedef htvarlst = List0(htvar)
 (* ****** ****** *)
@@ -118,17 +124,12 @@ typedef h0cst = h0cst_tbox
 typedef h0conlst = List0(h0con)
 typedef h0cstlst = List0(h0cst)
 //
+(* ****** ****** *)
+//
 abstbox h0var_tbox = ptr
 typedef h0var = h0var_tbox
 typedef h0varlst = List0(h0var)
 typedef h0varopt = Option(h0var)
-//
-(* ****** ****** *)
-//
-abstbox htqarg_tbox = ptr
-typedef htqarg = htqarg_tbox
-typedef htqarglst = List0(htqarg)
-typedef htqargopt = Option(htqarg)
 //
 (* ****** ****** *)
 //
@@ -139,18 +140,32 @@ typedef h0patopt = Option(h0pat)
 //
 (* ****** ****** *)
 //
+abstbox h0exp_tbox = ptr
+typedef h0exp = h0exp_tbox
+typedef h0explst = List0(h0exp)
+typedef h0expopt = Option(h0exp)
+//
+(* ****** ****** *)
+//
+abstbox h0dcl_tbox = ptr
+typedef h0dcl = h0dcl_tbox
+typedef h0dclist = List0(h0dcl)
+typedef h0dclopt = Option(h0dcl)
+//
+(* ****** ****** *)
+//
+abstbox htqarg_tbox = ptr
+typedef htqarg = htqarg_tbox
+typedef htqarglst = List0(htqarg)
+typedef htqargopt = Option(htqarg)
+//
+(* ****** ****** *)
+//
 abstbox h0farg_tbox = ptr
 //
 typedef h0farg = h0farg_tbox
 typedef h0farglst = List0(h0farg)
 typedef h0fargopt = Option(h0farg)
-//
-(* ****** ****** *)
-//
-abstbox h0exp_tbox = ptr
-typedef h0exp = h0exp_tbox
-typedef h0explst = List0(h0exp)
-typedef h0expopt = Option(h0exp)
 //
 (* ****** ****** *)
 //
@@ -164,13 +179,6 @@ typedef h0gpat = h0gpat_tbox
 abstbox h0clau_tbox = ptr
 typedef h0clau = h0clau_tbox
 typedef h0claulst = List0(h0clau)
-//
-(* ****** ****** *)
-//
-abstbox h0dcl_tbox = ptr
-typedef h0dcl = h0dcl_tbox
-typedef h0dclist = List0(h0dcl)
-typedef h0dclopt = Option(h0dcl)
 //
 (* ****** ****** *)
 //
@@ -542,7 +550,7 @@ overload fprint with fprint_htqarg
 //
 (* ****** ****** *)
 fun
-htqarg_make
+htqarg_make_htvarlst
 (loc0: loc_t, htvs: htvarlst): htqarg
 (* ****** ****** *)
 //

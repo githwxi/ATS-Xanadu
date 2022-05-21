@@ -3315,10 +3315,14 @@ val htqa =
 (
 case+ htvs of
 |
-list_nil() => None()
+list_nil() =>
+None((*void*))
 |
 list_cons _ =>
-Some(htqarg_make(loc0, htvs))
+Some
+(
+htqarg_make_htvarlst(loc0, htvs)
+)
 ) : htqargopt // end-of-val
 //
 val
