@@ -146,7 +146,7 @@ None_vt() =>
 let
   val
   hdv1 =
-  hdvar_make_dvar(d2v0)
+  h0var_make_dvar(d2v0)
 in
 the_dvarmap_insert_any(d2v0, hdv1); hdv1
 end
@@ -183,7 +183,7 @@ None_vt((*void*)) =>
 let
   val
   hdc1 =
-  hdcon_make_dcon(d2c0)
+  h0con_make_dcon(d2c0)
 in
 the_dconmap_insert_any(d2c0, hdc1); hdc1
 end
@@ -206,7 +206,7 @@ None_vt((*void*)) =>
 let
   val
   hdc1 =
-  hdcst_make_dcst(d2c0)
+  h0cst_make_dcst(d2c0)
 in
 the_dcstmap_insert_any(d2c0, hdc1); hdc1
 end
@@ -218,11 +218,11 @@ trcmp30_dconlst
 ( d2cs ) =
 list_vt2t
 (
-list_map<d2con><hdcon>(d2cs)
+list_map<d2con><h0con>(d2cs)
 ) where
 {
 implement
-list_map$fopr<d2con><hdcon>(d2c) = trcmp30_dcon(d2c)
+list_map$fopr<d2con><h0con>(d2c) = trcmp30_dcon(d2c)
 }
 (* ****** ****** *)
 implement
@@ -230,11 +230,11 @@ trcmp30_dcstlst
 ( d2cs ) =
 list_vt2t
 (
-list_map<d2cst><hdcst>(d2cs)
+list_map<d2cst><h0cst>(d2cs)
 ) where
 {
 implement
-list_map$fopr<d2cst><hdcst>(d2c) = trcmp30_dcst(d2c)
+list_map$fopr<d2cst><h0cst>(d2c) = trcmp30_dcst(d2c)
 }
 (* ****** ****** *)
 
@@ -811,8 +811,8 @@ f3a0.node() of
   h0ps =
   trcmp30_dpatlst(env0, d3ps)
   in
-  hfarg_make_node
-  (loc0, HFARGnpats(npf0, h0ps))
+  h0farg_make_node
+  (loc0, H0FARGnpats(npf0, h0ps))
   end
 | _ (* else *) =>
   let
@@ -820,7 +820,7 @@ f3a0.node() of
   hend =
   $UN.cast{ptr}(f3a0)
   in
-  hfarg_make_node(loc0, HFARGnone1(hend))
+  h0farg_make_node(loc0, H0FARGnone1(hend))
   end
 end // end of [trcmp30_farg]
 
@@ -837,11 +837,11 @@ $UN.castvwtp1{ptr}(env0)
 in
 list_vt2t
 (
-list_map<f3arg><hfarg>(f3as)
+list_map<f3arg><h0farg>(f3as)
 ) where
 {
 implement
-list_map$fopr<f3arg><hfarg>(f3a0) =
+list_map$fopr<f3arg><h0farg>(f3a0) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)
@@ -2877,7 +2877,7 @@ auxf3d0
 ( env0:
 ! compenv
 , f3d0
-: f3undecl): hfundecl =
+: f3undecl): h0fundecl =
 let
 val+
 F3UNDECL(rcd) = f3d0
@@ -2901,14 +2901,14 @@ None()
 Some(f3as) =>
 Some
 (trcmp30_farglst(env0, f3as))
-) : hfarglstopt // end-of-val
+) : h0farglstopt // end-of-val
 val rtp = trsubt2p(env0, rtp)
 //
 val
 def = trcmp30_dexpopt(env0, def)
 //
 in
-HFUNDECL(
+H0FUNDECL(
 @{
  loc=loc,nam=nam
 ,hdc=hdc,hag=hag,def=def,rtp=rtp}
@@ -2921,7 +2921,7 @@ auxf3ds
 , f3ds
 : f3undeclist
 )
-: hfundeclist = let
+: h0fundeclist = let
 //
 val
 env0 =
@@ -2930,12 +2930,12 @@ $UN.castvwtp1{ptr}(env0)
 in
 list_vt2t
 (
-list_map<f3undecl><hfundecl>(f3ds)
+list_map<f3undecl><h0fundecl>(f3ds)
 ) where
 {
 implement
 list_map$fopr<
-  f3undecl><hfundecl>(f3d0) =
+  f3undecl><h0fundecl>(f3d0) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)
@@ -2984,7 +2984,7 @@ auxv3d0
 ( env0:
 ! compenv
 , v3d0
-: v3aldecl): hvaldecl =
+: v3aldecl): h0valdecl =
 let
 //
 val+
@@ -3002,7 +3002,7 @@ val def =
 trcmp30_dexpopt(env0, def)
 //
 in
-HVALDECL
+H0VALDECL
 ( @{loc=loc,pat=pat,def=def} )
 end // end of [auxv3d0]
 and
@@ -3012,7 +3012,7 @@ auxv3ds
 , v3ds
 : v3aldeclist
 )
-: hvaldeclist = let
+: h0valdeclist = let
 //
 val
 env0 =
@@ -3021,12 +3021,12 @@ $UN.castvwtp1{ptr}(env0)
 in
 list_vt2t
 (
-list_map<v3aldecl><hvaldecl>(v3ds)
+list_map<v3aldecl><h0valdecl>(v3ds)
 ) where
 {
 implement
 list_map$fopr<
-  v3aldecl><hvaldecl>(v3d0) =
+  v3aldecl><h0valdecl>(v3d0) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)
@@ -3071,7 +3071,7 @@ auxv3d0
 ( env0:
 ! compenv
 , v3d0
-: v3ardecl): hvardecl =
+: v3ardecl): h0vardecl =
 let
 //
 val+
@@ -3091,7 +3091,7 @@ val ini =
 trcmp30_dexpopt(env0, ini)
 //
 in
-HVARDECL
+H0VARDECL
 (
 @{loc=loc,hdv=hdv,wth=wth,ini=ini}
 )
@@ -3103,7 +3103,7 @@ auxv3ds
 , v3ds
 : v3ardeclist
 )
-: hvardeclist = let
+: h0vardeclist = let
 //
 val
 env0 =
@@ -3112,12 +3112,12 @@ $UN.castvwtp1{ptr}(env0)
 in
 list_vt2t
 (
-list_map<v3ardecl><hvardecl>(v3ds)
+list_map<v3ardecl><h0vardecl>(v3ds)
 ) where
 {
 implement
 list_map$fopr<
-  v3ardecl><hvardecl>(v3d0) =
+  v3ardecl><h0vardecl>(v3d0) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)
@@ -3160,7 +3160,7 @@ D3Cexcptcon
 fun
 auxd2cs
 ( d2cs
-: d2conlst): hdconlst =
+: d2conlst): h0conlst =
 (
 case+ d2cs of
 |
@@ -3387,23 +3387,23 @@ d3cl.node() of
 //
 |
 D3Cstatic
-(tok, d3c1) => let
+(tok, d3cl) => let
   val
-  h0c1 =
-  trcmp30_decl(env0, d3c1)
+  hdcl =
+  trcmp30_decl(env0, d3cl)
 in
   h0dcl_make_node
-  (loc0, H0Cstatic(tok, h0c1))
+  (loc0, H0Cstatic(tok, hdcl))
 end
 |
 D3Cextern
-(tok, d3c1) => let
+(tok, d3cl) => let
 val
-h0c1 =
-trcmp30_decl(env0, d3c1)
+hdcl =
+trcmp30_decl(env0, d3cl)
 in
   h0dcl_make_node
-  (loc0, H0Cextern(tok, h0c1))
+  (loc0, H0Cextern(tok, hdcl))
 end
 //
 |
@@ -3480,13 +3480,13 @@ list_map<d3ecl><h0dcl>(d3cs)
 ) where
 {
 implement
-list_map$fopr<d3ecl><h0dcl>(d3c0) =
+list_map$fopr<d3ecl><h0dcl>(d3cl) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)
-val h0c0 = trcmp30_decl(env0, d3c0)
+val hdcl = trcmp30_decl(env0, d3cl)
 in
-let prval () = $UN.cast2void(env0) in h0c0 end
+let prval () = $UN.cast2void(env0) in hdcl end
 end
 }
 end // end of [trcmp30_declist]

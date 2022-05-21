@@ -77,74 +77,74 @@ htqas = htqarglst
 (* ****** ****** *)
 //
 typedef
-hdcon_struct = @{
+h0con_struct = @{
 //
-  hdcon_loc= loc_t // loc
-, hdcon_sym= sym_t // name
-, hdcon_ctag= tag_t // ctag
-, hdcon_tqas= htqas // tqas
-, hdcon_type= h0typ // type
-, hdcon_dvar= hdvar // r-time
-, hdcon_stamp= stamp // unicity
+  h0con_loc= loc_t // loc
+, h0con_sym= sym_t // name
+, h0con_ctag= tag_t // ctag
+, h0con_tqas= htqas // tqas
+, h0con_type= h0typ // type
+, h0con_dvar= h0var // r-time
+, h0con_stamp= stamp // unicity
 //
-} (* end of [hdcon_tbox] *)
+} (* end of [h0con_tbox] *)
 
 absimpl
-hdcon_tbox = ref(hdcon_struct)
+h0con_tbox = ref(h0con_struct)
 
 in(* in-of-local *)
 
 (* ****** ****** *)
 
 implement
-hdcon_get_loc
-(hdc) = hdc->hdcon_loc
+h0con_get_loc
+(hdc) = hdc->h0con_loc
 implement
-hdcon_get_sym
-(hdc) = hdc->hdcon_sym
+h0con_get_sym
+(hdc) = hdc->h0con_sym
 //
 implement
-hdcon_get_ctag
-(hdc) = hdc->hdcon_ctag
+h0con_get_ctag
+(hdc) = hdc->h0con_ctag
 implement
-hdcon_set_ctag
+h0con_set_ctag
 (hdc, tag) =
-(hdc->hdcon_ctag := tag)
+(hdc->h0con_ctag := tag)
 //
 implement
-hdcon_get_tqas
-(hdc) = hdc->hdcon_tqas
+h0con_get_tqas
+(hdc) = hdc->h0con_tqas
 implement
-hdcon_get_type
-(hdc) = hdc->hdcon_type
+h0con_get_type
+(hdc) = hdc->h0con_type
 //
 implement
-hdcon_get_dvar
-(hdc) = hdc->hdcon_dvar
+h0con_get_dvar
+(hdc) = hdc->h0con_dvar
 //
 implement
-hdcon_get_stamp
-(hdc) = hdc->hdcon_stamp
+h0con_get_stamp
+(hdc) = hdc->h0con_stamp
 
 (* ****** ****** *)
 
 implement
-hdcon_make_idtp
+h0con_make_idtp
 ( loc
 , sym
 , tqas, htp0) =
 (
-ref<hdcon_struct>
+ref<h0con_struct>
 @{
 //
-  hdcon_loc=loc
-, hdcon_sym=sym
+  h0con_loc=loc
+, h0con_sym=sym
 //
-, hdcon_ctag=(~1)
-, hdcon_tqas=tqas
-, hdcon_type=htp0
-, hdcon_dvar=hdv0
-, hdcon_stamp=stmp
+, h0con_ctag=(~1)
+, h0con_tqas=tqas
+, h0con_type=htp0
+, h0con_dvar=hdv0
+, h0con_stamp=stmp
 //
 }
 ) where
@@ -154,13 +154,13 @@ ref<hdcon_struct>
   T_EOF(*void*)
 //
   val hdv0 =
-  hdvar_make_idtp
+  h0var_make_idtp
   (loc, sym, knd, htp0)
 //
   val
-  stmp = hdcon_stamp_new()
+  stmp = h0con_stamp_new()
 //
-} (* end of [hdcon_make_idtp] *)
+} (* end of [h0con_make_idtp] *)
 
 (* ****** ****** *)
 
@@ -168,8 +168,8 @@ end // end of [local]
 
 (* ****** ****** *)
 implement
-eq_hdcon_hdcon(x1, x2) =
-(x1.stamp() = x2.stamp())
+eq_h0con_h0con(x1, x2) =
+( x1.stamp() = x2.stamp() )
 (* ****** ****** *)
 
 local
@@ -178,77 +178,77 @@ typedef
 htqas = htqarglst
 //
 typedef
-hdcst_struct = @{
+h0cst_struct = @{
 //
-  hdcst_loc= loc_t // loc
-, hdcst_sym= sym_t // name
-, hdcst_kind= tnode // kind
-, hdcst_tqas= htqas // tqas
-, hdcst_type= h0typ // type
-, hdcst_xknd= x2knd // xknd
-, hdcst_xnam= x2nam // xnam
-, hdcst_stamp= stamp // unicity
+  h0cst_loc= loc_t // loc
+, h0cst_sym= sym_t // name
+, h0cst_kind= tnode // kind
+, h0cst_tqas= htqas // tqas
+, h0cst_type= h0typ // type
+, h0cst_xknd= x2knd // xknd
+, h0cst_xnam= x2nam // xnam
+, h0cst_stamp= stamp // unicity
 //
-} (* end of [hdcon_tbox] *)
+} (* end of [h0cst_tbox] *)
 
 absimpl
-hdcst_tbox = ref(hdcst_struct)
+h0cst_tbox = ref(h0cst_struct)
 
 (* ****** ****** *)
 in(* in-of-local *)
 (* ****** ****** *)
 
 implement
-hdcst_get_loc
-(hdc) = hdc->hdcst_loc
+h0cst_get_loc
+(hdc) = hdc->h0cst_loc
 implement
-hdcst_get_sym
-(hdc) = hdc->hdcst_sym
+h0cst_get_sym
+(hdc) = hdc->h0cst_sym
 //
 implement
-hdcst_get_kind
-(hdc) = hdc->hdcst_kind
+h0cst_get_kind
+(hdc) = hdc->h0cst_kind
 //
 implement
-hdcst_get_type
-(hdc) = hdc->hdcst_type
+h0cst_get_type
+(hdc) = hdc->h0cst_type
 //
 implement
-hdcst_get_xknd
-(hdc) = hdc->hdcst_xknd
+h0cst_get_xknd
+(hdc) = hdc->h0cst_xknd
 implement
-hdcst_get_xnam
-(hdc) = hdc->hdcst_xnam
+h0cst_get_xnam
+(hdc) = hdc->h0cst_xnam
 //
 implement
-hdcst_get_stamp
-(hdc) = hdc->hdcst_stamp
+h0cst_get_stamp
+(hdc) = hdc->h0cst_stamp
 
 (* ****** ****** *)
 
 implement
-hdcst_make_idtp
+h0cst_make_idtp
 ( loc
 , sym
 , knd
 , tqas, htp0
 , xkd1, xnm2) =
 (
-ref<hdcst_struct>
+ref<h0cst_struct>
 @{
-  hdcst_loc=loc
-, hdcst_sym=sym
-, hdcst_kind=knd
-, hdcst_tqas=tqas
-, hdcst_type=htp0
-, hdcst_xknd=xkd1
-, hdcst_xnam=xnm2
-, hdcst_stamp=stmp
+  h0cst_loc=loc
+, h0cst_sym=sym
+, h0cst_kind=knd
+, h0cst_tqas=tqas
+, h0cst_type=htp0
+, h0cst_xknd=xkd1
+, h0cst_xnam=xnm2
+, h0cst_stamp=stmp
 }
 ) where
 {
-val stmp = hdcst_stamp_new()
-} (* end of [hdcst_make_idtp] *)
+val stmp = h0cst_stamp_new()
+} (* end of [h0cst_make_idtp] *)
 
 (* ****** ****** *)
 
@@ -256,15 +256,15 @@ end // end of [local]
 
 (* ****** ****** *)
 implement
-eq_hdcst_hdcst(x1, x2) =
-(x1.stamp() = x2.stamp())
+eq_h0cst_h0cst(x1, x2) =
+( x1.stamp() = x2.stamp() )
 (* ****** ****** *)
 
 implement
-hdcst_fcastq(hdc) =
+h0cst_fcastq(hdc) =
 let
 val
-knd = hdcst_get_kind(hdc)
+knd = h0cst_get_kind(hdc)
 in
 //
 case+ knd of
@@ -280,70 +280,78 @@ case+ fnk of
 *)
 | _ (* rest-of-tnode *) => false
 //
-end // end of [hdcst_iscast]
+end // end of [h0cst_fcastq]
 
 (* ****** ****** *)
 
 local
 
+(* ****** ****** *)
+
 typedef
-hdvar_struct = @{
+h0var_struct = @{
 //
-  hdvar_loc= loc_t // loc
-, hdvar_sym= sym_t // name
-, hdvar_kind= tnode // kind
-, hdvar_type= h0typ // type
-, hdvar_stamp= stamp // unicity
+  h0var_loc= loc_t // loc
+, h0var_sym= sym_t // name
+, h0var_kind= tnode // kind
+, h0var_type= h0typ // type
+, h0var_stamp= stamp // unicity
 //
-} (* end of [hdvar_tbox] *)
+} (* end of [h0var_tbox] *)
 
 absimpl
-hdvar_tbox = ref(hdvar_struct)
+h0var_tbox = ref(h0var_struct)
 
+(* ****** ****** *)
 in(* in-of-local *)
+(* ****** ****** *)
 
 implement
-hdvar_get_loc
-(hdv) = hdv->hdvar_loc
+h0var_get_loc
+(hdv) = hdv->h0var_loc
 implement
-hdvar_get_sym
-(hdv) = hdv->hdvar_sym
+h0var_get_sym
+(hdv) = hdv->h0var_sym
 //
 implement
-hdvar_get_kind
-(hdv) = hdv->hdvar_kind
+h0var_get_kind
+(hdv) = hdv->h0var_kind
 implement
-hdvar_get_type
-(hdv) = hdv->hdvar_type
+h0var_get_type
+(hdv) = hdv->h0var_type
 //
 implement
-hdvar_get_stamp
-(hdv) = hdv->hdvar_stamp
+h0var_get_stamp
+(hdv) = hdv->h0var_stamp
+
+(* ****** ****** *)
 
 implement
-hdvar_make_idtp
+h0var_make_idtp
 ( loc
 , sym, knd, htp) =
 (
-ref<hdvar_struct>
+ref<h0var_struct>
 @{
-  hdvar_loc=loc
-, hdvar_sym=sym
-, hdvar_kind=knd
-, hdvar_type=htp
-, hdvar_stamp=stmp
+  h0var_loc=loc
+, h0var_sym=sym
+, h0var_kind=knd
+, h0var_type=htp
+, h0var_stamp=stmp
 }
 ) where
 {
-val stmp = hdvar_stamp_new()
-}
+val stmp = h0var_stamp_new()
+} // end of [h0var_make_idtp]
 
-end // end of [local]
+(* ****** ****** *)
+
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 implement
-eq_hdvar_hdvar(x1, x2) =
-(x1.stamp() = x2.stamp())
+eq_h0var_h0var(x1, x2) =
+( x1.stamp() = x2.stamp() )
 (* ****** ****** *)
 
 local
@@ -378,34 +386,34 @@ loc0, h0t0, node
 , h0pat_type= h0t0, h0pat_node= node
 } (* h0pat_make_node *)
 //
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
 local
 //
 absimpl
-hfarg_tbox = $rec
-{ hfarg_loc= loc_t
-, hfarg_node= hfarg_node
+h0farg_tbox = $rec
+{ h0farg_loc= loc_t
+, h0farg_node= h0farg_node
 } (* end of [absimpl] *)
 //
 in (* in-of-local *)
 //
 implement
-hfarg_get_loc
-  (hfa) = hfa.hfarg_loc
+h0farg_get_loc
+  (h0fa) = h0fa.h0farg_loc
 //
 implement
-hfarg_get_node
-  (hfa) = hfa.hfarg_node
+h0farg_get_node
+  (h0fa) = h0fa.h0farg_node
 //
 implement
-hfarg_make_node
+h0farg_make_node
 (loc0, node) = $rec
 {
-hfarg_loc= loc0, hfarg_node= node
-} (* hfarg_make_node *)
+h0farg_loc= loc0, h0farg_node= node
+} (* h0farg_make_node *)
 //
 end // end of [local]
 
@@ -443,7 +451,7 @@ loc0, h0t0, node
 , h0exp_type= h0t0, h0exp_node= node
 } (* h0exp_make_node *)
 //
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -469,7 +477,7 @@ h0gua_make_node
   h0gua_loc= loc0, h0gua_node= node
 } (* h0gua_make_node *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -495,7 +503,7 @@ h0clau_make_node
   h0clau_loc= loc0, h0clau_node= node
 } (* h0clau_make_node *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -549,7 +557,7 @@ h0dcl_make_node
   h0dcl_loc= loc0, h0dcl_node= node
 } (* h0dcl_make_node *)
 //
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -583,7 +591,7 @@ htqarg_get_loc(x0) = x0.htqarg_loc
 implement
 htqarg_get_htvs(x0) = x0.htqarg_htvs
 
-end // end of [local]
+end (*local*) // end of [local]
 *)
 
 (* ****** ****** *)

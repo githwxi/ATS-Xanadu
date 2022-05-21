@@ -104,18 +104,18 @@ fprint_val<h0typ> = fprint_h0typ
 (* ****** ****** *)
 
 implement
-fprint_val<hdvar> = fprint_hdvar
+fprint_val<h0var> = fprint_h0var
 implement
-fprint_val<hdcon> = fprint_hdcon
+fprint_val<h0con> = fprint_h0con
 implement
-fprint_val<hdcst> = fprint_hdcst
+fprint_val<h0cst> = fprint_h0cst
 
 (* ****** ****** *)
 
 implement
 fprint_val<h0pat> = fprint_h0pat
 implement
-fprint_val<hfarg> = fprint_hfarg
+fprint_val<h0farg> = fprint_h0farg
 
 (* ****** ****** *)
 
@@ -352,14 +352,14 @@ fprint_htqarg
 (* ****** ****** *)
 //
 implement
-print_hdcon(x0) =
-fprint_hdcon(stdout_ref, x0)
+print_h0con(x0) =
+fprint_h0con(stdout_ref, x0)
 implement
-prerr_hdcon(x0) =
-fprint_hdcon(stderr_ref, x0)
+prerr_h0con(x0) =
+fprint_h0con(stderr_ref, x0)
 //
 implement
-fprint_hdcon(out, x0) =
+fprint_h0con(out, x0) =
 (
 fprint!
 (out, sym, "(", stamp, ")");
@@ -369,19 +369,19 @@ fprint!(out, ": ", x0.type());
 ) where
 {
 val sym = x0.sym() and stamp = x0.stamp()
-} (* end of [fprint_hdcon] *)
+} (* end of [fprint_h0con] *)
 //
 (* ****** ****** *)
 //
 implement
-print_hdcst(x0) =
-fprint_hdcst(stdout_ref, x0)
+print_h0cst(x0) =
+fprint_h0cst(stdout_ref, x0)
 implement
-prerr_hdcst(x0) =
-fprint_hdcst(stderr_ref, x0)
+prerr_h0cst(x0) =
+fprint_h0cst(stderr_ref, x0)
 //
 implement
-fprint_hdcst(out, x0) =
+fprint_h0cst(out, x0) =
 (
 fprint!
 (out, sym, "(", stamp, ")");
@@ -391,19 +391,19 @@ fprint!(out, ": ", x0.type());
 ) where
 {
 val sym = x0.sym() and stamp = x0.stamp()
-} (* end of [fprint_hdcst] *)
+} (* end of [fprint_h0cst] *)
 //
 (* ****** ****** *)
 //
 implement
-print_hdvar(x0) =
-fprint_hdvar(stdout_ref, x0)
+print_h0var(x0) =
+fprint_h0var(stdout_ref, x0)
 implement
-prerr_hdvar(x0) =
-fprint_hdvar(stderr_ref, x0)
+prerr_h0var(x0) =
+fprint_h0var(stderr_ref, x0)
 //
 implement
-fprint_hdvar(out, x0) =
+fprint_h0var(out, x0) =
 (
 fprint!
 (out, sym, "(", stamp, ")");
@@ -413,7 +413,7 @@ fprint!(out, ": ", x0.type());
 ) where
 {
 val sym = x0.sym() and stamp = x0.stamp()
-} (* end of [fprint_hdvar] *)
+} (* end of [fprint_h0var] *)
 //
 (* ****** ****** *)
 //
@@ -506,29 +506,29 @@ x0.node() of
 (* ****** ****** *)
 //
 implement
-print_hfarg(x0) =
-fprint_hfarg(stdout_ref, x0)
+print_h0farg(x0) =
+fprint_h0farg(stdout_ref, x0)
 implement
-prerr_hfarg(x0) =
-fprint_hfarg(stderr_ref, x0)
+prerr_h0farg(x0) =
+fprint_h0farg(stderr_ref, x0)
 //
 implement
-fprint_hfarg(out, x0) =
+fprint_h0farg(out, x0) =
 (
 case+
 x0.node() of
 //
 |
-HFARGnpats
+H0FARGnpats
 (npf0, h0ps) =>
 fprint!
 ( out
-, "HFARGnpats(", npf0, "; ", h0ps, ")")
+, "H0FARGnpats(", npf0, "; ", h0ps, ")")
 //
-| HFARGnone0 _ =>
-  fprint!(out, "HFARGnone0(", ")")
-| HFARGnone1 _ =>
-  fprint!(out, "HFARGnone1(", "...", ")")
+| H0FARGnone0 _ =>
+  fprint!(out, "H0FARGnone0(", ")")
+| H0FARGnone1 _ =>
+  fprint!(out, "H0FARGnone1(", "...", ")")
 )
 //
 (* ****** ****** *)
@@ -627,12 +627,12 @@ x0.node() of
   , "H0Etimp(", stmp, "; ", h0e1, ")")
 *)
 | H0Etimp
-  (stmp, hdc0, targ, hdcl, tsub) =>
+  (stmp, hcst, targ, hdcl, tsub) =>
   fprint!
   ( out
   , "H0Etimp("
   , stmp, "; "
-  , hdc0, "; ", targ, "; ", hdcl, "; ", tsub, ")")
+  , hcst, "; ", targ, "; ", hdcl, "; ", tsub, ")")
 //
 | H0Edapp
   (h0f0, npf1, h0es) =>
@@ -884,11 +884,11 @@ local
 implement
 fprint_val<h0dcl> = fprint_h0dcl
 implement
-fprint_val<hfundecl> = fprint_hfundecl
+fprint_val<h0fundecl> = fprint_h0fundecl
 implement
-fprint_val<hvaldecl> = fprint_hvaldecl
+fprint_val<h0valdecl> = fprint_h0valdecl
 implement
-fprint_val<hvardecl> = fprint_hvardecl
+fprint_val<h0vardecl> = fprint_h0vardecl
 //
 in
 //
@@ -898,97 +898,108 @@ fprint_h0dcl(out, x0) =
 case+
 x0.node() of
 //
-| H0Cstatic
-  (tok, h0c1) =>
-  fprint!
-  ( out
-  , "H0Cstatic(", tok, "; ", h0c1, ")")
-| H0Cextern
-  (tok, h0c1) =>
-  fprint!
-  ( out
-  , "H0Cextern(", tok, "; ", h0c1, ")")
+|
+H0Cstatic
+(tok, hdcl) =>
+fprint!
+( out
+, "H0Cstatic(", tok, "; ", hdcl, ")")
+|
+H0Cextern
+(tok, hdcl) =>
+fprint!
+( out
+, "H0Cextern(", tok, "; ", hdcl, ")")
 //
-| H0Clocal(head, body) =>
-  fprint!
-  ( out
-  , "H0Clocal(", head, "; ", body, ")")
+|
+H0Clocal
+(head, body) =>
+fprint!
+( out
+, "H0Clocal(", head, "; ", body, ")")
 //
-| H0Cinclude
-  ( tok0
-  , src1, knd2
-  , fopt, body) =>
-  (
+|
+H0Cinclude
+( tok0
+, src1, knd2
+, fopt, body) =>
+(
   fprint!
   ( out
   , "H0Cinclude("
   , "src= ", src1, "; "
   , "knd= ", knd2, "; "
   ,  fopt, "; ", body, ")")
-  ) where
-  {
-    val body =
-    (
-    case+ body of
-    | None _ => "None()"
-    | Some _ => "Some(<hdcls>)"): string
-  }
+) where
+{
+  val body =
+  (
+  case+ body of
+  | None _ => "None()"
+  | Some _ => "Some(<hdcls>)"): string
+}
 //
-| H0Cabstype
-  (htc1, def2) =>
-  fprint!
-  ( out
-  , "H0Cabstype(", htc1, "; ", def2)
+|
+H0Cabstype
+(htc1, def2) =>
+fprint!
+( out
+, "H0Cabstype(", htc1, "; ", def2)
 //
-| H0Cfundecl
-  (knd, mopt, tqas, hfds) =>
-  fprint!
-  ( out
-  , "H0Cfundecl("
-  , knd, "; ", mopt, "; ", tqas, "; ", hfds, ")")
+|
+H0Cfundecl
+(knd, mopt, tqas, hfds) =>
+fprint!
+( out
+, "H0Cfundecl("
+, knd, "; ", mopt, "; ", tqas, "; ", hfds, ")")
 //
-| H0Cvaldecl
-  (knd, mopt, hvds) =>
-  fprint!
-  ( out
-  , "H0Cvaldecl("
-  , knd, "; ", mopt, "; ", hvds, ")")
-| H0Cvardecl
-  (knd, mopt, hvds) =>
-  fprint!
-  ( out
-  , "H0Cvardecl("
-  , knd, "; ", mopt, "; ", hvds, ")")
+|
+H0Cvaldecl
+(knd, mopt, hvds) =>
+fprint!
+( out
+, "H0Cvaldecl("
+, knd, "; ", mopt, "; ", hvds, ")")
+|
+H0Cvardecl
+(knd, mopt, hvds) =>
+fprint!
+( out
+, "H0Cvardecl("
+, knd, "; ", mopt, "; ", hvds, ")")
 //
-| H0Cexcptcon(hdcs) =>
-  fprint!
-  (out, "H0Cexcptcon(", hdcs, ")")
-| H0Cdatatype(htcs) =>
-  fprint!
-  (out, "H0Cdatatype(", htcs, ")")
+|
+H0Cexcptcon(hdcs) =>
+fprint!(out, "H0Cexcptcon(", hdcs, ")")
+|
+H0Cdatatype(htcs) =>
+fprint!(out, "H0Cdatatype(", htcs, ")")
 //
-| H0Cimpdecl3
-  ( knd
-  , stmp, mopt
-  , tqas, hdc0, htia, hfas, body) =>
-  fprint!
-  ( out
-  , "H0Cimpdecl3("
-  , knd, "; "
-  , stmp, "; "
-  , mopt, "; "
-  , tqas, "; "
-  , hdc0, "; ", htia, "; ", hfas, "; ", body, ")")
+|
+H0Cimpdecl3
+( knd
+, stmp, mopt
+, tqas, hdc1, htia, hfas, body) =>
+fprint!
+( out
+, "H0Cimpdecl3("
+, knd, "; "
+, stmp, "; "
+, mopt, "; "
+, tqas, "; "
+, hdc1, "; ", htia, "; ", hfas, "; ", body, ")")
 //
-| H0Cnone1(d3cl) =>
-  let
+|
+H0Cnone1(d3cl) =>
+let
   val
   d3cl = $UN.cast{d3ecl}(d3cl)
   val () =
   fprint!(out, "H0Cnone1(d3cl)")
-  in
+in
   fprint!(out, "H0Cnone1(", d3cl, ")")
-  end
+end
 //
 (*
 | _(* H0C... *) => fprint!(out, "H0C...(...)")
@@ -999,18 +1010,18 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-print_hvaldecl(x0) =
-fprint_hvaldecl(stdout_ref, x0)
+print_h0valdecl(x0) =
+fprint_h0valdecl(stdout_ref, x0)
 implement
-prerr_hvaldecl(x0) =
-fprint_hvaldecl(stderr_ref, x0)
+prerr_h0valdecl(x0) =
+fprint_h0valdecl(stderr_ref, x0)
 //
 implement
-fprint_hvaldecl
+fprint_h0valdecl
   (out, x0) = let
 //
 val+
-HVALDECL(rcd) = x0
+H0VALDECL(rcd) = x0
 val pat = rcd.pat
 val def = rcd.def
 val t2p = pat.type()
@@ -1018,50 +1029,50 @@ val t2p = pat.type()
 in
   fprint!
   ( out
-  , "HVALDECL@{"
+  , "H0VALDECL@{"
   , ", pat=", pat
   , ", t2p=", t2p
   , ", def=", def, "}" )
-end // end of [fprint_hvaldecl]
+end // end of [fprint_h0valdecl]
 //
 (* ****** ****** *)
 //
 implement
-print_hvardecl(x0) =
-fprint_hvardecl(stdout_ref, x0)
+print_h0vardecl(x0) =
+fprint_h0vardecl(stdout_ref, x0)
 implement
-prerr_hvardecl(x0) =
-fprint_hvardecl(stderr_ref, x0)
+prerr_h0vardecl(x0) =
+fprint_h0vardecl(stderr_ref, x0)
 //
 implement
-fprint_hvardecl
+fprint_h0vardecl
   (out, x0) = let
 //
-val+HVARDECL(rcd) = x0
+val+H0VARDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "HVARDECL@{"
+  , "H0VARDECL@{"
   , ", hdv=", rcd.hdv
   , ", wth=", rcd.wth
   , ", ini=", rcd.ini, "}" )
-end // end of [fprint_hvardecl]
+end // end of [fprint_h0vardecl]
 //
 (* ****** ****** *)
 
 implement
-print_hfundecl(x0) =
-fprint_hfundecl(stdout_ref, x0)
+print_h0fundecl(x0) =
+fprint_h0fundecl(stdout_ref, x0)
 implement
-prerr_hfundecl(x0) =
-fprint_hfundecl(stderr_ref, x0)
+prerr_h0fundecl(x0) =
+fprint_h0fundecl(stderr_ref, x0)
 
 implement
-fprint_hfundecl
+fprint_h0fundecl
   (out, x0) = let
 //
-val+HFUNDECL(rcd) = x0
+val+H0FUNDECL(rcd) = x0
 //
 in
 //
@@ -1070,19 +1081,19 @@ rcd.hag of
 | None() =>
   fprint!
   ( out
-  , "HFUNDECL@{"
+  , "H0FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "hdc=", rcd.hdc, ", ", "}")
 | Some(rcd_hag) =>
   fprint!
   ( out
-  , "HFUNDECL@{"
+  , "H0FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "hdc=", rcd.hdc, ", "
   , "hag=", rcd_hag, ", "
   , "def=", rcd.def, ", ", "rtp=", rcd.rtp, ", ", "}")
 //
-end // end of [fprint_hfundecl]
+end // end of [fprint_h0fundecl]
 
 (* ****** ****** *)
 

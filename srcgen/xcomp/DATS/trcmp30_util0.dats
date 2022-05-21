@@ -103,7 +103,7 @@ end // end of [htvar_make_svar]
 (* ****** ****** *)
 
 implement
-hdcon_make_dcon
+h0con_make_dcon
   (d2c0) = let
 //
 val loc = d2c0.loc()
@@ -120,16 +120,16 @@ in
 let
 val
 hdc0 =
-hdcon_make_idtp
+h0con_make_idtp
 (loc, sym, htqs, htp0)
 val () =
 hdc0.ctag(d2c0.ctag()) in hdc0 end
-end(*let*)//end-of-[hdcon_make_dcon]
+end(*let*)//end-of-[h0con_make_dcon]
 
 (* ****** ****** *)
 
 implement
-hdcst_make_dcst
+h0cst_make_dcst
   (d2c0) = let
 //
 val loc = d2c0.loc()
@@ -146,16 +146,16 @@ val htqs = trcmp30_tqas(tqas)
 val htp0 = trcmp30_type(t2p0)
 //
 in
-hdcst_make_idtp
+h0cst_make_idtp
 ( loc
 , sym
 , knd, htqs, htp0, xkd1, xnm2)
-end(*let*)//end-of-[hdcst_make_dcst]
+end(*let*)//end-of-[h0cst_make_dcst]
 
 (* ****** ****** *)
 
 implement
-hdvar_make_dvar
+h0var_make_dvar
   (d2v0) = let
 //
 val loc = d2v0.loc()
@@ -167,20 +167,18 @@ val t2p0 = d2v0.type()
 val htp0 = trcmp30_type(t2p0)
 //
 in
-hdvar_make_idtp(loc, sym, knd, htp0)
-end(*let*)//end-of-[hdvar_make_dvar]
+h0var_make_idtp(loc, sym, knd, htp0)
+end(*let*)//end-of-[h0var_make_dvar]
 
 (* ****** ****** *)
 
-local
+local // local(0)
 
+(* ****** ****** *)
 #staload
-"libats/SATS\
-/linmap_avltree.sats"
+"libats/SATS/linmap_avltree.sats"
 #staload _ =
-"libats/DATS\
-/linmap_avltree.dats"
-
+"libats/DATS/linmap_avltree.dats"
 (* ****** ****** *)
 
 extern
@@ -190,12 +188,12 @@ lemma_p2tr_param
 {l:addr}(cp: p2tr(a, l)): [l >= null] void
 
 (* ****** ****** *)
-
 in(*in-of-local*)
-
 (* ****** ****** *)
 
 local
+
+(* ****** ****** *)
 
 typedef
 key = s2cst
@@ -222,9 +220,7 @@ $effmask_all(k2.stamp())
 in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
-
 in(*in-of-local*)
-
 (* ****** ****** *)
 
 implement
@@ -242,7 +238,7 @@ let
 prval () = $UN.cast2void(map)
 prval () = lemma_p2tr_param(ref) in ref
 end
-end // end of [the_scstmap_search_ref]
+end(*let*)//[the_scstmap_search_ref]
 
 (* ****** ****** *)
 
@@ -260,7 +256,7 @@ iseqz(ref)
 then None_vt()
 else Some_vt($UN.p2tr_get<itm>(ref))
 //
-end // end of [the_scstmap_search_opt]
+end(*let*)//[the_scstmap_search_opt]
 
 (* ****** ****** *)
 
@@ -280,7 +276,7 @@ $UN.ptr0_set<scstmap>(the_scstmap, map)
 val () =
 linmap_insert_any<key,itm>(map, s2c0, htc1)
 }
-end // end of [the_scstmap_insert_any]
+end(*let*)//[the_scstmap_insert_any]
 
 (* ****** ****** *)
 
@@ -301,15 +297,17 @@ val-
 ~None_vt() =
 linmap_insert_opt<key,itm>(map, s2c0, htc1)
 }
-end // end of [the_scstmap_insert_exn]
+end(*let*)//[the_scstmap_insert_exn]
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
 local
+
+(* ****** ****** *)
 
 typedef
 key = s2var
@@ -336,9 +334,7 @@ $effmask_all(k2.stamp())
 in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
-
 in(*in-of-local*)
-
 (* ****** ****** *)
 
 implement
@@ -356,7 +352,7 @@ let
 prval () = $UN.cast2void(map)
 prval () = lemma_p2tr_param(ref) in ref
 end
-end // end of [the_svarmap_search_ref]
+end(*let*)//[the_svarmap_search_ref]
 
 implement
 the_svarmap_search_opt
@@ -372,7 +368,7 @@ iseqz(ref)
 then None_vt()
 else Some_vt($UN.p2tr_get<itm>(ref))
 //
-end // end of [the_svarmap_search_opt]
+end(*let*)//[the_svarmap_search_opt]
 
 (* ****** ****** *)
 
@@ -392,7 +388,7 @@ $UN.ptr0_set<svarmap>(the_svarmap, map)
 val () =
 linmap_insert_any<key,itm>(map, s2v0, htv1)
 }
-end // end of [the_svarmap_insert_any]
+end(*let*)//[the_svarmap_insert_any]
 
 implement
 the_svarmap_insert_exn
@@ -411,20 +407,22 @@ val-
 ~None_vt() =
 linmap_insert_opt<key,itm>(map, s2v0, htv1)
 }
-end // end of [the_svarmap_insert_exn]
+end(*let*)//[the_svarmap_insert_exn]
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
 local
 
+(* ****** ****** *)
+
 typedef
 key = d2con
 and
-itm = hdcon
+itm = h0con
 vtypedef
 dconmap = map(key, itm)
 
@@ -446,9 +444,7 @@ $effmask_all(k2.stamp())
 in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
-
 in(*in-of-local*)
-
 (* ****** ****** *)
 
 implement
@@ -466,7 +462,7 @@ let
 prval () = $UN.cast2void(map)
 prval () = lemma_p2tr_param(ref) in ref
 end
-end // end of [the_dconmap_search_ref]
+end(*let*)//[the_dconmap_search_ref]
 
 implement
 the_dconmap_search_opt
@@ -482,7 +478,7 @@ iseqz(ref)
 then None_vt()
 else Some_vt($UN.p2tr_get<itm>(ref))
 //
-end // end of [the_dconmap_search_opt]
+end(*let*)//[the_dconmap_search_opt]
 
 (* ****** ****** *)
 
@@ -502,7 +498,7 @@ $UN.ptr0_set<dconmap>(the_dconmap, map)
 val () =
 linmap_insert_any<key,itm>(map, d2c0, hdc1)
 }
-end // end of [the_dconmap_insert_any]
+end(*let*)//[the_dconmap_insert_any]
 
 implement
 the_dconmap_insert_exn
@@ -521,20 +517,22 @@ val-
 ~None_vt() =
 linmap_insert_opt<key,itm>(map, d2c0, hdc1)
 }
-end // end of [the_dconmap_insert_exn]
+end(*let*)//[the_dconmap_insert_exn]
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
 local
 
+(* ****** ****** *)
+
 typedef
 key = d2cst
 and
-itm = hdcst
+itm = h0cst
 vtypedef
 dcstmap = map(key, itm)
 
@@ -556,9 +554,7 @@ $effmask_all(k2.stamp())
 in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
-
 in(*in-of-local*)
-
 (* ****** ****** *)
 
 implement
@@ -576,7 +572,7 @@ let
 prval () = $UN.cast2void(map)
 prval () = lemma_p2tr_param(ref) in ref
 end
-end // end of [the_dcstmap_search_ref]
+end(*let*)//[the_dcstmap_search_ref]
 
 implement
 the_dcstmap_search_opt
@@ -592,7 +588,7 @@ iseqz(ref)
 then None_vt()
 else Some_vt($UN.p2tr_get<itm>(ref))
 //
-end // end of [the_dcstmap_search_opt]
+end(*let*)//[the_dcstmap_search_opt]
 
 (* ****** ****** *)
 
@@ -612,7 +608,7 @@ $UN.ptr0_set<dcstmap>(the_dcstmap, map)
 val () =
 linmap_insert_any<key,itm>(map, d2c0, hdc1)
 }
-end // end of [the_dcstmap_insert_any]
+end(*let*)//[the_dcstmap_insert_any]
 
 implement
 the_dcstmap_insert_exn
@@ -631,20 +627,22 @@ val-
 ~None_vt() =
 linmap_insert_opt<key,itm>(map, d2c0, hdc1)
 }
-end // end of [the_dcstmap_insert_exn]
+end(*let*)//[the_dcstmap_insert_exn]
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
 local
 
+(* ****** ****** *)
+
 typedef
 key = d2var
 and
-itm = hdvar
+itm = h0var
 vtypedef
 dvarmap = map(key, itm)
 
@@ -666,9 +664,7 @@ $effmask_all(k2.stamp())
 in cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
-
 in(*in-of-local*)
-
 (* ****** ****** *)
 
 implement
@@ -686,7 +682,9 @@ let
 prval () = $UN.cast2void(map)
 prval () = lemma_p2tr_param(ref) in ref
 end
-end // end of [the_dvarmap_search_ref]
+end(*let*)//[the_dvarmap_search_ref]
+
+(* ****** ****** *)
 
 implement
 the_dvarmap_search_opt
@@ -702,7 +700,7 @@ iseqz(ref)
 then None_vt()
 else Some_vt($UN.p2tr_get<itm>(ref))
 //
-end // end of [the_dvarmap_search_opt]
+end(*let*)//[the_dvarmap_search_opt]
 
 (* ****** ****** *)
 
@@ -722,7 +720,9 @@ $UN.ptr0_set<dvarmap>(the_dvarmap, map)
 val () =
 linmap_insert_any<key,itm>(map, d2v0, hdv1)
 }
-end // end of [the_dvarmap_insert_any]
+end(*let*)//[the_dvarmap_insert_any]
+
+(* ****** ****** *)
 
 implement
 the_dvarmap_insert_exn
@@ -741,15 +741,15 @@ val-
 ~None_vt() =
 linmap_insert_opt<key,itm>(map, d2v0, hdv1)
 }
-end // end of [the_dvarmap_insert_exn]
+end(*let*)//[the_dvarmap_insert_exn]
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local(0)*) // end of [local(0)]
 
 (* ****** ****** *)
 

@@ -7,7 +7,8 @@ all::
 ######
 MAKE=make
 ######
-XATSOPT=./../xatsopt
+XATSOPT=\
+./../../../bin/xatsopt
 ######
 all:: \
 prelude

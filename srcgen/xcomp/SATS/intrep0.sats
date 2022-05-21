@@ -110,18 +110,18 @@ eq_htvar_htvar
 //
 (* ****** ****** *)
 //
-abstbox hdcon_tbox = ptr
-abstbox hdcst_tbox = ptr
-typedef hdcon = hdcon_tbox
-typedef hdcst = hdcst_tbox
+abstbox h0con_tbox = ptr
+abstbox h0cst_tbox = ptr
+typedef h0con = h0con_tbox
+typedef h0cst = h0cst_tbox
 //
-typedef hdconlst = List0(hdcon)
-typedef hdcstlst = List0(hdcst)
+typedef h0conlst = List0(h0con)
+typedef h0cstlst = List0(h0cst)
 //
-abstbox hdvar_tbox = ptr
-typedef hdvar = hdvar_tbox
-typedef hdvarlst = List0(hdvar)
-typedef hdvaropt = Option(hdvar)
+abstbox h0var_tbox = ptr
+typedef h0var = h0var_tbox
+typedef h0varlst = List0(h0var)
+typedef h0varopt = Option(h0var)
 //
 (* ****** ****** *)
 //
@@ -139,11 +139,11 @@ typedef h0patopt = Option(h0pat)
 //
 (* ****** ****** *)
 //
-abstbox hfarg_tbox = ptr
+abstbox h0farg_tbox = ptr
 //
-typedef hfarg = hfarg_tbox
-typedef hfarglst = List0(hfarg)
-typedef hfargopt = Option(hfarg)
+typedef h0farg = h0farg_tbox
+typedef h0farglst = List0(h0farg)
+typedef h0fargopt = Option(h0farg)
 //
 (* ****** ****** *)
 //
@@ -367,69 +367,69 @@ h0typlst_subst_tvarlst
 (* ****** ****** *)
 //
 fun
-hdcon_stamp_new(): stamp
+h0con_stamp_new(): stamp
 fun
-hdcst_stamp_new(): stamp
+h0cst_stamp_new(): stamp
 fun
-hdvar_stamp_new(): stamp
+h0var_stamp_new(): stamp
 //
 (* ****** ****** *)
 //
 fun
-hdcon_get_loc(hdcon): loc_t
+h0con_get_loc(h0con): loc_t
 fun
-hdcst_get_loc(hdcst): loc_t
+h0cst_get_loc(h0cst): loc_t
 fun
-hdvar_get_loc(hdvar): loc_t
+h0var_get_loc(h0var): loc_t
 //
-overload .loc with hdcon_get_loc
-overload .loc with hdcst_get_loc
-overload .loc with hdvar_get_loc
+overload .loc with h0con_get_loc
+overload .loc with h0cst_get_loc
+overload .loc with h0var_get_loc
 //
 (* ****** ****** *)
 //
 fun
-hdcon_get_sym(hdcon): sym_t
+h0con_get_sym(h0con): sym_t
 fun
-hdcst_get_sym(hdcst): sym_t
+h0cst_get_sym(h0cst): sym_t
 fun
-hdvar_get_sym(hdvar): sym_t
+h0var_get_sym(h0var): sym_t
 //
-overload .sym with hdcon_get_sym
-overload .sym with hdcst_get_sym
-overload .sym with hdvar_get_sym
+overload .sym with h0con_get_sym
+overload .sym with h0cst_get_sym
+overload .sym with h0var_get_sym
 //
 (* ****** ****** *)
 //
 fun
-hdcon_get_ctag(hdcon): tag_t
+h0con_get_ctag(h0con): tag_t
 fun
-hdcon_set_ctag
-  (hdc: hdcon, tag: tag_t): void
+h0con_set_ctag
+  (hdc: h0con, tag: tag_t): void
 //
-overload .ctag with hdcon_get_ctag
-overload .ctag with hdcon_set_ctag
+overload .ctag with h0con_get_ctag
+overload .ctag with h0con_set_ctag
 //
 (* ****** ****** *)
 //
 fun
-hdcon_get_tqas
-( hdc0: hdcon ): htqarglst
+h0con_get_tqas
+( hdc0: h0con ): htqarglst
 //
-overload .tqas with hdcon_get_tqas
+overload .tqas with h0con_get_tqas
 //
 (* ****** ****** *)
 //
 fun
-hdcon_get_type(hdcon): h0typ
+h0con_get_type(h0con): h0typ
 fun
-hdcst_get_type(hdcst): h0typ
+h0cst_get_type(h0cst): h0typ
 fun
-hdvar_get_type(hdvar): h0typ
+h0var_get_type(h0var): h0typ
 //
-overload .type with hdcon_get_type
-overload .type with hdcst_get_type
-overload .type with hdvar_get_type
+overload .type with h0con_get_type
+overload .type with h0cst_get_type
+overload .type with h0var_get_type
 //
 (* ****** ****** *)
 //
@@ -453,69 +453,69 @@ htcst_isdat(htc0: htcst): bool
 overload .isdat with htcst_isdat
 //
 fun
-htcst_get_hdconlst
-(htc0: htcst): Option(hdconlst)
+htcst_get_h0conlst
+(htc0: htcst): Option(h0conlst)
 fun
-htcst_set_hdconlst
-(htc0: htcst, hdcs: hdconlst): void
+htcst_set_h0conlst
+(htc0: htcst, hdcs: h0conlst): void
 //
 overload
-.hdconlst with htcst_get_hdconlst
+.h0conlst with htcst_get_h0conlst
 overload
-.hdconlst with htcst_set_hdconlst
+.h0conlst with htcst_set_h0conlst
 //
 (* ****** ****** *)
 //
 fun
-hdcst_fcastq(hdcst): bool
+h0cst_fcastq(h0cst): bool
 //
 fun
-hdcon_get_dvar(hdcon): hdvar
+h0con_get_dvar(h0con): h0var
 //
 fun
-hdcst_get_kind(hdcst): tnode
+h0cst_get_kind(h0cst): tnode
 //
 fun
-hdvar_get_kind(hdvar): tnode
+h0var_get_kind(h0var): tnode
 //
 (* ****** ****** *)
 //
 fun
-hdcst_get_xknd(hdcst): x2knd
+h0cst_get_xknd(h0cst): x2knd
 fun
-hdcst_get_xnam(hdcst): x2nam
+h0cst_get_xnam(h0cst): x2nam
 //
-overload .xknd with hdcst_get_xknd
-overload .xnam with hdcst_get_xnam
-//
-(* ****** ****** *)
-//
-fun
-hdcon_get_stamp(hdcon): stamp
-fun
-hdcst_get_stamp(hdcst): stamp
-fun
-hdvar_get_stamp(hdvar): stamp
-//
-overload .stamp with hdcon_get_stamp
-overload .stamp with hdcst_get_stamp
-overload .stamp with hdvar_get_stamp
+overload .xknd with h0cst_get_xknd
+overload .xnam with h0cst_get_xnam
 //
 (* ****** ****** *)
 //
 fun
-eq_hdcon_hdcon
-(x1: hdcon, x2: hdcon): bool
+h0con_get_stamp(h0con): stamp
 fun
-eq_hdcst_hdcst
-(x1: hdcst, x2: hdcst): bool
+h0cst_get_stamp(h0cst): stamp
 fun
-eq_hdvar_hdvar
-(x1: hdvar, x2: hdvar): bool
+h0var_get_stamp(h0var): stamp
 //
-overload = with eq_hdcon_hdcon
-overload = with eq_hdcst_hdcst
-overload = with eq_hdvar_hdvar
+overload .stamp with h0con_get_stamp
+overload .stamp with h0cst_get_stamp
+overload .stamp with h0var_get_stamp
+//
+(* ****** ****** *)
+//
+fun
+eq_h0con_h0con
+(x1: h0con, x2: h0con): bool
+fun
+eq_h0cst_h0cst
+(x1: h0cst, x2: h0cst): bool
+fun
+eq_h0var_h0var
+(x1: h0var, x2: h0var): bool
+//
+overload = with eq_h0con_h0con
+overload = with eq_h0cst_h0cst
+overload = with eq_h0var_h0var
 //
 (* ****** ****** *)
 //
@@ -547,66 +547,66 @@ htqarg_make
 (* ****** ****** *)
 //
 fun
-print_hdvar: hdvar -> void
+print_h0var: h0var -> void
 fun
-prerr_hdvar: hdvar -> void
+prerr_h0var: h0var -> void
 fun
-fprint_hdvar: fprint_type(hdvar)
+fprint_h0var: fprint_type(h0var)
 //
-overload print with print_hdvar
-overload prerr with prerr_hdvar
-overload fprint with fprint_hdvar
+overload print with print_h0var
+overload prerr with prerr_h0var
+overload fprint with fprint_h0var
 //
 (* ****** ****** *)
 //
 fun
-hdcon_make_idtp
+h0con_make_idtp
 ( loc: loc_t
 , sym: sym_t
 , tqas
-: htqarglst, htp0: h0typ): hdcon
+: htqarglst, htp0: h0typ): h0con
 fun
-hdcst_make_idtp
+h0cst_make_idtp
 ( loc: loc_t
 , sym: sym_t
 , knd: tnode
 , tqas
 : htqarglst, htp0: h0typ
-, xkd1: x2knd, xnm2: x2nam): hdcst
+, xkd1: x2knd, xnm2: x2nam): h0cst
 //
 (* ****** ****** *)
 //
 fun
-hdvar_make_idtp
+h0var_make_idtp
 ( loc: loc_t
 , sym: sym_t
-, knd: tnode, htp: h0typ): hdvar
+, knd: tnode, htp: h0typ): h0var
 //
 (* ****** ****** *)
 //
 fun
-print_hdcon: hdcon -> void
+print_h0con: h0con -> void
 fun
-prerr_hdcon: hdcon -> void
+prerr_h0con: h0con -> void
 fun
-fprint_hdcon: fprint_type(hdcon)
+fprint_h0con: fprint_type(h0con)
 //
-overload print with print_hdcon
-overload prerr with prerr_hdcon
-overload fprint with fprint_hdcon
+overload print with print_h0con
+overload prerr with prerr_h0con
+overload fprint with fprint_h0con
 //
 (* ****** ****** *)
 //
 fun
-print_hdcst: hdcst -> void
+print_h0cst: h0cst -> void
 fun
-prerr_hdcst: hdcst -> void
+prerr_h0cst: h0cst -> void
 fun
-fprint_hdcst: fprint_type(hdcst)
+fprint_h0cst: fprint_type(h0cst)
 //
-overload print with print_hdcst
-overload prerr with prerr_hdcst
-overload fprint with fprint_hdcst
+overload print with print_h0cst
+overload prerr with prerr_h0cst
+overload fprint with fprint_h0cst
 //
 (* ****** ****** *)
 //
@@ -616,7 +616,7 @@ h0pat_node =
 | H0Pnil of ()
 //
 | H0Pany of () // wildcard
-| H0Pvar of hdvar // variable
+| H0Pvar of h0var // variable
 //
 | H0Pi00 of (int)
 | H0Pb00 of (bool)
@@ -627,7 +627,7 @@ h0pat_node =
 | H0Pchr of token
 | H0Pstr of token
 //
-| H0Pcon of hdcon // cnstrctr
+| H0Pcon of h0con // cnstrctr
 //
 | H0Pbang of (h0pat)
 | H0Pflat of (h0pat)
@@ -682,42 +682,42 @@ h0pat_make_node
 (* ****** ****** *)
 //
 datatype
-hfarg_node =
+h0farg_node =
 //
-| HFARGnpats of
+| H0FARGnpats of
   (int(*npf*), h0patlst)
 //
-| HFARGnone0 of ((*nil*))
+| H0FARGnone0 of ((*nil*))
 //
-| HFARGnone1 of (dataptr) // for ignores
-//
-(* ****** ****** *)
-fun
-hfarg_get_loc
-( hfa: hfarg ) : loc_t
-fun
-hfarg_get_node
-( hfa: hfarg ) : hfarg_node
-//
-overload .loc with hfarg_get_loc
-overload .node with hfarg_get_node
-(* ****** ****** *)
-//
-fun
-print_hfarg: hfarg -> void
-fun
-prerr_hfarg: hfarg -> void
-fun
-fprint_hfarg: fprint_type(hfarg)
-//
-overload print with print_hfarg
-overload prerr with prerr_hfarg
-overload fprint with fprint_hfarg
+| H0FARGnone1 of (dataptr) // for ignores
 //
 (* ****** ****** *)
 fun
-hfarg_make_node
-(loc0: loc_t, node: hfarg_node): hfarg
+h0farg_get_loc
+( hfa: h0farg ) : loc_t
+fun
+h0farg_get_node
+( hfa: h0farg ) : h0farg_node
+//
+overload .loc with h0farg_get_loc
+overload .node with h0farg_get_node
+(* ****** ****** *)
+//
+fun
+print_h0farg: h0farg -> void
+fun
+prerr_h0farg: h0farg -> void
+fun
+fprint_h0farg: fprint_type(h0farg)
+//
+overload print with print_h0farg
+overload prerr with prerr_h0farg
+overload fprint with fprint_h0farg
+//
+(* ****** ****** *)
+fun
+h0farg_make_node
+(loc0: loc_t, node: h0farg_node): h0farg
 (* ****** ****** *)
 //
 datatype
@@ -762,15 +762,15 @@ h0exp_node =
 //
 | H0Etop of (token)
 //
-| H0Evar of (hdvar)
+| H0Evar of (h0var)
 | H0Ekvar of
-  (int(*knd*), hdvar)
+  (int(*knd*), h0var)
 //
-| H0Efcon of (hdcon)//cnstr
-| H0Etcon of (hdcon, htiarg)
+| H0Efcon of (h0con)//cnstr
+| H0Etcon of (h0con, htiarg)
 //
-| H0Efcst of (hdcst)//const
-| H0Etcst of (hdcst, htiarg)
+| H0Efcst of (h0cst)//const
+| H0Etcst of (h0cst, htiarg)
 //
 (*
 | H0Etimp of
@@ -832,11 +832,11 @@ H0Ecase of
 //
 | H0Elam of
   ( token(*knd*)
-  , hfarglst(*arg*), h0exp(*body*) )
+  , h0farglst(*arg*), h0exp(*body*) )
 | H0Efix of
   ( token(*knd*)
-  , hdvar(*fid*)
-  , hfarglst(*arg*), h0exp(*body*) )
+  , h0var(*fid*)
+  , h0farglst(*arg*), h0exp(*body*) )
 //
 |
 H0Etry0 of
@@ -1004,37 +1004,37 @@ h0gpat_make_node
 (* ****** ****** *)
 //
 datatype
-hfundecl =
-HFUNDECL of @{
+h0fundecl =
+H0FUNDECL of @{
   loc= loc_t
-, nam= hdvar
-, hdc= hdcst
+, nam= h0var
+, hdc= h0cst
 , hag=
-  hfarglstopt
+  h0farglstopt
 , def= h0expopt, rtp= h0typ
 } where
-  hfarglstopt = Option(hfarglst)
+  h0farglstopt = Option(h0farglst)
 //
-typedef hfundeclist = List0(hfundecl)
+typedef h0fundeclist = List0(h0fundecl)
 //
 (* ****** ****** *)
 //
 fun
-print_hfundecl: print_type(hfundecl)
+print_h0fundecl: print_type(h0fundecl)
 fun
-prerr_hfundecl: prerr_type(hfundecl)
+prerr_h0fundecl: prerr_type(h0fundecl)
 fun
-fprint_hfundecl: fprint_type(hfundecl)
+fprint_h0fundecl: fprint_type(h0fundecl)
 //
-overload print with print_hfundecl
-overload prerr with prerr_hfundecl
-overload fprint with fprint_hfundecl
+overload print with print_h0fundecl
+overload prerr with prerr_h0fundecl
+overload fprint with fprint_h0fundecl
 //
 (* ****** ****** *)
 //
 datatype
-hvaldecl =
-HVALDECL of @{
+h0valdecl =
+H0VALDECL of @{
   loc= loc_t
 , pat= h0pat
 , def= h0expopt
@@ -1044,63 +1044,63 @@ HVALDECL of @{
 }
 //
 typedef
-hvaldeclist = List0(hvaldecl)
+h0valdeclist = List0(h0valdecl)
 //
 (* ****** ****** *)
 //
 (*
 fun
-hvaldecl_get_loc(hvaldecl): loc_t
-overload .loc with hvaldecl_get_loc
+h0valdecl_get_loc(h0valdecl): loc_t
+overload .loc with h0valdecl_get_loc
 *)
 //
 (* ****** ****** *)
 //
 fun
-print_hvaldecl: print_type(hvaldecl)
+print_h0valdecl: print_type(h0valdecl)
 fun
-prerr_hvaldecl: prerr_type(hvaldecl)
+prerr_h0valdecl: prerr_type(h0valdecl)
 fun
-fprint_hvaldecl: fprint_type(hvaldecl)
+fprint_h0valdecl: fprint_type(h0valdecl)
 //
-overload print with print_hvaldecl
-overload prerr with prerr_hvaldecl
-overload fprint with fprint_hvaldecl
+overload print with print_h0valdecl
+overload prerr with prerr_h0valdecl
+overload fprint with fprint_h0valdecl
 //
 (* ****** ****** *)
 //
 datatype
-hvardecl =
-HVARDECL of @{
+h0vardecl =
+H0VARDECL of @{
   loc= loc_t
-, hdv= hdvar
-, wth= hdvaropt
+, hdv= h0var
+, wth= h0varopt
 , ini= h0expopt
 }
 //
 typedef
-hvardeclist = List0(hvardecl)
+h0vardeclist = List0(h0vardecl)
 //
 (* ****** ****** *)
 //
 (*
 fun
-hvardecl_get_loc(hvardecl): loc_t
-overload .loc with hvardecl_get_loc
+h0vardecl_get_loc(h0vardecl): loc_t
+overload .loc with h0vardecl_get_loc
 *)
 //
 (* ****** ****** *)
 //
 fun
-print_hvardecl: print_type(hvardecl)
+print_h0vardecl: print_type(h0vardecl)
 fun
-prerr_hvardecl: prerr_type(hvardecl)
+prerr_h0vardecl: prerr_type(h0vardecl)
 fun
-fprint_hvardecl: fprint_type(hvardecl)
+fprint_h0vardecl: fprint_type(h0vardecl)
 //
-overload print with print_hvardecl
-overload prerr with prerr_hvardecl
-overload fprint with fprint_hvardecl
+overload print with print_h0vardecl
+overload prerr with prerr_h0vardecl
+overload fprint with fprint_h0vardecl
 //
 (* ****** ****** *)
 //
@@ -1147,22 +1147,22 @@ H0Cabstype of
 H0Cfundecl of
 ( token(*knd*)
 , decmodopt
-, htqarglst, hfundeclist)
+, htqarglst, h0fundeclist)
 //
 |
 H0Cvaldecl of
 ( token(*knd*)
-, decmodopt, hvaldeclist)
+, decmodopt, h0valdeclist)
 |
 H0Cvardecl of
 ( token(*knd*)
-, decmodopt, hvardeclist)
+, decmodopt, h0vardeclist)
 //
 |
-H0Cexcptcon of (hdconlst)
+H0Cexcptcon of ( h0conlst )
 //
 |
-H0Cdatatype of (htcstlst)
+H0Cdatatype of ( htcstlst )
 //
 |
 H0Cimpdecl3 of
@@ -1170,7 +1170,7 @@ H0Cimpdecl3 of
 , stamp(*unicity*)
 , decmodopt
 , htqargopt
-, hdcst, htiarg, hfarglst, h0exp)
+, h0cst, htiarg, h0farglst, h0exp)
 //
 |
 H0Cnone1 of (dataptr) // HX: for ignores

@@ -92,7 +92,7 @@ stamper = stamper_new()
 in (* in-of-local *)
 
 implement
-hdcon_stamp_new
+h0con_stamp_new
 ((*void*)) = stamper_getinc(stamper)
 
 end // end of [local]
@@ -107,7 +107,7 @@ stamper = stamper_new()
 in (* in-of-local *)
 
 implement
-hdcst_stamp_new
+h0cst_stamp_new
 ((*void*)) = stamper_getinc(stamper)
 
 end // end of [local]
@@ -122,7 +122,7 @@ stamper = stamper_new()
 in (* in-of-local *)
 
 implement
-hdvar_stamp_new
+h0var_stamp_new
 ((*void*)) = stamper_getinc(stamper)
 
 end // end of [local]

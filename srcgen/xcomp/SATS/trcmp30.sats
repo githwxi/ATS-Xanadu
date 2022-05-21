@@ -131,58 +131,58 @@ the_svarmap_insert_exn
 (* ****** ****** *)
 //
 fun
-hdcon_make_dcon(d2con): hdcon
+h0con_make_dcon(d2con): h0con
 fun
-hdcst_make_dcst(d2cst): hdcst
+h0cst_make_dcst(d2cst): h0cst
 //
 (* ****** ****** *)
 //
 fun
 the_dconmap_search_ref
-(d2c: d2con): P2tr0(hdcon)
+(d2c: d2con): P2tr0(h0con)
 fun
 the_dconmap_search_opt
-(d2c: d2con): Option_vt(hdcon)
+(d2c: d2con): Option_vt(h0con)
 //
 fun
 the_dconmap_insert_any
-(d2c0: d2con, hdv1: hdcon): void
+(d2c0: d2con, hdv1: h0con): void
 fun
 the_dconmap_insert_exn
-(d2c0: d2con, hdv1: hdcon): void
+(d2c0: d2con, hdv1: h0con): void
 //
 fun
 the_dcstmap_search_ref
-(d2c: d2cst): P2tr0(hdcst)
+(d2c: d2cst): P2tr0(h0cst)
 fun
 the_dcstmap_search_opt
-(d2c: d2cst): Option_vt(hdcst)
+(d2c: d2cst): Option_vt(h0cst)
 //
 fun
 the_dcstmap_insert_any
-(d2c0: d2cst, hdv1: hdcst): void
+(d2c0: d2cst, hdv1: h0cst): void
 fun
 the_dcstmap_insert_exn
-(d2c0: d2cst, hdv1: hdcst): void
+(d2c0: d2cst, hdv1: h0cst): void
 //
 (* ****** ****** *)
 //
 fun
-hdvar_make_dvar(d2var): hdvar
+h0var_make_dvar(d2var): h0var
 //
 fun
 the_dvarmap_search_ref
-(d2v: d2var): P2tr0(hdvar)
+(d2v: d2var): P2tr0(h0var)
 fun
 the_dvarmap_search_opt
-(d2v: d2var): Option_vt(hdvar)
+(d2v: d2var): Option_vt(h0var)
 //
 fun
 the_dvarmap_insert_any
-(d2v0: d2var, hdv1: hdvar): void
+(d2v0: d2var, hdv1: h0var): void
 fun
 the_dvarmap_insert_exn
-(d2v0: d2var, hdv1: hdvar): void
+(d2v0: d2var, hdv1: h0var): void
 //
 (* ****** ****** *)
 //
@@ -251,44 +251,48 @@ trcmp30_tqas
 //
 fun
 trcmp30_dvar
-  (d2v0: d2var): hdvar
+  (d2v0: d2var): h0var
 fun
 trcmp30_dvaropt
-  (opt0: d2varopt): hdvaropt
+  (opt0: d2varopt): h0varopt
 //
 (* ****** ****** *)
 //
 fun
-trcmp30_dcon(d2c0: d2con): hdcon
+trcmp30_dcon(d2c0: d2con): h0con
 fun
-trcmp30_dcst(d2c0: d2cst): hdcst
+trcmp30_dcst(d2c0: d2cst): h0cst
 //
 fun
-trcmp30_dconlst(d2conlst): hdconlst
+trcmp30_dconlst(d2conlst): h0conlst
 fun
-trcmp30_dcstlst(d2cstlst): hdcstlst
+trcmp30_dcstlst(d2cstlst): h0cstlst
 //
 (* ****** ****** *)
 //
 fun
 trcmp30_dpat
 ( env0:
-! compenv, d3p0: d3pat): h0pat
+! compenv
+, d3p0: d3pat): h0pat
 fun
 trcmp30_dpatlst
 ( env0:
-! compenv, d3ps: d3patlst): h0patlst
+! compenv
+, d3ps: d3patlst): h0patlst
 //
 (* ****** ****** *)
 //
 fun
 trcmp30_farg
 ( env0:
-! compenv, f3a0: f3arg): hfarg
+! compenv
+, f3a0: f3arg): h0farg
 fun
 trcmp30_farglst
 ( env0:
-! compenv, f3as: f3arglst): hfarglst
+! compenv
+, f3as: f3arglst): h0farglst
 //
 (* ****** ****** *)
 //

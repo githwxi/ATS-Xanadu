@@ -62,7 +62,7 @@ htcst_struct = @{
 //
 , htcst_abstdf2= h0typopt
 //
-, htcst_hdconlst= Option(hdconlst)
+, htcst_h0conlst= Option(h0conlst)
 //
 } (* end of [htcst_tbox] *)
 //
@@ -96,12 +96,12 @@ htcst_set_abstdf2
 (* ****** ****** *)
 //
 implement
-htcst_get_hdconlst
-(htc) = htc->htcst_hdconlst
+htcst_get_h0conlst
+(htc) = htc->htcst_h0conlst
 implement
-htcst_set_hdconlst
-(htc, hdcs) =
-(htc->htcst_hdconlst := Some(hdcs))
+htcst_set_h0conlst
+(htc, h0cs) =
+(htc->htcst_h0conlst := Some(h0cs))
 //
 (* ****** ****** *)
 
@@ -118,7 +118,7 @@ ref<htcst_struct>
 //
 , htcst_abstdf2= None()
 //
-, htcst_hdconlst= None()
+, htcst_h0conlst= None()
 //
 }
 ) where
@@ -138,7 +138,7 @@ implement
 htcst_isdat(x0) =
 (
 case+
-x0.hdconlst() of
+x0.h0conlst() of
 Some _ => true | None _ => false
 )
 (* ****** ****** *)
