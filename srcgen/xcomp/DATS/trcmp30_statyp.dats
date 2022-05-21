@@ -306,7 +306,7 @@ val
 htvs =
 trcmp30_svarlst(s2vs)
 in
-htqarg_make(loc0, htvs) end
+htqarg_make_htvarlst(loc0, htvs) end
 end // end of [trcmp30_t2q0]
 //
 implement

@@ -144,7 +144,7 @@ Some _ => true | None _ => false
 (* ****** ****** *)
 
 local
-//
+
 typedef
 htvar_struct = @{
 //
@@ -156,8 +156,10 @@ htvar_struct = @{
 //
 absimpl
 htvar_tbox = ref(htvar_struct)
-//
+
+(* ****** ****** *)
 in(* in-of-local *)
+(* ****** ****** *)
 
 (* ****** ****** *)
 
@@ -190,7 +192,7 @@ val stmp = htvar_stamp_new()
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 implement
@@ -218,8 +220,8 @@ h0typ_tbox = $rec
 , h0typ_node= h0typ_node
 } (* absimpl *)
 
+(* ****** ****** *)
 in (* in-of-local *)
-
 (* ****** ****** *)
 
 implement
@@ -240,7 +242,7 @@ h0typ_make_node
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -253,7 +255,9 @@ htqarg_tbox = $rec
 , htqarg_htvs= htvarlst
 } (* absimpl *)
 
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 
 (* ****** ****** *)
 //
@@ -267,15 +271,15 @@ htqarg_get_htvs
 (* ****** ****** *)
 
 implement
-htqarg_make
+htqarg_make_htvarlst
   (loc0, htvs) = $rec
 {
   htqarg_loc= loc0, htqarg_htvs= htvs
-}
+} (* end of [htqarg_make_htvarlst] *)
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
