@@ -814,15 +814,15 @@ let
   h0ps =
   trcmp30_dpatlst(env0, d3ps)
 in
-  h0farg_make_node
-  (loc0, H0FARGnpats(npf0, h0ps))
+  h0fag_make_node
+  (loc0, H0FAGnpats(npf0, h0ps))
 end
 |
 _ (* else *) =>
 let
 val hend = $UN.cast{ptr}(f3a0)
 in
-h0farg_make_node(loc0, H0FARGnone1(hend))
+h0fag_make_node(loc0, H0FAGnone1(hend))
 end
 end (*let*) // end of [trcmp30_farg]
 
@@ -839,11 +839,11 @@ $UN.castvwtp1{ptr}(env0)
 in
 list_vt2t
 (
-list_map<f3arg><h0farg>(f3as)
+list_map<f3arg><h0fag>(f3as)
 ) where
 {
 implement
-list_map$fopr<f3arg><h0farg>(f3a0) =
+list_map$fopr<f3arg><h0fag>(f3a0) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)
@@ -3187,7 +3187,7 @@ val rtp = rcd.rtp
 //
 val nam = trcmp30_dvar(nam)
 val hdc = trcmp30_dcst(d2c)
-val hag =
+val hfg =
 (
 case+ a3g of
 |
@@ -3197,7 +3197,7 @@ None()
 Some(f3as) =>
 Some
 (trcmp30_farglst(env0, f3as))
-) : h0farglstopt // end-of-val
+) : h0faglstopt // end-of-val
 val rtp = trsubt2p(env0, rtp)
 //
 val
@@ -3207,7 +3207,7 @@ in
 H0FUNDECL(
 @{
  loc=loc,nam=nam
-,hdc=hdc,hag=hag,def=def,rtp=rtp}
+,hdc=hdc,hfg=hfg,def=def,rtp=rtp}
 ) (* HFUNDECL *)
 end // end of [auxf3d0]
 and

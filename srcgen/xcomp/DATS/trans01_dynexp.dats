@@ -1735,7 +1735,7 @@ FXITMatm(d1e0) where
     }
   end // end of [D0Equal]
 //
-| D0Enone1(tokerr) =>
+| D0Enone(tokerr) =>
   let
   val d1e0 = d1exp_none(loc0) in FXITMatm(d1e0)
   end // end of [D0Enone]

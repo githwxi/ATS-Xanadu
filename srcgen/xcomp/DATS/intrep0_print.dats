@@ -115,7 +115,7 @@ fprint_val<h0cst> = fprint_h0cst
 implement
 fprint_val<h0pat> = fprint_h0pat
 implement
-fprint_val<h0farg> = fprint_h0farg
+fprint_val<h0fag> = fprint_h0fag
 
 (* ****** ****** *)
 
@@ -506,33 +506,33 @@ x0.node() of
 (* ****** ****** *)
 //
 implement
-print_h0farg(x0) =
-fprint_h0farg(stdout_ref, x0)
+print_h0fag(x0) =
+fprint_h0fag(stdout_ref, x0)
 implement
-prerr_h0farg(x0) =
-fprint_h0farg(stderr_ref, x0)
+prerr_h0fag(x0) =
+fprint_h0fag(stderr_ref, x0)
 //
 (* ****** ****** *)
 //
 implement
-fprint_h0farg(out, x0) =
+fprint_h0fag(out, x0) =
 (
 case+
 x0.node() of
 //
 |
-H0FARGnpats
+H0FAGnpats
 (npf0, h0ps) =>
 fprint!
 ( out
-, "H0FARGnpats(", npf0, "; ", h0ps, ")")
+, "H0FAGnpats(", npf0, "; ", h0ps, ")")
 //
 |
-H0FARGnone0 _ =>
-fprint!(out, "H0FARGnone0(", ")")
+H0FAGnone0 _ =>
+fprint!(out, "H0FAGnone0(", ")")
 |
-H0FARGnone1 _ =>
-fprint!(out, "H0FARGnone1(", "...", ")")
+H0FAGnone1 _ =>
+fprint!(out, "H0FAGnone1(", "...", ")")
 )
 //
 (* ****** ****** *)
@@ -1095,20 +1095,20 @@ val+H0FUNDECL(rcd) = x0
 in//in-of-let
 //
 case+
-rcd.hag of
+rcd.hfg of
 | None() =>
   fprint!
   ( out
   , "H0FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "hdc=", rcd.hdc, ", ", "}")
-| Some(rcd_hag) =>
+| Some(rcd_hfg) =>
   fprint!
   ( out
   , "H0FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "hdc=", rcd.hdc, ", "
-  , "hag=", rcd_hag, ", "
+  , "hfg=", rcd_hfg, ", "
   , "def=", rcd.def, ", ", "rtp=", rcd.rtp, ", ", "}")
 //
 end // end of [fprint_h0fundecl]

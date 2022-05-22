@@ -287,12 +287,12 @@ fun
 trcmp30_farg
 ( env0:
 ! compenv
-, f3a0: f3arg): h0farg
+, f3a0: f3arg): h0fag
 fun
 trcmp30_farglst
 ( env0:
 ! compenv
-, f3as: f3arglst): h0farglst
+, f3as: f3arglst): h0faglst
 //
 (* ****** ****** *)
 //

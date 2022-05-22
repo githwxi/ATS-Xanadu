@@ -140,10 +140,10 @@ typedef h0patopt = Option(h0pat)
 //
 (* ****** ****** *)
 //
-abstbox h0farg_tbox = ptr
-typedef h0farg = h0farg_tbox
-typedef h0farglst = List0(h0farg)
-typedef h0fargopt = Option(h0farg)
+abstbox h0fag_tbox = ptr
+typedef h0fag = h0fag_tbox
+typedef h0faglst = List0(h0fag)
+typedef h0fagopt = Option(h0fag)
 //
 (* ****** ****** *)
 //
@@ -693,42 +693,42 @@ h0pat_make_node
 (* ****** ****** *)
 //
 datatype
-h0farg_node =
+h0fag_node =
 //
-| H0FARGnpats of
+| H0FAGnpats of
   (int(*npf*), h0patlst)
 //
-| H0FARGnone0 of ((*nil*))
+| H0FAGnone0 of ((*nil*))
 //
-| H0FARGnone1 of (dataptr) // for ignores
-//
-(* ****** ****** *)
-fun
-h0farg_get_loc
-( hfa: h0farg ) : loc_t
-fun
-h0farg_get_node
-( hfa: h0farg ) : h0farg_node
-//
-overload .loc with h0farg_get_loc
-overload .node with h0farg_get_node
-(* ****** ****** *)
-//
-fun
-print_h0farg: h0farg -> void
-fun
-prerr_h0farg: h0farg -> void
-fun
-fprint_h0farg: fprint_type(h0farg)
-//
-overload print with print_h0farg
-overload prerr with prerr_h0farg
-overload fprint with fprint_h0farg
+| H0FAGnone1 of (dataptr) // for ignores
 //
 (* ****** ****** *)
 fun
-h0farg_make_node
-(loc0: loc_t, node: h0farg_node): h0farg
+h0fag_get_loc
+( hfa: h0fag ) : loc_t
+fun
+h0fag_get_node
+( hfa: h0fag ) : h0fag_node
+//
+overload .loc with h0fag_get_loc
+overload .node with h0fag_get_node
+(* ****** ****** *)
+//
+fun
+print_h0fag: h0fag -> void
+fun
+prerr_h0fag: h0fag -> void
+fun
+fprint_h0fag: fprint_type(h0fag)
+//
+overload print with print_h0fag
+overload prerr with prerr_h0fag
+overload fprint with fprint_h0fag
+//
+(* ****** ****** *)
+fun
+h0fag_make_node
+(loc0: loc_t, node: h0fag_node): h0fag
 (* ****** ****** *)
 //
 datatype
@@ -843,11 +843,11 @@ H0Ecase of
 //
 | H0Elam of
   ( token(*knd*)
-  , h0farglst(*arg*), h0exp(*body*) )
+  , h0faglst(*arg*), h0exp(*body*) )
 | H0Efix of
   ( token(*knd*)
   , h0var(*fid*)
-  , h0farglst(*arg*), h0exp(*body*) )
+  , h0faglst(*arg*), h0exp(*body*) )
 //
 |
 H0Etry0 of
@@ -1020,11 +1020,11 @@ H0FUNDECL of @{
   loc= loc_t
 , nam= h0var
 , hdc= h0cst
-, hag=
-  h0farglstopt
+, hfg=
+  h0faglstopt
 , def= h0expopt, rtp= h0typ
 } where
-  h0farglstopt = Option(h0farglst)
+  h0faglstopt = Option(h0faglst)
 //
 typedef h0fundeclist = List0(h0fundecl)
 //
@@ -1181,7 +1181,7 @@ H0Cimplmnt3 of
 , stamp(*unicity*)
 , decmodopt
 , htqargopt
-, h0cst, htiarg, h0farglst, h0exp)
+, h0cst, htiarg, h0faglst, h0exp)
 //
 |
 H0Cnone1 of (dataptr) // HX: for ignores
