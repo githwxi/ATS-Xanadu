@@ -959,27 +959,27 @@ fprint!
 , "H0Cabstype(", htc1, "; ", def2)
 //
 |
-H0Cfundecl
+H0Cvaldclst
+(knd, mopt, hvds) =>
+fprint!
+( out
+, "H0Cvaldclst("
+, knd, "; ", mopt, "; ", hvds, ")")
+|
+H0Cvardclst
+(knd, mopt, hvds) =>
+fprint!
+( out
+, "H0Cvardclst("
+, knd, "; ", mopt, "; ", hvds, ")")
+//
+|
+H0Cfundclst
 (knd, mopt, tqas, hfds) =>
 fprint!
 ( out
-, "H0Cfundecl("
+, "H0Cfundclst("
 , knd, "; ", mopt, "; ", tqas, "; ", hfds, ")")
-//
-|
-H0Cvaldecl
-(knd, mopt, hvds) =>
-fprint!
-( out
-, "H0Cvaldecl("
-, knd, "; ", mopt, "; ", hvds, ")")
-|
-H0Cvardecl
-(knd, mopt, hvds) =>
-fprint!
-( out
-, "H0Cvardecl("
-, knd, "; ", mopt, "; ", hvds, ")")
 //
 |
 H0Cexcptcon(hdcs) =>

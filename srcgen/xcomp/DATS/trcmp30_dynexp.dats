@@ -3051,8 +3051,8 @@ in
 let
 val hvds = auxv3ds(env0, v3ds)
 in
-  h0dcl_make_node
-  (loc0, H0Cvaldecl(knd, mopt, hvds))
+h0dcl_make_node
+(loc0, H0Cvaldclst(knd, mopt, hvds))
 end
 end (*let*) // end of [aux_valdclst]
 
@@ -3144,8 +3144,8 @@ let
   val
   hvds = auxv3ds(env0, v3ds)
 in
-  h0dcl_make_node
-  (loc0, H0Cvardecl(knd, mopt, hvds))
+h0dcl_make_node
+(loc0, H0Cvardclst(knd, mopt, hvds))
 end
 end (*let*) // end of [aux_vardclst]
 
@@ -3251,7 +3251,8 @@ val
 hfds = auxf3ds(env0, f3ds)
 in
 h0dcl_make_node
-(loc0, H0Cfundecl(knd, mopt, tqas, hfds))
+( loc0
+, H0Cfundclst(knd, mopt, tqas, hfds))
 end // end of [let]
 //
 end (*let*) // end of [aux_fundclst]
