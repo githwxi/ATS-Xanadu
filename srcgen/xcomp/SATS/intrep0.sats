@@ -1155,25 +1155,25 @@ H0Cabstype of
 (htcst, h0typopt(*def*))
 //
 |
-H0Cfundecl of
+H0Cexcptcon of ( h0conlst )
+//
+|
+H0Cdatatype of ( htcstlst )
+//
+|
+H0Cfundclst of
 ( token(*knd*)
 , decmodopt
 , htqarglst, h0fundeclist)
 //
 |
-H0Cvaldecl of
+H0Cvaldclst of
 ( token(*knd*)
 , decmodopt, h0valdeclist)
 |
-H0Cvardecl of
+H0Cvardclst of
 ( token(*knd*)
 , decmodopt, h0vardeclist)
-//
-|
-H0Cexcptcon of ( h0conlst )
-//
-|
-H0Cdatatype of ( htcstlst )
 //
 |
 H0Cimpldcl3 of
