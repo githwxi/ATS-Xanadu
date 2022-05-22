@@ -3853,7 +3853,7 @@ end // end of [ptok_fundclst]
 //
 extern
 fun
-ptok_impldcl0
+ptok_implmnt0
 ( tok: token
 , buf: &tokbuf >> _
 , err: &int >> _): d0ecl
@@ -3867,7 +3867,7 @@ in(* in-of-local *)
 (* ****** ****** *)
 
 implement
-ptok_impldcl0
+ptok_implmnt0
 (
 tok, buf, err
 ) = let
@@ -3905,12 +3905,12 @@ in
   err := e0;
   d0ecl_make_node
   ( loc_res
-  , D0Cimpldcl0
+  , D0Cimplmnt0
     ( tok, mopt
     , sqas, tqas
     , dqid, tias, f0as, tres, teq0, d0e1)
   ) (* d0ecl_make_node *)
-end // end of [ptok_impldcl0]
+end // end of [ptok_implmnt0]
 //
 end // end of [local]
 //
@@ -4275,7 +4275,7 @@ end // end of [T_DATATYPE(k0)]
 //
 | T_IMPLMNT _ =>
   (
-    ptok_impldcl0(tok, buf, err)
+    ptok_implmnt0(tok, buf, err)
   )
 //
 | tnd when

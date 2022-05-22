@@ -870,7 +870,7 @@ d2cl.node() of
     val () = tread12_d2vardeclist(v2ds)
   }
 //
-| D2Cimpldcl1
+| D2Cimplmnt1
   ( knd
   , stmp, mopt
   , sqas, tqas
@@ -894,7 +894,7 @@ d2cl.node() of
     val () = tread12_d2exp(d2e2)
 //
   }
-| D2Cimpldcl2
+| D2Cimplmnt2
   ( knd
   , stmp, mopt
   , sqas, tqas

@@ -1202,12 +1202,12 @@ case+ x0.node() of
   ( out
   , "D0Cvardclst(", tok, "; ", mopt, "; ", d0cs, ")")
 //
-| D0Cimpldcl0
+| D0Cimplmnt0
   ( tok, mopt, sqas, tqas
   , dqid, tias, f0as, res0, teq1, d0e2) =>
   fprint!
   ( out
-  , "D0Cimpldcl0("
+  , "D0Cimplmnt0("
   , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f0as, "; ", res0, "; ", teq1, "; ", d0e2, ")")
 //

@@ -951,7 +951,7 @@ D3Cinclude
 *)
   }
 //
-| D3Cimpldcl1
+| D3Cimplmnt1
   ( tok
   , stmp, mopt
   , sqas, tqas
@@ -968,7 +968,7 @@ D3Cinclude
     val () = tread33_d3exp(d3e0)
 *)
   }
-| D3Cimpldcl2
+| D3Cimplmnt2
   ( tok
   , stmp, mopt
   , sqas, tqas
@@ -1000,17 +1000,17 @@ D3Cinclude
       (loc0, ": ***TRERR33***");
       prerrln!
       ( loc0
-      , ": TRERR33(D3Cimpldcl2): id2c = ", id2c )
+      , ": TRERR33(D3Cimplmnt2): id2c = ", id2c )
       end // end of [None()]
     )
 (*
     val () =
     println!
-    ("tread33_d3ecl: D3Cimpldcl2: d3cl = ", d3cl)
+    ("tread33_d3ecl: D3Cimplmnt2: d3cl = ", d3cl)
 *)
   }
 //
-| D3Cimpldcl3
+| D3Cimplmnt3
   ( tok
   , stmp, mopt
   , sqas, tqas
@@ -1033,7 +1033,7 @@ D3Cinclude
 (*
     val () =
     println!
-    ("tread33_d3ecl: D3Cimpldcl3: d3cl = ", d3cl)
+    ("tread33_d3ecl: D3Cimplmnt3: d3cl = ", d3cl)
 *)
   }
 //

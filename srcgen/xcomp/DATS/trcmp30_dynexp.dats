@@ -1308,7 +1308,7 @@ D3Cfundclst
 ( _, _, tqas, _) =>
 tqas.s2vs((*void*))
 |
-D3Cimpldcl3
+D3Cimplmnt3
 ( _
 , _, _
 , sqas, tqas
@@ -3260,7 +3260,7 @@ end (*let*) // end of [aux_fundclst]
 (* ****** ****** *)
 
 fun
-aux_impldcl3
+aux_implmnt3
 ( env0:
 ! compenv
 , d3cl: d3ecl): h0dcl =
@@ -3270,7 +3270,7 @@ val
 loc0 = d3cl.loc()
 //
 val-
-D3Cimpldcl3
+D3Cimplmnt3
 ( knd
 , stmp, mopt
 , sqas, tqas
@@ -3362,13 +3362,13 @@ body = trcmp30_dexp(env0, body)
 //
 val
 hend =
-H0Cimpldcl3
+H0Cimplmnt3
 ( knd
 , stmp, mopt
 , htqa, hdc0, htia, hfas, body)
 in
-h0dcl_make_node(loc0, hend(*impldcl*))
-end // end of [aux_impldcl3]
+h0dcl_make_node(loc0, hend(*implmnt*))
+end // end of [aux_implmnt3]
 
 (* ****** ****** *)
 
@@ -3456,7 +3456,7 @@ D3Cvardclst _ => aux_vardclst(env0, d3cl)
 D3Cfundclst _ => aux_fundclst(env0, d3cl)
 //
 |
-D3Cimpldcl3 _ => aux_impldcl3(env0, d3cl)
+D3Cimplmnt3 _ => aux_implmnt3(env0, d3cl)
 |
 _(* rest-of-d3exp *) =>
 (

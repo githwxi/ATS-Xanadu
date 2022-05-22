@@ -3211,14 +3211,14 @@ list_cons(x0, xs) =>
 in (* in-of-local *)
 
 fun
-aux_impldcl1
+aux_implmnt1
 ( env0:
 ! abstenv
 , d3cl: d3ecl): d3ecl =
 let
 //
 val-
-D3Cimpldcl1
+D3Cimplmnt1
 ( knd
 , stmp, mopt
 , sqas, tqas
@@ -3230,7 +3230,7 @@ D3Cimpldcl1
 (*
 val () =
 println!
-("aux_impldcl1: id2c = ", id2c)
+("aux_implmnt1: id2c = ", id2c)
 *)
 //
 val
@@ -3247,24 +3247,24 @@ d3ecl_make_node
 (
 d3cl.loc()
 ,
-D3Cimpldcl3
+D3Cimplmnt3
 ( knd
 , stmp, mopt
 , sqas, tqas
 , id2c, ti3a, tias, f3as, res0, d3e0))
-end // end of [aux_impldcl1]
+end // end of [aux_implmnt1]
 
 (* ****** ****** *)
 
 fun
-aux_impldcl2
+aux_implmnt2
 ( env0:
 ! abstenv
 , d3cl: d3ecl): d3ecl =
 let
 //
 val-
-D3Cimpldcl2
+D3Cimplmnt2
 ( knd
 , stmp, mopt
 , sqas, tqas
@@ -3276,7 +3276,7 @@ D3Cimpldcl2
 (*
 val () =
 println!
-("aux_impldcl2: id2c = ", id2c)
+("aux_implmnt2: id2c = ", id2c)
 *)
 //
 val
@@ -3302,7 +3302,7 @@ None() =>
 d3ecl_make_node
 ( d3cl.loc()
 ,
-  D3Cimpldcl2
+  D3Cimplmnt2
   ( knd
   , stmp, mopt
   , sqas, tqas
@@ -3396,7 +3396,7 @@ in
 d3ecl_make_node
 ( d3cl.loc()
 ,
-  D3Cimpldcl3
+  D3Cimplmnt3
   ( knd
   , stmp, mopt
   , sqas, tqas
@@ -3404,7 +3404,7 @@ d3ecl_make_node
 ) (* d3ecl_make_node *)
 end (* IMPLD3CSTsome *)
 //
-end // end of [aux_impldcl2]
+end // end of [aux_implmnt2]
 
 end (*local*) // end of [local]
 
@@ -3498,8 +3498,8 @@ D3Cextern
 | D3Cvaldclst _ => aux_valdclst(env0, d3cl)
 | D3Cvardclst _ => aux_vardclst(env0, d3cl)
 //
-| D3Cimpldcl1 _ => aux_impldcl1(env0, d3cl)
-| D3Cimpldcl2 _ => aux_impldcl2(env0, d3cl)
+| D3Cimplmnt1 _ => aux_implmnt1(env0, d3cl)
+| D3Cimplmnt2 _ => aux_implmnt2(env0, d3cl)
 //
 | D3Cnone0 _(*...*) => d3cl
 | D3Cnone1 _(*...*) => d3cl

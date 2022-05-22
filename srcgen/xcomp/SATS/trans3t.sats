@@ -184,7 +184,7 @@ implenv_add_staload
 ! implenv
 , d3cl: d3ecl): void
 fun
-implenv_add_impldcl3
+implenv_add_implmnt3
 ( env0:
 ! implenv
 , d3cl: d3ecl

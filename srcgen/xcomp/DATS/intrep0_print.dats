@@ -989,13 +989,13 @@ H0Cdatatype(htcs) =>
 fprint!(out, "H0Cdatatype(", htcs, ")")
 //
 |
-H0Cimpldcl3
+H0Cimplmnt3
 ( knd
 , stmp, mopt
 , tqas, hdc1, htia, hfas, body) =>
 fprint!
 ( out
-, "H0Cimpldcl3("
+, "H0Cimplmnt3("
 , knd, "; "
 , stmp, "; "
 , mopt, "; "

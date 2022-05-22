@@ -307,7 +307,7 @@ D1Cinclude
   }
 //
 |
-D1Cimpldcl0
+D1Cimplmnt0
 ( knd, mopt
 , sqas, tqas
 , dqid, ti1s

@@ -1439,7 +1439,7 @@ auxdcl0
 , d3cl: d3ecl): void =
 let
 val-
-D3Cimpldcl3
+D3Cimplmnt3
 ( tok0
 , stmp, mopt
 , sqas, tqas
@@ -1488,7 +1488,7 @@ val
 loc0 = d3cl.loc()
 //
 val-
-D3Cimpldcl3
+D3Cimplmnt3
 ( tok0
 , stmp, mopt
 , sqas, tqas
@@ -1639,12 +1639,12 @@ d3cl.node() of
   val () =
   auxlst1(htbl, body) in auxlst1(htbl, d3cs)
   end
-| D3Cimpldcl3 _ =>
+| D3Cimplmnt3 _ =>
   let
   val () =
   auxdcl0(htbl, d3cl) in auxlst1(htbl, d3cs)
   end
-| _(*non-D3Cimpldcl3*) => auxlst1(htbl, d3cs)
+| _(*non-D3Cimplmnt3*) => auxlst1(htbl, d3cs)
 )
 //
 val

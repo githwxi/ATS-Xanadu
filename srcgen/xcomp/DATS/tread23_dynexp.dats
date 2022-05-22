@@ -320,7 +320,7 @@ end // end of [aux_fundclst]
 (* ****** ****** *)
 
 fun
-aux_impldcl1
+aux_implmnt1
 ( d3cl
 : d3ecl): void =
 let
@@ -329,7 +329,7 @@ val
 loc0 = d3cl.loc()
 //
 val-
-D3Cimpldcl1
+D3Cimplmnt1
 ( knd
 , mopt, stmp
 , sqas, tqas
@@ -421,10 +421,10 @@ prerrln!
 (loc0, ": ***TRERR23***")
 val () =
 prerrln!
-(loc0, ": TRERR23(D3Cimpldcl1): d2c0 = ", d2c0)
+(loc0, ": TRERR23(D3Cimplmnt1): d2c0 = ", d2c0)
 val () =
 ( prerr!
-  (loc0, ": TRERR23(D3Cimpldcl1): tmp-arity mismatch: "); auxerr(0, cmps); prerrln!()
+  (loc0, ": TRERR23(D3Cimplmnt1): tmp-arity mismatch: "); auxerr(0, cmps); prerrln!()
 )
 //
 }
@@ -433,7 +433,7 @@ end // end-of-let
 //
 end // end-of-let
 
-end // end of [aux_impldcl1]
+end // end of [aux_implmnt1]
 
 in(*in-of-local*)
 
@@ -506,7 +506,7 @@ D3Cvaldclst _ => aux_valdclst(d3cl)
 D3Cvardclst _ => aux_vardclst(d3cl)
 //
 |
-D3Cimpldcl1 _ => aux_impldcl1(d3cl)
+D3Cimplmnt1 _ => aux_implmnt1(d3cl)
 //
 |
 _(* rest-of-d3ecl *) =>

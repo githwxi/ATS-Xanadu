@@ -5819,20 +5819,20 @@ end
 in (* in-of-local *)
 
 fun
-aux_impldcl0
+aux_implmnt0
 ( d1cl
 : d1ecl): d2ecl =
-aux_impldcl0_rec(d1cl)
+aux_implmnt0_rec(d1cl)
 
 and
-aux_impldcl0_rec
+aux_implmnt0_rec
 ( d1cl
 : d1ecl): d2ecl = let
 //
 val
 loc0 = d1cl.loc()
 val-
-D1Cimpldcl0
+D1Cimplmnt0
 ( knd
 , mopt
 , sqas, tqas
@@ -5854,10 +5854,10 @@ tqas = trans12_tqarglst(tqas)
 (*
 val () =
 println!
-("aux_impldcl0: sqas = ", sqas)
+("aux_implmnt0: sqas = ", sqas)
 val () =
 println!
-("aux_impldcl0: tqas = ", tqas)
+("aux_implmnt0: tqas = ", tqas)
 *)
 //
 val () =
@@ -5915,20 +5915,20 @@ nd2c = 1
 then
 d2ecl_make_node
 ( loc0
-, D2Cimpldcl1
+, D2Cimplmnt1
   ( knd, stmp, mopt
   , sqas, tqas, id2c, tias, f2as, tres, d2e2)
 ) (* d2ecl_make_node *)
 else
 d2ecl_make_node
 ( loc0
-, D2Cimpldcl2
+, D2Cimplmnt2
   ( knd, stmp, mopt
   , sqas, tqas, id2c, tias, f2as, tres, d2e2)
 ) (* d2ecl_make_node *)
 end
 //
-end // end of [aux_impldcl0_rec]
+end // end of [aux_implmnt0_rec]
 
 end // end of [local]
 
@@ -6897,7 +6897,7 @@ end // end of [D1Clocal]
 //
 | D1Cfundclst _ => aux_fundclst(d1cl)
 //
-| D1Cimpldcl0 _ => aux_impldcl0(d1cl)
+| D1Cimplmnt0 _ => aux_implmnt0(d1cl)
 //
 | _(*rest-of-D1ECL*) => d2ecl_none1(d1cl)
 //
