@@ -58,9 +58,9 @@ treader3x
 datatype trerr3x =
 //
 | TRERR3Xd3pat of (d3pat)
-| TRERR3Xd3exp of (d3exp)
-//
 | TRERR3Xf3arg of (f3arg)
+//
+| TRERR3Xd3exp of (d3exp)
 | TRERR3Xd3ecl of (d3ecl)
 //
 | TRERR3Xd3exp_tcst of (d3exp)
@@ -68,7 +68,7 @@ datatype trerr3x =
 | TRERR3Xd3exp_terr of (d3exp)
 //
 | TRERR3Xd3exp_tapp of (d3exp)
-| TRERR3Xd3exp_timp2f of (d3exp, f3undecl)
+| TRERR3Xd3exp_timp2f of (d3exp, d3fundecl)
 //
 typedef
 trerr3xlst = List0(trerr3x)
@@ -121,26 +121,21 @@ fun//{}
 tread3x_d3eclist: treader3x(d3eclist)
 //
 (* ****** ****** *)
-
+//
 fun//{}
-tread3x_v3aldecl: treader3x(v3aldecl)
+tread3x_d3valdecl: treader3x(d3valdecl)
 fun//{}
-tread3x_v3aldeclist: treader3x(v3aldeclist)
-
-(* ****** ****** *)
-
+tread3x_d3vardecl: treader3x(d3vardecl)
 fun//{}
-tread3x_v3ardecl: treader3x(v3ardecl)
+tread3x_d3fundecl: treader3x(d3fundecl)
+//
 fun//{}
-tread3x_v3ardeclist: treader3x(v3ardeclist)
-
-(* ****** ****** *)
-
+tread3x_d3valdeclist: treader3x(d3valdeclist)
 fun//{}
-tread3x_f3undecl: treader3x(f3undecl)
+tread3x_d3vardeclist: treader3x(d3vardeclist)
 fun//{}
-tread3x_f3undeclist: treader3x(f3undeclist)
-
+tread3x_d3fundeclist: treader3x(d3fundeclist)
+//
 (* ****** ****** *)
 
 (* end of [xats_tread3x.sats] *)

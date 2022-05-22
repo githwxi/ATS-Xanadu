@@ -148,7 +148,7 @@ case+ d3ps of
 
 implement
 f3arg_memq_dvar
-  (f3a0, d2v0) =
+( f3a0, d2v0 ) =
 (
 case+
 f3a0.node() of
@@ -165,28 +165,33 @@ d3patlst_memq_dvar(d3ps, d2v0)
 //
 (*
 val () =
-println!("f3arg_memq_dvar: f3a0 = ", f3a0)
+println!
+("f3arg_memq_dvar: f3a0 = ", f3a0)
 val () =
-println!("f3arg_memq_dvar: d3v0 = ", d2v0)
+println!
+("f3arg_memq_dvar: d3v0 = ", d2v0)
 *)
 //
-} (* end of [f3arg_memq_dvar] *)
+}(*case*)//end-of-[f3arg_memq_dvar]
 
 (* ****** ****** *)
 
 implement
 f3arglst_memq_dvar
-  (f3as, d2v0) =
+  ( f3as, d2v0 ) =
 (
 case+ f3as of
-| list_nil() => false
-| list_cons(f3a0, f3as) =>
-  ( if
-    f3arg_memq_dvar(f3a0, d2v0)
-    then true
-    else f3arglst_memq_dvar(f3as, d2v0)
-  ) (* end of [list_cons] *)
-)
+|
+list_nil() => false
+|
+list_cons(f3a0, f3as) =>
+(
+if
+f3arg_memq_dvar(f3a0, d2v0)
+then true
+else f3arglst_memq_dvar(f3as, d2v0)
+) (* end of [list_cons] *)
+)(*case*)//end of [f3arglst_memq_dvar]
 
 (* ****** ****** *)
 

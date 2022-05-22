@@ -87,14 +87,16 @@ typedef tq2arglst = $D2E.tq2arglst
 typedef d3pat = $D3E.d3pat
 typedef f3arg = $D3E.f3arg
 //
-(* ****** ****** *)
-//
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
+//
+(* ****** ****** *)
 //
 typedef d3gua = $D3E.d3gua
 typedef d3gpat = $D3E.d3gpat
 typedef d3clau = $D3E.d3clau
+//
+(* ****** ****** *)
 //
 typedef d3patlst = $D3E.d3patlst
 typedef f3arglst = $D3E.f3arglst
@@ -120,12 +122,12 @@ typedef dlocs = $D4E.dlocs
 typedef stmap = $D4E.stmap
 typedef stmrg = $D4E.stmrg
 (* ****** ****** *)
-typedef dvmrg2 = $D4E.dvmrg2
-typedef dvmrgs = $D4E.dvmrgs
-(* ****** ****** *)
 typedef d4gua = $D4E.d4gua
 typedef d4gpat = $D4E.d4gpat
 typedef d4clau = $D4E.d4clau
+(* ****** ****** *)
+typedef d2vmrg2 = $D4E.d2vmrg2
+typedef d2vmrgs = $D4E.d2vmrgs
 (* ****** ****** *)
 typedef d4patlst = $D4E.d4patlst
 typedef f4arglst = $D4E.f4arglst
@@ -197,8 +199,8 @@ tr34env_add_fix1
 ! tr34env, d2f1: d2var): void
 fun
 tr34env_add_lams
-( env0
-: !tr34env, f3as: f3arglst): void
+( env0:
+! tr34env, f3as: f3arglst): void
 //
 fun
 tr34env_pop_fix1
@@ -352,23 +354,23 @@ trans34_d4eopn
 (* ****** ****** *)
 //
 fun
-trans34_dpat
+trans34_d3pat
 ( env0:
 ! tr34env, d3p0: d3pat): d4pat
 fun
-trans34_dpatlst
+trans34_d3patlst
 ( env0:
 ! tr34env, d3ps: d3patlst): d4patlst
 //
 (* ****** ****** *)
 fun
-trans34_dpat_dntp
+trans34_d3pat_dntp
 ( env0:
 ! tr34env
 , d3p0: d3pat, s2e0: s2exp): d4pat
 (* ****** ****** *)
 fun
-trans34_dpatlst_dnts
+trans34_d3patlst_dnts
 ( env0:
 ! tr34env
 , d3ps
@@ -376,51 +378,51 @@ trans34_dpatlst_dnts
 (* ****** ****** *)
 //
 fun
-trans34_dexp
+trans34_f3arg
+( env0:
+! tr34env, f3a0: f3arg): f4arg
+fun
+trans34_f3arglst
+( env0:
+! tr34env, f3as: f3arglst): f4arglst
+//
+(* ****** ****** *)
+//
+fun
+trans34_d3exp
 ( env0:
 ! tr34env, d3e0: d3exp): d4exp
 //
 (* ****** ****** *)
 fun
-trans34_dexplst
+trans34_d3explst
 ( env0:
 ! tr34env, d3es: d3explst): d4explst
 fun
-trans34_dexpopt
+trans34_d3expopt
 ( env0:
 ! tr34env, opt0: d3expopt): d4expopt
 (* ****** ****** *)
 fun
-trans34_dexp_dntp
+trans34_d3exp_dntp
 ( env0:
 ! tr34env
 , d3e0: d3exp, s2e0: s2exp): d4exp
 fun
-trans34_dexplst_dnts
+trans34_d3explst_dnts
 ( env0:
 ! tr34env
 , d3es
 : d3explst, s2es: s2explst): d4explst
 (* ****** ****** *)
 //
-fun
-trans34_farg
-( env0
-: !tr34env, f3a0: f3arg): f4arg
-fun
-trans34_farglst
-( env0
-: !tr34env, f3as: f3arglst): f4arglst
-//
-(* ****** ****** *)
-//
 typedef
 effs2expopt =
 $S2E.effs2expopt
 fun
-trans34_farglst_s2exp
-( env0
-: !tr34env
+trans34_f3arglst_s2exp
+( env0:
+! tr34env
 , f3as
 : f3arglst, s2f0: s2exp
 , sres: &effs2expopt >> _ ): f4arglst
@@ -428,113 +430,116 @@ trans34_farglst_s2exp
 (* ****** ****** *)
 //
 fun
-trans34_dgpat_dntp
-( env0
-: !tr34env
+trans34_d3gpat_dntp
+( env0:
+! tr34env
 , d3gp
 : d3gpat, tmat: s2exp): d4gpat
 //
 fun
-trans34_dclau_dntp
-( env0
-: !tr34env
+trans34_d3clau_dntp
+( env0:
+! tr34env
 , d3cl
 : d3clau, tmat: s2exp, tres: s2exp): d4clau
 fun
-trans34_dclaulst_dntp
-( env0
-: !tr34env
+trans34_d3claulst_dntp
+( env0:
+! tr34env
 , dcls
 : d3claulst, tmat: s2exp, tres: s2exp): d4claulst
 //
 (* ****** ****** *)
 //
 fun
-trans34_decl
+trans34_d3ecl
 ( env0:
 ! tr34env, d3c0: d3ecl): d4ecl
 //
 (* ****** ****** *)
 fun
-trans34_declist
+trans34_d3eclist
 ( env0:
 ! tr34env, d3cs: d3eclist): d4eclist
 fun
-trans34_declopt
+trans34_d3eclopt
 ( env0:
 ! tr34env, opt0: d3eclopt): d4eclopt
 (* ****** ****** *)
 
 typedef
-f3undecl = $D3E.f3undecl
+d3fundecl = $D3E.d3fundecl
 typedef
-f3undeclist = $D3E.f3undeclist
+d3fundeclist = $D3E.d3fundeclist
 
 (* ****** ****** *)
 
 typedef
-v3aldecl = $D3E.v3aldecl
+d3valdecl = $D3E.d3valdecl
 typedef
-v3ardecl = $D3E.v3ardecl
+d3vardecl = $D3E.d3vardecl
 typedef
-v3aldeclist = $D3E.v3aldeclist
+d3valdeclist = $D3E.d3valdeclist
 typedef
-v3ardeclist = $D3E.v3ardeclist
+d3vardeclist = $D3E.d3vardeclist
 
 (* ****** ****** *)
 
 typedef
-f4undecl = $D4E.f4undecl
+d4fundecl = $D4E.d4fundecl
 typedef
-f4undeclist = $D4E.f4undeclist
+d4fundeclist = $D4E.d4fundeclist
 
 (* ****** ****** *)
 //
 typedef
-v4aldecl = $D4E.v4aldecl
+d4valdecl = $D4E.d4valdecl
 typedef
-v4ardecl = $D4E.v4ardecl
+d4vardecl = $D4E.d4vardecl
 typedef
-v4aldeclist = $D4E.v4aldeclist
+d4valdeclist = $D4E.d4valdeclist
 typedef
-v4ardeclist = $D4E.v4ardeclist
+d4vardeclist = $D4E.d4vardeclist
 //
 (* ****** ****** *)
 //
 fun
-f3undecl_get_s2expopt
-  ( fdcl: f3undecl ) : s2expopt
+d3fundecl_get_s2expopt
+  ( fdcl: d3fundecl ) : s2expopt
 //
 (* ****** ****** *)
-
-fun
-trans34_fundecl
-( env0:
-! tr34env, f3d0: f3undecl): f4undecl
-fun
-trans34_fundeclist
-( env0:
-! tr34env, f3ds: f3undeclist): f4undeclist
-
-(* ****** ****** *)
 //
 fun
-trans34_valdecl
+trans34_d3valdecl
 ( env0:
-! tr34env, v3d0: v3aldecl): v4aldecl
+! tr34env
+, v3d0: d3valdecl): d4valdecl
 fun
-trans34_valdeclist
+trans34_d3vardecl
 ( env0:
-! tr34env, v3ds: v3aldeclist): v4aldeclist
+! tr34env
+, v3d0: d3vardecl): d4vardecl
+fun
+trans34_d3fundecl
+( env0:
+! tr34env
+, f3d0: d3fundecl): d4fundecl
 //
 fun
-trans34_vardecl
+trans34_d3valdeclist
 ( env0:
-! tr34env, v3d0: v3ardecl): v4ardecl
+! tr34env
+, v3ds: d3valdeclist): d4valdeclist
 fun
-trans34_vardeclist
+trans34_d3vardeclist
 ( env0:
-! tr34env, v3ds: v3ardeclist): v4ardeclist
+! tr34env
+, v3ds: d3vardeclist): d4vardeclist
+fun
+trans34_d3fundeclist
+( env0:
+! tr34env
+, f3ds: d3fundeclist): d4fundeclist
 //
 (* ****** ****** *)
 //
@@ -560,14 +565,16 @@ tr34env_d2var_get_sexp
 //
 fun
 trans34_d3pat_get_sexp
-(env0: !tr34env, d3p0: d3pat): s2exp
+(env0:
+! tr34env, d3p0: d3pat): s2exp
 fun
 trans34_d3patlst_get_s2es
-(env0: !tr34env, d3ps: d3patlst): s2explst
+(env0:
+! tr34env, d3ps: d3patlst): s2explst
 (* ****** ****** *)
 fun
-trans34_f3undecl_set_sexp
-(env0: !tr34env, f3d0: f3undecl): void
+trans34_d3fundecl_set_sexp
+(env0: !tr34env, f3d0: d3fundecl): void
 (* ****** ****** *)
 //
 (*
@@ -578,13 +585,13 @@ tr34env_d2var_get_msexp
 *)
 //
 fun
-trans34_dvmrg2_list
-( env0
-: !tr34env, xtts: List0(dvmrg2)): stmrg
+trans34_d2vmrg2_list
+( env0:
+! tr34env, xtts: List0(d2vmrg2)): stmrg
 fun
-trans34_dvmrgs_list
-( env0
-: !tr34env, xtts: List0(dvmrgs)): stmrg
+trans34_d2vmrgs_list
+( env0:
+! tr34env, xtts: List0(d2vmrgs)): stmrg
 //
 (* ****** ****** *)
 

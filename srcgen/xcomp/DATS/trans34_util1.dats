@@ -919,12 +919,12 @@ end
 (* ****** ****** *)
 
 implement
-trans34_f3undecl_set_sexp
+trans34_d3fundecl_set_sexp
 ( env0, f3d0 ) =
 let
 //
 val+
-F3UNDECL
+D3FUNDECL
 ( rcd ) = f3d0
 //
 val nam = rcd.nam
@@ -980,9 +980,11 @@ aux_fclo
 : f3arglst): funclo2 =
 (
 case+ f3as of
-| list_nil() =>
-  FC2fun(*void*)
-| list_cons(f3a0, f3as) =>
+|
+list_nil() =>
+FC2fun(*void*)
+|
+list_cons(f3a0, f3as) =>
 (
 case+
 f3a0.node() of
@@ -1036,10 +1038,11 @@ let
 val fclo = aux_fclo(f3as)
 in
 aux_f3a0
-(env0, fclo, f3a0, aux_f3as(env0, f3as, s2r0))
+( env0
+, fclo, f3a0, aux_f3as(env0, f3as, s2r0))
 end // end of [list_cons]
 )
-} (* trans34_f3undecl_set_sexp *)
+}(*case*)//end of [trans34_d3fundecl_set_sexp]
 
 (* ****** ****** *)
 //

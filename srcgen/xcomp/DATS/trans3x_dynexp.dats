@@ -292,16 +292,18 @@ implement
 trans3x_farglst
 ( env0, f3as ) =
 (
-case+ f3as of
-|
-list_nil() => list_nil()
-|
-list_cons(f3a1, f3as) =>
-list_cons(f3a1, f3as) where
-{
-val f3a1 = trans3x_farg(env0, f3a1)
-val f3as = trans3x_farglst(env0, f3as)
-}
+  case+ f3as of
+  |
+  list_nil() => list_nil()
+  |
+  list_cons(f3a1, f3as) =>
+  list_cons(f3a1, f3as) where
+  {
+  val
+  f3a1 = trans3x_farg(env0, f3a1)
+  val
+  f3as = trans3x_farglst(env0, f3as)
+  }
 ) (*case*) // end of [trans3x_farglst]
 //
 (* ****** ****** *)
@@ -1130,12 +1132,12 @@ auxf3d0
 ( env0:
 ! tr3xenv
 , f3d0
-: f3undecl
+: d3fundecl
 )
-: f3undecl =
+: d3fundecl =
 let
 val+
-F3UNDECL(rcd) = f3d0
+D3FUNDECL(rcd) = f3d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
@@ -1196,7 +1198,7 @@ tr3xenv_pop_fix1(env0)
 val rtp = t2ype_normize(rtp) 
 //
 in
-F3UNDECL
+D3FUNDECL
 @{
  loc=loc
 ,nam=nam,d2c=d2c
@@ -1209,19 +1211,19 @@ auxf3ds
 ( env0:
 ! tr3xenv
 , f3ds
-: f3undeclist
+: d3fundeclist
 )
-: f3undeclist =
+: d3fundeclist =
 list_vt2t
 (
-list_map<f3undecl><f3undecl>(f3ds)
+list_map<d3fundecl><d3fundecl>(f3ds)
 ) where
 {
 val
 env0 =
 $UN.castvwtp1{ptr}(env0)
 implement
-list_map$fopr<f3undecl><f3undecl>
+list_map$fopr<d3fundecl><d3fundecl>
   (f3d0) =
 let
 val env0 =
@@ -1282,12 +1284,12 @@ auxv3d0
 ( env0:
 ! tr3xenv
 , v3d0
-: v3aldecl
+: d3valdecl
 )
-: v3aldecl =
+: d3valdecl =
 let
 val+
-V3ALDECL(rcd) = v3d0
+D3VALDECL(rcd) = v3d0
 //
 val loc = rcd.loc
 val pat = rcd.pat
@@ -1310,7 +1312,7 @@ Some(trans3x_dexp(env0, d3e0))
 ) : d3expopt // end-of-val
 //
 in
-V3ALDECL
+D3VALDECL
 (@{loc=loc,pat=pat,def=def,wtp=wtp})
 end // end of [auxv3d0]
 and
@@ -1318,19 +1320,19 @@ auxv3ds
 ( env0:
 ! tr3xenv
 , v3ds
-: v3aldeclist
+: d3valdeclist
 )
-: v3aldeclist =
+: d3valdeclist =
 list_vt2t
 (
-list_map<v3aldecl><v3aldecl>(v3ds)
+list_map<d3valdecl><d3valdecl>(v3ds)
 ) where
 {
 val
 env0 =
 $UN.castvwtp1{ptr}(env0)
 implement
-list_map$fopr<v3aldecl><v3aldecl>
+list_map$fopr<d3valdecl><d3valdecl>
   (v3d0) =
 let
   val env0 =
@@ -1372,12 +1374,12 @@ auxv3d0
 ( env0:
 ! tr3xenv
 , v3d0
-: v3ardecl
+: d3vardecl
 )
-: v3ardecl =
+: d3vardecl =
 let
 val+
-V3ARDECL(rcd) = v3d0
+D3VARDECL(rcd) = v3d0
 //
 val loc = rcd.loc
 val d2v = rcd.d2v
@@ -1408,7 +1410,7 @@ Some(trans3x_dexp(env0, d3e0))
 ) : d3expopt // end-of-val
 //
 in
-V3ARDECL
+D3VARDECL
 @{
  loc=loc
 ,d2v=d2v,wth=wth,res=res,ini=ini}
@@ -1418,19 +1420,19 @@ auxv3ds
 ( env0:
 ! tr3xenv
 , v3ds
-: v3ardeclist
+: d3vardeclist
 )
-: v3ardeclist =
+: d3vardeclist =
 list_vt2t
 (
-list_map<v3ardecl><v3ardecl>(v3ds)
+list_map<d3vardecl><d3vardecl>(v3ds)
 ) where
 {
 val
 env0 =
 $UN.castvwtp1{ptr}(env0)
 implement
-list_map$fopr<v3ardecl><v3ardecl>
+list_map$fopr<d3vardecl><d3vardecl>
   (v3d0) =
 let
   val env0 =
@@ -1476,8 +1478,8 @@ local
 //
 fun
 aux_f3as_body
-( env0
-: !tr3xenv
+( env0:
+! tr3xenv
 , f3as
 : f3arglst
 , body: d3exp): d3exp =

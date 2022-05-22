@@ -90,6 +90,7 @@ tr3xstk =
 | tr3xstk_dpat of (d3pat, tr3xstk)
 //
 | tr3xstk_fix1 of (d2var, tr3xstk)
+//
 | tr3xstk_lams of (f3arglst, tr3xstk)
 //
 (* ****** ****** *)
@@ -559,7 +560,7 @@ tr3xstk_lams(f3as, xs) =>
   f3arglst_memq_dvar(f3as, d2v0)
 }
 //
-| _ (* for top-levels *) => VTOP
+| _ (* for top-levels *) => (VTOP)
 //
 )
 //
@@ -572,7 +573,7 @@ end (* end of [tr3xenv_dvar_kind] *)
 //
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 

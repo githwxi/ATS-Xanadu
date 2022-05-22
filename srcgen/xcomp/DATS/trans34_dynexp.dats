@@ -96,18 +96,18 @@ implement
 fprint_val<d3ecl> = fprint_d3ecl
 (* ****** ****** *)
 implement
-fprint_val<dvmrg2> = fprint_dvmrg2
+fprint_val<d2vmrg2> = fprint_d2vmrg2
 implement
-fprint_val<dvmrgs> = fprint_dvmrgs
+fprint_val<d2vmrgs> = fprint_d2vmrgs
 (* ****** ****** *)
 //
 implement
-fprint_val<f4undecl> = fprint_f4undecl
+fprint_val<d4fundecl> = fprint_d4fundecl
 //
 implement
-fprint_val<v4aldecl> = fprint_v4aldecl
+fprint_val<d4valdecl> = fprint_d4valdecl
 implement
-fprint_val<v4ardecl> = fprint_v4ardecl
+fprint_val<d4vardecl> = fprint_d4vardecl
 //
 (* ****** ****** *)
 
@@ -123,7 +123,7 @@ tr34env_make_nil()
 //
 val
 prog =
-trans34_declist(env0, prog)
+trans34_d3eclist(env0, prog)
 //
 val () = tr34env_free_top(env0)
 //
@@ -269,8 +269,8 @@ in
 let
 val
 d4p0 =
-trans34_dpat_dntp
-(env0, d3p0, s2e1)
+trans34_d3pat_dntp
+( env0, d3p0, s2e1 )
 //
 in
 let
@@ -512,7 +512,7 @@ D3Psap0
 //
 val
 d4p1 =
-trans34_dpat(env0, d3p1)
+trans34_d3pat(env0, d3p1)
 val
 s2e1 = d4p1.sexp((*void*))
 //
@@ -543,7 +543,7 @@ D3Psap1
 //
 val
 d4p1 =
-trans34_dpat(env0, d3p1)
+trans34_d3pat(env0, d3p1)
 val
 s2e1 = d4p1.sexp((*void*))
 //
@@ -580,7 +580,7 @@ sexpize_env(env0, tres)
 //
 val
 d4f0 =
-trans34_dpat(env0, d3f0)
+trans34_d3pat(env0, d3f0)
 val
 d4f0 =
 trans34_d4pat_deunis(d4f0)
@@ -598,15 +598,13 @@ S2Efun
 , npf2
 , targ, tres) =>
 let
-val () =
-(sres := tres)
+val () = (sres := tres)
 in
-  trans34_dpatlst_dnts
-  ( env0, darg, targ )
-end
+trans34_d3patlst_dnts(env0, darg, targ)
+end (*let*) // end of [S2Efun]
 |
 _ (*non-S2Efun*) =>
-trans34_dpatlst(env0, darg)
+  trans34_d3patlst(env0, darg)
 ) : d4patlst // end-of-val-darg
 //
 in
@@ -621,8 +619,8 @@ end (*let*) // end of [auxdapp]
 in(*in-of-local*)
 
 implement
-trans34_dpat
-(env0, d3p0) =
+trans34_d3pat
+( env0, d3p0 ) =
 let
 //
 // (*
@@ -693,7 +691,7 @@ d4pat_make_node
 val loc0 = d3p0.loc()
 val t2p1 = d3p1.type()
 //
-val d4p1 = trans34_dpat(env0, d3p1)
+val d4p1 = trans34_d3pat(env0, d3p1)
 //
 } (* end of [D3Panno] *)
 //
@@ -707,8 +705,8 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-trans34_dpatlst
-( env0, d3ps ) =
+trans34_d3patlst
+  (env0, d3ps) =
 (
 list_vt2t
 (
@@ -729,7 +727,7 @@ val
 env0 =
 $UN.castvwtp0{tr34env}(env0)
 val
-d4p0 = trans34_dpat(env0, d3p0)
+d4p0 = trans34_d3pat(env0, d3p0)
 //
 in
 let
@@ -824,7 +822,7 @@ _ (*rest-of-d3pat*) =>
 let
 val
 d4p0 = 
-trans34_dpat
+trans34_d3pat
 (env0, d3p0) in d4pat_tasmp(d4p0, sopn)
 end // end of [rest-of-d3pat]
 //
@@ -833,7 +831,7 @@ end (*let*) // end of [auxd3p0]
 in(*in-of-local*)
 //
 implement
-trans34_dpat_dntp
+trans34_d3pat_dntp
 (env0, d3p0, s2e0) =
 let
 //
@@ -877,8 +875,8 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-trans34_dpatlst_dnts
-( env0, d3ps, s2es ) =
+trans34_d3patlst_dnts
+  (env0, d3ps, s2es) =
 (
 case+ d3ps of
 |
@@ -898,9 +896,9 @@ val
 s2e1 = the_s2exp_none0(*void*)
 //
 val d4p1 =
-trans34_dpat_dntp(env0, d3p1, s2e1)
+trans34_d3pat_dntp(env0, d3p1, s2e1)
 val d4ps =
-trans34_dpatlst_dnts(env0, d3ps, s2es)
+trans34_d3patlst_dnts(env0, d3ps, s2es)
 //
 } (* end of [list_nil] *)
 |
@@ -910,9 +908,9 @@ list_cons(d4p1, d4ps)) where
 {
 //
 val d4p1 =
-trans34_dpat_dntp(env0, d3p1, s2e1)
+trans34_d3pat_dntp(env0, d3p1, s2e1)
 val d4ps =
-trans34_dpatlst_dnts(env0, d3ps, s2es)
+trans34_d3patlst_dnts(env0, d3ps, s2es)
 //
 } (* end of [list_cons] *)
 )
@@ -1678,7 +1676,7 @@ val
 s2e1 = d4e1.sexp((*void*))
 //
 val
-d4cl = trans34_decl(env0, d3cl)
+d4cl = trans34_d3ecl(env0, d3cl)
 //
 in
 d4exp_make_node
@@ -1712,7 +1710,7 @@ D3Esap0
 , s2es) = d3e0.node()
 //
 val d4f0 =
-trans34_dexp(env0, d3f0)
+trans34_d3exp(env0, d3f0)
 val s2f0 =
 whnfize_env(env0, d4f0.sexp())
 //
@@ -1763,7 +1761,7 @@ D3Edapp
 , d3es) = d3e0.node()
 //
 val d4f0 =
-trans34_dexp(env0, d3f0)
+trans34_d3exp(env0, d3f0)
 val d4f0 =
 trans34_d4exp_deunis(d4f0)
 //
@@ -1812,8 +1810,8 @@ s2e1 =
 the_s2exp_none0
 val
 d4e1 =
-trans34_dexp_dntp
-(env0, d3e1, s2e1)
+trans34_d3exp_dntp
+( env0, d3e1, s2e1 )
 in
 list_cons
 ( d4e1
@@ -1846,8 +1844,8 @@ S2Eatx
 //
 val
 d4e1 =
-trans34_dexp_dntp
-(env0, d3e1, s2e1)
+trans34_d3exp_dntp
+( env0, d3e1, s2e1 )
 //
 in
 list_cons
@@ -1881,7 +1879,7 @@ d4f0 =
 d4exp_none2(d4f0)
 val
 d4es =
-trans34_dexplst(env0, d3es)
+trans34_d3explst(env0, d3es)
 val
 s2r0 = the_s2exp_none0(*void*)
 //
@@ -2060,7 +2058,7 @@ D3Eplft
 , ind2) = d3e0.node()
 //
 val dtup =
-trans34_dexp(env0, dtup)
+trans34_d3exp(env0, dtup)
 val dtup =
 d4exp_opny_env(env0, dtup)
 //
@@ -2157,9 +2155,9 @@ tr34env_add_let1(env0)
 //
 val
 dcls =
-trans34_declist(env0, dcls)
+trans34_d3eclist(env0, dcls)
 val
-d4e1 = trans34_dexp(env0, d3e1)
+d4e1 = trans34_d3exp(env0, d3e1)
 //
 val
 d2vs =
@@ -2220,9 +2218,9 @@ tr34env_add_let1(env0)
 //
 val
 dcls =
-trans34_declist(env0, dcls)
+trans34_d3eclist(env0, dcls)
 val
-d4e1 = trans34_dexp(env0, d3e1)
+d4e1 = trans34_d3exp(env0, d3e1)
 //
 val
 d2vs =
@@ -2301,8 +2299,8 @@ let
   s2exp_type_void()
   val
   d4e1 =
-  trans34_dexp_dntp
-  (env0, d3e1, s2e1)
+  trans34_d3exp_dntp
+  ( env0, d3e1, s2e1 )
 in
 list_cons
 (d4e1, auxd3es(env0, d3es))
@@ -2310,7 +2308,7 @@ end
 ) (* end of [auxd3es] *)
 }
 val
-d4e2 = trans34_dexp(env0, d3e2)
+d4e2 = trans34_d3exp(env0, d3e2)
 //
 in
 let
@@ -2348,13 +2346,14 @@ Typecheck [d3e2] first!
 *)
 val
 d4e2 =
-trans34_dexp(env0, d3e2)
+trans34_d3exp(env0, d3e2)
 val
 d4e1 =
-trans34_dexp(env0, d3e1)
+trans34_d3exp(env0, d3e1)
 //
 val
-s2e0 = s2exp_type_void()
+s2e0 =
+s2exp_type_void((*void*))
 //
 (*
 val
@@ -2440,7 +2439,7 @@ D3Eif0
 //
 val
 d4e1 =
-trans34_dexp(env0, d3e1)
+trans34_d3exp(env0, d3e1)
 //
 val
 xtv0 =
@@ -2459,8 +2458,8 @@ d4e2 =
 let
 val
 d4e2 =
-trans34_dexp_dntp
-(env0, d3e2, s2e0)
+trans34_d3exp_dntp
+( env0, d3e2, s2e0 )
 //
 val
 stmap =
@@ -2500,8 +2499,8 @@ d4e3 =
 let
 val
 d4e3 =
-trans34_dexp_dntp
-(env0, d3e3, s2e0)
+trans34_d3exp_dntp
+( env0, d3e3, s2e0 )
 //
 val
 stmap =
@@ -2550,7 +2549,7 @@ D4Estmap(_, map2) => map2)
 ) : stmap // end of [val]
 //
 in
-  stmap2_dvmrg(map1, map2)
+  stmap2_d2vmrg(map1, map2)
 end (*let*) // end-of-val
 //
 val () =
@@ -2561,7 +2560,7 @@ aux_if0: dvmrg=\n", dvmrg)
 //
 val
 stmrg =
-trans34_dvmrg2_list(env0, dvmrg)
+trans34_d2vmrg2_list(env0, dvmrg)
 //
 in
 d4exp_stmrg
@@ -2604,7 +2603,7 @@ D3Ecas0
 //
 val
 dmat =
-trans34_dexp(env0, dmat)
+trans34_d3exp(env0, dmat)
 val
 tmat = dmat.sexp((*void*))
 //
@@ -2614,7 +2613,7 @@ s2xtv_new_srt
 val s2e0 = s2exp_xtv(xtv0)
 //
 val dcls =
-trans34_dclaulst_dntp
+trans34_d3claulst_dntp
 ( env0, dcls, tmat, s2e0 )
 //
 in
@@ -2858,7 +2857,7 @@ D3Eflat
 //
 val
 d4e1 =
-trans34_dexp(env0, d3e1)
+trans34_d3exp(env0, d3e1)
 //
 val
 s2e1 = d4e1.sexp((*void*))
@@ -2924,7 +2923,7 @@ D3Etalf
 //
 val
 d4e1 =
-trans34_dexp(env0, d3e1)
+trans34_d3exp(env0, d3e1)
 //
 val
 s2e1 = d4e1.sexp((*void*))
@@ -2967,7 +2966,7 @@ val t2p1 = d3e1.type()
 //
 val d4e1 =
 (
-  trans34_dexp_dntp
+  trans34_d3exp_dntp
   ( env0, d3e1, s2e2 )
 )
 //
@@ -2983,8 +2982,8 @@ end (*let*) // end of [aux_anno]
 in(*in-of-local*)
 
 implement
-trans34_dexp
-( env0, d3e0) =
+trans34_d3exp
+( env0, d3e0 ) =
 let
 //
 val () =
@@ -3052,17 +3051,17 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-trans34_dexpopt
+trans34_d3expopt
 ( env0, opt0 ) =
 (
 case+ opt0 of
 | None() => None()
 | Some(d3e0) =>
-  Some(trans34_dexp(env0, d3e0))
+  Some(trans34_d3exp(env0, d3e0))
 )
 //
 implement
-trans34_dexplst
+trans34_d3explst
 (  env0, d3es  ) =
 (
 list_vt2t
@@ -3084,7 +3083,7 @@ val
 env0 =
 $UN.castvwtp0{tr34env}(env0)
 val
-d4e0 = trans34_dexp(env0, d3e0)
+d4e0 = trans34_d3exp(env0, d3e0)
 //
 in
 let
@@ -3120,7 +3119,7 @@ D3Eif0
 //
 val
 d4e1 =
-trans34_dexp(env0, d3e1)
+trans34_d3exp(env0, d3e1)
 //
 local
 val () =
@@ -3132,8 +3131,8 @@ d4e2 =
 let
 val
 d4e2 =
-trans34_dexp_dntp
-(env0, d3e2, s2e0)
+trans34_d3exp_dntp
+( env0, d3e2, s2e0 )
 //
 val
 stmap =
@@ -3172,8 +3171,8 @@ d4e3 =
 let
 val
 d4e3 =
-trans34_dexp_dntp
-(env0, d3e3, s2e0)
+trans34_d3exp_dntp
+( env0, d3e3, s2e0 )
 //
 val
 stmap =
@@ -3219,7 +3218,7 @@ d4e3.node() of
 D4Estmap(_, map2) => map2)
 ) : stmap // end of [val]
 in
-  stmap2_dvmrg(map1, map2)
+  stmap2_d2vmrg(map1, map2)
 end (*end*) // end of [val]
 //
 val () =
@@ -3279,7 +3278,7 @@ end // end of [list_cons]
 //
 val
 stmrg =
-trans34_dvmrg2_list(env0, dvmrg)
+trans34_d2vmrg2_list(env0, dvmrg)
 //
 in
 d4exp_stmrg
@@ -3324,18 +3323,18 @@ D3Ecas0
 //
 val
 dmat =
-trans34_dexp(env0, dmat)
+trans34_d3exp(env0, dmat)
 //
 val
 tmat = dmat.sexp((*void*))
 //
 val
 dcls =
-trans34_dclaulst_dntp
+trans34_d3claulst_dntp
 ( env0, dcls, tmat, s2e0 )
 //
 val
-dvmrg = dclaulst_dvmrg(dcls)
+dvmrg = d4claulst_d2vmrg(dcls)
 //
 val () =
 println!
@@ -3345,7 +3344,7 @@ aux_cas0: dvmrg=\n", dvmrg)
 //
 val
 stmrg =
-trans34_dvmrgs_list(env0, dvmrg)
+trans34_d2vmrgs_list(env0, dvmrg)
 //
 in
 d4exp_stmrg
@@ -3372,9 +3371,8 @@ println!
 in(*in-of-local*)
 
 implement
-trans34_dexp_dntp
-( env0
-, d3e0, s2e0) =
+trans34_d3exp_dntp
+(env0, d3e0, s2e0) =
 (
 case+
 d3e0.node() of
@@ -3390,7 +3388,7 @@ _ (* else-of-d3exp *) =>
 let
 val
 d4e0 =
-trans34_dexp(env0, d3e0)
+trans34_d3exp(env0, d3e0)
 in
 //
 let
@@ -3429,9 +3427,8 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-trans34_dexplst_dnts
-( env0
-, d3es, s2es) =
+trans34_d3explst_dnts
+( env0, d3es, s2es ) =
 (
 auxlst
 (env0, d3es, s2es)) where
@@ -3458,8 +3455,8 @@ let
 val s2e0 =
 the_s2exp_none0
 val d4e0 =
-trans34_dexp_dntp
-(env0, d3e0, s2e0)
+trans34_d3exp_dntp
+( env0, d3e0, s2e0 )
 in
 list_cons
 (d4e0, auxlst(env0, d3es, s2es))
@@ -3468,8 +3465,8 @@ end
 list_cons(s2e0, s2es) =>
 let
 val d4e0 =
-trans34_dexp_dntp
-(env0, d3e0, s2e0)
+trans34_d3exp_dntp
+( env0, d3e0, s2e0 )
 in
 list_cons
 (d4e0, auxlst(env0, d3es, s2es))
@@ -3481,9 +3478,8 @@ end
 (* ****** ****** *)
 
 implement
-trans34_dgpat_dntp
-( env0
-, dgpt, tmat ) =
+trans34_d3gpat_dntp
+( env0, dgpt, tmat ) =
 let
 //
 val
@@ -3497,7 +3493,7 @@ dgpt.node() of
 D3GPATpat(d3p1) =>
 let
 val d4p1 =
-trans34_dpat_dntp
+trans34_d3pat_dntp
 ( env0, d3p1, tmat )
 in
   d4gpat_make_node
@@ -3513,7 +3509,7 @@ end (*let*) // trans34_dgpat_dntp
 (* ****** ****** *)
 
 implement
-trans34_dclau_dntp
+trans34_d3clau_dntp
 ( env0
 , d3cl, tmat, tres) =
 let
@@ -3533,7 +3529,7 @@ D3CLAUpat(dgpt) =>
 let
 val
 dgpt =
-trans34_dgpat_dntp
+trans34_d3gpat_dntp
 ( env0, dgpt, tmat )
 in
 d4clau_make_node
@@ -3545,7 +3541,7 @@ let
 //
 val
 dgpt =
-trans34_dgpat_dntp
+trans34_d3gpat_dntp
 ( env0, dgpt, tmat )
 //
 val () =
@@ -3553,7 +3549,7 @@ tr34env_add_let1(env0)
 //
 val
 d4e2 =
-trans34_dexp_dntp(env0, d3e2, tres)
+trans34_d3exp_dntp(env0, d3e2, tres)
 //
 val
 stloc =
@@ -3610,7 +3606,7 @@ end (*let*) // [trans34_dclau_dntp]
 (* ****** ****** *)
 
 implement
-trans34_dclaulst_dntp
+trans34_d3claulst_dntp
 ( env0
 , dcls, tmat, tres) =
 list_vt2t
@@ -3633,7 +3629,7 @@ $UN.castvwtp0{tr34env}(env0)
 //
 val
 d4cl =
-trans34_dclau_dntp
+trans34_d3clau_dntp
 ( env0,  d3cl,  tmat,  tres )
 //
 in
@@ -3900,7 +3896,7 @@ else
 let
 val
 d4p1 =
-trans34_dpat_dntp
+trans34_d3pat_dntp
 (env0, d3p1, s2e1)
 val
 sopt = auxaft(d3p0)
@@ -3951,7 +3947,7 @@ in(*in-of-local*)
 (* ****** ****** *)
 
 implement
-trans34_farg
+trans34_f3arg
 ( env0, f3a0 ) =
 let
 val
@@ -3994,17 +3990,17 @@ _(*non-F3ARGsome_dyn*) =>
 (
  f4arg_make_node(loc0, F4ARGnone3(f3a0))
 )
-end (* end of [trans34_farg] *)
+end (* end of [trans34_dfarg] *)
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 //
 implement
-trans34_farglst
-( env0, f3as ) =
+trans34_f3arglst
+  (env0, f3as) =
 list_vt2t
 (
 list_map<f3arg><f4arg>(f3as)
@@ -4024,19 +4020,20 @@ env0 =
 $UN.castvwtp0{tr34env}(env0)
 //
 val
-f4a0 = trans34_farg(env0, f3a0)
+f4a0 = trans34_f3arg(env0, f3a0)
 //
 in
 let
 prval () = $UN.cast2void(env0) in f4a0
 end
 end
-} (* end of [trans34_farglst] *)
+//
+} (* end of [trans34_dfarglst] *)
 //
 (* ****** ****** *)
 //
 implement
-trans34_farglst_s2exp
+trans34_f3arglst_s2exp
 ( env0
 , f3as, s2f0, sres) =
 (
@@ -4079,17 +4076,23 @@ auxtsub(svs1, svs2)
 HX-2021-03-15:
 [sps1] is discarded!
 *)
+//
 val
 s2ps =
 s2explst_subst_svarlst
 ( sps2, svs2, tsub )
+//
 val f4a1 = 
 f4arg_make_node
-(loc1, F4ARGsome_sta(s2vs, s2ps))
-val f4as = 
-trans34_farglst_s2exp(env0, f3as, s2f1, sres)
+( loc1
+, F4ARGsome_sta(s2vs, s2ps))
+//
 in
-  list_cons(f4a1, f4as)
+  list_cons(f4a1, f4as) where
+{
+val f4as = 
+trans34_f3arglst_s2exp(env0, f3as, s2f1, sres)
+}
 end where
 {
 //
@@ -4180,12 +4183,15 @@ val
 loc1 = f3a1.loc()
 //
 val f4a1 = 
-f4arg_make_node(loc1, F4ARGnone3(f3a1))
-val f4as = 
-trans34_farglst_s2exp(env0, f3as, s2f0, sres)
+f4arg_make_node
+(loc1, F4ARGnone3(f3a1))
 //
 in
-  list_cons(f4a1, f4as)
+  list_cons(f4a1, f4as) where
+{
+val f4as = 
+trans34_f3arglst_s2exp(env0, f3as, s2f0, sres)
+}
 end
 ) (*where*) // end of [F3ARGsome_sta]
 //
@@ -4236,14 +4242,14 @@ val () = assert(npf1 = npf2)
 //
 val
 d4ps =
-trans34_dpatlst_dnts
-( env0, d3ps, s2es )
+trans34_d3patlst_dnts
+(  env0, d3ps, s2es  )
 val f4a1 = 
 f4arg_make_node
 ( f3a1.loc()
 , F4ARGsome_dyn(npf1, d4ps) )
 val f4as = 
-trans34_farglst_s2exp(env0, f3as, s2f1, sres)
+trans34_f3arglst_s2exp(env0, f3as, s2f1, sres)
 } (* end-of-S2Efun *)
 //
 |
@@ -4255,7 +4261,7 @@ val f4a1 =
 f4arg_make_node
 (f3a1.loc(), F4ARGnone3(f3a1))
 val f4as = 
-trans34_farglst_s2exp(env0, f3as, s2f0, sres)
+trans34_f3arglst_s2exp(env0, f3as, s2f0, sres)
 }
 )
 } (*where*) // end of [F3ARGsome_dyn]
@@ -4269,7 +4275,7 @@ val f4a1 =
 f4arg_make_node
 (f3a1.loc(), F4ARGnone3(f3a1))
 val f4as = 
-trans34_farglst_s2exp(env0, f3as, s2f0, sres)
+trans34_f3arglst_s2exp(env0, f3as, s2f0, sres)
 }
 )
 ) (* end of [trans34_farglst_s2exp] *)
@@ -4297,7 +4303,7 @@ D3Cvaldecl
 //
 val
 v4ds =
-trans34_valdeclist(env0, v3ds)
+trans34_d3valdeclist(env0, v3ds)
 //
 val () =
 println!
@@ -4327,7 +4333,7 @@ D3Cvardecl
 //
 val
 v4ds =
-trans34_vardeclist(env0, v3ds)
+trans34_d3vardeclist(env0, v3ds)
 //
 val () =
 println!
@@ -4364,7 +4370,7 @@ println!
 //
 val
 f4ds =
-trans34_fundeclist(env0, f3ds)
+trans34_d3fundeclist(env0, f3ds)
 //
 // (*
 val () =
@@ -4383,7 +4389,7 @@ end (*let*) // end of [aux_fundecl]
 in(*in-of-local*)
 
 implement
-trans34_decl
+trans34_d3ecl
 ( env0, d3cl) =
 let
 //
@@ -4423,17 +4429,19 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-trans34_declopt
-( env0, opt0 ) =
+trans34_d3eclopt
+  (env0, opt0) =
 (
 case+ opt0 of
-| None() => None()
-| Some(d3cl) =>
-  Some(trans34_decl(env0, d3cl))
+|
+None() => None()
+|
+Some(d3cl) =>
+Some(trans34_d3ecl(env0, d3cl))
 )
 //
 implement
-trans34_declist
+trans34_d3eclist
 (  env0, dcls  ) =
 (
 list_vt2t
@@ -4455,7 +4463,7 @@ val
 env0 =
 $UN.castvwtp0{tr34env}(env0)
 val
-d4cl = trans34_decl(env0, d3cl)
+d4cl = trans34_d3ecl(env0, d3cl)
 //
 in
 let
@@ -4474,12 +4482,12 @@ For auxiliary trans34-functions
 (* ****** ****** *)
 
 implement
-trans34_fundecl
+trans34_d3fundecl
 ( env0, f3d0 ) =
 let
 //
 val+
-F3UNDECL
+D3FUNDECL
 ( rcd ) = f3d0
 //
 val loc = rcd.loc
@@ -4491,7 +4499,7 @@ val () =
 tr34env_add_fun0(env0)
 //
 val () =
-trans34_f3undecl_set_sexp(env0, f3d0)
+trans34_d3fundecl_set_sexp(env0, f3d0)
 //
 // HX-2021-05-30:
 val () = // for a template fun!
@@ -4552,13 +4560,13 @@ None
 ((*void*)) =>
 Some
 (
-trans34_farglst(env0, f3as))
+trans34_f3arglst(env0, f3as))
 |
 Some(s2f0) =>
 Some
 (
-trans34_farglst_s2exp
-(env0 , f3as , s2f0 , sres))
+trans34_f3arglst_s2exp
+( env0 , f3as , s2f0 , sres))
 )
 ) : f4arglstopt // end-of-val
 //
@@ -4589,15 +4597,17 @@ sexpize_env
 in
 Some
 (
-trans34_dexp_dntp
-(env0, d3e0, s2e0))
+trans34_d3exp_dntp
+( env0, d3e0, s2e0 )
+)
 end
 |
 EFFS2EXPsome(s2e0) =>
 Some
 (
-trans34_dexp_dntp
-(env0, d3e0, s2e0))
+trans34_d3exp_dntp
+( env0, d3e0, s2e0 )
+)
 )
 ) : d4expopt
 //
@@ -4616,7 +4626,7 @@ let
 val
 ((*void*)) = tr34env_pop_fun0(env0)
 in
-F4UNDECL@{
+D4FUNDECL@{
   loc= loc
 //
 , nam= nam
@@ -4629,7 +4639,7 @@ F4UNDECL@{
 //
 , rtp= rcd.rtp, wtp= rcd.wtp, ctp= rcd.ctp
 //
-} (* end of [F4UNDECL] *)
+} (* end of [D4FUNDECL] *)
 end // end of [let]
 //
 end // end of [trans34_fundecl]
@@ -4637,12 +4647,12 @@ end // end of [trans34_fundecl]
 (* ****** ****** *)
 //
 implement
-trans34_fundeclist
+trans34_d3fundeclist
 (  env0, f3ds  ) =
 (
 list_vt2t
 (
-list_map<f3undecl><f4undecl>(f3ds)
+list_map<d3fundecl><d4fundecl>(f3ds)
 )
 ) where
 {
@@ -4652,14 +4662,14 @@ env0 =
 $UN.castvwtp1{ptr}(env0)
 //
 implement
-list_map$fopr<f3undecl><f4undecl>
+list_map$fopr<d3fundecl><d4fundecl>
   (f3d0) = let
 //
 val
 env0 =
 $UN.castvwtp0{tr34env}(env0)
 val
-f4d0 = trans34_fundecl(env0, f3d0)
+f4d0 = trans34_d3fundecl(env0, f3d0)
 //
 in
 let
@@ -4672,12 +4682,12 @@ end // list_map$fopr
 (* ****** ****** *)
 //
 implement
-trans34_valdecl
-( env0, v3d0 ) =
+trans34_d3valdecl
+  (env0 , v3d0) =
 let
 //
 val+
-V3ALDECL(rcd) = v3d0
+D3VALDECL(rcd) = v3d0
 //
 val loc = rcd.loc
 val d3p = rcd.pat
@@ -4691,7 +4701,7 @@ None() => None()
 |
 Some(d3e) =>
 Some
-(trans34_dexp(env0, d3e))
+(trans34_d3exp(env0, d3e))
 ) : d4expopt // end-of-val
 //
 val d4p =
@@ -4699,20 +4709,20 @@ val d4p =
 case+ def of
 |
 None() =>
-trans34_dpat(env0, d3p)
+trans34_d3pat(env0, d3p)
 |
 Some(d4e) =>
-trans34_dpat_dntp
+trans34_d3pat_dntp
 (env0, d3p, d4e.sexp())): d4pat
 //
 in(*in-of-let*)
 //
-V4ALDECL@{
+D4VALDECL@{
   loc= loc
 , pat= d4p
 , def= def, wtp= rcd.wtp
 //
-} (* end of [V4ALDECL] *)
+} (* end of [D4VALDECL] *)
 //
 end // end of [trans34_valdecl]
 //
@@ -4750,12 +4760,12 @@ end
 in(*in-of-local*)
 //
 implement
-trans34_vardecl
-( env0, v3d0 ) =
+trans34_d3vardecl
+  (env0 , v3d0) =
 let
 //
 val+
-V3ARDECL(rcd) = v3d0
+D3VARDECL(rcd) = v3d0
 //
 val loc = rcd.loc
 val d2v = rcd.d2v
@@ -4783,7 +4793,7 @@ None() => None()
 |
 Some(d3e) =>
 Some
-(trans34_dexp(env0, d3e))
+(trans34_d3exp(env0, d3e))
 ) : d4expopt // end-of-val
 //
 val s2e =
@@ -4829,7 +4839,7 @@ println!
 //
 in(*in-of-let*)
 //
-V4ARDECL@{
+D4VARDECL@{
   loc= loc
 , d2v= d2v
 , d2w= d2w
@@ -4867,7 +4877,7 @@ tr34env_add_dvar_sexp(env0, d2w, s2at)
 end
 ) : void // end of [val]
 //
-} (*where*) // end of [V4ALDECL]
+} (*where*) // end of [D4VALDECL]
 //
 end (*let*) // end of [trans34_vardecl]
 //
@@ -4876,12 +4886,12 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-trans34_valdeclist
-(  env0, v3ds  ) =
+trans34_d3valdeclist
+  (  env0, v3ds  ) =
 (
 list_vt2t
 (
-list_map<v3aldecl><v4aldecl>(v3ds)
+list_map<d3valdecl><d4valdecl>(v3ds)
 )
 ) where
 {
@@ -4891,14 +4901,15 @@ env0 =
 $UN.castvwtp1{ptr}(env0)
 //
 implement
-list_map$fopr<v3aldecl><v4aldecl>
+list_map$fopr<d3valdecl><d4valdecl>
   (v3d0) = let
 //
 val
 env0 =
 $UN.castvwtp0{tr34env}(env0)
 val
-v4d0 = trans34_valdecl(env0, v3d0)
+v4d0 =
+trans34_d3valdecl(env0, v3d0)
 //
 in
 let
@@ -4911,12 +4922,12 @@ end // list_map$fopr
 (* ****** ****** *)
 //
 implement
-trans34_vardeclist
-(  env0, v3ds  ) =
+trans34_d3vardeclist
+  (  env0, v3ds  ) =
 (
 list_vt2t
 (
-list_map<v3ardecl><v4ardecl>(v3ds)
+list_map<d3vardecl><d4vardecl>(v3ds)
 )
 ) where
 {
@@ -4926,27 +4937,27 @@ env0 =
 $UN.castvwtp1{ptr}(env0)
 //
 implement
-list_map$fopr<v3ardecl><v4ardecl>
-  (v3d0) = let
+list_map$fopr<d3vardecl><d4vardecl>
+  (v3d0) =
+let
 //
 val
-env0 =
-$UN.castvwtp0{tr34env}(env0)
+env0 = $UN.castvwtp0{tr34env}(env0)
 val
-v4d0 = trans34_vardecl(env0, v3d0)
+v4d0 = trans34_d3vardecl(env0, v3d0)
 //
 in
 let
-prval () = $UN.cast2void(env0) in v4d0
+  prval () = $UN.cast2void(env0) in v4d0
 end
-end // list_map$fopr
+end(*let*)//end of [list_map$fopr]
 //
 } (*where*)//end of [trans34_vardeclist]
 //
 (* ****** ****** *)
 
 implement
-trans34_dvmrg2_list
+trans34_d2vmrg2_list
   (env0, xtts) =
 (
 stmrg_make(res0)) where
@@ -4957,7 +4968,7 @@ auxmain
 ( env0
 : !tr34env
 , xtts
-: List0(dvmrg2)
+: List0(d2vmrg2)
 , res0
 : List0_vt(dvcast)
 )
@@ -4972,7 +4983,7 @@ list_cons
 (xtt0, xtts) =>
 let
 val+
-DVMRG2
+D2VMRG2
 ( d2v0
 , opt1
 , opt2) = xtt0
@@ -5067,7 +5078,7 @@ list_vt2t(auxmain(env0, xtts, res0))
 (* ****** ****** *)
 
 implement
-trans34_dvmrgs_list
+trans34_d2vmrgs_list
   (env0, xtss) =
 (
 stmrg_make(res0)) where
@@ -5078,7 +5089,7 @@ auxmain
 ( env0
 : !tr34env
 , xtss
-: List0(dvmrgs)
+: List0(d2vmrgs)
 , res0
 : List0_vt(dvcast)
 )
@@ -5094,7 +5105,7 @@ list_cons
 let
 //
 val+
-DVMRGS
+D2VMRGS
 (d2v0, opts) = xts0
 //
 val

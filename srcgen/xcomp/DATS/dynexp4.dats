@@ -104,7 +104,7 @@ d4pat_make_node
 , d4pat_type= t2p0, d4pat_node= node
 } (*$rec*) // d4pat_make_node
 //
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -201,7 +201,7 @@ f4arg_make_node
   f4arg_loc= loc, f4arg_node= node
 } (* end of [f4arg_make_node] *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -241,7 +241,7 @@ d4exp_make_node
 , d4exp_type= t2p0, d4exp_node= node
 } (* d4exp_make_node *)
 //
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -422,7 +422,7 @@ d4gua_make_node
   d4gua_loc= loc0, d4gua_node= node
 } (* d4gua_make_node *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -448,7 +448,7 @@ d4clau_make_node
   d4clau_loc= loc0, d4clau_node= node
 } (* d4clau_make_node *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -474,7 +474,7 @@ d4gpat_make_node
   d4gpat_loc= loc0, d4gpat_node= node
 } (* d4gpat_make_node *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -507,7 +507,7 @@ d4ecl_make_node
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 //
@@ -592,7 +592,7 @@ dlocs_listize
 ( dvrs ) = $FS.funset_listize<elt>(dvrs)
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 local
@@ -646,7 +646,7 @@ end // end of [list_cons]
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
