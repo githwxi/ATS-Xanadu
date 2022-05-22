@@ -1262,23 +1262,6 @@ for skipping synerr:
   , sq0eid
   , s0marglst, sort0opt, token(*EQ*), s0exp)
   // D0Cabsimpl
-//
-| D0Cfundecl of
-  ( token(*kind*)
-  , decmodopt, tq0arglst, d0fundeclist)
-//
-| D0Cvaldecl of
-  ( token(*kind*), decmodopt, d0valdeclist)
-| D0Cvardecl of
-  ( token(*kind*), decmodopt, d0vardeclist)
-//
-| D0Cimpdecl of
-  ( token(*impkind*)
-  , decmodopt//modifier
-  , sq0arglst, tq0arglst
-  , dq0eid, ti0arglst, f0arglst
-  , effs0expopt, token(*EQ*), d0exp(*body*))
-//
 | D0Csymload of
   ( token(*symload*)
   , s0ymb(*overloaded*)
@@ -1296,6 +1279,23 @@ for skipping synerr:
 //
 | D0Cdynconst of
   (token(*dyncstkind*), tq0arglst, d0cstdeclist)
+//
+//
+| D0Cfundclst of
+  ( token(*kind*)
+  , decmodopt, tq0arglst, d0fundeclist)
+//
+| D0Cvaldclst of
+  ( token(*kind*), decmodopt, d0valdeclist)
+| D0Cvardclst of
+  ( token(*kind*), decmodopt, d0vardeclist)
+//
+| D0Cimpldcl0 of
+  ( token(*impkind*)
+  , decmodopt//modifier
+  , sq0arglst, tq0arglst
+  , dq0eid, ti0arglst, f0arglst
+  , effs0expopt, token(*EQ*), d0exp(*body*))
 //
 | D0Celse of (token) // opt
 | D0Cendif of (token) // req

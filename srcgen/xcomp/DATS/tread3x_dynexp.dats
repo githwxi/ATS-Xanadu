@@ -239,9 +239,9 @@ in
 case-
 timp.node() of
 |
-D3Cfundecl _ => auxtimp2f(d3e0)
+D3Cfundclst _ => auxtimp2f(d3e0)
 |
-D3Cimpdecl3 _ => auxtimp2i(d3e0)
+D3Cimpldcl3 _ => auxtimp2i(d3e0)
 //
 end // end of [auxtimp]
 //
@@ -264,7 +264,7 @@ D3Etcst
 ( d2c0, _, _) = tcst.node()
 //
 val-
-D3Cfundecl
+D3Cfundclst
 ( knd0, mopt
 , tqas, f3ds) = timp.node()
 //
@@ -341,7 +341,7 @@ D3Etimp
 , timp, tsub) = d3e0.node()
 //
 val-
-D3Cimpdecl3
+D3Cimpldcl3
 ( tok0
 , stmp, mopt
 , sqas, tqas
@@ -825,7 +825,28 @@ val () = tread3x_d3eclist(body)
 //
 | D3Cstaload _ => ()
 //
-| D3Cfundecl
+| D3Cvardclst
+  ( knd, mopt, v3ds ) =>
+  {
+    val () = tread3x_d3vardeclist(v3ds)
+(*
+    val () =
+    println!
+    ("tread3x_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
+*)
+  }
+| D3Cvaldclst
+  ( knd, mopt, v3ds ) =>
+  {
+    val () = tread3x_d3valdeclist(v3ds)
+(*
+    val () =
+    println!
+    ("tread3x_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
+*)
+  }
+//
+| D3Cfundclst
   ( knd
   , mopt, tqas, f3ds) =>
   if
@@ -848,28 +869,7 @@ val () = tread3x_d3eclist(body)
 *)
   }
 //
-| D3Cvaldecl
-  ( knd, mopt, v3ds ) =>
-  {
-    val () = tread3x_d3valdeclist(v3ds)
-(*
-    val () =
-    println!
-    ("tread3x_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
-*)
-  }
-| D3Cvardecl
-  ( knd, mopt, v3ds ) =>
-  {
-    val () = tread3x_d3vardeclist(v3ds)
-(*
-    val () =
-    println!
-    ("tread3x_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
-*)
-  }
-//
-| D3Cimpdecl3
+| D3Cimpldcl3
   ( tok0
   , stmp, mopt
   , sqas, tqas
@@ -889,7 +889,7 @@ val () = tread3x_d3eclist(body)
       val () = tread3x_d3exp(d3e0) // template
 *)
     }
-  ) (* D3Cimpdecl3 *)
+  ) (* D3Cimpldcl3 *)
 //
 | _(* rest-of-d3ecl *) =>
   {

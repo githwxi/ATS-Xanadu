@@ -82,12 +82,12 @@ d3ecl_get_stamp
 case-
 d3cl.node() of
 |
-D3Cfundecl _ =>
+D3Cfundclst _ =>
 (
   the_stamp_null
 )
 |
-D3Cimpdecl3
+D3Cimpldcl3
 ( tok
 , stmp, mopt
 , sqas, tqas
@@ -165,7 +165,7 @@ if
 (*
 HX-2022-04-10:
 The test is only
-needed for [impdecl3]!
+needed for [impldcl3]!
 *)
 iseqz(stm0)
 then false else
@@ -763,7 +763,7 @@ auxfnd
 case-
 d3cl.node() of
 |
-D3Cfundecl
+D3Cfundclst
 ( _, _, _, f3ds) =>
 (
   auxf3ds(f3ds)
@@ -795,7 +795,7 @@ case+ f3ds of
 )
 } (* D3Cfundecl *)
 |
-D3Cimpdecl3
+D3Cimpldcl3
 ( _, _, _, _, _
 , id2c
 , _, _, _, _, _) =>
@@ -1136,10 +1136,10 @@ val+
 val () =
 (xs := implstk_cons1(d3cl, xs))
 //
-} (* end of [implenv_add_impdecl3] *)
+} (* end of [implenv_add_impldcl3] *)
 
 implement
-implenv_add_impdecl3
+implenv_add_impldcl3
 ( env0
 , d3cl, ti3e) =
 ( fold@(env0) ) where
@@ -1151,7 +1151,7 @@ val+
 val () =
 (xs := implstk_cons2(d3cl, ti3e, xs))
 //
-} (* end of [implenv_add_impdecl3] *)
+} (* end of [implenv_add_impldcl3] *)
 
 (* ****** ****** *)
 //

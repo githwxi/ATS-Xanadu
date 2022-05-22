@@ -1400,23 +1400,23 @@ d2ecl_node =
 | D2Cdynconst of
   (token(*dctkind*), tq2arglst, d2cstlst)
 //
-| D2Cfundecl of
+| D2Cfundclst of
   ( token(*funkind*)
   , decmodopt
   , tq2arglst(*tmpargs*), d2fundeclist)
 //
-| D2Cvaldecl of
+| D2Cvaldclst of
   (token(*valknd*), decmodopt, d2valdeclist)
-| D2Cvardecl of
+| D2Cvardclst of
   (token(*varknd*), decmodopt, d2vardeclist)
 //
-| D2Cimpdecl1 of
+| D2Cimpldcl1 of
   ( token(*impkind*)
   , stamp(*unicity*)
   , decmodopt
   , sq2arglst, tq2arglst
   , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
-| D2Cimpdecl2 of
+| D2Cimpldcl2 of
   ( token(*impkind*)
   , stamp(*unicity*)
   , decmodopt

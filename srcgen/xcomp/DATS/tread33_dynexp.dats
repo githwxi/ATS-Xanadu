@@ -919,7 +919,7 @@ D3Cinclude
 //
 | D3Cstaload _ => ((*void*))
 //
-| D3Cfundecl
+| D3Cfundclst
   (knd, mopt, tqas, f3ds) =>
   {
     val () = tread33_d3fundeclist(f3ds)
@@ -930,7 +930,7 @@ D3Cinclude
 *)
   }
 //
-| D3Cvaldecl
+| D3Cvaldclst
   (knd, mopt, v3ds) =>
   {
     val () = tread33_d3valdeclist(v3ds)
@@ -940,7 +940,7 @@ D3Cinclude
     ("tread33_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
 *)
   }
-| D3Cvardecl
+| D3Cvardclst
   (knd, mopt, v3ds) =>
   {
     val () = tread33_d3vardeclist(v3ds)
@@ -951,7 +951,7 @@ D3Cinclude
 *)
   }
 //
-| D3Cimpdecl1
+| D3Cimpldcl1
   ( tok
   , stmp, mopt
   , sqas, tqas
@@ -968,7 +968,7 @@ D3Cinclude
     val () = tread33_d3exp(d3e0)
 *)
   }
-| D3Cimpdecl2
+| D3Cimpldcl2
   ( tok
   , stmp, mopt
   , sqas, tqas
@@ -1000,17 +1000,17 @@ D3Cinclude
       (loc0, ": ***TRERR33***");
       prerrln!
       ( loc0
-      , ": TRERR33(D3Cimpdecl2): id2c = ", id2c )
+      , ": TRERR33(D3Cimpldcl2): id2c = ", id2c )
       end // end of [None()]
     )
 (*
     val () =
     println!
-    ("tread33_d3ecl: D3Cimpdecl2: d3cl = ", d3cl)
+    ("tread33_d3ecl: D3Cimpldcl2: d3cl = ", d3cl)
 *)
   }
 //
-| D3Cimpdecl3
+| D3Cimpldcl3
   ( tok
   , stmp, mopt
   , sqas, tqas
@@ -1033,7 +1033,7 @@ D3Cinclude
 (*
     val () =
     println!
-    ("tread33_d3ecl: D3Cimpdecl3: d3cl = ", d3cl)
+    ("tread33_d3ecl: D3Cimpldcl3: d3cl = ", d3cl)
 *)
   }
 //

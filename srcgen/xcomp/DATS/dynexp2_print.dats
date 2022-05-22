@@ -973,44 +973,45 @@ case- x0.node() of
   , "D2Cynconst("
   , knd0, "; ", tqas, "; ", d2cs, ")")
 //
-| D2Cfundecl
-  (knd0, mopt, tqas, f2ds) =>
+| D2Cfundclst
+  ( knd0
+  , mopt, tqas, f2ds) =>
   fprint!
   ( out
-  , "D2Cfundecl("
+  , "D2Cfundclst("
   , knd0, "; ", mopt, "; ", tqas, "; ", f2ds, ")")
 //
-| D2Cvaldecl
+| D2Cvaldclst
   (knd0, mopt, v2ds) =>
   fprint!
   ( out
-  , "D2Cvaldecl("
+  , "D2Cvaldclst("
   , knd0, "; ", mopt, "; ", v2ds, ")")
-| D2Cvardecl
+| D2Cvardclst
   (knd0, mopt, v2ds) =>
   fprint!
   ( out
-  , "D2Cvardecl("
+  , "D2Cvardclst("
   , knd0, "; ", mopt, "; ", v2ds, ")")
 //
-| D2Cimpdecl1
+| D2Cimpldcl1
   ( knd0
   , stmp, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
-  , "D2Cimpdecl1("
+  , "D2Cimpldcl1("
   , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
-| D2Cimpdecl2
+| D2Cimpldcl2
   ( knd0
   , stmp, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
-  , "D2Cimpdecl2("
+  , "D2Cimpldcl2("
   , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "

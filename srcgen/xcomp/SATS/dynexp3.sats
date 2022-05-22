@@ -914,24 +914,24 @@ d3ecl_node =
   ( token(*abskind*)
   , impls2cst, s2exp(*definition*) )
 //
+| D3Cexcptcon of (d1ecl(*src*), d2conlst)
+| D3Cdatatype of (d1ecl(*src*), s2cstlst)
+//
 |
-D3Cfundecl of
+D3Cfundclst of
 ( token(*funknd*)
 , decmodopt
 , tq2arglst(*tmpargs*), d3fundeclist)
 //
 |
-D3Cvaldecl of
+D3Cvaldclst of
 (token(*knd*), decmodopt, d3valdeclist)
 |
-D3Cvardecl of
+D3Cvardclst of
 (token(*knd*), decmodopt, d3vardeclist)
 //
-| D3Cexcptcon of (d1ecl(*src*), d2conlst)
-| D3Cdatatype of (d1ecl(*src*), s2cstlst)
-//
 |
-D3Cimpdecl1 of
+D3Cimpldcl1 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt
@@ -939,7 +939,7 @@ D3Cimpdecl1 of
 , tq2arglst
 , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 |
-D3Cimpdecl2 of
+D3Cimpldcl2 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt
@@ -947,7 +947,7 @@ D3Cimpdecl2 of
 , tq2arglst
 , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 |
-D3Cimpdecl3 of
+D3Cimpldcl3 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt

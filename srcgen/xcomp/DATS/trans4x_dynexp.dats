@@ -805,14 +805,14 @@ local
 (* ****** ****** *)
 
 fun
-aux_valdecl
+aux_valdclst
 ( env0:
 ! tr4xenv,
   d4cl: d4ecl): void =
 let
 //
 val-
-D4Cvaldecl
+D4Cvaldclst
 ( tok0
 , mopt
 , v4ds) = d4cl.node()
@@ -883,19 +883,19 @@ val () = auxv4ds(env0, v4ds)
 }
 ) (* end of [auxv4ds] *)
 //
-} (*where*) // end of [aux_valdecl]
+} (*where*) // end of [aux_valdclst]
 
 (* ****** ****** *)
 
 fun
-aux_fundecl
+aux_fundclst
 ( env0:
 ! tr4xenv,
   d4cl: d4ecl): void =
 let
 //
 val-
-D4Cfundecl
+D4Cfundclst
 ( tok0
 , mopt
 , tqas
@@ -974,7 +974,7 @@ val () = auxf4ds(env0, f4ds)
 }
 ) (* end of [auxf4ds] *)
 //
-} (*where*) // end of [aux_fundecl]
+} (*where*) // end of [aux_fundclst]
 
 (* ****** ****** *)
 
@@ -997,12 +997,12 @@ case+
 d4cl.node() of
 //
 |
-D4Cvaldecl _ =>
-aux_valdecl(env0, d4cl)
+D4Cvaldclst _ =>
+aux_valdclst(env0, d4cl)
 //
 |
-D4Cfundecl _ =>
-aux_fundecl(env0, d4cl)
+D4Cfundclst _ =>
+aux_fundclst(env0, d4cl)
 //
 | _ (*rest-of-d4ecl*) => ((*void*))
 //

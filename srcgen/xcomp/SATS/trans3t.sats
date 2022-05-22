@@ -184,7 +184,7 @@ implenv_add_staload
 ! implenv
 , d3cl: d3ecl): void
 fun
-implenv_add_impdecl3
+implenv_add_impldcl3
 ( env0:
 ! implenv
 , d3cl: d3ecl
@@ -252,7 +252,7 @@ trans3t_declist
 (* ****** ****** *)
 //
 fun
-trans3t_dfundecl
+trans3t_fundclst
 ( env0:
 ! implenv, d3cl: d3ecl): d3ecl
 //

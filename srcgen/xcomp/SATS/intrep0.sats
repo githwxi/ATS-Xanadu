@@ -1176,7 +1176,7 @@ H0Cexcptcon of ( h0conlst )
 H0Cdatatype of ( htcstlst )
 //
 |
-H0Cimpdecl3 of
+H0Cimpldcl3 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt

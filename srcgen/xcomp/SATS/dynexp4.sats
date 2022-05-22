@@ -919,16 +919,16 @@ d4ecl_node =
 | D4Cnone1 of (d3ecl)
 //
 |
-D4Cfundecl of
+D4Cfundclst of
 ( token(*funknd*)
 , decmodopt
 , tq2arglst(*tmpargs*), d4fundeclist)
 //
 |
-D4Cvaldecl of
+D4Cvaldclst of
 (token(*knd*), decmodopt, d4valdeclist)
 |
-D4Cvardecl of
+D4Cvardclst of
 (token(*knd*), decmodopt, d4vardeclist)
 //
 (* ****** ****** *)

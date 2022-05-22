@@ -989,22 +989,6 @@ d1ecl_node =
   , sq0eid, s1marglst, sort1opt, s1exp)
   // D1Cabsimpl
 //
-| D1Cfundecl of
-  ( token(*funkind*)
-  , decmodopt
-  , tq1arglst(*tmpargs*), d1fundeclist)
-//
-| D1Cvaldecl of
-  ( token(*valkind*)
-  , decmodopt(*rec/prf/...*), d1valdeclist)
-| D1Cvardecl of
-  ( token(*varkind*), decmodopt, d1vardeclist)
-//
-| D1Cimpdecl of
-  ( token(*impkind*)
-  , decmodopt, sq1arglst, tq1arglst
-  , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)
-//
 | D1Csymload of
   ( token(*#symload*)
   , s0ymb(*overloaded*)
@@ -1026,6 +1010,22 @@ d1ecl_node =
 //
 | D1Cdynconst of
   (token(*dyncstkind*), tq1arglst, d1cstdeclist)
+//
+| D1Cfundclst of
+  ( token(*funkind*)
+  , decmodopt
+  , tq1arglst(*tmpargs*), d1fundeclist)
+//
+| D1Cvaldclst of
+  ( token(*valkind*)
+  , decmodopt(*rec/prf/...*), d1valdeclist)
+| D1Cvardclst of
+  ( token(*varkind*), decmodopt, d1vardeclist)
+//
+| D1Cimpldcl0 of
+  ( token(*impkind*)
+  , decmodopt, sq1arglst, tq1arglst
+  , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)
 //
 | D1Celse of (token) // opt
 | D1Cendif of (token) // req

@@ -893,23 +893,23 @@ fprint_d4ecl
 (
 case+ x0.node() of
 |
-D4Cvaldecl
+D4Cvaldclst
 (tok0, mopt, v4ds) =>
 fprint!
-( out, "D4Cvaldecl("
+( out, "D4Cvaldclst("
 , tok0, "; ", mopt, "; ", "; ", v4ds, ")")
 |
-D4Cvardecl
+D4Cvardclst
 (tok0, mopt, v4ds) =>
 fprint!
-( out, "D4Cvardecl("
+( out, "D4Cvardclst("
 , tok0, "; ", mopt, "; ", "; ", v4ds, ")")
 //
 |
-D4Cfundecl
+D4Cfundclst
 (tok0, mopt, tqas, f4ds) =>
 fprint!
-( out, "D4Cfundecl("
+( out, "D4Cfundclst("
 , tok0, "; ", mopt, "; ", tqas, "; ", f4ds, ")")
 //
 | _(* rest-of-d4ecl *) => fprint!(out, "D4C...(...)")

@@ -1187,7 +1187,7 @@ D0Csymload
 }
 //
 |
-D0Cfundecl
+D0Cfundclst
 (tok, mopt, tqas, f0ds) =>
 {
 (*
@@ -1201,7 +1201,7 @@ D0Cfundecl
 }
 //
 |
-D0Cvaldecl
+D0Cvaldclst
 (tok0, mopt, v0ds) =>
 {
 (*
@@ -1213,7 +1213,7 @@ D0Cvaldecl
 }
 //
 |
-D0Cvardecl
+D0Cvardclst
 (tok0, mopt, v0ds) =>
 {
 (*
@@ -1225,7 +1225,7 @@ D0Cvardecl
 }
 //
 |
-D0Cimpdecl
+D0Cimpldcl0
 ( tok0, mopt
 , sqas, tqas
 , dqid, tias, f0as

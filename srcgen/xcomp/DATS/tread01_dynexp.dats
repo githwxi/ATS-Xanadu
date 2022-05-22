@@ -252,56 +252,6 @@ D1Cinclude
 | D1Cabsopen _ => ()
 | D1Cabsimpl _ => ()
 //
-| D1Cfundecl
-  ( knd
-  , mopt
-  , tqas, f1ds) =>
-  {
-    val () =
-    tread01_d1fundeclist(f1ds)
-  }
-//
-| D1Cvaldecl
-  ( knd
-  , mopt, v1ds) =>
-  {
-    val () =
-    tread01_d1valdeclist(v1ds)
-  }
-| D1Cvardecl
-  ( knd
-  , mopt, v1ds) =>
-  {
-    val () =
-    tread01_d1vardeclist(v1ds)
-  }
-//
-| D1Cimpdecl
-  ( knd, mopt
-  , sqas, tqas
-  , dqid, ti1s
-  , f1as, res1, teq2, body) =>
-  {
-  val () =
-  tread01_sq1arglst(sqas)
-  val () =
-  tread01_tq1arglst(tqas)
-//
-  val () =
-  tread01_ti1arglst(ti1s)
-//
-  val () =
-    tread01_f1arglst(f1as)
-  // end of [val]
-//
-  val () =
-    tread01_effs1expopt(res1)
-  // end of [val]
-//
-  val () = tread01_d1exp(body)
-//
-  }
-//
 | D1Cexcptcon
   (tok0, d1cs) =>
   {
@@ -331,6 +281,57 @@ D1Cinclude
     // end of [val]
 *)
   }
+//
+| D1Cvaldclst
+  ( knd
+  , mopt, v1ds) =>
+  {
+    val () =
+    tread01_d1valdeclist(v1ds)
+  }
+| D1Cvardclst
+  ( knd
+  , mopt, v1ds) =>
+  {
+    val () =
+    tread01_d1vardeclist(v1ds)
+  }
+//
+| D1Cfundclst
+  ( knd
+  , mopt
+  , tqas, f1ds) =>
+  {
+    val () =
+    tread01_d1fundeclist(f1ds)
+  }
+//
+|
+D1Cimpldcl0
+( knd, mopt
+, sqas, tqas
+, dqid, ti1s
+, f1as, res1, teq2, body) =>
+{
+  val () =
+  tread01_sq1arglst(sqas)
+  val () =
+  tread01_tq1arglst(tqas)
+//
+  val () =
+  tread01_ti1arglst(ti1s)
+//
+  val () =
+    tread01_f1arglst(f1as)
+  // end of [val]
+//
+  val () =
+    tread01_effs1expopt(res1)
+  // end of [val]
+//
+  val () = tread01_d1exp(body)
+//
+}
 //
 | _(* rest-of-d1ecl *) =>
   (

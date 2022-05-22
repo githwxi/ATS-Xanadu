@@ -946,32 +946,12 @@ case+ x0.node() of
   , tok, "; ", sqid
   , "; ", smas, "; ", res0, "; ", def1, ")")
 //
-| D1Cfundecl
+| D1Cfundclst
   (tok, mopt, tqas, d1cs) =>
   fprint!
   ( out
-  , "D1Cfundecl("
+  , "D1Cfundclst("
   , tok, "; ", mopt, "; ", tqas, "; ", d1cs, ")")
-//
-| D1Cvaldecl
-  (tok, mopt, d1cs) =>
-  fprint!
-  ( out
-  , "D1Cvaldecl(", tok, "; ", mopt, "; ", d1cs, ")")
-| D1Cvardecl
-  (tok, mopt, d1cs) =>
-  fprint!
-  ( out
-  , "D1Cvardecl(", tok, "; ", mopt, "; ", d1cs, ")")
-//
-| D1Cimpdecl
-  ( tok, mopt, sqas, tqas
-  , dqid, tias, f1as, res0, teq1, d1e2) =>
-  fprint!
-  ( out
-  , "D1Cimpdecl("
-  , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
-  , dqid, "; ", tias, "; ", f1as, "; ", res0, "; ", teq1, "; ", d1e2, ")")
 //
 | D1Csymload
   (knd, sym, dqid, tint) =>
@@ -997,6 +977,26 @@ case+ x0.node() of
   (tok, tqas, d1cs) =>
   fprint!
   (out, "D1Cdynconst(", tok, "; ", tqas, "; ", d1cs, ")")
+//
+| D1Cvaldclst
+  (tok, mopt, d1cs) =>
+  fprint!
+  ( out
+  , "D1Cvaldclst(", tok, "; ", mopt, "; ", d1cs, ")")
+| D1Cvardclst
+  (tok, mopt, d1cs) =>
+  fprint!
+  ( out
+  , "D1Cvardclst(", tok, "; ", mopt, "; ", d1cs, ")")
+//
+| D1Cimpldcl0
+  ( tok, mopt, sqas, tqas
+  , dqid, tias, f1as, res0, teq1, d1e2) =>
+  fprint!
+  ( out
+  , "D1Cimpldcl0("
+  , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
+  , dqid, "; ", tias, "; ", f1as, "; ", res0, "; ", teq1, "; ", d1e2, ")")
 //
 | D1Celse(tok) =>
   fprint!(out, "D1Celse(", tok, ")")
@@ -1110,14 +1110,16 @@ in
 end // end of [fprint_d1vardecl]
 
 (* ****** ****** *)
-
+//
 implement
 print_d1fundecl(x0) =
 fprint_d1fundecl(stdout_ref, x0)
 implement
 prerr_d1fundecl(x0) =
 fprint_d1fundecl(stderr_ref, x0)
-
+//
+(* ****** ****** *)
+//
 implement
 fprint_d1fundecl
   (out, x0) = let
@@ -1133,7 +1135,7 @@ in
   , ", res=", rcd.res
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
 end // end of [fprint_d1fundecl]
-
+//
 (* ****** ****** *)
 
 implement

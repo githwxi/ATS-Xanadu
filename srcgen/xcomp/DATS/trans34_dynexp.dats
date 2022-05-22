@@ -4287,7 +4287,7 @@ local
 (* ****** ****** *)
 
 fun
-aux_valdecl
+aux_fundclst
 ( env0:
 ! tr34env
 , d3cl: d3ecl): d4ecl =
@@ -4297,67 +4297,7 @@ val
 loc0 = d3cl.loc()
 //
 val-
-D3Cvaldecl
-( tok0
-, mopt, v3ds) = d3cl.node()
-//
-val
-v4ds =
-trans34_d3valdeclist(env0, v3ds)
-//
-val () =
-println!
-("aux_valdecl: v4ds = ", v4ds)
-//
-in
-d4ecl_make_node
-(loc0, D4Cvaldecl(tok0, mopt, v4ds))
-end (*let*) // end of [aux_valdecl]
-
-(* ****** ****** *)
-
-fun
-aux_vardecl
-( env0:
-! tr34env
-, d3cl: d3ecl): d4ecl =
-let
-//
-val
-loc0 = d3cl.loc()
-//
-val-
-D3Cvardecl
-( tok0
-, mopt, v3ds) = d3cl.node()
-//
-val
-v4ds =
-trans34_d3vardeclist(env0, v3ds)
-//
-val () =
-println!
-("aux_vardecl: v4ds = ", v4ds)
-//
-in
-d4ecl_make_node
-(loc0, D4Cvardecl(tok0, mopt, v4ds))
-end (*let*) // end of [aux_vardecl]
-
-(* ****** ****** *)
-
-fun
-aux_fundecl
-( env0:
-! tr34env
-, d3cl: d3ecl): d4ecl =
-let
-//
-val
-loc0 = d3cl.loc()
-//
-val-
-D3Cfundecl
+D3Cfundclst
 ( tok0
 , mopt
 , tqas, f3ds) = d3cl.node()
@@ -4365,7 +4305,7 @@ D3Cfundecl
 (*
 val () =
 println!
-("aux_fundecl: f3ds = ", f3ds)
+("aux_fundclst: f3ds = ", f3ds)
 *)
 //
 val
@@ -4375,14 +4315,74 @@ trans34_d3fundeclist(env0, f3ds)
 // (*
 val () =
 println!
-("aux_fundecl: f4ds = ", f4ds)
+("aux_fundclst: f4ds = ", f4ds)
 // *)
 //
 in
 d4ecl_make_node
 ( loc0
-, D4Cfundecl(tok0, mopt, tqas, f4ds))
-end (*let*) // end of [aux_fundecl]
+, D4Cfundclst(tok0, mopt, tqas, f4ds))
+end (*let*) // end of [aux_fundclst]
+
+(* ****** ****** *)
+
+fun
+aux_valdclst
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cvaldclst
+( tok0
+, mopt, v3ds) = d3cl.node()
+//
+val
+v4ds =
+trans34_d3valdeclist(env0, v3ds)
+//
+val () =
+println!
+("aux_valdclst: v4ds = ", v4ds)
+//
+in
+d4ecl_make_node
+(loc0, D4Cvaldclst(tok0, mopt, v4ds))
+end (*let*) // end of [aux_valdclst]
+
+(* ****** ****** *)
+
+fun
+aux_vardclst
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+val-
+D3Cvardclst
+( tok0
+, mopt, v3ds) = d3cl.node()
+//
+val
+v4ds =
+trans34_d3vardeclist(env0, v3ds)
+//
+val () =
+println!
+("aux_vardclst: v4ds = ", v4ds)
+//
+in
+d4ecl_make_node
+(loc0, D4Cvardclst(tok0, mopt, v4ds))
+end (*let*) // end of [aux_vardclst]
 
 (* ****** ****** *)
 
@@ -4403,15 +4403,15 @@ case+
 d3cl.node() of
 //
 |
-D3Cvaldecl _ =>
-aux_valdecl(env0, d3cl)
+D3Cvaldclst _ =>
+aux_valdclst(env0, d3cl)
 |
-D3Cvardecl _ =>
-aux_vardecl(env0, d3cl)
+D3Cvardclst _ =>
+aux_vardclst(env0, d3cl)
 //
 |
-D3Cfundecl _ =>
-aux_fundecl(env0, d3cl)
+D3Cfundclst _ =>
+aux_fundclst(env0, d3cl)
 //
 |
 _(*rest-of-d3ecl*) =>
