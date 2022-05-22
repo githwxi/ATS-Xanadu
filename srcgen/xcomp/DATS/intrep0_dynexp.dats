@@ -393,27 +393,27 @@ end (*local*) // end of [local]
 local
 //
 absimpl
-h0farg_tbox = $rec
-{ h0farg_loc= loc_t
-, h0farg_node= h0farg_node
+h0fag_tbox = $rec
+{ h0fag_loc= loc_t
+, h0fag_node= h0fag_node
 } (* end of [absimpl] *)
 //
 in (* in-of-local *)
 //
 implement
-h0farg_get_loc
-  (h0fa) = h0fa.h0farg_loc
+h0fag_get_loc
+  (h0fa) = h0fa.h0fag_loc
 //
 implement
-h0farg_get_node
-  (h0fa) = h0fa.h0farg_node
+h0fag_get_node
+  (h0fa) = h0fa.h0fag_node
 //
 implement
-h0farg_make_node
+h0fag_make_node
 (loc0, node) = $rec
 {
-h0farg_loc= loc0, h0farg_node= node
-} (* h0farg_make_node *)
+h0fag_loc= loc0, h0fag_node= node
+} (* h0fag_make_node *)
 //
 end // end of [local]
 

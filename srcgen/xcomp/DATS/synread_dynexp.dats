@@ -637,7 +637,7 @@ case+ d0es of
   ((*none*)) =>
   (
   case+ d0e1.node() of
-  | D0Enone1
+  | D0Enone
     ( tok1 ) =>
     {
       val () =
@@ -748,7 +748,7 @@ auxcons_d0e1_d0es
     ((*none*)) =>
     (
     case+ d0e1.node() of
-    | D0Enone1
+    | D0Enone
       ( tok1 ) =>
       {
         val () =

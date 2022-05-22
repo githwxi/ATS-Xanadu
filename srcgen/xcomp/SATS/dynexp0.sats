@@ -687,7 +687,7 @@ d0exp_node =
 //
 | D0Equal of (token(*qual*), d0exp) // qualified
 //
-| D0Enone1 of (token) // HX: for error indication
+| D0Enone of (token) // HX: for error indication
 //
 // HX-2020-11-04:
 | D0Eexname of (g0nam) // HX: for specifying names
