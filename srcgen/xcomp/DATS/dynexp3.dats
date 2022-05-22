@@ -90,7 +90,7 @@ loc0, t2p0, node
 , d3pat_type= t2p0, d3pat_node= node
 } (* d3pat_make_node *)
 //
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -117,7 +117,7 @@ t2p0 = the_t2ype_void
 in
 d3pat_make_node
 (loc0, t2p0, D3Pnil())
-end // [d3pat_nil]
+end(*let*)//[d3pat_nil]
 
 (* ****** ****** *)
 
@@ -137,7 +137,7 @@ val t2p0 = d2v0.type()
 in
 d3pat_make_node
 (loc0, t2p0, D3Pvar(d2v0))
-end // end of [let]
+end // end of [d3pat_var]
 
 (* ****** ****** *)
 //
@@ -150,7 +150,7 @@ t2p0 = the_t2ype_sint
 in
 d3pat_make_node
 (loc0, t2p0, D3Pi00(int))
-end // end of [let]
+end // end of [d3pat_i00]
 //
 implement
 d3pat_b00
@@ -161,7 +161,7 @@ t2p0 = the_t2ype_bool
 in
 d3pat_make_node
 (loc0, t2p0, D3Pb00(btf))
-end // end of [let]
+end // end of [d3pat_b00]
 //
 implement
 d3pat_s00
@@ -172,10 +172,10 @@ t2p0 = the_t2ype_string
 in
 d3pat_make_node
 (loc0, t2p0, D3Ps00(str))
-end // end of [let]
+end // end of [d3pat_s00]
 //
 (* ****** ****** *)
-
+//
 implement
 d3pat_int
 (loc0, tok0) =
@@ -185,7 +185,8 @@ t2p0 = the_t2ype_sint
 in
 d3pat_make_node
 (loc0, t2p0, D3Pint(tok0))
-end // end of [let]
+end // end of [d3pat_int]
+//
 implement
 d3pat_btf
 (loc0, tok0) =
@@ -195,7 +196,8 @@ t2p0 = the_t2ype_bool
 in
 d3pat_make_node
 (loc0, t2p0, D3Pbtf(tok0))
-end // end of [let]
+end // end of [d3pat_btf]
+//
 implement
 d3pat_chr
 (loc0, tok0) =
@@ -205,7 +207,7 @@ t2p0 = the_t2ype_char
 in
 d3pat_make_node
 (loc0, t2p0, D3Pchr(tok0))
-end // end of [let]
+end // end of [d3pat_chr]
 implement
 d3pat_str
 (loc0, tok0) =
@@ -215,7 +217,7 @@ t2p0 = the_t2ype_string
 in
 d3pat_make_node
 (loc0, t2p0, D3Pstr(tok0))
-end // end of [let]
+end // end of [d3pat_str]
 
 (* ****** ****** *)
 
@@ -264,35 +266,7 @@ d3timp_stamp_new
 // argless
 ) = $STM.stamper_getinc(stamper)
 
-end // end of [local]
-
-(* ****** ****** *)
-
-local
-
-absimpl
-f3arg_tbox = $rec{
-  f3arg_loc= loc_t
-, f3arg_node= f3arg_node
-} (* f3arg_tbox *)
-
-in (* in-of-local *)
-
-implement
-f3arg_get_loc(x0) = x0.f3arg_loc
-implement
-f3arg_get_node(x0) = x0.f3arg_node
-
-(* ****** ****** *)
-
-implement
-f3arg_make_node
-(loc, node) = $rec
-{
-  f3arg_loc= loc, f3arg_node= node
-} (* end of [f3arg_make_node] *)
-
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -327,7 +301,7 @@ loc0, t2p0, node
 , d3exp_type= t2p0, d3exp_node= node
 } (* d3exp_make_node *)
 //
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 //
@@ -424,6 +398,34 @@ d3exp_make_node
 local
 
 absimpl
+f3arg_tbox = $rec{
+  f3arg_loc= loc_t
+, f3arg_node= f3arg_node
+} (* f3arg_tbox *)
+
+in (* in-of-local *)
+
+implement
+f3arg_get_loc(x0) = x0.f3arg_loc
+implement
+f3arg_get_node(x0) = x0.f3arg_node
+
+(* ****** ****** *)
+
+implement
+f3arg_make_node
+(loc, node) = $rec
+{
+  f3arg_loc= loc, f3arg_node= node
+} (* f3arg_make_node *)
+
+end (*local*) // end of [local]
+
+(* ****** ****** *)
+
+local
+
+absimpl
 d3gua_tbox = $rec
 { d3gua_loc= loc_t
 , d3gua_node= d3gua_node
@@ -443,7 +445,7 @@ d3gua_make_node
   d3gua_loc= loc0, d3gua_node= node
 } (* d3gua_make_node *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -469,7 +471,7 @@ d3clau_make_node
   d3clau_loc= loc0, d3clau_node= node
 } (* d3clau_make_node *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -495,7 +497,7 @@ d3gpat_make_node
   d3gpat_loc= loc0, d3gpat_node= node
 } (* d3gpat_make_node *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -528,7 +530,7 @@ d3ecl_make_node
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 //
@@ -552,28 +554,32 @@ d3ecl_make_node
 (* ****** ****** *)
 
 implement
-v3aldecl_get_loc(v3d0) =
+d3valdecl_get_loc(d3vd) =
 let
-val+V3ALDECL(rcd) = v3d0 in rcd.loc end
+val+D3VALDECL(rcd) = d3vd in rcd.loc
+end
 
 (* ****** ****** *)
 
 implement
-v3ardecl_get_loc(v3d0) =
+d3vardecl_get_loc(d3vd) =
 let
-val+V3ARDECL(rcd) = v3d0 in rcd.loc end
+val+D3VARDECL(rcd) = d3vd in rcd.loc
+end
 
 (* ****** ****** *)
 //
 implement
-f3undecl_get_loc(f3d0) =
+d3fundecl_get_loc(d3fd) =
 let
-val+F3UNDECL(rcd) = f3d0 in rcd.loc end
+val+D3FUNDECL(rcd) = d3fd in rcd.loc
+end
 //
 implement
-f3undecl_get_d2c(f3d0) =
+d3fundecl_get_d2c(d3fd) =
 let
-val+F3UNDECL(rcd) = f3d0 in rcd.d2c end
+val+D3FUNDECL(rcd) = d3fd in rcd.d2c
+end
 //
 (* ****** ****** *)
 

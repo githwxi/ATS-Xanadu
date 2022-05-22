@@ -53,13 +53,11 @@ typedef c0str = $C0S.c0str
 (* ****** ****** *)
 //
 abstbox d4pat_tbox = ptr
+abstbox f4arg_tbox = ptr
+//
 typedef d4pat = d4pat_tbox
 typedef d4patlst = List0(d4pat)
 typedef d4patopt = Option(d4pat)
-//
-(* ****** ****** *)
-//
-abstbox f4arg_tbox = ptr
 //
 typedef f4arg = f4arg_tbox
 typedef f4arglst = List0(f4arg)
@@ -820,39 +818,39 @@ d4gpat_make_node
 (* ****** ****** *)
 //
 datatype
-f4undecl =
-F4UNDECL of @{
+d4fundecl =
+D4FUNDECL of @{
   loc= loc_t
 , nam= d2var
 , d2c= d2cst
 , a2g= f2arglst
 //
 , a4g=
-    f4arglstopt
+  (f4arglstopt)
 , res=
-    effs2expopt
+  (effs2expopt)
 //
 , def= d4expopt, rtp= t2ype
 , wtp= s2expopt, ctp= t2pcast
 }
 //
 typedef
-f4undeclist = List0(f4undecl)
+d4fundeclist = List0(d4fundecl)
 //
 (* ****** ****** *)
 //
 fun
-print_f4undecl: print_type(f4undecl)
+print_d4fundecl: print_type(d4fundecl)
 fun
-prerr_f4undecl: prerr_type(f4undecl)
+prerr_d4fundecl: prerr_type(d4fundecl)
 fun
-fprint_f4undecl: fprint_type(f4undecl)
+fprint_d4fundecl: fprint_type(d4fundecl)
 //
 (* ****** ****** *)
 //
 datatype
-v4aldecl =
-V4ALDECL of @{
+d4valdecl =
+D4VALDECL of @{
   loc= loc_t
 , pat= d4pat
 , def= d4expopt
@@ -863,22 +861,22 @@ V4ALDECL of @{
 }
 //
 typedef
-v4aldeclist = List0(v4aldecl)
+d4valdeclist = List0(d4valdecl)
 //
 (* ****** ****** *)
 //
 fun
-print_v4aldecl: print_type(v4aldecl)
+print_d4valdecl: print_type(d4valdecl)
 fun
-prerr_v4aldecl: prerr_type(v4aldecl)
+prerr_d4valdecl: prerr_type(d4valdecl)
 fun
-fprint_v4aldecl: fprint_type(v4aldecl)
+fprint_d4valdecl: fprint_type(d4valdecl)
 //
 (* ****** ****** *)
 //
 datatype
-v4ardecl =
-V4ARDECL of @{
+d4vardecl =
+D4VARDECL of @{
   loc= loc_t
 , d2v= d2var
 , d2w= d2var
@@ -889,16 +887,16 @@ V4ARDECL of @{
 }
 //
 typedef
-v4ardeclist = List0(v4ardecl)
+d4vardeclist = List0(d4vardecl)
 //
 (* ****** ****** *)
 //
 fun
-print_v4ardecl: print_type(v4ardecl)
+print_d4vardecl: print_type(d4vardecl)
 fun
-prerr_v4ardecl: prerr_type(v4ardecl)
+prerr_d4vardecl: prerr_type(d4vardecl)
 fun
-fprint_v4ardecl: fprint_type(v4ardecl)
+fprint_d4vardecl: fprint_type(d4vardecl)
 //
 (* ****** ****** *)
 //
@@ -920,15 +918,18 @@ d4ecl_node =
 | D4Cnone0 of ()
 | D4Cnone1 of (d3ecl)
 //
-| D4Cfundecl of
-  ( token(*funknd*)
-  , decmodopt
-  , tq2arglst(*tmpargs*), f4undeclist)
+|
+D4Cfundecl of
+( token(*funknd*)
+, decmodopt
+, tq2arglst(*tmpargs*), d4fundeclist)
 //
-| D4Cvaldecl of
-  (token(*knd*), decmodopt, v4aldeclist)
-| D4Cvardecl of
-  (token(*knd*), decmodopt, v4ardeclist)
+|
+D4Cvaldecl of
+(token(*knd*), decmodopt, d4valdeclist)
+|
+D4Cvardecl of
+(token(*knd*), decmodopt, d4vardeclist)
 //
 (* ****** ****** *)
 //
@@ -967,54 +968,54 @@ d4ecl_make_node
 (* ****** ****** *)
 //
 datatype
-dvmrg2 = DVMRG2 of
+d2vmrg2 = D2VMRG2 of
 ( d2var
 , s2expopt(*then*)
 , s2expopt(*else*))
 datatype
-dvmrgs = DVMRGS of
+d2vmrgs = D2VMRGS of
 ( d2var, List0(s2expopt))
 //
 (* ****** ****** *)
 fun
-print_dvmrg2(dvmrg2): void
+print_d2vmrg2(d2vmrg2): void
 fun
-prerr_dvmrg2(dvmrg2): void
+prerr_d2vmrg2(d2vmrg2): void
 fun
-fprint_dvmrg2: fprint_type(dvmrg2)
+fprint_d2vmrg2: fprint_type(d2vmrg2)
 (* ****** ****** *)
 fun
-print_dvmrgs(dvmrgs): void
+print_d2vmrgs(d2vmrgs): void
 fun
-prerr_dvmrgs(dvmrgs): void
+prerr_d2vmrgs(d2vmrgs): void
 fun
-fprint_dvmrgs: fprint_type(dvmrgs)
+fprint_d2vmrgs: fprint_type(d2vmrgs)
 (* ****** ****** *)
 //
 fun
-stmap2_dvmrg
+stmap2_d2vmrg
 ( map1: stmap
-, map2: stmap): List0(dvmrg2)
+, map2: stmap): List0(d2vmrg2)
 //
 (*
 fun
-stmap1l_dvmrg
-( map1: stmap): List0(dvmrg2)
+stmap1l_d2vmrg
+( map1: stmap): List0(d2vmrg2)
 fun
-stmap1r_dvmrg
-( map1: stmap): List0(dvmrg2)
+stmap1r_d2vmrg
+( map1: stmap): List0(d2vmrg2)
 *)
 //
 (* ****** ****** *)
 //
 (*
 fun
-stmaplst_dvmrg
-(maps: List0(stmap)): List0(dvmrgs)
+stmaplst_d2vmrg
+(maps: List0(stmap)): List0(d2vmrgs)
 *)
 fun
-dclaulst_dvmrg
-(dcls: List0(d4clau)): List0(dvmrgs)
+d4claulst_d2vmrg
+(dcls: List0(d4clau)): List0(d2vmrgs)
 //
 (* ****** ****** *)
 

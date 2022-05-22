@@ -985,7 +985,7 @@ case+ tqas of
 |
 list_nil _ =>
 (
-trans3t_fundecl(env0, d3cl)
+trans3t_dfundecl(env0, d3cl)
 )
 |
 list_cons _ =>
@@ -1047,10 +1047,10 @@ auxv3d0
 ( env0:
 ! implenv
 , v3d0
-: v3aldecl): v3aldecl =
+: d3valdecl): d3valdecl =
 let
 //
-val+V3ALDECL(rcd) = v3d0
+val+D3VALDECL(rcd) = v3d0
 //
 val loc = rcd.loc
 val pat = rcd.pat
@@ -1060,7 +1060,7 @@ val wtp = rcd.wtp
 val def = trans3t_dexpopt(env0, def)
 //
 in
-V3ALDECL
+D3VALDECL
 @{loc=loc, pat=pat, def=def, wtp=wtp}
 end // end of [auxv3d0]
 //
@@ -1069,7 +1069,7 @@ auxv3ds
 ( env0:
 ! implenv
 , v3ds
-: v3aldeclist): v3aldeclist =
+: d3valdeclist): d3valdeclist =
 (
 case+ v3ds of
 | list_nil() =>
@@ -1108,10 +1108,10 @@ auxv3d0
 ( env0:
 ! implenv
 , v3d0
-: v3ardecl): v3ardecl =
+: d3vardecl): d3vardecl =
 let
 //
-val+V3ARDECL(rcd) = v3d0
+val+D3VARDECL(rcd) = v3d0
 //
 val loc = rcd.loc
 val d2v = rcd.d2v
@@ -1122,7 +1122,7 @@ val ini = rcd.ini
 val ini = trans3t_dexpopt(env0, ini)
 //
 in
-V3ARDECL
+D3VARDECL
 @{loc=loc
 , d2v=d2v, wth=wth, res=res, ini=ini}
 end // end of [auxv3d0]
@@ -1132,7 +1132,7 @@ auxv3ds
 ( env0:
 ! implenv
 , v3ds
-: v3ardeclist): v3ardeclist =
+: d3vardeclist): d3vardeclist =
 (
 case+ v3ds of
 | list_nil() =>
@@ -1417,7 +1417,7 @@ end // end of [trans3t_declist]
 (* ****** ****** *)
 
 implement
-trans3t_fundecl
+trans3t_dfundecl
   (env0, d3cl) = let
 //
 val-
@@ -1431,13 +1431,13 @@ auxf3d0
 ( env0:
 ! implenv
 , f3d0
-: f3undecl
+: d3fundecl
 )
-: f3undecl =
+: d3fundecl =
 let
 //
 val+
-F3UNDECL(rcd) = f3d0
+D3FUNDECL(rcd) = f3d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
@@ -1466,13 +1466,13 @@ case+ def of
 ) : d3expopt // end-of-val
 //
 in
-F3UNDECL(
+D3FUNDECL(
 @{
  loc=loc
 ,nam=nam,d2c=d2c
 ,a2g=a2g,a3g=a3g
 ,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
-) (* F3UNDECL *)
+) (* D3FUNDECL *)
 end // end of [auxf3d0]
 //
 fun
@@ -1480,24 +1480,23 @@ auxf3ds
 ( env0:
 ! implenv
 , f3ds
-: f3undeclist
+: d3fundeclist
 )
-: f3undeclist =
+: d3fundeclist =
 (
 case+ f3ds of
 | list_nil() =>
   list_nil(*void*)
-| list_cons(f3d0, f3ds) =>
-  (
+|
+list_cons(f3d0, f3ds) =>
+(
   list_cons(f3d0, f3ds)
-  ) where
-  {
-    val
-    f3d0 = auxf3d0(env0, f3d0)
-    val
-    f3ds = auxf3ds(env0, f3ds)
-  }
-)
+) where
+{
+val f3d0 = auxf3d0(env0, f3d0)
+val f3ds = auxf3ds(env0, f3ds)
+}
+) (*case*) // end of [auxf3ds]
 //
 val f3ds = auxf3ds(env0, f3ds)
 //
@@ -1506,7 +1505,7 @@ d3ecl_make_node
 ( d3cl.loc()
 , D3Cfundecl(tok0, mopt, tqas, f3ds)
 )
-end // end of [trans3t__fundecl]
+end // end of [trans3t_d3fundecl]
 
 (* ****** ****** *)
 
@@ -1518,7 +1517,7 @@ aux_fundecl
 ! implenv
 , d3cl: d3ecl): d3ecl =
 (
-trans3t_fundecl(env0, d3cl)
+trans3t_dfundecl(env0, d3cl)
 ) (* end of [aux_fundecl] *)
 
 (* ****** ****** *)

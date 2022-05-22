@@ -77,14 +77,13 @@ implement
 fprint_val<t2ype> = fprint_t2ype
 
 (* ****** ****** *)
-
 implement
 fprint_val<d2pat> = fprint_d2pat
 implement
 fprint_val<f2arg> = fprint_f2arg
+(* ****** ****** *)
 implement
 fprint_val<f3arg> = fprint_f3arg
-
 (* ****** ****** *)
 //
 fn//HX:non-rec
@@ -2815,7 +2814,7 @@ aux2_f2d0
 , f2d0
 : f2undecl
 , agtp: a3gt2p
-) : f3undecl = let
+) : d3fundecl = let
 //
 val
 loc0 = d2cl.loc()
@@ -2885,13 +2884,13 @@ case+ def of
 ) : d3expopt // end-of-val
 //
 in
-F3UNDECL(
+D3FUNDECL(
 @{
  loc=loc
 ,nam=nam,d2c=d2c
 ,a2g=a2g,a3g=a3g
 ,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
-) (* F3UNDECL *)
+) (* D3FUNDECL *)
 end // end of [let]
 and
 aux2_f2ds
@@ -2901,7 +2900,7 @@ aux2_f2ds
 , agtp
 : List0(a3gt2p)
 )
-: f3undeclist =
+: d3fundeclist =
 (
 case+ f2ds of
 | list_nil() =>
@@ -2948,7 +2947,7 @@ auxv2d0
 : d2ecl
 , v2d0
 : v2aldecl
-) : v3aldecl = let
+) : d3valdecl = let
 //
 val
 loc0 = d2cl.loc()
@@ -2988,7 +2987,7 @@ case+ def of
 ) : d3expopt // end-of-val
 //
 in
-V3ALDECL
+D3VALDECL
 (@{
 loc=loc,pat=pat,def=def,wtp=wtp})
 end // end of [auxv2d0]
@@ -2999,7 +2998,7 @@ auxv2ds
 , v2ds
 : v2aldeclist
 )
-: v3aldeclist =
+: d3valdeclist =
 (
 case+ v2ds of
 |
@@ -3050,7 +3049,7 @@ auxv2d0
 : d2ecl
 , v2d0
 : v2ardecl
-) : v3ardecl = let
+) : d3vardecl = let
 //
 val
 loc0 = d2cl.loc()
@@ -3092,10 +3091,10 @@ d2var_set_type(d2v, t2ype_lft(tres))
 }
 //
 in
-V3ARDECL(
+D3VARDECL(
 @{
 loc=loc,d2v=d2v,wth=wth,res=res,ini=ini}
-) (* V3ARDECL *)
+) (* D3VARDECL *)
 end // end of [auxv2d0]
 //
 fun
@@ -3104,7 +3103,7 @@ auxv2ds
 , v2ds
 : v2ardeclist
 )
-: v3ardeclist =
+: d3vardeclist =
 (
 case+ v2ds of
 |

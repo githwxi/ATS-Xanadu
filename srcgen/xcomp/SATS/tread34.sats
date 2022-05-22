@@ -99,26 +99,23 @@ fun//{}
 tread34_d4eclist: treader34(d4eclist)
 //
 (* ****** ****** *)
-
+//
 fun//{}
-tread34_v4aldecl: treader34(v4aldecl)
+tread34_d4valdecl: treader34(d4valdecl)
 fun//{}
-tread34_v4aldeclist: treader34(v4aldeclist)
-
+tread34_d4vardecl: treader34(d4vardecl)
+fun//{}
+tread34_d4fundecl: treader34(d4fundecl)
+//
 (* ****** ****** *)
-
+//
 fun//{}
-tread34_v4ardecl: treader34(v4ardecl)
+tread34_d4valdeclist: treader34(d4valdeclist)
 fun//{}
-tread34_v4ardeclist: treader34(v4ardeclist)
-
-(* ****** ****** *)
-
+tread34_d4vardeclist: treader34(d4vardeclist)
 fun//{}
-tread34_f4undecl: treader34(f4undecl)
-fun//{}
-tread34_f4undeclist: treader34(f4undeclist)
-
+tread34_d4fundeclist: treader34(d4fundeclist)
+//
 (* ****** ****** *)
 
 (* end of [xats_tread34.sats] *)

@@ -66,16 +66,16 @@ typedef d2pitm = $D2E.d2pitm
 
 typedef d2pat = $D2E.d2pat
 typedef d3pat = $D3E.d3pat
+typedef f3arg = $D3E.f3arg
 
 typedef d2exp = $D2E.d2exp
 typedef d3exp = $D3E.d3exp
-typedef d3gua = $D3E.d3gua
-typedef d3clau = $D3E.d3clau
-typedef d3gpat = $D3E.d3gpat
 
 (* ****** ****** *)
 
-typedef f3arg = $D3E.f3arg
+typedef d3gua = $D3E.d3gua
+typedef d3clau = $D3E.d3clau
+typedef d3gpat = $D3E.d3gpat
 
 (* ****** ****** *)
 
@@ -103,18 +103,19 @@ typedef t2ypelst = $S2T.t2ypelst
 typedef t2xtvlst = $S2T.t2xtvlst
 
 (* ****** ****** *)
-
+//
 typedef d3patlst = $D3E.d3patlst
 typedef d3patopt = $D3E.d3patopt
+typedef f3arglst = $D3E.f3arglst
+//
 typedef d3explst = $D3E.d3explst
 typedef d3expopt = $D3E.d3expopt
+typedef d3eclist = $D3E.d3eclist
+//
+(* ****** ****** *)
 
 typedef d3gualst = $D3E.d3gualst
 typedef d3claulst = $D3E.d3claulst
-
-typedef f3arglst = $D3E.f3arglst
-
-typedef d3eclist = $D3E.d3eclist
 
 (* ****** ****** *)
 
@@ -193,108 +194,109 @@ trans33_envless
 //
 fun
 trans33_dpat
-( env0
-: !abstenv, d3p0: d3pat): d3pat
+( env0:
+! abstenv, d3p0: d3pat): d3pat
 fun
 trans33_dpat_dntp
-( env0
-: !abstenv
+( env0:
+! abstenv
 , d3p0: d3pat, t2p0: t2ype): d3pat
 //
 fun
 trans33_dpatlst
-( env0
-: !abstenv, d3ps: d3patlst): d3patlst
+( env0:
+! abstenv, d3ps: d3patlst): d3patlst
 fun
 trans33_dpatlst_dnts
-( env0
-: !abstenv
-, d3ps: d3patlst, t2ps: t2ypelst): d3patlst
+( env0:
+! abstenv
+, d3ps
+: d3patlst, t2ps: t2ypelst): d3patlst
+//
+(* ****** ****** *)
+//
+fun
+trans33_farg
+( env0:
+! abstenv, d3fa: f3arg): f3arg
+fun
+trans33_farglst
+( env0:
+! abstenv, dfas: f3arglst): f3arglst
 //
 (* ****** ****** *)
 //
 fun
 trans33_dexp
-( env0
-: !abstenv, d3e0: d3exp): d3exp
+( env0:
+! abstenv, d3e0: d3exp): d3exp
 //
 fun
 trans33_dexpopt
-( env0
-: !abstenv, opt0: d3expopt): d3expopt
+( env0:
+! abstenv, opt0: d3expopt): d3expopt
 fun
 trans33_dexplst
-( env0
-: !abstenv, d3es: d3explst): d3explst
+( env0:
+! abstenv, d3es: d3explst): d3explst
 //
 (* ****** ****** *)
 //
 fun
 trans33_dexp_dntp
-( env0
-: !abstenv
+( env0:
+! abstenv
 , d3e0: d3exp, t2p0: t2ype): d3exp
 fun
 trans33_dexpopt_dntp
-( env0
-: !abstenv
+( env0:
+! abstenv
 , opt0: d3expopt, t2p0: t2ype): d3expopt
 fun
 trans33_dexplst_dntp
-( env0
-: !abstenv
+( env0:
+! abstenv
 , d3es: d3explst, t2p0: t2ype): d3explst
 //
 (* ****** ****** *)
 //
 fun
 trans33_dgua
-( env0
-: !abstenv, d3g0: d3gua): d3gua
+( env0:
+! abstenv, d3g0: d3gua): d3gua
 fun
 trans33_dgualst
-( env0
-: !abstenv, d3gs: d3gualst): d3gualst
+( env0:
+! abstenv, d3gs: d3gualst): d3gualst
 //
 (* ****** ****** *)
 //
 fun
 trans33_dgpat
-( env0
-: !abstenv, d3gp: d3gpat): d3gpat
+( env0:
+! abstenv, d3gp: d3gpat): d3gpat
 //
 fun
 trans33_dclau_dntp
-( env0
-: !abstenv
+( env0:
+! abstenv
 , d3cl: d3clau, tres: t2ype): d3clau
 fun
 trans33_dclaulst_dntp
-( env0
-: !abstenv
+( env0:
+! abstenv
 , dcls: d3claulst, tres: t2ype): d3claulst
 //
 (* ****** ****** *)
 //
 fun
-trans33_farg
-( env0
-: !abstenv, f3a0: f3arg): f3arg
-fun
-trans33_farglst
-( env0
-: !abstenv, f3as: f3arglst): f3arglst
-//
-(* ****** ****** *)
-//
-fun
 trans33_decl
-( env0
-: !abstenv, d3cl: d3ecl): d3ecl 
+( env0:
+! abstenv, d3cl: d3ecl): d3ecl 
 fun
 trans33_declist
-( env0
-: !abstenv, dcls: d3eclist): d3eclist
+( env0:
+! abstenv, dcls: d3eclist): d3eclist
 //
 (* ****** ****** *)
 //
@@ -389,8 +391,8 @@ fun
 d33exp_dapp_up
 ( loc0
 : loc_t
-, env0
-: !abstenv
+, env0:
+! abstenv
 , d3f0: d3exp(*fun*)
 , npf0: int
 , d3es: d3explst(*args*)): d3exp
@@ -399,19 +401,25 @@ d33exp_dapp_up
 //
 fun
 d33exp_proj_up
-( loc0: loc_t
-, env0: !abstenv
+( loc0
+: loc_t
+, env0:
+! abstenv
 , d3e1: d3exp, lab2: label): d3exp
 fun
 d33exp_proj0_up
-( loc0: loc_t
-, env0: !abstenv
+( loc0
+: loc_t
+, env0:
+! abstenv
 , d3e1: d3exp
 , t2p1: t2ype, lab2: label): d3exp
 fun
 d33exp_proj1_up
-( loc0: loc_t
-, env0: !abstenv
+( loc0
+: loc_t
+, env0:
+! abstenv
 , d3e1: d3exp
 , t2p1: t2ype, lab2: label): d3exp
 //
@@ -419,23 +427,29 @@ d33exp_proj1_up
 //
 fun
 d33exp_assgn_up
-( loc0: loc_t
-, env0: !abstenv
+( loc0
+: loc_t
+, env0:
+! abstenv
 , d3el: d3exp, d3er: d3exp): d3exp
 //
 (* ****** ****** *)
 //
 fun
 d33exp_if0_up
-( loc0: loc_t
-, env0: !abstenv
+( loc0
+: loc_t
+, env0:
+! abstenv
 , d3e1: d3exp(*cond*)
 , d3e2: d3exp(*then*)
 , opt3: d3expopt(*else*)): d3exp
 fun
 d33exp_if1_up
-( loc0: loc_t
-, env0: !abstenv
+( loc0
+: loc_t
+, env0:
+! abstenv
 , d3e1: d3exp(*cond*)
 , d3e2: d3exp(*then*)
 , opt3: d3expopt(*else*), tinv: st2inv): d3exp
@@ -444,7 +458,8 @@ d33exp_if1_up
 //
 fun
 d33exp_tcastize
-( env0: !abstenv
+( env0:
+! abstenv
 , d3e1: d3exp, t2p2: t2ype): d3exp
 //
 (* ****** ****** *)

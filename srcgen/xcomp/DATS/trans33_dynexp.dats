@@ -2661,7 +2661,7 @@ f3arg_make_node
 //
 implement
 trans33_farglst
-(env0, f3as) =
+  (env0, f3as) =
 list_vt2t
 (
 list_map<f3arg><f3arg>(f3as)
@@ -2833,11 +2833,11 @@ auxf3d0
 ( env0:
 ! abstenv
 , f3d0
-: f3undecl
-) : f3undecl =
+: d3fundecl
+) : d3fundecl =
 let
 val+
-F3UNDECL(rcd) = f3d0
+D3FUNDECL(rcd) = f3d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
@@ -2866,31 +2866,31 @@ def =
 trans33_dexpopt_dntp(env0, def, rtp)
 //
 in
-F3UNDECL(
+D3FUNDECL(
 @{
  loc=loc
 ,nam=nam,d2c=d2c
 ,a2g=a2g,a3g=a3g
 ,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
-) (* F3UNDECL *)
+) (* D3FUNDECL *)
 end // end of [auxf3d0]
 and
 auxf3ds
 ( env0:
 ! abstenv
 , f3ds
-: f3undeclist
-) : f3undeclist =
+: d3fundeclist
+) : d3fundeclist =
 list_vt2t
 (
-list_map<f3undecl><f3undecl>(f3ds)
+list_map<d3fundecl><d3fundecl>(f3ds)
 ) where
 {
 val
 env0 =
 $UN.castvwtp1{ptr}(env0)
 implement
-list_map$fopr<f3undecl><f3undecl>
+list_map$fopr<d3fundecl><d3fundecl>
   (f3d0) =
 let
 val env0 =
@@ -2934,12 +2934,12 @@ auxv3d0
 ( env0:
 ! abstenv
 , v3d0
-: v3aldecl
+: d3valdecl
 )
-: v3aldecl =
+: d3valdecl =
 let
 val+
-V3ALDECL(rcd) = v3d0
+D3VALDECL(rcd) = v3d0
 //
 val loc = rcd.loc
 val pat = rcd.pat
@@ -2966,7 +2966,7 @@ end
 ) : d3expopt // end-of-val
 //
 in
-V3ALDECL
+D3VALDECL
 (@{loc=loc,pat=pat,def=def,wtp=wtp})
 end // end of [auxv3d0]
 and
@@ -2974,19 +2974,19 @@ auxv3ds
 ( env0:
 ! abstenv
 , v3ds
-: v3aldeclist
+: d3valdeclist
 )
-: v3aldeclist =
+: d3valdeclist =
 list_vt2t
 (
-list_map<v3aldecl><v3aldecl>(v3ds)
+list_map<d3valdecl><d3valdecl>(v3ds)
 ) where
 {
 val
 env0 =
 $UN.castvwtp1{ptr}(env0)
 implement
-list_map$fopr<v3aldecl><v3aldecl>
+list_map$fopr<d3valdecl><d3valdecl>
   (v3d0) =
 let
 val env0 =
@@ -3052,13 +3052,13 @@ auxv3d0
 , d3cl
 : d3ecl
 , v3d0
-: v3ardecl
-) : v3ardecl = let
+: d3vardecl
+) : d3vardecl = let
 //
 val
 loc0 = d3cl.loc()
 val+
-V3ARDECL(rcd) = v3d0
+D3VARDECL(rcd) = v3d0
 //
 val loc = rcd.loc
 val d2v = rcd.d2v
@@ -3094,10 +3094,10 @@ d2var_set_type(d2v, t2ype_lft(tres))
 }
 //
 in
-V3ARDECL(
+D3VARDECL(
 @{
 loc=loc,d2v=d2v,wth=wth,res=res,ini=ini}
-) (* V3ARDECL *)
+) (* D3VARDECL *)
 end // end of [auxv3d0]
 //
 fun
@@ -3106,9 +3106,9 @@ auxv3ds
 ! abstenv
 , d3cl: d3ecl
 , v3ds
-: v3ardeclist
+: d3vardeclist
 )
-: v3ardeclist =
+: d3vardeclist =
 (
 case+ v3ds of
 |

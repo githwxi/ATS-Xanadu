@@ -50,6 +50,7 @@ typedef s2var = $S2E.s2var
 //
 typedef d4pat = $D4E.d4pat
 typedef f4arg = $D4E.f4arg
+//
 typedef d4exp = $D4E.d4exp
 typedef d4ecl = $D4E.d4ecl
 //
@@ -61,6 +62,7 @@ typedef d4clau = $D4E.d4clau
 //
 typedef d4patlst = $D4E.d4patlst
 typedef f4arglst = $D4E.f4arglst
+//
 typedef d4explst = $D4E.d4explst
 typedef d4eclist = $D4E.d4eclist
 //
@@ -175,17 +177,6 @@ trans4x_dpatlst
 (* ****** ****** *)
 //
 fun
-trans4x_dexp
-( env0:
-! tr4xenv, d4e0: d4exp): void
-fun
-trans4x_dexplst
-( env0:
-! tr4xenv, d4es: d4explst): void
-//
-(* ****** ****** *)
-//
-fun
 trans4x_farg
 ( env0
 : !tr4xenv, f4a0: f4arg): void
@@ -193,6 +184,17 @@ fun
 trans4x_farglst
 ( env0
 : !tr4xenv, f4as: f4arglst): void
+//
+(* ****** ****** *)
+//
+fun
+trans4x_dexp
+( env0:
+! tr4xenv, d4e0: d4exp): void
+fun
+trans4x_dexplst
+( env0:
+! tr4xenv, d4es: d4explst): void
 //
 (* ****** ****** *)
 //

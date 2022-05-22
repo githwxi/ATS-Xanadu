@@ -215,7 +215,7 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-stmap2_dvmrg
+stmap2_d2vmrg
 (map1, map2) =
 let
 val
@@ -238,7 +238,7 @@ kx = (d2var, s2exp)
 vtypedef
 kxs = List0_vt(kx)
 vtypedef
-res = List0_vt(dvmrg2)
+res = List0_vt(d2vmrg2)
 //
 fun
 auxlstl
@@ -257,7 +257,7 @@ val
 (k0, x0) = kx0
 //
 val mrg =
-DVMRG2(k0, Some(x0), None())
+D2VMRG2(k0, Some(x0), None())
 //
 in
 auxlstl
@@ -281,7 +281,7 @@ val
 (k0, x0) = kx0
 //
 val mrg =
-DVMRG2(k0, None(), Some(x0))
+D2VMRG2(k0, None(), Some(x0))
 //
 in
 auxlstr
@@ -310,7 +310,7 @@ let
 val
 (k1, x1) = kx1
 val mrg =
-DVMRG2(k1, Some(x1), None())
+D2VMRG2(k1, Some(x1), None())
 in
 auxlstl
 (kxs1, list_vt_cons(mrg, res))
@@ -332,7 +332,7 @@ ifcase
 (sgn < 0) =>
 let
 val mrg =
-DVMRG2(k1, Some(x1), None())
+D2VMRG2(k1, Some(x1), None())
 in
 auxlst2r
 ( k2
@@ -344,7 +344,7 @@ end // end of [let]
 (sgn > 0) =>
 let
 val mrg =
-DVMRG2(k2, None(), Some(x2))
+D2VMRG2(k2, None(), Some(x2))
 in
 auxlst2l
 ( k1
@@ -356,7 +356,7 @@ end // end of [let]
 _(* else *) =>
 let
 val mrg =
-DVMRG2(k1, Some(x1), Some(x2))
+D2VMRG2(k1, Some(x1), Some(x2))
 in
 auxlst2
 ( kxs1
@@ -381,7 +381,7 @@ case+ kxs2 of
 list_vt_nil() =>
 let
 val mrg =
-DVMRG2(k1, Some(x1), None())
+D2VMRG2(k1, Some(x1), None())
 in
 auxlstl
 (kxs1, list_vt_cons(mrg, res))
@@ -400,7 +400,7 @@ ifcase
 (sgn < 0) =>
 let
 val mrg =
-DVMRG2(k1, Some(x1), None())
+D2VMRG2(k1, Some(x1), None())
 in
 auxlst2r
 ( k2
@@ -412,7 +412,7 @@ end // end of [let]
 (sgn > 0) =>
 let
 val mrg =
-DVMRG2(k2, None(), Some(x2))
+D2VMRG2(k2, None(), Some(x2))
 in
 auxlst2l
 ( k1
@@ -424,7 +424,7 @@ end // end of [let]
 _(* else *) => // k1=k2
 let
 val mrg =
-DVMRG2(k1, Some(x1), Some(x2))
+D2VMRG2(k1, Some(x1), Some(x2))
 in
 auxlst2
 ( kxs1
@@ -448,7 +448,7 @@ case+ kxs1 of
 list_vt_nil() =>
 let
 val mrg =
-DVMRG2(k2, None(), Some(x2))
+D2VMRG2(k2, None(), Some(x2))
 in
 auxlstr
 (kxs2, list_vt_cons(mrg, res))
@@ -467,7 +467,7 @@ ifcase
 (sgn < 0) =>
 let
 val mrg =
-DVMRG2(k1, Some(x1), None())
+D2VMRG2(k1, Some(x1), None())
 in
 auxlst2r
 ( k2
@@ -479,7 +479,7 @@ end // end of [let]
 (sgn > 0) =>
 let
 val mrg =
-DVMRG2(k2, None(), Some(x2))
+D2VMRG2(k2, None(), Some(x2))
 in
 auxlst2l
 ( k1
@@ -491,7 +491,7 @@ end // end of [let]
 _(* else *) => // k1=k2
 let
 val mrg =
-DVMRG2(k1, Some(x1), Some(x2))
+D2VMRG2(k1, Some(x1), Some(x2))
 in
 auxlst2
 ( kxs1
@@ -548,7 +548,7 @@ _(*LS*) =
 typedef
 elt = d2var
 vtypedef
-dvset = $LS.set(elt)
+d2vset = $LS.set(elt)
 //
 implement
 $LS.compare_elt_elt<elt>
@@ -561,34 +561,34 @@ $effmask_all
 fun
 stmap_add_d2vs
 ( map0: stmap
-, set1: dvset): dvset =
+, set1: d2vset): d2vset =
 let
 var env1 = set1
 in
 let
 implement
-stmap_foreach$fwork<dvset>
+stmap_foreach$fwork<d2vset>
 (k0, x0, env1) =
 ignoret($LS.linset_insert(env1, k0))
 in(*in-of-let*)
   env1 where
 {
   val () =
-  stmap_foreach_env<dvset>(map0, env1)
+  stmap_foreach_env<d2vset>(map0, env1)
 }
 end
 end // end of [stmap_add_d2vs]
 //
 fun
-dclaulst_get_stdvs
+d4claulst_get_stdvs
 ( dcls
-: d4claulst): dvset =
+: d4claulst): d2vset =
 let
 fun
 auxlst
 ( dcls
 : d4claulst
-, res: &dvset >> _): void =
+, res: &d2vset >> _): void =
 (
 case+ dcls of
 |
@@ -618,7 +618,7 @@ in
   (dcls, res); res) where
 {
   var
-  res: dvset = $LS.linset_nil()
+  res: d2vset = $LS.linset_nil()
 }
 end (*let*) // dclaulst_get_stdvs
 //
@@ -689,7 +689,7 @@ fd2vskxss
   List0_vt(d2var)
 , kxss:
 ! List0_vt(d2vs2es)
-) : List0_vt(dvmrgs) =
+) : List0_vt(d2vmrgs) =
 (
 case+ d2vs of
 | ~
@@ -705,7 +705,7 @@ list_vt2t(fd2vkxss(d2v0, kxss))
 //
 val res1 = fd2vskxss(d2vs, kxss)
 in
-  list_vt_cons(DVMRGS(d2v0,opts), res1)
+list_vt_cons(D2VMRGS(d2v0,opts), res1)
 end
 ) (* case *) // end-of-fun[fd2vskxss]
 //
@@ -728,7 +728,7 @@ end
 in(*in-of-local*)
 
 implement
-dclaulst_dvmrg(dcls) =
+d4claulst_d2vmrg(dcls) =
 let
 //
 val res =
@@ -744,10 +744,10 @@ end where
 //
 val
 d2vs =
-dclaulst_get_stdvs(dcls)
-val
-d2vs =
-$LS.linset_listize(d2vs)
+$LS.linset_listize
+(
+d4claulst_get_stdvs(dcls)
+)
 //
 val
 kxss = auxlst(dcls) where

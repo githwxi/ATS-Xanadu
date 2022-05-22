@@ -462,8 +462,7 @@ let
   val () = tfun := t2p0
 in
   f3arg_make_node
-    ( f3a0.loc(), F3ARGnone3(f3a0) )
-  // f3arg_make_node
+  ( f3a0.loc(), F3ARGnone3(f3a0) )
 end
 ) (* end of [then] *)
 else
@@ -569,13 +568,12 @@ trans33_dpatlst_dnts(env0, d3ps, t2ps)
 in
   tfun := t2p0;
   f3arg_make_node
-    ( loc0, F3ARGsome_dyn(npf1, d3ps) )
-  // f3arg_make_node
+  (  loc0, F3ARGsome_dyn(npf1, d3ps)  )
 end // end of [T2Pfun]
 //
 | _(*non-T2Puni/fun*) =>
 (
-  f3arg_make_node(loc0, F3ARGnone3(f3a0))
+f3arg_make_node(loc0, F3ARGnone3(f3a0))
 )
 //
 end // end of [auxf3as_1d]

@@ -155,8 +155,8 @@ implenv_pop0_timp
 (env0: !implenv): void
 fun
 implenv_push_timp
-( env0
-: !implenv
+( env0:
+! implenv
 , d3e0: d3exp
 , s2vs: s2varlst
 , tsub: t2ypelst): void
@@ -180,13 +180,13 @@ t2ypelst_subst_implenv
 //
 fun
 implenv_add_staload
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl): void
 fun
 implenv_add_impdecl3
-( env0
-: !implenv
+( env0:
+! implenv
 , d3cl: d3ecl
 , ti3e: $T33.ti3env): void
 //
@@ -200,68 +200,68 @@ trans3t_envless
 
 fun
 trans3t_dexp
-( env0
-: !implenv, d3e0: d3exp): d3exp
+( env0:
+! implenv, d3e0: d3exp): d3exp
 fun
 trans3t_dexpopt
-( env0
-: !implenv, opt0: d3expopt): d3expopt
+( env0:
+! implenv, opt0: d3expopt): d3expopt
 fun
 trans3t_dexplst
-( env0
-: !implenv, d3es: d3explst): d3explst
+( env0:
+! implenv, d3es: d3explst): d3explst
 
 (* ****** ****** *)
 //
 fun
 trans3t_dgua
-( env0
-: !implenv, d3g0: d3gua): d3gua
+( env0:
+! implenv, d3g0: d3gua): d3gua
 fun
 trans3t_dgualst
-( env0
-: !implenv, d3gs: d3gualst): d3gualst
+( env0:
+! implenv, d3gs: d3gualst): d3gualst
 //
 (* ****** ****** *)
 //
 fun
 trans3t_dgpat
-( env0
-: !implenv, d3gp: d3gpat): d3gpat
+( env0:
+! implenv, d3gp: d3gpat): d3gpat
 //
 fun
 trans3t_dclau
-( env0
-: !implenv, d3cl: d3clau): d3clau
+( env0:
+! implenv, d3cl: d3clau): d3clau
 fun
 trans3t_dclaulst
-( env0
-: !implenv, dcls: d3claulst): d3claulst
+( env0:
+! implenv, dcls: d3claulst): d3claulst
 //
 (* ****** ****** *)
 
 fun
 trans3t_decl
-( env0
-: !implenv, d3cl: d3ecl): d3ecl
+( env0:
+! implenv, d3cl: d3ecl): d3ecl
 fun
 trans3t_declist
-( env0
-: !implenv, d3cs: d3eclist): d3eclist
+( env0:
+! implenv, d3cs: d3eclist): d3eclist
 
 (* ****** ****** *)
 //
 fun
-trans3t_fundecl
-( env0
-: !implenv, d3cl: d3ecl): d3ecl
+trans3t_dfundecl
+( env0:
+! implenv, d3cl: d3ecl): d3ecl
 //
 (* ****** ****** *)
 //
 fun
 trans3t_timp
-( env0
-: !implenv, d3cl: d3ecl): d3ecl
+( env0:
+! implenv, d3cl: d3ecl): d3ecl
 //
 fun
 staload_find_timp
@@ -274,8 +274,8 @@ staload_find_timp
 : Option_vt@(d3ecl, s2varlst, t2ypelst)
 fun
 implenv_find_timp
-( env0
-: !implenv
+( env0:
+! implenv
 , d2c0
 : d2cst
 , targ

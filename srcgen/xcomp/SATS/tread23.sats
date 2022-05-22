@@ -60,9 +60,9 @@ datatype trerr23 =
 | TRERR23s2exp of (s2exp)
 //
 | TRERR23d3pat of (d3pat)
-| TRERR23d3exp of (d3exp)
-//
 | TRERR23f3arg of (f3arg)
+//
+| TRERR23d3exp of (d3exp)
 | TRERR23d3ecl of (d3ecl)
 //
 typedef

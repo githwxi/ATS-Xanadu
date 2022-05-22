@@ -804,25 +804,25 @@ loc0 = f3a0.loc()
 in
 case+
 f3a0.node() of
-| F3ARGsome_dyn
-  (npf0, d3ps) =>
-  let
+|
+F3ARGsome_dyn
+(npf0, d3ps) =>
+let
   val
   h0ps =
   trcmp30_dpatlst(env0, d3ps)
-  in
+in
   h0farg_make_node
   (loc0, H0FARGnpats(npf0, h0ps))
-  end
-| _ (* else *) =>
-  let
-  val
-  hend =
-  $UN.cast{ptr}(f3a0)
-  in
-  h0farg_make_node(loc0, H0FARGnone1(hend))
-  end
-end // end of [trcmp30_farg]
+end
+|
+_ (* else *) =>
+let
+val hend = $UN.cast{ptr}(f3a0)
+in
+h0farg_make_node(loc0, H0FARGnone1(hend))
+end
+end // end of [trcmp30_dfarg]
 
 (* ****** ****** *)
 //
@@ -2877,10 +2877,10 @@ auxf3d0
 ( env0:
 ! compenv
 , f3d0
-: f3undecl): h0fundecl =
+: d3fundecl): h0fundecl =
 let
 val+
-F3UNDECL(rcd) = f3d0
+D3FUNDECL(rcd) = f3d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
@@ -2919,7 +2919,7 @@ auxf3ds
 ( env0:
 ! compenv
 , f3ds
-: f3undeclist
+: d3fundeclist
 )
 : h0fundeclist = let
 //
@@ -2930,12 +2930,11 @@ $UN.castvwtp1{ptr}(env0)
 in
 list_vt2t
 (
-list_map<f3undecl><h0fundecl>(f3ds)
+list_map<d3fundecl><h0fundecl>(f3ds)
 ) where
 {
 implement
-list_map$fopr<
-  f3undecl><h0fundecl>(f3d0) =
+list_map$fopr<d3fundecl><h0fundecl>(f3d0) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)
@@ -2984,11 +2983,11 @@ auxv3d0
 ( env0:
 ! compenv
 , v3d0
-: v3aldecl): h0valdecl =
+: d3valdecl): h0valdecl =
 let
 //
 val+
-V3ALDECL
+D3VALDECL
 ( rcd ) = v3d0
 //
 val loc = rcd.loc
@@ -3010,7 +3009,7 @@ auxv3ds
 ( env0:
 ! compenv
 , v3ds
-: v3aldeclist
+: d3valdeclist
 )
 : h0valdeclist = let
 //
@@ -3021,12 +3020,12 @@ $UN.castvwtp1{ptr}(env0)
 in
 list_vt2t
 (
-list_map<v3aldecl><h0valdecl>(v3ds)
+list_map<d3valdecl><h0valdecl>(v3ds)
 ) where
 {
 implement
 list_map$fopr<
-  v3aldecl><h0valdecl>(v3d0) =
+  d3valdecl><h0valdecl>(v3d0) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)
@@ -3071,11 +3070,11 @@ auxv3d0
 ( env0:
 ! compenv
 , v3d0
-: v3ardecl): h0vardecl =
+: d3vardecl): h0vardecl =
 let
 //
 val+
-V3ARDECL
+D3VARDECL
 ( rcd ) = v3d0
 //
 val loc = rcd.loc
@@ -3101,7 +3100,7 @@ auxv3ds
 ( env0:
 ! compenv
 , v3ds
-: v3ardeclist
+: d3vardeclist
 )
 : h0vardeclist = let
 //
@@ -3112,12 +3111,13 @@ $UN.castvwtp1{ptr}(env0)
 in
 list_vt2t
 (
-list_map<v3ardecl><h0vardecl>(v3ds)
+list_map<
+  d3vardecl><h0vardecl>(v3ds)
 ) where
 {
 implement
 list_map$fopr<
-  v3ardecl><h0vardecl>(v3d0) =
+  d3vardecl><h0vardecl>(v3d0) =
 let
 val env0 =
 $UN.castvwtp0{compenv}(env0)

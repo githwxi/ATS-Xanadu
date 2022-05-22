@@ -135,19 +135,12 @@ fprint_val<ti3arg> = fprint_ti3arg
 //
 implement
 fprint_val<d4pat> = fprint_d4pat
-//
-(* ****** ****** *)
-//
 implement
 fprint_val<f4arg> = fprint_f4arg
-//
 (* ****** ****** *)
 //
 implement
 fprint_val<d4exp> = fprint_d4exp
-//
-(* ****** ****** *)
-//
 implement
 fprint_val<d4ecl> = fprint_d4ecl
 //
@@ -885,12 +878,12 @@ fprint_d4ecl(stderr_ref, x0)
 local
 //
 implement
-fprint_val<v4aldecl> = fprint_v4aldecl
+fprint_val<d4valdecl> = fprint_d4valdecl
 implement
-fprint_val<v4ardecl> = fprint_v4ardecl
+fprint_val<d4vardecl> = fprint_d4vardecl
 //
 implement
-fprint_val<f4undecl> = fprint_f4undecl
+fprint_val<d4fundecl> = fprint_d4fundecl
 //
 in(*in-of-local*)
 //
@@ -923,55 +916,60 @@ fprint!
 //
 ) (* end of [fprint_d4ecl] *)
 //
-end // end of [local]
-
-(* ****** ****** *)
-
-implement
-print_v4aldecl(x0) =
-fprint_v4aldecl(stdout_ref, x0)
-implement
-prerr_v4aldecl(x0) =
-fprint_v4aldecl(stderr_ref, x0)
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 //
 implement
-fprint_v4aldecl
+print_d4valdecl(x0) =
+fprint_d4valdecl(stdout_ref, x0)
+implement
+prerr_d4valdecl(x0) =
+fprint_d4valdecl(stderr_ref, x0)
+//
+implement
+print_d4vardecl(x0) =
+fprint_d4vardecl(stdout_ref, x0)
+implement
+prerr_d4vardecl(x0) =
+fprint_d4vardecl(stderr_ref, x0)
+//
+implement
+print_d4fundecl(x0) =
+fprint_d4fundecl(stdout_ref, x0)
+implement
+prerr_d4fundecl(x0) =
+fprint_d4fundecl(stderr_ref, x0)
+//
+(* ****** ****** *)
+//
+implement
+fprint_d4valdecl
   (out, x0) = let
 //
-val+V4ALDECL(rcd) = x0
+val+D4VALDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "V4ALDECL@{"
+  , "D4VALDECL@{"
   , ", pat=", rcd.pat
   , ", def=", rcd.def
   , ", wtp=", rcd.wtp, "}")
-end // end of [fprint_v4aldecl]
+end // end of [fprint_d4valdecl]
 //
-(* ****** ****** *)
-
-implement
-print_v4ardecl(x0) =
-fprint_v4ardecl(stdout_ref, x0)
-implement
-prerr_v4ardecl(x0) =
-fprint_v4ardecl(stderr_ref, x0)
-
 (* ****** ****** *)
 //
 implement
-fprint_v4ardecl
+fprint_d4vardecl
   (out, x0) = let
 //
-val+V4ARDECL(rcd) = x0
+val+D4VARDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "V4ARDECL@{"
+  , "D4VARDECL@{"
   , ", d2v=", rcd.d2v
   , ", d2w=", rcd.d2w
   , ", s2e=", rcd.s2e
@@ -980,24 +978,17 @@ in
 *)
   , ", res=", rcd.res
   , ", ini=", rcd.ini, "}")
-end // end of [fprint_v4ardecl]
+end // end of [fprint_d4vardecl]
 //
 (* ****** ****** *)
-
+//
 implement
-print_f4undecl(x0) =
-fprint_f4undecl(stdout_ref, x0)
-implement
-prerr_f4undecl(x0) =
-fprint_f4undecl(stderr_ref, x0)
-
-implement
-fprint_f4undecl
+fprint_d4fundecl
   (out, x0) = let
 //
-val+F4UNDECL(rcd) = x0
+val+D4FUNDECL(rcd) = x0
 //
-in
+in(*in-of-let*)
 //
 case+
 rcd.a4g of
@@ -1006,7 +997,7 @@ None() =>
 (
   fprint!
   ( out
-  , "F4UNDECL@{"
+  , "D4FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
   , "a2g=", rcd.a2g, ", ", "}")
@@ -1016,7 +1007,7 @@ Some(rcd_a4g) =>
 (
   fprint!
   ( out
-  , "F4UNDECL@{"
+  , "D4FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
   , "a2g=", rcd.a2g, ", "
@@ -1027,43 +1018,46 @@ Some(rcd_a4g) =>
   , "wtp=", rcd.wtp, ", ", "ctp=", rcd.ctp, "}")
 )
 //
-end // end of [fprint_f4undecl]
-
+end // end of [fprint_d4fundecl]
+//
 (* ****** ****** *)
 //
 implement
-print_dvmrg2(x0) =
-fprint_dvmrg2(stdout_ref, x0)
+print_d2vmrg2(x0) =
+fprint_d2vmrg2(stdout_ref, x0)
 implement
-prerr_dvmrg2(x0) =
-fprint_dvmrg2(stderr_ref, x0)
+prerr_d2vmrg2(x0) =
+fprint_d2vmrg2(stderr_ref, x0)
+//
+(* ****** ****** *)
+
 implement
-fprint_dvmrg2(out, x0) =
+fprint_d2vmrg2(out, x0) =
 (
 case+ x0 of
 |
-DVMRG2
+D2VMRG2
 (d2v0, opt1, opt2) =>
 fprint!
 ( out
-, "DVMRG2("
+, "D2VMRG2("
 , d2v0, "; ", opt1, "; ", opt2, ")")
 )
 //
 (* ****** ****** *)
 //
 implement
-print_dvmrgs(x0) =
-fprint_dvmrgs(stdout_ref, x0)
+print_d2vmrgs(x0) =
+fprint_d2vmrgs(stdout_ref, x0)
 implement
-prerr_dvmrgs(x0) =
-fprint_dvmrgs(stderr_ref, x0)
+prerr_d2vmrgs(x0) =
+fprint_d2vmrgs(stderr_ref, x0)
 implement
-fprint_dvmrgs(out, x0) =
+fprint_d2vmrgs(out, x0) =
 (
 case+ x0 of
 |
-DVMRGS(d2v0, opts) =>
+D2VMRGS(d2v0, opts) =>
 let
 implement
 fprint_val<s2expopt>(out,x0) =
@@ -1077,8 +1071,8 @@ case+ x0 of
 in
 fprint!
 ( out
-, "DVMRGS(", d2v0, "; ", opts, ")")
-end (*let*) // end of [DVMRGS]
+, "D2VMRGS(", d2v0, "; ", opts, ")")
+end (*let*) // end of [D2VMRGS]
 )
 //
 (* ****** ****** *)

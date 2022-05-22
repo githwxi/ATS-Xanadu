@@ -748,8 +748,8 @@ overload fprint with fprint_t2pcast
 (* ****** ****** *)
 //
 datatype
-v3aldecl =
-V3ALDECL of @{
+d3valdecl =
+D3VALDECL of @{
   loc= loc_t
 , pat= d3pat
 , def= d3expopt
@@ -760,33 +760,33 @@ V3ALDECL of @{
 }
 //
 typedef
-v3aldeclist = List0(v3aldecl)
+d3valdeclist = List0(d3valdecl)
 //
 (* ****** ****** *)
 //
 fun
-v3aldecl_get_loc(v3aldecl): loc_t
+d3valdecl_get_loc(d3valdecl): loc_t
 //
-overload .loc with v3aldecl_get_loc
+overload .loc with d3valdecl_get_loc
 //
 (* ****** ****** *)
 //
 fun
-print_v3aldecl: print_type(v3aldecl)
+print_d3valdecl: print_type(d3valdecl)
 fun
-prerr_v3aldecl: prerr_type(v3aldecl)
+prerr_d3valdecl: prerr_type(d3valdecl)
 fun
-fprint_v3aldecl: fprint_type(v3aldecl)
+fprint_d3valdecl: fprint_type(d3valdecl)
 //
-overload print with print_v3aldecl
-overload prerr with prerr_v3aldecl
-overload fprint with fprint_v3aldecl
+overload print with print_d3valdecl
+overload prerr with prerr_d3valdecl
+overload fprint with fprint_d3valdecl
 //
 (* ****** ****** *)
 //
 datatype
-v3ardecl =
-V3ARDECL of @{
+d3vardecl =
+D3VARDECL of @{
   loc= loc_t
 , d2v= d2var
 , wth= d2varopt
@@ -795,33 +795,33 @@ V3ARDECL of @{
 }
 //
 typedef
-v3ardeclist = List0(v3ardecl)
+d3vardeclist = List0(d3vardecl)
 //
 (* ****** ****** *)
 //
 fun
-v3ardecl_get_loc(v3ardecl): loc_t
+d3vardecl_get_loc(d3vardecl): loc_t
 //
-overload .loc with v3ardecl_get_loc
+overload .loc with d3vardecl_get_loc
 //
 (* ****** ****** *)
 //
 fun
-print_v3ardecl: print_type(v3ardecl)
+print_d3vardecl: print_type(d3vardecl)
 fun
-prerr_v3ardecl: prerr_type(v3ardecl)
+prerr_d3vardecl: prerr_type(d3vardecl)
 fun
-fprint_v3ardecl: fprint_type(v3ardecl)
+fprint_d3vardecl: fprint_type(d3vardecl)
 //
-overload print with print_v3ardecl
-overload prerr with prerr_v3ardecl
-overload fprint with fprint_v3ardecl
+overload print with print_d3vardecl
+overload prerr with prerr_d3vardecl
+overload fprint with fprint_d3vardecl
 //
 (* ****** ****** *)
 //
 datatype
-f3undecl =
-F3UNDECL of @{
+d3fundecl =
+D3FUNDECL of @{
   loc= loc_t
 , nam= d2var
 , d2c= d2cst
@@ -837,30 +837,30 @@ F3UNDECL of @{
 }
 //
 typedef
-f3undeclist = List0(f3undecl)
+d3fundeclist = List0(d3fundecl)
 //
 (* ****** ****** *)
 //
 fun
-f3undecl_get_loc(f3undecl): loc_t
+d3fundecl_get_loc(d3fundecl): loc_t
 fun
-f3undecl_get_d2c(f3undecl): d2cst
+d3fundecl_get_d2c(d3fundecl): d2cst
 //
-overload .loc with f3undecl_get_loc
-overload .d2c with f3undecl_get_d2c
+overload .loc with d3fundecl_get_loc
+overload .d2c with d3fundecl_get_d2c
 //
 (* ****** ****** *)
 //
 fun
-print_f3undecl: print_type(f3undecl)
+print_d3fundecl: print_type(d3fundecl)
 fun
-prerr_f3undecl: prerr_type(f3undecl)
+prerr_d3fundecl: prerr_type(d3fundecl)
 fun
-fprint_f3undecl: fprint_type(f3undecl)
+fprint_d3fundecl: fprint_type(d3fundecl)
 //
-overload print with print_f3undecl
-overload prerr with prerr_f3undecl
-overload fprint with fprint_f3undecl
+overload print with print_d3fundecl
+overload prerr with prerr_d3fundecl
+overload fprint with fprint_d3fundecl
 //
 (* ****** ****** *)
 //
@@ -914,40 +914,46 @@ d3ecl_node =
   ( token(*abskind*)
   , impls2cst, s2exp(*definition*) )
 //
-| D3Cfundecl of
-  ( token(*funknd*)
-  , decmodopt
-  , tq2arglst(*tmpargs*), f3undeclist)
+|
+D3Cfundecl of
+( token(*funknd*)
+, decmodopt
+, tq2arglst(*tmpargs*), d3fundeclist)
 //
-| D3Cvaldecl of
-  (token(*knd*), decmodopt, v3aldeclist)
-| D3Cvardecl of
-  (token(*knd*), decmodopt, v3ardeclist)
+|
+D3Cvaldecl of
+(token(*knd*), decmodopt, d3valdeclist)
+|
+D3Cvardecl of
+(token(*knd*), decmodopt, d3vardeclist)
 //
 | D3Cexcptcon of (d1ecl(*src*), d2conlst)
 | D3Cdatatype of (d1ecl(*src*), s2cstlst)
 //
-| D3Cimpdecl1 of
-  ( token(*impkind*)
-  , stamp(*unicity*)
-  , decmodopt
-  , sq2arglst
-  , tq2arglst
-  , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
-| D3Cimpdecl2 of
-  ( token(*impkind*)
-  , stamp(*unicity*)
-  , decmodopt
-  , sq2arglst
-  , tq2arglst
-  , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
-| D3Cimpdecl3 of
-  ( token(*impkind*)
-  , stamp(*unicity*)
-  , decmodopt
-  , sq2arglst
-  , tq2arglst
-  , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
+|
+D3Cimpdecl1 of
+( token(*impkind*)
+, stamp(*unicity*)
+, decmodopt
+, sq2arglst
+, tq2arglst
+, impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
+|
+D3Cimpdecl2 of
+( token(*impkind*)
+, stamp(*unicity*)
+, decmodopt
+, sq2arglst
+, tq2arglst
+, impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
+|
+D3Cimpdecl3 of
+( token(*impkind*)
+, stamp(*unicity*)
+, decmodopt
+, sq2arglst
+, tq2arglst
+, impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 //
 // end of [d3ecl_node]
 //

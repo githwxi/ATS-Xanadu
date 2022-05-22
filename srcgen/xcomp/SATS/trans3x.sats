@@ -70,9 +70,8 @@ typedef t2ypelst = $S2T.t2ypelst
 (* ****** ****** *)
 //
 typedef d2con = $D2E.d2con
-typedef d2var = $D2E.d2var
-//
 typedef d2cst = $D2E.d2cst
+typedef d2var = $D2E.d2var
 //
 typedef d3pat = $D3E.d3pat
 typedef f3arg = $D3E.f3arg
@@ -191,6 +190,17 @@ trans3x_dpatlst
 (* ****** ****** *)
 //
 fun
+trans3x_farg
+( env0:
+! tr3xenv, f3a0: f3arg): f3arg
+fun
+trans3x_farglst
+( env0:
+! tr3xenv, f3as: f3arglst): f3arglst
+//
+(* ****** ****** *)
+//
+fun
 trans3x_dexp
 ( env0:
 ! tr3xenv, d3e0: d3exp): d3exp 
@@ -206,13 +216,13 @@ trans3x_dexpopt
 (* ****** ****** *)
 //
 fun
-trans3x_farg
+trans3x_decl
 ( env0:
-! tr3xenv, f3a0: f3arg): f3arg
+! tr3xenv, d3c0: d3ecl): d3ecl
 fun
-trans3x_farglst
+trans3x_declist
 ( env0:
-! tr3xenv, f3as: f3arglst): f3arglst
+! tr3xenv, d3cs: d3eclist): d3eclist
 //
 (* ****** ****** *)
 //
@@ -240,17 +250,6 @@ fun
 trans3x_dclaulst
 ( env0:
 ! tr3xenv, dcls: d3claulst): d3claulst
-//
-(* ****** ****** *)
-//
-fun
-trans3x_decl
-( env0:
-! tr3xenv, d3c0: d3ecl): d3ecl
-fun
-trans3x_declist
-( env0:
-! tr3xenv, d3cs: d3eclist): d3eclist
 //
 (* ****** ****** *)
 

@@ -827,11 +827,11 @@ auxv4d0
 ( env0:
 ! tr4xenv
 , v4d0
-: v4aldecl): void =
+: d4valdecl): void =
 let
 //
 val+
-V4ALDECL
+D4VALDECL
 ( rcd ) = v4d0
 //
 val loc = rcd.loc
@@ -869,7 +869,7 @@ auxv4ds
 ( env0:
 ! tr4xenv
 , v4ds
-: v4aldeclist): void =
+: d4valdeclist): void =
 (
 case+ v4ds of
 |
@@ -911,11 +911,11 @@ auxf4d0
 ( env0:
 ! tr4xenv
 , f4d0
-: f4undecl): void =
+: d4fundecl): void =
 let
 //
 val+
-F4UNDECL
+D4FUNDECL
 ( rcd ) = f4d0
 //
 val loc = rcd.loc
@@ -960,7 +960,7 @@ auxf4ds
 ( env0:
 ! tr4xenv
 , f4ds
-: f4undeclist): void =
+: d4fundeclist): void =
 (
 case+ f4ds of
 |

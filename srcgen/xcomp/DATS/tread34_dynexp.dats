@@ -105,7 +105,7 @@ list_foreach$fwork<d4ecl><env>(d4c, env) = tread34_d4ecl(d4c)
 //
 implement
 //{}(*tmp*)
-tread34_v4aldecl
+tread34_d4valdecl
   (v3d0) =
 {
 (*
@@ -119,26 +119,13 @@ tread34_v4aldecl
 } where
 {
 //
-  val+V4ALDECL(rcd) = v3d0
+  val+D4VALDECL(rcd) = v3d0
 //
-} (* end of [tread34_v4aldecl] *)
-//
-implement
-//{}(*tmp*)
-tread34_v4aldeclist(v3ds) =
-(
-list_foreach<v4aldecl>(v3ds)
-) where
-{
-implement(env)
-list_foreach$fwork<v4aldecl><env>(v3d, env) = tread34_v4aldecl(v3d)
-} (* end of [tread34_v4aldeclist] *)
-//
-(* ****** ****** *)
+} (* end of [tread34_d4valdecl] *)
 //
 implement
 //{}(*tmp*)
-tread34_v4ardecl
+tread34_d4vardecl
   (v3d0) =
 {
 (*
@@ -149,19 +136,31 @@ tread34_v4ardecl
 *)
 } where
 {
-  val+V4ARDECL(rcd) = v3d0
+  val+D4VARDECL(rcd) = v3d0
 }
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread34_v4ardeclist(v3ds) =
+tread34_d4valdeclist(v3ds) =
 (
-list_foreach<v4ardecl>(v3ds)
+list_foreach<d4valdecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v4ardecl><env>(v3d, env) = tread34_v4ardecl(v3d)
-} (* end of [tread34_v4ardeclist] *)
+list_foreach$fwork<d4valdecl><env>(v3d, env) = tread34_d4valdecl(v3d)
+} (* end of [tread34_d4valdeclist] *)
+//
+implement
+//{}(*tmp*)
+tread34_d4vardeclist(v3ds) =
+(
+list_foreach<d4vardecl>(v3ds)
+) where
+{
+implement(env)
+list_foreach$fwork<d4vardecl><env>(v3d, env) = tread34_d4vardecl(v3d)
+} (* end of [tread34_d4vardeclist] *)
 //
 (* ****** ****** *)
 

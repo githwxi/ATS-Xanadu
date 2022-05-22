@@ -119,11 +119,13 @@ typedef st2inv = $D2E.st2inv
 (* ****** ****** *)
 //
 typedef d3pat = $D3E.d3pat
+typedef f3arg = $D3E.f3arg
 typedef d3exp = $D3E.d3exp
 typedef d3ecl = $D3E.d3ecl
 //
 typedef d3patlst = $D3E.d3patlst
 typedef f3arglst = $D3E.f3arglst
+//
 typedef d3expopt = $D3E.d3expopt
 typedef d3explst = $D3E.d3explst
 typedef d3eclist = $D3E.d3eclist
@@ -172,7 +174,8 @@ fun
 trans23_dpatlst: d2patlst -> d3patlst
 fun
 trans23_dpatlst_dntp
-(ps: d2patlst, ts: t2ypelst): d3patlst
+( d2ps
+: d2patlst, t2ps: t2ypelst): d3patlst
 //
 (* ****** ****** *)
 

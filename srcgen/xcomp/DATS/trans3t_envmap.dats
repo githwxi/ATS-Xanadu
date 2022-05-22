@@ -772,10 +772,10 @@ D3Cfundecl
 fun
 auxf3d0
 ( f3d0
-: f3undecl): bool =
+: d3fundecl): bool =
 let
 val+
-F3UNDECL(rcd) = f3d0
+D3FUNDECL(rcd) = f3d0
 in
   if
   (d2c0 = rcd.d2c)
@@ -784,7 +784,7 @@ end
 fun
 auxf3ds
 ( f3ds
-: f3undeclist): bool =
+: d3fundeclist): bool =
 (
 case+ f3ds of
 | list_nil() => false

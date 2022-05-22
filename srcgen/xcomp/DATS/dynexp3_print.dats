@@ -130,12 +130,9 @@ fprint_val<tq2arg> = fprint_tq2arg
 //
 implement
 fprint_val<d3pat> = fprint_d3pat
-//
-(* ****** ****** *)
-
 implement
 fprint_val<f3arg> = fprint_f3arg
-
+//
 (* ****** ****** *)
 //
 implement
@@ -300,6 +297,8 @@ implement
 prerr_f3arg(x0) =
 fprint_f3arg(stderr_ref, x0)
 //
+(* ****** ****** *)
+//
 implement
 fprint_f3arg
   (out, x0) =
@@ -308,20 +307,25 @@ fprint_f3arg
 case+
 x0.node() of
 //
-| F3ARGnone2(f2a) =>
-  fprint!(out, "F3ARGnone2(", f2a, ")")
-| F3ARGnone3(f3a) =>
-  fprint!(out, "F3ARGnone3(", f3a, ")")
+|
+F3ARGnone2(f2a) =>
+fprint!(out, "F3ARGnone2(", f2a, ")")
+|
+F3ARGnone3(f3a) =>
+fprint!(out, "F3ARGnone3(", f3a, ")")
 //
-| F3ARGsome_met(s2es) =>
-  fprint!(out, "F3ARGsome_met(", s2es, ")")
+|
+F3ARGsome_met(s2es) =>
+fprint!(out, "F3ARGsome_met(", s2es, ")")
 //
-| F3ARGsome_dyn(npf1, d3ps) =>
-  fprint!
-  (out, "F3ARGsome_dyn(", npf1, "; ", d3ps, ")")
-| F3ARGsome_sta(s2vs, s2ps) =>
-  fprint!
-  (out, "F3ARGsome_sta(", s2vs, "; ", s2ps, ")")
+|
+F3ARGsome_dyn(npf1, d3ps) =>
+fprint!
+(out, "F3ARGsome_dyn(", npf1, "; ", d3ps, ")")
+|
+F3ARGsome_sta(s2vs, s2ps) =>
+fprint!
+(out, "F3ARGsome_sta(", s2vs, "; ", s2ps, ")")
 //
 ) (* end of [fprint_f3arg] *)
 //
@@ -334,15 +338,19 @@ implement
 prerr_ti3arg(x0) =
 fprint_ti3arg(stderr_ref, x0) 
 //
+(* ****** ****** *)
+//
 implement
 fprint_ti3arg
   (out, x0) =
 (
 case+ x0 of
-| TI3ARGnone() =>
-  fprint!(out, "TI3ARGnone(", ")")
-| TI3ARGsome(t2ps) =>
-  fprint!(out, "TI3ARGsome(", t2ps, ")")
+|
+TI3ARGnone() =>
+fprint!(out, "TI3ARGnone(", ")")
+|
+TI3ARGsome(t2ps) =>
+fprint!(out, "TI3ARGsome(", t2ps, ")")
 )
 //
 (* ****** ****** *)
@@ -359,10 +367,10 @@ fprint_ti3err
   (out, x0) =
 (
 case+ x0 of
-| TI3ERRnfd() =>
-  fprint!(out, "TI3ERRnfd()")
-| TI3ERRrec() =>
-  fprint!(out, "TI3ERRrec()")
+|
+TI3ERRnfd() => fprint!(out, "TI3ERRnfd()")
+|
+TI3ERRrec() => fprint!(out, "TI3ERRrec()")
 )
 //
 (* ****** ****** *)
@@ -836,12 +844,12 @@ implement
 fprint_val<d3ecl> = fprint_d3ecl
 //
 implement
-fprint_val<v3aldecl> = fprint_v3aldecl
+fprint_val<d3valdecl> = fprint_d3valdecl
 implement
-fprint_val<v3ardecl> = fprint_v3ardecl
+fprint_val<d3vardecl> = fprint_d3vardecl
 //
 implement
-fprint_val<f3undecl> = fprint_f3undecl
+fprint_val<d3fundecl> = fprint_d3fundecl
 //
 in(*in-of-local*)
 
@@ -1033,65 +1041,67 @@ case+ x0 of
 (* ****** ****** *)
 //
 implement
-print_v3aldecl(x0) =
-fprint_v3aldecl(stdout_ref, x0)
+print_d3valdecl(x0) =
+fprint_d3valdecl(stdout_ref, x0)
 implement
-prerr_v3aldecl(x0) =
-fprint_v3aldecl(stderr_ref, x0)
+prerr_d3valdecl(x0) =
+fprint_d3valdecl(stderr_ref, x0)
 //
 implement
-fprint_v3aldecl
+print_d3fundecl(x0) =
+fprint_d3fundecl(stdout_ref, x0)
+implement
+prerr_d3fundecl(x0) =
+fprint_d3fundecl(stderr_ref, x0)
+//
+implement
+print_d3vardecl(x0) =
+fprint_d3vardecl(stdout_ref, x0)
+implement
+prerr_d3vardecl(x0) =
+fprint_d3vardecl(stderr_ref, x0)
+//
+(* ****** ****** *)
+
+implement
+fprint_d3valdecl
   (out, x0) = let
 //
-val+V3ALDECL(rcd) = x0
+val+D3VALDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "V3ALDECL@{"
+  , "D3VALDECL@{"
   , ", pat=", rcd.pat
   , ", def=", rcd.def
   , ", wtp=", rcd.wtp, "}")
-end // end of [fprint_v3aldecl]
+end // end of [fprint_d3valdecl]
 //
 (* ****** ****** *)
 
 implement
-print_v3ardecl(x0) =
-fprint_v3ardecl(stdout_ref, x0)
-implement
-prerr_v3ardecl(x0) =
-fprint_v3ardecl(stderr_ref, x0)
-
-implement
-fprint_v3ardecl
+fprint_d3vardecl
   (out, x0) = let
 //
-val+V3ARDECL(rcd) = x0
+val+D3VARDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "V3ARDECL@{"
+  , "D3VARDECL@{"
   , "d2v=", rcd.d2v, ", "
   , "wth=", rcd.wth, ", "
   , "res=", rcd.res, ", ", "ini=", rcd.ini, "}")
-end // end of [fprint_v3ardecl]
+end // end of [fprint_d3vardecl]
 
 (* ****** ****** *)
 
 implement
-print_f3undecl(x0) =
-fprint_f3undecl(stdout_ref, x0)
-implement
-prerr_f3undecl(x0) =
-fprint_f3undecl(stderr_ref, x0)
-
-implement
-fprint_f3undecl
+fprint_d3fundecl
   (out, x0) = let
 //
-val+F3UNDECL(rcd) = x0
+val+D3FUNDECL(rcd) = x0
 //
 in
 //
@@ -1102,7 +1112,7 @@ None() =>
 (
   fprint!
   ( out
-  , "F3UNDECL@{"
+  , "D3FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
   , "a2g=", rcd.a2g, ", ", "}")
@@ -1112,7 +1122,7 @@ Some(rcd_a3g) =>
 (
   fprint!
   ( out
-  , "F3UNDECL@{"
+  , "D3FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
   , "a3g=", rcd_a3g, ", "
@@ -1122,7 +1132,7 @@ Some(rcd_a3g) =>
   , "wtp=", rcd.wtp, ", ", "ctp=", rcd.ctp, "}")
 )
 //
-end // end of [fprint_f3undecl]
+end // end of [fprint_d3fundecl]
 
 (* ****** ****** *)
 

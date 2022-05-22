@@ -59,9 +59,9 @@ datatype trerr33 =
 //
 | TRERR33d3pat of (d3pat)
 | TRERR33d3exp of (d3exp)
+| TRERR33d3ecl of (d3ecl)
 //
 | TRERR33f3arg of (f3arg)
-| TRERR33d3ecl of (d3ecl)
 //
 | TRERR33ti2arg of (ti2arg)
 //
@@ -88,6 +88,15 @@ tread33_d3patopt: treader33(d3patopt)
 fun//{}
 tread33_d3patlst: treader33(d3patlst)
 //
+(* ****** ****** *)
+
+fun//{}
+tread33_f3arg: treader33(f3arg)
+fun//{}
+tread33_f3arglst: treader33(f3arglst)
+fun//{}
+tread33_f3arglstopt: treader33(f3arglstopt)
+
 (* ****** ****** *)
 //
 fun//{}
@@ -129,32 +138,23 @@ tread33_ti2arglst: treader33(ti2arglst)
 (* ****** ****** *)
 
 fun//{}
-tread33_f3arg: treader33(f3arg)
+tread33_d3valdecl: treader33(d3valdecl)
 fun//{}
-tread33_f3arglst: treader33(f3arglst)
-fun//{}
-tread33_f3arglstopt: treader33(f3arglstopt)
+tread33_d3valdeclist: treader33(d3valdeclist)
 
 (* ****** ****** *)
 
 fun//{}
-tread33_v3aldecl: treader33(v3aldecl)
+tread33_d3vardecl: treader33(d3vardecl)
 fun//{}
-tread33_v3aldeclist: treader33(v3aldeclist)
+tread33_d3vardeclist: treader33(d3vardeclist)
 
 (* ****** ****** *)
 
 fun//{}
-tread33_v3ardecl: treader33(v3ardecl)
+tread33_d3fundecl: treader33(d3fundecl)
 fun//{}
-tread33_v3ardeclist: treader33(v3ardeclist)
-
-(* ****** ****** *)
-
-fun//{}
-tread33_f3undecl: treader33(f3undecl)
-fun//{}
-tread33_f3undeclist: treader33(f3undeclist)
+tread33_d3fundeclist: treader33(d3fundeclist)
 
 (* ****** ****** *)
 //

@@ -2842,26 +2842,29 @@ tsub = $UN.list_vt2t(tsub)
 } (* where *) // end-of-val
 val () = list_vt_free(tsub)
 in
-  let
-  val () = tfun := t2p1
-  in
+let
+  val () =
+  (tfun := t2p1)
+in
   f3arg_make_node
   ( loc0
   , F3ARGsome_sta(svs1, s2ps))
-  end
 end
-| _(*non-T2Puni*) =>
-  let
-  val () = tfun := t2p0
-  in
-    f3arg_make_node
-      (loc0, F3ARGnone2(f2a0))
-    // f3arg_make_node
-  end
+end // end of [T2Puni]
+|
+_(*non-T2Puni*) =>
+let
+  val () =
+  (tfun := t2p0)
+in
+  f3arg_make_node
+  (  loc0, F3ARGnone2(f2a0)  )
+end
 ) (* end of [then] *)
 else
 let
-val () = tfun := t2p0
+  val () =
+  (tfun := t2p0)
 in
   f3arg_make_node
   (loc0, F3ARGsome_sta(svs1, s2ps))
@@ -2875,15 +2878,17 @@ auxtest
 : s2varlst): bool =
 (
 case+ s2vs of
-| list_nil() => false
-| list_cons(s2v0, s2vs) =>
-  let
+|
+list_nil() => false
+|
+list_cons(s2v0, s2vs) =>
+let
   val s2t0 = s2v0.sort()
-  in
-    if
-    sort2_is_impred(s2t0)
-    then true else auxtest(s2vs)
-  end
+in
+  if
+  sort2_is_impred(s2t0)
+  then true else auxtest(s2vs)
+end
 )
 fun
 auxtsub
@@ -2892,25 +2897,29 @@ auxtsub
 ) : List0_vt(s2var) =
 (
 case+ xs0 of
-| list_nil _ =>
-  list_vt_nil()
-| list_cons(x0, xs1) =>
-  (
-  case+ ys0 of
-  | list_nil() =>
-    list_vt_cons
-    (x0, auxtsub(xs1, list_nil()))
-  | list_cons(y0, ys1) =>
-    let
-    val st = y0.sort()
-    in
-    if
-    sort2_is_impred(st)
-    then
-    list_vt_cons
-    (y0, auxtsub(xs1, ys1)) else auxtsub(xs0, ys1)
-    end // end-of-let
-  )
+|
+list_nil _ =>
+list_vt_nil()
+|
+list_cons(x0, xs1) =>
+(
+case+ ys0 of
+|
+list_nil() =>
+list_vt_cons
+(x0, auxtsub(xs1, list_nil()))
+|
+list_cons(y0, ys1) =>
+let
+  val st = y0.sort()
+in
+  if
+  sort2_is_impred(st)
+  then
+  list_vt_cons
+  (y0, auxtsub(xs1, ys1)) else auxtsub(xs0, ys1)
+end // end-of-let
+)
 ) (* end of [auxtsub] *)
 } // end of [let] // end of [auxf2as_1s]
 //
@@ -2937,33 +2946,36 @@ in
 case+
 t2p0.node() of
 //
-| T2Puni
-  (s2vs, t2p1) =>
-  (
-    tfun := t2p1;
-    auxf2as_1d(f2a0, tfun)
-  ) where
-  {
-    val t2p1 =
-    t2ype_gnvars(t2p1, s2vs)
-  }
-| T2Pfun
-  (_, _, t2ps, t2p1) =>
-  let
-    val d3ps =
-    trans23_dpatlst_dntp(d2ps, t2ps)
-  in
-    tfun := t2p1;
-    f3arg_make_node
-    (loc0, F3ARGsome_dyn(npf1, d3ps))
-   end
+|
+T2Puni
+(s2vs, t2p1) =>
+(
+  tfun := t2p1;
+  auxf2as_1d(f2a0, tfun)
+) where
+{
+  val t2p1 =
+  t2ype_gnvars(t2p1, s2vs)
+}
+|
+T2Pfun
+(_, _, t2ps, t2p1) =>
+let
+  val d3ps =
+  trans23_dpatlst_dntp(d2ps, t2ps)
+in
+  tfun := t2p1;
+  f3arg_make_node
+  (loc0, F3ARGsome_dyn(npf1, d3ps))
+ end
 //
-| _(*non-T2Puni/fun*) =>
-  f3arg_make_node(loc0, F3ARGnone2(f2a0))
+|
+_(*non-T2Puni/fun*) =>
+f3arg_make_node(loc0, F3ARGnone2(f2a0))
 //
-end // end of [let] // end of [auxf2as_1d]
+end (*let*) // end of [auxf2as_1d]
 //
-} (* end of [t2ype_f3arg_elim] *)
+} (*where*) // end of [t2ype_f3arg_elim]
 //
 (* ****** ****** *)
 

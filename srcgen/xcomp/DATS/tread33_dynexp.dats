@@ -922,7 +922,7 @@ D3Cinclude
 | D3Cfundecl
   (knd, mopt, tqas, f3ds) =>
   {
-    val () = tread33_f3undeclist(f3ds)
+    val () = tread33_d3fundeclist(f3ds)
 (*
     val () =
     println!
@@ -933,7 +933,7 @@ D3Cinclude
 | D3Cvaldecl
   (knd, mopt, v3ds) =>
   {
-    val () = tread33_v3aldeclist(v3ds)
+    val () = tread33_d3valdeclist(v3ds)
 (*
     val () =
     println!
@@ -943,7 +943,7 @@ D3Cinclude
 | D3Cvardecl
   (knd, mopt, v3ds) =>
   {
-    val () = tread33_v3ardeclist(v3ds)
+    val () = tread33_d3vardeclist(v3ds)
 (*
     val () =
     println!
@@ -1190,7 +1190,7 @@ case+ opt0 of None() => () | Some(f3as) => tread33_f3arglst(f3as)
 //
 implement
 //{}(*tmp*)
-tread33_v3aldecl
+tread33_d3valdecl
   (v3d0) =
 {
   val () =
@@ -1204,26 +1204,26 @@ tread33_v3aldecl
 } where
 {
 //
-  val+V3ALDECL(rcd) = v3d0
+  val+D3VALDECL(rcd) = v3d0
 //
-} (* end of [tread33_v3aldecl] *)
+} (* end of [tread33_d3valdecl] *)
 //
 implement
 //{}(*tmp*)
-tread33_v3aldeclist(v3ds) =
+tread33_d3valdeclist(v3ds) =
 (
-list_foreach<v3aldecl>(v3ds)
+list_foreach<d3valdecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3aldecl><env>(v3d, env) = tread33_v3aldecl(v3d)
-} (* end of [tread33_v3aldeclist] *)
+list_foreach$fwork<d3valdecl><env>(v3d, env) = tread33_d3valdecl(v3d)
+} (* end of [tread33_d3valdeclist] *)
 //
 (* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread33_v3ardecl
+tread33_d3vardecl
   (v3d0) =
 {
 (*
@@ -1234,25 +1234,25 @@ tread33_v3ardecl
   tread33_d3expopt(rcd.ini)
 } where
 {
-  val+V3ARDECL(rcd) = v3d0
+  val+D3VARDECL(rcd) = v3d0
 }
 //
 implement
 //{}(*tmp*)
-tread33_v3ardeclist(v3ds) =
+tread33_d3vardeclist(v3ds) =
 (
-list_foreach<v3ardecl>(v3ds)
+list_foreach<d3vardecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v3ardecl><env>(v3d, env) = tread33_v3ardecl(v3d)
-} (* end of [tread33_v3ardeclist] *)
+list_foreach$fwork<d3vardecl><env>(v3d, env) = tread33_d3vardecl(v3d)
+} (* end of [tread33_d3vardeclist] *)
 //
 (* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread33_f3undecl
+tread33_d3fundecl
   (f3d0) =
 {
   val () =
@@ -1262,20 +1262,20 @@ tread33_f3undecl
 } where
 {
 //
-  val+F3UNDECL(rcd) = f3d0
+  val+D3FUNDECL(rcd) = f3d0
 //
-} (* end of [tread33_f3undecl] *)
+} (* end of [tread33_d3fundecl] *)
 //
 implement
 //{}(*tmp*)
-tread33_f3undeclist(f3ds) =
+tread33_d3fundeclist(f3ds) =
 (
-list_foreach<f3undecl>(f3ds)
+list_foreach<d3fundecl>(f3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f3undecl><env>(f3d, env) = tread33_f3undecl(f3d)
-} (* end of [tread33_f3undeclist] *)
+list_foreach$fwork<d3fundecl><env>(f3d, env) = tread33_d3fundecl(f3d)
+} (* end of [tread33_d3fundeclist] *)
 //
 (* ****** ****** *)
 
