@@ -5115,7 +5115,7 @@ val
 (pf0|()) =
 the_trans12_pushnil()
 //
-val arg =
+val f2g =
 (
 case+ wtp of
 |
@@ -5170,8 +5170,8 @@ end // end of [local]
 val res =
 trans12_effsexpopt(rcd.res)
 //
-val arg =
-trans12_farglst_nex2(arg,nex,res)
+val f2g =
+trans12_farglst_nex2(f2g,nex,res)
 //
 val
 ((*void*)) =
@@ -5183,7 +5183,7 @@ D2FUNDECL(
  loc=loc
 ,nam=nam
 ,d2c=d2c
-,arg=arg,res=res,xnm=xnm,def=def,wtp=wtp}
+,f2g=f2g,res=res,xnm=xnm,def=def,wtp=wtp}
 ) (* D2FUNDECL *)
 end // end of [auxf1d0]
 //

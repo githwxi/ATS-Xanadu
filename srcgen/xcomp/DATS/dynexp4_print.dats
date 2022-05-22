@@ -991,7 +991,7 @@ val+D4FUNDECL(rcd) = x0
 in(*in-of-let*)
 //
 case+
-rcd.a4g of
+rcd.f4g of
 |
 None() =>
 (
@@ -1000,18 +1000,18 @@ None() =>
   , "D4FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
-  , "a2g=", rcd.a2g, ", ", "}")
+  , "f2g=", rcd.f2g, ", ", "}")
 )
 |
-Some(rcd_a4g) =>
+Some(rcd_f4g) =>
 (
   fprint!
   ( out
   , "D4FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
-  , "a2g=", rcd.a2g, ", "
-  , "a4g=", rcd_a4g, ", "
+  , "f2g=", rcd.f2g, ", "
+  , "f4g=", rcd_f4g, ", "
   , "res=", rcd.res, ", "
   , "def=", rcd.def, ", "
   , "rtp=", rcd.rtp, ", "

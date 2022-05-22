@@ -1113,7 +1113,7 @@ tread12_d2fundecl
   tread12_s2expopt(rcd.wtp)
 //
   val () =
-  tread12_f2arglst(rcd.arg)
+  tread12_f2arglst(rcd.f2g)
   val () =
   tread12_effs2expopt(rcd.res)
 //

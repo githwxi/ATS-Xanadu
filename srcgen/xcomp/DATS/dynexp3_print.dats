@@ -1106,7 +1106,7 @@ val+D3FUNDECL(rcd) = x0
 in
 //
 case+
-rcd.a3g of
+rcd.f3g of
 |
 None() =>
 (
@@ -1115,17 +1115,17 @@ None() =>
   , "D3FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
-  , "a2g=", rcd.a2g, ", ", "}")
+  , "f2g=", rcd.f2g, ", ", "}")
 )
 |
-Some(rcd_a3g) =>
+Some(rcd_f3g) =>
 (
   fprint!
   ( out
   , "D3FUNDECL@{"
   , "nam=", rcd.nam, ", "
   , "d2c=", rcd.d2c, ", "
-  , "a3g=", rcd_a3g, ", "
+  , "f3g=", rcd_f3g, ", "
   , "res=", rcd.res, ", "
   , "def=", rcd.def, ", "
   , "rtp=", rcd.rtp, ", "

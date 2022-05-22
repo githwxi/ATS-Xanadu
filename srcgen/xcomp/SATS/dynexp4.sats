@@ -823,9 +823,9 @@ D4FUNDECL of @{
   loc= loc_t
 , nam= d2var
 , d2c= d2cst
-, a2g= f2arglst
+, f2g= f2arglst
 //
-, a4g=
+, f4g=
   (f4arglstopt)
 , res=
   (effs2expopt)
