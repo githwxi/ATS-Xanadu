@@ -1197,7 +1197,7 @@ D0Cfundecl
   val () =
   synread_tq0arglst(tqas)
   val () =
-  synread_f0undeclist(f0ds)
+  synread_d0fundeclist(f0ds)
 }
 //
 |
@@ -1209,7 +1209,7 @@ D0Cvaldecl
   synread_VAL(tok0)
 *)
   val () =
-  synread_v0aldeclist(v0ds)
+  synread_d0valdeclist(v0ds)
 }
 //
 |
@@ -1221,7 +1221,7 @@ D0Cvardecl
   synread_VAR(tok0)
 *)
   val () =
-  synread_v0ardeclist(v0ds)
+  synread_d0vardeclist(v0ds)
 }
 //
 |
@@ -1584,79 +1584,79 @@ case+ topt of
 //
 implement
 //{}(*tmp*)
-synread_v0aldeclist
+synread_d0valdeclist
   (v0ds) =
 (
-list_foreach<v0aldecl>(v0ds)
+list_foreach<d0valdecl>(v0ds)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<v0aldecl><env>
+list_foreach$fwork<d0valdecl><env>
   (v0d, env) =
 {
 //
-  val+V0ALDECL(rcd) = v0d
+  val+D0VALDECL(rcd) = v0d
 //
   val () = synread_d0pat(rcd.pat)
   val () = synread_d0expopt(rcd.def)
   val () = synread_wths0expopt(rcd.wtp)
 //
 }
-} (* end of [synread_v0aldeclist] *)
+} (* end of [synread_d0valdeclist] *)
 //
 (* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-synread_v0ardeclist
+synread_d0vardeclist
   (v0ds) =
 (
-list_foreach<v0ardecl>(v0ds)
+list_foreach<d0vardecl>(v0ds)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<v0ardecl><env>
+list_foreach$fwork<d0vardecl><env>
   (v0d, env) =
 {
 //
-  val+
-  V0ARDECL(rcd) = v0d
+val+
+D0VARDECL(rcd) = v0d
 //
-  val () =
-  synread_d0pid(rcd.nam)
+val () =
+synread_d0pid(rcd.nam)
 //
-  val () =
-  (
-  case+ rcd.wth of
-  | None() => ()
-  | Some(id0) => synread_d0pid(id0)
-  )
+val () =
+(
+case+ rcd.wth of
+| None() => ()
+| Some(id0) => synread_d0pid(id0)
+)
 //
-  val () = synread_s0expopt(rcd.res)
-  val () = synread_teqd0expopt(rcd.ini)
+val () = synread_s0expopt(rcd.res)
+val () = synread_teqd0expopt(rcd.ini)
 //
 }
-} (* end of [synread_v0ardeclist] *)
+} (* end of [synread_d0vardeclist] *)
 //
 (* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-synread_f0undeclist
+synread_d0fundeclist
   (f0ds) =
 (
-list_foreach<f0undecl>(f0ds)
+list_foreach<d0fundecl>(f0ds)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<f0undecl><env>
+list_foreach$fwork<d0fundecl><env>
   (f0d, env) =
 {
 //
-  val+F0UNDECL(rcd) = f0d
+  val+D0FUNDECL(rcd) = f0d
 //
   val () =
     synread_d0pid(rcd.nam)
@@ -1672,7 +1672,7 @@ list_foreach$fwork<f0undecl><env>
   val () = synread_wths0expopt(rcd.wtp)
 //
 }
-} (* end of [synread_f0undeclist] *)
+} (* end of [synread_d0fundeclist] *)
 //
 (* ****** ****** *)
 

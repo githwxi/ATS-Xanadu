@@ -810,12 +810,12 @@ implement
 fprint_val<g1marg> = fprint_g1marg
 //
 implement
-fprint_val<v1aldecl> = fprint_v1aldecl
+fprint_val<d1valdecl> = fprint_d1valdecl
 implement
-fprint_val<v1ardecl> = fprint_v1ardecl
+fprint_val<d1vardecl> = fprint_d1vardecl
 //
 implement
-fprint_val<f1undecl> = fprint_f1undecl
+fprint_val<d1fundecl> = fprint_d1fundecl
 //
 implement
 fprint_val<d1cstdecl> = fprint_d1cstdecl
@@ -1065,74 +1065,74 @@ case+ x0 of
 (* ****** ****** *)
 
 implement
-print_v1aldecl(x0) =
-fprint_v1aldecl(stdout_ref, x0)
+print_d1valdecl(x0) =
+fprint_d1valdecl(stdout_ref, x0)
 implement
-prerr_v1aldecl(x0) =
-fprint_v1aldecl(stderr_ref, x0)
+prerr_d1valdecl(x0) =
+fprint_d1valdecl(stderr_ref, x0)
 
 implement
-fprint_v1aldecl
+fprint_d1valdecl
   (out, x0) = let
 //
-val+V1ALDECL(rcd) = x0
+val+D1VALDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "V1ALDECL@{"
+  , "D1VALDECL@{"
   , "pat=", rcd.pat
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
-end // end of [fprint_v1aldecl]
+end // end of [fprint_d1valdecl]
 
 (* ****** ****** *)
 
 implement
-print_v1ardecl(x0) =
-fprint_v1ardecl(stdout_ref, x0)
+print_d1vardecl(x0) =
+fprint_d1vardecl(stdout_ref, x0)
 implement
-prerr_v1ardecl(x0) =
-fprint_v1ardecl(stderr_ref, x0)
+prerr_d1vardecl(x0) =
+fprint_d1vardecl(stderr_ref, x0)
 
 implement
-fprint_v1ardecl
+fprint_d1vardecl
   (out, x0) = let
 //
-val+V1ARDECL(rcd) = x0
+val+D1VARDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "V1ARDECL@{"
+  , "D1VARDECL@{"
   , "nam=", rcd.nam
   , ", wth=", rcd.wth
   , ", res=", rcd.res, ", ini=", rcd.ini, "}")
-end // end of [fprint_v1ardecl]
+end // end of [fprint_d1vardecl]
 
 (* ****** ****** *)
 
 implement
-print_f1undecl(x0) =
-fprint_f1undecl(stdout_ref, x0)
+print_d1fundecl(x0) =
+fprint_d1fundecl(stdout_ref, x0)
 implement
-prerr_f1undecl(x0) =
-fprint_f1undecl(stderr_ref, x0)
+prerr_d1fundecl(x0) =
+fprint_d1fundecl(stderr_ref, x0)
 
 implement
-fprint_f1undecl
+fprint_d1fundecl
   (out, x0) = let
 //
-val+F1UNDECL(rcd) = x0
+val+D1FUNDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "F1UNDECL@{"
+  , "D1FUNDECL@{"
   , "nam=", rcd.nam
   , ", arg=", rcd.arg
   , ", res=", rcd.res
   , ", def=", rcd.def, ", wtp=", rcd.wtp, "}")
-end // end of [fprint_f1undecl]
+end // end of [fprint_d1fundecl]
 
 (* ****** ****** *)
 

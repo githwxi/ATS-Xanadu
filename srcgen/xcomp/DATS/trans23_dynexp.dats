@@ -2647,10 +2647,10 @@ a3gt2p =
 fun
 ishdr
 ( f2d0
-: f2undecl): bool =
+: d2fundecl): bool =
 let
 val+
-F2UNDECL(rcd) = f2d0
+D2FUNDECL(rcd) = f2d0
 in
 case+ rcd.def of
 | None() => true | Some(d2e) => false
@@ -2741,14 +2741,14 @@ aux1_f2d0
 ( d2cl
 : d2ecl
 , f2d0
-: f2undecl
+: d2fundecl
 ) : a3gt2p = let
 //
 val
 loc0 = d2cl.loc()
 //
 val+
-F2UNDECL(rcd) = f2d0
+D2FUNDECL(rcd) = f2d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
@@ -2797,7 +2797,7 @@ and
 aux1_f2ds
 ( d2cl: d2ecl
 , f2ds
-: f2undeclist): List0(a3gt2p) =
+: d2fundeclist): List0(a3gt2p) =
 (
 case+ f2ds of
 | list_nil() =>
@@ -2812,7 +2812,7 @@ aux2_f2d0
 ( d2cl
 : d2ecl
 , f2d0
-: f2undecl
+: d2fundecl
 , agtp: a3gt2p
 ) : d3fundecl = let
 //
@@ -2820,7 +2820,7 @@ val
 loc0 = d2cl.loc()
 //
 val+
-F2UNDECL(rcd) = f2d0
+D2FUNDECL(rcd) = f2d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
@@ -2896,7 +2896,7 @@ and
 aux2_f2ds
 ( d2cl: d2ecl
 , f2ds
-: f2undeclist
+: d2fundeclist
 , agtp
 : List0(a3gt2p)
 )
@@ -2946,13 +2946,13 @@ auxv2d0
 ( d2cl
 : d2ecl
 , v2d0
-: v2aldecl
+: d2valdecl
 ) : d3valdecl = let
 //
 val
 loc0 = d2cl.loc()
 val+
-V2ALDECL(rcd) = v2d0
+D2VALDECL(rcd) = v2d0
 //
 val loc = rcd.loc
 val pat = rcd.pat
@@ -2996,7 +2996,7 @@ fun
 auxv2ds
 ( d2cl: d2ecl
 , v2ds
-: v2aldeclist
+: d2valdeclist
 )
 : d3valdeclist =
 (
@@ -3048,13 +3048,13 @@ auxv2d0
 ( d2cl
 : d2ecl
 , v2d0
-: v2ardecl
+: d2vardecl
 ) : d3vardecl = let
 //
 val
 loc0 = d2cl.loc()
 val+
-V2ARDECL(rcd) = v2d0
+D2VARDECL(rcd) = v2d0
 //
 val loc = rcd.loc
 val d2v = rcd.d2v
@@ -3101,7 +3101,7 @@ fun
 auxv2ds
 ( d2cl: d2ecl
 , v2ds
-: v2ardeclist
+: d2vardeclist
 )
 : d3vardeclist =
 (

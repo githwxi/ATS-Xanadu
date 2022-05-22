@@ -1218,8 +1218,8 @@ d2exp_make_node
 (* ****** ****** *)
 //
 datatype
-v2aldecl =
-V2ALDECL of @{
+d2valdecl =
+D2VALDECL of @{
   loc= loc_t
 , pat= d2pat
 , def= d2expopt
@@ -1227,36 +1227,36 @@ V2ALDECL of @{
 }
 //
 typedef
-v2aldeclist = List0(v2aldecl)
+d2valdeclist = List0(d2valdecl)
 //
 (* ****** ****** *)
 //
 fun
-v2aldecl_get_loc(v2aldecl): loc_t
+d2valdecl_get_loc(d2valdecl): loc_t
 fun
-v2aldecl_get_pat(v2aldecl): d2pat
+d2valdecl_get_pat(d2valdecl): d2pat
 //
-overload .loc with v2aldecl_get_loc
-overload .pat with v2aldecl_get_pat
+overload .loc with d2valdecl_get_loc
+overload .pat with d2valdecl_get_pat
 //
 (* ****** ****** *)
 //
 fun
-print_v2aldecl: print_type(v2aldecl)
+print_d2valdecl: print_type(d2valdecl)
 fun
-prerr_v2aldecl: prerr_type(v2aldecl)
+prerr_d2valdecl: prerr_type(d2valdecl)
 fun
-fprint_v2aldecl: fprint_type(v2aldecl)
+fprint_d2valdecl: fprint_type(d2valdecl)
 //
-overload print with print_v2aldecl
-overload prerr with prerr_v2aldecl
-overload fprint with fprint_v2aldecl
+overload print with print_d2valdecl
+overload prerr with prerr_d2valdecl
+overload fprint with fprint_d2valdecl
 //
 (* ****** ****** *)
 //
 datatype
-v2ardecl =
-V2ARDECL of @{
+d2vardecl =
+D2VARDECL of @{
   loc= loc_t
 , d2v= d2var
 , wth= d2varopt
@@ -1265,20 +1265,20 @@ V2ARDECL of @{
 }
 //
 typedef
-v2ardeclist = List0(v2ardecl)
+d2vardeclist = List0(d2vardecl)
 //
 (* ****** ****** *)
 //
 fun
-print_v2ardecl: print_type(v2ardecl)
+print_d2vardecl: print_type(d2vardecl)
 fun
-prerr_v2ardecl: prerr_type(v2ardecl)
+prerr_d2vardecl: prerr_type(d2vardecl)
 fun
-fprint_v2ardecl: fprint_type(v2ardecl)
+fprint_d2vardecl: fprint_type(d2vardecl)
 //
-overload print with print_v2ardecl
-overload prerr with prerr_v2ardecl
-overload fprint with fprint_v2ardecl
+overload print with print_d2vardecl
+overload prerr with prerr_d2vardecl
+overload fprint with fprint_d2vardecl
 //
 (* ****** ****** *)
 //
@@ -1288,8 +1288,8 @@ typedef
 g1namopt = $S1E.g1namopt
 //
 datatype
-f2undecl =
-F2UNDECL of @{
+d2fundecl =
+D2FUNDECL of @{
   loc= loc_t
 , nam= d2var
 , d2c= d2cst
@@ -1300,27 +1300,27 @@ F2UNDECL of @{
 }
 //
 typedef
-f2undeclist = List0(f2undecl)
+d2fundeclist = List0(d2fundecl)
 //
 (* ****** ****** *)
 //
 fun
-f2undecl_get_loc(f2undecl): loc_t
+d2fundecl_get_loc(d2fundecl): loc_t
 //
-overload .loc with f2undecl_get_loc
+overload .loc with d2fundecl_get_loc
 //
 (* ****** ****** *)
 //
 fun
-print_f2undecl: print_type(f2undecl)
+print_d2fundecl: print_type(d2fundecl)
 fun
-prerr_f2undecl: prerr_type(f2undecl)
+prerr_d2fundecl: prerr_type(d2fundecl)
 fun
-fprint_f2undecl: fprint_type(f2undecl)
+fprint_d2fundecl: fprint_type(d2fundecl)
 //
-overload print with print_f2undecl
-overload prerr with prerr_f2undecl
-overload fprint with fprint_f2undecl
+overload print with print_d2fundecl
+overload prerr with prerr_d2fundecl
+overload fprint with fprint_d2fundecl
 //
 (* ****** ****** *)
 //
@@ -1403,12 +1403,12 @@ d2ecl_node =
 | D2Cfundecl of
   ( token(*funkind*)
   , decmodopt
-  , tq2arglst(*tmpargs*), f2undeclist)
+  , tq2arglst(*tmpargs*), d2fundeclist)
 //
 | D2Cvaldecl of
-  (token(*valknd*), decmodopt, v2aldeclist)
+  (token(*valknd*), decmodopt, d2valdeclist)
 | D2Cvardecl of
-  (token(*varknd*), decmodopt, v2ardeclist)
+  (token(*varknd*), decmodopt, d2vardeclist)
 //
 | D2Cimpdecl1 of
   ( token(*impkind*)
@@ -1521,7 +1521,7 @@ d2patlst_get_s2es(d2patlst): s2explst
 (* ****** ****** *)
 //
 fun
-f2undecl_get_sexp(f2d0: f2undecl): s2exp
+d2fundecl_get_sexp(f2d0: d2fundecl): s2exp
 //
 (* ****** ****** *)
 

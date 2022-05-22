@@ -4995,10 +4995,10 @@ end where
 fun
 ishdr
 ( f1d0
-: f1undecl): bool =
+: d1fundecl): bool =
 let
 val+
-F1UNDECL(rcd) = f1d0
+D1FUNDECL(rcd) = f1d0
 in
 case+ rcd.def of
 | None() => true
@@ -5019,19 +5019,19 @@ _ (*non-D1Eexname*) => false
 fun
 auxd2vs
 ( f1ds
-: f1undeclist): d2varlst =
+: d1fundeclist): d2varlst =
 list_vt2t
 (
-list_map<f1undecl><d2var>(f1ds)
+list_map<d1fundecl><d2var>(f1ds)
 ) where
 {
 implement
-list_map$fopr<f1undecl><d2var>
+list_map$fopr<d1fundecl><d2var>
   (f1d) =
 (
   let
     val+
-    F1UNDECL(rcd) = f1d in d2var_new1(rcd.nam)
+    D1FUNDECL(rcd) = f1d in d2var_new1(rcd.nam)
   end
 ) (* end of [list_map$fopr] *)
 }
@@ -5045,11 +5045,11 @@ auxf1d0
 , d2c0
 : d2cst
 , f1d0
-: f1undecl )
-: f2undecl = let
+: d1fundecl )
+: d2fundecl = let
 //
 val+
-F1UNDECL(rcd) = f1d0
+D1FUNDECL(rcd) = f1d0
 //
 val nam = d2v0
 val d2c = d2c0
@@ -5178,13 +5178,13 @@ val
 the_trans12_popfree(pf0|(*void*))
 //
 in
-F2UNDECL(
+D2FUNDECL(
 @{
  loc=loc
 ,nam=nam
 ,d2c=d2c
 ,arg=arg,res=res,xnm=xnm,def=def,wtp=wtp}
-) (* F2UNDECL *)
+) (* D2FUNDECL *)
 end // end of [auxf1d0]
 //
 and
@@ -5196,8 +5196,8 @@ auxf1ds
 , d2cs
 : d2cstlst
 , f1ds
-: f1undeclist )
-: f2undeclist =
+: d1fundeclist )
+: d2fundeclist =
 (
 case+ d2vs of
 |
@@ -5224,7 +5224,7 @@ list_cons(d2v0, d2vs) =>
   ishdr(f1d0) then let
     val
     s2e0 =
-    f2undecl_get_sexp(f2d0)
+    d2fundecl_get_sexp(f2d0)
     val
     t2p0 = s2exp_erase(s2e0)
   in
@@ -5250,7 +5250,7 @@ auxd2vs_rec
 , d2vs
 : d2varlst
 , f1ds
-: f1undeclist
+: d1fundeclist
 ) : d2cstlst =
 (
 case+ d2vs of
@@ -5284,7 +5284,7 @@ fun
 auxd2vs_nrc
 ( isr: bool
 , d2cs: d2cstlst
-, f1ds: f1undeclist
+, f1ds: d1fundeclist
 ) : void =
 (
 case+ d2cs of
@@ -5373,11 +5373,11 @@ end where
 fun
 auxv1d0_d2p
 ( v1d0
-: v1aldecl): d2pat =
+: d1valdecl): d2pat =
 let
 //
 val+
-V1ALDECL(rcd) = v1d0
+D1VALDECL(rcd) = v1d0
 //
 in
   trans12_dpat(rcd.pat)
@@ -5385,24 +5385,24 @@ end // end of [auxv1d0_d2p]
 fun
 auxv1ds_d2p
 ( v1ds
-: v1aldeclist): d2patlst =
+: d1valdeclist): d2patlst =
 list_vt2t
 (
-list_map<v1aldecl><d2pat>(v1ds)
+list_map<d1valdecl><d2pat>(v1ds)
 ) where
 {
 implement
-list_map$fopr<v1aldecl><d2pat>(x0) = auxv1d0_d2p(x0)
+list_map$fopr<d1valdecl><d2pat>(x0) = auxv1d0_d2p(x0)
 } (* end of [auxv1ds_d2p] *)
 //
 fun
 auxv1d0_d2c
 ( v1d0
-: v1aldecl
-, d2p0: d2pat): v2aldecl = let
+: d1valdecl
+, d2p0: d2pat): d2valdecl = let
 //
 val+
-V1ALDECL(rcd) = v1d0
+D1VALDECL(rcd) = v1d0
 //
 val def = trans12_dexpopt(rcd.def)
 //
@@ -5416,14 +5416,14 @@ case+ rcd.wtp of
 ) : s2expopt // end of [val]
 //
 in
-  V2ALDECL
+  D2VALDECL
   (@{loc=rcd.loc,pat=d2p0,def=def,wtp=wtp})
 end // end of [auxv1d0_d2c]
 fun
 auxv1ds_d2c
 ( v1ds
-: v1aldeclist
-, d2ps: d2patlst): v2aldeclist =
+: d1valdeclist
+, d2ps: d2patlst): d2valdeclist =
 (
 case+ v1ds of
 | list_nil() =>
@@ -5467,12 +5467,12 @@ end where
 fun
 auxv1d0
 ( v1d0
-: v1ardecl
+: d1vardecl
 )
-: v2ardecl = let
+: d2vardecl = let
 //
 val+
-V1ARDECL(rcd) = v1d0
+D1VARDECL(rcd) = v1d0
 //
 val loc = rcd.loc
 //
@@ -5517,7 +5517,7 @@ case+ wth of
 //
 in
 //
-V2ARDECL
+D2VARDECL
 (@{loc=loc,d2v= d2v,wth=wth,res=res,ini=ini})
 //
 end // end of [auxv1d0]
@@ -5525,14 +5525,14 @@ end // end of [auxv1d0]
 and
 auxv1ds
 ( v1ds
-: v1ardeclist): v2ardeclist =
+: d1vardeclist): d2vardeclist =
 list_vt2t
 (
-list_map<v1ardecl><v2ardecl>(v1ds)
+list_map<d1vardecl><d2vardecl>(v1ds)
 ) where
 {
 implement
-list_map$fopr<v1ardecl><v2ardecl>(v1d) = auxv1d0(v1d)
+list_map$fopr<d1vardecl><d2vardecl>(v1d) = auxv1d0(v1d)
 } (* end of [auxv1ds] *)
 //
 } (* end of [aux_vardecl] *)

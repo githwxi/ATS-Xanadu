@@ -231,26 +231,21 @@ fun//{}
 tread01_ti1arglst: treader01(ti1arglst)
 //
 (* ****** ****** *)
-
+//
 fun//{}
-tread01_v1aldecl: treader01(v1aldecl)
+tread01_d1valdecl: treader01(d1valdecl)
 fun//{}
-tread01_v1aldeclist: treader01(v1aldeclist)
-
-(* ****** ****** *)
-
+tread01_d1vardecl: treader01(d1vardecl)
 fun//{}
-tread01_v1ardecl: treader01(v1ardecl)
+tread01_d1fundecl: treader01(d1fundecl)
+//
 fun//{}
-tread01_v1ardeclist: treader01(v1ardeclist)
-
-(* ****** ****** *)
-
+tread01_d1valdeclist: treader01(d1valdeclist)
 fun//{}
-tread01_f1undecl: treader01(f1undecl)
+tread01_d1vardeclist: treader01(d1vardeclist)
 fun//{}
-tread01_f1undeclist: treader01(f1undeclist)
-
+tread01_d1fundeclist: treader01(d1fundeclist)
+//
 (* ****** ****** *)
 
 (* end of [xats_tread01.sats] *)

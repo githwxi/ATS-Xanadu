@@ -825,12 +825,12 @@ implement
 fprint_val<d2ecl> = fprint_d2ecl
 //
 implement
-fprint_val<v2aldecl> = fprint_v2aldecl
+fprint_val<d2valdecl> = fprint_d2valdecl
 implement
-fprint_val<v2ardecl> = fprint_v2ardecl
+fprint_val<d2vardecl> = fprint_d2vardecl
 //
 implement
-fprint_val<f2undecl> = fprint_f2undecl
+fprint_val<d2fundecl> = fprint_d2fundecl
 //
 in (* in-of-local *)
 
@@ -1119,82 +1119,82 @@ fprint_ti2arg
 (* ****** ****** *)
 
 implement
-print_v2aldecl(x0) =
-fprint_v2aldecl(stdout_ref, x0)
+print_d2valdecl(x0) =
+fprint_d2valdecl(stdout_ref, x0)
 implement
-prerr_v2aldecl(x0) =
-fprint_v2aldecl(stderr_ref, x0)
+prerr_d2valdecl(x0) =
+fprint_d2valdecl(stderr_ref, x0)
 
 (* ****** ****** *)
 
 implement
-fprint_v2aldecl
+fprint_d2valdecl
   (out, x0) = let
 //
-val+V2ALDECL(rcd) = x0
+val+D2VALDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "V2ALDECL@{"
+  , "D2VALDECL@{"
   , "pat=", rcd.pat, ", "
   , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
-end // end of [fprint_v2aldecl]
+end // end of [fprint_d2valdecl]
 
 (* ****** ****** *)
 
 implement
-print_v2ardecl(x0) =
-fprint_v2ardecl(stdout_ref, x0)
+print_d2vardecl(x0) =
+fprint_d2vardecl(stdout_ref, x0)
 implement
-prerr_v2ardecl(x0) =
-fprint_v2ardecl(stderr_ref, x0)
+prerr_d2vardecl(x0) =
+fprint_d2vardecl(stderr_ref, x0)
 
 (* ****** ****** *)
 
 implement
-fprint_v2ardecl
+fprint_d2vardecl
   (out, x0) = let
 //
-val+V2ARDECL(rcd) = x0
+val+D2VARDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "V2ARDECL@{"
+  , "D2VARDECL@{"
   , "d2v=", rcd.d2v, ", "
   , "wth=", rcd.wth, ", "
   , "res=", rcd.res, ", ", "ini=", rcd.ini, "}")
-end // end of [fprint_v2ardecl]
+end // end of [fprint_d2vardecl]
 
 (* ****** ****** *)
 
 implement
-print_f2undecl(x0) =
-fprint_f2undecl(stdout_ref, x0)
+print_d2fundecl(x0) =
+fprint_d2fundecl(stdout_ref, x0)
 implement
-prerr_f2undecl(x0) =
-fprint_f2undecl(stderr_ref, x0)
+prerr_d2fundecl(x0) =
+fprint_d2fundecl(stderr_ref, x0)
 
 (* ****** ****** *)
 
 implement
-fprint_f2undecl
+fprint_d2fundecl
   (out, x0) = let
 //
-val+F2UNDECL(rcd) = x0
+val+D2FUNDECL(rcd) = x0
 //
 in
 fprint!
 ( out
-, "F2UNDECL@{"
+, "D2FUNDECL@{"
 , "nam=", rcd.nam, ", "
 , "d2c=", rcd.d2c, ", "
 , "arg=", rcd.arg, ", "
 , "res=", rcd.res, ", "
 , "xnm=", rcd.xnm, ", "
 , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")
-end // end of [fprint_f2undecl]
+end // end of [fprint_d2fundecl]
 
 (* ****** ****** *)
 //

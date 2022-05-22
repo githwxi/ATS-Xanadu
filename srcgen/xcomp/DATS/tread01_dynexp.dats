@@ -258,7 +258,7 @@ D1Cinclude
   , tqas, f1ds) =>
   {
     val () =
-    tread01_f1undeclist(f1ds)
+    tread01_d1fundeclist(f1ds)
   }
 //
 | D1Cvaldecl
@@ -266,14 +266,14 @@ D1Cinclude
   , mopt, v1ds) =>
   {
     val () =
-    tread01_v1aldeclist(v1ds)
+    tread01_d1valdeclist(v1ds)
   }
 | D1Cvardecl
   ( knd
   , mopt, v1ds) =>
   {
     val () =
-    tread01_v1ardeclist(v1ds)
+    tread01_d1vardeclist(v1ds)
   }
 //
 | D1Cimpdecl
@@ -512,7 +512,7 @@ list_foreach$fwork<ti1arg><env>(tia, env) = tread01_ti1arg(tia)
 //
 implement
 //{}(*tmp*)
-tread01_v1aldecl
+tread01_d1valdecl
   (v1d0) =
 {
   val () =
@@ -524,26 +524,13 @@ tread01_v1aldecl
 } where
 {
 //
-  val+V1ALDECL(rcd) = v1d0
+  val+D1VALDECL(rcd) = v1d0
 //
-} (* end of [tread01_v1aldecl] *)
-//
-implement
-//{}(*tmp*)
-tread01_v1aldeclist(v1ds) =
-(
-list_foreach<v1aldecl>(v1ds)
-) where
-{
-implement(env)
-list_foreach$fwork<v1aldecl><env>(v1d, env) = tread01_v1aldecl(v1d)
-} (* end of [tread01_v1aldeclist] *)
-//
-(* ****** ****** *)
+} (* end of [tread01_d1valdecl] *)
 //
 implement
 //{}(*tmp*)
-tread01_v1ardecl
+tread01_d1vardecl
   (v1d0) =
 {
   val () =
@@ -553,26 +540,13 @@ tread01_v1ardecl
 } where
 {
 //
-  val+V1ARDECL(rcd) = v1d0
+  val+D1VARDECL(rcd) = v1d0
 //
-} (* end of [tread01_v1ardecl] *)
-//
-implement
-//{}(*tmp*)
-tread01_v1ardeclist(v1ds) =
-(
-list_foreach<v1ardecl>(v1ds)
-) where
-{
-implement(env)
-list_foreach$fwork<v1ardecl><env>(v1d, env) = tread01_v1ardecl(v1d)
-} (* end of [tread01_v1ardeclist] *)
-//
-(* ****** ****** *)
+} (* end of [tread01_d1vardecl] *)
 //
 implement
 //{}(*tmp*)
-tread01_f1undecl
+tread01_d1fundecl
   (f1d0) =
 {
   val () =
@@ -584,20 +558,48 @@ tread01_f1undecl
 } where
 {
 //
-  val+F1UNDECL(rcd) = f1d0
+  val+D1FUNDECL(rcd) = f1d0
 //
-} (* end of [tread01_f1undecl] *)
+} (* end of [tread01_d1fundecl] *)
+//
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread01_f1undeclist(f1ds) =
+tread01_d1valdeclist(v1ds) =
 (
-list_foreach<f1undecl>(f1ds)
+list_foreach<d1valdecl>(v1ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f1undecl><env>(f1d, env) = tread01_f1undecl(f1d)
-} (* end of [tread01_f1undeclist] *)
+list_foreach$fwork<d1valdecl><env>(v1d, env) = tread01_d1valdecl(v1d)
+} (* end of [tread01_d1valdeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_d1vardeclist(v1ds) =
+(
+list_foreach<d1vardecl>(v1ds)
+) where
+{
+implement(env)
+list_foreach$fwork<d1vardecl><env>(v1d, env) = tread01_d1vardecl(v1d)
+} (* end of [tread01_d1vardeclist] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_d1fundeclist(f1ds) =
+(
+list_foreach<d1fundecl>(f1ds)
+) where
+{
+implement(env)
+list_foreach$fwork<d1fundecl><env>(f1d, env) = tread01_d1fundecl(f1d)
+} (* end of [tread01_d1fundeclist] *)
 //
 (* ****** ****** *)
 //
