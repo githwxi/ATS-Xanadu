@@ -1113,7 +1113,7 @@ aux_staload
 (* ****** ****** *)
 
 fun
-aux_fundecl
+aux_fundclst
 ( env0:
 ! tr3xenv
 , d3cl: d3ecl): d3ecl =
@@ -1122,7 +1122,7 @@ let
 val
 loc0 = d3cl.loc()
 val-
-D3Cfundecl
+D3Cfundclst
 ( knd
 , mopt
 , tqas, f3ds) = d3cl.node()
@@ -1259,13 +1259,13 @@ val f3ds = auxf3ds(env0, f3ds)
 //
 in
 d3ecl_make_node
-(loc0, D3Cfundecl(knd, mopt, tqas, f3ds))
-end // end of [aux_fundecl]
+(loc0, D3Cfundclst(knd, mopt, tqas, f3ds))
+end // end of [aux_fundclst]
 
 (* ****** ****** *)
 
 fun
-aux_valdecl
+aux_valdclst
 ( env0:
 ! tr3xenv
 , d3cl: d3ecl): d3ecl =
@@ -1274,7 +1274,7 @@ let
 val
 loc0 = d3cl.loc()
 val-
-D3Cvaldecl
+D3Cvaldclst
 ( knd
 , mopt
 , v3ds) = d3cl.node()
@@ -1349,13 +1349,13 @@ val v3ds = auxv3ds(env0, v3ds)
 //
 in
   d3ecl_make_node
-  (loc0, D3Cvaldecl(knd, mopt, v3ds))
-end // end-of-let // end of [aux_valdecl]
+  (loc0, D3Cvaldclst(knd, mopt, v3ds))
+end (*let*) // end of [aux_valdclst]
 
 (* ****** ****** *)
 
 fun
-aux_vardecl
+aux_vardclst
 ( env0:
 ! tr3xenv
 , d3cl: d3ecl): d3ecl =
@@ -1364,7 +1364,7 @@ let
 val
 loc0 = d3cl.loc()
 val-
-D3Cvardecl
+D3Cvardclst
 ( knd
 , mopt
 , v3ds) = d3cl.node()
@@ -1449,13 +1449,13 @@ val v3ds = auxv3ds(env0, v3ds)
 //
 in
   d3ecl_make_node
-  (loc0, D3Cvardecl(knd, mopt, v3ds))
-end // end-of-let // end of [aux_vardecl]
+  (loc0, D3Cvardclst(knd, mopt, v3ds))
+end // end-of-let // end of [aux_vardclst]
 
 (* ****** ****** *)
 
 fun
-aux_impdecl3
+aux_impldcl3
 ( env0:
 ! tr3xenv
 , d3cl: d3ecl): d3ecl =
@@ -1465,7 +1465,7 @@ val
 loc0 = d3cl.loc()
 //
 val-
-D3Cimpdecl3
+D3Cimpldcl3
 ( tok0
 , stmp, mopt
 , sqas, tqas
@@ -1509,12 +1509,12 @@ end // end of [local]
 in
 d3ecl_make_node
 ( loc0
-, D3Cimpdecl3
+, D3Cimpldcl3
   ( tok0
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s, f3as, res1, body))
-end // end of [aux_impdecl3]
+end // end of [aux_impldcl3]
 
 (* ****** ****** *)
 
@@ -1559,15 +1559,15 @@ D3Cinclude _ => aux_include(env0, d3cl)
 D3Cstaload _ => aux_staload(env0, d3cl)
 //
 |
-D3Cfundecl _ => aux_fundecl(env0, d3cl)
+D3Cfundclst _ => aux_fundclst(env0, d3cl)
 //
 |
-D3Cvaldecl _ => aux_valdecl(env0, d3cl)
+D3Cvaldclst _ => aux_valdclst(env0, d3cl)
 |
-D3Cvardecl _ => aux_vardecl(env0, d3cl)
+D3Cvardclst _ => aux_vardclst(env0, d3cl)
 //
 |
-D3Cimpdecl3 _ => aux_impdecl3(env0, d3cl)
+D3Cimpldcl3 _ => aux_impldcl3(env0, d3cl)
 //
 | _(*rest-of-d3ecl*) => d3cl // yet-to-be-handled
 //

@@ -247,51 +247,6 @@ end // end of [aux_absimpl]
 (* ****** ****** *)
 
 fun
-aux_fundecl
-( d3cl
-: d3ecl): void =
-let
-//
-val
-loc0 = d3cl.loc()
-//
-in
-// HX-2020-10-31: FIXME!!!
-end // end of [aux_fundecl]
-
-(* ****** ****** *)
-
-fun
-aux_valdecl
-( d3cl
-: d3ecl): void =
-let
-//
-val
-loc0 = d3cl.loc()
-//
-in
-// HX-2020-10-31: FIXME!!!
-end // end of [aux_valdecl]
-
-(* ****** ****** *)
-
-fun
-aux_vardecl
-( d3cl
-: d3ecl): void =
-let
-//
-val
-loc0 = d3cl.loc()
-//
-in
-// HX-2020-10-31: FIXME!!!
-end // end of [aux_vardecl]
-
-(* ****** ****** *)
-
-fun
 aux_excptcon
 ( d3cl
 : d3ecl): void =
@@ -320,7 +275,52 @@ end // end of [aux_datatype]
 (* ****** ****** *)
 
 fun
-aux_impdecl1
+aux_valdclst
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+// HX-2020-10-31: FIXME!!!
+end // end of [aux_valdclst]
+
+(* ****** ****** *)
+
+fun
+aux_vardclst
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+// HX-2020-10-31: FIXME!!!
+end // end of [aux_vardclst]
+
+(* ****** ****** *)
+
+fun
+aux_fundclst
+( d3cl
+: d3ecl): void =
+let
+//
+val
+loc0 = d3cl.loc()
+//
+in
+// HX-2020-10-31: FIXME!!!
+end // end of [aux_fundclst]
+
+(* ****** ****** *)
+
+fun
+aux_impldcl1
 ( d3cl
 : d3ecl): void =
 let
@@ -329,7 +329,7 @@ val
 loc0 = d3cl.loc()
 //
 val-
-D3Cimpdecl1
+D3Cimpldcl1
 ( knd
 , mopt, stmp
 , sqas, tqas
@@ -421,10 +421,10 @@ prerrln!
 (loc0, ": ***TRERR23***")
 val () =
 prerrln!
-(loc0, ": TRERR23(D3Cimpdecl1): d2c0 = ", d2c0)
+(loc0, ": TRERR23(D3Cimpldcl1): d2c0 = ", d2c0)
 val () =
 ( prerr!
-  (loc0, ": TRERR23(D3Cimpdecl1): tmp-arity mismatch: "); auxerr(0, cmps); prerrln!()
+  (loc0, ": TRERR23(D3Cimpldcl1): tmp-arity mismatch: "); auxerr(0, cmps); prerrln!()
 )
 //
 }
@@ -433,7 +433,7 @@ end // end-of-let
 //
 end // end-of-let
 
-end // end of [aux_impdecl1]
+end // end of [aux_impldcl1]
 
 in(*in-of-local*)
 
@@ -494,19 +494,19 @@ D3Cabsopen _ => aux_absopen(d3cl)
 D3Cabsimpl _ => aux_absimpl(d3cl)
 //
 |
-D3Cfundecl _ => aux_fundecl(d3cl)
-|
-D3Cvaldecl _ => aux_valdecl(d3cl)
-|
-D3Cvardecl _ => aux_vardecl(d3cl)
-//
-|
 D3Cexcptcon _ => aux_excptcon(d3cl)
 |
 D3Cdatatype _ => aux_datatype(d3cl)
 //
 |
-D3Cimpdecl1 _ => aux_impdecl1(d3cl)
+D3Cfundclst _ => aux_fundclst(d3cl)
+|
+D3Cvaldclst _ => aux_valdclst(d3cl)
+|
+D3Cvardclst _ => aux_vardclst(d3cl)
+//
+|
+D3Cimpldcl1 _ => aux_impldcl1(d3cl)
 //
 |
 _(* rest-of-d3ecl *) =>

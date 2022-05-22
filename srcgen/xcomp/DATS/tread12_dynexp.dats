@@ -844,7 +844,7 @@ d2cl.node() of
     val () = tread12_s2cstlst(s2cs)
   }
 //
-| D2Cfundecl
+| D2Cfundclst
   (knd, mopt, tqas, f2ds) =>
   {
     val () = tread12_tq2arglst(tqas)
@@ -859,18 +859,18 @@ d2cl.node() of
 *)
   }
 //
-| D2Cvaldecl
+| D2Cvaldclst
   (knd, mopt, v2ds) =>
   {
     val () = tread12_d2valdeclist(v2ds)
   }
-| D2Cvardecl
+| D2Cvardclst
   (knd, mopt, v2ds) =>
   {
     val () = tread12_d2vardeclist(v2ds)
   }
 //
-| D2Cimpdecl1
+| D2Cimpldcl1
   ( knd
   , stmp, mopt
   , sqas, tqas
@@ -894,7 +894,7 @@ d2cl.node() of
     val () = tread12_d2exp(d2e2)
 //
   }
-| D2Cimpdecl2
+| D2Cimpldcl2
   ( knd
   , stmp, mopt
   , sqas, tqas

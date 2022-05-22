@@ -3548,13 +3548,13 @@ list_vt2t
 //
 extern
 fun
-ptok_valdecl
+ptok_valdclst
 ( tok: token
 , buf: &tokbuf >> _
 , err: &int >> _): d0ecl
 //
 implement
-ptok_valdecl
+ptok_valdclst
 (
 tok, buf, err
 ) = let
@@ -3580,9 +3580,9 @@ tok, buf, err
 in
   err := e0;
   d0ecl_make_node
-    ( loc_res, D0Cvaldecl(tok, mopt, d0cs) )
+    ( loc_res, D0Cvaldclst(tok, mopt, d0cs) )
   // d0ecl_make_node
-end // end of [ptok_valdecl]
+end // end of [ptok_valdclst]
 
 (* ****** ****** *)
 //
@@ -3671,13 +3671,13 @@ list_vt2t
 //
 extern
 fun
-ptok_vardecl
+ptok_vardclst
 ( tok: token
 , buf: &tokbuf >> _
 , err: &int >> _): d0ecl
 //
 implement
-ptok_vardecl
+ptok_vardclst
 (
 tok, buf, err
 ) = let
@@ -3705,9 +3705,9 @@ tok, buf, err
 in
   err := e0;
   d0ecl_make_node
-    (loc_res, D0Cvardecl(tok, mopt, d0cs))
+    (loc_res, D0Cvardclst(tok, mopt, d0cs))
   // d0ecl_make_node
-end // end of [ptok_vardecl]
+end // end of [ptok_vardclst]
 //
 (* ****** ****** *)
 //
@@ -3807,13 +3807,13 @@ list_vt2t
 //
 extern
 fun
-ptok_fundecl
+ptok_fundclst
 ( tok: token
 , buf: &tokbuf >> _
 , err: &int >> _): d0ecl
 //
 implement
-ptok_fundecl
+ptok_fundclst
 (
 tok, buf, err
 ) = let
@@ -3846,15 +3846,14 @@ tok, buf, err
 in
   err := e0;
   d0ecl_make_node
-    (loc_res, D0Cfundecl(tok, mopt, tqas, d0cs))
-  // d0ecl_make_node
-end // end of [ptok_fundecl]
+  (loc_res, D0Cfundclst(tok, mopt, tqas, d0cs))
+end // end of [ptok_fundclst]
 //
 (* ****** ****** *)
 //
 extern
 fun
-ptok_impdecl
+ptok_impldcl0
 ( tok: token
 , buf: &tokbuf >> _
 , err: &int >> _): d0ecl
@@ -3868,7 +3867,7 @@ in(* in-of-local *)
 (* ****** ****** *)
 
 implement
-ptok_impdecl
+ptok_impldcl0
 (
 tok, buf, err
 ) = let
@@ -3906,12 +3905,12 @@ in
   err := e0;
   d0ecl_make_node
   ( loc_res
-  , D0Cimpdecl
+  , D0Cimpldcl0
     ( tok, mopt
     , sqas, tqas
     , dqid, tias, f0as, tres, teq0, d0e1)
   ) (* d0ecl_make_node *)
-end // end of [ptok_impdecl]
+end // end of [ptok_impldcl0]
 //
 end // end of [local]
 //
@@ -4261,22 +4260,22 @@ end // end of [T_DATATYPE(k0)]
 //
 | T_VAL _ when f0 > 0 =>
   (
-    ptok_valdecl(tok, buf, err)
+    ptok_valdclst(tok, buf, err)
   )
 //
 | T_VAR _ when f0 > 0 =>
   (
-    ptok_vardecl(tok, buf, err)
+    ptok_vardclst(tok, buf, err)
   )
 //
 | T_FUN _ when f0 > 0 =>
   (
-    ptok_fundecl(tok, buf, err)
+    ptok_fundclst(tok, buf, err)
   )
 //
 | T_IMPLMNT _ =>
   (
-    ptok_impdecl(tok, buf, err)
+    ptok_impldcl0(tok, buf, err)
   )
 //
 | tnd when

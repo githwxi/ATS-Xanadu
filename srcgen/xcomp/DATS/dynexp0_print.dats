@@ -1159,33 +1159,6 @@ case+ x0.node() of
   , tok, "; ", sqid, "; "
   , smas, "; ", res0, "; ", teq1, "; ", def2, ")")
 //
-| D0Cfundecl
-  (tok, mopt, tqas, d0cs) =>
-  fprint!
-  ( out
-  , "D0Cfundecl("
-  , tok, "; ", mopt, "; ", tqas, "; ", d0cs, ")")
-//
-| D0Cvaldecl
-  (tok, mopt, d0cs) =>
-  fprint!
-  ( out
-  , "D0Cvaldecl(", tok, "; ", mopt, "; ", d0cs, ")")
-| D0Cvardecl
-  (tok, mopt, d0cs) =>
-  fprint!
-  ( out
-  , "D0Cvardecl(", tok, "; ", mopt, "; ", d0cs, ")")
-//
-| D0Cimpdecl
-  ( tok, mopt, sqas, tqas
-  , dqid, tias, f0as, res0, teq1, d0e2) =>
-  fprint!
-  ( out
-  , "D0Cimpdecl("
-  , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
-  , dqid, "; ", tias, "; ", f0as, "; ", res0, "; ", teq1, "; ", d0e2, ")")
-//
 | D0Csymload
   (tok, sym, twth, dqid, tint) =>
   fprint!
@@ -1210,6 +1183,33 @@ case+ x0.node() of
   fprint!
   ( out
   , "D0Cdynconst(", tok, "; ", tqas, "; ", d0cs, ")")
+//
+| D0Cfundclst
+  (tok, mopt, tqas, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cfundclst("
+  , tok, "; ", mopt, "; ", tqas, "; ", d0cs, ")")
+//
+| D0Cvaldclst
+  (tok, mopt, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cvaldclst(", tok, "; ", mopt, "; ", d0cs, ")")
+| D0Cvardclst
+  (tok, mopt, d0cs) =>
+  fprint!
+  ( out
+  , "D0Cvardclst(", tok, "; ", mopt, "; ", d0cs, ")")
+//
+| D0Cimpldcl0
+  ( tok, mopt, sqas, tqas
+  , dqid, tias, f0as, res0, teq1, d0e2) =>
+  fprint!
+  ( out
+  , "D0Cimpldcl0("
+  , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
+  , dqid, "; ", tias, "; ", f0as, "; ", res0, "; ", teq1, "; ", d0e2, ")")
 //
 | D0Celse(tok) =>
   fprint!(out, "D0Celse(", tok, ")")
