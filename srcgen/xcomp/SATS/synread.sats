@@ -666,11 +666,11 @@ synread_teqd0expopt: synreader(teqd0expopt)
 (* ****** ****** *)
 
 fun//{}
-synread_v0aldeclist: synreader(v0aldeclist)
+synread_d0valdeclist: synreader(d0valdeclist)
 fun//{}
-synread_v0ardeclist: synreader(v0ardeclist)
+synread_d0vardeclist: synreader(d0vardeclist)
 fun//{}
-synread_f0undeclist: synreader(f0undeclist)
+synread_d0fundeclist: synreader(d0fundeclist)
 
 (* ****** ****** *)
 

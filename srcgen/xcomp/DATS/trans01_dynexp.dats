@@ -2041,24 +2041,24 @@ list_vt2t(d1cs) where
 } (* end of [trans01_dclaulst] *)
 
 (* ****** ****** *)
-
+//
 extern
 fun
-trans01_valdecl: v0aldecl -> v1aldecl
+trans01_valdecl: d0valdecl -> d1valdecl
 and
-trans01_valdeclist: v0aldeclist -> v1aldeclist
-
+trans01_vardecl: d0vardecl -> d1vardecl
+and
+trans01_fundecl: d0fundecl -> d1fundecl
+//
 extern
 fun
-trans01_vardecl: v0ardecl -> v1ardecl
+trans01_valdeclist: d0valdeclist -> d1valdeclist
 and
-trans01_vardeclist: v0ardeclist -> v1ardeclist
-
-extern
-fun
-trans01_fundecl: f0undecl -> f1undecl
+trans01_vardeclist: d0vardeclist -> d1vardeclist
 and
-trans01_fundeclist: f0undeclist -> f1undeclist
+trans01_fundeclist: d0fundeclist -> d1fundeclist
+//
+(* ****** ****** *)
 
 extern
 fun
@@ -2145,7 +2145,7 @@ trans01_valdecl
   (d0cl) = let
 //
 val+
-V0ALDECL(rcd) = d0cl
+D0VALDECL(rcd) = d0cl
 //
 val
 loc = rcd.loc
@@ -2170,7 +2170,7 @@ println!("trans01_valdecl: wtp = ", wtp)
 *)
 //
 in
-  V1ALDECL
+  D1VALDECL
   (@{loc=loc,pat=pat,teq=teq,def=def,wtp=wtp})
 end // end of [trans01_valdecl]
 
@@ -2181,11 +2181,11 @@ list_vt2t(d1cs) where
 {
   val
   d1cs =
-  list_map<v0aldecl><v1aldecl>
+  list_map<d0valdecl><d1valdecl>
     (d0cs) where
   {
     implement
-    list_map$fopr<v0aldecl><v1aldecl> = trans01_valdecl
+    list_map$fopr<d0valdecl><d1valdecl> = trans01_valdecl
   }
 } (* end of [trans01_valdeclist] *)
 
@@ -2196,7 +2196,7 @@ trans01_vardecl
   (d0cl) = let
 //
 val+
-V0ARDECL(rcd) = d0cl
+D0VARDECL(rcd) = d0cl
 //
 val
 loc = rcd.loc
@@ -2236,8 +2236,8 @@ println!("trans01_vardecl: ini = ", ini)
 *)
 //
 in
-  V1ARDECL
-  (@{loc=loc,nam=tok,wth=wth,res=res,ini=ini})
+D1VARDECL
+(@{loc=loc,nam=tok,wth=wth,res=res,ini=ini})
 end // end of [trans01_vardecl]
 
 implement
@@ -2247,11 +2247,11 @@ list_vt2t(d1cs) where
 {
 val
 d1cs =
-list_map<v0ardecl><v1ardecl>
+list_map<d0vardecl><d1vardecl>
   (d0cs) where
 {
 implement
-list_map$fopr<v0ardecl><v1ardecl> = trans01_vardecl
+list_map$fopr<d0vardecl><d1vardecl> = trans01_vardecl
 }
 } (* end of [trans01_vardeclist] *)
 
@@ -2262,7 +2262,7 @@ trans01_fundecl
   (d0cl) = let
 //
 val+
-F0UNDECL(rcd) = d0cl
+D0FUNDECL(rcd) = d0cl
 //
 val
 loc = rcd.loc
@@ -2300,7 +2300,7 @@ println!("trans01_fundecl: wtp = ", wtp)
 *)
 //
 in
-  F1UNDECL
+  D1FUNDECL
   (@{loc=loc,nam=tok
     ,arg=arg,res=res,teq=teq,def=def,wtp=wtp})
 end // end of [trans01_fundecl]
@@ -2312,11 +2312,11 @@ list_vt2t(d1cs) where
 {
   val
   d1cs =
-  list_map<f0undecl><f1undecl>
+  list_map<d0fundecl><d1fundecl>
     (d0cs) where
   {
     implement
-    list_map$fopr<f0undecl><f1undecl> = trans01_fundecl
+    list_map$fopr<d0fundecl><d1fundecl> = trans01_fundecl
   }
 } (* end of [trans01_fundeclist] *)
 

@@ -3466,16 +3466,16 @@ list_vt2t
 //
 static
 fun
-p_v0aldecl
- : parser(v0aldecl)
+p_d0valdecl
+ : parser(d0valdecl)
 and
-p_v0aldeclseq_AND
- : parser(v0aldeclist)
+p_d0valdeclseq_AND
+ : parser(d0valdeclist)
 //
 (* ****** ****** *)
 
 implement
-p_v0aldecl
+p_d0valdecl
   (buf, err) = let
 //
 val e0 = err
@@ -3503,7 +3503,7 @@ case+ wopt of
 //
 in
   err := e0;
-  V0ALDECL
+  D0VALDECL
   (@{loc=loc1,pat=d0p,teq=teq,def=dopt,wtp=wopt})
 end
 |
@@ -3524,24 +3524,24 @@ case+ wopt of
 //
 in
   err := e0;
-  V0ALDECL
+  D0VALDECL
   (@{loc=loc1,pat=d0p,teq=teq,def=dopt,wtp=wopt})
 end
 //
-end // end of [p_v0aldecl]
+end // end of [p_d0valdecl]
 
 (* ****** ****** *)
 //
 implement
-p_v0aldeclseq_AND
+p_d0valdeclseq_AND
   (buf, err) =
 (
 //
 list_vt2t
 (pstar_AND_fun
- {v0aldecl}(buf, err, p_v0aldecl))
+ {d0valdecl}(buf, err, p_d0valdecl))
 //
-) (* end of [p_v0aldeclseq_AND] *)
+) (* end of [p_d0valdeclseq_AND] *)
 //
 (* ****** ****** *)
 
@@ -3564,7 +3564,7 @@ tok, buf, err
   val mopt =
     p_decmodopt(buf, err)
   val d0cs =
-    p_v0aldeclseq_AND(buf, err)
+    p_d0valdeclseq_AND(buf, err)
   val loc_res =
   (
     case+ d0cs of
@@ -3586,16 +3586,16 @@ end // end of [ptok_valdecl]
 //
 static
 fun
-p_v0ardecl
- : parser(v0ardecl)
+p_d0vardecl
+ : parser(d0vardecl)
 and
-p_v0ardeclseq_AND
- : parser(v0ardeclist)
+p_d0vardeclseq_AND
+ : parser(d0vardeclist)
 //
 (* ****** ****** *)
 //
 implement
-p_v0ardecl
+p_d0vardecl
   (buf, err) = let
 //
 val e0 = err
@@ -3648,22 +3648,22 @@ case+ ini of
 //
 in
   err := e0;
-  V0ARDECL
+  D0VARDECL
   (@{loc=loc1,nam=nam,wth=wth,res=res,ini=ini})
-end // end of [p_v0ardecl]
+end // end of [p_d0vardecl]
 //
 (* ****** ****** *)
 //
 implement
-p_v0ardeclseq_AND
+p_d0vardeclseq_AND
   (buf, err) =
 (
 //
 list_vt2t
 (pstar_AND_fun
- {v0ardecl}(buf, err, p_v0ardecl))
+ {d0vardecl}(buf, err, p_d0vardecl))
 //
-) (* end of [p_v0ardeclseq_AND] *)
+) (* end of [p_d0vardeclseq_AND] *)
 //
 (* ****** ****** *)
 //
@@ -3687,7 +3687,7 @@ tok, buf, err
   val mopt =
     p_decmodopt(buf, err)
   val d0cs =
-    p_v0ardeclseq_AND(buf, err)
+    p_d0vardeclseq_AND(buf, err)
 //
   val loc_res =
   (
@@ -3710,16 +3710,16 @@ end // end of [ptok_vardecl]
 //
 static
 fun
-p_f0undecl
- : parser(f0undecl)
+p_d0fundecl
+ : parser(d0fundecl)
 and
-p_f0undeclseq_AND
- : parser(f0undeclist)
+p_d0fundeclseq_AND
+ : parser(d0fundeclist)
 //
 (* ****** ****** *)
 //
 implement
-p_f0undecl
+p_d0fundecl
   (buf, err) = let
 //
 val e0 = err
@@ -3762,7 +3762,7 @@ EFFS0EXPsome(s0e) => loc0+s0e.loc()
 ) : loc_t // end of [val]
 in
   err := e0;
-  F0UNDECL
+  D0FUNDECL
   (@{loc=loc1,nam=nam,arg=arg,res=res,teq=teq,def=dopt,wtp=wopt})
 end
 | Some(tok) =>
@@ -3782,23 +3782,23 @@ val loc1 =
 ) : loc_t // end-of-val
 //
 in
-  err := e0;
-  F0UNDECL
-  (@{loc=loc1,nam=nam,arg=arg,res=res,teq=teq,def=dopt,wtp=wopt})
+err := e0;
+D0FUNDECL
+(@{loc=loc1,nam=nam,arg=arg,res=res,teq=teq,def=dopt,wtp=wopt})
 end
 //
-end // end of [p_f0undecl]
+end // end of [p_d0fundecl]
 //
 implement
-p_f0undeclseq_AND
+p_d0fundeclseq_AND
   (buf, err) =
 (
 //
 list_vt2t
 (pstar_AND_fun
- {f0undecl}(buf, err, p_f0undecl))
+ {d0fundecl}(buf, err, p_d0fundecl))
 //
-) (* end of [p_f0undeclseq_AND] *)
+) (* end of [p_d0fundeclseq_AND] *)
 //
 (* ****** ****** *)
 //
@@ -3827,7 +3827,7 @@ tok, buf, err
     p_tq0argseq(buf, err)
 //
   val d0cs =
-    p_f0undeclseq_AND(buf, err)
+    p_d0fundeclseq_AND(buf, err)
 //
   val loc_res =
   (

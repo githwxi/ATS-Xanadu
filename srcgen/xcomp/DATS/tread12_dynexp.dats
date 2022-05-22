@@ -848,7 +848,7 @@ d2cl.node() of
   (knd, mopt, tqas, f2ds) =>
   {
     val () = tread12_tq2arglst(tqas)
-    val () = tread12_f2undeclist(f2ds)
+    val () = tread12_d2fundeclist(f2ds)
 (*
     val () =
     println!
@@ -862,12 +862,12 @@ d2cl.node() of
 | D2Cvaldecl
   (knd, mopt, v2ds) =>
   {
-    val () = tread12_v2aldeclist(v2ds)
+    val () = tread12_d2valdeclist(v2ds)
   }
 | D2Cvardecl
   (knd, mopt, v2ds) =>
   {
-    val () = tread12_v2ardeclist(v2ds)
+    val () = tread12_d2vardeclist(v2ds)
   }
 //
 | D2Cimpdecl1
@@ -1038,7 +1038,7 @@ list_foreach$fwork<ti2arg><env>(ti2a, env) = tread12_ti2arg(ti2a)
 //
 implement
 //{}(*tmp*)
-tread12_v2aldecl
+tread12_d2valdecl
   (v2d0) =
 {
 //
@@ -1053,26 +1053,26 @@ tread12_v2aldecl
 } where
 {
 //
-  val+V2ALDECL(rcd) = v2d0
+  val+D2VALDECL(rcd) = v2d0
 //
-} (* end of [tread12_v2aldecl] *)
+} (* end of [tread12_d2valdecl] *)
 //
 implement
 //{}(*tmp*)
-tread12_v2aldeclist(v2ds) =
+tread12_d2valdeclist(v2ds) =
 (
-list_foreach<v2aldecl>(v2ds)
+list_foreach<d2valdecl>(v2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v2aldecl><env>(v2d, env) = tread12_v2aldecl(v2d)
-} (* end of [tread12_v2aldeclist] *)
+list_foreach$fwork<d2valdecl><env>(v2d, env) = tread12_d2valdecl(v2d)
+} (* end of [tread12_d2valdeclist] *)
 //
 (* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread12_v2ardecl
+tread12_d2vardecl
   (v2d0) =
 {
 //
@@ -1084,26 +1084,26 @@ tread12_v2ardecl
 } where
 {
 //
-  val+V2ARDECL(rcd) = v2d0
+  val+D2VARDECL(rcd) = v2d0
 //
-} (* end of [tread12_v2ardecl] *)
+} (* end of [tread12_d2vardecl] *)
 //
 implement
 //{}(*tmp*)
-tread12_v2ardeclist(v2ds) =
+tread12_d2vardeclist(v2ds) =
 (
-list_foreach<v2ardecl>(v2ds)
+list_foreach<d2vardecl>(v2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<v2ardecl><env>(v2d, env) = tread12_v2ardecl(v2d)
-} (* end of [tread12_v2ardeclist] *)
+list_foreach$fwork<d2vardecl><env>(v2d, env) = tread12_d2vardecl(v2d)
+} (* end of [tread12_d2vardeclist] *)
 //
 (* ****** ****** *)
 //
 implement
 //{}(*tmp*)
-tread12_f2undecl
+tread12_d2fundecl
   (f2d0) =
 {
 //
@@ -1120,20 +1120,20 @@ tread12_f2undecl
 } where
 {
 //
-  val+F2UNDECL(rcd) = f2d0
+  val+D2FUNDECL(rcd) = f2d0
 //
-} (* end of [tread12_f2undecl] *)
+} (* end of [tread12_d2fundecl] *)
 //
 implement
 //{}(*tmp*)
-tread12_f2undeclist(f2ds) =
+tread12_d2fundeclist(f2ds) =
 (
-list_foreach<f2undecl>(f2ds)
+list_foreach<d2fundecl>(f2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<f2undecl><env>(f2d, env) = tread12_f2undecl(f2d)
-} (* end of [tread12_f2undeclist] *)
+list_foreach$fwork<d2fundecl><env>(f2d, env) = tread12_d2fundecl(f2d)
+} (* end of [tread12_d2fundeclist] *)
 //
 (* ****** ****** *)
 

@@ -506,24 +506,24 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-f1undecl_get_loc
+d1fundecl_get_loc
   (f1d0) = let
 //
 val+
-F1UNDECL(rcd) = f1d0 in rcd.loc
+D1FUNDECL(rcd) = f1d0 in rcd.loc
 //
-end // end of [f1undecl_get_loc]
+end // end of [d1fundecl_get_loc]
 
 (* ****** ****** *)
 
 implement
-v1aldecl_get_loc
+d1valdecl_get_loc
   (v1d0) = let
 //
 val+
-V1ALDECL(rcd) = v1d0 in rcd.loc
+D1VALDECL(rcd) = v1d0 in rcd.loc
 //
-end // end of [v1aldecl_get_loc]
+end // end of [d1valdecl_get_loc]
 
 (* ****** ****** *)
 
@@ -540,11 +540,11 @@ end // end of [d1cstdecl_get_loc]
 
 (*
 implement
-f1undecl_classify
+d1fundecl_classify
   (f1d0) = let
 //
 val+
-F1UNDECL(rcd) = f1d0
+D1FUNDECL(rcd) = f1d0
 //
 in
 //
@@ -556,14 +556,14 @@ case+ dopt of
   val dopt = rcd.def
 }
 //
-end // end of [f1undecl_classify]
+end // end of [d1fundecl_classify]
 
 implement
-v1aldecl_classify
+d1valdecl_classify
   (v1d0) = let
 //
 val+
-V1ALDECL(rcd) = v1d0
+D1VALDECL(rcd) = v1d0
 //
 in
 //
@@ -575,7 +575,7 @@ case+ dopt of
   val dopt = rcd.def
 }
 //
-end // end of [v1aldecl_classify]
+end // end of [d1valdecl_classify]
 *)
 
 (* ****** ****** *)

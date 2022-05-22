@@ -860,33 +860,33 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-v2aldecl_get_loc
+d2valdecl_get_loc
   (d1c0) = let
 //
 val+
-V2ALDECL(rcd) = d1c0 in rcd.loc
+D2VALDECL(rcd) = d1c0 in rcd.loc
 //
-end // end of [v2aldecl_get_loc]
+end // end of [d2valdecl_get_loc]
 
 implement
-v2aldecl_get_pat
+d2valdecl_get_pat
   (d1c0) = let
 //
 val+
-V2ALDECL(rcd) = d1c0 in rcd.pat
+D2VALDECL(rcd) = d1c0 in rcd.pat
 //
-end // end of [v2aldecl_get_pat]
+end // end of [d2valdecl_get_pat]
 
 (* ****** ****** *)
 
 implement
-f2undecl_get_loc
+d2fundecl_get_loc
   (d1c0) = let
 //
 val+
-F2UNDECL(rcd) = d1c0 in rcd.loc
+D2FUNDECL(rcd) = d1c0 in rcd.loc
 //
-end // end of [f2undecl_get_loc]
+end // end of [d2fundecl_get_loc]
 
 (* ****** ****** *)
 
@@ -918,10 +918,10 @@ list_map$fopr<d2pat><s2exp> = d2pat_get_sexp
 (* ****** ****** *)
 
 implement
-f2undecl_get_sexp
+d2fundecl_get_sexp
   (f2d0) = let
 //
-val+F2UNDECL(rcd) = f2d0
+val+D2FUNDECL(rcd) = f2d0
 //
 in
 //
@@ -989,7 +989,7 @@ case+ arg of
   end
 )
 //
-} (* end of [f2undecl_get_sexp] *)
+} (* end of [d2fundecl_get_sexp] *)
 
 (* ****** ****** *)
 

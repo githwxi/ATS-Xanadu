@@ -614,33 +614,33 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-v0aldecl_get_loc(x0) =
+d0valdecl_get_loc(x0) =
 let
-  val+V0ALDECL(rcd) = x0 in rcd.loc
-end // end of [v0aldecl_get_loc]
+val+D0VALDECL(rcd) = x0 in rcd.loc
+end // end of [d0valdecl_get_loc]
 
 (* ****** ****** *)
 
 implement
-v0ardecl_get_loc(x0) =
+d0vardecl_get_loc(x0) =
 let
-  val+V0ARDECL(rcd) = x0 in rcd.loc
-end // end of [v0ardecl_get_loc]
+val+D0VARDECL(rcd) = x0 in rcd.loc
+end // end of [d0vardecl_get_loc]
 
 (* ****** ****** *)
 
 implement
-f0undecl_get_loc(x0) =
+d0fundecl_get_loc(x0) =
 let
-  val+F0UNDECL(rcd) = x0 in rcd.loc
-end // end of [f0undecl_get_loc]
+val+D0FUNDECL(rcd) = x0 in rcd.loc
+end // end of [d0fundecl_get_loc]
 
 (* ****** ****** *)
 
 implement
 d0cstdecl_get_loc(x0) =
 let
-  val+D0CSTDECL(rcd) = x0 in rcd.loc
+val+D0CSTDECL(rcd) = x0 in rcd.loc
 end // end of [d0cstdecl_get_loc]
 
 (* ****** ****** *)

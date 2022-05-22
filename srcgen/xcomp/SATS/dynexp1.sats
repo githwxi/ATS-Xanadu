@@ -777,8 +777,8 @@ overload fprint with fprint_wths1expopt
 (* ****** ****** *)
 //
 datatype
-v1aldecl =
-V1ALDECL of @{
+d1valdecl =
+D1VALDECL of @{
   loc= loc_t
 , pat= d1pat
 , teq= tokenopt
@@ -787,28 +787,28 @@ V1ALDECL of @{
 }
 //
 typedef
-v1aldeclist = List0(v1aldecl)
+d1valdeclist = List0(d1valdecl)
 //
 fun
-v1aldecl_get_loc(v1aldecl): loc_t
-overload .loc with v1aldecl_get_loc
+d1valdecl_get_loc(d1valdecl): loc_t
+overload .loc with d1valdecl_get_loc
 //
 fun
-print_v1aldecl: print_type(v1aldecl)
+print_d1valdecl: print_type(d1valdecl)
 fun
-prerr_v1aldecl: prerr_type(v1aldecl)
+prerr_d1valdecl: prerr_type(d1valdecl)
 fun
-fprint_v1aldecl: fprint_type(v1aldecl)
+fprint_d1valdecl: fprint_type(d1valdecl)
 //
-overload print with print_v1aldecl
-overload prerr with prerr_v1aldecl
-overload fprint with fprint_v1aldecl
+overload print with print_d1valdecl
+overload prerr with prerr_d1valdecl
+overload fprint with fprint_d1valdecl
 //
 (* ****** ****** *)
 //
 datatype
-v1ardecl =
-V1ARDECL of @{
+d1vardecl =
+D1VARDECL of @{
   loc= loc_t
 , nam= token
 , wth= tokenopt
@@ -817,28 +817,28 @@ V1ARDECL of @{
 }
 //
 typedef
-v1ardeclist = List0(v1ardecl)
+d1vardeclist = List0(d1vardecl)
 //
 fun
-v1ardecl_get_loc(v1ardecl): loc_t
-overload .loc with v1ardecl_get_loc
+d1vardecl_get_loc(d1vardecl): loc_t
+overload .loc with d1vardecl_get_loc
 //
 fun
-print_v1ardecl: print_type(v1ardecl)
+print_d1vardecl: print_type(d1vardecl)
 fun
-prerr_v1ardecl: prerr_type(v1ardecl)
+prerr_d1vardecl: prerr_type(d1vardecl)
 fun
-fprint_v1ardecl: fprint_type(v1ardecl)
+fprint_d1vardecl: fprint_type(d1vardecl)
 //
-overload print with print_v1ardecl
-overload prerr with prerr_v1ardecl
-overload fprint with fprint_v1ardecl
+overload print with print_d1vardecl
+overload prerr with prerr_d1vardecl
+overload fprint with fprint_d1vardecl
 //
 (* ****** ****** *)
 //
 datatype
-f1undecl =
-F1UNDECL of @{
+d1fundecl =
+D1FUNDECL of @{
   loc= loc_t
 , nam= token
 , arg= f1arglst
@@ -849,22 +849,22 @@ F1UNDECL of @{
 }
 //
 typedef
-f1undeclist = List0(f1undecl)
+d1fundeclist = List0(d1fundecl)
 //
 fun
-f1undecl_get_loc(f1undecl): loc_t
-overload .loc with f1undecl_get_loc
+d1fundecl_get_loc(d1fundecl): loc_t
+overload .loc with d1fundecl_get_loc
 //
 fun
-print_f1undecl: print_type(f1undecl)
+print_d1fundecl: print_type(d1fundecl)
 fun
-prerr_f1undecl: prerr_type(f1undecl)
+prerr_d1fundecl: prerr_type(d1fundecl)
 fun
-fprint_f1undecl: fprint_type(f1undecl)
+fprint_d1fundecl: fprint_type(d1fundecl)
 //
-overload print with print_f1undecl
-overload prerr with prerr_f1undecl
-overload fprint with fprint_f1undecl
+overload print with print_d1fundecl
+overload prerr with prerr_d1fundecl
+overload fprint with fprint_d1fundecl
 //
 (* ****** ****** *)
 //
@@ -992,13 +992,13 @@ d1ecl_node =
 | D1Cfundecl of
   ( token(*funkind*)
   , decmodopt
-  , tq1arglst(*tmpargs*), f1undeclist)
+  , tq1arglst(*tmpargs*), d1fundeclist)
 //
 | D1Cvaldecl of
   ( token(*valkind*)
-  , decmodopt(*rec/prf/...*), v1aldeclist)
+  , decmodopt(*rec/prf/...*), d1valdeclist)
 | D1Cvardecl of
-  ( token(*varkind*), decmodopt, v1ardeclist)
+  ( token(*varkind*), decmodopt, d1vardeclist)
 //
 | D1Cimpdecl of
   ( token(*impkind*)
@@ -1111,10 +1111,10 @@ overload fprint with fprint_wd1eclseq
 // kind=1: interface+definition
 *)
 fun
-f1undecl_classify(f1d0: f1undecl): int
+d1fundecl_classify(f1d0: d1fundecl): int
 //
 fun
-v1aldecl_classify(v1d0: v1aldecl): int
+d1valdecl_classify(v1d0: d1valdecl): int
 //
 *)
 //

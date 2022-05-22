@@ -205,26 +205,23 @@ fun//{}
 tread12_ti2arglst: treader12(ti2arglst)
 
 (* ****** ****** *)
-
+//
 fun//{}
-tread12_v2aldecl: treader12(v2aldecl)
+tread12_d2valdecl: treader12(d2valdecl)
 fun//{}
-tread12_v2aldeclist: treader12(v2aldeclist)
-
+tread12_d2vardecl: treader12(d2vardecl)
+fun//{}
+tread12_d2fundecl: treader12(d2fundecl)
+//
 (* ****** ****** *)
-
+//
 fun//{}
-tread12_v2ardecl: treader12(v2ardecl)
+tread12_d2valdeclist: treader12(d2valdeclist)
 fun//{}
-tread12_v2ardeclist: treader12(v2ardeclist)
-
-(* ****** ****** *)
-
+tread12_d2vardeclist: treader12(d2vardeclist)
 fun//{}
-tread12_f2undecl: treader12(f2undecl)
-fun//{}
-tread12_f2undeclist: treader12(f2undeclist)
-
+tread12_d2fundeclist: treader12(d2fundeclist)
+//
 (* ****** ****** *)
 
 (* end of [xats_tread12.sats] *)

@@ -1018,8 +1018,8 @@ overload fprint with fprint_wths0expopt
 (* ****** ****** *)
 //
 datatype
-v0aldecl =
-V0ALDECL of @{
+d0valdecl =
+D0VALDECL of @{
   loc= loc_t
 , pat= d0pat
 , teq= tokenopt
@@ -1028,22 +1028,22 @@ V0ALDECL of @{
 }
 //
 typedef
-v0aldeclist = List0(v0aldecl)
+d0valdeclist = List0(d0valdecl)
 //
 fun
-v0aldecl_get_loc(v0aldecl): loc_t
-overload .loc with v0aldecl_get_loc
+d0valdecl_get_loc(d0valdecl): loc_t
+overload .loc with d0valdecl_get_loc
 //
 fun
-print_v0aldecl: print_type(v0aldecl)
+print_d0valdecl: print_type(d0valdecl)
 fun
-prerr_v0aldecl: prerr_type(v0aldecl)
+prerr_d0valdecl: prerr_type(d0valdecl)
 fun
-fprint_v0aldecl: fprint_type(v0aldecl)
+fprint_d0valdecl: fprint_type(d0valdecl)
 //
-overload print with print_v0aldecl
-overload prerr with prerr_v0aldecl
-overload fprint with fprint_v0aldecl
+overload print with print_d0valdecl
+overload prerr with prerr_d0valdecl
+overload fprint with fprint_d0valdecl
 //
 (* ****** ****** *)
 //
@@ -1053,8 +1053,8 @@ foo:
 s0exp with pfat = d0exp
 *)
 datatype
-v0ardecl =
-V0ARDECL of @{
+d0vardecl =
+D0VARDECL of @{
   loc= loc_t
 , nam= d0pid
 , wth= d0pidopt
@@ -1064,28 +1064,28 @@ V0ARDECL of @{
   d0pidopt = Option(d0pid)
 //
 typedef
-v0ardeclist = List0(v0ardecl)
+d0vardeclist = List0(d0vardecl)
 //
 fun
-v0ardecl_get_loc(v0ardecl): loc_t
-overload .loc with v0ardecl_get_loc
+d0vardecl_get_loc(d0vardecl): loc_t
+overload .loc with d0vardecl_get_loc
 //
 fun
-print_v0ardecl: print_type(v0ardecl)
+print_d0vardecl: print_type(d0vardecl)
 fun
-prerr_v0ardecl: prerr_type(v0ardecl)
+prerr_d0vardecl: prerr_type(d0vardecl)
 fun
-fprint_v0ardecl: fprint_type(v0ardecl)
+fprint_d0vardecl: fprint_type(d0vardecl)
 //
-overload print with print_v0ardecl
-overload prerr with prerr_v0ardecl
-overload fprint with fprint_v0ardecl
+overload print with print_d0vardecl
+overload prerr with prerr_d0vardecl
+overload fprint with fprint_d0vardecl
 //
 (* ****** ****** *)
 //
 datatype
-f0undecl =
-F0UNDECL of @{
+d0fundecl =
+D0FUNDECL of @{
   loc= loc_t
 , nam= d0pid
 , arg= f0arglst
@@ -1093,25 +1093,25 @@ F0UNDECL of @{
 , teq= tokenopt
 , def= d0expopt
 , wtp= wths0expopt
-} (* f0undecl *)
+} (* d0fundecl *)
 //
 typedef
-f0undeclist = List0(f0undecl)
+d0fundeclist = List0(d0fundecl)
 //
 fun
-f0undecl_get_loc(f0undecl): loc_t
-overload .loc with f0undecl_get_loc
+d0fundecl_get_loc(d0fundecl): loc_t
+overload .loc with d0fundecl_get_loc
 //
 fun
-print_f0undecl: print_type(f0undecl)
+print_d0fundecl: print_type(d0fundecl)
 fun
-prerr_f0undecl: prerr_type(f0undecl)
+prerr_d0fundecl: prerr_type(d0fundecl)
 fun
-fprint_f0undecl: fprint_type(f0undecl)
+fprint_d0fundecl: fprint_type(d0fundecl)
 //
-overload print with print_f0undecl
-overload prerr with prerr_f0undecl
-overload fprint with fprint_f0undecl
+overload print with print_d0fundecl
+overload prerr with prerr_d0fundecl
+overload fprint with fprint_d0fundecl
 //
 (* ****** ****** *)
 //
@@ -1265,12 +1265,12 @@ for skipping synerr:
 //
 | D0Cfundecl of
   ( token(*kind*)
-  , decmodopt, tq0arglst, f0undeclist)
+  , decmodopt, tq0arglst, d0fundeclist)
 //
 | D0Cvaldecl of
-  ( token(*kind*), decmodopt, v0aldeclist)
+  ( token(*kind*), decmodopt, d0valdeclist)
 | D0Cvardecl of
-  ( token(*kind*), decmodopt, v0ardeclist)
+  ( token(*kind*), decmodopt, d0vardeclist)
 //
 | D0Cimpdecl of
   ( token(*impkind*)
