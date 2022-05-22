@@ -393,22 +393,26 @@ d0pat_node =
     ( token, tokenopt
     , labd0patlst, labd0pat_RBRACE)
 //
-| D0Panno of (d0pat, s0exp)
+| D0Panno of (d0pat, s0exp) // annotated
 //
 | D0Pqual of (token, d0pat) // qualified
 //
-| D0Pnone of (token) // HX-2018-09-15: indicating error 
+| D0Pnone of (    token    ) // HX-2018-09-15: indicating error 
 // end of [d0pat_node]
-
+//
 and
 d0pat_RPAREN =
-| d0pat_RPAREN_cons0 of token
-| d0pat_RPAREN_cons1 of (token, d0patlst, token)
+|
+d0pat_RPAREN_cons0 of token
+|
+d0pat_RPAREN_cons1 of (token, d0patlst, token)
 //
 and
 labd0pat_RBRACE =
-| labd0pat_RBRACE_cons0 of token
-| labd0pat_RBRACE_cons1 of (token, labd0patlst, token)
+|
+labd0pat_RBRACE_cons0 of token
+|
+labd0pat_RBRACE_cons1 of (token, labd0patlst, token)
 //
 (* ****** ****** *)
 //
@@ -477,10 +481,16 @@ typedef f0arglst = List0(f0arg)
 //
 datatype
 f0arg_node =
-| F0ARGnone of (token)
-| F0ARGsome_dyn of (d0pat)
-| F0ARGsome_sta of (token, s0qualst, token)
-| F0ARGsome_met of (token, s0explst, token)
+|
+F0ARGnone of (token)
+|
+F0ARGsome_dyn of (d0pat)
+|
+F0ARGsome_sta of (token, s0qualst, token)
+|
+F0ARGsome_met of (token, s0explst, token)
+//
+(* ****** ****** *)
 //
 fun
 f0arg_get_loc(f0arg): loc_t
@@ -490,13 +500,20 @@ f0arg_get_node(f0arg): f0arg_node
 overload .loc with f0arg_get_loc
 overload .node with f0arg_get_node
 //
-fun print_f0arg : print_type(f0arg)
-fun prerr_f0arg : prerr_type(f0arg)
-fun fprint_f0arg : fprint_type(f0arg)
+(* ****** ****** *)
+//
+fun
+print_f0arg : print_type(f0arg)
+fun
+prerr_f0arg : prerr_type(f0arg)
+fun
+fprint_f0arg : fprint_type(f0arg)
 //
 overload print with print_f0arg
 overload prerr with prerr_f0arg
 overload fprint with fprint_f0arg
+//
+(* ****** ****** *)
 //
 fun
 f0arg_make_node

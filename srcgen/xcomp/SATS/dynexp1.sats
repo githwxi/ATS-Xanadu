@@ -995,21 +995,23 @@ d1ecl_node =
   , dq0eid, t0intopt(*precedence*))
 //
 | D1Cdatasort of
-    (token(*datasort*), d1tsortlst)
+    ( token(*datasort*), d1tsortlst )
   // D1Cdatasort
 //
 | D1Cexcptcon of
-    (token(*excptcon*), d1atconlst)
-  (* end of [D1Cexcptcon] *)
+    ( token(*excptcon*), d1atconlst )
+  // D1Cexcptcon
 //
 // dataprop/dataview // proofs
 // datatype/datavtype // programs
 //
-| D1Cdatatype of
-  (token(*datatype*), d1atypelst, wd1eclseq)
+|
+D1Cdatatype of
+(token(*datatype*), d1atypelst, wd1eclseq)
 //
-| D1Cdynconst of
-  (token(*dyncstkind*), tq1arglst, d1cstdeclist)
+|
+D1Cdynconst of
+(token(*dyncstkind*), tq1arglst, d1cstdeclist)
 //
 | D1Cfundclst of
   ( token(*funkind*)
@@ -1022,10 +1024,14 @@ d1ecl_node =
 | D1Cvardclst of
   ( token(*varkind*), decmodopt, d1vardeclist)
 //
-| D1Cimplmnt0 of
-  ( token(*impkind*)
-  , decmodopt, sq1arglst, tq1arglst
-  , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)
+|
+D1Cimplmnt0 of
+( token(*impkind*)
+, decmodopt
+, sq1arglst
+, tq1arglst
+, dq0eid(*qualid*)
+, ti1arglst, f1arglst, effs1expopt, token, d1exp)
 //
 | D1Celse of (token) // opt
 | D1Cendif of (token) // req

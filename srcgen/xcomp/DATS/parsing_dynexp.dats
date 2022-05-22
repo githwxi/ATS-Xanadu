@@ -882,10 +882,11 @@ p_napps(buf, err) = let
 in
 //
 case+ tnd of
-| _ (* error *) =>
-  ( err := e0 + 1;
-    d0pat_make_node(tok.loc(), D0Pnone(tok))
-  ) (* end-of-error *)
+|
+_ (* error *) =>
+( err := e0 + 1;
+  d0pat_make_node(tok.loc(), D0Pnone(tok))
+) (* end-of-error *)
 //
 end // end of [p_napps]
 
@@ -1078,7 +1079,8 @@ case+ tnd of
     }
   end // end of [T_IDENT_qual]
 //
-| _ (* error *) => let
+| _ (* error *) =>
+  let
     val () = (err := e0 + 1)
   in
     d0pat_make_node(tok.loc(), D0Pnone(tok))

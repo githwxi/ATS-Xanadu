@@ -1410,18 +1410,20 @@ d2ecl_node =
 | D2Cvardclst of
   (token(*varknd*), decmodopt, d2vardeclist)
 //
-| D2Cimplmnt1 of
-  ( token(*impkind*)
-  , stamp(*unicity*)
-  , decmodopt
-  , sq2arglst, tq2arglst
-  , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
-| D2Cimplmnt2 of
-  ( token(*impkind*)
-  , stamp(*unicity*)
-  , decmodopt
-  , sq2arglst, tq2arglst
-  , impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
+|
+D2Cimplmnt1 of
+( token(*impkind*)
+, stamp(*unicity*)
+, decmodopt
+, sq2arglst, tq2arglst
+, impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
+|
+D2Cimplmnt2 of
+( token(*impkind*)
+, stamp(*unicity*)
+, decmodopt
+, sq2arglst, tq2arglst
+, impld2cst, ti2arglst, f2arglst, effs2expopt, d2exp)
 //
 // end of [d2ecl_node]
 //
