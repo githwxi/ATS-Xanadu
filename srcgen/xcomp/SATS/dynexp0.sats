@@ -1290,7 +1290,7 @@ for skipping synerr:
 | D0Cvardclst of
   ( token(*kind*), decmodopt, d0vardeclist)
 //
-| D0Cimpldcl0 of
+| D0Cimplmnt0 of
   ( token(*impkind*)
   , decmodopt//modifier
   , sq0arglst, tq0arglst

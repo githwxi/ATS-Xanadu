@@ -1225,7 +1225,7 @@ D0Cvardclst
 }
 //
 |
-D0Cimpldcl0
+D0Cimplmnt0
 ( tok0, mopt
 , sqas, tqas
 , dqid, tias, f0as

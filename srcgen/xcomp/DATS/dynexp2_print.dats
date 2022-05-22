@@ -994,24 +994,24 @@ case- x0.node() of
   , "D2Cvardclst("
   , knd0, "; ", mopt, "; ", v2ds, ")")
 //
-| D2Cimpldcl1
+| D2Cimplmnt1
   ( knd0
   , stmp, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
-  , "D2Cimpldcl1("
+  , "D2Cimplmnt1("
   , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f2as, "; ", d2e1, ")")
-| D2Cimpldcl2
+| D2Cimplmnt2
   ( knd0
   , stmp, mopt, sqas, tqas
   , dqid, tias, f2as, res0, d2e1) =>
   fprint!
   ( out
-  , "D2Cimpldcl2("
+  , "D2Cimplmnt2("
   , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "

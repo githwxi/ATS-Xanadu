@@ -3163,12 +3163,12 @@ end (* end of [list_cons] *)
 (* ****** ****** *)
 
 fun
-aux_impldcl1
+aux_implmnt1
 ( d2cl
 : d2ecl): d3ecl = let
 //
 val-
-D2Cimpldcl1
+D2Cimplmnt1
 ( knd
 , stmp, mopt
 , sqas, tqas
@@ -3245,7 +3245,7 @@ end
 (*
 val () =
 println!
-("aux_impldcl1: tfun = ", tfun)
+("aux_implmnt1: tfun = ", tfun)
 *)
 //
 val
@@ -3255,9 +3255,9 @@ f3as,tres
 //
 (*
 val () =
-println!("aux_impldcl1: f3as = ", f3as)
+println!("aux_implmnt1: f3as = ", f3as)
 val () =
-println!("aux_impldcl1: tres = ", tres)
+println!("aux_implmnt1: tres = ", tres)
 *)
 //
 val
@@ -3289,25 +3289,25 @@ in
 d3ecl_make_node
 ( d2cl.loc()
 ,
-  D3Cimpldcl1
+  D3Cimplmnt1
   ( knd
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0)
 ) (* d3ecl_make_node *)
-end // end of [aux_impldcl1]
+end // end of [aux_implmnt1]
 
 (* ****** ****** *)
 
 fun
-aux_impldcl2
+aux_implmnt2
 ( d2cl
 : d2ecl): d3ecl = let
 //
 val
 loc0 = d2cl.loc()
 val-
-D2Cimpldcl2
+D2Cimplmnt2
 ( knd
 , stmp, mopt
 , sqas, tqas
@@ -3343,10 +3343,10 @@ trans23_dexp_dntp(d2e0, tres)
 (*
 val () =
 println!
-("aux_impldcl2: tres = ", tres)
+("aux_implmnt2: tres = ", tres)
 val () =
 println!
-("aux_impldcl2: d3e0 = ", d3e0)
+("aux_implmnt2: d3e0 = ", d3e0)
 *)
 //
 in
@@ -3356,14 +3356,14 @@ in
 ) where
 {
   val node =
-  D3Cimpldcl2
+  D3Cimplmnt2
   ( knd
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, tias, f3as, res0, d3e0)
 }
 //
-end // end of [aux_impldcl2]
+end // end of [aux_implmnt2]
 
 in (* in-of-local *)
 
@@ -3435,8 +3435,8 @@ d2cl.node() of
 | D2Cvaldclst _ => aux_valdclst(d2cl)
 | D2Cvardclst _ => aux_vardclst(d2cl)
 //
-| D2Cimpldcl1 _ => aux_impldcl1(d2cl)
-| D2Cimpldcl2 _ => aux_impldcl2(d2cl)
+| D2Cimplmnt1 _ => aux_implmnt1(d2cl)
+| D2Cimplmnt2 _ => aux_implmnt2(d2cl)
 //
 | D2Csymload _ =>
   d3ecl_make_node(loc0, D3Cd2ecl(d2cl))

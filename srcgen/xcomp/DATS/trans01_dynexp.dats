@@ -3581,14 +3581,14 @@ end // end of [aux_fundclst]
 (* ****** ****** *)
 
 fun
-aux_impldcl0
+aux_implmnt0
 ( d0cl
 : d0ecl): d1ecl = let
 //
 val loc0 = d0cl.loc()
 //
 val-
-D0Cimpldcl0
+D0Cimplmnt0
 ( knd
 , mopt, sqas, tqas
 , dqid, tias, f0as, res0, teq1, d0e2) = d0cl.node()
@@ -3609,13 +3609,12 @@ val res0 =
 val d1e2 = trans01_dexp(d0e2)
 //
 in
-  d1ecl_make_node
-  ( loc0
-  , D1Cimpldcl0
-    (knd, mopt, sqas, tqas, dqid, tias, f1as, res0, teq1, d1e2)
-  )
-  // d1ecl_make_node
-end // end of [aux_impldcl0]
+d1ecl_make_node
+( loc0
+, D1Cimplmnt0
+  (knd, mopt, sqas, tqas, dqid, tias, f1as, res0, teq1, d1e2)
+) (* d1ecl_make_node *)
+end // end of [aux_implmnt0]
 
 (* ****** ****** *)
 
@@ -3706,7 +3705,7 @@ d0cl.node() of
 | D0Cvaldclst _ => aux_valdclst(d0cl)
 | D0Cvardclst _ => aux_vardclst(d0cl)
 //
-| D0Cimpldcl0 _ => aux_impldcl0(d0cl)
+| D0Cimplmnt0 _ => aux_implmnt0(d0cl)
 //
 | D0Celse(tok1) =>
   (

@@ -241,7 +241,7 @@ timp.node() of
 |
 D3Cfundclst _ => auxtimp2f(d3e0)
 |
-D3Cimpldcl3 _ => auxtimp2i(d3e0)
+D3Cimplmnt3 _ => auxtimp2i(d3e0)
 //
 end // end of [auxtimp]
 //
@@ -341,7 +341,7 @@ D3Etimp
 , timp, tsub) = d3e0.node()
 //
 val-
-D3Cimpldcl3
+D3Cimplmnt3
 ( tok0
 , stmp, mopt
 , sqas, tqas
@@ -869,7 +869,7 @@ val () = tread3x_d3eclist(body)
 *)
   }
 //
-| D3Cimpldcl3
+| D3Cimplmnt3
   ( tok0
   , stmp, mopt
   , sqas, tqas
@@ -889,7 +889,7 @@ val () = tread3x_d3eclist(body)
       val () = tread3x_d3exp(d3e0) // template
 *)
     }
-  ) (* D3Cimpldcl3 *)
+  ) (* D3Cimplmnt3 *)
 //
 | _(* rest-of-d3ecl *) =>
   {

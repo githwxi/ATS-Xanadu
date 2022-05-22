@@ -965,7 +965,7 @@ x0.node() of
   ( out
   , "D3Cdatatype(", d1cl, "; ", s2cs, ")")
 //
-| D3Cimpldcl1
+| D3Cimplmnt1
   ( knd0
   , stmp, mopt
   , sqas, tqas
@@ -973,13 +973,13 @@ x0.node() of
   , f3as, res0, d3e0) =>
   fprint!
   ( out
-  , "D3Cimpldcl1("
+  , "D3Cimplmnt1("
   , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
-  ) (* end of [D3Cimpldcl1] *)
-| D3Cimpldcl2
+  ) (* end of [D3Cimplmnt1] *)
+| D3Cimplmnt2
   ( knd0
   , stmp, mopt
   , sqas, tqas
@@ -987,13 +987,13 @@ x0.node() of
   , f3as, res0, d3e0) =>
   fprint!
   ( out
-  , "D3Cimpldcl2("
+  , "D3Cimplmnt2("
   , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
-  ) (* end of [D3Cimpldcl2] *)
-| D3Cimpldcl3
+  ) (* end of [D3Cimplmnt2] *)
+| D3Cimplmnt3
   ( knd0
   , stmp, mopt
   , sqas, tqas
@@ -1001,12 +1001,12 @@ x0.node() of
   , f3as, res0, d3e0) =>
   fprint!
   ( out
-  , "D3Cimpldcl3("
+  , "D3Cimplmnt3("
   , knd0, "; "
   , stmp, "; ", mopt, "; "
   , sqas, "; ", tqas, "; "
   , id2c, "; ", ti3a, "; ", ti2s, "; ", f3as, "; ", res0, "; ", d3e0, ")"
-  ) (* end of [D3Cimpldcl3] *)
+  ) (* end of [D3Cimplmnt3] *)
 //
 | D3Cnone0() =>
   fprint!(out, "D3Cnone0(", ")")

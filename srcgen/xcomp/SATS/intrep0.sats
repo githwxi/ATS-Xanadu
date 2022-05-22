@@ -1176,7 +1176,7 @@ H0Cvardclst of
 , decmodopt, h0vardeclist)
 //
 |
-H0Cimpldcl3 of
+H0Cimplmnt3 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt

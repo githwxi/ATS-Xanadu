@@ -931,7 +931,7 @@ D3Cvardclst of
 (token(*knd*), decmodopt, d3vardeclist)
 //
 |
-D3Cimpldcl1 of
+D3Cimplmnt1 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt
@@ -939,7 +939,7 @@ D3Cimpldcl1 of
 , tq2arglst
 , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 |
-D3Cimpldcl2 of
+D3Cimplmnt2 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt
@@ -947,7 +947,7 @@ D3Cimpldcl2 of
 , tq2arglst
 , impld2cst, ti3arg, ti2arglst, f3arglst, effs2expopt, d3exp)
 |
-D3Cimpldcl3 of
+D3Cimplmnt3 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt

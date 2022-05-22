@@ -1022,7 +1022,7 @@ d1ecl_node =
 | D1Cvardclst of
   ( token(*varkind*), decmodopt, d1vardeclist)
 //
-| D1Cimpldcl0 of
+| D1Cimplmnt0 of
   ( token(*impkind*)
   , decmodopt, sq1arglst, tq1arglst
   , dq0eid, ti1arglst, f1arglst, effs1expopt, token, d1exp)

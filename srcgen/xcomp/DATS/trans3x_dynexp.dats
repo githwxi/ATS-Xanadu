@@ -1455,7 +1455,7 @@ end // end-of-let // end of [aux_vardclst]
 (* ****** ****** *)
 
 fun
-aux_impldcl3
+aux_implmnt3
 ( env0:
 ! tr3xenv
 , d3cl: d3ecl): d3ecl =
@@ -1465,7 +1465,7 @@ val
 loc0 = d3cl.loc()
 //
 val-
-D3Cimpldcl3
+D3Cimplmnt3
 ( tok0
 , stmp, mopt
 , sqas, tqas
@@ -1509,12 +1509,12 @@ end // end of [local]
 in
 d3ecl_make_node
 ( loc0
-, D3Cimpldcl3
+, D3Cimplmnt3
   ( tok0
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s, f3as, res1, body))
-end // end of [aux_impldcl3]
+end // end of [aux_implmnt3]
 
 (* ****** ****** *)
 
@@ -1567,7 +1567,7 @@ D3Cvaldclst _ => aux_valdclst(env0, d3cl)
 D3Cvardclst _ => aux_vardclst(env0, d3cl)
 //
 |
-D3Cimpldcl3 _ => aux_impldcl3(env0, d3cl)
+D3Cimplmnt3 _ => aux_implmnt3(env0, d3cl)
 //
 | _(*rest-of-d3ecl*) => d3cl // yet-to-be-handled
 //
