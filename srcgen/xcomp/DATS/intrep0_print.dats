@@ -512,6 +512,8 @@ implement
 prerr_h0farg(x0) =
 fprint_h0farg(stderr_ref, x0)
 //
+(* ****** ****** *)
+//
 implement
 fprint_h0farg(out, x0) =
 (
@@ -525,10 +527,12 @@ fprint!
 ( out
 , "H0FARGnpats(", npf0, "; ", h0ps, ")")
 //
-| H0FARGnone0 _ =>
-  fprint!(out, "H0FARGnone0(", ")")
-| H0FARGnone1 _ =>
-  fprint!(out, "H0FARGnone1(", "...", ")")
+|
+H0FARGnone0 _ =>
+fprint!(out, "H0FARGnone0(", ")")
+|
+H0FARGnone1 _ =>
+fprint!(out, "H0FARGnone1(", "...", ")")
 )
 //
 (* ****** ****** *)

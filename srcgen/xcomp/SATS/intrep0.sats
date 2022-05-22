@@ -140,6 +140,13 @@ typedef h0patopt = Option(h0pat)
 //
 (* ****** ****** *)
 //
+abstbox h0farg_tbox = ptr
+typedef h0farg = h0farg_tbox
+typedef h0farglst = List0(h0farg)
+typedef h0fargopt = Option(h0farg)
+//
+(* ****** ****** *)
+//
 abstbox h0exp_tbox = ptr
 typedef h0exp = h0exp_tbox
 typedef h0explst = List0(h0exp)
@@ -158,13 +165,6 @@ abstbox htqarg_tbox = ptr
 typedef htqarg = htqarg_tbox
 typedef htqarglst = List0(htqarg)
 typedef htqargopt = Option(htqarg)
-//
-(* ****** ****** *)
-//
-abstbox h0farg_tbox = ptr
-typedef h0farg = h0farg_tbox
-typedef h0farglst = List0(h0farg)
-typedef h0fargopt = Option(h0farg)
 //
 (* ****** ****** *)
 //
