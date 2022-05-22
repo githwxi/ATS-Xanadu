@@ -822,7 +822,7 @@ val hend = $UN.cast{ptr}(f3a0)
 in
 h0farg_make_node(loc0, H0FARGnone1(hend))
 end
-end // end of [trcmp30_dfarg]
+end // end of [trcmp30_farg]
 
 (* ****** ****** *)
 //

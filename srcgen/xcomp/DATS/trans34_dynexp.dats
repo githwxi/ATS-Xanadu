@@ -3990,7 +3990,7 @@ _(*non-F3ARGsome_dyn*) =>
 (
  f4arg_make_node(loc0, F4ARGnone3(f3a0))
 )
-end (* end of [trans34_dfarg] *)
+end (* end of [trans34_f3arg] *)
 
 (* ****** ****** *)
 
@@ -4028,7 +4028,7 @@ prval () = $UN.cast2void(env0) in f4a0
 end
 end
 //
-} (* end of [trans34_dfarglst] *)
+} (* end of [trans34_f3arglst] *)
 //
 (* ****** ****** *)
 //
