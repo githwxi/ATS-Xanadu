@@ -4493,7 +4493,7 @@ D3FUNDECL
 val loc = rcd.loc
 val nam = rcd.nam
 val d2c = rcd.d2c
-val a2g = rcd.a2g
+val f2g = rcd.f2g
 //
 val () =
 tr34env_add_fun0(env0)
@@ -4543,10 +4543,10 @@ sres:
 effs2expopt = rcd.res
 //
 val
-a4g =
+f4g =
 (
 case+
-rcd.a3g of
+rcd.f3g of
 |
 None() =>
 None(*void*)
@@ -4632,8 +4632,8 @@ D4FUNDECL@{
 , nam= nam
 , d2c= d2c
 //
-, a2g= a2g
-, a4g= a4g, res= sres
+, f2g= f2g
+, f4g= f4g, res= sres
 //
 , def= def
 //

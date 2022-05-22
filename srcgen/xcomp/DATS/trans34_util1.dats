@@ -937,10 +937,10 @@ rcd.wtp of
 |
 None((*void*)) =>
 let
-val a3g = rcd.a3g
+val f3g = rcd.f3g
 in
 //
-case+ a3g of
+case+ f3g of
 |
 None() => ((*void*))
 |

@@ -1258,7 +1258,7 @@ tread33_d3fundecl
   val () =
   tread33_d3expopt(rcd.def)
   val () =
-  tread33_f3arglstopt(rcd.a3g)
+  tread33_f3arglstopt(rcd.f3g)
 } where
 {
 //

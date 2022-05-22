@@ -1442,8 +1442,8 @@ D3FUNDECL(rcd) = f3d0
 val loc = rcd.loc
 val nam = rcd.nam
 val d2c = rcd.d2c
-val a2g = rcd.a2g
-val a3g = rcd.a3g
+val f2g = rcd.f2g
+val f3g = rcd.f3g
 val res = rcd.res
 val def = rcd.def
 val rtp = rcd.rtp
@@ -1470,7 +1470,7 @@ D3FUNDECL(
 @{
  loc=loc
 ,nam=nam,d2c=d2c
-,a2g=a2g,a3g=a3g
+,f2g=f2g,f3g=f3g
 ,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
 ) (* D3FUNDECL *)
 end // end of [auxf3d0]

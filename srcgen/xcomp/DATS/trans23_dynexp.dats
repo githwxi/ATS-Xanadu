@@ -2666,9 +2666,9 @@ D2Cfundclst
 , f2ds) = d2cl.node()
 //
 val
-agtp = aux1_f2ds(d2cl, f2ds)
+fgtp = aux1_f2ds(d2cl, f2ds)
 val
-f3ds = aux2_f2ds(d2cl, f2ds, agtp)
+f3ds = aux2_f2ds(d2cl, f2ds, fgtp)
 //
 in
 d3ecl_make_node
@@ -2678,7 +2678,7 @@ end where
 {
 //
 typedef
-a3gt2p =
+f3gt2p =
 (f3arglstopt,t2ype)
 //
 //
@@ -2780,7 +2780,7 @@ aux1_f2d0
 : d2ecl
 , f2d0
 : d2fundecl
-) : a3gt2p = let
+) : f3gt2p = let
 //
 val
 loc0 = d2cl.loc()
@@ -2790,11 +2790,11 @@ D2FUNDECL(rcd) = f2d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
-val a2g = rcd.arg
+val f2g = rcd.f2g
 val res = rcd.res
 //
 //
-val a3g =
+val f3g =
 (
 if
 ishdr(f2d0)
@@ -2802,7 +2802,7 @@ then
 None(*void*)
 else
 Some
-(trans23_farglst(a2g))
+(trans23_farglst(f2g))
 ) : f3arglstopt // end-of-val
 //
 val tres =
@@ -2817,17 +2817,17 @@ EFFS2EXPsome
 //
 in (*in-of-let*)
 //
-case+ a3g of
+case+ f3g of
 |
-None _ => (a3g, tres)
+None _ => (f3g, tres)
 |
 Some _ =>
 let
   val
   tfun =
-  aux0_tfun(a3g, tres)
+  aux0_tfun(f3g, tres)
 in
-  d2var_set_type(nam, tfun); (a3g, tres)
+  d2var_set_type(nam, tfun); (f3g, tres)
 end
 //
 end
@@ -2835,7 +2835,7 @@ and
 aux1_f2ds
 ( d2cl: d2ecl
 , f2ds
-: d2fundeclist): List0(a3gt2p) =
+: d2fundeclist): List0(f3gt2p) =
 (
 case+ f2ds of
 | list_nil() =>
@@ -2851,7 +2851,7 @@ aux2_f2d0
 : d2ecl
 , f2d0
 : d2fundecl
-, agtp: a3gt2p
+, fgtp: f3gt2p
 ) : d3fundecl = let
 //
 val
@@ -2863,18 +2863,18 @@ D2FUNDECL(rcd) = f2d0
 val loc = rcd.loc
 val nam = rcd.nam
 val d2c = rcd.d2c
-val a2g = rcd.arg
+val f2g = rcd.f2g
 val res = rcd.res
 val def = rcd.def
 val wtp = rcd.wtp
 //
-val a3g = (agtp.0)
+val f3g = (fgtp.0)
 //
 val tfn1 = nam.type()
 //
 val ctp =
 (
-case+ a3g of
+case+ f3g of
 |
 None _ =>
 (
@@ -2910,7 +2910,7 @@ case+ wtp of
 ) (* Some *)
 ) : t2pcast // end-of-val
 //
-val rtp = agtp.1
+val rtp = fgtp.1
 //
 val def =
 (
@@ -2926,7 +2926,7 @@ D3FUNDECL(
 @{
  loc=loc
 ,nam=nam,d2c=d2c
-,a2g=a2g,a3g=a3g
+,f2g=f2g,f3g=f3g
 ,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
 ) (* D3FUNDECL *)
 end // end of [let]
@@ -2935,22 +2935,24 @@ aux2_f2ds
 ( d2cl: d2ecl
 , f2ds
 : d2fundeclist
-, agtp
-: List0(a3gt2p)
+, fgtp
+: List0(f3gt2p)
 )
 : d3fundeclist =
 (
 case+ f2ds of
-| list_nil() =>
-  list_nil()
-| list_cons(x0, xs) =>
-  let
+|
+list_nil() =>
+list_nil()
+|
+list_cons(x0, xs) =>
+let
   val-
-  list_cons(y0, ys) = agtp
-  in
+  list_cons(y0, ys) = fgtp
+in
   list_cons
   (aux2_f2d0(d2cl, x0, y0), aux2_f2ds(d2cl, xs, ys))
-  end
+end
 )
 //
 } (* end of [aux_fundclst] *)

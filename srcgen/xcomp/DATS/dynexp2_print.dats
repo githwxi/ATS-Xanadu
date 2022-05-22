@@ -1191,7 +1191,7 @@ fprint!
 , "D2FUNDECL@{"
 , "nam=", rcd.nam, ", "
 , "d2c=", rcd.d2c, ", "
-, "arg=", rcd.arg, ", "
+, "f2g=", rcd.f2g, ", "
 , "res=", rcd.res, ", "
 , "xnm=", rcd.xnm, ", "
 , "def=", rcd.def, ", ", "wtp=", rcd.wtp, "}")

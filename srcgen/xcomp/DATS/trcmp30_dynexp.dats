@@ -3181,7 +3181,7 @@ D3FUNDECL(rcd) = f3d0
 val loc = rcd.loc
 val nam = rcd.nam
 val d2c = rcd.d2c
-val a3g = rcd.a3g
+val f3g = rcd.f3g
 val def = rcd.def
 val rtp = rcd.rtp
 //
@@ -3189,7 +3189,7 @@ val nam = trcmp30_dvar(nam)
 val hdc = trcmp30_dcst(d2c)
 val hfg =
 (
-case+ a3g of
+case+ f3g of
 |
 None() =>
 None()

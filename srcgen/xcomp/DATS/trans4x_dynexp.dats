@@ -926,7 +926,7 @@ tr4xenv_add_fun0(env0)
 val () =
 (
 case+
-rcd.a4g of
+rcd.f4g of
 |
 None() => ()
 |

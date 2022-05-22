@@ -1293,7 +1293,7 @@ D2FUNDECL of @{
   loc= loc_t
 , nam= d2var
 , d2c= d2cst
-, arg= f2arglst
+, f2g= f2arglst
 , res= effs2expopt
 , xnm= g1namopt
 , def= d2expopt, wtp= s2expopt

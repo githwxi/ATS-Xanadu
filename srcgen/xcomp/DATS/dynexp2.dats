@@ -930,10 +930,10 @@ in
   | Some(s2e) => s2e
   | None((*void*)) =>
     (
-      auxarg(arg, res)
+      auxf2g(f2g, res)
     ) where
     {
-      val arg = rcd.arg
+      val f2g = rcd.f2g
       val res = auxres(rcd.res)
     }
 //
@@ -954,7 +954,7 @@ case+ res of
 )
 //
 fun
-auxarg
+auxf2g
 ( arg
 : f2arglst
 , res: s2exp): s2exp =
@@ -964,7 +964,7 @@ case+ arg of
 | list_cons(x0, xs) =>
   let
   val
-  res = auxarg(xs, res)
+  res = auxf2g(xs, res)
   in
   (
   case+

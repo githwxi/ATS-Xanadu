@@ -1141,8 +1141,8 @@ D3FUNDECL(rcd) = f3d0
 //
 val loc = rcd.loc
 val nam = rcd.nam
-val a2g = rcd.a2g
-val a3g = rcd.a3g
+val f2g = rcd.f2g
+val f3g = rcd.f3g
 val res = rcd.res
 val d2c = rcd.d2c
 val def = rcd.def
@@ -1161,20 +1161,20 @@ val () =
 tr3xenv_add_fix1(env0, nam)
 *)
 //
-val a3g =
+val f3g =
 (
-case+ a3g of
+case+ f3g of
 |
 None() =>
 None()
 |
 Some(f3as) =>
 Some(trans3x_farglst(env0, f3as))
-) : f3arglstopt//end-of [val a3g]
+) : f3arglstopt//end-of [val f3g]
 //
 val def =
 (
-case+ a3g of
+case+ f3g of
 |
 None() => def
 |
@@ -1202,7 +1202,7 @@ D3FUNDECL
 @{
  loc=loc
 ,nam=nam,d2c=d2c
-,a2g=a2g,a3g=a3g
+,f2g=f2g,f3g=f3g
 ,res=res,def=def,rtp=rtp,wtp=wtp,ctp=ctp}
 end // end of [auxf3d0]
 //
