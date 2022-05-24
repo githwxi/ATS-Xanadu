@@ -855,7 +855,7 @@ ti2arg_get_loc(x0) = x0.ti2arg_loc
 implement
 ti2arg_get_s2es(x0) = x0.ti2arg_s2es
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 
