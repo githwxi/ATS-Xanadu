@@ -834,7 +834,7 @@ D3FUNDECL of @{
 //
 , def= d3expopt, rtp= t2ype
 , wtp= s2expopt, ctp= t2pcast
-}
+} (* end of [D3FUNDECL] *)
 //
 typedef
 d3fundeclist = List0(d3fundecl)
