@@ -40,7 +40,7 @@
 (* ****** ****** *)
 #define
 ATS_PACKNAME
-"ATS3.XANADU.libxatsopt"
+"ATS3.XANADU.xatsopt"
 (* ****** ****** *)
 //
 %{#
