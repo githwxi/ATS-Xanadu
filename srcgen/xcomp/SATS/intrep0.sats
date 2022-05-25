@@ -464,16 +464,16 @@ htcst_isdat(htc0: htcst): bool
 overload .isdat with htcst_isdat
 //
 fun
-htcst_get_h0conlst
+htcst_get_hconlst
 (htc0: htcst): Option(h0conlst)
 fun
-htcst_set_h0conlst
+htcst_set_hconlst
 (htc0: htcst, hdcs: h0conlst): void
 //
 overload
-.h0conlst with htcst_get_h0conlst
+.h0conlst with htcst_get_hconlst
 overload
-.h0conlst with htcst_set_h0conlst
+.h0conlst with htcst_set_hconlst
 //
 (* ****** ****** *)
 //

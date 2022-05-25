@@ -62,7 +62,7 @@ htcst_struct = @{
 //
 , htcst_abstdf2= h0typopt
 //
-, htcst_h0conlst= Option(h0conlst)
+, htcst_hconlst= Option(h0conlst)
 //
 } (* end of [htcst_tbox] *)
 //
@@ -96,12 +96,12 @@ htcst_set_abstdf2
 (* ****** ****** *)
 //
 implement
-htcst_get_h0conlst
-(htc) = htc->htcst_h0conlst
+htcst_get_hconlst
+(htc) = htc->htcst_hconlst
 implement
-htcst_set_h0conlst
+htcst_set_hconlst
 (htc, h0cs) =
-(htc->htcst_h0conlst := Some(h0cs))
+(htc->htcst_hconlst := Some(h0cs))
 //
 (* ****** ****** *)
 
@@ -118,7 +118,7 @@ ref<htcst_struct>
 //
 , htcst_abstdf2= None()
 //
-, htcst_h0conlst= None()
+, htcst_hconlst= None()
 //
 }
 ) where
