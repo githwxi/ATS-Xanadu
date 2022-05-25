@@ -96,14 +96,6 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/trcmp30.sats"
 //
 (* ****** ****** *)
-//
-#staload "./../SATS/dynexp4.sats"
-#staload "./../SATS/trans34.sats"
-#staload "./../SATS/tread34.sats"
-//
-(* ****** ****** *)
-#staload "./../SATS/trans4x.sats"
-(* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
 
@@ -275,52 +267,6 @@ D3TRANSD@{
 end // end of [trans03_package]
 
 (* ****** ****** *)
-
-implement
-trans34_package
-  (p3kg) = let
-//
-local
-val+D3TRANSD(rcd) = p3kg
-in
-val stadyn = rcd.stadyn
-val source = rcd.source
-val d3csopt = rcd.transd
-end // end of [local]
-//
-val
-d4csopt =
-(
-case+
-d3csopt of
-| None() =>
-  None(*void*)
-| Some(d3cs) =>
-  Some
-  (trans34_envless(d3cs))
-) : Option(d4eclist) // end-of-val
-//
-val
-c1isopt =
-(
-case+
-d4csopt of
-| None() =>
-  None(*void*)
-| Some(d4cs) =>
-  Some
-  (trans4x_envless(d4cs))
-) : Option(c1itmlst) // end-of-val
-//
-in
-D4TRANSD@{
-stadyn= stadyn
-,
-source= source, transd= d4csopt
-}
-end // end of [trans34_package]
-
-(* ****** ****** *)
 //
 implement
 trs03cmp30_package
@@ -331,47 +277,6 @@ trs03cmp30_package
 {
 val p3kg = trans03_package(p0kg)
 } // end of [trs03cmp30_package]
-//
-(* ****** ****** *)
-//
-implement
-trs04cmp30_package
-  (p0kg) = let
-//
-val
-p3kg =
-trans03_package(p0kg)
-//
-val () =
-tread33_package(p3kg)
-val () =
-tread3x_package(p3kg)
-//
-val
-p4kg =
-trans34_package(p3kg)
-//
-(*
-val () =
-tread34_package(p4kg)
-*)
-//
-in(*in-of-let*)
-//
-trcmp30_package(p3kg) where
-{
-(*
-val () =
-let
-val cstr =
-trans4x_package(p4kg)
-in
-xatsopt_cstrnt1_solving(cstr)
-end
-*)
-} (*where*) // trcmp30_package
-//
-end // end of [trs04cmp30_package]
 //
 (* ****** ****** *)
 //

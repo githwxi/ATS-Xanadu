@@ -79,12 +79,6 @@ trans3x.sats \
 tread3x.sats \
 intrep0.sats \
 trcmp30.sats \
-cstrnt0.sats \
-dynexp4.sats \
-trans34.sats \
-tread34.sats \
-cstrnt1.sats \
-trans4x.sats \
 xatsopt.sats \
 
 SRCDATS := \
@@ -176,22 +170,8 @@ trcmp30_util0.dats \
 trcmp30_envmap.dats \
 trcmp30_statyp.dats \
 trcmp30_dynexp.dats \
-cstrnt0.dats \
-cstrnt0_print.dats \
-dynexp4.dats \
-dynexp4_stmap.dats \
-dynexp4_print.dats \
-dynexp4_util0.dats \
-trans34_util1.dats \
-trans34_util2.dats \
-trans34_envmap.dats \
-trans34_dynexp.dats \
-tread34_dynexp.dats \
-cstrnt1.dats \
-cstrnt1_print.dats \
-trans4x_envmap.dats \
-trans4x_dynexp.dats \
 xatsopt_util0.dats xatsopt_main0.dats \
+
 ######
 
 OBJSATS := \

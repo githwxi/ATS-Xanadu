@@ -50,8 +50,6 @@ D1E = "./../SATS/dynexp1.sats"
 D2E = "./../SATS/dynexp2.sats"
 #staload
 D3E = "./../SATS/dynexp3.sats"
-#staload
-D4E = "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 #staload
 HIR = "./../SATS/intrep0.sats"
@@ -65,8 +63,6 @@ typedef
 d2transd = $D2E.d2transd
 typedef
 d3transd = $D3E.d3transd
-typedef
-d4transd = $D4E.d4transd
 //
 typedef
 h0comped = $HIR.h0comped
@@ -90,19 +86,6 @@ trans03_package
 //
 (* ****** ****** *)
 //
-fun
-trans34_package
-  (p3kg: d3transd): d4transd
-//
-(* ****** ****** *)
-(*
-fun
-trans04_package
-  (p0kg: d0parsed): d4transd
-*)
-//
-(* ****** ****** *)
-//
 (*
 HX-2022-02-19:
 [tread30] is skipped
@@ -110,18 +93,6 @@ HX-2022-02-19:
 *)
 fun
 trs03cmp30_package
-  (p0kg: d0parsed): h0comped
-//
-(* ****** ****** *)
-//
-(*
-HX-2022-02-19:
-[tread30] is performed
-[tread3x] is performed
-*)
-//
-fun
-trs04cmp30_package
   (p0kg: d0parsed): h0comped
 //
 (* ****** ****** *)
