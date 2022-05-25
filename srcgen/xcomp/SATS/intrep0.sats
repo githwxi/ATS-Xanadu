@@ -817,11 +817,13 @@ H0Etimp of
 | H0Elet of
   ( h0dclist, h0exp(*sequence*) )
 //
-| H0Eseqn of
-  (h0explst(*semi*), h0exp(*last*))
+|
+H0Eseqn of
+(h0explst(*semi*), h0exp(*last*))
 //
-| H0Etrcd1 of
-  (int(*knd*), int(*npf*), h0explst)
+|
+H0Etrcd1 of
+(int(*knd*), int(*npf*), h0explst)
 //
 | H0Eassgn of
   (h0exp(*l-val*), h0exp(*r-val*))
@@ -1155,10 +1157,10 @@ H0Cabstype of
 (htcst, h0typopt(*def*))
 //
 |
-H0Cexcptcon of ( h0conlst )
+H0Cexcptcon of (h0conlst)
 //
 |
-H0Cdatatype of ( htcstlst )
+H0Cdatatype of (htcstlst)
 //
 |
 H0Cfundclst of

@@ -94,12 +94,6 @@ FS0 = "./../SATS/filsrch.sats"
 #staload "./../SATS/trcmp30.sats"
 //
 (* ****** ****** *)
-//
-#staload "./../SATS/dynexp4.sats"
-#staload "./../SATS/trans34.sats"
-#staload "./../SATS/tread34.sats"
-//
-(* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
 //
@@ -308,28 +302,6 @@ end // end of [local]
 #dynload "./trcmp30_envmap.dats"
 #dynload "./trcmp30_statyp.dats"
 #dynload "./trcmp30_dynexp.dats"
-//
-(* ****** ****** *)
-//
-#dynload "./dynexp4.dats"
-#dynload "./dynexp4_stmap.dats"
-#dynload "./dynexp4_print.dats"
-#dynload "./dynexp4_util0.dats"
-//
-#dynload "./cstrnt0.dats"
-#dynload "./cstrnt0_print.dats"
-//
-#dynload "./trans34_util1.dats"
-#dynload "./trans34_util2.dats"
-#dynload "./trans34_envmap.dats"
-#dynload "./trans34_dynexp.dats"
-#dynload "./tread34_dynexp.dats"
-//
-#dynload "./cstrnt1.dats"
-#dynload "./cstrnt1_print.dats"
-//
-#dynload "./trans4x_envmap.dats"
-#dynload "./trans4x_dynexp.dats"
 //
 (* ****** ****** *)
 //
@@ -968,13 +940,8 @@ println!("//process_fpath: d3cs = ", d3cs)
 //
 (* ****** ****** *)
 //
-(*
 val
 h0pkg = trs03cmp30_package(p0kg)
-*)
-//
-val
-h0pkg = trs04cmp30_package(p0kg)
 //
 (* ****** ****** *)
 //
