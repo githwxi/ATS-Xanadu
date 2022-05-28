@@ -148,7 +148,7 @@ htc1.abstdf2() of
 val () =
 (
 case-
-htc1.h0conlst() of
+htc1.hconlst() of
 (*
 | Some _ => ((*void*))
 *)
@@ -211,7 +211,7 @@ None_vt() => ()
 | ~
 Some_vt(d2cs) =>
 (
-  htc1.h0conlst(hdcs)
+  htc1.hconlst(hdcs)
 ) where
 {
   val hdcs = trcmp30_dconlst(d2cs)

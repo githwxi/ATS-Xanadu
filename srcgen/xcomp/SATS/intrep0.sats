@@ -471,9 +471,9 @@ htcst_set_hconlst
 (htc0: htcst, hdcs: h0conlst): void
 //
 overload
-.h0conlst with htcst_get_hconlst
+.hconlst with htcst_get_hconlst
 overload
-.h0conlst with htcst_set_hconlst
+.hconlst with htcst_set_hconlst
 //
 (* ****** ****** *)
 //

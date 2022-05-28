@@ -138,7 +138,7 @@ implement
 htcst_isdat(x0) =
 (
 case+
-x0.h0conlst() of
+x0.hconlst() of
 Some _ => true | None _ => false
 )
 (* ****** ****** *)
