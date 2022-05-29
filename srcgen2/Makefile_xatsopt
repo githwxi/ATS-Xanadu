@@ -1,0 +1,55 @@
+######
+#
+# For building xatsopt
+#
+######
+
+AR=ar
+CP=cp
+MV=mv
+CC=gcc
+SED=sed
+CPF=cp -f
+MVF=mv -f
+RMF=rm -f
+WCL=wc -l
+
+######
+#
+XATSOPT=$(XATSHOME)/bin/xatsopt
+#
+######
+all::
+######
+
+######
+all:: \
+xbasics_sats
+xbasics_sats: ; $(XATSOPT) --static SATS/xbasics.sats
+######
+all:: \
+xstamp0_sats
+xstamp0_sats: ; $(XATSOPT) --static SATS/xstamp0.sats
+######
+all:: \
+xsymbol_sats
+xsymbol_sats: ; $(XATSOPT) --static SATS/xsymbol.sats
+######
+all:: \
+xlabel0_sats
+xlabel0_sats: ; $(XATSOPT) --static SATS/xlabel0.sats
+######
+all:: \
+locinfo_sats
+locinfo_sats: ; $(XATSOPT) --static SATS/locinfo.sats
+######
+all:: \
+lexing0_sats
+lexing0_sats: ; $(XATSOPT) --static SATS/lexing0.sats
+######
+all:: \
+staexp0_sats
+staexp0_sats: ; $(XATSOPT) --static SATS/staexp0.sats
+######
+
+###### end of [Makefile] ######

@@ -37,9 +37,20 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 
+#staload
+SYM = "./xsymbol.sats"
+
+(* ****** ****** *)
+datatype label =
+| LABINT of int
+| LABSYM of $SYM.sym_t
+(* ****** ****** *)
+#typedef lab_t = label
+(* ****** ****** *)
+(*
 #abstbox label_tbox
 #typedef label = label_tbox
-
+*)
 (* ****** ****** *)
 
 (* end of [xatsopt_xlabel0.sats] *)

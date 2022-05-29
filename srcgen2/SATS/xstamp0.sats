@@ -36,11 +36,10 @@
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
-#abstbox loctn_tbox
-#typedef loctn = loctn_tbox
-#typedef loc_t = loctn_tbox
-
+//
+#abstbox stamp_tbox
+#typedef stamp = stamp_tbox
+//
 (* ****** ****** *)
 
-(* end of [xatsopt_locinfo.sats] *)
+(* end of [xatsopt_xstamp0.sats] *)

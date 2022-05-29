@@ -42,8 +42,8 @@ LAB = "./xlabel0.sats"
 #staload
 LOC = "./locinfo.sats"
 //
-#typedef label = $LAB.label
-#typedef loctn = $LOC.loctn
+#typedef lab_t = $LAB.lab_t
+#typedef loc_t = $LOC.loc_t
 //
 (* ****** ****** *)
 //
@@ -52,17 +52,18 @@ SYM = "./xsymbol.sats"
 #staload
 LEX = "./lexing0.sats"
 //
+#typedef sym_t = $SYM.sym_t
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
 //
-#abstbox t0int_tbox = ptr
-#abstbox t0chr_tbox = ptr
-#abstbox t0flt_tbox = ptr
-#abstbox t0str_tbox = ptr
+#abstbox t0int_tbox // ptr
+#abstbox t0chr_tbox // ptr
+#abstbox t0flt_tbox // ptr
+#abstbox t0str_tbox // ptr
 //
-#abstbox i0dnt_tbox = ptr
-#abstbox l0abl_tbox = ptr
+#abstbox i0dnt_tbox // ptr
+#abstbox l0abl_tbox // ptr
 //
 (* ****** ****** *)
 //

@@ -78,6 +78,7 @@ fun sortpol(x: int): int // -1,0,1
 *)
 //
 #define VTBXSORT 3 // 00011
+#define VTFTSORT 2 // 00010
 #define VWTPSORT 2 // 00010
 (*
 #define VTYPESORT 2 // 00010
