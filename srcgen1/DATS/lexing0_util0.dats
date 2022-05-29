@@ -41,7 +41,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
-"./../../xutil/SATS/mylibc.sats"
+"./../XUTIL/SATS/mylibc.sats"
 //
 (* ****** ****** *)
 //
@@ -1706,11 +1706,11 @@ end // end of [fpath_tokenize]
 local
 
 #staload
-"./../../xutil/SATS/cblist.sats"
+"./../XUTIL/SATS/cblist.sats"
 #staload
-"./../../xutil/SATS/Posix/cblist.sats"
+"./../XUTIL/SATS/Posix/cblist.sats"
 #staload _ =
-"./../../xutil/DATS/Posix/cblist.dats"
+"./../XUTIL/DATS/Posix/cblist.dats"
 
 in (* in-of-local *)
 

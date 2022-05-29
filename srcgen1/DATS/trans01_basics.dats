@@ -48,7 +48,7 @@ UN_ptr_set with $UN.ptr0_set
 (* ****** ****** *)
 //
 #staload
-"./../../xutil/SATS/mylibc.sats"
+"./../XUTIL/SATS/mylibc.sats"
 //
 (* ****** ****** *)
 //
