@@ -36,10 +36,28 @@
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-typedef int0 = sint
-typedef btf0 = bool
-typedef chr0 = char
-typedef str0 = string
+#typedef int0 = sint
+#typedef btf0 = bool
+#typedef chr0 = char
+#typedef str0 = string
+(* ****** ****** *)
+//
+datatype funkind =
+//
+| FNKfn0 // nonrec fun
+| FNKfn1 // genrec fun
+| FNKfn2 // tailrec fun
+| FNKfnx // tailopt fun
+| FNKfun // ex-specified
+//
+| FNKpraxi // proof axiom
+//
+| FNKprfn0 // nonrec prfun
+| FNKprfn1 // genrec prfun
+| FNKprfun // ex-specified
+//
+| FNKfcast // no-op casting
+//
 (* ****** ****** *)
 
 (* end of [xatsopt_xbasics.sats] *)

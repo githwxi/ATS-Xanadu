@@ -430,7 +430,6 @@ val () = myins("#absopen", T_ABSOPEN)
 val () = myins("excptcon", T_EXCPTCON)
 //
 val () = myins("datasort", T_DATASORT)
-//
 val () = myins("dataprop", T_DATAPROP_)
 val () = myins("dataview", T_DATAVIEW_)
 val () = myins("datatype", T_DATATYPE_)
