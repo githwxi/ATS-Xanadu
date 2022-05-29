@@ -191,4 +191,4 @@ then g_copy<a>(x) else g_copy<a>(y)
 
 (* ****** ****** *)
 
-(* end of [gord.dats] *)
+(* end of [prelude_gord.dats] *)

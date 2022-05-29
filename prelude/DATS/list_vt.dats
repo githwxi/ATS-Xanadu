@@ -1013,4 +1013,4 @@ glseq_map0_rlist<list_vt(a)><a> = list_vt_maprev0<a>
 //
 (* ****** ****** *)
 
-(* end of [list_vt.dats] *)
+(* end of [prelude_list_vt.dats] *)

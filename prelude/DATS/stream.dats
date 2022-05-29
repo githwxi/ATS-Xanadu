@@ -779,4 +779,4 @@ strmcon_vt_cons
 
 (* ****** ****** *)
 
-(* end of [stream.dats] *)
+(* end of [prelude_stream.dats] *)
