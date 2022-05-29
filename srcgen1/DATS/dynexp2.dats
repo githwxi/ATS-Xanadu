@@ -576,8 +576,8 @@ d2exp_make_node(loc0, D2Etop(tok))
 //
 implement
 d2exp_var
-(loc0, d2v) =
-d2exp_make_node(loc0, D2Evar(d2v))
+(loc0, d2v0) =
+d2exp_make_node(loc0, D2Evar(d2v0))
 //
 (* ****** ****** *)
 //

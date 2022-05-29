@@ -2012,6 +2012,82 @@ end // end of [auxtrcd22]
 
 (* ****** ****** *)
 
+fun
+auxqual0
+( s1e0
+: s1exp): s2exp = let
+//
+val
+loc0 = s1e0.loc()
+val-
+S1Equal
+( tok0
+, s1e1) = s1e0.node()
+//
+fun
+auxqid
+( qua: token
+, s1e: s1exp): s2exp =
+let
+//
+val-
+S1Eid0(sym) = s1e.node()
+//
+val
+opt =
+the_sexpenv_qfind(qua, sym)
+//
+in
+case+ opt of
+| ~
+None_vt() => s2exp_none1(s1e0)
+| ~
+Some_vt(s2i) => auxqid_some(s2i)
+end // end of [auxqid]
+//
+and
+auxqid_some
+( s2i0
+: s2itm): s2exp =
+(
+case+ s2i0 of
+| S2ITMvar(x0) => auxqid_s2var(x0)
+| S2ITMcst(xs) => auxqid_s2cst(xs)
+| S2ITMfmodenv _ => s2exp_none1(s1e0)
+) (* end of [auxqid_some] *)
+and
+auxqid_s2var
+( s2v0
+: s2var): s2exp =
+(
+  s2exp_var(s2v0)
+)
+and
+auxqid_s2cst
+( s2cs
+: s2cstlst): s2exp =
+(
+//
+case- s2cs of
+(*
+|
+list_nil() => s2exp_none1(s1e0)
+*)
+|
+list_cons(s2c1, _) => s2exp_cst(s2c1)
+//
+) (* end of [auxqid_s2cst] *)
+
+in
+//
+case+
+s1e1.node() of
+| S1Eid0 _ => auxqid(tok0, s1e1)
+| _(*else*) => s2exp_none1(s1e0)
+end (*let*) // end of [auxqual0]
+
+(* ****** ****** *)
+
 in (* in-of-local *)
 
 implement
@@ -2078,6 +2154,9 @@ s1e0.node() of
   in
     trans12_sexp_ck(s1e1, s2t2)
   end
+//
+| S1Equal
+  (tok0, d1e1) => auxqual0(s1e0)
 //
 | S1Enone(loc) => s2exp_none1(s1e0)
 //
