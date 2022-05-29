@@ -36,44 +36,10 @@
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-#staload
-LAB = "./xlabel0.sats"
-#staload
-LOC = "./locinfo.sats"
-//
-#typedef label = $LAB.label
-#typedef loctn = $LOC.loctn
-//
-(* ****** ****** *)
-//
-#staload
-SYM = "./xsymbol.sats"
-#staload
-LEX = "./lexing0.sats"
-//
-#typedef token = $LEX.token
-//
-(* ****** ****** *)
-//
-#abstbox t0int_tbox = ptr
-#abstbox t0chr_tbox = ptr
-#abstbox t0flt_tbox = ptr
-#abstbox t0str_tbox = ptr
-//
-#abstbox i0dnt_tbox = ptr
-#abstbox l0abl_tbox = ptr
-//
-(* ****** ****** *)
-//
-#typedef t0int = t0int_tbox
-#typedef t0chr = t0chr_tbox
-#typedef t0flt = t0flt_tbox
-#typedef t0str = t0str_tbox
-//
-#typedef i0dnt = i0dnt_tbox
-#typedef l0abl = l0abl_tbox
-//
+
+#abstbox label_tbox
+#typedef label = label_tbox
+
 (* ****** ****** *)
 
-(* end of [xatsopt_staexp0.sats] *)
+(* end of [xatsopt_xlabel0.sats] *)
