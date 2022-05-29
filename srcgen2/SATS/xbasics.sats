@@ -36,7 +36,10 @@
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
+typedef int0 = sint
+typedef btf0 = bool
+typedef chr0 = char
+typedef str0 = string
 (* ****** ****** *)
 
 (* end of [xatsopt_xbasics.sats] *)
