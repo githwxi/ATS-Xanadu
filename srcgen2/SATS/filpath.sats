@@ -37,6 +37,8 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 typedef int0 = sint
+typedef btf0 = book
+typedef chr0 = char
 typedef str0 = string
 (* ****** ****** *)
 //
