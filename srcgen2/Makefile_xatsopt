@@ -55,5 +55,9 @@ all:: \
 staexp0_sats
 staexp0_sats: ; $(XATSOPT) --static SATS/staexp0.sats
 ######
+all:: \
+dynexp0_sats
+dynexp0_sats: ; $(XATSOPT) --static SATS/dynexp0.sats
+######
 
 ###### end of [Makefile] ######
