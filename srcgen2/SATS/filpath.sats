@@ -36,11 +36,29 @@
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+typedef int0 = sint
+typedef str0 = string
+(* ****** ****** *)
 //
-#abstbox loctn_tbox
-#typedef loctn = loctn_tbox
-#typedef loc_t = loctn_tbox
+fun theDirSep_get(): char
+fun theCurDir_get(): str0
+fun theParDir_get(): str0
+//
+(* ****** ****** *)
+//
+fun
+fpath_normq(fp: str0): bool
+fun
+fpath_normize(fp: str0): str0
+//
+(* ****** ****** *)
+//
+#abstbox fpath_tbox // ptr
+//
+#typedef fpath = fpath_tbox
+#typedef fpathlst = list(fpath)
+#typedef fpathopt = optn(fpath)
 //
 (* ****** ****** *)
 
-(* end of [xatsopt_locinfo.sats] *)
+(* end of [xatsopt_filpath.sats] *)

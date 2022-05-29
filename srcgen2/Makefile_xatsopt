@@ -40,6 +40,10 @@ xlabel0_sats
 xlabel0_sats: ; $(XATSOPT) --static SATS/xlabel0.sats
 ######
 all:: \
+filpath_sats
+filpath_sats: ; $(XATSOPT) --static SATS/filpath.sats
+######
+all:: \
 locinfo_sats
 locinfo_sats: ; $(XATSOPT) --static SATS/locinfo.sats
 ######
