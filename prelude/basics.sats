@@ -988,7 +988,7 @@ datatype
 strmcon(a:type+) =
 | strmcon_nil of ((*void*))
 | strmcon_cons of (a, stream(a))
-and
+datatype
 strxcon(a:type+) =
 | strxcon_cons of (a, streax(a))
 //
@@ -1004,7 +1004,7 @@ datavwtp
 strmcon_vt(a:vwtp+) =
 | strmcon_vt_nil of ((*void*))
 | strmcon_vt_cons of (a, stream_vt(a))
-and
+datavwtp
 strxcon_vt(a:vwtp+) =
 | strxcon_vt_cons of (a, streax_vt(a))
 //

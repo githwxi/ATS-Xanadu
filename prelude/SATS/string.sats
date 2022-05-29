@@ -42,12 +42,22 @@
 // Note that string_vt is included
 //
 (* ****** ****** *)
+typedef
+str0 = string0
+typedef
+str1 = string1
+(* ****** ****** *)
+vwtpdef
+str0_vt = string0_vt
+vwtpdef
+str1_vt = string1_vt
+(* ****** ****** *)
 //
 typedef cgtz =
 [c:char|c > 0]char(c)
 //
 (* ****** ****** *)
-
+//
 prfun
 string_lemma
 {n:int}
@@ -60,7 +70,7 @@ prfun
 string_vt_lemma
 {n:int}
 (!string_vt(n)): [n>=0] void
-
+//
 (* ****** ****** *)
 //
 (*
