@@ -30,6 +30,13 @@
 // For functional lin-streams
 //
 (* ****** ****** *)
+sexpdef
+strm_vt = stream_vt
+sexpdef
+strq_vt = streaq_vt
+sexpdef
+strx_vt = streax_vt
+(* ****** ****** *)
 //
 fun
 <a:t0>
