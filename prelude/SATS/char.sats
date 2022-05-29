@@ -162,4 +162,4 @@ sint with sint_make_char of 1000
 //
 (* ****** ****** *)
 
-(* end of [char.sats] *)
+(* end of [prelude_char.sats] *)

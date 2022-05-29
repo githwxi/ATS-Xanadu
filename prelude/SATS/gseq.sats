@@ -1042,4 +1042,4 @@ x2iforeach_col with gseq_x2iforeach_col of 0100
 
 (* ****** ****** *)
 
-(* end of [gseq.sats] *)
+(* end of [prelude_gseq.sats] *)

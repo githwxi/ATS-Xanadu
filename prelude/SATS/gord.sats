@@ -211,4 +211,4 @@ gl_min11(x: !a, y: !a): (a)
 //
 (* ****** ****** *)
 
-(* end of [gord.sats] *)
+(* end of [prelude_gord.sats] *)

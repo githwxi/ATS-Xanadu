@@ -355,4 +355,4 @@ cons with list_cons of 000
 
 (* ****** ****** *)
 
-(* end of [list.sats] *)
+(* end of [prelude_list.sats] *)

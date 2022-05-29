@@ -97,4 +97,4 @@ not with bool_neg of 1000
 #symload ifval with bool_ifval of 1000
 (* ****** ****** *)
 
-(* end of [bool.sats] *)
+(* end of [prelude_bool.sats] *)
