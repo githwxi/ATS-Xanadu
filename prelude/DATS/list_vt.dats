@@ -187,7 +187,7 @@ list_vt_cons(_, xs) => loop(xs, ln+1)
 
 (* ****** ****** *)
 //
-implement
+impltmp
 <a>(*tmp*)
 list_vt_extend
   (xs, x0) =
@@ -197,7 +197,7 @@ list_vt_sing<a>(x0) in
 list_vt_append<a>(xs, ys)
 end // list_vt_extend
 //
-implement
+impltmp
 <a>(*tmp*)
 list_vt_append
   (xs, ys) =
@@ -235,7 +235,7 @@ end // end of [list_vt_cons]
 //
 (* ****** ****** *)
 
-implement
+impltmp
 <a>(*tmp*)
 list_vt_concat(xss) =
 let
@@ -306,7 +306,7 @@ list_vt_rappend<a>(xs, list_vt_nil())
 
 (* ****** ****** *)
 
-implement
+impltmp
 <a>(*tmp*)
 list_vt_rappend
   (xs, ys) =
@@ -341,7 +341,7 @@ end // end of [list_vt_cons]
 
 (* ****** ****** *)
 
-implement
+impltmp
 <a>(*tmp*)
 list_vt_rappend10
   (xs, ys) =
@@ -375,7 +375,7 @@ end // end of [list_vt_cons]
 
 (* ****** ****** *)
 
-implement
+impltmp
 <a>(*tmp*)
 list_vt_rappend11
   (xs, ys) =

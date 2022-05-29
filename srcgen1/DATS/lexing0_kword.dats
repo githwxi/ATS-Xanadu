@@ -403,15 +403,26 @@ val () = myins("#tboxdef", T_TBOXDEF_)
 val () = myins("#typedef", T_TYPEDEF_)
 val () = myins("#vwtpdef", T_VWTPDEF_)
 //
+val () = myins("abstype", T_ABSTYPE_)
+val () = myins("absprop", T_ABSPROP_)
+val () = myins("absview", T_ABSVIEW_)
+val () = myins("abstbox", T_ABSTBOX_)
+val () = myins("abstflt", T_ABSTFLT_)
+val () = myins("absvtbx", T_ABSVTBX_)
+val () = myins("absvtft", T_ABSVTFT_)
+val () = myins("absvwtp", T_ABSVWTP_)
+//
 val () = myins("#abstype", T_ABSTYPE_)
 val () = myins("#absprop", T_ABSPROP_)
 val () = myins("#absview", T_ABSVIEW_)
 val () = myins("#abstbox", T_ABSTBOX_)
 val () = myins("#abstflt", T_ABSTFLT_)
-//
 val () = myins("#absvtbx", T_ABSVTBX_)
 val () = myins("#absvtft", T_ABSVTFT_)
 val () = myins("#absvwtp", T_ABSVWTP_)
+//
+val () = myins("absimpl", T_ABSIMPL)
+val () = myins("absopen", T_ABSOPEN)
 //
 val () = myins("#absimpl", T_ABSIMPL)
 val () = myins("#absopen", T_ABSOPEN)
