@@ -43,11 +43,11 @@ datatype tnode =
 | T_ERR of ((*void*))
 //
 (* ****** ****** *)
-#abstbox token_tbox = ptr
+#abstbox token_tbox // ptr
 #typedef token = token_tbox
 (* ****** ****** *)
-#typedef tokenlst = List0(token)
-#typedef tokenopt = Option(token)
+#typedef tokenlst = list(token)
+#typedef tokenopt = optn(token)
 (* ****** ****** *)
 
 (* end of [xatsopt_lexing0.sats] *)

@@ -36,7 +36,12 @@
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
+//
+#abstbox symbl_tbox // ptr
+//
+#typedef symbl = symbl_tbox
+#typedef sym_t = symbl_tbox
+//
 (* ****** ****** *)
 
 (* end of [xatsopt_xsymbol.sats] *)
