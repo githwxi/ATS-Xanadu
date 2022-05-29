@@ -661,4 +661,4 @@ reverse with string_vt_reverse of 1000
 
 (* ****** ****** *)
 
-(* end of [string.sats] *)
+(* end of [prelude_string.sats] *)

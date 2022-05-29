@@ -678,4 +678,4 @@ rlistize with a1ref_rlistize of 1000
 rlistize0 with a1ref_rlistize0 of 1000
 (* ****** ****** *)
 
-(* end of [array.sats] *)
+(* end of [prelude_array.sats] *)

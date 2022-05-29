@@ -338,4 +338,4 @@ streamize with stream_streamize of 1000
 //
 (* ****** ****** *)
 
-(* end of [stream.sats] *)
+(* end of [prelude_stream.sats] *)

@@ -196,4 +196,4 @@ pred with g_pred of 0101
 //
 (* ****** ****** *)
 
-(* end of [gnum.sats] *)
+(* end of [prelude_gnum.sats] *)
