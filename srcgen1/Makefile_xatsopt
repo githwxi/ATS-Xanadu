@@ -265,7 +265,7 @@ clean:: ; $(RMF) xatsopt_dats.o
 clean:: ; $(RMF) xatsopt_dats.c
 ######
 cleanall:: clean
-cleanall:: ; $(RMF) ./xatsopt
+cleanall:: ; $(RMF) ./.depend
 cleanall:: ; $(RMF) ./../bin/xatsopt
 cleanall:: ; $(RMF) ./../bin/xatsopt.sh
 cleanall:: ; $(RMF) ./../lib/libxatsopt.a
