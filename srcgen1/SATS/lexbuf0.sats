@@ -44,9 +44,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #staload CBS =
-"./../../xutil/SATS/cblist.sats"
+"./../XUTIL/SATS/cblist.sats"
 //
-typedef cblist = $CBS.cblist
+  typedef cblist = $CBS.cblist
 //
 (* ****** ****** *)
 //
