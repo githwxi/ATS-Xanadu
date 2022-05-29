@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 #define
-ATS_PACKNAME "ATS3.XANADU.libxatsopt"
+ATS_PACKNAME "ATS3.XANADU.xatsopt"
 (* ****** ****** *)
 //
 datatype
