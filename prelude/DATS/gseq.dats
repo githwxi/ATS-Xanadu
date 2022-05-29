@@ -1263,7 +1263,7 @@ end // gseq_append_stream
 //
 (* ****** ****** *)
 //
-implement
+impltmp
 <cz>(*tmp*)
 gseq_concat_string
   (css) = let
