@@ -1789,4 +1789,4 @@ glseq_streamize
 //
 (* ****** ****** *)
 
-(* end of [stream_vt.dats] *)
+(* end of [prelude_stream_vt.dats] *)

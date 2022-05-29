@@ -181,4 +181,4 @@ x2foreach_col$end() = ((*void*))
 //
 (* ****** ****** *)
 
-(* end of [gbas.dats] *)
+(* end of [prelude_gbas.dats] *)

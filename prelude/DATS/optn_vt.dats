@@ -199,4 +199,4 @@ impltmp
 glseq_streamize<optn_vt(a)><a> = optn_vt_streamize
 (* ****** ****** *)
 
-(* end of [optn_vt.dats] *)
+(* end of [prelude_optn_vt.dats] *)

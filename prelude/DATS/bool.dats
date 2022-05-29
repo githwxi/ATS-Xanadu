@@ -81,4 +81,4 @@ impltmp
 g_print<bool> = bool_print< >
 (* ****** ****** *)
 
-(* end of [bool.dats] *)
+(* end of [prelude_bool.dats] *)

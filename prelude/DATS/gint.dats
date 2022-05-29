@@ -339,4 +339,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [gint.dats] *)
+(* end of [prelude_gint.dats] *)
