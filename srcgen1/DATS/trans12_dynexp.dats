@@ -3266,8 +3266,10 @@ the_dexpenv_qfind(qua, sym)
 //
 in
 case+ opt of
-| ~None_vt() => d2exp_none1(d1e0)
-| ~Some_vt(d2i) => auxqid_some(d2i)
+| ~
+None_vt() => d2exp_none1(d1e0)
+| ~
+Some_vt(d2i) => auxqid_some(d2i)
 end // end of [auxqid]
 //
 and
@@ -3275,7 +3277,7 @@ auxqid_some
 ( d2i0
 : d2itm): d2exp =
 (
-case- d2i0 of
+case+ d2i0 of
 | D2ITMvar(x0) => auxqid_d2var(x0)
 | D2ITMcon(xs) => auxqid_d2con(xs)
 | D2ITMcst(xs) => auxqid_d2cst(xs)
