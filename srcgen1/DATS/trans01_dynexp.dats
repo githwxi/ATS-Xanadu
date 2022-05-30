@@ -2500,7 +2500,7 @@ val fxty =
 (
 ifcase
 //
-| knd=INFIX =>
+| knd=INFIX0 =>
   $FIX.FIXTYinf(pval, ASSOCnon)
 | knd=INFIXL =>
   $FIX.FIXTYinf(pval, ASSOClft)
@@ -2508,7 +2508,7 @@ ifcase
   $FIX.FIXTYinf(pval, ASSOCrgt)
 //
 | knd=PREFIX => $FIX.FIXTYpre(pval)
-| knd=POSTFIX => $FIX.FIXTYpos(pval)
+| knd=PSTFIX => $FIX.FIXTYpos(pval)
 //
 | _(*deadcode*) => $FIX.FIXTYnon((*void*))
 //

@@ -89,6 +89,8 @@ T_FCAST_ = T_FUN(FNKfcast)
 //
 macdef
 T_VAL_ = T_VAL(VLKval)
+macdef
+T_VAR_ = T_VAR((*nil*))
 //
 macdef
 T_VALP_ = T_VAL(VLKvalp)
@@ -97,6 +99,8 @@ T_VALN_ = T_VAL(VLKvaln)
 //
 macdef
 T_PRVAL_ = T_VAL(VLKprval)
+macdef
+T_PRVAR_ = T_VAL(VLKprval)
 //
 (* ****** ****** *)
 //
@@ -356,27 +360,31 @@ val () = myins("endwhere", T_ENDWHERE)
 val () = myins("endloc", T_ENDLOCAL)
 val () = myins("endlocal", T_ENDLOCAL)
 //
+(*
 val () = myins("fn", T_FN_)
+*)
+//
+val () = myins("val", T_VAL_)
+val () = myins("var", T_VAR_)
+//
 val () = myins("fn0", T_FN0_)
-val () = myins("fnx", T_FNX_)
 val () = myins("fn1", T_FN1_)
+val () = myins("fnx", T_FNX_)
 val () = myins("fun", T_FUN_)
 //
+(*
 val () = myins("prfn", T_PRFN_)
+*)
 val () = myins("prfn0", T_PRFN0_)
 val () = myins("prfn1", T_PRFN1_)
 val () = myins("prfun", T_PRFUN_)
 val () = myins("praxi", T_PRAXI_)
 //
+val () = myins("prval", T_PRVAL_)
+val () = myins("prvar", T_PRVAR_)
+//
 val () = myins("fcast", T_FCAST_)
 //
-val () = myins("val", T_VAL_)
-val () = myins("var", T_VAR())
-//
-val () = myins("prval", T_PRVAL_)
-(*
-val () = myins("prvar", T_PRVAR_)
-*)
 //
 (*
 //
@@ -511,10 +519,10 @@ myins("$delay_vt", T_DLR_delay_vt)
 //
 *)
 //
-//
-val () = myins("$exists", T_DLR_EXISTS)
-val () = myins("$exname", T_DLR_EXNAME)
-//
+val () =
+myins("$exists", T_DLR_EXISTS)
+val () =
+myins("$exname", T_DLR_EXNAME)
 //
 val () =
   myins("#if", T_SRP_IFEXP_)
