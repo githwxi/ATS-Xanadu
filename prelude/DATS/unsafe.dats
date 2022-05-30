@@ -11,16 +11,16 @@ UN =
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 $UN.p2tr_get
 (p0) = $eval(p0)
-impltmp
+#impltmp
 <a>(*tmp*)
 $UN.p2tr_set
 (p0, x0) = $eval(p0) := x0
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 $UN.p2tr_ret
 (p0, x0) =
@@ -30,7 +30,7 @@ end
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 $UN.p2tr_set_list_nil
   (p0) =
@@ -39,12 +39,12 @@ $UN.p2tr_set
 <list(a)>(p0, list_nil())
 )
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 $UN.p2tr_set_list_cons
   (p0, x0) =
 let
-typedef
+#typedef
 xs = list(a)
 val xs = 
 $UN.p2tr_get<xs>(p0)
@@ -54,7 +54,7 @@ end
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 $UN.p2tr_set_list_vt_nil
   (p0) =
@@ -62,12 +62,12 @@ $UN.p2tr_set_list_vt_nil
 $UN.p2tr_set
 <list_vt(a)>(p0, list_vt_nil())
 )
-impltmp
+#impltmp
 <a>(*tmp*)
 $UN.p2tr_set_list_vt_cons
   (p0, x0) =
 let
-typedef
+#typedef
 xs = list_vt(a)
 val xs = 
 $UN.p2tr_get<xs>(p0)

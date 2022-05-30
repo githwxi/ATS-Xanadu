@@ -9,10 +9,10 @@
 // HX-2020-02-26:
 // this idea is abandoned!!!
 //
-absprop
+#absprop
 gseq_prop
 (xs: t0, x0: t0)
-propdef
+#propdef
 gseq
 ( xs: t0
 , x0: t0) = gseq_prop(x0, xs)

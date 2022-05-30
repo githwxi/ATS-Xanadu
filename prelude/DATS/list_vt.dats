@@ -17,11 +17,11 @@ UN =
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 list_vt_nil_
 () = list_vt_nil()
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_cons_
 (x0, xs) =
@@ -29,14 +29,14 @@ list_vt_cons(x0, xs)
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_sing(x0) =
 list_vt_cons(x0, list_vt_nil())
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_pair(x0, x1) =
 list_vt_cons(x0,
@@ -44,7 +44,7 @@ list_vt_cons(x1, list_vt_nil()))
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_make_nval
   (n0, x0) = let
@@ -76,7 +76,7 @@ end (* end of [list_vt_make_nval] *)
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 list_vt_nilq
   (xs) =
@@ -85,7 +85,7 @@ case+ xs of
 | !list_vt_nil() => true
 | !list_vt_cons(_, _) => false
 )
-impltmp
+#impltmp
 <>(*tmp*)
 list_vt_consq
   (xs) =
@@ -97,7 +97,7 @@ case+ xs of
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_free
   {n}(xs) =
@@ -121,7 +121,7 @@ end
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_copy(xs) =
 let
@@ -156,14 +156,14 @@ end // end of [list_vt_copy]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_rcopy(xs) =
 list_vt_rappend10<a>(xs, list_vt_nil())
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_length
   {n}(xs) =
@@ -187,7 +187,7 @@ list_vt_cons(_, xs) => loop(xs, ln+1)
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_extend
   (xs, x0) =
@@ -197,7 +197,7 @@ list_vt_sing<a>(x0) in
 list_vt_append<a>(xs, ys)
 end // list_vt_extend
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_append
   (xs, ys) =
@@ -235,7 +235,7 @@ end // end of [list_vt_cons]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_concat(xss) =
 let
@@ -299,14 +299,14 @@ end // end of [let]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_reverse(xs) =
 list_vt_rappend<a>(xs, list_vt_nil())
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_rappend
   (xs, ys) =
@@ -341,7 +341,7 @@ end // end of [list_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_rappend10
   (xs, ys) =
@@ -375,7 +375,7 @@ end // end of [list_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_rappend11
   (xs, ys) =
@@ -415,12 +415,12 @@ HX-2019-10:
 Quite an informative example:
 *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_tabulate_cfr
   {n}(n0, f0) = let
 //
-impltmp
+#impltmp
 tabulate$fopr<a><n>(i0) = f0(i0)
 //
 in
@@ -429,7 +429,7 @@ end // end of [list_vt_tabulate_cfr]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_forall0
   (xs) =
@@ -464,7 +464,7 @@ end // end of [list_vt_cons]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_forall1
   (xs) =
@@ -493,7 +493,7 @@ end // end of [list_vt_cons]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_foreach0
   (xs) =
@@ -518,7 +518,7 @@ end // end of [list_vt_cons]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_foreach1
   (xs) =
@@ -543,17 +543,17 @@ end // end of [list_vt_cons]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_listize0(xs) = xs
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_rlistize0(xs) =
   list_vt_reverse< a >( xs )
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_streamize(xs) =
 let
@@ -575,7 +575,7 @@ in auxmain(xs) end // list_vt_streamize
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <x0><y0>
 list_vt_map0(xs) = let
 //
@@ -611,7 +611,7 @@ end (* end of [list_map0_vt] *)
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 list_vt_maprev0
   (xs) =
@@ -649,12 +649,12 @@ end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_mergesort
   (xs) = let
 //
-typedef
+#typedef
 xs = list_vt(a)
 //
 fnx
@@ -750,12 +750,12 @@ end (* end of [list_vt_mergesort] *)
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_permutize
   (xs) = let
 //
-typedef
+#typedef
 xs(n:int) = list_vt(a, n)
 //
 fun
@@ -810,9 +810,9 @@ val res1 =
 stream_vt_map0
 <xs(n1)><xs(n0)>(res1) where
 {
-sexpdef n0 = i+j
-sexpdef n1 = n0-1
-impltmp
+#sexpdef n0 = i+j
+#sexpdef n1 = n0-1
+#impltmp
 map0$fopr
 <xs(n1)><xs(n0)>(xx) = list_vt_cons(x0, xx)
 }
@@ -836,7 +836,7 @@ end (* end of [list_vt_permutize] *)
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_suffixq00
   (xs1, xs2) =
@@ -851,7 +851,7 @@ end // end of [list_vt_suffixq00]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_vt_prefixq00
   (xs1, xs2) =
@@ -900,39 +900,39 @@ list_vt_cons(x1, xs1) =>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:vt}
 glseq_nilq
 <list_vt(a)><a> = list_vt_nilq
-impltmp
+#impltmp
 {a:vt}
 glseq_consq
 <list_vt(a)><a> = list_vt_consq
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:vt}(*tmp*)
 g_free
 <list_vt(a)> = list_vt_free<a>
 //
-impltmp
+#impltmp
 {a:vt}(*tmp*)
 g_copy
 <list_vt(a)> = list_vt_copy<a>
 //
-impltmp
+#impltmp
 {a:vt}
 glseq_copy
 <list_vt(a)><a> = list_vt_copy<a>
-impltmp
+#impltmp
 {a:vt}
 glseq_free
 <list_vt(a)><a> = list_vt_free<a>
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {a:vt}
 glseq_uncons_raw
 <list_vt(a)><a>(xs) =
@@ -942,11 +942,11 @@ val () = xs := xs.1 in x0 end
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:vt}
 glseq_listize0
 <list_vt(a)><a>(xs) = xs
-impltmp
+#impltmp
 {a:vt}
 glseq_rlistize0
 <list_vt(a)><a>(xs) =
@@ -954,27 +954,27 @@ glseq_rlistize0
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:vt}
 gl_print1<list_vt(a)> =
 glseq_print1<list_vt(a)><a>
 //
-impltmp
+#impltmp
 {a:vt}
 glseq_print$beg
 <list_vt(a)><a>() = string_print("(")
-impltmp
+#impltmp
 {a:vt}
 glseq_print$end
 <list_vt(a)><a>() = string_print(")")
-impltmp
+#impltmp
 {a:vt}
 glseq_print$sep
 <list_vt(a)><a>() = string_print(",")
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {a:vt}
 glseq_streamize
 <list_vt(a)><a>(xs) =
@@ -982,32 +982,32 @@ list_vt_streamize<a>( xs )
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:vt}
 glseq_forall0
 <list_vt(a)><a> = list_vt_forall0<a>
-impltmp
+#impltmp
 {a:vt}
 glseq_forall1
 <list_vt(a)><a> = list_vt_forall1<a>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:vt}
 glseq_foreach0
 <list_vt(a)><a> = list_vt_foreach0<a>
-impltmp
+#impltmp
 {a:vt}
 glseq_foreach1
 <list_vt(a)><a> = list_vt_foreach1<a>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:vt}
 glseq_map0_list<list_vt(a)><a> = list_vt_map0<a>
-impltmp
+#impltmp
 {a:vt}
 glseq_map0_rlist<list_vt(a)><a> = list_vt_maprev0<a>
 //

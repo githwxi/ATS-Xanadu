@@ -37,28 +37,28 @@
 //
 (* ****** ****** *)
 
-abstype
+#abstype
 sint8_type(i: int)
-abstype
+#abstype
 uint8_type(i: int)
-sexpdef
+#sexpdef
 sint8 = sint8_type
-sexpdef
+#sexpdef
 uint8 = uint8_type
 
 (* ****** ****** *)
 //
-sexpdef ui8lb =  0
-sexpdef si8lb = -128
-sexpdef si8ub = +127
-sexpdef ui8ub = +255
+#sexpdef ui8lb =  0
+#sexpdef si8lb = -128
+#sexpdef si8ub = +127
+#sexpdef ui8ub = +255
 //
 (* ****** ****** *)
 //
-sexpdef
+#sexpdef
 si8ck(i: int) =
 (si8lb <= i && i <= si8ub)
-sexpdef
+#sexpdef
 ui8ck(i: int) =
 (ui8lb <= i && i <= ui8ub)
 //

@@ -3,18 +3,18 @@
 ** for tuples
 *)
 (* ****** ****** *)
-vwtpdef
+#vwtpdef
 t0up2
 (a0:vt,a1:vt) = @(a0, a1)
-vwtpdef
+#vwtpdef
 t1up2
 (a0:vt,a1:vt) = $(a0, a1)
 (* ****** ****** *)
-vwtpdef
+#vwtpdef
 t0up3
 (a0:vt
 ,a1:vt,a2:vt) = @(a0, a1, a2)
-vwtpdef
+#vwtpdef
 t1up3
 (a0:vt
 ,a1:vt,a2:vt) = $(a0, a1, a2)
@@ -25,9 +25,9 @@ t0up_print$beg(): void
 #extern
 fun<>
 t1up_print$beg(): void
-impltmp<>
+#impltmp<>
 t0up_print$beg()=string_print("@(")
-impltmp<>
+#impltmp<>
 t1up_print$beg()=string_print("$(")
 (* ****** ****** *)
 #extern
@@ -36,9 +36,9 @@ t0up_print$end(): void
 #extern
 fun<>
 t1up_print$end(): void
-impltmp<>
+#impltmp<>
 t0up_print$end() = string_print(")")
-impltmp<>
+#impltmp<>
 t1up_print$end() = string_print(")")
 (* ****** ****** *)
 #extern
@@ -47,20 +47,20 @@ t0up_print$sep(): void
 #extern
 fun<>
 t1up_print$sep(): void
-impltmp<>
+#impltmp<>
 t0up_print$sep() = string_print(",")
-impltmp<>
+#impltmp<>
 t1up_print$sep() = string_print(",")
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a0:t0
 ,a1:t0}
 g_print
 <(a0,a1)> =
 gl_print1<t0up2(a0,a1)>
 //
-impltmp
+#impltmp
 {a0:vt
 ,a1:vt}
 gl_print1
@@ -77,7 +77,7 @@ end // end of [gl_print1<t0up2>]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {a0:vt
 ,a1:vt}
 gl_print1
@@ -94,7 +94,7 @@ end // end of [gl_print1<t1up2>]
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a0:t0
 ,a1:t0
 ,a2:t0}
@@ -102,7 +102,7 @@ g_print
 <(a0,a1,a2)> =
 gl_print1<t0up3(a0,a1,a2)>
 //
-impltmp
+#impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}
@@ -120,7 +120,7 @@ end // end of [gl_print1<t0up3>]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}

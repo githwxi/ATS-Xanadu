@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 char_noteq
   (c1, c2) =
@@ -43,28 +43,28 @@ not(char_equal(c1, c2))
 //
 (* ****** ****** *)
 //
-impltmp<>
+#impltmp<>
 char_lt(x1, x2) = 
 (char_cmp<>(x1, x2) < 0)
-impltmp<>
+#impltmp<>
 char_gt(x1, x2) = 
 (char_cmp<>(x1, x2) > 0)
-impltmp<>
+#impltmp<>
 char_eq(x1, x2) = 
 (char_cmp<>(x1, x2) = 0)
-impltmp<>
+#impltmp<>
 char_lte(x1, x2) = 
 (char_cmp<>(x1, x2) <= 0)
-impltmp<>
+#impltmp<>
 char_gte(x1, x2) = 
 (char_cmp<>(x1, x2) >= 0)
-impltmp<>
+#impltmp<>
 char_neq(x1, x2) = 
 (char_cmp<>(x1, x2) != 0)
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 sub_char_char
   (c1, c2) =
@@ -72,7 +72,7 @@ sub_char_char
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 char_lower
   (c0) =
@@ -88,7 +88,7 @@ char_lower
   )
 ) (* end of [char_lower] *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 char_upper
   (c0) =
@@ -107,29 +107,29 @@ char_upper
 (* ****** ****** *)
 //
 // HX:
-// For implementing
+// For #implementing
 // some g-operations
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_cmp<char> = char_cmp<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_equal<char> = char_equal<>
-impltmp
+#impltmp
 g_noteq<char> = char_noteq<>
 
 (* ****** ****** *)
-impltmp
+#impltmp
 g_eqref<char> = g_equal<char>
-impltmp
+#impltmp
 g_neqrf<char> = g_noteq<char>
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_print<char> = char_print< >
 
 (* ****** ****** *)

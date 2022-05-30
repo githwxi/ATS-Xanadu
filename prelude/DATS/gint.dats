@@ -34,14 +34,14 @@
 (* ****** ****** *)
 
 (*
-typedef sik = sint_k
-typedef uik = uint_k
-typedef slik = slint_k
-typedef ulik = ulint_k
-typedef ssik = ssize_k
-typedef usik = usize_k
-typedef sllik = sllint_k
-typedef ullik = ullint_k
+#typedef sik = sint_k
+#typedef uik = uint_k
+#typedef slik = slint_k
+#typedef ulik = ulint_k
+#typedef ssik = ssize_k
+#typedef usik = usize_k
+#typedef sllik = sllint_k
+#typedef ullik = ullint_k
 *)
 
 (* ****** ****** *)
@@ -54,61 +54,61 @@ typedef ullik = ullint_k
 *)
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_i<sint>(i) = i // g_i: sint -> a
-impltmp
+#impltmp
 g_u<uint>(u) = u // g_u: uint -> a
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_eqref<sint> = g_equal<sint>
-impltmp
+#impltmp
 g_neqrf<sint> = g_noteq<sint>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_print<sint> = gint_print_sint<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_neg<sint> = gint_neg_sint<>
-impltmp
+#impltmp
 g_succ<sint> = gint_succ_sint<>
-impltmp
+#impltmp
 g_pred<sint> = gint_pred_sint<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_lt<sint> = gint_lt_sint_sint<>
-impltmp
+#impltmp
 g_gt<sint> = gint_gt_sint_sint<>
-impltmp
+#impltmp
 g_eq<sint> = gint_eq_sint_sint<>
-impltmp
+#impltmp
 g_lte<sint> = gint_lte_sint_sint<>
-impltmp
+#impltmp
 g_gte<sint> = gint_gte_sint_sint<>
-impltmp
+#impltmp
 g_neq<sint> = gint_neq_sint_sint<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_cmp<sint> = gint_cmp_sint_sint<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_add<sint> = gint_add_sint_sint<>
-impltmp
+#impltmp
 g_sub<sint> = gint_sub_sint_sint<>
-impltmp
+#impltmp
 g_mul<sint> = gint_mul_sint_sint<>
-impltmp
+#impltmp
 g_div<sint> = gint_div_sint_sint<>
 
 (* ****** ****** *)
@@ -117,28 +117,28 @@ g_div<sint> = gint_div_sint_sint<>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 gint_nilq_sint<>(xs) = (xs <= 0)
-impltmp
+#impltmp
 gint_consq_sint<>(xs) = (xs >= 1)
 //
 (*
-impltmp
+#impltmp
 gint_nilq_uint<>(xs) = (xs <= 0u)
-impltmp
+#impltmp
 gint_consq_uint<>(xs) = (xs >= 1u)
 *)
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 gint_forall_sint<>
   (xs) =
 ( loop(0) ) where
 {
 //
-typedef x0 = nint
-typedef xs = sint
+#typedef x0 = nint
+#typedef xs = sint
 //
 fun
 loop(x0: sint): bool =
@@ -155,14 +155,14 @@ else true // end of [else]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 gint_rforall_sint<>
   (xs) =
 ( loop(xs) ) where
 {
 //
-typedef x0 = nint
-typedef xs = sint
+#typedef x0 = nint
+#typedef xs = sint
 //
 fun
 loop(xs: sint): bool =
@@ -180,17 +180,15 @@ else true // end of [else]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 gint_listize_nint
   {n}(xs) = let
 //
-typedef
-x0 = nintlt(n)
-typedef
-y0 = nintlt(n)
+#typedef x0 = nintlt(n)
+#typedef y0 = nintlt(n)
 //
-impltmp
+#impltmp
 map$fopr<x0><y0>(x0) = x0
 //
 in
@@ -199,17 +197,15 @@ end // end of [gint_listize_nint]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 gint_rlistize_nint
   {n}(xs) = let
 //
-typedef
-x0 = nintlt(n)
-typedef
-y0 = nintlt(n)
+#typedef x0 = nintlt(n)
+#typedef y0 = nintlt(n)
 //
-impltmp
+#impltmp
 map$fopr
 <x0><y0>(x0) = ( xs-1-x0 )
 //
@@ -219,13 +215,12 @@ end // end of [gint_rlistize_nint]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <y0:vt>
 gint_map_list_nint
   {n}(xs) = let
 //
-typedef
-x0 = nintlt(n)
+#typedef x0 = nintlt(n)
 //
 fun
 loop{i:nat}.<i>.
@@ -261,7 +256,7 @@ end (* end of [gint_map_list_nint] *)
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 gint_streamize_nint
   (n0) =
@@ -289,7 +284,7 @@ strmcon_vt_cons(i0, auxmain(n0, succ(i0)))
 } (* end of [gint_streamize_nint] *)
 
 (* ****** ****** *)
-impltmp
+#impltmp
 <>(*tmp*)
 gint_streamize_sint
   (i0) =
@@ -302,35 +297,35 @@ stream_vt_nil() else gint_streamize_nint(i0)
 (* ****** ****** *)
 //
 // HX:
-// For implementing
+// For #implementing
 // some gseq_operations
 //
 (* ****** ****** *)
 
 local
 //
-typedef x0 = nint
-typedef xs = sint
+#typedef x0 = nint
+#typedef xs = sint
 //
 in(*in-of-local*)
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 gseq_nilq<xs><x0> = gint_nilq_sint<>
-impltmp
+#impltmp
 gseq_consq<xs><x0> = gint_consq_sint<>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 gseq_forall<xs><x0> = gint_forall_sint<>
-impltmp
+#impltmp
 gseq_rforall<xs><x0> = gint_rforall_sint<>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 gseq_streamize<xs><x0> = gint_streamize_sint
 //
 (* ****** ****** *)

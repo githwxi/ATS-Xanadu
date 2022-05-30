@@ -34,13 +34,13 @@ for testing type-inference :)
 //
 (* ****** ****** *)
 //
-abstbox
+#abstbox
 input_tbox(tok:t0)
-abstbox
+#abstbox
 parser_tbox(tok:t0,res:vt)
 //
-sexpdef input = input_tbox
-sexpdef parser = parser_tbox
+#sexpdef input = input_tbox
+#sexpdef parser = parser_tbox
 //
 (* ****** ****** *)
 //
@@ -70,17 +70,17 @@ input_ungetok
 
 local
 //
-absimpl
+#absimpl
 input_tbox
 (tok:t0) = stream(tok)
 //
 in(*in-of-local*)
 //
-impltmp
+#impltmp
 <tok>
 input_make(xs) = xs
 //
-impltmp
+#impltmp
 <tok>
 input_getok
   (xs) =
@@ -94,7 +94,7 @@ strmcon_cons
 (x0, xs) => (xs, some_vt(x0))
 )
 //
-(*impltmp
+(*#impltmp
 <tok>
 input_ungetok
   (xs, x0) =
@@ -136,7 +136,7 @@ parser_apply
 
 local
 //
-absimpl
+#absimpl
 parser_tbox
 ( tok:t0
 , res:vt) =
@@ -146,10 +146,10 @@ parser_tbox
 //
 in(*in-of-local*)
 //
-impltmp
+#impltmp
 <tok><res>
 parser_make(cfr) = cfr
-impltmp
+#impltmp
 <tok><res>
 parser_apply(cfr, inp) = cfr(inp)
 //
@@ -162,7 +162,7 @@ fun
 <tok:t0>
 parcmbr_input
 (xs: stream(tok)): input(tok)
-impltmp
+#impltmp
 <tok>
 parcmbr_input(xs) = input_make(xs)
 //
@@ -171,7 +171,7 @@ fun
 <tok:t0>
 parcmbr_token
 ((*void*)): parser(tok,tok)
-impltmp
+#impltmp
 <tok>
 parcmbr_token() =
 parser(lam(inp) => input_getok(inp))
@@ -188,7 +188,7 @@ parcmbr_sat
 , f0
 : res -<cfr> bool): parser(tok, res)
 //
-impltmp
+#impltmp
 <tok><res>
 parcmbr_sat
 (P0, f0) = parser
@@ -223,7 +223,7 @@ parcmbr_map
 , f0
 : res1 -<cfr> res2): parser(tok,res2)
 //
-impltmp
+#impltmp
 <tok>
 <res1>
 <res2>
@@ -294,7 +294,7 @@ f0: (res1,res2) -<cfr> res3): parser(tok, res3)
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 parcmbr_alt2
 (P1, P2) = parser
 (
@@ -318,7 +318,7 @@ end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <tok>
 <res1
 ,res2>
@@ -329,7 +329,7 @@ parcmbr_seq2map
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <tok>
 <res1
 ,res2>
@@ -396,7 +396,7 @@ P2: parser(tok,res2)
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <tok>
 <res1
 ,res2>
@@ -404,7 +404,7 @@ parcmbr_seq2get0
 (P1, P2) = 
 parcmbr_seq2map
 (P1, P2, lam(res1, res2) => res1)
-impltmp
+#impltmp
 <tok>
 <res1
 ,res2>
@@ -423,7 +423,7 @@ parcmbr_ignore
 (
 P0: parser(tok,res)
 ) : parser(tok,nint)
-impltmp
+#impltmp
 <tok><res>
 parcmbr_ignore
   (P0) = parser_make
@@ -455,10 +455,10 @@ end
 
 (* ****** ****** *)
 //
-typedef
+#typedef
 repeat0(res:vt) =
 listgte_vt(res, 0)
-typedef
+#typedef
 repeat1(res:vt) =
 listgte_vt(res, 1)
 //
@@ -481,7 +481,7 @@ P0: parser(tok,res)
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <tok><res>
 parcmbr_repeat0
   (P0) = parser_make
@@ -516,7 +516,7 @@ end
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <tok><res>
 parcmbr_repeat1
   (P0) =
@@ -542,7 +542,7 @@ lazy
 )
 : parser(tok,res)
 //
-impltmp
+#impltmp
 <tok><res>
 parcmbr_lazy(LP) = parser
 (lam(inp) => parser_apply(!LP, inp))
@@ -559,7 +559,7 @@ parser(tok,res)
 )
 : parser(tok,res)
 //
-impltmp
+#impltmp
 <tok><res>
 parcmbr_thunk(FP) = parser
 (lam(inp) => parser_apply(FP(), inp))

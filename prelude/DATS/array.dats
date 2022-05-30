@@ -19,7 +19,7 @@ UN =
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:vt>
 a0ref_make(x0) =
 a0ptr2ref
@@ -33,7 +33,7 @@ A C-style implementation
 that does not work in general
 *)
 //
-impltmp
+#impltmp
 <a:vt>
 a0ptr_make(x0) =
 let
@@ -56,23 +56,23 @@ end
 *)
 //
 (* ****** ****** *)
-impltmp
+#impltmp
 <a:t0>
 a0ref_get(A0) =
 a0ref_get0<a>(A0)
 (* ****** ****** *)
-impltmp
+#impltmp
 <a:t0>
 a0ref_set(A0, x0) =
 a0ref_setf<a>(A0, x0)
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:vt>
 a0ref_setf(A0, x0) =
 g_free<a>
 (a0ref_exch<a>(A0, x0))
-impltmp
+#impltmp
 <a:vt>
 a0ptr_setf(A0, x0) =
 g_free<a>
@@ -80,7 +80,7 @@ g_free<a>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:vt>
 a0ref_print(A0) =
 let
@@ -94,28 +94,28 @@ val () = a0ref_print$end<>()
 val x0 = $UN.castlin10{?a}(x0)
 end (* end of [a0ref_print] *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 a0ref_print$beg() = string_print("[")
-impltmp
+#impltmp
 <>(*tmp*)
 a0ref_print$end() = string_print("]")
 //
 (* ****** ****** *)
-impltmp
+#impltmp
 {a:vt}
 g_print<a0ref(a)> = a0ref_print<a>
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 a0ptr_print$beg() = string_print("[")
-impltmp
+#impltmp
 <>(*tmp*)
 a0ptr_print$end() = string_print("]")
 //
 (* ****** ****** *)
-impltmp
+#impltmp
 {a:vt}
 gl_print1<a0ptr(a)> = a0ptr_print1<a>
 (* ****** ****** *)
@@ -123,18 +123,18 @@ gl_print1<a0ptr(a)> = a0ptr_print1<a>
 **HX: 1-dimensional
 *)
 (* ****** ****** *)
-impltmp
+#impltmp
 <a:t0>
 a1ref_get_at(A0, i0) =
 a1ref_get0_at<a>(A0, i0)
 (* ****** ****** *)
-impltmp
+#impltmp
 <a:t0>
 a1ptr_get_at(A0, i0) =
 a1ptr_get0_at<a>(A0, i0)
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:vt>
 a1ref_make_nval
   (asz, ini) =
@@ -143,7 +143,7 @@ a1ptr2ref
 (a1ptr_make_nval<a>(asz, ini))
 )
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 a1ptr_make_nval
   {n}(n0, x0) =
@@ -191,7 +191,7 @@ end // end of [else]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:t0>
 a1ref_make_list
 ( xs ) =
@@ -199,7 +199,7 @@ a1ref_make_list
   (a1ptr_make_list<a>(xs))
 )
 //
-impltmp
+#impltmp
 <a:t0>
 a1ptr_make_list
   {n}(xs) =
@@ -211,7 +211,7 @@ a1ptr_alloc(n0)
 val () =
 gseq_iforeach(xs) where
 {
-impltmp
+#impltmp
 iforeach$work<a>(i, x) =
 let
 val i =
@@ -226,7 +226,7 @@ end // end of [a1ptr_make_list]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:vt>
 a1ref_make_list_vt
 ( xs ) =
@@ -234,7 +234,7 @@ a1ref_make_list_vt
   (a1ptr_make_list_vt<a>(xs))
 )
 //
-impltmp
+#impltmp
 <a:vt>
 a1ptr_make_list_vt
   {n}(xs) =
@@ -246,7 +246,7 @@ a1ptr_alloc(n0)
 val () =
 glseq_iforeach0(xs) where
 {
-impltmp
+#impltmp
 iforeach0$work<a>(i, x) =
 let
 val i =
@@ -261,13 +261,13 @@ end // end of [a1ptr_make_list_vt]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 a1ref_print$beg() = string_print("[")
-impltmp
+#impltmp
 <>(*tmp*)
 a1ref_print$end() = string_print("]")
-impltmp
+#impltmp
 <>(*tmp*)
 a1ref_print$sep() = string_print(";")
 //
@@ -279,7 +279,7 @@ A C-style implementation
 that SHOULD work in general
 *)
 //
-impltmp
+#impltmp
 <a:t0>
 a1ref_listize
   {n}(A0) = let
@@ -294,7 +294,7 @@ val n0 =
 a1ref_length(A0)
 val n1 = pred(n0)
 //
-impltmp
+#impltmp
 x1forint$work<n>(i0) =
 let
   val j0 = n1 - i0
@@ -318,7 +318,7 @@ A C-style implementation
 that SHOULD work in general
 *)
 //
-impltmp
+#impltmp
 <a:t0>
 a1ref_rlistize
   {n}(A0) = let
@@ -331,7 +331,7 @@ val p0 = $addr(res)
 //
 val n0 = a1ref_length(A0)
 //
-impltmp
+#impltmp
 x1forint$work<n>(i0) =
 let
   val x0 = get_at(A0, i0)
@@ -348,7 +348,7 @@ end // end of [a1ref_rlistize]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a:vt>
 a1ref_streamize
   {n}(A0) =
@@ -379,7 +379,7 @@ strmcon_vt_cons
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:t0>
 a1ref_forall
   {n}(A0) =
@@ -413,7 +413,7 @@ else false // else // end of [if]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:t0>
 a1ref_foreach
   {n}(A0) =
@@ -444,7 +444,7 @@ then
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a:t0>
 a1ref_rforall
   {n}(A0) =
@@ -478,7 +478,7 @@ else false // else // end of [if]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:t0}
 {n:i0}
 gseq_length
@@ -486,12 +486,12 @@ gseq_length
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:t0}
 {n:i0}
 gseq_forall
 <a1ref(a,n)><a> = a1ref_forall<a>{n}
-impltmp
+#impltmp
 {a:t0}
 {n:i0}
 gseq_foreach
@@ -499,13 +499,13 @@ gseq_foreach
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:t0}
 {n:i0}
 gseq_listize
 <a1ref(a,n)><a> = a1ref_listize<a>{n}
 //
-impltmp
+#impltmp
 {a:t0}
 {n:i0}
 gseq_rlistize
@@ -513,12 +513,12 @@ gseq_rlistize
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:t0}
 {n:i0}
 gseq_unlist
 <a1ref(a,n)><a>(xs) = a1ref_make_list<a>(xs)
-impltmp
+#impltmp
 {a:t0}{n:i0}
 gseq_unlist_vt
 <a1ref(a,n)><a>(xs) = a1ref_make_list_vt<a>(xs)

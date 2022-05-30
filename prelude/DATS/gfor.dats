@@ -11,7 +11,7 @@
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <n1>(*tmp*)
 g_x1forint
 ( n1 ) =
@@ -38,7 +38,7 @@ else ( (* else *) )
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <n1,n2>
 g_x2forint
 ( n1, n2 ) =
@@ -51,7 +51,7 @@ loop1
   g_x1forint<n2>( n2 )
 ) where
 {
-impltmp
+#impltmp
 x1forint$work<n2>
   (i2) =
 (
@@ -63,13 +63,13 @@ in
   g_x1forint<n1>( n1 )
 ) where
 {
-  impltmp x1forint$work<n1> = loop1
+  #impltmp x1forint$work<n1> = loop1
 }
 end (* end of [x2forint] *)
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <n1,n2,n3>
 g_x3forint(n1,n2,n3) =
 let
@@ -81,7 +81,7 @@ loop1
   g_x2forint<n2,n3>(n2,n3)
 ) where
 {
-impltmp
+#impltmp
 x2forint$work<n2,n3>
   (i2, i3) =
 (
@@ -93,7 +93,7 @@ in
   g_x1forint<n1>( n1 )
 ) where
 {
-  impltmp x1forint$work<n1> = loop1
+  #impltmp x1forint$work<n1> = loop1
 }
 end (* end of [x3forint] *)
 

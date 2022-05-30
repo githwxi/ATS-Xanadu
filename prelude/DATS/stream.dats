@@ -17,17 +17,17 @@ UN =
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 strmcon_nil_
 () = strmcon_nil()
-impltmp
+#impltmp
 <a>(*tmp*)
 strmcon_cons_
 (x0, xs) =
 strmcon_cons(x0, xs)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 strxcon_cons_
 (x0, xs) =
@@ -35,7 +35,7 @@ strxcon_cons(x0, xs)
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <x0><r0>
 strmcon_uncons_cfr
 (xs, f0, f1) =
@@ -46,7 +46,7 @@ strmcon_nil() => f0((*void*))
 |
 strmcon_cons(x0, xs) => f1(x0, xs)
 )
-impltmp
+#impltmp
 <x0><r0>
 strxcon_uncons_cfr
 (xs, f1) =
@@ -58,11 +58,11 @@ strxcon_cons(x0, xs) => f1(x0, xs)
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_nil() =
 $lazy(strmcon_nil())
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_cons
   (x0, xs) =
@@ -70,12 +70,12 @@ stream_cons
 $lazy(strmcon_cons(x0, xs))
 )
 //
-impltmp
+#impltmp
 {a:type}
 gseq_nil
 <stream(a)><a>
 ((*void*)) = stream_nil<a>()
-impltmp
+#impltmp
 {a:type}
 gseq_cons
 <stream(a)><a>
@@ -83,18 +83,18 @@ gseq_cons
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_sing(x0) =
 stream_cons(x0, stream_nil())
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_pair(x0, y0) =
 stream_cons(x0, stream_sing(y0))
 //  
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_print(xs) =
 let
@@ -107,29 +107,29 @@ then stream_print_all(xs)
 else stream_print_len(xs, len)
 end
 //
-impltmp
+#impltmp
 <>(*tmp*)
 stream_print$len() = 3
-impltmp
+#impltmp
 <>(*tmp*)
 stream_print$beg() = string_print("(")
-impltmp
+#impltmp
 <>(*tmp*)
 stream_print$end() = string_print(")")
-impltmp
+#impltmp
 <>(*tmp*)
 stream_print$sep() = string_print(",")
-impltmp
+#impltmp
 <>(*tmp*)
 stream_print$rst() = string_print("...")
 //
-impltmp
+#impltmp
 {a:t0}
 g_print<stream(a)> = stream_print<a>
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_print_all
   (xs) =
@@ -137,7 +137,7 @@ stream_print_all
 loop(xs, 0(*i0*))
 ) where
 {
-typedef
+#typedef
 xs = stream(a)
 fnx
 loop
@@ -164,7 +164,7 @@ end // end of [strmcon_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_print_len
   (xs, n0) =
@@ -172,7 +172,7 @@ stream_print_len
 loop(xs, 0(*i0*))
 ) where
 {
-typedef
+#typedef
 xs = stream(a)
 fnx
 loop
@@ -214,7 +214,7 @@ end // end of [else]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_length
   (xs) =
@@ -222,7 +222,7 @@ stream_length
   loop(xs, 0(*i0*))
 ) where
 {
-typedef
+#typedef
 xs = stream(a)
 fnx
 loop
@@ -240,7 +240,7 @@ strmcon_cons
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_extend
   (xs, x0) =
@@ -250,7 +250,7 @@ stream_append(xs, stream_sing(x0))
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_append
   (xs, ys) =
@@ -271,7 +271,7 @@ case+ $eval(xs) of
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_forall
   (xs) =
@@ -298,7 +298,7 @@ end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0>(*tmp*)
 stream_streamize
 ( xs ) =
@@ -324,7 +324,7 @@ strmcon_vt_cons(x0, auxmain(xs))
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_map
   (xs) =
@@ -347,7 +347,7 @@ strmcon_cons(map$fopr(x0), auxmain(xs))
 )
 } (* end of [stream_map] *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_map_vt
   (xs) =
@@ -372,7 +372,7 @@ strmcon_vt_cons(map$fopr(x0), auxmain(xs))
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0>(*tmp*)
 stream_filter
   (xs) =
@@ -404,7 +404,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0>(*tmp*)
 stream_filter_vt
   (xs) =
@@ -436,7 +436,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_mapopt
   (xs) =
@@ -488,7 +488,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_mapopt_vt
   (xs) =
@@ -540,7 +540,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_mapoptn
   (xs) =
@@ -575,7 +575,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_mapoptn_vt
   (xs) =
@@ -610,7 +610,7 @@ case+ xs of
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_merge
   (xs, ys) =
@@ -661,7 +661,7 @@ end // end of [strmcon_cons]
 // rather than for its usefulness
 *)
 //
-impltmp
+#impltmp
 <x0:t0>
 stream_sieve
   (xs) =
@@ -684,13 +684,13 @@ case+ !xs of
   strmcon_cons(x1, auxmain(xs))
   end where
   {
-  impltmp
+  #impltmp
   filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
   }
 )
 } (* stream_sieve *)
 //
-impltmp
+#impltmp
 <x0:t0>
 stream_sieve_vt
   (xs) =
@@ -713,7 +713,7 @@ case+ !xs of
   strmcon_vt_cons(x1, auxmain(xs))
   end where
   {
-  impltmp
+  #impltmp
   filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
   }
 )
@@ -725,7 +725,7 @@ case+ !xs of
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_imap
   (xs) =
@@ -751,7 +751,7 @@ strmcon_cons
 )
 } (* end of [stream_imap] *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_imap_vt
   (xs) =

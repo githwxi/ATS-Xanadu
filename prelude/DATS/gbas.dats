@@ -9,19 +9,19 @@
 *)
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {a:vt}
 g_self<a>(x) = x
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {a:t0}
 g_free<a>(x) = ()
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {a:t0}
 g_copy<a>(x) = (x)
 
@@ -34,7 +34,7 @@ the circular beauty :)
 *)
 //
 (*
-impltmp
+#impltmp
 {a:t0}
 g_equal<a>
   (x, y) =
@@ -43,7 +43,7 @@ not(g_noteq<a>(x, y))
 )
 *)
 //
-impltmp
+#impltmp
 {a:t0}
 g_noteq<a>
   (x, y) =
@@ -53,11 +53,11 @@ not(g_equal<a>(x, y))
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:t0}
 g_equal<a> = g_eq<a>
 (*
-impltmp
+#impltmp
 {a:t0}
 g_noteq<a> = g_neq<a>
 *)
@@ -65,7 +65,7 @@ g_noteq<a> = g_neq<a>
 (* ****** ****** *)
 //
 (*
-impltmp
+#impltmp
 {a:t0}
 g_eqref<a>
   (x, y) =
@@ -74,7 +74,7 @@ not(g_neqrf<a>(x, y))
 )
 *)
 //
-impltmp
+#impltmp
 {a:t0}
 g_neqrf<a>
   (x, y) =
@@ -84,7 +84,7 @@ not(g_eqref<a>(x, y))
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:vt}
 gl_print0<a>(x) =
 ( g_free<a>(x) ) where
@@ -92,13 +92,13 @@ gl_print0<a>(x) =
 val () = gl_print1<a>(x)
 } (* end of [gl_print0] *)
 //
-impltmp
+#impltmp
 {a:t0}
 gl_print1<a> = g_print<a>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <x0><y0>
 mapoptn$fopr(x0) =
 if
@@ -118,7 +118,7 @@ else
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <x0><y0>
 mapoptn0$fopr(x0) =
 if
@@ -139,7 +139,7 @@ else
   val () = g_free<x0>(x0)
 } (* end of [mapoptn0$fopr] *)
 //
-impltmp
+#impltmp
 <x0><y0>
 mapoptn1$fopr(x0) =
 if
@@ -165,17 +165,17 @@ group0$test<x0> = group$test<x0>
 *)
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 x2foreach_row$beg() = ((*void*))
-impltmp
+#impltmp
 <>(*tmp*)
 x2foreach_row$end() = ((*void*))
 //
-impltmp
+#impltmp
 <>(*tmp*)
 x2foreach_col$beg() = ((*void*))
-impltmp
+#impltmp
 <>(*tmp*)
 x2foreach_col$end() = ((*void*))
 //

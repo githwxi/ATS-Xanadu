@@ -116,7 +116,7 @@ T_IMPLTMP_ = T_IMPLMNT(IMPtmp)
 macdef
 T_IMPLTMPR_ = T_IMPLMNT(IMPtmpr)
 macdef
-T_IMPLEMENT_ = T_IMPLMNT(IMPgen)
+T_IMPLMNTR_ = T_IMPLMNT(IMPmntr)
 *)
 //
 (* ****** ****** *)
@@ -219,24 +219,29 @@ macdef
 T_TRCD24_ = T_TRCD2(4)
 
 (* ****** ****** *)
-
+//
 macdef
 T_SRP_IFEXP_ = T_SRP_IFDEC(0)
 macdef
-T_SRP_IFNEXP_ = T_SRP_IFDEC(1)
-macdef
 T_SRP_IFDEF_ = T_SRP_IFDEC(2)
+macdef
+T_SRP_ELSIF_ = T_SRP_ELSIF(0)
+//
+macdef
+T_SRP_IFNEXP_ = T_SRP_IFDEC(1)
 macdef
 T_SRP_IFNDEF_ = T_SRP_IFDEC(3)
 macdef
-T_SRP_ELSIF_ = T_SRP_ELSIF(0)
-macdef
 T_SRP_ELSIFN_ = T_SRP_ELSIF(1)
-
+//
 (* ****** ****** *)
 //
+(*
 macdef
 T_INFIX_ = T_SRP_FIXITY(INFIX)
+*)
+macdef
+T_INFIX0_ = T_SRP_FIXITY(INFIX0)
 macdef
 T_INFIXL_ = T_SRP_FIXITY(INFIXL)
 macdef
@@ -245,7 +250,7 @@ T_INFIXR_ = T_SRP_FIXITY(INFIXR)
 macdef
 T_PREFIX_ = T_SRP_FIXITY(PREFIX)
 macdef
-T_POSTFIX_ = T_SRP_FIXITY(POSTFIX)
+T_PSTFIX_ = T_SRP_FIXITY(PSTFIX)
 //
 (* ****** ****** *)
 
@@ -366,35 +371,60 @@ val () = myins("praxi", T_PRAXI_)
 val () = myins("fcast", T_FCAST_)
 //
 val () = myins("val", T_VAL_)
-val () = myins("prval", T_PRVAL_)
-//
 val () = myins("var", T_VAR())
 //
+val () = myins("prval", T_PRVAL_)
+(*
+val () = myins("prvar", T_PRVAR_)
+*)
+//
+(*
+//
+val () = myins("macdef", T_MACDEF)
+//
+*)
+//
+(*
 val () = myins("implmnt", T_IMPLMNT_)
-//
 val () = myins("implprf", T_IMPLPRF_)
-//
 val () = myins("implval", T_IMPLVAL_)
 val () = myins("implfun", T_IMPLFUN_)
 val () = myins("impltmp", T_IMPLTMP_)
-//
-(*
-val () = myins("impltmpr", T_IMPLTMPR_)
-val () = myins("implement", T_IMPLEMENT_)
 *)
 //
+val () = myins("#implmnt", T_IMPLMNT_)
+val () = myins("#implprf", T_IMPLPRF_)
+val () = myins("#implval", T_IMPLVAL_)
+val () = myins("#implfun", T_IMPLFUN_)
+val () = myins("#impltmp", T_IMPLTMP_)
+//
+(*
+val () = myins("implmntr", T_IMPLMNTR_)
+val () = myins("impltmpr", T_IMPLTMPR_)
+*)
+(*
+val () = myins("#implmntr", T_IMPLMNTR_)
+val () = myins("#impltmpr", T_IMPLTMPR_)
+*)
+//
+(*
 val () = myins("abssort", T_ABSSORT)
+val () = myins("stacst0", T_STACST0)
 val () = myins("sortdef", T_SORTDEF)
+*)
 //
 val () = myins("#abssort", T_ABSSORT)
+val () = myins("#stacst0", T_STACST0)
 val () = myins("#sortdef", T_SORTDEF)
 //
+(*
 val () = myins("sexpdef", T_SEXPDEF_)
 val () = myins("propdef", T_PROPDEF_)
 val () = myins("viewdef", T_VIEWDEF_)
 val () = myins("tboxdef", T_TBOXDEF_)
 val () = myins("typedef", T_TYPEDEF_)
 val () = myins("vwtpdef", T_VWTPDEF_)
+*)
 //
 val () = myins("#sexpdef", T_SEXPDEF_)
 val () = myins("#propdef", T_PROPDEF_)
@@ -403,6 +433,7 @@ val () = myins("#tboxdef", T_TBOXDEF_)
 val () = myins("#typedef", T_TYPEDEF_)
 val () = myins("#vwtpdef", T_VWTPDEF_)
 //
+(*
 val () = myins("abstype", T_ABSTYPE_)
 val () = myins("absprop", T_ABSPROP_)
 val () = myins("absview", T_ABSVIEW_)
@@ -411,6 +442,7 @@ val () = myins("abstflt", T_ABSTFLT_)
 val () = myins("absvtbx", T_ABSVTBX_)
 val () = myins("absvtft", T_ABSVTFT_)
 val () = myins("absvwtp", T_ABSVWTP_)
+*)
 //
 val () = myins("#abstype", T_ABSTYPE_)
 val () = myins("#absprop", T_ABSPROP_)
@@ -421,14 +453,15 @@ val () = myins("#absvtbx", T_ABSVTBX_)
 val () = myins("#absvtft", T_ABSVTFT_)
 val () = myins("#absvwtp", T_ABSVWTP_)
 //
+(*
 val () = myins("absimpl", T_ABSIMPL)
 val () = myins("absopen", T_ABSOPEN)
+*)
 //
 val () = myins("#absimpl", T_ABSIMPL)
 val () = myins("#absopen", T_ABSOPEN)
 //
 val () = myins("excptcon", T_EXCPTCON)
-//
 val () = myins("datasort", T_DATASORT)
 val () = myins("dataprop", T_DATAPROP_)
 val () = myins("dataview", T_DATAVIEW_)
@@ -447,13 +480,6 @@ val () = myins("withview", T_WITHVIEW_)
 val () = myins("withvwtp", T_WITHVWTP_)
 (*
 val () = myins("withvtype", T_WITHVTYPE_)
-*)
-//
-(*
-//
-val () = myins("macdef", T_MACDEF)
-val () = myins("macrodef", T_MACRODEF)
-//
 *)
 //
 val () = myins("$tup"   , T_TRCD12_)
@@ -510,16 +536,16 @@ val () = myins("#else", T_SRP_ELSE)
 //
 val () = myins("#endif", T_SRP_ENDIF)
 //
+(*
 val () = myins("#infix", T_INFIX_)
-val () = myins("#infix0", T_INFIX_)
+*)
+val () = myins("#infix0", T_INFIX0_)
 val () = myins("#infixl", T_INFIXL_)
 val () = myins("#infixr", T_INFIXR_)
 val () = myins("#prefix", T_PREFIX_)
-val () = myins("#postfix", T_POSTFIX_)
+val () = myins("#pstfix", T_PSTFIX_)
 //
 val () = myins("#nonfix", T_SRP_NONFIX)
-//
-val () = myins("#stacst", T_SRP_STACST)
 //
 val () = myins("#static", T_SRP_STATIC)
 val () = myins("#extern", T_SRP_EXTERN)

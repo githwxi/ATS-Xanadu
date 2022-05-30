@@ -300,21 +300,24 @@ case+ tnd of
   fprint!(out, "IMPLMNT(", knd, ")")
 //
 | T_ABSSORT() =>
-  fprint!(out, "ABSSORT(", ")")
+  fprint!(out, "#ABSSORT")
+//
+| T_STACST0() =>
+  fprint!(out, "#STACST0")
 //
 | T_SORTDEF() =>
-  fprint!(out, "SORTDEF(", ")")
+  fprint!(out, "#SORTDEF")
 //
 | T_SEXPDEF(srt) =>
-  fprint!(out, "SEXPDEF(", srt, ")")
+  fprint!(out, "#SEXPDEF(", srt, ")")
 //
 | T_ABSTYPE(srt) =>
-  fprint!(out, "ABSTYPE(", srt, ")")
+  fprint!(out, "#ABSTYPE(", srt, ")")
 //
 | T_ABSIMPL() =>
-  fprint!(out, "ABSIMPL")
+  fprint!(out, "#ABSIMPL")
 | T_ABSOPEN() =>
-  fprint!(out, "ABSOPEN")
+  fprint!(out, "#ABSOPEN")
 //
 | T_DATASORT() =>
   fprint!(out, "DATASORT")
@@ -348,8 +351,6 @@ case+ tnd of
   fprint!(out, "#NONFIX")
 | T_SRP_FIXITY(knd) =>
   fprint!(out, "#FIXIXTY(", knd, ")")
-//
-| T_SRP_STACST() => fprint(out, "#STACST")
 //
 | T_SRP_STATIC() => fprint(out, "#STATIC")
 | T_SRP_EXTERN() => fprint(out, "#EXTERN")
@@ -587,21 +588,24 @@ case+ tnd of
   fprint!(out, "implmnt(", knd, ")")
 //
 | T_ABSSORT() =>
-  fprint!(out, "abssort(", ")")
+  fprint!(out, "#abssort")
+//
+| T_STACST0() =>
+  fprint!(out, "#stacst0")
 //
 | T_SORTDEF() =>
-  fprint!(out, "sortdef(", ")")
+  fprint!(out, "#sortdef")
 //
 | T_SEXPDEF(knd) =>
-  fprint!(out, "sexpdef(", knd, ")")
+  fprint!(out, "#sexpdef(", knd, ")")
 //
 | T_ABSTYPE(knd) =>
-  fprint!(out, "abstype(", knd, ")")
+  fprint!(out, "#abstype(", knd, ")")
 //
 | T_ABSIMPL() =>
-  fprint!(out, "absimpl")
+  fprint!(out, "#absimpl")
 | T_ABSOPEN() =>
-  fprint!(out, "absopen")
+  fprint!(out, "#absopen")
 //
 | T_DATASORT() =>
   fprint!(out, "datasort")
@@ -635,8 +639,6 @@ case+ tnd of
   fprint!(out, "#nonfix")
 | T_SRP_FIXITY(knd) =>
   fprint!(out, "#fixity(", knd, ")")
-//
-| T_SRP_STACST() => fprint(out, "#stacst")
 //
 | T_SRP_STATIC() => fprint(out, "#static")
 | T_SRP_EXTERN() => fprint(out, "#extern")

@@ -11,12 +11,12 @@
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a1>
 gfun_not_fnp1
   (f0) =
 lam(x1) => not(f0(x1))
-impltmp
+#impltmp
 <a1>
 gfun_not_cfr1
   (f0) =
@@ -24,7 +24,7 @@ lam(x1) => not(f0(x1))
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <xs><x0>
 gfun_memq_gseq(xs) =
 lam(x0) =>

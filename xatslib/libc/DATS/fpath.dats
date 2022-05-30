@@ -61,7 +61,7 @@ fpath_streamize_line_vt
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 fpath_streamize_line
   (path) =
@@ -70,15 +70,17 @@ stream_vt_map0
 fpath_streamize_line_vt<>(path)
 ) where
 {
-typedef y0 = string
-vwtpdef x0 = string_vt
-impltmp
+//
+#typedef y0 = string
+#vwtpdef x0 = string_vt
+//
+#impltmp
 map0$fopr<x0><y0>(x0) = string_vt2t(x0)
-}
+} (*where*) // [fpath_streamize_line]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 fpath_streamize_line_vt
   (path) =
@@ -90,7 +92,7 @@ fpath_streamize_cgtz<>(path)
 ) where
 {
 //
-vwtpdef
+#vwtpdef
 cstream =
 stream_vt(cgtz)
 //
@@ -166,7 +168,7 @@ else
 )
 ) (* end of [auxmain1] *)
 //
-} (* end of [fpath_streamize_line] *)
+} (*where*) // [fpath_streamize_line]
 
 (* ****** ****** *)
 

@@ -44,67 +44,67 @@
 // HX: singleton
 (* ****** ****** *)
 
-abstbox
+#abstbox
 a0ref_vt_x0(a:vt)
-absvtbx
+#absvtbx
 a0ptr_vt_vx(a:vt)
-typedef
+#typedef
 a0ref(a:vt) = a0ref_vt_x0(a)
-vwtpdef
+#vwtpdef
 a0ptr(a:vt) = a0ptr_vt_vx(a)
 
 (* ****** ****** *)
 // HX: 1-dimensional
 (* ****** ****** *)
 //
-abstbox
+#abstbox
 a1ref_vt_i0_x0(a:vt, n:i0)
-absvtbx
+#absvtbx
 a1ptr_vt_i0_vx(a:vt, n:i0)
 //
-typedef
+#typedef
 a1ref//
 (a:vt,n:i0) = a1ref_vt_i0_x0(a,n)
-vwtpdef
+#vwtpdef
 a1ptr//
 (a:vt,n:i0) = a1ptr_vt_i0_vx(a,n)
 //
 (* ****** ****** *)
 //
-abstbox
+#abstbox
 a1refsz_vt_i0_x0(a:vt, n:i0)
-absvtbx
+#absvtbx
 a1ptrsz_vt_i0_vx(a:vt, n:i0)
 //
-typedef
+#typedef
 a1refsz
 (a:vt,n:i0) = a1refsz_vt_i0_x0(a,n)
-vwtpdef
+#vwtpdef
 a1ptrsz
 (a:vt,n:i0) = a1ptrsz_vt_i0_vx(a,n)
 //
-typedef
+#typedef
 a1refsz(a:vt) = [n:i0] a1refsz(a, n)
-vwtpdef
+#vwtpdef
 a1ptrsz(a:vt) = [n:i0] a1ptrsz(a, n)
 //
 (* ****** ****** *)
 // HX: 2-dimensional
 (* ****** ****** *)
 //
-abstbox
+#abstbox
 a2ref_vt_i0_i0_x0
 ( a:vt, nrow:i0, ncol:i0)
-absvtbx
+#absvtbx
 a2ptr_vt_i0_i0_vx
 ( a:vt, nrow:i0, ncol:i0)
 //
-typedef
+#typedef
 a2ref(
 a:vt,
 m:i0,n:i0) =
 a2ref_vt_i0_i0_x0(a, m, n)
-vwtpdef
+#vwtpdef
 a2ptr(
 a:vt,
 m:i0,n:i0) =

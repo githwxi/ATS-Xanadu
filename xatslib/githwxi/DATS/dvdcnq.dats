@@ -76,7 +76,7 @@ dvdcnq_solved_cmb(rs: list_vt(out)): out
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <inp:vt>
 <out:vt>
 dvdcnq_solve(x0) =
@@ -104,7 +104,7 @@ end // end of [dvdcnq_solve]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <inp:vt>
 <out:vt>
 dvdcnq_conquer(xs) =
@@ -112,7 +112,7 @@ dvdcnq_conquer(xs) =
 list_vt_map0<inp><out>(xs)
 ) where
 {
-  impltmp
+  #impltmp
   map0$fopr<inp><out>(x1) =
   dvdcnq_solve_rec<inp><out>(x1)
 }

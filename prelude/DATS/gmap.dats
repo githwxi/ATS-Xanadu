@@ -14,7 +14,7 @@ UN =
 (* ****** ****** *)
 
 (*
-impltmp
+#impltmp
 <map>
 <key>
 <itm>
@@ -24,7 +24,7 @@ stream_vt_print_all
 gmap_streamize<map><key><itm>(kxs)
 ) (* end of [gmap_print] *)
 *)
-impltmp
+#impltmp
 <map>
 <key>
 <itm>
@@ -50,13 +50,13 @@ end // end of [gmap_print]
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <map>
 <key>
 <itm>
 gmap_streamize_key(kxs) =
 let
-impltmp
+#impltmp
 map0$fopr
 <(key,itm)><key>(kx) = kx.0
 in
@@ -65,13 +65,13 @@ end // end of [gmap_streamize_key]
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <map>
 <key>
 <itm>
 gmap_streamize_itm(kxs) =
 let
-impltmp
+#impltmp
 map0$fopr
 <(key,itm)><itm>(kx) = kx.1
 in

@@ -45,7 +45,7 @@ mytest_fun(fx: f0): r0
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a0:vt>
 mytest_arg
 (
@@ -68,18 +68,18 @@ endwhr // end of [mytest_arg]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {r0:vt}
 mytest_fun
 <()-<fnp>r0>(f0) = f0()
-impltmp
+#impltmp
 {r0:vt}
 mytest_fun
 <()-<cfr>r0>(f0) = f0()
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a1:vt}
 {r0:vt}
 mytest_fun
@@ -87,7 +87,7 @@ mytest_fun
 let
 val x1 = mytest_arg<a1>() in f0(x1)
 end
-impltmp
+#impltmp
 {a1:vt}
 {r0:vt}
 mytest_fun
@@ -98,7 +98,7 @@ end
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a1:vt
 ,a2:vt}
 {r0:vt}
@@ -108,7 +108,7 @@ let
 val x1 = mytest_arg<a1>()
 val x2 = mytest_arg<a2>() in f0(x1, x2)
 end
-impltmp
+#impltmp
 {a1:vt
 ,a2:vt}
 {r0:vt}
@@ -126,7 +126,7 @@ fun
 <f0:t0>
 mytest_fun_asso(fx: f0): bool
 //
-impltmp
+#impltmp
 {a0:t0}
 mytest_fun_asso
 <(a0, a0)-<fnp>a0>
@@ -139,7 +139,7 @@ val x3 = mytest_arg<a0>()
 in
   f0(f0(x1, x2), x3) = f0(x1, f0(x2, x3))
 end // end of [mytest_fun_asso]
-impltmp
+#impltmp
 {a0:t0}
 mytest_fun_asso
 <(a0,a0)-<cfr>a0>
@@ -160,7 +160,7 @@ fun
 <f0:t0>
 mytest_fun_comm(fx: f0): bool
 //
-impltmp
+#impltmp
 {a0:t0}
 {r0:vt}
 mytest_fun_comm
@@ -172,7 +172,7 @@ mytest_arg<a0>()
 val x2 =
 mytest_arg<a0>() in f0(x1, x2) = f0(x2, x1)
 end // end of [mytest_fun_comm]
-impltmp
+#impltmp
 {a0:t0}
 {r0:vt}
 mytest_fun_comm

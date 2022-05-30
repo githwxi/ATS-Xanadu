@@ -42,18 +42,18 @@
 // Note that string_vt is included
 //
 (* ****** ****** *)
-typedef
+#typedef
 str0 = string0
-typedef
+#typedef
 str1 = string1
 (* ****** ****** *)
-vwtpdef
+#vwtpdef
 str0_vt = string0_vt
-vwtpdef
+#vwtpdef
 str1_vt = string1_vt
 (* ****** ****** *)
 //
-typedef cgtz =
+#typedef cgtz =
 [c:char|c > 0]char(c)
 //
 (* ****** ****** *)
@@ -126,20 +126,20 @@ a call to the cast-function UN_string_vt_cast,
 which itself is just a no-op.
 *)
 //
-absvwtp
+#absvwtp
 strtmp_i0_vx(n:int) <= p0tr
-vwtpdef
+#vwtpdef
 strtmp0_vt =
 [n:int] strtmp_i0_vx(n)
-vwtpdef
+#vwtpdef
 strtmp1_vt
 (n: int) = strtmp_i0_vx( n )
 //
 (* ****** ****** *)
 //
-vwtpdef
+#vwtpdef
 strtmp_vt = strtmp0_vt
-vwtpdef
+#vwtpdef
 strtmp_vt(n:int) = strtmp1_vt(n)
 //
 fcast

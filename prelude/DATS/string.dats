@@ -46,46 +46,46 @@ UN =
 
 (* ****** ****** *)
 //
-impltmp<>
+#impltmp<>
 string_nil() =
 string_make_list<>
 (list_nil())
 //
 (* ****** ****** *)
 //
-impltmp<>
+#impltmp<>
 string_vt_nil() =
 string_vt_make_list_vt<>
 (list_vt_nil())
 //
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_nilq(cs) =
 char_eqzq
 (string_head_opt(cs))
-impltmp<>
+#impltmp<>
 string_consq(cs) =
 char_neqzq
 (string_head_opt(cs))
 
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_head(cs) =
 (string_head_raw(cs))
-impltmp<>
+#impltmp<>
 string_tail(cs) =
 (string_tail_raw(cs))
 
 (* ****** ****** *)
 //
 (*
-impltmp<>
+#impltmp<>
 string_head_opt(cs) = ...
 *)
 //
-impltmp<>
+#impltmp<>
 string_tail_opt(cs) =
 if
 string_nilq(cs)
@@ -96,35 +96,35 @@ optn_vt_cons(string_tail_raw(cs))
 //
 (* ****** ****** *)
 //
-impltmp<>
+#impltmp<>
 string_lt(x1, x2) = 
 (string_cmp<>(x1, x2) < 0)
-impltmp<>
+#impltmp<>
 string_gt(x1, x2) = 
 (string_cmp<>(x1, x2) > 0)
-impltmp<>
+#impltmp<>
 string_eq(x1, x2) = 
 (string_cmp<>(x1, x2) = 0)
-impltmp<>
+#impltmp<>
 string_lte(x1, x2) = 
 (string_cmp<>(x1, x2) <= 0)
-impltmp<>
+#impltmp<>
 string_gte(x1, x2) = 
 (string_cmp<>(x1, x2) >= 0)
-impltmp<>
+#impltmp<>
 string_neq(x1, x2) = 
 (string_cmp<>(x1, x2) != 0)
 //
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_print(cs) =
 let
-impltmp
+#impltmp
 gseq_print$beg<>() = ()
-impltmp
+#impltmp
 gseq_print$sep<>() = ()
-impltmp
+#impltmp
 gseq_print$end<>() = ()
 in
 gseq_print<string><cgtz>(cs)
@@ -132,10 +132,10 @@ end // end of [string_print]
 
 (* ****** ****** *)
 //
-impltmp<>
+#impltmp<>
 string_vt_print =
 string_vt_print1<>
-impltmp<>
+#impltmp<>
 string_vt_print0(cs) =
 (
   string_vt_free<>(cs)
@@ -145,14 +145,14 @@ string_vt_print0(cs) =
   string_vt_print1<>(cs)
 }
 //
-impltmp<>
+#impltmp<>
 string_vt_print1(cs) =
 let
-impltmp
+#impltmp
 glseq_print$beg<>() = ()
-impltmp
+#impltmp
 glseq_print$sep<>() = ()
-impltmp
+#impltmp
 glseq_print$end<>() = ()
 in
 glseq_print1<string_vt><cgtz>(cs)
@@ -160,7 +160,7 @@ end // end of [string_print1]
 //
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_length
   (xs) =
 (
@@ -188,12 +188,12 @@ end
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_length =
 string_vt_length1<>
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_length0(cs) =
 let
@@ -205,7 +205,7 @@ let
 end
 end (* [string_vt_length0] *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_length1(cs) =
 $UN.cast01
@@ -213,7 +213,7 @@ $UN.cast01
 //
 (* ****** ****** *)
 //
-impltmp<>
+#impltmp<>
 string_append
   (xs, ys) =
 (
@@ -221,7 +221,7 @@ string_vt2t
 (string_append_vt(xs, ys))
 )
 //
-impltmp<>
+#impltmp<>
 string_append_vt
   (xs, ys) =
 let
@@ -237,7 +237,7 @@ end // end of [string_append_vt]
 //
 (* ****** ****** *)
 //
-impltmp<>
+#impltmp<>
 string_vt_append
   (xs, ys) =
 let
@@ -253,7 +253,7 @@ end // end of [string_append_vt]
 //
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_reverse
 {n0}(cs) =
 let
@@ -263,9 +263,9 @@ in
 //
 let
 //
-typedef c0 = cgtz
+#typedef c0 = cgtz
 //
-impltmp
+#impltmp
 tabulate$fopr
 <c0><n0>(i0) =
 let
@@ -282,7 +282,7 @@ end // end of [string_reverse]
 
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_reverse_vt
 {n0}(cs) =
 let
@@ -292,9 +292,9 @@ in
 //
 let
 //
-typedef c0 = cgtz
+#typedef c0 = cgtz
 //
-impltmp
+#impltmp
 tabulate$fopr
 <c0><n0>(i0) =
 let
@@ -311,14 +311,14 @@ end // end of [string_reverse_vt]
 
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_forall
   (xs) =
 ( loop(xs) ) where
 {
 //
-typedef x0 = cgtz
-typedef xs = string
+#typedef x0 = cgtz
+#typedef xs = string
 //
 fnx
 loop(xs: xs): bool =
@@ -341,7 +341,7 @@ end // end of [else]
 
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_vt_forall1
   (xs) =
 let
@@ -378,17 +378,17 @@ end // end of [else]
 } (* end of [string_vt_forall1/get_at] *)
 
 (* ****** ****** *)
-impltmp
+#impltmp
 <>(*tmp*)
 string_listize(cs) =
 $UN.castlin01(gseq_listize(cs))
 (* ****** ****** *)
-impltmp
+#impltmp
 <>(*tmp*)
 string_rlistize(cs) =
 $UN.castlin01(gseq_rlistize(cs))
 (* ****** ****** *)
-impltmp
+#impltmp
 <>(*tmp*)
 string_streamize
   (cs) =
@@ -418,16 +418,16 @@ end // end of [else]
 )
 } (* end of [string_streamize] *)
 (* ****** ****** *)
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_listize1(cs) =
 $UN.castlin01(glseq_listize1(cs))
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_rlistize1(cs) =
 $UN.castlin01(glseq_rlistize1(cs))
 (* ****** ****** *)
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_streamize
   (cs) = let
@@ -466,14 +466,14 @@ end // end of [else]
 } (* end of [string_vt_streamize] *)
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_make_list
   (cs) =
 (
 string_vt2t
 (string_vt_make_list<>(cs))
 )
-impltmp<>
+#impltmp<>
 string_make_list_vt
   (cs) =
 (
@@ -483,7 +483,7 @@ string_vt2t
 
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_vt_make_list
   {n}(cs) =
 (
@@ -500,8 +500,8 @@ loop(p0, 0(*i0*), cs)
 } where
 {
 //
-sexpdef
-stmp=strtmp1_vt
+#sexpdef
+stmp = strtmp1_vt
 //
 fnx
 loop
@@ -510,8 +510,7 @@ loop
 ( p0: stmp(n)
 , i0: sint(i)
 , cs
-: list
-  (cgtz, n-i)): void =
+: list(cgtz, n-i)): void =
 (
 case+ cs of
 |
@@ -531,7 +530,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 
 (* ****** ****** *)
 
-impltmp<>
+#impltmp<>
 string_vt_make_list_vt
   {n}(cs) =
 (
@@ -548,8 +547,8 @@ loop(p0, 0(*i0*), cs)
 } where
 {
 //
-sexpdef
-stmp=strtmp1_vt
+#sexpdef
+stmp = strtmp1_vt
 //
 fnx
 loop
@@ -558,8 +557,7 @@ loop
 ( p0: stmp(n)
 , i0: sint(i)
 , cs
-: list_vt
-  (cgtz, n-i)): void =
+: list_vt(cgtz, n-i)): void =
 (
 case+ cs of
 | ~
@@ -579,7 +577,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_make_stream
   (cs) =
@@ -588,7 +586,7 @@ val cs = listize(cs)
 in
   string_vt_make_list_vt(cs)
 endlet // string_vt_make_stream
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_make_stream_vt
   (cs) =
@@ -600,7 +598,7 @@ endlet // string_vt_make_stream_vt
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <n>(*tmp*)
 string_tabulate
 ( n0 ) =
@@ -609,7 +607,7 @@ string_vt2t
 (string_vt_tabulate<n>(n0))
 )
 //
-impltmp
+#impltmp
 <n>(*tmp*)
 string_vt_tabulate
 ( n0 ) =
@@ -627,8 +625,8 @@ val () = loop(p0, i0)
 } where
 {
 //
-sexpdef
-stmp=strtmp1_vt
+#sexpdef
+stmp = strtmp1_vt
 //
 fnx
 loop
@@ -655,7 +653,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_tabulate_cfr
 {n}
@@ -664,10 +662,10 @@ string_tabulate_cfr
 string_tabulate<n>(n0)
 ) where
 {
-impltmp
+#impltmp
 tabulate$fopr<cgtz><n>(i0) = f0(i0)
 }
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_tabulate_cfr
 {n}
@@ -676,94 +674,94 @@ string_vt_tabulate_cfr
 string_vt_tabulate<n>(n0)
 ) where
 {
-impltmp
+#impltmp
 tabulate$fopr<cgtz><n>(i0) = f0(i0)
 }
 //
 (* ****** ****** *)
 //
 // HX:
-// For implementing
+// For #implementing
 // some gseq_operations
 //
 (* ****** ****** *)
 
 local
 //
-typedef x0 = cgtz
-typedef xs = string
+#typedef x0 = cgtz
+#typedef xs = string
 //
 in (* in-of-local *)
 
 (* ****** ****** *)
-impltmp
+#impltmp
 g_lt<xs> = string_lt<>
-impltmp
+#impltmp
 g_gt<xs> = string_gt<>
-impltmp
+#impltmp
 g_eq<xs> = string_eq<>
 (* ****** ****** *)
-impltmp
+#impltmp
 g_lte<xs> = string_lte<>
-impltmp
+#impltmp
 g_gte<xs> = string_gte<>
-impltmp
+#impltmp
 g_neq<xs> = string_neq<>
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 g_cmp<xs> = string_cmp<>
 //
-impltmp
+#impltmp
 string_cmp<> = gseq_cmp<xs><x0>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 g_print<xs> = string_print<>
 //
-impltmp
+#impltmp
 gseq_print$beg<xs><x0>() = ()
-impltmp
+#impltmp
 gseq_print$end<xs><x0>() = ()
-impltmp
+#impltmp
 gseq_print$sep<xs><x0>() = ()
-impltmp
+#impltmp
 string_print<> = gseq_print<xs><x0>
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 gseq_nilq<xs><x0> = string_nilq<>
-impltmp
+#impltmp
 gseq_consq<xs><x0> = string_consq<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 gseq_forall<xs><x0> = string_forall<>
-impltmp
+#impltmp
 gseq_streamize<xs><x0> = string_streamize<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 gseq_head_raw<xs><x0> = string_head_raw<>
-impltmp
+#impltmp
 gseq_tail_raw<xs><x0> = string_tail_raw<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 gseq_unlist<xs><x0> = string_make_list<>
-impltmp
+#impltmp
 gseq_unlist_vt<xs><x0> = string_make_list_vt<>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 gseq_unstream<xs><x0> = string_make_stream<>
-impltmp
+#impltmp
 gseq_unstream_vt<xs><x0> = string_make_stream_vt<>
 
 (* ****** ****** *)
@@ -774,23 +772,23 @@ end // end of [local]
 
 local
 //
-typedef x0 = cgtz
-viewdef xs = string_vt
+#typedef x0 = cgtz
+#viewdef xs = string_vt
 //
 in (* in-of-local *)
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 gl_print0<xs> = string_vt_print0<>
-impltmp
+#impltmp
 gl_print1<xs> = string_vt_print1<>
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 glseq_forall0<xs><x0> = string_vt_forall0<>
-impltmp
+#impltmp
 glseq_forall1<xs><x0> = string_vt_forall1<>
 
 (* ****** ****** *)
