@@ -83,14 +83,14 @@ fun<>
 g_inp_lline_rlist(): list_vt(char)
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 g_inp_char() =
 fgetc_ref(g_stdin<>())
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 g_inp_cstream() =
 (
@@ -121,7 +121,7 @@ end // end of [let]
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 g_inp_line_list() =
 list_vt2t{char}
@@ -129,13 +129,13 @@ list_vt2t{char}
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 g_inp_lline_list() =
 list_vt_reverse<char>
 (g_inp_lline_rlist<>((*void*)))
 //
-impltmp
+#impltmp
 <>(*tmp*)
 g_inp_lline_rlist() =
 (

@@ -32,76 +32,76 @@
 //
 (* ****** ****** *)
 
-typedef
+#typedef
 the_void_ctype = void
 
 (* ****** ****** *)
 //
-typedef
+#typedef
 the_p1tr_ctype = p1tr0
-typedef
+#typedef
 the_p2tr_ctype(a:vt) = p2tr(a)
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 the_sint_ctype(i:int) = sint1(i)
-typedef
+#typedef
 the_uint_ctype(i:int) = uint1(i)
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 the_bool_ctype(b:bool) = bool1(b)
-typedef
+#typedef
 the_char_ctype(c:char) = char1(c)
 //
 (* ****** ****** *)
 //
 // single precision
-typedef the_sflt_ctype = sflt
+#typedef the_sflt_ctype = sflt
 // double precision
-typedef the_dflt_ctype = dflt
+#typedef the_dflt_ctype = dflt
 //
 // ldouble precision
-typedef the_ldflt_ctype = ldflt
+#typedef the_ldflt_ctype = ldflt
 //
 (* ****** ****** *)
 //
-typedef the_slint_ctype = slint0
-typedef the_ulint_ctype = ulint0
+#typedef the_slint_ctype = slint0
+#typedef the_ulint_ctype = ulint0
 //
-typedef the_sllint_ctype = sllint0
-typedef the_ullint_ctype = ullint0
+#typedef the_sllint_ctype = sllint0
+#typedef the_ullint_ctype = ullint0
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 the_string_ctype(n:int) = string1(n)
 //
 (* ****** ****** *)
 
-typedef the_sint0_ctype = sint0
-typedef the_uint0_ctype = uint0
-typedef the_bool0_ctype = bool0
-typedef the_char0_ctype = char0
-typedef the_string0_ctype = string0
+#typedef the_sint0_ctype = sint0
+#typedef the_uint0_ctype = uint0
+#typedef the_bool0_ctype = bool0
+#typedef the_char0_ctype = char0
+#typedef the_string0_ctype = string0
 
 (* ****** ****** *)
 //
-typedef
+#typedef
 the_lazy_ctype(a:t0) = lazy(a)
-vwtpdef
+#vwtpdef
 the_llazy_ctype(a:vt) = lazy_vt(a)
 //
 (* ****** ****** *)
 //
-vwtpdef
+#vwtpdef
 the_excptn_ctype(*void*) = excptn_vt
 //
 (* ****** ****** *)
 //
-viewdef
+#viewdef
 the_a0p1tr_cview(*void*) = a0ptr_view
 //
 (* ****** ****** *)

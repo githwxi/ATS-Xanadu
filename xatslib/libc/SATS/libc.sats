@@ -33,15 +33,15 @@
 //
 (* ****** ****** *)
 //
-abstype
+#abstype
 FILEref_tbox <= ptr0
-absvwtp
+#absvwtp
 FILEptr_vtbx(l:addr) <= ptr0
 //
-typedef FILEref = FILEref_tbox
-sexpdef FILEptr = FILEptr_vtbx
-vwtpdef FILEptr0 = [l:addr] FILEptr(l)
-vwtpdef FILEptr1 = [l:agtz] FILEptr(l)
+#typedef FILEref = FILEref_tbox
+#sexpdef FILEptr = FILEptr_vtbx
+#vwtpdef FILEptr0 = [l:addr] FILEptr(l)
+#vwtpdef FILEptr1 = [l:agtz] FILEptr(l)
 //
 (* ****** ****** *)
 

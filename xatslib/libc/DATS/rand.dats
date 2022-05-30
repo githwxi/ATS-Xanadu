@@ -60,7 +60,7 @@ rand_set_seed
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 rand_set_nil() =
 let
@@ -117,14 +117,14 @@ string_rand_length
 (* ****** ****** *)
 
 (*
-impltmp
+#impltmp
 <>(*tmp*)
 rand_seed() = 0u
 *)
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_rand<bool>() =
 let
 val tf =
@@ -137,7 +137,7 @@ end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_rand<char>() =
 let
 val n0 =
@@ -155,13 +155,13 @@ HX-2020-06-22:
 the default [1024]
 is randomly chosen
 *)
-impltmp
+#impltmp
 <>(*tmp*)
 nint_rand$limit() = 1024
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 nint_rand() =
 nint_rand_limit<>
@@ -169,7 +169,7 @@ nint_rand_limit<>
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 g_rand<sint>() =
 let
 val
@@ -181,7 +181,7 @@ end // end of [g_rand<sint>]
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a0:vt
 ,a1:vt}
 g_rand<(a0,a1)>() =
@@ -191,7 +191,7 @@ g_rand<a0>()
 val x1 =
 g_rand<a1>() in @(x0, x1)
 end
-impltmp
+#impltmp
 {a0:vt
 ,a1:vt}
 g_rand<$(a0,a1)>() =
@@ -202,7 +202,7 @@ val x1 =
 g_rand<a1>() in $(x0, x1)
 end
 //
-impltmp
+#impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}
@@ -215,7 +215,7 @@ g_rand<a1>()
 val x2 =
 g_rand<a2>() in @(x0, x1, x2)
 end
-impltmp
+#impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}
@@ -231,17 +231,17 @@ end
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_rand() =
 list_rand_length<a>
 (list_rand$length<>())
 //
-impltmp
+#impltmp
 {a:t0}
 g_rand<list(a)>() =
 list_vt2t(list_rand<a>())
-impltmp
+#impltmp
 {a:vt}
 g_rand<list_vt(a)> = list_rand<a>
 //
@@ -253,14 +253,14 @@ the default [16]
 is randomly chosen
 *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 list_rand$length() =
 (nint_rand_limit<>(16))
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 list_rand_length
 ( ln ) =
@@ -268,22 +268,22 @@ list_rand_length
 gint_map_list_nint<a>(ln)
 ) where
 {
-impltmp
+#impltmp
 map$fopr<int><a>(_) = g_rand<a>()
 }
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_rand() =
 string_rand_length<>
 (string_rand$length<>())
 //
-impltmp
+#impltmp
 g_rand<string>() =
 string_vt2t(string_rand<>())
-impltmp
+#impltmp
 g_rand<string_vt> = string_rand<>
 //
 (* ****** ****** *)

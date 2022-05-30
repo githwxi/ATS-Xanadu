@@ -38,7 +38,7 @@
 // sort for true
 //
 (*
-abssort true
+#abssort true
 // [true] is built-in
 *)
 //
@@ -47,346 +47,346 @@ abssort true
 // predicative sorts
 //
 (*
-abssort int
+#abssort int
 // [int] is built-in
-abssort bool//tt,ff
+#abssort bool//tt,ff
 // [bool] is built-in
-abssort char//[0,256)
+#abssort char//[0,256)
 // [char] is built-in
 *)
 //
 (* ****** ****** *)
 //
 (*
-abssort real
+#abssort real
 // for handling reals
-abssort float
+#abssort float
 // for handling floats
-abssort string
+#abssort string
 // for handling strings
 *)
 //
 (* ****** ****** *)
 //
-sortdef i0 = int
-sortdef a0 = addr
-sortdef b0 = bool
-sortdef c0 = char
+#sortdef i0 = int
+#sortdef a0 = addr
+#sortdef b0 = bool
+#sortdef c0 = char
 //
-sortdef p0 = prop
-sortdef pf = prop
-sortdef v0 = view
-sortdef vw = view
-sortdef t0 = type
-sortdef tx = tbox
-sortdef x0 = tbox
-sortdef vt = vwtp
-sortdef vx = vtbx
+#sortdef p0 = prop
+#sortdef pf = prop
+#sortdef v0 = view
+#sortdef vw = view
+#sortdef t0 = type
+#sortdef tx = tbox
+#sortdef x0 = tbox
+#sortdef vt = vwtp
+#sortdef vx = vtbx
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 cast_b0_i0:
 bool -> int // t->1/f->0
-#stacst
+#stacst0
 cast_i0_b0:
 (int) -> bool // !0->t/=0->f
 //
-sexpdef
+#sexpdef
 b2i = cast_b0_i0 // overloading
-sexpdef
+#sexpdef
 i2b = cast_i0_b0 // overloading
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 tt_b0 : bool // true
-#stacst
+#stacst0
 ff_b0 : bool // false
 //
-sexpdef tt = tt_b0 // overloading
-sexpdef ff = ff_b0 // overloading
+#sexpdef tt = tt_b0 // overloading
+#sexpdef ff = ff_b0 // overloading
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 neg_b0:
 ( b0 ) -> bool
-sexpdef ~ = neg_b0 // overloading
+#sexpdef ~ = neg_b0 // overloading
 (*
-sexpdef neg = neg_b0 // overloading
+#sexpdef neg = neg_b0 // overloading
 *)
 //
-#stacst
+#stacst0
 add_b0_b0:
 (b0, b0) -> bool
-#stacst
+#stacst0
 mul_b0_b0:
 (b0, b0) -> bool
 //
-sexpdef + = add_b0_b0 // overloading
-sexpdef * = mul_b0_b0 // overloading
-sexpdef || = add_b0_b0 // overloading
-sexpdef && = mul_b0_b0 // overloading
+#sexpdef + = add_b0_b0 // overloading
+#sexpdef * = mul_b0_b0 // overloading
+#sexpdef || = add_b0_b0 // overloading
+#sexpdef && = mul_b0_b0 // overloading
 (*
-sexpdef add = add_b0_b0 // overloading
-sexpdef mul = mul_b0_b0 // overloading
+#sexpdef add = add_b0_b0 // overloading
+#sexpdef mul = mul_b0_b0 // overloading
 *)
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 lt_b0_b0:
 (b0, b0) -> bool
-#stacst
+#stacst0
 gt_b0_b0:
 (b0, b0) -> bool
-#stacst
+#stacst0
 eq_b0_b0:
 (b0, b0) -> bool
 //
-#stacst
+#stacst0
 lte_b0_b0:
 (b0, b0) -> bool
-#stacst
+#stacst0
 gte_b0_b0:
 (b0, b0) -> bool
-#stacst
+#stacst0
 neq_b0_b0:
 (b0, b0) -> bool
 //
-sexpdef < = lt_b0_b0 // overloading
-sexpdef > = gt_b0_b0 // overloading
-sexpdef = = eq_b0_b0 // overloading
+#sexpdef < = lt_b0_b0 // overloading
+#sexpdef > = gt_b0_b0 // overloading
+#sexpdef = = eq_b0_b0 // overloading
 //
-sexpdef <= = lte_b0_b0 // overloading
-sexpdef >= = gte_b0_b0 // overloading
-sexpdef != = neq_b0_b0 // overloading
+#sexpdef <= = lte_b0_b0 // overloading
+#sexpdef >= = gte_b0_b0 // overloading
+#sexpdef != = neq_b0_b0 // overloading
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 lt_c0_c0:
 (c0, c0) -> bool // c0: [0, 256)
-#stacst
+#stacst0
 gt_c0_c0:
 (c0, c0) -> bool // c0: [0, 256)
-#stacst
+#stacst0
 eq_c0_c0:
 (c0, c0) -> bool // c0: [0, 256)
 //
-#stacst
+#stacst0
 lte_c0_c0:
 (c0, c0) -> bool // c0: [0, 256)
-#stacst
+#stacst0
 gte_c0_c0:
 (c0, c0) -> bool // c0: [0, 256)
-#stacst
+#stacst0
 neq_c0_c0:
 (c0, c0) -> bool // c0: [0, 256)
 //
-sexpdef < = lt_c0_c0 // overloading
-sexpdef > = gt_c0_c0 // overloading
-sexpdef = = eq_c0_c0 // overloading
+#sexpdef < = lt_c0_c0 // overloading
+#sexpdef > = gt_c0_c0 // overloading
+#sexpdef = = eq_c0_c0 // overloading
 //
-sexpdef <= = lte_c0_c0 // overloading
-sexpdef >= = gte_c0_c0 // overloading
-sexpdef != = neq_c0_c0 // overloading
+#sexpdef <= = lte_c0_c0 // overloading
+#sexpdef >= = gte_c0_c0 // overloading
+#sexpdef != = neq_c0_c0 // overloading
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 lt_c0_i0:
 (c0, i0) -> bool // c0: [0, 256)
-#stacst
+#stacst0
 gt_c0_i0:
 (c0, i0) -> bool // c0: [0, 256)
-#stacst
+#stacst0
 eq_c0_i0:
 (c0, i0) -> bool // c0: [0, 256)
 //
-#stacst
+#stacst0
 lte_c0_i0:
 (c0, i0) -> bool // c0: [0, 256)
-#stacst
+#stacst0
 gte_c0_i0:
 (c0, i0) -> bool // c0: [0, 256)
-#stacst
+#stacst0
 neq_c0_i0:
 (c0, i0) -> bool // c0: [0, 256)
 //
-sexpdef < = lt_c0_i0 // overloading
-sexpdef > = gt_c0_i0 // overloading
-sexpdef = = eq_c0_i0 // overloading
+#sexpdef < = lt_c0_i0 // overloading
+#sexpdef > = gt_c0_i0 // overloading
+#sexpdef = = eq_c0_i0 // overloading
 //
-sexpdef <= = lte_c0_i0 // overloading
-sexpdef >= = gte_c0_i0 // overloading
-sexpdef != = neq_c0_i0 // overloading
+#sexpdef <= = lte_c0_i0 // overloading
+#sexpdef >= = gte_c0_i0 // overloading
+#sexpdef != = neq_c0_i0 // overloading
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 neg_i0: int -> int
-sexpdef - = neg_i0 // overloading
+#sexpdef - = neg_i0 // overloading
 //
-#stacst
+#stacst0
 abs_i0: int -> int
-sexpdef abs = abs_i0 // overloading
+#sexpdef abs = abs_i0 // overloading
 //
-#stacst
+#stacst0
 sgn_i0: int -> int
-sexpdef sgn = sgn_i0 // overloading
+#sexpdef sgn = sgn_i0 // overloading
 //
 (*
-#stacst
+#stacst0
 succ_i0: int -> int
-#stacst
+#stacst0
 pred_i0: int -> int
-sexpdef succ = succ_i0 // overloading
-sexpdef pred = pred_i0 // overloading
+#sexpdef succ = succ_i0 // overloading
+#sexpdef pred = pred_i0 // overloading
 *)
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 add_a0_i0: (a0, i0) -> a0
-#stacst
+#stacst0
 add_c0_i0: (c0, i0) -> c0
-#stacst
+#stacst0
 add_i0_i0: (i0, i0) -> i0
 //
-#stacst
+#stacst0
 sub_a0_a0: (a0, a0) -> i0
-#stacst
+#stacst0
 sub_c0_c0: (c0, c0) -> i0
-#stacst
+#stacst0
 sub_i0_i0: (i0, i0) -> i0
 //
-#stacst
+#stacst0
 mul_i0_i0: (i0, i0) -> i0
-#stacst
+#stacst0
 div_i0_i0: (i0, i0) -> i0
-#stacst
+#stacst0
 mod_i0_i0: (i0, i0) -> i0
 //
-sexpdef + = add_a0_i0 // overloading
-sexpdef + = add_c0_i0 // overloading
-sexpdef + = add_i0_i0 // overloading
+#sexpdef + = add_a0_i0 // overloading
+#sexpdef + = add_c0_i0 // overloading
+#sexpdef + = add_i0_i0 // overloading
 //
-sexpdef - = sub_a0_a0 // overloading
-sexpdef - = sub_c0_c0 // overloading
-sexpdef - = sub_i0_i0 // overloading
+#sexpdef - = sub_a0_a0 // overloading
+#sexpdef - = sub_c0_c0 // overloading
+#sexpdef - = sub_i0_i0 // overloading
 //
-sexpdef * = mul_i0_i0 // overloading
-sexpdef / = div_i0_i0 // overloading
-sexpdef % = mod_i0_i0 // overloading
+#sexpdef * = mul_i0_i0 // overloading
+#sexpdef / = div_i0_i0 // overloading
+#sexpdef % = mod_i0_i0 // overloading
 //
 (*
 //
-sexpdef add = add_a0_i0 // overloading
-sexpdef add = add_c0_i0 // overloading
-sexpdef add = add_i0_i0 // overloading
+#sexpdef add = add_a0_i0 // overloading
+#sexpdef add = add_c0_i0 // overloading
+#sexpdef add = add_i0_i0 // overloading
 //
 *)
 //
 (*
-sexpdef sub = sub_a0_a0 // overloading
-sexpdef sub = sub_c0_c0 // overloading
-sexpdef sub = sub_i0_i0 // overloading
+#sexpdef sub = sub_a0_a0 // overloading
+#sexpdef sub = sub_c0_c0 // overloading
+#sexpdef sub = sub_i0_i0 // overloading
 *)
 //
 (*
-sexpdef mul = mul_i0_i0 // overloading
-sexpdef div = div_i0_i0 // overloading
+#sexpdef mul = mul_i0_i0 // overloading
+#sexpdef div = div_i0_i0 // overloading
 *)
 //
-sexpdef mod = mod_i0_i0 // overloading
+#sexpdef mod = mod_i0_i0 // overloading
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 lt_a0_a0: (a0, a0) -> b0
-#stacst
+#stacst0
 gt_a0_a0: (a0, a0) -> b0
-#stacst
+#stacst0
 gt_a0_i0: (a0, i0) -> b0
-#stacst
+#stacst0
 eq_a0_a0: (a0, a0) -> b0
-#stacst
+#stacst0
 eq_a0_i0: (a0, i0) -> b0
 //
-#stacst
+#stacst0
 lte_a0_a0: (a0, a0) -> b0
-#stacst
+#stacst0
 gte_a0_a0: (a0, a0) -> b0
-#stacst
+#stacst0
 gte_a0_i0: (a0, i0) -> b0
-#stacst
+#stacst0
 neq_a0_a0: (a0, a0) -> b0
-#stacst
+#stacst0
 neq_a0_i0: (a0, i0) -> b0
 //
-sexpdef < = lt_a0_a0 // overloading
-sexpdef > = gt_a0_a0 // overloading
-sexpdef > = gt_a0_i0 // overloading
-sexpdef = = eq_a0_a0 // overloading
-sexpdef = = eq_a0_i0 // overloading
+#sexpdef < = lt_a0_a0 // overloading
+#sexpdef > = gt_a0_a0 // overloading
+#sexpdef > = gt_a0_i0 // overloading
+#sexpdef = = eq_a0_a0 // overloading
+#sexpdef = = eq_a0_i0 // overloading
 //
-sexpdef <= = lte_a0_a0 // overloading
-sexpdef >= = gte_a0_a0 // overloading
-sexpdef >= = gte_a0_i0 // overloading
-sexpdef != = neq_a0_a0 // overloading
-sexpdef != = neq_a0_i0 // overloading
+#sexpdef <= = lte_a0_a0 // overloading
+#sexpdef >= = gte_a0_a0 // overloading
+#sexpdef >= = gte_a0_i0 // overloading
+#sexpdef != = neq_a0_a0 // overloading
+#sexpdef != = neq_a0_i0 // overloading
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 lt_i0_i0: (i0, i0) -> b0
-#stacst
+#stacst0
 gt_i0_i0: (i0, i0) -> b0
-#stacst
+#stacst0
 eq_i0_i0: (i0, i0) -> b0
 //
-#stacst
+#stacst0
 lte_i0_i0: (i0, i0) -> b0
-#stacst
+#stacst0
 gte_i0_i0: (i0, i0) -> b0
-#stacst
+#stacst0
 neq_i0_i0: (i0, i0) -> b0
 //
-sexpdef < = lt_i0_i0 // overloading
-sexpdef > = gt_i0_i0 // overloading
-sexpdef = = eq_i0_i0 // overloading
+#sexpdef < = lt_i0_i0 // overloading
+#sexpdef > = gt_i0_i0 // overloading
+#sexpdef = = eq_i0_i0 // overloading
 //
-sexpdef <= = lte_i0_i0 // overloading
-sexpdef >= = gte_i0_i0 // overloading
-sexpdef != = neq_i0_i0 // overloading
+#sexpdef <= = lte_i0_i0 // overloading
+#sexpdef >= = gte_i0_i0 // overloading
+#sexpdef != = neq_i0_i0 // overloading
 //
 (* ****** ****** *)
 
-sortdef nat = {a:int | a >= 0}
-sortdef pos = {a:int | a >= 1}
-sortdef neg = {a:int | a <= -1}
+#sortdef nat = {a:int | a >= 0}
+#sortdef pos = {a:int | a >= 1}
+#sortdef neg = {a:int | a <= -1}
 
 (* ****** ****** *)
 
-sortdef agtz = {l:addr | l > 0}
-sortdef agez = {l:addr | l >= 0}
+#sortdef agtz = {l:addr | l > 0}
+#sortdef agez = {l:addr | l >= 0}
 
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 sizeof_vt_i0: (vt) -> i0
-sexpdef
+#sexpdef
 sz(a:vt) = sizeof_vt_i0(a)
-sexpdef
+#sexpdef
 size(a:vt) = sizeof_vt_i0(a)
 //
 (* ****** ****** *)
 //
-#stacst
+#stacst0
 offset_vt_cs: (vt,cs) -> int
-sexpdef
+#sexpdef
 ofs(a:vt,l:cs) = offset_vt_cs(a,l)
 //
 (* ****** ****** *)
@@ -394,288 +394,288 @@ ofs(a:vt,l:cs) = offset_vt_cs(a,l)
 // impredicative sorts
 //
 (*
-abssort prop // prop: for proofs
-abssort view // view: linear prop
+#abssort prop // prop: for proofs
+#abssort view // view: linear prop
 *)
 //
 (*
-abssort type // unspecified size
-abssort tbox // tbox: of 1-word size
-abssort tflt // tflt: alias for type
+#abssort type // unspecified size
+#abssort tbox // tbox: of 1-word size
+#abssort tflt // tflt: alias for type
 *)
 //
 (*
-abssort vwtp // viewtype: linear type
-abssort vtbx // viewtbox: linear tbox
+#abssort vwtp // viewtype: linear type
+#abssort vtbx // viewtbox: linear tbox
 (*
-abssort vtype // viewtype: linear type
-abssort vtbox // viewtbox: linear tbox
-abssort vtflt // viewtflt: linear tflt
+#abssort vtype // viewtype: linear type
+#abssort vtbox // viewtbox: linear tbox
+#abssort vtflt // viewtflt: linear tflt
 *)
 *)
 //
 (* ****** ****** *)
-typedef
+#typedef
 void = $extype("xats_void_t")
 (* ****** ****** *)
-typedef
+#typedef
 p0tr = $extbox("xats_p0tr_t")
 (* ****** ****** *)
 //
-typedef
+#typedef
 p1tr_k = $extype("xats_p1tr_t")
-typedef
+#typedef
 p2tr_k = $extype("xats_p2tr_t")
 //
 (* ****** ****** *)
 //
-abstype
+#abstype
 p1tr_tbox
 (l:addr) <= p1tr_k
-abstype
+#abstype
 p2tr_tbox
 (x:vwtp, l:addr) <= p2tr_k
 //
-typedef
+#typedef
 p1tr0 = [l:a0] p1tr_tbox(l)
-typedef
+#typedef
 p1tr1(l: a0) = p1tr_tbox(l)
 //
-typedef
+#typedef
 p2tr0
 (a:vt) = [l:a0] p2tr_tbox(a, l)
-typedef
+#typedef
 p2tr1
 (a: vt, l: a0) = p2tr_tbox(a, l)
 //
-typedef p1tr = p1tr0
-typedef p1tr(l:a0) = p1tr1(l)
-typedef p2tr(x:vt) = p2tr0(x)
-typedef p2tr(x:vt, l:a0) = p2tr1(x, l)
+#typedef p1tr = p1tr0
+#typedef p1tr(l:a0) = p1tr1(l)
+#typedef p2tr(x:vt) = p2tr0(x)
+#typedef p2tr(x:vt, l:a0) = p2tr1(x, l)
 //
 (* ****** ****** *)
 //
-abstype
+#abstype
 cp1tr_tbox
 (l:addr) <= p1tr_k
-abstype
+#abstype
 cp2tr_tbox
 (x:vwtp, l:addr) <= p2tr_k
 //
-typedef
+#typedef
 cp1tr0 = [l:a0] cp1tr_tbox(l)
-typedef
+#typedef
 cp1tr1(l: a0) = cp1tr_tbox(l)
 //
-typedef
+#typedef
 cp2tr0
 (a:vt) = [l:a0] cp2tr_tbox(a, l)
-typedef
+#typedef
 cp2tr1
 (a: vt, l: a0) = cp2tr_tbox(a, l)
 //
-typedef cp1tr = cp1tr0
-typedef cp1tr(l:a0) = cp1tr1(l)
-typedef cp2tr(x:vt) = cp2tr0(x)
-typedef cp2tr(x:vt, l:a0) = cp2tr1(x, l)
+#typedef cp1tr = cp1tr0
+#typedef cp1tr(l:a0) = cp1tr1(l)
+#typedef cp2tr(x:vt) = cp2tr0(x)
+#typedef cp2tr(x:vt, l:a0) = cp2tr1(x, l)
 //
 (* ****** ****** *)
 
-typedef
+#typedef
 bool_k = $extype("xats_bool_t")
-typedef
+#typedef
 char_k = $extype("xats_char_t")
 
-typedef
+#typedef
 sint_k = $extype("xats_sint_t")
-typedef
+#typedef
 uint_k = $extype("xats_uint_t")
 
-typedef
+#typedef
 slint_k = $extype("xats_slint_t")
-typedef
+#typedef
 ulint_k = $extype("xats_ulint_t")
 
-typedef
+#typedef
 ssize_k = $extype("xats_ssize_t")
-typedef
+#typedef
 usize_k = $extype("xats_usize_t")
 
-typedef
+#typedef
 sllint_k = $extype("xats_sllint_t")
-typedef
+#typedef
 ullint_k = $extype("xats_ullint_t")
 
 (* ****** ****** *)
 //
-abstype
+#abstype
 bool_type(bool) <= bool_k
 //
-typedef
+#typedef
 bool0 = [b:b0] bool_type(b)
-typedef
+#typedef
 bool1(b:bool) = bool_type(b)
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 tbool = bool1(tt) // singleton
-typedef
+#typedef
 fbool = bool1(ff) // singleton
 //
-typedef bool = bool0
-typedef bool(b:bool) = bool1(b)
+#typedef bool = bool0
+#typedef bool(b:bool) = bool1(b)
 //
 (* ****** ****** *)
 //
-abstype
+#abstype
 char_type(char) <= char_k
 //
-typedef
+#typedef
 char0 = [c:c0] char_type(c)
-typedef
+#typedef
 char1(c:char) = char_type(c)
 //
-typedef char = char0
-typedef char(c:char) = char1(c)
+#typedef char = char0
+#typedef char(c:char) = char1(c)
 //
 (* ****** ****** *)
 //
-abstype
+#abstype
 gint_type(a:type, int) <= a
 //
-typedef
+#typedef
 gint0
 (a:type)=[i:int] gint_type(a, i)
-typedef
+#typedef
 gint1
 (a:type,i:int) = gint_type(a, i)
 //
 (* ****** ****** *)
 //
-typedef sint0 = gint0(sint_k)
-typedef uint0 = gint0(uint_k)
+#typedef sint0 = gint0(sint_k)
+#typedef uint0 = gint0(uint_k)
 //
-typedef
+#typedef
 sint1(i:int) = gint1(sint_k, i)
-typedef
+#typedef
 uint1(i:int) = gint1(uint_k, i)
 //
-typedef slint0 = gint0(slint_k)
-typedef ulint0 = gint0(ulint_k)
+#typedef slint0 = gint0(slint_k)
+#typedef ulint0 = gint0(ulint_k)
 //
-typedef
+#typedef
 slint1(i:int) = gint1(slint_k, i)
-typedef
+#typedef
 ulint1(i:int) = gint1(ulint_k, i)
 //
-typedef ssize0 = gint0(ssize_k)
-typedef usize0 = gint0(usize_k)
+#typedef ssize0 = gint0(ssize_k)
+#typedef usize0 = gint0(usize_k)
 //
-typedef
+#typedef
 ssize1(i:int) = gint1(ssize_k, i)
-typedef
+#typedef
 usize1(i:int) = gint1(usize_k, i)
 //
 (* ****** ****** *)
 //
-typedef sllint0 = gint0(sllint_k)
-typedef ullint0 = gint0(ullint_k)
+#typedef sllint0 = gint0(sllint_k)
+#typedef ullint0 = gint0(ullint_k)
 //
-typedef
+#typedef
 sllint1(i:int) = gint1(sllint_k, i)
-typedef
+#typedef
 ullint1(i:int) = gint1(ullint_k, i)
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 gint(a:type) = gint0(a)
-typedef
+#typedef
 gint(a:type,i:int) = gint1(a, i)
 //
 (* ****** ****** *)
 //
-typedef int = sint0
-typedef int(i:int) = sint1(i)
-typedef sint = sint0
-typedef sint(i:int) = sint1(i)
-typedef uint = uint0
-typedef uint(i:int) = uint1(i)
+#typedef int = sint0
+#typedef int(i:int) = sint1(i)
+#typedef sint = sint0
+#typedef sint(i:int) = sint1(i)
+#typedef uint = uint0
+#typedef uint(i:int) = uint1(i)
 //
-typedef lint = slint0
-typedef lint(i:int) = slint1(i)
-typedef slint = slint0
-typedef slint(i:int) = slint1(i)
-typedef ulint = ulint0
-typedef ulint(i:int) = ulint1(i)
+#typedef lint = slint0
+#typedef lint(i:int) = slint1(i)
+#typedef slint = slint0
+#typedef slint(i:int) = slint1(i)
+#typedef ulint = ulint0
+#typedef ulint(i:int) = ulint1(i)
 //
-typedef size = usize0
-typedef size(i:int) = usize1(i)
-typedef usize = usize0
-typedef usize(i:int) = usize1(i)
-typedef ssize = ssize0
-typedef ssize(i:int) = ssize1(i)
+#typedef size = usize0
+#typedef size(i:int) = usize1(i)
+#typedef usize = usize0
+#typedef usize(i:int) = usize1(i)
+#typedef ssize = ssize0
+#typedef ssize(i:int) = ssize1(i)
 //
-typedef llint = sllint0
-typedef llint(i:int) = sllint1(i)
-typedef sllint = sllint0
-typedef sllint(i:int) = sllint1(i)
-typedef ullint = ullint0
-typedef ullint(i:int) = ullint1(i)
+#typedef llint = sllint0
+#typedef llint(i:int) = sllint1(i)
+#typedef sllint = sllint0
+#typedef sllint(i:int) = sllint1(i)
+#typedef ullint = ullint0
+#typedef ullint(i:int) = ullint1(i)
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 nint = [i:int | i >= 0] sint(i)
-typedef
+#typedef
 nlint = [i:int | i >= 0] slint(i)
-typedef
+#typedef
 nsize = [i:int | i >= 0] ssize(i)
-typedef
+#typedef
 nllint = [i:int | i >= 0] sllint(i)
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 sintlt(n:int) = [i:int | i < n] sint(i)
-typedef
+#typedef
 sintgt(n:int) = [i:int | i > n] sint(i)
-typedef
+#typedef
 sintlte(n:int) = [i:int | i <= n] sint(i)
-typedef
+#typedef
 sintgte(n:int) = [i:int | i >= n] sint(i)
 //
-typedef
+#typedef
 nintlt(n:int) = [i:nat | i < n] sint(i)
-typedef
+#typedef
 nintlte(n:int) = [i:nat | i <= n] sint(i)
 //
-typedef
+#typedef
 sintbtw
 (m:int
 ,n:int) = [i:int | m <= i; i < n] sint(i)
-typedef
+#typedef
 sintbtwe
 (m:int
 ,n:int) = [i:int | m <= i; i <= n] sint(i)
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 sizelt(n:int) = [i:int | i < n] size(i)
-typedef
+#typedef
 sizegt(n:int) = [i:int | i > n] size(i)
-typedef
+#typedef
 sizelte(n:int) = [i:int | i <= n] size(i)
-typedef
+#typedef
 sizegte(n:int) = [i:int | i >= n] size(i)
 //
-typedef
+#typedef
 sizebtw
 (m:int
 ,n:int) = [i:int | m <= i; i < n] size(i)
-typedef
+#typedef
 sizebtwe
 (m:int
 ,n:int) = [i:int | m <= i; i <= n] size(i)
@@ -726,17 +726,17 @@ optn_vt_i0_vx
 //
 (* ****** ****** *)
 //
-sexpdef optn = optn_t0_i0_x0
-sexpdef optn_vt = optn_vt_i0_vx
+#sexpdef optn = optn_t0_i0_x0
+#sexpdef optn_vt = optn_vt_i0_vx
 //
-typedef
+#typedef
 optn0(a:type) = [b:b0] optn(a, b)
-typedef
+#typedef
 optn1(a:type, b: bool) = optn(a, b)
 //
-vwtpdef
+#vwtpdef
 optn0_vt(a:type) = [b:b0] optn_vt(a, b)
-vwtpdef
+#vwtpdef
 optn1_vt(a:type, b: bool) = optn_vt(a, b)
 //
 (* ****** ****** *)
@@ -787,56 +787,56 @@ list_vt_i0_vx
 //
 (* ****** ****** *)
 //
-sexpdef list = list_t0_i0_x0
-sexpdef list_vt = list_vt_i0_vx
+#sexpdef list = list_t0_i0_x0
+#sexpdef list_vt = list_vt_i0_vx
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 list(a:type) = [n:int] list(a, n)
 //
-typedef
+#typedef
 list0(a:type) = [n:int | n >= 0] list(a, n)
-typedef
+#typedef
 list1(a:type) = [n:int | n >= 1] list(a, n)
 //
-typedef listlt
+#typedef listlt
   (a:type, n:int) = [k:nat | k < n] list(a, k)
-typedef listgt
+#typedef listgt
   (a:type, n:int) = [k:int | k > n] list(a, k)
 //
-typedef listlte
+#typedef listlte
   (a:type, n:int) = [k:nat | k <= n] list(a, k)
-typedef listgte
+#typedef listgte
   (a:type, n:int) = [k:int | k >= n] list(a, k)
 //
-typedef listbtw
+#typedef listbtw
   (a:type, m:int, n:int) = [k:int | m <= k; k < n] list(a, k)
-typedef listbtwe
+#typedef listbtwe
   (a:type, m:int, n:int) = [k:int | m <= k; k <= n] list(a, k)
 //
 (* ****** ****** *)
 //
-vwtpdef
+#vwtpdef
 list_vt(a:vwtp) = [n:int] list_vt(a, n)
 //
-vwtpdef
+#vwtpdef
 list0_vt(a:vwtp) = [n:int | n >= 0] list_vt(a, n)
-vwtpdef
+#vwtpdef
 list1_vt(a:vwtp) = [n:int | n >= 1] list_vt(a, n)
 //
-vwtpdef listlt_vt
+#vwtpdef listlt_vt
   (a:vwtp, n:int) = [k:nat | k < n] list_vt(a, k)
-vwtpdef listgt_vt
+#vwtpdef listgt_vt
   (a:vwtp, n:int) = [k:int | k > n] list_vt(a, k)
-vwtpdef listlte_vt
+#vwtpdef listlte_vt
   (a:vwtp, n:int) = [k:nat | k <= n] list_vt(a, k)
-vwtpdef listgte_vt
+#vwtpdef listgte_vt
   (a:vwtp, n:int) = [k:int | k >= n] list_vt(a, k)
 //
-vwtpdef listbtw_vt
+#vwtpdef listbtw_vt
   (a:vwtp, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
-vwtpdef listbtwe_vt
+#vwtpdef listbtwe_vt
   (a:vwtp, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
 //
 (* ****** ****** *)
@@ -848,110 +848,110 @@ list_vt2t
 //
 (* ****** ****** *)
 //
-typedef
+#typedef
 sflt_k =
 $extype("xats_sflt_t")
-typedef
+#typedef
 dflt_k =
 $extype("xats_dflt_t")
-typedef
+#typedef
 ldflt_k =
 $extype("xats_ldflt_t")
 //
-abstype
+#abstype
 gflt_type(a:type) <= a
 //
-typedef
+#typedef
 sflt = gflt_type(sflt_k)
-typedef
+#typedef
 dflt = gflt_type(dflt_k)
-typedef
+#typedef
 ldflt = gflt_type(ldflt_k)
 //
-typedef
+#typedef
 gflt(a:type) = gflt_type(a)
 //
-typedef
+#typedef
 float = sflt // single precision
-typedef
+#typedef
 double = dflt // double precision
-typedef
+#typedef
 ldouble = ldflt // double precision
 //
 (* ****** ****** *)
 //
-abstype
+#abstype
 string_i0_x0(n:int) <= p0tr
-abstype
+#abstype
 stropt_i0_x0(n:int) <= p0tr
 //
-typedef
+#typedef
 string0 =
 [n:i0] string_i0_x0(n)
-typedef
+#typedef
 string1
 (n:int) = string_i0_x0( n )
 //
-typedef
+#typedef
 stropt0 =
 [n:i0] stropt_i0_x0(n)
-typedef
+#typedef
 stropt1
 (n:int) = stropt_i0_x0( n )
 //
 (* ****** ****** *)
 //
-typedef string = string0
-typedef string(n:int) = string1(n)
-typedef stropt = stropt0
-typedef stropt(n:int) = stropt1(n)
+#typedef string = string0
+#typedef string(n:int) = string1(n)
+#typedef stropt = stropt0
+#typedef stropt(n:int) = stropt1(n)
 //
 (* ****** ****** *)
 //
-absvwtp
+#absvwtp
 string_i0_vx(n:int) <= p0tr
-absvwtp
+#absvwtp
 stropt_i0_vx(n:int) <= p0tr
 //
-vwtpdef
+#vwtpdef
 string0_vt =
 [n:i0] string_i0_vx(n)
-vwtpdef
+#vwtpdef
 string1_vt
 (n:int) = string_i0_vx( n )
 //
-vwtpdef
+#vwtpdef
 stropt0_vt =
 [n:i0] stropt_i0_vx(n)
-vwtpdef
+#vwtpdef
 stropt1_vt
 (n: int) = stropt_i0_vx( n )
 //
 (* ****** ****** *)
 //
-vwtpdef string_vt = string0_vt
-vwtpdef string_vt(n:int) = string1_vt(n)
+#vwtpdef string_vt = string0_vt
+#vwtpdef string_vt(n:int) = string1_vt(n)
 //
-vwtpdef stropt_vt = stropt0_vt
-vwtpdef stropt_vt(n:int) = stropt1_vt(n)
+#vwtpdef stropt_vt = stropt0_vt
+#vwtpdef stropt_vt(n:int) = stropt1_vt(n)
 //
 (* ****** ****** *)
 //
 // HX:
 // For exceptions:
 //
-absvwtp excptn_vt <= p0tr
+#absvwtp excptn_vt <= p0tr
 //
 (* ****** ****** *)
 //
-abstbox
+#abstbox
 lazy_t0_x0(a: type+) <= p0tr
-typedef
+#typedef
 lazy(a:type) = lazy_t0_x0( a )
 //
-absvtbx
+#absvtbx
 lazy_vt_vx(a: vwtp+) <= p0tr
-vwtpdef
+#vwtpdef
 lazy_vt(a:vwtp) = lazy_vt_vx(a)
 //
 (* ****** ****** *)
@@ -974,13 +974,13 @@ pfexch
 //
 (* ****** ****** *)
 //
-absview
+#absview
 a0ptr_view(a:vt,l:a0)
-sexpdef @ = a0ptr_view
+#sexpdef @ = a0ptr_view
 //
-absview
+#absview
 a1ptr_view(a:vt,l:a0,n:i0)
-sexpdef arrvw = a1ptr_view
+#sexpdef arrvw = a1ptr_view
 //
 (* ****** ****** *)
 //
@@ -994,9 +994,9 @@ strxcon(a:type+) =
 //
 where
 {
-typedef
+#typedef
 stream(a:type) = lazy(strmcon(a))
-typedef
+#typedef
 streax(a:type) = lazy(strxcon(a))
 }
 //
@@ -1010,9 +1010,9 @@ strxcon_vt(a:vwtp+) =
 //
 where
 {
-vwtpdef
+#vwtpdef
 stream_vt(a:vwtp) = lazy_vt(strmcon_vt(a))
-vwtpdef
+#vwtpdef
 streax_vt(a:vwtp) = lazy_vt(strxcon_vt(a))
 } (* where *)
 //
@@ -1036,7 +1036,7 @@ strqcon_nil(a, 0) of ((*void*))
 strqcon_cons(a, n+1) of (a, streaq(a, n))
 where
 {
-typedef
+#typedef
 streaq(a:vwtp, n:int) = lazy(strqcon(a, n))
 } (* where *) // end of [strqcon]
 (* ****** ****** *)
@@ -1050,7 +1050,7 @@ strqcon_vt_nil(a, 0) of ((*void*))
 strqcon_vt_cons(a, n+1) of (a, streaq_vt(a, n))
 where
 {
-vwtpdef
+#vwtpdef
 streaq_vt(a:vwtp, n:int) = lazy_vt(strqcon_vt(a, n))
 } (* where *) // end of [strqcon_vt]
 (* ****** ****** *)

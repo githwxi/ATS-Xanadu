@@ -237,6 +237,8 @@ tnode =
     // implprf: prval/fun
     // implval/fun/tmp/tmpr: val/fun/tmp/tmpr
 //
+  | T_STACST0 of ()
+//
   | T_ABSSORT of ()
 //
   | T_SORTDEF of ()
@@ -267,8 +269,6 @@ tnode =
 //
   | T_SRP_NONFIX of ()
   | T_SRP_FIXITY of int(*kind*)
-//
-  | T_SRP_STACST of () // #stacst
 //
   | T_SRP_STATIC of () // #static
   | T_SRP_EXTERN of () // #extern

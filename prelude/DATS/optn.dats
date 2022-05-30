@@ -11,18 +11,18 @@
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 optn_nil_
 () = optn_nil()
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_cons_
 (x0) = optn_cons(x0)
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 optn_nilq(xs) =
 (
@@ -30,7 +30,7 @@ case+ xs of
 | optn_nil() => true
 | optn_cons(x0) => false
 )
-impltmp
+#impltmp
 <>(*tmp*)
 optn_consq(xs) =
 (
@@ -41,7 +41,7 @@ case+ xs of
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_length(xs) =
 (
@@ -51,7 +51,7 @@ case+ xs of
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_forall(xs) =
 (
@@ -60,7 +60,7 @@ case+ xs of
 | optn_cons(x0) => forall$test<a>(x0)
 )
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_foreach(xs) =
 (
@@ -69,7 +69,7 @@ case+ xs of
 | optn_cons(x0) => foreach$work<a>(x0)
 )
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_rforall(xs) =
 (
@@ -80,7 +80,7 @@ case+ xs of
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_listize(xs) =
 (
@@ -88,7 +88,7 @@ case+ xs of
 | optn_nil() => list_vt_nil()
 | optn_cons(x0) => list_vt_sing(x0)
 )
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_rlistize(xs) =
 (
@@ -96,7 +96,7 @@ case+ xs of
 | optn_nil() => list_vt_nil()
 | optn_cons(x0) => list_vt_sing(x0)
 )
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_streamize(xs) =
 $llazy
@@ -108,14 +108,14 @@ case+ xs of
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 optn_map(xs) =
 (
 optn_vt2t(optn_map_vt(xs))
 )
 //
-impltmp
+#impltmp
 <x0><y0>
 optn_map_vt(xs) =
 (
@@ -130,7 +130,7 @@ optn_vt_cons(map$fopr<x0><y0>(x0))
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 optn_copy_vt(xs) =
 (
@@ -145,21 +145,21 @@ case+ xs of
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:t0}
 g_print<optn(a)> =
 gseq_print<optn(a)><a>
 //
-impltmp
+#impltmp
 {a:t0}
 gseq_print$beg
 <optn(a)><a>() = string_print("(")
-impltmp
+#impltmp
 {a:t0}
 gseq_print$end
 <optn(a)><a>() = string_print(")")
 (*
-impltmp
+#impltmp
 {a:t0}
 gseq_print$sep
 <optn(a)><a>() = string_print(";")
@@ -167,16 +167,16 @@ gseq_print$sep
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 {a:t0}
 gseq_forall<optn(a)><a> = optn_forall<a>
-impltmp
+#impltmp
 {a:t0}
 gseq_foreach<optn(a)><a> = optn_foreach<a>
-impltmp
+#impltmp
 {a:t0}
 gseq_rforall<optn(a)><a> = optn_rforall<a>
-impltmp
+#impltmp
 {a:t0}
 gseq_rforeach<optn(a)><a> = optn_rforeach<a>
 

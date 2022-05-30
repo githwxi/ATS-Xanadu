@@ -73,16 +73,16 @@ rdigitize with gint_rdigitize_sint
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 digitize$base((*void*)) = 10
-impltmp
+#impltmp
 <>(*tmp*)
 rdigitize$base((*void*)) = 10
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 gint_digitize_sint
   (n0) =
@@ -94,7 +94,7 @@ loop(n0, list_vt_nil())
 val
 b0 = digitize$base<>()
 //
-typedef
+#typedef
 digitseq = list_vt(sint)
 //
 fun
@@ -116,11 +116,11 @@ loop(n0 / b0, list_vt_cons(d0, r0))
 end
 )
 //
-} (* end of [gint_digitize_sint] *)
+} (*where*) // [gint_digitize_sint]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 gint_rdigitize_sint
   (n0) =
@@ -130,7 +130,7 @@ gint_rdigitize_sint
 val
 b0 = rdigitize$base<>()
 //
-vwtpdef
+#vwtpdef
 digitseq = stream_vt(sint)
 //
 fun
@@ -151,7 +151,7 @@ strmcon_vt_cons(d0, auxmain(n0/b0))
 end // end of [else] // end-of-if
 )
 //
-} (* end of [gint_rdigitize_sint] *)
+} (*where*) // [gint_rdigitize_sint]
 
 (* ****** ****** *)
 //
@@ -170,7 +170,7 @@ stream_vt_mcons
 )
 : stream_vt(list(a))
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_mcons
   (x0, xss) =
@@ -178,7 +178,7 @@ stream_vt_mcons
 stream_vt_map0(xss)
 ) where
 {
-impltmp
+#impltmp
 map0$fopr
 <list(a)>
 <list(a)>(xs) = list_cons(x0, xs)
@@ -190,11 +190,11 @@ map0$fopr
 fun
 <a:t0>
 list_permutize
-  (xs: list(a)): stream_vt(list(a))
+( xs: list(a) ): stream_vt(list(a))
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_permutize
   (xs) =
@@ -310,7 +310,7 @@ list_nchoose2
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_nchoose1
   (xs, n0) =
@@ -330,7 +330,7 @@ end
 ) where
 {
 //
-typedef res = list(a)
+#typedef res = list(a)
 //
 fun
 auxmain
@@ -375,7 +375,7 @@ end (* list_cons *)
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 list_nchoose2
   (xs, n0) =
@@ -395,7 +395,7 @@ end
 ) where
 {
 //
-typedef
+#typedef
 res =
 (list(a), list(a))
 //
@@ -433,7 +433,7 @@ stream_vt_map0
 auxmain(xs, m1, n1)
 ) where
 {
-impltmp
+#impltmp
 map0$fopr<res><res>(rr) =
   (list_cons(x0, rr.0), rr.1)
 }
@@ -444,7 +444,7 @@ stream_vt_map0
 auxmain(xs, m1, n0)
 ) where
 {
-impltmp
+#impltmp
 map0$fopr<res><res>(rr) =
   (rr.0, list_cons(x0, rr.1))
 }
@@ -476,7 +476,7 @@ sint_from_dn
 (i0: sint(i)):
 stream_vt(sintlte(i))
 //
-impltmp
+#impltmp
 <>(*tmp*)
 sint_from_up
   (i0) =
@@ -494,7 +494,7 @@ strmcon_vt_cons(i0, auxmain(succ(i0)))
 )
 }
 //
-impltmp
+#impltmp
 <>(*tmp*)
 sint_from_dn
   (i0) =
@@ -527,7 +527,7 @@ sint_fromto_dn
 ( i0: sint(i)
 , j0: sint(j)): stream_vt(sintbtwe(j+1, i))
 //
-impltmp
+#impltmp
 <>(*tmp*)
 sint_fromto_up
   (i0, j0) =
@@ -548,7 +548,7 @@ else strmcon_vt_cons(i0, auxmain(succ(i0)))
 )
 }
 //
-impltmp
+#impltmp
 <>(*tmp*)
 sint_fromto_dn
   (i0, j0) =
@@ -579,14 +579,14 @@ else strmcon_vt_cons(i0, auxmain(pred(i0)))
 (*
 HX: the code has moved into prelude/gseq.dats
 *)
-implement
+#implement
 <cz:type>
 gseq_concat_string
   (cz) =
 let
-typedef c0 = cgtz
-typedef cs = string
-in
+#typedef c0 = cgtz
+#typedef cs = string
+in//let
 string_vt_make_stream_vt<>
 (stream_vt_gconcat<c0,cs>(gseq_streamize<cs,cz>(cz)))
 end // end of [gseq_concat_string]
@@ -612,41 +612,45 @@ string_vt_split_lines
 (cs:string_vt): stream_vt(string_vt)
 //
 (* ****** ****** *)
-vwtpdef
+//
+#vwtpdef
 cstream_vt = stream_vt(cgtz)
+//
 #extern
 fun<>
 cstream_vt_split_lines
 (cs:cstream_vt): stream_vt(string_vt)
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_split_lines(cs) =
 let
-typedef y0 = string
-vwtpdef x0 = string_vt
-impltmp
+//
+#typedef y0 = string
+#vwtpdef x0 = string_vt
+//
+#impltmp
 map0$fopr<x0><y0> = string_vt2t
-in
+in//let
 stream_vt_map0<x0><y0>
 (
 cstream_vt_split_lines(streamize(cs))
 )
 end
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_split_lines_vt(cs) =
 cstream_vt_split_lines(streamize(cs))
 //
-impltmp
+#impltmp
 <>(*tmp*)
 string_vt_split_lines(cs) =
 cstream_vt_split_lines(streamize(cs))
 //
 (* ****** ****** *)
-impltmp
+#impltmp
 <>(*tmp*)
 cstream_vt_split_lines
   (cs) =
@@ -753,7 +757,7 @@ string_upper
 *)
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 string_lower(cs) =
 let
@@ -774,14 +778,14 @@ if
 then c0 else
 char(sint('a')+(sint(c0)-sint('A')))
 )
-impltmp
+#impltmp
 tabulate$fopr<cgtz>(i0) = lower(cs[i0])
 }
 end // end of [string_lower]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 string_upper(cs) =
 let
@@ -802,7 +806,7 @@ if
 then c0 else
 char(sint('A')+(sint(c0)-sint('a')))
 )
-impltmp
+#impltmp
 tabulate$fopr<cgtz>(i0) = upper(cs[i0])
 }
 end // end of [string_upper]

@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 bool_print<>(b0) =
 if b0
 then g_print<string>("true")
@@ -41,7 +41,7 @@ else g_print<string>("false")
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 bool_parse<>(rep) =
 (
 case+ rep of
@@ -60,7 +60,7 @@ case+ rep of
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 bool_ifval
 (b, x, y) = if b then x else y
@@ -68,16 +68,16 @@ bool_ifval
 (* ****** ****** *)
 //
 // HX:
-// For implementing
+// For #implementing
 // some g-operations
 //
 (* ****** ****** *)
-impltmp
+#impltmp
 g_eqref<bool> = g_equal<bool>
-impltmp
+#impltmp
 g_neqrf<bool> = g_noteq<bool>
 (* ****** ****** *)
-impltmp
+#impltmp
 g_print<bool> = bool_print< >
 (* ****** ****** *)
 

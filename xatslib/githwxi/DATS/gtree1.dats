@@ -53,7 +53,7 @@ gtree_dfs_streamize_list
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <nx>(*tmp*)
 gtree_dfs_streamize(x0) =
 let
@@ -64,7 +64,7 @@ end // end of [gtree_dfs_streamize]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <nx>(*tmp*)
 gtree_dfs_streamize_list
   (xs) =
@@ -72,7 +72,7 @@ gtree_dfs_streamize_list
   auxmain(list_vt_sing(xs))
 ) where
 {
-typedef
+#typedef
 nxs = list_vt(nx)
 fun
 auxmain
@@ -133,7 +133,7 @@ gtree_bfs_streamize_list
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <nx>(*tmp*)
 gtree_bfs_streamize(x0) =
 let
@@ -144,7 +144,7 @@ end // end of [gtree_bfs_streamize]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <nx>(*tmp*)
 gtree_bfs_streamize_list
   (xs) =
@@ -157,7 +157,7 @@ auxmain(xss, list_vt_nil())
 end
 ) where
 {
-typedef
+#typedef
 nxs = list_vt(nx)
 fun
 auxmain

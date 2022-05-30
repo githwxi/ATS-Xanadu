@@ -10,8 +10,8 @@
 *)
 //
 (* ****** ****** *)
-abstbox box_tx
-typedef box = box_tx
+#abstbox box_tx
+#typedef box = box_tx
 (* ****** ****** *)
 #staload
 UN =
@@ -21,7 +21,7 @@ UN =
 // HX-2020-03-21
 // It is a bit wild :)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt2t(xs) =
 (
@@ -61,11 +61,11 @@ end // end of [let]
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 strmcon_vt_nil_
 () = strmcon_vt_nil()
-impltmp
+#impltmp
 <a>(*tmp*)
 strmcon_vt_cons_
 (x0, xs) =
@@ -73,7 +73,7 @@ strmcon_vt_cons(x0, xs)
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <x0><r0>
 strmcon_vt_uncons_cfr
 (xs, f0, f1) =
@@ -84,7 +84,7 @@ strmcon_vt_nil() => f0((*void*))
 | ~
 strmcon_vt_cons(x0, xs) => f1(x0, xs)
 )
-impltmp
+#impltmp
 <x0><r0>
 strxcon_vt_uncons_cfr
 (xs, f1) =
@@ -96,11 +96,11 @@ strxcon_vt_cons(x0, xs) => f1(x0, xs)
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_nil() =
 $llazy(strmcon_vt_nil())
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_cons
   (x0, xs) =
@@ -114,44 +114,44 @@ strmcon_vt_cons(x0, xs) )
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_sing(x0) =
 stream_vt_cons(x0, stream_vt_nil())
-impltmp
+#impltmp
 <a>(*tmp*)
 strmcon_vt_sing(x0) =
 strmcon_vt_cons(x0, stream_vt_nil())
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_pair(x0, y0) =
 stream_vt_cons(x0, stream_vt_sing(y0))
-impltmp
+#impltmp
 <a>(*tmp*)
 strmcon_vt_pair(x0, y0) =
 strmcon_vt_cons(x0, stream_vt_sing(y0))
 //  
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_free(xs) = $free(xs)
 //
-impltmp
+#impltmp
 {a:vt}
 g_free<stream_vt(a)> = stream_vt_free<a>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_print =
 stream_vt_print0<>
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_print0(xs) =
 let
@@ -164,29 +164,29 @@ then stream_vt_print_all(xs)
 else stream_vt_print_len(xs, len)
 end
 //
-impltmp
+#impltmp
 <>(*tmp*)
 stream_vt_print$len() = 3
-impltmp
+#impltmp
 <>(*tmp*)
 stream_vt_print$beg() = string_print("(")
-impltmp
+#impltmp
 <>(*tmp*)
 stream_vt_print$end() = string_print(")")
-impltmp
+#impltmp
 <>(*tmp*)
 stream_vt_print$sep() = string_print(",")
-impltmp
+#impltmp
 <>(*tmp*)
 stream_vt_print$rst() = string_print("...")
 //
-impltmp
+#impltmp
 {a:vt}
 gl_print0<stream_vt(a)> = stream_vt_print<a>
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_print_all
   (xs) =
@@ -199,7 +199,7 @@ stream_vt_print$beg<>()
 }
 ) where
 {
-vwtpdef
+#vwtpdef
 xs = stream_vt(a)
 fnx
 loop
@@ -233,7 +233,7 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_print_len
   (xs, n0) =
@@ -246,7 +246,7 @@ stream_vt_print$beg<>()
 }
 ) where
 {
-vwtpdef
+#vwtpdef
 xs = stream_vt(a)
 fnx
 loop(xs: xs, i0: nint): void =
@@ -298,23 +298,23 @@ end // end of [else]
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 streax_vt_print(xs) =
 let
-impltmp
+#impltmp
 stream_vt_print$len<>() =
 streax_vt_print$len<>()
 in
 stream_vt_print0<>(streax_vt_streamize(xs))
 end // end of [streax_vt_print]
-impltmp
+#impltmp
 {a:vt}
 gl_print0<streax_vt(a)> = streax_vt_print<a>
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_length(xs) =
 (
@@ -322,7 +322,7 @@ stream_vt_foldl0<a><nint>(xs, 0)
 ) where
 {
 //
-impltmp
+#impltmp
 foldl0$fopr<a><nint>(r0, x0) =
 let val () = g_free<a>(x0) in succ(r0) end
 //
@@ -330,7 +330,7 @@ let val () = g_free<a>(x0) in succ(r0) end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_drop
   (xs, n0) =
@@ -339,7 +339,8 @@ stream_vt_drop
 ) where
 {
 //
-vwtpdef xs = stream_vt(a)
+#vwtpdef
+xs = stream_vt(a)
 //
 fnx
 auxloop
@@ -359,7 +360,7 @@ strmcon_vt_cons(x0, xs) =>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_take
   (xs, n0) =
@@ -368,7 +369,8 @@ stream_vt_take
 ) where
 {
 //
-vwtpdef xs = stream_vt(a)
+#vwtpdef
+xs = stream_vt(a)
 //
 fun
 auxmain
@@ -399,7 +401,7 @@ strmcon_vt_cons(x0, auxmain(xs, pred(n0)))
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_listize(xs) =
 let
@@ -434,7 +436,7 @@ end (* end of [stream_vt_listize] *)
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_rlistize(xs) =
 (
@@ -461,13 +463,13 @@ end
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_streamize(xs) = xs
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 streax_vt_streamize
   ( xs ) =
@@ -494,7 +496,7 @@ strmcon_vt_cons(x0, auxmain(xs))
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_extend
   (xs, x0) =
@@ -503,7 +505,7 @@ stream_vt_extend
   (xs, stream_vt_sing<a>(x0))
 )
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_append
   (xs, ys) =
@@ -528,7 +530,7 @@ strmcon_vt_cons(x0, append(xs, ys))
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_concat
   (xss) =
@@ -580,7 +582,7 @@ strmcon_vt_cons(x0, auxmain1(xss, xs1))
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_prefixq
   (xs1, xs2) =
@@ -624,7 +626,7 @@ strmcon_vt_cons(x1, xs1) =>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0>(*tmp*)
 stream_vt_fset_at
   (xs, i0, x0) =
@@ -662,7 +664,7 @@ end
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <xs><x0>
 stream_vt_gappend
   (xs1, xs2) = let
@@ -678,7 +680,7 @@ end
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <xs><x0>
 stream_vt_gconcat
   (xss) =
@@ -705,7 +707,7 @@ stream_vt_append<x0>
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_sortedq
   (xs) =
@@ -741,7 +743,7 @@ else
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a><r0>
 stream_vt_foldl0
   (xs, r0) = r0 where
@@ -756,7 +758,7 @@ val () =
   stream_vt_foreach0<a>(xs)
 ) where
 {
-impltmp
+#impltmp
 foreach0$work<a>(x0) =
 let
 val r0 = $UN.p2tr_get<r0>(p0)
@@ -772,7 +774,7 @@ end // end of [foreach0$work]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_forall0
   (xs) =
@@ -801,7 +803,7 @@ end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_foreach0
   (xs) = let
@@ -810,7 +812,7 @@ val
 test =
 stream_vt_forall0<a>(xs) where
 {
-impltmp
+#impltmp
 forall0$test<a>(x0) =
 let
 val () = foreach0$work<a>(x0) in true
@@ -823,7 +825,7 @@ end // end of [stream_vt_foreach0/forall0]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_vt_map0
   (xs) =
@@ -859,7 +861,7 @@ end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 streax_vt_map0
   (xs) =
@@ -892,7 +894,7 @@ end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0>(*tmp*)
 stream_vt_filter0
   (xs) =
@@ -939,7 +941,7 @@ strmcon_vt_cons
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0>(*tmp*)
 streax_vt_filter0
   (xs) =
@@ -982,7 +984,7 @@ strxcon_vt_cons
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_vt_mapopt0
   (xs) =
@@ -1050,7 +1052,7 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 streax_vt_mapopt0
   (xs) =
@@ -1115,7 +1117,7 @@ end // end of [strxcon_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_vt_mapoptn0
   (xs) =
@@ -1163,7 +1165,7 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_vt_maplist0
   (xs) =
@@ -1232,7 +1234,7 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_vt_mapstrm0
   (xs) =
@@ -1302,7 +1304,7 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <x0>(*tmp*)
 stream_vt_group_list
   (xs) =
@@ -1310,8 +1312,8 @@ stream_vt_group_list
   auxmain0(xs)) where
 {
 //
-vwtpdef r0 = list_vt(x0)
-vwtpdef xs = stream_vt(x0)
+#vwtpdef r0 = list_vt(x0)
+#vwtpdef xs = stream_vt(x0)
 //
 fnx
 auxmain0
@@ -1362,7 +1364,7 @@ end // end of [strmcon_vt_cons]
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_vt_imap0
   (xs) =
@@ -1400,7 +1402,7 @@ end
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 streax_vt_imap0
   (xs) =
@@ -1435,7 +1437,7 @@ end // strxcon_vt_cons
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 stream_vt_imapopt0
   (xs) =
@@ -1498,7 +1500,7 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0><y0>
 streax_vt_imapopt0
   (xs) =
@@ -1558,7 +1560,7 @@ end // end of [strxcon_vt_cons]
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 stream_vt_istreamize
   (xs) =
@@ -1589,7 +1591,7 @@ strmcon_vt_cons
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <a>(*tmp*)
 streax_vt_istreamize
   (xs) =
@@ -1621,7 +1623,7 @@ strxcon_vt_cons
 //
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0,y0>
 stream_vt_z2streamize
 ( xs, ys ) =
@@ -1666,7 +1668,7 @@ strmcon_vt_cons((x0, y0), auxmain(xs, ys))
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0,y0>
 stream_vt_z2forall0
   (xs, ys) =
@@ -1710,7 +1712,7 @@ strmcon_vt_cons(x0, xs) =>
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <x0,y0>
 stream_vt_z2forcmp0
   (xs, ys) =
@@ -1769,20 +1771,20 @@ strmcon_vt_cons(x0, xs) =>
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {x0:vt}
 glseq_listize0
 <stream_vt(x0)><x0> = stream_vt_listize<x0>
-impltmp
+#impltmp
 {x0:vt}
 glseq_rlistize0
 <stream_vt(x0)><x0> = stream_vt_rlistize<x0>
-impltmp
+#impltmp
 {x0:vt}
 glseq_streamize
 <stream_vt(x0)><x0> = stream_vt_streamize<x0>
 //
-impltmp
+#impltmp
 {x0:vt}
 glseq_streamize
 <streax_vt(x0)><x0> = streax_vt_streamize<x0>

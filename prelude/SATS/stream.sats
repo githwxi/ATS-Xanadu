@@ -30,9 +30,9 @@
 // For functional streams
 //
 (* ****** ****** *)
-typedef
+#typedef
 strm(a:type) = stream(a)
-typedef
+#typedef
 strx(a:type) = streax(a)
 (* ****** ****** *)
 //
