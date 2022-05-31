@@ -87,4 +87,4 @@ array_view_unsplit
 : arrvw(a,l+n1*sz(a),n2)): arrvw(a,l,n1+n2)
 (* ****** ****** *)
 
-(* end of [CC/array.sats]
+(* end of [prelude_CC_carrvw.sats]
