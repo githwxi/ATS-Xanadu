@@ -148,6 +148,11 @@ $(XATSOPT) -d $(PRELUDE)/DATS/stream_vt.dats
 
 ######
 
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/synougat.dats
+
+######
+
 all_JS_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/basics.dats
 all_JS_dats:: ; \
