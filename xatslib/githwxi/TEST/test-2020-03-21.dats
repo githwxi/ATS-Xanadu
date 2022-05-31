@@ -15,7 +15,7 @@ For testing gint_rdigitize
 val bs =
 digitize(16)
 where
-impltmp digitize$base<>() = 2
+#impltmp digitize$base<>() = 2
 endwhr // end of [val]
 
 (* ****** ****** *)

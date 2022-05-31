@@ -53,33 +53,33 @@ FI$debug(f1: f1): (f2)
 //
 // //////////////////////////////////////////////// //
 (* ****** ****** *)
-impltmp
+#impltmp
 <>(*tmp*)
 FI$name
 () =
 "**UNKNOWN**"
 (* ****** ****** *)
-impltmp
+#impltmp
 {f0:t0}
 FI$arity
 <f0>(f0) = (-1)
 (* ****** ****** *)
-impltmp
+#impltmp
 {r0:vt}
 FI$arity
 <()->r0>(f0) = 0
-impltmp
+#impltmp
 {a1:vt}
 {r0:vt}
 FI$arity
 <(a1)->r0>(f0) = 1
-impltmp
+#impltmp
 {a1:vt
 ,a2:vt}
 {r0:vt}
 FI$arity
 <(a1,a2)->r0>(f0) = 2
-impltmp
+#impltmp
 {a1:vt
 ,a2:vt
 ,a3:vt}
@@ -87,7 +87,7 @@ impltmp
 FI$arity
 <(a1,a2,a3)->r0>(f0) = 3
 (* ****** ****** *)
-impltmp
+#impltmp
 {f0:t0}
 FI$pinfo<f0>(f0) =
 let
@@ -97,12 +97,12 @@ val () =
 println("fun(", nm, "): arity = ", na)
 end // end of [FI$info]
 (* ****** ****** *)
-impltmp
+#impltmp
 {f0:t0}
 FI$debug
 <f0><f0>(f0) = f0
 (* ****** ****** *)
-impltmp
+#impltmp
 {r0:vt}
 FI$debug
 <()->r0>
@@ -116,7 +116,7 @@ val r0 = f0()
 val () = println(nm, ": res0 = ", r0)
 }
 (* ****** ****** *)
-impltmp
+#impltmp
 {a1:vt}
 {r0:vt}
 FI$debug
@@ -132,7 +132,7 @@ val r0 = f0(x1)
 val () = println(nm, ": res0 = ", r0)
 }
 (* ****** ****** *)
-impltmp
+#impltmp
 {a1:vt
 ,a2:vt}
 {r0:vt}
@@ -151,4 +151,4 @@ val () = println(nm, ": res0 = ", r0)
 }
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_xdebug.dats] *)
+(* end of [xatslib_githwxi_xdebug00.dats] *)
