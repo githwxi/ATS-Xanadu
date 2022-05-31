@@ -4,7 +4,7 @@ Print for Xats2js/Node
 *)
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 bool_print<> =
 XATS2JS_NODE_bool_print
 where
@@ -17,7 +17,7 @@ XATS2JS_NODE_bool_print
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 char_print<> =
 XATS2JS_NODE_char_print
 where
@@ -29,7 +29,7 @@ XATS2JS_NODE_char_print
 }
 //
 (* ****** ****** *)
-impltmp
+#impltmp
 string_print<> =
 XATS2JS_NODE_string_print
 where
@@ -51,9 +51,9 @@ fun
 XATS2JS_NODE_gint_print_uint
 (x0: uint): void = $exname()
 in
-impltmp
+#impltmp
 gint_print_sint<> = XATS2JS_NODE_gint_print_sint
-impltmp
+#impltmp
 gint_print_uint<> = XATS2JS_NODE_gint_print_uint
 end // end of [local]
 //
@@ -69,9 +69,9 @@ fun
 XATS2JS_NODE_gflt_print_dflt
 (x0: dflt): void = $exname()
 in
-impltmp
+#impltmp
 gflt_print_sflt<> = XATS2JS_NODE_gflt_print_sflt
-impltmp
+#impltmp
 gflt_print_dflt<> = XATS2JS_NODE_gflt_print_dflt
 end // end of [local]
 //

@@ -4,7 +4,7 @@ Eqref for Xats2js
 *)
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 {a:t0}
 g_eqref<a> =
 XATS2JS_g_eqref{a}
@@ -17,7 +17,7 @@ XATS2JS_g_eqref
 (x1: a, x2: a): bool = $exname()
 }
 //
-impltmp
+#impltmp
 {a:t0}
 g_neqrf<a> =
 XATS2JS_g_neqrf{a}

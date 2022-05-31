@@ -11,7 +11,7 @@ for Xats2js/Node
 
 (* ****** ****** *)
 
-impltmp
+#impltmp
 <>(*tmp*)
 fpath_streamize_char
   (path) =
@@ -37,7 +37,7 @@ XATS2JS_NODE_fs_readFileSync
 
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 <>(*tmp*)
 fpath_streamize_cgtz
   (path) =
