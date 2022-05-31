@@ -546,10 +546,10 @@ gint_type(a:type, int) <= a
 //
 #typedef
 gint0
-(a:type)=[i:int] gint_type(a, i)
+(a:type)=[i:int] gint_type(a,i)
 #typedef
 gint1
-(a:type,i:int) = gint_type(a, i)
+(a:type,i:int) = gint_type(a,i)
 //
 (* ****** ****** *)
 //

@@ -31,19 +31,22 @@
 //
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: May 28, 2020
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: May 28, 2020
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 //
 // HX-2020-06-10:
-// Note that array_vt is included
+// Note that
+// [array_vt] is included
 //
 (* ****** ****** *)
 // HX: singleton
 (* ****** ****** *)
-
+//
 #abstbox
 a0ref_vt_x0(a:vt)
 #absvtbx
@@ -52,7 +55,7 @@ a0ptr_vt_vx(a:vt)
 a0ref(a:vt) = a0ref_vt_x0(a)
 #vwtpdef
 a0ptr(a:vt) = a0ptr_vt_vx(a)
-
+//
 (* ****** ****** *)
 // HX: 1-dimensional
 (* ****** ****** *)
@@ -678,4 +681,4 @@ rlistize with a1ref_rlistize of 1000
 rlistize0 with a1ref_rlistize0 of 1000
 (* ****** ****** *)
 
-(* end of [prelude_array.sats] *)
+(* end of [prelude_arry.sats] *)
