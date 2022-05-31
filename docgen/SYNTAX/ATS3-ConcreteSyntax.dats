@@ -23,12 +23,16 @@ val _ =
 0XDEADBEEFULL: ullint
 
 (* ****** ****** *)
-
+//
 (* Bools *)
-
+//
+(*
+val _ = tbtf: bool(tt)
+val _ = fbtf: bool(ff)
+*)
 val _ = true: bool(tt)
 val _ = false: bool(ff)
-
+//
 (* ****** ****** *)
 
 (* Chars *)
