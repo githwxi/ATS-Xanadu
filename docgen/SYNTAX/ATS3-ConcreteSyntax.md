@@ -167,7 +167,7 @@ ATS3 supports prefix, infix, and postfix operators.
 
 An infix operator is binary and it may be non-associative,
 left-associative or right-associative. Such an operator is supposed to
-be placed between its two arguments. The keywords `#infix`, `#infixl`,
+be placed between its two arguments. The keywords `#infix0`, `#infixl`,
 and `#infixr` are for initiating infix-declarations. Also, `#infix0` is
 the same as `#infix`. Please find some examples of infix-declarations as
 follows:
@@ -198,10 +198,10 @@ precedence value of 71. The default precedence value for `-` is `0`.
 ### Postfix-declarations
 
 A postfix operator is unary and it is supposed to be placed
-immediately after its argument. The keyword `#postfix` is for
+immediately after its argument. The keyword `#pstfix` is for
 initiating postfix-declarations. Here is a postfix-declaration:
 
-- `#postfix sz of 99`
+- `#pstfix sz of 99`
 
 For instance, one may interpret `sz` as a cast operator from 32-bit
 int-values to 64-bit size-values.
