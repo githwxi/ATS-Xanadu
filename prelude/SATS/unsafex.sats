@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,74 +27,115 @@
 
 (* ****** ****** *)
 //
-// For booleans
+// For casting of all sorts
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: March, 2020
+// Start Time: October, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-fun<>
-bool_neg
-{b:bool}
-(x: bool(b)): bool(~b)
+fcast
+cast01{a0:t0}{a1:t0}(a0): (a1)
+fcast
+cast10{a1:t0}{a0:t0}(a0): (a1)
 //
 (* ****** ****** *)
 //
-fun<>
-bool_add
-{b1,b2:bool}
-( x: bool(b1)
-, y: bool(b2)): bool(b1+b2)
-fun<>
-bool_mul
-{b1,b2:bool}
-( x: bool(b1)
-, y: bool(b2)): bool(b1*b2)
+fcast
+delinear{a0:vt}(a0): (~a0)
+fcast
+castlin01{a0:vt}{a1:vt}(a0): (a1)
+fcast
+castlin10{a1:vt}{a0:vt}(a0): (a1)
 //
 (* ****** ****** *)
-
-fun<>
-bool_print(bool): void
-fun<>
-bool_parse(string): bool
-
+//
+fcast
+optn_vt2t
+{a:t0}{b:b0}
+(xs: !optn_vt(a, b)): optn(a, b)
+fcast
+list_vt2t
+{a:t0}{n:i0}
+(xs: !list_vt(a, n)): list(a, n)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+p1tr_get(p0: p1tr): a
+fun
+<a:vt>
+p1tr_set(p0: p1tr, x0: a): void
+fun
+<a:vt>
+p1tr_ret(p0: p1tr, x0: a): void
+//
+fun
+<a:vt>
+p2tr_get(p0: p2tr(a)): a
+fun
+<a:vt>
+p2tr_set(p0: p2tr(a), x0: a): void
+fun
+<a:vt>
+p2tr_ret(p0: p2tr(a), x0: a): void
+//
+(* ****** ****** *)
+//
+(*
+HX-2020-07-29:
+const pointers are read-only
+*)
+//
+fun
+<a:vt>
+cp1tr_get(cp: cp1tr): a
+fun
+<a:vt>
+cp2tr_get(cp: cp2tr(a)): a
+//
 (* ****** ****** *)
 //
 fun
 <a:t0>
-bool_ifval
-{b:b0}
-(b: bool(b), x: a, y: a): a
+p2tr_set_list_nil
+(p0: p2tr(list(a))): void
+fun
+<a:t0>
+p2tr_set_list_cons
+(p0: p2tr(list(a)), x0: a): void
+//
+fun
+<a:t0>
+p2tr_set_list_vt_nil
+(p0: p2tr(list_vt(a))): void
+fun
+<a:vt>
+p2tr_set_list_vt_cons
+(p0: p2tr(list_vt(a)), x0: a): void
 //
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for bool
+// symbol overloading for unsafe
 //
 (* ****** ****** *)
 //
-#symload
-~ with bool_neg of 1000
-#symload
-neg with bool_neg of 1000
-#symload
-not with bool_neg of 1000
+#symload ptr_get with p1tr_get of 1000
+#symload ptr_set with p1tr_set of 1000
+//
+#symload ptr_get with p2tr_get of 1000
+#symload ptr_set with p2tr_set of 1000
 //
 (* ****** ****** *)
 //
-#symload + with bool_add of 1000
-#symload * with bool_mul of 1000
+#symload cptr_get with cp1tr_get of 1000
+#symload cptr_get with cp2tr_get of 1000
 //
-(* ****** ****** *)
-//
-#symload print with bool_print of 1000
-//
-(* ****** ****** *)
-#symload ifval with bool_ifval of 1000
 (* ****** ****** *)
 
-(* end of [prelude_bool.sats] *)
+(* end of [prelude_unsafex.sats] *)

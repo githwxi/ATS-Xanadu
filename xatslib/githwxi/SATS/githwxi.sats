@@ -27,22 +27,14 @@
 
 (* ****** ****** *)
 //
+// For generic ordering
+//
+(* ****** ****** *)
+//
 // Author: Hongwei Xi
 // Start Time: April, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#abstype
-FILEref_tbox <= ptr0
-#absvwtp
-FILEptr_vtbx(l:addr) <= ptr0
-//
-#typedef FILEref = FILEref_tbox
-#sexpdef FILEptr = FILEptr_vtbx
-#vwtpdef FILEptr0 = [l:addr] FILEptr(l)
-#vwtpdef FILEptr1 = [l:agtz] FILEptr(l)
-//
-(* ****** ****** *)
 
-(* end of [xatslib_libc.sats] *)
+(* end of [xatslib_githwxi_githwxi.sats] *)

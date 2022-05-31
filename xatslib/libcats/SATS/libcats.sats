@@ -27,64 +27,22 @@
 
 (* ****** ****** *)
 //
-// For pure arrays in C
+// Author: Hongwei Xi
+// Start Time: April, 2020
+// Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-praxi
-array_view_nil :
-{a:vt}
-{l:a0}
-((*void*)) -<prf> arrvw(a,l,0)
+#abstype
+FILEref_tbox <= ptr0
+#absvwtp
+FILEptr_vtbx(l:addr) <= ptr0
 //
-praxi
-array_view_cons
-{a:vt}
-{l:a0}
-{n:i0}
-( pf1
-: a @ l
-, pf2
-: arrvw(a,l+sz(a),n)): arrvw(a,l,n+1)
-//
-praxi
-array_view_uncons :
-{a:vt}
-{l:a0}
-{n:i0|n > 0}
-(
-! arrvw(a,l,n) >>
-  arrvw(a,l+sz(a),n-1)) -<prf> (a @ l)
+#typedef FILEref = FILEref_tbox
+#sexpdef FILEptr = FILEptr_vtbx
+#vwtpdef FILEptr0 = [l:addr] FILEptr(l)
+#vwtpdef FILEptr1 = [l:agtz] FILEptr(l)
 //
 (* ****** ****** *)
 
-#symload nil with array_view_cons
-#symload cons with array_view_cons
-#symload uncons with array_view_uncons
-
-(* ****** ****** *)
-prfun
-array_view_split_at
-{a:vt}
-{l:a0}
-{n:i0}{i:nat|i<=n}
-( A0:
-  arrvw(a,l,n) | i0: int(i) )
-:
-(
-  arrvw(a,l,i), arrvw(a,l+i*sz(a),n-i)
-) (* end of [array_v_split_at] *)
-(* ****** ****** *)
-prfun
-array_view_unsplit
-{a:vt}
-{l:a0}
-{n1:i0
-;n2:i0}
-( pf1
-: arrvw(a,l, n1)
-, pf2
-: arrvw(a,l+n1*sz(a),n2)): arrvw(a,l,n1+n2)
-(* ****** ****** *)
-
-(* end of [prelude_CC_carrvw.sats]
+(* end of [xatslib_libcats_libcats.sats] *)

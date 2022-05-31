@@ -27,115 +27,129 @@
 
 (* ****** ****** *)
 //
-// For casting of all sorts
+// For linear options
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: October, 2019
+// Start Time: September, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-fcast
-cast01{a0:t0}{a1:t0}(a0): (a1)
-fcast
-cast10{a1:t0}{a0:t0}(a0): (a1)
+fun<>
+optn_vt_nilq
+{a:vt}{b:b0}
+(xs: !optn_vt(a, b)): bool(b=ff)
+fun<>
+optn_vt_consq
+{a:vt}{b:b0}
+(xs: !optn_vt(a, b)): bool(b=tt)
 //
 (* ****** ****** *)
-//
-fcast
-delinear{a0:vt}(a0): (~a0)
-fcast
-castlin01{a0:vt}{a1:vt}(a0): (a1)
-fcast
-castlin10{a1:vt}{a0:vt}(a0): (a1)
-//
+
+fun
+<a:vt>
+optn_vt_free(~optn_vt(a)): void
+
 (* ****** ****** *)
-//
-fcast
-optn_vt2t
-{a:t0}{b:b0}
-(xs: !optn_vt(a, b)): optn(a, b)
-fcast
-list_vt2t
-{a:t0}{n:i0}
-(xs: !list_vt(a, n)): list(a, n)
-//
+
+fun
+<a:vt>
+optn_vt_copy
+{n:b0}
+(xs: !optn_vt(a,n)): optn_vt(a,n)
+
 (* ****** ****** *)
 //
 fun
 <a:vt>
-p1tr_get(p0: p1tr): a
+optn_vt_length
+{b:bool}
+(xs: !optn_vt(a, b)): int(b2i(b))
 fun
 <a:vt>
-p1tr_set(p0: p1tr, x0: a): void
-fun
-<a:vt>
-p1tr_ret(p0: p1tr, x0: a): void
-//
-fun
-<a:vt>
-p2tr_get(p0: p2tr(a)): a
-fun
-<a:vt>
-p2tr_set(p0: p2tr(a), x0: a): void
-fun
-<a:vt>
-p2tr_ret(p0: p2tr(a), x0: a): void
-//
-(* ****** ****** *)
-//
-(*
-HX-2020-07-29:
-const pointers are read-only
-*)
-//
-fun
-<a:vt>
-cp1tr_get(cp: cp1tr): a
-fun
-<a:vt>
-cp2tr_get(cp: cp2tr(a)): a
+optn_vt_length0
+{b:bool}
+(xs: ~optn_vt(a, b)): int(b2i(b))
 //
 (* ****** ****** *)
 //
 fun
-<a:t0>
-p2tr_set_list_nil
-(p0: p2tr(list(a))): void
+<x0:vt>
+optn_vt_forall0(xs: ~optn_vt(x0)): bool
 fun
-<a:t0>
-p2tr_set_list_cons
-(p0: p2tr(list(a)), x0: a): void
+<x0:vt>
+optn_vt_forall1(xs: !optn_vt(x0)): bool
+//
+(* ****** ****** *)
 //
 fun
-<a:t0>
-p2tr_set_list_vt_nil
-(p0: p2tr(list_vt(a))): void
+<x0:vt>
+optn_vt_foreach0(xs: ~optn_vt(x0)): void
+fun
+<x0:vt>
+optn_vt_foreach1(xs: !optn_vt(x0)): void
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
-p2tr_set_list_vt_cons
-(p0: p2tr(list_vt(a)), x0: a): void
+optn_vt_listize0
+{b:b0}
+(~optn_vt(a, b)): list_vt(a, b2i(b))
+fun
+<a:vt>
+optn_vt_rlistize0
+{b:b0}
+(~optn_vt(a, b)): list_vt(a, b2i(b))
+fun
+<a:vt>
+optn_vt_streamize
+{b:b0}(xs: ~optn_vt(a, b)): stream_vt(a)
 //
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for unsafe
-//
-(* ****** ****** *)
-//
-#symload ptr_get with p1tr_get of 1000
-#symload ptr_set with p1tr_set of 1000
-//
-#symload ptr_get with p2tr_get of 1000
-#symload ptr_set with p2tr_set of 1000
-//
-(* ****** ****** *)
-//
-#symload cptr_get with cp1tr_get of 1000
-#symload cptr_get with cp2tr_get of 1000
+// symbol overloading for optn_vt
 //
 (* ****** ****** *)
 
-(* end of [prelude_unsafe.sats] *)
+#symload
+none_vt with optn_vt_nil
+#symload
+some_vt with optn_vt_cons
+
+(* ****** ****** *)
+//
+#symload
+nilq with optn_vt_nilq of 1000
+#symload
+eqzq with optn_vt_nilq of 1000
+#symload
+consq with optn_vt_consq of 1000
+#symload
+neqzq with optn_vt_consq of 1000
+//
+(* ****** ****** *)
+
+#symload
+length with optn_vt_length of 1000
+#symload
+length0 with optn_vt_length0 of 1000
+
+(* ****** ****** *)
+
+#symload
+listize with optn_vt_listize0 of 1000
+#symload
+rlistize with optn_vt_rlistize0 of 1000
+
+(* ****** ****** *)
+
+#symload
+streamize with optn_vt_streamize of 1000
+
+(* ****** ****** *)
+
+(* end of [prelude_optn000_vt.sats] *)

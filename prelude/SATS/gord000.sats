@@ -27,7 +27,7 @@
 
 (* ****** ****** *)
 //
-// For generic numbers
+// For generic ordering
 //
 (* ****** ****** *)
 //
@@ -36,133 +36,144 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-fun
-<a:t0>
-g_0((*void*)): (a)
-fun
-<a:t0>
-g_1((*void*)): (a)
-fun
-<a:t0>
-g_2((*void*)): (a)
-
-(* ****** ****** *)
-
-fun
-<a:t0>
-g_i(i0: sint): (a)
-fun
-<a:t0>
-g_u(u0: uint): (a)
-
-(* ****** ****** *)
 //
 fun
 <a:t0>
-g_sf(f0: sflt): (a)
+g_lt(a, a): bool
 fun
 <a:t0>
-g_df(f0: dflt): (a)
+g_gt(a, a): bool
+fun
+<a:t0>
+g_eq(a, a): bool
+//
+fun
+<a:t0>
+g_lte(a, a): bool
+fun
+<a:t0>
+g_gte(a, a): bool
+fun
+<a:t0>
+g_neq(a, a): bool
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
-g_neg(x: a): a
-fun
-<a:t0>
-g_abs(x: a): a
-//
-fun
-<a:t0>
-g_succ(x: a): a
-fun
-<a:t0>
-g_pred(x: a): a
+g_cmp(a, a): sint
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
-g_add(x: a, y: a): a
+g_max(x: a, y: a): (a)
 fun
 <a:t0>
-g_sub(x: a, y: a): a
+g_min(x: a, y: a): (a)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
-g_mul(x: a, y: a): a
+g_ltz(x: a): bool
 fun
 <a:t0>
-g_div(x: a, y: a): a
+g_gtz(x: a): bool
 fun
 <a:t0>
-g_mod(x: a, y: a): a
+g_eqz(x: a): bool
+fun
+<a:t0>
+g_ltez(x: a): bool
+fun
+<a:t0>
+g_gtez(x: a): bool
+fun
+<a:t0>
+g_neqz(x: a): bool
+//
+fun
+<a:t0>
+g_cmpz(x: a): sint
 //
 (* ****** ****** *)
 //
 // HX:
-// For linear gnums
+// For linear gords
 //
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_0((*void*)): (a)
+gl_eq00(~a, ~a): bool
 fun
 <a:vt>
-gl_1((*void*)): (a)
+gl_eq11(!a, !a): bool
+
 fun
 <a:vt>
-gl_2((*void*)): (a)
+gl_neq00(~a, ~a): bool
+fun
+<a:vt>
+gl_neq11(!a, !a): bool
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_add00(x: ~a, y: ~a): a
+gl_lt00(~a, ~a): bool
 fun
 <a:vt>
-gl_add11(x: !a, y: !a): a
+gl_lt11(!a, !a): bool
+
+fun
+<a:vt>
+gl_gt00(~a, ~a): bool
+fun
+<a:vt>
+gl_gt11(!a, !a): bool
+
+fun
+<a:vt>
+gl_lte00(~a, ~a): bool
+fun
+<a:vt>
+gl_lte11(!a, !a): bool
+
+fun
+<a:vt>
+gl_gte00(~a, ~a): bool
+fun
+<a:vt>
+gl_gte11(!a, !a): bool
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_sub00(x: ~a, y: ~a): a
+gl_cmp00(~a, ~a): sint
 fun
 <a:vt>
-gl_sub11(x: !a, y: !a): a
+gl_cmp11(!a, !a): sint
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_mul00(x: ~a, y: ~a): a
+gl_max00(x: ~a, y: ~a): (a)
 fun
 <a:vt>
-gl_mul11(x: !a, y: !a): a
+gl_max11(x: !a, y: !a): (a)
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_div00(x: ~a, y: ~a): a
+gl_min00(x: ~a, y: ~a): (a)
 fun
 <a:vt>
-gl_div11(x: !a, y: !a): a
-
-(* ****** ****** *)
-
-fun
-<a:vt>
-gl_mod00(x: ~a, y: ~a): a
-fun
-<a:vt>
-gl_mod11(x: !a, y: !a): a
+gl_min11(x: !a, y: !a): (a)
 
 (* ****** ****** *)
 //
@@ -171,29 +182,33 @@ gl_mod11(x: !a, y: !a): a
 //
 (* ****** ****** *)
 //
-#symload
-neg with g_neg of 0101
-#symload
-abs with g_abs of 0101
+#symload < with g_lt of 0102
+#symload > with g_gt of 0102
+#symload = with g_eq of 0102
+//
+#symload <= with g_lte of 0102
+#symload >= with g_gte of 0102
+#symload != with g_neq of 0102
+//
+#symload cmp with g_cmp of 0102
 //
 (* ****** ****** *)
 //
-#symload
-succ with g_succ of 0101
-#symload
-pred with g_pred of 0101
+#symload max with g_max of 0102
+#symload min with g_min of 0102
 //
 (* ****** ****** *)
 //
-#symload - with g_neg of 0101
+#symload ltz with g_ltz of 0101
+#symload gtz with g_gtz of 0101
+#symload eqz with g_eqz of 0101
 //
-#symload + with g_add of 0102
-#symload - with g_sub of 0102
+#symload ltez with g_ltez of 0101
+#symload gtez with g_gtez of 0101
+#symload neqz with g_neqz of 0101
 //
-#symload * with g_mul of 0102
-#symload / with g_div of 0102
-#symload % with g_mod of 0102
+#symload cmpz with g_cmpz of 0101
 //
 (* ****** ****** *)
 
-(* end of [prelude_gnum.sats] *)
+(* end of [prelude_gord000.sats] *)

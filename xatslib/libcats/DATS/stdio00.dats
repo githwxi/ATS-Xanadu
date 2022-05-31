@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2021 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,76 +27,40 @@
 
 (* ****** ****** *)
 //
-// For generic bounded integers
+// For generic ordering
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: Jan/Feb, 2021
+// Start Time: April, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
-#abstype
-sint8_type(i: int)
-#abstype
-uint8_type(i: int)
-#sexpdef
-sint8 = sint8_type
-#sexpdef
-uint8 = uint8_type
-
-(* ****** ****** *)
-//
-#sexpdef ui8lb =  0
-#sexpdef si8lb = -128
-#sexpdef si8ub = +127
-#sexpdef ui8ub = +255
-//
-(* ****** ****** *)
-//
-#sexpdef
-si8ck(i: int) =
-(si8lb <= i && i <= si8ub)
-#sexpdef
-ui8ck(i: int) =
-(ui8lb <= i && i <= ui8ub)
-//
-(* ****** ****** *)
-//
-fun<>
-gintb_succ_sint8
-{ i : int
-| si8ck(i+1) }
-( x : sint8(i) ) : sint8(i+1)
-fun<>
-gintb_pred_sint8
-{ i : int
-| si8ck(i-1) }
-( x : sint8(i) ) : sint8(i-1)
-//
+#staload
+"xatslib\
+/libc/SATS/libcats.sats"
 (* ****** ****** *)
 
+#extern
 fun<>
-gintb_add_sint8_sint8
-{ i,j : int
-| si8ck(i+j) }
-( x : sint8(i)
-, y : sint8(j) ) : sint8(i+j)
+fgetc_ref
+(filr: FILEref): int
+#extern
 fun<>
-gintb_sub_sint8_sint8
-{ i,j : int
-| si8ck(i-j) }
-( x : sint8(i)
-, y : sint8(j) ) : sint8(i-j)
-//
-fun<>
-gintb_mul_sint8_sint8
-{ i,j : int
-| si8ck(i*j) }
-( x : sint8(i)
-, y : sint8(j) ) : sint8(i*j)
-//
+fgetc_ptr
+(filp: !FILEptr1): int
+
 (* ****** ****** *)
 
-(* end of [prelude_gintb.sats] *)
+#extern
+fun<>
+fputc_ref
+(char: int, filr: FILEref): int
+#extern
+fun<>
+fputc_ptr
+(char: int, filp: !FILEptr1): int
+
+(* ****** ****** *)
+
+(* end of [xatslib_libcats_stdio.dats] *)

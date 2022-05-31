@@ -45,4 +45,4 @@ x3forint$work
 //
 (* ****** ****** *)
 
-(* end of [prelude_gfor.sats] *)
+(* end of [prelude_gfor000.sats] *)
