@@ -204,4 +204,4 @@ gseqn_z2map_rlist
 //
 (* ****** ****** *)
 
-(* end of [prelude_gseqn.sats] *)
+(* end of [prelude_gseqn00.sats] *)

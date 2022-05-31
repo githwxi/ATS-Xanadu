@@ -477,4 +477,4 @@ cons_vt with strmcon_vt_cons
 //
 (* ****** ****** *)
 
-(* end of [prelude_stream_vt.sats] *)
+(* end of [prelude_stream0_vt.sats] *)

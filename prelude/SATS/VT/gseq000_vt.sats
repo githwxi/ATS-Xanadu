@@ -395,4 +395,4 @@ glseq_iforeach1(!xs): void
 
 (* ****** ****** *)
 
-(* end of [prelude_gseq_vt.sats] *)
+(* end of [prelude_gseq000_vt.sats] *)

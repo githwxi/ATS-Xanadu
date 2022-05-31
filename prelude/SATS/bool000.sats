@@ -27,40 +27,74 @@
 
 (* ****** ****** *)
 //
-// For generic ordering
+// For booleans
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: April, 2020
+// Start Time: March, 2020
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-#staload
-"xatslib\
-/libc/SATS/libc.sats"
+//
+fun<>
+bool_neg
+{b:bool}
+(x: bool(b)): bool(~b)
+//
+(* ****** ****** *)
+//
+fun<>
+bool_add
+{b1,b2:bool}
+( x: bool(b1)
+, y: bool(b2)): bool(b1+b2)
+fun<>
+bool_mul
+{b1,b2:bool}
+( x: bool(b1)
+, y: bool(b2)): bool(b1*b2)
+//
 (* ****** ****** *)
 
-#extern
 fun<>
-fgetc_ref
-(filr: FILEref): int
-#extern
+bool_print(bool): void
 fun<>
-fgetc_ptr
-(filp: !FILEptr1): int
+bool_parse(string): bool
 
 (* ****** ****** *)
-
-#extern
-fun<>
-fputc_ref
-(char: int, filr: FILEref): int
-#extern
-fun<>
-fputc_ptr
-(char: int, filp: !FILEptr1): int
-
+//
+fun
+<a:t0>
+bool_ifval
+{b:b0}
+(b: bool(b), x: a, y: a): a
+//
+(* ****** ****** *)
+//
+// HX-2020-05-30:
+// symbol overloading for bool
+//
+(* ****** ****** *)
+//
+#symload
+~ with bool_neg of 1000
+#symload
+neg with bool_neg of 1000
+#symload
+not with bool_neg of 1000
+//
+(* ****** ****** *)
+//
+#symload + with bool_add of 1000
+#symload * with bool_mul of 1000
+//
+(* ****** ****** *)
+//
+#symload print with bool_print of 1000
+//
+(* ****** ****** *)
+#symload ifval with bool_ifval of 1000
 (* ****** ****** *)
 
-(* end of [xatslib_libc_stdio.dats] *)
+(* end of [prelude_bool000.sats] *)

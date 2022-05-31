@@ -27,129 +27,173 @@
 
 (* ****** ****** *)
 //
-// For linear options
+// For generic numbers
 //
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Start Time: September, 2019
+// Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+
+fun
+<a:t0>
+g_0((*void*)): (a)
+fun
+<a:t0>
+g_1((*void*)): (a)
+fun
+<a:t0>
+g_2((*void*)): (a)
+
+(* ****** ****** *)
+
+fun
+<a:t0>
+g_i(i0: sint): (a)
+fun
+<a:t0>
+g_u(u0: uint): (a)
+
+(* ****** ****** *)
 //
-fun<>
-optn_vt_nilq
-{a:vt}{b:b0}
-(xs: !optn_vt(a, b)): bool(b=ff)
-fun<>
-optn_vt_consq
-{a:vt}{b:b0}
-(xs: !optn_vt(a, b)): bool(b=tt)
+fun
+<a:t0>
+g_sf(f0: sflt): (a)
+fun
+<a:t0>
+g_df(f0: dflt): (a)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+g_neg(x: a): a
+fun
+<a:t0>
+g_abs(x: a): a
+//
+fun
+<a:t0>
+g_succ(x: a): a
+fun
+<a:t0>
+g_pred(x: a): a
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+g_add(x: a, y: a): a
+fun
+<a:t0>
+g_sub(x: a, y: a): a
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+g_mul(x: a, y: a): a
+fun
+<a:t0>
+g_div(x: a, y: a): a
+fun
+<a:t0>
+g_mod(x: a, y: a): a
+//
+(* ****** ****** *)
+//
+// HX:
+// For linear gnums
 //
 (* ****** ****** *)
 
 fun
 <a:vt>
-optn_vt_free(~optn_vt(a)): void
+gl_0((*void*)): (a)
+fun
+<a:vt>
+gl_1((*void*)): (a)
+fun
+<a:vt>
+gl_2((*void*)): (a)
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-optn_vt_copy
-{n:b0}
-(xs: !optn_vt(a,n)): optn_vt(a,n)
+gl_add00(x: ~a, y: ~a): a
+fun
+<a:vt>
+gl_add11(x: !a, y: !a): a
 
 (* ****** ****** *)
-//
+
 fun
 <a:vt>
-optn_vt_length
-{b:bool}
-(xs: !optn_vt(a, b)): int(b2i(b))
+gl_sub00(x: ~a, y: ~a): a
 fun
 <a:vt>
-optn_vt_length0
-{b:bool}
-(xs: ~optn_vt(a, b)): int(b2i(b))
-//
+gl_sub11(x: !a, y: !a): a
+
 (* ****** ****** *)
-//
+
 fun
-<x0:vt>
-optn_vt_forall0(xs: ~optn_vt(x0)): bool
+<a:vt>
+gl_mul00(x: ~a, y: ~a): a
 fun
-<x0:vt>
-optn_vt_forall1(xs: !optn_vt(x0)): bool
-//
+<a:vt>
+gl_mul11(x: !a, y: !a): a
+
 (* ****** ****** *)
-//
+
 fun
-<x0:vt>
-optn_vt_foreach0(xs: ~optn_vt(x0)): void
+<a:vt>
+gl_div00(x: ~a, y: ~a): a
 fun
-<x0:vt>
-optn_vt_foreach1(xs: !optn_vt(x0)): void
-//
+<a:vt>
+gl_div11(x: !a, y: !a): a
+
 (* ****** ****** *)
-//
+
 fun
 <a:vt>
-optn_vt_listize0
-{b:b0}
-(~optn_vt(a, b)): list_vt(a, b2i(b))
+gl_mod00(x: ~a, y: ~a): a
 fun
 <a:vt>
-optn_vt_rlistize0
-{b:b0}
-(~optn_vt(a, b)): list_vt(a, b2i(b))
-fun
-<a:vt>
-optn_vt_streamize
-{b:b0}(xs: ~optn_vt(a, b)): stream_vt(a)
-//
+gl_mod11(x: !a, y: !a): a
+
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for optn_vt
+// symbol overloading for gnum
 //
-(* ****** ****** *)
-
-#symload
-none_vt with optn_vt_nil
-#symload
-some_vt with optn_vt_cons
-
 (* ****** ****** *)
 //
 #symload
-nilq with optn_vt_nilq of 1000
+neg with g_neg of 0101
 #symload
-eqzq with optn_vt_nilq of 1000
+abs with g_abs of 0101
+//
+(* ****** ****** *)
+//
 #symload
-consq with optn_vt_consq of 1000
+succ with g_succ of 0101
 #symload
-neqzq with optn_vt_consq of 1000
+pred with g_pred of 0101
+//
+(* ****** ****** *)
+//
+#symload - with g_neg of 0101
+//
+#symload + with g_add of 0102
+#symload - with g_sub of 0102
+//
+#symload * with g_mul of 0102
+#symload / with g_div of 0102
+#symload % with g_mod of 0102
 //
 (* ****** ****** *)
 
-#symload
-length with optn_vt_length of 1000
-#symload
-length0 with optn_vt_length0 of 1000
-
-(* ****** ****** *)
-
-#symload
-listize with optn_vt_listize0 of 1000
-#symload
-rlistize with optn_vt_rlistize0 of 1000
-
-(* ****** ****** *)
-
-#symload
-streamize with optn_vt_streamize of 1000
-
-(* ****** ****** *)
-
-(* end of [prelude_optn_vt.sats] *)
+(* end of [prelude_gnum000.sats] *)

@@ -623,4 +623,4 @@ x2iforeach_col$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
 
-(* end of [prelude_gbas.sats] *)
+(* end of [prelude_gbas000.sats] *)

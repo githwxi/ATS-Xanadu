@@ -28,4 +28,4 @@ glseqn_consq(!xs): bool(ln>0)
 //
 (* ****** ****** *)
 
-(* end of [prelude_gseqn_vt.sats] *)
+(* end of [prelude_gseqn00_vt.sats] *)

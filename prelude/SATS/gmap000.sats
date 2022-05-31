@@ -80,4 +80,4 @@ fun
 gmap_streamize_itm(map): stream_vt(key)
 (* ****** ****** *)
 
-(* end of [prelude_gmap.sats] *)
+(* end of [prelude_gmap000.sats] *)

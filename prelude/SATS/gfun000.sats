@@ -40,4 +40,4 @@ gfun_memq_gseq(xs): cfr1(x0,bool)
 
 (* ****** ****** *)
 
-(* end of [prelude_gfun.sats] *)
+(* end of [prelude_gfun000.sats] *)
