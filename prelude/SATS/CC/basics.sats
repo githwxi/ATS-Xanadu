@@ -236,4 +236,4 @@ UN_p2trn_exch_at
 (p0: p2trn(a, n), i0: nintlt(n), x0: a): ( a )
 (* ****** ****** *)
 
-(* end of [CC/basics.sats] *)
+(* end of [prelude_CC_basics.sats] *)

@@ -97,20 +97,20 @@ a1ptrsz(a:vt) = [n:i0] a1ptrsz(a, n)
 //
 #abstbox
 a2ref_vt_i0_i0_x0
-( a:vt, nrow:i0, ncol:i0)
+(a:vt, nrow:i0, ncol:i0)
 #absvtbx
 a2ptr_vt_i0_i0_vx
-( a:vt, nrow:i0, ncol:i0)
+(a:vt, nrow:i0, ncol:i0)
 //
 #typedef
-a2ref(
-a:vt,
-m:i0,n:i0) =
+a2ref
+(a:vt
+,m:i0,n:i0) =
 a2ref_vt_i0_i0_x0(a, m, n)
 #vwtpdef
-a2ptr(
-a:vt,
-m:i0,n:i0) =
+a2ptr
+(a:vt
+,m:i0,n:i0) =
 a2ptr_vt_i0_i0_vx(a, m, n)
 //
 (* ****** ****** *)
@@ -681,4 +681,4 @@ rlistize with a1ref_rlistize of 1000
 rlistize0 with a1ref_rlistize0 of 1000
 (* ****** ****** *)
 
-(* end of [prelude_arry.sats] *)
+(* end of [prelude_arrn.sats] *)
