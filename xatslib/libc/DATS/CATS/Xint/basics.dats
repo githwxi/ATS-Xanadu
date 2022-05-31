@@ -27,11 +27,11 @@ fun
 XINTERP_g_stderr
 ((*void*)): FILEref
 //
-impltmp
+#impltmp
 g_stdin<> = XINTERP_g_stdin
-impltmp
+#impltmp
 g_stdout<> = XINTERP_g_stdout
-impltmp
+#impltmp
 g_stderr<> = XINTERP_g_stderr
 //
 (* ****** ****** *)
@@ -40,7 +40,7 @@ g_stderr<> = XINTERP_g_stderr
 fun
 XINTERP_fgetc_ref
 (fr: FILEref): int
-impltmp
+#impltmp
 fgetc_ref<> = XINTERP_fgetc_ref
 //
 (* ****** ****** *)
@@ -50,7 +50,7 @@ fun
 XINTERP_fputc_ref
 ( c0: int
 , fr: FILEref): int
-impltmp
+#impltmp
 fputc_ref<> = XINTERP_fputc_ref
 //
 (* ****** ****** *)
@@ -60,7 +60,7 @@ fun
 XINTERP_nint_rand_limit
 {n:pos}(limit: int(n)): nintlt(n)
 //
-impltmp
+#impltmp
 nint_rand_limit<> = XINTERP_nint_rand_limit
 //
 (* ****** ****** *)

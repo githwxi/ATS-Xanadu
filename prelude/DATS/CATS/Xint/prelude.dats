@@ -27,7 +27,7 @@ A C-style implementation
 does not work in general
 *)
 //
-impltmp
+#impltmp
 <a:vt>
 a0ptr_make(x0) =
 let
@@ -49,7 +49,7 @@ A C-style implementation
 does not work in general
 *)
 //
-impltmp
+#impltmp
 <a:t0>
 a1ref_listize
   {n}(A0) = let
@@ -64,7 +64,7 @@ val n0 =
 a1ref_length(A0)
 val n1 = pred(n0)
 //
-impltmp
+#impltmp
 x1forint$work<n>(i0) =
 let
   val j0 = n1 - i0

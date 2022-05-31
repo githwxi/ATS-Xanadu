@@ -4,7 +4,7 @@ Print for Xats2js
 *)
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 bool_print<> =
 XATS2JS_bool_print
 where
@@ -17,7 +17,7 @@ XATS2JS_bool_print
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 char_print<> =
 XATS2JS_char_print
 where
@@ -30,7 +30,7 @@ XATS2JS_char_print
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 gint_print_sint<> =
 XATS2JS_gint_print_sint
 where
@@ -41,7 +41,7 @@ XATS2JS_gint_print_sint
 ( x0: sint ): void = $exname()
 }
 //
-impltmp
+#impltmp
 gint_print_uint<> =
 XATS2JS_gint_print_uint
 where
@@ -54,7 +54,7 @@ XATS2JS_gint_print_uint
 //
 (* ****** ****** *)
 //
-impltmp
+#impltmp
 gflt_print_sflt<> =
 XATS2JS_gflt_print_sflt
 where
@@ -65,7 +65,7 @@ XATS2JS_gflt_print_sflt
 ( x0: sflt ): void = $exname()
 }
 //
-impltmp
+#impltmp
 gflt_print_dflt<> =
 XATS2JS_gflt_print_dflt
 where
@@ -77,7 +77,7 @@ XATS2JS_gflt_print_dflt
 }
 //
 (* ****** ****** *)
-impltmp
+#impltmp
 string_print<> =
 XATS2JS_string_print
 where
