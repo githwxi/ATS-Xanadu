@@ -606,4 +606,4 @@ xatsopt_is_exist
 
 (* ****** ****** *)
 
-(* end of [Posix_mylibc.dats] *)
+(* end of [XATSOPT_UTIL_Posix_mylibc0.dats] *)

@@ -37,7 +37,7 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt"
 (* ****** ****** *)
 
-#staload "./../cblist.sats"
+#staload "./../cblist0.sats"
 
 (* ****** ****** *)
 //
@@ -50,4 +50,4 @@ fileref_get_cblist(inp: FILEref): Option_vt(cblist)
 //
 (* ****** ****** *)
 
-(* end of [Windows_cblist.sats] *)
+(* end of [XATSOPT_UTIL_Windows_cblist.sats] *)

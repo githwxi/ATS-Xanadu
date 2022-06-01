@@ -32,74 +32,31 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-//
-#staload
-UN = "prelude/SATS/unsafe.sats"
-//
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt"
 (* ****** ****** *)
 
-#staload "./../SATS/cblist.sats"
-
-(* ****** ****** *)
-//
-implement
-string2cblist(cs) =
-(
-cblist_cons(n0, cs, nil)
-) where
-{
-  val n0 = length(cs)
-  val cs = $UN.cast(cs)
-  val nil = cblist_nil()
-} (* end of [string2cblist] *)
-//
-(* ****** ****** *)
-
-implement
-cblist_length
-  (cbs) = loop(cbs, 0) where
-{
-//
-fun
-loop
-(cbs: cblist, res: Nat): Nat =
-(
-case+ cbs of
-| cblist_nil() => res
-| cblist_cons(_, _, cbs) => loop(cbs, res+1)
-)
-//
-} (* end of [cblist_length] *)
+#staload "./../cblist0.sats"
 
 (* ****** ****** *)
 //
-implement
-cblist_vt_length
-  (cbs) =
-  cblist_length($UN.castvwtp1{cblist}(cbs))
+fun{}
+fpath_get_cblist
+  (inp: string, bsz: Size): Option_vt(cblist)
+fun{}
+fpath_get_cblist_vt
+  (inp: string, bsz: Size): Option_vt(cblist_vt)
+//
+(* ****** ****** *)
+//
+fun//{}
+fileref_get_cblist
+  (inp: FILEref, bsz: Size): Option_vt(cblist)
+fun//{}
+fileref_get_cblist_vt
+  (inp: FILEref, bsz: Size): Option_vt(cblist_vt)
 //
 (* ****** ****** *)
 
-implement
-{}(*tmp*)
-cblist_foreach
-  (cbs) = loop(cbs) where
-{
-//
-fun
-loop
-(cbs: cblist): void =
-(
-case+ cbs of
-| cblist_nil() => ()
-| cblist_cons(n, cs, cbs) =>
-  (
-    cblist_foreach$fwork<>(n, cs); loop(cbs)
-  )
-)
-//
-} (* end of [cblist_foreach] *)
-
-(* ****** ****** *)
-
-(* end of [cblist.dats] *)
+(* end of [XATSOPT_UTIL_Posix_cblist0.sats] *)

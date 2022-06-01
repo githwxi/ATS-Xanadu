@@ -33,30 +33,57 @@
 //
 (* ****** ****** *)
 #define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt"
-(* ****** ****** *)
-
-#staload "./../cblist.sats"
-
+ATS_PACKNAME "ATS3.XANADU.xatsopt"
 (* ****** ****** *)
 //
+datatype
+cblist =
+| cblist_nil of ()
+| {n:pos}
+  cblist_cons of
+  (size_t(n), arrayref(uchar, n), cblist)
+//
+datavtype
+cblist_vt =
+| cblist_vt_nil of ()
+| {n:pos}
+  cblist_vt_cons of
+  (size_t(n), arrayptr(uchar, n), cblist_vt)
+//
+(* ****** ****** *)
+//
+castfn
+clist_vt2t(cbs: cblist_vt): cblist
+//
+(* ****** ****** *)
+//
+fun
+string2cblist
+  {n:pos}(text: string(n)): cblist
+//
+(* ****** ****** *)
+//
+fun
+cblist_length(cbs: cblist): intGte(0)
+fun
+cblist_vt_length(cbs: !cblist_vt): intGte(0)
+//
+overload length with cblist_length
+overload length with cblist_vt_length
+//
+(* ****** ****** *)
+
+fun cblist_vt_free(cbs: cblist_vt): void
+
+(* ****** ****** *)
+
 fun{}
-fpath_get_cblist
-  (inp: string, bsz: Size): Option_vt(cblist)
+cblist_foreach(cbs: cblist): void
 fun{}
-fpath_get_cblist_vt
-  (inp: string, bsz: Size): Option_vt(cblist_vt)
+cblist_foreach$fwork{n:int}(size_t(n), arrayref(uchar, n)): void
 //
-(* ****** ****** *)
-//
-fun//{}
-fileref_get_cblist
-  (inp: FILEref, bsz: Size): Option_vt(cblist)
-fun//{}
-fileref_get_cblist_vt
-  (inp: FILEref, bsz: Size): Option_vt(cblist_vt)
+overload foreach with cblist_foreach
 //
 (* ****** ****** *)
 
-(* end of [Posix_cblist.sats] *)
+(* end of [XATSOPT_UTIL_cblist0.sats] *)
