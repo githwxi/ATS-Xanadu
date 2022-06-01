@@ -41,7 +41,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 
 #staload
-"./../XUTIL/SATS/mylibc.sats"
+"./../UTIL/SATS/mylibc.sats"
 
 (* ****** ****** *)
 

@@ -68,8 +68,8 @@ UN = "prelude/SATS/unsafe.sats"
 //
 local
 #staload
-"./statyp2_unify.dats"
-in
+"./statyp2_unify0.dats"
+in//local
 //
 implement
 unify3_t2ype_t2ype
@@ -185,7 +185,7 @@ then auxlst(xs, ys) else false
 local
 //
 #staload
-"./statyp2_util0.dats"
+"./statyp2_utils0.dats"
 //
 fun
 t2ype_eval_env
@@ -202,7 +202,7 @@ val
 opt0 =
 abstenv_find(env0, s2c0)
 //
-in
+in//local
 //
 case+ opt0 of
 | ~
@@ -282,8 +282,8 @@ end // end of [local]
 //
 local
 #staload
-"./statyp2_unify.dats"
-in
+"./statyp2_unify0.dats"
+in//local
 //
 implement
 unify3_env_t2ype_t2ype

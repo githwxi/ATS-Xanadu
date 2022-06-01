@@ -33,7 +33,7 @@
 //
 (* ****** ****** *)
 #dynload
-"./xatsopt_main0.dats"
+"./xatsopt_mymain.dats"
 (* ****** ****** *)
 #staload
 "./../SATS/xatsopt.sats"

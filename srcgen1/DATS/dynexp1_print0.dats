@@ -53,6 +53,13 @@ overload
 fprint with $LAB.fprint_label
 //
 (* ****** ****** *)
+#staload
+_(*TMP*) =
+"./../DATS/staexp0_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/dynexp0_print0.dats"
+(* ****** ****** *)
 //
 #staload "./../SATS/lexing0.sats"
 //
@@ -63,11 +70,6 @@ fprint with $LAB.fprint_label
 //
 #staload "./../SATS/dynexp1.sats"
 //
-(* ****** ****** *)
-
-#staload _ = "./staexp0_print.dats"
-#staload _ = "./dynexp0_print.dats"
-
 (* ****** ****** *)
 //
 (*

@@ -39,6 +39,10 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+#staload
+_(*TMP*) =
+"./../DATS/statyp2_utils0.dats"
+(* ****** ****** *)
 
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/locinfo.sats"
@@ -55,11 +59,6 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans23.sats"
 #staload "./../SATS/trans33.sats"
 #staload "./../SATS/trans3t.sats"
-
-(* ****** ****** *)
-
-#staload
-_(*TMP*) = "./statyp2_util0.dats"
 
 (* ****** ****** *)
 

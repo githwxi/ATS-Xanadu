@@ -50,7 +50,7 @@ UN_string_vt2t
 (* ****** ****** *)
 //
 #staload
-"./../XUTIL/SATS/mylibc.sats"
+"./../UTIL/SATS/mylibc.sats"
 //
 (* ****** ****** *)
 //
