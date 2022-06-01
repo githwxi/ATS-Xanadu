@@ -115,4 +115,4 @@ xatsopt_is_exist
 //
 (* ****** ****** *)
 
-(* end of [mylibc.sats] *)
+(* end of [XATSOPT_UTIL_mylibc.sats] *)
