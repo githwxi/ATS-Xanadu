@@ -27,9 +27,4 @@
 
 (* ****** ****** *)
 
-
-(* ****** ****** *)
-
-(* end of [xatslib_funmap.sats] *)
-
-
+(* end of [xatslib_funmap0_list.dats] *)

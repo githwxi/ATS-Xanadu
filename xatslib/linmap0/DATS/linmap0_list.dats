@@ -27,7 +27,4 @@
 
 (* ****** ****** *)
 
-
-(* ****** ****** *)
-
-(* end of [xatslib_linmap.sats] *)
+(* end of [xatslib_linmap0_list.dats] *)

@@ -10,7 +10,7 @@
 //
 (* ****** ****** *)
 //
-datatype dtvalue =
+datatype dtval =
 //
 | DTVint of sint
 | DTVbtf of bool
@@ -32,7 +32,6 @@ datatype dtvalue =
 //
 where
 {
-typedef dtval = dtvalue
 typedef dtvalist = list(dtval)
 (*
 typedef dtvalobj = hashtbl(string, dtval)
@@ -41,4 +40,4 @@ typedef dtvalobj = hashtbl(string, dtval)
 //
 (* ****** ****** *)
 
-(* end of [xatslib_dtvalue.sats] *)
+(* end of [xatslib_dtval00_dtval00.sats] *)
