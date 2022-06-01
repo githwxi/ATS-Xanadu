@@ -343,4 +343,4 @@ if
 
 /* ****** ****** */
 
-/* end of [XATS2JS_runtime.cats] */
+/* end of [prelude_DATS_CATS_JS_runtime.cats] */

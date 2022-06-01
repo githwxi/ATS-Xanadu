@@ -1,14 +1,12 @@
 (* ****** ****** *)
 (*
-** for opts_vt
+** For opts_vt
 *)
 (* ****** ****** *)
-
 (*
 #staload
 "./../SATS/optn.sats"
 *)
-
 (* ****** ****** *)
 //
 #impltmp

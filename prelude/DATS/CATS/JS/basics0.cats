@@ -577,4 +577,4 @@ return res; // string_vt_rforall_cfr
 }
 /* ****** ****** */
 
-/* end of [XATS2JS_basics.cats] */
+/* end of [prelude_DATS_CATS_JS_basics.cats] */

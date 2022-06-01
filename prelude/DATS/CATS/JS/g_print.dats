@@ -98,4 +98,4 @@ XATS2JS_the_print_store_clear(): (void) = $exname()
 //
 (* ****** ****** *)
 
-(* end of [XATS2JS_g_print.dats] *)
+(* end of [prelude_DATS_CATS_JS_g_print.dats] *)

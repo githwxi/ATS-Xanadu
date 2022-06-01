@@ -38,11 +38,11 @@
 (* ****** ****** *)
 #staload
 "xatslib\
-/libc/SATS/libc.sats"
+/libcats/SATS/libcats.sats"
 (* ****** ****** *)
-#staload
+#staload STDIO =
 "xatslib\
-/libc/DATS/stdio.dats"
+/libcats/DATS/stdiout.dats"
 (* ****** ****** *)
 
 #extern
@@ -82,12 +82,14 @@ g_inp_lline_list(): list_vt(char)
 fun<>
 g_inp_lline_rlist(): list_vt(char)
 (* ****** ****** *)
-
+//
 #impltmp
 <>(*tmp*)
 g_inp_char() =
-fgetc_ref(g_stdin<>())
-
+(
+$STDIO.fgetc_ref(g_stdin<>())
+)
+//
 (* ****** ****** *)
 
 #impltmp
@@ -106,7 +108,7 @@ fr: FILEref
 $llazy
 (
 let
-val c0 = fgetc_ref(fr)
+val c0 = $STDIO.fgetc_ref(fr)
 in
   if
   (c0 < 0) // EOF

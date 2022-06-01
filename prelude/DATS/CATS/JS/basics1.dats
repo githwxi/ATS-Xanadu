@@ -520,9 +520,9 @@ end
 gmap_streamize_key
 <jsobjmap(k0,x0)><k0><x0>(kxs) =
 (
- XATS2JS_jsarray_streamize(XATS2JS_jsobjmap_keys(kxs))
+XATS2JS_jsarray_streamize(XATS2JS_jsobjmap_keys(kxs))
 )
 //
 (* ****** ****** *)
 
-(* end of [XATS2JS_jsbasics.dats] *)
+(* end of [prelude_DATS_CATS_JS_basics1.dats] *)

@@ -557,4 +557,4 @@ a1ptr_set_at_raw<a> = XATS2JS_a1ptr_set_at_raw
 //
 (* ****** ****** *)
 
-(* end of [XATS2JS_prelude.dats] *)
+(* end of [prelude_DATS_CATS_JS_prelude.dats] *)

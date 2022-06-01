@@ -6,13 +6,13 @@
 *)
 //
 (* ****** ****** *)
-
 #staload
-"prelude/SATS/gseqn.sats"
-#staload
-UN =
-"prelude/SATS/unsafe.sats"
-
+"prelude/SATS/gseqn00.sats"
+(* ****** ****** *)
+//
+#staload UN =
+"prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 
 #impltmp

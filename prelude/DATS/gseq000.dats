@@ -11,14 +11,13 @@
 //
 (* ****** ****** *)
 //
-#staload
-UN =
-"prelude/SATS/unsafe.sats"
+#staload UN =
+"prelude/SATS/unsafex.sats"
 //
 (* ****** ****** *)
-//
-// For 1-gseq-operations
-//
+(*
+//HX: For 1-gseq-operations
+*)
 (* ****** ****** *)
 //
 #impltmp
@@ -1693,8 +1692,10 @@ gseq_istreamize
 //
 (* ****** ****** *)
 //
-// HX:
-// Miscellaneous gseq-operations
+(*
+HX:
+Miscellaneous gseq-operations
+*)
 //
 (* ****** ****** *)
 //

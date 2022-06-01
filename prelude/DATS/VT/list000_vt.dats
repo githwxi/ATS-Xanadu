@@ -1,20 +1,15 @@
 (* ****** ****** *)
 (*
-** for lists_vt
+** For lists_vt
 *)
 (* ****** ****** *)
-
 (*
 #staload
 "./../SATS/list_vt.sats"
 *)
-
 (* ****** ****** *)
-
-#staload
-UN =
-"prelude/SATS/unsafe.sats"
-
+#staload UN =
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 #impltmp

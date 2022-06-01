@@ -7,11 +7,11 @@ Basics for Xats2js
 (* ****** ****** *)
 #staload
 UN = // for casting
-"prelude/SATS/unsafe.sats"
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
-//
-// prelude/bool.sats
-//
+(*
+//HX: prelude/bool000.sats
+*)
 (* ****** ****** *)
 //
 #extern
@@ -682,4 +682,4 @@ XATS2JS_string_vt_forall_cfr
 end // end of [string_vt_forall1]
 (* ****** ****** *)
 
-(* end of [XATS2JS_basics.dats] *)
+(* end of [prelude_DATS_CATS_JS_basics.dats] *)

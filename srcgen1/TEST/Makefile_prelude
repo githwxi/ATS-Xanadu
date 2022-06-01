@@ -160,9 +160,11 @@ $(XATSOPT) -d $(PRELUDE)/DATS/VT/stream0_vt.dats
 all_JS_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/basics0.dats
 all_JS_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/basics1.dats
+all_JS_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/prelude.dats
 all_JS_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/jsbasix.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/unsafex.dats
   
 ######
 

@@ -13,9 +13,8 @@
 #abstbox box_tx
 #typedef box = box_tx
 (* ****** ****** *)
-#staload
-UN =
-"prelude/SATS/unsafe.sats"
+#staload UN =
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 // HX-2020-03-21
