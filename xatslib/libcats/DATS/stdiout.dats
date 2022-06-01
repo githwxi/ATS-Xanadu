@@ -63,4 +63,4 @@ fputc_ptr
 
 (* ****** ****** *)
 
-(* end of [xatslib_libcats_stdio.dats] *)
+(* end of [xatslib_libcats_stdiout.dats] *)
