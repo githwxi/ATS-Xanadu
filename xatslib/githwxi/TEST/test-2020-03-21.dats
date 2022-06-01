@@ -8,7 +8,7 @@ For testing gint_rdigitize
 
 #staload
 "xatslib\
-/githwxi/DATS/mygist.dats"
+/githwxi/DATS/mygist0.dats"
 
 (* ****** ****** *)
 

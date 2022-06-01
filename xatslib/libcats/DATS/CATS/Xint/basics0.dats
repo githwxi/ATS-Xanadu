@@ -5,12 +5,12 @@ Basics for Xinterp
 (* ****** ****** *)
 #staload
 "xatslib\
-/libc/SATS/libc.sats"
+/libcats/SATS/libcats.sats"
 (* ****** ****** *)
 //
-#staload "./../../gios.dats"
-#staload "./../../rand.dats"
-#staload "./../../stdio.dats"
+#staload "./../../g00iout.dats"
+#staload "./../../rand000.dats"
+#staload "./../../stdiout.dats"
 //
 (* ****** ****** *)
 //
@@ -65,4 +65,4 @@ nint_rand_limit<> = XINTERP_nint_rand_limit
 //
 (* ****** ****** *)
 
-(* end of [xatslib_libc_XINTERP_basics.dats] *)
+(* end of [xatslib_libcats_DATS_CATS_Xint_basics0.dats] *)

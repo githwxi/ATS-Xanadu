@@ -912,7 +912,7 @@ filter0$test<x0> = filter$test<x0>
 <xs><x0>
 gseq_add(xs) =
 (
-gseq_map_add(xs)
+gseq_map_add<xs><x0>(xs)
 ) where
 {
   #impltmp map$fopr<x0><x0>(x0) = x0

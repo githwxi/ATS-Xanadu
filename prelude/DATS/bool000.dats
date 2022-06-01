@@ -68,7 +68,7 @@ bool_ifval
 (* ****** ****** *)
 //
 // HX:
-// For #implementing
+// For implementing
 // some g-operations
 //
 (* ****** ****** *)
@@ -78,7 +78,7 @@ g_eqref<bool> = g_equal<bool>
 g_neqrf<bool> = g_noteq<bool>
 (* ****** ****** *)
 #impltmp
-g_print<bool> = bool_print< >
+g_print<bool> = bool_print<(*nil*)>
 (* ****** ****** *)
 
 (* end of [prelude_bool000.dats] *)

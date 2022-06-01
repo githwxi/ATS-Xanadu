@@ -821,7 +821,7 @@ gmap_streamize_itm
 For gseqn-operations
 *)
 #staload
-"prelude/SATS/gseqn.sats"
+"prelude/SATS/gseqn00.sats"
 //
 (* ****** ****** *)
 

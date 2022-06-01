@@ -2252,6 +2252,19 @@ D3Etapp _ => auxtapp(env0, d3e0)
 |
 D3Edapp _ => auxdapp(env0, d3e0)
 //
+(*
+|
+D3Epcon _ => auxpcon(env0, d3e0)
+|
+D3Epbox _ => auxpbox(env0, d3e0)
+|
+D3Eproj _ => auxproj(env0, d3e0)
+|
+D3Epflt _ => auxpflt(env0, d3e0)
+|
+D3Epptr _ => auxpptr(env0, d3e0)
+*)
+//
 |
 D3Eseqn _ => aux_seqn(env0, d3e0)
 //

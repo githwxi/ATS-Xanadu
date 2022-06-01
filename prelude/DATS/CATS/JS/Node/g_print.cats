@@ -77,4 +77,4 @@ XATS2JS_NODE_string_print
 }
 /* ****** ****** */
 
-/* end of [XATS2JS_NODE_g_print.cats] */
+/* end of [prelude_DATS_CATS_JS_NODE_g_print.cats] */

@@ -7,7 +7,7 @@
 (* ****** ****** *)
 #staload
 UN =
-"prelude/SATS/unsafe.sats"
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 #extern
 fun
