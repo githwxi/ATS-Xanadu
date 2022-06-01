@@ -27,18 +27,12 @@
 
 (* ****** ****** *)
 //
-#define VERBOSE_FIXITY 0
-(*
-#define VERBOSE_FIXITY 1 (* used in [prelude/fixity.ats] *)
-*)
+#define VERBOSE_FIXITY0 0
 //
 (* ****** ****** *)
 //
 #define VERBOSE_PRELUDE 0
-(*
-#define VERBOSE_PRELUDE 1 (* mainly for the purpose of debugging *)
-*)
 //
 (* ****** ****** *)
 
-(* end of [xparam.hats] *)
+(* end of [ATS3/XANADU_xparam.hats] *)

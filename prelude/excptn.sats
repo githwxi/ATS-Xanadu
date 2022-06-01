@@ -36,8 +36,11 @@
 //
 // HX-2020-03-05:
 // For out-of-range subscripting
+//
 excptcon
 SubscriptExn of ((*void*))
+//
+(* ****** ****** *)
 //
 // For indicating the failure of
 excptcon AssertExn of () // an assertion
@@ -46,4 +49,4 @@ excptcon NotFoundExn of () // to be found but not
 //
 (* ****** ****** *)
 
-(* end of [excptn.sats] *)
+(* end of [ATS3/XANADU_excptn.sats] *)
