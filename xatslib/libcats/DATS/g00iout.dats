@@ -167,8 +167,8 @@ in
 end
 else cs // end of [else]
 end
-} (*where*) // end of [g_inp_lline_rlist]
+}(*where*)//end-of(g_inp_lline_rlist)
 //
 (* ****** ****** *)
 
-(* end of [xatslib_libc_gios.dats] *)
+(* end of [xatslib_libcats_g00iout.dats] *)
