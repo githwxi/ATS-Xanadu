@@ -27,7 +27,7 @@ all:: all_Xint_dats
 ######
 
 all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/basics.sats
+$(XATSOPT) -s $(PRELUDE)/basics0.sats
 
 ######
 
@@ -70,7 +70,7 @@ $(XATSOPT) -s $(PRELUDE)/SATS/arrn000.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/strn000.sats
 all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/stream0.sats
+$(XATSOPT) -s $(PRELUDE)/SATS/strm000.sats
 
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/unsafex.sats
@@ -89,7 +89,7 @@ $(XATSOPT) -s $(PRELUDE)/SATS/VT/optn000_vt.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strn000_vt.sats
 all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/VT/stream0_vt.sats
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/strm000_vt.sats
 
 ######
 #

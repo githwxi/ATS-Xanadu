@@ -40,16 +40,17 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload
+_(*TMP*)=
+"./../DATS/staexp0_print0.dats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/lexing0.sats"
 //
 #staload "./../SATS/staexp0.sats"
 //
 #staload "./../SATS/dynexp0.sats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) = "./../DATS/staexp0_print.dats"
 //
 (* ****** ****** *)
 //

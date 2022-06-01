@@ -39,6 +39,22 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+#staload
+_(*TMP*) =
+"./../DATS/staexp2_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/statyp2_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/dynexp1_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/dynexp2_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/dynexp3_print0.dats"
+(* ****** ****** *)
 //
 #staload "./../SATS/xlabel0.sats"
 //
@@ -60,19 +76,6 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/tread33.sats"
 //
-(* ****** ****** *)
-
-#staload
-_(*TMP*) = "./../DATS/staexp2_print.dats"
-#staload
-_(*TMP*) = "./../DATS/statyp2_print.dats"
-#staload
-_(*TMP*) = "./../DATS/dynexp1_print.dats"
-#staload
-_(*TMP*) = "./../DATS/dynexp2_print.dats"
-#staload
-_(*TMP*) = "./../DATS/dynexp3_print.dats"
-
 (* ****** ****** *)
 //
 overload

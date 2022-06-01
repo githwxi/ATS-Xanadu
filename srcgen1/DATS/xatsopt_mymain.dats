@@ -67,6 +67,48 @@ FS0 = "./../SATS/filsrch.sats"
 //
 (* ****** ****** *)
 //
+#staload
+_(*TMP*) =
+"./../DATS/staexp0_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/dynexp0_print0.dats"
+//
+#staload
+_(*TMP*) =
+"./../DATS/staexp1_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/dynexp1_print0.dats"
+//
+#staload
+_(*TMP*) =
+"./../DATS/staexp2_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/statyp2_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/dynexp2_print0.dats"
+//
+#staload
+_(*TMP*) =
+"./../DATS/dynexp3_print0.dats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) =
+"./../DATS/intrep0_print0.dats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*TMP*) =
+"./../DATS/trans12_envmap.dats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/dynexp0.sats"
 #staload "./../SATS/parsing.sats"
 #staload "./../SATS/synread.sats"
@@ -98,48 +140,6 @@ FS0 = "./../SATS/filsrch.sats"
 (* ****** ****** *)
 //
 #staload
-_(*TMP*) =
-  "./../DATS/staexp0_print.dats"
-#staload
-_(*TMP*) =
-  "./../DATS/dynexp0_print.dats"
-//
-#staload
-_(*TMP*) =
-  "./../DATS/staexp1_print.dats"
-#staload
-_(*TMP*) =
-  "./../DATS/dynexp1_print.dats"
-//
-#staload
-_(*TMP*) =
-  "./../DATS/staexp2_print.dats"
-#staload
-_(*TMP*) =
-  "./../DATS/statyp2_print.dats"
-#staload
-_(*TMP*) =
-  "./../DATS/dynexp2_print.dats"
-//
-#staload
-_(*TMP*) =
-  "./../DATS/dynexp3_print.dats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) =
-  "./../DATS/intrep0_print.dats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) =
-  "./../DATS/trans12_envmap.dats"
-//
-(* ****** ****** *)
-//
-#staload
 STDIO = "libats/libc/SATS/stdio.sats"
 //
 (* ****** ****** *)
@@ -147,12 +147,12 @@ STDIO = "libats/libc/SATS/stdio.sats"
 local
 //
 #include
-"./../XUTIL/DATS/cblist.dats"
+"./../UTIL/DATS/cblist.dats"
 #include
-"./../XUTIL/DATS/Posix/cblist.dats"
+"./../UTIL/DATS/Posix/cblist.dats"
 //
 #include
-"./../XUTIL/DATS/Posix/mylibc.dats"
+"./../UTIL/DATS/Posix/mylibc.dats"
 //
 in
   // nothing
@@ -186,17 +186,17 @@ end // end of [local]
 // The following
 // order is significant!
 #dynload "./lexbuf0.dats"
-#dynload "./lexing0_token.dats"
-#dynload "./lexing0_kword.dats"
-#dynload "./lexing0_util0.dats"
+#dynload "./lexing0_token0.dats"
+#dynload "./lexing0_kword0.dats"
+#dynload "./lexing0_utils0.dats"
 //
 (* ****** ****** *)
 //
 #dynload "./staexp0.dats"
 #dynload "./dynexp0.dats"
 //
-#dynload "./staexp0_print.dats"
-#dynload "./dynexp0_print.dats"
+#dynload "./staexp0_print0.dats"
+#dynload "./dynexp0_print0.dats"
 //
 #dynload "./parsing_basics.dats"
 //
@@ -216,8 +216,8 @@ end // end of [local]
 //
 #dynload "./effect0.dats"
 //
-#dynload "./staexp1_print.dats"
-#dynload "./dynexp1_print.dats"
+#dynload "./staexp1_print0.dats"
+#dynload "./dynexp1_print0.dats"
 //
 #dynload "./trans01_basics.dats"
 #dynload "./trans01_envmap.dats"
@@ -234,26 +234,26 @@ end // end of [local]
 #dynload "./dynexp2.dats"
 #dynload "./nmspace.dats"
 //
-#dynload "./staexp2_init0.dats"
-#dynload "./statyp2_init0.dats"
+#dynload "./staexp2_inits0.dats"
+#dynload "./statyp2_inits0.dats"
 //
-#dynload "./staexp2_util1.dats"
-#dynload "./staexp2_util2.dats"
+#dynload "./staexp2_utils1.dats"
+#dynload "./staexp2_utils2.dats"
 //
-#dynload "./staexp2_s2cst.dats"
+#dynload "./staexp2_s2cst0.dats"
 //
-#dynload "./statyp2_util0.dats"
+#dynload "./statyp2_utils0.dats"
 //
-#dynload "./statyp2_unify.dats"
+#dynload "./statyp2_unify0.dats"
 //
-#dynload "./staexp2_print.dats"
-#dynload "./statyp2_print.dats"
+#dynload "./staexp2_print0.dats"
+#dynload "./statyp2_print0.dats"
 //
-#dynload "./dynexp2_d2con.dats"
-#dynload "./dynexp2_d2cst.dats"
-#dynload "./dynexp2_d2var.dats"
+#dynload "./dynexp2_d2con0.dats"
+#dynload "./dynexp2_d2cst0.dats"
+#dynload "./dynexp2_d2var0.dats"
 //
-#dynload "./dynexp2_print.dats"
+#dynload "./dynexp2_print0.dats"
 //
 #dynload "./gmacro1_define.dats"
 #dynload "./dmacro2_macdef.dats"
@@ -270,14 +270,14 @@ end // end of [local]
 //
 #dynload "./dynexp3.dats"
 //
-#dynload "./dynexp3_print.dats"
-#dynload "./dynexp3_util0.dats"
+#dynload "./dynexp3_print0.dats"
+#dynload "./dynexp3_utils0.dats"
 //
-#dynload "./trans23_util0.dats"
+#dynload "./trans23_utils0.dats"
 #dynload "./trans23_dynexp.dats"
 #dynload "./tread23_dynexp.dats"
 //
-#dynload "./trans33_util0.dats"
+#dynload "./trans33_utils0.dats"
 #dynload "./trans33_envmap.dats"
 #dynload "./trans33_dynexp.dats"
 #dynload "./tread33_dynexp.dats"
@@ -292,13 +292,13 @@ end // end of [local]
 (* ****** ****** *)
 //
 #dynload "./intrep0.dats"
-#dynload "./intrep0_print.dats"
-#dynload "./intrep0_util0.dats"
+#dynload "./intrep0_print0.dats"
+#dynload "./intrep0_utils0.dats"
 #dynload "./intrep0_jsoniz.dats"
 #dynload "./intrep0_statyp.dats"
 #dynload "./intrep0_dynexp.dats"
 //
-#dynload "./trcmp30_util0.dats"
+#dynload "./trcmp30_utils0.dats"
 #dynload "./trcmp30_envmap.dats"
 #dynload "./trcmp30_statyp.dats"
 #dynload "./trcmp30_dynexp.dats"
@@ -307,7 +307,7 @@ end // end of [local]
 //
 (*
 // #define ATS_DYNLOADFLAG 0
-// #dynload "./xatsopt_util0.dats"
+// #dynload "./xatsopt_utils0.dats"
 *)
 //
 (* ****** ****** *)

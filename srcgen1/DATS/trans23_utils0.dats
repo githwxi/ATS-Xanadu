@@ -81,8 +81,8 @@ fprint_val<t2ype> = fprint_t2ype
 
 local
 #staload
-"./statyp2_unify.dats"
-in
+"./statyp2_unify0.dats"
+in//local
 implement
 unify2_t2ype_t2ype
 (loc0, t2p1, t2p2) =

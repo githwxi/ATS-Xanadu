@@ -68,7 +68,20 @@ prerr with $LOC.prerr_location
 (* ****** ****** *)
 //
 #staload
-"./../XUTIL/SATS/mylibc.sats"
+_(*TMP*) =
+"./../DATS/xfixity.dats"
+//
+#staload
+_(*TMP*) =
+"./../DATS/staexp1_print0.dats"
+#staload
+_(*TMP*) =
+"./../DATS/dynexp1_print0.dats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../UTIL/SATS/mylibc.sats"
 //
 (* ****** ****** *)
 //
@@ -87,16 +100,6 @@ prerr with $LOC.prerr_location
 #staload "./../SATS/dynexp1.sats"
 //
 #staload "./../SATS/trans01.sats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) = "./../DATS/xfixity.dats"
-//
-#staload
-_(*TMP*) = "./../DATS/staexp1_print.dats"
-#staload
-_(*TMP*) = "./../DATS/dynexp1_print.dats"
 //
 (* ****** ****** *)
 //

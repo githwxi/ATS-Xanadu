@@ -306,7 +306,7 @@ the_fixity_load
   (XATSENV) = let
 //
   val given =
-    "prelude/fixity.sats"
+    "prelude/fixity0.sats"
 //
   val fname =
     dirbase(XATSENV, given)
@@ -511,18 +511,18 @@ val () =
 the_basics_load
 ( XATSENV
 , 0(*static*)
-, "prelude/basics.sats")
+, "prelude/basics0.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/xsetup.sats")
+, "prelude/xsetup0.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/excptn.sats")
+, "prelude/excptn0.sats")
 //
 val () =
 the_prelude_load
@@ -608,7 +608,7 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/stream0.sats")
+, "prelude/SATS/strm000.sats")
 //
 (*
 HX-2020-10-31:
@@ -664,7 +664,7 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/stream0_vt.sats")
+, "prelude/SATS/VT/strm000_vt.sats")
 //
 (* ****** ****** *)
 //

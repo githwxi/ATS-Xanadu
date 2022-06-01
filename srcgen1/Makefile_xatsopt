@@ -95,13 +95,13 @@ filpath.dats \
 filsrch.dats \
 locinfo.dats \
 lexbuf0.dats \
-lexing0_token.dats \
-lexing0_kword.dats \
-lexing0_util0.dats \
+lexing0_token0.dats \
+lexing0_kword0.dats \
+lexing0_utils0.dats \
 staexp0.dats \
 dynexp0.dats \
-staexp0_print.dats \
-dynexp0_print.dats \
+staexp0_print0.dats \
+dynexp0_print0.dats \
 parsing_basics.dats \
 parsing_tokbuf.dats \
 parsing_staexp.dats \
@@ -111,8 +111,8 @@ synread_staexp.dats \
 synread_dynexp.dats \
 staexp1.dats \
 dynexp1.dats \
-staexp1_print.dats \
-dynexp1_print.dats \
+staexp1_print0.dats \
+dynexp1_print0.dats \
 trans01_basics.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
@@ -123,19 +123,19 @@ effect0.dats \
 staexp2.dats \
 statyp2.dats \
 dynexp2.dats \
-staexp2_init0.dats \
-statyp2_init0.dats \
-staexp2_util1.dats \
-staexp2_util2.dats \
-staexp2_s2cst.dats \
-staexp2_print.dats \
-statyp2_util0.dats \
-statyp2_unify.dats \
-statyp2_print.dats \
-dynexp2_d2con.dats \
-dynexp2_d2cst.dats \
-dynexp2_d2var.dats \
-dynexp2_print.dats \
+staexp2_inits0.dats \
+statyp2_inits0.dats \
+staexp2_utils1.dats \
+staexp2_utils2.dats \
+staexp2_s2cst0.dats \
+staexp2_print0.dats \
+statyp2_utils0.dats \
+statyp2_unify0.dats \
+statyp2_print0.dats \
+dynexp2_d2con0.dats \
+dynexp2_d2cst0.dats \
+dynexp2_d2var0.dats \
+dynexp2_print0.dats \
 nmspace.dats \
 gmacro1_define.dats \
 dmacro2_macdef.dats \
@@ -146,12 +146,12 @@ trans12_dynexp.dats \
 tread12_staexp.dats \
 tread12_dynexp.dats \
 dynexp3.dats \
-dynexp3_print.dats \
-dynexp3_util0.dats \
-trans23_util0.dats \
+dynexp3_print0.dats \
+dynexp3_utils0.dats \
+trans23_utils0.dats \
 trans23_dynexp.dats \
 tread23_dynexp.dats \
-trans33_util0.dats \
+trans33_utils0.dats \
 trans33_envmap.dats \
 trans33_dynexp.dats \
 tread33_dynexp.dats \
@@ -161,16 +161,16 @@ trans3x_envmap.dats \
 trans3x_dynexp.dats \
 tread3x_dynexp.dats \
 intrep0.dats \
-intrep0_print.dats \
-intrep0_util0.dats \
+intrep0_print0.dats \
+intrep0_utils0.dats \
 intrep0_jsoniz.dats \
 intrep0_statyp.dats \
 intrep0_dynexp.dats \
-trcmp30_util0.dats \
+trcmp30_utils0.dats \
 trcmp30_envmap.dats \
 trcmp30_statyp.dats \
 trcmp30_dynexp.dats \
-xatsopt_util0.dats xatsopt_main0.dats \
+xatsopt_utils0.dats xatsopt_mymain.dats \
 
 ######
 
@@ -202,8 +202,8 @@ $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
 ######
 
 srclines:: ; $(WCL) ./?ATS/*.?ats
-srclines:: ; $(WCL) ./XUTIL/?ATS/*.?ats
-srclines:: ; $(WCL) ./XUTIL/?ATS/Posix/*.?ats
+srclines:: ; $(WCL) ./UTIL/?ATS/*.?ats
+srclines:: ; $(WCL) ./UTIL/?ATS/Posix/*.?ats
 
 ######
 libxatsopt: \

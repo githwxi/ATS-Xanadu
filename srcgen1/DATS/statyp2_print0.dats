@@ -57,18 +57,18 @@ fprint with $SYM.fprint_symbol
 //
 (* ****** ****** *)
 //
+#staload
+_(*TMP*) =
+"./../DATS/staexp2_print0.dats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/xbasics.sats"
 
 (* ****** ****** *)
 
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*TMP*) =
-  "./../DATS/staexp2_print.dats"
 //
 (* ****** ****** *)
 //
