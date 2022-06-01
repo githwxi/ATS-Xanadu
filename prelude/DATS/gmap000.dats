@@ -80,4 +80,4 @@ end // end of [gmap_streamize_itm]
 //
 (* ****** ****** *)
 
-(* end of [prelude_gmap.dats] *)
+(* end of [prelude_gmap000.dats] *)

@@ -611,4 +611,4 @@ print_9
 //
 (* ****** ****** *)
 
-(* end of [prelude_synougat.dats] *)
+(* end of [prelude_synoug0.dats] *)

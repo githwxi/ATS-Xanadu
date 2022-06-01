@@ -199,4 +199,4 @@ glseq_rlistize0<optn_vt(a)><a> = optn_vt_rlistize0
 glseq_streamize<optn_vt(a)><a> = optn_vt_streamize
 (* ****** ****** *)
 
-(* end of [prelude_optn_vt.dats] *)
+(* end of [prelude_optn000_vt.dats] *)
