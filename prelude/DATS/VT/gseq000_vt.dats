@@ -681,4 +681,4 @@ end // end of [glseq_iforeach1/iforall1]
 //
 (* ****** ****** *)
 
-(* end of [prelude_gseq_vt.dats] *)
+(* end of [prelude_gseq000_vt.dats] *)

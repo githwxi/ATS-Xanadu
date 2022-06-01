@@ -525,4 +525,4 @@ gseq_unlist_vt
 //
 (* ****** ****** *)
 
-(* end of [prelude_array.dats] *)
+(* end of [prelude_arrn000.dats] *)

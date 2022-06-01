@@ -797,4 +797,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [prelude_string.dats] *)
+(* end of [prelude_strn000.dats] *)

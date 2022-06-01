@@ -34,37 +34,76 @@
 (* ****** ****** *)
 //
 #impltmp
-bool_print<>(b0) =
-if b0
-then g_print<string>("true")
-else g_print<string>("false")
-//
-(* ****** ****** *)
-//
-#impltmp
-bool_parse<>(rep) =
+<>(*tmp*)
+char_noteq
+  (c1, c2) =
 (
-case+ rep of
-| "false" => false
-(*
-| "False" => false
-| "FALSE" => false
-| "" => false | "0" => false
-| "ff" => false | "Ff" => false | "FF" => false
-| "nil" => false | "Nil" => false | "NIL" => false
-| "none" => false | "None" => false | "NONE" => false
-| "null" => false | "Null" => false | "NULL" => false
-*)
-| _ (* else *) => true
+not(char_equal(c1, c2))
 )
 //
 (* ****** ****** *)
 //
-#impltmp
-<a>(*tmp*)
-bool_ifval
-(b, x, y) = if b then x else y
+#impltmp<>
+char_lt(x1, x2) = 
+(char_cmp<>(x1, x2) < 0)
+#impltmp<>
+char_gt(x1, x2) = 
+(char_cmp<>(x1, x2) > 0)
+#impltmp<>
+char_eq(x1, x2) = 
+(char_cmp<>(x1, x2) = 0)
+#impltmp<>
+char_lte(x1, x2) = 
+(char_cmp<>(x1, x2) <= 0)
+#impltmp<>
+char_gte(x1, x2) = 
+(char_cmp<>(x1, x2) >= 0)
+#impltmp<>
+char_neq(x1, x2) = 
+(char_cmp<>(x1, x2) != 0)
 //
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+sub_char_char
+  (c1, c2) =
+  ( sint(c1) - sint(c2) )
+//
+(* ****** ****** *)
+
+#impltmp
+<>(*tmp*)
+char_lower
+  (c0) =
+(
+  if
+  (c0 < 'A')
+  then c0 else
+  (
+  if
+  (c0 > 'Z')
+  then c0 else
+  char(sint('a')+(sint(c0)-sint('A')))
+  )
+) (* end of [char_lower] *)
+
+#impltmp
+<>(*tmp*)
+char_upper
+  (c0) =
+(
+  if
+  (c0 < 'a')
+  then c0 else
+  (
+  if
+  (c0 > 'z')
+  then c0 else
+  char(sint('A')+(sint(c0)-sint('a')))
+  )
+) (* end of [char_upper] *)
+
 (* ****** ****** *)
 //
 // HX:
@@ -72,13 +111,27 @@ bool_ifval
 // some g-operations
 //
 (* ****** ****** *)
+
 #impltmp
-g_eqref<bool> = g_equal<bool>
-#impltmp
-g_neqrf<bool> = g_noteq<bool>
-(* ****** ****** *)
-#impltmp
-g_print<bool> = bool_print< >
+g_cmp<char> = char_cmp<>
+
 (* ****** ****** *)
 
-(* end of [prelude_bool.dats] *)
+#impltmp
+g_equal<char> = char_equal<>
+#impltmp
+g_noteq<char> = char_noteq<>
+
+(* ****** ****** *)
+#impltmp
+g_eqref<char> = g_equal<char>
+#impltmp
+g_neqrf<char> = g_noteq<char>
+(* ****** ****** *)
+
+#impltmp
+g_print<char> = char_print< >
+
+(* ****** ****** *)
+
+(* end of [prelude_char000.dats] *)

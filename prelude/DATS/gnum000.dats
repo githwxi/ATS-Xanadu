@@ -80,4 +80,4 @@ gl_mod11<a>(x, y) = g_mod<a>(x, y)
 
 (* ****** ****** *)
 
-(* end of [prelude_gnum.dats] *)
+(* end of [prelude_gnum000.dats] *)

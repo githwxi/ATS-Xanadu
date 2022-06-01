@@ -32,4 +32,4 @@ gseq_memberq<xs><x0>(xs, x0)
 
 (* ****** ****** *)
 
-(* end of [prelude_gfun.dats] *)
+(* end of [prelude_gfun000.dats] *)

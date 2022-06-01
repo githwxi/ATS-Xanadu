@@ -528,131 +528,87 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gbas.sats")
+, "prelude/SATS/gbas000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gnum.sats")
+, "prelude/SATS/gnum000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gord.sats")
+, "prelude/SATS/gord000.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gfor.sats")
+, "prelude/SATS/gfor000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gfun.sats")
+, "prelude/SATS/gfun000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gseq.sats")
+, "prelude/SATS/gseq000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gmap.sats")
+, "prelude/SATS/gmap000.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/bool.sats")
+, "prelude/SATS/bool000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/char.sats")
+, "prelude/SATS/char000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gint.sats")
+, "prelude/SATS/gint000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gflt.sats")
+, "prelude/SATS/gflt000.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/optn.sats")
+, "prelude/SATS/optn000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/list.sats")
+, "prelude/SATS/list000.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/array.sats")
+, "prelude/SATS/arrn000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/string.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/stream.sats")
-//
-// HX: for linear stuff
+, "prelude/SATS/string0.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gseq_vt.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/optn_vt.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/list_vt.sats")
-//
-(*
-//
-// HX: array contains array_vt
-// HX: string contains string_vt
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/array_vt.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/string_vt.sats")
-*)
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/stream_vt.sats")
-//
-(* ****** ****** *)
+, "prelude/SATS/stream0.sats")
 //
 (*
 HX-2020-10-31:
@@ -662,10 +618,53 @@ externally for template resolution!
 //
 val () =
 the_prelude_load
-  ( XATSENV
-  , 1(*dynamic*)
-  , "prelude/DATS/synougat.dats")
+( XATSENV
+, 1(*dynamic*)
+, "prelude/DATS/synoug0.dats")
 // the_prelude_load
+//
+(* ****** ****** *)
+//
+// HX: for linear stuff
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/gseq000_vt.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/optn000_vt.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/list000_vt.sats")
+//
+(*
+//
+// HX: array contains arrn000_vt
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/arrn000_vt.sats")
+*)
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/string0_vt.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/stream0_vt.sats")
 //
 (* ****** ****** *)
 //
