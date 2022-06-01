@@ -81,7 +81,7 @@ _(*TMP*) =
 (* ****** ****** *)
 //
 #staload
-"./../UTIL/SATS/mylibc.sats"
+"./../UTIL/SATS/mylibc0.sats"
 //
 (* ****** ****** *)
 //

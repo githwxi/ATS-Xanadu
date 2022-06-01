@@ -41,15 +41,16 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
+"./../../SATS/mylibc0.sats"
+//
+(* ****** ****** *)
+//
+#staload
 "libats/libc/SATS/string.sats"
 #staload
 "libats/libc/SATS/unistd.sats"
 #staload
 "libats/libc/SATS/sys/stat.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../../SATS/mylibc.sats"
 //
 (* ****** ****** *)
 //
