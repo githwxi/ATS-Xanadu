@@ -8,9 +8,8 @@ HX: for pure C-arrays
 "./../SATS/array.sats"
 *)
 (* ****** ****** *)
-#staload
-UN =
-"prelude/SATS/unsafe.sats"
+#staload UN =
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 (*

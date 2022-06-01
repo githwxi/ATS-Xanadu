@@ -5,11 +5,11 @@ Basics for Xinterp
 (* ****** ****** *)
 #staload
 UN = // for casting
-"prelude/SATS/unsafe.sats"
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
-//
-// prelude/bool.sats
-//
+(*
+//HX: prelude/bool000.sats
+*)
 (* ****** ****** *)
 //
 #extern
@@ -784,4 +784,4 @@ XINTERP_a1ptr_set_at_raw{a}(A0, i0, x0)
 //
 (* ****** ****** *)
 
-(* end of [XINTERP_basics.dats] *)
+(* end of [prelude_DATS_CATS_Xint_basics0.dats] *)

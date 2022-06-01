@@ -101,4 +101,4 @@ XATS2JS_the_print_store = []; return;
 
 /* ****** ****** */
 
-/* end of [XATS2JS_g_print.cats] */
+/* end of [prelude_DATS_CATS_JS_g_print.cats] */

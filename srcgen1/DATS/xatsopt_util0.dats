@@ -602,7 +602,7 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/string0.sats")
+, "prelude/SATS/strn000.sats")
 //
 val () =
 the_prelude_load
@@ -658,7 +658,7 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/string0_vt.sats")
+, "prelude/SATS/VT/strn000_vt.sats")
 //
 val () =
 the_prelude_load

@@ -19,4 +19,4 @@ XATS2JS_g_neqrf
 
 /* ****** ****** */
 
-/* end of [XATS2JS_g_eqref.cats] */
+/* end of [prelude_DATS_CATS_JS_g_eqref.cats] */

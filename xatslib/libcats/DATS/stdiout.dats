@@ -38,7 +38,7 @@
 (* ****** ****** *)
 #staload
 "xatslib\
-/libc/SATS/libcats.sats"
+/libcats/SATS/libcats.sats"
 (* ****** ****** *)
 
 #extern

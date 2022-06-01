@@ -39,11 +39,8 @@
 *)
 
 (* ****** ****** *)
-
-#staload
-UN =
-"prelude/SATS/unsafe.sats"
-
+#staload UN =
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 #impltmp<>
@@ -62,12 +59,10 @@ string_vt_make_list_vt<>
 
 #impltmp<>
 string_nilq(cs) =
-char_eqzq
-(string_head_opt(cs))
+char_eqzq(string_head_opt(cs))
 #impltmp<>
 string_consq(cs) =
-char_neqzq
-(string_head_opt(cs))
+char_neqzq(string_head_opt(cs))
 
 (* ****** ****** *)
 

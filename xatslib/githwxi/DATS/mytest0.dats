@@ -26,11 +26,9 @@
 *)
 
 (* ****** ****** *)
-
-#staload
+#staload RAND =
 "xatslib\
-/libc/DATS/rand.dats"
-
+/libcats/DATS/rand000.dats"
 (* ****** ****** *)
 
 #extern
@@ -54,7 +52,7 @@ mytest_arg
 ( arg ) where
 {
 val
-arg = g_rand<a0>()
+arg = $RAND.g_rand<a0>()
 //
 (*
 val () =
