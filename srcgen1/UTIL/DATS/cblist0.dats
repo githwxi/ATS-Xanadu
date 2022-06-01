@@ -38,7 +38,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 
-#staload "./../SATS/cblist.sats"
+#staload "./../SATS/cblist0.sats"
 
 (* ****** ****** *)
 //
@@ -65,8 +65,11 @@ loop
 (cbs: cblist, res: Nat): Nat =
 (
 case+ cbs of
-| cblist_nil() => res
-| cblist_cons(_, _, cbs) => loop(cbs, res+1)
+|
+cblist_nil() => res
+|
+cblist_cons
+(_, _, cbs) => loop(cbs, res+1)
 )
 //
 } (* end of [cblist_length] *)
@@ -76,7 +79,9 @@ case+ cbs of
 implement
 cblist_vt_length
   (cbs) =
-  cblist_length($UN.castvwtp1{cblist}(cbs))
+(
+cblist_length($UN.castvwtp1{cblist}(cbs))
+) (* end of [cblist_vt_length] *)
 //
 (* ****** ****** *)
 
@@ -91,11 +96,13 @@ loop
 (cbs: cblist): void =
 (
 case+ cbs of
-| cblist_nil() => ()
-| cblist_cons(n, cs, cbs) =>
-  (
-    cblist_foreach$fwork<>(n, cs); loop(cbs)
-  )
+|
+cblist_nil() => ()
+|
+cblist_cons(n, cs, cbs) =>
+(
+cblist_foreach$fwork<>(n, cs); loop(cbs)
+)
 )
 //
 } (* end of [cblist_foreach] *)
