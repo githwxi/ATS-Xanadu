@@ -29,4 +29,4 @@ XATS2CC_matcherr0()
 }
 /* ****** ****** */
 
-/* end of [XATS2CC_runtime.cats] */
+/* end of [prelude_DATS_CATS_CC_runtime.cats] */

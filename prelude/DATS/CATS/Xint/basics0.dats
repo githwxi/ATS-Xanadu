@@ -18,7 +18,7 @@ XINTERP_bool_neg
 {b0:bool}
 ( b0
 : bool(b0)): bool(~b0)
-= $exname()
+= $exname((*self*))
 (*
 #exname
 XINTERP_bool_neg = _

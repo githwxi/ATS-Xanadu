@@ -881,4 +881,4 @@ XATS2CC_string_vt_forall_cfr
 end // end of [string_vt_forall1]
 (* ****** ****** *)
 
-(* end of [XATS2CC_basics.dats] *)
+(* end of [prelude_DATS_CATS_CC_basics0.dats] *)

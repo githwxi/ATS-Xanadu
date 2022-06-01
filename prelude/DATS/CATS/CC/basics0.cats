@@ -673,4 +673,4 @@ return strcmp(x1, x2); // string.h
 }
 /* ****** ****** */
 
-/* end of [XATS2CC_basics.cats] */
+/* end of [prelude_DATS_CATS_CC_basics0.cats] */
