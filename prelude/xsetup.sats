@@ -106,4 +106,4 @@ the_a0p1tr_cview(*void*) = a0ptr_view
 //
 (* ****** ****** *)
 
-(* end of [xsetup.sats] *)
+(* end of [ATS3/XANADU_xsetup.sats] *)

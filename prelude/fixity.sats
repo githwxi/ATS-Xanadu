@@ -44,11 +44,11 @@ fixity declarations
 (* ****** ****** *)
 
 #if
-VERBOSE_FIXITY
+VERBOSE_FIXITY0
 #then
 #print \
-"Loading [fixity.ats] starts!\n"
-#endif // end of [VERBOSE_FIXITY]
+"Loading [fixity.sats] starts!\n"
+#endif // end of [VERBOSE_FIXITY0]
 
 (* ****** ****** *)
 
@@ -170,12 +170,12 @@ app of 70 // app_prcdv
 (* ****** ****** *)
 
 #if
-VERBOSE_FIXITY
+VERBOSE_FIXITY0
 #then
 #print \
-"Loading [fixity.ats] is done!\n"
-#endif // end of [VERBOSE_FIXITY]
+"Loading [fixity.sats] is done!\n"
+#endif // end of [VERBOSE_FIXITY0]
 
 (* ****** ****** *)
 
-(* end of [fixity.sats] *)
+(* end of [ATS3/XANADU_fixity.sats] *)

@@ -1055,4 +1055,4 @@ streaq_vt(a:vwtp, n:int) = lazy_vt(strqcon_vt(a, n))
 } (* where *) // end of [strqcon_vt]
 (* ****** ****** *)
 
-(* end of [basics.sats] *)
+(* end of [ATS3/XANADU_basics.sats] *)
