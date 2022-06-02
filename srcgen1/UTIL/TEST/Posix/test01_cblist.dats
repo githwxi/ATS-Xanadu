@@ -11,23 +11,25 @@
 (* ****** ****** *)
 //
 #staload
-"./../../SATS/cblist.sats"
+"./../../SATS/cblist0.sats"
 #staload
-"./../../SATS/Posix/cblist.sats"
+"./../../SATS/Posix/cblist0.sats"
 //
-#staload
-"./../../DATS/cblist.dats"
-#staload
-"./../../DATS/Posix/cblist.dats"
+#staload _ =
+"./../../DATS/cblist0.dats"
+#staload _ =
+"./../../DATS/Posix/cblist0.dats"
 //
 (* ****** ****** *)
 
 local
 //
-#include "./../../DATS/cblist.dats"
-#include "./../../DATS/Posix/cblist.dats"
+#include
+"./../../DATS/cblist0.dats"
+#include
+"./../../DATS/Posix/cblist0.dats"
 //
-in
+in//local
   // nothing
 end // end of [local]
 

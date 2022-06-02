@@ -15,16 +15,13 @@ all::
 ######
 
 all:: \
-cblist
+test01_cblist
 
-cblist: \
-cblist_dats
-cblist_dats: \
-cblist.dats; $(MYATSCC) $<
-regress:: \
-cblist_dats; ./cblist_dats
-cleanall:: ; $(RMF) cblist_dats
-
+test01_cblist: \
+test01_cblist_dats
+test01_cblist_dats: \
+test01_cblist.dats; $(MYATSCC) $<
+regress:: test01_cblist_dats; ./@
 ######
 
 testall:: all
@@ -34,6 +31,10 @@ testall:: cleanall
 ######
 
 RMF=rm -f
+
+######
+
+cleanall:: ; $(RMF) test01_cblist_dats
 
 ######
 
