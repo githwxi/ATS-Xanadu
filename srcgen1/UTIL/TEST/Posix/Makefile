@@ -15,27 +15,29 @@ all::
 ######
 
 all:: \
-test_cblist
+test01_cblist
+all:: \
+test02_mylibc
 
 ######
 
-test_cblist: \
-test_cblist_dats
-test_cblist_dats: \
-test_cblist.dats; $(MYATSCC) $<
+test01_cblist: \
+test01_cblist_dats
+test01_cblist_dats: \
+test01_cblist.dats; $(MYATSCC) $<
 regress:: \
-test_cblist_dats; ./test_cblist_dats
-cleanall:: ; $(RMF) test_cblist_dats
+test01_cblist_dats; ./@
+cleanall:: ; $(RMF) test01_cblist_dats
 
 ######
 
-test_mylibc: \
-test_mylibc_dats
-test_mylibc_dats: \
-test_mylibc.dats; $(MYATSCC) $<
+test02_mylibc: \
+test02_mylibc_dats
+test02_mylibc_dats: \
+test02_mylibc.dats; $(MYATSCC) $<
 regress:: \
-test_mylibc_dats; ./test_mylibc_dats
-cleanall:: ; $(RMF) test_mylibc_dats
+test02_mylibc_dats; ./@
+cleanall:: ; $(RMF) test02_mylibc_dats
 
 ######
 

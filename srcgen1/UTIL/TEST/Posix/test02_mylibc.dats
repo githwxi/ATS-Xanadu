@@ -11,15 +11,16 @@
 (* ****** ****** *)
 //
 #staload
-"./../../SATS/mylibc.sats"
+"./../../SATS/mylibc0.sats"
 //
 (* ****** ****** *)
 
 local
 //
-#include "./../../DATS/Posix/mylibc.dats"
+#include
+"./../../DATS/Posix/mylibc0.dats"
 //
-in
+in//local
   // nothing
 end // end of [local]
 

@@ -9,22 +9,23 @@
 "share/atspre_staload.hats"
 //
 (* ****** ****** *)
+#staload _ =
+"./../DATS/cblist0.dats"
+(* ****** ****** *)
 //
 #staload
-"./../SATS/cblist.sats"
+"./../SATS/cblist0.sats"
 #staload
-"./../SATS/Posix/cblist.sats"
-//
-#staload
-"./../DATS/cblist.dats"
+"./../SATS/Posix/cblist0.sats"
 //
 (* ****** ****** *)
 
 local
 //
-#include "./../DATS/cblist.dats"
+#include
+"./../DATS/cblist0.dats"
 //
-in
+in//local
   // nothing
 end // end of [local]
 //
@@ -67,4 +68,4 @@ assertloc(char2uchar0(g0ofg1('O')) = cs[4])
 
 (* ****** ****** *)
 
-(* end of [test_cblist.dats] *)
+(* end of [test_cblist0.dats] *)
