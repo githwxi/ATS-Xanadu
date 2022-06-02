@@ -95,10 +95,10 @@ end (* end of [a0ref_print] *)
 //
 #impltmp
 <>(*tmp*)
-a0ref_print$beg() = string_print("[")
+a0ref_print$beg() = strn_print("[")
 #impltmp
 <>(*tmp*)
-a0ref_print$end() = string_print("]")
+a0ref_print$end() = strn_print("]")
 //
 (* ****** ****** *)
 #impltmp
@@ -108,10 +108,10 @@ g_print<a0ref(a)> = a0ref_print<a>
 //
 #impltmp
 <>(*tmp*)
-a0ptr_print$beg() = string_print("[")
+a0ptr_print$beg() = strn_print("[")
 #impltmp
 <>(*tmp*)
-a0ptr_print$end() = string_print("]")
+a0ptr_print$end() = strn_print("]")
 //
 (* ****** ****** *)
 #impltmp
@@ -262,13 +262,13 @@ end // end of [a1ptr_make_list_vt]
 //
 #impltmp
 <>(*tmp*)
-a1ref_print$beg() = string_print("[")
+a1ref_print$beg() = strn_print("[")
 #impltmp
 <>(*tmp*)
-a1ref_print$end() = string_print("]")
+a1ref_print$end() = strn_print("]")
 #impltmp
 <>(*tmp*)
-a1ref_print$sep() = string_print(";")
+a1ref_print$sep() = strn_print(";")
 //
 (* ****** ****** *)
 //
@@ -349,7 +349,7 @@ end // end of [a1ref_rlistize]
 
 #impltmp
 <a:vt>
-a1ref_streamize
+a1ref_strmize
   {n}(A0) =
 (
   auxmain(0(*i0*))
@@ -363,7 +363,7 @@ fun
 auxmain
 {i:nat
 |i<=n}
-(i0: sint(i)): stream_vt(a) =
+(i0: sint(i)): strm_vt(a) =
 $llazy
 (
 if
@@ -374,7 +374,7 @@ else
 strmcon_vt_cons
 (get_at(A0, i0), auxmain(succ(i0)))
 ) (* end of [auxmain] *)
-} (* end of [a1ref_streamize] *)
+} (*where*) // end-of(a1ref_strmize)
 
 (* ****** ****** *)
 //

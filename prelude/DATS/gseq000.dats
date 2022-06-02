@@ -193,13 +193,13 @@ endlet (* end of [gseq_print] *)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_print$beg() = string_print("(")
+gseq_print$beg() = strn_print("(")
 #impltmp
 <xs><x0>
-gseq_print$end() = string_print(")")
+gseq_print$end() = strn_print(")")
 #impltmp
 <xs><x0>
-gseq_print$sep() = string_print(";")
+gseq_print$sep() = strn_print(";")
 (* ****** ****** *)
 
 #impltmp
@@ -326,12 +326,12 @@ end // end of [else]
 <xs><x0>
 gseq_forall
   (xs) =
-stream_vt_forall0<x0>
-(gseq_streamize<xs><x0>(xs)) where
+strm_vt_forall0<x0>
+(gseq_strmize<xs><x0>(xs)) where
 {
   #impltmp
   forall0$test<x0> = forall$test<x0>
-} (* end of [gseq_forall/streamize] *)
+} (* end of [gseq_forall/strmize] *)
 //
 (* ****** ****** *)
 
@@ -515,10 +515,10 @@ gseq_fset_at
   (xs, i0, x0) =
 let
   val xs =
-  gseq_streamize<xs><x0>(xs)
+  gseq_strmize<xs><x0>(xs)
 in
-  gseq_unstream_vt
-  (stream_vt_fset_at<x0>(xs, i0, x0))
+  gseq_unstrm_vt
+  (strm_vt_fset_at<x0>(xs, i0, x0))
 end (*let*) // end of [gseq_fset_at]
 //
 (* ****** ****** *)
@@ -596,13 +596,13 @@ This is not very useful!
 //
 #impltmp
 <xs><x0>
-gseq_streamize
+gseq_strmize
   (xs) =
 ( auxseq(xs) ) where
 {
 fun
 auxseq
-(xs: xs): stream_vt(x0) =
+(xs: xs): strm_vt(x0) =
   $llazy
 (
 if
@@ -618,7 +618,7 @@ in
 strmcon_vt_cons(x0, auxseq(xs))
 end // end of [else]
 ) (* end of [auxseq] *)
-} (* end of [gseq_streamize] *)
+}(*where*)//end-of(gseq_strmize)
 *)
 
 (* ****** ****** *)
@@ -651,7 +651,7 @@ gseq_unlist_vt(xx) =
 let
 //
 val xx =
-list_vt_reverse<x0>(xx)
+list_vt_reverse0<x0>(xx)
 //
 in
   gseq_unrlist_vt<xs><x0>(xx)
@@ -683,14 +683,14 @@ end // end of [gseq_unrlist_vt]
 
 #impltmp
 <xs><x0>
-gseq_unstream_vt
+gseq_unstrm_vt
   (xx) =
 (
   gseq_unrlist_vt<xs><x0>(xs)
 ) where
 {
-val xs = stream_vt_rlistize<x0>(xx)
-} // end of [gseq_unstream_vt]
+val xs = strm_vt_rlistize<x0>(xx)
+}(*where*)//end-of(gseq_unstrm_vt)
 
 (* ****** ****** *)
 //
@@ -751,46 +751,45 @@ foldl$fopr
 list_vt_cons(map$fopr<x0><y0>(x0), r0)
 }
 //
-end // end of [gseq_map_rlist/foldl]
+end // end-of(gseq_map_rlist/foldl)
 
 (* ****** ****** *)
 
 #impltmp
 <xs><x0><y0>
-gseq_map_stream(xs) =
+gseq_map_strm(xs) =
 let
 val xs =
-gseq_streamize<xs><x0>(xs)
+gseq_strmize<xs><x0>(xs)
 in(*in-of-let*)
 (
-stream_vt_map0<x0><y0>(xs)
+strm_vt_map0<x0><y0>(xs)
 ) where
 {
 #impltmp
 map0$fopr<x0><y0> = map$fopr<x0><y0>
 }
-end // end of
-// [gseq_map_stream/streamize]
+end // end-of(gseq_map_strm/strmize)
 
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0><y0>
 gseq_mapopt_list(xs) =
-stream_vt_listize
-(gseq_mapopt_stream(xs))
+strm_vt_listize
+(gseq_mapopt_strm(xs))
 #impltmp
 <xs><x0><y0>
 gseq_mapopt_rlist(xs) =
-stream_vt_rlistize
-(gseq_mapopt_stream(xs))
+strm_vt_rlistize
+(gseq_mapopt_strm(xs))
 //
 #impltmp
 <xs><x0><y0>
-gseq_mapopt_stream(xs) =
+gseq_mapopt_strm(xs) =
 let
 val xs =
-gseq_streamize<xs><x0>(xs)
+gseq_strmize<xs><x0>(xs)
 in(*in-of-let*)
 let
 #impltmp
@@ -799,10 +798,10 @@ map0$fopr
 #impltmp
 filter1$test<x0> = filter$test<x0>
 in
-  stream_vt_mapopt0<x0><y0>(xs)
+  strm_vt_mapopt0<x0><y0>(xs)
 end
-end // end of
-// [gseq_mapopt_stream/streamize]
+end // end-of(impltmp)
+// end-of(gseq_mapopt_strm/strmize)
 //
 (* ****** ****** *)
 //
@@ -889,22 +888,22 @@ gseq_foldl
   then list_vt_cons(x0, r0) else r0
 }
 //
-end // end of [gseq_filter_rlist/foldl]
+end//end-of(gseq_filter_rlist/foldl)
 
 (* ****** ****** *)
 
 #impltmp
 <xs><x0>
-gseq_filter_stream
+gseq_filter_strm
   (xs) =
 (
-stream_vt_filter0
-(gseq_streamize<xs><x0>(xs))
+strm_vt_filter0
+(gseq_strmize<xs><x0>(xs))
 ) where
 {
 #impltmp
 filter0$test<x0> = filter$test<x0>
-} (* end of [gseq_filter_stream] *)
+}(*where*)//end of(gseq_filter_strm)
 
 (* ****** ****** *)
 //
@@ -1073,10 +1072,10 @@ end // end of [gseq_min2/foldl]
 gseq_sortedq(xs) =
 let
 val xs =
-gseq_streamize<xs><x0>(xs)
+gseq_strmize<xs><x0>(xs)
 in
-  stream_vt_sortedq<x0>(xs)
-end // end of [gseq_sortedq]
+  strm_vt_sortedq<x0>(xs)
+end(*let*)//end-of(gseq_sortedq)
 
 (* ****** ****** *)
 
@@ -1202,15 +1201,15 @@ gseq_listize<xs><x0>(ys)
 //
 in
 gseq_unlist_vt<xs><x0>
-(list_vt_append<x0>(xs, ys))
+(list_vt_append0<x0>(xs, ys))
 end (* end of [gseq_append] *)
 //
 #impltmp
 <xz><xs><x0>
 gseq_concat(xss) =
-gseq_unstream_vt<xs><x0>
+gseq_unstrm_vt<xs><x0>
 (
-gseq_concat_stream<xz><xs><x0>(xss)
+gseq_concat_strm<xz><xs><x0>(xss)
 )
 //
 (* ****** ****** *)
@@ -1244,61 +1243,61 @@ end
 //
 #impltmp
 <xs><x0>
-gseq_append_stream
+gseq_append_strm
   (xs1, xs2) = let
 //
 val
 xs1 =
-gseq_streamize<xs><x0>(xs1)
+gseq_strmize<xs><x0>(xs1)
 val
 xs2 =
-gseq_streamize<xs><x0>(xs2)
+gseq_strmize<xs><x0>(xs2)
 //
 in
-stream_vt_append<x0>(xs1, xs2)
-end // gseq_append_stream
+  strm_vt_append<x0>(xs1, xs2)
+end // end-of [gseq_append_strm]
 //
 (* ****** ****** *)
 //
 #impltmp
 <cz>(*tmp*)
-gseq_concat_string
+gseq_concat_strn
   (css) = let
 //
 #typedef c0 = cgtz
-#typedef cs = string
+#typedef cs = strn
 //
 val css =
-gseq_streamize<cz><cs>(css)
+gseq_strmize<cz><cs>(css)
 //
 in
-string_vt_make_stream_vt<>
-(stream_vt_gconcat<cs><c0>(css))
-end // end of [gseq_concat_string]
+strn_vt_make_strm_vt<>
+(strm_vt_gconcat<cs><c0>(css))
+end // end of [gseq_concat_strn]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xz><xs><x0>
-gseq_concat_stream
+gseq_concat_strm
   (xss) = let
 //
 #vwtpdef
-ys = stream_vt(x0)
+ys = strm_vt(x0)
 //
 val
 xss =
 let
 #impltmp
 map$fopr<xs><ys> =
-gseq_streamize<xs><x0>
+gseq_strmize<xs><x0>
 in
-gseq_map_stream<xz><xs>(xss)
+gseq_map_strm<xz><xs>(xss)
 end
 //
 in
-  stream_vt_concat<x0>(  xss  )
-end // end of [gseq_concat_stream]
+  strm_vt_concat<x0>(  xss  )
+end // end of [gseq_concat_strm]
 //
 (* ****** ****** *)
 //
@@ -1307,13 +1306,13 @@ end // end of [gseq_concat_stream]
 gseq_prefixq
 ( xs1, xs2 ) =
 (
-stream_vt_prefixq(xs1, xs2)
+strm_vt_prefixq(xs1, xs2)
 ) where
 {
 val xs1 =
-gseq_streamize<xs><x0>(xs1)
+gseq_strmize<xs><x0>(xs1)
 and xs2 =
-gseq_streamize<xs><x0>(xs2)
+gseq_strmize<xs><x0>(xs2)
 } (* end of [gseq_prefixq] *)
 //
 #impltmp
@@ -1321,7 +1320,7 @@ gseq_streamize<xs><x0>(xs2)
 gseq_suffixq
 ( xs1, xs2 ) =
 (
-list_vt_suffixq00(xs1, xs2)
+list_vt_suffixq0(xs1, xs2)
 ) where
 {
 val xs1 =
@@ -1338,7 +1337,7 @@ gseq_group
 (  xs  ) =
 (
 (
-stream_vt_map0<r0>(xz)
+strm_vt_map0<r0>(xz)
 ) where
 {
 #impltmp
@@ -1360,10 +1359,10 @@ gseq_group_list
 (  xs  ) =
 let
 val xs =
-gseq_streamize<xs><x0>(xs)
+gseq_strmize<xs><x0>(xs)
 in
 (
-stream_vt_group_list<x0>(xs)
+strm_vt_group0_list<x0>(xs)
 ) where
 {
 #impltmp
@@ -1631,43 +1630,42 @@ ifoldl$fopr
  <x0><r0>
 ( r0, i0, x0 ) =
 list_vt_cons
-  ( imap$fopr<x0><y0>(i0, x0), r0 )
+( imap$fopr<x0><y0>(i0, x0), r0 )
 // list_vt_cons
 }
 //
-end // end of [gseq_imap_rlist/ifoldl]
+end//end-of(gseq_imap_rlist/ifoldl)
 
 (* ****** ****** *)
 
 #impltmp
 <xs><x0><y0>
-gseq_imap_stream(xs) =
+gseq_imap_strm(xs) =
 let
 val xs =
-gseq_streamize<xs><x0>(xs)
+gseq_strmize<xs><x0>(xs)
 in(*in-of-let*)
 (
-stream_vt_imap0<x0><y0>(xs)
+strm_vt_imap0<x0><y0>(xs)
 ) where
 {
 #impltmp
 imap0$fopr
 <x0><y0> = imap$fopr<x0><y0>
 }
-end // end of
-// [gseq_imap_stream/streamize]
+end//end-of(gseq_imap_strm/strmize)
 
 (* ****** ****** *)
 
 #impltmp
 <xs><x0><y0>
-gseq_imapopt_stream(xs) =
+gseq_imapopt_strm(xs) =
 let
 val xs =
-gseq_streamize<xs><x0>(xs)
+gseq_strmize<xs><x0>(xs)
 in(*in-of-let*)
 (
-stream_vt_imapopt0<x0><y0>(xs)
+strm_vt_imapopt0<x0><y0>(xs)
 ) where
 {
 #impltmp
@@ -1676,19 +1674,18 @@ imap0$fopr
 #impltmp
 ifilter1$test<x0> = ifilter$test<x0>
 }
-end // end of
-// [gseq_imap_stream/streamize]
+end//end-of(gseq_imap_strm/strmize)
 
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_istreamize
+gseq_istrmize
   ( xs ) =
 (
-  stream_vt_istreamize
-  (gseq_streamize<xs><x0>(xs))
-)
+  strm_vt_istrmize
+  ( gseq_strmize<xs><x0>(xs) )
+) (* end of [gseq_istrmize] *)
 //
 (* ****** ****** *)
 //
@@ -1715,7 +1712,7 @@ gseq_mergesort_list<xs><x0>(xs)
 gseq_mergesort_list
   (xs) =
 (
-  list_vt_mergesort<x0>(xx)
+  list_vt_mergesort0<x0>(xx)
 ) where
 {
 val xx = gseq_listize<xs><x0>(xs)
@@ -1731,13 +1728,13 @@ gseq_permutize
 val y0 =
 gseq_listize<xs><x0>(xs)
 val ys =
-list_vt_permutize<x0>(y0)
+list_vt_permutize0<x0>(y0)
 //
 #typedef y0 = list_vt(x0)
 //
 in
 (
-  stream_vt_map0<y0><xs>(ys)
+  strm_vt_map0<y0><xs>(ys)
 ) where
 {
 #impltmp
@@ -1759,24 +1756,24 @@ gseq_z2listize
 let
 val
 xys =
-gseq_z2streamize
+gseq_z2strmize
 <xs,ys><x0,y0>(xs, ys)
 in
-stream_vt_listize<(x0,y0)>(xys)
+strm_vt_listize<(x0,y0)>(xys)
 end
 //
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_z2streamize
+gseq_z2strmize
   (xs, ys) =
 let
 val xs =
-gseq_streamize<xs><x0>(xs)
+gseq_strmize<xs><x0>(xs)
 val ys =
-gseq_streamize<ys><y0>(ys)
+gseq_strmize<ys><y0>(ys)
 in
-stream_vt_z2streamize<x0,y0>(xs, ys)
+strm_vt_z2strmize<x0,y0>(xs, ys)
 end
 //
 (* ****** ****** *)
@@ -1822,11 +1819,11 @@ end // end of [z2foreach$work]
 gseq_z2forall
   (xs, ys) =
 (
-stream_vt_z2forall0<x0,y0>
+strm_vt_z2forall0<x0,y0>
 (
-  gseq_streamize<xs><x0>(xs)
+  gseq_strmize<xs><x0>(xs)
 ,
-  gseq_streamize<ys><y0>(ys))
+  gseq_strmize<ys><y0>(ys))
 ) where
 {
 #impltmp
@@ -1841,11 +1838,11 @@ z2forall0$test<x0,y0> = z2forall$test<x0,y0>
 gseq_z2forcmp
   (xs, ys) =
 (
-stream_vt_z2forcmp0<x0,y0>
+strm_vt_z2forcmp0<x0,y0>
 (
-  gseq_streamize<xs><x0>(xs)
+  gseq_strmize<xs><x0>(xs)
 ,
-  gseq_streamize<ys><y0>(ys))
+  gseq_strmize<ys><y0>(ys))
 ) where
 {
 #impltmp
@@ -1928,15 +1925,15 @@ end // end of [gseq_z2map_list/z2foldl]
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2map_stream
+gseq_x2map_strm
   (xs, ys) =
 (
-stream_vt_concat<z0>(zss)
+strm_vt_concat<z0>(zss)
 ) where
 {
 //
 #vwtpdef
-zs = stream_vt(z0)
+zs = strm_vt(z0)
 //
 val
 zss =
@@ -1949,29 +1946,29 @@ let
 map$fopr<y0><z0>(y0) =
 x2map$fopr<x0,y0>(x0, y0)
 in
-gseq_map_stream<ys><y0><z0>(ys)
+gseq_map_strm<ys><y0><z0>(ys)
 end
 //
 in
-gseq_map_stream<xs><x0><zs>(xs)
+gseq_map_strm<xs><x0><zs>(xs)
 end
 //
-} (* end of [gseq_x2map_stream] *)
+} (* end of [gseq_x2map_strm] *)
 
 (* ****** ****** *)
 
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2mapopt_stream
+gseq_x2mapopt_strm
   (xs, ys) =
 (
-stream_vt_concat<z0>(zss)
+strm_vt_concat<z0>(zss)
 ) where
 {
 //
 #vwtpdef
-zs = stream_vt(z0)
+zs = strm_vt(z0)
 //
 val
 zss =
@@ -1988,28 +1985,28 @@ x2map$fopr<x0,y0>(x0, y0)
 filter$test<y0>(y0) =
 x2filter$test<x0,y0>(x0, y0)
 in
-gseq_mapopt_stream<ys><y0><z0>(ys)
+gseq_mapopt_strm<ys><y0><z0>(ys)
 end
 //
 in
-  gseq_map_stream<xs><x0><zs>( xs )
-end
+  gseq_map_strm<xs><x0><zs>( xs )
+end (*let*) // end-of[map$fopr]
 //
-} (* end of [gseq_x2mapopt_stream] *)
+} (* end of [gseq_x2mapopt_strm] *)
 
 (* ****** ****** *)
 
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_x2streamize
+gseq_x2strmize
   (xs, ys) =
 let
 #impltmp
 x2map$fopr<x0,y0>(x0, y0) = (x0, y0)
 in
-gseq_x2map_stream<xs,ys><x0,y0>(xs, ys)
-end // end of [gseq_x2streamize]
+gseq_x2map_strm<xs,ys><x0,y0>(xs, ys)
+end // end of [gseq_x2strmize]
 
 (* ****** ****** *)
 
@@ -2072,15 +2069,15 @@ end (* end of [gseq_x2foreach_col] *)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2imap_stream
+gseq_x2imap_strm
   (xs, ys) =
 (
-stream_vt_concat<z0>(zss)
+strm_vt_concat<z0>(zss)
 ) where
 {
 //
 #vwtpdef
-zs = stream_vt(z0)
+zs = strm_vt(z0)
 //
 val
 zss =
@@ -2092,31 +2089,31 @@ let
 #impltmp
 imap$fopr
 <y0><z0>(j, y0) =
-x2imap$fopr<x0,y0>(i, x0, j, y0)
+x2imap$fopr<x0,y0>(i,x0,j,y0)
 in
-gseq_imap_stream<ys><y0><z0>(ys)
+gseq_imap_strm<ys><y0><z0>(ys)
 end
 //
 in
-  gseq_imap_stream<xs><x0><zs>( xs )
+gseq_imap_strm<xs><x0><zs>( xs )
 end
 //
-} (* end of [gseq_x2imap_stream] *)
+} (* end of [gseq_x2imap_strm] *)
 
 (* ****** ****** *)
 
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2imapopt_stream
+gseq_x2imapopt_strm
   (xs, ys) =
 (
-stream_vt_concat<z0>(zss)
+strm_vt_concat<z0>(zss)
 ) where
 {
 //
 #vwtpdef
-zs = stream_vt(z0)
+zs = strm_vt(z0)
 //
 val
 zss =
@@ -2133,14 +2130,14 @@ x2imap$fopr<x0,y0>(i, x0, j, y0)
 ifilter$test<y0>(j, y0) =
 x2ifilter$test<x0,y0>(i, x0, j, y0)
 in
-gseq_imapopt_stream<ys><y0><z0>(ys)
+gseq_imapopt_strm<ys><y0><z0>(ys)
 end
 //
 in
-  gseq_imap_stream<xs><x0><zs>( xs )
+  gseq_imap_strm<xs><x0><zs>( xs )
 end
 //
-} (* end of [gseq_x2imapopt_stream] *)
+} (* end of [gseq_x2imapopt_strm] *)
 
 (* ****** ****** *)
 

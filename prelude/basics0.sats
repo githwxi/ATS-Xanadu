@@ -1005,7 +1005,14 @@ where
 stream(a:type) = lazy(strmcon(a))
 #typedef
 streax(a:type) = lazy(strxcon(a))
-}
+} (*where*) // [strmcom/strxcom]
+//
+(* ****** ****** *)
+#sexpdef
+strm(*(a,n)*) = stream(* (a,n) *)
+#sexpdef
+strx(*(a,n)*) = streax(* (a,n) *)
+(* ****** ****** *)
 //
 datavwtp
 strmcon_vt(a:vwtp+) =
@@ -1022,17 +1029,17 @@ where
 {
 #vwtpdef
 stream_vt
-( a:vwtp ) = lazy_vt( strmcon_vt(a) )
+(a: vwtp) = lazy_vt( strmcon_vt(a) )
 #vwtpdef
 streax_vt
-( a:vwtp ) = lazy_vt( strxcon_vt(a) )
+(a: vwtp) = lazy_vt( strxcon_vt(a) )
 } (* where *)
 //
 (* ****** ****** *)
 #sexpdef
-strm = stream and strm_vt = stream_vt
+strm_vt(*(a,n)*) = stream_vt(*(a,n)*)
 #sexpdef
-strx = streax and strx_vt = streax_vt
+strx_vt(*(a,n)*) = streax_vt(*(a,n)*)
 (* ****** ****** *)
 //
 (*
@@ -1074,7 +1081,10 @@ streaq_vt
 (a:vwtp,n:int) = lazy_vt(strqcon_vt(a,n))
 } (* where *) // end of [strqcon_vt]
 (* ****** ****** *)
-#sexpdef strq=streaq and strq_vt=streaq_vt
+#sexpdef
+strq(*(a0,ln)*) = streaq(* (a0,ln) *)
+#sexpdef
+strq_vt(*(a0,ln)*) = streaq_vt(*(a0,ln)*)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_basics0.sats] *)

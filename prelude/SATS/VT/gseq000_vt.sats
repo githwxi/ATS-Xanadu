@@ -128,33 +128,22 @@ glseq_drop1
 fun
 <xs:vt>
 <x0:vt>
-glseq_listize0(~xs): list_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-glseq_listize1(!xs): list_vt(x0)
-//
-fun
-<xs:vt>
-<x0:vt>
-glseq_rlistize0(~xs): list_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-glseq_rlistize1(!xs): list_vt(x0)
-//
-(* ****** ****** *)
-//
-(*
+glseq_listize(~xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 glseq_strmize(~xs): strm_vt(x0)
-*)
+//
+(* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>
-glseq_strmize0(~xs): strm_vt(x0)
+glseq_rlistize(~xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+glseq_rstrmize(~xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -172,15 +161,42 @@ glseq_unrlist(xs: list(x0)): (xs)
 fun
 <xs:vt>
 <x0:vt>
-glseq_unlist0_vt(list_vt(x0)): (xs)
+glseq_unlist_vt(list_vt(x0)): (xs)
 fun
 <xs:vt>
 <x0:vt>
-glseq_unstrm0_vt(strm_vt(x0)): (xs)
+glseq_unstrm_vt(strm_vt(x0)): (xs)
 fun
 <xs:vt>
 <x0:vt>
-glseq_unrlist0_vt(list_vt(x0)): (xs)
+glseq_unrlist_vt(list_vt(x0)): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+glseq_append0(xs, xs): xs
+fun
+<xs:vt>
+<x0:vt>
+glseq_extend0(xs, x0): xs
+//
+(* ****** ****** *)
+fun
+<xz:t0>
+<xs:t0>
+<x0:t0>glseq_concat0(xss: xz): xs
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+glseq_reverse0(xs: xs): xs
+fun
+<xs:vt>
+<x0:vt>
+glseq_rappend0(xs1: xs, xs2: xs): xs
 //
 (* ****** ****** *)
 //
@@ -247,23 +263,6 @@ glseq_foreach1(!xs): void
 fun
 <xs:vt>
 <x0:vt>
-glseq_append00
-(xs1: xs, xs2: xs): xs
-//
-fun
-<xs:vt>
-<x0:vt>
-glseq_reverse0(xs: xs): xs
-fun
-<xs:vt>
-<x0:vt>
-glseq_rappend00(xs1: xs, xs2: xs): xs
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
 <y0:vt>
 glseq_map0_list(~xs): list_vt(y0)
 fun
@@ -278,7 +277,41 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
+glseq_map0_strm(~xs): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+glseq_map1_strm(!xs): strm_vt(y0)
+//
+(* ****** ****** *)
+(*
+HX-2022-06-02:
+[copy] is just map1-identity
+[copy_list] is just [listize1]
+[copy_strm] is just [strmize1]
+*)
+fun
+<xs:vt>
+<x0:vt>
+glseq_copy_list(!xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+glseq_copy_strm(!xs): strm_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
 glseq_map0_rlist(~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+glseq_map0_rstrm(~xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
@@ -287,22 +320,33 @@ glseq_map1_rlist(!xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
+(*
+HX-2022-06-02:
+[copy] is just map1-identity
+*)
 fun
 <xs:vt>
 <x0:vt>
-<y0:vt>
-glseq_map0_strm(~xs): strm_vt(y0)
+glseq_copy_rlist(!xs): list_vt(x0)
+//
+(* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 glseq_mapopt0_strm(~xs): strm_vt(y0)
+//
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_maplst0_strm(~xs): strm_vt(y0)
+glseq_maplist0_strm(~xs): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+glseq_mapoptn0_strm(~xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
@@ -354,45 +398,72 @@ glseq_iforeach1(!xs): void
 
 (* ****** ****** *)
 
+#symload length with glseq_length1 of 0100
 #symload length0 with glseq_length0 of 0100
 #symload length1 with glseq_length1 of 0100
 
 (* ****** ****** *)
 
+#symload append with glseq_append0 of 0100
+#symload extend with glseq_extend0 of 0100
+#symload concat with glseq_concat0 of 0100
+#symload append0 with glseq_append0 of 0100
+#symload extend0 with glseq_extend0 of 0100
+#symload concat0 with glseq_concat0 of 0100
+
+(* ****** ****** *)
+
+#symload rappend with glseq_rappend0 of 0100
+#symload reverse with glseq_reverse0 of 0100
+#symload rappend0 with glseq_rappend0 of 0100
+#symload reverse0 with glseq_reverse0 of 0100
+
+(* ****** ****** *)
+
+#symload forall with glseq_forall0 of 0100
 #symload forall0 with glseq_forall0 of 0100
 #symload forall1 with glseq_forall1 of 0100
 
 (* ****** ****** *)
 
+#symload foreach with glseq_foreach0 of 0100
 #symload foreach0 with glseq_foreach0 of 0100
 #symload foreach1 with glseq_foreach1 of 0100
 
 (* ****** ****** *)
 //
-#symload listize with glseq_listize0 of 0100
-#symload strmize with glseq_strmize0 of 0100
-#symload rlistize with glseq_rlistize0 of 0100
-//
-#symload listize0 with glseq_listize0 of 0100
-#symload strmize0 with glseq_strmize0 of 0100
-#symload rlistize0 with glseq_rlistize0 of 0100
+#symload listize with glseq_listize of 0100
+#symload strmize with glseq_strmize of 0100
+#symload rlistize with glseq_rlistize of 0100
+#symload rstrmize with glseq_rstrmize of 0100
 //
 (* ****** ****** *)
 
+#symload iforall with glseq_iforall0 of 0100
 #symload iforall0 with glseq_iforall0 of 0100
 #symload iforall1 with glseq_iforall1 of 0100
 
 (* ****** ****** *)
 
+#symload iforeach with glseq_iforeach0 of 0100
 #symload iforeach0 with glseq_iforeach0 of 0100
 #symload iforeach1 with glseq_iforeach1 of 0100
 
 (* ****** ****** *)
 //
+#symload map_list with glseq_map0_list of 0100
 #symload map0_list with glseq_map0_list of 0100
-#symload map0_strm with glseq_map0_strm of 0100
 #symload map1_list with glseq_map1_list of 0100
 //
+(* ****** ****** *)
+//
+#symload map_strm with glseq_map0_strm of 0100
+#symload map0_strm with glseq_map0_strm of 0100
+#symload map1_strm with glseq_map1_strm of 0100
+//
+(* ****** ****** *)
+//
+#symload map_rlist with glseq_map0_rlist of 0100
 #symload map0_rlist with glseq_map0_rlist of 0100
 #symload map1_rlist with glseq_map1_rlist of 0100
 //

@@ -30,19 +30,27 @@
 // For linear lists
 //
 (* ****** ****** *)
+(*
+HX-2022-06-02:
+Note that verbs of both
+0-tense and 1-tense are
+supported on linear lists.
+*)
+(* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: September, 2019
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: September, 2019
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
-
 (*
 //
 (*
 HX:
 This one is already
-declared in basics.sats
+declared in [basics0.sats]
 *)
 //
 fcast
@@ -121,50 +129,52 @@ list_vt_rcopy
 //
 fun
 <a:vt>
-list_vt_length
-{n:int}
-(xs: !list_vt(a, n)): sint(n)
-fun
-<a:vt>
 list_vt_length0
 {n:int}
 (xs: ~list_vt(a, n)): sint(n)
-//
-(* ****** ****** *)
-//
 fun
 <a:vt>
-list_vt_extend
+list_vt_length1
 {n:int}
-(list_vt(a,n), a): list_vt(a,n+1)
+(xs: !list_vt(a, n)): sint(n)
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
-list_vt_append
+list_vt_extend0
+{n:int}
+(~list_vt(a,n), a): list_vt(a,n+1)
+fun
+<a:vt>
+list_vt_append0
 {m,n:int}
-( list_vt(a, m)
-, list_vt(a, n)): list_vt(a, m+n)
+( ~list_vt(a, m)
+, ~list_vt(a, n)): list_vt(a, m+n)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-list_vt_concat
+list_vt_concat0
 ( xss
-: list_vt(list_vt(a))): list_vt(a)
+: ~list_vt(list_vt(a))): list_vt(a)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-list_vt_reverse
+list_vt_reverse0
 {n:int}
 (xs: list_vt(a, n)): list_vt(a, n)
+//
+(* ****** ****** *)
 fun
 <a:vt>
-list_vt_rappend
+list_vt_rappend0
 {m,n:int}
-( xs: list_vt(a, m)
-, ys: list_vt(a, n)): list_vt(a, m+n)
+( xs: ~list_vt(a, m)
+, ys: ~list_vt(a, n)): list_vt(a, m+n)
 fun
 <a:vt>
 list_vt_rappend10
@@ -182,12 +192,12 @@ list_vt_rappend11
 //
 fun
 <a:vt>
-list_vt_prefixq00
+list_vt_prefixq0
 ( xs1: ~list_vt(a) // xs1: a prefix
 , xs2: ~list_vt(a) ) : bool // of [xs2]
 fun
 <a:vt>
-list_vt_suffixq00
+list_vt_suffixq0
 ( xs1: ~list_vt(a) // [xs1]: a suffix
 , xs2: ~list_vt(a) ) : bool // of [xs2]
 //
@@ -228,12 +238,12 @@ list_vt_foreach1(!list_vt(x0)): void
 //
 fun
 <x0:vt>
-list_vt_listize0
+list_vt_listize
 {n:int}
 (xs: ~list_vt(x0, n)): list_vt(x0, n)
 fun
 <x0:vt>
-list_vt_rlistize0
+list_vt_rlistize
 {n:int}
 (xs: ~list_vt(x0, n)): list_vt(x0, n)
 //
@@ -245,7 +255,7 @@ list_vt_strmize
 ( xs: ~list_vt( x0 ) ): strm_vt( x0 )
 fun
 <x0:vt>
-list_vt_strmize0
+list_vt_rstrmize
 ( xs: ~list_vt( x0 ) ): strm_vt( x0 )
 //
 (* ****** ****** *)
@@ -262,19 +272,19 @@ fun
 list_vt_maprev0
 {n:int}
 (xs: ~list_vt(x0, n)): list_vt(y0, n)
-
-(* ****** ****** *)
-//
-fun
-<a:vt>
-list_vt_mergesort
-{n:int}(~list_vt(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-list_vt_permutize
+list_vt_mergesort0
+{n:int}(~list_vt(a, n)): list_vt(a,n)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+list_vt_permutize0
 {n:int}
 (~list_vt(a,n)): strm_vt(list_vt(a,n))
 //
@@ -294,14 +304,11 @@ cons_vt with list_vt_cons
 //
 #symload
 nilq with list_vt_nilq of 1000
-(*
-#symload
-nilq1 with list_vt_nilq of 1000
-*)
-//
 #symload
 consq with list_vt_consq of 1000
 (*
+#symload
+nilq1 with list_vt_nilq of 1000
 #symload
 consq1 with list_vt_consq of 1000
 *)
@@ -309,76 +316,90 @@ consq1 with list_vt_consq of 1000
 (* ****** ****** *)
 //
 #symload
-length with list_vt_length of 1000
-(*
-#symload
-length1 with list_vt_length of 1000
-*)
+length with list_vt_length1 of 1000
 #symload
 length0 with list_vt_length0 of 1000
-//
-(* ****** ****** *)
-//
-#symload extend with list_vt_extend of 1000
-#symload append with list_vt_append of 1000
-//
-(* ****** ****** *)
-//
-#symload concat with list_vt_concat of 1000
-(*
-#symload concat0 with list_vt_concat of 1000
-*)
-//
-(* ****** ****** *)
-
-#symload reverse with list_vt_reverse of 1000
-#symload rappend with list_vt_rappend of 1000
-
-(* ****** ****** *)
-
 #symload
-prefixq00 with list_vt_prefixq00 of 1000
+length1 with list_vt_length1 of 1000
+//
+(* ****** ****** *)
+//
 #symload
-suffixq00 with list_vt_suffixq00 of 1000
-
+append with list_vt_append0 of 1000
+#symload
+extend with list_vt_extend0 of 1000
+#symload
+concat with list_vt_concat0 of 1000
+//
+#symload
+append0 with list_vt_append0 of 1000
+#symload
+extend0 with list_vt_extend0 of 1000
+#symload
+concat0 with list_vt_concat0 of 1000
+//
+(* ****** ****** *)
+//
+#symload
+reverse with list_vt_reverse0 of 1000
+#symload
+rappend with list_vt_rappend0 of 1000
+#symload
+reverse0 with list_vt_reverse0 of 1000
+#symload
+rappend0 with list_vt_rappend0 of 1000
+//
+#symload
+rappend10 with list_vt_rappend10 of 1000
+#symload
+rappend11 with list_vt_rappend11 of 1000
+//
+(* ****** ****** *)
+//
+#symload
+prefixq with list_vt_prefixq0 of 1000
+#symload
+suffixq with list_vt_suffixq0 of 1000
+#symload
+prefixq0 with list_vt_prefixq0 of 1000
+#symload
+suffixq0 with list_vt_suffixq0 of 1000
+//
+(* ****** ****** *)
+//
+#symload
+listize with list_vt_listize of 1000
+#symload
+strmize with list_vt_strmize of 1000
+//
+(* ****** ****** *)
+//
+#symload
+rlistize with list_vt_rlistize of 1000
+#symload
+rstrmize with list_vt_rstrmize of 1000
+//
 (* ****** ****** *)
 
+#symload forall with list_vt_forall0 of 1000
 #symload forall0 with list_vt_forall0 of 1000
 #symload forall1 with list_vt_forall1 of 1000
 
 (* ****** ****** *)
 
+#symload foreach with list_vt_foreach0 of 1000
 #symload foreach0 with list_vt_foreach0 of 1000
 #symload foreach1 with list_vt_foreach1 of 1000
 
 (* ****** ****** *)
 //
-#symload listize with list_vt_listize0 of 1000
-#symload rlistize with list_vt_rlistize0 of 1000
-//
-(*
-#symload listize0 with list_vt_listize0 of 1000
-#symload rlistize0 with list_vt_rlistize0 of 1000
-*)
+#symload mergesort with list_vt_mergesort0 of 1000
+#symload mergesort0 with list_vt_mergesort0 of 1000
 //
 (* ****** ****** *)
 //
-#symload strmize with list_vt_strmize of 1000
-#symload strmize0 with list_vt_strmize0 of 1000
-//
-(* ****** ****** *)
-//
-#symload mergesort with list_vt_mergesort of 1000
-(*
-#symload mergesort0 with list_vt_mergesort of 1000
-*)
-//
-(* ****** ****** *)
-//
-#symload permutize with list_vt_permutize of 1000
-(*
-#symload permutize0 with list_vt_permutize of 1000
-*)
+#symload permutize with list_vt_permutize0 of 1000
+#symload permutize0 with list_vt_permutize0 of 1000
 //
 (* ****** ****** *)
 

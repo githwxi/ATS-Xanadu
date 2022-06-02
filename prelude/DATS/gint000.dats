@@ -258,11 +258,10 @@ end (* end of [gint_map_list_nint] *)
 
 #impltmp
 <>(*tmp*)
-gint_streamize_nint
+gint_strmize_nint
   (n0) =
 (
-  auxmain(n0, 0)
-) where
+auxmain(n0, 0)) where
 {
 fun
 auxmain
@@ -271,7 +270,7 @@ auxmain
 |i <= n}
 ( n0: int(n)
 , i0: int(i))
-: stream_vt(nintlt(n)) =
+: strm_vt(nintlt(n)) =
 $llazy
 (
 if
@@ -279,20 +278,21 @@ if
 then
 strmcon_vt_nil()
 else
-strmcon_vt_cons(i0, auxmain(n0, succ(i0)))
+strmcon_vt_cons
+(i0, auxmain(n0, succ(i0)))
 )
-} (* end of [gint_streamize_nint] *)
+}(*where*)//end-of(gint_strmize_nint)
 
 (* ****** ****** *)
 #impltmp
 <>(*tmp*)
-gint_streamize_sint
+gint_strmize_sint
   (i0) =
 (
 if
 (i0 <= 0)
 then
-stream_vt_nil() else gint_streamize_nint(i0)
+strm_vt_nil() else gint_strmize_nint(i0)
 )
 (* ****** ****** *)
 //
@@ -326,7 +326,7 @@ gseq_rforall<xs><x0> = gint_rforall_sint<>
 (* ****** ****** *)
 //
 #impltmp
-gseq_streamize<xs><x0> = gint_streamize_sint
+gseq_strmize<xs><x0> = gint_strmize_sint<>
 //
 (* ****** ****** *)
 

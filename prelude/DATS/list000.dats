@@ -224,7 +224,7 @@ let
 val
 res = list_vt_nil()
 in
-list_vt_reverse<a>(loop(xss, res))
+list_vt_reverse0<a>(loop(xss, res))
 end
 ) where
 {
@@ -354,7 +354,7 @@ list_rlistize = list_rcopy_vt<a>
 //
 #impltmp
 <a>(*tmp*)
-list_streamize
+list_strmize
   (xs) =
 ( auxmain(xs) ) where
 {
@@ -370,7 +370,7 @@ strmcon_vt_nil()
 list_cons(x0, xs) =>
 strmcon_vt_cons(x0, auxmain(xs))
 )
-} (* end of [list_streamize] *)
+} (* end of [list_strmize] *)
 //
 (* ****** ****** *)
 //
@@ -517,7 +517,7 @@ list_vt2t(list_mergesort_vt<a>(xs))
 <a>(*tmp*)
 list_mergesort_vt
   (xs) =
-list_vt_mergesort<a>(list_copy_vt<a>(xs))
+list_vt_mergesort0<a>(list_copy_vt<a>(xs))
 
 (* ****** ****** *)
 //
@@ -539,7 +539,7 @@ auxmain
 {n:int}
 ( xs
 : list(a, n))
-: stream_vt(xs(n)) =
+: strm_vt(xs(n)) =
 $llazy
 (
 case+ xs of
@@ -555,7 +555,7 @@ auxmain(xs)
 val res2 =
 auxmain(xs)
 val res2 =
-stream_vt_map0(res2) where
+strm_vt_map0(res2) where
 {
 #sexpdef n0 = n
 #sexpdef n1 = n-1
@@ -565,7 +565,7 @@ map0$fopr
 (xs) = list_vt_cons(x0, xs)
 }
 in !
-(stream_vt_append<xs(n)>(res1, res2))
+(strm_vt_append<xs(n)>(res1, res2))
 end
 )
 } (* end of [list_subsetize_vt] *)
@@ -657,15 +657,15 @@ gseq_print<list(a)><a>
 #impltmp
 {a:t0}
 gseq_print$beg
-<list(a)><a>() = string_print("(")
+<list(a)><a>() = strn_print("(")
 #impltmp
 {a:t0}
 gseq_print$end
-<list(a)><a>() = string_print(")")
+<list(a)><a>() = strn_print(")")
 #impltmp
 {a:t0}
 gseq_print$sep
-<list(a)><a>() = string_print(";")
+<list(a)><a>() = strn_print(";")
 //
 (* ****** ****** *)
 //
@@ -692,7 +692,7 @@ gseq_listize<list(a)><a> = list_listize<a>
 gseq_rlistize<list(a)><a> = list_rlistize<a>
 #impltmp
 {a:t0}
-gseq_streamize<list(a)><a> = list_streamize<a>
+gseq_strmize<list(a)><a> = list_strmize<a>
 
 (* ****** ****** *)
 //
@@ -791,26 +791,26 @@ val () =
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_streamize
-<list@(k0,x0)><k0><x0> = list_streamize
+gmap_strmize
+<list@(k0,x0)><k0><x0> = list_strmize
 //
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_streamize_key
+gmap_strmize_key
 <list@(k0,x0)><k0><x0>(kxs) =
 (
-  gseq_map_stream(kxs)) where
+  gseq_map_strm(kxs)) where
 {
 #impltmp map$fopr<(k0,x0)><k0>(kx) = kx.0
 }
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_streamize_itm
+gmap_strmize_itm
 <list@(k0,x0)><k0><x0>(kxs) =
 (
-  gseq_map_stream(kxs)) where
+  gseq_map_strm(kxs)) where
 {
 #impltmp map$fopr<(k0,x0)><x0>(kx) = kx.1
 }

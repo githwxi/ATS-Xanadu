@@ -160,7 +160,7 @@ list_vt_rappend10<a>(xs, list_vt_nil())
 
 #impltmp
 <a>(*tmp*)
-list_vt_length
+list_vt_length1
   {n}(xs) =
 ( loop(xs, 0) ) where
 {
@@ -178,23 +178,23 @@ list_vt_nil() => ln
 | !
 list_vt_cons(_, xs) => loop(xs, ln+1)
 )
-} endwhr // end of [length_vt_length]
+} endwhr // end of [length_vt_length1]
 
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-list_vt_extend
+list_vt_extend0
   (xs, x0) =
 let
 val ys =
 list_vt_sing<a>(x0) in
-list_vt_append<a>(xs, ys)
-end // list_vt_extend
+list_vt_append0<a>(xs, ys)
+end // list_vt_extend0
 //
 #impltmp
 <a>(*tmp*)
-list_vt_append
+list_vt_append0
   (xs, ys) =
 (
 let
@@ -226,13 +226,13 @@ prval () = $fold(xs) in () end
 end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list_vt_append] *)
+} (* end of [list_vt_append0] *)
 //
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-list_vt_concat(xss) =
+list_vt_concat0(xss) =
 let
 var
 res:
@@ -290,20 +290,20 @@ let
 end // end of [let]
 )
 //
-} (* end of [list_vt_concat] *)
+} (* end of [list_vt_concat0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-list_vt_reverse(xs) =
-list_vt_rappend<a>(xs, list_vt_nil())
+list_vt_reverse0(xs) =
+list_vt_rappend0<a>(xs, list_vt_nil())
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-list_vt_rappend
+list_vt_rappend0
   (xs, ys) =
 (
   loop(xs, ys)
@@ -332,7 +332,7 @@ in
 end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list_vt_rappend] *)
+} (* end of [list_vt_rappend0] *)
 
 (* ****** ****** *)
 
@@ -540,22 +540,24 @@ end // end of [list_vt_cons]
 //
 #impltmp
 <a>(*tmp*)
-list_vt_listize0(xs) = xs
+list_vt_listize(xs) = xs
 #impltmp
 <a>(*tmp*)
-list_vt_rlistize0(xs) =
-  list_vt_reverse< a >( xs )
+list_vt_rlistize(xs) =
+(
+  list_vt_reverse0< a >( xs )
+)
 //
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-list_vt_streamize(xs) =
+list_vt_strmize(xs) =
 let
 fun
 auxmain
 ( xs
-: list_vt(a)): stream_vt(a) =
+: list_vt(a)): strm_vt(a) =
 $llazy
 (
 g_free(xs);
@@ -566,7 +568,7 @@ list_vt_nil() => strmcon_vt_nil()
 list_vt_cons(x0, xs) =>
   strmcon_vt_cons(x0, auxmain(xs))
 )
-in auxmain(xs) end // list_vt_streamize
+in auxmain(xs) end // list_vt_strmize
 
 (* ****** ****** *)
 //
@@ -640,13 +642,13 @@ in
 end
 )
 //
-} (* end of [list_vt_maprev0] *)
+}(*where*)//end-of[list_vt_maprev0]
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-list_vt_mergesort
+list_vt_mergesort0
   (xs) = let
 //
 #typedef
@@ -740,14 +742,14 @@ end // list_vt_cons
 ) (* end of [merge] *)
 //
 in
-  amain(xs, list_vt_length<a>(xs))
-end (* end of [list_vt_mergesort] *)
+  amain(xs, list_vt_length1<a>(xs))
+end (* end of [list_vt_mergesort0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-list_vt_permutize
+list_vt_permutize0
   (xs) = let
 //
 #typedef
@@ -758,7 +760,7 @@ auxmain1
 {n:int}
 ( xs: xs(n)
 , n0: int(n))
-: stream_vt(xs(n)) =
+: strm_vt(xs(n)) =
 if
 n0 >= 2
 then let
@@ -767,7 +769,7 @@ ys = list_vt_nil()
 in
 auxmain2(xs, ys, n0, 0)
 end
-else stream_vt_sing(xs)
+else strm_vt_sing( xs )
 //
 and
 auxmain2
@@ -777,7 +779,7 @@ auxmain2
 , ys: xs(j)
 , i0: int(i)
 , j0: int(j))
-: stream_vt(xs(i+j)) =
+: strm_vt(xs(i+j)) =
 $llazy
 (
 case+ xs of
@@ -802,7 +804,7 @@ val xy =
 list_vt_rappend11(ys, xs)
 }
 val res1 =
-stream_vt_map0
+strm_vt_map0
 <xs(n1)><xs(n0)>(res1) where
 {
 #sexpdef n0 = i+j
@@ -820,35 +822,35 @@ let
   res2 =
   auxmain2(xs, ys, i0-1, j0+1)
 in
-  !(stream_vt_append(res1, res2))
+  !(strm_vt_append(res1, res2))
 end
 end
 ) (* end of [auxmain2] *)
 //
 in
-auxmain1(xs, list_vt_length<a>(xs))
-end (* end of [list_vt_permutize] *)
+auxmain1(xs, list_vt_length1<a>(xs))
+end (* end of [list_vt_permutize0] *)
 
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-list_vt_suffixq00
+list_vt_suffixq0
   (xs1, xs2) =
 let
   val xs1 =
-  list_vt_reverse(xs1)
+  list_vt_reverse0(xs1)
   and xs2 =
-  list_vt_reverse(xs2)
+  list_vt_reverse0(xs2)
 in
-  list_vt_prefixq00<a>(xs1, xs2)
-end // end of [list_vt_suffixq00]
+  list_vt_prefixq0<a>(xs1, xs2)
+end (*let*) // end of [list_vt_suffixq0]
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-list_vt_prefixq00
+list_vt_prefixq0
   (xs1, xs2) =
 (
   auxloop(xs1, xs2)
@@ -887,7 +889,7 @@ list_vt_cons(x1, xs1) =>
   end // end of [let]
 )
 ) (* end of [auxloop] *)
-} (*where*) // end of [list_vt_prefixq00]
+} (*where*) // end of [list_vt_prefixq0]
 //
 (* ****** ****** *)
 //
@@ -908,22 +910,20 @@ glseq_consq
 //
 #impltmp
 {a:vt}(*tmp*)
-g_free
-<list_vt(a)> = list_vt_free<a>
+g_free<list_vt(a)> = list_vt_free<a>
 //
 #impltmp
 {a:vt}(*tmp*)
-g_copy
-<list_vt(a)> = list_vt_copy<a>
+g_copy<list_vt(a)> = list_vt_copy<a>
 //
 #impltmp
 {a:vt}
 glseq_copy
-<list_vt(a)><a> = list_vt_copy<a>
+<list_vt(a)>< a > = list_vt_copy< a >
 #impltmp
 {a:vt}
 glseq_free
-<list_vt(a)><a> = list_vt_free<a>
+<list_vt(a)>< a > = list_vt_free< a >
 //
 (* ****** ****** *)
 
@@ -939,13 +939,13 @@ val () = xs := xs.1 in x0 end
 //
 #impltmp
 {a:vt}
-glseq_listize0
+glseq_listize
 <list_vt(a)><a>(xs) = xs
 #impltmp
 {a:vt}
-glseq_rlistize0
+glseq_rlistize
 <list_vt(a)><a>(xs) =
-( list_vt_reverse<a>( xs ) )
+( list_vt_reverse0<a>( xs ) )
 //
 (* ****** ****** *)
 //
@@ -957,24 +957,23 @@ glseq_print1<list_vt(a)><a>
 #impltmp
 {a:vt}
 glseq_print$beg
-<list_vt(a)><a>() = string_print("(")
+<list_vt(a)><a>() = strn_print("(")
 #impltmp
 {a:vt}
 glseq_print$end
-<list_vt(a)><a>() = string_print(")")
+<list_vt(a)><a>() = strn_print(")")
 #impltmp
 {a:vt}
 glseq_print$sep
-<list_vt(a)><a>() = string_print(",")
+<list_vt(a)><a>() = strn_print(",")
 //
 (* ****** ****** *)
-
+//
 #impltmp
 {a:vt}
-glseq_streamize
-<list_vt(a)><a>(xs) =
-list_vt_streamize<a>( xs )
-
+glseq_strmize
+<list_vt(a)><a> = list_vt_strmize<a>
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -1001,11 +1000,13 @@ glseq_foreach1
 //
 #impltmp
 {a:vt}
-glseq_map0_list<list_vt(a)><a> = list_vt_map0<a>
+glseq_map0_list
+<list_vt(a)><a> = list_vt_map0< a >
 #impltmp
 {a:vt}
-glseq_map0_rlist<list_vt(a)><a> = list_vt_maprev0<a>
+glseq_map0_rlist
+<list_vt(a)><a> = list_vt_maprev0< a >
 //
 (* ****** ****** *)
 
-(* end of [prelude_list000_vt.dats] *)
+(* end of [ATS3/XANADU_prelude_list000_vt.dats] *)

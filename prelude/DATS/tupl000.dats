@@ -26,9 +26,9 @@ t0up_print$beg(): void
 fun<>
 t1up_print$beg(): void
 #impltmp<>
-t0up_print$beg()=string_print("@(")
+t0up_print$beg()=strn_print("@(")
 #impltmp<>
-t1up_print$beg()=string_print("$(")
+t1up_print$beg()=strn_print("$(")
 (* ****** ****** *)
 #extern
 fun<>
@@ -37,9 +37,9 @@ t0up_print$end(): void
 fun<>
 t1up_print$end(): void
 #impltmp<>
-t0up_print$end() = string_print(")")
+t0up_print$end() = strn_print(")")
 #impltmp<>
-t1up_print$end() = string_print(")")
+t1up_print$end() = strn_print(")")
 (* ****** ****** *)
 #extern
 fun<>
@@ -48,9 +48,9 @@ t0up_print$sep(): void
 fun<>
 t1up_print$sep(): void
 #impltmp<>
-t0up_print$sep() = string_print(",")
+t0up_print$sep() = strn_print(",")
 #impltmp<>
-t1up_print$sep() = string_print(",")
+t1up_print$sep() = strn_print(",")
 (* ****** ****** *)
 //
 #impltmp
@@ -138,4 +138,4 @@ end // end of [gl_print1<t1up3>]
 
 (* ****** ****** *)
 
-(* end of [prelude_tuple00.dats] *)
+(* end of [ATS3/XANADU_prelude_tupl000.dats] *)

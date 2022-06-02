@@ -137,8 +137,6 @@ strn_vt_cons
 (* ****** ****** *)
 //
 fun<>
-strn_vt_print(!strn_vt): void
-fun<>
 strn_vt_print0(~strn_vt): void
 fun<>
 strn_vt_print1(!strn_vt): void
@@ -159,9 +157,6 @@ strn_vt_get_next
 
 (* ****** ****** *)
 //
-fun<>
-strn_vt_length
-{n:int}(!strn_vt(n)): int(n)
 fun<>
 strn_vt_length0
 {n:int}(~strn_vt(n)): int(n)
@@ -199,8 +194,15 @@ strn_append_vt
 ( strn(m)
 , strn(n)): strn_vt(m+n)
 //
+(* ****** ****** *)
+//
 fun<>
-strn_vt_append
+strn_vt_append0
+{m,n:int}
+( ~strn_vt(m)
+, ~strn_vt(n)): strn_vt(m+n)
+fun<>
+strn_vt_append1
 {m,n:int}
 ( !strn_vt(m)
 , !strn_vt(n)): strn_vt(m+n)
@@ -211,7 +213,7 @@ strn_reverse_vt
 {n:int}
 (cs: strn(n)): strn_vt(n)
 fun<>
-strn_vt_reverse
+strn_vt_reverse0
 {n:int}
 (cs: strn_vt(n)): strn_vt(n)
 (* ****** ****** *)
@@ -231,6 +233,26 @@ strn_vt_rforall1(!strn_vt): bool
 (* ****** ****** *)
 //
 fun<>
+strn_vt_strmize
+(cs: ~strn_vt): strm_vt(cgtz)
+fun<>
+strn_vt_rstrmize
+(cs: ~strn_vt): strm_vt(cgtz)
+//
+(* ****** ****** *)
+fun<>
+strn_vt_listize
+{n:int}
+( cs:
+~ strn_vt(n)): list_vt(cgtz,n)
+fun<>
+strn_vt_rlistize
+{n:int}
+( cs:
+~ strn_vt(n)): list_vt(cgtz,n)
+(* ****** ****** *)
+//
+fun<>
 strn_vt_listize1
 {n:int}
 ( cs:
@@ -241,11 +263,16 @@ strn_vt_rlistize1
 ( cs:
 ! strn_vt(n)): list_vt(cgtz,n)
 //
-(* ****** ****** *)
-//
 fun<>
-strn_vt_strmize
-(cs: strn_vt): strm_vt(cgtz)
+strn_vt_copy_list
+{n:int}
+( cs:
+! strn_vt(n)): list_vt(cgtz,n)
+fun<>
+strn_vt_rcopy_list
+{n:int}
+( cs:
+! strn_vt(n)): list_vt(cgtz,n)
 //
 (* ****** ****** *)
 //
@@ -359,7 +386,7 @@ set_at with strtmp_vt_set_at of 1000
 (* ****** ****** *)
 //
 #symload
-print with strn_vt_print of 1000
+print with strn_vt_print1 of 1000
 #symload
 print0 with strn_vt_print0 of 1000
 #symload
@@ -368,17 +395,25 @@ print1 with strn_vt_print1 of 1000
 (* ****** ****** *)
 //
 #symload
-length with strn_vt_length of 1000
+length with strn_vt_length1 of 1000
+#symload
+length0 with strn_vt_length0 of 1000
+#symload
+length1 with strn_vt_length1 of 1000
 //
 (* ****** ****** *)
 //
 #symload
-append with strn_vt_append of 1000
+append with strn_vt_append0 of 1000
+#symload
+append0 with strn_vt_append0 of 1000
 //
 (* ****** ****** *)
 //
 #symload
-reverse with strn_vt_reverse of 1000
+reverse with strn_vt_reverse0 of 1000
+#symload
+reverse0 with strn_vt_reverse0 of 1000
 //
 (* ****** ****** *)
 

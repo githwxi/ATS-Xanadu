@@ -115,26 +115,26 @@ with XATS2JS_jsarray_set_at of 1000
 //
 #extern
 fun
-XATS2JS_jsarray_streamize
+XATS2JS_jsarray_strmize
 {a:t0}
 ( xs
-: jsarray(a)): stream_vt(a) = $exname()
+: jsarray(a)): strm_vt(a) = $exname()
 //
 (*
-#symload streamize
-with XATS2JS_jsarray_streamize of 1000
+#symload strmize
+with XATS2JS_jsarray_strmize of 1000
 *)
 //
 (* ****** ****** *)
 #impltmp
 {a:t0}
-gseq_streamize
+gseq_strmize
 <jsarray(a)><a> =
-XATS2JS_jsarray_streamize
+XATS2JS_jsarray_strmize
 (* ****** ****** *)
 //
 #implfun
-XATS2JS_jsarray_streamize
+XATS2JS_jsarray_strmize
 {a}(xs) = auxmain(0) where
 {
 //
@@ -142,7 +142,7 @@ XATS2JS_jsarray_streamize
 //
   fun
   auxmain
-  (i0: sint): stream_vt(a) =
+  (i0: sint): strm_vt(a) =
   $llazy
   (
     if
@@ -159,7 +159,7 @@ XATS2JS_jsarray_streamize
     end // end of [else]
   ) (* end of [auxmain] *)
 //
-} (* end of [XATS2JS_jsarray_streamize] *)
+} (* end of [XATS2JS_jsarray_strmize] *)
 //
 (* ****** ****** *)
 //
@@ -498,11 +498,11 @@ XATS2JS_jsobjmap_insert_opt
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_streamize
+gmap_strmize
 <jsobjmap(k0,x0)><k0><x0>(kxs) =
-stream_vt_map0
+strm_vt_map0
 (
-gmap_streamize_key
+gmap_strmize_key
 <jsobjmap(k0,x0)><k0><x0>(kxs)
 ) where
 {
@@ -517,12 +517,12 @@ end
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_streamize_key
+gmap_strmize_key
 <jsobjmap(k0,x0)><k0><x0>(kxs) =
 (
-XATS2JS_jsarray_streamize(XATS2JS_jsobjmap_keys(kxs))
+XATS2JS_jsarray_strmize(XATS2JS_jsobjmap_keys(kxs))
 )
 //
 (* ****** ****** *)
 
-(* end of [prelude_DATS_CATS_JS_basics1.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_basics1.dats] *)

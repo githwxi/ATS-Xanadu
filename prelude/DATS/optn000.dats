@@ -153,16 +153,16 @@ gseq_print<optn(a)><a>
 #impltmp
 {a:t0}
 gseq_print$beg
-<optn(a)><a>() = string_print("(")
+<optn(a)><a>() = strn_print("(")
 #impltmp
 {a:t0}
 gseq_print$end
-<optn(a)><a>() = string_print(")")
+<optn(a)><a>() = strn_print(")")
 (*
 #impltmp
 {a:t0}
 gseq_print$sep
-<optn(a)><a>() = string_print(";")
+<optn(a)><a>() = strn_print(";")
 *)
 //
 (* ****** ****** *)
