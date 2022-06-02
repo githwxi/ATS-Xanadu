@@ -545,14 +545,14 @@ a1ref_rlistize0
 //
 fun
 <a:vt>
-a1ref_streamize
+a1ref_strmize
 {n:i0}
-(A0: a1ref(a, n)): stream_vt(a)
+(A0: a1ref(a, n)): strm_vt(a)
 fun
 <a:vt>
-a1ptr_streamize
+a1ptr_strmize
 {n:i0}
-(A0: a1ptr(a, n)): stream_vt(a)
+(A0: a1ptr(a, n)): strm_vt(a)
 //
 (* ****** ****** *)
 //

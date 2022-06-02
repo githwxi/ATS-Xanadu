@@ -97,9 +97,11 @@ fun
 optn_rlistize
 {b:b0}
 (optn(a, b)): list_vt(a, b2i(b))
+(* ****** ****** *)
+//
 fun
 <a:t0>
-optn_streamize(optn(a)): stream_vt(a)
+optn_strmize(optn(a)): strm_vt(a)
 //
 (* ****** ****** *)
 //
@@ -160,8 +162,10 @@ optn_copy_vt
 (* ****** ****** *)
 
 #symload listize with optn_listize of 1000
+#symload strmize with optn_strmize of 1000
+(* ****** ****** *)
+
 #symload rlistize with optn_rlistize of 1000
-#symload streamize with optn_streamize of 1000
 
 (* ****** ****** *)
 

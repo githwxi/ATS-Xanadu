@@ -38,21 +38,23 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-#vwtpdef
-str0_vt = string0_vt
-#vwtpdef
-str1_vt = string1_vt
+(*
+#sexpdef
+strn_vt = string0_vt
+#sexpdef
+strn_vt = string1_vt
+*)
 (* ****** ****** *)
 //
 #typedef cgtz =
-[c:char|c > 0]char(c)
+[c:char | c > 0] char(c)
 //
 (* ****** ****** *)
 //
 prfun
-string_vt_lemma
+strn_vt_lemma
 {n:int}
-(!string_vt(n)): [n>=0] void
+(!strn_vt(n)): [n>=0] void
 //
 (* ****** ****** *)
 //
@@ -72,14 +74,14 @@ is a JS_array (of chars) in JS!
 //
 (*
 fcast
-string_vt2t
+strn_vt2t
 {n:int}
-(cs: string_vt(n)): string(n)
+(cs: strn_vt(n)): strn(n)
 *)
 fun<>
-string_vt2t
+strn_vt2t
 {n:int}
-(cs: string_vt(n)): string(n)
+(cs: strn_vt(n)): strn(n)
 fun<>
 stropt_vt2t
 {n:int}
@@ -117,64 +119,64 @@ strtmp_vt(n:int) = strtmp1_vt(n)
 (* ****** ****** *)
 //
 fcast
-UN_string_vt_cast
+UN_strn_vt_cast
 {n:int}
-(cs: strtmp_vt(n)): string_vt(n)
+(cs: strtmp_vt(n)): strn_vt(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_vt_nil
-  ((*void*)): string_vt(0)
+strn_vt_nil
+  ((*void*)): strn_vt(0)
 fun<>
-string_vt_cons
+strn_vt_cons
   {n:int}
 ( c0: cgtz
-, cs: string_vt(n)): string_vt(n+1)
+, cs: strn_vt(n)): strn_vt(n+1)
 //
 (* ****** ****** *)
 //
 fun<>
-string_vt_print(!string_vt): void
+strn_vt_print(!strn_vt): void
 fun<>
-string_vt_print0(~string_vt): void
+strn_vt_print0(~strn_vt): void
 fun<>
-string_vt_print1(!string_vt): void
+strn_vt_print1(!strn_vt): void
 //
 (* ****** ****** *)
 
 (*
 fun<>
-string_vt_get_next
+strn_vt_get_next
 {n:pos}{l0:addr}
 ( pf
-! string_vt(n) @ l0 >>
-  ( string_vt(n) @ l0
-  - string_vt(n-1) @ l1 ) | p0: ptr(l0)
+! strn_vt(n) @ l0 >>
+  ( strn_vt(n) @ l0
+  - strn_vt(n-1) @ l1 ) | p0: ptr(l0)
 )
-: #[l1:addr] (string_vt(n-1) @ l1 | ptr(l1))
+: #[l1:addr] (strn_vt(n-1) @ l1 | ptr(l1))
 *)
 
 (* ****** ****** *)
 //
 fun<>
-string_vt_length
-{n:int}(!string_vt(n)): int(n)
+strn_vt_length
+{n:int}(!strn_vt(n)): int(n)
 fun<>
-string_vt_length0
-{n:int}(~string_vt(n)): int(n)
+strn_vt_length0
+{n:int}(~strn_vt(n)): int(n)
 fun<>
-string_vt_length1
-{n:int}(!string_vt(n)): int(n)
+strn_vt_length1
+{n:int}(!strn_vt(n)): int(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_vt_get_at
+strn_vt_get_at
 {n:int}
 {i:nat|i < n}
 ( cs:
-! string_vt(n), i0: int(i)): cgtz
+! strn_vt(n), i0: int(i)): cgtz
 //
 fun<>
 strtmp_vt_set_at
@@ -183,67 +185,67 @@ strtmp_vt_set_at
 ( p0:
 ! strtmp_vt(n), i0: int(i), c0: cgtz): void
 fun<>
-string_vt_set_at
+strn_vt_set_at
 {n:int}
 {i:nat|i < n}
 ( p0:
-! string_vt(n), i0: int(i), c0: cgtz): void
+! strn_vt(n), i0: int(i), c0: cgtz): void
 //
 (* ****** ****** *)
 //
 fun<>
-string_append_vt
+strn_append_vt
 {m,n:int}
-( string(m)
-, string(n)): string_vt(m+n)
+( strn(m)
+, strn(n)): strn_vt(m+n)
 //
 fun<>
-string_vt_append
+strn_vt_append
 {m,n:int}
-( !string_vt(m)
-, !string_vt(n)): string_vt(m+n)
+( !strn_vt(m)
+, !strn_vt(n)): strn_vt(m+n)
 //
 (* ****** ****** *)
 fun<>
-string_reverse_vt
+strn_reverse_vt
 {n:int}
-(cs: string(n)): string_vt(n)
+(cs: strn(n)): strn_vt(n)
 fun<>
-string_vt_reverse
+strn_vt_reverse
 {n:int}
-(cs: string_vt(n)): string_vt(n)
+(cs: strn_vt(n)): strn_vt(n)
 (* ****** ****** *)
 //
 fun<>
-string_vt_forall0(~string_vt): bool
+strn_vt_forall0(~strn_vt): bool
 fun<>
-string_vt_forall1(!string_vt): bool
-//
-(* ****** ****** *)
-//
-fun<>
-string_vt_rforall0(~string_vt): bool
-fun<>
-string_vt_rforall1(!string_vt): bool
+strn_vt_forall1(!strn_vt): bool
 //
 (* ****** ****** *)
 //
 fun<>
-string_vt_listize1
+strn_vt_rforall0(~strn_vt): bool
+fun<>
+strn_vt_rforall1(!strn_vt): bool
+//
+(* ****** ****** *)
+//
+fun<>
+strn_vt_listize1
 {n:int}
 ( cs:
-! string_vt(n)): list_vt(cgtz,n)
+! strn_vt(n)): list_vt(cgtz,n)
 fun<>
-string_vt_rlistize1
+strn_vt_rlistize1
 {n:int}
 ( cs:
-! string_vt(n)): list_vt(cgtz,n)
+! strn_vt(n)): list_vt(cgtz,n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_vt_streamize
-(cs: string_vt): stream_vt(cgtz)
+strn_vt_strmize
+(cs: strn_vt): strm_vt(cgtz)
 //
 (* ****** ****** *)
 //
@@ -261,122 +263,122 @@ strtmp_vt_alloc
 (* ****** ****** *)
 //
 fun<>
-string_vt_free(string_vt): void
+strn_vt_free(strn_vt): void
 //
 (* ****** ****** *)
 //
 fun<>
-string_copy_vt
-{n:int}(string(n)): string_vt(n)
+strn_copy_vt
+{n:int}(strn(n)): strn_vt(n)
 //
 fun<>
-string_vt_copy
+strn_vt_copy
 {n:int}
-(cs: !string_vt(n)): string_vt(n)
+(cs: !strn_vt(n)): strn_vt(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_vt_make_list
+strn_vt_make_list
 {n:int}
-(cs: list(cgtz, n)): string_vt(n)
+(cs: list(cgtz, n)): strn_vt(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_vt_make_list_vt
+strn_vt_make_list_vt
 {n:int}
 ( cs
-: list_vt(cgtz, n)): string_vt(n)
+: list_vt(cgtz, n)): strn_vt(n)
 //
 (* ****** ****** *)
 fun<>
-string_vt_make_stream
-  (cs: stream(cgtz)): string_vt
+strn_vt_make_strm
+  (cs: strm(cgtz)): strn_vt
 fun<>
-string_vt_make_stream_vt
-  (cs: stream_vt(cgtz)): string_vt
+strn_vt_make_strm_vt
+  (cs: strm_vt(cgtz)): strn_vt
 (* ****** ****** *)
 //
 fun
 <n:i0>
-string_vt_tabulate
-( n0: int(n) ) : string_vt(n)
+strn_vt_tabulate
+( n0: int(n) ) : strn_vt(n)
 //
 fun<>
-string_vt_tabulate_cfr
+strn_vt_tabulate_cfr
 {n:nat}
 ( n0
 : int(n)
 , f0
-: nintlt(n) -<cfr> cgtz): string_vt(n)
+: nintlt(n) -<cfr> cgtz): strn_vt(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_lower_vt
+strn_lower_vt
 {n:int}
-(cs: string(n)): string_vt(n)
+(cs: strn(n)): strn_vt(n)
 fun<>
-string_upper_vt
+strn_upper_vt
 {n:int}
-(cs: string(n)): string_vt(n)
+(cs: strn(n)): strn_vt(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_vt_lower
+strn_vt_lower
 {n:int}
-(cs: string_vt(n)): string_vt(n)
+(cs: strn_vt(n)): strn_vt(n)
 fun<>
-string_vt_upper
+strn_vt_upper
 {n:int}
-(cs: string_vt(n)): string_vt(n)
+(cs: strn_vt(n)): strn_vt(n)
 //
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for string
+// symbol overloading for strn
 //
 (* ****** ****** *)
 //
 #symload
-[] with string_vt_get_at of 1000
+[] with strn_vt_get_at of 1000
 #symload
-[] with string_vt_set_at of 1000
+[] with strn_vt_set_at of 1000
 #symload
 [] with strtmp_vt_set_at of 1000
 //
 #symload
-get_at with string_vt_get_at of 1000
+get_at with strn_vt_get_at of 1000
 #symload
-set_at with string_vt_set_at of 1000
+set_at with strn_vt_set_at of 1000
 #symload
 set_at with strtmp_vt_set_at of 1000
 //
 (* ****** ****** *)
 //
 #symload
-print with string_vt_print of 1000
+print with strn_vt_print of 1000
 #symload
-print0 with string_vt_print0 of 1000
+print0 with strn_vt_print0 of 1000
 #symload
-print1 with string_vt_print1 of 1000
+print1 with strn_vt_print1 of 1000
 //
 (* ****** ****** *)
 //
 #symload
-length with string_vt_length of 1000
+length with strn_vt_length of 1000
 //
 (* ****** ****** *)
 //
 #symload
-append with string_vt_append of 1000
+append with strn_vt_append of 1000
 //
 (* ****** ****** *)
 //
 #symload
-reverse with string_vt_reverse of 1000
+reverse with strn_vt_reverse of 1000
 //
 (* ****** ****** *)
 

@@ -37,8 +37,8 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-#typedef str0 = string0
-#typedef str1 = string1
+#sexpdef strn = string0
+#sexpdef strn = string1
 (* ****** ****** *)
 //
 #typedef cgtz =
@@ -47,13 +47,11 @@
 (* ****** ****** *)
 //
 prfun
-string_lemma
-{n:int}
-(string(n)): [n>=0] void
+strn_lemma
+{n:int}(strn(n)): [n>=0] void
 prfun
 stropt_lemma
-{n:int}
-(stropt(n)): [n>=0] void
+{n:int}(stropt(n)): [n>=0] void
 //
 (* ****** ****** *)
 //
@@ -73,15 +71,15 @@ is a JS_array (of chars) in JS!
 //
 (*
 fcast
-string_vt2t
+strn_vt2t
 {n:int}
-(cs: string_vt(n)): string(n)
+(cs: strn_vt(n)): strn(n)
 *)
 (*
 fun<>
-string_vt2t
+strn_vt2t
 {n:int}
-(cs: string_vt(n)): string(n)
+(cs: strn_vt(n)): strn(n)
 fun<>
 stropt_vt2t
 {n:int}
@@ -91,13 +89,13 @@ stropt_vt2t
 (* ****** ****** *)
 
 fcast
-string_some
+strn_some
 {n:int}
-(cs: string(n)): stropt(n+1)
+(cs: strn(n)): stropt(n+1)
 fcast
 stropt_unsome
 {n:pos}
-(cs: stropt(n)): string(n-1)
+(cs: stropt(n)): strn(n-1)
 
 (* ****** ****** *)
 //
@@ -109,32 +107,32 @@ for targeting C-likes
 //
 (*
 fcast
-string_top2tr
-( cs: string ) : p2tr(char)
-#symload ptrof with string_top2tr
+strn_top2tr
+( cs: strn) : p2tr(char)
+#symload ptrof with strn_top2tr
 *)
 //
 (* ****** ****** *)
 //
 fun<>
-string_nil
-  ((*void*)): string(0)
+strn_nil
+  ((*void*)): strn(0)
 fun<>
-string_cons
+strn_cons
   {n:int}
 ( c0: cgtz
-, cs: string(n)): string(n+1)
+, cs: strn(n)): strn(n+1)
 //
 (* ****** ****** *)
 //
 fun<>
-string_nilq
+strn_nilq
   {n:int}
-  (cs: string(n)): bool(n=0)
+  (cs: strn(n)): bool(n=0)
 fun<>
-string_consq
+strn_consq
   {n:int}
-  (cs: string(n)): bool(n>0)
+  (cs: strn(n)): bool(n>0)
 //
 (* ****** ****** *)
 //
@@ -150,270 +148,268 @@ stropt_consq
 (* ****** ****** *)
 //
 fun<>
-string_head
+strn_head
 {n:pos}
-(cs: string(n)): cgtz
+(cs: strn(n)): cgtz
 //
 fun<>
-string_head_exn(string): cgtz
+strn_head_exn(strn): cgtz
 fun<>
-string_head_opt(string): char
+strn_head_opt(strn): char
 fun<>
-string_head_raw(string): cgtz
+strn_head_raw(strn): cgtz
 //
 (* ****** ****** *)
 //
 fun<>
-string_tail
+strn_tail
 {n:pos}
-(cs: string(n)): string(n-1)
+(cs: strn(n)): strn(n-1)
 //
 fun<>
-string_tail_exn
-(cs: string): string
+strn_tail_exn
+(cs: strn): strn
 fun<>
-string_tail_opt
-(cs: string): optn_vt(string)
+strn_tail_opt
+(cs: strn): optn_vt(strn)
 //
 fun<>
-string_tail_raw(string): string
+strn_tail_raw(strn): strn
 //
 (* ****** ****** *)
 
 fun<>
-string_eqzq
+strn_eqzq
 {n:int}
-(cs: string(n)): bool(n=0)
+(cs: strn(n)): bool(n=0)
 fun<>
-string_neqzq
+strn_neqzq
 {n:int}
-(cs: string(n)): bool(n>0)
+(cs: strn(n)): bool(n>0)
 
 (* ****** ****** *)
 fun<>
-string_lt
-(x1: string, x2: string): bool
+strn_lt
+(x1: strn, x2: strn): bool
 fun<>
-string_gt
-(x1: string, x2: string): bool
+strn_gt
+(x1: strn, x2: strn): bool
 fun<>
-string_eq
-(x1: string, x2: string): bool
+strn_eq
+(x1: strn, x2: strn): bool
 (* ****** ****** *)
 fun<>
-string_lte
-(x1: string, x2: string): bool
+strn_lte
+(x1: strn, x2: strn): bool
 fun<>
-string_gte
-(x1: string, x2: string): bool
+strn_gte
+(x1: strn, x2: strn): bool
 fun<>
-string_neq
-(x1: string, x2: string): bool
+strn_neq
+(x1: strn, x2: strn): bool
 (* ****** ****** *)
 
 fun<>
-string_cmp
-(x1: string, x2: string): sint
+strn_cmp
+(x1: strn, x2: strn): sint
 
 (* ****** ****** *)
 //
 fun<>
-string_print(cs: string): void
+strn_print(cs: strn): void
 //
 (* ****** ****** *)
 
 (*
 fun<>
-string_get_next
+strn_get_next
 {n:pos}{l0:addr}
 ( pf
-! string(n) @ l0 >>
-  ( string(n) @ l0
-  - string(n-1) @ l1 ) | p0: ptr(l0)
+! strn(n) @ l0 >>
+  ( strn(n) @ l0
+  - strn(n-1) @ l1 ) | p0: ptr(l0)
 )
-: #[l1:addr] (string(n-1) @ l1 | ptr(l1))
+: #[l1:addr] (strn(n-1) @ l1 | ptr(l1))
 *)
 
 (* ****** ****** *)
 //
 fun<>
-string_length
-{n:int}(cs: string(n)): sint(n)
+strn_length
+{n:int}(cs: strn(n)): sint(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_get_at
+strn_get_at
 {n:int}
 {i:nat|i < n}
 ( cs:
-  string(n), i0: int(i)): cgtz
+  strn(n), i0: int(i)): cgtz
 //
 (* ****** ****** *)
 //
 fun<>
-string_append
+strn_append
 {m,n:int}
-( xs: string(m)
-, ys: string(n)): string(m+n)
+( xs: strn(m)
+, ys: strn(n)): strn(m+n)
 //
 (* ****** ****** *)
 fun<>
-string_reverse
+strn_reverse
 {n:int}
-( cs: string(n) ) : string(n)
+( cs: strn(n) ) : strn(n)
 (* ****** ****** *)
 //
 fun<>
-string_forall(string): bool
+strn_forall(strn): bool
 fun<>
-string_rforall(string): bool
+strn_rforall(strn): bool
 //
 (* ****** ****** *)
 //
 fun<>
-string_listize
+strn_listize
 {n:int}
-(string(n)): list_vt(cgtz,n)
+(strn(n)): list_vt(cgtz,n)
 fun<>
-string_rlistize
+strn_strmize
+(cs: strn): strm_vt(cgtz)
+//
+fun<>
+strn_rlistize
 {n:int}
-(string(n)): list_vt(cgtz,n)
-//
-fun<>
-string_streamize
-(cs: string): stream_vt(cgtz)
+(cs:strn(n)): list_vt(cgtz,n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_copy
-{n:int}(string(n)): string(n)
+strn_copy
+{n:int}(strn(n)): strn(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_make_list
+strn_make_list
 {n:int}
-(cs: list(cgtz, n)): string(n)
-//
-(* ****** ****** *)
-//
+(cs:list(cgtz, n)): strn(n)
 fun<>
-string_make_list_vt
+strn_make_list_vt
 {n:int}
-(cs: list_vt(cgtz, n)): string(n)
+(cs:list_vt(cgtz, n)): strn(n)
 //
 (* ****** ****** *)
 fun<>
-string_make_stream
-  (cs: stream(cgtz)): string
+strn_make_strm
+  (cs:strm(cgtz)): strn(*0*)
 fun<>
-string_make_stream_vt
-  (cs: stream_vt(cgtz)): string
+strn_make_strm_vt
+  (cs:strm_vt(cgtz)): strn(*0*)
 (* ****** ****** *)
 //
 fun
 <n:i0>
-string_tabulate
-( n0: int(n) ) : string(n)
+strn_tabulate
+( n0: int(n) ) : strn(n)
 //
 fun<>
-string_tabulate_cfr
+strn_tabulate_cfr
 {n:nat}
 ( n0
 : int(n)
 , f0
-: nintlt(n) -<cfr> cgtz): string(n)
+: nintlt(n) -<cfr> cgtz): strn(n)
 //
 (* ****** ****** *)
 //
 fun<>
-string_lower
-{n:int}(cs: string(n)): string(n)
+strn_lower
+{n:int}(cs: strn(n)): strn(n)
 fun<>
-string_upper
-{n:int}(cs: string(n)): string(n)
+strn_upper
+{n:int}(cs: strn(n)): strn(n)
 //
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for string
+// symbol overloading for strn
 //
 (* ****** ****** *)
 //
 #symload
-nilq with string_nilq of 1000
+nilq with strn_nilq of 1000
 #symload
-consq with string_consq of 1000
+consq with strn_consq of 1000
 //
 (* ****** ****** *)
-#symload < with string_lt of 1000
-#symload > with string_gt of 1000
-#symload = with string_eq of 1000
-#symload <= with string_lte of 1000
-#symload => with string_gte of 1000
-#symload != with string_neq of 1000
-#symload cmp with string_cmp of 1000
-(* ****** ****** *)
-//
-#symload
-[] with string_get_at of 1000
-#symload
-get_at with string_get_at of 1000
-//
-//
+#symload < with strn_lt of 1000
+#symload > with strn_gt of 1000
+#symload = with strn_eq of 1000
+#symload <= with strn_lte of 1000
+#symload => with strn_gte of 1000
+#symload != with strn_neq of 1000
+#symload cmp with strn_cmp of 1000
 (* ****** ****** *)
 //
 #symload
-[] with string_head of 1000
+[] with strn_get_at of 1000
 #symload
-head with string_head of 1000
-#symload
-head_opt with string_head_opt of 1000
-#symload
-head_exn with string_head_exn of 1000
+get_at with strn_get_at of 1000
+//
 //
 (* ****** ****** *)
 //
 #symload
-tail with string_tail of 1000
+[] with strn_head of 1000
 #symload
-tail_opt with string_tail_opt of 1000
+head with strn_head of 1000
 #symload
-tail_exn with string_tail_exn of 1000
+head_opt with strn_head_opt of 1000
+#symload
+head_exn with strn_head_exn of 1000
 //
 (* ****** ****** *)
 //
 #symload
-print with string_print of 1000
+tail with strn_tail of 1000
+#symload
+tail_opt with strn_tail_opt of 1000
+#symload
+tail_exn with strn_tail_exn of 1000
 //
 (* ****** ****** *)
 //
 #symload
-length with string_length of 1000
+print with strn_print of 1000
 //
 (* ****** ****** *)
 //
 #symload
-append with string_append of 1000
+length with strn_length of 1000
 //
 (* ****** ****** *)
 //
 #symload
-reverse with string_reverse of 1000
+append with strn_append of 1000
 //
 (* ****** ****** *)
-
-#symload forall with string_forall of 1000
-#symload rforall with string_rforall of 1000
-
+//
+#symload
+reverse with strn_reverse of 1000
+//
 (* ****** ****** *)
 
-#symload listize with string_listize of 1000
-#symload rlistize with string_rlistize of 1000
-#symload streamize with string_streamize of 1000
+#symload forall with strn_forall of 1000
+#symload rforall with strn_rforall of 1000
 
+(* ****** ****** *)
+
+#symload listize with strn_listize of 1000
+#symload strmize with strn_strmize of 1000
+
+(* ****** ****** *)
+#symload rlistize with strn_rlistize of 1000
 (* ****** ****** *)
 
 (* end of [prelude_strn000.sats] *)

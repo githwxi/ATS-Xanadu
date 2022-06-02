@@ -36,6 +36,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+(*
+#typedef strn = string
+*)
+(* ****** ****** *)
 //
 fun<>
 bool_neg
@@ -60,7 +64,7 @@ bool_mul
 fun<>
 bool_print(bool): void
 fun<>
-bool_parse(string): bool
+bool_parse(strn): bool
 
 (* ****** ****** *)
 //

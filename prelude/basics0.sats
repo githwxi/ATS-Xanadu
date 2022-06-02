@@ -901,8 +901,12 @@ stropt1
 //
 (* ****** ****** *)
 //
+#sexpdef strn = string0
+#sexpdef strn = string1
+//
 #typedef string = string0
 #typedef string(n:int) = string1(n)
+//
 #typedef stropt = stropt0
 #typedef stropt(n:int) = stropt1(n)
 //
@@ -928,6 +932,9 @@ stropt1_vt
 (n: int) = stropt_i0_vx( n )
 //
 (* ****** ****** *)
+//
+#sexpdef strn_vt = string0_vt
+#sexpdef strn_vt = string1_vt
 //
 #vwtpdef string_vt = string0_vt
 #vwtpdef string_vt(n:int) = string1_vt(n)
@@ -1002,20 +1009,30 @@ streax(a:type) = lazy(strxcon(a))
 //
 datavwtp
 strmcon_vt(a:vwtp+) =
-| strmcon_vt_nil of ((*void*))
-| strmcon_vt_cons of (a, stream_vt(a))
+|
+strmcon_vt_nil of ((*void*))
+|
+strmcon_vt_cons of (a, stream_vt(a))
 and//datavwtp
 strxcon_vt(a:vwtp+) =
-| strxcon_vt_cons of (a, streax_vt(a))
+|
+strxcon_vt_cons of (a, streax_vt(a))
 //
 where
 {
 #vwtpdef
-stream_vt(a:vwtp) = lazy_vt(strmcon_vt(a))
+stream_vt
+( a:vwtp ) = lazy_vt( strmcon_vt(a) )
 #vwtpdef
-streax_vt(a:vwtp) = lazy_vt(strxcon_vt(a))
+streax_vt
+( a:vwtp ) = lazy_vt( strxcon_vt(a) )
 } (* where *)
 //
+(* ****** ****** *)
+#sexpdef
+strm = stream and strm_vt = stream_vt
+#sexpdef
+strx = streax and strx_vt = streax_vt
 (* ****** ****** *)
 //
 (*
@@ -1030,29 +1047,34 @@ datatype
 strqcon
 (a:type+, int) =
 |
-strqcon_nil(a, 0) of ((*void*))
+strqcon_nil(a,0) of ((*void*))
 |
-{ n:int | n >= 0 }
-strqcon_cons(a, n+1) of (a, streaq(a, n))
+{n:int | n >= 0}
+strqcon_cons(a,n+1) of (a,streaq(a,n))
 where
 {
 #typedef
-streaq(a:vwtp, n:int) = lazy(strqcon(a, n))
+streaq(a:vwtp,n:int) = lazy(strqcon(a,n))
 } (* where *) // end of [strqcon]
 (* ****** ****** *)
 datavwtp
 strqcon_vt
 (a:vwtp+, int) =
 |
-strqcon_vt_nil(a, 0) of ((*void*))
+strqcon_vt_nil
+( a, 0(*len*) ) of ((*void*))
 |
 { n:int | n >= 0 }
-strqcon_vt_cons(a, n+1) of (a, streaq_vt(a, n))
+strqcon_vt_cons
+( a, n+1(*len*) ) of (a, streaq_vt(a,n))
 where
 {
 #vwtpdef
-streaq_vt(a:vwtp, n:int) = lazy_vt(strqcon_vt(a, n))
+streaq_vt
+(a:vwtp,n:int) = lazy_vt(strqcon_vt(a,n))
 } (* where *) // end of [strqcon_vt]
 (* ****** ****** *)
+#sexpdef strq=streaq and strq_vt=streaq_vt
+(* ****** ****** *)
 
-(* end of [ATS3/XANADU_basics.sats] *)
+(* end of [ATS3/XANADU_basics0.sats] *)

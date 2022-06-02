@@ -262,13 +262,13 @@ gseq_listize(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_rlistize(xs): list_vt(x0)
+gseq_strmize(xs): strm_vt(x0)
 //
+(* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
-gseq_streamize(xs): stream_vt(x0)
-//
+gseq_rlistize(xs): list_vt(x0)
 (* ****** ****** *)
 //
 fun
@@ -294,17 +294,19 @@ gseq_unrlist_vt(list_vt(x0)): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_unstream(stream(x0)): (xs)
+gseq_unstrm(strm(x0)): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_unstream_vt(stream_vt(x0)): (xs)
+gseq_unstrm_vt(strm_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //
 (*
 gseq_map: map$fopr
 *)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -315,25 +317,25 @@ fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_rlist(xs): list_vt(y0)
+gseq_map_strm(xs): strm_vt(y0)
 //
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_array(xs): a1ptrsz(y0)
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_map_rarray(xs): a1ptrsz(y0)
+gseq_map_rlist(xs): list_vt(y0)
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_stream(xs): stream_vt(y0)
+gseq_map_arrn(xs): a1ptrsz(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_rarrn(xs): a1ptrsz(y0)
 (* ****** ****** *)
 //
 fun
@@ -354,12 +356,13 @@ gseq_filter_list(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_rlist(xs): list_vt(x0)
+gseq_filter_strm(xs): strm_vt(x0)
+//
+(* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_stream(xs): stream_vt(x0)
-//
+gseq_filter_rlist(xs): list_vt(x0)
 (* ****** ****** *)
 //
 fun
@@ -371,12 +374,13 @@ fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_mapopt_rlist(xs): list_vt(y0)
+gseq_mapopt_strm(xs): strm_vt(y0)
+(* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_mapopt_stream(xs): stream_vt(y0)
+gseq_mapopt_rlist(xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -476,22 +480,22 @@ gseq_rappend(xs1: xs, xs2: xs): xs
 fun
 <xs:t0>
 <x0:t0>
-gseq_append_stream
-(xs1: xs, xs2: xs): stream_vt(x0)
+gseq_append_strm
+(xs1: xs, xs2: xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <cz:t0>
-gseq_concat_string
-  (css: cz): string_vt
+gseq_concat_strn
+  (css: cz): strn_vt
 //
 fun
 <xz:t0>
 <xs:t0>
 <x0:t0>
-gseq_concat_stream
-  (xss: xz): stream_vt(x0)
+gseq_concat_strm
+  (xss: xz): strm_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -517,12 +521,12 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_group
-( xs: xs ): stream_vt(xs)
+( xs: xs ): strm_vt(xs)
 fun
 <xs:t0>
 <x0:t0>
 gseq_group_list
-( xs: xs ): stream_vt(list_vt(x0))
+( xs: xs ): strm_vt(list_vt(x0))
 //
 (* ****** ****** *)
 //
@@ -593,14 +597,14 @@ fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_imap_stream
-  (xs: xs): stream_vt(y0)
+gseq_imap_strm
+  (xs: xs): strm_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_imapopt_stream
-  (xs: xs): stream_vt(y0)
+gseq_imapopt_strm
+  (xs: xs): strm_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -634,8 +638,8 @@ gseq_ifilter_rlist(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_istreamize
-  (xs: xs): stream_vt( @(nint, x0) )
+gseq_istrmize
+  (xs: xs): strm_vt( @(nint, x0) )
 //
 (* ****** ****** *)
 //
@@ -653,7 +657,7 @@ gseq_mergesort_list(xs: xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_permutize(xs: xs): stream_vt(xs)
+gseq_permutize(xs: xs): strm_vt(xs)
 //
 (* ****** ****** *)
 //
@@ -718,8 +722,8 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
-gseq_z2streamize
-(xs, ys): stream_vt(@(x0, y0))
+gseq_z2strmize
+(xs, ys): strm_vt(@(x0, y0))
 //
 (* ****** ****** *)
 //
@@ -746,8 +750,8 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2map_stream
-  (xs: xs, ys: ys): stream_vt(z0)
+gseq_z2map_strm
+  (xs: xs, ys: ys): strm_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -769,17 +773,8 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2map_stream
-(xs, ys): stream_vt(z0)
-//
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-<z0:vt>
-gseq_x2mapopt_stream
-(xs, ys): stream_vt(z0)
+gseq_x2map_strm
+(xs, ys): strm_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -788,8 +783,17 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
-gseq_x2streamize
-(xs, ys): stream_vt(@(x0,y0))
+<z0:vt>
+gseq_x2mapopt_strm(xs, ys): strm_vt(z0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_x2strmize(xs, ys): strm_vt(@(x0,y0))
 //
 (* ****** ****** *)
 //
@@ -814,24 +818,21 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imap_list
-(xs, ys): list_vt(z0)
+gseq_x2imap_list(xs, ys): list_vt(z0)
 fun
 <xs:t0
 ,ys:t0>
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imap_stream
-(xs, ys): stream_vt(z0)
+gseq_x2imap_strm(xs, ys): strm_vt(z0)
 fun
 <xs:t0
 ,ys:t0>
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imapopt_stream
-(xs, ys): stream_vt(z0)
+gseq_x2imapopt_strm(xs, ys): strm_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -934,32 +935,35 @@ rforall with gseq_rforall of 0100
 rforeach with gseq_rforeach of 0100
 //
 (* ****** ****** *)
-
+//
 #symload
 listize with gseq_listize of 0100
 #symload
-rlistize with gseq_rlistize of 0100
-#symload
-streamize with gseq_streamize of 0100
-
+strmize with gseq_strmize of 0100
+//
 (* ****** ****** *)
-
+#symload
+rlistize with gseq_rlistize of 0100
+(* ****** ****** *)
+//
 #symload
 map_list with gseq_map_list of 0100
 #symload
-map_rlist with gseq_map_rlist of 0100
-#symload
-map_stream with gseq_map_stream of 0100
-
+map_strm with gseq_map_strm of 0100
+//
 (* ****** ****** *)
-
+#symload
+map_rlist with gseq_map_rlist of 0100
+(* ****** ****** *)
+//
 #symload
 mapopt_list with gseq_mapopt_list of 0100
 #symload
-mapopt_rlist with gseq_mapopt_rlist of 0100
+mapopt_strm with gseq_mapopt_strm of 0100
+//
+(* ****** ****** *)
 #symload
-mapopt_stream with gseq_mapopt_stream of 0100
-
+mapopt_rlist with gseq_mapopt_rlist of 0100
 (* ****** ****** *)
 
 #symload
@@ -972,37 +976,41 @@ reverse with gseq_append of 0100
 rappend with gseq_append of 0100
 
 (* ****** ****** *)
-
+//
 #symload
-append_stream with gseq_append_stream of 0100
+append_strm with gseq_append_strm of 0100
 #symload
-concat_stream with gseq_concat_stream of 0100
-#symload
-concat_string with gseq_concat_string of 0100
-
+concat_strm with gseq_concat_strm of 0100
 (* ****** ****** *)
-
+//
+#symload
+concat_strn with gseq_concat_strn of 0100
+//
+(* ****** ****** *)
+//
 #symload
 ifoldl with gseq_ifoldl of 0100
-
+//
 (* ****** ****** *)
-
+//
 #symload
 iforall with gseq_iforall of 0100
 #symload
 iforeach with gseq_iforeach of 0100
-
+//
 (* ****** ****** *)
-
+//
 #symload
 imap_list with gseq_imap_list of 0100
 #symload
+imap_strm with gseq_imap_strm of 0100
+//
+(* ****** ****** *)
+#symload
 imap_rlist with gseq_imap_rlist of 0100
+(* ****** ****** *)
 #symload
-imap_stream with gseq_imap_stream of 0100
-#symload
-imapopt_stream with gseq_imapopt_stream of 0100
-
+imapopt_strm with gseq_imapopt_strm of 0100
 (* ****** ****** *)
 
 #symload
@@ -1013,7 +1021,7 @@ ifilter_rlist with gseq_ifilter_rlist of 0100
 (* ****** ****** *)
 
 #symload
-istreamize with gseq_istreamize of 0100
+istrmize with gseq_istrmize of 0100
 
 (* ****** ****** *)
 
@@ -1027,7 +1035,7 @@ suffixq with gseq_suffixq of 0100
 #symload
 z2listize with gseq_z2listize of 0100
 #symload
-z2streamize with gseq_z2streamize of 0100
+z2strmize with gseq_z2strmize of 0100
 
 (* ****** ****** *)
 

@@ -26,14 +26,15 @@
 *)
 
 (* ****** ****** *)
+(*
+#sexpdef strm = stream
+#sexpdef strq = streaq
+#sexpdef strx = streax
+*)
+(* ****** ****** *)
 //
 // For functional streams
 //
-(* ****** ****** *)
-#typedef
-strm(a:type) = stream(a)
-#typedef
-strx(a:type) = streax(a)
 (* ****** ****** *)
 //
 fun<>
@@ -43,12 +44,12 @@ strmcon_nil_
 fun
 <a:t0>
 strmcon_cons_
-(a, stream(a)): strmcon(a)
+(a, strm(a)): strmcon(a)
 //
 fun
 <a:t0>
 strxcon_cons_
-(a, streax(a)): strxcon(a)
+(a, strx(a)): strxcon(a)
 //
 fun
 <x0:t0>
@@ -56,96 +57,96 @@ fun
 strmcon_uncons_cfr
 ( xs: strmcon( x0 )
 , f0: ((*void*)) -<cfr> r0
-, f1: (x0, stream(x0)) -<cfr> r0): r0
+, f1: (x0, strm(x0)) -<cfr> r0): r0
 //
 fun
 <x0:t0>
 <r0:vt>
 strxcon_uncons_cfr
 ( xs: strxcon(x0)
-, f1: (x0, streax(x0)) -<cfr> r0): r0
+, f1: (x0, strx(x0)) -<cfr> r0): r0
 //
 (* ****** ****** *)
 
 fun
 <a:t0>
-stream_nil(): stream(a)
+strm_nil(): strm(a)
 fun
 <a:t0>
-stream_cons
-(x0: a, xs: stream(a)): stream(a)
+strm_cons
+(x0: a, xs: strm(a)): strm(a)
 
 (* ****** ****** *)
 
 fun
 <a:t0>
-stream_sing(a): stream(a)
+strm_sing(x0: a): strm(a)
 fun
 <a:t0>
-stream_pair(a, a): stream(a)
+strm_pair(x1: a, x2: a): strm(a)
 
 (* ****** ****** *)
 //
 fun
 <a:t0>
-stream_print
-  (xs: stream(a)): void
+strm_print
+( xs: strm(a) ): void
 //
 fun<>
-stream_print$len(): sint
+strm_print$len(): sint
 //
 fun<>
-stream_print$beg(): void
+strm_print$beg(): void
 fun<>
-stream_print$end(): void
+strm_print$end(): void
 fun<>
-stream_print$sep(): void
+strm_print$sep(): void
 fun<>
-stream_print$rst(): void
+strm_print$rst(): void
 //
 fun
 <a:t0>
-stream_print_all
-  (xs: stream(a)): void
+strm_print_all
+  (xs: strm(a)): void
 fun
 <a:t0>
-stream_print_len
-(xs: stream(a), len: nint): void
+strm_print_len
+(xs: strm(a), len: nint): void
 //
 (* ****** ****** *)
 
 fun
 <a:t0>
-stream_length
-(xs: stream(a)): nint
+strm_length
+( xs: strm(a) ): nint
 
 (* ****** ****** *)
 //
 fun
 <a:t0>
-stream_extend
-(xs: stream(a), x0: a): stream(a)
+strm_extend
+(xs: strm(a), x0: a): strm(a)
 fun
 <a:t0>
-stream_append
-(stream(a), stream(a)): stream(a)
+strm_append
+(xs:strm(a), ys:strm(a)): strm(a)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
-stream_concat
-(xss: stream(stream(a))): stream(a)
+strm_concat
+(xss: strm(strm(a))): strm(a)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
-stream_forall(xs: stream(a)): bool
+strm_forall(xs: strm(a)): bool
 (*
 fun
 <x0:t0>
-stream_foreach(xs: stream(x0)): void
+strm_foreach(xs: strm(x0)): void
 *)
 //
 (* ****** ****** *)
@@ -153,127 +154,127 @@ stream_foreach(xs: stream(x0)): void
 (*
 fun
 <x0:t0>
-stream_listize
-( xs: stream(x0) ) : list_vt(x0)
+strm_listize
+( xs: strm(x0) ) : list_vt(x0)
 *)
 //
 fun
 <x0:t0>
-stream_streamize
-( xs: stream(x0) ) : stream_vt(x0)
+strm_strmize
+( xs: strm(x0) ) : strm_vt(x0)
 //
 (* ****** ****** *)
 //
 (*
-stream_map: map$fopr
-stream_map_vt: map$fopr
+strm_map: map$fopr
+strm_map_vt: map$fopr
 *)
 //
 fun
 <x0:t0>
 <y0:t0>
-stream_map(stream(x0)): stream(y0)
+strm_map(strm(x0)): strm(y0)
 fun
 <x0:t0>
 <y0:t0>
-streax_map(streax(x0)): streax(y0)
+strx_map(strx(x0)): strx(y0)
 //
 fun
 <x0:t0>
 <y0:vt>
-stream_map_vt(stream(x0)): stream_vt(y0)
+strm_map_vt(strm(x0)): strm_vt(y0)
 fun
 <x0:t0>
 <y0:vt>
-streax_map_vt(streax(x0)): streax_vt(y0)
+strx_map_vt(strx(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 //
 (*
-stream_filter: filter$test
-stream_filter_vt: filter$test
+strm_filter: filter$test
+strm_filter_vt: filter$test
 *)
 //
 fun
 <x0:t0>
-stream_filter(stream(x0)): stream(x0)
+strm_filter(strm(x0)): strm(x0)
 fun
 <x0:t0>
-streax_filter(streax(x0)): streax(x0)
+strx_filter(strx(x0)): strx(x0)
 //
 fun
 <x0:t0>
-stream_filter_vt(stream(x0)): stream_vt(x0)
+strm_filter_vt(strm(x0)): strm_vt(x0)
 fun
 <x0:t0>
-streax_filter_vt(streax(x0)): streax_vt(x0)
+strx_filter_vt(strx(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 //
 (*
-stream_mapopt:
+strm_mapopt:
 filter$fopr, map$fopr
-stream_mapopt_vt:
+strm_mapopt_vt:
 filter$fopr, map$fopr
 *)
 fun
 <x0:t0>
 <y0:t0>
-stream_mapopt(stream(x0)): stream(y0)
+strm_mapopt(strm(x0)): strm(y0)
 fun
 <x0:t0>
 <y0:vt>
-stream_mapopt_vt(stream(x0)): stream_vt(y0)
+strm_mapopt_vt(strm(x0)): strm_vt(y0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-stream_mapoptn(stream(x0)): stream(y0)
+strm_mapoptn(strm(x0)): strm(y0)
 fun
 <x0:t0>
 <y0:vt>
-stream_mapoptn_vt(stream(x0)): stream_vt(y0)
+strm_mapoptn_vt(strm(x0)): strm_vt(y0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-stream_merge
-(stream(x0), stream(x0)): stream(x0)
+strm_merge
+(strm(x0), strm(x0)): strm(x0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-stream_sieve(stream(x0)): stream(x0)
+strm_sieve(strm(x0)): strm(x0)
 fun
 <x0:t0>
-streax_sieve(stream(x0)): streax(x0)
+strx_sieve(strm(x0)): strx(x0)
 //
 fun
 <x0:t0>
-stream_sieve_vt(stream(x0)): stream_vt(x0)
+strm_sieve_vt(strm(x0)): strm_vt(x0)
 fun
 <x0:t0>
-streax_sieve_vt(stream(x0)): streax_vt(x0)
+strx_sieve_vt(strm(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 
 fun
 <x0:t0>
 <y0:t0>
-stream_imap(stream(x0)): stream( y0 )
+strm_imap(strm(x0)): strm( y0 )
 fun
 <x0:t0>
 <y0:vt>
-stream_imap_vt(stream(x0)): stream_vt( y0 )
+strm_imap_vt(strm(x0)): strm_vt( y0 )
 
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for stream
+// symbol overloading for strm
 //
 (* ****** ****** *)
 //
@@ -283,64 +284,64 @@ stream_imap_vt(stream(x0)): stream_vt( y0 )
 (* ****** ****** *)
 
 #symload
-length with stream_length of 1000
+length with strm_length of 1000
 
 (* ****** ****** *)
 
 #symload
-extend with stream_extend of 1000
+extend with strm_extend of 1000
 #symload
-append with stream_append of 1000
+append with strm_append of 1000
 #symload
-concat with stream_concat of 1000
+concat with strm_concat of 1000
 
 (* ****** ****** *)
 //
 #symload
-forall with stream_forall of 1000
+forall with strm_forall of 1000
 (*
 #symload
-foreach with stream_foreach of 1000
+foreach with strm_foreach of 1000
 *)
 //
 (* ****** ****** *)
 (*
 #symload
-listize with stream_listize of 1000
+listize with strm_listize of 1000
 *)
 #symload
-streamize with stream_streamize of 1000
+strmize with strm_strmize of 1000
 (* ****** ****** *)
 //
-#symload map with stream_map of 1000
-#symload map with streax_map of 1000
-#symload map_vt with stream_map_vt of 1000
-#symload map_vt with streax_map_vt of 1000
-//
-(* ****** ****** *)
-//
-#symload sieve with stream_sieve of 1000
-#symload sieve with streax_sieve of 1000
-#symload sieve_vt with stream_sieve_vt of 1000
-#symload sieve_vt with streax_sieve_vt of 1000
+#symload map with strm_map of 1000
+#symload map with strx_map of 1000
+#symload map_vt with strm_map_vt of 1000
+#symload map_vt with strx_map_vt of 1000
 //
 (* ****** ****** *)
 //
-#symload filter with stream_filter of 1000
-#symload filter with streax_filter of 1000
-#symload filter_vt with stream_filter_vt of 1000
-#symload filter_vt with streax_filter_vt of 1000
+#symload sieve with strm_sieve of 1000
+#symload sieve with strx_sieve of 1000
+#symload sieve_vt with strm_sieve_vt of 1000
+#symload sieve_vt with strx_sieve_vt of 1000
 //
 (* ****** ****** *)
 //
-#symload imap with stream_imap of 1000
-#symload imap_vt with stream_imap_vt of 1000
+#symload filter with strm_filter of 1000
+#symload filter with strx_filter of 1000
+#symload filter_vt with strm_filter_vt of 1000
+#symload filter_vt with strx_filter_vt of 1000
 //
 (* ****** ****** *)
 //
-#symload mapopt with stream_mapopt of 1000
-#symload mapopt_vt with stream_mapopt_vt of 1000
+#symload imap with strm_imap of 1000
+#symload imap_vt with strm_imap_vt of 1000
+//
+(* ****** ****** *)
+//
+#symload mapopt with strm_mapopt of 1000
+#symload mapopt_vt with strm_mapopt_vt of 1000
 //
 (* ****** ****** *)
 
-(* end of [prelude_stream0.sats] *)
+(* end of [ATS3/XANADU_prelude_strm0.sats] *)

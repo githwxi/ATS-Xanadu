@@ -30,18 +30,17 @@
 // For functional lin-streams
 //
 (* ****** ****** *)
-#sexpdef
-strm_vt = stream_vt
-#sexpdef
-strq_vt = streaq_vt
-#sexpdef
-strx_vt = streax_vt
+(*
+#sexpdef strm_vt = stream_vt
+#sexpdef strq_vt = streaq_vt
+#sexpdef strx_vt = streax_vt
+*)
 (* ****** ****** *)
 //
 fun
 <a:t0>
-stream_vt2t
-(xs: stream_vt(a)): stream(a)
+strm_vt2t
+(xs: strm_vt(a)): strm(a)
 //
 (* ****** ****** *)
 //
@@ -54,7 +53,7 @@ fun
 strmcon_vt_cons_
 ( x0: (a)
 , xs
-: stream_vt(a)): strmcon_vt(a)
+: strm_vt(a)): strmcon_vt(a)
 //
 (* ****** ****** *)
 //
@@ -64,7 +63,7 @@ fun
 strmcon_vt_uncons_cfr
 ( xs: strmcon_vt( x0 )
 , f0: ((*void*)) -<cfr> r0
-, f1: (x0, stream_vt(x0)) -<cfr> r0): r0
+, f1: (x0, strm_vt(x0)) -<cfr> r0): r0
 fun
 <x0:vt>
 <r0:vt>
@@ -76,20 +75,20 @@ strxcon_vt_uncons_cfr
 
 fun
 <a:vt>
-stream_vt_nil
-((*void*)): stream_vt( a )
+strm_vt_nil
+((*void*)): strm_vt( a )
 fun
 <a:vt>
-stream_vt_cons
+strm_vt_cons
 ( x0: (a)
 , xs
-: stream_vt(a)): stream_vt( a )
+: strm_vt(a)): strm_vt( a )
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-stream_vt_sing(a): stream_vt(a)
+strm_vt_sing(a): strm_vt(a)
 fun
 <a:vt>
 strmcon_vt_sing(a): strmcon_vt(a)
@@ -98,8 +97,8 @@ strmcon_vt_sing(a): strmcon_vt(a)
 
 fun
 <a:vt>
-stream_vt_pair
-  (fst: a, snd: a): stream_vt(a)
+strm_vt_pair
+  (fst: a, snd: a): strm_vt(a)
 fun
 <a:vt>
 strmcon_vt_pair
@@ -109,14 +108,14 @@ strmcon_vt_pair
 
 fun
 <a:vt>
-stream_vt_free(stream_vt(a)): void
+strm_vt_free(strm_vt(a)): void
 
 (* ****** ****** *)
 //
 fun
 <a:vt>
-stream_vt_print
-  (xs: stream_vt(a)): void
+strm_vt_print
+  (xs: strm_vt(a)): void
 fun
 <a:vt>
 streax_vt_print
@@ -124,144 +123,144 @@ streax_vt_print
 //
 fun
 <a:vt>
-stream_vt_print0
-  (xs: stream_vt(a)): void
+strm_vt_print0
+  (xs: strm_vt(a)): void
 //
 fun<>
-stream_vt_print$len(): sint
+strm_vt_print$len(): sint
 fun<>
 streax_vt_print$len(): sint
 //
 fun<>
-stream_vt_print$beg(): void
+strm_vt_print$beg(): void
 fun<>
-stream_vt_print$end(): void
+strm_vt_print$end(): void
 fun<>
-stream_vt_print$sep(): void
+strm_vt_print$sep(): void
 fun<>
-stream_vt_print$rst(): void
+strm_vt_print$rst(): void
 //
 fun
 <a:vt>
-stream_vt_print_all
-  (xs: stream_vt(a)): void
+strm_vt_print_all
+  (xs: strm_vt(a)): void
 fun
 <a:vt>
-stream_vt_print_len
-(xs: stream_vt(a), len: nint): void
+strm_vt_print_len
+(xs: strm_vt(a), len: nint): void
 //
 (* ****** ****** *)
 
 fun
 <a:vt>
-stream_vt_length(xs: stream_vt(a)): nint
+strm_vt_length(xs: strm_vt(a)): nint
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-stream_vt_drop
-(xs: stream_vt(a), n0: sint): stream_vt(a)
+strm_vt_drop
+(xs: strm_vt(a), n0: sint): strm_vt(a)
 fun
 <a:vt>
-stream_vt_take
-(xs: stream_vt(a), n0: sint): stream_vt(a)
+strm_vt_take
+(xs: strm_vt(a), n0: sint): strm_vt(a)
 
 (* ****** ****** *)
 //
 fun
 <a:vt>
-stream_vt_listize
-(xs: stream_vt(a)): list_vt(a)
+strm_vt_listize
+(xs: strm_vt(a)): list_vt(a)
 fun
 <a:vt>
-stream_vt_rlistize
-(xs: stream_vt(a)): list_vt(a)
+strm_vt_rlistize
+(xs: strm_vt(a)): list_vt(a)
 //
 fun
 <a:vt>
-stream_vt_streamize
-(xs: stream_vt(a)): stream_vt(a)
+strm_vt_strmize
+(xs: strm_vt(a)): strm_vt(a)
 //
 fun
 <a:vt>
-streax_vt_streamize
-(xs: streax_vt(a)): stream_vt(a)
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-stream_vt_extend
-(xs: stream_vt(a), x0: a): stream_vt(a)
-fun
-<a:vt>
-stream_vt_append
-(stream_vt(a), stream_vt(a)): stream_vt(a)
-fun
-<a:vt>
-stream_vt_concat
-(xss: stream_vt(stream_vt(a))): stream_vt(a)
+streax_vt_strmize
+(xs: streax_vt(a)): strm_vt(a)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-stream_vt_prefixq // xs1 prefix-ofs xs2
+strm_vt_extend
+(xs: strm_vt(a), x0: a): strm_vt(a)
+fun
+<a:vt>
+strm_vt_append
+(strm_vt(a), strm_vt(a)): strm_vt(a)
+fun
+<a:vt>
+strm_vt_concat
+(xss: strm_vt(strm_vt(a))): strm_vt(a)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+strm_vt_prefixq // xs1 prefix-ofs xs2
 ( xs1
-: stream_vt(a), xs2: stream_vt(a) ): bool 
+: strm_vt(a), xs2: strm_vt(a) ): bool 
 //
 (* ****** ****** *)
 fun
 <x0:vt>
-stream_vt_fset_at
-( xs: stream_vt(x0)
-, i0: nint, x0: x0): stream_vt(x0)
+strm_vt_fset_at
+( xs: strm_vt(x0)
+, i0: nint, x0: x0): strm_vt(x0)
 (* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-stream_vt_gappend
-  (xs1: xs, xs2: xs): stream_vt(x0)
+strm_vt_gappend
+  (xs1: xs, xs2: xs): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-stream_vt_gconcat
-  (xss: stream_vt(xs)): stream_vt(x0)
+strm_vt_gconcat
+  (xss: strm_vt(xs)): strm_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
-stream_vt_sortedq(stream_vt(x0)): bool
+strm_vt_sortedq(strm_vt(x0)): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 <r0:vt>
-stream_vt_foldl0
-(xs: stream_vt(x0), r0: r0): r0
+strm_vt_foldl0
+(xs: strm_vt(x0), r0: r0): r0
 //
 fun
 <x0:vt>
-stream_vt_forall0(stream_vt(x0)): bool
+strm_vt_forall0(strm_vt(x0)): bool
 fun
 <x0:vt>
-stream_vt_foreach0(stream_vt(x0)): void
+strm_vt_foreach0(strm_vt(x0)): void
 //
 (* ****** ****** *)
 //
 (*
-stream_vt_map0: map0$fopr
+strm_vt_map0: map0$fopr
 *)
 //
 fun
 <x0:vt>
 <y0:vt>
-stream_vt_map0
-  (xs: stream_vt(x0)): stream_vt(y0)
+strm_vt_map0
+  (xs: strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
@@ -271,13 +270,13 @@ streax_vt_map0
 (* ****** ****** *)
 //
 (*
-stream_vt_filter: filter0$test
+strm_vt_filter: filter0$test
 *)
 //
 fun
 <x0:vt>
-stream_vt_filter0
-  (xs: stream_vt(x0)): stream_vt(x0)
+strm_vt_filter0
+  (xs: strm_vt(x0)): strm_vt(x0)
 fun
 <x0:vt>
 streax_vt_filter0
@@ -286,13 +285,13 @@ streax_vt_filter0
 (* ****** ****** *)
 //
 (*
-stream_vt_mapopt: filter+map
+strm_vt_mapopt: filter+map
 *)
 fun
 <x0:vt>
 <y0:vt>
-stream_vt_mapopt0
-  (xs: stream_vt(x0)): stream_vt(y0)
+strm_vt_mapopt0
+  (xs: strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
@@ -304,8 +303,8 @@ streax_vt_mapopt0
 fun
 <x0:vt>
 <y0:vt>
-stream_vt_mapoptn0
-  (xs: stream_vt(x0)): stream_vt(y0)
+strm_vt_mapoptn0
+  (xs: strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
@@ -315,8 +314,8 @@ streax_vt_mapoptn0
 fun
 <x0:vt>
 <y0:vt>
-stream_vt_maplist0
-  (xs: stream_vt(x0)): stream_vt(y0)
+strm_vt_maplist0
+  (xs: strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
@@ -326,8 +325,8 @@ streax_vt_maplist0
 fun
 <x0:vt>
 <y0:vt>
-stream_vt_mapstrm0
-  (xs: stream_vt(x0)): stream_vt(y0)
+strm_vt_mapstrm0
+  (xs: strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
@@ -337,15 +336,15 @@ streax_vt_mapstrm0
 (* ****** ****** *)
 fun
 <x0:vt>
-stream_vt_group_list
+strm_vt_group_list
 ( xs
-: stream_vt(x0))
-: stream_vt(list_vt(x0))
+: strm_vt(x0))
+: strm_vt(list_vt(x0))
 (* ****** ****** *)
 fun
 <x0:vt>
-stream_vt_sieve
-  (xs: stream_vt(x0)): stream_vt(x0)
+strm_vt_sieve
+  (xs: strm_vt(x0)): strm_vt(x0)
 (* ****** ****** *)
 //
 // For glseq-i-operations
@@ -355,8 +354,8 @@ stream_vt_sieve
 fun
 <x0:vt>
 <y0:vt>
-stream_vt_imap0
-  (xs: stream_vt(x0)): stream_vt(y0)
+strm_vt_imap0
+  (xs: strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
@@ -367,8 +366,8 @@ streax_vt_imap0
 //
 fun
 <x0:vt>
-stream_vt_ifilter0
-  (xs: stream_vt(x0)): stream_vt(x0)
+strm_vt_ifilter0
+  (xs: strm_vt(x0)): strm_vt(x0)
 fun
 <x0:vt>
 streax_vt_ifilter0
@@ -379,8 +378,8 @@ streax_vt_ifilter0
 fun
 <x0:vt>
 <y0:vt>
-stream_vt_imapopt0
-  (xs: stream_vt(x0)): stream_vt(y0)
+strm_vt_imapopt0
+  (xs: strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
@@ -390,14 +389,14 @@ streax_vt_imapopt0
 (* ****** ****** *)
 fun
 <a:vt>
-stream_vt_istreamize
+strm_vt_istrmize
 ( xs
-: stream_vt(a)): stream_vt(@(nint, a))
+: strm_vt(a)): strm_vt(@(nint, a))
 fun
 <a:vt>
-streax_vt_istreamize
+streax_vt_istrmize
 ( xs
-: streax_vt(a)): stream_vt(@(nint, a))
+: streax_vt(a)): strm_vt(@(nint, a))
 (* ****** ****** *)
 //
 // For z2-glseq-operations
@@ -407,29 +406,29 @@ streax_vt_istreamize
 fun
 <x0:vt
 ,y0:vt>
-stream_vt_z2forall0
-  ( xs: stream_vt(x0)
-  , ys: stream_vt(y0)): bool
+strm_vt_z2forall0
+  ( xs: strm_vt(x0)
+  , ys: strm_vt(y0)): bool
 fun
 <x0:vt
 ,y0:vt>
-stream_vt_z2forcmp0
-  ( xs: stream_vt(x0)
-  , ys: stream_vt(y0)): sint
+strm_vt_z2forcmp0
+  ( xs: strm_vt(x0)
+  , ys: strm_vt(y0)): sint
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt
 ,y0:vt>
-stream_vt_z2streamize
-( xs: stream_vt(x0)
-, ys: stream_vt(y0)): stream_vt(@(x0, y0))
+strm_vt_z2strmize
+( xs: strm_vt(x0)
+, ys: strm_vt(y0)): strm_vt(@(x0, y0))
 //
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for stream_vt
+// symbol overloading for strm_vt
 //
 (* ****** ****** *)
 //
@@ -440,41 +439,41 @@ cons_vt with strmcon_vt_cons
 //
 (* ****** ****** *)
 //
-#symload print with stream_vt_print of 1000
-#symload print0 with stream_vt_print of 1000
+#symload print with strm_vt_print of 1000
+#symload print0 with strm_vt_print of 1000
 
 (* ****** ****** *)
 //
-#symload length with stream_vt_length of 1000
-#symload length0 with stream_vt_length of 1000
+#symload length with strm_vt_length of 1000
+#symload length0 with strm_vt_length of 1000
 //
 (* ****** ****** *)
 //
-#symload extend with stream_vt_extend of 1000
+#symload extend with strm_vt_extend of 1000
 (*
-#symload extend00 with stream_vt_extend of 1000
+#symload extend00 with strm_vt_extend of 1000
 *)
-#symload append with stream_vt_append of 1000
+#symload append with strm_vt_append of 1000
 (*
-#symload append00 with stream_vt_append of 1000
+#symload append00 with strm_vt_append of 1000
 *)
 //
 (* ****** ****** *)
 
-#symload prefixq with stream_vt_prefixq of 1000
+#symload prefixq with strm_vt_prefixq of 1000
 
 (* ****** ****** *)
 
-#symload concat with stream_vt_concat of 1000
-#symload gconcat with stream_vt_gconcat of 1000
+#symload concat with strm_vt_concat of 1000
+#symload gconcat with strm_vt_gconcat of 1000
 
 (* ****** ****** *)
 //
-#symload listize with stream_vt_listize of 1000
-#symload listize0 with stream_vt_listize of 1000
-#symload rlistize with stream_vt_rlistize of 1000
-#symload rlistize0 with stream_vt_rlistize of 1000
+#symload listize with strm_vt_listize of 1000
+#symload listize0 with strm_vt_listize of 1000
+#symload rlistize with strm_vt_rlistize of 1000
+#symload rlistize0 with strm_vt_rlistize of 1000
 //
 (* ****** ****** *)
 
-(* end of [prelude_stream0_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_strm0_vt.sats] *)

@@ -143,10 +143,18 @@ fun
 <x0:vt>
 glseq_rlistize1(!xs): list_vt(x0)
 //
+(* ****** ****** *)
+//
+(*
 fun
 <xs:vt>
 <x0:vt>
-glseq_streamize(~xs): stream_vt(x0)
+glseq_strmize(~xs): strm_vt(x0)
+*)
+fun
+<xs:vt>
+<x0:vt>
+glseq_strmize0(~xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -156,22 +164,23 @@ fun
 glseq_unlist(xs: list(x0)): (xs)
 fun
 <xs:vt>
-<x0:vt>
-glseq_unlist_vt(list_vt(x0)): (xs)
-//
-fun
-<xs:vt>
 <x0:t0>
 glseq_unrlist(xs: list(x0)): (xs)
-fun
-<xs:vt>
-<x0:vt>
-glseq_unrlist_vt(list_vt(x0)): (xs)
+//
+(* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-glseq_unstream_vt(stream_vt(x0)): (xs)
+glseq_unlist0_vt(list_vt(x0)): (xs)
+fun
+<xs:vt>
+<x0:vt>
+glseq_unstrm0_vt(strm_vt(x0)): (xs)
+fun
+<xs:vt>
+<x0:vt>
+glseq_unrlist0_vt(list_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //
@@ -282,23 +291,23 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_map0_stream(~xs): stream_vt(y0)
+glseq_map0_strm(~xs): strm_vt(y0)
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_mapopt0_stream(~xs): stream_vt(y0)
+glseq_mapopt0_strm(~xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_maplst0_stream(~xs): stream_vt(y0)
+glseq_maplst0_strm(~xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_mapstrm0_stream(~xs): stream_vt(y0)
+glseq_mapstrm0_strm(~xs): strm_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -360,28 +369,13 @@ glseq_iforeach1(!xs): void
 
 (* ****** ****** *)
 //
-(*
 #symload listize with glseq_listize0 of 0100
+#symload strmize with glseq_strmize0 of 0100
 #symload rlistize with glseq_rlistize0 of 0100
-*)
 //
 #symload listize0 with glseq_listize0 of 0100
+#symload strmize0 with glseq_strmize0 of 0100
 #symload rlistize0 with glseq_rlistize0 of 0100
-//
-#symload streamize with glseq_streamize of 0100
-//
-(* ****** ****** *)
-//
-#symload map0_list with glseq_map0_list of 0100
-#symload map1_list with glseq_map1_list of 0100
-//
-#symload map0_rlist with glseq_map0_rlist of 0100
-#symload map1_rlist with glseq_map1_rlist of 0100
-//
-#symload map0_stream with glseq_map0_stream of 0100
-(*
-#symload map1_stream with glseq_map1_stream of 0100
-*)
 //
 (* ****** ****** *)
 
@@ -393,6 +387,15 @@ glseq_iforeach1(!xs): void
 #symload iforeach0 with glseq_iforeach0 of 0100
 #symload iforeach1 with glseq_iforeach1 of 0100
 
+(* ****** ****** *)
+//
+#symload map0_list with glseq_map0_list of 0100
+#symload map0_strm with glseq_map0_strm of 0100
+#symload map1_list with glseq_map1_list of 0100
+//
+#symload map0_rlist with glseq_map0_rlist of 0100
+#symload map1_rlist with glseq_map1_rlist of 0100
+//
 (* ****** ****** *)
 
 (* end of [prelude_gseq000_vt.sats] *)

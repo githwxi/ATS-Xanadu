@@ -36,6 +36,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+(*
+#typedef strn = string
+*)
+(* ****** ****** *)
 //
 (*
 fun
@@ -53,9 +57,9 @@ gint_print_uint(uint): void
 (* ****** ****** *)
 //
 fun<>
-gint_parse_sint(string): sint
+gint_parse_sint(strn): sint
 fun<>
-gint_parse_uint(string): uint
+gint_parse_uint(strn): uint
 //
 (* ****** ****** *)
 //
@@ -272,21 +276,21 @@ gint_rforall_uint(ub: uint): bool
 fun<>
 gint_listize_nint
 {n:nat}
-(n0: sint(n)): list_vt(nintlt(n), n)
+(n0:sint(n)): list_vt(nintlt(n),n)
 fun<>
 gint_rlistize_nint
 {n:nat}
-(n0: sint(n)): list_vt(nintlt(n), n)
+(n0:sint(n)): list_vt(nintlt(n),n)
 //
 (* ****** ****** *)
 fun<>
-gint_streamize_sint
+gint_strmize_sint
 {i:int}
-(i0: sint(i)): stream_vt( nintlt(i) )
+(i0: sint(i)): strm_vt( nintlt(i) )
 fun<>
-gint_streamize_nint
+gint_strmize_nint
 {n:nat}
-(n0: sint(n)): stream_vt( nintlt(n) )
+(n0: sint(n)): strm_vt( nintlt(n) )
 (* ****** ****** *)
 
 fun
