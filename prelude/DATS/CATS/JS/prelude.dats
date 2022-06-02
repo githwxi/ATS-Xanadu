@@ -8,9 +8,9 @@ UN = // for casting
 "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 #staload _ = 
-"prelude/DATS/stream.dats"
+"prelude/DATS/strm000.dats"
 #staload _ = 
-"prelude/DATS/stream_vt.dats"
+"prelude/DATS/VT/strm000_vt.dats"
 (* ****** ****** *)
 (*
 #implfun
@@ -129,7 +129,7 @@ XATS2JS_list_uncons_cfr
 ) (* end of [XATS2JS_list_uncons_cfr] *)
 (* ****** ****** *)
 //
-// prelude/stream.sats
+// prelude/strm000.sats
 //
 (* ****** ****** *)
 //
@@ -143,7 +143,7 @@ fun
 XATS2JS_strmcon_cons
 {a:t0}
 ( x0: a
-, xs: stream(a)): strmcon(a) = $exname()
+, xs: strm(a)): strmcon(a) = $exname()
 //
 #implfun
 XATS2JS_strmcon_nil() = strmcon_nil((*void*))
@@ -155,40 +155,40 @@ XATS2JS_strmcon_cons(x0, xs) = strmcon_cons(x0, xs)
 //
 #extern
 fun
-XATS2JS_stream_nil
+XATS2JS_strm_nil
 {a:t0}
-( (*void*) ): stream(a) = $exname()
+( (*void*) ): strm(a) = $exname()
 #extern
 fun
-XATS2JS_stream_cons
+XATS2JS_strm_cons
 {a:t0}
 ( x0: a
-, xs: stream(a)): stream(a) = $exname()
+, xs: strm(a)): strm(a) = $exname()
 //
 #implfun
-XATS2JS_stream_nil() = stream_nil((*void*))
+XATS2JS_strm_nil() = strm_nil((*void*))
 #implfun
-XATS2JS_stream_cons(x0, xs) = stream_cons(x0, xs)
+XATS2JS_strm_cons(x0, xs) = strm_cons(x0, xs)
 //
 *)
 (* ****** ****** *)
 #extern
 fun
-XATS2JS_stream_uncons_cfr
+XATS2JS_strm_uncons_cfr
 {x0:t0}{r0:vt}
 ( xs
-: stream(x0)
+: strm(x0)
 , f0
 : ((*void*))-<cfr>r0
 , f1
-: (x0, stream(x0))-<cfr>r0): r0 = $exname()
+: (x0, strm(x0))-<cfr>r0): r0 = $exname()
 #implfun
-XATS2JS_stream_uncons_cfr
+XATS2JS_strm_uncons_cfr
   (xs, f0, f1) =
 ( case+ !xs of
   | strmcon_nil() => f0((*void*))
   | strmcon_cons(x0, xs) => f1(x0, xs)
-) (* end of [XATS2JS_stream_uncons_cfr] *)
+) (* end of [XATS2JS_strm_uncons_cfr] *)
 (* ****** ****** *)
 #extern
 fun
@@ -283,27 +283,27 @@ XATS2JS_list_vt_uncons_cfr
 ) (* end of [XATS2JS_list_vt_uncons_cfr] *)
 (* ****** ****** *)
 //
-// prelude/stream_vt.sats
+// prelude/strm_vt.sats
 //
 (* ****** ****** *)
 (*
 //
 #extern
 fun
-XATS2JS_stream_vt_nil
+XATS2JS_strm_vt_nil
 {a:vt}
-( (*void*) ): stream_vt(a) = $exname()
+( (*void*) ): strm_vt(a) = $exname()
 #extern
 fun
-XATS2JS_stream_vt_cons
+XATS2JS_strm_vt_cons
 {a:vt}
 ( x0: a
-, xs: stream_vt(a)): stream_vt(a) = $exname()
+, xs: strm_vt(a)): strm_vt(a) = $exname()
 //
 #implfun
-XATS2JS_stream_vt_nil() = stream_vt_nil((*void*))
+XATS2JS_strm_vt_nil() = strm_vt_nil((*void*))
 #implfun
-XATS2JS_stream_vt_cons(x0, xs) = stream_vt_cons(x0, xs)
+XATS2JS_strm_vt_cons(x0, xs) = strm_vt_cons(x0, xs)
 //
 *)
 (* ****** ****** *)
@@ -318,7 +318,7 @@ fun
 XATS2JS_strmcon_vt_cons
 {a:vt}
 ( x0: a
-, xs: stream_vt(a)): strmcon_vt(a) = $exname()
+, xs: strm_vt(a)): strmcon_vt(a) = $exname()
 //
 #implfun
 XATS2JS_strmcon_vt_nil() = strmcon_vt_nil((*void*))
@@ -328,21 +328,21 @@ XATS2JS_strmcon_vt_cons(x0, xs) = strmcon_vt_cons(x0, xs)
 (* ****** ****** *)
 #extern
 fun
-XATS2JS_stream_vt_uncons_cfr
+XATS2JS_strm_vt_uncons_cfr
 {x0:vt}{r0:vt}
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 , f0
 : ((*void*))-<cfr>r0
 , f1
-: (x0, stream_vt(x0))-<cfr>r0): r0 = $exname()
+: (x0, strm_vt(x0))-<cfr>r0): r0 = $exname()
 #implfun
-XATS2JS_stream_vt_uncons_cfr
+XATS2JS_strm_vt_uncons_cfr
   (xs, f0, f1) =
 ( case+ !xs of
   | ~strmcon_vt_nil() => f0((*void*))
   | ~strmcon_vt_cons(x0, xs) => f1(x0, xs)
-) (* end of [XATS2JS_stream_vt_uncons_cfr] *)
+) (* end of [XATS2JS_strm_vt_uncons_cfr] *)
 (* ****** ****** *)
 #extern
 fun
@@ -362,35 +362,35 @@ XATS2JS_streax_vt_uncons_cfr
 
 #extern
 fun
-XATS2JS_stream_vt_map0_cfr
+XATS2JS_strm_vt_map0_cfr
 {x0:vt}
 {y0:vt}
-( xs: stream_vt(x0)
-, f0: (x0) -<cfr> y0): stream_vt(y0) = $exname()
+( xs: strm_vt(x0)
+, f0: (x0) -<cfr> y0): strm_vt(y0) = $exname()
 #implfun
-XATS2JS_stream_vt_map0_cfr
+XATS2JS_strm_vt_map0_cfr
 {x0}{y0}
 (xs, f0) =
 (
-stream_vt_map0<x0><y0>(xs)
+strm_vt_map0<x0><y0>(xs)
 ) where
 {
 #impltmp map0$fopr<x0><y0>(x0) = f0(x0)
-} (* end of [XATS2JS_stream_vt_map0_cfr] *)
+} (* end of [XATS2JS_strm_vt_map0_cfr] *)
 
 (* ****** ****** *)
 
 #extern
 fun
-XATS2JS_stream_vt_filter0_cfr
+XATS2JS_strm_vt_filter0_cfr
 {x0:vt}
-( xs: stream_vt(x0)
-, f0: (x0) -<cfr> bool): stream_vt(x0) = $exname()
+( xs: strm_vt(x0)
+, f0: (x0) -<cfr> bool): strm_vt(x0) = $exname()
 #implfun
-XATS2JS_stream_vt_filter0_cfr
+XATS2JS_strm_vt_filter0_cfr
 {x0}(xs, f0) =
 (
-stream_vt_filter0<x0>(xs)
+strm_vt_filter0<x0>(xs)
 ) where
 {
 //
@@ -399,13 +399,15 @@ stream_vt_filter0<x0>(xs)
 //
   #impltmp filter0$test<x0>(x0) = f0(x0)
 //
-} (* end of [XATS2JS_stream_vt_filter0_cfr] *)
+} (* end of [XATS2JS_strm_vt_filter0_cfr] *)
 
 (* ****** ****** *)
 //
-// prelude/array.sats
-// (arrays of
-//  various dimensionality)
+// prelude/arrn000.sats
+// (
+// arrays of
+// various dimensionality
+// )
 //
 (* ****** ****** *)
 //
@@ -557,4 +559,4 @@ a1ptr_set_at_raw<a> = XATS2JS_a1ptr_set_at_raw
 //
 (* ****** ****** *)
 
-(* end of [prelude_DATS_CATS_JS_prelude.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_prelude.dats] *)

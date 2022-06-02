@@ -6,7 +6,8 @@
 //
 (*
 #staload
-"./../SATS/stream_vt.sats"
+"./..\
+/SATS/VT/strm000_vt.sats"
 *)
 //
 (* ****** ****** *)
@@ -22,7 +23,7 @@
 //
 #impltmp
 <a>(*tmp*)
-stream_vt2t(xs) =
+strm_vt2t(xs) =
 (
 auxmain
 ($UN.castlin01(xs))
@@ -30,22 +31,22 @@ auxmain
 {
 fun
 auxmain
-(xs: box): stream(a) =
+(xs: box): strm(a) =
 $lazy
 (
 let
 val xs =
-$UN.castlin10{stream_vt(a)}(xs)
+$UN.castlin10{strm_vt(a)}(xs)
 val r0 = !xs
 in
 //
 case+ r0 of
-|
-~ strmcon_vt_nil
+| ~
+strmcon_vt_nil
   () =>
   strmcon_nil((*void*))
-|
-@ strmcon_vt_cons
+| @
+strmcon_vt_cons
   (x0, xs) =>
   let
   val xs =
@@ -56,7 +57,7 @@ case+ r0 of
 //
 end // end of [let]
 )
-} (* end of [stream_vt2t] *)
+} (* end of [strm_vt2t] *)
 
 (* ****** ****** *)
 //
@@ -97,11 +98,11 @@ strxcon_vt_cons(x0, xs) => f1(x0, xs)
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_nil() =
+strm_vt_nil() =
 $llazy(strmcon_vt_nil())
 #impltmp
 <a>(*tmp*)
-stream_vt_cons
+strm_vt_cons
   (x0, xs) =
 (
 $llazy
@@ -115,91 +116,82 @@ strmcon_vt_cons(x0, xs) )
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_sing(x0) =
-stream_vt_cons(x0, stream_vt_nil())
+strm_vt_sing(x0) =
+strm_vt_cons(x0, strm_vt_nil())
 #impltmp
 <a>(*tmp*)
 strmcon_vt_sing(x0) =
-strmcon_vt_cons(x0, stream_vt_nil())
+strmcon_vt_cons(x0, strm_vt_nil())
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_pair(x0, y0) =
-stream_vt_cons(x0, stream_vt_sing(y0))
+strm_vt_pair(x0, y0) =
+strm_vt_cons(x0, strm_vt_sing(y0))
 #impltmp
 <a>(*tmp*)
 strmcon_vt_pair(x0, y0) =
-strmcon_vt_cons(x0, stream_vt_sing(y0))
+strmcon_vt_cons(x0, strm_vt_sing(y0))
 //  
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_free(xs) = $free(xs)
+strm_vt_free(xs) = $free(xs)
 //
 #impltmp
 {a:vt}
-g_free<stream_vt(a)> = stream_vt_free<a>
+g_free<strm_vt(a)> = strm_vt_free<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_print =
-stream_vt_print0<>
-//
-#impltmp
-<a>(*tmp*)
-stream_vt_print0(xs) =
+strm_vt_print(xs) =
 let
 val len = 
-stream_vt_print$len<>()
+strm_vt_print$len<>()
 in
 if
 (len < 0)
-then stream_vt_print_all(xs)
-else stream_vt_print_len(xs, len)
+then strm_vt_print_all(xs)
+else strm_vt_print_len(xs, len)
 end
 //
 #impltmp
 <>(*tmp*)
-stream_vt_print$len() = 3
+strm_vt_print$len() = 3
 #impltmp
 <>(*tmp*)
-stream_vt_print$beg() = string_print("(")
+strm_vt_print$beg() = strn_print("(")
 #impltmp
 <>(*tmp*)
-stream_vt_print$end() = string_print(")")
+strm_vt_print$end() = strn_print(")")
 #impltmp
 <>(*tmp*)
-stream_vt_print$sep() = string_print(",")
+strm_vt_print$sep() = strn_print(",")
 #impltmp
 <>(*tmp*)
-stream_vt_print$rst() = string_print("...")
-//
-#impltmp
-{a:vt}
-gl_print0<stream_vt(a)> = stream_vt_print<a>
+strm_vt_print$rst() = strn_print("...")
 //
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_print_all
+strm_vt_print_all
   (xs) =
 (
 loop
 (xs, 0(*i0*)) where
 {
 val () =
-stream_vt_print$beg<>()
+strm_vt_print$beg<>()
 }
 ) where
 {
 #vwtpdef
-xs = stream_vt(a)
+xs = strm_vt(a)
 fnx
 loop
 ( xs: xs
@@ -209,7 +201,7 @@ case+ !xs of
 | ~
 strmcon_vt_nil() =>
 (
-stream_vt_print$end<>()
+strm_vt_print$end<>()
 )
 | ~
 strmcon_vt_cons(x0, xs) =>
@@ -219,7 +211,7 @@ val () =
 if
 (i0 > 0)
 then
-stream_vt_print$sep<>()
+strm_vt_print$sep<>()
 //
 in
 loop(xs, succ(i0)) where
@@ -228,32 +220,32 @@ loop(xs, succ(i0)) where
 }
 end // end of [strmcon_vt_cons]
 )
-} (* end of [stream_vt_print_all] *)
+} (* end of [strm_vt_print_all] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_print_len
+strm_vt_print_len
   (xs, n0) =
 (
 loop
 (xs, 0(*i0*)) where
 {
 val () =
-stream_vt_print$beg<>()
+strm_vt_print$beg<>()
 }
 ) where
 {
 #vwtpdef
-xs = stream_vt(a)
+xs = strm_vt(a)
 fnx
 loop(xs: xs, i0: nint): void =
 (
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
-stream_vt_print$end<>()
+strm_vt_print$end<>()
 | ~
 strmcon_vt_cons(x0, xs) =>
 if
@@ -264,18 +256,18 @@ let
 val () =
 g_free<a>(x0)
 val () =
-stream_vt_free<a>(xs)
+strm_vt_free<a>(xs)
 //
 val () =
 if
 (i0 > 0)
 then
-stream_vt_print$sep<>()
+strm_vt_print$sep<>()
 val () =
-stream_vt_print$rst<>()
+strm_vt_print$rst<>()
 //
 in
-  stream_vt_print$end<>()
+  strm_vt_print$end<>()
 end // end of [then]
 else
 let
@@ -284,7 +276,7 @@ val () =
 if
 (i0 > 0)
 then
-stream_vt_print$sep<>()
+strm_vt_print$sep<>()
 //
 in
 loop(xs, succ(i0)) where
@@ -293,31 +285,28 @@ loop(xs, succ(i0)) where
 }
 end // end of [else]
 ) (* strmcon_vt_cons *)
-} (* end of [stream_vt_print_len] *)
+} (* end of [strm_vt_print_len] *)
 
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-streax_vt_print(xs) =
+strx_vt_print(xs) =
 let
 #impltmp
-stream_vt_print$len<>() =
-streax_vt_print$len<>()
+strm_vt_print$len<>() =
+strx_vt_print$len<>()
 in
-stream_vt_print0<>(streax_vt_streamize(xs))
-end // end of [streax_vt_print]
-#impltmp
-{a:vt}
-gl_print0<streax_vt(a)> = streax_vt_print<a>
+strm_vt_print<>(strx_vt_strmize(xs))
+end // end of [strx_vt_print]
 //
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_length(xs) =
+strm_vt_length(xs) =
 (
-stream_vt_foldl0<a><nint>(xs, 0)
+strm_vt_foldl0<a><nint>(xs, 0)
 ) where
 {
 //
@@ -325,13 +314,13 @@ stream_vt_foldl0<a><nint>(xs, 0)
 foldl0$fopr<a><nint>(r0, x0) =
 let val () = g_free<a>(x0) in succ(r0) end
 //
-} (* end of [stream_vt_length] *)
+} (* end of [strm_vt_length] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_drop
+strm_vt_drop
   (xs, n0) =
 (
   auxloop(xs, n0)
@@ -339,7 +328,7 @@ stream_vt_drop
 {
 //
 #vwtpdef
-xs = stream_vt(a)
+xs = strm_vt(a)
 //
 fnx
 auxloop
@@ -350,18 +339,18 @@ then xs else
 (
 case+ !xs of
 |
-strmcon_vt_nil() => stream_vt_nil()
+strmcon_vt_nil() => strm_vt_nil()
 |
 strmcon_vt_cons(x0, xs) =>
   (g_free<a>(x0); auxloop(xs, pred(n0)))
 )
-} (* end of [stream_vt_drop] *)
+} (* end of [strm_vt_drop] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_take
+strm_vt_take
   (xs, n0) =
 (
   auxmain(xs, n0)
@@ -369,7 +358,7 @@ stream_vt_take
 {
 //
 #vwtpdef
-xs = stream_vt(a)
+xs = strm_vt(a)
 //
 fun
 auxmain
@@ -396,19 +385,19 @@ strmcon_vt_cons(x0, auxmain(xs, pred(n0)))
 //
 ) (* else *)
 )
-} (* end of [stream_vt_take] *)
+} (* end of [strm_vt_take] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_listize(xs) =
+strm_vt_listize(xs) =
 let
 //
 fnx
 loop
 ( xs
-: stream_vt(a)
+: strm_vt(a)
 , r0
 : &(?list_vt(a)) >> list_vt(a)
 ) : void =
@@ -431,13 +420,13 @@ in
 let
 var r0: list_vt(a)
 val () = loop(xs, r0) in r0 endlet
-end (* end of [stream_vt_listize] *)
+end (* end of [strm_vt_listize] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_rlistize(xs) =
+strm_vt_rlistize(xs) =
 (
   loop(xs, list_vt_nil())
 ) where
@@ -445,7 +434,7 @@ stream_vt_rlistize(xs) =
 fnx
 loop
 ( xs
-: stream_vt(a)
+: strm_vt(a)
 , r0: list_vt(a)): list_vt(a) =
 (
 case+ !xs of
@@ -458,19 +447,19 @@ val r0 =
 list_vt_cons(x0, r0) in loop(xs, r0)
 end
 )
-} (* end of [stream_vt_rlistize] *)
+} (* end of [strm_vt_rlistize] *)
 
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_streamize(xs) = xs
+strm_vt_strmize(xs) = xs
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-streax_vt_streamize
+strx_vt_strmize
   ( xs ) =
 (
   auxmain(xs)) where
@@ -491,22 +480,22 @@ strmcon_vt_cons(x0, auxmain(xs))
 //
 ) (* end of [auxmain] *)
 //
-} (* end of [streax_vt_streamize] *)
+} (* end of [strx_vt_strmize] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_extend
+strm_vt_extend
   (xs, x0) =
 (
-  stream_vt_append<a>
-  (xs, stream_vt_sing<a>(x0))
+  strm_vt_append<a>
+  (xs, strm_vt_sing<a>(x0))
 )
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_append
+strm_vt_append
   (xs, ys) =
 (
   append(xs, ys)
@@ -525,13 +514,13 @@ strmcon_vt_nil() => !ys
 strmcon_vt_cons(x0, xs) =>
 strmcon_vt_cons(x0, append(xs, ys))
 )
-} (* end of [stream_vt_append] *)
+} (* end of [strm_vt_append] *)
 
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_concat
+strm_vt_concat
   (xss) =
 (
   auxmain0(xss)
@@ -577,13 +566,13 @@ strmcon_vt_cons(x0, xs1) =>
 strmcon_vt_cons(x0, auxmain1(xss, xs1))
 )
 )
-} (* end of [stream_vt_concat] *)
+} (* end of [strm_vt_concat] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_prefixq
+strm_vt_prefixq
   (xs1, xs2) =
 (
   auxloop(xs1, xs2)
@@ -592,9 +581,9 @@ stream_vt_prefixq
 fun
 auxloop
 ( xs1
-: stream_vt(a)
+: strm_vt(a)
 , xs2
-: stream_vt(a)): bool =
+: strm_vt(a)): bool =
 (
 case+ !xs1 of
 | ~
@@ -621,13 +610,13 @@ strmcon_vt_cons(x1, xs1) =>
   end // end of [let]
 )
 ) (* end of [auxloop] *)
-} (*where*) // end of [stream_vt_prefixq]
+} (*where*) // end of [strm_vt_prefixq]
 
 (* ****** ****** *)
 
 #impltmp
 <x0>(*tmp*)
-stream_vt_fset_at
+strm_vt_fset_at
   (xs, i0, x0) =
 (
 auxmain
@@ -637,7 +626,7 @@ auxmain
 fun
 auxmain
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 , i1: nint, x0: x0) =
 $llazy
 (
@@ -659,29 +648,29 @@ val () =
 free(x1) in strmcon_vt_cons(x0, xs)
 end
 )
-} (* end of [stream_vt_fset_at] *)
+} (* end of [strm_vt_fset_at] *)
 
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-stream_vt_gappend
+strm_vt_gappend
   (xs1, xs2) = let
 //
 val xs1 =
-glseq_streamize<xs><x0>(xs1)
+glseq_strmize<xs><x0>(xs1)
 val xs2 =
-glseq_streamize<xs><x0>(xs2)
+glseq_strmize<xs><x0>(xs2)
 //
 in
-stream_vt_append<x0>(xs1, xs2)
+strm_vt_append<x0>(xs1, xs2)
 end
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-stream_vt_gconcat
+strm_vt_gconcat
   (xss) =
 (
   gconcat(xss)
@@ -699,16 +688,16 @@ strmcon_vt_nil()
 | ~
 strmcon_vt_cons(xs0, xss) => !
 (
-stream_vt_append<x0>
-(glseq_streamize<xs><x0>(xs0), gconcat(xss)))
+strm_vt_append<x0>
+(glseq_strmize<xs><x0>(xs0), gconcat(xss)))
 )
-} (* end of [stream_vt_gconcat] *)
+} (* end of [strm_vt_gconcat] *)
 //
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_sortedq
+strm_vt_sortedq
   (xs) =
 (
 case+ !xs of
@@ -723,7 +712,7 @@ strmcon_vt_cons
 fnx
 loop
 ( x0: a
-, xs: stream_vt(a)): bool =
+, xs: strm_vt(a)): bool =
 (
 case+ !xs of
 | ~
@@ -738,13 +727,13 @@ then
 else
 (g_free(x0); g_free(x1); g_free(xs); false)
 )
-} (* end of [stream_vt_sortedq] *)
+} (* end of [strm_vt_sortedq] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a><r0>
-stream_vt_foldl0
+strm_vt_foldl0
   (xs, r0) = r0 where
 {
 //
@@ -754,7 +743,7 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  stream_vt_foreach0<a>(xs)
+  strm_vt_foreach0<a>(xs)
 ) where
 {
 #impltmp
@@ -769,20 +758,20 @@ $UN.p2tr_set<r0>
 end // end of [foreach0$work]
 }
 //
-} (* end of [stream_foldl0/foreach0] *)
+} (* end of [strm_foldl0/foreach0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_forall0
+strm_vt_forall0
   (xs) =
 ( loop(xs) ) where
 {
 fnx
 loop
 ( xs
-: stream_vt(a)): bool =
+: strm_vt(a)): bool =
 (
 case+ !xs of
 | ~
@@ -798,18 +787,18 @@ in
   then loop(xs) else (g_free(xs); false)
 end
 ) (* end of [loop] *)
-} (* end of [stream_vt_forall0] *)
+} (* end of [strm_vt_forall0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_foreach0
+strm_vt_foreach0
   (xs) = let
 //
 val
 test =
-stream_vt_forall0<a>(xs) where
+strm_vt_forall0<a>(xs) where
 {
 #impltmp
 forall0$test<a>(x0) =
@@ -820,13 +809,13 @@ end
 //
 in
   // nothing
-end // end of [stream_vt_foreach0/forall0]
+end // end of [strm_vt_foreach0/forall0]
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-stream_vt_map0
+strm_vt_map0
   (xs) =
 (
   auxmain(xs)
@@ -835,9 +824,9 @@ stream_vt_map0
 fun
 auxmain
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 )
-: stream_vt(y0) =
+: strm_vt(y0) =
 $llazy
 (
 //
@@ -856,13 +845,13 @@ in
   strmcon_vt_cons(y0, auxmain(xs))
 end
 )
-} (* end of [stream_vt_map0] *)
+} (* end of [strm_vt_map0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-streax_vt_map0
+strx_vt_map0
   (xs) =
 (
   auxmain(xs)
@@ -871,9 +860,9 @@ streax_vt_map0
 fun
 auxmain
 ( xs
-: streax_vt(x0)
+: strx_vt(x0)
 )
-: streax_vt(y0) =
+: strx_vt(y0) =
 $llazy
 (
 //
@@ -889,13 +878,13 @@ in
   strxcon_vt_cons(y0, auxmain(xs))
 end
 )
-} (* end of [streax_vt_map0] *)
+} (* end of [strx_vt_map0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <x0>(*tmp*)
-stream_vt_filter0
+strm_vt_filter0
   (xs) =
 (
   auxmain(xs)
@@ -904,9 +893,9 @@ stream_vt_filter0
 fnx
 auxmain
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 )
-: stream_vt(x0) =
+: strm_vt(x0) =
 $llazy
 (
 g_free(xs);
@@ -936,13 +925,13 @@ strmcon_vt_cons
   end
 ) (* end of [strmcom_vt_cons] *)
 )
-} (* end of [stream_vt_filter0] *)
+} (* end of [strm_vt_filter0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <x0>(*tmp*)
-streax_vt_filter0
+strx_vt_filter0
   (xs) =
 (
   auxmain(xs)
@@ -951,9 +940,9 @@ streax_vt_filter0
 fnx
 auxmain
 ( xs
-: streax_vt(x0)
+: strx_vt(x0)
 )
-: streax_vt(x0) =
+: strx_vt(x0) =
 $llazy
 (
 g_free(xs);
@@ -979,13 +968,13 @@ strxcon_vt_cons
   end
 ) (* end of [strxcom_vt_cons] *)
 )
-} (* end of [streax_vt_filter0] *)
+} (* end of [strx_vt_filter0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-stream_vt_mapopt0
+strm_vt_mapopt0
   (xs) =
 (
   auxmain(xs)
@@ -994,9 +983,9 @@ stream_vt_mapopt0
 fnx
 auxmain
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 )
-: stream_vt(y0) =
+: strm_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1047,13 +1036,13 @@ in
 //
 end // end of [strmcon_vt_cons]
 )
-} (* end of [stream_vt_mapopt0] *)
+} (* end of [strm_vt_mapopt0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-streax_vt_mapopt0
+strx_vt_mapopt0
   (xs) =
 (
   auxmain(xs)
@@ -1062,9 +1051,9 @@ streax_vt_mapopt0
 fnx
 auxmain
 ( xs
-: streax_vt(x0)
+: strx_vt(x0)
 )
-: streax_vt(y0) =
+: strx_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1112,13 +1101,13 @@ in
 //
 end // end of [strxcon_vt_cons]
 )
-} (* end of [streax_vt_mapopt0] *)
+} (* end of [strx_vt_mapopt0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-stream_vt_mapoptn0
+strm_vt_mapoptn0
   (xs) =
 (
   auxmain(xs)
@@ -1127,9 +1116,9 @@ stream_vt_mapoptn0
 fnx
 auxmain
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 )
-: stream_vt(y0) =
+: strm_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1160,13 +1149,13 @@ in
 //
 end // end of [strmcon_vt_cons]
 )
-} (* end of [stream_vt_mapoptn0] *)
+} (* end of [strm_vt_mapoptn0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-stream_vt_maplist0
+strm_vt_maplist0
   (xs) =
 (
   auxmain0(xs)
@@ -1175,9 +1164,9 @@ stream_vt_maplist0
 fnx
 auxmain0
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 )
-: stream_vt(y0) =
+: strm_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1186,9 +1175,9 @@ auxloop2($eval(xs)))
 and
 auxmain1
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 , ys: list_vt(y0)
-) : stream_vt(y0) =
+) : strm_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1229,13 +1218,13 @@ in
   strmcon_vt_cons(y0, auxmain1(xs, ys))
 end // end of [strmcon_vt_cons]
 )
-} (* end of [stream_vt_maplist0] *)
+} (* end of [strm_vt_maplist0] *)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-stream_vt_mapstrm0
+strm_vt_mapstrm0
   (xs) =
 (
   auxmain0(xs)
@@ -1244,9 +1233,9 @@ stream_vt_mapstrm0
 fnx
 auxmain0
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 )
-: stream_vt(y0) =
+: strm_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1255,10 +1244,10 @@ auxloop2($eval(xs)))
 and
 auxmain1
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 , ys
-: stream_vt(y0)
-) : stream_vt(y0) =
+: strm_vt(y0)
+) : strm_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1299,20 +1288,20 @@ in
   strmcon_vt_cons(y0, auxmain1(xs, ys))
 end // end of [strmcon_vt_cons]
 )
-} (* end of [stream_vt_mapstrm0] *)
+} (* end of [strm_vt_mapstrm0] *)
 
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-stream_vt_group_list
+strm_vt_group0_list
   (xs) =
 (
   auxmain0(xs)) where
 {
 //
 #vwtpdef r0 = list_vt(x0)
-#vwtpdef xs = stream_vt(x0)
+#vwtpdef xs = strm_vt(x0)
 //
 fnx
 auxmain0
@@ -1334,7 +1323,7 @@ strmcon_vt_nil
   ((*void*)) =>
 let
 val r0 =
-list_vt_reverse<x0>(r0)
+list_vt_reverse0<x0>(r0)
 in
   strmcon_vt_sing<r0>(r0)
 end // end of [strmcon_vt_cons]
@@ -1348,14 +1337,14 @@ auxmain1
 (xs, list_vt_cons(x0, r0))
 else
 let
-val r0 = list_vt_reverse<x0>(r0)
+val r0 = list_vt_reverse0<x0>(r0)
 in
   g_free(x0)
 ; strmcon_vt_cons(r0, auxmain0(xs))
 end // end of [strmcon_vt_cons]
 )
 //
-} (* end of [stream_vt_group_list] *)
+}(*whr*)//end-of(strm_vt_group0_list)
 
 (* ****** ****** *)
 //
@@ -1365,7 +1354,7 @@ end // end of [strmcon_vt_cons]
 
 #impltmp
 <x0><y0>
-stream_vt_imap0
+strm_vt_imap0
   (xs) =
 (
 auxmain(0(*i0*), xs)
@@ -1375,9 +1364,9 @@ fun
 auxmain
 ( i0: nint
 , xs
-: stream_vt(x0)
+: strm_vt(x0)
 )
-: stream_vt(y0) =
+: strm_vt(y0) =
 $llazy
 (
 //
@@ -1397,13 +1386,13 @@ in
   (y0, auxmain(succ(i0), xs))
 end
 )
-} (* end of [stream_vt_imap0] *)
+} (*where*)//end-of(strm_vt_imap0)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-streax_vt_imap0
+strx_vt_imap0
   (xs) =
 (
 auxmain(0(*i0*), xs)
@@ -1413,9 +1402,9 @@ fun
 auxmain
 ( i0: nint
 , xs
-: streax_vt(x0)
+: strx_vt(x0)
 )
-: streax_vt(y0) =
+: strx_vt(y0) =
 $llazy
 (
 //
@@ -1432,13 +1421,13 @@ strxcon_vt_cons
 (y0, auxmain(succ(i0), xs))
 end // strxcon_vt_cons
 ) (* end of [auxmain] *)
-} (* end of [streax_vt_imap0] *)
+} (*where*)//end-of(strx_vt_imap0)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-stream_vt_imapopt0
+strm_vt_imapopt0
   (xs) =
 (
 auxmain(0(*i0*), xs)
@@ -1449,9 +1438,9 @@ fnx
 auxmain
 ( i0: nint
 , xs
-: stream_vt(x0)
+: strm_vt(x0)
 )
-: stream_vt(y0) =
+: strm_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1481,27 +1470,27 @@ if
 opt
 then
 let
-  val y0 =
-  imap0$fopr<x0><y0>(i0, x0)
+val y0 =
+imap0$fopr<x0><y0>(i0, x0)
 in
-  strmcon_vt_cons(y0, auxmain(i1, xs))
+strmcon_vt_cons(y0, auxmain(i1, xs))
 end // end of [then]
 else
 let
-  val () =
-  g_free(x0) in auxloop(i1, $eval(xs))
+val () =
+g_free(x0) in auxloop(i1, $eval(xs))
 end // end of [else]
 //
 end // end of [strmcon_vt_cons]
 ) (* end of [auxloop] *)
 //
-} (* end of [stream_vt_imapopt0] *)
+} (*where*)//end-of-(strm_vt_imapopt0)
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-streax_vt_imapopt0
+strx_vt_imapopt0
   (xs) =
 (
 auxmain(0(*i0*), xs)
@@ -1512,9 +1501,9 @@ fnx
 auxmain
 ( i0: nint
 , xs
-: streax_vt(x0)
+: strx_vt(x0)
 )
-: streax_vt(y0) =
+: strx_vt(y0) =
 $llazy
 (
 g_free(xs);
@@ -1541,27 +1530,27 @@ if
 opt
 then
 let
-  val y0 =
-  imap0$fopr<x0><y0>(i0, x0)
+val y0 =
+imap0$fopr<x0><y0>(i0, x0)
 in
-  strxcon_vt_cons(y0, auxmain(i1, xs))
+strxcon_vt_cons(y0, auxmain(i1, xs))
 end // end of [then]
 else
 let
-  val () =
-  g_free(x0) in auxloop(i1, $eval(xs))
+val () =
+g_free(x0) in auxloop(i1, $eval(xs))
 end // end of [else]
 //
 end // end of [strxcon_vt_cons]
 ) (* end of [auxloop] *)
 //
-} (* end of [streax_vt_imapopt0] *)
+} (*where*)//end-of(strx_vt_imapopt0)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-stream_vt_istreamize
+strm_vt_istrmize
   (xs) =
 (
 auxmain(0, xs)) where
@@ -1571,8 +1560,8 @@ auxmain
 ( i0
 : nint
 , xs
-: stream_vt(a))
-: stream_vt(@(nint, a)) =
+: strm_vt(a))
+: strm_vt(@(nint, a)) =
 $llazy
 (
 $free(xs);
@@ -1586,13 +1575,13 @@ strmcon_vt_cons
   strmcon_vt_cons
   ( (i0, x0), auxmain(i0+1, xs) )
 ) (* end of [auxmain] *)
-} (*where*) // end of [streax_vt_istreamize]
+} (*where*)//end-of(strx_vt_istrmize)
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-streax_vt_istreamize
+strx_vt_istrmize
   (xs) =
 (
 auxmain(0, xs)) where
@@ -1602,8 +1591,8 @@ auxmain
 ( i0
 : nint
 , xs
-: streax_vt(a))
-: stream_vt(@(nint, a)) =
+: strx_vt(a))
+: strm_vt(@(nint, a)) =
 $llazy
 (
 $free(xs);
@@ -1614,7 +1603,7 @@ strxcon_vt_cons
   strmcon_vt_cons
   ( (i0, x0), auxmain(i0+1, xs) )
 ) (* end of [auxmain] *)
-} (*where*) // end of [streax_vt_istreamize]
+} (*where*)//end-of(strx_vt_istrmize)
 
 (* ****** ****** *)
 //
@@ -1624,17 +1613,17 @@ strxcon_vt_cons
 
 #impltmp
 <x0,y0>
-stream_vt_z2streamize
+strm_vt_z2strmize
 ( xs, ys ) =
 auxmain(xs, ys) where
 {
 fun
 auxmain
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 , ys
-: stream_vt(y0))
-: stream_vt(@(x0, y0)) =
+: strm_vt(y0))
+: strm_vt(@(x0, y0)) =
 $llazy
 (
 g_free(xs);
@@ -1659,17 +1648,17 @@ strmcon_vt_nil
 | ~
 strmcon_vt_cons
 ( y0, ys ) =>
-strmcon_vt_cons((x0, y0), auxmain(xs, ys))
+strmcon_vt_cons((x0,y0),auxmain(xs,ys))
 ) (* strmcon_vt_cons *)
 //
 )
-} (* end of [stream_vt_zip2] *)
+} (*where*)//end of [strm_vt_z2strmize]
 
 (* ****** ****** *)
 
 #impltmp
 <x0,y0>
-stream_vt_z2forall0
+strm_vt_z2forall0
   (xs, ys) =
 (
   loop(xs, ys)
@@ -1678,9 +1667,9 @@ stream_vt_z2forall0
 fnx
 loop
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 , ys
-: stream_vt(y0)): bool =
+: strm_vt(y0)): bool =
 (
 case+ !xs of
 | ~
@@ -1689,80 +1678,79 @@ strmcon_vt_nil() =>
 | ~
 strmcon_vt_cons(x0, xs) =>
 (
-  case+ !ys of
-  | ~
-  strmcon_vt_nil() =>
-  (g_free(xs); true)
-  | ~
-  strmcon_vt_cons(y0, ys) =>
-  let
-    val
-    test =
-    z2forall0$test<x0,y0>(x0, y0)
-  in
-    if
-    test
-    then loop(xs, ys)
-    else (g_free(xs); g_free(ys); false)
-  end // end of [strmcon_vt_cons]
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+(g_free(xs); true)
+| ~
+strmcon_vt_cons(y0, ys) =>
+let
+  val
+  test =
+  z2forall0$test<x0,y0>(x0, y0)
+in
+if
+test
+then loop(xs, ys)
+else (g_free(xs); g_free(ys); false)
+end // end of [strmcon_vt_cons]
 )
 ) (* end of [loop] *)
-} (* end of [stream_vt_z2forall0] *)
+} (*where*) // end-of(strm_vt_z2forall0)
 
 (* ****** ****** *)
 
 #impltmp
 <x0,y0>
-stream_vt_z2forcmp0
+strm_vt_z2forcmp0
   (xs, ys) =
 (
-  loop(xs, ys)
-) where
+loop(xs, ys)) where
 {
 fnx
 loop
 ( xs
-: stream_vt(x0)
+: strm_vt(x0)
 , ys
-: stream_vt(y0)): sint =
+: strm_vt(y0)): sint =
 (
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
 (
-  case+ !ys of
-  | ~
-  strmcon_vt_nil() => 0
-  | ~
-  strmcon_vt_cons(y0, ys) =>
-  (
-    g_free(y0); g_free(ys); -1
-  )
+case+ !ys of
+| ~
+strmcon_vt_nil() => 0
+| ~
+strmcon_vt_cons(y0, ys) =>
+(
+  g_free(y0); g_free(ys); -1
+)
 )
 | ~
 strmcon_vt_cons(x0, xs) =>
 (
-  case+ !ys of
-  | ~
-  strmcon_vt_nil() =>
-  (
-    g_free(x0); g_free(xs);  1
-  )
-  | ~
-  strmcon_vt_cons(y0, ys) =>
-  let
-    val
-    sign =
-    z2forcmp0$fcmp<x0,y0>(x0, y0)
-  in
-    if
-    (sign = 0)
-    then loop(xs, ys)
-    else (g_free(xs); g_free(ys); sign)
-  end // end of [strmcon_vt_cons]
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+(
+  g_free(x0); g_free(xs);  1
+)
+| ~
+strmcon_vt_cons(y0, ys) =>
+let
+  val
+  sgn =
+  z2forcmp0$fcmp<x0,y0>(x0, y0)
+in
+  if
+  (sgn = 0)
+  then loop(xs, ys)
+  else (g_free(xs); g_free(ys); sgn)
+end // end of [strmcon_vt_cons]
 )
 ) (* end of [loop] *)
-} (* end of [stream_vt_z2forcmp0] *)
+} (*where*)//end-of[strm_vt_z2forcmp0]
 
 (* ****** ****** *)
 //
@@ -1771,23 +1759,35 @@ strmcon_vt_cons(x0, xs) =>
 (* ****** ****** *)
 //
 #impltmp
-{x0:vt}
-glseq_listize0
-<stream_vt(x0)><x0> = stream_vt_listize<x0>
+{a:vt}
+gl_print0
+<strm_vt(a)> = strm_vt_print<a>
 #impltmp
-{x0:vt}
-glseq_rlistize0
-<stream_vt(x0)><x0> = stream_vt_rlistize<x0>
-#impltmp
-{x0:vt}
-glseq_streamize
-<stream_vt(x0)><x0> = stream_vt_streamize<x0>
+{a:vt}
+gl_print0
+<strx_vt(a)> = strx_vt_print<a>
+//
+(* ****** ****** *)
 //
 #impltmp
 {x0:vt}
-glseq_streamize
-<streax_vt(x0)><x0> = streax_vt_streamize<x0>
+glseq_listize
+<strm_vt(x0)><x0> = strm_vt_listize<x0>
+//
+#impltmp
+{x0:vt}
+glseq_strmize
+<strm_vt(x0)><x0> = strm_vt_strmize<x0>
+#impltmp
+{x0:vt}
+glseq_strmize
+<strx_vt(x0)><x0> = strx_vt_strmize<x0>
+//
+#impltmp
+{x0:vt}
+glseq_rlistize
+<strm_vt(x0)><x0> = strm_vt_rlistize<x0>
 //
 (* ****** ****** *)
 
-(* end of [prelude_strm0000_vt.dats] *)
+(* end of [ATS3/XANADU_prelude_strm0000_vt.dats] *)

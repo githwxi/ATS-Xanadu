@@ -26,8 +26,24 @@
 *)
 
 (* ****** ****** *)
+(*
+For functional lin-streams.
+*)
+(* ****** ****** *)
 //
-// For functional lin-streams
+(*
+HX-2022-06-02:
+Note that only 0-tense verbs
+are supported on lin-streams.
+*)
+//
+(* ****** ****** *)
+//
+(*
+Author: Hongwei Xi
+Start Time: September, 2019
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 (*
@@ -69,7 +85,7 @@ fun
 <r0:vt>
 strxcon_vt_uncons_cfr
 ( xs: strxcon_vt( x0 )
-, f1: (x0, streax_vt(x0)) -<cfr> r0): r0
+, f1: (x0, strx_vt(x0)) -<cfr> r0): r0
 //
 (* ****** ****** *)
 
@@ -118,18 +134,13 @@ strm_vt_print
   (xs: strm_vt(a)): void
 fun
 <a:vt>
-streax_vt_print
-  (xs: streax_vt(a)): void
-//
-fun
-<a:vt>
-strm_vt_print0
-  (xs: strm_vt(a)): void
+strx_vt_print
+  (xs: strx_vt(a)): void
 //
 fun<>
 strm_vt_print$len(): sint
 fun<>
-streax_vt_print$len(): sint
+strx_vt_print$len(): sint
 //
 fun<>
 strm_vt_print$beg(): void
@@ -174,18 +185,20 @@ strm_vt_listize
 (xs: strm_vt(a)): list_vt(a)
 fun
 <a:vt>
-strm_vt_rlistize
-(xs: strm_vt(a)): list_vt(a)
-//
-fun
-<a:vt>
 strm_vt_strmize
 (xs: strm_vt(a)): strm_vt(a)
 //
 fun
 <a:vt>
-streax_vt_strmize
-(xs: streax_vt(a)): strm_vt(a)
+strm_vt_rlistize
+(xs: strm_vt(a)): list_vt(a)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+strx_vt_strmize
+(xs: strx_vt(a)): strm_vt(a)
 //
 (* ****** ****** *)
 //
@@ -197,6 +210,8 @@ fun
 <a:vt>
 strm_vt_append
 (strm_vt(a), strm_vt(a)): strm_vt(a)
+(* ****** ****** *)
+//
 fun
 <a:vt>
 strm_vt_concat
@@ -236,6 +251,11 @@ fun
 strm_vt_sortedq(strm_vt(x0)): bool
 //
 (* ****** ****** *)
+(*
+HX-2022-06-02:
+For verbs declared in [gbas.sats]
+*)
+(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -264,8 +284,8 @@ strm_vt_map0
 fun
 <x0:vt>
 <y0:vt>
-streax_vt_map0
-  (xs: streax_vt(x0)): streax_vt(y0)
+strx_vt_map0
+  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -279,8 +299,8 @@ strm_vt_filter0
   (xs: strm_vt(x0)): strm_vt(x0)
 fun
 <x0:vt>
-streax_vt_filter0
-  (xs: streax_vt(x0)): streax_vt(x0)
+strx_vt_filter0
+  (xs: strx_vt(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -295,8 +315,8 @@ strm_vt_mapopt0
 fun
 <x0:vt>
 <y0:vt>
-streax_vt_mapopt0
-  (xs: streax_vt(x0)): streax_vt(y0)
+strx_vt_mapopt0
+  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -308,8 +328,8 @@ strm_vt_mapoptn0
 fun
 <x0:vt>
 <y0:vt>
-streax_vt_mapoptn0
-  (xs: streax_vt(x0)): streax_vt(y0)
+strx_vt_mapoptn0
+  (xs: strx_vt(x0)): strx_vt(y0)
 //
 fun
 <x0:vt>
@@ -319,8 +339,8 @@ strm_vt_maplist0
 fun
 <x0:vt>
 <y0:vt>
-streax_vt_maplist0
-  (xs: streax_vt(x0)): streax_vt(y0)
+strx_vt_maplist0
+  (xs: strx_vt(x0)): strx_vt(y0)
 //
 fun
 <x0:vt>
@@ -330,20 +350,20 @@ strm_vt_mapstrm0
 fun
 <x0:vt>
 <y0:vt>
-streax_vt_mapstrm0
-  (xs: streax_vt(x0)): streax_vt(y0)
+strx_vt_mapstrm0
+  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 fun
 <x0:vt>
-strm_vt_group_list
+strm_vt_group0_list
 ( xs
 : strm_vt(x0))
 : strm_vt(list_vt(x0))
 (* ****** ****** *)
 fun
 <x0:vt>
-strm_vt_sieve
+strm_vt_sieve0
   (xs: strm_vt(x0)): strm_vt(x0)
 (* ****** ****** *)
 //
@@ -359,8 +379,8 @@ strm_vt_imap0
 fun
 <x0:vt>
 <y0:vt>
-streax_vt_imap0
-  (xs: streax_vt(x0)): streax_vt(y0)
+strx_vt_imap0
+  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -370,8 +390,8 @@ strm_vt_ifilter0
   (xs: strm_vt(x0)): strm_vt(x0)
 fun
 <x0:vt>
-streax_vt_ifilter0
-  (xs: streax_vt(x0)): streax_vt(x0)
+strx_vt_ifilter0
+  (xs: strx_vt(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -383,8 +403,8 @@ strm_vt_imapopt0
 fun
 <x0:vt>
 <y0:vt>
-streax_vt_imapopt0
-  (xs: streax_vt(x0)): streax_vt(y0)
+strx_vt_imapopt0
+  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 fun
@@ -394,9 +414,9 @@ strm_vt_istrmize
 : strm_vt(a)): strm_vt(@(nint, a))
 fun
 <a:vt>
-streax_vt_istrmize
+strx_vt_istrmize
 ( xs
-: streax_vt(a)): strm_vt(@(nint, a))
+: strx_vt(a)): strm_vt(@(nint, a))
 (* ****** ****** *)
 //
 // For z2-glseq-operations
@@ -432,31 +452,21 @@ strm_vt_z2strmize
 //
 (* ****** ****** *)
 //
-#symload
-nil_vt with strmcon_vt_nil
-#symload
-cons_vt with strmcon_vt_cons
+#symload nil_vt with strmcon_vt_nil
+#symload cons_vt with strmcon_vt_cons
 //
 (* ****** ****** *)
 //
 #symload print with strm_vt_print of 1000
-#symload print0 with strm_vt_print of 1000
-
+//
 (* ****** ****** *)
 //
 #symload length with strm_vt_length of 1000
-#symload length0 with strm_vt_length of 1000
 //
 (* ****** ****** *)
 //
 #symload extend with strm_vt_extend of 1000
-(*
-#symload extend00 with strm_vt_extend of 1000
-*)
 #symload append with strm_vt_append of 1000
-(*
-#symload append00 with strm_vt_append of 1000
-*)
 //
 (* ****** ****** *)
 
@@ -470,10 +480,14 @@ cons_vt with strmcon_vt_cons
 (* ****** ****** *)
 //
 #symload listize with strm_vt_listize of 1000
-#symload listize0 with strm_vt_listize of 1000
+//
+(* ****** ****** *)
+#symload strmize with strm_vt_strmize of 1000
+#symload strmize with strx_vt_strmize of 1000
+(* ****** ****** *)
+//
 #symload rlistize with strm_vt_rlistize of 1000
-#symload rlistize0 with strm_vt_rlistize of 1000
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_strm0_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_strm000_vt.sats] *)

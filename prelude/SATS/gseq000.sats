@@ -19,7 +19,7 @@ gseq
 *)
 //
 (* ****** ****** *)
-
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -28,7 +28,7 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_cons(x0, xs): xs
-
+//
 (* ****** ****** *)
 //
 fun
@@ -452,6 +452,19 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_rforeach(xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_list(xs): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_strm(xs): strm_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -1050,4 +1063,4 @@ x2iforeach_col with gseq_x2iforeach_col of 0100
 
 (* ****** ****** *)
 
-(* end of [prelude_gseq000.sats] *)
+(* end of [ATS3/XANADU_prelude_gseq000.sats] *)

@@ -124,18 +124,19 @@ all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseqn00.dats
 
 all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/arrn000.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/strn000.dats
+
+  all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/optn000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/arrn000.dats
-all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/strn000.dats
-all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/stream0.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/strm000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/tuple00.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/tupl000.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/synoug0.dats
 all_dats:: ; \
@@ -147,13 +148,14 @@ all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq000_vt.dats
 
 all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/strn000_vt.dats
+
+all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/list000_vt.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/optn000_vt.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/strn000_vt.dats
-all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/stream0_vt.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/strm000_vt.dats
 
 ######
 

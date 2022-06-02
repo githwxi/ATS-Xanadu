@@ -64,14 +64,14 @@ optn_vt_copy
 //
 fun
 <a:vt>
-optn_vt_length
-{b:bool}
-(xs: !optn_vt(a, b)): int(b2i(b))
-fun
-<a:vt>
 optn_vt_length0
 {b:bool}
 (xs: ~optn_vt(a, b)): int(b2i(b))
+fun
+<a:vt>
+optn_vt_length1
+{b:bool}
+(xs: !optn_vt(a, b)): int(b2i(b))
 //
 (* ****** ****** *)
 //
@@ -95,20 +95,20 @@ optn_vt_foreach1(xs: !optn_vt(x0)): void
 //
 fun
 <a:vt>
-optn_vt_listize0
+optn_vt_listize
 {b:b0}
 (~optn_vt(a, b)): list_vt(a, b2i(b))
-fun
-<a:vt>
-optn_vt_rlistize0
-{b:b0}
-(~optn_vt(a, b)): list_vt(a, b2i(b))
-(* ****** ****** *)
-//
 fun
 <a:vt>
 optn_vt_strmize
 {b:b0}(xs: ~optn_vt(a, b)): strm_vt(a)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+optn_vt_rlistize
+{b:b0}
+(~optn_vt(a, b)): list_vt(a, b2i(b))
 fun
 <a:vt>
 optn_vt_strmize0
@@ -140,23 +140,25 @@ neqzq with optn_vt_consq of 1000
 (* ****** ****** *)
 
 #symload
-length with optn_vt_length of 1000
+length with optn_vt_length1 of 1000
 #symload
 length0 with optn_vt_length0 of 1000
+#symload
+length1 with optn_vt_length1 of 1000
 
 (* ****** ****** *)
 //
 #symload
-listize with optn_vt_listize0 of 1000
+listize with optn_vt_listize of 1000
 #symload
-rlistize with optn_vt_rlistize0 of 1000
+listize with optn_vt_strmize of 1000
 //
 (* ****** ****** *)
 //
 #symload
-strmize with optn_vt_strmize of 1000
+rstrmize with optn_vt_rlistize of 1000
 #symload
-strmize with optn_vt_strmize0 of 1000
+rlistize with optn_vt_rlistize of 1000
 //
 (* ****** ****** *)
 

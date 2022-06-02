@@ -6,7 +6,8 @@
 //
 (*
 #staload
-"./../SATS/gseq_vt.sats"
+"./..\
+/SATS/VT/gseq000_vt.sats"
 *)
 //
 (* ****** ****** *)
@@ -18,7 +19,7 @@
 <xs><x0>
 glseq_copy(xs) =
 glseq_unlist_vt<xs><x0>
-(glseq_listize1<xs><x0>(xs))
+(glseq_copy_list<xs><x0>(xs))
 
 (* ****** ****** *)
 
@@ -101,13 +102,13 @@ endlet (* end of [glseq_print1] *)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-glseq_print$beg() = string_print("(")
+glseq_print$beg() = strn_print("(")
 #impltmp
 <xs><x0>
-glseq_print$end() = string_print(")")
+glseq_print$end() = strn_print(")")
 #impltmp
 <xs><x0>
-glseq_print$sep() = string_print(",")
+glseq_print$sep() = strn_print(",")
 (* ****** ****** *)
 
 #impltmp
@@ -153,21 +154,21 @@ foldl1$fopr
 (*
 #impltmp
 <xs><x0>
-glseq_listize0(xs) =
-stream_vt_listize<x0>
-(glseq_streamize<xs><x0>(xs))
+glseq_listize(xs) =
+strm_vt_listize<x0>
+(glseq_strmize<xs><x0>(xs))
 *)
 (*
 #impltmp
 <xs><x0>
-glseq_rlistize0(xs) =
-stream_vt_rlistize<x0>
-(glseq_streamize<xs><x0>(xs))
+glseq_rlistize(xs) =
+strm_vt_rlistize<x0>
+(glseq_strmize<xs><x0>(xs))
 *)
 //
 #impltmp
 <xs><x0>
-glseq_listize0(xs) =
+glseq_listize(xs) =
 let
 #impltmp
 map0$fopr<x0><x0>(x0) = x0
@@ -177,7 +178,7 @@ end
 //
 #impltmp
 <xs><x0>
-glseq_rlistize0(xs) =
+glseq_rlistize(xs) =
 let
 #impltmp
 map0$fopr<x0><x0>(x0) = x0
@@ -247,54 +248,6 @@ end // end of [foreach1$work]
 //
 } (* end of [glseq_foldl1/foreach1] *)
 
-(* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-glseq_listize0
-  (xs) =
-let
-  #impltmp
-  map0$fopr<x0><x0>(x0) = x0
-in
-glseq_map0_list<xs><x0><x0>(xs)
-end
-//
-#impltmp
-<xs><x0>
-glseq_rlistize0
-  (xs) =
-let
-  #impltmp
-  map0$fopr<x0><x0>(x0) = x0
-in
-glseq_map0_rlist<xs><x0><x0>(xs)
-end
-//
-(* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-glseq_listize1
-  (xs) =
-let
-  #impltmp
-  map1$fopr<x0><x0>(x0) = x0
-in
-  glseq_map1_list<xs><x0><x0>(xs)
-end
-//
-#impltmp
-<xs><x0>
-glseq_rlistize0
-  (xs) =
-let
-  #impltmp
-  map1$fopr<x0><x0>(x0) = x0
-in
-  glseq_map1_rlist<xs><x0><x0>(xs)
-end
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -402,6 +355,19 @@ end // end of [glseq_map1_list/foldl]
 (* ****** ****** *)
 //
 #impltmp
+<xs><x0>
+glseq_copy_list
+  (xs) =
+let
+  #impltmp
+  map1$fopr<x0><x0>(x0) = x0
+in
+  glseq_map1_list<xs><x0><x0>(xs)
+end // end of [glseq_copy_list/map1]
+//
+(* ****** ****** *)
+//
+#impltmp
 <xs><x0><y0>
 glseq_map1_rlist
   (xs) = let
@@ -427,15 +393,15 @@ end // end of [glseq_map0_rlist/foldl0]
 
 #impltmp
 <xs><x0><y0>
-glseq_map0_stream(xs) =
+glseq_map0_strm(xs) =
 let
 val xs =
-glseq_streamize<xs><x0>(xs)
+glseq_strmize<xs><x0>(xs)
 in(*in-of-let*)
 (
-  stream_vt_map0<x0><y0>(xs)
+  strm_vt_map0<x0><y0>(xs)
 )
-end // end of [glseq_map0_stream/streamize]
+end // end of [glseq_map0_strm/strmize]
 
 (* ****** ****** *)
 //
@@ -443,8 +409,8 @@ end // end of [glseq_map0_stream/streamize]
 <xs><x0>
 glseq_forall0
   (xs) =
-stream_vt_forall0<x0>
-(glseq_streamize<xs><x0>(xs))
+strm_vt_forall0<x0>
+(glseq_strmize<xs><x0>(xs))
 //
 (* ****** ****** *)
 //
@@ -505,7 +471,7 @@ end // end of [glseq_foreach1/forall1]
 
 #impltmp
 <xs><x0>
-glseq_append00
+glseq_append0
   (xs1, xs2) =
 (
 glseq_foldr0
@@ -515,8 +481,9 @@ glseq_foldr0
 #impltmp
 foldr0$fopr
 < x0><xs >
-( x0, r0 ) = glseq_cons<xs><x0>(x0, r0)
-} (* end of [glseq_append00/foldr0] *)
+( x0, r0 )=
+glseq_cons<xs><x0>(x0, r0)
+} (* end of [glseq_append0/foldr0] *)
 
 (* ****** ****** *)
 //
@@ -524,12 +491,12 @@ foldr0$fopr
 <xs><x0>
 glseq_reverse0
   ( xs ) =
-glseq_rappend00
+glseq_rappend0
 (xs, glseq_nil<xs><x0>())
 //
 #impltmp
 <xs><x0>
-glseq_rappend00
+glseq_rappend0
   (xs1, xs2) =
 (
 glseq_foldl0
@@ -539,8 +506,9 @@ glseq_foldl0
 #impltmp
 foldl0$fopr
 < x0><xs >
-( r0, x0 ) = glseq_cons<xs><x0>(x0, r0)
-} (* end of [glseq_rappend00/foldl0] *)
+( r0, x0 ) =
+glseq_cons<xs><x0>(x0, r0)
+} (* end of [glseq_rappend0/foldl0] *)
 //
 (* ****** ****** *)
 //
