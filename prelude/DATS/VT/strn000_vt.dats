@@ -92,7 +92,9 @@ end (* [strn_vt_length0] *)
 <>(*tmp*)
 strn_vt_length1(cs) =
 $UN.cast01
-(glseq_length1<strn_vt><cgtz>(cs))
+(
+glseq_length1<strn_vt><cgtz>(cs)
+) (* end of [strn_vt_length1] *)
 //
 (* ****** ****** *)
 //
@@ -172,7 +174,7 @@ $UN.castlin01(glseq_copy_list(cs))
 #impltmp
 <>(*tmp*)
 strn_vt_rlistize1(cs) =
-$UN.castlin01(glseq_copy_rlist(cs))
+$UN.castlin01(glseq_rcopy_list(cs))
 (* ****** ****** *)
 #impltmp
 <>(*tmp*)
