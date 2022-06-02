@@ -269,7 +269,23 @@ strn_vt_copy_list
 ( cs:
 ! strn_vt(n)): list_vt(cgtz,n)
 fun<>
+strn_vt_copy_rlist
+{n:int}
+( cs:
+! strn_vt(n)): list_vt(cgtz,n)
+(* ****** ****** *)
+//
+// HX:
+// rcopy_list = copy_rlist
+fun<>
 strn_vt_rcopy_list
+{n:int}
+( cs:
+! strn_vt(n)): list_vt(cgtz,n)
+// HX:
+// rcopy_rlist = copy_list
+fun<>
+strn_vt_rcopy_rlist
 {n:int}
 ( cs:
 ! strn_vt(n)): list_vt(cgtz,n)
