@@ -196,9 +196,10 @@ fun
 list_rlistize
 {n:int}
 (xs: list(x0, n)): list_vt(x0, n)
+//
 fun
 <x0:t0>
-list_streamize(list(x0)): stream_vt(x0)
+list_strmize(list(x0)): strm_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -277,7 +278,7 @@ fun
 <a:t0>
 list_subsetize_vt
 {n:int}
-(xs: list(a, n)): stream_vt(listlte_vt(a, n))
+(xs: list(a, n)): strm_vt(listlte_vt(a, n))
 //
 (* ****** ****** *)
 //
@@ -338,9 +339,10 @@ cons with list_cons of 000
 (* ****** ****** *)
 
 #symload listize with list_listize of 1000
-#symload rlistize with list_rlistize of 1000
-#symload streamize with list_streamize of 1000
+#symload strmize with list_streamize of 1000
 
+(* ****** ****** *)
+#symload rlistize with list_rlistize of 1000
 (* ****** ****** *)
 
 #symload map with list_map of 1000

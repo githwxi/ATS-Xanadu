@@ -196,31 +196,33 @@ list_vt_suffixq00
 fun
 <a:vt>
 <n:i0>
-list_vt_tabulate(int(n)): list_vt(a, n)
+list_vt_tabulate
+(n0: int(n)): list_vt(a, n)
 fun
 <a:vt>
 list_vt_tabulate_cfr
 {n:nat}
 ( n0: int(n)
-, f0: nintlt(n) -<cfr> a): list_vt(a, n)
+, f0
+: nintlt(n) -<cfr> a): list_vt(a, n)
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
-list_vt_forall0(xs: ~list_vt(x0)): bool
+list_vt_forall0(~list_vt(x0)): bool
 fun
 <x0:vt>
-list_vt_forall1(xs: !list_vt(x0)): bool
+list_vt_forall1(!list_vt(x0)): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
-list_vt_foreach0(xs: ~list_vt(x0)): void
+list_vt_foreach0(~list_vt(x0)): void
 fun
 <x0:vt>
-list_vt_foreach1(xs: !list_vt(x0)): void
+list_vt_foreach1(!list_vt(x0)): void
 //
 (* ****** ****** *)
 //
@@ -228,17 +230,23 @@ fun
 <x0:vt>
 list_vt_listize0
 {n:int}
-(~list_vt(x0, n)): list_vt(x0, n)
+(xs: ~list_vt(x0, n)): list_vt(x0, n)
 fun
 <x0:vt>
 list_vt_rlistize0
 {n:int}
-(~list_vt(x0, n)): list_vt(x0, n)
+(xs: ~list_vt(x0, n)): list_vt(x0, n)
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>
-list_vt_streamize
-( xs: ~list_vt(x0) ): stream_vt(x0)
+list_vt_strmize
+( xs: ~list_vt( x0 ) ): strm_vt( x0 )
+fun
+<x0:vt>
+list_vt_strmize0
+( xs: ~list_vt( x0 ) ): strm_vt( x0 )
 //
 (* ****** ****** *)
 //
@@ -268,7 +276,7 @@ fun
 <a:vt>
 list_vt_permutize
 {n:int}
-(~list_vt(a,n)): stream_vt(list_vt(a,n))
+(~list_vt(a,n)): strm_vt(list_vt(a,n))
 //
 (* ****** ****** *)
 //
@@ -347,12 +355,16 @@ suffixq00 with list_vt_suffixq00 of 1000
 //
 #symload listize with list_vt_listize0 of 1000
 #symload rlistize with list_vt_rlistize0 of 1000
+//
 (*
 #symload listize0 with list_vt_listize0 of 1000
 #symload rlistize0 with list_vt_rlistize0 of 1000
 *)
 //
-#symload streamize with list_vt_streamize of 1000
+(* ****** ****** *)
+//
+#symload strmize with list_vt_strmize of 1000
+#symload strmize0 with list_vt_strmize0 of 1000
 //
 (* ****** ****** *)
 //

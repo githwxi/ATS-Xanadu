@@ -65,19 +65,19 @@ fun
 <map:t0>
 <key:t0>
 <itm:t0>
-gmap_streamize
-(kxs: map): stream_vt(@(key, itm))
+gmap_strmize
+(kxs: map): strm_vt(@(key, itm))
 (* ****** ****** *)
 fun
 <map:t0>
 <key:t0>
 <itm:t0>
-gmap_streamize_key(map): stream_vt(key)
+gmap_strmize_key(map): strm_vt(key)
 fun
 <map:t0>
 <key:t0>
 <itm:t0>
-gmap_streamize_itm(map): stream_vt(key)
+gmap_strmize_itm(map): strm_vt(key)
 (* ****** ****** *)
 
 (* end of [prelude_gmap000.sats] *)
