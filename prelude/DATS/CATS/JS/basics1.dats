@@ -167,7 +167,6 @@ XATS2JS_jsarray_strmize
 //
 (* ****** ****** *)
 #typedef int0 = sint
-#typedef str0 = string
 (* ****** ****** *)
 #extern
 fun
@@ -194,11 +193,11 @@ XATS2JS_jsobjmap_keys
 }
 #impltmp
 XATS2JS_jsobjmap_keys
-<str0> =
+<strn> =
 XATS2JS_jsobjmap_keys where
 {
 //
-#typedef k0 = str0
+#typedef k0 = strn
 //
 fun
 XATS2JS_jsobjmap_keys
@@ -233,11 +232,11 @@ XATS2JS_jsobjmap_keyq
 }
 #impltmp
 XATS2JS_jsobjmap_keyq
-<str0> =
+<strn> =
 XATS2JS_jsobjmap_keyq where
 {
 //
-#typedef k0 = str0
+#typedef k0 = strn
 //
 fun
 XATS2JS_jsobjmap_keyq
@@ -269,11 +268,11 @@ XATS2JS_jsobjmap_make_nil
 }
 #impltmp
 XATS2JS_jsobjmap_make_nil
-<str0> =
+<strn> =
 XATS2JS_jsobjmap_make_nil where
 {
 //
-#typedef k0 = str0
+#typedef k0 = strn
 //
 fun
 XATS2JS_jsobjmap_make_nil
@@ -307,11 +306,11 @@ XATS2JS_jsobjmap_search_opt
 }
 #impltmp
 XATS2JS_jsobjmap_search_opt
-<str0> =
+<strn> =
 XATS2JS_jsobjmap_search_opt where
 {
 //
-#typedef k0 = str0
+#typedef k0 = strn
 //
 fun
 XATS2JS_jsobjmap_search_opt
@@ -365,11 +364,11 @@ XATS2JS_jsobjmap_remove_any
 }
 #impltmp
 XATS2JS_jsobjmap_remove_any
-<str0> =
+<strn> =
 XATS2JS_jsobjmap_remove_any where
 {
 //
-#typedef k0 = str0
+#typedef k0 = strn
 //
 fun
 XATS2JS_jsobjmap_remove_any
@@ -394,11 +393,11 @@ XATS2JS_jsobjmap_remove_opt
 }
 #impltmp
 XATS2JS_jsobjmap_remove_opt
-<str0> =
+<strn> =
 XATS2JS_jsobjmap_remove_opt where
 {
 //
-#typedef k0 = str0
+#typedef k0 = strn
 //
 fun
 XATS2JS_jsobjmap_remove_opt
@@ -451,11 +450,11 @@ XATS2JS_jsobjmap_insert_any
 }
 #impltmp
 XATS2JS_jsobjmap_insert_any
-<str0> =
+<strn> =
 XATS2JS_jsobjmap_insert_any where
 {
 //
-#typedef k0 = str0
+#typedef k0 = strn
 //
 fun
 XATS2JS_jsobjmap_insert_any
@@ -480,11 +479,11 @@ XATS2JS_jsobjmap_insert_opt
 }
 #impltmp
 XATS2JS_jsobjmap_insert_opt
-<str0> =
+<strn> =
 XATS2JS_jsobjmap_insert_opt where
 {
 //
-#typedef k0 = str0
+#typedef k0 = strn
 //
 fun
 XATS2JS_jsobjmap_insert_opt

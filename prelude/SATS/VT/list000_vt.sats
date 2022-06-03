@@ -276,9 +276,10 @@ list_vt_maprev0
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<x0:vt>
 list_vt_mergesort0
-{n:int}(~list_vt(a, n)): list_vt(a,n)
+{n:int}
+(xs: ~list_vt(x0, n)): list_vt(x0, n)
 //
 (* ****** ****** *)
 //
@@ -315,8 +316,10 @@ consq1 with list_vt_consq of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload
 length with list_vt_length1 of 1000
+*)
 #symload
 length0 with list_vt_length0 of 1000
 #symload
@@ -324,12 +327,14 @@ length1 with list_vt_length1 of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload
 append with list_vt_append0 of 1000
 #symload
 extend with list_vt_extend0 of 1000
 #symload
 concat with list_vt_concat0 of 1000
+*)
 //
 #symload
 append0 with list_vt_append0 of 1000
@@ -340,10 +345,12 @@ concat0 with list_vt_concat0 of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload
 reverse with list_vt_reverse0 of 1000
 #symload
 rappend with list_vt_rappend0 of 1000
+*)
 #symload
 reverse0 with list_vt_reverse0 of 1000
 #symload
@@ -356,10 +363,12 @@ rappend11 with list_vt_rappend11 of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload
 prefixq with list_vt_prefixq0 of 1000
 #symload
 suffixq with list_vt_suffixq0 of 1000
+*)
 #symload
 prefixq0 with list_vt_prefixq0 of 1000
 #symload
@@ -381,24 +390,32 @@ rstrmize with list_vt_rstrmize of 1000
 //
 (* ****** ****** *)
 
+(*
 #symload forall with list_vt_forall0 of 1000
+*)
 #symload forall0 with list_vt_forall0 of 1000
 #symload forall1 with list_vt_forall1 of 1000
 
 (* ****** ****** *)
 
+(*
 #symload foreach with list_vt_foreach0 of 1000
+*)
 #symload foreach0 with list_vt_foreach0 of 1000
 #symload foreach1 with list_vt_foreach1 of 1000
 
 (* ****** ****** *)
 //
+(*
 #symload mergesort with list_vt_mergesort0 of 1000
+*)
 #symload mergesort0 with list_vt_mergesort0 of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload permutize with list_vt_permutize0 of 1000
+*)
 #symload permutize0 with list_vt_permutize0 of 1000
 //
 (* ****** ****** *)

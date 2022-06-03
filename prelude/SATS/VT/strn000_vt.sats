@@ -401,8 +401,10 @@ set_at with strtmp_vt_set_at of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload
 print with strn_vt_print1 of 1000
+*)
 #symload
 print0 with strn_vt_print0 of 1000
 #symload
@@ -410,8 +412,10 @@ print1 with strn_vt_print1 of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload
 length with strn_vt_length1 of 1000
+*)
 #symload
 length0 with strn_vt_length0 of 1000
 #symload
@@ -419,15 +423,19 @@ length1 with strn_vt_length1 of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload
 append with strn_vt_append0 of 1000
+*)
 #symload
 append0 with strn_vt_append0 of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload
 reverse with strn_vt_reverse0 of 1000
+*)
 #symload
 reverse0 with strn_vt_reverse0 of 1000
 //

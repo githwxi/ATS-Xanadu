@@ -329,24 +329,24 @@ XATS2JS_gflt_div_dflt_dflt
 //
 /* ****** ****** */
 function
-XATS2JS_string_vt2t
+XATS2JS_strn_vt2t
   (cs)
 {
 cs.pop(); // remove the last '0'
 let res = // from array to string
 String.fromCharCode.apply(null, cs);
-return res; // XATS2JS_string_vt2t
+return res; // XATS2JS_strn_vt2t
 }
 /* ****** ****** */
 //
 function
-XATS2JS_string_nilq
+XATS2JS_strn_nilq
   (opt)
 {
 return(opt==="");
 }
 function
-XATS2JS_string_consq
+XATS2JS_strn_consq
   (opt)
 {
 return(opt!=="");
@@ -368,44 +368,44 @@ return(opt!==null);
 //
 /* ****** ****** */
 function
-XATS2JS_string_lt
+XATS2JS_strn_lt
   (x1, x2)
 {
   return (x1 < x2);
 }
 function
-XATS2JS_string_gt
+XATS2JS_strn_gt
   (x1, x2)
 {
   return (x1 > x2);
 }
 function
-XATS2JS_string_eq
+XATS2JS_strn_eq
   (x1, x2)
 {
   return (x1===x2);
 }
 function
-XATS2JS_string_lte
+XATS2JS_strn_lte
   (x1, x2)
 {
   return (x1 <= x2);
 }
 function
-XATS2JS_string_gte
+XATS2JS_strn_gte
   (x1, x2)
 {
   return (x1 >= x2);
 }
 function
-XATS2JS_string_neq
+XATS2JS_strn_neq
   (x1, x2)
 {
   return (x1 !== x2);
 }
 /* ****** ****** */
 function
-XATS2JS_string_cmp
+XATS2JS_strn_cmp
   (x1, x2)
 {
 if(x1 < x2)
@@ -418,7 +418,7 @@ if(x1 < x2)
 }
 /* ****** ****** */
 function
-XATS2JS_string_head_opt
+XATS2JS_strn_head_opt
   (cs)
 {
 if
@@ -430,28 +430,28 @@ return cs.charCodeAt(0);
 }
 /* ****** ****** */
 function
-XATS2JS_string_head_raw
+XATS2JS_strn_head_raw
   (cs)
 {
 return cs.charCodeAt(0);
 }
 /* ****** ****** */
 function
-XATS2JS_string_tail_raw
+XATS2JS_strn_tail_raw
   (cs)
 {
 return cs.slice(1);//tail
 }
 /* ****** ****** */
 function
-XATS2JS_string_length
+XATS2JS_strn_length
   (cs)
 {
   return (cs.length);
 }
 //
 function
-XATS2JS_string_vt_length
+XATS2JS_strn_vt_length
   (cs)
 {
 // HX: skipping
@@ -459,7 +459,7 @@ XATS2JS_string_vt_length
   return (cs.length - 1);
 }
 function
-XATS2JS_string_vt_length1
+XATS2JS_strn_vt_length1
   (cs)
 {
 // HX: skipping
@@ -469,7 +469,7 @@ XATS2JS_string_vt_length1
 //
 /* ****** ****** */
 function
-XATS2JS_string_get_at
+XATS2JS_strn_get_at
   (cs, i0)
 {
 return cs.charCodeAt(i0);
@@ -485,7 +485,7 @@ XATS2JS_strtmp_vt_alloc
   cs[bsz] = 0; return cs;
 }
 function
-XATS2JS_string_vt_get_at
+XATS2JS_strn_vt_get_at
   (cs, i0)
 {
   return cs[i0];
@@ -499,7 +499,7 @@ XATS2JS_strtmp_vt_set_at
 }
 /* ****** ****** */
 function
-XATS2JS_string_forall_cfr
+XATS2JS_strn_forall_cfr
   (cs, f0)
 {
 let i0;
@@ -515,11 +515,11 @@ let c0 = cs.charCodeAt(i0);
 if
 (!f0(c0)){res = false; break;}
 }
-return res; // string_forall_cfr
+return res; // strn_forall_cfr
 }
 /* ****** ****** */
 function
-XATS2JS_string_rforall_cfr
+XATS2JS_strn_rforall_cfr
   (cs, f0)
 {
 let i0;
@@ -535,11 +535,11 @@ let c0 = cs.charCodeAt(i0-1);
 if
 (!f0(c0)){res = false; break;}
 }
-return res; // string_rforall_cfr
+return res; // strn_rforall_cfr
 }
 /* ****** ****** */
 function
-XATS2JS_string_vt_forall_cfr
+XATS2JS_strn_vt_forall_cfr
   (cs, f0)
 {
 let i0;
@@ -551,14 +551,15 @@ for
 ( i0 = 0
 ; i0 < len; i0 += 1)
 {
-if
-(!f0(cs[i0])){res = false; break;}
+  if
+  (!f0(cs[i0]))
+  {res = false; break;}
 }
-return res; // string_vt_forall_cfr
+return res; // strn_vt_forall_cfr
 }
 /* ****** ****** */
 function
-XATS2JS_string_vt_rforall_cfr
+XATS2JS_strn_vt_rforall_cfr
   (cs, f0)
 {
 let i0;
@@ -570,10 +571,11 @@ for
 ( i0 = len
 ; i0 >= 1 ; i0 -= 1)
 {
-if
-(!f0(cs[i0-1])){res = false; break;}
+  if
+  (!f0(cs[i0-1]))
+  {res = false; break;}
 }
-return res; // string_vt_rforall_cfr
+return res; // strn_vt_rforall_cfr
 }
 /* ****** ****** */
 

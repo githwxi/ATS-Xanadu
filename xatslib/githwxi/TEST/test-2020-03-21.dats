@@ -22,7 +22,7 @@ endwhr // end of [val]
 //
 val ds1 = digitize(31415926)
 val ds2 =
-stream_vt_listize(rdigitize(31415926))
+strm_vt_listize(rdigitize(31415926))
 //
 (* ****** ****** *)
 

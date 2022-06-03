@@ -45,10 +45,10 @@ XATS2JS_char
 return cs.charCodeAt(0);
 }
 function
-XATS2JS_string
+XATS2JS_strn
   ( cs )
 {
-return cs;//cs:JS_string
+return cs;//cs:JS_strn
 }
 /* ****** ****** */
 function

@@ -75,8 +75,7 @@ return; // gint_print_dflt
 }
 /* ****** ****** */
 function
-XATS2JS_string_print
-  (cs)
+XATS2JS_strn_print(cs)
 {
   return XATS2JS_g_print(cs);
 }
