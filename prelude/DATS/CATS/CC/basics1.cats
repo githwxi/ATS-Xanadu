@@ -1,6 +1,6 @@
 /* ****** ****** */
 /*
-CCBasics for Xats2cc
+Basics(CC) for Xats2cc
 */
 /* ****** ****** */
 

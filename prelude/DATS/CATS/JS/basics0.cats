@@ -451,7 +451,7 @@ XATS2JS_strn_length
 }
 //
 function
-XATS2JS_strn_vt_length
+XATS2JS_strn_vt_length0
   (cs)
 {
 // HX: skipping

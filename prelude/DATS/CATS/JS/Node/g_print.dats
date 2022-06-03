@@ -30,14 +30,14 @@ XATS2JS_NODE_char_print
 //
 (* ****** ****** *)
 #impltmp
-string_print<> =
-XATS2JS_NODE_string_print
+strn_print<> =
+XATS2JS_NODE_strn_print
 where
 {
 #extern
 fun
-XATS2JS_NODE_string_print
-(cs: string): void = $exname()
+XATS2JS_NODE_strn_print
+(cs: strn): void = $exname()
 }
 (* ****** ****** *)
 //

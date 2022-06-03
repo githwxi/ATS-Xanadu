@@ -71,7 +71,7 @@ end
 //
 #impltmp
 <a>(*tmp*)
-optn_vt_length(xs) =
+optn_vt_length1(xs) =
 (
 case+ xs of
 | !none_vt() => 0 | !some_vt(x0) => 1
@@ -129,16 +129,6 @@ optn_vt_cons(x0) => list_vt_sing(x0)
 )
 #impltmp
 <a>(*tmp*)
-optn_vt_rlistize(xs) =
-(
-case+ xs of
-| ~
-optn_vt_nil() => list_vt_nil()
-| ~
-optn_vt_cons(x0) => list_vt_sing(x0)
-)
-#impltmp
-<a>(*tmp*)
 optn_vt_strmize(xs) =
 $llazy
 (
@@ -148,6 +138,19 @@ case+ xs of
 optn_vt_nil() => strmcon_vt_nil()
 | ~
 optn_vt_cons(x0) => strmcon_vt_sing(x0)
+)
+
+(* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+optn_vt_rlistize(xs) =
+(
+case+ xs of
+| ~
+optn_vt_nil() => list_vt_nil()
+| ~
+optn_vt_cons(x0) => list_vt_sing(x0)
 )
 
 (* ****** ****** *)

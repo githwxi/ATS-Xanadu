@@ -3148,6 +3148,12 @@ auxid2c
 : t2ype): impld2cst =
 let
 //
+(*
+val () =
+println!
+("auxid2c: id2c = ", id2c)
+*)
+//
 val-
 IMPLD2CST1(dqid, d2cs) = id2c
 //

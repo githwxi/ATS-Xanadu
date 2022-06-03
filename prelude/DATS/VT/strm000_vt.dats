@@ -647,7 +647,7 @@ else
 let
 val () =
 free(x1) in strmcon_vt_cons(x0, xs)
-end
+end // end of [else]
 )
 }(*where*)//end-of-[strm_vt_fset_at]
 

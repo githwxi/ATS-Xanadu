@@ -13,7 +13,7 @@ for Xats2js/Node
 
 #impltmp
 <>(*tmp*)
-fpath_streamize_char
+fpath_strmize_char
   (path) =
 let
 val
@@ -24,27 +24,23 @@ in
 if
 stropt_nilq(opt)
 then
-stream_vt_nil((*void*))
+strm_vt_nil((*void*))
 else
-string_streamize(stropt_unsome(opt))
+strn_strmize(stropt_unsome(opt))
 end where
 {
 #extern
 fun
 XATS2JS_NODE_fs_readFileSync
-  (path: string): stropt = $exname()
-} (* end of [fpath_streamize_char] *)
+(path: string): stropt = $exname()
+} (* end of [fpath_strmize_char] *)
 
 (* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
-fpath_streamize_cgtz
-  (path) =
-(
-  fpath_streamize_char<>(path)
-) (* end of [fpath_streamize_cgtz] *)
+fpath_strmize_cgtz=fpath_strmize_char<>
 //
 (* ****** ****** *)
 
-(* end of [xatslib_libc_XATS2JS_NODE_basics0.dats] *)
+(* end of [xatslib_libcats_XATS2JS_NODE_basics0.dats] *)

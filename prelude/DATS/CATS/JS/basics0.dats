@@ -577,13 +577,13 @@ XATS2JS_strn_length
 }
 //
 #impltmp
-strn_vt_length<> =
-XATS2JS_strn_vt_length
+strn_vt_length0<> =
+XATS2JS_strn_vt_length0
 where
 {
 #extern
 fun
-XATS2JS_strn_vt_length
+XATS2JS_strn_vt_length0
 (cs : !strn_vt) : nint = $exname()
 }
 #impltmp
