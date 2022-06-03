@@ -27,19 +27,23 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: May 28th, 2022
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: May 28th, 2022
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(*
 #typedef int0 = sint
 #typedef btf0 = bool
 #typedef chr0 = char
-#typedef str0 = string
+#typedef str0 = strn
+*)
 (* ****** ****** *)
 //
 datatype funkind =
@@ -60,4 +64,4 @@ datatype funkind =
 //
 (* ****** ****** *)
 
-(* end of [xatsopt_xbasics.sats] *)
+(* end of [ATS3/XATSOPT_xbasics.sats] *)

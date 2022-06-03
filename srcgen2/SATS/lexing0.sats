@@ -27,9 +27,11 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: May 28th, 2022
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: May 28th, 2022
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 #define
@@ -50,4 +52,4 @@ datatype tnode =
 #typedef tokenopt = optn(token)
 (* ****** ****** *)
 
-(* end of [xatsopt_lexing0.sats] *)
+(* end of [ATS3/XATSOPT_lexing0.sats] *)

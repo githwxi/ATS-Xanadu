@@ -27,9 +27,11 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: May 28th, 2022
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: May 28th, 2022
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 #define
@@ -77,4 +79,4 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 
-(* end of [xatsopt_staexp0.sats] *)
+(* end of [ATS3/XATSOPT_staexp0.sats] *)

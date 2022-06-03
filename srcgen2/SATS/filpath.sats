@@ -27,28 +27,28 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: May 28th, 2022
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: May 28th, 2022
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-typedef str0 = string
-(* ****** ****** *)
 //
 fun theDirSep_get(): char
-fun theCurDir_get(): str0
-fun theParDir_get(): str0
+fun theCurDir_get(): strn
+fun theParDir_get(): strn
 //
 (* ****** ****** *)
 //
 fun
-fpath_normq(fp: str0): bool
+fpath_normq(fp: strn): bool
 fun
-fpath_normize(fp: str0): str0
+fpath_normize(fp: strn): strn
 //
 (* ****** ****** *)
 //
@@ -60,4 +60,4 @@ fpath_normize(fp: str0): str0
 //
 (* ****** ****** *)
 
-(* end of [xatsopt_filpath.sats] *)
+(* end of [ATS3/XATSOPT_filpath.sats] *)
