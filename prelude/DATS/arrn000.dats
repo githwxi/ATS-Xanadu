@@ -239,7 +239,7 @@ a1ptr_make_list_vt
   {n}(xs) =
 let
 val n0 =
-length(xs)
+length1(xs)
 val A0 =
 a1ptr_alloc(n0)
 val () =

@@ -120,12 +120,12 @@ optn_vt_strmize0
 // symbol overloading for optn_vt
 //
 (* ****** ****** *)
-
+//
 #symload
 none_vt with optn_vt_nil
 #symload
 some_vt with optn_vt_cons
-
+//
 (* ****** ****** *)
 //
 #symload
@@ -138,14 +138,16 @@ consq with optn_vt_consq of 1000
 neqzq with optn_vt_consq of 1000
 //
 (* ****** ****** *)
-
+//
+(*
 #symload
 length with optn_vt_length1 of 1000
+*)
 #symload
 length0 with optn_vt_length0 of 1000
 #symload
 length1 with optn_vt_length1 of 1000
-
+//
 (* ****** ****** *)
 //
 #symload

@@ -62,15 +62,15 @@ fun<>
 g_inp_char(): sint
 #extern
 fun<>
-g_inp_cstream(): stream_vt(sint)
+g_inp_cstrm(): strm_vt(sint)
 
 (* ****** ****** *)
 #extern
 fun<>
-g_inp_line(): string
+g_inp_line(): strn
 #extern
 fun<>
-g_inp_lline(): string_vt
+g_inp_lline(): strn_vt
 (* ****** ****** *)
 #extern
 fun<>
@@ -94,7 +94,7 @@ $STDIO.fgetc_ref(g_stdin<>())
 
 #impltmp
 <>(*tmp*)
-g_inp_cstream() =
+g_inp_cstrm() =
 (
   auxmain(g_stdin<>())
 ) where
@@ -104,22 +104,22 @@ fun
 auxmain
 (
 fr: FILEref
-) : stream_vt(int) =
+) : strm_vt(int) =
 $llazy
 (
 let
 val c0 = $STDIO.fgetc_ref(fr)
 in
-  if
-  (c0 < 0) // EOF
-  then
-  strmcon_vt_nil((*void*))
-  else
-  strmcon_vt_cons(c0, auxmain(fr))
+if
+(c0 < 0) // EOF
+then
+strmcon_vt_nil((*void*))
+else
+strmcon_vt_cons(c0, auxmain(fr))
 end // end of [let]
 )
 //
-} (* end of [g_inp_cstream] *)
+} (* end of [g_inp_cstrm] *)
 
 (* ****** ****** *)
 //

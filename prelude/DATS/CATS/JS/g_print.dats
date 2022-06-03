@@ -78,20 +78,20 @@ XATS2JS_gflt_print_dflt
 //
 (* ****** ****** *)
 #impltmp
-string_print<> =
-XATS2JS_string_print
+strn_print<> =
+XATS2JS_strn_print
 where
 {
 #extern
 fun
-XATS2JS_string_print
-(cs: string): void = $exname()
+XATS2JS_strn_print
+( cs: strn ): void = $exname()
 }
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_the_print_store_join(): string = $exname()
+XATS2JS_the_print_store_join(): strn = $exname()
 #extern
 fun
 XATS2JS_the_print_store_clear(): (void) = $exname()

@@ -512,19 +512,6 @@ gseq_concat_strm
 //
 (* ****** ****** *)
 //
-fun
-<xs:t0>
-<x0:t0>
-gseq_prefixq
-  (xs1: xs, xs2: xs): bool
-fun
-<xs:t0>
-<x0:t0>
-gseq_suffixq
-  (xs1: xs, xs2: xs): bool
-//
-(* ****** ****** *)
-//
 (*
 fun
 <x0:t0>
@@ -724,6 +711,19 @@ gseq_z2foreach
 (* ****** ****** *)
 //
 fun
+<xs:t0>
+<x0:t0>
+gseq_prefixq
+  (xs1: xs, xs2: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_suffixq
+  (xs1: xs, xs2: xs): bool
+//
+(* ****** ****** *)
+//
+fun
 <xs:t0
 ,ys:t0>
 <x0:t0
@@ -867,200 +867,6 @@ gseq_x2iforeach_col(xs, ys): void
 // HX-2020-05-30:
 // symbol overloading for gseq
 //
-(* ****** ****** *)
-
-#symload
-nilq with gseq_nilq of 0100
-#symload
-consq with gseq_consq of 0100
-
-(* ****** ****** *)
-
-#symload
-head with gseq_head_exn of 0100
-#symload
-head_exn with gseq_head_exn of 0100
-#symload
-head_opt with gseq_head_opt of 0100
-
-(* ****** ****** *)
-
-#symload
-tail with gseq_tail_exn of 0100
-#symload
-tail_exn with gseq_tail_exn of 0100
-#symload
-tail_opt with gseq_tail_opt of 0100
-
-(* ****** ****** *)
-
-#symload
-length with gseq_length of 0100
-
-(* ****** ****** *)
-//
-#symload
-foldl with gseq_foldl of 0100
-#symload
-forall with gseq_forall of 0100
-#symload
-foreach with gseq_foreach of 0100
-//
-(* ****** ****** *)
-#symload
-memberq with gseq_memberq of 0100
-(* ****** ****** *)
-#symload
-get_at with gseq_get_at of 0100
-#symload
-fset_at with gseq_fset_at of 0100
-#symload
-get_at_opt with gseq_get_at_opt of 0100
-(* ****** ****** *)
-//
-#symload
-max2 with gseq_max2 of 0100
-#symload
-min2 with gseq_min2 of 0100
-//
-#symload
-max_exn with gseq_max_exn of 0100
-#symload
-min_exn with gseq_min_exn of 0100
-//
-#symload
-max_opt with gseq_max_opt of 0100
-#symload
-min_opt with gseq_min_opt of 0100
-//
-(* ****** ****** *)
-
-#symload
-sortedq with gseq_sortedq of 0100
-
-(* ****** ****** *)
-//
-#symload
-foldr with gseq_foldr of 0100
-#symload
-rforall with gseq_rforall of 0100
-#symload
-rforeach with gseq_rforeach of 0100
-//
-(* ****** ****** *)
-//
-#symload
-listize with gseq_listize of 0100
-#symload
-strmize with gseq_strmize of 0100
-//
-(* ****** ****** *)
-#symload
-rlistize with gseq_rlistize of 0100
-(* ****** ****** *)
-//
-#symload
-map_list with gseq_map_list of 0100
-#symload
-map_strm with gseq_map_strm of 0100
-//
-(* ****** ****** *)
-#symload
-map_rlist with gseq_map_rlist of 0100
-(* ****** ****** *)
-//
-#symload
-mapopt_list with gseq_mapopt_list of 0100
-#symload
-mapopt_strm with gseq_mapopt_strm of 0100
-//
-(* ****** ****** *)
-#symload
-mapopt_rlist with gseq_mapopt_rlist of 0100
-(* ****** ****** *)
-
-#symload
-append with gseq_append of 0100
-#symload
-concat with gseq_append of 0100
-#symload
-reverse with gseq_append of 0100
-#symload
-rappend with gseq_append of 0100
-
-(* ****** ****** *)
-//
-#symload
-append_strm with gseq_append_strm of 0100
-#symload
-concat_strm with gseq_concat_strm of 0100
-(* ****** ****** *)
-//
-#symload
-concat_strn with gseq_concat_strn of 0100
-//
-(* ****** ****** *)
-//
-#symload
-ifoldl with gseq_ifoldl of 0100
-//
-(* ****** ****** *)
-//
-#symload
-iforall with gseq_iforall of 0100
-#symload
-iforeach with gseq_iforeach of 0100
-//
-(* ****** ****** *)
-//
-#symload
-imap_list with gseq_imap_list of 0100
-#symload
-imap_strm with gseq_imap_strm of 0100
-//
-(* ****** ****** *)
-#symload
-imap_rlist with gseq_imap_rlist of 0100
-(* ****** ****** *)
-#symload
-imapopt_strm with gseq_imapopt_strm of 0100
-(* ****** ****** *)
-
-#symload
-ifilter_list with gseq_ifilter_list of 0100
-#symload
-ifilter_rlist with gseq_ifilter_rlist of 0100
-
-(* ****** ****** *)
-
-#symload
-istrmize with gseq_istrmize of 0100
-
-(* ****** ****** *)
-
-#symload
-prefixq with gseq_prefixq of 0100
-#symload
-suffixq with gseq_suffixq of 0100
-
-(* ****** ****** *)
-
-#symload
-z2listize with gseq_z2listize of 0100
-#symload
-z2strmize with gseq_z2strmize of 0100
-
-(* ****** ****** *)
-
-#symload
-x2foreach_row with gseq_x2foreach_row of 0100
-#symload
-x2foreach_col with gseq_x2foreach_col of 0100
-#symload
-x2iforeach_row with gseq_x2iforeach_row of 0100
-#symload
-x2iforeach_col with gseq_x2iforeach_col of 0100
-
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000.sats] *)
