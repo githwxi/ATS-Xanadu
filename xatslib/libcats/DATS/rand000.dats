@@ -104,15 +104,15 @@ list_rand_length
 //
 #extern
 fun<>
-string_rand(): string_vt
+strn_rand(): strn_vt
 #extern
 fun<>
-string_rand$length(): nint
+strn_rand$length(): nint
 //
 #extern
 fun<>
-string_rand_length
-{n:nat}(ln: int(n)): string_vt(n)
+strn_rand_length
+{n:nat}(ln: int(n)): strn_vt(n)
 //
 (* ****** ****** *)
 
@@ -276,15 +276,15 @@ map$fopr<int><a>(_) = g_rand<a>()
 //
 #impltmp
 <>(*tmp*)
-string_rand() =
-string_rand_length<>
-(string_rand$length<>())
+strn_rand() =
+strn_rand_length<>
+(strn_rand$length<>())
 //
 #impltmp
-g_rand<string>() =
-string_vt2t(string_rand<>())
+g_rand<strn>() =
+strn_vt2t(strn_rand<>())
 #impltmp
-g_rand<string_vt> = string_rand<>
+g_rand<strn_vt> = strn_rand<>(*void*)
 //
 (* ****** ****** *)
 

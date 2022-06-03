@@ -300,6 +300,15 @@ fun
 <x0:vt>
 glseq_copy_strm(!xs): strm_vt(x0)
 //
+fun
+<xs:vt>
+<x0:vt>
+glseq_rcopy_list(!xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+glseq_rcopy_strm(!xs): strm_vt(x0)
+//
 (* ****** ****** *)
 //
 fun
@@ -328,6 +337,10 @@ fun
 <xs:vt>
 <x0:vt>
 glseq_copy_rlist(!xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+glseq_rcopy_rlist(!xs): list_vt(x0)
 //
 (* ****** ****** *)
 //

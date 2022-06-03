@@ -43,30 +43,30 @@ For depth-first search
 #extern
 fun
 <nx:vt>
-gtree_dfs_streamize
-  (x0: nx): stream_vt(nx)
+gtree_dfs_strmize
+  (x0: nx): strm_vt(nx)
 #extern
 fun
 <nx:vt>
-gtree_dfs_streamize_list
-  (xs: list_vt(nx)): stream_vt(nx)
+gtree_dfs_strmize_list
+  (xs: list_vt(nx)): strm_vt(nx)
 //
 (* ****** ****** *)
 //
 #impltmp
 <nx>(*tmp*)
-gtree_dfs_streamize(x0) =
+gtree_dfs_strmize(x0) =
 let
 val xs =
 list_vt_sing(x0) in
-gtree_dfs_streamize_list(xs)
-end // end of [gtree_dfs_streamize]
+gtree_dfs_strmize_list(xs)
+end // end of [gtree_dfs_strmize]
 //
 (* ****** ****** *)
 
 #impltmp
 <nx>(*tmp*)
-gtree_dfs_streamize_list
+gtree_dfs_strmize_list
   (xs) =
 ( 
   auxmain(list_vt_sing(xs))
@@ -77,7 +77,7 @@ nxs = list_vt(nx)
 fun
 auxmain
 ( xss
-: list_vt(nxs)): stream_vt(nx) =
+: list_vt(nxs)): strm_vt(nx) =
 $llazy
 (
 g_free(xss);
@@ -111,7 +111,7 @@ strmcon_vt_cons
 end
 ) (* list_vt_cons *)
 ) (* list_vt_cons *)
-} (* end of [gtree_dfs_streamize_list] *)
+} (* end of [gtree_dfs_strmize_list] *)
 
 (* ****** ****** *)
 //
@@ -123,30 +123,30 @@ For breadth-first search
 #extern
 fun
 <nx:vt>
-gtree_bfs_streamize
-  (x0: nx): stream_vt(nx)
+gtree_bfs_strmize
+  (x0: nx): strm_vt(nx)
 #extern
 fun
 <nx:vt>
-gtree_bfs_streamize_list
-  (xs: list_vt(nx)): stream_vt(nx)
+gtree_bfs_strmize_list
+  (xs: list_vt(nx)): strm_vt(nx)
 //
 (* ****** ****** *)
 //
 #impltmp
 <nx>(*tmp*)
-gtree_bfs_streamize(x0) =
+gtree_bfs_strmize(x0) =
 let
 val xs =
 list_vt_sing(x0) in
-gtree_bfs_streamize_list(xs)
-end // end of [gtree_bfs_streamize]
+gtree_bfs_strmize_list(xs)
+end // end of [gtree_bfs_strmize]
 //
 (* ****** ****** *)
 
 #impltmp
 <nx>(*tmp*)
-gtree_bfs_streamize_list
+gtree_bfs_strmize_list
   (xs) =
 (
 let
@@ -165,7 +165,7 @@ auxmain
 : list_vt(nxs)
 , yss
 : list_vt(nxs)
-) : stream_vt(nx) =
+) : strm_vt(nx) =
 $llazy
 (
 g_free(xss);
@@ -182,7 +182,7 @@ strmcon_vt_nil()
 | _ =>
 let
 val xss =
-list_vt_reverse(yss)
+list_vt_reverse0(yss)
 in !
 (auxmain(xss, list_vt_nil()))
 end
@@ -212,8 +212,8 @@ strmcon_vt_cons
 end
 ) (* list_vt_cons *)
 ) (* list_vt_cons *)
-} (* end of [gtree_bfs_streamize_list] *)
+} (* end of [gtree_bfs_strmize_list] *)
 
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_mytree00.dats] *)
+(* end of [xatslib_githwxi_mytree0.dats] *)

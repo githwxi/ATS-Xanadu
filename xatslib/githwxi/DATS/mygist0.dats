@@ -62,7 +62,7 @@ rdigitize$base
 fun<>
 gint_rdigitize_sint
 {n:nat}
-(n0: sint(n)): stream_vt(sint)
+(n0: sint(n)): strm_vt(sint)
 //
 (* ****** ****** *)
 //
@@ -131,7 +131,7 @@ val
 b0 = rdigitize$base<>()
 //
 #vwtpdef
-digitseq = stream_vt(sint)
+digitseq = strm_vt(sint)
 //
 fun
 auxmain
@@ -163,19 +163,19 @@ end // end of [else] // end-of-if
 #extern
 fun
 <a:t0>
-stream_vt_mcons
+strm_vt_mcons
 ( x0: a
 , xss
-: stream_vt(list(a))
+: strm_vt(list(a))
 )
-: stream_vt(list(a))
+: strm_vt(list(a))
 //
 #impltmp
 <a>(*tmp*)
-stream_vt_mcons
+strm_vt_mcons
   (x0, xss) =
 (
-stream_vt_map0(xss)
+strm_vt_map0(xss)
 ) where
 {
 #impltmp
@@ -190,7 +190,7 @@ map0$fopr
 fun
 <a:t0>
 list_permutize
-( xs: list(a) ): stream_vt(list(a))
+( xs: list(a) ): strm_vt(list(a))
 //
 (* ****** ****** *)
 
@@ -221,7 +221,7 @@ rapp2(list_cons(y0, xs), ys)
 fun
 auxmain0
 ( xs: list(a))
-: stream_vt(list(a)) =
+: strm_vt(list(a)) =
 $llazy
 (
 case+ xs of
@@ -234,7 +234,7 @@ case+ xs of
 and
 auxmain1
 ( xs: list(a))
-: stream_vt(list(a)) =
+: strm_vt(list(a)) =
 $llazy
 let
 val-
@@ -257,7 +257,7 @@ auxmain2
 ( x0: a
 , xs: list(a)
 , ys: list_vt(a))
-: stream_vt(list(a)) =
+: strm_vt(list(a)) =
 $llazy
 (
 g_free(ys);
@@ -265,7 +265,7 @@ let
 val
 xss =
 (
-stream_vt_mcons
+strm_vt_mcons
 (x0, auxmain1(rapp2(xs, ys)))
 )
 in
@@ -281,10 +281,10 @@ list_cons(x1, xs) =>
 let
   val ys = list_vt_cons(x0, ys)
 in
-  !(stream_vt_append(xss, auxmain2(x1, xs, ys)))
-end // end of [list_cons]
+  !(strm_vt_append(xss, auxmain2(x1, xs, ys)))
+end (*let*) // end of [list_cons]
 //
-end // end-of-let // end of [auxmain2]
+end // end-of-let // end-of(auxmain2)
 )
 //
 } endwhr (* end of [list_permutize] *)
@@ -300,13 +300,13 @@ end // end-of-let // end of [auxmain2]
 fun
 <a:t0>
 list_nchoose1
-(xs: list(a), n0: nint): stream_vt(list(a))
+(xs: list(a), n0: nint): strm_vt(list(a))
 //
 #extern
 fun
 <a:t0>
 list_nchoose2
-(xs: list(a), n0: nint): stream_vt@(list(a), list(a))
+(xs: list(a), n0: nint): strm_vt@(list(a), list(a))
 //
 (* ****** ****** *)
 
@@ -323,7 +323,7 @@ in
 if
 (m0 < n0)
 then
-stream_vt_nil()
+strm_vt_nil()
 else
 auxmain(xs, m0, n0)
 end
@@ -338,7 +338,7 @@ auxmain
 : list(a)
 , m0: nint
 , n0: nint)
-: stream_vt(res) =
+: strm_vt(res) =
 $llazy
 (
 if
@@ -361,12 +361,12 @@ and n1 = n0-1
 val rr1 =
   auxmain(xs, m1, n1)
 val rr1 =
-  stream_vt_mcons<a>(x0, rr1)
+  strm_vt_mcons<a>(x0, rr1)
 val rr2 =
   auxmain(xs, m1, n0)
 //
 in
-stream_vt_append<res>(rr1, rr2)
+strm_vt_append<res>(rr1, rr2)
 end (* list_cons *)
 ) (* end of [else] *)
 ) (* end of [auxmain] *)
@@ -388,7 +388,7 @@ in
 if
 (m0 < n0)
 then
-stream_vt_nil()
+strm_vt_nil()
 else
 auxmain(xs, m0, n0)
 end
@@ -405,7 +405,7 @@ auxmain
 : list(a)
 , m0: nint
 , n0: nint)
-: stream_vt(res) =
+: strm_vt(res) =
 $llazy
 (
 if
@@ -428,7 +428,7 @@ and n1 = n0-1
 //
 val
 rs1 =
-stream_vt_map0
+strm_vt_map0
 (
 auxmain(xs, m1, n1)
 ) where
@@ -439,7 +439,7 @@ map0$fopr<res><res>(rr) =
 }
 val
 rs2 =
-stream_vt_map0
+strm_vt_map0
 (
 auxmain(xs, m1, n0)
 ) where
@@ -449,7 +449,7 @@ map0$fopr<res><res>(rr) =
   (rr.0, list_cons(x0, rr.1))
 }
 in
-  !(stream_vt_append<res>(rs1, rs2))
+  !(strm_vt_append<res>(rs1, rs2))
 end // list_cons
 ) (* end of [else] *)
 ) (* end of [auxmain] *)
@@ -468,13 +468,13 @@ fun<>
 sint_from_up
 {i:int}
 (i0: sint(i)):
-stream_vt(sintgte(i))
+strm_vt(sintgte(i))
 #extern
 fun<>
 sint_from_dn
 {i:int}
 (i0: sint(i)):
-stream_vt(sintlte(i))
+strm_vt(sintlte(i))
 //
 #impltmp
 <>(*tmp*)
@@ -487,7 +487,7 @@ auxmain
 {i:int}
 ( i0
 : sintgte(i))
-: stream_vt(sintgte(i)) =
+: strm_vt(sintgte(i)) =
 $llazy
 (
 strmcon_vt_cons(i0, auxmain(succ(i0)))
@@ -505,7 +505,7 @@ auxmain
 {i:int}
 ( i0
 : sintgte(i))
-: stream_vt(sintlte(i)) =
+: strm_vt(sintlte(i)) =
 $llazy
 (
 strmcon_vt_cons(i0, auxmain(pred(i0)))
@@ -519,13 +519,13 @@ fun<>
 sint_fromto_up
 {i,j:int}
 ( i0: sint(i)
-, j0: sint(j)): stream_vt(sintbtw(i, j))
+, j0: sint(j)): strm_vt(sintbtw(i, j))
 #extern
 fun<>
 sint_fromto_dn
 {i,j:int}
 ( i0: sint(i)
-, j0: sint(j)): stream_vt(sintbtwe(j+1, i))
+, j0: sint(j)): strm_vt(sintbtwe(j+1, i))
 //
 #impltmp
 <>(*tmp*)
@@ -538,7 +538,7 @@ auxmain
 {i:int}
 ( i0
 : sintgte(i))
-: stream_vt(sintgte(i)) =
+: strm_vt(sintgte(i)) =
 $llazy
 (
 if
@@ -559,7 +559,7 @@ auxmain
 {i:int}
 ( i0
 : sintgte(i))
-: stream_vt(sintgte(i)) =
+: strm_vt(sintgte(i)) =
 $llazy
 (
 if
@@ -581,78 +581,78 @@ HX: the code has moved into prelude/gseq.dats
 *)
 #impltmp
 <cz:type>
-gseq_concat_string
+gseq_concat_strn
   (cz) =
 let
 #typedef c0 = cgtz
-#typedef cs = string
+#typedef cs = strn
 in//let
-string_vt_make_stream_vt<>
-(stream_vt_gconcat<c0,cs>(gseq_streamize<cs,cz>(cz)))
-end // end of [gseq_concat_string]
+strn_vt_make_strm_vt<>
+(strm_vt_gconcat<c0,cs>(gseq_strmize<cs,cz>(cz)))
+end // end of [gseq_concat_strn]
 *)
 (* ****** ****** *)
 //
 // HX-2020-11-02:
-// Turning a string into lines
+// Turning a strn into lines
 //
 (* ****** ****** *)
 //
 #extern
 fun<>
-string_split_lines
-(cs:string): stream_vt(string)
+strn_split_lines
+(cs:strn): strm_vt(strn)
 #extern
 fun<>
-string_split_lines_vt
-(cs:string): stream_vt(string_vt)
+strn_split_lines_vt
+(cs:strn): strm_vt(strn_vt)
 #extern
 fun<>
-string_vt_split_lines
-(cs:string_vt): stream_vt(string_vt)
+strn_vt_split_lines
+(cs:strn_vt): strm_vt(strn_vt)
 //
 (* ****** ****** *)
 //
 #vwtpdef
-cstream_vt = stream_vt(cgtz)
+cstrm_vt = strm_vt(cgtz)
 //
 #extern
 fun<>
-cstream_vt_split_lines
-(cs:cstream_vt): stream_vt(string_vt)
+cstrm_vt_split_lines
+(cs:cstrm_vt): strm_vt(strn_vt)
 (* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
-string_split_lines(cs) =
+strn_split_lines(cs) =
 let
 //
-#typedef y0 = string
-#vwtpdef x0 = string_vt
+#typedef y0 = strn
+#vwtpdef x0 = strn_vt
 //
 #impltmp
-map0$fopr<x0><y0> = string_vt2t
+map0$fopr<x0><y0> = strn_vt2t
 in//let
-stream_vt_map0<x0><y0>
+strm_vt_map0<x0><y0>
 (
-cstream_vt_split_lines(streamize(cs))
+cstrm_vt_split_lines(strmize(cs))
 )
 end
 //
 #impltmp
 <>(*tmp*)
-string_split_lines_vt(cs) =
-cstream_vt_split_lines(streamize(cs))
+strn_split_lines_vt(cs) =
+cstrm_vt_split_lines(strmize(cs))
 //
 #impltmp
 <>(*tmp*)
-string_vt_split_lines(cs) =
-cstream_vt_split_lines(streamize(cs))
+strn_vt_split_lines(cs) =
+cstrm_vt_split_lines(strmize(cs))
 //
 (* ****** ****** *)
 #impltmp
 <>(*tmp*)
-cstream_vt_split_lines
+cstrm_vt_split_lines
   (cs) =
 (
   auxmain0(cs)
@@ -667,8 +667,8 @@ iseol
 fun
 auxmain0
 ( cs
-: cstream_vt)
-: stream_vt(string_vt) =
+: cstrm_vt)
+: strm_vt(strn_vt) =
 $llazy
 (
 free(cs);
@@ -684,7 +684,7 @@ then
 strmcon_vt_cons
 (l1, auxmain0(cs)) where
 {
-  val l1 = string_vt_nil()
+  val l1 = strn_vt_nil()
 }
 else
 let
@@ -695,10 +695,10 @@ end
 and
 auxmain1
 ( cs
-: cstream_vt
+: cstrm_vt
 , rs
 : list_vt(cgtz))
-: strmcon_vt(string_vt) =
+: strmcon_vt(strn_vt) =
 (
 case+ !cs of
 | ~
@@ -708,9 +708,9 @@ strmcon_vt_sing(l1)
 ) where
 {
 val rs =
-list_vt_reverse(rs)
+list_vt_reverse0(rs)
 val l1 =
-string_vt_make_list_vt(rs)
+strn_vt_make_list_vt(rs)
 }
 | ~
 strmcon_vt_cons(c0, cs) =>
@@ -719,9 +719,9 @@ iseol(c0)
 then
 let
 val rs =
-list_vt_reverse(rs)
+list_vt_reverse0(rs)
 val l1 =
-string_vt_make_list_vt(rs)
+strn_vt_make_list_vt(rs)
 in
   strmcon_vt_cons(l1, auxmain0(cs))
 end
@@ -731,7 +731,7 @@ else
 )
 ) (* end of [auxmain1] *)
 //
-} (* end of [cstream_vt_split_lines] *)
+} (* end of [cstrm_vt_split_lines] *)
 
 (* ****** ****** *)
 //
@@ -742,28 +742,28 @@ else
 (*
 HX-2020-11-09:
 These functions are
-declared in prelude/string.sats
+declared in prelude/strn.sats
 *)
 #extern
 fun<>
-string_lower
+strn_lower
 {n:int}
-(cs: string(n)): string(n)
+(cs: strn(n)): strn(n)
 #extern
 fun<>
-string_upper
+strn_upper
 {n:int}
-(cs: string(n)): string(n)
+(cs: strn(n)): strn(n)
 *)
 (* ****** ****** *)
 
 #impltmp
 <>(*tmp*)
-string_lower(cs) =
+strn_lower(cs) =
 let
 val n0 = length(cs)
 in
-string_tabulate(n0)
+strn_tabulate(n0)
 where
 {
 fun
@@ -781,17 +781,17 @@ char(sint('a')+(sint(c0)-sint('A')))
 #impltmp
 tabulate$fopr<cgtz>(i0) = lower(cs[i0])
 }
-end // end of [string_lower]
+end // end of [strn_lower]
 
 (* ****** ****** *)
 
 #impltmp
 <>(*tmp*)
-string_upper(cs) =
+strn_upper(cs) =
 let
 val n0 = length(cs)
 in
-string_tabulate(n0)
+strn_tabulate(n0)
 where
 {
 fun
@@ -809,8 +809,8 @@ char(sint('A')+(sint(c0)-sint('a')))
 #impltmp
 tabulate$fopr<cgtz>(i0) = upper(cs[i0])
 }
-end // end of [string_upper]
+end // end of [strn_upper]
 
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_mygist00.dats] *)
+(* end of [xatslib_githwxi_mygist0.dats] *)
