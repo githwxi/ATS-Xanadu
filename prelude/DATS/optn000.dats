@@ -90,20 +90,23 @@ case+ xs of
 )
 #impltmp
 <a>(*tmp*)
-optn_rlistize(xs) =
-(
-case+ xs of
-| optn_nil() => list_vt_nil()
-| optn_cons(x0) => list_vt_sing(x0)
-)
-#impltmp
-<a>(*tmp*)
-optn_streamize(xs) =
+optn_strmize(xs) =
 $llazy
 (
 case+ xs of
 | optn_nil() => strmcon_vt_nil()
 | optn_cons(x0) => strmcon_vt_sing(x0)
+)
+
+(* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+optn_rlistize(xs) =
+(
+case+ xs of
+| optn_nil() => list_vt_nil()
+| optn_cons(x0) => list_vt_sing(x0)
 )
 
 (* ****** ****** *)

@@ -21,6 +21,7 @@ XATSLIB=./../../xatslib
 
 all:: all_sats
 all:: all_dats
+all:: all_CC_dats
 all:: all_JS_dats
 all:: all_Xint_dats
 
@@ -156,6 +157,11 @@ all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/optn000_vt.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/strm000_vt.dats
+
+######
+
+all_CC_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/CATS/CC/basics0.dats
 
 ######
 

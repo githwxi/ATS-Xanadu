@@ -70,8 +70,7 @@ XATS2JS_NODE_gflt_print_dflt
 }
 /* ****** ****** */
 function
-XATS2JS_NODE_string_print
-  (cs)
+XATS2JS_NODE_strn_print(cs)
 {
   return XATS2JS_NODE_g_print(cs);
 }

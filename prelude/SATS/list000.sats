@@ -124,6 +124,14 @@ list_get_at
 (list(a, n), nintlt(n)): (a)
 //
 (* ****** ****** *)
+fun
+<a:t0>
+list_fset_at
+{n:int}
+( xs: list(a,n)
+, i0: nintlt(n), x0: a): list(a,n)
+//
+(* ****** ****** *)
 //
 fun
 <a:t0>
@@ -156,12 +164,25 @@ list_rappend
 {m,n:int}
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
+fun
+<a:t0>
+list_rappend0x
+{m,n:int}
+( xs
+: list_vt(a, m)
+, ys: list(a, n)): list(a, m+n)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
 list_rappend_vt
+{m,n:int}
+( xs: list(a, m)
+, ys: list(a, n)): list_vt(a, m+n)
+fun
+<a:t0>
+list_rappendx0_vt
 {m,n:int}
 ( xs: list(a, m)
 , ys: list_vt(a, n)): list_vt(a, m+n)
@@ -317,6 +338,10 @@ cons with list_cons of 000
 
 #symload [] with list_get_at of 1000
 #symload get_at with list_get_at of 1000
+
+(* ****** ****** *)
+
+#symload fset_at with list_fset_at of 1000
 
 (* ****** ****** *)
 //

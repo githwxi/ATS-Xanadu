@@ -161,8 +161,46 @@ if
 (i0 > 0)
 then loop(xs, pred(i0)) else x0
 ) (* end of [auxloop] *)
-} (* end of [list_get_at] *)
+} (*where*) // end of [list_get_at]
 //
+(* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+list_fset_at
+(xs, i0, x0) =
+(
+auxmain
+(xs, i0, list_vt_nil())
+) where
+{
+fun
+auxmain
+{m,n:int}
+{i:nat|i<m}
+( xs: list(a,m)
+, i0: sint( i )
+, ys: list_vt(a,n)): list(a,m+n) =
+let
+val+
+list_cons(x1, xs) = xs
+in//let
+//
+if
+(i0 = 0)
+then
+list_rappend0x<a>
+(ys, list_cons(x0, xs))
+else
+let
+val i0 = pred(i0)
+val ys =
+list_vt_cons(x1,ys) in auxmain(xs,i0,ys)
+end // end of [else]
+//
+end // end of [auxmain]
+} (*where*) // end of [list_fset_at]
+
 (* ****** ****** *)
 //
 #impltmp
@@ -185,7 +223,7 @@ loop
 ( xs
 : list(a, m)
 , r0
-: &(?list(a) >> list(a, m+n))): void =
+: &(?list(a)>>list(a,m+n))): void =
 (
 case+ xs of
 | list_nil() =>
@@ -202,7 +240,7 @@ in
 let
   var r0: list(a) in loop(xs, r0); r0
 end
-end (* end of [list_append] *)
+end (*where*) // end of [list_append]
 //
 (* ****** ****** *)
 //
@@ -224,7 +262,7 @@ let
 val
 res = list_vt_nil()
 in
-list_vt_reverse0<a>(loop(xss, res))
+list_vt_reverse0<a>(loop(xss,res))
 end
 ) where
 {
@@ -235,11 +273,13 @@ loop
 , res: list_vt(a)): list_vt(a) =
 (
 case+ xss of
-| list_nil() => res
-| list_cons(xs, xss) =>
-  loop(xss, list_rappend_vt(xs, res))
+|
+list_nil() => res
+|
+list_cons(xs, xss) =>
+loop(xss,list_rappendx0_vt<a>(xs,res))
 )
-} (* end of [list_concat_vt] *)
+} (*where*) // end-of-(list_concat_vt)
 //
 (* ****** ****** *)
 //
@@ -264,18 +304,56 @@ case+ xs of
 | list_cons(x0, xs) =>
   loop(xs, list_cons(x0, ys))
 )
-} (* list_rappend *)
+} (*where*) // end-of(list_rappend)
 //
 (* ****** ****** *)
-
 //
 #impltmp
 <a>(*tmp*)
 list_rappend_vt
   (xs, ys) =
+let
+  val xs =
+  list_copy_vt<a>(xs)
+in
+  list_rappend0x<a>(xs, ys)
+end(*let*)//end-of(list_rappend_vt)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_rappend0x
+  (xs, ys) =
 (
-  loop(xs, ys)
-) where
+  loop(xs, ys)) where
+{
+fnx
+loop
+{m,n:nat}.<m>.
+( xs
+: list_vt
+  ( a,m )
+, ys
+: list(a, n)): list(a, m+n) =
+(
+  case+ xs of
+  | ~
+  list_vt_nil() => ys
+  | ~
+  list_vt_cons(x0, xs) =>
+  loop(xs, list_cons(x0, ys))
+)
+} (*where*) // end-of(list_rappend0x)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_rappendx0_vt
+  (xs, ys) =
+(
+  loop(xs, ys)) where
 {
 fnx
 loop
@@ -283,15 +361,15 @@ loop
 ( xs
 : list(a, m)
 , ys
-: list_vt(a, n)): list_vt(a, m+n) =
+: list_vt(a,n)): list_vt(a,m+n) =
 (
 case+ xs of
 | list_nil() => ys
 | list_cons(x0, xs) =>
   loop(xs, list_vt_cons(x0, ys))
 )
-} (* list_rappend_vt *)
-
+}(*where*)//end-of(list_rappendx0_vt)
+//
 (* ****** ****** *)
 //
 #impltmp
