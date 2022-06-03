@@ -5,12 +5,12 @@ HX: for pure C-arrays
 (* ****** ****** *)
 (*
 #staload
-"./../SATS/array.sats"
+"./../SATS/arrn000.sats"
 *)
 (* ****** ****** *)
 #staload
 UN =
-"prelude/SATS/unsafe.sats"
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 (*
