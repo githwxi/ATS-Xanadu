@@ -134,7 +134,7 @@ list_vt2t{char}
 #impltmp
 <>(*tmp*)
 g_inp_lline_list() =
-list_vt_reverse<char>
+list_vt_reverse0<char>
 (g_inp_lline_rlist<>((*void*)))
 //
 #impltmp

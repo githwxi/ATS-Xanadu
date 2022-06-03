@@ -49,7 +49,7 @@ fun
 <tok:t0>
 input_make
 ( xs
-: stream(tok)): input(tok)
+: strm(tok)): input(tok)
 #extern
 fun
 <tok:t0>
@@ -72,7 +72,7 @@ local
 //
 #absimpl
 input_tbox
-(tok:t0) = stream(tok)
+(tok:t0) = strm(tok)
 //
 in(*in-of-local*)
 //
@@ -161,7 +161,7 @@ end // end of [local]
 fun
 <tok:t0>
 parcmbr_input
-(xs: stream(tok)): input(tok)
+(xs: strm(tok)): input(tok)
 #impltmp
 <tok>
 parcmbr_input(xs) = input_make(xs)
@@ -506,7 +506,7 @@ case+ opt of
 | ~
 none_vt() =>
 ( inp
-, some_vt(list_vt_reverse(rez)))
+, some_vt(list_vt_reverse0(rez)))
 | ~
 some_vt(res) =>
 auxrep(inp, list_vt_cons(res, rez))
@@ -566,4 +566,4 @@ parcmbr_thunk(FP) = parser
 //
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_parcmbr1.dats] *)
+(* end of [xatslib_githwxi_parcmb1.dats] *)
