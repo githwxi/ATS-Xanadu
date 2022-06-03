@@ -27,9 +27,11 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: May 28th, 2022
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: May 28th, 2022
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 #define
@@ -44,4 +46,4 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 
-(* end of [xatsopt_xsymbol.sats] *)
+(* end of [ATS3/XATSOPT_xsymbol.sats] *)
