@@ -172,6 +172,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/unsafex.dats
 
 all_Xint_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/CATS/Xint/basics0.dats
+all_Xint_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/CATS/Xint/prelude.dats
 
 ######
   

@@ -519,7 +519,7 @@ gflt_div_dflt_dflt<> = XINTERP_gflt_div_dflt_dflt
 //
 (* ****** ****** *)
 //
-// prelude/string.sats
+// prelude/strn000.sats
 //
 (* ****** ****** *)
 //
@@ -531,44 +531,44 @@ and
 are of the same representation!
 *)
 #impltmp
-string_vt2t<>(cs) = $UN.castlin01(cs)
+strn_vt2t<>(cs) = $UN.castlin01(cs)
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_string_print
+XINTERP_strn_print
 ( x0
-: string ): void = $exname()
+: strn ): void = $exname()
 #impltmp
-string_print<> = XINTERP_string_print
+strn_print<> = XINTERP_strn_print
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_string_head_opt
+XINTERP_strn_head_opt
 ( x0
-: string ): char = $exname()
+: strn ): char = $exname()
 #impltmp
-string_head_opt<> = XINTERP_string_head_opt
+strn_head_opt<> = XINTERP_strn_head_opt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_string_head_raw
+XINTERP_strn_head_raw
 ( x0
-: string ): char = $exname()
+: strn ): char = $exname()
 fun
-XINTERP_string_tail_raw
+XINTERP_strn_tail_raw
 ( x0
-: string ): string = $exname()
+: strn ): strn = $exname()
 //
 #impltmp
-string_head_raw<> = XINTERP_string_head_raw
+strn_head_raw<> = XINTERP_strn_head_raw
 #impltmp
-string_tail_raw<> = XINTERP_string_tail_raw
+strn_tail_raw<> = XINTERP_strn_tail_raw
 //
 (* ****** ****** *)
 //
@@ -587,13 +587,13 @@ strtmp_vt_alloc<> = XINTERP_strtmp_vt_alloc
 //
 #extern
 fun
-XINTERP_string_get_at
+XINTERP_strn_get_at
 {n:nat}
 {i:int|i<n}
-( p0:
-  string(n)
-, i0: sint(i)): cgtz
+( p0: strn(n), i0: sint(i) ): cgtz
 = $exname((*self*))
+#impltmp
+strn_get_at<> = XINTERP_strn_get_at
 //
 #extern
 fun
@@ -601,12 +601,8 @@ XINTERP_strtmp_vt_set_at
 {n:nat}
 {i:int|i<n}
 ( p0:
-! strtmp_vt(n)
-, i0: sint(i), c0: cgtz): void
+! strtmp_vt(n), i0: sint(i), c0: cgtz): void
 = $exname((*self*))
-//
-#impltmp
-string_get_at<> = XINTERP_string_get_at
 #impltmp
 strtmp_vt_set_at<> = XINTERP_strtmp_vt_set_at
 //
