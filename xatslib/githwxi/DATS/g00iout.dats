@@ -38,7 +38,8 @@
 (* ****** ****** *)
 //
 #staload
-"./../SATS/libcats.sats"
+"xatslib\
+/libcats/SATS/libcats.sats"
 //
 (* ****** ****** *)
 //
@@ -210,9 +211,13 @@ bool_fprint(FILR, bool): void
 #extern
 fun<>
 char_fprint(FILR, char): void
+//
 #extern
 fun<>
 gint_fprint_sint(FILR, sint): void
+#extern
+fun<>
+gint_fprint_uint(FILR, uint): void
 //
 (* ****** ****** *)
 //
@@ -222,9 +227,13 @@ bool_fprint<>(g_print$out<>(), x0)
 #impltmp
 g_print<char>(x0) =
 char_fprint<>(g_print$out<>(), x0)
+//
 #impltmp
 g_print<sint>(x0) =
-gint_fprint_int<>(g_print$out<>(), x0)
+gint_fprint_sint<>(g_print$out<>(), x0)
+#impltmp
+g_print<uint>(x0) =
+gint_fprint_uint<>(g_print$out<>(), x0)
 //
 (* ****** ****** *)
 

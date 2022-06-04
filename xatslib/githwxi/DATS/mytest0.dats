@@ -26,9 +26,16 @@
 *)
 
 (* ****** ****** *)
-#staload RAND =
+//
+#staload HX =
+"./../SATS/githwxi.sats"
+//
+(*
+#staload HX =
 "xatslib\
-/libcats/DATS/rand000.dats"
+/githwxi/SATS/githwxi.sats"
+*)
+//
 (* ****** ****** *)
 
 #extern
@@ -39,7 +46,7 @@ mytest_arg(): a0
 fun
 <f0:t0>
 <r0:vt>
-mytest_fun(fx: f0): r0
+mytest_fun( fx: f0 ): r0
 
 (* ****** ****** *)
 
@@ -52,7 +59,8 @@ mytest_arg
 ( arg ) where
 {
 val
-arg = $RAND.g_rand<a0>()
+arg =
+$HX.g_rand<a0>((*void*))
 //
 (*
 val () =

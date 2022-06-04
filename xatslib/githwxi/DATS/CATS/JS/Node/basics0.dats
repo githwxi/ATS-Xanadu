@@ -4,11 +4,15 @@ Basics
 for Xats2js/Node
 *)
 (* ****** ****** *)
-
+(*
 #staload
 "xatslib\
-/libcats/DATS/fpath00.dats"
-
+/libcats/SATS/libcats.sats"
+*)
+(* ****** ****** *)
+#staload
+"xatslib\
+/githwxi/SATS/githwxi.sats"
 (* ****** ****** *)
 
 #impltmp

@@ -7,6 +7,10 @@ Basics for Xinterp
 UN = // for casting
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
+#staload
+"xatslib\
+/libcats/SATS/libcats.sats"
+(* ****** ****** *)
 (*
 //HX: prelude/bool000.sats
 *)
@@ -61,6 +65,18 @@ XINTERP_bool_print
 : bool): void = $extnam()
 #impltmp
 bool_print<> = XINTERP_bool_print
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XINTERP_bool_fprint
+( fr
+: FILR
+, b0
+: bool): void = $extnam()
+#impltmp
+bool_fprint<> = XINTERP_bool_fprint
 //
 (* ****** ****** *)
 //
@@ -136,6 +152,16 @@ XINTERP_char_print
 #impltmp
 char_print<> = XINTERP_char_print
 //
+#extern
+fun
+XINTERP_char_fprint
+( fr
+: FILR
+, c0
+: char): void = $extnam()
+#impltmp
+char_fprint<> = XINTERP_char_fprint
+//
 (* ****** ****** *)
 //
 #extern
@@ -188,6 +214,30 @@ XINTERP_gint_print_sint(i0)
 #impltmp
 gint_print_uint<>(u0) =
 XINTERP_gint_print_uint(u0)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XINTERP_gint_fprint_sint
+( fr
+: FILR
+, x0
+: sint): void = $extnam()
+#extern
+fun
+XINTERP_gint_fprint_uint
+( fr
+: FILR
+, x0
+: uint): void = $extnam()
+//
+#impltmp
+gint_fprint_sint<> =
+XINTERP_fgint_print_sint(*void*)
+#impltmp
+gint_fprint_uint<> =
+XINTERP_fgint_print_uint(*void*)
 //
 (* ****** ****** *)
 //

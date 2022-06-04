@@ -27,128 +27,36 @@
 
 (* ****** ****** *)
 //
-// HX-2020-11-03
-// For generating random values
+(*
+HX-2020-11-03:
+For generating random values
+*)
 //
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: June, 2020
-// Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
-
-#extern
-fun
-<a0:vt>
-g_rand((*void*)): a0
-
-(* ****** ****** *)
-//
-#extern
-fun<>
-rand_seed
-((*void*)): uint
-#extern
-fun<>
-rand_set_nil
-((*void*)): void
-#extern
-fun<>
-rand_set_seed
-( seed : uint ) : void
+(*
+Author: Hongwei Xi
+Start Time: June, 2020
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 //
-#impltmp
-<>(*tmp*)
-rand_set_nil() =
-let
-val
-seed = rand_seed<>()
-in
-  rand_set_seed<>(seed)
-end
+#staload
+"./../SATS/githwxi.sats"
+//
+(*
+#staload HX =
+"xatslib\
+/githwxi/SATS/githwxi.sats"
+*)
 //
 (* ****** ****** *)
-//
-#extern
-fun<>
-nint_rand(): nint
-#extern
-fun<>
-nint_rand$limit(): sintgt(0)
-//
-#extern
-fun<>
-nint_rand_limit
-{n:pos}(l0: int(n)): nintlt(n)
-//
-(* ****** ****** *)
-//
-#extern
-fun
-<a:vt>
-list_rand(): list_vt(a)
-#extern
-fun<>
-list_rand$length(): nint
-//
-#extern
-fun
-<a:vt>
-list_rand_length
-{n:nat}(ln: int(n)): list_vt(a,n)
-//
-(* ****** ****** *)
-//
-#extern
-fun<>
-strn_rand(): strn_vt
-#extern
-fun<>
-strn_rand$length(): nint
-//
-#extern
-fun<>
-strn_rand_length
-{n:nat}(ln: int(n)): strn_vt(n)
-//
-(* ****** ****** *)
-
 (*
 #impltmp
 <>(*tmp*)
 rand_seed() = 0u
 *)
-
-(* ****** ****** *)
-
-#impltmp
-g_rand<bool>() =
-let
-val tf =
-nint_rand_limit(2)
-in
-if
-(tf > 0)
-then true else false
-end
-
-(* ****** ****** *)
-
-#impltmp
-g_rand<char>() =
-let
-val n0 =
-nint_rand_limit(256)
-in
-char_make_sint
-( if
-  (n0<128)
-  then n0 else n0-256 )
-end
-
 (* ****** ****** *)
 (*
 HX-2020-06-22:
@@ -163,9 +71,41 @@ nint_rand$limit() = 1024
 //
 #impltmp
 <>(*tmp*)
+rand_set_nil() =
+rand_set_seed<>(rand_seed<>())
+//
+(* ****** ****** *)
+
+#impltmp
+g_rand<bool>() =
+let
+val tf =
+nint_rand_limit<>(2)
+in
+if (tf > 0) then true else false
+end
+
+(* ****** ****** *)
+
+#impltmp
+g_rand<char>() =
+let
+val n0 =
+nint_rand_limit(256)
+in
+char_make_sint
+(if (n0<128) then n0 else n0-256)
+end
+
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
 nint_rand() =
-nint_rand_limit<>
-(nint_rand$limit<>((*void*)))
+(
+  nint_rand_limit<>
+  (nint_rand$limit<>((*void*)))
+)
 //
 (* ****** ****** *)
 
@@ -175,7 +115,7 @@ let
 val
 limit =
 nint_rand$limit<>()
-in
+in//let
 nint_rand_limit<>(2*limit)-limit
 end // end of [g_rand<sint>]
 
@@ -189,8 +129,7 @@ let
 val x0 =
 g_rand<a0>()
 val x1 =
-g_rand<a1>() in @(x0, x1)
-end
+g_rand<a1>() in @(x0, x1) end
 #impltmp
 {a0:vt
 ,a1:vt}
@@ -199,8 +138,7 @@ let
 val x0 =
 g_rand<a0>()
 val x1 =
-g_rand<a1>() in $(x0, x1)
-end
+g_rand<a1>() in $(x0, x1) end
 //
 #impltmp
 {a0:vt
@@ -213,8 +151,7 @@ g_rand<a0>()
 val x1 =
 g_rand<a1>()
 val x2 =
-g_rand<a2>() in @(x0, x1, x2)
-end
+g_rand<a2>() in @(x0, x1, x2) end
 #impltmp
 {a0:vt
 ,a1:vt
@@ -226,8 +163,7 @@ g_rand<a0>()
 val x1 =
 g_rand<a1>()
 val x2 =
-g_rand<a2>() in $(x0, x1, x2)
-end
+g_rand<a2>() in $(x0, x1, x2) end
 //
 (* ****** ****** *)
 //
