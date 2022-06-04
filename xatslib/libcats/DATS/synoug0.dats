@@ -284,6 +284,47 @@ val () = prout1_ref<a3>(x3)
 (* ****** ****** *)
 //
 #impltmp
+<a1>
+<a2>
+<a3>
+<a4>
+prout_a4
+( x1
+, x2
+, x3
+, x4 ) = () where
+{
+val () = prout1_ref<a1>(x1)
+val () = prout1_ref<a2>(x2)
+val () = prout1_ref<a3>(x3)
+val () = prout1_ref<a4>(x4)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2>
+<a3>
+<a4>
+<a5>
+prout_a5
+( x1
+, x2
+, x3
+, x4
+, x5 ) = () where
+{
+val () = prout1_ref<a1>(x1)
+val () = prout1_ref<a2>(x2)
+val () = prout1_ref<a3>(x3)
+val () = prout1_ref<a4>(x4)
+val () = prout1_ref<a5>(x5)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
 proutln_a0
 <>(*tmp*)
 ((*_*)) = prout1_ref("\n")
@@ -294,7 +335,7 @@ proutln_a0
 proutln_a1
 ( x1 ) =
 (
-prout_a1(x1) ; proutln_a0<>()
+prout_a1(x1);proutln_a0<>()
 ) (* end of [proutln_a1] *)
 //
 (* ****** ****** *)
@@ -325,5 +366,40 @@ prout_a3
 ) (* end of [proutln_a3] *)
 //
 (* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+proutln_a4
+( x1
+, x2
+, x3
+, x4 ) =
+(
+prout_a4
+( x1, x2
+, x3, x4 ) ; proutln_a0<>()
+) (* end of [proutln_a4] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+proutln_a5
+( x1
+, x2
+, x3
+, x4
+, x5 ) =
+(
+prout_a5
+( x1
+, x2, x3
+, x4, x5 ) ; proutln_a0<>()
+) (* end of [proutln_a5] *)
+//
+(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_synoug0.dats] *)
+(* end of [ATS3/XANADU_xatslib_libcats_synoug0.dats] *)
