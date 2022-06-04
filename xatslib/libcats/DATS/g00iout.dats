@@ -96,12 +96,12 @@ $STDIO.fgetc_ref(g_stdin<>())
 <>(*tmp*)
 g_inp_cstrm() =
 (
-  auxmain(g_stdin<>())
+  fmain(g_stdin<>())
 ) where
 {
 //
 fun
-auxmain
+fmain
 (
 fr: FILEref
 ) : strm_vt(int) =
@@ -115,7 +115,7 @@ if
 then
 strmcon_vt_nil((*void*))
 else
-strmcon_vt_cons(c0, auxmain(fr))
+strmcon_vt_cons(c0, fmain(fr))
 end // end of [let]
 )
 //

@@ -8,7 +8,7 @@
 #extern
 fun
 <a1:vt>
-free1( x1: ~a1): void
+free1(x1: ~a1): void
 //
 (* ****** ****** *)
 //
@@ -38,20 +38,20 @@ print_0
 #extern
 fun
 <a1:vt>
-print_1
+print_a1
 ( x1: !a1 ) : void
 #extern
 fun
 <a1:vt>
 <a2:vt>
-print_2
+print_a2
 ( x1: !a1, x2: !a2 ) : void
 #extern
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-print_3
+print_a3
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 #extern
@@ -60,7 +60,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-print_4
+print_a4
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 #extern
@@ -70,7 +70,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-print_5
+print_a5
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -82,7 +82,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-print_6
+print_a6
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -95,7 +95,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-print_7
+print_a7
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -110,7 +110,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-print_8
+print_a8
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -126,7 +126,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-print_9
+print_a9
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -134,38 +134,38 @@ print_9
 , x8: !a8, x9: !a9 ) : void
 (* ****** ****** *)
 //
-#symload print with print_1
-#symload print with print_2
-#symload print with print_3
-#symload print with print_4
-#symload print with print_5
-#symload print with print_6
-#symload print with print_7
-#symload print with print_8
-#symload print with print_9
+#symload print with print_a1
+#symload print with print_a2
+#symload print with print_a3
+#symload print with print_a4
+#symload print with print_a5
+#symload print with print_a6
+#symload print with print_a7
+#symload print with print_a8
+#symload print with print_a9
 //
 (* ****** ****** *)
 #extern
 fun<>
-println_0
+println_a0
 ((*void*)) : void
 #extern
 fun
 <a1:vt>
-println_1
+println_a1
 ( x1: !a1 ) : void
 #extern
 fun
 <a1:vt>
 <a2:vt>
-println_2
+println_a2
 ( x1: !a1, x2: !a2 ) : void
 #extern
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-println_3
+println_a3
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 #extern
@@ -174,7 +174,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-println_4
+println_a4
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 #extern
@@ -184,7 +184,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-println_5
+println_a5
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -196,7 +196,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-println_6
+println_a6
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -209,7 +209,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-println_7
+println_a7
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -224,7 +224,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-println_8
+println_a8
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -240,7 +240,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-println_9
+println_a9
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -248,16 +248,16 @@ println_9
 , x8: !a8, x9: !a9 ) : void
 (* ****** ****** *)
 //
-#symload println with println_0
-#symload println with println_1
-#symload println with println_2
-#symload println with println_3
-#symload println with println_4
-#symload println with println_5
-#symload println with println_6
-#symload println with println_7
-#symload println with println_8
-#symload println with println_9
+#symload println with println_a0
+#symload println with println_a1
+#symload println with println_a2
+#symload println with println_a3
+#symload println with println_a4
+#symload println with println_a5
+#symload println with println_a6
+#symload println with println_a7
+#symload println with println_a8
+#symload println with println_a9
 //
 (* ****** ****** *)
 //
@@ -267,7 +267,7 @@ println_9
 //
 #impltmp
 <a1>
-print_1(x1) = () where
+print_a1(x1) = () where
 {
   val () = gl_print1<a1>(x1)
 }
@@ -277,7 +277,7 @@ print_1(x1) = () where
 #impltmp
 <a1>
 <a2>
-print_2
+print_a2
 ( x1
 , x2 ) = () where
 {
@@ -291,7 +291,7 @@ print_2
 <a1>
 <a2>
 <a3>
-print_3
+print_a3
 ( x1
 , x2
 , x3 ) = () where
@@ -308,7 +308,7 @@ print_3
 <a2>
 <a3>
 <a4>
-print_4
+print_a4
 ( x1
 , x2
 , x3
@@ -328,7 +328,7 @@ print_4
 <a3>
 <a4>
 <a5>
-print_5
+print_a5
 ( x1
 , x2
 , x3
@@ -351,7 +351,7 @@ print_5
 <a4>
 <a5>
 <a6>
-print_6
+print_a6
 ( x1
 , x2
 , x3
@@ -377,7 +377,7 @@ print_6
 <a5>
 <a6>
 <a7>
-print_7
+print_a7
 ( x1
 , x2, x3
 , x4, x5
@@ -403,7 +403,7 @@ print_7
 <a6>
 <a7>
 <a8>
-print_8
+print_a8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -431,7 +431,7 @@ print_8
 <a7>
 <a8>
 <a9>
-print_9
+print_a9
 ( x1
 , x2, x3
 , x4, x5
@@ -451,61 +451,61 @@ print_9
 //
 (* ****** ****** *)
 #impltmp
-println_0
+println_a0
 <>(*tmp*)
 ((*_*)) = gl_print1("\n")
 (* ****** ****** *)
 //
 #impltmp
 <a1>
-println_1
+println_a1
 ( x1 ) =
 (
-print_1(x1) ; println_0<>()
-) (* end of [println_1] *)
+print_a1(x1) ; println_a0<>()
+) (* end of [println_a1] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-println_2
+println_a2
 ( x1
 , x2 ) =
 (
-print_2
-( x1, x2 ) ; println_0<>()
-) (* end of [println_2] *)
+print_a2
+( x1, x2 ) ; println_a0<>()
+) (* end of [println_a2] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-println_3
+println_a3
 ( x1
 , x2
 , x3 ) =
 (
-print_3
+print_a3
 ( x1
-, x2, x3 ) ; println_0<>()
-) (* end of [println_3] *)
+, x2, x3 ) ; println_a0<>()
+) (* end of [println_a3] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-println_4
+println_a4
 ( x1
 , x2
 , x3
 , x4 ) =
 (
-print_4
+print_a4
 ( x1, x2
-, x3, x4 ) ; println_0<>()
-) (* end of [println_4] *)
+, x3, x4 ) ; println_a0<>()
+) (* end of [println_a4] *)
 //
 (* ****** ****** *)
 //
@@ -513,18 +513,18 @@ print_4
 <a1>
 <a2><a3>
 <a4><a5>
-println_5
+println_a5
 ( x1
 , x2
 , x3
 , x4
 , x5 ) =
 (
-print_5
+print_a5
 ( x1
 , x2, x3
-, x4, x5 ) ; println_0<>()
-) (* end of [println_5] *)
+, x4, x5 ) ; println_a0<>()
+) (* end of [println_a5] *)
 //
 (* ****** ****** *)
 //
@@ -532,7 +532,7 @@ print_5
 <a1><a2>
 <a3><a4>
 <a5><a6>
-println_6
+println_a6
 ( x1
 , x2
 , x3
@@ -540,11 +540,11 @@ println_6
 , x5
 , x6 ) =
 (
-print_6
+print_a6
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; println_0<>()
-) (* end of [println_6] *)
+, x5, x6 ) ; println_a0<>()
+) (* end of [println_a6] *)
 //
 (* ****** ****** *)
 //
@@ -553,18 +553,18 @@ print_6
 <a2><a3>
 <a4><a5>
 <a6><a7>
-println_7
+println_a7
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7 ) =
 (
-print_7
+print_a7
 ( x1
 , x2, x3
 , x4, x5
-, x6, x7 ) ; println_0<>()
-) (* end of [println_7] *)
+, x6, x7 ) ; println_a0<>()
+) (* end of [println_a7] *)
 //
 (* ****** ****** *)
 //
@@ -573,18 +573,18 @@ print_7
 <a3><a4>
 <a5><a6>
 <a7><a8>
-println_8
+println_a8
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) =
 (
-print_8
+print_a8
 ( x1, x2
 , x3, x4
 , x5, x6
-, x7, x8 ) ; println_0<>()
-) (* end of [println_8] *)
+, x7, x8 ) ; println_a0<>()
+) (* end of [println_a8] *)
 //
 (* ****** ****** *)
 //
@@ -594,21 +594,21 @@ print_8
 <a4><a5>
 <a6><a7>
 <a8><a9>
-println_9
+println_a9
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
 , x8, x9 ) =
 (
-print_9
+print_a9
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
-, x8, x9 ) ; println_0<>()
-) (* end of [println_9] *)
+, x8, x9 ) ; println_a0<>()
+) (* end of [println_a9] *)
 //
 (* ****** ****** *)
 
-(* end of [prelude_synoug0.dats] *)
+(* end of [ATS3/XANADU_prelude_synoug0.dats] *)
