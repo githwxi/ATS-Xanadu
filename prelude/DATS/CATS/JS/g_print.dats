@@ -12,7 +12,7 @@ where
 #extern
 fun
 XATS2JS_bool_print
-(b0: bool): void = $exname()
+(b0: bool): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -25,7 +25,7 @@ where
 #extern
 fun
 XATS2JS_char_print
-(b0: char): void = $exname()
+(b0: char): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -38,7 +38,7 @@ where
 #extern
 fun
 XATS2JS_gint_print_sint
-( x0: sint ): void = $exname()
+( x0: sint ): void = $extnam()
 }
 //
 #impltmp
@@ -49,7 +49,7 @@ where
 #extern
 fun
 XATS2JS_gint_print_uint
-( x0: uint ): void = $exname()
+( x0: uint ): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -62,7 +62,7 @@ where
 #extern
 fun
 XATS2JS_gflt_print_sflt
-( x0: sflt ): void = $exname()
+( x0: sflt ): void = $extnam()
 }
 //
 #impltmp
@@ -73,7 +73,7 @@ where
 #extern
 fun
 XATS2JS_gflt_print_dflt
-( x0: dflt ): void = $exname()
+( x0: dflt ): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -85,16 +85,16 @@ where
 #extern
 fun
 XATS2JS_strn_print
-( cs: strn ): void = $exname()
+( cs: strn ): void = $extnam()
 }
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_the_print_store_join(): strn = $exname()
+XATS2JS_the_print_store_join(): strn = $extnam()
 #extern
 fun
-XATS2JS_the_print_store_clear(): (void) = $exname()
+XATS2JS_the_print_store_clear(): void = $extnam()
 //
 (* ****** ****** *)
 
