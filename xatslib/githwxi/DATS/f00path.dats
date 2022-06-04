@@ -26,37 +26,22 @@
 *)
 
 (* ****** ****** *)
-//
-// For processing files abstractly
-//
-(* ****** ****** *)
-//
-// Author: Hongwei Xi
-// Start Time: November, 2020
-// Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
 #staload
-"./../SATS/libcats.sats"
+"./../SATS/githwxi.sats"
 (* ****** ****** *)
 //
-#extern
-fun<>
-fpath_strmize_char
-(path: strn): strm_vt(char)
+(*
+HX:
+For processing files abstractly
+*)
 //
-#extern
-fun<>
-fpath_strmize_cgtz
-(path: strn): strm_vt(cgtz)
-#extern
-fun<>
-fpath_strmize_line
-(path: strn): strm_vt(strn)
-#extern
-fun<>
-fpath_strmize_line_vt
-(path: strn): strm_vt(strn_vt)
+(* ****** ****** *)
+//
+(*
+Author: Hongwei Xi
+Start Time: November, 2020
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 

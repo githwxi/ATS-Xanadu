@@ -7,36 +7,30 @@ Basics for Xinterp
 "xatslib\
 /libcats/SATS/libcats.sats"
 (* ****** ****** *)
+#staload
+"xatslib\
+/githwxi/SATS/githwxi.sats"
+(* ****** ****** *)
 //
-#impltmp
-g_stdin<> =
-XINTERP_g_stdin where
-{
 #extern
 fun
 XINTERP_g_stdin
-((*void*)): FILEref = $extnam()
-}
-//
-#impltmp
-g_stdout<> =
-XINTERP_g_stdout where
-{
+((*void*)): FILR = $extnam()
 #extern
 fun
 XINTERP_g_stdout
-((*void*)): FILEref = $extnam()
-}
-//
-#impltmp
-g_stderr<> =
-XINTERP_g_stderr where
-{
+((*void*)): FILR = $extnam()
 #extern
 fun
 XINTERP_g_stderr
-((*void*)): FILEref = $extnam()
-}
+((*void*)): FILR = $extnam()
+//
+#impltmp
+g_stdin< > = XINTERP_g_stdin
+#impltmp
+g_stdout< > = XINTERP_g_stdout
+#impltmp
+g_stderr< > = XINTERP_g_stderr
 //
 (* ****** ****** *)
 //
@@ -91,4 +85,3 @@ nint_rand_limit<> = XINTERP_nint_rand_limit
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_xatslib_githwxi_DATSCATS_Xint_basics0.dats] *)
-
