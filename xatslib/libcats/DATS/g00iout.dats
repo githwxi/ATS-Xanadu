@@ -36,59 +36,16 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
 #staload
-"xatslib\
-/libcats/SATS/libcats.sats"
-(* ****** ****** *)
-#staload STDIO =
-"xatslib\
-/libcats/DATS/stdiout.dats"
-(* ****** ****** *)
-
-#extern
-fun<>
-g_stdin(): FILEref // STDIN=0
-#extern
-fun<>
-g_stdout(): FILEref // STDOUT=1
-#extern
-fun<>
-g_stderr(): FILEref // STDERR=2
-
-(* ****** ****** *)
-
-#extern
-fun<>
-g_inp_char(): sint
-#extern
-fun<>
-g_inp_cstrm(): strm_vt(sint)
-
-(* ****** ****** *)
-#extern
-fun<>
-g_inp_line(): strn
-#extern
-fun<>
-g_inp_lline(): strn_vt
-(* ****** ****** *)
-#extern
-fun<>
-g_inp_line_list(): list(char)
-#extern
-fun<>
-g_inp_lline_list(): list_vt(char)
-#extern
-fun<>
-g_inp_lline_rlist(): list_vt(char)
+"./../SATS/libcats.sats"
+//
 (* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
 g_inp_char() =
-(
-$STDIO.fgetc_ref(g_stdin<>())
-)
+(fgetc_ref(g_stdin<>()))
 //
 (* ****** ****** *)
 
@@ -96,8 +53,7 @@ $STDIO.fgetc_ref(g_stdin<>())
 <>(*tmp*)
 g_inp_cstrm() =
 (
-  fmain(g_stdin<>())
-) where
+fmain(g_stdin<>())) where
 {
 //
 fun
@@ -108,7 +64,7 @@ fr: FILEref
 $llazy
 (
 let
-val c0 = $STDIO.fgetc_ref(fr)
+val c0 = fgetc_ref(fr)
 in
 if
 (c0 < 0) // EOF
@@ -170,6 +126,109 @@ end
 else cs // end of [else]
 end
 }(*where*)//end-of(g_inp_lline_rlist)
+//
+(* ****** ****** *)
+//
+#impltmp
+gl_print$out<> = g_print$out<>
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:t0}
+prout_ref<x0>(x0) =
+fprint_ref<x0>(g_stdout<>(), x0)
+#impltmp
+{x0:t0}
+prerr_ref<x0>(x0) =
+fprint_ref<x0>(g_stderr<>(), x0)
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:vt}
+prout1_ref<x0>(x0) =
+fprint1_ref<x0>(g_stdout<>(), x0)
+#impltmp
+{x0:vt}
+prerr1_ref<x0>(x0) =
+fprint1_ref<x0>(g_stderr<>(), x0)
+//
+(* ****** ****** *)
+
+#impltmp
+{x0:t0}
+fprint_ref<x0>
+  (out, x0) =
+(
+  g_print<x0>(x0)) where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end-of(fprint_ref)
+
+(* ****** ****** *)
+//
+#impltmp
+{x0:vt}
+fprint0_ref<x0>(out, x0) =
+  ( g_free<x0>(x0) ) where
+{
+  val () = fprint1_ref<x0>(out,x0)
+}
+#impltmp
+{x0:vt}
+fprint0_ptr<x0>(out, x0) =
+  ( g_free<x0>(x0) ) where
+{
+  val () = fprint1_ptr<x0>(out,x0)
+}
+//
+(* ****** ****** *)
+
+#impltmp
+{x0:vt}
+fprint1_ref<x0>
+  (out, x0) =
+(
+  gl_print1<x0>(x0)) where
+{
+  #impltmp gl_print$out<>() = out
+} (*where*) // end-of(fprint_ref)
+
+(* ****** ****** *)
+(*
+//
+HX-2022-06-03:
+For implementing the base cases:
+//
+*)
+(* ****** ****** *)
+
+#impltmp
+fprint_ref<sint> =
+XATS2CC_fprint_sint where
+{
+fun
+XATS2CC_fprint_sint
+(FILEref, sint): void = $extnam()
+}
+#impltmp
+fprint_ref<char> =
+XATS2CC_fprint_char where
+{
+fun
+XATS2CC_fprint_char
+(FILEref, char): void = $extnam()
+}
+
+(* ****** ****** *)
+//
+#impltmp
+g_print<char>(x0) =
+fprint_ref<char>(g_print$out<>(), x0)
+#impltmp
+g_print<sint>(x0) =
+fprint_ref<sint>(g_print$out<>(), x0)
 //
 (* ****** ****** *)
 

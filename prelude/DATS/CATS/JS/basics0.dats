@@ -21,7 +21,7 @@ XATS2JS_bool_neg
 ( b0
 : bool(b0)
 )
-: bool(~b0) = $exname()
+: bool(~b0) = $extnam()
 //
 #impltmp
 bool_neg<> = XATS2JS_bool_neg
@@ -37,7 +37,7 @@ XATS2JS_bool_add
 , b2
 : bool(b2)
 )
-: bool(b1+b2) = $exname()
+: bool(b1+b2) = $extnam()
 #extern
 fun
 XATS2JS_bool_mul
@@ -47,7 +47,7 @@ XATS2JS_bool_mul
 , b2
 : bool(b2)
 )
-: bool(b1*b2) = $exname()
+: bool(b1*b2) = $extnam()
 //
 #impltmp
 bool_add<> = XATS2JS_bool_add
@@ -76,13 +76,13 @@ sint_make_char<>
 #extern
 fun
 XATS2JS_char_eqzq
-(c0: char): bool = $exname()
+(c0: char): bool = $extnam()
 #impltmp
 char_eqzq<> = XATS2JS_char_eqzq
 #extern
 fun
 XATS2JS_char_neqzq
-(c0: char): bool = $exname()
+(c0: char): bool = $extnam()
 #impltmp
 char_neqzq<> = XATS2JS_char_neqzq
 (* ****** ****** *)
@@ -90,7 +90,7 @@ char_neqzq<> = XATS2JS_char_neqzq
 fun
 XATS2JS_char_cmp
 ( c1: char
-, c2: char): sint = $exname()
+, c2: char): sint = $extnam()
 #impltmp
 char_cmp<> = XATS2JS_char_cmp
 (* ****** ****** *)
@@ -98,14 +98,14 @@ char_cmp<> = XATS2JS_char_cmp
 fun
 XATS2JS_char_equal
 ( c1: char
-, c2: char): bool = $exname()
+, c2: char): bool = $extnam()
 #impltmp
 char_equal<> = XATS2JS_char_equal
 #extern
 fun
 XATS2JS_char_noteq
 ( c1: char
-, c2: char): bool = $exname()
+, c2: char): bool = $extnam()
 #impltmp
 char_noteq<> = XATS2JS_char_noteq
 (* ****** ****** *)
@@ -119,7 +119,7 @@ fun
 XATS2JS_gint_neg_sint
 {i:int}
 ( x0
-: sint(i)): sint(-i) = $exname()
+: sint(i)): sint(-i) = $extnam()
 #impltmp
 gint_neg_sint<> = XATS2JS_gint_neg_sint
 //
@@ -130,7 +130,7 @@ fun
 XATS2JS_gint_abs_sint
 {i:int}
 ( x0
-: sint(i)): sint(abs(i)) = $exname()
+: sint(i)): sint(abs(i)) = $extnam()
 #impltmp
 gint_abs_sint<> = XATS2JS_gint_abs_sint
 //
@@ -141,13 +141,13 @@ fun
 XATS2JS_gint_succ_sint
 {i:int}
 ( x0
-: sint(i)): sint(i+1) = $exname()
+: sint(i)): sint(i+1) = $extnam()
 #extern
 fun
 XATS2JS_gint_pred_sint
 {i:int}
 ( x0
-: sint(i)): sint(i-1) = $exname()
+: sint(i)): sint(i-1) = $extnam()
 #impltmp
 gint_succ_sint<> = XATS2JS_gint_succ_sint
 #impltmp
@@ -162,7 +162,7 @@ XATS2JS_gint_lt_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): bool(i<j) = $exname()
+: sint(j)): bool(i<j) = $extnam()
 #impltmp
 gint_lt_sint_sint<> = XATS2JS_gint_lt_sint_sint
 //
@@ -173,7 +173,7 @@ XATS2JS_gint_gt_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): bool(i>j) = $exname()
+: sint(j)): bool(i>j) = $extnam()
 #impltmp
 gint_gt_sint_sint<> = XATS2JS_gint_gt_sint_sint
 //
@@ -184,7 +184,7 @@ XATS2JS_gint_eq_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): bool(i=j) = $exname()
+: sint(j)): bool(i=j) = $extnam()
 #impltmp
 gint_eq_sint_sint<> = XATS2JS_gint_eq_sint_sint
 //
@@ -195,7 +195,7 @@ XATS2JS_gint_lte_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): bool(i<=j) = $exname()
+: sint(j)): bool(i<=j) = $extnam()
 #impltmp
 gint_lte_sint_sint<> = XATS2JS_gint_lte_sint_sint
 //
@@ -206,7 +206,7 @@ XATS2JS_gint_gte_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): bool(i>=j) = $exname()
+: sint(j)): bool(i>=j) = $extnam()
 #impltmp
 gint_gte_sint_sint<> = XATS2JS_gint_gte_sint_sint
 //
@@ -217,7 +217,7 @@ XATS2JS_gint_neq_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): bool(i!=j) = $exname()
+: sint(j)): bool(i!=j) = $extnam()
 #impltmp
 gint_neq_sint_sint<> = XATS2JS_gint_neq_sint_sint
 //
@@ -231,7 +231,7 @@ XATS2JS_gint_cmp_sint_sint
 : sint(i)
 , y
 : sint(j))
-: sint(sgn(i-j)) = $exname((*self*))
+: sint(sgn(i-j)) = $extnam((*self*))
 #impltmp
 gint_cmp_sint_sint<> = XATS2JS_gint_cmp_sint_sint
 
@@ -244,7 +244,7 @@ XATS2JS_gint_add_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): sint( i+j ) = $exname()
+: sint(j)): sint( i+j ) = $extnam()
 #impltmp
 gint_add_sint_sint<> = XATS2JS_gint_add_sint_sint
 #extern
@@ -254,7 +254,7 @@ XATS2JS_gint_sub_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): sint( i-j ) = $exname()
+: sint(j)): sint( i-j ) = $extnam()
 #impltmp
 gint_sub_sint_sint<> = XATS2JS_gint_sub_sint_sint
 //
@@ -265,7 +265,7 @@ XATS2JS_gint_mul_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): sint( i*j ) = $exname()
+: sint(j)): sint( i*j ) = $extnam()
 #impltmp
 gint_mul_sint_sint<> = XATS2JS_gint_mul_sint_sint
 #extern
@@ -275,7 +275,7 @@ XATS2JS_gint_div_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): sint( i/j ) = $exname()
+: sint(j)): sint( i/j ) = $extnam()
 #impltmp
 gint_div_sint_sint<> = XATS2JS_gint_div_sint_sint
 #extern
@@ -285,7 +285,7 @@ XATS2JS_gint_mod_sint_sint
 ( x
 : sint(i)
 , y
-: sint(j)): sint(mod(i,j)) = $exname()
+: sint(j)): sint(mod(i,j)) = $extnam()
 #impltmp
 gint_mod_sint_sint<> = XATS2JS_gint_mod_sint_sint
 //
@@ -298,7 +298,7 @@ gint_mod_sint_sint<> = XATS2JS_gint_mod_sint_sint
 #extern
 fun
 XATS2JS_gflt_i_dflt
-( x0: sint ): dflt = $exname()
+( x0: sint ): dflt = $extnam()
 #impltmp
 gflt_i_dflt<> = XATS2JS_gflt_i_dflt
 //
@@ -307,14 +307,14 @@ gflt_i_dflt<> = XATS2JS_gflt_i_dflt
 #extern
 fun
 XATS2JS_gflt_neg_dflt
-  ( x0: dflt ): dflt = $exname()
+  ( x0: dflt ): dflt = $extnam()
 #impltmp
 gflt_neg_dflt<> = XATS2JS_gflt_neg_dflt
 //
 #extern
 fun
 XATS2JS_gflt_abs_dflt
-  ( x0: dflt ): dflt = $exname()
+  ( x0: dflt ): dflt = $extnam()
 #impltmp
 gflt_abs_dflt<> = XATS2JS_gflt_abs_dflt
 //
@@ -323,13 +323,13 @@ gflt_abs_dflt<> = XATS2JS_gflt_abs_dflt
 #extern
 fun
 XATS2JS_gflt_succ_dflt
-  ( x0: dflt ): dflt = $exname()
+  ( x0: dflt ): dflt = $extnam()
 #impltmp
 gflt_succ_dflt<> = XATS2JS_gflt_succ_dflt
 #extern
 fun
 XATS2JS_gflt_pred_dflt
-  ( x0: dflt ): dflt = $exname()
+  ( x0: dflt ): dflt = $extnam()
 #impltmp
 gflt_pred_dflt<> = XATS2JS_gflt_pred_dflt
 //
@@ -338,27 +338,27 @@ gflt_pred_dflt<> = XATS2JS_gflt_pred_dflt
 #extern
 fun
 XATS2JS_gflt_lt_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x0: dflt, y0: dflt ): bool = $extnam()
 #extern
 fun
 XATS2JS_gflt_gt_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x0: dflt, y0: dflt ): bool = $extnam()
 #extern
 fun
 XATS2JS_gflt_eq_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x0: dflt, y0: dflt ): bool = $extnam()
 #extern
 fun
 XATS2JS_gflt_lte_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x0: dflt, y0: dflt ): bool = $extnam()
 #extern
 fun
 XATS2JS_gflt_gte_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x0: dflt, y0: dflt ): bool = $extnam()
 #extern
 fun
 XATS2JS_gflt_neq_dflt_dflt
-( x0: dflt, y0: dflt ): bool = $exname()
+( x0: dflt, y0: dflt ): bool = $extnam()
 //
 #impltmp
 gflt_lt_dflt_dflt<> = XATS2JS_gflt_lt_dflt_dflt
@@ -378,7 +378,7 @@ gflt_neq_dflt_dflt<> = XATS2JS_gflt_neq_dflt_dflt
 #extern
 fun
 XATS2JS_gflt_cmp_dflt_dflt
-( x0: dflt, y0: dflt ): sint = $exname()
+( x0: dflt, y0: dflt ): sint = $extnam()
 #impltmp
 gflt_cmp_dflt_dflt<> = XATS2JS_gflt_cmp_dflt_dflt
 //
@@ -387,19 +387,19 @@ gflt_cmp_dflt_dflt<> = XATS2JS_gflt_cmp_dflt_dflt
 #extern
 fun
 XATS2JS_gflt_add_dflt_dflt
-( x0: dflt, y0: dflt ): dflt = $exname()
+( x0: dflt, y0: dflt ): dflt = $extnam()
 #extern
 fun
 XATS2JS_gflt_sub_dflt_dflt
-( x0: dflt, y0: dflt ): dflt = $exname()
+( x0: dflt, y0: dflt ): dflt = $extnam()
 #extern
 fun
 XATS2JS_gflt_mul_dflt_dflt
-( x0: dflt, y0: dflt ): dflt = $exname()
+( x0: dflt, y0: dflt ): dflt = $extnam()
 #extern
 fun
 XATS2JS_gflt_div_dflt_dflt
-( x0: dflt, y0: dflt ): dflt = $exname()
+( x0: dflt, y0: dflt ): dflt = $extnam()
 //
 #impltmp
 gflt_add_dflt_dflt<> = XATS2JS_gflt_add_dflt_dflt
@@ -426,7 +426,7 @@ where
 fun
 XATS2JS_strn_vt2t
 (cs
-:strn_vt):strn = $exname()
+:strn_vt):strn = $extnam()
 }
 (* ****** ****** *)
 
@@ -438,7 +438,7 @@ where
 #extern
 fun
 XATS2JS_stropt_nilq
-(opt: stropt): bool = $exname()
+(opt: stropt): bool = $extnam()
 }
 #impltmp
 stropt_consq<> =
@@ -448,7 +448,7 @@ where
 #extern
 fun
 XATS2JS_stropt_consq
-(opt: stropt): bool = $exname()
+(opt: stropt): bool = $extnam()
 }
 
 (* ****** ****** *)
@@ -461,7 +461,7 @@ where
 fun
 XATS2JS_strn_lt
 (x1: strn
-,x2: strn): bool = $exname()
+,x2: strn): bool = $extnam()
 }
 #impltmp
 strn_gt<> =
@@ -472,7 +472,7 @@ where
 fun
 XATS2JS_strn_gt
 (x1: strn
-,x2: strn): bool = $exname()
+,x2: strn): bool = $extnam()
 }
 #impltmp
 strn_eq<> =
@@ -483,7 +483,7 @@ where
 fun
 XATS2JS_strn_eq
 (x1: strn
-,x2: strn): bool = $exname()
+,x2: strn): bool = $extnam()
 }
 (* ****** ****** *)
 #impltmp
@@ -495,7 +495,7 @@ where
 fun
 XATS2JS_strn_lte
 (x1: strn
-,x2: strn): bool = $exname()
+,x2: strn): bool = $extnam()
 }
 #impltmp
 strn_gte<> =
@@ -506,7 +506,7 @@ where
 fun
 XATS2JS_strn_gte
 (x1: strn
-,x2: strn): bool = $exname()
+,x2: strn): bool = $extnam()
 }
 #impltmp
 strn_neq<> =
@@ -517,7 +517,7 @@ where
 fun
 XATS2JS_strn_neq
 (x1: strn
-,x2: strn): bool = $exname()
+,x2: strn): bool = $extnam()
 }
 (* ****** ****** *)
 #impltmp
@@ -529,7 +529,7 @@ where
 fun
 XATS2JS_strn_cmp
 (x1: strn
-,x2: strn): sint = $exname()
+,x2: strn): sint = $extnam()
 }
 (* ****** ****** *)
 #impltmp
@@ -540,7 +540,7 @@ where
 #extern
 fun
 XATS2JS_strn_head_opt
-(cs: strn): char = $exname()
+(cs: strn): char = $extnam()
 }
 (* ****** ****** *)
 #impltmp
@@ -551,7 +551,7 @@ where
 #extern
 fun
 XATS2JS_strn_head_raw
-(cs: strn): char = $exname()
+(cs: strn): char = $extnam()
 }
 (* ****** ****** *)
 #impltmp
@@ -562,7 +562,7 @@ where
 #extern
 fun
 XATS2JS_strn_tail_raw
-(cs: strn): strn = $exname()
+(cs: strn): strn = $extnam()
 }
 (* ****** ****** *)
 #impltmp
@@ -573,7 +573,7 @@ where
 #extern
 fun
 XATS2JS_strn_length
-(cs : strn) : nint = $exname()
+(cs : strn) : nint = $extnam()
 }
 //
 #impltmp
@@ -584,7 +584,7 @@ where
 #extern
 fun
 XATS2JS_strn_vt_length0
-(cs : !strn_vt) : nint = $exname()
+(cs : !strn_vt) : nint = $extnam()
 }
 #impltmp
 strn_vt_length1<> =
@@ -594,7 +594,7 @@ where
 #extern
 fun
 XATS2JS_strn_vt_length1
-(cs : !strn_vt) : nint = $exname()
+(cs : !strn_vt) : nint = $extnam()
 }
 //
 (* ****** ****** *)
@@ -608,7 +608,7 @@ fun
 XATS2JS_strn_get_at
 ( cs
 : strn, i0: sint): char
-= $exname((*self*))
+= $extnam((*self*))
 }
 (* ****** ****** *)
 #impltmp
@@ -620,7 +620,7 @@ fun
 XATS2JS_strn_forall_cfr
 ( cs: strn
 , f0: (cgtz) -<cfr> bool): bool
-= $exname((*self*))
+= $extnam((*self*))
 //
 in
 XATS2JS_strn_forall_cfr
@@ -636,7 +636,7 @@ where
 #extern
 fun
 XATS2JS_strtmp_vt_alloc
-(bsz: sint) : strtmp0_vt = $exname()
+(bsz: sint) : strtmp0_vt = $extnam()
 }
 (* ****** ****** *)
 #impltmp
@@ -648,42 +648,36 @@ where
 fun
 XATS2JS_strtmp_vt_set_at
 ( cs:strtmp0_vt
-, i0:sint, c0:char): void = $exname()
+, i0:sint, c0:char): void = $extnam()
 }
 (* ****** ****** *)
 #impltmp
 strn_vt_forall0<>(cs) =
-let
-//
+XATS2JS_strn_vt_forall_cfr
+( cs
+, lam(c0) =>
+  forall0$test<cgtz>(c0) ) where
+{
 #extern
 fun
 XATS2JS_strn_vt_forall_cfr
 ( cs: ~strn_vt
-, f0: (cgtz) -<cfr> bool): bool
-= $exname((*self*))
-//
-in
-XATS2JS_strn_vt_forall_cfr
-( cs
-, lam(c0) => forall0$test<cgtz>(c0))
-end // end of [strn_vt_forall0]
+, f0: (cgtz) -<cfr> bool): bool = $extnam()
+} (*where*) // end of [strn_vt_forall0]
 (* ****** ****** *)
 #impltmp
 strn_vt_forall1<>(cs) =
-let
-//
+XATS2JS_strn_vt_forall_cfr
+( cs
+, lam(c0) =>
+  forall1$test<cgtz>(c0) ) where
+{
 #extern
 fun
 XATS2JS_strn_vt_forall_cfr
 ( cs: !strn_vt
-, f0: (cgtz) -<cfr> bool): bool
-= $exname((*self*))
-//
-in
-XATS2JS_strn_vt_forall_cfr
-( cs
-, lam(c0) => forall1$test<cgtz>(c0))
-end // end of [strn_vt_forall1]
+, f0: (cgtz) -<cfr> bool): bool = $extnam()
+} (*where*) // end of [strn_vt_forall1]
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_DATS_CATS_JS_basics0.dats] *)

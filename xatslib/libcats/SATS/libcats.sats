@@ -27,9 +27,15 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: April, 2020
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: April, 2020
+Authoremail: gmhwxiATgmailDOTcom
+*)
+//
+(* ****** ****** *)
+//
+#typedef ierr = sint
 //
 (* ****** ****** *)
 //
@@ -38,11 +44,124 @@ FILEref_tbox <= ptr0
 #absvwtp
 FILEptr_vtbx(l:addr) <= ptr0
 //
-#typedef FILEref = FILEref_tbox
-#sexpdef FILEptr = FILEptr_vtbx
-#vwtpdef FILEptr0 = [l:addr] FILEptr(l)
-#vwtpdef FILEptr1 = [l:agtz] FILEptr(l)
+#typedef
+FILEref = FILEref_tbox
+#sexpdef
+FILEptr = FILEptr_vtbx
+#vwtpdef
+FILEptr0 = [l:addr] FILEptr(l)
+#vwtpdef
+FILEptr1 = [l:agtz] FILEptr(l)
 //
 (* ****** ****** *)
 
-(* end of [xatslib_libcats_libcats.sats] *)
+#typedef FILR = FILEref
+#sexpdef FILP = FILEptr
+#vwtpdef FILP0 = FILEptr0
+#vwtpdef FILP1 = FILEptr1
+
+(* ****** ****** *)
+//
+fun<>
+g_stdin(): FILR // STDIN=0
+//
+fun<>
+g_stdout(): FILR // STDOUT=1
+fun<>
+g_stderr(): FILR // STDERR=2
+//
+(* ****** ****** *)
+
+fun<>
+g_inp_char(): sint
+fun<>
+g_inp_cstrm(): strm_vt(sint)
+
+(* ****** ****** *)
+
+fun<>
+g_inp_line(): strn
+fun<>
+g_inp_lline(): strn_vt
+
+(* ****** ****** *)
+
+fun<>
+g_inp_line_list(): list(char)
+fun<>
+g_inp_lline_list(): list_vt(char)
+fun<>
+g_inp_lline_rlist(): list_vt(char)
+
+(* ****** ****** *)
+//
+fun<>
+g_print$out(): FILR
+fun<>
+gl_print$out(): FILR
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0> // STDOUT
+prout_ref(x0: x0): void
+fun
+<x0:t0> // STDERR
+prerr_ref(x0: x0): void
+//
+fun
+<x0:vt> // STDOUT
+prout0_ref(x0: ~x0): void
+fun
+<x0:vt> // STDERR
+prerr0_ref(x0: ~x0): void
+//
+fun
+<x0:vt> // STDOUT
+prout1_ref(x0: !x0): void
+fun
+<x0:vt> // STDERR
+prerr1_ref(x0: !x0): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+fprint_ref
+(out: FILR, x0: x0): void
+//
+fun
+<x0:vt>
+fprint0_ref
+(out: FILR, x0: ~x0): void
+fun
+<x0:vt>
+fprint1_ref
+(out: FILR, x0: !x0): void
+//
+fun
+<x0:vt>
+fprint0_ptr
+(out: !FILP1, x0: ~x0): void
+fun
+<x0:vt>
+fprint1_ptr
+(out: !FILP1, x0: !x0): void
+//
+(* ****** ****** *)
+//
+fun<>
+fgetc_ref(fr: FILR): ierr
+fun<>
+fgetc_ptr(fp: !FILP1): ierr
+//
+fun<>
+fputc_ref
+(chr: sint, fr: FILR): ierr
+fun<>
+fputc_ptr
+(chr: sint, fp: !FILP1): ierr
+//
+(* ****** ****** *)
+
+(* end of [ATS3/XANADU_xatslib_libcats_libcats.sats] *)

@@ -27,21 +27,21 @@ XATS2JS_lazy_cfr
 {a:t0}
 ( f0
 : ()-<cfr>a
-) : lazy(a) = $exname()
+) : lazy(a) = $extnam()
 #extern
 fun
 XATS2JS_llazy_cfr
 {a:vt}
 ( f0
 : ()-<cfr>a
-) : lazy_vt(a) = $exname()
+) : lazy_vt(a) = $extnam()
 #extern
 fun
 XATS2JS_lazy_vt_cfr
 {a:vt}
 ( f0
 : ()-<cfr>a
-) : lazy_vt(a) = $exname()
+) : lazy_vt(a) = $extnam()
 //
 #implfun
 XATS2JS_lazy_cfr{a}(f0) = $lazy(f0())
@@ -59,11 +59,11 @@ XATS2JS_lazy_vt_cfr{a}(f0) = $llazy(f0())
 #extern
 fun
 XATS2JS_optn_nil
-{a:t0}(): optn(a) = $exname()
+{a:t0}(): optn(a) = $extnam()
 #extern
 fun
 XATS2JS_optn_cons
-{a:t0}(x0: a): optn(a) = $exname()
+{a:t0}(x0: a): optn(a) = $extnam()
 //
 #implfun
 XATS2JS_optn_nil() = optn_nil()
@@ -78,7 +78,7 @@ XATS2JS_optn_uncons_cfr
 ( xs
 : optn(x0)
 , f0: ()-<cfr>r0
-, f1: (x0)-<cfr>r0): r0 = $exname()
+, f1: (x0)-<cfr>r0): r0 = $extnam()
 #implfun
 XATS2JS_optn_uncons_cfr
   (xs, f0, f1) =
@@ -96,13 +96,13 @@ XATS2JS_optn_uncons_cfr
 fun
 XATS2JS_list_nil
 {a:t0}
-( (*void*) ): list(a) = $exname()
+( (*void*) ): list(a) = $extnam()
 #extern
 fun
 XATS2JS_list_cons
 {a:t0}
 ( x0: a
-, xs: list(a)): list(a) = $exname()
+, xs: list(a)): list(a) = $extnam()
 //
 #implfun
 XATS2JS_list_nil() = list_nil((*void*))
@@ -119,7 +119,7 @@ XATS2JS_list_uncons_cfr
 , f0
 : ((*void*))-<cfr>r0
 , f1
-: (x0, list(x0))-<cfr>r0): r0 = $exname()
+: (x0, list(x0))-<cfr>r0): r0 = $extnam()
 #implfun
 XATS2JS_list_uncons_cfr
   (xs, f0, f1) =
@@ -137,13 +137,13 @@ XATS2JS_list_uncons_cfr
 fun
 XATS2JS_strmcon_nil
 {a:t0}
-( (*void*) ): strmcon(a) = $exname()
+( (*void*) ): strmcon(a) = $extnam()
 #extern
 fun
 XATS2JS_strmcon_cons
 {a:t0}
 ( x0: a
-, xs: strm(a)): strmcon(a) = $exname()
+, xs: strm(a)): strmcon(a) = $extnam()
 //
 #implfun
 XATS2JS_strmcon_nil() = strmcon_nil((*void*))
@@ -157,13 +157,13 @@ XATS2JS_strmcon_cons(x0, xs) = strmcon_cons(x0, xs)
 fun
 XATS2JS_strm_nil
 {a:t0}
-( (*void*) ): strm(a) = $exname()
+( (*void*) ): strm(a) = $extnam()
 #extern
 fun
 XATS2JS_strm_cons
 {a:t0}
 ( x0: a
-, xs: strm(a)): strm(a) = $exname()
+, xs: strm(a)): strm(a) = $extnam()
 //
 #implfun
 XATS2JS_strm_nil() = strm_nil((*void*))
@@ -181,7 +181,7 @@ XATS2JS_strm_uncons_cfr
 , f0
 : ((*void*))-<cfr>r0
 , f1
-: (x0, strm(x0))-<cfr>r0): r0 = $exname()
+: (x0, strm(x0))-<cfr>r0): r0 = $extnam()
 #implfun
 XATS2JS_strm_uncons_cfr
   (xs, f0, f1) =
@@ -197,7 +197,7 @@ XATS2JS_streax_uncons_cfr
 ( xs
 : streax(x0)
 , f1
-: (x0, streax(x0))-<cfr>r0): r0 = $exname()
+: (x0, streax(x0))-<cfr>r0): r0 = $extnam()
 #implfun
 XATS2JS_streax_uncons_cfr
   (xs, f1) =
@@ -213,11 +213,11 @@ XATS2JS_streax_uncons_cfr
 #extern
 fun
 XATS2JS_optn_vt_nil
-{a:vt}(): optn_vt(a) = $exname()
+{a:vt}(): optn_vt(a) = $extnam()
 #extern
 fun
 XATS2JS_optn_vt_cons
-{a:vt}(x0: a): optn_vt(a) = $exname()
+{a:vt}(x0: a): optn_vt(a) = $extnam()
 //
 #implfun
 XATS2JS_optn_vt_nil() = optn_vt_nil()
@@ -232,7 +232,7 @@ XATS2JS_optn_vt_uncons_cfr
 ( xs
 : optn_vt(x0)
 , f0: ()-<cfr>r0
-, f1: (x0)-<cfr>r0): r0 = $exname()
+, f1: (x0)-<cfr>r0): r0 = $extnam()
 #implfun
 XATS2JS_optn_vt_uncons_cfr
   (xs, f0, f1) =
@@ -250,13 +250,13 @@ XATS2JS_optn_vt_uncons_cfr
 fun
 XATS2JS_list_vt_nil
 {a:vt}
-( (*void*) ): list_vt(a) = $exname()
+( (*void*) ): list_vt(a) = $extnam()
 #extern
 fun
 XATS2JS_list_vt_cons
 {a:vt}
 ( x0: a
-, xs: list_vt(a)): list_vt(a) = $exname()
+, xs: list_vt(a)): list_vt(a) = $extnam()
 //
 #implfun
 XATS2JS_list_vt_nil() = list_vt_nil((*void*))
@@ -273,7 +273,7 @@ XATS2JS_list_vt_uncons_cfr
 , f0
 : ((*void*))-<cfr>r0
 , f1
-: (x0, list_vt(x0))-<cfr>r0): r0 = $exname()
+: (x0, list_vt(x0))-<cfr>r0): r0 = $extnam()
 #implfun
 XATS2JS_list_vt_uncons_cfr
   (xs, f0, f1) =
@@ -292,13 +292,13 @@ XATS2JS_list_vt_uncons_cfr
 fun
 XATS2JS_strm_vt_nil
 {a:vt}
-( (*void*) ): strm_vt(a) = $exname()
+( (*void*) ): strm_vt(a) = $extnam()
 #extern
 fun
 XATS2JS_strm_vt_cons
 {a:vt}
 ( x0: a
-, xs: strm_vt(a)): strm_vt(a) = $exname()
+, xs: strm_vt(a)): strm_vt(a) = $extnam()
 //
 #implfun
 XATS2JS_strm_vt_nil() = strm_vt_nil((*void*))
@@ -312,13 +312,13 @@ XATS2JS_strm_vt_cons(x0, xs) = strm_vt_cons(x0, xs)
 fun
 XATS2JS_strmcon_vt_nil
 {a:vt}
-( (*void*) ): strmcon_vt(a) = $exname()
+( (*void*) ): strmcon_vt(a) = $extnam()
 #extern
 fun
 XATS2JS_strmcon_vt_cons
 {a:vt}
 ( x0: a
-, xs: strm_vt(a)): strmcon_vt(a) = $exname()
+, xs: strm_vt(a)): strmcon_vt(a) = $extnam()
 //
 #implfun
 XATS2JS_strmcon_vt_nil() = strmcon_vt_nil((*void*))
@@ -335,7 +335,7 @@ XATS2JS_strm_vt_uncons_cfr
 , f0
 : ((*void*))-<cfr>r0
 , f1
-: (x0, strm_vt(x0))-<cfr>r0): r0 = $exname()
+: (x0, strm_vt(x0))-<cfr>r0): r0 = $extnam()
 #implfun
 XATS2JS_strm_vt_uncons_cfr
   (xs, f0, f1) =
@@ -351,7 +351,7 @@ XATS2JS_streax_vt_uncons_cfr
 ( xs
 : streax_vt(x0)
 , f1
-: (x0, streax_vt(x0))-<cfr>r0): r0 = $exname()
+: (x0, streax_vt(x0))-<cfr>r0): r0 = $extnam()
 #implfun
 XATS2JS_streax_vt_uncons_cfr
   (xs, f1) =
@@ -366,7 +366,7 @@ XATS2JS_strm_vt_map0_cfr
 {x0:vt}
 {y0:vt}
 ( xs: strm_vt(x0)
-, f0: (x0) -<cfr> y0): strm_vt(y0) = $exname()
+, f0: (x0) -<cfr> y0): strm_vt(y0) = $extnam()
 #implfun
 XATS2JS_strm_vt_map0_cfr
 {x0}{y0}
@@ -385,7 +385,7 @@ fun
 XATS2JS_strm_vt_filter0_cfr
 {x0:vt}
 ( xs: strm_vt(x0)
-, f0: (x0) -<cfr> bool): strm_vt(x0) = $exname()
+, f0: (x0) -<cfr> bool): strm_vt(x0) = $extnam()
 #implfun
 XATS2JS_strm_vt_filter0_cfr
 {x0}(xs, f0) =
@@ -426,7 +426,7 @@ XATS2JS_a0ptr_make
 {a:vt}
 (
 x0: a
-) : a0ptr(a) = $exname()
+) : a0ptr(a) = $extnam()
 #impltmp
 { a:vt }
 a0ptr_make<a> = XATS2JS_a0ptr_make
@@ -437,7 +437,7 @@ XATS2JS_a0ptr_alloc
 {a:vt}
 (
 // argless
-) : a0ptr(?a) = $exname()
+) : a0ptr(?a) = $extnam()
 #impltmp
 {a:vt}
 a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
@@ -447,7 +447,7 @@ fun
 XATS2JS_a0ref_get
 {a:t0}
 ( A0
-: a0ref(a)): ( a ) = $exname()
+: a0ref(a)): ( a ) = $extnam()
 #impltmp
 { a:t0 }
 a0ref_get<a> = XATS2JS_a0ref_get
@@ -458,7 +458,7 @@ XATS2JS_a0ref_set
 {a:t0}
 ( A0
 : a0ref(a)
-, x0 : (a)) : void = $exname()
+, x0 : (a)) : void = $extnam()
 #impltmp
 { a:t0 }
 a0ref_set<a> = XATS2JS_a0ref_set
@@ -468,7 +468,7 @@ fun
 XATS2JS_a0ref_get0
 {a:vt}
 ( A0
-: a0ref(a)): (~a) = $exname()
+: a0ref(a)): (~a) = $extnam()
 #impltmp
 { a:vt }
 a0ref_get0<a> = XATS2JS_a0ref_get0
@@ -484,7 +484,7 @@ XATS2JS_a1ptr_alloc
 {n:nat}
 ( asz
 : int(n))
-: a1ptr(?a, n) = $exname((*self*))
+: a1ptr(?a, n) = $extnam((*self*))
 #impltmp
 { a:vt }
 a1ptr_alloc<a> = XATS2JS_a1ptr_alloc
@@ -497,7 +497,7 @@ XATS2JS_a1ref_get_at
 {n:i0}
 ( A0:
 ! a1ref(a, n)
-, i0: nintlt(n)): ~a = $exname()
+, i0: nintlt(n)): ~a = $extnam()
 #impltmp
 { a:t0 }
 a1ref_get_at<a> = XATS2JS_a1ref_get_at
@@ -509,7 +509,7 @@ XATS2JS_a1ptr_get_at
 {n:i0}
 ( A0:
 ! a1ptr(a, n)
-, i0: nintlt(n)): ~a = $exname()
+, i0: nintlt(n)): ~a = $extnam()
 #impltmp
 { a:t0 }
 a1ptr_get_at<a> = XATS2JS_a1ptr_get_at
@@ -524,7 +524,7 @@ XATS2JS_a1ref_set_at
 ( A0:
 ! a1ref(a, n)
 , i0: nintlt(n)
-, x0: a(*new*)): void = $exname()
+, x0: a(*new*)): void = $extnam()
 #impltmp
 { a:t0 }
 a1ref_set_at<a> = XATS2JS_a1ref_set_at
@@ -537,7 +537,7 @@ XATS2JS_a1ptr_set_at
 ( A0:
 ! a1ptr(a, n)
 , i0: nintlt(n)
-, x0: a(*new*)): void = $exname()
+, x0: a(*new*)): void = $extnam()
 #impltmp
 { a:t0 }
 a1ptr_set_at<a> = XATS2JS_a1ptr_set_at
@@ -552,7 +552,7 @@ XATS2JS_a1ptr_set_at_raw
 ( A0:
 ! a1ptr(?a, n)
 , i0: nintlt(n)
-, x0: a(*ini*)): void = $exname()
+, x0: a(*ini*)): void = $extnam()
 #impltmp
 { a:vt }
 a1ptr_set_at_raw<a> = XATS2JS_a1ptr_set_at_raw

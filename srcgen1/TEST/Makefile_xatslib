@@ -17,6 +17,7 @@ XATSLIB=./../../xatslib
 
 all:: all_libcats
 all:: all_githwxi
+all:: all_libcats_CATS
 
 ######
 all_libcats:: ; \
@@ -30,6 +31,8 @@ all_libcats:: ; \
 $(XATSOPT) -d $(XATSLIB)/libcats/DATS/fpath00.dats
 all_libcats:: ; \
 $(XATSOPT) -d $(XATSLIB)/libcats/DATS/rand000.dats
+all_libcats:: ; \
+$(XATSOPT) -d $(XATSLIB)/libcats/DATS/synoug0.dats
 ######
 all_githwxi:: ; \
 $(XATSOPT) -s $(XATSLIB)/githwxi/SATS/githwxi.sats
@@ -46,5 +49,9 @@ $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/dvdcnq0.dats
 all_githwxi:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/parcmb1.dats
 ######
-
+all_libcats_CATS:: ; \
+$(XATSOPT) -d $(XATSLIB)/libcats/DATS/CATS/Xint/basics0.dats
+all_libcats_CATS:: ; \
+$(XATSOPT) -d $(XATSLIB)/libcats/DATS/CATS/JS/Node/basics0.dats
+######
 ###### end of [Makefile_xatslib] ######

@@ -705,7 +705,7 @@ D1Eexist of // HX-2021-01-14: for
 (s1explstlst, d1exp) // existential introduction
 *)
 //
-| D1Eexname of (g1nam) // HX: for specifying names
+| D1Eextnam of (g1nam) // HX: for specifying names
 | D1Eexists of // HX-2021-01-14: $exist{..}..{..}
   (token, d1explst(*D1Esqarglst*), d1exp) // (d1exp)
 //

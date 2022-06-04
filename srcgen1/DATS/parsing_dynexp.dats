@@ -2415,17 +2415,17 @@ end // end of [T_OP_par]
   end // end of [T_IDENT_qual]
 //
 |
-T_DLR_EXNAME _ => let
+T_DLR_EXTNAM _ => let
   val () = buf.incby1()
   val gnm = p_g0nam(buf, err)
 in
   err := e0;
   d0exp_make_node
-  ( loc_res, D0Eexname(gnm) ) where
+  ( loc_res, D0Eextnam(gnm) ) where
   {
     val loc_res = tok.loc()+gnm.loc()
   }
-end // end of [T_DLR_EXNAME]
+end // end of [T_DLR_EXTNAM]
 //
 |
 T_DLR_EXISTS _ => let

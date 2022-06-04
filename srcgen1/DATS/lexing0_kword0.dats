@@ -520,9 +520,10 @@ myins("$delay_vt", T_DLR_delay_vt)
 *)
 //
 val () =
-myins("$exists", T_DLR_EXISTS)
+myins("$extnam", T_DLR_EXTNAM)
+//
 val () =
-myins("$exname", T_DLR_EXNAME)
+myins("$exists", T_DLR_EXISTS)
 //
 val () =
   myins("#if", T_SRP_IFEXP_)

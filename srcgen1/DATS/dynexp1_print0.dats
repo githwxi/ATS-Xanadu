@@ -678,8 +678,8 @@ x0.node() of
     fprint!(out, "D1Equal(", tok1, "; ", d1e2, ")")
   )
 //
-| D1Eexname(g1e1) =>
-  fprint!(out, "D1Eexname(", g1e1, ")")
+| D1Eextnam(g1e1) =>
+  fprint!(out, "D1Eextnam(", g1e1, ")")
 //
 | D1Eexists
   (tok0, sqas, d1e1) =>

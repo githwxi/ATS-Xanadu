@@ -779,14 +779,14 @@ case+ x0.node() of
 //
 | D0Enone(tok) => fprint!(out, "D0Enone(", tok, ")")
 //
-| D0Eexname(g0e) => fprint!(out, "D0Eexname(", g0e, ")")
+| D0Eextnam(g0e1) =>
+  fprint!(out, "D0Eextnam(", g0e1, ")")
+//
 | D0Eexists
   (tok0, sqas, d0e1) =>
   fprint!(out, "D0Eexists(", tok0, "; ", sqas, "; ", d0e1, ")")
 //
-) (* end of [fprint_d0exp] *)
-
-end // end of [local]
+) (* end of [fprint_d0exp] *) end // end of [local]
 
 (* ****** ****** *)
 
