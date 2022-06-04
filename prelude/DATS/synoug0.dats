@@ -32,7 +32,7 @@ print and println
 (*
 #extern
 fun<>
-print_0
+print_a0
 ((*void*)) : void
 *)
 #extern

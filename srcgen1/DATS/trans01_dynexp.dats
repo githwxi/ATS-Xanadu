@@ -1738,21 +1738,21 @@ FXITMatm(d1e0) where
     }
   end // end of [D0Equal]
 //
-| D0Enone(tokerr) =>
+| D0Enone(tok1) =>
   let
   val d1e0 = d1exp_none(loc0) in FXITMatm(d1e0)
   end // end of [D0Enone]
 //
-| D0Eexname(gnm1) =>
+| D0Eextnam(gnm1) =>
   (
   FXITMatm(d1e0) where
   {
   val
   gnm1 = trans01_gnam(gnm1)
   val
-  d1e0 = d1exp_make_node(loc0, D1Eexname(gnm1))
+  d1e0 = d1exp_make_node(loc0, D1Eextnam(gnm1))
   }
-  ) (* end of [D0Eexname] *)
+  ) (* end of [D0Eextnam] *)
 //
 | D0Eexists
   (tok0, sqas, d0e1) =>

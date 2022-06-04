@@ -690,7 +690,7 @@ d0exp_node =
 | D0Enone of (token) // HX: for error indication
 //
 // HX-2020-11-04:
-| D0Eexname of (g0nam) // HX: for specifying names
+| D0Eextnam of (g0nam) // HX: for specifying names
 // HX-2021-01-14:
 | D0Eexists of // HX-2021-01-14: $exist{..}..{..}
   (token, d0explst(*D0Esqarglst*), d0exp) // (d0exp)

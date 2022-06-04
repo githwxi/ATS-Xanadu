@@ -258,8 +258,9 @@ tnode =
 //
   | T_WITHTYPE of int(*kind*)
 //
+  | T_DLR_EXTNAM of () // $exname
+//
   | T_DLR_EXISTS of () // $exists
-  | T_DLR_EXNAME of () // $exname
 //
   | T_SRP_THEN of ()
   | T_SRP_ELSE of ()

@@ -331,10 +331,11 @@ case+ tnd of
 | T_WITHTYPE(srt) =>
   fprint!(out, "WITHTYPE(", srt, ")")
 //
+| T_DLR_EXTNAM() =>
+  fprint( out, "$EXTNAM" )
+//
 | T_DLR_EXISTS() =>
-  fprint( out, "$EXSITS" )
-| T_DLR_EXNAME() =>
-  fprint( out, "$EXNAME" )
+  fprint( out, "$EXISTS" )
 //
 | T_SRP_THEN() =>
   fprint!(out, "#THEN(", ")")
@@ -619,10 +620,11 @@ case+ tnd of
 | T_WITHTYPE(knd) =>
   fprint!(out, "withtype(", knd, ")")
 //
+| T_DLR_EXTNAM() =>
+  fprint( out, "$extnam" )
+//
 | T_DLR_EXISTS() =>
   fprint( out, "$exists" )
-| T_DLR_EXNAME() =>
-  fprint( out, "$exname" )
 //
 | T_SRP_THEN() =>
   fprint!(out, "#then(", ")")

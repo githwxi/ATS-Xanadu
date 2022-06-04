@@ -5013,9 +5013,9 @@ isext
 (
 case+
 d1e1.node() of
-| D1Eexname _ => true
+| D1Eextnam _ => true
 |
-_ (*non-D1Eexname*) => false
+_ (*non-D1Eextnam*) => false
 )
 //
 fun
@@ -5142,9 +5142,9 @@ Some(d1e) =>
 case+
 d1e.node() of
 |
-D1Eexname(gnm) => Some(gnm)
+D1Eextnam(gnm) => Some(gnm)
 |
-_(*D1Eexname*) => None(*void*)
+_(*D1Eextnam*) => None(*void*)
 )
 ) : Option(g1nam) // end-of-val
 //
@@ -6538,14 +6538,14 @@ TEQD1EXPsome
 case+
 d1e2.node() of
 |
-D1Eexname(gnm) =>
+D1Eextnam(gnm) =>
 let
 val
 xnam = X2NAMsome(gnm)
 in
 d2cst_set_xnam(d2c0, xnam)
 end
-| _(* non-D1Eexname *) => ()
+| _(* non-D1Eextnam *) => ()
 )
 ) (* end of [d2cxnam] *)
 //

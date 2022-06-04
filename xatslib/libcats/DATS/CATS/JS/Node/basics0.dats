@@ -32,7 +32,7 @@ end where
 #extern
 fun
 XATS2JS_NODE_fs_readFileSync
-(path: string): stropt = $exname()
+(path: string): stropt = $extnam()
 } (* end of [fpath_strmize_char] *)
 
 (* ****** ****** *)
