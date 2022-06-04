@@ -43,4 +43,4 @@ fpath_strmize_cgtz=fpath_strmize_char<>
 //
 (* ****** ****** *)
 
-(* end of [xatslib_libcats_XATS2JS_NODE_basics0.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_DATSCATS_JS_NODE_basics0.dats] *)

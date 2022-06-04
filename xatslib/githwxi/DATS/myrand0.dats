@@ -288,4 +288,4 @@ g_rand<strn_vt> = strn_rand<>(*void*)
 //
 (* ****** ****** *)
 
-(* end of [xatslib_libcats_rand000.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_myrand0.dats] *)

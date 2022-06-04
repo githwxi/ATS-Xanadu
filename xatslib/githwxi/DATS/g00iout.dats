@@ -203,33 +203,29 @@ For implementing the base cases:
 //
 *)
 (* ****** ****** *)
-
-#impltmp
-fprint_ref<sint> =
-XATS2CC_fprint_sint where
-{
-fun
-XATS2CC_fprint_sint
-(FILEref, sint): void = $extnam()
-}
-#impltmp
-fprint_ref<char> =
-XATS2CC_fprint_char where
-{
-fun
-XATS2CC_fprint_char
-(FILEref, char): void = $extnam()
-}
-
+//
+#extern
+fun<>
+bool_fprint(FILR, bool): void
+#extern
+fun<>
+char_fprint(FILR, char): void
+#extern
+fun<>
+gint_fprint_sint(FILR, sint): void
+//
 (* ****** ****** *)
 //
+#impltmp
+g_print<bool>(x0) =
+bool_fprint<>(g_print$out<>(), x0)
 #impltmp
 g_print<char>(x0) =
-fprint_ref<char>(g_print$out<>(), x0)
+char_fprint<>(g_print$out<>(), x0)
 #impltmp
 g_print<sint>(x0) =
-fprint_ref<sint>(g_print$out<>(), x0)
+gint_fprint_int<>(g_print$out<>(), x0)
 //
 (* ****** ****** *)
 
-(* end of [xatslib_libcats_g00iout.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_g00iout.dats] *)

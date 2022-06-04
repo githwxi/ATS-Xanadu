@@ -160,20 +160,20 @@ end // end of [local]
 #extern
 fun
 <tok:t0>
-parcmbr_input
+parcmb1_input
 (xs: strm(tok)): input(tok)
 #impltmp
 <tok>
-parcmbr_input(xs) = input_make(xs)
+parcmb1_input(xs) = input_make(xs)
 //
 #extern
 fun
 <tok:t0>
-parcmbr_token
+parcmb1_token
 ((*void*)): parser(tok,tok)
 #impltmp
 <tok>
-parcmbr_token() =
+parcmb1_token() =
 parser(lam(inp) => input_getok(inp))
 //
 (* ****** ****** *)
@@ -182,7 +182,7 @@ parser(lam(inp) => input_getok(inp))
 fun
 <tok:t0>
 <res:vt>
-parcmbr_sat
+parcmb1_sat
 ( P0
 : parser(tok,res)
 , f0
@@ -190,7 +190,7 @@ parcmbr_sat
 //
 #impltmp
 <tok><res>
-parcmbr_sat
+parcmb1_sat
 (P0, f0) = parser
 (
 lam(inp0) =>
@@ -208,7 +208,7 @@ case+ opt0 of
   then
   (inp1, some_vt(res0)) else (inp0, none_vt())
 end // end-of-lam
-) (* end of [parcmbr_sat] *)
+) (* end of [parcmb1_sat] *)
 //
 (* ****** ****** *)
 //
@@ -217,7 +217,7 @@ fun
 <tok:t0>
 <res1:vt>
 <res2:vt>
-parcmbr_map
+parcmb1_map
 ( P0
 : parser(tok,res1)
 , f0
@@ -227,7 +227,7 @@ parcmbr_map
 <tok>
 <res1>
 <res2>
-parcmbr_map
+parcmb1_map
   (P0, f0) = parser
 (
 lam(inp) =>
@@ -250,7 +250,7 @@ end
 fun
 <tok:t0>
 <res:vt>
-parcmbr_alt2
+parcmb1_alt2
 (
 P1: parser(tok, res)
 ,
@@ -261,7 +261,7 @@ fun
 <tok:t0>
 <res1:vt
 ,res2:vt>
-parcmbr_seq2
+parcmb1_seq2
 (
 P1: parser(tok,res1)
 ,
@@ -270,11 +270,11 @@ P2: parser(tok,res2)
 
 (* ****** ****** *)
 //
-#symload || with parcmbr_alt2
-#symload && with parcmbr_seq2
+#symload || with parcmb1_alt2
+#symload && with parcmb1_seq2
 //
-#symload alt with parcmbr_alt2
-#symload seq with parcmbr_seq2
+#symload alt with parcmb1_alt2
+#symload seq with parcmb1_seq2
 //
 (* ****** ****** *)
 //
@@ -284,7 +284,7 @@ fun
 <res1:vt
 ,res2:vt>
 <res3:vt>
-parcmbr_seq2map
+parcmb1_seq2map
 (
 P1: parser(tok,res1)
 ,
@@ -295,7 +295,7 @@ f0: (res1,res2) -<cfr> res3): parser(tok, res3)
 (* ****** ****** *)
 
 #impltmp
-parcmbr_alt2
+parcmb1_alt2
 (P1, P2) = parser
 (
 lam(inp) =>
@@ -314,7 +314,7 @@ case+ opt of
 | !some_vt(res) => (inp, opt)
 //
 end
-) (* end of [parcmbr_alt2] *)
+) (* end of [parcmb1_alt2] *)
 
 (* ****** ****** *)
 
@@ -322,9 +322,9 @@ end
 <tok>
 <res1
 ,res2>
-parcmbr_seq2
+parcmb1_seq2
   (P1, P2) =
-parcmbr_seq2map
+parcmb1_seq2map
 (P1, P2, lam(x1, x2) => (x1, x2))
 
 (* ****** ****** *)
@@ -334,7 +334,7 @@ parcmbr_seq2map
 <res1
 ,res2>
 <res3>
-parcmbr_seq2map
+parcmb1_seq2map
   (P1, P2, f0) = parser
 (
 lam(inp0) =>
@@ -364,7 +364,7 @@ some_vt(res2) => (inp2, some_vt(f0(res1, res2)))
 end // end of [let]
 end // end of [let]
 )
-) (* end of [parcmbr_seq2map] *)
+) (* end of [parcmb1_seq2map] *)
 
 (* ****** ****** *)
 
@@ -373,7 +373,7 @@ fun
 <tok:t0>
 <res1:vt
 ,res2:vt>
-parcmbr_seq2get0
+parcmb1_seq2get0
 (
 P1: parser(tok,res1)
 ,
@@ -384,15 +384,15 @@ fun
 <tok:t0>
 <res1:vt
 ,res2:vt>
-parcmbr_seq2get1
+parcmb1_seq2get1
 (
 P1: parser(tok,res1)
 ,
 P2: parser(tok,res2)
 ) : parser(tok, res2)
 
-#symload << with parcmbr_seq2get0
-#symload >> with parcmbr_seq2get1
+#symload << with parcmb1_seq2get0
+#symload >> with parcmb1_seq2get1
 
 (* ****** ****** *)
 
@@ -400,17 +400,17 @@ P2: parser(tok,res2)
 <tok>
 <res1
 ,res2>
-parcmbr_seq2get0
+parcmb1_seq2get0
 (P1, P2) = 
-parcmbr_seq2map
+parcmb1_seq2map
 (P1, P2, lam(res1, res2) => res1)
 #impltmp
 <tok>
 <res1
 ,res2>
-parcmbr_seq2get1
+parcmb1_seq2get1
 (P1, P2) = 
-parcmbr_seq2map
+parcmb1_seq2map
 (P1, P2, lam(res1, res2) => res2)
 
 (* ****** ****** *)
@@ -419,13 +419,13 @@ parcmbr_seq2map
 fun
 <tok:t0>
 <res:vt>
-parcmbr_ignore
+parcmb1_ignore
 (
 P0: parser(tok,res)
 ) : parser(tok,nint)
 #impltmp
 <tok><res>
-parcmbr_ignore
+parcmb1_ignore
   (P0) = parser_make
 (
 let
@@ -451,7 +451,7 @@ none_vt() => (inp, some_vt(nrs))
 some_vt(_) => auxrep(inp, succ(nrs))
 end
 //
-} (* end of [parcmbr_ignore] *)
+} (* end of [parcmb1_ignore] *)
 
 (* ****** ****** *)
 //
@@ -466,7 +466,7 @@ listgte_vt(res, 1)
 fun
 <tok:t0>
 <res:vt>
-parcmbr_repeat0
+parcmb1_repeat0
 (
 P0: parser(tok,res)
 ) : parser(tok,repeat0(res))
@@ -474,7 +474,7 @@ P0: parser(tok,res)
 fun
 <tok:t0>
 <res:vt>
-parcmbr_repeat1
+parcmb1_repeat1
 (
 P0: parser(tok,res)
 ) : parser(tok,repeat1(res))
@@ -483,7 +483,7 @@ P0: parser(tok,res)
 
 #impltmp
 <tok><res>
-parcmbr_repeat0
+parcmb1_repeat0
   (P0) = parser_make
 (
 let
@@ -512,20 +512,20 @@ some_vt(res) =>
 auxrep(inp, list_vt_cons(res, rez))
 end
 //
-} (* end of [parcmbr_repeat0] *)
+} (* end of [parcmb1_repeat0] *)
 
 (* ****** ****** *)
 //
 #impltmp
 <tok><res>
-parcmbr_repeat1
+parcmb1_repeat1
   (P0) =
 (
-parcmbr_seq2map
+parcmb1_seq2map
 ( P0
-, parcmbr_repeat0(P0)
+, parcmb1_repeat0(P0)
 , lam(x0, xs) => list_vt_cons(x0, xs)
-) (* end of [parcmbr_repeat1] *)
+) (* end of [parcmb1_repeat1] *)
 )
 //
 (* ****** ****** *)
@@ -534,7 +534,7 @@ parcmbr_seq2map
 fun
 <tok:t0>
 <res:vt>
-parcmbr_lazy
+parcmb1_lazy
 (
 LP:
 lazy
@@ -544,14 +544,14 @@ lazy
 //
 #impltmp
 <tok><res>
-parcmbr_lazy(LP) = parser
+parcmb1_lazy(LP) = parser
 (lam(inp) => parser_apply(!LP, inp))
 //
 #extern
 fun
 <tok:t0>
 <res:vt>
-parcmbr_thunk
+parcmb1_thunk
 (
 FP:
 () -<cfr>
@@ -561,9 +561,9 @@ parser(tok,res)
 //
 #impltmp
 <tok><res>
-parcmbr_thunk(FP) = parser
+parcmb1_thunk(FP) = parser
 (lam(inp) => parser_apply(FP(), inp))
 //
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_parcmb1.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_parcmb1.dats] *)
