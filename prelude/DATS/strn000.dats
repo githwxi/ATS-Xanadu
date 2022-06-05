@@ -129,8 +129,7 @@ strn_length
 fnx
 loop
 {i,j:nat}.<i>.
-( xs
-: string(i)
+( xs: strn(i)
 , j0: sint(j)): sint(i+j) =
 let
 val
@@ -235,7 +234,7 @@ strn_forall
 {
 //
 #typedef x0 = cgtz
-#typedef xs = string
+#typedef xs = strn
 //
 fnx
 loop(xs: xs): bool =
@@ -358,7 +357,7 @@ tabulate$fopr<cgtz><n>(i0) = f0(i0)
 local
 //
 #typedef x0 = cgtz
-#typedef xs = string
+#typedef xs = strn
 //
 in (* in-of-local *)
 

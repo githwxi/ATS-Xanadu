@@ -457,7 +457,9 @@ strm_vt_z2strmize
 //
 (* ****** ****** *)
 //
+(*
 #symload print with strm_vt_print of 1000
+*)
 //
 (* ****** ****** *)
 //

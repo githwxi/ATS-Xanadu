@@ -380,23 +380,21 @@ tail_exn with strn_tail_exn of 1000
 //
 (* ****** ****** *)
 //
-#symload
-print with strn_print of 1000
+(*
+#symload print with strn_print of 1000
+*)
 //
 (* ****** ****** *)
 //
-#symload
-length with strn_length of 1000
+#symload length with strn_length of 1000
 //
 (* ****** ****** *)
 //
-#symload
-append with strn_append of 1000
+#symload append with strn_append of 1000
 //
 (* ****** ****** *)
 //
-#symload
-reverse with strn_reverse of 1000
+#symload reverse with strn_reverse of 1000
 //
 (* ****** ****** *)
 

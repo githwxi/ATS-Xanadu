@@ -356,8 +356,10 @@ gint_map_list_nint
 //
 (* ****** ****** *)
 //
+(*
 #symload print with gint_print_sint of 1000
 #symload print with gint_print_uint of 1000
+*)
 //
 (* ****** ****** *)
 //

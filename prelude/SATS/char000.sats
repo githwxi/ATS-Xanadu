@@ -158,7 +158,9 @@ sint with sint_make_char of 1000
 #symload - with sub_char_char of 1000
 (* ****** ****** *)
 //
+(*
 #symload print with char_print of 1000
+*)
 //
 (* ****** ****** *)
 
