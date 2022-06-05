@@ -19,6 +19,7 @@ free_a2
 fun
 <a1:vt>
 <a2:vt>
+<a3:vt>
 free_a3
 ( x1: ~a1
 , x2: ~a2, x3: ~a3): void
@@ -342,6 +343,17 @@ fun
 print0_a4
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
+#extern
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+print0_a5
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5 ) : void
 //
 (* ****** ****** *)
 //
@@ -349,6 +361,7 @@ print0_a4
 #symload print0 with print0_a2
 #symload print0 with print0_a3
 #symload print0 with print0_a4
+#symload print0 with print0_a5
 //
 (* ****** ****** *)
 //
@@ -384,6 +397,17 @@ fun
 println0_a4
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
+#extern
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+println0_a5
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5 ) : void
 //
 (* ****** ****** *)
 //
@@ -391,6 +415,7 @@ println0_a4
 #symload println0 with println0_a2
 #symload println0 with println0_a3
 #symload println0 with println0_a4
+#symload println0 with println0_a5
 //
 (* ****** ****** *)
 //
@@ -436,6 +461,17 @@ fun
 print1_a4
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
+#extern
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+print1_a5
+( x1: !a1
+, x2: !a2, x3: !a3
+, x4: !a4, x5: !a5 ) : void
 //
 (* ****** ****** *)
 //
@@ -443,6 +479,7 @@ print1_a4
 #symload print1 with print1_a2
 #symload print1 with print1_a3
 #symload print1 with print1_a4
+#symload print1 with print1_a5
 //
 (* ****** ****** *)
 //
@@ -478,6 +515,17 @@ fun
 println1_a4
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
+#extern
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+println1_a5
+( x1: !a1
+, x2: !a2, x3: !a3
+, x4: !a4, x5: !a5 ) : void
 //
 (* ****** ****** *)
 //
@@ -485,6 +533,7 @@ println1_a4
 #symload println1 with println1_a2
 #symload println1 with println1_a3
 #symload println1 with println1_a4
+#symload println1 with println1_a5
 //
 (* ****** ****** *)
 //
@@ -895,6 +944,27 @@ print0_a4
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2>
+<a3>
+<a4>
+<a5>
+print0_a5
+( x1
+, x2
+, x3
+, x4 ) = () where
+{
+  val () = gl_print0<a1>(x1)
+  val () = gl_print0<a2>(x2)
+  val () = gl_print0<a3>(x3)
+  val () = gl_print0<a4>(x4)
+  val () = gl_print0<a5>(x4)
+}
+//
+(* ****** ****** *)
 #impltmp
 println0_a0
 <>(*tmp*)
@@ -957,6 +1027,23 @@ print0_a4
 //
 #impltmp
 <a1>
+<a2><a3>
+<a4><a5>
+println0_a5
+( x1
+, x2
+, x3
+, x4 ) =
+(
+print0_a5
+( x1, x2
+, x3, x4 ) ; println0_a0<>()
+) (* end of [println0_a5] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
 print1_a1(x1) = () where
 {
   val () = gl_print1<a1>(x1)
@@ -1008,6 +1095,28 @@ print1_a4
   val () = gl_print1<a2>(x2)
   val () = gl_print1<a3>(x3)
   val () = gl_print1<a4>(x4)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2>
+<a3>
+<a4>
+<a5>
+print1_a5
+( x1
+, x2
+, x3
+, x4
+, x5 ) = () where
+{
+  val () = gl_print1<a1>(x1)
+  val () = gl_print1<a2>(x2)
+  val () = gl_print1<a3>(x3)
+  val () = gl_print1<a4>(x4)
+  val () = gl_print1<a5>(x5)
 }
 //
 (* ****** ****** *)
@@ -1068,6 +1177,23 @@ print1_a4
 ( x1, x2
 , x3, x4 ) ; println1_a0<>()
 ) (* end of [println1_a4] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+println1_a5
+( x1
+, x2
+, x3
+, x4 ) =
+(
+print1_a5
+( x1, x2
+, x3, x4 ) ; println1_a0<>()
+) (* end of [println1_a5] *)
 //
 (* ****** ****** *)
 

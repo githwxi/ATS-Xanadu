@@ -1771,6 +1771,23 @@ gl_print0
 (* ****** ****** *)
 //
 #impltmp
+{a:vt}
+gl_print1
+<strm_vt(a)>(xs) =
+(
+ strn_print(  "strm_vt(...)"  )
+)
+#impltmp
+{a:vt}
+gl_print1
+<strx_vt(a)>(xs) =
+(
+ strn_print(  "strx_vt(...)"  )
+)
+//
+(* ****** ****** *)
+//
+#impltmp
 {x0:vt}
 glseq_listize
 <strm_vt(x0)><x0> = strm_vt_listize<x0>

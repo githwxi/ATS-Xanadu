@@ -234,10 +234,10 @@ XINTERP_gint_fprint_uint
 //
 #impltmp
 gint_fprint_sint<> =
-XINTERP_fgint_print_sint(*void*)
+XINTERP_gint_print_sint(*void*)
 #impltmp
 gint_fprint_uint<> =
-XINTERP_fgint_print_uint(*void*)
+XINTERP_gint_print_uint(*void*)
 //
 (* ****** ****** *)
 //
