@@ -43,6 +43,15 @@
 //
 (* ****** ****** *)
 //
+(*
+#impltmp
+<>(*tmp*)
+g_print$out() =
+g_stdout<>((*void*))
+*)
+//
+(* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 g_inp_char() =
@@ -133,6 +142,23 @@ end
 #impltmp
 gl_print$out<> = g_print$out<>
 //
+(*
+HX-2022-06-04:
+The following implementation
+of [gl_print1] demonstrates the
+need for basing [g_print$out] on
+[gl_print@out]!
+*)
+//
+#impltmp
+{a:t0}
+gl_print1<a> =
+  g_print<a> where
+{
+ #impltmp
+ g_print$out<> = gl_print$out<>
+} (*where*) // end-of(gl_print1)
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -200,25 +226,9 @@ fprint1_ref<x0>
 (*
 //
 HX-2022-06-03:
-For implementing the base cases:
+For implementing some base cases:
 //
 *)
-(* ****** ****** *)
-//
-#extern
-fun<>
-bool_fprint(FILR, bool): void
-#extern
-fun<>
-char_fprint(FILR, char): void
-//
-#extern
-fun<>
-gint_fprint_sint(FILR, sint): void
-#extern
-fun<>
-gint_fprint_uint(FILR, uint): void
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -227,6 +237,9 @@ bool_fprint<>(g_print$out<>(), x0)
 #impltmp
 g_print<char>(x0) =
 char_fprint<>(g_print$out<>(), x0)
+#impltmp
+g_print<strn>(x0) =
+strn_fprint<>(g_print$out<>(), x0)
 //
 #impltmp
 g_print<sint>(x0) =

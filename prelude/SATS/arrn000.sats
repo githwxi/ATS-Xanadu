@@ -622,12 +622,12 @@ a0ref with a0ref_make of 1000
 a0ptr with a0ptr_make of 1000
 //
 (* ****** ****** *)
-
+(*
 #symload
 print with a0ref_print of 1000
 #symload
 print with a0ptr_print of 1000
-
+*)
 (* ****** ****** *)
 
 #symload

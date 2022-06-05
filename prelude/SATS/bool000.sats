@@ -95,7 +95,9 @@ not with bool_neg of 1000
 //
 (* ****** ****** *)
 //
+(*
 #symload print with bool_print of 1000
+*)
 //
 (* ****** ****** *)
 #symload ifval with bool_ifval of 1000

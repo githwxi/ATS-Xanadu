@@ -151,16 +151,28 @@ fprint1_ptr
 (* ****** ****** *)
 //
 fun<>
+bool_fprint(FILR, bool): void
+fun<>
+char_fprint(FILR, char): void
+fun<>
+strn_fprint(FILR, strn): void
+//
+fun<>
+gint_fprint_sint(FILR, sint): void
+fun<>
+gint_fprint_uint(FILR, uint): void
+//
+(* ****** ****** *)
+//
+fun<>
 fgetc_ref(fr: FILR): ierr
 fun<>
 fgetc_ptr(fp: !FILP1): ierr
 //
 fun<>
-fputc_ref
-(chr: sint, fr: FILR): ierr
+fputc_ref(chr: sint, fr: FILR): ierr
 fun<>
-fputc_ptr
-(chr: sint, fp: !FILP1): ierr
+fputc_ptr(chr: sint, fp: !FILP1): ierr
 //
 (* ****** ****** *)
 
