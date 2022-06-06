@@ -23,5 +23,9 @@ For ATS3/XATSOPT
 "prelude\
 /HATS/CATS/JS/prelude_dats.hats"
 (* ****** ****** *)
+#staload
+"xatslib\
+/githwxi/DATS/CATS/JS/Node/basics0.dats"
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_dats.hats] *)
