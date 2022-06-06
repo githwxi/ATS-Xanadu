@@ -71,6 +71,13 @@ fun<>
 g_stderr(): FILR // STDERR=2
 //
 (* ****** ****** *)
+//
+fun<>
+g_print$out(): FILR
+fun<>
+gl_print$out(): FILR
+//
+(* ****** ****** *)
 
 fun<>
 g_inp_char(): sint
@@ -93,13 +100,6 @@ g_inp_lline_list(): list_vt(char)
 fun<>
 g_inp_lline_rlist(): list_vt(char)
 
-(* ****** ****** *)
-//
-fun<>
-g_print$out(): FILR
-fun<>
-gl_print$out(): FILR
-//
 (* ****** ****** *)
 //
 fun

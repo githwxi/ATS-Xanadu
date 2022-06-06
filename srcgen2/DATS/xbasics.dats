@@ -38,9 +38,7 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
 #staload "./../SATS/xbasics.sats"
-
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xbasics.dats] *)
