@@ -74,6 +74,9 @@ all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/strm000.sats
 
 all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/synoug0.sats
+
+all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/unsafex.sats
 
 ######

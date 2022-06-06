@@ -150,251 +150,17 @@ free_a9
 //
 (* ****** ****** *)
 //
-(*
-HX:
-for overloading
-print0 and println0
-*)
-//
-(* ****** ****** *)
-//
-(*
-#extern
-fun<>
-print0_a0
-((*void*)) : void
-*)
-#extern
-fun
-<a1:vt>
-print0_a1
-( x1: ~a1 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-print0_a2
-( x1: ~a1, x2: ~a2 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-print0_a3
-( x1: ~a1
-, x2: ~a2, x3: ~a3 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-<a4:vt>
-print0_a4
-( x1: ~a1, x2: ~a2
-, x3: ~a3, x4: ~a4 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-<a4:vt>
-<a5:vt>
-print0_a5
-( x1: ~a1
-, x2: ~a2, x3: ~a3
-, x4: ~a4, x5: ~a5 ) : void
-//
-(* ****** ****** *)
-//
-#symload print0 with print0_a1
-#symload print0 with print0_a2
-#symload print0 with print0_a3
-#symload print0 with print0_a4
-#symload print0 with print0_a5
-//
-(* ****** ****** *)
-//
-#extern
-fun<>
-println0_a0
-((*void*)) : void
-#extern
-fun
-<a1:vt>
-println0_a1
-( x1: ~a1 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-println0_a2
-( x1: ~a1, x2: ~a2 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-println0_a3
-( x1: ~a1
-, x2: ~a2, x3: ~a3 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-<a4:vt>
-println0_a4
-( x1: ~a1, x2: ~a2
-, x3: ~a3, x4: ~a4 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-<a4:vt>
-<a5:vt>
-println0_a5
-( x1: ~a1
-, x2: ~a2, x3: ~a3
-, x4: ~a4, x5: ~a5 ) : void
-//
-(* ****** ****** *)
-//
-#symload println0 with println0_a1
-#symload println0 with println0_a2
-#symload println0 with println0_a3
-#symload println0 with println0_a4
-#symload println0 with println0_a5
-//
-(* ****** ****** *)
-//
-(*
-HX:
-for overloading
-print1 and println1
-*)
-//
-(* ****** ****** *)
-//
-(*
-#extern
-fun<>
-print1_a0
-((*void*)) : void
-*)
-#extern
-fun
-<a1:vt>
-print1_a1
-( x1: !a1 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-print1_a2
-( x1: !a1, x2: !a2 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-print1_a3
-( x1: !a1
-, x2: !a2, x3: !a3 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-<a4:vt>
-print1_a4
-( x1: !a1, x2: !a2
-, x3: !a3, x4: !a4 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-<a4:vt>
-<a5:vt>
-print1_a5
-( x1: !a1
-, x2: !a2, x3: !a3
-, x4: !a4, x5: !a5 ) : void
-//
-(* ****** ****** *)
-//
-#symload print1 with print1_a1
-#symload print1 with print1_a2
-#symload print1 with print1_a3
-#symload print1 with print1_a4
-#symload print1 with print1_a5
-//
-(* ****** ****** *)
-//
-#extern
-fun<>
-println1_a0
-((*void*)) : void
-#extern
-fun
-<a1:vt>
-println1_a1
-( x1: !a1 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-println1_a2
-( x1: !a1, x2: !a2 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-println1_a3
-( x1: !a1
-, x2: !a2, x3: !a3 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-<a4:vt>
-println1_a4
-( x1: !a1, x2: !a2
-, x3: !a3, x4: !a4 ) : void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-<a4:vt>
-<a5:vt>
-println1_a5
-( x1: !a1
-, x2: !a2, x3: !a3
-, x4: !a4, x5: !a5 ) : void
-//
-(* ****** ****** *)
-//
-#symload println1 with println1_a1
-#symload println1 with println1_a2
-#symload println1 with println1_a3
-#symload println1 with println1_a4
-#symload println1 with println1_a5
-//
-(* ****** ****** *)
-//
-// Implementations
+// HX:
+// Implementing
+// fproc/fproc0/fproc1
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
-print_a1(x1) = () where
+fproc_a1(x1) = () where
 {
-  val () = g_print<a1>(x1)
+  val () = g_fproc<a1>(x1)
 }
 //
 (* ****** ****** *)
@@ -402,12 +168,12 @@ print_a1(x1) = () where
 #impltmp
 <a1>
 <a2>
-print_a2
+fproc_a2
 ( x1
 , x2 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
+  val () = g_fproc<a1>(x1)
+  val () = g_fproc<a2>(x2)
 }
 //
 (* ****** ****** *)
@@ -416,14 +182,14 @@ print_a2
 <a1>
 <a2>
 <a3>
-print_a3
+fproc_a3
 ( x1
 , x2
 , x3 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
+  val () = g_fproc<a1>(x1)
+  val () = g_fproc<a2>(x2)
+  val () = g_fproc<a3>(x3)
 }
 //
 (* ****** ****** *)
@@ -433,16 +199,16 @@ print_a3
 <a2>
 <a3>
 <a4>
-print_a4
+fproc_a4
 ( x1
 , x2
 , x3
 , x4 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
+  val () = g_fproc<a1>(x1)
+  val () = g_fproc<a2>(x2)
+  val () = g_fproc<a3>(x3)
+  val () = g_fproc<a4>(x4)
 }
 //
 (* ****** ****** *)
@@ -453,18 +219,18 @@ print_a4
 <a3>
 <a4>
 <a5>
-print_a5
+fproc_a5
 ( x1
 , x2
 , x3
 , x4
 , x5 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
+  val () = g_fproc<a1>(x1)
+  val () = g_fproc<a2>(x2)
+  val () = g_fproc<a3>(x3)
+  val () = g_fproc<a4>(x4)
+  val () = g_fproc<a5>(x5)
 }
 //
 (* ****** ****** *)
@@ -476,7 +242,7 @@ print_a5
 <a4>
 <a5>
 <a6>
-print_a6
+fproc_a6
 ( x1
 , x2
 , x3
@@ -484,12 +250,12 @@ print_a6
 , x5
 , x6 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
-  val () = g_print<a6>(x6)
+  val () = g_fproc<a1>(x1)
+  val () = g_fproc<a2>(x2)
+  val () = g_fproc<a3>(x3)
+  val () = g_fproc<a4>(x4)
+  val () = g_fproc<a5>(x5)
+  val () = g_fproc<a6>(x6)
 }
 //
 (* ****** ****** *)
@@ -502,19 +268,19 @@ print_a6
 <a5>
 <a6>
 <a7>
-print_a7
+fproc_a7
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
-  val () = g_print<a6>(x6)
-  val () = g_print<a7>(x7)
+  val () = g_fproc<a1>(x1)
+  val () = g_fproc<a2>(x2)
+  val () = g_fproc<a3>(x3)
+  val () = g_fproc<a4>(x4)
+  val () = g_fproc<a5>(x5)
+  val () = g_fproc<a6>(x6)
+  val () = g_fproc<a7>(x7)
 }
 //
 (* ****** ****** *)
@@ -528,20 +294,20 @@ print_a7
 <a6>
 <a7>
 <a8>
-print_a8
+fproc_a8
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
-  val () = g_print<a6>(x6)
-  val () = g_print<a7>(x7)
-  val () = g_print<a8>(x8)
+  val () = g_fproc<a1>(x1)
+  val () = g_fproc<a2>(x2)
+  val () = g_fproc<a3>(x3)
+  val () = g_fproc<a4>(x4)
+  val () = g_fproc<a5>(x5)
+  val () = g_fproc<a6>(x6)
+  val () = g_fproc<a7>(x7)
+  val () = g_fproc<a8>(x8)
 }
 //
 (* ****** ****** *)
@@ -556,29 +322,501 @@ print_a8
 <a7>
 <a8>
 <a9>
-print_a9
+fproc_a9
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
 , x8, x9 ) = () where
 {
-  val () = g_print<a1>(x1)
-  val () = g_print<a2>(x2)
-  val () = g_print<a3>(x3)
-  val () = g_print<a4>(x4)
-  val () = g_print<a5>(x5)
-  val () = g_print<a6>(x6)
-  val () = g_print<a7>(x7)
-  val () = g_print<a8>(x8)
-  val () = g_print<a9>(x9)
+  val () = g_fproc<a1>(x1)
+  val () = g_fproc<a2>(x2)
+  val () = g_fproc<a3>(x3)
+  val () = g_fproc<a4>(x4)
+  val () = g_fproc<a5>(x5)
+  val () = g_fproc<a6>(x6)
+  val () = g_fproc<a7>(x7)
+  val () = g_fproc<a8>(x8)
+  val () = g_fproc<a9>(x9)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+fproc0_a1(x1) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+fproc0_a2
+( x1
+, x2 ) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+  val () = gl_fproc0<a2>(x2)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+fproc0_a3
+( x1
+, x2
+, x3 ) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+  val () = gl_fproc0<a2>(x2)
+  val () = gl_fproc0<a3>(x3)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+fproc0_a4
+( x1
+, x2
+, x3
+, x4 ) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+  val () = gl_fproc0<a2>(x2)
+  val () = gl_fproc0<a3>(x3)
+  val () = gl_fproc0<a4>(x4)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+fproc0_a5
+( x1
+, x2
+, x3
+, x4
+, x5 ) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+  val () = gl_fproc0<a2>(x2)
+  val () = gl_fproc0<a3>(x3)
+  val () = gl_fproc0<a4>(x4)
+  val () = gl_fproc0<a5>(x5)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+fproc0_a6
+( x1
+, x2
+, x3
+, x4
+, x5
+, x6 ) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+  val () = gl_fproc0<a2>(x2)
+  val () = gl_fproc0<a3>(x3)
+  val () = gl_fproc0<a4>(x4)
+  val () = gl_fproc0<a5>(x5)
+  val () = gl_fproc0<a6>(x6)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+fproc0_a7
+( x1
+, x2, x3
+, x4, x5
+, x6, x7 ) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+  val () = gl_fproc0<a2>(x2)
+  val () = gl_fproc0<a3>(x3)
+  val () = gl_fproc0<a4>(x4)
+  val () = gl_fproc0<a5>(x5)
+  val () = gl_fproc0<a6>(x6)
+  val () = gl_fproc0<a7>(x7)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+fproc0_a8
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8 ) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+  val () = gl_fproc0<a2>(x2)
+  val () = gl_fproc0<a3>(x3)
+  val () = gl_fproc0<a4>(x4)
+  val () = gl_fproc0<a5>(x5)
+  val () = gl_fproc0<a6>(x6)
+  val () = gl_fproc0<a7>(x7)
+  val () = gl_fproc0<a8>(x8)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+fproc0_a9
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9 ) = () where
+{
+  val () = gl_fproc0<a1>(x1)
+  val () = gl_fproc0<a2>(x2)
+  val () = gl_fproc0<a3>(x3)
+  val () = gl_fproc0<a4>(x4)
+  val () = gl_fproc0<a5>(x5)
+  val () = gl_fproc0<a6>(x6)
+  val () = gl_fproc0<a7>(x7)
+  val () = gl_fproc0<a8>(x8)
+  val () = gl_fproc0<a9>(x9)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+fproc1_a1(x1) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+fproc1_a2
+( x1
+, x2 ) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+  val () = gl_fproc1<a2>(x2)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+fproc1_a3
+( x1
+, x2
+, x3 ) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+  val () = gl_fproc1<a2>(x2)
+  val () = gl_fproc1<a3>(x3)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+fproc1_a4
+( x1
+, x2
+, x3
+, x4 ) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+  val () = gl_fproc1<a2>(x2)
+  val () = gl_fproc1<a3>(x3)
+  val () = gl_fproc1<a4>(x4)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+fproc1_a5
+( x1
+, x2
+, x3
+, x4
+, x5 ) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+  val () = gl_fproc1<a2>(x2)
+  val () = gl_fproc1<a3>(x3)
+  val () = gl_fproc1<a4>(x4)
+  val () = gl_fproc1<a5>(x5)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+fproc1_a6
+( x1
+, x2
+, x3
+, x4
+, x5
+, x6 ) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+  val () = gl_fproc1<a2>(x2)
+  val () = gl_fproc1<a3>(x3)
+  val () = gl_fproc1<a4>(x4)
+  val () = gl_fproc1<a5>(x5)
+  val () = gl_fproc1<a6>(x6)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+fproc1_a7
+( x1
+, x2, x3
+, x4, x5
+, x6, x7 ) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+  val () = gl_fproc1<a2>(x2)
+  val () = gl_fproc1<a3>(x3)
+  val () = gl_fproc1<a4>(x4)
+  val () = gl_fproc1<a5>(x5)
+  val () = gl_fproc1<a6>(x6)
+  val () = gl_fproc1<a7>(x7)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+fproc1_a8
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8 ) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+  val () = gl_fproc1<a2>(x2)
+  val () = gl_fproc1<a3>(x3)
+  val () = gl_fproc1<a4>(x4)
+  val () = gl_fproc1<a5>(x5)
+  val () = gl_fproc1<a6>(x6)
+  val () = gl_fproc1<a7>(x7)
+  val () = gl_fproc1<a8>(x8)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+fproc1_a9
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9 ) = () where
+{
+  val () = gl_fproc1<a1>(x1)
+  val () = gl_fproc1<a2>(x2)
+  val () = gl_fproc1<a3>(x3)
+  val () = gl_fproc1<a4>(x4)
+  val () = gl_fproc1<a5>(x5)
+  val () = gl_fproc1<a6>(x6)
+  val () = gl_fproc1<a7>(x7)
+  val () = gl_fproc1<a8>(x8)
+  val () = gl_fproc1<a9>(x9)
+}
+//
+(* ****** ****** *)
+//
+(*
+HX:
+Implementing print/println
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+print_a1 =
+fproc_a1
+<  a1  > where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a1><a2>
+print_a2 =
+fproc_a2
+<a1><a2> where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+print_a3 =
+fproc_a3
+<a1>
+<a2><a3> where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+print_a4 =
+fproc_a6
+<a1><a2>
+<a3><a4> where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+print_a5 =
+fproc_a5
+<a1>
+<a2><a3>
+<a4><a5> where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+print_a6 =
+fproc_a6
+<a1><a2>
+<a3><a4>
+<a5><a6> where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+print_a7 =
+fproc_a7
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7> where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+print_a8 =
+fproc_a8
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8> where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+print_a9 =
+fproc_a9
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9> where
+{
+#impltmp
+{a0:t0}
+g_fproc<a0> = g_print<a0>
 }
 //
 (* ****** ****** *)
 #impltmp
 println_a0
 <>(*tmp*)
-((*_*)) = g_print("\n")
+((*_*)) = g_print( "\n" )
 (* ****** ****** *)
 //
 #impltmp
@@ -737,87 +975,151 @@ print_a9
 //
 (* ****** ****** *)
 //
-#impltmp
-<a1>
-print0_a1(x1) = () where
-{
-  val () = gl_print0<a1>(x1)
-}
+(*
+HX:
+Implementing print0/println0
+*)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
-<a2>
-print0_a2
-( x1
-, x2 ) = () where
+print0_a1 =
+fproc0_a1
+<  a1  > where
 {
-  val () = gl_print0<a1>(x1)
-  val () = gl_print0<a2>(x2)
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
 }
 //
-(* ****** ****** *)
+#impltmp
+<a1><a2>
+print0_a2 =
+fproc0_a2
+<a1><a2> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
+}
 //
 #impltmp
 <a1>
-<a2>
-<a3>
-print0_a3
-( x1
-, x2
-, x3 ) = () where
+<a2><a3>
+print0_a3 =
+fproc0_a3
+<a1>
+<a2><a3> where
 {
-  val () = gl_print0<a1>(x1)
-  val () = gl_print0<a2>(x2)
-  val () = gl_print0<a3>(x3)
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
 }
 //
-(* ****** ****** *)
+#impltmp
+<a1><a2>
+<a3><a4>
+print0_a4 =
+fproc0_a6
+<a1><a2>
+<a3><a4> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
+}
 //
 #impltmp
 <a1>
-<a2>
-<a3>
-<a4>
-print0_a4
-( x1
-, x2
-, x3
-, x4 ) = () where
+<a2><a3>
+<a4><a5>
+print0_a5 =
+fproc0_a5
+<a1>
+<a2><a3>
+<a4><a5> where
 {
-  val () = gl_print0<a1>(x1)
-  val () = gl_print0<a2>(x2)
-  val () = gl_print0<a3>(x3)
-  val () = gl_print0<a4>(x4)
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
 }
 //
-(* ****** ****** *)
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+print0_a6 =
+fproc0_a6
+<a1><a2>
+<a3><a4>
+<a5><a6> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
+}
 //
 #impltmp
 <a1>
-<a2>
-<a3>
-<a4>
-<a5>
-print0_a5
-( x1
-, x2
-, x3
-, x4 ) = () where
+<a2><a3>
+<a4><a5>
+<a6><a7>
+print0_a7 =
+fproc0_a7
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7> where
 {
-  val () = gl_print0<a1>(x1)
-  val () = gl_print0<a2>(x2)
-  val () = gl_print0<a3>(x3)
-  val () = gl_print0<a4>(x4)
-  val () = gl_print0<a5>(x4)
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+print0_a8 =
+fproc0_a8
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+print0_a9 =
+fproc0_a9
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = gl_print0<a0>
 }
 //
 (* ****** ****** *)
+//
 #impltmp
 println0_a0
 <>(*tmp*)
-((*_*)) = g_print("\n")
+((*_*)) = strn_print( "\n" )
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -882,97 +1184,245 @@ println0_a5
 ( x1
 , x2
 , x3
-, x4 ) =
+, x4
+, x5 ) =
 (
 print0_a5
-( x1, x2
-, x3, x4 ) ; println0_a0<>()
+( x1
+, x2, x3
+, x4, x5 ) ; println0_a0<>()
 ) (* end of [println0_a5] *)
 //
 (* ****** ****** *)
 //
 #impltmp
-<a1>
-print1_a1(x1) = () where
-{
-  val () = gl_print1<a1>(x1)
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<a1>
-<a2>
-print1_a2
-( x1
-, x2 ) = () where
-{
-  val () = gl_print1<a1>(x1)
-  val () = gl_print1<a2>(x2)
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<a1>
-<a2>
-<a3>
-print1_a3
-( x1
-, x2
-, x3 ) = () where
-{
-  val () = gl_print1<a1>(x1)
-  val () = gl_print1<a2>(x2)
-  val () = gl_print1<a3>(x3)
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<a1>
-<a2>
-<a3>
-<a4>
-print1_a4
-( x1
-, x2
-, x3
-, x4 ) = () where
-{
-  val () = gl_print1<a1>(x1)
-  val () = gl_print1<a2>(x2)
-  val () = gl_print1<a3>(x3)
-  val () = gl_print1<a4>(x4)
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<a1>
-<a2>
-<a3>
-<a4>
-<a5>
-print1_a5
+<a1><a2>
+<a3><a4>
+<a5><a6>
+println0_a6
 ( x1
 , x2
 , x3
 , x4
-, x5 ) = () where
+, x5
+, x6 ) =
+(
+print0_a6
+( x1, x2
+, x3, x4
+, x5, x6 ) ; println0_a0<>()
+) (* end of [println0_a6] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+println0_a7
+( x1
+, x2, x3
+, x4, x5
+, x6, x7 ) =
+(
+print0_a7
+( x1
+, x2, x3
+, x4, x5
+, x6, x7 ) ; println0_a0<>()
+) (* end of [println0_a7] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+println0_a8
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8 ) =
+(
+print0_a8
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8 ) ; println0_a0<>()
+) (* end of [println0_a8] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+println0_a9
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9 ) =
+(
+print0_a9
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9 ) ; println0_a0<>()
+) (* end of [println0_a9] *)
+//
+(* ****** ****** *)
+//
+(*
+HX:
+Implementing print1/println1
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+print1_a1 =
+fproc1_a1
+<  a1  > where
 {
-  val () = gl_print1<a1>(x1)
-  val () = gl_print1<a2>(x2)
-  val () = gl_print1<a3>(x3)
-  val () = gl_print1<a4>(x4)
-  val () = gl_print1<a5>(x5)
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a1><a2>
+print1_a2 =
+fproc1_a2
+<a1><a2> where
+{
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+print1_a3 =
+fproc1_a3
+<a1>
+<a2><a3> where
+{
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+print1_a4 =
+fproc1_a6
+<a1><a2>
+<a3><a4> where
+{
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+print1_a5 =
+fproc1_a5
+<a1>
+<a2><a3>
+<a4><a5> where
+{
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+print1_a6 =
+fproc1_a6
+<a1><a2>
+<a3><a4>
+<a5><a6> where
+{
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+print1_a7 =
+fproc1_a7
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7> where
+{
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+print1_a8 =
+fproc1_a8
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8> where
+{
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+print1_a9 =
+fproc1_a9
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9> where
+{
+#impltmp
+{a0:vt}
+gl_fproc1<a0> = gl_print1<a0>
 }
 //
 (* ****** ****** *)
+//
 #impltmp
 println1_a0
 <>(*tmp*)
-((*_*)) = g_print("\n")
+((*_*)) = strn_print( "\n" )
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -1037,12 +1487,97 @@ println1_a5
 ( x1
 , x2
 , x3
-, x4 ) =
+, x4
+, x5 ) =
 (
 print1_a5
-( x1, x2
-, x3, x4 ) ; println1_a0<>()
+( x1
+, x2, x3
+, x4, x5 ) ; println1_a0<>()
 ) (* end of [println1_a5] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+println1_a6
+( x1
+, x2
+, x3
+, x4
+, x5
+, x6 ) =
+(
+print1_a6
+( x1, x2
+, x3, x4
+, x5, x6 ) ; println1_a0<>()
+) (* end of [println1_a6] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+println1_a7
+( x1
+, x2, x3
+, x4, x5
+, x6, x7 ) =
+(
+print1_a7
+( x1
+, x2, x3
+, x4, x5
+, x6, x7 ) ; println1_a0<>()
+) (* end of [println1_a7] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+println1_a8
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8 ) =
+(
+print1_a8
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8 ) ; println1_a0<>()
+) (* end of [println1_a8] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+println1_a9
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9 ) =
+(
+print1_a9
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9 ) ; println1_a0<>()
+) (* end of [println1_a9] *)
 //
 (* ****** ****** *)
 
