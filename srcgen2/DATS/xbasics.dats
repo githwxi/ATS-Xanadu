@@ -39,4 +39,37 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 
+#staload "./../SATS/xbasics.sats"
+
+(* ****** ****** *)
+
+implement
+funkind_fprint
+  (out, fnk) =
+(
+case+ fnk of
+| FNKfn0() => print("FNKfn0")
+| FNKfn1() => print("FNKfn1")
+| FNKfn2() => print("FNKfn2")
+| FNKfnx() => print("FNKfnx")
+| FNKfun() => print("FNKfun")
+//
+| FNKpraxi() => print("FNKpraxi")
+//
+| FNKprfn0() => print("FNKprfn0")
+| FNKprfn1() => print("FNKprfn1")
+| FNKprfun() => print("FNKprfun")
+//
+| FNKfcast() => print("FNKfcast")
+) (*case*) // end-of(funkind_fprint)
+
+(* ****** ****** *)
+//
+implement
+g_print
+<funkind>(fnk) =
+funkind_fprint(g_print$out<>(), fnk)
+//
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_xbasics.dats] *)

@@ -816,7 +816,7 @@ g_fproc<a0> = g_print<a0>
 #impltmp
 println_a0
 <>(*tmp*)
-((*_*)) = g_print( "\n" )
+( (*_*) ) = g_print( "\n" )
 (* ****** ****** *)
 //
 #impltmp
@@ -1118,7 +1118,7 @@ gl_fproc0<a0> = gl_print0<a0>
 #impltmp
 println0_a0
 <>(*tmp*)
-((*_*)) = strn_print( "\n" )
+( (*_*) ) = g_print( "\n" )
 //
 (* ****** ****** *)
 //
@@ -1421,7 +1421,7 @@ gl_fproc1<a0> = gl_print1<a0>
 #impltmp
 println1_a0
 <>(*tmp*)
-((*_*)) = strn_print( "\n" )
+( (*_*) ) = g_print( "\n" )
 //
 (* ****** ****** *)
 //
