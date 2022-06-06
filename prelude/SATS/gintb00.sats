@@ -99,4 +99,4 @@ gintb_mul_sint8_sint8
 //
 (* ****** ****** *)
 
-(* end of [prelude_gintb00.sats] *)
+(* end of [ATS3/XANADU_prelude_gintb00.sats] *)

@@ -204,4 +204,4 @@ gseqn_z2map_rlist
 //
 (* ****** ****** *)
 
-(* end of [prelude_gseqn00.sats] *)
+(* end of [ATS3/XANADU_prelude_gseqn00.sats] *)

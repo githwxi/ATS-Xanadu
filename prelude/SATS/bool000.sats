@@ -103,4 +103,4 @@ not with bool_neg of 1000
 #symload ifval with bool_ifval of 1000
 (* ****** ****** *)
 
-(* end of [prelude_bool000.sats] *)
+(* end of [ATS3/XANADU_prelude_bool000.sats] *)

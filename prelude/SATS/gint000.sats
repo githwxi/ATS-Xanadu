@@ -368,4 +368,4 @@ gint_map_list_nint
 //
 (* ****** ****** *)
 
-(* end of [prelude_gint000.sats] *)
+(* end of [ATS3/XANADU_prelude_gint000.sats] *)
