@@ -211,4 +211,4 @@ gl_min11(x: !a, y: !a): (a)
 //
 (* ****** ****** *)
 
-(* end of [prelude_gord000.sats] *)
+(* end of [ATS3/XANADU_prelude_gord000.sats] *)

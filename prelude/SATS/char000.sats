@@ -164,4 +164,4 @@ sint with sint_make_char of 1000
 //
 (* ****** ****** *)
 
-(* end of [prelude_char000.sats] *)
+(* end of [ATS3/XANADU_prelude_char000.sats] *)

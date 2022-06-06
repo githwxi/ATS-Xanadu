@@ -245,4 +245,4 @@ gflt_div_dflt_sint(dflt, sint): dflt
 #symload cmp with gflt_cmp_sint_dflt of 1000
 (* ****** ****** *)
 
-(* end of [prelude_gflt000.sats] *)
+(* end of [ATS3/XANADU_prelude_gflt000.sats] *)

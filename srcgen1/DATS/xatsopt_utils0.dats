@@ -619,8 +619,8 @@ externally for template resolution!
 val () =
 the_prelude_load
 ( XATSENV
-, 1(*dynamic*)
-, "prelude/DATS/synoug0.dats")
+, 0(*static*)
+, "prelude/SATS/synoug0.sats")
 // the_prelude_load
 //
 (* ****** ****** *)

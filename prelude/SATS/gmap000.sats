@@ -80,4 +80,4 @@ fun
 gmap_strmize_itm(map): strm_vt(key)
 (* ****** ****** *)
 
-(* end of [prelude_gmap000.sats] *)
+(* end of [ATS3/XANADU_prelude_gmap000.sats] *)

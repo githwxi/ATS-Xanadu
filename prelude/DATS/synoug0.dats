@@ -5,33 +5,6 @@
 //
 (* ****** ****** *)
 //
-#extern
-fun
-<a1:vt>
-free_a1
-(x1: ~a1): void
-#extern
-fun
-<a1:vt>
-<a2:vt>
-free_a2
-(x1: ~a1, x2: ~a2): void
-fun
-<a1:vt>
-<a2:vt>
-<a3:vt>
-free_a3
-( x1: ~a1
-, x2: ~a2, x3: ~a3): void
-//
-(* ****** ****** *)
-//
-#symload free with free_a1
-#symload free with free_a2
-#symload free with free_a3
-//
-(* ****** ****** *)
-//
 #impltmp
 <a1>
 free_a1
@@ -39,8 +12,7 @@ free_a1
 {
   val () = g_free<a1>(x1) }
 #impltmp
-<a1>
-<a2>
+<a1><a2>
 free_a2
 ( x1
 , x2 ) = () where
@@ -49,8 +21,7 @@ free_a2
   val () = g_free<a2>(x2) }
 #impltmp
 <a1>
-<a2>
-<a3>
+<a2><a3>
 free_a3
 ( x1
 , x2
@@ -59,245 +30,123 @@ free_a3
   val () = g_free<a1>(x1)
   val () = g_free<a2>(x2)
   val () = g_free<a3>(x3) }
-//
-(* ****** ****** *)
-//
-(*
-HX:
-for overloading
-print and println
-*)
-//
-(* ****** ****** *)
-(*
-#extern
-fun<>
-print_a0
-((*void*)) : void
-*)
-#extern
-fun
-<a1:t0>
-print_a1
-( x1: a1 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-print_a2
-( x1: a1, x2: a2 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-print_a3
-( x1: a1
-, x2: a2, x3: a3 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-print_a4
-( x1: a1, x2: a2
-, x3: a3, x4: a4 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-print_a5
-( x1: a1
-, x2: a2, x3: a3
-, x4: a4, x5: a5 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-<a6:t0>
-print_a6
-( x1: a1, x2: a2
-, x3: a3, x4: a4
-, x5: a5, x6: a6 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-<a6:t0>
-<a7:t0>
-print_a7
-( x1: a1
-, x2: a2, x3: a3
-, x4: a4, x5: a5
-, x6: a6, x7: a7 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-<a6:t0>
-<a7:t0>
-<a8:t0>
-print_a8
-( x1: a1, x2: a2
-, x3: a3, x4: a4
-, x5: a5, x6: a6
-, x7: a7, x8: a8 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-<a6:t0>
-<a7:t0>
-<a8:t0>
-<a9:t0>
-print_a9
-( x1: a1
-, x2: a2, x3: a3
-, x4: a4, x5: a5
-, x6: a6, x7: a7
-, x8: a8, x9: a9 ) : void
-(* ****** ****** *)
-//
-#symload print with print_a1
-#symload print with print_a2
-#symload print with print_a3
-#symload print with print_a4
-#symload print with print_a5
-#symload print with print_a6
-#symload print with print_a7
-#symload print with print_a8
-#symload print with print_a9
-//
-(* ****** ****** *)
-#extern
-fun<>
-println_a0
-((*void*)) : void
-#extern
-fun
-<a1:t0>
-println_a1
-( x1: a1 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-println_a2
-( x1: a1, x2: a2 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-println_a3
-( x1: a1
-, x2: a2, x3: a3 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-println_a4
-( x1: a1, x2: a2
-, x3: a3, x4: a4 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-println_a5
-( x1: a1
-, x2: a2, x3: a3
-, x4: a4, x5: a5 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-<a6:t0>
-println_a6
-( x1: a1, x2: a2
-, x3: a3, x4: a4
-, x5: a5, x6: a6 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-<a6:t0>
-<a7:t0>
-println_a7
-( x1: a1
-, x2: a2, x3: a3
-, x4: a4, x5: a5
-, x6: a6, x7: a7 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-<a6:t0>
-<a7:t0>
-<a8:t0>
-println_a8
-( x1: a1, x2: a2
-, x3: a3, x4: a4
-, x5: a5, x6: a6
-, x7: a7, x8: a8 ) : void
-#extern
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<a4:t0>
-<a5:t0>
-<a6:t0>
-<a7:t0>
-<a8:t0>
-<a9:t0>
-println_a9
-( x1: a1
-, x2: a2, x3: a3
-, x4: a4, x5: a5
-, x6: a6, x7: a7
-, x8: a8, x9: a9 ) : void
-(* ****** ****** *)
-//
-#symload println with println_a0
-#symload println with println_a1
-#symload println with println_a2
-#symload println with println_a3
-#symload println with println_a4
-#symload println with println_a5
-#symload println with println_a6
-#symload println with println_a7
-#symload println with println_a8
-#symload println with println_a9
+#impltmp
+<a1><a2>
+<a3><a4>
+free_a4
+( x1
+, x2
+, x3
+, x4 ) = () where
+{
+  val () = g_free<a1>(x1)
+  val () = g_free<a2>(x2)
+  val () = g_free<a3>(x3)
+  val () = g_free<a4>(x4) }
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+free_a5
+( x1
+, x2
+, x3
+, x4
+, x5 ) = () where
+{
+  val () = g_free<a1>(x1)
+  val () = g_free<a2>(x2)
+  val () = g_free<a3>(x3)
+  val () = g_free<a4>(x4)
+  val () = g_free<a5>(x5) }
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+free_a6
+( x1
+, x2
+, x3
+, x4
+, x5
+, x6 ) = () where
+{
+  val () = g_free<a1>(x1)
+  val () = g_free<a2>(x2)
+  val () = g_free<a3>(x3)
+  val () = g_free<a4>(x4)
+  val () = g_free<a5>(x5)
+  val () = g_free<a6>(x6) }
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+free_a7
+( x1
+, x2
+, x3
+, x4
+, x5
+, x6
+, x7 ) = () where
+{
+  val () = g_free<a1>(x1)
+  val () = g_free<a2>(x2)
+  val () = g_free<a3>(x3)
+  val () = g_free<a4>(x4)
+  val () = g_free<a5>(x5)
+  val () = g_free<a6>(x6)
+  val () = g_free<a7>(x7) }
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+free_a8
+( x1
+, x2
+, x3
+, x4
+, x5
+, x6
+, x7
+, x8 ) = () where
+{
+  val () = g_free<a1>(x1)
+  val () = g_free<a2>(x2)
+  val () = g_free<a3>(x3)
+  val () = g_free<a4>(x4)
+  val () = g_free<a5>(x5)
+  val () = g_free<a6>(x6)
+  val () = g_free<a7>(x7)
+  val () = g_free<a8>(x8) }
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+free_a9
+( x1
+, x2
+, x3
+, x4
+, x5
+, x6
+, x7
+, x8
+, x9 ) = () where
+{
+  val () = g_free<a1>(x1)
+  val () = g_free<a2>(x2)
+  val () = g_free<a3>(x3)
+  val () = g_free<a4>(x4)
+  val () = g_free<a5>(x5)
+  val () = g_free<a6>(x6)
+  val () = g_free<a7>(x7)
+  val () = g_free<a8>(x8)
+  val () = g_free<a9>(x9) }
 //
 (* ****** ****** *)
 //
