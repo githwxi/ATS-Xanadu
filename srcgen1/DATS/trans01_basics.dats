@@ -81,7 +81,6 @@ auxmain
 ( b0: int
 , p0: ptr
 , r0: int): int =
-(
 let
 val c0 =
 UN_ptr_get<char>(p0)
@@ -94,13 +93,12 @@ then
   auxmain(b0, p0, r0)
 ) where
 {
-  val p0 = ptr_succ<char>(p0)
-  val r0 = b0 * r0 + (c0 - '0')
+val p0 = ptr_succ<char>(p0)
+val r0 = b0 * r0 + (c0 - '0')
 }
-else (r0) // end of [if]
+else (r0) //else//end-of(if)
 //
-end
-) (* end of [auxmain] *)
+end (*let*) // end of [auxmain]
 
 in (* in-of-local *)
 
