@@ -46,6 +46,21 @@ ATS_PACKNAME
 *)
 (* ****** ****** *)
 //
+#define INFIX0 0 // n-assoc
+#define INFIXL 1 // l-assoc
+#define INFIXR 2 // r-assoc
+//
+#define PREFIX 3 // prefix0
+#define PSTFIX 4 // postfix
+//
+(* ****** ****** *)
+//
+#define BOXFLG 0x001 // (0x1 << 0)
+#define LINFLG 0x010 // (0x1 << 1)
+#define PRFFLG 0x100 // (0x1 << 2)
+//
+(* ****** ****** *)
+//
 datatype funkind =
 //
 | FNKfn0 // nonrec fun

@@ -260,14 +260,12 @@ G1Eint(tok) =>
 (
 G1Mint(int)) where
 {
-val
-int =
-(
-case-
-tok.node() of
-|
-T_INT1(rep) => g0string2int(rep)
-) : int // end-of-val
+(*
+HX-2022-06-06:
+Note that [g1mac]
+can be used in statics
+*)
+val int = token2sint(tok)
 }
 //
 |
@@ -275,12 +273,9 @@ G1Eif0
 (g1e1,
  g1e2, g1e3) =>
 let
-  val
-  g1m1 = auxg1e0(g1e1)
-  val
-  g1m2 = auxg1e0(g1e2)
-  val
-  g1m3 = auxg1e0(g1e3)
+val g1m1 = auxg1e0(g1e1)
+val g1m2 = auxg1e0(g1e2)
+val g1m3 = auxg1e0(g1e3)
 in
   G1Mif0(g1m1, g1m2, g1m3)
 end

@@ -324,18 +324,18 @@ XATS2JS_gflt_div_dflt_dflt
 //
 // HX-2020-09-28:
 // Please note that:
-// A string is a JS-string
-// A string_vt is a JS-array
+// A (strn)-val is a JS-string
+// A (strn_vt)-val is a JS-array
 //
 /* ****** ****** */
 function
 XATS2JS_strn_vt2t
   (cs)
 {
-cs.pop(); // remove the last '0'
+cs.pop(); // pop the last '\0'
 let res = // from array to string
 String.fromCharCode.apply(null, cs);
-return res; // XATS2JS_strn_vt2t
+return res; // [XATS2JS_strn_vt2t]
 }
 /* ****** ****** */
 //
@@ -503,10 +503,8 @@ XATS2JS_strn_forall_cfr
   (cs, f0)
 {
 let i0;
-let
-res = true;
-let
-len = cs.length
+let res = true;
+let len = cs.length;
 for
 ( i0 = 0
 ; i0 < len; i0 += 1)
@@ -579,4 +577,4 @@ return res; // strn_vt_rforall_cfr
 }
 /* ****** ****** */
 
-/* end of [prelude_DATS_CATS_JS_basics.cats] */
+/* end of [ATS3/XANADU_prelude_DATS_CATS_JS_basics0.cats] */
