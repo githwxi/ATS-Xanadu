@@ -34,6 +34,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
@@ -77,6 +80,12 @@ datatype funkind =
 //
 | FNKfcast // no-op casting
 //
+(* ****** ****** *)
+
+fun
+funkind_fprint
+(out: FILR, fnk: funkind): void
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xbasics.sats] *)
