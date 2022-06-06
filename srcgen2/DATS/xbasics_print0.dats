@@ -43,4 +43,33 @@ ATS_PACKNAME
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xbasics.dats] *)
+#implfun
+funkind_fprint
+  (out, fnk) =
+(
+case+ fnk of
+| FNKfn0() => print("FNKfn0")
+| FNKfn1() => print("FNKfn1")
+| FNKfn2() => print("FNKfn2")
+| FNKfnx() => print("FNKfnx")
+| FNKfun() => print("FNKfun")
+//
+| FNKpraxi() => print("FNKpraxi")
+//
+| FNKprfn0() => print("FNKprfn0")
+| FNKprfn1() => print("FNKprfn1")
+| FNKprfun() => print("FNKprfun")
+//
+| FNKfcast() => print("FNKfcast")
+) (*case*) // end-of(funkind_fprint)
+
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<funkind>(fnk) =
+funkind_fprint(g_print$out<>(), fnk)
+//
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_xbasics_print0.dats] *)
