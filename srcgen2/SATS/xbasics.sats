@@ -63,6 +63,13 @@ ATS_PACKNAME
 #define PRFFLG 0x100 // (0x1 << 2)
 //
 (* ****** ****** *)
+
+fun sortbox(x: int): int // 0,1
+fun sortlin(x: int): int // 0,1
+fun sortprf(x: int): int // 0,1
+fun sortpol(x: int): int // -1,0,1
+
+(* ****** ****** *)
 //
 datatype funkind =
 //
@@ -82,7 +89,7 @@ datatype funkind =
 //
 (* ****** ****** *)
 
-fun<>
+fun//<>
 funkind_fprint
 (out: FILR, fnk: funkind): void
 
