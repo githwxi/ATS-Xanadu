@@ -38,12 +38,14 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
-
 (* ****** ****** *)
 
 #implfun
+<>(*tmp*)
 funkind_fprint
   (out, fnk) =
 (
@@ -68,7 +70,7 @@ case+ fnk of
 #impltmp
 g_print
 <funkind>(fnk) =
-funkind_fprint(g_print$out<>(), fnk)
+funkind_fprint<>(g_print$out<>(), fnk)
 //
 (* ****** ****** *)
 

@@ -4,15 +4,35 @@ Basics
 for Xats2js/Node
 *)
 (* ****** ****** *)
-(*
 #staload
 "xatslib\
 /libcats/SATS/libcats.sats"
-*)
 (* ****** ****** *)
 #staload
 "xatslib\
 /githwxi/SATS/githwxi.sats"
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_NODE_g_stdin
+((*void*)): FILR = $extnam()
+#extern
+fun
+XATS2JS_NODE_g_stdout
+((*void*)): FILR = $extnam()
+#extern
+fun
+XATS2JS_NODE_g_stderr
+((*void*)): FILR = $extnam()
+//
+#impltmp
+g_stdin< > = XATS2JS_NODE_g_stdin
+#impltmp
+g_stdout< > = XATS2JS_NODE_g_stdout
+#impltmp
+g_stderr< > = XATS2JS_NODE_g_stderr
+//
 (* ****** ****** *)
 
 #impltmp
@@ -44,6 +64,40 @@ XATS2JS_NODE_fs_readFileSync
 #impltmp
 <>(*tmp*)
 fpath_strmize_cgtz=fpath_strmize_char<>
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_NODE_bool_fprint:
+(FILR, bool) -> void = $extnam()
+#impltmp
+bool_fprint<> = XATS2JS_NODE_bool_fprint
+#extern
+fun
+XATS2JS_NODE_char_fprint:
+(FILR, char) -> void = $extnam()
+#impltmp
+char_fprint<> = XATS2JS_NODE_char_fprint
+#extern
+fun
+XATS2JS_NODE_strn_fprint:
+(FILR, strn) -> void = $extnam()
+#impltmp
+strn_fprint<> = XATS2JS_NODE_strn_fprint
+//
+#extern
+fun
+XATS2JS_NODE_gint_fprint_sint:
+(FILR, sint) -> void = $extnam()
+#impltmp
+gint_fprint_sint<> = XATS2JS_NODE_gint_fprint_sint
+#extern
+fun
+XATS2JS_NODE_gint_fprint_uint:
+(FILR, uint) -> void = $extnam()
+#impltmp
+gint_fprint_uint<> = XATS2JS_NODE_gint_fprint_uint
 //
 (* ****** ****** *)
 

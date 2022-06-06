@@ -82,7 +82,7 @@ datatype funkind =
 //
 (* ****** ****** *)
 
-fun
+fun<>
 funkind_fprint
 (out: FILR, fnk: funkind): void
 

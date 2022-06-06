@@ -31,9 +31,11 @@
 //
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: April, 2020
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: April, 2020
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 //
@@ -43,12 +45,12 @@
 //
 (* ****** ****** *)
 //
-(*
 #impltmp
 <>(*tmp*)
 g_print$out() =
-g_stdout<>((*void*))
-*)
+(
+ g_stdout<>((*void*))
+)
 //
 (* ****** ****** *)
 //
