@@ -60,4 +60,18 @@ dynexp0_sats
 dynexp0_sats: ; $(XATSOPT) --static SATS/dynexp0.sats
 ######
 
+######
+all:: \
+lexing0_dats
+lexing0_dats: ; $(XATSOPT) --dynamic DATS/lexing0.dats
+######
+all:: \
+lexing0_token0_dats
+lexing0_token0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_token0.dats
+######
+all:: \
+lexing0_print0_dats
+lexing0_print0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_print0.dats
+######
+
 ###### end of [Makefile] ######

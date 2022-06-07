@@ -29,56 +29,54 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 07th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload LOC = "./locinfo.sats"
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#typedef
-loc_t = $LOC.loc_t
-(* ****** ****** *)
-//
-datatype tnode =
-//
-| T_EOF of ((*void*))
-| T_ERR of ((*void*))
-//
-(* ****** ****** *)
-#abstbox token_tbox // ptr
-#typedef token = token_tbox
-(* ****** ****** *)
-#typedef tokenlst = list(token)
-#typedef tokenopt = optn(token)
-(* ****** ****** *)
-//
-fun
-tnode_fprint(FILR, tnode): void
-fun
-token_fprint(FILR, token): void
-//
-(* ****** ****** *)
-//
-fun//{}
-token_get_loc0: token -> loc_t
-fun//{}
-token_get_node: token -> tnode
-#symload loc0 with token_get_node
-#symload node with token_get_node
-//
-fun//{}
-token_make_node
-(loc: loc_t, node: tnode): token
-#symload token with token_make_node
-//
+#staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexing0.sats] *)
+local
+//
+#absimpl
+token_tbox =
+$rec{
+  token_loc0= loc_t
+, token_node= tnode
+}(* $rec *)//end-of(token_tbox)
+//
+in (* in-of-local *)
+
+#implfun
+//{}//tmp
+token_make_node
+  (loc0, node) =
+(
+$rec{
+  token_loc0= loc
+, token_node= node
+}
+) (* end of [token_make_node] *)
+
+#implfun
+//{}//tmp
+token_get_loc0(tok) = tok.token_loc0
+#implfun
+//{}//tmp
+token_get_node(tok) = tok.token_node
+
+end // end of [local]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_lexing0_token0.dats] *)
