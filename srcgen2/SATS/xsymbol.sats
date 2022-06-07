@@ -49,8 +49,33 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 //
-fun
+val
+the_symbl_nil: symbl//symbl("")
+//
+(* ****** ****** *)
+//
+fun//<>
 symbl_fprint(FILR, symbl): void
+//
+(* ****** ****** *)
+//
+fun
+symbl_make_name(nm: strn): symbl
+#symload symbl with symbl_make_name
+//
+(* ****** ****** *)
+//
+val AMP_symbl: symbl//symbl("&")
+val BAR_symbl: symbl//symbl("|")
+val CLN_symbl: symbl//symbl(":")
+val DOT_symbl: symbl//symbl(".")
+//
+val DLR_symbl: symbl//symbl("$")
+val SRP_symbl: symbl//symbl("#")
+//
+//
+val SMCLN_symbl: symbl//symbl(";")
+val TILDA_symbl: symbl//symbl("~")
 //
 (* ****** ****** *)
 
