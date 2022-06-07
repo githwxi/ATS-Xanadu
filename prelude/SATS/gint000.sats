@@ -40,6 +40,11 @@
 #typedef strn = string
 *)
 (* ****** ****** *)
+fun<>
+gint_sint2uint(sint): uint
+fun<>
+gint_uint2sint(uint): sint
+(* ****** ****** *)
 //
 (*
 fun
@@ -91,6 +96,24 @@ fun<>
 gint_pred_uint
 {i:int|i>0}(x: uint(i)): uint(i-1)
 //
+(* ****** ****** *)
+//
+fun<>
+gint_lnot_uint(x: uint): uint
+fun<>
+gint_lor2_uint(x: uint, y: uint): uint
+fun<>
+gint_land_uint(x: uint, y: uint): uint
+fun<>
+gint_lxor_uint(x: uint, y: uint): uint
+//
+(* ****** ****** *)
+fun<> // arith r-shift: sign-filling
+gint_asrn_sint(x: sint, n: nint): sint
+fun<> // logic l-shift: zero-filling
+gint_lsln_uint(x: uint, n: nint): uint
+fun<> // logic r-shift: zero-filling
+gint_lsrn_uint(x: uint, n: nint): uint
 (* ****** ****** *)
 //
 fun<>
@@ -249,20 +272,12 @@ gint_nilq_uint(ub: uint): bool
 fun<>
 gint_consq_uint(ub: uint): bool
 //
-#symload nil? with gint_nilq_sint of 110
-#symload nil? with gint_nilq_uint of 110
-#symload cons? with gint_consq_sint of 110
-#symload cons? with gint_consq_uint of 110
-//
 (* ****** ****** *)
 //
 fun<>
 gint_forall_sint(ub: sint): bool
 fun<>
 gint_forall_uint(ub: uint): bool
-//
-#symload forall with gint_forall_sint of 110
-#symload forall with gint_forall_uint of 110
 //
 (* ****** ****** *)
 //
@@ -321,24 +336,31 @@ gint_map_list_nint
 //
 (* ****** ****** *)
 //
-#symload < with gint_lt_sint_sint of 1000
-#symload > with gint_gt_sint_sint of 1000
-#symload = with gint_eq_sint_sint of 1000
-#symload <= with gint_lte_sint_sint of 1000
-#symload >= with gint_gte_sint_sint of 1000
-#symload != with gint_neq_sint_sint of 1000
-//
-#symload < with gint_lt_uint_uint of 1000
-#symload > with gint_gt_uint_uint of 1000
-#symload = with gint_eq_uint_uint of 1000
-#symload <= with gint_lte_uint_uint of 1000
-#symload >= with gint_gte_uint_uint of 1000
-#symload != with gint_neq_uint_uint of 1000
+#symload lnot with gint_lnot_uint of 1000
+#symload lor2 with gint_lor2_uint of 1000
+#symload land with gint_land_uint of 1000
+#symload lxor with gint_lxor_uint of 1000
 //
 (* ****** ****** *)
 //
-#symload cmp with gint_cmp_sint_sint of 1000
-#symload cmp with gint_cmp_uint_uint of 1000
+#symload
+cmp with gint_cmp_sint_sint of 1000
+#symload
+cmp with gint_cmp_uint_uint of 1000
+//
+#symload < with gint_lt_sint_sint of 1000
+#symload > with gint_gt_sint_sint of 1000
+#symload = with gint_eq_sint_sint of 1000
+#symload < with gint_lt_uint_uint of 1000
+#symload > with gint_gt_uint_uint of 1000
+#symload = with gint_eq_uint_uint of 1000
+//
+#symload <= with gint_lte_sint_sint of 1000
+#symload >= with gint_gte_sint_sint of 1000
+#symload != with gint_neq_sint_sint of 1000
+#symload <= with gint_lte_uint_uint of 1000
+#symload >= with gint_gte_uint_uint of 1000
+#symload != with gint_neq_uint_uint of 1000
 //
 (* ****** ****** *)
 //
@@ -355,11 +377,35 @@ gint_map_list_nint
 #symload % with gint_mod_uint_uint of 1000
 //
 (* ****** ****** *)
+
+#symload g0s2u with gint_sint2uint of 1000
+#symload g0u2s with gint_uint2sint of 1000
+
+(* ****** ****** *)
 //
 (*
 #symload print with gint_print_sint of 1000
 #symload print with gint_print_uint of 1000
 *)
+//
+(* ****** ****** *)
+//
+(*
+//HX-2020:
+//For treating [n] as the seq (0,...,n-1)
+*)
+//
+(* ****** ****** *)
+//
+#symload nilq with gint_nilq_sint of 1000
+#symload nilq with gint_nilq_uint of 1000
+#symload consq with gint_consq_sint of 1000
+#symload consq with gint_consq_uint of 1000
+//
+(* ****** ****** *)
+//
+#symload forall with gint_forall_sint of 1000
+#symload forall with gint_forall_uint of 1000
 //
 (* ****** ****** *)
 //

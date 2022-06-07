@@ -80,7 +80,7 @@ bool_fprint<> = XINTERP_bool_fprint
 //
 (* ****** ****** *)
 //
-// prelude/char.sats
+// prelude/char000.sats
 //
 (* ****** ****** *)
 //
@@ -193,7 +193,25 @@ sint_make_char<> = XINTERP_sint_make_char
 //
 (* ****** ****** *)
 //
-// prelude/gint.sats
+// prelude/gint000.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XINTERP_gint_sint2uint
+( x0
+: sint): uint = $extnam()
+#extern
+fun
+XINTERP_gint_uint2sint
+( x0
+: uint): sint = $extnam()
+//
+#impltmp
+gint_sint2uint<> = XINTERP_gint_sint2uint
+#impltmp
+gint_uint2sint<> = XINTERP_gint_uint2sint
 //
 (* ****** ****** *)
 //
@@ -209,11 +227,9 @@ XINTERP_gint_print_uint
 : uint): void = $extnam()
 //
 #impltmp
-gint_print_sint<>(i0) =
-XINTERP_gint_print_sint(i0)
+gint_print_sint<> = XINTERP_gint_print_sint
 #impltmp
-gint_print_uint<>(u0) =
-XINTERP_gint_print_uint(u0)
+gint_print_uint<> = XINTERP_gint_print_uint
 //
 (* ****** ****** *)
 //
@@ -234,10 +250,10 @@ XINTERP_gint_fprint_uint
 //
 #impltmp
 gint_fprint_sint<> =
-XINTERP_gint_print_sint(*void*)
+  XINTERP_gint_fprint_sint(*FILR,uint*)
 #impltmp
 gint_fprint_uint<> =
-XINTERP_gint_print_uint(*void*)
+  XINTERP_gint_fprint_uint(*FILR,uint*)
 //
 (* ****** ****** *)
 //

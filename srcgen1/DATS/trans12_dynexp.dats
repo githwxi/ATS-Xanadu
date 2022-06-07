@@ -705,6 +705,22 @@ end // end of [auxstr]
 (* ****** ****** *)
 
 fun
+auxbs1
+( d1p0
+: d1pat): d2pat =
+(
+trans12_dpat(d1p1)
+) where
+{
+//
+val-
+D1Pbs1(d1p1) = d1p0.node()
+//
+}(*where*)//end-of(auxbs1)
+
+(* ****** ****** *)
+
+fun
 auxapp1
 ( d1p0
 : d1pat): d2pat = let
@@ -725,10 +741,12 @@ D1Pid0(tok) =>
 (
 case+
 tok.node() of
-| T_IDENT_sym(x) => (x = "!")
-| _(* non-T_IDENT_sym *) => false
+|
+T_IDENT_sym(x) => (x = "!")
+|
+_(*non-T_IDENT_sym*) => false
 )
-| _(* non-D1Pid0 *) => false
+| _(*  non-D1Pid0  *) => false
 )
 fun
 isFLAT
@@ -741,10 +759,12 @@ D1Pid0(tok) =>
 (
 case+
 tok.node() of
-| T_IDENT_sym(x) => (x = "@")
-| _(* non-T_IDENT_sym *) => false
+|
+T_IDENT_sym(x) => (x = "@")
+|
+_(*non-T_IDENT_sym*) => false
 )
-| _(* non-D1Pid0 *) => false
+| _(*  non-D1Pid0  *) => false
 )
 fun
 isFREE
@@ -757,10 +777,12 @@ D1Pid0(tok) =>
 (
 case+
 tok.node() of
-| T_IDENT_sym(x) => (x = "~")
-| _(* non-T_IDENT_sym *) => false
+|
+T_IDENT_sym(x) => (x = "~")
+|
+_(*non-T_IDENT_sym*) => false
 )
-| _(* non-D1Pid0 *) => false
+| _(*  non-D1Pid0  *) => false
 )
 //
 in
@@ -1059,6 +1081,8 @@ d1p0.node() of
 | D1Pint _ => auxint(d1p0)
 | D1Pchr _ => auxchr(d1p0)
 | D1Pstr _ => auxstr(d1p0)
+//
+| D1Pbs1 _ => auxbs1(d1p0)
 //
 | D1Papp1 _ => auxapp1(d1p0)
 //
@@ -2048,16 +2072,33 @@ end // end of [auxflt]
 fun
 auxstr
 ( d1e0
-: d1exp): d2exp = let
+: d1exp): d2exp =
+(
+d2exp_str(loc0, tok)
+) where
+{
 //
 val loc0 = d1e0.loc()
-//
 val-
 D1Estr(tok) = d1e0.node()
 //
-in
-  d2exp_str(loc0, tok)
-end // end of [auxstr]
+}(*where*)//end-of(auxstr)
+
+(* ****** ****** *)
+
+fun
+auxbs1
+( d1e0
+: d1exp): d2exp =
+(
+trans12_dexp(d1e1)
+) where
+{
+//
+val-
+D1Ebs1(d1e1) = d1e0.node()
+//
+}(*where*)//end-of(auxbs1)
 
 (* ****** ****** *)
 
@@ -3437,6 +3478,8 @@ d1e0.node() of
 | D1Echr _ => auxchr(d1e0)
 | D1Eflt _ => auxflt(d1e0)
 | D1Estr _ => auxstr(d1e0)
+//
+| D1Ebs1 _ => auxbs1(d1e0)
 //
 | D1Eapp1 _ => auxapp1(d1e0)
 | D1Eapp2 _ => auxapp2(d1e0)

@@ -19,13 +19,19 @@ For ATS3/XATSOPT
 "xatslib\
 /githwxi/DATS/g00iout.dats"
 (* ****** ****** *)
+//
+// #ifdef(_XATSOPT_JS_)
+//
 #include
 "prelude\
 /HATS/CATS/JS/prelude_dats.hats"
-(* ****** ****** *)
 #staload
 "xatslib\
-/githwxi/DATS/CATS/JS/Node/basics0.dats"
+/githwxi\
+/DATS/CATS/JS/Node/basics0.dats"
+//
+// #endif // end of [ifdef(_XATSOPT_JS_)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_dats.hats] *)
