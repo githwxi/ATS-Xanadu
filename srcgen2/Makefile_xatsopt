@@ -21,65 +21,79 @@ XATSOPT=$(XATSHOME)/bin/xatsopt
 ######
 all::
 ######
+all:: all_sats
+######
+all:: all_dats
+######
 
 ######
-all:: \
+all_sats:: \
 xbasics_sats
 xbasics_sats: ; $(XATSOPT) --static SATS/xbasics.sats
 ######
-all:: \
+all_sats:: \
 xstamp0_sats
 xstamp0_sats: ; $(XATSOPT) --static SATS/xstamp0.sats
 ######
-all:: \
+all_sats:: \
 xsymbol_sats
 xsymbol_sats: ; $(XATSOPT) --static SATS/xsymbol.sats
 ######
-all:: \
+all_sats:: \
 xlabel0_sats
 xlabel0_sats: ; $(XATSOPT) --static SATS/xlabel0.sats
 ######
-all:: \
+all_sats:: \
 filpath_sats
 filpath_sats: ; $(XATSOPT) --static SATS/filpath.sats
 ######
-all:: \
+all_sats:: \
 locinfo_sats
 locinfo_sats: ; $(XATSOPT) --static SATS/locinfo.sats
 ######
-all:: \
+all_sats:: \
 lexing0_sats
 lexing0_sats: ; $(XATSOPT) --static SATS/lexing0.sats
 ######
-all:: \
+all_sats:: \
 staexp0_sats
 staexp0_sats: ; $(XATSOPT) --static SATS/staexp0.sats
 ######
-all:: \
+all_sats:: \
 dynexp0_sats
 dynexp0_sats: ; $(XATSOPT) --static SATS/dynexp0.sats
 ######
 
 ######
-all:: \
+all_dats:: \
+xsymbol_dats
+xsymbol_dats: ; $(XATSOPT) --dynamic DATS/xsymbol.dats
+######
+all_dats:: \
+xsymbol_print0_dats
+xsymbol_print0_dats: ; $(XATSOPT) --dynamic DATS/xsymbol_print0.dats
+######
+
+######
+all_dats:: \
 xlabel0_dats
 xlabel0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0.dats
 ######
-all:: \
+all_dats:: \
 xlabel0_print0_dats
 xlabel0_print0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0_print0.dats
 ######
 
 ######
-all:: \
+all_dats:: \
 lexing0_dats
 lexing0_dats: ; $(XATSOPT) --dynamic DATS/lexing0.dats
 ######
-all:: \
+all_dats:: \
 lexing0_token0_dats
 lexing0_token0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_token0.dats
 ######
-all:: \
+all_dats:: \
 lexing0_print0_dats
 lexing0_print0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_print0.dats
 ######
