@@ -60,9 +60,9 @@ datatype tnode =
 #typedef tokenopt = optn(token)
 (* ****** ****** *)
 //
-fun
+fun//<>
 tnode_fprint(FILR, tnode): void
-fun
+fun//<>
 token_fprint(FILR, token): void
 //
 (* ****** ****** *)
