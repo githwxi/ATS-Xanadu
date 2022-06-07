@@ -34,6 +34,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
@@ -46,6 +49,11 @@ ATS_PACKNAME
 //
 fun//<>
 stamp_fprint(FILR, stamp): void
+//
+(* ****** ****** *)
+//
+fun stamp_get_uint(stamp): uint
+#symload uint with stamp_get_uint
 //
 (* ****** ****** *)
 

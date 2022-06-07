@@ -52,7 +52,7 @@ symbl_neqz(sym) =
 (* ****** ****** *)
 #implfun
 symbl_cmp(x, y) =
-cmp(x.stmp(), y.stmp())
+(x.stmp() \cmp y.stmp())
 (* ****** ****** *)
 
 #impltmp g_cmp<symbl> = symbl_cmp
