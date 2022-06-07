@@ -29,29 +29,30 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 07th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-#abstbox symbl_tbox // ptr
-//
-#typedef symbl = symbl_tbox
-#typedef sym_t = symbl_tbox
-//
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-//
-fun
-symbl_fprint(FILR, symbl): void
-//
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsymbol.sats] *)
+#impltmp
+g_print
+<symbl>(sym) =
+symbl_fprint(g_print$out<>(), sym)
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_xsymbol_print0.dats] *)
