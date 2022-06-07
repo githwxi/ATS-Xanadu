@@ -43,8 +43,20 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-fun
-symbl_neqz(sym) = not(nilq(sym))
+#implfun
+symbl_nilq(sym) =
+(sym = the_symbl_nil)
+#implfun
+symbl_neqz(sym) =
+(sym != the_symbl_nil)
+(* ****** ****** *)
+#implfun
+symbl_cmp(x, y) =
+cmp(x.stmp(), y.stmp())
+(* ****** ****** *)
+
+#impltmp g_cmp<symbl> = symbl_cmp
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xsymbol.dats] *)
