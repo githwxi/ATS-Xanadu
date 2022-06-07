@@ -29,7 +29,7 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 07th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -38,15 +38,10 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-#abstbox stamp_tbox
-#typedef stamp = stamp_tbox
-//
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-//
-fun//<>
-stamp_fprint(FILR, stamp): void
-//
+#staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xstamp0.sats] *)
+(* end of [ATS3/XATSOPT_xstamp0.dats] *)

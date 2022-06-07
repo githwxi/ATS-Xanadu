@@ -45,8 +45,6 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-#staload "./../SATS/xsymbol.sats"
-(* ****** ****** *)
 
 #impltmp
 g_print
