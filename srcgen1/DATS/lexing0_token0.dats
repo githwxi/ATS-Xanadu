@@ -129,7 +129,7 @@ case+ tnd of
 | T_INT1(rep) =>
   fprint!(out, "INT1(", rep, ")")
 | T_INT2(base, rep) =>
-  fprint!(out, "INT3(", base, ", ", rep, ")")
+  fprint!(out, "INT2(", base, ", ", rep, ")")
 | T_INT3(base, rep, k0(*sfx*)) =>
   fprint!(out, "INT3(", base, ", ", rep, ", ", k0, ")")
 //

@@ -93,7 +93,7 @@ case+ vlk of
 //
 | VLKprval() => print("VLKprval")
 //
-end(*let*) // end-of(valkind_fprint)
+end(*let*)//end-of(valkind_fprint)
 
 (* ****** ****** *)
 
@@ -122,7 +122,7 @@ case+ fnk of
 //
 | FNKfcast() => print("FNKfcast")
 //
-end(*let*) // end-of(funkind_fprint)
+end(*let*)//end-of(funkind_fprint)
 
 (* ****** ****** *)
 //

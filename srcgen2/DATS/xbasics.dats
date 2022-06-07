@@ -43,29 +43,71 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+//
+fun
+POLPOS
+(x:int):int=(x+0010(*08*))
+fun
+POLNEG
+(x:int):int=(x+0100(*64*))
+//
+(* ****** ****** *)
 
 #implfun
 sortbox(knd) =
 g0u2s
-(g0s2u(knd) & g0s2u(1))
+(g0s2u(knd) & g0s2u(01))
 
 #implfun
 sortlin(knd) =
 g0u2s
-((g0s2u(knd)>>1) & g0s2u(1))
+((g0s2u(knd)>>1) & g0s2u(01))
 
 #implfun
 sortprf(knd) =
 g0u2s
-((g0s2u(knd)>>2) & g0s2u(1))
+((g0s2u(knd)>>2) & g0s2u(01))
 
 #implfun
 sortpol(knd) =
 let
 val knd = (knd >> 3)
 in//let
-  if knd <= 1 then knd else (-1)
+if knd <= 1 then knd else (-1)
 end // end of [sortpol]
+
+(* ****** ****** *)
+//
+#implfun
+sortpolpos
+  (knd) = POLPOS
+(
+ g0u2s(g0s2u(knd) & g0s2u(07))
+)
+#implfun
+sortpolneg
+  (knd) = POLNEG
+(
+ g0u2s(g0s2u(knd) & g0s2u(07))
+)
+//
+(* ****** ****** *)
+
+#implfun
+subsort_test(t1, t2) =
+(
+if
+( sortbox(t1)
+< sortbox(t2) ) then false
+else
+(
+if
+( sortlin(t1)
+> sortlin(t2) ) then false
+else
+( sortprf(t1) <= sortprf(t2) )
+)
+) (*if*) // end of [subsort_test]
 
 (* ****** ****** *)
 

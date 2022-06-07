@@ -8,7 +8,7 @@ For ATS3/XATSOPT
 "prelude\
 /HATS/prelude_dats.hats"
 (* ****** ****** *)
-#staload _ =
+#staload // _ =
 "xatslib\
 /libcats/DATS/synoug0.dats"
 (* ****** ****** *)

@@ -68,16 +68,15 @@ local
 fun
 aux1
 (rep: string): int =
-auxmain
-(10, string2ptr(rep), 0)
+aux2(10(*bas*), rep)
 and
 aux2
 ( bas: int
 , rep: string): int =
-auxmain
+auxrep
 (bas, string2ptr(rep), 0)
 and
-auxmain
+auxrep
 ( b0: int
 , p0: ptr
 , r0: int): int =
@@ -90,7 +89,7 @@ if
 isdigit(c0)
 then
 (
-  auxmain(b0, p0, r0)
+  auxrep(b0, p0, r0)
 ) where
 {
 val p0 = ptr_succ<char>(p0)
@@ -98,7 +97,7 @@ val r0 = b0 * r0 + (c0 - '0')
 }
 else (r0) //else//end-of(if)
 //
-end (*let*) // end of [auxmain]
+end (*let*) // end of [auxrep]
 
 in (* in-of-local *)
 
