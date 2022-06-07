@@ -68,6 +68,20 @@ ATS_PACKNAME
 #define PRFFLG 0x100 // (0x1 << 2)
 //
 (* ****** ****** *)
+//
+#define PROPSORT 4 // 00100
+//
+#define VIEWSORT 6 // 00110
+//
+#define TBOXSORT 1 // 00001
+#define TFLTSORT 0 // 00000
+#define TYPESORT 0 // 00000
+//
+#define VTBXSORT 3 // 00011
+#define VTFTSORT 2 // 00010
+#define VWTPSORT 2 // 00010
+//
+(* ****** ****** *)
 
 fun
 sortbox(t0: sint): sint(*0,1*)

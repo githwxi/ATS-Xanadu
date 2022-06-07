@@ -29,6 +29,25 @@
 #staload _ =
 "./../../DATS/xbasics_print0.dats"
 (* ****** ****** *)
+
+val () =
+prerrln("PROPSORT = ", PROPSORT)
+val () =
+prerrln("VIEWSORT = ", VIEWSORT)
+val () =
+prerrln("TBOXSORT = ", TBOXSORT)
+val () =
+prerrln("TFLTSORT = ", TFLTSORT)
+val () =
+prerrln("TYPESORT = ", TYPESORT)
+val () =
+prerrln("VTBXSORT = ", VTBXSORT)
+val () =
+prerrln("VTFTSORT = ", VTFTSORT)
+val () =
+prerrln("VWTPSORT = ", VWTPSORT)
+
+(* ****** ****** *)
 //
 val () =
 let
