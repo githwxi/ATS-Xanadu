@@ -45,6 +45,17 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
+//
+#implfun
+stamp_fprint
+  (out, tmp) =
+(
+  print(tmp.uint())) where
+{
+  #impltmp g_print$out<>() = out
+}
+//
+(* ****** ****** *)
 
 #impltmp
 g_print
