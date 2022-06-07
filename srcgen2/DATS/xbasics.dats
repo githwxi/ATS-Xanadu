@@ -38,50 +38,34 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/xbasics.sats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-
-#extern
-fun
-gint_lnot_uint(u0:uint): uint
-#extern
-fun
-gint_ldsj_uint(u1:uint, u2:uint): uint
-#extern
-fun
-gint_lcnj_uint
-(u1:uint, u2:uint): uint = $extnam()
-
-// #symload & with gint_lcnj_uint
-#symload lcnj with gint_lcnj_uint
-#symload ldsj with gint_ldsj_uint
-
+#staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
 
 #implfun
 sortbox(knd) =
 g0u2s
-(g0s2u(knd) \land g0s2u(1))
+(g0s2u(knd) & g0s2u(1))
 
-(*
-implement
+#implfun
 sortlin(knd) =
 g0u2s
-(lcnj(g0s2u(knd)>>1, g0s2u(1)))
+((g0s2u(knd)>>1) & g0s2u(1))
 
-implement
+#implfun
 sortprf(knd) =
 g0u2s
-(lcnj(g0s2u(knd)>>2, g0s2u(1)))
+((g0s2u(knd)>>2) & g0s2u(1))
 
-implement
+#implfun
 sortpol(knd) =
 let
 val knd = (knd >> 3)
 in//let
   if knd <= 1 then knd else (-1)
 end // end of [sortpol]
-*)
 
 (* ****** ****** *)
 

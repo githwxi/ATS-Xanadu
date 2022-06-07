@@ -101,10 +101,20 @@ app of 70 // app_prcdv
 *)
 //
 (* ****** ****** *)
-
+//
+(*
 #infixl asl asr of 41
 #infixl lsl lsr of 41 
-
+*)
+#infixl & of 46 // land
+#infixl ^ of 45 // lxor
+(*
+// HX: yet-to-do!
+#infixl | of 45 // lor2
+*)
+#infixl << of 41 // lsl
+#infixr >> of 41 // asr/lsr
+//
 (* ****** ****** *)
 //
 #infixr @ of 40 (*flat*)
@@ -126,9 +136,8 @@ app of 70 // app_prcdv
 #infixl || of 20
 #infixl && of ||(+1)
 
-#infixl xor lxor of ||
-#infixl lor orelse of ||
-#infixl land andalso of &&
+#infixl orelse of ||
+#infixl andalso of &&
 
 (* ****** ****** *)
 
@@ -138,11 +147,6 @@ app of 70 // app_prcdv
 
 #infix0 := of 0 // HX: assign
 #infix0 :=: of 0 // HX: exchange
-
-(* ****** ****** *)
-
-#infixl << of 0 (* HX: asl/lsl *)
-#infixr >> of 0 (* HX: asr/lsr *)
 
 (* ****** ****** *)
 
