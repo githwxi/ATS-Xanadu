@@ -43,5 +43,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+fun
+symbl_neqz(sym) = not(nilq(sym))
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xsymbol.dats] *)
