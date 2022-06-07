@@ -48,6 +48,57 @@ ATS_PACKNAME
 
 #implfun
 //<>(*tmp*)
+dctkind_fprint
+  (out, dck) =
+(
+case+ dck of
+|
+DCKfun() => print("DCKfun")
+|
+DCKval() => print("DCKval")
+|
+DCKpraxi() => print("DCKpraxi")
+|
+DCKprfun() => print("DCKprfun")
+|
+DCKprval() => print("DCKprval")
+//
+|
+DCKfcast() => print("DCKfcast")
+//
+|
+DCKnspec() => print("DCKnspec")
+) where
+{
+  #impltmp g_print$out<>() = out
+}(*where*)//end-of(dctkind_fprint)
+
+(* ****** ****** *)
+
+#implfun
+//<>(*tmp*)
+valkind_fprint
+  (out, vlk) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+//
+case+ vlk of
+| VLKval() => print("VLKval")
+//
+| VLKvlp() => print("VLKvlp")
+| VLKvln() => print("VLKvln")
+//
+| VLKprval() => print("VLKprval")
+//
+end(*let*) // end-of(valkind_fprint)
+
+(* ****** ****** *)
+
+#implfun
+//<>(*tmp*)
 funkind_fprint
   (out, fnk) = let
 //
@@ -55,6 +106,7 @@ funkind_fprint
 g_print$out<>() = out
 //
 in//let
+//
 case+ fnk of
 | FNKfn0() => print("FNKfn0")
 | FNKfn1() => print("FNKfn1")
@@ -69,9 +121,20 @@ case+ fnk of
 | FNKprfun() => print("FNKprfun")
 //
 | FNKfcast() => print("FNKfcast")
+//
 end(*let*) // end-of(funkind_fprint)
 
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<dctkind>(dck) =
+dctkind_fprint(g_print$out<>(), dck)
+//
+#impltmp
+g_print
+<valkind>(vlk) =
+valkind_fprint(g_print$out<>(), vlk)
 //
 #impltmp
 g_print

@@ -76,7 +76,51 @@ fun sortpol(x: sint): sint // -1,0,1
 
 (* ****** ****** *)
 //
-datatype funkind =
+datatype
+dctkind =
+//
+| DCKfun of ()
+| DCKval of ()
+| DCKpraxi of ()
+| DCKprfun of ()
+| DCKprval of ()
+//
+| DCKfcast of () // castfn
+//
+| DCKnspec of () // unspeced
+// end of [dcstkind]
+//
+(* ****** ****** *)
+//
+fun//<>
+dctkind_fprint
+(out: FILR, dck: dctkind): void
+//
+(* ****** ****** *)
+//
+datatype
+valkind =
+| VLKval // val
+//
+| VLKvlp // val+
+| VLKvln // val-
+(*
+// for model-checking
+| VLKmcval of () // check-val
+*)
+// for theorem-proving
+| VLKprval of () // proof-val
+//
+(* ****** ****** *)
+//
+fun//<>
+valkind_fprint
+(out: FILR, vlk: valkind): void
+//
+(* ****** ****** *)
+//
+datatype
+funkind =
 //
 | FNKfn0 // nonrec fun
 | FNKfn1 // genrec fun
