@@ -62,8 +62,23 @@ symbl_neqz(sym: symbl): bool
 //
 (* ****** ****** *)
 //
+fun
+symbl_cmp(symbl, symbl): sint
+//
+(* ****** ****** *)
+//
 fun//<>
 symbl_fprint(FILR, symbl): void
+//
+(* ****** ****** *)
+//
+fun
+symbol_get_name(symbl): strn
+fun
+symbol_get_stmp(symbl): uint
+//
+#symload name with symbol_get_name
+#symload stmp with symbol_get_stmp
 //
 (* ****** ****** *)
 //

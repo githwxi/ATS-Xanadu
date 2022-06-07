@@ -177,8 +177,10 @@ gl_min11(x: !a, y: !a): (a)
 
 (* ****** ****** *)
 //
-// HX-2020-05-30:
-// symbol overloading for gnum
+(*
+HX-2020-05-30:
+symbol overloading for gord
+*)
 //
 (* ****** ****** *)
 //
