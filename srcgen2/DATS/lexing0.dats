@@ -29,35 +29,19 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 07th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-datatype tnode =
-//
-| T_EOF of ((*void*))
-| T_ERR of ((*void*))
-//
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#abstbox token_tbox // ptr
-#typedef token = token_tbox
-(* ****** ****** *)
-#typedef tokenlst = list(token)
-#typedef tokenopt = optn(token)
-(* ****** ****** *)
-//
-fun
-tnode_fprint(FILR, tnode): void
-//
+#staload "./../SATS/lexing.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexing0.sats] *)
+(* end of [ATS3/XATSOPT_lexing0.dats] *)
