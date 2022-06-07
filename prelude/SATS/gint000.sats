@@ -342,6 +342,10 @@ gint_map_list_nint
 #symload lxor with gint_lxor_uint of 1000
 //
 (* ****** ****** *)
+#symload asrn with gint_asrn_sint of 1000
+#symload lsln with gint_lsln_uint of 1000
+#symload lsrn with gint_lsrn_uint of 1000
+(* ****** ****** *)
 //
 #symload
 cmp with gint_cmp_sint_sint of 1000

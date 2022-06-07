@@ -24,10 +24,42 @@
 #staload
 "./../../SATS/xbasics.sats"
 (* ****** ****** *)
-#include
+#staload _ =
 "./../../DATS/xbasics.dats"
-#include
+#staload _ =
 "./../../DATS/xbasics_print0.dats"
+(* ****** ****** *)
+
+val () =
+let
+val
+k1 = 10
+in//let
+prerrln
+("sortbox(",k1,")=",sortbox(k1));
+prerrln
+("sortlin(",k1,")=",sortlin(k1));
+prerrln
+("sortprf(",k1,")=",sortprf(k1));
+prerrln
+("sortpol(",k1,")=",sortpol(k1));
+end // end of [let]
+
+val () =
+let
+val
+k1 = 15
+in//let
+prerrln
+("sortbox(",k1,")=",sortbox(k1));
+prerrln
+("sortlin(",k1,")=",sortlin(k1));
+prerrln
+("sortprf(",k1,")=",sortprf(k1));
+prerrln
+("sortpol(",k1,")=",sortpol(k1));
+end // end of [let]
+
 (* ****** ****** *)
 
 val () =

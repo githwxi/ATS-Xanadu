@@ -48,6 +48,11 @@ ATS_PACKNAME
 #typedef str0 = strn
 *)
 (* ****** ****** *)
+#symload &  with land of 0
+#symload << with lsln of 0
+#symload >> with asrn of 0
+#symload >> with lsrn of 0
+(* ****** ****** *)
 //
 #define INFIX0 0 // n-assoc
 #define INFIXL 1 // l-assoc
