@@ -29,35 +29,45 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 07th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-datatype tnode =
-//
-| T_EOF of ((*void*))
-| T_ERR of ((*void*))
-//
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#abstbox token_tbox // ptr
-#typedef token = token_tbox
+#staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-#typedef tokenlst = list(token)
-#typedef tokenopt = optn(token)
+
+#implfun
+//<>(*tmp*)
+tnode_fprint
+  (out, tnd) =
+(
+case+ tnd of
+//
+| T_EOF() => print("T_EOF")
+| T_ERR() => print("T_ERR")
+//
+) where
+{
+  #impltmp g_print$out<>() = out
+}(*where*)//end-of(tnode_fprint)
+
 (* ****** ****** *)
 //
-fun
-tnode_fprint(FILR, tnode): void
+#impltmp
+g_print
+<tnode>(tnd) =
+tnode_fprint(g_print$out<>(), tnd)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexing0.sats] *)
+(* end of [ATS3/XATSOPT_lexing0_print0.dats] *)
