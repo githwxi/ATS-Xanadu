@@ -45,7 +45,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-
+//
 #implfun
 //<>(*tmp*)
 tnode_fprint
@@ -60,13 +60,27 @@ case+ tnd of
 {
   #impltmp g_print$out<>() = out
 }(*where*)//end-of(tnode_fprint)
-
+//
+(* ****** ****** *)
+//
+#implfun
+//<>(*tmp*)
+token_fprint
+  (out, tok) =
+(
+  tnode_fprint(out, tok.node())
+)
+//
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <tnode>(tnd) =
 tnode_fprint(g_print$out<>(), tnd)
+#impltmp
+g_print
+<token>(tok) =
+token_fprint(g_print$out<>(), tok)
 //
 (* ****** ****** *)
 

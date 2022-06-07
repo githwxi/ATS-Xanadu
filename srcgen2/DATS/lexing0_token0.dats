@@ -48,34 +48,34 @@ ATS_PACKNAME
 
 local
 //
+datatype
+token =
+TOKEN of
+(loc_t, tnode)
 #absimpl
-token_tbox =
-$rec{
-  token_loc0= loc_t
-, token_node= tnode
-}(* $rec *)//end-of(token_tbox)
+token_tbox = token
 //
-in (* in-of-local *)
-
+in//in-of-local
+//
 #implfun
 //{}//tmp
 token_make_node
-  (loc0, node) =
-(
-$rec{
-  token_loc0= loc
-, token_node= node
-}
-) (* end of [token_make_node] *)
-
+(loc, tnd) = TOKEN(loc, tnd)
+//
 #implfun
 //{}//tmp
-token_get_loc0(tok) = tok.token_loc0
+token_get_loc0(tok) =
+let
+val+
+TOKEN(loc,tnd) = tok in loc end
 #implfun
 //{}//tmp
-token_get_node(tok) = tok.token_node
-
-end // end of [local]
+token_get_node(tok) =
+let
+val+
+TOKEN(loc,tnd) = tok in tnd end
+//
+end (*local*) // end-of( local )
 
 (* ****** ****** *)
 
