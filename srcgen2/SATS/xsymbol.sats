@@ -53,6 +53,14 @@ val
 the_symbl_nil: symbl//symbl("")
 //
 (* ****** ****** *)
+fun
+symbl_nilq(sym: symbl): bool
+#symload nilq with symbl_nilq
+fun
+symbl_neqz(sym: symbl): bool
+#symload neqz with symbl_neqz
+//
+(* ****** ****** *)
 //
 fun//<>
 symbl_fprint(FILR, symbl): void
