@@ -42,14 +42,14 @@ fixity declarations
 *)
 //
 (* ****** ****** *)
-
+//
 #if
 VERBOSE_FIXITY0
 #then
 #print \
 "Loading [fixity.sats] starts!\n"
 #endif // end of [VERBOSE_FIXITY0]
-
+//
 (* ****** ****** *)
 //
 (*
@@ -160,15 +160,15 @@ for exponentiation
 #infix0 :=: of 0 // HX: exchange
 //
 (*
-#infix0 <-> of 0 // HX: exchange
+#infix0 <-> of 0 // HX: exchange?
 *)
 //
 (* ****** ****** *)
 
 (*
-#prefix ++ -- // HX: inc and dec
-#prefix !++ --! // HX: getinc and decget
-#infixr =++ --= // HX: setinc and decset
+#prefix ++ -- // HX: inc/dec
+#prefix !++ --! // HX: getinc/decget
+#infixr =++ --= // HX: setinc/decset
 *)
 
 (* ****** ****** *)
@@ -198,14 +198,14 @@ $raise of 0 // raising an exception
 ignoret of 0 // ignoring a funcall return
 *)
 (* ****** ****** *)
-
+//
 #if
 VERBOSE_FIXITY0
 #then
 #print \
 "Loading [fixity.sats] is done!\n"
 #endif // end of [VERBOSE_FIXITY0]
-
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_fixity0.sats] *)
