@@ -51,126 +51,152 @@ VERBOSE_FIXITY0
 #endif // end of [VERBOSE_FIXITY0]
 
 (* ****** ****** *)
-
+//
 (*
-#infixl
-app of 70 // app_prcdv
+#infixl app of 70
 *)
-
-(* ****** ****** *)
-//
-#prefix
-! of 69 (* stadyn *)
-#prefix
-& of 69 (* stadyn *)
-#prefix
-? of 69 (* static *)
-#prefix
-?! of 69 (* static *)
 //
 (* ****** ****** *)
-//
-// HX-2015-08-04:
-// mostly following the Fortran convention
-//
-#infixr ** of 61 (*exp*)
-//
-(* ****** ****** *)
-//
-// multiplicative
-//
-#infixl * / % of 60
 //
 (*
+HX: ATS-specialty:
+*)
+//
+#prefix
+!  of 69 (*stadyn*)
+(*
+#prefix
+~  of 69 (*static*)
+*)
+#prefix
+&  of 69 (*stadyn*)
+#prefix
+?  of 69 (*static*)
+#prefix
+?! of 69 (*static*)
+//
+(* ****** ****** *)
+//
+#infixl + of 50 (*add*)
+#infixl - of 50 (*sub*)
+//
+#infixl * of 60 (*mul*)
+#infixl / of 60 (*div*)
+#infixl % of 60 (*mod*)
+//
+(* ****** ****** *)
+//
+(*
+HX-2015-08-04:
+FORTRAN-notation
+for exponentiation
+*)
+//
+#infixr ** of 61 (* exp *)
+//
+(* ****** ****** *)
+//
+#prefix + of +(+1) (*uplus*)
+#prefix - of -(+1) (*uminus*)
+//
+(* ****** ****** *)
+(*
+#infixl nadd nsub of 50
 #infixl nmul ndiv nmod of 60
 *)
-//
-(* ****** ****** *)
-
-#prefix ~ of 51 (*negative*)
-
 (* ****** ****** *)
 //
-#infixl + - of 50 (*additive*)
-//
-#prefix + of +(+1) (* uplus *)
-#prefix - of -(+1) (* uminus *)
-//
-(*
-#infixr (+) ++ // concatenative
-*)
+#prefix ~ of 51 // lnot(*neg*)
 //
 (* ****** ****** *)
 //
-(*
-#infixl asl asr of 41
-#infixl lsl lsr of 41 
-*)
-#infixl & of 46 // land
-#infixl ^ of 45 // lxor
+#infixl & of 46 // land(*mul*)
+#infixl ^ of 45 // lxor(*add*)
 (*
 // HX: yet-to-do!
-#infixl | of 45 // lor2
+#infixl | of 45 // lor2(*add*)
 *)
-#infixl << of 41 // lsl
-#infixr >> of 41 // asr/lsr
+//
+(*
+#infixl asrn of 41
+#infixl lsln lsrn of 41
+*)
+#infixl << of 41 // lsln
+#infixl >> of 41 // asrn/lsrn
 //
 (* ****** ****** *)
 //
 #infixr @ of 40 (*flat*)
 #prefix @ of 69 (*uflat*)
 //
-#infixr :: of 40 (* cons *)
+#infixr :: of 41 (* cons *)
+#infixr ++ of 40 (* join *)
 //
 (* ****** ****** *)
 //
-#infix0 < <= of 40
-#infix0 > >= of 40
-#infix0 = != of 30
+#infix0 < <= of 40 (*lt/eq*)
+#infix0 > >= of 40 (*gt/eq*)
+#infix0 = != of 30 (*equal*)
 //
-#infix0 == !== of 30
-#infix0 === !=== of 30
+#infix0 == !== of 30 (*eqref*)
 //
 (* ****** ****** *)
-
+(*
+#infix0
+=== !=== of 30 // HX: needed?
+*)
+(* ****** ****** *)
+//
 #infixl || of 20
 #infixl && of ||(+1)
-
-#infixl orelse of ||
-#infixl andalso of &&
-
+//
 (* ****** ****** *)
 
-#infixr -> of 10
+#infixr -> of 10 (*funarrow*)
 
 (* ****** ****** *)
-
+//
 #infix0 := of 0 // HX: assign
 #infix0 :=: of 0 // HX: exchange
-
+//
+(*
+#infix0 <-> of 0 // HX: exchange
+*)
+//
 (* ****** ****** *)
 
 (*
-#prefix ++ -- // inc and dec
-#prefix !++ --! // getinc and decget
-#infixr =++ --= // setinc and decset
+#prefix ++ -- // HX: inc and dec
+#prefix !++ --! // HX: getinc and decget
+#infixr =++ --= // HX: setinc and decset
 *)
 
 (* ****** ****** *)
 
 (*
-#infix0 :+= :-= :*= :/= // x:=x+a, x:=x-a, ...
-#infix0 :=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
+#infix0
+:+= :-= :*= :/= // x:=x+a, x:=x-a, ...
+#infix0
+:=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
 *)
 
 (* ****** ****** *)
-
-#prefix $raise of 0 // raising an excetion
-
+//
+#infixl
+orelse of || // HX: short-cutting
+#infixl
+andalso of && // HX: short-cutting
+//
 (* ****** ****** *)
 
-#prefix ignoret of 0 // ignoring a funcall return
+#prefix
+$raise of 0 // raising an exception
 
+(* ****** ****** *)
+(*
+#prefix
+ignoret of 0 // ignoring a funcall return
+*)
 (* ****** ****** *)
 
 #if
