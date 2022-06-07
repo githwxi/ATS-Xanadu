@@ -66,6 +66,16 @@ dynexp0_sats: ; $(XATSOPT) --static SATS/dynexp0.sats
 
 ######
 all_dats:: \
+xstamp0_dats
+xstamp0_dats: ; $(XATSOPT) --dynamic DATS/xstamp0.dats
+######
+all_dats:: \
+xstamp0_print0_dats
+xstamp0_print0_dats: ; $(XATSOPT) --dynamic DATS/xstamp0_print0.dats
+######
+
+######
+all_dats:: \
 xsymbol_dats
 xsymbol_dats: ; $(XATSOPT) --dynamic DATS/xsymbol.dats
 ######
