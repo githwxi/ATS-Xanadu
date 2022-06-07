@@ -29,7 +29,7 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 07th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -38,26 +38,37 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
-#staload
-SYM = "./xsymbol.sats"
-
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-datatype label =
-| LABINT of int
-| LABSYM of $SYM.sym_t
+#staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
-#typedef lab_t = label
-(* ****** ****** *)
-(*
-#abstbox label_tbox
-#typedef label = label_tbox
-*)
-(* ****** ****** *)
-//
-fun
-label_fprint(FILR, label): void
-//
+#staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xlabel0.sats] *)
+#impltmp
+label_fprint
+(out, lab) =
+(
+case+ lab of
+| LABint(int) =>
+  print("LABint(", int, ")")
+| LABsym(sym) =>
+  print("LABsym(", sym, ")")
+) where
+{
+  #impltmp g_print$out<>() = out
+}
+
+(* ****** ****** *)
+
+#impltmp
+g_print
+<label>(lab) =
+label_fprint(g_print$out<>(), lab)
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_xlabel0_print0.dats] *)
