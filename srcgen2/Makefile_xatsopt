@@ -62,6 +62,20 @@ dynexp0_sats: ; $(XATSOPT) --static SATS/dynexp0.sats
 
 ######
 all:: \
+xlabel0_dats
+xlabel0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0.dats
+######
+all:: \
+xlabel0_token0_dats
+xlabel0_token0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0_token0.dats
+######
+all:: \
+xlabel0_print0_dats
+xlabel0_print0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0_print0.dats
+######
+
+######
+all:: \
 lexing0_dats
 lexing0_dats: ; $(XATSOPT) --dynamic DATS/lexing0.dats
 ######
