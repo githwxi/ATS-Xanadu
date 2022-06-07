@@ -41,7 +41,7 @@ ATS_PACKNAME
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
+#staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexing0.dats] *)
+(* end of [ATS3/XATSOPT_xsymbol.dats] *)
