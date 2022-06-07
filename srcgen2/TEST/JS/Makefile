@@ -32,9 +32,7 @@ test01_xbasics:: ; \
 $(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/xbasics.dats && \
-$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/xbasics_print0.dats && \
-$(XATS2JS) --output-a $@_dats.js -d ./test01_xbasics.dats && $(NODE) test01_xbasics_dats.js
+$(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) $@_dats.js
 #
 ######
 #

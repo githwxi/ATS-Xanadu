@@ -49,8 +49,12 @@ ATS_PACKNAME
 #implfun
 //<>(*tmp*)
 funkind_fprint
-  (out, fnk) =
-(
+  (out, fnk) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
 case+ fnk of
 | FNKfn0() => print("FNKfn0")
 | FNKfn1() => print("FNKfn1")
@@ -65,7 +69,7 @@ case+ fnk of
 | FNKprfun() => print("FNKprfun")
 //
 | FNKfcast() => print("FNKfcast")
-) (*case*) // end-of(funkind_fprint)
+end(*let*) // end-of(funkind_fprint)
 
 (* ****** ****** *)
 //

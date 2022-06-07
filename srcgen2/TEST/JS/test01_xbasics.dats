@@ -24,9 +24,9 @@
 #staload
 "./../../SATS/xbasics.sats"
 (* ****** ****** *)
-#staload _ =
+#include
 "./../../DATS/xbasics.dats"
-#staload _ =
+#include
 "./../../DATS/xbasics_print0.dats"
 (* ****** ****** *)
 

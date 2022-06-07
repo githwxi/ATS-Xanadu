@@ -4,7 +4,7 @@ Basics for Xats2js
 */
 /* ****** ****** */
 //
-// prelude/bool.sats
+//prelude/bool000.sats
 //
 /* ****** ****** */
 function
@@ -22,7 +22,7 @@ XATS2JS_bool_mul
 { return (b1 && b2); }
 /* ****** ****** */
 //
-// prelude/char.sats
+//prelude/char000.sats
 //
 /* ****** ****** */
 function
@@ -63,8 +63,15 @@ return (c1!==c2); // noteq
 }
 /* ****** ****** */
 //
-// prelude/gint.sats
+//prelude/gint000.sats
 //
+/* ****** ****** */
+function
+XATS2JS_gint_neg_sint
+  (x0)
+{
+  return (-x0); // neg
+}
 /* ****** ****** */
 function
 XATS2JS_gint_abs_sint
@@ -73,19 +80,12 @@ XATS2JS_gint_abs_sint
 if
 (x0 >= 0)
 {
-  return x0; // abs
+  return ( x0); // abs
 }
 else
 {
-  return -x0; // abs
+  return (-x0); // abs
 }
-}
-/* ****** ****** */
-function
-XATS2JS_gint_neg_sint
-  (x0)
-{
-return (-x0); // neg
 }
 /* ****** ****** */
 function
@@ -99,6 +99,50 @@ XATS2JS_gint_pred_sint
   (x0)
 {
 return (x0 - 1); // -1
+}
+/* ****** ****** */
+function
+XATS2JS_gint_lnot_uint
+  (x0)
+{
+  return (~x0); // lnot
+}
+function
+XATS2JS_gint_lor2_uint
+  (x0, y0)
+{
+  return (x0|y0); // lor2
+}
+function
+XATS2JS_gint_land_uint
+  (x0, y0)
+{
+  return (x0&y0); // land
+}
+function
+XATS2JS_gint_lxor_uint
+  (x0, y0)
+{
+  return (x0^y0); // lxor
+}
+/* ****** ****** */
+function
+XATS2JS_gint_asrn_sint
+  (x0, n0)
+{
+return (x0>>n0); // asrn
+}
+function
+XATS2JS_gint_lsln_uint
+  (x0, n0)
+{
+return (x0<<n0); // lsln
+}
+function
+XATS2JS_gint_lsrn_uint
+  (x0, n0)
+{
+return (x0>>>n0); // lsrn
 }
 /* ****** ****** */
 function
@@ -182,28 +226,43 @@ XATS2JS_gint_div_sint_sint
   (x1, x2)
 { 
 //
-  let q0 = x1 / x2;
+let q0 = x1 / x2;
 //
-  if
-  (q0 >= 0)
-  {
-    return Math.floor(q0);
-  }
-  else
-  {
-    return Math.ceil( q0 );
-  }
+if
+(q0 >= 0)
+{
+  return Math.floor( q0 );
+}
+else
+{
+  return Math.ceil(  q0  );
+}
 }
 /* ****** ****** */
 //
-// prelude/gflt.sats
+// HX-2022-06-06:
+//
+function
+XATS2JS_gint_sint2uint(x0){return x0;}
+function
+XATS2JS_gint_uint2sint(x0){return x0;}
+/* ****** ****** */
+//
+//prelude/gflt000.sats
 //
 /* ****** ****** */
 function
 XATS2JS_gflt_i_dflt
   (x0)
 {
-  return x0; // int
+  return x0 ; // (i)
+}
+/* ****** ****** */
+function
+XATS2JS_gflt_neg_dflt
+  (x0)
+{
+  return (-x0); // neg
 }
 /* ****** ****** */
 function
@@ -213,19 +272,12 @@ XATS2JS_gflt_abs_dflt
 if
 (x0 >= 0.0)
 {
-  return x0; // abs
+  return ( x0); // abs
 }
 else
 {
-  return -x0; // abs
+  return (-x0); // abs
 }
-}
-/* ****** ****** */
-function
-XATS2JS_gflt_neg_dflt
-  (x0)
-{
-return (-x0); // neg
 }
 /* ****** ****** */
 function
@@ -318,7 +370,7 @@ XATS2JS_gflt_div_dflt_dflt
 }
 /* ****** ****** */
 //
-// prelude/string.sats
+//prelude/strn000.sats
 //
 /* ****** ****** */
 //

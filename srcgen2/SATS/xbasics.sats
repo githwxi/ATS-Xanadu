@@ -64,10 +64,10 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 
-fun sortbox(x: int): int // 0,1
-fun sortlin(x: int): int // 0,1
-fun sortprf(x: int): int // 0,1
-fun sortpol(x: int): int // -1,0,1
+fun sortbox(x: sint): sint // 0,1
+fun sortlin(x: sint): sint // 0,1
+fun sortprf(x: sint): sint // 0,1
+fun sortpol(x: sint): sint // -1,0,1
 
 (* ****** ****** *)
 //

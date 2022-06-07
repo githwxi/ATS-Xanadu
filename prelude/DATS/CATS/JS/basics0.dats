@@ -116,6 +116,24 @@ char_noteq<> = XATS2JS_char_noteq
 //
 #extern
 fun
+XATS2JS_gint_sint2uint
+  ( x0: sint ): uint = $extnam()
+#extern
+fun
+XATS2JS_gint_uint2sint
+  ( x0: uint ): sint = $extnam()
+//
+#impltmp
+gint_sint2uint<> =
+XATS2JS_gint_sint2uint(*sint->uint*)
+#impltmp
+gint_uint2sint<> =
+XATS2JS_gint_uint2sint(*uint->sint*)
+//
+(* ****** ****** *)
+//
+#extern
+fun
 XATS2JS_gint_neg_sint
 {i:int}
 ( x0
@@ -152,6 +170,56 @@ XATS2JS_gint_pred_sint
 gint_succ_sint<> = XATS2JS_gint_succ_sint
 #impltmp
 gint_pred_sint<> = XATS2JS_gint_pred_sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_lnot_uint
+(    x:uint    ):uint = $extnam()
+#extern
+fun
+XATS2JS_gint_lor2_uint
+(x:uint, y:uint):uint = $extnam()
+#extern
+fun
+XATS2JS_gint_land_uint
+(x:uint, y:uint):uint = $extnam()
+#extern
+fun
+XATS2JS_gint_lxor_uint
+(x:uint, y:uint):uint = $extnam()
+//
+#impltmp
+gint_lnot_uint<> = XATS2JS_gint_lnot_uint
+#impltmp
+gint_lor2_uint<> = XATS2JS_gint_lor2_uint
+#impltmp
+gint_land_uint<> = XATS2JS_gint_land_uint
+#impltmp
+gint_lxor_uint<> = XATS2JS_gint_lxor_uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_asrn_sint
+(x:sint, n:nint):sint = $extnam()
+#extern
+fun
+XATS2JS_gint_lsln_uint
+(x:uint, n:nint):uint = $extnam()
+#extern
+fun
+XATS2JS_gint_lsrn_uint
+(x:uint, n:nint):uint = $extnam()
+//
+#impltmp
+gint_asrn_sint<> = XATS2JS_gint_asrn_sint
+#impltmp
+gint_lsln_uint<> = XATS2JS_gint_lsln_uint
+#impltmp
+gint_lsrn_uint<> = XATS2JS_gint_lsrn_uint
 //
 (* ****** ****** *)
 //
