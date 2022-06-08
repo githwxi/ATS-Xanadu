@@ -58,5 +58,24 @@ g_print
 dq0eid_fprint(g_print$out<>(), qid)
 //
 (* ****** ****** *)
+#impltmp
+g_print
+<g0nam>(nam) =
+(
+ g0nam_fprint(g_print$out<>(), nam)
+)
+#impltmp
+g_print
+<g0exp>(exp) =
+(
+ g0exp_fprint(g_print$out<>(), exp)
+)
+#impltmp
+g_print
+<g0mag>(mag) =
+(
+ g0mag_fprint(g_print$out<>(), mag)
+)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp0_print0.dats] *)
