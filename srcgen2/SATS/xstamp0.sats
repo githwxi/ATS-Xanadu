@@ -79,9 +79,9 @@ stamp_make_uint(uint): stamp
 fun
 stamper_new((*void*)): stamper
 fun
-stamper_getinc(obj: stamper): stamp
+stamper_getinc(obj:stamper): stamp
 fun
-stamper_tmpset(obj: stamper, tmp: uint): void
+stamper_tmpset(stamper, uint): void
 (* ****** ****** *)
 #symload getinc with stamper_getinc
 #symload tmpset with stamper_tmpset
