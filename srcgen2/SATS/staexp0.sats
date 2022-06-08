@@ -119,6 +119,9 @@ LEX = "./lexing0.sats"
 #typedef g0maglst = list(g0mag)
 //
 (* ****** ****** *)
+fun
+i0dnt_fprint:(FILR,i0dnt)->void
+(* ****** ****** *)
 //
 datatype
 sq0eid =

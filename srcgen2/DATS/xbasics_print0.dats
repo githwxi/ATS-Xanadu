@@ -80,8 +80,7 @@ DCKnspec() => print("DCKnspec")
 valkind_fprint
   (out, vlk) = let
 //
-#impltmp
-g_print$out<>() = out
+#impltmp g_print$out<>() = out
 //
 in//let
 //
@@ -102,8 +101,7 @@ end(*let*)//end-of(valkind_fprint)
 funkind_fprint
   (out, fnk) = let
 //
-#impltmp
-g_print$out<>() = out
+#impltmp g_print$out<>() = out
 //
 in//let
 //
@@ -124,23 +122,6 @@ case+ fnk of
 //
 end(*let*)//end-of(funkind_fprint)
 
-(* ****** ****** *)
-//
-#impltmp
-g_print
-<dctkind>(dck) =
-dctkind_fprint(g_print$out<>(), dck)
-//
-#impltmp
-g_print
-<valkind>(vlk) =
-valkind_fprint(g_print$out<>(), vlk)
-//
-#impltmp
-g_print
-<funkind>(fnk) =
-funkind_fprint(g_print$out<>(), fnk)
-//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xbasics_print0.dats] *)

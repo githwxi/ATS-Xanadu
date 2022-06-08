@@ -46,11 +46,4 @@ ATS_PACKNAME
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 
-#impltmp
-g_print
-<symbl>(sym) =
-symbl_fprint(g_print$out<>(), sym)
-
-(* ****** ****** *)
-
 (* end of [ATS3/XATSOPT_xsymbol_print0.dats] *)

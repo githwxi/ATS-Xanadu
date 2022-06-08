@@ -29,41 +29,103 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 07th, 2022
+Start Time: June 08th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./xsymbol_print0.dats"
+#staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+#staload "./../SATS/xsymbol.sats"
 #staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
-#staload "./../SATS/xsymbol.sats"
+#staload "./../SATS/locinfo.sats"
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
+(* ****** ****** *)
+#impltmp
+g_0<stamp>
+((*void*)) =
+the_stamp_nil
+#impltmp
+g_cmp<stamp> = stamp_cmp
+#impltmp
+g_print<stamp>(sym) =
+stamp_fprint(g_print$out<>(), sym)
+(* ****** ****** *)
+#impltmp
+g_0<symbl>
+((*void*)) =
+the_symbl_nil
+#impltmp
+g_cmp<symbl> = symbl_cmp
+#impltmp
+g_print<symbl>(sym) =
+symbl_fprint(g_print$out<>(), sym)
+(* ****** ****** *)
+#impltmp
+g_print<label>(lab) =
+label_fprint(g_print$out<>(), lab)
+(* ****** ****** *)
+#impltmp
+g_print<tnode>(tnd) =
+tnode_fprint(g_print$out<>(), tnd)
+#impltmp
+g_print<token>(tok) =
+token_fprint(g_print$out<>(), tok)
 (* ****** ****** *)
 //
-#implfun
-label_fprint
-(out, lab) =
-(
-case+ lab of
-| LABint(int) =>
-  print("LABint(", int, ")")
-| LABsym(sym) =>
-  print("LABsym(", sym, ")")
-) where
-{
-  #impltmp g_print$out<>() = out
-}
+#impltmp
+g_print<dctkind>(dck) =
+dctkind_fprint(g_print$out<>(), dck)
 //
+#impltmp
+g_print<valkind>(vlk) =
+valkind_fprint(g_print$out<>(), vlk)
+//
+#impltmp
+g_print<funkind>(fnk) =
+funkind_fprint(g_print$out<>(), fnk)
+//
+(* ****** ****** *)
+#impltmp
+g_print<i0dnt>(id0) =
+i0dnt_fprint(g_print$out<>(), id0)
+(* ****** ****** *)
+//
+#impltmp
+g_print<sq0eid>(qid) =
+sq0eid_fprint(g_print$out<>(), qid)
+#impltmp
+g_print
+<dq0eid>(qid) =
+dq0eid_fprint(g_print$out<>(), qid)
+//
+(* ****** ****** *)
+#impltmp
+g_print<g0nam>(nam) =
+(
+ g0nam_fprint(g_print$out<>(), nam)
+)
+#impltmp
+g_print<g0exp>(exp) =
+(
+ g0exp_fprint(g_print$out<>(), exp)
+)
+#impltmp
+g_print<g0mag>(mag) =
+(
+ g0mag_fprint(g_print$out<>(), mag)
+)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xlabel0_print0.dats] *)
+(* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)
