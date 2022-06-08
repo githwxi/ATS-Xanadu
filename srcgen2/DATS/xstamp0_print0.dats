@@ -57,11 +57,4 @@ stamp_fprint
 //
 (* ****** ****** *)
 
-#impltmp
-g_print
-<stamp>(sym) =
-stamp_fprint(g_print$out<>(), sym)
-
-(* ****** ****** *)
-
 (* end of [ATS3/XATSOPT_xstamp0_print0.dats] *)

@@ -72,16 +72,5 @@ token_fprint
 )
 //
 (* ****** ****** *)
-//
-#impltmp
-g_print
-<tnode>(tnd) =
-tnode_fprint(g_print$out<>(), tnd)
-#impltmp
-g_print
-<token>(tok) =
-token_fprint(g_print$out<>(), tok)
-//
-(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0_print0.dats] *)

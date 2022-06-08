@@ -95,10 +95,5 @@ stamp_nilq(tmp) =
 stamp_cmp(x1, x2) =
 (x1.uint() \cmp x2.uint())
 (* ****** ****** *)
-#impltmp
-g_0<stamp>() = the_stamp_nil
-(* ****** ****** *)
-#impltmp g_cmp<stamp> = stamp_cmp
-(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xstamp0.dats] *)

@@ -43,39 +43,47 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./lexing0_print0.dats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
 //
+#implfun
+sq0eid_fprint
+(out, qid) =
+let
 #impltmp
-g_print
-<sq0eid>(qid) =
-sq0eid_fprint(g_print$out<>(), qid)
-#impltmp
-g_print
-<dq0eid>(qid) =
-dq0eid_fprint(g_print$out<>(), qid)
+g_print$out<>() = out
+in//let
+case+ qid of
+|
+SQ0EIDnone(id0) =>
+print("SQ0EIDnone(", id0, ")")
+|
+SQ0EIDsome(tok, id0) =>
+print
+("SQ0EIDsome(", tok, ";", id0, ")")
+end (*let*) // end of [sq0eid_fprint]
 //
-(* ****** ****** *)
+#implfun
+dq0eid_fprint
+(out, qid) =
+let
 #impltmp
-g_print
-<g0nam>(nam) =
-(
- g0nam_fprint(g_print$out<>(), nam)
-)
-#impltmp
-g_print
-<g0exp>(exp) =
-(
- g0exp_fprint(g_print$out<>(), exp)
-)
-#impltmp
-g_print
-<g0mag>(mag) =
-(
- g0mag_fprint(g_print$out<>(), mag)
-)
+g_print$out<>() = out
+in//let
+case+ qid of
+|
+DQ0EIDnone(id0) =>
+print("DQ0EIDnone(", id0, ")")
+|
+DQ0EIDsome(tok, id0) =>
+print
+("DQ0EIDsome(", tok, ";", id0, ")")
+end (*let*) // end of [dq0eid_fprint]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp0_print0.dats] *)

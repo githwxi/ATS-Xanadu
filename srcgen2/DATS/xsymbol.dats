@@ -47,11 +47,6 @@ ATS_PACKNAME
 symbl_cmp(x, y) =
 (x.stmp() \cmp y.stmp())
 (* ****** ****** *)
-#impltmp
-g_0<symbl>() = the_symbl_nil
-(* ****** ****** *)
-#impltmp g_cmp<symbl> = symbl_cmp
-(* ****** ****** *)
 #implfun
 symbl_nilq(sym) = (sym = the_symbl_nil)
 #implfun
