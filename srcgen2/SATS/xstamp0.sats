@@ -53,7 +53,8 @@ the_stamp_nil: stamp(* 0 *)
 //
 fun
 stamp_nilq(stamp): bool
-#symload nilq with stamp_nilq
+#symload
+nilq with stamp_nilq of 1000
 //
 (* ****** ****** *)
 //
@@ -81,7 +82,7 @@ stamper_new((*void*)): stamper
 fun
 stamper_getinc(obj:stamper): stamp
 fun
-stamper_tmpset(stamper, uint): void
+stamper_tmpset(stamper, sint): void
 (* ****** ****** *)
 #symload getinc with stamper_getinc
 #symload tmpset with stamper_tmpset
