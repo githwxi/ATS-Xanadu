@@ -138,10 +138,14 @@ dq0eid_get_locn(dq0eid): loc_t
 #symload locn with dq0eid_get_locn
 //
 fun
-sq0eid_fprint:(FILR, sq0eid)->void
+sq0eid_fprint:(FILR,sq0eid)->void
 fun
-dq0eid_fprint:(FILR, dq0eid)->void
+dq0eid_fprint:(FILR,dq0eid)->void
 //
+(* ****** ****** *)
+fun g0nam_fprint:(FILR,g0nam)->void
+fun g0exp_fprint:(FILR,g0exp)->void
+fun g0mag_fprint:(FILR,g0mag)->void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp0.sats] *)
