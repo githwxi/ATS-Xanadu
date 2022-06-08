@@ -162,14 +162,33 @@ XATS2JS_gint_succ_sint
 : sint(i)): sint(i+1) = $extnam()
 #extern
 fun
+XATS2JS_gint_succ_uint
+{i:int}
+( x0
+: uint(i)): uint(i+1) = $extnam()
+#impltmp
+gint_succ_sint<> = XATS2JS_gint_succ_sint
+#impltmp
+gint_succ_uint<> = XATS2JS_gint_succ_uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
 XATS2JS_gint_pred_sint
 {i:int}
 ( x0
 : sint(i)): sint(i-1) = $extnam()
-#impltmp
-gint_succ_sint<> = XATS2JS_gint_succ_sint
+#extern
+fun
+XATS2JS_gint_pred_uint
+{i:int|i>0}
+( x0
+: uint(i)): uint(i-1) = $extnam()
 #impltmp
 gint_pred_sint<> = XATS2JS_gint_pred_sint
+#impltmp
+gint_pred_uint<> = XATS2JS_gint_pred_uint
 //
 (* ****** ****** *)
 //

@@ -67,22 +67,30 @@ end (*local*) // end of [local]
 local
 
 #absimpl
-stamper_tbox = a0ref(stamp)
+stamper_tbox = a0ref(uint)
 
 in//local
 
+(*
+HX: [stamp(0)] is special
+*)
 #implfun
-stamper_new() =
-(
-  a0ref_make(the_stamp_nil)
-)
+stamper_new
+((*void*)) = a0ref_make(1u)
 //
 #implfun
-stamper_set
-(obj, tmp) =
+stamper_tmpset
+(obj, cnt) = a0ref_set(obj,cnt)
+//
+#implfun
+stamper_getinc
+(   obj   ) =
 (
-  a0ref_set(obj, stamp(tmp))
-)
+stamp(cnt)) where
+{
+val cnt = a0ref_get(obj)
+val ( ) = a0ref_set(obj,succ(cnt))
+} (*where*)//end-of(stamper_getinc)
 //
 end (*local*) // end of [local]
 

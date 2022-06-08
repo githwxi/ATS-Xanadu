@@ -37,28 +37,39 @@
 //
 (* ****** ****** *)
 //
+(*
 fun
 <a:vt>
-g_self(x: a): a
+g_new((*_*)): a
+*)
+fun
+<a:vt>
+g_make((*_*)): a
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-g_data(x: !a): ~a
+g_self(x : a): a
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-g_free(x: ~a): void
-fun
-<a:vt>
-g_copy(x: !(a)): (a)
+g_data(x : !a): ~a
+//
+(* ****** ****** *)
 //
 fun
 <a:vt>
-g_updt(x: &a >> _): void
+g_free(x : ~a): void
+fun
+<a:vt>
+g_copy(x : !a): (a)
+//
+fun
+<a:vt>
+g_updt(x : &(a) >> _): void
 //
 (* ****** ****** *)
 //
