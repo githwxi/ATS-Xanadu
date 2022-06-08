@@ -457,8 +457,7 @@ the meaning of [knd]
   (d2pitmlst(*[]*), d3explst(*arg*))
 | D3Edtsel of
   ( label
-  , d2pitmlst
-  , int(*npf*), d3explstopt(*arg*))
+  , d2pitmlst, int(*npf*), d3explstopt(*arg*))
 //
 | D3Eif0 of
   ( d3exp(*cond*)

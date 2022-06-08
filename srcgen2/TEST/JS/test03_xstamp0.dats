@@ -11,6 +11,8 @@
 (* ****** ****** *)
 val
 tmper0=stamper_new()
+val
+tmper1=stamper_new()
 (* ****** ****** *)
 val () =
 prerrln
@@ -31,12 +33,27 @@ prerrln("tmp1 = ", tmper0.getinc())
 val (  ) =
 prerrln("tmp2 = ", tmper0.getinc())
 //
-val tmp3 = tmper0.getinc() and tmp4 = tmper0.getinc()
+val
+tmp3 =
+tmper0.getinc() and tmp4 = tmper0.getinc()
 //
-val (  ) = prerrln("cmp(tmp3, tmp3) = ", tmp3 \cmp tmp3)
-val (  ) = prerrln("cmp(tmp3, tmp4) = ", tmp3 \cmp tmp4)
-val (  ) = prerrln("cmp(tmp4, tmp3) = ", tmp4 \cmp tmp3)
-val (  ) = prerrln("cmp(tmp4, tmp4) = ", tmp4 \cmp tmp4)
+val (  ) =
+prerrln("cmp(tmp3, tmp3) = ", tmp3 \cmp tmp3)
+val (  ) =
+prerrln("cmp(tmp3, tmp4) = ", tmp3 \cmp tmp4)
+val (  ) =
+prerrln("cmp(tmp4, tmp3) = ", tmp4 \cmp tmp3)
+val (  ) =
+prerrln("cmp(tmp4, tmp4) = ", tmp4 \cmp tmp4)
+//
+val (  ) = tmper1.tmpset(1000)
+//
+val (  ) =
+prerrln("tmper1.getinc() = ", tmper1.getinc())
+val (  ) =
+prerrln("tmper1.getinc() = ", tmper1.getinc())
+val (  ) =
+prerrln("tmper1.getinc() = ", tmper1.getinc())
 //
 (* ****** ****** *)
 

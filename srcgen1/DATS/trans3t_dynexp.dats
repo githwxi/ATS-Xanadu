@@ -308,7 +308,7 @@ println!
 //
 in
 //
-case-
+case+
 d3e0.node() of
 //
 | D3Ei00 _ => d3e0
@@ -325,6 +325,7 @@ d3e0.node() of
 | D3Etop _ => d3e0
 //
 | D3Evar _ => d3e0
+| D3Ekvar _ => d3e0
 //
 | D3Econ1 _ => d3e0
 | D3Ecst1 _ => d3e0
@@ -677,6 +678,11 @@ d3e0.node() of
     d3exp_make_node(loc0, t2p0, D3Eexist1(s2es, d3e1))
   end
 //
+| D3Ebrack _ =>
+  d3exp_make_node(loc0, t2p0, D3Enone2(d3e0))
+| D3Edtsel _ =>
+  d3exp_make_node(loc0, t2p0, D3Enone2(d3e0))
+//
 | D3Elcast(d3e1, lab2) =>
   let
     val d3e1 =
@@ -699,11 +705,13 @@ d3e0.node() of
 | D3Etcast(d3e1, t2p2) => d3e0 (* HX: t2p2: expected type *)
 *)
 //
+| D3Econ2 _ => d3e0 | D3Ecst2 _ => d3e0 |  D3Eterr _ => d3e0
+//
 | D3Enone0() => d3e0 | D3Enone1(d2e2) => d3e0 | D3Enone2(d3e2) => d3e0
 //
 end // end of [trans3t_dexp]
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 //

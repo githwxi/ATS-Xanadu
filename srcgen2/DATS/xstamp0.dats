@@ -80,11 +80,14 @@ stamper_new
 //
 #implfun
 stamper_tmpset
-(obj, cnt) = a0ref_set(obj,cnt)
+  (obj, cnt) =
+(
+ a0ref_set(obj, g0s2u(cnt))
+)
 //
 #implfun
 stamper_getinc
-(   obj   ) =
+  (  obj  ) =
 (
 stamp(cnt)) where
 {
