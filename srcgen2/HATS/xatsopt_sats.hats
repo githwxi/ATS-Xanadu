@@ -7,6 +7,9 @@ For ATS3/XATSOPT
 #staload
 "xatslib\
 /libcats/SATS/libcats.sats"
+#staload
+"xatslib\
+/libcats/SATS/synoug0.sats"
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_sats.hats] *)
