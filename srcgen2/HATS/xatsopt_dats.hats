@@ -9,10 +9,6 @@ For ATS3/XATSOPT
 /HATS/prelude_dats.hats"
 (* ****** ****** *)
 #staload // _ =
-"./..\
-/DATS/xatsopt_tmplib.dats"
-(* ****** ****** *)
-#staload // _ =
 "xatslib\
 /libcats/DATS/synoug0.dats"
 (* ****** ****** *)
@@ -22,6 +18,9 @@ For ATS3/XATSOPT
 #staload _ =
 "xatslib\
 /githwxi/DATS/g00iout.dats"
+(* ****** ****** *)
+#staload // _ =
+"./../DATS/xatsopt_tmplib.dats"
 (* ****** ****** *)
 //
 // #ifdef(_XATSOPT_JS_)
