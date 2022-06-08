@@ -448,8 +448,8 @@ then
 a1ref_rforall
   {n}(A0) =
 (
-loop(length(A0))
-) where
+loop
+(a1ref_length(A0))) where
 {
 //
 fun

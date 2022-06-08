@@ -42,8 +42,17 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
-#abstbox stamp_tbox
-#typedef stamp = stamp_tbox
+#abstype stamp_type <= uint
+#typedef stamp = stamp_type
+//
+(* ****** ****** *)
+//
+val
+the_stamp_nil: stamp(* 0 *)
+//
+fun
+stamp_nilq(stamp): bool
+#symload nilq with stamp_nilq
 //
 (* ****** ****** *)
 //

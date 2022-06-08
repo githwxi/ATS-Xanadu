@@ -151,13 +151,10 @@ strm_foreach(xs: strm(x0)): void
 //
 (* ****** ****** *)
 //
-(*
 fun
 <x0:t0>
 strm_listize
 ( xs: strm(x0) ) : list_vt(x0)
-*)
-//
 fun
 <x0:t0>
 strm_strmize
@@ -305,12 +302,12 @@ foreach with strm_foreach of 1000
 *)
 //
 (* ****** ****** *)
-(*
+//
 #symload
 listize with strm_listize of 1000
-*)
 #symload
 strmize with strm_strmize of 1000
+//
 (* ****** ****** *)
 //
 #symload map with strm_map of 1000

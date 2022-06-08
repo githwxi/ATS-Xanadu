@@ -720,7 +720,7 @@ g_fproc<a0> = g_print<a0>
 <a1><a2>
 <a3><a4>
 print_a4 =
-fproc_a6
+fproc_a4
 <a1><a2>
 <a3><a4> where
 {
@@ -1021,7 +1021,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a1><a2>
 <a3><a4>
 print0_a4 =
-fproc0_a6
+fproc0_a4
 <a1><a2>
 <a3><a4> where
 {
@@ -1324,7 +1324,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a1><a2>
 <a3><a4>
 print1_a4 =
-fproc1_a6
+fproc1_a4
 <a1><a2>
 <a3><a4> where
 {

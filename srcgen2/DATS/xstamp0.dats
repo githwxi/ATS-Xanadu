@@ -34,14 +34,32 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_dats.hats"
+#staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
-#staload "./../SATS/xsymbol.sats"
+
+local
+
+#absimpl
+stamp_type = uint
+
+in//local
+
+#implval
+the_stamp_nil =
+gint_sint2uint(0)
+
+#implfun
+stamp_get_uint(tmp) = tmp
+
+end (*local*) // end of [local]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xstamp0.dats] *)

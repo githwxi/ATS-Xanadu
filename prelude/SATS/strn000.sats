@@ -270,12 +270,12 @@ strn_rforall(strn): bool
 (* ****** ****** *)
 //
 fun<>
+strn_strmize
+(cs: strn): strm_vt(cgtz)
+fun<>
 strn_listize
 {n:int}
 (strn(n)): list_vt(cgtz,n)
-fun<>
-strn_strmize
-(cs: strn): strm_vt(cgtz)
 //
 fun<>
 strn_rlistize

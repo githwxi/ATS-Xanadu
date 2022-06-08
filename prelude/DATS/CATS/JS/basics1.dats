@@ -39,7 +39,7 @@ jsobjmap
 *)
 //
 (* ****** ****** *)
-#staload _ = "./basics.dats"
+#staload _ = "./basics0.dats"
 (* ****** ****** *)
 //
 // XATS2JS/jsobj
