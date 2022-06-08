@@ -34,6 +34,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
@@ -133,6 +136,11 @@ dq0eid_get_locn(dq0eid): loc_t
 //
 #symload locn with sq0eid_get_locn
 #symload locn with dq0eid_get_locn
+//
+fun
+sq0eid_fprint:(FILR, sq0eid)->void
+fun
+dq0eid_fprint:(FILR, dq0eid)->void
 //
 (* ****** ****** *)
 

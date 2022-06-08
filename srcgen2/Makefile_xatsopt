@@ -108,4 +108,14 @@ lexing0_print0_dats
 lexing0_print0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_print0.dats
 ######
 
+######
+all_dats:: \
+staexp0_dats
+staexp0_dats: ; $(XATSOPT) --dynamic DATS/staexp0.dats
+######
+all_dats:: \
+staexp0_print0_dats
+staexp0_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp0_print0.dats
+######
+
 ###### end of [Makefile] ######

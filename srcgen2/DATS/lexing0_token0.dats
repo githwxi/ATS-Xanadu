@@ -64,7 +64,7 @@ token_make_node
 //
 #implfun
 //{}//tmp
-token_get_loc0(tok) =
+token_get_locn(tok) =
 let
 val+
 TOKEN(loc,tnd) = tok in loc end

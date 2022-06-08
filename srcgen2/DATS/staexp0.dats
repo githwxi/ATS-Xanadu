@@ -29,7 +29,7 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 07th, 2022
+Start Time: June 08th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -43,5 +43,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
+(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexing0.dats] *)
+(* end of [ATS3/XATSOPT_staexp0.dats] *)
