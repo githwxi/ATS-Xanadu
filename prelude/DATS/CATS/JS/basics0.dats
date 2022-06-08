@@ -233,6 +233,18 @@ XATS2JS_gint_lt_sint_sint
 : sint(j)): bool(i<j) = $extnam()
 #impltmp
 gint_lt_sint_sint<> = XATS2JS_gint_lt_sint_sint
+#extern
+fun
+XATS2JS_gint_lt_uint_uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i<j) = $extnam()
+#impltmp
+gint_lt_uint_uint<> = XATS2JS_gint_lt_uint_uint
+//
+(* ****** ****** *)
 //
 #extern
 fun
@@ -244,6 +256,18 @@ XATS2JS_gint_gt_sint_sint
 : sint(j)): bool(i>j) = $extnam()
 #impltmp
 gint_gt_sint_sint<> = XATS2JS_gint_gt_sint_sint
+#extern
+fun
+XATS2JS_gint_gt_uint_uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i>j) = $extnam()
+#impltmp
+gint_gt_uint_uint<> = XATS2JS_gint_gt_uint_uint
+//
+(* ****** ****** *)
 //
 #extern
 fun
@@ -255,6 +279,18 @@ XATS2JS_gint_eq_sint_sint
 : sint(j)): bool(i=j) = $extnam()
 #impltmp
 gint_eq_sint_sint<> = XATS2JS_gint_eq_sint_sint
+#extern
+fun
+XATS2JS_gint_eq_uint_uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i=j) = $extnam()
+#impltmp
+gint_eq_uint_uint<> = XATS2JS_gint_eq_uint_uint
+//
+(* ****** ****** *)
 //
 #extern
 fun
@@ -266,6 +302,18 @@ XATS2JS_gint_lte_sint_sint
 : sint(j)): bool(i<=j) = $extnam()
 #impltmp
 gint_lte_sint_sint<> = XATS2JS_gint_lte_sint_sint
+#extern
+fun
+XATS2JS_gint_lte_uint_uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i<=j) = $extnam()
+#impltmp
+gint_lte_uint_uint<> = XATS2JS_gint_lte_uint_uint
+//
+(* ****** ****** *)
 //
 #extern
 fun
@@ -277,6 +325,18 @@ XATS2JS_gint_gte_sint_sint
 : sint(j)): bool(i>=j) = $extnam()
 #impltmp
 gint_gte_sint_sint<> = XATS2JS_gint_gte_sint_sint
+#extern
+fun
+XATS2JS_gint_gte_uint_uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i>=j) = $extnam()
+#impltmp
+gint_gte_uint_uint<> = XATS2JS_gint_gte_uint_uint
+//
+(* ****** ****** *)
 //
 #extern
 fun
@@ -288,6 +348,16 @@ XATS2JS_gint_neq_sint_sint
 : sint(j)): bool(i!=j) = $extnam()
 #impltmp
 gint_neq_sint_sint<> = XATS2JS_gint_neq_sint_sint
+#extern
+fun
+XATS2JS_gint_neq_uint_uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i!=j) = $extnam()
+#impltmp
+gint_neq_uint_uint<> = XATS2JS_gint_neq_uint_uint
 //
 (* ****** ****** *)
 
@@ -302,6 +372,18 @@ XATS2JS_gint_cmp_sint_sint
 : sint(sgn(i-j)) = $extnam((*self*))
 #impltmp
 gint_cmp_sint_sint<> = XATS2JS_gint_cmp_sint_sint
+
+#extern
+fun
+XATS2JS_gint_cmp_uint_uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j))
+: sint(sgn(i-j)) = $extnam((*self*))
+#impltmp
+gint_cmp_uint_uint<> = XATS2JS_gint_cmp_uint_uint
 
 (* ****** ****** *)
 //

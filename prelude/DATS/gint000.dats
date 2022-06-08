@@ -99,6 +99,8 @@ g_neq<sint> = gint_neq_sint_sint<>
 
 #impltmp
 g_cmp<sint> = gint_cmp_sint_sint<>
+#impltmp
+g_cmp<uint> = gint_cmp_uint_uint<>
 
 (* ****** ****** *)
 

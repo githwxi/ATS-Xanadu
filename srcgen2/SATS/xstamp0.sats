@@ -56,6 +56,11 @@ stamp_nilq(stamp): bool
 //
 (* ****** ****** *)
 //
+fun
+stamp_cmp(stamp, stamp): sint
+//
+(* ****** ****** *)
+//
 fun//<>
 stamp_fprint(FILR, stamp): void
 //
