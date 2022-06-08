@@ -258,41 +258,97 @@ end // end of [else]
 (* ****** ****** *)
 #impltmp
 <>(*tmp*)
-strn_listize(cs) =
-$UN.castlin01(gseq_listize(cs))
-(* ****** ****** *)
-#impltmp
-<>(*tmp*)
-strn_rlistize(cs) =
-$UN.castlin01(gseq_rlistize(cs))
+strn_listize
+  {n}( cs ) =
+(
+auxmain(n0, r0)) where
+{
+//
+val n0 = length(cs)
+val r0 = list_vt_nil()
+//
+fun
+auxmain
+{i,j:nat}
+( i0: sint(i)
+, r0
+: list_vt(cgtz, j))
+: list_vt(cgtz, i+j) =
+(
+if
+(i0 <= 0)
+then r0 else
+let
+  val i1 = i0 - 1
+  val ci = cs[i1]
+in
+auxmain(i1, list_vt_cons(ci, r0))
+end // end of [else]
+)
+} (*where*) // end of [strn_listize]
 (* ****** ****** *)
 #impltmp
 <>(*tmp*)
 strn_strmize(cs) =
 (
-auxmain(0)) where
+  auxmain(0)) where
 {
-val n0 =
-strn_length<>(cs)
+//
+val n0 = length(cs)
+//
 fun
 auxmain
-(i0: int):
-strm_vt(cgtz) =
+(i0: nint): strm_vt(cgtz) =
 $llazy
 (
 if
 (i0 >= n0)
 then
-strmcon_vt_nil()
+(
+  strmcon_vt_nil()
+)
 else
 let
-val ci = cs[i0]
-val i0 = succ(i0)
+  val ci = cs[i0]
+  val i0 = succ(i0)
 in
-strmcon_vt_cons(ci, auxmain(i0))
+  strmcon_vt_cons(ci, auxmain(i0))
 end // end of [else]
 )
-} (* end of [strn_strmize] *)
+} (*where*) // end of [strn_strmize]
+(* ****** ****** *)
+#impltmp
+<>(*tmp*)
+strn_rlistize
+  {n}(cs) =
+(
+auxmain(n0, r0)) where
+{
+//
+val i0 = 0
+val n0 = length(cs)
+val r0 = list_vt_nil()
+//
+fun
+auxmain
+{i,j:nat
+|i <= n}
+( i0: sint(i)
+, r0
+: list_vt(cgtz, j))
+: list_vt(cgtz, n-i+j) =
+(
+if
+(i0 < n0)
+then r0 else
+let
+  val ci = cs[i0]
+  val i1 = i0 + 1
+in
+auxmain(i1, list_vt_cons(ci, r0))
+end // end of [else]
+)
+} (*where*) // end of [strn_rlistize]
 (* ****** ****** *)
 //
 #impltmp<>
