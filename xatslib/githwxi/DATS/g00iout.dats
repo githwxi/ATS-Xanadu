@@ -234,6 +234,17 @@ For implementing some base cases:
 (* ****** ****** *)
 //
 #impltmp
+bool_print<> = g_print<bool>
+#impltmp
+char_print<> = g_print<char>
+#impltmp
+strn_print<> = g_print<strn>
+#impltmp
+gint_print_sint<> = g_print<sint>
+#impltmp
+gint_print_uint<> = g_print<uint>
+//
+#impltmp
 g_print<bool>(x0) =
 bool_fprint<>(g_print$out<>(), x0)
 #impltmp

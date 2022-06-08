@@ -143,7 +143,7 @@ for exponentiation
 (* ****** ****** *)
 (*
 #infix0
-=== !=== of 30 // HX: needed?
+=== !=== of 30 // HX: for JS?
 *)
 (* ****** ****** *)
 //

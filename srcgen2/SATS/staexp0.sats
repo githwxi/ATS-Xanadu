@@ -69,6 +69,27 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 //
+#abstbox g0nam_tbox // ptr
+//
+(* ****** ****** *)
+//
+#abstbox g0exp_tbox // ptr
+//
+#abstbox g0mag_tbox // ptr
+//
+(* ****** ****** *)
+//
+#abstbox sort0_tbox // ptr
+#abstbox s0exp_tbox // ptr
+//
+#abstbox s0arg_tbox // ptr
+#abstbox s0mag_tbox // ptr
+//
+#abstbox t0arg_tbox // ptr
+#abstbox t0mag_tbox // ptr
+//
+(* ****** ****** *)
+//
 #typedef t0int = t0int_tbox
 #typedef t0chr = t0chr_tbox
 #typedef t0flt = t0flt_tbox
@@ -76,6 +97,42 @@ LEX = "./lexing0.sats"
 //
 #typedef i0dnt = i0dnt_tbox
 #typedef l0abl = l0abl_tbox
+//
+(* ****** ****** *)
+//
+#typedef s0tid = i0dnt_tbox
+#typedef s0eid = i0dnt_tbox
+//
+#typedef d0pid = i0dnt_tbox
+#typedef d0eid = i0dnt_tbox
+//
+(* ****** ****** *)
+//
+#typedef g0nam = g0nam_tbox
+#typedef g0exp = g0exp_tbox
+#typedef g0mag = g0mag_tbox
+#typedef g0namlst = list(g0nam)
+#typedef g0explst = list(g0exp)
+#typedef g0maglst = list(g0mag)
+//
+(* ****** ****** *)
+//
+datatype
+sq0eid =
+| SQ0EIDnone of (s0eid)
+| SQ0EIDsome of (token, s0eid)
+datatype
+dq0eid =
+| DQ0EIDnone of (d0eid)
+| DQ0EIDsome of (token, d0eid)
+//
+fun
+sq0eid_get_locn(sq0eid): loc_t
+fun
+dq0eid_get_locn(dq0eid): loc_t
+//
+#symload locn with sq0eid_get_locn
+#symload locn with dq0eid_get_locn
 //
 (* ****** ****** *)
 
