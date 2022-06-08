@@ -320,9 +320,9 @@ end // end of [else]
 #impltmp
 <>(*tmp*)
 strn_rlistize
-  {n}(cs) =
+  {n}( cs ) =
 (
-auxmain(n0, r0)) where
+auxmain(i0, r0)) where
 {
 //
 val i0 = 0
@@ -339,7 +339,7 @@ auxmain
 : list_vt(cgtz, n-i+j) =
 (
 if
-(i0 < n0)
+(i0 >= n0)
 then r0 else
 let
   val ci = cs[i0]
@@ -471,6 +471,11 @@ gseq_forall<xs><x0> = strn_forall<>
 gseq_listize<xs><x0> = strn_listize<>
 #impltmp
 gseq_strmize<xs><x0> = strn_strmize<>
+
+(* ****** ****** *)
+
+#impltmp
+gseq_rlistize<xs><x0> = strn_rlistize<>
 
 (* ****** ****** *)
 
