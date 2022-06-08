@@ -74,7 +74,10 @@ fun stamp_get_uint(stamp): uint
 fun stamp_make_uint(uint): stamp
 #symload stamp with stamp_make_uint
 (* ****** ****** *)
-fun stamper_new((*void*)): stamper
+fun
+stamper_new((*void*)): stamper
+fun
+stamper_set(obj: stamper, tmp: uint): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xstamp0.sats] *)

@@ -79,9 +79,11 @@ stamper_new() =
 //
 #implfun
 stamper_set
-(obj, tmp) = (
+(obj, tmp) =
+(
+  a0ref_set(obj, stamp(tmp))
+)
 //
-
 end (*local*) // end of [local]
 
 (* ****** ****** *)
