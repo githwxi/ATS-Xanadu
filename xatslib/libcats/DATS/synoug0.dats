@@ -522,7 +522,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a1><a2>
 <a3><a4>
 prout1_a4 =
-fproc1_a6
+fproc1_a4
 <a1><a2>
 <a3><a4> where
 {

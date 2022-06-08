@@ -314,7 +314,8 @@ strtmp_vt_set_at<>(p0, i0, c0)
 strn_vt_make_strm
   (cs) =
 let
-val cs = listize(cs)
+val cs =
+strm_listize(cs)
 in
   strn_vt_make_list_vt(cs)
 endlet // strn_vt_make_strm
@@ -323,7 +324,8 @@ endlet // strn_vt_make_strm
 strn_vt_make_strm_vt
   (cs) =
 let
-val cs = listize(cs)
+val cs =
+strm_vt_listize(cs)
 in
   strn_vt_make_list_vt(cs)
 endlet // strn_vt_make_strm_vt

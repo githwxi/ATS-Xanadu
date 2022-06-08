@@ -412,7 +412,7 @@ gseq_forall<xs><x0> = strn_forall<>
 (* ****** ****** *)
 
 #impltmp
-gseq_strmize<xs><x0> = strn_listize<>
+gseq_listize<xs><x0> = strn_listize<>
 #impltmp
 gseq_strmize<xs><x0> = strn_strmize<>
 

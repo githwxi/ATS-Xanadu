@@ -50,6 +50,18 @@ $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test02_lexing0_dats.js
 #
 ######
 #
+test:: \
+test03_xstamp0
+test03_xstamp0:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/xstamp0.dats && \
+$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/xstamp0_print0.dats && \
+$(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test03_xstamp0_dats.js
+#
+######
+#
 # HX: for cleaning up
 #
 ######

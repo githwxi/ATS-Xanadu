@@ -313,10 +313,10 @@ case+ xs of
 list_rappend_vt
   (xs, ys) =
 let
-  val xs =
-  list_copy_vt<a>(xs)
+  val ys =
+  list_copy_vt<a>(ys)
 in
-  list_rappend0x<a>(xs, ys)
+  list_rappendx0_vt<a>(xs, ys)
 end(*let*)//end-of(list_rappend_vt)
 //
 (* ****** ****** *)

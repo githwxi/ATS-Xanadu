@@ -440,5 +440,15 @@ reverse with strn_vt_reverse0 of 1000
 reverse0 with strn_vt_reverse0 of 1000
 //
 (* ****** ****** *)
+//
+#symload listize with strn_vt_listize of 1000
+#symload strmize with strn_vt_strmize of 1000
+//
+(* ****** ****** *)
+//
+#symload rlistize with strn_vt_rlistize of 1000
+#symload rstrmize with strn_vt_rstrmize of 1000
+//
+(* ****** ****** *)
 
 (* end of [prelude_strn000_vt.sats] *)

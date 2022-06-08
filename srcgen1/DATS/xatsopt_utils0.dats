@@ -221,7 +221,7 @@ stadyn= stadyn
 ,
 source= source, transd= d3csopt
 }
-}
+}(*where*)//tread23_package(p3kg)
 //
 val
 d3csopt =
@@ -275,7 +275,14 @@ trs03cmp30_package
   trcmp30_package(p3kg)
 ) where
 {
+//
 val p3kg = trans03_package(p0kg)
+//
+val // HX: for type-errors
+((*void*)) = tread33_package(p3kg)
+val // HX: for timp-errors
+((*void*)) = tread3x_package(p3kg)
+//
 } // end of [trs03cmp30_package]
 //
 (* ****** ****** *)
