@@ -22,5 +22,12 @@ val () =
 prerrln
 ("the_stamp_nil = ", the_stamp_nil)
 (* ****** ****** *)
+val tmper0 = stamper_new()
+(* ****** ****** *)
+val (   ) =
+println("tmp1 = ", tmper0.getinc())
+val (   ) =
+println("tmp2 = ", tmper0.getinc())
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test03_xstamp0.dats] *)

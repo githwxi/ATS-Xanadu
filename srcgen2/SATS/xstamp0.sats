@@ -67,17 +67,24 @@ stamp_fprint(FILR, stamp): void
 //
 (* ****** ****** *)
 //
-fun stamp_get_uint(stamp): uint
+fun
+stamp_get_uint(stamp): uint
 #symload uint with stamp_get_uint
 //
 (* ****** ****** *)
-fun stamp_make_uint(uint): stamp
+fun
+stamp_make_uint(uint): stamp
 #symload stamp with stamp_make_uint
 (* ****** ****** *)
 fun
 stamper_new((*void*)): stamper
 fun
-stamper_set(obj: stamper, tmp: uint): void
+stamper_getinc(obj: stamper): stamp
+fun
+stamper_tmpset(obj: stamper, tmp: uint): void
+(* ****** ****** *)
+#symload getinc with stamper_getinc
+#symload tmpset with stamper_tmpset
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xstamp0.sats] *)

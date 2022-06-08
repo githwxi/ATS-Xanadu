@@ -95,7 +95,20 @@ XATS2JS_gint_succ_sint
 return (x0 + 1); // +1
 }
 function
+XATS2JS_gint_succ_uint
+  (x0)
+{
+return (x0 + 1); // +1
+}
+/* ****** ****** */
+function
 XATS2JS_gint_pred_sint
+  (x0)
+{
+return (x0 - 1); // -1
+}
+function
+XATS2JS_gint_pred_uint
   (x0)
 {
 return (x0 - 1); // -1
