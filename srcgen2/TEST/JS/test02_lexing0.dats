@@ -1,33 +1,10 @@
 (* ****** ****** *)
 #include
-"prelude\
-/HATS/prelude_dats.hats"
-(* ****** ****** *)
-#include
-"prelude\
-/HATS\
-/CATS/JS/prelude_dats.hats"
-(* ****** ****** *)
-#staload
-"xatslib\
-/libcats/DATS/synoug0.dats"
-(* ****** ****** *)
-#staload
-"xatslib\
-/githwxi/DATS/g00iout.dats"
-(* ****** ****** *)
-#staload _ =
-"xatslib\
-/githwxi\
-/DATS/CATS/JS/Node/basics0.dats"
+"./../..\
+/HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #staload
 "./../../SATS/lexing0.sats"
-(* ****** ****** *)
-#staload _ =
-"./../../DATS/lexing0.dats"
-#staload _ =
-"./../../DATS/lexing0_print0.dats"
 (* ****** ****** *)
 
 val () =
