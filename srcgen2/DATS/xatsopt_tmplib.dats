@@ -52,6 +52,26 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<dctkind>(dck) =
+dctkind_fprint
+(g_print$out<>(), dck) // xbasics
+//
+#impltmp
+g_print
+<valkind>(vlk) =
+valkind_fprint
+(g_print$out<>(), vlk) // xbasics
+//
+#impltmp
+g_print
+<funkind>(fnk) =
+funkind_fprint
+(g_print$out<>(), fnk) // xbasics
+//
+(* ****** ****** *)
 #impltmp
 g_0<stamp>
 ((*void*)) =
@@ -83,49 +103,47 @@ tnode_fprint(g_print$out<>(), tnd)
 g_print<token>(tok) =
 token_fprint(g_print$out<>(), tok)
 (* ****** ****** *)
-//
 #impltmp
-g_print<dctkind>(dck) =
-dctkind_fprint(g_print$out<>(), dck)
-//
+g_print<t0int>(tok) =
+t0int_fprint(g_print$out<>(), tok)
 #impltmp
-g_print<valkind>(vlk) =
-valkind_fprint(g_print$out<>(), vlk)
-//
+g_print<t0chr>(tok) =
+t0chr_fprint(g_print$out<>(), tok)
 #impltmp
-g_print<funkind>(fnk) =
-funkind_fprint(g_print$out<>(), fnk)
-//
+g_print<t0flt>(tok) =
+t0flt_fprint(g_print$out<>(), tok)
+#impltmp
+g_print<t0str>(tok) =
+t0str_fprint(g_print$out<>(), tok)
 (* ****** ****** *)
 #impltmp
 g_print<i0dnt>(id0) =
 i0dnt_fprint(g_print$out<>(), id0)
+#impltmp
+g_print<l0abl>(id0) =
+l0abl_fprint(g_print$out<>(), id0)
 (* ****** ****** *)
 //
 #impltmp
-g_print<sq0eid>(qid) =
-sq0eid_fprint(g_print$out<>(), qid)
+g_print<s0qid>(qid) =
+s0qid_fprint(g_print$out<>(), qid)
 #impltmp
 g_print
-<dq0eid>(qid) =
-dq0eid_fprint(g_print$out<>(), qid)
+<d0qid>(qid) =
+d0qid_fprint(g_print$out<>(), qid)
 //
 (* ****** ****** *)
+//
 #impltmp
 g_print<g0nam>(nam) =
-(
- g0nam_fprint(g_print$out<>(), nam)
-)
+g0nam_fprint(g_print$out<>(), nam)
 #impltmp
 g_print<g0exp>(exp) =
-(
- g0exp_fprint(g_print$out<>(), exp)
-)
+g0exp_fprint(g_print$out<>(), exp)
 #impltmp
 g_print<g0mag>(mag) =
-(
- g0mag_fprint(g_print$out<>(), mag)
-)
+g0mag_fprint(g_print$out<>(), mag)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)

@@ -51,7 +51,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-sq0eid_fprint
+s0qid_fprint
 (out, qid) =
 let
 #impltmp
@@ -59,16 +59,16 @@ g_print$out<>() = out
 in//let
 case+ qid of
 |
-SQ0EIDnone(id0) =>
-print("SQ0EIDnone(", id0, ")")
+S0QIDnone(id0) =>
+print("S0QIDnone(", id0, ")")
 |
-SQ0EIDsome(tok, id0) =>
+S0QIDsome(tok, id0) =>
 print
-("SQ0EIDsome(", tok, ";", id0, ")")
-end (*let*) // end of [sq0eid_fprint]
+("S0QIDsome(", tok, ";", id0, ")")
+end (*let*) // end of [s0qid_fprint]
 //
 #implfun
-dq0eid_fprint
+d0qid_fprint
 (out, qid) =
 let
 #impltmp
@@ -76,14 +76,48 @@ g_print$out<>() = out
 in//let
 case+ qid of
 |
-DQ0EIDnone(id0) =>
-print("DQ0EIDnone(", id0, ")")
+D0QIDnone(id0) =>
+print("D0QIDnone(", id0, ")")
 |
-DQ0EIDsome(tok, id0) =>
+D0QIDsome(tok, id0) =>
 print
-("DQ0EIDsome(", tok, ";", id0, ")")
-end (*let*) // end of [dq0eid_fprint]
+("D0QIDsome(", tok, ";", id0, ")")
+end (*let*) // end of [d0qid_fprint]
 //
+(* ****** ****** *)
+
+#implfun
+g0nam_fprint
+(out, g0n) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+g0n.node() of
+//
+| G0Nid0(id0) =>
+  print("G0Nid0(", id0, ")")
+//
+| G0Nint(tok) =>
+  print("G0Nint(", tok, ")")
+| G0Nchr(tok) =>
+  print("G0Nchr(", tok, ")")
+| G0Nflt(tok) =>
+  print("G0Nflt(", tok, ")")
+| G0Nstr(tok) =>
+  print("G0Nstr(", tok, ")")
+//
+| G0Nlist(tk1, gns, tk2) =>
+  print
+  ("G0Nlist(", tk1, ";", gns, ";", tk2, ")")
+//
+| G0Nnone0(   ) => print("G0Nnone0(", ")")
+| G0Nnone1(tok) => print("G0Nnone1(", tok, ")")
+//
+end (*let*) // end of [g0nam_fprint]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp0_print0.dats] *)

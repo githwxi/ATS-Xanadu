@@ -125,7 +125,18 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 fun
+t0int_fprint:(FILR,t0int)->void
+fun
+t0chr_fprint:(FILR,t0chr)->void
+fun
+t0flt_fprint:(FILR,t0flt)->void
+fun
+t0str_fprint:(FILR,t0str)->void
+(* ****** ****** *)
+fun
 i0dnt_fprint:(FILR,i0dnt)->void
+fun
+l0abl_fprint:(FILR,l0abl)->void
 (* ****** ****** *)
 //
 datatype
@@ -148,10 +159,6 @@ d0qid_get_locn(d0qid): loc_t
 fun s0qid_fprint:(FILR,s0qid)->void
 fun d0qid_fprint:(FILR,d0qid)->void
 //
-(* ****** ****** *)
-fun g0nam_fprint:(FILR,g0nam)->void
-fun g0exp_fprint:(FILR,g0exp)->void
-fun g0mag_fprint:(FILR,g0mag)->void
 (* ****** ****** *)
 //
 datatype
@@ -180,6 +187,11 @@ g0nam_get_node(g0nam): g0nam_node
 #symload locn with g0nam_get_locn
 #symload node with g0nam_get_node
 //
+fun g0nam_fprint:(FILR,g0nam)->void
+//
+(* ****** ****** *)
+fun g0exp_fprint:(FILR,g0exp)->void
+fun g0mag_fprint:(FILR,g0mag)->void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp0.sats] *)
