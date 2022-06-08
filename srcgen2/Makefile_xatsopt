@@ -27,6 +27,12 @@ all:: all_dats
 ######
 
 ######
+#
+# HX: processing SATS-files
+#
+######
+
+######
 all_sats:: \
 xbasics_sats
 xbasics_sats: ; $(XATSOPT) --static SATS/xbasics.sats
@@ -62,6 +68,12 @@ staexp0_sats: ; $(XATSOPT) --static SATS/staexp0.sats
 all_sats:: \
 dynexp0_sats
 dynexp0_sats: ; $(XATSOPT) --static SATS/dynexp0.sats
+######
+
+######
+#
+# HX: processing DATS-files
+#
 ######
 
 ######
@@ -116,6 +128,12 @@ staexp0_dats: ; $(XATSOPT) --dynamic DATS/staexp0.dats
 all_dats:: \
 staexp0_print0_dats
 staexp0_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp0_print0.dats
+######
+
+######
+all_dats:: \
+xatsopt_tmplib_dats
+xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
 
 ###### end of [Makefile] ######
