@@ -47,8 +47,8 @@ SYM = "./xsymbol.sats"
 
 (* ****** ****** *)
 datatype label =
-| LABINT of int
-| LABSYM of $SYM.sym_t
+| LABint of int
+| LABsym of $SYM.sym_t
 (* ****** ****** *)
 #typedef lab_t = label
 (* ****** ****** *)

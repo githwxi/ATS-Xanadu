@@ -34,20 +34,22 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload "./xsymbol_print0.dats"
+(* ****** ****** *)
 #staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-
+//
 #impltmp
 label_fprint
 (out, lab) =
@@ -61,14 +63,12 @@ case+ lab of
 {
   #impltmp g_print$out<>() = out
 }
-
+//
 (* ****** ****** *)
-
 #impltmp
 g_print
 <label>(lab) =
 label_fprint(g_print$out<>(), lab)
-
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xlabel0_print0.dats] *)

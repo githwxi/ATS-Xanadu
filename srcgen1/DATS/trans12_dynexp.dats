@@ -5912,7 +5912,7 @@ sqas = trans12_sqarglst(sqas)
 val
 tqas = trans12_tqarglst(tqas)
 //
-// (*
+(*
 val () =
 println!
 ("aux_implmnt0: id2c = ", id2c)
@@ -5924,7 +5924,7 @@ println!
 val () =
 println!
 ("aux_implmnt0: tqas = ", tqas)
-// *)
+*)
 //
 val () =
 auxid2c_tqas(id2c, tqas)
