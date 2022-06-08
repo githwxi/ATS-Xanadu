@@ -61,5 +61,18 @@ stamp_get_uint(tmp) = tmp
 end (*local*) // end of [local]
 
 (* ****** ****** *)
+#implfun
+stamp_nilq(tmp) =
+(tmp.uint((*void*)) = 0u)
+(* ****** ****** *)
+#implfun
+stamp_cmp(x1, x2) =
+(x1.uint() \cmp x2.uint())
+(* ****** ****** *)
+#impltmp
+g_0<stamp>() = the_stamp_nil
+(* ****** ****** *)
+#impltmp g_cmp<stamp> = stamp_cmp
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xstamp0.dats] *)

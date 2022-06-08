@@ -278,16 +278,14 @@ x0.node() of
 ) (* end of [fprint_s0ymb] *)
 //
 (* ****** ****** *)
-
-(*
+//
 implement
 print_sq0eid(x0) =
 fprint_sq0eid(stdout_ref, x0)
 implement
 prerr_sq0eid(x0) =
 fprint_sq0eid(stderr_ref, x0)
-*)
-
+//
 implement
 fprint_sq0eid
   (out, x0) =
@@ -298,18 +296,16 @@ case+ x0 of
 | SQ0EIDsome(tok, sid) =>
   fprint!(out, "SQ0EIDsome(", tok, "; ", sid, ")")
 )
-
+//
 (* ****** ****** *)
-
-(*
+//
 implement
 print_dq0eid(x0) =
 fprint_dq0eid(stdout_ref, x0)
 implement
 prerr_dq0eid(x0) =
 fprint_dq0eid(stderr_ref, x0)
-*)
-
+//
 implement
 fprint_dq0eid
   (out, x0) =
@@ -320,7 +316,7 @@ case+ x0 of
 | DQ0EIDsome(tok, sid) =>
   fprint!(out, "DQ0EIDsome(", tok, "; ", sid, ")")
 )
-
+//
 (* ****** ****** *)
 
 implement

@@ -152,11 +152,25 @@ XATS2JS_gint_lt_sint_sint
 return (x1 < x2); // lt
 }
 function
+XATS2JS_gint_lt_uint_uint
+  (x1, x2)
+{
+return (x1 < x2); // lt
+}
+/* ****** ****** */
+function
 XATS2JS_gint_gt_sint_sint
   (x1, x2)
 {
 return (x1 > x2); // gt
 }
+function
+XATS2JS_gint_gt_uint_uint
+  (x1, x2)
+{
+return (x1 > x2); // gt
+}
+/* ****** ****** */
 function
 XATS2JS_gint_eq_sint_sint
   (x1, x2)
@@ -164,11 +178,25 @@ XATS2JS_gint_eq_sint_sint
 return (x1 === x2); // eq
 }
 function
+XATS2JS_gint_eq_uint_uint
+  (x1, x2)
+{
+return (x1 === x2); // eq
+}
+/* ****** ****** */
+function
 XATS2JS_gint_lte_sint_sint
   (x1, x2)
 {
 return (x1 <= x2); // lte
 }
+function
+XATS2JS_gint_lte_uint_uint
+  (x1, x2)
+{
+return (x1 <= x2); // lte
+}
+/* ****** ****** */
 function
 XATS2JS_gint_gte_sint_sint
   (x1, x2)
@@ -176,7 +204,20 @@ XATS2JS_gint_gte_sint_sint
 return (x1 >= x2); // gte
 }
 function
+XATS2JS_gint_gte_uint_uint
+  (x1, x2)
+{
+return (x1 >= x2); // gte
+}
+/* ****** ****** */
+function
 XATS2JS_gint_neq_sint_sint
+  (x1, x2)
+{
+return (x1 !== x2); // neq
+}
+function
+XATS2JS_gint_neq_uint_uint
   (x1, x2)
 {
 return (x1 !== x2); // neq
@@ -184,6 +225,16 @@ return (x1 !== x2); // neq
 /* ****** ****** */
 function
 XATS2JS_gint_cmp_sint_sint
+  (x1, x2)
+{
+if
+(x1 < x2)
+return (-1);
+else
+return (x1 <= x2 ? 0 : 1);
+}
+function
+XATS2JS_gint_cmp_uint_uint
   (x1, x2)
 {
 if

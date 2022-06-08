@@ -344,7 +344,8 @@ D3Cimplmnt1
 val-
 IMPLD2CST1
 (dqid, d2cs) = id2c
-val-list_cons(d2c0, _) = d2cs
+val-
+list_cons(d2c0, _) = d2cs
 //
 in
 //
@@ -420,15 +421,17 @@ val () =
 trerr23_add(TRERR23d3ecl(d3cl))
 //
 val () =
-prerrln!
-(loc0, ": ***TRERR23***")
+(
+prerr!
+(loc0, ": ***TRERR23***"); prerrln!())
 val () =
-prerrln!
-(loc0, ": TRERR23(D3Cimplmnt1): d2c0 = ", d2c0)
+(
+prerr!
+(loc0, ": TRERR23(D3Cimplmnt1): d2c0 = ", d2c0); prerrln!())
 val () =
-( prerr!
-  (loc0, ": TRERR23(D3Cimplmnt1): tmp-arity mismatch: "); auxerr(0, cmps); prerrln!()
-)
+(
+prerr!
+(loc0, ": TRERR23(D3Cimplmnt1): tmp-arity mismatch: "); auxerr(0, cmps); prerrln!())
 //
 }
 // end of [if]
@@ -510,6 +513,10 @@ D3Cvardclst _ => aux_vardclst(d3cl)
 //
 |
 D3Cimplmnt1 _ => aux_implmnt1(d3cl)
+(*
+|
+D3Cimplmnt2 _ => aux_implmnt2(d3cl)
+*)
 //
 |
 _(* rest-of-d3ecl *) =>

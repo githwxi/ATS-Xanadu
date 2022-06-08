@@ -2545,8 +2545,7 @@ D2Cabstype
 , def2 ) = d2cl.node()
 //
 in
-d3ecl_make_node
-(loc0, D3Cabstype(s2c1, def2))
+d3ecl_make_node(loc0, D3Cabstype(s2c1, def2))
 end // end of [aux_abstype]
 
 (* ****** ****** *)
@@ -2566,8 +2565,7 @@ D2Cabsopen
 val is2c = auxis2c(is2c)
 //
 in
-d3ecl_make_node
-(loc0, D3Cabsopen(tok0, is2c))
+d3ecl_make_node(loc0, D3Cabsopen(tok0, is2c))
 end // end of [aux_absopen]
 
 (* ****** ****** *)
@@ -2603,8 +2601,7 @@ IMPLS2CST2
 ) : s2exp // end of [val]
 //
 in
-d3ecl_make_node
-(loc0, D3Cabsimpl(tok0, is2c, def1))
+d3ecl_make_node(loc0, D3Cabsimpl(tok0, is2c, def1))
 end // end of [aux_absimpl]
 
 (* ****** ****** *)
@@ -2626,8 +2623,7 @@ D2Cexcptcon
 , d2cs ) = d2cl.node()
 //
 in
-d3ecl_make_node
-(loc0, D3Cexcptcon(d1cl, d2cs))
+d3ecl_make_node(loc0, D3Cexcptcon(d1cl, d2cs))
 end // end of [aux_excptcon]
 //
 (* ****** ****** *)
@@ -2645,8 +2641,7 @@ D2Cdatatype
 , s2cs ) = d2cl.node()
 //
 in
-d3ecl_make_node
-(loc0, D3Cdatatype(d1cl, s2cs))
+d3ecl_make_node(loc0, D3Cdatatype(d1cl, s2cs))
 end // end of [aux_datatype]
 //
 (* ****** ****** *)
@@ -2955,7 +2950,7 @@ in
 end
 )
 //
-} (* end of [aux_fundclst] *)
+} (*where*) // end of [aux_fundclst]
 
 (* ****** ****** *)
 
@@ -3055,7 +3050,7 @@ list_cons
 end (* end of [list_cons] *)
 )
 //
-} (* end of [aux_valdclst] *)
+} (*where*) // end of [aux_valdclst]
 
 (* ****** ****** *)
 
@@ -3160,7 +3155,7 @@ list_cons
 end (* end of [list_cons] *)
 )
 //
-} (* end of [aux_vardclst] *)
+} (*where*) // end of [aux_vardclst]
 
 (* ****** ****** *)
 

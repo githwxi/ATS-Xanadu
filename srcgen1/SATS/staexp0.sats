@@ -375,6 +375,22 @@ fun dq0eid_get_loc(dq0eid): loc_t
 overload .loc with sq0eid_get_loc
 overload .loc with dq0eid_get_loc
 //
+(* ****** ****** *)
+//
+fun
+print_sq0eid: print_type(sq0eid)
+fun
+prerr_sq0eid: prerr_type(sq0eid)
+fun
+print_dq0eid: print_type(dq0eid)
+fun
+prerr_dq0eid: prerr_type(dq0eid)
+//
+overload print with print_sq0eid
+overload prerr with prerr_sq0eid
+overload print with print_dq0eid
+overload prerr with prerr_dq0eid
+//
 fun
 fprint_sq0eid: fprint_type(sq0eid)
 fun
@@ -465,12 +481,15 @@ g0nam_get_node(g0nam): g0nam_node
 overload .loc with g0nam_get_loc
 overload .node with g0nam_get_node
 //
-fun print_g0nam : print_type(g0nam)
-fun prerr_g0nam : prerr_type(g0nam)
-fun fprint_g0nam : fprint_type(g0nam)
-//
+fun
+print_g0nam : print_type(g0nam)
+fun
+prerr_g0nam : prerr_type(g0nam)
 overload print with print_g0nam
 overload prerr with prerr_g0nam
+//
+fun
+fprint_g0nam : fprint_type(g0nam)
 overload fprint with fprint_g0nam
 //
 fun
@@ -518,12 +537,15 @@ g0exp_get_node(g0exp): g0exp_node
 overload .loc with g0exp_get_loc
 overload .node with g0exp_get_node
 //
-fun print_g0exp : print_type(g0exp)
-fun prerr_g0exp : prerr_type(g0exp)
-fun fprint_g0exp : fprint_type(g0exp)
-//
+fun
+print_g0exp : print_type(g0exp)
+fun
+prerr_g0exp : prerr_type(g0exp)
 overload print with print_g0exp
 overload prerr with prerr_g0exp
+//
+fun
+fprint_g0exp : fprint_type(g0exp)
 overload fprint with fprint_g0exp
 //
 fun
@@ -534,28 +556,30 @@ g0exp_make_node
 //
 fun
 print_g0exp_THEN:
-  print_type(g0exp_THEN)
+print_type(g0exp_THEN)
 fun
 prerr_g0exp_THEN:
-  prerr_type(g0exp_THEN)
-fun
-fprint_g0exp_THEN: fprint_type(g0exp_THEN)
-//
+prerr_type(g0exp_THEN)
 overload print with print_g0exp_THEN
 overload prerr with prerr_g0exp_THEN
+//
+fun
+fprint_g0exp_THEN:
+fprint_type(g0exp_THEN)
 overload fprint with fprint_g0exp_THEN
 //
 fun
 print_g0exp_ELSE:
-  print_type(g0exp_ELSE)
+print_type(g0exp_ELSE)
 fun
 prerr_g0exp_ELSE:
-  prerr_type(g0exp_ELSE)
-fun
-fprint_g0exp_ELSE: fprint_type(g0exp_ELSE)
-//
+prerr_type(g0exp_ELSE)
 overload print with print_g0exp_ELSE
 overload prerr with prerr_g0exp_ELSE
+//
+fun
+fprint_g0exp_ELSE:
+fprint_type(g0exp_ELSE)
 overload fprint with fprint_g0exp_ELSE
 //
 (* ****** ****** *)

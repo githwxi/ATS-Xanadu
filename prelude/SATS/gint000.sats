@@ -191,14 +191,11 @@ gint_cmp_sint_sint
 {i,j:int}
 ( x: sint(i)
 , y: sint(j)): sint(sgn(i-j)) // = $ext()
-//
-(* ****** ****** *)
-//
 fun<>
 gint_cmp_uint_uint
 {i,j:int}
 ( x: uint(i)
-, y: uint(j)): uint(sgn(i-j)) // = $ext()
+, y: uint(j)): sint(sgn(i-j)) // = $ext()
 //
 (* ****** ****** *)
 

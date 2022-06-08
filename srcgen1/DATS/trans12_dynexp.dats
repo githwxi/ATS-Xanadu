@@ -5395,19 +5395,26 @@ ifcase
 | _(* default *) => false
 ) : bool // endval
 //
-val d2ps = auxv1ds_d2p(v1ds)
+val
+d2ps = auxv1ds_d2p(v1ds)
 //
 val ((*void*)) =
+(
 if isr
-then the_trans12_add_patlst(d2ps)
+then
+the_trans12_add_patlst(d2ps)
 else ((*void*))
+) : void // end of [val ()]
 //
-val v2ds = auxv1ds_d2c(v1ds, d2ps)
+val
+v2ds = auxv1ds_d2c(v1ds, d2ps)
 //
 val ((*void*)) =
+(
 if not(isr)
 then the_trans12_add_patlst(d2ps)
 else ((*void*))
+) : void // end of [val () ]
 //
 in
   d2ecl_make_node
@@ -5594,45 +5601,54 @@ auxdqid
   IMPLD2CST1(dqid, d2cs)
 ) where
 {
+//
+(*
+val () =
+println!
+("auxdqid: dqid = ", dqid)
+*)
+//
 val d2cs =
 (
 case+ dqid of
-| DQ0EIDnone(id0) =>
-  let
-    val-
-    I0DNTsome
-      (tok) = id0.node()
-    // end of [val]
-    val sym = dexpid_sym(tok)
-    val opt = the_dexpenv_find(sym)
-  in
-    case+ opt of
-    | ~None_vt() =>
-       list_nil()
-    | ~Some_vt(d2i) =>
-      ( case+ d2i of
-        | D2ITMcst(d2cs) => d2cs | _ => list_nil()
-      ) (* end of [Some_vt] *)
-  end
-| DQ0EIDsome(qua, id0) =>
-  let
-    val-
-    I0DNTsome
-      (tok) = id0.node()
-    // end of [val]
-    val sym = dexpid_sym(tok)
-    val opt = the_dexpenv_qfind(qua, sym)
-  in
-    case+ opt of
-    | ~None_vt() =>
-       list_nil()
-    | ~Some_vt(d2i) =>
-      ( case+ d2i of
-        | D2ITMcst(d2cs) => d2cs | _ => list_nil()
-      ) (* end of [Some_vt] *)
-  end
+|
+DQ0EIDnone(id0) =>
+let
+  val-
+  I0DNTsome
+    (tok) = id0.node()
+  // end of [val]
+  val sym = dexpid_sym(tok)
+  val opt = the_dexpenv_find(sym)
+in
+  case+ opt of
+  | ~None_vt() =>
+     list_nil()
+  | ~Some_vt(d2i) =>
+    ( case+ d2i of
+      | D2ITMcst(d2cs) => d2cs | _ => list_nil()
+    ) (* end of [Some_vt] *)
+end
+|
+DQ0EIDsome(qua, id0) =>
+let
+  val-
+  I0DNTsome
+    (tok) = id0.node()
+  // end of [val]
+  val sym = dexpid_sym(tok)
+  val opt = the_dexpenv_qfind(qua, sym)
+in
+  case+ opt of
+  | ~None_vt() =>
+     list_nil()
+  | ~Some_vt(d2i) =>
+    ( case+ d2i of
+      | D2ITMcst(d2cs) => d2cs | _ => list_nil()
+    ) (* end of [Some_vt] *)
+end
 ) : d2cstlst // end of [val]
-} (* end of [auxdqid] *)
+} (* where *) // end of [auxdqid] *)
 
 (* ****** ****** *)
 
@@ -5896,14 +5912,19 @@ sqas = trans12_sqarglst(sqas)
 val
 tqas = trans12_tqarglst(tqas)
 //
-(*
+// (*
+val () =
+println!
+("aux_implmnt0: id2c = ", id2c)
+//
 val () =
 println!
 ("aux_implmnt0: sqas = ", sqas)
+//
 val () =
 println!
 ("aux_implmnt0: tqas = ", tqas)
-*)
+// *)
 //
 val () =
 auxid2c_tqas(id2c, tqas)
