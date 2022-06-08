@@ -134,4 +134,4 @@ g_print<char> = char_print<(*nil*)>
 
 (* ****** ****** *)
 
-(* end of [prelude_char000.dats] *)
+(* end of [ATS3/XANADU_prelude_char000.dats] *)

@@ -782,4 +782,4 @@ strmcon_vt_cons
 
 (* ****** ****** *)
 
-(* end of [prelude_strm000.dats] *)
+(* end of [ATS3/XANADU_prelude_strm000.dats] *)

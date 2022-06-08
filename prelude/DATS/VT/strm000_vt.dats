@@ -1808,4 +1808,4 @@ glseq_rlistize
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_strm0000_vt.dats] *)
+(* end of [ATS3/XANADU_prelude_strm000_vt.dats] *)

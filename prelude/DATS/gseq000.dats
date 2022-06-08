@@ -2197,4 +2197,4 @@ end (* let *) // end of [gseq_x2foreach_col]
 
 (* ****** ****** *)
 
-(* end of [prelude_gseq000.dats] *)
+(* end of [ATS3/XANADU_prelude_gseq000.dats] *)

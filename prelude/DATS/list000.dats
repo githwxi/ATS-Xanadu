@@ -928,4 +928,4 @@ gseqn_length<list(a,n)><a><n> = list_length<a>
 
 (* ****** ****** *)
 
-(* end of [prelude_list000.dats] *)
+(* end of [ATS3/XANADU_prelude_list000.dats] *)

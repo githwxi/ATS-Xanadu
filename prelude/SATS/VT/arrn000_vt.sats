@@ -38,91 +38,137 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-//
-// HX-2020-06-10:
-// Note that
-// [array_vt] is included
-//
-(* ****** ****** *)
 // HX: singleton
 (* ****** ****** *)
 //
-#abstbox
-a0ref_vt_x0(a:vt)
-#typedef
-a0ref(a:vt) = a0ref_vt_x0(a)
+#absvtbx
+a0ptr_vt_vx(a:vt)
+#vwtpdef
+a0ptr(a:vt) = a0ptr_vt_vx(a)
 //
 (* ****** ****** *)
 // HX: 1-dimensional
 (* ****** ****** *)
 //
-#abstbox
-a1ref_vt_i0_x0(a:vt, n:i0)
+#absvtbx
+a1ptr_vt_i0_vx(a:vt, n:i0)
 //
-#typedef
-a1ref//
-(a:vt,n:i0) = a1ref_vt_i0_x0(a,n)
+#vwtpdef
+a1ptr//
+(a:vt,n:i0) = a1ptr_vt_i0_vx(a,n)
 //
 (* ****** ****** *)
 //
-#abstbox
-a1refsz_vt_i0_x0(a:vt, n:i0)
+#absvtbx
+a1ptrsz_vt_i0_vx(a:vt, n:i0)
 //
-#typedef
-a1refsz
-(a:vt,n:i0) = a1refsz_vt_i0_x0(a,n)
+#vwtpdef
+a1ptrsz
+(a:vt,n:i0) = a1ptrsz_vt_i0_vx(a,n)
 //
-#typedef
-a1refsz(a:vt) = [n:i0] a1refsz(a, n)
+#vwtpdef
+a1ptrsz(a:vt) = [n:i0] a1ptrsz(a, n)
 //
 (* ****** ****** *)
 // HX: 2-dimensional
 (* ****** ****** *)
 //
-#abstbox
-a2ref_vt_i0_i0_x0
+#absvtbx
+a2ptr_vt_i0_i0_vx
 (a:vt, nrow:i0, ncol:i0)
 //
-#typedef
-a2ref
+#vwtpdef
+a2ptr
 (a:vt
 ,m:i0,n:i0) =
-a2ref_vt_i0_i0_x0(a, m, n)
+a2ptr_vt_i0_i0_vx(a, m, n)
+//
+(* ****** ****** *)
+//
+fcast
+a0ptr2ref
+{a:vt}
+(a0ptr(a)): a0ref(a)
+fcast
+a1ptr2ref
+{a:vt}{n:i0}
+(a1ptr(a, n)): a1ref(a, n)
+fcast
+a2ptr2ref
+{a:vt}{m,n:i0}
+(a2ptr(a, m, n)): a2ref(a, m, n)
+//
+(* ****** ****** *)
+//
+// HX-2020-12-05:
+// This one needs to be
+// given a native implementation
+//
+fun
+<a:vt>
+a0ptr_alloc
+((*void*)): a0ptr(?a)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ptr_make(x0: a): a0ptr(a)
+//
+fun
+<a:vt>
+a0ptr_free(A0: a0ptr(a)): void
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a0ref_make(x0: a): a0ref(a)
+a0ptr_get
+(!a0ptr(a) >> a0ptr(~a)): a
+fun
+<a:vt>
+a0ptr_set
+(!a0ptr(?a) >> a0ptr(a), x0: a): void
 //
 (* ****** ****** *)
 //
 fun
-<a:t0>
-a0ref_get(a0ref(a)): a
+<a:vt>
+a0ptr_get0
+(A0: !a0ptr(a)): ~a // get0: read
 fun
-<a:t0>
-a0ref_set(a0ref(a), a): void
+<a:vt>
+a0ptr_get1
+( A0:
+! a0ptr(a) >> a0ptr(~a)): (a) // move
+//
+(*
+HX: [cget]: copy+get
+*)
+fun
+<a:vt>
+a0ptr_cget(A0: !a0ptr(a)): (a) // copy
+//
+(* ****** ****** *)
+//
+(*
+HX: [setf]: set+free
+*)
+//
+fun
+<a:vt>
+a0ptr_setf
+(A0: !a0ptr(a), x0: a): void // f: free
+fun
+<a:vt>
+a0ptr_set1
+(A0: a0ptr(~a), x0: a): void // 1: move
 //
 (* ****** ****** *)
 //
 fun
-<a:vt> // read-only
-a0ref_get0(A0: a0ref(a)): ~a
-fun
-<a:vt> // copy+get
-a0ref_cget(A0: a0ref(a)): (a)
-//
-fun
-<x0:vt> // set+free
-a0ref_setf(a0ref(x0), x0): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-a0ref_exch
-(a0ref(x0), x0(*new*)): x0(*old*)
+<a:vt>
+a0ptr_exch
+(A0: !a0ptr(a), x0: a(*new*)): a(*old*)
 //
 (* ****** ****** *)
 //
@@ -133,18 +179,24 @@ g_updt(x0: &a >> _): void
 *)
 fun
 <a:vt>
-a0ref_updt(A0: a0ref(a)): void
+a0ptr_updt(A0: !a0ptr(a)): void
 //
 (* ****** ****** *)
 //
 fun<>
-a0ref_print$beg(): void
+a0ptr_print$beg(): void
 fun<>
-a0ref_print$end(): void
+a0ptr_print$end(): void
 //
 fun
 <a:vt>
-a0ref_print(A0: a0ref(a)): void
+a0ptr_print(A0: !a0ptr(a)): void
+fun
+<a:vt>
+a0ptr_print0(A0: ~a0ptr(a)): void
+fun
+<a:vt>
+a0ptr_print1(A0: !a0ptr(a)): void
 //
 (* ****** ****** *)
 //
@@ -152,71 +204,86 @@ a0ref_print(A0: a0ref(a)): void
 //
 (* ****** ****** *)
 //
+// HX-2020-12-05
+// This one needs to be
+// given a native implementation
+//
 fun
 <a:vt>
-a1ref_make_nval
+a1ptr_alloc
 {n:nat}
-( asz
-: sint(n), ini: a): a1ref(a, n)
+(asz: sint(n)): a1ptr(?a, n)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1ptr_clear
+{n:nat}
+( A0:
+! a1ptr(a,n) >> a1ptr(~a,n)
+) : void // end-of-function
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1ptr_make_nval
+{n:nat}
+(asz: sint(n), ini: a): a1ptr(a, n)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
-a1ref_make_list
+a1ptr_make_list
 {n:i0}
-( xs: list(a, n) ): a1ref(a, n)
+( xs: list(a, n) ): a1ptr(a, n)
 //
 fun
 <a:vt>
-a1ref_make_list_vt
+a1ptr_make_list_vt
 {n:i0}
-(xs: list_vt(a, n)): a1ref(a, n)
+(xs: list_vt(a, n)): a1ptr(a, n)
 //
-(* ****** ****** *)
-
-fun
-<a:t0>
-a1ref_head
-{n:i0|n>0}
-(A0: a1ref(a, n)): ~a
-fun
-<a:vt>
-a1ref_tail
-{n:i0|n>0}
-(A0: a1ref(a, n)): a1ref(a, n-1)
-
 (* ****** ****** *)
 //
 fun
 <a:vt>
 <n:i0>
-a1ref_length(a1ref(a, n)): nint(n)
+a1ptr_length(!a1ptr(a, n)): nint(n)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
-a1ref_get_at
+a1ptr_get_at
 {n:i0}
-( A0
-: a1ref(a, n), i0: nintlt(n)): (a)
+( A0:
+! a1ptr(a, n), i0: nintlt(n)): a
+//
 fun
 <a:t0>
-a1ref_set_at
+a1ptr_set_at
 {n:i0}
-( A0
-: a1ref(a, n)
+( A0:
+! a1ptr(a, n)
 , i0: nintlt(n), x0: a(*new*)): void
+fun
+<a:vt>
+a1ptr_set_at_raw
+{n:i0}
+( A0:
+! a1ptr(?a, n)
+, i0: nintlt(n), x0: a(*ini*)): void
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a1ref_get0_at
+a1ptr_get0_at
 {n:i0}
 ( A0:
-  a1ref(a, n), i0: nintlt(n)): (~a)
+! a1ptr(a, n), i0: nintlt(n)): (~a)
 //
 (* ****** ****** *)
 //
@@ -226,10 +293,9 @@ HX: [cget_at]: copy+get
 //
 fun
 <a:vt>
-a1ref_cget_at
+a1ptr_cget_at
 {n:i0}
-( A0:
-  a1ref(a, n), i0: nintlt(n)): ( a)
+(A0: !a1ptr(a, n), i0: nintlt(n)): a
 //
 (* ****** ****** *)
 //
@@ -239,20 +305,20 @@ HX: [setf_at]: set_at+free
 //
 fun
 <a:vt>
-a1ref_setf_at
+a1ptr_setf_at
 {n:i0}
-( A0
-: a1ref(a, n)
+( A0:
+! a1ptr(a, n)
 , i0: nintlt(n), x0 : a(*new*)): void
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a1ref_exch_at
+a1ptr_exch_at
 {n:i0}
 ( A0:
-  a1ref(a, n)
+! a1ptr(a, n)
 , i0: nintlt(n), x0: a(*new*)): a(*old*)
 //
 (* ****** ****** *)
@@ -264,79 +330,47 @@ g_updt(x0: &a >> _): void
 *)
 fun
 <a:vt>
-a1ref_updt_at
+a1ptr_updt_at
 {n:i0}
-( A0:
-  a1ref(a, n), i0: nintlt(n)): void
+(A0: !a1ptr(a, n), i0: nintlt(n)): void
 //
 (* ****** ****** *)
 //
 fun<>
-a1ref_print$beg(): void
+a1ptr_print$beg(): void
 fun<>
-a1ref_print$end(): void
+a1ptr_print$end(): void
 fun<>
-a1ref_print$sep(): void
+a1ptr_print$sep(): void
 //
 fun
 <a:vt>
-a1ref_print(A0: a1ref(a)): void
+a1ptr_print(A0: !a1ptr(a)): void
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a1ref_strmize
+a1ptr_strmize
 {n:i0}
-(A0: a1ref(a, n)): strm_vt(a)
+(A0: a1ptr(a, n)): strm_vt(a)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a1ref_listize
+a1ptr_listize
 {n:i0}
-(A0: a1ref(a, n)): list_vt(a,n)
+(A0: a1ptr(a, n)): list_vt(a,n)
 //
 (* ****** ****** *)
-//
+
 fun
 <a:vt>
-a1ref_rlistize
+a1ptr_rlistize
 {n:i0}
-(A0: a1ref(a, n)): list_vt(a,n)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-a1ref_forall
-{n:i0}(A0: a1ref(x0, n)): bool
-fun
-<x0:vt>
-a1ref_forall0
-{n:i0}(A0: a1ref(x0, n)): bool
-//
-fun
-<x0:t0>
-a1ref_foreach
-{n:i0}(A0: a1ref(x0, n)): void
-fun
-<x0:vt>
-a1ref_foreach0
-{n:i0}(A0: a1ref(x0, n)): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-a1ref_rforall
-{n:i0}(A0: a1ref(x0, n)): bool
-fun
-<x0:vt>
-a1ref_rforall0
-{n:i0}(A0: a1ref(x0, n)): bool
-//
+(A0: a1ptr(a, n)): list_vt(a,n)
+
 (* ****** ****** *)
 //
 // HX-2020-05-30:
@@ -344,35 +378,25 @@ a1ref_rforall0
 //
 (* ****** ****** *)
 //
-#symload [] with a0ref_get of 1000
-#symload [] with a0ref_set of 1000
+#symload [] with a0ptr_get of 1000
+#symload [] with a0ptr_set of 1000
 //
-#symload get with a0ref_get of 1000
-#symload set with a0ref_set of 1000
+#symload get with a0ptr_get of 1000
+#symload set with a0ptr_set of 1000
+//
+(* ****** ****** *)
+//
+#symload a0ptr with a0ptr_make of 1000
 //
 (* ****** ****** *)
 //
-#symload a0ref with a0ref_make of 1000
+#symload [] with a1ptr_get_at of 1000
+#symload [] with a1ptr_set_at of 1000
+#symload get_at with a1ptr_get_at of 1000
+#symload set_at with a1ptr_set_at of 1000
 //
 (* ****** ****** *)
-#symload head with a1ref_head of 1000
-#symload tail with a1ref_tail of 1000
-(* ****** ****** *)
-//
-#symload [] with a1ref_get_at of 1000
-#symload [] with a1ref_set_at of 1000
-#symload get_at with a1ref_get_at of 1000
-#symload set_at with a1ref_set_at of 1000
-//
-(* ****** ****** *)
-#symload a1ref with a1ref_make_nval of 1000
-(* ****** ****** *)
-//
-#symload listize with a1ref_listize of 1000
-#symload strmize with a1ref_strmize of 1000
-//
-#symload rlistize with a1ref_rlistize of 1000
-//
+#symload a1ptr with a1ptr_make_nval of 1000
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_arrn000.sats] *)
+(* end of [ATS3/XANADU_prelude_arrn000_vt.sats] *)

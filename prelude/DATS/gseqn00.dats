@@ -34,4 +34,4 @@ bool_neg<>
 
 (* ****** ****** *)
 
-(* end of [prelude_gseqn00.dats] *)
+(* end of [ATS3/XANADU_prelude_gseqn00.dats] *)

@@ -636,6 +636,15 @@ nsize = [i:int | i >= 0] ssize(i)
 nllint = [i:int | i >= 0] sllint(i)
 //
 (* ****** ****** *)
+#typedef
+nint(n:int) = [ n >= 0 ] sint(n)
+#typedef
+nlint(n:int) = [ n >= 0 ] slint(n)
+#typedef
+nsize(n:int) = [ n >= 0 ] ssize(n)
+#typedef
+nllint(n:int) = [ n >= 0 ] sllint(n)
+(* ****** ****** *)
 //
 #typedef
 sintlt(n:int) = [i:int | i < n] sint(i)
