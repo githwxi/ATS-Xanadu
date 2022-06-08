@@ -91,6 +91,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/VT/list000_vt.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/optn000_vt.sats
 all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/arrn000_vt.sats
+all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strn000_vt.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strm000_vt.sats
