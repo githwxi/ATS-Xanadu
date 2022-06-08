@@ -103,6 +103,11 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 //
+#typedef g0nid = i0dnt_tbox
+#typedef g0eid = i0dnt_tbox
+//
+(* ****** ****** *)
+//
 #typedef s0tid = i0dnt_tbox
 #typedef s0eid = i0dnt_tbox
 //
@@ -124,31 +129,57 @@ i0dnt_fprint:(FILR,i0dnt)->void
 (* ****** ****** *)
 //
 datatype
-sq0eid =
-| SQ0EIDnone of (s0eid)
-| SQ0EIDsome of (token, s0eid)
+s0qid =
+| S0QIDnone of (i0dnt)
+| S0QIDsome of (token, i0dnt)
 datatype
-dq0eid =
-| DQ0EIDnone of (d0eid)
-| DQ0EIDsome of (token, d0eid)
+d0qid =
+| D0QIDnone of (i0dnt)
+| D0QIDsome of (token, i0dnt)
 //
 fun
-sq0eid_get_locn(sq0eid): loc_t
+s0qid_get_locn(s0qid): loc_t
 fun
-dq0eid_get_locn(dq0eid): loc_t
+d0qid_get_locn(d0qid): loc_t
 //
-#symload locn with sq0eid_get_locn
-#symload locn with dq0eid_get_locn
+#symload locn with s0qid_get_locn
+#symload locn with d0qid_get_locn
 //
-fun
-sq0eid_fprint:(FILR,sq0eid)->void
-fun
-dq0eid_fprint:(FILR,dq0eid)->void
+fun s0qid_fprint:(FILR,s0qid)->void
+fun d0qid_fprint:(FILR,d0qid)->void
 //
 (* ****** ****** *)
 fun g0nam_fprint:(FILR,g0nam)->void
 fun g0exp_fprint:(FILR,g0exp)->void
 fun g0mag_fprint:(FILR,g0mag)->void
+(* ****** ****** *)
+//
+datatype
+g0nam_node =
+//
+| G0Nid0 of (g0nid)
+//
+| G0Nint of (t0int)
+| G0Nchr of (t0chr)
+| G0Nflt of (t0flt)
+| G0Nstr of (t0str)
+//
+| G0Nlist of
+  (token, g0namlst, token)
+//
+| G0Nnone0 of ()
+| G0Nnone1 of (token(*error*))
+//
+(* ****** ****** *)
+//
+fun
+g0nam_get_locn(g0nam): loc_t
+fun
+g0nam_get_node(g0nam): g0nam_node
+//
+#symload locn with g0nam_get_locn
+#symload node with g0nam_get_node
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp0.sats] *)
