@@ -185,4 +185,4 @@ gseq_rforeach<optn(a)><a> = optn_rforeach<a>
 
 (* ****** ****** *)
 
-(* end of [prelude_optn000.dats] *)
+(* end of [ATS3/XANADU_prelude_optn000.dats] *)

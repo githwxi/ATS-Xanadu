@@ -336,4 +336,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [prelude_gint000.dats] *)
+(* end of [ATS3/XANADU_prelude_gint000.dats] *)

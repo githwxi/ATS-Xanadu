@@ -238,4 +238,4 @@ gflt_div_dflt_dflt(f1, g_i(i2))
 
 (* ****** ****** *)
 
-(* end of [prelude_gflt000.dats] *)
+(* end of [ATS3/XANADU_prelude_gflt000.dats] *)

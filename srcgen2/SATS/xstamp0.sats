@@ -41,10 +41,11 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
 #abstype stamp_type <= uint
 #typedef stamp = stamp_type
-//
+(* ****** ****** *)
+#abstbox stamper_tbox // ptr
+#typedef stamper = stamper_tbox
 (* ****** ****** *)
 //
 val
@@ -69,6 +70,11 @@ stamp_fprint(FILR, stamp): void
 fun stamp_get_uint(stamp): uint
 #symload uint with stamp_get_uint
 //
+(* ****** ****** *)
+fun stamp_make_uint(uint): stamp
+#symload stamp with stamp_make_uint
+(* ****** ****** *)
+fun stamper_new((*void*)): stamper
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xstamp0.sats] *)

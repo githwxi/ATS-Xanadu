@@ -57,6 +57,30 @@ gint_sint2uint(0)
 
 #implfun
 stamp_get_uint(tmp) = tmp
+#implfun
+stamp_make_uint(tmp) = tmp
+
+end (*local*) // end of [local]
+
+(* ****** ****** *)
+
+local
+
+#absimpl
+stamper_tbox = a0ref(stamp)
+
+in//local
+
+#implfun
+stamper_new() =
+(
+  a0ref_make(the_stamp_nil)
+)
+//
+#implfun
+stamper_set
+(obj, tmp) = (
+//
 
 end (*local*) // end of [local]
 

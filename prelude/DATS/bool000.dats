@@ -81,4 +81,4 @@ g_neqrf<bool> = g_noteq<bool>
 g_print<bool> = bool_print<(*nil*)>
 (* ****** ****** *)
 
-(* end of [prelude_bool000.dats] *)
+(* end of [ATS3/XANADU_prelude_bool000.dats] *)

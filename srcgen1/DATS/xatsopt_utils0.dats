@@ -651,16 +651,11 @@ the_prelude_load
 , 0(*static*)
 , "prelude/SATS/VT/list000_vt.sats")
 //
-(*
-//
-// HX: array contains arrn000_vt
-//
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "prelude/SATS/VT/arrn000_vt.sats")
-*)
 val () =
 the_prelude_load
 ( XATSENV

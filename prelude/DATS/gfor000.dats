@@ -99,4 +99,4 @@ end (* end of [x3forint] *)
 
 (* ****** ****** *)
 
-(* end of [prelude_gfor000.dats] *)
+(* end of [ATS3/XANADU_prelude_gfor000.dats] *)
