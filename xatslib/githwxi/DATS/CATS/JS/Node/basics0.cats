@@ -42,7 +42,9 @@ function
 XATS2JS_NODE_char_fprint
   (out, obj)
 {
-XATS2JS_NODE_g_fprint(out, obj);
+let
+rep = String.fromCharCode(obj);
+XATS2JS_NODE_g_fprint(out, rep);
 return ; // XATS2JS_NODE_char_fprint
 }
 function
