@@ -67,6 +67,21 @@ optn_vt_cons
 
 #impltmp
 <xs><x0>
+glseq_cmp00
+(xs1, xs2) =
+(
+glseq_z2forcmp0
+<xs,xs><x0,x0>(xs1, xs2)
+) where
+{
+#impltmp
+z2forcmp0$fcmp<x0,x0> = gl_cmp00<x0>
+} (* end of [glseq_cmp00/z2forcmp0] *)
+
+(* ****** ****** *)
+
+#impltmp
+<xs><x0>
 glseq_print1(xs) =
 let
 //
@@ -644,6 +659,71 @@ in
   // nothing
 end // end of [glseq_iforeach1/iforall1]
 //
+(* ****** ****** *)
+//
+// HX-2022-06-09:
+// For z2-gseq-operations
+//
+(* ****** ****** *)
+
+#impltmp
+<xs
+,ys><x0>
+glseq_z2cmp00
+  (xs, ys) =
+(
+glseq_z2forcmp0
+<xs,ys><x0,x0>(xs, ys)
+) where
+{
+#impltmp
+z2forcmp0$fcmp<x0,x0> = gl_cmp00<x0>
+} (* end of [gseq_z2cmp00/z2forcmp0] *)
+
+#impltmp
+<xs
+,ys><x0>
+glseq_z2cmp11
+  (xs, ys) =
+(
+glseq_z2forcmp1
+<xs,ys><x0,x0>(xs, ys)
+) where
+{
+#impltmp
+z2forcmp1$fcmp<x0,x0> = gl_cmp11<x0>
+} (* end of [gseq_z2cmp11/z2forcmp1] *)
+
+(* ****** ****** *)
+
+#impltmp
+<xs,ys>
+<x0,y0>
+glseq_z2forall0
+  (xs, ys) =
+(
+strm_vt_z2forall0<x0,y0>
+(
+  glseq_strmize<xs><x0>(xs)
+,
+  glseq_strmize<ys><y0>(ys))
+) (*where*)//end-of-[glseq_z2forall0]
+
+(* ****** ****** *)
+
+#impltmp
+<xs,ys>
+<x0,y0>
+glseq_z2forcmp0
+  (xs, ys) =
+(
+strm_vt_z2forcmp0<x0,y0>
+(
+  glseq_strmize<xs><x0>(xs)
+,
+  glseq_strmize<ys><y0>(ys))
+) (*where*)//end-of-[glseq_z2forcmp0]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000_vt.dats] *)

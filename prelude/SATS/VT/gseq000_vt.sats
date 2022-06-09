@@ -80,6 +80,17 @@ glseq_uncons_opt
 fun
 <xs:vt>
 <x0:vt>
+glseq_cmp00(~xs, ~xs): sint
+fun
+<xs:vt>
+<x0:vt>
+glseq_cmp11(!xs, !xs): sint
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 glseq_print0(xs: ~xs): void
 fun
 <xs:vt>
@@ -398,6 +409,63 @@ fun
 <xs:vt>
 <x0:vt>
 glseq_iforeach1(!xs): void
+//
+(* ****** ****** *)
+//
+// HX-2022-06-09:
+// For z2-glseq-operations
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt>
+glseq_z2cmp00
+(xs: ~xs, ys: ~ys): sint
+fun
+<xs:vt
+,ys:vt>
+<x0:vt>
+glseq_z2cmp11
+(xs: !xs, ys: !ys): sint
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+glseq_z2forall0
+  (xs: ~xs, ys: ~ys): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+glseq_z2forcmp0
+  (xs: ~xs, ys: ~ys): sint
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+glseq_z2forcmp1
+  (xs: !xs, ys: !ys): sint
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+glseq_z2foreach0
+  (xs: ~xs, ys: ~ys): void
 //
 (* ****** ****** *)
 //
