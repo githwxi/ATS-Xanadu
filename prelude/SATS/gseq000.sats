@@ -114,12 +114,12 @@ gseq_uncons_opt
   (xs: &xs >> xs): optn_vt(x0)
 //
 (* ****** ****** *)
-
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_cmp(xs, xs): sint
-
+//
 (* ****** ****** *)
 
 fun
@@ -662,6 +662,15 @@ gseq_permutize(xs: xs): strm_vt(xs)
 (* ****** ****** *)
 //
 // For z2-gseq-operations
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0>
+gseq_z2cmp
+(xs: xs, ys: ys): sint
 //
 (* ****** ****** *)
 //

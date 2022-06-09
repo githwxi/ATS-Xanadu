@@ -1747,6 +1747,22 @@ end // end of [gseq_permutize]
 // For z2-gseq-operations
 //
 (* ****** ****** *)
+
+#impltmp
+<xs
+,ys><x0>
+gseq_z2cmp
+  (xs, ys) =
+(
+gseq_z2forcmp
+<xs,ys><x0,x0>(xs, ys)
+) where
+{
+  #impltmp
+  z2forcmp$fcmp<x0,x0> = g_cmp<x0>
+} (* end of [gseq_z2cmp/z2forcmp] *)
+
+(* ****** ****** *)
 //
 #impltmp
 <xs,ys>

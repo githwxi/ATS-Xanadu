@@ -70,4 +70,16 @@ end (*local*) // end of [local]
 
 (* ****** ****** *)
 
+#implful
+fpath_normq(fpx) =
+let
+  val DS = theDirSep()
+  val CD = theCurDir()
+  val PD = theParDir()
+in//let
+  false
+end (*let*) // end of [fpath_normq]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_filpath.dats] *)
