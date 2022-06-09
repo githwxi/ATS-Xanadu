@@ -47,7 +47,10 @@ ATS_PACKNAME
 #staload "./../SATS/xsymbol.sats"
 #staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
+#staload "./../SATS/filpath.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
@@ -95,6 +98,13 @@ symbl_fprint(g_print$out<>(), sym)
 #impltmp
 g_print<label>(lab) =
 label_fprint(g_print$out<>(), lab)
+(* ****** ****** *)
+#impltmp
+g_print<drpth>(dpx) =
+drpth_fprint(g_print$out<>(), dpx)
+#impltmp
+g_print<fpath>(fpx) =
+fpath_fprint(g_print$out<>(), fpx)
 (* ****** ****** *)
 #impltmp
 g_print<tnode>(tnd) =

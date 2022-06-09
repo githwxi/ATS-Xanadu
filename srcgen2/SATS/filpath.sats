@@ -55,11 +55,26 @@ fpath_normize(fp: strn): strn
 //
 (* ****** ****** *)
 //
+#abstbox drpth_tbox // ptr
+//
+#typedef drpth = drpth_tbox
+#typedef drpthlst = list(drpth)
+#typedef drpthopt = optn(drpth)
+//
+(* ****** ****** *)
+//
 #abstbox fpath_tbox // ptr
 //
 #typedef fpath = fpath_tbox
 #typedef fpathlst = list(fpath)
 #typedef fpathopt = optn(fpath)
+//
+(* ****** ****** *)
+//
+fun
+drpth_fprint(FILR, drpth): void
+fun
+fpath_fprint(FILR, fpath): void
 //
 (* ****** ****** *)
 
