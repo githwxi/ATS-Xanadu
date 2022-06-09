@@ -17,6 +17,8 @@
 #include
 "./../../DATS/xstamp0_print0.dats"
 #include
+"./../../DATS/xsymbol_mymap0.dats"
+#include
 "./../../DATS/xsymbol_print0.dats"
 //
 (* ****** ****** *)
@@ -30,6 +32,7 @@ prerrln
 val () = prerrln("sym1 = ", symbl("sym1"))
 val () = prerrln("sym2 = ", symbl("sym2"))
 val () = prerrln("sym1 = ", symbl("sym1"))
+val () = prerrln("sym2 = ", symbl("sym2"))
 val () = prerrln("sym3 = ", symbl("sym3"))
 //
 (* ****** ****** *)

@@ -39,9 +39,9 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #include
+"./../HATS/xatsopt_sats.hats"
+#include
 "./../HATS/xatsopt_dats.hats"
-(* ****** ****** *)
-#staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
@@ -49,79 +49,41 @@ ATS_PACKNAME
 local
 
 (* ****** ****** *)
+#staload
+"prelude\
+/DATS/CATS/JS/basics1.dats"
+(* ****** ****** *)
 
-datatype
-symbl =
-SYMBL of (strn, stamp)
-#absimpl symbl_tbox = symbl
+#typedef key = strn
+#typedef itm = symbl
 
 (* ****** ****** *)
 
-val mytmper = stamper_new()
+#typedef
+mymap = jsobjmap_type(key, itm)
 
 (* ****** ****** *)
+
+val
+mymaper: mymap =
+XATS2JS_jsobjmap_make_nil<key>()
 
 in//local
 
-(* ****** ****** *)
-
-#implval
-the_symbl_nil =
-SYMBL("", the_stamp_nil)
-
-(* ****** ****** *)
+#implfun
+symbl_search_opt(k0) =
+XATS2JS_jsobjmap_search_opt<key>(mymaper, k0)
 
 #implfun
-symbl_get_name(sym) =
+symbl_insert_any(sym) =
 let
-val+
-SYMBL(nam, tmp) = sym in nam
-end(*let*)//end-of(symbl_get_name)
-#implfun
-symbl_get_stmp(sym) =
-let
-val+
-SYMBL(nam, tmp) = sym in tmp
-end(*let*)//end-of(symbl_get_stmp)
-
-(* ****** ****** *)
-
-#implfun
-symbl_make_name(nam) =
-let
-  val opt =
-  symbl_search_opt(nam)
+  val k0 = sym.name()
 in//let
-//
-case+ opt of
-| ~
-optn_vt_nil() =>
-let
-val
-tmp = mytmper.getinc()
-val
-sym = SYMBL( nam, tmp )
-in//let
-  symbl_insert_any(sym); sym
-end(*let*)//end-of(optn_vt_nil)
-| ~
-optn_vt_cons(sym) => sym//found!
-//
-end(*let*)//end-of(symbl_make_name)
-
-(* ****** ****** *)
+XATS2JS_jsobjmap_insert_any<key>(mymaper, k0, sym)
+end (*let*) // end of [symbl_insert_any]
 
 end (*local*) // end of [local]
 
 (* ****** ****** *)
-#implfun
-symbl_cmp(x,y) =
-(x.stmp() \cmp y.stmp())
-(* ****** ****** *)
-#implfun
-symbl_nilq(sym) = (sym = the_symbl_nil)
-#implfun
-symbl_neqz(sym) = (sym != the_symbl_nil)
-(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsymbol.dats] *)
+(* end of [ATS3/XATSOPT_xsymbol_mymap0.dats] *)

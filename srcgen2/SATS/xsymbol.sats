@@ -106,5 +106,13 @@ val SMCLN_symbl: symbl//symbl(";")
 val TILDA_symbl: symbl//symbl("~")
 //
 (* ****** ****** *)
+//
+fun
+symbl_search_opt
+(nam: strn): optn_vt(symbl)
+fun
+symbl_insert_any(sym: symbl): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xsymbol.sats] *)
