@@ -28,4 +28,10 @@ prerrln("theParDir = ", theParDir_get())
 
 (* ****** ****** *)
 
+val () =
+prerrln
+("drpth(dpx) = ", drpth(dpx) where{val dpx="./.."}
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test05_filpath.dats] *)
