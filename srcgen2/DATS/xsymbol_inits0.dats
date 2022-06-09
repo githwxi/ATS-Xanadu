@@ -34,94 +34,36 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_dats.hats"
-(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/xstamp0.sats"
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-
-local
-
-(* ****** ****** *)
-
-datatype
-symbl =
-SYMBL of (strn, stamp)
-#absimpl symbl_tbox = symbl
-
-(* ****** ****** *)
-
-val mytmper = stamper_new()
-
-(* ****** ****** *)
-
-in//local
-
-(* ****** ****** *)
-
-#implval
-the_symbl_nil =
-SYMBL("", the_stamp_nil)
-
-(* ****** ****** *)
-
-#implfun
-symbl_get_name(sym) =
-let
-val+
-SYMBL(nam, tmp) = sym in nam
-end(*let*)//end-of(symbl_get_name)
-#implfun
-symbl_get_stmp(sym) =
-let
-val+
-SYMBL(nam, tmp) = sym in tmp
-end(*let*)//end-of(symbl_get_stmp)
-
-(* ****** ****** *)
-
-#implfun
-symbl_make_name(nam) =
-let
-  val opt =
-  symbl_search_opt(nam)
-in//let
 //
-case+ opt of
-| ~
-optn_vt_nil() =>
-let
-val
-tmp = mytmper.getinc()
-val
-sym = SYMBL( nam, tmp )
-in//let
-  symbl_insert_any(sym); sym
-end(*let*)//end-of(optn_vt_nil)
-| ~
-optn_vt_cons(sym) => sym//found!
+#implval AMP_symbl = symbl("&")
+#implval BAR_symbl = symbl("|")
+#implval CLN_symbl = symbl(":")
+#implval DOT_symbl = symbl(".")
 //
-end(*let*)//end-of(symbl_make_name)
-
+#implval DLR_symbl = symbl("$")
+#implval SRP_symbl = symbl("#")
+//
+#implval SMCLN_symbl = symbl(";")
+#implval TILDA_symbl = symbl("~")
+//
+(* ****** ****** *)
+//
+#implval ADD_symbl = symbl("+")
+#implval SUB_symbl = symbl("-")
+#implval MUL_symbl = symbl("*")
+#implval DIV_symbl = symbl("/")
+//
 (* ****** ****** *)
 
-end (*local*) // end of [local]
-
-(* ****** ****** *)
-#implfun
-symbl_cmp(x,y) =
-(x.stmp() \cmp y.stmp())
-(* ****** ****** *)
-#implfun
-symbl_nilq(sym) = (sym = the_symbl_nil)
-#implfun
-symbl_neqz(sym) = (sym != the_symbl_nil)
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_xsymbol.dats] *)
+(* end of [ATS3/XATSOPT_xsymbol_inits0.dats] *)
