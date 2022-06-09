@@ -46,6 +46,11 @@ ATS_PACKNAME
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 
+#abstype mymap_tbox // ptr
+#typedef mymap = mymap_tbox
+
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
@@ -59,27 +64,28 @@ local
 
 (* ****** ****** *)
 
-#typedef
-mymap = jsobjmap_type(key, itm)
+#absimpl
+mymap_tbox =
+jsobjmap_type(key, itm)
 
 (* ****** ****** *)
 
 val
 mymaper: mymap =
-XATS2JS_jsobjmap_make_nil<key>()
+XATS2JS_jsobjmap_make_nil<key>{itm}()
 
 in//local
 
 #implfun
 symbl_search_opt(k0) =
-XATS2JS_jsobjmap_search_opt<key>(mymaper, k0)
+XATS2JS_jsobjmap_search_opt<key>{itm}(mymaper, k0)
 
 #implfun
 symbl_insert_any(sym) =
 let
   val k0 = sym.name()
 in//let
-XATS2JS_jsobjmap_insert_any<key>(mymaper, k0, sym)
+XATS2JS_jsobjmap_insert_any<key>{itm}(mymaper, k0, sym)
 end (*let*) // end of [symbl_insert_any]
 
 end (*local*) // end of [local]
