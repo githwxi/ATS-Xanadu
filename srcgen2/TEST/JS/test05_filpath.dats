@@ -12,6 +12,10 @@
 #include
 "./../../DATS/filpath.dats"
 #include
+"./../../DATS/filpath_drpth0.dats"
+#include
+"./../../DATS/filpath_fpath0.dats"
+#include
 "./../../DATS/filpath_print0.dats"
 (* ****** ****** *)
 
