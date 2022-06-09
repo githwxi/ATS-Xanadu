@@ -119,6 +119,14 @@ filpath_dats
 filpath_dats: ; $(XATSOPT) --dynamic DATS/filpath.dats
 ######
 all_dats:: \
+filpath_drpth0_dats
+filpath_drpth0_dats: ; $(XATSOPT) --dynamic DATS/filpath_drpth0.dats
+######
+all_dats:: \
+filpath_fpath0_dats
+filpath_fpath0_dats: ; $(XATSOPT) --dynamic DATS/filpath_fpath0.dats
+######
+all_dats:: \
 filpath_print0_dats
 filpath_print0_dats: ; $(XATSOPT) --dynamic DATS/filpath_print0.dats
 ######

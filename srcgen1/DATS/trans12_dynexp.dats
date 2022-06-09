@@ -719,6 +719,47 @@ D1Pbs1(d1p1) = d1p0.node()
 }(*where*)//end-of(auxbs1)
 
 (* ****** ****** *)
+//
+fun
+auxarg1
+( d1p0
+: d1pat): d2pat =
+let
+val
+d2p0 =
+trans12_dpat(d1p0)
+in//let
+//
+case+
+d2p0.node() of
+|
+D2Psym0 _ =>
+auxid0_d2var
+( d1p0
+, dexpid_sym(tok)) where
+{
+val-
+D1Pid0(tok) = d1p0.node()
+}
+| _(*non-D2Psym0*) => d2p0
+//
+end (*let*) // end of [auxarg1]
+//
+fun
+auxargs
+( d1ps
+: d1patlst): d2patlst =
+(
+case+ d1ps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(x1, xs) =>
+list_cons(auxarg1(x1), auxargs(xs))
+)
+//
+(* ****** ****** *)
 
 fun
 auxapp1
@@ -792,8 +833,8 @@ ifcase
 |
 isBANG(d1p1) =>
 let
-  val d2p2 =
-  trans12_dpat(d1p2)
+  val
+  d2p2 = auxarg1(d1p2)
 in
   d2pat_make_node
   (d1p0.loc(), D2Pbang(d2p2))
@@ -801,8 +842,8 @@ end
 |
 isFLAT(d1p1) =>
 let
-  val d2p2 =
-  trans12_dpat(d1p2)
+  val
+  d2p2 = auxarg1(d1p2)
 in
   d2pat_make_node
   (d1p0.loc(), D2Pflat(d2p2))
@@ -810,8 +851,8 @@ end
 |
 isFREE(d1p1) =>
 let
-  val d2p2 =
-  trans12_dpat(d1p2)
+  val
+  d2p2 = auxarg1(d1p2)  
 in
   d2pat_make_node
   (d1p0.loc(), D2Pfree(d2p2))
@@ -892,24 +933,24 @@ val d2ps =
 case+
 d1p2.node() of
 |
-D1Plist(d1ps) =>
-trans12_dpatlst(d1ps)
+D1Plist
+( d1ps ) => auxargs(d1ps)
 |
-D1Plist(d1ps1, d1ps2) =>
+D1Plist
+(d1ps1, d1ps2) =>
 (
-  d2ps1 + d2ps2
-) where
+  d2ps1 + d2ps2) where
 {
-  val d2ps1 = trans12_dpatlst(d1ps1)
-  val d2ps2 = trans12_dpatlst(d1ps2)
+  val d2ps1 = auxargs(d1ps1)
+  val d2ps2 = auxargs(d1ps2)
 }
 |
 _(* non-D2Plist *) =>
 let
-  val d2p2 =
-  trans12_dpat(d1p2)
-  val d2p2 =
-  d2pat_any2arg(d2p2) in list_sing(d2p2)
+val d2p2 =
+auxarg1(d1p2)
+val d2p2 =
+d2pat_any2arg(d2p2) in list_sing(d2p2)
 end where
 {
 fun

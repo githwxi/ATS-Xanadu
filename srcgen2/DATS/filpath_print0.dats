@@ -45,5 +45,25 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/filpath.sats"
 (* ****** ****** *)
+#impltmp
+drpth_fprint(out, dpx) =
+(
+print
+("DRPTH(", dpx.name(), ")")
+) where
+{
+  #impltmp g_print$out<>() = out
+}
+(* ****** ****** *)
+#impltmp
+fpath_fprint(out, fpx) =
+(
+print
+("FPATH(", fpx.fnm1(), ")")
+) where
+{
+  #impltmp g_print$out<>() = out
+}
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_filpath_print0.dats] *)
