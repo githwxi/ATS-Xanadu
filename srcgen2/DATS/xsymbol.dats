@@ -41,10 +41,65 @@ ATS_PACKNAME
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+
+datatype
+symbl =
+SYMBL of (strn, stamp)
+#absimpl symbl_tbox = symbl
+
+(* ****** ****** *)
+
+val mytmper = stamper_new()
+
+(* ****** ****** *)
+
+in//local
+
+(* ****** ****** *)
+
+#implval
+the_symbl_nil =
+SYMBL("", the_stamp_nil)
+
+(* ****** ****** *)
+
 #implfun
-symbl_cmp(x, y) =
+symbl_get_name(sym) =
+let
+val+
+SYMBL(nam, tmp) = sym in nam
+end(*let*)//end-of(symbl_get_name)
+#implfun
+symbl_get_stmp(sym) =
+let
+val+
+SYMBL(nam, tmp) = sym in tmp
+end(*let*)//end-of(symbl_get_stmp)
+
+(* ****** ****** *)
+
+#implfun
+symbl_make_name(nam) =
+  SYMBL(nam, tmp) where
+{
+  val tmp = mytmper.getinc()
+}(*where*)//end-of(symbl_make_name)
+
+(* ****** ****** *)
+
+end (*local*) // end of [local]
+
+(* ****** ****** *)
+#implfun
+symbl_cmp(x,y) =
 (x.stmp() \cmp y.stmp())
 (* ****** ****** *)
 #implfun

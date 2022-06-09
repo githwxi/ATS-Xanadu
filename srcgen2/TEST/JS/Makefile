@@ -32,8 +32,6 @@ test01_xbasics:: ; \
 $(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/xbasics.dats && \
-$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/xbasics_print0.dats && \
 $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test01_xbasics_dats.js
 #
 ######
@@ -44,8 +42,6 @@ test02_lexing0:: ; \
 $(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/lexing0.dats && \
-$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/lexing0_print0.dats && \
 $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test02_lexing0_dats.js
 #
 ######
@@ -56,9 +52,17 @@ test03_xstamp0:: ; \
 $(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/xstamp0.dats && \
-$(XATS2JS) --output-a $@_dats.js -d ./../../DATS/xstamp0_print0.dats && \
 $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test03_xstamp0_dats.js
+#
+######
+#
+test:: \
+test04_xsymbol
+test04_xsymbol:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test04_xsymbol_dats.js
 #
 ######
 #

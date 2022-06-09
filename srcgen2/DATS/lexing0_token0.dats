@@ -50,10 +50,8 @@ local
 //
 datatype
 token =
-TOKEN of
-(loc_t, tnode)
-#absimpl
-token_tbox = token
+TOKEN of (loc_t, tnode)
+#absimpl token_tbox = token
 //
 in//in-of-local
 //
