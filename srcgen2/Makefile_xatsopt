@@ -58,6 +58,10 @@ locinfo_sats
 locinfo_sats: ; $(XATSOPT) --static SATS/locinfo.sats
 ######
 all_sats:: \
+filpath_sats
+filpath_sats: ; $(XATSOPT) --static SATS/filpath.sats
+######
+all_sats:: \
 lexing0_sats
 lexing0_sats: ; $(XATSOPT) --static SATS/lexing0.sats
 ######
@@ -107,6 +111,16 @@ xlabel0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0.dats
 all_dats:: \
 xlabel0_print0_dats
 xlabel0_print0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0_print0.dats
+######
+
+######
+all_dats:: \
+filpath_dats
+filpath_dats: ; $(XATSOPT) --dynamic DATS/filpath.dats
+######
+all_dats:: \
+filpath_print0_dats
+filpath_print0_dats: ; $(XATSOPT) --dynamic DATS/filpath_print0.dats
 ######
 
 ######
