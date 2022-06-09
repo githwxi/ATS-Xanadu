@@ -9,6 +9,11 @@
 #staload
 "./../../SATS/xbasics.sats"
 (* ****** ****** *)
+#include
+"./../../DATS/xbasics.dats"
+#include
+"./../../DATS/xbasics_print0.dats"
+(* ****** ****** *)
 
 val () =
 prerrln("PROPSORT = ", PROPSORT)

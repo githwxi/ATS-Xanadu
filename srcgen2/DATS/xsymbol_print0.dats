@@ -46,4 +46,16 @@ ATS_PACKNAME
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 
+#implfun
+symbl_fprint
+(out, sym) =
+( print(sym.name())
+; print("(", sym.stmp(), ")")
+) where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [symbl_fprint]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_xsymbol_print0.dats] *)

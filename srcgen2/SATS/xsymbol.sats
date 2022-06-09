@@ -41,12 +41,17 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+TMP = "./../SATS/xstamp0.sats"
+(* ****** ****** *)
 //
 #abstbox symbl_tbox // ptr
 //
 #typedef symbl = symbl_tbox
 #typedef sym_t = symbl_tbox
 //
+(* ****** ****** *)
+#typedef stamp = $TMP.stamp
 (* ****** ****** *)
 //
 val
@@ -73,17 +78,17 @@ symbl_fprint(FILR, symbl): void
 (* ****** ****** *)
 //
 fun
-symbol_get_name(symbl): strn
+symbl_get_name(symbl): strn
 fun
-symbol_get_stmp(symbl): uint
+symbl_get_stmp(symbl): stamp
 //
-#symload name with symbol_get_name
-#symload stmp with symbol_get_stmp
+#symload name with symbl_get_name
+#symload stmp with symbl_get_stmp
 //
 (* ****** ****** *)
 //
 fun
-symbl_make_name(nm: strn): symbl
+symbl_make_name(nam: strn): symbl
 #symload symbl with symbl_make_name
 //
 (* ****** ****** *)

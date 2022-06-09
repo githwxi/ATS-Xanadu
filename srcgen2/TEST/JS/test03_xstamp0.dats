@@ -9,6 +9,13 @@
 #staload
 "./../../SATS/xstamp0.sats"
 (* ****** ****** *)
+//
+#include
+"./../../DATS/xstamp0.dats"
+#include
+"./../../DATS/xstamp0_print0.dats"
+//
+(* ****** ****** *)
 val
 tmper0=stamper_new()
 val
