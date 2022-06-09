@@ -29,8 +29,11 @@ prerrln("theParDir = ", theParDir_get())
 (* ****** ****** *)
 
 val () =
+let
+val dpx = "./.." in
 prerrln
-("drpth(dpx) = ", drpth(dpx) where{val dpx="./.."}
+("drpth(", '"', dpx, '"', ") = ", drpth(dpx))
+end // end of [val ()]
 
 (* ****** ****** *)
 
