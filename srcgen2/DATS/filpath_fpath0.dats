@@ -29,13 +29,13 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 09th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 #include
-"./../HATS/xatsopt_sats.hats"
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
@@ -43,67 +43,50 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-//
-fun theDirSep_get(): char
-fun theCurDir_get(): strn
-fun theParDir_get(): strn
-//
-(* ****** ****** *)
-//
-fun
-fpath_normq(fp: strn): bool
-fun
-fpath_normize(fp: strn): strn
-//
-(* ****** ****** *)
-//
-#abstbox drpth_tbox // ptr
-//
-#typedef drpth = drpth_tbox
-#typedef drpthlst = list(drpth)
-#typedef drpthopt = optn(drpth)
-//
-(* ****** ****** *)
-//
-#abstbox fpath_tbox // ptr
-//
-#typedef fpath = fpath_tbox
-#typedef fpathlst = list(fpath)
-#typedef fpathopt = optn(fpath)
-//
-(* ****** ****** *)
-fun
-drpth_get_name
-(dpx: drpth): strn
-#symload
-name with drpth_get_name
-fun
-drpth_make_name
-(name: strn): drpth
-#symload
-drpth with drpth_make_name
-(* ****** ****** *)
-fun
-fpath_get_gvn0
-(fpx: fpath): strn // given
-#symload gvn0 with fpath_get_gvn0
-fun
-fpath_get_fnm1
-(fpx: fpath): strn // fname
-#symload fnm1 with fpath_get_fnm1
-fun
-fpath_get_fnm2
-(fpx: fpath): symbl // fnorm
-#symload fnm2 with fpath_get_fnm2
-(* ****** ****** *)
-fun
-fpath_make_name(name: strn): fpath
-#symload fpath with fpath_make_name
-(* ****** ****** *)
-//
-fun drpth_fprint(FILR, drpth): void
-fun fpath_fprint(FILR, fpath): void
-//
+#staload "./../SATS/filpath.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_filpath.sats] *)
+local
+
+datatype
+fpath =
+FPATH of
+( strn (*gvn0*)
+, strn (*fnm1*)
+, symbl(*fnm2*)) // fpath
+#absimpl fpath_tbox = fpath
+
+in//local
+
+#implfun
+fpath_get_gvn0(fpx) =
+let
+val+
+FPATH
+( gvn0
+, fnm1, fnm2) = fpx in gvn0
+end // end of [fpath_get_gvn0]
+
+#implfun
+fpath_get_fnm1(fpx) =
+let
+val+
+FPATH
+( gvn0
+, fnm1, fnm2) = fpx in fnm1
+end // end of [fpath_get_fnm1]
+
+#implfun
+fpath_get_fnm2(fpx) =
+let
+val+
+FPATH
+( gvn0
+, fnm1, fnm2) = fpx in fnm2
+end // end of [fpath_get_fnm2]
+
+end (*local*) // end of [local]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_filpath_fpath0.dats] *)

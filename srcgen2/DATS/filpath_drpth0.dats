@@ -29,81 +29,42 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 09th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 #include
-"./../HATS/xatsopt_sats.hats"
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/xsymbol.sats"
-(* ****** ****** *)
-//
-fun theDirSep_get(): char
-fun theCurDir_get(): strn
-fun theParDir_get(): strn
-//
-(* ****** ****** *)
-//
-fun
-fpath_normq(fp: strn): bool
-fun
-fpath_normize(fp: strn): strn
-//
-(* ****** ****** *)
-//
-#abstbox drpth_tbox // ptr
-//
-#typedef drpth = drpth_tbox
-#typedef drpthlst = list(drpth)
-#typedef drpthopt = optn(drpth)
-//
-(* ****** ****** *)
-//
-#abstbox fpath_tbox // ptr
-//
-#typedef fpath = fpath_tbox
-#typedef fpathlst = list(fpath)
-#typedef fpathopt = optn(fpath)
-//
-(* ****** ****** *)
-fun
-drpth_get_name
-(dpx: drpth): strn
-#symload
-name with drpth_get_name
-fun
-drpth_make_name
-(name: strn): drpth
-#symload
-drpth with drpth_make_name
-(* ****** ****** *)
-fun
-fpath_get_gvn0
-(fpx: fpath): strn // given
-#symload gvn0 with fpath_get_gvn0
-fun
-fpath_get_fnm1
-(fpx: fpath): strn // fname
-#symload fnm1 with fpath_get_fnm1
-fun
-fpath_get_fnm2
-(fpx: fpath): symbl // fnorm
-#symload fnm2 with fpath_get_fnm2
-(* ****** ****** *)
-fun
-fpath_make_name(name: strn): fpath
-#symload fpath with fpath_make_name
-(* ****** ****** *)
-//
-fun drpth_fprint(FILR, drpth): void
-fun fpath_fprint(FILR, fpath): void
-//
+#staload "./../SATS/filpath.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_filpath.sats] *)
+local
+
+datatype
+drpth =
+DRPTH of
+(strn(*name*))
+#absimpl drpth_tbox = drpth
+
+in//local
+
+#implfun
+drpth_get_name(dpx) =
+let
+val+DRPTH(nam) = dpx in nam
+end // end of [drpth_get_name]
+
+#impltmp
+drpth_make_name(nam) = DRPTH(nam)
+
+end (*local*) // end of [local]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_filpath_drpth0.dats] *)
