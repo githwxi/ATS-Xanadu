@@ -1029,10 +1029,12 @@ s2explstlst = List0(s2explst)
 //
 fun
 trans12_datype
-(d1t0: d1atype): s2cst
+( s2t0: sort2
+, d1t0: d1atype): s2cst
 fun
 trans12_datypelst
-(d1ts: d1atypelst): s2cstlst
+( s2t0: sort2
+, d1ts: d1atypelst): s2cstlst
 //
 fun
 trans12_datcon

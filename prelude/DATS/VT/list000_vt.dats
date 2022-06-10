@@ -651,7 +651,7 @@ end
 list_vt_mergesort0
   (xs) = let
 //
-#typedef
+#vwtpdef
 xs = list_vt(a)
 //
 fnx
@@ -752,8 +752,9 @@ end (* end of [list_vt_mergesort0] *)
 list_vt_permutize0
   (xs) = let
 //
-#typedef
-xs(n:int) = list_vt(a, n)
+#vwtpdef
+xs(n:int) =
+list_vt(a, n)
 //
 fun
 auxmain1

@@ -193,6 +193,10 @@ fun
 <a:t0>
 list_reverse
 {n:int}(list(a, n)): list(a, n)
+fun
+<a:t0>
+list_reverse_vt
+{n:int}(list(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 
@@ -382,10 +386,8 @@ cons with list_cons of 000
 #symload maprev_vt with list_maprev_vt of 1000
 //
 (* ****** ****** *)
-
 #symload mergesort with list_mergesort of 1000
 #symload mergesort_vt with list_mergesort_vt of 1000
-
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_list000.sats] *)

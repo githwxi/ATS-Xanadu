@@ -455,10 +455,10 @@ end
 
 (* ****** ****** *)
 //
-#typedef
+#vwtpdef
 repeat0(res:vt) =
 listgte_vt(res, 0)
-#typedef
+#vwtpdef
 repeat1(res:vt) =
 listgte_vt(res, 1)
 //

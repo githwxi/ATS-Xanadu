@@ -379,6 +379,13 @@ list_reverse
 (
   list_rappend<a>(xs, list_nil())
 ) (* list_reverse *)
+#impltmp
+<a>(*tmp*)
+list_reverse_vt
+  (xs) =
+(
+list_rappendx0_vt<a>(xs, list_vt_nil())
+) (* list_reverse_vt *)
 //
 (* ****** ****** *)
 //
@@ -463,9 +470,9 @@ list_vt2t(list_map_vt(xs))
 <x0><y0>
 list_map_vt(xs) = let
 //
-#typedef
+#vwtpdef
 ys = list_vt(y0)
-#typedef
+#vwtpdef
 ys(i:int) = list_vt(y0, i)
 //
 fnx
@@ -608,7 +615,7 @@ list_subsetize_vt
 ) where
 {
 //
-#typedef
+#vwtpdef
 xs(n:int) =
 listlte_vt(a, n)
 //

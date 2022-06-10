@@ -2553,17 +2553,20 @@ case+ opt0 of
 
 implement
 trans12_datype
-  (d1t) = let
+  (s2t, d1t) = let
 //
 val
 res =
 (
 case+ res of
 |
-None() => the_sort2_tbox
+None() =>
+(
+  s2t//tbox|vtbx
+)
 |
-Some(s1t) => trans12_sort(s1t)
-) : sort2 // end of [val]
+Some(s1t) =>
+trans12_sort(s1t)):sort2
 //
 val
 s2t0 = auxmargs(arg, res)
@@ -2594,9 +2597,10 @@ list_nil(*void*)
 list_cons(x0, xs) =>
 (
 case+ x0.node() of
-| T1ARGsome(s1t, _) =>
-  list_cons
-  (trans12_sort(s1t), auxargs(xs))
+|
+T1ARGsome(s1t, _) =>
+list_cons
+(trans12_sort(s1t), auxargs(xs))
 )
 ) (* end of [auxargs] *)
 //
@@ -2607,14 +2611,17 @@ auxmargs
 , res: sort2): sort2 =
 (
 case+ xs of
-| list_nil() => res
-| list_cons(x0, xs) =>
-  (
-  case+ x0.node() of
-  | T1MARGlist(t1as) =>
-    S2Tfun
-    (auxargs(t1as), auxmargs(xs, res))
-  )
+|
+list_nil() => res
+|
+list_cons(x0, xs) =>
+(
+case+ x0.node() of
+|
+T1MARGlist(t1as) =>
+S2Tfun
+(auxargs(t1as), auxmargs(xs, res))
+)
 ) (* end of [auxmargs] *)
 //
 } (* end of [trans12_datype] *)
@@ -2623,15 +2630,17 @@ case+ xs of
 
 implement
 trans12_datypelst
-  (xs) =
+  (s2t, d1ts) =
+(
 list_vt2t
 (
-list_map<d1atype><s2cst>(xs)
+list_map<d1atype><s2cst>(d1ts)
+)
 ) where
 {
 //
 implement
-list_map$fopr<d1atype><s2cst> = trans12_datype
+list_map$fopr<d1atype><s2cst>(d1t) = trans12_datype(s2t, d1t)
 //
 } (* trans12_datypelst *)
 

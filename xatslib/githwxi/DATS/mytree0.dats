@@ -72,7 +72,7 @@ gtree_dfs_strmize_list
   auxmain(list_vt_sing(xs))
 ) where
 {
-#typedef
+#vwtpdef
 nxs = list_vt(nx)
 fun
 auxmain
@@ -157,7 +157,7 @@ auxmain(xss, list_vt_nil())
 end
 ) where
 {
-#typedef
+#vwtpdef
 nxs = list_vt(nx)
 fun
 auxmain

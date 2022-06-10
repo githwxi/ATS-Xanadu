@@ -415,7 +415,7 @@ local
 #typedef x0 = cgtz
 #typedef xs = strn
 //
-in (* in-of-local *)
+in//in-of-local
 
 (* ****** ****** *)
 #impltmp
@@ -500,7 +500,7 @@ gseq_unstrm_vt<xs><x0> = strn_make_strm_vt<>
 
 (* ****** ****** *)
 
-end // end of [local]
+end (*local*) // end of [local]
 
 (* ****** ****** *)
 

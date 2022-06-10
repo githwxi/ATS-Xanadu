@@ -699,7 +699,7 @@ val xs = strm_vt_rlistize<x0>(xx)
 gseq_map_list
   (xs) = let
 //
-#typedef
+#vwtpdef
 yy = list_vt(y0)
 //
 #typedef r0 = p2tr(yy)
@@ -736,7 +736,8 @@ end // end of [gseq_map_list/foldl]
 gseq_map_rlist
   (xs) = let
 //
-#typedef r0 = list_vt(y0)
+#vwtpdef
+r0 = list_vt(y0)
 //
 in
 //
@@ -831,7 +832,7 @@ gseq_map_rlist<xs><x0><x0>(xs)
 gseq_filter_list
   (xs) = let
 //
-#typedef
+#vwtpdef
 xx = list_vt(x0)
 //
 #typedef r0 = p2tr(xx)
@@ -871,7 +872,8 @@ end // end of [gseq_filter_list/foldl]
 gseq_filter_rlist
   (xs) = let
 //
-#typedef r0 = list_vt(x0)
+#vwtpdef
+r0 = list_vt(x0)
 //
 in
 //
@@ -1347,11 +1349,12 @@ gseq_unlist_vt<xs><x0>
 ) where
 {
 //
-#vwtpdef r0 = list_vt(x0)
+#vwtpdef
+r0 = list_vt(x0)
 //
 val xz =
 gseq_group_list<xs><x0>(xs)
-} (* end of [gseq_group] *)
+}(*where*)// end of [gseq_group]
 //
 #impltmp
 <xs><x0>
@@ -1368,7 +1371,7 @@ strm_vt_group0_list<x0>(xs)
 #impltmp
 group0$test<x0> = group$test<x0>
 }
-end // end of [gseq_group_list]
+end(*let*)//end-of-[gseq_group_list]
 //
 (* ****** ****** *)
 //
@@ -1578,7 +1581,7 @@ end // end of [gseq_rindexof/iforeach]
 gseq_imap_list
   (xs) = let
 //
-#typedef
+#vwtpdef
 yy = list_vt(y0)
 //
 #typedef r0 = p2tr(yy)
@@ -1617,9 +1620,10 @@ end // end of [gseq_imap_list/ifoldl]
 gseq_imap_rlist
   (xs) = let
 //
-#typedef r0 = list_vt(y0)
+#vwtpdef
+r0 = list_vt(y0)
 //
-in
+in//let
 //
 gseq_ifoldl
 <xs><x0><r0>
@@ -1725,14 +1729,15 @@ val xx = gseq_listize<xs><x0>(xs)
 gseq_permutize
   (xs) = let
 //
+#vwtpdef
+y0 = list_vt(x0)
+//
 val y0 =
 gseq_listize<xs><x0>(xs)
 val ys =
 list_vt_permutize0<x0>(y0)
 //
-#typedef y0 = list_vt(x0)
-//
-in
+in//let
 (
   strm_vt_map0<y0><xs>(ys)
 ) where
@@ -1747,7 +1752,7 @@ end // end of [gseq_permutize]
 // For z2-gseq-operations
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <xs
 ,ys><x0>
@@ -1758,10 +1763,10 @@ gseq_z2forcmp
 <xs,ys><x0,x0>(xs, ys)
 ) where
 {
-  #impltmp
-  z2forcmp$fcmp<x0,x0> = g_cmp<x0>
-} (* end of [gseq_z2cmp/z2forcmp] *)
-
+#impltmp
+z2forcmp$fcmp<x0,x0> = g_cmp<x0>
+}(*where*)//[gseq_z2cmp/z2forcmp]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -1776,7 +1781,7 @@ gseq_z2strmize
 <xs,ys><x0,y0>(xs, ys)
 in
 strm_vt_listize<(x0,y0)>(xys)
-end
+end//let//end-of-[gseq_z2listize]
 //
 #impltmp
 <xs,ys>
@@ -1790,7 +1795,7 @@ val ys =
 gseq_strmize<ys><y0>(ys)
 in
 strm_vt_z2strmize<x0,y0>(xs, ys)
-end
+end//let//end-of-[gseq_z2strmize]
 //
 (* ****** ****** *)
 
@@ -1897,7 +1902,7 @@ end // end of [gseq_z2foreach/z2forall]
 gseq_z2map_list
   (xs, ys) = let
 //
-#typedef
+#vwtpdef
 zz =
 list_vt(z0)
 //
@@ -1967,7 +1972,7 @@ end
 //
 in
 gseq_map_strm<xs><x0><zs>(xs)
-end
+end//let
 //
 } (* end of [gseq_x2map_strm] *)
 
@@ -2002,7 +2007,7 @@ filter$test<y0>(y0) =
 x2filter$test<x0,y0>(x0, y0)
 in
 gseq_mapopt_strm<ys><y0><z0>(ys)
-end
+end//let
 //
 in
   gseq_map_strm<xs><x0><zs>( xs )
@@ -2112,7 +2117,7 @@ end
 //
 in
 gseq_imap_strm<xs><x0><zs>( xs )
-end
+end//let
 //
 } (* end of [gseq_x2imap_strm] *)
 
@@ -2151,7 +2156,7 @@ end
 //
 in
   gseq_imap_strm<xs><x0><zs>( xs )
-end
+end//let
 //
 } (* end of [gseq_x2imapopt_strm] *)
 
@@ -2209,7 +2214,7 @@ x2iforeach_row$work<y0,x0>(j, y0, i, x0) =
 x2iforeach_col$work<x0,y0>(i, x0, j, y0)
 in
 gseq_x2iforeach_row<ys,xs><y0,x0>(ys, xs)
-end (* let *) // end of [gseq_x2foreach_col]
+end (* let *) // end of [gseq_x2iforeach_col]
 
 (* ****** ****** *)
 

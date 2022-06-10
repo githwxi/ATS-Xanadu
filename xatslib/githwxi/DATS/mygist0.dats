@@ -94,7 +94,7 @@ loop(n0, list_vt_nil())
 val
 b0 = digitize$base<>()
 //
-#typedef
+#vwtpdef
 digitseq = list_vt(sint)
 //
 fun

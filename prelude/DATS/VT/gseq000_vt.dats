@@ -270,7 +270,7 @@ end // end of [foreach1$work]
 glseq_map0_list
   (xs) = let
 //
-#typedef
+#vwtpdef
 yy =
 list_vt(y0)
 #typedef
@@ -723,6 +723,19 @@ strm_vt_z2forcmp0<x0,y0>
 ,
   glseq_strmize<ys><y0>(ys))
 ) (*where*)//end-of-[glseq_z2forcmp0]
+
+#impltmp
+<xs,ys>
+<x0,y0>
+glseq_z2forcmp1
+  (xs, ys) =
+(
+strm_vt_z2forcmp0<x0,y0>
+(
+  glseq_copy_strm<xs><x0>(xs)
+,
+  glseq_copy_strm<ys><y0>(ys))
+) (*where*)//end-of-[glseq_z2forcmp1]
 
 (* ****** ****** *)
 
