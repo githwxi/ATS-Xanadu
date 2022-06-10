@@ -67,6 +67,16 @@ optn_vt_cons
 
 #impltmp
 <xs><x0>
+glseq_cmp11
+(xs1, xs2) =
+let
+val xs1 = g_copy<xs>(xs1)
+and xs2 = g_copy<xs>(xs2)
+in
+  glseq_cmp00<xs><x0>(xs1, xs2)
+endlet // end of [glseq_cmp11/cmp00]
+#impltmp
+<xs><x0>
 glseq_cmp00
 (xs1, xs2) =
 (
@@ -76,7 +86,7 @@ glseq_z2forcmp0
 {
 #impltmp
 z2forcmp0$fcmp<x0,x0> = gl_cmp00<x0>
-} (* end of [glseq_cmp00/z2forcmp0] *)
+}(*where*) // [glseq_cmp00/z2forcmp0]
 
 (* ****** ****** *)
 
@@ -378,7 +388,51 @@ let
   map1$fopr<x0><x0>(x0) = x0
 in
   glseq_map1_list<xs><x0><x0>(xs)
-end // end of [glseq_copy_list/map1]
+endlet // end of [glseq_copy_list/map1]
+//
+(* ****** ****** *)
+
+#impltmp
+<xs><x0><y0>
+glseq_map0_strm(xs) =
+let
+val xs =
+glseq_strmize<xs><x0>(xs)
+in(*in-of-let*)
+(
+  strm_vt_map0<x0><y0>(xs)
+)
+end // end of [glseq_map0_strm/strmize]
+
+#impltmp
+<xs><x0><y0>
+glseq_map1_strm(xs) =
+let
+  val xs = g_copy<xs>(xs)
+in//let
+(
+  glseq_map0_strm<xs><x0><y0>(xs)
+) where
+{
+  #impltmp
+  map0$fopr<x0><y0>(x0) =
+  (  free(x0); y0  ) where
+  { val y0 = map1$fopr<x0><y0>(x0) }
+}
+end // end of [glseq_map0_strm/strmize]
+
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+glseq_copy_strm
+  (xs) =
+let
+  #impltmp
+  map1$fopr<x0><x0>(x0) = x0
+in
+  glseq_map1_strm<xs><x0><x0>(xs)
+endlet // end of [glseq_copy_strm/map1]
 //
 (* ****** ****** *)
 //
@@ -404,20 +458,6 @@ list_vt_cons(map1$fopr<x0><y0>(x0), r0)
 //
 end // end of [glseq_map0_rlist/foldl0]
 //
-(* ****** ****** *)
-
-#impltmp
-<xs><x0><y0>
-glseq_map0_strm(xs) =
-let
-val xs =
-glseq_strmize<xs><x0>(xs)
-in(*in-of-let*)
-(
-  strm_vt_map0<x0><y0>(xs)
-)
-end // end of [glseq_map0_strm/strmize]
-
 (* ****** ****** *)
 //
 #impltmp
@@ -735,8 +775,44 @@ strm_vt_z2forcmp0<x0,y0>
   glseq_copy_strm<xs><x0>(xs)
 ,
   glseq_copy_strm<ys><y0>(ys))
-) (*where*)//end-of-[glseq_z2forcmp1]
+) where
+{
+#impltmp
+z2forcmp0$fcmp<x0,y0>(x0, y0) =
+(
+free(x0); free(y0); sgn) where
+{
+val
+sgn = z2forcmp1$fcmp<x0,y0>(x0, y0)}
+} (*where*)//end-of-[glseq_z2forcmp1]
 
+(* ****** ****** *)
+//
+(*
+HX:
+For non-linear glseq-ops
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+{xs:t0}
+{x0:t0}
+glseq_copy = gseq_copy<xs><x0>
+//
+#impltmp
+{xs:t0}
+{x0:t0}
+glseq_listize<xs><x0> = gseq_listize<xs><x0>
+#impltmp
+{xs:t0}
+{x0:t0}
+glseq_strmize<xs><x0> = gseq_strmize<xs><x0>
+#impltmp
+{xs:t0}
+{x0:t0}
+glseq_rlistize<xs><x0> = gseq_rlistize<xs><x0>
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000_vt.dats] *)

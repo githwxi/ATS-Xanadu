@@ -50,4 +50,24 @@ val ( ) = prerrln("nms = ", listize(nms))
 
 (* ****** ****** *)
 
+val ( ) =
+let
+val fpx = "../../../a/ab/abc/abcd"
+in
+prerrln("fpx = ", fpx);
+prerrln("fpath_normq(fpx) = ", fpath_normq(fpx))
+end
+
+(* ****** ****** *)
+
+val ( ) =
+let
+val fpx = "./a/../ab/../abc/../../abcde"
+in
+prerrln("fpx = ", fpx);
+prerrln("fpath_normize(fpx) = ", fpath_normize(fpx))
+end
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test05_filpath.dats] *)

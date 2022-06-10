@@ -911,20 +911,22 @@ glseq_consq
 //
 #impltmp
 {a:vt}(*tmp*)
-g_free<list_vt(a)> = list_vt_free<a>
+g_free
+<list_vt(a)> = list_vt_free< a >
 //
 #impltmp
 {a:vt}(*tmp*)
-g_copy<list_vt(a)> = list_vt_copy<a>
+g_copy
+<list_vt(a)> = list_vt_copy< a >
 //
 #impltmp
 {a:vt}
 glseq_copy
-<list_vt(a)>< a > = list_vt_copy< a >
+<list_vt(a)><a> = list_vt_copy<a>
 #impltmp
 {a:vt}
 glseq_free
-<list_vt(a)>< a > = list_vt_free< a >
+<list_vt(a)><a> = list_vt_free<a>
 //
 (* ****** ****** *)
 
