@@ -58,6 +58,10 @@ locinfo_sats
 locinfo_sats: ; $(XATSOPT) --static SATS/locinfo.sats
 ######
 all_sats:: \
+lexbuf0_sats
+lexbuf0_sats: ; $(XATSOPT) --static SATS/lexbuf0.sats
+######
+all_sats:: \
 lexing0_sats
 lexing0_sats: ; $(XATSOPT) --static SATS/lexing0.sats
 ######
