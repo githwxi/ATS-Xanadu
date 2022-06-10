@@ -891,12 +891,12 @@ s2exp_make_node
 , S2Efun(fc2, npf, arg, res))
 ) where
 {
-  val s2t0 =
-  (
-  if
-  funclo2_islin(fc2)
-  then the_sort2_vtbx else the_sort2_tbox
-  ) : sort2 // end of [val]
+val s2t0 =
+(
+if
+funclo2_islin(fc2)
+then the_sort2_vtbx
+else the_sort2_tbox ) : sort2
 } (* end of [s2exp_fun_full] *)
 //
 (* ****** ****** *)

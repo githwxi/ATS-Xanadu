@@ -336,6 +336,21 @@ s2t1 = t2p0.sort()
 val
 s2t1 = t2ype_sortrec(t2p0)
 //
+(*
+val () =
+println!
+("t2xtvlst_srtck:ftest:t2p0=",t2p0)
+val () =
+println!
+("t2xtvlst_srtck:ftest:s2t1=",s2t1)
+val () =
+println!
+("t2xtvlst_srtck:ftest:xtv0=",xtv0)
+val () =
+println!
+("t2xtvlst_srtck:ftest:s2t0=",xtv0.sort())
+*)
+//
 in
 case+ s2t1 of
 |
@@ -344,17 +359,14 @@ S2Tnone0() => true
 _(*non-S2Tnone0*) =>
 let
 val
-s2t0 =
-xtv0.sort()
-in
-  case+ s2t0 of
-  |
-  S2Tnone0() => true
-  |
-  _(*non-S2Tnone0*) => (s2t1 <= s2t0)
+s2t0 = xtv0.sort()
+in//let
+case+ s2t0 of
+| S2Tnone0() => true
+| _(*non-S2Tnone0*) => (s2t1 <= s2t0)
 end
 end
-} (* end of [t2xtvlst_srtck] *)
+} (*where*) // end of [t2xtvlst_srtck]
 
 (* ****** ****** *)
 

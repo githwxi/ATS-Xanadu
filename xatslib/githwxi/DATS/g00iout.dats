@@ -51,6 +51,12 @@ g_print$out() =
 (
  g_stdout<>((*void*))
 )
+#impltmp
+<>(*tmp*)
+gl_print$out() =
+(
+ g_stdout<>((*void*))
+)
 //
 (* ****** ****** *)
 //
@@ -140,16 +146,18 @@ end
 }(*where*)//end-of(g_inp_lline_rlist)
 //
 (* ****** ****** *)
-//
-#impltmp
-gl_print$out<> = g_print$out<>
-//
 (*
+//
 HX-2022-06-04:
+//
 The following implementation
 of [gl_print1] demonstrates the
 need for basing [g_print$out] on
-[gl_print@out]!
+[gl_print@out].
+(*
+HX-2022-06-09:
+But this seems so INVOLVED!!!
+*)
 *)
 //
 #impltmp
@@ -202,18 +210,18 @@ fprint_ref<x0>
 fprint0_ref<x0>(out, x0) =
   ( g_free<x0>(x0) ) where
 {
-  val () = fprint1_ref<x0>(out,x0)
+val () = fprint1_ref<x0>(out,x0)
 }
 #impltmp
 {x0:vt}
 fprint0_ptr<x0>(out, x0) =
   ( g_free<x0>(x0) ) where
 {
-  val () = fprint1_ptr<x0>(out,x0)
+val () = fprint1_ptr<x0>(out,x0)
 }
 //
 (* ****** ****** *)
-
+//
 #impltmp
 {x0:vt}
 fprint1_ref<x0>
@@ -221,9 +229,10 @@ fprint1_ref<x0>
 (
   gl_print1<x0>(x0)) where
 {
+  #impltmp g_print$out<>() = out
   #impltmp gl_print$out<>() = out
 } (*where*) // end-of(fprint_ref)
-
+//
 (* ****** ****** *)
 (*
 //

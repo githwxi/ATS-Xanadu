@@ -6365,13 +6365,26 @@ val
 loc0 = d1cl.loc()
 val-
 D1Cdatatype
-( knd // datatype
+( tok // datatype
 , d1ts
 , wd1cs) = d1cl.node()
 //
 val
 s2cs =
-trans12_datypelst(d1ts)
+trans12_datypelst
+  (s2t, d1ts) where
+{
+val s2t =
+(
+case-
+tok.node() of
+| T_DATATYPE(knd) =>
+if
+sortlin(knd) = 0
+then the_sort2_tbox
+else the_sort2_vtbx):sort2
+}
+//
 val () =
 the_sexpenv_add_csts(s2cs)
 //

@@ -64,7 +64,7 @@ $UN.p2tr_set
 $UN.p2tr_set_list_vt_cons
   (p0, x0) =
 let
-#typedef
+#vwtpdef
 xs = list_vt(a)
 val xs = 
 $UN.p2tr_get<xs>(p0)

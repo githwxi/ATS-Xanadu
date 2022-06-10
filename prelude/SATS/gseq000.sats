@@ -486,7 +486,8 @@ gseq_reverse(xs: xs): xs
 fun
 <xs:t0>
 <x0:t0>
-gseq_rappend(xs1: xs, xs2: xs): xs
+gseq_rappend
+( xs1: xs, xs2: xs ): xs
 //
 (* ****** ****** *)
 //
@@ -567,12 +568,12 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_indexof
-(xs: xs, x0: x0): sint // -1: ~found
+(xs: xs, x0: x0): sint//-1:~found
 fun
 <xs:t0>
 <x0:t0>
 gseq_rindexof
-(xs: xs, x0: x0): sint // -1: ~found
+(xs: xs, x0: x0): sint//-1:~found
 //
 (* ****** ****** *)
 //

@@ -8,6 +8,16 @@ For ATS3/XATSOPT
 "prelude\
 /HATS/prelude_dats.hats"
 (* ****** ****** *)
+//
+// #ifdef(_XATSOPT_JS_)
+//
+#include
+"prelude\
+/HATS/CATS/JS/prelude_dats.hats"
+//
+// #endif // end of [ifdef(_XATSOPT_JS_)]
+//
+(* ****** ****** *)
 #staload _ =
 "xatslib\
 /libcats/DATS/synoug0.dats"
@@ -25,9 +35,6 @@ For ATS3/XATSOPT
 //
 // #ifdef(_XATSOPT_JS_)
 //
-#include
-"prelude\
-/HATS/CATS/JS/prelude_dats.hats"
 #staload
 "xatslib\
 /githwxi\

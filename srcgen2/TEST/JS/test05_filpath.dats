@@ -37,4 +37,17 @@ end // end of [val ()]
 
 (* ****** ****** *)
 
+val nms =
+gseq_group_list(fpx) where
+{ 
+  val DS =
+  theDirSep_get()
+  val fpx = "./a/ab/abc/"
+  #impltmp
+  group$test<cgtz>(ch) = (ch != DS) }
+
+val ( ) = prerrln("nms = ", listize(nms))
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test05_filpath.dats] *)

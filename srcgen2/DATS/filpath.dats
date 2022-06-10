@@ -35,6 +35,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #include
+"./../HATS/xatsopt_sats.hats"
+#include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
@@ -70,12 +72,12 @@ end (*local*) // end of [local]
 
 (* ****** ****** *)
 
-#implful
+#implfun
 fpath_normq(fpx) =
 let
-  val DS = theDirSep()
-  val CD = theCurDir()
-  val PD = theParDir()
+val DS = theDirSep_get()
+val CD = theCurDir_get()
+val PD = theParDir_get()
 in//let
   false
 end (*let*) // end of [fpath_normq]
