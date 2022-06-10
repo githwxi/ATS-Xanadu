@@ -53,6 +53,15 @@ gseq_is_cons(xs): bool
 //
 (* ****** ****** *)
 //
+(*
+fun
+<xs:t0>
+<x0:t0>
+gseq_copy(xs): (xs)
+*)
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>

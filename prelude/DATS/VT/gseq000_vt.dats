@@ -797,8 +797,10 @@ For non-linear glseq-ops
 //
 #impltmp
 {xs:t0}
-{x0:t0}
-glseq_copy = gseq_copy<xs><x0>
+{x0:t0}// HX-2022-06-10: there is no
+glseq_copy = g_copy<xs> // [gseq_copy]
+//
+(* ****** ****** *)
 //
 #impltmp
 {xs:t0}
