@@ -51,9 +51,9 @@ fun theParDir_get(): strn
 (* ****** ****** *)
 //
 fun
-fpath_normq(fp: strn): bool
+fpath_normq(fpx: strn): bool
 fun
-fpath_normize(fp: strn): strn
+fpath_normize(fpx: strn): strn
 //
 (* ****** ****** *)
 //
