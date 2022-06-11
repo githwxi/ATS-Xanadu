@@ -451,8 +451,7 @@ ifcase
 | _(* else *) => false
 ) where
 {
-macdef
-WCARD = $SYM.WCARD_symbol
+macdef WCARD = $SYM.WCARD_symbol
 } (* end of [isbtf] *)
 
 (* ****** ****** *)
@@ -468,11 +467,66 @@ ifcase
 | _(* else *) => false
 ) where
 {
-macdef
-TRUE = $SYM.TRUE_symbol
-macdef
-FALSE = $SYM.FALSE_symbol
+macdef TRUE = $SYM.TRUE_symbol
+macdef FALSE = $SYM.FALSE_symbol
 } (* end of [isbtf] *)
+
+(* ****** ****** *)
+
+fun
+auxbs1
+( d1p0
+: d1pat): d2pat =
+(
+trans12_dpat(d1p1)
+) where
+{
+//
+val-
+D1Pbs1(d1p1) = d1p0.node()
+//
+}(*where*)//end-of(auxbs1)
+
+(* ****** ****** *)
+
+fun
+auxint
+( d1p0
+: d1pat): d2pat =
+let
+val
+loc0 = d1p0.loc()
+val-
+D1Pint(tok) = d1p0.node()
+in
+d2pat_make_node(loc0, D2Pint(tok))
+end (*let*) // end of [auxint]
+
+fun
+auxchr
+( d1p0
+: d1pat): d2pat =
+let
+val
+loc0 = d1p0.loc()
+val-
+D1Pchr(tok) = d1p0.node()
+in
+d2pat_make_node(loc0, D2Pchr(tok))
+end (*let*) // end of [auxchr]
+
+fun
+auxstr
+( d1p0
+: d1pat): d2pat =
+let
+val
+loc0 = d1p0.loc()
+val-
+D1Pstr(tok) = d1p0.node()
+in
+d2pat_make_node(loc0, D2Pstr(tok))
+end (*let*) // end of [auxstr]
 
 (* ****** ****** *)
 
@@ -615,7 +669,7 @@ auxid0_d2con
 ( d1p0: d1pat
 , d2cs: d2conlst): d2pat =
 let
-  val loc0 = d1p0.loc()
+val loc0 = d1p0.loc()
 in
 //
 if
@@ -629,8 +683,7 @@ let
   val d2c0 = d2cs.head()
 in
   my_d2pat_con1(loc0, d2c0)
-end // end of [let]
-// end of [if]
+end (*let*) // end-of-[if]
 //
 end // end of [auxid0_d2con]
 //
@@ -659,106 +712,12 @@ let
 val loc0 = d1p0.loc()
 in
 d2pat_sym0(loc0, d1p0, dpis)
-end (* end of [auxid0_d2sym] *)
+end(*let*)//end-of(auxid0_d2sym)
 
 (* ****** ****** *)
-
+static
 fun
-auxint
-( d1p0
-: d1pat): d2pat =
-let
-val
-loc0 = d1p0.loc()
-val-
-D1Pint(tok) = d1p0.node()
-in
-d2pat_make_node(loc0, D2Pint(tok))
-end // end of [auxint]
-
-fun
-auxchr
-( d1p0
-: d1pat): d2pat =
-let
-val
-loc0 = d1p0.loc()
-val-
-D1Pchr(tok) = d1p0.node()
-in
-d2pat_make_node(loc0, D2Pchr(tok))
-end // end of [auxchr]
-
-fun
-auxstr
-( d1p0
-: d1pat): d2pat =
-let
-val
-loc0 = d1p0.loc()
-val-
-D1Pstr(tok) = d1p0.node()
-in
-d2pat_make_node(loc0, D2Pstr(tok))
-end // end of [auxstr]
-
-(* ****** ****** *)
-
-fun
-auxbs1
-( d1p0
-: d1pat): d2pat =
-(
-trans12_dpat(d1p1)
-) where
-{
-//
-val-
-D1Pbs1(d1p1) = d1p0.node()
-//
-}(*where*)//end-of(auxbs1)
-
-(* ****** ****** *)
-//
-fun
-auxarg1
-( d1p0
-: d1pat): d2pat =
-let
-val
-d2p0 =
-trans12_dpat(d1p0)
-in//let
-//
-case+
-d2p0.node() of
-|
-D2Psym0 _ =>
-auxid0_d2var
-( d1p0
-, dexpid_sym(tok)) where
-{
-val-
-D1Pid0(tok) = d1p0.node()
-}
-| _(*non-D2Psym0*) => d2p0
-//
-end (*let*) // end of [auxarg1]
-//
-fun
-auxargs
-( d1ps
-: d1patlst): d2patlst =
-(
-case+ d1ps of
-|
-list_nil() =>
-list_nil()
-|
-list_cons(x1, xs) =>
-list_cons(auxarg1(x1), auxargs(xs))
-)
-//
+auxmain(d1p0: d1pat): d2pat
 (* ****** ****** *)
 
 fun
@@ -834,7 +793,7 @@ ifcase
 isBANG(d1p1) =>
 let
   val
-  d2p2 = auxarg1(d1p2)
+  d2p2 = trans12_dpat(d1p2)
 in
   d2pat_make_node
   (d1p0.loc(), D2Pbang(d2p2))
@@ -843,7 +802,7 @@ end
 isFLAT(d1p1) =>
 let
   val
-  d2p2 = auxarg1(d1p2)
+  d2p2 = trans12_dpat(d1p2)
 in
   d2pat_make_node
   (d1p0.loc(), D2Pflat(d2p2))
@@ -852,7 +811,7 @@ end
 isFREE(d1p1) =>
 let
   val
-  d2p2 = auxarg1(d1p2)  
+  d2p2 = trans12_dpat(d1p2)
 in
   d2pat_make_node
   (d1p0.loc(), D2Pfree(d2p2))
@@ -892,13 +851,13 @@ in
 end // end of [D1Psqarg]
 //
 |
-_(*rest-of-d1pat*) => auxapp1_(d1p0)
+_(*rest-of-d1pat*) => auxapp10(d1p0)
 )
 //
 end // end of [auxapp1]
 
 and
-auxapp1_
+auxapp10
 ( d1p0
 : d1pat): d2pat = let
 //
@@ -907,10 +866,10 @@ val
 loc0 = d1p0.loc()
 val () =
 println!
-("auxapp1_: loc0 = ", loc0)
+("auxapp10: loc0 = ", loc0)
 val () =
 println!
-("auxapp1_: d1p0 = ", d1p0)
+("auxapp10: d1p0 = ", d1p0)
 *)
 //
 val-
@@ -918,7 +877,7 @@ D1Papp1
 ( d1p1
 , d1p2) = d1p0.node()
 //
-val d2p1 = trans12_dpat(d1p1)
+val d2p1 = auxmain(d1p1)
 //
 val npf2 =
 (
@@ -934,21 +893,21 @@ case+
 d1p2.node() of
 |
 D1Plist
-( d1ps ) => auxargs(d1ps)
+( d1ps ) => trans12_dpatlst(d1ps)
 |
 D1Plist
 (d1ps1, d1ps2) =>
 (
   d2ps1 + d2ps2) where
 {
-  val d2ps1 = auxargs(d1ps1)
-  val d2ps2 = auxargs(d1ps2)
+  val d2ps1 = trans12_dpatlst(d1ps1)
+  val d2ps2 = trans12_dpatlst(d1ps2)
 }
 |
 _(* non-D2Plist *) =>
 let
 val d2p2 =
-auxarg1(d1p2)
+trans12_dpat(d1p2)
 val d2p2 =
 d2pat_any2arg(d2p2) in list_sing(d2p2)
 end where
@@ -971,7 +930,7 @@ in
 //
 my_d2pat_dapp(d1p0.loc(), d2p1, npf2, d2ps)
 //
-end // end of [auxapp1_]
+end (*let*) // end of [auxapp10]
 
 (* ****** ****** *)
 
@@ -1047,26 +1006,28 @@ in
 //
 (
 d2pat_trcd1
-(loc0, knd, npf, d2ps)
-) where
+(loc0, knd, npf, d2ps)) where
 {
-  val npf = ~1
-  val d2ps = trans12_dpatlst(d1ps)
-}
+val npf = ~1
+val d2ps = trans12_dpatlst(d1ps)
+} (*where*)
 //
-end // end of [auxtrcd11]
+end (*let*) // end of [ auxtrcd11 ]
 
 fun
 auxtrcd12
 ( d1p0
 : d1pat): d2pat = let
 //
+val
+loc0 = d1p0.loc()
+//
 val-
 D1Ptrcd1
 ( tok
 , d1ps1, d1ps2) = d1p0.node()
 //
-val knd =
+val knd1 =
 (
 case-
 tok.node() of T_TRCD1(k0) => k0
@@ -1075,45 +1036,23 @@ tok.node() of T_TRCD1(k0) => k0
 in
 (
 d2pat_trcd1
-(d1p0.loc(), knd, npf, d2ps1+d2ps2)
-) where {
-  val npf = length(d1ps1)
-  val d2ps1 = trans12_dpatlst(d1ps1)
-  val d2ps2 = trans12_dpatlst(d1ps2)
-}
-end // end of [auxlist2]
+( loc0
+, knd1
+, npf2, d2ps1+d2ps2)) where {
+//
+val npf2 = length(d1ps1)
+//
+val d2ps1 = trans12_dpatlst(d1ps1)
+val d2ps2 = trans12_dpatlst(d1ps2)
+//
+} (*where*)
+end (*let*) // end of [ auxlist2 ]
 
 (* ****** ****** *)
 
-in (* in-of-local *)
-
 implement
-trans12_dpid
-  (d1p0) =
+auxmain(d1p0) =
 (
-auxid0_d1pat(d1p0)
-)
-
-(* ****** ****** *)
-
-implement
-trans12_dpat
-  (d1p0) = let
-//
-val
-loc0 = d1p0.loc((*void*))
-//
-(*
-val () =
-println!
-("trans12_dpat: loc0 = ", loc0)
-val () =
-println!
-("trans12_dpat: d1p0 = ", d1p0)
-*)
-//
-in (* in-of-let *)
-//
 case-
 d1p0.node() of
 //
@@ -1138,29 +1077,85 @@ d1p0.node() of
   ( tok
   , xs1, xs2) => auxtrcd12(d1p0)
 //
-| D1Panno
-  (d1p1, s1e2) =>
-  (
-    d2pat_make_node
-    ( loc0
-    , D2Panno(d2p1, s1e2, s2e2))
-  ) where
-  {
-    val d2p1 = trans12_dpat(d1p1)
-    val s2e2 = trans12_sexp_ci(s1e2)
-  } (* end of [D1Panno] *)
+|
+ D1Panno
+(d1p1, s1e2) =>
+(
+  d2pat_make_node
+  ( d1p0.loc()
+  , D2Panno(d2p1, s1e2, s2e2))
+) where
+{
+  val d2p1 = trans12_dpat(d1p1)
+  val s2e2 = trans12_sexp_ci(s1e2)
+} (* end of [D1Panno] *)
 //
-| _(*rest-of-d1pat*) => d2pat_none1(d1p0)
+|
+_(*rest-of-d1pat*) => d2pat_none1(d1p0)
 //
 (*
-| _(*rest-of-D1PAT*) =>
-  (
-    exit_errmsg
-    (1, "trans12_dpat: yet-to-be-implemented!\n")
-  )
+|
+_(*rest-of-D1PAT*) =>
+(
+exit_errmsg
+(1, "auxmain: yet-to-be-implemented!\n")
+)
+*)
+) (* case *) // end of [auxmain(d1p0)]
+
+(* ****** ****** *)
+
+in (* in-of-local *)
+
+implement
+trans12_dpid
+  (d1p0) =
+(
+auxid0_d1pat(d1p0))
+
+(* ****** ****** *)
+
+implement
+trans12_dpat
+  (d1p0) =
+(
+  auxdpat(auxmain(d1p0))
+) where
+{
+//
+val
+loc0 = d1p0.loc((*void*))
+//
+(*
+val () =
+println!
+("trans12_dpat: loc0 = ", loc0)
+val () =
+println!
+("trans12_dpat: d1p0 = ", d1p0)
 *)
 //
-end // end of [trans12_dpat]
+fun
+auxdpat
+( d2p0
+: d2pat): d2pat =
+(
+case+
+d2p0.node() of
+|
+D2Psym0
+(d1p0, _) =>
+auxid0_d2var
+( d1p0
+, dexpid_sym(tok)) where
+{
+  val-
+  D1Pid0(tok) = d1p0.node()
+}
+| _(* non-D2Psym0 *) => d2p0
+) (* case *) // end-of-[auxdpat]
+//
+} (*where*)//end-of(trans12_dpat)
 
 end // end of [local]
 
@@ -2683,13 +2678,13 @@ in
 end // end of [D1Etqarg]
 //
 |
-_(*rest-of-d1exp*) => auxapp1_(d1e0)
+_(*rest-of-d1exp*) => auxapp10(d1e0)
 )
 //
 end // end of [auxapp1]
 
 and
-auxapp1_
+auxapp10
 ( d1e0
 : d1exp): d2exp = let
 //
@@ -2704,13 +2699,13 @@ in
 case+
 d2e1.node() of
 | D2Eg1mac _ =>
-  auxapp1_1(d1e0, d2e1, d1e2)
+  auxapp11(d1e0, d2e1, d1e2)
 | _(*non-D2Eg1mac*) =>
-  auxapp1_2(d1e0, d2e1, d1e2)
+  auxapp12(d1e0, d2e1, d1e2)
 end
 
 and
-auxapp1_1
+auxapp11
 ( d1e0: d1exp
 , d2e1: d2exp
 , d1e2: d1exp): d2exp =
@@ -2771,10 +2766,10 @@ list_vt2t
 implement
 list_map$fopr<d1exp><g1mac>(x0) = auxd1e0(x0)
 }
-} (*where*) // end of [auxapp1_1]
+} (*where*) // end of [auxapp11]
 
 and
-auxapp1_2
+auxapp12
 ( d1e0: d1exp
 , d2e1: d2exp
 , d1e2: d1exp): d2exp =
@@ -2818,7 +2813,7 @@ in
 //
 my_d2exp_dapp(d1e0.loc(), d2e1, npf2, d2es)
 //
-end // end of [auxapp1_2]
+end (*let*) // end of [auxapp12]
 
 (* ****** ****** *)
 
