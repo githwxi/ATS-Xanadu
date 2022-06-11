@@ -133,6 +133,16 @@ filpath_print0_dats: ; $(XATSOPT) --dynamic DATS/filpath_print0.dats
 
 ######
 all_dats:: \
+locinfo_dats
+locinfo_dats: ; $(XATSOPT) --dynamic DATS/locinfo.dats
+######
+all_dats:: \
+locinfo_print0_dats
+locinfo_print0_dats: ; $(XATSOPT) --dynamic DATS/locinfo_print0.dats
+######
+
+######
+all_dats:: \
 lexing0_dats
 lexing0_dats: ; $(XATSOPT) --dynamic DATS/lexing0.dats
 ######

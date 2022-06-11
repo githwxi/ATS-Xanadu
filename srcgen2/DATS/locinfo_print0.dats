@@ -29,74 +29,37 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 07th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-(*
-HX-2022-06-10:
-A postn-value [pos] refers to a point
-in a char sequence; it minimally contains
-the total offset (ntot), the line number (nrow)
-and the line offset (ncol).
-A loctn-value [loc] refers to a range
-in a char sequence; it minimally contains
-certain info on the source of the sequence
-(e.g., the name of the file containing the
-char sequence), the starting position (loc.pbeg)
-of the range, and the ending position (loc.pend).
-*)
-(* ****** ****** *)
-//
-#abstbox postn_tbox
-#typedef postn = postn_tbox
-#typedef pos_t = postn_tbox
-//
-(* ****** ****** *)
-//
-#abstbox loctn_tbox
-#typedef loctn = loctn_tbox
-#typedef loc_t = loctn_tbox
-//
-(* ****** ****** *)
-fun
-postn_cmp(postn, postn): sint
-(* ****** ****** *)
-//
-fun postn_get_ntot(postn): sint
-fun postn_get_nrow(postn): sint
-fun postn_get_ncol(postn): sint
-//
-#symload ntot with postn_get_ntot
-#symload nrow with postn_get_nrow
-#symload ncol with postn_get_ncol
-//
-(* ****** ****** *)
-//
-fun
-postn_make_int3
-( ntot: sint
-, nrow: sint, ncol: sint): postn
-#symload postn with postn_make_int3
-//
+#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 
-fun
-postn_fprint: (FILR, postn) -> void
+#implfun
+postn_fprint
+  (out, pos) = let
+//
+val ntot = pos.ntot()
+val nrow = pos.nrow()
+val ncol = pos.ncol()
+//
+#impltmp g_print$out<>() = out
+//
+in
+print(ntot+1, "(line=", nrow+1, ",offs=", ncol+1, ")")
+endlet (* end of [position_fprint] *)
 
 (* ****** ****** *)
 
-fun
-loctn_fprint: (FILR, loctn) -> void
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_locinfo.sats] *)
+(* end of [ATS3/XATSOPT_locinfo_print0.dats] *)

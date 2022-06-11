@@ -107,6 +107,15 @@ g_print<fpath>(fpx) =
 fpath_fprint(g_print$out<>(), fpx)
 (* ****** ****** *)
 #impltmp
+g_cmp<postn> = postn_cmp
+#impltmp
+g_print<postn>(pos) =
+postn_fprint(g_print$out<>(), pos)
+#impltmp
+g_print<loctn>(loc) =
+loctn_fprint(g_print$out<>(), loc)
+(* ****** ****** *)
+#impltmp
 g_print<tnode>(tnd) =
 tnode_fprint(g_print$out<>(), tnd)
 #impltmp
