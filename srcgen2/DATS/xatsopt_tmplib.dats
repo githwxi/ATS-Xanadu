@@ -109,6 +109,11 @@ fpath_fprint(g_print$out<>(), fpx)
 #impltmp
 g_cmp<postn> = postn_cmp
 #impltmp
+g_cmp<loctn> = loctn_cmp
+#impltmp
+g_print<lcsrc>(pos) =
+lcsrc_fprint(g_print$out<>(), pos)
+#impltmp
 g_print<postn>(pos) =
 postn_fprint(g_print$out<>(), pos)
 #impltmp

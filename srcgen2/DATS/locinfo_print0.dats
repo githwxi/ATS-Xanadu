@@ -45,6 +45,24 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
+//
+#implfun
+lcsrc_fprint
+  (out, src) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ src of
+|
+LCSRCnone0() => print("()")
+|
+LCSRCfpath(fpx) => print(fpx)
+|
+LCSRCsome1(txt) => print("(", txt, ")")
+end (*let*) // end of [lcsrc_fprint]
+//
+(* ****** ****** *)
 
 #implfun
 postn_fprint
@@ -54,11 +72,31 @@ val ntot = pos.ntot()
 val nrow = pos.nrow()
 val ncol = pos.ncol()
 //
+in//let
+print
+( (ntot+1)
+, "(line=", nrow+1
+, ",offs=", ncol+1, ")") where
+{
+  #impltmp g_print$out<>() = out
+}
+end(*let*) // end of [postn_fprint]
+
+(* ****** ****** *)
+
+#implfun
+loctn_fprint
+  (out, loc) = let
+//
+val lsrc = loc.lsrc()
+val pbeg = loc.pbeg()
+val pend = loc.pend()
+//
 #impltmp g_print$out<>() = out
 //
-in
-print(ntot+1, "(line=", nrow+1, ",offs=", ncol+1, ")")
-endlet (* end of [position_fprint] *)
+in//let
+print(lsrc, "@(", pbeg, "--", pend, ")")
+end(*let*) // end of [loctn_fprint]
 
 (* ****** ****** *)
 

@@ -68,7 +68,7 @@ token_fprint(FILR, token): void
 (* ****** ****** *)
 //
 fun//{}
-token_get_locn: token -> loc_t
+token_get_lctn: token -> loc_t
 fun//{}
 token_get_node: token -> tnode
 //
@@ -76,7 +76,7 @@ fun//{}
 token_make_node
 (loc: loc_t, tnd: tnode): token
 //
-#symload locn with token_get_locn
+#symload lctn with token_get_lctn
 #symload node with token_get_node
 #symload token with token_make_node
 //

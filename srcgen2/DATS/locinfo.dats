@@ -43,6 +43,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
+#implfun
+postn_cmp(ps1, ps2) =
+(ps1.ntot() \cmp ps2.ntot())
+#implfun
+loctn_cmp(lc1, lc2) =
+(lc1.pbeg() \cmp lc2.pbeg())
+(* ****** ****** *)
 
 local
 
@@ -101,6 +108,67 @@ postn_make_int3
 
 end (*local*) // end of [local]
 
+(* ****** ****** *)
+
+local
+
+datatype
+loctn =
+LOCTN of
+( lcsrc(*ntot*)
+, postn(*pbeg*)
+, postn(*pend*))
+#absimpl loctn_tbox = loctn
+
+in//local
+
+#implfun
+loctn_get_lsrc
+  (loc) = let
+//
+val+
+LOCTN
+(lsrc, pbeg, pend) = loc in lsrc
+//
+end (*let*) // end of [loctn_get_lsrc]
+
+#implfun
+loctn_get_pbeg
+  (loc) = let
+//
+val+
+LOCTN
+(lsrc, pbeg, pend) = loc in pbeg
+//
+end (*let*) // end of [loctn_get_pbeg]
+
+#implfun
+loctn_get_pend
+  (loc) = let
+//
+val+
+LOCTN
+(lsrc, pbeg, pend) = loc in pend
+//
+end (*let*) // end of [loctn_get_pend]
+
+#implfun
+loctn_make_arg3
+(src,ps1,ps2) = LOCTN(src,ps1,ps2)
+
+end (*local*) // end of [local]
+
+(* ****** ****** *)
+//
+#implfun
+loctn_make_fpath
+(fp0, ps1, ps2) =
+let
+  val src = LCSRCfpath(fp0)
+in
+  loctn_make_arg3( src, ps1, ps2 )
+end(*let*)//end-of(loctn_make_fpath)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_locinfo.dats] *)

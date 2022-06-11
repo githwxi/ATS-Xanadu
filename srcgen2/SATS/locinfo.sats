@@ -41,6 +41,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload FP0 = "./filpath.sats"
+(* ****** ****** *)
 (*
 HX-2022-06-10:
 A postn-value [pos] refers to a point
@@ -54,6 +56,21 @@ certain info on the source of the sequence
 char sequence), the starting position (loc.pbeg)
 of the range, and the ending position (loc.pend).
 *)
+(* ****** ****** *)
+#typedef
+fpath = $FP0.fpath
+(* ****** ****** *)
+//
+datatype
+lcsrc =
+| LCSRCnone0 of ()
+| LCSRCsome1 of strn
+| LCSRCfpath of fpath
+//
+(* ****** ****** *)
+fun
+lcsrc_fprint
+(out:FILR,src:lcsrc): void
 (* ****** ****** *)
 //
 #abstbox postn_tbox
@@ -69,6 +86,8 @@ of the range, and the ending position (loc.pend).
 (* ****** ****** *)
 fun
 postn_cmp(postn, postn): sint
+fun
+loctn_cmp(loctn, loctn): sint
 (* ****** ****** *)
 //
 fun postn_get_ntot(postn): sint
@@ -88,15 +107,30 @@ postn_make_int3
 #symload postn with postn_make_int3
 //
 (* ****** ****** *)
-
 fun
 postn_fprint: (FILR, postn) -> void
-
 (* ****** ****** *)
-
+//
+fun loctn_get_lsrc(loctn): lcsrc
+fun loctn_get_pbeg(loctn): postn
+fun loctn_get_pend(loctn): postn
+//
+#symload lsrc with loctn_get_lsrc
+#symload pbeg with loctn_get_pbeg
+#symload pend with loctn_get_pend
+//
+(* ****** ****** *)
 fun
 loctn_fprint: (FILR, loctn) -> void
-
+(* ****** ****** *)
+fun
+loctn_make_arg3
+(lcsrc, postn, postn): loctn
+fun
+loctn_make_fpath
+(fpath, postn, postn): loctn
+#symload loctn with loctn_make_arg3
+#symload loctn with loctn_make_fpath
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_locinfo.sats] *)
