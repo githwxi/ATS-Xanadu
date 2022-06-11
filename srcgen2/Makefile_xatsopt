@@ -168,6 +168,10 @@ all_dats:: \
 lexing0_print0_dats
 lexing0_print0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_print0.dats
 ######
+all_dats:: \
+lexing0_utils0_dats
+lexing0_utils0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_utils0.dats
+######
 
 ######
 all_dats:: \
@@ -183,6 +187,17 @@ staexp0_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp0_print0.dats
 all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
+######
+
+
+######
+clean:: ; rm -f */SATS/*~
+clean:: ; rm -f */DATS/*~
+clean:: ; rm -f */HATS/*~
+clean:: ; rm -f */DATS/CATS/CC/*~
+clean:: ; rm -f */DATS/CATS/JS/*~
+######
+cleanall:: clean
 ######
 
 ###### end of [Makefile] ######
