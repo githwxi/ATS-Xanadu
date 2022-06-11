@@ -128,6 +128,7 @@ dctkind_fprint
 //
 datatype
 valkind =
+//
 | VLKval // val
 //
 | VLKvlp // val+
@@ -144,6 +145,19 @@ valkind =
 fun//<>
 valkind_fprint
 (out: FILR, vlk: valkind): void
+//
+(* ****** ****** *)
+datatype
+varkind =
+| VLKvar // var 
+(*
+// there may be some more
+*)
+(* ****** ****** *)
+//
+fun//<>
+varkind_fprint
+(out: FILR, vlk: varkind): void
 //
 (* ****** ****** *)
 //
@@ -165,11 +179,24 @@ funkind =
 | FNKfcast // no-op casting
 //
 (* ****** ****** *)
-
 fun//<>
 funkind_fprint
 (out: FILR, fnk: funkind): void
-
+(* ****** ****** *)
+//
+datatype
+caskind =
+// case
+| CSKcas0//warning only
+// case+
+| CSKcasp//stopping with errors
+// case- 
+| CSKcasn//ignoring non-exhaust
+//
+(* ****** ****** *)
+fun//<>
+caskind_fprint
+(out: FILR, csk: caskind): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xbasics.sats] *)

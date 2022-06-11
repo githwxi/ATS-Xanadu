@@ -124,4 +124,25 @@ end(*let*)//end-of(funkind_fprint)
 
 (* ****** ****** *)
 
+#implfun
+//<>(*tmp*)
+caskind_fprint
+  (out, csk) = let
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+//
+case+ csk of
+// case
+| CSKcas0() => fprint("CSKcas0")
+// case+
+| CSKcasp() => fprint("CSKcasp")
+// case-
+| CSKcasn() => fprint("CSKcasn")
+//
+end(*let*)//end-of(caskind_fprint)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_xbasics_print0.dats] *)

@@ -148,13 +148,17 @@ lexbuf0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0.dats
 ######
 all_dats:: \
 lexbuf0_dats
-lexbuf0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrm0.dats
+lexbuf0_cstrm0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrm0.dats
 ######
 
 ######
 all_dats:: \
 lexing0_dats
 lexing0_dats: ; $(XATSOPT) --dynamic DATS/lexing0.dats
+######
+all_dats:: \
+lexing0_kword0_dats
+lexing0_kword0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_kword0.dats
 ######
 all_dats:: \
 lexing0_token0_dats

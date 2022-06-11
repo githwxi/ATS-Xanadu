@@ -41,16 +41,68 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./xbasics.sats"
+(* ****** ****** *)
 #staload LOC = "./locinfo.sats"
 (* ****** ****** *)
-#typedef
-loc_t = $LOC.loc_t
+#typedef loc_t = $LOC.loc_t
 (* ****** ****** *)
 //
 datatype tnode =
 //
 | T_EOF of ((*void*))
 | T_ERR of ((*void*))
+//
+| T_EOL of () // end-of-line
+//
+| T_BLANK of (strn) // blank
+| T_CLNLT of (strn) // ( :< )
+| T_DOTLT of (strn) // ( .< )
+//
+(*
+// HX-2020-10-21:
+// for internal names
+*)
+| T_IDENT of (strn) // string
+//
+| T_IDALP of (strn) // alnuml
+| T_IDSYM of (strn) // symbol
+//
+| T_IDSRP of (strn) // #alnuml
+| T_IDDLR of (strn) // $alnuml
+//
+| T_IDQUA of (strn) // $alnuml.
+//
+| T_INT01 of (strn(*rep*)) // base=10
+| T_INT02 of (sint(*bas*), strn(*rep*))
+| T_INT03 of (sint(*bas*), strn(*rep*), sint(*sfx*))
+//
+| T_FLT01 of (strn(*rep*)) // base=10
+| T_FLT02 of (sint(*bas*), strn(*rep*))
+| T_FLT03 of (sint(*bas*), strn(*rep*), sint(*sfx*))
+//
+| T_CHAR1_nil0 of (strn) // null: ''
+| T_CHAR2_char of (strn) // regular: '?'
+| T_CHAR3_blsh of (strn) // backslash: '\...'
+//
+| T_STRN1_clsd of (strn) // closed: utf-8 // for text
+| T_STRN2_ncls of (strn) // unclosed: utf-8 // for text
+//
+| T_CMNT1_line of
+  ( strn(*init*), strn ) // line-style // init: '//'
+| T_CMNT2_rest of
+  ( strn(*init*), strn ) // rest-style // init: '////'
+| T_CMNT3_ccbl of (sint(*level*), strn) // of cc-style
+| T_CMNT4_mlbl of (sint(*level*), strn) // of ml-style
+//
+// fn0, fnx, fn1, fun, praxi,
+| T_FUN of (funkind) // prfn0, prfn1, prfun, fcast
+| T_VAL of (valkind) // val, val+, val-, prval, (mcval)
+| T_VAR of (varkind) // var // there may be more kinds
+//
+| T_CASE of (caskind) // case, case+, case- // some more?
+//
+// end-of-(datatype tnode)
 //
 (* ****** ****** *)
 #abstbox token_tbox // ptr
