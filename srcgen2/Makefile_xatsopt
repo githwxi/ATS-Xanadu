@@ -143,6 +143,16 @@ locinfo_print0_dats: ; $(XATSOPT) --dynamic DATS/locinfo_print0.dats
 
 ######
 all_dats:: \
+lexbuf0_dats
+lexbuf0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0.dats
+######
+all_dats:: \
+lexbuf0_dats
+lexbuf0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrm0.dats
+######
+
+######
+all_dats:: \
 lexing0_dats
 lexing0_dats: ; $(XATSOPT) --dynamic DATS/lexing0.dats
 ######
