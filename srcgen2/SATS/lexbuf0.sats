@@ -42,4 +42,23 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 
+#absvtbx lxbf1_vtbx // ptr
+#vwtpdef lxbf1 = lxbf1_vtbx
+
+(* ****** ****** *)
+
+#typedef
+lxbf0_getc
+( obj:vt ) = (!obj) -> sint
+
+(* ****** ****** *)
+fun
+lxbf1_getc:
+lxbf0_getc(lexbuf1)
+(* ****** ****** *)
+fun
+lxbf1_make_cstrm
+(inp: strm_vt(char)): lxbf1
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_lexbuf0.sats] *)

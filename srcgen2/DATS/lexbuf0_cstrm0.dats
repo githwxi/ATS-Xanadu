@@ -29,7 +29,7 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 07th, 2022
+Start Time: June 11th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -43,38 +43,7 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
+#staload "./../SATS/lexbuf0.sats"
 (* ****** ****** *)
 
-local
-//
-datatype
-token =
-TOKEN of (loc_t, tnode)
-#absimpl token_tbox = token
-//
-in//in-of-local
-//
-#implfun
-//{}//tmp
-token_make_node
-(loc, tnd) = TOKEN(loc, tnd)
-//
-#implfun
-//{}//tmp
-token_get_locn(tok) =
-let
-val+
-TOKEN(loc,tnd) = tok in loc end
-#implfun
-//{}//tmp
-token_get_node(tok) =
-let
-val+
-TOKEN(loc,tnd) = tok in tnd end
-//
-end (*local*) // end-of( local )
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_lexing0_token0.dats] *)
+(* end of [ATS3/XATSOPT_lexbuf0_cstrm0.dats] *)
