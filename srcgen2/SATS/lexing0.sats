@@ -59,17 +59,19 @@ datatype tnode =
 | T_CLNLT of (strn) // ( :< )
 | T_DOTLT of (strn) // ( .< )
 //
+| T_SPCHR of (sint) // special
+//
 (*
 // HX-2020-10-21:
 // for internal names
 *)
 | T_IDENT of (strn) // string
 //
-| T_IDALP of (strn) // alnuml
+| T_IDALN of (strn) // alnuml
 | T_IDSYM of (strn) // symbol
 //
-| T_IDSRP of (strn) // #alnuml
 | T_IDDLR of (strn) // $alnuml
+| T_IDSRP of (strn) // #alnuml
 //
 | T_IDQUA of (strn) // $alnuml.
 //
@@ -131,6 +133,46 @@ token_make_node
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 #symload token with token_make_node
+//
+(* ****** ****** *)
+//
+fun tnode_ANDq(tnode): bool
+fun tnode_BARq(tnode): bool
+fun tnode_CLNq(tnode): bool
+//
+#symload ANDq with tnode_ANDq
+#symload BARq with tnode_BARq
+#symload CLNq with tnode_CLNq
+//
+(* ****** ****** *)
+//
+fun
+tnode_COMMAq : tnode -> bool
+//
+fun
+tnode_SMCLNq : tnode -> bool
+fun // BARSMCLN
+tnode_BSCLNq : tnode -> bool
+//
+#symload COMMAq with tnode_COMMAq
+#symload SMCLNq with tnode_SMCLNq
+#symload BSCLNq with tnode_BSCLNq
+//
+(* ****** ****** *)
+//
+fun tnode_blankq(tnode): bool
+fun tnode_iscmnt(tnode): bool
+fun tnode_isskip(tnode): bool
+//
+#symload blankq with tnode_blankq
+#symload iscmnt with tnode_iscmnt
+#symload isskip with tnode_isskip
+//
+(* ****** ****** *)
+//
+fun
+<obj:vt>
+lexing_tnode(buf: !obj): tnode
 //
 (* ****** ****** *)
 
