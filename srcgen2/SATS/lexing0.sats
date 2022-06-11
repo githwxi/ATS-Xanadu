@@ -172,7 +172,22 @@ fun tnode_isskip(tnode): bool
 //
 fun
 <obj:vt>
-lexing_tnode(buf: !obj): tnode
+gobj_lexing$getc1(buf: !obj): sint
+fun
+<obj:vt>
+gobj_lexing$fcseg(buf: !obj): strn
+fun
+<obj:vt>
+gobj_lexing$fskip(buf: !obj): void
+fun
+<obj:vt>
+gobj_lexing$unget(buf: !obj): void
+//
+(* ****** ****** *)
+//
+fun
+<obj:vt>
+gobj_lexing_tnode(buf: !obj): tnode
 //
 (* ****** ****** *)
 
