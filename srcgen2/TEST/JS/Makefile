@@ -77,12 +77,12 @@ $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test05_filpath_dats.js
 ######
 #
 test:: \
-test05_locinfo
-test05_locinfo:: ; \
+test06_locinfo
+test06_locinfo:: ; \
 $(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test05_locinfo_dats.js
+$(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test06_locinfo_dats.js
 #
 ######
 #
