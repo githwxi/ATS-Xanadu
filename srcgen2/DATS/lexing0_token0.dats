@@ -76,24 +76,6 @@ TOKEN(loc,tnd) = tok in tnd end
 end (*local*) // end-of( local )
 
 (* ****** ****** *)
-#extern
-fun
-EOLq(ch: char): bool
-#extern
-fun
-BLANKq(ch: char): bool
-(* ****** ****** *)
-
-#implfun
-EOLq(ch) = (ch = '\n')
-#implfun
-BLANKq(ch) =
-if
-(ch = ' ')
-then true else
-(if (ch = '\t') then true else false)
-
-(* ****** ****** *)
 //
 #implfun
 tnode_blankq

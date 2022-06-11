@@ -45,20 +45,106 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-
 #extern
 fun
-lexing_token(
+EOLq(ch: char): bool
+#extern
+fun
+EMPq(ch: char): bool
+(* ****** ****** *)
+//
+#implfun
+EOLq(ch) = (ch = '\n')
+#implfun
+EMPq(ch) =
+if
+(ch = ' ')
+then true else
+(if (ch = '\t') then true else false)
+//
+(* ****** ****** *)
+#extern
+fun
+sint2char(ci0: sint): char
+(* ****** ****** *)
 
-| _(* else *) =>
-  (
-    if
-    (i0 >= 0)
-    then T_SPECHAR(i0) else T_EOF()
-  ) where
-  {
-    val ((*void*)) = lexbuf_get_none(buf)
-  }
+#impltmp
+<obj>
+gobj_lexing_tnode
+(   buf   ) = let
+//
+val ci0 = 
+gobj_lexing$getc1(buf)
+val cc0 = sint2char(ci0)
+//
+val () =
+println
+("gobj_lexing_tnode: ci0 = ", ci0)
+val () =
+println
+("gobj_lexing_tnode: cc0 = ", cc0)
+//
+in//let
+//
+case+ 0 of
+| _ when EMPq(cc0) => f0_EMP(buf, ci0)
+(*
+| _ when EOLq(cc0) => f0_EOL(buf, ci0)
+| _ when DIGITq(cc0) => f0_DIGIT(buf, ci0)
+*)
+| _ (* otherwise *) => f0_otherwise(buf, ci0)
+//
+end where
+{
+//
+fun
+f0_EMP
+( buf: !obj
+, ci0: sint): tnode =
+  loop( buf ) where
+{
+//
+//HX: [ci0]: dummy
+//
+fun
+loop
+(buf: !obj): tnode =
+let
+//
+val ci0 = 
+gobj_lexing$getc1(buf)
+val cc0 = sint2char(ci0)
+//
+in//let
+//
+if
+EMPq(cc0)
+then loop(buf) else
+let
+  val () =
+  gobj_lexing$unget(buf)
+in//let
+T_BLANK(gobj_lexing$fcseg(buf))
+end // end of [else]
+//
+end // end of [loop]
+//
+} (*where*) // end of [f0_EMPq]
+//
+fun
+f0_otherwise
+(buf: !obj, ci0: sint): tnode =
+(
+  if
+  (ci0 >= 0)
+  then T_SPCHR(ci0) else T_EOF()
+) where
+{
+  val () = gobj_lexing$fskip(buf)
+} (*where*) // end of [f0_otherwise]
+//
+} (*where*) // end of [gobj_lexing_tnode]
+
 
 (* ****** ****** *)
 
