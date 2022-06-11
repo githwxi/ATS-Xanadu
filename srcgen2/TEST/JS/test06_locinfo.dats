@@ -33,7 +33,7 @@ prerrln("pos0\\cmp(pos1) = ", (pos0\cmp(pos1)))
 val loc0 =
 loctn(LCSRCnone0(), pos0, pos1)
 val loc1 =
-loctn(LCSRCsome1("__STRING__"), pos0, pos1)
+loctn(LCSRCsome1("__XSTRING__"), pos0, pos1)
 val (  ) = prerrln("loc0 = ", loc0)
 val (  ) = prerrln("loc1 = ", loc1)
 

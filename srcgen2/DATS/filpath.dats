@@ -60,33 +60,30 @@ val theParDir: strn = ".."
 *)
 
 in//local
-
+//
 #implfun
 theDirSep_get() = theDirSep
 #implfun
 theCurDir_get() = theCurDir
 #implfun
 theParDir_get() = theParDir
-
+//
 end (*local*) // end of [local]
 
 (* ****** ****** *)
 
 #implfun
-fpath_normq(fpx) =
-let
+fpath_normq
+(   fpx   ) = let
 //
 #vwtpdef
 clst=list_vt(cgtz)
 #vwtpdef
 fnms=strm_vt(clst)
 //
-val
-DS = theDirSep_get()
-val
-CD = theCurDir_get()
-val
-PD = theParDir_get()
+val DS = theDirSep_get()
+val CD = theCurDir_get()
+val PD = theParDir_get()
 //
 fun
 ftest
@@ -141,8 +138,8 @@ end (*let*) // end of [fpath_normq]
 (* ****** ****** *)
 
 #implfun
-fpath_normize(fpx) =
-let
+fpath_normize
+(   fpx   ) = let
 //
 #vwtpdef
 clst=list_vt(cgtz)
@@ -160,7 +157,8 @@ gseq_group_list
 (   fpx   ) where
 {
 #impltmp
-group$test<cgtz>(ch) = (ch != DS) }
+group$test<cgtz>(ch) = (ch != DS)
+}
 //
 fnx
 fcats
@@ -168,10 +166,10 @@ fcats
 case+ nms of
 | ~
 list_vt_nil
-((*void*)) => list_vt_nil()
+( (*void*) ) => list_vt_nil()
 | ~
 list_vt_cons
-(nm1, nms) => fcats_2(nms, nm1)
+( nm1, nms ) => fcats_2(nms, nm1)
 and
 fcats_2
 ( nms: slst
@@ -186,10 +184,10 @@ list_vt_cons
 (nm1, nms) =>
 fcats_2(nms, acc) where
 {
-  val acc = list_vt_cons(DS, acc)
-  val acc = list_vt_append0(nm1, acc)
+val acc = list_vt_cons(DS, acc)
+val acc = list_vt_append0(nm1, acc)
 }
-) (* case *) // end-of-(fcats_2)
+) (* case *) // end-of-( fcats_2 )
 //
 fun
 fmain

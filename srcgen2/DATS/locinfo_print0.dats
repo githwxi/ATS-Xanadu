@@ -48,10 +48,11 @@ ATS_PACKNAME
 //
 #implfun
 lcsrc_fprint
-  (out, src) =
-let
+  (out, src) = let
+//
 #impltmp
 g_print$out<>() = out
+//
 in//let
 case+ src of
 |
