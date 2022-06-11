@@ -29,42 +29,54 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 10th, 2022
+Start Time: June 11th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
-#absvtbx lxbf1_vtbx // ptr
-#vwtpdef lxbf1 = lxbf1_vtbx
-
+#staload "./../SATS/xbasics.sats"
+#staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 
-#typedef
-lxbf0_get0
-( obj:vt ) = (!obj) -> sint
-#typedef
-lxbf0_get1
-( obj:vt ) = (!obj) -> sint
+val
+T0CASE = T_CASE(CSKcas0)
+val
+T0CASP = T_CASE(CSKcasp)
+val
+T0CASN = T_CASE(CSKcasn)
 
 (* ****** ****** *)
-fun
-lxbf1_get0: // get char
-lxbf0_get0(lxbf1) // and stay
-fun
-lxbf1_get1: // get char
-lxbf0_get0(lxbf1) // and incby1
+//
+val T0FN0 = T_FUN(FNKfn0)
+val T0FN1 = T_FUN(FNKfn1)
+val T0FNX = T_FUN(FNKfnx)
+val T0FUN = T_FUN(FNKfn1)
+//
+val T0PRFN0 = T_FUN(FNKprfn0)
+val T0PRFN1 = T_FUN(FNKprfn1)
+val T0PRFUN = T_FUN(FNKprfn1)
+val T0PRAXI = T_FUN(FNKpraxi)
+val T0FCAST = T_FUN(FNKfcast)
+//
 (* ****** ****** *)
-fun
-lxbf1_make_cstrm
-(inp: strm_vt(char)): lxbf1
+//
+val T0VAL = T_VAL(VLKval)
+val T0VLP = T_VAL(VLKvlp)
+val T0VLN = T_VAL(VLKvln)
+val T0VAR = T_VAR(VLKvar)
+//
+val T0PRVAL = T_VAL(VLKprval)
+val T0PRVAR = T_VAL(VLKprval)
+//
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexbuf0.sats] *)
+(* end of [ATS3/XATSOPT_lexing0_kword0.dats] *)

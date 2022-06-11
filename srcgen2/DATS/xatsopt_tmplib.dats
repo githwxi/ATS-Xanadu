@@ -67,12 +67,23 @@ g_print
 <valkind>(vlk) =
 valkind_fprint
 (g_print$out<>(), vlk) // xbasics
+#impltmp
+g_print
+<varkind>(vlk) =
+varkind_fprint
+(g_print$out<>(), vlk) // xbasics
 //
 #impltmp
 g_print
 <funkind>(fnk) =
 funkind_fprint
 (g_print$out<>(), fnk) // xbasics
+//
+#impltmp
+g_print
+<caskind>(csk) =
+caskind_fprint
+(g_print$out<>(), csk) // xbasics
 //
 (* ****** ****** *)
 #impltmp
