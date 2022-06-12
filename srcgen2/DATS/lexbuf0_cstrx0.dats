@@ -47,12 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexbuf0.sats"
 (* ****** ****** *)
-#extern
-fun
-sint2char(ci0: sint): char
-#extern
-fun
-char2sint(ci0: char): sint
+#symload
+sint with char_make_sint
 (* ****** ****** *)
 
 local
@@ -125,15 +121,15 @@ val+
 //
 in//let
 //
-ntot := ntot+1;
+pos.0 := ntot+1;
 //
 if
 (chr != '\n')
 then
-(ncol := ncol+1)
+(pos.2 := ncol+1)
 else
-( ncol := 0
-; nrow := nrow+1 ); $fold(  pos  )
+( pos.2 := 0
+; pos.1 := nrow+1 ); $fold(  pos  )
 //
 endlet // end of [pstn1_incby_char]
 
@@ -159,7 +155,7 @@ buf.3 of
 list_vt_nil() =>
 (
 case+
-!(buf.2) of
+!( buf2 ) of
 | ~
 strxcon_vt_cons
 ( ci1, cis ) =>
@@ -170,15 +166,18 @@ if
 (ci1 >= 0)
 then
 let
-val cc1 = sint2char(ci1)
+val cc1 = sint(ci1)
 in
 buf.3 := cons_vt(cc1, buf.3); ci1
 end else ci1 // end-of(if)
 )
-)
+) where
+{
+val buf2 = (buf.2: strx_vt(sint))
+}
 | ~
 list_vt_cons
-( cc1, ccs ) => char2sint(cc1)
+( cc1, ccs ) => char_code(  cc1  )
 //
 end (* let *) // end of [lxbf1_get0]
 
@@ -198,7 +197,7 @@ buf.3 of
 list_vt_nil() =>
 (
 case+
-!(buf.2) of
+!( buf2 ) of
 | ~
 strxcon_vt_cons
 ( ci1, cis ) =>
@@ -209,19 +208,22 @@ if
 (ci1 >= 0)
 then
 let
-val cc1 = sint2char(ci1)
+val cc1 = sint(ci1)
 in
   buf.4 := cons_vt(cc1, buf.4)
 ; pstn1_incby_char(buf.1, cc1); ci1
 end else ci1 // end-of(if)
 )
-)
+) where
+{
+  val buf2 = (buf.2: strx_vt(sint))
+}
 | ~
 list_vt_cons
 ( cc1, ccs ) =>
 (
 let
-val ci1 = char2sint(cc1)
+val ci1 = char_code(cc1)
 in
   buf.3 := ccs
 ; buf.4 := cons_vt(cc1, buf.4)

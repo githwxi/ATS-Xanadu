@@ -65,12 +65,19 @@ bool_mul<> = XATS2JS_bool_mul
 (* ****** ****** *)
 //
 #impltmp
+char_code<>
+(   c0   ) = $UN.cast01( c0 )
+//
+#impltmp
 char_make_sint<>
-( i0 ) = $UN.cast01(i0)
+(   i0   ) = $UN.cast01( i0 )
+//
+// HX-2022-06-12:
+// It is deprecated
 //
 #impltmp
 sint_make_char<>
-( c0 ) = $UN.cast01(c0)
+(   c0   ) = $UN.cast01( c0 )
 //
 (* ****** ****** *)
 #extern

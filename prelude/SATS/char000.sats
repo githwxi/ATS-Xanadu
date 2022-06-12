@@ -37,6 +37,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+fun<>
+char_code
+(char: char): sint
+(* ****** ****** *)
 //
 fun<>
 char_make_sint
@@ -47,6 +51,14 @@ char_make_uint
 //
 (* ****** ****** *)
 //
+(*
+HX:
+[char_code]
+=
+[sint_make_char]
+=
+[char2uint2sint]!!!
+*)
 fun<>
 sint_make_char
 (char: char): sint
@@ -133,6 +145,9 @@ char_upper(c0: char): char
 // HX-2020-05-30:
 // symbol overloading for char
 //
+(* ****** ****** *)
+#symload
+code with char_code of 1000
 (* ****** ****** *)
 //
 #symload
