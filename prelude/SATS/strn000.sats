@@ -414,6 +414,7 @@ tail_exn with strn_tail_exn of 1000
 
 #symload listize with strn_listize of 1000
 #symload strmize with strn_strmize of 1000
+#symload strxize with strn_strxize of 1000
 
 (* ****** ****** *)
 #symload rlistize with strn_rlistize of 1000
