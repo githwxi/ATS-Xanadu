@@ -41,57 +41,56 @@ val buf1 = lxbf1_make_cstrx(csrc)
 
 val (  ) =
 prerrln
-("buf1.get1() = ", char(buf1.get1()))
+("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
 prerrln
-(
-"buf1.unget() = ", char(buf1.undo()))
+("buf1.unget() = ", char(buf1.unget()))
 
 val (  ) =
-prerrln("buf1.get0() = ", char(buf1.get0()))
+prerrln("buf1.getc0() = ", char(buf1.getc0()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 //
 val (  ) =
-prerrln("buf1.pbeg() = ", buf1.pbeg())
+prerrln("buf1.cpbeg() = ", buf1.cpbeg())
 val (  ) =
-prerrln("buf1.pcur() = ", buf1.pcur())
+prerrln("buf1.cpcur() = ", buf1.cpcur())
 val (  ) =
-prerrln("buf1.cseg() = ", strn(buf1.cseg()))
+prerrln("buf1.tcseg() = ", strn(buf1.tcseg()))
 //
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.get1() = ", char(buf1.get1()))
+prerrln("buf1.getc1() = ", char(buf1.getc1()))
 //
 val (  ) =
-prerrln("buf1.pbeg() = ", buf1.pbeg())
+prerrln("buf1.cpbeg() = ", buf1.cpbeg())
 val (  ) =
-prerrln("buf1.pcur() = ", buf1.pcur())
+prerrln("buf1.cpcur() = ", buf1.cpcur())
 val (  ) =
-prerrln("buf1.cseg() = ", strn(buf1.cseg()))
+prerrln("buf1.tcseg() = ", strn(buf1.tcseg()))
 //
 (* ****** ****** *)
 

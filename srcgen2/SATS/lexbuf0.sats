@@ -52,49 +52,87 @@ LOC = "./locinfo.sats"
 #vwtpdef lxbf1 = lxbf1_vtbx
 //
 (* ****** ****** *)
+//
+#absvtbx lxbf2_vtbx // ptr
+#vwtpdef lxbf2 = lxbf2_vtbx
+//
+(* ****** ****** *)
 
 #typedef
-lxbf0_get0
+lxbf0_getc0
 ( obj:vt ) = (!obj) -> sint
 #typedef
-lxbf0_get1
+lxbf0_getc1
 ( obj:vt ) = (!obj) -> sint
 
 (* ****** ****** *)
 fun
-lxbf1_get0: // get char
-lxbf0_get0(lxbf1) // and stay
+lxbf1_getc0: // get char
+lxbf0_getc0(lxbf1) // and stay
 fun
-lxbf1_get1: // get char
-lxbf0_get0(lxbf1) // and incby1
+lxbf1_getc1: // get char
+lxbf0_getc1(lxbf1) // and incby1
 (* ****** ****** *)
-#symload get0 with lxbf1_get0
-#symload get1 with lxbf1_get1
-(* ****** ****** *)
-fun
-lxbf1_get1_undo // it undoes one
-(buf: !lxbf1): sint // get1-op
-(* ****** ****** *)
-#symload undo with lxbf1_get1_undo
+#symload getc0 with lxbf1_getc0
+#symload getc1 with lxbf1_getc1
 (* ****** ****** *)
 fun
-lxbf1_copy_pbeg // get the
-(buf: !lxbf1): pos_t // beg-pos
-fun
-lxbf1_copy_pcur // get the
-(buf: !lxbf1): pos_t // cur-pos
+lxbf1_unget // it undoes
+(buf: !lxbf1): sint // 1 getc1-op
+(* ****** ****** *)
+#symload unget with lxbf1_unget
 (* ****** ****** *)
 fun
 lxbf1_take_cseg // get the char
 (buf: !lxbf1): list_vt(char) // seg
 (* ****** ****** *)
-#symload pbeg with lxbf1_copy_pbeg
-#symload pcur with lxbf1_copy_pcur
-#symload cseg with lxbf1_take_cseg
+#symload tcseg with lxbf1_take_cseg
 (* ****** ****** *)
 fun
 lxbf1_make_cstrx // lxbf1 bases on a
 (inp: ~strx_vt(sint)): lxbf1 // stream
+(* ****** ****** *)
+//
+(*
+HX-2022-06-12:
+[lxbf2] contains position info
+*)
+//
+(* ****** ****** *)
+fun
+lxbf2_getc0: // get char
+lxbf0_getc0(lxbf2) // and stay
+fun
+lxbf2_getc1: // get char
+lxbf0_getc1(lxbf2) // and incby1
+(* ****** ****** *)
+#symload getc0 with lxbf2_getc0
+#symload getc1 with lxbf2_getc1
+(* ****** ****** *)
+fun
+lxbf2_unget // it undoes
+(buf: !lxbf2): sint // 1 getc1-op
+(* ****** ****** *)
+#symload unget with lxbf2_unget
+(* ****** ****** *)
+fun
+lxbf2_copy_pbeg // get the
+(buf: !lxbf2): pos_t // beg-postn
+fun
+lxbf2_copy_pcur // get the
+(buf: !lxbf2): pos_t // cur-postn
+(* ****** ****** *)
+fun
+lxbf2_take_cseg // get the char
+(buf: !lxbf2): list_vt(char) // seg
+(* ****** ****** *)
+#symload cpbeg with lxbf2_copy_pbeg
+#symload cpcur with lxbf2_copy_pcur
+#symload tcseg with lxbf2_take_cseg
+(* ****** ****** *)
+fun
+lxbf2_make_cstrx // lxbf2 bases on a
+(inp: ~strx_vt(sint)): lxbf2 // stream
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexbuf0.sats] *)

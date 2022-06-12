@@ -195,7 +195,15 @@ gobj_lexing$unget(buf: !obj): void
 fun
 <obj:vt>
 gobj_lexing_tnode(buf: !obj): tnode
+fun
+<obj:vt>
+gobj_lexing_token(buf: !obj): token
 //
+(* ****** ****** *)
+
+fun
+lxbf1_lexing_token(buf: !lxbf1): token
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0.sats] *)

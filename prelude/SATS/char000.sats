@@ -43,6 +43,10 @@ char_code
 (* ****** ****** *)
 //
 fun<>
+char_make_code
+(code: sint): char
+//
+fun<>
 char_make_sint
 (code: sint): char
 fun<>
