@@ -116,20 +116,20 @@ pstn1_incby_char
 //
 val+
 @PSTN1
-( ntot
-, nrow, ncol) = pos
+( !ntot
+, !nrow, !ncol) = pos
 //
 in//let
 //
-pos.0 := ntot+1;
+ntot := ntot+1;
 //
 if
-(chr != '\n')
+( chr != '\n' )
 then
-(pos.2 := ncol+1)
+(ncol := ncol+1)
 else
-( pos.2 := 0
-; pos.1 := nrow+1 ); $fold(  pos  )
+( ncol := 0
+; nrow := nrow+1 ); $fold(  pos  )
 //
 endlet // end of [pstn1_incby_char]
 
