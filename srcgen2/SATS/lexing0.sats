@@ -78,25 +78,31 @@ datatype tnode =
 //
 | T_INT01 of (strn(*rep*)) // base=10
 | T_INT02 of (sint(*bas*), strn(*rep*))
-| T_INT03 of (sint(*bas*), strn(*rep*), sint(*sfx*))
+| T_INT03 of
+  (sint(*bas*), strn(*rep*), sint(*sfx*))
 //
 | T_FLT01 of (strn(*rep*)) // base=10
 | T_FLT02 of (sint(*bas*), strn(*rep*))
-| T_FLT03 of (sint(*bas*), strn(*rep*), sint(*sfx*))
+| T_FLT03 of
+  (sint(*bas*), strn(*rep*), sint(*sfx*))
 //
 | T_CHAR1_nil0 of (strn) // null: ''
 | T_CHAR2_char of (strn) // regular: '?'
 | T_CHAR3_blsh of (strn) // backslash: '\...'
 //
-| T_STRN1_clsd of (strn) // closed: utf-8 // for text
-| T_STRN2_ncls of (strn) // unclosed: utf-8 // for text
+| T_STRN1_clsd of // HX: may contain null-chars
+  (strn, sint(*len*)) // closed: utf-8 // for text
+| T_STRN2_ncls of // HX: may contain null-chars
+  (strn, sint(*len*)) // unclosed: utf-8 // for text
 //
 | T_CMNT1_line of
-  ( strn(*init*), strn ) // line-style // init: '//'
+  (strn(*init*), strn) // line-style // init: '//'
 | T_CMNT2_rest of
-  ( strn(*init*), strn ) // rest-style // init: '////'
-| T_CMNT3_ccbl of (sint(*level*), strn) // of cc-style
-| T_CMNT4_mlbl of (sint(*level*), strn) // of ml-style
+  (strn(*init*), strn) // rest-style // init: '////'
+| T_CMNT3_ccbl of
+  (sint(*level*), strn) // block comments of cc-style
+| T_CMNT4_mlbl of
+  (sint(*level*), strn) // block comments of ml-style
 //
 // fn0, fnx, fn1, fun, praxi,
 | T_FUN of (funkind) // prfn0, prfn1, prfun, fcast
