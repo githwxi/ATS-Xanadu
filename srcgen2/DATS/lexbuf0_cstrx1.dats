@@ -159,8 +159,7 @@ let
 val ci1 = char_code(cc1)
 in//let
   buf.1 := ccs
-; buf.2 := cons_vt(cc1, buf.2)
-; pstn1_incby_char(buf.1, cc1); ci1
+; buf.2 := cons_vt(cc1, buf.2); ci1
 end
 )
 //
@@ -189,9 +188,7 @@ list_vt_cons
 (
 buf.2 := ccs;
 buf.1 :=
-cons_vt(cc1, buf.1);
-buf_decby
-(buf.0,buf.1,buf.2); char_code(cc1)
+cons_vt(cc1, buf.1); char_code(cc1)
 ) (* end of [list_vt_cons] *)
 //
 end (* let *) // end-of(lxbf1_unget)
@@ -211,7 +208,6 @@ list_vt_reverse0(buf.2)
 //
 in//let
   buf.2 := nil_vt()
-; buf.0 := copy(buf.1)
 ; (   $fold(buf); cseg   )
 end // end of [lxbf1_take_cseg]
 
