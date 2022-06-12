@@ -107,6 +107,7 @@ d3pat_node =
 //
 | D3Pi00 of (int)
 | D3Pb00 of (bool)
+| D3Pc00 of (char)
 | D3Ps00 of string
 //
 | D3Pint of (token)

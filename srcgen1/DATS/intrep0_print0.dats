@@ -450,6 +450,8 @@ x0.node() of
   fprint!(out, "H0Pi00(", int, ")")
 | H0Pb00(btf) =>
   fprint!(out, "H0Pb00(", btf, ")")
+| H0Pc00(chr) =>
+  fprint!(out, "H0Pc00(", chr, ")")
 | H0Ps00(str) =>
   fprint!(out, "H0Ps00(", str, ")")
 //
@@ -586,6 +588,8 @@ x0.node() of
   fprint!(out, "H0Ei00(", int, ")")
 | H0Eb00(btf) =>
   fprint!(out, "H0Eb00(", btf, ")")
+| H0Ec00(chr) =>
+  fprint!(out, "H0Ec00(", chr, ")")
 | H0Es00(str) =>
   fprint!(out, "H0Es00(", str, ")")
 //

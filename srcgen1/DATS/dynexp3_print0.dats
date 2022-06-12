@@ -199,6 +199,9 @@ case+ x0.node() of
 | D3Pb00(btf) =>
   fprint!
   (out, "D3Pb00(", btf, ")")
+| D3Pc00(chr) =>
+  fprint!
+  (out, "D3Pc00(", chr, ")")
 | D3Ps00(str) =>
   fprint!
   (out, "D3Ps00(", str, ")")
