@@ -63,10 +63,6 @@ then true else
 (if (ch = '\t') then true else false)
 //
 (* ****** ****** *)
-#extern
-fun
-sint2char(ci0: sint): char
-(* ****** ****** *)
 
 #impltmp
 <obj>
@@ -75,7 +71,7 @@ gobj_lexing_tnode
 //
 val ci0 = 
 gobj_lexing$getc1(buf)
-val cc0 = sint2char(ci0)
+val cc0 = char_make_code(ci0)
 //
 val () =
 println
@@ -113,7 +109,7 @@ let
 //
 val ci0 = 
 gobj_lexing$getc1(buf)
-val cc0 = sint2char(ci0)
+val cc0 = char_make_code(ci0)
 //
 in//let
 //

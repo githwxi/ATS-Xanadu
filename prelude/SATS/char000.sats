@@ -157,8 +157,13 @@ char with char_make_uint of 1000
 //
 (* ****** ****** *)
 //
+(*
+//
+// HX-2022-06-12: deprecated
+//
 #symload
 sint with sint_make_char of 1000
+*)
 //
 (* ****** ****** *)
 #symload < with char_lt of 1000

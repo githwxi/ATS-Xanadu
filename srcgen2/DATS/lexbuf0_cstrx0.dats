@@ -43,12 +43,14 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/locinfo.sats"
+#staload
+"./../SATS/locinfo.sats"
 (* ****** ****** *)
-#staload "./../SATS/lexbuf0.sats"
+#staload
+"./../SATS/lexbuf0.sats"
 (* ****** ****** *)
 #symload
-sint with char_make_sint
+char with char_make_sint
 (* ****** ****** *)
 
 local
@@ -96,12 +98,20 @@ val+
 #symload copy with pstn1_copy
 //
 fun
+pstn1_get_ncol
+(pos: !pstn1): sint =
+(
+case+ pos of
+| !PSTN1(_, _, ncol) => ncol
+)
+#symload ncol with pstn1_get_ncol
+//
+fun
 postn_make_pstn1
 (pos: !pstn1): postn =
 let
 val+
-!PSTN1
-(ntot, nrow, ncol) = pos
+!PSTN1(ntot, nrow, ncol) = pos
 in
 postn_make_int3(ntot, nrow, ncol)
 end(*let*)//end-of(postn_make_pstn1)
@@ -112,7 +122,8 @@ end(*let*)//end-of(postn_make_pstn1)
 fun
 pstn1_incby_char
 ( pos:
-! pstn1, chr: char): void = let
+! pstn1 >> _
+, chr: char): void = let
 //
 val+
 @PSTN1
@@ -166,7 +177,7 @@ if
 (ci1 >= 0)
 then
 let
-val cc1 = sint(ci1)
+val cc1 = char(ci1)
 in
 buf.3 := cons_vt(cc1, buf.3); ci1
 end else ci1 // end-of(if)
@@ -208,7 +219,7 @@ if
 (ci1 >= 0)
 then
 let
-val cc1 = sint(ci1)
+val cc1 = char(ci1)
 in
   buf.4 := cons_vt(cc1, buf.4)
 ; pstn1_incby_char(buf.1, cc1); ci1
@@ -236,7 +247,84 @@ end (* let *) // end of [lxbf1_get1]
 (* ****** ****** *)
 
 #implfun
-lxbf1_get_pbeg
+lxbf1_get1_undo
+(   buf   ) =
+let
+//
+val+
+@LXBF1 _ = buf
+//
+fun
+buf_decby
+( pbeg: !pstn1
+, pcur: !pstn1 >> _
+, buf4: !list_vt(char)): void =
+let
+//
+fun
+f0_nofs
+( ofs: sint
+, res: sint
+, ccs
+: !list_vt(char)): sint =
+(
+case+ ccs of
+| !
+list_vt_nil() => ofs+res
+| !
+list_vt_cons(cc1, ccs) =>
+if
+(cc1 = '\n')
+then (res) // not need [ofs] 
+else f0_nofs(ofs, res+1, ccs)
+)
+//
+in
+case+ pcur of
+|
+PSTN1
+(!ntot, !nrow, !ncol) =>
+if
+(ncol > 0)
+then
+( ntot := ntot-1
+; ncol := ncol-1)
+else
+( ntot := ntot-1
+; nrow := nrow-1; ncol := nofs) where
+{
+  val res = 0
+  val ofs =
+  pstn1_get_ncol(pbeg)
+  val
+  nofs =
+  f0_nofs(ofs, res, buf.4)
+}
+end (*let*) // end of [buf_decby]
+//
+in//let
+//
+case+
+buf.4 of
+| !
+list_vt_nil
+((*void*)) => (-1) // HX: exception
+| ~
+list_vt_cons
+(cc1, ccs) =>
+( buf.4 := ccs
+; buf.3 :=
+  cons_vt(cc1, buf.3)
+; buf_decby
+  (buf.0,buf.1,buf.4); char_code(cc1)
+) (* end of [list_vt_cons] *)
+//
+end (*let*) //end-of(lxbf1_get1_undo)
+
+(* ****** ****** *)
+
+#implfun
+lxbf1_copy_pbeg
 (   buf   ) =
 let
 //
@@ -247,9 +335,9 @@ val pbeg = postn(buf.0)
 //
 in//let
   (   $fold(buf); pbeg   )
-end // end of [lxbf1_get_pbeg]
+end // end of [lxbf1_copy_pbeg]
 #implfun
-lxbf1_get_pcur
+lxbf1_copy_pcur
 (   buf   ) =
 let
 //
@@ -260,12 +348,12 @@ val pcur = postn(buf.1)
 //
 in//let
   (   $fold(buf); pcur   )
-end // end of [lxbf1_get_pcur]
+end // end of [lxbf1_copy_pcur]
 
 (* ****** ****** *)
 
 #implfun
-lxbf1_get_cseg
+lxbf1_take_cseg
 (   buf   ) =
 let
 //
@@ -273,14 +361,14 @@ val+
 @LXBF1 _ = buf
 //
 val cseg =
-(buf.4: list_vt(cgtz))
+list_vt_reverse0(buf.4)
 //
 in//let
   pstn1_free(buf.0)
 ; buf.4 := nil_vt()
 ; buf.0 := copy(buf.1)
 ; (   $fold(buf); cseg   )
-endlet // end of [lxbf1_get_cseg]
+endlet // end of [lxbf1_take_cseg]
 
 (* ****** ****** *)
 //

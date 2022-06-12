@@ -41,6 +41,12 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+LOC = "./locinfo.sats"
+(* ****** ****** *)
+#typedef pos_t = $LOC.pos_t
+#typedef loc_t = $LOC.loc_t
+(* ****** ****** *)
 //
 #absvtbx lxbf1_vtbx // ptr
 #vwtpdef lxbf1 = lxbf1_vtbx
@@ -66,15 +72,25 @@ lxbf0_get0(lxbf1) // and incby1
 #symload get1 with lxbf1_get1
 (* ****** ****** *)
 fun
-lxbf1_get_pbeg // get the
-(buf: !lxbf1): postn // beg-pos
-fun
-lxbf1_get_pcur // get the
-(buf: !lxbf1): postn // cur-pos
+lxbf1_get1_undo // it undoes one
+(buf: !lxbf1): sint // get1-op
+(* ****** ****** *)
+#symload undo with lxbf1_get1_undo
 (* ****** ****** *)
 fun
-lxbf1_get_cseg // get the char
+lxbf1_copy_pbeg // get the
+(buf: !lxbf1): pos_t // beg-pos
+fun
+lxbf1_copy_pcur // get the
+(buf: !lxbf1): pos_t // cur-pos
+(* ****** ****** *)
+fun
+lxbf1_take_cseg // get the char
 (buf: !lxbf1): list_vt(char) // seg
+(* ****** ****** *)
+#symload pbeg with lxbf1_copy_pbeg
+#symload pcur with lxbf1_copy_pcur
+#symload cseg with lxbf1_take_cseg
 (* ****** ****** *)
 fun
 lxbf1_make_cstrx // lxbf1 bases on a
