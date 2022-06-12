@@ -135,11 +135,11 @@ in//let
 //
 case+ csk of
 // case
-| CSKcas0() => fprint("CSKcas0")
+| CSKcas0() => print( "CSKcas0" )
 // case+
-| CSKcasp() => fprint("CSKcasp")
+| CSKcasp() => print( "CSKcasp" )
 // case-
-| CSKcasn() => fprint("CSKcasn")
+| CSKcasn() => print( "CSKcasn" )
 //
 end(*let*)//end-of(caskind_fprint)
 

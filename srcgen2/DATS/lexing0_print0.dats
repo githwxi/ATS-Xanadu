@@ -128,11 +128,11 @@ T_CHAR3_blsh(rep) =>
 print("T_CHAR3_blsh(", rep, ")")
 //
 |
-T_STRN1_clsd(rep) =>
-print("T_STRN1_clsd(", rep, ")")
+T_STRN1_clsd(rep, len) =>
+print("T_STRN1_clsd(", rep, ";", len, ")")
 |
-T_STRN2_ncls(rep) =>
-print("T_STRN2_ncls(", rep, ")")
+T_STRN2_ncls(rep, len) =>
+print("T_STRN2_ncls(", rep, ";", len, ")")
 //
 |
 T_VAL(vlk) =>
