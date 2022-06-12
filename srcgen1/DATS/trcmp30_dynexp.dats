@@ -371,6 +371,29 @@ in
 end
 
 fun
+auxc00
+(d3p0: d3pat): h0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val
+t2p0 = d3p0.type()
+val
+h0t0 = trcmp30_type(t2p0)
+//
+val
+hend = H0Pc00(chr) where
+{
+  val-
+  D3Pc00(chr) = d3p0.node()
+}
+//
+in
+  h0pat_make_node(loc0, h0t0, hend)
+end
+
+fun
 auxs00
 (d3p0: d3pat): h0pat =
 let
@@ -605,6 +628,8 @@ auxvar(env0, d3p0)
 D3Pi00 _ => auxi00(d3p0)
 |
 D3Pb00 _ => auxb00(d3p0)
+|
+D3Pc00 _ => auxc00(d3p0)
 |
 D3Ps00 _ => auxs00(d3p0)
 //
@@ -926,6 +951,25 @@ D3Eb00(btf) = d3e0.node()
 in
 h0exp_make_node(loc0, h0t0, H0Eb00(btf))
 end // end of [auxb00]
+
+fun
+auxc00
+(d3e0: d3exp): h0exp =
+let
+//
+val
+loc0 = d3e0.loc()
+val
+t2p0 = d3e0.type()
+val
+h0t0 = trcmp30_type(t2p0)
+//
+val-
+D3Ec00(chr) = d3e0.node()
+//
+in
+h0exp_make_node(loc0, h0t0, H0Ec00(chr))
+end // end of [auxc00]
 
 fun
 auxs00
@@ -2370,6 +2414,8 @@ d3e0.node() of
 D3Ei00 _ => auxi00(d3e0)
 |
 D3Eb00 _ => auxb00(d3e0)
+|
+D3Ec00 _ => auxc00(d3e0)
 |
 D3Es00 _ => auxs00(d3e0)
 //

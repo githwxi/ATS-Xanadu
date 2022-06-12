@@ -426,6 +426,7 @@ d3p0.node() of
 //
 | D3Pi00 _ => d3p0
 | D3Pb00 _ => d3p0
+| D3Pc00 _ => d3p0
 | D3Ps00 _ => d3p0
 //
 | D3Pint _ => d3p0

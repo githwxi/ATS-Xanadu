@@ -631,6 +631,7 @@ h0pat_node =
 //
 | H0Pi00 of (int)
 | H0Pb00 of (bool)
+| H0Pc00 of (char)
 | H0Ps00 of string
 //
 | H0Pint of token
@@ -763,6 +764,7 @@ h0exp_node =
 //
 | H0Ei00 of (int)
 | H0Eb00 of (bool)
+| H0Ec00 of (char)
 | H0Es00 of string
 //
 | H0Eint of (token)
