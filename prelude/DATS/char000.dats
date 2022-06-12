@@ -68,7 +68,7 @@ char_neq(x1, x2) =
 <>(*tmp*)
 sub_char_char
   (c1, c2) =
-  ( sint(c1) - sint(c2) )
+  ( code(c1) - code(c2) )
 //
 (* ****** ****** *)
 
@@ -84,7 +84,7 @@ char_lower
   if
   (c0 > 'Z')
   then c0 else
-  char(sint('a')+(sint(c0)-sint('A')))
+  char(code('a')+(code(c0)-code('A')))
   )
 ) (* end of [char_lower] *)
 
@@ -100,14 +100,14 @@ char_upper
   if
   (c0 > 'z')
   then c0 else
-  char(sint('A')+(sint(c0)-sint('a')))
+  char(code('A')+(code(c0)-code('a')))
   )
 ) (* end of [char_upper] *)
 
 (* ****** ****** *)
 //
 // HX:
-// For #implementing
+// For implementing
 // some g-operations
 //
 (* ****** ****** *)
@@ -132,6 +132,14 @@ g_neqrf<char> = g_noteq<char>
 #impltmp
 g_print<char> = char_print<(*nil*)>
 
+(* ****** ****** *)
+//
+// HX-2022-06-12:
+// For deprecation
+//
+#impltmp
+sint_make_char<> = char_code<>
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_char000.dats] *)

@@ -25,13 +25,25 @@ strn_strxize
 map0$fopr
 <char><sint>(cc) =
 let
-val ci = char2sint(cc)
+val ci = char_code(cc)
 in//let
   if ci >= 0 then ci else -1
 end
 } (*where*) // end of [strx_map0]
 
 val buf1 = lxbf1_make_cstrx(csrc)
+val (  ) =
+prerrln("buf1.get0() = ", char(buf1.get0()))
+val (  ) =
+prerrln("buf1.get1() = ", char(buf1.get1()))
+val (  ) =
+prerrln("buf1.get1() = ", char(buf1.get1()))
+val (  ) =
+prerrln("buf1.get1() = ", char(buf1.get1()))
+val (  ) =
+prerrln("buf1.get1() = ", char(buf1.get1()))
+val (  ) =
+prerrln("buf1.get1() = ", char(buf1.get1()))
 
 (* ****** ****** *)
 

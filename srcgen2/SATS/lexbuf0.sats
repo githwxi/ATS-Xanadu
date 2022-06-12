@@ -62,6 +62,9 @@ fun
 lxbf1_get1: // get char
 lxbf0_get0(lxbf1) // and incby1
 (* ****** ****** *)
+#symload get0 with lxbf1_get0
+#symload get1 with lxbf1_get1
+(* ****** ****** *)
 fun
 lxbf1_get_pbeg // get the
 (buf: !lxbf1): postn // beg-pos

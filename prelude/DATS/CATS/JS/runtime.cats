@@ -48,7 +48,7 @@ function
 XATS2JS_strn
   ( cs )
 {
-return cs;//cs:JS_strn
+return cs;//cs: JS_strn
 }
 /* ****** ****** */
 function
