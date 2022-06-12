@@ -140,10 +140,16 @@ strmcon_vt_cons(x0, strm_vt_sing(y0))
 #impltmp
 <a>(*tmp*)
 strm_vt_free(xs) = $free(xs)
+#impltmp
+<a>(*tmp*)
+strx_vt_free(xs) = $free(xs)
 //
 #impltmp
 {a:vt}
 g_free<strm_vt(a)> = strm_vt_free<a>
+#impltmp
+{a:vt}
+g_free<strx_vt(a)> = strx_vt_free<a>
 //
 (* ****** ****** *)
 //

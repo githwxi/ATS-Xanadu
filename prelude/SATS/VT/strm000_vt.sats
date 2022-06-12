@@ -125,6 +125,9 @@ strmcon_vt_pair
 fun
 <a:vt>
 strm_vt_free(strm_vt(a)): void
+fun
+<a:vt>
+strx_vt_free(strx_vt(a)): void
 
 (* ****** ****** *)
 //
