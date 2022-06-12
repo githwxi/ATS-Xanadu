@@ -145,7 +145,6 @@ f0_otherwise
 //
 } (*where*) // end of [gobj_lexing_tnode]
 
-
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0_utils0.dats] *)
