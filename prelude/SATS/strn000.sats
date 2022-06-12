@@ -276,7 +276,7 @@ strn_listize
 //
 fun<>
 strn_strmize
-(cs: strn): strm_vt(cgtz)
+(cs:strn): strm_vt( cgtz )
 (*
 HX-2022-06-12:
 [strn_strxize] with an
@@ -284,7 +284,7 @@ infinite trail of zeros!
 *)
 fun<>
 strn_strxize
-(cs: strn): strx_vt(char)
+(cs:strn): strx_vt( char )
 //
 fun<>
 strn_rlistize
@@ -341,9 +341,24 @@ strn_upper
 //
 (* ****** ****** *)
 //
-// HX-2020-05-30:
-// symbol overloading for strn
+(*
+HX-2020-05-30:
+symbol overloading for strn
+*)
 //
+(* ****** ****** *)
+(*
+HX-2022-06-12:
+common strn-constructors:
+*)
+#symload strn
+with strn_make_list of 1000
+#symload strn
+with strn_make_strm of 1000
+#symload strn
+with strn_make_list_vt of 1000
+#symload strn
+with strn_make_strm_vt of 1000
 (* ****** ****** *)
 //
 #symload

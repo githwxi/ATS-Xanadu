@@ -122,8 +122,8 @@ g_cmp<postn> = postn_cmp
 #impltmp
 g_cmp<loctn> = loctn_cmp
 #impltmp
-g_print<lcsrc>(pos) =
-lcsrc_fprint(g_print$out<>(), pos)
+g_print<lcsrc>(lcs) =
+lcsrc_fprint(g_print$out<>(), lcs)
 #impltmp
 g_print<postn>(pos) =
 postn_fprint(g_print$out<>(), pos)

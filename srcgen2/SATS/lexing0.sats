@@ -41,9 +41,10 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./xbasics.sats"
+#staload
+LOC = "./locinfo.sats"
 (* ****** ****** *)
-#staload LOC = "./locinfo.sats"
+#staload "./xbasics.sats"
 (* ****** ****** *)
 #typedef loc_t = $LOC.loc_t
 (* ****** ****** *)
