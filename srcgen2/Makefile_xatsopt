@@ -147,8 +147,8 @@ lexbuf0_dats
 lexbuf0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0.dats
 ######
 all_dats:: \
-lexbuf0_dats
-lexbuf0_cstrm0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrm0.dats
+lexbuf0_cstrx0_dats
+lexbuf0_cstrx0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrx0.dats
 ######
 
 ######

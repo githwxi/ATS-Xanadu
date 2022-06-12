@@ -41,10 +41,10 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
+//
 #absvtbx lxbf1_vtbx // ptr
 #vwtpdef lxbf1 = lxbf1_vtbx
-
+//
 (* ****** ****** *)
 
 #typedef
@@ -63,8 +63,19 @@ lxbf1_get1: // get char
 lxbf0_get0(lxbf1) // and incby1
 (* ****** ****** *)
 fun
-lxbf1_make_cstrm
-(inp: strm_vt(char)): lxbf1
+lxbf1_get_pbeg // get the
+(buf: !lxbf1): postn // beg-pos
+fun
+lxbf1_get_pcur // get the
+(buf: !lxbf1): postn // cur-pos
+(* ****** ****** *)
+fun
+lxbf1_get_cseg // get the char
+(buf: !lxbf1): list_vt(char) // seg
+(* ****** ****** *)
+fun
+lxbf1_make_cstrx // lxbf1 bases on a
+(inp: ~strx_vt(sint)): lxbf1 // stream
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexbuf0.sats] *)
