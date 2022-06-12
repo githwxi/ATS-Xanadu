@@ -270,12 +270,21 @@ strn_rforall(strn): bool
 (* ****** ****** *)
 //
 fun<>
-strn_strmize
-(cs: strn): strm_vt(cgtz)
-fun<>
 strn_listize
 {n:int}
 (strn(n)): list_vt(cgtz,n)
+//
+fun<>
+strn_strmize
+(cs: strn): strm_vt(cgtz)
+(*
+HX-2022-06-12:
+[strn_strxize] with an
+infinite trail of zeros!
+*)
+fun<>
+strn_strxize
+(cs: strn): strx_vt(char)
 //
 fun<>
 strn_rlistize

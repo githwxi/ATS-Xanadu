@@ -693,6 +693,29 @@ end (* end of [auxi00] *)
 (* ****** ****** *)
 
 fun
+auxc00
+( d2e0
+: d2exp): d3exp = let
+//
+val
+loc0 = d2e0.loc()
+val-
+D2Ec00(chr) = d2e0.node()
+//
+val
+t2p0 = the_t2ype_char
+//
+in
+let
+val node = D3Ec00(chr)
+in
+d23exp_make_node(loc0, t2p0, node)
+end
+end (* end of [auxc00] *)
+
+(* ****** ****** *)
+
+fun
 auxs00
 ( d2e0
 : d2exp): d3exp = let
@@ -2090,6 +2113,7 @@ case+
 d2e0.node() of
 //
 | D2Ei00 _ => auxi00(d2e0)
+| D2Ec00 _ => auxc00(d2e0)
 | D2Es00 _ => auxs00(d2e0)
 //
 | D2Eint _ => auxint(d2e0)
