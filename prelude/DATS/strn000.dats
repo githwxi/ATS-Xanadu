@@ -319,6 +319,41 @@ end // end of [else]
 (* ****** ****** *)
 #impltmp
 <>(*tmp*)
+strn_strxize(cs) =
+(
+  auxmain(0)) where
+{
+//
+val n0 = length(cs)
+//
+fun
+auxtail
+((*void*)): strx_vt(char) =
+$llazy
+(
+strxcon_vt_cons
+(CNUL, auxtail())) where
+{  #define CNUL '\000'  }
+and
+auxmain
+(i0: nint): strx_vt(char) =
+$llazy
+(
+if
+(i0 >= n0)
+then (!auxtail())
+else
+let
+  val ci = cs[i0]
+  val i0 = succ(i0)
+in
+  strxcon_vt_cons(ci, auxmain(i0))
+end // end of [else]
+)
+} (*where*) // end of [strn_strxize]
+(* ****** ****** *)
+#impltmp
+<>(*tmp*)
 strn_rlistize
   {n}( cs ) =
 (

@@ -86,6 +86,7 @@ datatype g1mac =
 //
 | G1Mint of int
 | G1Mbtf of bool
+| G1Mchr of char
 | G1Mstr of string
 //
 | G1Mif0 of
@@ -143,8 +144,11 @@ fprint!(out, "G1Mid0(", x0, ")")
 G1Mint(i0) =>
 fprint!(out, "G1Mint(", i0, ")")
 |
-G1Mbtf(i0) =>
-fprint!(out, "G1Mbtf(", i0, ")")
+G1Mbtf(b0) =>
+fprint!(out, "G1Mbtf(", b0, ")")
+|
+G1Mchr(c0) =>
+fprint!(out, "G1Mchr(", c0, ")")
 |
 G1Mstr(cs) =>
 fprint!(out, "G1Mstr(", cs, ")")
@@ -266,6 +270,22 @@ Note that [g1mac]
 can be used in statics
 *)
 val int = token2sint(tok)
+}
+//
+|
+G1Echr(tok) =>
+(
+G1Mchr(chr)) where
+{
+val chr = token2schr(tok)
+}
+//
+|
+G1Estr(tok) =>
+(
+G1Mstr(str)) where
+{
+val str = token2sstr(tok)
 }
 //
 |
@@ -1519,6 +1539,17 @@ d2exp_make_node(loc0, D2Eb00(btf))
 end // end of [auxbtf]
 //
 fun
+auxchr
+( g1m0
+: g1mac): d2exp =
+let
+val-
+G1Mchr(chr) = g1m0
+in
+d2exp_make_node(loc0, D2Ec00(chr))
+end // end of [auxchr]
+//
+fun
 auxstr
 ( g1m0
 : g1mac): d2exp =
@@ -1560,6 +1591,7 @@ case+ g1m0 of
 //
 | G1Mint _ => auxint(g1m0)
 | G1Mbtf _ => auxbtf(g1m0)
+| G1Mchr _ => auxchr(g1m0)
 | G1Mstr _ => auxstr(g1m0)
 //
 | G1Mapps _ => auxapps(g1m0)

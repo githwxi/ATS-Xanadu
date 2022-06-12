@@ -86,6 +86,16 @@ $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test06_locinfo_dats.js
 #
 ######
 #
+test:: \
+test07_lexbuf0
+test07_lexbuf0:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test07_lexbuf0_dats.js
+#
+######
+#
 # HX: for cleaning up
 #
 ######
