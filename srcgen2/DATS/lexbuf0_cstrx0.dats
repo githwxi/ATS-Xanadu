@@ -35,9 +35,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #include
-"./../HATS/xatsopt_sats.hats"
+"./../HATS\
+/xatsopt_sats.hats"
 #include
-"./../HATS/xatsopt_dats.hats"
+"./../HATS\
+/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
@@ -220,7 +222,7 @@ if
 then
 let
 val cc1 = char(ci1)
-in
+in//let
   buf.4 := cons_vt(cc1, buf.4)
 ; pstn1_incby_char(buf.1, cc1); ci1
 end else ci1 // end-of(if)
@@ -235,7 +237,7 @@ list_vt_cons
 (
 let
 val ci1 = char_code(cc1)
-in
+in//let
   buf.3 := ccs
 ; buf.4 := cons_vt(cc1, buf.4)
 ; pstn1_incby_char(buf.1, cc1); ci1
@@ -256,9 +258,12 @@ val+
 //
 fun
 buf_decby
-( pbeg: !pstn1
-, pcur: !pstn1 >> _
-, buf4: !list_vt(char)): void =
+( pbeg:
+! pstn1
+, pcur: 
+! pstn1 >> _
+, buf4:
+! list_vt(char)): void =
 let
 //
 fun
@@ -275,7 +280,7 @@ list_vt_nil() => ofs+res
 list_vt_cons(cc1, ccs) =>
 if
 (cc1 = '\n')
-then (res) // not need [ofs] 
+then res//no need for [ofs]
 else f0_nofs(ofs, res+1, ccs)
 )
 //
@@ -368,7 +373,7 @@ in//let
 ; buf.4 := nil_vt()
 ; buf.0 := copy(buf.1)
 ; (   $fold(buf); cseg   )
-endlet // end of [lxbf1_take_cseg]
+end // end of [lxbf1_take_cseg]
 
 (* ****** ****** *)
 //
@@ -381,8 +386,8 @@ val ps1 = PSTN1(0, 0, 0)
 val cs1 = list_vt_nil(*void*)
 val cs2 = list_vt_nil(*void*)
 in
-  LXBF1(ps0, ps1, cs0, cs1, cs2)
-endlet // end of [lxbf1_make_cstrx]
+LXBF1(ps0, ps1, cs0, cs1, cs2)
+end // end of [lxbf1_make_cstrx]
 //
 (* ****** ****** *)
 

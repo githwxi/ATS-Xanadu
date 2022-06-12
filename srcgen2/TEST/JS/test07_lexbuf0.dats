@@ -45,8 +45,7 @@ prerrln
 val (  ) =
 prerrln
 (
-"buf1.unget() = ", char(buf1.undo())
-)
+"buf1.unget() = ", char(buf1.undo()))
 
 val (  ) =
 prerrln("buf1.get0() = ", char(buf1.get0()))
