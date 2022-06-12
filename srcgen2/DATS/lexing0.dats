@@ -41,7 +41,34 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./lexing0_utils0.dats"
+(* ****** ****** *)
+#staload "./../SATS/lexbuf0.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+
+#implfun
+lxbf1_lexing_token
+(   buf   ) =
+(
+gobj_lexing_token<obj>(buf)
+) where
+{
+//
+#vwtpdef obj = lxbf1
+//
+#implfun
+gobj_lexing$getc1<obj>(buf) = buf.getc1()
+#implfun
+gobj_lexing$unget<obj>(buf) = buf.unget()
+#implfun
+gobj_lexing$fcseg<obj>(buf) = strn(buf.tcseg())
+#implfun
+gobj_lexing$fskip<obj>(buf) = free(buf.tcseg())
+//
+} (*where*) // end of [lxbf1_lexing_token]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0.dats] *)

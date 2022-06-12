@@ -65,16 +65,16 @@ PSTN1 of
 , sint(*ncol*))
 
 datavwtp
-lxbf1 =
-LXBF1 of
+lxbf2 =
+LXBF2 of
 ( pstn1 // start
 , pstn1 // current
 , strx_vt(sint) // char source
 , list_vt(char) // unget-stack
 , list_vt(char) // getc1-stack
-) (* end of [lxbf1] *)
+) (* end of [lxbf2] *)
 
-#absimpl lxbf1_vtbx = lxbf1
+#absimpl lxbf2_vtbx = lxbf2
 
 (* ****** ****** *)
 //
@@ -153,12 +153,12 @@ in//local
 (* ****** ****** *)
 
 #implfun
-lxbf1_get0
+lxbf2_getc0
 (   buf   ) =
 let
 //
 val+
-@LXBF1 _ = buf
+@LXBF2 _ = buf
 //
 in//let
 //
@@ -192,15 +192,15 @@ val buf2 = (buf.2: strx_vt(sint))
 list_vt_cons
 ( cc1, ccs ) => char_code(  cc1  )
 //
-end (* let *) // end of [lxbf1_get0]
+end (*let*) // end of [lxbf2_getc0]
 
 #implfun
-lxbf1_get1
+lxbf2_getc1
 (   buf   ) =
 let
 //
 val+
-@LXBF1 _ = buf
+@LXBF2 _ = buf
 //
 in//let
 //
@@ -244,17 +244,17 @@ in//let
 end
 )
 //
-end (* let *) // end of [lxbf1_get1]
+end (*let*) // end of [lxbf2_getc1]
 
 (* ****** ****** *)
 
 #implfun
-lxbf1_get1_undo
+lxbf2_unget
 (   buf   ) =
 let
 //
 val+
-@LXBF1 _ = buf
+@LXBF2 _ = buf
 //
 fun
 buf_decby
@@ -317,53 +317,54 @@ list_vt_nil
 | ~
 list_vt_cons
 (cc1, ccs) =>
-( buf.4 := ccs
-; buf.3 :=
-  cons_vt(cc1, buf.3)
-; buf_decby
-  (buf.0,buf.1,buf.4); char_code(cc1)
+(
+buf.4 := ccs;
+buf.3 :=
+cons_vt(cc1, buf.3);
+buf_decby
+(buf.0,buf.1,buf.4); char_code(cc1)
 ) (* end of [list_vt_cons] *)
 //
-end (*let*) //end-of(lxbf1_get1_undo)
+end (* let *) // end-of(lxbf2_unget)
 
 (* ****** ****** *)
 
 #implfun
-lxbf1_copy_pbeg
+lxbf2_copy_pbeg
 (   buf   ) =
 let
 //
 val+
-@LXBF1 _ = buf
+@LXBF2 _ = buf
 //
 val pbeg = postn(buf.0)
 //
 in//let
   (   $fold(buf); pbeg   )
-end // end of [lxbf1_copy_pbeg]
+end // end of [lxbf2_copy_pbeg]
 #implfun
-lxbf1_copy_pcur
+lxbf2_copy_pcur
 (   buf   ) =
 let
 //
 val+
-@LXBF1 _ = buf
+@LXBF2 _ = buf
 //
 val pcur = postn(buf.1)
 //
 in//let
   (   $fold(buf); pcur   )
-end // end of [lxbf1_copy_pcur]
+end // end of [lxbf2_copy_pcur]
 
 (* ****** ****** *)
 
 #implfun
-lxbf1_take_cseg
+lxbf2_take_cseg
 (   buf   ) =
 let
 //
 val+
-@LXBF1 _ = buf
+@LXBF2 _ = buf
 //
 val cseg =
 list_vt_reverse0(buf.4)
@@ -373,12 +374,12 @@ in//let
 ; buf.4 := nil_vt()
 ; buf.0 := copy(buf.1)
 ; (   $fold(buf); cseg   )
-end // end of [lxbf1_take_cseg]
+end // end of [lxbf2_take_cseg]
 
 (* ****** ****** *)
 //
 #implfun
-lxbf1_make_cstrx
+lxbf2_make_cstrx
 (   cs0   ) =
 let
 val ps0 = PSTN1(0, 0, 0)
@@ -386,8 +387,8 @@ val ps1 = PSTN1(0, 0, 0)
 val cs1 = list_vt_nil(*void*)
 val cs2 = list_vt_nil(*void*)
 in
-LXBF1(ps0, ps1, cs0, cs1, cs2)
-end // end of [lxbf1_make_cstrx]
+LXBF2(ps0, ps1, cs0, cs1, cs2)
+end // end of [lxbf2_make_cstrx]
 //
 (* ****** ****** *)
 
@@ -395,4 +396,4 @@ end (*local*) // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexbuf0_cstrx0.dats] *)
+(* end of [ATS3/XATSOPT_lexbuf0_cstrx2.dats] *)
