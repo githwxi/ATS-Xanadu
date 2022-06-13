@@ -84,8 +84,8 @@ in//let
 //
 case+ 0 of
 | _ when EMPq(cc0) => f0_EMP(buf, ci0)
-(*
 | _ when EOLq(cc0) => f0_EOL(buf, ci0)
+(*
 | _ when DIGITq(cc0) => f0_DIGIT(buf, ci0)
 *)
 | _ (* otherwise *) => f0_otherwise(buf, ci0)
@@ -125,7 +125,15 @@ end // end of [else]
 //
 end // end of [loop]
 //
-} (*where*) // end of [f0_EMPq]
+} (*where*) // end of [f0_EMP]
+//
+fun
+f0_EOL
+(buf: !obj, ci0: sint): tnode =
+(       T_EOL()       ) where
+{
+  val () = gobj_lexing$fskip(buf)
+} (*where*) // end of [f0_EOL]
 //
 fun
 f0_otherwise
