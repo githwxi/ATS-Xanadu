@@ -60,18 +60,20 @@ pq_fun(r0:type) = (!tkbf0 >> _) -> optn_vt(r0)
 (* ****** ****** *)
 //
 fun
-tokbuf_getk0
-  (buf: !tkbf0): token
+tokbuf_getk0(!tkbf0): token
 fun
-tokbuf_getk1
-  (buf: !tkbf0): token
+tokbuf_getk1(!tkbf0): token
 fun
-tokbuf_skip1
-  (buf: !tkbf0): (void)
+tokbuf_skip1(!tkbf0): (void)
 //
 #symload getk0 with tokbuf_getk0
 #symload getk1 with tokbuf_getk1
 #symload skip1 with tokbuf_skip1
+//
+fun
+tokbuf_make_list_vt
+  (tks: list_vt(token)): tkbf0
+#symload tokbuf with tokbuf_make_list_vt
 //
 (* ****** ****** *)
 //
