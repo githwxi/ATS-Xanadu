@@ -188,7 +188,7 @@ end else ci1 // end-of(if)
 {
 val buf2 = (buf.2: strx_vt(sint))
 }
-| ~
+| !
 list_vt_cons
 ( cc1, ccs ) => char_code(  cc1  )
 //
