@@ -72,6 +72,17 @@ DIGITq(c: char): bool
 fun
 XDIGITq(c: char): bool
 (* ****** ****** *)
+#extern
+fun
+IDFSTq(c: char): bool
+#extern
+fun
+IDRSTq(c: char): bool
+#extern
+fun
+IDSYMq(c: char): bool
+//
+(* ****** ****** *)
 //
 #implfun
 EOLq(ch) = (ch = '\n')
@@ -108,6 +119,51 @@ then true else (ch = '_')
 XDIGITq(ch) = isxdigit(ch)
 //
 (* ****** ****** *)
+//
+#implfun
+IDFSTq(ch) =
+(
+case+ 0 of
+|
+_ when isalnum(ch) => true
+|
+_ when ( ch = '_' ) => true
+//
+| _ (* otherwise *) => false
+//
+) (* case *) // end of [IDFSTq]
+//
+#implfun
+IDRSTq(ch) =
+(
+case+ 0 of
+|
+_ when isalnum(ch) => true
+|
+_ when ( ch = '_' ) => true
+|
+_ when ( ch = '$' ) => true  // HX: module-sep
+|
+_ when ( ch = '\'' ) => true // HX: ML-tradition
+//
+| _ (*  otherwise  *) => false
+//
+) (* case *) // end of [IDRSTq]
+//
+(* ****** ****** *)
+
+#implfun
+IDSYMq(ch) =
+(
+gseq_memberq
+<strn><cgtz>(symseq, ch)
+) where
+{
+val
+symseq = "%&+-./:=@~`^|*!?<>"
+} (*where*) // end of [IDSYMq]
+
+(* ****** ****** *)
 
 #impltmp
 <obj>
@@ -115,7 +171,7 @@ gobj_lexing_tnode
 (   buf   ) = let
 //
 val ci0 = 
-gobj_lexing$getc1(buf)
+gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
 //
 val () =
@@ -130,10 +186,14 @@ in//let
 case+ 0 of
 | _ when EMPq(cc0) => f0_EMP(buf, ci0)
 | _ when EOLq(cc0) => f0_EOL(buf, ci0)
+//
 (*
 | _ when DIGITq(cc0) => f0_DIGIT(buf, ci0)
 *)
-| _ (* otherwise *) => f0_otherwise(buf, ci0)
+//
+| _ when IDFSTq(cc0) => f0_IDFST(buf, ci0)
+//
+| _ (*  otherwise  *) => f0_otherwise(buf, ci0)
 //
 end where
 {
@@ -153,7 +213,7 @@ loop
 let
 //
 val ci0 = 
-gobj_lexing$getc1(buf)
+gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
 //
 in//let
@@ -162,8 +222,8 @@ if
 EMPq(cc0)
 then loop(buf) else
 let
-  val ci0 =
-  gobj_lexing$unget(buf)
+  val cix =
+  gobj_lexing$unget<obj>(buf)
 in//let
 T_BLANK(gobj_lexing$fcseg(buf))
 end // end of [else]
@@ -175,10 +235,44 @@ end // end of [loop]
 fun
 f0_EOL
 (buf: !obj, ci0: sint): tnode =
-(       T_EOL()       ) where
+let
+val () =
+gobj_lexing$fskip(buf) in T_EOL()
+end (*end*) // end of [f0_EOL]
+//
+fun
+f0_IDFST
+(buf: !obj, ci0: sint): tnode =
+  loop(      buf      ) where
 {
-  val () = gobj_lexing$fskip(buf)
-} (*where*) // end of [f0_EOL]
+//
+fun
+loop
+(buf: !obj): tnode =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+(*
+val () =
+println("f0_IDFST: cc0 = ", cc0)
+*)
+//
+in//let
+//
+if
+IDRSTq(cc0)
+then loop(buf) else let
+  val cix =
+  gobj_lexing$unget<obj>(buf)
+in
+T_IDALP(gobj_lexing$fcseg(buf))
+end (*else*) // end of [let]
+//
+end (* let *) // end of [loop]
+//
+} (*where*) // end of [f0_IDFST]
 //
 fun
 f0_otherwise
