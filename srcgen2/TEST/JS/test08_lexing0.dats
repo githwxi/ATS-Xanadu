@@ -18,12 +18,78 @@
 #include
 "./../../DATS/lexbuf0.dats"
 #include
-"./../../DATS/lexbuf0_cstrx0.dats"
+"./../../DATS/lexbuf0_cstrx1.dats"
+#include
+"./../../DATS/lexbuf0_cstrx2.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/lexing0.dats"
 #include
+"./../../DATS/lexing0_print0.dats"
+#include
 "./../../DATS/lexing0_utils0.dats"
+(* ****** ****** *)
+//
+val
+csrc1 =
+strx_vt_map0
+(
+strn_strxize
+("H e l l o, w o r l d !")) where
+{
+#impltmp
+map0$fopr
+<char><sint>(cc) =
+let
+val ci = char_code(cc)
+in//let
+  if ci > 0 then ci else -1
+end
+} (*where*) // end of [strx_map0]
+//
+(* ****** ****** *)
+
+val buf1 = lxbf1_make_cstrx(csrc1)
+
+(* ****** ****** *)
+
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+val (  ) =
+prerrln
+("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test08_lexing0.dats] *)

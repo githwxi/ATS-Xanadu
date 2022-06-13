@@ -69,7 +69,13 @@ char_code<>
 (   c0   ) = $UN.cast01( c0 )
 //
 #impltmp
+char_make_code<>
+(   i0   ) = $UN.cast01( i0 )
+#impltmp
 char_make_sint<>
+(   i0   ) = $UN.cast01( i0 )
+#impltmp
+char_make_uint<>
 (   i0   ) = $UN.cast01( i0 )
 //
 // HX-2022-06-12:
