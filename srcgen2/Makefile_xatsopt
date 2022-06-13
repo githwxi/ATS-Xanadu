@@ -189,6 +189,16 @@ staexp0_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp0_print0.dats
 
 ######
 all_dats:: \
+parsing_dats
+parsing_dats: ; $(XATSOPT) --dynamic DATS/parsing.dats
+######
+all_dats:: \
+parsing_tokbuf_dats
+parsing_tokbuf_dats: ; $(XATSOPT) --dynamic DATS/parsing_tokbuf.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
