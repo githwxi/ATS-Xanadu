@@ -776,7 +776,7 @@ then c0 else
 if
 (c0 > 'Z')
 then c0 else
-char(sint('a')+(sint(c0)-sint('A')))
+char(code('a')+(code(c0)-code('A')))
 )
 #impltmp
 tabulate$fopr<cgtz>(i0) = lower(cs[i0])
@@ -804,7 +804,7 @@ then c0 else
 if
 (c0 > 'z')
 then c0 else
-char(sint('A')+(sint(c0)-sint('a')))
+char(code('A')+(code(c0)-code('a')))
 )
 #impltmp
 tabulate$fopr<cgtz>(i0) = upper(cs[i0])

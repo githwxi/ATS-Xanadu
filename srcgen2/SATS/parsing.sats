@@ -60,6 +60,12 @@ pq_fun(r0:type) = (!tkbf0 >> _) -> optn_vt(r0)
 (* ****** ****** *)
 //
 fun
+tokbuf_free(~tkbf0): void
+#symload free with tokbuf_free
+//
+(* ****** ****** *)
+//
+fun
 tokbuf_getk0(!tkbf0): token
 fun
 tokbuf_getk1(!tkbf0): token
