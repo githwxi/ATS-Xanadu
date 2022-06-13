@@ -79,8 +79,8 @@ print("T_SPCHR(", rep, ")")
 T_IDENT(rep) =>
 print("T_IDENT(", rep, ")")
 |
-T_IDALN(rep) =>
-print("T_IDALN(", rep, ")")
+T_IDALP(rep) =>
+print("T_IDALP(", rep, ")")
 |
 T_IDSYM(rep) =>
 print("T_IDSYM(", rep, ")")

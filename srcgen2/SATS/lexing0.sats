@@ -72,7 +72,7 @@ datatype tnode =
 *)
 | T_IDENT of (strn) // string
 //
-| T_IDALN of (strn) // alnuml
+| T_IDALP of (strn) // alnuml
 | T_IDSYM of (strn) // symbol
 //
 | T_IDDLR of (strn) // $alnuml
