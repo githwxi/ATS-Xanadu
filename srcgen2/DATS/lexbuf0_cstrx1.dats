@@ -89,7 +89,7 @@ buf.1 of
 list_vt_nil() =>
 (
 case+
-!( buf2 ) of
+!( buf0 ) of
 | ~
 strxcon_vt_cons
 ( ci1, cis ) =>
@@ -107,9 +107,9 @@ end else ci1 // end-of(if)
 )
 ) where
 {
-val buf2 = (buf.0: strx_vt(sint))
+val buf0 = (buf.0: strx_vt(sint))
 }
-| ~
+| !
 list_vt_cons
 ( cc1, ccs ) => char_code(  cc1  )
 //
@@ -131,7 +131,7 @@ buf.1 of
 list_vt_nil() =>
 (
 case+
-!( buf2 ) of
+!( buf0 ) of
 | ~
 strxcon_vt_cons
 ( ci1, cis ) =>
@@ -149,7 +149,7 @@ end else ci1 // end-of(if)
 )
 ) where
 {
-  val buf2 = (buf.0: strx_vt(sint))
+  val buf0 = (buf.0: strx_vt(sint))
 }
 | ~
 list_vt_cons
