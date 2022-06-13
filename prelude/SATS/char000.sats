@@ -146,6 +146,48 @@ char_upper(c0: char): char
 //
 (* ****** ****** *)
 //
+fun<>
+char_isalpha(c0: char): bool
+fun<>
+sint_isalpha(c0: sint): bool
+//
+fun<>
+char_isalnum(c0: char): bool
+fun<>
+sint_isalnum(c0: sint): bool
+//
+fun<>
+char_isascii(c0: char): bool
+fun<>
+sint_isascii(c0: sint): bool
+//
+fun<>
+char_isblank(c0: char): bool
+fun<>
+sint_isblank(c0: sint): bool
+//
+fun<>
+char_isspace(c0: char): bool
+fun<>
+sint_isspace(c0: sint): bool
+//
+fun<>
+char_iscntrl(c0: char): bool
+fun<>
+sint_iscntrl(c0: sint): bool
+//
+fun<>
+char_isdigit(c0: char): bool
+fun<>
+sint_isdigit(c0: sint): bool
+//
+fun<>
+char_isxdigit(c0: char): bool
+fun<>
+sint_isxdigit(c0: sint): bool
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for char
 //
@@ -185,6 +227,32 @@ sint with sint_make_char of 1000
 (*
 #symload print with char_print of 1000
 *)
+//
+(* ****** ****** *)
+//
+#symload isalpha with char_isalpha of 1000
+#symload isalpha with sint_isalpha of 1000
+//
+#symload isalnum with char_isalnum of 1000
+#symload isalnum with sint_isalnum of 1000
+//
+#symload isascii with char_isascii of 1000
+#symload isascii with sint_isascii of 1000
+//
+#symload isblank with char_isblank of 1000
+#symload isblank with sint_isblank of 1000
+//
+#symload isspace with char_isspace of 1000
+#symload isspace with sint_isspace of 1000
+//
+#symload iscntrl with char_iscntrl of 1000
+#symload iscntrl with sint_iscntrl of 1000
+//
+#symload isdigit with char_isdigit of 1000
+#symload isdigit with sint_isdigit of 1000
+//
+#symload isxdigit with char_isxdigit of 1000
+#symload isxdigit with sint_isxdigit of 1000
 //
 (* ****** ****** *)
 

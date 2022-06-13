@@ -52,6 +52,26 @@ EOLq(ch: char): bool
 fun
 EMPq(ch: char): bool
 (* ****** ****** *)
+#extern
+fun
+DOTq(c: char): bool
+#extern
+fun
+CLNq(c: char): bool
+(* ****** ****** *)
+#extern
+fun
+ALNUMq(c: char): bool
+#extern
+fun
+ALNUM_q(c: char): bool
+#extern
+fun
+DIGITq(c: char): bool
+#extern
+fun
+XDIGITq(c: char): bool
+(* ****** ****** *)
 //
 #implfun
 EOLq(ch) = (ch = '\n')
@@ -61,6 +81,31 @@ if
 (ch = ' ')
 then true else
 (if (ch = '\t') then true else false)
+//
+(* ****** ****** *)
+//
+#implfun
+DOTq(ch) = ( ch = '.' )
+#implfun
+CLNq(ch) = ( ch = ':' )
+//
+(* ****** ****** *)
+//
+#implfun
+ALNUMq(ch) = isalnum(ch)
+#implfun
+DIGITq(ch) = isdigit(ch)
+//
+#implfun
+ALNUM_q(ch) =
+(
+if
+isalnum(ch)
+then true else (ch = '_')
+)
+//
+#implfun
+XDIGITq(ch) = isxdigit(ch)
 //
 (* ****** ****** *)
 
