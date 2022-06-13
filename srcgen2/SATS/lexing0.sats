@@ -208,7 +208,11 @@ gobj_lexing_token(buf: !obj): token
 //
 // HX: lxbf1-buf
 fun // contains no position info
-lxbf1_lexing_tnode(buf: !lxbf1): tnode
+lxbf1_lexing_tnode
+(    buf: !lxbf1    ): tnode
+fun // contains no position info
+lxbf1_lexing_tnodelst
+(    buf: !lxbf1    ): list_vt(tnode)
 //
 (* ****** ****** *)
 //
