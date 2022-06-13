@@ -123,6 +123,70 @@ XATS2JS_char_noteq
 char_noteq<> = XATS2JS_char_noteq
 (* ****** ****** *)
 //
+#extern
+fun
+XATS2JS_char_isalpha
+( c0: char ): bool = $extnam()
+#extern
+fun
+XATS2JS_sint_isalpha
+( c0: sint ): bool = $extnam()
+//
+#impltmp
+char_isalpha<> = XATS2JS_char_isalpha
+#impltmp
+sint_isalpha<> = XATS2JS_sint_isalpha
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_char_isalnum
+( c0: char ): bool = $extnam()
+#extern
+fun
+XATS2JS_sint_isalnum
+( c0: sint ): bool = $extnam()
+//
+#impltmp
+char_isalnum<> = XATS2JS_char_isalnum
+#impltmp
+sint_isalnum<> = XATS2JS_sint_isalnum
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_char_isdigit
+( c0: char ): bool = $extnam()
+#extern
+fun
+XATS2JS_sint_isdigit
+( c0: sint ): bool = $extnam()
+//
+#impltmp
+char_isdigit<> = XATS2JS_char_isdigit
+#impltmp
+sint_isdigit<> = XATS2JS_sint_isdigit
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_char_isxdigit
+( c0: char ): bool = $extnam()
+#extern
+fun
+XATS2JS_sint_isxdigit
+( c0: sint ): bool = $extnam()
+//
+#impltmp
+char_isxdigit<> = XATS2JS_char_isxdigit
+#impltmp
+sint_isxdigit<> = XATS2JS_sint_isxdigit
+//
+(* ****** ****** *)
+//
 //prelude/SATS/gint000.sats
 //
 (* ****** ****** *)
