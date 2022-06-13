@@ -73,6 +73,10 @@ all_sats:: \
 dynexp0_sats
 dynexp0_sats: ; $(XATSOPT) --static SATS/dynexp0.sats
 ######
+all_sats:: \
+parsing_sats
+parsing_sats: ; $(XATSOPT) --static SATS/parsing.sats
+######
 
 ######
 #

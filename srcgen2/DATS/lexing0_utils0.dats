@@ -278,8 +278,7 @@ in//let
 case+ 0 of
 |
 _ when (cc1 = '<') =>
-T_CLNLT
-(gobj_lexing$fcseg(buf))
+T_CLNLT(gobj_lexing$fcseg(buf))
 |
 _(* otherwise *) =>
 (
@@ -306,8 +305,7 @@ in//let
 case+ 0 of
 |
 _ when (cc1 = '<') =>
-T_DOTLT
-(gobj_lexing$fcseg(buf))
+T_DOTLT(gobj_lexing$fcseg(buf))
 |
 _(* otherwise *) =>
 (
