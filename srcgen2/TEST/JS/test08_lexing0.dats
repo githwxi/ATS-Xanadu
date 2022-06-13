@@ -133,7 +133,8 @@ strx_vt_map0
 (
 strn_strxize
 (
-"(\"lexing(buf1) = \", lxbf1_lexing_tnode(buf1))"
+"#define\
+(\"lexing(buf1) = \", $LXBF.lxbf1_lexing_tnode(buf1))"
 )
 ) where
 {
