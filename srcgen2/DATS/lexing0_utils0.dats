@@ -117,7 +117,7 @@ if
 EMPq(cc0)
 then loop(buf) else
 let
-  val () =
+  val ci0 =
   gobj_lexing$unget(buf)
 in//let
 T_BLANK(gobj_lexing$fcseg(buf))

@@ -49,10 +49,10 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
-lxbf1_lexing_token
+lxbf1_lexing_tnode
 (   buf   ) =
 (
-gobj_lexing_token<obj>(buf)
+gobj_lexing_tnode<obj>(buf)
 ) where
 {
 //

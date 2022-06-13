@@ -43,10 +43,14 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload
 LOC = "./locinfo.sats"
+#staload
+BUF = "./lexbuf0.sats"
 (* ****** ****** *)
 #staload "./xbasics.sats"
 (* ****** ****** *)
 #typedef loc_t = $LOC.loc_t
+#vwtpdef lxbf1 = $BUF.lxbf1
+#vwtpdef lxbf2 = $BUF.lxbf2
 (* ****** ****** *)
 //
 datatype tnode =
@@ -188,22 +192,30 @@ fun
 gobj_lexing$fskip(buf: !obj): void
 fun
 <obj:vt>
-gobj_lexing$unget(buf: !obj): void
+gobj_lexing$unget(buf: !obj): sint
 //
 (* ****** ****** *)
 //
-fun
-<obj:vt>
+fun // this does
+<obj:vt> // not need position info
 gobj_lexing_tnode(buf: !obj): tnode
-fun
-<obj:vt>
+//
+fun // HX: there is
+<obj:vt> // need for position info
 gobj_lexing_token(buf: !obj): token
 //
 (* ****** ****** *)
-
-fun
-lxbf1_lexing_token(buf: !lxbf1): token
-
+//
+// HX: lxbf1-buf
+fun // contains no position info
+lxbf1_lexing_tnode(buf: !lxbf1): tnode
+//
+(* ****** ****** *)
+//
+// HX: lxbf2-buf
+fun // can provide position info
+lxbf2_lexing_token(buf: !lxbf2): token
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0.sats] *)
