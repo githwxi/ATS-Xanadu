@@ -76,7 +76,7 @@ buf.curp := p0;
 buf.endp :=
 ptr0_add_gint<token>(p0, n0);
 //
-end // end of [tokbuf_make_list]
+end // end of [tokbuf_initize_list]
 
 (* ****** ****** *)
 //

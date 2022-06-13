@@ -95,13 +95,14 @@ val tok =
 (
 if
 (i1 < n0)
-then A0[i1] else A0[n0-1]): token
+then A0[i1] else A0[n0-1]
+) : token // end-of-[val]
 }
 end where
 {
   val+
   @TKBF0(A0, n0, !i0) = buf
-} (*where*) // end of [tokbuf_getk0]
+} (*where*) // end of [tokbuf_getk1]
 //
 (* ****** ****** *)
 //
@@ -117,7 +118,21 @@ end where
 {
   val+
   @TKBF0(A0, n0, !i0) = buf
-} (*where*) // end of [tokbuf_getk0]
+} (*where*) // end of [tokbuf_skip1]
+//
+(* ****** ****** *)
+//
+#impltmp
+tokbuf_make_list_vt
+  (tks) =
+(
+  TKBF0(A0, n0, i0)
+) where
+{
+  val i0 = 0
+  val n0 = list_vt_length1(tks)
+  val A0 = a1ptr_make_list_vt(tks)
+}(*where*)//end-of-[tokbuf_make_list_vt]
 //
 (* ****** ****** *)
 
