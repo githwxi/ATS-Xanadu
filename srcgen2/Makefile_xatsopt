@@ -151,8 +151,11 @@ lexbuf0_dats
 lexbuf0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0.dats
 ######
 all_dats:: \
-lexbuf0_cstrx0_dats
-lexbuf0_cstrx0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrx0.dats
+lexbuf0_cstrx1_dats
+lexbuf0_cstrx1_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrx1.dats
+all_dats:: \
+lexbuf0_cstrx2_dats
+lexbuf0_cstrx2_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrx2.dats
 ######
 
 ######

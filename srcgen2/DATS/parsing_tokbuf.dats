@@ -36,6 +36,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
@@ -48,16 +50,76 @@ local
 
 datavwtp
 tkbf0 =
+|
+{n:pos}
+{i:nat}
 TKBF0 of
-{n:int}
-{i:nat|i < n}
 ( a1ptr(token, n)
 , sint(n) (*asz*)
 , sint(i) (*idx*) )
 
 #absimpl tkbf0_vtbx = tkbf0
 
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
+
+#impltmp
+tokbuf_getk0(buf) =
+let
+val+
+@TKBF0
+(A0, n0, i0) = buf
+in
+($fold(buf); tok) where
+{
+val tok =
+(if
+i0 < n0
+then A0[i0] else A0[n0-1]) }
+end (*let*) // end of [tokbuf_getk0]
+
+(* ****** ****** *)
+//
+#impltmp
+tokbuf_getk1(buf) =
+let
+//
+val i1 = i0
+//
+in
+( i0 := i1+1
+; $fold(buf); tok) where
+{
+val tok =
+(
+if
+(i1 < n0)
+then A0[i1] else A0[n0-1]): token
+}
+end where
+{
+  val+
+  @TKBF0(A0, n0, !i0) = buf
+} (*where*) // end of [tokbuf_getk0]
+//
+(* ****** ****** *)
+//
+#impltmp
+tokbuf_skip1(buf) =
+let
+//
+val i1 = i0
+//
+in
+  i0 := i1+1; $fold(buf)
+end where
+{
+  val+
+  @TKBF0(A0, n0, !i0) = buf
+} (*where*) // end of [tokbuf_getk0]
+//
+(* ****** ****** *)
 
 end (*local*) // end of [local]
 
