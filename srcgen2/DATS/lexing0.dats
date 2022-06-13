@@ -71,4 +71,34 @@ gobj_lexing$fskip<obj>(buf) = free(buf.tcseg())
 
 (* ****** ****** *)
 
+#implfun
+lxbf1_lexing_tnodelst
+(   buf   ) =
+list_vt_reverse0
+(
+loop(buf, list_vt_nil())
+) where
+{
+//
+fun
+loop
+( buf: !lxbf1
+, res
+: list_vt(tnode)
+)
+: list_vt(tnode) =
+let
+val tnd =
+lxbf1_lexing_tnode(buf)
+val res = cons_vt(tnd, res)
+in
+case+ tnd of
+| T_EOF() => res
+| _(*non-T_EOF*) => loop(buf, res)
+end
+//
+} (*where*) // end of [lxbf1_lexing_tnodelst]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_lexing0.dats] *)
