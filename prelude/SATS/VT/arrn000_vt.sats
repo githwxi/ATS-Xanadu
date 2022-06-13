@@ -110,13 +110,33 @@ a0ptr_alloc
 ((*void*)): a0ptr(?a)
 (* ****** ****** *)
 //
+(*
+HX-2022-06-13:
+free = clear+mfree
+*)
 fun
 <a:vt>
-a0ptr_make(x0: a): a0ptr(a)
+a0ptr_free
+(A0: a0ptr(a)): void
 //
 fun
 <a:vt>
-a0ptr_free(A0: a0ptr(a)): void
+a0ptr_mfree
+(A0: a0ptr(~a)): void
+//
+fun
+<a:vt>
+a0ptr_clear
+{n:nat}
+( A0:
+! a0ptr(a) >> a0ptr(~a)
+) : void//end-of-function
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ptr_make(x0: a): a0ptr(a)
 //
 (* ****** ****** *)
 //
@@ -215,6 +235,22 @@ a1ptr_alloc
 (asz: sint(n)): a1ptr(?a, n)
 (* ****** ****** *)
 //
+(*
+HX-2022-06-13:
+free = clear+mfree
+*)
+fun
+<a:vt>
+a1ptr_free
+{n:nat}
+(A0: a1ptr(a, n)): void
+//
+fun
+<a:vt>
+a1ptr_mfree
+{n:nat}
+(A0: a1ptr(~a, n)): void
+//
 fun
 <a:vt>
 a1ptr_clear
@@ -229,7 +265,8 @@ fun
 <a:vt>
 a1ptr_make_nval
 {n:nat}
-(asz: sint(n), ini: a): a1ptr(a, n)
+( asz
+: sint(n), ini: a): a1ptr(a,n)
 //
 (* ****** ****** *)
 //

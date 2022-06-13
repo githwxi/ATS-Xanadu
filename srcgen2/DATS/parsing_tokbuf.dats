@@ -61,7 +61,19 @@ TKBF0 of
 #absimpl tkbf0_vtbx = tkbf0
 
 (* ****** ****** *)
+
 in//local
+
+(* ****** ****** *)
+//
+#impltmp
+tokbuf_free(buf) =
+(
+case+ buf of
+| ~
+TKBF0(A0, n0, i0) => free(A0)
+) (*case*)//end-of(tokbuf_free)
+//
 (* ****** ****** *)
 
 #impltmp
