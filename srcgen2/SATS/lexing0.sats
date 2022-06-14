@@ -228,5 +228,11 @@ fun // can provide position info
 lxbf2_lexing_token(buf: !lxbf2): token
 //
 (* ****** ****** *)
+//
+fun // HX: start from
+lexing_lctnize_all // postn(0, 0, 0)
+(tnds: list_vt(tnode)): list_vt(token)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0.sats] *)
