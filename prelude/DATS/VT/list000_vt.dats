@@ -836,21 +836,6 @@ end (* end of [list_vt_permutize0] *)
 //
 #impltmp
 <a>(*tmp*)
-list_vt_suffixq0
-  (xs1, xs2) =
-let
-  val xs1 =
-  list_vt_reverse0(xs1)
-  and xs2 =
-  list_vt_reverse0(xs2)
-in
-  list_vt_prefixq0<a>(xs1, xs2)
-end (*let*) // end of [list_vt_suffixq0]
-//
-(* ****** ****** *)
-//
-#impltmp
-<a>(*tmp*)
 list_vt_prefixq0
   (xs1, xs2) =
 (
@@ -893,6 +878,21 @@ list_vt_cons(x1, xs1) =>
 } (*where*) // end of [list_vt_prefixq0]
 //
 (* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_suffixq0
+  (xs1, xs2) =
+let
+  val xs1 =
+  list_vt_reverse0(xs1)
+  and xs2 =
+  list_vt_reverse0(xs2)
+in
+  list_vt_prefixq0<a>(xs1, xs2)
+end (*let*) // end of [list_vt_suffixq0]
+//
+(* ****** ****** *)
 (*
 HX:
 For implementing g-ops
@@ -902,12 +902,12 @@ For implementing g-ops
 #impltmp
 {a:vt}(*tmp*)
 g_free
-<list_vt(a)> = list_vt_free< a >
+<list_vt(a)> = list_vt_free<a>
 //
 #impltmp
 {a:vt}(*tmp*)
 g_copy
-<list_vt(a)> = list_vt_copy< a >
+<list_vt(a)> = list_vt_copy<a>
 //
 (* ****** ****** *)
 //
@@ -921,11 +921,22 @@ For implementing glseq-ops
 #impltmp
 {a:vt}
 glseq_nilq
-<list_vt(a)><a> = list_vt_nilq
+<list_vt(a)><a> = list_vt_nilq{a}
 #impltmp
 {a:vt}
 glseq_consq
-<list_vt(a)><a> = list_vt_consq
+<list_vt(a)><a> = list_vt_consq{a}
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:vt}
+glseq_uncons_raw
+<list_vt(a)><a>(xs) =
+let
+  val x0 = xs.0
+  val () = xs := xs.1 in x0
+end // end-of(glseq_uncons_raw)
 //
 (* ****** ****** *)
 //
@@ -938,16 +949,6 @@ glseq_copy
 glseq_free
 <list_vt(a)><a> = list_vt_free<a>
 //
-(* ****** ****** *)
-
-#impltmp
-{a:vt}
-glseq_uncons_raw
-<list_vt(a)><a>(xs) =
-let
-val x0 = xs.0
-val () = xs := xs.1 in x0 end
-
 (* ****** ****** *)
 //
 #impltmp
@@ -965,20 +966,17 @@ glseq_rlistize
 #impltmp
 {a:vt}
 gl_print1<list_vt(a)> =
-glseq_print1<list_vt(a)><a>
+glseq_print1<list_vt(a)>< a >
 //
 #impltmp
 {a:vt}
-glseq_print$beg
-<list_vt(a)><a>() = strn_print("(")
+glseq_print$beg<list_vt(a)><a>() = g_print("(")
 #impltmp
 {a:vt}
-glseq_print$end
-<list_vt(a)><a>() = strn_print(")")
+glseq_print$end<list_vt(a)><a>() = g_print(")")
 #impltmp
 {a:vt}
-glseq_print$sep
-<list_vt(a)><a>() = strn_print(",")
+glseq_print$sep<list_vt(a)><a>() = g_print(",")
 //
 (* ****** ****** *)
 //
@@ -1019,6 +1017,15 @@ glseq_map0_list
 {a:vt}
 glseq_map0_rlist
 <list_vt(a)><a> = list_vt_maprev0< a >
+//
+#impltmp
+{a:vt}
+glseq_map1_list
+<list_vt(a)><a> = list_vt_map1< a >
+#impltmp
+{a:vt}
+glseq_map1_rlist
+<list_vt(a)><a> = list_vt_maprev1< a >
 //
 (* ****** ****** *)
 
