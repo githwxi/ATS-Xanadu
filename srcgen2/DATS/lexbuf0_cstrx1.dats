@@ -248,7 +248,7 @@ let
 val ci =
 char_code(cc) in if ci > 0 then ci else (-1)
 endlet // end of [map0$fopr]
-} (*where*) // end of [strx_map0]
+} (*where*) // end of [lxbf1_make_strn]
 
 (* ****** ****** *)
 
