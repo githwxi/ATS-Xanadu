@@ -193,5 +193,14 @@ prerrln
 ("lexing(buf5) = ", lxbf1_lexing_tnodelst(buf5))
 //
 (* ****** ****** *)
+//
+val buf6 =
+lxbf1_make_fpath("./test01_xbasics.dats")
+//
+val (  ) =
+prerrln
+("lexing(buf6) = ", lxbf1_lexing_tnodelst(buf6))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test08_lexing0.dats] *)

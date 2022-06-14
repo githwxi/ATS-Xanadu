@@ -61,12 +61,6 @@ XATS2JS_NODE_fs_readFileSync
 
 (* ****** ****** *)
 //
-#impltmp
-<>(*tmp*)
-fpath_strmize_cgtz=fpath_strmize_char<>
-//
-(* ****** ****** *)
-//
 #extern
 fun
 XATS2JS_NODE_bool_fprint:

@@ -86,23 +86,23 @@ bool_fprint<> = XINTERP_bool_fprint
 //
 #extern
 fun
-XINTERP_char_eqzq
+XINTERP_char_eqz
 {c:char}
 ( c0
 : char(c)): bool(c=0)
 = $extnam()
 #extern
 fun
-XINTERP_char_neqzq
+XINTERP_char_neqz
 {c:char}
 ( c0
 : char(c)): bool(c>0)
 = $extnam()
 //
 #impltmp
-char_eqzq<> = XINTERP_char_eqzq
+char_eqz<> = XINTERP_char_eqz
 #impltmp
-char_neqzq<> = XINTERP_char_neqzq
+char_neqz<> = XINTERP_char_neqz
 //
 (* ****** ****** *)
 //

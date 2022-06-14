@@ -71,19 +71,6 @@ sint_make_char<>
 ( c0 ) = $UN.cast01(c0)
 //
 (* ****** ****** *)
-#extern
-fun
-XATS2CC_char_eqzq
-(c0: char): bool = $extnam()
-#impltmp
-char_eqzq<> = XATS2CC_char_eqzq
-#extern
-fun
-XATS2CC_char_neqzq
-(c0: char): bool = $extnam()
-#impltmp
-char_neqzq<> = XATS2CC_char_neqzq
-(* ****** ****** *)
 //
 #extern
 fun
@@ -141,6 +128,19 @@ XATS2CC_char_cmp
 , c2: char): sint = $extnam()
 #impltmp
 char_cmp<> = XATS2CC_char_cmp
+(* ****** ****** *)
+#extern
+fun
+XATS2CC_char_eqz
+(c0: char): bool = $extnam()
+#impltmp
+char_eqz<> = XATS2CC_char_eqz
+#extern
+fun
+XATS2CC_char_neqz
+(c0: char): bool = $extnam()
+#impltmp
+char_neqz<> = XATS2CC_char_neqz
 (* ****** ****** *)
 #extern
 fun

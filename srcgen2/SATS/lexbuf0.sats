@@ -92,6 +92,12 @@ fun
 lxbf1_make_strn
 (src: strn(*text*)): lxbf1
 fun
+lxbf1_make_fpath
+(src: strn(*path*)): lxbf1
+fun
+lxbf1_make_cstrm // lxbf1 bases on a
+(inp: ~strm_vt(char)): lxbf1 // stream
+fun
 lxbf1_make_cstrx // lxbf1 bases on a
 (inp: ~strx_vt(sint)): lxbf1 // stream
 (* ****** ****** *)

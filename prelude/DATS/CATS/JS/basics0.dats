@@ -88,24 +88,24 @@ sint_make_char<>
 (* ****** ****** *)
 #extern
 fun
-XATS2JS_char_eqzq
-(c0: char): bool = $extnam()
-#impltmp
-char_eqzq<> = XATS2JS_char_eqzq
-#extern
-fun
-XATS2JS_char_neqzq
-(c0: char): bool = $extnam()
-#impltmp
-char_neqzq<> = XATS2JS_char_neqzq
-(* ****** ****** *)
-#extern
-fun
 XATS2JS_char_cmp
 ( c1: char
 , c2: char): sint = $extnam()
 #impltmp
 char_cmp<> = XATS2JS_char_cmp
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_char_eqz
+(c0: char): bool = $extnam()
+#impltmp
+char_eqz<> = XATS2JS_char_eqz
+#extern
+fun
+XATS2JS_char_neqz
+(c0: char): bool = $extnam()
+#impltmp
+char_neqz<> = XATS2JS_char_neqz
 (* ****** ****** *)
 #extern
 fun
