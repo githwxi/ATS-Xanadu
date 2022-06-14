@@ -396,4 +396,23 @@ end (*local*) // end of [local]
 
 (* ****** ****** *)
 
+#implfun
+lxbf2_make_strn
+(   src   ) =
+lxbf2_make_cstrx
+(
+strx_vt_map0(strn_strxize(src))
+) where
+{
+#impltmp
+map0$fopr
+<char><sint>(cc) =
+let
+val ci =
+char_code(cc) in if ci > 0 then ci else (-1)
+endlet // end of [map0$fopr]
+} (*where*) // end of [lxbf2_make_strn]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_lexbuf0_cstrx2.dats] *)
