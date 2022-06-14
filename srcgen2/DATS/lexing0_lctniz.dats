@@ -43,6 +43,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xerrory.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 //
@@ -178,7 +180,8 @@ T_CMNT4_mlbl(lvl, txt) => pstn1_incs_if(pos, txt)
 //
 | _ (*   otherwise   *) =>
   (
-    assert(false) ) where
+    abort_interr() // HX: internal error
+  ) where
   { val () =
     prerrln("lexing_lctniz_tnode: tnd = ", tnd) }
 //

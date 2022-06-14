@@ -41,5 +41,21 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+//
+excptcon
+FatalErrorExn of ()
+excptcon // HX:internal
+FatalErrorExn_interr of ()
+//
+(* ****** ****** *)
+//
+// HX:
+// raising FatalErrorException
+// raising FatalErrorException_interr
+//
+fun abort((*void*)): void
+fun abort_interr((*void*)): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xerrory.sats] *)
