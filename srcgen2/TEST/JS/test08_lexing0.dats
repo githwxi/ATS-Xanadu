@@ -157,7 +157,7 @@ prerrln
 ("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
 //
 (* ****** ****** *)
-
+//
 val buf3 =
 lxbf1_make_strn
 (
@@ -167,6 +167,18 @@ lxbf1_make_strn
 val (  ) =
 prerrln
 ("lexing(buf3) = ", lxbf1_lexing_tnodelst(buf3))
+//
+(* ****** ****** *)
+//
+val buf4 =
+lxbf1_make_strn
+(
+"(* Hello? (* world!!! *) *)"
+)
+//
+val (  ) =
+prerrln
+("lexing(buf4) = ", lxbf1_lexing_tnodelst(buf4))
 //
 (* ****** ****** *)
 

@@ -292,6 +292,8 @@ case+ 0 of
 //
 | _ when IDSYMq(cc0) => f0_IDSYM(buf, ci0)
 //
+| _ when LPARENq(cc0) => f0_LPAREN(buf, ci0)
+//
 | _ when SQUOTEq(cc0) => f0_SQUOTE(buf, ci0)
 //
 | _ when DQUOTEq(cc0) => f0_DQUOTE(buf, ci0)
@@ -634,6 +636,35 @@ end // end of [else]
 end // end-of-[loop(buf:!obj)]
 //
 } (*where*) // end of [f0_IDSYM]
+
+(* ****** ****** *)
+
+fun
+f0_LPAREN
+( buf: !obj
+, ci0: sint): tnode =
+let
+//
+val ci1 = 
+gobj_lexing$getc1<obj>(buf)
+val cc1 = char_make_code(ci1)
+//
+in//let
+//
+case+ 0 of
+| _
+when (cc1 = '*') =>
+lexing_CMNT4_mlbl(buf, ci0, ci1)
+| _
+(*  otherwise  *) =>
+(
+  T_SPCHR(ci0)) where
+{
+  val cix =
+  gobj_lexing$unget(buf, ci1)
+  val () = gobj_lexing$fcnil(buf) }
+//
+end (*let*) // end of [ f0_LPAREN ]
 
 (* ****** ****** *)
 
@@ -995,7 +1026,7 @@ let
 //
 val ci1 =
 gobj_lexing$getc1<obj>(buf)
-val cc1 = char_make_code(ci0)
+val cc1 = char_make_code(ci1)
 //
 in//let
 //
@@ -1060,14 +1091,14 @@ loop1
 //
 val ci1 =
 gobj_lexing$getc1<obj>(buf)
-val cc1 = char_make_code(ci0)
+val cc1 = char_make_code(ci1)
 //
 in
 //
 case+ 0 of
 | _
 when STRSKq(cc1) => loop1(buf, lvl-0)
-| -
+| _
 when RPARENq(cc1) => loop0(buf, lvl-1)
 | _
 (*non-ASTRSK-LPAREN*) => loop0(buf, lvl)
@@ -1081,15 +1112,15 @@ loop2
 //
 val ci1 =
 gobj_lexing$getc1<obj>(buf)
-val cc1 = char_make_code(ci0)
+val cc1 = char_make_code(ci1)
 //
 in
 //
 case+ 0 of
 | _
-when STRSKq(c1) => loop0(buf, lvl+1)
+when STRSKq(cc1) => loop0(buf, lvl+1)
 | _
-when LPARENq(c1) => loop2(buf, lvl+0)
+when LPARENq(cc1) => loop2(buf, lvl+0)
 | _
 (*non-ASTRSK-LPAREN*) => loop0(buf, lvl)
 //
