@@ -185,7 +185,7 @@ prerrln
 val buf5 =
 lxbf1_make_strn
 (
-"(0, 10, 012, 0xFF, 123E+10, 3.14)"
+"(0, 10, 012ULL, 0xFF, 123E+10, 3.14)"
 )
 //
 val (  ) =
