@@ -91,7 +91,7 @@ prerrln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 
 (* ****** ****** *)
-
+(*
 val (  ) = prerrln("ALNUMq('a') = ", ALNUMq('a'))
 val (  ) = prerrln("ALNUMq('z') = ", ALNUMq('z'))
 val (  ) = prerrln("ALNUMq('0') = ", ALNUMq('0'))
@@ -110,9 +110,9 @@ val (  ) = prerrln("XDIGITq('g') = ", XDIGITq('g'))
 val (  ) = prerrln("XDIGITq('A') = ", XDIGITq('A'))
 val (  ) = prerrln("XDIGITq('F') = ", XDIGITq('F'))
 val (  ) = prerrln("XDIGITq('G') = ", XDIGITq('G'))
-
+*)
 (* ****** ****** *)
-
+(*
 val (  ) = prerrln("IDFSTq('z') = ", IDFSTq( 'z' ))
 val (  ) = prerrln("IDFSTq('X') = ", IDFSTq( 'X' ))
 val (  ) = prerrln("IDFSTq('_') = ", IDFSTq( '_' ))
@@ -124,56 +124,30 @@ val (  ) = prerrln("IDSYMq('#') = ", IDSYMq( '#' ))
 val (  ) = prerrln("IDSYMq('$') = ", IDSYMq( '$' ))
 val (  ) = prerrln("IDFSTq('\'') = ", IDFSTq( '\'' ))
 val (  ) = prerrln("IDRSTq('\'') = ", IDRSTq( '\'' ))
-
+*)
 (* ****** ****** *)
 //
-val
-csrc2 =
-strx_vt_map0
-(
-strn_strxize
-(
-"(lexing(buf1) = , $LXBF.lxbf1_lexing_tnode(buf1))"
-)
-) where
-{
-#impltmp
-map0$fopr
-<char><sint>(cc) =
-let
-val ci = char_code(cc) in if ci > 0 then ci else -1
-end
-} (*where*) // end of [strx_map0]
-//
-val buf2 = lxbf1_make_cstrx(csrc2)
-//
-val (  ) =
-prerrln("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
-//
-(* ****** ****** *)
-//
-val
-csrc2 =
-strx_vt_map0
-(
-strn_strxize
+val buf2 =
+lxbf1_make_strn
 (
 ":<abcde>\"Hello, world!\"'\\000''\\a'bcd012"
 )
-) where
-{
-#impltmp
-map0$fopr
-<char><sint>(cc) =
-let
-val ci = char_code(cc) in if ci > 0 then ci else -1
-end
-} (*where*) // end of [strx_map0]
-//
-val buf2 = lxbf1_make_cstrx(csrc2)
 //
 val (  ) =
-prerrln("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
+prerrln
+("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
+//
+(* ****** ****** *)
+//
+val buf2 =
+lxbf1_make_strn
+(
+"\"lexing(buf1) =\", $LX$BF.lxbf1_lexing_tnode(buf1), \"Hello?"
+)
+//
+val (  ) =
+prerrln
+("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
 //
 (* ****** ****** *)
 

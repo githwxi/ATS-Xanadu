@@ -89,6 +89,9 @@ lxbf1_take_clst // get the char
 #symload tclst with lxbf1_take_clst
 (* ****** ****** *)
 fun
+lxbf1_make_strn
+(src: strn(*text*)): lxbf1
+fun
 lxbf1_make_cstrx // lxbf1 bases on a
 (inp: ~strx_vt(sint)): lxbf1 // stream
 (* ****** ****** *)
