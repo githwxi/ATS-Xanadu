@@ -729,11 +729,19 @@ gseq_z2foreach
 //
 (* ****** ****** *)
 //
+(*
+HX-2022-06-13:
+[xs1] is a prefix of [xs2]
+*)
 fun
 <xs:t0>
 <x0:t0>
 gseq_prefixq
   (xs1: xs, xs2: xs): bool
+(*
+HX-2022-06-13:
+[xs1] is a suffix of [xs2]
+*)
 fun
 <xs:t0>
 <x0:t0>

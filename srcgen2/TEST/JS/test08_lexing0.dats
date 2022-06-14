@@ -126,8 +126,15 @@ val (  ) = prerrln("IDFSTq('\'') = ", IDFSTq( '\'' ))
 val (  ) = prerrln("IDRSTq('\'') = ", IDRSTq( '\'' ))
 *)
 (* ****** ****** *)
+val (  ) =
+prerrln("SLASHq('/') = ", SLASHq( '/' ))
+val (  ) =
+prerrln("SLASH4q('//Hello?!') = ", SLASH4q("//Hello?!"))
+val (  ) =
+prerrln("SLASH4q('////Hello?!') = ", SLASH4q("////Hello?!"))
+(* ****** ****** *)
 //
-val buf2 =
+val buf1 =
 lxbf1_make_strn
 (
 ":<abcde>\"Hello, world!\"'\\000''\\a'bcd012"
@@ -135,7 +142,7 @@ lxbf1_make_strn
 //
 val (  ) =
 prerrln
-("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
+("lexing(buf1) = ", lxbf1_lexing_tnodelst(buf1))
 //
 (* ****** ****** *)
 //
@@ -148,6 +155,18 @@ lxbf1_make_strn
 val (  ) =
 prerrln
 ("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
+//
+(* ****** ****** *)
+
+val buf3 =
+lxbf1_make_strn
+(
+"//A-line-comment\n////A-comment-of-rest-style"
+)
+//
+val (  ) =
+prerrln
+("lexing(buf3) = ", lxbf1_lexing_tnodelst(buf3))
 //
 (* ****** ****** *)
 
