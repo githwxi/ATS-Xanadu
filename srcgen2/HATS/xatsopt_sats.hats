@@ -10,6 +10,10 @@ For ATS3/XATSOPT
 #staload
 "xatslib\
 /libcats/SATS/synoug0.sats"
+(* ****** ****** *)
+#staload
+"xatslib\
+/githwxi/SATS/genv000.sats"
 #staload
 "xatslib\
 /githwxi/SATS/githwxi.sats"

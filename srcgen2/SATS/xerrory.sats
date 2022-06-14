@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -29,79 +29,17 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: April, 2020
+Start Time: June 14th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-//
-fun<>
-fpath_strmize_char
-(path: strn): strm_vt(char)
-//
-fun<>
-fpath_strmize_cgtz
-(path: strn): strm_vt(cgtz)
-fun<>
-fpath_strmize_line
-(path: strn): strm_vt(strn)
-fun<>
-fpath_strmize_line_vt
-(path: strn): strm_vt(strn_vt)
-//
+#include
+"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
-//
-fun
-<a0:vt>
-g_rand((*void*)): a0
-//
-(* ****** ****** *)
-//
-fun<>
-rand_seed
-((*void*)): uint
-fun<>
-rand_set_nil
-((*void*)): void
-fun<>
-rand_set_seed
-( seed : uint ) : void
-//
-(* ****** ****** *)
-//
-fun<>
-nint_rand(): nint
-fun<>
-nint_rand$limit(): sintgt(0)
-//
-fun<>
-nint_rand_limit
-{n:pos}(l0: int(n)): nintlt(n)
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-list_rand(): list_vt(a)
-fun<>
-list_rand$length(): nint
-//
-fun
-<a:vt>
-list_rand_length
-{n:nat}(ln: int(n)): list_vt(a,n)
-//
-(* ****** ****** *)
-//
-fun<>
-strn_rand(): strn_vt
-fun<>
-strn_rand$length(): nint
-//
-fun<>
-strn_rand_length
-{n:nat}(ln: int(n)): strn_vt(n)
-//
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_githwxi.sats] *)
+(* end of [ATS3/XATSOPT_xerrory.sats] *)

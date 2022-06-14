@@ -29,79 +29,38 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: April, 2020
+Start Time: June 14th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 //
-fun<>
-fpath_strmize_char
-(path: strn): strm_vt(char)
+fun
+<x0:t0>
+<e1:vt>
+forall_env1$test
+(x0: x0, e1: !e1): bool
 //
-fun<>
-fpath_strmize_cgtz
-(path: strn): strm_vt(cgtz)
-fun<>
-fpath_strmize_line
-(path: strn): strm_vt(strn)
-fun<>
-fpath_strmize_line_vt
-(path: strn): strm_vt(strn_vt)
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+gseq_forall_env1(xs, !e1): bool
 //
 (* ****** ****** *)
 //
 fun
-<a0:vt>
-g_rand((*void*)): a0
-//
-(* ****** ****** *)
-//
-fun<>
-rand_seed
-((*void*)): uint
-fun<>
-rand_set_nil
-((*void*)): void
-fun<>
-rand_set_seed
-( seed : uint ) : void
-//
-(* ****** ****** *)
-//
-fun<>
-nint_rand(): nint
-fun<>
-nint_rand$limit(): sintgt(0)
-//
-fun<>
-nint_rand_limit
-{n:pos}(l0: int(n)): nintlt(n)
-//
-(* ****** ****** *)
+<x0:t0>
+<e1:vt>
+foreach_env1$work
+(x0: x0, e1: !e1): void
 //
 fun
-<a:vt>
-list_rand(): list_vt(a)
-fun<>
-list_rand$length(): nint
-//
-fun
-<a:vt>
-list_rand_length
-{n:nat}(ln: int(n)): list_vt(a,n)
-//
-(* ****** ****** *)
-//
-fun<>
-strn_rand(): strn_vt
-fun<>
-strn_rand$length(): nint
-//
-fun<>
-strn_rand_length
-{n:nat}(ln: int(n)): strn_vt(n)
+<xs:t0>
+<x0:t0>
+<e1:vt>
+gseq_foreach_env1(xs, !e1): void
 //
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_githwxi.sats] *)
+(* end of [xatslib_githwxi_genv000.sats] *)

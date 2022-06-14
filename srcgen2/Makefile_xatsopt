@@ -38,6 +38,10 @@ xbasics_sats
 xbasics_sats: ; $(XATSOPT) --static SATS/xbasics.sats
 ######
 all_sats:: \
+xerrory_sats
+xerrory_sats: ; $(XATSOPT) --static SATS/xerrory.sats
+######
+all_sats:: \
 xstamp0_sats
 xstamp0_sats: ; $(XATSOPT) --static SATS/xstamp0.sats
 ######
