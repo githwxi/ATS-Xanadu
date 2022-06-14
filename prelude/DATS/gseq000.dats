@@ -1316,6 +1316,10 @@ gseq_strmize<xs><x0>(xs1)
 and xs2 =
 gseq_strmize<xs><x0>(xs2)
 } (* end of [gseq_prefixq] *)
+(*
+//HX-2022-06-13:
+//[xs1] is a prefix of [xs2]
+*)
 //
 #impltmp
 <xs><x0>
@@ -1330,6 +1334,10 @@ gseq_listize<xs><x0>( xs1 )
 and xs2 =
 gseq_listize<xs><x0>( xs2 )
 } (* end of [gseq_suffixq] *)
+(*
+//HX-2022-06-13:
+//[xs1] is a suffix of [xs2]
+*)
 //
 (* ****** ****** *)
 //

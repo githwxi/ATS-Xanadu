@@ -91,6 +91,16 @@ SYDLRq(ch: char): bool
 (* ****** ****** *)
 #extern
 fun
+SLASHq(ch: char): bool
+#extern
+fun
+STRSKq(ch: char): bool
+#extern
+fun
+SLASH4q(cs: strn): bool
+(* ****** ****** *)
+#extern
+fun
 SQUOTEq(ch: char): bool
 #extern
 fun
@@ -182,12 +192,50 @@ SYSRPq(ch) = ( ch = '#' )
 #implfun
 SYDLRq(ch) = ( ch = '$' )
 (* ****** ****** *)
-
+//
+#implfun
+SLASHq(ch) = ( ch = '/' )
+#implfun
+STRSKq(ch) = ( ch = '*' )
+//
+#implfun
+SLASH4q(cs) =
+let
+val s4 = "////" in
+gseq_prefixq<strn><char>(s4, cs)
+end (*let*)// end-of-[ SLASH4q ]
+//
+(* ****** ****** *)
+//
 #implfun
 SQUOTEq(ch) = ( ch = '\'' )
 #implfun
 DQUOTEq(ch) = ( ch = '\"' )
-
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<obj:vt>
+lexing_CMNT1_line
+(buf: !obj, sym: strn): tnode
+#extern
+fun
+<obj:vt>
+lexing_CMNT2_rest
+(buf: !obj, sym: strn): tnode
+//
+#extern
+fun
+<obj:vt>
+lexing_CMNT3_ccbl // cc-style
+(buf: !obj, ci0: sint, ci1: sint): tnode
+#extern
+fun
+<obj:vt>
+lexing_CMNT4_mlbl // ml-style
+(buf: !obj, ci0: sint, ci1: sint): tnode
+//
 (* ****** ****** *)
 
 #impltmp
@@ -215,8 +263,10 @@ case+ 0 of
 | _ when EMPq(cc0) => f0_EMP(buf, ci0)
 | _ when EOLq(cc0) => f0_EOL(buf, ci0)
 //
-| _ when DOTq(cc0) => f0_DOT(buf, ci0)
 | _ when CLNq(cc0) => f0_CLN(buf, ci0)
+| _ when DOTq(cc0) => f0_DOT(buf, ci0)
+//
+| _ when SLASHq(cc0) => f0_SLASH(buf, ci0)
 //
 (*
 | _ when DIGITq(cc0) => f0_DIGIT(buf, ci0)
@@ -249,7 +299,7 @@ f0_EMP
 //
 //HX: [ci0]: dummy
 //
-fun
+fnx
 loop
 (buf: !obj): tnode =
 let
@@ -283,7 +333,7 @@ f0_EOL
 let
 val () =
 gobj_lexing$fcnil(buf) in T_EOL()
-end (* let *) // end of [f0_EOL]
+end (* let *)// end-of-[ f0_EOL ]
 
 (* ****** ****** *)
 
@@ -298,7 +348,7 @@ gobj_lexing$getc1<obj>(buf)
 val cc1 = char_make_code(ci1)
 //
 in//let
-
+//
 case+ 0 of
 |
 _ when (cc1 = '<') =>
@@ -311,7 +361,8 @@ _(* otherwise *) =>
 val cix =
 gobj_lexing$unget<obj>(buf, ci1)
 }
-end (* let *) // end of [f0_CLN]
+//
+end (* let *)// end of [ f0_CLN ]
 
 (* ****** ****** *)
 
@@ -345,13 +396,55 @@ end (* let *) // end of [f0_DOT]
 (* ****** ****** *)
 
 and
+f0_SLASH
+( buf: !obj
+, ci0: sint): tnode = let
+//
+val ci1 = 
+gobj_lexing$getc1<obj>(buf)
+val cc1 = char_make_code(ci1)
+//
+in
+//
+case+ 0 of
+| _
+when (cc1 = '*') =>
+lexing_CMNT3_ccbl
+(  buf, ci0, ci1  ) // cc-style
+| _
+when (cc1 = '/') =>
+let
+val-
+T_IDSYM
+( sym ) = f0_IDSYM(buf, ci0)
+in//let
+if
+SLASH4q(sym)
+then
+lexing_CMNT2_rest(buf, sym) // rest-style
+else
+lexing_CMNT1_line(buf, sym) // line-style
+end (*let*) // end-of-SLASH
+| _
+(*  otherwise  *) =>
+(
+  f0_IDSYM(buf, ci0) where
+{
+  val cix =
+  gobj_lexing$unget(buf, ci1) } )
+//
+end (* let *) // end of [f0_SLASHq]
+
+(* ****** ****** *)
+
+and
 f0_IDFST
 ( buf: !obj
 , ci0: sint): tnode =
   loop( buf ) where
 {
 //
-fun
+fnx
 loop
 (buf: !obj): tnode =
 let
@@ -361,7 +454,7 @@ gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
 (*
 val () =
-println("f0_IDFST: cc0 = ", cc0)
+println("f0_IDFST: loop: cc0 = ", cc0)
 *)
 //
 in//let
@@ -389,7 +482,7 @@ f0_SYSRP
 loop(buf, 0)) where
 {
 //
-fun
+fnx
 loop
 ( buf: !obj
 , kk0: sint): tnode = let
@@ -397,6 +490,11 @@ loop
 val ci1 = 
 gobj_lexing$getc1<obj>(buf)
 val cc1 = char_make_code(ci1)
+//
+(*
+val () =
+println("f0_SYSRP: loop: cc0 = ", cc0)
+*)
 //
 in//let
 //
@@ -431,7 +529,7 @@ f0_SYDLR
 loop(buf, 0)) where
 {
 //
-fun
+fnx
 loop
 ( buf: !obj
 , kk0: sint): tnode =
@@ -440,6 +538,11 @@ let
 val ci1 = 
 gobj_lexing$getc1<obj>(buf)
 val cc1 = char_make_code(ci1)
+//
+(*
+val () =
+println("f0_SYDLR: loop: cc0 = ", cc0)
+*)
 //
 in//let
 //
@@ -491,13 +594,18 @@ f0_IDSYM
   loop( buf ) where
 {
 //
-fun
+fnx
 loop
 (buf: !obj): tnode = let
 //
 val ci0 =
 gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
+//
+(*
+val () =
+println("f0_IDSYM: loop: cc0 = ", cc0)
+*)
 //
 in//let
 //
@@ -583,7 +691,7 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-prerrln("loop30: cc0 = ", cc0)
+prerrln("f0_SQUOTE: loop30: cc0 = ", cc0)
 *)
 //
 in//let
@@ -674,7 +782,7 @@ f0_DQUOTE
   loop( buf ) where
 {
 //
-fun
+fnx
 loop
 ( buf: !obj ): tnode =
 let
@@ -730,7 +838,7 @@ _ when cc0 = '\"' =>
     val len = length1(ccs)
   in// let // HX: unclosed!
     T_STRN2_ncls(strn(ccs), len)
-  end
+  end // else // end-of-(if)
 )
 //
 end // end-of-[loop(buf:!obj)]
@@ -754,6 +862,140 @@ f0_otherwise
 (* ****** ****** *)
 
 } (*where*) // end of [gobj_lexing_tnode]
+
+(* ****** ****** *)
+
+#impltmp
+<obj>
+lexing_CMNT1_line
+  (buf, sym) =
+  loop0(buf) where
+{
+//
+fun
+loop0
+(buf: !obj): tnode =
+let
+//
+val ci0 = 
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in
+if
+EOLq(cc0)
+then
+let
+val cix =
+gobj_lexing$unget(buf, ci0)
+in
+T_CMNT1_line
+(sym, gobj_lexing$fcseg<obj>(buf))
+end // end of [then]
+else
+(
+if
+(ci0 >= 0)
+then loop0(buf)
+else
+T_CMNT1_line
+(sym, gobj_lexing$fcseg<obj>(buf))
+) (* end of [else] *)
+end // end of [loop0]
+//
+} (* end of [lexing_COMMENT_line] *)
+
+(* ****** ****** *)
+
+#impltmp
+<obj>
+lexing_CMNT2_rest
+  (buf, sym) =
+  loop0(buf) where
+{
+//
+fun
+loop0
+(buf: !obj): tnode =
+let
+//
+val ci0 = 
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in
+if
+(ci0 >= 0)
+then loop0(buf)
+else
+T_CMNT2_rest
+(sym, gobj_lexing$fcseg<obj>(buf))
+end (*let*) // end of [loop0]
+//
+} (* end of [lexing_COMMENT_rest] *)
+
+(* ****** ****** *)
+
+#impltmp
+<obj>(*tmp*)
+lexing_CMNT3_ccbl
+  (buf, ci0, ci1) =
+(
+loop0(buf, 1(*lvl*))) where
+{
+//
+fnx
+loop0
+( buf: !obj
+, lvl: sint): tnode =
+if
+(lvl > 0)
+then let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+case+ 0 of
+| _
+when STRSKq(cc0) => loop1(buf, lvl)
+| _
+(*non-ASTERISK*) =>
+(
+if
+(ci0 >= 0)
+then loop0(buf, lvl) else
+T_CMNT3_ccbl(lvl, gobj_lexing$fcseg(buf))
+)
+//
+end // end of [then]
+else
+T_CMNT3_ccbl(lvl, gobj_lexing$fcseg(buf))
+//
+and
+loop1
+( buf: !obj
+, lvl: sint): tnode =
+let
+//
+val ci1 =
+gobj_lexing$getc1<obj>(buf)
+val cc1 = char_make_code(ci0)
+//
+in
+//
+case+ 0 of
+| _
+when SLASHq(cc1) => loop0(buf, lvl-1)
+| _
+when STRSKq(cc1) => loop1(buf, lvl-0)
+| _(*non-SLASH-STRSK*) => loop0(buf, lvl)
+//
+end (*let*) // end of [ loop1(buf,lvl) ]
+//
+} (*where*) // end of [lexing_CMNT3_ccbl]
 
 (* ****** ****** *)
 
