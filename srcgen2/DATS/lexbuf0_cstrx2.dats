@@ -45,24 +45,22 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-"./../SATS/locinfo.sats"
+#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
-#staload
-"./../SATS/lexbuf0.sats"
+#staload "./../SATS/lexbuf0.sats"
 (* ****** ****** *)
-#symload
-char with char_make_sint
+#symload char with char_make_sint
 (* ****** ****** *)
 
 local
+
+(* ****** ****** *)
 
 datavwtp
 pstn1 =
 PSTN1 of
 ( sint(*ntot*)
-, sint(*nrow*)
-, sint(*ncol*))
+, sint(*nrow*), sint(*ncol*))
 
 datavwtp
 lxbf2 =

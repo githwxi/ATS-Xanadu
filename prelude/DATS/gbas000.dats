@@ -5,7 +5,8 @@
 (* ****** ****** *)
 (*
 #staload
-"./../SATS/gbas.sats"
+"prelude\
+/SATS/gbas000.sats"
 *)
 (* ****** ****** *)
 
