@@ -101,6 +101,12 @@ SLASH4q(cs: strn): bool
 (* ****** ****** *)
 #extern
 fun
+LPARENq(ck: char): bool
+fun
+RPARENq(ch: char): bool
+(* ****** ****** *)
+#extern
+fun
 SQUOTEq(ch: char): bool
 #extern
 fun
@@ -204,6 +210,13 @@ let
 val s4 = "////" in
 gseq_prefixq<strn><char>(s4, cs)
 end (*let*)// end-of-[ SLASH4q ]
+//
+(* ****** ****** *)
+//
+#implfun
+LPARENq(ch) = ( ch = '\(' )
+#implfun
+RPARENq(ch) = ( ch = '\)' )
 //
 (* ****** ****** *)
 //
@@ -903,7 +916,7 @@ T_CMNT1_line
 ) (* end of [else] *)
 end // end of [loop0]
 //
-} (* end of [lexing_COMMENT_line] *)
+}(*where*)//end-of(lexing_CMNT1_line)
 
 (* ****** ****** *)
 
@@ -932,7 +945,7 @@ T_CMNT2_rest
 (sym, gobj_lexing$fcseg<obj>(buf))
 end (*let*) // end of [loop0]
 //
-} (* end of [lexing_COMMENT_rest] *)
+}(*where*)//end-of(lexing_CMNT2_rest)
 
 (* ****** ****** *)
 
@@ -984,7 +997,7 @@ val ci1 =
 gobj_lexing$getc1<obj>(buf)
 val cc1 = char_make_code(ci0)
 //
-in
+in//let
 //
 case+ 0 of
 | _
@@ -996,6 +1009,93 @@ when STRSKq(cc1) => loop1(buf, lvl-0)
 end (*let*) // end of [ loop1(buf,lvl) ]
 //
 } (*where*) // end of [lexing_CMNT3_ccbl]
+
+(* ****** ****** *)
+
+#impltmp
+<obj>
+lexing_CMNT4_mlbl
+  (buf, c0, c1) =
+(
+loop0(buf, 1(*lvl*))) where
+{
+//
+fun
+loop0
+( buf: !obj
+, lvl: sint): tnode =
+if
+(lvl > 0)
+then let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+case+ 0 of
+| _
+when STRSKq(cc0) => loop1(buf, lvl)
+| _
+when LPARENq(cc0) => loop2(buf, lvl)
+| _
+(* non-ASTRSK-LPAREN *) =>
+(
+if
+(ci0 >= 0)
+then loop0(buf, lvl)
+else
+T_CMNT4_mlbl(lvl, gobj_lexing$fcseg(buf))
+)
+//
+end // end of [then]
+else
+T_CMNT4_mlbl(lvl, gobj_lexing$fcseg(buf))
+//
+and
+loop1
+( buf: !obj
+, lvl: sint): tnode = let
+//
+val ci1 =
+gobj_lexing$getc1<obj>(buf)
+val cc1 = char_make_code(ci0)
+//
+in
+//
+case+ 0 of
+| _
+when STRSKq(cc1) => loop1(buf, lvl-0)
+| -
+when RPARENq(cc1) => loop0(buf, lvl-1)
+| _
+(*non-ASTRSK-LPAREN*) => loop0(buf, lvl)
+//
+end // end of [loop1]
+//
+and
+loop2
+( buf: !obj
+, lvl: sint): tnode = let
+//
+val ci1 =
+gobj_lexing$getc1<obj>(buf)
+val cc1 = char_make_code(ci0)
+//
+in
+//
+case+ 0 of
+| _
+when STRSKq(c1) => loop0(buf, lvl+1)
+| _
+when LPARENq(c1) => loop2(buf, lvl+0)
+| _
+(*non-ASTRSK-LPAREN*) => loop0(buf, lvl)
+//
+end // end of [loop2]
+//
+} (*where*) // end of [lexing_CMNT4_mlbl]
 
 (* ****** ****** *)
 
