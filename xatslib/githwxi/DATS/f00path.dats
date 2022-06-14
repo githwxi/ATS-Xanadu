@@ -44,6 +44,40 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+fpath_strmize_cgtz
+  (path) =
+let
+val cs = 
+fpath_strmize_char<>(path)
+in
+  fmain(cs) where
+{
+fun
+fmain
+( cs
+: strm_vt(char)
+)
+: strm_vt(cgtz) =
+$llazy
+(
+case+ !cs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(c1, cs) =>
+if
+eqz(c1)
+then !(fmain(cs))
+else strmcon_vt_cons(c1, fmain(cs))
+)
+}
+endlet//end-of-(fpath_strmize_cgtz)
+//
+(* ****** ****** *)
 
 #impltmp
 <>(*tmp*)

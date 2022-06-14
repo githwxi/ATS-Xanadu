@@ -248,8 +248,47 @@ let
 val ci =
 char_code(cc) in if ci > 0 then ci else (-1)
 endlet // end of [map0$fopr]
-} (*where*) // end of [lxbf1_make_strn]
+} (*where*) // end-of-[lxbf1_make_strn(src)]
 
+(* ****** ****** *)
+
+#implfun
+lxbf1_make_cstrm
+(   cs0   ) =
+(
+lxbf1_make_cstrx(fmain(cs0))
+) where
+{
+fun
+fzero(): strx_vt(sint) =
+$llazy
+(strxcon_vt_cons(-1, fzero()))
+fun
+fmain
+( cs0
+: strm_vt(char)): strx_vt(sint) =
+$llazy
+(
+case+ !cs0 of
+| ~
+strmcon_vt_nil
+((*void*)) => strxcon_vt_cons(-1, fzero())
+| ~
+strmcon_vt_cons
+(ch1, cs1) => strxcon_vt_cons(char_code(ch1), fmain(cs1))
+)
+} (*where*) // end-of(lxbf1_make_cstrm(cs0))
+
+(* ****** ****** *)
+//
+#implfun
+lxbf1_make_fpath
+(   fpx   ) =
+lxbf1_make_cstrm(cs0) where
+{
+  val cs0 = fpath_strmize_char<>(fpx)
+} (*where*) // end-of(lxbf1_make_fpath(fpx))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexbuf0_cstrx1.dats] *)

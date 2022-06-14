@@ -73,13 +73,15 @@ char_print(char): void
 (* ****** ****** *)
 //
 fun<>
-char_eqzq
+char_eqz
 {c:char}
 (c0: char(c)): bool(c=0)
 fun<>
-char_neqzq
+char_neqz
 {c:char}
 (c0: char(c)): bool(c>0)
+//
+(* ****** ****** *)
 //
 fun<>
 char_equal
@@ -93,13 +95,17 @@ char_noteq
 , c2: char(c2)): bool(c1!=c2)
 //
 (* ****** ****** *)
-
+//
+fun<>
+add_char_sint
+(c1: char, i2: sint): char
+//
 fun<>
 sub_char_char
 {c1,c2:char}
 ( c1: char(c1)
 , c2: char(c2)): sint(c1 - c2)
-
+//
 (* ****** ****** *)
 fun<>
 char_lt
@@ -221,7 +227,14 @@ sint with sint_make_char of 1000
 (* ****** ****** *)
 #symload cmp with char_cmp of 1000
 (* ****** ****** *)
+#symload eqz with char_eqz of 1000
+#symload neqz with char_neqz of 1000
+(* ****** ****** *)
+#symload + with add_char_sint of 1000
 #symload - with sub_char_char of 1000
+(* ****** ****** *)
+#symload equal with char_equal of 1000
+#symload noteq with char_noteq of 1000
 (* ****** ****** *)
 //
 (*

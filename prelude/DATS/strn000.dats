@@ -50,10 +50,12 @@ strn_make_list<>
 
 #impltmp<>
 strn_nilq(cs) =
-char_eqzq(strn_head_opt(cs))
+char_eqz
+(strn_head_opt(cs))
 #impltmp<>
 strn_consq(cs) =
-char_neqzq(strn_head_opt(cs))
+char_neqz
+(strn_head_opt(cs))
 
 (* ****** ****** *)
 

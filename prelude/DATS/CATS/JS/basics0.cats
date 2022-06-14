@@ -26,19 +26,6 @@ XATS2JS_bool_mul
 //
 /* ****** ****** */
 function
-XATS2JS_char_eqzq
-  (c0)
-{
-return (0===c0); // eqzq
-}
-function
-XATS2JS_char_neqzq
-  (c0)
-{
-return (0!==c0); // neqzq
-}
-/* ****** ****** */
-function
 XATS2JS_char_cmp
   (c1, c2)
 {
@@ -47,6 +34,19 @@ if
 return (-1);
 else
 return (c1 <= c2 ? 0 : 1);
+}
+/* ****** ****** */
+function
+XATS2JS_char_eqz
+  (c0)
+{
+return (0===c0); // eqz
+}
+function
+XATS2JS_char_neqz
+  (c0)
+{
+return (0!==c0); // neqz
 }
 /* ****** ****** */
 function
