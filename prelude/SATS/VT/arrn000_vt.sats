@@ -243,20 +243,21 @@ fun
 <a:vt>
 a1ptr_free
 {n:nat}
-(A0: a1ptr(a, n)): void
+( A0:
+~ a1ptr(a,n), sz: sint(n)
+) : void // end-of-function
 //
 fun
 <a:vt>
 a1ptr_mfree
-{n:nat}
-(A0: a1ptr(~a, n)): void
+{n:nat}(A0: a1ptr(~a, n)): void
 //
 fun
 <a:vt>
 a1ptr_clear
 {n:nat}
 ( A0:
-! a1ptr(a,n) >> a1ptr(~a,n)
+! a1ptr(a,n) >> a1ptr(~a,n), n0: sint(n)
 ) : void // end-of-function
 //
 (* ****** ****** *)
@@ -266,28 +267,38 @@ fun
 a1ptr_make_nval
 {n:nat}
 ( asz
-: sint(n), ini: a): a1ptr(a,n)
+: sint(n), x0: a): a1ptr(a, n)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
 a1ptr_make_list
-{n:i0}
-( xs: list(a, n) ): a1ptr(a, n)
+{n:i0}(list(a,n)): a1ptr(a, n)
 //
 fun
 <a:vt>
 a1ptr_make_list_vt
 {n:i0}
-(xs: list_vt(a, n)): a1ptr(a, n)
+(xs: list_vt(a,n)): a1ptr(a, n)
 //
 (* ****** ****** *)
 //
+(*
+HX-2022-06-13:
+For each a1ptr-value, its
+length is obtained contextually
+*)
 fun
 <a:vt>
 <n:i0>
-a1ptr_length(!a1ptr(a, n)): nint(n)
+a1ptr_length0
+( A0: ~a1ptr(a, n) ): nint( n )
+fun
+<a:vt>
+<n:i0>
+a1ptr_length1
+( A0: !a1ptr(a, n) ): nint( n )
 //
 (* ****** ****** *)
 //
@@ -382,7 +393,16 @@ a1ptr_print$sep(): void
 //
 fun
 <a:vt>
-a1ptr_print(A0: !a1ptr(a)): void
+a1ptr_print0
+{n:i0}
+( A0: 
+~ a1ptr(a, n), sz: sint(n)): void
+fun
+<a:vt>
+a1ptr_print1
+{n:i0}
+( A0:
+! a1ptr(a, n), sz: sint(n)): void
 //
 (* ****** ****** *)
 //
@@ -390,7 +410,14 @@ fun
 <a:vt>
 a1ptr_strmize
 {n:i0}
-(A0: a1ptr(a, n)): strm_vt(a)
+( A0:
+~ a1ptr(a,n), sz: sint(n)): strm_vt(a)
+fun
+<a:vt>
+a1ptr_rstrmize
+{n:i0}
+( A0:
+~ a1ptr(a,n), sz: sint(n)): strm_vt(a)
 //
 (* ****** ****** *)
 //
@@ -398,16 +425,15 @@ fun
 <a:vt>
 a1ptr_listize
 {n:i0}
-(A0: a1ptr(a, n)): list_vt(a,n)
-//
-(* ****** ****** *)
-
+( A0:
+~ a1ptr(a,n), sz: sint(n)): list_vt(a,n)
 fun
 <a:vt>
 a1ptr_rlistize
 {n:i0}
-(A0: a1ptr(a, n)): list_vt(a,n)
-
+( A0:
+~ a1ptr(a,n), sz: sint(n)): list_vt(a,n)
+//
 (* ****** ****** *)
 //
 // HX-2020-05-30:

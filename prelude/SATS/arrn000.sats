@@ -280,7 +280,9 @@ a1ref_print$sep(): void
 //
 fun
 <a:vt>
-a1ref_print(A0: a1ref(a)): void
+a1ref_print
+{n:i0}
+(A0: a1ref(a, n)): void
 //
 (* ****** ****** *)
 //

@@ -49,7 +49,8 @@ val () =
 $UN.p2tr_set<a>(p0, x0)
 in
 $UN.castlin10{a0ptr(a)}(A0)
-end
+end(*let*)//end-of(a0ptr_make)
+//
 *)
 //
 (* ****** ****** *)
@@ -184,8 +185,30 @@ in
 end // end of [a1ptr_make_list_vt]
 //
 (* ****** ****** *)
+(*
+HX:
+For implementing g-ops
+*)
+(* ****** ****** *)
 //
-// For gseq-operations
+#impltmp
+{a:vt}
+{n:i0}
+g_free
+<a1ptr(a,n)>(A0) =
+(
+a1ptr_free(A0, n0)
+) where
+{
+val n0 = a1ptr_length1(A0)
+} (*where*) // g_free<a1ptr>
+//
+(* ****** ****** *)
+//
+(*
+HX:
+For implementing glseq-ops
+*)
 //
 (* ****** ****** *)
 

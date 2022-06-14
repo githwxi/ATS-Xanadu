@@ -60,12 +60,16 @@ gobj_lexing_tnode<obj>(buf)
 //
 #implfun
 gobj_lexing$getc1<obj>(buf) = buf.getc1()
+//
 #implfun
-gobj_lexing$unget<obj>(buf) = buf.unget()
+gobj_lexing$fclst<obj>(buf) = buf.tclst()
 #implfun
-gobj_lexing$fcseg<obj>(buf) = strn(buf.tcseg())
+gobj_lexing$fcnil<obj>(buf) = free(buf.tclst())
 #implfun
-gobj_lexing$fskip<obj>(buf) = free(buf.tcseg())
+gobj_lexing$fcseg<obj>(buf) = strn(buf.tclst())
+//
+#implfun
+gobj_lexing$unget<obj>(buf, ci0) = buf.unget(ci0)
 //
 } (*where*) // end of [lxbf1_lexing_token]
 
@@ -80,7 +84,7 @@ loop(buf, list_vt_nil())
 ) where
 {
 //
-fun
+fnx
 loop
 ( buf: !lxbf1
 , res
@@ -91,7 +95,7 @@ let
 val tnd =
 lxbf1_lexing_tnode(buf)
 val res = cons_vt(tnd, res)
-in
+in//let
 case+ tnd of
 | T_EOF() => res
 | _(*non-T_EOF*) => loop(buf, res)

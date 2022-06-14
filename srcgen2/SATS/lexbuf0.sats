@@ -77,16 +77,16 @@ lxbf0_getc1(lxbf1) // and incby1
 #symload getc1 with lxbf1_getc1
 (* ****** ****** *)
 fun
-lxbf1_unget // it undoes
-(buf: !lxbf1): sint // 1 getc1-op
+lxbf1_unget // undo [getc1]
+(buf: !lxbf1, ci0: sint): sint
 (* ****** ****** *)
 #symload unget with lxbf1_unget
 (* ****** ****** *)
 fun
-lxbf1_take_cseg // get the char
+lxbf1_take_clst // get the char
 (buf: !lxbf1): list_vt(char) // seg
 (* ****** ****** *)
-#symload tcseg with lxbf1_take_cseg
+#symload tclst with lxbf1_take_clst
 (* ****** ****** *)
 fun
 lxbf1_make_cstrx // lxbf1 bases on a
@@ -123,12 +123,12 @@ lxbf2_copy_pcur // get the
 (buf: !lxbf2): pos_t // cur-postn
 (* ****** ****** *)
 fun
-lxbf2_take_cseg // get the char
+lxbf2_take_clst // get the char
 (buf: !lxbf2): list_vt(char) // seg
 (* ****** ****** *)
 #symload cpbeg with lxbf2_copy_pbeg
 #symload cpcur with lxbf2_copy_pcur
-#symload tcseg with lxbf2_take_cseg
+#symload tclst with lxbf2_take_clst
 (* ****** ****** *)
 fun
 lxbf2_make_cstrx // lxbf2 bases on a
