@@ -250,6 +250,14 @@ lexing_CMNT4_mlbl // ml-style
 (buf: !obj, ci0: sint, ci1: sint): tnode
 //
 (* ****** ****** *)
+//
+#extern
+fun
+<obj:vt>
+lexing_DIGIT
+(buf: !obj, ci0: sint): tnode
+//
+(* ****** ****** *)
 
 #impltmp
 <obj>
@@ -259,6 +267,12 @@ gobj_lexing_tnode
 val ci0 = 
 gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
+//
+fun
+f0_DIGIT
+( buf: !obj
+, ci0: sint
+) : tnode = lexing_DIGIT(buf, ci0)
 //
 (*
 val () =
@@ -281,9 +295,7 @@ case+ 0 of
 //
 | _ when SLASHq(cc0) => f0_SLASH(buf, ci0)
 //
-(*
 | _ when DIGITq(cc0) => f0_DIGIT(buf, ci0)
-*)
 //
 | _ when IDFSTq(cc0) => f0_IDFST(buf, ci0)
 //
@@ -916,7 +928,7 @@ lexing_CMNT1_line
   loop0(buf) where
 {
 //
-fun
+fnx
 loop0
 (buf: !obj): tnode =
 let
@@ -958,7 +970,7 @@ lexing_CMNT2_rest
   loop0(buf) where
 {
 //
-fun
+fnx
 loop0
 (buf: !obj): tnode =
 let
@@ -1051,7 +1063,7 @@ lexing_CMNT4_mlbl
 loop0(buf, 1(*lvl*))) where
 {
 //
-fun
+fnx
 loop0
 ( buf: !obj
 , lvl: sint): tnode =
@@ -1127,6 +1139,500 @@ when LPARENq(cc1) => loop2(buf, lvl+0)
 end // end of [loop2]
 //
 } (*where*) // end of [lexing_CMNT4_mlbl]
+
+(* ****** ****** *)
+
+#impltmp
+<obj>(*tmp*)
+lexing_DIGIT
+( buf: !obj
+, ci0: sint): tnode =
+(
+let
+val
+cc0 =
+char_make_code(ci0)
+in//let
+case+ 0 of
+| _
+when
+(cc0 = '0') => loop00(buf)
+| _
+(*otherwise*) => loop10(buf)
+endlet
+) where
+{
+//
+fnx
+loop00
+(buf: !obj): tnode = let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+case+ 0 of
+| _
+when
+(cc0 = 'x') => loop0x(buf)
+| _
+when
+(cc0 = 'X') => loop0X(buf)
+| _
+(* otherwise *) =>
+(
+if
+DIGITq(cc0)
+then
+loop0d(buf)
+else
+loop10(buf) where
+{
+val cix =
+gobj_lexing$unget(buf, ci0)
+}
+) (* end-of-( otherwise ) *)
+//
+end (*let*) // end of [loop00]
+
+and
+loop0d
+(buf: !obj): tnode =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+if
+DIGITq(cc0)
+then loop0d(buf) else
+let
+val kk0 = ft_fltext(buf, ci0)
+in//let
+//
+if
+(kk0 = 0)
+then
+let
+val kk1 = ft_numsfx(buf, ci0)
+in//let
+if
+(kk1 = 0) // HX: no trailing sfx
+then
+T_INT02(OCT, gobj_lexing$fcseg(buf))
+else
+T_INT03(OCT, gobj_lexing$fcseg(buf), kk1)
+end // end of [then]
+else
+let
+  val kk1 = ft_numsfx(buf, ci0)
+in//let
+if
+(kk1 = 0) // HX: no trailing sfx
+then
+T_FLT02(DEC, gobj_lexing$fcseg(buf))
+else
+T_FLT03(DEC, gobj_lexing$fcseg(buf), kk1)
+end // end of [else]
+//
+end // end of [else]
+//
+end (*let*) // end of [ loop0d(buf:!obj) ]
+
+and
+loop0x
+(buf: !obj): tnode =
+loop0X(buf)//HX:0x=0X
+and
+loop0X
+(buf: !obj): tnode =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in
+//
+if
+XDIGITq(cc0)
+then loop0x(buf) else let
+  val kk0 =
+  ft_fltext_hex(buf, ci0)
+in
+//
+if
+(kk0 = 0)
+then
+let
+val kk1 = ft_numsfx(buf, ci0)
+in
+if
+(kk1 = 0)
+then
+T_INT02(HEX, gobj_lexing$fcseg(buf))
+else
+T_INT03(HEX, gobj_lexing$fcseg(buf), kk1)
+end // end of [then]
+else
+let
+val kk1 = ft_numsfx(buf, ci0)
+in//let
+if
+(kk1 = 0)
+then
+T_FLT02(HEX, gobj_lexing$fcseg(buf))
+else
+T_FLT03(HEX, gobj_lexing$fcseg(buf), kk1)
+end // end of [else]
+//
+end // end of [else]
+//
+end (*let*) // end of [loop0X(buf: !obj)]
+
+(* ****** ****** *)
+
+and
+loop10
+(buf: !obj): tnode = let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+if
+DIGITq(cc0)
+then loop10(buf)
+else
+let
+val kk0 = ft_fltext(buf, ci0)
+in//let
+//
+if
+(kk0 = 0)
+then
+let
+val kk1 = ft_numsfx(buf, ci0)
+in
+if
+(kk1 = 0)
+then
+T_INT01(gobj_lexing$fcseg(buf))
+else
+T_INT03(DEC, gobj_lexing$fcseg(buf), kk1)
+end // end of [then]
+else
+let
+val kk1 = ft_numsfx(buf, ci0)
+in
+if
+(kk1 = 0)
+then
+T_FLT01(gobj_lexing$fcseg(buf))
+else
+T_FLT03(DEC, gobj_lexing$fcseg(buf), kk1)
+end // end of [else]
+//
+end // end of [else]
+//
+end (*let*) // end of [loop10(buf: !obj)]
+
+(* ****** ****** *)
+
+} where
+{
+
+(* ****** ****** *)
+#define OCT 8
+#define DEC 10
+#define HEX 16
+(* ****** ****** *)
+
+(*
+#extern
+fun
+ft_digits(buf: !obj): sint
+#extern
+fun
+ft_sgndgts(buf: !obj): sint
+*)
+//
+(*
+#extern
+fun
+ft_xdigits(buf: !obj): sint
+*)
+//
+(*
+#extern
+fun
+ft_numsfx
+(buf: !obj, ci0: sint): sint
+*)
+//
+(*
+#extern
+fun
+ft_fltext
+(buf: !obj, ci0: sint): sint
+#extern
+fun
+ft_fltext_hex
+(buf: !obj, ci0: sint): sint
+*)
+//
+(* ****** ****** *)
+
+fun
+ft_digits
+(buf: !obj): sint =
+(
+  loop(buf, 0)) where
+{
+//
+fun
+loop
+( buf: !obj
+, kk0: sint): sint =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+if
+DIGITq(cc0)
+then loop(buf, kk0+1) else
+let
+val
+cix =
+gobj_lexing$unget(buf, ci0) in kk0
+endlet // end of [if]
+//
+endlet // end of [ loop(buf, kk0) ]
+//
+} (*where*) // end of [ft_digits(...)]
+
+(* ****** ****** *)
+
+fun
+ft_sgndgts
+(buf: !obj): sint = let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in
+//
+case+ 0 of
+| _
+when(cc0 = '+') => 1+ft_digits(buf)
+| _
+when(cc0 = '-') => 1+ft_digits(buf)
+| _
+when DIGITq(cc0) => 1+ft_digits(buf)
+| _
+(*  otherwise  *) =>
+let
+val cix =
+gobj_lexing$unget(buf, ci0) in 0 end
+//
+end (*let*) // end of [ft_sgndgts(...)]
+
+(* ****** ****** *)
+
+fun
+ft_numsfx
+( buf: !obj
+, ci0: sint): sint =
+(
+loop(buf, 0)) where
+{
+//
+fnx
+loop
+( buf: !obj
+, kk0: sint): sint =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in
+//
+case+ 0 of
+| _
+when
+isalpha(cc0) => loop(buf,kk0+1)
+| _
+(* otherise *) =>
+let
+val
+cix =
+gobj_lexing$unget(buf,ci0) in kk0
+end // end-of-(otherwise)
+//
+endlet // end of [loop(buf, kk0)]
+//
+} (*where*) // end of [ft_numsfx(...)]
+
+(* ****** ****** *)
+
+fun
+ft_fltext
+( buf: !obj
+, ci0: sint): sint = let
+//
+val cc0 = char_make_code(ci0)
+//
+in
+(
+case+ 0 of
+| _
+when(cc0 = '.') => loop0(buf,1)
+| _
+when(cc0 = 'e') => loop1(buf,ci0,0)
+| _
+when(cc0 = 'E') => loop1(buf,ci0,0)
+| _
+(* otherwise *) =>
+let
+val
+cix =
+gobj_lexing$unget(buf, ci0) in 0 end
+)
+end where
+{
+//
+fnx
+loop0
+( buf: !obj
+, kk0: sint): sint =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+if
+DIGITq(cc0)
+then loop0(buf, kk0+1) else loop1(buf, ci0, kk0)
+endlet // end of [loop0(buf, kk0)]
+//
+and
+loop1
+( buf: !obj
+, ci0: sint
+, kk0: sint): sint =
+let
+val cc0 = char_make_code(ci0)
+in//let
+//
+case+ 0 of
+| _
+when(cc0 = 'e') =>
+(kk0+1+ft_sgndgts(buf))
+| _
+when(cc0 = 'E') =>
+(kk0+1+ft_sgndgts(buf))
+| _
+(* otherwise *) => // exponent-less
+let
+val cix =
+gobj_lexing$unget(buf, ci0) in kk0 end
+//
+end (*let*)//end of [loop1(buf,ci0,kk0)]
+//
+} (*where*) // end-of-[ft_fltext(buf,kk0)]
+
+(* ****** ****** *)
+
+fun
+ft_fltext_hex
+( buf: !obj
+, ci0: sint): sint = let
+//
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+case+ 0 of
+| _
+when(cc0 = '.') => loop0(buf,1)
+| _
+when(cc0 = 'p') => loop1(buf,ci0,0)
+| _
+when(cc0 = 'P') => loop1(buf,ci0,0)
+| _
+(* otherwise *) =>
+let
+val
+cix =
+gobj_lexing$unget(buf, ci0) in 0 end
+//
+endlet where
+{
+//
+fnx
+loop0
+( buf: !obj
+, kk0: sint): sint =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+if
+XDIGITq(cc0)
+then loop0(buf, kk0+1) else loop1(buf, ci0, kk0)
+endlet // end of [loop0(buf, kk0)]
+//
+and
+loop1
+( buf: !obj
+, ci0: sint
+, kk0: sint): sint =
+let
+//
+val cc0 = char_make_code(ci0)
+//
+in
+//
+case+ 0 of
+| _
+when(cc0 = 'p') =>
+(kk0+1+ft_sgndgts(buf))
+| _
+when(cc0 = 'P') =>
+(kk0+1+ft_sgndgts(buf))
+| _
+(* otherwise *) => // exponent-less
+let
+val
+cix = gobj_lexing$unget(buf, ci0) in kk0
+end
+//
+end // end of [let] // end of [loop1]
+//
+} (*where*) // end of [ft_fltext_hex(...)]
+
+(* ****** ****** *)
+
+} (*where*) // end-of(lexing_DIGIT(buf,ci0))
 
 (* ****** ****** *)
 

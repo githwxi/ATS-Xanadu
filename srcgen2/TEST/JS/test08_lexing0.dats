@@ -181,5 +181,17 @@ prerrln
 ("lexing(buf4) = ", lxbf1_lexing_tnodelst(buf4))
 //
 (* ****** ****** *)
+//
+val buf5 =
+lxbf1_make_strn
+(
+"(0, 10, 012, 0xFF, 123E+10, 3.14)"
+)
+//
+val (  ) =
+prerrln
+("lexing(buf5) = ", lxbf1_lexing_tnodelst(buf5))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test08_lexing0.dats] *)
