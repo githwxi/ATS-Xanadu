@@ -65,7 +65,35 @@ in//local
 (* ****** ****** *)
 
 fun
-pstn1_inc1
+pstn1_inc1_nc
+( pos:
+! pstn1 ): void =
+let
+val+
+@PSTN1
+(!nt0, !nr1, !nc2) = pos
+in//in
+( nt0 := nt0+1
+//nr1 := nr1+0
+; nc2 := nc2+1; $fold(pos))
+endlet // end of [pstn1_inc1]
+
+fun
+pstn1_inc1_nr
+( pos:
+! pstn1 ): void =
+let
+val+
+@PSTN1
+(!nt0, !nr1, !nc2) = pos
+in//in
+( nc2 := 0
+; nt0 := nt0+1
+; nr1 := nr1+1; $fold(pos))
+endlet // end of [pstn1_inc1_nr]
+
+fun
+pstn1_inc1_if
 ( pos:
 ! pstn1
 , chr: char): void =
@@ -76,33 +104,86 @@ val+
 in//in
 if
 EOLq(chr)
-then
-( nc2 := 0
-; nt0 := nt0+1
-; nr1 := nr1+1; $fold(pos))
-else
-( nt0 := nt0+1
-; nc2 := nc2+1; $fold(pos))
-endlet // end of [pstn1_inc1]
+then pstn1_inc1_nr(pos)
+else pstn1_inc1_nc(pos)
+endlet // end of [pstn1_inc1_if]
 
 (* ****** ****** *)
 
 fun
-pstn1_incs
+pstn1_incs_if
 ( pos:
 ! pstn1
 , cs0: strn): void =
-gseq_foreach_env
-  <strn><char>(cs0, pos) where
+gseq_foreach_env1<strn><char>(cs0, pos) where
 {
 #impltmp
-foreach_env1$work
-<strn>
-<char>
-<pstn1>
-(chr, pos) = pstn1_inc1(pos, chr)
-} (*where*) // end of [pstn1_incs]
+foreach_env1$work<char><pstn1>(chr, pos) = pstn1_inc1_if(pos, chr)
+} (*where*) // end of [pstn1_incs(pstn1, strn)]
 
+(* ****** ****** *)
+//
+fun
+lexing_lctniz_tnode
+( pos:
+! pstn1
+, tnd: tnode): void =
+(
+case+ tnd of
+//
+| T_EOF() => ()
+| T_ERR() => ()
+//
+| T_EOL() => pstn1_inc1_nr(pos)
+//
+| T_BLANK(bs) => pstn1_incs_if(pos, bs)
+//
+| T_CLNLT(cs) => pstn1_incs_if(pos, cs)
+| T_DOTLT(cs) => pstn1_incs_if(pos, cs)
+//
+| T_SPCHR(c1) => pstn1_inc1_if(pos, char(c1))
+//
+| T_IDALP(rep) => pstn1_incs_if(pos, rep)
+| T_IDSYM(rep) => pstn1_incs_if(pos, rep)
+| T_IDDLR(rep) => pstn1_incs_if(pos, rep)
+| T_IDSRP(rep) => pstn1_incs_if(pos, rep)
+| T_IDQUA(rep) => pstn1_incs_if(pos, rep)
+//
+| T_INT01(rep) => pstn1_incs_if(pos, rep)
+| T_INT02(_, rep) => pstn1_incs_if(pos, rep)
+| T_INT03(_, rep, _) => pstn1_incs_if(pos, rep)
+//
+| T_FLT01(rep) => pstn1_incs_if(pos, rep)
+| T_FLT02(_, rep) => pstn1_incs_if(pos, rep)
+| T_FLT03(_, rep, _) => pstn1_incs_if(pos, rep)
+//
+| T_CHAR1_nil0(rep) => pstn1_incs_if(pos, rep)
+| T_CHAR2_char(rep) => pstn1_incs_if(pos, rep)
+| T_CHAR3_blsh(rep) => pstn1_incs_if(pos, rep)
+//
+| T_STRN1_clsd(rep, _) => pstn1_incs_if(pos, rep)
+| T_STRN2_ncls(rep, _) => pstn1_incs_if(pos, rep)
+//
+|
+T_CMNT1_line(ini, txt) =>
+(pstn1_incs_if(pos, ini);pstn1_incs_if(pos, txt))
+|
+T_CMNT2_rest(ini, txt) =>
+(pstn1_incs_if(pos, ini);pstn1_incs_if(pos, txt))
+//
+|
+T_CMNT3_ccbl(lvl, txt) => pstn1_incs_if(pos, txt)
+|
+T_CMNT4_mlbl(lvl, txt) => pstn1_incs_if(pos, txt)
+//
+| _ (*   otherwise   *) =>
+  (
+    assert(false) ) where
+  { val () =
+    prerrln("lexing_lctniz_tnode: tnd = ", tnd) }
+//
+) (*case*) // end-of-(lexing_lctniz_tnode(pos,tnd))
+//
 (* ****** ****** *)
 
 end (*local*) // end of [local]

@@ -29,8 +29,12 @@ all_libcats:: ; \
 $(XATSOPT) -d $(XATSLIB)/libcats/DATS/synoug0.dats
 ######
 all_githwxi:: ; \
+$(XATSOPT) -s $(XATSLIB)/githwxi/SATS/genv000.sats
+all_githwxi:: ; \
 $(XATSOPT) -s $(XATSLIB)/githwxi/SATS/githwxi.sats
 ######
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/genv000.dats
 all_githwxi:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/f00path.dats
 all_githwxi:: ; \

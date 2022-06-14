@@ -26,82 +26,78 @@
 *)
 
 (* ****** ****** *)
-//
-(*
-Author: Hongwei Xi
-Start Time: April, 2020
-Authoremail: gmhwxiATgmailDOTcom
-*)
-//
+#staload
+"./../SATS/genv000.sats"
+(* ****** ****** *)
+
+#staload
+UN =
+"prelude/SATS/unsafex.sats"
+
 (* ****** ****** *)
 //
-fun<>
-fpath_strmize_char
-(path: strn): strm_vt(char)
-//
-fun<>
-fpath_strmize_cgtz
-(path: strn): strm_vt(cgtz)
-fun<>
-fpath_strmize_line
-(path: strn): strm_vt(strn)
-fun<>
-fpath_strmize_line_vt
-(path: strn): strm_vt(strn_vt)
-//
-(* ****** ****** *)
-//
-fun
-<a0:vt>
-g_rand((*void*)): a0
-//
-(* ****** ****** *)
-//
-fun<>
-rand_seed
-((*void*)): uint
-fun<>
-rand_set_nil
-((*void*)): void
-fun<>
-rand_set_seed
-( seed : uint ) : void
-//
-(* ****** ****** *)
-//
-fun<>
-nint_rand(): nint
-fun<>
-nint_rand$limit(): sintgt(0)
-//
-fun<>
-nint_rand_limit
-{n:pos}(l0: int(n)): nintlt(n)
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-list_rand(): list_vt(a)
-fun<>
-list_rand$length(): nint
-//
-fun
-<a:vt>
-list_rand_length
-{n:nat}(ln: int(n)): list_vt(a,n)
-//
-(* ****** ****** *)
-//
-fun<>
-strn_rand(): strn_vt
-fun<>
-strn_rand$length(): nint
-//
-fun<>
-strn_rand_length
-{n:nat}(ln: int(n)): strn_vt(n)
+#extern
+fcast//HX: it is safe!
+datacopy{a0:vt}(x0: !a0): (~a0)
 //
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_githwxi.sats] *)
+#impltmp
+<xs><x0><e1>
+gseq_forall_env1
+  (xs, env) =
+(
+  gseq_forall<xs><x0>(xs)
+) where
+{
+val env =
+datacopy(env)
+#impltmp
+forall$test<x0>(x0) =
+let
+//
+val env =
+$UN.castlin10{e1}(env)
+val res =
+forall_env1$test<x0><e1>(x0, env)
+//
+in//let
+//
+let
+val env = $UN.delinear(env) in res end
+//
+endlet // end of [forall$test<x0>(x0)]
+} (*where*) // end-of(gseq_forall_env1)
+
+(* ****** ****** *)
+
+#impltmp
+<xs><x0><e1>
+gseq_foreach_env1
+  (xs, env) =
+(
+  gseq_foreach<xs><x0>(xs)
+) where
+{
+val env =
+$UN.delinear(env)
+#impltmp
+foreach$work<x0>(x0) =
+let
+//
+val env =
+$UN.castlin10{e1}(env)
+val res =
+foreach_env1$work<x0>(x0, env)
+//
+in//let
+//
+let
+val env = $UN.delinear(env) in res end
+//
+endlet // end of [foreach$work<x0>(x0)]
+} (*where*) // end-of(gseq_foreach_env1)
+
+(* ****** ****** *)
+
+(* end of [ATS3/XANADU_xatslib_githwxi_genv000.dats] *)

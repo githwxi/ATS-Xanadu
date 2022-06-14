@@ -18,7 +18,7 @@ UN = // for casting
 g_free<a>(x0) = () // for JS!!!
 *)
 (* ****** ****** *)
-// prelude/basics
+//prelude/basics0.sats
 (* ****** ****** *)
 //
 #extern

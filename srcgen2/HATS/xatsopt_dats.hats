@@ -24,6 +24,9 @@ For ATS3/XATSOPT
 (* ****** ****** *)
 #staload _ =
 "xatslib\
+/githwxi/DATS/genv000.dats"
+#staload _ =
+"xatslib\
 /githwxi/DATS/f00path.dats"
 #staload _ =
 "xatslib\
