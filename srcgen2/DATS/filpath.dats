@@ -121,7 +121,8 @@ fun
 z2eq
 ( x1: clst
 , x2: strn): bool =
-glseq_z2cmp11<clst,strn><cgtz>(x1, x2) = 0
+glseq_z2cmp11
+<clst,strn><cgtz>(x1, x2) = 0
 } (*where*) // end of [ftest]
 //
 val nms =

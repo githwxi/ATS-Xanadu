@@ -133,8 +133,32 @@ strx_vt_map0
 (
 strn_strxize
 (
-"#define\
-(\"lexing(buf1) = \", $LXBF.lxbf1_lexing_tnode(buf1))"
+"(lexing(buf1) = , $LXBF.lxbf1_lexing_tnode(buf1))"
+)
+) where
+{
+#impltmp
+map0$fopr
+<char><sint>(cc) =
+let
+val ci = char_code(cc) in if ci > 0 then ci else -1
+end
+} (*where*) // end of [strx_map0]
+//
+val buf2 = lxbf1_make_cstrx(csrc2)
+//
+val (  ) =
+prerrln("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
+//
+(* ****** ****** *)
+//
+val
+csrc2 =
+strx_vt_map0
+(
+strn_strxize
+(
+":<abcde>\"Hello, world!\"'\\000''\\a'bcd012"
 )
 ) where
 {

@@ -169,7 +169,10 @@ end (*let*) // end of [lxbf1_getc1]
 
 #implfun
 lxbf1_unget
-(   buf   ) =
+(buf, ci0) =
+if
+(ci0 < 0)
+then ci0 else
 let
 //
 val+
@@ -196,20 +199,20 @@ end (* let *) // end-of(lxbf1_unget)
 (* ****** ****** *)
 
 #implfun
-lxbf1_take_cseg
+lxbf1_take_clst
 (   buf   ) =
 let
 //
 val+
 @LXBF1 _ = buf
 //
-val cseg =
+val clst =
 list_vt_reverse0(buf.2)
 //
 in//let
   buf.2 := nil_vt()
-; (   $fold(buf); cseg   )
-end // end of [lxbf1_take_cseg]
+; (   $fold(buf); clst   )
+end // end of [lxbf1_take_clst]
 
 (* ****** ****** *)
 //

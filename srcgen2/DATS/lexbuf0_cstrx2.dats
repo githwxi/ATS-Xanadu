@@ -359,22 +359,22 @@ end // end of [lxbf2_copy_pcur]
 (* ****** ****** *)
 
 #implfun
-lxbf2_take_cseg
+lxbf2_take_clst
 (   buf   ) =
 let
 //
 val+
 @LXBF2 _ = buf
 //
-val cseg =
+val clst =
 list_vt_reverse0(buf.4)
 //
 in//let
   pstn1_free(buf.0)
 ; buf.4 := nil_vt()
 ; buf.0 := copy(buf.1)
-; (   $fold(buf); cseg   )
-end // end of [lxbf2_take_cseg]
+; (   $fold(buf); clst   )
+end // end of [lxbf2_take_clst]
 
 (* ****** ****** *)
 //

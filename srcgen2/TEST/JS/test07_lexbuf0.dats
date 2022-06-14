@@ -64,13 +64,18 @@ val buf1 = lxbf1_make_cstrx(csrc1)
 (* ****** ****** *)
 //
 val (  ) =
-prerrln("buf1.getc0() = ", char(buf1.getc0()))
+prerrln
+("buf1.getc0() = ", char(buf1.getc0()))
 val (  ) =
-prerrln("buf1.getc1() = ", char(buf1.getc1()))
+prerrln
+("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.getc1() = ", char(buf1.getc1()))
+prerrln
+("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
-prerrln("buf1.unget() = ", char(buf1.unget()))
+prerrln
+("buf1.unget(0) = ", char(buf1.unget(0)))
+//
 val (  ) =
 prerrln("buf1.getc1() = ", char(buf1.getc1()))
 val (  ) =
@@ -81,7 +86,7 @@ val (  ) =
 prerrln("buf1.getc1() = ", char(buf1.getc1()))
 //
 val (  ) =
-prerrln("buf1.tcseg() = ", strn(buf1.tcseg()))
+prerrln("buf1.tclst() = ", strn(buf1.tclst()))
 //
 (* ****** ****** *)
 
@@ -116,7 +121,7 @@ prerrln("buf2.cpbeg() = ", buf2.cpbeg())
 val (  ) =
 prerrln("buf2.cpcur() = ", buf2.cpcur())
 val (  ) =
-prerrln("buf2.tcseg() = ", strn(buf2.tcseg()))
+prerrln("buf2.tclst() = ", strn(buf2.tclst()))
 //
 val (  ) =
 prerrln("buf2.getc1() = ", char(buf2.getc1()))
@@ -140,7 +145,7 @@ prerrln("buf2.cpbeg() = ", buf2.cpbeg())
 val (  ) =
 prerrln("buf2.cpcur() = ", buf2.cpcur())
 val (  ) =
-prerrln("buf2.tcseg() = ", strn(buf2.tcseg()))
+prerrln("buf2.tclst() = ", strn(buf2.tclst()))
 //
 (* ****** ****** *)
 

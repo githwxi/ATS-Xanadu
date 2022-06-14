@@ -54,40 +54,47 @@ EMPq(ch: char): bool
 (* ****** ****** *)
 #extern
 fun
-DOTq(c: char): bool
+DOTq(ch: char): bool
 #extern
 fun
-CLNq(c: char): bool
+CLNq(ch: char): bool
 (* ****** ****** *)
 #extern
 fun
-ALNUMq(c: char): bool
+ALNUMq(ch: char): bool
 #extern
 fun
-ALNUM_q(c: char): bool
+ALNUM_q(ch: char): bool
 #extern
 fun
-DIGITq(c: char): bool
+DIGITq(ch: char): bool
 #extern
 fun
-XDIGITq(c: char): bool
+XDIGITq(ch: char): bool
 (* ****** ****** *)
 #extern
 fun
-IDFSTq(c: char): bool
+IDFSTq(ch: char): bool
 #extern
 fun
-IDRSTq(c: char): bool
+IDRSTq(ch: char): bool
 #extern
 fun
-IDSYMq(c: char): bool
+IDSYMq(ch: char): bool
 (* ****** ****** *)
 #extern
 fun
-SYSRPq(c: char): bool
+SYSRPq(ch: char): bool
 #extern
 fun
-SYDLRq(c: char): bool
+SYDLRq(ch: char): bool
+(* ****** ****** *)
+#extern
+fun
+SQUOTEq(ch: char): bool
+#extern
+fun
+DQUOTEq(ch: char): bool
 (* ****** ****** *)
 //
 #implfun
@@ -131,7 +138,7 @@ IDFSTq(ch) =
 (
 case+ 0 of
 |
-_ when isalnum(ch) => true
+_ when isalpha(ch) => true
 |
 _ when ( ch = '_' ) => true
 //
@@ -176,6 +183,13 @@ SYSRPq(ch) = ( ch = '#' )
 SYDLRq(ch) = ( ch = '$' )
 (* ****** ****** *)
 
+#implfun
+SQUOTEq(ch) = ( ch = '\'' )
+#implfun
+DQUOTEq(ch) = ( ch = '\"' )
+
+(* ****** ****** *)
+
 #impltmp
 <obj>
 gobj_lexing_tnode
@@ -185,12 +199,14 @@ val ci0 =
 gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
 //
+(*
 val () =
-println
+prerrln
 ("gobj_lexing_tnode: ci0 = ", ci0)
 val () =
-println
+prerrln
 ("gobj_lexing_tnode: cc0 = ", cc0)
+*)
 //
 in//let
 //
@@ -198,7 +214,9 @@ case+ 0 of
 //
 | _ when EMPq(cc0) => f0_EMP(buf, ci0)
 | _ when EOLq(cc0) => f0_EOL(buf, ci0)
+//
 | _ when DOTq(cc0) => f0_DOT(buf, ci0)
+| _ when CLNq(cc0) => f0_CLN(buf, ci0)
 //
 (*
 | _ when DIGITq(cc0) => f0_DIGIT(buf, ci0)
@@ -210,6 +228,10 @@ case+ 0 of
 | _ when SYDLRq(cc0) => f0_SYDLR(buf, ci0)
 //
 | _ when IDSYMq(cc0) => f0_IDSYM(buf, ci0)
+//
+| _ when SQUOTEq(cc0) => f0_SQUOTE(buf, ci0)
+//
+| _ when DQUOTEq(cc0) => f0_DQUOTE(buf, ci0)
 //
 | _ (*  otherwise  *) => f0_otherwise(buf, ci0)
 //
@@ -243,22 +265,24 @@ EMPq(cc0)
 then loop(buf) else
 let
   val cix =
-  gobj_lexing$unget<obj>(buf)
+  gobj_lexing$unget(buf, ci0)
 in//let
 T_BLANK(gobj_lexing$fcseg(buf))
 end // end of [else]
 //
-end // end of [loop]
+end // end of [loop(buf,ci0)]
 //
 } (*where*) // end of [f0_EMP]
-//
+
+(* ****** ****** *)
+
 fun
 f0_EOL
 ( buf: !obj
 , ci0: sint): tnode =
 let
 val () =
-gobj_lexing$fskip(buf) in T_EOL()
+gobj_lexing$fcnil(buf) in T_EOL()
 end (* let *) // end of [f0_EOL]
 
 (* ****** ****** *)
@@ -284,7 +308,8 @@ _(* otherwise *) =>
 (
   f0_IDSYM(buf, ci0)) where
 {
-  val cix = gobj_lexing$unget(buf)
+val cix =
+gobj_lexing$unget<obj>(buf, ci1)
 }
 end (* let *) // end of [f0_CLN]
 
@@ -311,7 +336,8 @@ _(* otherwise *) =>
 (
   f0_IDSYM(buf, ci0)) where
 {
-  val cix = gobj_lexing$unget(buf)
+val cix =
+gobj_lexing$unget<obj>(buf, ci1)
 } (*where*) // end of [other...]
 //
 end (* let *) // end of [f0_DOT]
@@ -344,12 +370,12 @@ if
 IDRSTq(cc0)
 then loop(buf) else let
   val cix =
-  gobj_lexing$unget<obj>(buf)
+  gobj_lexing$unget(buf, ci0)
 in
 T_IDALP(gobj_lexing$fcseg(buf))
 end (*else*) // end of [let]
 //
-end (* let *) // end of [loop]
+end // end of [loop(buf:!obj)]
 //
 } (*where*) // end of [f0_IDFST]
 
@@ -380,25 +406,18 @@ then
 loop(buf, kk0+1)
 else
 (
-if
-(kk0 > 0)
-then
 let
 val cix =
-gobj_lexing$unget(buf)
-in//let
-  T_IDSRP(gobj_lexing$fcseg(buf))
-end // end of [then]
-else
-(
-  f0_IDSYM(buf, ci0)
-) where
-{
-  val cix = gobj_lexing$unget(buf)
-} (*where*) // end of [else]
+gobj_lexing$unget(buf, ci1)
+in
+if
+(kk0 = 0)
+then f0_IDSYM(buf, ci0) else
+T_IDSRP(gobj_lexing$fcseg(buf))
+end (*let*) // end of [else]
 )
 //
-end // end of [loop]
+end // end of [loop(buf, kk0)]
 //
 } (*where*) // end of [f0_SHARP]
 
@@ -415,7 +434,8 @@ loop(buf, 0)) where
 fun
 loop
 ( buf: !obj
-, kk0: sint): tnode = let
+, kk0: sint): tnode =
+let
 //
 val ci1 = 
 gobj_lexing$getc1<obj>(buf)
@@ -442,21 +462,23 @@ T_IDQUA(gobj_lexing$fcseg(buf))
 else
 let
   val
-  cix = gobj_lexing$unget(buf)
+  cix =
+  gobj_lexing$unget(buf, ci1)
 in
 T_IDDLR(gobj_lexing$fcseg(buf))
 end // end of [else]
 ) (* then *)
 else
 (
-  f0_IDSYM(buf, ci0)
-) where
+  f0_IDSYM(buf, ci0) where
 {
-  val cix = gobj_lexing$unget(buf)
-} (* else *)
-) (* else *) // end-of-(if)
+  val
+  cix =
+  gobj_lexing$unget(buf, ci1) }
+) (* else *)
+) (* else *) // end-of-( if )
 //
-end // end of [loop]
+end // end-of-[loop(buf, kk0)]
 //
 } (*where*) // end of [f0_SYDLR]
 
@@ -483,14 +505,237 @@ if
 IDSYMq(cc0)
 then loop(buf) else let
   val cix =
-  gobj_lexing$unget<obj>(buf)
+  gobj_lexing$unget(buf, ci0)
 in
 T_IDSYM(gobj_lexing$fcseg(buf))
 end // end of [else]
 //
-end // end of [loop]
+end // end-of-[loop(buf:!obj)]
 //
 } (*where*) // end of [f0_IDSYM]
+
+(* ****** ****** *)
+
+fun
+f0_SQUOTE
+( buf: !obj
+, ci0: sint ): tnode =
+  fmain( buf ) where
+{
+//
+fnx
+fmain
+(buf: !obj): tnode =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+case+ 0 of
+| _
+when (cc0 = '\\') => loop10(buf)
+| _
+when (cc0 = '\'') => loop20(buf)
+| _
+(*  otherwise  *) => loop30(buf)
+//
+end(*let*)// end-of-[fmain(buf)]
+//
+and
+loop10
+(buf: !obj): tnode =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+case+ 0 of
+| _
+when isdigit(cc0) => loop11(buf)
+(*
+| _
+when isprint(cc0) => loop12(buf)
+*)
+| _
+(*  otherwise  *) => loop12(buf)
+//
+end // end-of-[loop10(buf:!obj)]
+//
+and
+loop20
+(buf: !obj): tnode =
+T_CHAR1_nil0(gobj_lexing$fcseg(buf))
+//
+and
+loop30
+(buf: !obj): tnode =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+(*
+val () =
+prerrln("loop30: cc0 = ", cc0)
+*)
+//
+in//let
+//
+case+ 0 of
+//
+| _
+when SQUOTEq(cc0) =>
+T_CHAR2_char(gobj_lexing$fcseg(buf))
+//
+| _
+(*  otherwise  *) =>
+let
+val
+cix =
+gobj_lexing$unget(buf, ci0)
+in// let // unclosed-squote
+T_CHAR2_char(gobj_lexing$fcseg(buf))
+end // end-of-( otherwise )
+//
+end // end of [loop30(buf:!obj)]
+//
+and
+loop11
+(buf: !obj): tnode = let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+case+ 0 of
+//
+| _
+when isdigit(cc0) => loop11(buf)
+//
+| _
+when SQUOTEq(cc0) =>
+T_CHAR3_blsh(gobj_lexing$fcseg(buf))
+//
+| _
+(*  otherwise  *) =>
+let
+val
+cix =
+gobj_lexing$unget(buf, ci0)
+in// let // unclosed-squote
+T_CHAR3_blsh(gobj_lexing$fcseg(buf))
+end // end-of-( otherwise )
+//
+end // end-of-[loop11(buf:!obj)]
+//
+and
+loop12
+(buf: !obj): tnode = let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+in//let
+//
+case+ 0 of
+| _
+when SQUOTEq(cc0) =>
+T_CHAR3_blsh(gobj_lexing$fcseg(buf))
+| _
+(*  othereise  *) =>
+let
+val
+cix =
+gobj_lexing$unget(buf, ci0)
+in// let // unclosed-squote
+T_CHAR3_blsh(gobj_lexing$fcseg(buf))
+end // end-of-( otherwise )
+//
+end // end of [loop12(buf:!obj)]
+//
+} (*where*) // end-of-[f0_SQUOTE]
+
+(* ****** ****** *)
+
+fun
+f0_DQUOTE
+( buf: !obj
+, ci0: sint): tnode =
+  loop( buf ) where
+{
+//
+fun
+loop
+( buf: !obj ): tnode =
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
+(*
+val () =
+println("f0_DQUOTE: ci0 = ", ci0)
+*)
+//
+in//let
+//
+case+ 0 of
+|
+_ when cc0 = '\"' =>
+(
+  let
+    val ccs =
+    gobj_lexing$fclst(buf)
+    val len = length1(ccs)
+  in//let
+    T_STRN1_clsd(strn(ccs), len)
+  end
+)
+| _ when cc0 = '\\' =>
+(
+(*
+// HX-2022-06-13:
+// The following char is skipped
+*)
+  (
+    loop(buf) ) where {
+    val
+    ci0 = gobj_lexing$getc1(buf)
+  }
+)
+| _ (* otherwise *) =>
+(
+(*
+// HX-2022-06-13:
+// The closing d-quote is missing
+*)
+  if
+  (ci0 >= 0)
+  then loop(buf)
+  else
+  let
+    val ccs =
+    gobj_lexing$fclst(buf)
+    val len = length1(ccs)
+  in// let // HX: unclosed!
+    T_STRN2_ncls(strn(ccs), len)
+  end
+)
+//
+end // end-of-[loop(buf:!obj)]
+//
+} (*where*) // end-of-[f0_DQUOTE]
 
 (* ****** ****** *)
 
@@ -503,9 +748,11 @@ f0_otherwise
   then T_SPCHR(ci0) else T_EOF()
 ) where
 {
-  val () = gobj_lexing$fskip(buf)
+  val () = gobj_lexing$fcnil(buf)
 } (*where*) // end of [f0_otherwise]
-//
+
+(* ****** ****** *)
+
 } (*where*) // end of [gobj_lexing_tnode]
 
 (* ****** ****** *)

@@ -893,8 +893,28 @@ list_vt_cons(x1, xs1) =>
 } (*where*) // end of [list_vt_prefixq0]
 //
 (* ****** ****** *)
+(*
+HX:
+For implementing g-ops
+*)
+(* ****** ****** *)
 //
-// For glseq-operations
+#impltmp
+{a:vt}(*tmp*)
+g_free
+<list_vt(a)> = list_vt_free< a >
+//
+#impltmp
+{a:vt}(*tmp*)
+g_copy
+<list_vt(a)> = list_vt_copy< a >
+//
+(* ****** ****** *)
+//
+(*
+HX:
+For implementing glseq-ops
+*)
 //
 (* ****** ****** *)
 //
@@ -908,16 +928,6 @@ glseq_consq
 <list_vt(a)><a> = list_vt_consq
 //
 (* ****** ****** *)
-//
-#impltmp
-{a:vt}(*tmp*)
-g_free
-<list_vt(a)> = list_vt_free< a >
-//
-#impltmp
-{a:vt}(*tmp*)
-g_copy
-<list_vt(a)> = list_vt_copy< a >
 //
 #impltmp
 {a:vt}

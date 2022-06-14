@@ -71,7 +71,10 @@ tokbuf_free(buf) =
 (
 case+ buf of
 | ~
-TKBF0(A0, n0, i0) => free(A0)
+TKBF0
+( A0
+, n0
+, i0) => a1ptr_free(A0, n0)
 ) (*case*)//end-of(tokbuf_free)
 //
 (* ****** ****** *)

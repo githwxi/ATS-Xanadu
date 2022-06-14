@@ -403,22 +403,29 @@ strm_vt_filter0<x0>(xs)
 
 (* ****** ****** *)
 //
-// prelude/arrn000.sats
-// (
-// arrays of
-// various dimensionality
-// )
+(*
+prelude/arrn000.sats
+(
+arrays of
+various dimensionality)
+*)
 //
 (* ****** ****** *)
 //
-// HX-2020-10-25:
-// Please note that
-// [a] is boxed in JavaScript
+(*
+HX-2020-10-25:
+Please note that
+[a] is boxed in JavaScript
+*)
 //
 (* ****** ****** *)
 //
 // HX: 0-dimensional
 //
+(* ****** ****** *)
+#impltmp
+{ a:vt }
+a0ptr_free<a>(A0) = ()
 (* ****** ****** *)
 #extern
 fun
@@ -475,6 +482,19 @@ a0ref_get0<a> = XATS2JS_a0ref_get0
 (* ****** ****** *)
 //
 // HX: 1-dimensional
+//
+(* ****** ****** *)
+//
+#impltmp
+{ a:vt }
+a1ptr_free<a>(A0, n0) = () // GC
+//
+#impltmp
+{ a:vt }
+a1ptr_mfree<a>(  A0  ) = () // GC
+#impltmp
+{ a:vt }
+a1ptr_clear<a>(A0, n0) = () // GC
 //
 (* ****** ****** *)
 #extern

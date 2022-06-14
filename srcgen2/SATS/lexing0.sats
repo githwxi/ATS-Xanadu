@@ -94,6 +94,7 @@ datatype tnode =
 | T_CHAR2_char of (strn) // regular: '?'
 | T_CHAR3_blsh of (strn) // backslash: '\...'
 //
+// HX: Note that quotes are counted in [len]
 | T_STRN1_clsd of // HX: may contain null-chars
   (strn, sint(*len*)) // closed: utf-8 // for text
 | T_STRN2_ncls of // HX: may contain null-chars
@@ -183,17 +184,23 @@ fun tnode_isskip(tnode): bool
 //
 fun
 <obj:vt>
-gobj_lexing$getc1(buf: !obj): sint
+gobj_lexing$getc1
+( buf: !obj ) : sint
 fun
 <obj:vt>
-gobj_lexing$fcseg(buf: !obj): strn
-fun
-<obj:vt>
-gobj_lexing$fskip(buf: !obj): void
-fun
-<obj:vt>
-gobj_lexing$unget(buf: !obj): sint
+gobj_lexing$unget
+(buf: !obj, ci0: sint): sint
 //
+(* ****** ****** *)
+fun // HX: discard
+<obj:vt> // the current clst
+gobj_lexing$fcnil(buf: !obj): void
+fun // HX: stringize
+<obj:vt> // the current clst
+gobj_lexing$fcseg(buf: !obj): strn
+fun // HX: take out
+<obj:vt> // the current clst
+gobj_lexing$fclst(buf: !obj): list_vt(char)
 (* ****** ****** *)
 //
 fun // this does
