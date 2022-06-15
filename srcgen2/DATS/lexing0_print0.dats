@@ -160,7 +160,7 @@ print("T_AT0()")
 T_BAR() =>
 print("T_BAR()")
 |
-T_BAR() =>
+T_CLN() =>
 print("T_CLN()")
 |
 T_DOT() =>
