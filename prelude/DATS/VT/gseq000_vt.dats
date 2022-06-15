@@ -135,7 +135,7 @@ glseq_print$end() = strn_print(")")
 <xs><x0>
 glseq_print$sep() = strn_print(",")
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 glseq_length0(xs) =
@@ -155,8 +155,8 @@ val () =
 g_free<x0>(x0) in succ(r0)
 end
 //
-} (* glseq_length0/foldl0 *)
-
+} (*whr*)//glseq_length0/foldl0
+//
 #impltmp
 <xs><x0>
 glseq_length1(xs) =
@@ -172,8 +172,8 @@ glseq_foldl1
 foldl1$fopr
 <x0><r0>(r0, x0) = succ(r0)
 //
-} (* glseq_length1/foldl1 *)
-
+} (*whr*)//glseq_length1/foldl1
+//
 (* ****** ****** *)
 //
 (*
@@ -524,6 +524,13 @@ end // end of [glseq_foreach1/forall1]
 //
 (* ****** ****** *)
 
+(*
+(*
+HX-2022-06-15:
+Using [gseq_cons] should
+be avoided as it enforces
+the list-like sequentiality!
+*)
 #impltmp
 <xs><x0>
 glseq_append0
@@ -539,16 +546,52 @@ foldr0$fopr
 ( x0, r0 )=
 glseq_cons<xs><x0>(x0, r0)
 } (* end of [glseq_append0/foldr0] *)
-
+*)
+#impltmp
+<xs><x0>
+glseq_append0
+  (xs1, xs2) =
+let
+val
+xs1 =
+glseq_strmize<xs><x0>(xs1)
+val
+xs2 =
+glseq_strmize<xs><x0>(xs2)
+in//let
+  glseq_unstrm_vt<xs><x0>
+  (strm_vt_append<x0>(xs1,xs2))
+end (*let*) // end of [glseq_append0]
+//
 (* ****** ****** *)
 //
+(*
 #impltmp
 <xs><x0>
 glseq_reverse0
   ( xs ) =
 glseq_rappend0
 (xs, glseq_nil<xs><x0>())
+*)
+#impltmp
+<xs><x0>
+glseq_reverse0(xs) =
+let
+val xs =
+glseq_rstrmize<xs><x0>(xs)
+in//let
+  glseq_unstrm_vt<xs><x0>( xs )
+end (*let*) // end of [glseq_reverse0]
 //
+(* ****** ****** *)
+//
+(*
+(*
+HX-2022-06-15:
+Using [gseq_cons] should
+be avoided as it enforces
+the list-like sequentiality!
+*)
 #impltmp
 <xs><x0>
 glseq_rappend0
@@ -563,7 +606,24 @@ foldl0$fopr
 < x0><xs >
 ( r0, x0 ) =
 glseq_cons<xs><x0>(x0, r0)
-} (* end of [glseq_rappend0/foldl0] *)
+} (*where*) // (glseq_rappend0/foldl0)
+*)
+//
+#impltmp
+<xs><x0>
+glseq_rappend0
+  (xs1, xs2) =
+let
+val
+xs1 =
+glseq_strmize<xs><x0>(xs1)
+val
+xs2 =
+glseq_rstrmize<xs><x0>(xs2)
+in//let
+  glseq_unstrm_vt<xs><x0>
+  (strm_vt_append<x0>(xs1,xs2))
+end (*let*) // end of [glseq_rappend0]
 //
 (* ****** ****** *)
 //
@@ -579,7 +639,7 @@ let
 var i0: nint = 0
 val p0 = $addr(i0)
 //
-in
+in//let
 //
 let
 #impltmp

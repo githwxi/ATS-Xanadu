@@ -278,6 +278,11 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_rlistize(xs): list_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rstrmize(xs): strm_vt(x0)
+//
 (* ****** ****** *)
 //
 fun
@@ -519,6 +524,14 @@ fun
 <x0:t0>
 gseq_concat_strm
   (xss: xz): strm_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_rappend_strm
+(xs1: xs, xs2: xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //

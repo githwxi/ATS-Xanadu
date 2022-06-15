@@ -146,6 +146,17 @@ char_cmp<> = XINTERP_char_cmp
 //
 #extern
 fun
+XINTERP_char_code
+( c0
+: char): sint = $extnam()
+//
+#impltmp
+char_code<> = XINTERP_char_code
+//
+(* ****** ****** *)
+//
+#extern
+fun
 XINTERP_char_print
 ( c0
 : char): void = $extnam()
@@ -166,6 +177,11 @@ char_fprint<> = XINTERP_char_fprint
 //
 #extern
 fun
+XINTERP_char_make_code
+( c0
+: sint): char = $extnam()
+#extern
+fun
 XINTERP_char_make_sint
 ( c0
 : sint): char = $extnam()
@@ -176,20 +192,11 @@ XINTERP_char_make_uint
 : uint): char = $extnam()
 //
 #impltmp
+char_make_code<> = XINTERP_char_make_code
+#impltmp
 char_make_sint<> = XINTERP_char_make_sint
 #impltmp
 char_make_uint<> = XINTERP_char_make_uint
-//
-(* ****** ****** *)
-//
-#extern
-fun
-XINTERP_sint_make_char
-( c0
-: char): sint = $extnam()
-//
-#impltmp
-sint_make_char<> = XINTERP_sint_make_char
 //
 (* ****** ****** *)
 //
