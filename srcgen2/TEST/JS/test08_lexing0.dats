@@ -10,6 +10,8 @@
 "./../../SATS/locinfo.sats"
 #staload
 "./../../SATS/lexbuf0.sats"
+#staload
+"./../../SATS/lexing0.sats"
 (* ****** ****** *)
 (*
 //HX-2022-06-14:
@@ -33,6 +35,8 @@
 (* ****** ****** *)
 #include
 "./../../DATS/lexing0.dats"
+#include
+"./../../DATS/lexing0_token0.dats"
 #include
 "./../../DATS/lexing0_print0.dats"
 #include
@@ -204,16 +208,30 @@ prerrln
 ("lexing(buf5) = ", lxbf1_lexing_tnodelst(buf5))
 //
 (* ****** ****** *)
-(*
 //
 val buf6 =
 lxbf1_make_fpath("./../../SATS/xbasics.sats")
 //
-val (  ) =
-prerrln
-("lexing(buf6) = ", lxbf1_lexing_tnodelst(buf6))
+val tnds = lxbf1_lexing_tnodelst(buf6)
+val toks = lexing_lctnize_all(LCSRCnone0(), tnds)
 //
-*)
+local
+#impltmp
+<xs><x0>
+glseq_print$beg() = ()
+#impltmp
+<xs><x0>
+glseq_print$end() = ()
+#impltmp
+<xs><x0>
+glseq_print$sep() = g_print("\n")
+#impltmp
+g_print<token>(tok) =
+print(tok.lctn(), ":", tok.node())
+in//local
+val (  ) = prerrln("lexing(buf5): toks = ", toks)
+end//local
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test08_lexing0.dats] *)

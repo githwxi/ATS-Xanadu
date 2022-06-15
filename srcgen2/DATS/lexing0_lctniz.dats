@@ -230,7 +230,6 @@ val loc = loctn_make_arg3(lcs, ps0, ps1)
 
 (* ****** ****** *)
 
-(*
 #implfun
 lexing_lctnize_all
   (lcs, txs) =
@@ -238,11 +237,40 @@ lexing_lctnize_all
 pstn1_free(pos); tys) where
 {
 //
-val pos = PSTN1(0, 0, 0)
-val tys = gseq_map0_list_env(txs, pos)
+val pos =
+PSTN1(0, 0, 0)
+val tys =
+list_vt_nil(*void*)
+val tys =
+fmain(pos, txs, tys) where
+{
+fnx
+fmain
+( pos:
+! pstn1
+, txs
+: list_vt(tnode)
+, tys
+: list_vt(token)
+) : list_vt(token) =
+(
+case+ txs of
+| ~
+list_vt_nil
+( (*void*) ) => reverse0(tys)
+| ~
+list_vt_cons
+( tx1, txs ) =>
+  fmain(pos, txs, tys) where
+{
+  val ty1 = 
+  lexing_tnode2token(pos,lcs,tx1)
+  val tys = list_vt_cons(ty1, tys)
+}
+)
+}(*where*)//end-of-[fmain(pos,txs,tys)]
 //
 }(*where*)//end-of-[lexing_lctnize_all(lcs,txs)]
-*)
 
 (* ****** ****** *)
 
