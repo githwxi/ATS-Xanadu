@@ -45,6 +45,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xerrory.sats"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 //
@@ -124,6 +126,25 @@ foreach_env1$work<char><pstn1>(chr, pos) = pstn1_inc1_if(pos, chr)
 } (*where*) // end of [pstn1_incs(pstn1, strn)]
 
 (* ****** ****** *)
+
+fun
+pstn1_free
+(pos: !pstn1): void =
+let
+  val+ ~PSTN1 _ = pos
+endlet // [pstn1_free]
+
+fun
+postn_make_pstn1
+(pos: !pstn1): pos_t =
+(
+  postn(nt0, nr0, nc0)
+) where
+{
+val+PSTN1(nt0, nr0, nc0) = pos
+} (*let*) // [postn_make_pstn1]
+
+(* ****** ****** *)
 //
 fun
 lexing_lctniz_tnode
@@ -187,6 +208,42 @@ T_CMNT4_mlbl(lvl, txt) => pstn1_incs_if(pos, txt)
 //
 ) (*case*) // end-of-(lexing_lctniz_tnode(pos,tnd))
 //
+(* ****** ****** *)
+
+fun
+lexing_tnode2token
+( pos:
+! pstn1
+, lcs: lcsrc
+, tnd: tnode): token =
+(
+  token(loc, tnd)) where
+{
+//
+val ps0 = postn_make_pstn1(pos)
+val ( ) = lexing_lctniz_tnode(pos, tnd)
+val ps1 = postn_make_pstn1(pos)
+//
+val loc = loctn_make_arg3(lcs, ps0, ps1)
+//
+}(*where*)//end-of-[lexing_tnode2token(pos,tnd)]
+
+(* ****** ****** *)
+
+(*
+#implfun
+lexing_lctnize_all
+  (lcs, txs) =
+(
+pstn1_free(pos); tys) where
+{
+//
+val pos = PSTN1(0, 0, 0)
+val tys = gseq_map0_list_env(txs, pos)
+//
+}(*where*)//end-of-[lexing_lctnize_all(lcs,txs)]
+*)
+
 (* ****** ****** *)
 
 end (*local*) // end of [local]

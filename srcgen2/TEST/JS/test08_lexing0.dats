@@ -11,6 +11,15 @@
 #staload
 "./../../SATS/lexbuf0.sats"
 (* ****** ****** *)
+(*
+//HX-2022-06-14:
+//For compiling excptcons
+*)
+#include
+"./../../SATS/xerrory.sats"
+#include
+"./../../DATS/xerrory.dats"
+(* ****** ****** *)
 #include
 "./../../DATS/locinfo.dats"
 #include
