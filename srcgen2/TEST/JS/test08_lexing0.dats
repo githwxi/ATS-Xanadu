@@ -40,6 +40,10 @@
 #include
 "./../../DATS/lexing0_print0.dats"
 #include
+"./../../DATS/lexing0_mymap0.dats"
+#include
+"./../../DATS/lexing0_kword0.dats"
+#include
 "./../../DATS/lexing0_utils1.dats"
 #include
 "./../../DATS/lexing0_utils2.dats"

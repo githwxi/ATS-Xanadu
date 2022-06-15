@@ -329,6 +329,11 @@ fun // can provide position info
 lxbf2_lexing_token(buf: !lxbf2): token
 //
 (* ****** ****** *)
+fun
+lexing_tnode_search(strn):tnode
+fun
+lexing_tnode_insert(strn,tnode):void
+(* ****** ****** *)
 //
 fun // HX: start from
 lexing_lctnize_all // postn(0, 0, 0)
