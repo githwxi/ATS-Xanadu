@@ -566,6 +566,11 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
+, "prelude/SATS/gras000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
 , "prelude/SATS/gmap000.sats")
 //
 val () =
