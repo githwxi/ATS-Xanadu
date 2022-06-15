@@ -17,6 +17,12 @@
 //HX-2022-06-14:
 //For compiling excptcons
 *)
+(* ****** ****** *)
+#include
+"./../../DATS/xbasics.dats"
+#include
+"./../../DATS/xbasics_print0.dats"
+(* ****** ****** *)
 #include
 "./../../SATS/xerrory.sats"
 #include
@@ -214,7 +220,10 @@ prerrln
 (* ****** ****** *)
 //
 val toks =
+(*
 fpath_tokenize("./../../SATS/xbasics.sats")
+*)
+fpath_tokenize("./../../DATS/xbasics.dats")
 //
 (*
 //

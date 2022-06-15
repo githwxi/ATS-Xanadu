@@ -241,9 +241,8 @@ end (*let*) // end of [char2node]
 
 (* ****** ****** *)
 
-fun
-tnode_search
-(id: strn): tnode = T_EOF(*void*)
+#symload
+tnode_search with lexing_tnode_search
 
 (* ****** ****** *)
 in//local
