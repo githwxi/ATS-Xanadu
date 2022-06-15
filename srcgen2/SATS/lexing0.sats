@@ -49,6 +49,7 @@ BUF = "./lexbuf0.sats"
 #staload "./xbasics.sats"
 (* ****** ****** *)
 #typedef loc_t = $LOC.loc_t
+#typedef lcsrc = $LOC.lcsrc
 #vwtpdef lxbf1 = $BUF.lxbf1
 #vwtpdef lxbf2 = $BUF.lxbf2
 (* ****** ****** *)
