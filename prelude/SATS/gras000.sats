@@ -9,6 +9,27 @@
 fun
 <xs:t0>
 <x0:t0>
+gras_get_at
+(xs: xs, i0: nint): x0
+fun
+<xs:t0>
+<x0:t0>
+gras_get_at_opt
+( xs: xs
+, i0: nint): optn_vt(x0)
+
+(* ****** ****** *)
+
+fun
+<xs:t0>
+<x0:t0>
+gras_length(xs): nint
+
+(* ****** ****** *)
+
+fun
+<xs:t0>
+<x0:t0>
 gras_rlistize(xs): list_vt(x0)
 fun
 <xs:t0>
