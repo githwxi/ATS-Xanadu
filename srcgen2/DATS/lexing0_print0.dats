@@ -134,6 +134,26 @@ T_STRN2_ncls(rep, len) =>
 print("T_STRN2_ncls(", rep, ";", len, ")")
 //
 |
+T_CMNT1_line(ag1, ag2) =>
+print("T_CMNT1_line(", ag1, ";", ag2, ")")
+|
+T_CMNT2_rest(ag1, ag2) =>
+print("T_CMNT2_rest(", ag1, ";", ag2, ")")
+|
+T_CMNT3_ccbl(lvl, rep) =>
+print("T_CMNT3_ccbl(", lvl, ";", rep, ")")
+|
+T_CMNT4_mlbl(lvl, rep) =>
+print("T_CMNT4_mlbl(", lvl, ";", rep, ")")
+//
+(*
+HX-2022-06-15:
+The rest of for secondary tokens that are
+generated from the primary ones (that are
+obtained directly from lexing some source)
+*)
+//
+|
 T_AT0() =>
 print("T_AT0()")
 |
@@ -203,11 +223,11 @@ T_RPAREN() =>
 print("T_RPAREN()")
 //
 |
-T_LBRACK() =>
-print("T_LBRACK()")
+T_LBRCKT() =>
+print("T_LBRCKT()")
 |
-T_RBRACK() =>
-print("T_RBRACK()")
+T_RBRCKT() =>
+print("T_RBRCKT()")
 //
 |
 T_LBRACE() =>
@@ -218,8 +238,114 @@ print("T_RBRACE()")
 //
 |
 T_EXISTS(knd) =>
-print
-("T_EXISTS(", knd, ")")
+print("T_EXISTS(", knd, ")")
+//
+|
+T_TRCD10(knd) =>
+print("T_TRCD10(", knd, ")")
+|
+T_TRCD20(knd) =>
+print("T_TRCD20(", knd, ")")
+//
+|
+T_AS0() =>
+print("T_AS0(", ")")
+|
+T_OF0() =>
+print("T_OF0(", ")")
+//
+|
+T_OP1() =>
+print("T_OP1(", ")")
+|
+T_OP2() =>
+print("T_OP2(", ")")
+|
+T_OP3(sym) =>
+print("T_OP3(", sym, ")")
+//
+|
+T_IN0() =>
+print("T_IN0(", ")")
+//
+|
+T_AND() =>
+print("T_AND(", ")")
+|
+T_END() =>
+print("T_END(", ")")
+//
+|
+T_IF0() =>
+print("T_IF0(", ")")
+|
+T_SIF() =>
+print("T_SIF(", ")")
+//
+|
+T_THEN() =>
+print("T_THEN(", ")")
+|
+T_ELSE() =>
+print("T_ELSE(", ")")
+//
+|
+T_WHEN() =>
+print("T_WHEN(", ")")
+|
+T_WITH() =>
+print("T_WITH(", ")")
+//
+|
+T_SCAS() =>
+print("T_SCAS(", ")")
+|
+T_CASE(csk) =>
+print("T_CASE(", csk, ")")
+//
+|
+T_ENDST() =>
+print("T_ENDST(", ")")
+//
+|
+T_LAM(knd) =>
+print("T_LAM(", knd, ")")
+|
+T_FIX(knd) =>
+print("T_FIX(", knd, ")")
+//
+|
+T_LET() =>
+print("T_LET(", ")")
+|
+T_TRY() =>
+print("T_TRY(", ")")
+|
+T_WHERE() =>
+print("T_WHERE(", ")")
+//
+|
+T_LOCAL() =>
+print("T_LOCAL(", ")")
+//
+|
+T_ENDLAM() =>
+print("T_ENDLAM(", ")")
+|
+T_ENDFIX() =>
+print("T_ENDFIX(", ")")
+|
+T_ENDLET() =>
+print("T_ENDLET(", ")")
+|
+T_ENDWHR() =>
+print("T_ENDWHR(", ")")
+|
+T_ENDLOC() =>
+print("T_ENDLOC(", ")")
+|
+T_ENDTRY() =>
+print("T_ENDTRY(", ")")
 //
 |
 T_VAL(vlk) =>
@@ -230,22 +356,6 @@ print("T_VAR(", vlk, ")")
 |
 T_FUN(fnk) =>
 print("T_FUN(", fnk, ")")
-|
-T_CASE(csk) =>
-print("T_CASE(", csk, ")")
-//
-|
-T_CMNT1_line(ag1, ag2) =>
-print("T_CMNT1_line(", ag1, ";", ag2, ")")
-|
-T_CMNT2_rest(ag1, ag2) =>
-print("T_CMNT2_rest(", ag1, ";", ag2, ")")
-|
-T_CMNT3_ccbl(lvl, rep) =>
-print("T_CMNT3_ccbl(", lvl, ";", rep, ")")
-|
-T_CMNT4_mlbl(lvl, rep) =>
-print("T_CMNT4_mlbl(", lvl, ";", rep, ")")
 //
 ) where
 {

@@ -149,20 +149,73 @@ datatype tnode =
   | T_LPAREN of () // (
   | T_RPAREN of () // )
 //
-  | T_LBRACK of () // [
-  | T_RBRACK of () // ]
+  | T_LBRCKT of () // [
+  | T_RBRCKT of () // ]
 //
   | T_LBRACE of () // {
   | T_RBRACE of () // }
 //
   | T_EXISTS of int // #[
 //
+  | T_TRCD10 of (int) // @(/$(
+                      // @tup/$tup
+                      // @tup_t/$tup_t
+                      // @tup_vt/$tup_vt
+  | T_TRCD20 of (int) // @{/${
+                      // @rec/$rec
+                      // @rec_t/$rec_t
+                      // @rec_vt/$rec_vt
+//
+  | T_AS0 of () // 'as'
+//
+  | T_OF0 of () // 'of'
+//
+  | T_OP1 of () // 'op'
+  | T_OP2 of () // 'op('
+  | T_OP3 of (strn) // 'opid'
+//
+  | T_IN0 of () // 'in'
+//
+  | T_AND of () // 'and'
+//
+  | T_END of () // 'end'
+//
+  | T_IF0 of () // 'if'
+  | T_SIF of () // static-if exp.
+//
+  | T_THEN of () // 'then'
+  | T_ELSE of () // 'else'
+//
+  | T_WHEN of () // 'when'
+  | T_WITH of () // 'with'
+//
+  | T_SCAS of () // static-case exps
+// HX: for dynamic-cases:
+  | T_CASE of caskind //case,case+/-
+//
+  | T_ENDST of () // for state-types
+//
+  | T_LAM of int // lam=lam1/lam@=lam0
+  | T_FIX of int // fix=lam1/fix@=fix0
+//
+  | T_LET of () // 'let'
+  | T_TRY of () // 'try'
+  | T_WHERE of () // 'where'
+//
+  | T_LOCAL of () // 'local'
+//
+  | T_ENDLAM of () // 'endlam'
+  | T_ENDFIX of () // 'endfix'
+  | T_ENDLET of () // 'endlet'
+  | T_ENDTRY of () // 'endtry'
+  | T_ENDWHR of () // 'endwhr'/'endwhere'
+  | T_ENDLOC of () // 'endloc'/'endlocal'
+//
+//
 // fn0, fnx, fn1, fun, praxi,
 | T_FUN of (funkind) // prfn0, prfn1, prfun, fcast
 | T_VAL of (valkind) // val, val+, val-, prval, (mcval)
 | T_VAR of (varkind) // var // there may be more kinds
-//
-| T_CASE of (caskind) // case, case+, case- // some more?
 //
 // end-of-(datatype tnode)
 //
