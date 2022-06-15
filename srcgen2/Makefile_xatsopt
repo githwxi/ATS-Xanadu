@@ -90,6 +90,18 @@ parsing_sats: ; $(XATSOPT) --static SATS/parsing.sats
 
 ######
 all_dats:: \
+xbasics_dats
+xbasics_dats: ; $(XATSOPT) --dynamic DATS/xbasics.dats
+######
+
+######
+all_dats:: \
+xerrory_dats
+xerrory_dats: ; $(XATSOPT) --dynamic DATS/xerrory.dats
+######
+
+######
+all_dats:: \
 xstamp0_dats
 xstamp0_dats: ; $(XATSOPT) --dynamic DATS/xstamp0.dats
 ######
