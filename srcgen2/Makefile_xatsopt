@@ -196,8 +196,11 @@ lexing0_lctniz_dats
 lexing0_lctniz_dats: ; $(XATSOPT) --dynamic DATS/lexing0_lctniz.dats
 ######
 all_dats:: \
-lexing0_utils0_dats
-lexing0_utils0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_utils0.dats
+lexing0_utils1_dats
+lexing0_utils1_dats: ; $(XATSOPT) --dynamic DATS/lexing0_utils1.dats
+all_dats:: \
+lexing0_utils2_dats
+lexing0_utils2_dats: ; $(XATSOPT) --dynamic DATS/lexing0_utils2.dats
 ######
 
 ######
