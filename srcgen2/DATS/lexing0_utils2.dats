@@ -210,6 +210,104 @@ T_CMNT4_mlbl(lvl, txt) => pstn1_incs_if(pos, txt)
 //
 (* ****** ****** *)
 
+local
+
+(* ****** ****** *)
+
+fun
+char2node
+(ch: sint): tnode =
+let
+val ch = char_make_code(ch)
+in//let
+//
+case+ 0 of
+| _ when(ch = ',') => T_COMMA()
+| _ when(ch = ';') => T_SMCLN()
+//
+| _ when(ch = '\\') => T_BSLSH()
+//
+| _ when(ch = '\(') => T_LPAREN()
+| _ when(ch = '\)') => T_RPAREN()
+//
+| _ when(ch = '\[') => T_LBRACK()
+| _ when(ch = '\]') => T_RBRACK()
+//
+| _ when(ch = '\{') => T_LBRACE()
+| _ when(ch = '\}') => T_RBRACE()
+//
+| _ (* otherwise *) => T_EOF(*nil*)
+end (*let*) // end of [char2node]
+
+(* ****** ****** *)
+
+fun
+tnode_search
+(id: strn): tnode = T_EOF(*void*)
+
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+
+fun
+lexing_tnode2tnode
+  (tnd0: tnode): tnode =
+(
+case+ tnd0 of
+|
+T_SPCHR(ch) =>
+let
+  val
+  tnd1 = char2node(ch)
+in//let
+  case+ tnd1 of
+  | T_EOF() => tnd0 | _ => tnd1
+end // end of [T_SPCHR]
+//
+|
+T_IDALP(id) =>
+let
+val tnd1 = tnode_search(id)
+in//let
+case+ tnd1 of
+| T_EOF() => tnd0 | _ => tnd1
+end (*let*) // end of [T_IDALP]
+|
+T_IDSYM(id) =>
+let
+val tnd1 = tnode_search(id)
+in//let
+case+ tnd1 of
+| T_EOF() => tnd0 | _ => tnd1
+end (*let*) // end of [T_IDSYM]
+//
+|
+T_IDDLR(id) =>
+let
+val tnd1 = tnode_search(id)
+in//let
+case+ tnd1 of
+| T_EOF() => tnd0 | _ => tnd1
+end (*let*) // end of [T_IDDLR]
+|
+T_IDSRP(id) =>
+let
+val tnd1 = tnode_search(id)
+in//let
+case+ tnd1 of
+| T_EOF() => tnd0 | _ => tnd1
+end (*let*) // end of [T_IDSRP]
+//
+| _ (* rest-of-tnode *) => tnd0
+//
+) (*case*) // lexing_tnode2tnode
+
+(* ****** ****** *)
+
+end (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 fun
 lexing_tnode2token
 ( pos:
@@ -220,9 +318,12 @@ lexing_tnode2token
   token(loc, tnd)) where
 {
 //
-val ps0 = postn_make_pstn1(pos)
-val ( ) = lexing_lctniz_tnode(pos, tnd)
+val ps0 =
+  postn_make_pstn1(pos)
+val ( ) =
+  lexing_lctniz_tnode(pos, tnd)
 val ps1 = postn_make_pstn1(pos)
+val tnd = lexing_tnode2tnode(tnd)
 //
 val loc = loctn_make_arg3(lcs, ps0, ps1)
 //

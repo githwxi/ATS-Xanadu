@@ -116,7 +116,6 @@ print("T_FLT02(", bas, ";", rep, ")")
 T_FLT03(bas, rep, sfx) =>
 print("T_FLT03(", bas, ";", rep, ";", sfx, ")")
 //
-//
 |
 T_CHAR1_nil0(rep) =>
 print("T_CHAR1_nil0(", rep, ")")
@@ -133,6 +132,94 @@ print("T_STRN1_clsd(", rep, ";", len, ")")
 |
 T_STRN2_ncls(rep, len) =>
 print("T_STRN2_ncls(", rep, ";", len, ")")
+//
+|
+T_AT0() =>
+print("T_AT0()")
+|
+T_BAR() =>
+print("T_BAR()")
+|
+T_BAR() =>
+print("T_CLN()")
+|
+T_DOT() =>
+print("T_DOT()")
+//
+|
+T_EQ0() =>
+print("T_EQ0()")
+|
+T_LT0() =>
+print("T_LT0()")
+|
+T_GT0() =>
+print("T_GT0()")
+//
+|
+T_DLR() =>
+print("T_DLR()")
+|
+T_SRP() =>
+print("T_SRP()")
+//
+|
+T_EQLT() =>
+print("T_EQLT()")
+|
+T_EQGT() =>
+print("T_EQGT()")
+//
+|
+T_LTGT() =>
+print("T_LTGT()")
+|
+T_GTLT() =>
+print("T_GTLT()")
+|
+T_MSLT() =>
+print("T_MSLT()")
+//
+|
+T_GTDOT() =>
+print("T_GTDOT()")
+//
+|
+T_COMMA() =>
+print("T_COMMA()")
+|
+T_SMCLN() =>
+print("T_SMCLN()")
+//
+|
+T_BSLSH() =>
+print("T_BSLSH()")
+//
+|
+T_LPAREN() =>
+print("T_LPAREN()")
+|
+T_RPAREN() =>
+print("T_RPAREN()")
+//
+|
+T_LBRACK() =>
+print("T_LBRACK()")
+|
+T_RBRACK() =>
+print("T_RBRACK()")
+//
+|
+T_LBRACE() =>
+print("T_LBRACE()")
+|
+T_RBRACE() =>
+print("T_RBRACE()")
+//
+|
+T_EXISTS(knd) =>
+print
+("T_EXISTS(", knd, ")")
 //
 |
 T_VAL(vlk) =>
