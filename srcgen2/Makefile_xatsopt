@@ -196,6 +196,10 @@ lexing0_lctniz_dats
 lexing0_lctniz_dats: ; $(XATSOPT) --dynamic DATS/lexing0_lctniz.dats
 ######
 all_dats:: \
+lexing0_mymap0_dats
+lexing0_mymap0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_mymap0.dats
+######
+all_dats:: \
 lexing0_utils1_dats
 lexing0_utils1_dats: ; $(XATSOPT) --dynamic DATS/lexing0_utils1.dats
 all_dats:: \
