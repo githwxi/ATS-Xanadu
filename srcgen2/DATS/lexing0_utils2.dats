@@ -230,8 +230,8 @@ case+ 0 of
 | _ when(ch = '\(') => T_LPAREN()
 | _ when(ch = '\)') => T_RPAREN()
 //
-| _ when(ch = '\[') => T_LBRACK()
-| _ when(ch = '\]') => T_RBRACK()
+| _ when(ch = '\[') => T_LBRCKT()
+| _ when(ch = '\]') => T_RBRCKT()
 //
 | _ when(ch = '\{') => T_LBRACE()
 | _ when(ch = '\}') => T_RBRACE()
