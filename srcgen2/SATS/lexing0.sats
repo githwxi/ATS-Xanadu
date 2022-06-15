@@ -110,6 +110,53 @@ datatype tnode =
 | T_CMNT4_mlbl of
   (sint(*level*), strn) // block comments of ml-style
 //
+  | T_AT0 of ()
+//
+  | T_BAR of () // |
+  | T_CLN of () // :
+  | T_DOT of () // .
+//
+  | T_EQ0 of () // =
+//
+  | T_LT0 of () // <
+  | T_GT0 of () // >
+//
+  | T_DLR of () // $
+  | T_SRP of () // #
+//
+(*
+  | T_BANG of () // !
+*)
+  | T_EQLT of () // =<
+  | T_EQGT of () // =>
+//
+  | T_LTGT of () // <>
+  | T_GTLT of () // ><
+//
+  | T_MSLT of () // -<
+(*
+  | T_MSGT of () // ->
+  | T_MSLTGT of () // -<>
+*)
+//
+  | T_GTDOT of () // >.
+//
+  | T_COMMA of () // ,
+  | T_SMCLN of () // ;
+//
+  | T_BSLSH of () // \
+//
+  | T_LPAREN of () // (
+  | T_RPAREN of () // )
+//
+  | T_LBRACK of () // [
+  | T_RBRACK of () // ]
+//
+  | T_LBRACE of () // {
+  | T_RBRACE of () // }
+//
+  | T_EXISTS of int // #[
+//
 // fn0, fnx, fn1, fun, praxi,
 | T_FUN of (funkind) // prfn0, prfn1, prfun, fcast
 | T_VAL of (valkind) // val, val+, val-, prval, (mcval)
