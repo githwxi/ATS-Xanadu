@@ -62,5 +62,27 @@ fun
 gseq_foreach_env1(xs, !e1): void
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+<e1:vt>
+map_env1$fopr
+(x0: x0, e1: !e1): y0
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map_env1_list(xs, !e1): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map_env1_strm(xs, !e1): strm_vt(y0)
+//
+(* ****** ****** *)
 
 (* end of [xatslib_githwxi_genv000.sats] *)

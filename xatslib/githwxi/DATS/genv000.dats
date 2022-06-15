@@ -43,7 +43,9 @@ datacopy{a0:vt}(x0: !a0): (~a0)
 (* ****** ****** *)
 
 #impltmp
-<xs><x0><e1>
+<xs>
+<x0>
+<e1>
 gseq_forall_env1
   (xs, env) =
 (
@@ -72,7 +74,9 @@ endlet // end of [forall$test<x0>(x0)]
 (* ****** ****** *)
 
 #impltmp
-<xs><x0><e1>
+<xs>
+<x0>
+<e1>
 gseq_foreach_env1
   (xs, env) =
 (
@@ -97,6 +101,70 @@ val env = $UN.delinear(env) in res end
 //
 endlet // end of [foreach$work<x0>(x0)]
 } (*where*) // end-of(gseq_foreach_env1)
+
+(* ****** ****** *)
+
+#impltmp
+<xs>
+<x0>
+<y0>
+<e1>
+gseq_map_env1_list
+  (xs, env) =
+(
+  gseq_map_list<xs><x0><y0>(xs)
+) where
+{
+val env =
+$UN.delinear(env)
+#impltmp
+map$fopr<x0><y0>(x0) =
+let
+//
+val env =
+$UN.castlin10{e1}(env)
+val res =
+map_env1$fopr<x0><y0>(x0, env)
+//
+in//let
+//
+let
+val env = $UN.delinear(env) in res end
+//
+endlet // end of [map$fopr<x0><y0>(x0)]
+} (*where*) // end-of(gseq_map_env1_list)
+
+(* ****** ****** *)
+
+#impltmp
+<xs>
+<x0>
+<y0>
+<e1>
+gseq_map_env1_strm
+  (xs, env) =
+(
+  gseq_map_strm<xs><x0><y0>(xs)
+) where
+{
+val env =
+$UN.delinear(env)
+#impltmp
+map$fopr<x0><y0>(x0) =
+let
+//
+val env =
+$UN.castlin10{e1}(env)
+val res =
+map_env1$fopr<x0><y0>(x0, env)
+//
+in//let
+//
+let
+val env = $UN.delinear(env) in res end
+//
+endlet // end of [map$fopr<x0><y0>(x0)]
+} (*where*) // end-of(gseq_map_env1_strm)
 
 (* ****** ****** *)
 

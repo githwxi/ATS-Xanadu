@@ -138,7 +138,12 @@ g_print<char> = char_print<(*nil*)>
 // For deprecation
 //
 #impltmp
-sint_make_char<> = char_code<>
+sint_make_char<> = char_code<(*_*)>
+#impltmp
+char_make_sint<> = char_make_code<>
+#impltmp
+char_make_uint<>(u) =
+char_make_code<>(i) where {val i = g0u2s(u)}
 //
 (* ****** ****** *)
 
