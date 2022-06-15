@@ -41,7 +41,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./lexing0_utils0.dats"
+#staload "./lexing0_utils1.dats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexbuf0.sats"
 (* ****** ****** *)
@@ -101,7 +103,22 @@ case+ tnd of
 | _(*non-T_EOF*) => loop(buf, res)
 end
 //
-} (*where*) // end of [lxbf1_lexing_tnodelst]
+}(*whr*)//end-of(lxbf1_lexing_tnodelst)
+
+(* ****** ****** *)
+
+#implfun
+fpath_tokenize(fpx) =
+let
+val
+buf =
+lxbf1_make_fpath(fpx)
+val
+lcs = LCSRCsome1(fpx)
+in
+lexing_lctnize_all
+(lcs, lxbf1_lexing_tnodelst(buf))
+endlet // end of [fpath_tokenize(fpath)]
 
 (* ****** ****** *)
 

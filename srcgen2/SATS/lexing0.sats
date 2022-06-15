@@ -236,5 +236,17 @@ lexing_lctnize_all // postn(0, 0, 0)
 , txs: list_vt(tnode)): list_vt(token)
 //
 (* ****** ****** *)
+//
+fun // HX: preprocess a raw
+lexing_preping_all // token list
+(tks: list_vt(token)): list_vt(token)
+//
+(* ****** ****** *)
+//
+// HX: An empty list 
+fun // is returned in case of error
+fpath_tokenize(fpx:strn): list_vt(token)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0.sats] *)

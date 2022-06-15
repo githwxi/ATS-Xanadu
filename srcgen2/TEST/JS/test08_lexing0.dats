@@ -40,9 +40,9 @@
 #include
 "./../../DATS/lexing0_print0.dats"
 #include
-"./../../DATS/lexing0_lctniz.dats"
+"./../../DATS/lexing0_utils1.dats"
 #include
-"./../../DATS/lexing0_utils0.dats"
+"./../../DATS/lexing0_utils2.dats"
 (* ****** ****** *)
 //
 val
@@ -209,12 +209,18 @@ prerrln
 //
 (* ****** ****** *)
 //
+val toks =
+fpath_tokenize("./../../SATS/xbasics.sats")
+//
+(*
+//
 val buf6 =
 lxbf1_make_fpath("./../../SATS/xbasics.sats")
 //
 val tnds = lxbf1_lexing_tnodelst(buf6)
 val toks = lexing_lctnize_all(LCSRCnone0(), tnds)
 //
+*)
 local
 #impltmp
 <xs><x0>

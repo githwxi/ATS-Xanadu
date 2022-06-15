@@ -278,4 +278,9 @@ end (*local*) // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexing0_lctniz.dats] *)
+#implfun
+lexing_preping_all(tks) = tks
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_lexing0_utils2.dats] *)
