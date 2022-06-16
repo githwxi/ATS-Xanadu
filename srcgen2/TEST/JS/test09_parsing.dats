@@ -109,9 +109,13 @@ prerrln("p1_t0str(\"\"Hello!\"\") = ", opt)
 (* ****** ****** *)
 
 val opt =
-p1_fun_test<l0abl>("l0abl", p1_l0abl)
+p1_fun_test<l0abl>("12345", p1_l0abl)
 val ( ) =
-prerrln("p1_l0abl(\"l0abl\") = ", opt)
+prerrln("p1_l0abl(\"12345\") = ", opt)
+val opt =
+p1_fun_test<l0abl>("label", p1_l0abl)
+val ( ) =
+prerrln("p1_l0abl(\"label\") = ", opt)
 
 (* ****** ****** *)
 
