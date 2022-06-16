@@ -85,6 +85,12 @@ g_print
 caskind_fprint
 (g_print$out<>(), csk) // xbasics
 //
+#impltmp
+g_print
+<implknd>(knd) =
+implknd_fprint
+(g_print$out<>(), knd) // xbasics
+//
 (* ****** ****** *)
 #impltmp
 g_0<stamp>

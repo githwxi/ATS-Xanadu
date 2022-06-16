@@ -198,5 +198,21 @@ fun//<>
 caskind_fprint
 (out: FILR, csk: caskind): void
 (* ****** ****** *)
+//
+datatype
+implknd =
+//
+| IMPLgen // for non-proof case
+| IMPLprf // proof implementation
+| IMPLval // value implementation
+| IMPLfun // function implementation
+| IMPLtmp // template implementation
+//
+(* ****** ****** *)
+//
+fun
+implknd_fprint(FILR, implknd): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xbasics.sats] *)
