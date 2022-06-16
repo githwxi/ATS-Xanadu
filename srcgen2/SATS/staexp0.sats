@@ -163,9 +163,29 @@ l0abl_fprint:(FILR,l0abl)->void
 (* ****** ****** *)
 //
 datatype
+i0dnt_node =
+| I0DNTsome of token // valid
+| I0DNTnone of token // invalid
+//
+fun
+i0dnt_none: (token) -> i0dnt
+fun
+i0dnt_some: (token) -> i0dnt
+//
+fun
+i0dnt_get_lctn(i0dnt): loc_t
+fun
+i0dnt_get_node(i0dnt): i0dnt_node
+//
+#symload lctn with i0dnt_get_lctn
+#symload node with i0dnt_get_node
+//
+(* ****** ****** *)
+//
+datatype
 l0abl_node =
-| L0ABLsome of (lab_t) // valid
-| L0ABLnone of (token) // invalid
+| L0ABLsome of label // valid
+| L0ABLnone of token // invalid
 //
 fun
 l0abl_get_lctn(l0abl): loc_t

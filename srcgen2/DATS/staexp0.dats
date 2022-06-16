@@ -78,10 +78,21 @@ l0abl_make_node(loc,lnd) = L0ABL(loc,lnd)
 end // end of [local]
 
 (* ****** ****** *)
+#implfun
+l0abl_make_none
+  (  tok  ) = let
+val
+loc =
+token_get_lctn(tok)
+in
+l0abl_make_node(loc, L0ABLnone(tok))
+//
+end // end of [l0abl_make_none]
+(* ****** ****** *)
 //
 #implfun
 l0abl_make_int1
-  (tok) = let
+  (  tok  ) = let
 //
 val
 loc =
@@ -100,7 +111,7 @@ end // end of [l0abl_make_int1]
 //
 #implfun
 l0abl_make_name
-  (tok) = let
+  (  tok  ) = let
 //
 val
 loc =
