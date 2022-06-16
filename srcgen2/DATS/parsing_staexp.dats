@@ -47,6 +47,14 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
+
+fun
+foo
+(tok: token): tnode = tok.node()
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
 

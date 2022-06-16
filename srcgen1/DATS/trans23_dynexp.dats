@@ -1431,7 +1431,6 @@ in
 end // end of [aux_trcd1]
 
 (* ****** ****** *)
-
 fun
 aux_assgn
 ( d2e0
@@ -1450,7 +1449,6 @@ val d3e2 = trans23_dexp(d2e2)
 in
   d23exp_assgn_up(loc0, d3e1, d3e2)
 end // end of [aux_assgn]
-
 (* ****** ****** *)
 fun
 aux_brack

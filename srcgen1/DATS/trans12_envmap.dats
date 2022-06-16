@@ -1384,8 +1384,7 @@ the_sexpenv_find
 val
 ans =
 let
-  prval
-  vbox(pf) = pfbox
+  prval vbox(pf) = pfbox
 in
   $ENV.symenv_search{s2itm}(!p0, sid)
 end // end of [val]
@@ -1394,20 +1393,24 @@ in
 //
 case+ ans of
 //
-| Some_vt _ => ans
+|
+Some_vt _ => ans
 //
-| ~None_vt() => let
-    val ans = the_nmspace_find(sid)
-  in
-    case+ ans of
-    | Some_vt _ => ans
-    | ~None_vt() => let
-        prval
-        vbox(pf) = pfbox
-      in
-        $ENV.symenv_psearch{s2itm}(!p0, sid)
-      end // end of [None_vt]
-  end // end of [None_vt]
+| ~
+None_vt() =>
+let
+val ans = the_nmspace_find(sid)
+in//let
+case+ ans of
+|
+Some_vt _ => ans
+| ~
+None_vt() => let
+  prval vbox(pf) = pfbox
+in
+  $ENV.symenv_psearch{s2itm}(!p0, sid)
+end // end of [None_vt]
+end // end of [None_vt]
 //
 end // end of [the_sexpenv_find]
 
@@ -1475,12 +1478,12 @@ the_qualist_find(qua)
 in
 //
 case+ opt of
-|
-~None_vt() =>
- None_vt()
-|
-~Some_vt(menv) =>
- ( s2iopt ) where
+| ~
+None_vt() =>
+None_vt()
+| ~
+Some_vt(menv) =>
+(   s2iopt  ) where
 {
   val
   ( pf0
@@ -1877,8 +1880,7 @@ the_dexpenv_find
 val
 ans =
 let
-  prval
-  vbox(pf) = pfbox
+  prval vbox(pf) = pfbox
 in
   $ENV.symenv_search{d2itm}(!p0, sym)
 end // end of [val]
@@ -1887,20 +1889,26 @@ in
 //
 case+ ans of
 //
-| Some_vt _ => ans
+|
+Some_vt _ => ans
 //
-| ~None_vt() => let
-    val ans = the_nmspace_find(sym)
-  in
-    case+ ans of
-    | Some_vt _ => ans
-    | ~None_vt() => let
-        prval
-        vbox(pf) = pfbox
-      in
-        $ENV.symenv_psearch{d2itm}(!p0, sym)
-      end // end of [None_vt]
-  end // end of [None_vt]
+| ~
+None_vt() =>
+let
+val ans =
+the_nmspace_find(sym)
+in
+case+ ans of
+|
+Some_vt _ => ans
+| ~
+None_vt() =>
+let
+  prval vbox(pf) = pfbox
+in
+  $ENV.symenv_psearch{d2itm}(!p0, sym)
+end // end of [None_vt]
+end // end of [None_vt]
 //
 end // end of [the_dexpenv_find]
 

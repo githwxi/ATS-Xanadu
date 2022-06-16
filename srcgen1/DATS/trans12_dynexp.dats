@@ -3235,10 +3235,12 @@ auxsym
 ( sym
 : sym_t): d2pitmlst =
 let
+//
 val
 opt =
 the_dexpenv_find(sym)
-in
+//
+in//let
 //
 case+ opt of
 | ~
@@ -3250,8 +3252,10 @@ None_vt() =>
 Some_vt(d2i) =>
 (
 case+ d2i of
-| D2ITMsym(_, dpis) => dpis
-| _ (*non-D2ITMsym*) => list_nil()
+|
+D2ITMsym(_, dpis) => dpis
+|
+_(*non-D2ITMsym*) => list_nil()
 ) (* Some_vt *)
 //
 end // end of [auxsym]
