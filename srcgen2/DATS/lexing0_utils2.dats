@@ -43,6 +43,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/xerrory.sats"
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
@@ -379,7 +381,562 @@ end (*local*) // end of [local]
 (* ****** ****** *)
 
 #implfun
-lexing_preping_all(tks) = tks
+lexing_preping_all
+  (   tks   ) = let
+//
+#vwtpdef
+tklst = list_vt(token)
+//
+fnx
+loop0
+( xs: tklst
+, res: tklst): tklst =
+(
+case+ xs of
+| ~
+list_vt_nil
+((*void*)) => res
+| ~
+list_vt_cons
+( x1, xs ) => loop1(x1, xs, res)
+)
+and
+loop1
+( x0: token
+, xs: tklst
+, res: tklst): tklst =
+(
+case+ xs of
+| ~
+list_vt_nil
+((*void*)) =>
+list_vt_cons(x0, res)
+| ~
+list_vt_cons
+( x1, xs ) => loop2(x0, x1, xs, res)
+)
+and
+loop2
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+(
+case+ x0.node() of
+//
+| T_EOL() => loop1(x1, xs, res)
+//
+| T_BLANK _ => loop1(x1, xs, res)
+//
+|
+T_CMNT1_line _ => loop1(x1, xs, res)
+|
+T_CMNT2_rest _ => loop1(x1, xs, res)
+|
+T_CMNT3_ccbl _ => loop1(x1, xs, res)
+|
+T_CMNT4_mlbl _ => loop1(x1, xs, res)
+//
+| T_AT0() => f0_AT0(x0, x1, xs, res)
+| T_OP1() => f0_OP1(x0, x1, xs, res)
+//
+| T_DLR() => f0_DLR(x0, x1, xs, res)
+| T_SRP() => f0_SRP(x0, x1, xs, res)
+//
+| T_LAM _ => f0_LAM(x0, x1, xs, res)
+| T_FIX _ => f0_FIX(x0, x1, xs, res)
+//
+| T_VAL _ => f0_VAL(x0, x1, xs, res)
+//
+| T_CASE _ => f0_CASE(x0, x1, xs, res)
+//
+(*
+|
+T_LTGT((*void*)) =>
+let
+  val loc = x0.lctn()
+  val y1 = 
+  token_make_node(loc, T_LT0())
+  val y2 = 
+  token_make_node(loc, T_GT0())
+in//let
+  loop1
+  ( x1, xs
+  , cons_vt(y2, cons_vt(y1, res)))
+end (* let *) // end of [ T_LTGT ]
+*)
+|
+T_GTLT((*void*)) =>
+let
+  val loc = x0.lctn()
+  val y1 = 
+  token_make_node(loc, T_GT0())
+  val y2 = 
+  token_make_node(loc, T_LT0())
+in//let
+  loop1
+  ( x1, xs
+  , cons_vt(y2, cons_vt(y1, res)))
+end (* let *) // end of [ T_GTLT ]
+//
+|
+T_IDALP _ => f0_IDALP(x0, x1, xs, res)
+//
+| _(*rest-of-tnode*) =>
+(
+  loop1(x1, xs, list_vt_cons(x0, res)))
+//
+) where
+{
+
+(* ****** ****** *)
+//
+fun
+f0_AT0
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+(
+case+
+x1.node() of
+|
+T_LPAREN() =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+in//let
+loop0
+(xs, cons_vt(xx2, res)) where
+{
+val xx2 =
+token_make_node(loc, T_TRCD10(0))
+}
+end (*let*) // end of [T_LPAREN]
+|
+T_LBRACE() =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+in//let
+loop0
+(xs, cons_vt(xx2, res)) where
+{
+val xx2 =
+token_make_node(loc, T_TRCD20(0))
+}
+end (*let*) // end of [T_LBRACE]
+//
+|
+_(*rest-of-tnode*) =>
+(
+loop1(x1, xs, list_vt_cons(x0, res)))
+//
+)(*case*)//end-of(f0_AT0(x0,x1,xs,res))
+//
+(* ****** ****** *)
+//
+fun
+f0_OP1
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+(
+case+
+x1.node() of
+| T_LPAREN() =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+val xx2 =
+token_make_node(loc, T_OP2())
+in//let
+loop0(xs, list_vt_cons(xx2, res))
+end(*let*) // end of [T_LPAREN]
+|
+T_IDSYM(id) =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+val xx2 =
+token_make_node(loc, T_OP3(id))
+in//let
+loop0(xs, list_vt_cons(xx2, res))
+end (*let*) // end of [T_IDSYM]
+| _(* rest-of-tnode *) =>
+(
+loop1(x1, xs, list_vt_cons(x0, res)))
+)(*case*)//end-of(f0_OP1(x0,x1,xs,res))
+//
+(* ****** ****** *)
+
+fun
+f0_DLR
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+(
+case+
+x1.node() of
+|
+T_LPAREN() =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+in
+loop0
+(xs, cons_vt(xx2, res)) where
+{
+val xx2 =
+token_make_node(loc, T_TRCD10(1))
+}
+end (*let*) // end of [T_LPAREN]
+|
+T_LBRACE() =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+in
+loop0
+(xs, cons_vt(xx2, res)) where
+{
+val xx2 =
+token_make_node(loc, T_TRCD20(1))
+}
+end (*let*) // end of [T_LBRACE]
+//
+| _(*rest-of-tnode*) =>
+(
+loop1(x1, xs, list_vt_cons(x0, res)))
+)(*case*)//end-of(f0_DLR(x0,x1,xs,res))
+
+(* ****** ****** *)
+
+fun
+f0_SRP
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+(
+case+
+x1.node() of
+|
+T_LBRCKT() => let
+val loc =
+x0.lctn()+x1.lctn()
+in
+loop0
+(xs, cons_vt(xx2, res)) where
+{
+val xx2 =
+token_make_node(loc, T_EXISTS(1))
+}
+end // end of [T_LBRCKT]
+|
+_(*rest-of-tnode*) =>
+(
+loop1(x1, xs, list_vt_cons(x0, res)))
+)(*case*)//end-of(f0_SRP(x0,x1,xs,res))
+
+(* ****** ****** *)
+
+fun
+f0_LAM
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+let
+val-
+T_LAM(k0) = x0.node()
+in//let
+//
+case+
+x1.node() of
+|
+T_AT0() => let
+  val
+  loc =
+  x0.lctn()+x1.lctn()
+in//let
+loop0
+(xs, cons_vt(xx2, res)) where
+{
+val xx2 = // k0 = 0
+token_make_node(loc, T_LAM(k0+1))
+}
+end (* let *) // end of [ T_AT0 ]
+|
+_(*rest-of-tnode*) =>
+(
+loop1(x1, xs, list_vt_cons(x0, res)))
+//
+end(*let*)//end-of(f0_LAM(x0,x1,xs,res))
+
+(* ****** ****** *)
+
+fun
+f0_FIX
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+let
+val-
+T_FIX(k0) = x0.node()
+in//let
+case+
+//
+x1.node() of
+|
+T_AT0() => let
+  val
+  loc =
+  x0.lctn()+x1.lctn()
+in//let
+loop0
+(xs, cons_vt(xx2, res)) where
+{
+val xx2 = // k0 = 0
+token_make_node(loc, T_FIX(k0+1))
+}
+end (* let *) // end of [ T_AT0 ]
+|
+_(*rest-of-tnode*) =>
+(
+loop1(x1, xs, list_vt_cons(x0, res)))
+//
+end(*let*)//end-of(f0_FIX(x0,x1,xs,res))
+
+(* ****** ****** *)
+
+fun
+f0_VAL
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+let
+val-
+T_VAL(vlk) = x0.node()
+//
+val () =
+prerrln("f0_VAL: x0 = ", x0)
+val () =
+prerrln("f0_VAL: x1 = ", x1)
+//
+fun
+plusq
+(sym: strn): bool =
+(strn_head_opt(sym) = '+')
+fun
+mnusq
+(sym: strn): bool =
+(strn_head_opt(sym) = '-')
+//
+in//let
+case+ vlk of
+|
+VLKval() =>
+(
+case+
+x1.node() of
+//
+|
+T_IDSYM("+") =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+val xx2 =
+token_make_node
+(loc, T_VAL(VLKvlp))
+in//let
+loop0(xs, cons_vt(xx2, res))
+end(*let*)//end-of(T_IDSYM("+"))
+//
+|
+T_IDSYM("-") =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+val xx2 =
+token_make_node
+(loc, T_VAL(VLKvln))
+in//let
+loop0(xs, cons_vt(xx2, res))
+end(*let*)//end-of(T_IDSYM("-"))
+//
+|
+T_IDSYM(sym) =>
+(
+case+ 0 of
+| _
+when plusq(sym) =>
+let
+val lc0 = x0.lctn()
+val lc1 = x1.lctn()
+val loc = lc0 + lc1
+val sym = strn_tail_raw(sym)
+in//let
+loop1
+( x1
+, xs, cons_vt(xx2, res)) where
+{
+val x1 =
+token_make_node(lc1, tnd) where
+{
+val tnd =
+lexing_tnode2tnode(T_IDSYM(sym))
+}
+val xx2 =
+token_make_node(loc, T_VAL(VLKvlp))
+}
+end(*let*)// end-of-[T_IDSYM(+...)]
+//
+| _
+when mnusq(sym) =>
+let
+val lc0 = x0.lctn()
+val lc1 = x1.lctn()
+val loc = lc0 + lc1
+val sym = strn_tail_raw(sym)
+in//let
+loop1
+( x1
+, xs, cons_vt(xx2, res)) where
+{
+val x1 =
+token_make_node(lc1, tnd) where
+{
+val tnd =
+lexing_tnode2tnode(T_IDSYM(sym))
+}
+val xx2 =
+token_make_node(loc, T_VAL(VLKvln))
+}
+end(*let*)// end-of-[T_IDSYM(-...)]
+//
+|
+_(*non-plus-mnus*) =>
+(
+  loop1(x1, xs, cons_vt(x0, res))
+)
+)
+|
+_(*rest-of-tnode*) =>
+(
+  loop1(x1, xs, cons_vt(x0, res))
+)
+)
+| _(* non-VLKval *) =>
+(
+  loop1(x1, xs, cons_vt(x0, res))
+)
+end (*let*) // end of [f0_VAL(......)]
+
+(* ****** ****** *)
+
+fun
+f0_CASE
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+let
+val-
+T_CASE(csk) = x0.node()
+in//let
+case+
+x1.node() of
+//
+| T_IDSYM("+") =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+val xx2 =
+token_make_node
+(loc, T_CASE(CSKcasp))
+in
+loop0(xs, cons_vt(xx2, res))
+endlet // end of-(T_IDSYM("+"))
+//
+| T_IDSYM("-") =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+val xx2 =
+token_make_node
+(loc, T_CASE(CSKcasn))
+in
+loop0(xs, cons_vt(xx2, res))
+endlet // end of-(T_IDSYM("-"))
+//
+|
+_(*rest-of-tnode*) =>
+(
+  loop1(x1, xs, cons_vt(x0, res))
+)
+end (*let*) // end-of-[f0_CASE(...)]
+
+(* ****** ****** *)
+
+fun
+f0_IDALP
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+let
+val-
+T_IDALP(id0) = x0.node()
+in//let
+//
+case+
+x1.node() of
+|
+T_IDSYM(sym) =>
+if
+qbeg(sym)
+then
+let
+val loc =
+x0.lctn()+x1.lctn()
+val id1 =
+strn_append(id0, sym)
+val xx2 =
+token_make_node
+( loc, T_IDALP(id1) )
+in//let
+loop0(xs, cons_vt(xx2, res))
+end // [then] // T_IDSYM(?...)
+else
+  loop1(x1, xs, cons_vt(x0, res))
+// end of [if]
+|
+_(*rest-of-tnode*) =>
+  loop1(x1, xs, cons_vt(x0, res))
+//
+end where
+{
+  fun
+  qbeg
+  (sym: strn): bool =
+  (strn_head_opt(sym) = '?')
+
+} (*where*)//end-of[f0_IDALP(......)]
+
+(* ****** ****** *)
+
+} (*where*)//end-of-[loop2(x0,x1,xs,res)]
+//
+in//let
+//
+  list_vt_reverse0(loop0(tks, nil_vt()))
+//
+end (*let*) // end of [lexing_preping_all]
 
 (* ****** ****** *)
 

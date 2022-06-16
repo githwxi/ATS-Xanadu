@@ -116,8 +116,11 @@ lxbf1_make_fpath(fpx)
 val
 lcs = LCSRCsome1(fpx)
 in
+lexing_preping_all
+(
 lexing_lctnize_all
 (lcs, lxbf1_lexing_tnodelst(buf))
+)
 endlet // end of [fpath_tokenize(fpath)]
 
 (* ****** ****** *)

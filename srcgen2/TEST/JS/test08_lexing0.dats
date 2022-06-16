@@ -220,10 +220,11 @@ prerrln
 (* ****** ****** *)
 //
 val toks =
+fpath_tokenize("./mycode.dats")
 (*
 fpath_tokenize("./../../SATS/xbasics.sats")
-*)
 fpath_tokenize("./../../DATS/xbasics.dats")
+*)
 //
 (*
 //

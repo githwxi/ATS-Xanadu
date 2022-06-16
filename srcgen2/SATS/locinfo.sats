@@ -132,5 +132,13 @@ loctn_make_fpath
 #symload loctn with loctn_make_arg3
 #symload loctn with loctn_make_fpath
 (* ****** ****** *)
+//
+fun
+add_loctn_loctn
+(loc1: loctn, loc2: loctn): loctn
+//
+#symload + with add_loctn_loctn of 1000
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_locinfo.sats] *)

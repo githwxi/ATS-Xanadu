@@ -195,8 +195,8 @@ datatype tnode =
 //
   | T_ENDST of () // for state-types
 //
-  | T_LAM of int // lam=lam1/lam@=lam0
-  | T_FIX of int // fix=lam1/fix@=fix0
+  | T_LAM of int // lam=lam0/lam@=lam1
+  | T_FIX of int // fix=lam0/fix@=fix1
 //
   | T_LET of () // 'let'
   | T_TRY of () // 'try'

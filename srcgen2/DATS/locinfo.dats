@@ -171,4 +171,20 @@ end(*let*)//end-of(loctn_make_fpath)
 //
 (* ****** ****** *)
 
+#implfun
+add_loctn_loctn(lc1, lc2) =
+let
+val
+lcs = lc1.lsrc()
+val
+pb1 = lc1.pbeg() and pb2 = lc2.pbeg()
+val
+pe1 = lc1.pend() and pe2 = lc2.pend()
+in
+loctn_make_arg3
+(lcs, g_min(pb1, pb2), g_max(pe1, pe2))
+end (*let*) // end of [add_loctn_loctn]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_locinfo.dats] *)
