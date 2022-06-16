@@ -173,4 +173,178 @@ end (*let*) // end of [p_CLN]
 
 (* ****** ****** *)
 
+#implfun
+p1_EQGT(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_EQGT() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-EQGT *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_EQGT]
+
+(* ****** ****** *)
+
+#implfun
+p1_GTDOT(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_GTDOT() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-GTDOT *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_GTDOT]
+
+(* ****** ****** *)
+
+#implfun
+pq_SMCLN(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_SMCLN() =>
+optn_cons(tok) where
+{ val () = buf.skip1() }
+|
+_ (* non-SMCLN *) => optn_nil()
+end (*let*) // end of [pq_SMCLN]
+
+(* ****** ****** *)
+
+#implfun
+p1_LPAREN(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_LPAREN() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-LPAREN *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_LPAREN]
+
+#implfun
+p1_RPAREN(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_RPAREN() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-RPAREN *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_RPAREN]
+
+(* ****** ****** *)
+
+#implfun
+p1_LBRCKT(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_LBRCKT() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-LBRCKT *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_LBRCKT]
+
+#implfun
+p1_RBRCKT(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_RBRCKT() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-RBRCKT *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_RBRCKT]
+
+(* ****** ****** *)
+
+#implfun
+p1_LBRACE(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_LBRACE() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-LBRACE *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_LBRACE]
+
+#implfun
+pq_LBRACE(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_LBRACE() =>
+optn_cons(tok) where
+{ val () = buf.skip1() }
+|
+_ (* non-LBRACE *) => optn_nil()
+end (*let*) // end of [pq_LBRACE]
+
+#implfun
+p1_RBRACE(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_RBRACE() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-RBRACE *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_RBRACE]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_parsing_basics.dats] *)
