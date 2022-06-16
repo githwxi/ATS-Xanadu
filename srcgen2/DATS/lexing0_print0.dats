@@ -357,9 +357,108 @@ print("T_VAR(", vlk, ")")
 T_FUN(fnk) =>
 print("T_FUN(", fnk, ")")
 //
+|
+T_IMPLMNT(knd) =>
+print("T_IMPLMNT(", knd, ")")
+//
+|
+T_STACST0() =>
+print("T_STACST0(", ")")
+//
+|
+T_ABSSORT() =>
+print("T_ABSSORT(", ")")
+|
+T_SORTDEF() =>
+print("T_SORTDEF(", ")")
+|
+T_SEXPDEF(knd) =>
+print("T_SEXPDEF(", knd, ")")
+//
+|
+T_ABSIMPL() =>
+print("T_ABSIMPL(", ")")
+|
+T_ABSOPEN() =>
+print("T_ABSOPEN(", ")")
+|
+T_ABSTYPE(knd) =>
+print("T_ABSTYPE(", knd, ")")
+//
+|
+T_DATASORT() =>
+print("T_DATASORT(", ")")
+//
+|
+T_EXCPTCON() =>
+print("T_EXCPTCON(", ")")
+//
+|
+T_DATATYPE(knd) =>
+print("T_DATATYPE(", knd, ")")
+|
+T_WITHTYPE(knd) =>
+print("T_WITHTYPE(", knd, ")")
+//
+|
+T_SRP_THEN() =>
+print("T_SRP_THEN(", ")")
+|
+T_SRP_ELSE() =>
+print("T_SRP_ELSE(", ")")
+|
+T_SRP_ENDIF() =>
+print("T_SRP_ENDIF(", ")")
+|
+T_SRP_IFDEC(knd) =>
+print("T_SRP_IFDEC(", knd, ")")
+|
+T_SRP_ELSIF(knd) =>
+print("T_SRP_ELSIF(", knd, ")")
+//
+|
+T_SRP_NONFIX() =>
+print("T_SRP_NONFIX(", ")")
+|
+T_SRP_FIXITY(knd) =>
+print("T_SRP_FIXITY(", knd, ")")
+//
+|
+T_SRP_STATIC() =>
+print("T_SRP_STATIC(", ")")
+|
+T_SRP_EXTERN() =>
+print("T_SRP_EXTERN(", ")")
+//
+|
+T_SRP_DEFINE() =>
+print("T_SRP_DEFINE(", ")")
+|
+T_SRP_MACDEF() =>
+print("T_SRP_MACDEF(", ")")
+//
+|
+T_SRP_SYMLOAD() =>
+print("T_SRP_SYMLOAD(", ")")
+//
+|
+T_SRP_STALOAD() =>
+print("T_SRP_STALOAD(", ")")
+|
+T_SRP_DYNLOAD() =>
+print("T_SRP_DYNLOAD(", ")")
+|
+T_SRP_INCLUDE() =>
+print("T_SRP_INCLUDE(", ")")
+(*
+|
+T_SRP_INPASTE() =>
+print("T_SRP_INPASTE(", ")")
+*)
+//
 ) where
 {
-  #impltmp g_print$out<>() = out
+#impltmp g_print$out<>() = out
 }(*where*)//end-of(tnode_fprint)
 //
 (* ****** ****** *)

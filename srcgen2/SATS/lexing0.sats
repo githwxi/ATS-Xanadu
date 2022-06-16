@@ -219,6 +219,52 @@ datatype tnode =
 | T_IMPLMNT of (implknd)
   //implmnt:generic//implprf:prval/fun//implval/fun/tmp/tmpr
 //
+  | T_STACST0 of ()
+//
+  | T_ABSSORT of ()
+//
+  | T_SORTDEF of ()
+//
+  | T_SEXPDEF of int(*kind*) // static defs
+//
+  | T_ABSIMPL of ()          // abstype-impl
+  | T_ABSOPEN of ()          // abstype-open
+  | T_ABSTYPE of int(*kind*) // abstract types
+//
+  | T_DATASORT of ()
+//
+  | T_EXCPTCON of ()
+//
+  | T_DATATYPE of int(*kind*)
+//
+  | T_WITHTYPE of int(*kind*)
+//
+  | T_SRP_THEN of ()
+  | T_SRP_ELSE of ()
+  | T_SRP_IFDEC of int(*kind*)
+  | T_SRP_ELSIF of int(*kind*)
+  | T_SRP_ENDIF of ()
+//
+  | T_SRP_NONFIX of ()
+  | T_SRP_FIXITY of int(*kind*)
+//
+  | T_SRP_STATIC of () // #static
+  | T_SRP_EXTERN of () // #extern
+//
+  | T_SRP_DEFINE of () // #define
+  | T_SRP_MACDEF of () // #macdef
+//
+  | T_SRP_SYMLOAD of () // #symload
+//
+  | T_SRP_STALOAD of () // #staload
+  | T_SRP_DYNLOAD of () // #dynload
+//
+  | T_SRP_INCLUDE of () // #include
+(*
+  | T_SRP_INPASTE of () // #inpaste
+*)
+//
+//
 // end-of-(datatype tnode)
 //
 (* ****** ****** *)

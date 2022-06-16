@@ -78,6 +78,51 @@ val T0PRVAL = T_VAL(VLKprval)
 val T0PRVAR = T_VAL(VLKprval)
 //
 (* ****** ****** *)
+val T0IMPLMNT = T_IMPLMNT(IMPLgen)
+val T0IMPLPRF = T_IMPLMNT(IMPLprf)
+val T0IMPLVAL = T_IMPLMNT(IMPLval)
+val T0IMPLFUN = T_IMPLMNT(IMPLfun)
+val T0IMPLTMP = T_IMPLMNT(IMPLtmp)
+(* ****** ****** *)
+//
+val T0SEXPDEF = T_SEXPDEF(-1)
+//
+val T0PROPDEF = T_SEXPDEF(PROPSORT)
+val T0VIEWDEF = T_SEXPDEF(VIEWSORT)
+//
+val T0TBOXDEF = T_SEXPDEF(TBOXSORT)
+val T0TFLTDEF = T_SEXPDEF(TFLTSORT)
+val T0TYPEDEF = T_SEXPDEF(TYPESORT)
+val T0VWTPDEF = T_SEXPDEF(VWTPSORT)
+//
+(* ****** ****** *)
+//
+val T0ABSPROP = T_ABSTYPE(PROPSORT)
+val T0ABSVIEW = T_ABSTYPE(VIEWSORT)
+//
+val T0ABSTBOX = T_ABSTYPE(TBOXSORT)
+val T0ABSTFLT = T_ABSTYPE(TFLTSORT)
+val T0ABSTYPE = T_ABSTYPE(TYPESORT)
+//
+val T0ABSVTBX = T_ABSTYPE(VTBXSORT)
+val T0ABSVTFT = T_ABSTYPE(VTFTSORT)
+val T0ABSVWTP = T_ABSTYPE(VWTPSORT)
+//
+(* ****** ****** *)
+//
+val T0DATAPROP = T_DATATYPE(PROPSORT)
+val T0DATAVIEW = T_DATATYPE(VIEWSORT)
+val T0DATATYPE = T_DATATYPE(TYPESORT)
+val T0DATAVWTP = T_DATATYPE(VWTPSORT)
+//
+(* ****** ****** *)
+//
+val T0WITHPROP = T_WITHTYPE(PROPSORT)
+val T0WITHVIEW = T_WITHTYPE(VIEWSORT)
+val T0WITHTYPE = T_WITHTYPE(TYPESORT)
+val T0WITHVWTP = T_WITHTYPE(VWTPSORT)
+//
+(* ****** ****** *)
 
 local
 
@@ -174,6 +219,47 @@ val () = kwdins("prval", T0PRVAL)
 val () = kwdins("prvar", T0PRVAR)
 //
 val () = kwdins("fcast", T0FCAST)
+//
+val () = kwdins("#implmnt", T0IMPLMNT)
+val () = kwdins("#implprf", T0IMPLPRF)
+val () = kwdins("#implval", T0IMPLVAL)
+val () = kwdins("#implfun", T0IMPLFUN)
+val () = kwdins("#impltmp", T0IMPLTMP)
+//
+//
+val () = kwdins("#stacst0", T_STACST0)
+//
+val () = kwdins("#abssort", T_ABSSORT)
+val () = kwdins("#sortdef", T_SORTDEF)
+//
+val () = kwdins("#sexpdef", T0SEXPDEF)
+val () = kwdins("#propdef", T0PROPDEF)
+val () = kwdins("#viewdef", T0VIEWDEF)
+val () = kwdins("#tboxdef", T0TBOXDEF)
+val () = kwdins("#typedef", T0TYPEDEF)
+val () = kwdins("#vwtpdef", T0VWTPDEF)
+//
+val () = kwdins("#abstype", T0ABSTYPE)
+val () = kwdins("#absprop", T0ABSPROP)
+val () = kwdins("#absview", T0ABSVIEW)
+val () = kwdins("#abstbox", T0ABSTBOX)
+val () = kwdins("#abstflt", T0ABSTFLT)
+val () = kwdins("#absvtbx", T0ABSVTBX)
+val () = kwdins("#absvtft", T0ABSVTFT)
+val () = kwdins("#absvwtp", T0ABSVWTP)
+//
+val () = kwdins("#absimpl", T_ABSIMPL)
+val () = kwdins("#absopen", T_ABSOPEN)
+//
+val () = kwdins("excptcon", T_EXCPTCON)
+val () = kwdins("datasort", T_DATASORT)
+val () = kwdins("dataprop", T0DATAPROP)
+val () = kwdins("dataview", T0DATAVIEW)
+val () = kwdins("datatype", T0DATATYPE)
+val () = kwdins("datavwtp", T0DATAVWTP)
+(*
+val () = kwdins("datavtype", T0DATAVTYPE)
+*)
 //
 end where
 {
