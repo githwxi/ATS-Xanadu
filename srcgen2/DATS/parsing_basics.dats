@@ -399,4 +399,112 @@ end (*let*) // end of [p_WITH]
 
 (* ****** ****** *)
 
+#implfun
+p1_END(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_END() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-END *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_END]
+
+(* ****** ****** *)
+
+#implfun
+pq_ENDLAM(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_ENDLAM() =>
+optn_cons(tok) where
+{ val () = buf.skip1() }
+|
+_ (* non-ENDLAM *) => optn_nil()
+end (*let*) // end of [pq_ENDLAM]
+
+#implfun
+pq_ENDFIX(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_ENDFIX() =>
+optn_cons(tok) where
+{ val () = buf.skip1() }
+|
+_ (* non-ENDFIX *) => optn_nil()
+end (*let*) // end of [pq_ENDFIX]
+
+(* ****** ****** *)
+
+#implfun
+p1_ENDLET(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_ENDLET() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-ENDLET *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_ENDLET]
+
+(* ****** ****** *)
+
+#implfun
+p1_ENDTRY(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_ENDTRY() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-ENDTRY *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_ENDTRY]
+
+(* ****** ****** *)
+
+#implfun
+p1_ENDLOC(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_ENDLOC() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-ENDLOC *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_ENDLOC]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_parsing_basics.dats] *)
