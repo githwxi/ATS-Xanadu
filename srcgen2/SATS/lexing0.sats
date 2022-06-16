@@ -211,11 +211,13 @@ datatype tnode =
   | T_ENDWHR of () // 'endwhr'/'endwhere'
   | T_ENDLOC of () // 'endloc'/'endlocal'
 //
-//
 // fn0, fnx, fn1, fun, praxi,
 | T_FUN of (funkind) // prfn0, prfn1, prfun, fcast
 | T_VAL of (valkind) // val, val+, val-, prval, (mcval)
 | T_VAR of (varkind) // var // there may be more kinds
+//
+| T_IMPLMNT of (implknd)
+  //implmnt:generic//implprf:prval/fun//implval/fun/tmp/tmpr
 //
 // end-of-(datatype tnode)
 //

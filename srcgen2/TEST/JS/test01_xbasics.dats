@@ -99,4 +99,26 @@ prerrln("FNKfcast() = ", FNKfcast())
 
 (* ****** ****** *)
 
+val () =
+prerrln("CSKcas0() = ", CSKcas0())
+val () =
+prerrln("CSKcasp() = ", CSKcasp())
+val () =
+prerrln("CSKcasn() = ", CSKcasn())
+
+(* ****** ****** *)
+
+val () =
+prerrln("IMPLgen() = ", IMPLgen())
+val () =
+prerrln("IMPLprf() = ", IMPLprf())
+val () =
+prerrln("IMPLval() = ", IMPLval())
+val () =
+prerrln("IMPLfun() = ", IMPLfun())
+val () =
+prerrln("IMPLtmp() = ", IMPLtmp())
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test01_xbasics.dats] *)

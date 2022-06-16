@@ -145,4 +145,24 @@ end(*let*)//end-of(caskind_fprint)
 
 (* ****** ****** *)
 
+#implfun
+//<>(*tmp*)
+implknd_fprint
+  (out, knd) = let
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+//
+case+ knd of
+| IMPLgen() => print( "IMPLgen" )
+| IMPLprf() => print( "IMPLprf" )
+| IMPLval() => print( "IMPLval" )
+| IMPLfun() => print( "IMPLfun" )
+| IMPLtmp() => print( "IMPLtmp" )
+//
+end(*let*)//end-of(implknd_fprint)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_xbasics_print0.dats] *)
