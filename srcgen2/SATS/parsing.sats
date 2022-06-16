@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -53,9 +53,11 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 //
 #typedef
-p1_fun(r0:type) = (!tkbf0 >> _) -> r0
+p1_fun(r0:type) =
+(!tkbf0, &int >> _)->(r0)
 #typedef
-pq_fun(r0:type) = (!tkbf0 >> _) -> optn_vt(r0)
+pq_fun(r0:type) =
+(!tkbf0, &int >> _)->optn(r0)
 //
 (* ****** ****** *)
 //
@@ -83,12 +85,12 @@ tokbuf_make_list_vt
 //
 (* ****** ****** *)
 //
-fun p1_EQ: p1_fun(token)
-fun pq_EQ: pq_fun(token)
+fun p1_EQ0: p1_fun(token)
+fun pq_EQ0: pq_fun(token)
 //
-fun p1_GT: p1_fun(token)
+fun p1_GT0: p1_fun(token)
 //
-fun pq_IN: pq_fun(token)
+fun pq_IN0: pq_fun(token)
 //
 fun p1_BAR: p1_fun(token)
 fun pq_BAR: pq_fun(token)

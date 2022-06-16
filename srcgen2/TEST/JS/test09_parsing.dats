@@ -15,6 +15,7 @@
 "./../../DATS/locinfo.dats"
 #include
 "./../../DATS/locinfo_print0.dats"
+(* ****** ****** *)
 #include
 "./../../DATS/lexbuf0.dats"
 #include
@@ -33,6 +34,8 @@
 "./../../DATS/parsing.dats"
 #include
 "./../../DATS/parsing_tokbuf.dats"
+#include
+"./../../DATS/parsing_basics.dats"
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)
