@@ -88,16 +88,31 @@ g_sel3
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 g_input(): a
 fun
-<a:t0>
+<a:vt>
 g_input_exn
 ((*void*)): a
 fun
-<a:t0>
+<a:vt>
 g_input_opt
 ((*void*)): optn_vt(a)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+g_parse
+(rep: strn): a
+fun
+<a:vt>
+g_parse_exn
+(rep: strn): a
+fun
+<a:vt>
+g_parse_opt
+(rep: strn): optn_vt(a)
 //
 (* ****** ****** *)
 //

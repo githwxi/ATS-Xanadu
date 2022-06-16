@@ -48,7 +48,9 @@ LAB = "./xlabel0.sats"
 LOC = "./locinfo.sats"
 //
 #typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
 #typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
 //
 (* ****** ****** *)
 //
@@ -158,6 +160,32 @@ fun
 i0dnt_fprint:(FILR,i0dnt)->void
 fun
 l0abl_fprint:(FILR,l0abl)->void
+(* ****** ****** *)
+//
+datatype
+l0abl_node =
+| L0ABLsome of (lab_t) // valid
+| L0ABLnone of (token) // invalid
+//
+fun
+l0abl_get_lctn(l0abl): loc_t
+fun
+l0abl_get_node(l0abl): l0abl_node
+//
+#symload lctn with l0abl_get_lctn
+#symload node with l0abl_get_node
+//
+fun
+l0abl_make_int1(tok: token): l0abl
+fun
+l0abl_make_name(tok: token): l0abl
+fun
+l0abl_make_none(tok: token): l0abl
+//
+fun
+l0abl_make_node
+(loc:loc_t, lnd:l0abl_node): l0abl
+//
 (* ****** ****** *)
 //
 datatype

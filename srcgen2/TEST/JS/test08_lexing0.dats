@@ -207,6 +207,7 @@ prerrln
 //
 (* ****** ****** *)
 //
+(*
 val buf5 =
 lxbf1_make_strn
 (
@@ -216,6 +217,29 @@ lxbf1_make_strn
 val (  ) =
 prerrln
 ("lexing(buf5) = ", lxbf1_lexing_tnodelst(buf5))
+*)
+//
+val toks = 
+strn_tokenize
+(
+"(0, 10, 012ULL, 0xFF, 123E+10, 3.14)"
+)
+local
+#impltmp
+<xs><x0>
+glseq_print$beg() = ()
+#impltmp
+<xs><x0>
+glseq_print$end() = ()
+#impltmp
+<xs><x0>
+glseq_print$sep() = g_print("\n")
+#impltmp
+g_print<token>(tok) =
+print(tok.lctn(), ":", tok.node())
+in//local
+val (  ) = prerrln("lexing(buf5): toks =\n", toks)
+end//local
 //
 (* ****** ****** *)
 //
@@ -251,7 +275,7 @@ glseq_print$sep() = g_print("\n")
 g_print<token>(tok) =
 print(tok.lctn(), ":", tok.node())
 in//local
-val (  ) = prerrln("lexing(buf5): toks = ", toks)
+val (  ) = prerrln("lexing(buf6): toks =\n", toks)
 end//local
 //
 (* ****** ****** *)

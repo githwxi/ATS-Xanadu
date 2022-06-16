@@ -396,6 +396,11 @@ lexing_preping_all // token list
 //
 (* ****** ****** *)
 //
+fun
+strn_tokenize(src:strn): list_vt(token)
+//
+(* ****** ****** *)
+//
 // HX: An empty list 
 fun // is returned in case of error
 fpath_tokenize(fpx:strn): list_vt(token)

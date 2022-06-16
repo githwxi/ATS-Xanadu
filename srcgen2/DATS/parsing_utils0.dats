@@ -29,11 +29,13 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 07th, 2022
+Start Time: June 16th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
@@ -41,106 +43,36 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./lexing0_utils1.dats"
-(* ****** ****** *)
-#staload "./../SATS/locinfo.sats"
-(* ****** ****** *)
-#staload "./../SATS/lexbuf0.sats"
-(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-
-#implfun
-lxbf1_lexing_tnode
-(   buf   ) =
-(
-gobj_lexing_tnode<obj>(buf)
-) where
-{
-//
-#vwtpdef obj = lxbf1
-//
-#implfun
-gobj_lexing$getc1<obj>(buf) = buf.getc1()
-//
-#implfun
-gobj_lexing$fclst<obj>(buf) = buf.tclst()
-#implfun
-gobj_lexing$fcnil<obj>(buf) = free(buf.tclst())
-#implfun
-gobj_lexing$fcseg<obj>(buf) = strn(buf.tclst())
-//
-#implfun
-gobj_lexing$unget<obj>(buf, ci0) = buf.unget(ci0)
-//
-} (*where*) // end of [lxbf1_lexing_token]
-
+#staload "./../SATS/parsing.sats"
 (* ****** ****** *)
 
-#implfun
-lxbf1_lexing_tnodelst
-(   buf   ) =
-list_vt_reverse0
-(
-loop(buf, list_vt_nil())
-) where
-{
-//
-fnx
-loop
-( buf: !lxbf1
-, res
-: list_vt(tnode)
-)
-: list_vt(tnode) =
+(*
+fun
+<r0:t0>
+p1_fun_test
+( inp: strn
+, pfn: p1_fun(r0)): optn(r0)
+*)
+#impltmp
+<r0>(*tmp*)
+p1_fun_test
+( inp, pfn ) =
 let
-val tnd =
-lxbf1_lexing_tnode(buf)
-val res = cons_vt(tnd, res)
+//
+val tks =
+strn_tokenize(inp)
+val buf =
+tokbuf_make_list_vt(tks)
+//
+var err = 0(*init*)
+val res = pfn(buf, err)
+val ( ) = tokbuf_free(buf)
 in//let
-case+ tnd of
-| T_EOF() => res
-| _(*non-T_EOF*) => loop(buf, res)
-end
-//
-}(*whr*)//end-of(lxbf1_lexing_tnodelst)
+if err = 0 then some(res) else none()
+end (*let*) // end of [p1_fun_test]
 
 (* ****** ****** *)
 
-#implfun
-strn_tokenize(src) =
-let
-val
-buf =
-lxbf1_make_strn(src)
-val
-lcs = LCSRCnone0()
-in
-  lexing_preping_all
-(
-  lexing_lctnize_all
-  (lcs, lxbf1_lexing_tnodelst(buf))
-)
-endlet // end of [strn_tokenize(strn)]
-
-(* ****** ****** *)
-
-#implfun
-fpath_tokenize(fpx) =
-let
-val
-buf =
-lxbf1_make_fpath(fpx)
-val
-lcs = LCSRCsome1(fpx)
-in
-  lexing_preping_all
-(
-  lexing_lctnize_all
-  (lcs, lxbf1_lexing_tnodelst(buf))
-)
-endlet // end of [fpath_tokenize(fpath)]
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_lexing0.dats] *)
+(* end of [ATS3/XATSOPT_parsing_utils0.dats] *)
