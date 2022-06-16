@@ -102,25 +102,6 @@ end // end of [p_GT0]
 (* ****** ****** *)
 
 #implfun
-pq_IN0(buf, err) =
-let
-//
-val tok = buf.getk0()
-//
-in//let
-case+
-tok.node() of
-|
-T_IN0() =>
-optn_cons(tok) where
-{ val () = buf.skip1() }
-|
-_ (* non-IN0 *) => optn_nil()
-end (*let*) // end of [pq_IN0]
-
-(* ****** ****** *)
-
-#implfun
 p1_BAR(buf, err) =
 let
 val e00 = err
@@ -344,6 +325,77 @@ let val () = buf.skip1() in tok end
 _(* non-RBRACE *) =>
 let val () = (err := e00 + 1) in tok end
 end (*let*) // end of [p_RBRACE]
+
+(* ****** ****** *)
+
+#implfun
+p1_IN0(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_IN0() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-IN0 *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_IN0]
+
+#implfun
+pq_IN0(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_IN0() =>
+optn_cons(tok) where
+{ val () = buf.skip1() }
+|
+_ (* non-IN0 *) => optn_nil()
+end (*let*) // end of [pq_IN0]
+
+(* ****** ****** *)
+
+#implfun
+p1_OF0(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_OF0() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-OF0 *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_OF0]
+
+(* ****** ****** *)
+
+#implfun
+p1_WITH(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+case+
+tok.node() of
+|
+T_WITH() =>
+let val () = buf.skip1() in tok end
+|
+_(* non-WITH *) =>
+let val () = (err := e00 + 1) in tok end
+end (*let*) // end of [p_WITH]
 
 (* ****** ****** *)
 

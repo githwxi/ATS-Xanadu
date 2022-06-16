@@ -90,8 +90,6 @@ fun pq_EQ0: pq_fun(token)
 //
 fun p1_GT0: p1_fun(token)
 //
-fun pq_IN0: pq_fun(token)
-//
 fun p1_BAR: p1_fun(token)
 fun pq_BAR: pq_fun(token)
 //
@@ -114,6 +112,15 @@ fun p1_RBRCKT: p1_fun(token)
 fun p1_LBRACE: p1_fun(token)
 fun pq_LBRACE: pq_fun(token)
 fun p1_RBRACE: p1_fun(token)
+//
+(* ****** ****** *)
+//
+fun p1_OF0: p1_fun(token)
+//
+fun p1_IN0: p1_fun(token)
+fun pq_IN0: pq_fun(token)
+//
+fun p1_WITH: p1_fun(token)
 //
 (* ****** ****** *)
 
