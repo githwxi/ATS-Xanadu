@@ -50,52 +50,21 @@ ATS_PACKNAME
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
 #symload
+lctn with token_get_lctn//lexing0
+#symload
+lctn with i0dnt_get_lctn//staexp0
+#symload
+lctn with l0abl_get_lctn//staexp0
+(* ****** ****** *)
+#symload
+node with token_get_node//lexing0
+#symload
 node with i0dnt_get_node//staexp0
 #symload
 node with l0abl_get_node//staexp0
 (* ****** ****** *)
 #symload
 tnode with token_get_node//lexing0
-(* ****** ****** *)
-
-#implfun
-t0_t0int(tnd) =
-(
-case+ tnd of
-| T_INT01 _ => true
-| T_INT02 _ => true
-| T_INT03 _ => true
-| _ (* non-INT0? *) => false
-) (*case*) // end of [t0_t0int(tnd)]
-
-#implfun
-t0_t0chr(tnd) =
-(
-case+ tnd of
-| T_CHAR1 _ => true
-| T_CHAR2 _ => true
-| _ (* non-CHAR? *) => false
-) (*case*) // end of [t0_t0chr(tnd)]
-
-#implfun
-t0_t0flt(tnd) =
-(
-case+ tnd of
-| T_FLT01 _ => true
-| T_FLT02 _ => true
-| T_FLT03 _ => true
-| _ (* non-FLT0? *) => false
-) (*case*) // end of [t0_t0flt(tnd)]
-
-#implfun
-t0_t0str(tnd) =
-(
-case+ tnd of
-| T_STRN1 _ => true
-| T_STRN2 _ => true
-| _ (* non-STRN? *) => false
-) (*case*) // end of [t0_t0str(tnd)]
-
 (* ****** ****** *)
 
 #implfun
@@ -163,6 +132,82 @@ then
 ; T0STRsome(tok)) else T0STRnone(tok)
 //
 end(*let*)//end-of-[p1_t0str(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_s0eid(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_IDALP _ =>
+(buf.skip1(); i0dnt_some(tok))
+|
+T_IDSYM _ =>
+(buf.skip1(); i0dnt_some(tok))
+|
+T_IDDLR _ =>
+(buf.skip1(); i0dnt_some(tok))
+//
+| T_AT0() =>
+( buf.skip1()
+; i0dnt_some(tok)) where
+{
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_AT0(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+//
+| T_EQ0() =>
+( buf.skip1()
+; i0dnt_some(tok)) where
+{
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_EQ0(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+//
+| T_LT0() =>
+( buf.skip1()
+; i0dnt_some(tok)) where
+{
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_LT0(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+| T_GT0() =>
+( buf.skip1()
+; i0dnt_some(tok)) where
+{
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_GT0(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+//
+| T_LTGT() =>
+( buf.skip1()
+; i0dnt_some(tok)) where
+{
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_LTGT(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+//
+|
+T_BSLSH() => (buf.skip1(); i0dnt_some(tok))
+//
+|
+_(* non-IDENT *) => (err := e00 + 1; i0dnt_none(tok))
+//
+end (*let*) // end of [p_s0eid(buf, err)]
 
 (* ****** ****** *)
 

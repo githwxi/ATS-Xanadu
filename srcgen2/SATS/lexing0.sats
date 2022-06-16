@@ -274,6 +274,14 @@ datatype tnode =
 #typedef tokenlst = list(token)
 #typedef tokenopt = optn(token)
 (* ****** ****** *)
+val T0IDENT_AT0 : tnode
+val T0IDENT_EQ0 : tnode
+val T0IDENT_LT0 : tnode
+val T0IDENT_GT0 : tnode
+val T0IDENT_EQGT : tnode
+val T0IDENT_LTGT : tnode
+val T0IDENT_MSGT : tnode
+(* ****** ****** *)
 //
 fun//<>
 tnode_fprint(FILR, tnode): void
@@ -283,13 +291,13 @@ token_fprint(FILR, token): void
 (* ****** ****** *)
 //
 fun//{}
-token_get_lctn: token -> loc_t
+token_get_lctn: (token) -> loc_t
 fun//{}
-token_get_node: token -> tnode
+token_get_node: (token) -> tnode
 //
 fun//{}
 token_make_node
-(loc: loc_t, tnd: tnode): token
+( loc: loc_t, tnd: tnode ): token
 //
 #symload lctn with token_get_lctn
 #symload node with token_get_node

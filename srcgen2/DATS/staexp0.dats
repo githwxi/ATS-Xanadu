@@ -53,6 +53,50 @@ ATS_PACKNAME
 local
 //
 datatype
+i0dnt =
+I0DNT of
+(
+loctn, i0dnt_node)
+#absimpl
+i0dnt_tbox = i0dnt
+//
+in (* in-of-local *)
+
+(* ****** ****** *)
+#implfun
+i0dnt_none(tok) = let
+val
+loc = token_get_lctn(tok)
+in
+I0DNT(loc, I0DNTnone(tok))
+end (*let*)// end of [i0dnt_none]
+(* ****** ****** *)
+#implfun
+i0dnt_some(tok) = let
+val
+loc = token_get_lctn(tok)
+in
+I0DNT(loc, I0DNTsome(tok))
+//
+end (*let*) // end of [i0dnt_some]
+(* ****** ****** *)
+#implfun
+i0dnt_get_lctn(lab) =
+let
+val+I0DNT(loc,nod) = lab in loc end
+#implfun
+i0dnt_get_node(lab) =
+let
+val+I0DNT(loc,nod) = lab in nod end
+(* ****** ****** *)
+
+endloc (*local*) // end of [local]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 l0abl =
 L0ABL of
 (
@@ -61,21 +105,17 @@ loctn, l0abl_node)
 l0abl_tbox = l0abl
 //
 in (* in-of-local *)
-
-(* ****** ****** *)
 //
 #implfun
 l0abl_get_lctn(lab) =
-let val+L0ABL(loc,lnd) = lab in loc end
+let val+L0ABL(loc,nod) = lab in loc end
 #implfun
 l0abl_get_node(lab) =
-let val+L0ABL(loc,lnd) = lab in lnd end
+let val+L0ABL(loc,nod) = lab in nod end
 #implfun
-l0abl_make_node(loc,lnd) = L0ABL(loc,lnd)
+l0abl_make_node(loc,nod) = L0ABL(loc,nod)
 //
-(* ****** ****** *)
-
-end // end of [local]
+endloc (*local*) // end of [local]
 
 (* ****** ****** *)
 #implfun

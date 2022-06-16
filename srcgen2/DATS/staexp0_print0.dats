@@ -123,6 +123,25 @@ end (*let*) // end of [t0str_fprint]
 (* ****** ****** *)
 
 #implfun
+i0dnt_fprint
+(out, id0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+id0.node() of
+|
+I0DNTnone(tok) =>
+print("I0DNTnone(", tok, ")")
+|
+I0DNTsome(tok) =>
+print("I0DNTsome(", tok, ")")
+end (*let*) // end of [i0dnt_fprint]
+
+(* ****** ****** *)
+
+#implfun
 l0abl_fprint
 (out, lab) =
 let

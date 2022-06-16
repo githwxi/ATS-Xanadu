@@ -49,6 +49,108 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
+t0_t0int(tnd) =
+(
+case+ tnd of
+| T_INT01 _ => true
+| T_INT02 _ => true
+| T_INT03 _ => true
+| _ (* non-INT0? *) => false
+) (*case*) // end of [t0_t0int(tnd)]
+
+#implfun
+t0_t0chr(tnd) =
+(
+case+ tnd of
+| T_CHAR1 _ => true
+| T_CHAR2 _ => true
+| _ (* non-CHAR? *) => false
+) (*case*) // end of [t0_t0chr(tnd)]
+
+#implfun
+t0_t0flt(tnd) =
+(
+case+ tnd of
+| T_FLT01 _ => true
+| T_FLT02 _ => true
+| T_FLT03 _ => true
+| _ (* non-FLT0? *) => false
+) (*case*) // end of [t0_t0flt(tnd)]
+
+#implfun
+t0_t0str(tnd) =
+(
+case+ tnd of
+| T_STRN1 _ => true
+| T_STRN2 _ => true
+| _ (* non-STRN? *) => false
+) (*case*) // end of [t0_t0str(tnd)]
+
+(* ****** ****** *)
+
+#implfun
+t0_s0eid(tnd) =
+(
+case+ tnd of
+//
+|
+T_IDALP _ => true
+|
+T_IDSYM _ => true
+|
+T_IDDLR _ => true
+//
+| T_AT0() => true // "@"
+//
+| T_EQ0() => true // "="
+//
+| T_LT0() => true // "<"
+| T_GT0() => true // ">"
+//
+| T_LTGT() => true // "<>"
+(*
+| T_EQGT() => true // "=>"
+*)
+//
+| T_BSLSH() => true // "\\"
+//
+| _(* otherwise *) => false
+) (*case*) // end of [t0_s0eid(tnd)]
+
+(* ****** ****** *)
+
+#implfun
+t0_d0eid(tnd) =
+(
+case+ tnd of
+//
+|
+T_IDALP _ => true
+|
+T_IDSYM _ => true
+|
+T_IDDLR _ => true
+//
+| T_AT0() => true // "@"
+//
+| T_EQ0() => true // "="
+//
+(*
+| T_LT0() => true // "<"
+| T_GT0() => true // ">"
+| T_LTGT() => true // "<>"
+//
+*)
+| T_EQGT() => true // "=>"
+//
+| T_BSLSH() => true // "\\"
+//
+| _(* otherwise *) => false
+) (*case*) // end of [t0_d0eid(tnd)]
+
+(* ****** ****** *)
+
+#implfun
 p1_EQ0(buf, err) =
 let
 val e00 = err
