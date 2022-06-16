@@ -119,4 +119,18 @@ prerrln("p1_l0abl(\"label\") = ", opt)
 
 (* ****** ****** *)
 
+val opt =
+p1_fun_test<i0dnt>("i0dnt", p1_i0dnt)
+val ( ) =
+prerrln("p1_i0dnt(\"i0dnt\") = ", opt)
+
+(* ****** ****** *)
+
+val opt =
+p1_fun_test<i0dnt>("0idnt", p1_i0dnt)
+val ( ) =
+prerrln("p1_i0dnt(\"0idnt\") = ", opt)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)
