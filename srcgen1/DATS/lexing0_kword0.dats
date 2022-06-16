@@ -421,8 +421,9 @@ val () = myins("stacst0", T_STACST0)
 val () = myins("sortdef", T_SORTDEF)
 *)
 //
-val () = myins("#abssort", T_ABSSORT)
 val () = myins("#stacst0", T_STACST0)
+//
+val () = myins("#abssort", T_ABSSORT)
 val () = myins("#sortdef", T_SORTDEF)
 //
 (*
