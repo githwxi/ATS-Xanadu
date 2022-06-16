@@ -190,6 +190,11 @@ fun
 p1_fun_test
 (inp: strn, pfn: p1_fun(r0)): optn(r0)
 //
+fun
+<r0:t0>
+pq_fun_test
+(inp: strn, pfn: pq_fun(r0)): optn(r0)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing.sats] *)

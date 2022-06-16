@@ -70,8 +70,34 @@ var err = 0(*init*)
 val res = pfn(buf, err)
 val ( ) = tokbuf_free(buf)
 in//let
-if err = 0 then some(res) else none()
+if
+(err=0) then some(res) else none()
 end (*let*) // end of [p1_fun_test]
+
+(* ****** ****** *)
+
+(*
+fun
+<r0:t0>
+pq_fun_test
+( inp: strn
+, pfn: pq_fun(r0)): optn(r0)
+*)
+#impltmp
+<r0>(*tmp*)
+pq_fun_test
+( inp, pfn ) =
+let
+//
+val tks =
+strn_tokenize(inp)
+val buf =
+tokbuf_make_list_vt(tks)
+//
+var err = 0(*init*)
+val res = pfn(buf, err)
+val ( ) = tokbuf_free(buf) in res
+end (*let*) // end of [pq_fun_test]
 
 (* ****** ****** *)
 
