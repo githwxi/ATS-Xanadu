@@ -12,8 +12,11 @@ While xats2js may not be adequate to support me to finish a
 functioning compiler for ATS3 targeting C/C++ (or even JS), I would
 like to see how far I can go with xats2js. The experience I gain from
 directly coding in ATS3 is evidently of crucial importance in my
-further development of ATS3. In particular, this experience is needed
+further development of ATS3. In particular, this experience is wanted
 for the subsequent design and implementation of templated-based
 programming (TBP) in ATS.
+
+Implementing a PARSER for ATS3 is the next task of in this effort of
+implementing ATS3 in ATS3.
 
 ##################################################################
