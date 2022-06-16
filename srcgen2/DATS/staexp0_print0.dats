@@ -49,6 +49,24 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
+
+#implfun
+t0int_fprint
+(out, int) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ int of
+|
+T0INTnone(tok) =>
+print("T0INTnone(", tok, ")")
+|
+T0INTsome(tok) =>
+print("T0INTsome(", tok, ")")
+end (*let*) // end of [t0int_fprint]
+
+(* ****** ****** *)
 //
 #implfun
 s0qid_fprint

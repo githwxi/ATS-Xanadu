@@ -62,10 +62,14 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 //
+(*
 #abstbox t0int_tbox // ptr
 #abstbox t0chr_tbox // ptr
 #abstbox t0flt_tbox // ptr
 #abstbox t0str_tbox // ptr
+*)
+//
+(* ****** ****** *)
 //
 #abstbox i0dnt_tbox // ptr
 #abstbox l0abl_tbox // ptr
@@ -93,10 +97,27 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 //
+(*
 #typedef t0int = t0int_tbox
 #typedef t0chr = t0chr_tbox
 #typedef t0flt = t0flt_tbox
 #typedef t0str = t0str_tbox
+*)
+//
+datatype t0int =
+| T0INTnone of token
+| T0INTsome of token
+datatype t0chr =
+| T0CHRnone of token
+| T0CHRsome of token
+datatype t0flt =
+| T0FLTnone of token
+| T0FLTsome of token
+datatype t0str =
+| T0STRnone of token
+| T0STRsome of token
+//
+(* ****** ****** *)
 //
 #typedef i0dnt = i0dnt_tbox
 #typedef l0abl = l0abl_tbox
