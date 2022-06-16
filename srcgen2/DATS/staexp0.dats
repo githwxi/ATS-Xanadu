@@ -41,9 +41,88 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
+(* ****** ****** *)
+
+local
+//
+datatype
+l0abl =
+L0ABL of
+(
+loctn, l0abl_node)
+#absimpl
+l0abl_tbox = l0abl
+//
+in (* in-of-local *)
+
+(* ****** ****** *)
+//
+#implfun
+l0abl_get_lctn(lab) =
+let val+L0ABL(loc,lnd) = lab in loc end
+#implfun
+l0abl_get_node(lab) =
+let val+L0ABL(loc,lnd) = lab in lnd end
+#implfun
+l0abl_make_node(loc,lnd) = L0ABL(loc,lnd)
+//
+(* ****** ****** *)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+#implfun
+l0abl_make_int1
+  (tok) = let
+//
+val
+loc =
+token_get_lctn(tok)
+val-
+T_INT01(rep) =
+token_get_node(tok)
+//
+val int = g_parse<sint>(rep)
+//
+in
+//
+l0abl_make_node(loc, L0ABLsome(LABint(int)))
+//
+end // end of [l0abl_make_int1]
+//
+#implfun
+l0abl_make_name
+  (tok) = let
+//
+val
+loc =
+token_get_lctn(tok)
+val-
+T_IDALP(rep) =
+token_get_node(tok)
+//
+val sym = symbl_make_name(rep)
+//
+(*
+val () =
+prerrln
+("l0abl_make_name: sym = ", sym)
+*)
+//
+in
+//
+l0abl_make_node(loc, L0ABLsome(LABsym(sym)))
+//
+end // end of [l0abl_make_name]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp0.dats] *)

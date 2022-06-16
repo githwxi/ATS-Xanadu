@@ -189,7 +189,7 @@ gseq_memberq
 ) where
 {
 val
-symseq = "%&+-./:=@~`^|*!?<>#"
+symseq = "%&+-*/.:=@~`^|!?<>#"
 } (*where*) // end of [IDSYMq]
 
 (* ****** ****** *)

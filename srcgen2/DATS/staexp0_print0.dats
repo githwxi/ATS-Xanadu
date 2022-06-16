@@ -67,6 +67,79 @@ print("T0INTsome(", tok, ")")
 end (*let*) // end of [t0int_fprint]
 
 (* ****** ****** *)
+
+#implfun
+t0chr_fprint
+(out, chr) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ chr of
+|
+T0CHRnone(tok) =>
+print("T0CHRnone(", tok, ")")
+|
+T0CHRsome(tok) =>
+print("T0CHRsome(", tok, ")")
+end (*let*) // end of [t0chr_fprint]
+
+(* ****** ****** *)
+
+#implfun
+t0flt_fprint
+(out, flt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ flt of
+|
+T0FLTnone(tok) =>
+print("T0FLTnone(", tok, ")")
+|
+T0FLTsome(tok) =>
+print("T0FLTsome(", tok, ")")
+end (*let*) // end of [t0flt_fprint]
+
+(* ****** ****** *)
+
+#implfun
+t0str_fprint
+(out, str) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ str of
+|
+T0STRnone(tok) =>
+print("T0STRnone(", tok, ")")
+|
+T0STRsome(tok) =>
+print("T0STRsome(", tok, ")")
+end (*let*) // end of [t0str_fprint]
+
+(* ****** ****** *)
+
+#implfun
+l0abl_fprint
+(out, lab) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+lab.node() of
+|
+L0ABLnone(tok) =>
+print("L0ABLnone(", tok, ")")
+|
+L0ABLsome(lab) =>
+print("L0ABLsome(", lab, ")")
+end (*let*) // end of [l0abl_fprint]
+
+(* ****** ****** *)
 //
 #implfun
 s0qid_fprint

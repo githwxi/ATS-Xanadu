@@ -54,6 +54,7 @@ S0E = "./staexp0.sats"
 #typedef t0chr = $S0E.t0chr
 #typedef t0flt = $S0E.t0flt
 #typedef t0str = $S0E.t0str
+#typedef l0abl = $S0E.l0abl
 //
 (* ****** ****** *)
 //
@@ -161,6 +162,17 @@ fun p1_t0chr: p1_fun(t0chr)
 fun p1_t0flt: p1_fun(t0flt)
 fun p1_t0str: p1_fun(t0str)
 
+(* ****** ****** *)
+
+fun p1_l0abl: p1_fun(l0abl)
+
+(* ****** ****** *)
+//
+fun
+<r0:t0>
+p1_fun_test
+(inp: strn, pfn: p1_fun(r0)): optn(r0)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing.sats] *)

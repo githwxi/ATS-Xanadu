@@ -211,6 +211,22 @@ XATS2JS_gint_uint2sint(*uint->sint*)
 //
 #extern
 fun
+XATS2JS_gint_parse_sint
+  ( x0: strn ): sint = $extnam()
+#extern
+fun
+XATS2JS_gint_parse_uint
+  ( x0: strn ): uint = $extnam()
+//
+#impltmp
+gint_parse_sint<> = XATS2JS_gint_parse_sint
+#impltmp
+gint_parse_uint<> = XATS2JS_gint_parse_uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
 XATS2JS_gint_neg_sint
 {i:int}
 ( x0
@@ -537,7 +553,7 @@ gint_mod_sint_sint<> = XATS2JS_gint_mod_sint_sint
 //
 (* ****** ****** *)
 //
-// prelude/gflt.sats
+// prelude/SATS/gflt000.sats
 //
 (* ****** ****** *)
 //

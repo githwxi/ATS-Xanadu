@@ -47,15 +47,10 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
-
-fun
-foo
-(tok: token): tnode = tok.node()
-
-(* ****** ****** *)
-////
-(* ****** ****** *)
 #staload "./../SATS/parsing.sats"
+(* ****** ****** *)
+#symload
+node with token_get_node//lexing0
 (* ****** ****** *)
 
 #implfun
@@ -163,6 +158,42 @@ then
 ; T0STRsome(tok)) else T0STRnone(tok)
 //
 end(*let*)//end-of-[p1_t0str(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_l0abl(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+(*
+val ( ) =
+prerrln("p1_l0abl: tok = ", tok)
+*)
+//
+in
+//
+case+
+tok.node() of
+|
+T_INT01 _ =>
+(
+buf.skip1(); l0abl_make_int1(tok)
+)
+|
+T_IDALP _ =>
+(
+buf.skip1(); l0abl_make_name(tok)
+)
+|
+_(*non-INT-IDENT*) =>
+(
+err := e00 + 1; l0abl_make_none(tok)
+) (* end of [non-INT-IDALP] *)
+//
+end // end-of-let // end of [p1_l0abl]
 
 (* ****** ****** *)
 

@@ -114,6 +114,13 @@ g_mul<sint> = gint_mul_sint_sint<>
 g_div<sint> = gint_div_sint_sint<>
 
 (* ****** ****** *)
+
+#impltmp
+g_parse<sint> = gint_parse_sint<>
+#impltmp
+g_parse<uint> = gint_parse_uint<>
+
+(* ****** ****** *)
 //
 // For gseq-operations
 //

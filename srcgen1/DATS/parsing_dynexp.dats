@@ -4756,28 +4756,28 @@ end // end of [fp_d0eclseq_top]
 
 local
 //
-#define STATIC 0
+#define STATIC0 0
 #define DYNAMIC 1
 //
 in
 //
 implement
 p_d0ecl_sta(buf, err) = 
-  fp_d0ecl(STATIC, buf, err)
+  fp_d0ecl(STATIC0, buf, err)
 implement
 p_d0ecl_dyn(buf, err) = 
   fp_d0ecl(DYNAMIC, buf, err)
 //
 implement
 p_d0eclseq_sta(buf, err) = 
-  fp_d0eclseq(STATIC, buf, err)
+  fp_d0eclseq(STATIC0, buf, err)
 implement
 p_d0eclseq_dyn(buf, err) = 
   fp_d0eclseq(DYNAMIC, buf, err)
 //
 implement
 ptop_d0eclseq_sta(buf, err) = 
-  fptop_d0eclseq(STATIC, buf, err)
+  fptop_d0eclseq(STATIC0, buf, err)
 implement
 ptop_d0eclseq_dyn(buf, err) = 
   fptop_d0eclseq(DYNAMIC, buf, err)
