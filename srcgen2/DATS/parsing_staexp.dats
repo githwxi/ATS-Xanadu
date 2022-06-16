@@ -50,7 +50,12 @@ ATS_PACKNAME
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
 #symload
-node with token_get_node//lexing0
+node with i0dnt_get_node//staexp0
+#symload
+node with l0abl_get_node//staexp0
+(* ****** ****** *)
+#symload
+tnode with token_get_node//lexing0
 (* ****** ****** *)
 
 #implfun
@@ -162,11 +167,40 @@ end(*let*)//end-of-[p1_t0str(buf,err)]
 (* ****** ****** *)
 
 #implfun
+p1_i0dnt(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+
+tok.tnode() of
+//
+| _
+when
+t0_s0eid(tnd) => p1_s0eid(buf, err)
+//
+| _
+when
+t0_d0eid(tnd) => p1_d0eid(buf, err)
+//
+|
+_(*non-i0dnt*) => (err := e00+1; i0dnt_none(tok))
+//
+end (*let*) // end of [p_i0dnt(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 p1_l0abl(buf, err) =
 let
 //
 val e00 = err
 val tok = buf.getk0()
+val tnd = tok.tnode()
 //
 (*
 val ( ) =
@@ -175,8 +209,7 @@ prerrln("p1_l0abl: tok = ", tok)
 //
 in
 //
-case+
-tok.node() of
+case+ tnd of
 |
 T_INT01 _ =>
 (
@@ -190,10 +223,10 @@ buf.skip1(); l0abl_make_name(tok)
 |
 _(*non-INT-IDENT*) =>
 (
-err := e00 + 1; l0abl_make_none(tok)
+  err := e00 + 1; l0abl_make_none(tok)
 ) (* end of [non-INT-IDALP] *)
 //
-end // end-of-let // end of [p1_l0abl]
+end (*let*) // end of [p1_l0abl(buf,err)]
 
 (* ****** ****** *)
 

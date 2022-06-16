@@ -54,6 +54,12 @@ S0E = "./staexp0.sats"
 #typedef t0chr = $S0E.t0chr
 #typedef t0flt = $S0E.t0flt
 #typedef t0str = $S0E.t0str
+//
+#typedef s0eid = $S0E.s0eid
+#typedef d0eid = $S0E.d0eid
+#typedef d0pid = $S0E.d0pid
+#typedef i0dnt = $S0E.i0dnt
+//
 #typedef l0abl = $S0E.l0abl
 //
 (* ****** ****** *)
@@ -157,10 +163,21 @@ fun t0_t0str(tnode): bool
 
 (* ****** ****** *)
 
+fun t0_s0eid(tnode): bool
+fun t0_d0eid(tnode): bool
+
+(* ****** ****** *)
+
 fun p1_t0int: p1_fun(t0int)
 fun p1_t0chr: p1_fun(t0chr)
 fun p1_t0flt: p1_fun(t0flt)
 fun p1_t0str: p1_fun(t0str)
+
+(* ****** ****** *)
+
+fun p1_s0eid: p1_fun(s0eid)
+fun p1_d0eid: p1_fun(d0eid)
+fun p1_i0dnt: p1_fun(i0dnt)
 
 (* ****** ****** *)
 
