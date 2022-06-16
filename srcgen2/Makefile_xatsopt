@@ -226,6 +226,10 @@ all_dats:: \
 parsing_basics_dats
 parsing_basics_dats: ; $(XATSOPT) --dynamic DATS/parsing_basics.dats
 ######
+all_dats:: \
+parsing_staexp_dats
+parsing_staexp_dats: ; $(XATSOPT) --dynamic DATS/parsing_staexp.dats
+######
 
 ######
 all_dats:: \
