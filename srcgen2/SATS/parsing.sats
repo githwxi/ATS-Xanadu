@@ -41,10 +41,20 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+//
 #staload
 LEX = "./lexing0.sats"
+#staload
+S0E = "./staexp0.sats"
+//
 #typedef tnode = $LEX.tnode
 #typedef token = $LEX.token
+//
+#typedef t0int = $S0E.t0int
+#typedef t0chr = $S0E.t0chr
+#typedef t0flt = $S0E.t0flt
+#typedef t0str = $S0E.t0str
+//
 (* ****** ****** *)
 //
 #absvwtp tkbf0_vtbx
@@ -133,6 +143,24 @@ fun p1_ENDLET: p1_fun(token)
 fun p1_ENDTRY: p1_fun(token)
 fun p1_ENDLOC: p1_fun(token)
 //
+(* ****** ****** *)
+
+fun pq_SRP_THEN: pq_fun(token)
+
+(* ****** ****** *)
+
+fun t0_t0int(tnode): bool
+fun t0_t0chr(tnode): bool
+fun t0_t0flt(tnode): bool
+fun t0_t0str(tnode): bool
+
+(* ****** ****** *)
+
+fun p1_t0int: p1_fun(t0int)
+fun p1_t0chr: p1_fun(t0chr)
+fun p1_t0flt: p1_fun(t0flt)
+fun p1_t0str: p1_fun(t0str)
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing.sats] *)
