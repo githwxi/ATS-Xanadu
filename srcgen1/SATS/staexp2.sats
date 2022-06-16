@@ -1299,7 +1299,7 @@ datatype s2itm =
 | S2ITMexp of (g1exp) // for generic stuff
 *)
 //
-| S2ITMfmodenv of fmodenv
+| S2ITMfmodenv of (fmodenv)
 //
 (* ****** ****** *)
 //
