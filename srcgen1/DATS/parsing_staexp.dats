@@ -941,7 +941,7 @@ in
   g0exp_make_node(tok.loc(), G0Enone1(tok))
 end (* this-is-a-case-of-error *)
 //
-end // end-of-let // end of [p_atmsort0]
+end // end-of-let // end of [p_atmg0exp]
 //
 (* ****** ****** *)
 //
