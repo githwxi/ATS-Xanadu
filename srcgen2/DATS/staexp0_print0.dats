@@ -182,6 +182,15 @@ print("S0YMBbrckt(", tk1, ";", tk2, ")")
 end (*let*) // end of [s0ymb_fprint]
 
 (* ****** ****** *)
+
+(*
+fun
+<x0:type>
+s0lab_fprint
+(out: FILR, lab: s0lab(x0)): void
+*)
+
+(* ****** ****** *)
 //
 #implfun
 s0qid_fprint

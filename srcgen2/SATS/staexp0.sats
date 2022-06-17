@@ -298,7 +298,7 @@ S0LAB of
 //
 fun
 <x0:type>
-sl0abled_fprint
+s0lab_fprint
 (out: FILR, lab: s0lab(x0)): void
 //
 (* ****** ****** *)

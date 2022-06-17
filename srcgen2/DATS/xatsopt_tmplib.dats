@@ -161,8 +161,39 @@ t0str_fprint(g_print$out<>(), tok)
 g_print<i0dnt>(id0) =
 i0dnt_fprint(g_print$out<>(), id0)
 #impltmp
-g_print<l0abl>(id0) =
-l0abl_fprint(g_print$out<>(), id0)
+g_print<l0abl>(lab) =
+l0abl_fprint(g_print$out<>(), lab)
+#impltmp
+g_print<s0ymb>(sym) =
+s0ymb_fprint(g_print$out<>(), sym)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:type>
+s0lab_fprint
+(out: FILR, lab: s0lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+s0lab_fprint
+  (out, lab) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ lab of
+|
+S0LAB(l01, t02, x03) =>
+print("S0LAB(", l01, ";", x03, ")")
+end(*let*)//end-of-[s0lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<s0lab(x0)>(lab) =
+s0lab_fprint(g_print$out<>(), lab)
+//
 (* ****** ****** *)
 //
 #impltmp
