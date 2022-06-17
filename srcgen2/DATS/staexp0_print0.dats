@@ -297,10 +297,12 @@ print
 (*
 |
 S0Ttype of int(*kind*)
-// prop/view/type/t0ype/viewtype/viewt0ype
+// prop/view/type/tbox/tflt/vwtp/vtbx/vtft
 *)
 |
-S0Tnone(tok) => print("S0Tnone(", tok, ")")
+S0Ttkerr(tok) => print("S0Ttkerr(",tok,")")
+|
+S0Terrck(s0t) => print("S0Ttkerr(",s0t,")")
 //
 end (*let*)//end-of-[sort0_fprint(out,s0t)]
 
