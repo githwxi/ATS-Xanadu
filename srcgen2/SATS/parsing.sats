@@ -238,15 +238,15 @@ ps_AND_p1fun{a:tx}
   buf: !tkbf0
 , err: &(int) >> int, pfn: p1_fun(a)
 ) : list_vt(a) // end of [ps_AND_p1fun]
-//
-(* ****** ****** *)
 fun
 ps_BAR_p1fun{a:tx}
 (
   buf: !tkbf0
 , err: &(int) >> int, pfn: p1_fun(a)
 ) : list_vt(a) // end of [ps_BAR_p1fun]
+//
 (* ****** ****** *)
+//
 fun
 ps_COMMA_p1fun{a:tx}
 (
@@ -259,6 +259,7 @@ ps_SMCLN_p1fun{a:tx}
   buf: !tkbf0
 , err: &(int) >> int, pfn: p1_fun(a)
 ) : list_vt(a) //end-of-[ps_SMCLN_p1fun]
+//
 (* ****** ****** *)
 fun
 ps_sep_p1fun{a:tx}

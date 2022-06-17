@@ -81,6 +81,58 @@ gseq_tail_raw<xs><x0>(xs)
 //
 #impltmp
 <xs><x0>
+gseq_last_raw(xs) =
+let
+var xs = xs
+val x0 =
+gseq_uncons_raw<xs><x0>(xs)
+in
+gseq_last_ini<xs><x0>(xs, x0)
+end(*let*)//end(gseq_last_raw)
+
+(* ****** ****** *)
+
+#impltmp
+<xs><x0>
+gseq_last_opt(xs) =
+let
+//
+var xs = xs
+//
+val opt =
+gseq_uncons_opt<xs><x0>(xs)
+in
+case+ opt of
+| ~
+optn_vt_nil() =>
+optn_vt_nil()
+| ~
+optn_vt_cons(x0) =>
+optn_vt_cons
+(gseq_last_ini<xs><x0>(xs, x0))
+end(*let*)//end-of(gseq_last_opt)
+
+(* ****** ****** *)
+
+#impltmp
+<xs><x0>
+gseq_last_ini
+(xs, x0) = let
+//
+#typedef r0 = x0
+//
+#impltmp
+foldl$fopr
+<x0><r0>(r0, x0) = x0
+//
+in//let
+gseq_foldl<xs><x0><r0>(xs, x0)
+end(*let*)//(gseq_last_ini/foldl)
+
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
 gseq_uncons_raw(xs) =
 (
 let
@@ -982,7 +1034,7 @@ gseq_nilq<xs><x0>(xs)
 then
 $raise SubscriptExn()
 else
-gseq_max2
+gseq_max_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
 ) (* end of [gseq_max_exn] *)
@@ -997,7 +1049,7 @@ gseq_nilq<xs><x0>(xs)
 then
 $raise SubscriptExn()
 else
-gseq_min2
+gseq_min_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
 ) (* end of [gseq_min_exn] *)
@@ -1016,7 +1068,7 @@ optn_vt_nil((*void*))
 else
 optn_vt_cons
 (
-gseq_max2
+gseq_max_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
 )
@@ -1034,7 +1086,7 @@ optn_vt_nil((*void*))
 else
 optn_vt_cons
 (
-gseq_min2
+gseq_min_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
 )
@@ -1044,7 +1096,7 @@ gseq_min2
 //
 #impltmp
 <xs><x0>
-gseq_max2
+gseq_max_ini
 (xs, x0) = let
 //
 #typedef r0 = x0
@@ -1056,11 +1108,11 @@ foldl$fopr
 //
 in
   gseq_foldl<xs><x0><r0>(xs, x0)
-end // end of [gseq_max2/foldl]
+end // end of [gseq_max_ini/foldl]
 //
 #impltmp
 <xs><x0>
-gseq_min2
+gseq_min_ini
 (xs, x0) = let
 //
 #typedef r0 = x0
@@ -1072,7 +1124,7 @@ foldl$fopr
 //
 in
   gseq_foldl<xs><x0><r0>(xs, x0)
-end // end of [gseq_min2/foldl]
+end // end of [gseq_min_ini/foldl]
 //
 (* ****** ****** *)
 

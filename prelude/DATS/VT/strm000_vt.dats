@@ -405,23 +405,23 @@ fnx
 loop
 ( xs
 : strm_vt(a)
-, r0
-: &(?list_vt(a)) >> list_vt(a)
+, r0:
+& (?list_vt(a))>>list_vt(a)
 ) : void =
 (
 case+ !xs of
-|
+| ~
 strmcon_vt_nil() =>
 (r0 := list_vt_nil())
-|
+| ~
 strmcon_vt_cons(x0, xs) =>
 let
-  val () =
-  (r0 := list_vt_cons(x0, _))
-in
-    loop(xs, r0.1); $fold(r0)
+val () =
+(r0 := list_vt_cons(x0, _))
+in//let
+  loop(xs, r0.1); $fold( r0 )
 end
-) (* end of [loop] *)
+) (*case*) // end of [ loop ]
 //
 in
 let

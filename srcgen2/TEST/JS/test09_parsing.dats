@@ -147,4 +147,18 @@ prerrln("p1_i0dnt(\"0idnt\") = ", opt)
 
 (* ****** ****** *)
 
+val opt =
+p1_fun_test<sort0>("type", p1_sort0)
+val ( ) =
+prerrln("p1_sort0(\"type\") = ", opt)
+
+(* ****** ****** *)
+
+val opt =
+p1_fun_test<sort0>("int->(int->type)", p1_sort0)
+val ( ) =
+prerrln("p1_sort0(\"int->(int->type)\") = ", opt)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)
