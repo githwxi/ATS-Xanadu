@@ -51,6 +51,47 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
+(* ****** ****** *)
+#symload
+lctn with token_get_lctn
+#symload
+node with token_get_node
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+#implfun
+t0int_get_lctn(int) =
+(
+case+ int of
+| T0INTnone(tok) => tok.lctn()
+| T0INTsome(tok) => tok.lctn()
+)
+#implfun
+t0chr_get_lctn(chr) =
+(
+case+ chr of
+| T0CHRnone(tok) => tok.lctn()
+| T0CHRsome(tok) => tok.lctn()
+)
+#implfun
+t0flt_get_lctn(flt) =
+(
+case+ flt of
+| T0FLTnone(tok) => tok.lctn()
+| T0FLTsome(tok) => tok.lctn()
+)
+#implfun
+t0str_get_lctn(str) =
+(
+case+ str of
+| T0STRnone(tok) => tok.lctn()
+| T0STRsome(tok) => tok.lctn()
+)
+(* ****** ****** *)
+endloc (*local*) // end of [local]
+(* ****** ****** *)
+
+local
 //
 datatype
 i0dnt =
