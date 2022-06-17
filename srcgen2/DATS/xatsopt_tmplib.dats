@@ -186,5 +186,45 @@ g_print<g0mag>(mag) =
 g0mag_fprint(g_print$out<>(), mag)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<s0tcn>(tcn) =
+s0tcn_fprint(g_print$out<>(), tcn)
+#impltmp
+g_print<d0tst>(dst) =
+d0tst_fprint(g_print$out<>(), dst)
+#impltmp
+g_print<s0tdf>(tdf) =
+s0tdf_fprint(g_print$out<>(), tdf)
+//
+#impltmp
+g_print<sort0>(s0t) =
+sort0_fprint(g_print$out<>(), s0t)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<s0arg>(sag) =
+s0arg_fprint(g_print$out<>(), sag)
+#impltmp
+g_print<s0mag>(smg) =
+s0mag_fprint(g_print$out<>(), smg)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<t0arg>(tag) =
+t0arg_fprint(g_print$out<>(), tag)
+#impltmp
+g_print<t0mag>(tmg) =
+t0mag_fprint(g_print$out<>(), tmg)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<s0exp>(s0e) =
+s0exp_fprint(g_print$out<>(), s0e)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)

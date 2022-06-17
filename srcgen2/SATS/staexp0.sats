@@ -91,6 +91,8 @@ LEX = "./lexing0.sats"
 //
 #abstbox sort0_tbox // ptr
 #abstbox s0tcn_tbox // ptr
+#abstbox d0tst_tbox // ptr
+#abstbox s0tdf_tbox // ptr
 //
 #abstbox s0exp_tbox // ptr
 //
@@ -99,6 +101,8 @@ LEX = "./lexing0.sats"
 //
 #abstbox t0arg_tbox // ptr
 #abstbox t0mag_tbox // ptr
+//
+#abstbox s0qua_tbox // ptr
 //
 (* ****** ****** *)
 //
@@ -159,6 +163,12 @@ datatype t0str =
 #typedef s0tcn = s0tcn_tbox
 #typedef s0tcnlst = list(s0tcn)
 //
+#typedef d0tst = d0tst_tbox
+#typedef d0tstlst = list(d0tst)
+//
+#typedef s0tdf = s0tdf_tbox
+#typedef s0tdflst = list(s0tdf)
+//
 (* ****** ****** *)
 //
 #typedef s0exp = s0exp_tbox
@@ -175,6 +185,11 @@ datatype t0str =
 #typedef t0arglst = list(t0arg)
 #typedef t0maglst = list(t0mag)
 //
+#typedef s0qua = s0qua_tbox
+#typedef s0qualst = list(s0qua)
+//
+(* ****** ****** *)
+#typedef tokenopt = optn(token)
 (* ****** ****** *)
 fun
 t0int_fprint:(FILR,t0int)->void
@@ -267,6 +282,21 @@ s0ymb_make_node
 (* ****** ****** *)
 //
 datatype
+s0lab(x0:type) =
+|
+S0LAB of
+(l0abl, token, x0(*elt*))
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+sl0abled_fprint
+(out: FILR, lab: s0lab(x0)): void
+//
+(* ****** ****** *)
+//
+datatype
 g0nam_node =
 //
 | G0Nid0 of (g0nid)
@@ -285,11 +315,11 @@ g0nam_node =
 (* ****** ****** *)
 //
 fun
-g0nam_get_locn(g0nam): loc_t
+g0nam_get_lctn(g0nam): loc_t
 fun
 g0nam_get_node(g0nam): g0nam_node
 //
-#symload locn with g0nam_get_locn
+#symload locn with g0nam_get_lctn
 #symload node with g0nam_get_node
 //
 fun g0nam_fprint:(FILR,g0nam)->void
@@ -309,12 +339,12 @@ d0qid =
 | D0QIDsome of (token, i0dnt)
 //
 fun
-s0qid_get_locn(s0qid): loc_t
+s0qid_get_lctn(s0qid): loc_t
 fun
-d0qid_get_locn(d0qid): loc_t
+d0qid_get_lctn(d0qid): loc_t
 //
-#symload locn with s0qid_get_locn
-#symload locn with d0qid_get_locn
+#symload locn with s0qid_get_lctn
+#symload locn with d0qid_get_lctn
 //
 fun s0qid_fprint:(FILR,s0qid)->void
 fun d0qid_fprint:(FILR,d0qid)->void
@@ -367,10 +397,12 @@ sort0_make_node
 (* ****** ****** *)
 datatype
 s0tcn_node =
-| S0TCN of (s0eid, sort0opt)
+|
+S0TCN of (s0eid, sort0opt)
 (* ****** ****** *)
 fun
-s0tcn_fprint(FILR,s0tcn): void
+s0tcn_fprint
+(out:FILR, tcn:s0tcn): void
 (* ****** ****** *)
 //
 fun
@@ -385,6 +417,64 @@ fun
 s0tcn_make_node
 (loc:loc_t, nod:s0tcn_node): s0tcn
 #symload s0tcn with s0tcn_make_node
+//
+(* ****** ****** *)
+//
+datatype
+d0tst_node =
+|
+D0TST of
+( s0tid
+, token(*EQ*), s0tcnlst)
+//
+(* ****** ****** *)
+fun
+d0tst_fprint
+(out:FILR, dst:d0tst): void
+(* ****** ****** *)
+//
+fun
+d0tst_get_lctn(d0tst): loc_t
+fun
+d0tst_get_node(d0tst): d0tst_node
+//
+#symload lctn with d0tst_get_lctn
+#symload node with d0tst_get_node
+//
+fun
+d0tst_make_node
+(loc:loc_t, nod:d0tst_node): d0tst
+#symload d0tst with d0tst_make_node
+//
+(* ****** ****** *)
+//
+datatype
+s0tdf_node =
+|
+S0TDFsort of sort0
+|
+S0TDFtsub of
+( token // #sortdef
+, s0arg, token, s0explst, token)
+//
+(* ****** ****** *)
+fun
+s0tdf_fprint
+(out:FILR, dst:s0tdf): void
+(* ****** ****** *)
+//
+fun
+s0tdf_get_lctn(s0tdf): loc_t
+fun
+s0tdf_get_node(s0tdf): s0tdf_node
+//
+#symload lctn with s0tdf_get_lctn
+#symload node with s0tdf_get_node
+//
+fun
+s0tdf_make_node
+(loc:loc_t, nod:s0tdf_node): s0tdf
+#symload s0tdf with s0tdf_make_node
 //
 (* ****** ****** *)
 //
@@ -439,6 +529,146 @@ fun
 s0mag_make_node
 (loc:loc_t, nod:s0mag_node): s0mag
 #symload s0mag with s0mag_make_node
+//
+(* ****** ****** *)
+//
+datatype
+t0arg_node =
+|
+T0ARGnone of token
+|
+T0ARGsome of (sort0, tokenopt)
+//
+datatype
+t0mag_node =
+|
+T0MAGnone of token(*error*)
+|
+T0MAGlist of
+(token(*'('*), t0arglst, token(*')'*))
+//
+(* ****** ****** *)
+fun
+t0arg_fprint
+(out:FILR, tag:t0arg): void
+fun
+t0mag_fprint
+(out:FILR, tmg:t0mag): void
+(* ****** ****** *)
+//
+fun
+t0arg_get_lctn(t0arg): loc_t
+fun
+t0arg_get_node(t0arg): t0arg_node
+//
+#symload lctn with t0arg_get_lctn
+#symload node with t0arg_get_node
+//
+fun
+t0arg_make_node
+(loc:loc_t, nod:t0arg_node): t0arg
+#symload t0arg with t0arg_make_node
+//
+(* ****** ****** *)
+//
+fun
+t0mag_get_lctn(t0mag): loc_t
+fun
+t0mag_get_node(t0mag): t0mag_node
+//
+#symload lctn with t0mag_get_lctn
+#symload node with t0mag_get_node
+//
+fun
+t0mag_make_node
+(loc:loc_t, nod:t0mag_node): t0mag
+#symload t0mag with t0mag_make_node
+//
+(* ****** ****** *)
+//
+#typedef
+l0s0elst = list(s0lab(s0exp))
+//
+(* ****** ****** *)
+//
+datatype
+s0exp_node =
+//
+|
+S0Eid0 of (s0eid)
+//
+|
+S0Eop1 of (token) // op_symid
+|
+S0Eop2 of
+(token, s0eid, token) // op(...)
+//
+| S0Eint of (t0int)
+| S0Echr of (t0chr)
+| S0Eflt of (t0flt)
+| S0Estr of (t0str)
+//
+| S0Eapps of s0explst
+//
+|
+S0Efimp of
+( token, s0explst, token )
+//
+|
+S0Eparn of
+( token, s0explst, s0exp_RPAREN )
+//
+|
+S0Etup1 of // HX: tuple
+( token
+, tokenopt, s0explst, s0exp_RPAREN)
+|
+S0Ercd2 of // HX: record
+( token
+, tokenopt, l0s0elst, l0s0e_RBRACE)
+//
+|
+S0Elam0 of
+( token
+, s0maglst, sort0opt, token, s0exp, tokenopt)
+|
+S0Euni0 of (token, s0qualst, token) // forall
+|
+S0Eexi0 of (token, s0qualst, token) // exists
+// HX-2018-07-08: this one usually
+| S0Enone of (token) // indicates some error!
+// HX-2022-06-16: end-of-[datatype(s0exp_node)]
+//
+and
+s0exp_RPAREN =
+| s0exp_RPAREN_cons0 of (token)
+| s0exp_RPAREN_cons1 of (token, s0explst, token)
+//
+and
+l0s0e_RBRACE =
+| l0s0e_RBRACE_cons0 of (token)
+| l0s0e_RBRACE_cons1 of (token, l0s0elst, token)
+//
+(* ****** ****** *)
+//
+fun
+s0exp_fprint
+(out:FILR, dst:s0exp): void
+//
+(* ****** ****** *)
+//
+fun
+s0exp_get_lctn(s0exp): loc_t
+fun
+s0exp_get_node(s0exp): s0exp_node
+//
+#symload lctn with s0exp_get_lctn
+#symload node with s0exp_get_node
+//
+fun
+s0exp_make_node
+(loc:loc_t, nod:s0exp_node): s0exp
+#symload s0exp with s0exp_make_node
 //
 (* ****** ****** *)
 

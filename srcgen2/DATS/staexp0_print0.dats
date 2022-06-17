@@ -230,4 +230,21 @@ end (*let*) // end of [g0nam_fprint]
 
 (* ****** ****** *)
 
+#implfun
+s0tcn_fprint
+(out, tcn) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+tcn.node() of
+|
+S0TCN(id0, stq) =>
+print("S0TCN(", id0, ";", stq, ")")
+end (*let*) // end of [s0tcn_fprint]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_staexp0_print0.dats] *)
