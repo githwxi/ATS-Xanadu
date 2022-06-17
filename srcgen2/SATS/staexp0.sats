@@ -90,6 +90,8 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 //
 #abstbox sort0_tbox // ptr
+#abstbox s0tcn_tbox // ptr
+//
 #abstbox s0exp_tbox // ptr
 //
 #abstbox s0arg_tbox // ptr
@@ -153,6 +155,11 @@ datatype t0str =
 #typedef sort0 = sort0_tbox
 #typedef sort0lst = list(sort0)
 #typedef sort0opt = optn(sort0)
+//
+#typedef s0tcn = s0tcn_tbox
+#typedef s0tcnlst = list(s0tcn)
+//
+(* ****** ****** *)
 //
 #typedef s0exp = s0exp_tbox
 #typedef s0explst = list(s0exp)
@@ -229,6 +236,7 @@ l0abl_make_none(tok: token): l0abl
 fun
 l0abl_make_node
 (loc:loc_t, lnd:l0abl_node): l0abl
+#symload l0abl with l0abl_make_node
 //
 (* ****** ****** *)
 //
@@ -250,6 +258,11 @@ fun
 s0ymb_get_lctn: (s0ymb)->loc_t
 fun
 s0ymb_get_node: (s0ymb)->s0ymb_node
+//
+fun
+s0ymb_make_node
+(loc:loc_t, lnd:s0ymb_node): s0ymb
+#symload s0ymb with s0ymb_make_node
 //
 (* ****** ****** *)
 //
@@ -350,6 +363,28 @@ fun
 sort0_make_node
 (loc:loc_t, nod:sort0_node): sort0
 #symload sort0 with sort0_make_node
+//
+(* ****** ****** *)
+datatype
+s0tcn_node =
+| S0TCN of (s0eid, sort0opt)
+(* ****** ****** *)
+fun
+s0tcn_fprint(FILR,s0tcn): void
+(* ****** ****** *)
+//
+fun
+s0tcn_get_lctn(s0tcn): loc_t
+fun
+s0tcn_get_node(s0tcn): s0tcn_node
+//
+#symload lctn with s0tcn_get_lctn
+#symload node with s0tcn_get_node
+//
+fun
+s0tcn_make_node
+(loc:loc_t, nod:s0tcn_node): s0tcn
+#symload s0tcn with s0tcn_make_node
 //
 (* ****** ****** *)
 //
