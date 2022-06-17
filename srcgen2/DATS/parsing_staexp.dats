@@ -343,9 +343,9 @@ let
   val e00 = err
   val tok = buf.getk0()
 in
-  (err := e00 + 1)
-; sort0(tok.lctn(), S0Tnone(tok))
-end // end of [p_napps]
+err := e00 + 1;
+sort0(tok.lctn(),S0Ttkerr(tok))
+end (*let*) // end of [p_napps]
 //
 #extern
 fun p1_sort0_tid: p1_fun(sort0)
@@ -385,18 +385,18 @@ case+ tnd of
 when
 t0_s0tid(tnd) =>
 let
-  val id0 = p1_s0tid(buf, err)
-in
-  err := e00;
-  sort0(id0.lctn(), S0Tid0(id0))
-end // end of [t_s0tid]
+val id0 = p1_s0tid(buf, err)
+in//let
+err := e00;
+sort0(id0.lctn(), S0Tid0(id0))
+end (*let*) // end of [t_s0tid]
 | _
 (*otherwise*) =>
 let
   val () = (err := e00 + 1)
-in
-  sort0(tok.lctn(), S0Tnone(tok))
-end (* this-is-a-case-of-error *)
+in//let
+  sort0(tok.lctn(), S0Ttkerr(tok))
+endlet(*HX:this-is-a-case-of-error*)
 //
 end (*let*) // end of [p1_sort0_tid]
 
@@ -443,10 +443,10 @@ end (*let*) // end of [t_t0int]
 |
 T_LPAREN() =>
 let
-val () = buf.skip1()
+val tbeg = tok
+val (  ) = buf.skip1()
 val s0ts =
 p1_sort0seq_CMA(buf, err)
-val tbeg = tok
 val tend = p1_RPAREN(buf, err)
 val loc0 = tbeg.lctn()+tend.lctn()
 in
@@ -458,21 +458,21 @@ end (*let*) // end of [T_LPAREN]
 |
 T_IDQUA(qid) =>
 let
-val () = buf.skip1()
-val s0t0 =
-p1_sort0_atm(buf, err)
-val loc0 = tok.lctn()+s0t0.lctn()
-in
+val tqua = tok
+val (  ) = buf.skip1()
+val s0t0 = p1_sort0_atm(buf, err)
+val loc0 = tqua.lctn()+s0t0.lctn()
+in//let
   err := e00
-; sort0( loc0, S0Tqid(tok, s0t0) )
+; sort0(loc0, S0Tqid(tqua, s0t0))
 end (*let*) // end of [ T_IDQUA ]
 //
 | _ (* error *) =>
 let
   val () = (err := e00 + 1)
-in
-  sort0( tok.lctn(), S0Tnone(tok) )
-end (*let*) // this-is-a-case-of-error
+in//let
+  sort0(tok.lctn(), S0Ttkerr(tok))
+endlet // HX:this-is-a-case-of-error
 //
 end (*let*) // end of [ p1_sort0_atm ]
 //
@@ -539,4 +539,4 @@ endloc (*local*) // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_parsing_basics.dats] *)
+(* end of [ATS3/XATSOPT_parsing_staexp.dats] *)

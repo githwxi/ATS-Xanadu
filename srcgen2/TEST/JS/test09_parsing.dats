@@ -155,9 +155,23 @@ prerrln("p1_sort0(\"type\") = ", opt)
 (* ****** ****** *)
 
 val opt =
-p1_fun_test<sort0>("int->(int->type)", p1_sort0)
+p1_fun_test<sort0>("(int,", p1_sort0)
 val ( ) =
-prerrln("p1_sort0(\"int->(int->type)\") = ", opt)
+prerrln("p1_sort0(\"(int,\") = ", opt)
+
+(* ****** ****** *)
+
+val opt =
+p1_fun_test<sort0>("(int,chr.1)", p1_sort0)
+val ( ) =
+prerrln("p1_sort0(\"(int,chr.1)\") = ", opt)
+
+(* ****** ****** *)
+
+val opt =
+p1_fun_test<sort0>("int->(int,int)->type)", p1_sort0)
+val ( ) =
+prerrln("p1_sort0(\"int->(int,int)->type)\") = ", opt)
 
 (* ****** ****** *)
 

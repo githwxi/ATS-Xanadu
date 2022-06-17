@@ -458,14 +458,16 @@ sort0_node =
 | S0Tapps of
   (sort0lst) // HX: unsupported
 //
-| S0Tlist of
-  (token, sort0lst, token) (*temporary*)
+| S0Tlist of // HX: This one is a temp.
+  (token, sort0lst, token) // construct
 //
 (*
 | S0Ttype of int(*kind*)
-// prop/view/type/t0ype/viewtype/viewt0ype
+//prop/view/type/tbox/tflt/vwtp/vtbx/vtft
 *)
-| S0Tnone of (token) // HX: error indication
+| S0Ttkerr of (token) // HX: parsing error
+//
+| S0Terrck of (sort0) // HX: synread error
 // end of [datatype sort0_node]
 
 (* ****** ****** *)
