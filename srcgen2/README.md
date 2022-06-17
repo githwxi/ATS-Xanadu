@@ -5,6 +5,10 @@ and Templates
 
 ## Project Description
 
-This project attempts to implement ATS3 in ATS3. For the time being,
-XATS2JS (from ATS3 to JS) is employed for compiling the implementation.
+This project attempts to implement ATS3 in ATS3.
+
+
+HX-2022-06-16:
+For the time being, XATS2JS (from ATS3 to JS) is employed for
+compiling the implementation.
 
