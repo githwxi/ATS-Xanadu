@@ -241,9 +241,26 @@ in//let
 case+
 tcn.node() of
 |
-S0TCN(id0, stq) =>
-print("S0TCN(", id0, ";", stq, ")")
+S0TCNnode(id0, stq) =>
+print("S0TCNnode(", id0, ";", stq, ")")
 end (*let*) // end of [s0tcn_fprint]
+
+(* ****** ****** *)
+
+#implfun
+d0tst_fprint
+(out, dst) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dst.node() of
+|
+D0TSTnode(id0, teq, cns) =>
+print("D0TST(", id0, ";", teq, ";", cns, ")")
+end (*let*) // end of [d0tst_fprint]
 
 (* ****** ****** *)
 

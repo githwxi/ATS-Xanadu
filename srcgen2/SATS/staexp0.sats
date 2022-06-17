@@ -314,6 +314,60 @@ g0nam_node =
 //
 (* ****** ****** *)
 //
+datatype
+g0exp_node =
+//
+| G0Eid0 of (g0eid)
+//
+| G0Eint of (t0int)
+| G0Echr of (t0chr)
+| G0Eflt of (t0flt)
+| G0Estr of (t0str)
+//
+| G0Eapps of g0explst
+| G0Elist of // temp.
+  (token, g0explst, token)
+//
+| G0Eifexp of
+  ( token
+  , g0exp
+  , g0exp_THEN
+  , g0exp_ELSE, tokenopt)
+//
+| G0Enone1 of (token(*error*))
+//
+(* ****** ****** *)
+and
+g0exp_THEN =
+| g0exp_THEN of (token, g0exp)
+and
+g0exp_ELSE =
+| g0exp_ELSE of (token, g0exp)
+(* ****** ****** *)
+//
+#typedef g0arg = g0eid
+#typedef g0arglst = list(g0arg)
+//
+datatype
+g0mag_node =
+|
+G0MAGnone of (token)
+|
+G0MAGsarg of
+(token(*'{'*), g0arglst, token(*'}'*))
+|
+G0MAGdarg of
+(token(*'('*), g0arglst, token(*')'*))
+//
+(* ****** ****** *)
+fun
+g0nam_fprint:(FILR,g0nam)->void
+fun
+g0exp_fprint:(FILR,g0exp)->void
+fun
+g0mag_fprint:(FILR,g0mag)->void
+(* ****** ****** *)
+//
 fun
 g0nam_get_lctn(g0nam): loc_t
 fun
@@ -322,11 +376,26 @@ g0nam_get_node(g0nam): g0nam_node
 #symload locn with g0nam_get_lctn
 #symload node with g0nam_get_node
 //
-fun g0nam_fprint:(FILR,g0nam)->void
+(* ****** ****** *)
+//
+fun
+g0exp_get_lctn(g0exp): loc_t
+fun
+g0exp_get_node(g0exp): g0exp_node
+//
+#symload locn with g0exp_get_lctn
+#symload node with g0exp_get_node
 //
 (* ****** ****** *)
-fun g0exp_fprint:(FILR,g0exp)->void
-fun g0mag_fprint:(FILR,g0mag)->void
+//
+fun
+g0mag_get_lctn(g0mag): loc_t
+fun
+g0mag_get_node(g0mag): g0mag_node
+//
+#symload locn with g0mag_get_lctn
+#symload node with g0mag_get_node
+//
 (* ****** ****** *)
 //
 datatype
@@ -376,7 +445,8 @@ sort0_node =
 
 (* ****** ****** *)
 fun
-sort0_fprint(FILR, sort0): void
+sort0_fprint
+(out:FILR, s0t:sort0): void
 (* ****** ****** *)
 //
 fun
@@ -423,7 +493,7 @@ s0tcn_make_node
 datatype
 d0tst_node =
 |
-D0TST of
+D0TSTnode of
 ( s0tid
 , token(*EQ*), s0tcnlst)
 //
