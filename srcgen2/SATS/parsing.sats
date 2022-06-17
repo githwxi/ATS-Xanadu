@@ -55,12 +55,23 @@ S0E = "./staexp0.sats"
 #typedef t0flt = $S0E.t0flt
 #typedef t0str = $S0E.t0str
 //
-#typedef s0eid = $S0E.s0eid
-#typedef d0eid = $S0E.d0eid
-#typedef d0pid = $S0E.d0pid
-#typedef i0dnt = $S0E.i0dnt
-//
 #typedef l0abl = $S0E.l0abl
+#typedef s0ymb = $S0E.s0ymb
+//
+#typedef g0nid = $S0E.g0nid
+#typedef g0eid = $S0E.g0eid
+//
+#typedef i0dnt = $S0E.i0dnt
+#typedef s0tid = $S0E.s0tid
+#typedef s0eid = $S0E.s0eid
+#typedef d0pid = $S0E.d0pid
+#typedef d0eid = $S0E.d0eid
+//
+#typedef g0nam = $S0E.g0nam
+#typedef g0exp = $S0E.g0exp
+//
+#typedef sort0 = $S0E.sort0
+#typedef s0exp = $S0E.s0exp
 //
 (* ****** ****** *)
 //
@@ -163,7 +174,14 @@ fun t0_t0str(tnode): bool
 
 (* ****** ****** *)
 
+fun t0_g0nid(tnode): bool
+fun t0_g0eid(tnode): bool
+
+fun t0_s0tid(tnode): bool
+fun t0_s0aid(tnode): bool
 fun t0_s0eid(tnode): bool
+
+fun t0_d0pid(tnode): bool
 fun t0_d0eid(tnode): bool
 
 (* ****** ****** *)
@@ -183,6 +201,22 @@ fun p1_i0dnt: p1_fun(i0dnt)
 
 fun p1_l0abl: p1_fun(l0abl)
 
+(* ****** ****** *)
+
+fun p1_s0ymb: p1_fun(s0ymb)
+
+(* ****** ****** *)
+
+fun p1_g0nid: p1_fun(g0nid)
+fun p1_g0eid: p1_fun(g0eid)
+
+(* ****** ****** *)
+//
+(*
+sort0 ::= {atmsort0}+
+*)
+fun p1_sort0 : p1_fun(sort0)
+//
 (* ****** ****** *)
 //
 fun
