@@ -102,7 +102,13 @@ gseq_last_exn(xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_last_opt(xs): optn_vt(x0)
+gseq_last_opt
+( xs: xs ): optn_vt(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_last_ini(xs, x0): x0
 //
 (* ****** ****** *)
 //
@@ -427,22 +433,24 @@ gseq_min_exn(xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_max_opt(xs): optn_vt(x0)
+gseq_max_opt
+(xs: xs): optn_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_min_opt(xs): optn_vt(x0)
+gseq_min_opt
+(xs: xs): optn_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_max2(xs, x0): x0
+gseq_max_ini(xs, x0): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_min2(xs, x0): x0
+gseq_min_ini(xs, x0): x0
 //
 (* ****** ****** *)
 //

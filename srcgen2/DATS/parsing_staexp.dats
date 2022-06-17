@@ -57,6 +57,10 @@ lctn with token_get_lctn//lexing0
 lctn with i0dnt_get_lctn//staexp0
 #symload
 lctn with l0abl_get_lctn//staexp0
+#symload
+lctn with sort0_get_lctn//staexp0
+#symload
+lctn with s0exp_get_lctn//staexp0
 (* ****** ****** *)
 #symload
 node with token_get_node//lexing0
@@ -138,6 +142,37 @@ end(*let*)//end-of-[p1_t0str(buf,err)]
 (* ****** ****** *)
 
 #implfun
+p1_s0tid(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+//
+|
+T_IDALP _ =>
+(buf.skip1(); i0dnt_some(tok))
+|
+T_IDSYM _ =>
+(buf.skip1(); i0dnt_some(tok))
+//
+|
+T_BSLSH _ =>
+(buf.skip1(); i0dnt_some(tok))
+//
+|
+_(*non-IDENT*) =>
+(err := e00+1; i0dnt_none(tok))
+//
+end // end-of-let // end of [p_s0tid]
+
+(* ****** ****** *)
+
+#implfun
 p1_s0eid(buf, err) =
 let
 //
@@ -204,10 +239,11 @@ T_IDDLR _ =>
 }
 //
 |
-T_BSLSH() => (buf.skip1(); i0dnt_some(tok))
+T_BSLSH() =>
+( buf.skip1(); i0dnt_some(tok) )
 //
 |
-_(* non-IDENT *) => (err := e00 + 1; i0dnt_none(tok))
+_(*non-IDENT*) => (err := e00+1; i0dnt_none(tok))
 //
 end (*let*) // end of [p1_s0eid(buf, err)]
 
@@ -298,6 +334,18 @@ sort0seq_COMMA::
 (* ****** ****** *)
 
 local
+//
+fun
+p1_napps
+( buf: !tkbf0
+, err: &int >> _): sort0 =
+let
+  val e00 = err
+  val tok = buf.getk0()
+in
+  (err := e00 + 1)
+; sort0(tok.lctn(), S0Tnone(tok))
+end // end of [p_napps]
 //
 #extern
 fun p1_sort0_tid: p1_fun(sort0)
@@ -428,6 +476,63 @@ end (*let*) // this-is-a-case-of-error
 //
 end (*let*) // end of [ p1_sort0_atm ]
 //
+(* ****** ****** *)
+//
+#implfun
+p1_sort0seq_atm
+(  buf, err  ) =
+list_vt2t
+(
+ps_p1fun{sort0}(buf, err, p1_sort0_atm)
+)
+#implfun
+p1_sort0seq_CMA
+(  buf, err  ) =
+list_vt2t
+(
+ps_COMMA_p1fun{sort0}(buf, err, p1_sort0)
+)
+//
+(* ****** ****** *)
+
+#implfun
+p1_sort0(buf, err) =
+let
+//
+val sts0 =
+p1_sort0seq_atm(buf, err)
+//
+in//let
+//
+case+ sts0 of
+|
+list_nil
+((*void*)) =>
+p1_napps(buf, err)
+|
+list_cons
+(s0t0, sts1) =>
+(
+case+ sts1 of
+|
+list_nil() => s0t0
+|
+list_cons _ =>
+let
+  val loc0 =
+  s0t0.lctn()+s0t1.lctn()
+in
+  sort0(loc0, S0Tapps(sts0))
+end where
+{
+val s0t1 =
+gseq_last_ini
+<sort0lst><sort0>(sts1, s0t0)
+} (*where*) // end of [list_cons]
+)
+//
+end(*let*)//end-of-[p_sort0(buf,err)]
+
 (* ****** ****** *)
 
 endloc (*local*) // end of [local]

@@ -405,6 +405,23 @@ strn_vt2t
 //
 (* ****** ****** *)
 //
+#impltmp<>
+strn_make_strm
+  (cs) =
+(
+strn_vt2t
+(strn_vt_make_strm<>(cs))
+)
+#impltmp<>
+strn_make_strm_vt
+  (cs) =
+(
+strn_vt2t
+(strn_vt_make_strm_vt<>(cs))
+)
+//
+(* ****** ****** *)
+//
 #impltmp
 <n>(*tmp*)
 strn_tabulate(n0) =

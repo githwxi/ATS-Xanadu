@@ -263,6 +263,50 @@ end (*let*) // end of [g0nam_fprint]
 (* ****** ****** *)
 
 #implfun
+sort0_fprint
+(out, s0t) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s0t.node() of
+|
+S0Tid0(id0) =>
+print("S0Tid0(", id0, ")")
+//
+|
+S0Tint(int) =>
+print("S0Tint(", int, ")")
+//
+// HX: qualified
+|
+S0Tqid(tk1, st2) =>
+print("S0Tqid(", tk1, ";", st2, ")")
+//
+|
+S0Tapps(sts) =>
+print("S0Tapps(", sts, ")")
+//
+|
+S0Tlist(tkb, sts, tke) =>
+print
+("S0Tlist(", tkb, ";", sts, ";", tke, ")")
+//
+(*
+|
+S0Ttype of int(*kind*)
+// prop/view/type/t0ype/viewtype/viewt0ype
+*)
+|
+S0Tnone(tok) => print("S0Tnone(", tok, ")")
+//
+end (*let*)//end-of-[sort0_fprint(out,s0t)]
+
+(* ****** ****** *)
+
+#implfun
 s0tcn_fprint
 (out, tcn) =
 let
