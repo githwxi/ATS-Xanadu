@@ -43,6 +43,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
@@ -207,7 +209,7 @@ T_BSLSH() => (buf.skip1(); i0dnt_some(tok))
 |
 _(* non-IDENT *) => (err := e00 + 1; i0dnt_none(tok))
 //
-end (*let*) // end of [p_s0eid(buf, err)]
+end (*let*) // end of [p1_s0eid(buf, err)]
 
 (* ****** ****** *)
 
@@ -235,7 +237,7 @@ t0_d0eid(tnd) => p1_d0eid(buf, err)
 |
 _(*non-i0dnt*) => (err := e00+1; i0dnt_none(tok))
 //
-end (*let*) // end of [p_i0dnt(buf,err)]
+end (*let*) // end of [p1_i0dnt(buf,err)]
 
 (* ****** ****** *)
 
@@ -350,6 +352,82 @@ end (* this-is-a-case-of-error *)
 //
 end (*let*) // end of [p1_sort0_tid]
 
+(* ****** ****** *)
+
+#implfun
+p1_sort0_atm
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+(*
+val () =
+println!
+("p1_sort0_atm: e00 = ", e00)
+val () =
+println!
+("p1_sort0_atm: tok = ", tok)
+*)
+//
+in
+//
+case+ tnd of
+//
+| _
+when t0_s0tid(tnd) =>
+let
+  val id0 = p1_s0tid(buf, err)
+in
+  err := e00
+; sort0(id0.lctn(), S0Tid0(id0))
+end (*let*) // end of [t_s0tid]
+//
+| _
+when t0_t0int(tnd) =>
+let
+  val i00 = p1_t0int(buf, err)
+in
+  err := e00
+; sort0(i00.lctn(), S0Tint(i00))
+end (*let*) // end of [t_t0int]
+|
+T_LPAREN() =>
+let
+val () = buf.skip1()
+val s0ts =
+p1_sort0seq_CMA(buf, err)
+val tbeg = tok
+val tend = p1_RPAREN(buf, err)
+val loc0 = tbeg.lctn()+tend.lctn()
+in
+  err := e00
+; sort0
+  (loc0,S0Tlist(tbeg, s0ts, tend))
+end (*let*) // end of [T_LPAREN]
+//
+|
+T_IDQUA(qid) =>
+let
+val () = buf.skip1()
+val s0t0 =
+p1_sort0_atm(buf, err)
+val loc0 = tok.lctn()+s0t0.lctn()
+in
+  err := e00
+; sort0( loc0, S0Tqid(tok, s0t0) )
+end (*let*) // end of [ T_IDQUA ]
+//
+| _ (* error *) =>
+let
+  val () = (err := e00 + 1)
+in
+  sort0( tok.lctn(), S0Tnone(tok) )
+end (*let*) // this-is-a-case-of-error
+//
+end (*let*) // end of [ p1_sort0_atm ]
+//
 (* ****** ****** *)
 
 endloc (*local*) // end of [local]

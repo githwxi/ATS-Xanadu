@@ -178,15 +178,16 @@ s0lab_fprint
 #impltmp
 <x0>
 s0lab_fprint
-  (out, lab) =
-let
+  (out, lab) = let
+//
 #impltmp
 g_print$out<>() = out
+//
 in//let
 case+ lab of
 |
 S0LAB(l01, t02, x03) =>
-print("S0LAB(", l01, ";", x03, ")")
+print("S0LAB(",l01,";",x03,")")
 end(*let*)//end-of-[s0lab_fprint]
 //
 #impltmp

@@ -127,6 +127,36 @@ datatype t0str =
 | T0STRsome of token
 //
 (* ****** ****** *)
+fun
+t0int_fprint
+(out:FILR, int:t0int): void
+fun
+t0chr_fprint
+(out:FILR, chr:t0chr): void
+fun
+t0flt_fprint
+(out:FILR, flt:t0flt): void
+fun
+t0str_fprint
+(out:FILR, str:t0str): void
+//
+(* ****** ****** *)
+//
+fun
+t0int_get_lctn(t0int): loc_t
+fun
+t0chr_get_lctn(t0chr): loc_t
+fun
+t0flt_get_lctn(t0flt): loc_t
+fun
+t0str_get_lctn(t0str): loc_t
+//
+#symload lctn with t0int_get_lctn
+#symload lctn with t0chr_get_lctn
+#symload lctn with t0flt_get_lctn
+#symload lctn with t0str_get_lctn
+//
+(* ****** ****** *)
 //
 #typedef i0dnt = i0dnt_tbox
 #typedef l0abl = l0abl_tbox
@@ -192,15 +222,6 @@ datatype t0str =
 //
 (* ****** ****** *)
 #typedef tokenopt = optn(token)
-(* ****** ****** *)
-fun
-t0int_fprint:(FILR,t0int)->void
-fun
-t0chr_fprint:(FILR,t0chr)->void
-fun
-t0flt_fprint:(FILR,t0flt)->void
-fun
-t0str_fprint:(FILR,t0str)->void
 (* ****** ****** *)
 fun
 i0dnt_fprint:(FILR,i0dnt)->void
