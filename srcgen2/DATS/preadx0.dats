@@ -43,11 +43,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/locinfo.sats"
-(* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
-(* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/preadx0.sats"
+(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_synread_staexp.dats] *)
+(* end of [ATS3/XATSOPT_preadx0.dats] *)

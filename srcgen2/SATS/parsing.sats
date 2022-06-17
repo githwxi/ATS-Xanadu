@@ -35,10 +35,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #include
-"./../HATS/xatsopt_sats.hats"
+"./..\
+/HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
-ATS_PACKNAME
+ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
@@ -46,6 +47,8 @@ ATS_PACKNAME
 LEX = "./lexing0.sats"
 #staload
 S0E = "./staexp0.sats"
+//
+(* ****** ****** *)
 //
 #typedef tnode = $LEX.tnode
 #typedef token = $LEX.token
