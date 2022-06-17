@@ -75,6 +75,7 @@ LEX = "./lexing0.sats"
 //
 #abstbox i0dnt_tbox // ptr
 #abstbox l0abl_tbox // ptr
+#abstype s0ymb_tbox // ptr
 //
 (* ****** ****** *)
 //
@@ -123,6 +124,7 @@ datatype t0str =
 //
 #typedef i0dnt = i0dnt_tbox
 #typedef l0abl = l0abl_tbox
+#typedef s0ymb = s0ymb_tbox
 //
 (* ****** ****** *)
 //
@@ -147,6 +149,11 @@ datatype t0str =
 #typedef g0maglst = list(g0mag)
 //
 (* ****** ****** *)
+//
+#typedef sort0 = sort0_tbox
+#typedef s0exp = s0exp_tbox
+//
+(* ****** ****** *)
 fun
 t0int_fprint:(FILR,t0int)->void
 fun
@@ -160,6 +167,8 @@ fun
 i0dnt_fprint:(FILR,i0dnt)->void
 fun
 l0abl_fprint:(FILR,l0abl)->void
+fun
+s0ymb_fprint:(FILR,s0ymb)->void
 (* ****** ****** *)
 //
 datatype
@@ -205,6 +214,27 @@ l0abl_make_none(tok: token): l0abl
 fun
 l0abl_make_node
 (loc:loc_t, lnd:l0abl_node): l0abl
+//
+(* ****** ****** *)
+//
+(*
+s0ymb ::=
+| i0dnt // i0dnt(obj, ...)
+| DOT l0abl // obj.l0abl(...)
+| LBRCKT RBRCKT // obj[idx...]
+*)
+datatype
+s0ymb_node =
+| S0YMBi0dnt of (i0dnt)
+(*
+| S0YMBdtlab of (token, l0abl)
+*)
+| S0YMBbrckt of (token, token)
+//
+fun
+s0ymb_get_lctn: (s0ymb)->loc_t
+fun
+s0ymb_get_node: (s0ymb)->s0ymb_node
 //
 (* ****** ****** *)
 //
