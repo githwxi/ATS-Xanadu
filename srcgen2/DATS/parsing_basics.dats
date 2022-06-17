@@ -655,5 +655,141 @@ _ (* non-SRP_THEN *) => optn_nil()
 end (*let*) // end of [pq_SRP_THEN]
 
 (* ****** ****** *)
+//
+#implfun
+ps_p1fun{a}
+(buf, err, pfn) = let
+//
+val e00 = err
+//
+#vwtpdef res = list_vt(a)
+//
+fun
+loop
+( buf: !tkbf0
+, err: &int >> _
+, res: list_vt(a)): res =
+let
+  val x0 = pfn( buf, err )
+in//let
+if
+(err = e00)
+then
+loop(buf, err, cons_vt(x0, res))
+else
+(err := e00; list_vt_reverse0(res))
+//
+end (*let*)//end-of(loop(buf,err,res))
+//
+in
+  loop( buf, err, list_vt_nil(*res*) )
+end(*let*)//end-of(ps_p1fun(buf,err,pfn))
+//
+(* ****** ****** *)
+//
+#implfun
+ps_AND_p1fun{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_ANDq, pfn)
+where
+{
+fun
+tnode_ANDq(tnd: tnode): bool =
+(case+ tnd of T_AND() => true | _ => false)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+ps_BAR_p1fun{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_BARq, pfn)
+where
+{
+fun
+tnode_BARq(tnd: tnode): bool =
+(case+ tnd of T_BAR() => true | _ => false)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+ps_COMMA_p1fun{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_COMMAq, pfn)
+where
+{
+fun
+tnode_COMMAq(tnd: tnode): bool =
+(case+ tnd of T_COMMA() => true | _ => false)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+ps_SMCLN_p1fun{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_SMCLNq, pfn)
+where
+{
+fun
+tnode_SMCLNq(tnd: tnode): bool =
+(case+ tnd of T_SMCLN() => true | _ => false)
+}
+//
+(* ****** ****** *)
+
+#implfun
+ps_sep_p1fun{a}
+( buf
+, err, fsp, pfn) = let
+//
+val e00 = err
+val fst = pfn(buf, err)
+//
+#vwtpdef res = list_vt(a)
+//
+fun
+loop
+( buf: !tkbf0
+, err: &int >> _
+, res: list_vt(a)): res =
+let
+val
+tok = buf.getk0()
+in//let
+//
+if
+~(fsp(tok.node()))
+then
+list_vt_reverse0(res)
+else
+let
+val () = buf.skip1()
+val x0 = pfn(buf, err)
+in//let
+loop
+(buf, err, cons_vt(x0, res))
+end (*let*) // end of [else]
+//
+end (*let*) // end of [loop]
+//
+in//let
+//
+if
+(err = e00)
+then
+loop(buf, err, res) where
+{ val res = list_vt_sing(fst) }
+else
+(err := e00; list_vt_nil(*res*))
+//
+end//end-of(ps_sep_p1fun(buf,err,fsp,pfn))
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_basics.dats] *)
