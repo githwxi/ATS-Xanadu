@@ -159,6 +159,29 @@ print("L0ABLsome(", lab, ")")
 end (*let*) // end of [l0abl_fprint]
 
 (* ****** ****** *)
+
+#implfun
+s0ymb_fprint
+(out, sym) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+sym.node() of
+|
+S0YMBi0dnt(id0) =>
+print("S0YMBi0dnt(", id0, ")")
+(*
+|
+S0YMBdtlab of (token, l0abl)
+*)
+|
+S0YMBbrckt(tk1, tk2) =>
+print("S0YMBbrckt(", tk1, ";", tk2, ")")
+end (*let*) // end of [s0ymb_fprint]
+
+(* ****** ****** *)
 //
 #implfun
 s0qid_fprint

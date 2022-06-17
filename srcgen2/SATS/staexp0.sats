@@ -136,6 +136,7 @@ datatype t0str =
 //
 #typedef g0nid = i0dnt_tbox
 #typedef g0eid = i0dnt_tbox
+#typedef g0arg = i0dnt_tbox
 //
 (* ****** ****** *)
 //
@@ -152,6 +153,7 @@ datatype t0str =
 #typedef g0mag = g0mag_tbox
 #typedef g0namlst = list(g0nam)
 #typedef g0explst = list(g0exp)
+#typedef g0arglst = list(g0arg)
 #typedef g0maglst = list(g0mag)
 //
 (* ****** ****** *)
@@ -269,10 +271,15 @@ s0ymb_node =
 *)
 | S0YMBbrckt of (token, token)
 //
+(* ****** ****** *)
+//
 fun
 s0ymb_get_lctn: (s0ymb)->loc_t
 fun
 s0ymb_get_node: (s0ymb)->s0ymb_node
+//
+#symload lctn with s0ymb_get_lctn
+#symload node with s0ymb_get_node
 //
 fun
 s0ymb_make_node
@@ -344,9 +351,6 @@ and
 g0exp_ELSE =
 | g0exp_ELSE of (token, g0exp)
 (* ****** ****** *)
-//
-#typedef g0arg = g0eid
-#typedef g0arglst = list(g0arg)
 //
 datatype
 g0mag_node =
