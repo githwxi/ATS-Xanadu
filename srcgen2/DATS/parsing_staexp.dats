@@ -274,5 +274,86 @@ _(*non-INT-IDENT*) =>
 end (*let*) // end of [p1_l0abl(buf,err)]
 
 (* ****** ****** *)
+//
+(*
+idsort0::
+  | s0tid
+//
+atmsort0::
+//
+  | s0tid
+  | qualid atmsort0
+  | ( sort0seq_COMMA )
+//
+atmsort0seq::
+  | {atmsort0}+
+//
+sort0seq_COMMA::
+  | sort0, ... , sort0
+//
+*)
+//
+(* ****** ****** *)
+
+local
+//
+#extern
+fun p1_sort0_tid: p1_fun(sort0)
+#extern
+fun p1_sort0_atm: p1_fun(sort0)
+#extern
+fun p1_sort0seq_atm: p1_fun(sort0lst)
+#extern
+fun p1_sort0seq_CMA: p1_fun(sort0lst)
+//
+in//local
+
+(* ****** ****** *)
+
+#implfun
+p1_sort0_tid
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+(*
+val () =
+println!
+("p1_sort0_tid: e00 = ", e00)
+val () =
+println!
+("p1_sort0_tid: tok = ", tok)
+*)
+//
+in//let
+//
+case+ tnd of
+//
+| _
+when
+t0_s0tid(tnd) =>
+let
+  val id0 = p1_s0tid(buf, err)
+in
+  err := e00;
+  sort0(id0.lctn(), S0Tid0(id0))
+end // end of [t_s0tid]
+| _
+(*otherwise*) =>
+let
+  val () = (err := e00 + 1)
+in
+  sort0(tok.lctn(), S0Tnone(tok))
+end (* this-is-a-case-of-error *)
+//
+end (*let*) // end of [p1_sort0_tid]
+
+(* ****** ****** *)
+
+endloc (*local*) // end of [local]
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_basics.dats] *)

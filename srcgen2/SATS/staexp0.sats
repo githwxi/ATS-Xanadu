@@ -151,7 +151,22 @@ datatype t0str =
 (* ****** ****** *)
 //
 #typedef sort0 = sort0_tbox
+#typedef sort0lst = list(sort0)
+#typedef sort0opt = optn(sort0)
+//
 #typedef s0exp = s0exp_tbox
+#typedef s0explst = list(s0exp)
+#typedef s0expopt = optn(s0exp)
+//
+#typedef s0arg = s0arg_tbox
+#typedef s0mag = s0mag_tbox
+#typedef s0arglst = list(s0arg)
+#typedef s0maglst = list(s0mag)
+//
+#typedef t0arg = t0arg_tbox
+#typedef t0mag = t0mag_tbox
+#typedef t0arglst = list(t0arg)
+#typedef t0maglst = list(t0mag)
 //
 (* ****** ****** *)
 fun
@@ -239,28 +254,6 @@ s0ymb_get_node: (s0ymb)->s0ymb_node
 (* ****** ****** *)
 //
 datatype
-s0qid =
-| S0QIDnone of (i0dnt)
-| S0QIDsome of (token, i0dnt)
-datatype
-d0qid =
-| D0QIDnone of (i0dnt)
-| D0QIDsome of (token, i0dnt)
-//
-fun
-s0qid_get_locn(s0qid): loc_t
-fun
-d0qid_get_locn(d0qid): loc_t
-//
-#symload locn with s0qid_get_locn
-#symload locn with d0qid_get_locn
-//
-fun s0qid_fprint:(FILR,s0qid)->void
-fun d0qid_fprint:(FILR,d0qid)->void
-//
-(* ****** ****** *)
-//
-datatype
 g0nam_node =
 //
 | G0Nid0 of (g0nid)
@@ -291,6 +284,127 @@ fun g0nam_fprint:(FILR,g0nam)->void
 (* ****** ****** *)
 fun g0exp_fprint:(FILR,g0exp)->void
 fun g0mag_fprint:(FILR,g0mag)->void
+(* ****** ****** *)
+//
+datatype
+s0qid =
+| S0QIDnone of (i0dnt)
+| S0QIDsome of (token, i0dnt)
+datatype
+d0qid =
+| D0QIDnone of (i0dnt)
+| D0QIDsome of (token, i0dnt)
+//
+fun
+s0qid_get_locn(s0qid): loc_t
+fun
+d0qid_get_locn(d0qid): loc_t
+//
+#symload locn with s0qid_get_locn
+#symload locn with d0qid_get_locn
+//
+fun s0qid_fprint:(FILR,s0qid)->void
+fun d0qid_fprint:(FILR,d0qid)->void
+//
+(* ****** ****** *)
+//
+datatype
+sort0_node =
+//
+| S0Tid0 of (s0tid)
+//
+| S0Tint of (t0int)
+//
+// HX: qualified
+| S0Tqid of (token, sort0)
+//
+| S0Tapps of
+  (sort0lst) // HX: unsupported
+//
+| S0Tlist of
+  (token, sort0lst, token) (*temporary*)
+//
+(*
+| S0Ttype of int(*kind*)
+// prop/view/type/t0ype/viewtype/viewt0ype
+*)
+| S0Tnone of (token) // HX: error indication
+// end of [datatype sort0_node]
+
+(* ****** ****** *)
+fun
+sort0_fprint(FILR, sort0): void
+(* ****** ****** *)
+//
+fun
+sort0_get_lctn(sort0): loc_t
+fun
+sort0_get_node(sort0): sort0_node
+//
+#symload lctn with sort0_get_lctn
+#symload node with sort0_get_node
+//
+(* ****** ****** *)
+//
+fun
+sort0_make_node
+(loc:loc_t, nod:sort0_node): sort0
+#symload sort0 with sort0_make_node
+//
+(* ****** ****** *)
+//
+datatype
+s0arg_node =
+| S0ARGnone of (token)
+| S0ARGsome of (s0eid, sort0opt)
+//
+datatype
+s0mag_node =
+|
+S0MAGnone of (token)
+|
+S0MAGsing of (s0eid)
+|
+S0MAGlist of
+(token(*LP*), s0arglst, token(*RP*))
+//
+(* ****** ****** *)
+fun
+s0arg_fprint
+(out:FILR, s0a:s0arg): void
+fun
+s0mag_fprint
+(out:FILR, sma:s0mag): void
+(* ****** ****** *)
+//
+fun
+s0arg_get_lctn(s0arg): loc_t
+fun
+s0arg_get_node(s0arg): s0arg_node
+//
+#symload lctn with s0arg_get_lctn
+#symload node with s0arg_get_node
+//
+fun
+s0arg_make_node
+(loc:loc_t, nod:s0arg_node): s0arg
+#symload s0arg with s0arg_make_node
+//
+(* ****** ****** *)
+//
+fun
+s0mag_get_lctn(s0mag): loc_t
+fun
+s0mag_get_node(s0mag): s0mag_node
+//
+#symload lctn with s0mag_get_lctn
+#symload node with s0mag_get_node
+//
+fun
+s0mag_make_node
+(loc:loc_t, nod:s0mag_node): s0mag
+#symload s0mag with s0mag_make_node
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp0.sats] *)

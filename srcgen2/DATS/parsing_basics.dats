@@ -89,6 +89,32 @@ case+ tnd of
 (* ****** ****** *)
 
 #implfun
+t0_s0tid(tnd) =
+(
+case+ tnd of
+//
+| T_IDALP _ => true
+| T_IDSYM _ => true
+//
+| T_BSLSH() => true
+//
+| _(*otherwise*) => false
+//
+) (*case*) // end of [t0_s0tid(tnd)]
+
+(* ****** ****** *)
+
+#implfun
+t0_s0aid(tnd) =
+(
+case+ tnd of
+|
+T_IDALP _ => true | _ => false
+) (*case*) // end of [t0_s0aid(tnd)]
+
+(* ****** ****** *)
+
+#implfun
 t0_s0eid(tnd) =
 (
 case+ tnd of

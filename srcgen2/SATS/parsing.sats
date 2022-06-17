@@ -193,9 +193,13 @@ fun p1_t0str: p1_fun(t0str)
 
 (* ****** ****** *)
 
-fun p1_s0eid: p1_fun(s0eid)
-fun p1_d0eid: p1_fun(d0eid)
 fun p1_i0dnt: p1_fun(i0dnt)
+
+fun p1_s0tid: p1_fun(s0tid)
+fun p1_s0eid: p1_fun(s0eid)
+
+fun p1_d0pid: p1_fun(d0pid)
+fun p1_d0eid: p1_fun(d0eid)
 
 (* ****** ****** *)
 
