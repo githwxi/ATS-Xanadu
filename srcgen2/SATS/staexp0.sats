@@ -398,11 +398,11 @@ sort0_make_node
 datatype
 s0tcn_node =
 |
-S0TCN of (s0eid, sort0opt)
+S0TCNnode of (s0eid,sort0opt)
 (* ****** ****** *)
 fun
 s0tcn_fprint
-(out:FILR, tcn:s0tcn): void
+(out: FILR, tcn: s0tcn): void
 (* ****** ****** *)
 //
 fun
@@ -641,13 +641,17 @@ S0Eexi0 of (token, s0qualst, token) // exists
 //
 and
 s0exp_RPAREN =
-| s0exp_RPAREN_cons0 of (token)
-| s0exp_RPAREN_cons1 of (token, s0explst, token)
+|
+s0exp_RPAREN_cons0 of (token)
+|
+s0exp_RPAREN_cons1 of (token, s0explst, token)
 //
 and
 l0s0e_RBRACE =
-| l0s0e_RBRACE_cons0 of (token)
-| l0s0e_RBRACE_cons1 of (token, l0s0elst, token)
+|
+l0s0e_RBRACE_cons0 of (token)
+|
+l0s0e_RBRACE_cons1 of (token, l0s0elst, token)
 //
 (* ****** ****** *)
 //
