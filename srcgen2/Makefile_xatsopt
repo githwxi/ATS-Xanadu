@@ -81,6 +81,10 @@ all_sats:: \
 parsing_sats
 parsing_sats: ; $(XATSOPT) --static SATS/parsing.sats
 ######
+all_sats:: \
+preadx0_sats
+preadx0_sats: ; $(XATSOPT) --static SATS/preadx0.sats
+######
 
 ######
 #
@@ -229,6 +233,16 @@ parsing_basics_dats: ; $(XATSOPT) --dynamic DATS/parsing_basics.dats
 all_dats:: \
 parsing_staexp_dats
 parsing_staexp_dats: ; $(XATSOPT) --dynamic DATS/parsing_staexp.dats
+######
+
+######
+all_dats:: \
+preadx0_dats
+preadx0_dats: ; $(XATSOPT) --dynamic DATS/preadx0.dats
+######
+all_dats:: \
+preadx0_staexp_dats
+preadx0_staexp_dats: ; $(XATSOPT) --dynamic DATS/preadx0_staexp.dats
 ######
 
 ######
