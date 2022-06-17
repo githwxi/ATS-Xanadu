@@ -224,6 +224,58 @@ fun p1_sort0 : p1_fun(sort0)
 (* ****** ****** *)
 //
 fun
+ps_p1fun{a:tx}
+(
+  buf: !tkbf0
+, err: &int >> int, pfn: p1_fun(a)
+) : list_vt(a) // end of [ps_p1fun]
+//
+(* ****** ****** *)
+//
+fun
+ps_AND_p1fun{a:tx}
+(
+  buf: !tkbf0
+, err: &(int) >> int, pfn: p1_fun(a)
+) : list_vt(a) // end of [ps_AND_p1fun]
+//
+(* ****** ****** *)
+fun
+ps_BAR_p1fun{a:tx}
+(
+  buf: !tkbf0
+, err: &(int) >> int, pfn: p1_fun(a)
+) : list_vt(a) // end of [ps_BAR_p1fun]
+(* ****** ****** *)
+fun
+ps_COMMA_p1fun{a:tx}
+(
+  buf: !tkbf0
+, err: &(int) >> int, pfn: p1_fun(a)
+) : list_vt(a) //end-of-[ps_COMMA_p1fun]
+fun
+ps_SMCLN_p1fun{a:tx}
+(
+  buf: !tkbf0
+, err: &(int) >> int, pfn: p1_fun(a)
+) : list_vt(a) //end-of-[ps_SMCLN_p1fun]
+(* ****** ****** *)
+fun
+ps_sep_p1fun{a:tx}
+(
+  buf: !tkbf0
+, err: &int >> int
+, fsp: tnode -> bool, pfn: p1_fun(a)
+) : list_vt(a) // end of [ps_sep_p1fun]
+//
+(* ****** ****** *)
+(*
+// HX-2022-06-16:
+// Some testing functions
+*)
+(* ****** ****** *)
+//
+fun
 <r0:t0>
 p1_fun_test
 (inp: strn, pfn: p1_fun(r0)): optn(r0)
