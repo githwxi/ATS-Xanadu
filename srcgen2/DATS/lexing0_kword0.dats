@@ -123,6 +123,18 @@ val T0WITHTYPE = T_WITHTYPE(TYPESORT)
 val T0WITHVWTP = T_WITHTYPE(VWTPSORT)
 //
 (* ****** ****** *)
+//
+val T0TRCD11 = T_TRCD10(1) //HX: $()
+and T0TRCD12 = T_TRCD10(2) //HX: $tup
+and T0TRCD13 = T_TRCD10(3) //HX: $tup_t0
+and T0TRCD14 = T_TRCD10(4) //HX: $tup_vt
+//
+val T0TRCD21 = T_TRCD20(1) //HX: ${}
+and T0TRCD22 = T_TRCD20(2) //HX: $rec
+and T0TRCD23 = T_TRCD20(3) //HX: $rec_t0
+and T0TRCD24 = T_TRCD20(4) //HX: $rec_vt
+//
+(* ****** ****** *)
 
 local
 
@@ -260,6 +272,21 @@ val () = kwdins("datavwtp", T0DATAVWTP)
 (*
 val () = kwdins("datavtype", T0DATAVTYPE)
 *)
+//
+val () = kwdins("withtype", T0WITHTYPE)
+val () = kwdins("withprop", T0WITHPROP)
+val () = kwdins("withview", T0WITHVIEW)
+val () = kwdins("withvwtp", T0WITHVWTP)
+(*
+val () = kwdins("withvtype", T0WITHVTYPE)
+*)
+//
+val () = kwdins("$tup", T0TRCD12)//_t0/vt
+val () = kwdins("$rec", T0TRCD22)//_t0/vt
+val () = kwdins("$tup_t0", T0TRCD13)//tbox
+val () = kwdins("$rec_t0", T0TRCD23)//tbox
+val () = kwdins("$tup_vt", T0TRCD14)//vtbx
+val () = kwdins("$rec_vt", T0TRCD24)//vtbx
 //
 end where
 {

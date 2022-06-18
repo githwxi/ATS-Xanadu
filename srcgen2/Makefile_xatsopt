@@ -38,6 +38,10 @@ xbasics_sats
 xbasics_sats: ; $(XATSOPT) --static SATS/xbasics.sats
 ######
 all_sats:: \
+xsynoug_sats
+xsynoug_sats: ; $(XATSOPT) --static SATS/xsynoug.sats
+######
+all_sats:: \
 xerrory_sats
 xerrory_sats: ; $(XATSOPT) --static SATS/xerrory.sats
 ######
@@ -96,6 +100,12 @@ preadx0_sats: ; $(XATSOPT) --static SATS/preadx0.sats
 all_dats:: \
 xbasics_dats
 xbasics_dats: ; $(XATSOPT) --dynamic DATS/xbasics.dats
+######
+
+######
+all_dats:: \
+xsynoug_dats
+xsynoug_dats: ; $(XATSOPT) --dynamic DATS/xsynoug.dats
 ######
 
 ######
