@@ -40,6 +40,80 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+<a0:t0>
+max_a2
+(x1: a0, x2: a0): a0
+fun
+<a0:t0>
+max_a3
+( x1: a0
+, x2: a0, x3: a0): a0
+fun
+<a0:t0>
+max_a4
+( x1: a0, x2: a0
+, x3: a0, x4: a0): a0
+fun
+<a0:t0>
+max_a5
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0): a0
+fun
+<a0:t0>
+max_a6
+( x1: a0, x2: a0
+, x3: a0, x4: a0
+, x5: a0, x6: a0): a0
+//
+(* ****** ****** *)
+//
+#symload max with max_a2
+#symload max with max_a3
+#symload max with max_a4
+#symload max with max_a5
+#symload max with max_a6
+//
+(* ****** ****** *)
+//
+fun
+<a0:t0>
+min_a2
+(x1: a0, x2: a0): a0
+fun
+<a0:t0>
+min_a3
+( x1: a0
+, x2: a0, x3: a0): a0
+fun
+<a0:t0>
+min_a4
+( x1: a0, x2: a0
+, x3: a0, x4: a0): a0
+fun
+<a0:t0>
+min_a5
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0): a0
+fun
+<a0:t0>
+min_a6
+( x1: a0, x2: a0
+, x3: a0, x4: a0
+, x5: a0, x6: a0): a0
+//
+(* ****** ****** *)
+//
+#symload min with min_a2
+#symload min with min_a3
+#symload min with min_a4
+#symload min with min_a5
+#symload min with min_a6
+//
+(* ****** ****** *)
+//
+fun
 <a1:vt>
 free_a1
 (x1: ~a1): void

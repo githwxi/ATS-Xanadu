@@ -6,6 +6,126 @@
 (* ****** ****** *)
 //
 #impltmp
+<a0>
+max_a2
+(x1, x2) =
+(
+g_max<a0>(x1, x2)
+) (* end of [max_a2] *)
+#impltmp
+<a0>
+max_a3
+( x1
+, x2, x3) =
+let
+fun
+f0(x, y) =
+g_max<a0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [max_a3]
+#impltmp
+<a0>
+max_a4
+( x1, x2
+, x3, x4) =
+let
+fun
+f0(x, y) =
+g_max<a0>(x, y)
+in//let
+  f0(f0(f0(x1, x2), x3), x4)
+end (*let*) // end of [max_a4]
+#impltmp
+<a0>
+max_a5
+( x1
+, x2, x3
+, x4, x5) =
+let
+fun
+f0(x, y) =
+g_max<a0>(x, y)
+in//let
+f0(f0(f0(f0(x1, x2), x3), x4), x5)
+end (*let*) // end of [max_a5]
+#impltmp
+<a0>
+max_a6
+( x1, x2
+, x3, x4
+, x5, x6) =
+let
+fun
+f0(x, y) =
+g_max<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1, x2), x3), x4), x5), x6)
+end (*let*) // end of [max_a6]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>
+min_a2
+(x1, x2) =
+(
+g_min<a0>(x1, x2)
+) (* end of [min_a2] *)
+#impltmp
+<a0>
+min_a3
+( x1
+, x2, x3) =
+let
+fun
+f0(x, y) =
+g_min<a0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [min_a3]
+#impltmp
+<a0>
+min_a4
+( x1, x2
+, x3, x4) =
+let
+fun
+f0(x, y) =
+g_min<a0>(x, y)
+in//let
+  f0(f0(f0(x1, x2), x3), x4)
+end (*let*) // end of [min_a4]
+#impltmp
+<a0>
+min_a5
+( x1
+, x2, x3
+, x4, x5) =
+let
+fun
+f0(x, y) =
+g_min<a0>(x, y)
+in//let
+f0(f0(f0(f0(x1, x2), x3), x4), x5)
+end (*let*) // end of [min_a5]
+#impltmp
+<a0>
+min_a6
+( x1, x2
+, x3, x4
+, x5, x6) =
+let
+fun
+f0(x, y) =
+g_min<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1, x2), x3), x4), x5), x6)
+end (*let*) // end of [min_a6]
+//
+(* ****** ****** *)
+//
+#impltmp
 <a1>
 free_a1
 ( x1 ) = () where

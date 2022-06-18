@@ -467,7 +467,7 @@ sort0_node =
 *)
 | S0Ttkerr of (token) // HX: parsing error
 //
-| S0Terrck of (sort0) // HX: synread error
+| S0Terrck of (int, sort0) // HX: pread error
 // end of [datatype sort0_node]
 
 (* ****** ****** *)
@@ -712,7 +712,7 @@ S0Efimp of
 ( token, s0explst, token )
 //
 |
-S0Eparn of
+S0Elpar of
 ( token, s0explst, s0exp_RPAREN )
 //
 |
@@ -727,13 +727,17 @@ S0Ercd2 of // HX: record
 |
 S0Elam0 of
 ( token
-, s0maglst, sort0opt, token, s0exp, tokenopt)
+, s0maglst
+, sort0opt, token, s0exp, tokenopt)
 |
 S0Euni0 of (token, s0qualst, token) // forall
 |
 S0Eexi0 of (token, s0qualst, token) // exists
 // HX-2018-07-08: this one usually
-| S0Enone of (token) // indicates some error!
+|
+S0Etkerr of (token) // indicates some error!
+|
+S0Eerrck of (int, s0exp) // HX: pread error!
 // HX-2022-06-16: end-of-[datatype(s0exp_node)]
 //
 and
@@ -755,6 +759,12 @@ l0s0e_RBRACE_cons1 of (token, l0s0elst, token)
 fun
 s0exp_fprint
 (out:FILR, dst:s0exp): void
+fun
+s0exp_RPAREN_fprint
+(out:FILR, srp:s0exp_RPAREN): void
+fun
+l0s0e_RBRACE_fprint
+(out:FILR, lrb:l0s0e_RBRACE): void
 //
 (* ****** ****** *)
 //
