@@ -166,17 +166,6 @@ prerrln("p1_sort0(\"type\") = ", opt)
 (* ****** ****** *)
 
 val opt =
-p1_fun_test<sort0>("(int,", p1_sort0)
-val ( ) =
-prerrln("p1_sort0(\"(int,\") = ", opt)
-val opt =
-preadx0_sort0opt(opt, the_err)
-val ( ) =
-prerrln("p1_sort0(\"(int,\") = ", opt)
-
-(* ****** ****** *)
-
-val opt =
 p1_fun_test<sort0>("(int,chr.1)", p1_sort0)
 val ( ) =
 prerrln("p1_sort0(\"(int,chr.1)\") = ", opt)
@@ -184,23 +173,24 @@ prerrln("p1_sort0(\"(int,chr.1)\") = ", opt)
 (* ****** ****** *)
 
 val opt =
-p1_fun_test<sort0>("(,int,chr.1)", p1_sort0)
-val ( ) =
-prerrln("p1_sort0(\"(,int,chr.1)\") = ", opt)
-val opt =
-preadx0_sort0opt(opt, the_err)
-val ( ) =
-prerrln("p1_sort0(\"(,int,chr.1)\") = ", opt)
+p1_fun_test<sort0>("(int,", p1_sort0)
+val opt = preadx0_sort0opt(opt, the_err)
+val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)
 
 val opt =
-p1_fun_test<sort0>("int->(int,(int,))->type)", p1_sort0)
-val ( ) =
-prerrln("p1_sort0(\"int->(int,(int,))->type)\") = ", opt)
+p1_fun_test<sort0>
+("(,int,chr.1)", p1_sort0)
 val opt = preadx0_sort0opt(opt, the_err)
-val ( ) =
-prerrln("p1_sort0(\"int->(int,(int,))->type)\") = ", opt)
+val ( ) = sort0opt_fpemsg(g_stderr(), opt)
+
+(* ****** ****** *)
+
+val opt =
+p1_fun_test<sort0>
+("int->(int,(int,))->type)", p1_sort0)
+val opt = preadx0_sort0opt(opt, the_err)
 val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)
