@@ -81,6 +81,8 @@
 "./../../DATS/preadx0.dats"
 #include
 "./../../DATS/preadx0_staexp.dats"
+#include
+"./../../DATS/preadx0_errmsg.dats"
 (* ****** ****** *)
 var the_err = 0
 (* ****** ****** *)
@@ -178,10 +180,6 @@ val opt =
 p1_fun_test<sort0>("(int,chr.1)", p1_sort0)
 val ( ) =
 prerrln("p1_sort0(\"(int,chr.1)\") = ", opt)
-val opt =
-preadx0_sort0opt(opt, the_err)
-val ( ) =
-prerrln("p1_sort0(\"(int,chr.1)\") = ", opt)
 
 (* ****** ****** *)
 
@@ -200,10 +198,10 @@ val opt =
 p1_fun_test<sort0>("int->(int,(int,))->type)", p1_sort0)
 val ( ) =
 prerrln("p1_sort0(\"int->(int,(int,))->type)\") = ", opt)
-val opt =
-preadx0_sort0opt(opt, the_err)
+val opt = preadx0_sort0opt(opt, the_err)
 val ( ) =
 prerrln("p1_sort0(\"int->(int,(int,))->type)\") = ", opt)
+val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)
 
