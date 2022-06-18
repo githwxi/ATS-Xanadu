@@ -136,7 +136,7 @@ sort0_apps_errck
 let
 val lvl = errvl(sts)
 in//let
-sort0_errck(lvl, sort0(loc, S0Tapps(sts)))
+sort0_errck(lvl+1, sort0(loc, S0Tapps(sts)))
 end (*let*) // end of [sort0_apps_errck]
 //
 fun
@@ -152,7 +152,7 @@ sort0_lpar_errck
 let
   val lvl = errvl(sts)
 in//let
-sort0_errck(lvl, sort0(loc, S0Tlpar(tkb,sts,tke)))
+sort0_errck(lvl+1, sort0(loc, S0Tlpar(tkb,sts,tke)))
 end (*let*) // end of [sort0_lpar_errck]
 //
 (* ****** ****** *)
@@ -234,6 +234,47 @@ then st0 else sort0_lpar_errck(st0.lctn(),tkb,sts,tke)
 end (*let*) // end of [f0_lpar]
 //
 } (*where*) // end of [preadx0_sort0]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_sort0opt
+  (opt, err) =
+(
+case+ opt of
+|
+optn_nil() =>
+optn_nil()
+|
+optn_cons(st1) =>
+let
+val e00 = err
+val st1 = preadx0_sort0(st1, err)
+in//let
+if err = e00 then opt else optn_cons(st1)
+endlet // end of [optn_cons(st1)]
+) (*case*)//end-of-[preadx0_sort0opt(opt,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_sort0lst
+  (s0ts, err) =
+(
+case+ s0ts of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(s0t1, sts1) =>
+let
+val e00 = err
+val s0t1 = preadx0_sort0(s0t1, err)
+val sts1 = preadx0_sort0lst(sts1, err)
+in//let
+if err = e00 then s0ts else list_cons(s0t1, sts1)
+endlet // end of [list_cons(st0)]
+) (*case*)//end-of-[preadx0_sort0lst(s0ts,err)]
 //
 (* ****** ****** *)
 

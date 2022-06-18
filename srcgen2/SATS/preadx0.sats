@@ -52,7 +52,9 @@ S0E = "./staexp0.sats"
 #typedef s0exp = $S0E.s0exp
 (* ****** ****** *)
 #typedef sort0lst = $S0E.sort0lst
+#typedef sort0opt = $S0E.sort0opt
 #typedef s0explst = $S0E.s0explst
+#typedef s0expopt = $S0E.s0expopt
 (* ****** ****** *)
 //
 #typedef
@@ -64,8 +66,23 @@ fpreadx0
 fun preadx0_sort0: fpreadx0(sort0)
 fun preadx0_s0exp: fpreadx0(s0exp)
 (* ****** ****** *)
-fun preadx0_sort0lst: fpreadx0(sort0lst)
-fun preadx0_s0explst: fpreadx0(s0explst)
+#symload preadx0 with preadx0_sort0
+#symload preadx0 with preadx0_s0exp
+(* ****** ****** *)
+fun
+preadx0_sort0opt: fpreadx0(sort0opt)
+fun
+preadx0_s0expopt: fpreadx0(s0expopt)
+(* ****** ****** *)
+fun
+preadx0_sort0lst: fpreadx0(sort0lst)
+fun
+preadx0_s0explst: fpreadx0(s0explst)
+(* ****** ****** *)
+#symload preadx0 with preadx0_sort0opt
+#symload preadx0 with preadx0_sort0lst
+#symload preadx0 with preadx0_s0expopt
+#symload preadx0 with preadx0_s0explst
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0.sats] *)

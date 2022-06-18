@@ -14,6 +14,8 @@
 "./../../SATS/lexing0.sats"
 #staload
 "./../../SATS/parsing.sats"
+#staload
+"./../../SATS/preadx0.sats"
 (* ****** ****** *)
 #include
 "./../../DATS/xstamp0.dats"
@@ -74,6 +76,13 @@
 "./../../DATS/parsing_staexp.dats"
 #include
 "./../../DATS/parsing_utils0.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/preadx0.dats"
+#include
+"./../../DATS/preadx0_staexp.dats"
+(* ****** ****** *)
+var the_err = 0
 (* ****** ****** *)
 
 val opt =
@@ -158,6 +167,10 @@ val opt =
 p1_fun_test<sort0>("(int,", p1_sort0)
 val ( ) =
 prerrln("p1_sort0(\"(int,\") = ", opt)
+val opt =
+preadx0_sort0opt(opt, the_err)
+val ( ) =
+prerrln("p1_sort0(\"(int,\") = ", opt)
 
 (* ****** ****** *)
 
@@ -169,9 +182,13 @@ prerrln("p1_sort0(\"(int,chr.1)\") = ", opt)
 (* ****** ****** *)
 
 val opt =
-p1_fun_test<sort0>("int->(int,int)->type)", p1_sort0)
+p1_fun_test<sort0>("int->(int,(int,))->type)", p1_sort0)
 val ( ) =
-prerrln("p1_sort0(\"int->(int,int)->type)\") = ", opt)
+prerrln("p1_sort0(\"int->(int,(int,))->type)\") = ", opt)
+val opt =
+preadx0_sort0opt(opt, the_err)
+val ( ) =
+prerrln("p1_sort0(\"int->(int,(int,))->type)\") = ", opt)
 
 (* ****** ****** *)
 
