@@ -72,6 +72,8 @@ node with l0abl_get_node//staexp0
 #symload
 tnode with token_get_node//lexing0
 (* ****** ****** *)
+#symload + with add_loctn_loctn//locinfo
+(* ****** ****** *)
 
 #implfun
 p1_t0int(buf, err) =
@@ -534,7 +536,133 @@ end(*let*)//end-of-[p_sort0(buf,err)]
 
 (* ****** ****** *)
 
-endloc (*local*) // end of [local]
+endloc (*local*) // end of [local(p1_sort0)]
+
+(* ****** ****** *)
+
+#extern
+fun p1_s0mag: p1_fun(s0mag)
+#extern
+fun p1_s0magseq: p1_fun(s0maglst)
+
+#extern
+fun pq_sort0_anno: pq_fun(sort0)
+
+(* ****** ****** *)
+
+local
+//
+fun
+p1_napps
+( buf: !tkbf0
+, err: &int >> _): s0exp =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+|
+T_LAM(k0) =>
+let
+val tok0 = tok
+val (  ) = buf.skip1()
+val s0ms = p1_s0magseq(buf, err)
+val anno = pq_sort0_anno(buf, err)
+val tok1 = p1_EQGT(buf, err)
+val s0e0 = p1_s0exp(buf, err)
+val opt2 = pq_ENDLAM(buf, err)
+val lres =
+(
+case+ opt2 of
+|
+optn_nil() =>
+tok0.lctn() + s0e0.lctn()
+|
+optn_cons(tok2) =>
+tok0.lctn() + tok2.lctn()): loc_t
+//
+in//let
+err := e00;
+s0exp
+(lres
+,S0Elam0(tok0, s0ms, anno, tok1, s0e0, opt2))
+end (*let*) // end of [T_LAM(k0)]
+//
+|
+_(*non-T_LAM*) =>
+(err := e00 + 1; s0exp(tok.lctn(), S0Etkerr(tok)))
+//
+end (*let*) // end of [p_napps(buf,err)]
+//
+#extern
+fun p1_s0exp_atm : p1_fun(s0exp)
+#extern
+fun p1_s0expseq_atm: p1_fun(s0explst)
+#extern
+fun p1_s0expseq_CMA: p1_fun(s0explst)
+//
+in//local
+
+(* ****** ****** *)
+//
+#implfun
+p1_s0expseq_atm
+(  buf, err  ) =
+list_vt2t
+(
+ps_p1fun{s0exp}(buf, err, p1_s0exp_atm)
+)
+#implfun
+p1_s0expseq_CMA
+(  buf, err  ) =
+list_vt2t
+(
+ps_COMMA_p1fun{s0exp}(buf, err, p1_s0exp)
+)
+//
+(* ****** ****** *)
+
+(*
+#implfun
+p1_s0exp(buf, err) =
+let
+//
+val e00 = err
+val s0es = p1_s0expseq_atm(buf, err)
+//
+in
+//
+case+ s0es of
+|
+list_nil() => p1_napps(buf, err)
+|
+list_cons
+(s0e1, ses1) => let
+val opt = pq_sort0_anno(buf, err)
+in
+case+ ses1 of
+|
+list_nil _ => s0exp_anno_opt(s0e1, opt)
+|
+list_cons _ =>
+      (
+        s0exp_anno_opt(s0app, opt)
+      ) where
+      {
+        val s0e1 = list_last(s0es1)
+        val loc01 = s0e0.lctn()+s0e1.lctn()
+        val s0app = s0exp_make_node(loc01, S0Eapps(s0es0))
+      } // end of [list_cons]
+  end (* end of [list_cons] *)
+//
+end // end of [p_s0exp]
+*)
+
+endloc (*local*) // end of [local(p1_s0exp)]
 
 (* ****** ****** *)
 

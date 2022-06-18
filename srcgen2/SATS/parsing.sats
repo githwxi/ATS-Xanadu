@@ -225,6 +225,18 @@ sort0 ::= {atmsort0}+
 fun p1_sort0 : p1_fun(sort0)
 //
 (* ****** ****** *)
+
+fun p1_s0exp : p1_fun(s0exp)
+
+(* ****** ****** *)
+(*
+//
+HX-2022-06-16:
+various helper functions for
+parsing general syntactic entities
+//
+*)
+(* ****** ****** *)
 //
 fun
 ps_p1fun{a:tx}
