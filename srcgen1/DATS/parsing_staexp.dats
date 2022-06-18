@@ -2163,7 +2163,7 @@ case+ tnd of
     err := e0;
     s0exp_make_node
     ( loc_res
-    , S0Eparen(tbeg, s0es, tend)) where
+    , S0Elpar(tbeg, s0es, tend)) where
     {
       val loc_res =
         tbeg.loc()+s0exp_RPAREN_loc(tend)

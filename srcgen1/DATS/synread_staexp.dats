@@ -655,7 +655,7 @@ s0t0.node() of
 | S0Tapps(s0ts) =>
   synread_sort0lst(s0ts)
 //
-| S0Tlist
+| S0Tlpar
   (tok1, s0ts, tok2) =>
   {
     val () = synread_LPAREN(tok1)
@@ -1032,7 +1032,7 @@ s0e0.node() of
     val () = synread_GT(tend)
   }
 //
-| S0Eparen
+| S0Elpar
   (tbeg, s0es, tend) =>
   {
     val () = synread_LPAREN(tbeg)

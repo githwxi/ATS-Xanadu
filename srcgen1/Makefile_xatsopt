@@ -185,9 +185,13 @@ INCLUDE=-I"."
 
 ######
 
-all:: ; echo "make xatsopt"
-all:: ; echo "make srclines"
-all:: ; echo "make libxatsopt"
+all:: xatsopt
+
+######
+
+#all:: ; echo "make xatsopt"
+#all:: ; echo "make srclines"
+#all:: ; echo "make libxatsopt"
 
 ######
 #
