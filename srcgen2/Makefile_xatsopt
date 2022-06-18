@@ -244,11 +244,23 @@ all_dats:: \
 preadx0_staexp_dats
 preadx0_staexp_dats: ; $(XATSOPT) --dynamic DATS/preadx0_staexp.dats
 ######
+all_dats:: \
+preadx0_errmsg_dats
+preadx0_errmsg_dats: ; $(XATSOPT) --dynamic DATS/preadx0_errmsg.dats
+######
 
 ######
 all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
+######
+
+
+######
+srclines:: ; wc -l */*.?ats
+######
+srclines_sats:: ; wc -l SATS/*.sats
+srclines_dats:: ; wc -l DATS/*.dats
 ######
 
 
