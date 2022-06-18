@@ -1305,7 +1305,7 @@ case+ tnd of
     err := e0;
     sort0_make_node
     ( loc_res
-    , S0Tlist(tbeg, s0ts, tend)) where
+    , S0Tlpar(tbeg, s0ts, tend)) where
     {
       val loc_res = tbeg.loc()+tend.loc()
     }
