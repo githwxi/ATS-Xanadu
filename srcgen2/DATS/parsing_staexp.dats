@@ -111,11 +111,17 @@ p1_s0quaseq_BARSMCLN: p1_fun(s0qualst)
 (* ****** ****** *)
 //
 #extern
-fun p1_s0exp_atm : p1_fun(s0exp)
+fun p1_l0s0e: p1_fun(l0s0e)
+//
+#extern
+fun p1_s0exp_atm: p1_fun(s0exp)
 #extern
 fun p1_s0expseq_atm: p1_fun(s0explst)
 #extern
 fun p1_s0expseq_CMA: p1_fun(s0explst)
+//
+#extern
+fun p1_l0s0eseq_CMA: p1_fun(l0s0elst)
 //
 (* ****** ****** *)
 //
@@ -124,7 +130,14 @@ fun
 p1_s0exp_RPAREN: p1_fun(s0exp_RPAREN)
 #extern
 fun
+p1_l0s0e_RBRACE: p1_fun(l0s0e_RBRACE)
+//
+#extern
+fun
 s0exp_RPAREN_lctn:(s0exp_RPAREN)->loc_t
+#extern
+fun
+l0s0e_RBRACE_lctn:(l0s0e_RBRACE)->loc_t
 //
 (* ****** ****** *)
 
@@ -698,6 +711,32 @@ end (*let*) // end of [p1_s0exp(buf,err)]
 (* ****** ****** *)
 
 #implfun
+p1_l0s0e(buf, err) =
+let
+//
+val e00 = err
+//
+val lab =
+p1_l0abl(buf, err)
+val tok = p1_EQ0(buf, err)
+val s0e = p1_s0exp(buf, err)
+//
+(*
+val ((*void*)) =
+println! ("p1_l0s0e: lab = ", lab)
+val ((*void*)) =
+println! ("p1_l0s0e: tok = ", tok)
+val ((*void*)) =
+println! ("p1_l0s0e: s0e = ", s0e)
+*)
+//
+in
+  (err := e00; S0LAB(lab, tok, s0e))
+end (*let*) // end of [p1_l0s0e(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 p1_s0exp_atm(buf, err) =
 let
 //
@@ -791,20 +830,6 @@ in
 end (*let*) // end of [ -< ... > ]
 //
 |
-T_LPAREN() =>
-let
-val tbeg = tok
-val (  ) = buf.skip1()
-val s0es = p1_s0expseq_CMA(buf, err)
-val tend = p1_s0exp_RPAREN(buf, err)
-val lres =
-tbeg.lctn() + s0exp_RPAREN_lctn(tend)
-in//let
-  err := e00
-; s0exp(lres, S0Elpar(tbeg, s0es, tend))
-end (*let*) // end of [ ( ... ) ]
-//
-|
 T_LBRACE() =>
 let
 val tbeg = tok
@@ -858,97 +883,71 @@ in//let
   err := e00; s0exp(loc0, S0Equal(tqua, s0e0))
 end (*let*) // end of [T_IDQUA(qid)]
 //
+|
+T_LPAREN() =>
+let
+val tbeg = tok
+val (  ) = buf.skip1()
+val s0es = p1_s0expseq_CMA(buf, err)
+val tend = p1_s0exp_RPAREN(buf, err)
+val lres =
+tbeg.lctn() + s0exp_RPAREN_lctn(tend)
+in//let
+  err := e00
+; s0exp(lres, S0Elpar(tbeg, s0es, tend))
+end (*let*) // end of [ ( ... ) ]
+//
+|
+T_TRCD10(k0) =>
+let
+val tbeg = tok
+val () = buf.skip1()
+val topt =
+(
+if
+(k0 <= 1)
+then optn_nil()
+else optn_cons(p1_LPAREN(buf, err))
+) : tokenopt // end-of(val)
+//
+val s0es = p1_s0expseq_CMA(buf, err)
+val tend = p1_s0exp_RPAREN(buf, err)
+//
+val lres =
+(tbeg.lctn()+s0exp_RPAREN_lctn(tend))
+//
+in//let
+  err := e00
+; s0exp(lres, S0Etup1(tbeg, topt, s0es, tend))
+//
+end (*let*) // end of [T_TRCD10(...|...)]
+//
+|
+T_TRCD20(k0) =>
+let
+val tbeg = tok
+val (  ) = buf.skip1()
+val topt =
+( if
+(k0 <= 1)
+then optn_nil()
+else optn_cons(p1_LBRACE(buf, err))
+) : tokenopt // end-of(val)
+val lses = p1_l0s0eseq_CMA(buf, err)
+val tend = p1_l0s0e_RBRACE(buf, err)
+//
+val lres =
+(tbeg.lctn()+l0s0e_RBRACE_lctn(tend))
+//
+in//let
+  err := e00
+; s0exp(lres, S0Ercd2(tbeg, topt, lses, tend))
+end (*let*) // end of [T_TRCD20{...|...}]
+//
 | _ (* error *) =>
 (err := e00 + 1; s0exp(tok.lctn(), S0Etkerr(tok)))
 //
 end(*let*)//end-of-[p1_s0exp_atm(buf,err)]
-
-(* ****** ****** *)
-
-(*
-implement
-p_atms0exp
-(buf, err) = let
-//
-val e0 = err
-val tok = buf.get0()
-val tnd = tok.node()
-//
-in
-//
-case+ tnd of
-//
-| T_TRCD1(k0) => let
-    val () = buf.skip1()
-    val topt =
-    ( if
-      (k0 <= 1)
-      then
-      None((*void*))
-      else
-      Some(p_LPAREN(buf, err))
-    ) : tokenopt // end of [val]
-    val s0es =
-      p_s0expseq_COMMA(buf, err)
-    // end of [val]
-    val tbeg = tok
-    val tend = p_s0exp_RPAREN(buf, err)
-  in
-    err := e0;
-    s0exp_make_node
-    ( loc_res
-    , S0Etrcd1
-      (tbeg, topt, s0es, tend)) where
-    {
-      val loc_res =
-        tbeg.lctn()+s0exp_RPAREN_loc(tend)
-      // end of [val]
-    }
-  end // end of [T_TRCD1]
-| T_TRCD2(k0) => let
-    val () = buf.skip1()
-    val topt =
-    ( if
-      (k0 <= 1)
-      then None()
-      else Some(p_LBRACE(buf, err))
-    ) : tokenopt // end of [val]
-    val ls0es =
-      p_labs0expseq_COMMA(buf, err)
-    // end of [val]
-    val tbeg = tok
-    val tend = p_labs0exp_RBRACE(buf, err)
-  in
-    err := e0;
-    s0exp_make_node
-    ( loc_res
-    , S0Etrcd2
-      (tbeg, topt, ls0es, tend)) where
-    {
-      val loc_res =
-        tbeg.lctn()+labs0exp_RBRACE_loc(tend)
-      // end of [val]
-    }
-  end // end of [T_TRCD2]
-//
-(*
-| T_LBRACK() => let
-    val () = buf.skip1()
-    val s0es =
-      p_s0expseq_COMMA(buf, err)
-    val tbeg = tok
-    val tend = p_RBRACK(buf, err)
-    val loc_res = tbeg.lctn()+tend.lctn()
-  in
-    err := e0;
-    s0exp_make_node
-      (loc_res, S0Ebrack(tbeg, s0es, tend))
-    // end of [s0exp_make_node]
-  end // end of [T_LBRACK]
-*)
-//
-end // end of [p_atms0exp]
-*)
 
 (* ****** ****** *)
 //
@@ -965,6 +964,13 @@ p1_s0expseq_CMA
 list_vt2t
 (
 ps_COMMA_p1fun{s0exp}(buf, err, p1_s0exp)
+)
+#implfun
+p1_l0s0eseq_CMA
+(  buf, err  ) =
+list_vt2t
+(
+ps_COMMA_p1fun{l0s0e}(buf, err, p1_l0s0e)
 )
 //
 (* ****** ****** *)
