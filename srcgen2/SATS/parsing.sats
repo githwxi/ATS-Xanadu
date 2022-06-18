@@ -280,6 +280,12 @@ ps_SMCLN_p1fun{a:tx}
   buf: !tkbf0
 , err: &(int) >> int, pfn: p1_fun(a)
 ) : list_vt(a) //end-of-[ps_SMCLN_p1fun]
+fun
+ps_BSCLN_p1fun{a:tx}
+(
+  buf: !tkbf0
+, err: &(int) >> int, pfn: p1_fun(a)
+) : list_vt(a) //end-of-[ps_SMCLN_p1fun]
 //
 (* ****** ****** *)
 fun

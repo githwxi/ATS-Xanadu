@@ -82,7 +82,7 @@ fun p1_sort0_atm: p1_fun(sort0)
 #extern
 fun p1_sort0seq_atm: p1_fun(sort0lst)
 #extern
-fun p1_sort0seq_CMA: p1_fun(sort0lst)
+fun p1_sort0seq_COMMA: p1_fun(sort0lst)
 //
 (* ****** ****** *)
 #extern
@@ -107,7 +107,7 @@ fun p1_s0qua: p1_fun(s0qua)
 (* ****** ****** *)
 #extern
 fun
-p1_s0quaseq_BARSMCLN: p1_fun(s0qualst)
+p1_s0quaseq_BSCLN: p1_fun(s0qualst)
 (* ****** ****** *)
 //
 #extern
@@ -118,10 +118,10 @@ fun p1_s0exp_atm: p1_fun(s0exp)
 #extern
 fun p1_s0expseq_atm: p1_fun(s0explst)
 #extern
-fun p1_s0expseq_CMA: p1_fun(s0explst)
+fun p1_s0expseq_COMMA: p1_fun(s0explst)
 //
 #extern
-fun p1_l0s0eseq_CMA: p1_fun(l0s0elst)
+fun p1_l0s0eseq_COMMA: p1_fun(l0s0elst)
 //
 (* ****** ****** *)
 //
@@ -544,7 +544,7 @@ let
 val tbeg = tok
 val (  ) = buf.skip1()
 val s0ts =
-p1_sort0seq_CMA(buf, err)
+p1_sort0seq_COMMA(buf, err)
 val tend = p1_RPAREN(buf, err)
 val loc0 = tbeg.lctn()+tend.lctn()
 in
@@ -584,7 +584,7 @@ list_vt2t
 ps_p1fun{sort0}(buf, err, p1_sort0_atm)
 )
 #implfun
-p1_sort0seq_CMA
+p1_sort0seq_COMMA
 (  buf, err  ) =
 list_vt2t
 (
@@ -613,6 +613,33 @@ in
 s0exp(loc, S0Eanno(s0e, s0t))
 end
 ) (*case*)//end(s0exp_anno_opt)
+(* ****** ****** *)
+//
+#implfun
+p1_s0magseq
+(  buf, err  ) =
+list_vt2t
+(
+ps_p1fun{s0mag}(buf, err, p1_s0mag)
+)
+#implfun
+p1_t0magseq
+(  buf, err  ) =
+list_vt2t
+(
+ps_p1fun{t0mag}(buf, err, p1_t0mag)
+)
+//
+(* ****** ****** *)
+
+#implfun
+p1_s0quaseq_BSCLN
+(  buf, err  ) =
+list_vt2t
+(
+ps_BSCLN_p1fun{s0qua}(buf, err, p1_s0qua)
+)
+
 (* ****** ****** *)
 
 local
@@ -835,7 +862,7 @@ let
 val tbeg = tok
 val (  ) = buf.skip1()
 val s0qs =
-p1_s0quaseq_BARSMCLN(buf, err)
+p1_s0quaseq_BSCLN(buf, err)
 val tend = p1_RBRACE(buf, err)
 val lres = tbeg.lctn() + tend.lctn()
 in//let
@@ -849,7 +876,7 @@ let
 val tok0 = tok
 val (  ) = buf.skip1()
 val s0qs =
-p1_s0quaseq_BARSMCLN(buf, err)
+p1_s0quaseq_BSCLN(buf, err)
 val tbeg =
 token(tok0.lctn(),T_EXISTS(0))
 val tend = p1_RBRCKT(buf, err)
@@ -864,7 +891,7 @@ let
 val tbeg = tok
 val () = buf.skip1()
 val s0qs =
-p1_s0quaseq_BARSMCLN(buf, err)
+p1_s0quaseq_BSCLN(buf, err)
 val tend = p1_RBRCKT(buf, err)
 val lres = tbeg.lctn() + tend.lctn()
 in//let
@@ -888,7 +915,8 @@ T_LPAREN() =>
 let
 val tbeg = tok
 val (  ) = buf.skip1()
-val s0es = p1_s0expseq_CMA(buf, err)
+val s0es =
+p1_s0expseq_COMMA(buf, err)
 val tend = p1_s0exp_RPAREN(buf, err)
 val lres =
 tbeg.lctn() + s0exp_RPAREN_lctn(tend)
@@ -910,7 +938,8 @@ then optn_nil()
 else optn_cons(p1_LPAREN(buf, err))
 ) : tokenopt // end-of(val)
 //
-val s0es = p1_s0expseq_CMA(buf, err)
+val s0es =
+p1_s0expseq_COMMA(buf, err)
 val tend = p1_s0exp_RPAREN(buf, err)
 //
 val lres =
@@ -933,7 +962,8 @@ val topt =
 then optn_nil()
 else optn_cons(p1_LBRACE(buf, err))
 ) : tokenopt // end-of(val)
-val lses = p1_l0s0eseq_CMA(buf, err)
+val lses =
+p1_l0s0eseq_COMMA(buf, err)
 val tend = p1_l0s0e_RBRACE(buf, err)
 //
 val lres =
@@ -959,14 +989,14 @@ list_vt2t
 ps_p1fun{s0exp}(buf, err, p1_s0exp_atm)
 )
 #implfun
-p1_s0expseq_CMA
+p1_s0expseq_COMMA
 (  buf, err  ) =
 list_vt2t
 (
 ps_COMMA_p1fun{s0exp}(buf, err, p1_s0exp)
 )
 #implfun
-p1_l0s0eseq_CMA
+p1_l0s0eseq_COMMA
 (  buf, err  ) =
 list_vt2t
 (

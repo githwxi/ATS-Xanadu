@@ -742,6 +742,21 @@ tnode_SMCLNq(tnd: tnode): bool =
 }
 //
 (* ****** ****** *)
+//
+#implfun
+ps_BSCLN_p1fun{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_BSCLNq, pfn)
+where
+{
+fun
+tnode_BSCLNq(tnd: tnode): bool =
+(case+ tnd of
+| T_BAR() => true | T_SMCLN() => true | _ => false)
+}
+//
+(* ****** ****** *)
 
 #implfun
 ps_sep_p1fun{a}
