@@ -172,7 +172,7 @@ S0Tqid _ => f0_qid(st0, err)
 S0Tapps _ => f0_apps(st0, err)
 //
 |
-S0Tlist _ => f0_lpar(st0, err)
+S0Tlpar _ => f0_lpar(st0, err)
 //
 |
 S0Ttkerr _ =>

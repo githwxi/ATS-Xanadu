@@ -632,7 +632,7 @@ sort0_node =
 | S0Tapps of
   (sort0lst) // HX: unsupported
 //
-| S0Tlist of
+| S0Tlpar of
   (token, sort0lst, token) (*temporary*)
 //
 | S0Tqual of (token, sort0) // HX: qualified
