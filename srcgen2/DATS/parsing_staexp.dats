@@ -499,12 +499,12 @@ ps_COMMA_p1fun{sort0}(buf, err, p1_sort0)
 p1_sort0(buf, err) =
 let
 //
-val sts0 =
+val s0ts =
 p1_sort0seq_atm(buf, err)
 //
 in//let
 //
-case+ sts0 of
+case+ s0ts of
 |
 list_nil
 ((*void*)) =>
@@ -522,12 +522,11 @@ let
   val loc0 =
   s0t0.lctn()+s0t1.lctn()
 in
-  sort0(loc0, S0Tapps(sts0))
+  sort0(loc0, S0Tapps(s0ts))
 end where
 {
 val s0t1 =
-gseq_last_ini
-<sort0lst><sort0>(sts1, s0t0)
+gseq_last_ini<sort0lst><sort0>(sts1, s0t0)
 } (*where*) // end of [list_cons]
 )
 //

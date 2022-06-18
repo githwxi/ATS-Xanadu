@@ -305,7 +305,7 @@ S0Ttype of int(*kind*)
 |
 S0Ttkerr(tok) => print("S0Ttkerr(",tok,")")
 |
-S0Terrck(lvl,st1) => print("S0Terrck(",lvl,st1,")")
+S0Terrck(lvl,st1) => print("S0Terrck(",lvl,";",st1,")")
 //
 end (*let*)//end-of-[sort0_fprint(out,s0t)]
 
