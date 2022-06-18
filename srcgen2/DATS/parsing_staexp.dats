@@ -363,6 +363,45 @@ in//local
 (* ****** ****** *)
 
 #implfun
+p1_sort0(buf, err) =
+let
+//
+val s0ts =
+p1_sort0seq_atm(buf, err)
+//
+in//let
+//
+case+ s0ts of
+|
+list_nil
+((*void*)) =>
+p1_napps(buf, err)
+|
+list_cons
+(s0t0, sts1) =>
+(
+case+ sts1 of
+|
+list_nil() => s0t0
+|
+list_cons _ =>
+let
+  val loc0 =
+  s0t0.lctn()+s0t1.lctn()
+in
+  sort0(loc0, S0Tapps(s0ts))
+end where
+{
+val s0t1 =
+gseq_last_ini<sort0lst><sort0>(sts1, s0t0)
+} (*where*) // end of [list_cons]
+)
+//
+end(*let*)//end-of-[p_sort0(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 p1_sort0_tid
   (buf, err) = let
 //
@@ -497,57 +536,34 @@ ps_COMMA_p1fun{sort0}(buf, err, p1_sort0)
 //
 (* ****** ****** *)
 
-#implfun
-p1_sort0(buf, err) =
-let
-//
-val s0ts =
-p1_sort0seq_atm(buf, err)
-//
-in//let
-//
-case+ s0ts of
-|
-list_nil
-((*void*)) =>
-p1_napps(buf, err)
-|
-list_cons
-(s0t0, sts1) =>
-(
-case+ sts1 of
-|
-list_nil() => s0t0
-|
-list_cons _ =>
-let
-  val loc0 =
-  s0t0.lctn()+s0t1.lctn()
-in
-  sort0(loc0, S0Tapps(s0ts))
-end where
-{
-val s0t1 =
-gseq_last_ini<sort0lst><sort0>(sts1, s0t0)
-} (*where*) // end of [list_cons]
-)
-//
-end(*let*)//end-of-[p_sort0(buf,err)]
-
-(* ****** ****** *)
-
 endloc (*local*) // end of [local(p1_sort0)]
 
 (* ****** ****** *)
-
+fun
+s0exp_anno_opt
+( s0e: s0exp
+, opt: sort0opt): s0exp =
+(
+case+ opt of
+|
+optn_nil() => s0e
+|
+optn_cons(s0t) =>
+let
+val loc =
+s0e.lctn()+s0t.lctn()
+in
+s0exp(loc, S0Eanno(s0e, s0t))
+end
+) (*case*)//end(s0exp_anno_opt)
+(* ****** ****** *)
+#extern
+fun pq_sort0_anno: pq_fun(sort0)
+(* ****** ****** *)
 #extern
 fun p1_s0mag: p1_fun(s0mag)
 #extern
 fun p1_s0magseq: p1_fun(s0maglst)
-
-#extern
-fun pq_sort0_anno: pq_fun(sort0)
-
 (* ****** ****** *)
 
 local
@@ -608,6 +624,49 @@ fun p1_s0expseq_CMA: p1_fun(s0explst)
 in//local
 
 (* ****** ****** *)
+
+#implfun
+p1_s0exp(buf, err) =
+let
+//
+val e00 = err
+//
+val s0es =
+p1_s0expseq_atm(buf, err)
+//
+in//let
+//
+case+ s0es of
+|
+list_nil() =>
+p1_napps(buf, err)
+|
+list_cons
+(s0e1, ses1) =>
+let
+val opt =
+pq_sort0_anno(buf, err)
+in//let
+case+ ses1 of
+|
+list_nil _ =>
+(
+  s0exp_anno_opt(s0e1, opt)
+)
+|
+list_cons _ =>
+(
+  s0exp_anno_opt(s0e0, opt)
+) where
+{
+  val s0e2 = list_last(ses1)
+  val loc0 = s0e1.lctn()+s0e2.lctn()
+  val s0e0 = s0exp(loc0, S0Eapps(ses1))
+} (*where*) // end of [list_cons]
+end (*let*) // end of [list_cons]
+end (*let*) // end of [p1_s0exp(buf,err)]
+
+(* ****** ****** *)
 //
 #implfun
 p1_s0expseq_atm
@@ -625,42 +684,6 @@ ps_COMMA_p1fun{s0exp}(buf, err, p1_s0exp)
 )
 //
 (* ****** ****** *)
-
-(*
-#implfun
-p1_s0exp(buf, err) =
-let
-//
-val e00 = err
-val s0es = p1_s0expseq_atm(buf, err)
-//
-in
-//
-case+ s0es of
-|
-list_nil() => p1_napps(buf, err)
-|
-list_cons
-(s0e1, ses1) => let
-val opt = pq_sort0_anno(buf, err)
-in
-case+ ses1 of
-|
-list_nil _ => s0exp_anno_opt(s0e1, opt)
-|
-list_cons _ =>
-      (
-        s0exp_anno_opt(s0app, opt)
-      ) where
-      {
-        val s0e1 = list_last(s0es1)
-        val loc01 = s0e0.lctn()+s0e1.lctn()
-        val s0app = s0exp_make_node(loc01, S0Eapps(s0es0))
-      } // end of [list_cons]
-  end (* end of [list_cons] *)
-//
-end // end of [p_s0exp]
-*)
 
 endloc (*local*) // end of [local(p1_s0exp)]
 
