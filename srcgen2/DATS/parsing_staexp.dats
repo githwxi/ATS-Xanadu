@@ -452,7 +452,7 @@ val loc0 = tbeg.lctn()+tend.lctn()
 in
   err := e00
 ; sort0
-  (loc0,S0Tlist(tbeg, s0ts, tend))
+  (loc0,S0Tlpar(tbeg, s0ts, tend))
 end (*let*) // end of [T_LPAREN]
 //
 |
