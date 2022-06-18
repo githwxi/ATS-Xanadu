@@ -251,12 +251,15 @@ g0n.node() of
 | G0Nstr(tok) =>
   print("G0Nstr(", tok, ")")
 //
-| G0Nlist(tk1, gns, tk2) =>
-  print
-  ("G0Nlist(", tk1, ";", gns, ";", tk2, ")")
+|
+G0Nlist(tk1, gns, tk2) =>
+print
+("G0Nlist(", tk1, ";", gns, ";", tk2, ")")
 //
-| G0Nnone0(   ) => print("G0Nnone0(", ")")
-| G0Nnone1(tok) => print("G0Nnone1(", tok, ")")
+|
+G0Nnone0(   ) => print("G0Nnone0(", ")")
+|
+G0Nnone1(tok) => print("G0Nnone1(", tok, ")")
 //
 end (*let*) // end of [g0nam_fprint]
 
@@ -282,17 +285,17 @@ print("S0Tint(", int, ")")
 //
 // HX: qualified
 |
-S0Tqid(tk1, st2) =>
-print("S0Tqid(", tk1, ";", st2, ")")
+S0Tqid(tk1,st2) =>
+print("S0Tqid(",tk1,";",st2,")")
 //
 |
 S0Tapps(sts) =>
 print("S0Tapps(", sts, ")")
 //
 |
-S0Tlist(tkb, sts, tke) =>
+S0Tlist(tkb,sts,tke) =>
 print
-("S0Tlist(", tkb, ";", sts, ";", tke, ")")
+("S0Tlist(",tkb,";",sts,";",tke,")")
 //
 (*
 |
@@ -302,7 +305,7 @@ S0Ttype of int(*kind*)
 |
 S0Ttkerr(tok) => print("S0Ttkerr(",tok,")")
 |
-S0Terrck(s0t) => print("S0Ttkerr(",s0t,")")
+S0Terrck(lvl,st1) => print("S0Terrck(",lvl,st1,")")
 //
 end (*let*)//end-of-[sort0_fprint(out,s0t)]
 
@@ -320,7 +323,7 @@ case+
 tcn.node() of
 |
 S0TCNnode(id0, stq) =>
-print("S0TCNnode(", id0, ";", stq, ")")
+print("S0TCNnode(",id0,";",stq,")")
 end (*let*) // end of [s0tcn_fprint]
 
 (* ****** ****** *)
@@ -336,9 +339,63 @@ in//let
 case+
 dst.node() of
 |
-D0TSTnode(id0, teq, cns) =>
-print("D0TST(", id0, ";", teq, ";", cns, ")")
+D0TSTnode(id0,teq,cns) =>
+print("D0TST(",id0,";",teq,";",cns,")")
 end (*let*) // end of [d0tst_fprint]
+
+(* ****** ****** *)
+
+#implfun
+s0exp_fprint
+(out, s0e) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s0e.node() of
+|
+S0Eid0(id0) =>
+print("S0Eid0(",id0,")")
+//
+|
+S0Eop1(tok) =>
+print("S0Eop1(",tok,")")
+|
+S0Eop2(tkb,id0,tke) =>
+print("S0Eop2(",tkb,";",id0,";",tke,")")
+//
+|
+S0Eint(int) => print("S0Eint(",int,")")
+|
+S0Echr(chr) => print("S0Echr(",chr,")")
+|
+S0Eflt(flt) => print("S0Eflt(",flt,")")
+|
+S0Estr(str) => print("S0Estr(",str,")")
+//
+|
+S0Eapps(ses) => print("S0Eapps(",ses,")")
+//
+|
+S0Efimp(tkb,ses,tke) =>
+print("S0Efimp(",tkb,";",ses,";",tke,")")
+//
+|
+S0Elpar(tkb,ses,srp) =>
+print("S0Elist(",tkb,";",ses,";",srp,")")
+//
+|
+S0Etup1(tkb,opt,ses,srp) =>
+print("S0Etup1(",tkb,";",opt,";",ses,";",srp,")")
+//
+|
+S0Etkerr(tok) => print("S0Etkerr(",tok,")")
+|
+S0Eerrck(lvl,se1) => print("S0Eerrck(",lvl,se1,")")
+//
+end (*let*)//end-of-[s0exp_fprint(out,s0e)]
 
 (* ****** ****** *)
 

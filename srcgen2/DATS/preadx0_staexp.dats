@@ -54,8 +54,11 @@ ATS_PACKNAME
 //
 fun
 sort0_errck
-(s0t: sort0): sort0 =
-sort0(s0t.lctn(), S0Terrck(s0t))
+(st0: sort0): sort0 =
+(
+sort0
+(st0.lctn(), S0Terrck(1, st0))
+) (*case*) // end of [sort0_errck]
 //
 (* ****** ****** *)
 //
@@ -66,28 +69,28 @@ let
 val e00 = err
 in//let
 case+
-s0t.node() of
+st0.node() of
 |
 S0Tid0 _ => st0
 |
 S0Tint _ => st0
 |
 S0Tqid _ =>
-(err := e00+1; sort0_errck(s0t))
+(err := e00+1; sort0_errck(st0))
 |
 S0Tapps _ =>
-(err := e00+1; sort0_errck(s0t))
+(err := e00+1; sort0_errck(st0))
 //
 |
 S0Tlist _ =>
-(err := e00+1; sort0_errck(s0t))
+(err := e00+1; sort0_errck(st0))
 //
 |
 S0Ttkerr _ =>
-(err := e00+1; sort0_errck(s0t))
+(err := e00+1; sort0_errck(st0))
 //
 | S0Terrck _ =>
-(err := e00+1; sort0_errck(s0t))
+(err := e00+1; sort0_errck(st0))
 end (* let *) // end of [prdx0_sort0]
 //
 (* ****** ****** *)

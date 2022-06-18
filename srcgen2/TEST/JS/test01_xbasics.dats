@@ -16,6 +16,15 @@
 (* ****** ****** *)
 
 val () =
+prerrln
+("max(1,2,3,4,5) = ", max('1', '2', '3', '4', '5'))
+val () =
+prerrln
+("min(1,2,3,4,5) = ", min("1", "2", "3", "4", "5"))
+
+(* ****** ****** *)
+
+val () =
 prerrln("PROPSORT = ", PROPSORT)
 val () =
 prerrln("VIEWSORT = ", VIEWSORT)

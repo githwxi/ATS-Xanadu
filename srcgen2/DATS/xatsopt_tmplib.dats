@@ -257,6 +257,10 @@ t0mag_fprint(g_print$out<>(), tmg)
 g_print<s0exp>(s0e) =
 s0exp_fprint(g_print$out<>(), s0e)
 //
+#impltmp
+g_print<s0exp_RPAREN>(srp) =
+s0exp_RPAREN_fprint(g_print$out<>(), srp)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)
