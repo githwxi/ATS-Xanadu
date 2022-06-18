@@ -293,9 +293,9 @@ S0Tapps(sts) =>
 print("S0Tapps(",sts,")")
 //
 |
-S0Tlist(tkb,sts,tke) =>
+S0Tlpar(tkb,sts,tke) =>
 print
-("S0Tlist(",tkb,";",sts,";",tke,")")
+("S0Tlpar(",tkb,";",sts,";",tke,")")
 //
 (*
 |

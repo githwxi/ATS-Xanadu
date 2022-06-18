@@ -456,9 +456,9 @@ sort0_node =
 | S0Tqid of (token, sort0)
 //
 | S0Tapps of
-  (sort0lst) // HX: unsupported
+  (sort0lst) //HX: unsupported
 //
-| S0Tlist of // HX: This one is a temp.
+| S0Tlpar of //HX: This one is a temp.
   (token, sort0lst, token) // construct
 //
 (*

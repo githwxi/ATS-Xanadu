@@ -51,6 +51,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/preadx0.sats"
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
+#symload lctn with sort0_get_lctn
+#symload node with sort0_get_node
+(* ****** ****** *)
+#symload lctn with s0exp_get_lctn
+#symload node with s0exp_get_node
+(* ****** ****** *)
 //
 fun
 sort0_errck_a1
@@ -117,6 +126,7 @@ case+ sts of
   (st1,sts) => max(errvl(st1),errvl(sts))
 )
 (* ****** ****** *)
+//
 fun
 sort0_apps_errck
 ( loc
@@ -128,6 +138,22 @@ val lvl = errvl(sts)
 in//let
 sort0_errck(lvl, sort0(loc, S0Tapps(sts)))
 end (*let*) // end of [sort0_apps_errck]
+//
+fun
+sort0_lpar_errck
+( loc
+: loc_t
+, tkb
+: token
+, sts
+: sort0lst
+, tke
+: token   ): sort0 =
+let
+  val lvl = errvl(sts)
+in//let
+sort0_errck(lvl, sort0(loc, S0Tlpar(tkb,sts,tke)))
+end (*let*) // end of [sort0_lpar_errck]
 //
 (* ****** ****** *)
 //
@@ -146,14 +172,14 @@ S0Tqid _ => f0_qid(st0, err)
 S0Tapps _ => f0_apps(st0, err)
 //
 |
-S0Tlist _ =>
-(err := err+1; sort0_errck(st0))
+S0Tlist _ => f0_lpar(st0, err)
 //
 |
 S0Ttkerr _ =>
 (err := err+1; sort0_errck(st0))
 //
-| S0Terrck _ =>
+|
+S0Terrck _ =>
 (err := err+1; sort0_errck(st0))
 ) where
 {
@@ -180,8 +206,32 @@ val sts = preadx0_sort0lst(sts, err)
 in//let
 if
 (err = e00)
-then st0 else sort0_apps_errck(st0.locn(), sts)
+then st0 else sort0_apps_errck(st0.lctn(), sts)
 end (*let*) // end of [f0_apps]
+//
+fun
+f0_lpar
+( st0
+: sort0
+, err
+: &sint >> _): sort0 =
+let
+val e00 = err
+val-
+S0Tlpar(tkb,sts,tke) = st0.node()
+val ( ) = // tke: T_RPAREN
+(
+case+
+tke.node() of
+| T_RPAREN() => ()
+| _(* else *) => (err := e00+1)
+)
+val sts = preadx0_sort0lst(sts, err)
+in//let
+if
+(err = e00)
+then st0 else sort0_lpar_errck(st0.lctn(),tkb,sts,tke)
+end (*let*) // end of [f0_lpar]
 //
 } (*where*) // end of [preadx0_sort0]
 //
