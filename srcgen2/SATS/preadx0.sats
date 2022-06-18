@@ -80,9 +80,20 @@ fun
 preadx0_s0explst: fpreadx0(s0explst)
 (* ****** ****** *)
 #symload preadx0 with preadx0_sort0opt
-#symload preadx0 with preadx0_sort0lst
 #symload preadx0 with preadx0_s0expopt
+#symload preadx0 with preadx0_sort0lst
 #symload preadx0 with preadx0_s0explst
+(* ****** ****** *)
+//
+//HX-2022-06-18: printing errmsgs
+//
+(* ****** ****** *)
+fun sort0_fpemsg(FILR, sort0): void
+fun s0exp_fpemsg(FILR, s0exp): void
+fun sort0opt_fpemsg(FILR, sort0opt): void
+fun s0expopt_fpemsg(FILR, s0expopt): void
+fun sort0lst_fpemsg(FILR, sort0lst): void
+fun s0explst_fpemsg(FILR, s0explst): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0.sats] *)
