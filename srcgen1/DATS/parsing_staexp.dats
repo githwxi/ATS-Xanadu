@@ -2740,6 +2740,8 @@ in
   // end of [sort0_make_node]
 end // end of [p_appsort0_NGT]
 
+(* ****** ****** *)
+
 implement
 p_apps0exp_NGT
   (buf, err) = let
