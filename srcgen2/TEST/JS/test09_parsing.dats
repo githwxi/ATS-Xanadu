@@ -195,4 +195,15 @@ val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)
 
+val opt =
+p1_fun_test<s0exp>("sint", p1_s0exp)
+val ( ) =
+prerrln("p1_s0exp(\"sint\") = ", opt)
+(*
+val opt = preadx0_s0expopt(opt, the_err)
+val ( ) = s0expopt_fpemsg(g_stderr(), opt)
+*)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)
