@@ -117,6 +117,38 @@ list_tail_raw(xs) = (xs.1)
 (* ****** ****** *)
 //
 #impltmp
+<a:type>
+list_last(xs) =
+(
+list_last_ini<a>(x0, xs)
+) where
+{
+val+list_cons(x0, xs) = xs
+} (*where*) // list_last(xs)
+//
+#impltmp
+<a>(*tmp*)
+list_last_ini
+(x0, xs) =
+(
+loop(x0, xs)) where
+{
+fnx
+loop
+( x0: a
+, xs: list(a)): a =
+(
+case+ xs of
+|
+list_nil() => x0
+|
+list_cons(x1, xs) => loop(x1, xs)
+)
+} (*where*)//end-of(list_last_nil)
+//
+(* ****** ****** *)
+//
+#impltmp
 <a>(*tmp*)
 list_length
   (xs) =
@@ -134,7 +166,7 @@ case+ xs of
 | list_nil() => j0
 | list_cons(_, xs) => loop(xs, j0+1)
 )
-} (* end of [list_length] *)
+} (*where*) // end-of(list_length)
 //
 (* ****** ****** *)
 //

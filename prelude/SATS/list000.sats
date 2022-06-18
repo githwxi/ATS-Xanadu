@@ -94,6 +94,8 @@ fun
 <a:t0>
 list_head_opt(xs: list(a)): optn_vt(a)
 //
+(* ****** ****** *)
+//
 fun
 <a:t0>
 list_tail
@@ -107,6 +109,18 @@ list_tail_exn(xs: list(a)): list(a)
 fun
 <a:t0>
 list_tail_opt(xs: list(a)): optn_vt(list(a))
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_last
+{n:pos}(list(a, n)): (a)
+fun
+<a:t0>
+list_last_ini
+{n:int}
+(x0: a, xs: list(a, n)):(a)
 //
 (* ****** ****** *)
 //
