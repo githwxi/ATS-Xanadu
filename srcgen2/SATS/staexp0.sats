@@ -192,12 +192,21 @@ t0str_get_lctn(t0str): loc_t
 #typedef sort0lst = list(sort0)
 #typedef sort0opt = optn(sort0)
 //
+(*
+//HX-2022-06-18: [sortcon]
+*)
 #typedef s0tcn = s0tcn_tbox
 #typedef s0tcnlst = list(s0tcn)
 //
+(*
+//HX-2022-06-18: [datasort]
+*)
 #typedef d0tst = d0tst_tbox
 #typedef d0tstlst = list(d0tst)
 //
+(*
+// HX-2022-06-18: [sortdef]
+*)
 #typedef s0tdf = s0tdf_tbox
 #typedef s0tdflst = list(s0tdf)
 //
@@ -683,6 +692,11 @@ t0mag_make_node
 //
 (* ****** ****** *)
 //
+(*
+//HX:l0s0e:labs0exp
+*)
+#typedef
+l0s0e = s0lab(s0exp)
 #typedef
 l0s0elst = list(s0lab(s0exp))
 //
@@ -728,13 +742,13 @@ S0Ercd2 of // HX: record
 S0Elam0 of
 ( token
 , s0maglst
-, sort0opt, token, s0exp, tokenopt)
+, sort0opt, token, s0exp, tokenopt)//lam()
 |
-S0Euni0 of (token, s0qualst, token) // forall
+S0Euni0 of (token, s0qualst, token)//forall
 |
-S0Eexi0 of (token, s0qualst, token) // exists
-// HX-2018-07-08: this one usually
+S0Eexi0 of (token, s0qualst, token)//exists
 |
+// HX-2018-07-08: this one probably
 S0Etkerr of (token) // indicates some error!
 |
 S0Eerrck of (int, s0exp) // HX: pread error!
