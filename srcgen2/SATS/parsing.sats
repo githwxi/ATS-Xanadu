@@ -222,12 +222,18 @@ fun p1_g0eid: p1_fun(g0eid)
 (*
 sort0 ::= {atmsort0}+
 *)
-fun p1_sort0 : p1_fun(sort0)
+fun p1_sort0: p1_fun(sort0)
 //
 (* ****** ****** *)
-
-fun p1_s0exp : p1_fun(s0exp)
-
+fun
+p1_sort0_app_NGT: p1_fun(sort0)
+(* ****** ****** *)
+//
+fun p1_s0exp: p1_fun(s0exp)
+//
+(* ****** ****** *)
+fun
+p1_s0exp_app_NGT: p1_fun(s0exp)
 (* ****** ****** *)
 (*
 //
