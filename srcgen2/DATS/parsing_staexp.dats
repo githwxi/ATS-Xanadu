@@ -786,7 +786,7 @@ let
   val tend = p1_GT0(buf, err)
   val lres = tbeg.lctn() + tend.lctn()
 in
-  err := e00;
+  err := e00
 ; s0exp(lres, S0Efimp(tbeg, s0es, tend))
 end (*let*) // end of [ -< ... > ]
 //
@@ -830,9 +830,22 @@ token(tok0.lctn(),T_EXISTS(0))
 val tend = p1_RBRCKT(buf, err)
 val lres = tbeg.lctn() + tend.lctn()
 in//let
-  err := e00;
+  err := e00
 ; s0exp(lres, S0Eexi0(tbeg, s0qs, tend))
 end (*let*) // end of [ [ ... ] ]
+|
+T_EXISTS(k0) =>
+let
+val tbeg = tok
+val () = buf.skip1()
+val s0qs =
+p1_s0quaseq_BARSMCLN(buf, err)
+val tend = p1_RBRCKT(buf, err)
+val lres = tbeg.lctn() + tend.lctn()
+in//let
+  err := e00
+; s0exp(lres, S0Eexi0(tbeg, s0qs, tend))
+end (*let*) // end of [ #[ ... ] ]
 //
 |
 T_IDQUA(qid) =>
@@ -843,7 +856,7 @@ val s0e0 = p1_s0exp_atm(buf, err)
 val loc0 = tqua.lctn()+s0e0.lctn()
 in//let
   err := e00; s0exp(loc0, S0Equal(tqua, s0e0))
-end (*let*) // end of [ T_IDQUA ]
+end (*let*) // end of [T_IDQUA(qid)]
 //
 | _ (* error *) =>
 (err := e00 + 1; s0exp(tok.lctn(), S0Etkerr(tok)))
@@ -864,19 +877,6 @@ val tnd = tok.node()
 in
 //
 case+ tnd of
-//
-| T_EXISTS(k0) => let
-    val () = buf.skip1()
-    val s0qs =
-      p_s0quaseq_BARSMCLN(buf, err)
-    val tbeg = tok
-    val tend = p_RBRACK(buf, err)
-    val loc_res = tbeg.lctn() + tend.lctn()
-  in
-    err := e0;
-    s0exp_make_node
-    (loc_res, S0Eexists(tbeg, s0qs, tend))
-  end // end of [T_EXISTS]
 //
 | T_TRCD1(k0) => let
     val () = buf.skip1()
