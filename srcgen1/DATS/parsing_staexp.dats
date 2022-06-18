@@ -2106,17 +2106,17 @@ case+ tnd of
   end // end of [t_t0chr]
 | _ when t_t0flt(tnd) =>
   let
-    val c0 = p_t0flt(buf, err)
+    val f0 = p_t0flt(buf, err)
   in
     err := e0;
-    s0exp_make_node(c0.loc(), S0Eflt(c0))
+    s0exp_make_node(f0.loc(), S0Eflt(f0))
   end // end of [t_t0flt]
 | _ when t_t0str(tnd) =>
   let
-    val c0 = p_t0str(buf, err)
+    val s0 = p_t0str(buf, err)
   in
     err := e0;
-    s0exp_make_node(c0.loc(), S0Estr(c0))
+    s0exp_make_node(s0.loc(), S0Estr(s0))
   end // end of [t_t0str]
 //
 | T_MSLT() => let
