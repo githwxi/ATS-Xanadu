@@ -799,11 +799,11 @@ case+ x0.node() of
   ( out
   , "S0Eimp(", tbeg, "; ", s0es, "; ", tend, ")")
 //
-| S0Eparen
+| S0Elpar
   (tbeg, s0es, tend) =>
   fprint!
   ( out
-  , "S0Eparen(", tbeg, "; ", s0es, "; ", tend, ")")
+  , "S0Elpar(", tbeg, "; ", s0es, "; ", tend, ")")
 //
 | S0Eforall(tbeg, s0qs, tend) =>
   fprint!

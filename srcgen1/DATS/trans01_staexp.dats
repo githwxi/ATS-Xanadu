@@ -933,7 +933,7 @@ s0t0.node() of
     fxitmlst_resolve_sort1(loc0, s1ts)
   }
 //
-| S0Tlist
+| S0Tlpar
   (_, s0ts, _) =>
   FXITMatm(s1t0) where
   {
@@ -1510,7 +1510,7 @@ s0e0.node() of
     fxitmlst_resolve_s1exp(loc0, s1es)
   }
 //
-| S0Eparen _ => auxparen(s0e0)
+| S0Elpar _ => auxparen(s0e0)
 //
 | S0Etrcd1 _ => auxtrcd1(s0e0)
 //
@@ -1598,7 +1598,7 @@ auxparen
 : s0exp): s1eitm = let
 //
 val-
-S0Eparen
+S0Elpar
 ( _
 , s0es1, rparen) = s0e0.node()
 //
