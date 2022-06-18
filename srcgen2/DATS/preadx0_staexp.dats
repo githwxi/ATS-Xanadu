@@ -53,21 +53,87 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 fun
-sort0_errck
+sort0_errck_a1
 (st0: sort0): sort0 =
 (
 sort0
 (st0.lctn(), S0Terrck(1, st0))
-) (*case*) // end of [sort0_errck]
+)//end-of-[sort0_errck_a1(_)]
+fun
+sort0_errck_a2
+(lvl: sint
+,st0: sort0): sort0 =
+(
+sort0
+(st0.lctn(), S0Terrck(lvl, st0))
+)//end-of-[sort0_errck_a2(_,_)]
+#symload
+sort0_errck with sort0_errck_a1
+#symload
+sort0_errck with sort0_errck_a2
+//
+(* ****** ****** *)
+fun
+sort0_errvl
+(st0: sort0): sint =
+(
+case+ st0.node() of
+|
+S0Terrck
+(lvl, _) => lvl | _ => 0
+)
+#symload errvl with sort0_errvl
+(* ****** ****** *)
+fun
+sort0_errvl_a2
+(st1: sort0
+,st2: sort0): sint =
+max
+(errvl(st1),errvl(st2))
+#symload errvl with sort0_errvl_a2
+(* ****** ****** *)
+fun
+sort0_errvl_a3
+(st1: sort0
+,st2: sort0
+,st3: sort0): sint =
+max
+(errvl(st1)
+,errvl(st2),errvl(st3))
+#symload errvl with sort0_errvl_a3
+(* ****** ****** *)
+#extern
+fun
+sort0_errvl_xs
+(sts: sort0lst): sint
+#symload errvl with sort0_errvl_xs
+#implfun
+sort0_errvl_xs(sts) =
+(
+case+ sts of
+| list_nil
+  ((*nil*)) => 0
+| list_cons
+  (st1,sts) => max(errvl(st1),errvl(sts))
+)
+(* ****** ****** *)
+fun
+sort0_apps_errck
+( loc
+: loc_t
+, sts
+: sort0lst): sort0 =
+let
+val lvl = errvl(sts)
+in//let
+sort0_errck(lvl, sort0(loc, S0Tapps(sts)))
+end (*let*) // end of [sort0_apps_errck]
 //
 (* ****** ****** *)
 //
 #implfun
-prdx0_sort0
-(st0, err) =
-let
-val e00 = err
-in//let
+preadx0_sort0(st0, err) =
+(
 case+
 st0.node() of
 |
@@ -75,23 +141,49 @@ S0Tid0 _ => st0
 |
 S0Tint _ => st0
 |
-S0Tqid _ =>
-(err := e00+1; sort0_errck(st0))
+S0Tqid _ => f0_qid(st0, err)
 |
-S0Tapps _ =>
-(err := e00+1; sort0_errck(st0))
+S0Tapps _ => f0_apps(st0, err)
 //
 |
 S0Tlist _ =>
-(err := e00+1; sort0_errck(st0))
+(err := err+1; sort0_errck(st0))
 //
 |
 S0Ttkerr _ =>
-(err := e00+1; sort0_errck(st0))
+(err := err+1; sort0_errck(st0))
 //
 | S0Terrck _ =>
-(err := e00+1; sort0_errck(st0))
-end (* let *) // end of [prdx0_sort0]
+(err := err+1; sort0_errck(st0))
+) where
+{
+//
+fun
+f0_qid
+( st0
+: sort0
+, err
+: &sint >> _): sort0 =
+( err := err+1; sort0_errck(st0) )
+//
+fun
+f0_apps
+( st0
+: sort0
+, err
+: &sint >> _): sort0 =
+let
+val e00 = err
+val-
+S0Tapps(sts) = st0.node()
+val sts = preadx0_sort0lst(sts, err)
+in//let
+if
+(err = e00)
+then st0 else sort0_apps_errck(st0.locn(), sts)
+end (*let*) // end of [f0_apps]
+//
+} (*where*) // end of [preadx0_sort0]
 //
 (* ****** ****** *)
 

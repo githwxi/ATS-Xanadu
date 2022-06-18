@@ -277,11 +277,11 @@ case+
 s0t.node() of
 |
 S0Tid0(id0) =>
-print("S0Tid0(", id0, ")")
+print("S0Tid0(",id0,")")
 //
 |
 S0Tint(int) =>
-print("S0Tint(", int, ")")
+print("S0Tint(",int,")")
 //
 // HX: qualified
 |
@@ -290,7 +290,7 @@ print("S0Tqid(",tk1,";",st2,")")
 //
 |
 S0Tapps(sts) =>
-print("S0Tapps(", sts, ")")
+print("S0Tapps(",sts,")")
 //
 |
 S0Tlist(tkb,sts,tke) =>

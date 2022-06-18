@@ -51,15 +51,21 @@ S0E = "./staexp0.sats"
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
 (* ****** ****** *)
+#typedef sort0lst = $S0E.sort0lst
+#typedef s0explst = $S0E.s0explst
+(* ****** ****** *)
 //
 #typedef
-prdx0(syn: tx) =
-(syn , &int >> _) -> syn
+fpreadx0
+(syn: tx) =
+(syn , &sint >> _) -> syn
 //
 (* ****** ****** *)
-fun prdx0_sort0: prdx0(sort0)
+fun preadx0_sort0: fpreadx0(sort0)
+fun preadx0_s0exp: fpreadx0(s0exp)
 (* ****** ****** *)
-fun prdx0_s0exp: prdx0(s0exp)
+fun preadx0_sort0lst: fpreadx0(sort0lst)
+fun preadx0_s0explst: fpreadx0(s0explst)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0.sats] *)
