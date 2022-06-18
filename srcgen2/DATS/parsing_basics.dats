@@ -59,15 +59,6 @@ case+ tnd of
 ) (*case*) // end of [t0_t0int(tnd)]
 
 #implfun
-t0_t0chr(tnd) =
-(
-case+ tnd of
-| T_CHAR1 _ => true
-| T_CHAR2 _ => true
-| _ (* non-CHAR? *) => false
-) (*case*) // end of [t0_t0chr(tnd)]
-
-#implfun
 t0_t0flt(tnd) =
 (
 case+ tnd of
@@ -78,11 +69,21 @@ case+ tnd of
 ) (*case*) // end of [t0_t0flt(tnd)]
 
 #implfun
+t0_t0chr(tnd) =
+(
+case+ tnd of
+| T_CHAR1_nil0 _ => true
+| T_CHAR2_char _ => true
+| T_CHAR3_blsh _ => true
+| _ (* non-CHAR? *) => false
+) (*case*) // end of [t0_t0chr(tnd)]
+
+#implfun
 t0_t0str(tnd) =
 (
 case+ tnd of
-| T_STRN1 _ => true
-| T_STRN2 _ => true
+| T_STRN1_clsd _ => true
+| T_STRN2_ncls _ => true
 | _ (* non-STRN? *) => false
 ) (*case*) // end of [t0_t0str(tnd)]
 
@@ -664,7 +665,7 @@ val e00 = err
 //
 #vwtpdef res = list_vt(a)
 //
-fun
+fnx
 loop
 ( buf: !tkbf0
 , err: &int >> _
@@ -768,7 +769,7 @@ val fst = pfn(buf, err)
 //
 #vwtpdef res = list_vt(a)
 //
-fun
+fnx
 loop
 ( buf: !tkbf0
 , err: &int >> _

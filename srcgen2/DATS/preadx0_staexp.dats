@@ -255,6 +255,24 @@ if err = e00 then opt else optn_cons(st1)
 endlet // end of [optn_cons(st1)]
 ) (*case*)//end-of-[preadx0_sort0opt(opt,err)]
 //
+#implfun
+preadx0_s0expopt
+  (opt, err) =
+(
+case+ opt of
+|
+optn_nil() =>
+optn_nil()
+|
+optn_cons(se1) =>
+let
+val e00 = err
+val se1 = preadx0_s0exp(se1, err)
+in//let
+if err = e00 then opt else optn_cons(se1)
+endlet // end of [optn_cons(se1)]
+) (*case*)//end-of-[preadx0_s0expopt(opt,err)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -275,6 +293,25 @@ in//let
 if err = e00 then s0ts else list_cons(s0t1, sts1)
 endlet // end of [list_cons(st0)]
 ) (*case*)//end-of-[preadx0_sort0lst(s0ts,err)]
+//
+#implfun
+preadx0_s0explst
+  (s0es, err) =
+(
+case+ s0es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(s0e1, ses1) =>
+let
+val e00 = err
+val s0e1 = preadx0_s0exp(s0e1, err)
+val ses1 = preadx0_s0explst(ses1, err)
+in//let
+if err = e00 then s0es else list_cons(s0e1, ses1)
+endlet // end of [list_cons(st0)]
+) (*case*)//end-of-[preadx0_s0explst(s0es,err)]
 //
 (* ****** ****** *)
 

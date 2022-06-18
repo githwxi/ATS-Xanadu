@@ -596,6 +596,37 @@ ps_COMMA_p1fun{sort0}(buf, err, p1_sort0)
 endloc (*local*) // end of [local(p1_sort0)]
 
 (* ****** ****** *)
+
+#implfun
+pq_sort0_anno
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+(*
+val ( )
+prerrln("popt_sort0_anno: tok = ", tok)
+*)
+//
+in(*let*)
+//
+case+
+tok.node() of
+|
+T_CLN() =>
+let
+val ( ) = buf.skip1()
+val s0t = p1_sort0(buf, err)
+in//let
+  (err := e00; optn_cons(s0t))
+end (*let*) // end of [T_CLN]
+|
+_(*non-T_CLN*) => optn_nil(*void*)
+//
+end (*let*)//end-of(pq_sort0_anno)
+
+(* ****** ****** *)
 fun
 s0exp_anno_opt
 ( s0e: s0exp
@@ -612,7 +643,7 @@ s0e.lctn()+s0t.lctn()
 in
 s0exp(loc, S0Eanno(s0e, s0t))
 end
-) (*case*)//end(s0exp_anno_opt)
+) (*case*)//end-of(s0exp_anno_opt)
 (* ****** ****** *)
 //
 #implfun
@@ -771,6 +802,11 @@ val e00 = err
 val tok = buf.getk0()
 val tnd = tok.tnode()
 //
+(*
+val () =
+prerrln("p1_s0exp_atm: tok = ", tok)
+*)
+//
 in//let
 //
 case+ tnd of
@@ -817,16 +853,14 @@ in
 ; s0exp(s00.lctn(), S0Estr(s00))
 end (*let*) // end of [t_t0str]
 //
-|
-T_OP1 _ =>
+| T_OP1 _ =>
 let
 val tok0 = tok
 val (  ) = buf.skip1()
 in//let
   s0exp(tok0.lctn(), S0Eop1(tok0))
 end (*let*) // end of [T_OP1(sym)]
-|
-T_OP2 _ =>
+| T_OP2 _ =>
 let
   val tbeg = tok
   val (  ) = buf.skip1()
@@ -974,8 +1008,16 @@ in//let
 ; s0exp(lres, S0Ercd2(tbeg, topt, lses, tend))
 end (*let*) // end of [T_TRCD20{...|...}]
 //
-| _ (* error *) =>
+| _(*otherwise*) =>
+let
+(*
+val () =
+prerrln
+("p1_s0exp_atm: otherwise: tok = ", tok)
+*)
+in//let
 (err := e00 + 1; s0exp(tok.lctn(), S0Etkerr(tok)))
+end
 //
 end(*let*)//end-of-[p1_s0exp_atm(buf,err)]
 
