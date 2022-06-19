@@ -63,18 +63,18 @@ ATS_PACKNAME
 //
 fun
 sort0_errck_a1
-(st0: sort0): sort0 =
+(s0t: sort0): sort0 =
 (
 sort0
-(st0.lctn(), S0Terrck(1, st0))
+(s0t.lctn(), S0Terrck(1, s0t))
 )//end-of-[sort0_errck_a1(_)]
 fun
 sort0_errck_a2
 (lvl: sint
-,st0: sort0): sort0 =
+,s0t: sort0): sort0 =
 (
 sort0
-(st0.lctn(), S0Terrck(lvl, st0))
+(s0t.lctn(), S0Terrck(lvl, s0t))
 )//end-of-[sort0_errck_a2(_,_)]
 #symload
 sort0_errck with sort0_errck_a1
@@ -84,9 +84,9 @@ sort0_errck with sort0_errck_a2
 (* ****** ****** *)
 fun
 sort0_errvl
-(st0: sort0): sint =
+(s0t: sort0): sint =
 (
-case+ st0.node() of
+case+ s0t.node() of
 |
 S0Terrck
 (lvl, _) => lvl | _ => 0
@@ -136,7 +136,7 @@ sort0_apps_errck
 let
 val lvl = errvl(sts)
 in//let
-sort0_errck(lvl+1, sort0(loc, S0Tapps(sts)))
+sort0_errck(lvl+1, sort0(loc,S0Tapps(sts)))
 end (*let*) // end of [sort0_apps_errck]
 //
 fun
@@ -152,88 +152,222 @@ sort0_lpar_errck
 let
   val lvl = errvl(sts)
 in//let
-sort0_errck(lvl+1, sort0(loc, S0Tlpar(tkb,sts,tke)))
+sort0_errck(lvl+1, sort0(loc,S0Tlpar(tkb,sts,tke)))
 end (*let*) // end of [sort0_lpar_errck]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_sort0(st0, err) =
+preadx0_sort0(s0t, err) =
 (
 case+
-st0.node() of
+s0t.node() of
 |
-S0Tid0 _ => st0
+S0Tid0 _ => s0t
 |
-S0Tint _ => st0
+S0Tint _ => s0t
 |
-S0Tqid _ => f0_qid(st0, err)
+S0Tqid _ => f0_qid(s0t, err)
 |
-S0Tapps _ => f0_apps(st0, err)
+S0Tapps _ => f0_apps(s0t, err)
 //
 |
-S0Tlpar _ => f0_lpar(st0, err)
+S0Tlpar _ => f0_lpar(s0t, err)
 //
 |
 S0Ttkerr _ =>
-(err := err+1; sort0_errck(st0))
+(err := err+1; sort0_errck(s0t))
 //
 |
 S0Terrck _ =>
-(err := err+1; sort0_errck(st0))
-) where
+(err := err+1; sort0_errck(s0t))
+) where//end-of(case(s0t.node()))
 {
 //
 fun
 f0_qid
-( st0
+( s0t
 : sort0
 , err
 : &sint >> _): sort0 =
-( err := err+1; sort0_errck(st0) )
+( err := err+1; sort0_errck(s0t) )
 //
 fun
 f0_apps
-( st0
+( s0t
 : sort0
 , err
 : &sint >> _): sort0 =
 let
 val e00 = err
 val-
-S0Tapps(sts) = st0.node()
+S0Tapps(sts) = s0t.node()
 val sts = preadx0_sort0lst(sts, err)
 in//let
 if
 (err = e00)
-then st0 else sort0_apps_errck(st0.lctn(), sts)
+then s0t else sort0_apps_errck(s0t.lctn(), sts)
 end (*let*) // end of [f0_apps]
 //
 fun
 f0_lpar
-( st0
+( s0t
 : sort0
 , err
 : &sint >> _): sort0 =
 let
+//
 val e00 = err
+//
 val-
-S0Tlpar(tkb,sts,tke) = st0.node()
+S0Tlpar
+(tkb,sts,tke) = s0t.node()
+//
+val sts =
+preadx0_sort0lst(sts, err)
+//
 val ( ) = // tke: T_RPAREN
 (
 case+
 tke.node() of
 | T_RPAREN() => ()
-| _(* else *) => (err := e00+1)
+| _(* else *) => (err := err+1)
 )
-val sts = preadx0_sort0lst(sts, err)
 in//let
 if
 (err = e00)
-then st0 else sort0_lpar_errck(st0.lctn(),tkb,sts,tke)
+then s0t else sort0_lpar_errck(s0t.lctn(),tkb,sts,tke)
 end (*let*) // end of [f0_lpar]
 //
 } (*where*) // end of [preadx0_sort0]
+//
+(* ****** ****** *)
+//
+fun
+s0exp_errck_a1
+(s0e: s0exp): s0exp =
+(
+s0exp
+(s0e.lctn(), S0Eerrck(1, s0e))
+)//end-of-[s0exp_errck_a1(_)]
+fun
+s0exp_errck_a2
+(lvl: sint
+,s0e: s0exp): s0exp =
+(
+s0exp
+(s0e.lctn(), S0Eerrck(lvl, s0e))
+)//end-of-[s0exp_errck_a2(_,_)]
+#symload
+s0exp_errck with s0exp_errck_a1
+#symload
+s0exp_errck with s0exp_errck_a2
+//
+(* ****** ****** *)
+fun
+s0exp_errvl
+(s0e: s0exp): sint =
+(
+case+ s0e.node() of
+|
+S0Eerrck
+(lvl, _) => lvl | _ => 0
+)
+#symload errvl with s0exp_errvl
+(* ****** ****** *)
+fun
+s0exp_errvl_a2
+(st1: s0exp
+,st2: s0exp): sint =
+max
+(errvl(st1),errvl(st2))
+#symload errvl with s0exp_errvl_a2
+(* ****** ****** *)
+fun
+s0exp_errvl_a3
+(st1: s0exp
+,st2: s0exp
+,st3: s0exp): sint =
+max
+(errvl(st1)
+,errvl(st2),errvl(st3))
+#symload errvl with s0exp_errvl_a3
+(* ****** ****** *)
+#extern
+fun
+s0exp_errvl_xs
+(sts: s0explst): sint
+#symload errvl with s0exp_errvl_xs
+#implfun
+s0exp_errvl_xs(sts) =
+(
+case+ sts of
+| list_nil
+  ((*nil*)) => 0
+| list_cons
+  (st1,sts) => max(errvl(st1),errvl(sts))
+)
+(* ****** ****** *)
+//
+fun
+s0exp_lpar_errck
+( loc
+: loc_t
+, tkb
+: token
+, ses
+: s0explst
+, srp
+: s0exp_RPAREN): s0exp =
+let
+  val lvl = errvl(ses)
+in//let
+s0exp_errck(lvl+1, s0exp(loc,S0Elpar(tkb,ses,srp)))
+end (*let*) // end of [s0exp_lpar_errck]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0exp(s0e, err) =
+(
+//
+case+
+s0e.node() of
+|
+S0Etkerr _ =>
+(err := err+1; s0exp_errck(s0e))
+//
+|
+S0Eerrck _ =>
+(err := err+1; s0exp_errck(s0e))
+//
+) where//end-of(case(s0e.node()))
+{
+//
+fun
+f0_lpar
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+//
+val e00 = err
+val-
+S0Elpar
+(tkb,ses,srp) = s0e.node()
+//
+val ses =
+preadx0_s0explst(ses, err)
+val srp =
+preadx0_s0exp_RPAREN(srp, err)
+in//let
+if
+(err = e00)
+then s0e else s0exp_lpar_errck(s0e.lctn(),tkb,ses,srp)
+end (*let*) // end of [f0_lpar]
+//
+} (*where*) // end of [preadx0_s0exp]
 //
 (* ****** ****** *)
 //
@@ -291,7 +425,7 @@ val s0t1 = preadx0_sort0(s0t1, err)
 val sts1 = preadx0_sort0lst(sts1, err)
 in//let
 if err = e00 then s0ts else list_cons(s0t1, sts1)
-endlet // end of [list_cons(st0)]
+endlet // end of [list_cons(st01,sts1)]
 ) (*case*)//end-of-[preadx0_sort0lst(s0ts,err)]
 //
 #implfun
@@ -310,9 +444,52 @@ val s0e1 = preadx0_s0exp(s0e1, err)
 val ses1 = preadx0_s0explst(ses1, err)
 in//let
 if err = e00 then s0es else list_cons(s0e1, ses1)
-endlet // end of [list_cons(st0)]
+endlet // end of [list_cons(s0e1,s0es)]
 ) (*case*)//end-of-[preadx0_s0explst(s0es,err)]
 //
+(* ****** ****** *)
+
+#implfun
+preadx0_s0exp_RPAREN
+  (srp0, err) =
+(
+case+ srp0 of
+|
+s0exp_RPAREN_cons0
+(      tend      ) =>
+(
+case+
+tend.node() of
+|
+T_RPAREN() => srp0
+|
+_(*non-T_RPAREN*) => (err := err+1; srp0)
+)
+|
+s0exp_RPAREN_cons1
+(tbar, s0es, tend) =>
+let
+//
+val e00 = err
+//
+val s0es =
+preadx0_s0explst(s0es, err)
+in
+case+
+tend.node() of
+|
+T_RPAREN() =>
+(
+  if
+  (err=e00)
+  then srp0
+  else s0exp_RPAREN_cons1(tbar, s0es, tend)
+)
+|
+_(*non-T_RPAREN*) =>
+(err := err+1; s0exp_RPAREN_cons1(tbar, s0es, tend))
+endlet // end of [s0exp_RPAREN_cons1]
+) (*case*) // end of [preadx0_s0exp_RPAREN]
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_staexp.dats] *)

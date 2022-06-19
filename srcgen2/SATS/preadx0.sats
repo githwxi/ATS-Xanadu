@@ -51,6 +51,9 @@ S0E = "./staexp0.sats"
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
 (* ****** ****** *)
+#typedef
+s0exp_RPAREN = $S0E.s0exp_RPAREN
+(* ****** ****** *)
 #typedef sort0lst = $S0E.sort0lst
 #typedef sort0opt = $S0E.sort0opt
 #typedef s0explst = $S0E.s0explst
@@ -83,6 +86,9 @@ preadx0_s0explst: fpreadx0(s0explst)
 #symload preadx0 with preadx0_s0expopt
 #symload preadx0 with preadx0_sort0lst
 #symload preadx0 with preadx0_s0explst
+(* ****** ****** *)
+fun
+preadx0_s0exp_RPAREN: fpreadx0(s0exp_RPAREN)
 (* ****** ****** *)
 //
 //HX-2022-06-18: printing errmsgs
