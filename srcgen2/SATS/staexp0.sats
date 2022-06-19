@@ -171,6 +171,8 @@ t0str_get_lctn(t0str): loc_t
 (* ****** ****** *)
 //
 #typedef s0tid = i0dnt_tbox
+
+#typedef s0aid = i0dnt_tbox
 #typedef s0eid = i0dnt_tbox
 //
 #typedef d0pid = i0dnt_tbox
@@ -594,7 +596,7 @@ s0mag_node =
 |
 S0MAGnone of (token)
 |
-S0MAGsing of (s0eid)
+S0MAGsing of (s0aid)
 |
 S0MAGlist of
 (token(*LP*), s0arglst, token(*RP*))
