@@ -80,9 +80,13 @@
 #include
 "./../../DATS/parsing_basics.dats"
 #include
+"./../../DATS/parsing_utils0.dats"
+#include
 "./../../DATS/parsing_staexp.dats"
 #include
-"./../../DATS/parsing_utils0.dats"
+"./../../DATS/parsing_decl01.dats"
+#include
+"./../../DATS/parsing_decl02.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/preadx0.dats"
@@ -98,10 +102,11 @@ p1_fun_test p1_fun_test_fpath
 #define
 pq_fun_test pq_fun_test_fpath
 (* ****** ****** *)
-
 val opt =
-p1_fun_test<d0eclseq>("mytest", p1_d0eclseq_sta)
-
+p1_fun_test<d0eclist>
+("./mytest.dats", p1_d0eclseq_sta)
+val ( ) =
+prerrln("p1_fun_test(\"mytest.dats\") = ", opt)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)

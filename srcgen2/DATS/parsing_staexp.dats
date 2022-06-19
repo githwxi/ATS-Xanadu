@@ -1339,6 +1339,9 @@ list_vt2t
 (
 ps_p1fun{s0exp}(buf, err, p1_s0exp_atm)
 )
+//
+(* ****** ****** *)
+//
 #implfun
 p1_s0expseq_COMMA
 (  buf, err  ) =
@@ -1346,12 +1349,23 @@ list_vt2t
 (
 ps_COMMA_p1fun{s0exp}(buf, err, p1_s0exp)
 )
+//
 #implfun
 p1_l0s0eseq_COMMA
 (  buf, err  ) =
 list_vt2t
 (
 ps_COMMA_p1fun{l0s0e}(buf, err, p1_l0s0e)
+)
+//
+(* ****** ****** *)
+//
+#implfun
+p1_s0expseq_SMCLN
+(  buf, err  ) =
+list_vt2t
+(
+ps_SMCLN_p1fun{s0exp}(buf, err, p1_s0exp)
 )
 //
 (* ****** ****** *)

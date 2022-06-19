@@ -268,8 +268,14 @@ l0s0e_RBRACE_fprint(g_print$out<>(), lsrb)
 (* ****** ****** *)
 //
 #impltmp
-g_print<d0ecl>(s0e) =
-d0ecl_fprint(g_print$out<>(), s0e)
+g_print<d0pat>(d0p) =
+d0pat_fprint(g_print$out<>(), d0p)
+#impltmp
+g_print<d0exp>(d0e) =
+d0exp_fprint(g_print$out<>(), d0e)
+#impltmp
+g_print<d0ecl>(dcl) =
+d0ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
 
