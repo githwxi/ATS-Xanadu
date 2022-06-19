@@ -67,12 +67,30 @@ LEX = "./lexing0.sats"
 #staload
 S0E = "./staexp0.sats"
 //
+(* ****** ****** *)
+#typedef s0tid = $S0E.s0tid
+#typedef s0aid = $S0E.s0aid
+#typedef s0eid = $S0E.s0eid
+(* ****** ****** *)
+//
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
+#typedef s0tdf = $S0E.s0tdf
+//
+(* ****** ****** *)
+//
+#typedef s0arg = $S0E.s0arg
+#typedef s0mag = $S0E.s0mag
+#typedef t0arg = $S0E.t0arg
+#typedef t0mag = $S0E.t0mag
+#typedef s0qua = $S0E.s0qua
 //
 (* ****** ****** *)
 #typedef tokenlst = list(token)
 #typedef tokenopt = optn(token)
+(* ****** ****** *)
+#typedef s0explst = list(s0exp)
+#typedef s0expopt = optn(s0exp)
 (* ****** ****** *)
 
 #abstbox d0exp_tbox // ptr
@@ -95,6 +113,7 @@ S0E = "./staexp0.sats"
 //
 datatype
 d0ecl_node =
+//
 (*
 indicating error
 *)
@@ -110,8 +129,12 @@ for skipping synerr:
 D0Clocal of
 ( token(*LOCAL*)
 , d0eclist(*head*)
-, tokenopt(*IN*)
+, tokenopt(* IN *)
 , d0eclist(*body*), token(*END*))
+//
+|
+D0Csortdef of
+(token, s0tid, token, s0tdf(*defn*))
 //
 (* ****** ****** *)
 

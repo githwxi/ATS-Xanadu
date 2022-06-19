@@ -105,6 +105,22 @@ d0ecl_make_node
 (lres, D0Clocal(tbeg, head, tmid, body, tend))
 end // end of [ T_LOCAL() ]
 //
+|
+T_SORTDEF() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val tid0 = p1_s0tid(buf, err)
+//
+  val teq1 = p1_EQ0(buf, err)
+  val def2 = p1_s0tdf(buf, err)
+  val lres = tknd.lctn() + def2.lctn()
+in
+err := e00;
+d0ecl(lres, D0Csortdef(tknd, tid0, teq1, def2))
+end // end of [ T_SORTDEF() ]
+//
 end (*let*) // end of [fp_d0ecl(f00,buf,err)]
 
 (* ****** ****** *)
