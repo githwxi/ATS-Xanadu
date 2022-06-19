@@ -310,6 +310,61 @@ case+ sts of
 (* ****** ****** *)
 //
 fun
+s0exp_op1_errck
+( loc
+: loc_t
+, tok
+: token): s0exp =
+let
+val lvl = 0 in
+s0exp_errck(lvl+1, s0exp(loc,S0Eop1(tok)))
+end (*let*) // end of [s0exp_op1_errck]
+//
+fun
+s0exp_op2_errck
+( loc
+: loc_t
+, tok
+: token): s0exp =
+let
+val lvl = 0 in
+s0exp_errck(lvl+1, s0exp(loc,S0Eop2(tok)))
+end (*let*) // end of [s0exp_op2_errck]
+//
+fun
+s0exp_op3_errck
+( loc
+: loc_t
+, tkb
+: token
+, id0
+: i0dnt
+, tke
+: token): s0exp =
+let
+val lvl = 0
+in//let
+s0exp_errck
+(lvl+1, s0exp(loc, S0Eop3(tkb, id0, tke)))
+end (*let*) // end of [s0exp_op3_errck]
+//
+(* ****** ****** *)
+//
+fun
+s0exp_apps_errck
+( loc
+: loc_t
+, ses
+: s0explst): s0exp =
+let
+val lvl = errvl(ses)
+in//let
+s0exp_errck(lvl+1, s0exp(loc,S0Eapps(ses)))
+end (*let*) // end of [s0exp_apps_errck]
+//
+(* ****** ****** *)
+//
+fun
 s0exp_lpar_errck
 ( loc
 : loc_t
@@ -333,6 +388,26 @@ preadx0_s0exp(s0e, err) =
 //
 case+
 s0e.node() of
+//
+| S0Eid0 _ => s0e
+//
+| S0Eint _ => s0e
+| S0Echr _ => s0e
+| S0Eflt _ => s0e
+| S0Estr _ => s0e
+//
+|
+S0Eop1 _ => f0_op1(s0e, err)
+|
+S0Eop2 _ => f0_op2(s0e, err)
+|
+S0Eop3 _ => f0_op3(s0e, err)
+//
+|
+S0Eapps _ => f0_apps(s0e, err)
+|
+S0Elpar _ => f0_lpar(s0e, err)
+//
 |
 S0Etkerr _ =>
 (err := err+1; s0exp_errck(s0e))
@@ -343,6 +418,96 @@ S0Eerrck _ =>
 //
 ) where//end-of(case(s0e.node()))
 {
+//
+fun
+f0_op1
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+val-
+S0Eop1(tok) = s0e.node()
+in//let
+//
+s0exp_op1_errck(s0e.lctn(), tok)
+//
+end(*let*)//end-of(f0_op1(s0e,err))
+//
+fun
+f0_op2
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+val e00 = err
+val-
+S0Eop2(tok) = s0e.node()
+in//let
+//
+case+
+tok.node() of
+|
+T_IDSYM _ => s0e
+|
+_(*else*) => // HX: invalid
+s0exp_op2_errck(s0e.lctn(), tok)
+//
+end(*let*)//end-of(f0_op2(s0e,err))
+//
+fun
+f0_op3
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+val e00 = err
+val-
+S0Eop3
+(tkb, id0, tke) = s0e.node()
+//
+val ( ) =
+(
+case+
+id0.node() of
+| ID0NTsome _ => ()
+| _(* else *) => (err := err+1)
+)
+//
+val ( ) =
+(
+case+
+tke.node() of
+| T_RPAREN() => ()
+| _(* else *) => (err := err+1)
+)
+in//let
+//
+if
+(err = e00)
+then s0e else
+s0exp_op3_errck(s0e.lctn(), tkb, id0, tke)
+//
+end(*let*)//end-of(f0_op3(s0e,err))
+//
+fun
+f0_apps
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+val e00 = err
+val-
+S0Eapps(sts) = s0e.node()
+val sts = preadx0_s0explst(sts, err)
+in//let
+if
+(err = e00)
+then s0e else s0exp_apps_errck(s0e.lctn(), sts)
+end (*let*) // end of [f0_apps]
 //
 fun
 f0_lpar
@@ -474,7 +639,8 @@ val e00 = err
 //
 val s0es =
 preadx0_s0explst(s0es, err)
-in
+in//let
+//
 case+
 tend.node() of
 |
@@ -488,6 +654,7 @@ T_RPAREN() =>
 |
 _(*non-T_RPAREN*) =>
 (err := err+1; s0exp_RPAREN_cons1(tbar, s0es, tend))
+//
 endlet // end of [s0exp_RPAREN_cons1]
 ) (*case*) // end of [preadx0_s0exp_RPAREN]
 (* ****** ****** *)

@@ -429,8 +429,11 @@ print("S0Eid0(",id0,")")
 S0Eop1(tok) =>
 print("S0Eop1(",tok,")")
 |
-S0Eop2(tkb,id0,tke) =>
-print("S0Eop2(",tkb,";",id0,";",tke,")")
+S0Eop2(tok) =>
+print("S0Eop2(",tok,")")
+|
+S0Eop3(tkb,id0,tke) =>
+print("S0Eop3(",tkb,";",id0,";",tke,")")
 //
 |
 S0Eint(int) => print("S0Eint(",int,")")

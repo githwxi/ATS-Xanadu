@@ -53,6 +53,9 @@ BUF = "./lexbuf0.sats"
 #vwtpdef lxbf1 = $BUF.lxbf1
 #vwtpdef lxbf2 = $BUF.lxbf2
 (* ****** ****** *)
+#abstbox token_tbox // ptr
+#typedef token = token_tbox
+(* ****** ****** *)
 //
 datatype tnode =
 //
@@ -171,8 +174,8 @@ datatype tnode =
   | T_OF0 of () // 'of'
 //
   | T_OP1 of () // 'op'
-  | T_OP2 of () // 'op('
-  | T_OP3 of (strn) // 'opid'
+  | T_OP2 of token // 'opid'
+  | T_OP3 of token // 'op()'
 //
   | T_IN0 of () // 'in'
 //
@@ -267,9 +270,6 @@ datatype tnode =
 //
 // end-of-(datatype tnode)
 //
-(* ****** ****** *)
-#abstbox token_tbox // ptr
-#typedef token = token_tbox
 (* ****** ****** *)
 #typedef tokenlst = list(token)
 #typedef tokenopt = optn(token)

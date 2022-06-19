@@ -738,19 +738,20 @@ l0s0elst = list(s0lab(s0exp))
 datatype
 s0exp_node =
 //
-|
-S0Eid0 of (s0eid)
-//
-|
-S0Eop1 of (token) // op_symid
-|
-S0Eop2 of
-(token, s0eid, token) // op(...)
+| S0Eid0 of (s0eid)
 //
 | S0Eint of (t0int)
 | S0Echr of (t0chr)
 | S0Eflt of (t0flt)
 | S0Estr of (t0str)
+//
+|
+S0Eop1 of (token) // op
+|
+S0Eop2 of (token) // op_symid
+|
+S0Eop3 of
+(token, s0eid, token) // op(...)
 //
 | S0Eapps of s0explst
 //
