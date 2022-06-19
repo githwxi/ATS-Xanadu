@@ -301,5 +301,17 @@ val () = lexing_kword_init((*void*))
 end (*local*) // end of [ local ]
 
 (* ****** ****** *)
+//
+#implval T0IDENT_AT0 = T_IDSYM("@")
+#implval T0IDENT_EQ0 = T_IDSYM("=")
+//
+#implval T0IDENT_LT0 = T_IDSYM("<")
+#implval T0IDENT_GT0 = T_IDSYM(">")
+//
+#implval T0IDENT_EQGT = T_IDSYM("=>")
+#implval T0IDENT_LTGT = T_IDSYM("<>")
+#implval T0IDENT_MSGT = T_IDSYM("->")
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0_kword0.dats] *)

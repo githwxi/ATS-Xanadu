@@ -57,6 +57,8 @@
 #include
 "./../../DATS/lexing0_mymap0.dats"
 #include
+"./../../DATS/lexing0_kword0.dats"
+#include
 "./../../DATS/lexing0_utils1.dats"
 #include
 "./../../DATS/lexing0_utils2.dats"
@@ -199,10 +201,24 @@ val opt =
 p1_fun_test<s0exp>("sint", p1_s0exp)
 val ( ) =
 prerrln("p1_s0exp(\"sint\") = ", opt)
-(*
-val opt = preadx0_s0expopt(opt, the_err)
-val ( ) = s0expopt_fpemsg(g_stderr(), opt)
-*)
+val opt =
+p1_fun_test<s0exp>("(sint,bool)", p1_s0exp)
+val ( ) =
+prerrln("p1_s0exp(\"(sint,bool)\") = ", opt)
+
+(* ****** ****** *)
+
+val opt =
+p1_fun_test<s0exp>("(bool:bsrt)", p1_s0exp)
+val ( ) =
+prerrln("p1_s0exp(\"(bool:bsrt)\") = ", opt)
+
+(* ****** ****** *)
+
+val opt =
+p1_fun_test<s0exp>("@{l1=sint,l2=bool}", p1_s0exp)
+val ( ) =
+prerrln("p1_s0exp(\"@{l1=sint,l2=bool}\") = ", opt)
 
 (* ****** ****** *)
 

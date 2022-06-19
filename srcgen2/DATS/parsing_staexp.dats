@@ -125,6 +125,14 @@ fun p1_l0s0eseq_COMMA: p1_fun(l0s0elst)
 //
 (* ****** ****** *)
 //
+(*
+s0exp_RPAREN ::=
+  | RPAREN
+  | BAR s0expseq_COMMA RPAREN
+l0s0e_RBRACE ::=
+  | RPAREN
+  | BAR l0s0eseq_COMMA RBRACE
+*)
 #extern
 fun
 p1_s0exp_RPAREN: p1_fun(s0exp_RPAREN)
@@ -761,7 +769,7 @@ list_cons _ =>
 {
   val s0e2 = list_last(ses1)
   val loc0 = s0e1.lctn()+s0e2.lctn()
-  val s0e0 = s0exp(loc0, S0Eapps(ses1))
+  val s0e0 = s0exp(loc0, S0Eapps(s0es))
 } (*where*) // end of [list_cons]
 end (*let*) // end of [list_cons]
 end (*let*) // end of [p1_s0exp(buf,err)]
@@ -1048,6 +1056,106 @@ ps_COMMA_p1fun{l0s0e}(buf, err, p1_l0s0e)
 (* ****** ****** *)
 
 endloc (*local*) // end of [local(p1_s0exp)]
+
+(* ****** ****** *)
+
+#implfun
+p1_s0exp_RPAREN
+  (buf, err) =
+let
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+in
+//
+case+ tnd of
+| T_BAR() =>
+let
+  val tok1 = tok
+  val () = buf.skip1()
+  val s0es =
+  p1_s0expseq_COMMA(buf, err)
+  val tok2 = p1_RPAREN(buf, err)
+in//let
+  err := e00
+; s0exp_RPAREN_cons1(tok1, s0es, tok2)
+end (*let*) // end of [ | ... ]
+| _(*non-T_BAR*) =>
+(
+case+ tnd of
+| T_RPAREN() => let
+    val () = buf.skip1()
+  in
+    (err := e00; s0exp_RPAREN_cons0(tok)
+  end // end of [RPAREN]
+| _(*non-RPAREN*) =>
+  (err := e00 + 1; s0exp_RPAREN_cons0(tok))
+) (*case*) // end of [non-T_BAR]
+//
+end (*let*) // end-of-[p_s0exp_RPAREN(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_l0s0e_RBRACE
+  (buf, err) =
+let
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+in
+//
+case+ tnd of
+| T_BAR() =>
+let
+  val tok1 = tok
+  val () = buf.skip1()
+  val lses =
+  p1_l0s0eseq_COMMA(buf, err)
+  val tok2 = p1_RBRACE(buf, err)
+in//let
+  err := e00
+; l0s0e_RBRACE_cons1(tok1, lses, tok2)
+end (*let*) // end of [ | ... ]
+| _(*non-T_BAR*) =>
+(
+case+ tnd of
+| T_RBRACE() => let
+    val () = buf.skip1()
+  in
+    (err := e00; l0s0e_RBRACE_cons0(tok)
+  end // end of [RBRACE]
+| _(*non-RBRACE*) =>
+  (err := e00 + 1; l0s0e_RBRACE_cons0(tok))
+) (*case*) // end of [non-T_BAR]
+//
+end (*let*) // end-of-[p_l0s0e_RBRACE(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+s0exp_RPAREN_lctn
+  (node) =
+(
+case+ node of
+| s0exp_RPAREN_cons0
+  (      tbar      ) => tbar.lctn()
+| s0exp_RPAREN_cons1
+  (tok1, s0es, tok2) => tok1.lctn() + tok2.lctn()
+)  
+
+(* ****** ****** *)
+
+#implfun
+l0s0e_RBRACE_lctn
+  (node) =
+(
+case+ node of
+| l0s0e_RBRACE_cons0
+  (      tbar      ) => tbar.lctn()
+| l0s0e_RBRACE_cons1
+  (tok1, lses, tok2) => tok1.lctn() + tok2.lctn()
+)  
 
 (* ****** ****** *)
 
