@@ -50,6 +50,8 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
+#symload node with d0ecl_get_node
+(* ****** ****** *)
 
 #implfun
 d0ecl_fprint
