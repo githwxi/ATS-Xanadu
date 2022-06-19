@@ -47,6 +47,8 @@ ATS_PACKNAME // namespace
 LEX = "./lexing0.sats"
 #staload
 S0E = "./staexp0.sats"
+#staload
+D0E = "./dynexp0.sats"
 //
 (* ****** ****** *)
 //
@@ -83,6 +85,12 @@ S0E = "./staexp0.sats"
 #typedef t0arg = $S0E.t0arg
 #typedef t0mag = $S0E.t0mag
 //
+(* ****** ****** *)
+
+#typedef d0pat = $D0E.d0pat
+#typedef d0exp = $D0E.d0exp
+#typedef d0ecl = $D0E.d0ecl
+
 (* ****** ****** *)
 //
 #absvwtp tkbf0_vtbx
@@ -256,6 +264,22 @@ fun
 p1_s0exp_app_NEQ: p1_fun(s0exp)
 fun
 p1_s0exp_app_NGT: p1_fun(s0exp)
+(* ****** ****** *)
+//
+#typedef
+fp_fun(syn:type) =
+( sint // flag=0/1
+, !tkbf0, &sint >> _) -> syn
+//
+#typedef d0eclist = list(d0ecl)
+//
+fun fp_d0ecl: fp_fun(d0ecl)
+//
+fun
+fp_d0eclseq: fp_fun(d0eclist)
+fun
+fp_d0eclseq_top: fp_fun(d0eclist)
+//
 (* ****** ****** *)
 (*
 //
