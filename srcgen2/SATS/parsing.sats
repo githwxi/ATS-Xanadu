@@ -76,6 +76,7 @@ S0E = "./staexp0.sats"
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
+#typedef s0tdf = $S0E.s0tdf
 //
 #typedef s0arg = $S0E.s0arg
 #typedef s0mag = $S0E.s0mag
@@ -233,13 +234,23 @@ sort0 ::= {atmsort0}+
 fun p1_sort0: p1_fun(sort0)
 //
 (* ****** ****** *)
-fun
-p1_sort0_app_NGT: p1_fun(sort0)
-(* ****** ****** *)
 //
 fun p1_s0exp: p1_fun(s0exp)
 //
 (* ****** ****** *)
+//
+(*
+s0tdf ::=
+| sort0
+| LBRACE
+  s0arg BAR s0expseq_SMCLN
+  RBRACE
+*)
+fun p1_s0tdf: p1_fun(s0tdf)
+//
+(* ****** ****** *)
+fun
+p1_sort0_app_NGT: p1_fun(sort0)
 fun
 p1_s0exp_app_NGT: p1_fun(s0exp)
 (* ****** ****** *)
