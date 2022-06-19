@@ -68,6 +68,13 @@ LEX = "./lexing0.sats"
 S0E = "./staexp0.sats"
 //
 (* ****** ****** *)
+#typedef i0dnt = $S0E.i0dnt
+(* ****** ****** *)
+#typedef t0int = $S0E.t0int
+#typedef t0chr = $S0E.t0chr
+#typedef t0flt = $S0E.t0flt
+#typedef t0str = $S0E.t0str
+(* ****** ****** *)
 #typedef s0tid = $S0E.s0tid
 #typedef s0aid = $S0E.s0aid
 #typedef s0eid = $S0E.s0eid
@@ -109,6 +116,62 @@ S0E = "./staexp0.sats"
 #typedef d0ecl = d0ecl_tbox
 #typedef d0eclist = list(d0ecl)
 #typedef d0eclopt = optn(d0ecl)
+(* ****** ****** *)
+//
+datatype
+d0pat_node =
+| D0Etkerr of (token)
+//
+(* ****** ****** *)
+fun
+d0pat_fprint(FILR, d0pat): void
+(* ****** ****** *)
+//
+fun
+d0pat_get_lctn(d0pat): loc_t
+fun
+d0pat_get_node(d0pat): d0pat_node
+//
+#symload lctn with d0pat_get_lctn
+#symload node with d0pat_get_node
+//
+(* ****** ****** *)
+fun
+d0pat_make_node
+(loc:loc_t, nod:d0pat_node): d0pat
+#symload d0pat with d0pat_make_node
+(* ****** ****** *)
+//
+datatype
+d0exp_node =
+//
+| D0Eid0 of i0dnt
+//
+| D0Eint of t0int
+| D0Echr of t0chr
+| D0Eflt of t0flt
+| D0Estr of t0str
+//
+| D0Etkerr of (token)
+//
+(* ****** ****** *)
+fun
+d0exp_fprint(FILR, d0exp): void
+(* ****** ****** *)
+//
+fun
+d0exp_get_lctn(d0exp): loc_t
+fun
+d0exp_get_node(d0exp): d0exp_node
+//
+#symload lctn with d0exp_get_lctn
+#symload node with d0exp_get_node
+//
+(* ****** ****** *)
+fun
+d0exp_make_node
+(loc:loc_t, nod:d0exp_node): d0exp
+#symload d0exp with d0exp_make_node
 (* ****** ****** *)
 //
 datatype
