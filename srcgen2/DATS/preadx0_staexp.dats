@@ -365,6 +365,24 @@ end (*let*) // end of [s0exp_apps_errck]
 (* ****** ****** *)
 //
 fun
+s0exp_fimp_errck
+( loc
+: loc_t
+, tkb
+: token
+, ses
+: s0explst
+, tke
+: token   ): s0exp =
+let
+  val lvl = errvl(ses)
+in//let
+s0exp_errck(lvl+1, s0exp(loc,S0Efimp(tkb,ses,tke)))
+end (*let*) // end of [s0exp_fimp_errck]
+//
+(* ****** ****** *)
+//
+fun
 s0exp_lpar_errck
 ( loc
 : loc_t
@@ -405,6 +423,8 @@ S0Eop3 _ => f0_op3(s0e, err)
 //
 |
 S0Eapps _ => f0_apps(s0e, err)
+|
+S0Efimp _ => f0_fimp(s0e, err)
 |
 S0Elpar _ => f0_lpar(s0e, err)
 //
@@ -502,12 +522,46 @@ let
 val e00 = err
 val-
 S0Eapps(sts) = s0e.node()
-val sts = preadx0_s0explst(sts, err)
+//
+val ses = preadx0_s0explst(sts, err)
+//
 in//let
 if
 (err = e00)
-then s0e else s0exp_apps_errck(s0e.lctn(), sts)
+then s0e else s0exp_apps_errck(s0e.lctn(), ses)
 end (*let*) // end of [f0_apps]
+//
+(* ****** ****** *)
+//
+fun
+f0_fimp
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+//
+val e00 = err
+val-
+S0Efimp
+(tkb,ses,tke) = s0e.node()
+//
+val ses =
+preadx0_s0explst(ses, err)
+val ( ) =
+(
+case+
+tke.node() of
+| T_GT0() => ()
+| _(*else*) => (err := err+1)
+)
+in//let
+if
+(err = e00)
+then s0e else s0exp_fimp_errck(s0e.lctn(),tkb,ses,tke)
+end (*let*) // end of [f0_lpar]
+//
+(* ****** ****** *)
 //
 fun
 f0_lpar
