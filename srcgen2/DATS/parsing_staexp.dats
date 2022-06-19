@@ -120,6 +120,8 @@ fun p1_s0exp_atm: p1_fun(s0exp)
 fun p1_s0expseq_atm: p1_fun(s0explst)
 #extern
 fun p1_s0expseq_COMMA: p1_fun(s0explst)
+#extern
+fun p1_s0expseq_SMCLN: p1_fun(s0explst)
 //
 #extern
 fun p1_l0s0eseq_COMMA: p1_fun(l0s0elst)
@@ -1025,6 +1027,42 @@ list_cons _ =>
 } (*where*) // end of [list_cons]
 end (*let*) // end of [list_cons]
 end (*let*) // end of [p1_s0exp(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_s0tdf(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+|
+T_LBRACE() =>
+let
+val tbeg = tok
+val (  ) = buf.skip1()
+val s0a0 = p1_s0arg(buf, err)
+val tbar = p1_BAR(buf, err)
+val s0es = p1_s0expseq_SMCLN(buf, err)
+val tend = p1_RBRACE(buf, err)
+val lres = tbeg.lctn()+tend.lctn()
+in//let
+err := e00;
+s0tdf(lres,S0TDFtsub(tbeg,s0a0,tbar,s0es,tend))
+end (*let*) // end of [T_LBRACE]
+| _(*non-T_LBRACE*) =>
+let
+val s0t = p1_sort0(buf, err)
+in//let
+(err := e00; s0tdf(s0t.lctn(), S0TDFsort(s0t)))
+end (*let*) // end of [non-T_LBRACE]
+//
+end (*let*) // end of [p1_s0tdf(buf,err)]
 
 (* ****** ****** *)
 
