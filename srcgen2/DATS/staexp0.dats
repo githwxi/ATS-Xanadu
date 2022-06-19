@@ -258,6 +258,99 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+sort0 =
+SORT0 of
+(
+loctn, sort0_node)
+#absimpl
+sort0_tbox = sort0
+//
+in (* in-of-local *)
+//
+#implfun
+sort0_make_node
+(   loc,nod   ) = SORT0(loc,nod)
+//
+#implfun
+sort0_get_lctn(s0t) =
+let
+  val+SORT0(loc,nod) = s0t in loc
+end
+#implfun
+sort0_get_node(s0t) =
+let
+  val+SORT0(loc,nod) = s0t in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s0tcn =
+S0TCN of
+(
+loctn, s0tcn_node)
+#absimpl
+s0tcn_tbox = s0tcn
+//
+in (* in-of-local *)
+//
+#implfun
+s0tcn_make_node
+(   loc,nod   ) = S0TCN(loc,nod)
+//
+#implfun
+s0tcn_get_lctn(tcn) =
+let
+  val+S0TCN(loc,nod) = tcn in loc
+end
+#implfun
+s0tcn_get_node(tcn) =
+let
+  val+S0TCN(loc,nod) = tcn in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0tst =
+D0TST of
+(
+loctn, d0tst_node)
+#absimpl
+d0tst_tbox = d0tst
+//
+in (* in-of-local *)
+//
+#implfun
+d0tst_make_node
+(   loc,nod   ) = D0TST(loc,nod)
+//
+#implfun
+d0tst_get_lctn(dst) =
+let
+  val+D0TST(loc,nod) = dst in loc
+end
+#implfun
+d0tst_get_node(dst) =
+let
+  val+D0TST(loc,nod) = dst in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 s0arg =
 S0ARG of
 (
@@ -382,90 +475,28 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-sort0 =
-SORT0 of
+s0qua =
+S0QUA of
 (
-loctn, sort0_node)
+loctn, s0qua_node)
 #absimpl
-sort0_tbox = sort0
+s0qua_tbox = s0qua
 //
 in (* in-of-local *)
 //
 #implfun
-sort0_make_node
-(   loc,nod   ) = SORT0(loc,nod)
+s0qua_make_node
+(   loc,nod   ) = S0QUA(loc,nod)
 //
 #implfun
-sort0_get_lctn(s0t) =
+s0qua_get_lctn(s0q) =
 let
-  val+SORT0(loc,nod) = s0t in loc
+  val+S0QUA(loc,nod) = s0q in loc
 end
 #implfun
-sort0_get_node(s0t) =
+s0qua_get_node(s0q) =
 let
-  val+SORT0(loc,nod) = s0t in nod
-end
-//
-endloc (*local*) // end of [ local ]
-
-(* ****** ****** *)
-
-local
-//
-datatype
-s0tcn =
-S0TCN of
-(
-loctn, s0tcn_node)
-#absimpl
-s0tcn_tbox = s0tcn
-//
-in (* in-of-local *)
-//
-#implfun
-s0tcn_make_node
-(   loc,nod   ) = S0TCN(loc,nod)
-//
-#implfun
-s0tcn_get_lctn(tcn) =
-let
-  val+S0TCN(loc,nod) = tcn in loc
-end
-#implfun
-s0tcn_get_node(tcn) =
-let
-  val+S0TCN(loc,nod) = tcn in nod
-end
-//
-endloc (*local*) // end of [ local ]
-
-(* ****** ****** *)
-
-local
-//
-datatype
-d0tst =
-D0TST of
-(
-loctn, d0tst_node)
-#absimpl
-d0tst_tbox = d0tst
-//
-in (* in-of-local *)
-//
-#implfun
-d0tst_make_node
-(   loc,nod   ) = D0TST(loc,nod)
-//
-#implfun
-d0tst_get_lctn(dst) =
-let
-  val+D0TST(loc,nod) = dst in loc
-end
-#implfun
-d0tst_get_node(dst) =
-let
-  val+D0TST(loc,nod) = dst in nod
+  val+S0QUA(loc,nod) = s0q in nod
 end
 //
 endloc (*local*) // end of [ local ]

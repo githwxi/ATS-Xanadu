@@ -269,7 +269,7 @@ i0dnt_some(tok) where
 | _(*non-T_IDALP*) =>
 (err := e00 + 1; i0dnt_none(tok))
 //
-end (*let*) // end of [p_s0aid(buf,err)]
+end (*let*) // end of [p1_s0aid(buf,err)]
 
 (* ****** ****** *)
 
@@ -438,8 +438,9 @@ local
 //
 fun
 p1_napps
-( buf: !tkbf0
-, err: &int >> _): sort0 =
+( buf:
+! tkbf0
+, err: &sint >> _): sort0 =
 let
   val e00 = err
   val tok = buf.getk0()
@@ -524,7 +525,7 @@ val id0 = p1_s0tid(buf, err)
 in//let
 err := e00;
 sort0(id0.lctn(), S0Tid0(id0))
-end (*let*) // end of [t_s0tid]
+end (*let*) // end of [t0_s0tid]
 | _
 (*otherwise*) =>
 let
@@ -565,7 +566,7 @@ let
 in
   err := e00
 ; sort0(id0.lctn(), S0Tid0(id0))
-end (*let*) // end of [t_s0tid]
+end (*let*) // end of [t0_s0tid]
 //
 | _
 when t0_t0int(tnd) =>
@@ -574,7 +575,7 @@ let
 in
   err := e00
 ; sort0(i00.lctn(), S0Tint(i00))
-end (*let*) // end of [t_t0int]
+end (*let*) // end of [t0_t0int]
 |
 T_LPAREN() =>
 let
@@ -763,9 +764,139 @@ in//let
 end (*let*) // end of [t0_s0aid]
 //
 | _(*otherwise*) =>
-(err := e00 + 1; s0mag(tok.lctn(), S0MAGnone(tok))
+(err := e00 + 1; s0mag(tok.lctn(), S0MAGnone(tok)))
 //
 end (*let*) // end of [p1_s0mag(buf,err)]
+
+(* ****** ****** *)
+
+local
+//
+// HX-2018-09-25:
+// [f0_ids] should always returns
+// a non-empty list of identifiers
+//
+fun
+f0_ids
+( buf:
+! tkbf0 >> _
+, err: &sint >> _): i0dntlst =
+let
+//
+val ids =
+list_vt2t
+(
+ps_COMMA_p1fun{s0aid}(buf,err,p1_s0aid)
+) (* end of [val] *)
+//
+in
+//
+case+ ids of
+|
+list_nil() =>
+list_sing(p1_s0aid(buf, err)) | _ => ids
+//
+end (*let*) // end of [f0_ids(buf,err)]
+
+in//local
+
+#implfun
+p1_s0qua(buf, err) =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+| _
+when t0_s0aid(tnd) =>
+let
+//
+val id0 =
+p1_s0aid(buf, err)
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_CLN() =>
+let
+val ( ) = buf.skip1()
+val ids = list_sing(id0)
+val s0t = p1_sort0(buf, err)
+val lres = id0.lctn() + s0t.lctn()
+in//let
+  err := e00
+; s0qua(lres, S0QUAvars(ids, some(s0t)))
+end (*end*) // end of [T_CLN]
+//
+|
+T_COMMA() =>
+let
+val ( ) = buf.skip1()
+val ids = f0_ids(buf, err)
+val ids = list_cons(id0, ids)
+val tres = pq_sort0_anno(buf, err)
+val lres =
+(
+case+ tres of
+|
+optn_nil() => id0.lctn()
+|
+optn_cons(s0t) =>
+id0.lctn() + s0t.lctn()): loc_t//end(val)
+in//let
+err := e00; s0qua(lres, S0QUAvars(ids, tres))
+end (*let*) // end of [T_COMMA]
+//
+| _(*atms0expseq*) =>
+let
+val s0es =
+p1_s0expseq_atm(buf, err)
+val s0e0 =
+s0exp(id0.lctn(), S0Eid0(id0))
+val s0e1 =
+(
+case+ s0es of
+|
+list_nil
+((*void*)) => s0e0
+|
+list_cons _ =>
+let
+val s0ez = list_last(s0es)
+val lres = id0.lctn() + s0ez.lctn()
+in//let
+s0exp
+( lres
+, S0Eapps(list_cons(s0e0, s0es)))end): s0exp
+//
+in
+  err := e00
+; s0qua(s0e1.lctn(), S0QUAprop(s0e1))
+end (*let*) // end of [atms0expseq]
+//
+end (*let*) // end of [t0_s0aid(tnd)]
+//
+| _(*not-t0_s0aid*) =>
+let
+  val s0e0 = p1_s0exp(buf, err)
+in//let
+// HX-2018-09-09:
+// for improving error message reporting?
+(err := e00; s0qua(s0e0.lctn(), S0QUAprop(s0e0)))
+end (*let*) // end of [not(t0_s0aid(tnd)]
+//
+end (*let*) // end of [ p1_s0qua(buf,err) ]
+
+endloc (*local*) // end of [local(p1_s0qua)]
 
 (* ****** ****** *)
 //
@@ -805,8 +936,9 @@ local
 //
 fun
 p1_napps
-( buf: !tkbf0
-, err: &int >> _): s0exp =
+( buf:
+! tkbf0
+, err: &sint >> _): s0exp =
 let
 //
 val e00 = err
@@ -950,7 +1082,7 @@ let
 in
   err := e00
 ; s0exp(id0.lctn(), S0Eid0(id0))
-end (*let*) // end of [t_s0eid]
+end (*let*) // end of [t0_s0eid]
 //
 | _
 when t0_t0int(tnd) =>
@@ -959,7 +1091,7 @@ let
 in
   err := e00
 ; s0exp(i00.lctn(), S0Eint(i00))
-end (*let*) // end of [t_t0int]
+end (*let*) // end of [t0_t0int]
 | _
 when t0_t0chr(tnd) =>
 let
@@ -967,7 +1099,7 @@ let
 in
   err := e00
 ; s0exp(c00.lctn(), S0Echr(c00))
-end (*let*) // end of [t_t0chr]
+end (*let*) // end of [t0_t0chr]
 | _
 when t0_t0flt(tnd) =>
 let
@@ -975,7 +1107,7 @@ let
 in
   err := e00
 ; s0exp(f00.lctn(), S0Eflt(f00))
-end (*let*) // end of [t_t0flt]
+end (*let*) // end of [t0_t0flt]
 | _
 when t0_t0str(tnd) =>
 let
@@ -983,7 +1115,7 @@ let
 in
   err := e00
 ; s0exp(s00.lctn(), S0Estr(s00))
-end (*let*) // end of [t_t0str]
+end (*let*) // end of [t0_t0str]
 //
 | T_OP1 _ =>
 let

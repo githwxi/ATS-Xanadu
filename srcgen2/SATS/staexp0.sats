@@ -694,6 +694,37 @@ t0mag_make_node
 //
 (* ****** ****** *)
 //
+#typedef
+i0dntlst = list(i0dnt)
+//
+datatype
+s0qua_node =
+|
+S0QUAprop of (s0exp)
+|
+S0QUAvars of (i0dntlst, sort0opt)
+//
+(* ****** ****** *)
+fun
+s0qua_fprint
+(out:FILR, s0q:s0qua): void
+(* ****** ****** *)
+//
+fun
+s0qua_get_lctn(s0qua): loc_t
+fun
+s0qua_get_node(s0qua): s0qua_node
+//
+#symload lctn with s0qua_get_lctn
+#symload node with s0qua_get_node
+//
+fun
+s0qua_make_node
+(loc:loc_t, nod:s0qua_node): s0qua
+#symload s0qua with s0qua_make_node
+//
+(* ****** ****** *)
+//
 (*
 //HX:l0s0e:labs0exp
 *)

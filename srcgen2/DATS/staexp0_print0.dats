@@ -386,7 +386,28 @@ print("S0MAGsing(", id0, ")")
 S0MAGlist(tbeg, s0as, tend) =>
 print("S0MAGlist(",tbeg,";",s0as,";",tend,")")
 //
-end (*let*) // end of [s0mag_fprint]
+end (*let*)//end of [s0mag_fprint(out,s0m)]
+
+(* ****** ****** *)
+
+#implfun
+s0qua_fprint
+(out, s0q) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s0q.node() of
+|
+S0QUAprop(s0e) =>
+print("S0QUAprop(", s0e, ")")
+|
+S0QUAvars(ids, tres) =>
+print("S0QUAvars(", ids, ";", tres, ")")
+//
+end (*let*)//end of [s0qua_fprint(out,s0q)]
 
 (* ****** ****** *)
 
@@ -447,6 +468,12 @@ S0Elam0(tlam,s0ms,tres,arrw,body,tend) =>
 S0Eanno(se1,st2) =>
 print("S0Eanno(",se1,";",st2,")") //HX:annotation
 //
+|
+S0Euni0(tkb,sqs,tbe) =>
+print("S0Euni0(",tkb,";",sqs,";",tbe,")")
+|
+S0Eexi0(tkb,sqs,tbe) =>
+print("S0Eexi0(",tkb,";",sqs,";",tbe,")")
 |
 S0Etkerr(tok) => print("S0Etkerr(",tok,")")//HX:error
 |

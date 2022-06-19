@@ -234,23 +234,23 @@ g_print<sort0>(s0t) =
 sort0_fprint(g_print$out<>(), s0t)
 //
 (* ****** ****** *)
-//
 #impltmp
 g_print<s0arg>(sag) =
 s0arg_fprint(g_print$out<>(), sag)
 #impltmp
 g_print<s0mag>(smg) =
 s0mag_fprint(g_print$out<>(), smg)
-//
 (* ****** ****** *)
-//
 #impltmp
 g_print<t0arg>(tag) =
 t0arg_fprint(g_print$out<>(), tag)
 #impltmp
 g_print<t0mag>(tmg) =
 t0mag_fprint(g_print$out<>(), tmg)
-//
+(* ****** ****** *)
+#impltmp
+g_print<s0qua>(s0q) =
+s0qua_fprint(g_print$out<>(), s0q)
 (* ****** ****** *)
 //
 #impltmp
