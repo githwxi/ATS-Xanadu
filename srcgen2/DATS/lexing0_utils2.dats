@@ -545,25 +545,26 @@ f0_OP1
 (
 case+
 x1.node() of
-| T_LPAREN() =>
-let
-val loc =
-x0.lctn()+x1.lctn()
-val xx2 =
-token_make_node(loc, T_OP2())
-in//let
-loop0(xs, list_vt_cons(xx2, res))
-end(*let*) // end of [T_LPAREN]
 |
 T_IDSYM(id) =>
 let
 val loc =
 x0.lctn()+x1.lctn()
 val xx2 =
-token_make_node(loc, T_OP3(id))
+token_make_node(loc, T_OP2(x1))
 in//let
 loop0(xs, list_vt_cons(xx2, res))
 end (*let*) // end of [T_IDSYM]
+|
+T_LPAREN() =>
+let
+val loc =
+x0.lctn()+x1.lctn()
+val xx2 =
+token_make_node(loc, T_OP3(x1))
+in//let
+loop0(xs, list_vt_cons(xx2, res))
+end(*let*) // end of [T_LPAREN]
 | _(* rest-of-tnode *) =>
 (
 loop1(x1, xs, list_vt_cons(x0, res)))

@@ -1161,17 +1161,24 @@ val tok0 = tok
 val (  ) = buf.skip1()
 in//let
   s0exp(tok0.lctn(), S0Eop1(tok0))
-end (*let*) // end of [T_OP1(sym)]
+end (*let*) // end of [T_OP1()]
 | T_OP2 _ =>
 let
-  val tbeg = tok
-  val (  ) = buf.skip1()
-  val opid = p1_s0eid(buf, err)
-  val tend = p1_RPAREN(buf, err)
-  val lres = tbeg.lctn()+tend.lctn()
-in
+val tok0 = tok
+val (  ) = buf.skip1()
+in//let
+  s0exp(tok0.lctn(), S0Eop2(tok0))
+end (*let*) // end of [T_OP3(sym)]
+| T_OP3 _ =>
+let
+val tbeg = tok
+val (  ) = buf.skip1()
+val opid = p1_s0eid(buf, err)
+val tend = p1_RPAREN(buf, err)
+val lres = tbeg.lctn()+tend.lctn()
+in//let
   err := e00
-; s0exp(lres, S0Eop2(tbeg, opid, tend))
+; s0exp(lres, S0Eop3(tbeg, opid, tend))
 end (*let*) // end of [T_OP2(par)]
 //
 |

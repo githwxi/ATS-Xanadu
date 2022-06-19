@@ -83,10 +83,8 @@ let
 in//let
 case
 s0t.node() of
-|
-S0Tid0 _ => ()
-|
-S0Tint _ => ()
+| S0Tid0 _ => ()
+| S0Tint _ => ()
 |
 S0Tapps(sts) => fpemsg(out, sts)
 |
@@ -114,10 +112,26 @@ let
 in//let
 case
 s0e.node() of
+//
+| S0Eid0 _ => ()
+//
+| S0Eint _ => ()
+| S0Echr _ => ()
+| S0Eflt _ => ()
+| S0Estr _ => ()
+//
+| S0Eop1 _ => ()
+| S0Eop2 _ => ()
+| S0Eop3 _ => ()
+//
 |
-S0Eerrck(lvl, st1) =>
+S0Eapps(ses) => fpemsg(out, ses)
+|
+S0Elpar(tkb,ses,tke) => fpemsg(out, ses)
+|
+S0Eerrck(lvl, se1) =>
 (
-s0exp_fpemsg(out, st1)
+s0exp_fpemsg(out, se1)
 ; 
 if
 (lvl

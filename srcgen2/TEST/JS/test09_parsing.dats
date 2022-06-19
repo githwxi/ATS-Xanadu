@@ -230,6 +230,15 @@ prerrln("p1_s0exp(\"lam(x0:int) => x0+x0\") = ", opt)
 (* ****** ****** *)
 
 val opt =
+p1_fun_test<s0exp>("op(1)", p1_s0exp)
+val ( ) =
+prerrln("p1_s0exp(\"op(1)\") = ", opt)
+val opt = preadx0_s0expopt(opt, the_err)
+val ( ) = s0expopt_fpemsg(g_stderr(), opt)
+
+(* ****** ****** *)
+
+val opt =
 p1_fun_test<s0exp>("{a:int}int(a)->void", p1_s0exp)
 val ( ) =
 prerrln("p1_s0exp(\"{a:int}int(a)->void\") = ", opt)

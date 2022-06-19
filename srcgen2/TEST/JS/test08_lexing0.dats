@@ -244,11 +244,10 @@ end//local
 (* ****** ****** *)
 //
 val toks =
+strn_tokenize("op+")
 (*
 fpath_tokenize("./mycode.dats")
-*)
 fpath_tokenize("./../../SATS/xbasics.sats")
-(*
 fpath_tokenize("./../../DATS/xbasics.dats")
 *)
 //

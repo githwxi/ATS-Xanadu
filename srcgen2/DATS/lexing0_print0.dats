@@ -258,11 +258,11 @@ print("T_OF0(", ")")
 T_OP1() =>
 print("T_OP1(", ")")
 |
-T_OP2() =>
-print("T_OP2(", ")")
+T_OP2(tok) =>
+print("T_OP2(", tok, ")")
 |
-T_OP3(sym) =>
-print("T_OP3(", sym, ")")
+T_OP3(tok) =>
+print("T_OP3(", tok, ")")
 //
 |
 T_IN0() =>
