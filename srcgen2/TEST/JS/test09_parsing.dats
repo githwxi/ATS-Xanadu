@@ -229,4 +229,11 @@ prerrln("p1_s0exp(\"lam(x0:int) => x0+x0\") = ", opt)
 
 (* ****** ****** *)
 
+val opt =
+p1_fun_test<s0exp>("{a:int}int(a)->void", p1_s0exp)
+val ( ) =
+prerrln("p1_s0exp(\"{a:int}int(a)->void\") = ", opt)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)
