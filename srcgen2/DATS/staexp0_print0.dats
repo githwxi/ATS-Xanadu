@@ -391,11 +391,56 @@ S0Etup1(tkb,opt,ses,srp) =>
 print("S0Etup1(",tkb,";",opt,";",ses,";",srp,")")
 //
 |
-S0Etkerr(tok) => print("S0Etkerr(",tok,")")
+S0Ercd2(tkb,opt,lses,lsrb) =>
+print("S0Ercd2(",tkb,";",opt,";",lses,";",lsrb,")")
+//
 |
-S0Eerrck(lvl,se1) => print("S0Eerrck(",lvl,se1,")")
+S0Eanno(se1,st2) =>
+print("S0Eanno(",se1,";",st2,")") //HX:annotation
+//
+|
+S0Etkerr(tok) => print("S0Etkerr(",tok,")")//HX:error
+|
+// HX: [S0Eerrck]: syntax error confirmed by checking
+S0Eerrck(lvl,se1) => print("S0Eerrck(", lvl, ";", se1,")")
 //
 end (*let*)//end-of-[s0exp_fprint(out,s0e)]
+
+(* ****** ****** *)
+
+#implfun
+s0exp_RPAREN_fprint
+  (out, srp) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ srp of
+|
+s0exp_RPAREN_cons0(tbar) =>
+print("s0exp_RPAREN_cons0(",tbar,")")
+|
+s0exp_RPAREN_cons1(tok1, s0es, tok2) =>
+print("s0exp_RPAREN_cons1(",tok1,";",s0es,";",tok2,")")
+end (*let*) // end of [s0exp_RPAREN_fprint]
+
+(* ****** ****** *)
+
+#implfun
+l0s0e_RBRACE_fprint
+  (out, lsrb) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ lsrb of
+|
+l0s0e_RBRACE_cons0(tbar) =>
+print("l0s0e_RBRACE_cons0(",tbar,")")
+|
+l0s0e_RBRACE_cons1(tok1, lses, tok2) =>
+print("l0s0e_RBRACE_cons1(",tok1,";",lses,";",tok2,")")
+end (*let*) // end of [s0exp_RBRACE_fprint]
 
 (* ****** ****** *)
 

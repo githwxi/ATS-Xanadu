@@ -260,6 +260,9 @@ s0exp_fprint(g_print$out<>(), s0e)
 #impltmp
 g_print<s0exp_RPAREN>(srp) =
 s0exp_RPAREN_fprint(g_print$out<>(), srp)
+#impltmp
+g_print<l0s0e_RBRACE>(lsrb) =
+l0s0e_RBRACE_fprint(g_print$out<>(), lsrb)
 //
 (* ****** ****** *)
 
