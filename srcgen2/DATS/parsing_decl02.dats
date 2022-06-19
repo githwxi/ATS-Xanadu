@@ -62,6 +62,8 @@ lctn with l0abl_get_lctn//staexp0
 lctn with sort0_get_lctn//staexp0
 #symload
 lctn with s0exp_get_lctn//staexp0
+#symload
+lctn with s0tdf_get_lctn//staexp0
 (* ****** ****** *)
 #symload
 node with token_get_node//lexing0

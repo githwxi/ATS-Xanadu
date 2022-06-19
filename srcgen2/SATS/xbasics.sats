@@ -133,6 +133,9 @@ valkind =
 //
 | VLKvlp // val+
 | VLKvln // val-
+//
+| VLKvlr // vlr: valrec
+//
 (*
 // for model-checking
 | VLKmcval of () // check-val
