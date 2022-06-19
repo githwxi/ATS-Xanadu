@@ -137,12 +137,13 @@ D0Csortdef of
 (token, s0tid, token, s0tdf(*defn*))
 //
 (* ****** ****** *)
-
+fun
+d0ecl_fprint(FILR, d0ecl): void
+(* ****** ****** *)
 fun
 d0ecl_make_node
 (loc:loc_t, nod:d0ecl_node): d0ecl
 #symload d0ecl with d0ecl_make_node
-
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp0.sats] *)

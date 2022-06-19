@@ -54,6 +54,7 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
 //
 #impltmp
@@ -263,6 +264,12 @@ s0exp_RPAREN_fprint(g_print$out<>(), srp)
 #impltmp
 g_print<l0s0e_RBRACE>(lsrb) =
 l0s0e_RBRACE_fprint(g_print$out<>(), lsrb)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d0ecl>(s0e) =
+d0ecl_fprint(g_print$out<>(), s0e)
 //
 (* ****** ****** *)
 

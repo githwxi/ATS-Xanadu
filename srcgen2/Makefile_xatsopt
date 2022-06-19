@@ -229,6 +229,16 @@ staexp0_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp0_print0.dats
 
 ######
 all_dats:: \
+dynexp0_dats
+dynexp0_dats: ; $(XATSOPT) --dynamic DATS/dynexp0.dats
+######
+all_dats:: \
+dynexp0_print0_dats
+dynexp0_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp0_print0.dats
+######
+
+######
+all_dats:: \
 parsing_dats
 parsing_dats: ; $(XATSOPT) --dynamic DATS/parsing.dats
 ######
