@@ -586,7 +586,42 @@ if
 then s0e else s0exp_lpar_errck(s0e.lctn(),tkb,ses,srp)
 end (*let*) // end of [f0_lpar]
 //
-} (*where*) // end of [preadx0_s0exp]
+} (*where*) // end of [preadx0_s0exp(s0e,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_l0s0e
+  (lse, err) =
+let
+//
+val e00 = err
+//
+val+
+S0LAB
+(lab,teq,s0e) = lse
+//
+val ( ) =
+(
+case+ lab of
+|
+L0ABLsome _ => ()
+|
+L0ABLnone _ => (err := err + 1)
+)
+val ( ) =
+(
+case+ teq.node() of
+|
+T_EQ0() => () // HX: lab = s0e
+|
+_(*non-EQ0*) => (err := err + 1)
+)
+val s0e = preadx0_s0exp(s0e, err)
+in//let
+if
+(err = e00) then lse else S0LAB(lab,teq,s0e)
+end (*let*) // end of [preadx0_l0s0e(lse,err)]
 //
 (* ****** ****** *)
 //
@@ -637,15 +672,15 @@ case+ s0ts of
 list_nil() =>
 list_nil()
 |
-list_cons(s0t1, sts1) =>
-let
-val e00 = err
-val s0t1 = preadx0_sort0(s0t1, err)
-val sts1 = preadx0_sort0lst(sts1, err)
+list_cons
+(s0t1, sts1) => let
+  val e00 = err
+  val s0t1 = preadx0_sort0(s0t1, err)
+  val sts1 = preadx0_sort0lst(sts1, err)
 in//let
 if err = e00 then s0ts else list_cons(s0t1, sts1)
 endlet // end of [list_cons(st01,sts1)]
-) (*case*)//end-of-[preadx0_sort0lst(s0ts,err)]
+) (*case*) // end-of-[preadx0_sort0lst(s0ts,err)]
 //
 #implfun
 preadx0_s0explst
@@ -656,15 +691,38 @@ case+ s0es of
 list_nil() =>
 list_nil()
 |
-list_cons(s0e1, ses1) =>
-let
-val e00 = err
-val s0e1 = preadx0_s0exp(s0e1, err)
-val ses1 = preadx0_s0explst(ses1, err)
+list_cons
+(s0e1, ses1) => let
+//
+  val e00 = err
+  val s0e1 = preadx0_s0exp(s0e1, err)
+  val ses1 = preadx0_s0explst(ses1, err)
+//
 in//let
 if err = e00 then s0es else list_cons(s0e1, ses1)
 endlet // end of [list_cons(s0e1,s0es)]
-) (*case*)//end-of-[preadx0_s0explst(s0es,err)]
+) (*case*) // end-of-[preadx0_s0explst(s0es,err)]
+//
+#implfun
+preadx0_l0s0elst
+  (lses, err) =
+(
+case+ lses of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(lse1, lxs1) => let
+//
+  val e00 = err
+  val lse1 = preadx0_l0s0e(lse1, err)
+  val lxs1 = preadx0_l0s0elst(lxs1, err)
+//
+in//let
+if err = e00 then lses else list_cons(lse1, lxs1)
+endlet // end of [list_cons(s0e1,lses)]
+) (*case*) // end-of-[preadx0_l0s0elst(lses,err)]
 //
 (* ****** ****** *)
 
@@ -711,6 +769,53 @@ _(*non-T_RPAREN*) =>
 //
 endlet // end of [s0exp_RPAREN_cons1]
 ) (*case*) // end of [preadx0_s0exp_RPAREN]
+
+(* ****** ****** *)
+
+#implfun
+preadx0_l0s0e_RBRACE
+  (lsrb, err) =
+(
+case+ lsrb of
+|
+l0s0e_RBRACE_cons0
+(      tend      ) =>
+(
+case+
+tend.node() of
+|
+T_RBRACE() => lsrb
+|
+_(*non-T_RBRACE*) => (err := err+1; lsrb)
+)
+|
+l0s0e_RBRACE_cons1
+(tbar, lses, tend) =>
+let
+//
+val e00 = err
+//
+val lses =
+preadx0_l0s0elst(lses, err)
+in//let
+//
+case+
+tend.node() of
+|
+T_RBRACE() =>
+(
+  if
+  (err=e00)
+  then lsrb
+  else l0s0e_RBRACE_cons1(tbar, lses, tend)
+)
+|
+_(*non-T_RBRACE*) =>
+(err := err+1; l0s0e_RBRACE_cons1(tbar, lses, tend))
+//
+endlet // end of [l0s0e_RBRACE_cons1]
+) (*case*) // end of [preadx0_l0s0e_RBRACE]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_staexp.dats] *)
