@@ -1250,7 +1250,7 @@ val (  ) = buf.skip1()
 val s0e0 = p1_s0exp_atm(buf, err)
 val loc0 = tqua.lctn()+s0e0.lctn()
 in//let
-  err := e00; s0exp(loc0, S0Equal(tqua, s0e0))
+err := e00; s0exp(loc0, S0Equal(tqua, s0e0))
 end (*let*) // end of [T_IDQUA(qid)]
 //
 |
