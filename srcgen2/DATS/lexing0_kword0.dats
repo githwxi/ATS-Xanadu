@@ -72,6 +72,7 @@ val T0FCAST = T_FUN(FNKfcast)
 val T0VAL = T_VAL(VLKval)
 val T0VLP = T_VAL(VLKvlp)
 val T0VLN = T_VAL(VLKvln)
+val T0VLR = T_VAL(VLKvlr)
 val T0VAR = T_VAR(VLKvar)
 //
 val T0PRVAL = T_VAL(VLKprval)
@@ -215,6 +216,7 @@ val () = kwdins("fn", T0FN)
 *)
 //
 val () = kwdins("val", T0VAL)
+val () = kwdins("vlr", T0VLR)
 val () = kwdins("var", T0VAR)
 //
 val () = kwdins("fn0", T0FN0)

@@ -85,10 +85,13 @@ valkind_fprint
 in//let
 //
 case+ vlk of
+//
 | VLKval() => print("VLKval")
 //
 | VLKvlp() => print("VLKvlp")
 | VLKvln() => print("VLKvln")
+//
+| VLKvlr() => print("VLKvlr")
 //
 | VLKprval() => print("VLKprval")
 //
