@@ -100,10 +100,10 @@ D0E = "./dynexp0.sats"
 //
 #typedef
 p1_fun(r0:type) =
-(!tkbf0, &int >> _)->(r0)
+(!tkbf0, &sint >> _)->(r0)
 #typedef
 pq_fun(r0:type) =
-(!tkbf0, &int >> _)->optn(r0)
+(!tkbf0, &sint >> _)->optn(r0)
 //
 (* ****** ****** *)
 //
@@ -273,10 +273,11 @@ fp_fun(syn:type) =
 //
 #typedef d0eclist = list(d0ecl)
 //
-fun fp_d0ecl: fp_fun(d0ecl)
-//
+fun
+fp_d0ecl: fp_fun(d0ecl)
 fun
 fp_d0eclseq: fp_fun(d0eclist)
+//
 fun
 fp_d0eclseq_top: fp_fun(d0eclist)
 //

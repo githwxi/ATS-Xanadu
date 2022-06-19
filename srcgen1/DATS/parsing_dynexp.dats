@@ -4634,7 +4634,7 @@ val e0 = err
 fun
 loop
 ( buf:
- &tokbuf >> _
+& tokbuf >> _
 , err: &int >> _
 , res: &ptr? >> List0_vt(d0ecl)
 ) : void = let
