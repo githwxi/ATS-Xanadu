@@ -127,7 +127,9 @@ s0e.node() of
 |
 S0Eapps(ses) => fpemsg(out, ses)
 |
-S0Elpar(tkb,ses,tke) => fpemsg(out, ses)
+S0Efimp(tkb,ses,tke) => fpemsg(out, ses)
+|
+S0Elpar(tkb,ses,srp) => fpemsg(out, ses)
 |
 S0Eerrck(lvl, se1) =>
 (

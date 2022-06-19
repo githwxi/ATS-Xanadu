@@ -251,6 +251,9 @@ fun p1_s0tdf: p1_fun(s0tdf)
 (* ****** ****** *)
 fun
 p1_sort0_app_NGT: p1_fun(sort0)
+(* ****** ****** *)
+fun
+p1_s0exp_app_NEQ: p1_fun(s0exp)
 fun
 p1_s0exp_app_NGT: p1_fun(s0exp)
 (* ****** ****** *)

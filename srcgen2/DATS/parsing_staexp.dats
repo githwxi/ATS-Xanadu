@@ -1456,4 +1456,89 @@ case+ node of
 
 (* ****** ****** *)
 
+local
+
+fun
+p1_s0exp_app_ntk
+( buf:
+! tkbf0
+, err: &sint >> _
+, ntk
+: (tnode) -> bool): s0exp =
+let
+//
+fun
+f1_ngt
+( buf:
+! tkbf0
+, err: &sint >> _): s0exp =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in
+if
+ntk(tnd)
+then
+p1_s0exp_atm(buf, err)
+else let
+  val () = (err := e00 + 1)
+in
+s0exp(tok.lctn(), S0Etkerr(tok))
+end (*let*) // end of [else]
+end (*let*) // end of [f1_ngt]
+//
+val s0e1 = f1_ngt(buf, err)
+val s0es =
+list_vt2t(ps_p1fun{s0exp}(buf,err,f1_ngt))
+//
+in
+//
+case+ s0es of
+|
+list_nil
+((*void*)) => s0e1
+|
+list_cons _ =>
+let
+  val s0e2 = list_last(s0es)
+  val lres = s0e1.lctn()+s0e2.lctn()
+in//let
+s0exp(lres, S0Eapps(list_cons(s0e1,s0es)))
+end // end of [list_cons]
+//
+end(*let*)//end(p1_s0exp_app_ntk(buf,err,ntk))
+
+in//local
+
+#implfun
+p1_s0exp_app_NEQ
+  (buf, err) =
+(
+p1_s0exp_app_ntk(buf, err, ntk)
+) where
+{
+fun
+ntk(tnd: tnode): bool =
+(case+ tnd of T_EQ0() => false | _ => true)
+} (*where*)//end-of(p1_s0exp_app_NEQ(buf,err))
+
+#implfun
+p1_s0exp_app_NGT
+  (buf, err) =
+(
+p1_s0exp_app_ntk(buf, err, ntk)
+) where
+{
+fun
+ntk(tnd: tnode): bool =
+(case+ tnd of T_GT0() => false | _ => true)
+} (*where*)//end-of(p1_s0exp_app_NGT(buf,err))
+
+endloc(*local*)//end-of[local(p1_s0exp_app_ntk]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_parsing_staexp.dats] *)
