@@ -140,6 +140,16 @@ D0Csortdef of
 fun
 d0ecl_fprint(FILR, d0ecl): void
 (* ****** ****** *)
+//
+fun
+d0ecl_get_lctn(d0ecl): loc_t
+fun
+d0ecl_get_node(d0ecl): d0ecl_node
+//
+#symload lctn with d0ecl_get_lctn
+#symload node with d0ecl_get_node
+//
+(* ****** ****** *)
 fun
 d0ecl_make_node
 (loc:loc_t, nod:d0ecl_node): d0ecl
