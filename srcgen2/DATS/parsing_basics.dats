@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
+#symload node with token_get_node
+(* ****** ****** *)
 
 #implfun
 t0_t0int(tnd) =

@@ -84,6 +84,13 @@ val e00 = err
 val tok = buf.getk0()
 val tnd = tok.tnode()
 //
+(*
+val ( ) =
+prerrln("fp_d0ecl: f00 = ", f00)
+val ( ) =
+prerrln("fp_d0ecl: tok = ", tok)
+*)
+//
 in//let
 //
 case+ tnd of
@@ -103,7 +110,7 @@ in
 err := e00;
 d0ecl_make_node
 (lres, D0Clocal(tbeg, head, tmid, body, tend))
-end // end of [ T_LOCAL() ]
+end (*let*) // end of [ T_LOCAL() ]
 //
 |
 T_SORTDEF() => let
@@ -119,7 +126,11 @@ T_SORTDEF() => let
 in
 err := e00;
 d0ecl(lres, D0Csortdef(tknd, tid0, teq1, def2))
-end // end of [ T_SORTDEF() ]
+end (*let*) // end of [ T_SORTDEF() ]
+//
+|
+_(*case-of-error*) =>
+(err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
 //
 end (*let*) // end of [fp_d0ecl(f00,buf,err)]
 
@@ -146,17 +157,35 @@ val
 dcl = fp_d0ecl(f00, buf, err)
 in//let
 if
-(err > e00)
+(err = e00)
 then
-list_vt_reverse0(res)
-else
 loop(buf, err, cons_vt(dcl, res))
+else
+(err := e00; list_vt_reverse0(res))
 end(*let*)//end-of[loop(buf,err,res)]
 //
 in
 list_vt2t
 (loop(buf, err, list_vt_nil(*void*)))
 end(*let*)//end-of[fp_d0eclseq(f00,buf,err)]
+
+(* ****** ****** *)
+
+local
+//
+#define STA 0
+#define DYN 1
+//
+in//local
+//
+#implfun
+p1_d0eclseq_sta
+(buf, err) = fp_d0eclseq(STA, buf, err)
+#implfun
+p1_d0eclseq_dyn
+(buf, err) = fp_d0eclseq(DYN, buf, err)
+//
+endloc (*local*) // end of [local(p1_declseq...)]
 
 (* ****** ****** *)
 

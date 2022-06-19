@@ -267,7 +267,7 @@ end (*let*) // end of [g0nam_fprint]
 
 #implfun
 sort0_fprint
-(out, s0t) =
+( out, s0t ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -313,7 +313,7 @@ end (*let*)//end-of-[sort0_fprint(out,s0t)]
 
 #implfun
 s0tcn_fprint
-(out, tcn) =
+( out, tcn ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -330,7 +330,7 @@ end (*let*) // end of [s0tcn_fprint]
 
 #implfun
 d0tst_fprint
-(out, dst) =
+( out, dst ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -347,7 +347,7 @@ end (*let*) // end of [d0tst_fprint]
 
 #implfun
 s0arg_fprint
-(out, s0a) =
+( out, s0a ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -368,7 +368,7 @@ end (*let*) // end of [s0arg_fprint]
 
 #implfun
 s0mag_fprint
-(out, s0m) =
+( out, s0m ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -392,7 +392,7 @@ end (*let*)//end of [s0mag_fprint(out,s0m)]
 
 #implfun
 s0qua_fprint
-(out, s0q) =
+( out, s0q ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -413,7 +413,7 @@ end (*let*)//end of [s0qua_fprint(out,s0q)]
 
 #implfun
 s0exp_fprint
-(out, s0e) =
+( out, s0e ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -484,6 +484,31 @@ S0Etkerr(tok) => print("S0Etkerr(",tok,")")//HX:error
 S0Eerrck(lvl,se1) => print("S0Eerrck(", lvl, ";", se1,")")
 //
 end (*let*)//end-of-[s0exp_fprint(out,s0e)]
+
+(* ****** ****** *)
+
+#implfun
+s0tdf_fprint
+( out, stdf ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+stdf.node() of
+|
+S0TDFsort(s0t1) =>
+(
+  print("S0TDFsort(",s0t1,")")
+)
+|
+S0TDFtsub
+(tbeg,s0a1,tbar,s0es,tend) =>
+( print("S0TDFtsub(")
+; print(tbeg,";",s0a1,";"); print(tbar,";",s0es,";",tend,")"))
+//
+end (*let*) // end of [s0tdf_fprint(out,stdf)]
 
 (* ****** ****** *)
 
