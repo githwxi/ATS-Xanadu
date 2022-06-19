@@ -222,4 +222,11 @@ prerrln("p1_s0exp(\"@{l1=sint,l2=bool}\") = ", opt)
 
 (* ****** ****** *)
 
+val opt =
+p1_fun_test<s0exp>("lam(x0:int) => x0+x0", p1_s0exp)
+val ( ) =
+prerrln("p1_s0exp(\"lam(x0:int) => x0+x0\") = ", opt)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)

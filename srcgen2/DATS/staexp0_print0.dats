@@ -346,6 +346,51 @@ end (*let*) // end of [d0tst_fprint]
 (* ****** ****** *)
 
 #implfun
+s0arg_fprint
+(out, s0a) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s0a.node() of
+|
+S0ARGnone(tok) =>
+print("S0ARGnone(", tok, ")")
+|
+S0ARGsome(id0, tres) =>
+print("S0ARGsome(",id0,";",tres,")")
+//
+end (*let*) // end of [s0arg_fprint]
+
+(* ****** ****** *)
+
+#implfun
+s0mag_fprint
+(out, s0m) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s0m.node() of
+|
+S0MAGnone(tok) =>
+print("S0MAGnone(", tok, ")")
+|
+S0MAGsing(id0) =>
+print("S0MAGsing(", id0, ")")
+|
+S0MAGlist(tbeg, s0as, tend) =>
+print("S0MAGlist(",tbeg,";",s0as,";",tend,")")
+//
+end (*let*) // end of [s0mag_fprint]
+
+(* ****** ****** *)
+
+#implfun
 s0exp_fprint
 (out, s0e) =
 let
@@ -393,6 +438,10 @@ print("S0Etup1(",tkb,";",opt,";",ses,";",srp,")")
 |
 S0Ercd2(tkb,opt,lses,lsrb) =>
 print("S0Ercd2(",tkb,";",opt,";",lses,";",lsrb,")")
+//
+|
+S0Elam0(tlam,s0ms,tres,arrw,body,tend) =>
+(print("S0Elam0(",tlam,";",s0ms,";",tres);print(";",arrw,";",body,";",tend,")"))
 //
 |
 S0Eanno(se1,st2) =>

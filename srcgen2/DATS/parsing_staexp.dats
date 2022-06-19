@@ -96,15 +96,16 @@ fun p1_s0mag: p1_fun(s0mag)
 fun p1_t0mag: p1_fun(t0mag)
 (* ****** ****** *)
 #extern
-fun p1_s0argseq: p1_fun(s0arglst)
+fun p1_s0qua: p1_fun(s0qua)
+(* ****** ****** *)
 #extern
 fun p1_s0magseq: p1_fun(s0maglst)
 #extern
 fun p1_t0magseq: p1_fun(t0maglst)
 (* ****** ****** *)
 #extern
-fun p1_s0qua: p1_fun(s0qua)
-(* ****** ****** *)
+fun
+p1_s0argseq_COMMA: p1_fun(s0arglst)
 #extern
 fun
 p1_s0quaseq_BSCLN: p1_fun(s0qualst)
@@ -245,6 +246,30 @@ _(*non-IDENT*) =>
 (err := e00+1; i0dnt_none(tok))
 //
 end // end-of-let // end of [p1_s0tid]
+
+(* ****** ****** *)
+
+#implfun
+p1_s0aid(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in
+//
+case+ tnd of
+|
+T_IDENT_alp _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+| _(*non-T_IDALP*) =>
+(err := e00 + 1; i0dnt_none(tok))
+//
+end (*let*) // end of [p_s0aid(buf,err)]
 
 (* ****** ****** *)
 
@@ -466,6 +491,10 @@ end(*let*)//end-of-[p1_sort0(buf,err)]
 
 (* ****** ****** *)
 
+endloc (*local*) // end of [local(p1_sort0)]
+
+(* ****** ****** *)
+
 #implfun
 p1_sort0_tid
   (buf, err) = let
@@ -601,10 +630,6 @@ ps_COMMA_p1fun{sort0}(buf, err, p1_sort0)
 //
 (* ****** ****** *)
 
-endloc (*local*) // end of [local(p1_sort0)]
-
-(* ****** ****** *)
-
 #implfun
 pq_sort0_anno
   (buf, err) = let
@@ -653,31 +678,126 @@ s0exp(loc, S0Eanno(s0e, s0t))
 end
 ) (*case*)//end-of(s0exp_anno_opt)
 (* ****** ****** *)
+
+#implfun
+p1_s0arg(buf, err) = let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in//let
+//
+case+
+tok.node() of
+| _
+when t0_s0aid(tnd) =>
+let
+val id0 = p1_s0aid(buf, err)
+val tok = buf.getk0((*void*))
+in//let
+//
+case+
+tok.node() of
+//
+|
+T_CLN() =>
+let
+val ( ) = buf.skip1()
+val s0t = p1_sort0(buf, err)
+val loc = id0.lctn() + s0t.lctn()
+in//let
+  err := e00
+; s0arg(loc, S0ARGsome(id0, some(s0t)))
+end (*end*) // end of [T_CLN]
+//
+|
+_(*non-T_CLN*) =>
+let
+val loc = id0.lctn()
+in
+s0arg(loc, S0ARGsome(id0, none((*nil*))))
+end (*let*) // end of [non-T_CLN]
+//
+end (*let*) // end of [t0_s0aid(tok)]
+//
+| _ (* otherwise *) =>
+(err := e00 + 1; s0arg(tok.lctn(), S0ARGnone(tok)))
+//
+end (*let*) // end-of-[p1_s0arg(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_s0mag(buf, err) =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_LPAREN() =>
+let
+val tbeg = tok
+val () = buf.skip1()
+val s0as =
+p1_s0argseq_COMMA(buf, err)
+val tend = p1_RPAREN(buf, err)
+val lres = tbeg.lctn() + tend.lctn()
+in//let
+  err := e00
+; s0mag(lres, S0MAGlist(tbeg, s0as, tend))
+end (*let*) // end of [T_LPAREN]
+//
+| _
+when t0_s0aid(tnd) =>
+let
+  val id0 = p1_s0aid(buf, err)
+in//let
+(err := e00; s0mag(id0.lctn(), S0MAGsing(id0)))
+end (*let*) // end of [t0_s0aid]
+//
+| _(*otherwise*) =>
+(err := e00 + 1; s0mag(tok.lctn(), S0MAGnone(tok))
+//
+end (*let*) // end of [p1_s0mag(buf,err)]
+
+(* ****** ****** *)
 //
 #implfun
 p1_s0magseq
 (  buf, err  ) =
 list_vt2t
-(
-ps_p1fun{s0mag}(buf, err, p1_s0mag)
-)
+(ps_p1fun{s0mag}(buf, err, p1_s0mag))
 #implfun
 p1_t0magseq
 (  buf, err  ) =
 list_vt2t
-(
-ps_p1fun{t0mag}(buf, err, p1_t0mag)
-)
+(ps_p1fun{t0mag}(buf, err, p1_t0mag))
 //
 (* ****** ****** *)
 
+#implfun
+p1_s0argseq_COMMA
+(  buf, err  ) =
+list_vt2t
+(
+ps_COMMA_p1fun{s0arg}(buf, err, p1_s0arg)
+) (* end of [p1_s0argseq_COMMA] *)
+
+(* ****** ****** *)
 #implfun
 p1_s0quaseq_BSCLN
 (  buf, err  ) =
 list_vt2t
 (
 ps_BSCLN_p1fun{s0qua}(buf, err, p1_s0qua)
-)
+) (* end of [p1_s0argseq_COMMA] *)
 
 (* ****** ****** *)
 
@@ -799,6 +919,10 @@ println! ("p1_l0s0e: s0e = ", s0e)
 in
   (err := e00; S0LAB(lab, tok, s0e))
 end (*let*) // end of [p1_l0s0e(buf,err)]
+
+(* ****** ****** *)
+
+endloc (*local*) // end of [local(p1_s0exp)]
 
 (* ****** ****** *)
 
@@ -1055,10 +1179,6 @@ ps_COMMA_p1fun{l0s0e}(buf, err, p1_l0s0e)
 //
 (* ****** ****** *)
 
-endloc (*local*) // end of [local(p1_s0exp)]
-
-(* ****** ****** *)
-
 #implfun
 p1_s0exp_RPAREN
   (buf, err) =
@@ -1086,13 +1206,13 @@ case+ tnd of
 | T_RPAREN() => let
     val () = buf.skip1()
   in
-    (err := e00; s0exp_RPAREN_cons0(tok)
+    (err := e00; s0exp_RPAREN_cons0(tok))
   end // end of [RPAREN]
 | _(*non-RPAREN*) =>
   (err := e00 + 1; s0exp_RPAREN_cons0(tok))
 ) (*case*) // end of [non-T_BAR]
 //
-end (*let*) // end-of-[p_s0exp_RPAREN(buf,err)]
+end (*let*) // end-of-[p1_s0exp_RPAREN(buf,err)]
 
 (* ****** ****** *)
 
@@ -1123,7 +1243,7 @@ case+ tnd of
 | T_RBRACE() => let
     val () = buf.skip1()
   in
-    (err := e00; l0s0e_RBRACE_cons0(tok)
+    (err := e00; l0s0e_RBRACE_cons0(tok))
   end // end of [RBRACE]
 | _(*non-RBRACE*) =>
   (err := e00 + 1; l0s0e_RBRACE_cons0(tok))

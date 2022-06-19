@@ -66,6 +66,7 @@ S0E = "./staexp0.sats"
 //
 #typedef i0dnt = $S0E.i0dnt
 #typedef s0tid = $S0E.s0tid
+#typedef s0aid = $S0E.s0aid
 #typedef s0eid = $S0E.s0eid
 #typedef d0pid = $S0E.d0pid
 #typedef d0eid = $S0E.d0eid
@@ -75,6 +76,11 @@ S0E = "./staexp0.sats"
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
+//
+#typedef s0arg = $S0E.s0arg
+#typedef s0mag = $S0E.s0mag
+#typedef t0arg = $S0E.t0arg
+#typedef t0mag = $S0E.t0mag
 //
 (* ****** ****** *)
 //
@@ -199,6 +205,8 @@ fun p1_t0str: p1_fun(t0str)
 fun p1_i0dnt: p1_fun(i0dnt)
 
 fun p1_s0tid: p1_fun(s0tid)
+
+fun p1_s0aid: p1_fun(s0aid)
 fun p1_s0eid: p1_fun(s0eid)
 
 fun p1_d0pid: p1_fun(d0pid)
