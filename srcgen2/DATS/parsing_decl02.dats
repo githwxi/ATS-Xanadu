@@ -48,9 +48,99 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
+#symload
+lctn with token_get_lctn//lexing0
+#symload
+lctn with i0dnt_get_lctn//staexp0
+#symload
+lctn with l0abl_get_lctn//staexp0
+#symload
+lctn with sort0_get_lctn//staexp0
+#symload
+lctn with s0exp_get_lctn//staexp0
+(* ****** ****** *)
+#symload
+node with token_get_node//lexing0
+#symload
+node with i0dnt_get_node//staexp0
+#symload
+node with l0abl_get_node//staexp0
+(* ****** ****** *)
+#symload
+tnode with token_get_node//lexing0
+(* ****** ****** *)
+#symload + with add_loctn_loctn//locinfo
+(* ****** ****** *)
+
+#implfun
+fp_d0ecl
+(f00, buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+|
+T_LOCAL() =>
+let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val head =
+  fp_d0eclseq(f00, buf, err)
+  val tmid = pq_IN0(buf, err)
+  val body =
+  fp_d0eclseq( f00, buf, err )
+  val tend = p1_ENDLOC(buf, err)
+  val lres = tbeg.lctn() + tend.lctn()
+in
+err := e00;
+d0ecl_make_node
+(lres, D0Clocal(tbeg, head, tmid, body, tend))
+end // end of [ T_LOCAL() ]
+//
+end (*let*) // end of [fp_d0ecl(f00,buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+fp_d0eclseq
+(f00, buf, err) =
+let
+//
+  val e00 = err
+//
+fun
+loop
+( buf:
+! tkbf0 >> _
+, err
+: &sint >> _
+, res
+: list_vt(d0ecl)
+) : list_vt(d0ecl) =
+let
+val
+dcl = fp_d0ecl(f00, buf, err)
+in//let
+if
+(err > e00)
+then
+list_vt_reverse0(res)
+else
+loop(buf, err, cons_vt(dcl, res))
+end(*let*)//end-of[loop(buf,err,res)]
+//
+in
+list_vt2t
+(loop(buf, err, list_vt_nil(*void*)))
+end(*let*)//end-of[fp_d0eclseq(f00,buf,err)]
 
 (* ****** ****** *)
 

@@ -41,6 +41,39 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+//
+#staload
+LAB = "./xlabel0.sats"
+#staload
+LOC = "./locinfo.sats"
+//
+#typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+//
+(* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+#staload
+LEX = "./lexing0.sats"
+//
+#typedef sym_t = $SYM.sym_t
+#typedef token = $LEX.token
+//
+(* ****** ****** *)
+//
+#staload
+S0E = "./staexp0.sats"
+//
+#typedef sort0 = $S0E.sort0
+#typedef s0exp = $S0E.s0exp
+//
+(* ****** ****** *)
+#typedef tokenlst = list(token)
+#typedef tokenopt = optn(token)
+(* ****** ****** *)
 
 #abstbox d0exp_tbox // ptr
 #abstbox d0pat_tbox // ptr
@@ -58,6 +91,35 @@ ATS_PACKNAME
 #typedef d0ecl = d0ecl_tbox
 #typedef d0eclist = list(d0ecl)
 #typedef d0eclopt = optn(d0ecl)
+(* ****** ****** *)
+//
+datatype
+d0ecl_node =
+(*
+indicating error
+*)
+| D0Ctkerr of token
+//
+(*
+HX-2019:
+for skipping synerr:
+*)
+| D0Ctkskp of (token)
+//
+|
+D0Clocal of
+( token(*LOCAL*)
+, d0eclist(*head*)
+, tokenopt(*IN*)
+, d0eclist(*body*), token(*END*))
+//
+(* ****** ****** *)
+
+fun
+d0ecl_make_node
+(loc:loc_t, nod:d0ecl_node): d0ecl
+#symload d0ecl with d0ecl_make_node
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp0.sats] *)
