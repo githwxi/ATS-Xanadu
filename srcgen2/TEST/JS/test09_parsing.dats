@@ -88,6 +88,11 @@
 (* ****** ****** *)
 var the_err = 0
 (* ****** ****** *)
+#define
+p1_fun_test p1_fun_test_strn
+#define
+pq_fun_test pq_fun_test_strn
+(* ****** ****** *)
 
 val opt =
 p1_fun_test<t0int>("123", p1_t0int)

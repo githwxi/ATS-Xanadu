@@ -241,6 +241,10 @@ parsing_basics_dats
 parsing_basics_dats: ; $(XATSOPT) --dynamic DATS/parsing_basics.dats
 ######
 all_dats:: \
+parsing_utils0_dats
+parsing_utils0_dats: ; $(XATSOPT) --dynamic DATS/parsing_utils0.dats
+######
+all_dats:: \
 parsing_staexp_dats
 parsing_staexp_dats: ; $(XATSOPT) --dynamic DATS/parsing_staexp.dats
 ######
@@ -273,6 +277,7 @@ xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
 
+testall:: ; make all > /dev/null
 
 ######
 srclines:: ; wc -l */*.?ats

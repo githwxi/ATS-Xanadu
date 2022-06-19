@@ -282,6 +282,11 @@ fun
 fp_d0eclseq_top: fp_fun(d0eclist)
 //
 (* ****** ****** *)
+fun
+p1_d0eclseq_sta: p1_fun(d0eclist)
+fun
+p1_d0eclseq_dyn: p1_fun(d0eclist)
+(* ****** ****** *)
 (*
 //
 HX-2022-06-16:
@@ -352,13 +357,22 @@ ps_sep_p1fun{a:tx}
 //
 fun
 <r0:t0>
-p1_fun_test
+p1_fun_test_strn
 (inp: strn, pfn: p1_fun(r0)): optn(r0)
-//
 fun
 <r0:t0>
-pq_fun_test
+pq_fun_test_strn
 (inp: strn, pfn: pq_fun(r0)): optn(r0)
+//
+(* ****** ****** *)
+fun
+<r0:t0>
+p1_fun_test_fpath
+(fpx: strn, pfn: p1_fun(r0)): optn(r0)
+fun
+<r0:t0>
+pq_fun_test_fpath
+(fpx: strn, pfn: pq_fun(r0)): optn(r0)
 //
 (* ****** ****** *)
 
