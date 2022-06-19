@@ -29,35 +29,29 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: May 28th, 2022
+Start Time: June 16th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
-#abstbox d0exp_tbox // ptr
-#abstbox d0pat_tbox // ptr
-#abstbox d0ecl_tbox // ptr
-
+#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
-#typedef d0pat = d0pat_tbox
-#typedef d0patlst = list(d0pat)
-#typedef d0patopt = optn(d0pat)
+#staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-#typedef d0exp = d0exp_tbox
-#typedef d0explst = list(d0exp)
-#typedef d0expopt = optn(d0exp)
+#staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
-#typedef d0ecl = d0ecl_tbox
-#typedef d0eclist = list(d0ecl)
-#typedef d0eclopt = optn(d0ecl)
+#staload "./../SATS/parsing.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_dynexp0.sats] *)
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_parsing_decl01.dats] *)

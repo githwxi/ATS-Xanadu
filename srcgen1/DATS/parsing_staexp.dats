@@ -2612,7 +2612,7 @@ p_s0uniseq
 list_vt2t
 (pstar_fun{s0uni}(buf, err, p_s0uni))
 //
-) (* end of [p_d0eclseq] *)
+) (* end of [p_s0uniseq] *)
 
 (* ****** ****** *)
 
