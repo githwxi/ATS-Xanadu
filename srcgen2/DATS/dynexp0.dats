@@ -35,15 +35,15 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #include
-"./../HATS/xatsopt_sats.hats"
-#include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./lexing0_print0.dats"
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
@@ -51,35 +51,35 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
 
-#implfun
-d0ecl_fprint
-(out, dcl) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
+local
 //
-case+
-dcl.node() of
-//
-|
-D0Ctkerr(tok) =>
-print("D0Ctkerr(",tok,")")
-|
-D0Ctkskp(tok) =>
-print("D0Ctkskp(",tok,")")
-|
-D0Clocal
-(tknd,head,tin1,body,tend) =>
+datatype
+d0ecl =
+D0ECL of
 (
-print("D0Clocal(",tknd,";",head);
-print(";",tin1,";",body,";",tend,")"))
-|
-D0Csortdef(tknd,tid0,teq1,def2) =>
-print("D0Csortdef(",tknd,";",tid0,";",teq1,";",def2,")")
+loctn, d0ecl_node)
+#absimpl
+d0ecl_tbox = d0ecl
 //
-end (*let*) // end of [d0ecl_fprint(out,dcl)]
+in (* in-of-local *)
+//
+#implfun
+d0ecl_make_node
+(   loc,nod   ) = D0ECL(loc,nod)
+//
+#implfun
+d0ecl_get_lctn(dcl) =
+let
+  val+D0ECL(loc,nod) = dcl in loc
+end
+#implfun
+d0ecl_get_node(dcl) =
+let
+  val+D0ECL(loc,nod) = dcl in nod
+end
+//
+endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_dynexp0_print0.dats] *)
+(* end of [ATS3/XATSOPT_dynexp0.dats] *)
