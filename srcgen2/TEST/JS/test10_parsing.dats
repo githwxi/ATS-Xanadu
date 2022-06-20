@@ -102,11 +102,32 @@ p1_fun_test p1_fun_test_fpath
 #define
 pq_fun_test pq_fun_test_fpath
 (* ****** ****** *)
+//
+local
+//
+#impltmp
+<xs><x0>
+gseq_print$beg() = ()
+#impltmp
+<xs><x0>
+gseq_print$end() = ()
+#impltmp
+<xs><x0>
+gseq_print$sep() = g_print("\n")
+#impltmp
+g_print<token>(tok) =
+print(tok.lctn(), ":", tok.node())
+//
+in//local
+(* ****** ****** *)
 val opt =
 p1_fun_test<d0eclist>
 ("./mytest.dats", p1_d0eclseq_sta)
 val ( ) =
-prerrln("p1_fun_test(\"mytest.dats\") = ", opt)
+prerrln("p1_fun_test(\"mytest.dats\") =\n", opt)
+(* ****** ****** *)
+endloc (*local*) // end-of-(local)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)
