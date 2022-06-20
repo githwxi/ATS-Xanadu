@@ -215,6 +215,10 @@ D0Csexpdef of
 , s0eid(*name*)
 , s0maglst, sort0opt, token, s0exp)
 //
+|
+D0Cabsopen of
+(token(*ABSOPEN*), s0qid(*qualid*))
+//
 (* ****** ****** *)
 fun
 d0ecl_fprint(FILR, d0ecl): void

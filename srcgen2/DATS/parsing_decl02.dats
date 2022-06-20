@@ -58,8 +58,13 @@ lctn with token_get_lctn//lexing0
 lctn with i0dnt_get_lctn//staexp0
 #symload
 lctn with l0abl_get_lctn//staexp0
+(* ****** ****** *)
+#symload
+lctn with s0qid_get_lctn//staexp0
+(* ****** ****** *)
 #symload
 lctn with sort0_get_lctn//staexp0
+(* ****** ****** *)
 #symload
 lctn with s0exp_get_lctn//staexp0
 #symload
@@ -150,6 +155,21 @@ d0ecl_make_node
 ( lres
 , D0Csexpdef(tknd, sid0, smas, tann, teq1, s0e0))
 end (*let*) // end of [T_SEXPDEF(k0)]
+//
+|
+T_ABSOPEN() =>
+let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val sqid = p1_s0qid(buf, err)
+  val lres = tknd.lctn() + sqid.lctn()
+//
+in
+ (err := e00; d0ecl(lres, D0Cabsopen(tknd,sqid)))
+end // end of [ T_ABSOPEN() ]
+//
 //
 |
 _(*case-of-error*) =>

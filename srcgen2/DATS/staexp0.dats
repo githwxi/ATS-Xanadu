@@ -45,6 +45,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
@@ -63,29 +65,37 @@ in//local
 t0int_get_lctn(int) =
 (
 case+ int of
-| T0INTnone(tok) => tok.lctn()
-| T0INTsome(tok) => tok.lctn()
+|
+T0INTnone(tok) => tok.lctn()
+|
+T0INTsome(tok) => tok.lctn()
 )
 #implfun
 t0chr_get_lctn(chr) =
 (
 case+ chr of
-| T0CHRnone(tok) => tok.lctn()
-| T0CHRsome(tok) => tok.lctn()
+|
+T0CHRnone(tok) => tok.lctn()
+|
+T0CHRsome(tok) => tok.lctn()
 )
 #implfun
 t0flt_get_lctn(flt) =
 (
 case+ flt of
-| T0FLTnone(tok) => tok.lctn()
-| T0FLTsome(tok) => tok.lctn()
+|
+T0FLTnone(tok) => tok.lctn()
+|
+T0FLTsome(tok) => tok.lctn()
 )
 #implfun
 t0str_get_lctn(str) =
 (
 case+ str of
-| T0STRnone(tok) => tok.lctn()
-| T0STRsome(tok) => tok.lctn()
+|
+T0STRnone(tok) => tok.lctn()
+|
+T0STRsome(tok) => tok.lctn()
 )
 (* ****** ****** *)
 endloc (*local*) // end of [local]
@@ -500,6 +510,49 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+(* ****** ****** *)
+//
+#symload
+lctn with token_get_lctn
+#symload
+lctn with i0dnt_get_lctn
+//
+#symload + with add_loctn_loctn
+(* ****** ****** *)
+//
+in//local
+//
+#implfun
+s0qid_get_lctn
+(   qid   ) =
+(
+case+ qid of
+|
+S0QIDnone
+(  id0  ) => id0.lctn()
+|
+S0QIDsome
+(tok,id0) => tok.lctn()+id0.lctn()
+)
+#implfun
+d0qid_get_lctn
+(   qid   ) =
+(
+case+ qid of
+|
+D0QIDnone
+(  id0  ) => id0.lctn()
+|
+D0QIDsome
+(tok,id0) => tok.lctn()+id0.lctn()
+)
+//
+endloc (*local*) // end-of-[local]
 
 (* ****** ****** *)
 
