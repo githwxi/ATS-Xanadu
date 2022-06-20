@@ -54,6 +54,68 @@ ATS_PACKNAME
 local
 //
 datatype
+d0pat =
+D0PAT of
+(
+loctn, d0pat_node)
+#absimpl
+d0pat_tbox = d0pat
+//
+in (* in-of-local *)
+//
+#implfun
+d0pat_make_node
+(   loc,nod   ) = D0PAT(loc,nod)
+//
+#implfun
+d0pat_get_lctn(d0p) =
+let
+  val+D0PAT(loc,nod) = d0p in loc
+end
+#implfun
+d0pat_get_node(d0p) =
+let
+  val+D0PAT(loc,nod) = d0p in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0exp =
+D0EXP of
+(
+loctn, d0exp_node)
+#absimpl
+d0exp_tbox = d0exp
+//
+in (* in-of-local *)
+//
+#implfun
+d0exp_make_node
+(   loc,nod   ) = D0EXP(loc,nod)
+//
+#implfun
+d0exp_get_lctn(d0e) =
+let
+  val+D0EXP(loc,nod) = d0e in loc
+end
+#implfun
+d0exp_get_node(d0e) =
+let
+  val+D0EXP(loc,nod) = d0e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d0ecl =
 D0ECL of
 (
