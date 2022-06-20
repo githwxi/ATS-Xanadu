@@ -86,6 +86,7 @@ D0E = "./dynexp0.sats"
 #typedef s0mag = $S0E.s0mag
 #typedef t0arg = $S0E.t0arg
 #typedef t0mag = $S0E.t0mag
+#typedef s0qua = $S0E.s0qua
 //
 (* ****** ****** *)
 
@@ -286,7 +287,10 @@ pq_ids0t_anno: pq_fun(sort0)
 //
 #typedef s0arglst=list(s0arg)
 #typedef s0maglst=list(s0mag)
+#typedef t0arglst=list(t0arg)
 #typedef t0maglst=list(t0mag)
+//
+#typedef s0qualst=list(s0qua)
 //
 (* ****** ****** *)
 fun
@@ -296,15 +300,17 @@ p1_t0magseq: p1_fun(t0maglst)
 //
 (* ****** ****** *)
 fun
-p1_sort0_app_NGT: p1_fun(sort0)
+p1_sort0_app_NGT0: p1_fun(sort0)
 (* ****** ****** *)
 fun
-p1_s0exp_app_NEQ: p1_fun(s0exp)
+p1_s0exp_app_NEQ0: p1_fun(s0exp)
 fun
-p1_s0exp_app_NGT: p1_fun(s0exp)
+p1_s0exp_app_NGT0: p1_fun(s0exp)
 (* ****** ****** *)
 fun
 p1_s0argseq_COMMA: p1_fun(s0arglst)
+fun
+p1_t0argseq_COMMA: p1_fun(t0arglst)
 fun
 p1_s0quaseq_BSCLN: p1_fun(s0qualst)
 (* ****** ****** *)
