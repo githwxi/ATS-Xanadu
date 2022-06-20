@@ -70,6 +70,8 @@ D0E = "./dynexp0.sats"
 #typedef s0tid = $S0E.s0tid
 #typedef s0aid = $S0E.s0aid
 #typedef s0eid = $S0E.s0eid
+#typedef s0qid = $S0E.s0qid
+//
 #typedef d0pid = $S0E.d0pid
 #typedef d0eid = $S0E.d0eid
 //
@@ -217,6 +219,7 @@ fun p1_s0tid: p1_fun(s0tid)
 
 fun p1_s0aid: p1_fun(s0aid)
 fun p1_s0eid: p1_fun(s0eid)
+fun p1_s0qid: p1_fun(s0qid)
 
 fun p1_d0pid: p1_fun(d0pid)
 fun p1_d0eid: p1_fun(d0eid)

@@ -409,7 +409,7 @@ g0nam_get_lctn(g0nam): loc_t
 fun
 g0nam_get_node(g0nam): g0nam_node
 //
-#symload locn with g0nam_get_lctn
+#symload lctn with g0nam_get_lctn
 #symload node with g0nam_get_node
 //
 (* ****** ****** *)
@@ -419,7 +419,7 @@ g0exp_get_lctn(g0exp): loc_t
 fun
 g0exp_get_node(g0exp): g0exp_node
 //
-#symload locn with g0exp_get_lctn
+#symload lctn with g0exp_get_lctn
 #symload node with g0exp_get_node
 //
 (* ****** ****** *)
@@ -429,7 +429,7 @@ g0mag_get_lctn(g0mag): loc_t
 fun
 g0mag_get_node(g0mag): g0mag_node
 //
-#symload locn with g0mag_get_lctn
+#symload lctn with g0mag_get_lctn
 #symload node with g0mag_get_node
 //
 (* ****** ****** *)
@@ -448,8 +448,8 @@ s0qid_get_lctn(s0qid): loc_t
 fun
 d0qid_get_lctn(d0qid): loc_t
 //
-#symload locn with s0qid_get_lctn
-#symload locn with d0qid_get_lctn
+#symload lctn with s0qid_get_lctn
+#symload lctn with d0qid_get_lctn
 //
 fun s0qid_fprint:(FILR,s0qid)->void
 fun d0qid_fprint:(FILR,d0qid)->void

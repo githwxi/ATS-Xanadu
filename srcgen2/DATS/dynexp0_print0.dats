@@ -90,6 +90,10 @@ D0Csexpdef
 print("D0Csexpdef(",tknd,";");
 print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
+|
+D0Cabsopen(tknd, sqid) =>
+print("D0Cabsopen(",tknd,";",sqid,")")
+//
 end (*let*) // end of [d0ecl_fprint(out,dcl)]
 
 (* ****** ****** *)

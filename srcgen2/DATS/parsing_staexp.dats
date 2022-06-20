@@ -348,6 +348,38 @@ _(*non-IDENT*) => (err := e00+1; i0dnt_none(tok))
 end (*let*) // end of [p1_s0eid(buf, err)]
 
 (* ****** ****** *)
+//
+#implfun
+p1_s0qid(buf, err) =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_IDQUA _ =>
+let
+val ( ) = buf.skip1()
+val id0 = p1_s0eid(buf, err)
+in
+(err := e00; S0QIDsome(tok, id0))
+end // end of [T_IDENT_qual]
+//
+|
+_(*non-T_IDQUA*) =>
+(
+  S0QIDnone(id0)) where
+{
+  val id0 = p1_s0eid(buf, err)
+}
+//
+end(*let*)//end-of-[p_s0qid(buf,err)]
+//
+(* ****** ****** *)
 
 #implfun
 p1_i0dnt(buf, err) =
