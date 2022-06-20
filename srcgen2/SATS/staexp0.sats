@@ -476,6 +476,12 @@ sort0_node =
 | S0Ttype of int(*kind*)
 //prop/view/type/tbox/tflt/vwtp/vtbx/vtft
 *)
+//
+(*
+HX-2022-06-20:
+S0Ttkerr(tok):
+tok is not consumed by the parser!
+*)
 | S0Ttkerr of (token) // HX: parsing error
 //
 | S0Terrck of (int, sort0) // HX: pread error
@@ -786,6 +792,12 @@ S0Eexi0 of (token, s0qualst, token)//exists
 |
 S0Equal of (token, s0exp) // HX: qual-s0exp
 |
+//
+(*
+HX-2022-06-20:
+S0Etkerr(tok):
+tok is not consumed by the parser!
+*)
 // HX-2018-07-08: this one probably
 S0Etkerr of (token) // indicates some error!
 |

@@ -257,6 +257,115 @@ free_a09
 #symload free with free_a01
 #symload free with free_a02
 #symload free with free_a03
+#symload free with free_a04
+#symload free with free_a05
+#symload free with free_a06
+#symload free with free_a07
+#symload free with free_a08
+#symload free with free_a09
+//
+(* ****** ****** *)
+//
+fun
+<a0:t0>
+optn_a00
+(      ): optn(a0,ff)
+fun
+<a0:t0>
+optn_a01
+(x1: a0): optn(a0,tt)
+//
+(* ****** ****** *)
+//
+fun
+<a0:t0>
+list_a00
+(      ): list(a0, 0)
+fun
+<a0:t0>
+list_a01
+(x1: a0): list(a0, 1)
+fun
+<a0:t0>
+list_a02
+(x1: a0
+,x2: a0): list(a0, 2)
+fun
+<a0:t0>
+list_a03
+(x1: a0
+,x2: a0
+,x3: a0): list(a0, 3)
+fun
+<a0:t0>
+list_a04
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0): list(a0, 4)
+fun
+<a0:t0>
+list_a05
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0): list(a0, 5)
+fun
+<a0:t0>
+list_a06
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0
+,x6: a0): list(a0, 6)
+fun
+<a0:t0>
+list_a07
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0
+,x6: a0
+,x7: a0): list(a0, 7)
+fun
+<a0:t0>
+list_a08
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0
+,x6: a0
+,x7: a0
+,x8: a0): list(a0, 8)
+fun
+<a0:t0>
+list_a09
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0
+,x6: a0
+,x7: a0
+,x8: a0
+,x9: a0): list(a0, 9)
+//
+(* ****** ****** *)
+//
+#symload list with list_a00
+#symload list with list_a01
+#symload list with list_a02
+#symload list with list_a03
+#symload list with list_a04
+#symload list with list_a05
+#symload list with list_a06
+#symload list with list_a07
+#symload list with list_a08
+#symload list with list_a09
 //
 (* ****** ****** *)
 //
@@ -265,11 +374,11 @@ fun
 g_fproc(x: a): void
 //
 fun
-<a:vt>
-gl_fproc0(x: ~a): void
+<a0:vt>
+gl_fproc0(x0: ~a0): void
 fun
-<a:vt>
-gl_fproc1(x: !a): void
+<a0:vt>
+gl_fproc1(x0: !a0): void
 //
 (* ****** ****** *)
 //

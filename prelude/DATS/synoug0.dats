@@ -356,6 +356,124 @@ free_a09
 //
 (* ****** ****** *)
 //
+#impltmp
+<a0>
+optn_a00
+(      ) =
+optn_nil((*nil*))
+#impltmp
+<a0>
+optn_a01
+(  x1  ) =
+optn_cons(  x1  )
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>
+list_a00
+(      ) =
+list_nil((*void*))
+#impltmp
+<a0>
+list_a01
+(  x1  ) =
+list_cons(x1, list_nil())
+#impltmp
+<a0>
+list_a02
+(x1, x2) =
+list_cons(x1,
+list_cons(x2, list_nil()))
+#impltmp
+<a0>
+list_a03
+(x1
+,x2, x3) =
+list_cons(x1,
+list_cons(x2,
+list_cons(x3, list_nil())))
+#impltmp
+<a0>
+list_a04
+(x1, x2
+,x3, x4) =
+list_cons(x1,
+list_cons(x2,
+list_cons(x3,
+list_cons(x4, list_nil()))))
+#impltmp
+<a0>
+list_a05
+(x1
+,x2, x3
+,x4, x5) =
+list_cons(x1,
+list_cons(x2,
+list_cons(x3,
+list_cons(x4,
+list_cons(x5, list_nil())))))
+#impltmp
+<a0>
+list_a06
+(x1, x2
+,x3, x4
+,x5, x6) =
+list_cons(x1,
+list_cons(x2,
+list_cons(x3,
+list_cons(x4,
+list_cons(x5,
+list_cons(x6, list_nil()))))))
+#impltmp
+<a0>
+list_a07
+(x1
+,x2, x3
+,x4, x5
+,x6, x7) =
+list_cons(x1,
+list_cons(x2,
+list_cons(x3,
+list_cons(x4,
+list_cons(x5,
+list_cons(x6,
+list_cons(x7, list_nil())))))))
+#impltmp
+<a0>
+list_a08
+(x1, x2
+,x3, x4
+,x5, x6
+,x7, x8) =
+list_cons(x1,
+list_cons(x2,
+list_cons(x3,
+list_cons(x4,
+list_cons(x5,
+list_cons(x6,
+list_cons(x7,
+list_cons(x8, list_nil()))))))))
+#impltmp
+<a0>
+list_a09
+(x1
+,x2, x3
+,x4, x5
+,x6, x7
+,x8, x9) =
+list_cons(x1,
+list_cons(x2,
+list_cons(x3,
+list_cons(x4,
+list_cons(x5,
+list_cons(x6,
+list_cons(x7,
+list_cons(x8,
+list_cons(x9, list_nil())))))))))
+//
+(* ****** ****** *)
+//
 // HX:
 // Implementing
 // fproc/fproc0/fproc1
