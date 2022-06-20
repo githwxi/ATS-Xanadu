@@ -130,6 +130,20 @@ tokbuf_skip1(!tkbf0): (void)
 #symload getk1 with tokbuf_getk1
 #symload skip1 with tokbuf_skip1
 //
+(* ****** ****** *)
+//
+#absvwtp tmark_type == sint
+#vwtpdef tmark = tmark_type
+//
+fun
+tokbuf_mark_get(!tkbf0): tmark
+fun
+tokbuf_mark_clr(!tkbf0, tmark): void
+fun
+tokbuf_mark_set(!tkbf0, tmark): void
+//
+(* ****** ****** *)
+//
 fun
 tokbuf_make_list_vt
   (tks: list_vt(token)): tkbf0

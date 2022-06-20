@@ -58,6 +58,7 @@ TKBF0 of
 , sint(n) (*asz*)
 , sint(i) (*idx*) )
 
+#absimpl tmark_type = sint
 #absimpl tkbf0_vtbx = tkbf0
 
 (* ****** ****** *)
@@ -66,7 +67,7 @@ in//local
 
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 tokbuf_free(buf) =
 (
 case+ buf of
@@ -79,7 +80,7 @@ TKBF0
 //
 (* ****** ****** *)
 
-#impltmp
+#implfun
 tokbuf_getk0(buf) =
 let
 val+
@@ -96,7 +97,7 @@ end (*let*) // end of [tokbuf_getk0]
 
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 tokbuf_getk1(buf) =
 let
 //
@@ -121,7 +122,7 @@ end where
 //
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 tokbuf_skip1(buf) =
 let
 //
@@ -137,7 +138,31 @@ end where
 //
 (* ****** ****** *)
 //
-#impltmp
+#implfun
+tokbuf_mark_get
+  (buf) = let
+//
+val+
+TKBF0(A0, n0, i0) = buf in i0
+//
+end (*let*)// end of [tokbuf_mark_get]
+//
+#implfun
+tokbuf_mark_set
+  (buf, mrk) = let
+//
+val+
+@TKBF0
+(A0, n0, !i0) = buf in i0 := mrk
+//
+end (*let*)// end of [tokbuf_mark_set]
+//
+#implfun
+tokbuf_mark_clr(buf, mrk) = ((*void*))
+//
+(* ****** ****** *)
+//
+#implfun
 tokbuf_make_list_vt
   (tks) =
 (

@@ -130,7 +130,7 @@ S0E = "./staexp0.sats"
 //
 datatype
 d0pat_node =
-| D0Etkerr of (token)
+| D0Ptkerr of (token)
 //
 (* ****** ****** *)
 fun
