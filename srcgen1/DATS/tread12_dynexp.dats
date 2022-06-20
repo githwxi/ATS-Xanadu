@@ -266,8 +266,9 @@ case+
 d2e0.node() of
 //
 | D2Ei00(int) => ()
-| D2Eb00(int) => ()
-| D2Es00(int) => ()
+| D2Eb00(btf) => ()
+| D2Ec00(chr) => ()
+| D2Es00(str) => ()
 //
 | D2Eint(tok) => ()
 | D2Ebtf(tok) => ()
