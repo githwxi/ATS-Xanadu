@@ -277,6 +277,11 @@ optn_a01
 //
 (* ****** ****** *)
 //
+#symload optn with optn_a00
+#symload optn with optn_a01
+//
+(* ****** ****** *)
+//
 fun
 <a0:t0>
 list_a00
@@ -353,6 +358,19 @@ list_a09
 ,x7: a0
 ,x8: a0
 ,x9: a0): list(a0, 9)
+fun
+<a0:t0>
+list_a10
+(x01: a0
+,x02: a0
+,x03: a0
+,x04: a0
+,x05: a0
+,x06: a0
+,x07: a0
+,x08: a0
+,x09: a0
+,x10: a0): list(a0, 10)
 //
 (* ****** ****** *)
 //
@@ -366,6 +384,7 @@ list_a09
 #symload list with list_a07
 #symload list with list_a08
 #symload list with list_a09
+#symload list with list_a10
 //
 (* ****** ****** *)
 //
