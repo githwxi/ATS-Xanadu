@@ -130,6 +130,11 @@ S0E = "./staexp0.sats"
 //
 datatype
 d0pat_node =
+(*
+HX-2022-06-20:
+D0Ptkerr(tok):
+tok is not consumed by the parser!
+*)
 | D0Ptkerr of (token)
 //
 (* ****** ****** *)
@@ -162,6 +167,11 @@ d0exp_node =
 | D0Eflt of t0flt
 | D0Estr of t0str
 //
+(*
+HX-2022-06-20:
+D0Etkerr(tok):
+tok is not consumed by the parser!
+*)
 | D0Etkerr of (token)
 //
 (* ****** ****** *)
@@ -188,15 +198,18 @@ datatype
 d0ecl_node =
 //
 (*
-indicating error
-*)
-| D0Ctkerr of token
+HX-2022-06-20:
+D0Ptkerr(tok):
+tok is not consumed by the parser!
+*) // HX:This one is an indication
+| D0Ctkerr of (token)//of some error
 //
 (*
 HX-2019:
+D0Ptkskp(tok):
 for skipping synerr:
-*)
-| D0Ctkskp of (token)
+*)//HX:Note that [tok] is consumed
+| D0Ctkskp of (token)//by the parser
 //
 |
 D0Clocal of
