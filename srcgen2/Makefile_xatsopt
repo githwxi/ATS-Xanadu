@@ -259,12 +259,8 @@ parsing_staexp_dats
 parsing_staexp_dats: ; $(XATSOPT) --dynamic DATS/parsing_staexp.dats
 ######
 all_dats:: \
-parsing_decl01_dats
-parsing_decl01_dats: ; $(XATSOPT) --dynamic DATS/parsing_decl01.dats
-######
-all_dats:: \
-parsing_decl02_dats
-parsing_decl02_dats: ; $(XATSOPT) --dynamic DATS/parsing_decl02.dats
+parsing_decl00_dats
+parsing_decl00_dats: ; $(XATSOPT) --dynamic DATS/parsing_decl00.dats
 ######
 
 ######

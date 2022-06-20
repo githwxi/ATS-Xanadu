@@ -94,6 +94,10 @@ D0E = "./dynexp0.sats"
 #typedef d0ecl = $D0E.d0ecl
 
 (* ****** ****** *)
+
+#typedef a0tdf = $D0E.a0tdf
+
+(* ****** ****** *)
 //
 #absvwtp tkbf0_vtbx
 #vwtpdef tkbf0 = tkbf0_vtbx
@@ -262,6 +266,21 @@ fun p1_s0tdf: p1_fun(s0tdf)
 (* ****** ****** *)
 fun
 pq_sort0_anno: pq_fun(sort0)
+fun
+pq_ids0t_anno: pq_fun(sort0)
+(* ****** ****** *)
+//
+#typedef
+s0maglst = list(s0mag)
+#typedef
+t0maglst = list(t0mag)
+//
+(* ****** ****** *)
+fun
+p1_s0magseq: p1_fun(s0maglst)
+fun
+p1_t0magseq: p1_fun(t0maglst)
+//
 (* ****** ****** *)
 fun
 p1_sort0_app_NGT: p1_fun(sort0)
@@ -279,10 +298,20 @@ fp_fun(syn:type) =
 //
 #typedef d0eclist = list(d0ecl)
 //
+(* ****** ****** *)
+//
 fun
 fp_d0ecl: fp_fun(d0ecl)
+//
+fun
+p1_a0tdf: p1_fun(a0tdf)
+//
+(* ****** ****** *)
+//
 fun
 fp_d0eclseq: fp_fun(d0eclist)
+//
+(* ****** ****** *)
 //
 fun
 fp_d0eclseq_top: fp_fun(d0eclist)

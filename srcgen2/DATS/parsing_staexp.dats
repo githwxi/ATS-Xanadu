@@ -96,11 +96,6 @@ fun p1_t0mag: p1_fun(t0mag)
 fun p1_s0qua: p1_fun(s0qua)
 (* ****** ****** *)
 #extern
-fun p1_s0magseq: p1_fun(s0maglst)
-#extern
-fun p1_t0magseq: p1_fun(t0maglst)
-(* ****** ****** *)
-#extern
 fun
 p1_s0argseq_COMMA: p1_fun(s0arglst)
 #extern
@@ -692,6 +687,34 @@ _(*non-T_CLN*) => optn_nil(*void*)
 end (*let*)//end-of(pq_sort0_anno)
 
 (* ****** ****** *)
+
+#implfun
+pq_ids0t_anno
+  (buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_CLN() =>
+( err := e00
+; optn_cons(s0t)) where
+{
+  val ( ) = buf.skip1()
+  val s0t = p1_sort0_atm(buf, err)
+}
+|
+_(*non-COLON*) => optn_nil(*void*)
+//
+end (*let*) // end-of-[pq_ids0t_anno]
+
+(* ****** ****** *)
+
 fun
 s0exp_anno_opt
 ( s0e: s0exp
@@ -709,6 +732,7 @@ in
 s0exp(loc, S0Eanno(s0e, s0t))
 end
 ) (*case*)//end-of(s0exp_anno_opt)
+
 (* ****** ****** *)
 
 #implfun

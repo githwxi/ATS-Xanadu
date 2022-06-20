@@ -29,7 +29,7 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 16th, 2022
+Start Time: June 20th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -60,6 +60,10 @@ lctn with i0dnt_get_lctn//staexp0
 lctn with l0abl_get_lctn//staexp0
 (* ****** ****** *)
 #symload
+lctn with s0mag_get_lctn//staexp0
+#symload
+lctn with t0mag_get_lctn//staexp0
+#symload
 lctn with s0qid_get_lctn//staexp0
 (* ****** ****** *)
 #symload
@@ -81,6 +85,43 @@ node with l0abl_get_node//staexp0
 tnode with token_get_node//lexing0
 (* ****** ****** *)
 #symload + with add_loctn_loctn//locinfo
+(* ****** ****** *)
+
+#implfun
+p1_a0tdf(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+|
+T_IDSYM(sym) =>
+(
+case+ 0 of
+| _
+when(sym = "==") =>
+let
+val ( ) = buf.skip1()
+val s0e = p1_s0exp(buf, err)
+in
+(err := e00; A0TDFeqeq(tok, s0e))
+end (*let*)//end-of-(sym = "==")
+| _
+when(sym = "<=") =>
+let
+val ( ) = buf.skip1()
+val s0e = p1_s0exp(buf, err)
+in
+(err := e00; A0TDFlteq(tok, s0e))
+end (*let*)//end-of-(sym = "<=")
+| _(*non-lteq-eqeq*) => A0TDFsome()
+//
+end (*let*)//end-of-[p1_a0tdf(buf,err)]
+
 (* ****** ****** *)
 
 #implfun
@@ -156,6 +197,46 @@ d0ecl_make_node
 , D0Csexpdef(tknd, sid0, smas, tres, teq1, def2))
 end (*let*) // end of [T_SEXPDEF(k0)]
 //
+|
+T_ABSTYPE(k0) =>
+let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val sid0 =
+    p1_s0eid(buf, err)
+  val tmas =
+    p1_t0magseq(buf, err)
+  val tres =
+    pq_ids0t_anno(buf, err)
+  val tdef = p1_a0tdf(buf, err)
+//
+  val lres = let
+    val lknd = tknd.lctn()
+  in
+    case+ tdef of
+    | A0TDFsome() =>
+      (
+      case+ tmas of
+      | list_nil _ =>
+        (
+          lknd+sid0.lctn())
+      | list_cons _ =>
+        (
+          lknd+t0ma.lctn()) where
+        {
+          val t0ma = list_last(tmas)
+        }
+      ) (* A0TDFsome *)
+    | A0TDFlteq(tok, s0e) => lknd+s0e.lctn()
+    | A0TDFeqeq(tok, s0e) => lknd+s0e.lctn()
+  end : loc_t // end-of-let // end-of-val
+in
+err := e00;
+d0ecl_make_node
+(lres, D0Cabstype(tknd, sid0, tmas, tres, tdef))
+end // end of [T_ABSTYPE(k0)]
 |
 T_ABSOPEN() =>
 let
@@ -249,4 +330,4 @@ endloc(*local*)//end-of[local(p1_declseq...)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_parsing_decl02.dats] *)
+(* end of [ATS3/XATSOPT_parsing_decl00.dats] *)
