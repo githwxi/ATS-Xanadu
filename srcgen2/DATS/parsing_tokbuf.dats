@@ -145,7 +145,7 @@ tokbuf_mark_get
 val+
 TKBF0(A0, n0, i0) = buf in i0
 //
-end (*let*)// end of [tokbuf_mark_get]
+end (*let*)//end-of-[tokbuf_mark_get]
 //
 #implfun
 tokbuf_mark_set
@@ -155,7 +155,7 @@ val+
 @TKBF0
 (A0, n0, !i0) = buf in i0 := mrk
 //
-end (*let*)// end of [tokbuf_mark_set]
+end (*let*)//end-of-[tokbuf_mark_set]
 //
 #implfun
 tokbuf_mark_clr(buf, mrk) = ((*void*))

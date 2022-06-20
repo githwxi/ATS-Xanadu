@@ -284,10 +284,9 @@ fun
 pq_ids0t_anno: pq_fun(sort0)
 (* ****** ****** *)
 //
-#typedef
-s0maglst = list(s0mag)
-#typedef
-t0maglst = list(t0mag)
+#typedef s0arglst=list(s0arg)
+#typedef s0maglst=list(s0mag)
+#typedef t0maglst=list(t0mag)
 //
 (* ****** ****** *)
 fun
@@ -303,6 +302,11 @@ fun
 p1_s0exp_app_NEQ: p1_fun(s0exp)
 fun
 p1_s0exp_app_NGT: p1_fun(s0exp)
+(* ****** ****** *)
+fun
+p1_s0argseq_COMMA: p1_fun(s0arglst)
+fun
+p1_s0quaseq_BSCLN: p1_fun(s0qualst)
 (* ****** ****** *)
 //
 #typedef

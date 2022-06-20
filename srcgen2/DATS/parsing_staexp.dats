@@ -88,19 +88,14 @@ fun p1_sort0seq_COMMA: p1_fun(sort0lst)
 #extern
 fun p1_s0arg: p1_fun(s0arg)
 #extern
+fun p1_t0arg: p1_fun(t0arg)
+#extern
 fun p1_s0mag: p1_fun(s0mag)
 #extern
 fun p1_t0mag: p1_fun(t0mag)
 (* ****** ****** *)
 #extern
 fun p1_s0qua: p1_fun(s0qua)
-(* ****** ****** *)
-#extern
-fun
-p1_s0argseq_COMMA: p1_fun(s0arglst)
-#extern
-fun
-p1_s0quaseq_BSCLN: p1_fun(s0qualst)
 (* ****** ****** *)
 //
 #extern
@@ -372,7 +367,7 @@ _(*non-T_IDQUA*) =>
   val id0 = p1_s0eid(buf, err)
 }
 //
-end(*let*)//end-of-[p_s0qid(buf,err)]
+end(*let*)//end-of-[p1_s0qid(buf,err)]
 //
 (* ****** ****** *)
 
@@ -781,6 +776,60 @@ end (*let*) // end of [t0_s0aid(tok)]
 (err := e00 + 1; s0arg(tok.lctn(), S0ARGnone(tok)))
 //
 end (*let*) // end-of-[p1_s0arg(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_t0arg(buf, err) =
+let
+//
+val e00 = err
+//
+val mark =
+tokbuf_mark_get(buf)
+//
+val tok0 = buf.getk1()
+val tok1 = buf.getk0()
+val tnd0 = tok0.tnode()
+//
+in//let
+//
+case+
+tok1.node() of
+//
+|
+T_CLN()
+when t0_s0aid(tnd0) =>
+let
+  val (  ) = buf.skip1()
+  val (  ) =
+  tokbuf_mark_clr(buf, mark)
+  val s0t0 = p1_sort0(buf, err)
+  val lres = tok0.lctn() + s0t0.lctn()
+in
+  err := e00
+; t0arg_make_node
+  (lres, T0ARGsome(s0t0, optn_cons(tok0)))
+end // end of [CLN]
+//
+|
+_(*non-T_CLN*) =>
+let
+  val (  ) =
+  tokbuf_mark_set(buf, mark)
+  val s0t0 = p1_sort0(buf, err)
+in//let
+  if
+  (err > e00)
+  then
+  t0arg_make_node
+  (tok0.lctn(), T0ARGnone(tok0))
+  else
+  t0arg_make_node
+  (s0t0.lctn(), T0ARGsome(s0t0, optn_nil(*void*)))
+end // end of [non-T_CLN]
+//
+end (*let*) // end of [p1_t0arg(buf,err)]
 
 (* ****** ****** *)
 
