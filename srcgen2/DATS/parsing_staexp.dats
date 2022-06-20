@@ -873,6 +873,50 @@ end (*let*) // end of [t0_s0aid]
 end (*let*) // end of [p1_s0mag(buf,err)]
 
 (* ****** ****** *)
+//
+(*
+t0marg ::
+  | ( t0argseq )
+*)
+#implfun
+p1_t0mag(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in
+//
+case+ tnd of
+//
+|
+T_LPAREN() =>
+let
+val tbeg = tok
+val (  ) = buf.skip1()
+val t0as =
+p1_t0argseq_COMMA(buf, err)
+val tend = p1_RPAREN(buf, err)
+val lres = tbeg.lctn()+tend.lctn()
+in//let
+err := e00;
+t0mag_make_node
+(lres, T0MAGlist(tbeg, t0as, tend))
+end (*let*) // end of [T_LPAREN]
+//
+|
+_(*non-T_LPAREN*) =>
+let
+val loc = tok.lctn()
+val ( ) = (err := e00 + 1)
+in
+  t0mag_make_node(loc, T0MAGnone(tok))
+end
+//
+end (*let*) // end of [p1_t0marg(buf,err)]
+
+(* ****** ****** *)
 
 local
 //
@@ -1026,6 +1070,7 @@ ps_COMMA_p1fun{s0arg}(buf, err, p1_s0arg)
 ) (* end of [p1_s0argseq_COMMA] *)
 
 (* ****** ****** *)
+
 #implfun
 p1_s0quaseq_BSCLN
 (  buf, err  ) =
@@ -1292,8 +1337,7 @@ let
   list_vt2t
   (
   ps_COMMA_p1fun{s0exp}
-  (buf, err, p1_s0exp_app_NGT)
-  )
+  (buf, err, p1_s0exp_app_NGT0))
   val tend = p1_GT0(buf, err)
   val lres = tbeg.lctn() + tend.lctn()
 in
@@ -1630,7 +1674,7 @@ end(*let*)//end(p1_s0exp_app_ntk(buf,err,ntk))
 in//local
 
 #implfun
-p1_s0exp_app_NEQ
+p1_s0exp_app_NEQ0
   (buf, err) =
 (
 p1_s0exp_app_ntk(buf, err, ntk)
@@ -1639,10 +1683,10 @@ p1_s0exp_app_ntk(buf, err, ntk)
 fun
 ntk(tnd: tnode): bool =
 (case+ tnd of T_EQ0() => false | _ => true)
-} (*where*)//end-of(p1_s0exp_app_NEQ(buf,err))
+} (*where*)//end-of(p1_s0exp_app_NEQ0(buf,err))
 
 #implfun
-p1_s0exp_app_NGT
+p1_s0exp_app_NGT0
   (buf, err) =
 (
 p1_s0exp_app_ntk(buf, err, ntk)
@@ -1651,7 +1695,7 @@ p1_s0exp_app_ntk(buf, err, ntk)
 fun
 ntk(tnd: tnode): bool =
 (case+ tnd of T_GT0() => false | _ => true)
-} (*where*)//end-of(p1_s0exp_app_NGT(buf,err))
+} (*where*)//end-of(p1_s0exp_app_NGT0(buf,err))
 
 endloc(*local*)//end-of[local(p1_s0exp_app_ntk]
 
