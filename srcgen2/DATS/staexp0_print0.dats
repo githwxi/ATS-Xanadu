@@ -367,6 +367,27 @@ end (*let*) // end of [s0arg_fprint]
 (* ****** ****** *)
 
 #implfun
+t0arg_fprint
+( out, t0a ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+t0a.node() of
+|
+T0ARGnone(tok) =>
+print("T0ARGnone(", tok, ")")
+|
+T0ARGsome(id0, tres) =>
+print("T0ARGsome(",id0,";",tres,")")
+//
+end (*let*) // end of [t0arg_fprint]
+
+(* ****** ****** *)
+
+#implfun
 s0mag_fprint
 ( out, s0m ) =
 let
@@ -387,6 +408,32 @@ S0MAGlist(tbeg, s0as, tend) =>
 print("S0MAGlist(",tbeg,";",s0as,";",tend,")")
 //
 end (*let*)//end of [s0mag_fprint(out,s0m)]
+
+(* ****** ****** *)
+
+#implfun
+t0mag_fprint
+( out, t0m ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+t0m.node() of
+|
+T0MAGnone(tok) =>
+print("T0MAGnone(", tok, ")")
+(*
+|
+T0MAGsing(id0) =>
+print("T0MAGsing(", id0, ")")
+*)
+|
+T0MAGlist(tbeg, t0as, tend) =>
+print("T0MAGlist(",tbeg,";",t0as,";",tend,")")
+//
+end (*let*)//end of [t0mag_fprint(out,t0m)]
 
 (* ****** ****** *)
 

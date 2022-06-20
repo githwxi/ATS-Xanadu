@@ -277,6 +277,10 @@ d0exp_fprint(g_print$out<>(), d0e)
 g_print<d0ecl>(dcl) =
 d0ecl_fprint(g_print$out<>(), dcl)
 //
+#impltmp
+g_print<a0tdf>(tdf) =
+a0tdf_fprint(g_print$out<>(), tdf)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)

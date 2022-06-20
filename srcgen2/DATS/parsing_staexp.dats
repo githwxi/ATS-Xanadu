@@ -1072,6 +1072,16 @@ ps_COMMA_p1fun{s0arg}(buf, err, p1_s0arg)
 (* ****** ****** *)
 
 #implfun
+p1_t0argseq_COMMA
+(  buf, err  ) =
+list_vt2t
+(
+ps_COMMA_p1fun{t0arg}(buf, err, p1_t0arg)
+) (* end of [p1_t0argseq_COMMA] *)
+
+(* ****** ****** *)
+
+#implfun
 p1_s0quaseq_BSCLN
 (  buf, err  ) =
 list_vt2t

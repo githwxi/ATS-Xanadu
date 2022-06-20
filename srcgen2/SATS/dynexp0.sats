@@ -246,6 +246,10 @@ fun
 d0ecl_fprint
 (out:FILR, dcl:d0ecl): void
 (* ****** ****** *)
+fun
+a0tdf_fprint
+(out:FILR, tdf:a0tdf): void
+(* ****** ****** *)
 //
 fun
 d0ecl_get_lctn(d0ecl): loc_t
