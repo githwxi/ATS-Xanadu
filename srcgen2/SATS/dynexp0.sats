@@ -219,6 +219,11 @@ D0Csexpdef of
 |
 D0Cabsopen of
 (token(*ABSOPEN*), s0qid(*qualid*))
+|
+D0Cabsimpl of
+( token
+, s0qid
+, s0maglst, sort0opt, token, s0exp)
 //
 (* ****** ****** *)
 fun

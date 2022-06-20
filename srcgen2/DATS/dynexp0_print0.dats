@@ -93,6 +93,12 @@ print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 |
 D0Cabsopen(tknd, sqid) =>
 print("D0Cabsopen(",tknd,";",sqid,")")
+|
+D0Cabsimpl
+(tknd,sid0,smas,tres,teq1,def2) =>
+(
+print("D0Cabsimpl(",tknd,";");
+print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 end (*let*) // end of [d0ecl_fprint(out,dcl)]
 
