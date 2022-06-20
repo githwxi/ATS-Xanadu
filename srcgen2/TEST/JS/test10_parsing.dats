@@ -100,6 +100,41 @@ p1_fun_test p1_fun_test_fpath
 #define
 pq_fun_test pq_fun_test_fpath
 (* ****** ****** *)
+
+local
+#impltmp
+{a:t0}
+gseq_print$beg
+<optn(a)>< a >() = print("$optn(")
+#impltmp
+{a:t0}
+gseq_print$sep
+<optn(a)>< a >() = print(   ","   )
+in//local
+val () =
+prerrln("optn() = ", optn())
+val () =
+prerrln("optn(0) = ", optn(0))
+endloc (*local*) // end of [local]
+
+(* ****** ****** *)
+
+local
+#impltmp
+{a:t0}
+gseq_print$beg
+<list(a)>< a >() = print("$list(")
+#impltmp
+{a:t0}
+gseq_print$sep
+<list(a)>< a >() = print(   ","   )
+in//local
+val () =
+prerrln
+("list(0,1,2,3,4,5,6,7,8,9) = ", list(0,1,2,3,4,5,6,7,8,9))
+endloc (*local*) // end of [local]
+
+(* ****** ****** *)
 //
 local
 //

@@ -471,6 +471,24 @@ list_cons(x6,
 list_cons(x7,
 list_cons(x8,
 list_cons(x9, list_nil())))))))))
+#impltmp
+<a0>
+list_a10
+(x01,x02
+,x03,x04
+,x05,x06
+,x07,x08
+,x09,x10) =
+list_cons(x01,
+list_cons(x02,
+list_cons(x03,
+list_cons(x04,
+list_cons(x05,
+list_cons(x06,
+list_cons(x07,
+list_cons(x08,
+list_cons(x09,
+list_cons(x10, list_nil()))))))))))
 //
 (* ****** ****** *)
 //
