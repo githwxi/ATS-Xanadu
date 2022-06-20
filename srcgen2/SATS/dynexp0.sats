@@ -217,8 +217,14 @@ D0Csexpdef of
 , s0maglst, sort0opt, token, s0exp)
 //
 |
+D0Cabstype of
+( token
+, s0eid
+, t0maglst
+, sort0opt, a0tdf(*def*))
+|
 D0Cabsopen of
-(token(*ABSOPEN*), s0qid(*qualid*))
+(token(*ABSOPEN*), s0qid)
 |
 D0Cabsimpl of
 ( token
@@ -226,8 +232,19 @@ D0Cabsimpl of
 , s0maglst, sort0opt, token, s0exp)
 //
 (* ****** ****** *)
+//
+and a0tdf =
+|
+A0TDFsome of () // unspecified
+|
+A0TDFlteq of (token(*"<="*), s0exp)
+|
+A0TDFeqeq of (token(*"=="*), s0exp)
+//
+(* ****** ****** *)
 fun
-d0ecl_fprint(FILR, d0ecl): void
+d0ecl_fprint
+(out:FILR, dcl:d0ecl): void
 (* ****** ****** *)
 //
 fun
