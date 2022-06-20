@@ -41,92 +41,136 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a0:t0>
-max_a2
+max_a02
 (x1: a0, x2: a0): a0
 fun
 <a0:t0>
-max_a3
+max_a03
 ( x1: a0
 , x2: a0, x3: a0): a0
 fun
 <a0:t0>
-max_a4
+max_a04
 ( x1: a0, x2: a0
 , x3: a0, x4: a0): a0
 fun
 <a0:t0>
-max_a5
+max_a05
 ( x1: a0
 , x2: a0, x3: a0
 , x4: a0, x5: a0): a0
 fun
 <a0:t0>
-max_a6
+max_a06
 ( x1: a0, x2: a0
 , x3: a0, x4: a0
 , x5: a0, x6: a0): a0
+fun
+<a0:t0>
+max_a07
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0
+, x6: a0, x7: a0): a0
+fun
+<a0:t0>
+max_a08
+( x1: a0, x2: a0
+, x3: a0, x4: a0
+, x5: a0, x6: a0
+, x7: a0, x8: a0): a0
+fun
+<a0:t0>
+max_a09
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0
+, x6: a0, x7: a0
+, x8: a0, x9: a0): a0
 //
 (* ****** ****** *)
 //
-#symload max with max_a2
-#symload max with max_a3
-#symload max with max_a4
-#symload max with max_a5
-#symload max with max_a6
+#symload max with max_a02
+#symload max with max_a03
+#symload max with max_a04
+#symload max with max_a05
+#symload max with max_a06
 //
 (* ****** ****** *)
 //
 fun
 <a0:t0>
-min_a2
+min_a02
 (x1: a0, x2: a0): a0
 fun
 <a0:t0>
-min_a3
+min_a03
 ( x1: a0
 , x2: a0, x3: a0): a0
 fun
 <a0:t0>
-min_a4
+min_a04
 ( x1: a0, x2: a0
 , x3: a0, x4: a0): a0
 fun
 <a0:t0>
-min_a5
+min_a05
 ( x1: a0
 , x2: a0, x3: a0
 , x4: a0, x5: a0): a0
 fun
 <a0:t0>
-min_a6
+min_a06
 ( x1: a0, x2: a0
 , x3: a0, x4: a0
 , x5: a0, x6: a0): a0
+fun
+<a0:t0>
+min_a07
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0
+, x6: a0, x7: a0): a0
+fun
+<a0:t0>
+min_a08
+( x1: a0, x2: a0
+, x3: a0, x4: a0
+, x5: a0, x6: a0
+, x7: a0, x8: a0): a0
+fun
+<a0:t0>
+min_a09
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0
+, x6: a0, x7: a0
+, x8: a0, x9: a0): a0
 //
 (* ****** ****** *)
 //
-#symload min with min_a2
-#symload min with min_a3
-#symload min with min_a4
-#symload min with min_a5
-#symload min with min_a6
+#symload min with min_a02
+#symload min with min_a03
+#symload min with min_a04
+#symload min with min_a05
+#symload min with min_a06
 //
 (* ****** ****** *)
 //
 fun
 <a1:vt>
-free_a1
+free_a01
 (x1: ~a1): void
 fun
 <a1:vt>
 <a2:vt>
-free_a2
+free_a02
 (x1: ~a1, x2: ~a2): void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-free_a3
+free_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3): void
 fun
@@ -134,7 +178,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-free_a4
+free_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
 fun
@@ -143,7 +187,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-free_a5
+free_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5 ) : void
@@ -154,7 +198,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-free_a6
+free_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6 ) : void
@@ -166,7 +210,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-free_a7
+free_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -180,7 +224,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-free_a8
+free_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
@@ -195,7 +239,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-free_a9
+free_a09
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -204,9 +248,9 @@ free_a9
 //
 (* ****** ****** *)
 //
-#symload free with free_a1
-#symload free with free_a2
-#symload free with free_a3
+#symload free with free_a01
+#symload free with free_a02
+#symload free with free_a03
 //
 (* ****** ****** *)
 //
@@ -225,23 +269,23 @@ gl_fproc1(x: !a): void
 //
 (*
 fun<>
-fproc_a0
+fproc_a00
 ((*void*)) : void
 *)
 fun
 <a1:t0>
-fproc_a1
+fproc_a01
 ( x1: a1 ) : void
 fun
 <a1:t0>
 <a2:t0>
-fproc_a2
+fproc_a02
 ( x1: a1, x2: a2 ) : void
 fun
 <a1:t0>
 <a2:t0>
 <a3:t0>
-fproc_a3
+fproc_a03
 ( x1: a1
 , x2: a2, x3: a3 ) : void
 fun
@@ -249,7 +293,7 @@ fun
 <a2:t0>
 <a3:t0>
 <a4:t0>
-fproc_a4
+fproc_a04
 ( x1: a1, x2: a2
 , x3: a3, x4: a4 ) : void
 fun
@@ -258,7 +302,7 @@ fun
 <a3:t0>
 <a4:t0>
 <a5:t0>
-fproc_a5
+fproc_a05
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5 ) : void
@@ -269,7 +313,7 @@ fun
 <a4:t0>
 <a5:t0>
 <a6:t0>
-fproc_a6
+fproc_a06
 ( x1: a1, x2: a2
 , x3: a3, x4: a4
 , x5: a5, x6: a6 ) : void
@@ -281,7 +325,7 @@ fun
 <a5:t0>
 <a6:t0>
 <a7:t0>
-fproc_a7
+fproc_a07
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5
@@ -295,7 +339,7 @@ fun
 <a6:t0>
 <a7:t0>
 <a8:t0>
-fproc_a8
+fproc_a08
 ( x1: a1, x2: a2
 , x3: a3, x4: a4
 , x5: a5, x6: a6
@@ -310,7 +354,7 @@ fun
 <a7:t0>
 <a8:t0>
 <a9:t0>
-fproc_a9
+fproc_a09
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5
@@ -318,37 +362,37 @@ fproc_a9
 , x8: a8, x9: a9 ) : void
 (* ****** ****** *)
 //
-#symload fproc with fproc_a1
-#symload fproc with fproc_a2
-#symload fproc with fproc_a3
-#symload fproc with fproc_a4
-#symload fproc with fproc_a5
-#symload fproc with fproc_a6
-#symload fproc with fproc_a7
-#symload fproc with fproc_a8
-#symload fproc with fproc_a9
+#symload fproc with fproc_a01
+#symload fproc with fproc_a02
+#symload fproc with fproc_a03
+#symload fproc with fproc_a04
+#symload fproc with fproc_a05
+#symload fproc with fproc_a06
+#symload fproc with fproc_a07
+#symload fproc with fproc_a08
+#symload fproc with fproc_a09
 //
 (* ****** ****** *)
 //
 (*
 fun<>
-fproc0_a0
+fproc0_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-fproc0_a1
+fproc0_a01
 ( x1: ~a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-fproc0_a2
+fproc0_a02
 ( x1: ~a1, x2: ~a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-fproc0_a3
+fproc0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
 fun
@@ -356,7 +400,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-fproc0_a4
+fproc0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
 fun
@@ -365,7 +409,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-fproc0_a5
+fproc0_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5 ) : void
@@ -376,7 +420,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-fproc0_a6
+fproc0_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6 ) : void
@@ -388,7 +432,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-fproc0_a7
+fproc0_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -402,7 +446,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-fproc0_a8
+fproc0_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
@@ -417,7 +461,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-fproc0_a9
+fproc0_a09
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -425,37 +469,37 @@ fproc0_a9
 , x8: ~a8, x9: ~a9 ) : void
 (* ****** ****** *)
 //
-#symload fproc0 with fproc0_a1
-#symload fproc0 with fproc0_a2
-#symload fproc0 with fproc0_a3
-#symload fproc0 with fproc0_a4
-#symload fproc0 with fproc0_a5
-#symload fproc0 with fproc0_a6
-#symload fproc0 with fproc0_a7
-#symload fproc0 with fproc0_a8
-#symload fproc0 with fproc0_a9
+#symload fproc0 with fproc0_a01
+#symload fproc0 with fproc0_a02
+#symload fproc0 with fproc0_a03
+#symload fproc0 with fproc0_a04
+#symload fproc0 with fproc0_a05
+#symload fproc0 with fproc0_a06
+#symload fproc0 with fproc0_a07
+#symload fproc0 with fproc0_a08
+#symload fproc0 with fproc0_a09
 //
 (* ****** ****** *)
 //
 (*
 fun<>
-fproc1_a0
+fproc1_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-fproc1_a1
+fproc1_a01
 ( x1: !a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-fproc1_a2
+fproc1_a02
 ( x1: !a1, x2: !a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-fproc1_a3
+fproc1_a03
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 fun
@@ -463,7 +507,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-fproc1_a4
+fproc1_a04
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 fun
@@ -472,7 +516,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-fproc1_a5
+fproc1_a05
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -483,7 +527,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-fproc1_a6
+fproc1_a06
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -495,7 +539,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-fproc1_a7
+fproc1_a07
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -509,7 +553,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-fproc1_a8
+fproc1_a08
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -524,7 +568,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-fproc1_a9
+fproc1_a09
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -532,15 +576,15 @@ fproc1_a9
 , x8: !a8, x9: !a9 ) : void
 (* ****** ****** *)
 //
-#symload fproc1 with fproc1_a1
-#symload fproc1 with fproc1_a2
-#symload fproc1 with fproc1_a3
-#symload fproc1 with fproc1_a4
-#symload fproc1 with fproc1_a5
-#symload fproc1 with fproc1_a6
-#symload fproc1 with fproc1_a7
-#symload fproc1 with fproc1_a8
-#symload fproc1 with fproc1_a9
+#symload fproc1 with fproc1_a01
+#symload fproc1 with fproc1_a02
+#symload fproc1 with fproc1_a03
+#symload fproc1 with fproc1_a04
+#symload fproc1 with fproc1_a05
+#symload fproc1 with fproc1_a06
+#symload fproc1 with fproc1_a07
+#symload fproc1 with fproc1_a08
+#symload fproc1 with fproc1_a09
 //
 (* ****** ****** *)
 //
@@ -554,23 +598,23 @@ print and println
 //
 (*
 fun<>
-print_a0
+print_a00
 ((*void*)) : void
 *)
 fun
 <a1:t0>
-print_a1
+print_a01
 ( x1: a1 ) : void
 fun
 <a1:t0>
 <a2:t0>
-print_a2
+print_a02
 ( x1: a1, x2: a2 ) : void
 fun
 <a1:t0>
 <a2:t0>
 <a3:t0>
-print_a3
+print_a03
 ( x1: a1
 , x2: a2, x3: a3 ) : void
 fun
@@ -578,7 +622,7 @@ fun
 <a2:t0>
 <a3:t0>
 <a4:t0>
-print_a4
+print_a04
 ( x1: a1, x2: a2
 , x3: a3, x4: a4 ) : void
 fun
@@ -587,7 +631,7 @@ fun
 <a3:t0>
 <a4:t0>
 <a5:t0>
-print_a5
+print_a05
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5 ) : void
@@ -598,7 +642,7 @@ fun
 <a4:t0>
 <a5:t0>
 <a6:t0>
-print_a6
+print_a06
 ( x1: a1, x2: a2
 , x3: a3, x4: a4
 , x5: a5, x6: a6 ) : void
@@ -610,7 +654,7 @@ fun
 <a5:t0>
 <a6:t0>
 <a7:t0>
-print_a7
+print_a07
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5
@@ -624,7 +668,7 @@ fun
 <a6:t0>
 <a7:t0>
 <a8:t0>
-print_a8
+print_a08
 ( x1: a1, x2: a2
 , x3: a3, x4: a4
 , x5: a5, x6: a6
@@ -639,7 +683,7 @@ fun
 <a7:t0>
 <a8:t0>
 <a9:t0>
-print_a9
+print_a09
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5
@@ -647,35 +691,35 @@ print_a9
 , x8: a8, x9: a9 ) : void
 (* ****** ****** *)
 //
-#symload print with print_a1
-#symload print with print_a2
-#symload print with print_a3
-#symload print with print_a4
-#symload print with print_a5
-#symload print with print_a6
-#symload print with print_a7
-#symload print with print_a8
-#symload print with print_a9
+#symload print with print_a01
+#symload print with print_a02
+#symload print with print_a03
+#symload print with print_a04
+#symload print with print_a05
+#symload print with print_a06
+#symload print with print_a07
+#symload print with print_a08
+#symload print with print_a09
 //
 (* ****** ****** *)
 //
 fun<>
-println_a0
+println_a00
 ((*void*)) : void
 fun
 <a1:t0>
-println_a1
+println_a01
 ( x1: a1 ) : void
 fun
 <a1:t0>
 <a2:t0>
-println_a2
+println_a02
 ( x1: a1, x2: a2 ) : void
 fun
 <a1:t0>
 <a2:t0>
 <a3:t0>
-println_a3
+println_a03
 ( x1: a1
 , x2: a2, x3: a3 ) : void
 fun
@@ -683,7 +727,7 @@ fun
 <a2:t0>
 <a3:t0>
 <a4:t0>
-println_a4
+println_a04
 ( x1: a1, x2: a2
 , x3: a3, x4: a4 ) : void
 fun
@@ -692,7 +736,7 @@ fun
 <a3:t0>
 <a4:t0>
 <a5:t0>
-println_a5
+println_a05
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5 ) : void
@@ -703,7 +747,7 @@ fun
 <a4:t0>
 <a5:t0>
 <a6:t0>
-println_a6
+println_a06
 ( x1: a1, x2: a2
 , x3: a3, x4: a4
 , x5: a5, x6: a6 ) : void
@@ -715,7 +759,7 @@ fun
 <a5:t0>
 <a6:t0>
 <a7:t0>
-println_a7
+println_a07
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5
@@ -729,7 +773,7 @@ fun
 <a6:t0>
 <a7:t0>
 <a8:t0>
-println_a8
+println_a08
 ( x1: a1, x2: a2
 , x3: a3, x4: a4
 , x5: a5, x6: a6
@@ -744,7 +788,7 @@ fun
 <a7:t0>
 <a8:t0>
 <a9:t0>
-println_a9
+println_a09
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5
@@ -752,16 +796,16 @@ println_a9
 , x8: a8, x9: a9 ) : void
 (* ****** ****** *)
 //
-#symload println with println_a0
-#symload println with println_a1
-#symload println with println_a2
-#symload println with println_a3
-#symload println with println_a4
-#symload println with println_a5
-#symload println with println_a6
-#symload println with println_a7
-#symload println with println_a8
-#symload println with println_a9
+#symload println with println_a00
+#symload println with println_a01
+#symload println with println_a02
+#symload println with println_a03
+#symload println with println_a04
+#symload println with println_a05
+#symload println with println_a06
+#symload println with println_a07
+#symload println with println_a08
+#symload println with println_a09
 //
 (* ****** ****** *)
 //
@@ -775,23 +819,23 @@ print0 and println0
 //
 (*
 fun<>
-print0_a0
+print0_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-print0_a1
+print0_a01
 ( x1: ~a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-print0_a2
+print0_a02
 ( x1: ~a1, x2: ~a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-print0_a3
+print0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
 fun
@@ -799,7 +843,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-print0_a4
+print0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
 fun
@@ -808,7 +852,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-print0_a5
+print0_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5 ) : void
@@ -819,7 +863,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-print0_a6
+print0_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6 ) : void
@@ -831,7 +875,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-print0_a7
+print0_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -845,7 +889,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-print0_a8
+print0_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
@@ -860,7 +904,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-print0_a9
+print0_a09
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -868,35 +912,35 @@ print0_a9
 , x8: ~a8, x9: ~a9 ) : void
 (* ****** ****** *)
 //
-#symload print0 with print0_a1
-#symload print0 with print0_a2
-#symload print0 with print0_a3
-#symload print0 with print0_a4
-#symload print0 with print0_a5
-#symload print0 with print0_a6
-#symload print0 with print0_a7
-#symload print0 with print0_a8
-#symload print0 with print0_a9
+#symload print0 with print0_a01
+#symload print0 with print0_a02
+#symload print0 with print0_a03
+#symload print0 with print0_a04
+#symload print0 with print0_a05
+#symload print0 with print0_a06
+#symload print0 with print0_a07
+#symload print0 with print0_a08
+#symload print0 with print0_a09
 //
 (* ****** ****** *)
 //
 fun<>
-println0_a0
+println0_a00
 ((*void*)) : void
 fun
 <a1:vt>
-println0_a1
+println0_a01
 ( x1: ~a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-println0_a2
+println0_a02
 ( x1: ~a1, x2: ~a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-println0_a3
+println0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
 fun
@@ -904,7 +948,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-println0_a4
+println0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
 fun
@@ -913,7 +957,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-println0_a5
+println0_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5 ) : void
@@ -924,7 +968,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-println0_a6
+println0_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6 ) : void
@@ -936,7 +980,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-println0_a7
+println0_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -950,7 +994,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-println0_a8
+println0_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
@@ -965,7 +1009,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-println0_a9
+println0_a09
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -973,16 +1017,16 @@ println0_a9
 , x8: ~a8, x9: ~a9 ) : void
 (* ****** ****** *)
 //
-#symload println0 with println0_a0
-#symload println0 with println0_a1
-#symload println0 with println0_a2
-#symload println0 with println0_a3
-#symload println0 with println0_a4
-#symload println0 with println0_a5
-#symload println0 with println0_a6
-#symload println0 with println0_a7
-#symload println0 with println0_a8
-#symload println0 with println0_a9
+#symload println0 with println0_a00
+#symload println0 with println0_a01
+#symload println0 with println0_a02
+#symload println0 with println0_a03
+#symload println0 with println0_a04
+#symload println0 with println0_a05
+#symload println0 with println0_a06
+#symload println0 with println0_a07
+#symload println0 with println0_a08
+#symload println0 with println0_a09
 //
 (* ****** ****** *)
 //
@@ -996,23 +1040,23 @@ print1 and println1
 //
 (*
 fun<>
-print1_a0
+print1_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-print1_a1
+print1_a01
 ( x1: !a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-print1_a2
+print1_a02
 ( x1: !a1, x2: !a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-print1_a3
+print1_a03
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 fun
@@ -1020,7 +1064,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-print1_a4
+print1_a04
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 fun
@@ -1029,7 +1073,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-print1_a5
+print1_a05
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -1040,7 +1084,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-print1_a6
+print1_a06
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -1052,7 +1096,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-print1_a7
+print1_a07
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -1066,7 +1110,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-print1_a8
+print1_a08
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -1081,7 +1125,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-print1_a9
+print1_a09
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -1089,35 +1133,35 @@ print1_a9
 , x8: !a8, x9: !a9 ) : void
 (* ****** ****** *)
 //
-#symload print1 with print1_a1
-#symload print1 with print1_a2
-#symload print1 with print1_a3
-#symload print1 with print1_a4
-#symload print1 with print1_a5
-#symload print1 with print1_a6
-#symload print1 with print1_a7
-#symload print1 with print1_a8
-#symload print1 with print1_a9
+#symload print1 with print1_a01
+#symload print1 with print1_a02
+#symload print1 with print1_a03
+#symload print1 with print1_a04
+#symload print1 with print1_a05
+#symload print1 with print1_a06
+#symload print1 with print1_a07
+#symload print1 with print1_a08
+#symload print1 with print1_a09
 //
 (* ****** ****** *)
 //
 fun<>
-println1_a0
+println1_a00
 ((*void*)) : void
 fun
 <a1:vt>
-println1_a1
+println1_a01
 ( x1: !a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-println1_a2
+println1_a02
 ( x1: !a1, x2: !a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-println1_a3
+println1_a03
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 fun
@@ -1125,7 +1169,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-println1_a4
+println1_a04
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 fun
@@ -1134,7 +1178,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-println1_a5
+println1_a05
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -1145,7 +1189,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-println1_a6
+println1_a06
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -1157,7 +1201,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-println1_a7
+println1_a07
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -1171,7 +1215,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-println1_a8
+println1_a08
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -1186,7 +1230,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-println1_a9
+println1_a09
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -1194,16 +1238,16 @@ println1_a9
 , x8: !a8, x9: !a9 ) : void
 (* ****** ****** *)
 //
-#symload println1 with println1_a0
-#symload println1 with println1_a1
-#symload println1 with println1_a2
-#symload println1 with println1_a3
-#symload println1 with println1_a4
-#symload println1 with println1_a5
-#symload println1 with println1_a6
-#symload println1 with println1_a7
-#symload println1 with println1_a8
-#symload println1 with println1_a9
+#symload println1 with println1_a00
+#symload println1 with println1_a01
+#symload println1 with println1_a02
+#symload println1 with println1_a03
+#symload println1 with println1_a04
+#symload println1 with println1_a05
+#symload println1 with println1_a06
+#symload println1 with println1_a07
+#symload println1 with println1_a08
+#symload println1 with println1_a09
 //
 (* ****** ****** *)
 
