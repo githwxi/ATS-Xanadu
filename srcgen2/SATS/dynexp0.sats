@@ -78,6 +78,7 @@ S0E = "./staexp0.sats"
 #typedef s0tid = $S0E.s0tid
 #typedef s0aid = $S0E.s0aid
 #typedef s0eid = $S0E.s0eid
+#typedef s0qid = $S0E.s0qid
 (* ****** ****** *)
 //
 #typedef sort0 = $S0E.sort0
