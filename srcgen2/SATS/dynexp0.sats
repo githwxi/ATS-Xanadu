@@ -96,8 +96,17 @@ S0E = "./staexp0.sats"
 #typedef tokenlst = list(token)
 #typedef tokenopt = optn(token)
 (* ****** ****** *)
+#typedef sort0lst = list(sort0)
+#typedef sort0opt = optn(sort0)
+(* ****** ****** *)
 #typedef s0explst = list(s0exp)
 #typedef s0expopt = optn(s0exp)
+(* ****** ****** *)
+#typedef s0arglst = list(s0arg)
+#typedef s0maglst = list(s0mag)
+#typedef t0arglst = list(t0arg)
+#typedef t0maglst = list(t0mag)
+#typedef s0qualst = list(s0qua)
 (* ****** ****** *)
 
 #abstbox d0exp_tbox // ptr
@@ -197,7 +206,14 @@ D0Clocal of
 //
 |
 D0Csortdef of
-(token, s0tid, token, s0tdf(*defn*))
+( token(*tknd*)
+, s0tid, token(*eq*), s0tdf(*def*))
+//
+|
+D0Csexpdef of
+( token(*tknd*)
+, s0eid(*name*)
+, s0maglst, sort0opt, token, s0exp)
 //
 (* ****** ****** *)
 fun

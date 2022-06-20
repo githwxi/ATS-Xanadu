@@ -115,7 +115,8 @@ d0ecl_make_node
 end (*let*) // end of [ T_LOCAL() ]
 //
 |
-T_SORTDEF() => let
+T_SORTDEF() =>
+let
 //
   val tknd = tok
   val (  ) = buf.skip1()
@@ -129,6 +130,26 @@ in
 err := e00;
 d0ecl(lres, D0Csortdef(tknd, tid0, teq1, def2))
 end (*let*) // end of [ T_SORTDEF() ]
+//
+|
+T_SEXPDEF(k0) =>
+let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val sid0 = p1_s0eid(buf, err)
+  val smas = p1_s0magseq(buf, err)
+  val tann = pq_sort0_anno(buf, err)
+  val teq1 = p1_EQ0(buf, err)
+  val s0e0 = p1_s0exp(buf, err)
+  val lres = tknd.lctn() + s0e0.lctn()
+in
+err := e00;
+d0ecl_make_node
+( lres
+, D0Csexpdef(tknd, sid0, smas, tann, teq1, s0e0))
+end (*let*) // end of [T_SEXPDEF(k0)]
 //
 |
 _(*case-of-error*) =>
@@ -187,7 +208,7 @@ p1_d0eclseq_sta
 p1_d0eclseq_dyn
 (buf, err) = fp_d0eclseq(DYN, buf, err)
 //
-endloc (*local*) // end of [local(p1_declseq...)]
+endloc(*local*)//end-of[local(p1_declseq...)]
 
 (* ****** ****** *)
 

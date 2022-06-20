@@ -86,9 +86,6 @@ fun p1_sort0seq_COMMA: p1_fun(sort0lst)
 //
 (* ****** ****** *)
 #extern
-fun pq_sort0_anno: pq_fun(sort0)
-(* ****** ****** *)
-#extern
 fun p1_s0arg: p1_fun(s0arg)
 #extern
 fun p1_s0mag: p1_fun(s0mag)

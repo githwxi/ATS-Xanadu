@@ -74,11 +74,21 @@ print("D0Ctkskp(",tok,")")
 D0Clocal
 (tknd,head,tin1,body,tend) =>
 (
-print("D0Clocal(",tknd,";",head);
-print(";",tin1,";",body,";",tend,")"))
+print("D0Clocal(",tknd,";");
+print(head,";",tin1,";");print(body,";",tend,")"))
 |
-D0Csortdef(tknd,tid0,teq1,def2) =>
-print("D0Csortdef(",tknd,";",tid0,";",teq1,";",def2,")")
+D0Csortdef
+(tknd,tid0,teq1,def2) =>
+(
+print("D0Csortdef(",tknd,";");
+print(tid0,";",teq1,";",def2,")"))
+//
+|
+D0Csexpdef
+(tknd,sid0,smas,tres,teq1,def2) =>
+(
+print("D0Csexpdef(",tknd,";");
+print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 end (*let*) // end of [d0ecl_fprint(out,dcl)]
 
