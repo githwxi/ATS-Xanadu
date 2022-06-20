@@ -118,6 +118,7 @@ val s0e = p1_s0exp(buf, err)
 in
 (err := e00; A0TDFlteq(tok, s0e))
 end (*let*)//end-of-(sym = "<=")
+)
 | _(*non-lteq-eqeq*) => A0TDFsome()
 //
 end (*let*)//end-of-[p1_a0tdf(buf,err)]
