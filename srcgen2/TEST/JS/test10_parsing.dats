@@ -122,9 +122,9 @@ in//local
 (* ****** ****** *)
 val opt =
 p1_fun_test<d0eclist>
-("./mytest.dats", p1_d0eclseq_sta)
+("./mytest.sats", p1_d0eclseq_sta)
 val ( ) =
-prerrln("p1_fun_test(\"mytest.dats\") =\n", opt)
+prerrln("p1_fun_test(\"mytest.sats\") =\n", opt)
 (* ****** ****** *)
 endloc (*local*) // end-of-(local)
 //

@@ -145,15 +145,15 @@ let
 //
   val sid0 = p1_s0eid(buf, err)
   val smas = p1_s0magseq(buf, err)
-  val tann = pq_sort0_anno(buf, err)
+  val tres = pq_sort0_anno(buf, err)
   val teq1 = p1_EQ0(buf, err)
-  val s0e0 = p1_s0exp(buf, err)
-  val lres = tknd.lctn() + s0e0.lctn()
+  val def2 = p1_s0exp(buf, err)
+  val lres = tknd.lctn() + def2.lctn()
 in
 err := e00;
 d0ecl_make_node
 ( lres
-, D0Csexpdef(tknd, sid0, smas, tann, teq1, s0e0))
+, D0Csexpdef(tknd, sid0, smas, tres, teq1, def2))
 end (*let*) // end of [T_SEXPDEF(k0)]
 //
 |
@@ -168,8 +168,25 @@ let
 //
 in
  (err := e00; d0ecl(lres, D0Cabsopen(tknd,sqid)))
-end // end of [ T_ABSOPEN() ]
+end (*let*) // end of [ T_ABSOPEN() ]
 //
+|
+T_ABSIMPL() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val sqid = p1_s0qid(buf, err)
+  val smas = p1_s0magseq(buf, err)
+  val tres = pq_sort0_anno(buf, err)
+  val teq1 = p1_EQ0(buf, err)
+  val def2 = p1_s0exp(buf, err)
+  val lres = tknd.lctn() + def2.lctn()
+in
+err := e00;
+d0ecl_make_node
+( lres
+, D0Cabsimpl(tknd, sqid, smas, tres, teq1, def2))
+end (*let*) // end of [ T_ABSIMPL() ]
 //
 |
 _(*case-of-error*) =>
