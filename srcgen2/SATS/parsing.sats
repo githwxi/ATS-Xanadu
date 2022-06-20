@@ -258,6 +258,9 @@ fun p1_s0tdf: p1_fun(s0tdf)
 //
 (* ****** ****** *)
 fun
+pq_sort0_anno: pq_fun(sort0)
+(* ****** ****** *)
+fun
 p1_sort0_app_NGT: p1_fun(sort0)
 (* ****** ****** *)
 fun
