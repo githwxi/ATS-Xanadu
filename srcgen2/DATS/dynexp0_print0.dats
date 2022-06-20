@@ -50,7 +50,43 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
+#symload node with d0exp_get_node
+#symload node with d0pat_get_node
 #symload node with d0ecl_get_node
+(* ****** ****** *)
+
+#implfun
+d0pat_fprint
+(out, d0p) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d0p.node() of
+|
+D0Ptkerr(tok) => print("D0Ptkerr(",tok,")")
+//
+end (*let*) // end of [d0pat_fprint(out,d0p)]
+
+(* ****** ****** *)
+
+#implfun
+d0exp_fprint
+(out, d0e) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d0e.node() of
+|
+D0Etkerr(tok) => print("D0Etkerr(",tok,")")
+//
+end (*let*) // end of [d0exp_fprint(out,d0e)]
+
 (* ****** ****** *)
 
 #implfun
