@@ -34,7 +34,7 @@ fun
 f0(x, y) =
 g_max<a0>(x, y)
 in//let
-  f0(f0(f0(x1, x2), x3), x4)
+  f0(f0(f0(x1,x2),x3),x4)
 end (*let*) // end of [max_a04]
 #impltmp
 <a0>
@@ -47,7 +47,7 @@ fun
 f0(x, y) =
 g_max<a0>(x, y)
 in//let
-f0(f0(f0(f0(x1, x2), x3), x4), x5)
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
 end (*let*) // end of [max_a05]
 #impltmp
 <a0>
@@ -60,8 +60,51 @@ fun
 f0(x, y) =
 g_max<a0>(x, y)
 in//let
-f0(f0(f0(f0(f0(x1, x2), x3), x4), x5), x6)
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
 end (*let*) // end of [max_a06]
+#impltmp
+<a0>
+max_a07
+( x1
+, x2, x3
+, x4, x5
+, x6, x7) =
+let
+fun
+f0(x, y) =
+g_max<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [max_a07]
+#impltmp
+<a0>
+max_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8) =
+let
+fun
+f0(x, y) =
+g_max<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [max_a08]
+#impltmp
+<a0>
+max_a09
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9) =
+let
+fun
+f0(x, y) =
+g_max<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [max_a09]
 //
 (* ****** ****** *)
 //
@@ -94,7 +137,7 @@ fun
 f0(x, y) =
 g_min<a0>(x, y)
 in//let
-  f0(f0(f0(x1, x2), x3), x4)
+  f0(f0(f0(x1,x2),x3),x4)
 end (*let*) // end of [min_a04]
 #impltmp
 <a0>
@@ -107,7 +150,7 @@ fun
 f0(x, y) =
 g_min<a0>(x, y)
 in//let
-f0(f0(f0(f0(x1, x2), x3), x4), x5)
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
 end (*let*) // end of [min_a05]
 #impltmp
 <a0>
@@ -120,8 +163,51 @@ fun
 f0(x, y) =
 g_min<a0>(x, y)
 in//let
-f0(f0(f0(f0(f0(x1, x2), x3), x4), x5), x6)
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
 end (*let*) // end of [min_a06]
+#impltmp
+<a0>
+min_a07
+( x1
+, x2, x3
+, x4, x5
+, x6, x7) =
+let
+fun
+f0(x, y) =
+g_min<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [min_a07]
+#impltmp
+<a0>
+min_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8) =
+let
+fun
+f0(x, y) =
+g_min<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [min_a08]
+#impltmp
+<a0>
+min_a09
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9) =
+let
+fun
+f0(x, y) =
+g_min<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [min_a09]
 //
 (* ****** ****** *)
 //

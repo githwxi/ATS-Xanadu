@@ -95,6 +95,9 @@ max_a09
 #symload max with max_a04
 #symload max with max_a05
 #symload max with max_a06
+#symload max with max_a07
+#symload max with max_a08
+#symload max with max_a09
 //
 (* ****** ****** *)
 //
@@ -154,6 +157,9 @@ min_a09
 #symload min with min_a04
 #symload min with min_a05
 #symload min with min_a06
+#symload min with min_a07
+#symload min with min_a08
+#symload min with min_a09
 //
 (* ****** ****** *)
 //
