@@ -96,8 +96,10 @@ S0E = "./staexp0.sats"
 #typedef s0qua = $S0E.s0qua
 //
 (* ****** ****** *)
+//
 #typedef d0pid = $S0E.d0pid
 #typedef d0eid = $S0E.d0eid
+//
 (* ****** ****** *)
 #typedef tokenlst = list(token)
 #typedef tokenopt = optn(token)
