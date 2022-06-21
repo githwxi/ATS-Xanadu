@@ -400,6 +400,26 @@ end (*let*) // end of [s0exp_lpar_errck]
 //
 (* ****** ****** *)
 //
+fun
+s0exp_tup1_errck
+( loc
+: loc_t
+, tkb
+: token
+, opt
+: tokenopt
+, ses
+: s0explst
+, srp
+: s0exp_RPAREN): s0exp =
+let
+  val lvl = errvl(ses)
+in//let
+s0exp_errck(lvl+1, s0exp(loc,S0Etup1(tkb,opt,ses,srp)))
+end (*let*) // end of [s0exp_tup1_errck]
+//
+(* ****** ****** *)
+//
 #implfun
 preadx0_s0exp(s0e, err) =
 (
@@ -427,6 +447,9 @@ S0Eapps _ => f0_apps(s0e, err)
 S0Efimp _ => f0_fimp(s0e, err)
 |
 S0Elpar _ => f0_lpar(s0e, err)
+//
+|
+S0Etup1 _ => f0_tup1(s0e, err)
 //
 |
 S0Etkerr _ =>
@@ -586,8 +609,35 @@ if
 then s0e else s0exp_lpar_errck(s0e.lctn(),tkb,ses,srp)
 end (*let*) // end of [f0_lpar]
 //
-} (*where*) // end of [preadx0_s0exp(s0e,err)]
+(* ****** ****** *)
 //
+fun
+f0_tup1
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+//
+val e00 = err
+val-
+S0Etup1
+(tkb,opt,ses,srp) = s0e.node()
+//
+val ses =
+preadx0_s0explst(ses, err)
+val srp =
+preadx0_s0exp_RPAREN(srp, err)
+in//let
+if
+(err = e00)
+then s0e else s0exp_tup1_errck(s0e.lctn(),tkb,opt,ses,srp)
+end (*let*) // end of [f0_tup1]
+//
+(* ****** ****** *)
+
+} (*where*) // end of [preadx0_s0exp(s0e,err)]
+
 (* ****** ****** *)
 //
 #implfun
