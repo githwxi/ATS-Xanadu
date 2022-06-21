@@ -68,6 +68,8 @@ LEX = "./lexing0.sats"
 S0E = "./staexp0.sats"
 //
 (* ****** ****** *)
+#typedef l0abl = $S0E.l0abl
+(* ****** ****** *)
 #typedef i0dnt = $S0E.i0dnt
 (* ****** ****** *)
 #typedef t0int = $S0E.t0int
@@ -93,6 +95,9 @@ S0E = "./staexp0.sats"
 #typedef t0mag = $S0E.t0mag
 #typedef s0qua = $S0E.s0qua
 //
+(* ****** ****** *)
+#typedef d0pid = $S0E.d0pid
+#typedef d0eid = $S0E.d0eid
 (* ****** ****** *)
 #typedef tokenlst = list(token)
 #typedef tokenopt = optn(token)
@@ -129,13 +134,65 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 //
 datatype
+d0lab(x0:type) =
+|
+D0LAB of
+(l0abl, token, x0(*elt*))
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+d0lab_fprint
+(out: FILR, lab: d0lab(x0)): void
+//
+(* ****** ****** *)
+//
+(*
+//HX:l0d0p:labd0pat
+*)
+#typedef
+l0d0p = d0lab(d0pat)
+#typedef
+l0d0plst = list(d0lab(d0pat))
+//
+(* ****** ****** *)
+//
+datatype
 d0pat_node =
+//
+| D0Pid0 of d0pid
+//
+| D0Pint of t0int
+| D0Pchr of t0chr
+| D0Pflt of t0flt
+| D0Pstr of t0str
+//
+| D0Papps of d0patlst
+//
+| D0Plpar of
+  (token, d0patlst, d0pat_RPAREN)
+//
 (*
 HX-2022-06-20:
 D0Ptkerr(tok):
 tok is not consumed by the parser!
 *)
 | D0Ptkerr of (token)
+//
+and
+d0pat_RPAREN =
+|
+d0pat_RPAREN_cons0 of token
+|
+d0pat_RPAREN_cons1 of (token, d0patlst, token)
+//
+and
+l0d0p_RBRACE =
+|
+l0d0p_RBRACE_cons0 of token
+|
+l0d0p_RBRACE_cons1 of (token, l0d0plst, token)
 //
 (* ****** ****** *)
 fun
@@ -155,6 +212,16 @@ fun
 d0pat_make_node
 (loc:loc_t, nod:d0pat_node): d0pat
 #symload d0pat with d0pat_make_node
+(* ****** ****** *)
+//
+(*
+//HX:l0d0p:labd0pat
+*)
+#typedef
+l0d0e = d0lab(d0exp)
+#typedef
+l0d0elst = list(d0lab(d0exp))
+//
 (* ****** ****** *)
 //
 datatype
