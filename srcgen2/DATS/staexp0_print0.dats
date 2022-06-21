@@ -515,15 +515,18 @@ S0Elam0(tlam,s0ms,tres,arrw,body,tend) =>
 (print("S0Elam0(",tlam,";",s0ms,";",tres);print(";",arrw,";",body,";",tend,")"))
 //
 |
-S0Eanno(se1,st2) =>
-print("S0Eanno(",se1,";",st2,")") //HX:annotation
-//
-|
 S0Euni0(tkb,sqs,tbe) =>
 print("S0Euni0(",tkb,";",sqs,";",tbe,")")
 |
 S0Eexi0(tkb,sqs,tbe) =>
 print("S0Eexi0(",tkb,";",sqs,";",tbe,")")
+|
+S0Eanno(se1,st2) =>
+print("S0Eanno(",se1,";",st2,")") //HX:annotation
+|
+S0Equal(tok,se1) =>
+print("S0Equal(",tok,";",se1,")") //HX:qual-s0exp
+//
 |
 S0Etkerr(tok) => print("S0Etkerr(",tok,")")//HX:error
 |
