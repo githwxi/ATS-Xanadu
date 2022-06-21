@@ -65,6 +65,28 @@ in//let
 //
 case+
 d0p.node() of
+//
+|
+D0Pid0(id0) =>
+print("D0Pid0(",id0,")")
+//
+|
+D0Pint(int) =>
+print("D0Pint(",int,")")
+|
+D0Pchr(chr) =>
+print("D0Pchr(",chr,")")
+|
+D0Pflt(flt) =>
+print("D0Pflt(",flt,")")
+|
+D0Pstr(str) =>
+print("D0Pstr(",str,")")
+//
+|
+D0Papps(d0ps) =>
+print("D0Papps(", d0ps, ")")
+//
 |
 D0Ptkerr(tok) => print("D0Ptkerr(",tok,")")
 //
@@ -82,6 +104,28 @@ in//let
 //
 case+
 d0e.node() of
+//
+|
+D0Eid0(id0) =>
+print("D0Eid0(",id0,")")
+//
+|
+D0Eint(int) =>
+print("D0Eint(",int,")")
+|
+D0Echr(chr) =>
+print("D0Echr(",chr,")")
+|
+D0Eflt(flt) =>
+print("D0Eflt(",flt,")")
+|
+D0Estr(str) =>
+print("D0Estr(",str,")")
+//
+|
+D0Eapps(d0es) =>
+print("D0Eapps(", d0es, ")")
+//
 |
 D0Etkerr(tok) => print("D0Etkerr(",tok,")")
 //

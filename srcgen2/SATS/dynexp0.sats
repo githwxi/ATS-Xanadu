@@ -236,6 +236,8 @@ d0exp_node =
 | D0Eflt of t0flt
 | D0Estr of t0str
 //
+| D0Eapps of d0explst
+//
 (*
 HX-2022-06-20:
 D0Etkerr(tok):
