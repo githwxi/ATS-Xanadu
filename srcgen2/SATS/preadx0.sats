@@ -45,6 +45,8 @@ ATS_PACKNAME // namespace
 LEX = "./lexing0.sats"
 #staload
 S0E = "./staexp0.sats"
+#staload
+D0E = "./dynexp0.sats"
 (* ****** ****** *)
 #typedef token = $LEX.token
 (* ****** ****** *)
@@ -64,11 +66,23 @@ s0exp_RPAREN = $S0E.s0exp_RPAREN
 #typedef
 l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
-#typedef sort0lst = $S0E.sort0lst
-#typedef sort0opt = $S0E.sort0opt
-#typedef s0explst = $S0E.s0explst
 #typedef s0expopt = $S0E.s0expopt
+#typedef sort0opt = $S0E.sort0opt
+(* ****** ****** *)
+#typedef sort0lst = $S0E.sort0lst
+#typedef s0explst = $S0E.s0explst
 #typedef l0s0elst = $S0E.l0s0elst
+(* ****** ****** *)
+#typedef d0pat = $D0E.d0pat
+#typedef d0exp = $D0E.d0exp
+#typedef d0ecl = $D0E.d0ecl
+(* ****** ****** *)
+#typedef d0patopt = $D0E.d0patopt
+#typedef d0expopt = $D0E.d0expopt
+(* ****** ****** *)
+#typedef d0patlst = $D0E.d0patlst
+#typedef d0explst = $D0E.d0explst
+#typedef d0ecllst = $D0E.d0ecllst
 (* ****** ****** *)
 //
 #typedef
@@ -76,6 +90,10 @@ fpreadx0
 (syn: tx) =
 (syn , &sint >> _) -> syn
 //
+(* ****** ****** *)
+(*
+//HX: for checking statics
+*)
 (* ****** ****** *)
 fun preadx0_sort0: fpreadx0(sort0)
 fun preadx0_s0exp: fpreadx0(s0exp)
@@ -132,6 +150,18 @@ fun
 s0exp_RPAREN_fpemsg(FILR, s0exp_RPAREN): void
 fun
 l0s0e_RBRACE_fpemsg(FILR, l0s0e_RBRACE): void
+(* ****** ****** *)
+(*
+//HX: for checking dynamics
+*)
+(* ****** ****** *)
+fun d0pat_fpemsg(FILR, d0pat): void
+fun d0exp_fpemsg(FILR, d0exp): void
+fun d0ecl_fpemsg(FILR, d0ecl): void
+(* ****** ****** *)
+fun d0patlst_fpemsg(FILR, d0patlst): void
+fun d0explst_fpemsg(FILR, d0explst): void
+fun d0eclist_fpemsg(FILR, d0eclist): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0.sats] *)
