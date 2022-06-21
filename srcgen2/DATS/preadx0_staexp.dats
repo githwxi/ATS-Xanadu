@@ -516,8 +516,77 @@ end (*let*) // end of [s0exp_rcd2_errck]
 //
 (* ****** ****** *)
 //
+fun
+s0exp_uni0_errck
+( loc: loc_t
+, tkb: token
+, sqs: s0qualst
+, tke: token   ): s0exp =
+let
+val lvl = 0
+in
+s0exp_errck
+(lvl+1,s0exp(loc, S0Euni0(tkb,sqs,tke)))
+end (*let*) // end of [s0exp_uni0_errck]
+//
+fun
+s0exp_exi0_errck
+( loc: loc_t
+, tkb: token
+, sqs: s0qualst
+, tke: token   ): s0exp =
+let
+val lvl = 0
+in
+s0exp_errck
+(lvl+1,s0exp(loc, S0Eexi0(tkb,sqs,tke)))
+end (*let*) // end of [s0exp_exi0_errck]
+//
+(* ****** ****** *)
+#extern
+fun
+preadx0_s0qua: fpreadx0(s0qua)
+#extern
+fun
+preadx0_s0qualst: fpreadx0(s0qualst)
+(* ****** ****** *)
+//
 #implfun
-preadx0_s0exp(s0e, err) =
+preadx0_s0qua
+  (s0q, err) =
+(
+case+
+s0q.node() of
+| S0QUAsome _ => s0q
+| S0QUAnone _ => (err := err + 1; s0q)
+)
+//
+#implfun
+preadx0_s0qualst
+  (s0qs, err) =
+(
+case+ s0qs of
+|
+list_nil() =>
+list_nil(*nil*)
+|
+list_cons
+(s0q1, sqs1) => let
+//
+  val e00 = err
+  val s0e1 = preadx0_s0qua(s0q1, err)
+  val ses1 = preadx0_s0qualst(sqs1, err)
+//
+in//let
+if err = e00 then s0qs else list_cons(s0q1, sqs1)
+endlet // end of [list_cons(s0q1,s0qs)]
+) (*case*) // end-of-[preadx0_s0qualst(s0qs,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0exp
+  (s0e, err) =
 (
 //
 case+
@@ -548,6 +617,11 @@ S0Elpar _ => f0_lpar(s0e, err)
 S0Etup1 _ => f0_tup1(s0e, err)
 |
 S0Ercd2 _ => f0_rcd2(s0e, err)
+//
+|
+S0Euni0 _ => f0_uni0(s0e, err)
+|
+S0Eexi0 _ => f0_exi0(s0e, err)
 //
 |
 S0Etkerr _ =>
@@ -759,6 +833,74 @@ end (*let*) // end of [f0_rcd2]
 //
 (* ****** ****** *)
 
+fun
+f0_uni0
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+//
+val e00 = err
+val-
+S0Euni0
+(tkb,sqs,tke) = s0e.node()
+//
+val sqs =
+preadx0_s0qualst(sqs, err)
+//
+val ( ) =
+(
+case+
+tke.node() of
+|
+T_RBRACE() => () // HX: valid
+|
+_(*non-RBRACE*) => (err := err + 1)
+)
+//
+in
+if
+(err = e00)
+then s0e else s0exp_uni0_errck(s0e.lctn(),tkb,sqs,tke)
+end (*let*) // end of [f0_uni0]
+
+(* ****** ****** *)
+
+fun
+f0_exi0
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+//
+val e00 = err
+val-
+S0Eexi0
+(tkb,sqs,tke) = s0e.node()
+//
+val sqs =
+preadx0_s0qualst(sqs, err)
+//
+val ( ) =
+(
+case+
+tke.node() of
+|
+T_RBRCKT() => () // HX: valid
+|
+_(*non-RBRCKT*) => (err := err + 1)
+)
+//
+in
+if
+(err = e00)
+then s0e else s0exp_exi0_errck(s0e.lctn(),tkb,sqs,tke)
+end (*let*) // end of [f0_exi0]
+
+(* ****** ****** *)
+
 } (*where*) // end of [preadx0_s0exp(s0e,err)]
 
 (* ****** ****** *)
@@ -843,7 +985,7 @@ preadx0_sort0lst
 case+ s0ts of
 |
 list_nil() =>
-list_nil()
+list_nil(*nil*)
 |
 list_cons
 (s0t1, sts1) => let
@@ -862,7 +1004,7 @@ preadx0_s0explst
 case+ s0es of
 |
 list_nil() =>
-list_nil()
+list_nil(*nil*)
 |
 list_cons
 (s0e1, ses1) => let
@@ -883,7 +1025,7 @@ preadx0_l0s0elst
 case+ lses of
 |
 list_nil() =>
-list_nil()
+list_nil(*nil*)
 |
 list_cons
 (lse1, lxs1) => let
