@@ -393,7 +393,8 @@ s0exp_op1_errck
 : token): s0exp =
 let
 val lvl = 0 in
-s0exp_errck(lvl+1, s0exp(loc,S0Eop1(tok)))
+s0exp_errck
+(lvl+1, s0exp(loc,S0Eop1(tok)))
 end (*let*) // end of [s0exp_op1_errck]
 //
 fun
@@ -404,7 +405,8 @@ s0exp_op2_errck
 : token): s0exp =
 let
 val lvl = 0 in
-s0exp_errck(lvl+1, s0exp(loc,S0Eop2(tok)))
+s0exp_errck
+(lvl+1, s0exp(loc,S0Eop2(tok)))
 end (*let*) // end of [s0exp_op2_errck]
 //
 fun
@@ -421,7 +423,7 @@ let
 val lvl = 0
 in//let
 s0exp_errck
-(lvl+1, s0exp(loc, S0Eop3(tkb, id0, tke)))
+(lvl+1, s0exp(loc, S0Eop3(tkb,id0,tke)))
 end (*let*) // end of [s0exp_op3_errck]
 //
 (* ****** ****** *)
@@ -435,7 +437,8 @@ s0exp_apps_errck
 let
 val lvl = errvl(ses)
 in//let
-s0exp_errck(lvl+1, s0exp(loc,S0Eapps(ses)))
+s0exp_errck
+(lvl+1, s0exp(loc,S0Eapps(ses)))
 end (*let*) // end of [s0exp_apps_errck]
 //
 (* ****** ****** *)
@@ -453,7 +456,8 @@ s0exp_fimp_errck
 let
   val lvl = errvl(ses)
 in//let
-s0exp_errck(lvl+1, s0exp(loc,S0Efimp(tkb,ses,tke)))
+s0exp_errck
+(lvl+1, s0exp(loc,S0Efimp(tkb,ses,tke)))
 end (*let*) // end of [s0exp_fimp_errck]
 //
 (* ****** ****** *)
@@ -471,7 +475,8 @@ s0exp_lpar_errck
 let
   val lvl = max(errvl(ses),errvl(srp))
 in//let
-s0exp_errck(lvl+1, s0exp(loc,S0Elpar(tkb,ses,srp)))
+s0exp_errck
+(lvl+1, s0exp(loc,S0Elpar(tkb,ses,srp)))
 end (*let*) // end of [s0exp_lpar_errck]
 //
 (* ****** ****** *)
@@ -491,7 +496,8 @@ s0exp_tup1_errck
 let
   val lvl = max(errvl(ses),errvl(srp))
 in//let
-s0exp_errck(lvl+1, s0exp(loc,S0Etup1(tkb,opt,ses,srp)))
+s0exp_errck
+(lvl+1, s0exp(loc,S0Etup1(tkb,opt,ses,srp)))
 end (*let*) // end of [s0exp_tup1_errck]
 //
 (* ****** ****** *)
@@ -511,7 +517,8 @@ s0exp_rcd2_errck
 let
   val lvl = max(errvl(lses),errvl(lsrb))
 in//let
-s0exp_errck(lvl+1, s0exp(loc,S0Ercd2(tkb,opt,lses,lsrb)))
+s0exp_errck
+(lvl+1, s0exp(loc,S0Ercd2(tkb,opt,lses,lsrb)))
 end (*let*) // end of [s0exp_rcd2_errck]
 //
 (* ****** ****** *)
@@ -543,7 +550,23 @@ s0exp_errck
 end (*let*) // end of [s0exp_exi0_errck]
 //
 (* ****** ****** *)
-
+//
+fun
+s0exp_anno_errck
+( loc: loc_t
+, s0e: s0exp
+, s0t: sort0): s0exp =
+let
+val lvl = s0exp_errvl(s0e)
+(*
+//HX: errvl for [s0t] is not used
+*)
+in//let
+s0exp_errck(lvl+1,s0exp(loc, S0Eanno(s0e,s0t)))
+end (*let*) // end of [s0exp_anno_errck]
+//
+(* ****** ****** *)
+//
 fun
 s0exp_qual_errck
 ( loc: loc_t
@@ -553,8 +576,8 @@ let
 val lvl = s0exp_errvl(se1)
 in
 s0exp_errck(lvl+1,s0exp(loc, S0Equal(tok,se1)))
-end (*let*) // end of [s0exp_uni0_errck]
-
+end (*let*) // end of [s0exp_qual_errck]
+//
 (* ****** ****** *)
 #extern
 fun
@@ -631,11 +654,14 @@ S0Etup1 _ => f0_tup1(s0e, err)
 |
 S0Ercd2 _ => f0_rcd2(s0e, err)
 //
+//
 |
 S0Euni0 _ => f0_uni0(s0e, err)
 |
 S0Eexi0 _ => f0_exi0(s0e, err)
 //
+|
+S0Eanno _ => f0_anno(s0e, err)
 |
 S0Equal _ => f0_qual(s0e, err)
 //
@@ -920,6 +946,27 @@ if
 then s0e else
 s0exp_exi0_errck(s0e.lctn(),tkb,sqs,tke)
 end (*let*) // end of [f0_exi0]
+
+(* ****** ****** *)
+
+fun
+f0_anno
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+val e00 = err
+val-
+S0Eanno
+(se1, st2) = s0e.node()
+val se1 = preadx0_s0exp(se1, err)
+val st2 = preadx0_sort0(st2, err)
+in
+if
+(err = e00)
+then s0e else s0exp_anno_errck(s0e.lctn(),se1,st2)
+end (*let*) // end of [f0_anno]
 
 (* ****** ****** *)
 

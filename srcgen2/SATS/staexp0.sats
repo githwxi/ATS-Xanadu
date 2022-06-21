@@ -784,11 +784,11 @@ S0Elam0 of
 , s0maglst
 , sort0opt, token, s0exp, tokenopt)//lam()
 |
-S0Eanno of (s0exp, sort0) // HX: annotation
-|
 S0Euni0 of (token, s0qualst, token)//forall
 |
 S0Eexi0 of (token, s0qualst, token)//exists
+|
+S0Eanno of (s0exp, sort0) // HX: annotation
 |
 S0Equal of (token, s0exp) // HX: qual-s0exp
 |
