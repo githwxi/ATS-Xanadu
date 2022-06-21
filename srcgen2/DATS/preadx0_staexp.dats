@@ -111,20 +111,24 @@ max
 ,errvl(st2),errvl(st3))
 #symload errvl with sort0_errvl_a3
 (* ****** ****** *)
+//
 #extern
 fun
-sort0_errvl_xs
+sort0_errvl_sts
 (sts: sort0lst): sint
-#symload errvl with sort0_errvl_xs
+#symload errvl with sort0_errvl_sts
+//
 #implfun
-sort0_errvl_xs(sts) =
+sort0_errvl_sts(sts) =
 (
 case+ sts of
-| list_nil
-  ((*nil*)) => 0
-| list_cons
-  (st1,sts) => max(errvl(st1),errvl(sts))
-)
+|
+list_nil
+((*nil*)) => 0
+|
+list_cons
+(st1,sts) => max(errvl(st1),errvl(sts)))
+//
 (* ****** ****** *)
 //
 fun
@@ -277,36 +281,108 @@ S0Eerrck
 (* ****** ****** *)
 fun
 s0exp_errvl_a2
-(st1: s0exp
-,st2: s0exp): sint =
+(se1: s0exp
+,se2: s0exp): sint =
 max
-(errvl(st1),errvl(st2))
+(errvl(se1),errvl(se2))
 #symload errvl with s0exp_errvl_a2
 (* ****** ****** *)
 fun
 s0exp_errvl_a3
-(st1: s0exp
-,st2: s0exp
-,st3: s0exp): sint =
+(se1: s0exp
+,se2: s0exp
+,se3: s0exp): sint =
 max
-(errvl(st1)
-,errvl(st2),errvl(st3))
+(errvl(se1)
+,errvl(se2),errvl(se3))
 #symload errvl with s0exp_errvl_a3
+(* ****** ****** *)
+//
+#extern
+fun
+s0exp_errvl_ses
+(ses: s0explst): sint
+#symload errvl with s0exp_errvl_ses
+//
+#implfun
+s0exp_errvl_ses(ses) =
+(
+case+ ses of
+|
+list_nil
+((*nil*)) => 0
+|
+list_cons
+(se1,ses) => max(errvl(se1),errvl(ses)))
+//
+(* ****** ****** *)
+//
+#extern
+fun
+s0exp_errvl_srp
+(srp: s0exp_RPAREN): sint
+#symload errvl with s0exp_errvl_srp
+//
+#implfun
+s0exp_errvl_srp
+(     srp     ) =
+(
+case+ srp of
+|
+s0exp_RPAREN_cons0(tok) => 0
+|
+s0exp_RPAREN_cons1(tkb,ses,tke) => errvl(ses)
+)
+//
+(* ****** ****** *)
+fun
+l0s0e_errvl
+(lse: l0s0e): sint =
+(
+  s0exp_errvl(s0e)
+) where
+{
+  val+
+  S0LAB(lab, tok, s0e) = lse
+}
+#symload errvl with l0s0e_errvl
+(* ****** ****** *)
+//
+#extern
+fun
+l0s0e_errvl_lses
+(lses: l0s0elst): sint
+#symload errvl with l0s0e_errvl_lses
+//
+#implfun
+l0s0e_errvl_lses(lses) =
+(
+case+ lses of
+|
+list_nil
+((*nil*)) => 0
+|
+list_cons
+(lse1,lses) => max(errvl(lse1),errvl(lses)))
+//
 (* ****** ****** *)
 #extern
 fun
-s0exp_errvl_xs
-(sts: s0explst): sint
-#symload errvl with s0exp_errvl_xs
+l0s0e_errvl_lsrb
+(lsrb: l0s0e_RBRACE): sint
 #implfun
-s0exp_errvl_xs(sts) =
+l0s0e_errvl_lsrb
+(     lsrb     ) =
 (
-case+ sts of
-| list_nil
-  ((*nil*)) => 0
-| list_cons
-  (st1,sts) => max(errvl(st1),errvl(sts))
+case+ lsrb of
+|
+l0s0e_RBRACE_cons0
+(       tok      ) => 0
+|
+l0s0e_RBRACE_cons1
+(  tkb,lses,tke  ) => errvl(lses)
 )
+#symload errvl with l0s0e_errvl_lsrb
 (* ****** ****** *)
 //
 fun
@@ -393,7 +469,7 @@ s0exp_lpar_errck
 , srp
 : s0exp_RPAREN): s0exp =
 let
-  val lvl = errvl(ses)
+  val lvl = max(errvl(ses),errvl(srp))
 in//let
 s0exp_errck(lvl+1, s0exp(loc,S0Elpar(tkb,ses,srp)))
 end (*let*) // end of [s0exp_lpar_errck]
@@ -413,10 +489,30 @@ s0exp_tup1_errck
 , srp
 : s0exp_RPAREN): s0exp =
 let
-  val lvl = errvl(ses)
+  val lvl = max(errvl(ses),errvl(srp))
 in//let
 s0exp_errck(lvl+1, s0exp(loc,S0Etup1(tkb,opt,ses,srp)))
 end (*let*) // end of [s0exp_tup1_errck]
+//
+(* ****** ****** *)
+//
+fun
+s0exp_rcd2_errck
+( loc
+: loc_t
+, tkb
+: token
+, opt
+: tokenopt
+, lses
+: l0s0elst
+, lsrb
+: l0s0e_RBRACE): s0exp =
+let
+  val lvl = max(errvl(lses),errvl(lsrb))
+in//let
+s0exp_errck(lvl+1, s0exp(loc,S0Ercd2(tkb,opt,lses,lsrb)))
+end (*let*) // end of [s0exp_rcd2_errck]
 //
 (* ****** ****** *)
 //
@@ -450,6 +546,8 @@ S0Elpar _ => f0_lpar(s0e, err)
 //
 |
 S0Etup1 _ => f0_tup1(s0e, err)
+|
+S0Ercd2 _ => f0_rcd2(s0e, err)
 //
 |
 S0Etkerr _ =>
@@ -633,6 +731,31 @@ if
 (err = e00)
 then s0e else s0exp_tup1_errck(s0e.lctn(),tkb,opt,ses,srp)
 end (*let*) // end of [f0_tup1]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+//
+val e00 = err
+val-
+S0Ercd2
+(tkb,opt,lses,lsrb) = s0e.node()
+//
+val lses =
+preadx0_l0s0elst(lses, err)
+val srp =
+preadx0_l0s0e_RBRACE(lsrb, err)
+in//let
+if
+(err = e00)
+then s0e else s0exp_rcd2_errck(s0e.lctn(),tkb,opt,lses,lsrb)
+end (*let*) // end of [f0_rcd2]
 //
 (* ****** ****** *)
 
