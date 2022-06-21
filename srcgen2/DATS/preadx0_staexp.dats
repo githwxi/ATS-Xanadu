@@ -543,6 +543,19 @@ s0exp_errck
 end (*let*) // end of [s0exp_exi0_errck]
 //
 (* ****** ****** *)
+
+fun
+s0exp_qual_errck
+( loc: loc_t
+, tok: token
+, se1: s0exp): s0exp =
+let
+val lvl = s0exp_errvl(se1)
+in
+s0exp_errck(lvl+1,s0exp(loc, S0Equal(tok,se1)))
+end (*let*) // end of [s0exp_uni0_errck]
+
+(* ****** ****** *)
 #extern
 fun
 preadx0_s0qua: fpreadx0(s0qua)
@@ -622,6 +635,9 @@ S0Ercd2 _ => f0_rcd2(s0e, err)
 S0Euni0 _ => f0_uni0(s0e, err)
 |
 S0Eexi0 _ => f0_exi0(s0e, err)
+//
+|
+S0Equal _ => f0_qual(s0e, err)
 //
 |
 S0Etkerr _ =>
@@ -753,7 +769,8 @@ tke.node() of
 in//let
 if
 (err = e00)
-then s0e else s0exp_fimp_errck(s0e.lctn(),tkb,ses,tke)
+then s0e else
+s0exp_fimp_errck(s0e.lctn(),tkb,ses,tke)
 end (*let*) // end of [f0_lpar]
 //
 (* ****** ****** *)
@@ -778,7 +795,8 @@ preadx0_s0exp_RPAREN(srp, err)
 in//let
 if
 (err = e00)
-then s0e else s0exp_lpar_errck(s0e.lctn(),tkb,ses,srp)
+then s0e else
+s0exp_lpar_errck(s0e.lctn(),tkb,ses,srp)
 end (*let*) // end of [f0_lpar]
 //
 (* ****** ****** *)
@@ -803,7 +821,8 @@ preadx0_s0exp_RPAREN(srp, err)
 in//let
 if
 (err = e00)
-then s0e else s0exp_tup1_errck(s0e.lctn(),tkb,opt,ses,srp)
+then s0e else
+s0exp_tup1_errck(s0e.lctn(),tkb,opt,ses,srp)
 end (*let*) // end of [f0_tup1]
 //
 (* ****** ****** *)
@@ -828,7 +847,8 @@ preadx0_l0s0e_RBRACE(lsrb, err)
 in//let
 if
 (err = e00)
-then s0e else s0exp_rcd2_errck(s0e.lctn(),tkb,opt,lses,lsrb)
+then s0e else
+s0exp_rcd2_errck(s0e.lctn(),tkb,opt,lses,lsrb)
 end (*let*) // end of [f0_rcd2]
 //
 (* ****** ****** *)
@@ -862,7 +882,8 @@ _(*non-RBRACE*) => (err := err + 1)
 in
 if
 (err = e00)
-then s0e else s0exp_uni0_errck(s0e.lctn(),tkb,sqs,tke)
+then s0e else
+s0exp_uni0_errck(s0e.lctn(),tkb,sqs,tke)
 end (*let*) // end of [f0_uni0]
 
 (* ****** ****** *)
@@ -896,8 +917,29 @@ _(*non-RBRCKT*) => (err := err + 1)
 in
 if
 (err = e00)
-then s0e else s0exp_exi0_errck(s0e.lctn(),tkb,sqs,tke)
+then s0e else
+s0exp_exi0_errck(s0e.lctn(),tkb,sqs,tke)
 end (*let*) // end of [f0_exi0]
+
+(* ****** ****** *)
+
+fun
+f0_qual
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+val e00 = err
+val-
+S0Equal
+(tok, se1) = s0e.node()
+val se1 = preadx0_s0exp(se1, err)
+in
+if
+(err = e00)
+then s0e else s0exp_qual_errck(s0e.lctn(),tok,se1)
+end (*let*) // end of [f0_qual]
 
 (* ****** ****** *)
 
