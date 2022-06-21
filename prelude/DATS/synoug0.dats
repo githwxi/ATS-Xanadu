@@ -628,14 +628,10 @@ fproc_a07
 (* ****** ****** *)
 //
 #impltmp
-<a1>
-<a2>
-<a3>
-<a4>
-<a5>
-<a6>
-<a7>
-<a8>
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
 fproc_a08
 ( x1, x2
 , x3, x4
@@ -656,14 +652,10 @@ fproc_a08
 //
 #impltmp
 <a1>
-<a2>
-<a3>
-<a4>
-<a5>
-<a6>
-<a7>
-<a8>
-<a9>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
 fproc_a09
 ( x1
 , x2, x3
@@ -680,6 +672,33 @@ fproc_a09
   val () = g_fproc<a7>(x7)
   val () = g_fproc<a8>(x8)
   val () = g_fproc<a9>(x9)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+fproc_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) = () where
+{
+val () = g_fproc<a01>(x01)
+val () = g_fproc<a02>(x02)
+val () = g_fproc<a03>(x03)
+val () = g_fproc<a04>(x04)
+val () = g_fproc<a05>(x05)
+val () = g_fproc<a06>(x06)
+val () = g_fproc<a07>(x07)
+val () = g_fproc<a08>(x08)
+val () = g_fproc<a09>(x09)
+val () = g_fproc<a10>(x10)
 }
 //
 (* ****** ****** *)
@@ -851,6 +870,33 @@ fproc0_a09
 (* ****** ****** *)
 //
 #impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+fproc0_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10 ) = () where
+{
+val () = gl_fproc0<a01>(x01)
+val () = gl_fproc0<a02>(x02)
+val () = gl_fproc0<a03>(x03)
+val () = gl_fproc0<a04>(x04)
+val () = gl_fproc0<a05>(x05)
+val () = gl_fproc0<a06>(x06)
+val () = gl_fproc0<a07>(x07)
+val () = gl_fproc0<a08>(x08)
+val () = gl_fproc0<a09>(x09)
+val () = gl_fproc0<a10>(x10)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
 <a1>
 fproc1_a01(x1) = () where
 {
@@ -1012,6 +1058,33 @@ fproc1_a09
   val () = gl_fproc1<a7>(x7)
   val () = gl_fproc1<a8>(x8)
   val () = gl_fproc1<a9>(x9)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+fproc1_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10 ) = () where
+{
+val () = gl_fproc1<a01>(x01)
+val () = gl_fproc1<a02>(x02)
+val () = gl_fproc1<a03>(x03)
+val () = gl_fproc1<a04>(x04)
+val () = gl_fproc1<a05>(x05)
+val () = gl_fproc1<a06>(x06)
+val () = gl_fproc1<a07>(x07)
+val () = gl_fproc1<a08>(x08)
+val () = gl_fproc1<a09>(x09)
+val () = gl_fproc1<a10>(x10)
 }
 //
 (* ****** ****** *)
