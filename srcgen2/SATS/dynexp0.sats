@@ -175,12 +175,17 @@ d0pat_node =
 | D0Plpar of
   (token, d0patlst, d0pat_RPAREN)
 //
+|
 (*
 HX-2022-06-20:
 D0Ptkerr(tok):
 tok is not consumed by the parser!
 *)
-| D0Ptkerr of (token)
+D0Ptkerr of (token) // HX: parsing error
+|
+D0Perrck of (int(*lvl*), d0pat)//HX:pread-error
+//
+// HX-2022-06-20: end-of-[datatype(d0pat_node)]
 //
 and
 d0pat_RPAREN =
@@ -261,6 +266,13 @@ d0exp_RPAREN_cons0 of (token)
 |
 d0exp_RPAREN_cons1 of (token, d0explst, token)
 //
+and
+l0d0e_RBRACE =
+|
+l0d0e_RBRACE_cons0 of token
+|
+l0d0e_RBRACE_cons1 of (token, l0d0elst, token)
+//
 (* ****** ****** *)
 fun
 d0exp_fprint(FILR, d0exp): void
@@ -286,14 +298,14 @@ d0ecl_node =
 //
 (*
 HX-2022-06-20:
-D0Ptkerr(tok):
+D0Ctkerr(tok):
 tok is not consumed by the parser!
 *) // HX:This one is an indication
 | D0Ctkerr of (token)//of some error
 //
 (*
 HX-2019:
-D0Ptkskp(tok):
+D0Ctkskp(tok):
 for skipping synerr:
 *)//HX:Note that [tok] is consumed
 | D0Ctkskp of (token)//by the parser

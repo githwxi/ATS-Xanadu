@@ -84,6 +84,8 @@ case+ s0t.node() of
 S0Terrck
 (lvl, _) => lvl | _ => 0
 )
+#symload
+sort0_errvl with sort0_errvl_a1
 #symload errvl with sort0_errvl_a1
 (* ****** ****** *)
 fun
@@ -92,6 +94,8 @@ sort0_errvl_a2
 ,st2: sort0): sint =
 max
 (errvl(st1),errvl(st2))
+#symload
+sort0_errvl with sort0_errvl_a2
 #symload errvl with sort0_errvl_a2
 (* ****** ****** *)
 fun
@@ -102,6 +106,8 @@ sort0_errvl_a3
 max
 (errvl(st1)
 ,errvl(st2),errvl(st3))
+#symload
+sort0_errvl with sort0_errvl_a3
 #symload errvl with sort0_errvl_a3
 (* ****** ****** *)
 //
@@ -236,7 +242,7 @@ if
 then s0t else sort0_lpar_errck(s0t.lctn(),tkb,sts,tke)
 end (*let*) // end of [f0_lpar]
 //
-} (*where*) // end of [preadx0_sort0]
+} (*where*) // end of [preadx0_sort0(s0t,err)]
 //
 (* ****** ****** *)
 //
@@ -251,7 +257,7 @@ s0exp
 //
 (* ****** ****** *)
 fun
-s0exp_errvl
+s0exp_errvl_a1
 (s0e: s0exp): sint =
 (
 case+ s0e.node() of
@@ -259,7 +265,9 @@ case+ s0e.node() of
 S0Eerrck
 (lvl, _) => lvl | _ => 0
 )
-#symload errvl with s0exp_errvl
+#symload
+s0exp_errvl with s0exp_errvl_a1
+#symload errvl with s0exp_errvl_a1
 (* ****** ****** *)
 fun
 s0exp_errvl_a2
@@ -267,6 +275,8 @@ s0exp_errvl_a2
 ,se2: s0exp): sint =
 max
 (errvl(se1),errvl(se2))
+#symload
+s0exp_errvl with s0exp_errvl_a2
 #symload errvl with s0exp_errvl_a2
 (* ****** ****** *)
 fun
@@ -277,6 +287,8 @@ s0exp_errvl_a3
 max
 (errvl(se1)
 ,errvl(se2),errvl(se3))
+#symload
+s0exp_errvl with s0exp_errvl_a3
 #symload errvl with s0exp_errvl_a3
 (* ****** ****** *)
 //
@@ -284,6 +296,8 @@ max
 fun
 s0exp_errvl_ses
 (ses: s0explst): sint
+#symload
+s0exp_errvl with s0exp_errvl_ses
 #symload errvl with s0exp_errvl_ses
 //
 #implfun
@@ -321,8 +335,7 @@ fun
 l0s0e_errvl
 (lse: l0s0e): sint =
 (
-  s0exp_errvl(s0e)
-) where
+  s0exp_errvl(s0e)) where
 {
   val+
   S0LAB(lab, tok, s0e) = lse
@@ -417,7 +430,7 @@ s0exp_apps_errck
 , ses
 : s0explst): s0exp =
 let
-val lvl = errvl(ses)
+  val lvl = s0exp_errvl(ses)
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Eapps(ses)))
@@ -436,7 +449,7 @@ s0exp_fimp_errck
 , tke
 : token   ): s0exp =
 let
-  val lvl = errvl(ses)
+  val lvl = s0exp_errvl(ses)
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Efimp(tkb,ses,tke)))
@@ -476,7 +489,7 @@ s0exp_tup1_errck
 , srp
 : s0exp_RPAREN): s0exp =
 let
-  val lvl = max(errvl(ses),errvl(srp))
+val lvl = max(errvl(ses),errvl(srp))
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Etup1(tkb,opt,ses,srp)))
@@ -497,7 +510,7 @@ s0exp_rcd2_errck
 , lsrb
 : l0s0e_RBRACE): s0exp =
 let
-  val lvl = max(errvl(lses),errvl(lsrb))
+val lvl = max(errvl(lses),errvl(lsrb))
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Ercd2(tkb,opt,lses,lsrb)))
@@ -564,7 +577,7 @@ s0exp_anno_errck
 , s0e: s0exp
 , s0t: sort0): s0exp =
 let
-val lvl = s0exp_errvl(s0e)
+  val lvl = s0exp_errvl(s0e)
 (*
 //HX: errvl for [s0t] is not used
 *)
@@ -580,8 +593,8 @@ s0exp_qual_errck
 , tok: token
 , se1: s0exp): s0exp =
 let
-val lvl = s0exp_errvl(se1)
-in
+  val lvl = s0exp_errvl(se1)
+in//let
 s0exp_errck(lvl+1,s0exp(loc, S0Equal(tok,se1)))
 end (*let*) // end of [s0exp_qual_errck]
 //
