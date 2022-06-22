@@ -524,6 +524,28 @@ end (*let*) // end of [s0exp_rcd2_errck]
 (* ****** ****** *)
 //
 fun
+s0exp_lam0_errck
+( loc
+: loc_t
+, tknd
+: token
+, smas
+: s0maglst
+, tres
+: sort0opt
+, arrw: token
+, body: s0exp
+, tend: tokenopt): s0exp =
+let
+  val lvl = s0exp_errvl(body)
+in//let
+s0exp_errck
+(lvl+1, s0exp(loc,S0Elam0(tknd,smas,tres,arrw,body,tend)))
+end (*let*) // end of [s0exp_rcd2_errck]
+//
+(* ****** ****** *)
+//
+fun
 s0exp_uni0_errck
 ( loc: loc_t
 , tkb: token
@@ -581,10 +603,112 @@ end (*let*) // end of [s0exp_qual_errck]
 (* ****** ****** *)
 #extern
 fun
+preadx0_s0arg: fpreadx0(s0arg)
+#extern
+fun
+preadx0_s0arglst: fpreadx0(s0arglst)
+(* ****** ****** *)
+#extern
+fun
+preadx0_s0mag: fpreadx0(s0mag)
+#extern
+fun
+preadx0_s0maglst: fpreadx0(s0maglst)
+(* ****** ****** *)
+#extern
+fun
 preadx0_s0qua: fpreadx0(s0qua)
 #extern
 fun
 preadx0_s0qualst: fpreadx0(s0qualst)
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0arg
+( s0a, err ) = (
+case+
+s0a.node() of
+|
+S0ARGnone(tok) =>
+(err := err + 1; s0a)
+|
+S0ARGsome(id0, opt) =>
+(
+case+ opt of
+|
+optn_nil() => s0a
+|
+optn_cons(s0t) =>
+(preadx0_sort0(s0t, err); s0a)
+) where
+{
+val () =
+(
+case+
+id0.node() of
+|
+I0DNTsome _ => ((*void*))
+|
+I0DNTnone _ => (err := err + 1)
+) : void // end of [val ()]
+} (*whr*) // end of [S0ARGsome]
+) (*case*) // end of [preadx0_s0arg(sma,err)]
+//
+#implfun
+preadx0_s0arglst
+  (s0as, err) =
+(
+case+ s0as of
+|
+list_nil() =>
+list_nil((*nil*))
+|
+list_cons
+(s0a1, sas1) => s0as where
+{
+  val s0a1 = preadx0_s0arg(s0a1, err)
+  val sas1 = preadx0_s0arglst(sas1, err)
+} // end of [list_cons(s0a1,s0as)]
+) (*case*) // end-of-[preadx0_s0arglst(s0as,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0mag
+( sma, err ) =
+(
+//
+case+
+sma.node() of
+|
+S0MAGnone(tok) =>
+(err := err + 1; sma)
+//
+|
+S0MAGsing(s0a) =>
+(
+case+
+s0a.node() of
+|
+I0DNTsome _ => sma
+|
+I0DNTnone _ => (err := err + 1; sma))
+//
+|
+S0MAGlist
+(tklp, s0as, tkrp) =>
+let
+val s0as =
+preadx0_s0arglst(s0as, err)
+in//let
+case+
+tkrp.node() of
+| T_RPAREN() => sma
+| _(*non-T_RPAREN*) => (err := err + 1; sma)
+endlet // end of [S0MAGlst]
+//
+) (*case*) // end of [preadx0_s0mag(sma,err)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -593,9 +717,11 @@ preadx0_s0qua
 (
 case+
 s0q.node() of
-| S0QUAsome _ => s0q
-| S0QUAnone _ => (err := err + 1; s0q)
-)
+|
+S0QUAsome _ => s0q
+|
+S0QUAnone _ => (err := err + 1; s0q)
+) (*case*) // end of [preadx0_s0qua(s0q,err)]
 //
 #implfun
 preadx0_s0qualst
@@ -604,18 +730,14 @@ preadx0_s0qualst
 case+ s0qs of
 |
 list_nil() =>
-list_nil(*nil*)
+list_nil((*nil*))
 |
 list_cons
-(s0q1, sqs1) => let
-//
-  val e00 = err
-  val s0e1 = preadx0_s0qua(s0q1, err)
-  val ses1 = preadx0_s0qualst(sqs1, err)
-//
-in//let
-if err = e00 then s0qs else list_cons(s0q1, sqs1)
-endlet // end of [list_cons(s0q1,s0qs)]
+(s0q1, sqs1) => s0qs where
+{
+  val s0q1 = preadx0_s0qua(s0q1, err)
+  val sqs1 = preadx0_s0qualst(sqs1, err)
+} // end of [list_cons(s0q1,s0qs)]
 ) (*case*) // end-of-[preadx0_s0qualst(s0qs,err)]
 //
 (* ****** ****** *)
@@ -654,6 +776,8 @@ S0Etup1 _ => f0_tup1(s0e, err)
 |
 S0Ercd2 _ => f0_rcd2(s0e, err)
 //
+|
+S0Elam0 _ => f0_lam0(s0e, err)
 //
 |
 S0Euni0 _ => f0_uni0(s0e, err)
@@ -878,6 +1002,47 @@ s0exp_rcd2_errck(s0e.lctn(),tkb,opt,lses,lsrb)
 end (*let*) // end of [f0_rcd2]
 //
 (* ****** ****** *)
+//
+fun
+f0_lam0
+( s0e
+: s0exp
+, err
+: &sint >> _): s0exp =
+let
+//
+val e00 = err
+val-
+S0Elam0
+(tknd//lam
+,smas,tres
+,arrw// =>
+,body,tend) = s0e.node()
+//
+val smas =
+preadx0_s0maglst(smas, err) // s0maglst
+val tres =
+preadx0_sort0opt(tres, err) // sort0opt
+//
+val (  ) =
+(
+case+
+arrw.node() of
+| T_EQGT() => ()
+| _(*non-T_MSGT*) => (err := err + 1)
+)
+//
+val body = preadx0(body, err) // ( s0exp )
+//
+in//let
+if
+(err = e00)
+then s0e else
+s0exp_lam0_errck
+(s0e.lctn(),tknd,smas,tres,arrw,body,tend)
+end (*let*) // end of [f0_lam0]
+//
+(* ****** ****** *)
 
 fun
 f0_uni0
@@ -1074,7 +1239,7 @@ preadx0_sort0lst
 case+ s0ts of
 |
 list_nil() =>
-list_nil(*nil*)
+list_nil((*nil*))
 |
 list_cons
 (s0t1, sts1) => let
@@ -1093,7 +1258,7 @@ preadx0_s0explst
 case+ s0es of
 |
 list_nil() =>
-list_nil(*nil*)
+list_nil((*nil*))
 |
 list_cons
 (s0e1, ses1) => let
@@ -1114,7 +1279,7 @@ preadx0_l0s0elst
 case+ lses of
 |
 list_nil() =>
-list_nil(*nil*)
+list_nil((*nil*))
 |
 list_cons
 (lse1, lxs1) => let
