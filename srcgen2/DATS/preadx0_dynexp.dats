@@ -72,6 +72,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 fun
+d0pat_errck
+(lvl: sint
+,d0p: d0pat): d0pat =
+(
+d0pat
+(d0p.lctn(), D0Perrck(lvl, d0p))
+)//end-of-[d0pat_errck(_,_)]
+//
+fun
 d0exp_errck
 (lvl: sint
 ,d0e: d0exp): d0exp =
@@ -90,6 +99,8 @@ case+ d0e.node() of
 D0Eerrck
 (lvl, _) => lvl | _ => 0
 )
+#symload
+d0exp_errvl with d0exp_errvl_a1
 #symload errvl with d0exp_errvl_a1
 (* ****** ****** *)
 fun
@@ -98,6 +109,8 @@ d0exp_errvl_a2
 ,de2: d0exp): sint =
 max
 (errvl(de1),errvl(de2))
+#symload
+d0exp_errvl with d0exp_errvl_a2
 #symload errvl with d0exp_errvl_a2
 (* ****** ****** *)
 fun
@@ -108,6 +121,8 @@ d0exp_errvl_a3
 max
 (errvl(de1)
 ,errvl(de2),errvl(de3))
+#symload
+d0exp_errvl with d0exp_errvl_a3
 #symload errvl with d0exp_errvl_a3
 (* ****** ****** *)
 //
@@ -115,6 +130,8 @@ max
 fun
 d0exp_errvl_des
 (des: d0explst): sint
+#symload
+d0exp_errvl with d0exp_errvl_des
 #symload errvl with d0exp_errvl_des
 //
 #implfun
@@ -148,6 +165,54 @@ d0exp_RPAREN_cons1(tkb,des,tke) => errvl(des)
 )
 //
 (* ****** ****** *)
+fun
+l0d0e_errvl
+(lde: l0d0e): sint =
+(
+  d0exp_errvl(d0e)) where
+{
+  val+
+  D0LAB(lab, tok, d0e) = lde
+}
+#symload errvl with l0d0e_errvl
+(* ****** ****** *)
+//
+#extern
+fun
+l0d0e_errvl_ldes
+(ldes: l0d0elst): sint
+#symload errvl with l0d0e_errvl_ldes
+//
+#implfun
+l0d0e_errvl_ldes(ldes) =
+(
+case+ ldes of
+|
+list_nil
+((*nil*)) => 0
+|
+list_cons
+(lde1,ldes) => max(errvl(lde1),errvl(ldes)))
+//
+(* ****** ****** *)
+#extern
+fun
+l0d0e_errvl_ldrb
+(ldrb: l0d0e_RBRACE): sint
+#implfun
+l0d0e_errvl_ldrb
+(     ldrb     ) =
+(
+case+ ldrb of
+|
+l0d0e_RBRACE_cons0
+(       tok      ) => 0
+|
+l0d0e_RBRACE_cons1
+(  tkb,ldes,tke  ) => errvl(ldes)
+)
+#symload errvl with l0d0e_errvl_ldrb
+(* ****** ****** *)
 //
 fun
 d0exp_apps_errck
@@ -156,7 +221,7 @@ d0exp_apps_errck
 , des
 : d0explst): d0exp =
 let
-val lvl = errvl(des)
+  val lvl = d0exp_errvl(des)
 in//let
 d0exp_errck(lvl+1, d0exp(loc,D0Eapps(des)))
 end (*let*) // end of [d0exp_apps_errck]
@@ -174,7 +239,7 @@ d0exp_lpar_errck
 , drp
 : d0exp_RPAREN): d0exp =
 let
-  val lvl = max(errvl(des),errvl(drp))
+val lvl = max(errvl(des),errvl(drp))
 in//let
 d0exp_errck
 (lvl+1, d0exp(loc,D0Elpar(tkb,des,drp)))
@@ -194,13 +259,12 @@ d0e.node() of
 | D0Echr _ => d0e
 | D0Eflt _ => d0e
 | D0Estr _ => d0e
+//
 |
 D0Eapps _ => f0_apps(d0e, err)
 //
-(*
 |
 D0Elpar _ => f0_lpar(d0e, err)
-*)
 //
 |
 D0Etkerr _ =>
@@ -253,7 +317,9 @@ then d0e else
 d0exp_lpar_errck(d0e.lctn(),tkb,des,drp)
 end (*let*) // end of [f0_lpar]
 //
-} (*where*) // end-of-[preadx0_d0exp]
+(* ****** ****** *)
+
+} (*where*) // end-of-[preadx0_d0exp(d0e,err)]
 
 (* ****** ****** *)
 
