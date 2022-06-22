@@ -82,7 +82,7 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
 #typedef d0patlst = $D0E.d0patlst
 #typedef d0explst = $D0E.d0explst
-#typedef d0ecllst = $D0E.d0ecllst
+#typedef d0eclist = $D0E.d0eclist
 (* ****** ****** *)
 //
 #typedef
