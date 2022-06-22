@@ -477,16 +477,19 @@ sort0_node =
 //prop/view/type/tbox/tflt/vwtp/vtbx/vtft
 *)
 //
+|
 (*
 HX-2022-06-20:
 S0Ttkerr(tok):
 tok is not consumed by the parser!
 *)
-| S0Ttkerr of (token) // HX: parsing error
+S0Ttkerr of (token) // HX: parsing error
 //
-| S0Terrck of (int, sort0) // HX: pread error
-// end of [datatype sort0_node]
-
+|
+S0Terrck of (int(*lvl*), sort0)//HX:pread-error
+//
+// HX-2022-06-16: end-of-[datatype(sort0_node)]
+//
 (* ****** ****** *)
 fun
 sort0_fprint
@@ -763,11 +766,11 @@ S0Eop3 of
 //
 |
 S0Efimp of
-( token, s0explst, token )
+(token, s0explst, token)
 //
 |
 S0Elpar of
-( token, s0explst, s0exp_RPAREN )
+(token, s0explst, s0exp_RPAREN)
 //
 |
 S0Etup1 of // HX: tuple
@@ -801,7 +804,7 @@ tok is not consumed by the parser!
 // HX-2018-07-08: this one probably
 S0Etkerr of (token) // indicates some error!
 |
-S0Eerrck of (int, s0exp) // HX: pread error!
+S0Eerrck of (int(*lvl*), s0exp)//HX:pread-error
 // HX-2022-06-16: end-of-[datatype(s0exp_node)]
 //
 and

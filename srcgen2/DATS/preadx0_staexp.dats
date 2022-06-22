@@ -57,33 +57,26 @@ ATS_PACKNAME
 #symload lctn with sort0_get_lctn
 #symload node with sort0_get_node
 (* ****** ****** *)
+#symload node with s0arg_get_node
+#symload node with s0mag_get_node
+#symload node with s0qua_get_node
+(* ****** ****** *)
 #symload lctn with s0exp_get_lctn
 #symload node with s0exp_get_node
 (* ****** ****** *)
 //
 fun
-sort0_errck_a1
-(s0t: sort0): sort0 =
-(
-sort0
-(s0t.lctn(), S0Terrck(1, s0t))
-)//end-of-[sort0_errck_a1(_)]
-fun
-sort0_errck_a2
+sort0_errck
 (lvl: sint
 ,s0t: sort0): sort0 =
 (
 sort0
 (s0t.lctn(), S0Terrck(lvl, s0t))
-)//end-of-[sort0_errck_a2(_,_)]
-#symload
-sort0_errck with sort0_errck_a1
-#symload
-sort0_errck with sort0_errck_a2
+)//end-of-[sort0_errck(_,_)]
 //
 (* ****** ****** *)
 fun
-sort0_errvl
+sort0_errvl_a1
 (s0t: sort0): sint =
 (
 case+ s0t.node() of
@@ -91,7 +84,7 @@ case+ s0t.node() of
 S0Terrck
 (lvl, _) => lvl | _ => 0
 )
-#symload errvl with sort0_errvl
+#symload errvl with sort0_errvl_a1
 (* ****** ****** *)
 fun
 sort0_errvl_a2
@@ -166,10 +159,10 @@ preadx0_sort0(s0t, err) =
 (
 case+
 s0t.node() of
-|
-S0Tid0 _ => s0t
-|
-S0Tint _ => s0t
+//
+| S0Tid0 _ => s0t
+| S0Tint _ => s0t
+//
 |
 S0Tqid _ => f0_qid(s0t, err)
 |
@@ -180,11 +173,11 @@ S0Tlpar _ => f0_lpar(s0t, err)
 //
 |
 S0Ttkerr _ =>
-(err := err+1; sort0_errck(s0t))
+(err := err+1; sort0_errck(1, s0t))
 //
 |
 S0Terrck _ =>
-(err := err+1; sort0_errck(s0t))
+(err := err+1; sort0_errck(1, s0t))
 ) where//end-of(case(s0t.node()))
 {
 //
@@ -194,7 +187,7 @@ f0_qid
 : sort0
 , err
 : &sint >> _): sort0 =
-( err := err+1; sort0_errck(s0t) )
+( err := err+1; sort0_errck(1, s0t) )
 //
 fun
 f0_apps
@@ -248,24 +241,13 @@ end (*let*) // end of [f0_lpar]
 (* ****** ****** *)
 //
 fun
-s0exp_errck_a1
-(s0e: s0exp): s0exp =
-(
-s0exp
-(s0e.lctn(), S0Eerrck(1, s0e))
-)//end-of-[s0exp_errck_a1(_)]
-fun
-s0exp_errck_a2
+s0exp_errck
 (lvl: sint
 ,s0e: s0exp): s0exp =
 (
 s0exp
 (s0e.lctn(), S0Eerrck(lvl, s0e))
-)//end-of-[s0exp_errck_a2(_,_)]
-#symload
-s0exp_errck with s0exp_errck_a1
-#symload
-s0exp_errck with s0exp_errck_a2
+)//end-of-[s0exp_errck(_,_)]
 //
 (* ****** ****** *)
 fun
@@ -738,8 +720,8 @@ list_nil((*nil*))
 list_cons
 (s0q1, sqs1) => s0qs where
 {
-  val s0q1 = preadx0_s0qua(s0q1, err)
-  val sqs1 = preadx0_s0qualst(sqs1, err)
+val s0q1 = preadx0_s0qua(s0q1, err)
+val sqs1 = preadx0_s0qualst(sqs1, err)
 } // end of [list_cons(s0q1,s0qs)]
 ) (*case*) // end-of-[preadx0_s0qualst(s0qs,err)]
 //
@@ -794,13 +776,13 @@ S0Equal _ => f0_qual(s0e, err)
 //
 |
 S0Etkerr _ =>
-(err := err+1; s0exp_errck(s0e))
+(err := err+1; s0exp_errck(1, s0e))
 //
 |
 S0Eerrck _ =>
-(err := err+1; s0exp_errck(s0e))
+(err := err+1; s0exp_errck(1, s0e))
 //
-) where//end-of(case(s0e.node()))
+) where // end-of(case(s0e.node()))
 {
 //
 fun

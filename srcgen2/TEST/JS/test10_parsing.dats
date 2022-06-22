@@ -123,15 +123,16 @@ local
 #impltmp
 {a:t0}
 gseq_print$beg
-<list(a)>< a >() = print("$list(")
+<list(a)><a>() = print("$list(")
 #impltmp
 {a:t0}
 gseq_print$sep
-<list(a)>< a >() = print(   ","   )
+<list(a)><a>() = print(   ","   )
 in//local
 val () =
 prerrln
-("list(0,1,2,3,4,5,6,7,8,9) = ", list(0,1,2,3,4,5,6,7,8,9))
+(
+"list(0,1,2,3) = ", list(0,1,2,3))
 endloc (*local*) // end of [local]
 
 (* ****** ****** *)
@@ -163,4 +164,4 @@ endloc (*local*) // end-of-(local)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test09_parsing.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test10_parsing.dats] *)

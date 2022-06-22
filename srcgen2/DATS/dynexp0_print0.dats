@@ -129,6 +129,9 @@ print("D0Eapps(", d0es, ")")
 |
 D0Etkerr(tok) => print("D0Etkerr(",tok,")")
 //
+|
+D0Eerrck(lvl,d0e) => print("D0Eerrck(",lvl,";",d0e,")")
+//
 end (*let*) // end of [d0exp_fprint(out,d0e)]
 
 (* ****** ****** *)
