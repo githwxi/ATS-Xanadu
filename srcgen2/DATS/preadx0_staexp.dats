@@ -540,7 +540,10 @@ let
   val lvl = s0exp_errvl(body)
 in//let
 s0exp_errck
-(lvl+1, s0exp(loc,S0Elam0(tknd,smas,tres,arrw,body,tend)))
+(
+lvl+1,
+s0exp_make_node
+(loc,S0Elam0(tknd,smas,tres,arrw,body,tend)))
 end (*let*) // end of [s0exp_rcd2_errck]
 //
 (* ****** ****** *)
@@ -555,7 +558,7 @@ let
 val lvl = 0
 in
 s0exp_errck
-(lvl+1,s0exp(loc, S0Euni0(tkb,sqs,tke)))
+(lvl+1, s0exp(loc,S0Euni0(tkb,sqs,tke)))
 end (*let*) // end of [s0exp_uni0_errck]
 //
 fun
@@ -568,7 +571,7 @@ let
 val lvl = 0
 in
 s0exp_errck
-(lvl+1,s0exp(loc, S0Eexi0(tkb,sqs,tke)))
+(lvl+1, s0exp(loc,S0Eexi0(tkb,sqs,tke)))
 end (*let*) // end of [s0exp_exi0_errck]
 //
 (* ****** ****** *)
@@ -606,11 +609,11 @@ fun
 preadx0_s0arg: fpreadx0(s0arg)
 #extern
 fun
-preadx0_s0arglst: fpreadx0(s0arglst)
+preadx0_s0mag: fpreadx0(s0mag)
 (* ****** ****** *)
 #extern
 fun
-preadx0_s0mag: fpreadx0(s0mag)
+preadx0_s0arglst: fpreadx0(s0arglst)
 #extern
 fun
 preadx0_s0maglst: fpreadx0(s0maglst)
