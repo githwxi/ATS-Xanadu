@@ -147,10 +147,14 @@ fun sort0lst_fpemsg(FILR, sort0lst): void
 fun s0explst_fpemsg(FILR, s0explst): void
 fun l0s0elst_fpemsg(FILR, l0s0elst): void
 (* ****** ****** *)
+//
 fun
-s0exp_RPAREN_fpemsg(FILR, s0exp_RPAREN): void
+s0exp_RPAREN_fpemsg
+  (out: FILR, srp: s0exp_RPAREN): void
 fun
-l0s0e_RBRACE_fpemsg(FILR, l0s0e_RBRACE): void
+l0s0e_RBRACE_fpemsg
+  (out: FILR, lsrb: l0s0e_RBRACE): void
+//
 (* ****** ****** *)
 (*
 //HX: for checking dynamics
