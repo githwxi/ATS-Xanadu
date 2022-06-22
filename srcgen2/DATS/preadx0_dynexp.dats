@@ -48,6 +48,7 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/preadx0.sats"
 (* ****** ****** *)
@@ -68,6 +69,238 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
+(* ****** ****** *)
+//
+fun
+d0exp_errck
+(lvl: sint
+,d0e: d0exp): d0exp =
+(
+d0exp
+(d0e.lctn(), D0Eerrck(lvl, d0e))
+)//end-of-[d0exp_errck(_,_)]
+//
+(* ****** ****** *)
+fun
+d0exp_errvl_a1
+(d0e: d0exp): sint =
+(
+case+ d0e.node() of
+|
+D0Eerrck
+(lvl, _) => lvl | _ => 0
+)
+#symload errvl with d0exp_errvl_a1
+(* ****** ****** *)
+fun
+d0exp_errvl_a2
+(de1: d0exp
+,de2: d0exp): sint =
+max
+(errvl(de1),errvl(de2))
+#symload errvl with d0exp_errvl_a2
+(* ****** ****** *)
+fun
+d0exp_errvl_a3
+(de1: d0exp
+,de2: d0exp
+,de3: d0exp): sint =
+max
+(errvl(de1)
+,errvl(de2),errvl(de3))
+#symload errvl with d0exp_errvl_a3
+(* ****** ****** *)
+//
+#extern
+fun
+d0exp_errvl_des
+(des: d0explst): sint
+#symload errvl with d0exp_errvl_des
+//
+#implfun
+d0exp_errvl_des(des) =
+(
+case+ des of
+|
+list_nil
+((*nil*)) => 0
+|
+list_cons
+(de1,des) => max(errvl(de1),errvl(des)))
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d0exp_errvl_drp
+(drp: d0exp_RPAREN): sint
+#symload errvl with d0exp_errvl_drp
+//
+#implfun
+d0exp_errvl_drp
+(     drp     ) =
+(
+case+ drp of
+|
+d0exp_RPAREN_cons0(tok) => 0
+|
+d0exp_RPAREN_cons1(tkb,des,tke) => errvl(des)
+)
+//
+(* ****** ****** *)
+//
+fun
+d0exp_apps_errck
+( loc
+: loc_t
+, des
+: d0explst): d0exp =
+let
+val lvl = errvl(des)
+in//let
+d0exp_errck(lvl+1, d0exp(loc,D0Eapps(des)))
+end (*let*) // end of [d0exp_apps_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_lpar_errck
+( loc
+: loc_t
+, tkb
+: token
+, des
+: d0explst
+, drp
+: d0exp_RPAREN): d0exp =
+let
+  val lvl = max(errvl(des),errvl(drp))
+in//let
+d0exp_errck
+(lvl+1, d0exp(loc,D0Elpar(tkb,des,drp)))
+end (*let*) // end of [d0exp_lpar_errck]
+//
+(* ****** ****** *)
+
+#implfun
+preadx0_d0exp(d0e, err) =
+(
+case+
+d0e.node() of
+//
+| D0Eid0 _ => d0e
+//
+| D0Eint _ => d0e
+| D0Echr _ => d0e
+| D0Eflt _ => d0e
+| D0Estr _ => d0e
+|
+D0Eapps _ => f0_apps(d0e, err)
+//
+(*
+|
+D0Elpar _ => f0_lpar(d0e, err)
+*)
+//
+|
+D0Etkerr _ =>
+(err := err+1; d0exp_errck(1, d0e))
+//
+|
+D0Eerrck _ =>
+(err := err+1; d0exp_errck(1, d0e))
+) where // end-of(case(d0e.node()))
+{
+//
+fun
+f0_apps
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+val e00 = err
+val-
+D0Eapps(des) = d0e.node()
+val des = preadx0_d0explst(des, err)
+in//let
+if
+(err = e00)
+then d0e else d0exp_apps_errck(d0e.lctn(), des)
+end (*let*) // end of [f0_apps]
+//
+fun
+f0_lpar
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+//
+val e00 = err
+val-
+D0Elpar
+(tkb,des,drp) = d0e.node()
+//
+val des =
+preadx0_d0explst(des, err)
+val drp =
+preadx0_d0exp_RPAREN(drp, err)
+in//let
+if
+(err = e00)
+then d0e else
+d0exp_lpar_errck(d0e.lctn(),tkb,des,drp)
+end (*let*) // end of [f0_lpar]
+//
+} (*where*) // end-of-[preadx0_d0exp]
+
+(* ****** ****** *)
+
+#implfun
+preadx0_d0exp_RPAREN
+  (drp0, err) =
+(
+case+ drp0 of
+|
+d0exp_RPAREN_cons0
+(      tend      ) =>
+(
+case+
+tend.node() of
+|
+T_RPAREN() => drp0
+|
+_(*non-T_RPAREN*) => (err := err+1; drp0)
+)
+|
+d0exp_RPAREN_cons1
+(tbar, d0es, tend) =>
+let
+//
+val e00 = err
+//
+val d0es =
+preadx0_d0explst(d0es, err)
+in//let
+//
+case+
+tend.node() of
+|
+T_RPAREN() =>
+(
+  if
+  (err=e00)
+  then drp0
+  else d0exp_RPAREN_cons1(tbar, d0es, tend)
+)
+|
+_(*non-T_RPAREN*) =>
+(err := err+1; d0exp_RPAREN_cons1(tbar, d0es, tend))
+//
+endlet // end of [d0exp_RPAREN_cons1]
+) (*case*) // end of [preadx0_d0exp_RPAREN]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_dynexp.dats] *)

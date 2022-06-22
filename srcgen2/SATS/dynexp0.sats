@@ -238,12 +238,28 @@ d0exp_node =
 //
 | D0Eapps of d0explst
 //
+|
+D0Elpar of
+(token, d0explst, d0exp_RPAREN)
+//
+|
 (*
 HX-2022-06-20:
 D0Etkerr(tok):
 tok is not consumed by the parser!
 *)
-| D0Etkerr of (token)
+D0Etkerr of (token) // HX: parsing error
+|
+D0Eerrck of (int(*lvl*), d0exp)//HX:pread-error
+//
+// HX-2022-06-20: end-of-[datatype(d0exp_node)]
+//
+and
+d0exp_RPAREN =
+|
+d0exp_RPAREN_cons0 of (token)
+|
+d0exp_RPAREN_cons1 of (token, d0explst, token)
 //
 (* ****** ****** *)
 fun

@@ -273,6 +273,10 @@ preadx0_staexp_dats
 preadx0_staexp_dats: ; $(XATSOPT) --dynamic DATS/preadx0_staexp.dats
 ######
 all_dats:: \
+preadx0_dynexp_dats
+preadx0_dynexp_dats: ; $(XATSOPT) --dynamic DATS/preadx0_dynexp.dats
+######
+all_dats:: \
 preadx0_errmsg_dats
 preadx0_errmsg_dats: ; $(XATSOPT) --dynamic DATS/preadx0_errmsg.dats
 ######

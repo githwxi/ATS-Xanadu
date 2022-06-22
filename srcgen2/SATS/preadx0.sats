@@ -77,6 +77,9 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef d0exp = $D0E.d0exp
 #typedef d0ecl = $D0E.d0ecl
 (* ****** ****** *)
+#typedef
+d0exp_RPAREN = $D0E.d0exp_RPAREN
+(* ****** ****** *)
 #typedef d0patopt = $D0E.d0patopt
 #typedef d0expopt = $D0E.d0expopt
 (* ****** ****** *)
@@ -127,6 +130,28 @@ preadx0_s0exp_RPAREN: fpreadx0(s0exp_RPAREN)
 fun
 preadx0_l0s0e_RBRACE: fpreadx0(l0s0e_RBRACE)
 (* ****** ****** *)
+(*
+//HX: for checking dynamics
+*)
+(* ****** ****** *)
+fun preadx0_d0pat: fpreadx0(d0pat)
+fun preadx0_d0exp: fpreadx0(d0exp)
+fun preadx0_d0ecl: fpreadx0(d0ecl)
+(* ****** ****** *)
+fun
+preadx0_d0patlst: fpreadx0(d0patlst)
+fun
+preadx0_d0explst: fpreadx0(d0explst)
+fun
+preadx0_d0eclist: fpreadx0(d0eclist)
+(* ****** ****** *)
+fun
+preadx0_d0exp_RPAREN: fpreadx0(d0exp_RPAREN)
+(*
+fun
+preadx0_l0d0e_RBRACE: fpreadx0(l0d0e_RBRACE)
+*)
+(* ****** ****** *)
 //
 //HX-2022-06-18: printing errmsgs
 //
@@ -155,10 +180,6 @@ fun
 l0s0e_RBRACE_fpemsg
   (out: FILR, lsrb: l0s0e_RBRACE): void
 //
-(* ****** ****** *)
-(*
-//HX: for checking dynamics
-*)
 (* ****** ****** *)
 fun d0pat_fpemsg(FILR, d0pat): void
 fun d0exp_fpemsg(FILR, d0exp): void
