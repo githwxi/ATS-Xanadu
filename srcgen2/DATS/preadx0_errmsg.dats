@@ -319,5 +319,59 @@ case+ lsrb of
 )
 //
 (* ****** ****** *)
+//
+#implfun
+d0patopt_fpemsg
+(out, opt) =
+(
+case+ opt of
+|
+optn_nil() => ()
+|
+optn_cons(d0p) => d0pat_fpemsg(out, d0p)
+)
+#implfun
+d0expopt_fpemsg
+(out, opt) =
+(
+case+ opt of
+|
+optn_nil() => ()
+|
+optn_cons(d0e) => d0exp_fpemsg(out, d0e)
+)
+//
+(* ****** ****** *)
+//
+#implfun
+d0patlst_fpemsg
+(out, dps) =
+list_foreach<d0pat>(dps) where
+{
+#impltmp
+foreach$work<d0pat>(dp1) = d0pat_fpemsg(out,dp1)
+}
+//
+#implfun
+d0explst_fpemsg
+(out, des) =
+list_foreach<d0exp>(des) where
+{
+#impltmp
+foreach$work<d0exp>(de1) = d0exp_fpemsg(out,de1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0eclist_fpemsg
+(out, dcls) =
+list_foreach<d0ecl>(dcls) where
+{
+#impltmp
+foreach$work<d0ecl>(dcl1) = d0ecl_fpemsg(out,dcl1)
+}
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_errmsg.dats] *)

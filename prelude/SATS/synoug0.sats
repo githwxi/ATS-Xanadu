@@ -1438,5 +1438,47 @@ println1_a09
 #symload println1 with println1_a09
 //
 (* ****** ****** *)
+//
+fun
+<a0:t0>
+optn_print$beg(): void
+fun
+<a0:t0>
+optn_print$sep(): void
+fun
+<a0:t0>
+optn_print$end(): void
+//
+fun
+<a0:t0>
+optn_print(xs: optn(a0)): void
+fun
+<a0:t0>
+optn_print_begendsep
+( xs: optn(a0)
+, lbeg: strn, lend: strn, lsep: strn): void
+//
+(* ****** ****** *)
+//
+fun
+<a0:t0>
+list_print$beg(): void
+fun
+<a0:t0>
+list_print$sep(): void
+fun
+<a0:t0>
+list_print$end(): void
+//
+fun
+<a0:t0>
+list_print(xs: list(a0)): void
+fun
+<a0:t0>
+list_print_begendsep
+( xs: list(a0)
+, lbeg: strn, lend: strn, lsep: strn): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_synoug0.sats] *)

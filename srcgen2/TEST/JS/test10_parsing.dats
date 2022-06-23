@@ -119,22 +119,28 @@ endloc (*local*) // end of [local]
 
 (* ****** ****** *)
 
-local
-#impltmp
-{a:t0}
-gseq_print$beg
-<list(a)><a>() = print("$list(")
-#impltmp
-{a:t0}
-gseq_print$sep
-<list(a)><a>() = print(   ","   )
-in//local
 val () =
 prerrln
 (
 "list(0,1,2,3) = ", list(0,1,2,3))
-endloc (*local*) // end of [local]
+where
+{
+#impltmp
+{a:t0}
+gseq_print$beg<list(a)><a>() = print("$list(")
+#impltmp
+{a:t0}
+gseq_print$sep<list(a)><a>() = print(   ","   )
+} (*where*)
 
+(* ****** ****** *)
+val () =
+let
+#impltmp
+g_print$out<>() = g_stderr()
+in
+list_print_begendsep(list(0,1,2,3), "", "", ""); prerrln()
+end
 (* ****** ****** *)
 //
 local
