@@ -343,6 +343,11 @@ D0Cabsimpl of
 , s0qid
 , s0maglst, sort0opt, token, s0exp)
 //
+|
+D0Cerrck of (int(*lvl*), d0ecl)//HX:pread-error
+//
+// HX-2022-06-22: end-of-[datatype(d0ecl_node)]
+//
 (* ****** ****** *)
 //
 and a0tdf =

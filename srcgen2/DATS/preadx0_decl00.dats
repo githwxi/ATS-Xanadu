@@ -70,7 +70,50 @@ ATS_PACKNAME
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
-
+//
+fun
+d0ecl_errck
+(lvl: sint
+,dcl: d0ecl): d0ecl =
+(
+d0ecl
+(dcl.lctn(), D0Cerrck(lvl, dcl))
+)//end-of-[d0ecl_errck(_,_)]
+//
+(* ****** ****** *)
+fun
+d0ecl_errvl_a1
+(dcl: d0ecl): sint =
+(
+case+ dcl.node() of
+|
+D0Cerrck
+(lvl, _) => lvl | _ => 0
+)
+#symload
+d0ecl_errvl with d0ecl_errvl_a1
+#symload errvl with d0ecl_errvl_a1
+(* ****** ****** *)
+//
+#extern
+fun
+d0ecl_errvl_dcls
+(dcls: d0eclist): sint
+#symload
+d0ecl_errvl with d0ecl_errvl_dcls
+#symload errvl with d0ecl_errvl_dcls
+//
+#implfun
+d0ecl_errvl_dcls(dcls) =
+(
+case+ dcls of
+|
+list_nil
+((*nil*)) => 0(*lvl*)
+|
+list_cons
+(dcl1,dcls) => max(errvl(dcl1),errvl(dcls)))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_decl00.dats] *)

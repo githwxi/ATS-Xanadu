@@ -166,11 +166,17 @@ fun t0str_fpemsg(FILR, t0str): void
 fun sort0_fpemsg(FILR, sort0): void
 fun s0exp_fpemsg(FILR, s0exp): void
 fun l0s0e_fpemsg(FILR, l0s0e): void
-fun sort0opt_fpemsg(FILR, sort0opt): void
-fun s0expopt_fpemsg(FILR, s0expopt): void
-fun sort0lst_fpemsg(FILR, sort0lst): void
-fun s0explst_fpemsg(FILR, s0explst): void
-fun l0s0elst_fpemsg(FILR, l0s0elst): void
+(* ****** ****** *)
+fun
+sort0opt_fpemsg(FILR, sort0opt): void
+fun
+s0expopt_fpemsg(FILR, s0expopt): void
+fun
+sort0lst_fpemsg(FILR, sort0lst): void
+fun
+s0explst_fpemsg(FILR, s0explst): void
+fun
+l0s0elst_fpemsg(FILR, l0s0elst): void
 (* ****** ****** *)
 //
 fun
@@ -185,9 +191,26 @@ fun d0pat_fpemsg(FILR, d0pat): void
 fun d0exp_fpemsg(FILR, d0exp): void
 fun d0ecl_fpemsg(FILR, d0ecl): void
 (* ****** ****** *)
-fun d0patlst_fpemsg(FILR, d0patlst): void
-fun d0explst_fpemsg(FILR, d0explst): void
-fun d0eclist_fpemsg(FILR, d0eclist): void
+fun
+d0patopt_fpemsg(FILR, d0patopt): void
+fun
+d0expopt_fpemsg(FILR, d0expopt): void
+fun
+d0patlst_fpemsg(FILR, d0patlst): void
+fun
+d0explst_fpemsg(FILR, d0explst): void
+(* ****** ****** *)
+fun
+d0eclist_fpemsg(FILR, d0eclist): void
+(* ****** ****** *)
+//
+fun
+d0exp_RPAREN_fpemsg
+  (out: FILR, drp: d0exp_RPAREN): void
+fun
+l0d0e_RBRACE_fpemsg
+  (out: FILR, ldrb: l0d0e_RBRACE): void
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0.sats] *)

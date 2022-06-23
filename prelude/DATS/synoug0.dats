@@ -1995,5 +1995,139 @@ print1_a09
 ) (* end of [println1_a09] *)
 //
 (* ****** ****** *)
+//
+#impltmp
+{a0:t0}(*tmp*)
+optn_print$beg<a0>() = print("(")
+#impltmp
+{a0:t0}(*tmp*)
+optn_print$end<a0>() = print(")")
+#impltmp
+{a0:t0}(*tmp*)
+optn_print$sep<a0>() = print(";")
+//
+(* ****** ****** *)
+//
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$beg
+<optn(a0)><a0> = optn_print$beg<a0>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$end
+<optn(a0)><a0> = optn_print$end<a0>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$sep
+<optn(a0)><a0> = optn_print$sep<a0>
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+optn_print =
+gseq_print<optn(a0)><a0> where
+{
+//
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$beg
+<optn(a0)><a0> = optn_print$beg<a0>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$end
+<optn(a0)><a0> = optn_print$end<a0>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$sep
+<optn(a0)><a0> = optn_print$sep<a0>
+//
+} (*where*) // end of [optn_print]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+optn_print_begendsep
+(xs, lbeg, lend, lsep) =
+(
+optn_print<a0>(xs)) where
+{
+  #impltmp
+  optn_print$beg<a0>() = print(lbeg)
+  #impltmp
+  optn_print$end<a0>() = print(lend)
+  #impltmp
+  optn_print$sep<a0>() = print(lsep)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+{a0:t0}(*tmp*)
+list_print$beg<a0>() = print("(")
+#impltmp
+{a0:t0}(*tmp*)
+list_print$end<a0>() = print(")")
+#impltmp
+{a0:t0}(*tmp*)
+list_print$sep<a0>() = print(";")
+//
+(* ****** ****** *)
+//
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$beg
+<list(a0)><a0> = list_print$beg<a0>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$end
+<list(a0)><a0> = list_print$end<a0>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$sep
+<list(a0)><a0> = list_print$sep<a0>
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+list_print =
+gseq_print<list(a0)><a0> where
+{
+//
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$beg
+<list(a0)><a0> = list_print$beg<a0>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$end
+<list(a0)><a0> = list_print$end<a0>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$sep
+<list(a0)><a0> = list_print$sep<a0>
+//
+} (*where*) // end of [list_print]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+list_print_begendsep
+(xs, lbeg, lend, lsep) =
+(
+list_print<a0>(xs)) where
+{
+  #impltmp
+  list_print$beg<a0>() = print(lbeg)
+  #impltmp
+  list_print$end<a0>() = print(lend)
+  #impltmp
+  list_print$sep<a0>() = print(lsep)
+}
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_synoug0.dats] *)
