@@ -89,126 +89,6 @@ strm_pair(x0, y0) =
 strm_cons(x0, strm_sing(y0))
 //  
 (* ****** ****** *)
-//
-#impltmp
-<a>(*tmp*)
-strm_print(xs) =
-let
-val len = 
-strm_print$len<>()
-in
-if
-(len < 0)
-then strm_print_all(xs)
-else strm_print_len(xs, len)
-end
-//
-#impltmp
-<>(*tmp*)
-strm_print$len() = 3
-#impltmp
-<>(*tmp*)
-strm_print$beg() = strn_print("(")
-#impltmp
-<>(*tmp*)
-strm_print$end() = strn_print(")")
-#impltmp
-<>(*tmp*)
-strm_print$sep() = strn_print(",")
-#impltmp
-<>(*tmp*)
-strm_print$rst() = strn_print("...")
-//
-#impltmp
-{a:t0}//tmp
-g_print<strm(a)> = strm_print<a>
-//
-(* ****** ****** *)
-
-#impltmp
-<a>(*tmp*)
-strm_print_all
-  (xs) =
-(
-loop(xs, 0(*i0*))
-) where
-{
-#typedef
-xs = strm(a)
-fnx
-loop
-( xs: xs
-, i0: nint): void =
-(
-case+ !xs of
-|
-strmcon_nil() =>
-strm_print$end<>()
-|
-strmcon_cons(x0, xs) =>
-let
-val () =
-if
-(i0 > 0)
-then
-strm_print$sep<>()
-val () =
-g_print<a>(x0) in loop(xs, succ(i0))
-end // end of [strmcon_cons]
-)
-}(*where*) // end-of(strm_print_all)
-
-(* ****** ****** *)
-
-#impltmp
-<a>(*tmp*)
-strm_print_len
-  (xs, n0) =
-(
-loop(xs, 0(*i0*))
-) where
-{
-#typedef
-xs = strm(a)
-fnx
-loop
-( xs: xs
-, i0: nint): void =
-(
-case+ !xs of
-|
-strmcon_nil() =>
-strm_print$end<>()
-|
-strmcon_cons(x0, xs) =>
-if
-(i0 >= n0)
-then
-let
-val () =
-if
-(n0 > 0)
-then
-strm_print$sep<>()
-val () =
-strm_print$rst<>()
-in
-strm_print$end<>()
-end // end of [then]
-else
-let
-val () =
-if
-(n0 > 0)
-then
-strm_print$sep<>()
-val () =
-g_print<a>(x0) in loop(xs, succ(i0))
-end // end of [else]
-) (* strmcon_cons *)
-} (*where*) // end-of(strm_print_len)
-
-(* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
@@ -328,8 +208,7 @@ strmcon_vt_cons(x0, auxmain(xs))
 strm_map
   (xs) =
 (
-  auxmain(xs)
-) where
+  auxmain(xs)) where
 {
 fun
 auxmain
@@ -342,17 +221,19 @@ strmcon_nil() =>
 strmcon_nil()
 |
 strmcon_cons(x0, xs) =>
-strmcon_cons(map$fopr(x0), auxmain(xs))
+strmcon_cons
+(map$fopr<x0>(x0), auxmain(xs))
 )
-} (* end of [strm_map] *)
+} (*where*) // end of [strm_map(xs)]
+
+(* ****** ****** *)
 
 #impltmp
 <x0><y0>
 strm_map_vt
   (xs) =
 (
-  auxmain(xs)
-) where
+  auxmain(xs)) where
 {
 fun
 auxmain(xs) =
@@ -365,9 +246,10 @@ strmcon_nil() =>
 strmcon_vt_nil()
 |
 strmcon_cons(x0, xs) =>
-strmcon_vt_cons(map$fopr(x0), auxmain(xs))
+strmcon_vt_cons
+(map$fopr<x0>(x0), auxmain(xs))
 )
-} (* end of [strm_map_vt] *)
+} (*where*)//end-of-[strm_map_vt(xs)]
 
 (* ****** ****** *)
 
@@ -376,8 +258,7 @@ strmcon_vt_cons(map$fopr(x0), auxmain(xs))
 strm_filter
   (xs) =
 (
-  auxmain(xs)
-) where
+  auxmain(xs)) where
 {
 fnx
 auxmain(xs) =
@@ -399,7 +280,7 @@ case+ xs of
   then
   strmcon_cons(x0, auxmain(xs)) else auxloop($eval(xs))
 )
-} (* end of [strm_filter] *)
+} (*where*) // end of [strm_filter(xs)]
 
 (* ****** ****** *)
 
@@ -431,7 +312,7 @@ case+ xs of
   then
   strmcon_vt_cons(x0, auxmain(xs)) else auxloop($eval(xs))
 )
-} (* end of [strm_filter_vt] *)
+} (*where*) // end of [strm_filter_vt(xs)] *)
 
 (* ****** ****** *)
 

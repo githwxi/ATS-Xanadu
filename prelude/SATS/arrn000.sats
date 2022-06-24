@@ -137,17 +137,6 @@ a0ref_updt(A0: a0ref(a)): void
 //
 (* ****** ****** *)
 //
-fun<>
-a0ref_print$beg(): void
-fun<>
-a0ref_print$end(): void
-//
-fun
-<a:vt>
-a0ref_print(A0: a0ref(a)): void
-//
-(* ****** ****** *)
-//
 // HX: 1-dimensional
 //
 (* ****** ****** *)
@@ -271,21 +260,6 @@ a1ref_updt_at
 //
 (* ****** ****** *)
 //
-fun<>
-a1ref_print$beg(): void
-fun<>
-a1ref_print$end(): void
-fun<>
-a1ref_print$sep(): void
-//
-fun
-<a:vt>
-a1ref_print
-{n:i0}
-(A0: a1ref(a, n)): void
-//
-(* ****** ****** *)
-//
 fun
 <a:vt>
 a1ref_strmize
@@ -316,7 +290,7 @@ a1ref_forall
 {n:i0}(A0: a1ref(x0, n)): bool
 fun
 <x0:vt>
-a1ref_forall0
+a1ref_forall1
 {n:i0}(A0: a1ref(x0, n)): bool
 //
 fun
@@ -325,7 +299,7 @@ a1ref_foreach
 {n:i0}(A0: a1ref(x0, n)): void
 fun
 <x0:vt>
-a1ref_foreach0
+a1ref_foreach1
 {n:i0}(A0: a1ref(x0, n)): void
 //
 (* ****** ****** *)
@@ -336,7 +310,7 @@ a1ref_rforall
 {n:i0}(A0: a1ref(x0, n)): bool
 fun
 <x0:vt>
-a1ref_rforall0
+a1ref_rforall1
 {n:i0}(A0: a1ref(x0, n)): bool
 //
 (* ****** ****** *)

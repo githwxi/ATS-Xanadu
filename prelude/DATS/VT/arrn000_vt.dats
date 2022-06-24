@@ -61,19 +61,6 @@ g_free<a>
 (a0ptr_exch<a>(A0, x0))
 //
 (* ****** ****** *)
-//
-#impltmp
-<>(*tmp*)
-a0ptr_print$beg() = strn_print("[")
-#impltmp
-<>(*tmp*)
-a0ptr_print$end() = strn_print("]")
-//
-(* ****** ****** *)
-#impltmp
-{a:vt}
-gl_print1<a0ptr(a)> = a0ptr_print1<a>
-(* ****** ****** *)
 (*
 **HX: 1-dimensional
 *)
