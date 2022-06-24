@@ -79,6 +79,8 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
 #typedef
 d0exp_RPAREN = $D0E.d0exp_RPAREN
+#typedef
+l0d0e_RBRACE = $D0E.l0d0e_RBRACE
 (* ****** ****** *)
 #typedef d0patopt = $D0E.d0patopt
 #typedef d0expopt = $D0E.d0expopt
