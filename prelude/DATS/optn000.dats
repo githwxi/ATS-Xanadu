@@ -148,6 +148,12 @@ case+ xs of
 //
 (* ****** ****** *)
 //
+(*
+(*
+HX-2022-06-24:
+The following code
+is moved into synoug0.dats.
+*)
 #impltmp
 {a:t0}
 g_print<optn(a)> =
@@ -161,11 +167,6 @@ gseq_print$beg
 {a:t0}
 gseq_print$end
 <optn(a)><a>() = strn_print(")")
-(*
-#impltmp
-{a:t0}
-gseq_print$sep
-<optn(a)><a>() = strn_print(";")
 *)
 //
 (* ****** ****** *)
