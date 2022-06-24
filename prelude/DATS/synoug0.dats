@@ -2213,6 +2213,8 @@ end // end of [strmcon_cons]
 strm_print_len
   (xs, n0) =
 (
+strm_print$beg()
+;
 loop(xs, 0(*i0*))
 ) where
 {
@@ -2230,7 +2232,7 @@ strm_print$end<>()
 |
 strmcon_cons(x0, xs) =>
 if
-(i0 >= n0)
+(i0>=n0)
 then
 let
 val () =
@@ -2247,7 +2249,7 @@ else
 let
 val () =
 if
-(n0 > 0)
+(i0 > 0)
 then
 strm_print$sep<>()
 val () =
@@ -2316,6 +2318,8 @@ end (*let*) // end-of-(strx_print)
 strx_print_len
   (xs, n0) =
 (
+strx_print$beg()
+;
 loop(xs, 0(*i0*))
 ) where
 {
@@ -2330,7 +2334,7 @@ case+ !xs of
 |
 strxcon_cons(x0, xs) =>
 if
-(i0 >= n0)
+(i0>=n0)
 then
 let
 val () =
@@ -2347,7 +2351,7 @@ else
 let
 val () =
 if
-(n0 > 0)
+(i0 > 0)
 then
 strx_print$sep<>()
 val () =

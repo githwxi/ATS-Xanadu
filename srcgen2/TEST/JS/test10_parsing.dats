@@ -111,6 +111,32 @@ prerrln("optn(0) = ", optn(0))
 val () =
 prerrln
 (
+"strm(0,1,2,...) = ", f0(0)
+) where
+{
+fun
+f0(x: int): strm(int) =
+$lazy(strmcon_cons(x, f0(x+1)))
+}
+
+(* ****** ****** *)
+
+val () =
+prerrln
+(
+"strx(0,1,2,...) = ", f0(0)
+) where
+{
+fun
+f0(x: int): strx(int) =
+$lazy(strxcon_cons(x, f0(x+1)))
+}
+
+(* ****** ****** *)
+
+val () =
+prerrln
+(
 "list(0,1,2,3) = ", list(0,1,2,3))
 where
 {
