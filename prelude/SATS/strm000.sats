@@ -86,34 +86,6 @@ fun
 strm_pair(x1: a, x2: a): strm(a)
 
 (* ****** ****** *)
-//
-fun
-<a:t0>
-strm_print
-( xs: strm(a) ): void
-//
-fun<>
-strm_print$len(): sint
-//
-fun<>
-strm_print$beg(): void
-fun<>
-strm_print$end(): void
-fun<>
-strm_print$sep(): void
-fun<>
-strm_print$rst(): void
-//
-fun
-<a:t0>
-strm_print_all
-  (xs: strm(a)): void
-fun
-<a:t0>
-strm_print_len
-(xs: strm(a), len: nint): void
-//
-(* ****** ****** *)
 
 fun
 <a:t0>

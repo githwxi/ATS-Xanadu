@@ -47,33 +47,6 @@ g_free<a>
 (a0ref_exch<a>(A0, x0))
 //
 (* ****** ****** *)
-//
-#impltmp
-<a:vt>
-a0ref_print(A0) =
-let
-val x0 = a0ref_get0<a>(A0)
-val x0 = $UN.castlin10{a}(x0)
-//
-val () = a0ref_print$beg<>()
-val () = gl_print0<a>(x0)
-val () = a0ref_print$end<>()
-//
-val x0 = $UN.castlin10{?a}(x0)
-end (* end of [a0ref_print] *)
-//
-#impltmp
-<>(*tmp*)
-a0ref_print$beg() = strn_print("[")
-#impltmp
-<>(*tmp*)
-a0ref_print$end() = strn_print("]")
-//
-(* ****** ****** *)
-#impltmp
-{a:vt}
-g_print<a0ref(a)> = a0ref_print<a>
-(* ****** ****** *)
 (*
 **HX: 1-dimensional
 *)
@@ -110,18 +83,6 @@ a1ref_make_list_vt
 ( a1ptr2ref
   (a1ptr_make_list_vt<a>(xs))
 )
-//
-(* ****** ****** *)
-//
-#impltmp
-<>(*tmp*)
-a1ref_print$beg() = strn_print("[")
-#impltmp
-<>(*tmp*)
-a1ref_print$end() = strn_print("]")
-#impltmp
-<>(*tmp*)
-a1ref_print$sep() = strn_print(";")
 //
 (* ****** ****** *)
 //
@@ -374,6 +335,19 @@ gseq_unlist
 {a:t0}{n:i0}
 gseq_unlist_vt
 <a1ref(a,n)><a>(xs) = a1ref_make_list_vt<a>(xs)
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:vt}
+{n:i0}
+glseq_forall1
+<a1ref(a,n)><a> = a1ref_forall1<a>{n}
+#impltmp
+{a:vt}
+{n:i0}
+glseq_foreach1
+<a1ref(a,n)><a> = a1ref_foreach1<a>{n}
 //
 (* ****** ****** *)
 

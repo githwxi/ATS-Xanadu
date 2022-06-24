@@ -1438,15 +1438,17 @@ println1_a09
 #symload println1 with println1_a09
 //
 (* ****** ****** *)
+(*
+HX-2022-06-22:
+printing for special sequences
+*)
+(* ****** ****** *)
+//HX:optn-printing
+(* ****** ****** *)
 //
-fun
-<a0:t0>
+fun<>
 optn_print$beg(): void
-fun
-<a0:t0>
-optn_print$sep(): void
-fun
-<a0:t0>
+fun<>
 optn_print$end(): void
 //
 fun
@@ -1454,21 +1456,20 @@ fun
 optn_print(xs: optn(a0)): void
 fun
 <a0:t0>
-optn_print_begendsep
+optn_print_begend
 ( xs: optn(a0)
-, lbeg: strn, lend: strn, lsep: strn): void
+, xbeg: strn, xend: strn): void
 //
 (* ****** ****** *)
+//HX:list-printing
+(* ****** ****** *)
 //
-fun
-<a0:t0>
+fun<>
 list_print$beg(): void
-fun
-<a0:t0>
-list_print$sep(): void
-fun
-<a0:t0>
+fun<>
 list_print$end(): void
+fun<>
+list_print$sep(): void
 //
 fun
 <a0:t0>
@@ -1477,7 +1478,80 @@ fun
 <a0:t0>
 list_print_begendsep
 ( xs: list(a0)
-, lbeg: strn, lend: strn, lsep: strn): void
+, xbeg: strn, xend: strn, xsep: strn): void
+//
+(* ****** ****** *)
+//
+fun<>
+strm_print$len(): sint
+//
+fun<>
+strm_print$beg(): void
+fun<>
+strm_print$end(): void
+fun<>
+strm_print$sep(): void
+fun<>
+strm_print$rst(): void
+//
+fun
+<a:t0>
+strm_print(xs: strm(a)): void
+//
+fun
+<a:t0>
+strm_print_all(xs: strm(a)): void
+fun
+<a:t0>
+strm_print_len(xs: strm(a), ln: nint): void
+//
+fun
+<a0:t0>
+strm_print_begendsep
+( xs: strm(a0)
+, xbeg: strn, xend: strn, xsep: strn): void
+//
+(* ****** ****** *)
+//HX:a0ref-printing
+(* ****** ****** *)
+//
+fun<>
+a0ref_print$beg(): void
+fun<>
+a0ref_print$end(): void
+//
+fun
+<a:vt>
+a0ref_print1
+(A0: a0ref(a)): void
+fun
+<a:vt>
+a0ref_print1_begend
+( A0: a0ref(a)
+, xbeg: strn, xend: strn): void
+//
+(* ****** ****** *)
+//HX:a1ref-printing
+(* ****** ****** *)
+//
+fun<>
+a1ref_print$beg(): void
+fun<>
+a1ref_print$end(): void
+fun<>
+a1ref_print$sep(): void
+//
+fun
+<a0:vt>
+a1ref_print1
+{n0:i0}
+(A0: a1ref(a0,n0), n0: sint(n0)): void
+fun
+<a0:vt>
+a1ref_print1_begendsep
+{n0:i0}
+( A0: a1ref(a0,n0), n0: sint(n0)
+, xbeg: strn, xend: strn, xsep: strn): void
 //
 (* ****** ****** *)
 
