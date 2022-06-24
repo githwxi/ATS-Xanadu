@@ -1482,6 +1482,8 @@ list_print_begendsep
 , xbeg: strn, xend: strn, xsep: strn): void
 //
 (* ****** ****** *)
+//HX:strm-printing
+(* ****** ****** *)
 //
 fun<>
 strm_print$len(): sint
@@ -1496,20 +1498,54 @@ fun<>
 strm_print$rst(): void
 //
 fun
-<a:t0>
-strm_print(xs: strm(a)): void
+<a0:t0>
+strm_print
+  ( xs: strm(a0) ): void
 //
 fun
-<a:t0>
-strm_print_all(xs: strm(a)): void
+<a0:t0>
+strm_print_all
+  ( xs: strm(a0) ): void
 fun
-<a:t0>
-strm_print_len(xs: strm(a), ln: nint): void
+<a0:t0>
+strm_print_len
+  (xs: strm(a0), ln: nint): void
 //
 fun
 <a0:t0>
 strm_print_begendsep
 ( xs: strm(a0)
+, xbeg: strn, xend: strn, xsep: strn): void
+//
+(* ****** ****** *)
+//HX:strx-printing
+(* ****** ****** *)
+//
+fun<>
+strx_print$len(): nint
+//
+fun<>
+strx_print$beg(): void
+fun<>
+strx_print$end(): void
+fun<>
+strx_print$sep(): void
+fun<>
+strx_print$rst(): void
+//
+fun
+<a0:t0>
+strx_print(xs: strx(a0)): void
+//
+fun
+<a0:t0>
+strx_print_len
+  (xs: strx(a0), ln: nint): void
+//
+fun
+<a0:t0>
+strx_print_begendsep
+( xs: strx(a0)
 , xbeg: strn, xend: strn, xsep: strn): void
 //
 (* ****** ****** *)
