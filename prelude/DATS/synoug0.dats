@@ -2164,7 +2164,7 @@ strm_print(xs) =
 let
 val len = 
 strm_print$len<>()
-in
+in//let
 if
 (len < 0)
 then strm_print_all<a0>(xs)
@@ -2240,7 +2240,7 @@ then
 strm_print$sep<>()
 val () =
 strm_print$rst<>()
-in
+in//let
 strm_print$end<>()
 end // end of [then]
 else
@@ -2271,6 +2271,106 @@ strm_print$beg<(*0*)>() = print(xbeg)
 strm_print$end<(*0*)>() = print(xend)
 #impltmp
 strm_print$sep<(*0*)>() = print(xsep)
+}
+//
+(* ****** ****** *)
+//HX:strx-printing
+(* ****** ****** *)
+#impltmp
+{a:t0}//tmp
+g_print<strx(a)> = strx_print<a>
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strx_print$len() = 3
+#impltmp
+<>(*tmp*)
+strx_print$beg() = print"$strx("
+#impltmp
+<>(*tmp*)
+strx_print$end() = print(  ")"  )
+#impltmp
+<>(*tmp*)
+strx_print$sep() = print(  ","  )
+#impltmp
+<>(*tmp*)
+strx_print$rst() = print( "..." )
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+strx_print(xs) =
+let
+val len = 
+strx_print$len<>()
+in//let
+strx_print_len<a0>(xs, len)
+end (*let*) // end-of-(strx_print)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+strx_print_len
+  (xs, n0) =
+(
+loop(xs, 0(*i0*))
+) where
+{
+#typedef
+xs = strx(a)
+fnx
+loop
+( xs: xs
+, i0: nint): void =
+(
+case+ !xs of
+|
+strxcon_cons(x0, xs) =>
+if
+(i0 >= n0)
+then
+let
+val () =
+if
+(n0 > 0)
+then
+strx_print$sep<>()
+val () =
+strx_print$rst<>()
+in//let
+strx_print$end<>()
+end // end of [then]
+else
+let
+val () =
+if
+(n0 > 0)
+then
+strx_print$sep<>()
+val () =
+g_print<a>(x0) in loop(xs, succ(i0))
+end // end of [else]
+) (* strxcon_cons *)
+} (*where*) // end-of(strx_print_len)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+strx_print_begendsep
+(xs, xbeg, xend, xsep) =
+(
+strx_print<a0>(xs)) where
+{
+#impltmp
+strx_print$beg<(*0*)>() = print(xbeg)
+#impltmp
+strx_print$end<(*0*)>() = print(xend)
+#impltmp
+strx_print$sep<(*0*)>() = print(xsep)
 }
 //
 (* ****** ****** *)
