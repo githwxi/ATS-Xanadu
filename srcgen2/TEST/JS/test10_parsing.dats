@@ -101,21 +101,10 @@ p1_fun_test p1_fun_test_fpath
 pq_fun_test pq_fun_test_fpath
 (* ****** ****** *)
 
-local
-#impltmp
-{a:t0}
-gseq_print$beg
-<optn(a)>< a >() = print("$optn(")
-#impltmp
-{a:t0}
-gseq_print$sep
-<optn(a)>< a >() = print(   ","   )
-in//local
 val () =
 prerrln("optn() = ", optn())
 val () =
 prerrln("optn(0) = ", optn(0))
-endloc (*local*) // end of [local]
 
 (* ****** ****** *)
 
@@ -145,18 +134,27 @@ end
 //
 local
 //
+(* ****** ****** *)
+//
 #impltmp
-<xs><x0>
-gseq_print$beg() = ()
+optn_print$beg<>() = ()
 #impltmp
-<xs><x0>
-gseq_print$end() = ()
+optn_print$end<>() = ()
+//
 #impltmp
-<xs><x0>
-gseq_print$sep() = g_print("\n")
+list_print$beg<>() = ()
+#impltmp
+list_print$end<>() = ()
+#impltmp
+list_print$sep<>() = print("\n")
+//
+(* ****** ****** *)
+//
+(*
 #impltmp
 g_print<token>(tok) =
 print(tok.lctn(), ":", tok.node())
+*)
 //
 in//local
 (* ****** ****** *)

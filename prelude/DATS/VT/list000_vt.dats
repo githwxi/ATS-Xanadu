@@ -965,23 +965,6 @@ glseq_rlistize
 //
 #impltmp
 {a:vt}
-gl_print1<list_vt(a)> =
-glseq_print1<list_vt(a)>< a >
-//
-#impltmp
-{a:vt}
-glseq_print$beg<list_vt(a)><a>() = g_print("(")
-#impltmp
-{a:vt}
-glseq_print$end<list_vt(a)><a>() = g_print(")")
-#impltmp
-{a:vt}
-glseq_print$sep<list_vt(a)><a>() = g_print(",")
-//
-(* ****** ****** *)
-//
-#impltmp
-{a:vt}
 glseq_strmize
 <list_vt(a)><a> = list_vt_strmize<a>
 //

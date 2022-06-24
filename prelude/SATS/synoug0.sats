@@ -1453,7 +1453,8 @@ optn_print$end(): void
 //
 fun
 <a0:t0>
-optn_print(xs: optn(a0)): void
+optn_print
+( xs: optn(a0) ): void
 fun
 <a0:t0>
 optn_print_begend
@@ -1551,6 +1552,47 @@ fun
 a1ref_print1_begendsep
 {n0:i0}
 ( A0: a1ref(a0,n0), n0: sint(n0)
+, xbeg: strn, xend: strn, xsep: strn): void
+//
+(* ****** ****** *)
+//HX:optn(vt)-printing
+(* ****** ****** *)
+//
+fun<>
+optn_vt_print$beg
+  ( (*void*) ): void
+fun<>
+optn_vt_print$end
+  ( (*void*) ): void
+//
+fun
+<a0:vt>
+optn_vt_print1
+(xs: optn_vt(a0)): void
+fun
+<a0:vt>
+optn_vt_print1_begend
+( xs: optn_vt(a0)
+, xbeg: strn, xend: strn): void
+//
+(* ****** ****** *)
+//HX:list(vt)-printing
+(* ****** ****** *)
+//
+fun<>
+list_vt_print$beg(): void
+fun<>
+list_vt_print$end(): void
+fun<>
+list_vt_print$sep(): void
+//
+fun
+<a0:vt>
+list_vt_print1(xs: list_vt(a0)): void
+fun
+<a0:vt>
+list_vt_print1_begendsep
+( xs: list_vt(a0)
 , xbeg: strn, xend: strn, xsep: strn): void
 //
 (* ****** ****** *)

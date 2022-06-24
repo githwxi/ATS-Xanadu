@@ -2416,5 +2416,132 @@ a1ref_print1<a0>(A0, n0)) where
 }
 //
 (* ****** ****** *)
+//HX: optn(vt)-printing
+(* ****** ****** *)
+#impltmp
+{a:vt}//tmp
+gl_print1<optn_vt(a)> = optn_vt_print1<a>
+(* ****** ****** *)
+//
+#impltmp
+optn_vt_print$beg<(*0*)>() = print"$optn_vt("
+#impltmp
+optn_vt_print$end<(*0*)>() = print(   ")"   )
+(* ****** ****** *)
+//
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$beg
+<optn_vt(a0)><a0> = optn_vt_print$beg<(*0*)>
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$end
+<optn_vt(a0)><a0> = optn_vt_print$end<(*0*)>
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+optn_vt_print1 =
+glseq_print1<optn_vt(a0)><a0> where
+{
+//
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$beg
+<optn_vt(a0)><a0> = optn_vt_print$beg<>
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$end
+<optn_vt(a0)><a0> = optn_vt_print$end<>
+//
+} (*where*) // end of [optn_vt_print1<a0>]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+optn_vt_print1_begend
+  (xs, xbeg, xend) =
+(
+optn_vt_print1<a0>(xs)) where
+{
+#impltmp
+optn_vt_print$beg<(*0*)>() = print(xbeg)
+#impltmp
+optn_vt_print$end<(*0*)>() = print(xend)
+}
+//
+(* ****** ****** *)
+//HX: list(vt)-printing
+(* ****** ****** *)
+#impltmp
+{a:vt}//tmp
+gl_print1<list_vt(a)> = list_vt_print1<a>
+(* ****** ****** *)
+//
+#impltmp
+list_vt_print$beg<(*0*)>() = print"$list_vt("
+#impltmp
+list_vt_print$end<(*0*)>() = print(   ")"   )
+#impltmp
+list_vt_print$sep<(*0*)>() = print(   ";"   )
+//
+(* ****** ****** *)
+//
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$beg
+<list_vt(a0)><a0> = list_vt_print$beg<(*0*)>
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$end
+<list_vt(a0)><a0> = list_vt_print$end<(*0*)>
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$sep
+<list_vt(a0)><a0> = list_vt_print$sep<(*0*)>
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_print1 =
+glseq_print1<list_vt(a0)><a0> where
+{
+//
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$beg
+<list_vt(a0)><a0> = list_vt_print$beg<>
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$end
+<list_vt(a0)><a0> = list_vt_print$end<>
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print$sep
+<list_vt(a0)><a0> = list_vt_print$sep<>
+//
+} (*where*) // end of [list_vt_print1<a0>]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_print1_begendsep
+(xs, xbeg, xend, xsep) =
+(
+list_vt_print1<a0>(xs)) where
+{
+#impltmp
+list_vt_print$beg<(*0*)>() = print(xbeg)
+#impltmp
+list_vt_print$end<(*0*)>() = print(xend)
+#impltmp
+list_vt_print$sep<(*0*)>() = print(xsep)
+}
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_synoug0.dats] *)
