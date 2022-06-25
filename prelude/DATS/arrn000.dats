@@ -222,7 +222,7 @@ then loop(succ(i0)) else false
 end // then
 else false // else // end of [if]
 //
-} (* end of [a1ref_forall] *)
+} (*where*)//end-of-[a1ref_forall]
 //
 (* ****** ****** *)
 //
@@ -253,7 +253,7 @@ then
   foreach$work<a>(get_at(A0, i0))
 }
 //
-} (* end of [a1ref_foreach] *)
+}(*where*)//end-of-[a1ref_foreach]
 //
 (* ****** ****** *)
 //
@@ -283,7 +283,107 @@ if test then loop(i1) else false
 end // then
 else false // else // end of [if]
 //
-} (* end of [a1ref_rforall] *)
+}(*where*)//end-of-[a1ref_rforall]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a:vt>
+a1ref_forall1
+  {n}(A0) =
+(
+  loop(0(*i0*))
+) where
+{
+//
+val n0 =
+a1ref_length<a><n>(A0)
+//
+fun
+loop
+{i:nat
+|i<=n}(i0: sint(i)): bool =
+if
+(i0 < n0)
+then
+let
+val x0 =
+a1ref_get0_at<a>(A0, i0)
+val x0 = $UN.castlin10{ a}(x0)
+val b0 = forall1$test< a >(x0)
+val x0 = $UN.castlin10{~a}(x0)
+in//let
+if b0 then loop(succ(i0)) else false
+end // then
+else false // else // end of [if]
+//
+}(*where*)//end-of-[a1ref_forall1]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a:vt>
+a1ref_foreach1
+  {n}(A0) =
+(
+  loop(0(*i0*))
+) where
+{
+//
+val n0 =
+a1ref_length<a><n>(A0)
+//
+fun
+loop
+{i:nat
+|i<=n}(i0: sint(i)): void =
+if
+(i0 < n0)
+then
+(
+  loop(succ(i0))
+) where
+{
+val x0 =
+a1ref_get0_at<a>(A0, i0)
+val x0 = $UN.castlin10{ a}(x0)
+val () = foreach1$work< a>(x0)
+val x0 = $UN.castlin10{~a}(x0)
+}
+//
+}(*where*)//end-of-[a1ref_foreach1]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a:vt>
+a1ref_rforall1
+  {n}(A0) =
+(
+loop
+(a1ref_length(A0))) where
+{
+//
+fun
+loop
+{i:nat
+|i<=n}(i0: sint(i)): bool =
+if
+(i0 > 0)
+then
+let
+val i1 = pred(i0)
+val x0 =
+a1ref_get0_at<a>(A0, i1)
+val x0 = $UN.castlin10{ a}(x0)
+val b0 = rforall1$test< a>(x0)
+val x0 = $UN.castlin10{~a}(x0)
+in//let
+  if b0 then loop(i1) else false
+end // then
+else false // else // end of [if]
+//
+}(*where*)//end-of-[a1ref_rforall1]
 //
 (* ****** ****** *)
 //
@@ -348,6 +448,11 @@ glseq_forall1
 {n:i0}
 glseq_foreach1
 <a1ref(a,n)><a> = a1ref_foreach1<a>{n}
+#impltmp
+{a:vt}
+{n:i0}
+glseq_rforall1
+<a1ref(a,n)><a> = a1ref_rforall1<a>{n}
 //
 (* ****** ****** *)
 

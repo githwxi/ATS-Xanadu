@@ -269,6 +269,15 @@ fun
 <x0:vt>
 glseq_foreach1(!xs): void
 //
+fun
+<xs:vt>
+<x0:vt>
+glseq_rforall0(~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+glseq_rforall1(!xs): bool
+//
 (* ****** ****** *)
 //
 fun
