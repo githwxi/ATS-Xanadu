@@ -363,6 +363,19 @@ fproc0_a03
 gl_fproc0<a0> = prerr0_ref<a0>
 }
 //
+#impltmp
+<a1><a2>
+<a3><a4>
+prerr0_a04 =
+fproc0_a04
+<a1><a2>
+<a3><a4> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prerr0_ref<a0>
+}
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -407,6 +420,22 @@ prerr0_a03
 ( x1
 , x2, x3 ) ; prerrln0_a00<>()
 ) (* end of [prerrln0_a03] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+prerrln0_a04
+( x1
+, x2
+, x3
+, x4 ) =
+(
+prerr0_a04
+( x1, x2
+, x3, x4 ) ; prerrln0_a00<>()
+) (* end of [prerrln0_a04] *)
 //
 (* ****** ****** *)
 (*

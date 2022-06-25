@@ -184,12 +184,21 @@ fun
 prerr0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+prerr0_a04
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4 ) : void
 //
 (* ****** ****** *)
 //
 #symload prerr0 with prerr0_a01
 #symload prerr0 with prerr0_a02
 #symload prerr0 with prerr0_a03
+#symload prerr0 with prerr0_a04
 //
 (* ****** ****** *)
 (*
@@ -438,6 +447,14 @@ fun
 prerrln0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+prerrln0_a04
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4) : void
 //
 (* ****** ****** *)
 //
@@ -445,6 +462,7 @@ prerrln0_a03
 #symload prerrln0 with prerrln0_a01
 #symload prerrln0 with prerrln0_a02
 #symload prerrln0 with prerrln0_a03
+#symload prerrln0 with prerrln0_a04
 //
 (* ****** ****** *)
 //
