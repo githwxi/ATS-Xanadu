@@ -497,6 +497,19 @@ list_cons(x10, list_nil()))))))))))
 //
 (* ****** ****** *)
 //
+#impltmp
+<a0>
+optn_vt_a00
+(      ) =
+optn_vt_nil((*nil*))
+#impltmp
+<a0>
+optn_vt_a01
+(  x1  ) =
+optn_vt_cons(  x1  )
+//
+(* ****** ****** *)
+//
 // HX:
 // Implementing
 // fproc/fproc0/fproc1

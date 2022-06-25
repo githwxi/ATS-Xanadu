@@ -389,6 +389,26 @@ list_a10
 (* ****** ****** *)
 //
 fun
+<a0:vt>
+optn_vt_a00
+(      ): optn_vt(a0,ff)
+fun
+<a0:vt>
+optn_vt_a01
+(x1: a0): optn_vt(a0,tt)
+//
+(* ****** ****** *)
+//
+#symload
+optn_vt with optn_vt_a00
+#symload
+optn_vt with optn_vt_a01
+//
+(* ****** ****** *)
+//HX: implementing fproc
+(* ****** ****** *)
+//
+fun
 <a:t0>
 g_fproc(x: a): void
 //
