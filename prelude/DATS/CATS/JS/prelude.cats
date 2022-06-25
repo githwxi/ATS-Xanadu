@@ -116,6 +116,17 @@ XATS2JS_a1ptr_set_at_raw
 
 /* ****** ****** */
 //
+function
+XATS2JS_a1ref_get0_at
+  (A0, i0)
+{ return A0[   i0   ]; }
+function
+XATS2JS_a1ref_cget_at
+  (A0, i0)
+{ return A0[   i0   ]; }
+//
+/* ****** ****** */
+//
 // prelude/unsafe.sats
 //
 /* ****** ****** */

@@ -62,14 +62,39 @@
 (* ****** ****** *)
 
 #impltmp
+strm_print$len<>() = 5
+#impltmp
+strx_print$len<>() = 10
+#impltmp
 strm_vt_print$len<>() = 5
 #impltmp
 strx_vt_print$len<>() = 10
 
 (* ****** ****** *)
+//
+
+val A0 = a0ref(0)
+val () =
+prerrln
+("a0ref(0) = ", A0)
+//
+val A1 =
+a1ref_make_nval(3, 0)
+val () =
+prerrln
+(
+"a1ref(0,0,0) = ", A1
+) where
+{
+#impltmp
+{a:vt}
+a1ref_length<a><3>(A1) = 3
+}
+//
+(* ****** ****** *)
 
 val () =
-prerrln0
+prerrln
 (
 "optn(0) = ", optn(0)
 )
@@ -78,6 +103,14 @@ prerrln0
 (
 "optn_vt(0) = ", optn_vt(0)
 )
+
+(* ****** ****** *)
+
+val () =
+prerrln
+(
+"list(0,1,2) = ", list(0,1,2)
+) (* end of [val] *)
 
 (* ****** ****** *)
 
@@ -100,6 +133,19 @@ f0(x: int): list_vt(int) =
 (* ****** ****** *)
 
 val () =
+prerrln
+(
+"strm(0,1,2,...) = ", f0(0)
+) where
+{
+fun
+f0(x: int): strm(int) =
+$lazy(strmcon_cons(x, f0(x+1)))
+}
+
+(* ****** ****** *)
+
+val () =
 prerrln0
 (
 "strm_vt(0,1,2,...) = ", f0(0)
@@ -108,6 +154,19 @@ prerrln0
 fun
 f0(x: int): strm_vt(int) =
 $llazy(strmcon_vt_cons(x, f0(x+1)))
+}
+
+(* ****** ****** *)
+
+val () =
+prerrln
+(
+"strx(0,1,2,...) = ", f0(0)
+) where
+{
+fun
+f0(x: int): strx(int) =
+$lazy(strxcon_cons(x, f0(x+1)))
 }
 
 (* ****** ****** *)

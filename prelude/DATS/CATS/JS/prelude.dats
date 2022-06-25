@@ -516,8 +516,8 @@ XATS2JS_a1ref_get_at
 {a:t0}
 {n:i0}
 ( A0:
-! a1ref(a, n)
-, i0: nintlt(n)): ~a = $extnam()
+  a1ref(a, n)
+, i0: nintlt(n)): a = $extnam()
 #impltmp
 { a:t0 }
 a1ref_get_at<a> = XATS2JS_a1ref_get_at
@@ -529,7 +529,7 @@ XATS2JS_a1ptr_get_at
 {n:i0}
 ( A0:
 ! a1ptr(a, n)
-, i0: nintlt(n)): ~a = $extnam()
+, i0: nintlt(n)): a = $extnam()
 #impltmp
 { a:t0 }
 a1ptr_get_at<a> = XATS2JS_a1ptr_get_at
@@ -542,7 +542,7 @@ XATS2JS_a1ref_set_at
 {a:t0}
 {n:i0}
 ( A0:
-! a1ref(a, n)
+  a1ref(a, n)
 , i0: nintlt(n)
 , x0: a(*new*)): void = $extnam()
 #impltmp
@@ -576,6 +576,20 @@ XATS2JS_a1ptr_set_at_raw
 #impltmp
 { a:vt }
 a1ptr_set_at_raw<a> = XATS2JS_a1ptr_set_at_raw
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_a1ref_get0_at
+{a:vt}
+{n:i0}
+( A0:
+  a1ref(a, n)
+, i0: nintlt(n)): ~a = $extnam()
+#impltmp
+{ a:vt }
+a1ref_get0_at<a> = XATS2JS_a1ref_get0_at
 //
 (* ****** ****** *)
 
