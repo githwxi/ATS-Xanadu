@@ -1513,9 +1513,9 @@ strm_print_len
 //
 fun
 <a0:t0>
-strm_print_begendsep
+strm_print_begendseprst
 ( xs: strm(a0)
-, xbeg: strn, xend: strn, xsep: strn): void
+, xbeg: strn, xend: strn, xsep: strn, xrst: strn): void
 //
 (* ****** ****** *)
 //HX:strx-printing
@@ -1544,9 +1544,9 @@ strx_print_len
 //
 fun
 <a0:t0>
-strx_print_begendsep
+strx_print_begendseprst
 ( xs: strx(a0)
-, xbeg: strn, xend: strn, xsep: strn): void
+, xbeg: strn, xend: strn, xsep: strn, xrst: strn): void
 //
 (* ****** ****** *)
 //HX:a0ref-printing
@@ -1637,8 +1637,6 @@ list_vt_print1_begendsep
 //
 fun<>
 strm_vt_print$len(): sint
-fun<>
-strx_vt_print$len(): sint
 //
 fun<>
 strm_vt_print$beg(): void
@@ -1653,10 +1651,6 @@ fun
 <a0:vt>
 strm_vt_print0
   (xs: ~strm_vt(a0)): void
-fun
-<a0:vt>
-strx_vt_print0
-  (xs: ~strx_vt(a0)): void
 //
 fun
 <a0:vt>
@@ -1666,6 +1660,44 @@ fun
 <a0:vt>
 strm_vt_print0_len
 (xs: ~strm_vt(a0), len: nint): void
+//
+fun
+<a0:vt>
+strm_vt_print0_begendseprst
+( xs: strm_vt(a0)
+, xbeg: strn, xend: strn, xsep: strn, xrst: strn): void
+//
+(* ****** ****** *)
+//HX:strx(vt)-printing
+(* ****** ****** *)
+//
+fun<>
+strx_vt_print$len(): sint
+//
+fun<>
+strx_vt_print$beg(): void
+fun<>
+strx_vt_print$end(): void
+fun<>
+strx_vt_print$sep(): void
+fun<>
+strx_vt_print$rst(): void
+//
+fun
+<a0:vt>
+strx_vt_print0
+  (xs: ~strx_vt(a0)): void
+//
+fun
+<a0:vt>
+strx_vt_print0_len
+  (xs: ~strx_vt(a0), ln: nint): void
+//
+fun
+<a0:vt>
+strx_vt_print0_begendseprst
+( xs: ~strx_vt(a0)
+, xbeg: strn, xend: strn, xsep: strn, xrst: strn): void
 //
 (* ****** ****** *)
 
