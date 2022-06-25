@@ -2664,7 +2664,7 @@ gl_print0
 gl_print1
 <strm_vt(a)>(xs) =
 (
-  strn_print(  "strm_vt(...)"  )
+  strn_print(  "$strm_vt(...)"  )
 )
 (* ****** ****** *)
 //
@@ -2684,6 +2684,7 @@ end (*let*) // end of [strm_vt_print0]
 #impltmp
 <>(*tmp*)
 strm_vt_print$len() = 3
+//
 #impltmp
 <>(*tmp*)
 strm_vt_print$beg() = strn_print"$strm_vt("
@@ -2841,11 +2842,11 @@ strm_vt_print$rst<(*0*)>() = print(xrst)
 gl_print0
 <strx_vt(a)> = strx_vt_print0<a>
 #impltmp
-{a:vt}
+{a:vt}//tmp
 gl_print1
 <strx_vt(a)>(xs) =
 (
-  strn_print(  "strx_vt(...)"  )
+  strn_print(  "$strx_vt(...)"  )
 )
 (* ****** ****** *)
 //
@@ -2862,6 +2863,7 @@ end (*let*) // end of [strx_vt_print0]
 #impltmp
 <>(*tmp*)
 strx_vt_print$len() = 3
+//
 #impltmp
 <>(*tmp*)
 strx_vt_print$beg() = print"$strx_vt("

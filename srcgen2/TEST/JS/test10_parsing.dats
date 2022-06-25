@@ -135,6 +135,32 @@ $lazy(strxcon_cons(x, f0(x+1)))
 (* ****** ****** *)
 
 val () =
+prerrln0
+(
+"strm_vt(0,1,2,...) = ", f0(0)
+) where
+{
+fun
+f0(x: int): strm_vt(int) =
+$llazy(strmcon_vt_cons(x, f0(x+1)))
+}
+
+(* ****** ****** *)
+
+val () =
+prerrln0
+(
+"strx_vt(0,1,2,...) = ", f0(0)
+) where
+{
+fun
+f0(x: int): strx_vt(int) =
+$llazy(strxcon_vt_cons(x, f0(x+1)))
+}
+
+(* ****** ****** *)
+
+val () =
 prerrln
 (
 "list(0,1,2,3) = ", list(0,1,2,3))
