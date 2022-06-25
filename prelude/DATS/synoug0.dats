@@ -2547,12 +2547,13 @@ a1ref_print$sep<(*0*)>() = print(xsep)
 gl_print1
 <optn_vt(a)> = optn_vt_print1<a>
 (* ****** ****** *)
+//
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$beg
 <optn_vt(a0)><a0> = optn_vt_print$beg<>
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$end
 <optn_vt(a0)><a0> = optn_vt_print$end<>
 //
@@ -2565,11 +2566,11 @@ glseq_print1<optn_vt(a0)><a0> where
 {
 //
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$beg
 <optn_vt(a0)><a0> = optn_vt_print$beg<>
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$end
 <optn_vt(a0)><a0> = optn_vt_print$end<>
 //
@@ -2605,15 +2606,15 @@ gl_print1
 (* ****** ****** *)
 //
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$beg
 <list_vt(a0)><a0> = list_vt_print$beg<>
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$end
 <list_vt(a0)><a0> = list_vt_print$end<>
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$sep
 <list_vt(a0)><a0> = list_vt_print$sep<>
 //
@@ -2626,15 +2627,15 @@ glseq_print1<list_vt(a0)><a0> where
 {
 //
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$beg
 <list_vt(a0)><a0> = list_vt_print$beg<>
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$end
 <list_vt(a0)><a0> = list_vt_print$end<>
 #impltmp
-{a0:t0}(*tmp*)
+{a0:vt}(*tmp*)
 glseq_print$sep
 <list_vt(a0)><a0> = list_vt_print$sep<>
 //

@@ -158,22 +158,6 @@ optn_vt_cons(x0) => list_vt_sing(x0)
 // For gseq-operations
 //
 (* ****** ****** *)
-//
-#impltmp
-{a:vt}
-gl_print1<optn_vt(a)> =
-glseq_print1<optn_vt(a)><a>
-//
-#impltmp
-{a:vt}
-glseq_print$beg
-<optn_vt(a)><a>() = strn_print("(")
-#impltmp
-{a:vt}
-glseq_print$end
-<optn_vt(a)><a>() = strn_print(")")
-//
-(* ****** ****** *)
 
 #impltmp
 {a:vt}
