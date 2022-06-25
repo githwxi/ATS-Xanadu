@@ -622,18 +622,11 @@ the_prelude_load
 , 0(*static*)
 , "prelude/SATS/strm000.sats")
 //
-(*
-HX-2020-10-31:
-This one also needs to be loaded
-externally for template resolution!
-*)
-//
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "prelude/SATS/synoug0.sats")
-// the_prelude_load
 //
 (* ****** ****** *)
 //
@@ -672,6 +665,12 @@ the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "prelude/SATS/VT/strm000_vt.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/synoug0_vt.sats")
 //
 (* ****** ****** *)
 //

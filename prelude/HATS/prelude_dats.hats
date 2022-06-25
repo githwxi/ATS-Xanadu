@@ -46,5 +46,7 @@ ATS3_XANADU_prelude/DATS
 (* ****** ****** *)
 #staload _ = "./../DATS/VT/strn000_vt.dats"
 (* ****** ****** *)
+#staload _ = "./../DATS/VT/synoug0_vt.dats"
+(* ****** ****** *)
 
 (* end of [ATS3_XANADU_prelude_prelude_dats.hats] *)

@@ -65,15 +65,15 @@ all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseqn00.sats
 
 all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/optn000.sats
+all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/list000.sats
 all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/optn000.sats
+$(XATSOPT) -s $(PRELUDE)/SATS/strm000.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/arrn000.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/strn000.sats
-all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/strm000.sats
 
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/synoug0.sats
@@ -89,15 +89,18 @@ all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/gseqn00_vt.sats
 
 all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/optn000_vt.sats
+all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/list000_vt.sats
 all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/VT/optn000_vt.sats
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/strm000_vt.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/arrn000_vt.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strn000_vt.sats
+
 all_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/VT/strm000_vt.sats
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/synoug0_vt.sats
 
 ######
 #
@@ -158,14 +161,19 @@ all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq000_vt.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/strn000_vt.dats
-
-all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/list000_vt.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/optn000_vt.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/strm000_vt.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/arrn000_vt.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/strn000_vt.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/synoug0_vt.dats
 
 ######
 
