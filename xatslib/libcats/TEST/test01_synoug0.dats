@@ -71,6 +71,11 @@ strx_vt_print$len<>() = 10
 val () =
 prerrln0
 (
+"optn(0) = ", optn(0)
+)
+val () =
+prerrln0
+(
 "optn_vt(0) = ", optn_vt(0)
 )
 
