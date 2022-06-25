@@ -133,42 +133,8 @@ strx_vt_free(strx_vt(a)): void
 //
 fun
 <a:vt>
-strm_vt_print
-  (xs: strm_vt(a)): void
-fun
-<a:vt>
-strx_vt_print
-  (xs: strx_vt(a)): void
-//
-fun<>
-strm_vt_print$len(): sint
-fun<>
-strx_vt_print$len(): sint
-//
-fun<>
-strm_vt_print$beg(): void
-fun<>
-strm_vt_print$end(): void
-fun<>
-strm_vt_print$sep(): void
-fun<>
-strm_vt_print$rst(): void
-//
-fun
-<a:vt>
-strm_vt_print_all
-  (xs: strm_vt(a)): void
-fun
-<a:vt>
-strm_vt_print_len
-(xs: strm_vt(a), len: nint): void
-//
-(* ****** ****** *)
-
-fun
-<a:vt>
 strm_vt_length(xs: strm_vt(a)): nint
-
+//
 (* ****** ****** *)
 
 fun

@@ -2237,7 +2237,7 @@ then
 let
 val () =
 if
-(n0 > 0)
+(i0 > 0)
 then
 strm_print$sep<>()
 val () =
@@ -2337,13 +2337,16 @@ if
 (i0>=n0)
 then
 let
+//
 val () =
 if
-(n0 > 0)
+(i0 > 0)
 then
 strx_print$sep<>()
+//
 val () =
 strx_print$rst<>()
+//
 in//let
 strx_print$end<>()
 end // end of [then]
@@ -2524,23 +2527,26 @@ a1ref_print1<a0>(A0, n0)) where
 (* ****** ****** *)
 #impltmp
 {a:vt}//tmp
-gl_print1<optn_vt(a)> = optn_vt_print1<a>
+gl_print1
+<optn_vt(a)> = optn_vt_print1<a>
 (* ****** ****** *)
 //
 #impltmp
-optn_vt_print$beg<(*0*)>() = print"$optn_vt("
+optn_vt_print$beg<>
+  ( (*void*) ) = print"$optn_vt("
 #impltmp
-optn_vt_print$end<(*0*)>() = print(   ")"   )
+optn_vt_print$end<>
+  ( (*void*) ) = print(   ")"   )
 (* ****** ****** *)
 //
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print$beg
-<optn_vt(a0)><a0> = optn_vt_print$beg<(*0*)>
+<optn_vt(a0)><a0> = optn_vt_print$beg<>
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print$end
-<optn_vt(a0)><a0> = optn_vt_print$end<(*0*)>
+<optn_vt(a0)><a0> = optn_vt_print$end<>
 //
 (* ****** ****** *)
 //
@@ -2581,30 +2587,34 @@ optn_vt_print$end<(*0*)>() = print(xend)
 (* ****** ****** *)
 #impltmp
 {a:vt}//tmp
-gl_print1<list_vt(a)> = list_vt_print1<a>
+gl_print1
+<list_vt(a)> = list_vt_print1<a>
 (* ****** ****** *)
 //
 #impltmp
-list_vt_print$beg<(*0*)>() = print"$list_vt("
+list_vt_print$beg<>
+  ( (*void*) ) = print"$list_vt("
 #impltmp
-list_vt_print$end<(*0*)>() = print(   ")"   )
+list_vt_print$end<>
+  ( (*void*) ) = print(   ")"   )
 #impltmp
-list_vt_print$sep<(*0*)>() = print(   ";"   )
+list_vt_print$sep<>
+  ( (*void*) ) = print(   ";"   )
 //
 (* ****** ****** *)
 //
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print$beg
-<list_vt(a0)><a0> = list_vt_print$beg<(*0*)>
+<list_vt(a0)><a0> = list_vt_print$beg<>
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print$end
-<list_vt(a0)><a0> = list_vt_print$end<(*0*)>
+<list_vt(a0)><a0> = list_vt_print$end<>
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print$sep
-<list_vt(a0)><a0> = list_vt_print$sep<(*0*)>
+<list_vt(a0)><a0> = list_vt_print$sep<>
 //
 (* ****** ****** *)
 //
@@ -2645,6 +2655,188 @@ list_vt_print$end<(*0*)>() = print(xend)
 #impltmp
 list_vt_print$sep<(*0*)>() = print(xsep)
 }
+//
+(* ****** ****** *)
+//HX: strm(vt)-printing
+(* ****** ****** *)
+#impltmp
+{a:vt}//tmp
+gl_print0
+<strm_vt(a)> = strm_vt_print0<a>
+#impltmp
+{a:vt}//tmp
+gl_print0
+<strx_vt(a)> = strx_vt_print0<a>
+(* ****** ****** *)
+#impltmp
+{a:vt}
+gl_print1
+<strm_vt(a)>(xs) =
+(
+  strn_print(  "strm_vt(...)"  )
+)
+#impltmp
+{a:vt}
+gl_print1
+<strx_vt(a)>(xs) =
+(
+  strn_print(  "strx_vt(...)"  )
+)
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+strm_vt_print0(xs) =
+let
+val len = 
+strm_vt_print$len<>()
+in
+if
+(len < 0)
+then strm_vt_print0_all(xs)
+else strm_vt_print0_len(xs, len)
+end (*let*) // end of [strm_vt_print0]
+//
+#impltmp
+<>(*tmp*)
+strm_vt_print$len() = 3
+#impltmp
+<>(*tmp*)
+strm_vt_print$beg() = strn_print"$strm_vt("
+#impltmp
+<>(*tmp*)
+strm_vt_print$end() = strn_print(   ")"   )
+#impltmp
+<>(*tmp*)
+strm_vt_print$sep() = strn_print(   ","   )
+#impltmp
+<>(*tmp*)
+strm_vt_print$rst() = strn_print(  "..."  )
+//
+(* ****** ****** *)
+
+#impltmp
+<a0>(*tmp*)
+strm_vt_print0_all
+  (xs) =
+(
+loop
+(xs, 0(*i0*)) where
+{
+val () =
+strm_vt_print$beg<>()
+}
+) where
+{
+#vwtpdef
+xs = strm_vt(a0)
+fnx
+loop
+( xs: xs
+, i0: nint): void =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(
+strm_vt_print$end<>()
+)
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+//
+val () =
+if
+(i0 > 0)
+then
+strm_vt_print$sep<>()
+//
+in
+loop(xs, succ(i0)) where
+{
+  val () = gl_print0<a0>(x0)
+}
+end // end of [strmcon_vt_cons]
+)
+}(*where*)//end-of(strm_vt_print0_all)
+
+(* ****** ****** *)
+
+#impltmp
+<a0>(*tmp*)
+strm_vt_print0_len
+  (xs, n0) =
+(
+loop
+(xs, 0(*i0*)) where
+{
+val () =
+strm_vt_print$beg<>()
+}
+) where
+{
+#vwtpdef
+xs = strm_vt(a0)
+fnx
+loop(xs: xs, i0: nint): void =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+strm_vt_print$end<>()
+| ~
+strmcon_vt_cons(x0, xs) =>
+if
+(i0 >= n0)
+then
+let
+//
+val () =
+g_free<a0>(x0)
+val () =
+strm_vt_free<a0>(xs)
+//
+val () =
+if
+(i0 > 0)
+then
+strm_vt_print$sep<>()
+val () =
+strm_vt_print$rst<>()
+//
+in
+  strm_vt_print$end<>()
+end // end of [then]
+else
+let
+//
+val () =
+if
+(i0 > 0)
+then
+strm_vt_print$sep<>()
+//
+in
+loop(xs, succ(i0)) where
+{
+  val () = gl_print0<a0>(x0)
+}
+end // end of [else]
+) (* strmcon_vt_cons *)
+}(*where*)//end-of(strm_vt_print0_len)
+
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+strx_vt_print0(xs) =
+let
+#impltmp
+strm_vt_print$len<>() =
+strx_vt_print$len<>()
+in
+strm_vt_print0<>(strx_vt_strmize(xs))
+end (*let*) // end-of-(strx_vt_print0)
 //
 (* ****** ****** *)
 
