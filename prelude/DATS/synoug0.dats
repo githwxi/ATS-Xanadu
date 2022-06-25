@@ -2013,13 +2013,6 @@ g_print<optn(a)> = optn_print<a>
 (* ****** ****** *)
 //
 #impltmp
-optn_print$beg<(*0*)>() = print"$optn("
-#impltmp
-optn_print$end<(*0*)>() = print( ")"  )
-//
-(* ****** ****** *)
-//
-#impltmp
 {a0:t0}(*tmp*)
 gseq_print$beg
 <optn(a0)><a0> = optn_print$beg<(*0*)>
@@ -2047,6 +2040,11 @@ gseq_print$end
 //
 } (*where*) // end of [optn_print<a0>]
 //
+#impltmp
+optn_print$beg<(*0*)>() = print"$optn("
+#impltmp
+optn_print$end<(*0*)>() = print( ")"  )
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -2068,15 +2066,6 @@ optn_print$end<(*0*)>() = print(xend)
 #impltmp
 {a:t0}//tmp
 g_print<list(a)> = list_print<a>
-(* ****** ****** *)
-//
-#impltmp
-list_print$beg<(*0*)>() = print"$list("
-#impltmp
-list_print$end<(*0*)>() = print( ")"  )
-#impltmp
-list_print$sep<(*0*)>() = print( ";"  )
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -2114,6 +2103,13 @@ gseq_print$sep
 <list(a0)><a0> = list_print$sep<(*0*)>
 //
 } (*where*) // end of [list_print<a0>]
+//
+#impltmp
+list_print$beg<(*0*)>() = print"$list("
+#impltmp
+list_print$end<(*0*)>() = print( ")"  )
+#impltmp
+list_print$sep<(*0*)>() = print( ";"  )
 //
 (* ****** ****** *)
 //
@@ -2262,8 +2258,9 @@ end // end of [else]
 //
 #impltmp
 <a0>(*tmp*)
-strm_print_begendsep
-(xs, xbeg, xend, xsep) =
+strm_print_begendseprst
+( xs
+, xbeg, xend, xsep, xrst) =
 (
 strm_print<a0>(xs)) where
 {
@@ -2273,6 +2270,8 @@ strm_print$beg<(*0*)>() = print(xbeg)
 strm_print$end<(*0*)>() = print(xend)
 #impltmp
 strm_print$sep<(*0*)>() = print(xsep)
+#impltmp
+strm_print$rst<(*0*)>() = print(xrst)
 }
 //
 (* ****** ****** *)
@@ -2367,8 +2366,9 @@ end // end of [else]
 //
 #impltmp
 <a0>(*tmp*)
-strx_print_begendsep
-(xs, xbeg, xend, xsep) =
+strx_print_begendseprst
+( xs
+, xbeg, xend, xsep, xrst) =
 (
 strx_print<a0>(xs)) where
 {
@@ -2378,10 +2378,28 @@ strx_print$beg<(*0*)>() = print(xbeg)
 strx_print$end<(*0*)>() = print(xend)
 #impltmp
 strx_print$sep<(*0*)>() = print(xsep)
+#impltmp
+strx_print$rst<(*0*)>() = print(xrst)
 }
 //
 (* ****** ****** *)
 //HX:a0ref-printing
+(* ****** ****** *)
+#impltmp
+{a0:t0}
+g_print
+<a0ref(a0)> = a0ref_print1<a0>
+(* ****** ****** *)
+//
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$beg
+<a0ref(a0)><a0> = a0ref_print$beg<>
+#impltmp
+{a0:t0}(*tmp*)
+gseq_print$end
+<a0ref(a0)><a0> = a0ref_print$end<>
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -2410,21 +2428,6 @@ a0ref_print$end() = print(  ")"  )
 (* ****** ****** *)
 //
 #impltmp
-{a0:t0}(*tmp*)
-gseq_print$beg
-<a0ref(a0)><a0> = a0ref_print$beg<>
-#impltmp
-{a0:t0}(*tmp*)
-gseq_print$end
-<a0ref(a0)><a0> = a0ref_print$end<>
-//
-(* ****** ****** *)
-#impltmp
-{a0:t0}
-g_print<a0ref(a0)> = a0ref_print1<a0>
-(* ****** ****** *)
-//
-#impltmp
 <a0>(*tmp*)
 a0ref_print1_begend
 (A0, xbeg, xend) =
@@ -2439,18 +2442,6 @@ a0ref_print$end<(*0*)>() = print(xend)
 //
 (* ****** ****** *)
 //HX:a1ref-printing
-(* ****** ****** *)
-//
-#impltmp
-<>(*tmp*)
-a1ref_print$beg() = print"$a1ref("
-#impltmp
-<>(*tmp*)
-a1ref_print$end() = print(  ")"  )
-#impltmp
-<>(*tmp*)
-a1ref_print$sep() = print(  ";"  )
-//
 (* ****** ****** *)
 #impltmp
 {a0:t0}
@@ -2476,6 +2467,10 @@ gseq_print$beg
 {a0:t0}{n0:i0}
 gseq_print$end
 <a1ref(a0,n0)><a0> = a1ref_print$end<>
+#impltmp
+{a0:t0}{n0:i0}
+gseq_print$sep
+<a1ref(a0,n0)><a0> = a1ref_print$sep<>
 //
 (* ****** ****** *)
 //
@@ -2493,17 +2488,26 @@ a1ref_length<a0><n0>(A0) = n0
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$beg
-<a1ref(a0)><a0> = a1ref_print$beg<(*0*)>
+<a1ref(a0)><a0> = a1ref_print$beg<>
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$end
-<a1ref(a0)><a0> = a1ref_print$end<(*0*)>
+<a1ref(a0)><a0> = a1ref_print$end<>
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$sep
-<a1ref(a0)><a0> = a1ref_print$sep<(*0*)>
+<a1ref(a0)><a0> = a1ref_print$sep<>
 //
-} (*where*) // end of [a1ref_print1<a0>]
+}(*where*)//end-of-[a1ref_print1<a0>]
+//
+(* ****** ****** *)
+//
+#impltmp
+a1ref_print$beg<>() = print"$a1ref("
+#impltmp
+a1ref_print$end<>() = print(  ")"  )
+#impltmp
+a1ref_print$sep<>() = print(  ";"  )
 //
 (* ****** ****** *)
 //
@@ -2514,13 +2518,13 @@ a1ref_print1_begendsep
 (
 a1ref_print1<a0>(A0, n0)) where
 {
-  #impltmp
-  a1ref_print$beg<(*0*)>() = print(xbeg)
-  #impltmp
-  a1ref_print$end<(*0*)>() = print(xend)
-  #impltmp
-  a1ref_print$sep<(*0*)>() = print(xsep)
-}
+#impltmp
+a1ref_print$beg<(*0*)>() = print(xbeg)
+#impltmp
+a1ref_print$end<(*0*)>() = print(xend)
+#impltmp
+a1ref_print$sep<(*0*)>() = print(xsep)
+}(*where*)//end(a1ref_print1_begendsep)
 //
 (* ****** ****** *)
 //HX: optn(vt)-printing
@@ -2530,15 +2534,6 @@ a1ref_print1<a0>(A0, n0)) where
 gl_print1
 <optn_vt(a)> = optn_vt_print1<a>
 (* ****** ****** *)
-//
-#impltmp
-optn_vt_print$beg<>
-  ( (*void*) ) = print"$optn_vt("
-#impltmp
-optn_vt_print$end<>
-  ( (*void*) ) = print(   ")"   )
-(* ****** ****** *)
-//
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print$beg
@@ -2565,7 +2560,12 @@ glseq_print$beg
 glseq_print$end
 <optn_vt(a0)><a0> = optn_vt_print$end<>
 //
-} (*where*) // end of [optn_vt_print1<a0>]
+}(*where*)//end-of-[optn_vt_print1<a0>]
+//
+#impltmp
+optn_vt_print$beg<>() = print"$optn_vt("
+#impltmp
+optn_vt_print$end<>() = print(   ")"   )
 //
 (* ****** ****** *)
 //
@@ -2589,18 +2589,6 @@ optn_vt_print$end<(*0*)>() = print(xend)
 {a:vt}//tmp
 gl_print1
 <list_vt(a)> = list_vt_print1<a>
-(* ****** ****** *)
-//
-#impltmp
-list_vt_print$beg<>
-  ( (*void*) ) = print"$list_vt("
-#impltmp
-list_vt_print$end<>
-  ( (*void*) ) = print(   ")"   )
-#impltmp
-list_vt_print$sep<>
-  ( (*void*) ) = print(   ";"   )
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -2637,7 +2625,15 @@ glseq_print$end
 glseq_print$sep
 <list_vt(a0)><a0> = list_vt_print$sep<>
 //
-} (*where*) // end of [list_vt_print1<a0>]
+}(*where*)//end-of-[list_vt_print1<a0>]
+//
+//
+#impltmp
+list_vt_print$beg<>() = print"$list_vt("
+#impltmp
+list_vt_print$end<>() = print(   ")"   )
+#impltmp
+list_vt_print$sep<>() = print(   ";"   )
 //
 (* ****** ****** *)
 //
@@ -2664,23 +2660,11 @@ list_vt_print$sep<(*0*)>() = print(xsep)
 gl_print0
 <strm_vt(a)> = strm_vt_print0<a>
 #impltmp
-{a:vt}//tmp
-gl_print0
-<strx_vt(a)> = strx_vt_print0<a>
-(* ****** ****** *)
-#impltmp
 {a:vt}
 gl_print1
 <strm_vt(a)>(xs) =
 (
   strn_print(  "strm_vt(...)"  )
-)
-#impltmp
-{a:vt}
-gl_print1
-<strx_vt(a)>(xs) =
-(
-  strn_print(  "strx_vt(...)"  )
 )
 (* ****** ****** *)
 //
@@ -2714,7 +2698,7 @@ strm_vt_print$sep() = strn_print(   ","   )
 strm_vt_print$rst() = strn_print(  "..."  )
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <a0>(*tmp*)
 strm_vt_print0_all
@@ -2759,9 +2743,9 @@ loop(xs, succ(i0)) where
 end // end of [strmcon_vt_cons]
 )
 }(*where*)//end-of(strm_vt_print0_all)
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <a0>(*tmp*)
 strm_vt_print0_len
@@ -2775,10 +2759,14 @@ strm_vt_print$beg<>()
 }
 ) where
 {
+//
 #vwtpdef
 xs = strm_vt(a0)
+//
 fnx
-loop(xs: xs, i0: nint): void =
+loop
+( xs: xs
+, i0: nint): void =
 (
 case+ !xs of
 | ~
@@ -2824,19 +2812,154 @@ loop(xs, succ(i0)) where
 end // end of [else]
 ) (* strmcon_vt_cons *)
 }(*where*)//end-of(strm_vt_print0_len)
-
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+strm_vt_print0_begendseprst
+( xs
+, xbeg, xend, xsep, xrst) =
+(
+strm_vt_print0<a0>(xs)) where
+{
+#impltmp
+strm_vt_print$beg<(*0*)>() = print(xbeg)
+#impltmp
+strm_vt_print$end<(*0*)>() = print(xend)
+#impltmp
+strm_vt_print$sep<(*0*)>() = print(xsep)
+#impltmp
+strm_vt_print$rst<(*0*)>() = print(xrst)
+}
+//
+(* ****** ****** *)
+//HX:strx(vt)-printing
+(* ****** ****** *)
+#impltmp
+{a:vt}//tmp
+gl_print0
+<strx_vt(a)> = strx_vt_print0<a>
+#impltmp
+{a:vt}
+gl_print1
+<strx_vt(a)>(xs) =
+(
+  strn_print(  "strx_vt(...)"  )
+)
 (* ****** ****** *)
 //
 #impltmp
 <a0>(*tmp*)
 strx_vt_print0(xs) =
 let
-#impltmp
-strm_vt_print$len<>() =
+val len = 
 strx_vt_print$len<>()
 in
-strm_vt_print0<>(strx_vt_strmize(xs))
-end (*let*) // end-of-(strx_vt_print0)
+  strx_vt_print0_len(xs, len)
+end (*let*) // end of [strx_vt_print0]
+//
+#impltmp
+<>(*tmp*)
+strx_vt_print$len() = 3
+#impltmp
+<>(*tmp*)
+strx_vt_print$beg() = print"$strx_vt("
+#impltmp
+<>(*tmp*)
+strx_vt_print$end() = print(   ")"   )
+#impltmp
+<>(*tmp*)
+strx_vt_print$sep() = print(   ","   )
+#impltmp
+<>(*tmp*)
+strx_vt_print$rst() = print(  "..."  )
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+strx_vt_print0_len
+  (xs, n0) =
+(
+loop
+(xs, 0(*i0*)) where
+{
+val () =
+strx_vt_print$beg<>()
+}
+) where
+{
+//
+#vwtpdef
+xs = strx_vt(a0)
+//
+fnx
+loop
+( xs: xs
+, i0: nint): void =
+(
+case+ !xs of
+| ~
+strxcon_vt_cons(x0, xs) =>
+if
+(i0>=n0)
+then
+let
+//
+val () =
+g_free<a0>(x0)
+val () =
+strx_vt_free<a0>(xs)
+//
+val () =
+if
+(i0 > 0)
+then
+strx_vt_print$sep<>()
+val () =
+strx_vt_print$rst<>()
+//
+in
+  strx_vt_print$end<>()
+end // end of [then]
+else
+let
+//
+val () =
+if
+(i0 > 0)
+then
+strx_vt_print$sep<>()
+//
+in
+loop(xs, succ(i0)) where
+{
+  val () = gl_print0<a0>(x0)
+}
+end // end of [else]
+) (* strxcon_vt_cons *)
+}(*where*)//end-of(strx_vt_print0_len)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+strx_vt_print0_begendseprst
+( xs
+, xbeg, xend, xsep, xrst) =
+(
+strx_vt_print0<a0>(xs)) where
+{
+#impltmp
+strx_vt_print$beg<(*0*)>() = print(xbeg)
+#impltmp
+strx_vt_print$end<(*0*)>() = print(xend)
+#impltmp
+strx_vt_print$sep<(*0*)>() = print(xsep)
+#impltmp
+strx_vt_print$rst<(*0*)>() = print(xrst)
+}
 //
 (* ****** ****** *)
 
