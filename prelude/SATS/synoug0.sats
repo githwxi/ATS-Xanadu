@@ -1632,5 +1632,41 @@ list_vt_print1_begendsep
 , xbeg: strn, xend: strn, xsep: strn): void
 //
 (* ****** ****** *)
+//HX:strm(vt)-printing
+(* ****** ****** *)
+//
+fun<>
+strm_vt_print$len(): sint
+fun<>
+strx_vt_print$len(): sint
+//
+fun<>
+strm_vt_print$beg(): void
+fun<>
+strm_vt_print$end(): void
+fun<>
+strm_vt_print$sep(): void
+fun<>
+strm_vt_print$rst(): void
+//
+fun
+<a0:vt>
+strm_vt_print0
+  (xs: ~strm_vt(a0)): void
+fun
+<a0:vt>
+strx_vt_print0
+  (xs: ~strx_vt(a0)): void
+//
+fun
+<a0:vt>
+strm_vt_print0_all
+  (xs: ~strm_vt(a0)): void
+fun
+<a0:vt>
+strm_vt_print0_len
+(xs: ~strm_vt(a0), len: nint): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_synoug0.sats] *)

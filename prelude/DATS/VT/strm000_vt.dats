@@ -152,162 +152,6 @@ g_free<strm_vt(a)> = strm_vt_free<a>
 g_free<strx_vt(a)> = strx_vt_free<a>
 //
 (* ****** ****** *)
-//
-#impltmp
-<a>(*tmp*)
-strm_vt_print(xs) =
-let
-val len = 
-strm_vt_print$len<>()
-in
-if
-(len < 0)
-then strm_vt_print_all(xs)
-else strm_vt_print_len(xs, len)
-end
-//
-#impltmp
-<>(*tmp*)
-strm_vt_print$len() = 3
-#impltmp
-<>(*tmp*)
-strm_vt_print$beg() = strn_print("(")
-#impltmp
-<>(*tmp*)
-strm_vt_print$end() = strn_print(")")
-#impltmp
-<>(*tmp*)
-strm_vt_print$sep() = strn_print(",")
-#impltmp
-<>(*tmp*)
-strm_vt_print$rst() = strn_print("...")
-//
-(* ****** ****** *)
-
-#impltmp
-<a>(*tmp*)
-strm_vt_print_all
-  (xs) =
-(
-loop
-(xs, 0(*i0*)) where
-{
-val () =
-strm_vt_print$beg<>()
-}
-) where
-{
-#vwtpdef
-xs = strm_vt(a)
-fnx
-loop
-( xs: xs
-, i0: nint): void =
-(
-case+ !xs of
-| ~
-strmcon_vt_nil() =>
-(
-strm_vt_print$end<>()
-)
-| ~
-strmcon_vt_cons(x0, xs) =>
-let
-//
-val () =
-if
-(i0 > 0)
-then
-strm_vt_print$sep<>()
-//
-in
-loop(xs, succ(i0)) where
-{
-  val () = gl_print0<a>(x0)
-}
-end // end of [strmcon_vt_cons]
-)
-}(*where*)//end-of(strm_vt_print_all)
-
-(* ****** ****** *)
-
-#impltmp
-<a>(*tmp*)
-strm_vt_print_len
-  (xs, n0) =
-(
-loop
-(xs, 0(*i0*)) where
-{
-val () =
-strm_vt_print$beg<>()
-}
-) where
-{
-#vwtpdef
-xs = strm_vt(a)
-fnx
-loop(xs: xs, i0: nint): void =
-(
-case+ !xs of
-| ~
-strmcon_vt_nil() =>
-strm_vt_print$end<>()
-| ~
-strmcon_vt_cons(x0, xs) =>
-if
-(i0 >= n0)
-then
-let
-//
-val () =
-g_free<a>(x0)
-val () =
-strm_vt_free<a>(xs)
-//
-val () =
-if
-(i0 > 0)
-then
-strm_vt_print$sep<>()
-val () =
-strm_vt_print$rst<>()
-//
-in
-  strm_vt_print$end<>()
-end // end of [then]
-else
-let
-//
-val () =
-if
-(i0 > 0)
-then
-strm_vt_print$sep<>()
-//
-in
-loop(xs, succ(i0)) where
-{
-  val () = gl_print0<a>(x0)
-}
-end // end of [else]
-) (* strmcon_vt_cons *)
-}(*where*)//end-of(strm_vt_print_len)
-
-(* ****** ****** *)
-//
-#impltmp
-<a>(*tmp*)
-strx_vt_print(xs) =
-let
-#impltmp
-strm_vt_print$len<>() =
-strx_vt_print$len<>()
-in
-strm_vt_print<>(strx_vt_strmize(xs))
-end (*let*) // end-of(strx_vt_print)
-//
-(* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
@@ -321,9 +165,9 @@ strm_vt_foldl0<a><nint>(xs, 0)
 foldl0$fopr<a><nint>(r0, x0) =
 let
   val () = g_free<a>(x0) in succ(r0)
-end
+end // end of [let]
 //
-}(*where*) // end-of(strm_vt_length)
+} (*where*)//end-of-(strm_vt_length)
 
 (* ****** ****** *)
 
@@ -1762,34 +1606,6 @@ end // end of [strmcon_vt_cons]
 (* ****** ****** *)
 //
 // HX-2020-06-02: for glseq-operations
-//
-(* ****** ****** *)
-//
-#impltmp
-{a:vt}
-gl_print0
-<strm_vt(a)> = strm_vt_print<a>
-#impltmp
-{a:vt}
-gl_print0
-<strx_vt(a)> = strx_vt_print<a>
-//
-(* ****** ****** *)
-//
-#impltmp
-{a:vt}
-gl_print1
-<strm_vt(a)>(xs) =
-(
- strn_print(  "strm_vt(...)"  )
-)
-#impltmp
-{a:vt}
-gl_print1
-<strx_vt(a)>(xs) =
-(
- strn_print(  "strx_vt(...)"  )
-)
 //
 (* ****** ****** *)
 //
