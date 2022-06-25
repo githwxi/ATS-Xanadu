@@ -149,24 +149,28 @@ end
 (*
 //
 HX-2022-06-04:
-//
-The following implementation
-of [gl_print1] demonstrates the
-need for basing [g_print$out] on
-[gl_print@out].
-(*
 HX-2022-06-09:
-But this seems so INVOLVED!!!
-*)
+//
+The following implementation of
+[gl_print0/1] demonstrates the need
+for basing [g_print$out] on [gl_print@out],
+but this seems so easy to actually forget!!!
+//
 *)
 //
+#impltmp
+{a:t0}
+gl_print0<a> =
+  g_print<a> where
+{
+#impltmp g_print$out<> = gl_print$out<>
+} (*where*) // end-of(gl_print0)
 #impltmp
 {a:t0}
 gl_print1<a> =
   g_print<a> where
 {
- #impltmp
- g_print$out<> = gl_print$out<>
+#impltmp g_print$out<> = gl_print$out<>
 } (*where*) // end-of(gl_print1)
 //
 (* ****** ****** *)
@@ -179,6 +183,17 @@ fprint_ref<x0>(g_stdout<>(), x0)
 {x0:t0}
 prerr_ref<x0>(x0) =
 fprint_ref<x0>(g_stderr<>(), x0)
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:vt}
+prout0_ref<x0>(x0) =
+fprint0_ref<x0>(g_stdout<>(), x0)
+#impltmp
+{x0:vt}
+prerr0_ref<x0>(x0) =
+fprint0_ref<x0>(g_stderr<>(), x0)
 //
 (* ****** ****** *)
 //
@@ -205,6 +220,7 @@ fprint_ref<x0>
 
 (* ****** ****** *)
 //
+(*
 #impltmp
 {x0:vt}
 fprint0_ref<x0>(out, x0) =
@@ -219,6 +235,20 @@ fprint0_ptr<x0>(out, x0) =
 {
 val () = fprint1_ptr<x0>(out,x0)
 }
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:vt}
+fprint0_ref<x0>
+  (out, x0) =
+(
+  gl_print0<x0>(x0)) where
+{
+  #impltmp g_print$out<>() = out
+  #impltmp gl_print$out<>() = out
+} (*where*) // end-of(fprint_ref)
 //
 (* ****** ****** *)
 //

@@ -317,9 +317,102 @@ prout1_a09
 //
 (*
 HX:
-Implementing prerr/prerrln
+Implementing prerr0/prerrln0
+Implementing prerr1/prerrln1
 *)
 //
+(* ****** ****** *)
+(*
+HX:
+prerr0/prerrln0-implementation
+*)
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+prerr0_a01 =
+fproc0_a01
+<  a1  > where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prerr0_ref<a0>
+}
+//
+#impltmp
+<a1><a2>
+prerr0_a02 =
+fproc0_a02
+<a1><a2> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prerr0_ref<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+prerr0_a03 =
+fproc0_a03
+<a1>
+<a2><a3> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prerr0_ref<a0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+prerrln0_a00
+<>(*tmp*)
+((*_*)) = prerr_ref( "\n" )
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+prerrln0_a01
+( x1 ) =
+(
+prerr0_a01
+(   x1   ) ; prerrln0_a00<>()
+) (* end of [prerrln0_a01] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+prerrln0_a02
+( x1
+, x2 ) =
+(
+prerr0_a02
+( x1, x2 ) ; prerrln0_a00<>()
+) (* end of [prerrln0_a02] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+prerrln0_a03
+( x1
+, x2
+, x3 ) =
+(
+prerr0_a03
+( x1
+, x2, x3 ) ; prerrln0_a00<>()
+) (* end of [prerrln0_a03] *)
+//
+(* ****** ****** *)
+(*
+HX:
+prerr1/prerrln1-implementation
+*)
 (* ****** ****** *)
 //
 #impltmp
