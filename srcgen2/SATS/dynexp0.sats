@@ -296,20 +296,6 @@ d0exp_make_node
 datatype
 d0ecl_node =
 //
-(*
-HX-2022-06-20:
-D0Ctkerr(tok):
-tok is not consumed by the parser!
-*) // HX:This one is an indication
-| D0Ctkerr of (token)//of some error
-//
-(*
-HX-2019:
-D0Ctkskp(tok):
-for skipping synerr:
-*)//HX:Note that [tok] is consumed
-| D0Ctkskp of (token)//by the parser
-//
 |
 D0Clocal of
 ( token(*LOCAL*)
@@ -342,6 +328,20 @@ D0Cabsimpl of
 ( token
 , s0qid
 , s0maglst, sort0opt, token, s0exp)
+//
+(*
+HX-2022-06-20:
+D0Ctkerr(tok):
+tok is not consumed by the parser!
+*) // HX:This one is an indication
+| D0Ctkerr of (token)//of some error
+//
+(*
+HX-2019:
+D0Ctkskp(tok):
+for skipping synerr:
+*)//HX:Note that [tok] is consumed
+| D0Ctkskp of (token)//by the parser
 //
 |
 D0Cerrck of (int(*lvl*), d0ecl)//HX:pread-error
