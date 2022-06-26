@@ -599,27 +599,6 @@ s0exp_errck(lvl+1,s0exp(loc, S0Equal(tok,se1)))
 end (*let*) // end of [s0exp_qual_errck]
 //
 (* ****** ****** *)
-#extern
-fun
-preadx0_s0arg: fpreadx0(s0arg)
-#extern
-fun
-preadx0_s0mag: fpreadx0(s0mag)
-(* ****** ****** *)
-#extern
-fun
-preadx0_s0arglst: fpreadx0(s0arglst)
-#extern
-fun
-preadx0_s0maglst: fpreadx0(s0maglst)
-(* ****** ****** *)
-#extern
-fun
-preadx0_s0qua: fpreadx0(s0qua)
-#extern
-fun
-preadx0_s0qualst: fpreadx0(s0qualst)
-(* ****** ****** *)
 //
 #implfun
 preadx0_s0arg

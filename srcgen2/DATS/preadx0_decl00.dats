@@ -116,4 +116,94 @@ list_cons
 //
 (* ****** ****** *)
 
+fun
+d0ecl_sexpdef_errck
+( loc
+: loc_t
+, tknd
+: token
+, seid
+: s0eid
+, smas
+: s0maglst
+, tres
+: sort0opt
+, teq1: token
+, s0e2: s0exp): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc, D0Csexpdef(tknd, seid, smas, tres, teq1, s0e2)))
+end (*let*) // end of [d0ecl_sexpdef_errck]
+
+(* ****** ****** *)
+
+#implfun
+preadx0_d0ecl
+  (dcl, err) =
+(
+case+
+dcl.node() of
+//
+|
+D0Csexpdef _ =>
+f0_sexpdef(dcl, err)
+//
+|
+D0Ctkskp _ =>
+(err := err+1; d0ecl_errck(1, dcl))
+|
+D0Ctkerr _ =>
+(err := err+1; d0ecl_errck(1, dcl))
+//
+|
+D0Cerrck _ =>
+(err := err+1; d0ecl_errck(1, dcl))
+//
+) where
+{
+//
+fun
+f0_sexpdef
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Csexpdef
+( tknd
+, seid, smas
+, tres, teq1, def2) = dcl.node()
+//
+val seid =
+preadx0_i0dnt(seid, err)
+val smas =
+preadx0_s0maglst(smas, err)
+val tres =
+preadx0_sort0opt(tres, err)
+val (  ) =
+(
+case+
+teq1.node() of
+| T_EQ0() => ((*void*))
+| _(*non-T_EQ0*) => (err := err+1)
+)
+val def2 = preadx0_s0exp(def2, err)
+//
+in//let
+if
+(err = e00)
+then dcl else
+d0ecl_sexpdef_errck
+(dcl.lctn(), tknd, seid, smas, tres, teq1, def2)
+end (*let*) // end of [f0_sexpdef]
+//
+} (*where*) // end of [preadx0_d0ecl(dcl,err)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_preadx0_decl00.dats] *)

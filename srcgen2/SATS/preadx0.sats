@@ -73,6 +73,8 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef s0explst = $S0E.s0explst
 #typedef l0s0elst = $S0E.l0s0elst
 (* ****** ****** *)
+#typedef s0maglst = $S0E.s0maglst
+(* ****** ****** *)
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
 #typedef d0ecl = $D0E.d0ecl
@@ -100,13 +102,25 @@ fpreadx0
 //HX: for checking statics
 *)
 (* ****** ****** *)
+fun preadx0_i0dnt: fpreadx0(i0dnt)
+(* ****** ****** *)
 fun preadx0_sort0: fpreadx0(sort0)
 fun preadx0_s0exp: fpreadx0(s0exp)
 fun preadx0_l0s0e: fpreadx0(l0s0e)
 (* ****** ****** *)
+fun preadx0_s0arg: fpreadx0(s0arg)
+fun preadx0_s0mag: fpreadx0(s0mag)
+fun preadx0_s0qua: fpreadx0(s0qua)
+(* ****** ****** *)
+#symload preadx0 with preadx0_i0dnt
+(* ****** ****** *)
 #symload preadx0 with preadx0_sort0
 #symload preadx0 with preadx0_s0exp
 #symload preadx0 with preadx0_l0s0e
+(* ****** ****** *)
+#symload preadx0 with preadx0_s0arg
+#symload preadx0 with preadx0_s0mag
+#symload preadx0 with preadx0_s0qua
 (* ****** ****** *)
 fun
 preadx0_sort0opt: fpreadx0(sort0opt)
@@ -121,11 +135,22 @@ preadx0_s0explst: fpreadx0(s0explst)
 fun
 preadx0_l0s0elst: fpreadx0(l0s0elst)
 (* ****** ****** *)
+fun
+preadx0_s0arglst: fpreadx0(s0arglst)
+fun
+preadx0_s0maglst: fpreadx0(s0maglst)
+fun
+preadx0_s0qualst: fpreadx0(s0qualst)
+(* ****** ****** *)
 #symload preadx0 with preadx0_sort0opt
 #symload preadx0 with preadx0_s0expopt
 #symload preadx0 with preadx0_sort0lst
 #symload preadx0 with preadx0_s0explst
 #symload preadx0 with preadx0_l0s0elst
+(* ****** ****** *)
+#symload preadx0 with preadx0_s0arglst
+#symload preadx0 with preadx0_s0maglst
+#symload preadx0 with preadx0_s0qualst
 (* ****** ****** *)
 fun
 preadx0_s0exp_RPAREN: fpreadx0(s0exp_RPAREN)
