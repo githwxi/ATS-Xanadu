@@ -91,6 +91,8 @@
 #include
 "./../../DATS/preadx0_staexp.dats"
 #include
+"./../../DATS/preadx0_decl00.dats"
+#include
 "./../../DATS/preadx0_errmsg.dats"
 (* ****** ****** *)
 var the_err = 0
@@ -210,9 +212,26 @@ print(tok.lctn(), ":", tok.node())
 //
 in//local
 (* ****** ****** *)
+//
+var
+err:
+sint = 0
+//
 val opt =
 p1_fun_test<d0eclist>
 ("./mytest.sats", p1_d0eclseq_sta)
+//
+val opt =
+(
+case+ opt of
+|
+optn_nil() =>
+optn_nil()
+|
+optn_cons(dcls) =>
+optn_cons(preadx0_d0eclist(dcls, err))
+)
+//
 val ( ) =
 prerrln("p1_fun_test(\"mytest.sats\") =\n", opt)
 (* ****** ****** *)
