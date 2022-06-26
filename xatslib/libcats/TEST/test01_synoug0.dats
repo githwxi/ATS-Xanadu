@@ -72,23 +72,27 @@ strx_vt_print$len<>() = 10
 
 (* ****** ****** *)
 //
-
-val A0 = a0ref(0)
-val () =
-prerrln
-("a0ref(0) = ", A0)
-//
-val A1 =
-a1ref_make_nval(3, 0)
 val () =
 prerrln
 (
-"a1ref(0,0,0) = ", A1
+"a0ref(0) = ", A0
 ) where
 {
+  val A0 = a0ref(0)
+}
+//
+val () =
+prerrln
+(
+"a1ref(1,2,3,4,5) = ", A1
+) where
+{
+val A1 =
+a1ref_make_list
+(list(1,2,3,4,5))
 #impltmp
 {a:vt}
-a1ref_length<a><3>(A1) = 3
+a1ref_length<a><5>(A1) = 5
 }
 //
 (* ****** ****** *)
