@@ -305,7 +305,7 @@ S0Ttype of int(*kind*)
 |
 S0Ttkerr(tok) => print("S0Ttkerr(",tok,")")
 |
-S0Terrck(lvl,st1) => print("S0Terrck(",lvl,";",st1,")")
+S0Terrck(lvl(*err-level*),st1) => print("S0Terrck(",lvl,";",st1,")")
 //
 end (*let*)//end-of-[sort0_fprint(out,s0t)]
 
@@ -531,7 +531,7 @@ print("S0Equal(",tok,";",se1,")") //HX:qual-s0exp
 S0Etkerr(tok) => print("S0Etkerr(",tok,")")//HX:error
 |
 // HX: [S0Eerrck]: syntax error confirmed by checking
-S0Eerrck(lvl,se1) => print("S0Eerrck(", lvl, ";", se1,")")
+S0Eerrck(lvl(*err-level*),se1) => print("S0Eerrck(", lvl, ";", se1,")")
 //
 end (*let*)//end-of-[s0exp_fprint(out,s0e)]
 
