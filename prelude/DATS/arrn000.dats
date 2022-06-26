@@ -213,16 +213,13 @@ if
 then
 let
 val
-test =
-forall$test<a>(get_at(A0, i0))
-in
-if
-test
-then loop(succ(i0)) else false
+b0 = forall$test<a>(A0[i0])
+in//let
+if b0 then loop(succ(i0)) else false
 end // then
 else false // else // end of [if]
 //
-} (*where*)//end-of-[a1ref_forall]
+} (*where*) // end-of-[a1ref_forall]
 //
 (* ****** ****** *)
 //
@@ -246,14 +243,13 @@ if
 (i0 < n0)
 then
 (
-  loop(succ(i0))
-) where
+  loop(succ(i0))) where
 {
   val () =
   foreach$work<a>(get_at(A0, i0))
 }
 //
-}(*where*)//end-of-[a1ref_foreach]
+} (*where*) // end-of(a1ref_foreach)
 //
 (* ****** ****** *)
 //
@@ -275,11 +271,10 @@ if
 then
 let
 val i1 = pred(i0)
-val
-test =
+val b0 =
 rforall$test<a>(get_at(A0, i1))
 in
-if test then loop(i1) else false
+  if b0 then loop(i1) else false
 end // then
 else false // else // end of [if]
 //
@@ -341,14 +336,13 @@ if
 (i0 < n0)
 then
 (
-  loop(succ(i0))
-) where
+  loop(succ(i0))) where
 {
-val x0 =
-a1ref_get0_at<a>(A0, i0)
-val x0 = $UN.castlin10{ a}(x0)
-val () = foreach1$work< a>(x0)
-val x0 = $UN.castlin10{~a}(x0)
+  val x0 =
+  a1ref_get0_at<a>(A0, i0)
+  val x0 = $UN.castlin10{ a}(x0)
+  val () = foreach1$work< a>(x0)
+  val x0 = $UN.castlin10{~a}(x0)
 }
 //
 }(*where*)//end-of-[a1ref_foreach1]
@@ -379,7 +373,7 @@ val x0 = $UN.castlin10{ a}(x0)
 val b0 = rforall1$test< a>(x0)
 val x0 = $UN.castlin10{~a}(x0)
 in//let
-  if b0 then loop(i1) else false
+if (b0) then loop(i1) else false
 end // then
 else false // else // end of [if]
 //
