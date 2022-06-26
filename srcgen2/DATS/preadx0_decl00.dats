@@ -162,6 +162,8 @@ D0Ctkerr _ =>
 D0Cerrck _ =>
 (err := err+1; d0ecl_errck(1, dcl))
 //
+| _(* else *) => dcl // HX: placeholder
+//
 ) where
 {
 //
@@ -203,6 +205,29 @@ d0ecl_sexpdef_errck
 end (*let*) // end of [f0_sexpdef]
 //
 } (*where*) // end of [preadx0_d0ecl(dcl,err)]
+
+(* ****** ****** *)
+
+#implfun
+preadx0_d0eclist
+  (dcls, err) =
+(
+case+ dcls of
+|
+list_nil() =>
+list_nil((*nil*))
+|
+list_cons
+(dcl1, dcs1) => let
+//
+  val e00 = err
+  val dcl1 = preadx0_d0ecl(dcl1, err)
+  val dcs1 = preadx0_d0eclist(dcs1, err)
+//
+in//let
+if err = e00 then dcls else list_cons(dcl1, dcs1)
+endlet // end of [list_cons(dcl1,dcls)]
+) (*case*) // end-of-[preadx0_d0eclist(dcls,err)]
 
 (* ****** ****** *)
 

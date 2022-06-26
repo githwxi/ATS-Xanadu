@@ -65,6 +65,23 @@ ATS_PACKNAME
 #symload node with s0exp_get_node
 (* ****** ****** *)
 //
+#implfun
+preadx0_i0dnt
+  (id0, err) =
+(
+case+
+id0.node() of
+|
+I0DNTsome _ => (id0)
+|
+I0DNTnone _ =>
+let
+val () = (err := err+1) in id0
+end (*let*)//end-of-[I0DNTnone]
+)
+//
+(* ****** ****** *)
+//
 fun
 sort0_errck
 (lvl: sint
@@ -539,7 +556,7 @@ s0exp_errck
 lvl+1,
 s0exp_make_node
 (loc,S0Elam0(tknd,smas,tres,arrw,body,tend)))
-end (*let*) // end of [s0exp_rcd2_errck]
+end (*let*) // end of [s0exp_lam0_errck]
 //
 (* ****** ****** *)
 //
@@ -1267,9 +1284,32 @@ list_cons
 //
 in//let
 if err = e00 then lses else list_cons(lse1, lxs1)
-endlet // end of [list_cons(s0e1,lses)]
+endlet // end of [list_cons(lse1,lses)]
 ) (*case*) // end-of-[preadx0_l0s0elst(lses,err)]
 //
+(* ****** ****** *)
+
+#implfun
+preadx0_s0maglst
+  (smas, err) =
+(
+case+ smas of
+|
+list_nil() =>
+list_nil((*nil*))
+|
+list_cons
+(sma1, sms1) => let
+//
+  val e00 = err
+  val sma1 = preadx0_s0mag(sma1, err)
+  val sms1 = preadx0_s0maglst(sms1, err)
+//
+in//let
+if err = e00 then smas else list_cons(sma1, sms1)
+endlet // end of [list_cons(sma1,sms1)]
+) (*case*) // end-of-[preadx0_l0s0elst(smas,err)]
+
 (* ****** ****** *)
 
 #implfun

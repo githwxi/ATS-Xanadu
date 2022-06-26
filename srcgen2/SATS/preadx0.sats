@@ -61,6 +61,10 @@ D0E = "./dynexp0.sats"
 #typedef s0exp = $S0E.s0exp
 #typedef l0s0e = $S0E.l0s0e
 (* ****** ****** *)
+#typedef s0arg = $S0E.s0arg
+#typedef s0mag = $S0E.s0mag
+#typedef s0qua = $S0E.s0qua
+(* ****** ****** *)
 #typedef
 s0exp_RPAREN = $S0E.s0exp_RPAREN
 #typedef
@@ -73,7 +77,9 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef s0explst = $S0E.s0explst
 #typedef l0s0elst = $S0E.l0s0elst
 (* ****** ****** *)
+#typedef s0arglst = $S0E.s0arglst
 #typedef s0maglst = $S0E.s0maglst
+#typedef s0qualst = $S0E.s0qualst
 (* ****** ****** *)
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
