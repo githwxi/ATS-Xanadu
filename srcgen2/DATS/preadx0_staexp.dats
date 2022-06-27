@@ -1187,6 +1187,49 @@ if
 end (*let*) // end of [preadx0_l0s0e(lse,err)]
 //
 (* ****** ****** *)
+
+#implfun
+preadx0_s0tdf
+  (tdf, err) =
+(
+case+
+tdf.node() of
+|
+S0TDFsort(s0t) =>
+let
+val s0t =
+preadx0_sort0(s0t, err)
+in  
+s0tdf(tdf.lctn(), S0TDFsort(s0t))
+end
+|
+S0TDFtsub
+( tbeg, s0a1
+, tbar, s0ps, tend) =>
+let
+val s0a1 = preadx0_s0arg(s0a1, err)
+val (  ) =
+(
+case+
+tbar.node() of
+|T_BAR() => ()| _ => (err := err+1))
+//
+val s0ps = preadx0_s0explst(s0ps, err)
+//
+val (  ) =
+(
+case+
+tend.node() of
+|T_RBRACE() => ()| _ => (err := err+1))
+in//let
+s0tdf_make_node
+( tdf.lctn()
+, S0TDFtsub(tbeg, s0a1, tbar, s0ps, tend))
+endlet // end of [S0TDFsub]
+//
+) (*case*)//end-of-[preadx0_s0tdf(tdf,err)]
+
+(* ****** ****** *)
 //
 #implfun
 preadx0_sort0opt
