@@ -88,9 +88,9 @@ fun p1_sort0seq_COMMA: p1_fun(sort0lst)
 #extern
 fun p1_s0arg: p1_fun(s0arg)
 #extern
-fun p1_t0arg: p1_fun(t0arg)
-#extern
 fun p1_s0mag: p1_fun(s0mag)
+#extern
+fun p1_t0arg: p1_fun(t0arg)
 #extern
 fun p1_t0mag: p1_fun(t0mag)
 (* ****** ****** *)
@@ -780,6 +780,47 @@ end (*let*) // end-of-[p1_s0arg(buf,err)]
 (* ****** ****** *)
 
 #implfun
+p1_s0mag(buf, err) =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_LPAREN() =>
+let
+val tbeg = tok
+val () = buf.skip1()
+val s0as =
+p1_s0argseq_COMMA(buf, err)
+val tend = p1_RPAREN(buf, err)
+val lres = tbeg.lctn() + tend.lctn()
+in//let
+  err := e00
+; s0mag(lres, S0MAGlist(tbeg, s0as, tend))
+end (*let*) // end of [T_LPAREN]
+//
+| _
+when t0_s0aid(tnd) =>
+let
+  val id0 = p1_s0aid(buf, err)
+in//let
+(err := e00; s0mag(id0.lctn(), S0MAGsing(id0)))
+end (*let*) // end of [t0_s0aid]
+//
+| _(*otherwise*) =>
+(err := e00 + 1; s0mag(tok.lctn(), S0MAGnone(tok)))
+//
+end (*let*) // end of [p1_s0mag(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 p1_t0arg(buf, err) =
 let
 //
@@ -830,47 +871,6 @@ in//let
 end // end of [non-T_CLN]
 //
 end (*let*) // end of [p1_t0arg(buf,err)]
-
-(* ****** ****** *)
-
-#implfun
-p1_s0mag(buf, err) =
-let
-//
-  val e00 = err
-  val tok = buf.getk0()
-  val tnd = tok.tnode()
-//
-in//let
-//
-case+ tnd of
-//
-|
-T_LPAREN() =>
-let
-val tbeg = tok
-val () = buf.skip1()
-val s0as =
-p1_s0argseq_COMMA(buf, err)
-val tend = p1_RPAREN(buf, err)
-val lres = tbeg.lctn() + tend.lctn()
-in//let
-  err := e00
-; s0mag(lres, S0MAGlist(tbeg, s0as, tend))
-end (*let*) // end of [T_LPAREN]
-//
-| _
-when t0_s0aid(tnd) =>
-let
-  val id0 = p1_s0aid(buf, err)
-in//let
-(err := e00; s0mag(id0.lctn(), S0MAGsing(id0)))
-end (*let*) // end of [t0_s0aid]
-//
-| _(*otherwise*) =>
-(err := e00 + 1; s0mag(tok.lctn(), S0MAGnone(tok)))
-//
-end (*let*) // end of [p1_s0mag(buf,err)]
 
 (* ****** ****** *)
 //

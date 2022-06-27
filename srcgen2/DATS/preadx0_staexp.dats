@@ -649,7 +649,7 @@ I0DNTsome _ => ((*void*))
 I0DNTnone _ => (err := err + 1)
 ) : void // end of [val ()]
 } (*whr*) // end of [S0ARGsome]
-) (*case*) // end of [preadx0_s0arg(sma,err)]
+) (*case*) // end of [preadx0_s0arg(s0a,err)]
 //
 #implfun
 preadx0_s0arglst
@@ -705,6 +705,63 @@ tkrp.node() of
 endlet // end of [S0MAGlst]
 //
 ) (*case*) // end of [preadx0_s0mag(sma,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_t0arg
+  (t0a, err) =
+(
+case+
+t0a.node() of
+|
+T0ARGnone(tok) =>
+(err := err + 1; t0a)
+|
+T0ARGsome(s0t, opt) =>
+(
+case+ opt of
+|
+optn_nil() =>
+let
+val s0t =
+preadx0_sort0(s0t, err) in t0a
+end // optn_nil()
+|
+optn_cons(tok) =>
+let
+val s0t =
+preadx0_sort0(s0t, err) in t0a
+end where // optn_cons(tok)
+{
+(*
+val () =
+(
+case+
+tok.node() of
+| T_IDALP _ => ()
+| _(*non-T_IDALP*) => (err := err + 1))
+*)
+}
+) (*case*) // end of [T0ARGsome]
+) (*case*) // end of [preadx0_t0arg(t0a,err)]
+//
+#implfun
+preadx0_t0arglst
+  (t0as, err) =
+(
+case+ t0as of
+|
+list_nil() =>
+list_nil((*nil*))
+|
+list_cons
+(t0a1, tas1) => t0as where
+{
+  val t0a1 = preadx0_t0arg(t0a1, err)
+  val tas1 = preadx0_t0arglst(tas1, err)
+} // end of [list_cons(t0a1,t0as)]
+) (*case*) // end-of-[preadx0_t0arglst(t0as,err)]
 //
 (* ****** ****** *)
 //
