@@ -62,6 +62,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload node with s0arg_get_node
 #symload node with s0mag_get_node
+#symload node with t0arg_get_node
+#symload node with t0mag_get_node
 #symload node with s0qua_get_node
 (* ****** ****** *)
 #symload lctn with s0tdf_get_lctn
@@ -82,6 +84,29 @@ let
 val () = (err := err+1) in id0
 end (*let*)//end-of-[I0DNTnone]
 )
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0qid
+  (sqid, err) =
+(
+case+ sqid of
+|
+S0QIDnone(id0) =>
+let
+val
+id0 =
+preadx0_i0dnt(id0, err) in sqid
+end
+|
+S0QIDsome(tok, id0) =>
+let
+val
+id0 =
+preadx0_i0dnt(id0, err) in sqid
+end
+) (*case*)//end-of-[preadx0_s0qid]
 //
 (* ****** ****** *)
 //
@@ -706,6 +731,28 @@ endlet // end of [S0MAGlst]
 //
 ) (*case*) // end of [preadx0_s0mag(sma,err)]
 //
+#implfun
+preadx0_s0maglst
+  (smas, err) =
+(
+case+ smas of
+|
+list_nil() =>
+list_nil((*nil*))
+|
+list_cons
+(sma1, sms1) => let
+//
+val e00 = err
+val sma1 = preadx0_s0mag(sma1, err)
+val sms1 = preadx0_s0maglst(sms1, err)
+//
+in//let
+if
+(err = e00) then smas else list_cons(sma1, sms1)
+endlet // end of [list_cons(sma1,sms1)]
+) (*case*) // end-of-[preadx0_s0maglst(smas,err)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -762,6 +809,55 @@ list_cons
   val tas1 = preadx0_t0arglst(tas1, err)
 } // end of [list_cons(t0a1,t0as)]
 ) (*case*) // end-of-[preadx0_t0arglst(t0as,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_t0mag
+( tma, err ) =
+(
+//
+case+
+tma.node() of
+|
+T0MAGnone(tok) =>
+(err := err + 1; tma)
+|
+T0MAGlist
+(tklp, t0as, tkrp) =>
+let
+val t0as =
+preadx0_t0arglst(t0as, err)
+in//let
+case+
+tkrp.node() of
+| T_RPAREN() => tma
+| _(*non-T_RPAREN*) => (err := err + 1; tma)
+endlet // end of [T0MAGlst]
+//
+) (*case*) // end of [preadx0_t0mag(tma,err)]
+//
+#implfun
+preadx0_t0maglst
+  (tmas, err) =
+(
+case+ tmas of
+|
+list_nil() =>
+list_nil((*nil*))
+|
+list_cons
+(tma1, tms1) => let
+//
+val e00 = err
+val tma1 = preadx0_t0mag(tma1, err)
+val tms1 = preadx0_t0maglst(tms1, err)
+//
+in//let
+if
+(err = e00) then tmas else list_cons(tma1, tms1)
+endlet // end of [list_cons(tma1,tms1)]
+) (*case*) // end-of-[preadx0_t0maglst(tmas,err)]
 //
 (* ****** ****** *)
 //
@@ -1390,29 +1486,6 @@ if err = e00 then lses else list_cons(lse1, lxs1)
 endlet // end of [list_cons(lse1,lses)]
 ) (*case*) // end-of-[preadx0_l0s0elst(lses,err)]
 //
-(* ****** ****** *)
-
-#implfun
-preadx0_s0maglst
-  (smas, err) =
-(
-case+ smas of
-|
-list_nil() =>
-list_nil((*nil*))
-|
-list_cons
-(sma1, sms1) => let
-//
-  val e00 = err
-  val sma1 = preadx0_s0mag(sma1, err)
-  val sms1 = preadx0_s0maglst(sms1, err)
-//
-in//let
-if err = e00 then smas else list_cons(sma1, sms1)
-endlet // end of [list_cons(sma1,sms1)]
-) (*case*) // end-of-[preadx0_l0s0elst(smas,err)]
-
 (* ****** ****** *)
 
 #implfun

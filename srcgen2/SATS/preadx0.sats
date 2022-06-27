@@ -51,6 +51,7 @@ D0E = "./dynexp0.sats"
 #typedef token = $LEX.token
 (* ****** ****** *)
 #typedef i0dnt = $S0E.i0dnt
+#typedef s0qid = $S0E.s0qid
 (* ****** ****** *)
 #typedef t0int = $S0E.t0int
 #typedef t0chr = $S0E.t0chr
@@ -117,6 +118,7 @@ fpreadx0
 *)
 (* ****** ****** *)
 fun preadx0_i0dnt: fpreadx0(i0dnt)
+fun preadx0_s0qid: fpreadx0(s0qid)
 (* ****** ****** *)
 fun preadx0_sort0: fpreadx0(sort0)
 fun preadx0_s0exp: fpreadx0(s0exp)
@@ -131,6 +133,7 @@ fun preadx0_s0qua: fpreadx0(s0qua)
 fun preadx0_s0tdf: fpreadx0(s0tdf)
 (* ****** ****** *)
 #symload preadx0 with preadx0_i0dnt
+#symload preadx0 with preadx0_s0qid
 (* ****** ****** *)
 #symload preadx0 with preadx0_sort0
 #symload preadx0 with preadx0_s0exp
