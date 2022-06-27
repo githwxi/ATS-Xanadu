@@ -81,11 +81,14 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
 #typedef s0arglst = $S0E.s0arglst
 #typedef s0maglst = $S0E.s0maglst
+#typedef t0maglst = $S0E.t0maglst
 #typedef s0qualst = $S0E.s0qualst
 (* ****** ****** *)
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
 #typedef d0ecl = $D0E.d0ecl
+(* ****** ****** *)
+#typedef a0tdf = $D0E.a0tdf
 (* ****** ****** *)
 #typedef
 d0exp_RPAREN = $D0E.d0exp_RPAREN
@@ -118,6 +121,7 @@ fun preadx0_l0s0e: fpreadx0(l0s0e)
 (* ****** ****** *)
 fun preadx0_s0arg: fpreadx0(s0arg)
 fun preadx0_s0mag: fpreadx0(s0mag)
+fun preadx0_t0mag: fpreadx0(t0mag)
 fun preadx0_s0qua: fpreadx0(s0qua)
 (* ****** ****** *)
 fun preadx0_s0tdf: fpreadx0(s0tdf)
@@ -130,6 +134,7 @@ fun preadx0_s0tdf: fpreadx0(s0tdf)
 (* ****** ****** *)
 #symload preadx0 with preadx0_s0arg
 #symload preadx0 with preadx0_s0mag
+#symload preadx0 with preadx0_t0mag
 #symload preadx0 with preadx0_s0qua
 (* ****** ****** *)
 fun
@@ -150,6 +155,8 @@ preadx0_s0arglst: fpreadx0(s0arglst)
 fun
 preadx0_s0maglst: fpreadx0(s0maglst)
 fun
+preadx0_t0maglst: fpreadx0(t0maglst)
+fun
 preadx0_s0qualst: fpreadx0(s0qualst)
 (* ****** ****** *)
 #symload preadx0 with preadx0_sort0opt
@@ -160,6 +167,7 @@ preadx0_s0qualst: fpreadx0(s0qualst)
 (* ****** ****** *)
 #symload preadx0 with preadx0_s0arglst
 #symload preadx0 with preadx0_s0maglst
+#symload preadx0 with preadx0_t0maglst
 #symload preadx0 with preadx0_s0qualst
 (* ****** ****** *)
 fun
@@ -174,6 +182,8 @@ preadx0_l0s0e_RBRACE: fpreadx0(l0s0e_RBRACE)
 fun preadx0_d0pat: fpreadx0(d0pat)
 fun preadx0_d0exp: fpreadx0(d0exp)
 fun preadx0_d0ecl: fpreadx0(d0ecl)
+(* ****** ****** *)
+fun preadx0_a0tdf: fpreadx0(a0tdf)
 (* ****** ****** *)
 fun
 preadx0_d0patlst: fpreadx0(d0patlst)

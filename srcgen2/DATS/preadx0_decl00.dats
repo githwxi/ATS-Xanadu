@@ -184,6 +184,29 @@ end (*let*) // end of [d0ecl_sexpdef_errck]
 
 (* ****** ****** *)
 
+fun
+d0ecl_abstype_errck
+( loc
+: loc_t
+, tknd
+: token
+, seid
+: s0eid
+, tmas
+: t0maglst
+, tres
+: sort0opt
+, tdef: a0tdf): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc, D0Cabstype(tknd, seid, tmas, tres, tdef)))
+end (*let*) // end of [d0ecl_abstype_errck]
+
+(* ****** ****** *)
+
 #implfun
 preadx0_d0ecl
   (dcl, err) =
@@ -201,6 +224,10 @@ f0_sortdef(dcl, err)
 |
 D0Csexpdef _ =>
 f0_sexpdef(dcl, err)
+//
+|
+D0Cabstype _ =>
+f0_abstype(dcl, err)
 //
 |
 D0Ctkskp _ =>
@@ -318,8 +345,41 @@ if
 then dcl else
 d0ecl_sexpdef_errck
 (dcl.lctn(), tknd, seid, smas, tres, teq1, def2)
-end (*let*) // end of [f0_sexpdef]
+end (*let*) // end of [f0_sexpdef(dcl,err)]
 //
+fun
+f0_abstype
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cabstype
+( tknd
+, seid
+, tmas, tres, tdef) = dcl.node()
+//
+val seid =
+preadx0_i0dnt(seid, err)
+val tmas =
+preadx0_t0maglst(tmas, err)
+val tres =
+preadx0_sort0opt(tres, err)
+//
+val tdef = preadx0_a0tdf(tdef, err)
+//
+in//let
+if
+(err = e00)
+then dcl else
+d0ecl_abstype_errck
+(dcl.lctn(), tknd, seid, tmas, tres, tdef)
+end (*let*) // end of [f0_abstype(dcl,err)]
+
+(* ****** ****** *)
+
 } (*where*) // end of [preadx0_d0ecl(dcl,err)]
 
 (* ****** ****** *)
