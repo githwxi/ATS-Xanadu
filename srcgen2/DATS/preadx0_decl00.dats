@@ -117,6 +117,30 @@ list_cons
 (* ****** ****** *)
 
 fun
+d0ecl_local_errck
+( loc
+: loc_t
+, tknd
+: token
+, dcs1
+: d0eclist
+, topt
+: tokenopt
+, dcs2
+: d0eclist
+, tend: token): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl_make_node
+  (loc, D0Clocal(tknd, dcs1, topt, dcs2, tend)))
+end (*let*) // end of [d0ecl_local_errck]
+
+(* ****** ****** *)
+
+fun
 d0ecl_sortdef_errck
 ( loc
 : loc_t
@@ -168,6 +192,10 @@ case+
 dcl.node() of
 //
 |
+D0Clocal _ =>
+f0_local(dcl, err)
+//
+|
 D0Csortdef _ =>
 f0_sortdef(dcl, err)
 |
@@ -189,6 +217,39 @@ D0Cerrck _ =>
 //
 ) where
 {
+//
+fun
+f0_local
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Clocal
+( tknd
+, dcs1
+, topt, dcs2, tend) = dcl.node()
+//
+val dcs1 =
+preadx0_d0eclist(dcs1, err)
+val dcs2 =
+preadx0_d0eclist(dcs2, err)
+val (  ) =
+(
+case+ tend.node() of
+| T_END() => ()
+| T_ENDLOC() => () | _ => (err := err+1))
+//
+in
+if
+(err = e00)
+then dcl else
+d0ecl_local_errck
+(dcl.lctn(), tknd, dcs1, topt, dcs2, tend)
+end (*let*) // end of [ f0_local(dcl,err) ]
+
 //
 fun
 f0_sortdef
