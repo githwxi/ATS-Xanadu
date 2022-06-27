@@ -57,12 +57,15 @@ ATS_PACKNAME
 #symload lctn with sort0_get_lctn
 #symload node with sort0_get_node
 (* ****** ****** *)
+#symload lctn with s0exp_get_lctn
+#symload node with s0exp_get_node
+(* ****** ****** *)
 #symload node with s0arg_get_node
 #symload node with s0mag_get_node
 #symload node with s0qua_get_node
 (* ****** ****** *)
-#symload lctn with s0exp_get_lctn
-#symload node with s0exp_get_node
+#symload lctn with s0tdf_get_lctn
+#symload node with s0tdf_get_node
 (* ****** ****** *)
 //
 #implfun
