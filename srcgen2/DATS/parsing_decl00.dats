@@ -130,8 +130,34 @@ fp_d0ecl
 (f00, buf, err) = let
 //
 val e00 = err
+//
 val tok = buf.getk0()
 val tnd = tok.tnode()
+//
+fun
+ENDq(tnd: tnode): bool =
+(
+case+ tnd of
+|
+T_END() => true
+(*
+|
+T_ENDST() => true
+*)
+|
+T_ENDLAM() => true
+|
+T_ENDFIX() => true
+|
+T_ENDLET() => true
+(*
+|
+T_ENDTRY() => true
+*)
+|
+T_ENDWHR() => true
+|
+T_ENDLOC() => true | _ => false)
 //
 (*
 val ( ) =
@@ -263,18 +289,32 @@ T_ABSIMPL() => let
   val teq1 = p1_EQ0(buf, err)
   val def2 = p1_s0exp(buf, err)
   val lres = tknd.lctn() + def2.lctn()
-in
+in//let
 err := e00;
 d0ecl_make_node
 ( lres
 , D0Cabsimpl(tknd, sqid, smas, tres, teq1, def2))
 end (*let*) // end of [ T_ABSIMPL() ]
 //
-|
-_(*case-of-error*) =>
+| T_IN0() => // HX: let-IN-end / local-IN-end
+(err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
+| _
+when
+ENDq(tnd) => // HX: end / endlam/fix/let/whr/loc
 (err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
 //
-end (*let*) // end of [fp_d0ecl(f00,buf,err)]
+| _(* else *) =>
+(
+case+ tnd of
+| T_EOF() =>
+(err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
+| _(*non-T_EOF*) =>
+let
+val () =
+buf.skip1() in d0ecl(tok.lctn(), D0Ctkskp(tok)) end
+)
+//
+end (*let*) // end-of-[ fp_d0ecl( f00, buf, err ) ]
 
 (* ****** ****** *)
 

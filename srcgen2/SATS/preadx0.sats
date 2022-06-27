@@ -65,6 +65,8 @@ D0E = "./dynexp0.sats"
 #typedef s0mag = $S0E.s0mag
 #typedef s0qua = $S0E.s0qua
 (* ****** ****** *)
+#typedef s0tdf = $S0E.s0tdf
+(* ****** ****** *)
 #typedef
 s0exp_RPAREN = $S0E.s0exp_RPAREN
 #typedef
@@ -117,6 +119,8 @@ fun preadx0_l0s0e: fpreadx0(l0s0e)
 fun preadx0_s0arg: fpreadx0(s0arg)
 fun preadx0_s0mag: fpreadx0(s0mag)
 fun preadx0_s0qua: fpreadx0(s0qua)
+(* ****** ****** *)
+fun preadx0_s0tdf: fpreadx0(s0tdf)
 (* ****** ****** *)
 #symload preadx0 with preadx0_i0dnt
 (* ****** ****** *)

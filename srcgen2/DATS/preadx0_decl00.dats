@@ -117,6 +117,26 @@ list_cons
 (* ****** ****** *)
 
 fun
+d0ecl_sortdef_errck
+( loc
+: loc_t
+, tknd
+: token
+, stid
+: s0tid
+, teq1: token
+, def2: s0tdf): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc, D0Csortdef(tknd, stid, teq1, def2)))
+end (*let*) // end of [d0ecl_sortdef_errck]
+
+(* ****** ****** *)
+
+fun
 d0ecl_sexpdef_errck
 ( loc
 : loc_t
@@ -148,6 +168,9 @@ case+
 dcl.node() of
 //
 |
+D0Csortdef _ =>
+f0_sortdef(dcl, err)
+|
 D0Csexpdef _ =>
 f0_sexpdef(dcl, err)
 //
@@ -166,6 +189,38 @@ D0Cerrck _ =>
 //
 ) where
 {
+//
+fun
+f0_sortdef
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Csortdef
+( tknd
+, stid, teq1, def2) = dcl.node()
+//
+val stid =
+preadx0_i0dnt(stid, err)
+val (  ) =
+(
+case+
+teq1.node() of
+| T_EQ0() => ((*void*))
+| _(*non-T_EQ0*) => (err := err+1)
+)
+val def2 = preadx0_s0tdf(def2, err)
+//
+in//let
+if
+(err = e00)
+then dcl else
+d0ecl_sortdef_errck
+(dcl.lctn(), tknd, stid, teq1, def2)
+end (*let*) // end of [f0_sortdef(dcl, err)]
 //
 fun
 f0_sexpdef
