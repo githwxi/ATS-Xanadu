@@ -155,7 +155,8 @@ val lvl = 0
 in//let
 d0ecl_errck
 ( lvl+1
-, d0ecl(loc, D0Csortdef(tknd, stid, teq1, def2)))
+, d0ecl_make_node
+  (loc, D0Csortdef(tknd,stid,teq1,def2)))
 end (*let*) // end of [d0ecl_sortdef_errck]
 
 (* ****** ****** *)
@@ -179,7 +180,10 @@ val lvl = 0
 in//let
 d0ecl_errck
 ( lvl+1
-, d0ecl(loc, D0Csexpdef(tknd, seid, smas, tres, teq1, s0e2)))
+, d0ecl_make_node
+  ( loc
+  , D0Csexpdef
+    (tknd, seid, smas, tres, teq1, s0e2)))
 end (*let*) // end of [d0ecl_sexpdef_errck]
 
 (* ****** ****** *)
@@ -202,8 +206,50 @@ val lvl = 0
 in//let
 d0ecl_errck
 ( lvl+1
-, d0ecl(loc, D0Cabstype(tknd, seid, tmas, tres, tdef)))
+, d0ecl_make_node
+  ( loc
+  , D0Cabstype(tknd,seid,tmas,tres,tdef)))
 end (*let*) // end of [d0ecl_abstype_errck]
+
+(* ****** ****** *)
+
+fun
+d0ecl_absopen_errck
+( loc: loc_t
+, tknd: token
+, sqid: s0qid): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(lvl+1, d0ecl(loc, D0Cabsopen(tknd, sqid)))
+end (*let*) // end of [d0ecl_absopen_errck]
+
+(* ****** ****** *)
+
+fun
+d0ecl_absimpl_errck
+( loc
+: loc_t
+, tknd
+: token
+, sqid
+: s0qid
+, smas
+: s0maglst
+, tres
+: sort0opt
+, teq1: token
+, s0e2: s0exp): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl_make_node
+  ( loc
+  , D0Cabsimpl(tknd,sqid,smas,tres,teq1,s0e2)))
+end (*let*) // end of [d0ecl_absimpl_errck]
 
 (* ****** ****** *)
 
@@ -228,6 +274,12 @@ f0_sexpdef(dcl, err)
 |
 D0Cabstype _ =>
 f0_abstype(dcl, err)
+|
+D0Cabsopen _ =>
+f0_absopen(dcl, err)
+|
+D0Cabsimpl _ =>
+f0_absimpl(dcl, err)
 //
 |
 D0Ctkskp _ =>
@@ -244,6 +296,8 @@ D0Cerrck _ =>
 //
 ) where
 {
+//
+(* ****** ****** *)
 //
 fun
 f0_local
@@ -276,7 +330,8 @@ then dcl else
 d0ecl_local_errck
 (dcl.lctn(), tknd, dcs1, topt, dcs2, tend)
 end (*let*) // end of [ f0_local(dcl,err) ]
-
+//
+(* ****** ****** *)
 //
 fun
 f0_sortdef
@@ -309,6 +364,8 @@ then dcl else
 d0ecl_sortdef_errck
 (dcl.lctn(), tknd, stid, teq1, def2)
 end (*let*) // end of [f0_sortdef(dcl, err)]
+//
+(* ****** ****** *)
 //
 fun
 f0_sexpdef
@@ -347,6 +404,8 @@ d0ecl_sexpdef_errck
 (dcl.lctn(), tknd, seid, smas, tres, teq1, def2)
 end (*let*) // end of [f0_sexpdef(dcl,err)]
 //
+(* ****** ****** *)
+//
 fun
 f0_abstype
 ( dcl: d0ecl
@@ -377,9 +436,73 @@ then dcl else
 d0ecl_abstype_errck
 (dcl.lctn(), tknd, seid, tmas, tres, tdef)
 end (*let*) // end of [f0_abstype(dcl,err)]
-
+//
 (* ****** ****** *)
-
+//
+fun
+f0_absopen
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cabsopen
+(tknd, sqid) = dcl.node((*void*))
+//
+val sqid = preadx0_s0qid(sqid, err)
+//
+in
+if
+(err = e00)
+then dcl else
+d0ecl_absopen_errck(dcl.lctn(), tknd, sqid)
+end (*let*) // end of [f0_absopen(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_absimpl
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cabsimpl
+( tknd
+, sqid
+, smas
+, tres, teq1, s0e2) = dcl.node()
+//
+val sqid =
+preadx0_s0qid(sqid, err)
+val smas =
+preadx0_s0maglst(smas, err)
+val tres =
+preadx0_sort0opt(tres, err)
+//
+val (  ) =
+(
+case+
+teq1.node() of
+| T_EQ0() => ()
+| _(*else*)=> (err := err + 1))
+//
+val s0e2 = preadx0_s0exp(s0e2, err)
+//
+in
+if
+(err = e00)
+then dcl else
+d0ecl_absimpl_errck
+(dcl.lctn(), tknd, sqid, smas, tres, teq1, s0e2)
+end (*let*) // end of [f0_absimpl(dcl,err)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [preadx0_d0ecl(dcl,err)]
 
 (* ****** ****** *)
@@ -396,14 +519,54 @@ list_nil((*nil*))
 list_cons
 (dcl1, dcs1) => let
 //
-  val e00 = err
-  val dcl1 = preadx0_d0ecl(dcl1, err)
-  val dcs1 = preadx0_d0eclist(dcs1, err)
+val e00 = err
+//
+val
+dcl1 = preadx0_d0ecl(dcl1, err)
+val
+dcs1 = preadx0_d0eclist(dcs1, err)
 //
 in//let
-if err = e00 then dcls else list_cons(dcl1, dcs1)
+if
+(err = e00)
+then dcls else list_cons(dcl1, dcs1)
 endlet // end of [list_cons(dcl1,dcls)]
 ) (*case*) // end-of-[preadx0_d0eclist(dcls,err)]
+
+(* ****** ****** *)
+
+#implfun
+preadx0_a0tdf
+  (tdf, err) =
+let
+val e00 = err
+in//let
+//
+case+ tdf of
+|
+A0TDFsome() => tdf
+|
+A0TDFlteq(tok, s0e) =>
+let
+val s0e =
+preadx0_s0exp(s0e, err)
+in
+if
+(err = e00)
+then tdf else A0TDFlteq(tok, s0e)
+end (*let*) // end of [A0TDFlteq]
+|
+A0TDFeqeq(tok, s0e) =>
+let
+val s0e =
+preadx0_s0exp(s0e, err)
+in
+if
+(err = e00)
+then tdf else A0TDFeqeq(tok, s0e)
+end (*let*) // end of [A0TDFeqeq]
+//
+end (*let*)//end-of-[preadx0_a0tdf(tdf,err)]
 
 (* ****** ****** *)
 
