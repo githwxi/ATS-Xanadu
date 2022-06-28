@@ -653,6 +653,97 @@ ps_COMMA_p1fun{sort0}(buf, err, p1_sort0)
 (* ****** ****** *)
 
 #implfun
+p1_s0tcn(buf, err) =
+let
+//
+val e00 = err
+//
+val sid0 =
+  p1_s0eid(buf, err)
+//
+val tok1 = buf.getk0()
+val tnd1 = tok1.tnode()
+//
+in//let
+//
+case+ tnd1 of
+|
+T_OF0() => let
+  val ( ) = buf.skip1()
+  val s0t0 = p1_sort0(buf, err)
+  val lres = sid0.lctn()+s0t0.lctn()
+in//let
+err := e00;
+s0tcn_make_node
+(lres, S0TCNnode(sid0, optn_cons(s0t0)))
+end (*let*) // end of [T_OF0]
+|
+_
+(* non-T_OF0 *) =>
+let
+val lres = sid0.lctn()
+in
+(*
+err := e00; // HX: [p1_s0eid] can err!
+*)
+s0tcn_make_node
+(lres, S0TCNnode(sid0, optn_nil(*void*)))
+end (*let*) // end of [non-T-OF0]
+//
+end (*let*) // end of [p1_s0tcn(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_d0tst
+  (buf, err) = let
+//
+val e00 = err
+//
+val tid0 =
+  p1_s0tid(buf, err)
+//
+val loc0 = tid0.lctn()
+//
+val teq1 = p1_EQ0(buf, err)
+val topt = pq_BAR(buf, err)
+//
+val stcs =
+  p1_s0tcnseq_BAR(buf, err)
+//
+val lres =
+(
+case+ stcs of
+|
+list_nil() =>
+(
+case+ topt of
+|
+optn_nil
+((*void*)) => loc0 + teq1.lctn()
+|
+optn_cons
+(  tbar  ) => loc0 + tbar.lctn()
+) (* end of [list_nil] *)
+|
+list_cons _ =>
+let
+val stc1 =
+list_last(stcs) in loc0+stc1.lctn()
+end(*let*)// end of [list_cons]
+) : loc_t // end of [val(lres)]
+//
+in
+//
+err := e00;
+d0tst_make_node
+(lres, D0TSTnode(tid0, teq1, topt, stcs))
+//
+end (* let *) // end of [p_d0tst(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 pq_sort0_anno
   (buf, err) = let
 //
@@ -1060,6 +1151,24 @@ list_vt2t
 (ps_p1fun{t0mag}(buf, err, p1_t0mag))
 //
 (* ****** ****** *)
+//
+#implfun
+p1_s0tcnseq_BAR
+(  buf, err  ) =
+list_vt2t
+(
+ps_BAR_p1fun{s0tcn}(buf, err, p1_s0tcn)
+) (*end of [p1_s0tcnseq_BAR(buf,err)]*)
+//
+#implfun
+p1_d0tstseq_AND
+(  buf, err  ) =
+list_vt2t
+(
+ps_AND_p1fun{d0tst}(buf, err, p1_d0tst)
+) (*end of [p1_d0tstseq_AND(buf,err)]*)
+//
+(* ****** ****** *)
 
 #implfun
 p1_s0argseq_COMMA
@@ -1067,7 +1176,7 @@ p1_s0argseq_COMMA
 list_vt2t
 (
 ps_COMMA_p1fun{s0arg}(buf, err, p1_s0arg)
-) (* end of [p1_s0argseq_COMMA] *)
+) (*end of [p1_s0argseq_COMMA](buf,err)*)
 
 (* ****** ****** *)
 
@@ -1077,7 +1186,7 @@ p1_t0argseq_COMMA
 list_vt2t
 (
 ps_COMMA_p1fun{t0arg}(buf, err, p1_t0arg)
-) (* end of [p1_t0argseq_COMMA] *)
+) (*end of [p1_t0argseq_COMMA(buf,err)]*)
 
 (* ****** ****** *)
 
@@ -1087,7 +1196,7 @@ p1_s0quaseq_BSCLN
 list_vt2t
 (
 ps_BSCLN_p1fun{s0qua}(buf, err, p1_s0qua)
-) (* end of [p1_s0argseq_COMMA] *)
+) (*end of [p1_s0argseq_BSCLN(buf,err)]*)
 
 (* ****** ****** *)
 

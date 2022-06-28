@@ -72,6 +72,10 @@ lctn with sort0_get_lctn//staexp0
 #symload
 lctn with s0exp_get_lctn//staexp0
 #symload
+lctn with s0tcn_get_lctn//staexp0
+#symload
+lctn with d0tst_get_lctn//staexp0
+#symload
 lctn with s0tdf_get_lctn//staexp0
 (* ****** ****** *)
 #symload
@@ -85,6 +89,18 @@ node with l0abl_get_node//staexp0
 tnode with token_get_node//lexing0
 (* ****** ****** *)
 #symload + with add_loctn_loctn//locinfo
+(* ****** ****** *)
+//
+#extern
+fun
+p1_i0dntseq: p1_fun(i0dntlst)
+//
+#implfun
+p1_i0dntseq
+( buf, err ) =
+list_vt2t
+(ps_p1fun{i0dnt}(buf, err, p1_i0dnt))
+//
 (* ****** ****** *)
 
 #implfun
@@ -330,6 +346,60 @@ d0ecl_make_node
 ( lres
 , D0Cabsimpl(tknd, sqid, smas, tres, teq1, def2))
 end (*let*) // end of [ T_ABSIMPL() ]
+//
+|
+T_DATASORT() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val dtcs =
+  p1_d0tstseq_AND(buf, err)
+//
+  val lres =
+  (
+  case+ dtcs of
+  | list_nil
+    ((*nil*)) => tknd.lctn()
+  | list_cons
+    ( _ , _ ) =>
+    let
+    val dtc1 =
+    list_last(dtcs) in tknd.lctn()+dtc1.lctn()
+    end
+  ) : loc_t // end of [val(lres)]
+in
+err := e00;
+d0ecl_make_node(lres, D0Cdatasort(tknd, dtcs))
+end // end of [T_DATASORT()]
+//
+//
+| T_SRP_NONFIX() =>
+let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val dnts =
+  p1_i0dntseq(buf, err)
+//
+  val lres =
+  (
+    case+ dnts of
+    | list_nil _ => tknd.lctn()
+    | list_cons _ =>
+      (
+      tknd.lctn()+dnt1.lctn()
+      ) where
+      {
+        val dnt1 = list_last(dnts)
+      } (*where*) // end of [list_cons]
+  ) : loc_t // end of [ val(lres) ]
+//
+in//let
+err := e00;
+d0ecl_make_node(lres, D0Cnonfix(tknd, dnts))
+end (*let*) // end of [ T_SRP_NONFIX ]
 //
 | T_IN0() => // HX: let-IN-end / local-IN-end
 (err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))

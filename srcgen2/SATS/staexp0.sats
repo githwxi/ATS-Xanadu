@@ -542,7 +542,8 @@ d0tst_node =
 |
 D0TSTnode of
 ( s0tid
-, token(*EQ*), s0tcnlst)
+, token(*EQ0*)
+, tokenopt(*BAR*),s0tcnlst)
 //
 (* ****** ****** *)
 fun

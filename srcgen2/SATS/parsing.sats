@@ -80,6 +80,9 @@ D0E = "./dynexp0.sats"
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
+//
+#typedef s0tcn = $S0E.s0tcn
+#typedef d0tst = $S0E.d0tst
 #typedef s0tdf = $S0E.s0tdf
 //
 #typedef s0arg = $S0E.s0arg
@@ -265,6 +268,11 @@ fun p1_sort0: p1_fun(sort0)
 //
 (* ****** ****** *)
 //
+fun p1_s0tcn: p1_fun(s0tcn)
+fun p1_d0tst: p1_fun(d0tst)
+//
+(* ****** ****** *)
+//
 fun p1_s0exp: p1_fun(s0exp)
 //
 (* ****** ****** *)
@@ -283,6 +291,9 @@ fun
 pq_sort0_anno: pq_fun(sort0)
 fun
 pq_ids0t_anno: pq_fun(sort0)
+(* ****** ****** *)
+#typedef s0tcnlst=list(s0tcn)
+#typedef d0tstlst=list(d0tst)
 (* ****** ****** *)
 //
 #typedef s0arglst=list(s0arg)
@@ -306,6 +317,13 @@ fun
 p1_s0exp_app_NEQ0: p1_fun(s0exp)
 fun
 p1_s0exp_app_NGT0: p1_fun(s0exp)
+(* ****** ****** *)
+//
+fun
+p1_s0tcnseq_BAR: p1_fun(s0tcnlst)
+fun
+p1_d0tstseq_AND: p1_fun(d0tstlst)
+//
 (* ****** ****** *)
 fun
 p1_s0argseq_COMMA: p1_fun(s0arglst)

@@ -202,6 +202,10 @@ print("D0Cabsimpl(",tknd,";");
 print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 |
+D0Cdatasort(tknd,dtcs) =>
+print("D0Cdatasort(",tknd,";",dtcs,")")
+//
+|
 D0Cerrck(lvl(*err-level*),dcl) => print("D0Cerrck(",lvl,";",dcl,")")
 //
 end (*let*) // end of [d0ecl_fprint(out,dcl)]
