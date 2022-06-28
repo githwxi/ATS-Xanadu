@@ -164,6 +164,13 @@ D0Cabssort(tknd,tid0) =>
 print
 ("D0Cabssort(",tknd,";",tid0,")")
 |
+D0Cstacst0
+(tknd
+,seid,tmas,tcln,s0t0) =>
+(
+print("D0Cstacst0(",tknd,";");
+print(seid,";",tmas,";");print(tcln,";",s0t0,")"))
+|
 D0Csortdef
 (tknd,tid0,teq1,def2) =>
 (

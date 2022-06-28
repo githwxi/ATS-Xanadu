@@ -307,6 +307,11 @@ D0Clocal of
 D0Cabssort of (token, s0tid)
 //
 |
+D0Cstacst0 of
+( token
+, s0eid, t0marglst, token, sort0)
+//
+|
 D0Csortdef of
 ( token(*tknd*)
 , s0tid, token(*eq*), s0tdf(*def*))
