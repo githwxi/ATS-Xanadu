@@ -95,12 +95,104 @@ tnode with token_get_node//lexing0
 fun
 p1_i0dntseq: p1_fun(i0dntlst)
 //
+#extern
+fun p1_precopt: p1_fun(precopt)
+#extern
+fun p1_precmod: p1_fun(precmod)
+#extern
+fun p1_precint: p1_fun(precint)
+//
+(* ****** ****** *)
+//
 #implfun
 p1_i0dntseq
 ( buf, err ) =
 list_vt2t
 (ps_p1fun{i0dnt}(buf, err, p1_i0dnt))
 //
+(* ****** ****** *)
+//
+#implfun
+p1_precopt
+  (buf, err) = let
+//
+val tok0 = buf.getk0()
+val tnd0 = tok0.tnode()
+//
+in
+//
+case+ tnd0 of
+//
+|
+T_INT1 _ =>
+PRECint1(tok0) where
+{
+  val () = buf.skip1()
+}
+|
+_ (* non-T_INT1 *) =>
+PRECopr2(dnt1, pmod) where
+{
+  val dnt1 = p1_i0dnt(buf, err)
+  val pmod = p1_precmod(buf, err)
+}
+//
+endlet // end of [p1_precopt(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_precint
+  (buf, err) = let
+//
+val tok0 = buf.getk0()
+val tnd0 = tok0.tnode()
+//
+in
+//
+case+ tnd0 of
+|
+T_INT1 _ =>
+PINTint1(tok0) where
+{
+  val () = buf.skip1()
+}
+|
+_ (* non-T_INT1 *) =>
+let
+val () = buf.skip1()
+val tint = buf.getk1()
+in PINTopr2(tok0, tint) end
+//
+endlet // end of [p1_precint(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_precmod
+  (buf, err) = let
+//
+val tok0 = buf.getk0()
+val tnd0 = tok0.tnode()
+//
+in//let
+//
+case+ tnd0 of
+|
+T_LPAREN() =>
+PMODsome
+(tbeg, pint, tend) where
+{
+  val tbeg = tok0
+  val (  ) = buf.skip1()
+  val pint =
+    p1_precint(buf, err)
+  val tend = p1_RPAREN(buf, err)
+}
+| _(*non-T_LPAREN*) => PMODnone()
+//
+endlet // end of [p1_precmod(buf,err)]
+
 (* ****** ****** *)
 
 #implfun
