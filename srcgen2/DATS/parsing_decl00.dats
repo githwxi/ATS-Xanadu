@@ -184,8 +184,22 @@ let
 in
 err := e00;
 d0ecl_make_node
-(lres, D0Clocal(tbeg, head, tmid, body, tend))
+(lres, D0Clocal(tbeg,head,tmid,body,tend))
 end (*let*) // end of [ T_LOCAL() ]
+//
+|
+T_ABSSORT() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val tid0 = p1_s0tid(buf, err)
+  val lres = tknd.lctn() + tid0.lctn()
+//
+in
+err := e00;
+d0ecl_make_node(lres, D0Cabssort(tknd,tid0))
+end (*let*) // end of [ T_ABSSORT ]
 //
 |
 T_SORTDEF() =>

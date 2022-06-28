@@ -160,6 +160,10 @@ D0Clocal
 print("D0Clocal(",tknd,";");
 print(head,";",tin1,";");print(body,";",tend,")"))
 |
+D0Cabssort(tknd,tid0) =>
+print
+("D0Cabssort(",tknd,";",tid0,")")
+|
 D0Csortdef
 (tknd,tid0,teq1,def2) =>
 (

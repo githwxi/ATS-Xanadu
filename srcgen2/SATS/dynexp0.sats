@@ -304,6 +304,9 @@ D0Clocal of
 , d0eclist(*body*), token(*END*))
 //
 |
+D0Cabssort of (token, s0tid)
+//
+|
 D0Csortdef of
 ( token(*tknd*)
 , s0tid, token(*eq*), s0tdf(*def*))
@@ -334,14 +337,14 @@ HX-2022-06-20:
 D0Ctkerr(tok):
 tok is not consumed by the parser!
 *) // HX:This one is an indication
-| D0Ctkerr of (token)//of some error
+| D0Ctkerr of (token) // of some error
 //
 (*
 HX-2019:
 D0Ctkskp(tok):
 for skipping synerr:
 *)//HX:Note that [tok] is consumed
-| D0Ctkskp of (token)//by the parser
+| D0Ctkskp of (token) // by the parser
 //
 |
 D0Cerrck of (int(*lvl*), d0ecl)//HX:pread-error
