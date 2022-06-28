@@ -136,6 +136,28 @@ and T0TRCD23 = T_TRCD20(3) //HX: $rec_t0
 and T0TRCD24 = T_TRCD20(4) //HX: $rec_vt
 //
 (* ****** ****** *)
+//
+(*
+#define KINFIX0 0 // n-assoc
+#define KINFIXL 1 // l-assoc
+#define KINFIXR 2 // r-assoc
+//
+#define KPREFIX 3 // prefix0
+#define KPSTFIX 4 // postfix
+*)
+//
+val 
+T0SRP_INFIX0 = T_SRP_FIXITY(KINFIX0)
+and
+T0SRP_INFIXL = T_SRP_FIXITY(KINFIXL)
+and
+T0SRP_INFIXR = T_SRP_FIXITY(KINFIXR)
+and
+T0SRP_PREFIX = T_SRP_FIXITY(KPREFIX)
+and
+T0SRP_PSTFIX = T_SRP_FIXITY(KPSTFIX)
+//
+(* ****** ****** *)
 
 local
 
@@ -289,6 +311,15 @@ val () = kwdins("$tup_t0", T0TRCD13)//tbox
 val () = kwdins("$rec_t0", T0TRCD23)//tbox
 val () = kwdins("$tup_vt", T0TRCD14)//vtbx
 val () = kwdins("$rec_vt", T0TRCD24)//vtbx
+//
+(* HX: for IDSRP-keywords in ATS3 *)
+//
+val () = kwdins("#infix0", T0SRP_INFIX0)
+val () = kwdins("#infixl", T0SRP_INFIXL)
+val () = kwdins("#infixr", T0SRP_INFIXR)
+val () = kwdins("#prefix", T0SRP_PREFIX)
+val () = kwdins("#pstfix", T0SRP_PSTFIX)
+val () = kwdins("#nonfix", T_SRP_NONFIX)
 //
 end where
 {

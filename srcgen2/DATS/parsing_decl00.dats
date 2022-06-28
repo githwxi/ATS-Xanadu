@@ -124,13 +124,13 @@ in
 case+ tnd0 of
 //
 |
-T_INT1 _ =>
+T_INT01 _ =>
 PRECint1(tok0) where
 {
   val () = buf.skip1()
 }
 |
-_ (* non-T_INT1 *) =>
+_ (* non-T_INT01 *) =>
 PRECopr2(dnt1, pmod) where
 {
   val dnt1 = p1_i0dnt(buf, err)
@@ -151,16 +151,18 @@ val tnd0 = tok0.tnode()
 in
 //
 case+ tnd0 of
+(*
 |
-T_INT1 _ =>
+T_INT01 _ =>
 PINTint1(tok0) where
 {
   val () = buf.skip1()
 }
+*)
 |
-_ (* non-T_INT1 *) =>
+_ (* non-T_INT01 *) =>
 let
-val () = buf.skip1()
+val (  ) = buf.skip1()
 val tint = buf.getk1()
 in PINTopr2(tok0, tint) end
 //
@@ -465,6 +467,7 @@ err := e00;
 d0ecl_make_node(lres, D0Cdatasort(tknd, dtcs))
 end // end of [T_DATASORT()]
 //
+(* ****** ****** *)
 //
 | T_SRP_NONFIX() =>
 let
@@ -492,6 +495,47 @@ in//let
 err := e00;
 d0ecl_make_node(lres, D0Cnonfix(tknd, dnts))
 end (*let*) // end of [ T_SRP_NONFIX ]
+//
+|
+T_SRP_FIXITY(knd) =>
+let
+//
+  val tknd = tok
+  val loc0 = tok.lctn()
+  val (  ) = buf.skip1()
+//
+  val dnts =
+    p1_i0dntseq(buf, err)
+  val tok1 = buf.getk0( )
+  val opt1 =
+  (
+    case+
+    tok1.node() of
+    | T_OF0() =>
+      p1_precopt
+      (buf, err) where
+      {
+        val () = buf.skip1()
+      }
+    | _(* non-T_OF0 *) => PRECnil0()
+  ) : precopt // end of [val]
+//
+  val lres =
+  (
+    case+ dnts of
+    | list_nil() => loc0
+    | list_cons _ =>
+      let
+      val dnt1 =
+      list_last(dnts) in loc0+dnt1.lctn()
+      end // end of [list_cons]
+  ) : loc_t // end of [val(lres)]
+in//let
+err := e00;
+d0ecl_make_node(lres, D0Cfixity(tknd,dnts,opt1))
+end // end of [T_SRP_FIXITY(knd)]
+//
+(* ****** ****** *)
 //
 | T_IN0() => // HX: let-IN-end / local-IN-end
 (err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))

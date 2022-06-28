@@ -153,14 +153,28 @@ print("D0Ctkerr(",tok,")")
 |
 D0Ctkskp(tok) =>
 print("D0Ctkskp(",tok,")")
+//
 |
 D0Clocal
 (tknd,head,tin1,body,tend) =>
 (
 print("D0Clocal(",tknd,";");
 print(head,";",tin1,";");print(body,";",tend,")"))
+//
 |
-D0Cabssort(tknd,tid0) =>
+D0Cnonfix
+(tknd,dnts) =>
+print
+("D0Cnonfix(",tknd,";",dnts,")")
+|
+D0Cfixity
+(tknd,dnts,popt) =>
+print
+("D0Cfixity(",tknd,";",dnts,";",popt,")")
+//
+|
+D0Cabssort
+(tknd,tid0) =>
 print
 ("D0Cabssort(",tknd,";",tid0,")")
 |
