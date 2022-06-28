@@ -213,13 +213,50 @@ precopt_fprint
   (out, opt) =
 (
 case+ opt of
-| PRECnil0() =>
-  print("PRECnil0()")
-| PRECint1(int) =>
-  print("PRECint1(", int, ")")
-| PRECopr2(opr, pmd) =>
-  print("PRECopr2(", opr, "; ", pmd, ")")
-) (*case*) // end of [precopt_fprint]
+|
+PRECnil0() =>
+print("PRECnil0()")
+|
+PRECint1(int) =>
+print("PRECint1(", int, ")")
+|
+PRECopr2(opr, pmd) =>
+print("PRECopr2(", opr, ";", pmd, ")")
+) where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [precopt_fprint]
+//
+#implfun
+precint_fprint
+  (out, int) =
+(
+case+ int of
+|
+PINTint1(int) =>
+print("PINTint1(", int, ")")
+|
+PINTopr2(opr, int) =>
+print("PINTopr2(", opr, ";", int, ")")
+) where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [precint_fprint]
+//
+#implfun
+precmod_fprint
+  (out, pmd) =
+let
+#impltmp g_print$out<>() = out
+in
+case+ pmd of
+|
+PMODnone() => print("PRECMODnone(", ")")
+|
+PMODsome(tkb, int, tke) =>
+print
+("PMODsome(", tkb, ";", int, ";", tke, ")")
+end (*let*) // end of [precmod_fprint]
 //
 (* ****** ****** *)
 
