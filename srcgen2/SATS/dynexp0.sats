@@ -297,6 +297,13 @@ datatype
 d0ecl_node =
 //
 |
+D0Cnonfix of
+(token, i0dntlst)
+|
+D0Cfixity of
+(token, i0dntlst, precopt)
+//
+|
 D0Clocal of
 ( token(*LOCAL*)
 , d0eclist(*head*)
@@ -309,12 +316,13 @@ D0Cabssort of (token, s0tid)
 |
 D0Cstacst0 of
 ( token
-, s0eid, t0marglst, token, sort0)
+, s0eid
+, t0maglst, token(*:*), sort0)
 //
 |
 D0Csortdef of
 ( token(*tknd*)
-, s0tid, token(*eq*), s0tdf(*def*))
+, s0tid, token(*=*), s0tdf(*def*))
 //
 |
 D0Csexpdef of
@@ -358,13 +366,26 @@ D0Cerrck of (int(*lvl*), d0ecl)//HX:pread-error
 //
 (* ****** ****** *)
 //
+and
+precopt =
+| PRECnil0 of ()
+| PRECint1 of (token)
+| PRECopr2 of (i0dnt, precmod)
+and
+precmod =
+| PMODnone of ()
+| PMODsome of (token, precint, token)
+and
+precint =
+| PINTint1 of (token(*int*))
+| PINTopr2 of (token(*opr*), token(*int*))
+//
+(* ****** ****** *)
+//
 and a0tdf =
-|
-A0TDFsome of () // unspecified
-|
-A0TDFlteq of (token(*"<="*), s0exp)
-|
-A0TDFeqeq of (token(*"=="*), s0exp)
+| A0TDFsome of () // unspecified
+| A0TDFlteq of (token(*"<="*), s0exp)
+| A0TDFeqeq of (token(*"=="*), s0exp)
 //
 (* ****** ****** *)
 fun
@@ -374,6 +395,16 @@ d0ecl_fprint
 fun
 a0tdf_fprint
 (out:FILR, tdf:a0tdf): void
+(* ****** ****** *)
+fun
+precopt_fprint
+(out:FILR, opt:precopt): void
+fun
+precmod_fprint
+(out:FILR, pmd:precmod): void
+fun
+precint_fprint
+(out:FILR, int:precint): void
 (* ****** ****** *)
 //
 fun

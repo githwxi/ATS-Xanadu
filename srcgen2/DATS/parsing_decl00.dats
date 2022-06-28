@@ -202,6 +202,26 @@ d0ecl_make_node(lres, D0Cabssort(tknd,tid0))
 end (*let*) // end of [ T_ABSSORT ]
 //
 |
+T_STACST0() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val seid = p1_s0eid(buf, err)
+  val tmas = p1_t0magseq(buf, err)
+//
+  val tok1 = p1_CLN(buf, err)
+  val s0t2 = p1_sort0(buf, err)
+//
+  val lres = tknd.lctn() + s0t2.lctn()
+//
+in
+err := e00;
+d0ecl_make_node
+(lres, D0Cstacst0(tknd,seid,tmas,tok1,s0t2))
+end (*let*) // end of [ T_STACST0() ]
+//
+|
 T_SORTDEF() =>
 let
 //
@@ -251,6 +271,7 @@ let
     p1_t0magseq(buf, err)
   val tres =
     pq_ids0t_anno(buf, err)
+//
   val tdef = p1_a0tdf(buf, err)
 //
   val lres = let

@@ -281,6 +281,16 @@ d0ecl_fprint(g_print$out<>(), dcl)
 g_print<a0tdf>(tdf) =
 a0tdf_fprint(g_print$out<>(), tdf)
 //
+#impltmp
+g_print<precopt>(opt) =
+precopt_fprint(g_print$out<>(), opt)
+#impltmp
+g_print<precmod>(pmd) =
+precmod_fprint(g_print$out<>(), pmd)
+#impltmp
+g_print<precint>(int) =
+precint_fprint(g_print$out<>(), int)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)

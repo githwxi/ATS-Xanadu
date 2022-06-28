@@ -207,6 +207,21 @@ D0Cerrck(lvl(*err-level*),dcl) => print("D0Cerrck(",lvl,";",dcl,")")
 end (*let*) // end of [d0ecl_fprint(out,dcl)]
 
 (* ****** ****** *)
+//
+#implfun
+precopt_fprint
+  (out, opt) =
+(
+case+ opt of
+| PRECnil0() =>
+  print("PRECnil0()")
+| PRECint1(int) =>
+  print("PRECint1(", int, ")")
+| PRECopr2(opr, pmd) =>
+  print("PRECopr2(", opr, "; ", pmd, ")")
+) (*case*) // end of [precopt_fprint]
+//
+(* ****** ****** *)
 
 #implfun
 a0tdf_fprint
