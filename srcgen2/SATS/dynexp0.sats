@@ -85,6 +85,8 @@ S0E = "./staexp0.sats"
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
+//
+#typedef d0tst = $S0E.d0tst
 #typedef s0tdf = $S0E.s0tdf
 //
 (* ****** ****** *)
@@ -104,11 +106,15 @@ S0E = "./staexp0.sats"
 #typedef tokenlst = list(token)
 #typedef tokenopt = optn(token)
 (* ****** ****** *)
+#typedef i0dntlst = list(i0dnt)
+(* ****** ****** *)
 #typedef sort0lst = list(sort0)
 #typedef sort0opt = optn(sort0)
 (* ****** ****** *)
 #typedef s0explst = list(s0exp)
 #typedef s0expopt = optn(s0exp)
+(* ****** ****** *)
+#typedef d0tstlst = list(d0tst)
 (* ****** ****** *)
 #typedef s0arglst = list(s0arg)
 #typedef s0maglst = list(s0mag)
@@ -345,6 +351,10 @@ D0Cabsimpl of
 , s0qid
 , s0maglst, sort0opt, token, s0exp)
 //
+|
+D0Cdatasort of
+(token(*DATASORT*), d0tstlst)
+//
 (*
 HX-2022-06-20:
 D0Ctkerr(tok):
@@ -374,7 +384,8 @@ precopt =
 and
 precmod =
 | PMODnone of ()
-| PMODsome of (token, precint, token)
+| PMODsome of
+  (token(*LP*), precint, token(*RP*))
 and
 precint =
 | PINTint1 of (token(*int*))
