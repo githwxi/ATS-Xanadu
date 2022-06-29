@@ -88,7 +88,7 @@ fun p1_g0exp_ELSE: p1_fun(g0exp_ELSE)
 #extern
 fun p1_g0expseq_atm: p1_fun(g0explst)
 #extern
-fun p_g0expseq_COMMA: p1_fun(g0explst)
+fun p1_g0expseq_COMMA: p1_fun(g0explst)
 //
 (* ****** ****** *)
 //
@@ -795,8 +795,136 @@ end (*let*) // end of [p1_napps(buf,err)]
 
 in//local
 
+#implfun
+p1_g0exp(buf, err) =
+let
+//
+val g0es =
+p1_g0expseq_atm(buf, err)
+//
+in//let
+//
+case+ g0es of
+|
+list_nil() => p1_napps(buf, err)
+|
+list_cons
+(g0e1, ges1) =>
+(
+case+ ges1 of
+| list_nil() => g0e1
+| list_cons _ =>
+  let
+    val g0e2 = list_last(ges1)
+  in//let
+    g0exp_make_node
+    (g0e1.lctn()+g0e2.lctn(), G0Eapps(g0es))
+  end // end of [list_cons]
+) (*case*) // end of [list_cons]
+//
+end (*let*) // end of [p1_g0exp]
+
 endloc (*local*) // end of [local(p1_g0exp)]
 
+(* ****** ****** *)
+
+#implfun
+p1_g0exp_atm
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+_ when t0_g0eid(tnd) =>
+let
+  val id0 =
+  p1_g0eid(buf, err)
+  val loc = id0.lctn()
+in
+  err := e00;
+  g0exp_make_node(loc, G0Eid0(id0))
+end // end of [t0_g0eid]
+//
+|
+_ when t0_t0int(tnd) =>
+let
+  val i00 =
+  p1_t0int(buf, err)
+  val loc = i00.lctn()
+in//let
+  err := e00;
+  g0exp_make_node(loc, G0Eint(i00))
+end // end of [t0_t0int]
+//
+|
+_ when t0_t0chr(tnd) =>
+let
+  val c00 =
+  p1_t0chr(buf, err)
+  val loc = c00.lctn()
+in//let
+  err := e00;
+  g0exp_make_node(loc, G0Echr(c00))
+end // end of [t0_t0chr]
+//
+|
+_ when t0_t0flt(tnd) =>
+let
+  val f00 =
+  p1_t0flt(buf, err)
+  val loc = f00.lctn()
+in//let
+  err := e00;
+  g0exp_make_node(loc, G0Eflt(f00))
+end // end of [t0_t0flt]
+//
+|
+_ when t0_t0str(tnd) =>
+let
+  val s00 =
+  p1_t0str(buf, err)
+  val loc = s00.lctn()
+in//let
+  err := e00;
+  g0exp_make_node(loc, G0Estr(s00))
+end // end of [t0_t0str]
+//
+|
+T_LPAREN() =>
+let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val g0es =
+    p1_g0expseq_COMMA(buf, err)
+  // end of [val]
+  val tend = p1_RPAREN(buf, err)
+in
+  err := e00;
+  g0exp_make_node
+  ( lres
+  , G0Elist(tbeg, g0es, tend)) where
+  {
+    val lres = tbeg.lctn()+tend.lctn()
+  }
+end (*let*) // end of [T_LPAREN]
+//
+|
+_ (* rest-of-token *) =>
+let
+  val () = (err := e00 + 1)
+  // HX: indicating a parsing error
+in
+  g0exp_make_node(tok.lctn(), G0Etkerr(tok))
+end (* this-is-a-case-of-error *)
+//
+end (*let*) // end of [p1_g0exp_atm(buf,err)]
+//
 (* ****** ****** *)
 //
 (*
