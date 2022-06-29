@@ -899,6 +899,16 @@ d0tcn_node =
 D0TCNnode of
 ( s0unilst
 , d0eid(*nam*), s0explst, s0expopt) 
+// end- of-[D0TCN]
+//
+datatype
+d0typ_node =
+|
+D0TYPnode of
+( d0eid
+, t0maglst
+, sort0opt(*res*), token, d0tcnlst)
+// end- of-[D0TYP]
 //
 (* ****** ****** *)
 fun
@@ -907,6 +917,9 @@ s0uni_fprint
 fun
 d0tcn_fprint
 (out:FILR, s0e:d0tcn): void
+fun
+d0typ_fprint
+(out:FILR, s0e:d0typ): void
 (* ****** ****** *)
 fun
 s0uni_get_lctn(s0uni): loc_t
@@ -934,6 +947,20 @@ fun
 d0tcn_make_node
 (loc:loc_t, nod:d0tcn_node): d0tcn
 #symload d0tcn with d0tcn_make_node
+//
+(* ****** ****** *)
+fun
+d0typ_get_lctn(d0typ): loc_t
+fun
+d0typ_get_node(d0typ): d0typ_node
+//
+#symload lctn with d0typ_get_lctn
+#symload node with d0typ_get_node
+//
+fun
+d0typ_make_node
+(loc:loc_t, nod:d0typ_node): d0typ
+#symload d0typ with d0typ_make_node
 //
 (* ****** ****** *)
 
