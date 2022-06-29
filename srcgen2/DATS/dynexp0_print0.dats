@@ -227,6 +227,14 @@ print("D0Cabsimpl(",tknd,";");
 print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 |
+D0Csymload
+(tknd,symb,twth,dqid,popf) =>
+(
+print("D0Csymload(",tknd,";");
+print
+(symb,";",twth,";",dqid,";",popf,")"))
+//
+|
 D0Cdatasort(tknd,dtcs) =>
 print("D0Cdatasort(",tknd,";",dtcs,")")
 //

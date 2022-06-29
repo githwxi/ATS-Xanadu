@@ -70,6 +70,8 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef l0abl = $S0E.l0abl
 (* ****** ****** *)
+#typedef s0ymb = $S0E.s0ymb
+(* ****** ****** *)
 #typedef i0dnt = $S0E.i0dnt
 (* ****** ****** *)
 #typedef t0int = $S0E.t0int
@@ -355,6 +357,13 @@ D0Cabsimpl of
 ( token
 , s0qid
 , s0maglst, sort0opt, token, s0exp)
+//
+|
+D0Csymload of
+( token
+, s0ymb
+, token(*WITH*)
+, d0qid(*qual-id*), preopt)
 //
 |
 D0Cdatasort of
