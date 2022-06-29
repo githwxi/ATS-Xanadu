@@ -340,6 +340,25 @@ fun
 p1_s0quaseq_BSCLN: p1_fun(s0qualst)
 (* ****** ****** *)
 //
+(*
+d0typ ::=
+| s0eid s0mag EQ d0tcnseq_BAR
+*)
+//
+fun
+p1_d0tcn: p1_fun(d0tcn)
+fun
+p1_d0typ: p1_fun(d0typ)
+fun
+p1_d0tcnseq_BAR: p1_fun(d0tcnlst)
+fun
+p1_d0typseq_AND: p1_fun(d0typlst)
+//
+fun
+p1_WHERE_sexpdefseq: p1_fun(d0eclist)
+//
+(* ****** ****** *)
+//
 #typedef
 fp_fun(syn:type) =
 ( sint // flag=0/1

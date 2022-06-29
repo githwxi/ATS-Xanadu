@@ -350,27 +350,29 @@ fun t_s0tid(tnode): bool
 fun t_s0aid(tnode): bool
 fun t_s0eid(tnode): bool
 //
-fun p_s0tid: parser(s0tid) // srt id
-fun p_s0aid: parser(s0eid) // arg id
-fun p_s0eid: parser(s0eid) // exp id
+fun p_s0tid: parser(s0tid) // srt-id
+fun p_s0aid: parser(s0eid) // arg-id
+fun p_s0eid: parser(s0eid) // exp-id
 //
 (* ****** ****** *)
 //
 fun t_d0pid(tnode): bool
 fun t_d0eid(tnode): bool
 //
-fun p_d0pid: parser(d0pid) // pat id
-fun p_d0eid: parser(d0eid) // exp id
+fun p_d0pid: parser(d0pid) // pat-id
+fun p_d0eid: parser(d0eid) // exp-id
 //
 (* ****** ****** *)
 //
-fun p_sq0eid: parser(sq0eid) // qualid
-fun p_dq0eid: parser(dq0eid) // qualid
+fun
+p_sq0eid: parser(sq0eid) // qualid
+fun
+p_dq0eid: parser(dq0eid) // qualid
 //
 (* ****** ****** *)
 
-fun p_g0nam : parser(g0nam)
-fun p_g0exp : parser(g0exp)
+fun p_g0nam: parser(g0nam) // gen-nam
+fun p_g0exp: parser(g0exp) // gen-exp
 
 (* ****** ****** *)
 //
