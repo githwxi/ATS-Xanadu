@@ -495,19 +495,85 @@ T_DATASORT() => let
   val lres =
   (
   case+ dtcs of
-  | list_nil
-    ((*nil*)) => tknd.lctn()
-  | list_cons
-    ( _ , _ ) =>
-    let
+  |
+  list_nil
+  ((*nil*)) => tknd.lctn()
+  |
+  list_cons
+  ( _ , _ ) =>
+  let
     val dtc1 =
     list_last(dtcs) in tknd.lctn()+dtc1.lctn()
-    end
+  end
   ) : loc_t // end of [val(lres)]
 in
+  err := e00
+; d0ecl_make_node(lres, D0Cdatasort(tknd, dtcs))
+end (*let*) // end of [T_DATASORT()]
+//
+(* ****** ****** *)
+|
+T_DATATYPE(k0) =>
+let
+//
+val tknd = tok
+val (  ) =
+  buf.skip1((*nil*))
+//
+val dtps =
+  p1_d0typseq_AND(buf, err)
+//
+val tok1 = buf.getk0((*nil*))
+//
+val wopt =
+(
+case+
+tok1.node() of
+|
+T_WHERE() => let
+  val (  ) = buf.skip1()
+  val topt = pq_LBRACE(buf, err)
+  val wdcs = p1_d0eclseq_sta(buf, err)
+  val tok2 = buf.getk0( (*void*) )
+  val ((*void*)) =
+  (
+  case+
+  tok2.node() of
+  | T_END() => buf.skip1()
+  | T_RBRACE() => buf.skip1()
+  | T_ENDWHR() => buf.skip1()
+  | _(*non-closing*) => (err := err+1)
+  ) : void // end of [val]
+in//let
+  WD0CSsome(tok1, topt, wdcs, tok2)
+end (*let*) // end of [T_WHERE()]
+|
+_(*non-T_WHERE*) => WD0CSnone( (*void*) )
+) : wd0eclseq (*case*)//end-of-[val(wopt)]
+//
+val lknd = tknd.lctn()
+//
+val lres =
+(
+  case+ wopt of
+  | WD0CSnone() =>
+    (
+    case+ dtps of
+    | list_nil() => lknd
+    | list_cons _ =>
+      (
+        lknd+dtp1.lctn()) where
+      {
+        val dtp1 = list_last(dtps)
+      } (*where*) // end(list_cons)
+    )
+  | WD0CSsome
+    (_, _, _, tend) => lknd+tend.lctn()
+) : loc_t (*case*) // end of [ val( lres ) ]
+in//let
 err := e00;
-d0ecl_make_node(lres, D0Cdatasort(tknd, dtcs))
-end // end of [T_DATASORT()]
+d0ecl_make_node(lres, D0Cdatatype(tknd, dtps, wopt))
+end (*let*) // end of [T_DATATYPE(k0)]
 //
 (* ****** ****** *)
 //
@@ -538,7 +604,7 @@ T_SRP_EXTERN() => let
 in
 err := e00;
 d0ecl_make_node( lres, D0Cextern(tknd, dcl0) )
-end // end of [T_SRP_EXTERN]
+end (*let*) // end of [T_SRP_EXTERN]
 //
 (* ****** ****** *)
 //
@@ -552,7 +618,7 @@ let
 in//let
 err := e00;
 d0ecl_make_node( lres, D0Cinclude(tknd, g0e0) )
-end // end of [T_SRP_INCLUDE(...)]
+end (*let*) // end of [T_SRP_INCLUDE(...)]
 |
 T_SRP_STALOAD() =>
 let
@@ -641,7 +707,7 @@ d0ecl_make_node(lres, D0Cnonfix(tknd, dnts))
 end (*let*) // end of [ T_SRP_NONFIX ]
 //
 |
-T_SRP_FIXITY(knd) =>
+T_SRP_FIXITY(k0) =>
 let
 //
   val tknd = tok
@@ -698,7 +764,7 @@ let
 in//let
 err := e00;
 d0ecl_make_node(lres, D0Cfixity(tknd,dnts,opt1))
-end // end of [T_SRP_FIXITY(knd)]
+end // end of [T_SRP_FIXITY(k0)]
 //
 (* ****** ****** *)
 //

@@ -310,5 +310,9 @@ g_print<precint>(int) =
 precint_fprint(g_print$out<>(), int)
 //
 (* ****** ****** *)
+#impltmp
+g_print<wd0eclseq>(wdcs) =
+wd0eclseq_fprint(g_print$out<>(), wdcs)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)

@@ -680,4 +680,97 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+s0uni =
+S0UNI of
+(
+loctn, s0uni_node)
+#absimpl
+s0uni_tbox = s0uni
+//
+in (* in-of-local *)
+//
+#implfun
+s0uni_make_node
+(   loc,nod   ) = S0UNI(loc,nod)
+//
+#implfun
+s0uni_get_lctn(s0e) =
+let
+  val+S0UNI(loc,nod) = s0e in loc
+end
+#implfun
+s0uni_get_node(s0e) =
+let
+  val+S0UNI(loc,nod) = s0e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0tcn =
+D0TCN of
+(
+loctn, d0tcn_node)
+#absimpl
+d0tcn_tbox = d0tcn
+//
+in (* in-of-local *)
+//
+#implfun
+d0tcn_make_node
+(   loc,nod   ) = D0TCN(loc,nod)
+//
+#implfun
+d0tcn_get_lctn(s0e) =
+let
+  val+D0TCN(loc,nod) = s0e in loc
+end
+#implfun
+d0tcn_get_node(s0e) =
+let
+  val+D0TCN(loc,nod) = s0e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0typ =
+D0TYP of
+(
+loctn, d0typ_node)
+#absimpl
+d0typ_tbox = d0typ
+//
+in (* in-of-local *)
+//
+#implfun
+d0typ_make_node
+(   loc,nod   ) = D0TYP(loc,nod)
+//
+#implfun
+d0typ_get_lctn(s0e) =
+let
+  val+D0TYP(loc,nod) = s0e in loc
+end
+#implfun
+d0typ_get_node(s0e) =
+let
+  val+D0TYP(loc,nod) = s0e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_staexp0.dats] *)

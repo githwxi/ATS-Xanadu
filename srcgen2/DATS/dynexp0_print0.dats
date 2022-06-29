@@ -244,11 +244,37 @@ print
 |
 D0Cdatasort(tknd,dtcs) =>
 print("D0Cdatasort(",tknd,";",dtcs,")")
+|
+D0Cdatatype(tknd,dtps,wdcs) =>
+print("D0Cdatatype(",tknd,";",dtps,";",wdcs,")")
 //
 |
 D0Cerrck(lvl(*err-level*),dcl) => print("D0Cerrck(",lvl,";",dcl,")")
 //
 end (*let*) // end of [d0ecl_fprint(out,dcl)]
+
+(* ****** ****** *)
+
+#implfun
+a0tdf_fprint
+(out, tdf) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ tdf of
+|
+A0TDFsome() =>
+print("A0TDFsome(", ")")
+|
+A0TDFlteq(tok,s0e) =>
+print("A0TDFlteq(",tok,";",s0e,")")
+|
+A0TDFeqeq(tok,s0e) =>
+print("A0TDFeqeq(",tok,";",s0e,")")
+//
+end (*let*) // end of [a0tdf_fprint(out,tdf)]
 
 (* ****** ****** *)
 //
@@ -303,28 +329,21 @@ print
 end (*let*) // end of [precmod_fprint]
 //
 (* ****** ****** *)
-
+//
 #implfun
-a0tdf_fprint
-(out, tdf) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
+wd0eclseq_fprint
+  (out, wdcs) =
+(
+case+ wdcs of
+|
+WD0CSnone() =>
+print("WD0CSnone(", ")")
+|
+WD0CSsome(tbeg, topt, dcls, tend) =>
+(
+print
+("WD0CSsome(",tbeg,";",topt,";",dcls,";",tend,")"))
 //
-case+ tdf of
-|
-A0TDFsome() =>
-print("A0TDFsome(", ")")
-|
-A0TDFlteq(tok,s0e) =>
-print("A0TDFlteq(",tok,";",s0e,")")
-|
-A0TDFeqeq(tok,s0e) =>
-print("A0TDFeqeq(",tok,";",s0e,")")
-//
-end (*let*) // end of [a0tdf_fprint(out,tdf)]
-
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp0_print0.dats] *)

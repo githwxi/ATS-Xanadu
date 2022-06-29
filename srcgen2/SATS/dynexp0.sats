@@ -99,6 +99,9 @@ S0E = "./staexp0.sats"
 #typedef s0tdf = $S0E.s0tdf
 //
 (* ****** ****** *)
+#typedef d0tcn = $S0E.d0tcn
+#typedef d0typ = $S0E.d0typ
+(* ****** ****** *)
 //
 #typedef s0arg = $S0E.s0arg
 #typedef s0mag = $S0E.s0mag
@@ -125,6 +128,9 @@ S0E = "./staexp0.sats"
 #typedef t0arglst = list(t0arg)
 #typedef t0maglst = list(t0mag)
 #typedef s0qualst = list(s0qua)
+(* ****** ****** *)
+#typedef d0tcnlst = list(d0tcn)
+#typedef d0typlst = list(d0typ)
 (* ****** ****** *)
 
 #abstbox d0exp_tbox // ptr
@@ -376,6 +382,10 @@ D0Csymload of
 D0Cdatasort of
 (token(*DATASORT*), d0tstlst)
 //
+|
+D0Cdatatype of
+(token(*DATATYPE*), d0typlst, wd0eclseq)
+//
 (*
 HX-2022-06-20:
 D0Ctkerr(tok):
@@ -420,6 +430,16 @@ and a0tdf =
 | A0TDFeqeq of (token(*"=="*), s0exp)
 //
 (* ****** ****** *)
+//
+and
+wd0eclseq =
+|
+WD0CSnone of ()
+|
+WD0CSsome of
+(token(*where*), tokenopt, d0eclist, token)
+//
+(* ****** ****** *)
 fun
 d0ecl_fprint
 (out:FILR, dcl:d0ecl): void
@@ -437,6 +457,10 @@ precmod_fprint
 fun
 precint_fprint
 (out:FILR, int:precint): void
+(* ****** ****** *)
+fun
+wd0eclseq_fprint
+(out:FILR, wdcs:wd0eclseq): void
 (* ****** ****** *)
 //
 fun
