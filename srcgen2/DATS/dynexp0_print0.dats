@@ -172,9 +172,9 @@ print
 ("D0Cnonfix(",tknd,";",dnts,")")
 |
 D0Cfixity
-(tknd,dnts,popt) =>
+(tknd,dnts,prec) =>
 print
-("D0Cfixity(",tknd,";",dnts,";",popt,")")
+("D0Cfixity(",tknd,";",dnts,";",prec,")")
 //
 |
 D0Clocal
@@ -228,11 +228,11 @@ print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 |
 D0Csymload
-(tknd,symb,twth,dqid,popf) =>
+(tknd,symb,twth,dqid,prec) =>
 (
 print("D0Csymload(",tknd,";");
 print
-(symb,";",twth,";",dqid,";",popf,")"))
+(symb,";",twth,";",dqid,";",prec,")"))
 //
 |
 D0Cdatasort(tknd,dtcs) =>
