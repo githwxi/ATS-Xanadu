@@ -2416,4 +2416,49 @@ endloc(*local*)//end-of[local(p1_s0exp_app_ntk]
 
 (* ****** ****** *)
 
+#implfun
+p1_s0uni(buf, err) =
+let
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+in
+//
+case+ tnd of
+|
+T_LBRACE() =>
+let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val s0qs =
+    p1_s0quaseq_BSCLN(buf, err)
+  val tend = p1_RBRACE(buf, err)
+  val lres = tbeg.lctn()+tend.lctn()
+in//let
+  err := e00;
+  s0uni_make_node
+  (lres, S0UNIsome(tbeg, s0qs, tend))
+end (*let*) // end of [T_LBRACE]
+|
+_ (*non-T_LBRACE*) =>
+(
+err := e00 + 1;
+s0uni_make_node(tok.lctn(), S0UNInone(tok)))
+//
+end (*let*) // end of [ p_s0uni(buf,err) ]
+
+(* ****** ****** *)
+
+#implfun
+p1_s0uniseq
+  (buf, err) =
+(
+//
+list_vt2t
+(ps_p1fun{s0uni}(buf, err, p1_s0uni))
+//
+) (*case*) // end of [ p_s0uniseq(buf,err) ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_parsing_staexp.dats] *)

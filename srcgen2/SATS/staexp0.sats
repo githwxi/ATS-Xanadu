@@ -916,6 +916,11 @@ s0uni_get_node(s0uni): s0uni_node
 #symload lctn with s0uni_get_lctn
 #symload node with s0uni_get_node
 //
+fun
+s0uni_make_node
+(loc:loc_t, nod:s0uni_node): s0uni
+#symload s0uni with s0uni_make_node
+//
 (* ****** ****** *)
 fun
 d0tcn_get_lctn(d0tcn): loc_t
@@ -924,6 +929,11 @@ d0tcn_get_node(d0tcn): d0tcn_node
 //
 #symload lctn with d0tcn_get_lctn
 #symload node with d0tcn_get_node
+//
+fun
+d0tcn_make_node
+(loc:loc_t, nod:d0tcn_node): d0tcn
+#symload d0tcn with d0tcn_make_node
 //
 (* ****** ****** *)
 
