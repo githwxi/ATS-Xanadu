@@ -349,7 +349,7 @@ g0nam_node =
   (token, g0namlst, token)
 //
 | G0Nnone0 of ()
-| G0Nnone1 of (token(*error*))
+| G0Ntkerr of (token(*error*))
 //
 (* ****** ****** *)
 //
@@ -373,7 +373,7 @@ g0exp_node =
   , g0exp_THEN
   , g0exp_ELSE, tokenopt)
 //
-| G0Enone1 of (token(*error*))
+| G0Etkerr of (token(*error*))
 //
 (* ****** ****** *)
 and
@@ -402,6 +402,13 @@ fun
 g0exp_fprint:(FILR,g0exp)->void
 fun
 g0mag_fprint:(FILR,g0mag)->void
+(* ****** ****** *)
+fun
+g0exp_THEN_fprint
+(out:FILR, g0e:g0exp_THEN): void
+fun
+g0exp_ELSE_fprint
+(out:FILR, g0e:g0exp_ELSE): void
 (* ****** ****** *)
 //
 fun

@@ -76,6 +76,23 @@ tnode with token_get_node//lexing0
 (* ****** ****** *)
 //
 #extern
+fun p1_g0exp_atm: p1_fun(g0exp)
+extern
+fun p1_g0exp_app: p1_fun(g0exp)
+//
+#extern
+fun p1_g0exp_THEN: p1_fun(g0exp_THEN)
+#extern
+fun p1_g0exp_ELSE: p1_fun(g0exp_ELSE)
+//
+extern
+fun p1_g0expseq_atm: p1_fun(g0explst)
+#extern
+fun p_g0expseq_COMMA: p1_fun(g0explst)
+//
+(* ****** ****** *)
+//
+#extern
 fun p1_sort0_tid: p1_fun(sort0)
 #extern
 fun p1_sort0_atm: p1_fun(sort0)
@@ -208,6 +225,115 @@ end(*let*)//end-of-[p1_t0str(buf,err)]
 (* ****** ****** *)
 
 #implfun
+p1_g0nid(buf, err) =
+let
+//
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_IDALP _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+|
+T_IDENT_sym _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+//
+|
+_(*non-ident*) =>
+ ( err := err + 1; i0dnt_none(tok) )
+//
+end(*let*)//end-of-[p1_g0nid(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_g0eid(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+//
+|
+T_IDALP _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+|
+T_IDSYM _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+//
+|
+T_AT0() =>
+i0dnt_some(tok) where
+{
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_AT0(*void*)
+val tok = token_make_node(loc,tnd)
+}
+//
+|
+T_EQ0() =>
+i0dnt_some(tok) where
+{
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_EQ0(*void*)
+val tok = token_make_node(loc,tnd)
+}
+//
+|
+T_LT0() =>
+i0dnt_some(tok) where
+{
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_LT0(*void*)
+val tok = token_make_node(loc,tnd)
+}
+|
+T_GT0() =>
+i0dnt_some(tok) where
+{
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_GT0(*void*)
+val tok = token_make_node(loc,tnd)
+}
+//
+|
+T_BSLSH((*void*)) =>
+let
+val ( ) =
+buf.skip1() in i0dnt_some(tok) end
+//
+|
+_(*non-ident*) =>
+ ( err := err+1; i0dnt_none( tok ) )
+//
+end(*let*)//end-of-[p1_g0eid(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 p1_s0tid(buf, err) =
 let
 //
@@ -255,10 +381,11 @@ i0dnt_some(tok) where
 {
   val () = buf.skip1()
 }
-| _(*non-T_IDALP*) =>
-(err := e00 + 1; i0dnt_none(tok))
+|
+_(*non-T_IDALP*) =>
+ (err := e00 + 1; i0dnt_none(tok))
 //
-end (*let*) // end of [p1_s0aid(buf,err)]
+end(*let*)//end-of-[p1_s0aid(buf,err)]
 
 (* ****** ****** *)
 
@@ -288,54 +415,57 @@ T_IDDLR _ =>
 ( buf.skip1()
 ; i0dnt_some(tok)) where
 {
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_AT0(*void*)
-  val tok = token_make_node(loc, tnd)
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_AT0(*void*)
+val tok = token_make_node(loc,tnd)
 }
 //
 | T_EQ0() =>
 ( buf.skip1()
 ; i0dnt_some(tok)) where
 {
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_EQ0(*void*)
-  val tok = token_make_node(loc, tnd)
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_EQ0(*void*)
+val tok = token_make_node(loc,tnd)
 }
 //
 | T_LT0() =>
 ( buf.skip1()
 ; i0dnt_some(tok)) where
 {
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_LT0(*void*)
-  val tok = token_make_node(loc, tnd)
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_LT0(*void*)
+val tok = token_make_node(loc,tnd)
 }
 | T_GT0() =>
 ( buf.skip1()
 ; i0dnt_some(tok)) where
 {
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_GT0(*void*)
-  val tok = token_make_node(loc, tnd)
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_GT0(*void*)
+val tok = token_make_node(loc,tnd)
 }
 //
 | T_LTGT() =>
 ( buf.skip1()
 ; i0dnt_some(tok)) where
 {
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_LTGT(*void*)
-  val tok = token_make_node(loc, tnd)
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_LTGT(*void*)
+val tok = token_make_node(loc,tnd)
 }
 //
 |
 T_BSLSH() =>
-( buf.skip1(); i0dnt_some(tok) )
+let
+val ( ) =
+buf.skip1() in i0dnt_some(tok) end
 //
 |
-_(*non-IDENT*) => (err := e00+1; i0dnt_none(tok))
+_(*non-IDENT*) =>
+ ( err := e00+1; i0dnt_none( tok ) )
 //
-end (*let*) // end of [p1_s0eid(buf, err)]
+end(*let*)//end-of-[p1_s0eid(buf, err)]
 
 (* ****** ****** *)
 //
@@ -384,45 +514,49 @@ case+ tnd of
 T_IDALP _ =>
 let
 val () =
-buf.skip1() in i0dnt_some(tok) end
+buf.skip1() in i0dnt_some(tok)
+end // T_IDALP
 |
 T_IDSYM _ =>
 let
 val () =
-buf.skip1() in i0dnt_some(tok) end
+buf.skip1() in i0dnt_some(tok)
+end // T_IDSYM
 //
 |
 T_IDDLR _ =>
 let
 val () =
-buf.skip1() in i0dnt_some(tok) end
+buf.skip1() in i0dnt_some(tok)
+end // T_IDDIR
 //
 (*
 |
 T_IDSRP _ =>
 let
 val () =
-buf.skip1() in i0dnt_some(tok) end
+buf.skip1() in i0dnt_some(tok)
+end // T_IDSRP
 *)
 //
 |
 T_AT0() =>
 i0dnt_some(tok) where
 {
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_AT0(*void*)
-  val tok = token_make_node(loc, tnd)
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_AT0(*void*)
+val tok = token_make_node(loc,tnd)
 }
 //
 |
 T_EQ0() =>
 i0dnt_some(tok) where
 {
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_EQ0(*void*)
-  val tok = token_make_node(loc, tnd)
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_EQ0(*void*)
+val tok = token_make_node(loc,tnd)
 }
 //
 (*
@@ -430,19 +564,19 @@ i0dnt_some(tok) where
 T_LT0() =>
 i0dnt_some(tok) where
 {
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_LT0(*void*)
-  val tok = token_make_node(loc, tnd)
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_LT0(*void*)
+val tok = token_make_node(loc,tnd)
 }
 |
 T_GT0() =>
 i0dnt_some(tok) where
 {
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_GT0(*void*)
-  val tok = token_make_node(loc, tnd)
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_GT0(*void*)
+val tok = token_make_node(loc,tnd)
 }
 *)
 //
@@ -450,21 +584,23 @@ i0dnt_some(tok) where
 T_EQGT() =>
 i0dnt_some(tok) where
 {
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_EQGT(*void*)
-  val tok = token_make_node(loc, tnd)
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_EQGT(*void*)
+val tok = token_make_node(loc,tnd)
 }
 //
 |
 T_BSLSH((*void*)) =>
 let
-val () = buf.skip1() in i0dnt_some(tok)
-end (*let*) // end of [T_BSLSH]
+val ( ) =
+buf.skip1() in i0dnt_some(tok) end
 //
-| _(*non-ident*) => (err := err+1; i0dnt_none(tok))
+|
+_(*non-ident*) =>
+ (err := err+1; i0dnt_none( tok ) )
 //
-end (*let*) // end of [p1_d0eid(buf, err)]
+end(*let*)//end-of-[p1_d0eid(buf, err)]
 
 (* ****** ****** *)
 //
@@ -566,114 +702,6 @@ end (*let*) // end of [p1_l0abl(buf,err)]
 (* ****** ****** *)
 
 #implfun
-p1_g0nid(buf, err) =
-let
-//
-val tok = buf.getk0()
-val tnd = tok.tnode()
-//
-in//let
-//
-case+ tnd of
-//
-|
-T_IDALP _ =>
-i0dnt_some(tok) where
-{
-  val () = buf.skip1()
-}
-|
-T_IDENT_sym _ =>
-i0dnt_some(tok) where
-{
-  val () = buf.skip1()
-}
-//
-|
-_(*non-ident*) =>
- ( err := err + 1; i0dnt_none(tok) )
-//
-end (*let*) // end of [p1_g0nid(buf,err)]
-
-(* ****** ****** *)
-
-#implfun
-p1_g0eid(buf, err) =
-let
-//
-val tok = buf.getk0()
-//
-in//let
-//
-case+
-tok.node() of
-//
-|
-T_IDALP _ =>
-i0dnt_some(tok) where
-{
-  val () = buf.skip1()
-}
-|
-T_IDSYM _ =>
-i0dnt_some(tok) where
-{
-  val () = buf.skip1()
-}
-//
-|
-T_AT0() =>
-i0dnt_some(tok) where
-{
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_AT0(*void*)
-  val tok = token_make_node(loc, tnd)
-}
-//
-|
-T_EQ0() =>
-i0dnt_some(tok) where
-{
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_EQ0(*void*)
-  val tok = token_make_node(loc, tnd)
-}
-//
-|
-T_LT0() =>
-i0dnt_some(tok) where
-{
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_LT0(*void*)
-  val tok = token_make_node(loc, tnd)
-}
-|
-T_GT0() =>
-i0dnt_some(tok) where
-{
-  val ( ) = buf.skip1()
-  val loc = tok.lctn((*void*))
-  val tnd = T0IDENT_GT0(*void*)
-  val tok = token_make_node(loc, tnd)
-}
-//
-|
-T_BSLSH((*void*)) =>
-let
-val () = buf.skip1() in i0dnt_some(tok)
-end (*let*) // end of [T_BSLSH]
-//
-|
-_(*non-ident*) => (err := err+1; i0dnt_none(tok))
-//
-end (*let*) // end of [p1_g0eid(buf,err)]
-
-(* ****** ****** *)
-
-#implfun
 p1_s0ymb(buf, err) =
 let
 //
@@ -702,6 +730,72 @@ in
 end (*let*) // end of [ rest-of-token ]
 //
 end (*let*) // end of [p1_s0ymb(buf,err)]
+
+(* ****** ****** *)
+
+local
+
+fun
+p1_napps
+( buf:
+! tkbf0
+, err: &sint >> _): g0exp =
+let
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+in//let
+//
+case+ tnd of
+//
+|
+T_IF0() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e1 =
+    p1_g0exp_app(buf, err)
+  val g0e2 =
+    p1_g0exp_THEN(buf, err)
+  val g0e3 =
+    p1_g0exp_ELSE(buf, err)
+//
+  val topt = optn_nil{token}()
+(*
+  val topt = popt_ENDIF(buf, err)
+*)
+//
+  val lres =
+  (
+    case+ topt of
+    | optn_nil() =>
+      (
+      case g0e3 of
+      |
+      g0exp_ELSE
+      (tels, g0e3) =>
+      (tknd.lctn() + g0e3.lctn())
+      )
+    | optn_cons(tok1) =>
+      (tknd.lctn() + tok1.lctn())
+  ) : loc_t // end of [val(lres)]
+//
+in
+  err := e00;
+  g0exp_make_node
+  ( lres
+  , G0Eif0(tok, g0e1, g0e2, g0e3, topt))
+end (*let*) // end of [T_IF0]
+//
+| _ (* rest-of-token *) =>
+(err := e00 + 1;
+g0exp_make_node(tok.lctn(), G0Etkerr(tok)))
+//
+end (*let*) // end of [p1_napps(buf,err)]
+
+in//local
+
+endloc (*local*) // end of [local(p1_g0exp)]
 
 (* ****** ****** *)
 //
