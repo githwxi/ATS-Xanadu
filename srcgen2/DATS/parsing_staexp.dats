@@ -927,6 +927,110 @@ end (*let*) // end of [p1_g0exp_atm(buf,err)]
 //
 (* ****** ****** *)
 //
+#implfun
+p1_g0exp_app
+  (buf, err) = let
+//
+val
+g0e0 = p1_g0exp_atm(buf, err)
+val
+g0es = p1_g0expseq_atm(buf, err)
+//
+in//let
+//
+case+ g0es of
+|
+list_nil() => g0e0
+|
+list_cons _ =>
+let
+  val g0e1 = list_last(g0es)
+  val loc0 = g0e0.lctn() + g0e1.lctn()
+in
+  g0exp_make_node
+  (loc0, G0Eapps(list_cons(g0e0, g0es)))
+end (*let*) // end of [list_cons]
+//
+end (*let*) // end of [p1_g0exp_app(buf,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+p1_g0exp_THEN
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in
+//
+case+ tnd of
+|
+T_THEN() => let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e1 = p1_g0exp(buf, err)
+in
+  err := e00; g0exp_THEN(tknd, g0e1)
+end // end of [T_THEN]
+|
+_(*non-T_THEN*) =>
+( // HX-2018-09-25: error
+  g0exp_THEN(tok, p1_g0exp(buf, err))
+) (* end of [non-T_THEN] *)
+//
+end(*let*)//end of [p1_g0exp_THEN(...)]
+//
+#implfun
+p1_g0exp_ELSE
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in
+//
+case+ tnd of
+|
+T_ELSE() => let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e1 = p1_g0exp(buf, err)
+in
+  err := e00; g0exp_ELSE(tknd, g0e1)
+end // end of [T_ELSE]
+|
+_(*non-T_ELSE*) =>
+( // HX-2018-09-25: error
+  g0exp_ELSE(tok, p1_g0exp(buf, err))
+) (* end of [non-T_ELSE] *)
+//
+end(*let*)//end of [p1_g0exp_ELSE(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+p1_g0expseq_atm
+  (buf, err) =
+(
+list_vt2t
+(ps_p1fun{g0exp}(buf, err, p1_g0exp_atm))
+)
+//
+(* ****** ****** *)
+//
+#implfun
+p1_g0expseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{g0exp}(buf, err, p1_g0exp))
+)
+//
+(* ****** ****** *)
+//
 (*
 idsort0::
   | s0tid
