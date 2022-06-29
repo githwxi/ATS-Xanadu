@@ -107,6 +107,10 @@ D0E = "./dynexp0.sats"
 #typedef a0tdf = $D0E.a0tdf
 
 (* ****** ****** *)
+
+#typedef wd0eclseq = $D0E.wd0eclseq
+
+(* ****** ****** *)
 //
 #absvwtp tkbf0_vtbx
 #vwtpdef tkbf0 = tkbf0_vtbx
