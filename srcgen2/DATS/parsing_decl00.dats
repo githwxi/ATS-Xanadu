@@ -728,7 +728,7 @@ let
 //
   val e00 = err
 //
-fun
+fnx
 loop
 ( buf:
 ! tkbf0 >> _
