@@ -324,6 +324,8 @@ val () = kwdins("#prefix", T0SRP_PREFIX)
 val () = kwdins("#pstfix", T0SRP_PSTFIX)
 val () = kwdins("#nonfix", T_SRP_NONFIX)
 //
+val () = kwdins("#symload", T_SRP_SYMLOAD)
+//
 end where
 {
   #symload
