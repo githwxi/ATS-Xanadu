@@ -566,8 +566,118 @@ end (*let*) // end of [p1_l0abl(buf,err)]
 (* ****** ****** *)
 
 #implfun
-p1_s0ymb
-  (buf, err) = let
+p1_g0nid(buf, err) =
+let
+//
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_IDALP _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+|
+T_IDENT_sym _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+//
+|
+_(*non-ident*) =>
+ ( err := err + 1; i0dnt_none(tok) )
+//
+end (*let*) // end of [p1_g0nid(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_g0eid(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+//
+|
+T_IDALP _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+|
+T_IDENT_sym _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+//
+(*
+|
+T_AT0() =>
+i0dnt_some(tok) where
+{
+  val ( ) = buf.skip1()
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_AT0(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+*)
+//
+|
+T_EQ0() =>
+i0dnt_some(tok) where
+{
+  val ( ) = buf.skip1()
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_EQ0(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+//
+|
+T_LT0() =>
+i0dnt_some(tok) where
+{
+  val ( ) = buf.skip1()
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_LT0(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+|
+T_GT0() =>
+i0dnt_some(tok) where
+{
+  val ( ) = buf.skip1()
+  val loc = tok.lctn((*void*))
+  val tnd = T0IDENT_GT0(*void*)
+  val tok = token_make_node(loc, tnd)
+}
+//
+|
+T_BSLSH((*void*)) =>
+let
+val () = buf.skip1() in i0dnt_some(tok)
+end (*let*) // end of [T_BSLSH]
+//
+|
+_(*non-ident*) => (err := err+1; i0dnt_none(tok))
+//
+end (*let*) // end of [p1_g0eid(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_s0ymb(buf, err) =
+let
 //
 val e00 = err
 val tok = buf.getk0()
@@ -901,7 +1011,7 @@ err := e00;
 d0tst_make_node
 (lres, D0TSTnode(tid0, teq1, topt, stcs))
 //
-end (* let *) // end of [p_d0tst(buf,err)]
+end (* let *) // end of [p1_d0tst(buf,err)]
 
 (* ****** ****** *)
 
@@ -1867,7 +1977,7 @@ case+ tnd of
   (err := e00 + 1; l0s0e_RBRACE_cons0(tok))
 ) (*case*) // end of [non-T_BAR]
 //
-end (*let*) // end-of-[p_l0s0e_RBRACE(buf,err)]
+end (*let*) // end-of-[p1_l0s0e_RBRACE(buf,err)]
 
 (* ****** ****** *)
 
