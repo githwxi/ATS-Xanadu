@@ -69,6 +69,7 @@ lctn with s0qid_get_lctn//staexp0
 #symload
 lctn with sort0_get_lctn//staexp0
 (* ****** ****** *)
+//
 #symload
 lctn with s0exp_get_lctn//staexp0
 #symload
@@ -77,6 +78,14 @@ lctn with s0tcn_get_lctn//staexp0
 lctn with d0tst_get_lctn//staexp0
 #symload
 lctn with s0tdf_get_lctn//staexp0
+//
+#symload
+lctn with d0pat_get_lctn//dynexp0
+#symload
+lctn with d0exp_get_lctn//dynexp0
+#symload
+lctn with d0ecl_get_lctn//dynexp0
+//
 (* ****** ****** *)
 #symload
 node with token_get_node//lexing0
@@ -279,6 +288,7 @@ prerrln("fp_d0ecl: tok = ", tok)
 in//let
 //
 case+ tnd of
+//
 |
 T_LOCAL() =>
 let
@@ -466,6 +476,37 @@ in
 err := e00;
 d0ecl_make_node(lres, D0Cdatasort(tknd, dtcs))
 end // end of [T_DATASORT()]
+//
+(* ****** ****** *)
+//
+|
+T_SRP_STATIC() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val dcl0 =
+    fp_d0ecl(f00, buf, err)
+  // end of [val]
+  val lres = tknd.lctn()+dcl0.lctn()
+in
+err := e00;
+d0ecl_make_node( lres, D0Cstatic(tknd, dcl0) )
+end // end of [T_SRP_STATIC]
+|
+T_SRP_EXTERN() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val dcl0 =
+    fp_d0ecl(f00, buf, err)
+  // end of [val]
+  val lres = tknd.lctn()+dcl0.lctn()
+in
+err := e00;
+d0ecl_make_node( lres, D0Cextern(tknd, dcl0) )
+end // end of [T_SRP_EXTERN]
 //
 (* ****** ****** *)
 //

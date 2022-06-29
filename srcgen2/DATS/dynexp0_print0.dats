@@ -155,11 +155,15 @@ D0Ctkskp(tok) =>
 print("D0Ctkskp(",tok,")")
 //
 |
-D0Clocal
-(tknd,head,tin1,body,tend) =>
-(
-print("D0Clocal(",tknd,";");
-print(head,";",tin1,";");print(body,";",tend,")"))
+D0Cextern
+(tknd,dcl1) =>
+print
+("D0Cextern(",tknd,";",dcl1,")")
+|
+D0Cstatic
+(tknd,dcl1) =>
+print
+("D0Cstatic(",tknd,";",dcl1,")")
 //
 |
 D0Cnonfix
@@ -171,6 +175,13 @@ D0Cfixity
 (tknd,dnts,popt) =>
 print
 ("D0Cfixity(",tknd,";",dnts,";",popt,")")
+//
+|
+D0Clocal
+(tknd,head,tin1,body,tend) =>
+(
+print("D0Clocal(",tknd,";");
+print(head,";",tin1,";");print(body,";",tend,")"))
 //
 |
 D0Cabssort
