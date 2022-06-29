@@ -58,7 +58,7 @@ case+ tnd of
 | T_INT02 _ => true
 | T_INT03 _ => true
 | _ (* non-INT0? *) => false
-) (*case*) // end of [t0_t0int(tnd)]
+) (*case*)//end-of-[t0_t0int(tnd)]
 
 #implfun
 t0_t0flt(tnd) =
@@ -68,7 +68,7 @@ case+ tnd of
 | T_FLT02 _ => true
 | T_FLT03 _ => true
 | _ (* non-FLT0? *) => false
-) (*case*) // end of [t0_t0flt(tnd)]
+) (*case*)//end-of-[t0_t0flt(tnd)]
 
 #implfun
 t0_t0chr(tnd) =
@@ -78,7 +78,7 @@ case+ tnd of
 | T_CHAR2_char _ => true
 | T_CHAR3_blsh _ => true
 | _ (* non-CHAR? *) => false
-) (*case*) // end of [t0_t0chr(tnd)]
+) (*case*)//end-of-[t0_t0chr(tnd)]
 
 #implfun
 t0_t0str(tnd) =
@@ -87,7 +87,42 @@ case+ tnd of
 | T_STRN1_clsd _ => true
 | T_STRN2_ncls _ => true
 | _ (* non-STRN? *) => false
-) (*case*) // end of [t0_t0str(tnd)]
+) (*case*)//end-of-[t0_t0str(tnd)]
+
+(* ****** ****** *)
+
+#implfun
+t0_g0nid(tnd) =
+(
+case+ tnd of
+//
+| T_IDALP _ => true
+| T_IDSYM _ => true
+//
+| _ (* non-ident *) => false
+//
+) (*case*)//end-of-[t0_g0nid(tnd)]
+
+(* ****** ****** *)
+
+#implfun
+t0_g0eid(tnd) =
+(
+case+ tnd of
+//
+| T_IDALP _ => true
+| T_IDSYM _ => true
+//
+| T_EQ0((*nil*)) => true
+//
+| T_LT0((*nil*)) => true
+| T_GT0((*nil*)) => true
+//
+| T_BSLSH((*nil*)) => true
+//
+| _ (* non-ident *) => false
+//
+) (*case*)//end-of-[t0_g0eid(tnd)]
 
 (* ****** ****** *)
 
@@ -103,7 +138,7 @@ case+ tnd of
 //
 | _(*otherwise*) => false
 //
-) (*case*) // end of [t0_s0tid(tnd)]
+) (*case*)//end-of-[t0_s0tid(tnd)]
 
 (* ****** ****** *)
 
@@ -113,7 +148,7 @@ t0_s0aid(tnd) =
 case+ tnd of
 |
 T_IDALP _ => true | _ => false
-) (*case*) // end of [t0_s0aid(tnd)]
+) (*case*)//end-of-[t0_s0aid(tnd)]
 
 (* ****** ****** *)
 
@@ -144,7 +179,7 @@ T_IDDLR _ => true
 | T_BSLSH() => true // "\\"
 //
 | _(* otherwise *) => false
-) (*case*) // end of [t0_s0eid(tnd)]
+) (*case*)//end-of-[t0_s0eid(tnd)]
 
 (* ****** ****** *)
 
@@ -175,7 +210,7 @@ T_IDDLR _ => true
 | T_BSLSH() => true // "\\"
 //
 | _(* otherwise *) => false
-) (*case*) // end of [t0_d0eid(tnd)]
+) (*case*)//end-of-[t0_d0eid(tnd)]
 
 (* ****** ****** *)
 
@@ -193,7 +228,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-EQ0 *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_EQ0]
+end (*let*)//end-of-[p1_EQ0(buf,err)]
 
 #implfun
 pq_EQ0(buf, err) =
@@ -210,7 +245,7 @@ optn_cons(tok) where
 { val () = buf.skip1() }
 |
 _ (* non-EQ0 *) => optn_nil()
-end (*let*) // end of [pq_EQ0]
+end (*let*)//end-of-[pq_EQ0(buf,err)]
 
 (* ****** ****** *)
 
@@ -228,7 +263,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-GT0 *) =>
 let val () = (err := e00 + 1) in tok end
-end // end of [p_GT0]
+end (*let*)//end-of-[p1_GT0(buf,err)]
 
 (* ****** ****** *)
 
@@ -246,7 +281,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-BAR *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_BAR]
+end (*let*) // end of [p1_BAR(buf,err)]
 
 #implfun
 pq_BAR(buf, err) =
@@ -281,7 +316,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-CLN *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_CLN]
+end (*let*) // end of [p1_CLN(buf,err)]
 
 (* ****** ****** *)
 
@@ -299,7 +334,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-EQGT *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_EQGT]
+end (*let*) // end of [p1_EQGT(buf,err)]
 
 (* ****** ****** *)
 
@@ -317,7 +352,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-GTDOT *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_GTDOT]
+end (*let*) // end of [p1_GTDOT(buf,err)]
 
 (* ****** ****** *)
 
@@ -354,7 +389,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-LPAREN *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_LPAREN]
+end (*let*) // end of [p1_LPAREN(...)]
 
 #implfun
 p1_RPAREN(buf, err) =
@@ -370,7 +405,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-RPAREN *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_RPAREN]
+end (*let*) // end of [p1_RPAREN(...)]
 
 (* ****** ****** *)
 
@@ -388,7 +423,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-LBRCKT *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_LBRCKT]
+end (*let*) // end of [p1_LBRCKT(...)]
 
 #implfun
 p1_RBRCKT(buf, err) =
@@ -404,7 +439,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-RBRCKT *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_RBRCKT]
+end (*let*) // end of [p1_RBRCKT(...)]
 
 (* ****** ****** *)
 
@@ -422,7 +457,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-LBRACE *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_LBRACE]
+end (*let*) // end of [p1_LBRACE(...)]
 
 #implfun
 pq_LBRACE(buf, err) =
@@ -455,7 +490,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-RBRACE *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_RBRACE]
+end (*let*) // end of [p1_RBRACE(...)]
 
 (* ****** ****** *)
 
@@ -473,7 +508,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-IN0 *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_IN0]
+end (*let*) // end of [p1_IN0(buf,err)]
 
 #implfun
 pq_IN0(buf, err) =
@@ -508,7 +543,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-OF0 *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_OF0]
+end (*let*) // end of [p1_OF0(buf,err)]
 
 (* ****** ****** *)
 
@@ -526,7 +561,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-WITH *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_WITH]
+end (*let*) // end of [p1_WITH(buf,err)]
 
 (* ****** ****** *)
 
@@ -544,7 +579,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-END *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_END]
+end (*let*) // end of [p1_END(buf,err)]
 
 (* ****** ****** *)
 
@@ -600,7 +635,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-ENDLET *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_ENDLET]
+end (*let*) // end of [p1_ENDLET(...)]
 
 (* ****** ****** *)
 
@@ -618,7 +653,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-ENDTRY *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_ENDTRY]
+end (*let*) // end of [p1_ENDTRY(...)]
 
 (* ****** ****** *)
 
@@ -636,7 +671,7 @@ let val () = buf.skip1() in tok end
 |
 _(* non-ENDLOC *) =>
 let val () = (err := e00 + 1) in tok end
-end (*let*) // end of [p_ENDLOC]
+end (*let*) // end of [p1_ENDLOC(...)]
 
 (* ****** ****** *)
 
@@ -655,7 +690,7 @@ optn_cons(tok) where
 { val () = buf.skip1() }
 |
 _ (* non-SRP_THEN *) => optn_nil()
-end (*let*) // end of [pq_SRP_THEN]
+end (*let*) // end of [pq_SRP_THEN(...)]
 
 (* ****** ****** *)
 //
