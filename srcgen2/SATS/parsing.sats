@@ -93,6 +93,10 @@ D0E = "./dynexp0.sats"
 #typedef s0qua = $S0E.s0qua
 //
 (* ****** ****** *)
+#typedef s0uni = $S0E.s0uni
+#typedef d0tcn = $S0E.d0tcn
+#typedef d0typ = $S0E.d0typ
+(* ****** ****** *)
 
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
@@ -309,6 +313,18 @@ pq_ids0t_anno: pq_fun(sort0)
 #typedef t0maglst=list(t0mag)
 //
 #typedef s0qualst=list(s0qua)
+//
+(* ****** ****** *)
+//
+#typedef s0unilst=list(s0uni)
+#typedef d0tcnlst=list(d0tcn)
+#typedef d0typlst=list(d0typ)
+//
+(* ****** ****** *)
+//
+#typedef d0patlst=list(d0pat)
+#typedef d0explst=list(d0exp)
+#typedef d0eclist=list(d0ecl)
 //
 (* ****** ****** *)
 fun

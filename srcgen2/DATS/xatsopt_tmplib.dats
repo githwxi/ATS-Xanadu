@@ -273,6 +273,14 @@ g_print<l0s0e_RBRACE>(lsrb) =
 l0s0e_RBRACE_fprint(g_print$out<>(), lsrb)
 //
 (* ****** ****** *)
+#impltmp
+g_print<s0uni>(s0u) =
+s0uni_fprint(g_print$out<>(), s0u)
+(* ****** ****** *)
+#impltmp
+g_print<d0tcn>(tcn) =
+d0tcn_fprint(g_print$out<>(), tcn)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d0pat>(d0p) =
