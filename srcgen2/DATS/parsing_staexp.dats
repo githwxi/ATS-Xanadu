@@ -2549,12 +2549,73 @@ end (*let*) // end of [ p1_d0tcn(buf,err) ]
 (* ****** ****** *)
 
 #implfun
+p1_d0typ(buf, err) =
+let
+//
+val e00 = err
+//
+val sid0 =
+  p1_s0eid(buf, err)
+val args =
+  p1_t0magseq(buf, err)
+val tres =
+  pq_ids0t_anno(buf, err)
+//
+val tok1 = p1_EQ0(buf, err)
+//
+val opt2 = pq_BAR(buf, err)
+//
+val dtcs =
+  p1_d0tcnseq_BAR(buf, err)
+//
+val lres =
+(
+case+ dtcs of
+|
+list_nil() =>
+(
+case+ opt2 of
+| optn_nil() =>
+  sid0.lctn() + tok1.lctn()
+| optn_cons(tok2) =>
+  sid0.lctn() + tok2.lctn()
+) (* end of [list_nil] *)
+|
+list_cons _ =>
+let
+val
+dtc1 = list_last(dtcs)
+in sid0.lctn()+dtc1.lctn() end
+) : loc_t // end of [val(lres)]
+//
+in//let
+//
+err := e00;
+d0typ_make_node
+( lres
+, D0TYPnode(sid0, args, tres, tok1, dtcs))
+//
+end (*let*) // end of [p1_d0typ( buf,err) ]
+
+(* ****** ****** *)
+
+#implfun
 p1_d0tcnseq_BAR(buf, err) =
 (
 //
 list_vt2t(ps_BAR_p1fun{d0tcn}(buf,err,p1_d0tcn))
 //
 ) (*case*) //end-of-[ p1_d0tcnseq_BAR(buf,err) ]
+
+(* ****** ****** *)
+
+#implfun
+p1_d0typseq_AND(buf, err) =
+(
+//
+list_vt2t(ps_AND_p1fun{d0typ}(buf,err,p1_d0typ))
+//
+) (*case*) //end-of-[ p1_d0typseq_AND(buf,err) ]
 
 (* ****** ****** *)
 
