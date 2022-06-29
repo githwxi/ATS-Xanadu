@@ -314,6 +314,9 @@ val () = kwdins("$rec_vt", T0TRCD24)//vtbx
 //
 (* HX: for IDSRP-keywords in ATS3 *)
 //
+val () = kwdins("#extern", T_SRP_EXTERN)
+val () = kwdins("#static", T_SRP_STATIC)
+//
 val () = kwdins("#infix0", T0SRP_INFIX0)
 val () = kwdins("#infixl", T0SRP_INFIXL)
 val () = kwdins("#infixr", T0SRP_INFIXR)

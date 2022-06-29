@@ -310,6 +310,11 @@ D0Cfixity of
 (token, i0dntlst, precopt)
 //
 |
+D0Cstatic of (token, d0ecl)
+|
+D0Cextern of (token, d0ecl)
+//
+|
 D0Clocal of
 ( token(*LOCAL*)
 , d0eclist(*head*)
