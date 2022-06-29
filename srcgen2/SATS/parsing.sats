@@ -250,6 +250,11 @@ fun p1_d0qid: p1_fun(d0qid)
 
 (* ****** ****** *)
 
+fun p1_g0nid: p1_fun(g0nid)
+fun p1_g0eid: p1_fun(g0eid)
+
+(* ****** ****** *)
+
 fun p1_l0abl: p1_fun(l0abl)
 
 (* ****** ****** *)
@@ -257,10 +262,10 @@ fun p1_l0abl: p1_fun(l0abl)
 fun p1_s0ymb: p1_fun(s0ymb)
 
 (* ****** ****** *)
-
-fun p1_g0nid: p1_fun(g0nid)
-fun p1_g0eid: p1_fun(g0eid)
-
+//
+fun p1_g0nam: p1_fun(g0nam)
+fun p1_g0exp: p1_fun(g0exp)
+//
 (* ****** ****** *)
 //
 (*
