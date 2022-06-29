@@ -268,6 +268,68 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+g0nam =
+G0NAM of
+(
+loctn, g0nam_node)
+#absimpl
+g0nam_tbox = g0nam
+//
+in (* in-of-local *)
+//
+#implfun
+g0nam_make_node
+(   loc,nod   ) = G0NAM(loc,nod)
+//
+#implfun
+g0nam_get_lctn(g0n) =
+let
+  val+G0NAM(loc,nod) = g0n in loc
+end
+#implfun
+g0nam_get_node(g0n) =
+let
+  val+G0NAM(loc,nod) = g0n in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+g0exp =
+G0EXP of
+(
+loctn, g0exp_node)
+#absimpl
+g0exp_tbox = g0exp
+//
+in (* in-of-local *)
+//
+#implfun
+g0exp_make_node
+(   loc,nod   ) = G0EXP(loc,nod)
+//
+#implfun
+g0exp_get_lctn(g0e) =
+let
+  val+G0EXP(loc,nod) = g0e in loc
+end
+#implfun
+g0exp_get_node(g0e) =
+let
+  val+G0EXP(loc,nod) = g0e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 sort0 =
 SORT0 of
 (

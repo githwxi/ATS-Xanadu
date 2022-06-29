@@ -419,6 +419,11 @@ g0nam_get_node(g0nam): g0nam_node
 #symload lctn with g0nam_get_lctn
 #symload node with g0nam_get_node
 //
+fun
+g0nam_make_node
+(loc:loc_t,gnd:g0nam_node): g0nam
+#symload g0nam with g0nam_make_node
+//
 (* ****** ****** *)
 //
 fun
@@ -428,6 +433,11 @@ g0exp_get_node(g0exp): g0exp_node
 //
 #symload lctn with g0exp_get_lctn
 #symload node with g0exp_get_node
+//
+fun
+g0exp_make_node
+(loc:loc_t,gnd:g0exp_node): g0exp
+#symload g0exp with g0exp_make_node
 //
 (* ****** ****** *)
 //

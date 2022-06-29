@@ -220,11 +220,11 @@ g0mag_fprint(g_print$out<>(), mag)
 //
 (* ****** ****** *)
 #impltmp
-g_print<g0exp_THEN>(exp) =
-g0exp_THEN_fprint(g_print$out<>(), exp)
+g_print<g0exp_THEN>(gthn) =
+g0exp_THEN_fprint(g_print$out<>(), gthn)
 #impltmp
-g_print<g0exp_ELSE>(exp) =
-g0exp_ELSE_fprint(g_print$out<>(), exp)
+g_print<g0exp_ELSE>(gels) =
+g0exp_ELSE_fprint(g_print$out<>(), gels)
 (* ****** ****** *)
 //
 #impltmp

@@ -69,9 +69,12 @@ lctn with s0qid_get_lctn//staexp0
 lctn with d0qid_get_lctn//staexp0
 (* ****** ****** *)
 #symload
-lctn with sort0_get_lctn//staexp0
+lctn with g0nam_get_lctn//staexp0
+#symload
+lctn with g0exp_get_lctn//staexp0
 (* ****** ****** *)
-//
+#symload
+lctn with sort0_get_lctn//staexp0
 #symload
 lctn with s0exp_get_lctn//staexp0
 #symload
