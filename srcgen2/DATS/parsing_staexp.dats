@@ -2443,21 +2443,118 @@ end (*let*) // end of [T_LBRACE]
 _ (*non-T_LBRACE*) =>
 (
 err := e00 + 1;
-s0uni_make_node(tok.lctn(), S0UNInone(tok)))
+s0uni_make_node(tok.lctn(),S0UNInone(tok)))
 //
-end (*let*) // end of [ p_s0uni(buf,err) ]
+end (*let*) // end-of-[ p1_s0uni(buf,err) ]
 
 (* ****** ****** *)
 
 #implfun
-p1_s0uniseq
-  (buf, err) =
+p1_s0uniseq(buf, err) =
 (
 //
-list_vt2t
-(ps_p1fun{s0uni}(buf, err, p1_s0uni))
+list_vt2t(ps_p1fun{s0uni}(buf,err,p1_s0uni))
 //
-) (*case*) // end of [ p_s0uniseq(buf,err) ]
+) (*case*) // end-of-[ p1_s0uniseq(buf,err) ]
+
+(* ****** ****** *)
+//
+(*
+d0tcn::
+| s0uniseq d0eid [s0exp] [OF sort0]
+*)
+//
+#implfun
+p1_d0tcn(buf, err) =
+let
+  val e00 = err
+//
+  val s0us =
+    p1_s0uniseq(buf, err)
+//
+  val dcon = p1_d0eid(buf, err)
+//
+  val s0is = // HX: indices
+    p1_s0expseq_atm(buf, err)
+//
+  val tok0 = buf.getk0((*void*))
+  val tnd0 = tok0.tnode((*void*))
+//
+in
+//
+case+ tnd0 of
+|
+T_OF0() =>
+let
+  val (  ) = buf.skip1()
+  val sarg = p1_s0exp(buf, err)
+  val lres =
+  (
+    case+ s0us of
+    | list_nil() =>
+      dcon.lctn() + sarg.lctn()
+    | list_cons(s0u0, _) =>
+      s0u0.lctn() + sarg.lctn()
+  ) : loc_t // end of [val]
+in//let
+err := e00;
+d0tcn_make_node
+( lres
+, D0TCNnode
+  (s0us, dcon, s0is, optn_cons(sarg)))
+end (*let*) // end of [T_OF0]
+//
+|
+_(*non-T_OF0*) =>
+let
+//
+val lres =
+(
+case+ s0us of
+| list_nil() =>
+  (
+  case+ s0is of
+  | list_nil _ => dcon.lctn()
+  | list_cons _ =>
+    let
+      val
+      s0i1 = list_last(s0is)
+    in
+      dcon.lctn() + s0i1.lctn()
+    end
+  )
+| list_cons(s0u0, _) =>
+  (
+  case+ s0is of
+  | list_nil() => s0u0.lctn()
+  | list_cons _ =>
+    let
+      val
+      s0i1 = list_last(s0is)
+    in
+      s0u0.lctn() + s0i1.lctn()
+    end
+  )
+) : loc_t // end of [val(lres)]
+//
+in//let
+err := e00;
+d0tcn_make_node
+( lres
+, D0TCNnode(s0us, dcon, s0is, optn_nil()))
+end
+//
+end (*let*) // end of [ p1_d0tcn(buf,err) ]
+
+(* ****** ****** *)
+
+#implfun
+p1_d0tcnseq_BAR(buf, err) =
+(
+//
+list_vt2t(ps_BAR_p1fun{d0tcn}(buf,err,p1_d0tcn))
+//
+) (*case*) //end-of-[ p1_d0tcnseq_BAR(buf,err) ]
 
 (* ****** ****** *)
 
