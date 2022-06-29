@@ -619,6 +619,33 @@ end (*let*) // end of [s0tdf_fprint(out,stdf)]
 (* ****** ****** *)
 
 #implfun
+g0exp_THEN_fprint
+  (out, gthn) =
+(
+case+ gthn of
+|
+g0exp_THEN(tok, g0e) =>
+print("g0exp_THEN(", tok, ";", g0e, ")")
+) where
+{
+#impltmp g_print$out<>() = out
+} (*where*) // end of [g0exp_THEN_fprint]
+#implfun
+g0exp_ELSE_fprint
+  (out, gels) =
+(
+case+ gels of
+|
+g0exp_ELSE(tok, g0e) =>
+print("g0exp_ELSE(", tok, ";", g0e, ")")
+) where
+{
+#impltmp g_print$out<>() = out
+} (*where*) // end of [g0exp_ELSE_fprint]
+
+(* ****** ****** *)
+
+#implfun
 s0exp_RPAREN_fprint
   (out, srp) =
 let

@@ -77,7 +77,7 @@ tnode with token_get_node//lexing0
 //
 #extern
 fun p1_g0exp_atm: p1_fun(g0exp)
-extern
+#extern
 fun p1_g0exp_app: p1_fun(g0exp)
 //
 #extern
@@ -85,7 +85,7 @@ fun p1_g0exp_THEN: p1_fun(g0exp_THEN)
 #extern
 fun p1_g0exp_ELSE: p1_fun(g0exp_ELSE)
 //
-extern
+#extern
 fun p1_g0expseq_atm: p1_fun(g0explst)
 #extern
 fun p_g0expseq_COMMA: p1_fun(g0explst)
@@ -767,24 +767,24 @@ T_IF0() => let
 //
   val lres =
   (
-    case+ topt of
-    | optn_nil() =>
-      (
-      case g0e3 of
-      |
-      g0exp_ELSE
-      (tels, g0e3) =>
-      (tknd.lctn() + g0e3.lctn())
-      )
-    | optn_cons(tok1) =>
-      (tknd.lctn() + tok1.lctn())
+  case+ topt of
+  | optn_nil() =>
+    (
+    case g0e3 of
+    |
+    g0exp_ELSE
+    (tels, g0e3) =>
+    (tknd.lctn() + g0e3.lctn())
+    )
+  | optn_cons(tok1) =>
+    (tknd.lctn() + tok1.lctn())
   ) : loc_t // end of [val(lres)]
 //
 in
-  err := e00;
-  g0exp_make_node
-  ( lres
-  , G0Eif0(tok, g0e1, g0e2, g0e3, topt))
+err := e00;
+g0exp_make_node
+( lres
+, G0Eifexp(tok, g0e1, g0e2, g0e3, topt))
 end (*let*) // end of [T_IF0]
 //
 | _ (* rest-of-token *) =>
