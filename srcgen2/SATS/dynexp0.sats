@@ -88,6 +88,11 @@ S0E = "./staexp0.sats"
 #typedef d0eid = $S0E.d0eid
 #typedef d0qid = $S0E.d0qid
 (* ****** ****** *)
+#typedef g0nid = $S0E.g0nid
+#typedef g0eid = $S0E.g0eid
+#typedef g0nam = $S0E.g0nam
+#typedef g0exp = $S0E.g0exp
+(* ****** ****** *)
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
@@ -356,6 +361,11 @@ D0Cabsimpl of
 ( token
 , s0qid
 , s0maglst, sort0opt, token, s0exp)
+//
+|
+D0Cinclude of (token, g0exp)
+|
+D0Cstaload of (token, g0exp)
 //
 |
 D0Csymload of

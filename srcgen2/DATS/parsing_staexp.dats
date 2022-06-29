@@ -615,13 +615,12 @@ i0dnt_some(tok) where
   val () = buf.skip1()
 }
 |
-T_IDENT_sym _ =>
+T_IDSYM _ =>
 i0dnt_some(tok) where
 {
   val () = buf.skip1()
 }
 //
-(*
 |
 T_AT0() =>
 i0dnt_some(tok) where
@@ -631,7 +630,6 @@ i0dnt_some(tok) where
   val tnd = T0IDENT_AT0(*void*)
   val tok = token_make_node(loc, tnd)
 }
-*)
 //
 |
 T_EQ0() =>

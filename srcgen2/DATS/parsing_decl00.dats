@@ -538,6 +538,32 @@ d0ecl_make_node( lres, D0Cextern(tknd, dcl0) )
 end // end of [T_SRP_EXTERN]
 //
 (* ****** ****** *)
+//
+|
+T_SRP_INCLUDE() =>
+let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e0 = p1_g0exp(buf, err)
+  val lres = tknd.lctn()+g0e0.lctn()
+in//let
+err := e00;
+d0ecl_make_node( lres, D0Cinclude(tknd, g0e0) )
+end // end of [T_SRP_INCLUDE(...)]
+|
+T_SRP_STALOAD() =>
+let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e0 = p1_g0exp(buf, err)
+  val lres = tknd.lctn()+g0e0.lctn()
+in//let
+err := e00;
+d0ecl_make_node( lres, D0Cstaload(tknd, g0e0) )
+end // end of [T_SRP_STALOAD(...)]
+//
+(* ****** ****** *)
+//
 |
 T_SRP_SYMLOAD() => let
 //
