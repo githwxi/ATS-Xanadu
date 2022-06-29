@@ -65,6 +65,8 @@ lctn with s0mag_get_lctn//staexp0
 lctn with t0mag_get_lctn//staexp0
 #symload
 lctn with s0qid_get_lctn//staexp0
+#symload
+lctn with d0qid_get_lctn//staexp0
 (* ****** ****** *)
 #symload
 lctn with sort0_get_lctn//staexp0
@@ -98,6 +100,33 @@ node with l0abl_get_node//staexp0
 tnode with token_get_node//lexing0
 (* ****** ****** *)
 #symload + with add_loctn_loctn//locinfo
+(* ****** ****** *)
+
+fun
+precopt_lctn
+( opt
+: precopt)
+: optn_vt(loc_t) =
+(
+case+ opt of
+| PRECnil0() =>
+  optn_vt_nil()
+| PRECint1(tok) =>
+  optn_vt_cons(tok.lctn())
+|
+PRECopr2(id0, pmd) =>
+(
+case+ pmd of
+|
+PMODnone() =>
+optn_vt_cons(id0.lctn())
+|
+PMODsome
+(tbeg, _, tend) =>
+optn_vt_cons(id0.lctn()+tend.lctn())
+)
+) (*case*) // end of [precopt_lctn(precopt)]
+
 (* ****** ****** *)
 //
 #extern
@@ -509,6 +538,51 @@ d0ecl_make_node( lres, D0Cextern(tknd, dcl0) )
 end // end of [T_SRP_EXTERN]
 //
 (* ****** ****** *)
+|
+T_SRP_SYMLOAD() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val symb =
+    p1_s0ymb(buf, err)
+  val twth =
+    p1_WITH( buf, err )
+  val dqid =
+    p1_d0qid( buf, err )
+//
+  val tok1 = buf.getk0()
+  val opt1 =
+  (
+    case+
+    tok1.node() of
+    | T_OF0() =>
+      p1_precopt
+      (buf, err) where
+      {
+        val () = buf.skip1()
+      }
+    | _(*non-T_OF0*) => PRECnil0()
+  ) : precopt // end of [val]
+//
+  val lopt = precopt_lctn(opt1)
+  val lres =
+  (
+  case+ lopt of
+  | ~
+  optn_vt_nil() =>
+  (tknd.lctn() + dqid.lctn())
+  | ~
+  optn_vt_cons(loc1) => tknd.lctn() + loc1
+  ) : loc_t // end of [ val(lrec) ]
+//
+in
+err := e00;
+d0ecl_make_node
+(lres, D0Csymload(tknd, symb, twth, dqid, opt1))
+end (*let*) // end of [T_SRP_SYMLOAD(...)]
+//
+(* ****** ****** *)
 //
 | T_SRP_NONFIX() =>
 let
@@ -561,16 +635,37 @@ let
     | _(* non-T_OF0 *) => PRECnil0()
   ) : precopt // end of [val]
 //
-  val lres =
+  val lopt = precopt_lctn(opt1)
+  val lopt =
+  (
+  case+ lopt of
+  | !
+  optn_vt_cons _ => lopt
+  | ~
+  optn_vt_nil( ) =>
   (
     case+ dnts of
-    | list_nil() => loc0
+    | list_nil() =>
+      (
+        optn_vt_nil()
+      )
     | list_cons _ =>
-      let
-      val dnt1 =
-      list_last(dnts) in loc0+dnt1.lctn()
-      end // end of [list_cons]
+      (
+        optn_vt_cons(dnt1.lctn())
+      ) where
+      {
+        val dnt1 = list_last(dnts)
+      }
+  )
+  ) : optn_vt(loc_t) // end of [val]
+//
+  val lres =
+  (
+    case+ lopt of
+    | ~optn_vt_nil() => loc0
+    | ~optn_vt_cons(loc1) => loc0 + loc1
   ) : loc_t // end of [val(lres)]
+//
 in//let
 err := e00;
 d0ecl_make_node(lres, D0Cfixity(tknd,dnts,opt1))

@@ -84,6 +84,10 @@ S0E = "./staexp0.sats"
 #typedef s0eid = $S0E.s0eid
 #typedef s0qid = $S0E.s0qid
 (* ****** ****** *)
+#typedef d0pid = $S0E.d0pid
+#typedef d0eid = $S0E.d0eid
+#typedef d0qid = $S0E.d0qid
+(* ****** ****** *)
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
@@ -98,11 +102,6 @@ S0E = "./staexp0.sats"
 #typedef t0arg = $S0E.t0arg
 #typedef t0mag = $S0E.t0mag
 #typedef s0qua = $S0E.s0qua
-//
-(* ****** ****** *)
-//
-#typedef d0pid = $S0E.d0pid
-#typedef d0eid = $S0E.d0eid
 //
 (* ****** ****** *)
 #typedef tokenlst = list(token)
@@ -363,7 +362,7 @@ D0Csymload of
 ( token
 , s0ymb
 , token(*WITH*)
-, d0qid(*qual-id*), preopt)
+, d0qid(*qual-id*), precopt)
 //
 |
 D0Cdatasort of

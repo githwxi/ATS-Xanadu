@@ -4500,7 +4500,7 @@ in
 err := e0;
 d0ecl_make_node
 (loc_res, D0Csymload(tok, sym, twth, dqid, tint))
-end // end of [#STALOAD(...)]
+end // end of [#SYMLOAD(...)]
 //
 | T_SRP_NONFIX() => let
 //
