@@ -239,17 +239,22 @@ in//let
 case+
 g0n.node() of
 //
-| G0Nid0(id0) =>
-  print("G0Nid0(", id0, ")")
+|
+G0Nid0(id0) =>
+print("G0Nid0(", id0, ")")
 //
-| G0Nint(tok) =>
-  print("G0Nint(", tok, ")")
-| G0Nchr(tok) =>
-  print("G0Nchr(", tok, ")")
-| G0Nflt(tok) =>
-  print("G0Nflt(", tok, ")")
-| G0Nstr(tok) =>
-  print("G0Nstr(", tok, ")")
+|
+G0Nint(tok) =>
+print("G0Nint(", tok, ")")
+|
+G0Nchr(tok) =>
+print("G0Nchr(", tok, ")")
+|
+G0Nflt(tok) =>
+print("G0Nflt(", tok, ")")
+|
+G0Nstr(tok) =>
+print("G0Nstr(", tok, ")")
 //
 |
 G0Nlist(tk1, gns, tk2) =>
@@ -259,9 +264,58 @@ print
 |
 G0Nnone0(   ) => print("G0Nnone0(", ")")
 |
-G0Nnone1(tok) => print("G0Nnone1(", tok, ")")
+G0Ntkerr(tok) => print("G0Ntkerr(", tok, ")")
 //
-end (*let*) // end of [g0nam_fprint]
+end (*let*) // end of [g0nam_fprint(g0n)]
+
+(* ****** ****** *)
+
+#implfun
+g0exp_fprint
+(out, g0e) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+g0e.node() of
+|
+G0Eid0(id0) =>
+print("G0Eid0(", id0, ")")
+//
+|
+G0Eint(tok) =>
+print("G0Eint(", tok, ")")
+|
+G0Echr(tok) =>
+print("G0Echr(", tok, ")")
+|
+G0Eflt(tok) =>
+print("G0Eflt(", tok, ")")
+|
+G0Estr(tok) =>
+print("G0Estr(", tok, ")")
+//
+|
+G0Eapps(ges) =>
+print("G0Eapps(", ges, ")")
+|
+G0Elist(tkb, ges, tke) =>
+print
+("G0Elist(", tkb, ";", ges, ",", tke, ")")
+//
+|
+G0Eifexp
+(tknd,g0e1,g0e2,g0e3,topt) =>
+(
+print("G0Eifexp(",tknd,";");
+print(g0e1,";",g0e2,";",g0e3,";",topt,")"))
+//
+|
+G0Ntkerr(tok) => print("G0Ntkerr(", tok, ")")
+//
+end (*let*) // end of [g0exp_fprint(g0e)]
 
 (* ****** ****** *)
 
