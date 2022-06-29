@@ -667,8 +667,10 @@ end (*let*) // end of [s0exp_RPAREN_fprint]
 l0s0e_RBRACE_fprint
   (out, lsrb) =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
 in//let
 case+ lsrb of
 |
@@ -678,6 +680,69 @@ print("l0s0e_RBRACE_cons0(",tbar,")")
 l0s0e_RBRACE_cons1(tok1, lses, tok2) =>
 print("l0s0e_RBRACE_cons1(",tok1,";",lses,";",tok2,")")
 end (*let*) // end of [s0exp_RBRACE_fprint]
+
+(* ****** ****** *)
+
+#implfun
+s0uni_fprint
+  (out, s0u0) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+//
+case+
+s0u0.node() of
+|
+S0UNInone(tok) =>
+print("S0UNInone(",tok,")")
+|
+S0UNIsome(tbeg, s0qs, tend) =>
+print("S0UNIsome(",tbeg,";",s0qs,";",tend,")")
+//
+end (*let*) // end of [s0uni_fprint]
+
+(* ****** ****** *)
+
+#implfun
+d0tcn_fprint
+( out, tcn ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+tcn.node() of
+|
+D0TCNnode
+(s0us, deid, s0is, tres) =>
+(
+print("D0TCNnode(");
+print(s0us,";",deid,";",s0is,";",tres,")"))
+end (*let*) // end of [d0tcn_fprint]
+
+(* ****** ****** *)
+
+#implfun
+d0typ_fprint
+( out, typ ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+typ.node() of
+|
+D0TYPnode
+(deid, tmas, tres, teq1, dtcs) =>
+(
+print("D0TYPnode(",deid,";");
+print(tmas,";",tres,";",teq1,";",dtcs,")"))
+end (*let*) // end of [d0typ_fprint]
 
 (* ****** ****** *)
 

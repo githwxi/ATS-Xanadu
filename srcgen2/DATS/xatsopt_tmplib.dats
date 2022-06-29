@@ -228,8 +228,8 @@ g0exp_ELSE_fprint(g_print$out<>(), gels)
 (* ****** ****** *)
 //
 #impltmp
-g_print<s0tcn>(tcn) =
-s0tcn_fprint(g_print$out<>(), tcn)
+g_print<s0tcn>(stc) =
+s0tcn_fprint(g_print$out<>(), stc)
 #impltmp
 g_print<d0tst>(dst) =
 d0tst_fprint(g_print$out<>(), dst)
@@ -278,8 +278,11 @@ g_print<s0uni>(s0u) =
 s0uni_fprint(g_print$out<>(), s0u)
 (* ****** ****** *)
 #impltmp
-g_print<d0tcn>(tcn) =
-d0tcn_fprint(g_print$out<>(), tcn)
+g_print<d0tcn>(dtc) =
+d0tcn_fprint(g_print$out<>(), dtc)
+#impltmp
+g_print<d0typ>(dtp) =
+d0typ_fprint(g_print$out<>(), dtp)
 (* ****** ****** *)
 //
 #impltmp
