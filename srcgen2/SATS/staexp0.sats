@@ -611,7 +611,7 @@ S0TDFtsub of
 (* ****** ****** *)
 fun
 s0tdf_fprint
-(out:FILR, dst:s0tdf): void
+(out:FILR, tdf:s0tdf): void
 (* ****** ****** *)
 //
 fun
@@ -859,7 +859,7 @@ l0s0e_RBRACE_cons1 of (token, l0s0elst, token)
 //
 fun
 s0exp_fprint
-(out:FILR, dst:s0exp): void
+(out:FILR, s0e:s0exp): void
 fun
 s0exp_RPAREN_fprint
 (out:FILR, srp:s0exp_RPAREN): void
@@ -900,6 +900,13 @@ D0TCNnode of
 ( s0unilst
 , d0eid(*nam*), s0explst, s0expopt) 
 //
+(* ****** ****** *)
+fun
+s0uni_fprint
+(out:FILR, s0e:s0uni): void
+fun
+d0tcn_fprint
+(out:FILR, s0e:d0tcn): void
 (* ****** ****** *)
 fun
 s0uni_get_lctn(s0uni): loc_t
