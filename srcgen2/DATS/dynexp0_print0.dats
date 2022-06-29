@@ -227,6 +227,13 @@ print("D0Cabsimpl(",tknd,";");
 print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 |
+D0Cinclude(tknd,g0e1) =>
+print("D0Cinclude(",tknd,";",g0e1,")")
+|
+D0Cstaload(tknd,g0e1) =>
+print("D0Cstaload(",tknd,";",g0e1,")")
+//
+|
 D0Csymload
 (tknd,symb,twth,dqid,prec) =>
 (
