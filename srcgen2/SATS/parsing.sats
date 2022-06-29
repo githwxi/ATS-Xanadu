@@ -303,8 +303,10 @@ pq_sort0_anno: pq_fun(sort0)
 fun
 pq_ids0t_anno: pq_fun(sort0)
 (* ****** ****** *)
+//
 #typedef s0tcnlst=list(s0tcn)
 #typedef d0tstlst=list(d0tst)
+//
 (* ****** ****** *)
 //
 #typedef s0arglst=list(s0arg)
@@ -316,17 +318,6 @@ pq_ids0t_anno: pq_fun(sort0)
 //
 (* ****** ****** *)
 //
-#typedef s0unilst=list(s0uni)
-#typedef d0tcnlst=list(d0tcn)
-#typedef d0typlst=list(d0typ)
-//
-(* ****** ****** *)
-//
-#typedef d0patlst=list(d0pat)
-#typedef d0explst=list(d0exp)
-#typedef d0eclist=list(d0ecl)
-//
-(* ****** ****** *)
 fun
 p1_s0magseq: p1_fun(s0maglst)
 fun
@@ -356,15 +347,32 @@ fun
 p1_s0quaseq_BSCLN: p1_fun(s0qualst)
 (* ****** ****** *)
 //
+#typedef s0unilst=list(s0uni)
+#typedef d0tcnlst=list(d0tcn)
+#typedef d0typlst=list(d0typ)
+//
+(* ****** ****** *)
+//
+#typedef d0patlst=list(d0pat)
+#typedef d0explst=list(d0exp)
+#typedef d0eclist=list(d0ecl)
+//
+(* ****** ****** *)
+//
 (*
 d0typ ::=
 | s0eid s0mag EQ d0tcnseq_BAR
 *)
 //
 fun
+p1_s0uni: p1_fun(s0uni)
+fun
 p1_d0tcn: p1_fun(d0tcn)
 fun
 p1_d0typ: p1_fun(d0typ)
+//
+fun
+p1_s0uniseq: p1_fun(s0unilst)
 fun
 p1_d0tcnseq_BAR: p1_fun(d0tcnlst)
 fun
