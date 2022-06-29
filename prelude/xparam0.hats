@@ -35,4 +35,4 @@
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_xparam0.hats] *)
+(* end of [ATS3/XANADU_prelude_xparam0.hats] *)

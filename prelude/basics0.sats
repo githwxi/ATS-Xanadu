@@ -1080,7 +1080,7 @@ strqcon_vt
 strqcon_vt_nil
 ( a, 0(*len*) ) of ((*void*))
 |
-{ n:int | n >= 0 }
+{n:int | n >= 0}
 strqcon_vt_cons
 ( a, n+1(*len*) ) of (a, streaq_vt(a,n))
 where
@@ -1096,4 +1096,4 @@ strq(*(a0,ln)*) = streaq(* (a0,ln) *)
 strq_vt(*(a0,ln)*) = streaq_vt(*(a0,ln)*)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_basics0.sats] *)
+(* end of [ATS3/XANADU_prelude_basics0.sats] *)

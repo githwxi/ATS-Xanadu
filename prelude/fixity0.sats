@@ -208,4 +208,4 @@ VERBOSE_FIXITY0
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_fixity0.sats] *)
+(* end of [ATS3/XANADU_prelude_fixity0.sats] *)

@@ -49,4 +49,4 @@ excptcon NotFoundExn of () // to be found but not
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_excptn0.sats] *)
+(* end of [ATS3/XANADU_prelude_excptn0.sats] *)
