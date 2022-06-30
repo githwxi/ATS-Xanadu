@@ -295,6 +295,25 @@ d0exp_fprint(g_print$out<>(), d0e)
 g_print<d0ecl>(dcl) =
 d0ecl_fprint(g_print$out<>(), dcl)
 //
+(* ****** ****** *)
+#impltmp
+g_print<s0qag>(sqa) =
+s0qag_fprint(g_print$out<>(), sqa)
+#impltmp
+g_print<t0qag>(tqa) =
+t0qag_fprint(g_print$out<>(), tqa)
+#impltmp
+g_print<t0iag>(tia) =
+t0iag_fprint(g_print$out<>(), tia)
+(* ****** ****** *)
+#impltmp
+g_print<a0typ>(a0t) =
+a0typ_fprint(g_print$out<>(), a0t)
+#impltmp
+g_print<d0arg>(d0a) =
+d0arg_fprint(g_print$out<>(), d0a)
+(* ****** ****** *)
+//
 #impltmp
 g_print<a0tdf>(tdf) =
 a0tdf_fprint(g_print$out<>(), tdf)
@@ -325,6 +344,10 @@ d0res_fprint(g_print$out<>(), dres)
 #impltmp
 g_print<w0s0e>(ws0e) =
 w0s0e_fprint(g_print$out<>(), ws0e)
+(* ****** ****** *)
+#impltmp
+g_print<d0cstdcl>(dcst) =
+d0cstdcl_fprint(g_print$out<>(), dcst)
 (* ****** ****** *)
 #impltmp
 g_print<wd0eclseq>(wdcs) =
