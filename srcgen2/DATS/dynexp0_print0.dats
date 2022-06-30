@@ -249,10 +249,62 @@ D0Cdatatype(tknd,dtps,wdcs) =>
 print("D0Cdatatype(",tknd,";",dtps,";",wdcs,")")
 //
 |
+D0Cdynconst(tknd,tqas,dcls) =>
+print("D0Cdynconst(",tknd,";",tqas,";",dcls,")")
+//
+|
 D0Cerrck(lvl(*err-level*),dcl) => print("D0Cerrck(",lvl,";",dcl,")")
 //
 end (*let*) // end of [d0ecl_fprint(out,dcl)]
 
+(* ****** ****** *)
+//
+#implfun
+a0typ_fprint
+(out, a0t) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+a0t.node() of
+|
+A0TYPsome(s0e1,topt) =>
+print("A0TYPsome(",s0e1,";",topt,")")
+end (*let*) // end of [a0typ_fprint(out,a0t)]
+//
+(* ****** ****** *)
+//
+#implfun
+d0arg_fprint
+(out, d0a) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d0a.node() of
+|
+D0ARGnone
+(  tok0  ) =>
+print("D0ARGnone(",tok0,")")
+|
+D0ARGsta0
+(tbeg,sqas,tend) =>
+print("D0ARGsta0(",tbeg,";",sqas,";",tend,")")
+|
+D0ARGdyn1
+(  seid  ) =>
+print("D0ARGdyn1(",seid,")")
+|
+D0ARGdyn2
+(tbeg,a0ts,atsq,tend) =>
+print("D0ARGdyn2(",tbeg,";",a0ts,";",atsq,";",tend,")")
+//
+end (*let*) // end of [d0arg_fprint(out,d0a)]
+//
 (* ****** ****** *)
 
 #implfun
@@ -318,7 +370,7 @@ precmod_fprint
   (out, pmd) =
 let
 #impltmp g_print$out<>() = out
-in
+in//let
 case+ pmd of
 |
 PMODnone() => print("PRECMODnone(", ")")
@@ -328,6 +380,29 @@ print
 ("PMODsome(", tkb, ";", int, ";", tke, ")")
 end (*let*) // end of [precmod_fprint]
 //
+(* ****** ****** *)
+
+#implfun
+d0cstdcl_fprint
+  (out, dcst) =
+let
+//
+(*
+val lctn = dcst.lctn()
+*)
+val dpid = dcst.dpid()
+val darg = dcst.darg()
+val sres = dcst.sres()
+val dres = dcst.dres()
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print
+("D0CSTDCL("
+,dpid,";",darg,";",sres,";",dres,")")
+end (*let*) // end of [d0cstdcl_fprint]
+
 (* ****** ****** *)
 //
 #implfun

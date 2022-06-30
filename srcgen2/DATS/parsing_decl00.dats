@@ -1138,8 +1138,7 @@ let
 in//let
   err := e00
 ; d0arg_make_node
-  ( lres
-  , D0ARGsome_dyn2(tbeg, arg1, opt2, tend))
+  (lres, D0ARGdyn2(tbeg,arg1,opt2,tend))
 end
 //
 |
@@ -1152,8 +1151,7 @@ T_LBRACE() => let
   val lres = tbeg.lctn()+tend.lctn()
 in
   err := e00
-; d0arg_make_node
-  (lres, D0ARGsome_sta(tbeg, s0qs, tend))
+; d0arg(lres, D0ARGsta0(tbeg, s0qs, tend))
 end // end of [T_LBRACE]
 //
 | _
@@ -1163,8 +1161,8 @@ let
     p1_s0eid(buf, err)
   val loc0 = sid0.lctn()
 in
-err := e00;
-d0arg_make_node(loc0, D0ARGsome_dyn1(sid0))
+  err := e00
+; d0arg_make_node(loc0, D0ARGdyn1( sid0 ))
 end (*let*) // end of [t0_s0eid(tnd)]
 //
 |
@@ -1190,6 +1188,7 @@ list_vt2t(ps_p1fun{d0arg}(buf,err,p1_d0arg))
 p1_s0res(buf, err) =
 let
 //
+val e00 = err
 val tok = buf.getk0()
 //
 in//let
@@ -1199,8 +1198,8 @@ tok.node() of
 |
 T_CLN() =>
 (
-  S0RESsome(seff, s0e1)
-) where
+err := e00;
+S0RESsome(seff, s0e1)) where
 {
 val tcln = tok
 val (  ) = buf.skip1()
@@ -1228,13 +1227,33 @@ let
 //
   val lres = tbeg.lctn()+tend.lctn()
 in
+err := e00;
 S0RESsome(S0EFFsome(tbeg,s0fs,tend), s0e1)
 end (*let*) // end of [T_CLNLT]
 |
-_(* non-T_CLNLT *) => S0RESnone( (*void*) )
+_(*non-T_CLN/CLNLT*) => S0RESnone((*void*))
 //
 end (*let*) // end of [ p1_s0res(buf, err) ]
 //
+(* ****** ****** *)
+
+#implfun
+p1_d0res(buf, err) =
+let
+val e00 = err
+val tok = buf.getk0()
+in//let
+//
+case+
+tok.node() of
+(*
+|
+T_EQ0() => D0RESnone()
+*)
+| _(*non-T_EQ0*) => D0RESnone((*void*))
+//
+end (*let*) // end of [ p1_d0res(buf, err) ]
+
 (* ****** ****** *)
 
 #implfun

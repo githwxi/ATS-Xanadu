@@ -399,6 +399,11 @@ D0CSTDCL
 , darg
 , sres, dres) = dcst in dres end
 //
+#implfun
+d0cstdcl_make_args
+(lctn, dpid, darg, sred, dres) =
+D0CSTDCL(lctn, dpid, darg, sred, dres)
+//
 endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)

@@ -2793,9 +2793,10 @@ implement
 p_effs0expopt
   (buf, err) = let
 //
+val e00 = err
 val tok = buf.get0()
 //
-in
+in//let
 //
 case+
 tok.node() of
@@ -2805,6 +2806,7 @@ tok.node() of
       p_apps0exp_NEQ(buf, err)
     // end of [val]
   in
+    err := e00;
     EFFS0EXPsome(s0e_res)
 (*
     EFFS0EXPsome
@@ -2828,6 +2830,7 @@ tok.node() of
     // end of [val]
     val loc_res = tbeg.loc() + tend.loc()
   in
+    err := e00;
     EFFS0EXPsome
       (S0EFFsome(tbeg, s0es, tend), s0e_res)
     // EFFS0EXPsome

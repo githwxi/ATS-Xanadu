@@ -653,12 +653,12 @@ d0arg_node =
 |
 D0ARGnone of token
 |
-D0ARGsome_sta of
+D0ARGsta0 of
 (token, s0qualst, token)
 |
-D0ARGsome_dyn1 of (s0eid)
+D0ARGdyn1 of (s0eid)
 |
-D0ARGsome_dyn2 of
+D0ARGdyn2 of
 (token
 ,a0typlst,a0typlstopt,token)
 //
@@ -667,6 +667,11 @@ where
 #typedef
 a0typlstopt = optn(a0typlst)
 }
+(* ****** ****** *)
+fun
+a0typ_fprint(FILR, a0typ): void
+fun
+d0arg_fprint(FILR, d0arg): void
 (* ****** ****** *)
 //
 fun
@@ -744,6 +749,11 @@ D0CSTDCL of @{
 , sres= s0res, dres= d0res
 }
 *)
+//
+fun
+d0cstdcl_fprint
+(out: FILR,dcst: d0cstdcl): void
+//
 fun
 d0cstdcl_get_lctn:(d0cstdcl)->loc_t
 fun

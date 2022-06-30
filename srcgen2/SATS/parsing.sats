@@ -393,7 +393,9 @@ fun p1_d0typ: p1_fun( d0typ )
 fun p1_a0typ: p1_fun( a0typ )
 fun p1_d0arg: p1_fun( d0arg )
 //
+(*
 fun p1_s0eff: p1_fun( s0eff )
+*)
 fun p1_s0res: p1_fun( s0res )
 //
 fun p1_d0res: p1_fun( d0res )
