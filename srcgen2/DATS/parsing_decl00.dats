@@ -1026,9 +1026,55 @@ list_vt2t(ps_p1fun{t0qag}(buf,err,p1_t0qag))
 (* ****** ****** *)
 
 #implfun
-pk_dynconst
-(tok, buf, err) =
+p1_a0typ(buf, err) =
 let
+//
+val e00 = err
+//
+val mark =
+tokbuf_mark_get(buf)
+//
+val tok0 = buf.getk1()
+val tnd0 = tok0.node()
+//
+val tok1 = buf.getk0()
+//
+in//let
+//
+case+
+tok1.node() of
+|
+T_CLN() when
+t0_d0pid(tnd0) =>
+let
+  val (  ) =
+  tokbuf_mark_clr(buf, mark)
+  val (  ) = buf.skip1((*nil*))
+  val s0e1 = p1_s0exp(buf, err)
+  val lres = tok0.lctn() + s0e1.lctn()
+in
+  err := e00
+; a0typ_make_node
+  (lres, A0TYPsome(s0e1, optn_cons(tok0)))
+end (*let*) // end of [T_CLN]
+|
+_(*non-T_CLN*) =>
+let
+  val (  ) =
+  tokbuf_mark_set(buf, mark)
+  val s0e0 = p1_s0exp(buf, err)
+in
+a0typ_make_node
+(s0e0.lctn(), A0TYPsome(s0e0, optn_nil()))
+end (*let*) // end of [non-T_CLN]
+//
+end (*let*) // end of [p1_a0typ(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+pk_dynconst
+(tok, buf, err) = let
 //
   val e00 = err
 //
@@ -1118,7 +1164,7 @@ case+ sres of
 //
 in
 err := e00;
-d0cstdcl_make_node(loc0,dpid,args,sres,dres)
+d0cstdcl_make_args(loc0,dpid,args,sres,dres)
 end (*let*) // end of [p1_d0cstdcl(buf,err)]
 //
 (* ****** ****** *)
