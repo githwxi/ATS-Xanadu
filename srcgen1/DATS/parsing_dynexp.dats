@@ -3396,17 +3396,17 @@ local
 
 (* ****** ****** *)
 //
-static
-fun
-p_d0cstdecl
- : parser(d0cstdecl)
-and
-p_d0cstdeclseq_AND
- : parser(d0cstdeclist)
-//
+(*
 static
 fun
 p_dynconst : parser(d0ecl)
+*)
+//
+static
+fun
+p_d0cstdecl: parser(d0cstdecl)
+and
+p_d0cstdeclseq_AND: parser(d0cstdeclist)
 //
 implement
 p_d0cstdecl

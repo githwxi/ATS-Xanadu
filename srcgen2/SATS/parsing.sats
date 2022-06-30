@@ -236,6 +236,11 @@ fun t0_d0pid(tnode): bool
 fun t0_d0eid(tnode): bool
 
 (* ****** ****** *)
+//
+fun
+t0_dctkind: tnode -> bool
+//
+(* ****** ****** *)
 
 fun p1_t0int: p1_fun(t0int)
 fun p1_t0chr: p1_fun(t0chr)
