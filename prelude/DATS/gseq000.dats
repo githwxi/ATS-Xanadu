@@ -410,14 +410,15 @@ end // end of [gseq_foreach/forall]
 #impltmp
 <xs><x0>
 gseq_memberq
-  (xs, x0) = let
+  (xs, x0) =
+(
+gseq_exists<xs><x0>(xs)) where
+{
 //
 #impltmp
-exists$test<x0>
-  (x1) =
-  g_equal<x0>(x0, x1)
+exists$test<x0>(x1) = g_equal<x0>(x0, x1)
 //
-in gseq_exists<xs><x0>(xs) end
+} (*where*)//end-of-[gseq_memberq(xs,x0)]
 //
 (* ****** ****** *)
 //

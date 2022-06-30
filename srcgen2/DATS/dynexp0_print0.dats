@@ -326,7 +326,7 @@ print("A0TDFlteq(",tok,";",s0e,")")
 A0TDFeqeq(tok,s0e) =>
 print("A0TDFeqeq(",tok,";",s0e,")")
 //
-end (*let*) // end of [a0tdf_fprint(out,tdf)]
+end (*let*) // end of [a0tdf_fprint]
 
 (* ****** ****** *)
 //
@@ -369,7 +369,8 @@ print("PINTopr2(", opr, ";", int, ")")
 precmod_fprint
   (out, pmd) =
 let
-#impltmp g_print$out<>() = out
+#impltmp
+g_print$out<>() = out
 in//let
 case+ pmd of
 |
@@ -396,7 +397,7 @@ print("S0RESnone(",")")
 |
 S0RESsome(seff, s0e1) =>
 print("S0RESsome(",seff,";",s0e1,")")
-end (*let*) // end of [s0res_fprint(buf,err)]
+end (*let*) // end of [s0res_fprint]
 //
 #implfun
 s0eff_fprint
@@ -411,8 +412,9 @@ S0EFFnone(tok0) =>
 print("S0EFFnone(",tok0,")")
 |
 S0EFFsome(tbeg,s0fs,tend) =>
-print("S0EFFsome(",tbeg,";",s0fs,";",tend,")")
-end (*let*) // end of [s0eff_fprint(buf,err)]
+print
+("S0EFFsome(",tbeg,";",s0fs,";",tend,")")
+end (*let*) // end of [s0eff_fprint]
 //
 (* ****** ****** *)
 //
@@ -430,7 +432,7 @@ print("D0RESnone(",")")
 |
 D0RESsome(teq0, s0e1) =>
 print("D0RESsome(",teq0,";",s0e1,")")
-end (*let*) // end of [d0res_fprint(buf,err)]
+end (*let*) // end of [d0res_fprint]
 //
 (* ****** ****** *)
 
