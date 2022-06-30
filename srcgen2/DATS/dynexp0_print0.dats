@@ -381,6 +381,58 @@ print
 end (*let*) // end of [precmod_fprint]
 //
 (* ****** ****** *)
+//
+#implfun
+s0res_fprint
+(out, sres) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ sres of
+|
+S0RESnone() =>
+print("S0RESnone(",")")
+|
+S0RESsome(seff, s0e1) =>
+print("S0RESsome(",seff,";",s0e1,")")
+end (*let*) // end of [s0res_fprint(buf,err)]
+//
+#implfun
+s0eff_fprint
+(out, seff) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ seff of
+|
+S0EFFnone(tok0) =>
+print("S0EFFnone(",tok0,")")
+|
+S0EFFsome(tbeg,s0fs,tend) =>
+print("S0EFFsome(",tbeg,";",s0fs,";",tend,")")
+end (*let*) // end of [s0eff_fprint(buf,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+d0res_fprint
+(out, dres) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ dres of
+|
+D0RESnone() =>
+print("D0RESnone(",")")
+|
+D0RESsome(teq0, s0e1) =>
+print("D0RESsome(",teq0,";",s0e1,")")
+end (*let*) // end of [d0res_fprint(buf,err)]
+//
+(* ****** ****** *)
 
 #implfun
 d0cstdcl_fprint
