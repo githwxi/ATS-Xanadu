@@ -686,6 +686,18 @@ d0arg_get_node(d0arg): d0arg_node
 //
 (* ****** ****** *)
 //
+fun
+a0typ_make_node
+(loc:loc_t, nod:a0typ_node): a0typ
+fun
+d0arg_make_node
+(loc:loc_t, nod:d0arg_node): d0arg
+//
+#symload a0typ with a0typ_make_node
+#symload d0arg with d0arg_make_node
+//
+(* ****** ****** *)
+//
 datatype s0eff =
 | S0EFFnone of ()
 | S0EFFsome of // :<...>
@@ -750,12 +762,12 @@ d0cstdcl_get_dres:(d0cstdcl)->d0res(*opt*)
 (* ****** ****** *)
 //
 fun
-d0cstdcl_make_node
+d0cstdcl_make_args
 ( loc0:loc_t
 , dpid:d0pid
 , args:d0arglst, sres:s0res, dres:d0res
 ) : d0cstdcl//end-of(d0cstdcl_make_node)
-#symload d0cstdcl with d0cstdcl_make_node
+#symload d0cstdcl with d0cstdcl_make_args
 //
 (* ****** ****** *)
 
