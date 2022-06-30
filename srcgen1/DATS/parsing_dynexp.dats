@@ -767,7 +767,7 @@ case+ tnd of
     val tend = p_RPAREN(buf, err)
     val loc_res = tbeg.loc() + tend.loc()
   in
-    err := 0;
+    err := e0;
     d0arg_make_node
     ( loc_res
     , D0ARGsome_dyn2(tbeg, arg0, opt1, tend))

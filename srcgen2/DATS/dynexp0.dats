@@ -130,14 +130,14 @@ q0arg_make_node
 (   loc,nod   ) = Q0ARG(loc,nod)
 //
 #implfun
-q0arg_get_lctn(dcl) =
+q0arg_get_lctn(q0a) =
 let
-  val+Q0ARG(loc,nod) = dcl in loc
+  val+Q0ARG(loc,nod) = q0a in loc
 end
 #implfun
-q0arg_get_node(dcl) =
+q0arg_get_node(q0a) =
 let
-  val+Q0ARG(loc,nod) = dcl in nod
+  val+Q0ARG(loc,nod) = q0a in nod
 end
 //
 endloc (*local*) // end of [ local ]
@@ -161,14 +161,14 @@ s0qag_make_node
 (   loc,nod   ) = S0QAG(loc,nod)
 //
 #implfun
-s0qag_get_lctn(dcl) =
+s0qag_get_lctn(sqa) =
 let
-  val+S0QAG(loc,nod) = dcl in loc
+  val+S0QAG(loc,nod) = sqa in loc
 end
 #implfun
-s0qag_get_node(dcl) =
+s0qag_get_node(sqa) =
 let
-  val+S0QAG(loc,nod) = dcl in nod
+  val+S0QAG(loc,nod) = sqa in nod
 end
 //
 endloc (*local*) // end of [ local ]
@@ -192,14 +192,107 @@ t0qag_make_node
 (   loc,nod   ) = T0QAG(loc,nod)
 //
 #implfun
-t0qag_get_lctn(dcl) =
+t0qag_get_lctn(tqa) =
 let
-  val+T0QAG(loc,nod) = dcl in loc
+  val+T0QAG(loc,nod) = tqa in loc
 end
 #implfun
-t0qag_get_node(dcl) =
+t0qag_get_node(tqa) =
 let
-  val+T0QAG(loc,nod) = dcl in nod
+  val+T0QAG(loc,nod) = tqa in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+t0iag =
+T0IAG of
+(
+loctn, t0iag_node)
+#absimpl
+t0iag_tbox = t0iag
+//
+in (* in-of-local *)
+//
+#implfun
+t0iag_make_node
+(   loc,nod   ) = T0IAG(loc,nod)
+//
+#implfun
+t0iag_get_lctn(tia) =
+let
+  val+T0IAG(loc,nod) = tia in loc
+end
+#implfun
+t0iag_get_node(tia) =
+let
+  val+T0IAG(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+a0typ =
+A0TYP of
+(
+loctn, a0typ_node)
+#absimpl
+a0typ_tbox = a0typ
+//
+in (* in-of-local *)
+//
+#implfun
+a0typ_make_node
+(   loc,nod   ) = A0TYP(loc,nod)
+//
+#implfun
+a0typ_get_lctn(a0t) =
+let
+  val+A0TYP(loc,nod) = a0t in loc
+end
+#implfun
+a0typ_get_node(a0t) =
+let
+  val+A0TYP(loc,nod) = a0t in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0arg =
+D0ARG of
+(
+loctn, d0arg_node)
+#absimpl
+d0arg_tbox = d0arg
+//
+in (* in-of-local *)
+//
+#implfun
+d0arg_make_node
+(   loc,nod   ) = D0ARG(loc,nod)
+//
+#implfun
+d0arg_get_lctn(d0a) =
+let
+  val+D0ARG(loc,nod) = d0a in loc
+end
+#implfun
+d0arg_get_node(d0a) =
+let
+  val+D0ARG(loc,nod) = d0a in nod
 end
 //
 endloc (*local*) // end of [ local ]

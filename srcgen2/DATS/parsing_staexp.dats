@@ -502,6 +502,54 @@ end(*let*)//end-of-[p1_s0qid(buf,err)]
 (* ****** ****** *)
 
 #implfun
+p1_d0pid(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+//
+|
+T_IDALP _ =>
+let
+val () =
+buf.skip1() in i0dnt_some(tok)
+end (*let*) // T_IDALP
+|
+T_IDSYM _ =>
+let
+val () =
+buf.skip1() in i0dnt_some(tok)
+end (*let*) // T_IDSYM
+//
+|
+T_AT0() =>
+i0dnt_some(tok) where
+{
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_AT0(*void*)
+val tok = token_make_node(loc,tnd)
+}
+//
+|
+T_BSLSH((*void*)) =>
+let
+val ( ) =
+buf.skip1() in i0dnt_some(tok) end
+//
+|
+_(*non-ident*) =>
+ (err := err+1; i0dnt_none( tok ) )
+//
+end (*let*) // end of [p1_d0pid(buf, err)]
+
+(* ****** ****** *)
+
+#implfun
 p1_d0eid(buf, err) =
 let
 //
