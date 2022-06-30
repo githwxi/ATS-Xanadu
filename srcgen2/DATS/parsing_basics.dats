@@ -213,6 +213,16 @@ T_IDDLR _ => true
 ) (*case*)//end-of-[t0_d0eid(tnd)]
 
 (* ****** ****** *)
+//
+#implfun
+t0_dctkind
+(  tnd  ) =
+(
+case+ tnd of
+| T_FUN(k0) => true
+| T_VAL(k0) => true | _ => false)
+//
+(* ****** ****** *)
 
 #implfun
 p1_EQ0(buf, err) =

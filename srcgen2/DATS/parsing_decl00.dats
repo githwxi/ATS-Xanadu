@@ -83,6 +83,10 @@ lctn with s0tcn_get_lctn//staexp0
 lctn with d0tst_get_lctn//staexp0
 #symload
 lctn with s0tdf_get_lctn//staexp0
+#symload
+lctn with d0typ_get_lctn//staexp0
+//
+(* ****** ****** *)
 //
 #symload
 lctn with d0pat_get_lctn//dynexp0
@@ -274,6 +278,19 @@ end (*let*)//end-of-(sym = "<=")
 //
 end (*let*)//end-of-[p1_a0tdf(buf,err)]
 
+(* ****** ****** *)
+//
+#typedef
+pk_fun(r0:type) =
+(token,
+!tkbf0, &sint >> _)->(r0)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+pk_dynconst: pk_fun(d0ecl)
+//
 (* ****** ****** *)
 
 #implfun
@@ -578,7 +595,13 @@ end (*let*) // end of [T_DATATYPE(k0)]
 (* ****** ****** *)
 //
 |
-T_SRP_STATIC() => let
+_ when
+t0_dctkind(tnd) => pk_dynconst(tok, buf, err)
+//
+(* ****** ****** *)
+//
+|
+T_SRP_STATIC( ) => let
 //
   val tknd = tok
   val (  ) = buf.skip1()
