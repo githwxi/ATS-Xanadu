@@ -906,9 +906,17 @@ fun
 p1_q0argseq_COMMA: p1_fun(q0arglst)
 //
 (* ****** ****** *)
+//
 #extern
 fun
 p1_d0argseq: p1_fun(d0arglst)
+#extern
+fun
+p1_a0typseq_COMMA: p1_fun(a0typlst)
+#extern
+fun
+p1_a0typsqt_COMMA: p1_fun(a0typlstopt)
+//
 (* ****** ****** *)
 #extern
 fun
@@ -1071,6 +1079,112 @@ end (*let*) // end of [non-T_CLN]
 end (*let*) // end of [p1_a0typ(buf,err)]
 
 (* ****** ****** *)
+//
+#implfun
+p1_a0typseq_COMMA
+(  buf, err  ) =
+(
+list_vt2t
+(ps_COMMA_p1fun{a0typ}(buf,err,p1_a0typ))
+) (*end-of-[p1_a0typseq_COMMA(buf, err)]*)
+//
+#implfun
+p1_a0typsqt_COMMA
+(  buf, err  ) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_BAR() => let
+  val () = buf.skip1()
+in
+  optn_cons(p1_a0typseq_COMMA(buf, err))
+end // end of [T_BAR]
+| _(* non-T_BAR *) => optn_nil( (*void*) )
+//
+end(*let*) // end-of-[p1_a0typsqt(buf,err)]
+//
+(* ****** ****** *)
+
+#implfun
+p1_d0arg(buf, err) =
+let
+//
+val e00 = err
+//
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_LPAREN() =>
+let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val arg1 =
+  p1_a0typseq_COMMA(buf, err)
+  val opt2 =
+  p1_a0typsqt_COMMA(buf, err)
+  val tend = p1_RPAREN(buf, err)
+  val lres = tbeg.lctn()+tend.lctn()
+in//let
+  err := e00
+; d0arg_make_node
+  ( lres
+  , D0ARGsome_dyn2(tbeg, arg1, opt2, tend))
+end
+//
+|
+T_LBRACE() => let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val s0qs =
+  p1_s0quaseq_BSCLN(buf, err)
+  val tend = p1_RBRACE(buf, err)
+  val lres = tbeg.lctn()+tend.lctn()
+in
+  err := e00
+; d0arg_make_node
+  (lres, D0ARGsome_sta(tbeg, s0qs, tend))
+end // end of [T_LBRACE]
+//
+| _
+when t0_s0eid(tnd) =>
+let
+  val sid0 =
+    p1_s0eid(buf, err)
+  val loc0 = sid0.lctn()
+in
+err := e00;
+d0arg_make_node(loc0, D0ARGsome_dyn1(sid0))
+end (*let*) // end of [t0_s0eid(tnd)]
+//
+|
+_ (* d0arg-error *) =>
+(
+err := e00 + 1;
+d0arg_make_node(tok.lctn(), D0ARGnone(tok)))
+//
+end (*let*) // end of [ p1_d0arg(buf, err) ]
+
+(* ****** ****** *)
+//
+#implfun
+p1_d0argseq
+(  buf, err  ) =
+(
+list_vt2t(ps_p1fun{d0arg}(buf,err,p1_d0arg))
+)
+//
+(* ****** ****** *)
 
 #implfun
 pk_dynconst
@@ -1107,12 +1221,12 @@ pk_dynconst
     val
     d0c1 = list_last(d0cs) in lknd+d0c1.lctn()
     end
-  ) : loc_t // end of [val]
+  ) : loc_t // end of [val(lres)]
 //
 in//let
 err := e00;
 d0ecl_make_node(lres, D0Cdynconst(tknd, tqas, d0cs))
-end // end of [ptok_dynconst]
+end (*let*) // end of [ptok_dynconst(buf, err)]
 
 (* ****** ****** *)
 //
