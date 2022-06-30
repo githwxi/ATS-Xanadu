@@ -698,12 +698,14 @@ d0arg_make_node
 //
 (* ****** ****** *)
 //
-datatype s0eff =
-| S0EFFnone of ()
+datatype
+s0eff =
+| S0EFFnone of (token)
 | S0EFFsome of // :<...>
   (token, s0explst, token)
-datatype s0res =
-| S0RESnone of ()
+datatype
+s0res =
+| S0RESnone of ((*void*))
 | S0RESsome of (s0eff, s0exp)
 //
 (* ****** ****** *)
