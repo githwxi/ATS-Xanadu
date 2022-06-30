@@ -116,6 +116,99 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+q0arg =
+Q0ARG of
+(
+loctn, q0arg_node)
+#absimpl
+q0arg_tbox = q0arg
+//
+in (* in-of-local *)
+//
+#implfun
+q0arg_make_node
+(   loc,nod   ) = Q0ARG(loc,nod)
+//
+#implfun
+q0arg_get_lctn(dcl) =
+let
+  val+Q0ARG(loc,nod) = dcl in loc
+end
+#implfun
+q0arg_get_node(dcl) =
+let
+  val+Q0ARG(loc,nod) = dcl in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s0qag =
+S0QAG of
+(
+loctn, s0qag_node)
+#absimpl
+s0qag_tbox = s0qag
+//
+in (* in-of-local *)
+//
+#implfun
+s0qag_make_node
+(   loc,nod   ) = S0QAG(loc,nod)
+//
+#implfun
+s0qag_get_lctn(dcl) =
+let
+  val+S0QAG(loc,nod) = dcl in loc
+end
+#implfun
+s0qag_get_node(dcl) =
+let
+  val+S0QAG(loc,nod) = dcl in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+t0qag =
+T0QAG of
+(
+loctn, t0qag_node)
+#absimpl
+t0qag_tbox = t0qag
+//
+in (* in-of-local *)
+//
+#implfun
+t0qag_make_node
+(   loc,nod   ) = T0QAG(loc,nod)
+//
+#implfun
+t0qag_get_lctn(dcl) =
+let
+  val+T0QAG(loc,nod) = dcl in loc
+end
+#implfun
+t0qag_get_node(dcl) =
+let
+  val+T0QAG(loc,nod) = dcl in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d0ecl =
 D0ECL of
 (
@@ -139,6 +232,79 @@ d0ecl_get_node(dcl) =
 let
   val+D0ECL(loc,nod) = dcl in nod
 end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0cstdcl =
+D0CSTDCL of
+( loc_t
+, d0pid
+, d0arglst,s0res,d0res)
+//
+#absimpl
+d0cstdcl_tbox = d0cstdcl
+//
+in//local
+//
+#implfun
+d0cstdcl_get_lctn
+(  dcst  ) =
+let
+val+
+D0CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in lctn end
+//
+#implfun
+d0cstdcl_get_darg
+(  dcst  ) =
+let
+val+
+D0CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in darg end
+//
+#implfun
+d0cstdcl_get_dpid
+(  dcst  ) =
+let
+val+
+D0CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in dpid end
+//
+#implfun
+d0cstdcl_get_sres
+(  dcst  ) =
+let
+val+
+D0CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in sres end
+//
+#implfun
+d0cstdcl_get_dres
+(  dcst  ) =
+let
+val+
+D0CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in dres end
 //
 endloc (*local*) // end of [ local ]
 

@@ -343,6 +343,7 @@ WD0CSsome(tbeg, topt, dcls, tend) =>
 (
 print
 ("WD0CSsome(",tbeg,";",topt,";",dcls,";",tend,")"))
+) (*case*) // end of [ wd0eclseq_fprint(out,wdcs) ]
 //
 (* ****** ****** *)
 

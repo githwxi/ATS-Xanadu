@@ -299,6 +299,8 @@ d0ecl_fprint(g_print$out<>(), dcl)
 g_print<a0tdf>(tdf) =
 a0tdf_fprint(g_print$out<>(), tdf)
 //
+(* ****** ****** *)
+//
 #impltmp
 g_print<precopt>(opt) =
 precopt_fprint(g_print$out<>(), opt)
@@ -309,6 +311,20 @@ precmod_fprint(g_print$out<>(), pmd)
 g_print<precint>(int) =
 precint_fprint(g_print$out<>(), int)
 //
+(* ****** ****** *)
+#impltmp
+g_print<s0eff>(seff) =
+s0eff_fprint(g_print$out<>(), seff)
+#impltmp
+g_print<s0res>(sres) =
+s0res_fprint(g_print$out<>(), sres)
+(* ****** ****** *)
+#impltmp
+g_print<d0res>(dres) =
+d0res_fprint(g_print$out<>(), dres)
+#impltmp
+g_print<w0s0e>(ws0e) =
+w0s0e_fprint(g_print$out<>(), ws0e)
 (* ****** ****** *)
 #impltmp
 g_print<wd0eclseq>(wdcs) =

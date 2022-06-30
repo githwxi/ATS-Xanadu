@@ -73,10 +73,12 @@ lctn with g0nam_get_lctn//staexp0
 #symload
 lctn with g0exp_get_lctn//staexp0
 (* ****** ****** *)
+//
 #symload
 lctn with sort0_get_lctn//staexp0
 #symload
 lctn with s0exp_get_lctn//staexp0
+//
 #symload
 lctn with s0tcn_get_lctn//staexp0
 #symload
@@ -86,6 +88,20 @@ lctn with s0tdf_get_lctn//staexp0
 #symload
 lctn with d0typ_get_lctn//staexp0
 //
+(* ****** ****** *)
+//
+#symload
+lctn with q0arg_get_lctn//dynexp0
+#symload
+lctn with s0qag_get_lctn//dynexp0
+#symload
+lctn with t0qag_get_lctn//dynexp0
+//
+(* ****** ****** *)
+#symload
+lctn with a0typ_get_lctn//dynexp0
+#symload
+lctn with d0arg_get_lctn//dynexp0
 (* ****** ****** *)
 //
 #symload
@@ -105,6 +121,9 @@ node with l0abl_get_node//staexp0
 (* ****** ****** *)
 #symload
 tnode with token_get_node//lexing0
+(* ****** ****** *)
+#symload
+lctn with d0cstdcl_get_lctn//dynexp0
 (* ****** ****** *)
 #symload + with add_loctn_loctn//locinfo
 (* ****** ****** *)
@@ -864,6 +883,250 @@ p1_d0eclseq_dyn
 //
 endloc(*local*)//end-of[local(p1_declseq...)]
 
+(* ****** ****** *)
+//
+#extern
+fun
+p1_q0arg: p1_fun(q0arg)
+#extern
+fun
+p1_t0qag: p1_fun(t0qag)
+#extern
+fun
+p1_s0qag: p1_fun(s0qag)
+//
+#extern
+fun
+p1_s0qagseq: p1_fun(s0qaglst)
+#extern
+fun
+p1_t0qagseq: p1_fun(t0qaglst)
+#extern
+fun
+p1_q0argseq_COMMA: p1_fun(q0arglst)
+//
+(* ****** ****** *)
+#extern
+fun
+p1_d0argseq: p1_fun(d0arglst)
+(* ****** ****** *)
+#extern
+fun
+p1_d0cstdcl: p1_fun(d0cstdcl)
+#extern
+fun
+p1_d0cstdclseq_AND: p1_fun(d0cstdclist)
+(* ****** ****** *)
+//
+#implfun
+p1_q0arg(buf, err) =
+let
+//
+val sid0 =
+  p1_s0aid(buf, err)
+//
+val tok0 = buf.getk0()
+//
+val topt =
+(
+case+
+tok0.node() of
+|
+T_CLN() =>
+let
+val () = buf.skip1()
+in//let
+optn_cons
+(p1_sort0_app_NGT0(buf, err))
+end (*let*) // end of [T_CLN]
+| _(* non-T_CLN *) => optn_nil(*nil*)
+) : sort0opt (*case*) // end of [val]
+//
+val loc0 =
+let
+val lid0 = sid0.lctn()
+in//let
+case+ topt of
+| optn_nil() => (lid0)
+| optn_cons(s0t0) => lid0+s0t0.lctn()
+end : loc_t (* let *) // end of [val]
+//
+in
+  q0arg( loc0, Q0ARGsome(sid0, topt) )
+end (*let*) // end of [p1_q0arg(buf,err)]
+
+(* ****** ****** *)
+//
+#implfun
+p1_q0argseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{q0arg}(buf,err,p1_q0arg))
+) (* end-of(p1_q0argseq_COMMA(buf,err)) *)
+//
+(* ****** ****** *)
+//
+#implfun
+p1_t0qag(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+(*
+val () =
+prerrln("p1_t0qag: tok = ", tok)
+*)
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_LT0() => let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val q0as =
+  p1_q0argseq_COMMA(buf, err)
+  val tend = p1_GT0(buf, err)
+  val lres = tbeg.lctn() + tend.lctn()
+in//let
+  err := e00
+; t0qag_make_node
+  (lres, T0QAGsome(tbeg, q0as, tend))
+end (*let*) // end of [T_LT0]
+|
+T_LTGT() => let
+  val tbeg = tok
+  val tend = tok
+  val q0as = list_nil()
+  val (  ) = buf.skip1()
+  val lres = tbeg.lctn()
+in
+  t0qag_make_node
+  (lres, T0QAGsome(tbeg, q0as, tend))
+end (*let*) // end of [ T_LTGT ]
+|
+_(* non-T_LT/GT *) =>
+let
+val () = (err := e00 + 1)
+in//let
+t0qag_make_node(tok.lctn(), T0QAGnone(tok))
+end (*let*) // end of [ non-T_LTGT ]
+//
+end (*let*) // end of [p1_t0qag(buf,err)]
+//
+#implfun
+p1_t0qagseq(buf, err) =
+(
+list_vt2t(ps_p1fun{t0qag}(buf,err,p1_t0qag))
+)
+//
+(* ****** ****** *)
+
+#implfun
+pk_dynconst
+(tok, buf, err) =
+let
+//
+  val e00 = err
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val lknd = tknd.lctn()
+//
+  val tqas =
+    p1_t0qagseq(buf, err)
+//
+  val d0cs =
+    p1_d0cstdclseq_AND(buf, err)
+//
+  val lres =
+  (
+  case+ d0cs of
+  | list_nil() =>
+    (
+    case+ tqas of
+    | list_nil() => lknd
+    | list_cons _ =>
+      let
+      val tqa1 =
+      list_last(tqas) in lknd + tqa1.lctn()
+      end
+    )
+  | list_cons _ =>
+    let
+    val
+    d0c1 = list_last(d0cs) in lknd+d0c1.lctn()
+    end
+  ) : loc_t // end of [val]
+//
+in//let
+err := e00;
+d0ecl_make_node(lres, D0Cdynconst(tknd, tqas, d0cs))
+end // end of [ptok_dynconst]
+
+(* ****** ****** *)
+//
+#implfun
+p1_d0cstdcl
+  (buf, err) = let
+//
+val e00 = err
+//
+val
+dpid =
+p1_d0pid(buf, err)
+val
+args =
+p1_d0argseq(buf, err)
+//
+val
+sres = p1_s0res(buf, err)
+val
+dres = p1_d0res(buf, err)
+//
+val
+lpid = dpid.lctn()
+val
+loc0 =
+(
+case+ dres of
+|
+D0RESnone() =>
+(
+case+ sres of
+| S0RESnone() =>
+  (
+  case+ args of
+  |
+  list_nil _ => lpid
+  |
+  list_cons _ =>
+  let
+  val
+  arg1 =
+  list_last(args) in lpid+arg1.lctn()
+  end (*let*) // end of [list_cons]
+  )
+| S0RESsome(seff, s0e1) => lpid+s0e1.lctn()
+)
+| D0RESsome(teq1, d0e2) => lpid+d0e2.lctn()
+) : loc_t // end of [val]
+//
+in
+err := e00;
+d0cstdcl_make_node(loc0,dpid,args,sres,dres)
+end (*let*) // end of [p1_d0cstdcl(buf,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+p1_d0cstdclseq_AND(buf, err) =
+list_vt2t(ps_AND_p1fun{d0cstdcl}(buf, err, p1_d0cstdcl))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_decl00.dats] *)
