@@ -25,7 +25,7 @@ gfun_not_cfr1
 fun
 <xs:t0>
 <x0:t0>
-gfun_memq_gseq(xs): cfr1(x0,bool)
+gfun_memberq_gseq(xs): cfr1(x0,bool)
 //
 (* ****** ****** *)
 //
@@ -39,7 +39,7 @@ gfun_memq_gseq(xs): cfr1(x0,bool)
 
 (* ****** ****** *)
 
-#symload fmemq with gfun_memq_gseq of 0100
+#symload fmemberq with gfun_memberq_gseq of 0100
 
 (* ****** ****** *)
 
