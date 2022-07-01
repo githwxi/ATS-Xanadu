@@ -951,22 +951,22 @@ gseq_foldr_cfr2
 fun
 <xs:t0>
 <x0:t0>
-gseq_forall_fnp1(xs, (x0)-<fnp>bool): bool
+gseq_forall_fnp1(xs,(x0)-<fnp>bool): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_forall_cfr1(xs, (x0)-<cfr>bool): bool
+gseq_forall_cfr1(xs,(x0)-<cfr>bool): bool
 (* ****** ****** *)
 // HX: gseq_foreach
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
-gseq_foreach_fnp1(xs, (x0)-<fnp>void): void
+gseq_foreach_fnp1(xs,(x0)-<fnp>void): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_foreach_cfr1(xs, (x0)-<cfr>void): void
+gseq_foreach_cfr1(xs,(x0)-<cfr>void): void
 (* ****** ****** *)
 // HX: gseq_map_list
 (* ****** ****** *)
@@ -997,6 +997,40 @@ fun
 <y0:vt>
 gseq_map_strm_cfr1
 (xs: xs, fopr: (x0) -<cfr> y0): strm_vt(y0)
+(* ****** ****** *)
+// HX: gseq_imap_list
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_list_fnp2
+( xs: xs
+, fopr: (nint, x0) -<fnp> y0 ): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_list_cfr2
+( xs: xs
+, fopr: (nint, x0) -<cfr> y0 ): list_vt(y0)
+(* ****** ****** *)
+// HX: gseq_imap_strm
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_strm_fnp2
+( xs: xs
+, fopr: (nint, x0) -<fnp> y0 ): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_strm_cfr2
+( xs: xs
+, fopr: (nint, x0) -<cfr> y0 ): strm_vt(y0)
 (* ****** ****** *)
 //
 // HX-2020-05-30:

@@ -63,6 +63,8 @@ all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gmap000.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseqn00.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/grasn00.sats
 
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/optn000.sats

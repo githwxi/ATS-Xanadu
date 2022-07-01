@@ -89,7 +89,7 @@ gseq_uncons_raw<xs><x0>(xs)
 in
 gseq_last_ini<xs><x0>(xs, x0)
 end(*let*)//end(gseq_last_raw)
-
+//
 (* ****** ****** *)
 
 #impltmp
@@ -2453,7 +2453,7 @@ gseq_map_list_fnp1
 gseq_map_list<xs><x0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//gseq_map_list_fnp1(xs, f0)
+} (*where*)//gseq_map_list_fnp1(xs,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
@@ -2464,7 +2464,7 @@ gseq_map_list_cfr1
 gseq_map_list<xs><x0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//gseq_map_list_cfr1(xs, f0)
+} (*where*)//gseq_map_list_cfr1(xs,f0)
 (* ****** ****** *)
 // HX: gseq_map_strm
 (* ****** ****** *)
@@ -2477,7 +2477,7 @@ gseq_map_strm_fnp1
 gseq_map_strm<xs><x0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//gseq_map_strm_fnp1(xs, f0)
+} (*where*)//gseq_map_strm_fnp1(xs,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
@@ -2488,7 +2488,59 @@ gseq_map_strm_cfr1
 gseq_map_strm<xs><x0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//gseq_map_strm_cfr1(xs, f0)
+} (*where*)//gseq_map_strm_cfr1(xs,f0)
+(* ****** ****** *)
+// HX: gseq_imap_list
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_imap_list_fnp2
+(    xs, f0    ) =
+(
+gseq_imap_list<xs><x0>(xs)) where
+{
+#impltmp
+imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_imap_list_fnp2(xs,f0)
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_imap_list_cfr2
+(    xs, f0    ) =
+(
+gseq_imap_list<xs><x0>(xs)) where
+{
+#impltmp
+imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_imap_list_cfr2(xs,f0)
+(* ****** ****** *)
+// HX: gseq_imap_strm
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_imap_strm_fnp2
+(    xs, f0    ) =
+(
+gseq_imap_strm<xs><x0>(xs)) where
+{
+#impltmp
+imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_imap_strm_fnp2(xs,f0)
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_imap_strm_cfr2
+(    xs, f0    ) =
+(
+gseq_imap_strm<xs><x0>(xs)) where
+{
+#impltmp
+imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_imap_strm_cfr2(xs,f0)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000.dats] *)

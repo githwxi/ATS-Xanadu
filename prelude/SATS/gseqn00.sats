@@ -100,13 +100,13 @@ fun
 <x0:t0>
 <y0:t0>
 <ln:i0>
-gseqn_map_list(xs): list_vt(y0, ln)
+gseqn_map_arrn(xs): a1ptr(y0, ln)
 fun
 <xs:t0>
 <x0:t0>
 <y0:t0>
 <ln:i0>
-gseqn_map_rlist(xs): list_vt(y0, ln)
+gseqn_map_rarrn(xs): a1ptr(y0, ln)
 //
 (* ****** ****** *)
 //
@@ -115,13 +115,13 @@ fun
 <x0:t0>
 <y0:t0>
 <ln:i0>
-gseqn_map_array(xs): a1ptr( y0, ln )
+gseqn_map_list(xs): list_vt(y0, ln)
 fun
 <xs:t0>
 <x0:t0>
 <y0:t0>
 <ln:i0>
-gseqn_map_rarray(xs): a1ptr( y0, ln )
+gseqn_map_rlist(xs): list_vt(y0, ln)
 //
 (* ****** ****** *)
 

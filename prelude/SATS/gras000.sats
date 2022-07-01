@@ -5,7 +5,7 @@
 (* ****** ****** *)
 // HX: random-access-seq
 (* ****** ****** *)
-
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -17,16 +17,16 @@ fun
 gras_get_at_opt
 ( xs: xs
 , i0: nint): optn_vt(x0)
-
+//
 (* ****** ****** *)
-
+//
 fun
 <xs:t0>
 <x0:t0>
 gras_length(xs): nint
-
+//
 (* ****** ****** *)
-
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -35,7 +35,7 @@ fun
 <xs:t0>
 <x0:t0>
 gras_rstrmize(xs): strm_vt(x0)
-
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gras000.sats] *)
