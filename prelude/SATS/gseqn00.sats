@@ -203,5 +203,61 @@ gseqn_z2map_rlist
   (xs: xs, ys: ys): list_vt(z0,ln)
 //
 (* ****** ****** *)
+// HX-2022-07-01:
+// Fri Jul  1 13:44:28 EDT 2022
+// For gseq-types indexed by length
+(* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+gseqn1_nilq
+{ln:int}(xs(ln)): bool(ln=0)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+gseqn1_consq
+{ln:int}(xs(ln)): bool(ln>0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+gseqn1_head
+{ln:pos}(xs:xs(ln)): (x0)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+gseqn1_tail
+{ln:pos}(xs:xs(ln)): xs(ln-1)
+//
+(* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+gseqn1_length
+{ln:int}(xs:xs(ln)): sint(ln)
+//
+(* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+gseqn1_drop
+{ln:int}
+{n0:nat|n0<ln}
+(xs:xs(ln), n0:sint(n0)): xs(ln-n0)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseqn00.sats] *)

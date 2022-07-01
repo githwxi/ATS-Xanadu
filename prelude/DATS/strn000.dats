@@ -542,7 +542,7 @@ length(s1) and n2 = length(s2)
 fnx
 loop
 {n:int}
-{i:int|i<=n} .<n-i>.
+{i:nat|i<=n} .<n-i>.
 (n1: sint(n), i0: int(i)): bool =
 if
 (i0 >= n1)
