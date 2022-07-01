@@ -134,12 +134,11 @@ end(*let*)//end of [strn_print]
 strn_length
   (xs) =
 (
-  loop(xs, 0)
-) where
+auxloop(xs, 0)) where
 {
 //
 fnx
-loop
+auxloop
 {i,j:nat}.<i>.
 ( xs: strn(i)
 , j0: sint(j)): sint(i+j) =
@@ -150,10 +149,10 @@ in
 if
 test
 then j0 else
-loop(strn_tail(xs), succ(j0))
-end
+auxloop(strn_tail(xs), succ(j0))
+endlet // end of [auxloop(xs,j0)]
 // end of [if]
-}(*where*)//end-of(strn_length)
+}(*where*)//end-of[strn_length(xs)]
 
 (* ****** ****** *)
 //
@@ -278,14 +277,14 @@ end // end of [else]
 strn_listize
   {n}( cs ) =
 (
-auxmain(n0, r0)) where
+loop(n0, r0)) where
 {
 //
 val n0 = length(cs)
 val r0 = list_vt_nil()
 //
-fun
-auxmain
+fnx
+loop
 {i,j:nat}
 ( i0: sint(i)
 , r0
@@ -298,10 +297,10 @@ then r0 else
 let
   val i1 = i0 - 1
   val ci = cs[i1]
-in
-auxmain(i1, list_vt_cons(ci, r0))
-end // end of [else]
-)
+in//let
+  loop(i1, list_vt_cons(ci, r0))
+endlet // else // end-of-[if]
+) (*if*) // end of [loop(i0,r0)]
 } (*where*) // end of [strn_listize]
 //
 (* ****** ****** *)
@@ -380,15 +379,15 @@ end // end of [else]
 strn_rlistize
   {n}( cs ) =
 (
-auxmain(i0, r0)) where
+loop(i0, r0)) where
 {
 //
 val i0 = 0
 val n0 = length(cs)
 val r0 = list_vt_nil()
 //
-fun
-auxmain
+fnx
+loop
 {i,j:nat
 |i <= n}
 ( i0: sint(i)
@@ -403,8 +402,8 @@ let
   val ci = cs[i0]
   val i1 = i0 + 1
 in
-auxmain(i1, list_vt_cons(ci, r0))
-end // end of [else]
+loop(i1, list_vt_cons(ci, r0))
+endlet //end-of-(else)//end-of-(if)
 )
 } (*where*) // end of [strn_rlistize]
 //
@@ -540,7 +539,7 @@ then loop(n1, 0) else false
 val n1 =
 length(s1) and n2 = length(s2)
 //
-fun
+fnx
 loop
 {n:int}
 {i:int|i<=n} .<n-i>.
