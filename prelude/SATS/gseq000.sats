@@ -813,6 +813,16 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_z2map
+  (xs: xs, ys: ys): (   zs   )
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_z2map_list
   (xs: xs, ys: ys): list_vt(z0)
@@ -877,6 +887,13 @@ fun
 gseq_x2strmize(xs, ys): strm_vt(@(x0,y0))
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_x2foreach(xs, ys): void
 //
 fun
 <xs:t0
@@ -1165,6 +1182,27 @@ fun
 gseq_imap_strm_cfr2
 ( xs: xs
 , fopr: (nint, x0) -<cfr> y0 ): strm_vt(y0)
+(* ****** ****** *)
+// HX: gseq_z2map
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_z2map_fnp2
+(xs:xs, ys:ys, fopr:(x0,y0) -<fnp> z0): (zs)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_z2map_cfr2
+(xs:xs, ys:ys, fopr:(x0,y0) -<cfr> z0): (zs)
 (* ****** ****** *)
 //
 // HX-2020-05-30:
