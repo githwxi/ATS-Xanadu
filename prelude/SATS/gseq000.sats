@@ -968,6 +968,36 @@ fun
 <x0:t0>
 gseq_foreach_cfr1(xs, (x0)-<cfr>void): void
 (* ****** ****** *)
+// HX: gseq_map_list
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_list_fnp1
+(xs: xs, fopr: (x0) -<fnp> y0): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_list_cfr1
+(xs: xs, fopr: (x0) -<cfr> y0): list_vt(y0)
+(* ****** ****** *)
+// HX: gseq_map_strm
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_strm_fnp1
+(xs: xs, fopr: (x0) -<fnp> y0): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_strm_cfr1
+(xs: xs, fopr: (x0) -<cfr> y0): strm_vt(y0)
+(* ****** ****** *)
 //
 // HX-2020-05-30:
 // symbol overloading for gseq

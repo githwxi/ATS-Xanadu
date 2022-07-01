@@ -61,15 +61,22 @@ case+ rep of
 (* ****** ****** *)
 //
 #impltmp
+<>(*tmp*)
+bool2sint(b) =
+(if b then 1 else 0)
+//
+(* ****** ****** *)
+//
+#impltmp
 <a>(*tmp*)
 bool_ifval
-(b, x, y) = if b then x else y
+(b0, x1, y2) =
+(if b0 then x1 else y2)
 //
 (* ****** ****** *)
 //
 // HX:
-// For implementing
-// some g-operations
+// For implementing g-ops
 //
 (* ****** ****** *)
 #impltmp
