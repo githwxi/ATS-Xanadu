@@ -912,6 +912,63 @@ gseq_x2iforeach_col(xs, ys): void
 //
 (* ****** ****** *)
 //
+// HX-2022-07-01:
+// higher-order gseq-functions
+//
+(* ****** ****** *)
+// HX: gseq_foldl
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldl_fnp2
+(xs, r0, (r0, x0)-<fnp>r0): r0
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldl_cfr2
+(xs, r0, (r0, x0)-<fnp>r0): r0
+(* ****** ****** *)
+// HX: gseq_foldr
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldr_fnp2
+(xs, r0, (x0, r0)-<fnp>r0): r0
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldr_cfr2
+(xs, r0, (x0, r0)-<cfr>r0): r0
+(* ****** ****** *)
+// HX: gseq_forall
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_forall_fnp1(xs, (x0)-<fnp>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_forall_cfr1(xs, (x0)-<cfr>bool): bool
+(* ****** ****** *)
+// HX: gseq_foreach
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_foreach_fnp1(xs, (x0)-<fnp>void): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_foreach_cfr1(xs, (x0)-<cfr>void): void
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for gseq
 //
