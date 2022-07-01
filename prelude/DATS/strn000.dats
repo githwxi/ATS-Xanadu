@@ -73,7 +73,8 @@ strn_tail(cs) =
 strn_head_opt(cs) = ...
 *)
 //
-#impltmp<>
+#impltmp
+<>(*tmp*)
 strn_tail_opt(cs) =
 if
 strn_nilq(cs)
@@ -81,6 +82,13 @@ then
 optn_vt_nil((*void*))
 else
 optn_vt_cons(strn_tail_raw(cs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_cmp =
+gseq_cmp<strn><cgtz>
 //
 (* ****** ****** *)
 //
@@ -105,7 +113,8 @@ strn_neq(x1, x2) =
 //
 (* ****** ****** *)
 
-#impltmp<>
+#impltmp
+<>(*tmp*)
 strn_print(cs) =
 let
 #impltmp
@@ -120,7 +129,8 @@ end(*let*)//end of [strn_print]
 
 (* ****** ****** *)
 
-#impltmp<>
+#impltmp
+<>(*tmp*)
 strn_length
   (xs) =
 (
@@ -190,9 +200,9 @@ tabulate$fopr
 <c0><n0>(i0) =
 let
 val j0 = (n0-1)-i0
-in
-  strn_get_at<>(cs, j0)
-end
+in//let
+strn_get_at<>(cs, j0)
+endlet//tabulate$fopr
 //
 in
   strn_tabulate<n0>(n0)
@@ -470,6 +480,85 @@ tabulate$fopr<cgtz><n>(i0) = f0(i0)
 //
 (* ****** ****** *)
 //
+(*
+// HX-2022-07-01
+// Fri Jul  1 12:09:16 EDT 2022
+*)
+//
+#implfun
+<>(*tmp*)
+strn_prefixq
+( s1, s2 ) =
+(
+loop(s1, s2)) where
+{
+fnx
+loop
+( s1: strn
+, s2: strn): bool =
+let
+val c1 =
+strn_head_opt(s1)
+in//let
+if
+char_eqz(c1)
+then true else
+let
+val c2 =
+strn_head_opt(s2)
+in//let
+if
+char_eqz(c2)
+then false else
+(
+if
+(c1 = c2)
+then
+loop(tail(s1), tail(s2)) else false)
+endlet // end of [loop(s1, s2)]
+endlet // end of [loop(s1, s2)]
+} (*where*)//end-of-[strn_prefix(s1,s2)]
+//
+(* ****** ****** *)
+//
+(*
+// HX-2022-07-01
+// Fri Jul  1 12:28:23 EDT 2022
+*)
+//
+#implfun
+<>(*tmp*)
+strn_suffixq
+( s1, s2 ) =
+(
+if
+(n1 <= n2)
+then loop(n1, 0) else false
+) where
+{
+//
+val n1 =
+length(s1) and n2 = length(s2)
+//
+fun
+loop
+{n:int}
+{i:int|i<=n} .<n-i>.
+(n1: sint(n), i0: int(i)): bool =
+if
+(i0 >= n1)
+then true else
+let
+val c1 = s1[i0]
+val c2 = s2[n2-n1+i0]
+in//let
+if
+(c1 = c2) then loop(n1,i0+1) else false
+endlet // end of [loop{...}(n1,i0)]
+} (*where*)//end-of-[strn_suffix(s1,s2)]
+//
+(* ****** ****** *)
+//
 // HX:
 // For #implementing
 // some gseq_operations
@@ -502,9 +591,6 @@ g_neq<xs> = strn_neq<>
 #impltmp
 g_cmp<xs> = strn_cmp<>
 //
-#impltmp
-strn_cmp<> = gseq_cmp<xs><x0>
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -516,8 +602,6 @@ gseq_print$beg<xs><x0>() = ()
 gseq_print$end<xs><x0>() = ()
 #impltmp
 gseq_print$sep<xs><x0>() = ()
-#impltmp
-strn_print<> = gseq_print<xs><x0>
 //
 (* ****** ****** *)
 
@@ -566,7 +650,14 @@ gseq_unstrm_vt<xs><x0> = strn_make_strm_vt<>
 
 (* ****** ****** *)
 
-end (*local*) // end of [local]
+#impltmp
+gseq_prefixq<xs><x0> = strn_prefixq<>(*void*)
+#impltmp
+gseq_suffixq<xs><x0> = strn_suffixq<>(*void*)
+
+(* ****** ****** *)
+
+end (*local*) // end of [local] // g/gseq-ops
 
 (* ****** ****** *)
 

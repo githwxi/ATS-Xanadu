@@ -341,6 +341,15 @@ strn_upper
 //
 (* ****** ****** *)
 //
+fun<>
+strn_prefixq
+(s1: strn(*pfx*), s2: strn): bool
+fun<>
+strn_suffixq
+(s1: strn(*sfx*), s2: strn): bool
+//
+(* ****** ****** *)
+//
 (*
 HX-2020-05-30:
 symbol overloading for strn
@@ -380,7 +389,6 @@ consq with strn_consq of 1000
 [] with strn_get_at of 1000
 #symload
 get_at with strn_get_at of 1000
-//
 //
 (* ****** ****** *)
 //
