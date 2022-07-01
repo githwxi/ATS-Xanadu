@@ -331,6 +331,15 @@ gseq_map: map$fopr
 fun
 <xs:t0>
 <x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_map(xs: xs): (ys)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_map_list(xs): list_vt(y0)
 fun
@@ -610,6 +619,17 @@ gseq_rindexof
 (*
 gseq_imap: imap$fopr
 *)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_imap(xs: xs): (ys)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
