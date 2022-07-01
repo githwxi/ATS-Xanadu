@@ -259,5 +259,16 @@ gseqn1_drop
 (xs:xs(ln), n0:sint(n0)): xs(ln-n0)
 //
 (* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+<ys:
+i0->t0>
+<y0:t0>
+gseqn1_map{ln:int}(xs:xs(ln)): ys(ln)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseqn00.sats] *)
