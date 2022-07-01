@@ -2347,12 +2347,12 @@ gseq_foldl_fnp2
 ( xs, r0, f0 ) =
 (
 gseq_foldl
-<xs><x0>(xs, r0)) where
+<xs><x0><r0>(xs, r0)) where
 {
 #impltmp
 foldl$fopr
 <x0><r0>(r0, x0) = f0(r0, x0)
-} (*where*) // gseq_foldl_fnp2
+}(*where*)//gseq_foldl_fnp2(xs,r0,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
@@ -2361,12 +2361,12 @@ gseq_foldl_cfr2
 ( xs, r0, f0 ) =
 (
 gseq_foldl
-<xs><x0>(xs, r0)) where
+<xs><x0><r0>(xs, r0)) where
 {
 #impltmp
 foldl$fopr
 <x0><r0>(r0, x0) = f0(r0, x0)
-} (*where*) // gseq_foldl_cfr2
+}(*where*)//gseq_foldl_cfr2(xs,r0,f0)
 (* ****** ****** *)
 // HX: gseq_foldr
 (* ****** ****** *)
@@ -2377,12 +2377,12 @@ gseq_foldr_fnp2
 ( xs, r0, f0 ) =
 (
 gseq_foldr
-<xs><x0>(xs, r0)) where
+<xs><x0><r0>(xs, r0)) where
 {
 #impltmp
 foldr$fopr
 <x0><r0>(x0, r0) = f0(x0, r0)
-} (*where*) // gseq_foldr_fnp2
+}(*where*)//gseq_foldr_fnp2(xs,r0,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
@@ -2391,12 +2391,34 @@ gseq_foldr_cfr2
 ( xs, r0, f0 ) =
 (
 gseq_foldr
-<xs><x0>(xs, r0)) where
+<xs><x0><r0>(xs, r0)) where
 {
 #impltmp
 foldr$fopr
 <x0><r0>(x0, r0) = f0(x0, r0)
-} (*where*) // gseq_foldr_cfr2
+}(*where*)//gseq_foldr_cfr2(xs,r0,f0)
+(* ****** ****** *)
+// HX: gseq_exists
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_exists_fnp1
+(    xs, f0    ) =
+(
+gseq_exists<xs><x0>(xs)) where
+{
+#impltmp exists$test<x0>(x0) = f0(x0)
+} (*where*)//gseq_exists_fnp1(xs, f0)
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_exists_cfr1
+(    xs, f0    ) =
+(
+gseq_exists<xs><x0>(xs)) where
+{
+#impltmp exists$test<x0>(x0) = f0(x0)
+} (*where*)//gseq_exists_cfr1(xs, f0)
 (* ****** ****** *)
 // HX: gseq_forall
 (* ****** ****** *)
@@ -2489,6 +2511,134 @@ gseq_map_strm<xs><x0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
 } (*where*)//gseq_map_strm_cfr1(xs,f0)
+(* ****** ****** *)
+// HX: gseq_ifoldl
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><r0>
+gseq_ifoldl_fnp3
+(  xs, r0, f0  ) =
+(
+gseq_ifoldl<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+ifoldl$fopr
+< x0><r0 >(r0, i0, x0) = f0(r0, i0, x0)
+} (*where*)//gseq_ifoldl_fnp3(xs,r0,f0)
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><r0>
+gseq_ifoldl_cfr3
+(  xs, r0, f0  ) =
+(
+gseq_ifoldl<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+ifoldl$fopr
+< x0><r0 >(r0, i0, x0) = f0(r0, i0, x0)
+} (*where*)//gseq_ifoldl_cfr3(xs,r0,f0)
+(* ****** ****** *)
+// HX: gseq_ifoldr
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><r0>
+gseq_ifoldr_fnp3
+(  xs, r0, f0  ) =
+(
+gseq_ifoldr<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+ifoldr$fopr
+< x0><r0 >(i0, x0, r0) = f0(i0, x0, r0)
+} (*where*)//gseq_ifoldr_fnp3(xs,r0,f0)
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><r0>
+gseq_ifoldr_cfr3
+(  xs, r0, f0  ) =
+(
+gseq_ifoldr<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+ifoldr$fopr
+< x0><r0 >(i0, x0, r0) = f0(i0, x0, r0)
+} (*where*)//gseq_ifoldr_cfr3(xs,r0,f0)
+(* ****** ****** *)
+// HX: gseq_iexists
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_iexists_fnp2
+(    xs, f0    ) =
+(
+gseq_iexists<xs><x0>(xs)) where
+{
+#impltmp
+iexists$test<x0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_iexists_fnp2(xs, f0)
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_iexists_cfr2
+(    xs, f0    ) =
+(
+gseq_iexists<xs><x0>(xs)) where
+{
+#impltmp
+iexists$test<x0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_iexists_cfr2(xs, f0)
+(* ****** ****** *)
+// HX: gseq_iforall
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_iforall_fnp2
+(    xs, f0    ) =
+(
+gseq_iforall<xs><x0>(xs)) where
+{
+#impltmp
+iforall$test<x0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_iforall_fnp2(xs, f0)
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_iforall_cfr2
+(    xs, f0    ) =
+(
+gseq_iforall<xs><x0>(xs)) where
+{
+#impltmp
+iforall$test<x0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_iforall_cfr2(xs, f0)
+(* ****** ****** *)
+// HX: gseq_iforeach
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_iforeach_fnp2
+(    xs, f0    ) =
+(
+gseq_iforeach<xs><x0>(xs)) where
+{
+#impltmp
+iforeach$work<x0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_iforeach_fnp2(xs, f0)
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_iforeach_cfr2
+(    xs, f0    ) =
+(
+gseq_iforeach<xs><x0>(xs)) where
+{
+#impltmp
+iforeach$work<x0>(i0, x0) = f0(i0, x0)
+} (*where*)//gseq_iforeach_cfr2(xs, f0)
 (* ****** ****** *)
 // HX: gseq_imap_list
 (* ****** ****** *)

@@ -923,13 +923,13 @@ fun
 <x0:t0>
 <r0:vt>
 gseq_foldl_fnp2
-(xs, r0, (r0, x0)-<fnp>r0): r0
+(xs, r0, f0: (r0, x0)-<fnp>r0): r0
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
 gseq_foldl_cfr2
-(xs, r0, (r0, x0)-<fnp>r0): r0
+(xs, r0, f0: (r0, x0)-<fnp>r0): r0
 (* ****** ****** *)
 // HX: gseq_foldr
 (* ****** ****** *)
@@ -938,13 +938,24 @@ fun
 <x0:t0>
 <r0:vt>
 gseq_foldr_fnp2
-(xs, r0, (x0, r0)-<fnp>r0): r0
+(xs, r0, f0: (x0, r0)-<fnp>r0): r0
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
 gseq_foldr_cfr2
-(xs, r0, (x0, r0)-<cfr>r0): r0
+(xs, r0, f0: (x0, r0)-<cfr>r0): r0
+(* ****** ****** *)
+// HX: gseq_exists
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_exists_fnp1(xs,(x0)-<fnp>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_exists_cfr1(xs,(x0)-<cfr>bool): bool
 (* ****** ****** *)
 // HX: gseq_forall
 (* ****** ****** *)
@@ -997,6 +1008,75 @@ fun
 <y0:vt>
 gseq_map_strm_cfr1
 (xs: xs, fopr: (x0) -<cfr> y0): strm_vt(y0)
+(* ****** ****** *)
+// HX: gseq_iexists
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_iexists_fnp2
+(xs: xs, test: (nint,x0) -<fnp> bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_iexists_cfr2
+(xs: xs, test: (nint,x0) -<cfr> bool): bool
+(* ****** ****** *)
+// HX: gseq_ifoldl
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifoldl_fnp3
+(xs, r0, f0: (r0, nint, x0)-<fnp>r0): r0
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifoldl_cfr3
+(xs, r0, f0: (r0, nint, x0)-<fnp>r0): r0
+(* ****** ****** *)
+// HX: gseq_ifoldr
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifoldr_fnp3
+(xs, r0, f0: (nint, x0, r0)-<fnp>r0): r0
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifoldr_cfr3
+(xs, r0, f0: (nint, x0, r0)-<fnp>r0): r0
+(* ****** ****** *)
+// HX: gseq_iforall
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforall_fnp2
+(xs: xs, test: (nint,x0) -<fnp> bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforall_cfr2
+(xs: xs, test: (nint,x0) -<cfr> bool): bool
+(* ****** ****** *)
+// HX: gseq_iforeach
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforeach_fnp2
+(xs: xs, test: (nint,x0) -<fnp> void): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforeach_cfr2
+(xs: xs, test: (nint,x0) -<cfr> void): void
 (* ****** ****** *)
 // HX: gseq_imap_list
 (* ****** ****** *)
