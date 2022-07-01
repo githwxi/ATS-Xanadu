@@ -2245,9 +2245,7 @@ end(*let*)//end-of-[p1_s0exp_atm(buf,err)]
 p1_s0expseq_atm
 (  buf, err  ) =
 list_vt2t
-(
-ps_p1fun{s0exp}(buf, err, p1_s0exp_atm)
-)
+(ps_p1fun{s0exp}(buf, err, p1_s0exp_atm))
 //
 (* ****** ****** *)
 //
@@ -2255,17 +2253,13 @@ ps_p1fun{s0exp}(buf, err, p1_s0exp_atm)
 p1_s0expseq_COMMA
 (  buf, err  ) =
 list_vt2t
-(
-ps_COMMA_p1fun{s0exp}(buf, err, p1_s0exp)
-)
+(ps_COMMA_p1fun{s0exp}(buf, err, p1_s0exp))
 //
 #implfun
 p1_l0s0eseq_COMMA
 (  buf, err  ) =
 list_vt2t
-(
-ps_COMMA_p1fun{l0s0e}(buf, err, p1_l0s0e)
-)
+(ps_COMMA_p1fun{l0s0e}(buf, err, p1_l0s0e))
 //
 (* ****** ****** *)
 //
@@ -2273,9 +2267,7 @@ ps_COMMA_p1fun{l0s0e}(buf, err, p1_l0s0e)
 p1_s0expseq_SMCLN
 (  buf, err  ) =
 list_vt2t
-(
-ps_SMCLN_p1fun{s0exp}(buf, err, p1_s0exp)
-)
+(ps_SMCLN_p1fun{s0exp}(buf, err, p1_s0exp))
 //
 (* ****** ****** *)
 
@@ -2326,7 +2318,8 @@ let
 in
 //
 case+ tnd of
-| T_BAR() =>
+|
+T_BAR() =>
 let
   val tok1 = tok
   val () = buf.skip1()
@@ -2362,7 +2355,7 @@ case+ node of
   (      tbar      ) => tbar.lctn()
 | s0exp_RPAREN_cons1
   (tok1, s0es, tok2) => tok1.lctn() + tok2.lctn()
-)  
+) (*case*) // end of [s0exp_RPAREN_lctn(node)] 
 
 (* ****** ****** *)
 
@@ -2375,12 +2368,12 @@ case+ node of
   (      tbar      ) => tbar.lctn()
 | l0s0e_RBRACE_cons1
   (tok1, lses, tok2) => tok1.lctn() + tok2.lctn()
-)  
+) (*case*) // end of [l0s0e_RBRACE_lctn(node)]
 
 (* ****** ****** *)
 
 local
-
+//
 fun
 p1_s0exp_app_ntk
 ( buf:
@@ -2433,9 +2426,9 @@ s0exp(lres, S0Eapps(list_cons(s0e1,s0es)))
 end // end of [list_cons]
 //
 end(*let*)//end(p1_s0exp_app_ntk(buf,err,ntk))
-
+//
 in//local
-
+//
 #implfun
 p1_s0exp_app_NEQ0
   (buf, err) =
@@ -2447,7 +2440,7 @@ fun
 ntk(tnd: tnode): bool =
 (case+ tnd of T_EQ0() => false | _ => true)
 } (*where*)//end-of(p1_s0exp_app_NEQ0(buf,err))
-
+//
 #implfun
 p1_s0exp_app_NGT0
   (buf, err) =
@@ -2459,7 +2452,7 @@ fun
 ntk(tnd: tnode): bool =
 (case+ tnd of T_GT0() => false | _ => true)
 } (*where*)//end-of(p1_s0exp_app_NGT0(buf,err))
-
+//
 endloc(*local*)//end-of[local(p1_s0exp_app_ntk]
 
 (* ****** ****** *)
@@ -2493,18 +2486,16 @@ _ (*non-T_LBRACE*) =>
 err := e00 + 1;
 s0uni_make_node(tok.lctn(),S0UNInone(tok)))
 //
-end (*let*) // end-of-[ p1_s0uni(buf,err) ]
+end (*let*) // end-of-[p1_s0uni(buf,err)]
 
 (* ****** ****** *)
-
+//
 #implfun
 p1_s0uniseq(buf, err) =
 (
-//
 list_vt2t(ps_p1fun{s0uni}(buf,err,p1_s0uni))
+) (*case*)//end-of-[p1_s0uniseq(buf,err)]
 //
-) (*case*) // end-of-[ p1_s0uniseq(buf,err) ]
-
 (* ****** ****** *)
 //
 (*
@@ -2562,7 +2553,8 @@ case+ s0us of
 | list_nil() =>
   (
   case+ s0is of
-  | list_nil _ => dcon.lctn()
+  | list_nil _ =>
+    dcon.lctn((*void*))
   | list_cons _ =>
     let
       val
@@ -2574,14 +2566,15 @@ case+ s0us of
 | list_cons(s0u0, _) =>
   (
   case+ s0is of
-  | list_nil() => s0u0.lctn()
+  | list_nil() =>
+    s0u0.lctn((*void*))
   | list_cons _ =>
     let
       val
       s0i1 = list_last(s0is)
     in
       s0u0.lctn() + s0i1.lctn()
-    end
+    end (*let*) // list_cons _
   )
 ) : loc_t // end of [val(lres)]
 //
@@ -2650,20 +2643,16 @@ end (*let*) // end of [p1_d0typ( buf,err) ]
 #implfun
 p1_d0tcnseq_BAR(buf, err) =
 (
-//
 list_vt2t(ps_BAR_p1fun{d0tcn}(buf,err,p1_d0tcn))
-//
-) (*case*) //end-of-[ p1_d0tcnseq_BAR(buf,err) ]
+)(*case*)//end-of-[p1_d0tcnseq_BAR(buf,err)]
 
 (* ****** ****** *)
 
 #implfun
 p1_d0typseq_AND(buf, err) =
 (
-//
 list_vt2t(ps_AND_p1fun{d0typ}(buf,err,p1_d0typ))
-//
-) (*case*) //end-of-[ p1_d0typseq_AND(buf,err) ]
+)(*case*)//end-of-[p1_d0typseq_AND(buf,err)]
 
 (* ****** ****** *)
 
