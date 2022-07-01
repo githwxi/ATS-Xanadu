@@ -999,6 +999,23 @@ fun
 <x0:t0>
 gseq_foreach_cfr1(xs,(x0)-<cfr>void): void
 (* ****** ****** *)
+// HX: gseq_map
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_map_fnp1
+(xs: xs, fopr: (x0) -<fnp> y0): ( ys )
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_map_cfr1
+(xs: xs, fopr: (x0) -<cfr> y0): ( ys )
+(* ****** ****** *)
 // HX: gseq_map_list
 (* ****** ****** *)
 fun
@@ -1078,12 +1095,12 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_iforall_fnp2
-(xs: xs, test: (nint,x0) -<fnp> bool): bool
+(xs: xs, test: (nint,x0)-<fnp>bool): bool
 fun
 <xs:t0>
 <x0:t0>
 gseq_iforall_cfr2
-(xs: xs, test: (nint,x0) -<cfr> bool): bool
+(xs: xs, test: (nint,x0)-<cfr>bool): bool
 (* ****** ****** *)
 // HX: gseq_iforeach
 (* ****** ****** *)
@@ -1091,12 +1108,29 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_iforeach_fnp2
-(xs: xs, test: (nint,x0) -<fnp> void): void
+(xs: xs, test: (nint,x0)-<fnp>void): void
 fun
 <xs:t0>
 <x0:t0>
 gseq_iforeach_cfr2
-(xs: xs, test: (nint,x0) -<cfr> void): void
+(xs: xs, test: (nint,x0)-<cfr>void): void
+(* ****** ****** *)
+// HX: gseq_imap
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_imap_fnp2
+(xs: xs, fopr: (nint, x0) -<fnp> y0): (ys)
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_imap_cfr2
+(xs: xs, fopr: (nint, x0) -<cfr> y0): (ys)
 (* ****** ****** *)
 // HX: gseq_imap_list
 (* ****** ****** *)
