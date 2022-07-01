@@ -114,7 +114,7 @@ gseq_print$beg<>() = ()
 gseq_print$sep<>() = ()
 #impltmp
 gseq_print$end<>() = ()
-in
+in//let
 gseq_print<strn><cgtz>(cs)
 end(*let*)//end of [strn_print]
 
@@ -165,7 +165,7 @@ list_vt_append0<cgtz>
 ( strn_listize<>(xs)
 , strn_listize<>(ys))
 //
-in
+in//let
 strn_vt_make_list_vt<>(zs)
 end // end of [strn_append_vt]
 //
@@ -175,9 +175,11 @@ end // end of [strn_append_vt]
 strn_reverse
 {n0}(cs) =
 let
+//
 val n0 =
 strn_length<>(cs)
-in
+//
+in//let
 //
 let
 //
@@ -194,7 +196,7 @@ end
 //
 in
   strn_tabulate<n0>(n0)
-end
+end (*let*)//tabulate$fopr
 //
 end // end of [strn_reverse]
 
@@ -204,9 +206,11 @@ end // end of [strn_reverse]
 strn_reverse_vt
 {n0}(cs) =
 let
+//
 val n0 =
 strn_length<>(cs)
-in
+//
+in//let
 //
 let
 //
@@ -217,15 +221,15 @@ tabulate$fopr
 <c0><n0>(i0) =
 let
 val j0 = (n0-1)-i0
-in
+in//let
   strn_get_at<>(cs, j0)
-end
+end(*let*)//tabulate$fopr
 //
 in
   strn_vt_tabulate<n0>(n0)
-end
+end (*let*)//strn_reverse_vt
 //
-end // end of [strn_reverse_vt]
+end // end-of-[strn_reverse_vt]
 
 (* ****** ****** *)
 
@@ -258,6 +262,7 @@ end // end of [else]
 } (* end of [strn_forall/uncons] *)
 
 (* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 strn_listize
@@ -288,7 +293,9 @@ auxmain(i1, list_vt_cons(ci, r0))
 end // end of [else]
 )
 } (*where*) // end of [strn_listize]
+//
 (* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 strn_strmize(cs) =
@@ -318,7 +325,9 @@ in
 end // end of [else]
 )
 } (*where*) // end of [strn_strmize]
+//
 (* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 strn_strxize(cs) =
@@ -353,7 +362,9 @@ in
 end // end of [else]
 )
 } (*where*) // end of [strn_strxize]
+//
 (* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 strn_rlistize
@@ -386,6 +397,7 @@ auxmain(i1, list_vt_cons(ci, r0))
 end // end of [else]
 )
 } (*where*) // end of [strn_rlistize]
+//
 (* ****** ****** *)
 //
 #impltmp<>

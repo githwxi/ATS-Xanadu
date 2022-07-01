@@ -301,7 +301,8 @@ idropif$test<x0>(_, x0) = dropif$test<x0>(x0)
 (* ****** ****** *)
 
 #impltmp
-<xs><x0><r0>
+<xs>
+<x0><r0>
 gseq_foldl
 (xs, r0) = r0 where
 {
@@ -1142,7 +1143,8 @@ end(*let*)//end-of(gseq_sortedq)
 (* ****** ****** *)
 
 #impltmp
-<xs><x0><r0>
+<xs>
+<x0><r0>
 gseq_foldr
 (xs, r0) = r0 where
 {
@@ -2331,6 +2333,114 @@ in
 gseq_x2iforeach_row<ys,xs><y0,x0>(ys, xs)
 end (* let *) // end of [gseq_x2iforeach_col]
 
+(* ****** ****** *)
+//
+// HX-2022-07-01:
+// higher-order gseq-functions
+//
+(* ****** ****** *)
+// HX: gseq_foldl
+(* ****** ****** *)
+#impltmp
+<xs><x0><r0>
+gseq_foldl_fnp2
+( xs, r0, f0 ) =
+(
+gseq_foldl
+<xs><x0>(xs, r0)) where
+{
+#impltmp
+foldl$fopr
+<x0><r0>(r0, x0) = f0(r0, x0)
+} (*where*) // gseq_foldl_fnp2
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><r0>
+gseq_foldl_cfr2
+( xs, r0, f0 ) =
+(
+gseq_foldl
+<xs><x0>(xs, r0)) where
+{
+#impltmp
+foldl$fopr
+<x0><r0>(r0, x0) = f0(r0, x0)
+} (*where*) // gseq_foldl_cfr2
+(* ****** ****** *)
+// HX: gseq_foldr
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><r0>
+gseq_foldr_fnp2
+( xs, r0, f0 ) =
+(
+gseq_foldr
+<xs><x0>(xs, r0)) where
+{
+#impltmp
+foldr$fopr
+<x0><r0>(x0, r0) = f0(x0, r0)
+} (*where*) // gseq_foldr_fnp2
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><r0>
+gseq_foldr_cfr2
+( xs, r0, f0 ) =
+(
+gseq_foldr
+<xs><x0>(xs, r0)) where
+{
+#impltmp
+foldr$fopr
+<x0><r0>(x0, r0) = f0(x0, r0)
+} (*where*) // gseq_foldr_cfr2
+(* ****** ****** *)
+// HX: gseq_forall
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_forall_fnp1
+(    xs, f0    ) =
+(
+gseq_forall<xs><x0>(xs)) where
+{
+#impltmp forall$test<x0>(x0) = f0(x0)
+} (*where*)//gseq_forall_fnp1(xs, f0)
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_forall_cfr1
+(    xs, f0    ) =
+(
+gseq_forall<xs><x0>(xs)) where
+{
+#impltmp forall$test<x0>(x0) = f0(x0)
+} (*where*)//gseq_forall_cfr1(xs, f0)
+(* ****** ****** *)
+// HX: gseq_foreach
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_foreach_fnp1
+(    xs, f0    ) =
+(
+gseq_foreach<xs><x0>(xs)) where
+{
+#impltmp foreach$work<x0>(x0) = f0(x0)
+} (*where*)//gseq_foreach_fnp1(xs, f0)
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_foreach_cfr1
+(    xs, f0    ) =
+(
+gseq_foreach<xs><x0>(xs)) where
+{
+#impltmp foreach$work<x0>(x0) = f0(x0)
+} (*where*)//gseq_foreach_cfr1(xs, f0)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000.dats] *)
