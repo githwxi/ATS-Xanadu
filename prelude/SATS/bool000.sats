@@ -60,12 +60,17 @@ bool_mul
 , y: bool(b2)): bool(b1*b2)
 //
 (* ****** ****** *)
-
 fun<>
-bool_print(bool): void
+bool2sint
+{b:bool}
+(x: bool(b)): sint(b2i(b))
+(* ****** ****** *)
+//
 fun<>
-bool_parse(strn): bool
-
+bool_print(btf: bool): void
+fun<>
+bool_parse(rep: strn): bool
+//
 (* ****** ****** *)
 //
 fun
@@ -93,6 +98,10 @@ not with bool_neg of 1000
 #symload + with bool_add of 1000
 #symload * with bool_mul of 1000
 //
+(* ****** ****** *)
+
+#symload sint with bool2sint of 1000
+
 (* ****** ****** *)
 //
 (*

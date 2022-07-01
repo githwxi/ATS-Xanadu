@@ -2442,5 +2442,53 @@ gseq_foreach<xs><x0>(xs)) where
 #impltmp foreach$work<x0>(x0) = f0(x0)
 } (*where*)//gseq_foreach_cfr1(xs, f0)
 (* ****** ****** *)
+// HX: gseq_map_list
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_map_list_fnp1
+(    xs, f0    ) =
+(
+gseq_map_list<xs><x0>(xs)) where
+{
+#impltmp map$fopr<x0><y0>(x0) = f0(x0)
+} (*where*)//gseq_map_list_fnp1(xs, f0)
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_map_list_cfr1
+(    xs, f0    ) =
+(
+gseq_map_list<xs><x0>(xs)) where
+{
+#impltmp map$fopr<x0><y0>(x0) = f0(x0)
+} (*where*)//gseq_map_list_cfr1(xs, f0)
+(* ****** ****** *)
+// HX: gseq_map_strm
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_map_strm_fnp1
+(    xs, f0    ) =
+(
+gseq_map_strm<xs><x0>(xs)) where
+{
+#impltmp map$fopr<x0><y0>(x0) = f0(x0)
+} (*where*)//gseq_map_strm_fnp1(xs, f0)
+(* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_map_strm_cfr1
+(    xs, f0    ) =
+(
+gseq_map_strm<xs><x0>(xs)) where
+{
+#impltmp map$fopr<x0><y0>(x0) = f0(x0)
+} (*where*)//gseq_map_strm_cfr1(xs, f0)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000.dats] *)
