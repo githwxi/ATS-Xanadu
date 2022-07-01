@@ -22,7 +22,7 @@ let
 val ln =
 gseqn_length
 <xs><x0><ln>(xs) in ln = 0
-end // end of [gseqn_nilq]
+endlet // end of [gseqn_nilq]
 
 (* ****** ****** *)
 

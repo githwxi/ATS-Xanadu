@@ -277,11 +277,11 @@ foldl$fopr<x0><r0>(r0, _) = succ(r0)
 gseq_drop
   (xs, n0) =
 (
-  gseq_idropif(xs)
-) where
+gseq_idropif
+< xs >< x0 >(xs)) where
 {
-  #impltmp
-  idropif$test<x0>(i0, _) = (i0 < n0)
+#impltmp
+idropif$test<x0>(i0, x0) = (i0 < n0)
 } (* gseq_drop/idropif *)
 
 (* ****** ****** *)
@@ -291,11 +291,11 @@ gseq_drop
 gseq_dropif
   (xs) =
 (
-  gseq_idropif(xs)
-) where
+gseq_idropif
+< xs >< x0 >(xs)) where
 {
 #impltmp
-idropif$test<x0>(_, x0) = dropif$test<x0>(x0)
+idropif$test<x0>(i0, x0) = dropif$test<x0>(x0)
 } (* gseq_drop/dropif *)
 
 (* ****** ****** *)
