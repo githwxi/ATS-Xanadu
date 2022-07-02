@@ -192,10 +192,10 @@ $llazy(strxcon_vt_cons(x, f0(x+1)))
 // Fri Jul  1 20:34:36 EDT 2022
 *)
 val xys =
-gseq_z2map_list_fnp2
+gseq_z2map_fnp2
 ( list(1,3,5)
 , list(2,4,6)
-, lam(x:int,y:int) => 10*x + y)
+, lam(x:int,y:int) => 10*x+y)
 val ( ) = prerrln("xys = ", xys)
 //
 (* ****** ****** *)

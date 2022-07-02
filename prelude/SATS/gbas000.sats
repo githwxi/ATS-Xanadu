@@ -523,13 +523,23 @@ ifoldr$fopr
 // For z2-gseq-operations
 //
 (* ****** ****** *)
-
+//
 fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
 z2map$fopr(x0, y0): (z0)
-
+fun
+<x0:vt
+,y0:vt>
+<z0:vt>
+z2map0$fopr(~x0, ~y0): (z0)
+fun
+<x0:vt
+,y0:vt>
+<z0:vt>
+z2map1$fopr(!x0, !y0): (z0)
+//
 (* ****** ****** *)
 //
 fun
@@ -583,6 +593,69 @@ fun
 <x0:vt
 ,y0:vt>
 z2foreach1$work(!x0, !y0): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,y0:t0>
+<z0:vt>
+z2imap$fopr(nint,x0,y0): (z0)
+fun
+<x0:vt
+,y0:vt>
+<z0:vt>
+z2imap0$fopr(nint,~x0,~y0): (z0)
+fun
+<x0:vt
+,y0:vt>
+<z0:vt>
+z2imap1$fopr(nint,!x0,!y0): (z0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,y0:t0>
+z2iforall$test(nint,x0,y0): bool
+fun
+<x0:vt
+,y0:vt>
+z2iforall0$test(nint,~x0,~y0): bool
+fun
+<x0:vt
+,y0:vt>
+z2iforall1$test(nint,!x0,!y0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,y0:t0>
+z2iforcmp$fcmp(nint,x0,y0): sint
+fun
+<x0:vt
+,y0:vt>
+z2iforcmp0$fcmp(nint,~x0,~y0): sint
+fun
+<x0:vt
+,y0:vt>
+z2iforcmp1$fcmp(nint,!x0,!y0): sint
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,y0:t0>
+z2iforeach$work(nint,x0,y0): void
+fun
+<x0:vt
+,y0:vt>
+z2iforeach0$work(nint,~x0,~y0): void
+fun
+<x0:vt
+,y0:vt>
+z2iforeach1$work(nint,!x0,!y0): void
 //
 (* ****** ****** *)
 //
