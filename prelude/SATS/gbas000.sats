@@ -647,6 +647,13 @@ x2ifilter$test
 //
 (* ****** ****** *)
 //
+fun
+<x0:t0
+,y0:t0>
+x2iforeach$work(nint, x0, nint, y0): void
+//
+(* ****** ****** *)
+//
 fun<>
 x2iforeach_row$beg(nint): void
 fun<>
