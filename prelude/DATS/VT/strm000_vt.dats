@@ -1629,5 +1629,21 @@ glseq_rlistize
 <strm_vt(x0)><x0> = strm_vt_rlistize<x0>
 //
 (* ****** ****** *)
+//
+#impltmp
+{x0:vt}
+glseq_unstrm_vt
+<list(x0)><x0>
+  (   xs   ) =
+(
+list_vt2t(strm_vt_listize<x0>(xs))
+)
+//
+#impltmp
+{x0:vt}
+glseq_unstrm_vt
+<list_vt(x0)><x0> = strm_vt_listize< x0 >
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_strm000_vt.dats] *)

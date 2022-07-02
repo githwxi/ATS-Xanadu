@@ -208,6 +208,11 @@ gseq_x2map_list_cfr2
 ( list(1,3,5,7)
 , list(0,2,4,8)
 , lam(x:int,y:int) => 10*x + y)
+val xys =
+glseq_filter0(xys) where
+{
+#impltmp filter0$test<int>(xy) = (xy % 10 = 0)
+}
 val ( ) = prerrln("xys = ", xys)
 //
 (* ****** ****** *)

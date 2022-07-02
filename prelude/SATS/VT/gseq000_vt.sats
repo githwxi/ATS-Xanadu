@@ -280,6 +280,25 @@ glseq_rforall1(!xs): bool
 //
 (* ****** ****** *)
 //
+(*
+HX:
+Sat Jul  2 11:21:23 EDT 2022
+*)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+glseq_map0(xs: ~xs): ( ys )
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+glseq_map1(xs: !xs): ( ys )
+//
+(* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -305,12 +324,14 @@ fun
 glseq_map1_strm(!xs): strm_vt(y0)
 //
 (* ****** ****** *)
+//
 (*
 HX-2022-06-02:
 [copy] is just map1-identity
 [copy_list] is just [listize1]
 [copy_strm] is just [strmize1]
 *)
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -361,6 +382,24 @@ fun
 <xs:vt>
 <x0:vt>
 glseq_rcopy_rlist(!xs): list_vt(x0)
+//
+(* ****** ****** *)
+//
+(*
+Sat Jul  2 11:55:04 EDT 2022
+*)
+fun
+<xs:vt>
+<x0:vt>
+glseq_filter0(~xs): ( xs )
+fun
+<xs:vt>
+<x0:vt>
+glseq_filter0_list(~xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+glseq_filter0_strm(~xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //
