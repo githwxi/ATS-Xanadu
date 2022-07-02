@@ -211,7 +211,8 @@ gseq_x2map_list_cfr2
 val xys =
 glseq_filter0(xys) where
 {
-#impltmp filter0$test<int>(xy) = (xy % 10 <= 4)
+#impltmp
+filter0$test<int>(xy) = (xy % 10 <= 4)
 }
 val ( ) = prerrln("xys = ", xys)
 //
@@ -221,10 +222,16 @@ val ( ) = prerrln("xys = ", xys)
 // Sat Jul  2 02:37:39 EDT 2022
 *)
 val ( ) =
-gseq_x2foreach_fnp2
+gseq_x2iforeach_fnp4
 ( list(1,3,5),"2468"
-, lam(x:int, y:char) =>
-  prerrln("(", x, ",", y, ")") )
+, lam(i:int,x:int,j:int,y:char) =>
+  (
+  if j > 0 then prerr(",");
+  prerr("(", x, ",", y, ")");
+  if ((j+1)%4) = 0 then prerrln();
+  )
+) (* end of [gseq_x2iforeach_fnp4] *)
+//
 (* ****** ****** *)
 
 (* end of [test01_synoug0.dats] *)

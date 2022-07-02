@@ -1507,6 +1507,31 @@ gseq_x2map_strm_cfr2
 , ys:ys, fopr:(x0,y0) -<cfr> z0): strm_vt(z0)
 (* ****** ****** *)
 //
+// HX: gseq_x2iforeach
+//
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_x2iforeach_fnp4
+( xs:xs
+, ys:ys
+, work:
+  (nint, x0, nint, y0) -<fnp> void ): void
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_x2iforeach_cfr4
+( xs:xs
+, ys:ys
+, work:
+  (nint, x0, nint, y0) -<cfr> void ): void
+(* ****** ****** *)
+//
 // HX: gseq_x2imap(seq)
 //
 (* ****** ****** *)

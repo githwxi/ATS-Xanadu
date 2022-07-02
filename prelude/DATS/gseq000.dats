@@ -2482,7 +2482,7 @@ gseq_iforeach<ys><y0>(ys)
 {
 #impltmp
 iforeach$work<y0>(jy, y0) =
-x2iforeach_row$work<x0,y0>(ix,x0,jy,y0)
+x2iforeach$work<x0,y0>(ix,x0,jy,y0)
 }
 //
 endlet // end-of-[iforeach$work_x0_]
@@ -3362,6 +3362,38 @@ gseq_x2map_strm
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 }(*where*)//end(gseq_x2map_strm_cfr2(xs,ys,f0))
+(* ****** ****** *)
+//
+// HX: gseq_x2iforeach
+//
+(* ****** ****** *)
+#impltmp
+<xs,ys>
+<x0,y0>
+gseq_x2iforeach_fnp4
+  (xs, ys, f0) =
+(
+gseq_x2iforeach
+<xs,ys><x0,y0>(xs,ys)) where
+{
+#impltmp
+x2iforeach$work
+<    x0,y0    >(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
+}(*where*)//end(gseq_x2iforeach_fnp4(xs,ys,f0))
+(* ****** ****** *)
+#impltmp
+<xs,ys>
+<x0,y0>
+gseq_x2iforeach_cfr4
+  (xs, ys, f0) =
+(
+gseq_x2iforeach
+<xs,ys><x0,y0>(xs,ys)) where
+{
+#impltmp
+x2iforeach$work
+<    x0,y0    >(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
+}(*where*)//end(gseq_x2iforeach_cfr4(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_x2imap(seq)
