@@ -1266,6 +1266,27 @@ fun
 gseq_x2map_cfr2
 (xs:xs, ys:ys, fopr:(x0,y0) -<cfr> z0): (zs)
 (* ****** ****** *)
+// HX: gseq_x2map_list
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_x2map_list_fnp2
+( xs:xs
+, ys:ys, fopr:(x0,y0) -<fnp> z0): list_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_x2map_list_cfr2
+( xs:xs
+, ys:ys, fopr:(x0,y0) -<cfr> z0): list_vt(z0)
+(* ****** ****** *)
 // HX: gseq_x2map_strm
 (* ****** ****** *)
 fun

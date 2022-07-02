@@ -2170,8 +2170,32 @@ gseq_x2map_strm<xs,ys><x0,y0><z0>(xs,ys)
 {z0:vt}
 gseq_x2map
 <xs,ys><x0,y0>
+<list_vt(z0)><z0> =
+gseq_x2map_list<xs,ys><x0,y0><z0>(*void*)
+//
+#impltmp
+{xs:t0}
+{ys:t0}
+{x0:t0}
+{y0:t0}
+{z0:vt}
+gseq_x2map
+<xs,ys><x0,y0>
 <strm_vt(z0)><z0> =
 gseq_x2map_strm<xs,ys><x0,y0><z0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs,ys>
+<x0,y0><z0>
+gseq_x2map_list
+  (xs, ys) =
+strm_vt_listize<z0>(zs) where
+{
+val zs =
+gseq_x2map_strm<xs,ys><x0,y0><z0>(xs,ys)
+}(*where*)//end-of(gseq_x2map_list(xs, ys))
 //
 (* ****** ****** *)
 //
@@ -3025,6 +3049,34 @@ gseq_x2map
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 } (*where*)//end-[gseq_x2map_cfr2(xs,f0)]
+(* ****** ****** *)
+// HX: gseq_x2map_list
+(* ****** ****** *)
+#impltmp
+<xs,ys>
+<x0,y0><z0>
+gseq_x2map_list_fnp2
+(  xs, ys, f0  ) =
+(
+gseq_x2map_list
+<xs,ys><x0,y0><z0>(xs,ys)) where
+{
+#impltmp
+x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
+} (*where*)//end-[gseq_x2map_list_fnp2(xs,f0)]
+(* ****** ****** *)
+#impltmp
+<xs,ys>
+<x0,y0><z0>
+gseq_x2map_list_cfr2
+(  xs, ys, f0  ) =
+(
+gseq_x2map_list
+<xs,ys><x0,y0><z0>(xs,ys)) where
+{
+#impltmp
+x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
+} (*where*)//end-[gseq_x2map_list_cfr2(xs,f0)]
 (* ****** ****** *)
 // HX: gseq_x2map_strm
 (* ****** ****** *)
