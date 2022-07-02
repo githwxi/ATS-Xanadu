@@ -459,13 +459,14 @@ list_vt_cons(map1$fopr<x0><y0>(x0), r0)
 end(*let*)//end-of(glseq_map0_rlist/foldl0)
 //
 (* ****** ****** *)
+//
 #impltmp
 <xs><x0>
 glseq_filter0
   (  xs  ) =
 glseq_unstrm_vt<xs><x0>
 (glseq_filter0_strm<xs><x0>(xs))
-
+//
 (* ****** ****** *)
 //
 #impltmp

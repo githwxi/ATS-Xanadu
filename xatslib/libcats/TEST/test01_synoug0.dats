@@ -211,7 +211,7 @@ gseq_x2map_list_cfr2
 val xys =
 glseq_filter0(xys) where
 {
-#impltmp filter0$test<int>(xy) = (xy % 10 = 0)
+#impltmp filter0$test<int>(xy) = (xy % 10 <= 4)
 }
 val ( ) = prerrln("xys = ", xys)
 //
