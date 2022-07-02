@@ -187,27 +187,6 @@ $llazy(strxcon_vt_cons(x, f0(x+1)))
 }
 
 (* ****** ****** *)
-
-#impltmp
-{a:t0}
-gseq_strmize<list(a)><a> = list_strmize<a>
-
-#impltmp
-<xs><x0>
-gseq_forall
-  (xs) =
-let
-val
-xs = gseq_strmize<xs><x0>(xs)
-in//let
-strm_vt_forall0<x0>(xs) where
-{
-  #impltmp
-  forall0$test<x0> = forall$test<x0>
-}
-end (*let*)//end of [gseq_forall/strmize]
-
-(* ****** ****** *)
 (*
 // HX:
 // Fri Jul  1 20:34:36 EDT 2022
@@ -225,13 +204,11 @@ val ( ) = prerrln("xys = ", xys)
 // Fri Jul  1 21:41:55 EDT 2022
 *)
 val xys =
-gseq_x2map_strm_cfr2
-( list(1,3,5)
-, list(2,4,6)
+gseq_x2map_list_cfr2
+( list(1,3,5,7)
+, list(0,2,4,6,8)
 , lam(x:int,y:int) => 10*x + y)
-val ( ) =
-prerrln0("xys = ", xys)
-where { #impltmp strm_vt_print$len() = -1 }
+val ( ) = prerrln0("xys = ", xys)
 //
 (* ****** ****** *)
 
