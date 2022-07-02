@@ -192,7 +192,7 @@ $llazy(strxcon_vt_cons(x, f0(x+1)))
 // Fri Jul  1 20:34:36 EDT 2022
 *)
 val xys =
-gseq_z2map_list_cfr2
+gseq_z2map_list_fnp2
 ( list(1,3,5)
 , list(2,4,6)
 , lam(x:int,y:int) => 10*x + y)
@@ -206,10 +206,20 @@ val ( ) = prerrln("xys = ", xys)
 val xys =
 gseq_x2map_list_cfr2
 ( list(1,3,5,7)
-, list(0,2,4,6,8)
+, list(0,2,4,8)
 , lam(x:int,y:int) => 10*x + y)
-val ( ) = prerrln0("xys = ", xys)
+val ( ) = prerrln("xys = ", xys)
 //
+(* ****** ****** *)
+(*
+// HX:
+// Sat Jul  2 02:37:39 EDT 2022
+*)
+val ( ) =
+gseq_x2foreach_fnp2
+( list(1,3,5),"2468"
+, lam(x:int, y:char) =>
+  prerrln("(", x, ",", y, ")") )
 (* ****** ****** *)
 
 (* end of [test01_synoug0.dats] *)

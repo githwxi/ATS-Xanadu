@@ -604,6 +604,11 @@ x2filter$test
   (x0: x0, y0: y0): bool
 //
 (* ****** ****** *)
+fun
+<x0:t0
+,y0:t0>
+x2foreach$work(x0, y0): void
+(* ****** ****** *)
 //
 fun<>
 x2foreach_row$beg(): void
