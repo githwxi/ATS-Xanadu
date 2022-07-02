@@ -807,17 +807,18 @@ gseq_forall<list(a)><a> = list_forall<a>
 gseq_foreach<list(a)><a> = list_foreach<a>
 //
 (* ****** ****** *)
-
+//
 #impltmp
 {a:t0}
 gseq_listize<list(a)><a> = list_listize<a>
 #impltmp
 {a:t0}
-gseq_rlistize<list(a)><a> = list_rlistize<a>
+gseq_strmize<list(a)><a> = list_strmize<a>
+//
 #impltmp
 {a:t0}
-gseq_strmize<list(a)><a> = list_strmize<a>
-
+gseq_rlistize<list(a)><a> = list_rlistize<a>
+//
 (* ****** ****** *)
 //
 #impltmp

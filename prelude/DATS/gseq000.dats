@@ -657,10 +657,10 @@ val x0 =
 gseq_head_raw<xs><x0>(xs)
 val xs =
 gseq_tail_raw<xs><x0>(xs)
-in
+in//let
 strmcon_vt_cons(x0, auxseq(xs))
-end // end of [else]
-) (* end of [auxseq] *)
+endlet // end of [else]
+)(*llazy*)//end-of-[auxseq]
 }(*where*)//end-of(gseq_strmize)
 //
 (* ****** ****** *)
@@ -2149,39 +2149,57 @@ end // end of [gseq_z2map_list/z2foldl]
 // For x2-gseq-operations
 //
 (* ****** ****** *)
-
+//
+#impltmp
+<xs,ys>
+<x0,y0>
+<zs><z0>
+gseq_x2map
+  (xs, ys) =
+glseq_unstrm_vt
+<  zs  ><  z0  >
+(
+gseq_x2map_strm<xs,ys><x0,y0><z0>(xs,ys)
+)
+//
+#impltmp
+{xs:t0}
+{ys:t0}
+{x0:t0}
+{y0:t0}
+{z0:vt}
+gseq_x2map
+<xs,ys><x0,y0>
+<strm_vt(z0)><z0> =
+gseq_x2map_strm<xs,ys><x0,y0><z0>(*void*)
+//
+(* ****** ****** *)
+//
 #impltmp
 <xs,ys>
 <x0,y0><z0>
 gseq_x2map_strm
   (xs, ys) =
-(
-strm_vt_concat<z0>(zss)
-) where
-{
-//
-#vwtpdef
-zs = strm_vt(z0)
-//
-val
-zss =
 let
+//
+#vwtpdef zs = strm_vt(z0)
 //
 #impltmp
 map$fopr<x0><zs>(x0) =
-let
+gseq_map_strm<ys><y0><z0>(ys) where
+{
+//
+fun
+map$fopr_y0__z0_
+ ( y0 : y0 ) : z0 =
+ (x2map$fopr<x0,y0>(x0, y0))
+//
 #impltmp
-map$fopr<y0><z0>(y0) =
-x2map$fopr<x0,y0>(x0, y0)
-in//let
-gseq_map_strm<ys><y0><z0>(ys)
-end(*let*)
+map$fopr<y0><z0> = map$fopr_y0__z0_ }
 //
 in//let
-gseq_map_strm<xs><x0><zs>(xs)
-endlet // end of [map$fopr(x0)]
-//
-}(*where*)//end-of-[gseq_x2map_strm]
+strm_vt_concat<z0>(gseq_map_strm<xs><x0><zs>(xs))
+end (*let*)//end-of-[gseq_x2map_strm(xs,ys)]
 
 (* ****** ****** *)
 
@@ -2190,37 +2208,28 @@ endlet // end of [map$fopr(x0)]
 <x0,y0><z0>
 gseq_x2mapopt_strm
   (xs, ys) =
-(
-strm_vt_concat<z0>(zss)
-) where
-{
-//
-#vwtpdef
-zs = strm_vt(z0)
-//
-val
-zss =
 let
+//
+#vwtpdef zs = strm_vt(z0)
 //
 #impltmp
 map$fopr<x0><zs>(x0) =
-let
+gseq_mapopt_strm<ys><y0><z0>(ys) where
+{
+fun
+map$fopr_y0__z0_
+ ( y0 : y0 ) : z0 =
+ (x2map$fopr<x0,y0>(x0, y0))
+//
 #impltmp
-map$fopr
-<y0><z0>(y0) =
-x2map$fopr<x0,y0>(x0, y0)
+map$fopr<y0><z0> = map$fopr_y0__z0_
 #impltmp
-filter$test<y0>(y0) =
-x2filter$test<x0,y0>(x0, y0)
-in//let
-gseq_mapopt_strm<ys><y0><z0>(ys)
-end(*let*)
+filter$test<y0>(y0)=x2filter$test<x0,y0>(x0,y0)
+}
 //
 in//let
-  gseq_map_strm<xs><x0><zs>(xs)
-end(*let*)//end-of[map$fopr(y0)]
-//
-} (* end of [gseq_x2mapopt_strm] *)
+strm_vt_concat<z0>(gseq_map_strm<xs><x0><zs>(xs))
+end (*let*)//end-of-[gseq_x2mapopt_strm(xs,ys)]
 
 (* ****** ****** *)
 
@@ -2386,20 +2395,20 @@ zss =
 let
 //
 #impltmp
-imap$fopr<x0><zs>(i, x0) =
+imap$fopr<x0><zs>(ix, x0) =
 let
 #impltmp
 imap$fopr
-<y0><z0>(j, y0) =
-x2imap$fopr<x0,y0>(i, x0, j, y0)
+<y0><z0>(jy, y0) =
+x2imap$fopr<x0,y0>(ix,x0,jy,y0)
 #impltmp
-ifilter$test<y0>(j, y0) =
-x2ifilter$test<x0,y0>(i, x0, j, y0)
+ifilter$test<y0>(jy, y0) =
+x2ifilter$test<x0,y0>(ix,x0,jy,y0)
 in//let
-gseq_imapopt_strm<ys><y0><z0>(ys)
-end
+gseq_imapopt_strm<ys><y0><z0>( ys )
+endlet // end-of-[imap$fopr(ix,x0)]
 //
-in//et
+in//let
   gseq_imap_strm<xs><x0><zs>( xs )
 end//let
 //
@@ -2410,19 +2419,14 @@ end//let
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_x2iforeach_row
-(xs, ys) =
-(
-gseq_iforeach<xs><x0>(xs)
-) where
-{
-//
-#impltmp
-iforeach$work<x0>(i, x0) =
+gseq_x2iforeach
+  (xs, ys) =
 let
 //
-val () =
-x2iforeach_row$beg<>(i)
+fun
+iforeach$work_x0_
+  (ix: nint, x0: x0): void =
+let
 //
 val () =
 (
@@ -2430,15 +2434,59 @@ gseq_iforeach<ys><y0>(ys)
 ) where
 {
 #impltmp
-iforeach$work<y0>(j, y0) =
-x2iforeach_row$work<x0,y0>(i, x0, j, y0)
+iforeach$work<y0>(jy, y0) =
+x2iforeach_row$work<x0,y0>(ix,x0,jy,y0)
 }
 //
-val () = x2iforeach_row$end<>(i)//closing
+endlet // end-of-[iforeach$work_x0_]
+//
+in//let
+//
+gseq_iforeach<xs><x0>(xs) where
+{
+  #impltmp
+  iforeach$work<x0> = iforeach$work_x0_ }
+//
+end(*let*)//end-of-[gseq_x2iforeach(xs,ys)]
+
+(* ****** ****** *)
+
+#impltmp
+<xs,ys>
+<x0,y0>
+gseq_x2iforeach_row
+(xs, ys) =
+let
+//
+fun
+iforeach$work_x0_
+(ix: nint, x0: x0): void =
+let
+//
+val () =
+x2iforeach_row$beg<>(ix)
+//
+val () =
+(
+gseq_iforeach<ys><y0>(ys)
+) where
+{
+#impltmp
+iforeach$work<y0>(jy, y0) =
+x2iforeach_row$work<x0,y0>(ix,x0,jy,y0)
+}
+//
+val () = x2iforeach_row$end<>(ix)//closing
 //
 end // end of [let]
 //
-}(*where*)//end(gseq_x2iforeach_row(xs,ys))
+in
+gseq_iforeach<xs><x0>(xs) where
+{
+  #impltmp
+  iforeach$work<x0> = iforeach$work_x0_ }
+//
+end(*let*)//end-[gseq_x2iforeach_row(xs,ys)]
 
 (* ****** ****** *)
 
@@ -2448,15 +2496,19 @@ end // end of [let]
 gseq_x2iforeach_col
 (xs, ys) =
 let
+//
 #impltmp
 x2iforeach_row$beg<>(i) =
 x2iforeach_col$beg<>(i)
+//
 #impltmp
 x2iforeach_row$end<>(i) =
 x2iforeach_col$end<>(i)
+//
 #impltmp
 x2iforeach_row$work<y0,x0>(j, y0, i, x0) =
 x2iforeach_col$work<x0,y0>(i, x0, j, y0)
+//
 in//let
 gseq_x2iforeach_row<ys,xs><y0,x0>(ys, xs)
 end(*let*)//end-[gseq_x2iforeach_col(xs,ys)]
@@ -2913,6 +2965,94 @@ gseq_z2map
 #impltmp
 z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 } (*where*)//end-[gseq_z2map_cfr2(xs,f0)]
+(* ****** ****** *)
+// HX: gseq_z2map_list
+(* ****** ****** *)
+#impltmp
+<xs,ys>
+<x0,y0><z0>
+gseq_z2map_list_fnp2
+(  xs, ys, f0  ) =
+(
+gseq_z2map_list
+<xs,ys><x0,y0><z0>(xs,ys)) where
+{
+#impltmp
+z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
+} (*where*)//end-[gseq_z2map_list_fnp2(xs,f0)]
+(* ****** ****** *)
+#impltmp
+<xs,ys>
+<x0,y0><z0>
+gseq_z2map_list_cfr2
+(  xs, ys, f0  ) =
+(
+gseq_z2map_list
+<xs,ys><x0,y0><z0>(xs,ys)) where
+{
+#impltmp
+z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
+} (*where*)//end-[gseq_z2map_list_cfr2(xs,f0)]
+(* ****** ****** *)
+// HX: gseq_x2map
+(* ****** ****** *)
+#impltmp
+<xs, ys>
+<x0, y0>
+<zs><z0>
+gseq_x2map_fnp2
+(  xs, ys, f0  ) =
+(
+gseq_x2map
+<xs,ys>
+<x0,y0><zs><z0>(xs,ys)) where
+{
+#impltmp
+x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
+} (*where*)//end-[gseq_x2map_fnp2(xs,f0)]
+(* ****** ****** *)
+#impltmp
+<xs, ys>
+<x0, y0>
+<zs><z0>
+gseq_x2map_cfr2
+(  xs, ys, f0  ) =
+(
+gseq_x2map
+<xs,ys>
+<x0,y0><zs><z0>(xs,ys)) where
+{
+#impltmp
+x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
+} (*where*)//end-[gseq_x2map_cfr2(xs,f0)]
+(* ****** ****** *)
+// HX: gseq_x2map_strm
+(* ****** ****** *)
+#impltmp
+<xs,ys>
+<x0,y0><z0>
+gseq_x2map_strm_fnp2
+(  xs, ys, f0  ) =
+(
+gseq_x2map_strm
+<xs,ys><x0,y0><z0>(xs,ys)) where
+{
+#impltmp
+x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
+} (*where*)//end-[gseq_x2map_strm_fnp2(xs,f0)]
+(* ****** ****** *)
+#impltmp
+<xs,ys>
+<x0,y0><z0>
+gseq_x2map_strm_cfr2
+(  xs, ys, f0  ) =
+(
+gseq_x2map_strm
+<xs,ys><x0,y0><z0>(xs,ys)) where
+{
+#impltmp
+x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
+} (*where*)//end-[gseq_x2map_strm_cfr2(xs,f0)]
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000.dats] *)
