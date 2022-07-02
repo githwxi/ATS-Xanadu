@@ -760,6 +760,9 @@ fun
 ,y0:t0>
 gseq_z2forcmp
   (xs: xs, ys: ys): sint
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0
 ,ys:t0>
@@ -855,9 +858,19 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_x2map
+  (xs: xs, ys: ys): (   zs   )
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2map_list
-(xs, ys): list_vt(z0)
+  (xs: xs, xs: ys): list_vt(z0)
 fun
 <xs:t0
 ,ys:t0>
@@ -865,7 +878,7 @@ fun
 ,y0:t0>
 <z0:vt>
 gseq_x2map_strm
-(xs, ys): strm_vt(z0)
+  (xs: xs, ys: ys): strm_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -933,6 +946,13 @@ fun
 gseq_x2imapopt_strm(xs, ys): strm_vt(z0)
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_x2iforeach(xs, ys): void
 //
 fun
 <xs:t0
@@ -1203,6 +1223,69 @@ fun
 <z0:vt>
 gseq_z2map_cfr2
 (xs:xs, ys:ys, fopr:(x0,y0) -<cfr> z0): (zs)
+(* ****** ****** *)
+// HX: gseq_z2map_list
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_z2map_list_fnp2
+( xs:xs
+, ys:ys, fopr:(x0,y0) -<fnp> z0): list_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_z2map_list_cfr2
+( xs:xs
+, ys:ys, fopr:(x0,y0) -<cfr> z0): list_vt(z0)
+(* ****** ****** *)
+// HX: gseq_x2map
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_x2map_fnp2
+(xs:xs, ys:ys, fopr:(x0,y0) -<fnp> z0): (zs)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_x2map_cfr2
+(xs:xs, ys:ys, fopr:(x0,y0) -<cfr> z0): (zs)
+(* ****** ****** *)
+// HX: gseq_x2map_strm
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_x2map_strm_fnp2
+( xs:xs
+, ys:ys, fopr:(x0,y0) -<fnp> z0): strm_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_x2map_strm_cfr2
+( xs:xs
+, ys:ys, fopr:(x0,y0) -<cfr> z0): strm_vt(z0)
 (* ****** ****** *)
 //
 // HX-2020-05-30:
