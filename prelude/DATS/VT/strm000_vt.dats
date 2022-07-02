@@ -1631,7 +1631,7 @@ glseq_rlistize
 (* ****** ****** *)
 //
 #impltmp
-{x0:vt}
+{x0:t0}
 glseq_unstrm_vt
 <list(x0)><x0>
   (   xs   ) =

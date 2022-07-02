@@ -295,21 +295,24 @@ gint_rlistize_nint
 (n0:sint(n)): list_vt(nintlt(n),n)
 //
 (* ****** ****** *)
+//
 fun<>
 gint_strmize_sint
 {i:int}
 (i0: sint(i)): strm_vt( nintlt(i) )
+//
 fun<>
 gint_strmize_nint
 {n:nat}
 (n0: sint(n)): strm_vt( nintlt(n) )
+//
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 gint_map_list_nint
-{n:nat}( n0: sint(n) ): list_vt(a, n)
-
+{n:nat}( n0: sint(n) ): list_vt(a,n)
+//
 (* ****** ****** *)
 //
 // HX-2020-05-30:
@@ -413,6 +416,14 @@ cmp with gint_cmp_uint_uint of 1000
 #symload rforall with gint_rforall_sint of 1000
 #symload rforall with gint_rforall_uint of 1000
 //
+(* ****** ****** *)
+#symload sint_strmize with gint_strmize_sint of 1000
+(* ****** ****** *)
+#symload nint_listize with gint_listize_nint of 1000
+#symload nint_strmize with gint_strmize_nint of 1000
+#symload nint_rlistize with gint_rlistize_nint of 1000
+(* ****** ****** *)
+#symload nint_map_list with gint_map_list_nint of 1000
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gint000.sats] *)
