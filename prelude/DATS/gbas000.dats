@@ -181,5 +181,12 @@ x2foreach_col$beg() = ((*void*))
 x2foreach_col$end() = ((*void*))
 //
 (* ****** ****** *)
+#impltmp
+<x0,y0>(*tmp*)
+x2foreach_row$work = x2foreach$work<x0,y0>
+#impltmp
+<x0,y0>(*tmp*)
+x2foreach_col$work = x2foreach$work<x0,y0>
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gbas000.dats] *)
