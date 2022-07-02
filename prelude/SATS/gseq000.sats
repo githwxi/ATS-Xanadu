@@ -935,6 +935,17 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_x2imap(xs: xs, ys: ys): ( zs )
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2imap_list(xs, ys): list_vt(z0)
 fun
@@ -1494,6 +1505,87 @@ fun
 gseq_x2map_strm_cfr2
 ( xs:xs
 , ys:ys, fopr:(x0,y0) -<cfr> z0): strm_vt(z0)
+(* ****** ****** *)
+//
+// HX: gseq_x2imap(seq)
+//
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_x2imap_fnp4
+( xs:xs
+, ys:ys
+, fopr:(nint, x0, nint, y0) -<fnp> z0): (zs)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_x2imap_cfr4
+( xs:xs
+, ys:ys
+, fopr:(nint, x0, nint, y0) -<cfr> z0): (zs)
+(* ****** ****** *)
+//
+// HX: gseq_x2imap_list
+//
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_x2imap_list_fnp4
+( xs:xs
+, ys:ys
+, fopr:
+  (nint, x0, nint, y0)-<fnp>z0): list_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_x2imap_list_cfr4
+( xs:xs
+, ys:ys
+, fopr:
+  (nint, x0, nint, y0)-<cfr>z0): list_vt(z0)
+(* ****** ****** *)
+//
+// HX: gseq_x2imap_strm
+//
+(* ****** ****** *)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_x2imap_strm_fnp4
+( xs:xs
+, ys:ys
+, fopr:
+  (nint, x0, nint, y0)-<fnp>z0): strm_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_x2imap_strm_cfr4
+( xs:xs
+, ys:ys
+, fopr:
+  (nint, x0, nint, y0)-<cfr>z0): strm_vt(z0)
 (* ****** ****** *)
 //
 // HX-2020-05-30:
