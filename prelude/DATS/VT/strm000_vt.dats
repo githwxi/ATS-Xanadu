@@ -793,9 +793,9 @@ end
 strm_vt_filter0
   (xs) =
 (
-  auxmain(xs)
-) where
+auxmain(xs)) where
 {
+//
 fnx
 auxmain
 ( xs
@@ -804,8 +804,8 @@ auxmain
 : strm_vt(x0) =
 $llazy
 (
-g_free(xs);
-auxloop($eval(xs)))
+g_free(xs); auxloop($eval(xs)))
+//
 and
 auxloop
 ( xs
@@ -822,15 +822,16 @@ strmcon_vt_nil()
 strmcon_vt_cons
   (x0, xs) =>
 ( if
-  filter0$test(x0)
+  filter0$test<x0>(x0)
   then
   strmcon_vt_cons(x0, auxmain(xs))
   else
   let
   val () = g_free(x0) in auxloop(!xs)
-  end
+  end // end of [if]
 ) (* end of [strmcom_vt_cons] *)
 )
+//
 } (*where*) // end of [strm_vt_filter0]
 
 (* ****** ****** *)
@@ -1203,7 +1204,7 @@ end // end of [strmcon_vt_cons]
 strm_vt_group0_list
   (xs) =
 (
-  auxmain0(xs)) where
+auxmain0(xs)) where
 {
 //
 #vwtpdef r0 = list_vt(x0)
@@ -1244,7 +1245,7 @@ auxmain1
 else
 let
 val r0 = list_vt_reverse0<x0>(r0)
-in
+in//let
   g_free(x0)
 ; strmcon_vt_cons(r0, auxmain0(xs))
 end // end of [strmcon_vt_cons]
