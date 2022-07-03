@@ -330,10 +330,20 @@ strm_vt_group0_list
 : strm_vt(x0))
 : strm_vt(list_vt(x0))
 (* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_merge0
+( xs: strm_vt(x0)
+, ys: strm_vt(x0)): strm_vt(x0)
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 strm_vt_sieve0
   (xs: strm_vt(x0)): strm_vt(x0)
+//
 (* ****** ****** *)
 //
 // For glseq-i-operations

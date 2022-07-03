@@ -72,11 +72,11 @@ list_make_nval_vt
 fun<>
 list_nilq
 {a:type}{n:int}
-(xs: list(a, n)): bool(n = 0)
+(xs: list(a, n)): bool( n=0 )
 fun<>
 list_consq
 {a:type}{n:int}
-(xs: list(a, n)): bool(n > 0)
+(xs: list(a, n)): bool( n>0 )
 //
 (* ****** ****** *)
 //
