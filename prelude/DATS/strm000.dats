@@ -519,7 +519,7 @@ strmcon_cons
 ( y0, ys1 ) =>
 let
 val knd = g_sel2<a>(x0, y0)
-in
+in//let
 //
   if
   (knd <= 0)
@@ -531,7 +531,7 @@ in
 end // end of [strmcon_cons]
 ) (* strmcon_cons *)
 )
-} (*where*) // end of [strm_merge]
+}(*where*)//end-of-[strm_merge(xs,ys)]
 
 (* ****** ****** *)
 //
@@ -545,7 +545,8 @@ end // end of [strmcon_cons]
 <x0:t0>
 strm_sieve
   (xs) =
-( auxmain(xs) ) where
+(
+auxmain(xs)) where
 {
 fun
 auxmain
@@ -562,7 +563,7 @@ strmcon_cons(x1, xs) =>
 let
 val xs = 
 strm_filter<x0>(xs)
-in
+in//let
 strmcon_cons(x1, auxmain(xs))
 end where
 {
@@ -570,13 +571,14 @@ end where
 filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
 }
 )
-} (*where*) // end-of(strm_sieve)
+} (*where*) // end-of-(strm_sieve(xs))
 //
 #impltmp
 <x0:t0>
 strm_sieve_vt
   (xs) =
-( auxmain(xs) ) where
+(
+auxmain(xs)) where
 {
 fun
 auxmain
@@ -601,7 +603,7 @@ end where
 filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
 }
 )
-} (*where*) // end-of(strm_sieve_vt)
+} (*where*) // end-of-[strm_sieve_vt(xs)]
 //
 (* ****** ****** *)
 //
