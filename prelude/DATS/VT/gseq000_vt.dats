@@ -133,7 +133,7 @@ glseq_print$beg() = strn_print("(")
 glseq_print$end() = strn_print(")")
 #impltmp
 <xs><x0>
-glseq_print$sep() = strn_print(",")
+glseq_print$sep() = strn_print(";")
 (* ****** ****** *)
 //
 #impltmp
