@@ -1766,6 +1766,61 @@ endlet // strmcon_vt_cons(y0,ys)
 (* ****** ****** *)
 
 #impltmp
+<x0,y0>
+strm_vt_z2forcmp0
+  (xs, ys) =
+(
+auxloop(0, xs, ys)) where
+{
+fnx
+auxloop
+( i0: nint
+, xs
+: strm_vt(x0)
+, ys
+: strm_vt(y0)): sint =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil() => 0
+| ~
+strmcon_vt_cons(y0, ys) =>
+(
+  g_free(y0); g_free(ys); -1
+)
+)
+| ~
+strmcon_vt_cons(x0, xs) =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+(
+  g_free(x0); g_free(xs);  1
+)
+| ~
+strmcon_vt_cons(y0, ys) =>
+let
+val
+sgn =
+z2iforcmp0$fcmp<x0,y0>(i0, x0, y0)
+in
+  if
+  (sgn = 0)
+  then auxloop(i0+1, xs, ys)
+  else (g_free(xs); g_free(ys); sgn)
+end // end of [strmcon_vt_cons]
+)
+)(*end-of-[auxloop(i0,xs,ys)] *)
+}(*where*)//end-of[strm_vt_z2iforcmp0(xs,ys)]
+
+(* ****** ****** *)
+
+#impltmp
 < x0,y0 >
 strm_vt_z2iforeach0
   ( xs, ys ) =

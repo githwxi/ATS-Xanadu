@@ -49,8 +49,9 @@ datacopy{a0:vt}(x0: !a0): (~a0)
 gseq_forall_env1
   (xs, env) =
 (
-  gseq_forall<xs><x0>(xs)
-) where
+gseq_forall
+< xs >
+< x0 >( xs )) where
 {
 val env =
 datacopy(env)
@@ -80,11 +81,12 @@ endlet // end of [forall$test<x0>(x0)]
 gseq_foreach_env1
   (xs, env) =
 (
-  gseq_foreach<xs><x0>(xs)
-) where
+gseq_foreach
+< xs >
+< x0 >( xs )) where
 {
 val env =
-$UN.delinear(env)
+datacopy(env)
 #impltmp
 foreach$work<x0>(x0) =
 let
@@ -112,11 +114,12 @@ endlet // end of [foreach$work<x0>(x0)]
 gseq_map_env1_list
   (xs, env) =
 (
-  gseq_map_list<xs><x0><y0>(xs)
-) where
+gseq_map_list
+<xs>
+<x0><y0>( xs )) where
 {
 val env =
-$UN.delinear(env)
+datacopy( env )
 #impltmp
 map$fopr<x0><y0>(x0) =
 let
@@ -144,11 +147,12 @@ endlet // end of [map$fopr<x0><y0>(x0)]
 gseq_map_env1_strm
   (xs, env) =
 (
-  gseq_map_strm<xs><x0><y0>(xs)
-) where
+gseq_map_strm
+<xs>
+<x0><y0>( xs )) where
 {
 val env =
-$UN.delinear(env)
+datacopy(env)
 #impltmp
 map$fopr<x0><y0>(x0) =
 let
