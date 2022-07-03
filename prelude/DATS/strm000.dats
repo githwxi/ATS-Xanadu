@@ -66,16 +66,28 @@ strm_cons
 $lazy(strmcon_cons(x0, xs))
 )
 //
+(* ****** ****** *)
+//
 #impltmp
-{a:type}
-gseq_nil
-<strm(a)><a>
-((*void*)) = strm_nil<a>()
+<a>(*tmp*)
+strm_nilq(xs) =
+(
+case !xs of
+|
+strmcon_nil() => true
+|
+strmcon_cons(_,_) => false
+)
 #impltmp
-{a:type}
-gseq_cons
-<strm(a)><a>
- (x0, xs) = strm_cons<a>(x0, xs)
+<a>(*tmp*)
+strm_consq(xs) =
+(
+case !xs of
+|
+strmcon_nil() => false
+|
+strmcon_cons(_,_) => (true)
+)
 //
 (* ****** ****** *)
 //
@@ -489,51 +501,6 @@ case+ xs of
 } (* end of [strm_mapoptn_vt] *)
 
 (* ****** ****** *)
-
-#impltmp
-<a>(*tmp*)
-strm_merge
-  (xs, ys) =
-(
-  merge(xs, ys)
-) where
-{
-fun
-merge(xs0, ys0) =
-$lazy
-(
-case+ $eval(xs0) of
-|
-strmcon_nil
-((*void*)) => $eval(ys0)
-|
-strmcon_cons
-( x0, xs1 ) =>
-(
-case+ $eval(ys0) of
-|
-strmcon_nil
-((*void*)) => $eval(xs0)
-|
-strmcon_cons
-( y0, ys1 ) =>
-let
-val knd = g_sel2<a>(x0, y0)
-in//let
-//
-  if
-  (knd <= 0)
-  then
-  strmcon_cons(x0, merge(xs1, ys0))
-  else
-  strmcon_cons(y0, merge(xs0, ys1))
-//
-end // end of [strmcon_cons]
-) (* strmcon_cons *)
-)
-}(*where*)//end-of-[strm_merge(xs,ys)]
-
-(* ****** ****** *)
 //
 (*
 // HX-2020-12-21:
@@ -606,6 +573,51 @@ filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
 } (*where*) // end-of-[strm_sieve_vt(xs)]
 //
 (* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+strm_merge
+  (xs, ys) =
+(
+merge(xs, ys)) where
+{
+fun
+merge
+( xs0: strm(a)
+, ys0: strm(a)) = $lazy
+(
+case+ $eval(xs0) of
+|
+strmcon_nil
+((*void*)) => $eval(ys0)
+|
+strmcon_cons
+( x0, xs1 ) =>
+(
+case+ $eval(ys0) of
+|
+strmcon_nil
+((*void*)) => $eval(xs0)
+|
+strmcon_cons
+( y0, ys1 ) =>
+let
+val knd = g_sel2<a>(x0, y0)
+in//let
+//
+  if
+  (knd <= 0)
+  then
+  strmcon_cons(x0, merge(xs1, ys0))
+  else
+  strmcon_cons(y0, merge(xs0, ys1))
+//
+end // end of [strmcon_cons]
+) (* strmcon_cons *)
+)
+}(*where*)//end-of-[strm_merge(xs,ys)]
+
+(* ****** ****** *)
 //
 // For gseq-i-operations
 //
@@ -637,6 +649,8 @@ strmcon_cons
 )
 } (*where*) // end-of(strm_imap)
 
+(* ****** ****** *)
+
 #impltmp
 <x0><y0>
 strm_imap_vt
@@ -663,6 +677,34 @@ strmcon_vt_cons
 )
 } (*where*) // end of(strm_imap_vt)
 
+(* ****** ****** *)
+//
+// HX-2022-07-03:
+// for gseq-operations
+// Sun Jul  3 12:08:45 EDT 2022
+//
+(* ****** ****** *)
+#impltmp
+{a:t0}
+gseq_nil
+<strm(a)><a> = strm_nil<a>
+#impltmp
+{a:t0}
+gseq_cons
+<strm(a)><a> = strm_cons<a>
+(* ****** ****** *)
+#impltmp
+{a:t0}
+gseq_nilq
+<strm(a)><a> = strm_nilq<a>
+#impltmp
+{a:t0}
+gseq_consq
+<strm(a)><a> = strm_consq<a>
+(* ****** ****** *)
+#impltmp
+{a:t0}
+gseq_imap<strm(a)><a> = strm_imap_vt<a>
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_strm000.dats] *)

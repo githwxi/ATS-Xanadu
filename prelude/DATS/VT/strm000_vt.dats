@@ -1233,6 +1233,93 @@ filter0$test<x0>(x2) = sieve0$test<x0>(x1, x2)
 } (*where*) // end-of-[strm_vt_sieve0(xs)]
 
 (* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+strm_vt_merge0
+  (xs, ys) =
+(
+merge0(xs, ys)) where
+{
+//
+fun
+merge0
+( xs0
+: strm_vt(a)
+, ys0
+: strm_vt(a)): strm_vt(a) =
+$llazy
+(
+g_free(xs0);
+g_free(ys0);
+case+ $eval(xs0) of
+| ~
+strmcon_vt_nil
+((*void*)) => $eval(ys0)
+| ~
+strmcon_vt_cons
+( x0, xs1 ) =>
+!(merge0_y(x0, xs1, ys0))
+)
+//
+and
+merge0_x
+( y0: a
+, xs0
+: strm_vt(a)
+, ys1
+: strm_vt(a)): strm_vt(a) = $llazy
+(
+case+ !xs0 of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_cons(y0, ys1)
+| ~
+strmcon_vt_cons(x0, xs1) =>
+let
+val knd = g_sel2<a>(x0, y0)
+in//let
+//
+if
+(knd <= 0)
+then
+strmcon_vt_cons(x0,merge0_x(y0,xs1,ys1))
+else
+strmcon_vt_cons(y0,merge0_y(x0,xs1,ys1))
+endlet // end-of-[ strmcon_cons(x0, xs1 )]
+) (*llazy*)//end-of-[merge0_x(y0,xs1,ys1)]
+//
+and
+merge0_y
+( x0: a
+, xs1
+: strm_vt(a)
+, ys0
+: strm_vt(a)): strm_vt(a) = $llazy
+(
+case+ !ys0 of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_cons(x0, xs1)
+| ~
+strmcon_vt_cons(y0, ys1) =>
+let
+val knd = g_sel2<a>(x0, y0)
+in//let
+//
+if
+(knd <= 0)
+then
+strmcon_vt_cons(x0,merge0_x(y0,xs1,ys1))
+else
+strmcon_vt_cons(y0,merge0_y(x0,xs1,ys1))
+//
+endlet // end-of-[ strmcon_cons(y0, ys1)]
+) (*llazy*)//end-of-[merge0_y(x0,xs1,ys1)]
+//
+} (*where*)//end-of-[strm_vt_merge0(xs,ys)]
+
+(* ****** ****** *)
 //
 // For glseq-i-operations
 //

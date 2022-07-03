@@ -77,21 +77,29 @@ strm_cons
 (x0: a, xs: strm(a)): strm(a)
 
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
 strm_sing(x0: a): strm(a)
 fun
 <a:t0>
 strm_pair(x1: a, x2: a): strm(a)
-
+//
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
-strm_length
-( xs: strm(a) ): nint
-
+strm_nilq(x0: strm(a)): bool
+fun
+<a:t0>
+strm_consq(x0: strm(a)): bool
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+strm_length(xs: strm(a)): nint
+//
 (* ****** ****** *)
 //
 fun
@@ -230,7 +238,7 @@ fun
 strx_sieve_vt(strm(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
-
+//
 fun
 <x0:t0>
 <y0:t0>
@@ -239,7 +247,16 @@ fun
 <x0:t0>
 <y0:vt>
 strm_imap_vt(strm(x0)): strm_vt( y0 )
-
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,y0:t0>
+<z0:vt>
+strm_x2map_vt_cmp
+(xs:strm(x0),ys:strm(y0)): strm_vt(z0)
+//
 (* ****** ****** *)
 //
 // HX-2020-05-30:
