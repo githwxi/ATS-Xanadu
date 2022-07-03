@@ -453,6 +453,13 @@ fun
 <x0:vt
 ,y0:vt>
 <z0:vt>
+strm_vt_z2iforcmp0
+(xs: strm_vt(x0), ys: strm_vt(y0)): sint
+//
+fun
+<x0:vt
+,y0:vt>
+<z0:vt>
 strm_vt_z2iforeach0
 (xs: strm_vt(x0), ys: strm_vt(y0)): void
 //

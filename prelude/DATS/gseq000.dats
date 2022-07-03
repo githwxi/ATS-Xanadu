@@ -2193,7 +2193,7 @@ val ys =
 gseq_strmize<ys><y0>(ys)
 //
 in//let
-strm_vt_z2forall0<x0,y0>(xs, ys) where
+strm_vt_z2iforall0<x0,y0>(xs, ys) where
 {
 #impltmp
 z2iforall0$test<x0,y0> = z2iforall$test<x0,y0>
@@ -2215,7 +2215,7 @@ val ys =
 gseq_strmize<ys><y0>(ys)
 //
 in//let
-strm_vt_z2forcmp0<x0,y0>(xs, ys) where
+strm_vt_z2iforcmp0<x0,y0>(xs, ys) where
 {
 #impltmp
 z2iforcmp0$fcmp<x0,y0> = z2iforcmp$fcmp<x0,y0>
