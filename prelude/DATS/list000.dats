@@ -144,7 +144,45 @@ list_nil() => x0
 |
 list_cons(x1, xs) => loop(x1, xs)
 )
-} (*where*)//end-of(list_last_nil)
+} (*where*)//end-of(list_last_ini)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a:type>
+list_cmp(xs, ys) =
+(
+loop(xs, ys)) where
+{
+fnx
+loop
+( xs: list(a)
+, ys: list(a)): sint =
+(
+case+ xs of
+|
+list_nil() =>
+(
+case+ ys of
+| list_nil() => 0
+| list_cons _ => -1
+)
+|
+list_cons(x1, xs) =>
+(
+case+ ys of
+| list_nil() => 1
+| list_cons(y1, ys) =>
+  let
+  val sgn = g_cmp<a>(x1, y1)
+  in // let
+    if
+    (sgn = 0)
+    then loop(xs, ys) else sgn
+  end
+)
+)(*end-of-[loop(xs,ys)]*)
+}(*where*)//end-of-[list_cmp(xs,ys)]
 //
 (* ****** ****** *)
 //
@@ -663,7 +701,7 @@ case+ xs of
 |
 list_nil() =>
 strmcon_vt_sing
-(list_vt_nil())
+(list_vt_nil(*void*))
 |
 list_cons(x0, xs) =>
 let
@@ -678,14 +716,15 @@ strm_vt_map0(res2) where
 #sexpdef n1 = n-1
 #impltmp
 map0$fopr
-<xs(n1)><xs(n0)>
-(xs) = list_vt_cons(x0, xs)
+<xs(n1)><xs(n0)>(xs) =
+(
+  list_vt_cons(x0, xs))
 }
-in !
-(strm_vt_append<xs(n)>(res1, res2))
-end
+in
+!(strm_vt_append<xs(n)>(res1, res2))
+endlet // end of [list_cons(x0, xs)]
 )
-} (* end of [list_subsetize_vt] *)
+}(*where*)//end-of-[list_subsetize_vt(xs)]
 //
 (* ****** ****** *)
 //
@@ -762,8 +801,12 @@ gseq_tail_raw
 //
 #impltmp
 {a:t0}
-g_cmp<list(a)> = gseq_cmp<list(a)><a>
-
+g_cmp<list(a)> =
+gseq_cmp<list(a)><a>
+#impltmp
+{a:t0}
+gseq_cmp<list(a)><a> = list_cmp<a>
+//
 (* ****** ****** *)
 //
 (*

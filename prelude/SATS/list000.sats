@@ -126,6 +126,13 @@ list_last_ini
 //
 fun
 <a:t0>
+list_cmp
+(xs: list(a), ys: list(a)): sint
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
 list_length
 {n:int}(list(a, n)): int(n)
 //
@@ -288,11 +295,11 @@ list_maprev_vt
 fun
 <a:t0>
 list_copy_vt
-{n:int}(xs: list(a, n)): list_vt(a, n)
+{n:int}(xs:list(a, n)): list_vt(a,n)
 fun
 <a:t0>
 list_rcopy_vt
-{n:int}(xs: list(a, n)): list_vt(a, n)
+{n:int}(xs:list(a, n)): list_vt(a,n)
 //
 (* ****** ****** *)
 //
