@@ -1793,7 +1793,7 @@ gseq_x2imap_strm_cfr4
 (* ****** ****** *)
 //
 // HX-2020-05-30:
-// symbol overloading for gseq
+// symbol overloading for gseq-operations
 //
 (* ****** ****** *)
 

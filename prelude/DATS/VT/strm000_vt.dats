@@ -1198,6 +1198,41 @@ end // end of [strmcon_vt_cons]
 }(*where*)//end-of(strm_vt_group0_list)
 
 (* ****** ****** *)
+
+#impltmp
+<x0:t0>
+strm_vt_sieve0
+  (  xs  ) =
+(
+auxmain(xs) ) where
+{
+fun
+auxmain
+( xs
+: strm_vt(x0)
+)
+: strm_vt(x0) = $llazy
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(x1, xs) =>
+let
+  val xs = 
+  strm_vt_filter0<x0>(xs)
+in
+  strmcon_vt_cons(x1, auxmain(xs))
+end where
+{
+#impltmp
+filter0$test<x0>(x2) = sieve0$test<x0>(x1, x2)
+}
+)
+} (*where*) // end-of-[strm_vt_sieve0(xs)]
+
+(* ****** ****** *)
 //
 // For glseq-i-operations
 //

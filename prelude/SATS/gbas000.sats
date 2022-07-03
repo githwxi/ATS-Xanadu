@@ -339,6 +339,14 @@ group0$test(x0: !x0): bool
 //
 (* ****** ****** *)
 //
+(*
+HX-2022-07-03:
+//
+Sun Jul  3 10:35:38 EDT 2022
+//
+An element is KEPT only if
+the [sieve$test] on it passes
+*)
 fun
 <x0:t0>
 sieve$test(x1: x0, x2: x0): bool
