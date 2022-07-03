@@ -233,5 +233,28 @@ gseq_x2iforeach_fnp4
 ) (* end of [gseq_x2iforeach_fnp4] *)
 //
 (* ****** ****** *)
+//
+(*
+// HX-2022-07-03:
+// Sun Jul  3 10:54:13 EDT 2022
+*)
+//
+val ( ) =
+prerrln0
+(strm_vt_sieve0(f0(2))) where
+{
+//
+#impltmp
+strm_vt_print$len<>() = 020(*16*)
+//
+fun
+f0(x: int): strm_vt(int) =
+$llazy(strmcon_vt_cons(x, f0(x+1)))
+//
+#impltmp
+sieve0$test<sint>(x1, x2) = x2 % x1 > 0
+}
+//
+(* ****** ****** *)
 
 (* end of [test01_synoug0.dats] *)
