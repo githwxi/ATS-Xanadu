@@ -138,53 +138,22 @@ f0(x: int): list_vt(int) =
 
 val () =
 prerrln
-(
-"strm(0,1,2,...) = ", f0(0)
-) where
-{
-fun
-f0(x: int): strm(int) =
-$lazy(strmcon_cons(x, f0(x+1)))
-}
-
-(* ****** ****** *)
-
-val () =
-prerrln0
-(
-"strm_vt(0,1,2,...) = ", f0(0)
-) where
-{
-fun
-f0(x: int): strm_vt(int) =
-$llazy(strmcon_vt_cons(x, f0(x+1)))
-}
-
-(* ****** ****** *)
-
+("strm(0,1,2,...) = ", strm_from(0))
 val () =
 prerrln
-(
-"strx(0,1,2,...) = ", f0(0)
-) where
-{
-fun
-f0(x: int): strx(int) =
-$lazy(strxcon_cons(x, f0(x+1)))
-}
+("strx(0,1,2,...) = ", strx_from(0))
 
 (* ****** ****** *)
 
 val () =
 prerrln0
-(
-"strx_vt(0,1,2,...) = ", f0(0)
-) where
-{
-fun
-f0(x: int): strx_vt(int) =
-$llazy(strxcon_vt_cons(x, f0(x+1)))
-}
+("strm_vt(0,1,2,...) = ", strm_vt_from(0))
+
+(* ****** ****** *)
+
+val () =
+prerrln0
+("strx_vt(0,1,2,...) = ", strx_vt_from(0))
 
 (* ****** ****** *)
 (*

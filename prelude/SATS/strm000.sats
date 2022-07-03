@@ -86,6 +86,34 @@ fun
 strm_pair(x1: a, x2: a): strm(a)
 //
 (* ****** ****** *)
+(*
+Sun Jul  3 13:01:34 EDT 2022
+*)
+fun
+<a:t0>
+strm_from(x0: a): strm(a)
+fun
+<a:t0>
+strm_from$next(x0: a): (a)
+(*
+HX-2022-07-03:
+The default for [$next]:
+strm_from$next(x0) = g_succ(x0)
+*)
+//
+fun
+<a:t0>
+strx_from(x0: a): strx(a)
+fun
+<a:t0>
+strx_from$next(x0: a): (a)
+(*
+HX-2022-07-03:
+The default for [$next]:
+strx_from$next(x0) = g_succ(x0)
+*)
+//
+(* ****** ****** *)
 //
 fun
 <a:t0>

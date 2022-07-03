@@ -152,6 +152,61 @@ g_free<strm_vt(a)> = strm_vt_free<a>
 g_free<strx_vt(a)> = strx_vt_free<a>
 //
 (* ****** ****** *)
+//
+(*
+HX-2022-07-03:
+Sun Jul  3 13:01:34 EDT 2022
+*)
+//
+#impltmp
+<a>(*tmp*)
+strm_vt_from
+  (  x0  ) =
+(
+auxmain(x0) ) where
+{
+fun
+auxmain
+( x0: a)
+: strm_vt(a) = $llazy
+(
+strmcon_vt_cons
+(x0, auxmain(x1)) where
+{
+val x1 =
+strm_vt_from$next<a>(x0) }
+) (*llazy*)//end-of-[auxmain(x0)]
+}
+//
+#impltmp
+{a:t0}(*tmp*)
+strm_vt_from$next<a>(x0) = g_succ<a>(x0)
+//
+#impltmp
+<a>(*tmp*)
+strx_vt_from
+  (  x0  ) =
+(
+auxmain(x0) ) where
+{
+fun
+auxmain
+( x0: a)
+: strx_vt(a) = $llazy
+(
+strxcon_vt_cons
+(x0, auxmain(x1)) where
+{
+val x1 =
+strx_vt_from$next<a>(x0) }
+) (*llazy*)//end-of-[auxmain(x0)]
+}
+//
+#impltmp
+{a:t0}(*tmp*)
+strx_vt_from$next<a>(x0) = g_succ<a>(x0)
+//
+(* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
