@@ -1467,21 +1467,6 @@ a1ref_print1<a0>{n0}(A0, n0)
 (* ****** ****** *)
 //
 #impltmp
-{a0:t0}{n0:i0}
-gseq_print$beg
-<a1ref(a0,n0)><a0> = a1ref_print$beg<>
-#impltmp
-{a0:t0}{n0:i0}
-gseq_print$end
-<a1ref(a0,n0)><a0> = a1ref_print$end<>
-#impltmp
-{a0:t0}{n0:i0}
-gseq_print$sep
-<a1ref(a0,n0)><a0> = a1ref_print$sep<>
-//
-(* ****** ****** *)
-//
-#impltmp
 <a0>(*tmp*)
 a1ref_print1
 {n0}(A0, n0) =
@@ -1494,15 +1479,15 @@ a1ref_length<a0><n0>(A0) = n0
 //
 #impltmp
 {a0:t0}(*tmp*)
-gseq_print$beg
+glseq_print$beg
 <a1ref(a0)><a0> = a1ref_print$beg<>
 #impltmp
 {a0:t0}(*tmp*)
-gseq_print$end
+glseq_print$end
 <a1ref(a0)><a0> = a1ref_print$end<>
 #impltmp
 {a0:t0}(*tmp*)
-gseq_print$sep
+glseq_print$sep
 <a1ref(a0)><a0> = a1ref_print$sep<>
 //
 }(*where*)//end-of-[a1ref_print1<a0>]
