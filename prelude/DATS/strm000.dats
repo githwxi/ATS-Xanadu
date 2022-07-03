@@ -720,6 +720,64 @@ strmcon_vt_cons
 } (*where*) // end of(strm_imap_vt)
 
 (* ****** ****** *)
+
+#impltmp
+<x0
+,y0><z0>
+strm_x2map_vt_cmp
+  (xs, ys) =
+(
+auxmain(xs, ys)) where
+{
+fun
+auxmain
+( xs0: strm(x0)
+, ys0: strm(y0)): strm_vt(z0) =
+$llazy
+(
+case+ !xs0 of
+|
+strmcon_nil() =>
+strmcon_vt_nil()
+|
+strmcon_cons(x0, xs1) =>
+(
+case+ !ys of
+|
+strmcon_nil() =>
+strmcon_vt_nil()
+|
+strmcon_cons(y0, ys1) =>
+let
+val z0 =
+x2map$fopr
+<x0,y0><z0>(x0, y0)
+val zs1 =
+let
+#impltmp
+map$fopr<y0><z0>(y0) =
+x2map$fopr<x0,y0><z0>(x0, y0)
+in
+  strm_map_vt<y0><z0>(ys1)
+end
+//
+#impltmp
+g_sel2<z0>(z1, z2) =
+let
+val sgn =
+gl_cmp11<z0>(z1, z2) in
+if (sgn <= 0) then 0 else 1 end
+//
+in//let
+strmcon_vt_cons
+( z0
+, strm_vt_merge0<z0>(zs1,auxmain(xs1,ys0)))
+end(*let*) // end of [strmcon_cons(x0, y0)]
+)
+)(*llazy*)//end-of-[auxmain(xs0,ys0)]
+}(*where*)//end-of-[strm_x2map_vt_cmp(xs,ys)]
+
+(* ****** ****** *)
 //
 // HX-2022-07-03:
 // for gseq-operations

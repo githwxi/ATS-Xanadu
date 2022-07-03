@@ -351,19 +351,20 @@ strx_vt_mapstrm0
   (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
+//
 fun
 <x0:vt>
 strm_vt_group0_list
 ( xs
-: strm_vt(x0))
-: strm_vt(list_vt(x0))
+: strm_vt(x0)): strm_vt(list_vt(x0))
+//
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 strm_vt_merge0
 ( xs: strm_vt(x0)
-, ys: strm_vt(x0)): strm_vt(x0)
+, ys: strm_vt(x0) ): strm_vt(x0)
 //
 (* ****** ****** *)
 //
