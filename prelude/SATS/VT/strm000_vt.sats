@@ -443,6 +443,8 @@ strm_vt_z2imap0//seq
 ( xs: strm_vt(x0)
 , ys: strm_vt(y0)): strm_vt(   z0   )
 //
+(* ****** ****** *)
+//
 fun
 <x0:vt
 ,y0:vt>
@@ -455,6 +457,8 @@ fun
 <z0:vt>
 strm_vt_z2iforcmp0
 (xs: strm_vt(x0), ys: strm_vt(y0)): sint
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt
