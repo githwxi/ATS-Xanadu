@@ -101,6 +101,48 @@ strm_pair(x0, y0) =
 strm_cons(x0, strm_sing(y0))
 //  
 (* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+strm_from(x0) =
+(
+auxmain(x0) ) where
+{
+fun
+auxmain
+(x0: a): strm(a) = $lazy
+(
+strmcon_cons
+( x0
+, auxmain(strm_from$next<a>(x0)))
+) (*lazy*) // end-of-[auxmain(x0)]
+}
+#impltmp
+<a>(*tmp*)
+strm_from$next(x0) = g_succ<a>(x0)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+strx_from(x0) =
+(
+auxmain(x0) ) where
+{
+fun
+auxmain
+(x0: a): strx(a) = $lazy
+(
+strxcon_cons
+( x0
+, auxmain(strx_from$next<a>(x0)))
+) (*lazy*) // end-of-[auxmain(x0)]
+}
+#impltmp
+<a>(*tmp*)
+strx_from$next(x0) = g_succ<a>(x0)
+//
+(* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)

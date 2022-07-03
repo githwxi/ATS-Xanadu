@@ -130,6 +130,34 @@ fun
 strx_vt_free(strx_vt(a)): void
 
 (* ****** ****** *)
+(*
+Sun Jul  3 13:07:07 EDT 2022
+*)
+fun
+<a:vt>
+strm_vt_from(x0:a): strm_vt(a)
+fun
+<a:vt>
+strm_vt_from$next(x0: !a): (a)
+(*
+HX-2022-07-03:
+The default for [$next]:
+strm_vt_from$next(x0) = g_succ(x0)
+*)
+//
+fun
+<a:vt>
+strx_vt_from(x0:a): strx_vt(a)
+fun
+<a:vt>
+strx_vt_from$next(x0: !a): (a)
+(*
+HX-2022-07-03:
+The default for [$next]:
+strx_vt_from$next(x0) = g_succ(x0)
+*)
+//
+(* ****** ****** *)
 //
 fun
 <a:vt>
