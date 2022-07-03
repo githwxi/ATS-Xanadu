@@ -491,6 +491,7 @@ end where
 //
 }(*where*)//end-of-[gseq_search_opt(xs)]
 (* ****** ****** *)
+//
 #impltmp
 <xs><x0>
 gseq_rsearch_opt
@@ -531,6 +532,7 @@ end where
  var r0: res = optn_vt_nil((*void*))
 //
 }(*where*)//end-of-[gseq_rsearch_opt]
+//
 (* ****** ****** *)
 
 #impltmp
@@ -1209,7 +1211,7 @@ $UN.p2tr_set<r0>
 end // end of [rforeach$work]
 }
 //
-} (* end of [gseq_foldr/rforeach] *)
+}(*where*)//end(gseq_foldr/rforeach)
 
 (* ****** ****** *)
 //
@@ -1227,7 +1229,7 @@ if
 gseq_rforall
 <xs><x0>(xs) then false else true
 endlet
-// end of [gseq_rexists/rforall]
+// end of [gseq_rexists(xs)/rforall]
 //
 (* ****** ****** *)
 
@@ -1247,7 +1249,7 @@ forall0$test<x0>
 (  x0  ) = rforall$test<x0>(x0)
 }
 endlet// end of
-// [gseq_rforall/list_vt_forall]
+// [gseq_rforall(xs)/list_vt_forall]
 
 (* ****** ****** *)
 
