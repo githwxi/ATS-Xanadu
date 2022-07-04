@@ -150,5 +150,32 @@ t1up9
 ,a7:vt
 ,a8:vt) = $(a0,a1,a2,a3,a4,a5,a6,a7,a8)
 (* ****** ****** *)
+#vwtpdef
+t0up10
+(a0:vt
+,a1:vt
+,a2:vt
+,a3:vt
+,a4:vt
+,a5:vt
+,a6:vt
+,a7:vt
+,a8:vt
+,a9:vt) =
+@(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+#vwtpdef
+t1up10
+(a0:vt
+,a1:vt
+,a2:vt
+,a3:vt
+,a4:vt
+,a5:vt
+,a6:vt
+,a7:vt
+,a8:vt
+,a9:vt) =
+$(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_tupl000.sats] *)

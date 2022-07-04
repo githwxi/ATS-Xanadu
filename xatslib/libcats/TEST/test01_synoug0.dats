@@ -60,10 +60,6 @@
 *)
 //
 (* ****** ****** *)
-val () = prerrln(314)
-val () = prerrln(3.14)
-(* ****** ****** *)
-////
 //
 #impltmp
 strm_print$len<>() = 5
