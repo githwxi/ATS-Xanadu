@@ -118,6 +118,7 @@ case+ tnd of
   let val () = err := err + 1 in tok end
 //
 end // end of [p_idint]
+//
 implement
 p_idintseq
   (buf, err) =
@@ -820,6 +821,7 @@ p_d0argseq
 ) (* end of [p_d0argseq] *)
 //
 (* ****** ****** *)
+//
 (*
 atmd0pat::
 //
