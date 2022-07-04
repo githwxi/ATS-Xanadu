@@ -162,6 +162,11 @@ gint_fprint_sint(FILR, sint): void
 fun<>
 gint_fprint_uint(FILR, uint): void
 //
+fun<>
+gflt_fprint_sflt(FILR, sflt): void
+fun<>
+gflt_fprint_dflt(FILR, dflt): void
+//
 (* ****** ****** *)
 //
 fun<>

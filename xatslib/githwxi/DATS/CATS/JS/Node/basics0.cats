@@ -70,6 +70,21 @@ XATS2JS_NODE_g_fprint(out, obj);
 return ; // XATS2JS_NODE_gint_fprint_uint
 }
 /* ****** ****** */
+function
+XATS2JS_NODE_gflt_fprint_sflt
+  (out, obj)
+{
+XATS2JS_NODE_g_fprint(out, obj);
+return ; // XATS2JS_NODE_gflt_fprint_sflt
+}
+function
+XATS2JS_NODE_gflt_fprint_dflt
+  (out, obj)
+{
+XATS2JS_NODE_g_fprint(out, obj);
+return ; // XATS2JS_NODE_gflt_fprint_dflt
+}
+/* ****** ****** */
 //
 function
 XATS2JS_NODE_fs_readFileSync
