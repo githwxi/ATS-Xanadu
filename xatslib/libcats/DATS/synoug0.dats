@@ -14,7 +14,339 @@ Syntactic candies :)
 //
 (*
 HX:
-Implementing prout/proutln
+Implementing prout0/proutln0
+Implementing prout1/proutln1
+*)
+//
+(* ****** ****** *)
+//
+(*
+HX:
+Implementing prout0/proutln0
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+prout0_a01 =
+fproc0_a01
+<  a1  > where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a1><a2>
+prout0_a02 =
+fproc0_a02
+<a1><a2> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+prout0_a03 =
+fproc0_a03
+<a1>
+<a2><a3> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+prout0_a04 =
+fproc0_a04
+<a1><a2>
+<a3><a4> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+prout0_a05 =
+fproc0_a05
+<a1><a2>
+<a3><a4><a5> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+prout0_a06 =
+fproc0_a06
+<a1><a2><a3>
+<a4><a5><a6> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+prout0_a07 =
+fproc0_a07
+<a1>
+<a2><a3><a4>
+<a5><a6><a7> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+prout0_a08 =
+fproc0_a08
+<a1><a2>
+<a3><a4><a5>
+<a6><a7><a8> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+prout0_a09 =
+fproc0_a09
+<a1><a2><a3>
+<a4><a5><a6>
+<a7><a8><a9> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+prout0_a10 =
+fproc0_a10
+<a01>
+<a02><a03><a04>
+<a05><a06><a07>
+<a08><a09><a10> where
+{
+#impltmp
+{a0:vt}
+gl_fproc0<a0> = prout0_ref<a0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+proutln0_a00
+<>(*tmp*)
+((*_*)) = prout_ref( "\n" )
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+proutln0_a01
+(   x1   ) =
+(
+prout0_a01
+(   x1   ) ; proutln0_a00<>()
+) (* end of [proutln0_a01] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+proutln0_a02
+( x1, x2 ) =
+(
+prout0_a02
+( x1, x2 ) ; proutln0_a00<>()
+) (* end of [proutln0_a02] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+proutln0_a03
+( x1
+, x2
+, x3 ) =
+(
+prout0_a03
+( x1
+, x2, x3 ) ; proutln0_a00<>()
+) (* end of [proutln0_a03] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+proutln0_a04
+( x1, x2
+, x3, x4 ) =
+(
+prout0_a04
+( x1, x2
+, x3, x4 ) ; proutln0_a00<>()
+) (* end of [proutln0_a04] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+proutln0_a05
+( x1
+, x2, x3
+, x4, x5 ) =
+(
+prout0_a05
+( x1
+, x2, x3
+, x4, x5 ) ; proutln0_a00<>()
+) (* end of [proutln0_a05] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+proutln0_a06
+( x1, x2
+, x3, x4
+, x5, x6 ) =
+(
+prout0_a06
+( x1, x2
+, x3, x4
+, x5, x6 ) ; proutln0_a00<>()
+) (* end of [proutln0_a06] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+proutln0_a07
+( x1
+, x2, x3
+, x4, x5 
+, x6, x7 ) =
+(
+prout0_a07
+( x1
+, x2, x3, x4
+, x5, x6, x7 ) ; proutln0_a00<>()
+) (* end of [proutln0_a07] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1><a2>
+<a3><a4>
+<a5><a6>
+<a7><a8>
+proutln0_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8 ) =
+(
+prout0_a08
+( x1, x2
+, x3, x4, x5
+, x6, x7, x8 ) ; proutln0_a00<>()
+) (* end of [proutln0_a08] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a1>
+<a2><a3>
+<a4><a5>
+<a6><a7>
+<a8><a9>
+proutln0_a09
+( x1
+, x2, x3
+, x4, x5 
+, x6, x7
+, x8, x9 ) =
+(
+prout0_a09
+( x1, x2, x3
+, x4, x5, x6
+, x7, x8, x9 ) ; proutln0_a00<>()
+) (* end of [proutln0_a09] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+proutln0_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+(
+prout1_a10
+( x01
+, x02,x03,x04
+, x05,x06,x07
+, x08,x09,x10 ) ; proutln0_a00<>()
+) (* end of [proutln0_a10] *)
+//
+(* ****** ****** *)
+//
+(*
+Implementing prout1/proutln1
 *)
 //
 (* ****** ****** *)
@@ -334,18 +666,17 @@ prout1_a09
 <a07><a08>
 <a09><a10>
 proutln1_a10
-(x01, x02
-,x03, x04
-,x05, x06
-,x07, x08
-,x09, x10) =
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10 ) =
 (
 prout1_a10
-(x01, x02
-,x03, x04
-,x05, x06
-,x07, x08
-,x09, x10) ; proutln1_a00<>()
+( x01
+, x02,x03,x04
+, x05,x06,x07
+, x08,x09,x10 ) ; proutln1_a00<>()
 ) (* end of [proutln1_a10] *)
 //
 (* ****** ****** *)
