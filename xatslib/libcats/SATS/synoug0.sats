@@ -46,6 +46,131 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (*
 fun<>
+prout0_a00
+((*void*)) : void
+*)
+fun
+<a1:vt>
+prout0_a01
+( x1: ~a1 ) : void
+fun
+<a1:vt>
+<a2:vt>
+prout0_a02
+( x1: ~a1, x2: ~a2 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+prout0_a03
+( x1: ~a1
+, x2: ~a2, x3: ~a3 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+prout0_a04
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+prout0_a05
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+prout0_a06
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4
+, x5: ~a5, x6: ~a6 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+prout0_a07
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5
+, x6: ~a6, x7: ~a7 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+<a8:vt>
+prout0_a08
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4
+, x5: ~a5, x6: ~a6
+, x7: ~a7, x8: ~a8 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+<a8:vt>
+<a9:vt>
+prout0_a09
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5
+, x6: ~a6, x7: ~a7
+, x8: ~a8, x9: ~a9 ) : void
+(* ****** ****** *)
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+prout0_a10
+(x01: ~a01, x02: ~a02
+,x03: ~a03, x04: ~a04
+,x05: ~a05, x06: ~a06
+,x07: ~a07, x08: ~a08
+,x09: ~a09, x10: ~a10) : void
+(* ****** ****** *)
+//
+#symload prout0 with prout0_a01
+#symload prout0 with prout0_a02
+#symload prout0 with prout0_a03
+#symload prout0 with prout0_a04
+#symload prout0 with prout0_a05
+#symload prout0 with prout0_a06
+#symload prout0 with prout0_a07
+#symload prout0 with prout0_a08
+#symload prout0 with prout0_a09
+#symload prout0 with prout0_a10
+//
+(* ****** ****** *)
+(*
+fun<>
 prout1_a00
 ((*void*)) : void
 *)
@@ -138,6 +263,24 @@ prout1_a09
 , x6: !a6, x7: !a7
 , x8: !a8, x9: !a9 ) : void
 (* ****** ****** *)
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+prout1_a10
+(x01: !a01, x02: !a02
+,x03: !a03, x04: !a04
+,x05: !a05, x06: !a06
+,x07: !a07, x08: !a08
+,x09: !a09, x10: !a10) : void
+(* ****** ****** *)
 //
 #symload prout with prout1_a01
 #symload prout with prout1_a02
@@ -148,6 +291,7 @@ prout1_a09
 #symload prout with prout1_a07
 #symload prout with prout1_a08
 #symload prout with prout1_a09
+#symload prout with prout1_a10
 //
 (* ****** ****** *)
 //
@@ -160,6 +304,7 @@ prout1_a09
 #symload prout1 with prout1_a07
 #symload prout1 with prout1_a08
 #symload prout1 with prout1_a09
+#symload prout1 with prout1_a10
 //
 (* ****** ****** *)
 //
@@ -192,6 +337,88 @@ fun
 prerr0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+prerr0_a05
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+prerr0_a06
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4
+, x5: ~a5, x6: ~a6 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+prerr0_a07
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5
+, x6: ~a6, x7: ~a7 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+<a8:vt>
+prerr0_a08
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4
+, x5: ~a5, x6: ~a6
+, x7: ~a7, x8: ~a8 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+<a8:vt>
+<a9:vt>
+prerr0_a09
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5
+, x6: ~a6, x7: ~a7
+, x8: ~a8, x9: ~a9 ) : void
+//
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+prerr0_a10
+(x01: ~a01, x02: ~a02
+,x03: ~a03, x04: ~a04
+,x05: ~a05, x06: ~a06
+,x07: ~a07, x08: ~a08
+,x09: ~a09, x10: ~a10) : void
 //
 (* ****** ****** *)
 //
@@ -199,6 +426,12 @@ prerr0_a04
 #symload prerr0 with prerr0_a02
 #symload prerr0 with prerr0_a03
 #symload prerr0 with prerr0_a04
+#symload prerr0 with prerr0_a05
+#symload prerr0 with prerr0_a06
+#symload prerr0 with prerr0_a07
+#symload prerr0 with prerr0_a08
+#symload prerr0 with prerr0_a09
+#symload prerr0 with prerr0_a10
 //
 (* ****** ****** *)
 (*
@@ -295,6 +528,24 @@ prerr1_a09
 , x6: !a6, x7: !a7
 , x8: !a8, x9: !a9 ) : void
 (* ****** ****** *)
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+prerr1_a10
+(x01: !a01, x02: !a02
+,x03: !a03, x04: !a04
+,x05: !a05, x06: !a06
+,x07: !a07, x08: !a08
+,x09: !a09, x10: !a10) : void
+(* ****** ****** *)
 //
 #symload prerr with prerr1_a01
 #symload prerr with prerr1_a02
@@ -305,6 +556,132 @@ prerr1_a09
 #symload prerr with prerr1_a07
 #symload prerr with prerr1_a08
 #symload prerr with prerr1_a09
+#symload prerr with prerr1_a10
+//
+(* ****** ****** *)
+//
+fun<>
+proutln0_a00
+((*void*)) : void
+fun
+<a1:vt>
+proutln0_a01
+( x1: ~a1 ) : void
+fun
+<a1:vt>
+<a2:vt>
+proutln0_a02
+( x1: ~a1, x2: ~a2 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+proutln0_a03
+( x1: ~a1
+, x2: ~a2, x3: ~a3 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+proutln0_a04
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+proutln0_a05
+( x1: ~a1
+, x2: ~a2, x3: ~a3 
+, x4: ~a4, x5: ~a5 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+proutln0_a06
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4
+, x5: ~a5, x6: ~a6 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+proutln0_a07
+( x1: ~a1
+, x2: ~a2, x3: ~a3 
+, x4: ~a4, x5: ~a5 
+, x6: ~a6, x7: ~a7 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+<a8:vt>
+proutln0_a08
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4
+, x5: ~a5, x6: ~a6
+, x7: ~a7, x8: ~a8 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+<a8:vt>
+<a9:vt>
+proutln0_a09
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5
+, x6: ~a6, x7: ~a7
+, x8: ~a8, x9: ~a9 ) : void
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+proutln0_a10
+(x01: ~a01, x02: ~a02
+,x03: ~a03, x04: ~a04
+,x05: ~a05, x06: ~a06
+,x07: ~a07, x08: ~a08
+,x09: ~a09, x10: ~a10) : void
+//
+(* ****** ****** *)
+//
+#symload proutln0 with proutln0_a00
+#symload proutln0 with proutln0_a01
+#symload proutln0 with proutln0_a02
+#symload proutln0 with proutln0_a03
+#symload proutln0 with proutln0_a04
+#symload proutln0 with proutln0_a05
+#symload proutln0 with proutln0_a06
+#symload proutln0 with proutln0_a07
+#symload proutln0 with proutln0_a08
+#symload proutln0 with proutln0_a09
+#symload proutln0 with proutln0_a10
 //
 (* ****** ****** *)
 //
@@ -400,6 +777,24 @@ proutln1_a09
 , x6: !a6, x7: !a7
 , x8: !a8, x9: !a9 ) : void
 //
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+proutln1_a10
+(x01: !a01, x02: !a02
+,x03: !a03, x04: !a04
+,x05: !a05, x06: !a06
+,x07: !a07, x08: !a08
+,x09: !a09, x10: !a10) : void
+//
 (* ****** ****** *)
 //
 #symload proutln with proutln1_a00
@@ -412,6 +807,7 @@ proutln1_a09
 #symload proutln with proutln1_a07
 #symload proutln with proutln1_a08
 #symload proutln with proutln1_a09
+#symload proutln with proutln1_a10
 //
 (* ****** ****** *)
 //
@@ -425,6 +821,7 @@ proutln1_a09
 #symload proutln1 with proutln1_a07
 #symload proutln1 with proutln1_a08
 #symload proutln1 with proutln1_a09
+#symload proutln1 with proutln1_a10
 //
 (* ****** ****** *)
 //
@@ -455,6 +852,87 @@ fun
 prerrln0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+prerrln0_a05
+( x1: ~a1
+, x2: ~a2, x3: ~a3 
+, x4: ~a4, x5: ~a5 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+prerrln0_a06
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4
+, x5: ~a5, x6: ~a6 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+prerrln0_a07
+( x1: ~a1
+, x2: ~a2, x3: ~a3 
+, x4: ~a4, x5: ~a5 
+, x6: ~a6, x7: ~a7 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+<a8:vt>
+prerrln0_a08
+( x1: ~a1, x2: ~a2
+, x3: ~a3, x4: ~a4
+, x5: ~a5, x6: ~a6
+, x7: ~a7, x8: ~a8 ) : void
+fun
+<a1:vt>
+<a2:vt>
+<a3:vt>
+<a4:vt>
+<a5:vt>
+<a6:vt>
+<a7:vt>
+<a8:vt>
+<a9:vt>
+prerrln0_a09
+( x1: ~a1
+, x2: ~a2, x3: ~a3
+, x4: ~a4, x5: ~a5
+, x6: ~a6, x7: ~a7
+, x8: ~a8, x9: ~a9 ) : void
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+prerrln0_a10
+(x01: ~a01, x02: ~a02
+,x03: ~a03, x04: ~a04
+,x05: ~a05, x06: ~a06
+,x07: ~a07, x08: ~a08
+,x09: ~a09, x10: ~a10) : void
 //
 (* ****** ****** *)
 //
@@ -463,6 +941,12 @@ prerrln0_a04
 #symload prerrln0 with prerrln0_a02
 #symload prerrln0 with prerrln0_a03
 #symload prerrln0 with prerrln0_a04
+#symload prerrln0 with prerrln0_a05
+#symload prerrln0 with prerrln0_a06
+#symload prerrln0 with prerrln0_a07
+#symload prerrln0 with prerrln0_a08
+#symload prerrln0 with prerrln0_a09
+#symload prerrln0 with prerrln0_a10
 //
 (* ****** ****** *)
 //
@@ -558,6 +1042,24 @@ prerrln1_a09
 , x6: !a6, x7: !a7
 , x8: !a8, x9: !a9 ) : void
 //
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+prerrln1_a10
+(x01: !a01, x02: !a02
+,x03: !a03, x04: !a04
+,x05: !a05, x06: !a06
+,x07: !a07, x08: !a08
+,x09: !a09, x10: !a10) : void
+//
 (* ****** ****** *)
 //
 #symload prerrln with prerrln1_a00
@@ -570,6 +1072,7 @@ prerrln1_a09
 #symload prerrln with prerrln1_a07
 #symload prerrln with prerrln1_a08
 #symload prerrln with prerrln1_a09
+#symload prerrln with prerrln1_a10
 //
 (* ****** ****** *)
 //
@@ -583,6 +1086,7 @@ prerrln1_a09
 #symload prerrln1 with prerrln1_a07
 #symload prerrln1 with prerrln1_a08
 #symload prerrln1 with prerrln1_a09
+#symload prerrln1 with prerrln1_a10
 //
 (* ****** ****** *)
 
