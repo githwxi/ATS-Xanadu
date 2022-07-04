@@ -67,6 +67,11 @@ lctn with sort0_get_lctn//staexp0
 lctn with s0exp_get_lctn//staexp0
 (* ****** ****** *)
 #symload
+lctn with d0pat_get_lctn//dynexp0
+#symload
+lctn with d0exp_get_lctn//dynexp0
+(* ****** ****** *)
+#symload
 node with token_get_node//lexing0
 #symload
 node with i0dnt_get_node//staexp0
@@ -107,6 +112,93 @@ p1_d0patseq_COMMA: p1_fun(d0patlst)
 fun
 p1_l0d0pseq_COMMA: p1_fun(l0d0plst)
 //
+(* ****** ****** *)
+//
+(*
+d0pat_RPAREN ::=
+  | RPAREN
+  | BAR d0patseq_COMMA RPAREN
+labd0pat_RBRACE ::=
+  | RPAREN
+  | BAR labd0patseq_COMMA RBRACE
+*)
+//
+#extern
+fun
+p1_d0pat_RPAREN: p1_fun(d0pat_RPAREN)
+#extern
+fun
+p1_l0d0p_RBRACE: p1_fun(l0d0p_RBRACE)
+//
+(* ****** ****** *)
+
+local
+
+fun
+p1_napps
+( buf:
+! tkbf0
+, err:
+& sint >> _): d0pat =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+|
+_ (* error *) =>
+( err := e00 + 1;
+  d0pat(tok.lctn(), D0Ptkerr(tok))
+) (* end-of-error *)
+//
+end (*let*) // end of [p1_napps(buf,err)]
+
+in(*in-of-local*)
+//
+#implfun
+p1_d0pat(buf, err) =
+let
+//
+val
+d0ps =
+p1_d0patseq_atm(buf, err)
+//
+in//let
+//
+case+ d0ps of
+|
+list_nil() =>
+p1_napps(buf, err)
+|
+list_cons
+(d0p1, dps1) =>
+let
+  val opt1 =
+  pq_s0exp_anno(buf, err)
+in
+case+ dps1 of
+|
+list_nil() =>
+d0pat_anno_opt(d0p1, opt1)
+|
+list_cons _ => let
+  val d0p2 = list_last(dps1)
+  val lres = d0p1.lctn()+d0p2.lctn()
+in
+d0pat_anno_opt
+(d0pat_make_node(lres, D0Papps(d0ps)), opt1)
+end // end of [list_cons]
+//
+end (* end of [list_cons] *)
+//
+end // end of [let] // end of [p1_d0pat]
+//
+endlocal (*local*) // end of [local(p1_d0pat)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)

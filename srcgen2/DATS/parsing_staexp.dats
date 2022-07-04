@@ -787,7 +787,8 @@ fun
 p1_napps
 ( buf:
 ! tkbf0
-, err: &sint >> _): g0exp =
+, err:
+& sint >> _): g0exp =
 let
   val e00 = err
   val tok = buf.getk0()

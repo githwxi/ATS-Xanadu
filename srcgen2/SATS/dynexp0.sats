@@ -271,6 +271,10 @@ d0pat_get_node(d0pat): d0pat_node
 //
 (* ****** ****** *)
 fun
+d0pat_anno_opt
+(d0p: d0pat, opt: s0expopt): d0pat
+(* ****** ****** *)
+fun
 d0pat_make_node
 (loc:loc_t, nod:d0pat_node): d0pat
 #symload d0pat with d0pat_make_node
