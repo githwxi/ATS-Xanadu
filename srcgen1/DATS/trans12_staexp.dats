@@ -1967,8 +1967,10 @@ val-
 S1Etrcd1
 ( knd, xs1, xs2) = s1e0.node()
 //
-val s2es1 = trans12_sexplst_cp(xs1)
-val s2es2 = trans12_sexplst_ct(xs2)
+val
+s2es1 = trans12_sexplst_cp(xs1)
+val
+s2es2 = trans12_sexplst_ct(xs2)
 //
 in
   s2exp_trcd12(knd, s2es1, s2es2)
@@ -1999,12 +2001,15 @@ auxtrcd22
 //
 val-
 S1Etrcd2
-( knd, lxs1, lxs2) = s1e0.node()
+( knd
+, lxs1, lxs2) = s1e0.node()
 //
 val
-ls2es1 = trans12_labsexplst_cp(lxs1)
+ls2es1 =
+trans12_labsexplst_cp( lxs1 )
 val
-ls2es2 = trans12_labsexplst_ct(lxs2)
+ls2es2 =
+trans12_labsexplst_ct( lxs2 )
 //
 in
   s2exp_trcd22(knd, ls2es1, ls2es2)

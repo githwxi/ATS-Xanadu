@@ -1427,7 +1427,7 @@ val
 d3es = trans23_dexplst(d2es)
 //
 in
-  d23exp_trcd1_up(loc0, knd1, npf2, d3es)
+d23exp_trcd1_up(loc0, knd1, npf2, d3es)
 end // end of [aux_trcd1]
 
 (* ****** ****** *)

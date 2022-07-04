@@ -4,6 +4,12 @@
 (* ****** ****** *)
 //
 #impltmp
+< a:vt >
+g_free(x) = ()
+//
+(* ****** ****** *)
+//
+#impltmp
 strm_print$len<>() = 5
 #impltmp
 strx_print$len<>() = 10
@@ -13,21 +19,26 @@ strm_vt_print$len<>() = 5
 strx_vt_print$len<>() = 10
 //
 (* ****** ****** *)
-
+//
 val () =
 prerrln
 (0,'0',false,0.0,"0")
 val () =
 prerrln
 (@(0,'0',false,0.0,"0"))
-
+//
 (* ****** ****** *)
+//
 val () =
 prerrln
 (0,1,2,3,4,5,6,7,8,9)
 val () =
 prerrln
 (@(0,1,2,3,4,5,6,7,8,9))
+val () =
+prerrln
+($(0,1,2,3,4,5,6,7,8,9))
+//
 (* ****** ****** *)
 //
 val () =
