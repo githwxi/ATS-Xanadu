@@ -93,6 +93,19 @@ XATS2JS_NODE_gint_fprint_uint:
 #impltmp
 gint_fprint_uint<> = XATS2JS_NODE_gint_fprint_uint
 //
+#extern
+fun
+XATS2JS_NODE_gflt_fprint_sflt:
+(FILR, sflt) -> void = $extnam()
+#impltmp
+gflt_fprint_sflt<> = XATS2JS_NODE_gflt_fprint_sflt
+#extern
+fun
+XATS2JS_NODE_gflt_fprint_dflt:
+(FILR, dflt) -> void = $extnam()
+#impltmp
+gflt_fprint_dflt<> = XATS2JS_NODE_gflt_fprint_dflt
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_xatslib_githwxi_DATSCATS_JS_NODE_basics0.dats] *)

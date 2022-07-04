@@ -282,6 +282,10 @@ strn_print<> = g_print<strn>
 gint_print_sint<> = g_print<sint>
 #impltmp
 gint_print_uint<> = g_print<uint>
+#impltmp
+gflt_print_sflt<> = g_print<sflt>
+#impltmp
+gflt_print_dflt<> = g_print<dflt>
 //
 #impltmp
 g_print<bool>(x0) =
@@ -299,6 +303,13 @@ gint_fprint_sint<>(g_print$out<>(), x0)
 #impltmp
 g_print<uint>(x0) =
 gint_fprint_uint<>(g_print$out<>(), x0)
+//
+#impltmp
+g_print<sflt>(x0) =
+gflt_fprint_sflt<>(g_print$out<>(), x0)
+#impltmp
+g_print<dflt>(x0) =
+gflt_fprint_dflt<>(g_print$out<>(), x0)
 //
 (* ****** ****** *)
 

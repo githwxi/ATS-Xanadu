@@ -60,6 +60,10 @@
 *)
 //
 (* ****** ****** *)
+val () = prerrln(314)
+val () = prerrln(3.14)
+(* ****** ****** *)
+////
 //
 #impltmp
 strm_print$len<>() = 5
@@ -70,6 +74,15 @@ strm_vt_print$len<>() = 5
 #impltmp
 strx_vt_print$len<>() = 10
 //
+(* ****** ****** *)
+
+val () =
+prerrln
+(0, '0', false, 0.0, "0")
+val () =
+prerrln
+(@(0, '0', false, 0.0, "0"))
+
 (* ****** ****** *)
 //
 val () =
