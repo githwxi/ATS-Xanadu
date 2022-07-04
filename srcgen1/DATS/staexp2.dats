@@ -1285,10 +1285,10 @@ labs2explst_islin(ls2es)
 in
 if
 islin
-then (the_sort2_vwtp)
-else (the_sort2_type)
+then (  the_sort2_vwtp  )
+else (  the_sort2_type  )
 end
-else (the_sort2_vtbx) // linear
+else (  the_sort2_vtbx  ) // linear
 ) : sort2 // end of [val]
 //
 val knd =
@@ -1328,10 +1328,10 @@ labs2explst_islin(ls2es2)
 in
 if
 islin
-then (the_sort2_vwtp)
-else (the_sort2_type)
+then (  the_sort2_vwtp  )
+else (  the_sort2_type  )
 end
-else (the_sort2_vtbx) // linear
+else (  the_sort2_vtbx  ) // linear
 ) : sort2 // end of [val]
 //
 val knd =

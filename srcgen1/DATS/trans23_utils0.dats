@@ -1137,7 +1137,16 @@ case+ d3ps of
 } (* end of [val] *)
 //
 val s2t0 =
-  the_sort2_none
+(
+case+ tknd of
+| 
+TYRECbox0() => the_sort2_tbox
+| 
+TYRECbox1() => the_sort2_vtbx
+|
+_(* else *) => the_sort2_none
+) : sort2 // end of [val(s2t0)]
+//
 val t2p0 =
   t2ype_tyrec(s2t0, tknd, npf2, ltps)
 //
@@ -2092,7 +2101,16 @@ end // end of [list_cons]
 } (* end of [val] *)
 //
 val s2t0 =
-  the_sort2_none
+(
+case+ tknd of
+| 
+TYRECbox0() => the_sort2_tbox
+| 
+TYRECbox1() => the_sort2_vtbx
+|
+_(* else *) => the_sort2_none
+) : sort2 // end of [val(s2t0)]
+//
 val t2p0 =
   t2ype_tyrec(s2t0, tknd, npf2, ltps)
 //
