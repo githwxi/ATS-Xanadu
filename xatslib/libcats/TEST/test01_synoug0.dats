@@ -60,7 +60,7 @@
 *)
 //
 (* ****** ****** *)
-
+//
 #impltmp
 strm_print$len<>() = 5
 #impltmp
@@ -69,7 +69,7 @@ strx_print$len<>() = 10
 strm_vt_print$len<>() = 5
 #impltmp
 strx_vt_print$len<>() = 10
-
+//
 (* ****** ****** *)
 //
 val () =
@@ -326,15 +326,17 @@ ramanujan1(the_cbsums)
 //
 local
 //
+(*
 #impltmp
 g_print<sint3>(xyz) =
 print
 ("("
 ,xyz.0,"^3"," + "
 ,xyz.1,"^3"," = ",xyz.2,")"
-)
+) (* end of [g_print(xyz)] *)
+*)
 //
-#impltmp strm_vt_print$len<>() = 50
+#impltmp strm_vt_print$len<>() = 10
 //
 in//local
 val () =
