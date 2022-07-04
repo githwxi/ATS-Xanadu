@@ -53,6 +53,14 @@ castlin10{a1:vt}{a0:vt}(a0): (a1)
 //
 (* ****** ****** *)
 //
+(*
+Mon Jul  4 17:58:26 EDT 2022
+*)
+fcast//HX: it is safe!
+datacopy{a0:vt}(x0: !a0): (~a0)
+//
+(* ****** ****** *)
+//
 fcast
 optn_vt2t
 {a:t0}{b:b0}

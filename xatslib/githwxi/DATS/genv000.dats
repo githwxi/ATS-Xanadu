@@ -29,17 +29,9 @@
 #staload
 "./../SATS/genv000.sats"
 (* ****** ****** *)
-
 #staload
 UN =
 "prelude/SATS/unsafex.sats"
-
-(* ****** ****** *)
-//
-#extern
-fcast//HX: it is safe!
-datacopy{a0:vt}(x0: !a0): (~a0)
-//
 (* ****** ****** *)
 
 #impltmp
@@ -54,7 +46,7 @@ gseq_forall
 < x0 >( xs )) where
 {
 val env =
-datacopy(env)
+$UN.datacopy( env )
 #impltmp
 forall$test<x0>(x0) =
 let
@@ -86,7 +78,7 @@ gseq_foreach
 < x0 >( xs )) where
 {
 val env =
-datacopy(env)
+$UN.datacopy( env )
 #impltmp
 foreach$work<x0>(x0) =
 let
@@ -119,7 +111,7 @@ gseq_map_list
 <x0><y0>( xs )) where
 {
 val env =
-datacopy( env )
+$UN.datacopy( env )
 #impltmp
 map$fopr<x0><y0>(x0) =
 let
@@ -152,7 +144,7 @@ gseq_map_strm
 <x0><y0>( xs )) where
 {
 val env =
-datacopy(env)
+$UN.datacopy( env )
 #impltmp
 map$fopr<x0><y0>(x0) =
 let

@@ -23,7 +23,7 @@ $UN.p2tr_ret
 (p0, x0) =
 let
 val x0 = $UN.delinear(x0) in ()
-end
+endlet // end of [$UN.p2tr_ret]
 //
 (* ****** ****** *)
 //
@@ -46,8 +46,8 @@ xs = list(a)
 val xs = 
 $UN.p2tr_get<xs>(p0)
 in
-$UN.p2tr_set<xs>(p0, list_cons(x0, xs))
-end
+$UN.p2tr_set<xs>(p0,list_cons(x0,xs))
+end // end of [$UN.p2tr_set_list_cons]
 //
 (* ****** ****** *)
 //
@@ -69,8 +69,8 @@ xs = list_vt(a)
 val xs = 
 $UN.p2tr_get<xs>(p0)
 in
-$UN.p2tr_set<xs>(p0, list_vt_cons(x0, xs))
-end
+$UN.p2tr_set<xs>(p0,list_vt_cons(x0,xs))
+end//end-of-[$UN.p2tr_set_list_vt_nil(p0)]
 //
 (* ****** ****** *)
 
