@@ -29,7 +29,10 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 16th, 2022
+Start Time: July 4th, 2022
+(*
+Mon Jul  4 19:02:42 EDT 2022
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -48,6 +51,7 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
@@ -74,7 +78,35 @@ tnode with token_get_node//lexing0
 (* ****** ****** *)
 #symload + with add_loctn_loctn//locinfo
 (* ****** ****** *)
-
+//
+(*
+atmd0pat::
+//
+  | d0pid
+//
+  | t0int // int
+  | t0chr // char
+  | t0flt // float
+  | t0str // string
+//
+*)
+//
+#extern
+fun
+p1_d0pat_atm: p1_fun(d0pat)
+#extern
+fun
+p1_d0patseq_atm: p1_fun(d0patlst)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+p1_d0patseq_COMMA: p1_fun(d0patlst)
+#extern
+fun
+p1_l0d0pseq_COMMA: p1_fun(l0d0plst)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)
