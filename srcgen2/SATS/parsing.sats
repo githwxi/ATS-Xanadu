@@ -320,6 +320,9 @@ pq_sort0_anno: pq_fun(sort0)
 fun
 pq_ids0t_anno: pq_fun(sort0)
 (* ****** ****** *)
+fun
+pq_s0exp_anno: pq_fun(s0exp)
+(* ****** ****** *)
 //
 #typedef s0tcnlst=list(s0tcn)
 #typedef d0tstlst=list(d0tst)
@@ -415,6 +418,11 @@ p1_d0typseq_AND: p1_fun(d0typlst)
 fun
 p1_WHERE_sexpdefseq: p1_fun(d0eclist)
 //
+(* ****** ****** *)
+
+fun p1_d0pat: p1_fun(d0pat)
+fun p1_d0exp: p1_fun(d0exp)
+
 (* ****** ****** *)
 //
 #typedef
