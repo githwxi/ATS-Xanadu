@@ -1945,7 +1945,7 @@ endlet // strmcon_vt_cons(y0,ys)
 
 #impltmp
 <x0,y0>
-strm_vt_z2forcmp0
+strm_vt_z2iforcmp0
   (xs, ys) =
 (
 auxloop(0, xs, ys)) where
