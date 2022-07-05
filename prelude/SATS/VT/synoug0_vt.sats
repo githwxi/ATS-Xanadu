@@ -1248,6 +1248,8 @@ strn_vt_glappend0_a10
 , ~strn_vt, ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
 //
+(* ****** ****** *)
+//
 #symload glappend0 with strn_vt_glappend0_a02
 #symload glappend0 with strn_vt_glappend0_a03
 #symload glappend0 with strn_vt_glappend0_a04
@@ -1257,6 +1259,67 @@ strn_vt_glappend0_a10
 #symload glappend0 with strn_vt_glappend0_a08
 #symload glappend0 with strn_vt_glappend0_a09
 #symload glappend0 with strn_vt_glappend0_a10
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 18:29:59 EDT 2022
+*)
+//
+fun<>
+strn_vt_glappend1_a02
+( !strn_vt
+, !strn_vt ): strn_vt
+fun<>
+strn_vt_glappend1_a03
+( !strn_vt
+, !strn_vt, !strn_vt): strn_vt
+fun<>
+strn_vt_glappend1_a04
+( !strn_vt, !strn_vt
+, !strn_vt, !strn_vt): strn_vt
+fun<>
+strn_vt_glappend1_a05
+( !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt): strn_vt
+fun<>
+strn_vt_glappend1_a06
+( !strn_vt, !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt): strn_vt
+fun<>
+strn_vt_glappend1_a07
+( !strn_vt
+, !strn_vt, !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt): strn_vt
+fun<>
+strn_vt_glappend1_a08
+( !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt): strn_vt
+fun<>
+strn_vt_glappend1_a09
+( !strn_vt, !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt): strn_vt
+fun<>
+strn_vt_glappend1_a10
+( !strn_vt
+, !strn_vt, !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt
+, !strn_vt, !strn_vt, !strn_vt): strn_vt
+//
+(* ****** ****** *)
+//
+#symload glappend1 with strn_vt_glappend1_a02
+#symload glappend1 with strn_vt_glappend1_a03
+#symload glappend1 with strn_vt_glappend1_a04
+#symload glappend1 with strn_vt_glappend1_a05
+#symload glappend1 with strn_vt_glappend1_a06
+#symload glappend1 with strn_vt_glappend1_a07
+#symload glappend1 with strn_vt_glappend1_a08
+#symload glappend1 with strn_vt_glappend1_a09
+#symload glappend1 with strn_vt_glappend1_a10
 //
 (* ****** ****** *)
 

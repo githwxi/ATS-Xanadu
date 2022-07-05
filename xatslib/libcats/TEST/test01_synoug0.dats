@@ -371,6 +371,7 @@ val ef = strn_vt("ef")
 val () = prerrln("ab = ", ab)
 val () = prerrln("cd = ", cd)
 val () = prerrln("ef = ", ef)
+val () = prerrln("glappend1(...) = ", glappend1(ab, cd, ef))
 val () = prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
 
 (* ****** ****** *)
