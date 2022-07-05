@@ -50,6 +50,14 @@ strn_vt_make_list_vt<>
 (list_vt_nil((*void*)))
 //
 (* ****** ****** *)
+(*
+#impltmp
+<>(*tmp*)
+strn_vt_set_at
+( cs, i0, c0 ) =
+strtmp_set_at<>(cs,i0,c0)
+*)
+(* ****** ****** *)
 //
 #impltmp<>
 strn_vt_print0(cs) =
@@ -110,7 +118,7 @@ list_vt_append0<cgtz>
 //
 in
 strn_vt_make_list_vt<>(zs)
-end(*let*)//end-of(strn_append0_vt)
+end(*let*)//end-of(strn_vt_append0)
 //
 (* ****** ****** *)
 //
@@ -126,7 +134,7 @@ list_vt_append0<cgtz>
 //
 in
 strn_vt_make_list_vt<>(zs)
-end(*let*)//end-of(strn_append0_vt)
+end(*let*)//end-of(strn_vt_append1)
 //
 (* ****** ****** *)
 
@@ -167,6 +175,94 @@ end // end of [else]
 } (* end of [strn_vt_forall1/get_at] *)
 
 (* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_vt_listize
+  (  cs  ) =
+list_vt_reverse0
+(strn_vt_rlistize<>(cs))
+//
+#impltmp
+<>(*tmp*)
+strn_vt_rlistize
+  (  cs  ) = let
+//
+val i0 = 0(*start*)
+val ln = length1(cs)
+val r0 = list_vt_nil()
+//
+in
+auxloop(cs, ln, i0, r0)
+end where // end of [let]
+{
+//
+#vwtpdef
+clst(i:int) = list_vt(cgtz, i)
+//
+fnx
+auxloop
+{n:int}
+{i:nat|i <= n}
+( cs:
+! strn_vt(n)
+, ln: sint(n)
+, i0: sint(i)
+, r0: clst(i))
+: list_vt(cgtz, n) =
+(
+if
+(i0 >= ln)
+then r0 else
+let
+val ci = cs[i0]
+in//let
+auxloop
+(cs,ln,i0+1,list_vt_cons(ci, r0))
+end // end of [else] // end-of-[if]
+)
+}(*where*)//end-of-[strn_vt_listize(cs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_vt_strmize
+  (cs) = let
+//
+val i0 = 0(*start*)
+val ln = length1(cs)
+//
+in
+  auxmain(cs, ln, i0)
+end where // end of [let]
+{
+fun
+auxmain
+{n:int}
+{i:nat|i <= n}
+( cs:
+! strn_vt(n)
+, ln: sint(n)
+, i0: sint(i))
+: strm_vt(cgtz) =
+$llazy
+(
+free(cs);
+if
+(i0 >= ln)
+then
+strmcon_vt_nil()
+else
+let
+val ci = cs[i0]
+in//let
+strmcon_vt_cons(ci,auxmain(cs,ln,i0+1))
+end // end of [else]
+)
+}(*where*)//end-of-[strn_vt_strmize(cs)]
+//
+(* ****** ****** *)
 #impltmp
 <>(*tmp*)
 strn_vt_listize1(cs) =
@@ -176,43 +272,52 @@ $UN.castlin01(glseq_copy_list(cs))
 strn_vt_rlistize1(cs) =
 $UN.castlin01(glseq_rcopy_list(cs))
 (* ****** ****** *)
-#impltmp
-<>(*tmp*)
-strn_vt_strmize
-  (cs) = let
-//
-  val
-  len = length1(cs)
-//
-in
-  auxmain(cs, len, 0)
-end where // end of [let]
-{
-fun
-auxmain
-{n:int}
-{i:nat|i <= n}
-( cs:
-! strn_vt(n)
-, len: sint(n)
-, ind: sint(i))
-: strm_vt(cgtz) =
-$llazy
+
+#impltmp<>
+strn_vt_make_strn
+  {n}(cs) =
 (
-free(cs);
+UN_strn_vt_cast(p0)
+) where
+{
+//
+val p0 =
+strtmp_vt_alloc<>(n0)
+//
+val () =
+loop(p0, 0(*i0*), cs)
+//
+} where
+{
+//
+val n0 =
+strn_length<>(cs)
+//
+#sexpdef
+stmp = strtmp1_vt
+//
+fnx
+loop
+{i:nat
+|i<=n}.<n-i>.
+( p0: stmp(n)
+, i0: sint(i)
+, cs: strn(n)): void =
+(
 if
-(ind >= len)
-then
-strmcon_vt_nil()
-else
-let
-val ci = cs[ind]
-in
-  strmcon_vt_cons
-  (ci, auxmain(cs, len, ind+1))
-end // end of [else]
+(i0 >= n0)
+then () else
+(
+  loop(p0, succ(i0), cs)
+) where
+{
+val c0 = cs[i0]
+val () = strtmp_vt_set_at<>(p0,i0,c0)
+}
 )
-} (* end of [strn_vt_strmize] *)
+//
+}(*where*)//end-of-[strn_vt_make_strn]
+
 (* ****** ****** *)
 
 #impltmp<>
@@ -224,13 +329,16 @@ UN_strn_vt_cast(p0)
 {
 //
 val p0 =
-strtmp_vt_alloc<>
-(list_length(cs))
+strtmp_vt_alloc<>(n0)
+//
 val () =
 loop(p0, 0(*i0*), cs)
 //
 } where
 {
+//
+val n0 =
+list_length<>(cs)
 //
 #sexpdef
 stmp = strtmp1_vt
@@ -258,7 +366,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 }
 )
 //
-} (* end of [strn_vt_make_list] *)
+}(*where*)//end-of-[strn_vt_make_list]
 
 (* ****** ****** *)
 
@@ -305,7 +413,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 }
 )
 //
-} (* end of [strn_vt_make_list_vt] *)
+}(*where*)//end-of-[strn_vt_make_list_vt]
 
 (* ****** ****** *)
 //
@@ -318,7 +426,8 @@ val cs =
 strm_listize(cs)
 in
   strn_vt_make_list_vt(cs)
-endlet // strn_vt_make_strm
+end(*let*)//end-of-[strn_vt_make_strm]
+//
 #impltmp
 <>(*tmp*)
 strn_vt_make_strm_vt
@@ -328,7 +437,7 @@ val cs =
 strm_vt_listize(cs)
 in
   strn_vt_make_list_vt(cs)
-endlet // strn_vt_make_strm_vt
+end(*let*)//end-of-[strn_vt_make_strm_vt]
 //
 (* ****** ****** *)
 //
@@ -374,7 +483,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 }
 )
 //
-} (* end of [strn_vt_tabulate] *)
+} (*where*)//end-of-[strn_vt_tabulate]
 
 (* ****** ****** *)
 //

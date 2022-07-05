@@ -564,7 +564,7 @@ gfproc_a10
 (* ****** ****** *)
 //
 //HX:
-//implementing fproc
+//implementing fred2
 //
 (* ****** ****** *)
 //

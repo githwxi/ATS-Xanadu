@@ -898,7 +898,32 @@ where
 #extern
 fun
 XATS2JS_strtmp_vt_alloc
-(bsz: sint) : strtmp0_vt = $extnam()
+(bsz:sint): strtmp_vt = $extnam()
+}
+(* ****** ****** *)
+#impltmp
+strn_vt_get_at<> =
+XATS2JS_strn_vt_get_at
+where
+{
+#extern
+fun
+XATS2JS_strn_vt_get_at
+( cs
+: strn_vt
+, i0:sint(*ind*)): char = $extnam()
+}
+(* ****** ****** *)
+#impltmp
+strn_vt_set_at<> =
+XATS2JS_strn_vt_set_at
+where
+{
+#extern
+fun
+XATS2JS_strn_vt_set_at
+( cs:strn_vt
+, i0:sint, c0:char): void = $extnam()
 }
 (* ****** ****** *)
 #impltmp
@@ -909,7 +934,7 @@ where
 #extern
 fun
 XATS2JS_strtmp_vt_set_at
-( cs:strtmp0_vt
+( cs:strtmp_vt
 , i0:sint, c0:char): void = $extnam()
 }
 (* ****** ****** *)
