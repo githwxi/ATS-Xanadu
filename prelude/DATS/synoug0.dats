@@ -12,14 +12,14 @@
 //
 #impltmp
 <a0>
-max_a02
+gmax_a02
 (x1, x2) =
 (
 g_max<a0>(x1, x2)
-) (* end of [max_a02] *)
+) (* end of [gmax_a02] *)
 #impltmp
 <a0>
-max_a03
+gmax_a03
 ( x1
 , x2, x3) =
 let
@@ -28,10 +28,10 @@ f0(x, y) =
 g_max<a0>(x, y)
 in//let
   f0(f0(x1, x2), x3)
-end (*let*) // end of [max_a03]
+end (*let*) // end of [gmax_a03]
 #impltmp
 <a0>
-max_a04
+gmax_a04
 ( x1, x2
 , x3, x4) =
 let
@@ -40,10 +40,10 @@ f0(x, y) =
 g_max<a0>(x, y)
 in//let
   f0(f0(f0(x1,x2),x3),x4)
-end (*let*) // end of [max_a04]
+end (*let*) // end of [gmax_a04]
 #impltmp
 <a0>
-max_a05
+gmax_a05
 ( x1
 , x2, x3
 , x4, x5) =
@@ -53,10 +53,10 @@ f0(x, y) =
 g_max<a0>(x, y)
 in//let
 f0(f0(f0(f0(x1,x2),x3),x4),x5)
-end (*let*) // end of [max_a05]
+end (*let*) // end of [gmax_a05]
 #impltmp
 <a0>
-max_a06
+gmax_a06
 ( x1, x2
 , x3, x4
 , x5, x6) =
@@ -66,10 +66,10 @@ f0(x, y) =
 g_max<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
-end (*let*) // end of [max_a06]
+end (*let*) // end of [gmax_a06]
 #impltmp
 <a0>
-max_a07
+gmax_a07
 ( x1
 , x2, x3
 , x4, x5
@@ -80,10 +80,10 @@ f0(x, y) =
 g_max<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
-end (*let*) // end of [max_a07]
+end (*let*) // end of [gmax_a07]
 #impltmp
 <a0>
-max_a08
+gmax_a08
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -94,10 +94,10 @@ f0(x, y) =
 g_max<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
-end (*let*) // end of [max_a08]
+end (*let*) // end of [gmax_a08]
 #impltmp
 <a0>
-max_a09
+gmax_a09
 ( x1
 , x2, x3
 , x4, x5
@@ -109,20 +109,37 @@ f0(x, y) =
 g_max<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
-end (*let*) // end of [max_a09]
+end (*let*) // end of [gmax_a09]
+//
+#impltmp
+<a0>
+gmax_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+let
+fun
+f0(x, y) =
+g_max<a0>(x, y)
+in//let
+f0(f0(f0(f0(
+f0(f0(f0(f0(f0(x01,x02),x03),x04),x05),x06),x07),x08),x09),x10)
+end (*let*) // end of [gmax_a10]
 //
 (* ****** ****** *)
 //
 #impltmp
 <a0>
-min_a02
+gmin_a02
 (x1, x2) =
 (
 g_min<a0>(x1, x2)
-) (* end of [min_a02] *)
+) (* end of [gmin_a02] *)
 #impltmp
 <a0>
-min_a03
+gmin_a03
 ( x1
 , x2, x3) =
 let
@@ -131,10 +148,10 @@ f0(x, y) =
 g_min<a0>(x, y)
 in//let
   f0(f0(x1, x2), x3)
-end (*let*) // end of [min_a03]
+end (*let*) // end of [gmin_a03]
 #impltmp
 <a0>
-min_a04
+gmin_a04
 ( x1, x2
 , x3, x4) =
 let
@@ -143,10 +160,10 @@ f0(x, y) =
 g_min<a0>(x, y)
 in//let
   f0(f0(f0(x1,x2),x3),x4)
-end (*let*) // end of [min_a04]
+end (*let*) // end of [gmin_a04]
 #impltmp
 <a0>
-min_a05
+gmin_a05
 ( x1
 , x2, x3
 , x4, x5) =
@@ -156,10 +173,10 @@ f0(x, y) =
 g_min<a0>(x, y)
 in//let
 f0(f0(f0(f0(x1,x2),x3),x4),x5)
-end (*let*) // end of [min_a05]
+end (*let*) // end of [gmin_a05]
 #impltmp
 <a0>
-min_a06
+gmin_a06
 ( x1, x2
 , x3, x4
 , x5, x6) =
@@ -169,10 +186,10 @@ f0(x, y) =
 g_min<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
-end (*let*) // end of [min_a06]
+end (*let*) // end of [gmin_a06]
 #impltmp
 <a0>
-min_a07
+gmin_a07
 ( x1
 , x2, x3
 , x4, x5
@@ -183,10 +200,10 @@ f0(x, y) =
 g_min<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
-end (*let*) // end of [min_a07]
+end (*let*) // end of [gmin_a07]
 #impltmp
 <a0>
-min_a08
+gmin_a08
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -197,10 +214,10 @@ f0(x, y) =
 g_min<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
-end (*let*) // end of [min_a08]
+end (*let*) // end of [gmin_a08]
 #impltmp
 <a0>
-min_a09
+gmin_a09
 ( x1
 , x2, x3
 , x4, x5
@@ -212,7 +229,24 @@ f0(x, y) =
 g_min<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
-end (*let*) // end of [min_a09]
+end (*let*) // end of [gmin_a09]
+//
+#impltmp
+<a0>
+gmin_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+let
+fun
+f0(x, y) =
+g_min<a0>(x, y)
+in//let
+f0(f0(f0(f0(
+f0(f0(f0(f0(f0(x01,x02),x03),x04),x05),x06),x07),x08),x09),x10)
+end (*let*) // end of [gmin_a10]
 //
 (* ****** ****** *)
 //
@@ -504,7 +538,7 @@ list_cons(x10, list_nil()))))))))))
 //
 #impltmp
 <a1>
-fproc_a01(x1) = () where
+gfproc_a01(x1) = () where
 {
   val () = g_fproc<a1>(x1)
 }
@@ -514,7 +548,7 @@ fproc_a01(x1) = () where
 #impltmp
 <a1>
 <a2>
-fproc_a02
+gfproc_a02
 ( x1
 , x2 ) = () where
 {
@@ -528,7 +562,7 @@ fproc_a02
 <a1>
 <a2>
 <a3>
-fproc_a03
+gfproc_a03
 ( x1
 , x2
 , x3 ) = () where
@@ -545,7 +579,7 @@ fproc_a03
 <a2>
 <a3>
 <a4>
-fproc_a04
+gfproc_a04
 ( x1
 , x2
 , x3
@@ -565,7 +599,7 @@ fproc_a04
 <a3>
 <a4>
 <a5>
-fproc_a05
+gfproc_a05
 ( x1
 , x2
 , x3
@@ -588,7 +622,7 @@ fproc_a05
 <a4>
 <a5>
 <a6>
-fproc_a06
+gfproc_a06
 ( x1
 , x2
 , x3
@@ -614,7 +648,7 @@ fproc_a06
 <a5>
 <a6>
 <a7>
-fproc_a07
+gfproc_a07
 ( x1
 , x2, x3
 , x4, x5
@@ -636,7 +670,7 @@ fproc_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-fproc_a08
+gfproc_a08
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -660,7 +694,7 @@ fproc_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-fproc_a09
+gfproc_a09
 ( x1
 , x2, x3
 , x4, x5
@@ -686,7 +720,7 @@ fproc_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-fproc_a10
+gfproc_a10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -717,7 +751,7 @@ Implementing print/println
 #impltmp
 <a1>
 print_a01 =
-fproc_a01
+gfproc_a01
 <  a1  > where
 {
 #impltmp
@@ -728,7 +762,7 @@ g_fproc<a0> = g_print<a0>
 #impltmp
 <a1><a2>
 print_a02 =
-fproc_a02
+gfproc_a02
 <a1><a2> where
 {
 #impltmp
@@ -740,7 +774,7 @@ g_fproc<a0> = g_print<a0>
 <a1>
 <a2><a3>
 print_a03 =
-fproc_a03
+gfproc_a03
 <a1>
 <a2><a3> where
 {
@@ -753,7 +787,7 @@ g_fproc<a0> = g_print<a0>
 <a1><a2>
 <a3><a4>
 print_a04 =
-fproc_a04
+gfproc_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -767,7 +801,7 @@ g_fproc<a0> = g_print<a0>
 <a2><a3>
 <a4><a5>
 print_a05 =
-fproc_a05
+gfproc_a05
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -782,7 +816,7 @@ g_fproc<a0> = g_print<a0>
 <a3><a4>
 <a5><a6>
 print_a06 =
-fproc_a06
+gfproc_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -798,7 +832,7 @@ g_fproc<a0> = g_print<a0>
 <a4><a5>
 <a6><a7>
 print_a07 =
-fproc_a07
+gfproc_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -815,7 +849,7 @@ g_fproc<a0> = g_print<a0>
 <a5><a6>
 <a7><a8>
 print_a08 =
-fproc_a08
+gfproc_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -833,7 +867,7 @@ g_fproc<a0> = g_print<a0>
 <a6><a7>
 <a8><a9>
 print_a09 =
-fproc_a09
+gfproc_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -843,6 +877,25 @@ fproc_a09
 #impltmp
 {a0:t0}
 g_fproc<a0> = g_print<a0>
+}
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+print_a10 =
+gfproc_a10
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10> where
+{
+#impltmp
+{a00:t0}
+g_fproc<a00> = g_print<a00>
 }
 //
 (* ****** ****** *)
@@ -1005,6 +1058,25 @@ print_a09
 , x6, x7
 , x8, x9 ) ; println_a00<>()
 ) (* end of [println_a09] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+println_a10
+( x01, x02
+, x03, x04, x05, x06
+, x07, x08, x09, x10 ) =
+(
+print_a10
+( x01, x02
+, x03, x04, x05, x06
+, x07, x08, x09, x10 ) ; println_a00<>()
+) (* end of [println_a10] *)
 //
 (* ****** ****** *)
 (*

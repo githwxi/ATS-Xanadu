@@ -539,10 +539,17 @@ gseq_append_strm
 //
 (* ****** ****** *)
 //
+(*
+// c0 = cgtz
+// cs = strn
+// cz = gseq(cs)
+*)
 fun
 <cz:t0>
 gseq_concat_strn
   (css: cz): strn_vt
+//
+(* ****** ****** *)
 //
 fun
 <xz:t0>

@@ -30,7 +30,7 @@ optn_vt_cons(  x1  )
 //
 #impltmp
 <a1>
-fproc0_a01(x1) = () where
+gfproc0_a01(x1) = () where
 {
   val () = gl_fproc0<a1>(x1)
 }
@@ -39,7 +39,7 @@ fproc0_a01(x1) = () where
 //
 #impltmp
 <a1><a2>
-fproc0_a02
+gfproc0_a02
 ( x1
 , x2 ) = () where
 {
@@ -52,7 +52,7 @@ fproc0_a02
 #impltmp
 <a1>
 <a2><a3>
-fproc0_a03
+gfproc0_a03
 ( x1
 , x2
 , x3 ) = () where
@@ -67,7 +67,7 @@ fproc0_a03
 #impltmp
 <a1><a2>
 <a3><a4>
-fproc0_a04
+gfproc0_a04
 ( x1
 , x2
 , x3
@@ -85,7 +85,7 @@ fproc0_a04
 <a1>
 <a2><a3>
 <a4><a5>
-fproc0_a05
+gfproc0_a05
 ( x1
 , x2
 , x3
@@ -105,7 +105,7 @@ fproc0_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-fproc0_a06
+gfproc0_a06
 ( x1
 , x2
 , x3
@@ -128,7 +128,7 @@ fproc0_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-fproc0_a07
+gfproc0_a07
 ( x1
 , x2, x3
 , x4, x5
@@ -150,7 +150,7 @@ fproc0_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-fproc0_a08
+gfproc0_a08
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -174,7 +174,7 @@ fproc0_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-fproc0_a09
+gfproc0_a09
 ( x1
 , x2, x3
 , x4, x5
@@ -200,7 +200,7 @@ fproc0_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-fproc0_a10
+gfproc0_a10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -223,7 +223,7 @@ val () = gl_fproc0<a10>(x10)
 //
 #impltmp
 <a1>
-fproc1_a01(x1) = () where
+gfproc1_a01(x1) = () where
 {
   val () = gl_fproc1<a1>(x1)
 }
@@ -232,7 +232,7 @@ fproc1_a01(x1) = () where
 //
 #impltmp
 <a1><a2>
-fproc1_a02
+gfproc1_a02
 ( x1
 , x2 ) = () where
 {
@@ -245,7 +245,7 @@ fproc1_a02
 #impltmp
 <a1>
 <a2><a3>
-fproc1_a03
+gfproc1_a03
 ( x1
 , x2
 , x3 ) = () where
@@ -260,7 +260,7 @@ fproc1_a03
 #impltmp
 <a1><a2>
 <a3><a4>
-fproc1_a04
+gfproc1_a04
 ( x1
 , x2
 , x3
@@ -278,7 +278,7 @@ fproc1_a04
 <a1>
 <a2><a3>
 <a4><a5>
-fproc1_a05
+gfproc1_a05
 ( x1
 , x2
 , x3
@@ -298,7 +298,7 @@ fproc1_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-fproc1_a06
+gfproc1_a06
 ( x1
 , x2
 , x3
@@ -321,7 +321,7 @@ fproc1_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-fproc1_a07
+gfproc1_a07
 ( x1
 , x2, x3
 , x4, x5
@@ -343,7 +343,7 @@ fproc1_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-fproc1_a08
+gfproc1_a08
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -367,7 +367,7 @@ fproc1_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-fproc1_a09
+gfproc1_a09
 ( x1
 , x2, x3
 , x4, x5
@@ -393,7 +393,7 @@ fproc1_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-fproc1_a10
+gfproc1_a10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -424,7 +424,7 @@ Implementing print0/println0
 #impltmp
 <a1>
 print0_a01 =
-fproc0_a01
+gfproc0_a01
 <  a1  > where
 {
 #impltmp
@@ -435,7 +435,7 @@ gl_fproc0<a0> = gl_print0<a0>
 #impltmp
 <a1><a2>
 print0_a02 =
-fproc0_a02
+gfproc0_a02
 <a1><a2> where
 {
 #impltmp
@@ -447,7 +447,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a1>
 <a2><a3>
 print0_a03 =
-fproc0_a03
+gfproc0_a03
 <a1>
 <a2><a3> where
 {
@@ -460,7 +460,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a1><a2>
 <a3><a4>
 print0_a04 =
-fproc0_a04
+gfproc0_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -474,7 +474,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a2><a3>
 <a4><a5>
 print0_a05 =
-fproc0_a05
+gfproc0_a05
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -489,7 +489,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a3><a4>
 <a5><a6>
 print0_a06 =
-fproc0_a06
+gfproc0_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -505,7 +505,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a4><a5>
 <a6><a7>
 print0_a07 =
-fproc0_a07
+gfproc0_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -522,7 +522,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a5><a6>
 <a7><a8>
 print0_a08 =
-fproc0_a08
+gfproc0_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -540,7 +540,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a6><a7>
 <a8><a9>
 print0_a09 =
-fproc0_a09
+gfproc0_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -550,6 +550,25 @@ fproc0_a09
 #impltmp
 {a0:vt}
 gl_fproc0<a0> = gl_print0<a0>
+}
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+print0_a10 =
+gfproc0_a10
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10> where
+{
+#impltmp
+{a00:vt}
+gl_fproc0<a00> = gl_print0<a00>
 }
 //
 (* ****** ****** *)
@@ -717,6 +736,27 @@ print0_a09
 //
 (* ****** ****** *)
 //
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+println0_a10
+( x01
+, x02, x03, x04
+, x05, x06, x07
+, x08, x09, x10 ) =
+(
+print0_a10
+( x01
+, x02, x03, x04
+, x05, x06, x07
+, x08, x09, x10 ) ; println0_a00<>()
+) (* end of [println0_a10] *)
+//
+(* ****** ****** *)
+//
 (*
 HX:
 Implementing print1/println1
@@ -727,7 +767,7 @@ Implementing print1/println1
 #impltmp
 <a1>
 print1_a01 =
-fproc1_a01
+gfproc1_a01
 <  a1  > where
 {
 #impltmp
@@ -738,7 +778,7 @@ gl_fproc1<a0> = gl_print1<a0>
 #impltmp
 <a1><a2>
 print1_a02 =
-fproc1_a02
+gfproc1_a02
 <a1><a2> where
 {
 #impltmp
@@ -750,7 +790,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a1>
 <a2><a3>
 print1_a03 =
-fproc1_a03
+gfproc1_a03
 <a1>
 <a2><a3> where
 {
@@ -763,7 +803,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a1><a2>
 <a3><a4>
 print1_a04 =
-fproc1_a04
+gfproc1_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -777,7 +817,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a2><a3>
 <a4><a5>
 print1_a05 =
-fproc1_a05
+gfproc1_a05
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -792,7 +832,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a3><a4>
 <a5><a6>
 print1_a06 =
-fproc1_a06
+gfproc1_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -808,7 +848,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a4><a5>
 <a6><a7>
 print1_a07 =
-fproc1_a07
+gfproc1_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -825,7 +865,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a5><a6>
 <a7><a8>
 print1_a08 =
-fproc1_a08
+gfproc1_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -843,7 +883,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a6><a7>
 <a8><a9>
 print1_a09 =
-fproc1_a09
+gfproc1_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -853,6 +893,25 @@ fproc1_a09
 #impltmp
 {a0:vt}
 gl_fproc1<a0> = gl_print1<a0>
+}
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+print1_a10 =
+gfproc1_a10
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10> where
+{
+#impltmp
+{a00:vt}
+gl_fproc1<a00> = gl_print1<a00>
 }
 //
 (* ****** ****** *)
@@ -1017,6 +1076,27 @@ print1_a09
 , x6, x7
 , x8, x9 ) ; println1_a00<>()
 ) (* end of [println1_a09] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a01><a02>
+<a03><a04>
+<a05><a06>
+<a07><a08>
+<a09><a10>
+println1_a10
+( x01
+, x02, x03, x04
+, x05, x06, x07
+, x08, x09, x10 ) =
+(
+print1_a10
+( x01
+, x02, x03, x04
+, x05, x06, x07
+, x08, x09, x10 ) ; println1_a00<>()
+) (* end of [println1_a10] *)
 //
 (* ****** ****** *)
 (*
