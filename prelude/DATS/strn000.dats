@@ -443,6 +443,16 @@ strn_vt2t
 //
 (* ****** ****** *)
 //
+#impltmp<>
+strnlst_concat(css) =
+strn_vt2t
+(strnlst_concat_vt<>(css))
+#impltmp<>
+strnlst_concat_vt(css) =
+gseq_concat_strn<list(strn)>(css)
+//
+(* ****** ****** *)
+//
 #impltmp
 <n>(*tmp*)
 strn_tabulate(n0) =

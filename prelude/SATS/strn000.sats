@@ -309,12 +309,23 @@ strn_make_list_vt
 (cs:list_vt(cgtz, n)): strn(n)
 //
 (* ****** ****** *)
+//
 fun<>
 strn_make_strm
   (cs:strm(cgtz)): strn(*0*)
 fun<>
 strn_make_strm_vt
   (cs:strm_vt(cgtz)): strn(*0*)
+//
+(* ****** ****** *)
+//
+fun<>
+strnlst_concat
+  (css: list(strn)): strn
+fun<>
+strnlst_concat_vt
+  (css: list(strn)): strn_vt
+//
 (* ****** ****** *)
 //
 fun
