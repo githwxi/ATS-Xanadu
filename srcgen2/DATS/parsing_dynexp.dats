@@ -351,7 +351,37 @@ in//let
 (err := e00 + 1; d0pat(tok.lctn(), D0Ptkerr(tok)))
 end (*let*) // end of [ _(*otherwise*) ]
 //
-end (*let*) // end of [p1_atmd0pat(buf,err)]
+end (*let*) // end of [p1_d0pat_atm(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_d0patseq_atm
+  (buf, err) =
+(
+//
+list_vt2t
+(pstar_fun{d0pat}(buf, err, p_atmd0pat))
+//
+) (* end of [p1_d0patseq_atm] *)
+
+(* ****** ****** *)
+//
+#implfun
+p1_d0patseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{d0pat}(buf, err, p1_d0pat))
+) (* end of [p1_d0patseq_COMMA] *)
+
+#implfun
+p_l0d0pseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{l0d0p}(buf, err, p_l0d0p))
+) (* end of [p1_l0d0pseq_COMMA] *)
 
 (* ****** ****** *)
 
