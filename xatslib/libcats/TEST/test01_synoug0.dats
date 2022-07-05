@@ -30,6 +30,14 @@ prerrln
 (* ****** ****** *)
 
 val () =
+prerrln(
+"concat(...) = ",
+gseq_concat_strn
+(list("Hello",",","world","!")))
+
+(* ****** ****** *)
+
+val () =
 prerrInc('A') where
 {
 fun
@@ -79,9 +87,7 @@ prerrln
 val A1 =
 a1ref_make_list
 (list(1,2,3,4,5))
-#impltmp
-{a:vt}
-a1ref_length<a><5>(A1) = 5
+#impltmp{a:vt}a1ref_length<a><5>(A1) = 5
 }
 //
 (* ****** ****** *)
@@ -143,6 +149,21 @@ prerrln0
 val () =
 prerrln0
 ("strx_vt(0,1,2,...) = ", strx_vt_from(0))
+
+(* ****** ****** *)
+
+val xs1 = list(1,2,3,4,5)
+val xs2 =
+(*
+gseq_z2map_list(xs1, xs1)//HX: FIXME!!!
+*)
+gseq_z2map_list
+<list(int),list(int)><int,int>(xs1, xs1)
+where
+{
+#impltmp
+z2map$fopr<int,int><int>(x0, y0) = x0 + y0 }
+val ( ) = prerrln("xs2 = ", xs2)
 
 (* ****** ****** *)
 (*

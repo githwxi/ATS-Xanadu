@@ -41,125 +41,145 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a0:t0>
-max_a02
+gmax_a02
 (x1: a0, x2: a0): a0
 fun
 <a0:t0>
-max_a03
+gmax_a03
 ( x1: a0
 , x2: a0, x3: a0): a0
 fun
 <a0:t0>
-max_a04
+gmax_a04
 ( x1: a0, x2: a0
 , x3: a0, x4: a0): a0
 fun
 <a0:t0>
-max_a05
+gmax_a05
 ( x1: a0
 , x2: a0, x3: a0
 , x4: a0, x5: a0): a0
 fun
 <a0:t0>
-max_a06
+gmax_a06
 ( x1: a0, x2: a0
 , x3: a0, x4: a0
 , x5: a0, x6: a0): a0
 fun
 <a0:t0>
-max_a07
+gmax_a07
 ( x1: a0
 , x2: a0, x3: a0
 , x4: a0, x5: a0
 , x6: a0, x7: a0): a0
 fun
 <a0:t0>
-max_a08
+gmax_a08
 ( x1: a0, x2: a0
 , x3: a0, x4: a0
 , x5: a0, x6: a0
 , x7: a0, x8: a0): a0
 fun
 <a0:t0>
-max_a09
+gmax_a09
 ( x1: a0
 , x2: a0, x3: a0
 , x4: a0, x5: a0
 , x6: a0, x7: a0
 , x8: a0, x9: a0): a0
 //
+fun
+<a0:t0>
+gmax_a10
+( x01: a0, x02: a0
+, x03: a0, x04: a0
+, x05: a0, x06: a0
+, x07: a0, x08: a0
+, x09: a0, x10: a0): a0
+//
 (* ****** ****** *)
 //
-#symload max with max_a02
-#symload max with max_a03
-#symload max with max_a04
-#symload max with max_a05
-#symload max with max_a06
-#symload max with max_a07
-#symload max with max_a08
-#symload max with max_a09
+#symload gmax with gmax_a02
+#symload gmax with gmax_a03
+#symload gmax with gmax_a04
+#symload gmax with gmax_a05
+#symload gmax with gmax_a06
+#symload gmax with gmax_a07
+#symload gmax with gmax_a08
+#symload gmax with gmax_a09
+#symload gmax with gmax_a10
 //
 (* ****** ****** *)
 //
 fun
 <a0:t0>
-min_a02
+gmin_a02
 (x1: a0, x2: a0): a0
 fun
 <a0:t0>
-min_a03
+gmin_a03
 ( x1: a0
 , x2: a0, x3: a0): a0
 fun
 <a0:t0>
-min_a04
+gmin_a04
 ( x1: a0, x2: a0
 , x3: a0, x4: a0): a0
 fun
 <a0:t0>
-min_a05
+gmin_a05
 ( x1: a0
 , x2: a0, x3: a0
 , x4: a0, x5: a0): a0
 fun
 <a0:t0>
-min_a06
+gmin_a06
 ( x1: a0, x2: a0
 , x3: a0, x4: a0
 , x5: a0, x6: a0): a0
 fun
 <a0:t0>
-min_a07
+gmin_a07
 ( x1: a0
 , x2: a0, x3: a0
 , x4: a0, x5: a0
 , x6: a0, x7: a0): a0
 fun
 <a0:t0>
-min_a08
+gmin_a08
 ( x1: a0, x2: a0
 , x3: a0, x4: a0
 , x5: a0, x6: a0
 , x7: a0, x8: a0): a0
 fun
 <a0:t0>
-min_a09
+gmin_a09
 ( x1: a0
 , x2: a0, x3: a0
 , x4: a0, x5: a0
 , x6: a0, x7: a0
 , x8: a0, x9: a0): a0
 //
+fun
+<a0:t0>
+gmin_a10
+( x01: a0, x02: a0
+, x03: a0, x04: a0
+, x05: a0, x06: a0
+, x07: a0, x08: a0
+, x09: a0, x10: a0): a0
+//
 (* ****** ****** *)
 //
-#symload min with min_a02
-#symload min with min_a03
-#symload min with min_a04
-#symload min with min_a05
-#symload min with min_a06
-#symload min with min_a07
-#symload min with min_a08
-#symload min with min_a09
+#symload gmin with gmin_a02
+#symload gmin with gmin_a03
+#symload gmin with gmin_a04
+#symload gmin with gmin_a05
+#symload gmin with gmin_a06
+#symload gmin with gmin_a07
+#symload gmin with gmin_a08
+#symload gmin with gmin_a09
+#symload gmin with gmin_a10
 //
 (* ****** ****** *)
 //
@@ -186,7 +206,7 @@ fun
 <a4:vt>
 free_a04
 ( x1: ~a1, x2: ~a2
-, x3: ~a3, x4: ~a4 ) : void
+, x3: ~a3, x4: ~a4 ): void
 fun
 <a1:vt>
 <a2:vt>
@@ -196,7 +216,7 @@ fun
 free_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
-, x4: ~a4, x5: ~a5 ) : void
+, x4: ~a4, x5: ~a5 ): void
 fun
 <a1:vt>
 <a2:vt>
@@ -207,7 +227,7 @@ fun
 free_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
-, x5: ~a5, x6: ~a6 ) : void
+, x5: ~a5, x6: ~a6 ): void
 fun
 <a1:vt>
 <a2:vt>
@@ -220,7 +240,7 @@ free_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
-, x6: ~a6, x7: ~a7 ) : void
+, x6: ~a6, x7: ~a7 ): void
 fun
 <a1:vt>
 <a2:vt>
@@ -234,7 +254,7 @@ free_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
-, x7: ~a7, x8: ~a8 ) : void
+, x7: ~a7, x8: ~a8 ): void
 fun
 <a1:vt>
 <a2:vt>
@@ -250,7 +270,25 @@ free_a09
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
 , x6: ~a6, x7: ~a7
-, x8: ~a8, x9: ~a9 ) : void
+, x8: ~a8, x9: ~a9 ): void
+//
+fun
+<a01:vt>
+<a02:vt>
+<a03:vt>
+<a04:vt>
+<a05:vt>
+<a06:vt>
+<a07:vt>
+<a08:vt>
+<a09:vt>
+<a10:vt>
+free_a10
+(x01: ~a01,x02: ~a02
+,x03: ~a03,x04: ~a04
+,x05: ~a05,x06: ~a06
+,x07: ~a07,x08: ~a08
+,x09: ~a09,x10: ~a10): void
 //
 (* ****** ****** *)
 //
@@ -263,6 +301,7 @@ free_a09
 #symload free with free_a07
 #symload free with free_a08
 #symload free with free_a09
+#symload free with free_a10
 //
 (* ****** ****** *)
 //
@@ -398,23 +437,23 @@ g_fproc(x: a): void
 //
 (*
 fun<>
-fproc_a00
+gfproc_a00
 ((*void*)) : void
 *)
 fun
 <a1:t0>
-fproc_a01
+gfproc_a01
 ( x1: a1 ) : void
 fun
 <a1:t0>
 <a2:t0>
-fproc_a02
+gfproc_a02
 ( x1: a1, x2: a2 ) : void
 fun
 <a1:t0>
 <a2:t0>
 <a3:t0>
-fproc_a03
+gfproc_a03
 ( x1: a1
 , x2: a2, x3: a3 ) : void
 fun
@@ -422,7 +461,7 @@ fun
 <a2:t0>
 <a3:t0>
 <a4:t0>
-fproc_a04
+gfproc_a04
 ( x1: a1, x2: a2
 , x3: a3, x4: a4 ) : void
 fun
@@ -431,7 +470,7 @@ fun
 <a3:t0>
 <a4:t0>
 <a5:t0>
-fproc_a05
+gfproc_a05
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5 ) : void
@@ -442,7 +481,7 @@ fun
 <a4:t0>
 <a5:t0>
 <a6:t0>
-fproc_a06
+gfproc_a06
 ( x1: a1, x2: a2
 , x3: a3, x4: a4
 , x5: a5, x6: a6 ) : void
@@ -454,7 +493,7 @@ fun
 <a5:t0>
 <a6:t0>
 <a7:t0>
-fproc_a07
+gfproc_a07
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5
@@ -468,7 +507,7 @@ fun
 <a6:t0>
 <a7:t0>
 <a8:t0>
-fproc_a08
+gfproc_a08
 ( x1: a1, x2: a2
 , x3: a3, x4: a4
 , x5: a5, x6: a6
@@ -483,7 +522,7 @@ fun
 <a7:t0>
 <a8:t0>
 <a9:t0>
-fproc_a09
+gfproc_a09
 ( x1: a1
 , x2: a2, x3: a3
 , x4: a4, x5: a5
@@ -500,7 +539,7 @@ fun
 <a08:t0>
 <a09:t0>
 <a10:t0>
-fproc_a10
+gfproc_a10
 ( x01: a01, x02: a02
 , x03: a03, x04: a04
 , x05: a05, x06: a06
@@ -508,16 +547,16 @@ fproc_a10
 , x09: a09, x10: a10 ) : void
 (* ****** ****** *)
 //
-#symload fproc with fproc_a01
-#symload fproc with fproc_a02
-#symload fproc with fproc_a03
-#symload fproc with fproc_a04
-#symload fproc with fproc_a05
-#symload fproc with fproc_a06
-#symload fproc with fproc_a07
-#symload fproc with fproc_a08
-#symload fproc with fproc_a09
-#symload fproc with fproc_a10
+#symload gfproc with gfproc_a01
+#symload gfproc with gfproc_a02
+#symload gfproc with gfproc_a03
+#symload gfproc with gfproc_a04
+#symload gfproc with gfproc_a05
+#symload gfproc with gfproc_a06
+#symload gfproc with gfproc_a07
+#symload gfproc with gfproc_a08
+#symload gfproc with gfproc_a09
+#symload gfproc with gfproc_a10
 //
 (* ****** ****** *)
 //
@@ -622,6 +661,25 @@ print_a09
 , x4: a4, x5: a5
 , x6: a6, x7: a7
 , x8: a8, x9: a9 ) : void
+//
+fun
+<a01:t0>
+<a02:t0>
+<a03:t0>
+<a04:t0>
+<a05:t0>
+<a06:t0>
+<a07:t0>
+<a08:t0>
+<a09:t0>
+<a10:t0>
+print_a10
+( x01: a01, x02: a02
+, x03: a03, x04: a04
+, x05: a05, x06: a06
+, x07: a07, x08: a08
+, x09: a09, x10: a10) : void
+//
 (* ****** ****** *)
 //
 #symload print with print_a01
@@ -633,6 +691,7 @@ print_a09
 #symload print with print_a07
 #symload print with print_a08
 #symload print with print_a09
+#symload print with print_a10
 //
 (* ****** ****** *)
 //
@@ -727,6 +786,25 @@ println_a09
 , x4: a4, x5: a5
 , x6: a6, x7: a7
 , x8: a8, x9: a9 ) : void
+//
+fun
+<a01:t0>
+<a02:t0>
+<a03:t0>
+<a04:t0>
+<a05:t0>
+<a06:t0>
+<a07:t0>
+<a08:t0>
+<a09:t0>
+<a10:t0>
+println_a10
+( x01: a01, x02: a02
+, x03: a03, x04: a04
+, x05: a05, x06: a06
+, x07: a07, x08: a08
+, x09: a09, x10: a10) : void
+//
 (* ****** ****** *)
 //
 #symload println with println_a00
@@ -739,6 +817,7 @@ println_a09
 #symload println with println_a07
 #symload println with println_a08
 #symload println with println_a09
+#symload println with println_a10
 //
 (* ****** ****** *)
 (*
