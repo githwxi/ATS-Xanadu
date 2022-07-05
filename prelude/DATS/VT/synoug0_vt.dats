@@ -30,7 +30,7 @@ optn_vt_cons(  x1  )
 //
 #impltmp
 <a1>
-gfproc0_a01(x1) = () where
+glfproc0_a01(x1) = () where
 {
   val () = gl_fproc0<a1>(x1)
 }
@@ -39,7 +39,7 @@ gfproc0_a01(x1) = () where
 //
 #impltmp
 <a1><a2>
-gfproc0_a02
+glfproc0_a02
 ( x1
 , x2 ) = () where
 {
@@ -52,7 +52,7 @@ gfproc0_a02
 #impltmp
 <a1>
 <a2><a3>
-gfproc0_a03
+glfproc0_a03
 ( x1
 , x2
 , x3 ) = () where
@@ -67,7 +67,7 @@ gfproc0_a03
 #impltmp
 <a1><a2>
 <a3><a4>
-gfproc0_a04
+glfproc0_a04
 ( x1
 , x2
 , x3
@@ -85,7 +85,7 @@ gfproc0_a04
 <a1>
 <a2><a3>
 <a4><a5>
-gfproc0_a05
+glfproc0_a05
 ( x1
 , x2
 , x3
@@ -105,7 +105,7 @@ gfproc0_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gfproc0_a06
+glfproc0_a06
 ( x1
 , x2
 , x3
@@ -128,7 +128,7 @@ gfproc0_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gfproc0_a07
+glfproc0_a07
 ( x1
 , x2, x3
 , x4, x5
@@ -150,7 +150,7 @@ gfproc0_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gfproc0_a08
+glfproc0_a08
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -174,7 +174,7 @@ gfproc0_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gfproc0_a09
+glfproc0_a09
 ( x1
 , x2, x3
 , x4, x5
@@ -200,7 +200,7 @@ gfproc0_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gfproc0_a10
+glfproc0_a10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -223,7 +223,7 @@ val () = gl_fproc0<a10>(x10)
 //
 #impltmp
 <a1>
-gfproc1_a01(x1) = () where
+glfproc1_a01(x1) = () where
 {
   val () = gl_fproc1<a1>(x1)
 }
@@ -232,7 +232,7 @@ gfproc1_a01(x1) = () where
 //
 #impltmp
 <a1><a2>
-gfproc1_a02
+glfproc1_a02
 ( x1
 , x2 ) = () where
 {
@@ -245,7 +245,7 @@ gfproc1_a02
 #impltmp
 <a1>
 <a2><a3>
-gfproc1_a03
+glfproc1_a03
 ( x1
 , x2
 , x3 ) = () where
@@ -260,7 +260,7 @@ gfproc1_a03
 #impltmp
 <a1><a2>
 <a3><a4>
-gfproc1_a04
+glfproc1_a04
 ( x1
 , x2
 , x3
@@ -278,7 +278,7 @@ gfproc1_a04
 <a1>
 <a2><a3>
 <a4><a5>
-gfproc1_a05
+glfproc1_a05
 ( x1
 , x2
 , x3
@@ -298,7 +298,7 @@ gfproc1_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gfproc1_a06
+glfproc1_a06
 ( x1
 , x2
 , x3
@@ -321,7 +321,7 @@ gfproc1_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gfproc1_a07
+glfproc1_a07
 ( x1
 , x2, x3
 , x4, x5
@@ -343,7 +343,7 @@ gfproc1_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gfproc1_a08
+glfproc1_a08
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -367,7 +367,7 @@ gfproc1_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gfproc1_a09
+glfproc1_a09
 ( x1
 , x2, x3
 , x4, x5
@@ -393,7 +393,7 @@ gfproc1_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gfproc1_a10
+glfproc1_a10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -424,7 +424,7 @@ Implementing print0/println0
 #impltmp
 <a1>
 print0_a01 =
-gfproc0_a01
+glfproc0_a01
 <  a1  > where
 {
 #impltmp
@@ -435,7 +435,7 @@ gl_fproc0<a0> = gl_print0<a0>
 #impltmp
 <a1><a2>
 print0_a02 =
-gfproc0_a02
+glfproc0_a02
 <a1><a2> where
 {
 #impltmp
@@ -447,7 +447,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a1>
 <a2><a3>
 print0_a03 =
-gfproc0_a03
+glfproc0_a03
 <a1>
 <a2><a3> where
 {
@@ -460,7 +460,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a1><a2>
 <a3><a4>
 print0_a04 =
-gfproc0_a04
+glfproc0_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -474,7 +474,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a2><a3>
 <a4><a5>
 print0_a05 =
-gfproc0_a05
+glfproc0_a05
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -489,7 +489,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a3><a4>
 <a5><a6>
 print0_a06 =
-gfproc0_a06
+glfproc0_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -505,7 +505,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a4><a5>
 <a6><a7>
 print0_a07 =
-gfproc0_a07
+glfproc0_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -522,7 +522,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a5><a6>
 <a7><a8>
 print0_a08 =
-gfproc0_a08
+glfproc0_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -540,7 +540,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a6><a7>
 <a8><a9>
 print0_a09 =
-gfproc0_a09
+glfproc0_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -559,7 +559,7 @@ gl_fproc0<a0> = gl_print0<a0>
 <a07><a08>
 <a09><a10>
 print0_a10 =
-gfproc0_a10
+glfproc0_a10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -767,7 +767,7 @@ Implementing print1/println1
 #impltmp
 <a1>
 print1_a01 =
-gfproc1_a01
+glfproc1_a01
 <  a1  > where
 {
 #impltmp
@@ -778,7 +778,7 @@ gl_fproc1<a0> = gl_print1<a0>
 #impltmp
 <a1><a2>
 print1_a02 =
-gfproc1_a02
+glfproc1_a02
 <a1><a2> where
 {
 #impltmp
@@ -790,7 +790,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a1>
 <a2><a3>
 print1_a03 =
-gfproc1_a03
+glfproc1_a03
 <a1>
 <a2><a3> where
 {
@@ -803,7 +803,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a1><a2>
 <a3><a4>
 print1_a04 =
-gfproc1_a04
+glfproc1_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -817,7 +817,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a2><a3>
 <a4><a5>
 print1_a05 =
-gfproc1_a05
+glfproc1_a05
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -832,7 +832,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a3><a4>
 <a5><a6>
 print1_a06 =
-gfproc1_a06
+glfproc1_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -848,7 +848,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a4><a5>
 <a6><a7>
 print1_a07 =
-gfproc1_a07
+glfproc1_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -865,7 +865,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a5><a6>
 <a7><a8>
 print1_a08 =
-gfproc1_a08
+glfproc1_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -883,7 +883,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a6><a7>
 <a8><a9>
 print1_a09 =
-gfproc1_a09
+glfproc1_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -902,7 +902,7 @@ gl_fproc1<a0> = gl_print1<a0>
 <a07><a08>
 <a09><a10>
 print1_a10 =
-gfproc1_a10
+glfproc1_a10
 <a01><a02>
 <a03><a04>
 <a05><a06>

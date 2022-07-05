@@ -30,7 +30,7 @@ Implementing prout0/proutln0
 #impltmp
 <a1>
 prout0_a01 =
-gfproc0_a01
+glfproc0_a01
 <  a1  > where
 {
 #impltmp
@@ -41,7 +41,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 #impltmp
 <a1><a2>
 prout0_a02 =
-gfproc0_a02
+glfproc0_a02
 <a1><a2> where
 {
 #impltmp
@@ -53,7 +53,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a1>
 <a2><a3>
 prout0_a03 =
-gfproc0_a03
+glfproc0_a03
 <a1>
 <a2><a3> where
 {
@@ -66,7 +66,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a1><a2>
 <a3><a4>
 prout0_a04 =
-gfproc0_a04
+glfproc0_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -80,7 +80,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a2><a3>
 <a4><a5>
 prout0_a05 =
-gfproc0_a05
+glfproc0_a05
 <a1><a2>
 <a3><a4><a5> where
 {
@@ -94,7 +94,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a3><a4>
 <a5><a6>
 prout0_a06 =
-gfproc0_a06
+glfproc0_a06
 <a1><a2><a3>
 <a4><a5><a6> where
 {
@@ -109,7 +109,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a4><a5>
 <a6><a7>
 prout0_a07 =
-gfproc0_a07
+glfproc0_a07
 <a1>
 <a2><a3><a4>
 <a5><a6><a7> where
@@ -125,7 +125,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a5><a6>
 <a7><a8>
 prout0_a08 =
-gfproc0_a08
+glfproc0_a08
 <a1><a2>
 <a3><a4><a5>
 <a6><a7><a8> where
@@ -142,7 +142,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a6><a7>
 <a8><a9>
 prout0_a09 =
-gfproc0_a09
+glfproc0_a09
 <a1><a2><a3>
 <a4><a5><a6>
 <a7><a8><a9> where
@@ -159,7 +159,7 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a07><a08>
 <a09><a10>
 prout0_a10 =
-gfproc0_a10
+glfproc0_a10
 <a01>
 <a02><a03><a04>
 <a05><a06><a07>
@@ -354,7 +354,7 @@ Implementing prout1/proutln1
 #impltmp
 <a1>
 prout1_a01 =
-gfproc1_a01
+glfproc1_a01
 <  a1  > where
 {
 #impltmp
@@ -365,7 +365,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 #impltmp
 <a1><a2>
 prout1_a02 =
-gfproc1_a02
+glfproc1_a02
 <a1><a2> where
 {
 #impltmp
@@ -377,7 +377,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a1>
 <a2><a3>
 prout1_a03 =
-gfproc1_a03
+glfproc1_a03
 <a1>
 <a2><a3> where
 {
@@ -390,7 +390,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a1><a2>
 <a3><a4>
 prout1_a04 =
-gfproc1_a04
+glfproc1_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -404,7 +404,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a2><a3>
 <a4><a5>
 prout1_a05 =
-gfproc1_a05
+glfproc1_a05
 <a1><a2>
 <a3><a4><a5> where
 {
@@ -418,7 +418,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a3><a4>
 <a5><a6>
 prout1_a06 =
-gfproc1_a06
+glfproc1_a06
 <a1><a2><a3>
 <a4><a5><a6> where
 {
@@ -433,7 +433,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a4><a5>
 <a6><a7>
 prout1_a07 =
-gfproc1_a07
+glfproc1_a07
 <a1>
 <a2><a3><a4>
 <a5><a6><a7> where
@@ -449,7 +449,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a5><a6>
 <a7><a8>
 prout1_a08 =
-gfproc1_a08
+glfproc1_a08
 <a1><a2>
 <a3><a4><a5>
 <a6><a7><a8> where
@@ -466,7 +466,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a6><a7>
 <a8><a9>
 prout1_a09 =
-gfproc1_a09
+glfproc1_a09
 <a1><a2><a3>
 <a4><a5><a6>
 <a7><a8><a9> where
@@ -483,7 +483,7 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a07><a08>
 <a09><a10>
 prout1_a10 =
-gfproc1_a10
+glfproc1_a10
 <a01>
 <a02><a03><a04>
 <a05><a06><a07>
@@ -697,7 +697,7 @@ prerr0/prerrln0-implementation
 #impltmp
 <a1>
 prerr0_a01 =
-gfproc0_a01
+glfproc0_a01
 <  a1  > where
 {
 #impltmp
@@ -708,7 +708,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 #impltmp
 <a1><a2>
 prerr0_a02 =
-gfproc0_a02
+glfproc0_a02
 <a1><a2> where
 {
 #impltmp
@@ -720,7 +720,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a1>
 <a2><a3>
 prerr0_a03 =
-gfproc0_a03
+glfproc0_a03
 <a1>
 <a2><a3> where
 {
@@ -733,7 +733,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a1><a2>
 <a3><a4>
 prerr0_a04 =
-gfproc0_a04
+glfproc0_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -747,7 +747,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a2><a3>
 <a4><a5>
 prerr0_a05 =
-gfproc0_a05
+glfproc0_a05
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -762,7 +762,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a3><a4>
 <a5><a6>
 prerr0_a06 =
-gfproc0_a06
+glfproc0_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -778,7 +778,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a4><a5>
 <a6><a7>
 prerr0_a07 =
-gfproc0_a07
+glfproc0_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -795,7 +795,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a5><a6>
 <a7><a8>
 prerr0_a08 =
-gfproc0_a08
+glfproc0_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -813,7 +813,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a6><a7>
 <a8><a9>
 prerr0_a09 =
-gfproc0_a09
+glfproc0_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -832,7 +832,7 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a07><a08>
 <a09><a10>
 prerr0_a10 =
-gfproc0_a10
+glfproc0_a10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -915,7 +915,7 @@ prerr1/prerrln1-implementation
 #impltmp
 <a1>
 prerr1_a01 =
-gfproc1_a01
+glfproc1_a01
 <  a1  > where
 {
 #impltmp
@@ -926,7 +926,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 #impltmp
 <a1><a2>
 prerr1_a02 =
-gfproc1_a02
+glfproc1_a02
 <a1><a2> where
 {
 #impltmp
@@ -938,7 +938,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a1>
 <a2><a3>
 prerr1_a03 =
-gfproc1_a03
+glfproc1_a03
 <a1>
 <a2><a3> where
 {
@@ -951,7 +951,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a1><a2>
 <a3><a4>
 prerr1_a04 =
-gfproc1_a04
+glfproc1_a04
 <a1><a2>
 <a3><a4> where
 {
@@ -965,7 +965,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a2><a3>
 <a4><a5>
 prerr1_a05 =
-gfproc1_a05
+glfproc1_a05
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -980,7 +980,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a3><a4>
 <a5><a6>
 prerr1_a06 =
-gfproc1_a06
+glfproc1_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -996,7 +996,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a4><a5>
 <a6><a7>
 prerr1_a07 =
-gfproc1_a07
+glfproc1_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -1013,7 +1013,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a5><a6>
 <a7><a8>
 prerr1_a08 =
-gfproc1_a08
+glfproc1_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -1031,7 +1031,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a6><a7>
 <a8><a9>
 prerr1_a09 =
-gfproc1_a09
+glfproc1_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -1050,7 +1050,7 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a07><a08>
 <a09><a10>
 prerr1_a10 =
-gfproc1_a10
+glfproc1_a10
 <a01><a02>
 <a03><a04>
 <a05><a06>
