@@ -378,7 +378,7 @@ d0pat_node =
 //
 | D0Papps of d0patlst
 //
-| D0Psqarg of//sqparg
+| D0Psqarg of//sqarg
     (token, s0arglst, token)
   // end of [D0Psqarg]
 //

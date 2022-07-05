@@ -227,8 +227,18 @@ d0pat_node =
 //
 | D0Papps of d0patlst
 //
+| D0Psqarg of
+  (token(*LB*), s0arglst, token)
+// end of [D0Psqarg]
 | D0Plpar of
   (token, d0patlst, d0pat_RPAREN)
+//
+| D0Ptup1 of
+  (token, tokenopt, d0patlst, d0pat_RPAREN)
+| D0Prcd2 of
+  (token, tokenopt, l0d0plst, l0d0p_RBRACE)
+//
+| D0Pqual of (token, d0pat) // HX: qual-d0pat
 //
 |
 (*
