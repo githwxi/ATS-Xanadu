@@ -1322,5 +1322,82 @@ strn_vt_glappend1_a10
 #symload glappend1 with strn_vt_glappend1_a10
 //
 (* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 19:09:52 EDT 2022
+*)
+//
+fun
+<a0:vt>
+list_vt_glappend0_a02
+( ~list_vt(a0)
+, ~list_vt(a0) ): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend0_a03
+( ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend0_a04
+( ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend0_a05
+( ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend0_a06
+( ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend0_a07
+( ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend0_a08
+( ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend0_a09
+( ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend0_a10
+( ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)
+, ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
+//
+(* ****** ****** *)
+//
+#symload glappend0 with list_vt_glappend0_a02
+#symload glappend0 with list_vt_glappend0_a03
+#symload glappend0 with list_vt_glappend0_a04
+#symload glappend0 with list_vt_glappend0_a05
+#symload glappend0 with list_vt_glappend0_a06
+#symload glappend0 with list_vt_glappend0_a07
+#symload glappend0 with list_vt_glappend0_a08
+#symload glappend0 with list_vt_glappend0_a09
+#symload glappend0 with list_vt_glappend0_a10
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_synoug0_vt.sats] *)
