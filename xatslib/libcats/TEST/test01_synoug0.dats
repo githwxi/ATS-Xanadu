@@ -365,4 +365,14 @@ prerrln
 
 (* ****** ****** *)
 
+val ab = strn_vt("ab")
+val cd = strn_vt("cd")
+val ef = strn_vt("ef")
+val () = prerrln("ab = ", ab)
+val () = prerrln("cd = ", cd)
+val () = prerrln("ef = ", ef)
+val () = prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
+
+(* ****** ****** *)
+
 (* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)

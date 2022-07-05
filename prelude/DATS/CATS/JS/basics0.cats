@@ -737,15 +737,6 @@ return cs.charCodeAt(i0);
 }
 /* ****** ****** */
 function
-XATS2JS_strtmp_vt_alloc
-  (bsz)
-{
-  let
-  cs =
-  new Array(bsz+1);
-  cs[bsz] = 0; return cs;
-}
-function
 XATS2JS_strn_vt_get_at
   (cs, i0)
 {
@@ -753,11 +744,24 @@ XATS2JS_strn_vt_get_at
   //cs:JS_array(char)
 }
 function
-XATS2JS_strtmp_vt_set_at
+XATS2JS_strn_vt_set_at
   (cs, i0, c0)
 {
   return (cs[i0] = c0);
 }
+/* ****** ****** */
+function
+XATS2JS_strtmp_vt_alloc
+  (bsz)
+{
+let
+cs =
+new Array(bsz+1);
+cs[bsz] = 0; return cs; }
+function
+XATS2JS_strtmp_vt_set_at
+  (cs, i0, c0)
+{ return (cs[i0] = c0); }
 /* ****** ****** */
 function
 XATS2JS_strn_forall_cfr

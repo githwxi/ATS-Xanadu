@@ -102,9 +102,12 @@ which itself is just a no-op.
 //
 #absvwtp
 strtmp_i0_vx(n:int) <= p0tr
+//
+(* ****** ****** *)
+//
 #vwtpdef
 strtmp0_vt =
-[n:int] strtmp_i0_vx(n)
+[n: int] strtmp_i0_vx(n)
 #vwtpdef
 strtmp1_vt
 (n: int) = strtmp_i0_vx( n )
@@ -112,7 +115,7 @@ strtmp1_vt
 (* ****** ****** *)
 //
 #vwtpdef
-strtmp_vt = strtmp0_vt
+strtmp_vt(*nil*) = strtmp0_vt
 #vwtpdef
 strtmp_vt(n:int) = strtmp1_vt(n)
 //
@@ -174,25 +177,18 @@ strn_vt_get_at
 ! strn_vt(n), i0: int(i)): cgtz
 //
 fun<>
-strtmp_vt_set_at
-{n:int}
-{i:nat|i < n}
-( p0:
-! strtmp_vt(n), i0: int(i), c0: cgtz): void
-fun<>
 strn_vt_set_at
 {n:int}
 {i:nat|i < n}
 ( p0:
 ! strn_vt(n), i0: int(i), c0: cgtz): void
 //
-(* ****** ****** *)
-//
 fun<>
-strn_append_vt
-{m,n:int}
-( strn(m)
-, strn(n)): strn_vt(m+n)
+strtmp_vt_set_at
+{n:int}
+{i:nat|i < n}
+( p0:
+! strtmp_vt(n), i0: int(i), c0: cgtz): void
 //
 (* ****** ****** *)
 //
@@ -208,10 +204,6 @@ strn_vt_append1
 , !strn_vt(n)): strn_vt(m+n)
 //
 (* ****** ****** *)
-fun<>
-strn_reverse_vt
-{n:int}
-(cs: strn(n)): strn_vt(n)
 fun<>
 strn_vt_reverse0
 {n:int}
@@ -311,13 +303,15 @@ strn_vt_free(strn_vt): void
 (* ****** ****** *)
 //
 fun<>
-strn_copy_vt
-{n:int}(strn(n)): strn_vt(n)
-//
-fun<>
 strn_vt_copy
 {n:int}
 (cs: !strn_vt(n)): strn_vt(n)
+//
+(* ****** ****** *)
+//
+fun<>
+strn_vt_make_strn
+{n:int}(cs:strn(n)): strn_vt(n)
 //
 (* ****** ****** *)
 //
@@ -380,9 +374,22 @@ strn_vt_upper
 //
 (* ****** ****** *)
 //
-// HX-2020-05-30:
-// symbol overloading for strn
+(*
+HX-2020-05-30:
+symbol overloading for strn_vt
+*)
 //
+(* ****** ****** *)
+#symload
+strn_vt with strn_copy_vt
+#symload
+strn_vt with strn_make_list
+#symload
+strn_vt with strn_make_list_vt
+#symload
+strn_vt with strn_make_strm
+#symload
+strn_vt with strn_make_strm_vt
 (* ****** ****** *)
 //
 #symload

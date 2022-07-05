@@ -255,11 +255,23 @@ strn_append
 ( xs: strn(m)
 , ys: strn(n)): strn(m+n)
 //
+fun<>
+strn_append_vt
+{m,n:int}
+( xs: strn(m)
+, ys: strn(n)): strn_vt(m+n)
+//
 (* ****** ****** *)
+//
 fun<>
 strn_reverse
 {n:int}
 ( cs: strn(n) ) : strn(n)
+fun<>
+strn_reverse_vt
+{n:int}
+( cs: strn(n) ) : strn_vt(n)
+//
 (* ****** ****** *)
 //
 fun<>
@@ -296,6 +308,10 @@ strn_rlistize
 fun<>
 strn_copy
 {n:int}(strn(n)): strn(n)
+//
+fun<>
+strn_copy_vt
+{n:int}(strn(n)): strn_vt(n)
 //
 (* ****** ****** *)
 //

@@ -319,6 +319,256 @@ glfproc1_a10
 //
 (* ****** ****** *)
 //
+//HX:
+//implementing fred2
+//
+(* ****** ****** *)
+//
+fun
+<a0:vt>
+gl_fred20(~a0, ~a0): a0
+fun
+<a0:vt>
+gl_fred21(!a0, !a0): a0
+//
+(* ****** ****** *)
+fun
+<a0:vt>
+glfred2l0_a02
+(x1: ~a0, x2: ~a0): a0
+fun
+<a0:vt>
+glfred2l0_a03
+( x1: ~a0
+, x2: ~a0, x3: ~a0): a0
+fun
+<a0:vt>
+glfred2l0_a04
+( x1: ~a0, x2: ~a0
+, x3: ~a0, x4: ~a0): a0
+fun
+<a0:vt>
+glfred2l0_a05
+( x1: ~a0
+, x2: ~a0, x3: ~a0
+, x4: ~a0, x5: ~a0): a0
+fun
+<a0:vt>
+glfred2l0_a06
+( x1: ~a0, x2: ~a0
+, x3: ~a0, x4: ~a0
+, x5: ~a0, x6: ~a0): a0
+fun
+<a0:vt>
+glfred2l0_a07
+( x1: ~a0
+, x2: ~a0, x3: ~a0
+, x4: ~a0, x5: ~a0
+, x6: ~a0, x7: ~a0): a0
+fun
+<a0:vt>
+glfred2l0_a08
+( x1: ~a0, x2: ~a0
+, x3: ~a0, x4: ~a0
+, x5: ~a0, x6: ~a0
+, x7: ~a0, x8: ~a0): a0
+fun
+<a0:vt>
+glfred2l0_a09
+( x1: ~a0
+, x2: ~a0, x3: ~a0
+, x4: ~a0, x5: ~a0
+, x6: ~a0, x7: ~a0
+, x8: ~a0, x9: ~a0): a0
+//
+fun
+<a0:vt>
+glfred2l0_a10
+( x01: ~a0, x02: ~a0
+, x03: ~a0, x04: ~a0
+, x05: ~a0, x06: ~a0
+, x07: ~a0, x08: ~a0
+, x09: ~a0, x10: ~a0): a0
+//
+(* ****** ****** *)
+fun
+<a0:vt>
+glfred2l1_a02
+(x1: !a0, x2: !a0): a0
+fun
+<a0:vt>
+glfred2l1_a03
+( x1: !a0
+, x2: !a0, x3: !a0): a0
+fun
+<a0:vt>
+glfred2l1_a04
+( x1: !a0, x2: !a0
+, x3: !a0, x4: !a0): a0
+fun
+<a0:vt>
+glfred2l1_a05
+( x1: !a0
+, x2: !a0, x3: !a0
+, x4: !a0, x5: !a0): a0
+fun
+<a0:vt>
+glfred2l1_a06
+( x1: !a0, x2: !a0
+, x3: !a0, x4: !a0
+, x5: !a0, x6: !a0): a0
+fun
+<a0:vt>
+glfred2l1_a07
+( x1: !a0
+, x2: !a0, x3: !a0
+, x4: !a0, x5: !a0
+, x6: !a0, x7: !a0): a0
+fun
+<a0:vt>
+glfred2l1_a08
+( x1: !a0, x2: !a0
+, x3: !a0, x4: !a0
+, x5: !a0, x6: !a0
+, x7: !a0, x8: !a0): a0
+fun
+<a0:vt>
+glfred2l1_a09
+( x1: !a0
+, x2: !a0, x3: !a0
+, x4: !a0, x5: !a0
+, x6: !a0, x7: !a0
+, x8: !a0, x9: !a0): a0
+//
+fun
+<a0:vt>
+glfred2l1_a10
+( x01: !a0, x02: !a0
+, x03: !a0, x04: !a0
+, x05: !a0, x06: !a0
+, x07: !a0, x08: !a0
+, x09: !a0, x10: !a0): a0
+//
+(* ****** ****** *)
+fun
+<a0:vt>
+glfred2r0_a02
+(x1: ~a0, x2: ~a0): a0
+fun
+<a0:vt>
+glfred2r0_a03
+( x1: ~a0
+, x2: ~a0, x3: ~a0): a0
+fun
+<a0:vt>
+glfred2r0_a04
+( x1: ~a0, x2: ~a0
+, x3: ~a0, x4: ~a0): a0
+fun
+<a0:vt>
+glfred2r0_a05
+( x1: ~a0
+, x2: ~a0, x3: ~a0
+, x4: ~a0, x5: ~a0): a0
+fun
+<a0:vt>
+glfred2r0_a06
+( x1: ~a0, x2: ~a0
+, x3: ~a0, x4: ~a0
+, x5: ~a0, x6: ~a0): a0
+fun
+<a0:vt>
+glfred2r0_a07
+( x1: ~a0
+, x2: ~a0, x3: ~a0
+, x4: ~a0, x5: ~a0
+, x6: ~a0, x7: ~a0): a0
+fun
+<a0:vt>
+glfred2r0_a08
+( x1: ~a0, x2: ~a0
+, x3: ~a0, x4: ~a0
+, x5: ~a0, x6: ~a0
+, x7: ~a0, x8: ~a0): a0
+fun
+<a0:vt>
+glfred2r0_a09
+( x1: ~a0
+, x2: ~a0, x3: ~a0
+, x4: ~a0, x5: ~a0
+, x6: ~a0, x7: ~a0
+, x8: ~a0, x9: ~a0): a0
+//
+fun
+<a0:vt>
+glfred2r0_a10
+( x01: ~a0, x02: ~a0
+, x03: ~a0, x04: ~a0
+, x05: ~a0, x06: ~a0
+, x07: ~a0, x08: ~a0
+, x09: ~a0, x10: ~a0): a0
+//
+(* ****** ****** *)
+fun
+<a0:vt>
+glfred2r1_a02
+(x1: !a0, x2: !a0): a0
+fun
+<a0:vt>
+glfred2r1_a03
+( x1: !a0
+, x2: !a0, x3: !a0): a0
+fun
+<a0:vt>
+glfred2r1_a04
+( x1: !a0, x2: !a0
+, x3: !a0, x4: !a0): a0
+fun
+<a0:vt>
+glfred2r1_a05
+( x1: !a0
+, x2: !a0, x3: !a0
+, x4: !a0, x5: !a0): a0
+fun
+<a0:vt>
+glfred2r1_a06
+( x1: !a0, x2: !a0
+, x3: !a0, x4: !a0
+, x5: !a0, x6: !a0): a0
+fun
+<a0:vt>
+glfred2r1_a07
+( x1: !a0
+, x2: !a0, x3: !a0
+, x4: !a0, x5: !a0
+, x6: !a0, x7: !a0): a0
+fun
+<a0:vt>
+glfred2r1_a08
+( x1: !a0, x2: !a0
+, x3: !a0, x4: !a0
+, x5: !a0, x6: !a0
+, x7: !a0, x8: !a0): a0
+fun
+<a0:vt>
+glfred2r1_a09
+( x1: !a0
+, x2: !a0, x3: !a0
+, x4: !a0, x5: !a0
+, x6: !a0, x7: !a0
+, x8: !a0, x9: !a0): a0
+//
+fun
+<a0:vt>
+glfred2r1_a10
+( x01: !a0, x02: !a0
+, x03: !a0, x04: !a0
+, x05: !a0, x06: !a0
+, x07: !a0, x08: !a0
+, x09: !a0, x10: !a0): a0
+//
+(* ****** ****** *)
+//
 (*
 HX:
 for overloading
@@ -948,6 +1198,65 @@ fun
 strx_vt_print0_begendseprst
 ( xs: ~strx_vt(a0)
 , xbeg: strn, xend: strn, xsep: strn, xrst: strn): void
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 15:08:37 EDT 2022
+*)
+//
+fun<>
+strn_vt_glappend0_a02
+( ~strn_vt
+, ~strn_vt ): strn_vt
+fun<>
+strn_vt_glappend0_a03
+( ~strn_vt
+, ~strn_vt, ~strn_vt): strn_vt
+fun<>
+strn_vt_glappend0_a04
+( ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt): strn_vt
+fun<>
+strn_vt_glappend0_a05
+( ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
+fun<>
+strn_vt_glappend0_a06
+( ~strn_vt, ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
+fun<>
+strn_vt_glappend0_a07
+( ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
+fun<>
+strn_vt_glappend0_a08
+( ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
+fun<>
+strn_vt_glappend0_a09
+( ~strn_vt, ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
+fun<>
+strn_vt_glappend0_a10
+( ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt
+, ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
+//
+#symload glappend0 with strn_vt_glappend0_a02
+#symload glappend0 with strn_vt_glappend0_a03
+#symload glappend0 with strn_vt_glappend0_a04
+#symload glappend0 with strn_vt_glappend0_a05
+#symload glappend0 with strn_vt_glappend0_a06
+#symload glappend0 with strn_vt_glappend0_a07
+#symload glappend0 with strn_vt_glappend0_a08
+#symload glappend0 with strn_vt_glappend0_a09
+#symload glappend0 with strn_vt_glappend0_a10
 //
 (* ****** ****** *)
 

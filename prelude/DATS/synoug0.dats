@@ -847,6 +847,8 @@ in//let
 f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
 end (*let*) // end of [gfred2l_a09]
 //
+(* ****** ****** *)
+//
 #impltmp
 <a0>
 gfred2l_a10
@@ -928,6 +930,66 @@ g_fred2<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,x6)))))
 end (*let*) // end of [gfred2r_a06]
+#impltmp
+<a0>
+gfred2r_a07
+( x1
+, x2, x3
+, x4, x5
+, x6, x7) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,x7))))))
+end (*let*) // end of [gfred2r_a07]
+#impltmp
+<a0>
+gfred2r_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,x8)))))))
+end (*let*) // end of [gfred2r_a08]
+#impltmp
+<a0>
+gfred2r_a09
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,f0(x8,x9))))))))
+end (*let*) // end of [gfred2r_a09]
+(* ****** ****** *)
+#impltmp
+<a0>
+gfred2r_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(x01,f0(x02,
+f0(x03,f0(x04,f0(x05,f0(x06,f0(x07,f0(x08,f0(x09,x10)))))))))
+end (*let*) // end of [gfred2r_a10]
 (* ****** ****** *)
 //
 (*

@@ -413,6 +413,504 @@ val () = gl_fproc1<a10>(x10)
 }
 //
 (* ****** ****** *)
+(*
+HX: implementing glfred2l0
+Tue Jul  5 16:35:26 EDT 2022
+*)
+(* ****** ****** *)
+//
+#impltmp
+<a0>
+glfred2l0_a02
+(x1, x2) =
+(
+gl_fred20<a0>(x1, x2)
+) (* end of [glfred2l0_a02] *)
+#impltmp
+<a0>
+glfred2l0_a03
+( x1
+, x2, x3) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [glfred2l0_a03]
+#impltmp
+<a0>
+glfred2l0_a04
+( x1, x2
+, x3, x4) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(f0(f0(x1,x2),x3),x4)
+end (*let*) // end of [glfred2l0_a04]
+#impltmp
+<a0>
+glfred2l0_a05
+( x1
+, x2, x3
+, x4, x5) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
+end (*let*) // end of [glfred2l0_a05]
+#impltmp
+<a0>
+glfred2l0_a06
+( x1, x2
+, x3, x4
+, x5, x6) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
+end (*let*) // end of [glfred2l0_a06]
+#impltmp
+<a0>
+glfred2l0_a07
+( x1
+, x2, x3
+, x4, x5
+, x6, x7) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [glfred2l0_a07]
+#impltmp
+<a0>
+glfred2l0_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [glfred2l0_a08]
+#impltmp
+<a0>
+glfred2l0_a09
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [glfred2l0_a09]
+//
+#impltmp
+<a0>
+glfred2l0_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(
+f0(f0(f0(f0(f0(x01,x02),x03),x04),x05),x06),x07),x08),x09),x10)
+end (*let*) // end of [glfred2l0_a10]
+//
+(* ****** ****** *)
+(*
+HX: implementing glfred2l1
+Tue Jul  5 16:37:10 EDT 2022
+*)
+(* ****** ****** *)
+//
+#impltmp
+<a0>
+glfred2l1_a02
+(x1, x2) =
+(
+gl_fred20<a0>(x1, x2)
+) (* end of [glfred2l1_a02] *)
+#impltmp
+<a0>
+glfred2l1_a03
+( x1
+, x2, x3) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [glfred2l1_a03]
+#impltmp
+<a0>
+glfred2l1_a04
+( x1, x2
+, x3, x4) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(f0(f0(x1,x2),x3),x4)
+end (*let*) // end of [glfred2l1_a04]
+#impltmp
+<a0>
+glfred2l1_a05
+( x1
+, x2, x3
+, x4, x5) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
+end (*let*) // end of [glfred2l1_a05]
+#impltmp
+<a0>
+glfred2l1_a06
+( x1, x2
+, x3, x4
+, x5, x6) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
+end (*let*) // end of [glfred2l1_a06]
+#impltmp
+<a0>
+glfred2l1_a07
+( x1
+, x2, x3
+, x4, x5
+, x6, x7) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [glfred2l1_a07]
+#impltmp
+<a0>
+glfred2l1_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [glfred2l1_a08]
+#impltmp
+<a0>
+glfred2l1_a09
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [glfred2l1_a09]
+//
+#impltmp
+<a0>
+glfred2l1_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(f0(f0(f0(
+f0(f0(f0(f0(f0(x01,x02),x03),x04),x05),x06),x07),x08),x09),x10)
+end (*let*) // end of [glfred2l1_a10]
+//
+(* ****** ****** *)
+(*
+HX: implementing glfred2r0
+Tue Jul  5 16:45:16 EDT 2022
+*)
+(* ****** ****** *)
+//
+#impltmp
+<a0>
+glfred2r0_a02
+(x1, x2) =
+(
+gl_fred20<a0>(x1, x2)
+) (* end of [glfred2r0_a02] *)
+#impltmp
+<a0>
+glfred2r0_a03
+( x1
+, x2, x3) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(x1, f0(x2, x3))
+end (*let*) // end of [glfred2r0_a03]
+#impltmp
+<a0>
+glfred2r0_a04
+( x1, x2
+, x3, x4) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,x4)))
+end (*let*) // end of [glfred2r0_a04]
+#impltmp
+<a0>
+glfred2r0_a05
+( x1
+, x2, x3
+, x4, x5) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,x5))))
+end (*let*) // end of [glfred2r0_a05]
+#impltmp
+<a0>
+glfred2r0_a06
+( x1, x2
+, x3, x4
+, x5, x6) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,x6)))))
+end (*let*) // end of [glfred2r0_a06]
+#impltmp
+<a0>
+glfred2r0_a07
+( x1
+, x2, x3
+, x4, x5
+, x6, x7) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,x7))))))
+end (*let*) // end of [glfred2r0_a07]
+#impltmp
+<a0>
+glfred2r0_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,x8)))))))
+end (*let*) // end of [glfred2r0_a08]
+#impltmp
+<a0>
+glfred2r0_a09
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,f0(x8,x9))))))))
+end (*let*) // end of [glfred2r0_a09]
+(* ****** ****** *)
+#impltmp
+<a0>
+glfred2r0_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+let
+fun
+f0(x, y) =
+gl_fred20<a0>(x, y)
+in//let
+f0(x01,f0(x02,
+f0(x03,f0(x04,f0(x05,f0(x06,f0(x07,f0(x08,f0(x09,x10)))))))))
+end (*let*) // end of [glfred2r0_a10]
+(* ****** ****** *)
+(*
+HX: implementing glfred2r1
+Tue Jul  5 16:46:17 EDT 2022
+*)
+(* ****** ****** *)
+//
+#impltmp
+<a0>
+glfred2r1_a02
+(x1, x2) =
+(
+gl_fred21<a0>(x1, x2)
+) (* end of [glfred2r1_a02] *)
+#impltmp
+<a0>
+glfred2r1_a03
+( x1
+, x2, x3) =
+let
+fun
+f0(x, y) =
+gl_fred21<a0>(x, y)
+in//let
+  f0(x1, f0(x2, x3))
+end (*let*) // end of [glfred2r1_a03]
+#impltmp
+<a0>
+glfred2r1_a04
+( x1, x2
+, x3, x4) =
+let
+fun
+f0(x, y) =
+gl_fred21<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,x4)))
+end (*let*) // end of [glfred2r1_a04]
+#impltmp
+<a0>
+glfred2r1_a05
+( x1
+, x2, x3
+, x4, x5) =
+let
+fun
+f0(x, y) =
+gl_fred21<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,x5))))
+end (*let*) // end of [glfred2r1_a05]
+#impltmp
+<a0>
+glfred2r1_a06
+( x1, x2
+, x3, x4
+, x5, x6) =
+let
+fun
+f0(x, y) =
+gl_fred21<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,x6)))))
+end (*let*) // end of [glfred2r1_a06]
+#impltmp
+<a0>
+glfred2r1_a07
+( x1
+, x2, x3
+, x4, x5
+, x6, x7) =
+let
+fun
+f0(x, y) =
+gl_fred21<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,x7))))))
+end (*let*) // end of [glfred2r1_a07]
+#impltmp
+<a0>
+glfred2r1_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8) =
+let
+fun
+f0(x, y) =
+gl_fred21<a0>(x, y)
+in//let
+f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,x8)))))))
+end (*let*) // end of [glfred2r1_a08]
+#impltmp
+<a0>
+glfred2r1_a09
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9) =
+let
+fun
+f0(x, y) =
+gl_fred21<a0>(x, y)
+in//let
+f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,f0(x8,x9))))))))
+end (*let*) // end of [glfred2r1_a09]
+(* ****** ****** *)
+#impltmp
+<a0>
+glfred2r1_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+let
+fun
+f0(x, y) =
+gl_fred21<a0>(x, y)
+in//let
+f0(x01,f0(x02,
+f0(x03,f0(x04,f0(x05,f0(x06,f0(x07,f0(x08,f0(x09,x10)))))))))
+end (*let*) // end of [glfred2r1_a10]
+(* ****** ****** *)
 //
 (*
 HX:
@@ -1540,6 +2038,84 @@ strx_vt_print$sep<(*0*)>() = print(xsep)
 #impltmp
 strx_vt_print$rst<(*0*)>() = print(xrst)
 }
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 15:12:21 EDT 2022
+*)
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a02 =
+glfred2r0_a02<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a03 =
+glfred2r0_a03<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a04 =
+glfred2r0_a04<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a05 =
+glfred2r0_a05<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a06 =
+glfred2r0_a06<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a07 =
+glfred2r0_a07<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a08 =
+glfred2r0_a08<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a09 =
+glfred2r0_a09<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend0_a10 =
+glfred2r0_a10<strn_vt> where
+{
+#impltmp
+gl_fred20<strn_vt> = strn_vt_append0<> }
 //
 (* ****** ****** *)
 

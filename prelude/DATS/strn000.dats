@@ -410,19 +410,23 @@ endlet //end-of-(else)//end-of-(if)
 (* ****** ****** *)
 //
 #impltmp<>
+strn_copy_vt(xs) =
+strn_vt_make_strn<>(xs)
+//
+(* ****** ****** *)
+//
+#impltmp<>
 strn_make_list
   (cs) =
 (
 strn_vt2t
-(strn_vt_make_list<>(cs))
-)
+(strn_vt_make_list<>(cs)))
 #impltmp<>
 strn_make_list_vt
   (cs) =
 (
 strn_vt2t
-(strn_vt_make_list_vt<>(cs))
-)
+(strn_vt_make_list_vt<>(cs)))
 //
 (* ****** ****** *)
 //
