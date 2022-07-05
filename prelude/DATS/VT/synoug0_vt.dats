@@ -2118,5 +2118,83 @@ glfred2r0_a10<strn_vt> where
 gl_fred20<strn_vt> = strn_vt_append0<> }
 //
 (* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 18:30:51 EDT 2022
+*)
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a02 =
+glfred2r1_a02<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a03 =
+glfred2r1_a03<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a04 =
+glfred2r1_a04<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a05 =
+glfred2r1_a05<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a06 =
+glfred2r1_a06<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a07 =
+glfred2r1_a07<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a08 =
+glfred2r1_a08<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a09 =
+glfred2r1_a09<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_glappend1_a10 =
+glfred2r1_a10<strn_vt> where
+{
+#impltmp
+gl_fred21<strn_vt> = strn_vt_append1<> }
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_synoug0_vt.dats] *)
