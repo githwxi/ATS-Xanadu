@@ -355,4 +355,10 @@ end//local
 //
 (* ****** ****** *)
 
-(* end of [test01_synoug0.dats] *)
+val () =
+prerrln
+("strnlst_concat(...) = ", strnlst_concat(list("a","b","c")))
+
+(* ****** ****** *)
+
+(* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)
