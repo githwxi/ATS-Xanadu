@@ -179,21 +179,13 @@ end // end of [else]
 #impltmp
 <>(*tmp*)
 strn_vt_listize
-  (  cs  ) =
-list_vt_reverse0
-(strn_vt_rlistize<>(cs))
-//
-#impltmp
-<>(*tmp*)
-strn_vt_rlistize
   (  cs  ) = let
 //
-val i0 = 0(*start*)
 val ln = length1(cs)
 val r0 = list_vt_nil()
 //
 in
-auxloop(cs, ln, i0, r0)
+auxloop(cs, ln, ln, r0)
 end where // end of [let]
 {
 //
@@ -212,13 +204,13 @@ auxloop
 : list_vt(cgtz, n) =
 (
 if
-(i0 >= ln)
+(i0 <= 0)
 then r0 else
 let
-val ci = cs[i0]
+val ci = cs[i0-1]
 in//let
 auxloop
-(cs,ln,i0+1,list_vt_cons(ci, r0))
+(cs,ln,i0-1,list_vt_cons(ci, r0))
 end // end of [else] // end-of-[if]
 )
 }(*where*)//end-of-[strn_vt_listize(cs)]
@@ -261,6 +253,47 @@ strmcon_vt_cons(ci,auxmain(cs,ln,i0+1))
 end // end of [else]
 )
 }(*where*)//end-of-[strn_vt_strmize(cs)]
+//
+(* ****** ****** *)
+#impltmp
+<>(*tmp*)
+strn_vt_rlistize
+  (  cs  ) = let
+//
+val i0 = 0(*start*)
+val ln = length1(cs)
+val r0 = list_vt_nil()
+//
+in
+auxloop(cs, ln, i0, r0)
+end where // end of [let]
+{
+//
+#vwtpdef
+clst(i:int) = list_vt(cgtz, i)
+//
+fnx
+auxloop
+{n:int}
+{i:nat|i <= n}
+( cs:
+! strn_vt(n)
+, ln: sint(n)
+, i0: sint(i)
+, r0: clst(i))
+: list_vt(cgtz, n) =
+(
+if
+(i0 >= ln)
+then r0 else
+let
+val ci = cs[i0]
+in//let
+auxloop
+(cs,ln,i0+1,list_vt_cons(ci, r0))
+end // end of [else] // end-of-[if]
+)
+}(*where*)//end-of-[strn_vt_rlistize(cs)]
 //
 (* ****** ****** *)
 #impltmp
