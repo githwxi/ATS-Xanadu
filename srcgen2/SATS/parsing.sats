@@ -305,6 +305,11 @@ fun p1_s0exp: p1_fun(s0exp)
 //
 (* ****** ****** *)
 //
+fun p1_d0pat: p1_fun(d0pat)
+fun p1_d0exp: p1_fun(d0exp)
+//
+(* ****** ****** *)
+//
 (*
 s0tdf ::=
 | sort0
@@ -418,11 +423,6 @@ p1_d0typseq_AND: p1_fun(d0typlst)
 fun
 p1_WHERE_sexpdefseq: p1_fun(d0eclist)
 //
-(* ****** ****** *)
-
-fun p1_d0pat: p1_fun(d0pat)
-fun p1_d0exp: p1_fun(d0exp)
-
 (* ****** ****** *)
 //
 #typedef

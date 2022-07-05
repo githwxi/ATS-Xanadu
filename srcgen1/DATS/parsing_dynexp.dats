@@ -1156,6 +1156,8 @@ case+ tnd1 of
 //
 end // end of [p_d0pat_RPAREN]
 
+(* ****** ****** *)
+
 implement
 p_labd0pat_RBRACE
   (buf, err) = let

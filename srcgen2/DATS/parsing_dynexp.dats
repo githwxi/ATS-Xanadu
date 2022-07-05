@@ -106,6 +106,10 @@ atmd0pat::
 //
 #extern
 fun
+p1_l0d0p: p1_fun(l0d0p)
+//
+#extern
+fun
 p1_d0pat_atm: p1_fun(d0pat)
 #extern
 fun
@@ -201,18 +205,48 @@ list_nil() =>
 d0pat_anno_opt(d0p1, opt1)
 |
 list_cons _ => let
-  val d0p2 = list_last(dps1)
-  val lres = d0p1.lctn()+d0p2.lctn()
+val d0p2 =
+list_last(dps1)
+val lres =
+d0p1.lctn()+d0p2.lctn()
 in
 d0pat_anno_opt
-(d0pat_make_node(lres, D0Papps(d0ps)), opt1)
+(d0pat(lres, D0Papps(d0ps)), opt1)
 end // end of [list_cons]
 //
 end (* end of [list_cons] *)
 //
-end // end of [let] // end of [p1_d0pat]
+end (* let *) // end of [p1_d0pat]
 //
-endlocal (*local*) // end of [local(p1_d0pat)]
+endloc(*local*) // end of [local(p1_d0pat)]
+
+(* ****** ****** *)
+
+#implfun
+p1_l0d0p(buf, err) =
+let
+//
+val e00 = err
+//
+val lab0 =
+(
+  p1_l0abl(buf, err)
+)
+val teq1 = p1_EQ0(buf, err)
+val d0p2 = p1_d0pat(buf, err)
+//
+(*
+val ( ) =
+println("p1_l0d0p: lab0 = ", lab0)
+val ( ) =
+println("p1_l0d0p: teq1 = ", teq1)
+val ( ) =
+println("p1_l0d0p: d0p2 = ", d0p2)
+*)
+//
+in
+  err := e00; D0LAB(lab0, teq1, d0p2)
+end (*let*) // end of [p1_l0d0p(buf,err)]
 
 (* ****** ****** *)
 
@@ -245,7 +279,7 @@ let
 in
   err := e00
 ; d0pat(i00.lctn(), D0Pint(i00))
-end (*let*) // end of [t0_t0int]
+end (*let*) // end of [t0_t0int(tnd)]
 | _
 when t0_t0chr(tnd) =>
 let
@@ -253,7 +287,7 @@ let
 in
   err := e00
 ; d0pat(c00.lctn(), D0Pchr(c00))
-end (*let*) // end of [t0_t0chr]
+end (*let*) // end of [t0_t0chr(tnd)]
 | _
 when t0_t0flt(tnd) =>
 let
@@ -261,7 +295,7 @@ let
 in
   err := e00
 ; d0pat(f00.lctn(), D0Pflt(f00))
-end (*let*) // end of [t0_t0flt]
+end (*let*) // end of [t0_t0flt(tnd)]
 | _
 when t0_t0str(tnd) =>
 let
@@ -269,7 +303,7 @@ let
 in//let
   err := e00
 ; d0pat(s00.lctn(), D0Pstr(s00))
-end (*let*) // end of [t0_t0str]
+end (*let*) // end of [t0_t0str(tnd)]
 //
 |
 T_LPAREN() =>
@@ -359,10 +393,8 @@ end (*let*) // end of [p1_d0pat_atm(buf,err)]
 p1_d0patseq_atm
   (buf, err) =
 (
-//
 list_vt2t
-(pstar_fun{d0pat}(buf, err, p_atmd0pat))
-//
+(ps_p1fun{d0pat}(buf, err, p1_d0pat_atm))
 ) (* end of [p1_d0patseq_atm] *)
 
 (* ****** ****** *)
@@ -374,14 +406,55 @@ p1_d0patseq_COMMA
 list_vt2t
 (ps_COMMA_p1fun{d0pat}(buf, err, p1_d0pat))
 ) (* end of [p1_d0patseq_COMMA] *)
-
+//
 #implfun
-p_l0d0pseq_COMMA
+p1_l0d0pseq_COMMA
   (buf, err) =
 (
 list_vt2t
-(ps_COMMA_p1fun{l0d0p}(buf, err, p_l0d0p))
+(ps_COMMA_p1fun{l0d0p}(buf, err, p1_l0d0p))
 ) (* end of [p1_l0d0pseq_COMMA] *)
+//
+(* ****** ****** *)
+
+#implfun
+p1_d0pat_RPAREN
+  (buf, err) =
+let
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+in
+//
+case+ tnd of
+|
+T_BAR() =>
+let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val d0ps =
+    p1_d0patseq_COMMA(buf, err)
+  val tend = p1_RPAREN(buf, err)
+in
+  err := e00
+; d0pat_RPAREN_cons1(tbeg, d0ps, tend)
+end (*let*) // end of [ T_BAR() ]
+| 
+_(* non-T_BAR *) =>
+(
+case+ tnd of
+|
+T_RPAREN() =>
+let
+  val () = buf.skip1()
+in
+  err := e00; d0pat_RPAREN_cons0(tok)
+end (*let*) // end of [T_RPAREN]
+|
+_(*non-T_RPAREN*) =>
+(err := e00 + 1; d0pat_RPAREN_cons0(tok)))
+//
+end (*let*) // end of [p_d0pat_RPAREN(buf,err)]
 
 (* ****** ****** *)
 
