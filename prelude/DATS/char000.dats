@@ -68,7 +68,13 @@ char_neq(x1, x2) =
 <>(*tmp*)
 sub_char_char
   (c1, c2) =
-  ( code(c1) - code(c2) )
+( code(c1) - code(c2) )
+//
+#impltmp
+<>(*tmp*)
+add_char_sint
+  (c1, i2) =
+char_make_code(code(c1)+i2)
 //
 (* ****** ****** *)
 

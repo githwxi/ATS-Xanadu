@@ -21,6 +21,24 @@ strm_vt_print$len<>() = 5
 strx_vt_print$len<>() = 10
 //
 (* ****** ****** *)
+val () =
+prerrln
+("3 + -2 = ", 3 + -2)
+val () =
+prerrln
+("3 * -2 = ", 3 * (-2))
+(* ****** ****** *)
+
+val () =
+prerrInc('A') where
+{
+fun
+prerrInc
+(n:char) =
+(prerrln plusOne) where { val plusOne = n+1 }
+}
+
+(* ****** ****** *)
 //
 val () =
 prerrln

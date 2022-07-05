@@ -451,7 +451,7 @@ end (*let*) // end of [T_RPAREN]
 _(*non-T_RPAREN*) =>
 (err := e00 + 1; d0pat_RPAREN_cons0(tok)))
 //
-end (*let*) // end of [p_d0pat_RPAREN(buf,err)]
+end (*let*)//end-of-[p1_d0pat_RPAREN(buf,err)]
 
 (* ****** ****** *)
 
