@@ -740,6 +740,195 @@ val () = g_fproc<a10>(x10)
 }
 //
 (* ****** ****** *)
+(*
+HX: implementing gfred2l
+Tue Jul  5 13:10:52 EDT 2022
+*)
+(* ****** ****** *)
+//
+#impltmp
+<a0>
+gfred2l_a02
+(x1, x2) =
+(
+g_fred2<a0>(x1, x2)
+) (* end of [gfred2l_a02] *)
+#impltmp
+<a0>
+gfred2l_a03
+( x1
+, x2, x3) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [gfred2l_a03]
+#impltmp
+<a0>
+gfred2l_a04
+( x1, x2
+, x3, x4) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+  f0(f0(f0(x1,x2),x3),x4)
+end (*let*) // end of [gfred2l_a04]
+#impltmp
+<a0>
+gfred2l_a05
+( x1
+, x2, x3
+, x4, x5) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
+end (*let*) // end of [gfred2l_a05]
+#impltmp
+<a0>
+gfred2l_a06
+( x1, x2
+, x3, x4
+, x5, x6) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
+end (*let*) // end of [gfred2l_a06]
+#impltmp
+<a0>
+gfred2l_a07
+( x1
+, x2, x3
+, x4, x5
+, x6, x7) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [gfred2l_a07]
+#impltmp
+<a0>
+gfred2l_a08
+( x1, x2
+, x3, x4
+, x5, x6
+, x7, x8) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [gfred2l_a08]
+#impltmp
+<a0>
+gfred2l_a09
+( x1
+, x2, x3
+, x4, x5
+, x6, x7
+, x8, x9) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [gfred2l_a09]
+//
+#impltmp
+<a0>
+gfred2l_a10
+( x01, x02
+, x03, x04
+, x05, x06
+, x07, x08
+, x09, x10) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+f0(f0(f0(f0(
+f0(f0(f0(f0(f0(x01,x02),x03),x04),x05),x06),x07),x08),x09),x10)
+end (*let*) // end of [gfred2l_a10]
+//
+(* ****** ****** *)
+(*
+HX: implementing gfred2r
+Tue Jul  5 13:11:11 EDT 2022
+*)
+(* ****** ****** *)
+//
+#impltmp
+<a0>
+gfred2r_a02
+(x1, x2) =
+(
+g_fred2<a0>(x1, x2)
+) (* end of [gfred2r_a02] *)
+#impltmp
+<a0>
+gfred2r_a03
+( x1
+, x2, x3) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+  f0(x1, f0(x2, x3))
+end (*let*) // end of [gfred2r_a03]
+#impltmp
+<a0>
+gfred2r_a04
+( x1, x2
+, x3, x4) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,x4)))
+end (*let*) // end of [gfred2r_a04]
+#impltmp
+<a0>
+gfred2r_a05
+( x1
+, x2, x3
+, x4, x5) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,x5))))
+end (*let*) // end of [gfred2r_a05]
+#impltmp
+<a0>
+gfred2r_a06
+( x1, x2
+, x3, x4
+, x5, x6) =
+let
+fun
+f0(x, y) =
+g_fred2<a0>(x, y)
+in//let
+  f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,x6)))))
+end (*let*) // end of [gfred2r_a06]
+(* ****** ****** *)
 //
 (*
 HX:
@@ -1589,6 +1778,164 @@ a1ref_print$end<(*0*)>() = print(xend)
 #impltmp
 a1ref_print$sep<(*0*)>() = print(xsep)
 }(*where*)//end(a1ref_print1_begendsep)
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 13:29:33 EDT 2022
+*)
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a02 =
+gfred2r_a02<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a03 =
+gfred2r_a03<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a04 =
+gfred2r_a04<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a05 =
+gfred2r_a05<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a06 =
+gfred2r_a06<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a07 =
+gfred2r_a07<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a08 =
+gfred2r_a08<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a09 =
+gfred2r_a09<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+#impltmp
+<>(*tmp*)
+strn_gappend_a10 =
+gfred2r_a10<strn> where
+{
+#impltmp
+g_fred2<strn> = strn_append<> }
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 13:50:57 EDT 2022
+*)
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a02 =
+gfred2r_a02<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a03 =
+gfred2r_a03<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a04 =
+gfred2r_a04<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a05 =
+gfred2r_a05<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a06 =
+gfred2r_a06<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a07 =
+gfred2r_a07<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a08 =
+gfred2r_a08<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a09 =
+gfred2r_a09<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_gappend_a10 =
+gfred2r_a10<list(a0)> where
+{
+#impltmp
+g_fred2<list(a0)> = list_append<a0> }
 //
 (* ****** ****** *)
 

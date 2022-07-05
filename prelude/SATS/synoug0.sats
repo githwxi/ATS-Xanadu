@@ -426,7 +426,10 @@ list_a10
 #symload list with list_a10
 //
 (* ****** ****** *)
-//HX: implementing fproc
+//
+//HX:
+//implementing fproc
+//
 (* ****** ****** *)
 //
 fun
@@ -557,6 +560,135 @@ gfproc_a10
 #symload gfproc with gfproc_a08
 #symload gfproc with gfproc_a09
 #symload gfproc with gfproc_a10
+//
+(* ****** ****** *)
+//
+//HX:
+//implementing fproc
+//
+(* ****** ****** *)
+//
+fun
+<a0:t0>
+g_fred2(a0, a0): a0
+//
+(* ****** ****** *)
+fun
+<a0:t0>
+gfred2l_a02
+(x1: a0, x2: a0): a0
+fun
+<a0:t0>
+gfred2l_a03
+( x1: a0
+, x2: a0, x3: a0): a0
+fun
+<a0:t0>
+gfred2l_a04
+( x1: a0, x2: a0
+, x3: a0, x4: a0): a0
+fun
+<a0:t0>
+gfred2l_a05
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0): a0
+fun
+<a0:t0>
+gfred2l_a06
+( x1: a0, x2: a0
+, x3: a0, x4: a0
+, x5: a0, x6: a0): a0
+fun
+<a0:t0>
+gfred2l_a07
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0
+, x6: a0, x7: a0): a0
+fun
+<a0:t0>
+gfred2l_a08
+( x1: a0, x2: a0
+, x3: a0, x4: a0
+, x5: a0, x6: a0
+, x7: a0, x8: a0): a0
+fun
+<a0:t0>
+gfred2l_a09
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0
+, x6: a0, x7: a0
+, x8: a0, x9: a0): a0
+//
+fun
+<a0:t0>
+gfred2l_a10
+( x01: a0, x02: a0
+, x03: a0, x04: a0
+, x05: a0, x06: a0
+, x07: a0, x08: a0
+, x09: a0, x10: a0): a0
+//
+(* ****** ****** *)
+fun
+<a0:t0>
+gfred2r_a02
+(x1: a0, x2: a0): a0
+fun
+<a0:t0>
+gfred2r_a03
+( x1: a0
+, x2: a0, x3: a0): a0
+fun
+<a0:t0>
+gfred2r_a04
+( x1: a0, x2: a0
+, x3: a0, x4: a0): a0
+fun
+<a0:t0>
+gfred2r_a05
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0): a0
+fun
+<a0:t0>
+gfred2r_a06
+( x1: a0, x2: a0
+, x3: a0, x4: a0
+, x5: a0, x6: a0): a0
+fun
+<a0:t0>
+gfred2r_a07
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0
+, x6: a0, x7: a0): a0
+fun
+<a0:t0>
+gfred2r_a08
+( x1: a0, x2: a0
+, x3: a0, x4: a0
+, x5: a0, x6: a0
+, x7: a0, x8: a0): a0
+fun
+<a0:t0>
+gfred2r_a09
+( x1: a0
+, x2: a0, x3: a0
+, x4: a0, x5: a0
+, x6: a0, x7: a0
+, x8: a0, x9: a0): a0
+//
+fun
+<a0:t0>
+gfred2r_a10
+( x01: a0, x02: a0
+, x03: a0, x04: a0
+, x05: a0, x06: a0
+, x07: a0, x08: a0
+, x09: a0, x10: a0): a0
 //
 (* ****** ****** *)
 //
@@ -971,6 +1103,134 @@ a1ref_print1_begendsep
 {n0:i0}
 ( A0: a1ref(a0,n0), n0: sint(n0)
 , xbeg: strn, xend: strn, xsep: strn): void
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 13:22:11 EDT 2022
+*)
+//
+fun<>
+strn_gappend_a02
+(strn, strn): strn
+fun<>
+strn_gappend_a03
+(strn, strn, strn): strn
+fun<>
+strn_gappend_a04
+( strn
+, strn, strn, strn): strn
+fun<>
+strn_gappend_a05
+( strn, strn
+, strn, strn, strn): strn
+fun<>
+strn_gappend_a06
+( strn, strn, strn
+, strn, strn, strn): strn
+fun<>
+strn_gappend_a07
+( strn, strn, strn
+, strn, strn, strn, strn): strn
+fun<>
+strn_gappend_a08
+( strn, strn, strn, strn
+, strn, strn, strn, strn): strn
+fun<>
+strn_gappend_a09
+( strn
+, strn, strn, strn, strn
+, strn, strn, strn, strn): strn
+fun<>
+strn_gappend_a10
+( strn, strn
+, strn, strn, strn, strn
+, strn, strn, strn, strn): strn
+//
+#symload gappend with strn_gappend_a02
+#symload gappend with strn_gappend_a03
+#symload gappend with strn_gappend_a04
+#symload gappend with strn_gappend_a05
+#symload gappend with strn_gappend_a06
+#symload gappend with strn_gappend_a07
+#symload gappend with strn_gappend_a08
+#symload gappend with strn_gappend_a09
+#symload gappend with strn_gappend_a10
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 13:47:16 EDT 2022
+*)
+//
+fun
+<a0:t0>
+list_gappend_a02
+(list(a0), list(a0)): list(a0)
+fun
+<a0:t0>
+list_gappend_a03
+( list(a0)
+, list(a0), list(a0)): list(a0)
+fun
+<a0:t0>
+list_gappend_a04
+( list(a0), list(a0)
+, list(a0), list(a0)): list(a0)
+fun
+<a0:t0>
+list_gappend_a05
+( list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)): list(a0)
+fun
+<a0:t0>
+list_gappend_a06
+( list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)): list(a0)
+fun
+<a0:t0>
+list_gappend_a07
+( list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)): list(a0)
+fun
+<a0:t0>
+list_gappend_a08
+( list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)): list(a0)
+fun
+<a0:t0>
+list_gappend_a09
+( list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)): list(a0)
+fun
+<a0:t0>
+list_gappend_a10
+( list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)
+, list(a0), list(a0)): list(a0)
+//
+#symload gappend with list_gappend_a02
+#symload gappend with list_gappend_a03
+#symload gappend with list_gappend_a04
+#symload gappend with list_gappend_a05
+#symload gappend with list_gappend_a06
+#symload gappend with list_gappend_a07
+#symload gappend with list_gappend_a08
+#symload gappend with list_gappend_a09
+#symload gappend with list_gappend_a10
 //
 (* ****** ****** *)
 

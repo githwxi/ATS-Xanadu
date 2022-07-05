@@ -356,8 +356,12 @@ end//local
 (* ****** ****** *)
 
 val () =
+prerrln("gappend(...) = ", gappend("a", "b"))
+val () =
+prerrln("gappend(...) = ", gappend("cd", "ef", "gh"))
+val () =
 prerrln
-("strnlst_concat(...) = ", strnlst_concat(list("a","b","c")))
+("strnlst_concat(...) = ", strnlst_concat(list("ax","by")))
 
 (* ****** ****** *)
 
