@@ -58,6 +58,14 @@ ATS_PACKNAME
 #symload
 lctn with token_get_lctn//lexing0
 #symload
+lctn with t0int_get_lctn//lexing0
+#symload
+lctn with t0chr_get_lctn//lexing0
+#symload
+lctn with t0flt_get_lctn//lexing0
+#symload
+lctn with t0str_get_lctn//lexing0
+#symload
 lctn with i0dnt_get_lctn//staexp0
 #symload
 lctn with l0abl_get_lctn//staexp0
@@ -131,6 +139,13 @@ fun
 p1_l0d0p_RBRACE: p1_fun(l0d0p_RBRACE)
 //
 (* ****** ****** *)
+#extern
+fun
+d0pat_RPAREN_lctn:(d0pat_RPAREN)->loc_t
+#extern
+fun
+l0d0p_RBRACE_lctn:(l0d0p_RBRACE)->loc_t
+(* ****** ****** *)
 
 local
 
@@ -198,6 +213,145 @@ end (* end of [list_cons] *)
 end // end of [let] // end of [p1_d0pat]
 //
 endlocal (*local*) // end of [local(p1_d0pat)]
+
+(* ****** ****** *)
+
+#implfun
+p1_d0pat_atm
+  (buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+| _
+when t0_d0pid(tnd) =>
+let
+  val id0 = p1_d0pid(buf, err)
+in
+  err := e00
+; d0pat(id0.lctn(), D0Pid0(id0))
+end (*let*) // end of [t0_d0pid]
+//
+| _
+when t0_t0int(tnd) =>
+let
+  val i00 = p1_t0int(buf, err)
+in
+  err := e00
+; d0pat(i00.lctn(), D0Pint(i00))
+end (*let*) // end of [t0_t0int]
+| _
+when t0_t0chr(tnd) =>
+let
+  val c00 = p1_t0chr(buf, err)
+in
+  err := e00
+; d0pat(c00.lctn(), D0Pchr(c00))
+end (*let*) // end of [t0_t0chr]
+| _
+when t0_t0flt(tnd) =>
+let
+  val f00 = p1_t0flt(buf, err)
+in
+  err := e00
+; d0pat(f00.lctn(), D0Pflt(f00))
+end (*let*) // end of [t0_t0flt]
+| _
+when t0_t0str(tnd) =>
+let
+  val s00 = p1_t0str(buf, err)
+in//let
+  err := e00
+; d0pat(s00.lctn(), D0Pstr(s00))
+end (*let*) // end of [t0_t0str]
+//
+|
+T_LPAREN() =>
+let
+val tbeg = tok
+val () = buf.skip1()
+val d0ps =
+  p1_d0patseq_COMMA(buf, err)
+val tend = p1_d0pat_RPAREN(buf, err)
+val lres =
+tbeg.lctn() + d0pat_RPAREN_lctn(tend)
+in//let
+  err := e00
+; d0pat(lres, D0Plpar(tbeg, d0ps, tend))
+end (*let*) // end of [T_LPAREN()]
+//
+|
+T_LBRACE() =>
+let
+  val tbeg = tok
+  val () = buf.skip1()
+  val s0as =
+    p1_s0argseq_COMMA(buf, err)
+  val tend = p1_RBRACE(buf, err)
+  val lres = tbeg.lctn() + tend.lctn()
+in//elt
+  err := e00
+; d0pat(lres, D0Psqarg(tbeg, s0as, tend))
+end (*let*) // end of [T_LBRACE()]
+//
+|
+T_TRCD10(k0) =>
+let
+val tbeg = tok
+val (  ) = buf.skip1()
+//
+val topt =
+( if
+  (k0 <= 1)
+  then optn_nil()
+  else
+  optn_cons
+  (p1_LPAREN(buf, err))
+) : tokenopt // end of [val(topt)]
+//
+val d0ps =
+  p1_d0patseq_COMMA(buf, err)
+//
+val tend = p1_d0pat_RPAREN(buf, err)
+//
+val lres =
+tbeg.lctn() + d0pat_RPAREN_lctn(tend)
+//
+in//let
+  err := e00
+; d0pat_make_node
+  (lres, D0Ptup1(tbeg, topt, d0ps, tend))
+end (*let*) // end of [ T_TRCD1(k0) ]
+//
+|
+T_IDQUA _ =>
+let
+  val tqua = tok
+  val (  ) = buf.skip1()
+  val d0p1 = p1_d0pat_atm(buf, err)
+  val lres = tqua.lctn() + d0p1.lctn()
+in//let
+  err := e00; d0pat(lres, D0Pqual(tok, d0p1))
+end(*let*) // end of [ T_IDQUA(...) ]
+//
+| _(*otherwise*) =>
+let
+(*
+val () =
+prerrln
+("p1_s0exp_atm: otherwise: tok = ", tok)
+*)
+in//let
+(err := e00 + 1; d0pat(tok.lctn(), D0Ptkerr(tok)))
+end (*let*) // end of [ _(*otherwise*) ]
+//
+end (*let*) // end of [p1_atmd0pat(buf,err)]
 
 (* ****** ****** *)
 

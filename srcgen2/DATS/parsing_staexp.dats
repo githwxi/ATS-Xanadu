@@ -2236,7 +2236,7 @@ prerrln
 *)
 in//let
 (err := e00 + 1; s0exp(tok.lctn(), S0Etkerr(tok)))
-end
+end(*let*)
 //
 end(*let*)//end-of-[p1_s0exp_atm(buf,err)]
 
