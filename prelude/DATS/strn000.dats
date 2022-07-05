@@ -421,6 +421,7 @@ strn_make_list
 (
 strn_vt2t
 (strn_vt_make_list<>(cs)))
+//
 #impltmp<>
 strn_make_list_vt
   (cs) =
