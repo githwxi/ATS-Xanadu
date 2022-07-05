@@ -371,7 +371,7 @@ let
   val d0p1 = p1_d0pat_atm(buf, err)
   val lres = tqua.lctn() + d0p1.lctn()
 in//let
-  err := e00; d0pat(lres, D0Pqual(tok, d0p1))
+err := e00; d0pat(lres, D0Pqual(tok, d0p1))
 end(*let*) // end of [ T_IDQUA(...) ]
 //
 | _(*otherwise*) =>
@@ -382,37 +382,34 @@ prerrln
 ("p1_s0exp_atm: otherwise: tok = ", tok)
 *)
 in//let
-(err := e00 + 1; d0pat(tok.lctn(), D0Ptkerr(tok)))
+err := e00+1; d0pat(tok.lctn(),D0Ptkerr(tok))
 end (*let*) // end of [ _(*otherwise*) ]
 //
 end (*let*) // end of [p1_d0pat_atm(buf,err)]
 
 (* ****** ****** *)
-
+//
 #implfun
 p1_d0patseq_atm
   (buf, err) =
-(
-list_vt2t
-(ps_p1fun{d0pat}(buf, err, p1_d0pat_atm))
+( list_vt2t
+  (ps_p1fun{d0pat}(buf, err, p1_d0pat_atm))
 ) (* end of [p1_d0patseq_atm] *)
-
+//
 (* ****** ****** *)
 //
 #implfun
 p1_d0patseq_COMMA
   (buf, err) =
-(
-list_vt2t
-(ps_COMMA_p1fun{d0pat}(buf, err, p1_d0pat))
+( list_vt2t
+  (ps_COMMA_p1fun{d0pat}(buf, err, p1_d0pat))
 ) (* end of [p1_d0patseq_COMMA] *)
 //
 #implfun
 p1_l0d0pseq_COMMA
   (buf, err) =
-(
-list_vt2t
-(ps_COMMA_p1fun{l0d0p}(buf, err, p1_l0d0p))
+( list_vt2t
+  (ps_COMMA_p1fun{l0d0p}(buf, err, p1_l0d0p))
 ) (* end of [p1_l0d0pseq_COMMA] *)
 //
 (* ****** ****** *)
