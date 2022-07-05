@@ -71,23 +71,23 @@ gl_fproc1(x0: !a0): void
 //
 (*
 fun<>
-gfproc0_a00
+glfproc0_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-gfproc0_a01
+glfproc0_a01
 ( x1: ~a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-gfproc0_a02
+glfproc0_a02
 ( x1: ~a1, x2: ~a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-gfproc0_a03
+glfproc0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
 fun
@@ -95,7 +95,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-gfproc0_a04
+glfproc0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
 fun
@@ -104,7 +104,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-gfproc0_a05
+glfproc0_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5 ) : void
@@ -115,7 +115,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-gfproc0_a06
+glfproc0_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6 ) : void
@@ -127,7 +127,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-gfproc0_a07
+glfproc0_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -141,7 +141,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-gfproc0_a08
+glfproc0_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
@@ -156,7 +156,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-gfproc0_a09
+glfproc0_a09
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -173,7 +173,7 @@ fun
 <a08:vt>
 <a09:vt>
 <a10:vt>
-gfproc0_a10
+glfproc0_a10
 ( x01: ~a01, x02: ~a02
 , x03: ~a03, x04: ~a04
 , x05: ~a05, x06: ~a06
@@ -181,38 +181,38 @@ gfproc0_a10
 , x09: ~a09, x10: ~a10 ) : void
 (* ****** ****** *)
 //
-#symload gfproc0 with gfproc0_a01
-#symload gfproc0 with gfproc0_a02
-#symload gfproc0 with gfproc0_a03
-#symload gfproc0 with gfproc0_a04
-#symload gfproc0 with gfproc0_a05
-#symload gfproc0 with gfproc0_a06
-#symload gfproc0 with gfproc0_a07
-#symload gfproc0 with gfproc0_a08
-#symload gfproc0 with gfproc0_a09
-#symload gfproc0 with gfproc0_a10
+#symload glfproc0 with glfproc0_a01
+#symload glfproc0 with glfproc0_a02
+#symload glfproc0 with glfproc0_a03
+#symload glfproc0 with glfproc0_a04
+#symload glfproc0 with glfproc0_a05
+#symload glfproc0 with glfproc0_a06
+#symload glfproc0 with glfproc0_a07
+#symload glfproc0 with glfproc0_a08
+#symload glfproc0 with glfproc0_a09
+#symload glfproc0 with glfproc0_a10
 //
 (* ****** ****** *)
 //
 (*
 fun<>
-gfproc1_a00
+glfproc1_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-gfproc1_a01
+glfproc1_a01
 ( x1: !a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-gfproc1_a02
+glfproc1_a02
 ( x1: !a1, x2: !a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-gfproc1_a03
+glfproc1_a03
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 fun
@@ -220,7 +220,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-gfproc1_a04
+glfproc1_a04
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 fun
@@ -229,7 +229,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-gfproc1_a05
+glfproc1_a05
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -240,7 +240,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-gfproc1_a06
+glfproc1_a06
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -252,7 +252,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-gfproc1_a07
+glfproc1_a07
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -266,7 +266,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-gfproc1_a08
+glfproc1_a08
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -281,7 +281,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-gfproc1_a09
+glfproc1_a09
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -298,7 +298,7 @@ fun
 <a08:vt>
 <a09:vt>
 <a10:vt>
-gfproc1_a10
+glfproc1_a10
 ( x01: !a01, x02: !a02
 , x03: !a03, x04: !a04
 , x05: !a05, x06: !a06
@@ -306,16 +306,16 @@ gfproc1_a10
 , x09: !a09, x10: !a10 ) : void
 (* ****** ****** *)
 //
-#symload gfproc1 with gfproc1_a01
-#symload gfproc1 with gfproc1_a02
-#symload gfproc1 with gfproc1_a03
-#symload gfproc1 with gfproc1_a04
-#symload gfproc1 with gfproc1_a05
-#symload gfproc1 with gfproc1_a06
-#symload gfproc1 with gfproc1_a07
-#symload gfproc1 with gfproc1_a08
-#symload gfproc1 with gfproc1_a09
-#symload gfproc1 with gfproc1_a10
+#symload glfproc1 with glfproc1_a01
+#symload glfproc1 with glfproc1_a02
+#symload glfproc1 with glfproc1_a03
+#symload glfproc1 with glfproc1_a04
+#symload glfproc1 with glfproc1_a05
+#symload glfproc1 with glfproc1_a06
+#symload glfproc1 with glfproc1_a07
+#symload glfproc1 with glfproc1_a08
+#symload glfproc1 with glfproc1_a09
+#symload glfproc1 with glfproc1_a10
 //
 (* ****** ****** *)
 //
