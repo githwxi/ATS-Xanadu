@@ -515,12 +515,14 @@ fun
 <xz:t0>
 <xs:t0>
 <x0:t0>
-gseq_concat(xss: xz): xs
+gseq_concat
+( xss: xz ): xs//xz=[xs]
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_reverse(xs: xs): xs
+gseq_reverse
+( xs0: xs ): xs//xs=[x0]
 fun
 <xs:t0>
 <x0:t0>

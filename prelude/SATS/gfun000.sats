@@ -4,11 +4,46 @@
 *)
 (* ****** ****** *)
 #typedef
-fnp1(a1:t0,r0:t0) = (a1)-<fnp>r0
+fnp1
+(a1:t0,r0:t0) = (a1)-<fnp>r0
 #typedef
-cfr1(a1:t0,r0:t0) = (a1)-<cfr>r0
+cfr1
+(a1:t0,r0:t0) = (a1)-<cfr>r0
 (* ****** ****** *)
-
+#typedef
+fnp2
+(a1:t0
+,a2:t0,r0:t0) = (a1,a2)-<fnp>r0
+#typedef
+cfr2
+(a1:t0
+,a2:t0,r0:t0) = (a1,a2)-<cfr>r0
+(* ****** ****** *)
+#typedef
+fnp3
+(a1:t0
+,a2:t0
+,a3:t0,r0:t0) = (a1,a2,a3)-<fnp>r0
+#typedef
+cfr3
+(a1:t0
+,a2:t0
+,a3:t0,r0:t0) = (a1,a2,a3)-<cfr>r0
+(* ****** ****** *)
+#typedef
+fnp4
+(a1:t0
+,a2:t0
+,a3:t0
+,a4:t0,r0:t0) = (a1,a2,a3,a4)-<fnp>r0
+#typedef
+cfr4
+(a1:t0
+,a2:t0
+,a3:t0
+,a4:t0,r0:t0) = (a1,a2,a3,a4)-<cfr>r0
+(* ****** ****** *)
+//
 fun
 <a1:t0>
 gfun_not_fnp1
@@ -19,7 +54,7 @@ fun
 gfun_not_cfr1
 ( f0
 : cfr1(a1,bool)): cfr1(a1, bool)
-
+//
 (* ****** ****** *)
 //
 fun
