@@ -289,14 +289,14 @@ idropif$test<x0>(i0, x0) = (i0 < n0)
 #impltmp
 <xs><x0>
 gseq_dropif
-  (xs) =
+  ( xs ) =
 (
 gseq_idropif
 < xs >< x0 >(xs)) where
 {
 #impltmp
 idropif$test<x0>(i0, x0) = dropif$test<x0>(x0)
-} (*where*)//end-of(gseq_drop/dropif)
+} (*where*)//end-of(gseq_dropif/idropif)
 
 (* ****** ****** *)
 
@@ -310,7 +310,7 @@ gseq_itakeif
 {
 #impltmp
 itakeif$test<x0>(i0, x0) = (i0 < n0)
-} (*where*)//end-of(gseq_drop/takeif)
+}(*where*)//end-of(gseq_take(xs,n0)/itakeif)
 
 (* ****** ****** *)
 
@@ -1586,6 +1586,72 @@ endlet (* end of [loop(xs,i0)] *)
 //
 } (*where*)//end-of-[gseq_idropif(xs)]
 //
+(* ****** ****** *)
+
+#impltmp
+<xs><x0>
+gseq_itakeif
+  ( xs ) =
+(
+gseq_unlist_vt<xs><x0>
+(gseq_itakeif_list<xs><x0>(xs))
+) (* end of [ gseq_itakeif(xs) ] *)
+
+(* ****** ****** *)
+
+#impltmp
+<xs><x0>
+gseq_itakeif_list
+  ( xs ) =
+(
+list_vt_reverse0<x0>
+(gseq_itakeif_rlist<xs><x0>(xs))
+) (* end of [ gseq_itakeif_list ] *)
+
+(* ****** ****** *)
+
+#impltmp
+<xs><x0>
+gseq_itakeif_rlist
+  ( xs ) =
+(
+loop
+(xs, i0, r0)) where
+{
+//
+#vwtpdef
+xlst = list_vt(x0)
+//
+val i0 = 0(*start*)
+val r0 = list_vt_nil()
+//
+fnx
+loop
+( xs: xs
+, i0: nint
+, r0: xlst): xlst =
+if
+gseq_nilq<xs><x0>(xs)
+then (r0) else
+let
+val x0 =
+gseq_head_raw<xs><x0>(xs)
+in//let
+if
+itakeif$test<x0>(i0, x0)
+then
+(
+  loop(xs, i0, r0) ) where
+{
+  val i0 = succ(i0)
+  val xs =
+  gseq_tail_raw<xs><x0>(xs)
+  val r0 = list_vt_cons(x0, r0) }
+else (r0) // else // end-of-if
+endlet (* end of [loop(xs,i0,r0)] *)
+//
+} (*where*)//end-of-[gseq_itakeif_rlist]
+
 (* ****** ****** *)
 
 #impltmp

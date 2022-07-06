@@ -388,6 +388,16 @@ val () = prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
 (* ****** ****** *)
 
 val () =
+prerrln("list(1) > list(0,1): ", list(1) > list(0,1))
+val () =
+prerrln("list(0) < list(0,1): ", list(1) > list(0,1))
+
+(* ****** ****** *)
+
+val () =
+prerrln
+("gseq_take(\"abcdefg\", 3) = ", gseq_take("abcdefg", 3))
+val () =
 prerrln
 ("gseq_drop(\"abcdefg\", 3) = ", gseq_drop("abcdefg", 3))
 
