@@ -145,6 +145,7 @@ S0E = "./staexp0.sats"
 //
 #abstbox d0pat_tbox // ptr
 #abstbox d0exp_tbox // ptr
+#abstbox d0cls_tbox // ptr
 #abstbox d0ecl_tbox // ptr
 //
 #abstbox d0cstdcl_tbox // ptr
@@ -164,6 +165,7 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef d0pat = d0pat_tbox
 #typedef d0exp = d0exp_tbox
+#typedef d0cls = d0cls_tbox
 #typedef d0ecl = d0ecl_tbox
 (* ****** ****** *)
 #typedef q0arglst = list(q0arg)
@@ -174,12 +176,15 @@ S0E = "./staexp0.sats"
 #typedef a0typlst = list(a0typ)
 #typedef d0arglst = list(d0arg)
 (* ****** ****** *)
+//
 #typedef d0patlst = list(d0pat)
 #typedef d0explst = list(d0exp)
+#typedef d0clslst = list(d0cls)
 #typedef d0eclist = list(d0ecl)
+//
 #typedef d0patopt = optn(d0pat)
 #typedef d0expopt = optn(d0exp)
-#typedef d0eclopt = optn(d0ecl)
+//
 (* ****** ****** *)
 //
 #typedef d0cstdcl = d0cstdcl_tbox
@@ -316,6 +321,11 @@ d0exp_node =
 D0Elpar of
 (token, d0explst, d0exp_RPAREN)
 //
+| D0Eif0 of
+  ( token
+  , d0exp
+  , d0exp_THEN, d0exp_ELSE)
+//
 |
 (*
 HX-2022-06-20:
@@ -327,6 +337,36 @@ D0Etkerr of (token) // HX: parsing error
 D0Eerrck of (int(*lvl*), d0exp)//HX:pread-error
 //
 // HX-2022-06-20: end-of-[datatype(d0exp_node)]
+//
+(* ****** ****** *)
+//
+and
+d0exp_THEN =
+|
+d0exp_THEN_some of (token, d0exp)
+and
+d0exp_ELSE =
+|
+d0exp_ELSE_none of (token)
+|
+d0exp_ELSE_some of (token, d0exp)
+//
+(* ****** ****** *)
+//
+and
+tkend_WHERE =
+|
+tkend_WHERE_cons1 of token
+|
+tkend_WHERE_cons2 of (token, tokenopt)
+//
+and
+d0eclseq_WHERE =
+|
+d0eclseq_WHERE of
+(token, tokenopt, d0eclist, tkend_WHERE)
+//
+(* ****** ****** *)
 //
 and
 d0exp_RPAREN =
@@ -344,7 +384,8 @@ l0d0e_RBRACE_cons1 of (token, l0d0elst, token)
 //
 (* ****** ****** *)
 fun
-d0exp_fprint(FILR, d0exp): void
+d0exp_fprint
+(out:FILR, d0e:d0exp): void
 (* ****** ****** *)
 //
 fun

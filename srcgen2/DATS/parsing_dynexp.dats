@@ -454,5 +454,96 @@ _(*non-T_RPAREN*) =>
 end (*let*)//end-of-[p1_d0pat_RPAREN(buf,err)]
 
 (* ****** ****** *)
+//
+(*
+//
+atmd0exp ::=
+//
+| d0eid // D0Eid0
+//
+| t0int // D0Eint
+| t0chr // D0Echr
+| t0flt // D0Eflt
+| t0str // D0Estr
+//
+| qualid atm0exp
+//
+| { d0eclseq }
+| LET d0eclseq END
+| LET d0eclseq IN d0expseq END
+//
+| ( d0expseq_COMMA )
+| ( d0expseq_COMMA | d0expseq_COMMA )
+| ( d0expseq_COMMA ; d0expseq_SMCLN )
+//
+| { labd0expseq_COMMA }
+| { labd0expseq_COMMA | labd0expseq_COMMA }
+//
+*)
+//
+#extern
+fun
+p1_d0exp_atm: p1_fun(d0exp)
+//
+#extern
+fun
+p1_d0exp_app: p1_fun(d0exp)
+//
+#extern
+fun
+p1_d0expseq_atm: p1_fun(d0explst)
+//
+#extern
+fun
+p1_d0exp_THEN: p1_fun(d0exp_THEN)
+fun
+p1_d0exp_ELSE: p1_fun(d0exp_ELSE)
+//
+#extern
+fun
+p1_d0exp_sqarg: p1_fun(d0exp)
+#extern
+fun
+p1_d0expseq_sqarg: p1_fun(d0explst)
+//
+#extern
+fun
+p1_d0expseq_COMMA: p1_fun(d0explst)
+#extern
+fun
+p1_l0d0eseq_COMMA: p1_fun(l0d0elst)
+//
+#extern
+fun
+p1_d0expseq_SMCLN: p1_fun(d0explst)
+//
+(* ****** ****** *)
+//
+(*
+d0exp_RPAREN ::=
+  | RPAREN
+  | BAR d0expseq_COMMA RPAREN
+  | SMCLN d0expseq_SMCLN RPAREN
+*)
+(*
+labd0exp_RBRACE ::=
+  | RPAREN
+  | BAR labd0expseq_COMMA RBRACE
+*)
+//
+#extern
+fun
+p1_d0exp_RPAREN: p1_fun(d0exp_RPAREN)
+#extern
+fun
+p1_l0d0e_RBRACE: p1_fun(l0d0e_RBRACE)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+p1_d0clsseq_BAR: p1_fun(d0clslst)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)
