@@ -69,6 +69,10 @@ lctn with t0str_get_lctn//lexing0
 lctn with i0dnt_get_lctn//staexp0
 #symload
 lctn with l0abl_get_lctn//staexp0
+(* ****** ****** *)
+#symload
+lctn with g0nam_get_lctn//staexp0
+(* ****** ****** *)
 #symload
 lctn with sort0_get_lctn//staexp0
 #symload
@@ -894,20 +898,22 @@ end (*let*) // end-of-[ T_GT0(  ) ]
     }
   end // end-of-[T_IDENT_qual]
 //
-|
-T_DLR_EXTNAM _ => let
-  val () = buf.skip1()
-  val gnm = p_g0nam(buf, err)
-in
-  err := e00;
-  d0exp_make_node
-  ( loc_res, D0Eextnam(gnm) ) where
-  {
-    val loc_res = tok.lctn()+gnm.lctn()
-  }
-end // end-of-[T_DLR_EXTNAM]
-//
 *)
+|
+T_DLR_EXTNAM _ =>
+let
+  val tok0 = tok
+  val (  ) = buf.skip1()
+  val gnm1 = p1_g0nam(buf, err)
+in
+  err := e00
+; d0exp_make_node
+  ( lres, D0Eextnam(gnm1) ) where
+  {
+    val lres = tok0.lctn()+gnm1.lctn()
+  }
+end(*let*) // end-of-[ T_DLR_EXTNAM(_) ]
+//
 |
 T_DLR_EXISTS _ =>
 let

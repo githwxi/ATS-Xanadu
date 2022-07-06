@@ -333,6 +333,8 @@ D0Elpar of
   , d0exp
   , d0exp_THEN, d0exp_ELSE)
 //
+| // HX-2020-11-04: for specifying
+D0Eextnam of (g0nam) // external names
 |
 D0Eexists of
 ( token // HX-2021-01-14: $exists{..}..{..}
