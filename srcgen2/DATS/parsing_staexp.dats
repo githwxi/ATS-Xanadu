@@ -121,14 +121,12 @@ fun p1_l0s0e: p1_fun(l0s0e)
 #extern
 fun p1_s0exp_atm: p1_fun(s0exp)
 #extern
-fun p1_s0expseq_atm: p1_fun(s0explst)
-#extern
-fun p1_s0expseq_COMMA: p1_fun(s0explst)
-#extern
-fun p1_s0expseq_SMCLN: p1_fun(s0explst)
+fun
+p1_s0expseq_atm: p1_fun(s0explst)
 //
 #extern
-fun p1_l0s0eseq_COMMA: p1_fun(l0s0elst)
+fun
+p1_l0s0eseq_COMMA: p1_fun(l0s0elst)
 //
 (* ****** ****** *)
 //
