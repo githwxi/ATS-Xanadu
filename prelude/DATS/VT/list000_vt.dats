@@ -192,6 +192,8 @@ list_vt_sing<a>(x0) in
 list_vt_append0<a>(xs, ys)
 end // list_vt_extend0
 //
+(* ****** ****** *)
+//
 #impltmp
 <a>(*tmp*)
 list_vt_append0
@@ -226,7 +228,21 @@ prval () = $fold(xs) in () end
 end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list_vt_append0] *)
+} (* end of [list_vt_append0(xs,ys)] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_append1
+  (xs, ys) =
+(
+list_vt_append0<a>(xs, ys)
+) where
+{
+  val xs = list_vt_copy<a>(xs)
+  and ys = list_vt_copy<a>(ys)
+} (* end of [list_vt_append1(xs,ys)] *)
 //
 (* ****** ****** *)
 
