@@ -108,6 +108,7 @@ D0E = "./dynexp0.sats"
 //
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
+#typedef d0cls = $D0E.d0cls
 #typedef d0ecl = $D0E.d0ecl
 //
 (* ****** ****** *)
@@ -307,6 +308,7 @@ fun p1_s0exp: p1_fun(s0exp)
 //
 fun p1_d0pat: p1_fun(d0pat)
 fun p1_d0exp: p1_fun(d0exp)
+fun p1_d0cls: p1_fun(d0cls)
 //
 (* ****** ****** *)
 //
@@ -356,6 +358,7 @@ pq_s0exp_anno: pq_fun(s0exp)
 //
 #typedef d0patlst=list(d0pat)
 #typedef d0explst=list(d0exp)
+#typedef d0clslst=list(d0cls)
 #typedef d0eclist=list(d0ecl)
 //
 (* ****** ****** *)

@@ -1640,27 +1640,27 @@ end (*let*) // end of [popt_endst0inv]
 (* ****** ****** *)
 (*
 //
-atmd0exp ::
+atmd0exp ::=
 //
-  | d0eid
+| d0eid
 //
-  | t0int // int
-  | t0chr // char
-  | t0flt // float
-  | t0str // string
+| t0int // int
+| t0chr // char
+| t0flt // float
+| t0str // string
 //
-  | qualid atm0exp
+| qualid atm0exp
 //
-  | { d0eclseq }
-  | LET d0eclseq END
-  | LET d0eclseq IN d0expseq END
+| { d0eclseq }
+| LET d0eclseq END
+| LET d0eclseq IN d0expseq END
 //
-  | ( d0expseq_COMMA )
-  | ( d0expseq_COMMA | d0expseq_COMMA )
-  | ( d0expseq_COMMA ; d0expseq_SMCLN )
+| ( d0expseq_COMMA )
+| ( d0expseq_COMMA | d0expseq_COMMA )
+| ( d0expseq_COMMA ; d0expseq_SMCLN )
 //
-  | { labd0expseq_COMMA }
-  | { labd0expseq_COMMA | labd0expseq_COMMA }
+| { labd0expseq_COMMA }
+| { labd0expseq_COMMA | labd0expseq_COMMA }
 //
 *)
 extern
