@@ -307,6 +307,17 @@ gseq_rstrmize(xs): strm_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
+gseq_range_lt
+(s1: x0, f2: x0): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_range_lte
+(s1: x0, f2: x0): (xs)
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_unlist(list(x0)): (xs)
 fun
 <xs:t0>

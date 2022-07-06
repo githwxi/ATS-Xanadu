@@ -161,19 +161,8 @@ strx_vt_from$next(x0) = g_succ(x0)
 //
 fun
 <a:vt>
-strm_vt_length(xs: strm_vt(a)): nint
+strm_vt_length(strm_vt(a)): nint
 //
-(* ****** ****** *)
-
-fun
-<a:vt>
-strm_vt_drop
-(xs: strm_vt(a), n0: sint): strm_vt(a)
-fun
-<a:vt>
-strm_vt_take
-(xs: strm_vt(a), n0: sint): strm_vt(a)
-
 (* ****** ****** *)
 //
 fun
@@ -200,6 +189,17 @@ strx_vt_strmize
 (* ****** ****** *)
 //
 fun
+<a:t0>
+strm_vt_range_lt
+(  s1: a, f2: a ): strm_vt(a)
+fun
+<a:t0>
+strm_vt_range_lte
+(  s1: a, f2: a ): strm_vt(a)
+//
+(* ****** ****** *)
+//
+fun
 <a:vt>
 strm_vt_extend
 (xs: strm_vt(a), x0: a): strm_vt(a)
@@ -218,9 +218,43 @@ strm_vt_concat
 //
 fun
 <a:vt>
-strm_vt_prefixq // xs1 prefix-ofs xs2
-( xs1
-: strm_vt(a), xs2: strm_vt(a) ): bool 
+strm_vt_dropif
+(xs: strm_vt(a)): strm_vt(a)
+fun
+<a:vt>
+strm_vt_idropif
+(xs: strm_vt(a)): strm_vt(a)
+//
+fun
+<a:vt>
+strm_vt_takeif
+(xs: strm_vt(a)): strm_vt(a)
+fun
+<a:vt>
+strm_vt_itakeif
+(xs: strm_vt(a)): strm_vt(a)
+//
+fun
+<a:vt>
+strm_vt_drop
+( xs
+: strm_vt(a),n0:sint):strm_vt(a)
+fun
+<a:vt>
+strm_vt_take
+( xs
+: strm_vt(a),n0:sint):strm_vt(a)
+//
+(* ****** ****** *)
+//
+// HX: test if
+// [xs1] is a prefix of [xs2]
+//
+fun
+<a:vt>
+strm_vt_prefixq
+( xs1: strm_vt(a)
+, xs2: strm_vt(a)): bool//endfun
 //
 (* ****** ****** *)
 fun

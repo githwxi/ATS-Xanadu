@@ -122,6 +122,12 @@ char_upper
 g_cmp<char> = char_cmp<>
 
 (* ****** ****** *)
+//
+#impltmp
+g_succ<char>(ch) =
+char_make_code(code(ch)+1)
+//
+(* ****** ****** *)
 
 #impltmp
 g_equal<char> = char_equal<>
