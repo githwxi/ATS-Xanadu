@@ -27,9 +27,11 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: October, 2018
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: October, 2018
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 (*

@@ -46,6 +46,15 @@ g_1((*void*)): (a)
 fun
 <a:t0>
 g_2((*void*)): (a)
+fun
+<a:t0>
+g_3((*void*)): (a)
+fun
+<a:t0>
+g_4((*void*)): (a)
+fun
+<a:t0>
+g_5((*void*)): (a)
 
 (* ****** ****** *)
 
@@ -108,7 +117,7 @@ g_mod(x: a, y: a): a
 // For linear gnums
 //
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 gl_0((*void*)): (a)
@@ -118,7 +127,7 @@ gl_1((*void*)): (a)
 fun
 <a:vt>
 gl_2((*void*)): (a)
-
+//
 (* ****** ****** *)
 
 fun

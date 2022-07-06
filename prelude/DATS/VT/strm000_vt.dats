@@ -228,70 +228,57 @@ end // end of [let]
 
 #impltmp
 <a>(*tmp*)
-strm_vt_drop
-  (xs, n0) =
+strm_vt_range_lt
+  (s1, f2) =
 (
-  auxloop(xs, n0)
-) where
+auxmain(s1,f2)) where
 {
 //
-#vwtpdef xs = strm_vt(a)
-//
-fnx
-auxloop
-(xs: xs, n0: sint): xs =
-if
-(n0 <= 0)
-then xs else
+fun
+auxmain
+( s1: a
+, f2: a): strm_vt(a) = $llazy
 (
-case+ !xs of
-|
-strmcon_vt_nil() => strm_vt_nil()
-|
-strmcon_vt_cons(x0, xs) =>
-(g_free<a>(x0); auxloop(xs, pred(n0)))
-)
-} (*where*) // end-of(strm_vt_drop)
+if
+g_lt<a>(s1,f2)
+then
+strmcon_vt_cons
+( s1
+, auxmain
+  (g_succ<a>(s1), f2))
+else
+(
+  strmcon_vt_nil(*void*)))(*auxmain*)
+//
+}(*where*)//end-of-(strm_vt_range_lt(s1,f2))
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-strm_vt_take
-  (xs, n0) =
+strm_vt_range_lte
+  (s1, f2) =
 (
-  auxmain(xs, n0)
-) where
+auxmain(s1,f2)) where
 {
-//
-#vwtpdef xs = strm_vt(a)
 //
 fun
 auxmain
-(xs: xs, n0: sint): xs =
-$llazy
+( s1: a
+, f2: a): strm_vt(a) = $llazy
 (
-g_free(xs);
 if
-(n0 <= 0)
+g_lte<a>(s1,f2)
 then
-(
-  g_free(xs); strmcon_vt_nil()
-) (* then *)
+strmcon_vt_cons
+( s1
+, auxmain
+  (g_succ<a>(s1), f2))
 else
 (
-case+ !xs of
+  strmcon_vt_nil(*void*)))(*auxmain*)
 //
-|
-strmcon_vt_nil() => strmcon_vt_nil()
-//
-|
-strmcon_vt_cons(x0, xs) =>
-strmcon_vt_cons(x0, auxmain(xs, pred(n0)))
-//
-) (* else *)
-)
-} (*where*) // end of-[strm_vt_take]
+}(*where*)//end-of-(strm_vt_range_lt(s1,f2))
 
 (* ****** ****** *)
 
@@ -473,6 +460,129 @@ strmcon_vt_cons(x0, auxmain1(xss, xs1))
 )
 )
 } (*where*)//end-of(strm_vt_concat)
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_drop
+  (xs, n0) =
+(
+strm_vt_idropif<x0>(xs)) where
+{
+#impltmp
+idropif0$test<x0>(i0, x0) = (i0 < n0)
+} (*where*)//end-of(gseq_drop/idropif)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_take
+  (xs, n0) =
+(
+strm_vt_itakeif<x0>(xs)) where
+{
+#impltmp
+itakeif0$test<x0>(i0, x0) = (i0 < n0)
+} (*where*)//end-of(gseq_take/itakeif)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_dropif
+  ( xs ) =
+(
+strm_vt_idropif<x0>(xs)) where
+{
+#impltmp
+idropif0$test<x0>(i0,x0) = dropif0$test<x0>(x0)
+}(*where*)//end-of(strm_vt_dropif/idropif)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_takeif
+  ( xs ) =
+(
+strm_vt_itakeif<x0>(xs)) where
+{
+#impltmp
+itakeif0$test<x0>(i0,x0) = takeif0$test<x0>(x0)
+}(*where*)//end-of(strm_vt_takeif/itakeif)
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_idropif
+  (    xs   ) =
+(
+auxloop
+(xs, 0(*i0*))) where
+{
+//
+#vwtpdef
+xs = strm_vt(x0)
+//
+fnx
+auxloop
+(xs: xs, i0: sint): xs =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) =>
+(
+  strm_vt_nil((*void*))
+)
+|
+strmcon_vt_cons
+  ( x0, xs ) =>
+if
+idropif0$test<x0>(i0, x0)
+then
+( g_free<x0>(x0)
+; auxloop(xs, succ(i0)))
+else strm_vt_cons(x0, xs))(*auxloop*)
+//
+}(*where*)//end-of-(strm_vt_idropif(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_itakeif
+  (    xs   ) =
+(
+auxmain
+(xs, 0(*i0*))) where
+{
+//
+#vwtpdef
+xs = strm_vt(x0)
+//
+fun
+auxmain
+( xs: xs
+, i0: sint): xs = $llazy
+(
+g_free(xs);
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) =>
+strmcon_vt_nil()
+|
+strmcon_vt_cons
+  ( x0, xs ) =>
+if
+itakeif0$test<x0>(i0, x0)
+then
+( g_free<x0>(x0)
+; !(auxmain(xs, succ(i0))))
+else
+strmcon_vt_cons(x0,auxmain(xs,succ(i0)))
+)
+)(*llazy*)
+}(*where*)//end-of-(strm_vt_itakeif(xs))
 //
 (* ****** ****** *)
 //

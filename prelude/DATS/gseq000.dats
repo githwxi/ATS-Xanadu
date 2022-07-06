@@ -271,7 +271,7 @@ foldl$fopr<x0><r0>(r0, _) = succ(r0)
 }(*where*)//end-of(gseq_length/foldl)
 
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 gseq_drop
@@ -283,9 +283,7 @@ gseq_idropif
 #impltmp
 idropif$test<x0>(i0, x0) = (i0 < n0)
 } (*where*)//end-of(gseq_drop/idropif)
-
-(* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 gseq_dropif
@@ -297,9 +295,9 @@ gseq_idropif
 #impltmp
 idropif$test<x0>(i0, x0) = dropif$test<x0>(x0)
 } (*where*)//end-of(gseq_dropif/idropif)
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 gseq_take
@@ -311,7 +309,19 @@ gseq_itakeif
 #impltmp
 itakeif$test<x0>(i0, x0) = (i0 < n0)
 }(*where*)//end-of(gseq_take(xs,n0)/itakeif)
-
+//
+#impltmp
+<xs><x0>
+gseq_takeif
+  ( xs ) =
+(
+gseq_itakeif
+< xs >< x0 >(xs)) where
+{
+#impltmp
+itakeif$test<x0>(i0, x0) = takeif$test<x0>(x0)
+} (*where*)//end-of(gseq_takeif/itakeif)
+//
 (* ****** ****** *)
 
 #impltmp
@@ -698,6 +708,22 @@ gseq_map_rlist<xs><x0><x0>(xs)
 gseq_rstrmize(xs) =
 list_vt_strmize<x0>
 (gseq_rlistize<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+gseq_range_lt
+(  s1, f2  ) =
+gseq_unstrm_vt<xs><x0>
+(strm_vt_range_lt<x0>(s1, f2))
+//
+#impltmp
+<xs><x0>
+gseq_range_lte
+(  s1, f2  ) =
+gseq_unstrm_vt<xs><x0>
+(strm_vt_range_lte<x0>(s1, f2))
 //
 (* ****** ****** *)
 //

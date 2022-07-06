@@ -175,11 +175,21 @@ fun
 map1$fopr(x0: !x0): (y0)
 //
 (* ****** ****** *)
-
-fun
-<x0:t0>
+//
+fun<x0:t0>
 dropif$test(x0: x0): bool
-
+fun<x0:t0>
+takeif$test(x0: x0): bool
+//
+fun<x0:vt>
+dropif0$test(x0: !x0): bool
+fun<x0:vt>
+takeif0$test(x0: !x0): bool
+fun<x0:vt>
+dropif1$test(x0: !x0): bool
+fun<x0:vt>
+takeif1$test(x0: !x0): bool
+//
 (* ****** ****** *)
 //
 fun
@@ -425,29 +435,21 @@ fun
 imap1$fopr(nint, !x0): (y0)
 
 (* ****** ****** *)
-
-fun
-<x0:t0>
+//
+fun<x0:t0>
 idropif$test(nint, x0): bool
-fun
-<x0:vt>
-idropif0$test(nint, !x0): bool
-fun
-<x0:vt>
-idropif1$test(nint, !x0): bool
-
-(* ****** ****** *)
-
-fun
-<x0:t0>
+fun<x0:t0>
 itakeif$test(nint, x0): bool
-fun
-<x0:vt>
+//
+fun<x0:vt>
+idropif0$test(nint, !x0): bool
+fun<x0:vt>
 itakeif0$test(nint, !x0): bool
-fun
-<x0:vt>
+fun<x0:vt>
+idropif1$test(nint, !x0): bool
+fun<x0:vt>
 itakeif1$test(nint, !x0): bool
-
+//
 (* ****** ****** *)
 
 fun

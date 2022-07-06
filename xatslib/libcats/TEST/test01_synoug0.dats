@@ -382,8 +382,17 @@ val ef = list_vt('e', 'f')
 val () = prerrln("ab = ", ab)
 val () = prerrln("cd = ", cd)
 val () = prerrln("ef = ", ef)
-val () = prerrln("glappend1(...) = ", glappend1(ab, cd, ef))
-val () = prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
+val () =
+prerrln("glappend1(...) = ", glappend1(ab, cd, ef))
+val () =
+prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
+
+(* ****** ****** *)
+
+val () =
+prerrln("az = ", gseq_range_lte<strn>('a', 'z'))
+val () =
+prerrln("AZ = ", gseq_range_lte<strn>('A', 'Z'))
 
 (* ****** ****** *)
 
@@ -391,6 +400,13 @@ val () =
 prerrln("list(1) > list(0,1): ", list(1) > list(0,1))
 val () =
 prerrln("list(0) < list(0,1): ", list(1) > list(0,1))
+
+(* ****** ****** *)
+
+val () =
+prerrln("list_btw(1, 10) = ", list_btw<sint>(1, 10))
+val () =
+prerrln("list_btwe(1, 10) = ", list_btwe<sint>(1, 10))
 
 (* ****** ****** *)
 

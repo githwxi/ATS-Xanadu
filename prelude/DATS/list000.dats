@@ -36,6 +36,74 @@ list_cons(x0, list_nil())
 //
 #impltmp
 <a>(*tmp*)
+list_btw(s1, f2) =
+list_vt2t
+(list_btw_vt<a>(s1, f2))
+#impltmp
+<a>(*tmp*)
+list_btwe(s1, f2) =
+list_vt2t
+(list_btwe_vt<a>(s1, f2))
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_btw_vt(s1, f2) =
+let
+//
+#vwtpdef
+alst = list_vt(a)
+//
+fnx
+loop
+( i0: sint
+, r0: alst): alst =
+if
+(i0 = f2)
+then r0 else
+loop(i0+1, r0) where
+{
+val x0 = g_i<a>(i0)
+val r0 = list_vt_cons(x0, r0)
+} (*where*) // end-of(loop(i0,r0))
+//
+in//let
+if s1 > f2
+then list_vt_nil() else
+list_vt_reverse0<a>(loop(s1,list_vt_nil))
+end(*let*) // end-of-[list_btw_vt(s1,f2)]
+//
+#impltmp
+<a>(*tmp*)
+list_btwe_vt(s1, f2) =
+let
+//
+#vwtpdef
+alst = list_vt(a)
+//
+fnx
+loop
+( i0: sint
+, r0: alst): alst =
+let
+val x0 = g_i<a>(i0)
+val r0 = list_vt_cons(x0, r0)
+in//let
+if
+(i0 = f2) then r0 else loop(i0+1, r0)
+endlet(* end of [loop(i0,r0)] *)
+//
+in//let
+if s1 > f2
+then list_vt_nil() else
+list_vt_reverse0<a>(loop(s1,list_vt_nil))
+end(*let*) // end-of-[list_btwe_vt(s1,f2)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
 list_make_nval
   (n0, x0) =
 (
