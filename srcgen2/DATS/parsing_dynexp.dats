@@ -130,9 +130,9 @@ p1_l0d0pseq_COMMA: p1_fun(l0d0plst)
 d0pat_RPAREN ::=
   | RPAREN
   | BAR d0patseq_COMMA RPAREN
-labd0pat_RBRACE ::=
+l0d0p_RBRACE ::=
   | RPAREN
-  | BAR labd0patseq_COMMA RBRACE
+  | BAR l0d0pseq_COMMA RBRACE
 *)
 //
 #extern
@@ -476,8 +476,8 @@ atmd0exp ::=
 | ( d0expseq_COMMA | d0expseq_COMMA )
 | ( d0expseq_COMMA ; d0expseq_SMCLN )
 //
-| { labd0expseq_COMMA }
-| { labd0expseq_COMMA | labd0expseq_COMMA }
+| { l0d0eseq_COMMA }
+| { l0d0eseq_COMMA | l0d0eseq_COMMA }
 //
 *)
 //
@@ -506,6 +506,14 @@ p1_d0exp_sqarg: p1_fun(d0exp)
 fun
 p1_d0expseq_sqarg: p1_fun(d0explst)
 //
+(* ****** ****** *)
+//
+#extern
+fun
+p1_d0clsseq_BAR: p1_fun(d0clslst)
+//
+(* ****** ****** *)
+//
 #extern
 fun
 p1_d0expseq_COMMA: p1_fun(d0explst)
@@ -526,9 +534,9 @@ d0exp_RPAREN ::=
   | SMCLN d0expseq_SMCLN RPAREN
 *)
 (*
-labd0exp_RBRACE ::=
+l0d0exp_RBRACE ::=
   | RPAREN
-  | BAR labd0expseq_COMMA RBRACE
+  | BAR l0d0expseq_COMMA RBRACE
 *)
 //
 #extern
@@ -539,11 +547,391 @@ fun
 p1_l0d0e_RBRACE: p1_fun(l0d0e_RBRACE)
 //
 (* ****** ****** *)
+
+#implfun
+p1_d0exp_atm
+( buf, err ) = let
 //
-#extern
-fun
-p1_d0clsseq_BAR: p1_fun(d0clslst)
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
 //
+in//let
+//
+case+ tnd of
+//
+| _
+when t0_d0eid(tnd) =>
+let
+val id0 = p1_d0eid(buf, err)
+in//let
+  err := e00
+; d0exp(id0.lctn(), D0Eid0(id0))
+end // end of [t0_d0eid]
+//
+| _
+when t0_t0int(tnd) =>
+let
+val i00 = p1_t0int(buf, err)
+in//let
+  err := e00
+; d0exp(i00.lctn(), D0Eint(i00))
+end(*let*)//end-of-[t0_t0int(tnd)]
+| _
+when t0_t0chr(tnd) =>
+let
+val c00 = p1_t0chr(buf, err)
+in//let
+  err := e00
+; d0exp(c00.lctn(), D0Echr(c00))
+end(*let*)//end-of-[t0_t0chr(tnd)]
+| _
+when t0_t0flt(tnd) =>
+let
+val f00 = p1_t0flt(buf, err)
+in//let
+  err := e00
+; d0exp(f00.lctn(), D0Eflt(f00))
+end(*let*)//end-of-[t0_t0flt(tnd)]
+| _
+when t0_t0str(tnd) =>
+let
+val s00 = p1_t0str(buf, err)
+in//let
+  err := e00
+; d0exp(s00.lctn(), D0Estr(s00))
+end(*let*)//end-of-[t0_t0str(tnd)]
+//
+(*
+| T_OP1 of () // 'op'
+| T_OP2 of token // 'opid'
+| T_OP3 of token // 'op()'
+*)
+//
+|
+T_OP1() => let
+//
+val tok0 = tok
+val (  ) =
+buf.skip1((*void*))
+val deid = p1_d0eid(buf, err)
+//
+val loc0 = tok0.lctn()+deid.lctn()
+//
+in
+err := e00;
+d0exp_make_node(loc0, D0Eopid(deid))
+end(*let*) // end-of-[  T_OP1()  ]
+|
+T_OP2 _ => let
+val tok0 = tok
+val (  ) = buf.skip1()
+val loc0 = tok0.lctn()
+val opid = i0dnt_some(tok)
+in//let
+err := e00;
+d0exp_make_node(loc0, D0Eopid(opid))
+end(*let*) // end-of-[  T_OP2(_)  ]
+|
+T_OP3 _ => let
+//
+val tbeg = tok
+val (  ) = buf.skip1()
+val deid = p1_d0eid(buf, err)
+val tend = p1_RPAREN(buf, err)
+val loc0 = tbeg.lctn() + tend.lctn()
+//
+in
+err := e00;
+d0exp_make_node(loc0, D0Eopid(deid))
+end(*let*) // end-of-[  T_OP3(_)  ]
+//
+| T_LT0() =>
+let
+//
+val tok1 = tok
+val (  ) = buf.skip1()
+//
+val
+mark = tokbuf_mark_get(buf)
+//
+val
+s0es = list_vt2t
+(
+ps_COMMA_p1fun{s0exp}
+(buf, err, p1_s0exp_app_NGT0))
+//
+val tok2 = buf.getk0((*void*))
+//
+in//let
+//
+case+
+tok2.node() of
+| T_GT0() =>
+let
+val tbeg = tok1
+val tend = tok2
+val (  ) = buf.skip1()
+val (  ) =
+tokbuf_mark_clr(buf, mark)
+val lres = tbeg.lctn()+tend.lctn()
+in//let
+err := e00;
+d0exp_make_node
+(lres, D0Etqarg(tbeg, s0es, tend))
+end(*let*) // end of [ T_GT0() ]
+|
+_(*non-T_GT0*) =>
+let
+//
+val (  ) =
+tokbuf_mark_set(buf, mark)
+//
+val loc0 = tok1.lctn()
+val tnd2 = T0IDENT_LT0(*val*)
+val tok2 = token_make_node(loc0,tnd2)
+in//let
+  d0exp(loc0, D0Eid0(i0dnt_some(tok2)))
+end(*let*) // end-of-[ non-T_GT0 ]
+//
+end(*let*) // end-of-[ T_LT0(  ) ]
+//
+|
+T_GT0() =>
+let
+val tok1 = tok
+val (  ) = buf.skip1()
+val loc0 = tok1.lctn()
+val tnd2 = T0IDENT_GT0(*val*)
+val tok2 = token_make_node(loc0,tnd2)
+in//let
+  d0exp(loc0, D0Eid0(i0dnt_some(tok2)))
+end (*let*) // end-of-[ T_GT0(  ) ]
+(*
+//
+| T_LTGT() => let
+    val () =
+      buf.skip1()
+    // end-of-[val]
+    val tbeg = tok
+    val tend = tok
+    val s0es = list_nil()
+    val loc_res = tok.lctn()
+  in
+    d0exp_make_node
+    (loc_res, D0Etqarg(tbeg, s0es, tend))
+  end // end-of-[T_LTGT]
+//
+| T_LBRACE() => let
+    val () = buf.skip1()
+    val s0es =
+      p_s0expseq_COMMA(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACE(buf, err)
+  in
+    err := e00;
+    d0exp_make_node
+    ( loc_res
+    , D0Esqarg(tbeg, s0es, tend)) where
+    {
+      val loc_res = tbeg.lctn()+tend.lctn()
+    }
+  end // end-of-[T_LBRACE]
+//
+| T_LPAREN() => let
+    val () = buf.skip1()
+    val d0es =
+      p1_d0expseq_COMMA(buf, err)
+    // end-of-[val]
+    val tbeg = tok
+    val tend = p1_d0exp_RPAREN(buf, err)
+  in
+    err := e00;
+    d0exp_make_node
+    ( loc_res
+    , D0Eparen(tbeg, d0es, tend)) where
+    {
+      val loc_res =
+        tbeg.lctn()+d0exp_RPAREN_loc(tend)
+      // end-of-[val]
+    }
+  end // end-of-[T_LPAREN]
+//
+| T_TRCD1(k0) => let
+    val () = buf.skip1()
+    val topt =
+    ( if
+      (k0 <= 1)
+      then None()
+      else Some(p_LPAREN(buf, err))
+    ) : tokenopt // end-of-[val]
+    val d0es =
+      p1_d0expseq_COMMA(buf, err)
+    // end-of-[val]
+    val tbeg = tok
+    val tend = p1_d0exp_RPAREN(buf, err)
+  in
+    err := e00;
+    d0exp_make_node
+    ( loc_res
+    , D0Etrcd1
+      (tbeg, topt, d0es, tend)) where
+    {
+      val loc_res =
+        tbeg.lctn()+d0exp_RPAREN_loc(tend)
+      // end-of-[val]
+    }
+  end // end-of-[T_TRCD1]
+//
+| T_LET() => let
+//
+    val () = buf.skip1()
+//
+    val d0cs =
+    p1_d0eclseq_dyn(buf, err)
+//
+    val
+    topt = popt_IN(buf, err)
+    val d0es =
+    p1_d0expseq_SMCLN(buf, err)
+    val tok2 = p_ENDLET(buf, err)
+//
+    val loc_res = tok.lctn()+tok2.lctn()
+  in
+    err := e00;
+    d0exp_make_node
+    ( loc_res
+    , D0Elet(tok, d0cs, topt, d0es, tok2))
+  end // end-of-[T_LET]
+//
+| T_TRY() => let
+//
+    val () = buf.skip1()
+//
+    val d0e1 =
+      p_appd0exp(buf, err)
+    // end-of-[val]
+//
+    val tok2 =
+      p_WITH(buf, err)
+    val tbar =
+      popt_BAR(buf, err)
+    val d0cs =
+      p1_d0clauseq_BAR(buf, err)
+    val tend = p_ENDTRY(buf, err)
+//
+    val loc_res = tok.lctn()+tend.lctn()
+//
+  in
+    err := e00;
+    d0exp_make_node
+    ( loc_res
+    , D0Etry0
+      (tok, d0e1, tok2, tbar, d0cs, tend))
+  end // end-of-[T_TRY]
+//
+| T_DOT() => let
+    val () =
+      buf.skip1()
+    // end-of-[val]
+    val lab =
+      p_l0abl(buf, err)
+    val arg = let
+      val tok2 = buf.get0()
+    in
+      case+
+      tok2.node() of
+      | T_LPAREN() =>
+        Some( d0e ) where
+        {
+          val d0e =
+            p_atmd0exp(buf, err)
+          // end-of-[val]
+        }
+      | _(* non-LPAREN *) => None()
+    end : d0expopt // end-of-[val]
+    val loc_res = let
+      val loc = tok.lctn()
+    in
+      case+ arg of
+      | None() => loc + lab.lctn()
+      | Some(d0e) => loc + d0e.lctn()
+    end // end-of-[val]
+  in
+    d0exp_make_node
+    (loc_res, D0Edtsel(tok, lab, arg))
+  end // end-of-[T_DOT]
+//
+| T_LBRACK() => let
+    val () = buf.skip1()
+    val d0es =
+      p1_d0expseq_COMMA(buf, err)
+    val tbeg = tok
+    val tend = p_RBRACK(buf, err)
+  in
+    err := e00;
+    let
+      val
+      loc_res =
+      tbeg.lctn()+tend.lctn()
+    in
+      d0exp_make_node
+      ( loc_res
+      , D0Ebrack(tbeg, d0es, tend) )
+    end
+  end // end-of-[T_LBRACK]
+//
+| T_IDENT_qual _ => let
+    val () = buf.skip1()
+    val d0e = p_atmd0exp(buf, err)
+  in
+    err := e00;
+    d0exp_make_node
+    ( loc_res
+    , D0Equal(tok, d0e)) where
+    {
+      val loc_res = tok.lctn()+d0e.lctn()
+    }
+  end // end-of-[T_IDENT_qual]
+//
+|
+T_DLR_EXTNAM _ => let
+  val () = buf.skip1()
+  val gnm = p_g0nam(buf, err)
+in
+  err := e00;
+  d0exp_make_node
+  ( loc_res, D0Eextnam(gnm) ) where
+  {
+    val loc_res = tok.lctn()+gnm.lctn()
+  }
+end // end-of-[T_DLR_EXTNAM]
+//
+|
+T_DLR_EXISTS _ => let
+  val () = buf.skip1()
+  val sqs =
+    p1_D0Esqargseq(buf, err)
+  val d0e = p_atmd0exp(buf, err)
+in
+  err := e00;
+  d0exp_make_node
+  ( loc_res
+  , D0Eexists(tok, sqs, d0e)) where
+  {
+    val loc_res = tok.lctn()+d0e.lctn()
+  }
+end // end-of-[T_DLR_EXISTS]
+//
+*)
+|
+_(* error-processing *) =>
+(
+err := e00 + 1;
+d0exp_make_node(tok.lctn(), D0Etkerr(tok)))
+//
+end(*end*)//end-of-[p1_d0exp_atm(buf,err)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)

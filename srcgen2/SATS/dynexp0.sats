@@ -315,7 +315,14 @@ d0exp_node =
 | D0Eflt of t0flt
 | D0Estr of t0str
 //
+| D0Eopid of d0eid
+//
 | D0Eapps of d0explst
+//
+| D0Esqarg of // sexparg
+  (token, s0explst, token)
+| D0Etqarg of // temparg
+  (token, s0explst, token)
 //
 |
 D0Elpar of
