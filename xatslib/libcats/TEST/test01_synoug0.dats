@@ -376,4 +376,15 @@ val () = prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
 
 (* ****** ****** *)
 
+val ab = list_vt('a', 'b')
+val cd = list_vt('c', 'd')
+val ef = list_vt('e', 'f')
+val () = prerrln("ab = ", ab)
+val () = prerrln("cd = ", cd)
+val () = prerrln("ef = ", ef)
+val () = prerrln("glappend1(...) = ", glappend1(ab, cd, ef))
+val () = prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
+
+(* ****** ****** *)
+
 (* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)

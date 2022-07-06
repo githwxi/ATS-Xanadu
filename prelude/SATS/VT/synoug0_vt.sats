@@ -56,6 +56,117 @@ optn_vt with optn_vt_a00
 optn_vt with optn_vt_a01
 //
 (* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 20:35:51 EDT 2022
+*)
+//
+fun
+<a0:vt>
+list_vt_a00
+(      ): list_vt(a0, 0)
+fun
+<a0:vt>
+list_vt_a01
+(x1: a0): list_vt(a0, 1)
+fun
+<a0:vt>
+list_vt_a02
+(x1: a0
+,x2: a0): list_vt(a0, 2)
+fun
+<a0:vt>
+list_vt_a03
+(x1: a0
+,x2: a0
+,x3: a0): list_vt(a0, 3)
+fun
+<a0:vt>
+list_vt_a04
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0): list_vt(a0, 4)
+fun
+<a0:vt>
+list_vt_a05
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0): list_vt(a0, 5)
+fun
+<a0:vt>
+list_vt_a06
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0
+,x6: a0): list_vt(a0, 6)
+fun
+<a0:vt>
+list_vt_a07
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0
+,x6: a0
+,x7: a0): list_vt(a0, 7)
+fun
+<a0:vt>
+list_vt_a08
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0
+,x6: a0
+,x7: a0
+,x8: a0): list_vt(a0, 8)
+fun
+<a0:vt>
+list_vt_a09
+(x1: a0
+,x2: a0
+,x3: a0
+,x4: a0
+,x5: a0
+,x6: a0
+,x7: a0
+,x8: a0
+,x9: a0): list_vt(a0, 9)
+fun
+<a0:vt>
+list_vt_a10
+(x01: a0
+,x02: a0
+,x03: a0
+,x04: a0
+,x05: a0
+,x06: a0
+,x07: a0
+,x08: a0
+,x09: a0
+,x10: a0): list_vt(a0, 10)
+//
+(* ****** ****** *)
+//
+#symload list_vt with list_vt_a00
+#symload list_vt with list_vt_a01
+#symload list_vt with list_vt_a02
+#symload list_vt with list_vt_a03
+#symload list_vt with list_vt_a04
+#symload list_vt with list_vt_a05
+#symload list_vt with list_vt_a06
+#symload list_vt with list_vt_a07
+#symload list_vt with list_vt_a08
+#symload list_vt with list_vt_a09
+#symload list_vt with list_vt_a10
+//
+(* ****** ****** *)
 //HX:
 //implementing fproc0/1
 (* ****** ****** *)
@@ -1397,6 +1508,83 @@ list_vt_glappend0_a10
 #symload glappend0 with list_vt_glappend0_a08
 #symload glappend0 with list_vt_glappend0_a09
 #symload glappend0 with list_vt_glappend0_a10
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 20:25:07 EDT 2022
+*)
+//
+fun
+<a0:vt>
+list_vt_glappend1_a02
+( !list_vt(a0)
+, !list_vt(a0) ): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend1_a03
+( !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend1_a04
+( !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend1_a05
+( !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend1_a06
+( !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend1_a07
+( !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend1_a08
+( !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend1_a09
+( !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)): list_vt(a0)
+fun
+<a0:vt>
+list_vt_glappend1_a10
+( !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)
+, !list_vt(a0), !list_vt(a0)): list_vt(a0)
+//
+(* ****** ****** *)
+//
+#symload glappend1 with list_vt_glappend1_a02
+#symload glappend1 with list_vt_glappend1_a03
+#symload glappend1 with list_vt_glappend1_a04
+#symload glappend1 with list_vt_glappend1_a05
+#symload glappend1 with list_vt_glappend1_a06
+#symload glappend1 with list_vt_glappend1_a07
+#symload glappend1 with list_vt_glappend1_a08
+#symload glappend1 with list_vt_glappend1_a09
+#symload glappend1 with list_vt_glappend1_a10
 //
 (* ****** ****** *)
 

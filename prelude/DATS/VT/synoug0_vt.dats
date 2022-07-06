@@ -23,6 +23,134 @@ optn_vt_cons(  x1  )
 //
 (* ****** ****** *)
 //
+(*
+HX: 2022-07-05:
+Tue Jul  5 20:38:08 EDT 2022
+*)
+//
+#impltmp
+<a0>
+list_vt_a00
+(      ) =
+list_vt_nil((*void*))
+#impltmp
+<a0>
+list_vt_a01
+(  x1  ) =
+list_vt_cons(x1, list_vt_nil())
+#impltmp
+<a0>
+list_vt_a02
+(x1, x2) =
+list_vt_cons(x1,
+list_vt_cons(x2, list_vt_nil()))
+#impltmp
+<a0>
+list_vt_a03
+(x1
+,x2, x3) =
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3, list_vt_nil())))
+#impltmp
+<a0>
+list_vt_a04
+(x1, x2
+,x3, x4) =
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3,
+list_vt_cons(x4, list_vt_nil()))))
+#impltmp
+<a0>
+list_vt_a05
+(x1
+,x2, x3
+,x4, x5) =
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3,
+list_vt_cons(x4,
+list_vt_cons(x5, list_vt_nil())))))
+#impltmp
+<a0>
+list_vt_a06
+(x1, x2
+,x3, x4
+,x5, x6) =
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3,
+list_vt_cons(x4,
+list_vt_cons(x5,
+list_vt_cons(x6, list_vt_nil()))))))
+#impltmp
+<a0>
+list_vt_a07
+(x1
+,x2, x3
+,x4, x5
+,x6, x7) =
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3,
+list_vt_cons(x4,
+list_vt_cons(x5,
+list_vt_cons(x6,
+list_vt_cons(x7, list_vt_nil())))))))
+#impltmp
+<a0>
+list_vt_a08
+(x1, x2
+,x3, x4
+,x5, x6
+,x7, x8) =
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3,
+list_vt_cons(x4,
+list_vt_cons(x5,
+list_vt_cons(x6,
+list_vt_cons(x7,
+list_vt_cons(x8, list_vt_nil()))))))))
+#impltmp
+<a0>
+list_vt_a09
+(x1
+,x2, x3
+,x4, x5
+,x6, x7
+,x8, x9) =
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3,
+list_vt_cons(x4,
+list_vt_cons(x5,
+list_vt_cons(x6,
+list_vt_cons(x7,
+list_vt_cons(x8,
+list_vt_cons(x9, list_vt_nil())))))))))
+#impltmp
+<a0>
+list_vt_a10
+(x01,x02
+,x03,x04
+,x05,x06
+,x07,x08
+,x09,x10) =
+list_vt_cons(x01,
+list_vt_cons(x02,
+list_vt_cons(x03,
+list_vt_cons(x04,
+list_vt_cons(x05,
+list_vt_cons(x06,
+list_vt_cons(x07,
+list_vt_cons(x08,
+list_vt_cons(x09,
+list_vt_cons(x10, list_vt_nil()))))))))))
+//
+(* ****** ****** *)
+//
 // HX:
 // Implementing fproc0/1
 //
@@ -2273,6 +2401,85 @@ glfred2r0_a10<list_vt(a0)> where
 {
 #impltmp
 gl_fred20<list_vt(a0)> = list_vt_append0<a0> }
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-07-05:
+Tue Jul  5 20:23:29 EDT 2022
+*)
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a02 =
+glfred2r1_a02<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a03 =
+glfred2r1_a03<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a04 =
+glfred2r1_a04<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a05 =
+glfred2r1_a05<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a06 =
+glfred2r1_a06<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a07 =
+glfred2r1_a07<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a08 =
+glfred2r1_a08<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a09 =
+glfred2r1_a09<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
+//
+#impltmp
+<a0>(*tmp*)
+list_vt_glappend1_a10 =
+glfred2r1_a10<list_vt(a0)> where
+{
+#impltmp
+gl_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 (* ****** ****** *)
 
