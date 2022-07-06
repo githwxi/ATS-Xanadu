@@ -333,6 +333,18 @@ D0Elpar of
   , d0exp
   , d0exp_THEN, d0exp_ELSE)
 //
+|
+D0Ebrckt of
+(token(*LB*), d0explst, token(*RB*))
+|
+D0Edtsel of
+(token(*DOT/MGT*), l0abl, d0expopt(*arg*))
+//
+|
+D0Eanno of (d0exp, s0exp) // HX: annotation
+| // qualified-id
+D0Equal of (token, d0exp) // HX: qual-d0exp
+//
 | // HX-2020-11-04: for specifying
 D0Eextnam of (g0nam) // external names
 |
@@ -403,7 +415,33 @@ d0exp_fprint
 (* ****** ****** *)
 //
 fun
-d0exp_get_lctn(d0exp): loc_t
+d0exp_get_lctn
+  (dexp: d0exp): loc_t
+//
+(* ****** ****** *)
+//
+fun
+d0exp_THEN_get_lctn
+  (dthn: d0exp_THEN): loc_t
+fun
+d0exp_ELSE_get_lctn
+  (dels: d0exp_THEN): loc_t
+fun
+d0exp_RPAREN_get_lctn
+  (dels: d0exp_RPAREN): loc_t
+//
+(* ****** ****** *)
+//
+#symload
+lctn with d0exp_THEN_get_lctn
+#symload
+lctn with d0exp_ELSE_get_lctn
+#symload
+lctn with d0exp_RPAREN_get_lctn
+//
+#symload lctn with d0exp_get_lctn
+//
+(* ****** ****** *)
 fun
 d0exp_get_node(d0exp): d0exp_node
 //

@@ -117,6 +117,10 @@ D0E = "./dynexp0.sats"
 
 (* ****** ****** *)
 
+#typedef s0explst = $S0E.s0explst
+
+(* ****** ****** *)
+
 #typedef wd0eclseq = $D0E.wd0eclseq
 
 (* ****** ****** *)
@@ -390,6 +394,11 @@ fun
 p1_t0argseq_COMMA: p1_fun(t0arglst)
 fun
 p1_s0quaseq_BSCLN: p1_fun(s0qualst)
+(* ****** ****** *)
+fun
+p1_s0expseq_COMMA: p1_fun(s0explst)
+fun
+p1_s0expseq_SMCLN: p1_fun(s0explst)
 (* ****** ****** *)
 //
 (*
