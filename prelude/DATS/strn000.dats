@@ -48,23 +48,27 @@ strn_make_list<>
 //
 (* ****** ****** *)
 
-#impltmp<>
+#impltmp
+<>(*tmp*)
 strn_nilq(cs) =
 char_eqz
-(strn_head_opt(cs))
-#impltmp<>
+(strn_head_opt<>(cs))
+#impltmp
+<>(*tmp*)
 strn_consq(cs) =
 char_neqz
-(strn_head_opt(cs))
+(strn_head_opt<>(cs))
 
 (* ****** ****** *)
 
-#impltmp<>
+#impltmp
+<>(*tmp*)
 strn_head(cs) =
-(strn_head_raw(cs))
-#impltmp<>
+(strn_head_raw<>(cs))
+#impltmp
+<>(*tmp*)
 strn_tail(cs) =
-(strn_tail_raw(cs))
+(strn_tail_raw<>(cs))
 
 (* ****** ****** *)
 //
@@ -618,12 +622,13 @@ gseq_print$end<xs><x0>() = ()
 gseq_print$sep<xs><x0>() = ()
 //
 (* ****** ****** *)
-
+#impltmp
+gseq_nil<xs><x0> = strn_nil<>
+(* ****** ****** *)
 #impltmp
 gseq_nilq<xs><x0> = strn_nilq<>
 #impltmp
 gseq_consq<xs><x0> = strn_consq<>
-
 (* ****** ****** *)
 
 #impltmp

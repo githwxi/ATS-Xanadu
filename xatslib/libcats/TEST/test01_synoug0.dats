@@ -387,4 +387,10 @@ val () = prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
 
 (* ****** ****** *)
 
+val () =
+prerrln
+("gseq_drop(\"abcdefg\", 3) = ", gseq_drop("abcdefg", 3))
+
+(* ****** ****** *)
+
 (* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)

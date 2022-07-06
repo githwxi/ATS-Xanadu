@@ -176,6 +176,19 @@ gseq_dropif(xs: xs): xs
 //
 (* ****** ****** *)
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_take
+(xs: xs, n0: sint): xs
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_takeif(xs: xs): xs
+//
+(* ****** ****** *)
+//
 (*
 gseq_foldl: foldl$fopr
 gseq_foldr: foldr$fopr
@@ -679,6 +692,13 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_idropif(xs: xs): xs
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_itakeif(xs: xs): xs
 //
 fun
 <xs:t0>

@@ -301,6 +301,20 @@ idropif$test<x0>(i0, x0) = dropif$test<x0>(x0)
 (* ****** ****** *)
 
 #impltmp
+<xs><x0>
+gseq_take
+  (xs, n0) =
+(
+gseq_itakeif
+< xs >< x0 >(xs)) where
+{
+#impltmp
+itakeif$test<x0>(i0, x0) = (i0 < n0)
+} (*where*)//end-of(gseq_drop/takeif)
+
+(* ****** ****** *)
+
+#impltmp
 <xs>
 <x0><r0>
 gseq_foldl
@@ -1539,11 +1553,12 @@ end(*let*)//end-of-[gseq_group_list]
 #impltmp
 <xs><x0>
 gseq_idropif
-  (xs) =
-( loop(xs, 0) ) where
+  ( xs ) =
+(
+loop(xs, 0)) where
 {
 //
-fun
+fnx
 loop
 ( xs: xs
 , i0: nint): xs =
@@ -1562,16 +1577,14 @@ if
 idropif$test<x0>(i0, x0)
 then
 (
-  loop(xs, succ(i0))
-) where
+  loop(xs, succ(i0))) where
 {
   val xs =
-  gseq_tail_raw<xs><x0>(xs)
-} (* end of [then] *)
-else (xs) // end-of-else
+  gseq_tail_raw<xs><x0>(xs) }
+else (xs) // else // end-of-if
 endlet (* end of [loop(xs,i0)] *)
 //
-} (*where*)//end-of-[gseq_idropif]
+} (*where*)//end-of-[gseq_idropif(xs)]
 //
 (* ****** ****** *)
 
