@@ -907,23 +907,25 @@ in
   }
 end // end-of-[T_DLR_EXTNAM]
 //
-|
-T_DLR_EXISTS _ => let
-  val () = buf.skip1()
-  val sqs =
-    p1_D0Esqargseq(buf, err)
-  val d0e = p_atmd0exp(buf, err)
-in
-  err := e00;
-  d0exp_make_node
-  ( loc_res
-  , D0Eexists(tok, sqs, d0e)) where
-  {
-    val loc_res = tok.lctn()+d0e.lctn()
-  }
-end // end-of-[T_DLR_EXISTS]
-//
 *)
+|
+T_DLR_EXISTS _ =>
+let
+  val tok0 = tok
+  val (  ) = buf.skip1()
+  val sqas =
+  p1_d0expseq_sqarg(buf, err)
+  val d0e1 = p1_d0exp_atm(buf, err)
+in//let
+  err := e00
+; d0exp_make_node
+  ( lres
+  , D0Eexists(tok0,sqas,d0e1)) where
+  {
+    val lres = tok0.lctn()+d0e1.lctn()
+  }
+end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
+//
 |
 _(* error-processing *) =>
 (

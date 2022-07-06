@@ -334,6 +334,11 @@ D0Elpar of
   , d0exp_THEN, d0exp_ELSE)
 //
 |
+D0Eexists of
+( token // HX-2021-01-14: $exists{..}..{..}
+, d0explst(*D0Esqarglst*), d0exp) // (d0exp)
+//
+|
 (*
 HX-2022-06-20:
 D0Etkerr(tok):
