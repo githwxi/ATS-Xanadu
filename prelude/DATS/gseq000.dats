@@ -729,8 +729,8 @@ gseq_unstrm_vt<xs><x0>
 //
 #impltmp
 <xs><x0>
-gseq_unlist(xx) =
-let
+gseq_unlist
+  ( xx ) = let
 //
 val xx =
 list_rcopy_vt<x0>(xx)
@@ -765,8 +765,8 @@ end // end of [gseq_unlist_vt]
 //
 #impltmp
 <xs><x0>
-gseq_unrlist_vt(xx) =
-let
+gseq_unrlist_vt
+  ( xx ) = let
 //
 fun
 loop
@@ -789,6 +789,19 @@ endlet//end-of-[gseq_unrlist_vt]
 //
 #impltmp
 <xs><x0>
+gseq_unstrm
+  ( xx ) =
+(
+  gseq_unstrm_vt<xs><x0>(xs)
+) where
+{
+val xs = strm_strmize<x0>(xx)
+}(*where*)//end-of(gseq_unstrm)
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
 gseq_unstrm_vt
   (xx) =
 (
@@ -797,6 +810,19 @@ gseq_unstrm_vt
 {
 val xs = strm_vt_rlistize<x0>(xx)
 }(*where*)//end-of(gseq_unstrm_vt)
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs>
+<x0>(*tmp*)
+<n0>(*tmp*)
+gseq_tabulate
+  ( n0 ) =
+(
+ gseq_unstrm_vt<xs><x0>
+ (strm_vt_tabulate<x0><n0>( n0 ))
+) // end-of-[gseq_vt_tabulate(n0)]
 //
 (* ****** ****** *)
 //

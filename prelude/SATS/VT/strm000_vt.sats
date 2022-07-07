@@ -282,6 +282,21 @@ fun
 strm_vt_sortedq(strm_vt(x0)): bool
 //
 (* ****** ****** *)
+//
+fun
+<a:vt>
+<n:i0>
+strm_vt_tabulate
+(n0: sint(n)): strm_vt( a )
+fun
+<a:vt>
+strm_vt_tabulate_cfr
+{n:nat}
+( n0: sint(n)
+, f0
+: nintlt(n) -<cfr> a): strm_vt( a )
+//
+(* ****** ****** *)
 (*
 HX-2022-06-02:
 For verbs declared in [gbas.sats]
