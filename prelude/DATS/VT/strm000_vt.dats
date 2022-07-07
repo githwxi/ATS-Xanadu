@@ -741,10 +741,51 @@ if
 then
 (g_free(x0); loop(x1, xs))
 else
-(g_free(x0); g_free(x1); g_free(xs); false)
+(g_free(x0);g_free(x1);g_free(xs);false)
 )
 } (*where*) // end-of-[strm_vt_sortedq(xs)]
 
+(* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+<n>(*tmp*)
+strm_vt_tabulate
+  ( n0 ) =
+(
+auxmain(0(*i0*))) where
+{
+fun
+auxmain
+{i:nat
+|i<=n}
+(i0: sint(i)): strm_vt(a) = $llazy
+(
+if
+(i0 >= n0)
+then strmcon_vt_nil() else
+let
+val x0 = tabulate$fopr<a>(i0)
+in//let
+strmcon_vt_cons(x0, auxmain(succ(i0)))
+end // let // end-of-[ auxmain(i0) ]
+)
+}(*where*) // end of [strm_vt_tabulate(n0)]
+
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+strm_vt_tabulate_cfr
+  {n}(n0, f0) =
+(
+strm_vt_tabulate<a><n>(n0)
+) where
+{
+#impltmp
+tabulate$fopr<a><n>(i0) = f0(i0)
+}(*where*) // end-of-[strm_vt_tabulate_cfr]
+//
 (* ****** ****** *)
 
 #impltmp

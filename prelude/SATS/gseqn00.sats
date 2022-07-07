@@ -270,5 +270,14 @@ i0->t0>
 gseqn1_map{ln:int}(xs:xs(ln)): ys(ln)
 //
 (* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+<ln:i0>
+gseqn1_tabulate(ln: sint(ln)): xs(ln)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseqn00.sats] *)

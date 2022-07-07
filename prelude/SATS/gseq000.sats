@@ -315,6 +315,8 @@ fun
 gseq_range_lte
 (s1: x0, f2: x0): (xs)
 //
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -343,6 +345,14 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_unstrm_vt(strm_vt(x0)): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<n0:i0>
+gseq_tabulate(n0: sint(n0)): (xs)
 //
 (* ****** ****** *)
 //
