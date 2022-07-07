@@ -689,8 +689,7 @@ end(*let*)//end-of(strm_vt_gappend)
 strm_vt_gconcat
   (xss) =
 (
-  gconcat(xss)
-) where
+gconcat(xss)) where
 {
 fun
 gconcat(xss) =
@@ -705,16 +704,16 @@ strmcon_vt_nil()
 strmcon_vt_cons(xs0, xss) => !
 (
 strm_vt_append<x0>
-(glseq_strmize<xs><x0>(xs0), gconcat(xss)))
+(glseq_strmize<xs><x0>(xs0),gconcat(xss)))
 )
-}(*where*)//end-of-[strm_vt_gconcat]
+}(*where*) // end-of-[strm_vt_gconcat(xss)]
 //
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
 strm_vt_sortedq
-  (xs) =
+  ( xs ) =
 (
 case+ !xs of
 | ~
@@ -733,7 +732,8 @@ loop
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
-let val () = g_free<a>(x0) in true end
+let
+val () = g_free<a>(x0) in true end
 | ~
 strmcon_vt_cons(x1, xs) =>
 if
@@ -743,12 +743,12 @@ then
 else
 (g_free(x0); g_free(x1); g_free(xs); false)
 )
-} (*where*) // end-of-[strm_vt_sortedq]
+} (*where*) // end-of-[strm_vt_sortedq(xs)]
 
 (* ****** ****** *)
 
 #impltmp
-<a><r0>
+<x0><r0>
 strm_vt_foldl0
   (xs, r0) = r0 where
 {
@@ -759,17 +759,17 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  strm_vt_foreach0<a>(xs)
+  strm_vt_foreach0<x0>(xs)
 ) where
 {
 #impltmp
-foreach0$work<a>(x0) =
+foreach0$work<x0>(x0) =
 let
 val r0 = $UN.p2tr_get<r0>(p0)
 in
 //
 $UN.p2tr_set<r0>
-  (p0, foldl0$fopr<a><r0>(r0, x0))
+  (p0, foldl0$fopr<x0><r0>(r0, x0))
 //
 end // end of [foreach0$work]
 }
@@ -779,7 +779,7 @@ end // end of [foreach0$work]
 (* ****** ****** *)
 
 #impltmp
-<a>(*tmp*)
+<x0>(*tmp*)
 strm_vt_forall0
   (xs) =
 ( loop(xs) ) where
@@ -787,7 +787,7 @@ strm_vt_forall0
 fnx
 loop
 ( xs
-: strm_vt(a)): bool =
+: strm_vt(x0)): bool =
 (
 case+ !xs of
 | ~
@@ -796,7 +796,7 @@ strmcon_vt_nil() => true
 strmcon_vt_cons(x0, xs) =>
 let
   val
-  test = forall0$test<a>(x0)
+  test = forall0$test<x0>(x0)
 in
 if
 test
@@ -808,18 +808,18 @@ end
 (* ****** ****** *)
 
 #impltmp
-<a>(*tmp*)
+<x0>(*tmp*)
 strm_vt_foreach0
   (xs) = let
 //
 val
 test =
-strm_vt_forall0<a>(xs) where
+strm_vt_forall0<x0>(xs) where
 {
 #impltmp
-forall0$test<a>(x0) =
+forall0$test<x0>(x0) =
 let
-val () = foreach0$work<a>(x0) in true
+val () = foreach0$work<x0>(x0) in true
 end
 }
 //
