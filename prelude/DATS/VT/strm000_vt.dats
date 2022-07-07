@@ -797,11 +797,11 @@ strmcon_vt_cons(x0, xs) =>
 let
   val
   test = forall0$test<x0>(x0)
-in
+in//let
 if
 test
 then loop(xs) else (g_free(xs); false)
-end
+end// let // end of [ loop(xs) ]
 ) (* end of [loop] *)
 } (*where*) // end-of-[strm_vt_forall0]
 
