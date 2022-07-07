@@ -383,16 +383,20 @@ val () = prerrln("ab = ", ab)
 val () = prerrln("cd = ", cd)
 val () = prerrln("ef = ", ef)
 val () =
-prerrln("glappend1(...) = ", glappend1(ab, cd, ef))
+prerrln
+("glappend1(...) = ", glappend1(ab, cd, ef))
 val () =
-prerrln("glappend0(...) = ", glappend0(ab, cd, ef))
+prerrln
+("glappend0(...) = ", glappend0(ab, cd, ef))
 
 (* ****** ****** *)
 
 val () =
-prerrln("az = ", gseq_range_lte<strn>('a', 'z'))
+prerrln("0-9 = ", gseq_range_lte<strn>('0', '9'))
 val () =
-prerrln("AZ = ", gseq_range_lte<strn>('A', 'Z'))
+prerrln("a-z = ", gseq_range_lte<strn>('a', 'z'))
+val () =
+prerrln("A-Z = ", gseq_range_lte<strn>('A', 'Z'))
 
 (* ****** ****** *)
 

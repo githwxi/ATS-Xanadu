@@ -423,12 +423,12 @@ gseq_forall<xs><x0>(xs) where
 #impltmp
 forall$test<x0>(x0) =
 let
-val () = foreach$work<x0>(x0) in true
-end
-}
-in
+val () =
+foreach$work<x0>(x0) in true end
+} (*where*) // end of [ val(test) ]
+in//let
   // nothing
-end // end of [gseq_foreach/forall]
+end //end-of-[gseq_foreach/forall(xs)]
 
 (* ****** ****** *)
 //
@@ -458,7 +458,7 @@ optn_vt_cons(x0) => x0) where
 {
 val
 opt = gseq_search_opt<xs><x0>(xs)
-}(*where*)//end-of-[ gseq_search( xs ) ]
+}(*where*)//end-of-[ gseq_search(xs) ]
 //
 #impltmp
 <xs><x0>
@@ -471,7 +471,7 @@ optn_vt_cons(x0) => x0) where
 {
 val
 opt = gseq_rsearch_opt<xs><x0>(xs)
-}(*where*)//end-of-[gseq_rsearch( xs ) ]
+}(*where*)//end-of-[gseq_rsearch(xs) ]
 //
 (* ****** ****** *)
 #impltmp
@@ -553,7 +553,7 @@ end where
 //
 #vwtpdef res = optn_vt(x0)
 //
- var r0: res = optn_vt_nil((*void*))
+var r0: res = optn_vt_nil((*void*))
 //
 }(*where*)//end-of-[gseq_rsearch_opt]
 //
@@ -568,8 +568,8 @@ case- opt of
 | ~
 optn_vt_cons(x0) => x0) where
 {
-val opt =
-gseq_get_at_opt<xs><x0>(xs, i0)
+val
+opt = gseq_get_at_opt<xs><x0>(xs, i0)
 }(*where*)//end-of-[gseq_get_at(xs,i0)]
 
 (* ****** ****** *)
