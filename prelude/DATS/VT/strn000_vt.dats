@@ -475,9 +475,22 @@ end(*let*)//end-of-[strn_vt_make_strm_vt]
 (* ****** ****** *)
 //
 #impltmp
+<>(*tmp*)
+strntrm_vt_concat
+( css ) =
+strn_vt_make_strm_vt<>
+(strm_vt_gconcat<strn><cgtz>(css))
+#impltmp
+<>(*tmp*)
+strnlst_vt_concat(css) =
+strntrm_vt_concat<>(list_vt_strmize(css))
+//
+(* ****** ****** *)
+//
+#impltmp
 <n>(*tmp*)
 strn_vt_tabulate
-( n0 ) =
+(  n0  ) =
 (
 UN_strn_vt_cast(p0)
 ) where
@@ -486,7 +499,7 @@ UN_strn_vt_cast(p0)
 val p0 =
 strtmp_vt_alloc<>(n0)
 //
-val i0 = 0
+val i0 = 0(*start*)
 val () = loop(p0, i0)
 //
 } where
@@ -514,7 +527,7 @@ tabulate$fopr<cgtz><n>(i0)
 val () =
 strtmp_vt_set_at<>(p0, i0, c0)
 }
-)
+) (* end-of-of[loop(p0, i0)] *)
 //
 } (*where*)//end-of-[strn_vt_tabulate]
 

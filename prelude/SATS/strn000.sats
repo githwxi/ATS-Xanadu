@@ -344,6 +344,15 @@ strnlst_concat_vt
 //
 (* ****** ****** *)
 //
+fun<>
+strntrm_concat
+  (css: strm(strn)): strn
+fun<>
+strntrm_concat_vt
+  (css: strm(strn)): strn_vt
+//
+(* ****** ****** *)
+//
 fun
 <n:i0>
 strn_tabulate

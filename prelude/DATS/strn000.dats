@@ -462,6 +462,16 @@ gseq_concat_strn<list(strn)>(css)
 //
 (* ****** ****** *)
 //
+#impltmp<>
+strntrm_concat(css) =
+strn_vt2t
+(strntrm_concat_vt<>(css))
+#impltmp<>
+strntrm_concat_vt(css) =
+gseq_concat_strn<strm(strn)>(css)
+//
+(* ****** ****** *)
+//
 #impltmp
 <n>(*tmp*)
 strn_tabulate(n0) =
