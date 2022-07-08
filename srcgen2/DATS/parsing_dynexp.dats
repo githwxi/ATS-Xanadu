@@ -754,34 +754,30 @@ in//let
 ; d0exp(lres,D0Elpar(tbeg, d0es, tend))
 end(*let*) // end-of-[  T_LPAREN()  ]
 //
-(*
-| T_TRCD1(k0) => let
-    val () = buf.skip1()
-    val topt =
-    ( if
-      (k0 <= 1)
-      then None()
-      else Some(p_LPAREN(buf, err))
-    ) : tokenopt // end-of-[val]
-    val d0es =
-      p1_d0expseq_COMMA(buf, err)
-    // end-of-[val]
-    val tbeg = tok
-    val tend = p1_d0exp_RPAREN(buf, err)
-  in
-    err := e00;
-    d0exp_make_node
-    ( loc_res
-    , D0Etrcd1
-      (tbeg, topt, d0es, tend)) where
-    {
-      val loc_res =
-        tbeg.lctn()+d0exp_RPAREN_loc(tend)
-      // end-of-[val]
-    }
-  end // end-of-[T_TRCD1]
+|
+T_TRCD10(k0) =>
+let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val topt =
+  ( if
+    (k0 <= 1)
+    then optn_nil()
+    else
+    optn_cons(p1_LPAREN(buf, err))
+  ) : tokenopt // end-of-[val]
+  val d0es =
+    p1_d0expseq_COMMA(buf, err)
+  val tend = p1_d0exp_RPAREN(buf, err)
 //
-*)
+  val lres = tbeg.lctn() + tend.lctn()
+//
+in//let
+  err := e00
+; d0exp_make_node
+  (lres, D0Etup1(tbeg, topt, d0es, tend))
+end (*let*)//end-of-[T_TRCD10(k0)]
+//
 |
 T_LET() => let
 //
@@ -842,7 +838,8 @@ T_TRY() => let
     | list_cons _ =>
       let
       val dcl1 =
-      list_last(dcls) in dcl1.lctn() end
+      list_last(dcls) in dcl1.lctn()
+      endlet // end of [ list_cons ]
     )
     | optn_cons(tend) => tend.lctn()
     ) : loc_t // end of [ val(lend) ]
