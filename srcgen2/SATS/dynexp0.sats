@@ -334,11 +334,30 @@ D0Elpar of
   , d0exp_THEN, d0exp_ELSE)
 //
 |
+D0Elet0 of
+( token
+, d0eclist
+, tokenopt(*IN*), d0explst, token)
+//
+(*
+|
+D0Ewhere of (d0exp, d0eclseq_WHERE)
+*)
+//
+|
 D0Ebrckt of
 (token(*LB*), d0explst, token(*RB*))
 |
 D0Edtsel of
-(token(*DOT/MGT*), l0abl, d0expopt(*arg*))
+(token
+(*DOT/MGT*), l0abl, d0expopt(*arg*))
+//
+|
+D0Etry0 of
+( token
+, d0exp, token(*WITH*)
+, tokenopt, d0clslst, tokenopt(*END*))
+//
 //
 |
 D0Eanno of (d0exp, s0exp) // HX: annotation
@@ -409,14 +428,23 @@ l0d0e_RBRACE_cons0 of token
 l0d0e_RBRACE_cons1 of (token, l0d0elst, token)
 //
 (* ****** ****** *)
+//
 fun
 d0exp_fprint
 (out:FILR, d0e:d0exp): void
+//
+fun
+d0cls_fprint
+(out:FILR, dcl:d0cls): void
+//
 (* ****** ****** *)
 //
 fun
 d0exp_get_lctn
   (dexp: d0exp): loc_t
+fun
+d0cls_get_lctn
+  (dcl1: d0cls): loc_t
 //
 (* ****** ****** *)
 //
@@ -431,28 +459,26 @@ d0exp_RPAREN_get_lctn
   (dels: d0exp_RPAREN): loc_t
 //
 (* ****** ****** *)
-//
-#symload
-lctn with d0exp_THEN_get_lctn
-#symload
-lctn with d0exp_ELSE_get_lctn
-#symload
-lctn with d0exp_RPAREN_get_lctn
-//
 #symload lctn with d0exp_get_lctn
+#symload lctn with d0cls_get_lctn
+(* ****** ****** *)
+//
+#symload lctn with d0exp_THEN_get_lctn
+#symload lctn with d0exp_ELSE_get_lctn
+#symload lctn with d0exp_RPAREN_get_lctn
 //
 (* ****** ****** *)
 fun
 d0exp_get_node(d0exp): d0exp_node
-//
-#symload lctn with d0exp_get_lctn
 #symload node with d0exp_get_node
 //
 (* ****** ****** *)
 fun
 d0exp_make_node
 (loc:loc_t, nod:d0exp_node): d0exp
+//
 #symload d0exp with d0exp_make_node
+//
 (* ****** ****** *)
 //
 datatype
@@ -460,7 +486,7 @@ q0arg_node =
 (*
 | Q0ARGnone of token
 *)
-| Q0ARGsome of (i0dnt, sort0opt)
+| Q0ARGsome of (i0dnt,sort0opt)
 //
 (* ****** ****** *)
 fun

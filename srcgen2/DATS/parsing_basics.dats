@@ -632,6 +632,25 @@ end (*let*) // end of [pq_ENDFIX]
 (* ****** ****** *)
 
 #implfun
+pq_ENDTRY(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_ENDTRY() =>
+optn_cons(tok) where
+{ val () = buf.skip1() }
+|
+_ (* non-ENDTRY *) => optn_nil()
+end (*let*) // end of [pq_ENDTRY]
+
+(* ****** ****** *)
+
+#implfun
 p1_ENDLET(buf, err) =
 let
 val e00 = err
@@ -649,6 +668,7 @@ end (*let*) // end of [p1_ENDLET(...)]
 
 (* ****** ****** *)
 
+(*
 #implfun
 p1_ENDTRY(buf, err) =
 let
@@ -664,6 +684,7 @@ let val () = buf.skip1() in tok end
 _(* non-ENDTRY *) =>
 let val () = (err := e00 + 1) in tok end
 end (*let*) // end of [p1_ENDTRY(...)]
+*)
 
 (* ****** ****** *)
 
