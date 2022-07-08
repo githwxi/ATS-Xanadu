@@ -58,4 +58,9 @@ $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/CATS/Xint/basics0.dats
 all_githwxi_CATS:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/CATS/JS/Node/basics0.dats
 ######
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/SATS/monoid0.sats
+all_githwxi:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/DATS/monoid0.dats
+######
 ###### end of [Makefile_xatslib] ######

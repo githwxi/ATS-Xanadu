@@ -526,42 +526,74 @@ list_rappendx0_vt<a>(xs, list_vt_nil())
 ) (* list_reverse_vt *)
 //
 (* ****** ****** *)
+#impltmp
+<x0>
+<r0>(*tmp*)
+list_foldl =
+gseq_foldl<list(x0)><x0>
+(* ****** ****** *)
+#impltmp
+<x0>
+<r0>(*tmp*)
+list_foldr =
+gseq_foldr<list(x0)><x0>
+(* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
-list_forall(xs) =
+<x0>(*tmp*)
+list_exists(xs) =
   (loop(xs)) where
 {
 fnx
 loop
-(xs: list(a)): bool =
+(xs: list(x0)): bool =
 (
 case+ xs of
 | list_nil() => true
 | list_cons(x0, xs) =>
   if
-  forall$test<a>(x0)
-  then loop(xs) else false
+  exists$test<x0>(x0)
+  then true else loop(xs)
 )
-}
+}(*where*)//end-of-[list_exists(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+<x0>(*tmp*)
+list_forall(xs) =
+  (loop(xs)) where
+{
+fnx
+loop
+(xs: list(x0)): bool =
+(
+case+ xs of
+| list_nil() => true
+| list_cons(x0, xs) =>
+  if
+  forall$test<x0>(x0)
+  then loop(xs) else false
+)
+}(*where*)//end-of-[list_forall(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
 list_foreach(xs) =
   (loop(xs)) where
 {
 fnx
 loop
-(xs: list(a)): void =
+(xs: list(x0)): void =
 (
 case+ xs of
 | list_nil() => ()
 | list_cons(x0, xs) =>
   let
   val () =
-  foreach$work<a>(x0) in loop(xs)
+  foreach$work<x0>(x0) in loop(xs)
   end
 )
 }
@@ -569,14 +601,14 @@ case+ xs of
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
-list_listize = list_copy_vt<a>
+<x0>(*tmp*)
+list_listize = list_copy_vt<x0>
 #impltmp
-<a>(*tmp*)
-list_rlistize = list_rcopy_vt<a>
+<x0>(*tmp*)
+list_rlistize = list_rcopy_vt<x0>
 //
 #impltmp
-<a>(*tmp*)
+<x0>(*tmp*)
 list_strmize
   (xs) =
 ( auxmain(xs) ) where
