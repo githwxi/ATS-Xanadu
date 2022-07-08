@@ -17,6 +17,7 @@ XATSLIB=./../../xatslib
 
 all:: all_libcats
 all:: all_githwxi
+all:: all_haskell
 all:: all_githwxi_CATS
 
 ######
@@ -53,14 +54,19 @@ $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/dvdcnq0.dats
 all_githwxi:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/parcmb1.dats
 ######
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/SATS/monoid0.sats
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/DATS/monoid0.dats
+######
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/SATS/functor.sats
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/DATS/functor.dats
+######
 all_githwxi_CATS:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/CATS/Xint/basics0.dats
 all_githwxi_CATS:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/CATS/JS/Node/basics0.dats
-######
-all_githwxi:: ; \
-$(XATSOPT) -d $(XATSLIB)/haskell/SATS/monoid0.sats
-all_githwxi:: ; \
-$(XATSOPT) -d $(XATSLIB)/haskell/DATS/monoid0.dats
 ######
 ###### end of [Makefile_xatslib] ######
