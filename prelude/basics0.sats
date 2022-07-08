@@ -524,7 +524,7 @@ tbool = bool1(tt) // singleton
 fbool = bool1(ff) // singleton
 //
 #typedef bool = bool0
-#typedef bool(b:bool) = bool1(b)
+#typedef bool(b:b0) = bool1(b)
 //
 (* ****** ****** *)
 //
@@ -537,19 +537,20 @@ char0 = [c:c0] char_type(c)
 char1(c:char) = char_type(c)
 //
 #typedef char = char0
-#typedef char(c:char) = char1(c)
+#typedef char(c:c0) = char1(c)
 //
 (* ****** ****** *)
 //
 #abstype
-gint_type(a:type, int) <= a
+gint_type(a:t0,int) <= (a)
 //
 #typedef
-gint0
-(a:type)=[i:int] gint_type(a,i)
+gint0(a:t0)=
+[i:int] gint_type(a(*k*), i)
+//
 #typedef
-gint1
-(a:type,i:int) = gint_type(a,i)
+gint1 // HX: indexed int-type
+(a:t0,i:int) = gint_type(a, i)
 //
 (* ****** ****** *)
 //
@@ -739,17 +740,18 @@ optn_vt_i0_vx
 #sexpdef optn_vt = optn_vt_i0_vx
 //
 #typedef
-optn(a:type) = [b:b0] optn(a, b)
-//
+optn(a:t0) = [b:b0] optn(a, b)
 #typedef
-optn0(a:type) = [b:b0] optn(a, b)
+optn0(a:t0) = [b:b0] optn(a, b)
 #typedef
-optn1(a:type, b: bool) = optn(a, b)
+optn1(a:t0,b:bool) = optn(a, b)
 //
 #vwtpdef
-optn0_vt(a:type) = [b:b0] optn_vt(a, b)
+optn_vt(a:vt) = [b:b0] optn_vt(a, b)
 #vwtpdef
-optn1_vt(a:type, b: bool) = optn_vt(a, b)
+optn0_vt(a:vt) = [b:b0] optn_vt(a, b)
+#vwtpdef
+optn1_vt(a:vt,b:bool) = optn_vt(a, b)
 //
 (* ****** ****** *)
 //
@@ -768,10 +770,12 @@ list_t0_i0_x0
   a:type+, int(*len*)
 ) =
 //
-  | list_nil(a, 0)
+|
+list_nil(a, 0)
 //
-  | {n:int | n >= 0}
-    list_cons(a, n+1) of (a, list_t0_i0_x0(a, n))
+|
+{n:int | n >= 0}
+list_cons(a, n+1) of (a, list_t0_i0_x0(a, n))
 //
 // end of [list_t0_i0_x0]
 //
@@ -781,10 +785,12 @@ list_vt_i0_vx
   a:vwtp+, int(*len*)
 ) =
 //
-  | list_vt_nil(a, 0)
+|
+list_vt_nil(a, 0)
 //
-  | {n:int | n >= 0}
-    list_vt_cons(a, n+1) of (a, list_vt_i0_vx(a, n))
+|
+{n:int | n >= 0}
+list_vt_cons(a, n+1) of (a, list_vt_i0_vx(a, n))
 //
 // end of [list_vt_i0_vx]
 //
@@ -805,51 +811,51 @@ list_vt_i0_vx
 (* ****** ****** *)
 //
 #typedef
-list(a:type) = [n:int] list(a, n)
+list(a:t0) = [n:int] list(a, n)
 //
 #typedef
-list0(a:type) = [n:int | n >= 0] list(a, n)
+list0(a:t0) = [n:int | n >= 0] list(a, n)
 #typedef
-list1(a:type) = [n:int | n >= 1] list(a, n)
+list1(a:t0) = [n:int | n >= 1] list(a, n)
 //
 #typedef listlt
-  (a:type, n:int) = [k:nat | k < n] list(a, k)
+  (a:t0, n:int) = [k:nat | k < n] list(a, k)
 #typedef listgt
-  (a:type, n:int) = [k:int | k > n] list(a, k)
+  (a:t0, n:int) = [k:int | k > n] list(a, k)
 //
 #typedef listlte
-  (a:type, n:int) = [k:nat | k <= n] list(a, k)
+  (a:t0, n:int) = [k:nat | k <= n] list(a, k)
 #typedef listgte
-  (a:type, n:int) = [k:int | k >= n] list(a, k)
+  (a:t0, n:int) = [k:int | k >= n] list(a, k)
 //
 #typedef listbtw
-  (a:type, m:int, n:int) = [k:int | m <= k; k < n] list(a, k)
+  (a:t0, m:int, n:int) = [k:int | m <= k; k < n] list(a, k)
 #typedef listbtwe
-  (a:type, m:int, n:int) = [k:int | m <= k; k <= n] list(a, k)
+  (a:t0, m:int, n:int) = [k:int | m <= k; k <= n] list(a, k)
 //
 (* ****** ****** *)
 //
 #vwtpdef
-list_vt(a:vwtp) = [n:int] list_vt(a, n)
+list_vt(a:vt) = [n:int] list_vt(a, n)
 //
 #vwtpdef
-list0_vt(a:vwtp) = [n:int | n >= 0] list_vt(a, n)
+list0_vt(a:vt) = [n:int | n >= 0] list_vt(a, n)
 #vwtpdef
-list1_vt(a:vwtp) = [n:int | n >= 1] list_vt(a, n)
+list1_vt(a:vt) = [n:int | n >= 1] list_vt(a, n)
 //
 #vwtpdef listlt_vt
-  (a:vwtp, n:int) = [k:nat | k < n] list_vt(a, k)
+  (a:vt, n:int) = [k:nat | k < n] list_vt(a, k)
 #vwtpdef listgt_vt
-  (a:vwtp, n:int) = [k:int | k > n] list_vt(a, k)
+  (a:vt, n:int) = [k:int | k > n] list_vt(a, k)
 #vwtpdef listlte_vt
-  (a:vwtp, n:int) = [k:nat | k <= n] list_vt(a, k)
+  (a:vt, n:int) = [k:nat | k <= n] list_vt(a, k)
 #vwtpdef listgte_vt
-  (a:vwtp, n:int) = [k:int | k >= n] list_vt(a, k)
+  (a:vt, n:int) = [k:int | k >= n] list_vt(a, k)
 //
 #vwtpdef listbtw_vt
-  (a:vwtp, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
+  (a:vt, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
 #vwtpdef listbtwe_vt
-  (a:vwtp, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
+  (a:vt, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
 //
 (* ****** ****** *)
 //
