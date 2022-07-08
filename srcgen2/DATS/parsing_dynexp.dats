@@ -829,6 +829,9 @@ T_TRY() => let
   {
     val lend =
     (
+    case+ tend of
+    | optn_nil() =>
+    (
     case+ dcls of
     | list_nil() =>
     (
@@ -840,6 +843,8 @@ T_TRY() => let
       let
       val dcl1 =
       list_last(dcls) in dcl1.lctn() end
+    )
+    | optn_cons(tend) => tend.lctn()
     ) : loc_t // end of [ val(lend) ]
   }
 //
