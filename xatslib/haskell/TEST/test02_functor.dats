@@ -11,7 +11,7 @@ Fri Jul  8 15:05:48 EDT 2022
 
 (* ****** ****** *)
 
-val (  ) =
+val ( ) =
 prerrln
 (
 $F.fmap<optn>
@@ -19,11 +19,19 @@ $F.fmap<optn>
 
 (* ****** ****** *)
 
-val (  ) =
+val ( ) =
 prerrln
 (
 $F.fmap<list>
 (lam(x:int): int => x+1)(list_btw(0,10)))
+
+(* ****** ****** *)
+
+val ( ) =
+prerrln
+(
+$F.fmap<strm>
+(lam(x:int): int => x+1)(strm_from( 0 )))
 
 (* ****** ****** *)
 
