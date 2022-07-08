@@ -82,6 +82,8 @@ lctn with s0exp_get_lctn//staexp0
 lctn with d0pat_get_lctn//dynexp0
 #symload
 lctn with d0exp_get_lctn//dynexp0
+#symload
+lctn with d0cls_get_lctn//dynexp0
 (* ****** ****** *)
 #symload
 node with token_get_node//lexing0
@@ -779,53 +781,75 @@ end(*let*) // end-of-[  T_LPAREN()  ]
     }
   end // end-of-[T_TRCD1]
 //
-| T_LET() => let
+*)
+|
+T_LET() => let
 //
-    val () = buf.skip1()
+  val tok1 = tok
+  val (  ) = buf.skip1()
 //
-    val d0cs =
+  val d0cs =
     p1_d0eclseq_dyn(buf, err)
 //
-    val
-    topt = popt_IN(buf, err)
-    val d0es =
+  val topt = pq_IN0(buf, err)
+//
+  val d0es =
     p1_d0expseq_SMCLN(buf, err)
-    val tok2 = p_ENDLET(buf, err)
+  val tok2 = p1_ENDLET(buf, err)
 //
-    val loc_res = tok.lctn()+tok2.lctn()
-  in
-    err := e00;
-    d0exp_make_node
-    ( loc_res
-    , D0Elet(tok, d0cs, topt, d0es, tok2))
-  end // end-of-[T_LET]
+  val lres = tok1.lctn()+tok2.lctn()
 //
-| T_TRY() => let
+in//let
+  err := e00
+; d0exp_make_node
+  ( lres
+  , D0Elet0(tok1, d0cs, topt, d0es, tok2))
+end (*let*) // end-of-[ T_LET() ]
 //
-    val () = buf.skip1()
+|
+T_TRY() => let
 //
-    val d0e1 =
-      p_appd0exp(buf, err)
-    // end-of-[val]
+  val tok1 = tok
+  val (  ) = buf.skip1()
 //
-    val tok2 =
-      p_WITH(buf, err)
-    val tbar =
-      popt_BAR(buf, err)
-    val d0cs =
-      p1_d0clauseq_BAR(buf, err)
-    val tend = p_ENDTRY(buf, err)
+  val d0e1 =
+    p1_d0exp_app(buf, err)
 //
-    val loc_res = tok.lctn()+tend.lctn()
+  val tok2 = p1_WITH(buf, err)
 //
-  in
-    err := e00;
-    d0exp_make_node
-    ( loc_res
-    , D0Etry0
-      (tok, d0e1, tok2, tbar, d0cs, tend))
-  end // end-of-[T_TRY]
-*)
+  val tbar =
+    pq_BAR(buf, err)
+  val dcls =
+    p1_d0clsseq_BAR( buf, err )
+//
+  val tend = pq_ENDTRY(buf, err)
+//
+  val lres =
+    tok1.lctn()+lend where
+  {
+    val lend =
+    (
+    case+ dcls of
+    | list_nil() =>
+    (
+    case+ tbar of
+    | optn_nil() => tok2.lctn()
+    | optn_cons(tbar) => tbar.lctn()
+    )
+    | list_cons _ =>
+      let
+      val dcl1 =
+      list_last(dcls) in dcl1.lctn() end
+    ) : loc_t // end of [ val(lend) ]
+  }
+//
+in
+  err := e00
+; d0exp_make_node
+  ( lres
+  , D0Etry0
+    (tok1, d0e1, tok2, tbar, dcls, tend))
+end (*let*) // end-of-[ T_TRY() ]
 (*
 //
 | T_DOT() => let
