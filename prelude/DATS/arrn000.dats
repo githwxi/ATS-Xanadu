@@ -21,14 +21,6 @@ HX: for pure C-arrays
 *)
 //
 (* ****** ****** *)
-//
-#impltmp
-<a:vt>
-a0ref_make(x0) =
-a0ptr2ref
-(a0ptr_make<a>(x0))
-//
-(* ****** ****** *)
 #impltmp
 <a:t0>
 a0ref_get(A0) =
@@ -45,6 +37,14 @@ a0ref_setf<a>(A0, x0)
 a0ref_setf(A0, x0) =
 g_free<a>
 (a0ref_exch<a>(A0, x0))
+//
+(* ****** ****** *)
+//
+#impltmp
+<a:vt>
+a0ref_make_1val(x0) =
+a0ptr2ref
+(a0ptr_make_1val<a>(x0))
 //
 (* ****** ****** *)
 (*

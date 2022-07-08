@@ -48,15 +48,11 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 <>(*tmp*)
 g_print$out() =
-(
- g_stdout<>((*void*))
-)
+(g_stdout<>((*void*)))
 #impltmp
 <>(*tmp*)
 gl_print$out() =
-(
- g_stdout<>((*void*))
-)
+(g_stdout<>((*void*)))
 //
 (* ****** ****** *)
 //

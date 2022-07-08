@@ -29,17 +29,17 @@ does not work in general
 //
 #impltmp
 <a:vt>
-a0ptr_make(x0) =
+a0ptr_make_1val(x0) =
 let
 val A0 =
-a0ptr_alloc<a>()
+a0ptr_alloc<a>((*nil*))
 val p0 =
 $UN.cast10{p2tr(a)}(A0)
 val () =
 $UN.p2tr_set<a>(p0, x0)
 in
 $UN.castlin10{a0ptr(a)}(A0)
-end
+end // end of [a0ptr_make_1val(x0)]
 //
 (* ****** ****** *)
 //
@@ -78,7 +78,7 @@ let
 val () =
 g_x1forint<n>(n0) in $UN.castlin10(res)
 end
-end // end of [a1ref_listize]
+end (*let*) // end of [a1ref_listize(xs)]
 //
 (* ****** ****** *)
 

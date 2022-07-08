@@ -21,6 +21,12 @@ HX: for pure C-arrays
 *)
 //
 (* ****** ****** *)
+#impltmp
+<a:vt>
+a0ptr_setf(A0, x0) =
+g_free<a>
+(a0ptr_exch<a>(A0, x0))
+(* ****** ****** *)
 //
 (*
 //
@@ -32,10 +38,10 @@ that does not work in general
 //
 #impltmp
 <a:vt>
-a0ptr_make(x0) =
+a0ptr_make_1val(x0) =
 let
 val A0 =
-a0ptr_alloc<a>()
+a0ptr_alloc<a>((*nil*))
 //
 (*
 HX-2021:
@@ -52,13 +58,6 @@ $UN.castlin10{a0ptr(a)}(A0)
 end(*let*)//end-of(a0ptr_make)
 //
 *)
-//
-(* ****** ****** *)
-#impltmp
-<a:vt>
-a0ptr_setf(A0, x0) =
-g_free<a>
-(a0ptr_exch<a>(A0, x0))
 //
 (* ****** ****** *)
 (*
