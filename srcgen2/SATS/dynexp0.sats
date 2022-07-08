@@ -334,6 +334,11 @@ D0Elpar of
   , d0exp_THEN, d0exp_ELSE)
 //
 |
+D0Etup1 of // HX: tuple
+( token
+, tokenopt,d0explst,d0exp_RPAREN)
+//
+|
 D0Elet0 of
 ( token
 , d0eclist
