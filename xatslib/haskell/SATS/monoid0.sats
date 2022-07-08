@@ -19,5 +19,4 @@ fun<m:t0> mconcat(list(m)): m
 
 (* ****** ****** *)
 
-(* end of [ATS3_xatslib_haskell_monoid.sats] *)
-
+(* end of [ATS3_xatslib_haskell_monoid0.sats] *)

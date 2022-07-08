@@ -12,9 +12,10 @@ mconcat :: [m] -> m
 mconcat = foldr mappend mempty
 *)
 (* ****** ****** *)
-
-#staload "./../SATS/monoid.sats"
-
+//
+#staload
+"./../SATS/monoid0.sats"
+//
 (* ****** ****** *)
 
 #impltmp
@@ -42,4 +43,4 @@ mappend<list(x0)> = list_append<x0>
 //
 (* ****** ****** *)
 
-(* end of [ATS3_xatslib_haskell_monoid.dats] *)
+(* end of [ATS3_xatslib_haskell_monoid0.dats] *)
