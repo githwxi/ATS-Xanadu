@@ -689,10 +689,10 @@ end(*let*)//end-of(strm_vt_gappend)
 strm_vt_gconcat
   (xss) =
 (
-gconcat(xss)) where
+auxmain(xss)) where
 {
 fun
-gconcat(xss) =
+auxmain(xss) =
 $llazy
 (
 g_free(xss);
@@ -704,9 +704,9 @@ strmcon_vt_nil()
 strmcon_vt_cons(xs0, xss) => !
 (
 strm_vt_append<x0>
-(glseq_strmize<xs><x0>(xs0),gconcat(xss)))
+(glseq_strmize<xs><x0>(xs0),auxmain(xss)))
 )
-}(*where*) // end-of-[strm_vt_gconcat(xss)]
+}(*where*) // end-of-[strm_vt_auxmain(xss)]
 //
 (* ****** ****** *)
 
