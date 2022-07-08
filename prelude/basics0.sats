@@ -739,6 +739,9 @@ optn_vt_i0_vx
 #sexpdef optn_vt = optn_vt_i0_vx
 //
 #typedef
+optn(a:type) = [b:b0] optn(a, b)
+//
+#typedef
 optn0(a:type) = [b:b0] optn(a, b)
 #typedef
 optn1(a:type, b: bool) = optn(a, b)
