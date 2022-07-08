@@ -128,6 +128,13 @@ p2tr_set_list_vt_cons
 //
 (* ****** ****** *)
 //
+fun
+<a:vt>
+a0ref_set0
+(A0: a0ref(a), x0: (~a)): void
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for unsafe
 //

@@ -5,7 +5,7 @@ Prelude for Xats2js
 (* ****** ****** *)
 #staload
 UN = // for casting
-"prelude/SATS/unsafe.sats"
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 #staload _ = 
 "prelude/DATS/strm000.dats"
@@ -429,28 +429,6 @@ a0ptr_free<a>(A0) = ()
 (* ****** ****** *)
 #extern
 fun
-XATS2JS_a0ptr_make
-{a:vt}
-(
-x0: a
-) : a0ptr(a) = $extnam()
-#impltmp
-{ a:vt }
-a0ptr_make<a> = XATS2JS_a0ptr_make
-(* ****** ****** *)
-#extern
-fun
-XATS2JS_a0ptr_alloc
-{a:vt}
-(
-// argless
-) : a0ptr(?a) = $extnam()
-#impltmp
-{a:vt}
-a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
-(* ****** ****** *)
-#extern
-fun
 XATS2JS_a0ref_get
 {a:t0}
 ( A0
@@ -479,6 +457,28 @@ XATS2JS_a0ref_get0
 #impltmp
 { a:vt }
 a0ref_get0<a> = XATS2JS_a0ref_get0
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_a0ptr_alloc
+{a:vt}
+(
+// argless
+) : a0ptr(?a) = $extnam()
+#impltmp
+{a:vt}
+a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_a0ptr_make_1val
+{a:vt}
+(
+x0: a
+) : a0ptr(a) = $extnam()
+#impltmp
+{ a:vt }
+a0ptr_make_1val<a> = XATS2JS_a0ptr_make_1val
 (* ****** ****** *)
 //
 // HX: 1-dimensional

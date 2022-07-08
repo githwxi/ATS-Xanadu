@@ -93,7 +93,7 @@ a2ref_vt_i0_i0_x0(a, m, n)
 //
 fun
 <a:vt>
-a0ref_make(x0: a): a0ref(a)
+a0ref_make_1val(a): a0ref(a)
 //
 (* ****** ****** *)
 //
@@ -109,10 +109,18 @@ a0ref_set(a0ref(a), a): void
 fun
 <a:vt> // read-only
 a0ref_get0(A0: a0ref(a)): ~a
+(*
+//HX-2022-07-06:
+//this one is in unsafex.sats
+fun
+<a:vt>
+a0ref_set0
+(A0: a0ref(a), x0: (~a)): void
+*)
+//
 fun
 <a:vt> // copy+get
 a0ref_cget(A0: a0ref(a)): (a)
-//
 fun
 <x0:vt> // set+free
 a0ref_setf(a0ref(x0), x0): void
@@ -328,11 +336,9 @@ a1ref_rforall1
 //
 (* ****** ****** *)
 //
-#symload a0ref with a0ref_make of 1000
-//
-(* ****** ****** *)
 #symload head with a1ref_head of 1000
 #symload tail with a1ref_tail of 1000
+//
 (* ****** ****** *)
 //
 #symload [] with a1ref_get_at of 1000
@@ -341,6 +347,7 @@ a1ref_rforall1
 #symload set_at with a1ref_set_at of 1000
 //
 (* ****** ****** *)
+#symload a0ref with a0ref_make_1val of 1000
 #symload a1ref with a1ref_make_nval of 1000
 (* ****** ****** *)
 //

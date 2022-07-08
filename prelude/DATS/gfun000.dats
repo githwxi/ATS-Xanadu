@@ -10,6 +10,9 @@
 *)
 //
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 //
 #impltmp
 <a1>
@@ -19,6 +22,42 @@ gfun_not_fnp1
 <a1>
 gfun_not_cfr1
 (    f0    ) = lam(x1) => not(f0(x1))
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>
+gfun_enum_strx_vt
+(    xs    ) =
+let
+val xs = !xs
+val A0 = a0ref(xs)
+in//let
+//
+lam() =<cfr>
+let
+//
+#typedef t0 =
+(?strxcon_vt(x0))
+//
+val xs =
+a0ref_get0<t0>(A0)
+//
+val xs =
+($UN.castlin10(xs))
+in//let
+case+ xs of
+| ~
+strxcon_vt_cons
+(  x1, xs  ) =>
+let
+val xs =
+($UN.castlin10(!xs))
+in
+  $UN.a0ref_set0<t0>(A0, xs); x1 end
+//
+end(*let*)//end-of-lam
+end(*let*)//end-of-[gfun_enum_strx_vt]
 //
 (* ****** ****** *)
 //

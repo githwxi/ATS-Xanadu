@@ -136,14 +136,14 @@ a0ptr_clear
 //
 fun
 <a:vt>
-a0ptr_make(x0: a): a0ptr(a)
+a0ptr_make_1val(a): a0ptr(a)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
 a0ptr_get
-(!a0ptr(a) >> a0ptr(~a)): a
+(!a0ptr(a) >> a0ptr(~a)): (a)
 fun
 <a:vt>
 a0ptr_set
@@ -449,16 +449,13 @@ a1ptr_rlistize
 //
 (* ****** ****** *)
 //
-#symload a0ptr with a0ptr_make of 1000
-//
-(* ****** ****** *)
-//
 #symload [] with a1ptr_get_at of 1000
 #symload [] with a1ptr_set_at of 1000
 #symload get_at with a1ptr_get_at of 1000
 #symload set_at with a1ptr_set_at of 1000
 //
 (* ****** ****** *)
+#symload a0ptr with a0ptr_make_1val of 1000
 #symload a1ptr with a1ptr_make_nval of 1000
 (* ****** ****** *)
 

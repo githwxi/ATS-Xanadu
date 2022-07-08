@@ -422,5 +422,24 @@ prerrln
 ("gseq_drop(\"abcdefg\", 3) = ", gseq_drop("abcdefg", 3))
 
 (* ****** ****** *)
+//
+local
+val
+linum =
+fenum(strx_vt_from(0))
+in//local
+val () = loop(10) where
+{
+fun loop(n: int): void =
+if
+(n > 0)
+then
+(
+prerrln
+("linum() = ", linum()); loop(n-1))
+}
+endloc (*local*) // end of [local(linum)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)
