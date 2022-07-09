@@ -256,14 +256,14 @@ fun
 strm_sieve(strm(x0)): strm(x0)
 fun
 <x0:t0>
-strx_sieve(strm(x0)): strx(x0)
+strx_sieve(strx(x0)): strx(x0)
 //
 fun
 <x0:t0>
 strm_sieve_vt(strm(x0)): strm_vt(x0)
 fun
 <x0:t0>
-strx_sieve_vt(strm(x0)): strx_vt(x0)
+strx_sieve_vt(strx(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 //

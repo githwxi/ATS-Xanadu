@@ -306,42 +306,18 @@ strmcon_vt_cons
 } (*where*)//end-of-[strm_map_vt(xs)]
 
 (* ****** ****** *)
-
+//
 #impltmp
 <x0>(*tmp*)
 strm_filter
-  (xs) =
-(
-  auxmain(xs)) where
-{
-fnx
-auxmain(xs) =
-$lazy
-(auxloop($eval(xs)))
-and
-auxloop
-( xs
-: strmcon(x0)
-)
-: strmcon(x0) =
-(
-case+ xs of
-| strmcon_nil() =>
-  strmcon_nil()
-| strmcon_cons(x0, xs) =>
-  if
-  filter$test<x0>(x0)
-  then
-  strmcon_cons(x0, auxmain(xs)) else auxloop($eval(xs))
-)
-} (*where*) // end of [strm_filter(xs)]
-
-(* ****** ****** *)
-
+  ( xs ) =
+strm_vt2t<x0>
+(strm_filter_vt<x0>(xs))
+//
 #impltmp
 <x0>(*tmp*)
 strm_filter_vt
-  (xs) =
+  ( xs ) =
 (
   auxmain(xs)
 ) where
@@ -367,7 +343,44 @@ case+ xs of
   strmcon_vt_cons(x0, auxmain(xs)) else auxloop($eval(xs))
 )
 } (*where*) // end of [strm_filter_vt(xs)] *)
-
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strx_filter
+  ( xs ) =
+strx_vt2t<x0>
+(strx_filter_vt<x0>(xs))
+//
+#impltmp
+<x0>(*tmp*)
+strx_filter_vt
+  ( xs ) =
+(
+  auxmain(xs)
+) where
+{
+fnx
+auxmain(xs) =
+$llazy
+(auxloop($eval(xs)))
+and
+auxloop
+( xs
+: strxcon(x0)
+)
+: strxcon_vt(x0) =
+(
+case+ xs of
+| strxcon_cons(x0, xs) =>
+  if
+  filter$test<x0>(x0)
+  then
+  strxcon_vt_cons(x0, auxmain(xs)) else auxloop($eval(xs))
+)
+} (*where*) // end of [strx_filter_vt(xs)] *)
+//
 (* ****** ****** *)
 
 #impltmp
@@ -553,39 +566,14 @@ case+ xs of
 #impltmp
 <x0:t0>
 strm_sieve
-  (xs) =
-(
-auxmain(xs)) where
-{
-fun
-auxmain
-( xs
-: strm(x0)): strm(x0) =
-$lazy
-(
-case+ !xs of
-|
-strmcon_nil() =>
-strmcon_nil()
-|
-strmcon_cons(x1, xs) =>
-let
-val xs = 
-strm_filter<x0>(xs)
-in//let
-strmcon_cons(x1, auxmain(xs))
-end where
-{
-#impltmp
-filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
-}
-)
-} (*where*) // end-of-(strm_sieve(xs))
+  ( xs ) =
+strm_vt2t<x0>
+(strm_sieve_vt<x0>(xs))
 //
 #impltmp
 <x0:t0>
 strm_sieve_vt
-  (xs) =
+  ( xs ) =
 (
 auxmain(xs)) where
 {
@@ -613,6 +601,43 @@ filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
 }
 )
 } (*where*) // end-of-[strm_sieve_vt(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0:t0>
+strx_sieve
+  ( xs ) =
+strx_vt2t<x0>(strx_sieve_vt(xs))
+//
+#impltmp
+<x0:t0>
+strx_sieve_vt
+  ( xs ) =
+(
+auxmain(xs)) where
+{
+fun
+auxmain
+( xs
+: strx(x0)): strx_vt(x0) =
+$llazy
+(
+case+ !xs of
+|
+strxcon_cons(x1, xs) =>
+let
+  val xs = 
+  strx_filter<x0>(xs)
+in
+  strxcon_vt_cons(x1, auxmain(xs))
+end where
+{
+#impltmp
+filter$test<x0>(x2) = sieve$test<x0>(x1, x2)
+}
+)
+} (*where*) // end-of-[strx_sieve_vt(xs)]
 //
 (* ****** ****** *)
 

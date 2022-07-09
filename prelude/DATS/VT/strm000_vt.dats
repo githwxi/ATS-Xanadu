@@ -58,7 +58,43 @@ strmcon_vt_cons
 end // end of [let]
 )
 } (* end of [strm_vt2t] *)
-
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+strx_vt2t(xs) =
+(
+auxmain
+($UN.castlin01(xs))
+) where
+{
+fun
+auxmain
+(xs: box): strx(a) =
+$lazy
+(
+let
+val xs =
+$UN.castlin10{strx_vt(a)}(xs)
+val r0 = !xs
+in
+//
+case+ r0 of
+| @
+strxcon_vt_cons
+  (x0, xs) =>
+  let
+  val xs =
+  $UN.castlin10{box}(xs)
+  val () =
+  ( r0.1 := auxmain(xs) )
+  in $UN.castlin10{strxcon(a)}(r0) end
+//
+end // end of [let]
+)
+} (* end of [strx_vt2t] *)
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -71,6 +107,12 @@ strmcon_vt_nil(*void*)
 strmcon_vt_cons_
 ( x0, xs ) =
 strmcon_vt_cons(x0, xs)
+//
+#impltmp
+<a>(*tmp*)
+strxcon_vt_cons_
+( x0, xs ) =
+strxcon_vt_cons(x0, xs)
 //
 (* ****** ****** *)
 //
@@ -1438,6 +1480,38 @@ filter0$test<x0>(x2) = sieve0$test<x0>(x1, x2)
 }
 )
 } (*where*) // end-of-[strm_vt_sieve0(xs)]
+
+(* ****** ****** *)
+
+#impltmp
+<x0:t0>
+strx_vt_sieve0
+  (  xs  ) =
+(
+auxmain(xs) ) where
+{
+fun
+auxmain
+( xs
+: strx_vt(x0)
+)
+: strx_vt(x0) = $llazy
+(
+case+ !xs of
+| ~
+strxcon_vt_cons(x1, xs) =>
+let
+  val xs = 
+  strx_vt_filter0<x0>(xs)
+in
+  strxcon_vt_cons(x1, auxmain(xs))
+end where
+{
+#impltmp
+filter0$test<x0>(x2) = sieve0$test<x0>(x1, x2)
+}
+)
+} (*where*) // end-of-[strx_vt_sieve0(xs)]
 
 (* ****** ****** *)
 
