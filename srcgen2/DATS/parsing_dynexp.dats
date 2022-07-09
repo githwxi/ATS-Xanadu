@@ -1042,4 +1042,54 @@ end(*let*)//end-of-[p1_d0exp_ELSE(buf,err)]
 
 (* ****** ****** *)
 
+#implfun
+p1_d0exp_sqarg
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+//
+|
+T_LBRACE() => let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val s0es =
+    p1_s0expseq_COMMA(buf, err)
+  val tend = p1_RBRACE(buf, err)
+in
+  err := e00;
+  d0exp_make_node
+  ( lres
+  , D0Esqarg(tbeg, s0es, tend)) where
+  {
+    val lres = tbeg.lctn()+tend.lctn()
+  }
+end (*let*) // end of [ T_LBRACE() ]
+//
+|
+_(*non-T_LBRACE*) =>
+let
+  val () = (err := e00 + 1)
+in//let
+d0exp_make_node(tok.lctn(), D0Etkerr(tok))
+end(*let*)//HX: indicating a parsing error
+//
+end(*let*)//end-of-[p1_d0exp_sqarg(buf,err)]
+
+(* ****** ****** *)
+//
+#implfun
+p1_d0expseq_sqarg
+  (buf, err) =
+(
+list_vt2t
+(ps_p1fun{d0exp}(buf, err, p1_d0exp_sqarg)))
+//
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)

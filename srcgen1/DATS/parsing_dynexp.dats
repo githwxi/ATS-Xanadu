@@ -2536,7 +2536,7 @@ _(*non-THEN*) =>
   d0exp_THEN(tok, p_d0exp(buf, err))
 ) (* end of [non-T_THEN] *)
 //
-end // end of [p_d0exp_THEN]
+end (*let*) // end of [p_d0exp_THEN]
 
 (* ****** ****** *)
 
@@ -2566,7 +2566,7 @@ _(*non-ELSE*) =>
   d0exp_ELSEnone((*void*)) // HX: ELSE-less
 )
 //
-end // end of [p_d0exp_ELSE]
+end (*let*) // end of [p_d0exp_ELSE]
 
 (* ****** ****** *)
 
