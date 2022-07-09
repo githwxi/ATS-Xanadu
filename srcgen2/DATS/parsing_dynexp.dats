@@ -1117,4 +1117,92 @@ list_vt2t
 //
 (* ****** ****** *)
 
+#implfun
+p1_d0pat_RPAREN
+  (buf, err) =
+let
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+in//let
+//
+case+ tnd of
+|
+T_BAR() =>
+let
+  val tok1 = tok
+  val (  ) = buf.skip1()
+  val d0ps =
+    p1_d0patseq_COMMA(buf, err)
+  val tok2 = p1_RPAREN(buf, err)
+in//let
+err := e00;
+d0pat_RPAREN_cons1(tok1, d0ps, tok2)
+end (*let*) // end of [ T_BAR() ]
+|
+_ (*non-T_BAR*) =>
+(
+case+ tnd of
+|
+T_RPAREN() =>
+let
+  val () = buf.skip1()
+in//let
+  err := e00; d0pat_RPAREN_cons0(tok)
+end (*let*) // end of [T_RPAREN()]
+|
+_(*non-T_RPAREN*) =>
+(
+err := e00 + 1; d0pat_RPAREN_cons0(tok)
+) (* end of [non-RPAREN *)
+)
+//
+end(*let*)//end-[p1_d0pat_RPAREN(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_l0d0p_RBRACE
+  (buf, err) =
+let
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+in//let
+//
+case+ tnd of
+|
+T_BAR() =>
+let
+  val tok1 = tok
+  val (  ) = buf.skip1()
+  val ldps =
+    p1_l0d0pseq_COMMA(buf, err)
+  val tok2 = p1_RBRACE(buf, err)
+in//let
+err := e00;
+l0d0p_RBRACE_cons1(tok1, ldps, tok2)
+end (*let*) // end of [ T_BAR() ]
+|
+_(* non-T_BAR *) =>
+(
+case+ tnd of
+|
+T_RBRACE() =>
+let
+  val () = buf.skip1()
+in//let
+  err := e00; l0d0p_RBRACE_cons0(tok)
+end (*let*) // end of [ T_RBRACE() ]
+|
+_(*non-T_RPAREN*) =>
+(
+  err := e00 + 1; l0d0p_RBRACE_cons0(tok)
+) (* end of [non-RPAREN] *)
+) (* end of [ non-T_BAR ] *)
+//
+end(*let*)//end-[p1_l0d0p_RBRACE(buf,err)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)
