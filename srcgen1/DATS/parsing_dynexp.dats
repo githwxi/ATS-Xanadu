@@ -2532,8 +2532,9 @@ end // end of [T_THEN]
 |
 _(*non-THEN*) =>
 ( // HX-2018-09-25: error
+  err := e0 + 1;
   d0exp_THEN(tok, p_d0exp(buf, err))
-) (* end of [non-THEN] *)
+) (* end of [non-T_THEN] *)
 //
 end // end of [p_d0exp_THEN]
 
