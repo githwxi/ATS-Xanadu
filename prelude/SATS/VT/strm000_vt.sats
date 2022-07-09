@@ -57,6 +57,10 @@ fun
 <a:t0>
 strm_vt2t
 (xs: strm_vt(a)): strm(a)
+fun
+<a:t0>
+strx_vt2t
+(xs: strx_vt(a)): strx(a)
 //
 (* ****** ****** *)
 //
@@ -70,6 +74,13 @@ strmcon_vt_cons_
 ( x0: (a)
 , xs
 : strm_vt(a)): strmcon_vt(a)
+//
+fun
+<a:vt>
+strxcon_vt_cons_
+( x0: (a)
+, xs
+: strx_vt(a)): strxcon_vt(a)
 //
 (* ****** ****** *)
 //
@@ -421,6 +432,10 @@ fun
 <x0:vt>
 strm_vt_sieve0
   (xs: strm_vt(x0)): strm_vt(x0)
+fun
+<x0:vt>
+strx_vt_sieve0
+  (xs: strx_vt(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 //

@@ -39,6 +39,16 @@ $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test01_synoug0_dats.js
 #
 ######
 #
+test:: \
+test02_isPrime
+test02_isPrime:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test02_isPrime_dats.js
+#
+######
+#
 # HX: for cleaning up
 #
 ######
