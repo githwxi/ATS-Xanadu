@@ -17,9 +17,12 @@ cfr1
 fun
 <f0:
 t0->t0>
-<x0:t0
-,y0:t0>
-fmap(fx: cfr1(x0, y0)): cfr1(f0(x0), f0(y0))
+<x0:t0>
+<y0:t0>
+fmap(cfr1(x0, y0), f0(x0)): f0(y0)
+//
+// This is not supported as '$' is
+// #symload <$> with fmap // special in ATS
 //
 (* ****** ****** *)
 

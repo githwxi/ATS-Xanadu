@@ -64,6 +64,21 @@ $(XATSOPT) -d $(XATSLIB)/haskell/SATS/functor.sats
 all_haskell:: ; \
 $(XATSOPT) -d $(XATSLIB)/haskell/DATS/functor.dats
 ######
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/SATS/foldable.sats
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/DATS/foldable.dats
+######
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/SATS/applicative.sats
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/DATS/applicative.dats
+######
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/SATS/traversable.sats
+all_haskell:: ; \
+$(XATSOPT) -d $(XATSLIB)/haskell/DATS/traversable.dats
+######
 all_githwxi_CATS:: ; \
 $(XATSOPT) -d $(XATSLIB)/githwxi/DATS/CATS/Xint/basics0.dats
 all_githwxi_CATS:: ; \

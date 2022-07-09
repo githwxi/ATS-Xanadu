@@ -15,7 +15,7 @@ val ( ) =
 prerrln
 (
 $F.fmap<optn>
-(lam(x:int): int => x+1)(optn(100)))
+(lam(x:int): int => x+1,optn(100)))
 
 (* ****** ****** *)
 
@@ -23,7 +23,7 @@ val ( ) =
 prerrln
 (
 $F.fmap<list>
-(lam(x:int): int => x+1)(list_btw(0,10)))
+(lam(x:int): int => x+1,list_btw(0,10)))
 
 (* ****** ****** *)
 
@@ -31,7 +31,7 @@ val ( ) =
 prerrln
 (
 $F.fmap<strm>
-(lam(x:int): int => x+1)(strm_from( 0 )))
+(lam(x:int): int => x+1,strm_from( 0 )))
 
 (* ****** ****** *)
 
