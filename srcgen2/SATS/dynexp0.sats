@@ -328,15 +328,20 @@ d0exp_node =
 D0Elpar of
 (token, d0explst, d0exp_RPAREN)
 //
-| D0Eif0 of
-  ( token
-  , d0exp
-  , d0exp_THEN, d0exp_ELSE)
+|
+D0Eif0 of
+( token
+, d0exp
+, d0exp_THEN, d0exp_ELSE(*opt*))
 //
 |
 D0Etup1 of // HX: tuple
 ( token
 , tokenopt,d0explst,d0exp_RPAREN)
+|
+D0Ercd2 of // HX: tuple
+( token
+, tokenopt,l0d0elst,l0d0e_RBRACE)
 //
 |
 D0Elet0 of
@@ -461,7 +466,10 @@ d0exp_ELSE_get_lctn
   (dels: d0exp_THEN): loc_t
 fun
 d0exp_RPAREN_get_lctn
-  (dels: d0exp_RPAREN): loc_t
+  (d0rp: d0exp_RPAREN): loc_t
+fun
+l0d0e_RBRACE_get_lctn
+  (ldrb: l0d0e_RBRACE): loc_t
 //
 (* ****** ****** *)
 #symload lctn with d0exp_get_lctn
@@ -471,6 +479,7 @@ d0exp_RPAREN_get_lctn
 #symload lctn with d0exp_THEN_get_lctn
 #symload lctn with d0exp_ELSE_get_lctn
 #symload lctn with d0exp_RPAREN_get_lctn
+#symload lctn with l0d0e_RBRACE_get_lctn
 //
 (* ****** ****** *)
 fun
