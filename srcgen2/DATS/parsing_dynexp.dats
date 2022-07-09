@@ -983,4 +983,63 @@ end(*end*)//end-of-[p1_d0exp_atm(buf,err)]
 
 (* ****** ****** *)
 
+#implfun
+p1_d0exp_THEN
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_THEN() => let
+  val ( ) = buf.skip1()
+  val d0e = p1_d0exp(buf, err)
+in
+err := e00; d0exp_THEN_some(tok, d0e)
+end // end of [T_THEN]
+|
+_(*non-THEN*) =>
+let
+val // HX-2018-09-25: error
+( ) = err := e00 + 1
+in//let
+d0exp_THEN_some(tok, p1_d0exp(buf, err))
+end(*let*)//end-of-[non-T_THEN]
+//
+end(*let*)//end-of-[p1_d0exp_THEN(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_d0exp_ELSE
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_ELSE() => let
+  val ( ) = buf.skip1()
+  val d0e = p1_d0exp(buf, err)
+in
+  err := e00; d0exp_ELSE_some(tok, d0e)
+end // end of [T_THEN]
+|
+_(*non-ELSE*) =>
+(
+  d0exp_ELSE_none(tok) // HX: ELSE-less
+)
+//
+end(*let*)//end-of-[p1_d0exp_ELSE(buf,err)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)
