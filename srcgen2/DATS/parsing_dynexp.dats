@@ -883,7 +883,7 @@ end (*let*) // end-of-[ T_TRY() ]
       buf.skip1()
     // end-of-[val]
     val lab =
-      p_l0abl(buf, err)
+      p1_l0abl(buf, err)
     val arg = let
       val tok2 = buf.get0()
     in
@@ -1089,6 +1089,31 @@ p1_d0expseq_sqarg
 (
 list_vt2t
 (ps_p1fun{d0exp}(buf, err, p1_d0exp_sqarg)))
+//
+(* ****** ****** *)
+//
+#implfun
+p1_d0expseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{d0exp}(buf, err, p1_d0exp)))
+//
+#implfun
+p1_l0d0eseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{l0d0e}(buf, err, p1_l0d0e)))
+//
+(* ****** ****** *)
+//
+#implfun
+p1_d0expseq_SMCLN
+  (buf, err) =
+(
+list_vt2t
+(ps_SMCLN_p1fun{d0exp}(buf, err, p1_d0exp)))
 //
 (* ****** ****** *)
 
