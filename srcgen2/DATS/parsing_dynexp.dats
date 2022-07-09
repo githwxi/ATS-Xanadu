@@ -779,6 +779,30 @@ in//let
 end (*let*)//end-of-[T_TRCD10(k0)]
 //
 |
+T_TRCD20(k0) =>
+let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val topt =
+  ( if
+    (k0 <= 1)
+    then optn_nil()
+    else
+    optn_cons(p1_LBRACE(buf, err))
+  ) : tokenopt // end-of-[val]
+  val ldes =
+    p1_l0d0eseq_COMMA(buf, err)
+  val tend = p1_l0d0e_RBRACE(buf, err)
+//
+  val lres = tbeg.lctn() + tend.lctn()
+//
+in//let
+  err := e00
+; d0exp_make_node
+  (lres, D0Ercd2(tbeg, topt, ldes, tend))
+end (*let*)//end-of-[T_TRCD20(k0)]
+//
+|
 T_LET() => let
 //
   val tok1 = tok
