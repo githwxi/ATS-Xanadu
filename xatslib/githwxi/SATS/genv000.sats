@@ -37,6 +37,36 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <x0:t0>
+<r0:vt>
+<e1:vt>
+foldl_env1$fopr
+(r0:r0, x0:x0, e1: !e1): r0
+fun
+<x0:t0>
+<r0:vt>
+<e1:vt>
+foldr_env1$fopr
+(x0:x0, r0:r0, e1: !e1): r0
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+<e1:vt>
+gseq_foldl_env1
+(xs: xs, r0: r0, e1: !e1): r0
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+<e1:vt>
+gseq_foldr_env1
+(xs: xs, r0: r0, e1: !e1): r0
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 <e1:vt>
 forall_env1$test
 (x0: x0, e1: !e1): bool
@@ -70,6 +100,13 @@ fun
 map_env1$fopr
 (x0: x0, e1: !e1): y0
 //
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+<e1:vt>
+gseq_map_env1(xs, !e1): ( ys )
 fun
 <xs:t0>
 <x0:t0>
