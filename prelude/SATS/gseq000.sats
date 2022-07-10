@@ -163,32 +163,6 @@ gseq_length(xs): nint
 
 (* ****** ****** *)
 //
-fun
-<xs:t0>
-<x0:t0>
-gseq_drop
-(xs: xs, n0: sint): xs
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_dropif(xs: xs): xs
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_take
-(xs: xs, n0: sint): xs
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_takeif(xs: xs): xs
-//
-(* ****** ****** *)
-//
 (*
 gseq_foldl: foldl$fopr
 gseq_foldr: foldr$fopr
@@ -433,6 +407,45 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_filter_rlist(xs): list_vt(x0)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_drop
+(xs: xs, n0: sint): xs
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_dropif(xs: xs): xs
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_take
+(xs: xs, n0: sint): xs
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_takeif(xs: xs): xs
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_takeif_list(xs): list_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_takeif_strm(xs): strm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_takeif_rlist(xs): list_vt(x0)
+//
 (* ****** ****** *)
 //
 fun
@@ -725,6 +738,10 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_itakeif_list(xs): list_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_itakeif_strm(xs): strm_vt(x0)
 fun
 <xs:t0>
 <x0:t0>

@@ -219,6 +219,17 @@ fun
 strx_filter_vt(strx(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
+fun
+<x0:t0>
+strm_dropif(strm(x0)): strm(x0)
+(* ****** ****** *)
+fun
+<x0:t0>
+strm_takeif(strm(x0)): strm(x0)
+fun
+<x0:t0>
+strm_takeif_vt(strm(x0)): strm_vt(x0)
+(* ****** ****** *)
 //
 (*
 strm_mapopt:
@@ -280,6 +291,17 @@ fun
 <y0:vt>
 strm_imap_vt(strm(x0)): strm_vt( y0 )
 //
+(* ****** ****** *)
+fun
+<x0:t0>
+strm_idropif(strm(x0)): strm(x0)
+(* ****** ****** *)
+fun
+<x0:t0>
+strm_itakeif(strm(x0)): strm(x0)
+fun
+<x0:t0>
+strm_itakeif_vt(strm(x0)): strm_vt(x0)
 (* ****** ****** *)
 //
 fun
@@ -351,6 +373,11 @@ strmize with strm_strmize of 1000
 #symload filter_vt with strx_filter_vt of 1000
 //
 (* ****** ****** *)
+#symload dropif with strm_dropif of 1000
+(* ****** ****** *)
+#symload takeif with strm_takeif of 1000
+#symload takeif_vt with strm_takeif_vt of 1000
+(* ****** ****** *)
 //
 #symload imap with strm_imap of 1000
 #symload imap_vt with strm_imap_vt of 1000
@@ -360,6 +387,11 @@ strmize with strm_strmize of 1000
 #symload mapopt with strm_mapopt of 1000
 #symload mapopt_vt with strm_mapopt_vt of 1000
 //
+(* ****** ****** *)
+#symload idropif with strm_idropif of 1000
+(* ****** ****** *)
+#symload itakeif with strm_itakeif of 1000
+#symload itakeif_vt with strm_itakeif_vt of 1000
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_strm0.sats] *)

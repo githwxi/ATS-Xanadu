@@ -507,128 +507,6 @@ strmcon_vt_cons(x0, auxmain1(xss, xs1))
 (* ****** ****** *)
 //
 #impltmp
-<x0>(*tmp*)
-strm_vt_drop
-  (xs, n0) =
-(
-strm_vt_idropif<x0>(xs)) where
-{
-#impltmp
-idropif0$test<x0>(i0, x0) = (i0 < n0)
-} (*where*)//end-of(gseq_drop/idropif)
-//
-#impltmp
-<x0>(*tmp*)
-strm_vt_take
-  (xs, n0) =
-(
-strm_vt_itakeif<x0>(xs)) where
-{
-#impltmp
-itakeif0$test<x0>(i0, x0) = (i0 < n0)
-} (*where*)//end-of(gseq_take/itakeif)
-//
-#impltmp
-<x0>(*tmp*)
-strm_vt_dropif
-  ( xs ) =
-(
-strm_vt_idropif<x0>(xs)) where
-{
-#impltmp
-idropif0$test<x0>(i0,x0) = dropif0$test<x0>(x0)
-}(*where*)//end-of(strm_vt_dropif/idropif)
-//
-#impltmp
-<x0>(*tmp*)
-strm_vt_takeif
-  ( xs ) =
-(
-strm_vt_itakeif<x0>(xs)) where
-{
-#impltmp
-itakeif0$test<x0>(i0,x0) = takeif0$test<x0>(x0)
-}(*where*)//end-of(strm_vt_takeif/itakeif)
-//
-(* ****** ****** *)
-//
-#impltmp
-<x0>(*tmp*)
-strm_vt_idropif
-  (    xs   ) =
-(
-auxloop
-(xs, 0(*i0*))) where
-{
-//
-#vwtpdef
-xs = strm_vt(x0)
-//
-fnx
-auxloop
-(xs: xs, i0: sint): xs =
-(
-case+ !xs of
-| ~
-strmcon_vt_nil
-  ((*void*)) =>
-(
-  strm_vt_nil((*void*))
-)
-|
-strmcon_vt_cons
-  ( x0, xs ) =>
-if
-idropif0$test<x0>(i0, x0)
-then
-( g_free<x0>(x0)
-; auxloop(xs, succ(i0)))
-else strm_vt_cons(x0, xs))(*auxloop*)
-//
-}(*where*)//end-of-(strm_vt_idropif(xs))
-//
-(* ****** ****** *)
-//
-#impltmp
-<x0>(*tmp*)
-strm_vt_itakeif
-  (    xs   ) =
-(
-auxmain
-(xs, 0(*i0*))) where
-{
-//
-#vwtpdef
-xs = strm_vt(x0)
-//
-fnx
-auxmain
-( xs: xs
-, i0: sint)
-: strm_vt(x0) = $llazy
-(
-case+ !xs of
-| ~
-strmcon_vt_nil
-  ((*void*)) =>
-strmcon_vt_nil()
-| ~
-strmcon_vt_cons
-  ( x0, xs ) =>
-if
-itakeif0$test<x0>(i0, x0)
-then
-strmcon_vt_cons
-(x0, auxmain(xs, succ(i0)))
-else
-( g_free(x0)
-; g_free(xs); strmcon_vt_nil())
-)
-}(*where*)//end-of-(strm_vt_itakeif(xs))
-//
-(* ****** ****** *)
-//
-#impltmp
 <a>(*tmp*)
 strm_vt_prefixq
   (xs1, xs2) =
@@ -1070,6 +948,52 @@ strxcon_vt_cons
 } (*where*) // end of [strx_vt_filter0]
 
 (* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_drop0
+  (xs, n0) =
+(
+strm_vt_idropif0<x0>(xs)) where
+{
+#impltmp
+idropif0$test<x0>(i0, x0) = (i0 < n0)
+} (*where*)//end-of(gseq_drop0/idropif0)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_take0
+  (xs, n0) =
+(
+strm_vt_itakeif0<x0>(xs)) where
+{
+#impltmp
+itakeif0$test<x0>(i0, x0) = (i0 < n0)
+} (*where*)//end-of(gseq_take0/itakeif0)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_dropif0
+  ( xs ) =
+(
+strm_vt_idropif0<x0>(xs)) where
+{
+#impltmp
+idropif0$test<x0>(i0,x0) = dropif0$test<x0>(x0)
+}(*where*)//end-of(strm_vt_dropif0/idropif0)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_takeif0
+  ( xs ) =
+(
+strm_vt_itakeif0<x0>(xs)) where
+{
+#impltmp
+itakeif0$test<x0>(i0,x0) = takeif0$test<x0>(x0)
+}(*where*)//end-of(strm_vt_takeif0/itakeif0)
+//
+(* ****** ****** *)
 
 #impltmp
 <x0><y0>
@@ -1109,7 +1033,7 @@ let
   mapopt0$fopr<x0><y0>(x0)
 *)
   val
-  opt = filter1$test<x0>(x0)
+  opt = filter0$test<x0>(x0)
 in
 (*
   case+ opt of
@@ -1174,7 +1098,7 @@ let
   mapopt0$fopr<x0><y0>(x0)
 *)
   val
-  opt = filter1$test<x0>(x0)
+  opt = filter0$test<x0>(x0)
 in
 (*
   case+ opt of
@@ -1677,6 +1601,82 @@ end // strxcon_vt_cons
 } (*where*)//end-of(strx_vt_imap0)
 
 (* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_idropif0
+  (    xs   ) =
+(
+auxloop
+(xs, 0(*i0*))) where
+{
+//
+#vwtpdef
+xs = strm_vt(x0)
+//
+fnx
+auxloop
+(xs: xs, i0: sint): xs =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) =>
+(
+  strm_vt_nil((*void*))
+)
+|
+strmcon_vt_cons
+  ( x0, xs ) =>
+if
+idropif0$test<x0>(i0, x0)
+then
+( g_free<x0>(x0)
+; auxloop(xs, succ(i0)))
+else strm_vt_cons(x0, xs))(*auxloop*)
+//
+}(*where*)//end-of-(strm_vt_idropif(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_itakeif0
+  (    xs   ) =
+(
+auxmain
+(xs, 0(*i0*))) where
+{
+//
+#vwtpdef
+xs = strm_vt(x0)
+//
+fnx
+auxmain
+( xs: xs
+, i0: sint)
+: strm_vt(x0) = $llazy
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons
+  ( x0, xs ) =>
+if
+itakeif0$test<x0>(i0, x0)
+then
+strmcon_vt_cons
+(x0, auxmain(xs, succ(i0)))
+else
+( g_free(x0)
+; g_free(xs); strmcon_vt_nil())
+)
+}(*where*)//end-of-(strm_vt_itakeif(xs))
+//
+(* ****** ****** *)
 
 #impltmp
 <x0><y0>
@@ -1716,7 +1716,7 @@ strmcon_vt_cons(x0, xs) =>
 let
   val i1 = succ(i0)
   val
-  opt = ifilter1$test<x0>(i0, x0)
+  opt = ifilter0$test<x0>(i0, x0)
 in
 //
 if
@@ -1776,7 +1776,7 @@ strxcon_vt_cons(x0, xs) =>
 let
   val i1 = succ(i0)
   val
-  opt = ifilter1$test<x0>(i0, x0)
+  opt = ifilter0$test<x0>(i0, x0)
 in
 //
 if
