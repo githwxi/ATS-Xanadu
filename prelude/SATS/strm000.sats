@@ -315,6 +315,7 @@ strx_idropif(strx(x0)): strx(x0)
 fun
 <x0:t0>
 strm_itakeif(strm(x0)): strm(x0)
+(* ****** ****** *)
 fun
 <x0:t0>
 strm_itakeif_vt(strm(x0)): strm_vt(x0)

@@ -1095,11 +1095,26 @@ gseq_imap_strm
 strx_vt_strmize<b>(strx_imap_vt<a><b>(xs))
 //
 (* ****** ****** *)
+#impltmp
+{a:t0}
+gseq_idropif
+< strm(a) >< a > = strm_idropif<a>
+#impltmp
+{a:t0}
+gseq_idropif
+< strx(a) >< a > = strx_idropif<a>
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gseq_itakeif
+<strm(a)><a>(xs) =
+strm_vt2t(strm_itakeif_vt<a>(xs))
 //
 #impltmp
 {a:t0}
 gseq_itakeif_strm
-< strm(a) ><  a  > = strm_itakeif_vt< a >
+<  strm(a) >< a  > = strm_itakeif_vt< a >
 //
 (* ****** ****** *)
 
