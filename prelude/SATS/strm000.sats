@@ -226,6 +226,9 @@ strx_filter_vt(strx(x0)): strx_vt(x0)
 fun
 <x0:t0>
 strm_dropif(strm(x0)): strm(x0)
+fun
+<x0:t0>
+strx_dropif(strx(x0)): strx(x0)
 (* ****** ****** *)
 fun
 <x0:t0>
@@ -292,29 +295,51 @@ fun
 strm_imap(strm(x0)): strm( y0 )
 fun
 <x0:t0>
-<y0:vt>
-strm_imap_vt(strm(x0)): strm_vt( y0 )
-//
-fun
-<x0:t0>
 <y0:t0>
 strx_imap(strx(x0)): strx( y0 )
+//
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 <y0:vt>
-strx_imap_vt(strx(x0)): strx_vt( y0 )
+strm_imap_vt
+  ( xs: strm(x0) ): strm_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+strx_imap_vt
+  ( xs: strx(x0) ): strx_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+strm_ifilter(strm(x0)): strm(x0)
+fun
+<x0:t0>
+strx_ifilter(strx(x0)): strx(x0)
+//
+fun
+<x0:t0>
+strm_ifilter_vt
+  ( xs: strm(x0) ): strm_vt( x0 )
+fun
+<x0:t0>
+strx_ifilter_vt
+  ( xs: strx(x0) ): strx_vt( x0 )
 //
 (* ****** ****** *)
 fun
 <x0:t0>
-strm_idropif(strm(x0)): strm(x0)
+strm_idropif(strm(x0)): strm( x0 )
 fun
 <x0:t0>
-strx_idropif(strx(x0)): strx(x0)
+strx_idropif(strx(x0)): strx( x0 )
 (* ****** ****** *)
 fun
 <x0:t0>
-strm_itakeif(strm(x0)): strm(x0)
+strm_itakeif(strm(x0)): strm( x0 )
 (* ****** ****** *)
 fun
 <x0:t0>
@@ -391,13 +416,12 @@ strmize with strm_strmize of 1000
 //
 (* ****** ****** *)
 #symload dropif with strm_dropif of 1000
-(* ****** ****** *)
-#symload takeif with strm_takeif of 1000
-#symload takeif_vt with strm_takeif_vt of 1000
+#symload dropif with strx_dropif of 1000
 (* ****** ****** *)
 //
-#symload imap with strm_imap of 1000
-#symload imap_vt with strm_imap_vt of 1000
+#symload takeif with strm_takeif of 1000
+//
+#symload takeif_vt with strm_takeif_vt of 1000
 //
 (* ****** ****** *)
 //
@@ -405,10 +429,30 @@ strmize with strm_strmize of 1000
 #symload mapopt_vt with strm_mapopt_vt of 1000
 //
 (* ****** ****** *)
-#symload idropif with strm_idropif of 1000
+//
+#symload imap with strm_imap of 1000
+#symload imap with strx_imap of 1000
+//
+#symload imap_vt with strm_imap_vt of 1000
+#symload imap_vt with strx_imap_vt of 1000
+//
 (* ****** ****** *)
+//
+#symload ifilter with strm_ifilter of 1000
+#symload ifilter with strx_ifilter of 1000
+//
+#symload ifilter_vt with strm_ifilter_vt of 1000
+#symload ifilter_vt with strx_ifilter_vt of 1000
+//
+(* ****** ****** *)
+#symload idropif with strm_idropif of 1000
+#symload idropif with strx_idropif of 1000
+(* ****** ****** *)
+//
 #symload itakeif with strm_itakeif of 1000
+//
 #symload itakeif_vt with strm_itakeif_vt of 1000
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_strm0.sats] *)
