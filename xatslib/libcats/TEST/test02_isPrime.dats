@@ -38,7 +38,8 @@ let
 val ps =
 strm_filter_strm
 ( thePrimes
-, lam(p) => (x % p > 0 || p*p > x))
+, lam(p) =>
+  if x % p > 0 then true else p*p > x)
 val-
 ~strm_vt_cons
  ( p1 ,  ps ) = ps in free(ps); p1*p1 > x
@@ -48,7 +49,7 @@ val thePrimes2 = strx_filter_strm(strx_from(2))
 
 (* ****** ****** *)
 
-val () = prerrln0("thePrimes = ", thePrimes)
+val () = prerrln0("thePrimes2 = ", thePrimes2)
 
 (* ****** ****** *)
 
