@@ -291,6 +291,15 @@ fun
 <y0:vt>
 strm_imap_vt(strm(x0)): strm_vt( y0 )
 //
+fun
+<x0:t0>
+<y0:t0>
+strx_imap(strx(x0)): strx( y0 )
+fun
+<x0:t0>
+<y0:vt>
+strx_imap_vt(strx(x0)): strx_vt( y0 )
+//
 (* ****** ****** *)
 fun
 <x0:t0>

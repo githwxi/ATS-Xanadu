@@ -1635,7 +1635,7 @@ then
 ; auxloop(xs, succ(i0)))
 else strm_vt_cons(x0, xs))(*auxloop*)
 //
-}(*where*)//end-of-(strm_vt_idropif(xs))
+}(*where*)//end-of-(strm_vt_idropif0(xs))
 //
 (* ****** ****** *)
 //
@@ -1674,7 +1674,7 @@ else
 ( g_free(x0)
 ; g_free(xs); strmcon_vt_nil())
 )
-}(*where*)//end-of-(strm_vt_itakeif(xs))
+}(*where*)//end-of-(strm_vt_itakeif0(xs))
 //
 (* ****** ****** *)
 
