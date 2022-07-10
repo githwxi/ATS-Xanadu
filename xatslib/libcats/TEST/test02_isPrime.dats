@@ -32,6 +32,22 @@ sieve$test<sint>(x1, x2) = (x2 % x1 > 0)
 
 (* ****** ****** *)
 
+fun
+isPrime(x: sint): bool =
+let
+val ps =
+strm_filter_strm
+( thePrimes
+, lam(p) => (x % p > 0 || p*p > x))
+val-
+~strm_vt_cons
+ ( p1 ,  ps ) = ps in free(ps); p1*p1 > x
+end (*let*) // end of [isPrime]
+
+val thePrimes2 = strx_filter_strm(strx_from(2))
+
+(* ****** ****** *)
+
 val () = prerrln0("thePrimes = ", thePrimes)
 
 (* ****** ****** *)
