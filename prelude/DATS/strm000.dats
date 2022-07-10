@@ -230,7 +230,7 @@ end
 } (*where*) // end of [strm_forall]
 
 (* ****** ****** *)
-
+//
 #impltmp
 <x0>(*tmp*)
 strm_strmize
@@ -255,6 +255,29 @@ strmcon_vt_cons(x0, auxmain(xs))
 //
 } (*where*) // end of [strm_strmize]
 
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strx_strmize
+( xs ) =
+(
+  auxmain(xs)) where
+{
+//
+fun
+auxmain
+( xs ) = $llazy
+(
+case+
+$eval(xs) of
+|
+strxcon_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs))
+)
+//
+} (*where*) // end of [strm_strmize]
+//
 (* ****** ****** *)
 
 #impltmp
@@ -826,6 +849,21 @@ gseq_nilq
 {a:t0}
 gseq_consq
 <strm(a)><a> = strm_consq<a>
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gseq_listize
+<strm(a)><a> = strm_listize<a>
+#impltmp
+{a:t0}
+gseq_strmize
+<strm(a)><a> = strm_strmize<a>
+#impltmp
+{a:t0}
+gseq_strmize
+<strx(a)><a> = strx_strmize<a>
+//
 (* ****** ****** *)
 #impltmp
 {a:t0}
