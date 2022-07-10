@@ -600,30 +600,29 @@ auxmain
 #vwtpdef
 xs = strm_vt(x0)
 //
-fun
+fnx
 auxmain
 ( xs: xs
-, i0: sint): xs = $llazy
-(
-g_free(xs);
+, i0: sint)
+: strm_vt(x0) = $llazy
 (
 case+ !xs of
 | ~
 strmcon_vt_nil
   ((*void*)) =>
 strmcon_vt_nil()
-|
+| ~
 strmcon_vt_cons
   ( x0, xs ) =>
 if
 itakeif0$test<x0>(i0, x0)
 then
-( g_free<x0>(x0)
-; !(auxmain(xs, succ(i0))))
+strmcon_vt_cons
+(x0, auxmain(xs, succ(i0)))
 else
-strmcon_vt_cons(x0,auxmain(xs,succ(i0)))
+( g_free(x0)
+; g_free(xs); strmcon_vt_nil())
 )
-)(*llazy*)
 }(*where*)//end-of-(strm_vt_itakeif(xs))
 //
 (* ****** ****** *)
@@ -996,17 +995,16 @@ auxmain
 )
 : strm_vt(x0) =
 $llazy
-(
-g_free(xs); auxloop($eval(xs)))
+(g_free(xs); auxloop(xs))
 //
 and
 auxloop
 ( xs
-: strmcon_vt(x0)
+: strm_vt(x0)
 )
 : strmcon_vt(x0) =
 (
-case+ xs of
+case+ !xs of
 | ~
 strmcon_vt_nil
   () =>
@@ -1020,7 +1018,7 @@ strmcon_vt_cons
   strmcon_vt_cons(x0, auxmain(xs))
   else
   let
-  val () = g_free(x0) in auxloop(!xs)
+  val () = g_free(x0) in auxloop(xs)
   end // end of [if]
 ) (* end of [strmcom_vt_cons] *)
 )

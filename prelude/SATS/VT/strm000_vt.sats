@@ -247,12 +247,12 @@ strm_vt_itakeif
 //
 fun
 <a:vt>
-strm_vt_drop
+strm_vt_drop//based on [idrop]
 ( xs
 : strm_vt(a),n0:sint):strm_vt(a)
 fun
 <a:vt>
-strm_vt_take
+strm_vt_take//based on [idrop]
 ( xs
 : strm_vt(a),n0:sint):strm_vt(a)
 //
@@ -594,14 +594,19 @@ strm_vt_z2iforeach0
 //
 #symload extend with strm_vt_extend of 1000
 #symload append with strm_vt_append of 1000
+#symload concat with strm_vt_concat of 1000
 //
+(* ****** ****** *)
+#symload length0 with strm_vt_length of 1000
+#symload extend0 with strm_vt_extend of 1000
+#symload append0 with strm_vt_append of 1000
+#symload concat0 with strm_vt_concat of 1000
 (* ****** ****** *)
 
 #symload prefixq with strm_vt_prefixq of 1000
 
 (* ****** ****** *)
 
-#symload concat with strm_vt_concat of 1000
 #symload gconcat with strm_vt_gconcat of 1000
 
 (* ****** ****** *)

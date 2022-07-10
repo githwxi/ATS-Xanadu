@@ -167,6 +167,10 @@ fun
 <x0:t0>
 strm_strmize
 ( xs: strm(x0) ) : strm_vt(x0)
+fun
+<x0:t0>
+strx_strmize
+( xs: strx(x0) ) : strm_vt(x0)
 //
 (* ****** ****** *)
 //
