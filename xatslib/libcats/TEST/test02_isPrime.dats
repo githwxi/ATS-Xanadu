@@ -117,4 +117,4 @@ prerrln0("|thePrimes2| = ", length0(thePrimes2))
 
 (* ****** ****** *)
 
-(* end of [test02_isPrime.dats] *)
+(* end of [ATS3/xatslib/libcats/TEST/test02_isPrime.dats] *)
