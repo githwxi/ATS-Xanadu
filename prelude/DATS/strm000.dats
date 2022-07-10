@@ -737,7 +737,7 @@ end // end of [strmcon_cons]
 #impltmp
 <x0><y0>
 strm_imap
-  (xs) =
+  ( xs ) =
 (
 auxmain(0, xs)) where
 {
@@ -764,8 +764,33 @@ strmcon_cons
 
 #impltmp
 <x0><y0>
+strx_imap
+  ( xs ) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0
+: nint,
+  xs
+: strx(x0)) = $lazy
+(
+case+
+$eval(xs) of
+|
+strxcon_cons(x0, xs) =>
+strxcon_cons
+(imap$fopr<x0><y0>(i0, x0), auxmain(i0+1, xs))
+)
+} (*where*) // end-of(strx_imap)
+
+(* ****** ****** *)
+
+#impltmp
+<x0><y0>
 strm_imap_vt
-  (xs) =
+  ( xs ) =
 (
 auxmain(0, xs)) where
 {
@@ -788,6 +813,76 @@ strmcon_vt_cons
 )
 } (*where*) // end of(strm_imap_vt)
 
+(* ****** ****** *)
+
+#impltmp
+<x0><y0>
+strx_imap_vt
+  ( xs ) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0
+: nint,
+  xs
+: strx(x0)) = $llazy
+(
+case+
+$eval(xs) of
+|
+strxcon_cons(x0, xs) =>
+strxcon_vt_cons
+(imap$fopr<x0><y0>(i0, x0), auxmain(i0+1, xs))
+)
+} (*where*) // end of(strx_imap_vt)
+
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_itakeif
+  (  xs  ) =
+(
+strm_vt2t
+(strm_itakeif_vt<x0>(xs)))
+(* end of [strm_itakeif(xs)] *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_itakeif_vt
+  (  xs  ) =
+(
+auxmain
+(xs, 0(*i0*))) where
+{
+//
+#vwtpdef
+xs = strm(x0)
+//
+fnx
+auxmain
+( xs: xs
+, i0: sint)
+: strm_vt(x0) = $llazy
+(
+case+ !xs of
+|
+strmcon_nil
+  ((*void*)) =>
+strmcon_vt_nil()
+|
+strmcon_cons
+  ( x0, xs ) =>
+if
+itakeif$test<x0>(i0, x0)
+then
+strmcon_vt_cons
+(x0, auxmain(xs, succ(i0)))
+else strmcon_vt_nil((*void*)))
+}(*where*)//end-of-(strm_itakeif(xs))
+//
 (* ****** ****** *)
 
 #impltmp
@@ -889,8 +984,16 @@ gseq_strmize
 //
 #impltmp
 {a:t0}
-gseq_imap
-<strm(a)><a> = strm_imap_vt<a>
+{b:t0}
+gseq_map_strm
+<strm(a)><a><b> = strm_map_vt<a><b>
+#impltmp
+{a:t0}
+{b:t0}
+gseq_map_strm
+<strx(a)><a><b>
+(     xs     ) =
+strx_vt_strmize<b>(strx_map_vt<a><b>(xs))
 //
 (* ****** ****** *)
 //
@@ -905,6 +1008,35 @@ gseq_filter_strm
 < strx(a) >< a >
 (      xs      ) =
 strx_vt_strmize<a>(strx_filter_vt<a>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gseq_takeif_strm
+< strm(a) >< a > = strm_takeif_vt< a >
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+{b:t0}
+gseq_imap_strm
+<strm(a)><a><b> = strm_imap_vt< a >< b >
+#impltmp
+{a:t0}
+{b:t0}
+gseq_imap_strm
+<strx(a)><a><b>
+(     xs     ) =
+strx_vt_strmize<b>(strx_imap_vt<a><b>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gseq_itakeif_strm
+< strm(a) ><  a  > = strm_itakeif_vt< a >
 //
 (* ****** ****** *)
 
