@@ -21,9 +21,15 @@ cfr2(a1:t0,a2:t0,r0:vt) = (a1,a2)-<cfr>r0
 fun
 <f0:
 t0->t0>
+<m0:t0>
+fold(xs: f0(m0)): m0
+//
+fun
+<f0:
+t0->t0>
 <x0:t0>
-<y0:t0>
-foldr(cfr2(x0, y0, y0), y0, f0(x0)): y0
+<r0:t0>
+foldr(cfr2(x0, r0, r0), r0, f0(x0)): r0
 //
 fun
 <f0:
