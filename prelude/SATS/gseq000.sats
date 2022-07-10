@@ -469,51 +469,103 @@ gseq_mapopt_rlist(xs): list_vt(y0)
 //
 fun
 <xs:t0>
-<x0:t0>gseq_add(xs): x0
-fun
-<xs:t0>
-<x0:t0>gseq_mul(xs): x0
+<x0:t0>
+gseq_add(xs:xs): x0
 fun
 <xs:t0>
 <x0:t0>
-<y0:t0>gseq_map_add(xs): y0
+gseq_mul(xs:xs): x0
+//
+fun
+<x0:t0>
+gseq_add$nil((*nil*)): x0
+fun
+<x0:t0>
+gseq_mul$nil((*nil*)): x0
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
-<x0:t0>
-<y0:t0>gseq_map_mul(xs): y0
+gseq_conj(xs:xs): bool
+fun
+<xs:t0>
+gseq_disj(xs:xs): bool
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_max_exn(xs): x0
+<y0:t0>
+gseq_map_add(xs): (y0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_min_exn(xs): x0
+<y0:t0>
+gseq_map_mul(xs): (y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_map_conj(xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_map_disj(xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_max(xs:xs): x0
+fun
+<xs:t0>
+<x0:t0>
+gseq_min(xs:xs): x0
+//
+fun
+<x0:t0>
+gseq_max$nil((*nil*)): x0
+fun
+<x0:t0>
+gseq_min$nil((*nil*)): x0
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_max_exn(xs:xs): x0
+fun
+<xs:t0>
+<x0:t0>
+gseq_min_exn(xs:xs): x0
 //
 fun
 <xs:t0>
 <x0:t0>
 gseq_max_opt
-(xs: xs): optn_vt(x0)
+(  xs: xs  ): optn_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
 gseq_min_opt
-(xs: xs): optn_vt(x0)
+(  xs: xs  ): optn_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_max_ini(xs, x0): x0
+gseq_max_ini
+( xs: xs, x0: x0 ): (x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_min_ini(xs, x0): x0
+gseq_min_ini
+( xs: xs, x0: x0 ): (x0)
 //
 (* ****** ****** *)
 //

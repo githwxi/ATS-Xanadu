@@ -1117,11 +1117,56 @@ itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
 <xs><x0>
 gseq_add(xs) =
 (
-gseq_map_add<xs><x0>(xs)
+gseq_map_add
+<xs><x0><x0>(xs)
 ) where
 {
 #impltmp map$fopr<x0><x0>(x0) = x0
 }
+//
+#impltmp
+<xs><x0>
+gseq_mul(xs) =
+(
+gseq_map_mul
+<xs><x0><x0>(xs)
+) where
+{
+  #impltmp map$fopr<x0><x0>(x0) = x0
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs>(*tmp*)
+gseq_conj(xs) =
+(
+gseq_map_conj<xs><x0>(xs)
+) where
+{
+#typedef x0 = bool
+#impltmp map$fopr<x0><x0>(x0) = x0
+}
+//
+#impltmp
+<xs>(*tmp*)
+gseq_disj(xs) =
+(
+gseq_map_disj<xs><x0>(xs)
+) where
+{
+#typedef x0 = bool
+#impltmp map$fopr<x0><x0>(x0) = x0
+}
+//
+(* ****** ****** *)
+#impltmp
+<x0>
+gseq_add$nil = g_0<x0> // add-unit
+#impltmp
+<x0>
+gseq_mul$nil = g_1<x0> // mul-unit
+(* ****** ****** *)
 //
 #impltmp
 <xs><x0><y0>
@@ -1136,20 +1181,11 @@ g_add<y0>
 (r0, map$fopr<x0><y0>(x0))
 //
 in//let
-gseq_foldl<xs><x0><y0>(xs, g_0<y0>())
-endlet//end-of-[gseq_map_add/foldl]
+gseq_foldl
+<xs><x0><y0>(xs, gseq_add$nil<y0>())
+endlet//end-of-[gseq_map_add(xs)/foldl]
 //
 (* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-gseq_mul(xs) =
-(
-gseq_map_mul(xs)
-) where
-{
-  #impltmp map$fopr<x0><x0>(x0) = x0
-}
 //
 #impltmp
 <xs><x0><y0>
@@ -1164,9 +1200,65 @@ g_mul<y0>
 (r0, map$fopr<x0><y0>(x0))
 //
 in//let
-gseq_foldl<xs><x0><y0>(xs, g_1<y0>())
-endlet//end-of-[gseq_map_mul/foldl]
+gseq_foldl
+<xs><x0><y0>(xs, gseq_mul$nil<y0>())
+endlet//end-of-[gseq_map_mul(xs)/foldl]
 //
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+gseq_map_conj(xs) =
+let
+//
+#typedef y0 = bool
+//
+in//let
+gseq_forall
+< xs >< x0 >(xs) where
+{
+#impltmp
+forall$test
+< x0 >< y0 > = map$fopr<x0><y0>
+//
+} (*where*) // [gseq_forall(xs)]
+endlet//end-[gseq_map_conj/forall]
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+gseq_map_disj(xs) =
+let
+//
+#typedef y0 = bool
+//
+in//let
+gseq_exists
+< xs >< x0 >(xs) where
+{
+#impltmp
+exists$test
+< x0 >< y0 > = map$fopr<x0><y0>
+//
+} (*where*) // [gseq_exists(xs)]
+endlet//end-[gseq_map_disj/forall]
+//
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_max(xs) =
+gseq_max_ini
+< xs >< x0 >
+( xs
+, gseq_max$nil<x0>((*ini*)))
+#impltmp
+<xs><x0>
+gseq_min(xs) =
+gseq_min_ini
+< xs >< x0 >
+( xs
+, gseq_min$nil<x0>((*ini*)))
 (* ****** ****** *)
 //
 #impltmp
@@ -1215,8 +1307,7 @@ optn_vt_cons
 (
 gseq_max_ini
 ( gseq_tail_raw<xs><x0>(xs)
-, gseq_head_raw<xs><x0>(xs))
-)
+, gseq_head_raw<xs><x0>(xs)))
 ) (* end of [gseq_max_opt(xs)] *)
 //
 #impltmp
