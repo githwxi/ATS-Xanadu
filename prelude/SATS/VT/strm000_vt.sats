@@ -322,6 +322,9 @@ strm_vt_foldl0
 //
 fun
 <x0:vt>
+strm_vt_exists0(strm_vt(x0)): bool
+fun
+<x0:vt>
 strm_vt_forall0(strm_vt(x0)): bool
 fun
 <x0:vt>
@@ -592,9 +595,11 @@ strm_vt_z2iforeach0
 //
 (* ****** ****** *)
 //
+(*
 #symload extend with strm_vt_extend of 1000
 #symload append with strm_vt_append of 1000
 #symload concat with strm_vt_concat of 1000
+*)
 //
 (* ****** ****** *)
 #symload length0 with strm_vt_length of 1000
@@ -620,6 +625,26 @@ strm_vt_z2iforeach0
 //
 #symload rlistize with strm_vt_rlistize of 1000
 //
+(* ****** ****** *)
+#symload map0 with strm_vt_map0 of 1000
+#symload map0 with strx_vt_map0 of 1000
+(* ****** ****** *)
+#symload drop0 with strm_vt_drop of 1000
+#symload dropif0 with strm_vt_dropif of 1000
+#symload idropif0 with strm_vt_idropif of 1000
+(* ****** ****** *)
+#symload take0 with strm_vt_take of 1000
+#symload takeif0 with strm_vt_takeif of 1000
+#symload itakeif0 with strm_vt_itakeif of 1000
+(* ****** ****** *)
+#symload foldl0 with strm_vt_foldl0 of 1000
+(* ****** ****** *)
+#symload filter0 with strm_vt_filter0 of 1000
+#symload filter0 with strx_vt_filter0 of 1000
+(* ****** ****** *)
+#symload exists0 with strm_vt_exists0 of 1000
+#symload forall0 with strm_vt_forall0 of 1000
+#symload foreach0 with strm_vt_foreach0 of 1000
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_strm000_vt.sats] *)

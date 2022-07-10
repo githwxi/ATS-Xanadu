@@ -221,10 +221,6 @@ strm_vt_from$next<a>(x0) }
 }
 //
 #impltmp
-{a:t0}(*tmp*)
-strm_vt_from$next<a>(x0) = g_succ<a>(x0)
-//
-#impltmp
 <a>(*tmp*)
 strx_vt_from
   (  x0  ) =
@@ -246,7 +242,12 @@ strx_vt_from$next<a>(x0) }
 //
 #impltmp
 {a:t0}(*tmp*)
-strx_vt_from$next<a>(x0) = g_succ<a>(x0)
+strm_vt_from$next<a>
+  ( x0 ) = g_succ<a>(x0)//default
+#impltmp
+{a:t0}(*tmp*)
+strx_vt_from$next<a>
+  ( x0 ) = g_succ<a>(x0)//default
 //
 (* ****** ****** *)
 
@@ -262,7 +263,7 @@ strm_vt_foldl0<a><nint>(xs, 0)
 foldl0$fopr<a><nint>(r0, x0) =
 let
   val () = g_free<a>(x0) in succ(r0)
-end // end of [let]
+end // let // end of [foldl0$fopr]
 //
 } (*where*)//end-of-(strm_vt_length)
 
