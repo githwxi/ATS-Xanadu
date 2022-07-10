@@ -409,7 +409,21 @@ filter$test<x0>(x0)
 then
 strxcon_vt_cons
 (x0, auxmain(xs)) else auxloop(xs))
-} (*where*) // end of [strx_filter_vt(xs)] *)
+}(*where*)//end-of(strx_filter_vt(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_dropif
+  (xs) =
+(
+strm_idropif<x0>(xs)) where
+{
+#impltmp
+idropif$test
+<x0>(i0, x0) = dropif$test<x0>(x0)
+}(*where*)//end-of-( strm_dropif(xs) )
 //
 (* ****** ****** *)
 //
@@ -429,8 +443,9 @@ strm_itakeif_vt<x0>(xs)
 ) where
 {
 #impltmp
-itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
-}
+itakeif$test
+<x0>(i0, x0) = takeif$test<x0>(x0)
+}(*where*)//end-of-( strm_takeif(xs) )
 //
 (* ****** ****** *)
 //
